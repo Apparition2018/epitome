@@ -1,0 +1,106 @@
+Alt + 1                 Show View (Console)             自定义
+Alt + 2                 Show View (Servers)             自定义
+Alt + 3                 Quick Asssist                   自定义
+Alt + K                 Preferences (General > Keys)    自定义
+Ctrl + `                Run                             自定义
+Ctrl + E                Quick Switch Editor             自定义
+Ctrl + F6               Next Editor                     自定义
+
+
+
+Alt + Shift + R			重命名/批量重命名
+Alt + Shift + V
+Alt + Shift + Z         Surround With Quick Menu
+
+Alt + Shift + X			Run ...
+Alt + Shift + X	+ J		Run Java Application
+Alt + Shift + X + T		Run JUnit Test
+
+Ctrl + Alt + ↑/↓		复制行
+
+Ctrl + Shift + O		导入包
+Ctrl + Shift + R		打开资源
+
+Ctrl + Shift + /		折叠代码块/目录
+Ctrl + Shift + *		打开代码块
+
+
+
+
+// Ctrl + M				最大化当前的编辑器或试图 (再按则反之)
+
+// Ctrl + D				删除当前行
+// Ctrl + Z				撤销
+// Ctrl + Y				重做
+
+// Ctrl + /				注释
+// Ctrl + 1				快速修正
+// Alt + ↑/↓			当前行和上面/下面一行交换位置
+
+// Ctrl + Shift + F		格式化代码
+// F11					Debug
+// Alt + ←				后退历史记录
+// Alt + →				前进历史记录
+
+
+Ctrl + 3				快捷入口
+Ctrl + E
+Ctrl + End				跳到文本的结尾
+Ctrl + F6
+Ctrl + F7  →  Servers  →  Ctrl + Alt + D  →  tomcat
+Ctrl + F8
+Ctrl + H
+crtl+ Home				跳到文本的开头
+Ctrl + J				正向增量查找  ----  Ctrl + Shift + J  
+Ctrl + K				查找文本  ----  Ctrl + Shift + K
+Ctrl + L				跳到特定行
+Ctrl + N
+Ctrl + PgUp/PgDn
+Ctrl + O				显示当前文件所有的属性和方法
+Ctrl + Q				返回最后编辑位置
+Ctrl + T				显示类的继承关系树  ----  Ctrl + Shift + T打开类  -----  F4
+Ctrl + 左键（F3）		查看源代码
+Ctrl + ←/→
+Ctrl + Alt + H			查看方法被那些类调用
+Ctrl + Shift + G		搜索reference
+Ctrl + Shift + P		大括号间跳跃
+Ctrl + Shift + X/Y		大小写
+Ctrl + Shift + ←/→
+Ctrl + Shift + ↑/↓		方法间跳跃
+Ctrl + Shift + enter
+Ctrl + Shift + ?
+Shift + enter
+Alt + /
+Alt + Shift + B			面包屑
+Alt + Shift + Q
+Alt + Shift + S			代码生成试图（Source）  + c无参构造  + hhashCode/equals  + o全参构造 
+			+ rget/set   + s toString        + t注释
+			+ v重写
+Alt + Shift + W显示视图
+Alt + Shift + ←→选中内容
+TAB
+F5Debugging
+F6Debugging
+F7Debugging
+F8Debugging
+F12回到edit界面
+
+
+
+
+Ctrl + 2
+Alt + Shift + i/m
+Alt + Shift + C			修改方法结构
+Alt + Shift + F			把local变量变为field变量
+Ctrl + Shift + B		设置/取消断点
+
+
+
+
+
+
+
+
+
+
+

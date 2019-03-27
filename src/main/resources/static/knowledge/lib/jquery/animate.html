@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animate</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <!--http://www.runoob.com/jquery/eff-animate.html
+        https://www.cnblogs.com/hh54188/archive/2011/04/09/1996469.html
+        http://www.runoob.com/w3cnote/front-end-learning-guide.html '.stop()' 停止协作和监听 -->
+
+    <!-- 使用带有回到函数的animate() -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">animate()</div>
+            <div class="eg1 centered">
+                <button>开始动画</button>
+                <button>queue</button>
+                <div style="width: 300px; height: 300px;">
+                    <div style="width: 100px; height: 100px; margin: 15px 0; background: red;"></div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script class="code" contenteditable="true">
+            $(function () {
+                $(".eg1 button:eq(0)").click(function () {
+                    var div = $(".eg1 div div");
+                    // 动画不会按顺序执行
+                    startAnimation();
+                    function startAnimation() {
+                        div.css("background-color", "blue");
+                        div.animate({ height: 300 }, "slow");
+                        div.animate({ width: 300 }, "slow");
+                        div.css("background-color", "red"); // 这里会先执行
+                        div.animate({ height: 100 }, "slow");
+                        div.animate({ width: 100 }, "slow", startAnimation);
+                    }
+                });
+
+                $(".eg1 button:eq(1)").click(function () {
+                    var div = $(".eg1 div div");
+                    // 动画会按顺序执行
+                    startAnimation();
+                    function startAnimation() {
+                        div.queue(function (next) {
+                            $(".eg1 div div").css("background-color", "blue"); next();
+                        });
+                        div.animate({ height: 300 }, "slow");
+                        div.animate({ width: 300 }, "slow");
+                        div.queue(function (next) {
+                            $(".eg1 div div").css("background-color", "red"); next();
+                        });
+                        div.animate({ height: 100 }, "slow");
+                        div.animate({ width: 100 }, "slow", startAnimation);
+                    }
+                })
+            })
+        </script>
+    </section>
+
+    <!-- stop(stopAll,goToEnd)
+        stop() 方法为被选元素停止当前正在运行的动画
+        stopAll, 可选。布尔值，规定是否停止被选元素的所有加入队列的动画。默认是 false。
+        goToEnd, 可选。布尔值，规定是否立即完成当前的动画。默认是 false。-->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">stop()</div>
+            <div class="eg2 centered">
+                <button>开始动画</button>
+                <button>停止</button>
+                <div style="width: 300px; height: 300px">
+                    <div style="width: 100px; height: 100px; margin: 15px 0; background: #98bf21;"></div>
+                </div>
+            </div>
+        </div>
+        <script class="code" contenteditable="true">
+            $(function () {
+                $(".eg2 button:eq(0)").click(function () {
+                    var div = $(".eg2 div div");
+                    div.animate({ height: 300 }, "slow");
+                    div.animate({ width: 300 }, "slow");
+                    div.animate({ height: 100 }, "slow");
+                    div.animate({ width: 100 }, "slow");
+                });
+
+                $(".eg2 button:eq(1)").click(function () {
+                    var div = $(".eg2 div div");
+                    div.stop(true, false);
+                });
+            })
+        </script>
+    </section>
+</body>
+
+</html>

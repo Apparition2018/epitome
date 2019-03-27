@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>cursor-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <!-- https://www.zhangxinxu.com/study/201412/cursor-zoom-in-zoom-out.html -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">放大缩小图片</div>
+            <div class="centered">
+                <a href="javascript:" class="zoom zoom-in">
+                    <img src="../../../img/Misaka Mikoto.jpg" alt="Misaka Mikoto" width="200px;">
+                </a>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .zoom img {
+                border-radius: 2px;
+            }
+
+            .zoom-in {
+                cursor: zoom-in;
+            }
+
+            .zoom-out {
+                cursor: zoom-out;
+            }
+        </style>
+        <script>
+            var zoom = document.getElementsByClassName('zoom')[0];
+            zoom.onclick = function () {
+                var img = document.querySelector('.zoom img');
+                if (/in/.test(this.className)) {
+                    img.style.width = "300px";
+                    this.className = "zoom zoom-out";
+                } else {
+                    img.style.width = "200px";
+                    this.className = "zoom zoom-in";
+                }
+                return false;
+            }
+        </script>
+    </section>
+</body>
+
+</html>

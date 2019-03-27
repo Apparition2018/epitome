@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>line-height-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+    <style>
+        .centered {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <!--https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height
+
+        line-height:    用于设置多行元素的空间量
+                        对于块级元素，它指定元素行盒（line boxes）的最小高度。
+                        对于非替代的inline元素，它用于计算行盒（line box）的高度。 -->
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">推荐使用无单位数值给line-height赋值</div>
+            <div class="centered" id="eg1">
+                <div class="box green">
+                    <h1>Avoid unexpected results by using unitless line-height.</h1>
+                    length and percentage line-heights have poor inheritance behavior ...
+                </div>
+
+                <div class="box red">
+                    <h1>Avoid unexpected results by using unitless line-height.</h1>
+                    length and percentage line-heights have poor inheritance behavior ...
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .green {
+                line-height: 1.1;
+                border: solid limegreen;
+            }
+
+            .red {
+                line-height: 1.1em;
+                border: solid red;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .box {
+                display: inline-block;
+                width: 18em;
+                vertical-align: top;
+                font-size: 15px;
+                white-space: normal;
+            }
+        </style>
+    </section>
+
+    <!-- https://www.zhihu.com/question/20394889/answer/18436957 -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">数字 长度 百分比</div>
+            <div class="caption"></div>
+            <div class="centered" id="eg2">
+                <div class="div1">
+                    percentage：150%;
+                    <div>父 font-size * 150%</div>
+                </div>
+                <div class="div2">
+                    length：1.5em
+                    <div>父 font-size * 1.5em</div>
+                </div>
+                <div class="div3">
+                    number：1.5
+                    <div>子 font-size * 1.5</div>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg2 .div1 {
+                line-height: 150%;
+            }
+
+            #eg2 .div2 {
+                line-height: 1.5em;
+            }
+
+            #eg2 .div3 {
+                line-height: 1.5;
+            }
+
+            #eg2>div {
+                margin: 10px;
+                font-size: 14px;
+            }
+
+            #eg2>div>div {
+                font-size: 40px;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

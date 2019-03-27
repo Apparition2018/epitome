@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>name</title>
+    <link rel="icon" href="../../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../../css/demo.css">
+</head>
+
+<body>
+    <!-- https://blog.csdn.net/qq_34099161/article/details/53081904 -->
+    <section class="code-wrap">
+        <div class="css-live-wrap w33p">
+            <div class="caption">解决跨域问题</div>
+            <div class="caption">window.name 在不同的页面（甚至不同域名）加载后依旧存在</div>
+            <div class="domain centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            onload = function () {
+                var data;
+                var iframe = document.createElement('iframe');
+                var domain = document.getElementsByClassName('domain')[0];
+                iframe.style.display = 'none';
+                domain.appendChild(iframe);
+                // 1. iframe 先加载不同源下的 name2.html，name2.html 设置 window.name
+                iframe.src = 'http://192.168.0.41:8080/uploadpic/tms/html/name2.html';
+                iframe.onload = function () {
+                    // 2. iframe 加载同源下 name3.html，因为 name.html 无法获取不同源 name2.html 设置的 window.name
+                    iframe.src = 'name3.html';
+                    // 3. 获取 name3.html 下的 window.name
+                    data = iframe.contentWindow.name;
+                    domain.removeChild(iframe);
+                    setTimeout(function() {
+                        domain.innerText = data;
+                    }, 1000);
+                }
+            }
+        </script>
+    </section>
+</body>
+
+</html>

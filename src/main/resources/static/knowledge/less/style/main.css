@@ -1,0 +1,82 @@
+@charset "utf-8";
+/* 变量 */
+.var {
+  width: 100px;
+  height: 100px;
+  background-color: violet;
+}
+/* @arguments */
+.arguments {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #000;
+  -webkit-box-shadow: 2px 5px 1px #000000;
+  -moz-box-shadow: 2px 5px 1px #000000;
+  box-shadow: 2px 5px 1px #000000;
+}
+/* 运算 */
+.oper {
+  width: 100px;
+  height: 70px;
+  background-color: #112233;
+  border: 5px solid #888888;
+}
+/* 混合 */
+.border_01 {
+  border: solid 5px pink;
+}
+.mixins_01 {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  border: solid 5px pink;
+}
+.mixins_02 {
+  border: solid #ffff00 30px;
+}
+.mixins_03 {
+  border: solid #008000 50px;
+}
+.mixins {
+  width: 100px;
+  height: 100px;
+  background-color: greenyellow;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+/* 匹配模式 */
+.triangle {
+  border-width: 50px;
+  border-color: transparent transparent #dc143c transparent;
+  border-style: dashed dashed solid dashed;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+/* 嵌套 */
+.list {
+  width: 360px;
+  font-size: 14px;
+  list-style: none;
+}
+.list li {
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 5px;
+  padding: 0 10px;
+  background-color: lightpink;
+}
+.list li:hover {
+  background-color: lightcoral;
+}
+.list a {
+  float: left;
+}
+.list span {
+  float: right;
+}
+/* 避免编译 */
+.e {
+  width: calc(300px -30px);
+}

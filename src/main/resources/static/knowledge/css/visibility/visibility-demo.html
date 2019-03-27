@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>visibility-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <!-- https://www.zhangxinxu.com/wordpress/2013/05/transition-visibility-show-hide/ -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">鼠标放图片上逐渐隐藏</div>
+            <div class="centered" id="eg1">
+                <img src="../../../img/Misaka Mikoto.jpg" alt="Misaka Mikoto" width="200px;">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg1 img:hover {
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            #eg1 img {
+                transition: all 0.5s linear;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

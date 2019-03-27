@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>padding-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">给定width，增加padding，总宽增加</div>
+            <div class="caption">不定width，增加padding，总宽不变</div>
+            <div class="dim centered">
+                <div class="parent">
+                    <div class="child"></div>
+                </div>
+                <select>
+                    <option value="auto">auto</option>
+                    <option value="200px">200px</option>
+                </select>
+                <select>
+                    <option value="auto">auto</option>
+                    <option value="0 20px">0 20px</option>
+                </select>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .dim {
+                text-align: center;
+            }
+
+            .dim .parent {
+                width: 180px;
+                margin: 0 auto;
+            }
+
+            .dim select {
+                vertical-align: middle;
+                margin: 20px 5px 0 5px;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+
+            .dim .child {
+                height: 180px;
+                border: 1px solid #333;
+            }
+        </style>
+        <script>
+            document.getElementsByTagName('select')[0].onchange = function () {
+                document.querySelector('.dimension .child').style.width = this.value;
+            }
+
+            document.getElementsByTagName('select')[1].onchange = function () {
+                console.log(this.value);
+                document.querySelector('.dimension .child').style.padding = this.value;
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">对于inline元素，水平padding影响尺寸，垂直padding不影响尺寸，但会影响背景色（占据空间）</div>
+            <div class="inline centered">
+                <span>NORTH</span>
+                <br>
+                <span>WEST</span>
+                <span class="middle">MIDDLE</span>
+                <span>EAST</span>
+                <br>
+                <span>SOUTH</span>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .inline {
+                color: #333;
+                font-size: 0;
+                text-align: center;
+            }
+
+            .inline span {
+                font-size: 32px;
+            }
+
+            .inline .middle {
+                padding: 15px;
+                background: var(--pl2);
+                border: 1px solid black;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">正方形</div>
+            <div class="caption">百分比值按包含元素的宽度计算</div>
+            <div class="square centered">
+                <div></div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .square {
+                width: 150px;
+                height: 150px;
+            }
+
+            .square div {
+                padding: 50%;
+                background-color: var(--pl3);
+                border-radius: 2px;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">三道杠</div>
+            <div class="three-stripe centered">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .three-stripe {
+                width: 200px;
+                height: 40px;
+                padding: 30px 0;
+                background-clip: content-box;
+                background-color: #553285;
+                border-top: 40px solid #7b52ab;
+                border-bottom: 40px solid #36175e;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption"></div>
+            <div class="eye centered">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .eye {
+                width: 50px;
+                height: 50px;
+                padding: 25px;
+                background-clip: content-box;
+                background-color: #36175e;
+                border: 25px solid #553285;
+                border-radius: 50%;
+                box-shadow: 0 0 0 25px #7b52ab;
+            }
+        </style>
+    </section>
+    <section class="code-wrap" id="layout1">
+        <div class="css-live-wrap">
+            <div class="caption">等高布局</div>
+            <div class="caption">利用 padding, margin 实现
+            </div>
+            <div class="layout1 centered">
+                <div class="layout1-left" onclick="addGreen()">
+                    <div>LEFT</div>
+                </div>
+                <div class="layout1-right" onclick="addOrange()">
+                    <div>RIGHT</div>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .layout1 {
+                overflow: hidden;
+                /* resize: vertical; */
+            }
+
+            .layout1-left,
+            .layout1-right {
+                float: left;
+                width: 150px;
+                margin-bottom: -600px;
+                padding-bottom: 600px;
+                color: #fff;
+                font-weight: bold;
+                background: var(--pl2);
+            }
+
+            .layout1-left div,
+            .layout1-right div {
+                padding: 10px;
+            }
+
+            .layout1-right {
+                background: var(--pl3);
+            }
+        </style>
+        <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            function addGreen() {
+                var text = $('.layout1-left div').html();
+                console.log(text);
+                $('.layout1-left div').html(text + '<br>' + 'LEFT');
+            }
+
+            function addOrange() {
+                var text = $('.layout1-right div').html();
+                console.log(text);
+                $('.layout1-right div').html(text + '<br>' + 'RIGHT');
+            }</script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">两栏自适应布局1</div>
+            <div class="layout2 centered">
+                <img src="../../../img/mm.png"> 本例子实现的是，图片宽度固定，然后后面文字信息自适应的效果。原理如下：容器有个固定的padding-left值，此时图文应该在120像素处显示，但是，由于图片margin负值浮动（或者绝对定位）到容器左上角，因此，文字...
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .layout2 {
+                width: 280px;
+                padding: 10px 10px 10px 120px;
+                color: #fff;
+                font-size: 15px;
+                text-indent: 2em;
+                background-color: var(--pl2);
+                border-radius: 2px;
+            }
+
+            .layout2 img {
+                float: left;
+                width: 120px;
+                margin-left: -120px;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">两栏自适应布局2</div>
+            <div class="layout3 centered">
+                <img src="../../../img/mm.png">
+                <div>本例子实现的是，图片宽度固定，然后后面文字信息自适应的效果。原理如下：两栏元素均有自己的标签，其中文字栏有个固定的padding-left值，此时文字应该在距离容器120像素显示，但是，由于图片浮动（或者绝对定位），不在流中，因此，文字...</div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .layout3 {
+                width: 400px;
+                padding: 10px;
+                background-color: var(--pl3);
+                border-radius: 2px;
+            }
+
+            .layout3 img {
+                float: left;
+                width: 120px;
+            }
+
+            .layout3 div {
+                padding-left: 120px;
+                color: #fff;
+                font-size: 15px;
+                text-indent: 2em;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

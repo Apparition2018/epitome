@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>form-demo</title>
+    <link rel="icon" href="../../../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../../../css/demo.css">
+</head>
+
+<body>
+<section class="code-wrap h350">
+    <div class="css-live-wrap w100p">
+        <div class="caption">
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form">&lt;form&gt;</a>
+        </div>
+        <div class="centered">
+            <table class="w1024">
+                <tr>
+                    <th>属性</th>
+                    <th>值</th>
+                    <th>概述</th>
+                </tr>
+                <tr>
+                    <td>action</td>
+                    <td>URL</td>
+                    <td>规定当提交表单时向何处发送表单数据</td>
+                </tr>
+                <tr>
+                    <td rowspan="3"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form"></a>enctype
+                    </td>
+                    <td>application/x-www-form-urlencoded (default)</td>
+                    <td rowspan="3">规定在发送表单数据之前如何对其进行编码</td>
+                </tr>
+                <tr>
+                    <td>multipart/form-data (post)</td>
+                </tr>
+                <tr>
+                    <td>text/plain (post)</td>
+                </tr>
+                <tr>
+                    <td>method</td>
+                    <td>get, post</td>
+                    <td>规定用于发送 form-data 的 HTTP 方法</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td></td>
+                    <td>HTML5 中，一个文档中的多个 form 当中，name 必须唯一而不仅仅是一个空字符串</td>
+                </tr>
+                <tr>
+                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#attr-target">target</a></td>
+                    <td>_self, _blank, _top, iframename</td>
+                    <td>一个关键字或名字，用来指示在提交表单之后，在哪里显示收到的回复</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <style>
+    </style>
+</section>
+
+<!-- http://www.w3school.com.cn/html5/att_input_form.asp -->
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">&lt;input&gt; 的 form 属性</div>
+        <div class="caption">规定 input 元素所属的一个或多个表单</div>
+        <div class="att-form centered">
+            <form action="" id="form1">
+                姓名：
+                <input type="text" name="red" size="9" placeholder="表单内">
+            </form>
+            年龄：
+            <input type="text" name="blue" size="9" placeholder="表单外" form="form1">
+        </div>
+    </div>
+    <code class="code w60p" contenteditable="true">
+        // 虽然 input 元素位于form元素之外，但仍然是表单的一部分，数据会一并提交
+
+        &lt;form action="" id="form1"&gt;
+        姓名：&lt;input type="text" name="red" size="9" placeholder="表单内"&gt;
+        &lt;/form&gt;
+        年龄：&lt;input type="text" name="blue" size="9" placeholder="表单外" <strong>form</strong>="form1"&gt;
+    </code>
+    <style>
+        .att-form {
+            margin-top: 30px;
+            font-size: 15px;
+        }
+
+        form {
+            margin-bottom: 12px;
+        }
+
+        input {
+            padding: 3px;
+        }
+    </style>
+</section>
+</body>
+
+</html>

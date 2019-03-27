@@ -1,0 +1,77 @@
+CALL                    从批处理程序调用另一个批处理程序
+
+CHOICE                  允许用户从选择列表选择一个项目并返回所选项目的索引
+
+CLS                     清除屏幕
+
+COPY                    将一份或多份文件复制到另一个位置
+XCOPY                   复制文件或目录树
+
+DEL                     删除一个或数个文件
+DEL /P                  删除每一个文件之前提示确认
+DEL /F                  强制删除只读文件
+DEL /S                  删除所有子目录中的指定的文件
+DEL /Q                  安静模式。删除全局通配符时，不要求确认
+
+DIR                     显示目录中的文件和子目录列表
+
+ECHO
+ECHO [ON | OFF]         命令回显
+ECHO [message]          显示信息
+
+FIND                    在文件中搜索字符串
+FIND /V                 显示所有为包含指定字符串的行
+FIND /C                 仅显示包含字符串的行
+FIND /N                 显示行号
+FIND /I                 搜索字符串时忽略大小写
+
+FOR                     对一组文件中的每一个文件执行某个特定命令
+
+FORMAT                  格式化磁盘以供 Windows 使用
+FORMAT /Q               执行快格式化
+
+GOTO label              定向到批处理程序中带标签的行
+
+IF [NOT] ERRORLEVEL num 判断返回码。返回码必须按照从大到小次序顺序判断
+IF [NOT] str1 == str2   判断相等
+IF [NOT] EXIST filename 判断文件存在
+
+IPCONFIG                默认情况下，仅显示绑定到 TCP/IP 的适配器的 IP 地址、子网掩码和默认网关
+
+MD                      创建目录
+
+MORE                    逐屏显示输出
+
+NETSTAT                 显示协议统计和当前 TCP/IP 网络连接
+NETSTAT -a              显示所有连接和侦听端口
+NETSTAT -n              以数字形式显示地址和端口号
+NETSTAT -s              显示每个协议的统计
+        -p              可用于指定默认的子网
+NETSTAT -v              查看正在进行的工作
+NETSTAT -A ip           对方136到139其中一个端口开了的话，就可查看对方最近登陆的用户名（03前的为用户名）
+
+PAUSE                   暂停批处理程序，并显示："请按任意键继续..."
+
+REM [comment]           在批处理文件或 CONFIG.SYS 里加上注解或说明
+
+REN                     重命名文件
+
+SET                     显示、设置或删除 Windows 环境变量
+SET /A expression       指定等号右边的字符串为被评估的数字表达式
+
+SHIFT                   更改批处理文件中可替换参数的位置
+
+START                   启动一个单独的窗口运行指定的程序或命令
+
+TASKKILL                按照进程 ID (PID) 或映像名称终止任务
+TASKKILL /PID processid 指定要终止的进程的 PID
+TASKKILL /IM imagename  指定要终止的进程的映像名称
+TASKKILL /T             终止指定的进程和由它启用的子进程
+TASKKILL /F             指定强制终止进程
+
+TASKLIST                显示在本地货远程机器上当前运行的进程列表
+
+TREE                    以图形显示驱动器或路径的文件结构
+TREE /F                 显示每个文件夹中文件的名称
+
+TYPE                    显示文本文件的内容

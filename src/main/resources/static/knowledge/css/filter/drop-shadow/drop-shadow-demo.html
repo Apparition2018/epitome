@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- https://www.zhangxinxu.com/wordpress/2016/05/css3-filter-drop-shadow-vs-box-shadow/ -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>drop-shadow-demo</title>
+    <link rel="stylesheet" href="../../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">drop-shadow 和 box-shadow 的区别</div>
+            <div class="drop centered">
+                <div>drop-shadow</div>
+            </div>
+            <div class="box centered">
+                <div>box-shadow</div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .drop,
+            .box {
+                display: flex;
+                justify-content: center;
+                align-items: Center;
+                width: 150px;
+                height: 150px;
+                font-size: 120%;
+                font-weight: bold;
+                border: 5px dashed var(--pkt4);
+            }
+
+            .drop {
+                left: 30%;
+                filter: drop-shadow(2px 2px 5px var(--pkt5));
+            }
+
+            .box {
+                left: 70%;
+                box-shadow: 2px 2px 5px var(--pkt5);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">四周阴影</div>
+            <div class="caption">利用 drop-shadow 实现</div>
+            <div class="rect centered">
+                <i class="trian"></i>
+                filter: drop-shadow
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .rect {
+                background: var(--pkt4);
+                width: 300px;
+                line-height: 120px;
+                color: white;
+                text-align: center;
+                font-size: 150%;
+                font-weight: bold;
+                filter: drop-shadow(2px 2px 5px #222);
+            }
+
+            .trian {
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+                left: -40px;
+                border: 20px solid transparent;
+                border-right-color: var(--pkt4);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">增加可视渲染区域</div>
+            <div class="caption">利用 drop-shadow、border:transparent 实现</div>
+            <div class="bin centered">
+                <img src="../../../../img/回收站.png" />
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .bin {
+                width: 32px;
+                margin-left: 32px;
+                overflow: hidden;
+            }
+
+            img {
+                /* 定义了元素(通常是<img>)的可视效果(例如：模糊与饱和度)
+				        drop-shadow: 给图像设置一个阴影效果 */
+                filter: drop-shadow(32px 0 var(--pkt4));
+                position: relative;
+                left: -32px;
+                border-right: 32px solid transparent;
+            }
+        </style>
+    </section>
+
+
+</body>
+
+</html>

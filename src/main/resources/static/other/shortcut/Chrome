@@ -1,0 +1,9 @@
+Ctrl + P                Open file
+Ctrl + Shift + C		inspect element
+Ctrl + Shift + D        dock sdie
+
+F8                      Resume script execution
+F9                      Step
+F10                     Step over next function call
+F11                     Step into next function call
+Shift + F11             Step out of current function

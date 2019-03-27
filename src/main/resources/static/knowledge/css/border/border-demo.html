@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>border-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script defer src="../../../js/demo.js"></script>
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">默认3px，支持关键字 thin,medium,thick</div>
+            <div class="caption">不支持百分比</div>
+            <div class="centered box-border">
+                <div class="demo"></div>
+                <select>
+                    <option value="">默认值</option>
+                    <option value="thin">thin</option>
+                    <option value="medium">medium</option>
+                    <option value="thick">thick</option>
+                    <option value="1em">1em</option>
+                    <option value="medium 2rem">medium 2rem</option>
+                    <option value="10%">10%</option>
+                </select>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .box-border {
+                display: flex;
+                align-items: center;
+            }
+
+            .box-border .demo {
+                width: 160px;
+                height: 160px;
+                line-height: 160px;
+                margin-right: 60px;
+                text-align: center;
+                white-space: normal;
+                border: solid var(--gn3);
+            }
+        </style>
+        <script>
+            document.getElementsByTagName('select')[0].onchange = function () {
+                var demo = document.getElementsByClassName('demo')[0];
+                demo.textContent = "";
+                if (this.value == "10%") {
+                    demo.textContent = "不支持百分比值"
+                } else {
+                    demo.style.borderWidth = this.value;
+                }
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap">
+            <div class="caption">圆</div>
+            <div class="caption">利用 border-style:dotted 实现</div>
+            <div class="style1 centered">
+                <div class="dotted"></div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .style1 {
+                width: 120px;
+                height: 120px;
+                overflow: hidden;
+            }
+
+            .style1 .dotted {
+                width: 100%;
+                height: 100%;
+                border: 120px dotted var(--gn2);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap">
+            <div class="caption">三角形</div>
+            <div class="triangle centered">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .triangle {
+                border-width: 40px;
+                border-style: solid;
+                border-color: var(--gn3) var(--gn2) transparent transparent;
+                transform: rotate(-135deg);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap">
+            <div class="caption">梯形</div>
+            <div class="trapezoid centered">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .trapezoid {
+                width: 50px;
+                border: 50px solid;
+                border-color: var(--gn2) transparent transparent transparent;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap">
+            <div class="caption">模拟圆角</div>
+            <div class="caption">梯形+长方形+梯形</div>
+            <div class="radius centered">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .radius :nth-child(1) {
+                width: 110px;
+                border: 5px solid transparent;
+                border-bottom-color: var(--gn2);
+            }
+
+            .radius :nth-child(2) {
+                width: 120px;
+                height: 60px;
+                background: var(--gn2);
+            }
+
+            .radius :nth-child(3) {
+                width: 110px;
+                border: 5px solid transparent;
+                border-top-color: var(--gn2);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap">
+            <div class="caption">三道杠</div>
+            <div class="caption">利用 border-style:double 实现</div>
+            <div class="style2 centered">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .style2 {
+                width: 150px;
+                height: 20px;
+                /* （中间间隔-1） <= 双线宽度 <= （中间间隔+1） */
+                border-top: 60px double var(--gn2);
+                border-bottom: 20px solid var(--gn3);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap">
+            <div class="caption">同时改变字体和边框颜色</div>
+            <div class="caption">利用 border-color 默认'跟随' color 实现</div>
+            <div class="color centered">
+                同时改变字体和边框颜色
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .color {
+                padding: 20px 40px;
+                color: var(--gn4);
+                text-shadow: 1px 1px 1px;
+                border: 3px solid;
+            }
+
+            .color:hover {
+                color: var(--gn2);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap">
+            <div class="caption">增加响应区域大小</div>
+            <div class="checkbox centered">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .checkbox {
+                width: 160px;
+                height: 160px;
+                color: #d0d0d5;
+                background-color: #fff;
+                background-clip: content-box;
+                border: 30px solid transparent;
+                box-shadow: inset 0 1px, inset 1px 0, inset -1px 0, inset 0 -1px;
+            }
+
+            .checkbox:hover {
+                color: var(--gn2);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap">
+            <div class="caption">增加可视渲染区域</div>
+            <div class="bin centered">
+                <img src="../../../img/回收站.png" />
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .bin {
+                overflow: hidden;
+            }
+
+            .bin img {
+                /* 定义了元素(通常是<img>)的可视效果(例如：模糊与饱和度)
+                        drop-shadow: 给图像设置一个阴影效果 */
+                filter: drop-shadow(32px 0 var(--gn2));
+                position: relative;
+                left: -32px;
+                border-right: 32px solid transparent;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">等高布局</div>
+            <div class="layout centered">
+                <nav class="left" onclick="left()">
+                    <span>导航</span>
+                </nav>
+                <section class="module" onclick="module()">
+                    <div>模块</div>
+                </section>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .layout {
+                width: 400px;
+                font-weight: bold;
+                background: var(--gn1);
+                border-left: 180px solid var(--gn5);
+                border-radius: 2px;
+            }
+
+            .layout .left {
+                float: left;
+                width: 160px;
+                margin-left: -180px;
+                padding: 10px;
+                color: #fff;
+            }
+
+            .layout .module {
+                padding: 10px;
+            }
+        </style>
+        <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            function left() {
+                var text = $('.layout .left span').html();
+                $('.layout .left span').html(text + '<br>' + '导航');
+            }
+
+            function module() {
+                var text = $('.layout .module div').html();
+                $('.layout .module div').html(text + '<br>' + '模块');
+            }</script>
+    </section>
+</body>
+
+</html>

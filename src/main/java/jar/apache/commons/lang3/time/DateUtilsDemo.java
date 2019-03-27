@@ -1,0 +1,235 @@
+package jar.apache.commons.lang3.time;
+
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
+import org.junit.Test;
+
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * DateUtils
+ * DateUtilsFormat
+ * <p>
+ * https://www.cnblogs.com/aston/p/9053201.html
+ * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html
+ * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html
+ */
+public class DateUtilsDemo {
+
+    private Date date1;
+    private Date date2;
+    private Calendar cal1 = Calendar.getInstance();
+    private Calendar cal2 = Calendar.getInstance();
+
+    public DateUtilsDemo() throws InterruptedException {
+        date1 = new Date();
+        TimeUnit.MILLISECONDS.sleep(1);
+        date2 = new Date();
+    }
+
+    /**
+     * addXXX(Date date, int amount)
+     * <p>
+     * Milliseconds, Seconds, Minutes, Hours, Days, Weeks, Months, Years
+     */
+    @Test
+    public void addXXX() {
+        p(date1);                                  // Mon Nov 19 10:00:42 CST 2018
+        p(DateUtils.addYears(date1, 1));   // Tue Nov 19 10:00:42 CST 2019
+        p(DateUtils.addMonths(date1, 1));  // Wed Dec 19 10:00:42 CST 2018
+        p(DateUtils.addWeeks(date1, 1));   // Mon Nov 26 10:00:42 CST 2018
+    }
+
+    /**
+     * static Date  setXXX(Date date, int amount)
+     * <p>
+     * Milliseconds, Seconds, Minutes, Hours, Days, Months, Years
+     */
+    @Test
+    public void setXXX() {
+        Date date = new Date();
+        p(DateUtils.setMonths(date, 0));   // 0-11
+        p(DateUtils.setDays(date, 1));     // 1-31
+        p(DateUtils.setHours(date, 0));    // 0-23
+        p(DateUtils.setMinutes(date, 0));  // 0-59
+        p(DateUtils.setSeconds(date, 0));  // 0-59
+        p(DateUtils.setMilliseconds(date, 0)); // 0-999
+    }
+
+    /**
+     * static Calendar / Date	ceiling(Calendar / Date / Object date, int field)    向上取整
+     * static Calendar / Date	round(Calendar / Date / Object date, int field)      四舍五入
+     * static Calendar / Date	truncate(Calendar / Date / Object date, int field)   向下取整
+     */
+    @Test
+    public void ceilRoundTruncate() {
+        p(date1);                                      // Mon Nov 19 09:58:17 CST 2018
+        p("=============================\n");
+
+        p(DateUtils.ceiling(date1, Calendar.YEAR));    // Tue Jan 01 00:00:00 CST 2019
+        p(DateUtils.ceiling(date1, Calendar.MONTH));   // Sat Dec 01 00:00:00 CST 2018
+        p(DateUtils.ceiling(date1, Calendar.DATE));    // Tue Nov 20 00:00:00 CST 2018
+        p(DateUtils.ceiling(date1, Calendar.HOUR));    // Mon Nov 19 10:00:00 CST 2018
+        p(DateUtils.ceiling(date1, Calendar.MINUTE));  // Mon Nov 19 09:59:00 CST 2018
+        p("=============================\n");
+
+        p(DateUtils.round(date1, Calendar.YEAR));      // Tue Jan 01 00:00:00 CST 2019
+        p(DateUtils.round(date1, Calendar.MONTH));     // Sat Dec 01 00:00:00 CST 2018
+        p(DateUtils.round(date1, Calendar.DATE));      // Mon Nov 19 00:00:00 CST 2018
+        p(DateUtils.round(date1, Calendar.HOUR));      // Mon Nov 19 10:00:00 CST 2018
+        p(DateUtils.round(date1, Calendar.MINUTE));    // Mon Nov 19 09:58:00 CST 2018
+        p("=============================\n");
+
+        p(DateUtils.truncate(date1, Calendar.YEAR));   // Mon Jan 01 00:00:00 CST 2018
+        p(DateUtils.truncate(date1, Calendar.MONTH));  // Thu Nov 01 00:00:00 CST 2018
+        p(DateUtils.truncate(date1, Calendar.DATE));   // Mon Nov 19 00:00:00 CST 2018
+        p(DateUtils.truncate(date1, Calendar.HOUR));   // Mon Nov 19 09:00:00 CST 2018
+        p(DateUtils.truncate(date1, Calendar.MINUTE)); // Mon Nov 19 09:58:00 CST 2018
+    }
+
+    /**
+     * static string        format(...)
+     * <p>
+     * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html
+     */
+    @Test
+    public void format() {
+        p(DateFormatUtils.format(date1, "yyyy-MM-dd")); // 2018-11-19
+    }
+
+    /**
+     * static long          getFragmentInXXX(Calendar calendar, int fragment)
+     * static long          getFragmentInXXX(Date date, int fragment)
+     * fragment     -- 一般使用 Calendar.YEAR, Calendar.MONTH
+     * <p>
+     * Milliseconds, Seconds, Minutes, Hours, Days
+     */
+    @Test
+    public void getFragmentInXXX() {
+        p(DateFormatUtils.format(date1, "yyyy-MM-dd HH:mm:ss"));   // 2018-11-19 10:41:10
+        p("=============================\n");
+
+        p("从 2018-01-01 00:00:00 到 当前时间");
+        p(DateUtils.getFragmentInDays(date1, Calendar.YEAR));              // 323
+        p(DateUtils.getFragmentInHours(date1, Calendar.YEAR));             // 7738
+        p(DateUtils.getFragmentInMinutes(date1, Calendar.YEAR));           // 464322
+        p(DateUtils.getFragmentInSeconds(date1, Calendar.YEAR));           // 27859353
+        p("=============================\n");
+
+        p("从 2018-11-01 00:00:00 到 当前时间");
+        p(DateUtils.getFragmentInDays(date1, Calendar.MONTH));             // 19
+        p(DateUtils.getFragmentInHours(date1, Calendar.MONTH));            // 442
+        p(DateUtils.getFragmentInMinutes(date1, Calendar.MONTH));          // 26562
+        p(DateUtils.getFragmentInSeconds(date1, Calendar.MONTH));          // 1593753
+        p("=============================\n");
+
+        p("从 2018-11-01 10:00:00 到 当前时间");
+        p(DateUtils.getFragmentInDays(date1, Calendar.DATE));              // 0
+        p(DateUtils.getFragmentInHours(date1, Calendar.DATE));             // 10
+        p(DateUtils.getFragmentInMinutes(date1, Calendar.DATE));           // 642
+        p(DateUtils.getFragmentInSeconds(date1, Calendar.DATE));           // 38553
+        p("=============================\n");
+    }
+
+    /**
+     * static Iterator<Calendar>	iterator(Calendar focus, int rangeStyle)
+     * static Iterator<Calendar>	iterator(Date focus, int rangeStyle)
+     * static Iterator<?>	        iterator(Object focus, int rangeStyle)
+     */
+    @Test
+    public void iterator() {
+        Iterator<Calendar> it = DateUtils.iterator(date1, DateUtils.RANGE_WEEK_MONDAY);
+        while (it.hasNext()) {
+            p(new Date(it.next().getTimeInMillis()));
+//            Mon Nov 19 00:00:00 CST 2018
+//            Tue Nov 20 00:00:00 CST 2018
+//            Wed Nov 21 00:00:00 CST 2018
+//            Thu Nov 22 00:00:00 CST 2018
+//            Fri Nov 23 00:00:00 CST 2018
+//            Sat Nov 24 00:00:00 CST 2018
+//            Sun Nov 25 00:00:00 CST 2018
+        }
+    }
+
+    /**
+     * static boolean	    isSameDay(Calendar cal1, Calendar cal2)
+     * static boolean	    isSameDay(Date date1, Date date2)
+     * 判断 Date 或 Calendar 是否是同一天
+     * <p>
+     * static boolean	    isSameInstant(Calendar cal1, Calendar cal2)
+     * static boolean	    isSameInstant(Date date1, Date date2)
+     * 判断 Date 或 Calendar 是否是同一毫秒
+     * <p>
+     * static boolean	    isSameLocalTime(Calendar cal1, Calendar cal2)
+     * 判断 Calendar 是否是同一个本地时间
+     */
+    @Test
+    public void isSameDay() {
+        p(DateUtils.isSameDay(date1, date2));      // true
+        p(DateUtils.isSameInstant(date1, date2));  // false
+
+        cal1.setTime(date1);
+        cal2.setTime(date2);
+        p(DateUtils.isSameLocalTime(cal1, cal2));  // false
+    }
+
+    /**
+     * parseDate(String str[, Locale locale], String... parsePatterns)
+     * String → Date
+     * 该方法对日期和时间的解释是宽松的
+     * 如 2018-01-32 将被视为等同于 2018-01-01 后 31 天
+     * <p>
+     * parseDateStrictly(String str[, Locale locale], String... parsePatterns)
+     * String → Date
+     * 该方法对日期和时间的解释是严格的
+     */
+    @Test
+    public void parseDate() throws ParseException {
+        Date date = DateUtils.parseDate("2018-01-32", "yyyy-MM-dd");
+        p(date); // Thu Feb 01 00:00:00 CST 2018
+
+        date = DateUtils.parseDateStrictly("2018-01-32", "yyyy-MM-dd");
+        p(date); // Unable to parse the date: 2018-01-32
+    }
+
+    /**
+     * static Calendar	    toCalendar(Date date[, TimeZone tz])
+     * Date → Calendar
+     */
+    @Test
+    public void toCalendar() {
+        cal1 = DateUtils.toCalendar(date1);
+        cal2 = DateUtils.toCalendar(date2, TimeZone.getTimeZone("Europe/Paris"));
+        p(cal1.getTime()); // Calendar → Date
+        p(cal2.getTime()); // Calendar → Date
+    }
+
+    /**
+     * static int	        truncatedCompareTo(Calendar cal1, Calendar cal2, int field)
+     * static int	        truncatedCompareTo(Date date1, Date date2, int field)
+     * 比较两个 Date 或 Calendar 在指定字段上 的差值
+     * <p>
+     * static boolean	    truncatedEquals(Calendar cal1, Calendar cal2, int field)
+     * static boolean	    truncatedEquals(Date date1, Date date2, int field)
+     * 比较两个 Date 或 Calendar 在指定字段上 的是否相等
+     */
+    @Test
+    public void truncatedXXX() {
+        p(DateUtils.truncatedCompareTo(date1, date2, Calendar.SECOND));        // 0
+        p(DateUtils.truncatedCompareTo(date1, date2, Calendar.MILLISECOND));   // -1
+
+        p(DateUtils.truncatedEquals(date1, date2, Calendar.SECOND));           // true
+        p(DateUtils.truncatedEquals(date1, date2, Calendar.MILLISECOND));      // false
+    }
+
+    public static <T> void p(T obj) {
+        if (obj == null) return;
+        System.out.println(obj);
+    }
+
+}

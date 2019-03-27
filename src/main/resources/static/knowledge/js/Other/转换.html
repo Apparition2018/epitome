@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>转换</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w33p">
+            <div class="caption">Number &lt;=> String</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // number => String, numObj.toString([radix])
+            (10).toString(2);       // "1010"
+            (0b1010).toString(10);  // "10"
+
+            // String => number, parseInt(string, radix);
+            parseInt("1010", 2);    // 10
+            parseInt("10.1");       // 10
+            parseInt("0xA");        // 10
+            parseInt("10a");        // 10
+            parseInt('a10');        // NaN
+            parseFloat("10.1");     // 10.1
+            parseFloat("10.1.2");   // 10.1
+        </script>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w33p">
+            <div class="caption">强制类型转换</div>
+            <div class="caption">Boolean(), Number(), String()</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // Boolean()
+            Boolean("");            // false
+            Boolean(undefined);     // false
+            Boolean(new Object());	// true
+
+            // number()
+            Number(false);          // 0
+            Number(undefined);      // NaN
+            Number(null);           // 0
+            Number("1.2.3");        // NaN
+            Number(new Object());   // NaN
+
+            // String()
+            String(null);           // "null"
+            String(undefined);      // "undefined"
+            // null.toString();     // TypeError: Cannot read property 'toString' of null
+            // undefined.toString();// TypeError: Cannot read property 'toString' of undefined
+        </script>
+    </section>
+
+    <section class="code-wrap h650">
+        <div class="css-live-wrap w100p">
+            <div class="caption">隐式转换</div>
+            <div class="centered">
+                <table class="w1024">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>数据类型</th>
+                        <th>转换之后的值</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">ToBoolean</td>
+                        <td rowspan="6">逻辑判断 和 逻辑运算</td>
+                        <td>0</td>
+                        <td rowspan="6">false</td>
+                    </tr>
+                    <tr>
+                        <td>NaN</td>
+                    </tr>
+                    <tr>
+                        <td>""</td>
+                    </tr>
+                    <tr>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>undefined</td>
+                    </tr>
+                    <tr>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">ToString</td>
+                        <td rowspan="5">运行环境：如 alert(str), String(thing) 等；
+                            <br />+ 号用作字符串拼接（其中一个为z字符串）；
+                        </td>
+                        <td>Number</td>
+                        <td>Number 的字符串表示</td>
+                    </tr>
+                    <tr>
+                        <td>null</td>
+                        <td>"null"</td>
+                    </tr>
+                    <tr>
+                        <td>undefined</td>
+                        <td>"undefined"</td>
+                    </tr>
+                    <tr>
+                        <td>true / false</td>
+                        <td>"true" / "false"</td>
+                    </tr>
+                    <tr>
+                        <td>Object</td>
+                        <td>ToPrimitive(Object)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">ToNumber</td>
+                        <td rowspan="5">运行环境：如 parseInt(str), Number(value) 等；
+                            <br />+ 号用作一元操作符；
+                            <br />其它运算符；
+                        </td>
+                        <td>String</td>
+                        <td>ToNumber(String)</td>
+                    </tr>
+                    <tr>
+                        <td>null</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>undefined</td>
+                        <td>NaN</td>
+                    </tr>
+                    <tr>
+                        <td>true / false</td>
+                        <td>1 / 0</td>
+                    </tr>
+                    <tr>
+                        <td>Object</td>
+                        <td>ToPrimitive(Object)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <style>
+        </style>
+    </section>
+</body>
+
+</html>

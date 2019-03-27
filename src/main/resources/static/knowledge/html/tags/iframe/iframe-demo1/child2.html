@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Child2</title>
+</head>
+
+<body>
+	<input type=button value="调用Child1中的函数child1Say()" onclick="callChild1()" />
+	<script type="text/javascript">
+		function callChild1() {
+			parent.document.getElementById("child1").contentWindow.child1Say();
+		}
+	</script>
+</body>
+
+</html>

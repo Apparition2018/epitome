@@ -1,0 +1,43 @@
+F8                      对象资源管理器
+
+Alt + →                 完成字
+Alt + Break             取消正在执行的查询
+Alt + F1                数据库对象信息   
+
+Ctrl + Backspace        删除光标左侧的字
+Ctrl + Delete           删除当前行
+Ctrl + Delete           删除光标右侧的字
+Ctrl + E                执行查询编辑器的选定部分
+Ctrl + J                列出成员
+Ctrl + N			    新建文件
+Ctrl + O                打开文件
+Ctrl + R                显示或隐藏查询结果窗格
+Ctrl + W
+
+Ctrl + Shift + T        转置光标两边的字
+
+Ctrl + H                替换
+F3                      查找上一个搜索文本的下一个匹配项
+Shift + F3              查找搜索文本的上一个匹配项
+Ctrl + F3               查找当前选定文本的下一个匹配项
+Ctrl + Shift + F3       查找当前选定文本的上一个匹配项
+Ctrl + I                启动渐进式搜索。键入要搜索的字符，或者按 Ctrl+I 搜索上次搜索的字符
+Ctrl + Shift + I        反向渐进式搜索，从文件末尾搜索到开头
+
+Ctrl + Enter            在光标上方插入一个空行
+Ctrl + Shift + Enter    在光标下方插入一个空行
+
+Ctrl + Shift + F        将结果输出到文件
+
+Ctrl + Shift + U        将选定文本设为大写
+Ctrl + Shift + L        将选定文本设为小写
+
+Ctrl + k Ctrl + k       在当前行设置或删除书签
+Ctrl + K Ctrl + N       下一个书签
+Ctrl + K Ctrl + P       上一个书签
+Ctrl + K Ctrl + L       清除书签
+
+Ctrl + K Ctrl + C       将选定文本设为注释
+Ctrl + K Ctrl + U       取消将选定文本设为注释
+
+SHIFT + F1              对所选 Transact-SQL 语句的帮助      ???

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- 使用JS演示父页面获取iframe子页面的元素，以及在子页面获取父页面元素 -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Parent</title>
+</head>
+<body>
+	<div id='parent' onclick="doParent()">父页面</div>
+	<iframe src="child.html" id="child" height="150" width="150"></iframe>
+	<script type="text/javascript">
+		var a = 123;
+		
+		function doParent() {
+			var _child = document.getElementById('parent').contentWindow;
+			var _div = child.document.getElementById('child');
+			_div.style.backgroundColor = '#ccc';
+		}
+	</script>
+</body>
+</html>

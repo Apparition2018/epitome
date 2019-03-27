@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Database</title>
+	<link rel="stylesheet" href="notes.css" />
+	<style>
+		.Oracle {
+			width: 665px;
+			margin-right: 5px;
+			float: left;
+		}
+		.right {
+			width: 665px;
+			margin-left: 5px;
+			float: left;
+		}
+		.JDBC, .MySql {
+			width: 660px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+	<h1>Database</h1>
+	<div class="Oracle">
+	<h2>ORACLE</h2>
+	<ul>
+		<li><span class="que">DDL（数据定义语言）</span> Data Definition Language
+			<ol>
+				<li><span class="que2">创建表</span>
+					<ol>
+						<li><span >CREATE TABLE</span>  [schema.]table_name (<br />
+							　　colum_name datatype [DEFAULT expr][,...]<br />
+							)
+						<li><span >DESC</span> table_name　查看表结构</li>
+						<li>gender CHAR(1) <span >DEFAULT</span> 'M'</li>
+						<li>name VARCHAR(20) <span >NOT NULL</span></li>
+					</ol>
+				</li>
+				<li><span class="que2">修改表</span>
+					<ol>
+						<li><span >RENAME</span> old_name <span >TO</span> new_name</li>
+						<li><span >ALTER TABLE</span> table_name <span >ADD</span> (column datatype [DEFAULT expr]<br />
+							[,column detatype...])</li>
+						<li><span >ALTER TABLE</span> table_name <span >DROP</span> (column)</li>
+						<li><span >ALTER TABLE</span> table_name <span >MODIFY</span> (column datatype [DEFAULT expr]<br />
+							[,column datatype...])</li>
+					</ol>					
+				</li>
+				<li><span class="que2">删除表</span>
+					<ul>
+						<li><span >DROP TABLE</span> table_name</li>
+					</ul></li>
+				<li>删除表的数据
+					<ul>
+						<li><span >TRUNCATE TABLE</span> table_name　-- 删除比DELETE快</li>
+					</ul>
+				</li>
+				<li>删除索引???
+					<ul>
+						<li><span ></span><br /></li>
+					</ul>
+				</li>
+			</ol>
+		</li>
+		<li><span class="que">DML（数据操作语言）</span> Data Manipulation Language
+			<ol>
+				<li><span >INSERT INTO</span> table_name[(column[,column...])]<br />
+					<span >VALUES</span>(value[,value...])</li>
+				<li><span >UPDATE</span> table_name<br />
+					<span >SET</span> column = value [,column = value]...<br />
+					[WHERE condition]</li>
+				<li><span >DELETE</span> [FROM] table_name [WHERE condition]<br /><br /></li>
+			</ol>
+		</li>
+		<li><span class="que">TCL（事务控制语言）</span> Transaction Control Language
+			<ol>
+				<li>COMMIT:　提交</li>
+				<li>ROLLBACK:　回滚</li>
+				<li>SAVEPOINT:　保存点<br /><br /></li>
+			</ol>
+		</li>
+		<li><span class="que">DQL（数据查询语言）</span> Data Query Language
+			<ol>
+				<li><span class="que2">基础查询</span>
+					<ol>
+						<li>SELECT empno <span >AS</span> id, ename <span class="val">"Name"</span>, sal*12 <span class="val">"Annual Salary"</span> FROM emp;<br />
+							　　-- 别名中间加AS，别名中区分大小写，或包含空格，必须用双引号引以来</li>
+						<li>SELECT ename, sal, job FROM emp WHERE deptno <span >&lt;&gt;</span> 10;</li>
+						<li>SELECT ename, job FROM emp WHERE ename <span >LIKE</span> '_A%';<br />
+							　　-- 模糊查询; %：0到多个, _：单个</li>
+						<li>SELECT ename, sal, deptno FROM emp WHERE deptno <span >NOT IN</span>(10, 20) AND sal <span >BETWEEN</span> 1500 <span >AND</span> 3000;</li>
+						<li>SELECT ename, job, sal FROM emp WHERE sal > <span >ANY/ALL</span>(3000, 4000 ,5000);</li>
+						<li>SELECT ename, job, sal FROM emp WHERE ename = <span >UPPER</span>('rose');</li> 
+						<li>SELECT <span >DISTINCT</span> deptno, job FROM emp ORDER BY deptno <span >ASC</span>, job <span >DESC</span>;<br />
+							　　-- 默认ASC，NLL视作最大</li>
+						<li>SELECT MAX(ename), MIN(sal), SUM(sal), AVG(sal), <span >COUNT</span>(comm) FROM emp;<br />
+							　　-- MAX/MIN可统计任何类型，聚合函数忽略NULL值</li> 
+						<li>SELECT deptno, MAX(sal) FROM emp GROUP BY deptno <span >HAVING</span> MAX(sal)>2000;</li>
+						<li>查询语句执行顺序：
+							<ol>
+								<li>from: 后→前，右→左　-- 数据量较少的表尽量放后面</li>
+								<li>where: 下→上，右→左　-- 将能过滤掉最大数量记录的条件写在WHERE的最右</li>
+								<li>group by: 左→右</li>
+								<li>having: 消耗资源　-- 尽量避免使用，在检索出所有记录之后才对结果集进行过滤</li>
+								<li>select: 少用*号，尽量取字段名称　-- 通过数据字典将*号...消耗时间</li>
+								<li>order by: 左→右　-- 消耗资源</li>
+							</ol>
+						</li>
+					</ol>				
+				</li>
+				<li><span class="que2">关联查询</span>
+					<ol>
+						<li>SELECT e.ename, d.loc FROM emp e, dept d;　-- <span class="val">笛卡尔积</span></li>
+						<li>SELECT e.ename, d.loc FROM emp e, <span >JOIN</span> dept d <span >ON</span> <span >USING</span> deptno;<br />
+							　　<span >LEFT</span>/<span >RIGHT</span>/<span >FULL OUT JOIN</span>...<span >ON</span>　-- 左/右/全外连接</li>
+						<li>SELECT e.ename, m.ename, e.job, m.job FROM emp e, emp m <br />
+							WHERE e.mgr=m.empno; -- <span class="val">自连接</span> 不等值连接???</li>					
+					</ol>
+				</li>
+				<li><span class="que2">高级查询</span>
+					<ol>
+						<li>子查询
+							<ol>
+								<li>SELECT empno, ename, sal, deptno FROM emp<br />
+									WHERE deptno <span>IN</span>(SELECT deptno FROM emp　-- 返回多行，使用多行比较符：<br />
+									　　　　　　　　　WHERE job='SALESMAN');　　　　　　　　IN、ALL、ANY<hr noshade="noshade"></li>
+								<li>SELECT deptno, dname, FROM dept d<br />
+									WHERE <span>EXISTS</span>(SELECT * FROM emp e WHERE d.deptno=e.deptno);<hr></li>
+								<li>SELECT e.ename, e.sal, e.deptno FROM emp e,<br />
+									((SELECT deptno, AVG(sal) <span class="val">avg_sal</span> FROM emp GROUP BY deptno) t)<br />
+									WHERE e.deptno=d.deptno AND sal>t.<span class="val">avg_sal</span>;　↖ 行内视图、匿名视图<hr></li>
+								<li>SELECT e.ename, e.sal, e.deptno, ↙ 放在SELECT子句，外连接的另一种表现<br />
+									(SELECT d.loc FROM dept d WHERE d.deptno=e.deptno) deptno<br />
+									FROM emp e;<hr></li>
+							</ol>
+						</li>
+						<li><span class="que2">分页查询</span>
+							<ol>
+								<li>SELECT * <br />
+									FROM (SELECT <span>ROWNUM</span> <span class="val">rn</span>, <span class="val">t.*</span><br />
+									　　　FROM(SELECT ename, sal, deptno<br />
+									　　　　　 FROM emp ORDER BY sal DESC) t)<br />
+									　　　WHERE ROWNUM &lt;= 10)<br />
+									WHERE <span class="val">rn</span> &gt; 5;</li>
+							</ol>
+						</li>
+						<li><span class="que2">DECODE函数</span>
+							<ol>
+								<li>SELECT DECODE(job,　组<br />
+									　　　　　　　'PRESIDENT','BOSS',<br />
+									　　　　　　　'MANAGER','VIP','ANALYS','VIP'<br />
+									　　　　　　　'OPERATION') job, COUNT(1)<br />
+									FROM emp GROUP BY DECODE(......);　-- 按字段内容分<hr></li>
+								<li>SELECT deptno, dname, loc FROM dept<br />
+									ORDER BY DECODE(dname,　-- 按字段内容排序<br />
+									　　　　　　　　'RESEARCH',1,'OPERATIONS',2,'SALES',3), loc;<hr></li>
+								<li>SELECT ename, job, sal,<br />
+									　　<span>CASE</span> job <span>WHEN</span> 'MANAGER' <span>THEN</span> sal * 1.2　-- case，类似if-else<br />
+									　　　　　　　WHEN 'ANALYST' THEN sal * 1.1<br />
+									　　　　　　　WHEN 'SALESMAN' THEN sal * 1.05<br />
+									　　　　　　　<span>ELSE</span> sal <span>END</span><br />
+									　　bonus<br />
+									FROM emp;<hr></li>
+							</ol>
+						</li>
+						<li><span class="que2">排序函数</span>
+							<ol>
+								<li>SELECT ename, deptno, sal,<br />
+									　　<span class="att">ROW_NUMBER</span><span>() OVER</span>(<span>PARTITION BY</span> deptno ORDER BY sal DESC)<br />
+									　　sal_rank　-- 连续且唯一<br />
+									FROM emp;<hr></li>
+								<li>...<span class="att">RANK</span>()...　-- 不连续、不唯一</li>
+								<li>...<span class="att">DENSE_RANK</span>()...　-- 连续、不唯一</li>
+							</ol>
+						</li>
+						<li><details><summary><span class="que2">集合</span></summary>
+							<img src="../img/集合操作.jpg" width=450px /></details>
+							<ol>
+								<li>SELECT ename, job, sal FROM emp WHERE job = 'MANAGER'<br />
+									<span>UNION</span>　-- 去掉重复，第1列升序<br />
+									SELECT ename, job, sal FROM emp WHERE sal> 2500;<hr></li>
+								<li>...<span>UNION ALL</span>...　-- 包括重复，不排序</li>
+								<li>...<span>INTERSECT</span>...　-- 交集，第1列升序</li>
+								<li>...<span>MINUS</span>...　-- 差集，结果集1-结果集2</li>
+							</ol>
+						</li>
+						<li><span class="que2">高级分组函数</span>
+							<ol>
+								<li>SELECT year_id,month_id,day_id,SUM(sales_value) sum<br />
+									FROM sales <span>GROUP BY</span> <span class="att">ROLLUP</span><span class="val">(year_id,month_id,day_id)</span><br />
+									ORDER BY year_id,month_id,day_id;<hr></li>
+								<li>SELECT year_id,month_id,day_id,SUM(sales_value) sum<br />
+									FROM sales <span>GROUP BY</span> <span class="att">CUBE</span><span class="val">(year_id,month_id,day_id)</span><br />
+									ORDER BY year_id,month_id,day_id;<hr></li>
+								<li>SELECT year_id,month_id,day_id,SUM(sales_value) sum<br />
+									FROM sales <span>GROUP BY</span> <span class="att">GROUPING SETS</span><span class="val"><br />
+									　　　　　　　　　　　((year_id,month_id,day_id),(year_id,month_id))</span><br />
+									ORDER BY year_id,month_id,day_id;<hr></li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+		<li><span class="que">DCL（数据控制语言）</span> Data Control Language
+			<ol>
+				<li>GRANT:　授予权限　<span >GRANT</span>...<span >TO</span>...</li>
+				<li>REVOKE:　收回权限</li>
+				<li>CREATE USER:　创建用户???<br /><br /></li>
+			</ol>
+		</li>
+		<li><span class="que">字符串操作</span>
+			<ol>
+				<li>字符串类型
+					<ol>
+						<li><span >CHAR</span>(n):　定长，最大2000字节，不指定长度默认为1字节</li>
+						<li><span >VARCHAR2</span>(n):　变长，最大4000字节，必须指定长度 </li>
+						<li>LONG：　VARCHAR2加长版，最大2G；一个表只能有一个LONG；<br />
+							　　　　不能作为主键；不能建索引；不能出现在查询条件中...</li>
+						<li>CLOB：　定长或变长，最大4G，ORACLE建议用CLOB代替LONG</li>
+					</ol>
+				</li>
+				<li>字符串函数
+					<ol>
+						<li>SELECT <span >CONCAT</span>(CONCAT(cahr1, char2),char3) FROM dual;<br />
+							SELECT char1 <span >||</span> char2 || char3 FROM dual;</li>
+						<li>SELECT ename, <span >LENGTH</span>(char) FROM dual;</li>
+						<li>SELECT <span >UPPER</span>(char),<br />
+							　　　　<span >LOWER</span>(char),<br />
+							　　　　<span >INITCAP</span>(char) FROM dual;</li>
+						<li>SELECT <span >TRIM</span>(c2 <span >from</span> c1) AS t1,<br />
+							　　　　<span >LTRIM</span>(c1[, c2]) AS t2,<br />
+							　　　　<span >RTRIM</span>(c1[, c2]) AS t3 FROM dual;</li>
+						<li>SELECT <span >RPAD</span>(char1, n, char2) ename FROM dual;<br />
+							SELECT <span >LPAD</span>(char1, n, char2) ename FROM dual;</li>
+						<li>SELECT <span >SUBSTR</span>(char, m[, n]) word FROM dual;　-- 从1开始，即使0也是1开始</li>
+						<li>SELECT <span >INSTR</span>(char1,char2[,n [,m]]) From dual;　m-第几次出现；如没找到返回0<br /><br /></li>
+					</ol>
+				</li>
+			</ol>
+		</li>						
+		<li><span class="que">数值操作</span>
+			<ol>
+				<li>数值类型???
+					<ul>
+						<li>NUMBER(p,s)　　DECIMAL(p,s)　　DEC(p,s)　　INTEGER　　INT<br />
+							SMALLINT　　FLOAT(b)　　DOUBLE PRECISION　　REAL</li>
+					</ul>
+				</li>
+				<li>数值函数
+					<ol>
+						<li>SELECT <span >ROUND</span>(45.678,2) round FROM dual;　--45.68<br />
+							SELECT <span >ROUND</span>(45.678,-1) round FROM dual;　--50　</li>
+						<li>SELECT <span >TRUNC</span>(45.678,2) TRUNC FROM dual;　--45.67　<br />
+      						SELECT <span >TRUNC</span>(45.678,-1) TRUNC FROM dual;　--40　</li>
+						<li>SELECT <span >CEIL</span>(45.678) ceil FROM dual;　--46</li>
+      					<li>SELECT <span >FLOOR</span>(45.678) floor FROM dual;　--45</li>
+      					<li>SELECT ename, sal <span >MOD</span>(sal, 1000) FROM dual;<br /><br /></li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+		<li><span class="que">日期操作</span>
+			<ol>
+				<li>日期类型
+					<ol>
+						<li><span >Date</span>:　7个字节；    世纪(1)、年(2)、月(3)、天(4)、时(5)、分(6)、秒(7)</li>
+						<li><span >TIMESTAP</span>:　7或11个；   世纪(1)、年(2)、月(3)、天(4)、时(5)、分(6)、秒(7)、<br />
+							　　　　　　　纳秒(8~11)</li>
+					</ol>
+				</li>
+				<li>日期关键字
+					<ol>
+						<li>SELECT <span >SYSDATE</span> FROM dual;　-- 本质是一个内部函数；默认格式DD-MON-RR</li>
+						<li>SELECT TO_CHAR(<span >SYSTIMESTAMP</span>, <span class="val">'ss.ff'</span>) FROM dual; 
+					</ol>
+				</li>
+				<li><details><summary>日期转换函数</summary>
+					<img src="../img/TO_DATE.jpg" width=400px; /></details>
+					<ol>
+						<li>SELECT <span >TO_DATE</span>('1982年01月01号', <span class="val">'YYYY"年"MM"月"DD"号"'</span>) FROM dual;
+						<li>SELECT <span >TO_CHAR</span>(SYSDATE, 'YYYY"年"MM"月"DD"号"') FROM dual</li>
+						<li>MON-简拼月份　DY/DAY-周几　HH24/HH12　MI-分钟　SS-秒</li>
+					</ol>
+				</li>
+				<li>日期常用函数
+					<ol>
+						<li>SELECT <span >LAST_DAY</span>(SYSDATE) FROM dual;　-- 返回日期date所在月的最后一天</li>
+						<li>SELECT <span >ADD_MONTHS</span>(SYSDATE, 1) FROM dual;</li>
+						<li>SELECT <span >MONTHS_BETWEEN</span>(SYSDATE,TO_DATE('1990-10-16','YYYY-MM-DD')) <br />
+							FROM dual;　-- 计算两个日期相隔多少个月</li>
+						<li>SELECT <span >NEXT_DAY</span>(SYSDATE, 5) FROM dual;　-- 返回date日期的下一个周4的日期</li>
+						<li>SELECT <span >GREATEST</span>/<span >LEAST</span>(expr1[, expr2[, expr3]) FROM dual;</li> 
+						<li>SELECT <span >EXTRACT</span>(HOUR FROM TIMESTAMP '2008-10-10 10:10:10') FROM dual;<br /><br /></li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+		<li><span class="que">空值操作</span>　数据未知或暂时不存在
+			<ol>
+				<li>SELECT NULL + 1 FROM dual;　--null</li>
+				<li>SELECT NULL || '1' FROM dual;　--'1'</li>
+				<li>UPDATE * FROM student SET gender <span class="val">=</span> NULL;<br />
+					SELECT * FROM student WHERE gender <span class="val">IS NOT </span>NULL;</li>
+				<li>gender CHAR(1) NOT NULL;</li>
+				<li>SELECT ename, sal, comm, sal + <span >NVL</span>(comm, 0) salary FROM emp;</li>
+				<li>SELECT ename, sal, comm, <span >NVL2</span>(comm, sal + comm, sal) salary FROM emp;<br /><br /></li>
+			</ol>
+		</li>
+		<li><span class="que">视图（虚表/VIEW）</span>
+			<ul>
+				<li><span >CREATE</span> [OR REPLACE] <span >VIEW</span> view_name[(alias[, alias…])] <span >AS</span> subquery;</li>	
+				<li>概念：本身包含数据；执行DML操作实际上是对基表的DML操作
+					<ol>
+						<li>简单视图：基于单表；不包含任何函数运算、表达式或分组函数</li>
+						<li>复杂视图：基于单表；包含了单行行数、表达式、分组函数或GROUP BY子句;<br />
+							　　　　　必须为子查询中的表达式和函数定义别名；<span class="val">不允许DML操作</span><br /></li>
+						<li>连接视图：基于多表</li>
+					</ol>
+				</li>
+				<li>作用
+					<ol>
+						<li>简化复杂查询</li>
+						<li>限制数据访问</li>
+					</ol>
+				</li>
+				<li>执行DML操作基本原则：
+					<ol>
+						<li>
+					</ol>
+				</li>
+				<li>约束
+					<ol>
+						<li>...<span>WITH CHECK OPTION</span>;　通过视图所做的修改，必须在视图的可见范围???</li>
+						<li>...<span>WITH READ ONLY</span>;　保证视图对应的基表数据不会被非法修改</li>
+					</ol>
+				</li>
+				<li>数据字典
+					<ol>
+						<li>SELECT <span class="val">object_name</span> FROM <span class="att">user_objects</span> WHERE <span class="val">object_type</span> = 'VIEW';
+						<li>SELECT <span class="val">text</span> FROM <span class="att">user_views</span> WHERE <span class="val">view_name</span> = 'V_EMP_20';
+						<li>SELECT column_name, insertable, updatable, deletable<br />
+							FROM <span class="att">user_updatable_columns</span> WHERE table_name = 'V_EMP_10';
+					</ol>
+				</li>
+				<li>删除视图：<span >　DROP VIEW</span> view_name;　不会影响基表数据<br /><br /></li>
+			</ul>
+		</li>
+		<li><span class="que">序列</span>
+			<ul>
+				<li>可高效地为一个表或多个表提供唯一键值
+				<li><span >CREATE SEQUENCE</span> [schema.]sequence_name</li>
+    			<li>[<span>START WITH</span> i] [<span>INCREMENT</span> BY j]　-- 如没设置，i默认为1，j默认步进为1</li>
+    			<li>[MAXVALUE m | NOMAXVALUE]</li>               
+    			<li>[MINVALUE n | NOMINVALUE]</li>
+    			<li>[CYCLE | NOCYCLE][CACHE p | NOCACHE];　-- CACHE：预读取缓存，提高生成效率，默认20<hr></li>
+    			<li>伪列
+    				<ol>
+    					<li>INSERT INTO student (id,name,gender)<br />
+    						VALUES (seq_student_id.<span>NEXTVAL</span>,'變態輝','m');</li>
+    					<li>SELECT seq_student_id.<span>CURRVAL</span> FROM dual;　-- 必须先执行一次NEXTVA</li>
+    				</ol>
+    			</li>
+    			<li>删除序列：　<span >DROP SEQUENCE</span> emp_seq;<br /><br /></li>
+			</ul>
+		</li>
+		<li><details><summary><span class="que">索引</span></summary>
+			<img src="../img/索引.jpg" width=450px /></details>
+			<ul>
+				<li>提高查询效率；一旦建立就被Oracle系统自动维护</li>
+			</ul>
+			<ol>
+				<li><span >CREATE</span> [UNIQUE] <span >INDEX</span> idx_emp_job_sal <span >ON</span> emp(job, sal);<br />
+					　　-- 复合索引（多列索引）</li>
+				<li>CREATE INDEX idx_emp_ename_upper ON emp(UPPER(ename));</li>
+				<li><span >ALTER INDEX</span> index_name <span>REBUILD</span><br />
+					　　-- 如经常在索引列执行DML操作，需要定期重建索引;</li>
+			</ol>
+			<ul>
+				<li>合理使用索引：
+					<ol>
+						<li>经常出现在WHERE子句中的列</li>
+						<li>经常出现在ORDER BY、DISTINCT后面的字段；顺序要一致</li>
+						<li>经常作为表的连接条件</li>
+						<li>不要在经常做DML操作的表建索引</li>
+					    <li>不要在小表上建立索引</li>
+					    <li>索引不是越多越好</li>
+					    <li>删除很少被使用的、不合理的索引<br /><br /></li>
+					</ol>
+				</li>
+			</ul>
+		</li>
+		<li><span class="que">约束(CONSTRAINT)</span>
+			<ol>
+				<li>非空约束(Not Null)，简称NN
+					<ol>
+						<li>　　hiredate DATE NOT NULL,<br />
+							或　hiredate DATE <span>CONSTRAINT</span> <span class="val">employees_hiredate_nn</span> NOT NULL<br />
+							　　　-- 建表时添加非空约束<hr></li>
+						<li>ALTER TABLE employees MODIFY (eid NUMBER(6) null);　-- 取消非空约束</li>
+					</ol>
+				</li>
+				<li>唯一性约束(Unique)，简称UK
+					<ol>
+						<li>　　email VARCHAR2(50) <span>UNIQUE</span>,<br />
+							或　email VARCHAR2(50) <span>CONSTRAINT</span> <span class="val">emplyees_email_uk</span> UNIQUE,<br />
+							或　<span>CONSTRAINT</span> emplyees_email_uk UNIQUE(mail)<br />
+							　　　-- 建表时添加唯一约束<hr></li>
+						<li>ALTER TABLE employees ADD CONSTRAINT employees_name_uk UNIQUE(name);<br />
+							　　-- 建表后增加唯一约束</li>
+					</ol>
+				</li>
+				<li>主键约束(Primary Key)，简称PK
+					<ul>
+						<li>相当于非空且唯一，可以是多字段组合???，一个表只允许建立一个主键</li>
+						<li>选取原则：
+							<ol>
+								<li>主键应是对系统无意义的数据</li>
+								<li>永远不要更新主键，让主键除了唯一标识一行之外，再无其他的用途</li>
+								<li>主键不应包含动态变化的数据，如时间戳</li>
+								<li>主键应自动生成，不要人为干预，以免使它带有除了唯一标识一行以外的意义</li>
+								<li>主键尽量建立在单列上</li>
+							</ol>
+						</li>
+					</ul>
+					<ol>
+						<li>eid NUMBER(6) <span>PRIMARY KEY</span>,　-- 建表时添加主键约束</li>
+						<li>ALTER TABLE employees　-- 建表后添加主键约束<br />
+							ADD <span>CONSTRAINT</span> <span class="val">employees_eid_pk</span> PRIMARY KEY (eid);</li>
+					</ol>
+				</li>
+				<li>外键约束(Foreign Key)，简称FK
+					<ul>
+						<li>维护主表和从表的一致性，但会降低性能</li>
+						<li>ALTER TABLE employees<br />
+							ADD CONSTRAINT <span class="val">employees_deptno_fk</span><br />
+							<span>FOREIGN KEY</span> (deptno) <span>REFERENCES</span> dept(deptno);</li>
+						<li>也可修改表的方式添加</li>
+					</ul>
+				</li>
+				<li>检查约束(Check)，简称CK
+					<ul>
+						<li>强制在字段上的每个值都要满Check定义的条件</li>
+						<li>ALTER TABLE employees<br />
+							ADD CONSTRAINT <span class="val">employees_salary_check</span><br>
+							<span>CHECK</span> (salary > 2000);</li>
+					</ul>
+				</li>
+			</ol>
+		</li>		
+	</ul>
+	</div>
+	<div class="right">
+	<div class="JDBC">
+	<h2>JDBC</h2>
+	<ul>
+		<li><span class="que">JDBC工作过程</span>
+			<ol><li>下载对应数据库驱动，并加载到项目中
+					<ol>
+						<li>Oracle: ojdbc6.jar / ojdbc14.jar</li>
+						<li>MySQL: mysql-connector-java-5.0.4-bin.jar</li>
+					</ol>
+					<ul>
+						<li>加载到项目中： Build Path</li>
+					</ul>
+				</li>
+				<li>加载类库（驱动jar包）到JVM
+					<ol>
+						<li><span>Class.forName</span>(<span class="val">"oracle.jdbc.OracleDriver"</span>); // </li>
+						<li>Class.forName(<span class="val">"com.mysql.jdbc.Driver"</span>);</li>
+					</ol>
+				</li>
+				<li>建立连接（这里会加载jar包中JDBC实现类来与数据库建立连接）<br />
+					　Connection conn = <br />
+					　<span>DriverManager.getConnection</span>(<span class="val">"jdbc:oracle:this:@localhost:1521:xe","用户名","密码"</span>);
+				</li>
+				<li>创建Statement对象<br />
+					　Statement state = conn.<span>createStatement</span>();<br />
+				</li>
+				<li>执行SQL语句
+					<ol>
+						<li>boolean flag = state.<span>execute</span>(sql);　//　一般用来执行DDL语句</li>
+						<li>ResultSet rs = state.<span>executeQuery</span>(sql);　//　执行SELECT
+							<ol>
+								<li>boolean <span>next</span>()　移动到下一行</li>
+								<li>XXX <span>getXXX</span>()　取得字段的内容</li>
+							</ol>
+						</li>
+						<li>int flag = state.<span>executeUpdate</span>(sql);　//　执行INSERT,UPDATE,DELETE</li>
+					</ol>
+				</li>
+				<li>处理结果集</li>
+				<li>关闭连接<br /><br /></li>
+			</ol>
+		</li>
+		<li><span class="que">连接池</span>
+			<ul>
+				<li>连接使用完后，不关闭连接，而是归还连接</li>
+				<li><span class="que2">DBCP</span>
+					<ol>
+						<li>连接池的实现：-commons-dbcp-1.4.jar</li>
+						<li>连接池实现的依赖库：-commons-pool-1.5.jar<br /><br /></li>
+					</ol>
+				</li>
+			</ul>
+		</li>
+		<li><span class="que">连接工具类(DBUtil)</span>
+			<ul>
+ 				<li>properties文件中，#符号表示注释</li>
+				<li><details open="open"><summary>public class DBUtil {</summary>
+					<span class="none">	　　private static <span>BasicDataSource</span> ds;　//　数据库连接池<br />
+					　　static {<br />
+					　　　　try {<br />
+					　　　　　　Properties prop = new <span>Properties</span>();　//　用指定的键在此属性列表中搜索属性<br />
+					　　　　　　prop.load(DBUtil.class.<span>getClassLoader</span>()<br />
+					　　　　　　.<span>getResourceAsStream</span>("config.properties"));　//　加载config.properties<br />
+					　　　　　　prop.<span>load</span>(new FileInputStream("config.properties"));<br />
+					　　　　　　//　加载config.properties<br />
+					　　　　　　String driverName = prop.<span>getProperty</span>("drivername");<br />
+					　　　　　　String url = prop.getProperty("url");<br />
+					　　　　　　String username = prop.getProperty("username");<br />
+					　　　　　　String password = prop.getProperty("password");<br />
+					　　　　　　int maxActive = Integer.parseInt(prop.getProperty("maxactive"));<br />
+					　　　　　　int maxIdle = Integer.parseInt(prop.getProperty("maxidle"));<br />
+					　　　　　　int maxWait = Integer.parseInt(prop.getProperty("maxwait"));<br />
+					　　　　　　ds = new BasicDataSource();　//　初始化连接池<br />
+					　　　　　　ds.<span>setDriverClassName</span>(driverName)　//　通用，适合多种数据库<br />
+					　　　　　　ds.<span>setUrl</span>(url);　//　通用，适合多种数据库<br />
+					　　　　　　ds.<span>setUsername</span>(username);<br />
+					　　　　　　ds.<span>setPassword</span>(password);<br />
+					　　　　　　ds.<span>setMaxActive</span>(maxActive);　//　最大连接数<br />
+					　　　　　　ds.<span>setMaxIdle</span>(maxIdle);　//　最大空闲数<br />
+					　　　　　　ds.<span>setMaxWait</span>(maxWait);　//　最大等待时间<br />
+					　　　　} catch (Exception e) {<br />
+					　　　　　　e.printStackTrace();<br />
+					　　　　}<br />
+					　　}<br />
+					　　public static Connection getConnection() throws Exception {　//　获取数据库连接<br />
+					　　　　try {<br />
+					　　　　　　return ds.<span>getConnection</span>();<br />
+					　　　　} catch (Exception e) {<br />
+					　　　　　　throw e;<br />
+					　　　　}<br />
+					　　}<br />
+					　}</span>
+					</details>
+ 				</li>
+			</ul><br />
+		</li>
+		<li><span class="que">PreparedStatement</span>
+			<ul>
+				<li>PreparedStatement对象已预编译，执行速度比Statement快</li>
+				<li>String sql = "SELECT * FROM emp WHERE ename = <span class="val">?</span>"</li>
+				<li>PreparedStatement ps = conn.<span>prepareStatement</span>(sql);</li>
+				<li>ps.<span>setString</span>(1, ename);　//　对占位符进行初始化</li>
+				<li>ps.executeQuery()　//　这些常用方法已被更改，不再需要参数</li>
+				<li>数据库缓存原理：
+					<ol>
+						<li>使用statement本身作为key并将执行计划存入与statement对应的缓存中</li>
+						<li>对曾经执行过的statements，再运行时执行计划将重用</li>						
+					</ol>
+				</li>
+				<li>SQL注入：SELECT * FROM emp WHERE ename='Tom' and pwd='a'or'b'='b';</li>
+			</ul><br />
+		</li>
+		<li><span class="que">ResultSetMetaData</span>
+			<ul>
+				<li>ResultSetMetaData rsm = rs.<span>getMetaData</span>();<br />
+					int columnCount = rsm.<span>getColumnCount</span>(); // 返回此 ResultSet 对象中的列数<br />
+					String columnName = null;<br />
+					for (int i = 1; i &lt;= columnCount; i++) {<br />
+					　　columnName = rsm.<span>getColumnName</span>(i); // 获取指定列的名称<br />
+					}</li>
+			</ul><br />
+		</li>
+		<li><span class="que">可滚动结果集</span>
+			<ul>
+				<li>PreparedStatement ps = conn.prepareStatement(<span class="val">sql, type, concurrency</span>);</li>
+				<li>......</li>
+			</ul><br />
+		</li>
+		<li><span class="que">事务处理</span>
+			<ol>
+				<li>事物特性ACID
+					<ol>
+						<li>原子性(Atomicity): 对于其数据修改，要么全都执行，要么全都不执行</li>
+						<li>一致性(Consistency): 事务在完成时，必须使所有的数据保持一致状态</li>
+						<li>隔离性(Isolation): 由并发事物所作的修改必须与任何其它并发事务所作的修改隔离</li>
+						<li>持久性(Durability): 事物完成之后，它对于系统的影响是永久的</li>
+					</ol>
+				</li>
+				<li>API
+					<ol>
+						<li>boolean <span>getAutoCommit</span>(): 获得当前事务的提交方式，默认为true</li> 
+						<li>void <span>setAutoCommit</span>(boolean autoCommit)</li>
+						<li>void <span>commit</span>()</li>
+						<li>void rollback()</li> 
+						<li>void <span>rollback</span>(Savepoint savepoint) </li>
+					</ol>
+				</li>
+			</ol><br />
+		</li>
+		<li><span class="que">批量更新</span>
+			<ul>
+				<li>void <span>addBatch</span>(String sql): 将多条sql语句添加到Statement对象的SQL语句列表中</li>
+				<li>void <span>addBatch</span>(): 将多条预编译的sql语句添加到PreparedStatement对象的SQL语句列表中</li>
+				<li>int[] <span>executeBatch</span>(): 把对象语句列表中的所有SQL语句发送给数据库进行处理</li>   
+				<li>void <span>clearBatch</span>(): 清空当前SQL语句列表</li> 
+			</ul><br />
+		</li>
+		<li><span class="que">返回自动主键</span>
+			<ul>
+				<li>ResultSet <span>getGeneratedKeys</span>(): 获取自执行此对象而创建的所有自动生成的键，如序列</li>
+				<li>PreparedStatement prepareStatement(<span class="val">String sql, int[] columnIndexes</span>):<br /> 
+					　　创建一个能返回由给定数组指定的自动生成键的默认PreparedStatement对象</li>
+				<li>ResultSet <span>getGeneratedKeys</span>(): 获取由于执行此对象而创建的所有自动生成的键</li>
+				<li>int <span>getInt</span>(int/String columnIndex): 获取此ResultSet对象的当前行中指定列的值</li> 
+			</ul><br />
+		</li>
+		<li><span class="que">分页查询</span>
+			<ol>
+				<li>利用Oracle的rownum： 每次只向数据库请求一页的数据，内存压力小，适合大数据量</li>
+				<li>基于缓存的分页技术（假分页）： 一次性把数据全部取出来放在缓存...；<br />
+					　　只访问一次数据库，第一次取数比较慢，适合小数据量</li>
+			</ol>
+			<ul>
+				<li>MySQL分页查询： SELECT * FROM LIMIT begin, pagesize;</li>
+			</ul><br />
+		</li>
+		<li><span class="que">DAO</span>
+			<ul>
+				<li>DAO通常包含:???
+					<ol>
+						<li>一个DAO工厂类</li>
+						<li>一个DAO借口</li>
+						<li>一个实现DAO接口的具体类</li>
+						<li>数据传递对象（实现对象或值对象）</li>
+					</ol>
+				</li>
+				<li>多层系统的异常处理原则：???
+					<ol>
+						<li>谁抛出,谁捕捉，因为只有异常抛出者知道怎么捕捉</li>
+						<li>尽量在当前层中捕捉处理</li>
+						<li>尽量在每层中封装每层的异常类，这样可以准确定位异常抛出的层</li>
+						<li>如异常无法捕捉处理，则向上层借口抛出，但应尽量避免将异常抛给JVM</li>
+					</ol>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	</div>
+	<div class="MySql">
+	<h2>MySQL</h2>
+	<ul>
+		<li><span class="que">基本指令</span>
+			<ol>
+				<li><span>show databases</span>;　显示当前用户下数据库</li>
+				<li><span>use</span> ttms;　打开数据库（使用数据库之前需要先打开数据库）</li>
+				<li><span>create database</span> ttms;　创建数据库（默认采用数据库服务器编码）<br />
+					create database ttms01 default character set utf8;<br />
+					alter database ttms default character set utf8;</li>
+				<li>show tables;</li>
+				<li><span>drop database</span> ttms;　删除数据库</li>
+				<li><span>drop table</span> t1;　删除表<br />
+					drop table if exists t1;</li>
+				<li><span>CRUD</span>操作： insert, select, update, delete</li>
+				<li><span>?</span>　等价于help,帮助文档<br />
+					例如： ? create functions;（查看当前系统中有哪些函数）</li>
+				<li><span>now()</span>;　时间函数</li>
+				<li>mysql -u root -p</li>	
+				<li>set names utf8;　在utf8环境执行这个sql文件</li>
+				<li>source d:\ttms_01.sql</li>
+			</ol>
+		<li>
+		<li><span class="que"></span>
+			<ul>
+				<li>ENGINE=InnoDB：　
+				<li>AUTO_INCREMENT=11：　
+				<li>limit
+			</ul>
+		<li>
+		<li><span class="que"></span>
+			<ul>
+				<li>
+			</ul>
+		<li>
+		<li><span class="que"></span>
+			<ul>
+				<li>
+			</ul>
+		<li>
+		<li><span class="que"></span>
+			<ul>
+				<li>
+			</ul>
+		<li>
+		<li><span class="que"></span>
+			<ul>
+				<li>
+			</ul>
+		<li>
+	</ul>
+	</div>
+	</div>
+	</div>
+	
+	
+</body>
+</html>

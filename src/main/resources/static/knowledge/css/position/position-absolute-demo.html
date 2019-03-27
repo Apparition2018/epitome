@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>position-absolute-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">absolute使默认100%宽度变成自适应内部元素的宽度(点击黄色部分)</div>
+            <div class="centered" id="eg1">
+                <div onclick="changePosition(this)">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg1 {
+                width: 240px;
+                height: 164px;
+                padding: 40px;
+                background: lightblue;
+                border: 1px solid #bbb;
+            }
+
+            #eg1>div {
+                position: absolute;
+                height: 82px;
+                padding: 40px;
+                border: 1px solid #bbb;
+                background: lightgoldenrodyellow;
+                cursor: pointer;
+            }
+
+            #eg1>div>div {
+                width: 80px;
+                height: 80px;
+                border: 1px solid #bbb;
+                background: lightpink;
+                cursor: default;
+            }
+        </style>
+        <script>
+            function changePosition(obj) {
+                if (getComputedStyle(obj, null).getPropertyValue('position') === "absolute") {
+                    obj.style.position = 'static';
+                } else {
+                    obj.style.position = 'absolute';
+                }
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">可用性隐藏</div>
+            <div class="centered" id="eg2">
+                <a class="unfold" href="C:\Users\234607\git\mavenTest\src\main\resources\static\knowledge\css\selector\pseudo\class\class-demo.html#:checked" target="_blank">
+                    展开/收起
+                </a>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .unfold, unfold:link, unfold:visited, .unfold:hover, .unfold:active {
+                color: #333;
+                text-decoration: none;
+            }
+
+        </style>
+    </section>
+
+    <!-- https://www.zhangxinxu.com/wordpress/2011/03/css-相对绝对relativeabsolute定位系列（三）/ -->
+    <section class="code-wrap" style="height: 600px">
+        <div class="css-live-wrap">
+            <div class="caption">等高布局</div>
+            <div class="centered" id="eg3">
+                <div class="out_box">
+                    <div class="left_box">
+                        <div class="equal_height left_box_bg"></div>
+                        <div id="leftCon" class="left_con">
+                            <img src="https://image.zhangxinxu.com/image/study/s/s128/mm2.jpg" />
+                        </div>
+                    </div>
+                    <div class="right_box">
+                        <div id="rightCon" class="right_con">
+                            <img id="rightImage" src="https://image.zhangxinxu.com/image/study/s/s128/mm5.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="btn_box">
+                    <button id="btnLeftSide">左侧栏高度增加</button>
+                    <button id="btnRightSide">右侧栏高度增加</button>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg3 .out_box {
+                position: relative;
+                width: 500px;
+                border: 1px solid #ccc;
+                background-color: #f5f5f5;
+                overflow: hidden;
+            }
+
+            #eg3 .equal_height {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 999em;
+            }
+
+            #eg3 .left_box_bg {
+                background-color: #fff;
+                border-right: 1px solid #ccc;
+            }
+
+            #eg3 .left_box {
+                position: relative;
+                width: 30%;
+                float: left;
+            }
+
+            #eg3 .right_box {
+                width: 69.6%;
+                float: right;
+            }
+
+            #eg3 .left_con {
+                padding: 1em;
+                position: relative;
+                z-index: 1;
+            }
+
+            #eg3 .right_con {
+                padding: 1em;
+            }
+
+            #eg3 .out_box img {
+                display: block;
+            }
+
+            #eg3 .btn_box {
+                margin: 1em auto 0;
+            }
+        </style>
+        <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            $("#btnLeftSide").bind("click", function () {
+                $("#leftCon").append('<img src="https://image.zhangxinxu.com/image/study/s/s128/mm2.jpg" />');
+            });
+            $("#btnRightSide").bind("click", function () {
+                $("#rightCon").append('<img src="https://image.zhangxinxu.com/image/study/s/s128/mm5.jpg" />');
+            });
+        </script>
+    </section>
+
+    <!-- https://www.zhangxinxu.com/wordpress/2016/08/css-parent-selector/ -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">子元素focus，容器边框高亮</div>
+            <div class="caption">利用 position: absolute;left: 0;right: 0;top: 0;bottom: 0; 实现</div>
+            <div class="wrap centered">
+                <span class="list">李易峰</span>
+                <span class="list">赵丽颖</span>
+                <span class="list">杨紫</span>
+                <input id="input" class="input">
+                <label class="border" for="input"></label>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .wrap {
+                position: relative;
+                /* z-index用来创建新的层叠上下文，这样子元素的z-index:-1不会超出容器 
+                    具体可参见：https://www.zhangxinxu.com/wordpress/?p=5115 */
+                z-index: 1;
+                padding: 10px;
+                width: 70%;
+                min-height: 120px;
+                color: #666;
+                font-size: 0.9em;
+            }
+
+            .wrap .list {
+                display: inline-block;
+                padding: 3px;
+                background-color: #f0f3f9;
+            }
+
+            .wrap .list:after {
+                content: '×';
+            }
+
+            .wrap .input {
+                /* 去掉输入框默认UI */
+                width: 80px;
+                background: none;
+                border: 0;
+            }
+
+            .wrap .input:focus+.border {
+                border-color: #1271E0;
+            }
+
+            .wrap .border {
+                /* 尺寸自适应容器大小，假装是容器 */
+                position: absolute;
+                z-index: -1;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                border: 1px solid #bbb;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

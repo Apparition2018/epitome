@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- 使用jQuery取得iframe中元素-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Parent</title>
+</head>
+<body>
+	<label id='parent'>父页面：</label>
+	<input type="text" value="1" />
+	<button onclick="childPlus();">子页+1</button>
+	<br />
+	<iframe id="child" src="./child.html"></iframe>
+	
+	<script src="../../../js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		function childPlus() {
+			var value = $('#child').contents().find('input')[0].value;
+			$('#child').contents().find('input')[0].value = parseInt(value) + 1;
+		}
+	</script>
+</body>
+</html>

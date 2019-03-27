@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="springboot.dao.eip.SysOrgElementMapper" >
+  <resultMap id="BaseResultMap" type="springboot.domain.eip.SysOrgElement" >
+    <id column="fd_id" property="fdId" jdbcType="VARCHAR" />
+    <result column="fd_org_type" property="fdOrgType" jdbcType="INTEGER" />
+    <result column="fd_name" property="fdName" jdbcType="VARCHAR" />
+    <result column="fd_name_pinyin" property="fdNamePinyin" jdbcType="VARCHAR" />
+    <result column="fd_order" property="fdOrder" jdbcType="INTEGER" />
+    <result column="fd_no" property="fdNo" jdbcType="VARCHAR" />
+    <result column="fd_keyword" property="fdKeyword" jdbcType="VARCHAR" />
+    <result column="fd_is_available" property="fdIsAvailable" jdbcType="TINYINT" />
+    <result column="fd_is_abandon" property="fdIsAbandon" jdbcType="TINYINT" />
+    <result column="fd_is_business" property="fdIsBusiness" jdbcType="TINYINT" />
+    <result column="fd_import_info" property="fdImportInfo" jdbcType="VARCHAR" />
+    <result column="fd_flag_deleted" property="fdFlagDeleted" jdbcType="TINYINT" />
+    <result column="fd_ldap_dn" property="fdLdapDn" jdbcType="VARCHAR" />
+    <result column="fd_memo" property="fdMemo" jdbcType="VARCHAR" />
+    <result column="fd_hierarchy_id" property="fdHierarchyId" jdbcType="VARCHAR" />
+    <result column="fd_create_time" property="fdCreateTime" jdbcType="TIMESTAMP" />
+    <result column="fd_alter_time" property="fdAlterTime" jdbcType="TIMESTAMP" />
+    <result column="fd_portal_link" property="fdPortalLink" jdbcType="VARCHAR" />
+    <result column="fd_portal_name" property="fdPortalName" jdbcType="VARCHAR" />
+    <result column="fd_this_leaderid" property="fdThisLeaderid" jdbcType="VARCHAR" />
+    <result column="fd_super_leaderid" property="fdSuperLeaderid" jdbcType="VARCHAR" />
+    <result column="fd_parentorgid" property="fdParentorgid" jdbcType="VARCHAR" />
+    <result column="fd_parentid" property="fdParentid" jdbcType="VARCHAR" />
+    <result column="fd_cateid" property="fdCateid" jdbcType="VARCHAR" />
+    <result column="fd_org_email" property="fdOrgEmail" jdbcType="NVARCHAR" />
+    <result column="auth_reader_flag" property="authReaderFlag" jdbcType="TINYINT" />
+    <result column="fd_name_simple_pinyin" property="fdNameSimplePinyin" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    fd_id, fd_org_type, fd_name, fd_name_pinyin, fd_order, fd_no, fd_keyword, fd_is_available, 
+    fd_is_abandon, fd_is_business, fd_import_info, fd_flag_deleted, fd_ldap_dn, fd_memo, 
+    fd_hierarchy_id, fd_create_time, fd_alter_time, fd_portal_link, fd_portal_name, fd_this_leaderid, 
+    fd_super_leaderid, fd_parentorgid, fd_parentid, fd_cateid, fd_org_email, auth_reader_flag, 
+    fd_name_simple_pinyin
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="springboot.domain.eip.SysOrgElementExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_org_element
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_org_element
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_org_element
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="springboot.domain.eip.SysOrgElementExample" >
+    delete from sys_org_element
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="springboot.domain.eip.SysOrgElement" >
+    insert into sys_org_element (fd_id, fd_org_type, fd_name, 
+      fd_name_pinyin, fd_order, fd_no, 
+      fd_keyword, fd_is_available, fd_is_abandon, 
+      fd_is_business, fd_import_info, fd_flag_deleted, 
+      fd_ldap_dn, fd_memo, fd_hierarchy_id, 
+      fd_create_time, fd_alter_time, fd_portal_link, 
+      fd_portal_name, fd_this_leaderid, fd_super_leaderid, 
+      fd_parentorgid, fd_parentid, fd_cateid, 
+      fd_org_email, auth_reader_flag, fd_name_simple_pinyin
+      )
+    values (#{fdId,jdbcType=VARCHAR}, #{fdOrgType,jdbcType=INTEGER}, #{fdName,jdbcType=VARCHAR}, 
+      #{fdNamePinyin,jdbcType=VARCHAR}, #{fdOrder,jdbcType=INTEGER}, #{fdNo,jdbcType=VARCHAR}, 
+      #{fdKeyword,jdbcType=VARCHAR}, #{fdIsAvailable,jdbcType=TINYINT}, #{fdIsAbandon,jdbcType=TINYINT}, 
+      #{fdIsBusiness,jdbcType=TINYINT}, #{fdImportInfo,jdbcType=VARCHAR}, #{fdFlagDeleted,jdbcType=TINYINT}, 
+      #{fdLdapDn,jdbcType=VARCHAR}, #{fdMemo,jdbcType=VARCHAR}, #{fdHierarchyId,jdbcType=VARCHAR}, 
+      #{fdCreateTime,jdbcType=TIMESTAMP}, #{fdAlterTime,jdbcType=TIMESTAMP}, #{fdPortalLink,jdbcType=VARCHAR}, 
+      #{fdPortalName,jdbcType=VARCHAR}, #{fdThisLeaderid,jdbcType=VARCHAR}, #{fdSuperLeaderid,jdbcType=VARCHAR}, 
+      #{fdParentorgid,jdbcType=VARCHAR}, #{fdParentid,jdbcType=VARCHAR}, #{fdCateid,jdbcType=VARCHAR}, 
+      #{fdOrgEmail,jdbcType=NVARCHAR}, #{authReaderFlag,jdbcType=TINYINT}, #{fdNameSimplePinyin,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="springboot.domain.eip.SysOrgElement" >
+    insert into sys_org_element
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdId != null" >
+        fd_id,
+      </if>
+      <if test="fdOrgType != null" >
+        fd_org_type,
+      </if>
+      <if test="fdName != null" >
+        fd_name,
+      </if>
+      <if test="fdNamePinyin != null" >
+        fd_name_pinyin,
+      </if>
+      <if test="fdOrder != null" >
+        fd_order,
+      </if>
+      <if test="fdNo != null" >
+        fd_no,
+      </if>
+      <if test="fdKeyword != null" >
+        fd_keyword,
+      </if>
+      <if test="fdIsAvailable != null" >
+        fd_is_available,
+      </if>
+      <if test="fdIsAbandon != null" >
+        fd_is_abandon,
+      </if>
+      <if test="fdIsBusiness != null" >
+        fd_is_business,
+      </if>
+      <if test="fdImportInfo != null" >
+        fd_import_info,
+      </if>
+      <if test="fdFlagDeleted != null" >
+        fd_flag_deleted,
+      </if>
+      <if test="fdLdapDn != null" >
+        fd_ldap_dn,
+      </if>
+      <if test="fdMemo != null" >
+        fd_memo,
+      </if>
+      <if test="fdHierarchyId != null" >
+        fd_hierarchy_id,
+      </if>
+      <if test="fdCreateTime != null" >
+        fd_create_time,
+      </if>
+      <if test="fdAlterTime != null" >
+        fd_alter_time,
+      </if>
+      <if test="fdPortalLink != null" >
+        fd_portal_link,
+      </if>
+      <if test="fdPortalName != null" >
+        fd_portal_name,
+      </if>
+      <if test="fdThisLeaderid != null" >
+        fd_this_leaderid,
+      </if>
+      <if test="fdSuperLeaderid != null" >
+        fd_super_leaderid,
+      </if>
+      <if test="fdParentorgid != null" >
+        fd_parentorgid,
+      </if>
+      <if test="fdParentid != null" >
+        fd_parentid,
+      </if>
+      <if test="fdCateid != null" >
+        fd_cateid,
+      </if>
+      <if test="fdOrgEmail != null" >
+        fd_org_email,
+      </if>
+      <if test="authReaderFlag != null" >
+        auth_reader_flag,
+      </if>
+      <if test="fdNameSimplePinyin != null" >
+        fd_name_simple_pinyin,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdId != null" >
+        #{fdId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgType != null" >
+        #{fdOrgType,jdbcType=INTEGER},
+      </if>
+      <if test="fdName != null" >
+        #{fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNamePinyin != null" >
+        #{fdNamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrder != null" >
+        #{fdOrder,jdbcType=INTEGER},
+      </if>
+      <if test="fdNo != null" >
+        #{fdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdKeyword != null" >
+        #{fdKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsAvailable != null" >
+        #{fdIsAvailable,jdbcType=TINYINT},
+      </if>
+      <if test="fdIsAbandon != null" >
+        #{fdIsAbandon,jdbcType=TINYINT},
+      </if>
+      <if test="fdIsBusiness != null" >
+        #{fdIsBusiness,jdbcType=TINYINT},
+      </if>
+      <if test="fdImportInfo != null" >
+        #{fdImportInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFlagDeleted != null" >
+        #{fdFlagDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="fdLdapDn != null" >
+        #{fdLdapDn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMemo != null" >
+        #{fdMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHierarchyId != null" >
+        #{fdHierarchyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreateTime != null" >
+        #{fdCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdAlterTime != null" >
+        #{fdAlterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdPortalLink != null" >
+        #{fdPortalLink,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPortalName != null" >
+        #{fdPortalName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdThisLeaderid != null" >
+        #{fdThisLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdSuperLeaderid != null" >
+        #{fdSuperLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentorgid != null" >
+        #{fdParentorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentid != null" >
+        #{fdParentid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCateid != null" >
+        #{fdCateid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgEmail != null" >
+        #{fdOrgEmail,jdbcType=NVARCHAR},
+      </if>
+      <if test="authReaderFlag != null" >
+        #{authReaderFlag,jdbcType=TINYINT},
+      </if>
+      <if test="fdNameSimplePinyin != null" >
+        #{fdNameSimplePinyin,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="springboot.domain.eip.SysOrgElementExample" resultType="java.lang.Integer" >
+    select count(*) from sys_org_element
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_org_element
+    <set >
+      <if test="record.fdId != null" >
+        fd_id = #{record.fdId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdOrgType != null" >
+        fd_org_type = #{record.fdOrgType,jdbcType=INTEGER},
+      </if>
+      <if test="record.fdName != null" >
+        fd_name = #{record.fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdNamePinyin != null" >
+        fd_name_pinyin = #{record.fdNamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdOrder != null" >
+        fd_order = #{record.fdOrder,jdbcType=INTEGER},
+      </if>
+      <if test="record.fdNo != null" >
+        fd_no = #{record.fdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdKeyword != null" >
+        fd_keyword = #{record.fdKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdIsAvailable != null" >
+        fd_is_available = #{record.fdIsAvailable,jdbcType=TINYINT},
+      </if>
+      <if test="record.fdIsAbandon != null" >
+        fd_is_abandon = #{record.fdIsAbandon,jdbcType=TINYINT},
+      </if>
+      <if test="record.fdIsBusiness != null" >
+        fd_is_business = #{record.fdIsBusiness,jdbcType=TINYINT},
+      </if>
+      <if test="record.fdImportInfo != null" >
+        fd_import_info = #{record.fdImportInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdFlagDeleted != null" >
+        fd_flag_deleted = #{record.fdFlagDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="record.fdLdapDn != null" >
+        fd_ldap_dn = #{record.fdLdapDn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdMemo != null" >
+        fd_memo = #{record.fdMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdHierarchyId != null" >
+        fd_hierarchy_id = #{record.fdHierarchyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdCreateTime != null" >
+        fd_create_time = #{record.fdCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fdAlterTime != null" >
+        fd_alter_time = #{record.fdAlterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fdPortalLink != null" >
+        fd_portal_link = #{record.fdPortalLink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdPortalName != null" >
+        fd_portal_name = #{record.fdPortalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdThisLeaderid != null" >
+        fd_this_leaderid = #{record.fdThisLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdSuperLeaderid != null" >
+        fd_super_leaderid = #{record.fdSuperLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdParentorgid != null" >
+        fd_parentorgid = #{record.fdParentorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdParentid != null" >
+        fd_parentid = #{record.fdParentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdCateid != null" >
+        fd_cateid = #{record.fdCateid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdOrgEmail != null" >
+        fd_org_email = #{record.fdOrgEmail,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.authReaderFlag != null" >
+        auth_reader_flag = #{record.authReaderFlag,jdbcType=TINYINT},
+      </if>
+      <if test="record.fdNameSimplePinyin != null" >
+        fd_name_simple_pinyin = #{record.fdNameSimplePinyin,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_org_element
+    set fd_id = #{record.fdId,jdbcType=VARCHAR},
+      fd_org_type = #{record.fdOrgType,jdbcType=INTEGER},
+      fd_name = #{record.fdName,jdbcType=VARCHAR},
+      fd_name_pinyin = #{record.fdNamePinyin,jdbcType=VARCHAR},
+      fd_order = #{record.fdOrder,jdbcType=INTEGER},
+      fd_no = #{record.fdNo,jdbcType=VARCHAR},
+      fd_keyword = #{record.fdKeyword,jdbcType=VARCHAR},
+      fd_is_available = #{record.fdIsAvailable,jdbcType=TINYINT},
+      fd_is_abandon = #{record.fdIsAbandon,jdbcType=TINYINT},
+      fd_is_business = #{record.fdIsBusiness,jdbcType=TINYINT},
+      fd_import_info = #{record.fdImportInfo,jdbcType=VARCHAR},
+      fd_flag_deleted = #{record.fdFlagDeleted,jdbcType=TINYINT},
+      fd_ldap_dn = #{record.fdLdapDn,jdbcType=VARCHAR},
+      fd_memo = #{record.fdMemo,jdbcType=VARCHAR},
+      fd_hierarchy_id = #{record.fdHierarchyId,jdbcType=VARCHAR},
+      fd_create_time = #{record.fdCreateTime,jdbcType=TIMESTAMP},
+      fd_alter_time = #{record.fdAlterTime,jdbcType=TIMESTAMP},
+      fd_portal_link = #{record.fdPortalLink,jdbcType=VARCHAR},
+      fd_portal_name = #{record.fdPortalName,jdbcType=VARCHAR},
+      fd_this_leaderid = #{record.fdThisLeaderid,jdbcType=VARCHAR},
+      fd_super_leaderid = #{record.fdSuperLeaderid,jdbcType=VARCHAR},
+      fd_parentorgid = #{record.fdParentorgid,jdbcType=VARCHAR},
+      fd_parentid = #{record.fdParentid,jdbcType=VARCHAR},
+      fd_cateid = #{record.fdCateid,jdbcType=VARCHAR},
+      fd_org_email = #{record.fdOrgEmail,jdbcType=NVARCHAR},
+      auth_reader_flag = #{record.authReaderFlag,jdbcType=TINYINT},
+      fd_name_simple_pinyin = #{record.fdNameSimplePinyin,jdbcType=NVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="springboot.domain.eip.SysOrgElement" >
+    update sys_org_element
+    <set >
+      <if test="fdOrgType != null" >
+        fd_org_type = #{fdOrgType,jdbcType=INTEGER},
+      </if>
+      <if test="fdName != null" >
+        fd_name = #{fdName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdNamePinyin != null" >
+        fd_name_pinyin = #{fdNamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrder != null" >
+        fd_order = #{fdOrder,jdbcType=INTEGER},
+      </if>
+      <if test="fdNo != null" >
+        fd_no = #{fdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdKeyword != null" >
+        fd_keyword = #{fdKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdIsAvailable != null" >
+        fd_is_available = #{fdIsAvailable,jdbcType=TINYINT},
+      </if>
+      <if test="fdIsAbandon != null" >
+        fd_is_abandon = #{fdIsAbandon,jdbcType=TINYINT},
+      </if>
+      <if test="fdIsBusiness != null" >
+        fd_is_business = #{fdIsBusiness,jdbcType=TINYINT},
+      </if>
+      <if test="fdImportInfo != null" >
+        fd_import_info = #{fdImportInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFlagDeleted != null" >
+        fd_flag_deleted = #{fdFlagDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="fdLdapDn != null" >
+        fd_ldap_dn = #{fdLdapDn,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMemo != null" >
+        fd_memo = #{fdMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdHierarchyId != null" >
+        fd_hierarchy_id = #{fdHierarchyId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCreateTime != null" >
+        fd_create_time = #{fdCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdAlterTime != null" >
+        fd_alter_time = #{fdAlterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdPortalLink != null" >
+        fd_portal_link = #{fdPortalLink,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPortalName != null" >
+        fd_portal_name = #{fdPortalName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdThisLeaderid != null" >
+        fd_this_leaderid = #{fdThisLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdSuperLeaderid != null" >
+        fd_super_leaderid = #{fdSuperLeaderid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentorgid != null" >
+        fd_parentorgid = #{fdParentorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdParentid != null" >
+        fd_parentid = #{fdParentid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCateid != null" >
+        fd_cateid = #{fdCateid,jdbcType=VARCHAR},
+      </if>
+      <if test="fdOrgEmail != null" >
+        fd_org_email = #{fdOrgEmail,jdbcType=NVARCHAR},
+      </if>
+      <if test="authReaderFlag != null" >
+        auth_reader_flag = #{authReaderFlag,jdbcType=TINYINT},
+      </if>
+      <if test="fdNameSimplePinyin != null" >
+        fd_name_simple_pinyin = #{fdNameSimplePinyin,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="springboot.domain.eip.SysOrgElement" >
+    update sys_org_element
+    set fd_org_type = #{fdOrgType,jdbcType=INTEGER},
+      fd_name = #{fdName,jdbcType=VARCHAR},
+      fd_name_pinyin = #{fdNamePinyin,jdbcType=VARCHAR},
+      fd_order = #{fdOrder,jdbcType=INTEGER},
+      fd_no = #{fdNo,jdbcType=VARCHAR},
+      fd_keyword = #{fdKeyword,jdbcType=VARCHAR},
+      fd_is_available = #{fdIsAvailable,jdbcType=TINYINT},
+      fd_is_abandon = #{fdIsAbandon,jdbcType=TINYINT},
+      fd_is_business = #{fdIsBusiness,jdbcType=TINYINT},
+      fd_import_info = #{fdImportInfo,jdbcType=VARCHAR},
+      fd_flag_deleted = #{fdFlagDeleted,jdbcType=TINYINT},
+      fd_ldap_dn = #{fdLdapDn,jdbcType=VARCHAR},
+      fd_memo = #{fdMemo,jdbcType=VARCHAR},
+      fd_hierarchy_id = #{fdHierarchyId,jdbcType=VARCHAR},
+      fd_create_time = #{fdCreateTime,jdbcType=TIMESTAMP},
+      fd_alter_time = #{fdAlterTime,jdbcType=TIMESTAMP},
+      fd_portal_link = #{fdPortalLink,jdbcType=VARCHAR},
+      fd_portal_name = #{fdPortalName,jdbcType=VARCHAR},
+      fd_this_leaderid = #{fdThisLeaderid,jdbcType=VARCHAR},
+      fd_super_leaderid = #{fdSuperLeaderid,jdbcType=VARCHAR},
+      fd_parentorgid = #{fdParentorgid,jdbcType=VARCHAR},
+      fd_parentid = #{fdParentid,jdbcType=VARCHAR},
+      fd_cateid = #{fdCateid,jdbcType=VARCHAR},
+      fd_org_email = #{fdOrgEmail,jdbcType=NVARCHAR},
+      auth_reader_flag = #{authReaderFlag,jdbcType=TINYINT},
+      fd_name_simple_pinyin = #{fdNameSimplePinyin,jdbcType=NVARCHAR}
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+</mapper>

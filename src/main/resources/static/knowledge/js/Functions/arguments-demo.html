@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>arguments-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <!--https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments
+        http://yangguang1029.github.io/2017/02/18/js-arguments/
+    
+        arguments对象是所有（非箭头）函数中都可用的局部变量。你可以使用arguments对象在函数中引用函数的参数。 -->
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w33p">
+            <div class="caption">arguments.callee 指向当前执行的函数</div>
+            <div class="caption">阶乘</div>
+            <div class="centered" id="eg3">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            function product(num) {
+                if (num == 0) {
+                    return '请输入大于0的整数';
+                }
+                // return num > 1 ? arguments.callee(num - 1) * num : 1;
+                return num > 1 ? product(num - 1) * num : 1; // 使用函数命名表达式取代上面写法
+            }
+            product(4); // 24
+        </script>
+    </section>
+
+    <section class="code-wrap h500">
+        <div class="css-live-wrap w33p">
+            <div class="caption">arguments.caller 指向调用当前函数的函数</div>
+            <div class="caption">记录当前调用栈</div>
+            <div class="stack centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            function stackTrace() {
+                // arguments.caller 已不可使用
+                // Function.caller 指向调用当前函数的函数，非标准
+                var f = stackTrace.caller; // 等同于 arguments.callee.caller
+                var s = "stack Trace:\n";
+                while (f) {
+                    s += f.name;
+                    s += "\n";
+                    f = f.caller;
+                }
+                return s;
+            }
+
+            function c() {
+                b();
+                function b() {
+                    a();
+                    function a() {
+                        document.getElementsByClassName('stack')[0].innerText = stackTrace();
+                    }
+                }
+            }
+
+            c();
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">定义连接字符串的函数</div>
+            <div class="centered" id="eg1">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            function myConcat(separator) {
+                var args = [].slice.call(arguments, 1);
+                return args.join(separator);
+            }
+
+            myConcat(",", "a", "b", "c"); // "a,b,c"
+        </script>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">定义创建ul/ol的方法</div>
+            <div class="eg2 centered">
+            </div>
+        </div>
+        <style>
+            .eg2 ul {
+                list-style: none;
+                margin-top: 40px;
+            }
+
+            .eg2 li {
+                padding: 10px 12px;
+                margin: 15px auto;
+                color: #999;
+                font-size: 20px;
+                text-align: center;
+                border: 0.5px solid #a9a9a9;
+                border-radius: 2px;
+            }
+        </style>
+        <script class="code w67p" contenteditable="true">
+            function list(type) {
+                var result = "<" + type + "l><li>";
+                var args = Array.prototype.slice.call(arguments, 1);
+                result += args.join("</li><li>");
+                result += "</li></" + type + "l>"; // end list
+                return result;
+            }
+
+            var listHTML = list("u", "One", "Two", "Three");
+            document.querySelector('.eg2').innerHTML = listHTML;
+        </script>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- 监测characterData的变动
+	https://www.cnblogs.com/tugenhua0707/p/6849948.html -->
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>characterData</title>
+</head>
+
+<body>
+	<div id='demo'>
+		<ol>
+			<li>111</li>
+		</ol>
+	</div>
+
+	<script type="text/javascript">
+		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+
+		var list = document.querySelector('ol');
+
+		var Observer = new MutationObserver(function (mutations, instance) {
+			mutations.forEach(function (mutation) {
+				console.log(mutation);
+			});
+		});
+
+		Observer.observe(list, {
+			childList: true,
+			characterData: true, // 节点内容或节点文本的变动
+			characterDataOldValue: true, // 观察characterData变动时，记录变动前的值
+			subtree: true
+		});
+
+		list.childNodes[0].data = "aaa";
+		list.childNodes[0].data = "bbb";
+	</script>
+</body>
+
+</html>

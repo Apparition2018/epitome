@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="springboot.dao.eip.SysOrgPersonMapper" >
+  <resultMap id="BaseResultMap" type="springboot.domain.eip.SysOrgPerson" >
+    <id column="fd_id" property="fdId" jdbcType="VARCHAR" />
+    <result column="fd_mobile_no" property="fdMobileNo" jdbcType="VARCHAR" />
+    <result column="fd_email" property="fdEmail" jdbcType="VARCHAR" />
+    <result column="fd_login_name" property="fdLoginName" jdbcType="VARCHAR" />
+    <result column="fd_password" property="fdPassword" jdbcType="VARCHAR" />
+    <result column="fd_init_password" property="fdInitPassword" jdbcType="VARCHAR" />
+    <result column="fd_rtx_no" property="fdRtxNo" jdbcType="VARCHAR" />
+    <result column="fd_card_no" property="fdCardNo" jdbcType="VARCHAR" />
+    <result column="fd_attendance_card_number" property="fdAttendanceCardNumber" jdbcType="VARCHAR" />
+    <result column="fd_work_phone" property="fdWorkPhone" jdbcType="VARCHAR" />
+    <result column="fd_default_lang" property="fdDefaultLang" jdbcType="VARCHAR" />
+    <result column="fd_wechat_no" property="fdWechatNo" jdbcType="NVARCHAR" />
+    <result column="fd_sex" property="fdSex" jdbcType="NVARCHAR" />
+    <result column="fd_last_change_pwd" property="fdLastChangePwd" jdbcType="TIMESTAMP" />
+    <result column="fd_lock_time" property="fdLockTime" jdbcType="TIMESTAMP" />
+    <result column="fd_staffing_level_id" property="fdStaffingLevelId" jdbcType="NVARCHAR" />
+    <result column="fd_short_no" property="fdShortNo" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    fd_id, fd_mobile_no, fd_email, fd_login_name, fd_password, fd_init_password, fd_rtx_no, 
+    fd_card_no, fd_attendance_card_number, fd_work_phone, fd_default_lang, fd_wechat_no, 
+    fd_sex, fd_last_change_pwd, fd_lock_time, fd_staffing_level_id, fd_short_no
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="springboot.domain.eip.SysOrgPersonExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_org_person
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_org_person
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_org_person
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="springboot.domain.eip.SysOrgPersonExample" >
+    delete from sys_org_person
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="springboot.domain.eip.SysOrgPerson" >
+    insert into sys_org_person (fd_id, fd_mobile_no, fd_email, 
+      fd_login_name, fd_password, fd_init_password, 
+      fd_rtx_no, fd_card_no, fd_attendance_card_number, 
+      fd_work_phone, fd_default_lang, fd_wechat_no, 
+      fd_sex, fd_last_change_pwd, fd_lock_time, 
+      fd_staffing_level_id, fd_short_no)
+    values (#{fdId,jdbcType=VARCHAR}, #{fdMobileNo,jdbcType=VARCHAR}, #{fdEmail,jdbcType=VARCHAR}, 
+      #{fdLoginName,jdbcType=VARCHAR}, #{fdPassword,jdbcType=VARCHAR}, #{fdInitPassword,jdbcType=VARCHAR}, 
+      #{fdRtxNo,jdbcType=VARCHAR}, #{fdCardNo,jdbcType=VARCHAR}, #{fdAttendanceCardNumber,jdbcType=VARCHAR}, 
+      #{fdWorkPhone,jdbcType=VARCHAR}, #{fdDefaultLang,jdbcType=VARCHAR}, #{fdWechatNo,jdbcType=NVARCHAR}, 
+      #{fdSex,jdbcType=NVARCHAR}, #{fdLastChangePwd,jdbcType=TIMESTAMP}, #{fdLockTime,jdbcType=TIMESTAMP}, 
+      #{fdStaffingLevelId,jdbcType=NVARCHAR}, #{fdShortNo,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="springboot.domain.eip.SysOrgPerson" >
+    insert into sys_org_person
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdId != null" >
+        fd_id,
+      </if>
+      <if test="fdMobileNo != null" >
+        fd_mobile_no,
+      </if>
+      <if test="fdEmail != null" >
+        fd_email,
+      </if>
+      <if test="fdLoginName != null" >
+        fd_login_name,
+      </if>
+      <if test="fdPassword != null" >
+        fd_password,
+      </if>
+      <if test="fdInitPassword != null" >
+        fd_init_password,
+      </if>
+      <if test="fdRtxNo != null" >
+        fd_rtx_no,
+      </if>
+      <if test="fdCardNo != null" >
+        fd_card_no,
+      </if>
+      <if test="fdAttendanceCardNumber != null" >
+        fd_attendance_card_number,
+      </if>
+      <if test="fdWorkPhone != null" >
+        fd_work_phone,
+      </if>
+      <if test="fdDefaultLang != null" >
+        fd_default_lang,
+      </if>
+      <if test="fdWechatNo != null" >
+        fd_wechat_no,
+      </if>
+      <if test="fdSex != null" >
+        fd_sex,
+      </if>
+      <if test="fdLastChangePwd != null" >
+        fd_last_change_pwd,
+      </if>
+      <if test="fdLockTime != null" >
+        fd_lock_time,
+      </if>
+      <if test="fdStaffingLevelId != null" >
+        fd_staffing_level_id,
+      </if>
+      <if test="fdShortNo != null" >
+        fd_short_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdId != null" >
+        #{fdId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdMobileNo != null" >
+        #{fdMobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmail != null" >
+        #{fdEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLoginName != null" >
+        #{fdLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPassword != null" >
+        #{fdPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdInitPassword != null" >
+        #{fdInitPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRtxNo != null" >
+        #{fdRtxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCardNo != null" >
+        #{fdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAttendanceCardNumber != null" >
+        #{fdAttendanceCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fdWorkPhone != null" >
+        #{fdWorkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDefaultLang != null" >
+        #{fdDefaultLang,jdbcType=VARCHAR},
+      </if>
+      <if test="fdWechatNo != null" >
+        #{fdWechatNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="fdSex != null" >
+        #{fdSex,jdbcType=NVARCHAR},
+      </if>
+      <if test="fdLastChangePwd != null" >
+        #{fdLastChangePwd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdLockTime != null" >
+        #{fdLockTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdStaffingLevelId != null" >
+        #{fdStaffingLevelId,jdbcType=NVARCHAR},
+      </if>
+      <if test="fdShortNo != null" >
+        #{fdShortNo,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="springboot.domain.eip.SysOrgPersonExample" resultType="java.lang.Integer" >
+    select count(*) from sys_org_person
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_org_person
+    <set >
+      <if test="record.fdId != null" >
+        fd_id = #{record.fdId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdMobileNo != null" >
+        fd_mobile_no = #{record.fdMobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdEmail != null" >
+        fd_email = #{record.fdEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdLoginName != null" >
+        fd_login_name = #{record.fdLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdPassword != null" >
+        fd_password = #{record.fdPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdInitPassword != null" >
+        fd_init_password = #{record.fdInitPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdRtxNo != null" >
+        fd_rtx_no = #{record.fdRtxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdCardNo != null" >
+        fd_card_no = #{record.fdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdAttendanceCardNumber != null" >
+        fd_attendance_card_number = #{record.fdAttendanceCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdWorkPhone != null" >
+        fd_work_phone = #{record.fdWorkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdDefaultLang != null" >
+        fd_default_lang = #{record.fdDefaultLang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdWechatNo != null" >
+        fd_wechat_no = #{record.fdWechatNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.fdSex != null" >
+        fd_sex = #{record.fdSex,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.fdLastChangePwd != null" >
+        fd_last_change_pwd = #{record.fdLastChangePwd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fdLockTime != null" >
+        fd_lock_time = #{record.fdLockTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fdStaffingLevelId != null" >
+        fd_staffing_level_id = #{record.fdStaffingLevelId,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.fdShortNo != null" >
+        fd_short_no = #{record.fdShortNo,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_org_person
+    set fd_id = #{record.fdId,jdbcType=VARCHAR},
+      fd_mobile_no = #{record.fdMobileNo,jdbcType=VARCHAR},
+      fd_email = #{record.fdEmail,jdbcType=VARCHAR},
+      fd_login_name = #{record.fdLoginName,jdbcType=VARCHAR},
+      fd_password = #{record.fdPassword,jdbcType=VARCHAR},
+      fd_init_password = #{record.fdInitPassword,jdbcType=VARCHAR},
+      fd_rtx_no = #{record.fdRtxNo,jdbcType=VARCHAR},
+      fd_card_no = #{record.fdCardNo,jdbcType=VARCHAR},
+      fd_attendance_card_number = #{record.fdAttendanceCardNumber,jdbcType=VARCHAR},
+      fd_work_phone = #{record.fdWorkPhone,jdbcType=VARCHAR},
+      fd_default_lang = #{record.fdDefaultLang,jdbcType=VARCHAR},
+      fd_wechat_no = #{record.fdWechatNo,jdbcType=NVARCHAR},
+      fd_sex = #{record.fdSex,jdbcType=NVARCHAR},
+      fd_last_change_pwd = #{record.fdLastChangePwd,jdbcType=TIMESTAMP},
+      fd_lock_time = #{record.fdLockTime,jdbcType=TIMESTAMP},
+      fd_staffing_level_id = #{record.fdStaffingLevelId,jdbcType=NVARCHAR},
+      fd_short_no = #{record.fdShortNo,jdbcType=NVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="springboot.domain.eip.SysOrgPerson" >
+    update sys_org_person
+    <set >
+      <if test="fdMobileNo != null" >
+        fd_mobile_no = #{fdMobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdEmail != null" >
+        fd_email = #{fdEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLoginName != null" >
+        fd_login_name = #{fdLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPassword != null" >
+        fd_password = #{fdPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdInitPassword != null" >
+        fd_init_password = #{fdInitPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="fdRtxNo != null" >
+        fd_rtx_no = #{fdRtxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCardNo != null" >
+        fd_card_no = #{fdCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fdAttendanceCardNumber != null" >
+        fd_attendance_card_number = #{fdAttendanceCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fdWorkPhone != null" >
+        fd_work_phone = #{fdWorkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="fdDefaultLang != null" >
+        fd_default_lang = #{fdDefaultLang,jdbcType=VARCHAR},
+      </if>
+      <if test="fdWechatNo != null" >
+        fd_wechat_no = #{fdWechatNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="fdSex != null" >
+        fd_sex = #{fdSex,jdbcType=NVARCHAR},
+      </if>
+      <if test="fdLastChangePwd != null" >
+        fd_last_change_pwd = #{fdLastChangePwd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdLockTime != null" >
+        fd_lock_time = #{fdLockTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdStaffingLevelId != null" >
+        fd_staffing_level_id = #{fdStaffingLevelId,jdbcType=NVARCHAR},
+      </if>
+      <if test="fdShortNo != null" >
+        fd_short_no = #{fdShortNo,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="springboot.domain.eip.SysOrgPerson" >
+    update sys_org_person
+    set fd_mobile_no = #{fdMobileNo,jdbcType=VARCHAR},
+      fd_email = #{fdEmail,jdbcType=VARCHAR},
+      fd_login_name = #{fdLoginName,jdbcType=VARCHAR},
+      fd_password = #{fdPassword,jdbcType=VARCHAR},
+      fd_init_password = #{fdInitPassword,jdbcType=VARCHAR},
+      fd_rtx_no = #{fdRtxNo,jdbcType=VARCHAR},
+      fd_card_no = #{fdCardNo,jdbcType=VARCHAR},
+      fd_attendance_card_number = #{fdAttendanceCardNumber,jdbcType=VARCHAR},
+      fd_work_phone = #{fdWorkPhone,jdbcType=VARCHAR},
+      fd_default_lang = #{fdDefaultLang,jdbcType=VARCHAR},
+      fd_wechat_no = #{fdWechatNo,jdbcType=NVARCHAR},
+      fd_sex = #{fdSex,jdbcType=NVARCHAR},
+      fd_last_change_pwd = #{fdLastChangePwd,jdbcType=TIMESTAMP},
+      fd_lock_time = #{fdLockTime,jdbcType=TIMESTAMP},
+      fd_staffing_level_id = #{fdStaffingLevelId,jdbcType=NVARCHAR},
+      fd_short_no = #{fdShortNo,jdbcType=NVARCHAR}
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+</mapper>

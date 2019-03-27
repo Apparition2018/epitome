@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Location-demo</title>
+    <link rel="icon" href="../../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h550">
+        <div class="css-live-wrap w100p">
+            <div class="caption"></div>
+            <div class="centered">
+                <table class="w1024">
+                    <tr>
+                        <th>属性/方法</th>
+                        <th>概述</th>
+                        <th>示例</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3">https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>href</td>
+                        <td>设置或返回完整的 URL</td>
+                        <td><a href="javascript: alert(url.href)">href</a></td>
+                    </tr>
+                    <tr>
+                        <td>origin</td>
+                        <td></td>
+                        <td><a href="javascript: alert(url.origin)">origin</a></td>
+                    </tr>
+                    <tr>
+                        <td>protocol</td>
+                        <td>设置或返回当前 URL 的协议</td>
+                        <td><a href="javascript: alert(url.protocol)">protocol</a></td>
+                    </tr>
+                    <tr>
+                        <td>host</td>
+                        <td>设置或返回当前 URL 的主机名(域名)和端口号</td>
+                        <td><a href="javascript: alert(url.host)">host</a></td>
+                    </tr>
+                    <tr>
+                        <td>hostname</td>
+                        <td>设置或返回当前 URL 的主机名(域名)</td>
+                        <td><a href="javascript: alert(url.hostname)">hostname</a></td>
+                    </tr>
+                    <tr>
+                        <td>port</td>
+                        <td>设置或返回当前 URL 的端口号</td>
+                        <td><a href="javascript: alert(url.port)">port</a></td>
+                    </tr>
+                    <tr>
+                        <td>pathname</td>
+                        <td>设置或返回当前 URL 的路径部分，开头有一个"/"</td>
+                        <td><a href="javascript: alert(url.pathname)">pathname</a></td>
+                    </tr>
+                    <tr>
+                        <td>search</td>
+                        <td>设置或返回当前 URL 的查询部分，开头有一个"?"</td>
+                        <td><a href="javascript: alert(url.search)">search</a></td>
+                    </tr>
+                    <tr>
+                        <td>hash</td>
+                        <td>设置或返回当前 URL 的片段标识符，开头有一个"#</td>
+                        <td><a href="javascript: alert(url.hash)">hash</a></td>
+                    </tr>
+                    <tr>
+                        <td>assign()</td>
+                        <td>加载新的文档，可以通过浏览器后退按钮返回到原页面
+                        </td>
+                        <td><a href="javascript: location.assign('http://baidu.com');">location.assign('http://baidu.com')</a></td>
+                    </tr>
+                    <tr>
+                        <td>replace()</td>
+                        <td>用新的文档替换当前文档，不可以通过浏览器后退按钮返回到原页面</td>
+                        <td><a href="javascript: location.replace('http://baidu.com');">location.replace('http://baidu.com')</a></td>
+                    </tr>
+                    <tr>
+                        <td>reload()</td>
+                        <td>重新加载当前文档
+                            <br />true: 强制浏览器从服务器加载页面资源
+                            <br />false: 浏览器则可能从缓存中读取页面
+                        </td>
+                        <td><a href="javascript: location.reload(true);">location.reload(true)</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script>
+            var url = document.createElement('a');
+            url.href = 'https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container';
+        </script>
+    </section>
+</body>
+
+</html>

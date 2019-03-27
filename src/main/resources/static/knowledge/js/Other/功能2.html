@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>功能2</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap w33p">
+            <div class="caption">保存记录，撤销返回上一次记录</div>
+            <div class="caption">可撤销多次</div>
+            <div class="undo centered">
+                <textarea name="" id="text" cols="40" rows="10">保存记录</textarea>
+                <br/>
+                <div class="btn save" id="save">保存</div>
+                <div class="btn repeal" id="repeal">撤销</div>
+            </div>
+        </div>
+        <style>
+            .undo {
+                text-align: center;
+            }
+
+            textarea {
+                margin-left: 1px;
+                padding: 10px;
+                color: #333333;
+                resize: none;
+            }
+
+            .btn {
+                display: inline-block;
+                padding: 6px 20px;
+                margin-top: 8px;
+                background: linear-gradient(to bottom, #ffffff 5%, #f2f2f2 100%);
+                background-color: #ffffff;
+                color: #666666;
+                font-size: 15px;
+                font-weight: bold;
+                text-shadow: 0px 1px 0px #ffffff;
+                border: 1px solid #dcdcdc;
+                border-radius: 2px;
+                box-shadow: inset 0px 1px 0px 0px #ffffff;
+                cursor: pointer;
+            }
+
+            .btn:active {
+                background: linear-gradient(to bottom, #f2f2f2 5%, #ffffff 100%);
+                background-color: #f2f2f2;
+            }
+
+            .save {
+                margin-right: 5px;
+            }
+        </style>
+        <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script class="code w67p" contenteditable="true">
+            $("#save").click(function () {
+                var index = $(this).data("index");
+                index = index ? index + 1 : 1; // 记录次数
+                $(this).data("index", index);
+                var cashe = $("#text").val();
+                $(this).data("cashe" + index, cashe); // 缓存
+            });
+            $("#repeal").click(function () {
+                var index = $("#save").data("index");
+                console.log(index);
+                if (!index) {
+                    return;
+                }
+                $("#text").val($("#save").data("cashe" + index)); // 重新加载缓存的对象
+                $("#save").data("cashe" + index, "").data("index", index - 1); // 把已经回退的对象清空;计数减一，
+            });
+        </script>
+    </section>
+
+</body>
+
+</html>

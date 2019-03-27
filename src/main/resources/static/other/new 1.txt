@@ -1,0 +1,121 @@
+前端：
+	JS
+	1. 总是使用 ===
+	2. 使用.parseInt()时，总是指定第二个参数(代表进制)
+		如：parseInt("08", 10) // 如果不指定10进制，则被当做8进制处理
+	3. 使用应用名作为全局变量的命名空间
+		var myAppName = {
+			settings: {
+				settingA: true;
+				...
+			}
+		}
+	4. 缓存频繁使用的对象，数组长度等
+		var toLoop = new Array(1000);
+		for (var i = 0, len = toLoop.length; i < len; i++) {}
+	5. 循环性能——使用'break'和'continue'
+	6. 函数调用不要传输太多参数，可读性差。预先构建一个对象作为参数
+		function greet(user) {}
+			greet({
+				name: "Bob",
+				gender: "male"
+		})
+	7. 把this映射为其它变量
+		如：var _self = this;
+	8. 布尔变量命名：is, can, has
+		如：isEditing = true;
+	9. 尽量减少重新绘制和重新布局
+		重新绘制是在某个元素的外观被改变但没有对布局进行调整的情况下触发的。如：如是否可以见，背景色改变等
+		重新布局由调整页面布局的一些改变引发。如：增删元素，改变某个元素的宽度或高度，甚至是改变浏览器窗口的大小。最糟糕是重新布局导致先辈、兄弟和孩子节点元素也需要重新布局的多米诺骨牌效应。
+		如：先 append 10个 li，再将10个 li 放到 ul 里
+	10. 使用Modernizr检测浏览器兼容性
+	11. 使用可读的毫秒数F
+		var timeout = 30 * 1000; // 不过会降低
+	12. if(!myValue){} 代替 if(myValue != undefined){}
+							if(myValue !=null){}  
+							if(myValue != false){}
+	13. var arr = [] 创建数组;  var obj = {} 创建对象;
+	14. 尽量使用内置函数
+	15.	使用switch代替if
+	16. 最小化语句数量
+		如：var num = 365, color = "yellow"; 
+		如：var sCar = aCars[i++]; 代替 var sCar = aCars[i]; i++;
+	17. 尽可能的用局部变量来代替全局变量
+	18. 不直接操作NodeList，将其装换成静态数组后再使用
+		如：现代浏览器：	Array.prototype.slice.call()
+			IE:				逐个拷贝到新数组
+	19. 使用DocumentFragment
+	20. 使用cloneNode在外部更新节点然后再通过replace与原始节点互换
+	21. 若要对DOM进行直接修改，先display:none 隐藏元素，然后对该元素进行所有的操作，最后再显示该元素
+	22. 拆分方法，一个方法解决一件事，通过不断地调用方法来实现复杂功能
+	23. 指明操作DOM的context
+		如：context.getElementsByTagName()
+	24. 使脚本尽可能少地运行，或者不运行(Be lazy)
+		1) 短路表达式应用：如 a && b || c
+		2) 基于事件去写相应的处理方法
+		3) 惰性函数
+	25. 流控制
+		1)在if语句中，将经常会发生的条件，放在靠上的位置
+		2)if的条件为连续的区间时，可以使用二分法的方式来拆分
+		3)较多离散值的判断，可以使用switch来替代
+		4)使用数组查询的方式
+		5)要注意隐式的类型转换
+		6)小心递归　
+	26. 循环
+		var i = arr.length;
+		while (i--) { }
+	27. new Function(script)() 代替 eval(script);
+		(function() { eval(script) }()) 代替 eval(script)
+	28.
+	
+	jQuery
+	1. data-*
+	2. 缓存选择器结果
+		如：var $start = $(".start");
+		
+	CSS
+	1. box-sizing: border-box;
+	2. position定位
+	3. 给一个样式表里维护多个样式区域添加注释
+	4. 清除浮动 clearfix  https://blog.csdn.net/FE_dev/article/details/68954481
+	5. 水平、垂直居中
+		.class {
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			right: 0;
+			margin: 0;
+		}
+	6. @font-face	
+	7. 宽度分离：box-sizing 搞不定 margin
+	8. 如果值为若干单词，要加引号
+		如：p {font-family: "san serif";}
+
+	html
+	1. 始终为属性值加引号
+		class="clearfix"
+	2. 请确保将 HTML heading 标签只用于标题。搜索引擎使用标题为您的网页的结构和内容编制索引。
+	3. 条件注释（IE）	
+		<!--[if IE 8]>
+			... some html here ...
+		<![endif]-->
+	4. <a> 链接最后应始终添加正斜杠"/"。如果不加，服务器会产生两次http请求。
+		<a href="http://www.w3school.com.cn/html/"></a>
+	5. <img> 始终添加 alt 属性
+	6. 布局标签 header nav section footer article aside details summary
+
+	只对表格数据用table标签
+	
+	
+
+	
+
+	
+
+
+
+	
+	

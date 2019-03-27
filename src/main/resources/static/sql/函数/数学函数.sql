@@ -1,0 +1,79 @@
+-- ABS
+SELECT ABS(-2) -- 2
+
+-- SQRT
+SELECT SQRT(4) -- 2
+
+-- SQUARE
+SELECT SQUARE(2) -- 4
+
+-- POWER
+SELECT POWER(2, 3) -- 8
+
+-- ROUND
+SELECT ROUND(3.44, 1) -- 3.40
+SELECT ROUND(3.46, 1) -- 3.50
+
+-- FLOOR
+SELECT FLOOR(3.44) -- 3
+SELECT FLOOR(3.46) -- 3
+
+-- PI
+SELECT PI() -- 3.14159265358979
+
+-- SIGN
+SELECT SIGN(2)  -- 1
+SELECT SIGN(0)  -- 0
+SELECT SIGN(-2) -- -1
+GO
+
+
+/********** SQL Server **********/
+-- CEILING
+SELECT CEILING(3.44) -- 4
+SELECT CEILING(3.46) -- 4
+
+-- ISNUMERIC
+SELECT ISNUMERIC(2.2) -- 1
+SELECT ISNUMERIC('2') -- 1
+SELECT ISNUMERIC('a') -- 0
+
+-- RAND
+SELECT RAND() -- 0 ~ 1 之间随机浮点值
+GO
+
+
+/********** Oracle **********/
+/*
+-- TRUNC
+SELECT TRUNC(3.44, 1) -- 3.40
+SELECT TRUNC(3.46, 1) -- 3.40
+
+-- CEIL
+SELECT CEIL(3.44) -- 4
+SELECT CEIL(3.46) -- 4
+
+-- GREATEST
+SELECT GREATEST(2, 3) -- 3，还可以用于字符串，日期
+
+-- MOD
+SELECT MOD(10, 3) -- 1
+*/
+GO
+
+/********** MySQL **********/
+/*
+-- TRUNCATE
+SELECT TRUNCATE(3.44, 1) -- 3.40
+SELECT TRUNCATE(3.46, 1) -- 3.40
+
+-- CEIL/CEILING
+SELECT CEIL(3.44) -- 4
+SELECT CEIL(3.46) -- 4
+
+-- MOD
+SELECT MOD(10, 3) -- 1
+
+-- RAND
+SELECT RAND() -- 0 ~ 1 之间随机浮点值
+*/

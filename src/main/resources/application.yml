@@ -1,0 +1,51 @@
+server:
+  port: 3333
+
+spring:
+  datasource:
+    app:
+      name: app
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://192.168.0.134;databasename=app
+      username: test
+      password: bpmlink
+      initialSize: 1
+      minIdle: 1
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat
+    eip:
+      name: eip
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://192.168.0.134;databasename=eip12
+      username: test
+      password: bpmlink
+      initialSize: 1
+      minIdle: 1
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat
+
+logging:
+  file: logs/springboot.log
+  level:
+    springboot: debug
+    org.springfromework.web: info

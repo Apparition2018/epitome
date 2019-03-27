@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Servlet &amp; JSP</title>
+	<link rel="stylesheet" type="text/css" href="notes.css" />
+	<style>
+		.Servlet {
+			width: 660px;
+			margin-right: 10px;
+			float: left;
+		}
+		.JSP {
+			width: 660px;
+			margin-left: 10px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div>
+	<h1>Servlet &amp; JSP</h1>
+	<div class="Servlet">
+		<h2>Servlet</h2>
+		<ul>
+			<li><span class="que">web应用演变</span>
+				<ol>
+					<li>单机程序</li>
+					<li>主机终端</li>
+					<li>两层CS架构：客户端(VB,VC,Delphi)+DB</li>
+					<li><details><summary>三层CS架构：客户端+应用服务器(任何支持TCP编程的语言)+DB</summary>
+						<img src="../img/3层CS架构.jpg" width=550px /></details></li>
+					<li><details><summary>BS架构：Browser+Web Server+DB</summary>
+						<img src="../img/BS架构.jpg" width=550px /></details>
+				</ol>
+				<ul>
+					<li><details><summary>Servlet组件运行原理</summary>
+						<img src="../img/Servlet组件运行原理.jpg" width=500px /></details></li>
+				</ul><br />
+			</li>
+			<li><span class="que">Servlet运行步骤</span>
+				<ol>
+					<li>浏览器依据ip,port建立与web服务器（Servlet容器）之间的连接</li>
+					<li>浏览器将相关数据打包（按http协议创建一个请求数据报），发送给web服务器</li>
+					<li>web服务器拆包（按http协议将请求数据报中的相关数据解析出来），将解析到的数据添加到request对象里，同时，创建一个response对象。</li>
+					<li>web服务器依据路径找到Servlet创建对象，调用service处理请求，处理结果写到response对象里</li>
+					<li>web服务器将response对象中的数据取出来，打包（按http协议创建数据包），发送给浏览器</li>
+					<li>浏览器拆包（按http协议将数据包中的数据解析出来），生成相应的页面</li>
+				</ol><br />
+			</li>
+			<li><span class="que">开发Servlet步骤</span>
+				<ol>
+					<li>编写一个实现Servlet借口或继承HttpServlet的Java类</li>
+					<li>使用javac命令编译源文件为字节码文件</li>
+					<li><details><summary>将编译完的组件打包</summary>
+						<img src="../img/将编译完的组件打包.jpg" width=400px /></details></li>
+					<li>部署：将appName整个文件夹拷贝到Tomcat的webapps文件下 ???</li>
+					<li>启动Tomcat并访问Servlet：在地址栏输入符合一定规范的地址<br />
+						　　<span class="val">http://ip:port/appName/servlet的URL</span>(URL在web.xml描述文件中可以找到)</li>
+				</ol><br />
+			</li>
+			<li><span class="que">状态码</span>
+				<ul>
+					<li>服务器执行完客户端的请求后，返回给客户端的一个执行结果的状态编码</li>
+				</ul>
+				<ol>
+					<li><span class="att">302</span>： 重定向</li>
+					<li><span class="att">404错误</span>： Web服务器（容器）根据请求地址找不到对应资源
+						<ol>
+							<li>地址错误（拼写错误，字母大小写错误）</li>
+							<li>web.xml文件中的两个&lt;servlet-name&gt;不一致</li>
+							<li>工程没有部署</li>
+							<li>Web应用程序部署结构没有遵守Servlet规范</li>
+						</ol>
+					</li>
+					<li><span class="att">405错误</span>： Web服务器（容器）找不到service()处理请求
+						<ul>
+							<li>service方法名称写错,参数类型、方法异常、返回值类型与标准不一致</li>
+						</ul>
+					</li>
+					<li><span class="att">500错误</span>： 程序在运行过程中出错
+						<ol>
+							<li>Servlet类没有继承HttpServlet或实现Servlet接口</li>
+							<li>web.xml文件中的&lt;servlet-class&gt;写错
+							<li>service方法中的代码运行时抛出异常</li>
+						</ol>
+					</li>
+				</ol><br />
+			</li>
+			<li><span class="que">Http协议</span>
+				<ol>
+					<li><details><summary>如何通信： '无状态'协议，即响应完客户的请求之后，就断开连接</summary>
+						<img src="../img/如何通信.jpg" width=500px /></details></li>
+					<li><details><summary>数据格式</summary>
+						<img src="../img/数据格式.jpg" width=500px /></details>
+						<ol>
+							<li><details><summary>请求数据包</summary>
+								<img src="../img/请求数据包.jpg" width=450px; /></details>
+								<ol>
+									<li>请求行：　请求方式+请求路径+协议类型+版本</li>
+									<li>消息头：　是一些键值对，一般由w3c定义，大部分自动生成</li>
+									<li>实体内容：　只有当请求方式为post时，才有数据</li>
+								</ol>
+							</li>	
+							<li><details><summary>响应数据包</summary>
+								<img src="../img/响应数据包.jpg" width=450px; /></details>
+								<ol>
+									<li>状态行：　协议类型+版本+状态码+状态描述</li>
+									<li>消息头：　Web服务器返回消息</li>
+									<li>实体内容：　程序处理的结果</li>
+								</ol>
+							</li>	
+						</ol>
+					</li>
+				</ol><br />
+			</li>
+			<li><span class="que">Servlet如何处理Http协议</span>
+				<ul>
+					<li>Web容器收到一个Http请求时，通信数据由Web容器负责封装和提供，这些信息被解析成以下两个对象
+				</ul>
+				<ol>
+					<li><span class="att">HttpServletRequest</span>
+						<ol>
+							<li>读取和写入HTTP请求数据（请求行，消息头）</li>
+							<li>取得和设置Cookies</li>
+							<li>取得路径信息</li>
+							<li>标识HTTP会话</li>
+							<li>实现请求转发</li>
+						</ol>
+						方法： ???
+						<ol>
+							<li>Enumeration&lt;String&gt; (HttpServletRequest).<span>getHeaderNames</span>()</li>
+							<li>String (HttpServletRequest).<span>getHeader</span>(String name)</li>
+							<li>String (HttpServletRequest).<span>getMethod</span>()　//　get,post,put...</li>
+							<li>String (HttpServletRequest).<span>getRequestURI</span>()　//　获取请求资源路径</li>
+						</ol>
+					</li>
+					<li><span class="att">HttpServletResponse</span>
+						<ol>
+							<li>设置对客户端的输出内容</li>
+							<li>设置响应的状态码</li>
+							<li>设置浏览器的解码方式</li>
+							<li>设置Cookies</li>
+							<li>实现重定向</li>
+						</ol>
+					</li>
+				</ol><br />
+			</li>
+			<li><span class="que2">处理中文</span>
+				<ol>
+					<li>(ServletRequest).<span>setCharacterEncoding</span>(<span class="val">"utf-8"</span>);
+						<ol>
+							<li>设置发往服务器的参数以何种编码，设置从request取得的值或数据库中取出的值</li>
+							<li>如没设置，服务器默认使用"iso-8859-1"来编码</li>
+							<li>get请求提交的参数在URI中，一开始就已按默认编码分析内容，<br />所以setCharacterEncoding无效；应该在server.xml中指定：URIEncoding=utf-8,<br />
+								或：username = new String(username.<span>getBytes</span>("iso-8859-1"),"utf-8")</li>
+						</ol>
+					</li>
+					<li>(ServletResponse).<span>setContentType</span>(<span class="val">text/html; charset=utf-8"</span>);
+						<ol>
+							<li>设置HTTP响应的编码，同时指定了浏览器显示的编码（生成消息头中content-type的值）</li>
+							<li>通知服务器以何种编码后，自动调用setCharacterEncoding("utf-8")来通知浏览器解码</li>
+							<li>要在response.getWriter()执行之前或response提交之前使用</li>
+						</ol>
+					</li>  
+				</ol><br />
+			</li>
+			<li><span class="que">获取请求参数</span>
+				<ol>
+					<li>String (ServletRequest).<span>getParameter</span>(String name)
+						<ol>
+							<li>执行第一个时，Java将按编码分析所有的内容 ???</li>
+							<li>参数不存在，返回null</li>
+							<li>表单提交时，没有填写数据，返回""</li>
+						</ol>
+					</li>
+					<li>String[] (ServletRequest).<span>getParameterValues</span>(String name)
+						<ol>
+							<li>当有多个请求参数名相同时，使用该方法</li>
+							<li>参数不存在，返回null</li>
+							<li>对于多选框，如果一个都不选，则浏览器不会将多选框的值发送给服务器,返回null</li>
+						</ol>
+					</li>
+				</ol><br />
+			</li>
+			<li><details><summary><span class="que">请求方式</span></summary>
+				<img src="../img/请求方式.jpg" width=400px /></details>
+				<ol>
+					<li><span class="att">get</span>: 向服务器请求指定的资源时使用
+						<ul>
+							<li>什么情况下使用：
+								<ol>
+									<li>在地址栏输入一个地址</li>
+									<li>点击链接</li>
+									<li>表单默认提交</li>
+								</ol>
+							</li>
+							<li>特点：
+								<ol>
+									<li>将请求数据添加到请求资源路径的后面，所以只能提交少量数据</li>
+									<li>请求数据显示在浏览器地址栏上，不安全</li>
+								</ol>
+							</li>
+						</ul>
+					</li>
+					<li><span class="att">post</span>: 向服务器提交需要处理的数据
+						<ul>
+							<li>特点：
+								<ol>
+									<li>请求数据添加到实体内容中???，可提交大量数据</li>
+									<li>相对安全</li>
+								</ol>
+							</li>
+						</ul>
+					</li>
+				</ol><br />
+			</li>
+			<li><details><summary><span class="que">重定向</span></summary>
+				<img src="../img/重定向原理.jpg" width=450px /></details>
+				<ul>
+					<li>void (HttpServletResponse).<span>sendRedirect</span>(String location)</li> 
+					<li><details><summary>重定向响应数据包</summary>
+						<img src="../img/重定向响应数据包.jpg" width=350px /></details></li>
+					<li>特点：
+						<ol>
+							<li>重定向地址可以是任何地址</li>
+							<li>重定向后，地址栏的地址发生改变</li>
+							<li>重定向过程中涉及到的Web组件并不会共享同一个request和response对象</li>
+							<li>重定向后，清空响应对象数据</li>
+						</ol>
+					</li>
+				</ul><br />
+			</li>
+			<li><span class="que">Servlet如何处理请求资源路径</span>
+				<ul>
+					<li><details><summary>对请求地址的处理过程</summary>
+						<img src="../img/容器如何找到service方法.jpg" width=500px; /></details>
+						<ol>
+							<li>浏览器依据ip,port建立与Servlet容器之间的连接，<br />
+								然后将请求资源路径appName/xx.html发送给容器</li>
+							<li>容器依据应用名"/appName"找到应用所在的文件夹，容器会默认请求的时一个Servlet，<br />
+								查找web.xml文件中所有的Servlet配置"&lt;url-pattern&gt;",看是否有匹配的Servlet</li>
+						</ol>
+					</li>
+					<li>匹配：
+						<ol>
+							<li>精确匹配： 尽管应用中有abc.html这个具体的页面，也会去执行该url-pattern对应的Servlet，而不是返回具体的abc.html页面???</li>
+							<li>通配符匹配： /*</li>
+							<li>后缀匹配： *.do</li>
+						</ol>
+						ps: 均没有匹配成功时，容器会查找相应的文件???，如找不到返回404
+					</li>
+				</ul><br />
+			</li>
+			<li><details><summary><span class="que">Sevlet的生命周期</span></summary>
+				<img src="../img/Servlet生命周期.jpg" width=450px /></details>
+				<ol>
+					<li>实例化： 容器调用Servlet的构造器，创建一个Servlet对象
+						<ol>
+							<li>默认：容器收到请求之后，开始创建</li>
+							<li>配置&lt;load-on-start-up&gt;： 容器启动之后立即创建</li>
+						</ol>
+					</li>
+					<li>初始化： 容器在创建好Servlet之后，立即调用init方法，执行一次
+						<ul>
+							<li><span class="att">GenericServvet</span>实现了init方法（将ServletConig保存下来，<br />
+								　　并提供<span>getServletConfig</span>来获得ServletConfig对象）</li>
+							<li><details><summary>&lt;init-param&gt;</summary>
+								<span class="none">　　&lt;param-name&gt;company&lt;/param-name&gt;<br />
+								　　&lt;param-value&gt;北京达内&lt;/param-value&gt;<br />
+								　&lt;init-param&gt;</span></details></li>
+							<li>String <span>getInitParameter</span>(String name)</li>							
+						</ul>
+					</li>
+					<li>就绪： 容器收到请求之后调用Servlet对象的service()处理请求<br />
+						<ul>
+							<li><span class="att">HttpServlet</span>实现了service方法
+						</ul>
+					</li>
+					<li>销毁： 容器依据自身算法删除Servlet对象，删除前调用<span>destroy</span>()
+						<ul>
+							<li>GenericServlet实现了该方法</li>
+						</ul>
+					</li>
+				</ol><details><summary>Servlet核心接口与类</summary>
+					<img src="../img/Servlet核心接口与类.jpg" width=480px/></details><br />
+			</li>
+			<li><span class="que">ServletContent</span>
+				<ul>
+					<li>容器启动后创建</li>
+					<li>特点：
+						<ol>
+							<li>唯一性： 一个Web应用对应一个servlet</li>
+							<li>一直存在： 容器不关闭，应用没有被写在删除，就一致存在???</li>
+							<li>绑定的数据可被整个应用上的所有组件共享</li>
+						</ol>
+					</li>
+					<li>如何获得：通过GenericServlet、ServletConfig、HttpSession、FilterConfig提供的<br />
+						　　　　　... <span>getServletContext</span>()</li>
+					<li>常用方法：
+						<ol>
+							<li>void (ServletContext).<span>setAttribute</span>(String name, java.lang.Object object) 
+						</ol>
+					</li>
+				</ul><br />
+			</li>
+			<li><details><summary><span class="que">转发</span></summary>
+				<img src="../img/转发的原理.jpg" width=500px /></details>
+				<ol>
+					<li>绑定数据到request对象
+						<ul>
+							<li>void (ServletRequest).<span>setAttribute</span>(String name, Object obj)</li>
+							<li>Object (ServletRequest).<span>getAttribute</span>(String name)　//　没有值返回null</li> 
+						</ul>
+					</li>
+					<li>获得转发器:<br />
+						　　RequestDispatcher (ServletRequest).<span>getRequestDispatcher</span>(String path)</li>
+					<li>转发： void (RequestDispatcher).<span>forward</span>(ServletRequest request, ServletResponse response)</li> 
+				</ol>
+				特点：
+				<ul>
+					<li>转发目的地必须是同一个应用内部的某个地址</li>
+					<li>转发后，地址栏地址不变（发生自服务器内部，浏览器不知道）</li>
+					<li>转发所涉及到的Web组件并会共享同一个request和response对象</li>
+				</ul>
+				<details><summary>重定向和转发示意图</summary>
+				<img src="../img/重定向和转发示意图.jpg" width=450px /></details><br />
+			</li>
+			<li><span class="que">异常处理</span>
+				<ol>
+					<li>编程式的异常处理： 使用转发进行跳转到指定页面进行提示说明　//　error.jsp<br />
+						（程序本身的异常使用）</li>
+					<li>容器中声明式处理：（系统级别的异常使用）
+						<ol>
+							<li>将异常抛给容器，但底层的错误提示不要返回用户；???<br />
+								如：throw new ServletException(e);</li>
+							<li><details><summary>&lt;exception-type&gt;</summary>
+								<span class="none">　　&lt;exception-type&gt;<br />
+								　　　　javax.servlet.ServletException<br />
+								　　&lt;/exception-type&gt;<br />
+								　　&lt;location&gt;/error.jsp&lt;/location&gt;<br />
+								　&lt;/error-page&gt;</span></details></li>
+						</ol>
+					</li> 
+				</ol><br />
+			</li>
+			<li><span class="que">路径处理技巧</span>
+				<ul>
+					<li>链接地址、表单提交、重定向从应用名开始写</li>
+					<li>转发从应用名之后开始写???</li>
+					<li>String (HttpServletRequest).<span>getContextPath</span>()　//　获取应用的实际部署名称</li> 
+				</ul><br />
+			</li>
+			<li><span class="que">状态管理</span>
+				<ul>
+					<li>将客户端（浏览器）与服务器之间多次交互（一次请求，一次响应）当做一个整体来看待，<br />
+						并将多次交互所涉及的数据即状态保存下来，管理指的是多次交互时对数据的修改</li>
+				</ul><br />
+			</li>
+			<li><details><summary><span class="que">Cookie</span></summary>
+				<img src="../img/Cookie原理.jpg" width=500px /></details>
+				<ol>
+					<li><span>Cookie</span>(String name, String value)　//　创建Cookie</li>
+					<li>void (HttpServletResponse).<span>addCookie</span>(Cookie cookie)　//　添加/发送Cookie</li> 
+					<li>Cookie[] (HttpServletRequest).<span>getCookies</span>()　//　获取客户端所有Cookie对象</li>
+					<li>String (Cookie).<span>getName</span>()　//　获取Cookie的名称</li>
+					<li>String (Cookie).<span>getValue</span>()　//　获取Cookie的值</li> 
+					<li>void (Cookie).<span>setValue</span>(String newValue)　//　修改Cookie的值</li>
+					<li>void (Cookie).<span>setPath</span>(String uri)　//　设置Cookie路径</li>
+					<li>void (Cookie).<span>setMaxAge</span>(int expiry)　//　设置过期时间
+						<ol>
+							<li>&gt;0: 保存在硬盘上</li>
+							<li>=0:	立即删除</li>
+							<li>&lt;0: 缺省值，保存在内存中，浏览器关闭清除</li>
+						</ol>
+					</li> 
+					<li>编码解码: Cookie只能保存合法的ASCII字符，保存中文需转成ASCII字符
+						<ol>
+							<li>static String (URLEncoder).<span>encode</span>(String s, String enc)</li>
+							<li>static String (URLDecoder).<span>decode</span>(String s, String enc)</li>   
+						</ol>
+					</li>
+					<li>Cookie的路径： 默认等于添加这个Cookie的Web组件的路径</li>
+					<li>发送Cookie的条件： 访问的地址是Cookie的路径或子路径，才会发送Cookie</li>
+					<li>Cookie的限制：
+						<ol>
+							<li>可以被用户禁止</li>
+							<li>将状态保存在浏览器端，不安全。敏感的数据需加密后再使用Cookie保存</li>
+							<li>只能保存4kb左右的数据</li>
+							<li>个数有限???</li>
+							<li>只能保存字符串</li>
+						</ol>
+					</li>
+				</ol><br />
+			</li>
+			<li><details><summary><span class="que">Session（会话）</span></summary>
+				<img src="../img/Session原理.jpg" width=500px /></details>
+				<ol>
+					<li>HttpSession (HttpServletRequest).<span>getSession</span>()　//　等价于参数为true<br />
+						　　先查看请求中有没有SessionId，如果没有服务器则创建一个Session对象</li>
+					<li>void (HttpSession).<span>setAttribute</span>(String name, Object value)　//　绑定对象</li>
+					<li>Object (HttpSession).<span>getAttribute</span>(String name)　//　获取绑定对象</li>
+					<li>void (HttpSession).<span>removeAttribute</span>(String name)　//　移除绑定对象</li>
+					<li>String (HttpSession).<span>getId</span>()　//　获取sessionId</li> 
+					<li>void (HttpSession).<span>invalidate</span>()　//　删除Session对象</li>
+					<li>修改Session的缺省时间限制:默认30分钟
+						<ol>
+							<li>void <span>setMaxInactiveInterval</span>(int interval)　//　修改Session超时时间<br />
+							<li>修改tomcat中conf/web.xml文件的设置：<br />
+								<details><summary>&lt;session-config&gt;</summary>
+								<span class="none">　　&lt;session-timout&gt;30&lt;/session-timout&gt;<br />
+								　&lt;/session-config&gt;</span></details></li>
+						</ol>
+					</li>
+					<li>URL重写： 在原来的地址后面加上SessionId，这样即使禁用了Cookie，也能发送SessionId
+						<ol>
+							<li>String <span>encodeURL</span>(String url)　//　链接地址或表单提交时使用</li>
+							<li>String <span>encodeRedirectURL</span>(String url)　//　重定向时使用</li> 
+ 
+						</ol>
+					</li>
+					<li>优点：
+						<ol>
+							<li>安全： 将状态保存在服务器</li>
+							<li>能够保存更多的数据，Cookie大约保存4k</li>
+							<li>能够保存的数据类型更丰富，Cookie只能保存字符串</li>
+						</ol>
+						<ul>
+							<li>ps: 占用服务器内存，如果用户量过大，会严重影响服务器的性能</li>
+						</ul>
+					</li> 
+				</ol><br />
+			</li>
+			<li><details><summary><span class="que">过滤器</span></summary>
+				<img src="../img/过滤器执行流程.jpg" width=480px /></details>
+				<ol>
+					<li>过滤API有3个常用接口：Filter, FilterChain, FilterConfig</li>
+					<li>如何编写过滤器
+						<ol>
+							<li>编写一个java类现实Filter接口
+								<ul>
+									<li>Filter接口包含三个必须实现的方法：
+										<ol>
+											<li>void <span>init</span>(FilterConfig filterConfig)</li>
+											<li>void <span>doFilter</span>(ServletRequest request, ServletResponse response, FilterChain chain)</li>
+											<li>void <span>destroy</span>()</li> 
+										</ol>
+									</li>
+								</ul>
+							</li>
+							<li>实现拦截处理逻辑
+								<ul>
+									<li>HttpServletRequest request = (HttpServletRequest)arg0;</li>
+									<li>HttpServletResponse response = (HttpServletResponse)arg1;</li>
+									<li>......</li>
+									<li>chain.<span>doFilter</span>(arg0, arg1);　//　继续向后调用</li> 
+								</ul>
+							</li>
+							<li>将过滤器添加到Web应用中
+								<ul>
+									<li><details><summary>&lt;<span class="tag">filter</span>&gt;</summary>
+										<span class="none">　　&lt;filter-name&gt;filter1&lt;/filter-name&gt;<br />
+										　　&lt;filter-class&gt;web.xxxServlet&lt;/Servlet-class&gt;<br />
+										　　&lt;init-param&gt;　//　由FilterConfig读取: String <span>getInitParameter</span>(String name)<br />
+										　　　　&lt;param-name&gt;illeaglStr&lt;/param-name&gt;<br />
+										　　　　&lt;param-value&gt;value&lt;param-value&gt;<br />
+										　　&lt;init-param&gt;<br />
+										　&lt;filter&gt;<br />
+										　&lt;filter-mapping&gt;<br />
+										　　&lt;filter-name&gt;filter1&lt;/filter-name&gt;<br />
+										　　&lt;url-pattern&gt;/xxx&lt;/url-pattern&gt;<br />
+										　&lt;/filter-mapping&gt;</span></details>
+									</li>
+								</ul>
+							</li>
+							<li>过滤器和Web应用一起打包部署</li>
+						</ol>
+					</li>
+					<li>过滤器的优先级： 依据&lt;filter-mapping&gt;的先后顺序来调用各个过滤器</li>
+					<li>过滤器的有点：
+						<ol>
+							<li>实现代码“可插拔性”： 即增加或减少某个功能模块，不会影响程序的正常执行</li>
+							<li>可将多个相同处理逻辑的模块集中写在过滤器里面，方便代码的维护???</li>
+						</ol>
+					</li>
+				</ol><br />
+			</li>
+			<li><span class="que">监听器</span>
+				<ul>
+					<li>容器产生的两大类事件
+						<ol>
+							<li>生命周期相关的事件
+								<ol>
+									<li>ServletRequestListener
+										<ol>
+											<li>void <span>requestInitialized</span>(ServletRequestEvent sre)</li> 
+											<li>void <span>requestDestroyed</span>(ServletRequestEvent sre)</li> 
+										</ol>
+									</li>
+									<li>HttpSessionListener
+										<ol>
+											<li>void <span>sessionCreated</span>(HttpSessionEvent se)</li> 
+ 											<li>void <span>sessionDestroyed</span>(HttpSessionEvent se)</li>
+										</ol>
+									</li>
+									<li>ServletContextListener
+										<ol>
+ 											<li>void <span>contextInitialized</span>(ServletContextEvent sce)</li> 
+											<li>void <span>contextDestroyed</span>(ServletContextEvent sce)</li> 
+										</ol>
+									</li>
+								</ol>
+							</li>
+							<li>绑定数据相关的事件
+								<ol>
+									<li>ServletRequestAttributeListener
+										<ol>
+											<li>void <span>attributeAdded</span>(ServletRequestAttributeEvent srae)</li> 
+ 											<li>void <span>attributeRemoved</span>(ServletRequestAttributeEvent srae)</li> 
+ 											<li>void <span>attributeReplaced</span>(ServletRequestAttributeEvent srae)</li> 
+										</ol>
+									</li>
+									<li>HttpSessionAttributeListener: 方法同上</li>
+									<li>ServletContextAttributeListener: 方法同上</li>
+								</ol>
+							</li>
+						</ol>
+					</li>
+					<li>如何编写监听器
+						<ol>
+							<li>编写Java类，依据监听的事件类型选择实现相应的监听器接口</li>
+							<li>在监听器接口方法中，实现相应的监听处理逻辑</li>
+							<li>在web.xml文件中注册该监听器<br />
+								<details><summary>&lt;listener&gt;</summary>
+								<span class="none">　　&lt;listener-class&gt;web.CouListener&lt;/listener-class&gt;<br />
+								　&lt;/listener&gt;</span></details>
+								ps:实现相同的Listener接口的多个监听器，在执行时按web.xml注册出现的顺序来决定
+							</li>
+						</ol>
+					</li>
+				</ul>
+			</li>
+			<li><span class="que"></span>
+				<ul>
+					<li>
+				</ul>
+			</li>
+			<li><span class="que"></span>
+				<ul>
+					<li>
+				</ul>
+			</li>
+			<li><span class="que"></span>
+				<ul>
+					<li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="JSP">
+		<h2>JSP</h2>
+		<ul>
+			<li><span class="que">编写规范</span>
+				<ol>
+					<li>HTML: --- service()中out.<span>write</span>()</li>
+					<li>注释：
+						<ol>
+							<li>&lt;!--  --&gt;: 包含的Java代码会被执行</li>
+							<li>&lt;%--  --%&gt;: 包含的Java代码不会被执行</li>
+						</ol>
+					</li>
+					<li>Java代码
+						<ol>
+							<li>JSP表达式： &lt;%=  %&gt; -- service()中out.print()　--　${}</li>
+							<li>JSP小脚本： &lt;%  %&gt; -- 原封不动到service()　--　&lt;c:xxx　　&gt;...&lt;/c:xxx&gt;</li>
+							<li>JSP声明： &lt;%!  %&gt; -- Servlet类中成员属性或成员方法</li>
+						</ol>
+					</li>
+					<li>指令: &lt;%@ <span class="val">指令名 属性=值</span> %&gt;
+						<ol>
+							<li><span class="tag">page</span>指令：导包、设置页面属性
+								<ul>
+									<li>&lt;%@ page <span class="att">import</span>="java.util.*,java.sql.*" contentType="text/html;<br />
+										　　charset=utf-8" <span class="att">pageEncoding</span>="utf-8" <span class="att">errorPage</span>="a4.jsp"<br />
+										　　<span class="att">isErrorPage</span>="true" <span class="att">session</span>="false"&gt;</li>
+								</ul>
+							</li>
+							<li><span class="tag">include</span>指令： &lt;%@ include file="url" %&gt;</li>
+							<li><span class="tag">taglib</span>指令：&lt;%@ taglib <span class="att">uri</span>="标签的命名空间" <span class="att">prefix</span>="命名空间的前缀"&gt;<br />// 用于导入jsp标签</li>
+						</ol>
+					</li>
+				</ol><br />
+			</li>
+			<li><details><summary><span class="que">隐含对象</span></summary>
+				<img src="../img/隐含对象.jpg" width=450px />
+				<img src="../img/隐含对象2.jpg" width=450px /></details>
+				<ul>
+					<li>
+				</ul><br />
+			</li>
+			<li><details><summary><span class="que">JSP运行原理</span></summary>
+				<img src="../img/JSP如何运行.jpg" width=480px /></details><br />
+			</li>
+			<li><span class="que">EL表达式</span>
+				<ul>
+					<li><span class="att">JavaBean</span>: 一个公共的类，含有一个空参的构造方法一些属性和访问这些属性的get/set方法</li>
+					<li>EL表达式的作用：
+						<ol>
+							<li>访问Bean的属性： 容器会依次从<span class="val">pageContext,request,session,application</span>中查找，<br />
+								　　　　　　　　　调用"getxxx"方法输出
+								<ol>
+									<li>${对象名.属性名}　${user.name}</li>
+									<li>${对象名["属性名"]}
+										<ol>
+											<li>${user["name"]}　//　[]中出现绑定名</li>
+											<li>${user.interest[0]}　//　[]中出现从0开始的下标</li>
+										</ol>
+									</li>
+								</ol>
+								<ul>
+									<li>如果没有为name属性赋值，输出""，不会输出null</li>
+									<li>如果绑定名写错，输出""，不会报空指针异常</li>
+									<li>指定对象查找范围： ${pageScope/requestScope/sessionScope/applicationScope.对象名.属性名}</li>
+								</ul>
+							</li>
+							<li>输出简单的运算结果
+								<ol>
+									<li>算术运算： ${1+1}　　${"100"+"200"}　//　300，"+"只能求和，不能连接字符串</li>
+									<li>关系运算： ${1>2}　　${str=="abc"}</li>
+									<li>逻辑运算： ${1>0 &amp;&amp; 2&lt;3}</li>
+									<li>empty运算： ${empty str1}　　${empty null}<br />
+										　　　　　　用来判断一个字符串或集合是否为空，以下情况结果为true：<br />
+										　　　　　　空字符串，空集合，值为null，找不到对应的值</li>
+								</ol>
+							</li>
+							<li>获取请求参数值
+								<ol>
+									<li>${param.username}　　　等价于　　request.getParameter("username");</li>
+									<li>${paramValues.city}　　等价于　　request.getParameterValues("city");</li>
+								</ol>
+							</li>
+						</ol>
+					</li>
+				</ul><br />
+			</li>
+			<li><span class="que">JSTL ???</span>
+				<ul>
+					<li>&lt;%@<span class="tag">taglib</span> <span class="att">uri</span>="uri" <span class="att">prefix</span>="x"%&gt;</li> 
+				</ul>
+				<ol>
+					<li>&lt;c:<span class="tag">if</span> <span class="att">test</span>="" <span class="att">var</span>="" scope=""&gt;内容&lt;/c:if&gt;
+						<ol>
+							<li>test属性： 为true时，执行标签体的内容</li>
+							<li>var属性： 指定一个绑定名称，绑定test的值</li>
+						</ol>
+					</li>
+					<li><details><summary>&lt;c:<span class="tag">choose</span>&gt;</summary>
+						<span class="none">　　&lt;c:when test=""&gt;内容&lt;/c:when&gt;　//　when可出现1次或多次<br />
+						　　......<br />
+						　　&lt;c:otherwise&gt;内容&lt;/c:therwise&gt;　//　otherwise可出现0次或1次<br />
+						　&lt;/c:choose&gt;</span></details>
+					</li>
+					<li><details><summary>&lt;c:<span class="tag">forEach</span> <span class="att">iteams</span>="${...}" <span class="att">var</span>="e" <span class="att">varStatus</span>="s"&gt;</summary>
+						<span class="none">　　...${e.name}...${s.<span class="val">index</span>}...${s.<span class="val">count</span>}...<br />
+						　&lt;/c:forEach&gt;</span></details>
+						<ol>
+							<li>items属性： 指定要遍历的集合</li>
+							<li>var属性： 指定一个绑定名称，容器每次从集合取一个对象，然后绑定到pageContext上</li>
+							<li>varStatus属性： 指定一个绑定名称，绑定值是一个由容器创建的对象，<br />
+								　　　　　　　　该对象封装了当前迭代的状态</li>
+						</ol>
+					</li>
+					<li>&lt;c:<span class="tag">set</span> <span class="att">var</span>= <span class="att">value</span>= &gt;</li>
+					<li><span class="que2">自定义标签</span>
+						<ol>
+							<li>编写Java类，继承SimpleTagSupport
+								<ul>
+									<li>标签中的属性在Java类中创建全局变量，并设置get/set方法</li>
+								</ul>
+							</li>
+							<li>在doTag方法中添加处理逻辑</li>
+							<li><details><summary>配置标签说明文件</summary>
+								<span class="none">&lt;taglib ...&gt;<br />
+								　　&lt;tlib-version&gt;版本&lt;/tlib-version&gt;<br />
+								　　&lt;short-name&gt;prefix值&lt;/short-name&gt;<br />
+								　　&lt;uri&gt;uri值&lt;/uri&gt;<br />
+								　　&lt;tag&gt;<br />
+								　　　　&lt;name&gt;标签名&lt;/name&gt;<br />
+								　　　　&lt;tag-class&gt;类名&lt;/tag-class&gt;<br />
+								　　　　&lt;body-content&gt;定义标签内容empty/scriptless/...&lt;/body-contetn&gt;<br />
+								　　　　&lt;attribute&gt;<br />
+								　　　　　　&lt;name&gt;属性名&lt;/name&gt;<br />
+								　　　　　　&lt;required&gt;是否必须设置true/false&lt;/required&gt;<br />
+								　　　　　　&lt;rtexpvalue&gt;是否能制定一个JSP动态元素true/false&lt;/rtexpvalue&gt;<br />
+								　　　　&lt;/attribute&gt;<br />
+								　　&lt;/tag&gt;<br />
+								　&lt;/taglib&gt;</span></details></li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+			<li><span class="que"></span>
+				<ul>
+					<li>
+				</ul>
+			</li>
+			<li><span class="que"></span>
+				<ul>
+					<li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>提升性能</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h500">
+        <div class="css-live-wrap w33p">
+            <div class="caption">连接字符串</div>
+            <div class="caption">Array.prototype.join()</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+                /*** 慢 ***/
+                var str = "I ";
+                str += "am ";
+                str += "hero";
+
+                /*** 快 ***/
+                function StringBuffer() {
+                    this._strings_ = new Array();
+                }
+
+                StringBuffer.prototype.append = function(str) {
+                    this._strings_.push(str);
+                }
+
+                StringBuffer.prototype.toString = function() {
+                    return this._strings_.join("");
+                }
+
+                var buffer = new StringBuffer();
+                buffer.append("I ");
+                buffer.append("am ");
+                buffer.append("hero");
+                var result = buffer.toString(); // "I am hero"
+
+
+        </script>
+    </section>
+</body>
+
+</html>

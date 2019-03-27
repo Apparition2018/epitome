@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>ex-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">图片相对文字中间位置排对齐</div>
+            <div class="caption">利用 height: 1ex; 实现</div>
+            <div class="centered" id="eg1">
+                <span>LiangJieHui</span>
+                <i class="down"></i>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg1 {
+                color: #666;
+                font-size: 0;
+            }
+
+            #eg1 span {
+                font-size: 16px;
+            }
+
+            #eg1 .down {
+                display: inline-block;
+                width: 20px;
+                /* 1ex就是1个x的高度 */
+                height: 1ex;
+                font-size: 16px;
+                background: url('../../../img/down.png') no-repeat center;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

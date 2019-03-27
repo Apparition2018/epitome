@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="springboot.dao.eip.KmReviewMainMapper" >
+  <resultMap id="BaseResultMap" type="springboot.domain.eip.KmReviewMain" >
+    <id column="fd_id" property="fdId" jdbcType="VARCHAR" />
+    <result column="fd_last_modified_time" property="fdLastModifiedTime" jdbcType="TIMESTAMP" />
+    <result column="doc_subject" property="docSubject" jdbcType="VARCHAR" />
+    <result column="fd_current_number" property="fdCurrentNumber" jdbcType="NUMERIC" />
+    <result column="fd_feedback_modify" property="fdFeedbackModify" jdbcType="VARCHAR" />
+    <result column="fd_feedback_executed" property="fdFeedbackExecuted" jdbcType="NUMERIC" />
+    <result column="fd_number" property="fdNumber" jdbcType="VARCHAR" />
+    <result column="doc_creator_id" property="docCreatorId" jdbcType="VARCHAR" />
+    <result column="doc_create_time" property="docCreateTime" jdbcType="TIMESTAMP" />
+    <result column="fd_department_id" property="fdDepartmentId" jdbcType="VARCHAR" />
+    <result column="doc_publish_time" property="docPublishTime" jdbcType="TIMESTAMP" />
+    <result column="doc_read_count" property="docReadCount" jdbcType="NUMERIC" />
+    <result column="extend_file_path" property="extendFilePath" jdbcType="VARCHAR" />
+    <result column="fd_use_form" property="fdUseForm" jdbcType="TINYINT" />
+    <result column="doc_status" property="docStatus" jdbcType="VARCHAR" />
+    <result column="auth_att_nodownload" property="authAttNodownload" jdbcType="TINYINT" />
+    <result column="auth_att_nocopy" property="authAttNocopy" jdbcType="TINYINT" />
+    <result column="auth_att_noprint" property="authAttNoprint" jdbcType="TINYINT" />
+    <result column="auth_reader_flag" property="authReaderFlag" jdbcType="TINYINT" />
+    <result column="fd_change_reader_flag" property="fdChangeReaderFlag" jdbcType="TINYINT" />
+    <result column="fd_change_att" property="fdChangeAtt" jdbcType="TINYINT" />
+    <result column="fd_model_name" property="fdModelName" jdbcType="VARCHAR" />
+    <result column="fd_model_id" property="fdModelId" jdbcType="VARCHAR" />
+    <result column="fd_work_id" property="fdWorkId" jdbcType="VARCHAR" />
+    <result column="fd_phase_id" property="fdPhaseId" jdbcType="VARCHAR" />
+    <result column="fd_template_id" property="fdTemplateId" jdbcType="VARCHAR" />
+    <result column="doc_eval_count" property="docEvalCount" jdbcType="INTEGER" />
+    <result column="sync_data_to_calendar_time" property="syncDataToCalendarTime" jdbcType="NVARCHAR" />
+    <result column="fd_disable_mobile_form" property="fdDisableMobileForm" jdbcType="TINYINT" />
+    <result column="fd_rbp_flag" property="fdRbpFlag" jdbcType="TINYINT" />
+    <result column="fd_title_regulation" property="fdTitleRegulation" jdbcType="NVARCHAR" />
+    <result column="auth_area_id" property="authAreaId" jdbcType="NVARCHAR" />
+    <result column="fd_can_circularize" property="fdCanCircularize" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="springboot.domain.eip.KmReviewMainWithBLOBs" extends="BaseResultMap" >
+    <result column="extend_data_xml" property="extendDataXml" jdbcType="LONGVARCHAR" />
+    <result column="doc_content" property="docContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    fd_id, fd_last_modified_time, doc_subject, fd_current_number, fd_feedback_modify, 
+    fd_feedback_executed, fd_number, doc_creator_id, doc_create_time, fd_department_id, 
+    doc_publish_time, doc_read_count, extend_file_path, fd_use_form, doc_status, auth_att_nodownload, 
+    auth_att_nocopy, auth_att_noprint, auth_reader_flag, fd_change_reader_flag, fd_change_att, 
+    fd_model_name, fd_model_id, fd_work_id, fd_phase_id, fd_template_id, doc_eval_count, 
+    sync_data_to_calendar_time, fd_disable_mobile_form, fd_rbp_flag, fd_title_regulation, 
+    auth_area_id, fd_can_circularize
+  </sql>
+  <sql id="Blob_Column_List" >
+    extend_data_xml, doc_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="springboot.domain.eip.KmReviewMainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from km_review_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="springboot.domain.eip.KmReviewMainExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from km_review_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from km_review_main
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from km_review_main
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="springboot.domain.eip.KmReviewMainExample" >
+    delete from km_review_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="springboot.domain.eip.KmReviewMainWithBLOBs" >
+    insert into km_review_main (fd_id, fd_last_modified_time, doc_subject, 
+      fd_current_number, fd_feedback_modify, fd_feedback_executed, 
+      fd_number, doc_creator_id, doc_create_time, 
+      fd_department_id, doc_publish_time, doc_read_count, 
+      extend_file_path, fd_use_form, doc_status, 
+      auth_att_nodownload, auth_att_nocopy, auth_att_noprint, 
+      auth_reader_flag, fd_change_reader_flag, fd_change_att, 
+      fd_model_name, fd_model_id, fd_work_id, 
+      fd_phase_id, fd_template_id, doc_eval_count, 
+      sync_data_to_calendar_time, fd_disable_mobile_form, 
+      fd_rbp_flag, fd_title_regulation, auth_area_id, 
+      fd_can_circularize, extend_data_xml, doc_content
+      )
+    values (#{fdId,jdbcType=VARCHAR}, #{fdLastModifiedTime,jdbcType=TIMESTAMP}, #{docSubject,jdbcType=VARCHAR}, 
+      #{fdCurrentNumber,jdbcType=NUMERIC}, #{fdFeedbackModify,jdbcType=VARCHAR}, #{fdFeedbackExecuted,jdbcType=NUMERIC}, 
+      #{fdNumber,jdbcType=VARCHAR}, #{docCreatorId,jdbcType=VARCHAR}, #{docCreateTime,jdbcType=TIMESTAMP}, 
+      #{fdDepartmentId,jdbcType=VARCHAR}, #{docPublishTime,jdbcType=TIMESTAMP}, #{docReadCount,jdbcType=NUMERIC}, 
+      #{extendFilePath,jdbcType=VARCHAR}, #{fdUseForm,jdbcType=TINYINT}, #{docStatus,jdbcType=VARCHAR}, 
+      #{authAttNodownload,jdbcType=TINYINT}, #{authAttNocopy,jdbcType=TINYINT}, #{authAttNoprint,jdbcType=TINYINT}, 
+      #{authReaderFlag,jdbcType=TINYINT}, #{fdChangeReaderFlag,jdbcType=TINYINT}, #{fdChangeAtt,jdbcType=TINYINT}, 
+      #{fdModelName,jdbcType=VARCHAR}, #{fdModelId,jdbcType=VARCHAR}, #{fdWorkId,jdbcType=VARCHAR}, 
+      #{fdPhaseId,jdbcType=VARCHAR}, #{fdTemplateId,jdbcType=VARCHAR}, #{docEvalCount,jdbcType=INTEGER}, 
+      #{syncDataToCalendarTime,jdbcType=NVARCHAR}, #{fdDisableMobileForm,jdbcType=TINYINT}, 
+      #{fdRbpFlag,jdbcType=TINYINT}, #{fdTitleRegulation,jdbcType=NVARCHAR}, #{authAreaId,jdbcType=NVARCHAR}, 
+      #{fdCanCircularize,jdbcType=TINYINT}, #{extendDataXml,jdbcType=LONGVARCHAR}, #{docContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="springboot.domain.eip.KmReviewMainWithBLOBs" >
+    insert into km_review_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdId != null" >
+        fd_id,
+      </if>
+      <if test="fdLastModifiedTime != null" >
+        fd_last_modified_time,
+      </if>
+      <if test="docSubject != null" >
+        doc_subject,
+      </if>
+      <if test="fdCurrentNumber != null" >
+        fd_current_number,
+      </if>
+      <if test="fdFeedbackModify != null" >
+        fd_feedback_modify,
+      </if>
+      <if test="fdFeedbackExecuted != null" >
+        fd_feedback_executed,
+      </if>
+      <if test="fdNumber != null" >
+        fd_number,
+      </if>
+      <if test="docCreatorId != null" >
+        doc_creator_id,
+      </if>
+      <if test="docCreateTime != null" >
+        doc_create_time,
+      </if>
+      <if test="fdDepartmentId != null" >
+        fd_department_id,
+      </if>
+      <if test="docPublishTime != null" >
+        doc_publish_time,
+      </if>
+      <if test="docReadCount != null" >
+        doc_read_count,
+      </if>
+      <if test="extendFilePath != null" >
+        extend_file_path,
+      </if>
+      <if test="fdUseForm != null" >
+        fd_use_form,
+      </if>
+      <if test="docStatus != null" >
+        doc_status,
+      </if>
+      <if test="authAttNodownload != null" >
+        auth_att_nodownload,
+      </if>
+      <if test="authAttNocopy != null" >
+        auth_att_nocopy,
+      </if>
+      <if test="authAttNoprint != null" >
+        auth_att_noprint,
+      </if>
+      <if test="authReaderFlag != null" >
+        auth_reader_flag,
+      </if>
+      <if test="fdChangeReaderFlag != null" >
+        fd_change_reader_flag,
+      </if>
+      <if test="fdChangeAtt != null" >
+        fd_change_att,
+      </if>
+      <if test="fdModelName != null" >
+        fd_model_name,
+      </if>
+      <if test="fdModelId != null" >
+        fd_model_id,
+      </if>
+      <if test="fdWorkId != null" >
+        fd_work_id,
+      </if>
+      <if test="fdPhaseId != null" >
+        fd_phase_id,
+      </if>
+      <if test="fdTemplateId != null" >
+        fd_template_id,
+      </if>
+      <if test="docEvalCount != null" >
+        doc_eval_count,
+      </if>
+      <if test="syncDataToCalendarTime != null" >
+        sync_data_to_calendar_time,
+      </if>
+      <if test="fdDisableMobileForm != null" >
+        fd_disable_mobile_form,
+      </if>
+      <if test="fdRbpFlag != null" >
+        fd_rbp_flag,
+      </if>
+      <if test="fdTitleRegulation != null" >
+        fd_title_regulation,
+      </if>
+      <if test="authAreaId != null" >
+        auth_area_id,
+      </if>
+      <if test="fdCanCircularize != null" >
+        fd_can_circularize,
+      </if>
+      <if test="extendDataXml != null" >
+        extend_data_xml,
+      </if>
+      <if test="docContent != null" >
+        doc_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdId != null" >
+        #{fdId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdLastModifiedTime != null" >
+        #{fdLastModifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="docSubject != null" >
+        #{docSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCurrentNumber != null" >
+        #{fdCurrentNumber,jdbcType=NUMERIC},
+      </if>
+      <if test="fdFeedbackModify != null" >
+        #{fdFeedbackModify,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFeedbackExecuted != null" >
+        #{fdFeedbackExecuted,jdbcType=NUMERIC},
+      </if>
+      <if test="fdNumber != null" >
+        #{fdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="docCreatorId != null" >
+        #{docCreatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="docCreateTime != null" >
+        #{docCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdDepartmentId != null" >
+        #{fdDepartmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="docPublishTime != null" >
+        #{docPublishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="docReadCount != null" >
+        #{docReadCount,jdbcType=NUMERIC},
+      </if>
+      <if test="extendFilePath != null" >
+        #{extendFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUseForm != null" >
+        #{fdUseForm,jdbcType=TINYINT},
+      </if>
+      <if test="docStatus != null" >
+        #{docStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="authAttNodownload != null" >
+        #{authAttNodownload,jdbcType=TINYINT},
+      </if>
+      <if test="authAttNocopy != null" >
+        #{authAttNocopy,jdbcType=TINYINT},
+      </if>
+      <if test="authAttNoprint != null" >
+        #{authAttNoprint,jdbcType=TINYINT},
+      </if>
+      <if test="authReaderFlag != null" >
+        #{authReaderFlag,jdbcType=TINYINT},
+      </if>
+      <if test="fdChangeReaderFlag != null" >
+        #{fdChangeReaderFlag,jdbcType=TINYINT},
+      </if>
+      <if test="fdChangeAtt != null" >
+        #{fdChangeAtt,jdbcType=TINYINT},
+      </if>
+      <if test="fdModelName != null" >
+        #{fdModelName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdModelId != null" >
+        #{fdModelId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdWorkId != null" >
+        #{fdWorkId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPhaseId != null" >
+        #{fdPhaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTemplateId != null" >
+        #{fdTemplateId,jdbcType=VARCHAR},
+      </if>
+      <if test="docEvalCount != null" >
+        #{docEvalCount,jdbcType=INTEGER},
+      </if>
+      <if test="syncDataToCalendarTime != null" >
+        #{syncDataToCalendarTime,jdbcType=NVARCHAR},
+      </if>
+      <if test="fdDisableMobileForm != null" >
+        #{fdDisableMobileForm,jdbcType=TINYINT},
+      </if>
+      <if test="fdRbpFlag != null" >
+        #{fdRbpFlag,jdbcType=TINYINT},
+      </if>
+      <if test="fdTitleRegulation != null" >
+        #{fdTitleRegulation,jdbcType=NVARCHAR},
+      </if>
+      <if test="authAreaId != null" >
+        #{authAreaId,jdbcType=NVARCHAR},
+      </if>
+      <if test="fdCanCircularize != null" >
+        #{fdCanCircularize,jdbcType=TINYINT},
+      </if>
+      <if test="extendDataXml != null" >
+        #{extendDataXml,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="docContent != null" >
+        #{docContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="springboot.domain.eip.KmReviewMainExample" resultType="java.lang.Integer" >
+    select count(*) from km_review_main
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update km_review_main
+    <set >
+      <if test="record.fdId != null" >
+        fd_id = #{record.fdId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdLastModifiedTime != null" >
+        fd_last_modified_time = #{record.fdLastModifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.docSubject != null" >
+        doc_subject = #{record.docSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdCurrentNumber != null" >
+        fd_current_number = #{record.fdCurrentNumber,jdbcType=NUMERIC},
+      </if>
+      <if test="record.fdFeedbackModify != null" >
+        fd_feedback_modify = #{record.fdFeedbackModify,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdFeedbackExecuted != null" >
+        fd_feedback_executed = #{record.fdFeedbackExecuted,jdbcType=NUMERIC},
+      </if>
+      <if test="record.fdNumber != null" >
+        fd_number = #{record.fdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.docCreatorId != null" >
+        doc_creator_id = #{record.docCreatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.docCreateTime != null" >
+        doc_create_time = #{record.docCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fdDepartmentId != null" >
+        fd_department_id = #{record.fdDepartmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.docPublishTime != null" >
+        doc_publish_time = #{record.docPublishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.docReadCount != null" >
+        doc_read_count = #{record.docReadCount,jdbcType=NUMERIC},
+      </if>
+      <if test="record.extendFilePath != null" >
+        extend_file_path = #{record.extendFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdUseForm != null" >
+        fd_use_form = #{record.fdUseForm,jdbcType=TINYINT},
+      </if>
+      <if test="record.docStatus != null" >
+        doc_status = #{record.docStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authAttNodownload != null" >
+        auth_att_nodownload = #{record.authAttNodownload,jdbcType=TINYINT},
+      </if>
+      <if test="record.authAttNocopy != null" >
+        auth_att_nocopy = #{record.authAttNocopy,jdbcType=TINYINT},
+      </if>
+      <if test="record.authAttNoprint != null" >
+        auth_att_noprint = #{record.authAttNoprint,jdbcType=TINYINT},
+      </if>
+      <if test="record.authReaderFlag != null" >
+        auth_reader_flag = #{record.authReaderFlag,jdbcType=TINYINT},
+      </if>
+      <if test="record.fdChangeReaderFlag != null" >
+        fd_change_reader_flag = #{record.fdChangeReaderFlag,jdbcType=TINYINT},
+      </if>
+      <if test="record.fdChangeAtt != null" >
+        fd_change_att = #{record.fdChangeAtt,jdbcType=TINYINT},
+      </if>
+      <if test="record.fdModelName != null" >
+        fd_model_name = #{record.fdModelName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdModelId != null" >
+        fd_model_id = #{record.fdModelId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdWorkId != null" >
+        fd_work_id = #{record.fdWorkId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdPhaseId != null" >
+        fd_phase_id = #{record.fdPhaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdTemplateId != null" >
+        fd_template_id = #{record.fdTemplateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.docEvalCount != null" >
+        doc_eval_count = #{record.docEvalCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.syncDataToCalendarTime != null" >
+        sync_data_to_calendar_time = #{record.syncDataToCalendarTime,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.fdDisableMobileForm != null" >
+        fd_disable_mobile_form = #{record.fdDisableMobileForm,jdbcType=TINYINT},
+      </if>
+      <if test="record.fdRbpFlag != null" >
+        fd_rbp_flag = #{record.fdRbpFlag,jdbcType=TINYINT},
+      </if>
+      <if test="record.fdTitleRegulation != null" >
+        fd_title_regulation = #{record.fdTitleRegulation,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.authAreaId != null" >
+        auth_area_id = #{record.authAreaId,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.fdCanCircularize != null" >
+        fd_can_circularize = #{record.fdCanCircularize,jdbcType=TINYINT},
+      </if>
+      <if test="record.extendDataXml != null" >
+        extend_data_xml = #{record.extendDataXml,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.docContent != null" >
+        doc_content = #{record.docContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update km_review_main
+    set fd_id = #{record.fdId,jdbcType=VARCHAR},
+      fd_last_modified_time = #{record.fdLastModifiedTime,jdbcType=TIMESTAMP},
+      doc_subject = #{record.docSubject,jdbcType=VARCHAR},
+      fd_current_number = #{record.fdCurrentNumber,jdbcType=NUMERIC},
+      fd_feedback_modify = #{record.fdFeedbackModify,jdbcType=VARCHAR},
+      fd_feedback_executed = #{record.fdFeedbackExecuted,jdbcType=NUMERIC},
+      fd_number = #{record.fdNumber,jdbcType=VARCHAR},
+      doc_creator_id = #{record.docCreatorId,jdbcType=VARCHAR},
+      doc_create_time = #{record.docCreateTime,jdbcType=TIMESTAMP},
+      fd_department_id = #{record.fdDepartmentId,jdbcType=VARCHAR},
+      doc_publish_time = #{record.docPublishTime,jdbcType=TIMESTAMP},
+      doc_read_count = #{record.docReadCount,jdbcType=NUMERIC},
+      extend_file_path = #{record.extendFilePath,jdbcType=VARCHAR},
+      fd_use_form = #{record.fdUseForm,jdbcType=TINYINT},
+      doc_status = #{record.docStatus,jdbcType=VARCHAR},
+      auth_att_nodownload = #{record.authAttNodownload,jdbcType=TINYINT},
+      auth_att_nocopy = #{record.authAttNocopy,jdbcType=TINYINT},
+      auth_att_noprint = #{record.authAttNoprint,jdbcType=TINYINT},
+      auth_reader_flag = #{record.authReaderFlag,jdbcType=TINYINT},
+      fd_change_reader_flag = #{record.fdChangeReaderFlag,jdbcType=TINYINT},
+      fd_change_att = #{record.fdChangeAtt,jdbcType=TINYINT},
+      fd_model_name = #{record.fdModelName,jdbcType=VARCHAR},
+      fd_model_id = #{record.fdModelId,jdbcType=VARCHAR},
+      fd_work_id = #{record.fdWorkId,jdbcType=VARCHAR},
+      fd_phase_id = #{record.fdPhaseId,jdbcType=VARCHAR},
+      fd_template_id = #{record.fdTemplateId,jdbcType=VARCHAR},
+      doc_eval_count = #{record.docEvalCount,jdbcType=INTEGER},
+      sync_data_to_calendar_time = #{record.syncDataToCalendarTime,jdbcType=NVARCHAR},
+      fd_disable_mobile_form = #{record.fdDisableMobileForm,jdbcType=TINYINT},
+      fd_rbp_flag = #{record.fdRbpFlag,jdbcType=TINYINT},
+      fd_title_regulation = #{record.fdTitleRegulation,jdbcType=NVARCHAR},
+      auth_area_id = #{record.authAreaId,jdbcType=NVARCHAR},
+      fd_can_circularize = #{record.fdCanCircularize,jdbcType=TINYINT},
+      extend_data_xml = #{record.extendDataXml,jdbcType=LONGVARCHAR},
+      doc_content = #{record.docContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update km_review_main
+    set fd_id = #{record.fdId,jdbcType=VARCHAR},
+      fd_last_modified_time = #{record.fdLastModifiedTime,jdbcType=TIMESTAMP},
+      doc_subject = #{record.docSubject,jdbcType=VARCHAR},
+      fd_current_number = #{record.fdCurrentNumber,jdbcType=NUMERIC},
+      fd_feedback_modify = #{record.fdFeedbackModify,jdbcType=VARCHAR},
+      fd_feedback_executed = #{record.fdFeedbackExecuted,jdbcType=NUMERIC},
+      fd_number = #{record.fdNumber,jdbcType=VARCHAR},
+      doc_creator_id = #{record.docCreatorId,jdbcType=VARCHAR},
+      doc_create_time = #{record.docCreateTime,jdbcType=TIMESTAMP},
+      fd_department_id = #{record.fdDepartmentId,jdbcType=VARCHAR},
+      doc_publish_time = #{record.docPublishTime,jdbcType=TIMESTAMP},
+      doc_read_count = #{record.docReadCount,jdbcType=NUMERIC},
+      extend_file_path = #{record.extendFilePath,jdbcType=VARCHAR},
+      fd_use_form = #{record.fdUseForm,jdbcType=TINYINT},
+      doc_status = #{record.docStatus,jdbcType=VARCHAR},
+      auth_att_nodownload = #{record.authAttNodownload,jdbcType=TINYINT},
+      auth_att_nocopy = #{record.authAttNocopy,jdbcType=TINYINT},
+      auth_att_noprint = #{record.authAttNoprint,jdbcType=TINYINT},
+      auth_reader_flag = #{record.authReaderFlag,jdbcType=TINYINT},
+      fd_change_reader_flag = #{record.fdChangeReaderFlag,jdbcType=TINYINT},
+      fd_change_att = #{record.fdChangeAtt,jdbcType=TINYINT},
+      fd_model_name = #{record.fdModelName,jdbcType=VARCHAR},
+      fd_model_id = #{record.fdModelId,jdbcType=VARCHAR},
+      fd_work_id = #{record.fdWorkId,jdbcType=VARCHAR},
+      fd_phase_id = #{record.fdPhaseId,jdbcType=VARCHAR},
+      fd_template_id = #{record.fdTemplateId,jdbcType=VARCHAR},
+      doc_eval_count = #{record.docEvalCount,jdbcType=INTEGER},
+      sync_data_to_calendar_time = #{record.syncDataToCalendarTime,jdbcType=NVARCHAR},
+      fd_disable_mobile_form = #{record.fdDisableMobileForm,jdbcType=TINYINT},
+      fd_rbp_flag = #{record.fdRbpFlag,jdbcType=TINYINT},
+      fd_title_regulation = #{record.fdTitleRegulation,jdbcType=NVARCHAR},
+      auth_area_id = #{record.authAreaId,jdbcType=NVARCHAR},
+      fd_can_circularize = #{record.fdCanCircularize,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="springboot.domain.eip.KmReviewMainWithBLOBs" >
+    update km_review_main
+    <set >
+      <if test="fdLastModifiedTime != null" >
+        fd_last_modified_time = #{fdLastModifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="docSubject != null" >
+        doc_subject = #{docSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="fdCurrentNumber != null" >
+        fd_current_number = #{fdCurrentNumber,jdbcType=NUMERIC},
+      </if>
+      <if test="fdFeedbackModify != null" >
+        fd_feedback_modify = #{fdFeedbackModify,jdbcType=VARCHAR},
+      </if>
+      <if test="fdFeedbackExecuted != null" >
+        fd_feedback_executed = #{fdFeedbackExecuted,jdbcType=NUMERIC},
+      </if>
+      <if test="fdNumber != null" >
+        fd_number = #{fdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="docCreatorId != null" >
+        doc_creator_id = #{docCreatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="docCreateTime != null" >
+        doc_create_time = #{docCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdDepartmentId != null" >
+        fd_department_id = #{fdDepartmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="docPublishTime != null" >
+        doc_publish_time = #{docPublishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="docReadCount != null" >
+        doc_read_count = #{docReadCount,jdbcType=NUMERIC},
+      </if>
+      <if test="extendFilePath != null" >
+        extend_file_path = #{extendFilePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fdUseForm != null" >
+        fd_use_form = #{fdUseForm,jdbcType=TINYINT},
+      </if>
+      <if test="docStatus != null" >
+        doc_status = #{docStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="authAttNodownload != null" >
+        auth_att_nodownload = #{authAttNodownload,jdbcType=TINYINT},
+      </if>
+      <if test="authAttNocopy != null" >
+        auth_att_nocopy = #{authAttNocopy,jdbcType=TINYINT},
+      </if>
+      <if test="authAttNoprint != null" >
+        auth_att_noprint = #{authAttNoprint,jdbcType=TINYINT},
+      </if>
+      <if test="authReaderFlag != null" >
+        auth_reader_flag = #{authReaderFlag,jdbcType=TINYINT},
+      </if>
+      <if test="fdChangeReaderFlag != null" >
+        fd_change_reader_flag = #{fdChangeReaderFlag,jdbcType=TINYINT},
+      </if>
+      <if test="fdChangeAtt != null" >
+        fd_change_att = #{fdChangeAtt,jdbcType=TINYINT},
+      </if>
+      <if test="fdModelName != null" >
+        fd_model_name = #{fdModelName,jdbcType=VARCHAR},
+      </if>
+      <if test="fdModelId != null" >
+        fd_model_id = #{fdModelId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdWorkId != null" >
+        fd_work_id = #{fdWorkId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdPhaseId != null" >
+        fd_phase_id = #{fdPhaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdTemplateId != null" >
+        fd_template_id = #{fdTemplateId,jdbcType=VARCHAR},
+      </if>
+      <if test="docEvalCount != null" >
+        doc_eval_count = #{docEvalCount,jdbcType=INTEGER},
+      </if>
+      <if test="syncDataToCalendarTime != null" >
+        sync_data_to_calendar_time = #{syncDataToCalendarTime,jdbcType=NVARCHAR},
+      </if>
+      <if test="fdDisableMobileForm != null" >
+        fd_disable_mobile_form = #{fdDisableMobileForm,jdbcType=TINYINT},
+      </if>
+      <if test="fdRbpFlag != null" >
+        fd_rbp_flag = #{fdRbpFlag,jdbcType=TINYINT},
+      </if>
+      <if test="fdTitleRegulation != null" >
+        fd_title_regulation = #{fdTitleRegulation,jdbcType=NVARCHAR},
+      </if>
+      <if test="authAreaId != null" >
+        auth_area_id = #{authAreaId,jdbcType=NVARCHAR},
+      </if>
+      <if test="fdCanCircularize != null" >
+        fd_can_circularize = #{fdCanCircularize,jdbcType=TINYINT},
+      </if>
+      <if test="extendDataXml != null" >
+        extend_data_xml = #{extendDataXml,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="docContent != null" >
+        doc_content = #{docContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="springboot.domain.eip.KmReviewMainWithBLOBs" >
+    update km_review_main
+    set fd_last_modified_time = #{fdLastModifiedTime,jdbcType=TIMESTAMP},
+      doc_subject = #{docSubject,jdbcType=VARCHAR},
+      fd_current_number = #{fdCurrentNumber,jdbcType=NUMERIC},
+      fd_feedback_modify = #{fdFeedbackModify,jdbcType=VARCHAR},
+      fd_feedback_executed = #{fdFeedbackExecuted,jdbcType=NUMERIC},
+      fd_number = #{fdNumber,jdbcType=VARCHAR},
+      doc_creator_id = #{docCreatorId,jdbcType=VARCHAR},
+      doc_create_time = #{docCreateTime,jdbcType=TIMESTAMP},
+      fd_department_id = #{fdDepartmentId,jdbcType=VARCHAR},
+      doc_publish_time = #{docPublishTime,jdbcType=TIMESTAMP},
+      doc_read_count = #{docReadCount,jdbcType=NUMERIC},
+      extend_file_path = #{extendFilePath,jdbcType=VARCHAR},
+      fd_use_form = #{fdUseForm,jdbcType=TINYINT},
+      doc_status = #{docStatus,jdbcType=VARCHAR},
+      auth_att_nodownload = #{authAttNodownload,jdbcType=TINYINT},
+      auth_att_nocopy = #{authAttNocopy,jdbcType=TINYINT},
+      auth_att_noprint = #{authAttNoprint,jdbcType=TINYINT},
+      auth_reader_flag = #{authReaderFlag,jdbcType=TINYINT},
+      fd_change_reader_flag = #{fdChangeReaderFlag,jdbcType=TINYINT},
+      fd_change_att = #{fdChangeAtt,jdbcType=TINYINT},
+      fd_model_name = #{fdModelName,jdbcType=VARCHAR},
+      fd_model_id = #{fdModelId,jdbcType=VARCHAR},
+      fd_work_id = #{fdWorkId,jdbcType=VARCHAR},
+      fd_phase_id = #{fdPhaseId,jdbcType=VARCHAR},
+      fd_template_id = #{fdTemplateId,jdbcType=VARCHAR},
+      doc_eval_count = #{docEvalCount,jdbcType=INTEGER},
+      sync_data_to_calendar_time = #{syncDataToCalendarTime,jdbcType=NVARCHAR},
+      fd_disable_mobile_form = #{fdDisableMobileForm,jdbcType=TINYINT},
+      fd_rbp_flag = #{fdRbpFlag,jdbcType=TINYINT},
+      fd_title_regulation = #{fdTitleRegulation,jdbcType=NVARCHAR},
+      auth_area_id = #{authAreaId,jdbcType=NVARCHAR},
+      fd_can_circularize = #{fdCanCircularize,jdbcType=TINYINT},
+      extend_data_xml = #{extendDataXml,jdbcType=LONGVARCHAR},
+      doc_content = #{docContent,jdbcType=LONGVARCHAR}
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="springboot.domain.eip.KmReviewMain" >
+    update km_review_main
+    set fd_last_modified_time = #{fdLastModifiedTime,jdbcType=TIMESTAMP},
+      doc_subject = #{docSubject,jdbcType=VARCHAR},
+      fd_current_number = #{fdCurrentNumber,jdbcType=NUMERIC},
+      fd_feedback_modify = #{fdFeedbackModify,jdbcType=VARCHAR},
+      fd_feedback_executed = #{fdFeedbackExecuted,jdbcType=NUMERIC},
+      fd_number = #{fdNumber,jdbcType=VARCHAR},
+      doc_creator_id = #{docCreatorId,jdbcType=VARCHAR},
+      doc_create_time = #{docCreateTime,jdbcType=TIMESTAMP},
+      fd_department_id = #{fdDepartmentId,jdbcType=VARCHAR},
+      doc_publish_time = #{docPublishTime,jdbcType=TIMESTAMP},
+      doc_read_count = #{docReadCount,jdbcType=NUMERIC},
+      extend_file_path = #{extendFilePath,jdbcType=VARCHAR},
+      fd_use_form = #{fdUseForm,jdbcType=TINYINT},
+      doc_status = #{docStatus,jdbcType=VARCHAR},
+      auth_att_nodownload = #{authAttNodownload,jdbcType=TINYINT},
+      auth_att_nocopy = #{authAttNocopy,jdbcType=TINYINT},
+      auth_att_noprint = #{authAttNoprint,jdbcType=TINYINT},
+      auth_reader_flag = #{authReaderFlag,jdbcType=TINYINT},
+      fd_change_reader_flag = #{fdChangeReaderFlag,jdbcType=TINYINT},
+      fd_change_att = #{fdChangeAtt,jdbcType=TINYINT},
+      fd_model_name = #{fdModelName,jdbcType=VARCHAR},
+      fd_model_id = #{fdModelId,jdbcType=VARCHAR},
+      fd_work_id = #{fdWorkId,jdbcType=VARCHAR},
+      fd_phase_id = #{fdPhaseId,jdbcType=VARCHAR},
+      fd_template_id = #{fdTemplateId,jdbcType=VARCHAR},
+      doc_eval_count = #{docEvalCount,jdbcType=INTEGER},
+      sync_data_to_calendar_time = #{syncDataToCalendarTime,jdbcType=NVARCHAR},
+      fd_disable_mobile_form = #{fdDisableMobileForm,jdbcType=TINYINT},
+      fd_rbp_flag = #{fdRbpFlag,jdbcType=TINYINT},
+      fd_title_regulation = #{fdTitleRegulation,jdbcType=NVARCHAR},
+      auth_area_id = #{authAreaId,jdbcType=NVARCHAR},
+      fd_can_circularize = #{fdCanCircularize,jdbcType=TINYINT}
+    where fd_id = #{fdId,jdbcType=VARCHAR}
+  </update>
+</mapper>

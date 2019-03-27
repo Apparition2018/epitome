@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>outline-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <!-- https://www.zhangxinxu.com/wordpress/2015/04/css3-radius-outline/
+        border近亲，不占据空间 -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">双边框</div>
+            <div class="caption">利用 border、outline 实现</div>
+            <div class="frame centered">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .frame {
+                width: 200px;
+                height: 120px;
+                background: indianred;
+                border: 2px solid white;
+                outline: 4px dotted indianred;
+                /* 设置 outline 与一个元素边缘或边框之间的间隙 */
+                outline-offset: 2px;
+            }
+
+        </style>
+    </section>
+</body>
+
+</html>

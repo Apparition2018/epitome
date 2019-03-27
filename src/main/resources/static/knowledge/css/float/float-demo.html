@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- 最经典的清除浮动方法 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chorme=1">
+    <title>Document</title>
+</head>
+<style>
+    .box1 {
+        width: 200px
+    }
+
+    .box2 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .a,
+    .b {
+        width: 50px;
+        height: 50px;
+        float: left;
+    }
+
+    /* :after 伪元素，在元素内容的最后面插入生成内容。这个伪元素默认是行内元素 */
+    .clearfix:after {
+        content: ' ';
+        display: table;
+        clear: both;
+    }
+
+    .clearfix {
+        /* 在IE6中触发hasLayout */
+        zoom: 1;
+    }
+</style>
+
+<body>
+    <div class="box1 clearfix" style="background-color: palevioletred;">
+        <div class="a" style="background-color: red;"></div>
+        <div class="b" style="background-color: yellow;"></div>
+    </div>
+    <div class="box2" style="background-color: aquamarine;"></div>
+</body>
+
+</html>

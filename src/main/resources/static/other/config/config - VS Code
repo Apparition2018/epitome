@@ -1,0 +1,55 @@
+文件 - 首选项 - 设置 - 用户设置（覆盖默认设置）
+{
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDelete": false,
+    "explorer.openEditors.visible": 2,
+    "git.path": "C:\\Program Files (x86)\\Git\\PortableGit\\cmd\\git.exe",
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+        "vue-html": "html",
+        "vue": "html"
+    },
+    "explorer.confirmDragAndDrop": false,
+}
+
+
+Ctrl + Shift + P - Configure Task
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run HTML file with Chrome",
+            "type": "process", // [shell, process]
+            "command": "Chrome",
+            "args": ["${file}"],
+            "windows": {
+                "command": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+            },
+            "group": "build",
+            "presentation": {
+                // Reveal the output only if unrecognized errors occur.
+                "reveal": "never" //[always,never,silent]
+            },
+            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Run HTML file with IE",
+            "type": "process", // [shell, process]
+            "command": "IE",
+            "args": ["${file}"],
+            "windows": {
+                "command": "C:/Program Files/Internet Explorer/iexplore.exe"
+            },
+            "group": "build",
+            "presentation": {
+                // Reveal the output only if unrecognized errors occur.
+                "reveal": "never" //[always,never,silent]
+            },
+            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

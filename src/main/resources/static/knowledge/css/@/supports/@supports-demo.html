@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>@supports-demo</title>
+    <link rel="icon" href="../../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@supports">@supports</a></div>
+            <div class="centered" id="eg1">
+                <div></div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg1>div {
+                width: 150px;
+                height: 150px;
+                background: #ff0844;
+                border-radius: 50%;
+            }
+
+            @supports (background: linear-gradient(180deg, #ff0844, 70%, #ffb199)) {
+                #eg1>div {
+                    background: linear-gradient(180deg, #ff0844, 70%, #ffb199)
+                }
+            }
+        </style>
+    </section>
+</body>
+
+</html>

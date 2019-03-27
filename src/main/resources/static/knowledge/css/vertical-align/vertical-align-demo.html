@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>vertical-align-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <!-- vertical-height 作用于行内元素，替换元素，表单元格 -->
+    <!-- 一个inline-block元素，如果里面没有inline内联元素，或者overflow不是visible，则该元素的基线就是其margin底边缘，否则，其基线就是元素里面最后一行内联元素的基线 -->
+    <!-- https://www.cnblogs.com/xiaohuochai/p/5271217.html#anchor3 -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">测试</div>
+            <div class="caption"></div>
+            <div class="centered" id="eg1">
+                <span class="all">
+                    <span class="oShow">test</span>XXX</span>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg1 {
+                width: 150px;
+                height: 150px;
+                line-height: 150px;
+                font-size: 40px;
+                text-align: center;
+                border: 1px solid #333;
+            }
+
+            .all {
+                border: 1px solid #333;
+            }
+
+            .oShow {
+                line-height: 20px;
+                vertical-align: middle;
+                font-size: 16px;
+                border: 1px solid #333;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">图片垂直居中</div>
+            <div class="caption"></div>
+            <div class="centered" id="eg2">
+                <img src="../../../img/穗波玉.jpg" alt="穗波玉">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg2 {
+                width: 220px;
+                line-height: 220px;
+                background-color: #f5f5f5;
+                font-size: 0;
+                text-align: center;
+                border-radius: 50%;
+            }
+
+            #eg2 img {
+                vertical-align: middle;
+                width: 180px;
+                border-radius: 50%;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">多行文字垂直居中</div>
+            <div class="centered" id="eg3">
+                <span>窗前明月光 疑似地上霜 举头望明月 低头思故乡</span>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg3 {
+                width: 200px;
+                height: 160px;
+                background-color: #f5f5f5;
+                font-size: 0;
+                text-align: center;
+            }
+            
+            #eg3::before {
+                content: '';
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+
+            }
+
+            #eg3 span {
+                display: inline-block;
+                width: 100px;
+                line-height: 30px;
+                vertical-align: middle;
+                color: #333;
+                font-size: 16px;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

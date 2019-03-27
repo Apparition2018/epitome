@@ -1,0 +1,71 @@
+package knowledge.日期和时间;
+
+import org.junit.Test;
+
+import java.util.concurrent.TimeUnit;
+
+/**
+ * TimeUnit
+ * <p>
+ * TimeUnit 是一个枚举类，NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS
+ * <p>
+ * TimeUnit 表示给定单元粒度的时间段，它提供在这些单元中进行跨单元转换和执行计时及延迟操作的实用工具方法。
+ * <p>
+ * TimeUnit 主要用于通知基于时间的方法如何解释给定的计时参数。
+ */
+public class TimeUnitDemo {
+
+    /**
+     * long	convert(long sourceDuration, TimeUnit sourceUnit)
+     * 将给定单元的时间段转换到此单元
+     */
+    @Test
+    public void convert() {
+        System.out.println(TimeUnit.MICROSECONDS.convert(1, TimeUnit.SECONDS)); // 1e6
+        System.out.println(TimeUnit.NANOSECONDS.convert(1, TimeUnit.SECONDS));  // 1e9
+    }
+
+    /**
+     * void	sleep(long timeout)
+     * 使用此单元执行 Thread.sleep.这是将时间参数转换为 Thread.sleep 方法所需格式的便捷方法
+     */
+    @Test
+    public void sleep() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
+        System.out.println("end!");
+    }
+
+    /**
+     * long	toXXX(long duration)
+     * 等效于 XXX.convert(duration, this)
+     */
+    @Test
+    public void toXXX() {
+        System.out.println(TimeUnit.SECONDS.toMicros(1));   // 1e6
+        System.out.println(TimeUnit.SECONDS.toNanos(1));    // 1e9
+    }
+
+    /**
+     * void	timedJoin(Thread thread, long timeout)
+     * 使用此时间单元执行计时的 Thread.join
+     */
+    @Test
+    public void timeJoin() throws InterruptedException {
+        TimeUnit.SECONDS.timedJoin(Thread.currentThread(), 3);
+        System.out.println("end!");
+    }
+
+    /**
+     * void	timedWait(Object obj, long timeout)
+     * 使用此时间单元执行计时的 Object.wait
+     */
+    @Test
+    public void timedWait() throws InterruptedException {
+        Object lock = new Object();
+        synchronized (lock) {
+            TimeUnit.SECONDS.timedWait(lock, 2);
+        }
+        System.out.println("end!");
+    }
+
+}

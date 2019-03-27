@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>xxx-type-demo</title>
+    <link rel="icon" href="../../../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">xxx-type</div>
+            <div class="centered" id="eg1">
+                <select>
+                    <option value="null">请选择</option>
+                    <option value=":first-of-type">:first-of-type</option>
+                    <option value=":last-of-type">:last-of-type</option>
+                    <option value="div:nth-of-type(2)">div:nth-of-type(2)</option>
+                    <option value="div:nth-of-type(3)">div:nth-of-type(3)</option>
+                    <option value=":nth-last-of-type(2)">:nth-last-of-type(2)</option>
+                    <option value=":only-of-type">:only-of-type</option>
+                </select>
+                <div>
+                    <div>&lt;div&gt;</div>
+                    <div>&lt;div&gt;</div>
+                    <p>&lt;p&gt;</p>
+                    <div>&lt;div&gt;</div>
+                    <div>&lt;div&gt;</div>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #eg1 select {
+                margin-right: 60px;
+                font-size: 14px;
+            }
+
+            #eg1>div div,
+            #eg1>div p {
+                padding: 16px 60px;
+                margin: 16px;
+                font-weight: bold;
+                text-align: center;
+                color: #ccc;
+                border: 1px solid currentColor;
+                box-shadow: 1px 1px 2px #aaa;
+            }
+        </style>
+        <script>
+            document.getElementsByTagName('select')[0].onchange = function () {
+                var selects = document.querySelectorAll("#eg1>div *");
+                selects.forEach(function (value, index, array) {
+                    value.style.color = "#ccc";
+                    value.style.boxShadow = "1px 1px 2px #aaa";
+                })
+
+                selects = document.querySelectorAll("#eg1>div " + this.value);
+                selects.forEach(function (value, index, array) {
+                    value.style.color = "forestgreen";
+                    value.style.boxShadow = "1px 1px 2px #197d19";
+                })
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">匹配属于其父元素的特定类型的第 N 个子元素的每个元素</div>
+            <div class="caption">:nth-of-type(n)</div>
+            <div class="type centered">
+                <select>
+                    <option value="">请选择</option>
+                    <option value="2n+1">2n+1</option>
+                    <option value="odd">odd</option>
+                    <option value="2n">2n</option>
+                    <option value="even">even</option>
+                    <option value="0n+1">0n+1</option>
+                    <option value="-n+3">-n+3</option>
+                </select>
+                <div>
+                    <p>&lt;p&gt;</p>
+                    <div>&lt;div&gt;</div>
+                    <div>&lt;div&gt;</div>
+                    <div>&lt;div&gt;</div>
+                    <div>&lt;div&gt;</div>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .type {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .type select {
+                margin-right: 60px;
+                font-size: 14px;
+            }
+
+            .type>div div,
+            .type>div p {
+                padding: 13px 50px;
+                margin: 15px;
+                font-weight: bold;
+                text-align: center;
+                color: #ccc;
+                border: 1px solid currentColor;
+                box-shadow: 1px 1px 2px #aaa;
+            }
+        </style>
+        <script>
+            document.getElementsByTagName('select')[1].onchange = function () {
+                var selects = document.querySelectorAll(".type>div div");
+                selects.forEach(function (value, index, array) {
+                    value.style.color = "#ccc";
+                    value.style.boxShadow = "1px 1px 2px #aaa";
+                })
+
+                selects = document.querySelectorAll(".type>div div:nth-of-type(" + this.value + ")");
+                selects.forEach(function (value, index, array) {
+                    value.style.color = "crimson";
+                    value.style.boxShadow = "1px 1px 2px #c80a32";
+                })
+            }
+        </script>
+    </section>
+</body>
+
+</html>

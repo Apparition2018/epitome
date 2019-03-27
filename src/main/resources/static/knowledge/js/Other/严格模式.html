@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>严格模式</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w33p">
+            <div class="caption">严格模式下，无法再意外创建全局变量</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict"
+            // a = "1"; // ReferenceError: a is not defined
+        </script>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">显式报错</div>
+            <div class="caption">严格模式下，引起静默失败 (silently fail) 的赋值操作会抛出异常</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict"
+
+            // 给不可写属性赋值
+            var b1 = {};
+            Object.defineProperty(b1, "x", { value: 42, writable: false });
+            // b1.x = 9; // TypeError: Cannot assign to read only property 'x' of object '#<Object>'
+
+            // 给只读属性赋值
+            var b2 = { get x() { return 17; } };
+            // b2.x = 2; // TypeError: Cannot set property x of #<Object> which has only a getter
+
+            // 给不可扩展对象的新属性赋值
+            var b3 = {};
+            Object.preventExtensions(b3);
+            // b3.newProp = "ohai"; // TypeError: Cannot add property newProp, object is not extensible
+        </script>
+    </section>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w33p">
+            <div class="caption">显式报错</div>
+            <div class="caption">严格模式下，试图删除不可删除的属性时会抛出异常</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict"
+            // delete Object.prototype; // TypeError: Cannot delete property 'prototype' of function Object() { [native code] }
+        </script>
+    </section>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w33p">
+            <div class="caption">严格模式下，函数的参数名要求唯一</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            // function sum(a, a, b, c) {}; SyntaxError: Duplicate parameter name not allowed in this context
+        </script>
+    </section>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w33p">
+            <div class="caption">严格模式下，禁止八进制数字语法</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            // var eight = 015; // SyntaxError: Octal literals are not allowed in strict mode.
+        </script>
+    </section>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w33p">
+            <div class="caption">严格模式下，禁止给原始类型(primitive)的值设置属性</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            // false.true = '';         // TypeError: Cannot create property 'true' on boolean 'false'
+            // 'with'.you = 'far away'; // TypeError: Cannot create property 'you' on string 'with'
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">静态绑定</div>
+            <div class="caption">严格模式下，禁用 with</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            var c = 17;
+            // with 中的 c 究竟是指向 全局的 c，还是 obj.c? 只有运行时才确认
+            // with (obj) { c; }; // SyntaxError: Strict mode code may not include a with statement
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">静态绑定</div>
+            <div class="caption">严格模式下，eval 仅仅为被运行的代码创建变量
+                <br />所以 eval 不会使得名称映射到外部变量或者其他局部变量
+            </div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // 正常模式下，JS有两种变量作用域：全局作用域和函数作用域
+            // 严格模式创设了第三种作用域：eval 作用域
+
+            eval("'use strict'; var d = 5; d");
+            // console.log(d); // ReferenceError: d is not defined
+        </script>
+    </section>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w33p">
+            <div class="caption">严格模式下，禁止删除声明变量</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            var e;
+            // delete e; // SyntaxError: Delete of an unqualified identifier in strict mode.
+        </script>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w33p">
+            <div class="caption">严格模式下，禁止使用 eval 或 arguments 作为变量名或函数名</div>
+            <div class="caption">SyntaxError: Unexpected eval or arguments in strict mode</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            // eval = 17;
+            // arguments++;
+            // var obj = { set p(arguments) { } };
+            // var eval;
+            // function arguments() { }
+            // var f = new Function("arguments", "'use strict'; return 17;");
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">严格模式下，arguments[i] 的值不会随与之相应的参数的值的改变而变化</div>
+            <div class="caption">同名参数的值也不会随与之相应的 arguments[i] 的值的改变而变化</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            function f(x) {
+                x = 20;
+                return [x, arguments[0]];
+            }
+            var arr = f(10); // [20, 10]
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">严格模式下，禁止访问 arguments.callee</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            var g = function () { return arguments.callee };
+            // g(); // TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+        </script>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w33p">
+            <div class="caption">安全措施</div>
+            <div class="caption">严格模式下，禁止在函数内部遍历调用栈</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            function i() {
+                "use strict";
+                i.caller;
+                i.arguments;
+            }
+            // i(); // TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">迎合未来 ECMAScript 版本</div>
+            <div class="caption">严格模式新增了保留字
+                <br/>implements, interface, let, package, private, protected, public, static, yield
+            </div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            // function package(protected) { }; // SyntaxError: Unexpected strict mode reserved word
+        </script>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w33p">
+            <div class="caption">安全措施</div>
+            <div class="caption">严格模式下的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode/Transitioning_to_strict_mode#语义差异" target="_blank">this</a>
+            </div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            function h() { return this; }
+            h();              // undefined
+            h.call(2);        // 2
+            h.apply(null);    // null
+            h.call(undefined);// undefined
+            h.bind(true)();   // true
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w33p">
+            <div class="caption">迎合未来 ECMAScript 版本</div>
+            <div class="caption">严格模式下，函数必须声明在顶层</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            "use strict";
+            if (true) {
+                function k() { }    // 没有报错?
+                k();
+            }
+            for (var i = 0; i < 5; i++) {
+                function l() { }    // 没有报错?
+                l();
+            }
+            function m() {          // 合法
+                function n() { }    // 合法
+            }
+        </script>
+    </section>
+
+
+</body>
+
+</html>

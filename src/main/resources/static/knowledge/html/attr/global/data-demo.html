@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>data-demo</title>
+	<link rel="icon" href="../../../../img/Nohara Sinnosuke.png">
+	<link rel="stylesheet" href="../../../../css/demo.css">
+</head>
+
+<body>
+	<div id="tree-js" data-leaves="47" data-plant-height="2.4"></div>
+	<section class="code-wrap h350">
+		<div class="css-live-wrap w40p">
+			<div class="caption">
+				<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/data-*">自定义数据属性</a>
+			</div>
+			<div class="caption">命名遵循 "xml名称生产规则"</div>
+			<div class="centered box">
+				<div>&lt;div id="tree-js" data-leaves="47" data-plant-height="2.4"&gt;树&lt;/div&gt;</div>
+			</div>
+		</div>
+		<style>
+			.box {
+				font-size: 14px;
+				white-space: nowrap;
+			}
+		</style>
+		<script class="code w60p" contenteditable="true">
+			/********** JS **********/
+			var tree = document.getElementById('tree-js'), leaves, plantHeight;
+
+			// 通过 getAttribute / setAttribute 获取/设置/删除自定义属性
+			// 效率比 dataset 快
+			leaves = tree.getAttribute('data-leaves');
+			tree.setAttribute('data-leaves', leaves);
+			tree.removeAttribute('data-leaves');
+
+			// 通过 dataset 获取/设置/删除自定义属性
+			// 支持 IE11+
+			tree.dataset.plantHeight++;
+			tree.dataset.age = '200';
+			delete tree.dataset.age;
+
+			// 此时html:
+			// <div id="tree" data-plant-height="null" data-age="200">树</div>
+		</script>
+	</section>
+
+	<div id="tree-jq" data-leaves="47" data-plant-height="2.4"></div>
+	<section class="code-wrap h300" id="jquery-data">
+		<div class="css-live-wrap w40p">
+			<div class="caption">jquery-data</div>
+			<div class="caption">data() 并不会影响到 DOM 元素上的 data-* 属性的改变</div>
+			<div class="centered box">
+				<div>&lt;div id="tree-jq" data-leaves="47" data-plant-height="2.4"&gt;树&lt;/div&gt;</div>
+			</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<script class="code w60p" contenteditable="true">
+			/********** jQuery **********/
+			var $tree = $('#tree-jq'), leaves, plantHeight;
+
+			// 通过 data() 获取/设置/删除自定义属性
+			leaves = $tree.data('leaves');
+			$tree.data('leaves', ++leaves);
+			$tree.removeData('leaves');
+			console.log('leaves: ' + $tree.data('leaves'));
+
+			// 通过 attr() 获取/设置/删除自定义属性
+			$tree.attr('data-leaves', 51);
+			console.log('leaves: ' + $tree[0].dataset.leaves);
+			$tree.removeAttr('data-leaves');
+		</script>
+	</section>
+</body>
+
+</html>

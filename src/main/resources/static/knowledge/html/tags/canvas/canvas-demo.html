@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+	<title>canvas-demo</title>
+	<link rel="icon" href="../../../../img/Nohara Sinnosuke.png">
+	<link rel="stylesheet" href="../../../../css/demo.css">
+</head>
+
+<body>
+	<section class="code-wrap h350">
+		<div class="css-live-wrap w40p">
+			<div class="caption">canvas 绘制形状</div>
+			<canvas id="canvas-1" class="centered" width="200" height="200">
+				您的浏览器不支持 HTML5 canvas 标签。
+			</canvas>
+		</div>
+		<script class="code w60p" contenteditable="true">
+			// 绘制形状
+			var canvas = document.getElementById('canvas-1'),
+				ctx = canvas.getContext('2d');
+			ctx.clearRect(0, 0, 200, 200); // 擦除(0,0)位置大小为200x200的矩形，擦除的意思是把该区域变为透明
+			ctx.fillStyle = '#dddddd'; // 使用内部方式描述颜色和样式
+			ctx.fillRect(35, 35, 130, 130); // 把(35,35)位置大小为130x130的矩形涂色
+			// 利用Path绘制复杂路径:
+			var path = new Path2D();
+			path.arc(100, 100, 50, 0, Math.PI * 2, true); // 添加一条圆弧路径
+			path.moveTo(135, 100); // 将一个新的子路径的起始点移动到(x，y)坐标
+			path.arc(100, 100, 35, 0, Math.PI, false);
+			path.moveTo(90, 90);
+			path.arc(85, 90, 5, 0, Math.PI * 2, true);
+			path.moveTo(120, 90);
+			path.arc(115, 90, 5, 0, Math.PI * 2, true);
+			ctx.strokeStyle = '#0000ff'; // 描述画笔（绘制图形）颜色或者样式
+			ctx.stroke(path); // 根据当前的画线样式，绘制当前或已经存在的路径
+		</script>
+	</section>
+
+	<section class="code-wrap h250">
+		<div class="css-live-wrap w40p">
+			<div class="caption">canvas 绘制文本</div>
+			<canvas id="canvas-2" class="centered" width="185" height="70">
+				您的浏览器不支持 HTML5 canvas 标签。
+			</canvas>
+		</div>
+		<script class="code w60p" contenteditable="true">
+			// 绘制文本
+			var canvas = document.getElementById('canvas-2'),
+				ctx = canvas.getContext('2d');
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.shadowOffsetX = 2; // 阴影水平偏移距离
+			ctx.shadowOffsetY = 2; // 阴影垂直偏移距离
+			ctx.shadowBlur = 2; // 模糊效果程度
+			ctx.shadowColor = '#666666'; // 阴影颜色
+			ctx.font = '24px Arial'; // 字体样式
+			ctx.fillStyle = '#333333';
+			ctx.fillText('带阴影的文字', 20, 40); // 在(x, y)位置填充文本
+		</script>
+	</section>
+</body>
+
+</html>

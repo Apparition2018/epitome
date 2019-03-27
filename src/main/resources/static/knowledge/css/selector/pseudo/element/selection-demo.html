@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>selection-demo</title>
+    <link rel="icon" href="../../../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../../../css/demo.css">
+</head>
+
+<body>
+    <!-- https://www.zhangxinxu.com/wordpress/2010/10/css-css3-selection-range/
+        http://www.css88.com/archives/5169 -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">高亮用户选中部分</div>
+            <div class="selection centered">
+                <p>你选中这段文字后，看看它们的文本颜色和背景色，就能明白::selection的作用。</p>
+            </div>
+            </nav>
+        </div>
+        <style class="code" contenteditable="true">
+            .selection p {
+                color: #333;
+                text-shadow: 2px 2px 3px #999;
+            }
+
+            .selection p::selection {
+                background: #000;
+                color: #fff;
+                text-shadow: 2px 2px 3px #ddd;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>FormData-Demo</title>
+    <link rel="icon" href="../../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../../css/demo.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script defer src="../../../../js/demo.js"></script>
+    <script src="../../../../js/demo2.js"></script>
+</head>
+
+<body>
+    <section class="code-wrap h400">
+        <div class="css-live-wrap w100p">
+            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData">FormData</a>
+            </div>
+            <div class="centered">
+                <table class="w1024">
+                    <tr>
+                        <th>构造器/方法</th>
+                        <th>概述</th>
+                    </tr>
+                    <tr>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/FormData">FormData()</a>
+                        </td>
+                        <td>创建一个新的 FormData 对象</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/append">append()</a></td>
+                        <td>对 FormData 对象里的某个 key 拼接一个新的值，如果该 key 不存在，则添加</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/set">set()</a></td>
+                        <td>对 FormData 对象里的某个 key 设置一个新的值，如果该 key 不存在，则添加</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/entries">entries()</a></td>
+                        <td>返回一个 iterator 对象，此对象可以遍历访问 FormData 中的键值对</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/keys">keys()</a></td>
+                        <td>返回一个 iterator 对象，此对象可以遍历访问 FormData 中的 key</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/values">values()</a></td>
+                        <td>返回一个 iterator 对象，此对象可以遍历访问 FormData 中的 value</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/get">get()</a></td>
+                        <td>返回 FormData 对象中和指定 key 关联的第一个值</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/getAll">getAll()</a></td>
+                        <td>返回该 FormData 对象指定 key 的所有值</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/has">has()</a></td>
+                        <td>返回一个布尔值，表示该 FormData 对象是否含有某个 key </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w40p">
+            <div class="caption"></div>
+            <div class="centered box-FormData">
+                <form id="myForm" name="myForm">
+                    <div>
+                        <label for="username">Enter name:</label>
+                        <input type="text" id="username" name="username">
+                    </div>
+                    <div>
+                        <label for="useracc">Enter account number:</label>
+                        <input type="text" id="useracc" name="useracc">
+                    </div>
+                    <div>
+                        <label for="userfile">Upload file:</label>
+                        <input type="file" id="userfile" name="userfile">
+                    </div>
+                    <input type="submit" value="Submit!" id="submit">
+                </form>
+            </div>
+        </div>
+        <style>
+            .box-FormData form {
+                border: 1px solid #000;
+                padding: 10px;
+            }
+
+            .box-FormData form>div,
+            .box-FormData form>input {
+                margin: 10px;
+            }
+
+            .box-FormData form input {
+                padding: 2px;
+            }
+        </style>
+        <script class="code w60p" contenteditable="true">
+            (function () {
+                document.getElementById('submit').onclick = function(e) {
+                    var myForm = document.getElementById("myForm")
+
+                    // 构造器
+                    var formData1 = new FormData(myForm);
+                    for (var pair of formData1.entries()) {
+                        alert(pair[0] + ", " + pair[1]);
+                    }
+
+                    // append()
+                    var formData2 = new FormData();
+                    formData2.append('username', document.getElementById('username').value);
+                    alert(formData1.get("username"));
+
+                    e.preventDefault();
+                }
+            })()
+        </script>
+    </section>
+</body>
+
+</html>

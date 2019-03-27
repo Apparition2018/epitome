@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>简写</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+
+    <section class="code-wrap" style="height: 1500px;">
+        <div class="css-live-wrap w100p">
+            <div class="caption"></div>
+            <div class="simplify centered" id="a">
+                <table class="w1280">
+                    <tr>
+                        <th>正常</th>
+                        <th>简写</th>
+                        <th colspan="2" style="text-align: center">说明</th>
+                    </tr>
+                    <tr>
+                        <td>Infinity</td>
+                        <td>1/0</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>1000000</td>
+                        <td>1e6</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>'Hello'.charAt(0);</td>
+                        <td>'Hello'[0];</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>parseInt('1');</td>
+                        <td>+'1';</td>
+                        <td>String 转 Number</td>
+                        <td>一元加运算符</td>
+                    </tr>
+                    <tr>
+                        <td>Date.parse(new Date()); // 精确到秒
+                            <br />(new Date()).valueOf();
+                            <br />new Date().getTime()；
+                        </td>
+                        <td>+new Date;</td>
+                        <td>Date 转 Number</td>
+                        <td>一元加运算符</td>
+                    </tr>
+                    <tr>
+                        <td>undefined</td>
+                        <td>void 0; // 快
+                            <br />0[0]; // 慢
+                        </td>
+                        <td></td>
+                        <td>void 运算符</td>
+                    </tr>
+                    <tr>
+                        <td>if (x) {
+                            <br />&nbsp;&nbsp;foo();
+                            <br />&nbsp;&nbsp;return bar();
+                            <br />} else {
+                            <br />&nbsp;&nbsp;return 1;
+                            <br />}
+                        </td>
+                        <td>return x ? (foo(), bar()) : 1;</td>
+                        <td></td>
+                        <td>逗号运算符<br />三目运算符</td>
+                    </tr>
+                    <tr>
+                        <td>parseInt(5.1, 10);
+                            <br />Math.floor(5.1);</td>
+                        <td>5.1 & -1;
+                            <br />5.1 | 0;
+                            <br />5.1 ^ 0;
+                            <br />~~5.1;
+                            <br />5.1 &lt;&lt; 0;
+                            <br />5.1 >> 0;</td>
+                        <td>取整</td>
+                        <td>按位运算符</td>
+                    </tr>
+                    <tr>
+                        <td>Math.round(6.6);</td>
+                        <td>6.6+.5|0;</td>
+                        <td>四舍五入</td>
+                        <td>按位运算符</td>
+                    </tr>
+                    <tr>
+                        <td>if ('Hello'.indexOf('o') !== -1) { ... }</td>
+                        <td>if (~'Hello'.indexOf('a')) { ... }</td>
+                        <td></td>
+                        <td>按位运算符 ~</td>
+                    </tr>
+                    <tr>
+                        <td>if (n % 2 = 1) { '奇数' }</td>
+                        <td>if (n & 1) { '奇数' }</td>
+                        <td>判断奇偶数</td>
+                        <td>按位运算符 &</td>
+                    </tr>
+                    <tr>
+                        <td>if (</td>
+                        <td>if (n >>> 0) { '正数' };
+                            <br />// 双精度64位浮点数转换成了无符号32位整数</td>
+                        <td>判断正负数</td>
+                        <td>按位运算符 >>></td>
+                    </tr>
+                    <tr>
+                        <td>true
+                            <br />false</td>
+                        <td>!0
+                            <br>!1</td>
+                        <td></td>
+                        <td>逻辑运算符 !</td>
+                    </tr>
+                    <tr>
+                        <td>if (a !== null &amp;&amp; typeof a !== 'undefined' &amp;&amp; a !== '') { ... }</td>
+                        <td>if (!!a) { ... }</td>
+                        <td>空值判断</td>
+                        <td>逻辑运算符 !!</td>
+                    </tr>
+                    <tr>
+                        <td>var x = '', y;
+                            <br />if (x !== null &amp;&amp; typeof a !== 'undefined' &amp;&amp; x !== '') {
+                            <br />&nbsp;&nbsp;y = x;
+                            <br />} else {
+                            <br />&nbsp;&nbsp;y = 1;
+                            <br />}</td>
+                        <td>var x = '';
+                            <br />var y = x || 1;
+                        </td>
+                        <td>空值判断</td>
+                        <td>逻辑运算符 ||
+                            <br />短路求值</td>
+                    </tr>
+                    <tr>
+                        <td>var a;
+                            <br />if (b === 0) {
+                            <br />&nbsp;&nbsp;a = 1;
+                            <br />} else if (b === 1) {
+                            <br />&nbsp;&nbsp;a = 2;
+                            <br />} else {
+                            <br />&nbsp;&nbsp;a = 3;
+                            <br />}
+                        </td>
+                        <td>var a = (b === 0 && 1) || (b === 1 && 2) || 3;</td>
+                        <td>设置默认值</td>
+                        <td>逻辑运算符 ||</td>
+                    </tr>
+                    <tr>
+                        <td>var a;
+                            <br />if (true) { a = 10 };
+                        </td>
+                        <td>var a;
+                            <br />true && (a = 10);
+                        </td>
+                        <td></td>
+                        <td>逻辑运算符 &&</td>
+                    </tr>
+                    <tr>
+                        <td>var arr1 = [1, 2, 3];
+                            <br />var arr2 = arr.slice();
+                        </td>
+                        <td>var arr1 = [1, 2, 3];
+                            <br />var arr2 = [...arr1];
+                        </td>
+                        <td>复制数组</td>
+                        <td>... 展开语法</td>
+                    </tr>
+                    <tr>
+                        <td>var arr = [1, 2, 3];
+                            <br />myfunction.apply(null, arr);</td>
+                        <td>var arr = [1, 2, 3];
+                            <br />myfunction(...arr);</td>
+                        <td>数组传参</td>
+                        <td>... 展开语法</td>
+                    </tr>
+                    <tr>
+                        <td>var x = 'Hello', y = 'World';
+                            <br />var z = x + ' ' + y;</td>
+                        <td>var x = 'Hello', y = 'World';
+                            <br />var z = `${x} ${y}`;
+                        </td>
+                        <td>拼接字符串</td>
+                        <td>模板字面量</td>
+                    </tr>
+                    <tr>
+                        <td>var x = '床前明月光\n\t'
+                            <br />&nbsp;&nbsp;+ '疑是地上霜\n\t'
+                            <br />&nbsp;&nbsp;+ '举头望明月\n\t'
+                            <br />&nbsp;&nbsp;+ '低头思故乡';</td>
+                        <td>var x = `床前明月光
+                            <br />&nbsp;&nbsp;疑是地上霜
+                            <br />&nbsp;&nbsp;举头望明月
+                            <br />&nbsp;&nbsp;低头思故乡`;</td>
+                        <td>多行字符串</td>
+                        <td>模板字面量</td>
+                    </tr>
+                    <tr>
+                        <td>if (color == 'red') {
+                            <br />&nbsp;&nbsp;printRed();
+                            <br />} else if (color == 'yellow') {
+                            <br />&nbsp;&nbsp;printYellow();
+                            <br />} else if (color == 'blue') {
+                            <br />&nbsp;&nbsp;printBlue();
+                            <br />} else if (color == 'green') {
+                            <br />&nbsp;&nbsp;printGreen();
+                            <br />};
+                        </td>
+                        <td>var colorObj = {
+                            <br />&nbsp;&nbsp;'red' : printRed,
+                            <br />&nbsp;&nbsp;'yellow' : printYellow,
+                            <br />&nbsp;&nbsp;'blue' : printBlue,
+                            <br />&nbsp;&nbsp;'green' : printGreen
+                            <br />};
+                            <br />if (color in colorObj) {
+                            <br />&nbsp;&nbsp;colorObj[color]();
+                            <br />};</td>
+                        <td></td>
+                        <td>对象属性</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

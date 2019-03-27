@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>combinators-demo</title>
+    <link rel="icon" href="../../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../../css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">+</div>
+            <div class="caption">紧邻兄弟选择器</div>
+            <div class="adjacent-sibling centered">
+                <div class="One">One</div>
+                <div class="Two">Two</div>
+                <div class="Three">Three</div>
+                <div class="Four">Four</div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .adjacent-sibling div {
+                padding: 16px 50px;
+                margin: 15px;
+                font-weight: bold;
+                text-align: center;
+                border: 1px solid #ccc;
+                box-shadow: 1px 1px 2px #aaa;
+            }
+
+            .adjacent-sibling .One+div {
+                color: mediumblue;
+            }
+        </style>
+    </section>
+
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">~</div>
+            <div class="caption">一般兄弟选择器</div>
+            <div class="general-sibling centered">
+                    <div class="One">One</div>
+                    <div class="Two">Two</div>
+                    <div class="Three">Three</div>
+                    <div class="Four">Four</div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .general-sibling div {
+                width: 150px;
+                line-height: 50px;
+                margin: 15px;
+                font-weight: bold;
+                text-align: center;
+                border: 1px solid #ccc;
+                box-shadow: 1px 1px 2px #aaa;
+            }
+
+            .general-sibling .One~div {
+                color: mediumblue;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

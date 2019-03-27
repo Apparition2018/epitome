@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- 监测属性的变动 
+	https://www.cnblogs.com/tugenhua0707/p/6849948.html-->
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>attributes</title>
+</head>
+
+<body>
+	<div id='demo'>
+		<ol>
+			<li>111</li>
+		</ol>
+	</div>
+
+	<script type="text/javascript">
+		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+
+		var list = document.querySelector('ol');
+
+		var Observer = new MutationObserver(function (mutations, instance) {
+			mutations.forEach(function (mutation) {
+				console.log(mutation);
+			});
+		});
+
+		Observer.observe(list, {
+			attributes: true, // 属性的变动
+			attributeOldValue: true, // 观察attributes变动时，记录变动前的属性值
+			attributeFilter: ['data-value'] // 观察的特定属性 
+		})
+
+		list.setAttribute('data-key', '000');
+		list.setAttribute('data-value', '111');
+		list.setAttribute('data-value', '222');
+		list.removeAttribute('data-value');
+	</script>
+</body>
+
+</html>

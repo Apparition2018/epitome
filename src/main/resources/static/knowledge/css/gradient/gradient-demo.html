@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>gradient-demo</title>
+    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../css/demo.css">
+</head>
+
+<body>
+    <!-- https://www.zhangxinxu.com/wordpress/2010/04/css渐变之css3-gradient在firefox3-6下的使用/ -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">条纹</div>
+            <div class="caption">利用 repeating-raidal/linear-gradient 实现</div>
+            <div class="repeat centered">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .repeat:before,
+            .repeat:after {
+                content: '';
+                display: inline-block;
+                width: 160px;
+                height: 160px;
+            }
+
+            .repeat:before {
+                margin-right: 40px;
+                background: repeating-radial-gradient(black, black 8px, white 8px, white 16px);
+                border: 1px solid #000;
+                box-shadow: 2px 2px 2px #505050;
+            }
+
+            .repeat:after {
+                background: repeating-linear-gradient(-45deg, red, red 8px, white 8px, white 16px);
+                border: 1px solid red;
+                box-shadow: 2px 2px 2px #ff2828;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">透明渐变</div>
+            <div class="caption">利用 linear-gradient、透明度 实现</div>
+            <div class="transparent centered">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .transparent {
+                width: 400px;
+                height: 160px;
+                background: -webkit-linear-gradient(left, #ffc0cb00 0%, #ffc0cb 100%), url('../../../img/Audrey Hepburn.jpg');
+            }
+        </style>
+    </section>
+
+    <!-- https://www.zhangxinxu.com/wordpress/2010/04/css-gradient渐变之webkit核心浏览器下的使用/
+        已过时 -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">渐变球</div>
+            <div class="caption">利用 -webkit-gradient(radial) 实现</div>
+            <div class="radial centered"></div>
+        </div>
+        <style class="code" contenteditable="true">
+            .radial {
+                display: block;
+                width: 180px;
+                height: 180px;
+                background-image: -webkit-gradient(radial, 58 60, 10, 65 65, 30, from(#A7D30C), to(rgba(1, 159, 98, 0)), color-stop(90%, #019F62)),
+                -webkit-gradient(radial, 130 105, 20, 137 120, 50, from(#ff5f98), to(rgba(255, 1, 136, 0)), color-stop(75%, #ff0188)),
+                -webkit-gradient(radial, 120 20, 15, 122 25, 40, from(#59dbff), to(rgba(0, 201, 255, 0)), color-stop(80%, #00b5e2)),
+                -webkit-gradient(radial, 40 150, 50, 40 140, 90, from(#f4f201), to(rgba(228, 199, 0, 0)), color-stop(80%, #e4c700));
+            }
+        </style>
+    </section>
+
+
+    <!-- https://www.zhangxinxu.com/wordpress/2010/04/css实现兼容性的渐变背景gradient效果/
+        https://www.bestcssbuttongenerator.com/ -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">兼容IE的渐变按钮</div>
+            <div class="caption">利用 IE filter 实现</div>
+            <div id="compatible" class="centered">
+                <a href="#compatible" class="compatible">compatible</a>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .compatible {
+                display: inline-block;
+                width: 200px;
+                line-height: 80px;
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d0451b), color-stop(1, #bc3315));
+                background: -moz-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+                background: -webkit-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+                background: -o-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+                background: -ms-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+                background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0451b', endColorstr='#bc3315', GradientType=0);
+                background-color: #d0451b;
+                color: #ffffff;
+                font-size: 150%;
+                font-weight: bold;
+                text-align: center;
+                text-decoration: none;
+                text-shadow: 0px 1px 0px #854629;
+                -moz-border-radius: 10px;
+                -webkit-border-radius: 10px;
+                border-radius: 10px;
+                border: 1px solid #942911;
+                -moz-box-shadow: inset 0px 1px 0px 0px #cf866c;
+                -webkit-box-shadow: inset 0px 1px 0px 0px #cf866c;
+                box-shadow: inset 0px 1px 0px 0px #cf866c;
+                cursor: pointer;
+            }
+
+            .compatible:hover {
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bc3315), color-stop(1, #d0451b));
+                background: -moz-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+                background: -webkit-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+                background: -o-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+                background: -ms-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+                background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b', GradientType=0);
+                background-color: #bc3315;
+            }
+
+            .compatible:active {
+                position: relative;
+                top: 2px;
+            }
+        </style>
+    </section>
+
+    <!-- https://www.zhangxinxu.com/wordpress/2013/09/深入理解css3-gradient斜向线性渐变/ -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">CSS渐变偏转角度相同，效果不一样</div>
+            <div class="centered">
+                <div class="radio">
+                    <input id="std" name='browser' type="radio" value="std" />
+                    <label for="std">标准</label>
+                    <input id="chrome" name='browser' type="radio" value="chrome" />
+                    <label for="chrome">chrome</label>
+                    <br>
+                    <br>
+                    <input type="range" min="0" max="360">
+                </div>
+                <div class="deg"></div>
+            </div>
+        </div>
+        <style id="style" class="code" contenteditable="true">
+            .deg {
+                width: 150px;
+                height: 150px;
+                line-height: 150px;
+                background: red;
+                color: white;
+                font-size: 150%;
+                font-weight: bold;
+                text-align: center;
+                border-radius: 50%;
+            }
+
+            .centered {
+                display: flex;
+                align-items: center;
+            }
+
+            .centered .radio {
+                margin-right: 25px;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                var degs = document.querySelector("input[type='range']").value;
+                document.getElementsByClassName("deg")[0].textContent = degs + "°";
+                var style = document.getElementById("style");
+                var styleTextContent = style.textContent;
+                var browser = document.getElementsByName("browser");
+                var radio = document.getElementsByClassName("radio")[0];
+                radio.onclick = function () {
+                    var degs = document.querySelector("input[type='range']").value;
+                    document.getElementsByClassName("deg")[0].textContent = degs + "°";
+                    for (var i = 0, len = browser.length; i < len; i++) {
+                        if (browser[i].checked) {
+                            if (browser[i].value === "std") {
+                                style.textContent = styleTextContent + ".deg { background-image: linear-gradient(" + degs + "deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }"
+                            } else {
+                                style.textContent = styleTextContent + ".deg { background-image: -webkit-linear-gradient(" + degs + "deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }"
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+    </section>
+
+    <!-- https://www.zhangxinxu.com/wordpress/2017/10/css3-linear-gradient-dashed-triangle-graph/ -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">虚线</div>
+            <div class="caption">利用 linear-gradient、background-size 实现</div>
+            <div class="dashed centered"></div>
+        </div>
+        <style class="code" contenteditable="true">
+            .dashed {
+                width: 300px;
+                height: 3px;
+                background: linear-gradient(to right, #000, #000 15px, transparent 15px, transparent);
+                background-size: 30px 100%;
+            }
+        </style>
+    </section>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">对话框</div>
+            <div class="caption">利用 linear-gradient、background-size 实现</div>
+            <div class="centered">
+                <img class="mm" src="../../../img/Misaka Mikoto.jpg" alt="Misaka Mikoto">
+                <div class="dialog">你吃饭了吗？</div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .mm {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+                float: left;
+            }
+
+            .dialog {
+                position: relative;
+                display: inline-block;
+                max-width: 80%;
+                margin-left: 28px;
+                background:linear-gradient(to bottom, #9fe658 5%, #9ee559 100%);
+                font-size: 150%;
+                padding: 15PX;
+                border: 1px solid #72b352;
+                border-radius: 8px;
+            }
+
+            .dialog::before {
+                content: '';
+                position: absolute;
+                width: 12px;
+                height: 12px;
+                background: linear-gradient(to top, #72b352, #72b352) no-repeat, linear-gradient(to right, #72b352, #72b352) no-repeat, linear-gradient(135deg, #9fe658, #9ee559 12px, hsla(0, 0%, 100%, 0) 12px) no-repeat;
+                background-size: 12px 1px, 1px 12px, 12px 12px;
+                transform: rotate(-45deg);
+                left: -6px;
+                top: 22px;
+            }
+        </style>
+    </section>
+
+
+    <!-- https://www.zhangxinxu.com/wordpress/2017/11/css3-radial-gradient-syntax-example/
+    https://www.zhangxinxu.com/wordpress/2018/03/background-gradient-transtion/
+    https://www.w3cplus.com/css3/why-do-we-have-repeating-linear-gradient-anyway.html -->
+
+
+
+
+</body>
+
+</html>

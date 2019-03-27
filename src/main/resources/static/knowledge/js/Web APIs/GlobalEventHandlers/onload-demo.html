@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>onload-demo</title>
+    <link rel="icon" href="../../../../img/Nohara Sinnosuke.png">
+    <link rel="stylesheet" href="../../../../css/demo.css">
+</head>
+
+<body>
+    <!-- http://www.runoob.com/jsref/event-onload.html -->
+    <!-- 以下 HTML 标签支持 onload :
+            <body>, <frame>, <frameset>, <iframe>, <img>, <input type="image">, <link>, <script>, <style> -->
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w40p">
+            <div class="caption">图片建在完成后执行函数</div>
+            <div class="centered">
+                <img src="../../../../img/Audrey Hepburn.jpg" onload="imgOnload(event)">
+            </div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            &lt;img src="../../../img/Audrey Hepburn.jpg" onload="imgOnload(event)"&gt;
+        </code>
+        <script>
+            function imgOnload(e) {
+                console.log(e.target.width + 'x' + e.target.height);
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w40p">
+            <div class="caption">页面加载完毕后执行函数</div>
+            <div class="cookie centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w60p" contenteditable="true">
+            onload = function () {
+                var cookie = document.getElementsByClassName('cookie')[0];
+                if (navigator.cookieEnabled == true) {
+                    cookie.innerHTML = 'Cookies are enabled';
+                }
+                else {
+                    cookie.innerHTML = 'Cookies are not enabled';
+                }
+            }
+        </script>
+    </section>
+</body>
+
+</html>

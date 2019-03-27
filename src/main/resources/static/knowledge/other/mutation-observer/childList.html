@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- 监测childList的变动
+	https://www.cnblogs.com/tugenhua0707/p/6849948.html -->
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>监测childList的变动</title>
+</head>
+
+<body>
+	<div id='demo'>
+		<ol>
+			<li>111</li>
+		</ol>
+	</div>
+
+	<script type="text/javascript">
+		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+
+		var list = document.querySelector('ol');
+
+		// 使用 MutationObserver 构造函数，新建一个观察器实例，同时指定该实例的回调函数
+		var Observer = new MutationObserver(function (mutations, instance) {
+			console.log(mutations); // 变动数组； [MutationRecord, MutationRecord, MutationRecord, MutationRecord]
+			console.log(instance); // 观察器实例；   MutationObserver {}
+			mutations.forEach(function (mutation) {
+				console.log(mutation);
+			})
+		})
+
+		// observe()该方法所要观察的DOM节点，以及所要观察的特定变动。
+		// 接受2个参数，第一个参数是所要观察的DOM元素，第二个所要观察的变动类型
+		Observer.observe(list, {
+			childList: true, // 子节点的变动
+			subtree: true // 所有后代节点
+		})
+
+		list.appendChild(document.createElement('div'));
+		list.appendChild(document.createTextNode('foo'));
+		list.removeChild(list.childNodes[0]);
+		list.childNodes[0].appendChild(document.createElement('div'));
+	</script>
+</body>
+
+</html>
