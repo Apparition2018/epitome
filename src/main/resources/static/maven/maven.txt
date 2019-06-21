@@ -1,0 +1,47 @@
+mvn -v          查看版本
+    compile     编译
+    test        测试
+    package     打包
+    clean       删除 target
+    install     安装 jar 包到本地仓库中
+
+
+创建 maven 项目的两种方式：
+    1.archetype:generate    按照提示进行选择
+    2.archetype:generate -DgroupId=组织名，公司网址的反写+项目名
+                        -DartifactId=项目名-模块名
+                        -Dversion=版本号
+                        -Dpackage=代码所在的包名
+
+
+仓库
+    1.本地仓库
+    2.远程仓库： https://repo.maven.apache.org/maven2
+                https://search.maven.org/
+镜像仓库
+    <mirror>
+        <id>maven.net.cn</id>
+        <mirrorOf>central</mirrorOf>
+        <name>central mirror in china</name>
+        <url>http://maven.net.cn/content/groups/public</url>
+    </mirror>
+更改本地仓库地址：<localRepository>E:\apache-maven-3.5.2\repository</localRepository>
+
+
+maven 生命周期：
+    1.clean     清理项目
+        pre-clean   执行清理前的工作
+        clean       清理上一次构建生成的文件
+        post-clean  执行清理后的文件
+    2.default   构建项目（最核心）
+        compile test package install
+    3.site      生成项目站点
+        pre-site    在生成项目站点前要完成的工作
+        site        生成项目的站点文档
+        post-site   在生成项目站点后要完成的工作
+        site-deploy 发布生成的站点到服务器上
+
+
+依赖冲突：
+    1.短路优先
+    2.先声明先优先

@@ -1,12 +1,10 @@
 package knowledge.注解;
 
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Field;
-
 
 /**
  * 用户自定义注解
@@ -106,8 +104,6 @@ class Apple {
     public void displayName() {
         System.out.println("水果名称是：苹果");
     }
-
-
 }
 
 /**
@@ -148,6 +144,4 @@ class Apple {
 
     // 供应商地址
     String address() default "";
-
 }
-

@@ -1,7 +1,5 @@
 package knowledge.算法;
 
-import org.junit.Test;
-
 import java.util.Random;
 
 public class PrimeNumber {
@@ -9,8 +7,7 @@ public class PrimeNumber {
     /**
      * 输出 n 内的质数（每行输出10个）
      */
-    @Test
-    public void test01() {
+    public static void main(String[] args) {
         Random ran = new Random();
         int n = ran.nextInt(50) + 51;
         System.out.println("输出" + n + "内的质数：");

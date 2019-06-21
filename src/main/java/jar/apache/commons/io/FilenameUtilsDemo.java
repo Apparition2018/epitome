@@ -1,7 +1,6 @@
 package jar.apache.commons.io;
 
 import org.apache.commons.io.FilenameUtils;
-import org.apache.poi.ss.formula.functions.T;
 import org.junit.Test;
 
 /**
