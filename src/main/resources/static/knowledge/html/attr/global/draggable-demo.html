@@ -17,7 +17,6 @@
 
 <body>
     <!-- http://www.w3school.com.cn/html/html5_draganddrop.asp -->
-
     <section class="code-wrap">
         <div class="css-live-wrap">
             <div class="caption">随着鼠标拖动而移动的小飞机</div>
@@ -41,14 +40,14 @@
                 // 记录刚一拖动时，鼠标在飞机上的偏移量
                 offsetX = e.offsetX + 8;
                 offsetY = e.offsetY + 8;
-            }
+            };
             ap.ondrag = function (e) {
                 console.log('事件源ap拖动中');
                 var x = e.pageX;
                 var y = e.pageY;
                 console.log(x + '-' + y);
                 // drag事件最后一刻，无法读取鼠标的坐标，pageX和pageY都变为0  
-                if (x == 0 && y == 0) {
+                if (x === 0 && y === 0) {
                     return; // 不处理拖动最后一刻X和Y都为0的情形  
                 }
                 x -= offsetX;
@@ -56,7 +55,7 @@
 
                 ap.style.left = x + 'px';
                 ap.style.top = y + 'px';
-            }
+            };
             ap.ondragend = function () {
                 console.log('源对象ap拖动结束');
             }
@@ -119,32 +118,31 @@
             // 左－〉右
             document.getElementById('right').ondragover = function (ev) {
                 ev.preventDefault(); // 默认地，数据/元素无法被放置到其他元素中，取消此默认动作
-            }
+            };
             document.getElementById('right').ondrop = function (ev) {
                 ev.preventDefault(); // 阻止数据的浏览器默认处理方式（drop 事件的默认行为是以链接形式打开）
                 var id = ev.dataTransfer.getData('Text');
                 var elem = document.getElementById(id); // 当前拖动的元素
                 var toElem = ev.toElement.id; // 放置位置
-                if (toElem == 'right') {
+                if (toElem === 'right') {
                     // 如果为container，元素放置在末尾
                     this.appendChild(elem);
                 } else {
                     // 如果为container里的元素，则插入该元素之前
                     this.insertBefore(elem, document.getElementById(toElem));
                 }
-            }
-
+            };
 
             // 右－〉左
             document.getElementById('left').ondragover = function (ev) {
                 ev.preventDefault(); // 默认地，数据/元素无法被放置到其他元素中，取消此默认动作
-            }
+            };
             document.getElementById('left').ondrop = function (ev) {
                 ev.preventDefault();
                 var id = ev.dataTransfer.getData('Text');
                 var elem = document.getElementById(id);
                 var toElem = ev.toElement.id;
-                if (toElem == 'left') {
+                if (toElem === 'left') {
                     // 如果为container，元素放置在末尾
                     this.appendChild(elem);
                 } else {
@@ -196,7 +194,7 @@
             }
         </style>
         <script class="code" contenteditable="true">
-            var iosDragDropShim = { enableEnterLeave: true } 					// 兼容移动端
+            var iosDragDropShim = { enableEnterLeave: true }; 					// 兼容移动端
             var source = document.querySelectorAll('.list'),
                 recycle = document.getElementById('recycle'),
                 dragElement = null, 											// 用于存放拖动元素
@@ -211,17 +209,17 @@
                 source[i].addEventListener('dragend', function (ev) {			// 完成元素的拖动时触发
                     ev.target.style.backgroundColor = '#fff'; 					// 拖放结束还原拖动元素的背景
                     ev.preventDefault();
-                }, false)
+                }, false);
 
                 source[i].addEventListener('dragenter', function (ev) {			// 拖动的元素进入放置目标时触发
-                    if (dragElement != this) {									// 拖动的元素不是进入的放置目标元素
+                    if (dragElement !== this) {									// 拖动的元素不是进入的放置目标元素
                         this.parentNode.insertBefore(dragElement, this); 		// 把拖动元素添加到当前元素的前面
                     }
-                }, false)
+                }, false);
 
                 source[i].addEventListener('dragleave', function (ev) {			// 拖动元素离开放置目标时触发
-                    if (dragElement != this) {
-                        if (lock && (this == this.parentNode.lastElementChild || this == this.parentNode.lastChild)) { // 当前元素时最后一个元素
+                    if (dragElement !== this) {
+                        if (lock && (this === this.parentNode.lastElementChild || this === this.parentNode.lastChild)) { // 当前元素时最后一个元素
                             this.parentNode.appendChild(dragElement); 			// 把拖动元素添加最后面
                             lock = false;
                         } else {
@@ -229,13 +227,13 @@
                         }
                     }
                 }, false)
-            };
+            }
 
             recycle.addEventListener('drop', function (ev) { 					// 拖动元素放置在目标区域时触发
                 dragElement.parentNode.removeChild(dragElement);				// 拖进回收站则删除该元素
-            }, false)
+            }, false);
 
-            document.ondragover = function (e) { e.preventDefault(); }			// 拖动元素在放置目标上时触发，必须设置dragover阻止默认事件
+            document.ondragover = function (e) { e.preventDefault(); };			// 拖动元素在放置目标上时触发，必须设置dragover阻止默认事件
             document.ondrop = function (e) { e.preventDefault(); }
         </script>
     </section>

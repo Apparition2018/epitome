@@ -19,7 +19,7 @@
             <div class="caption">不支持百分比</div>
             <div class="centered box-border">
                 <div class="demo"></div>
-                <select>
+                <select title="">
                     <option value="">默认值</option>
                     <option value="thin">thin</option>
                     <option value="medium">medium</option>
@@ -50,7 +50,7 @@
             document.getElementsByTagName('select')[0].onchange = function () {
                 var demo = document.getElementsByClassName('demo')[0];
                 demo.textContent = "";
-                if (this.value == "10%") {
+                if (this.value === "10%") {
                     demo.textContent = "不支持百分比值"
                 } else {
                     demo.style.borderWidth = this.value;
@@ -266,13 +266,11 @@
         <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
         <script>
             function left() {
-                var text = $('.layout .left span').html();
-                $('.layout .left span').html(text + '<br>' + '导航');
+                $('.layout .left span').html($('.layout .left span').html() + '<br>' + '导航');
             }
 
             function module() {
-                var text = $('.layout .module div').html();
-                $('.layout .module div').html(text + '<br>' + '模块');
+                $('.layout .module div').html($('.layout .module div').html() + '<br>' + '模块');
             }</script>
     </section>
 </body>

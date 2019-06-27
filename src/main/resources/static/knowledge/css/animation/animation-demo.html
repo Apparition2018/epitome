@@ -44,8 +44,7 @@
             .cylon_eye {
                 width: 80%;
                 height: 100%;
-                background-color: red;
-                background-image: linear-gradient(to right, rgba( 0, 0, 0, 0.9) 25%, rgba( 0, 0, 0, 0.2) 50%, rgba( 0, 0, 0, 0.9) 75%);
+                background: red linear-gradient(to right, rgba(0, 0, 0, 0.9) 25%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.9) 75%);
 
                 /* name, duration, timing-function, iteration-count, direction */
                 animation: move_eye 3s linear 0s infinite normal;
@@ -61,7 +60,6 @@
             }
         </style>
     </section>
-
 
     <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Tips -->
     <!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame -->
@@ -184,9 +182,9 @@
                         var myImage = new Image(), src = '../../../img/唐中慧.jpg';
                         myImage.onload = function () {
                             eleBox.eq(0).html('<img src="' + src + '"width="160px">');
-                        }
+                        };
                         myImage.src = src;
-                    }
+                    };
                     funStep();
                 }, 3000);
             }

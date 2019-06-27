@@ -135,7 +135,7 @@
                         <td>显示带有一段消息以及确认按钮和取消按钮的对话框</td>
                         <td>
                             <a
-                                href="javascript: if (confirm('确定?')) { alert('yes') } else { alert('no') };">confirm('确定?')</a>
+                                href="javascript: if (confirm('确定?')) { alert('yes') } else { alert('no') }">confirm('确定?')</a>
                         </td>
                     </tr>
                     <tr>
@@ -250,9 +250,9 @@
         <script class="code w67p" contenteditable="true">
             var count = 0; // 控制 promptPopUp 只能生效一次
             function promptPopUp() {
-                if (count++ == 0) {
+                if (count++ === 0) {
                     var name = prompt("请输入您的名字", ""); // prompt 返回用户输入文字的字符串，或 null
-                    if (name != null && name != "") {
+                    if (name != null && name !== "") {
                         document.querySelector('.prompt .demo-click').innerHTML = `你好，${name}! 今天过得好吗?`;
                     }
                 }
@@ -272,7 +272,7 @@
         </style>
         <script class="code w67p" contenteditable="true">
             function openWindow() {
-                myWindow = open('http://www.runoob.com/jsref/met-win-open.html', '', 'width=800,height=600,left=200,top=50')
+                var myWindow = open('http://www.runoob.com/jsref/met-win-open.html', '', 'width=800,height=600,left=200,top=50');
                 myWindow.focus();
                 setTimeout(function () {
                     myWindow.close(); // 因为窗口是 window.open() 打开的，所以可以使用 window.close() 关闭

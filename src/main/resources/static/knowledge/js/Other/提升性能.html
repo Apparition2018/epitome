@@ -21,29 +21,30 @@
         <style>
         </style>
         <script class="code w67p" contenteditable="true">
-                /*** 慢 ***/
-                var str = "I ";
-                str += "am ";
-                str += "hero";
+            /*** 慢 ***/
+            var str = "I ";
+            str += "am ";
+            str += "hero";
 
-                /*** 快 ***/
-                function StringBuffer() {
-                    this._strings_ = new Array();
-                }
+            /*** 快 ***/
+            function StringBuffer() {
+                this._strings_ = [];
+            }
 
-                StringBuffer.prototype.append = function(str) {
-                    this._strings_.push(str);
-                }
+            StringBuffer.prototype.append = function(str) {
+                this._strings_.push(str);
+            };
 
-                StringBuffer.prototype.toString = function() {
-                    return this._strings_.join("");
-                }
+            StringBuffer.prototype.toString = function() {
+                return this._strings_.join("");
+            };
 
-                var buffer = new StringBuffer();
-                buffer.append("I ");
-                buffer.append("am ");
-                buffer.append("hero");
-                var result = buffer.toString(); // "I am hero"
+            var buffer = new StringBuffer();
+            buffer.append("I ");
+            buffer.append("am ");
+            buffer.append("hero");
+            var result = buffer.toString(); // "I am hero"
+           console.log(result);
 
 
         </script>

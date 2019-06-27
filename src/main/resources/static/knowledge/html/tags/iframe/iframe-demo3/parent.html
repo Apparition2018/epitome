@@ -7,16 +7,15 @@
 </head>
 <body>
 	<label id='parent'>父页面：</label>
-	<input type="text" value="1" />
+	<input type="text" value="1"  title=""/>
 	<button onclick="childPlus();">子页+1</button>
 	<br />
 	<iframe id="child" src="./child.html"></iframe>
 	
-	<script src="../../../js/jquery-1.11.1.min.js"></script>
+	<script src="../../../../../js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript">
 		function childPlus() {
-			var value = $('#child').contents().find('input')[0].value;
-			$('#child').contents().find('input')[0].value = parseInt(value) + 1;
+			$('#child').contents().find('input')[0].value = parseInt($('#child').contents().find('input')[0].value) + 1;
 		}
 	</script>
 </body>

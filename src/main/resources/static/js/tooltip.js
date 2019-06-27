@@ -13,7 +13,7 @@ var flag = 0, $tooltip = $('#tooltip');
             $(this).mouseenter(function (e) {
                 $tooltip.empty();
                 $tooltip.css('display', '');
-                flag = 1
+                flag = 1;
                 $.each(data, function (i, v) {
                     let element;
                     if ($.isArray(v)) {
@@ -28,9 +28,9 @@ var flag = 0, $tooltip = $('#tooltip');
                         element.text(v);
                     }
                     $tooltip.append(element).append('<hr/>');
-                })
+                });
                 $('#tooltip hr:last-child').remove();
-            })
+            });
             $(this).mouseleave(function () {
                 $tooltip.css('display', 'none');
                 flag = 0;
@@ -60,4 +60,4 @@ $(document).mousemove(function (e) {
         $tooltip.css('top', top);
         $tooltip.css('left', left);
     }
-})
+});

@@ -89,7 +89,6 @@
                         <td>返回元素节点的指定属性值，没有则返回 null 或 ""</td>
                         <td>attr = element.getAttribute(attrName)</td>
                     </tr>
-                    </tr>
                     <tr>
                         <td>Element.getAttributeNode()</td>
                         <td>返回元素节点的指定 Attr 属性节点</td>
@@ -110,7 +109,6 @@
                         <td>从元素中移除指定属性</td>
                         <td>element.removeAttribute(attrName)</td>
                     </tr>
-                    </tr>
                     <tr>
                         <td>Element.removeAttributeNode()</td>
                         <td>移除指定的属性节点，并返回被移除的节点</td>
@@ -120,7 +118,6 @@
                         <td>Element.setAttribute()</td>
                         <td>把指定属性设置或更改为指定值</td>
                         <td>element.setAttribute(name, value)</td>
-                    </tr>
                     </tr>
                     <tr>
                         <td>Element.setAttributeNode()</td>
@@ -160,7 +157,7 @@
                 font-size: 17px;
                 text-align: center;
                 border: 1px solid #fff;
-                box-shadow: 1px 1px 2px #51a4f0, inset 0px 35px 0px -17px #6db7fb;
+                box-shadow: 1px 1px 2px #51a4f0, inset 0 35px 0 -17px #6db7fb;
                 border-radius: 5px;
                 cursor: pointer;
             }
@@ -174,16 +171,16 @@
         <script>
             function set(e) {
                 var ele = e.target;
-                if (ele.className == "iH") {
+                if (ele.className === "iH") {
                     ele.innerHTML = "S<b>E</b>T";
                 }
-                if (ele.className == "oH") {
+                if (ele.className === "oH") {
                     ele.outerHTML = "S<b>E</b>T";
                 }
-                if (ele.className == "iT") {
+                if (ele.className === "iT") {
                     ele.innerText = "S<b>E</b>T";
                 }
-                if (ele.className == "oT") {
+                if (ele.className === "oT") {
                     ele.outerText = "S<b>E</b>T";
                 }
             }
@@ -218,7 +215,7 @@
                 font-size: 17px;
                 text-align: center;
                 border: 1px solid #fff;
-                box-shadow: 1px 1px 2px #9f8ece, inset 0px 35px 0px -17px #b4a7d6;
+                box-shadow: 1px 1px 2px #9f8ece, inset 0 35px 0 -17px #b4a7d6;
                 border-radius: 5px;
             }
 
@@ -242,21 +239,21 @@
             var eleDivs = document.querySelectorAll(".get div");
             eleDivs.forEach(function (value, index, array) {
                 value.addEventListener("click", get, event);
-            })
+            });
 
             function get(e) {
                 var ele = e.target;
-                if (ele.className == "iH") {
+                if (ele.className === "iH") {
                     console.log(document.getElementById("text"));
                     document.getElementsByClassName("text")[0].textContent = ele.innerHTML;
                 }
-                if (ele.className == "oH") {
+                if (ele.className === "oH") {
                     document.getElementsByClassName("text")[0].textContent = ele.outerHTML;
                 }
-                if (ele.className == "iT") {
+                if (ele.className === "iT") {
                     document.getElementsByClassName("text")[0].textContent = ele.innerText;
                 }
-                if (ele.className == "oT") {
+                if (ele.className === "oT") {
                     document.getElementsByClassName("text")[0].textContent = ele.outerText;
                 }
             }

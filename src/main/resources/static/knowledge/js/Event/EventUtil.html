@@ -29,7 +29,7 @@
                 font-size: 21px;
                 text-align: center;
                 border: 1px solid #fff;
-                box-shadow: 1px 1px 2px #f05aa5, inset 0px 44px 0px -22px #ff78b9;
+                box-shadow: 1px 1px 2px #f05aa5, inset 0 44px 0 -22px #ff78b9;
                 border-radius: 5px;
                 cursor: pointer;
             }
@@ -45,7 +45,7 @@
                     }
                     var oldOnload = window.onload;              // 先把 onload 存下来
                     // onload 可以是一个 object，可以是一个 function，如果是 function，onload 会在页面加载完成之后执行
-                    if (typeof window.onload != 'function') {   // 如果 onload 不是一个 function, 把 fn 赋给 onload, 等页面加载后执行
+                    if (typeof window.onload !== 'function') {   // 如果 onload 不是一个 function, 把 fn 赋给 onload, 等页面加载后执行
                         window.onload = fn;
                     } else {
                         window.onload = function () {           // 如果 onload 已经被赋值并且是一个 function, 则运行先前存下来的 oldOnload 方法（即 onlaod)，再执行 fn 方法
@@ -153,7 +153,7 @@
 
                 // 获取相同的字符编码，需在keypress事件中使用
                 getCharCode: function (event) {
-                    if (typeof event.charCode == "number") {
+                    if (typeof event.charCode === "number") {
                         return event.charCode;
                     } else {
                         return event.keyCode;

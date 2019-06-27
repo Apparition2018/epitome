@@ -22,10 +22,10 @@
         <script class="code w67p" contenteditable="true">
             var i, j;
             loop1:
-            for (var i = 0; i < 3; i++) {
+            for (i = 0; i < 3; i++) {
                 loop2:
-                for (var j = 0; j < 3; j++) {
-                    if (i == 1 && j == 1) {
+                for (j = 0; j < 3; j++) {
+                    if (i === 1 && j === 1) {
                         continue loop1;
                         // break loop1;
                     }

@@ -241,16 +241,51 @@
         <script>
             document.getElementsByTagName('select')[0].onchange = function () {
                 document.getElementById('heart').style.backgroundRepeat = this.value;
-            }
+            };
 
             document.getElementsByTagName('select')[1].onchange = function () {
                 document.getElementById('heart').style.backgroundSize = this.value;
-            }
+            };
 
             document.getElementsByTagName('select')[2].onchange = function () {
                 document.getElementById('heart').style.backgroundOrigin = this.value;
             }
         </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">背景半透明，文字不透明</div>
+            <div class="bg centered">
+                <div class="translucence">
+                    <p>穗波玉</p>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .bg {
+                position: relative;
+                width: 240px;
+                height: 240px;
+                background-image: url(../../../img/穗波玉.jpg);
+                background-size: cover;
+            }
+
+            .bg .translucence{
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-color: rgba(255, 255, 255, 0.75);
+            }
+
+            .bg p {
+                color: #333333;
+                line-height: 240px;
+                text-align: center;
+            }
+        </style>
     </section>
 </body>
 

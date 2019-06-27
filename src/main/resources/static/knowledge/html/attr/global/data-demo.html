@@ -30,7 +30,7 @@
 		</style>
 		<script class="code w60p" contenteditable="true">
 			/********** JS **********/
-			var tree = document.getElementById('tree-js'), leaves, plantHeight;
+			var tree = document.getElementById('tree-js'), leaves;
 
 			// 通过 getAttribute / setAttribute 获取/设置/删除自定义属性
 			// 效率比 dataset 快
@@ -43,9 +43,6 @@
 			tree.dataset.plantHeight++;
 			tree.dataset.age = '200';
 			delete tree.dataset.age;
-
-			// 此时html:
-			// <div id="tree" data-plant-height="null" data-age="200">树</div>
 		</script>
 	</section>
 
@@ -61,7 +58,7 @@
 		<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<script class="code w60p" contenteditable="true">
 			/********** jQuery **********/
-			var $tree = $('#tree-jq'), leaves, plantHeight;
+			var $tree = $('#tree-jq'), leaves;
 
 			// 通过 data() 获取/设置/删除自定义属性
 			leaves = $tree.data('leaves');

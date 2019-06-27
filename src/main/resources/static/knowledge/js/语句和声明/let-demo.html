@@ -60,7 +60,7 @@
                 SomeConstructor = function SomeConstructor() {
                     this.someProperty = 'foo';
                     privateScope.hiddenProperty = 'bar';
-                }
+                };
                 SomeConstructor.prototype.showPublic = function () { return this.someProperty };
                 SomeConstructor.prototype.showPrivate = function () { return privateScope.hiddenProperty };
             }

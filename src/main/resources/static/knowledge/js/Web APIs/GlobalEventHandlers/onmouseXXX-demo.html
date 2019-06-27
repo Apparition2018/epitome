@@ -60,7 +60,7 @@
             function mOver(e) {
                 var node = e.target;
                 node.style.backgroundColor = 'var(--gyb5)';
-                if (node.nodeName == 'LI') {
+                if (node.nodeName === 'LI') {
                     node.style.color = '#fff';
                 }
                 omOutput.textContent += 'over ';
@@ -69,17 +69,17 @@
             function mOut(e) {
                 var node = e.target;
                 node.style.backgroundColor = '';
-                if (node.nodeName == 'LI') {
+                if (node.nodeName === 'LI') {
                     node.style.color = 'var(--gyb5)';
                 }
                 omOutput.textContent += 'out ';
             }
 
-            function mEnter(e) {
+            function mEnter() {
                 omOutput.textContent += 'enter ';
             }
 
-            function mLeave(e) {
+            function mLeave() {
                 omOutput.textContent += 'leave ';
             }
         </script>

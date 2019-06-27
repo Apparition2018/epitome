@@ -17,19 +17,19 @@
             <div class="caption">邮箱后缀自动提示</div>
             <div class="centered" id="eg1">
                 邮箱：
-                <input type="email" id="email" list="emailList" name="off_autocomplete" />
+                <input type="email" id="email" list="emailList" name="off_autocomplete"  title="email"/>
                 <datalist id="emailList">
-                    <option value="@qq.com" />
-                    <option value="@163.com" />
-                    <option value="@gmail.com" />
-                    <option value="@yahoo.com.cn" />
-                    <option value="@126.com" />
+                    <option value="@qq.com" ></option>
+                    <option value="@163.com" ></option>
+                    <option value="@gmail.com" ></option>
+                    <option value="@yahoo.com.cn" ></option>
+                    <option value="@126.com" ></option>
                 </datalist>
             </div>
         </div>
         <style>
             #email {
-                padding: 1px 0 0 1px;
+                padding: 2px 1px 1px 1px;
             }
         </style>
         <script class="code" contenteditable="true">
@@ -48,7 +48,7 @@
                     // 修复FireFox浏览器下无限input问题
                     // 如果值不完全匹配某option值，执行动态替换 
                     if (arrValue.length !== 2 || arrEmailList.indexOf(arrValue[1]) === -1) {
-                        eleList.innerHTML = htmlListInit.replace(/\@/g, arrValue[0] + "@");
+                        eleList.innerHTML = htmlListInit.replace(/@/g, arrValue[0] + "@");
                     }
                     return this;
                 };

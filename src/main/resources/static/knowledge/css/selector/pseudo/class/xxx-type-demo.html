@@ -15,7 +15,7 @@
         <div class="css-live-wrap">
             <div class="caption">xxx-type</div>
             <div class="centered" id="eg1">
-                <select>
+                <select title="">
                     <option value="null">请选择</option>
                     <option value=":first-of-type">:first-of-type</option>
                     <option value=":last-of-type">:last-of-type</option>
@@ -62,7 +62,7 @@
                 selects.forEach(function (value, index, array) {
                     value.style.color = "#ccc";
                     value.style.boxShadow = "1px 1px 2px #aaa";
-                })
+                });
 
                 selects = document.querySelectorAll("#eg1>div " + this.value);
                 selects.forEach(function (value, index, array) {
@@ -78,7 +78,7 @@
             <div class="caption">匹配属于其父元素的特定类型的第 N 个子元素的每个元素</div>
             <div class="caption">:nth-of-type(n)</div>
             <div class="type centered">
-                <select>
+                <select title="">
                     <option value="">请选择</option>
                     <option value="2n+1">2n+1</option>
                     <option value="odd">odd</option>
@@ -125,7 +125,7 @@
                 selects.forEach(function (value, index, array) {
                     value.style.color = "#ccc";
                     value.style.boxShadow = "1px 1px 2px #aaa";
-                })
+                });
 
                 selects = document.querySelectorAll(".type>div div:nth-of-type(" + this.value + ")");
                 selects.forEach(function (value, index, array) {

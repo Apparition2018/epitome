@@ -22,7 +22,7 @@
         </style>
         <script class="code w67p" contenteditable="true">
             function* g(i) {
-                yield i
+                yield i;
                 yield* g2(i); // 移交执行权
                 yield i + 10;
             }

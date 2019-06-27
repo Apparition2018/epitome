@@ -27,14 +27,14 @@
 			mutations.forEach(function (mutation) {
 				console.log(mutation);
 			})
-		})
+		});
 
 		// observe()该方法所要观察的DOM节点，以及所要观察的特定变动。
 		// 接受2个参数，第一个参数是所要观察的DOM元素，第二个所要观察的变动类型
 		Observer.observe(list, {
 			childList: true, // 子节点的变动
 			subtree: true // 所有后代节点
-		})
+		});
 
 		list.appendChild(document.createElement('div'));
 		list.appendChild(document.createTextNode('foo'));

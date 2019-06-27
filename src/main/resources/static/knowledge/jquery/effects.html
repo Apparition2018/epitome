@@ -230,8 +230,7 @@
             }
 
             .box-effects-basics button {
-                margin: 5px;
-                margin-top: 20px;
+                margin: 20px 5px 5px;
             }
         </style>
         <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
@@ -241,13 +240,13 @@
                     $('.box-effects-basics span:last-child').hide("fast", function () {
                         $(this).prev().hide("fast", arguments.callee);
                     });
-                })
+                });
 
                 $('.box-effects-basics .show').click(function () {
                     $('.box-effects-basics span:first-child').show("fast", function showNext() {
                         $(this).next().show("fast", showNext);
                     });
-                })
+                });
 
                 $('.box-effects-basics .toggle').click(function () {
                     $('.box-effects-basics span').toggle("normal");
@@ -286,23 +285,22 @@
             }
 
             .box-effects-fading button {
-                margin: 5px 3px 5px 3px;
-                margin-top: 20px;
+                margin: 20px 3px 5px;
             }
         </style>
         <script class="code w60p" contenteditable="true">
             $(function () {
                 $('.box-effects-fading .fadeOut').click(function () {
                     $('.box-effects-fading square:visible:last').fadeOut("normal");
-                })
+                });
 
                 $('.box-effects-fading .fadeIn').click(function () {
                     $('.box-effects-fading square:hidden:first').fadeIn("normal");
-                })
+                });
 
                 $('.box-effects-fading .fadeToggle').click(function () {
                     $('.box-effects-fading square').fadeToggle("normal", "linear");
-                })
+                });
 
                 $('.box-effects-fading .fadeTo').click(function () {
                     $('.box-effects-fading square').fadeTo("normal", Math.random());
@@ -348,11 +346,11 @@
             $(function () {
                 $('.box-effects-sliding .slideUp').click(function () {
                     $('.box-effects-sliding square:visible:last').slideUp("normal");
-                })
+                });
 
                 $('.box-effects-sliding .slideDown').click(function () {
                     $('.box-effects-sliding square:hidden:first').slideDown("normal");
-                })
+                });
 
                 $('.box-effects-sliding .slideToggle').click(function () {
                     $('.box-effects-sliding square').slideToggle("normal", "linear");
@@ -398,8 +396,7 @@
             }
 
             .box-effects-custom button {
-                margin: 5px;
-                margin-top: 20px;
+                margin: 20px 5px 5px;
             }
         </style>
         <script src="http://code.jquery.com/color/jquery.color-2.1.2.min.js"
@@ -412,19 +409,19 @@
                     $ball.queue(function () {
                         $(this).text('黄');
                         $(this).dequeue();
-                    })
+                    });
                     $ball.animate({ left: '200px', backgroundColor: '#e57368' }, 1000);
                     $ball.queue(function () {
                         $(this).text('红');
                         $(this).dequeue();
-                    })
+                    });
                     $ball.animate({ left: '100px', top: '173.205px', backgroundColor: '#77a7fb' }, 1000);
                     $ball.queue(function () {
                         $(this).text('蓝');
                         $(this).dequeue();
-                    })
+                    });
                     $ball.animate({ left: '0', top: '0', backgroundColor: '#fbcb43' }, 1000);
-                })
+                });
 
                 $('.box-effects-custom .stop').click(function () {
                     $ball.clearQueue();

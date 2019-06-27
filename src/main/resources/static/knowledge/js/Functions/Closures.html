@@ -26,7 +26,7 @@
                 var name = "Mozilla";       // 局部变量
                 function displayName() {    // 内部函数，一个闭包
                     console.log(name);      // 使用了父函数中声明的变量
-                };
+                }
                 displayName();
             }
 
@@ -111,7 +111,7 @@
 
             // 解决方法1：使用函数工厂
             // x 函数为一个回调创建一个新的词法环境
-            function x(i) { console.log(i) };
+            function x(i) { console.log(i) }
             for (var i = 0; i < 3; i++) {
                 setTimeout(x(i), 500);
             }

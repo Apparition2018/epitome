@@ -36,7 +36,7 @@
                 text-align: center;
                 letter-spacing: 1px;
                 border: 1px solid #fff;
-                box-shadow: 1px 1px 2px #a8d097, inset 0px 35px 0px -17px #b6d7a8;
+                box-shadow: 1px 1px 2px #a8d097, inset 0 35px 0 -17px #b6d7a8;
                 border-radius: 5px;
             }
         </style>
@@ -45,14 +45,14 @@
                 var eg1 = document.getElementsByClassName('eg1')[0];
                 delegateEvent(eg1, "#a", "click", function () {
                     eg1.querySelector("#a").textContent = '#a';
-                })
+                });
                 delegateEvent(eg1, ".b", "click", function () {
                     eg1.querySelector(".b").textContent = '.b';
-                })
+                });
                 delegateEvent(eg1, "p", "click", function () {
                     eg1.querySelector(".eg1 p").textContent = '<p>';
                 })
-            }
+            };
 
             function delegateEvent(interfaceEle, selector, type, fn) {
                 if (interfaceEle.addEventListener) {
@@ -62,7 +62,7 @@
                 }
 
                 function eventfn(e) {
-                    var e = e || window.event;
+                    e = e || window.event;
                     var target = e.target || e.srcElement;
                     if (matchSelector(target, selector)) {
                         if (fn) {
@@ -79,7 +79,7 @@
                 }
                 // if use class
                 if (selector.charAt(0) === ".") {
-                    return (" " + ele.className + " ").indexOf(" " + selector.slice(1) + " ") != -1;
+                    return (" " + ele.className + " ").indexOf(" " + selector.slice(1) + " ") !== -1;
                 }
                 // if use tageName
                 return ele.tagName.toLowerCase() === selector.toLowerCase();

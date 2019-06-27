@@ -21,9 +21,9 @@
         </style>
         <script class="code w67p"  contenteditable="true">
             // isPrototypeOf(): 用于测试一个对象是否存在于另一个对象的原型链上
-            function A() { };
-            function B() { };
-            function C() { };
+            function A() { }
+            function B() { }
+            function C() { }
 
             B.prototype = Object.create(A.prototype);
             C.prototype = Object.create(B.prototype);
@@ -37,7 +37,7 @@
 
 
             // instanceof: 用于测试构造函数的 prototype 属性是否出现在对象的原型链中的任何位置
-            function D() { };
+            function D() { }
             c instanceof B; // true，B.prototype.isPrototypeOf(c) 返回 true
             c instanceof C; // true，C.prototype.isPrototypeOf(c) 返回 true
             c instanceof D; // false，因为D.prototype不在c的原型链上

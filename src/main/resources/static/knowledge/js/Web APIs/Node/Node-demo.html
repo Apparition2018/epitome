@@ -742,17 +742,16 @@
                 value.onclick = function (e) {
                     if (e.target.name === 'radio') {
                         var text = document.querySelector(".radio:checked").parentNode.querySelector(".text").textContent;
+                        var selects = document.querySelectorAll(".querySelectorAll span");
                         if (text.indexOf(".eg1 span span") !== -1) {
-                            var selects = document.querySelectorAll(".querySelectorAll span");
                             selects.forEach(function (value, index, array) {
                                 value.style.background = "#fff";
-                            })
+                            });
                             document.querySelector(".eg1 span span").style.background = "#57ad68";
                         } else {
-                            var selects = document.querySelectorAll(".querySelectorAll span");
                             selects.forEach(function (value, index, array) {
                                 value.style.background = "#fff";
-                            })
+                            });
                             selects = document.querySelector(".eg1").querySelectorAll("span span");
                             selects.forEach(function (value, index, array) {
                                 value.style.background = "#57ad68";

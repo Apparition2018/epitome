@@ -16,7 +16,7 @@
         <div class="css-live-wrap">
             <div class="caption">CSS选择器正则演示</div>
             <div class="eg1 centered">
-                <select>
+                <select title="">
                     <option value="=请选择]">请选择</option>
                     <option value="=val]">=</option>
                     <option value="~=val]">~=</option>
@@ -64,7 +64,7 @@
                     selects.forEach(function (value, index, array) {
                         value.style.borderColor = "#ccc";
                         value.style.boxShadow = "1px 1px 2px #aaa";
-                    })
+                    });
 
                     selects = document.querySelectorAll("div[title" + this.value);
                     selects.forEach(function (value, index, array) {
@@ -90,7 +90,7 @@
                 </label>
             </div>
         </div>
-        <style id="filterStyle" class="code" contenteditable="true">
+        <style class="code" contenteditable="true">
             .search {
                 box-sizing: content-box;
                 width: 180px;

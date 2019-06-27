@@ -91,7 +91,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="使用 AJAX 的 HTTP POST 请求从服务器加载数据">$.post()</a>
+                            <a href="https://www.jquery123.com/jQuery.post/">$.post()</a>
                         </td>
                         <td>使用 AJAX 的 HTTP POST 请求从服务器加载数据</td>
                         <td>$.ajax({
@@ -190,11 +190,11 @@
                 <form action="">
                     <div>
                         <label>邮&nbsp;&nbsp;箱</label>
-                        <input type="email" name="email" required>
+                        <input type="email" name="email" required title="email">
                     </div>
                     <div>
                         <label>手机号</label>
-                        <input type="tel" name="tel" required>
+                        <input type="tel" name="tel" required title="tel">
                     </div>
                 </form>
                 <div id="serialize">serialize(): </div>
@@ -214,8 +214,7 @@
             .box1 form>div {
                 display: flex;
                 align-items: center;
-                margin: 18px;
-                margin-right: 22px;
+                margin: 18px 22px 18px 18px;
             }
 
             .box1 label {
@@ -241,7 +240,7 @@
         <script class="code w60p" contenteditable="true">
             $('.box1 input').on('change', function () {
                 $('#serialize').text('serialize(): ' + $('.box1 form').serialize());
-            })
+            });
             $('.box1 input').on('change', function () {
                 $('#serializeArray').text('serializeArray(): ' + JSON.stringify($('.box1 form').serializeArray()));
             })
@@ -255,8 +254,6 @@
             <div class="centered box2">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
             var obj = {
                 a: {
@@ -265,7 +262,7 @@
                     three: 3
                 },
                 b: [1, 2, 3]
-            }
+            };
 
             $('.box2').text(decodeURI($.param(obj)));
         </script>

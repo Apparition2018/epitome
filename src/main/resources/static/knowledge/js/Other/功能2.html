@@ -16,7 +16,7 @@
             <div class="caption">保存记录，撤销返回上一次记录</div>
             <div class="caption">可撤销多次</div>
             <div class="undo centered">
-                <textarea name="" id="text" cols="40" rows="10">保存记录</textarea>
+                <textarea name="" id="text" cols="40" rows="10" title="">保存记录</textarea>
                 <br/>
                 <div class="btn save" id="save">保存</div>
                 <div class="btn repeal" id="repeal">撤销</div>
@@ -38,8 +38,7 @@
                 display: inline-block;
                 padding: 6px 20px;
                 margin-top: 8px;
-                background: linear-gradient(to bottom, #ffffff 5%, #f2f2f2 100%);
-                background-color: #ffffff;
+                background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f2f2f2 100%);
                 color: #666666;
                 font-size: 15px;
                 font-weight: bold;
@@ -51,8 +50,7 @@
             }
 
             .btn:active {
-                background: linear-gradient(to bottom, #f2f2f2 5%, #ffffff 100%);
-                background-color: #f2f2f2;
+                background: #f2f2f2 linear-gradient(to bottom, #f2f2f2 5%, #ffffff 100%);
             }
 
             .save {

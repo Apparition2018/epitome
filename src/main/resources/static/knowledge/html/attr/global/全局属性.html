@@ -109,7 +109,7 @@
                 </div>
                 <div>
                     <label for="myName">密码</label>
-                    <input id="myPwd" type="password" />
+                    <input id="myPwd" type="password"  title=""/>
                     <span>(alt + 2)</span>
                 </div>
             </div>
@@ -117,7 +117,7 @@
         <style>
             .ak {
                 margin-top: 30px;
-                color: var(--c5);
+                color: var(--gy3);
                 white-space: nowrap;
             }
 
@@ -158,15 +158,15 @@
 
                 // 浏览器判断
                 var browser = 'chrome';
-                if (typeof doc.mozFullScreen != 'undefined') {
+                if (typeof doc.mozFullScreen !== 'undefined') {
                     browser = 'moz';
-                } else if (typeof doc.msHidden != 'undefined' || typeof doc.hidden == 'undefined') {
+                } else if (typeof doc.msHidden !== 'undefined' || typeof doc.hidden === 'undefined') {
                     browser = 'ie';
                 }
 
                 // 快捷键组合
                 var keyPrefix = ({
-                    windows: (browser == 'moz' ? {
+                    windows: (browser === 'moz' ? {
                         ctrlKey: false,
                         altKey: true,
                         shiftKey: true
@@ -187,7 +187,7 @@
                     if (!a) return "";
                     for (var b = b || "x", c = "", d = 0, e; d < a.length; d += 1) a.charCodeAt(d) >= 55296 && a.charCodeAt(d) <= 56319 ? (e = (65536 + 1024 * (Number(a.charCodeAt(d)) - 55296) + Number(a.charCodeAt(d + 1)) - 56320).toString(16), d += 1) : e = a.charCodeAt(d).toString(16),
                         c += b + e;
-                    return c.substr(b.length)
+                    return c.substr(b.length);
                 };
 
                 // 提示当前元素快捷键的方法
@@ -205,7 +205,7 @@
                     arrEles.forEach(function (ele) {
 
                         // 如果元素隐藏，也忽略
-                        if (ele.clientHeight * ele.clientWidth == 0) {
+                        if (ele.clientHeight * ele.clientWidth === 0) {
                             return;
                         }
 
@@ -263,14 +263,14 @@
                         var isTargetInputable = false;
                         var eleTarget = event.target || doc.activeElement;
                         var tagName = eleTarget.tagName.toLowerCase();
-                        if (tagName == 'textarea' || (tagName == 'input' && /checkbox|radio|select|file|button|image|hidden/.test(eleTarget.type) == false)) {
+                        if (tagName === 'textarea' || (tagName === 'input' && /checkbox|radio|select|file|button|image|hidden/.test(eleTarget.type) === false)) {
                             isTargetInputable = true;
                         }
 
                         // 遍历所有设置了accesskey的符合HTML4.0.1规范的元素
                         // 包括<a>, <area>, <button>, <input>, <label>, <legend>以及<textarea>
                         var elesOwnAccesskey = doc.querySelectorAll('a[accesskey],area[accesskey],button[accesskey],input[accesskey],label[accesskey],legend[accesskey],textarea[accesskey]');
-                        if (elesOwnAccesskey.length == 0) {
+                        if (elesOwnAccesskey.length === 0) {
                             return;
                         }
                         // 对象列表转换成数组
@@ -283,14 +283,14 @@
                         // 根据这个判断按键是否有对应的匹配
                         var indexMatch = -1;
                         arrAcceeekey.forEach(function (accesskey, index) {
-                            if ((event.key && event.key == accesskey) || (event.keyIdentifier && parseInt(event.keyIdentifier.toLowerCase().replace('u+', ''), 16) == parseInt(U(accesskey), 16))) {
+                            if ((event.key && event.key === accesskey) || (event.keyIdentifier && parseInt(event.keyIdentifier.toLowerCase().replace('u+', ''), 16) === parseInt(U(accesskey), 16))) {
                                 indexMatch = index;
                                 return false;
                             }
                         });
 
                         // 1. 单独按下某个键的匹配支持
-                        if (event.altKey == false && event.shiftKey == false && event.ctrlKey == false) {
+                        if (event.altKey === false && event.shiftKey === false && event.ctrlKey === false) {
                             if (isTargetInputable) {
                                 return;
                             }
@@ -301,13 +301,13 @@
                                 event.preventDefault();
                             }
                             // 2. shift + '?'(keyCode=191)键的提示行为支持
-                        } else if (event.altKey == false && event.shiftKey == true && event.ctrlKey == false) {
-                            if (event.keyCode == 191 && !isTargetInputable) {
+                        } else if (event.altKey === false && event.shiftKey === true && event.ctrlKey === false) {
+                            if (event.keyCode === 191 && !isTargetInputable) {
                                 doc.hasTipsShow ? removeTips() : tips(arrElesOwnAccesskey);
                             }
                             // 3. 增加accesskey生效的前置键按下的提示行为
-                        } else if (event.altKey == keyPrefix.altKey && event.shiftKey == keyPrefix.shiftKey && event.ctrlKey == keyPrefix.ctrlKey) {
-                            if (indexMatch == -1) {
+                        } else if (event.altKey === keyPrefix.altKey && event.shiftKey === keyPrefix.shiftKey && event.ctrlKey === keyPrefix.ctrlKey) {
+                            if (indexMatch === -1) {
                                 event.preventDefault();
                                 doc.hasTipsShow ? removeTips() : tips(arrElesOwnAccesskey);
                             } else {
@@ -315,7 +315,7 @@
                             }
 
                             // 4. IE浏览器和其他浏览器行为一致的处理
-                            if (browser == 'ie' && arrElesOwnAccesskey[indexMatch] && !isTargetInputable) {
+                            if (browser === 'ie' && arrElesOwnAccesskey[indexMatch] && !isTargetInputable) {
                                 // click行为触发
                                 arrElesOwnAccesskey[indexMatch].click();
                             }
@@ -396,7 +396,7 @@
                 modal.style.display = 'block';
                 modal.style.boxShadow = '0 0 0 1920px rgba(0, 0, 0, .7)';
                 modal.focus();
-            }
+            };
             close.onclick = function () {
                 modal.style.display = 'none';
             }
@@ -409,11 +409,11 @@
             <div class="caption">利用 tabindex, maxlength, elements 实现</div>
             <div class="serial_no centered">
                 <form id="myForm">
-                    <input size="5" tabindex="1" maxlength="5" onkeyup="checkLen(this,this.value)">
+                    <input size="5" tabindex="1" maxlength="5" onkeyup="checkLen(this,this.value)" title="">
                     <span>——</span>
-                    <input size="5" tabindex="2" maxlength="5" onkeyup="checkLen(this,this.value)">
+                    <input size="5" tabindex="2" maxlength="5" onkeyup="checkLen(this,this.value)" title="">
                     <span>——</span>
-                    <input size="5" tabindex="3" maxlength="5" onkeyup="checkLen(this,this.value)">
+                    <input size="5" tabindex="3" maxlength="5" onkeyup="checkLen(this,this.value)" title="">
                 </form>
             </div>
         </div>
@@ -433,8 +433,8 @@
         </style>
         <script class="code w60p" contenteditable="true">
             function checkLen(x, y) {
-                if (y.length == x.maxLength) {
-                    var next = x.tabIndex
+                if (y.length === x.maxLength) {
+                    var next = x.tabIndex;
                     if (next < document.getElementById("myForm").length) {
                         document.getElementById("myForm").elements[next].focus()
                     }

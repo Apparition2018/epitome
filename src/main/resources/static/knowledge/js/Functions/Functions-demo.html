@@ -93,9 +93,9 @@
             var obj = {
                 log: ['example', 'test'],
                 get latest() { // 伪属性
-                    return this.log.length == 0 ? undefined : this.log[this.log.length - 1];
+                    return this.log.length === 0 ? undefined : this.log[this.log.length - 1];
                 }
-            }
+            };
 
             obj.latest; // "test"
 
@@ -119,7 +119,7 @@
                 set current(name) {
                     this.log.push(name);
                 }
-            }
+            };
 
             language.current = 'EN';
             language.log; // ['EN'];

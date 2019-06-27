@@ -42,11 +42,11 @@
             Array.prototype.enqueue = function (vItem) {
                 this.push(vItem);
                 return this;
-            }
+            };
 
             Array.prototype.dequeue = function () {
                 return this.shift();
-            }
+            };
 
             var aArr = [];
             aArr.enqueue(1).enqueue(2).enqueue(3); // [1, 2, 3]
@@ -66,12 +66,12 @@
         <script class="code w67p" contenteditable="true">
             Array.prototype.indexOf = function (vItem) {
                 for (var i = 0, len = this.length; i < len; i++) {
-                    if (vItem == this[i]) {
+                    if (vItem === this[i]) {
                         return i;
                     }
                 }
                 return -1;
-            }
+            };
 
             var aColors = new Array("red", "yellow", "blue", "green");
             aColors.indexOf("yellow"); // 1
@@ -97,7 +97,7 @@
                 }
             };
 
-            function letter() { console.log("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ") };
+            function letter() { console.log("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ") }
             letter.toString(); // "Function too long to display."
         </script>
     </section>

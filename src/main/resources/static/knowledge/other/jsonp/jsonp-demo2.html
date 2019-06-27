@@ -79,7 +79,7 @@
 
 	<div class="box" id="box">
 		<div class="con">
-			<input class="input" id="search">
+			<input class="input" id="search" title="">
 			<a target="_blank" id="btn" href="javascript:;" class="search"></a>
 		</div>
 		<ul class="list" id="list"></ul>
@@ -112,11 +112,11 @@
 		// 搜索框键盘按键被松开时
 		search.onkeyup = function (e) {
 			e = e || event;
-			if (e.keyCode == '13') { // Enter
+			if (e.keyCode === '13') { // Enter
 				window.open('https://www.baidu.com/s?wd=' + this.value);
 			}
 			if (this.value) {
-				if (search.data != this.value) {
+				if (search.data !== this.value) {
 					btn.setAttribute('href', 'https://www.baidu.com/s?wd='
 						+ this.value);
 					var that = this;
@@ -127,7 +127,7 @@
 				list.innerHTML = '';
 			}
 			search.data = this.value;
-		}
+		};
 
 		// 点击搜索框，显示list
 		search.onclick = function (e) {
@@ -139,7 +139,7 @@
 			} else {
 				e.cancelBubble = true;
 			}
-		}
+		};
 
 		// 点击文档任意区域，隐藏list
 		document.onclick = function () {

@@ -74,7 +74,7 @@
                         <td>Array.prototype.filter()</td>
                         <td>查找满足过滤函数的数组元素</td>
                         <td>
-                            <a href="javascript: alert($.grep([1,2,3],function(n,i){return(n%2!=0&amp;&amp;i&lt;2)}))">$.grep([1,2,3],function(n,i){return(n%2!=0&amp;&amp;i&lt;2)})</a>
+                            <a href="javascript: alert($.grep([1,2,3],function(n,i){return(n%2!==0&amp;&amp;i&lt;2)}))">$.grep([1,2,3],function(n,i){return(n%2!==0&amp;&amp;i&lt;2)})</a>
                         </td>
                     </tr>
                     <tr>
@@ -114,7 +114,7 @@
                             <a href="https://www.jquery123.com/jQuery.type/">$.type()</a>
                         </td>
                         <td>
-                            <a href="../../js/表达式和运算符/一元运算符/typeof-demo.html">typeof operand</a>
+                            <a href="../js/表达式和运算符/一元运算符/一元运算符.html">typeof operand</a>
                         </td>
                         <td>确定JavaScript内置对象的类型，并返回小写形式的类型名称</td>
                         <td>
@@ -219,7 +219,7 @@
                             <a href="https://www.jquery123.com/jQuery.extend/">$.extend()</a>
                         </td>
                         <td>
-                            <a href="../../js/内置对象/Object/assign-demo.html">Object.assign()</a>
+                            <a href="../js/内置对象/Object/assign-demo.html">Object.assign()</a>
                         </td>
                         <td>将一个或多个对象的内容合并到目标对象</td>
                         <td>
@@ -310,7 +310,7 @@
 
             $('#utilities-noop').tooltip([
                 '这对一些插件作者很有用，当插件提供了一个可选的回调函数接口，那么如果调用的时候没有传递这个回调函数，就用jQuery.noop来代替执行'
-            ])
+            ]);
 
             $('#utilities-unique').tooltip([
                 'jQuery 3.0 更名为 $.uniqueSort()'
@@ -332,11 +332,11 @@
                     apple: 0,
                     banana: { weight: 52, price: 100 },
                     cherry: 97
-                }
+                };
                 var obj2 = {
                     banana: { price: 200 },
                     durian: 100
-                }
+                };
 
                 // $.extend( [deep ], target, object1 [, objectN ] )
                 $.extend(true, obj1, obj2);
@@ -366,14 +366,14 @@
                             this.innerText = this.nodeName;
                         })
                     }
-                })
+                });
 
                 $('.box-fn-extend').printNodeName();
             })
         </script>
     </section>
 
-    <section class="code-wrap h250" id="util-extend">
+    <section class="code-wrap h250" id="util-globalEval">
         <div class="css-live-wrap w40p">
             <div class="caption">$.globalEval()</div>
             <div class="caption">在全局上下文下执行一些JavaScript代码</div>
@@ -441,7 +441,7 @@
                 var nodeNames = [];
                 $.each(dom, function (i, e) {
                     nodeNames[i] = "<li>" + e.nodeName + "</li>";
-                })
+                });
                 $("<ol>").append(nodeNames.join("")).appendTo($('.box-parseHTML'));
             })
         </script>

@@ -48,6 +48,7 @@ Ctrl + K M              更改语言模式
 Ctrl + K Z              切换 Zen 模式
 Ctrl + K Ctrl + S       打开键盘快捷方式
 Ctrl + K Ctrl + 0		全部折叠
+Ctrl + K Ctrl + Q       最后编辑位置
 
 Ctrl + K P              复制当前文件路径
 Alt + Shift + C         复制文件路径

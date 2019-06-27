@@ -42,7 +42,7 @@
         <script class="code w67p" contenteditable="true">
             onload = function () {
                 visits();
-            }
+            };
 
             // 统计网页访问次数
             function visits() {
@@ -117,7 +117,7 @@
             document.getElementById('fileImg').addEventListener('change', function (event) {
                 file = event.target.files[0];
                 // 选择的文件是图片
-                if (file.type.indexOf("image") == 0) {
+                if (file.type.indexOf("image") === 0) {
                     reader.readAsArrayBuffer(file);
                 }
             });
