@@ -11,21 +11,21 @@ import org.junit.Test;
 public class Base64Demo {
 
     /**
+     * 加密：
      * static byte[]	    encodeBase64(byte[] binaryData[, boolean isChunked, boolean urlSafe, int maxResultSize])
      * static String	    encodeBase64String(byte[] binaryData)
      * static byte[]	    encodeBase64URLSafe(byte[] binaryData)
      * static String	    encodeBase64URLSafeString(byte[] binaryData)
-     * 加密
      * <p>
+     * 解密：
      * static byte[]	    decodeBase64(byte[] base64Data)
      * static byte[]	    decodeBase64(String base64String)
      * static BigInteger	decodeInteger(byte[] pArray)
-     * 解密
      * <p>
+     * 判断是否为 Base64：
      * static boolean	    isBase64(byte octet)
      * static boolean	    isBase64(byte[] arrayOctet)
      * static boolean	    isBase64(String base64)
-     * 判断是否为 Base64
      */
     @Test
     public void base64() {

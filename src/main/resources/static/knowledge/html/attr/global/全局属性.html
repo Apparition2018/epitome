@@ -338,14 +338,14 @@
             <div class="centered">
                 <div id="btn" class="btn">Modal</div>
             </div>
-            <div id="modal" class="modal" tabindex="-1">
+            <div id="modal" class="modal centered" tabindex="-1">
                 <div id="close" class="close">
                     <a href="javascript:" title="关闭">x</a>
                 </div>
             </div>
         </div>
         <code class="code w60p" contenteditable="true">
-                    &lt;div id="modal" class="modal" tabindex="-1"&gt;
+                    &lt;div id="modal" class="modal centered" tabindex="-1"&gt;
                         &lt;div id="close" class="close"&gt;
                             &lt;a href="javascript:" title="关闭"&gt;x&lt;/a&gt;
                         &lt;/div&gt;
@@ -354,10 +354,6 @@
         <style>
             .modal {
                 display: none;
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
                 z-index: 1;
                 width: 360px;
                 height: 250px;

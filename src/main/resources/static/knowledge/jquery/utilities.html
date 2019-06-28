@@ -9,8 +9,6 @@
     <title>工具类 | jQuery</title>
     <link rel="icon" href="../../img/Nohara Sinnosuke.png">
     <link rel="stylesheet" href="../../css/demo.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <script src="../../js/tooltip.js"></script>
 </head>
 
 <body>
@@ -298,8 +296,10 @@
                 </table>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+        <script src="../../js/tooltip.js"></script>
         <script>
-            $('#utilities-each>td:eq(1)').tooltip([
+            $('#utilities-each').tooltip([
                 [
                     'forEach()返回值是undefined，不可以链式调用',
                     'map()返回一个新数组，原数组不会改变',

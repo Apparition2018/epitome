@@ -5,11 +5,15 @@ $('.css-live-wrap').each(function () {
         clwHeight = parseInt($this.css('height')),
         top;
     if (captionLen === 1) {
-        top = (clwHeight + 38) / clwHeight / 2
+        top = (clwHeight + 38) / clwHeight / 2;
         $this.find('.centered').css('top', top * 100 + '%');
     }
     else if (captionLen === 2) {
-        top = (clwHeight + 78) / clwHeight / 2
+        top = (clwHeight + 78) / clwHeight / 2;
         $this.find('.centered').css('top', top * 100 + '%');
     }
-})
+});
+
+function demoLog(dom, msg) {
+    dom.innerHTML += msg + '<br/>';
+}

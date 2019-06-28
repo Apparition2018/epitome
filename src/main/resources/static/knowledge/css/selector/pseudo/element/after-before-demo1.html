@@ -17,15 +17,15 @@
 </head>
 
 <body>
-    <section class="code-wrap h250">
-        <div class="css-live-wrap">
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w40p">
             <div class="caption">font-awesome图标</div>
             <div class="centered">
                 <span class="font-awesome"></span>
             </div>
         </div>
         <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <style class="code" contenteditable="true">
+        <style class="code w60p" contenteditable="true">
             .font-awesome::before {
                 content: "\f000";
                 font-family: FontAwesome,serif;
@@ -35,22 +35,21 @@
         </style>
     </section>
 
-    <!-- http://iconfont.cn/help/detail?spm=a313x.7781069.1998910419.15&helptype=code -->
     <section class="code-wrap h350">
-        <div class="css-live-wrap">
+        <div class="css-live-wrap w40p">
             <div class="caption">阿里iconfont图标</div>
             <div class="centered">
                 <span class="iconfont">&#xe72a;</span>
             </div>
         </div>
-        <style class="code" contenteditable="true">
+        <style class="code w60p" contenteditable="true">
+            /* http://iconfont.cn/help/detail?spm=a313x.7781069.1998910419.15&helptype=code */
             @font-face {
                 font-family: 'iconfont';
-                src: url('../../../../../plugins/iconfont/iconfont.eot');
-                src: url('../../../../../plugins/iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
-                url('../../../../../plugins/iconfont/iconfont.woff') format('woff'),
-                url('../../../../../plugins/iconfont/iconfont.ttf') format('truetype'),
-                url('../../../../../plugins/iconfont/iconfont.svg#iconfont') format('svg');
+                src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+                url('iconfont/iconfont.woff') format('woff'),
+                url('iconfont/iconfont.ttf') format('truetype'),
+                url('iconfont/iconfont.svg#iconfont') format('svg');
             }
 
             .iconfont {
@@ -65,14 +64,14 @@
     </section>
 
     <section class="code-wrap">
-        <div class="css-live-wrap">
+        <div class="css-live-wrap w40p">
             <div class="caption">大小不固定的图片居中</div>
             <div class="caption">利用伪类、content: ""、height: 100%、vertical-align: middle实现</div>
             <div class="middle centered">
                 <img src="../../../../../img/heart.png" />
             </div>
         </div>
-        <style class="code" contenteditable="true">
+        <style class="code w60p" contenteditable="true">
             .middle {
                 width: 260px;
                 height: 150px;
@@ -96,15 +95,15 @@
         </style>
     </section>
 
-    <section class="code-wrap">
-        <div class="css-live-wrap">
+    <section class="code-wrap h600">
+        <div class="css-live-wrap w40p">
             <div class="caption">消除伪元素事件</div>
             <div class="caption">使用pointer-events: none实现，</div>
             <div class="canc centered">
                 <div></div>
             </div>
         </div>
-        <style class="code" contenteditable="true">
+        <style class="code w60p" contenteditable="true">
             .canc {
                 position: relative;
                 width: 180px;
@@ -155,14 +154,14 @@
         </script>
     </section>
 
-    <section class="code-wrap">
-        <div class="css-live-wrap">
+    <section class="code-wrap h450">
+        <div class="css-live-wrap w40p">
             <div class="caption">增大点击区域</div>
             <div class="grow centered">
                 <p>Click</p>
             </div>
         </div>
-        <style class="code" contenteditable="true">
+        <style class="code w60p" contenteditable="true">
             .grow p {
                 position: relative;
                 padding: 30px 35px;
@@ -191,15 +190,15 @@
         </style>
     </section>
 
-    <section class="code-wrap">
-        <div class="css-live-wrap">
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w40p">
             <div class="caption">实现inline元素换行，替代&lt;br&gt;</div>
             <div class="br centered">
                 <span>First Line</span>
                 <span>Second Line</span>
             </div>
         </div>
-        <style class="code" contenteditable="true">
+        <style class="code w60p" contenteditable="true">
             .br {
                 width: 200px;
                 line-height: 50px;

@@ -57,7 +57,7 @@ public class BZip2Utils {
     /**
      * 文件压缩
      */
-    public static void compress(File file, boolean delete) throws Exception {
+    private static void compress(File file, boolean delete) throws Exception {
         FileInputStream fis = new FileInputStream(file);
         FileOutputStream fos = new FileOutputStream(file.getPath() + EXT);
 
@@ -75,7 +75,7 @@ public class BZip2Utils {
     /**
      * 数据压缩
      */
-    public static void compress(InputStream is, OutputStream os)
+    private static void compress(InputStream is, OutputStream os)
             throws Exception {
 
         BZip2CompressorOutputStream gos = new BZip2CompressorOutputStream(os);
@@ -95,14 +95,14 @@ public class BZip2Utils {
     /**
      * 文件压缩
      */
-    public static void compress(String path) throws Exception {
+    private static void compress(String path) throws Exception {
         compress(path, true);
     }
 
     /**
      * 文件压缩
      */
-    public static void compress(String path, boolean delete) throws Exception {
+    private static void compress(String path, boolean delete) throws Exception {
         File file = new File(path);
         compress(file, delete);
     }
@@ -138,7 +138,7 @@ public class BZip2Utils {
     /**
      * 文件解压缩
      */
-    public static void decompress(File file, boolean delete) throws Exception {
+    private static void decompress(File file, boolean delete) throws Exception {
         FileInputStream fis = new FileInputStream(file);
         FileOutputStream fos = new FileOutputStream(file.getPath().replace(EXT, ""));
         decompress(fis, fos);
@@ -154,7 +154,7 @@ public class BZip2Utils {
     /**
      * 数据解压缩
      */
-    public static void decompress(InputStream is, OutputStream os)
+    private static void decompress(InputStream is, OutputStream os)
             throws Exception {
 
         BZip2CompressorInputStream gis = new BZip2CompressorInputStream(is);
@@ -171,14 +171,14 @@ public class BZip2Utils {
     /**
      * 文件解压缩
      */
-    public static void decompress(String path) throws Exception {
+    private static void decompress(String path) throws Exception {
         decompress(path, true);
     }
 
     /**
      * 文件解压缩
      */
-    public static void decompress(String path, boolean delete) throws Exception {
+    private static void decompress(String path, boolean delete) throws Exception {
         File file = new File(path);
         decompress(file, delete);
     }
