@@ -1,3 +1,7 @@
+廖雪峰Git教程：	https://www.liaoxuefeng.com/wiki/896043488029600
+Git book：		https://git-scm.com/book/zh/v2
+.gitignore：	https://www.jianshu.com/p/74bd0ceb6182
+
 q           退出log
 Search      Alt + F3
 Paste       Shift + Ins
