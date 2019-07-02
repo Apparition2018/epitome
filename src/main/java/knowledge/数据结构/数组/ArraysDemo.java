@@ -1,7 +1,6 @@
 package knowledge.数据结构.数组;
 
 import com.google.common.primitives.Ints;
-import lombok.experimental.var;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -71,10 +70,10 @@ public class ArraysDemo {
      */
     @Test
     public void copyOf() {
-        int[] arr1 = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] arr1 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] arr2 = Arrays.copyOf(arr1, 5);
         p(Arrays.toString(arr2)); // [1, 2, 3, 4, 5]
-        
+
     }
 
     /**

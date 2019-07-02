@@ -6,7 +6,7 @@ import springboot.domain.app.Score;
 import springboot.domain.app.ScoreExample;
 
 public interface ScoreMapper {
-    int countByExample(ScoreExample example);
+    long countByExample(ScoreExample example);
 
     int deleteByExample(ScoreExample example);
 

@@ -26,9 +26,10 @@ public class ConvertUtilsBeanDemo {
         // 注册一个转换器
         cub.register(new Converter() {
             @Override
-            public Object convert(Class type, Object value) {
+            @SuppressWarnings("unchecked")
+            public <T> T  convert(Class<T> type, Object value) {
                 // 为每个 String 类型的属性加上前缀
-                return "prefix-" + value;
+                return (T) ("prefix-" + value);
             }
         }, String.class);
         // 建立一个依赖特定转换工具的 Bean 工具类

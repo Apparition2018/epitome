@@ -98,6 +98,7 @@ import static java.text.NumberFormat.getInstance;
  * 建议148：增强类的可替换性
  * 建议149：依赖抽象而不是实现
  */
+@SuppressWarnings("unchecked")
 public class Suggestions {
 
     /* 第一章：Java 开发中通用的方法和准则 */

@@ -1,6 +1,5 @@
 package knowledge.算法.greedy;
 
-
 /**
  * 最小堆
  * <p>
@@ -12,6 +11,7 @@ package knowledge.算法.greedy;
  * <p>
  * https://blog.csdn.net/xuefeng0707/article/details/7841328
  */
+@SuppressWarnings("unchecked")
 public class MinHeap<T extends Comparable> {
     private Object[] data;
 

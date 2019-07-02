@@ -15,6 +15,7 @@ import java.util.List;
 public class LazyListDemo {
 
     @Test
+    @SuppressWarnings("unchecked")
     public void test() {
         // 把一个 List 包装成一个 lazy 类型
         List<String> lazy = LazyList.lazyList(

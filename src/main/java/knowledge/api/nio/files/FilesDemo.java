@@ -1,18 +1,18 @@
 package knowledge.api.nio.files;
 
-import lombok.experimental.var;
 import org.junit.Test;
 
 import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
  * Files
- *
+ * <p>
  * 该类包含操作文件、目录或其他类型文件的静态方法
- *
+ * <p>
  * https://www.cnblogs.com/ixenos/p/5851976.html
  * https://www.cnblogs.com/digdeep/p/4478734.html
  * https://docs.oracle.com/javase/8/docs/api/
@@ -26,7 +26,7 @@ public class FilesDemo {
     public void write() throws IOException {
         Path path = Paths.get(dirPath + "Files.txt");
 
-        var lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         lines.add("静夜思");
         lines.add("床前明月光，");
         lines.add("疑是地上霜。");
@@ -104,10 +104,10 @@ public class FilesDemo {
     // 目录流
     @Test
     public void directoryStream() throws IOException {
-        Path path  = Paths.get(dirPath + "a");
+        Path path = Paths.get(dirPath + "a");
 
         // glob，其过滤作用
-        DirectoryStream<Path> entries = Files.newDirectoryStream(path,"*.txt");
+        DirectoryStream<Path> entries = Files.newDirectoryStream(path, "*.txt");
         for (Path entry : entries) {
             p(entry); // src\main\java\knowledge\api\nio\files\a\Files.txt
         }
@@ -119,7 +119,7 @@ public class FilesDemo {
     // 获取信息
     @Test
     public void get() throws IOException {
-        Path path  = Paths.get(dirPath);
+        Path path = Paths.get(dirPath);
 
         // 返回文件存储区
         p(Files.getFileStore(path)); // C:
@@ -164,7 +164,6 @@ public class FilesDemo {
         OutputStream os = Files.newOutputStream(path);
         BufferedReader br = Files.newBufferedReader(path);
         BufferedWriter bw = Files.newBufferedWriter(path);
-
     }
 
     public static <T> void p(T obj) {

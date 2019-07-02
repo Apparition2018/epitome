@@ -1,10 +1,6 @@
 package jar.lombok;
 
-import lombok.Cleanup;
-import lombok.Getter;
-import lombok.SneakyThrows;
-import lombok.Synchronized;
-import lombok.experimental.var;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -23,7 +19,7 @@ import java.util.Arrays;
 public class LombokDemo3 {
 
     /**
-     * var
+     * var （已过时）
      * 从初始化表达式中推断出变量的类型
      * 使用前需要在配置文件 lombok.config 配置 lombok.var.flagUsage = ALLOW
      */
@@ -79,14 +75,16 @@ public class LombokDemo3 {
      */
     @Test
     @Synchronized
-    public void synchronized_() { }
+    public void synchronized_() {
+    }
 
     /**
      * Getter(lazy = true)
      * 实际使用到的时候才生成
      * 提高代码效率，同时由 lombok 管理线程安全问题
      */
-    @Getter(lazy = true) private final double[] cached = expensive();
+    @Getter(lazy = true)
+    private final double[] cached = expensive();
 
     private double[] expensive() {
         double[] result = new double[1000000];

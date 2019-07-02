@@ -97,6 +97,7 @@ public class BeanUtilsDemo {
      * <p>
      * https://www.cnblogs.com/vmax-tam/p/4159985.html
      */
+    @SuppressWarnings("unchecked")
     public static <T> T requestToBean(HttpServletRequest request, Class<T> clazz) {
 
         // 创建 JavaBean 对象

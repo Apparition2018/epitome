@@ -13,6 +13,7 @@ public class Child extends Person {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void sing() {
 
     }
