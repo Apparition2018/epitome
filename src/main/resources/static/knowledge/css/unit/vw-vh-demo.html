@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>vw-vh-demo</title>
-    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="icon" href="../../../img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../css/demo.css">
 </head>
 
@@ -16,11 +16,11 @@
         <div class="css-live-wrap">
             <div class="caption">响应式布局</div>
             <div class="caption">利用 vw、vh、calc、@media screen 实现</div>
-            <div class="box centered">
-                <h2 class="title">标题</h2>
-                <div class="list">
-                    <img src="../../../img/mm.png" class="image">
-                    <div class="content">
+            <div class="responsive centered">
+                <h2>标题</h2>
+                <div>
+                    <img src="../../../img/people/mm.png">
+                    <div>
                         由于Android4.4才开始支持vw单位。所以，基于视区宽度的排版和布局迟迟没有火起来。但是，显然，快了~~
                     </div>
                 </div>
@@ -63,27 +63,27 @@
                 }
             }
 
-            .box {
+            .responsive {
                 width: 100%;
                 margin: auto;
             }
 
-            .title {
+            .responsive h2 {
                 text-align: center;
                 font-size: 1.2em;
             }
 
-            .list {
+            .responsive>div {
                 overflow: hidden;
             }
 
-            .image {
+            .responsive>div>img {
                 float: left;
                 width: 5em;
                 margin-right: 0.5em;
             }
 
-            .content {
+            .responsive>div>div {
                 overflow: hidden;
             }
         </style>

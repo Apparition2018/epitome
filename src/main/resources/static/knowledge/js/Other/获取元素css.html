@@ -6,17 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>获取元素css</title>
-    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="icon" href="../../../img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../css/demo.css">
     <style>
-        .centered {
-            margin-top: 30px;
-        }
-
-        .code-wrap {
-            height: 250px;
-        }
-
         .eg {
             padding: 10px 20px;
             margin: 15px auto;
@@ -42,7 +34,7 @@
     <!--https://blog.csdn.net/lzding/article/details/46317777
         https://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/
         http://www.w3cbus.com/dom/css.html -->
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">element.style</div>
             <div class="caption">只能获取行内样式，可以设置样式</div>
@@ -62,7 +54,7 @@
         </script>
     </section>
 
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">currentStyle</div>
             <div class="caption">IE, 返回的是元素当前应用的最终CSS属性值</div>
@@ -90,11 +82,10 @@
         </script>
     </section>
 
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">getComputedStyle</div>
             <div class="caption">返回的style是一个实时的 CSSStyleDeclaration 对象</div>
-            <div class="caption"></div>
             <div class="centered">
                 <div class="eg eg3">
                     getComputedStyle
@@ -117,7 +108,7 @@
         </script>
     </section>
 
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">styleSheets</div>
             <div class="caption">返回当前页面的所有StyleSheet对象（即所有样式表）</div>
@@ -141,7 +132,7 @@
         </script>
     </section>
 
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">jQuery css</div>
             <div class="centered">
@@ -156,7 +147,7 @@
                 background: deepskyblue;
             }
         </style>
-        <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <script class="code w60p" contenteditable="true">
             var eg5 = document.getElementsByClassName('eg5')[0];
             eg5.onclick = function () {
@@ -166,7 +157,7 @@
     </section>
 
     <!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia -->
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">matchMedia</div>
             <div class="centered">
@@ -193,6 +184,8 @@
         </script>
     </section>
 
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/demo.js"></script>
 </body>
 
 </html>

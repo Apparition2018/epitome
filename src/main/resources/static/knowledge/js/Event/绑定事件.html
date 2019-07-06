@@ -6,13 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>绑定事件</title>
-    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="icon" href="../../../img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../css/demo.css">
     <style>
-        .code-wrap {
-            height: 250px;
-        }
-
         .eg {
             padding: 6px 24px;
             background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
@@ -36,7 +32,7 @@
     <!--https://www.jb51.net/article/95705.htm 
         https://www.jb51.net/article/93752.htm -->
 
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">在DOM元素中直接绑定</div>
             <div class="eg eg1 centered" onclick="eg1()">
@@ -48,7 +44,7 @@
             方法一
             &lt;/div&gt;
         </code>
-        <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <script>
             // jQuery click 绑定事件，如果原本已有 onclick 事件，则新绑定的时候在原事件之后/之前触发???
             $('.eg1').click(function () {
@@ -61,7 +57,7 @@
         </script>
     </section>
 
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">onclick 绑定 (DOM0级)</div>
             <div class="caption">object.onclick=function(){SomeJavaScriptCode};</div>
@@ -84,7 +80,7 @@
         </script>
     </section>
 
-    <section class="code-wrap" id="eg3" style="height: 400px">
+    <section class="code-wrap" id="eg3">
         <div class="css-live-wrap w40p">
             <div class="caption">绑定事件监听函数 (DOM2级)</div>
             <div class="caption">element.addEventListener(event, function, useCapture),
@@ -116,7 +112,7 @@
         </script>
     </section>
 
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">jQuery on 绑定</div>
             <div class="caption">$(selector).on(event,childSelector,data,function)</div>
@@ -131,7 +127,7 @@
         </script>
     </section>
 
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">jQuery click 绑定</div>
             <div class="caption">$(selector).on(event,childSelector,data,function)</div>
@@ -150,7 +146,7 @@
         </script>
     </section>
 
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">事件委托</div>
             <div class="caption">利用冒泡的原理，把事件加到父元素或祖先元素上</div>
@@ -170,6 +166,8 @@
         </script>
     </section>
 
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/demo.js"></script>
 </body>
 
 </html>

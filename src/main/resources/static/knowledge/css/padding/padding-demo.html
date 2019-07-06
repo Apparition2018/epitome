@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>padding-demo</title>
-    <link rel="icon" href="../../../img/Nohara Sinnosuke.png">
+    <link rel="icon" href="../../../img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../css/demo.css">
 </head>
 
@@ -138,7 +138,7 @@
 
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption"></div>
+            <div class="caption">多层环形圈</div>
             <div class="eye centered">
             </div>
         </div>
@@ -195,7 +195,7 @@
                 background: var(--pl3);
             }
         </style>
-        <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <script>
             function addGreen() {
                 $('.layout1-left div').html($('.layout1-left div').html() + '<br>' + 'LEFT');
@@ -210,7 +210,7 @@
         <div class="css-live-wrap">
             <div class="caption">两栏自适应布局1</div>
             <div class="layout2 centered">
-                <img src="../../../img/mm.png"> 本例子实现的是，图片宽度固定，然后后面文字信息自适应的效果。原理如下：容器有个固定的padding-left值，此时图文应该在120像素处显示，但是，由于图片margin负值浮动（或者绝对定位）到容器左上角，因此，文字...
+                <img src="../../../img/people/mm.png"> 本例子实现的是，图片宽度固定，然后后面文字信息自适应的效果。原理如下：容器有个固定的padding-left值，此时图文应该在120像素处显示，但是，由于图片margin负值浮动（或者绝对定位）到容器左上角，因此，文字...
             </div>
         </div>
         <style class="code" contenteditable="true">
@@ -236,7 +236,7 @@
         <div class="css-live-wrap">
             <div class="caption">两栏自适应布局2</div>
             <div class="layout3 centered">
-                <img src="../../../img/mm.png">
+                <img src="../../../img/people/mm.png">
                 <div>本例子实现的是，图片宽度固定，然后后面文字信息自适应的效果。原理如下：两栏元素均有自己的标签，其中文字栏有个固定的padding-left值，此时文字应该在距离容器120像素显示，但是，由于图片浮动（或者绝对定位），不在流中，因此，文字...</div>
             </div>
         </div>
@@ -261,6 +261,10 @@
             }
         </style>
     </section>
+
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/demo.js"></script>
 </body>
 
 </html>

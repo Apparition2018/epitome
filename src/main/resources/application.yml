@@ -43,6 +43,12 @@ spring:
       poolPreparedStatements: true
       maxPoolPreparedStatementPerConnectionSize: 20
       filters: stat
+  # 热部署
+  devtools:
+    livereload:
+      enabled: false
+    restart:
+      additional-paths: src\main\resources\static\html
 
 logging:
   file: logs/springboot.log

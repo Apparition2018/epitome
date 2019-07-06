@@ -47,66 +47,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../img/Nohara Sinnosuke.png">
+    <link rel="icon" href="../img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../css/demo.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <script defer src="../../../../js/demo.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../js/demo.js"></script>
 </head>
 
 <body>
     <section class="code-wrap">
-        <div class="css-live-wrap" id="test">
+        <div class="css-live-wrap">
             <div class="caption"></div>
-            <div class="box-effects-custom centered">
-                <div class="ball-area">
-                    <div id="ball"></div>
-                </div>
+            <div class="centered">
             </div>
         </div>
-        </div>
         <style>
-            .box-effects-custom {
-                text-align: center;
-            }
-
-            .box-effects-custom .ball-area {
-                position: relative;
-                width: 240px;
-                height: 215px;
-            }
-
-            #ball {
-                position: absolute;
-                width: 40px;
-                height: 40px;
-                line-height: 40px;
-                color: #fff;
-                background-color: #fbcb43;
-                border-radius: 50%;
-            }
-
-            .box-effects-custom button {
-                margin: 5px;
-                margin-top: 20px;
-            }
         </style>
         <script class="code" contenteditable="true">
-            var $ball = $('#ball');
-            // $ball.queue(function () {
-            //     $(this).text('黄');
-            //     $(this).dequeue();
-            // })
-            $ball.animate({ left: '200px', backgroundColor: '#e57368' }, 1000);
-            // $ball.queue(function () {
-            //     $(this).text('红');
-            //     $(this).dequeue();
-            // })
-            $ball.animate({ left: '100px', top: '173.205px', backgroundColor: '#77a7fb' }, 1000);
-            // $ball.queue(function () {
-            //     $(this).text('蓝');
-            //     $(this).dequeue();
-            // })
-            $ball.animate({ left: '0', top: '0', backgroundColor: '#fbcb43' }, 1000);
         </script>
     </section>
 
@@ -133,7 +89,6 @@
         <style>
         </style>
         <script class="code" contenteditable="true">
-
         </script>
     </section>
 
@@ -141,20 +96,11 @@
         <div class="css-live-wrap w40p">
             <div class="caption"></div>
             <div class="centered">
-                <div id="ball2"></div>
             </div>
         </div>
         <style>
-            #ball2 {
-                position: absolute;
-                width: 50px;
-                height: 50px;
-                border: 1px solid #000;
-                border-radius: 50%;
-            }
         </style>
         <script class="code w60p" contenteditable="true">
-            $('#ball2').animate({ left: '200px', backgroundColor: '#e57368' }, 1000);
         </script>
     </section>
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>draggable-demo</title>
-    <link rel="icon" href="../../../../img/Nohara Sinnosuke.png">
+    <link rel="icon" href="../../../../img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../css/demo.css">
     <style>
         .code-wrap-2 {
@@ -21,7 +21,7 @@
         <div class="css-live-wrap">
             <div class="caption">随着鼠标拖动而移动的小飞机</div>
             <div class="centered" id="eg1">
-                <img id="ap" src="../../../../img/airplane.png" alt="airplane" class="grab" />
+                <img id="ap" src="../../../../img/other/airplane.png" alt="airplane" class="grab" />
             </div>
         </div>
         <style>
@@ -155,7 +155,7 @@
 
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption"></div>
+            <div class="caption">拖放删除</div>
             <div class="centered" id="eg3">
                 <div>
                     <div class="list" draggable="true">这里是列表1的标题</div>
@@ -165,7 +165,7 @@
                     <div class="list" draggable="true">这里是列表5的标题</div>
                     <div class="list" draggable="true">这里是列表6的标题</div>
                 </div>
-                <div id="recycle">回收站</div>
+                <div id="recycle-bin">回收站</div>
             </div>
         </div>
         <style>
@@ -182,7 +182,7 @@
                 border-bottom: 1px solid #dfdfdf;
             }
 
-            #recycle {
+            #recycle-bin {
                 position: absolute;
                 bottom: 0;
                 width: 100%;
@@ -196,7 +196,7 @@
         <script class="code" contenteditable="true">
             var iosDragDropShim = { enableEnterLeave: true }; 					// 兼容移动端
             var source = document.querySelectorAll('.list'),
-                recycle = document.getElementById('recycle'),
+                recycleBin = document.getElementById('recycle-bin'),
                 dragElement = null, 											// 用于存放拖动元素
                 lock = true; 													// 最后元素拖放时会进入enter和leave的循环，用来锁住
 
@@ -229,7 +229,7 @@
                 }, false)
             }
 
-            recycle.addEventListener('drop', function (ev) { 					// 拖动元素放置在目标区域时触发
+            recycleBin.addEventListener('drop', function (ev) { 			    // 拖动元素放置在目标区域时触发
                 dragElement.parentNode.removeChild(dragElement);				// 拖进回收站则删除该元素
             }, false);
 

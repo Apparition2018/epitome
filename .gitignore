@@ -23,11 +23,12 @@
 hs_err_pid*
 
 # ljh
-target/
-bin/
-.idea/
+**/target
+**/bin
+**/.idea
+**/.settings
+**/.vscode
 *.iml
-.settings/
 .classpath
 .project
-**/.vscode
+.gitignore

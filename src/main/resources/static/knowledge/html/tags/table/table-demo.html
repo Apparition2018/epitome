@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>table-demo</title>
-    <link rel="icon" href="../../../../img/Nohara Sinnosuke.png">
+    <link rel="icon" href="../../../../img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../css/demo.css">
 </head>
 
@@ -47,7 +47,7 @@
             // cellspacing: 规定单元格之间的空间
             // &lt;caption&gt;: 表格标题
 
-            &lt;table border="1" cellpadding="8" cellspacing="0" style="width: 200px; text-align: center;"&gt;
+            &lt;table border="1" cellpadding="8" cellspacing="0" style="width: 300px; text-align: center;"&gt;
                 &lt;caption  style="margin-bottom: 10px; font-size: 22px; font-weight: bold;"&gt;英超&lt;/caption&gt;
                 ...
         </code>
@@ -110,9 +110,9 @@
         </style>
     </section>
 
-    <section class="code-wrap h300">
+    <section class="code-wrap h350">
         <div class="css-live-wrap w40p">
-            <div class="caption"></div>
+            <div class="caption">合并单元格</div>
             <div class="swastika centered">
                 <table>
                     <tr>
@@ -129,7 +129,22 @@
                 </table>
             </div>
         </div>
-        <style class="code w60p" contenteditable="true">
+        <code class="code w60p" contenteditable="true">
+            &lt;table&gt;
+                &lt;tr&gt;
+                    &lt;td colspan="2"&gt;&lt;/td&gt;
+                    &lt;td rowspan="2"&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td rowspan="2"&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td colspan="2"&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        </code>
+        <style>
             .swastika table {
                 width: 240px;
             }
