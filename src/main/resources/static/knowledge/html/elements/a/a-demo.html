@@ -135,16 +135,16 @@
                 draw();
             }, false);
 
-            canvas.addEventListener('mousedown', function (event) {
+            canvas.addEventListener('mousedown', function () {
                 mousedown = true;
             }, false);
-            canvas.addEventListener('mouseup', function (event) {
+            canvas.addEventListener('mouseup', function () {
                 mousedown = false;
             }, false);
 
             var link = document.createElement('a');
             link.innerHTML = 'download';
-            link.addEventListener('click', function (ev) {
+            link.addEventListener('click', function () {
                 link.href = canvas.toDataURL();
                 link.download = "mypainting.png";
             }, false);

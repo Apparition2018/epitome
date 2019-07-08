@@ -21,10 +21,10 @@
         <style>
         </style>
         <script class="code w67p" contenteditable="true">
-            let o1 = { a: 0, b: { c: 0 } };
+            var o1 = { a: 0, b: { c: 0 } };
 
             // 浅拷贝
-            let o2 = Object.assign({}, o1);
+            var o2 = Object.assign({}, o1);
             JSON.stringify(o2); // { a: 0, b: { c: 0 }}
 
             // 浅拷贝，源字面量改变，copy对象不改变

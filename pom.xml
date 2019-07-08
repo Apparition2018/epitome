@@ -17,8 +17,11 @@
     </parent>
 
     <properties>
+        <!-- http://maven.apache.org/general.html#encoding-warning -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- http://maven.apache.org/general.html#special-characters-site -->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- https://blog.csdn.net/weixin_34360651/article/details/91778454 -->
         <java.version>1.8</java.version>
         <spring>4.3.20.RELEASE</spring>
         <springboot-mybatis>1.3.2</springboot-mybatis>
@@ -35,7 +38,7 @@
         <commons-beanutils>1.9.3</commons-beanutils>
         <commons-fileupload>1.4</commons-fileupload>
         <joda-time>2.10.2</joda-time>
-        <!--<freemarker></freemarker>-->
+        <freemarker>2.3.28</freemarker>
         <gson>2.8.5</gson>
         <fastjson>1.2.58</fastjson>
         <jackson>2.9.9</jackson>
@@ -52,23 +55,13 @@
     </properties>
 
     <dependencies>
+        <!-- spring-boot-starter：https://www.cnblogs.com/yaowen/p/8623902.html -->
+
         <!-- 快速 web 应用开发 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!-- 数据库访问 -->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
-        <!--</dependency>-->
-
-        <!--thymeleaf 模板，包含了 spring-boot-starter-web -->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-        <!--</dependency>-->
 
         <!-- spring-boot-starter-test -->
         <dependency>
@@ -77,11 +70,18 @@
             <!--<scope>test</scope>-->
         </dependency>
 
-        <!-- spring-context-support -->
+        <!-- spring boot 整合 freemarker -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <!-- spring boot 整合 热部署
+            https://www.jb51.net/article/140031.htm -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <!-- spring boot 整合 mybatis -->
@@ -98,6 +98,13 @@
             <version>${springboot-pagehelper}</version>
         </dependency>
 
+        <!-- spring-context-support -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring}</version>
+        </dependency>
+
         <!-- sqlserver sqljdbc4 -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
@@ -112,20 +119,19 @@
             <version>${druid}</version>
         </dependency>
 
-        <!-- quartz: 定时任务 -->
+        <!-- quartz：定时任务 -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>${quartz}</version>
         </dependency>
 
-        <!-- poi: 处理 microsoft office 格式文件 -->
+        <!-- poi：处理 microsoft office 格式文件 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>${poi}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
@@ -155,38 +161,33 @@
             <artifactId>commons-math3</artifactId>
             <version>${commons-math3}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
             <version>${commons-text}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
             <version>${commons-compress}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>
             <version>${commons-email}</version>
         </dependency>
-
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>${commons-beanutils}</version>
         </dependency>
-
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>1.4</version>
         </dependency>
 
-        <!-- joda-time: 处理日期 -->
+        <!-- joda-time：处理日期 -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -197,7 +198,7 @@
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
-            <version>2.3.23</version>
+            <version>${freemarker}</version>
         </dependency>
 
         <!-- gson -->
@@ -231,14 +232,14 @@
             <version>${jackson}</version>
         </dependency>
 
-        <!-- kryo: 序列化/反序列化 -->
+        <!-- kryo：序列化/反序列化 -->
         <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo-shaded</artifactId>
             <version>${kryo}</version>
         </dependency>
 
-        <!-- protostuff: 基于 protobuf，序列化/反序列化 -->
+        <!-- protostuff：基于 protobuf，序列化/反序列化 -->
         <dependency>
             <groupId>io.protostuff</groupId>
             <artifactId>protostuff-core</artifactId>
@@ -255,30 +256,30 @@
             <version>${protostuff}</version>
         </dependency>
 
-        <!-- Bouncy Castle: 密码包 -->
+        <!-- Bouncy Castle：密码包 -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>${bouncycastle}</version>
         </dependency>
 
-        <!-- selenium: web 应用程序自动化测试工具
-            phantomjs: 无头浏览器 (目前 phantomjs 已死，请使用 Headless Chrome/Firefox 代替)
-            htmlunit:  web 页面分析工具-->
+        <!-- selenium：web 应用程序自动化测试工具
+            phantomjs：无头浏览器 (目前 phantomjs 已死，请使用 Headless Chrome/Firefox 代替)
+            htmlunit： web 页面分析工具-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium}</version>
         </dependency>
 
-        <!-- htmlunit: web 页面分析工具 -->
+        <!-- htmlunit：web 页面分析工具 -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-htmlunit-driver</artifactId>
             <version>2.52.0</version>
         </dependency>
 
-        <!-- lombok: 注解简化代码 -->
+        <!-- lombok：注解简化代码 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -286,7 +287,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- swagger2: restful -->
+        <!-- swagger2：restful -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -298,7 +299,7 @@
             <version>${swagger}</version>
         </dependency>
 
-        <!-- zxing: 生成二维码 -->
+        <!-- zxing：生成二维码 -->
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
@@ -310,14 +311,14 @@
             <version>${zxing}</version>
         </dependency>
 
-        <!-- pinyin4j: 汉字转拼音 -->
+        <!-- pinyin4j：汉字转拼音 -->
         <dependency>
             <groupId>com.belerweb</groupId>
             <artifactId>pinyin4j</artifactId>
             <version>${pinyin4j}</version>
         </dependency>
 
-        <!-- jpinyin： 汉字转拼音 -->
+        <!-- jpinyin：汉字转拼音 -->
         <dependency>
             <groupId>com.github.stuxuhai</groupId>
             <artifactId>jpinyin</artifactId>
@@ -352,14 +353,6 @@
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.7</version>
-                <executions>
-                    <execution>
-                        <id>Generate MyBatis Artifacts</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <configuration>
                     <configurationFile>
                         ${basedir}/src/main/resources/generatorConfig.xml
@@ -370,15 +363,27 @@
                     <!-- 是否在输出日志中打印进度信息 -->
                     <verbose>true</verbose>
                 </configuration>
+                <!-- 编译代码时，自动执行mybatis generator -->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>Generate MyBatis Artifacts</id>-->
+                        <!--<goals>-->
+                            <!--<goal>generate</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
             </plugin>
 
+            <!-- maven-compiler-plugin
+                http://maven.apache.org/plugins/maven-compiler-plugin/ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <!--<version>3.8.1</version>-->
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <compilerArgs>
                         <arg>-Xlint:unchecked</arg>
@@ -386,10 +391,14 @@
                 </configuration>
             </plugin>
 
+            <!-- maven-jar-plugin
+                http://maven.apache.org/plugins/maven-jar-plugin/ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <!--<version>3.1.2</version>-->
                 <configuration>
+                    <!-- http://maven.apache.org/shared/maven-archiver/index.html -->
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>

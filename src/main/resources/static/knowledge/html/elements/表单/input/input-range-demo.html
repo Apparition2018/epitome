@@ -80,7 +80,7 @@
 
                     $input.attr('min', min).attr('max', max).attr('step', step);
 
-                    $input.on("input", function (e) {
+                    $input.on("input", function () {
                         $input.attr('value', this.value);
                         $input.css('background', 'linear-gradient(to right, #ebeff4, #059CFA ' + this.value + '%, #ebeff4 ' + this.value + '%)');
 

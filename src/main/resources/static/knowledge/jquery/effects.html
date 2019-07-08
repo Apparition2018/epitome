@@ -10,7 +10,7 @@
     <link rel="icon" href="../../img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../css/demo.css">
     <style>
-        square {
+        .square {
             display: inline-block;
             width: 100px;
             height: 100px;
@@ -260,9 +260,9 @@
             <div class="caption">渐变特效</div>
             <div class="centered box-effects-fading">
                 <div>
-                    <square class="yellow"></square>
-                    <square class="red"></square>
-                    <square class="blue"></square>
+                    <div class="square yellow"></div>
+                    <div class="square red"></div>
+                    <div class="square blue"></div>
                 </div>
                 <div>
                     <button class="fadeOut">fadeOut</button>
@@ -291,19 +291,19 @@
         <script class="code w60p" contenteditable="true">
             $(function () {
                 $('.box-effects-fading .fadeOut').click(function () {
-                    $('.box-effects-fading square:visible:last').fadeOut("normal");
+                    $('.box-effects-fading .square:visible:last').fadeOut("normal");
                 });
 
                 $('.box-effects-fading .fadeIn').click(function () {
-                    $('.box-effects-fading square:hidden:first').fadeIn("normal");
+                    $('.box-effects-fading .square:hidden:first').fadeIn("normal");
                 });
 
                 $('.box-effects-fading .fadeToggle').click(function () {
-                    $('.box-effects-fading square').fadeToggle("normal", "linear");
+                    $('.box-effects-fading .square').fadeToggle("normal", "linear");
                 });
 
                 $('.box-effects-fading .fadeTo').click(function () {
-                    $('.box-effects-fading square').fadeTo("normal", Math.random());
+                    $('.box-effects-fading .square').fadeTo("normal", Math.random());
                 })
             })
         </script>
@@ -314,9 +314,9 @@
             <div class="caption">滑动特效</div>
             <div class="centered box-effects-sliding">
                 <div>
-                    <square class="yellow"></square>
-                    <square class="red"></square>
-                    <square class="blue"></square>
+                    <div class="square yellow"></div>
+                    <div class="square red"></div>
+                    <div class="square blue"></div>
                 </div>
                 <div>
                     <button class="slideUp">slideUp</button>
@@ -345,15 +345,15 @@
         <script class="code w60p" contenteditable="true">
             $(function () {
                 $('.box-effects-sliding .slideUp').click(function () {
-                    $('.box-effects-sliding square:visible:last').slideUp("normal");
+                    $('.box-effects-sliding .square:visible:last').slideUp("normal");
                 });
 
                 $('.box-effects-sliding .slideDown').click(function () {
-                    $('.box-effects-sliding square:hidden:first').slideDown("normal");
+                    $('.box-effects-sliding .square:hidden:first').slideDown("normal");
                 });
 
                 $('.box-effects-sliding .slideToggle').click(function () {
-                    $('.box-effects-sliding square').slideToggle("normal", "linear");
+                    $('.box-effects-sliding .square').slideToggle("normal", "linear");
                 })
             })
         </script>
@@ -415,7 +415,7 @@
                         $(this).text('红');
                         $(this).dequeue();
                     });
-                    $ball.animate({ left: '100px', top: '173.205px', backgroundColor: '#77a7fb' }, 1000);
+                    $ball.animate({ left: '100px', top: '173px', backgroundColor: '#77a7fb' }, 1000);
                     $ball.queue(function () {
                         $(this).text('蓝');
                         $(this).dequeue();

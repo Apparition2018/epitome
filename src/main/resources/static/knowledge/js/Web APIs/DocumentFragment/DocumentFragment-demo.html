@@ -24,7 +24,7 @@
         <style>
         </style>
         <script class="code w67p" contenteditable="true">
-            let ul = document.querySelector('[data-uid="ul"]'),
+            var ul = document.querySelector('[data-uid="ul"]'),
                 // 创建一个新的空白的文档片段
                 docfrag = document.createDocumentFragment();
             const browserList = [
@@ -35,7 +35,7 @@
                 "Opera"
             ];
             browserList.forEach((e) => {
-                let li = document.createElement("li");
+                var li = document.createElement("li");
                 li.textContent = e;
                 docfrag.appendChild(li);
             })

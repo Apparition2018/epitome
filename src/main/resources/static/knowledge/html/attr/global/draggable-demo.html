@@ -106,7 +106,7 @@
         <script class="code" contenteditable="true">
             var moveItem = document.getElementsByTagName('label');
 
-            for (let i = 0; i < moveItem.length; i++) {
+            for (var i = 0; i < moveItem.length; i++) {
                 // 动态设置label元素id
                 moveItem[i].setAttribute('id', 'label' + i);
                 moveItem[i].ondragstart = function (ev) {

@@ -202,7 +202,7 @@
         </style>
         <script class="code w67p" contenteditable="true">
             function combine() {
-                let arr = [].concat.apply([], arguments); // 没有去重复的新数组 
+                var arr = [].concat.apply([], arguments); // 没有去重复的新数组
                 return Array.from(new Set(arr));
             }
 

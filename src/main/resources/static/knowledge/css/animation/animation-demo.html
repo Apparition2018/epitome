@@ -122,8 +122,8 @@
         <script>
             function play() {
                 document.querySelector(".box").className = "box";
-                window.requestAnimationFrame(function (time) {
-                    window.requestAnimationFrame(function (time) {
+                window.requestAnimationFrame(function () {
+                    window.requestAnimationFrame(function () {
                         document.querySelector(".box").className = "box changing";
                     });
                 });
@@ -162,8 +162,15 @@
                 margin-left: 14.5px;
                 margin-top: 14.5px;
                 border-radius: 50%;
-                box-shadow: 0 -10px 0 1px #333, 10px 0 #333, 0 10px #333, -10px 0 #333,
-                    -7px -7px 0 .5px #333, 7px -7px 0 1.5px #333, 7px 7px #333, -7px 7px #333;
+                box-shadow:
+                    0 -10px 0 1px #333,
+                    10px 0 #333,
+                    0 10px #333,
+                    -10px 0 #333,
+                    -7px -7px 0 .5px #333,
+                    7px -7px 0 1.5px #333,
+                    7px 7px #333,
+                    -7px 7px #333;
             }
 
             .spin {
@@ -195,7 +202,7 @@
                         myImage.src = src;
                     };
                     funStep();
-                }, 1500);
+                }, 150000);
             }
         </script>
     </section>
@@ -332,9 +339,7 @@
         <div class="css-live-wrap">
             <div class="caption">订单提交中</div>
             <div class="centered">
-                <a href="javascript:" class="grebtn">订单提交中
-                    <dot>...</dot>
-                </a>
+                <a href="javascript:" class="grebtn">订单提交中<span class="dot">...</span></a>
             </div>
         </div>
         <style class="code" contenteditable="true">
@@ -355,7 +360,7 @@
                 box-shadow: inset 0 0 1px rgba(255, 255, 255, .6), 0 1px #8DBF62;
             }
 
-            dot {
+            .grebtn .dot {
                 display: inline-block;
                 height: 1em;
                 line-height: 1;
@@ -363,7 +368,7 @@
                 overflow: hidden;
             }
 
-            dot::before {
+            .grebtn .dot::before {
                 display: block;
                 content: '...\A..\A.';
                 white-space: pre-wrap;
