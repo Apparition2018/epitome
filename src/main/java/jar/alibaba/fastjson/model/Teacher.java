@@ -1,4 +1,4 @@
-package jar.alibaba.fastjson;
+package jar.alibaba.fastjson.model;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class Teacher {
 
     private List<Student> students;
 
-    Teacher(String teacherName, Integer teacherAge, Course course, List<Student> students) {
+    public Teacher(String teacherName, Integer teacherAge, Course course, List<Student> students) {
         this.teacherName = teacherName;
         this.teacherAge = teacherAge;
         this.course = course;

@@ -30,5 +30,10 @@ ps [options] [--help]   用于显示当前进程 (process) 的状态
 
 
 **** 其它 ****
+tail [options] [filenames]  用于显示文件的结尾的内容
+
 https://blog.csdn.net/gaoxilong526/article/details/79757285
-ssh username@hostname
+ssh username@hostname   访问远程主机
+
+https://www.cnblogs.com/zxqblogrecord/p/8900219.html
+curl [option] [url]     获取链接内容

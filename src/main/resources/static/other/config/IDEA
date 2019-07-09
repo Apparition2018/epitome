@@ -1,0 +1,3 @@
+强制换行：   File → Other Settings → Default Settings → Editor → Code Style → Hard wrap at:150
+
+Terminal：   File → Other Settings → Default Settings → Tools → Terminal → Shell path: git\bin\bash.exe

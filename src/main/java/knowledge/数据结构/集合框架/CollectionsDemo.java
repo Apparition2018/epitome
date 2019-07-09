@@ -11,6 +11,13 @@ import java.util.stream.Collectors;
 /**
  * Collections
  * <p>
+ * static <T> List<T>	emptyList()
+ * 返回空的列表（不可变的）
+ * static <K,V> Map<K,V>	emptyMap()
+ * 返回空的映射（不可变的）
+ * static <T> Set<T>	emptySet()
+ * 返回空的 set（不可变的）
+ * <p>
  * static <T extends Object & Comparable<? super T>> T	max(Collection<? extends T> coll)
  * 根据元素的自然顺序，返回给定 collection 的最大元素
  * static <T extends Object & Comparable<? super T>> T	min(Collection<? extends T> coll)

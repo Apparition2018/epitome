@@ -126,7 +126,8 @@
             <version>${quartz}</version>
         </dependency>
 
-        <!-- poi：处理 microsoft office 格式文件 -->
+        <!-- poi：处理 microsoft office 格式文件
+            包含 commons-collections4 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -197,7 +198,7 @@
         <!-- freemarker -->
         <dependency>
             <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
+                <artifactId>freemarker</artifactId>
             <version>${freemarker}</version>
         </dependency>
 
@@ -215,21 +216,13 @@
             <version>${fastjson}</version>
         </dependency>
 
-        <!-- jackson -->
+        <!-- jackson
+            jackson-datatype-guava 包含 guava, jackson-core, jackson-databind
+            jackson-databind 包含 jackson-core, jackson-annotations -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${jackson}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson}</version>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-guava</artifactId>
+            <version>2.9.9</version>
         </dependency>
 
         <!-- kryo：序列化/反序列化 -->
@@ -326,19 +319,19 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>alimaven</id>
-            <name>aliyun maven</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>alimaven</id>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>alimaven</id>-->
+            <!--<name>aliyun maven</name>-->
+            <!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>alimaven</id>-->
+            <!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
 
     <build>
         <plugins>

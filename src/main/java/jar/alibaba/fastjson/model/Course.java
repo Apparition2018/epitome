@@ -1,4 +1,4 @@
-package jar.alibaba.fastjson;
+package jar.alibaba.fastjson.model;
 
 public class Course {
 
@@ -6,7 +6,7 @@ public class Course {
 
     private Integer code;
 
-    Course(String courseName, Integer code) {
+    public Course(String courseName, Integer code) {
         this.courseName = courseName;
         this.code = code;
     }

@@ -3,6 +3,9 @@ package jar.alibaba.fastjson;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
+import jar.alibaba.fastjson.model.Course;
+import jar.alibaba.fastjson.model.Student;
+import jar.alibaba.fastjson.model.Teacher;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -224,4 +227,6 @@ public class FastJsonDemo {
     }
 
 }
+
+
 
