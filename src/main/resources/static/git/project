@@ -17,8 +17,7 @@ ssm-1           Java高并发秒杀
                 mybatis-generator + 声明式事务 + redis(jedis) + 存储过程 + 通用返回对象 + protostuff +
                 entity|dto + 枚举 + result接口 + 单元测试
 
-ssh-1           基于SSH实现员工管理系统之框架整合篇
-                SSH + mysql + c3p0 + jsp
-
 ssh-2           基于SSH实现员工管理系统之案例实现篇
                 SSH + mysql + c3p0 + jsp + log4j2 + 分页查询
+
+permission      
