@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("chinese")
+@RequestMapping("/chinese")
 public class ChineseController {
 
     @RequestMapping("/test")

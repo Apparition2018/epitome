@@ -1,5 +1,6 @@
-.for .var				后缀自动补全功能				*到百度首页
-                                                 custom postfix templates
+.for .var				后缀自动补全功能				*
+
+custom postfix templates：https://www.cnblogs.com/invoker-/p/8994157.html
 
 .toByte 等              后缀表达式
 
@@ -31,6 +32,7 @@ Alt + F7                查看Usages						*
 Alt + 鼠标选取          方块区域选择
 
 Alt + Shift + Insert	列编辑模式						*
+Ctrl + D                对比文件
 Ctrl + G                跳到指定行
 Ctrl + P                提示参数信息
 Ctrl + Tab              切换编辑页面
@@ -124,11 +126,11 @@ Ctrl + Shift + F        查找
 Ctrl + R                替换
 Ctrl + Shift + R        全局替换
 Ctrl + N                按Class名搜索
-Ctrl + Shift + N        按File名搜索
+Ctrl + Shift + N        按File名搜索                    *
 Ctrl + Shift + Alt + N  按Symbol查找						*
 
 Ctrl + B/Click          定位到类或方法
-Ctrl + Alt + B          查看子类方法实现
+Ctrl + Alt + B          查看子类方法实现                    *
 Ctrl + U                定位到父类或父类方法
 
 Ctrl + +/-				打开/折叠代码块	

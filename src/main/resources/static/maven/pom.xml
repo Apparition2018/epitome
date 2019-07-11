@@ -50,10 +50,10 @@
 
     <dependencies>
         <dependency>
-            <groupId>...</groupId>
-            <artifactId>...</artifactId>
-            <version>...</version>
-            <type>...</type>
+            <groupId>xxx</groupId>
+            <artifactId>xxx</artifactId>
+            <version>xxx</version>
+            <type>xxx</type>
             <!-- 范围 -->
             <scope>test</scope>
             <!-- 设置依赖是否可选 -->
@@ -68,7 +68,6 @@
     <!-- 依赖管理，让子模块继承 -->
     <dependencyManagement>
         <dependencies>
-
         </dependencies>
     </dependencyManagement>
 
@@ -79,11 +78,36 @@
 
     <!-- 父模块 -->
     <parent>
-        <groupId>...</groupId>
-        <artifactId>...</artifactId>
-        <version>...</version>
+        <groupId>xxx</groupId>
+        <artifactId>xxx</artifactId>
+        <version>xxx</version>
     </parent>
 
+    <!-- 远程仓库，如果已在setting.xml中配置了远程仓库，这里则不需要配置 -->
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <!-- 远程插件仓库 -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <!-- 多模块 -->
-    <modules></modules>
+    <modules>
+        <module>xxx</module>
+    </modules>
 </project>

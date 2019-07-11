@@ -7,7 +7,6 @@ import springboot.domain.app.Score;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("fetch")
+@RequestMapping("/fetch")
 public class FetchController {
 
     @RequestMapping("/string")

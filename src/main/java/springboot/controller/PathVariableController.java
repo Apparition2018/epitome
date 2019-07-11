@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * https://www.cnblogs.com/fangpengchengbupter/p/7823493.html
  */
 @RestController
-public class TestPathVariableController {
+public class PathVariableController {
 
     @RequestMapping("/user/{username:[a-zA-Z00-9_]+}/blog/{blogId}")
     public String getUserBlog(@PathVariable String username, @PathVariable("blogId") int blogId) {

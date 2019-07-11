@@ -25,7 +25,7 @@ import java.util.*;
 @Slf4j
 public class ZipUtils {
 
-    private static final String dirPath = "C:/Users/234607/git/mavenTest/src/main/java/jar/apache/commons/compress/";
+    private static final String dirPath = "src/main/java/jar/apache/commons/compress/";
 
     @Test
     public void compress() {

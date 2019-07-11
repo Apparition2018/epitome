@@ -1,0 +1,24 @@
+springboot-1    SpringBoot+MyBatis搭建迷你小程序
+                SM + mysql + c3p0 + 微信小程序 + 异常处理 + 单元测试
+
+springboot-2    SpringBoot构建电商基础秒杀项目
+                SM + mysql + druid + html + metronic +
+                mybatis-generator + 通用返回对象 + 异常处理 + Validator(优化) + vo|do|model +
+                跨域 + session + commons-lang3 + joda-time
+
+springboot-3    SpringBoot开发常用技术整合
+                SM + mysql + druid + freemarker|thymeleaf(国际化i18n) +
+                mybatis-generator + 通用Maper + 事务 + pagehelper + redis + 通用返回对象 + jackson +
+                异常处理(web|ajax) + 资源文件读取 + server|tomcat配置 + 定时任务 + 异步任务 + 拦截器 +
+                idWorker
+
+ssm-1           Java高并发秒杀
+                SSM + mysql + cp30 + jsp + jstl + logback
+                mybatis-generator + 声明式事务 + redis(jedis) + protostuff
+                commons-collections
+
+ssh-1           基于SSH实现员工管理系统之框架整合篇
+                SSH + mysql + c3p0 + jsp
+
+ssh-2           基于SSH实现员工管理系统之案例实现篇
+                SSH + mysql + c3p0 + jsp + log4j2 + 分页查询

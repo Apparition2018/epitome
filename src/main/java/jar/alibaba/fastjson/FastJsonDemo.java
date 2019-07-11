@@ -3,9 +3,10 @@ package jar.alibaba.fastjson;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import jar.alibaba.fastjson.model.Course;
-import jar.alibaba.fastjson.model.Student;
-import jar.alibaba.fastjson.model.Teacher;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -224,6 +225,35 @@ public class FastJsonDemo {
         // 方式二
         students = JSONArray.parseArray(jsonArray.toJSONString(), Student.class);
         System.out.println("students = " + students);
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @ToString
+    private class Course {
+        private String courseName;
+        private Integer code;
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @ToString
+    private class Teacher {
+        private String teacherName;
+        private Integer teacherAge;
+        private Course course;
+        private List<Student> students;
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @ToString
+    private class Student {
+        private String studentName;
+        private Integer studentAge;
     }
 
 }

@@ -81,6 +81,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <!-- optional=true, 依赖不会传递, 该项目依赖devtools;
+				之后依赖boot项目的项目如果想要使用, 需要重新引入 -->
+            <optional>true</optional>
+        </dependency>
+
+        <!-- spring boot 引入文件处理器：https://www.xttblog.com/?p=2834 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
 
@@ -198,7 +207,7 @@
         <!-- freemarker -->
         <dependency>
             <groupId>org.freemarker</groupId>
-                <artifactId>freemarker</artifactId>
+            <artifactId>freemarker</artifactId>
             <version>${freemarker}</version>
         </dependency>
 

@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class skill {
 
-    // 跳出多层循环
+    // 开关跳出多层循环
     @Test
     public void breakMultiLoop() {
 

@@ -291,7 +291,7 @@ public class Suggestions {
         int second = 99;
 
         // 指定 Js 代码
-        engine.eval(new FileReader("C:\\Users\\234607\\git\\mavenTest\\src\\main\\java\\other\\suggestions\\model.js"));
+        engine.eval(new FileReader("src/main/java/other/suggestions/model.js"));
         // 是否可调用方法
         if (engine instanceof Invocable) {
             Invocable in = (Invocable) engine;

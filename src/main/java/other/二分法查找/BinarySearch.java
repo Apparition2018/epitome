@@ -8,7 +8,7 @@ public class BinarySearch {
 	private static int idx = 1;
 	private static void find(int leftIndex, int rightIndex, int val, int[] arr) {
 		int midIndex = (rightIndex + leftIndex) / 2;
-		int midVal = arr[midIndex];// 找到中间的数
+		int midVal = arr[midIndex]; // 找到中间的数
 		if (rightIndex >= leftIndex) {
 			// 如果要找的数比midVal大
 			if (midVal > val) {

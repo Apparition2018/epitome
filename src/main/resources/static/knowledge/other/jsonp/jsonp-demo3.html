@@ -9,14 +9,14 @@
 <script type="text/javascript">
 	$(function () {
 		/*  	// 简写形式，效果相同  
-				$.getJSON("http://localhost:8088/mavenTest/base/json.do?sid=1494&busiId=101&jsonpCallback=?",  
+				$.getJSON("http://localhost:8088/jsonp/base/json.do?sid=1494&busiId=101&jsonpCallback=?",
 					function(data){  
 						$("#showcontent").text("Result:" + data.result)  
 				});   */
 
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8088/mavenTest/base/json.do?sid=1494&busiId=101",
+			url: "http://localhost:8088/jsonp/base/json.do?sid=1494&busiId=101",
 			dataType: "jsonp", // 数据类型为jsonp  
 			jsonp: "jsonpCallback", // 服务端用于接收callback调用的function名的参数  
 			success: function (data) {

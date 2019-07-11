@@ -32,8 +32,8 @@ public class PathDemo {
     // 使用 Paths.get(String first[, String... more]) 创建 Path
     private Path p2 = Paths.get("src/main/java/", "knowledge/api/io/file/");
 
-    private Path p3 = Paths.get("C:\\Users\\234607\\git\\mavenTest\\src\\main\\java\\knowledge\\api\\nio\\path");
-    private Path p4 = Paths.get("C:\\Users\\234607\\git\\mavenTest\\src\\main\\java\\knowledge\\api\\io\\file");
+    private Path p3 = Paths.get("src/main/java/knowledge/api/nio/path");
+    private Path p4 = Paths.get("src/main/java/knowledge/api/io/file");
 
     /**
      * Path	getFileName()

@@ -6,6 +6,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * 解决跨域
+ * 以下实例是全局配置，也可以针对对应的 controller 添加 @CrossOrigin
+ * eg:  @CrossOrigin(origins = "http://192.168.1.97:8080", maxAge = 3600)
+ *      @CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
  * <p>
  * https://www.cnblogs.com/520playboy/p/7306008.html
  */

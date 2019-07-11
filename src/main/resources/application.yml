@@ -47,7 +47,10 @@ spring:
     livereload:
       enabled: false
     restart:
-      additional-paths: src\main\resources\static\html
+      #设置那个目录的文件需要restart
+      additional-paths: src/main/resources/static/html
+      #排除那个目录的文件不需要restart
+      #exclude:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss      #日期格式化
     serialization:

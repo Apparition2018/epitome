@@ -3,6 +3,7 @@ package jar.google.gson;
 import com.google.gson.*;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +15,9 @@ import java.util.Map.Entry;
  * Gson使用指南：https://www.jianshu.com/p/e740196225a4
  */
 public class GsonDemo {
-    public static void main(String[] args) {
+
+    @Test
+    public void test() {
         /* Gson的基本用法 */
         Gson gson = new Gson();
         String jsonStr = "100";
@@ -101,20 +104,19 @@ public class GsonDemo {
             }
         }
     }
-}
 
-class User {
-    public String name;
-    public int age;
-    @SerializedName(value = "emailAddress", alternate = {"email", "email_address"})
-    // 当上面的三个属性(email_address、email、emailAddress)都中出现任意一个时均可以得到正确的结果。
-    public String emailAddress;
+    class User {
+        public String name;
+        public int age;
+        @SerializedName(value = "emailAddress", alternate = {"email", "email_address"})
+        // 当上面的三个属性(email_address、email、emailAddress)都中出现任意一个时均可以得到正确的结果。
+        String emailAddress;
 
-    public User(String name, int age, String emailAddress) {
-        super();
-        this.name = name;
-        this.age = age;
-        this.emailAddress = emailAddress;
+        public User(String name, int age, String emailAddress) {
+            super();
+            this.name = name;
+            this.age = age;
+            this.emailAddress = emailAddress;
+        }
     }
-
 }

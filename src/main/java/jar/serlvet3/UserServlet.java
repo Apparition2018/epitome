@@ -41,14 +41,14 @@ public class UserServlet extends HttpServlet {
             String paramName = paramNames.nextElement();
             pw.append(paramName).append(": ").append(servletConfig.getInitParameter(paramName)).append("<br />");
         }
-        pw.append("RequestURL: ").append(String.valueOf(request.getRequestURL())).append("<br />");        // http://localhost:8088/mavenTest/user/test
-        pw.append("RequestURI: ").append(request.getRequestURI()).append("<br />");                        // /mavenTest/user/test
-        pw.append("Schema: ").append(request.getScheme()).append("<br />");                            // http
-        pw.append("ServerName: ").append(request.getServerName()).append("<br />");                        // localhost
-        pw.append("ServerPort: ").append(String.valueOf(request.getServerPort())).append("<br />");        // 8080
-        pw.append("ContextPath: ").append(request.getContextPath()).append("<br />");                    // /mavenTest
-        pw.append("ServletPath: ").append(request.getServletPath()).append("<br />");                // /user/test
-        pw.append("QueryString: ").append(request.getQueryString()).append("<br />");                    // null
+        pw.append("RequestURL: ").append(String.valueOf(request.getRequestURL())).append("<br />"); // http://localhost:8088/mavenTest/user/test
+        pw.append("RequestURI: ").append(request.getRequestURI()).append("<br />");                 // /mavenTest/user/test
+        pw.append("Schema: ").append(request.getScheme()).append("<br />");                         // http
+        pw.append("ServerName: ").append(request.getServerName()).append("<br />");                 // localhost
+        pw.append("ServerPort: ").append(String.valueOf(request.getServerPort())).append("<br />"); // 8080
+        pw.append("ContextPath: ").append(request.getContextPath()).append("<br />");               // /mavenTest
+        pw.append("ServletPath: ").append(request.getServletPath()).append("<br />");               // /user/test
+        pw.append("QueryString: ").append(request.getQueryString()).append("<br />");               // null
         pw.close();
     }
 

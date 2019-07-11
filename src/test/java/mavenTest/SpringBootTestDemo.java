@@ -12,5 +12,4 @@ import springboot.Application;
 @SpringBootTest(classes = Application.class)
 public class SpringBootTestDemo {
 
-
 }
