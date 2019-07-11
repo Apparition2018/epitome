@@ -50,8 +50,8 @@ public class MapUtilsDemo {
      */
     @Test
     public void getXXX() {
-        p(MapUtils.getInteger(map, "a"));
-        p(MapUtils.getIntValue(map, "a"));
+        p(MapUtils.getInteger(map, "d", 4)); // 4
+        p(MapUtils.getIntValue(map, "a")); // 1
     }
 
     /**
