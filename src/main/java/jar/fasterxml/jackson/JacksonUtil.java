@@ -47,6 +47,7 @@ public class JacksonUtil {
     @Test
     public void test() {
         Student student = new Student();
+        student.setPassword("123");
         student.setAge(0);
         student.setBirth(new Date());
         String json = obj2String(student);
@@ -94,3 +95,4 @@ class Student {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String desc;
 }
+

@@ -51,7 +51,7 @@ F7						debug，步入
 F8                      debug，步过
 F9                      debug，放行
 
-Ctrl + Alt + C			对比最近修改的代码	
+Ctrl + Alt + C			对比最近修改的代码
 Ctrl + Alt + L          格式化代码
 Ctrl + Alt + O          删除没有使用的import
 Ctrl + Alt + S          Settings...
@@ -70,8 +70,8 @@ Ctrl + Shift + F9       编译当前文件
 Ctrl + Shift + F12      编辑页面最大化
 Ctrl + Shift + Insert   Choose Content to Paste
 
-Alt + /	
-Ctrl + J				自动代码模版						*	
+Alt + /
+Ctrl + J				自动代码模版						*
 Ctrl + Shift + Space	自动补全代码						*
 Ctrl + Shift + Enter	语句完成                          *
 
@@ -89,7 +89,7 @@ Ctrl + E                最近打开的文件
 Ctrl + Shift +E         最近修改的文件
 
 Ctrl + H                查看继承关系
-Ctrl + Alt + H			查看调用链	
+Ctrl + Alt + H			查看调用链
 
 Ctrl + K                提交项目
 Ctrl + T                更新项目
@@ -116,12 +116,12 @@ Ctrl + Shift + J        合并两行
 Ctrl + Shift + ↑/↓
 Alt + Shift + ↑/↓       上下移动行
 
-F3						查找和选中单词相同的下一个单词											
+F3						查找和选中单词相同的下一个单词
 Alt + F3												*
 Ctrl + F3               查找和选中单词相同的下一个单词
 Shift + F3              查找和选中单词相同的上一个单词
 
-Shift + Shift			查找文件			
+Shift + Shift			查找文件
 Ctrl + Shift + F        查找
 Ctrl + R                替换
 Ctrl + Shift + R        全局替换
@@ -133,7 +133,7 @@ Ctrl + B/Click          定位到类或方法
 Ctrl + Alt + B          查看子类方法实现                    *
 Ctrl + U                定位到父类或父类方法
 
-Ctrl + +/-				打开/折叠代码块	
+Ctrl + +/-				打开/折叠代码块
 Ctrl + Shift + +/-      打开/折叠所有代码块
 
 Alt + ←                 左编辑页面
@@ -145,7 +145,7 @@ Ctrl + Alt + →          Forward
 
 Ctrl + 1, 2...          定位到书签
 Ctrl + Shift + 1, 2...  添加书签
-F11                     添加书签						
+F11                     添加书签
 Shift + F11             查看书签
 
 Ctrl + Shift + Alt + J  选择全部Occurrences
@@ -165,6 +165,6 @@ Alt + Shift + C         最近修改
 数据库：
 Ctrl + B                Source Editor
 Ctrl + F2               Disconnect
-Ctrl + Enter            Execute       
+Ctrl + Enter            Execute
 
-Ctrl + Alt + Y          Synchronize                 
+Ctrl + Alt + Y          Synchronize

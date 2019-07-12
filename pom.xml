@@ -23,6 +23,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- https://blog.csdn.net/weixin_34360651/article/details/91778454 -->
         <java.version>1.8</java.version>
+        <!-- dependency -->
         <spring>4.3.20.RELEASE</spring>
         <springboot-mybatis>1.3.2</springboot-mybatis>
         <springboot-pagehelper>1.2.12</springboot-pagehelper>
@@ -52,6 +53,8 @@
         <zxing>3.4.0</zxing>
         <pinyin4j>2.5.0</pinyin4j>
         <jpinyin>1.1.8</jpinyin>
+        <!-- plugin -->
+        <mybatis-generator>1.3.7</mybatis-generator>
     </properties>
 
     <dependencies>
@@ -335,12 +338,6 @@
             <!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
         <!--</repository>-->
     <!--</repositories>-->
-    <!--<pluginRepositories>-->
-        <!--<pluginRepository>-->
-            <!--<id>alimaven</id>-->
-            <!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
-        <!--</pluginRepository>-->
-    <!--</pluginRepositories>-->
 
     <build>
         <plugins>
@@ -354,7 +351,7 @@
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.7</version>
+                <version>${mybatis-generator}</version>
                 <configuration>
                     <configurationFile>
                         ${basedir}/src/main/resources/generatorConfig.xml
@@ -367,12 +364,12 @@
                 </configuration>
                 <!-- 编译代码时，自动执行mybatis generator -->
                 <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>Generate MyBatis Artifacts</id>-->
-                        <!--<goals>-->
-                            <!--<goal>generate</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
+                <!--<execution>-->
+                <!--<id>Generate MyBatis Artifacts</id>-->
+                <!--<goals>-->
+                <!--<goal>generate</goal>-->
+                <!--</goals>-->
+                <!--</execution>-->
                 <!--</executions>-->
             </plugin>
 
@@ -381,7 +378,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!--<version>3.8.1</version>-->
                 <configuration>
                     <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
                     <source>${java.version}</source>
@@ -398,7 +394,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <!--<version>3.1.2</version>-->
                 <configuration>
                     <!-- http://maven.apache.org/shared/maven-archiver/index.html -->
                     <archive>

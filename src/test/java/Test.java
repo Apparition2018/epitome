@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.UUID;
 
 // 史上最强整理: https://mp.weixin.qq.com/s/kJpRgfI3zT77XqMeRfmmQQ
 // SpringBoot 之整合 Swagger2: https://www.cnblogs.com/zhangyinhua/p/9286391.html
@@ -19,6 +18,8 @@ import java.util.UUID;
 public class Test {
 
     public static void main(String[] args) throws ParseException, IOException {
+        long a = 12L;
+        int b = (int) a;
 
     }
 
