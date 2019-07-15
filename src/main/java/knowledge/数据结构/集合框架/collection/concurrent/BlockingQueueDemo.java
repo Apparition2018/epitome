@@ -1,4 +1,4 @@
-package knowledge.数据结构.集合框架.collection;
+package knowledge.数据结构.集合框架.collection.concurrent;
 
 /**
  * BlockingQueue
@@ -16,4 +16,5 @@ package knowledge.数据结构.集合框架.collection;
  * 检查	element()	peek()	    不可用	不可用
  */
 public class BlockingQueueDemo {
+
 }

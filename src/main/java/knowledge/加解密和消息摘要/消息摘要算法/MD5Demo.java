@@ -139,7 +139,7 @@ public class MD5Demo {
 
     /**
      * spring md5
-     * apache md5
+     * commons-codec md5
      */
     @Test
     public void test5() {

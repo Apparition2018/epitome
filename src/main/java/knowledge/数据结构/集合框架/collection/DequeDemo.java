@@ -1,5 +1,9 @@
 package knowledge.数据结构.集合框架.collection;
 
+import org.junit.Test;
+
+import java.util.Deque;
+
 /**
  * Deque
  * double ended queue 双端队列

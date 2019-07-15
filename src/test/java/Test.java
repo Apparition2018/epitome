@@ -1,3 +1,5 @@
+import cn.hutool.crypto.SecureUtil;
+
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -18,8 +20,8 @@ import java.text.ParseException;
 public class Test {
 
     public static void main(String[] args) throws ParseException, IOException {
-        long a = 12L;
-        int b = (int) a;
+
+        System.out.println(SecureUtil.md5().digestHex16("123"));
 
     }
 
