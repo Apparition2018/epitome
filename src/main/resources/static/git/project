@@ -24,4 +24,5 @@ ssh-2           基于SSH实现员工管理系统之案例实现篇
 permission      Java开发企业级权限管理系统
                 SM + mybatis + druid + jsp + mustache + bootstrap + ztree + logback
                 mybatis-generator + 通用返回对象 + 异常处理 + Validator + jackson + param|model|dto
-                拦截器 + Spring上下文工具(ApplicationContextHelper)
+                拦截器 + Spring上下文工具(ApplicationContextHelper) +
+                MD5 + 随机生成密码 +
