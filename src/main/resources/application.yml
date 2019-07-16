@@ -2,6 +2,9 @@ server:
   port: 3333
 
 spring:
+  profiles:
+    # prod-生产 / uat-预发布 / test-测试 / dev-开发
+    active: prod
   datasource:
     app:
       name: app

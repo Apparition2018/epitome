@@ -1,4 +1,4 @@
-package other.设计模式.behavioral.singleton;
+package other.设计模式.creational.singleton;
 
 /**
  * 单例：双重校验锁

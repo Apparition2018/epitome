@@ -2,3 +2,5 @@
 默认换行符：  File → Other Settings → Default Settings → Editor → Code Style → Line separator: Unix and OS X (\n)
 
 Terminal：   File → Other Settings → Default Settings → Tools → Terminal → Shell path: git\bin\bash.exe
+
+Ignored Schemas and DTDs:   File → Other Settings → Default Settings → Language & Frameworks → Schemas and DTDs → Ignored Schemas and DTDs

@@ -14,11 +14,14 @@ springboot-3    SpringBoot开发常用技术整合
 
 ssm-1           Java高并发秒杀
                 SSM + mysql + cp30 + jsp + jstl + logback
-                mybatis-generator + 声明式事务 + redis(jedis) + 存储过程 + 通用返回对象 + protostuff +
-                entity|dto + 枚举 + result接口 + 单元测试
+                mybatis-generator + 声明式事务 + redis(jedis) + 存储过程 + 通用返回对象 + protostuff + entity|dto +
+                枚举 + result接口 + 单元测试
 
 ssh-2           基于SSH实现员工管理系统之案例实现篇
                 SSH + mysql + c3p0 + jsp + log4j2 + 分页查询
                 还有最后2节课没看完
 
-permission
+permission      Java开发企业级权限管理系统
+                SM + mybatis + druid + jsp + mustache + bootstrap + ztree + logback
+                mybatis-generator + 通用返回对象 + 异常处理 + Validator + jackson + param|model|dto
+                拦截器 + Spring上下文工具(ApplicationContextHelper)
