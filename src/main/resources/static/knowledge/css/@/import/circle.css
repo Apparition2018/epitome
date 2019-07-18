@@ -1,0 +1,6 @@
+.import {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(0deg, #ff0844, #ffb199);
+    border-radius: 50%;
+}

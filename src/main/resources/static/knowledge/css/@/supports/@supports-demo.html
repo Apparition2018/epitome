@@ -14,12 +14,10 @@
     <section class="code-wrap">
         <div class="css-live-wrap">
             <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@supports" target="_blank">@supports</a></div>
-            <div class="centered" id="eg1">
-                <div></div>
-            </div>
+            <div class="centered supports"></div>
         </div>
         <style class="code" contenteditable="true">
-            #eg1>div {
+            .supports {
                 width: 150px;
                 height: 150px;
                 background: #ff0844;
@@ -27,7 +25,7 @@
             }
 
             @supports (background: linear-gradient(0deg, #ff0844, #ffb199)) {
-                #eg1>div {
+                .supports {
                     background: linear-gradient(0deg, #ff0844, #ffb199)
                 }
             }
