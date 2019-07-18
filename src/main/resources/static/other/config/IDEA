@@ -4,3 +4,11 @@
 Terminal：   File → Other Settings → Default Settings → Tools → Terminal → Shell path: git\bin\bash.exe
 
 Ignored Schemas and DTDs:   File → Other Settings → Default Settings → Language & Frameworks → Schemas and DTDs → Ignored Schemas and DTDs
+
+File and Code Templates:    File → Other Settings → Default Settings → Editor → File and Code Templates → Files → Class
+/**
+ * ${NAME}
+ *
+ * @author      ${USER}
+ * created on ${DATE} ${TIME}
+ */
