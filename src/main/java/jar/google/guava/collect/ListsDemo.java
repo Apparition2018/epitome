@@ -42,9 +42,9 @@ public class ListsDemo {
      */
     @Test
     public void cartesianProduct() {
-        List<String> list1 = Lists.newArrayList("1", "2", "3");
-        List<String> list2 = Lists.newArrayList("one", "tree", "three");
-        List<String> list3 = Lists.newArrayList("壹", "贰", "伞");
+        Lists.newArrayList("1", "2", "3");
+        Lists.newArrayList("one", "tree", "three");
+        Lists.newArrayList("壹", "贰", "伞");
     }
 
     /**
@@ -81,7 +81,7 @@ public class ListsDemo {
 
     /**
      * static <F,T> List<T>	            transform(List<F> fromList, Function<? super F,? extends T> function)
-     * 根据 function 对 fromtList 进行相应处理，并返回处理后的 list
+     * 根据 function 对 fromList 进行相应处理，并返回处理后的 list
      */
     @Test
     public void transform() {

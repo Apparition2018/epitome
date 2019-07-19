@@ -15,6 +15,7 @@ import java.util.List;
  * 可重复       否          是
  * 查找       效率低       效率高
  * 插入删除    效率高       效率低（会引起其他元素位置改变）
+ * contains   效率高       效率低
  * <p>
  * boolean      add(E e)                            向列表的尾部添加指定的元素（可选操作）
  * boolean	    addAll(Collection<? extends E> c)   将指定 collection 中的所有元素都添加到此 collection 中（可选操作）。
