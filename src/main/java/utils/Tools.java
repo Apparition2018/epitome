@@ -27,7 +27,10 @@ public class Tools {
     // 简写 System.out.println()
     public static <T> void p(T obj) {
         if (obj == null) return;
-        if (obj.getClass().isArray()) p(Arrays.toString((Object[]) obj));
+        if (obj.getClass().isArray()) {
+            System.out.println(Arrays.toString((Object[]) obj));
+            return;
+        }
         System.out.println(obj);
     }
 

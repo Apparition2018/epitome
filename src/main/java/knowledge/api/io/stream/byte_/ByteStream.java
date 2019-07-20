@@ -29,7 +29,7 @@ public class ByteStream {
     }
 
     /**
-     * int	available()
+     * int	            available()
      * 返回此输入流下一个方法调用可以不受阻塞地从此输入流读取（或跳过）的估计字节数
      */
     @Test
@@ -54,14 +54,9 @@ public class ByteStream {
     // OutputStream
 
     /**
-     * void	            write(byte[] b)
-     * 将 b.length 个字节从指定的 byte 数组写入此输出流
-     * <p>
-     * void	            write(byte[] b, int off, int len)
-     * 将指定 byte 数组中从偏移量 off 开始的 len 个字节写入此输出流
-     * <p>
-     * abstract  void	write(int b)
-     * 将指定的字节写入此输出流
+     * void	            write(byte[] b)                     将 b.length 个字节从指定的 byte 数组写入此输出流
+     * void	            write(byte[] b, int off, int len)   将指定 byte 数组中从偏移量 off 开始的 len 个字节写入此输出流
+     * abstract  void	write(int b)                        将指定的字节写入此输出流
      */
     @Test
     public void write() {
@@ -69,8 +64,7 @@ public class ByteStream {
     }
 
     /**
-     * void	flush()
-     * 刷新此输出流并强制写出所有缓冲的输出字节
+     * void	            flush()         刷新此输出流并强制写出所有缓冲的输出字节
      */
     @Test
     public void flush() {
@@ -80,14 +74,9 @@ public class ByteStream {
     // FileInputStream
 
     /**
-     * FileInputStream
-     * 文件输入流
-     * <p>
-     * FileInputStream(File file)
-     * 通过打开一个到实际文件的连接来创建一个 FileInputStream，该文件通过文件系统中的 File 对象 file 指定
-     * <p>
-     * FileInputStream(String name)
-     * 通过打开一个到实际文件的连接来创建一个 FileInputStream，该文件通过文件系统中的路径名 name 指定
+     * FileInputStream                 文件输入流
+     * FileInputStream(File file)      通过打开一个到实际文件的连接来创建一个 FileInputStream，该文件通过文件系统中的 File 对象 file 指定
+     * FileInputStream(String name)    通过打开一个到实际文件的连接来创建一个 FileInputStream，该文件通过文件系统中的路径名 name 指定
      */
     @Test
     public void fileInputStream() {
@@ -116,14 +105,9 @@ public class ByteStream {
     // FileOutputStream
 
     /**
-     * FileOutputStream
-     * 文件输出流
-     * <p>
-     * FileOutputStream(File file[, boolean append])
-     * 创建一个向指定 File 对象表示的文件中写入数据的文件输出流
-     * <p>
-     * FileOutputStream(String name[, boolean append])
-     * 创建一个向具有指定 name 的文件中写入数据的输出文件流
+     * FileOutputStream                                 文件输出流
+     * FileOutputStream(File file[, boolean append])    创建一个向指定 File 对象表示的文件中写入数据的文件输出流
+     * FileOutputStream(String name[, boolean append])  创建一个向具有指定 name 的文件中写入数据的输出文件流
      */
     @Test
     public void fileOutputStream() {
@@ -146,11 +130,8 @@ public class ByteStream {
     // BufferedOutputStream
 
     /**
-     * BufferedOutputStream
-     * 缓冲输出流
-     * <p>
-     * BufferedOutputStream(OutputStream out[, int size])
-     * 创建一个新的缓冲输出流，以将具有指定缓冲区大小的数据写入指定的底层输出流
+     * BufferedOutputStream                                 缓冲输出流
+     * BufferedOutputStream(OutputStream out[, int size])   创建一个新的缓冲输出流，以将具有指定缓冲区大小的数据写入指定的底层输出流
      */
     @Test
     public void bufferedOutputStream() {
@@ -172,11 +153,8 @@ public class ByteStream {
     // ByteArrayInputStream
 
     /**
-     * ByteArrayInputStream
-     * 字节数组输入流
-     * <p>
-     * ByteArrayInputStream(byte[] buf[, int offset, int length])
-     * 创建一个 ByteArrayInputStream，使用 buf 作为其缓冲区数组
+     * ByteArrayInputStream                                         字节数组输入流
+     * ByteArrayInputStream(byte[] buf[, int offset, int length])   创建一个 ByteArrayInputStream，使用 buf 作为其缓冲区数组
      */
     @Test
     public void ByteArrayInputStream() {
@@ -204,14 +182,9 @@ public class ByteStream {
     // ByteArrayOutputStream
 
     /**
-     * ByteArrayOutputStream
-     * 字节数组输出流
-     * <p>
-     * ByteArrayOutputStream()
-     * 创建一个新的 byte 数组输出流
-     * <p>
-     * ByteArrayOutputStream(int size)
-     * 创建一个新的 byte 数组输出流，它具有指定大小的缓冲区容量（以字节为单位）
+     * ByteArrayOutputStream            字节数组输出流
+     * ByteArrayOutputStream()          创建一个新的 byte 数组输出流
+     * ByteArrayOutputStream(int size)  创建一个新的 byte 数组输出流，它具有指定大小的缓冲区容量（以字节为单位）
      */
     @Test
     public void ByteArrayOutputStream() {
@@ -258,11 +231,8 @@ public class ByteStream {
     // ObjectInputStream
 
     /**
-     * ObjectInputStream
-     * 对象输入流
-     * <p>
-     * ObjectInputStream(InputStream in)
-     * 创建从指定 InputStream 读取的 ObjectInputStream
+     * ObjectInputStream                    对象输入流
+     * ObjectInputStream(InputStream in)    创建从指定 InputStream 读取的 ObjectInputStream
      * <p>
      * 对象输入流读取的内容必须是通过 ObjectOutputStream 序列化的对象
      */
@@ -295,11 +265,8 @@ public class ByteStream {
     // ObjectOutputStream
 
     /**
-     * ObjectOutputStream
-     * 对象输出流
-     * <p>
-     * ObjectOutputStream(OutputStream out)
-     * 创建写入指定 OutputStream 的 ObjectOutputStream
+     * ObjectOutputStream                   对象输出流
+     * ObjectOutputStream(OutputStream out) 创建写入指定 OutputStream 的 ObjectOutputStream
      */
     @Test
     public void objectOutputStream() {

@@ -11,7 +11,7 @@ import java.util.List;
 public class KryoDemo {
 
     @Test
-    public void test() {
+    public void kryo() {
 
         @Getter
         @Setter

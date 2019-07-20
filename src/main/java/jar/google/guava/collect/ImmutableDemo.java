@@ -24,7 +24,6 @@ public class ImmutableDemo {
 
         // 不可变 Map
         ImmutableMap<Integer, String> map = ImmutableMap.of(1, "壹", 2, "贰", 3, "叁");
-
     }
 
 }

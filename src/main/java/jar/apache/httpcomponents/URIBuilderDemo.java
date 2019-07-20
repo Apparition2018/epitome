@@ -52,7 +52,7 @@ public class URIBuilderDemo {
     }
 
     @Test
-    public void test3() throws URISyntaxException {
+    public void test() throws URISyntaxException {
 
         String url = "http://www.baidu.com";
 

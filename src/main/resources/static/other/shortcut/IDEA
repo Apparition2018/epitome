@@ -156,7 +156,7 @@ Ctrl + Alt + F1			重构-抽取为属性
 Ctrl + Shift + Alt + T	重构This...
 
 Shift + F10				Run
-Ctrl +Shift + F10       Run Ant Target
+Ctrl + Shift + F10      Run Ant Target
 
 Ctrl + Shift + Backspace最近编辑位置
 Alt + Shift + C         最近修改

@@ -22,8 +22,9 @@ import java.util.Map;
  * Collection<V>	    values()
  * default void	        forEach(BiConsumer<? super K,? super V> action)     since: 21.0
  * <p>
- * https://guava.dev/releases/snapshot-jre/api/docs/
+ * http://www.ibloger.net/article/3316.html
  * https://blog.csdn.net/yaomingyang/article/details/80955872
+ * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Multimap.html
  */
 public class MultimapDemo {
 

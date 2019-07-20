@@ -15,7 +15,7 @@ import org.junit.Test;
  * 如果不满足先决条件，Preconditions方法将抛出指定类型的未检查异常，这将帮助抛出异常的方法通知调用者犯了错误。
  * <p>
  * https://guava.dev/releases/snapshot-jre/api/docs/
- * https://www.cnblogs.com/kailejun/p/7282115.html
+ * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/base/Preconditions.html
  */
 public class PreconditionsDemo {
 

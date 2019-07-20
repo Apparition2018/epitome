@@ -91,7 +91,6 @@ public class NumberFormatDemo {
 
     public static <T> void p(T obj) {
         if (obj == null) return;
-        if (obj.getClass().isArray()) System.out.println(Arrays.toString((Object[]) obj));
         System.out.println(obj);
     }
 

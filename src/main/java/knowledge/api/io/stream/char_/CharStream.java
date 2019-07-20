@@ -2,7 +2,6 @@ package knowledge.api.io.stream.char_;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
-import utils.StreamUtils;
 
 import java.io.*;
 
@@ -13,13 +12,8 @@ public class CharStream {
     // FileReader
 
     /**
-     * FileReader
-     * <p>
-     * FileReader(File file)
-     * 在给定从中读取数据的 File 的情况下创建一个新 FileReader
-     * <p>
-     * FileReader(String fileName)
-     * 在给定从中读取数据的文件名的情况下创建一个新 FileReader
+     * FileReader(File file)        在给定从中读取数据的 File 的情况下创建一个新 FileReader
+     * FileReader(String fileName)  在给定从中读取数据的文件名的情况下创建一个新 FileReader
      */
     @Test
     public void fileReader() {
@@ -45,13 +39,8 @@ public class CharStream {
     // FileWriter
 
     /**
-     * FileWriter
-     * <p>
-     * FileWriter(File file[, boolean append])
-     * 根据给定的 File 对象构造一个 FileWriter 对象
-     * <p>
-     * FileWriter(String fileName[, boolean append])
-     * 根据给定的文件名以及指示是否附加写入数据的 boolean 值来构造 FileWriter 对象
+     * FileWriter(File file[, boolean append])      根据给定的 File 对象构造一个 FileWriter 对象
+     * FileWriter(String fileName[, boolean append])根据给定的文件名以及指示是否附加写入数据的 boolean 值来构造 FileWriter 对象
      */
     @Test
     public void fileWriter() {
@@ -82,23 +71,16 @@ public class CharStream {
      * InputStreamReader
      * 转换流
      * <p>
-     * InputStreamReader(InputStream in)
-     * 创建一个使用默认字符集的 InputStreamReader
-     * <p>
-     * InputStreamReader(InputStream in, Charset cs)
-     * 创建使用给定字符集的 InputStreamReader
-     * <p>
-     * InputStreamReader(InputStream in, CharsetDecoder dec)
-     * 创建使用给定字符集解码器的 InputStreamReader
-     * <p>
-     * InputStreamReader(InputStream in, String charsetName)
-     * 创建使用指定字符集的 InputStreamReader
+     * InputStreamReader(InputStream in)                        创建一个使用默认字符集的 InputStreamReader
+     * InputStreamReader(InputStream in, Charset cs)            创建使用给定字符集的 InputStreamReader
+     * InputStreamReader(InputStream in, CharsetDecoder dec)    创建使用给定字符集解码器的 InputStreamReader
+     * InputStreamReader(InputStream in, String charsetName)    创建使用指定字符集的 InputStreamReader
      */
     @Test
     public void inputStreamReader() {
         Reader reader = null;
         try {
-            reader = new InputStreamReader(new FileInputStream(dirPath + "Reader.txt"));
+            reader = new InputStreamReader(new FileInputStream(dirPath + "Reader.txt"), "UTF-8");
 
             char[] data = new char[64];
             StringBuilder sb = new StringBuilder();
@@ -122,9 +104,7 @@ public class CharStream {
      * 缓冲字符输入流
      * <p>
      * BufferedReader(Reader in[, int sz])
-     * 创建一个使用指定大小输入缓冲区的缓冲字符输入流
-     * <p>
-     * 可以按行读取字符串
+     * 创建一个使用指定大小输入缓冲区的缓冲字符输入流，可以按行读取字符串
      */
     @Test
     public void bufferedReader() {
@@ -156,29 +136,23 @@ public class CharStream {
     }
 
     // PrintWriter
+
     /**
      * PrintWriter
      * 缓冲字符输出流
-     *
-     * PrintWriter(File file[, String csn])
-     * 创建指定文件和字符集且不带自动刷行新的新 PrintWriter
-     *
-     * PrintWriter(String fileName[, String csn])
-     * 创建指定文件名称和字符集且不带自动行刷新的新 PrintWriter
-     *
-     * PrintWriter(OutputStream out[, boolean autoFlush])
-     * 通过现有的 OutputStream 创建新的 PrintWriter
-     *
-     * PrintWriter(Writer out[, boolean autoFlush])
-     * 创建新 PrintWriter
-     *
+     * <p>
+     * PrintWriter(File file[, String csn])                 创建指定文件和字符集且不带自动刷行新的新 PrintWriter
+     * PrintWriter(String fileName[, String csn])           创建指定文件名称和字符集且不带自动行刷新的新 PrintWriter
+     * PrintWriter(OutputStream out[, boolean autoFlush])   通过现有的 OutputStream 创建新的 PrintWriter
+     * PrintWriter(Writer out[, boolean autoFlush])         创建新 PrintWriter
+     * <p>
      * 可以按行写出字符串，并且具有自动行刷新功能
      */
     @Test
     public void printWriter() {
         PrintWriter pw = null;
         try {
-            pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream(dirPath + "PrintWriter.txt")),true);
+            pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream(dirPath + "PrintWriter.txt")), true);
 
             pw.println("向文本输出流打印对象的格式化表示形式。此类实现在 PrintStream 中的所有 print 方法。它不包含用于写入原始字节的方法，对于这些字节，程序应该使用未编码的字节流进行写入。");
             pw.println("与 PrintStream 类不同，如果启用了自动刷新，则只有在调用 println、printf 或 format 的其中一个方法时才可能完成此操作，而不是每当正好输出换行符时才完成。这些方法使用平台自有的行分隔符概念，而不是换行符。");

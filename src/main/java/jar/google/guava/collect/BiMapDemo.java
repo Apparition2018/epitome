@@ -9,7 +9,8 @@ import org.junit.Test;
  * <p>
  * BidMap 是一个接口，该接口要求值和键都不能重复，即双向映射
  * <p>
- * https://guava.dev/releases/snapshot-jre/api/docs/
+ * http://www.ibloger.net/article/3307.html
+ * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/BiMap.html
  */
 public class BiMapDemo {
 

@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.junit.Test;
+import utils.Tools;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -42,11 +43,6 @@ public class ClassDemo {
     private static class ClassInnerDemo {
     }
 
-    @Test
-    public void test() {
-        p(Predicate.class.isAnnotationPresent(FunctionalInterface.class));
-    }
-
     /**
      * static Class<?>	forName(String name[, boolean initialize, ClassLoader loader])
      * 使用给定的类加载器，返回与带有给定字符串名的类或接口相关联的 Class 对象
@@ -74,8 +70,10 @@ public class ClassDemo {
         Field[] fields1 = Dog.class.getDeclaredFields();
         // getFields() 获取某个类的 public 字段，包括父类
         Field[] fields2 = Dog.class.getFields();
-        p(fields1); // [public java.lang.String knowledge.api.lang.class_.Dog.dog1, private java.lang.String knowledge.api.lang.class_.Dog.dog2]
-        p(fields2); // [public java.lang.String knowledge.api.lang.class_.Dog.dog1, public java.lang.String knowledge.api.lang.class_.Animal.name]
+        Tools.p(fields1);
+        // [public java.lang.String knowledge.api.lang.class_.Dog.dog1, private java.lang.String knowledge.api.lang.class_.Dog.dog2]
+        Tools.p(fields2);
+        // [public java.lang.String knowledge.api.lang.class_.Dog.dog1, public java.lang.String knowledge.api.lang.class_.Animal.name]
     }
 
     /**
@@ -122,7 +120,7 @@ public class ClassDemo {
         p(ClassDemo.class.getClassLoader().getResource(""));    // file:/C:/Users/234607/git/mavenTest/target/test-classes/
         p(ClassDemo.class.getClassLoader().getResource("/"));   //
 
-        // 总结：在获取资源路径时推荐使用 Class.getResource("/")
+        // PS：在获取资源路径时推荐使用 Class.getResource("/")
     }
 
 
@@ -130,22 +128,17 @@ public class ClassDemo {
      * boolean	isAssignableFrom(Class<?> cls)  判定此 Class 对象所表示的类或接口与指定的 Class 参数所表示的类或接口是否相同，或是否是其超类或超接口
      * boolean	isInstance(Object obj)          判定指定的 Object 是否与此 Class 所表示的对象赋值兼容
      * <p>
-     * instanceof, isInstance, isAssignableFrom的区别：
+     * instanceof, isInstance, isAssignableFrom 的区别：
      * https://www.cnblogs.com/exmyth/p/3164492.html
      */
     @Test
-    public void isAssignableFrom() {
+    public void is() {
         Dog dog = new Dog();
 
         p(dog instanceof Animal);                       // true
         p(Animal.class.isInstance(dog));                // true
         p(Animal.class.isAssignableFrom(Dog.class));    // true
         p(Dog.class.isAssignableFrom(Animal.class));    // false
-    }
-
-    @Test
-    public void isInstance() {
-        isAssignableFrom();
     }
 
     /**
@@ -159,17 +152,9 @@ public class ClassDemo {
 
 
     public static <T> void p(T obj) {
-        if (obj == null) {
-            return;
-        }
+        if (obj == null) return;
         System.out.println(obj);
     }
-
-    @SafeVarargs
-    public static <T> void p(T... obj) {
-        System.out.println(Arrays.toString(obj));
-    }
-
 }
 
 @Data

@@ -9,7 +9,8 @@ import java.util.List;
 /**
  * Lists
  * <p>
- * https://guava.dev/releases/snapshot-jre/api/docs/
+ * http://www.ibloger.net/article/3312.html
+ * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Lists.html
  */
 public class ListsDemo {
 
@@ -37,14 +38,13 @@ public class ListsDemo {
      * static <B> List<List<B>>	        cartesianProduct(List<? extends B>... lists)
      * static <B> List<List<B>>	        cartesianProduct(List<? extends List<? extends B>> lists)
      * 返回按顺序从给定列表中选择一个元素可以形成的所有可能列表;列表的“n元笛卡尔积”。
-     * <p>
-     * Since: 19.0
      */
     @Test
     public void cartesianProduct() {
-        Lists.newArrayList("1", "2", "3");
-        Lists.newArrayList("one", "tree", "three");
-        Lists.newArrayList("壹", "贰", "伞");
+        List<String> list1 = Lists.newArrayList("1", "2", "3");
+        List<String> list2 = Lists.newArrayList("a", "b", "c");
+        List<List<String>> lists = Lists.cartesianProduct(list1, list2);
+        System.out.println(lists);
     }
 
     /**
@@ -88,7 +88,6 @@ public class ListsDemo {
         List<String> list = Lists.newArrayList("a", "b", "c");
         List<String> newList = Lists.transform(list, String::toUpperCase);
         System.out.println(newList); //         System.out.println(newList);
-
     }
 
 }

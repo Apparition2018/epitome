@@ -53,9 +53,7 @@ public class LombokDemo2 {
 
 
     public static <T> void p(T obj) {
-        if (obj == null) {
-            return;
-        }
+        if (obj == null) return;
         System.out.println(obj);
     }
 

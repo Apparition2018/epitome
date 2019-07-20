@@ -87,7 +87,7 @@ public class ArrayUtilsDemo {
         p(ArrayUtils.toObject(new int[]{1, 2, 3, 4, 5})); // [1, 2, 3, 4, 5]
 
         // 包装类型数组 → 基本类型数组
-        System.out.println(Arrays.toString(ArrayUtils.toPrimitive(new Integer[]{1, 2, 3, 4, 5}))); // {1,2,3,4,5}
+        p(Arrays.toString(ArrayUtils.toPrimitive(new Integer[]{1, 2, 3, 4, 5}))); // [1, 2, 3, 4, 5]
 
         // 包装类型数组 → 字符串类型数组
         // p(ArrayUtils.toStringArray(new Integer[]{1, 2, 3, 4, 5}));
@@ -95,16 +95,12 @@ public class ArrayUtilsDemo {
 
     @SafeVarargs
     public static <T> void p(T... obj) {
-        if (obj == null) {
-            return;
-        }
+        if (obj == null) return;
         System.out.println(Arrays.toString(obj));
     }
 
     public static <T> void p(T obj) {
-        if (obj == null) {
-            return;
-        }
+        if (obj == null) return;
         System.out.println(obj);
     }
 

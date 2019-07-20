@@ -32,6 +32,7 @@
         <quartz>2.3.1</quartz>
         <poi>3.17</poi>
         <httpclient>4.5.9</httpclient>
+        <guava>28.0-jre</guava>
         <commons-math3>3.6.1</commons-math3>
         <commons-text>1.6</commons-text>
         <commons-compress>1.18</commons-compress>
@@ -173,6 +174,14 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpmime</artifactId>
             <version>${httpclient}</version>
+        </dependency>
+
+        <!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava}</version>
+            <!--<type>bundle</type>-->
         </dependency>
 
         <!-- commons -->

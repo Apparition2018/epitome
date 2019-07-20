@@ -54,9 +54,7 @@ public class Base64Demo {
     }
 
     public static <T> void p(T obj) {
-        if (obj == null) {
-            return;
-        }
+        if (obj == null) return;
         System.out.println(obj);
     }
 }

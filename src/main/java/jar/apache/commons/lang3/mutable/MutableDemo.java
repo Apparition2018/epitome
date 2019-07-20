@@ -11,7 +11,7 @@ import org.junit.Test;
 public class MutableDemo {
 
     @Test
-    public void test() {
+    public void mutable() {
         MutableInt mi = new MutableInt(10);
         mi.add(10);
         p(mi); // 20
