@@ -25,4 +25,4 @@ permission      Java开发企业级权限管理系统
                 SM + mybatis + druid + jsp + mustache + Bootstrap(Dual Listbox) + ztree + logback +
                 mybatis-generator + redis(jedis) + 通用返回对象 + 分页 + 异常处理 + Validator + jackson + param|model|dto +
                 Interceptor + Filter(Login|AclControl) + ThreadLocal + Spring上下文工具(ApplicationContextHelper) +
-                Comparator + stream + 枚举 + MD5 + 获取IP + 发送邮件 + 随机生成密码 + 随机生成code
+                操作记录 + Comparator + stream + 枚举 + MD5 + 获取IP + 发送邮件 + 随机生成密码 + 随机生成code
