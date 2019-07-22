@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>word-demo</title>
+    <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../static/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">word-break</div>
+            <div class="break centered">
+                <p>
+                    This is a long and Supercalifragilisticexpialidocious sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
+                </p>
+                <select title="">
+                    <option value="normal">normal</option>
+                    <option value="break-all">break-all</option>
+                    <option value="keep-all">keep-all</option>
+                    <option value="break-word">break-word</option>
+                </select>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .break {
+                width: 350px;
+                color: #333;
+                text-align: center;
+            }
+
+            .break p {
+                text-align: left;
+            }
+        </style>
+        <script>
+            document.getElementsByTagName('select')[0].onchange = function () {
+                document.querySelector('.break p').style.wordBreak = this.value;
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">英文单词间距——word-spacing</div>
+            <div class="caption">中文单词间距——letter-spacing</div>
+            <div class="spacing centered">
+                <p>The Great Wall</p>
+                <p>萬里長城</p>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .spacing {
+                color: #333;
+                text-align: center;
+            }
+
+            .spacing p:nth-child(1) {
+                word-spacing: 10px;
+            }
+
+            .spacing p:nth-child(2) {
+                /* 中文设置letter-spacing后，实现居中需要text-indent */
+                text-indent: 25px;
+                letter-spacing: 25px;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

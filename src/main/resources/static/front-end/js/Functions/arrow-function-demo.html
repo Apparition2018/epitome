@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>arrow-function-demo</title>
+    <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../static/css/demo.css">
+</head>
+
+<body>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">箭头函数</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // 函数体只有一句话可省略 {}
+            var func = (x, y) => x * y;
+
+            // 如不省略 {}
+            var func = (x, y) => { return x * y };
+
+            // 只有一个参数，可省略括号
+            var func = x => x * x;
+
+            // 没有参数，要保留 ()
+            var func = () => 2 * 2;
+
+            // 如函数直接返回一个对象，必须在 {} 外面加上 ()
+            var func = () => ({ name: 'Henry', age: 41 });
+
+
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w33p">
+            <div class="caption">箭头函数不绑定 this，arguments</div>
+            <div class="caption">它会从自己的作用域链的上一层继承 this, arguments</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            function Person() {
+                this.age = 0;
+                setInterval(() => {
+                    this.age++; // this 正确地指向 person 对象
+                }, 1000);
+            }
+
+            function foo(n) {
+                var f = () => arguments[0] + n; // 隐式绑定 foo 函数的 arguments 对象
+                return f();
+            }
+            foo(4); // 8
+        </script>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w33p">
+            <div class="caption">由于箭头函数没有自己的 this</div>
+            <div class="caption">call() / apply() / bind()，第一个参数会被忽略</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            var adder = {
+                base: 1,
+                add: function (a) {
+                    var f = v => v + this.base;
+                    var b = { base: 2 };
+                    return f.call(b, a); // b会被忽略
+                }
+            };
+            adder.add(1); // 2
+        </script>
+    </section>
+</body>
+
+</html>

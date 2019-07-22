@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>first-letter</title>
+    <link rel="icon" href="../../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../../static/css/demo.css">
+</head>
+
+<body>
+    <!-- https://www.zhangxinxu.com/wordpress/2016/09/css-first-letter-pseudo-element/ -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">颜色等权重永远最高</div>
+            <div class="caption">:first-letter伪元素其实是作为子元素存在的，子元素的CSS设置一定比父元素的级别要高</div>
+            <div class="color centered">
+                <p><span>第一个</span>字符看看会不会变红？</p>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .color p:first-letter {
+                color: red;
+            }
+
+            .color p>span {
+                color: blue !important;
+            }
+        </style>
+    </section>
+    
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">¥</div>
+            <div class="centered">
+                现价：
+                <span class="price">¥899</span>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .price {
+                display: inline-block;
+            }
+
+            .price:first-letter {
+                margin-right: 5px;
+                color: red;
+                font-size: xx-large;
+                vertical-align: -5px;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

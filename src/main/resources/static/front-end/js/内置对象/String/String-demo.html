@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>String-demo</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap" style="height: 120vh">
+        <div class="css-live-wrap w100p">
+            <div class="caption">String</div>
+            <div class="str centered">
+                <table class="w1280">
+                    <tr>
+                        <th>属性/方法</th>
+                        <th>概述</th>
+                        <th>示例</th>
+                    </tr>
+                    <tr>
+                        <td>String</td>
+                        <td>在非构造器上下文中 (如：没有 new 操作符)，能被用来执行类型转换</td>
+                        <td>
+                            <a href="javascript: alert(String(1))">String(1)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>length</td>
+                        <td>表示一个字符串的长度</td>
+                        <td>
+                            <a href="javascript: alert('abc'.length)">"abc".length</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>String.fromCharCode()</td>
+                        <td>返回使用指定的Unicode值序列创建的字符串</td>
+                        <td>
+                            <a href="javascript: alert(String.fromCharCode(65,66,67))">String.fromCharCode(65,66,67)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>charAt()</td>
+                        <td>从一个字符串中返回指定的字符</td>
+                        <td>
+                            <a href="javascript: alert('abc'.charAt(1))">"abc".charAt(1)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>charCodeAt()</td>
+                        <td>返回表示给定索引的字符的 Unicode 的值</td>
+                        <td>
+                            <a href="javascript: alert('abc'.charCodeAt(1))">"abc".charCodeAt(1)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>concat()</td>
+                        <td>将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回</td>
+                        <td>
+                            <a href="javascript: alert(''.concat(1, 2, '3'))">''.concat(1, 2, '3')</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>includes()</td>
+                        <td>判断一个字符串是否包含在另一个字符串中，返回一个 boolean 值</td>
+                        <td>
+                            <a href="javascript: alert('Hello World!'.includes('Hello'))">'Hello World!'.includes('Hello')</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>startsWith()
+                            <br/>endsWith()</td>
+                        <td>判断当前字符串是否是以另外一个给定的子字符串“开头/结尾”的，
+                            <br/>返回一个 boolean 值</td>
+                        <td>
+                            <a href="javascript: alert('Hello World!'.endsWith('!'))">'Hello World!'.endsWith('!')</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>indexOf()</td>
+                        <td>返回调用 String 对象中第一次出现的指定值的索引</td>
+                        <td>
+                            <a href="javascript: alert('Hello World!'.indexOf('World'))">'Hello World!'.indexOf('World')</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>lastIndexOf()</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>localeCompare()</td>
+                        <td>返回一个数字，来表示两个字符串的前后关系</td>
+                        <td>
+                            <a href="javascript: alert('cat'.localeCompare('banana'))">'cat'.localeCompare('banana')</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>search()</td>
+                        <td>对正则表达式和指定字符串进行匹配搜索，返回第一个出现的匹配项的下标</td>
+                        <td>
+                            <a href="javascript: alert('banana'.search(/n/))">'banana'.search(/n/)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>match()</td>
+                        <td>使用正则表达式与字符串相比较</td>
+                        <td>var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+                            <br/> var regexp = /[A-E]/gi;
+                            <br/> var matches_array = str.match(regexp);
+                            <br/>// ['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']</td>
+                    </tr>
+                    <tr>
+                        <td>replace()</td>
+                        <td>返回一个由替换值替换一些或所有匹配的模式后的新字符串</td>
+                        <td>
+                            <a href="./replace()-demo.html"
+                                target="_blank">replace()-demo</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>repeat()</td>
+                        <td>返回指定重复次数的由元素组成的字符串对象</td>
+                        <td>
+                            <a href="javascript: alert('abc'.repeat(3.5))">'abc'.repeat(3.5)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>slice()</td>
+                        <td>提取一个字符串的一部分，并返回一新的字符串</td>
+                        <td>
+                            <a href="javascript: alert('I am hero'.slice(5))">'I am hero'.slice(5)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>substring()</td>
+                        <td>返回一个字符串在开始索引到结束索引之间的一个子集,
+                            <br/>或从开始索引直到字符串的末尾的一个子集</td>
+                        <td>
+                            <a href="javascript: alert('I am hero'.substring(5))">'I am hero'.substring(5, )</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>substr()</td>
+                        <td>返回一个字符串中从指定位置开始到指定字符数的字符</td>
+                        <td>
+                            <a href="javascript: alert('I am hero'.substr(5, 4))">'I am hero'.substr(5, 4)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>toUpperCase()
+                            <br/>toLowerCase()</td>
+                        <td>将调用该方法的字符串值转换为大写/小写形式，并返回</td>
+                        <td>
+                            <a href="javascript: alert('abc'.toUpperCase())">'abc'.toUpperCase()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>trim()</td>
+                        <td>从一个字符串的两端删除空白字符</td>
+                        <td>
+                            <a href="javascript: alert(' abc '.trim())">' abc '.trim()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>anchor()</td>
+                        <td>创建一个 HTML 锚元素，被用作超文本靶标（hypertext target）</td>
+                        <td>
+                            <a href="javascript: alert('A of Contents'.anchor('anchor_name'))">'A of Contents'.anchor('anchor_name')</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>link()</td>
+                        <td>创建一个 HTML 元素，用该字符串作为超链接的显示文本，
+                                <br/>参数作为指向另一个 URL 的超链接</td>
+                        <td>
+                            <a href="javascript: alert('baidu'.link('www.baidu.com'))">'baidu'.link('www.baidu.com')</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">长字符串</div>
+            <div class="caption">可以在每行末尾使用反斜杠字符（“\”），
+                <br/>以指示字符串将在下一行继续</div>
+            <div class="centered">
+
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            var longString = "This is a very long string which needs \
+                to wrap across multiple lines because \
+                otherwise my code is unreadable.";
+            // "This is a very long string which needs to wrap across multiple lines because otherwise my code is unreadable."
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">从字符串中获取单个字符</div>
+            <div class="caption">把字符串当作一个类似数组的对象，
+                <br/>其中的每个字符对应一个数值索引</div>
+            <div class="centered">
+
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            'cat'.charAt(1); // "a"
+            'cat'[1]; // "a"
+        </script>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">slice() &amp; substring()</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            var str = "hello world";
+
+            str.slice(3, 7);        // "lo w"
+            str.substring(3, 7);    // "lo w"
+
+            str.slice(3, -4);       // "lo w"
+            str.slice(3, 11-4);     // "lo w"
+            str.slice(3, 7);        // "lo w"
+            str.slice(7, 3);        // ""
+
+            str.substring(3, -4);   // "hel"
+            str.substring(3, 0);    // "hel"
+            str.substring(0, 3);    // "hel"
+        </script>
+    </section>
+
+</body>
+
+</html>

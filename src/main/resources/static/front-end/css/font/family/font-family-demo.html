@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>font-family-demo</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+</head>
+
+<body>
+    <!-- https://www.zhangxinxu.com/wordpress/2016/07/monospaced-font-css3-ch-unit/ -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">字符模拟solid/dashed/dotted</div>
+            <div class="caption">利用等宽字体实现</div>
+            <div class="monospace centered">
+                <select title="">
+                    <option value="none">请选择</option>
+                    <option value="solid">———————</option>
+                    <option value="dashed">-------</option>
+                    <option value="dotted">·······</option>
+                </select>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .monospace {
+                width: 260px;
+                height: 150px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .monospace select {
+                width: 100px;
+                font-family: Consolas, Monaco, monospace;
+                font-size: 14px;
+            }
+        </style>
+        <script>
+            var monospace = document.getElementsByClassName('monospace')[0];
+            document.getElementsByTagName('select')[0].onchange = function () {
+                monospace.style.borderStyle = this.value;
+                if (this.value === "none") {
+                    monospace.style.borderColor = "transparent";
+                    monospace.style.backgroundColor = "transparent";
+                }
+                if (this.value === "solid") {
+                    monospace.style.borderColor = "yellow";
+                    monospace.style.backgroundColor = "#fff0b4";
+                }
+                if (this.value === "dashed") {
+                    monospace.style.borderColor = "blue";
+                    monospace.style.backgroundColor = "#19c8dc";
+                }
+                if (this.value === "dotted") {
+                    monospace.style.borderColor = "pink";
+                    monospace.style.backgroundColor = "#eb2d78";
+                }
+            };
+        </script>
+    </section>
+
+</body>
+
+</html>

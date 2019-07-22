@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>@supports-demo</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@supports" target="_blank">@supports</a></div>
+            <div class="centered supports"></div>
+        </div>
+        <style class="code" contenteditable="true">
+            .supports {
+                width: 150px;
+                height: 150px;
+                background: #ff0844;
+                border-radius: 50%;
+            }
+
+            @supports (background: linear-gradient(0deg, #ff0844, #ffb199)) {
+                .supports {
+                    background: linear-gradient(0deg, #ff0844, #ffb199)
+                }
+            }
+        </style>
+    </section>
+</body>
+
+</html>

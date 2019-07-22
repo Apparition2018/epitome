@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>绑定事件</title>
+    <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../static/css/demo.css">
+    <style>
+        .eg {
+            padding: 6px 24px;
+            background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+            color: #666666;
+            font-size: 15px;
+            font-weight: bold;
+            text-shadow: 0 1px 0 #ffffff;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            box-shadow: inset 0 1px 0 0 #ffffff;
+            cursor: pointer;
+        }
+
+        .eg:hover {
+            background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <!--https://www.jb51.net/article/95705.htm 
+        https://www.jb51.net/article/93752.htm -->
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w40p">
+            <div class="caption">在DOM元素中直接绑定</div>
+            <div class="eg eg1 centered" onclick="eg1()">
+                方法一
+            </div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            &lt;div class="eg eg1 centered" onclick="eg1()"&gt;
+            方法一
+            &lt;/div&gt;
+        </code>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+            // jQuery click 绑定事件，如果原本已有 onclick 事件，则新绑定的时候在原事件之后/之前触发???
+            $('.eg1').click(function () {
+                alert('在 onclick 之后/之前触发???');
+            });
+            function eg1() {
+                var eg1 = document.getElementsByClassName('eg1')[0];
+                eg1.textContent = '在DOM元素中直接绑定'
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w40p">
+            <div class="caption">onclick 绑定 (DOM0级)</div>
+            <div class="caption">object.onclick=function(){SomeJavaScriptCode};</div>
+            <div class="eg eg2 centered">
+                方法二
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            var eg2 = document.getElementsByClassName('eg2')[0];
+            eg2.onclick = function () {
+                // 只执行最后绑定的事件
+                this.textContent = 'onclick 绑定';
+            };
+            setTimeout(function () {
+                // js 原生 click 触发一次onclick事件
+                eg2.click();
+            }, 1500)
+
+            // eg2.onclick = null; // 解绑
+        </script>
+    </section>
+
+    <section class="code-wrap" id="eg3">
+        <div class="css-live-wrap w40p">
+            <div class="caption">绑定事件监听函数 (DOM2级)</div>
+            <div class="caption">element.addEventListener(event, function, useCapture),
+                <br/>useCapture，指定事件在捕获或冒泡阶段执行；
+                <br/>默认false，事件句柄在冒泡阶段执行</div>
+            <div class="eg eg3 centered">
+                方法三
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            var obj = document.getElementsByClassName('eg3')[0];
+            addEvent(obj, 'click', eg3);
+            function addEvent(obj, type, func) {
+                if (obj.addEventListener) {         // DOM2
+                    obj.addEventListener(type, func, false);
+                    // addEventListener可以绑定多个事件; 回调函数默认传入一个event; 第三个参数，false为冒泡（默认）, true为捕获
+                    // 解除相应的绑定：removeEventListener(type, listener[, useCapture])
+                } else if (element.attachEvent) {   // IE
+                    obj.attachEvent('on' + type, func);
+                    // 解除相应的绑定：detachEvent(eventNameWithOn, callback)
+                } else {                            // DOM0
+                    obj['on' + type] = func;
+                }
+            }
+
+            function eg3() {
+                obj.textContent = '绑定事件监听函数';
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w40p">
+            <div class="caption">jQuery on 绑定</div>
+            <div class="caption">$(selector).on(event,childSelector,data,function)</div>
+            <div class="eg eg4 centered">
+                方法四
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            $('body').on('click', '.eg4', function () {
+                $('.eg4').text('jQuery on 绑定');
+            });
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w40p">
+            <div class="caption">jQuery click 绑定</div>
+            <div class="caption">$(selector).on(event,childSelector,data,function)</div>
+            <div class="eg eg5 centered">
+                方法五
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            $('.eg5').click(function () {
+                $('.eg5').html('jQuery click 绑定');
+            });
+            setTimeout(function () {
+                // jQuery 的 click 触发一次onclick事件
+                $('.eg5').click();
+            }, 1500)
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w40p">
+            <div class="caption">事件委托</div>
+            <div class="caption">利用冒泡的原理，把事件加到父元素或祖先元素上</div>
+            <div class="eg eg6 centered">
+                方法六
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            var eg6 = document.getElementsByClassName('eg6')[0];
+            document.onclick = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement;
+                if (target === eg6) {
+                    eg6.textContent = '事件委托';
+                }
+            }
+        </script>
+    </section>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../static/js/demo.js"></script>
+</body>
+
+</html>

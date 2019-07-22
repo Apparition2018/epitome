@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!-- https://www.cnblogs.com/coco1s/p/5592136.html -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>box-shadow-demo</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h300">
+        <div class="css-live-wrap">
+            <div class="caption">多边框</div>
+            <div class="caption">利用 多重box-shadow 实现</div>
+            <div class="multi-shadow centered">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .multi-shadow {
+                width: 200px;
+                height: 100px;
+                background: deeppink;
+                box-shadow: inset 0 0 0 6px #fff,
+                0 0 0 10px #333,
+                0 0 0 15px #aaa,
+                0 2px 5px 15px #666;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h450">
+        <div class="css-live-wrap">
+            <div class="caption">立体按钮1</div>
+            <div class="caption">利用 多重box-shadow 实现</div>
+            <div class="centered">
+                <div class="btn1">
+                    3Dbtn
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .btn1 {
+                width: 200px;
+                line-height: 80px;
+                background: hsl(0, 0%, 60%);
+                color: #fff;
+                font-size: 150%;
+                font-weight: bold;
+                text-align: center;
+                box-shadow: 1px 1px 0 0 hsl(0, 0%, 65%),
+                2px 2px 0 0 hsl(0, 0%, 70%),
+                3px 3px 0 0 hsl(0, 0%, 75%),
+                4px 4px 0 0 hsl(0, 0%, 80%),
+                5px 5px 0 0 hsl(0, 0%, 85%);
+                border-radius: 10px;
+                cursor: pointer;
+            }
+
+            .btn1:hover {
+                background: hsl(0, 0%, 40%);
+            }
+
+            .btn1:active {
+                background: hsl(0, 0%, 65%);
+                box-shadow: none;
+                position: relative;
+                top: 5px;
+                left: 5px;
+            }
+        </style>
+    </section>
+
+    <!-- http://www.webfront-js.com/articaldetail/55.html -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">立体按钮2</div>
+            <div class="caption">利用 box-shadow: inset、heihgt、改变line-height实现</div>
+            <a href="javascript:;" class="btn2 centered">3Dbtn</a>
+        </div>
+        <style class="code" contenteditable="true">
+            .btn2 {
+                display: inline-block;
+                width: 200px;
+                height: 85px;
+                /* 85-5 */
+                line-height: 80px;
+                background: #0C58A7;
+                color: #fff;
+                font-size: 150%;
+                font-weight: bold;
+                text-align: center;
+                text-decoration: none;
+                box-shadow: inset -5px -5px 3px #060672;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+
+            .btn2:active {
+                /* 85+5 */
+                line-height: 90px;
+                box-shadow: inset 5px 5px 3px #060672;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">半透明遮罩层</div>
+            <div class="caption">利用 box-shadow 实现</div>
+            <div class="mask centered">
+                mask
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .mask {
+                width: 220px;
+                line-height: 150px;
+                border-radius: 10px;
+                background: #e91e63;
+                color: #fff;
+                font-size: 200%;
+                font-weight: bold;
+                text-align: center;
+                cursor: pointer;
+                transition: transform .2s;
+            }
+
+            .mask:hover {
+                box-shadow: 0 0 0 1920px rgba(0, 0, 0, .7);
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">半透明阴影</div>
+            <div class="translucent centered"></div>
+        </div>
+        <style class="code" contenteditable="true">
+            .translucent {
+                width: 100px;
+                height: 100px;
+                background: rgba(255, 240, 180, .8);
+                box-shadow: 40px 40px rgba(25, 200, 220, .5), 80px 80px rgba(235, 45, 120, .5);
+            }
+        </style>
+    </section>
+
+
+    <section class="code-wrap h400">
+        <div class="css-live-wrap">
+            <div class="caption">不占空间的圆角边框</div>
+            <div class="caption">利用 box-shadow 实现</div>
+            <div class="frame centered">
+                <div>
+                    <img src="../../../../static/img/people/MisakaMikoto.jpg">
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .frame {
+                font-size: 0;
+                border-radius: 1px;
+                box-shadow: 0 0 0 3px rgb(100, 0, 0), 0 0 0 6px rgb(150, 0, 0), 0 0 0 9px rgb(200, 0, 0);
+            }
+
+            .frame img {
+                width: 220px;
+            }
+        </style>
+    </section>
+
+
+    <section class="code-wrap h500">
+        <div class="css-live-wrap">
+            <div class="caption">雪（snowy）</div>
+            <div class="caption">利用 box-shadow 实现</div>
+            <div class="snowy-container centered">
+                <div>snowy</div>
+                <div class="snowy"></div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .snowy-container {
+                width: 200px;
+                height: 260px;
+                text-align: center;
+                font-size: 200%;
+                font-weight: bold;
+                color: #fff;
+                background: #607D8B;
+                border-radius: 5px;
+            }
+
+            .snowy {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                top: 30%;
+                left: 50%;
+                background: #fff;
+                border-radius: 50%;
+                animation: snowy_rain 2s infinite linear;
+            }
+
+            .snowy:before {
+                content: "";
+                color: #333;
+                position: absolute;
+                height: 50px;
+                width: 50px;
+                top: 30px;
+                left: -40px;
+                background: #eee;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                box-shadow: #eee 65px -15px 0 -5px,
+                #eee 25px -25px,
+                #eee 30px 10px,
+                #eee 60px 15px 0 -10px,
+                #eee 85px 5px 0 -5px;
+                animation: cloudy 5s ease-in-out infinite;
+            }
+
+            .snowy:after {
+                content: "";
+                position: absolute;
+                top: 120px;
+                left: 50%;
+                height: 15px;
+                width: 120px;
+                background: rgba(0, 0, 0, .5);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                animation: cloudy_shadow 5s ease-in-out infinite;
+            }
+
+            @keyframes cloudy {
+                50% {
+                    transform: translate(-50%, -70%);
+                }
+                100% {
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            @keyframes cloudy_shadow {
+                50% {
+                    transform: translate(-50%, -50%) scale(0.8);
+                    background: rgba(0, 0, 0, .2);
+                }
+                100% {
+                    transform: translate(-50%, -50%) scale(1);
+                    background: rgba(0, 0, 0, .5);
+                }
+            }
+
+            @keyframes snowy_rain {
+                0% {
+                    box-shadow: rgba(255, 255, 255, 0) -10px 30px,
+                    rgba(255, 255, 255, 0) 40px 40px,
+                    rgba(255, 255, 255, .6) -50px 75px,
+                    rgba(255, 255, 255, .6) 55px 50px,
+                    rgba(255, 255, 255, .6) -18px 100px,
+                    rgba(255, 255, 255, .6) 12px 95px,
+                    rgba(255, 255, 255, .6) -31px 45px,
+                    rgba(255, 255, 255, .6) 30px 35px;
+                }
+                25% {
+                    box-shadow: rgba(255, 255, 255, .6) -10px 45px,
+                    rgba(255, 255, 255, .6) 40px 60px,
+                    rgba(255, 255, 255, .6) -50px 90px,
+                    rgba(255, 255, 255, .6) 55px 65px,
+                    rgba(255, 255, 255, 0) -18px 120px,
+                    rgba(255, 255, 255, 0) 12px 120px,
+                    rgba(255, 255, 255, .6) -31px 70px,
+                    rgba(255, 255, 255, .6) 30px 60px;
+                }
+                26% {
+                    box-shadow: rgba(255, 255, 255, .6) -10px 45px,
+                    rgba(255, 255, 255, .6) 40px 60px,
+                    rgba(255, 255, 255, .6) -50px 90px,
+                    rgba(255, 255, 255, .6) 55px 65px,
+                    rgba(255, 255, 255, 0) -18px 40px,
+                    rgba(255, 255, 255, 0) 12px 20px,
+                    rgba(255, 255, 255, .6) -31px 70px,
+                    rgba(255, 255, 255, .6) 30px 60px;
+                }
+                50% {
+                    box-shadow: rgba(255, 255, 255, .6) -10px 70px,
+                    rgba(255, 255, 255, .6) 40px 80px,
+                    rgba(255, 255, 255, 0) -50px 100px,
+                    rgba(255, 255, 255, .6) 55px 80px,
+                    rgba(255, 255, 255, .6) -18px 60px,
+                    rgba(255, 255, 255, .6) 12px 45px,
+                    rgba(255, 255, 255, .6) -31px 95px,
+                    rgba(255, 255, 255, .6) 30px 85px;
+                }
+                51% {
+                    box-shadow: rgba(255, 255, 255, .6) -10px 70px,
+                    rgba(255, 255, 255, .6) 40px 80px,
+                    rgba(255, 255, 255, 0) -50px 45px,
+                    rgba(255, 255, 255, .6) 55px 80px,
+                    rgba(255, 255, 255, .6) -18px 60px,
+                    rgba(255, 255, 255, .6) 12px 45px,
+                    rgba(255, 255, 255, .6) -31px 95px,
+                    rgba(255, 255, 255, .6) 30px 85px;
+                }
+                75% {
+                    box-shadow: rgba(255, 255, 255, .6) -10px 95px,
+                    rgba(255, 255, 255, .6) 40px 100px,
+                    rgba(255, 255, 255, .6) -50px 60px,
+                    rgba(255, 255, 255, 0) 55px 95px,
+                    rgba(255, 255, 255, .6) -18px 80px,
+                    rgba(255, 255, 255, .6) 12px 70px,
+                    rgba(255, 255, 255, 0) -31px 120px,
+                    rgba(255, 255, 255, 0) 30px 110px;
+                }
+                76% {
+                    box-shadow: rgba(255, 255, 255, .6) -10px 95px,
+                    rgba(255, 255, 255, .6) 40px 100px,
+                    rgba(255, 255, 255, .6) -50px 60px,
+                    rgba(255, 255, 255, 0) 55px 35px,
+                    rgba(255, 255, 255, .6) -18px 80px,
+                    rgba(255, 255, 255, .6) 12px 70px,
+                    rgba(255, 255, 255, 0) -31px 25px,
+                    rgba(255, 255, 255, 0) 30px 15px;
+                }
+                100% {
+                    box-shadow: rgba(255, 255, 255, 0) -10px 120px,
+                    rgba(255, 255, 255, 0) 40px 120px,
+                    rgba(255, 255, 255, .6) -50px 75px,
+                    rgba(255, 255, 255, .6) 55px 50px,
+                    rgba(255, 255, 255, .6) -18px 100px,
+                    rgba(255, 255, 255, .6) 12px 95px,
+                    rgba(255, 255, 255, .6) -31px 45px,
+                    rgba(255, 255, 255, .6) 30px 35px;
+                }
+            }
+        </style>
+    </section>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../../static/js/demo.js"></script>
+</body>
+
+</html>

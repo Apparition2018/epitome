@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Date-demo</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h650">
+        <div class="css-live-wrap w100p">
+            <div class="caption">Date</div>
+            <div class="date centered">
+                <table class="w1280">
+                    <tr>
+                        <th>方法</th>
+                        <th>概述</th>
+                        <th>示例</th>
+                    </tr>
+                    <tr>
+                        <td>new Date()</td>
+                        <td></td>
+                        <td>var birthday = new Date('December 17, 1995 03:24:00');
+                            <br /> var birthday = new Date('1995-12-17T03:24:00');
+                            <br /> var birthday = new Date(1995, 11, 17);
+                            <br /> var birthday = new Date(1995, 11, 17, 3, 24, 0);
+                            <br /> // Sun Dec 17 1995 03:24:00 GMT+0800 (中国标准时间)</td>
+                    </tr>
+                    <tr>
+                        <td>Date.now()</td>
+                        <td>返回自 1970年1月1日 00:00:00 UTC 到当前时间的毫秒数</td>
+                        <td>
+                            <a href="javascript: alert(Date.now());">Date.now()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>getFullYear()</td>
+                        <td>根据本地时间返回指定日期的年份</td>
+                        <td>1995</td>
+                    </tr>
+                    <tr>
+                        <td>getMonth()</td>
+                        <td>根据本地时间，返回一个指定的日期对象的月份，为基于0的值（0表示一年中的第一月）</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>getDate()</td>
+                        <td>根据本地时间，返回一个指定的日期对象为一个月中的第几天</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>getHours()</td>
+                        <td>根据本地时间，返回一个指定的日期对象的小时</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>getMinutes()</td>
+                        <td>根据本地时间，返回一个指定的日期对象的分钟数</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>getSeconds()</td>
+                        <td>根据本地时间，返回一个指定的日期对象的秒数</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>getMilliseconds()</td>
+                        <td>根据本地时间，返回一个指定的日期对象的毫秒数</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>getDate()</td>
+                        <td>根据本地时间，返回一个指定的日期对象为一个月中的第几天</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>getDay()</td>
+                        <td>根据本地时间，返回一个具体日期中一周的第几天，0 表示星期天</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>getTime()</td>
+                        <td>返回一个时间的格林威治时间数值</td>
+                        <td>819141840000</td>
+                    </tr>
+                    <tr>
+                        <td>toUTCString()</td>
+                        <td>把一个日期转换为一个字符串，使用 UTC 时区</td>
+                        <td>Tue, 16 Oct 2018 14:44:47 GMT</td>
+                    </tr>
+                    <tr>
+                        <td>valueOf()</td>
+                        <td>返回一个 Date 对象的原始值</td>
+                        <td>819141840000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap h550">
+        <div class="css-live-wrap w33p">
+            <div class="caption">格式化日期</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            function addDateFormat() {
+                Date.prototype.format = function (format) {
+                    var o = {
+                        "M+": this.getMonth() + 1,                  // 月份 
+                        "d+": this.getDate(), 			            // 日 
+                        "h+": this.getHours(), 		                // 小时 
+                        "m+": this.getMinutes(), 		            // 分 
+                        "s+": this.getSeconds(), 		            // 秒 
+                        "S": this.getMilliseconds(), 	            // 毫秒 
+                        "q+": Math.floor((this.getMonth() + 3) / 3) // 季度 
+                    };
+                    if (/(y+)/.test(format)) {
+                        format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                    }
+                    for (var k in o) {
+                        if (new RegExp("(" + k + ")").test(format))
+                            // RegExp是javascript中的一个内置对象，RegExp.$1是RegExp的一个属性，指匹配到的第一个字符串
+                            format = format.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                    }
+                    return format;
+                }
+            }
+
+            addDateFormat();
+
+            (new Date).format('yyyy-MM-dd 第 q 季度 hh:mm:ss:S'); // 2018-10-19 第 4 季度 11:28:27:196
+
+
+        </script>
+    </section>
+</body>
+
+</html>

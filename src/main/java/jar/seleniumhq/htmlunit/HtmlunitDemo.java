@@ -23,7 +23,7 @@ public class HtmlunitDemo {
             WebClientOptions options = webClient.getOptions();
             options.setJavaScriptEnabled(true);
             options.setCssEnabled(true);
-            HtmlPage page = webClient.getPage("http://localhost:3333/html/htmlunit/htmlunit.html");
+            HtmlPage page = webClient.getPage("http://localhost:3333/static/html/htmlunit/htmlunit.html");
             // http://unnkoel.iteye.com/blog/2149455
             for (int i = 0; i < 20; i++) {
                 if (!"".equals(page.getHtmlElementById("title1").asText())) {

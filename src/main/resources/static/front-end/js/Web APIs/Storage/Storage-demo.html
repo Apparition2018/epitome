@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Storage-demo</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+</head>
+
+<body>
+    <!--http://www.w3school.com.cn/html/html5_webstorage.asp
+        http://www.w3school.com.cn/html5/html_5_webstorage.asp
+        http://www.runoob.com/jsref/prop-win-localstorage.html -->
+
+    <!--cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。
+    cookie数据始终在同源的http请求中携带（即使不需要），只会在浏览器和服务器间来回传递。
+    sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。
+
+    存储大小：
+        cookie数据大小不能超过4k。
+        sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。
+
+    有期时间：
+        localStorage    存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；
+        sessionStorage  数据在当前浏览器窗口关闭后自动删除。
+        cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭-->
+
+    <!--localStorage(): 没有时间限制的数据存储，一般存储在系统盘
+        sessionStorage(): 针对一个session的数据存储，浏览器关闭后删除 -->
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">localStorage</div>
+            <div class="centered" id="eg1">
+                <p id="text"></p>
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            onload = function () {
+                visits();
+            };
+
+            // 统计网页访问次数
+            function visits() {
+                if (localStorage.pagecount) {
+                    localStorage.pagecount = Number(localStorage.pagecount) + 1;
+                    // 也可以写成：localStorage.setItem("pagecount", number(localStorage.getItem("pagecount")) + 1);
+                } else {
+                    localStorage.pagecount = 1;
+                }
+                document.getElementById("text").innerText = "访问次数：" + localStorage.pagecount + "time(s)";
+            }
+        </script>
+    </section>
+
+
+
+    <!--https://localforage.docschina.org/
+        https://github.com/localForage/localForage
+        https://www.zhangxinxu.com/wordpress/?p=7621 -->
+
+    <!-- localStorage的缺点：
+            1.存储容量限制，大部分浏览器在5M左右。
+            2.仅支持字符串
+            3.读取只能是同步 -->
+
+    <!-- localforage的作用就是规避localStorage的缺点，且API和localStorage相同
+        localforage的逻辑是：有限使用indexedDB存储数据；如果浏览器不支持，使用WebSQL；浏览器再不支持，使用localStorage -->
+    <section class="code-wrap h600">
+        <div class="css-live-wrap w33p">
+            <div class="caption">localforage</div>
+            <div class="centered" id="eg2">
+                <label for="fileImg">上传图片</label>
+                <input type="file" id="fileImg" accept="image/*" hidden>
+                <p id="result"></p>
+            </div>
+        </div>
+        <style>
+            #eg2 label {
+                padding: 8px 10px;
+                background: #2a83a2;
+                color: aliceblue;
+                font-size: 14px;
+                border-radius: 2px;
+            }
+        </style>
+        <script src="https://cdn.bootcss.com/localforage/1.7.3/localforage.min.js"></script>
+        <script class="code w67p" contenteditable="true">
+            var eleResult = document.getElementById('result');
+            // 图片资源
+            var eleImg = document.createElement('img');
+            // 获取本地存储数据
+            localforage.getItem('zxxImg', function (err, value) {
+                if (err == null && value) {
+                    eleImg.src = value;
+                    eleResult.appendChild(eleImg);
+                }
+            });
+            // 选择本地文件
+            var reader = new FileReader();
+            // 文件base64化，以便获知图片原始尺寸
+            reader.onload = function (event) {
+                if (!eleImg.src) {
+                    eleResult.appendChild(eleImg);
+                }
+                var blob = URL.createObjectURL(new Blob([event.target.result]));
+                eleImg.src = blob;
+                // blob本地存储
+                localforage.setItem('zxxImg', blob);
+            };
+            // 选择的文件对象
+            var file = null;
+            document.getElementById('fileImg').addEventListener('change', function (event) {
+                file = event.target.files[0];
+                // 选择的文件是图片
+                if (file.type.indexOf("image") === 0) {
+                    reader.readAsArrayBuffer(file);
+                }
+            });
+        </script>
+    </section>
+</body>
+
+</html>

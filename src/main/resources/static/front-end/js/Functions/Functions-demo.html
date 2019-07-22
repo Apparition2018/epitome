@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Functions-demo</title>
+    <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../static/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w33p">
+            <div class="caption">默认参数值</div>
+            <div class="caption">允许在没有值或undefined被传入时使用默认形参</div>
+            <div class="default centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            function go() {
+                return ':P';
+            }
+
+            function defaults(a, b = 5, c = b, d = go(), e = this, f = arguments, g = this.value) {
+                return [a, b, c, d, e, f, g];
+            }
+
+            defaults.call({ value: '?' }); //  [undefined, 5, 5, ":P", {value: "?"}, Arguments(0), "?"]
+        </script>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w33p">
+            <div class="caption">剩余参数 function(a, b, ...theArgs) {}</div>
+            <div class="caption">允许我们将一个不定数量的参数表示为一个数组</div>
+            <div class="rest centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // 简单示例
+            function sortArgs(...args) {
+                return args.sort();
+            }
+
+            sortArgs(5, 3, 7, 1); // [1, 3, 5, 7]
+
+
+            // 解构剩余参数
+            function f(...[a, b, c]) {
+                return a + b + c;
+            }
+
+            f(1, 2);        // 1 + 2 + undefined = NaN
+            f(1, 2, 3);     // 6
+            f(1, 2, 3, 4);  // 6
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">简写 初始化对象时定义方法</div>
+            <div class="definitions centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            var bar = {
+                foo0: function () { return 0; },
+                foo1() { return 1; },           // 简写
+                ['foo' + 2]() { return 2; }      // 简写支持计算属性名
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w33p">
+            <div class="caption">getter</div>
+            <div class="caption">get语法将对象属性绑定到查询该属性时将被调用的函数</div>
+            <div class="getter centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // 在新对象初始化时定义一个getter
+            var obj = {
+                log: ['example', 'test'],
+                get latest() { // 伪属性
+                    return this.log.length === 0 ? undefined : this.log[this.log.length - 1];
+                }
+            };
+
+            obj.latest; // "test"
+
+            delete obj.latest; // 使用delete操作符删除 getter
+        </script>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">setter</div>
+            <div class="caption">set语法将对象属性绑定到要调用的函数</div>
+            <div class="setter centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // 在对象初始化时定义 setter
+            var language = {
+                log: [],
+                set current(name) {
+                    this.log.push(name);
+                }
+            };
+
+            language.current = 'EN';
+            language.log; // ['EN'];
+
+            language.current = 'FA';
+            language.log; // ['EN', 'FA']
+        </script>
+    </section>
+</body>
+
+</html>

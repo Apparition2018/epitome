@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>input-range-demo</title>
+    <link rel="icon" href="../../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../../static/css/demo.css">
+</head>
+
+<body>
+    <!-- https://www.cnblogs.com/nelsonlei/p/7878073.html -->
+    <!-- https://blog.csdn.net/u013347241/article/details/51560290 -->
+    <section class="code-wrap h600">
+        <div class="css-live-wrap w40p">
+            <div class="caption">美化 range</div>
+            <div class="centered beautify">
+                <p>
+                    <input type="range" id="snrPollInterval" min="0" max="100" step="5"  title=""/>
+                </p>
+                <div class="text" id="text" data-text="音量"></div>
+            </div>
+        </div>
+        <style class="code w60p" contenteditable="true">
+            input[type="range"] {
+                /*去除默认样式*/
+                -webkit-appearance: none;
+                width: 200px;
+                height: 6px;
+                background: linear-gradient(to right, #ebeff4, #059CFA 50%, #ebeff4 50%);
+                border-radius: 4px;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                /*去除默认样式*/
+                -webkit-appearance: none;
+                width: 20px;
+                height: 20px;
+                background-color: #fff;
+                border: 5px solid #0096e6;
+                border-radius: 15px;
+                /* cursor: default; */
+            }
+
+            .text {
+                width: 50px;
+                min-height: 21px;
+                margin: 16px auto 0;
+                padding-bottom: 3px;
+                text-align: center;
+                border-bottom: 1px solid #555;
+            }
+
+            .text::before {
+                content: attr(data-text);
+                color: #aaa;
+            }
+        </style>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+            (function () {
+                //滑动时的样式
+                $.fn.RangeSlider = function (cfg) {
+                    this.sliderCfg = {
+                        min: cfg && !isNaN(parseFloat(cfg.min)) ? Number(cfg.min) : null,
+                        max: cfg && !isNaN(parseFloat(cfg.max)) ? Number(cfg.max) : null,
+                        step: cfg && Number(cfg.step) ? cfg.step : 5,
+                        callback: cfg && cfg.callback ? cfg.callback : null
+                    };
+
+                    var $input = $(this);
+                    var text = document.getElementById('text');
+
+                    var min = this.sliderCfg.min;
+                    var max = this.sliderCfg.max;
+                    var step = this.sliderCfg.step;
+                    var callback = this.sliderCfg.callback;
+
+                    $input.attr('min', min).attr('max', max).attr('step', step);
+
+                    $input.on("input", function () {
+                        $input.attr('value', this.value);
+                        $input.css('background', 'linear-gradient(to right, #ebeff4, #059CFA ' + this.value + '%, #ebeff4 ' + this.value + '%)');
+
+                        text.dataset.text = '';
+                        text.innerText = this.value;
+
+                        if ($.isFunction(callback)) {
+                            callback(this);
+                        }
+                    });
+                };
+                $('#snrPollInterval').RangeSlider({ min: 0, max: 100, step: 5, callback: '' });
+            })()
+        </script>
+    </section>
+</body>
+
+</html>

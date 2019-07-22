@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>let-demo</title>
+    <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../static/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap w33p">
+            <div class="caption">let &amp; var</div>
+            <div class="caption">声明一个作用域被限制在块级中的变量、语句或者表达式</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // let 的作用域在声明的块或子块中
+            function varTest() {
+                let x = 1;
+                if (1) { var x = 2; console.log(x); }   // 2
+                console.log(x);                         // 1
+            }
+
+            // var 的作用域在整个封闭函数
+            function varTest() {
+                var x = 1;
+                if (1) { var x = 2; console.log(x); }   // 2
+                console.log(x);                         // 2
+            }
+
+            // 在程序或函数的顶层，var会在全局对象上创造一个属性
+            var x = 1;
+            let y = 1;
+            this.x; // 1
+            this.y; // undefined
+        </script>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w33p">
+            <div class="caption">通过 let 模仿私有接口</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // 构造函数
+            var SomeConstructor;
+            {
+                let privateScope = {};
+
+                SomeConstructor = function SomeConstructor() {
+                    this.someProperty = 'foo';
+                    privateScope.hiddenProperty = 'bar';
+                };
+                SomeConstructor.prototype.showPublic = function () { return this.someProperty };
+                SomeConstructor.prototype.showPrivate = function () { return privateScope.hiddenProperty };
+            }
+
+            var myInstance = new SomeConstructor();
+            myInstance.showPublic();    // 'foo'
+            myInstance.someProperty;    // 'foo'
+            myInstance.showPrivate();   // 'bar'
+            myInstance.privateScope;    // undefined
+        </script>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">let 相关错误</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // 在同一个函数或同一个作用域中，不能用 let 重复定义一个变量
+            if (1) {
+                let x;
+                let x; // SyntaxError: Identifier 'x' has already been declared
+            }
+
+            // 在 ECMAScript 2015 中，let 绑定不受变量提升的约束
+            function hoisting() {
+                console.log(x); // undefined
+                console.log(y); // ReferenceError: y is not defined
+                var x = 1;
+                let y = 2;
+            }
+        </script>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <base target="_blank">
+    <title>this-demo</title>
+    <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../static/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h100vh">
+        <div class="css-live-wrap w100p">
+            <div class="caption">this</div>
+            <div class="this centered">
+                <table class="w1280">
+                    <tr>
+                        <th></th>
+                        <th>正常模式</th>
+                        <th>严格模式</th>
+                        <th>示例</th>
+                    </tr>
+                    <tr>
+                        <td>全局上下文</td>
+                        <td colspan="2">window</td>
+                        <td>
+                            <a href="javascript: alert(this)">this</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>简单调用</td>
+                        <td>window</td>
+                        <td>undefined</td>
+                        <td>
+                            <a href="javascript: alert((function() { return this })())">(function() { return this })()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>call / apply</td>
+                        <td colspan="2">第一个形参</td>
+                        <td>
+                            <a href="javascript: alert((function() { return this }).call(7))">(function() {
+                                <br />&nbsp;&nbsp;return this
+                                <br />}).call(7)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>bind</td>
+                        <td colspan="2">永久绑定到第一个形参</td>
+                        <td>
+                            <a href="../内置对象/Function/Function-demo.html#bind"
+                                style="text-decoration: underline">bind()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>箭头函数</td>
+                        <td colspan="2">与封闭词法上下文的 this 保持一致</td>
+                        <td>
+                            <a href="javascript: alert((function() { this.age = 18; return (() => this.age)() })())">(function() {
+                                <br />&nbsp;&nbsp;this.age = 18;
+                                <br />&nbsp;&nbsp;return (() => this.age)()
+                                <br />})()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>作为对象的方法</td>
+                        <td colspan="2" rowspan="3">该对象</td>
+                        <td>
+                            <a href="javascript: alert((function() { var o = { prop: 37, f: function() { return this.prop }}; return o.f()})())">var o = {
+                                <br />&nbsp;&nbsp;prop: 37,
+                                <br />&nbsp;&nbsp;f: function() {
+                                <br />&nbsp;&nbsp;&nbsp;&nbsp;return this this.prop;
+                                <br />&nbsp;&nbsp;}
+                                <br />};
+                                <br />o.f();
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>原型链</td>
+                        <td>
+                            <a href="javascript: alert((function() { var o = { prop: 37, f: function() { return this.prop }}; var p = Object.create(o); p.prop = 38; return p.f() })())">var p = Object.create(o);
+                                <br />p.prop = 38;
+                                <br />p.f();
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>getter / setter</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>构造函数</td>
+                        <td colspan="2">新创建的对象</td>
+                        <td>
+                            <a href="javascript: alert((function(){ function C() { this.a = 37 } var o = new C(); return o.a })())">function C() { this.a = 37 }
+                                <br />var o = new C();
+                                <br />o.a;
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>作为一个DOM事件处理函数</td>
+                        <td colspan="2">绑定事件的元素</td>
+                        <td>
+                            <a href="../Web%20APIs/Event/Event-demo.html#event-target"
+                                style="text-decoration: underline">Event-this</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">作为一个内联事件处理函数</td>
+                        <td colspan="2">监听器所在的DOM元素</td>
+                        <td onclick="alert(this.tagName)">onclick="alert(this.tagName)"</td>
+                    </tr>
+                    <tr>
+                        <td>window</td>
+                        <td>undefined</td>
+                        <td onclick="alert((function(){ return this })())">onclick="alert((function(){ return this })())"</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <style>
+            .this a {
+                text-decoration: none
+            }
+        </style>
+    </section>
+</body>
+
+</html>

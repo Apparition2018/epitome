@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>animation-demo</title>
+    <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../static/css/demo.css">
+</head>
+
+<body>
+    <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation -->
+    <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations -->
+    <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/@keyframes -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">Cylon 眼睛</div>
+            <div class="centered">
+                <div class="view_port">
+                    <div class="polling_message">
+                        Arsenal
+                    </div>
+                    <div class="cylon_eye"></div>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .view_port {
+                height: 42px;
+                background-color: black;
+                overflow: hidden;
+            }
+
+            .polling_message {
+                float: left;
+                padding: 3px 6px;
+                color: white;
+                font-size: 30px;
+                font-weight: bold;
+            }
+
+            .cylon_eye {
+                width: 80%;
+                height: 100%;
+                background: red linear-gradient(to right, rgba(0, 0, 0, 0.9) 25%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.9) 75%);
+
+                /* name, duration, timing-function, iteration-count, direction */
+                animation: move_eye 3s linear 0s infinite normal;
+            }
+
+            @keyframes move_eye {
+                from {
+                    margin-left: -80%;
+                }
+
+                to {
+                    margin-left: 100%;
+                }
+            }
+        </style>
+    </section>
+
+    <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Tips -->
+    <!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">点击播放动画</div>
+            <div class="centered">
+                <div class="box"></div>
+                <div class="runButton"></div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .box {
+                width: 130px;
+                height: 130px;
+                border: 1px solid #333;
+                border-radius: 50%;
+            }
+
+            .runButton {
+                position: absolute;
+                left: 50%;
+                bottom: 50%;
+                transform: translate(-50%, 50%);
+                width: 21px;
+                height: 24px;
+                background: #f3f3f3;
+                clip-path: polygon(0 0, 21px 12px, 0 24px);
+                cursor: pointer;
+            }
+
+            .changing {
+                animation: colorchange 5s;
+            }
+
+            @keyframes colorchange {
+                20% {
+                    background: red;
+                    margin-left: -100%;
+                }
+
+                40% {
+                    background: darkred;
+                    margin-left: 100%;
+                }
+
+                60% {
+                    background: indianred;
+
+                    margin-left: -100%;
+                }
+
+                80% {
+                    background: orangered;
+                    margin-left: 100%;
+                }
+            }
+        </style>
+        <script>
+            function play() {
+                document.querySelector(".box").className = "box";
+                window.requestAnimationFrame(function () {
+                    window.requestAnimationFrame(function () {
+                        document.querySelector(".box").className = "box changing";
+                    });
+                });
+            }
+            document.querySelector(".runButton").addEventListener("click", play, false);
+        </script>
+    </section>
+
+    <!-- https://www.zhangxinxu.com/study/201305/IE10-css-hack.html -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">loading</div>
+            <div class="centered">
+                <div class="img">
+                    <span class="loading spin"></span>
+                    <i class=""></i>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .img img {
+                border-radius: 50%;
+            }
+
+            .loading {
+                display: inline-block;
+                width: 32px;
+                height: 32px;
+            }
+
+            .loading:before {
+                content: '';
+                position: absolute;
+                width: 3px;
+                height: 3px;
+                margin-left: 14.5px;
+                margin-top: 14.5px;
+                border-radius: 50%;
+                box-shadow:
+                    0 -10px 0 1px #333,
+                    10px 0 #333,
+                    0 10px #333,
+                    -10px 0 #333,
+                    -7px -7px 0 .5px #333,
+                    7px -7px 0 1.5px #333,
+                    7px 7px #333,
+                    -7px 7px #333;
+            }
+
+            .spin {
+                transform: rotate(360deg);
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+            onload = function () {
+                // setTimeout 模拟读取图片
+                setTimeout(function () {
+                    var eleBox = $(".img");
+                    var funStep = function () {
+                        var myImage = new Image(), src = '../../../img/people/穗波玉.jpg';
+                        myImage.onload = function () {
+                            eleBox.eq(0).html('<img src="' + src + '"width="160px">');
+                        };
+                        myImage.src = src;
+                    };
+                    funStep();
+                }, 150000);
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">图片模态框</div>
+            <div class="img-modal centered">
+                <img class="centered" src="../../../static/img/other/NorthernLights.jpg" alt="Northern Lights, Norway">
+                <div class="modal" id="modal">
+                    <span class="close">×</span>
+                    <img class="modal-content" id="modal-content" src="">
+                    <div class="modal-caption" id="modal-caption"></div>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .img-modal {
+                width: 100%;
+                height: 100%;
+            }
+
+            .img-modal>img {
+                width: 300px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .img-modal>img:hover {
+                opacity: 0.7;
+            }
+
+            .img-modal .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                padding-top: 80px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                overflow: auto;
+                background-color: rgb(0, 0, 0);
+                background-color: rgba(0, 0, 0, 0.9);
+            }
+
+            .img-modal .modal-content {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+            }
+
+            .img-modal .modal-caption {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+                text-align: center;
+                color: #ccc;
+                padding-top: 20px;
+                height: 80px;
+            }
+
+            .img-modal .modal-content,
+            .img-modal .modal-caption {
+                -webkit-animation-name: zoom;
+                -webkit-animation-duration: 0.6s;
+                animation-name: zoom;
+                animation-duration: 0.6s;
+            }
+
+            @-webkit-keyframes zoom {
+                from {
+                    -webkit-transform: scale(0)
+                }
+
+                to {
+                    -webkit-transform: scale(1)
+                }
+            }
+
+            @keyframes zoom {
+                from {
+                    transform: scale(0.1)
+                }
+
+                to {
+                    transform: scale(1)
+                }
+            }
+
+            .img-modal .close {
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+            .img-modal .close:hover,
+            .img-modal .close:focus {
+                color: #bbb;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+            var img = document.querySelector('.img-modal>img');
+            var modal = document.getElementById('modal');
+            var modalContent = document.getElementById("modal-content");
+            var modalCaption = document.getElementById("modal-caption");
+
+            img.onclick = function () {
+                console.log(this);
+                console.log(this.src);
+                modal.style.display = "block";
+                modalContent.src = this.src;
+                modalContent.alt = this.alt;
+                modalCaption.innerHTML = this.alt;
+            };
+
+            var span = document.getElementsByClassName("close")[0];
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">订单提交中</div>
+            <div class="centered">
+                <a href="javascript:" class="grebtn">订单提交中<span class="dot">...</span></a>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .grebtn {
+                display: inline-block;
+                vertical-align: bottom;
+                line-height: 1.5;
+                padding: 0.25em 1.25em;
+                background-color: #289600;
+                color: #fff;
+                font-size: 14px;
+                font-weight: bold;
+                text-decoration: none;
+                text-shadow: 0 -1px #137900;
+                border: 1px solid;
+                border-color: #208000 #1F7F00;
+                border-radius: 2px;
+                box-shadow: inset 0 0 1px rgba(255, 255, 255, .6), 0 1px #8DBF62;
+            }
+
+            .grebtn .dot {
+                display: inline-block;
+                height: 1em;
+                line-height: 1;
+                vertical-align: -.25em;
+                overflow: hidden;
+            }
+
+            .grebtn .dot::before {
+                display: block;
+                content: '...\A..\A.';
+                white-space: pre-wrap;
+                animation: dot 3s infinite step-start both;
+            }
+
+            @keyframes dot {
+                33% {
+                    transform: translateY(-2em);
+                }
+
+                66% {
+                    transform: translateY(-1em);
+                }
+            }
+        </style>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>Document-demo</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap w100p">
+            <div class="caption">属性</div>
+            <div class="centered">
+                <table class="w1024">
+                    <tr>
+                        <th>属性</th>
+                        <th>概述</th>
+                        <th>示例</th>
+                    </tr>
+                    <tr>
+                        <td>forms</td>
+                        <td>返回文档中所有 &lt;from> 的 HTMLCollection</td>
+                        <td>
+                            <a href="javascript: alert(document.forms);">document.forms</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>images</td>
+                        <td>返回对文档中所有 &lt;img> 的 HTMLCollection</td>
+                        <td>
+                            <a href="javascript: alert(document.images);">document.images</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>links</td>
+                        <td>返回对文档中所有具有 href 属性值的 &lt;area> 和 &lt;a> 的 HTMLCollection</td>
+                        <td>
+                            <a href="javascript: alert(document.links);">document.links</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>body</td>
+                        <td>返回文档中的 &lt;body> 元素或 &lt;frameset> 元素</td>
+                        <td>
+                            <a href="javascript: alert(document.body);">document.body</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>documentElement</td>
+                        <td>返回文档的根元素 (如 &lt;html>)</td>
+                        <td>
+                            <a href="javascript: alert(document.documentElement);">document.documentElement</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>cookie</td>
+                        <td>设置或返回与当前文档有关的所有 cookie</td>
+                        <td>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie#一个小框架：一个完整支持unicode的cookie读取写入器">简单的 cookie 框架</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>domain</td>
+                        <td>设置或返回文档的原始域部分, 用于
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy">同源策略</a>
+                        </td>
+                        <td>
+                            <a href="https://www.sojson.com/blog/179.html">解决跨域问题</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>referrer</td>
+                        <td>返回跳转或打开到当前文档的那个文档的 URI</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>返回当前文档的 URL</td>
+                        <td>
+                            <a href="javascript: alert(document.URL);">document.URL</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>documentURI</td>
+                        <td>返回当前文档的 URL，适用于所有类型的文档</td>
+                        <td>
+                            <a href="javascript: alert(document.documentURI);">document.documentURI</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>visibilityState</td>
+                        <td>返回 document 的可见性, 即当前可见元素的上下文环境</td>
+                        <td>
+                            <a href="javascript: alert(document.visibilityState)">document.visibilityState</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap w100p">
+            <div class="caption">方法</div>
+            <div class="centered">
+                <table class="w1280">
+                    <tr>
+                        <th>方法</th>
+                        <th>概述</th>
+                        <th>示例</th>
+                    </tr>
+                    <tr>
+                        <td>createElement()</td>
+                        <td>创建并返回一个新的元素节点</td>
+                        <td>element = document.createElement(tagName[, options])</td>
+                    </tr>
+                    <tr>
+                        <td>createAttribute()</td>
+                        <td>创建并返回一个新的属性节点</td>
+                        <td>attribute = document.createAttribute(name)</td>
+                    </tr>
+                    <tr>
+                        <td>createTextNode()</td>
+                        <td>创建并返回一个新的文本节点</td>
+                        <td>text = document.createTextNode(data)</td>
+                    </tr>
+                    <tr>
+                        <td>open()</td>
+                        <td>打开一个流，以收集来自任何 document.write() 或 document.writeln() 方法的输出
+                            <br />如果目标中存在文档，则此方法将清除它
+                        </td>
+                        <td>
+                            <a href="javascript: document.open();">document.open()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>write()</td>
+                        <td>向由 document.open() 打开的文档流写 HTML 表达式 或 JavaScript 代码
+                            <br />在关闭(已加载)的文档上调用 document.write() 会自动调用 document.open()
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>writeln()</td>
+                        <td>等同于 write() 方法，不同的是在每个表达式之后写一个换行符</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>close()</td>
+                        <td>关闭用 document.open() 方法打开的输出流，并显示选定的数据</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w40p">
+            <div class="caption">document.referrer</div>
+            <div class="caption">返回跳转或打开到当前页面的那个页面的 URI，如果没有者返回空</div>
+            <div class="jsBack centered">
+                <a href="javascript:history.go(-1)">back</a>
+            </div>
+        </div>
+        <style>
+            .jsBack a {
+                color: var(--gn4);
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+        </style>
+        <script class="code w60p" contenteditable="true">
+            if (!document.referrer) {
+                /* 如果document.referrer为假，则跳转到百度首页 */
+                var a = document.querySelector('.jsBack a');
+                a.setAttribute('href', 'https://www.baidu.com');
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w40p">
+            <div class="caption">document.URL</div>
+            <div class="url centered">
+                <table>
+                    <tr>
+                        <th>属性</th>
+                        <th>区别</th>
+                    </tr>
+                    <tr>
+                        <td>document.URL</td>
+                        <td>只读</td>
+                    </tr>
+                    <tr>
+                        <td>document.documentURI</td>
+                        <td>只读，适用于所有类型的文档</td>
+                    </tr>
+                    <tr>
+                        <td>window.location.href</td>
+                        <td>可写</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <style>
+            .url table {
+                width: 400px;
+            }
+        </style>
+        <script class="code w60p" contenteditable="true"></script>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w40p">
+            <div class="caption">createAttribute &amp; createElement &amp; createTextNode</div>
+            <div class="create centered">
+                <a href="../Node/Node-demo.html#create">create</a>
+            </div>
+        </div>
+        <style>
+            .create a {
+                color: var(--gn4);
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+        </style>
+        <script class="code w60p" contenteditable="true">
+
+        </script>
+    </section>
+
+
+    <section class="code-wrap">
+        <div class="css-live-wrap w40p">
+            <div class="caption">当切换其它网页时，进度停止</div>
+            <div class="caption">利用 document.visibilityState, document.onvisibilitychange, document.hidden 实现</div>
+            <div class="bar centered">
+                <div id="percent"></div>
+                <div id="num"></div>
+            </div>
+        </div>
+        <style>
+            .bar {
+                width: 500px;
+                background-color: pink;
+                border: 2px solid #555;
+                border-radius: 2px;
+            }
+
+            @keyframes loop {
+                0% {
+                    width: 0;
+                }
+
+                100% {
+                    width: 500px;
+                }
+            }
+
+            #percent {
+                width: 0;
+                height: 40px;
+                background-color: forestgreen;
+                animation: loop 10s linear;
+            }
+
+            #num {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                line-height: 40px;
+                color: #fff;
+                font-size: 130%;
+                text-align: center;
+            }
+        </style>
+        <script class="code w60p" contenteditable="true">
+            function getCSS(obj, style) {
+                if (window.getComputedStyle) {
+                    return getComputedStyle(obj)[style];
+                }
+                return obj.currentStyle[style];
+            }
+
+            var oTimer = setInterval(function () {
+                document.title = num.innerHTML = parseInt(getCSS(percent, 'width'));
+            }, 100);
+
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    percent.style.animationPlayState = 'paused';
+                } else {
+                    percent.style.animationPlayState = 'running';
+                }
+            }, false);
+        </script>
+    </section>
+</body>
+
+</html>

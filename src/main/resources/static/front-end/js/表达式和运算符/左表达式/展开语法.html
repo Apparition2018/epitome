@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>展开语法</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">在函数调用时使用展开语法，等价于apply的方式</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            var func = (x, y, z) => x + y + z;
+            var args = [1, 2, 3];
+            func.apply(null, args); // 6
+            func(...args);          // 6
+        </script>
+    </section>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w33p">
+            <div class="caption">复制数组</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            var arr = [1, 2, 3];
+            var arr2 = arr.slice();
+            var arr3 = [...arr];
+        </script>
+    </section>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w33p">
+            <div class="caption">构造字面量数组</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            var parts = ['shoulders', 'knees'];
+            var lyrics = ['head', ...parts, 'toes']; // ["head", "shoulders", "knees", "toes"]
+        </script>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w33p">
+            <div class="caption">合并对象</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            var obj1 = { foo: 'bar', x: 42 };
+            var obj2 = { foo: 'baz', y: 13 };
+
+            // 浅拷贝(Shallow-cloning, 不包含 prototype)和对象合并，可以使用更简短的展开语法，而不必再使用 Object.assign() 
+            // 区别：Object.assign() 函数会触发 setters，而展开语法则不会
+            var cloneObj = { ...obj1 };                 // 克隆后的对象: { foo: "bar", x: 42 }
+            var mergedObj = { ...obj1, ...obj2 };       // 合并后的对象: { foo: "baz", x: 42, y: 13 }
+            var mergedObj2 = Object.assign(obj1, obj2); // {foo: "baz", x: 42, y: 13}
+        </script>
+    </section>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w33p">
+            <div class="caption">在数组或函数参数中使用展开语法时，只能用于可迭代对象</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            var arr1 = [...['x', 'y']];             // ["x", "y"]
+            var arr2 = [...{ 'x': 'x', 'y': 'y'}];  // TypeError: { ... } is not iterable
+            var arr3 = {...{ 'x': 'x', 'y': 'y'}};  // {x: "x", y: "y"}
+        </script>
+    </section>
+</body>
+
+</html>

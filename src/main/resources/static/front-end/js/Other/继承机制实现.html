@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>继承机制实现</title>
+    <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../static/css/demo.css">
+</head>
+
+<body>
+    <!-- http://www.w3school.com.cn/js/pro_js_inheritance_implementing.asp -->
+    <section class="code-wrap h450">
+        <div class="css-live-wrap w33p">
+            <div class="caption">对象冒充 (object masquerading)</div>
+            <div class="caption">可以实现多继承</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            function ClassA(sColor) {
+                this.color = sColor;
+                this.sayColor = function () {
+                    console.log(this.color);
+                };
+            }
+
+            function ClassB(sName) {
+                this.name = sName;
+                this.sayName = function () {
+                    console.log(this.name);
+                }
+            }
+
+            function ClassC(sColor, sName) {
+                this.newMethod = ClassA;    // 继承了 ClassA
+                this.newMethod(sColor);
+                delete this.newMethod;      // 所有新属性和新方法都必须在删除了新方法的代码行后定义。否则，可能会覆盖超类的相关属性和方法
+
+                this.newMethod = ClassB;    // 继承了 ClassB
+                this.newMethod(sName);
+                delete this.newMethod;
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w33p">
+            <div class="caption">call(), apply()</div>
+            <div class="centered">
+
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            // 跟上面 ClassC 对比
+
+            function ClassD(sColor, sName) {
+                ClassA.call(this, sColor);
+                ClassB.call(this, sName);
+            }
+
+            function ClassE(sColor, sName) {
+                ClassA.apply(this, new Array(sColor));
+                ClassB.apply(this, new Array(sName));
+            }
+        </script>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">原型链</div>
+            <div class="centered">
+                <ol>
+                    <li>不支持多重继承</li>
+                    <li>不能使用带参数的构造函数</li>
+                </ol>
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            function ClassA2() { }
+
+            ClassA2.prototype.color = "blue";
+            ClassA2.prototype.sayColor = function () {
+                console.log(this.color);
+            };
+
+            function ClassF() { }
+
+            ClassF.prototype = new ClassA2(); // 关键
+
+            ClassF.prototype.name = "";
+            ClassF.prototype.sayName = function () {
+                console.log(this.name);
+            };
+        </script>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w33p">
+            <div class="caption">混合方式</div>
+            <div class="centered">
+            </div>
+        </div>
+        <style>
+        </style>
+        <script class="code w67p" contenteditable="true">
+            function ClassA3(sColor) {
+                this.color = sColor;
+            }
+
+            ClassA3.prototype.sayColor = function() {
+                console.log(this.color);
+            };
+
+            function ClassG(sColor, sName) {
+                ClassA.call(this, sColor);
+                this.name = sName;
+            }
+
+            ClassG.prototype = new ClassA3();
+
+            ClassG.prototype.sayName = function() {
+                console.log(this.name);
+            }
+        </script>
+    </section>
+</body>
+
+</html>
