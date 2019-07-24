@@ -195,14 +195,14 @@
                 setTimeout(function () {
                     var eleBox = $(".img");
                     var funStep = function () {
-                        var myImage = new Image(), src = '../../../img/people/穗波玉.jpg';
+                        var myImage = new Image(), src = '../../../static/img/people/穗波玉.jpg';
                         myImage.onload = function () {
                             eleBox.eq(0).html('<img src="' + src + '"width="160px">');
                         };
                         myImage.src = src;
                     };
                     funStep();
-                }, 150000);
+                }, 1500);
             }
         </script>
     </section>

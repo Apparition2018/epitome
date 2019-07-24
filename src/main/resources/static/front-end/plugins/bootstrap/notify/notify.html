@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="description" content="http://bootstrap-growl.remabledesigns.com/">
+    <title>notify</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap w40p">
+        <div class="caption">Bootstrap Notify</div>
+        <div class="centered notify"></div>
+    </div>
+    <style>
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap-notify/0.2.0/css/bootstrap-notify.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap-notify/0.2.0/js/bootstrap-notify.min.js"></script>
+    <script class="code w60p" contenteditable="true">
+        $(".notify").click(function () {
+            notifyMsg("德玛西亚");
+        });
+
+
+        function notifyMsg(msg) {
+            return $.notify({
+                // options
+                icon: 'glyphicon glyphicon-warning-sign',
+                title: '警告',
+                message: msg,
+                target: '_blank'
+            }, {
+                // settings
+                element: 'body',
+                position: null,
+                type: "warning",
+                allow_dismiss: true,
+                newest_on_top: true,
+                showProgressbar: false,
+                placement: {
+                    from: "bottom",
+                    align: "center"
+                },
+                offset: 20,
+                spacing: 10,
+                z_index: 1031,
+                delay: 5000,
+                timer: 1000,
+                url_target: '_blank'
+            });
+        }
+    </script>
+</section>
+
+</body>
+</html>
