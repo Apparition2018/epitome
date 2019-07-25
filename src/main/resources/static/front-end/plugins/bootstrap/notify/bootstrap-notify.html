@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>bootstrap-notify</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <section class="code-wrap h100vh">
+        <div class="css-live-wrap w50p">
+            <div class="caption"><a href="http://bootstrap-growl.remabledesigns.com/" target="_blank">Bootstrap Notify</a></div>
+            <div class="centered notify demo-click">Notify</div>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.min.js"></script>
+        <script class="code w50p" contenteditable="true">
+            // $.notify("Hello World");
+            $(".notify").click(function () {
+                $.notify(
+                    {
+                        // options
+                        title: '提醒',
+                        message: '点击打开百度',
+                        url: 'https://www.baidu.com/',
+                        target: '_blank'
+                    },
+                    {
+                        // settings
+                        element: '.css-live-wrap',
+                        position: null,
+                        type: "info",
+                        allow_dismiss: false,
+                        newest_on_top: true,
+                        showProgressbar: false,
+                        placement: {
+                            from: "top",
+                            align: "right"
+                        },
+                        offset: 20,
+                        spacing: 10,
+                        z_index: 1031,
+                        delay: 3000,
+                        timer: 1000,
+                        animate: {
+                            enter: 'animated fadeInDown',
+                            exit: 'animated fadeOutUp'
+                        }
+                    }
+                );
+            });
+        </script>
+    </section>
+
+</body>
+
+</html>
