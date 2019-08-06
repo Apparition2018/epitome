@@ -24,7 +24,6 @@ hs_err_pid*
 
 # ljh
 **/target
-**/bin
 **/.idea
 **/.settings
 **/.vscode

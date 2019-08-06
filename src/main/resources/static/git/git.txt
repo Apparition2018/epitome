@@ -216,7 +216,11 @@ git check-ignore -v <file>
 
 
 
-********** 配置别名 **********
+********** 其它配置 **********
 
 -- 配置别名
 git config --global alias.<alias> XXX
+
+-- LF与CRLF转换
+git config --global core.autocrlf input
+git config --global core.safecrlf warn
