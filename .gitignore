@@ -1,3 +1,15 @@
+### .gitignore 忽略规则配置说明
+# / 目录
+# * 通配多个字符
+# ? 通配单个字符
+# []包含单个字符的匹配列表
+# ! 不忽略（跟踪）匹配到的文件或目录
+# /mtk/ 过滤整个文件夹
+# *.zip 过滤所有.zip文件
+# /mtk/do.c 过滤某个具体文件
+
+### 可以根据自己需要参考配置自己的 .ignore 文件：https://github.com/github/gitignore
+
 # Compiled class file
 *.class
 
@@ -15,7 +27,7 @@
 *.war
 *.nar
 *.ear
-#*.zip
+*.zip
 *.tar.gz
 *.rar
 
@@ -23,15 +35,42 @@
 hs_err_pid*
 
 
-# eclipse ignore
-/.settings/
-.project
-.classpath
-.mymetadata
+### Windows ###
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
 
-# idea ignore
-/target/
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+### maven ###
+target/
+
+### eclipse ###
+bin/
+.settings/
+.classpath
+.project
+.metadata
+
+### IntelliJ IDEA ###
+out/
 .idea/
 *.ipr
 *.iml
 *.iws
+
+### ljh ###
+!**/phantomjs/bin/
