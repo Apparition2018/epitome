@@ -47,6 +47,7 @@ public class ObjectXML {
         return objectXmlDecoder(new ByteArrayInputStream(ins.getBytes("UTF-8")));
     }
 
+    @SuppressWarnings("unchecked")
     public static List objectXmlDecoder(InputStream ins) throws IOException, Exception {
         List objList = new ArrayList();
         XMLDecoder decoder = new XMLDecoder(ins);

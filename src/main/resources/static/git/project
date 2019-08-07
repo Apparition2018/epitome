@@ -25,7 +25,7 @@ springboot-3    SpringBoot开发常用技术整合
 
 mybatis         通过自动回复机器人学Mybatis---基础版|加强版
                 servlet + mysql + jdbc/mybatis + jsp + log4j +
-                接口式编程 + 代理模式 + 分页
+                接口式编程 + 代理模式 + mybatis拦截器实现分页 + 数组参数(看源码的思路)
 
 ssh-2           基于SSH实现员工管理系统之案例实现篇
                 SSH + mysql + c3p0 + jsp + log4j2 + 分页查询

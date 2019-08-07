@@ -15,7 +15,7 @@
 *.war
 *.nar
 *.ear
-*.zip
+#*.zip
 *.tar.gz
 *.rar
 
@@ -26,8 +26,6 @@ hs_err_pid*
 **/target
 **/.idea
 **/.settings
-**/.vscode
 *.iml
 .classpath
 .project
-.gitignore
