@@ -42,7 +42,7 @@
         <joda-time>2.10.2</joda-time>
         <gson>2.8.5</gson>
         <fastjson>1.2.58</fastjson>
-        <jackson>2.9.9</jackson>
+        <jackson>2.9.9.2</jackson>
         <kryo>4.0.2</kryo>
         <protostuff>1.6.0</protostuff>
         <bouncycastle>1.62</bouncycastle>
