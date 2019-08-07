@@ -63,7 +63,9 @@ bin/
 .settings/
 .classpath
 .project
-.metadata
+.recommenders/
+.metadata/
+Servers/
 
 ### IntelliJ IDEA ###
 out/
