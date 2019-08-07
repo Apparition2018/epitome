@@ -1,4 +1,4 @@
-package springboot.listen;
+package springboot.listener;
 
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;

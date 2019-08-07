@@ -1,4 +1,4 @@
-package springboot.listen;
+package springboot.listener;
 
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
