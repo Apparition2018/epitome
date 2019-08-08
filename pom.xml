@@ -12,7 +12,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <version>2.1.7.RELEASE</version>
+        <!--<version>1.5.6.RELEASE</version>-->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -24,10 +25,10 @@
         <!-- https://blog.csdn.net/weixin_34360651/article/details/91778454 -->
         <java.version>1.8</java.version>
         <!-- dependency -->
-        <spring>5.1.8.RELEASE</spring>
-        <springboot-mybatis>2.0.1</springboot-mybatis>
+        <spring>5.1.9.RELEASE</spring>
+        <springboot-mybatis>2.1.0</springboot-mybatis>
         <springboot-pagehelper>1.2.12</springboot-pagehelper>
-        <sqljdbc4>4.0</sqljdbc4>
+        <mysql>5.1.43</mysql>
         <druid>1.1.12</druid>
         <quartz>2.3.1</quartz>
         <poi>3.17</poi>
@@ -42,7 +43,7 @@
         <joda-time>2.10.2</joda-time>
         <gson>2.8.5</gson>
         <fastjson>1.2.58</fastjson>
-        <jackson>2.9.9.2</jackson>
+        <jackson>2.9.9</jackson>
         <kryo>4.0.2</kryo>
         <protostuff>1.6.0</protostuff>
         <bouncycastle>1.62</bouncycastle>
@@ -95,7 +96,8 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- spring boot 整合 mybatis -->
+        <!-- spring boot 整合 mybatis
+            pagehelper-spring-boot-starter 包含了 mybatis-spring-boot-starter -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -109,18 +111,21 @@
             <version>${springboot-pagehelper}</version>
         </dependency>
 
-        <!-- spring-context-support -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${spring}</version>
-        </dependency>
+        <!-- spring-context-support
+            spring-boot-starter-freemarker 包含了 spring-context-support
+        -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-context-support</artifactId>-->
+            <!--<version>${spring}</version>-->
+        <!--</dependency>-->
 
-        <!-- sqlserver sqljdbc4 -->
+        <!-- mysql -->
         <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>sqljdbc4</artifactId>
-            <version>${sqljdbc4}</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- druid -->
@@ -236,12 +241,14 @@
         </dependency>
 
         <!-- jackson
-            jackson-databind 包含 jackson-core, jackson-annotations -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson}</version>
-        </dependency>
+            jackson-databind 包含 jackson-core, jackson-annotations
+            spring-boot-starter-web 包含了 jackson-databind
+        -->
+        <!--<dependency>-->
+            <!--<groupId>com.fasterxml.jackson.core</groupId>-->
+            <!--<artifactId>jackson-databind</artifactId>-->
+            <!--<version>${jackson}</version>-->
+        <!--</dependency>-->
 
         <!-- kryo：序列化/反序列化 -->
         <dependency>

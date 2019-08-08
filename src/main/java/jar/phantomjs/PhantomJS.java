@@ -15,7 +15,7 @@ public class PhantomJS {
     public static String screenshot() {
         String pjsPath = "src/main/resources/phantomjs/bin/phantomjs.exe";  // PhantomJS 程序路径
         String jsPath = "src/main/resources/phantomjs/exec/screenshot.js";  // JavaScript 路径
-        String url = "http://localhost:3333/static/html/phantomjs/phantomjs.html"; // 网页路径
+        String url = "http://localhost:3333/static/static/html/phantomjs/phantomjs.html"; // 网页路径
         String imgPath = "src/main/java/jar/phantomjs/screenshot.png";      // 截图输出路径
 
         // 获取Runtime运行时，并执行命令

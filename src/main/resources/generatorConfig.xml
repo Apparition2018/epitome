@@ -7,9 +7,9 @@
 <!-- https://www.cnblogs.com/maanshancss/p/6027999.html -->
 <generatorConfiguration>
     <!-- 数据库驱动路径 -->
-    <classPathEntry location="E:\apache-maven-3.5.2\repository\com\microsoft\sqlserver\sqljdbc4\4.0\sqljdbc4-4.0.jar"/>
+    <classPathEntry location="D:\tts9\apache-maven-3.3.9\repository\mysql\mysql-connector-java\5.1.43\mysql-connector-java-5.1.43.jar"/>
 
-    <context id="sqlserver" targetRuntime="MyBatis3">
+    <context id="mysql" targetRuntime="MyBatis3">
         <!-- 使生成的bean实现Serializable接口 -->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
 
@@ -21,9 +21,9 @@
         </commentGenerator>
 
         <!-- 指定数据库连接的属性 -->
-        <jdbcConnection connectionURL="jdbc:sqlserver://192.168.0.134;databasename=app"
-                        driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-                        userId="test" password="bpmlink"/>
+        <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/demo"
+                        driverClass="com.mysql.jdbc.Driver"
+                        userId="ljh" password="123456"/>
 
         <!-- 指定JDBC类型和Java类型如何转换 -->
         <javaTypeResolver>
@@ -32,7 +32,7 @@
         </javaTypeResolver>
 
         <!-- 定义生成的model -->
-        <javaModelGenerator targetPackage="springboot.domain.app" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="springboot.domain.demo" targetProject="src/main/java">
             <!-- 是否根据数据库的catalog和schema生成子包 -->
             <property name="enableSubPackages" value="true"/>
             <!-- 是否进行trim() -->
@@ -40,16 +40,16 @@
         </javaModelGenerator>
 
         <!-- 定义生成的sql xml文件 -->
-        <sqlMapGenerator targetPackage="mapper.app" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapper.demo" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 定义生成的dao -->
-        <javaClientGenerator targetPackage="springboot.dao.app" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="springboot.dao.demo" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="score" domainObjectName="Score"/>
+        <table tableName="demo" domainObjectName="Demo"/>
 
         <!--<table tableName="sys_org_person" domainObjectName="SysOrgPerson" />-->
         <!--<table tableName="sys_org_element" domainObjectName="SysOrgElement" />-->

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="springboot.dao.app.ScoreMapper">
-  <resultMap id="BaseResultMap" type="springboot.domain.app.Score">
+<mapper namespace="springboot.dao.demo.DemoMapper">
+  <resultMap id="BaseResultMap" type="springboot.domain.demo.Demo">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="course" jdbcType="VARCHAR" property="course" />
-    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,15 +64,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, course, score
+    id, content
   </sql>
-  <select id="selectByExample" parameterType="springboot.domain.app.ScoreExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="springboot.domain.demo.DemoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from score
+    from demo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,76 +83,56 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from score
+    from demo
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from score
+    delete from demo
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="springboot.domain.app.ScoreExample">
-    delete from score
+  <delete id="deleteByExample" parameterType="springboot.domain.demo.DemoExample">
+    delete from demo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="springboot.domain.app.Score">
-    insert into score (id, name, course, 
-      score)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{course,jdbcType=VARCHAR}, 
-      #{score,jdbcType=INTEGER})
+  <insert id="insert" parameterType="springboot.domain.demo.Demo">
+    insert into demo (id, content)
+    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="springboot.domain.app.Score">
-    insert into score
+  <insert id="insertSelective" parameterType="springboot.domain.demo.Demo">
+    insert into demo
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="course != null">
-        course,
-      </if>
-      <if test="score != null">
-        score,
+      <if test="content != null">
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="course != null">
-        #{course,jdbcType=VARCHAR},
-      </if>
-      <if test="score != null">
-        #{score,jdbcType=INTEGER},
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="springboot.domain.app.ScoreExample" resultType="java.lang.Long">
-    select count(*) from score
+  <select id="countByExample" parameterType="springboot.domain.demo.DemoExample" resultType="java.lang.Long">
+    select count(*) from demo
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update score
+    update demo
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.course != null">
-        course = #{record.course,jdbcType=VARCHAR},
-      </if>
-      <if test="record.score != null">
-        score = #{record.score,jdbcType=INTEGER},
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -162,35 +140,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update score
+    update demo
     set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      course = #{record.course,jdbcType=VARCHAR},
-      score = #{record.score,jdbcType=INTEGER}
+      content = #{record.content,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="springboot.domain.app.Score">
-    update score
+  <update id="updateByPrimaryKeySelective" parameterType="springboot.domain.demo.Demo">
+    update demo
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="course != null">
-        course = #{course,jdbcType=VARCHAR},
-      </if>
-      <if test="score != null">
-        score = #{score,jdbcType=INTEGER},
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="springboot.domain.app.Score">
-    update score
-    set name = #{name,jdbcType=VARCHAR},
-      course = #{course,jdbcType=VARCHAR},
-      score = #{score,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="springboot.domain.demo.Demo">
+    update demo
+    set content = #{content,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

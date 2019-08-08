@@ -3,7 +3,7 @@ package springboot.controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import springboot.domain.app.Score;
+import springboot.domain.demo.Demo;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +24,8 @@ public class FetchController {
     }
 
     @RequestMapping("/json-clazz")
-    public Score jsonClazz(@RequestBody Score score) {
-        return score;
+    public Demo jsonClazz(@RequestBody Demo demo) {
+        return demo;
     }
 
     @RequestMapping("/json-map")
@@ -80,7 +80,7 @@ public class FetchController {
         String rtnString = "";
 
         Cookie[] cookies = request.getCookies();
-        if (null==cookies) {
+        if (null == cookies) {
             System.out.println("没有cookie=========");
         } else {
             for (Cookie cookie : cookies) {

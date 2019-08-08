@@ -39,9 +39,6 @@ public class Deadlock {
         deadlock();
     }
 
-    /**
-     * 死锁
-     */
     private static void deadlock() {
         new Thread(() -> {
             synchronized (A) {

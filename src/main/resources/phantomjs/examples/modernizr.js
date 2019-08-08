@@ -100,7 +100,7 @@ window.Modernizr = (function( window, document, undefined ) {
           div = document.createElement('div'),
           // After page load injecting a fake body doesn't work so check if body exists
           body = document.body,
-          // IE6 and 7 won't return offsetWidth or offsetHeight unless it'ds in the body element, so we fake it.
+          // IE6 and 7 won't return offsetWidth or offsetHeight unless it's in the body element, so we fake it.
           fakeBody = body || document.createElement('body');
 
       if ( parseInt(nodes, 10) ) {
@@ -118,7 +118,7 @@ window.Modernizr = (function( window, document, undefined ) {
       // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
       // msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
       // Documents served as xml will throw if using &shy; so use xml friendly encoded version. See issue #277
-      style = ['&#173;','<style id="ds', mod, '">', rule, '</style>'].join('');
+      style = ['&#173;','<style id="s', mod, '">', rule, '</style>'].join('');
       div.id = mod;
       // IE6 will false positive on some tests due to the style element inside the test div somehow interfering offsetHeight, so insert it into body or fakebody.
       // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
@@ -315,7 +315,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // testProps is a generic CSS / DOM property test.
 
-    // In testing support for a given CSS property, it'ds legit to test:
+    // In testing support for a given CSS property, it's legit to test:
     //    `elem.style[styleName] !== undefined`
     // If the property is supported it will return an empty string,
     // if unsupported it will return undefined.
@@ -355,7 +355,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 // return the property name as a string
                 if (elem === false) return props[i];
 
-                // let'ds bind a function
+                // let's bind a function
                 if (is(item, 'function')){
                   // default to autobind unless override
                   return item.bind(elem || obj);
@@ -464,7 +464,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
 
     // geolocation is often considered a trivial feature detect...
-    // Turns out, it'ds quite tricky to get right:
+    // Turns out, it's quite tricky to get right:
     //
     // Using !!navigator.geolocation does two things we don't want. It:
     //   1. Leaks memory in IE9: github.com/Modernizr/Modernizr/issues/513
@@ -490,7 +490,7 @@ window.Modernizr = (function( window, document, undefined ) {
     };
 
     // Vendors had inconsistent prefixing with the experimental Indexed DB:
-    // - Webkit'ds implementation is accessible through webkitIndexedDB
+    // - Webkit's implementation is accessible through webkitIndexedDB
     // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
     // For speed, we don't test the legacy (and beta-only) indexedDB
     tests['indexedDB'] = function() {
@@ -654,7 +654,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
         var ret = !!testPropsAll('perspective');
 
-        // Webkit'ds 3D transforms are passed off to the browser'ds own graphics renderer.
+        // Webkit's 3D transforms are passed off to the browser's own graphics renderer.
         //   It works fine in Safari on Leopard and Snow Leopard, but not in Chrome in
         //   some conditions. As a result, Webkit typically recognizes the syntax but
         //   will sometimes throw a false positive, thus we must do a more thorough check:
@@ -848,14 +848,14 @@ window.Modernizr = (function( window, document, undefined ) {
     // Hold this guy to execute in a moment.
     function webforms() {
         /*>>input*/
-        // Run through HTML5'ds new input attributes to see if the UA understands any.
+        // Run through HTML5's new input attributes to see if the UA understands any.
         // We're using f which is the <input> element created early on
         // Mike Taylr has created a comprehensive resource for testing these attributes
         //   when applied to all input types:
         //   miketaylr.com/code/input-type-attr.html
         // spec: www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
 
-        // Only input placeholder is tested while textarea'ds placeholder is not.
+        // Only input placeholder is tested while textarea's placeholder is not.
         // Currently Safari 4 and Opera 11 have support only for the input placeholder
         // Both tests are available in feature-detects/forms-placeholder.js
         Modernizr['input'] = (function( props ) {
@@ -863,7 +863,7 @@ window.Modernizr = (function( window, document, undefined ) {
                 attrs[ props[i] ] = !!(props[i] in inputElem);
             }
             if (attrs.list){
-              // safari false positive'ds on datalist: webk.it/74252
+              // safari false positive's on datalist: webk.it/74252
               // see also github.com/Modernizr/Modernizr/issues/146
               attrs.list = !!(document.createElement('datalist') && window.HTMLDataListElement);
             }
@@ -872,7 +872,7 @@ window.Modernizr = (function( window, document, undefined ) {
         /*>>input*/
 
         /*>>inputtypes*/
-        // Run through HTML5'ds new input types to see if the UA understands any.
+        // Run through HTML5's new input types to see if the UA understands any.
         //   This is put behind the tests runloop because it doesn't return a
         //   true/false like all the other tests; instead, it returns an object
         //   containing each input type with its corresponding true/false value
@@ -887,7 +887,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
                 // We first check to see if the type we give it sticks..
                 // If the type does, we feed it a textual value, which shouldn't be valid.
-                // If the value doesn't stick, we know there'ds input sanitization which infers a custom UI
+                // If the value doesn't stick, we know there's input sanitization which infers a custom UI
                 if ( bool ) {
 
                     inputElem.value         = smile;
@@ -1272,7 +1272,7 @@ window.Modernizr = (function( window, document, undefined ) {
           'supportsUnknownElements': supportsUnknownElements,
 
           /**
-           * A flag to indicate that the document'ds `createElement` and `createDocumentFragment`
+           * A flag to indicate that the document's `createElement` and `createDocumentFragment`
            * methods should be overwritten.
            * @memberOf html5
            * @type Boolean

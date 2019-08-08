@@ -7,7 +7,6 @@ import org.junit.Test;
 import utils.Tools;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.function.Predicate;
 
 /**

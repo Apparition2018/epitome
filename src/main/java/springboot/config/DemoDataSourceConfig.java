@@ -16,35 +16,35 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "springboot.dao.app", sqlSessionTemplateRef = "appSqlSessionTemplate")
-public class AppDataSourceConfig {
+@MapperScan(basePackages = "springboot.dao.demo", sqlSessionTemplateRef = "demoSqlSessionTemplate")
+public class DemoDataSourceConfig {
 
-    @Bean(name = "appDataSource", destroyMethod = "close", initMethod = "init")
-    @ConfigurationProperties(prefix = "spring.datasource.app")
+    @Bean(name = "demoDataSource", destroyMethod = "close", initMethod = "init")
+    @ConfigurationProperties(prefix = "spring.datasource.demo")
     @Primary
     public DruidDataSource druidDataSource() {
         return new DruidDataSource();
     }
 
-    @Bean(name = "appSqlSessionFactory")
+    @Bean(name = "demoSqlSessionFactory")
     @Primary
-    public SqlSessionFactory appSqlSessionFactory(@Qualifier("appDataSource") DataSource dataSource) throws Exception {
+    public SqlSessionFactory demoSqlSessionFactory(@Qualifier("demoDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/app/*.xml"));
-        bean.setTypeAliasesPackage("springboot.domain.app;springboot.vo");
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/demo/*.xml"));
+        bean.setTypeAliasesPackage("springboot.domain.demo");
         return bean.getObject();
     }
 
-    @Bean(name = "appTransactionManager")
+    @Bean(name = "demoTransactionManager")
     @Primary
-    public DataSourceTransactionManager appTransactionManager(@Qualifier("appDataSource") DataSource dataSource) {
+    public DataSourceTransactionManager demoTransactionManager(@Qualifier("demoDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    @Bean(name = "appSqlSessionTemplate")
+    @Bean(name = "demoSqlSessionTemplate")
     @Primary
-    public SqlSessionTemplate appSqlSessionTemplate(@Qualifier("appSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    public SqlSessionTemplate demoSqlSessionTemplate(@Qualifier("demoSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

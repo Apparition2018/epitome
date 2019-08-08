@@ -16,7 +16,7 @@
 //
 // NOTE.1: The "onConsoleMessage/onAlert/onPrompt/onConfirm" events are
 // registered but not used here. This is left for you to have fun with.
-// NOTE.2: This script is not here to teach you ANY JavaScript. It'ds aweful!
+// NOTE.2: This script is not here to teach you ANY JavaScript. It's aweful!
 // NOTE.3: Main audience for this are people new to PhantomJS.
 
 "use strict";

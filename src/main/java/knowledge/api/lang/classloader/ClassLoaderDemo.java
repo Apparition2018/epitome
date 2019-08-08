@@ -1,9 +1,6 @@
 package knowledge.api.lang.classloader;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
+
 import org.junit.Test;
 
 /**
@@ -25,57 +22,21 @@ public class ClassLoaderDemo {
     @Test
     public void getClassLoader() {
         // 使用当前类
-        p(this.getClass().getClassLoader());
+        ClassLoader classLoader1 = this.getClass().getClassLoader();
 
         // 使用当前线程
-        p(Thread.currentThread().getContextClassLoader());
+        ClassLoader classLoader2 = Thread.currentThread().getContextClassLoader();
 
         // 使用系统 ClassLoader
-        p(ClassLoader.getSystemClassLoader());
-    }
+        ClassLoader classLoader3 = ClassLoader.getSystemClassLoader();
 
-    /**
-     * JVM 加载类的三种途径
-     */
-    @Test
-    public void loadClass() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-        // 1
-        // new
-        Dog dog1 = new Dog("WangCai", 3); // 会执行静态块
-        p(dog1);
-
-        // 2
-        // static Class<?>	    forName(String name, boolean initialize, ClassLoader loader)
-        Class clazz = Class.forName("knowledge.api.lang.classloader.Dog");
-        Dog dog2 = (Dog) clazz.newInstance(); // 会执行静态块
-        dog2.setName("WangCai").setAge(3);
-        p(dog2);
-
-        // 3
-        // Class<?>	            loadClass(String name)
-        Class clazz2 = this.getClass().getClassLoader().loadClass("knowledge.api.lang.classloader.Dog"); // 不会执行静态块
-        Dog dog3 = (Dog) clazz2.newInstance();
-        dog3.setName("WangCai").setAge(3);
-        p(dog3);
+        p(classLoader1);
+        p(classLoader2);
+        p(classLoader3);
     }
 
     public static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }
-}
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Accessors(chain = true)
-class Dog {
-
-    private String name;
-    private int age;
-
-    static {
-        System.out.println("The is a Dog.");
-    }
-
 }

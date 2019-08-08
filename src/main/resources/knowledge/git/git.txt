@@ -222,5 +222,5 @@ git check-ignore -v <file>
 git config --global alias.<alias> XXX
 
 -- LF与CRLF转换
-git config --global core.autocrlf input
-git config --global core.safecrlf warn
+git config --global core.autocrlf true|input|false
+git config --global core.safecrlf true|warn|false

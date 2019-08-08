@@ -29,7 +29,7 @@ function waitFor(testFx, onReady, timeOutMillis) {
                 } else {
                     // Condition fulfilled (timeout and/or condition is 'true')
                     console.log("'waitFor()' finished in " + (new Date().getTime() - start) + "ms.");
-                    typeof(onReady) === "string" ? eval(onReady) : onReady(); //< Do what it'ds supposed to do once the condition is fulfilled
+                    typeof(onReady) === "string" ? eval(onReady) : onReady(); //< Do what it's supposed to do once the condition is fulfilled
                     clearInterval(interval); //< Stop this interval
                 }
             }
@@ -66,7 +66,7 @@ page.open(system.args[1], function(status){
                     var list = document.body.querySelectorAll('.results > #details > .specDetail.failed');
                     if (list && list.length > 0) {
                       console.log('');
-                      console.log(list.length + ' test(ds) FAILED:');
+                      console.log(list.length + ' test(s) FAILED:');
                       for (i = 0; i < list.length; ++i) {
                           var el = list[i],
                               desc = el.querySelector('.description'),

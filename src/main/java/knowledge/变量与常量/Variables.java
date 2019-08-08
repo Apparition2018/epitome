@@ -1,4 +1,4 @@
-package knowledge.变量;
+package knowledge.变量与常量;
 
 /**
  * 变量

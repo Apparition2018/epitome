@@ -6,13 +6,19 @@ spring:
     # prod-生产 / uat-预发布 / test-测试 / dev-开发
     # active: prod
   datasource:
-    app:
-      name: app
+    test:
+#      name: app
+#      type: com.alibaba.druid.pool.DruidDataSource
+#      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#      url: jdbc:sqlserver://192.168.0.134;databasename=app
+#      username: test
+#      password: bpmlink
+      name: test
       type: com.alibaba.druid.pool.DruidDataSource
-      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-      url: jdbc:sqlserver://192.168.0.134;databasename=app
-      username: test
-      password: bpmlink
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: ljh
+      password: 123456
       initialSize: 1
       minIdle: 1
       maxActive: 20
@@ -26,13 +32,13 @@ spring:
       poolPreparedStatements: true
       maxPoolPreparedStatementPerConnectionSize: 20
       filters: stat
-    eip:
-      name: eip
+    demo:
+      name: demo
       type: com.alibaba.druid.pool.DruidDataSource
-      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-      url: jdbc:sqlserver://192.168.0.134;databasename=eip12
-      username: test
-      password: bpmlink
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: ljh
+      password: 123456
       initialSize: 1
       minIdle: 1
       maxActive: 20
@@ -51,7 +57,7 @@ spring:
       enabled: false
     restart:
       #设置那个目录的文件需要restart
-      additional-paths: src/main/resources/static/html
+      additional-paths: src/main/resources/static/static/html
       #排除那个目录的文件不需要restart
       #exclude:
   jackson:

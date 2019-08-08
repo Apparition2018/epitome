@@ -15,31 +15,31 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "springboot.dao.eip", sqlSessionTemplateRef = "eipSqlSessionTemplate")
-public class EipDataSourceConfig {
+@MapperScan(basePackages = "springboot.dao.test", sqlSessionTemplateRef = "testSqlSessionTemplate")
+public class TestDataSourceConfig {
 
-    @Bean(name = "eipDataSource", destroyMethod = "close", initMethod = "init")
-    @ConfigurationProperties(prefix = "spring.datasource.eip")
-    public DruidDataSource eipDataSource() {
+    @Bean(name = "testDataSource", destroyMethod = "close", initMethod = "init")
+    @ConfigurationProperties(prefix = "spring.datasource.test")
+    public DruidDataSource testDataSource() {
         return new DruidDataSource();
     }
 
-    @Bean(name = "eipSqlSessionFactory")
-    public SqlSessionFactory eipSqlSessionFactory(@Qualifier("eipDataSource") DataSource dataSource) throws Exception {
+    @Bean(name = "testSqlSessionFactory")
+    public SqlSessionFactory testSqlSessionFactory(@Qualifier("testDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/eip/*.xml"));
-        bean.setTypeAliasesPackage("springboot.domain.eip");
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/test/*.xml"));
+        bean.setTypeAliasesPackage("springboot.domain.test");
         return bean.getObject();
     }
 
-    @Bean(name = "eipTransactionManager")
-    public DataSourceTransactionManager eipTransactionManager(@Qualifier("eipDataSource") DataSource dataSource) {
+    @Bean(name = "testTransactionManager")
+    public DataSourceTransactionManager testTransactionManager(@Qualifier("testDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    @Bean(name = "eipSqlSessionTemplate")
-    public SqlSessionTemplate eipSqlSessionTemplate(@Qualifier("eipSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    @Bean(name = "testSqlSessionTemplate")
+    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("testSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 
