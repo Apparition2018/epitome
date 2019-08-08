@@ -104,6 +104,13 @@
             <version>${springboot-mybatis}</version>
         </dependency>
 
+        <!-- spring boot 整合 druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.18</version>
+        </dependency>
+
         <!-- spring boot 整合 pagehelper -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
@@ -126,13 +133,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql}</version>
             <scope>runtime</scope>
-        </dependency>
-
-        <!-- druid -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${druid}</version>
         </dependency>
 
         <!-- quartz：定时任务 -->

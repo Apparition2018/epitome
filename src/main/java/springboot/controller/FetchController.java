@@ -11,6 +11,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +39,7 @@ public class FetchController {
         try {
             if (!file.isEmpty()) {
                 byte[] bytes = file.getBytes();
-                File picture = new File("doc/temp.png");
+                File picture = new File("temp.png");
                 BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(picture));
                 bos.write(bytes);
                 bos.close();
@@ -60,7 +61,7 @@ public class FetchController {
                 file = files.get(i);
                 if (!file.isEmpty()) {
                     byte[] bytes = file.getBytes();
-                    File picture = new File("doc/temp" + i + ".png");
+                    File picture = new File("temp" + i + ".png");
                     BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(picture));
                     bos.write(bytes);
                     bos.close();
@@ -84,10 +85,13 @@ public class FetchController {
             System.out.println("没有cookie=========");
         } else {
             for (Cookie cookie : cookies) {
+                System.out.println(cookie.getName());
+                System.out.println(cookie.getValue());
                 if ("cny".equals(cookie.getName()) && cny.equals(cookie.getValue())) {
                     rtnString = "cny: " + cookie.getValue();
                 }
             }
+
         }
 
         return rtnString;

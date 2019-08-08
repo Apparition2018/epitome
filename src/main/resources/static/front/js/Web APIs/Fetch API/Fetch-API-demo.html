@@ -102,9 +102,7 @@
                 var boxFectch1 = document.getElementsByClassName('box-fetch1')[0];
                 fetch('http://localhost:3333/fetch/string', {
                     method: 'post',
-                    headers: new Headers({
-                        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-                    }),
+                    headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }),
                     body: "data=heihei"
                 }).then(response => response.text()).then(data => {
                     demoLog(boxFectch1, data);
@@ -124,11 +122,11 @@
         <script class="code w60p" contenteditable="true">
                 (function () {
                     var boxFectch2 = document.getElementsByClassName('box-fetch2')[0];
-                    var score = { id: '1', name: 'zhangsan', course: 'math', score: '99' };
+                    var demo = { id: '1', content: 'zhangsan' };
                     fetch('http://localhost:3333/fetch/json-clazz', {
                         method: 'post',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(score)
+                        body: JSON.stringify(demo)
                     }).then(response => response.text()).then(data => {
                         demoLog(boxFectch2, data);
                     }).catch(function (e) {
@@ -236,10 +234,12 @@
         <script class="code w60p" contenteditable="true">
                 (function () {
                     $('.box-cookie')[0].onclick = function () {
-                        document.cookie = "cny=999";
+                        document.cookie = "cny=999; path=/";
 
                         fetch('http://localhost:3333/fetch/cookie', {
                             method: 'post',
+                            // 默认情况下，fetch 不会从服务端发送或接收任何 cookies,
+                            // 如果站点依赖于用户 session，则会导致未经认证的请求（要发送 cookies，必须设置 credentials 选项）
                             credentials: 'include',  // omit(默认，不带cookie) | same-origin(同源带cookie) | include(总是带cookie)
                         }).then(response => response.text()).then(data => {
                             alert(data);
@@ -260,7 +260,7 @@
         </div>
         <script class="code w60p" contenteditable="true">
                 (function () {
-                    fetch('http://127.0.0.1:3333/img/穗波玉.jpg', {
+                    fetch('http://127.0.0.1:3333/static/static/img/people/穗波玉.jpg', {
                         mode: 'cors' // cors: 跨域 | same-origin: 同源 | no-cors: 禁止跨域
                     }).then(response => response.blob()).then(response => {
                         var objectURL = URL.createObjectURL(response);
