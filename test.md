@@ -154,85 +154,85 @@ Shift + Shift			查找文件
 
 
 >## Tool Windows
-```
-Alt + 1                     Project
-Alt + 2                     Favorites
-Alt + 3                     Find
-Alt + 4                     Run
-Alt + 5                     Debug
-Alt + 6                     TODO
-Alt + 7                     Structure                                                       ***
-Alt + 8                     Maven Projects (user)
-Alt + 9                     Version Control
-```
+>```
+>Alt + 1                     Project
+>Alt + 2                     Favorites
+>Alt + 3                     Find
+>Alt + 4                     Run
+>Alt + 5                     Debug
+>Alt + 6                     TODO
+>Alt + 7                     Structure                                                       ***
+>Alt + 8                     Maven Projects (user)
+>Alt + 9                     Version Control
+>```
 
 >## Other
-```
-Alt + Insert                New...                              生成代码/新建
-Alt + Enter                 Show Intention Actions              显示建议
-Alt +                       Select In...                                                    ???
-Ctrl + Tab                  Switcher                            切换
-Ctrl + -                    Collapse All / Component
-Shift + F4                  Open source in new window           在新窗口中打
-Ctrl + Alt + Space          Class Name Completion               类名或接口名提示
-Alt + Shift + F             Add to Favorites                    添加到喜欢
-Ctrl + Alt + Enter          Show Quick Actions Popup                                        ???
-Shift + Enter               Open In New Editor Window           在新编辑窗口打开
-```
+>```
+>Alt + Insert                New...                              生成代码/新建
+>Alt + Enter                 Show Intention Actions              显示建议
+>Alt +                       Select In...                                                    ???
+>Ctrl + Tab                  Switcher                            切换
+>Ctrl + -                    Collapse All / Component
+>Shift + F4                  Open source in new window           在新窗口中打
+>Ctrl + Alt + Space          Class Name Completion               类名或接口名提示
+>Alt + Shift + F             Add to Favorites                    添加到喜欢
+>Ctrl + Alt + Enter          Show Quick Actions Popup                                        ???
+>Shift + Enter               Open In New Editor Window           在新编辑窗口打开
+>```
 >>### Bookmarks
-```
-Ctrl + 1~9                  Go to Bookmark 1~9                  定位到书签
-Ctrl + Shift + 1~9          Toggle Bookmark 1~9                 开关书签
-F11                         Toggle Bookmark                     开关书签
-Shift + F11                 Show Bookmark                       显示书签
-```
+>>```
+>>Ctrl + 1~9                  Go to Bookmark 1~9                  定位到书签
+>>Ctrl + Shift + 1~9          Toggle Bookmark 1~9                 开关书签
+>>F11                         Toggle Bookmark                     开关书签
+>>Shift + F11                 Show Bookmark                       显示书签
+>>```
 
 >## Debugger Actions
-```
-F2                          Set Value...                                                    ???
-Shift + F4                  Jump to Object Source                                           ???
-```
+>```
+>F2                          Set Value...                                                    ???
+>Shift + F4                  Jump to Object Source                                           ???
+>```
 
 >## Version Control Systems
-```
-Ctrl + D                    Compare Files / Show Diff           对比文件/显示差异
-Ctrl + Shift + Z            Revert / Rollback                   恢复/回滚
-Ctrl + K                    Commit                              提交
-Ctrl + T                    Update Project                      更新项目
-```
+>```
+>Ctrl + D                    Compare Files / Show Diff           对比文件/显示差异
+>Ctrl + Shift + Z            Revert / Rollback                   恢复/回滚
+>Ctrl + K                    Commit                              提交
+>Ctrl + T                    Update Project                      更新项目
+>```
 >>### Diff &amp; Merge
-```
-F7                          Next Difference                     下一个差异
-Ctrl + N                    Go To Changed File...                                           ???
-```
+>>```
+>>F7                          Next Difference                     下一个差异
+>>Ctrl + N                    Go To Changed File...                                           ???
+>>```
 >>### Shelve
-```
-F2                          Rename...                           重命名
-Shift + F6                  Rename...                           重命名
-```
+>>```
+>>F2                          Rename...                           重命名
+>>Shift + F6                  Rename...                           重命名
+>>```
 
 >## Editor Actions
-```
-Alt + Shift + Insert        Column Selection Mode               列选择模式
-Ctrl + D                    Duplicate Line or Selection         复制行
-Ctrl + [                    Move Caret to Code Block Start      移动到块初始位置
-Ctrl + ]                    Move Caret to Code Block End        移动到块末尾位置
-Ctrl + W                    Extend Selection                    扩大选中代码
-Ctrl + Shift + W            Shrink Selection                    收缩选中代码
-Ctrl + Delete               Delete to Word End                  删除光标后面的单词
-Ctrl + Y                    Delete Line                         删除行
-Ctrl + Alt + Enter          Start New Line Before Current       上插入行
-Shift + Enter               Start New Line                      下插入行
-Ctrl + Shift + J            Join Lines                          合并行            
-```
+>```
+>Alt + Shift + Insert        Column Selection Mode               列选择模式
+>Ctrl + D                    Duplicate Line or Selection         复制行
+>Ctrl + [                    Move Caret to Code Block Start      移动到块初始位置
+>Ctrl + ]                    Move Caret to Code Block End        移动到块末尾位置
+>Ctrl + W                    Extend Selection                    扩大选中代码
+>Ctrl + Shift + W            Shrink Selection                    收缩选中代码
+>Ctrl + Delete               Delete to Word End                  删除光标后面的单词
+>Ctrl + Y                    Delete Line                         删除行
+>Ctrl + Alt + Enter          Start New Line Before Current       上插入行
+>Shift + Enter               Start New Line                      下插入行
+>Ctrl + Shift + J            Join Lines                          合并行            
+>```
 
 >## 数据库
-```
-Ctrl + B                    Source Editor
-Ctrl + F2                   Disconnect
-Ctrl + Enter                Execute
-Ctrl + Alt + Y              Synchronize
-```
+>```
+>Ctrl + B                    Source Editor
+>Ctrl + F2                   Disconnect
+>Ctrl + Enter                Execute
+>Ctrl + Alt + Y              Synchronize
+>```
 
 .for .var				后缀自动补全功能				
 
