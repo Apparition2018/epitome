@@ -1,4 +1,5 @@
 # IDEA Shortcut
+---
 >## Main Menu
 >>### Window
 >>>#### Active Tool Window
@@ -145,14 +146,12 @@
 >>Ctrl + T                    Update Project                      更新项目
 >>Ctrl + Q                    Quick Documentation                 查看文档
 >>```
-
+---
 Alt + Select                                                    方块区域选择                 ???
 Shift + Click                                                   关闭文件                    ???
 Alt + Shift + o         最近项目
 Ctrl + Alt + H			查看调用链
 Shift + Shift			查找文件
-
-
 >## Tool Windows
 >```
 >Alt + 1                     Project
@@ -165,7 +164,7 @@ Shift + Shift			查找文件
 >Alt + 8                     Maven Projects (user)
 >Alt + 9                     Version Control
 >```
-
+---
 >## Other
 >```
 >Alt + Insert                New...                              生成代码/新建
@@ -186,13 +185,13 @@ Shift + Shift			查找文件
 >>F11                         Toggle Bookmark                     开关书签
 >>Shift + F11                 Show Bookmark                       显示书签
 >>```
-
+---
 >## Debugger Actions
 >```
 >F2                          Set Value...                                                    ???
 >Shift + F4                  Jump to Object Source                                           ???
 >```
-
+---
 >## Version Control Systems
 >```
 >Ctrl + D                    Compare Files / Show Diff           对比文件/显示差异
@@ -210,7 +209,7 @@ Shift + Shift			查找文件
 >>F2                          Rename...                           重命名
 >>Shift + F6                  Rename...                           重命名
 >>```
-
+---
 >## Editor Actions
 >```
 >Alt + Shift + Insert        Column Selection Mode               列选择模式
@@ -225,7 +224,7 @@ Shift + Shift			查找文件
 >Shift + Enter               Start New Line                      下插入行
 >Ctrl + Shift + J            Join Lines                          合并行            
 >```
-
+---
 >## 数据库
 >```
 >Ctrl + B                    Source Editor
@@ -233,7 +232,7 @@ Shift + Shift			查找文件
 >Ctrl + Enter                Execute
 >Ctrl + Alt + Y              Synchronize
 >```
-
+---
 .for .var				后缀自动补全功能				
 
 custom postfix templates：https://www.cnblogs.com/invoker-/p/8994157.html
