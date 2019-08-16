@@ -1,18 +1,19 @@
 # IDEA Shortcut
 ---
 >## Main Menu
->>### Window - Active Tool Window
->>```
->>F12                         Jump to Last Tool Window
->>Shift + ESC                 Hide Active Tool Window             隐藏活动工具窗口
->>Ctrl + Shift + F12          Hide All Tool Windows               隐藏所有工具窗口
->>Alt + ↓                     Show List of Tabs
->>```
->>### Window - Editor Tabs
->>```
->>Alt + ←                     Select Previous Tab
->>Alt + →                     Select Next Tab
->>```
+>>### Window
+>>>#### Active Tool Window
+>>>```
+>>>F12                         Jump to Last Tool Window
+>>>Shift + ESC                 Hide Active Tool Window             隐藏活动工具窗口
+>>>Ctrl + Shift + F12          Hide All Tool Windows               隐藏所有工具窗口
+>>>Alt + ↓                     Show List of Tabs
+>>>```
+>>>#### Editor Tabs
+>>>```
+>>>Alt + ←                     Select Previous Tab
+>>>Alt + →                     Select Next Tab
+>>>```
 >>### Code
 >>```
 >>Alt + Insert                Generate...                         生成代码
@@ -26,19 +27,19 @@
 >>Ctrl + Shift + ↑ / ↓        Move Statement Up / Down            上下移动语句
 >>Alt + Shift + ↑ / ↓         Move Line Up / Down                 上下移动行
 >>```
->>### Code - Completion
->>```
->>Alt + /                     Cyclic Expand Word                                              ???
->>Ctrl + Space                Basic    
->>Ctrl + Shift + Space        SmartType
->>```
->>### Code - Folding
->>```
->>Ctrl + +                    Expand
->>Ctrl + -                    Collapse
->>Ctrl + Shift + +            Expand All
->>Ctrl + Shift + 1            Collapse All
->>```
+>>>#### Completion
+>>>```
+>>>Alt + /                     Cyclic Expand Word                                              ???
+>>>Ctrl + Space                Basic    
+>>>Ctrl + Shift + Space        SmartType
+>>>```
+>>>#### Folding
+>>>```
+>>>Ctrl + +                    Expand
+>>>Ctrl + -                    Collapse
+>>>Ctrl + Shift + +            Expand All
+>>>Ctrl + Shift + 1            Collapse All
+>>>```
 >>### Navigate
 >>```
 >>F2                          Next Highlighted Error              下一条高亮错误
@@ -82,17 +83,17 @@
 >>Alt + Shift + Backspace     Redo                                重做
 >>Ctrl + Shift + J            Join Lines                          合并行                          
 >>```
->>### Edit - Find
->>```
->>Alt + F7                    Find Usages
->>Ctrl + Shift + F7           Highlight Usages in File            在文件中高亮相同的选中代码
->>F3                          Find Next / Move to Next Occurrence 
->>Alt + F3                    Find...
->>Ctrl + Shift + F            Find in Path...
->>Ctrl + R                    Repalce...
->>Ctrl + Shift + R            Replace in Path...
->>Ctrl + Shift + Alt + J      Select All Occurrencees                                         ???
->>```
+>>>#### Find
+>>>```
+>>>Alt + F7                    Find Usages
+>>>Ctrl + Shift + F7           Highlight Usages in File            在文件中高亮相同的选中代码
+>>>F3                          Find Next / Move to Next Occurrence 
+>>>Alt + F3                    Find...
+>>>Ctrl + Shift + F            Find in Path...
+>>>Ctrl + R                    Repalce...
+>>>Ctrl + Shift + R            Replace in Path...
+>>>Ctrl + Shift + Alt + J      Select All Occurrencees                                         ???
+>>>```
 >>### View
 >>```
 >>Ctrl + D                    Compare Files                       对比文件
@@ -103,13 +104,13 @@
 >>Shift + F6                  Rename...                           重命名
 >>Ctrl + Shift + Alt + T      Refactor This...                                                ???
 >>```
->>### Refactor - Extract
->>```
->>Ctrl + Alt + C              Constant...                         常量
->>Ctrl + Alt + V              Variable...                         变量
->>Ctrl + Alt + F              Field...                                
->>Ctrl + Alt + P              Parameter...
->>```
+>>>#### Extract
+>>>```
+>>>Ctrl + Alt + C              Constant...                         常量
+>>>Ctrl + Alt + V              Variable...                         变量
+>>>Ctrl + Alt + F              Field...                                
+>>>Ctrl + Alt + P              Parameter...
+>>>```
 >>### Run
 >>```
 >>F7                          Step Into                           步入
