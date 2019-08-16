@@ -145,7 +145,7 @@ Ctrl + K                    Commit                              提交
 Ctrl + T                    Update Project                      更新项目
 Ctrl + Q                    Quick Documentation                 查看文档
 ```
-
+---
 Alt + Select                                                    方块区域选择                 ???
 Shift + Click                                                   关闭文件                    ???
 Alt + Shift + o         最近项目
