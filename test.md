@@ -1,19 +1,18 @@
 # IDEA Shortcut
 ---
 >## Main Menu
->>### Window
->>>#### Active Tool Window
->>>```
->>>F12                         Jump to Last Tool Window
->>>Shift + ESC                 Hide Active Tool Window             隐藏活动工具窗口
->>>Ctrl + Shift + F12          Hide All Tool Windows               隐藏所有工具窗口
->>>Alt + ↓                     Show List of Tabs
->>>```
->>>#### Editor Tabs
->>>```
->>>Alt + ←                     Select Previous Tab
->>>Alt + →                     Select Next Tab
->>>```
+>>### Window - Active Tool Window
+>>```
+>>F12                         Jump to Last Tool Window
+>>Shift + ESC                 Hide Active Tool Window             隐藏活动工具窗口
+>>Ctrl + Shift + F12          Hide All Tool Windows               隐藏所有工具窗口
+>>Alt + ↓                     Show List of Tabs
+>>```
+>>### Window - Editor Tabs
+>>```
+>>Alt + ←                     Select Previous Tab
+>>Alt + →                     Select Next Tab
+>>```
 >>### Code
 >>```
 >>Alt + Insert                Generate...                         生成代码
