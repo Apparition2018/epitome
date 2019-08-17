@@ -251,9 +251,8 @@
 >>```
 >>### iterations
 >>```
->>fori
->>itar
->>itco
+>>fori                          for(int $INDEX$ = 0; $INDEX$ < $LIMIT$; $INDEX$++) { $END$ }
+>>itar                          for(int $INDEX$ = 0; $INDEX$ < $ARRAY$.length; $INDEX$++) { $ELEMENT_TYPE$ $VAR$ = $ARRAY$[$INDEX$]; $END$ }
 >>iten
 >>iter
 >>itit
