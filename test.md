@@ -251,11 +251,10 @@
 >>```
 >>### iterations
 >>```
->>fori                          for(int $INDEX$ = 0; $INDEX$ < $LIMIT$; $INDEX$++) { $END$ }
->>itar                          for(int $INDEX$ = 0; $INDEX$ < $ARRAY$.length; $INDEX$++) { $ELEMENT_TYPE$ $VAR$ = $ARRAY$[$INDEX$]; $END$ }
->>iten
->>iter
->>itit
+>>fori                          for (int $INDEX$ = 0; $INDEX$ < $LIMIT$; $INDEX$++) { $END$ }
+>>itar                          for (int $INDEX$ = 0; $INDEX$ < $ARRAY$.length; $INDEX$++) { ... }
+>>iter                          for ($ELEMENT_TYPE$ $VAR$ : $ITERABLE_TYPE$) { $END$ }
+>>itit                          while($ITER$.hasNext()){ $TYPE$ $VAR$ = $CAST$ $ITER$.next(); $END$ }
 >>itit
 >>itli
 >>ittok
