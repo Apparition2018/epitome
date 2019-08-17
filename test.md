@@ -241,8 +241,16 @@
 >psvm
 >sout
 >soutv
->ifn
 >```
+>>### other
+>>```
+>>ifn                           if ($VAR$ == null) { $END$ }
+>>inn                           if ($VAR$ != null) { $END$ }
+>>lst                           $ARRAY$[$ARRAY$.length - 1]
+>>mn                            $VAR$ = Math.min($VAR$, $END$);
+>>mx                            $VAR$ = Math.max($VAR$, $END$);
+>>psvm                          public static void main(String[] args){ $END$ }
+>>```
 .for .var				后缀自动补全功能				
 
 custom postfix templates：https://www.cnblogs.com/invoker-/p/8994157.html
