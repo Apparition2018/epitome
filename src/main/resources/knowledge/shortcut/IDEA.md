@@ -23,7 +23,7 @@
 >>```
 >>Alt + Insert                  Generate...                         生成代码
 >>Ctrl + I                      Implement Methods...                实现方法
->>Ctrl + O                      Override Methods...                 重写方法 
+>>Ctrl + O                      Override Methods...                 重写方法
 >>Ctrl + Alt + L                Reformat Code                       格式化代码
 >>Ctrl + Alt + O                Optimize Imports                    删除没有使用的import
 >>Ctrl + Alt + T                Surround With...
@@ -39,11 +39,11 @@
 >>>#### Completion
 >>>```
 >>>Alt + /                      Cyclic Expand Word                                              ???
->>>Ctrl + Space                 Basic    
+>>>Ctrl + Space                 Basic
 >>>Ctrl + Shift + Space         SmartType
 >>>```
 >>>#### Folding
->>>```  
+>>>```
 >>>Ctrl + +                     Expand                              展开当前方法
 >>>Ctrl + -                     Collapse                            收起当前方法
 >>>Ctrl + Alt + +               Expand Recursively
@@ -77,7 +77,7 @@
 >>Alt + ↓                       Next Method                         定位到下一个方法
 >>Ctrl + Alt + ←                Back                                                            ***
 >>Ctrl + Alt + →                Forward                                                         ***
->>Ctrl + Alt + F12              File Path                           资源管理器打开文件夹    
+>>Ctrl + Alt + F12              File Path                           资源管理器打开文件夹
 >>Ctrl + Shift + Backspace      Last Edit Location                  最近编辑位置
 >>```
 >>### Edit
@@ -95,7 +95,7 @@
 >>Alt + Backspace               Undo                                撤销
 >>Ctrl + Shift + Z              Redo                                重做
 >>Alt + Shift + Backspace       Redo                                重做
->>Ctrl + Shift + J              Join Lines                          合并行             
+>>Ctrl + Shift + J              Join Lines                          合并行
 >>```
 >>>#### Find
 >>>```
@@ -116,7 +116,7 @@
 >>### View
 >>```
 >>Alt + Q                       Context Info                                                    ???
->>Ctrl + D                      Compare Files                       对比文件    
+>>Ctrl + D                      Compare Files                       对比文件
 >>Ctrl + P                      Parameter Info                      提示参数信息
 >>Ctrl + F1                     Error Description                   显示错误描述
 >>Ctrl + Shift + I              Quick Definition                                                ***
@@ -137,7 +137,7 @@
 >>>Ctrl + Alt + C               Constant...                         常量
 >>>Ctrl + Alt + V               Variable...                         变量
 >>>Ctrl + Alt + F               Field...                            字段
->>>Ctrl + Alt + M               Method...                           方法                                      
+>>>Ctrl + Alt + M               Method...                           方法
 >>>Ctrl + Alt + P               Parameter...                        参数
 >>>```
 >>### Run
@@ -184,7 +184,7 @@
 >>```
 >>Alt + `                       VCS Operations Popup...             VCS操作弹窗
 >>Ctrl + K                      Commit                              提交
->>Ctrl + Shift + K              Push                                
+>>Ctrl + Shift + K              Push
 >>Ctrl + T                      Update Project                      更新项目
 >>Ctrl + Q                      Quick Documentation                 查看文档
 >>Ctrl + Alt + A                Add to VSC                          添加到VCS
@@ -218,7 +218,7 @@
 >
 >Alt + Select                                                       选择方块区域
 >Shift + Click                                                      关闭文件
->Shift + Shift                  Search Everywhere                                  
+>Shift + Shift                  Search Everywhere
 >```
 >>### Bookmarks
 >>```
@@ -261,12 +261,12 @@
 >Alt + Shift + Insert           Column Selection Mode               列选择模式
 >Ctrl + D                       Duplicate Line or Selection         复制行
 >Ctrl + Y                       Delete Line                         删除行
->Ctrl + Shift + J               Join Lines                          合并行            
+>Ctrl + Shift + J               Join Lines                          合并行
 >Ctrl + [                       Move Caret to Code Block Start      移动到块初始位置
 >Ctrl + ]                       Move Caret to Code Block End        移动到块末尾位置
 >Ctrl + Shift + [               Move Caret to Code Block Start with Selection
 >Ctrl + Shift + ]               Move Caret to Code Block End with Selection
->Ctrl + ↑                       Scroll Up                           滚动条向上滚动 
+>Ctrl + ↑                       Scroll Up                           滚动条向上滚动
 >Ctrl + ↓                       Scroll Down                         滚动条向下滚动
 >Ctrl + W                       Extend Selection                    扩大选中代码
 >Ctrl + Shift + W               Shrink Selection                    收缩选中代码
@@ -282,7 +282,7 @@
 >## Plug-ins
 >>### HTML Tools
 >>```
->>Alt + F2                      Web Preview...                      浏览器选择      
+>>Alt + F2                      Web Preview...                      浏览器选择
 >>```
 ---
 >## 数据库
@@ -296,7 +296,7 @@
 >## Live Templates
 >```
 >fixme                          // FIXME: $date$ $todo$
->todo                           // TODO: $date$ $todo$ 
+>todo                           // TODO: $date$ $todo$
 >```
 >>### output
 >>```
@@ -320,8 +320,8 @@
 >>ifn                           if ($VAR$ == null) { $END$ }
 >>inn                           if ($VAR$ != null) { $END$ }
 >>lst                           $ARRAY$[$ARRAY$.length - 1]
->>mn                            $VAR$ = Math.min($VAR$, $END$);
->>mx                            $VAR$ = Math.max($VAR$, $END$);
+>>mn                            $VAR$ = Math.min($VAR$, $END$)
+>>mx                            $VAR$ = Math.max($VAR$, $END$)
 >>psvm                          public static void main(String[] args){ $END$ }
 >>```
 ---
