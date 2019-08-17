@@ -50,6 +50,7 @@
 >>Ctrl + Alt + ←                Back                                上一个位置
 >>Ctrl + Alt + →                Forward                             下一个位置
 >>Ctrl + H                      Type Hierarchy                      类型层次结构
+>>Ctrl + Alt + H                Call Hierarchy                      
 >>Ctrl + N                      Class...                            按类名搜索
 >>Ctrl + Shift + N              File...                             按文件搜索
 >>Ctrl + Shift + Alt + N        Symbol...                           按Symbol搜索
@@ -64,7 +65,7 @@
 >>Ctrl + Alt + ←                Back                                                            ***
 >>Ctrl + Alt + →                Forward                                                         ***
 >>Ctrl + Alt + F12              File Path                           资源管理器打开文件夹    
->>Ctrl + Shift + Backspace      Last Edit Location                  最近编辑位置   
+>>Ctrl + Shift + Backspace      Last Edit Location                  最近编辑位置
 >>```
 >>### Edit
 >>```
@@ -122,7 +123,7 @@
 >>```
 >>Ctrl + Alt + S                Settings...
 >>Ctrl + Shift + Alt + S        Project Structure...
->>Alt + Shift + O               Open Recent
+>>Alt + Shift + O               Open Recent (User)
 >>```
 >>### Help
 >>```
@@ -148,10 +149,6 @@
 >>Ctrl + Q                      Quick Documentation                 查看文档
 >>```
 ---
-Alt + Select                                                    方块区域选择                 ???
-Shift + Click                                                   关闭文件                    ???
-Ctrl + Alt + H			查看调用链
-Shift + Shift			查找文件
 >## Tool Windows
 >```
 >Alt + 1                        Project
@@ -161,7 +158,7 @@ Shift + Shift			查找文件
 >Alt + 5                        Debug
 >Alt + 6                        TODO
 >Alt + 7                        Structure                                                       ***
->Alt + 8                        Maven Projects (user)
+>Alt + 8                        Maven Projects (User)
 >Alt + 9                        Version Control
 >```
 ---
@@ -177,6 +174,10 @@ Shift + Shift			查找文件
 >Alt + Shift + F                Add to Favorites                    添加到喜欢
 >Ctrl + Alt + Enter             Show Quick Actions Popup                                        ???
 >Shift + Enter                  Open In New Editor Window           在新编辑窗口打开
+>
+>Alt + Select                                                       选择方块区域
+>Shift + Click                                                      关闭文件
+>Shift + Shift                  Search Everywhere                                  
 >```
 >>### Bookmarks
 >>```
@@ -233,6 +234,15 @@ Shift + Shift			查找文件
 >Ctrl + Alt + Y                 Synchronize
 >```
 ---
+>## Live Templates
+>```
+>log
+>fori
+>psvm
+>sout
+>soutv
+>ifn
+>```
 .for .var				后缀自动补全功能				
 
 custom postfix templates：https://www.cnblogs.com/invoker-/p/8994157.html
