@@ -253,13 +253,10 @@
 >>```
 >>fori                          for (int $INDEX$ = 0; $INDEX$ < $LIMIT$; $INDEX$++) { $END$ }
 >>itar                          for (int $INDEX$ = 0; $INDEX$ < $ARRAY$.length; $INDEX$++) { ... }
+>>ritar                         for (int $INDEX$ = $ARRAY$.length - 1; $INDEX$ >= 0; $INDEX$--) { ... }
+>>itli                          for (int $INDEX$ = 0; $INDEX$ < $LIST$.size(); $INDEX$++) { ... }
 >>iter                          for ($ELEMENT_TYPE$ $VAR$ : $ITERABLE_TYPE$) { $END$ }
 >>itit                          while($ITER$.hasNext()){ $TYPE$ $VAR$ = $CAST$ $ITER$.next(); $END$ }
->>itit
->>itli
->>ittok
->>itve
->>ritar
 >>```
 >>### other
 >>```
@@ -271,7 +268,7 @@
 >>psvm                          public static void main(String[] args){ $END$ }
 >>```
 ---
->## Postfix Completion
+>## [Postfix Completion](https://www.cnblogs.com/invoker-/p/8994157.html)
 >>### Java
 >>```
 >>!                             !expr
@@ -282,11 +279,6 @@
 >>fori                          for (int i = 0; i < expr.length; i++)
 >>
 >>
->>
 >>var                           T name = expr
 >>
->>
 >>```
-
-custom postfix templates：https://www.cnblogs.com/invoker-/p/8994157.html
-.toByte 等              后缀表达式
