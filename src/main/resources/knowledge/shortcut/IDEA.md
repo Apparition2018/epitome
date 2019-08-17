@@ -103,7 +103,7 @@
 >>>Ctrl + Shift + Alt + F7      Find Usages Settings...
 >>>Ctrl + F7                    Find Usages in File
 >>>Ctrl + Alt + F7              Show Usages
->>>Ctrl + Shift + F7            Highlight Usages in File            在文件中高亮相同的选中代码     ***       
+>>>Ctrl + Shift + F7            Highlight Usages in File            在文件中高亮相同的选中代码    ***       
 >>>F3                           Find Next / Move to Next Occurrence 
 >>>Shift + F3                   Find Previous / Move to Previous Occurrence
 >>>Alt + F3                     Find...
