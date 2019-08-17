@@ -11,8 +11,8 @@
 >>>```
 >>>#### Editor Tabs
 >>>```
->>>Alt + ←                      Select Previous Tab
->>>Alt + →                      Select Next Tab                  
+>>>Alt + ←                      Select Previous Tab                 上一个Tab
+>>>Alt + →                      Select Next Tab                     下一个Tab
 >>>```
 >>### Code
 >>```
@@ -45,7 +45,7 @@
 >>F2                            Next Highlighted Error              下一条高亮错误
 >>Shift + F2                    Previous Highlighted Error          上一条高亮错误
 >>Alt + F1                      Change View...                                                  ???
->>Ctrl + G                      Line/Column...                      跳到指定行
+>>Ctrl + G                      Line/Column...                      定位到指定行
 >>Ctrl + F12                    File Structure                      文件结构
 >>Ctrl + Alt + ←                Back                                上一个位置
 >>Ctrl + Alt + →                Forward                             下一个位置
@@ -54,14 +54,15 @@
 >>Ctrl + N                      Class...                            按类名搜索
 >>Ctrl + Shift + N              File...                             按文件搜索
 >>Ctrl + Shift + Alt + N        Symbol...                           按Symbol搜索
->>Ctrl + B                      Declaration                         
->>Ctrl + Click1                 Declaration
->>Click2                        Declaration
->>Ctrl + Alt + B                Implemention(s)
->>Ctrl + Alt + Click1           Implemention(s)                    
->>Ctrl + U                      Super Method                                                    ***
->>Alt + ↑                       Previous Method                     跳到上一个方法
->>Alt + ↓                       Next Method                         跳到下一个方法
+>>Ctrl + B                      Declaration                         定位到声明的位置
+>>Ctrl + Click1                 Declaration                         定位到声明的位置
+>>Click2                        Declaration                         定位到声明的位置
+>>Ctrl + Shift + B              Type Declaration                    定位到变量类型定义的位置
+>>Ctrl + Alt + B                Implemention(s)                     定位到实现的位置
+>>Ctrl + Alt + Click1           Implemention(s)                     定位到实现的位置
+>>Ctrl + U                      Super Method                                                    ???
+>>Alt + ↑                       Previous Method                     定位到上一个方法
+>>Alt + ↓                       Next Method                         定位到下一个方法
 >>Ctrl + Alt + ←                Back                                                            ***
 >>Ctrl + Alt + →                Forward                                                         ***
 >>Ctrl + Alt + F12              File Path                           资源管理器打开文件夹    
@@ -271,14 +272,27 @@
 >## [Postfix Completion](https://www.cnblogs.com/invoker-/p/8994157.html)
 >>### Java
 >>```
->>!                             !expr
+>>! / not                       !expr
 >>assert                        assert expr
+>>for / iter                    for (T item : expr)
+>>fori                          for (int i = 0; i < expr.length; i++)
+>>forr                          for (int i = expr.length - 1; i >= 0; i--)
 >>if                            if (expr)
 >>else                          if (!expr)
->>for                           for (T item : expr)
->>fori                          for (int i = 0; i < expr.length; i++)
->>
->>
+>>nn / notnull                  if (expr != null)
+>>inst                          expr instanceof Type ? ((Type) expr) : null
+>>lambda                        () -> expr
+>>opt                           Optional.ofNullable(expr)
+>>par                           (expr)
+>>return                        return expr
+>>sout                          System.out.println(expr)
+>>stream                        Arrays.stream(expr)                                             ???
+>>switch                        switch (expr)
+>>synchronized                  synchronized (expr)
+>>throw                         throw expr
+>>try                           try { expr } catch (Exeception e)
+>>twr                           try (Type f = new Type()) catch (Exception e)
 >>var                           T name = expr
->>
+>>while                         while (expr) {}
+>>val
 >>```
