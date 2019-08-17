@@ -145,6 +145,7 @@
 >>### VSC
 >>```
 >>Ctrl + K                      Commit                              提交
+>>Ctrl + Shift + K              Push                                
 >>Ctrl + T                      Update Project                      更新项目
 >>Ctrl + Q                      Quick Documentation                 查看文档
 >>```
@@ -198,6 +199,7 @@
 >Ctrl + D                       Compare Files / Show Diff           对比文件/显示差异
 >Ctrl + Shift + Z               Revert / Rollback                   恢复/回滚
 >Ctrl + K                       Commit                              提交
+>Ctrl + Shift + K               Push
 >Ctrl + T                       Update Project                      更新项目
 >```
 >>### Diff &amp; Merge
@@ -236,12 +238,31 @@
 ---
 >## Live Templates
 >```
->log
->fori
->psvm
->sout
->soutv
+>fixme                          // FIXME: $date$ $todo$
+>todo                           // TODO: $date$ $todo$ 
 >```
+>>### output
+>>```
+>>souf                          System.out.printf("$END$");
+>>sout                          System.out.println($END$);
+>>soum                          System.out.println("$CLASS_NAME$.$METHOD_NAME$");
+>>soup                          System.out.println($FORMAT$);
+>>souv                          System.out.println("$EXPR_COPY$ = " + $EXPR$);
+>>```
+>>### iterations
+>>```
+>>fori
+>>itar
+>>itco
+>>iten
+>>iter
+>>itit
+>>itit
+>>itli
+>>ittok
+>>itve
+>>ritar
+>>```
 >>### other
 >>```
 >>ifn                           if ($VAR$ == null) { $END$ }
@@ -251,16 +272,23 @@
 >>mx                            $VAR$ = Math.max($VAR$, $END$);
 >>psvm                          public static void main(String[] args){ $END$ }
 >>```
-.for .var				后缀自动补全功能				
+---
+>## Postfix Completion
+>>### Java
+>>```
+>>!                             !expr
+>>assert                        assert expr
+>>if                            if (expr)
+>>else                          if (!expr)
+>>for                           for (T item : expr)
+>>fori                          for (int i = 0; i < expr.length; i++)
+>>
+>>
+>>
+>>var                           T name = expr
+>>
+>>
+>>```
 
 custom postfix templates：https://www.cnblogs.com/invoker-/p/8994157.html
-
 .toByte 等              后缀表达式
-
-Settings → Ediotr → Live Templates
-log                     自定义
-fori                    for循环							
-psvm                    main函数
-sout                    System.out.println();
-soutv
-ifn                     if(... = null)
