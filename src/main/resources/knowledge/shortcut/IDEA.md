@@ -4,7 +4,7 @@
 >>### Window
 >>```
 >>Shift + F12                   Restore Default Layout              还原布局
->>Ctrl + Alt + [                Previous Project Window             前一个项目窗口                ***
+>>Ctrl + Alt + [                Previous Project Window             前一个项目窗口
 >>Ctrl + Alt + ]                Next Project Window                 下一个项目窗口
 >>```
 >>>#### Active Tool Window
@@ -16,6 +16,7 @@
 >>>```
 >>>#### Editor Tabs
 >>>```
+>>>Alt + R                      Split Vertically (user)             垂直分屏                    
 >>>Alt + ←                      Select Previous Tab                 上一个Tab
 >>>Alt + →                      Select Next Tab                     下一个Tab
 >>>```
@@ -158,7 +159,7 @@
 >>```
 >>### File
 >>```
->>Alt + Shift + O               Reopen Recent (User)
+>>Alt + Shift + O               Reopen Recent (user)
 >>Ctrl + Alt + S                Settings...
 >>Ctrl + Shift + Alt + S        Project Structure...
 >>Ctrl + Alt + Y                Synchronize                         同步
@@ -199,7 +200,7 @@
 >Alt + 5                        Debug
 >Alt + 6                        TODO
 >Alt + 7                        Structure                                                       ***
->Alt + 8                        Maven Projects (User)
+>Alt + 8                        Maven Projects (user)
 >Alt + 9                        Version Control
 >```
 ---
