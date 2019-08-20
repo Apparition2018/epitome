@@ -60,6 +60,16 @@ public class LocalDateDemo {
     }
 
     /**
+     * int              lengthOfMonth()                     返回某月的天数
+     * int              lengthOfYear()                      返回某年的天数
+     */
+    @Test
+    public void length() {
+        p(ld.lengthOfMonth());      // 31
+        p(ld.lengthOfYear());       // 366
+    }
+
+    /**
      * LocalDate	    plusXXX(long xxxToAdd)
      * LocalDate	    minusXXX(long xxxToSubtract)
      */
