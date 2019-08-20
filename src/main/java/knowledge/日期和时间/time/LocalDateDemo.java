@@ -14,6 +14,7 @@ import java.time.LocalTime;
  * int	            compareTo(ChronoLocalDate other)    将此 date 与指定 date 进行比较
  * boolean	        isBefore(ChronoLocalDate other)     检查此 date 是否在指定 date 之前
  * boolean	        isAfter(ChronoLocalDate other)      检查此 date 是否在指定 date 之后
+ * boolean          isLeapYear()                        根据ISO培训日历系统规则，检查年份是否是闰年
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html
  * https://www.yiibai.com/javatime/javatime_localdate.html
