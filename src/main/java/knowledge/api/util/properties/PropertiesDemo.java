@@ -1,4 +1,4 @@
-package knowledge.数据结构.集合框架.map;
+package knowledge.api.util.properties;
 
 import org.junit.Test;
 
