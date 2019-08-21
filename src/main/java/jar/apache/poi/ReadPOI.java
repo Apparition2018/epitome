@@ -11,7 +11,7 @@ public class ReadPOI {
 
     public static void main(String[] args) {
 
-        File file = new File("C:\\Users\\234607\\Desktop\\Yearly Plan.xls");
+        File file = new File("C:/User/234607/Desktop/Yearly Plan.xls");
 
     }
 

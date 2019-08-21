@@ -16,7 +16,7 @@ public class Client {
         String read_excel2003_2007_path = Common.STUDENT_INFO_XLS_PATH;
 
 //        String read_excel2010_path = Common.STUDENT_INFO_XLSX_PATH;
-        String read_excel2010_path = "C:\\Users\\234607\\Desktop\\student_info.xlsx";
+        String read_excel2010_path = "C:/Users/234607/Desktop/student_info.xlsx";
 //        // read the 2003-2007 excel
 //        List<Student> list = new ExcelUtil().readExcel(read_excel2003_2007_path);
 //        if (list != null) {
