@@ -47,7 +47,6 @@
         <kryo>4.0.2</kryo>
         <protostuff>1.6.0</protostuff>
         <bouncycastle>1.62</bouncycastle>
-        <selenium>3.4.0</selenium>
         <lombok>1.18.8</lombok>
         <swagger>2.9.2</swagger>
         <zxing>3.4.0</zxing>
@@ -279,15 +278,6 @@
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>${bouncycastle}</version>
-        </dependency>
-
-        <!-- selenium：web 应用程序自动化测试工具
-            phantomjs：无头浏览器 (目前 phantomjs 已死，请使用 Headless Chrome/Firefox 代替)
-            htmlunit： web 页面分析工具-->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium}</version>
         </dependency>
 
         <!-- lombok：注解简化代码 -->
