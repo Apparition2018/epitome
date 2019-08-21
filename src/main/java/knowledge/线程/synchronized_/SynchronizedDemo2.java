@@ -3,7 +3,7 @@ package knowledge.线程.synchronized_;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 静态方法上使用synchronized修饰后，该方法一定具有同步效果，
+ * 静态方法上使用 synchronized 修饰后，该方法一定具有同步效果，
  * 即使监视器对象不是同一个对象
  */
 public class SynchronizedDemo2 {
