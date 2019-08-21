@@ -316,6 +316,10 @@
 >>iter                          for ($ELEMENT_TYPE$ $VAR$ : $ITERABLE_TYPE$) { $END$ }
 >>itit                          while($ITER$.hasNext()){ $TYPE$ $VAR$ = $CAST$ $ITER$.next(); $END$ }
 >>```
+>>### html/xml
+>>```
+>>CD                            <![CDATA[ $SELECTION$ ]]>          
+>>```
 >>### other
 >>```
 >>ifn                           if ($VAR$ == null) { $END$ }

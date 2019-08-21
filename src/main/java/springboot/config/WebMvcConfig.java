@@ -1,12 +1,18 @@
 package springboot.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import springboot.interceptor.HttpInterceptor;
+
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 /**
  * SpringBoot 1.0 addInterceptors 拦截器
@@ -25,10 +31,11 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/static/");
-        registry.addResourceHandler("/templates/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/templates/");
+        registry.addResourceHandler("/static/**", "/favicon.ico")
+                .addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/static/")
+                .addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/templates/");
         super.addResourceHandlers(registry);
-    }
+    }   
 
     /**
      * 拦截器
@@ -38,7 +45,6 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/jackson/**").excludePathPatterns("");
         super.addInterceptors(registry);
     }
-
 
     /**
      * 解决跨域
@@ -60,5 +66,18 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
                 .allowedMethods("*")
                 //跨域允许时间
                 .maxAge(3600);
+    }
+
+    @Bean
+    public HttpMessageConverter<String> responseBodyStringConverter() {
+        return new StringHttpMessageConverter(StandardCharsets.UTF_8);
+    }
+
+    /**
+     * 解决中文乱码
+     */
+    @Override
+    protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(responseBodyStringConverter());
     }
 }
