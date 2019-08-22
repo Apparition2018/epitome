@@ -12,9 +12,11 @@ git config --global user.email "88850180@163.com"
 -- 文本编辑器
 git config --global core.editor="D:\Microsoft VS Code\Code.exe"
 
+-- 全局 .gitignore
+git config --global core.excludesFile filePath
+
 -- 查看配置信息
 git config --list
-
 
 
 ********** 创建版本库 **********
@@ -222,5 +224,5 @@ git check-ignore -v <file>
 git config --global alias.<alias> XXX
 
 -- LF与CRLF转换
-git config --global core.autocrlf true|input|false
+git config --global core.autocrlf true|input|false      
 git config --global core.safecrlf true|warn|false

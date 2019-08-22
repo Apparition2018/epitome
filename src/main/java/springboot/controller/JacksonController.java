@@ -3,21 +3,27 @@ package springboot.controller;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
-@Controller
-@Slf4j
+@RestController
 @RequestMapping("/jackson")
+@Api(description = "jackson")
+@Slf4j
 public class JacksonController {
 
-    @RequestMapping("/test")
-    @ResponseBody
+    @GetMapping("test")
+    @ApiOperation(value = "测试")
     public Student test() {
         Student student = new Student();
         student.setName("Mary");

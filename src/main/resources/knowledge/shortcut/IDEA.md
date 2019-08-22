@@ -159,6 +159,7 @@
 >>```
 >>### File
 >>```
+>>Alt + L                       Line Separators (user)
 >>Alt + Shift + O               Reopen Recent (user)
 >>Ctrl + Alt + S                Settings...
 >>Ctrl + Shift + Alt + S        Project Structure...
