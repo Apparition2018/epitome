@@ -1,10 +1,11 @@
-# Bash Shortcut  
-Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim 的快捷键
+# Bash Shortcut
+Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim 的快捷键  
+
 ---
 ## 参考网站
-#### [GNU Readline](https://en.wikipedia.org/wiki/GNU_Readline)
-#### [Bash 快捷键大全](https://www.runoob.com/w3cnote/bash-shortcut.html)
-#### [Linux bash 常用快捷键](https://www.cnblogs.com/dabaodb/p/10148929.html)
+1. [GNU Readline](https://en.wikipedia.org/wiki/GNU_Readline)
+2. [Bash 快捷键大全](https://www.runoob.com/w3cnote/bash-shortcut.html)
+3. [Linux bash 常用快捷键](https://www.cnblogs.com/dabaodb/p/10148929.html)
 ---
 ## 光标
 ```
