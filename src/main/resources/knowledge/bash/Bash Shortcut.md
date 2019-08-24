@@ -1,4 +1,4 @@
-# Bash Shortcut
+# Bash Shortcut  
 Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim 的快捷键
 ---
 ## 参考网站
@@ -62,7 +62,7 @@ Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim �
 >Alt + (n)                                      重复输入 n 次字符
 >```
 ---                                           
->## 历史
+## 历史
 >```
 >Ctrl + P               ↑                       上一条命令
 >Ctrl + N               ↓                       下一条命令
