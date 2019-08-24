@@ -1,12 +1,12 @@
 # Bash Shortcut
 Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim 的快捷键
 ---
->## 参考网站
+## 参考网站
 >#### [GNU Readline](https://en.wikipedia.org/wiki/GNU_Readline)
 >#### [Bash 快捷键大全](https://www.runoob.com/w3cnote/bash-shortcut.html)
 >#### [Linux bash 常用快捷键](https://www.cnblogs.com/dabaodb/p/10148929.html)
 ---
->## 光标
+## 光标
 >```
 >Ctrl + B               ←                       前移至一个字符
 >Ctrl + F               →                       后移至一个字符
@@ -17,7 +17,7 @@ Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim �
 >Ctrl + X , X                                   行首/当前位置光标跳转
 >```
 ---
->## 编辑                                          
+## 编辑                                          
 >```
 >Ctrl + H               Backspace               删除光标前一个字符
 >Ctrl + D               Delete                  删除光标后一个字符
@@ -35,7 +35,7 @@ Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim �
 >Alt + >                                        粘贴历史纪录中的最后一行
 >```
 ---
->## 操作
+## 操作
 >```
 >Ctrl + S                                       停止回显(XOFF)
 >Ctrl + Q                                       打开回显(XON)
@@ -50,7 +50,7 @@ Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim �
 >Shift + PageDown                               向下翻页
 >```
 ---
->## 输入
+## 输入
 >```
 >Ctrl + I               Tab                     水平制表符
 >Ctrl + K                                       垂直制表符
@@ -71,20 +71,20 @@ Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim �
 >Alt + .                                        粘帖上一次命令最后的单词
 >```
 ---
->## 大小写
+## 大小写
 >```
 >Alt + C                                        从光标处开始，将右边一个单词首字母更改为大写
 >Alt + U                                        从光标处开始，将右边一个单词更改为大写
 >Alt + L                                        从光标处开始，将右边一个单词更改为小写
 >```
 ---
->## 交换位置                                         
+## 交换位置                                         
 >```
 >Ctrl + T                                       交换字符位置
 >Alt + T                                        交换单词位置
 >```
 ---
->## Bang(!) 命令
+## Bang(!) 命令
 >```
 >!!                                             执行上一条命令
 >!(±n)                                          执行 history 中编号为 n 的命令，-n 表示前 n 条
