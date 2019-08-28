@@ -1,4 +1,5 @@
 # [IDEA Shortcut](https://www.jianshu.com/p/68ed588329d2?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
+# [IDEA Shortcut](https://www.jianshu.com/p/68ed588329d2?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
 ---
 ## Main Menu
 >### Window
@@ -181,6 +182,10 @@
 >Ctrl + E                       Recent Files                        最近的文件
 >Ctrl + Shift + E               Recently Changed Files              最近修改的文件
 >Alt + Shift + C                Recent Changes                      最近修改
+>```
+>### Analyze
+>```
+>Ctrl + Alt + F6                Show Coverage Data...                                           ???
 >```
 >### VSC
 >```

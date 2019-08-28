@@ -92,7 +92,7 @@ public class DateTimeFormatterDemo {
         };
         LocalDateTime date = LocalDateTime.now();
         for (DateTimeFormatter formatter : formatters) {
-            System.out.println(formatter.getZone());
+            System.out.println(formatter.format(date));
         }
     }
 
