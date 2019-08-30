@@ -1,8 +1,8 @@
 # Bash abbr
 ---
 ## 参考网站
-1. [Linux 命令大全](https://www.runoob.com/linux/linux-command-manual.html)
-2. [Linux 命令大全教程](https://www.yiibai.com/linux)
+1. [Linux 命令大全 | 菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
+2. [Linu x命令教程 | 易百教程](https://www.yiibai.com/linux)
 3. [Linux 常见命令缩写](https://www.cnblogs.com/h2mm/p/6691309.html)
 4. [Linux 常用 bash 命令](https://www.cnblogs.com/shiyou00/p/10369321.html)
 ---
@@ -135,7 +135,7 @@ tty         teletypewriter                      显示终端机连接标准输�
 ---
 ## 系统管理
 ```
-rsh         remote shell                        登入远端 Shell
+rsh         remote shell                        登入远端 shell
 su          switch user                         切换用户
 chsh        change shell                        更改使用者 shell 设定
 ulimit      user's limit                        控制 shell 程序的资源
@@ -165,6 +165,9 @@ logout                                          退出系统
 ---
 ## 系统设置
 ```
+ssh-keygen                                      创建 SSH Key
+    -t                                          指定要创建密钥类型 (RSA|DSA)
+    -C                                          添加备注
 date                                            显示或设定系统的日期与时间
 cal                                             显示公历日历
 uptime                                          显示系统运行时间或系统的平均负载
