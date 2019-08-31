@@ -1,2 +1,0 @@
-SELECT DISTINCT course FROM score
-GO
