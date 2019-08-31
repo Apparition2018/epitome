@@ -26,7 +26,7 @@
 >### Oracle
 >```
 >CREATE TABLE score (
->	id NUMBER(10) PRIMARY KEY,                          -- 自增：请使用 SEQUENCE 实现
+>	id NUMBER(10) PRIMARY KEY,                          -- 自增：使用 CREATE SEQUENCE 实现
 >	name VARCHAR2(20),
 >	course VARCHAR2(10),
 >	score NUMBER(3)
