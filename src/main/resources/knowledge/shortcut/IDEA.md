@@ -86,6 +86,7 @@
 >```
 >Alt + Shift + Insert           Column Selection Mode               列选择模式
 >Ctrl + D                       Duplicate Line or Selection         复制行
+>Ctrl + Shift + J               Join Lines                          合并行
 >Ctrl + Shift + Insert          Paste from History...               从历史中粘贴
 >Ctrl + Shift + V               Paste from History...               从历史中粘贴
 >Ctrl + Shift + Enter           Complete Current Statement          补全当前语句                  ???
@@ -97,7 +98,7 @@
 >Alt + Backspace                Undo                                撤销
 >Ctrl + Shift + Z               Redo                                重做
 >Alt + Shift + Backspace        Redo                                重做
->Ctrl + Shift + J               Join Lines                          合并行
+>Ctrl + Shift + U               Toggle Case                         切换大小写
 >```
 >>#### Find
 >>```
@@ -283,6 +284,7 @@ Ctrl + Delete                   Delete to Word End                  删除光标
 Ctrl + Backspace                Delete to Word Start                删除光标前面的单词
 Ctrl + Alt + Enter              Start New Line Before Current       上插入行
 Shift + Enter                   Start New Line                      下插入行
+Ctrl + Shift + U                Toggle Case                         切换大小写
 Ctrl + Shift + M                Move Caret to Matching Brace
 Ctrl + Shift + ←                Move Caret to Previous Word with Selection
 Ctrl + Shift + →                Move Caret to Next Word with Selection
