@@ -2,15 +2,15 @@
 ---
 ## 查询语句执行顺序
 ```
-1   FROM			    右 → 左                 数据量较少的放后面
-2   WHERE		        右 → 左                 将过滤多的放后面
-3   GROUP BY		    左 → 右
+1   FROM                右 → 左                 数据量较少的放后面
+2   WHERE               右 → 左                 将过滤多的放后面
+3   GROUP BY            左 → 右
 4   AGGREGATE                                   MAX, MIN, SUM, AVG, COUNT
-5   HAVING		                                消耗资源
-6   SELECT		                                避免使用 * 号
+5   HAVING                                      消耗资源
+6   SELECT                                      避免使用 * 号
 7   DISTINCT		
 8   UNION		
-9   ORDER BY		    左 → 右                 消耗资源
+9   ORDER BY            左 → 右                 消耗资源
 10  LIMIT|TOP
 ```
 ---
@@ -29,8 +29,8 @@ SELECT DISTINCT course FROM score
 ---
 ## LIKE
 ```
-%	        表示 0 | 1 | n 个字符  
-_	        表示 1 个字符
+%	            表示 0 | 1 | n 个字符  
+_	            表示 1 个字符
 ```
 ---
 ## GROUP BY
