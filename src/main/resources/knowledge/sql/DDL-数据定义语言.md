@@ -5,6 +5,24 @@
 2. [SQL Server 添加表注释、字段注释](https://blog.csdn.net/stupidbird003/article/details/64562683)
 ---
 ## 创建表
+```
+CREATE TEMPORARY TABLE emp(
+  empno INT,
+  ename VARCHAR(10),
+  job VARCHAR(9),
+  mgr INT,
+  hiredate DATE,
+  sal DECIMAL(7, 2),
+  comm DECIMAL(7, 2),
+  deptno TINYINT
+);
+  
+CREATE TEMPORARY TABLE dept(
+  deptno TINYINT,
+  dname VARCHAR(14),
+  loc VARCHAR(13)
+);
+```
 >### MySQL
 >```
 >CREATE TABLE score (
@@ -25,6 +43,24 @@
 >```
 >### Oracle
 >```
+>CREATE TABLE emp(
+>  empno NUMBER(4, 0),
+>  ename VARCHAR2(10),
+>  job VARCHAR2(9),
+>  mgr NUMBER(4, 0),
+>  hiredate DATE,
+>  sal NUMBER(7, 2),
+>  comm NUMBER(7, 2),
+>  deptno NUMBER(2, 0) 
+>);
+>  
+>CREATE TABLE dept(
+>  deptno NUMBER(2, 0),
+>  dname VARCHAR2(14),
+>  loc VARCHAR2(13)
+>);
+>-----
+>
 >CREATE TABLE score (
 >	id NUMBER(10) PRIMARY KEY,                          -- 自增：使用 CREATE SEQUENCE 实现
 >	name VARCHAR2(20),
@@ -42,8 +78,8 @@
 >)
 >```
 >### SQL Server  
->局部临时表：(#开头) 仅当前连接可见，断开连接自动删除  
->全局临时表：(##开头) 对其它连接可见，当前连接和其他访问过它的连接都断开时自动删除
+>1. 局部临时表：(#开头) 仅当前连接可见，断开连接自动删除  
+>2. 全局临时表：(##开头) 对其它连接可见，当前连接和其他访问过它的连接都断开时自动删除
 >```
 >CREATE TABLE #temp(
 >  num INT PRIMARY KEY,

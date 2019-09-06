@@ -71,7 +71,7 @@
         
       日期转换函数
         SELECT GREATEST(hiredate,TO_DATE('1982年01月01号','YYYY"年"MM"月"DD"号"')) FROM emp;   -- TO_DATE(charstream[, fmt[, nlsparams]])
-        SELECT GREATEST(TO_CHAR(hiredate,'YYYY"年"MM"月"DD"号"'）,'1982年01月01号') FROM emp;  -- TO_CHAR(date[, fmt[, nlsparams]])
+        SELECT GREATEST(TO_CHAR(hiredate,'YYYY"年"MM"月"DD"号"'),'1982年01月01号') FROM emp;   -- TO_CHAR(date[, fmt[, nlsparams]])
         
       日期常用函数
         SELECT LAST_DAY(SYSDATE) FROM dual;                                           -- LAST_DAY(date)
@@ -98,11 +98,4 @@
   
 数据控制语言（DCL） ：Data Control Language  
   GRANT   
-  REVOKE      
-  
-  
-  
-  
-  
-  
-  
+  REVOKE
