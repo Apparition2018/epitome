@@ -42,14 +42,6 @@ MD                      创建目录
 
 MORE                    逐屏显示输出
 
-NETSTAT                 显示协议统计和当前 TCP/IP 网络连接
-NETSTAT -a              显示所有连接和侦听端口
-NETSTAT -n              以数字形式显示地址和端口号
-NETSTAT -s              显示每个协议的统计
-        -p              可用于指定默认的子网
-NETSTAT -v              查看正在进行的工作
-NETSTAT -A ip           对方136到139其中一个端口开了的话，就可查看对方最近登陆的用户名（03前的为用户名）
-
 PAUSE                   暂停批处理程序，并显示："请按任意键继续..."
 
 REM [comment]           在批处理文件或 CONFIG.SYS 里加上注解或说明
@@ -62,14 +54,6 @@ SET /A expression       指定等号右边的字符串为被评估的数字表�
 SHIFT                   更改批处理文件中可替换参数的位置
 
 START                   启动一个单独的窗口运行指定的程序或命令
-
-TASKKILL                按照进程 ID (PID) 或映像名称终止任务
-TASKKILL /PID processid 指定要终止的进程的 PID
-TASKKILL /IM imagename  指定要终止的进程的映像名称
-TASKKILL /T             终止指定的进程和由它启用的子进程
-TASKKILL /F             指定强制终止进程
-
-TASKLIST                显示在本地货远程机器上当前运行的进程列表
 
 TREE                    以图形显示驱动器或路径的文件结构
 TREE /F                 显示每个文件夹中文件的名称

@@ -36,9 +36,18 @@
 ```
 SELECT deptno, MAX(sal) max_sal FROM emp GROUP BY deptno HAVING MAX(sal) > 2000;
 ```
->### 高级分组查询
+>## 高级分组查询
+>### MySQL &nbsp;&nbsp;(GROUP_CONCAT)
 >```
+>SELECT d.loc, GROUP_CONCAT(e.ename ORDER BY e.ename)
+>FROM emp e
+>JOIN dept d ON e.deptno = d.deptno
+>GROUP BY d.loc
 >```
+>#### Oracle
+>1. ROLLUP
+>2. CUBE
+>3. GROUPING SETS
 >---
 ## 关联查询
 ```

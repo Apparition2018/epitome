@@ -1,4 +1,7 @@
 # Bash abbr
+```
+--help                                          显示帮助信息
+```
 ---
 ## 参考网站
 1. [Linux 命令大全 | 菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
@@ -47,7 +50,7 @@ diff        difference                          比较两个文件的差异
 cmp         compare                             比较两个文件是否有差异
 umask       user's mask                         指定建立文件时预设的权限掩码
 ln          link                                链接                            ???
-mc          midnight commander                  提供一个菜单式的文件管理程序        ???
+mc          midnight commander                  提供一个菜单式的文件管理程序       ???
 ```
 ---
 ## 文档编辑
