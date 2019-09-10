@@ -78,8 +78,18 @@ SELECT e.ename, m.ename, e.sal, m.sal FROM emp e, emp m WHERE e.mgr = m.empno;  
 >```
 ---
 ## 分页查询 
-```
-```
+>### MySQL
+>```
+>SELECT ename, sal, deptno 
+>FROM emp ORDER BY sal DESC LIMIT 5, 5
+>```
+>### SQL Server
+>```
+>```
+>### Oracle
+>```
+>SELECT * FROM (SELECT ROWNUM rn, t.* FROM (SELECT ename, sal, deptno FROM emp ORDER BY sal DESC) t WHERE ROWNUM <= 10) WHERE rn > 5;
+>```
 ---
 ## 排名查询
 >### MySQL
