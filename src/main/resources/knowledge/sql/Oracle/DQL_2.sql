@@ -40,15 +40,10 @@
       
       
     集合
-      --UNION，去掉重复，升序(第一列）      
+      --UNION，去掉重复，升序 (第一列)      
       SELECT ename, job, sal FROM emp WHERE job = 'MANAGER'
       UNION
       SELECT ename, job, sal FROM emp WHERE sal> 2500;
       --UNION ALL，包括重复，不排序
-      --INTERSECT，交集，升序（第一列）
+      --INTERSECT，交集，升序 (第一列)
       --MINUS/EXCEPT，差集，结果集一 减 结果集二
-
-      
-
-    
-    

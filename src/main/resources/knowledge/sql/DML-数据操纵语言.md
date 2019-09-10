@@ -212,4 +212,12 @@ INSERT INTO dept
 (deptno,dname,loc)
 VALUES
 (40,'OPERATIONS','BOSTON');
+
+INSERT INTO sales
+SELECT TRUNC(DBMS_RANDOM.value(2010, 2012)) AS year_id,
+       TRUNC(DBMS_RANDOM.value(1, 13)) AS month_id,
+       TRUNC(DBMS_RANDOM.value(1, 32)) AS day_id,
+       ROUND(DBMS_RANDOM.value(1, 100), 2) AS sales_value
+FROM dual
+CONNECT BY level <= 1000;
 ```

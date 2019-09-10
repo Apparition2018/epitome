@@ -22,6 +22,13 @@ CREATE TEMPORARY TABLE dept(
   dname VARCHAR(14),
   loc VARCHAR(13)
 );
+
+CREATE TEMPORARY TABLE sales(
+  year_id INT NOT NULL,
+  month_id INT NOT NULL,
+  day_id INT NOT NULL,
+  sales_value DECIMAL(10, 2) NOT NULL
+);
 ```
 >### MySQL
 >```
@@ -58,6 +65,13 @@ CREATE TEMPORARY TABLE dept(
 >  deptno NUMBER(2, 0),
 >  dname VARCHAR2(14),
 >  loc VARCHAR2(13)
+>);
+>
+>CREATE TABLE sales(
+>  year_id NUMBER NOT NULL,
+>  month_id NUMBER NOT NULL,
+>  day_id NUMBER NOT NULL,
+>  sales_value NUMBER(10, 2) NOT NULL
 >);
 >-----
 >
