@@ -2,8 +2,6 @@ CALL                    从批处理程序调用另一个批处理程序
 
 CHOICE                  允许用户从选择列表选择一个项目并返回所选项目的索引
 
-CLS                     清除屏幕
-
 COPY                    将一份或多份文件复制到另一个位置
 XCOPY                   复制文件或目录树
 
@@ -35,8 +33,6 @@ GOTO label              定向到批处理程序中带标签的行
 IF [NOT] ERRORLEVEL num 判断返回码。返回码必须按照从大到小次序顺序判断
 IF [NOT] str1 == str2   判断相等
 IF [NOT] EXIST filename 判断文件存在
-
-IPCONFIG                默认情况下，仅显示绑定到 TCP/IP 的适配器的 IP 地址、子网掩码和默认网关
 
 MD                      创建目录
 
