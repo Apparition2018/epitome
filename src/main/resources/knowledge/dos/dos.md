@@ -23,4 +23,11 @@ taskkill                                按照进程 ID (PID) 或映像名称终
     /im     imagename                   指定要终止的进程的映像名称
     /pid    processid                   指定要终止的进程的 PID
     /t                                  终止指定的进程和由它启用的子进程
+
+shutdown
+    /s                                  关闭计算机
+    /t xxx                              设置 xxx 秒后关闭计算机
+    /a                                  取消关闭计算机
+    /r                                  关闭并重启计算机
+    /h                                  休眠
 ```
