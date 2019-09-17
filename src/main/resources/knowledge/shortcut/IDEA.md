@@ -161,7 +161,6 @@
 >```
 >### File
 >```
->Alt + L                        Line Separators (user)
 >Alt + Shift + O                Reopen Recent (user)
 >Ctrl + Alt + S                 Settings...
 >Ctrl + Shift + Alt + S         Project Structure...
@@ -248,7 +247,7 @@ Shift + F4                      Jump to Object Source                           
 Alt + `                         VCS Operations Popup...             VCS操作弹窗
 Alt + H                         Show History                        显示历史
 Ctrl + D                        Compare Files / Show Diff           对比文件/显示差异
-Ctrl + Shift + Z                Revert / Rollback                   恢复/回滚
+Ctrl + Alt + Z                  Revert / Rollback                   恢复/回滚
 Ctrl + K                        Commit                              提交
 Ctrl + Shift + K                Push
 Ctrl + T                        Update Project                      更新项目

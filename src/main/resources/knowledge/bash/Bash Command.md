@@ -191,6 +191,11 @@ rmmod       remove modules                      删除模块
 ## 备份压缩
 ```
 tar         tape archive                        备份文件
+    -z      --gzip                              通过 gzip指令处理备份文件
+    -c      --create                            建立新的备份文件
+    -x      --extract                           从备份文件中还原文件
+    -f      --file                              指定备份文件
+
 gzip                                            压缩文件
 gunzip                                          解压 gzip 文件
 gzcat                                           查看 gzip 文件
