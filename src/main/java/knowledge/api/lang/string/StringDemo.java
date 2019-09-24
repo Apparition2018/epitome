@@ -203,8 +203,10 @@ public class StringDemo {
 
         p(s.replace('a', 'd'));               // dbbc123cbbd
         p(s.replace("bb", "dd"));           // addc123cdda
-        p(s.replaceAll("[a-z]*", "ABC"));   // ABCABC1ABC2ABC3ABCABC ???
+        p(s.replaceAll("[a-z]*", "ABC"));   // ABCABC1ABC2ABC3ABCABC
         p(s.replaceFirst("[a-z]*", "ABC")); // ABC123cbba
+
+        p("13800123456".replaceAll("(.*\\d{3})\\d{4}(\\d{4})", "$1****$2")); // 138****3456，分组替换
     }
 
     /**

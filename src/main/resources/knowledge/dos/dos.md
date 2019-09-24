@@ -6,6 +6,8 @@ help                                    显示原生命令
 
 cls                                     清除屏幕
 
+findstr                                 在文件中寻找字符串
+
 ipconfig                                显示绑定到 TCP/IP 的每个适配器的 IP 地址、子网掩码和默认网关
 
 netstat                                 显示协议统计信息和当前 TCP/IP 网络连接
