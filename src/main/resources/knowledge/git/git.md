@@ -11,6 +11,7 @@
 ## 问题
 1. [Git 忽略提交 .gitignore](https://www.cnblogs.com/youyoui/p/8337147.html)
 2. [Git 和 Github 绑定ssh key](https://blog.csdn.net/smiple9102/article/details/79254577)
+3. [解决 git ERROR: Permission to XXX.git denied to user](https://www.cnblogs.com/chevin/p/9236674.html)
 ---
 ## Git 常用命令速查表
 ![Git 常用命令速查表](https://img-blog.csdn.net/20171126101742109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2VpeGluXzM3MjkyMjI5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
