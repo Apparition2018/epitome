@@ -13,6 +13,7 @@
 >>F12                           Jump to Last Tool Window
 >>Shift + ESC                   Hide Active Tool Window             隐藏活动工具窗口              ***
 >>Ctrl + Shift + F12            Hide All Tool Windows               隐藏所有工具窗口
+>>Ctrl + Shift + F4             Active Tool Window                  关闭当前活动 Tab
 >>Alt + ↓                       Show List of Tabs
 >>```
 >>#### Editor Tabs
@@ -118,6 +119,7 @@
 >>```
 >### View
 >```
+>F4                             Jump to Source
 >Alt + Q                        Context Info                                                    ???
 >Ctrl + D                       Compare Files                       对比文件
 >Ctrl + P                       Parameter Info                      提示参数信息
@@ -293,6 +295,11 @@ Ctrl + Shift + →                Move Caret to Next Word with Selection
 >### HTML Tools
 >```
 >Alt + F2                       Web Preview...                      浏览器选择
+>```
+>### UML Support
+>```
+>Ctrl + Alt + U                 Show UML Popup                      显示 UML 弹窗
+>Ctrl + Shift + ALt + U         Show UML Diagram                    显示 UML 视图
 >```
 ---
 ## 数据库
