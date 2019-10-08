@@ -18,7 +18,7 @@
 >>```
 >>#### Editor Tabs
 >>```
->>Alt + R                       Split Vertically (user)             垂直分屏                    
+>>Alt + R                       Split Vertically (user)             垂直分屏
 >>Alt + ←                       Select Previous Tab                 上一个Tab
 >>Alt + →                       Select Next Tab                     下一个Tab
 >>```
@@ -50,7 +50,7 @@
 >>Ctrl + +                      Expand                              展开当前方法
 >>Ctrl + -                      Collapse                            收起当前方法
 >>Ctrl + Alt + +                Expand Recursively
->>Ctrl + Atl + -                
+>>Ctrl + Alt + -                Collapse Recursively
 >>Ctrl + Shift + +              Expand All                          展开所有
 >>Ctrl + Shift + -              Collapse All                        收起所有
 >>```
@@ -163,7 +163,7 @@
 >```
 >### File
 >```
->Alt + Shift + O                Reopen Recent (user)
+>Alt + Shift + O                Open Recent (user)
 >Ctrl + Alt + S                 Settings...
 >Ctrl + Shift + Alt + S         Project Structure...
 >Ctrl + Alt + Y                 Synchronize                         同步
@@ -192,7 +192,7 @@
 >### VSC
 >```
 >Alt + `                        VCS Operations Popup...             VCS操作弹窗
->Alt + H                        Show History                        显示历史
+>Alt + H                        Show History (user)                 显示历史
 >Ctrl + K                       Commit                              提交
 >Ctrl + Shift + K               Push
 >Ctrl + T                       Update Project                      更新项目
@@ -202,6 +202,7 @@
 ---
 ## Tool Windows
 ```
+Alt + 0                         Message
 Alt + 1                         Project
 Alt + 2                         Favorites
 Alt + 3                         Find
@@ -209,8 +210,9 @@ Alt + 4                         Run
 Alt + 5                         Debug
 Alt + 6                         TODO
 Alt + 7                         Structure                                                       ***
-Alt + 8                         Maven Projects (user)
+Alt + 8                         Services
 Alt + 9                         Version Control
+Alt + F12                       Terminal
 ```
 ---
 ## Other
@@ -225,7 +227,7 @@ Ctrl + Alt + Space              Class Name Completion               类名或接
 Alt + Shift + F                 Add to Favorites                    添加到喜欢
 Ctrl + Alt + Enter              Show Quick Actions Popup                                        ???
 Shift + Enter                   Open In New Editor Window           在新编辑窗口打开
-                                
+
 Alt + Select                                                        选择方块区域
 Shift + Click                                                       关闭文件
 Shift + Shift                   Search Everywhere
@@ -261,13 +263,13 @@ Ctrl + Alt + A                  Add to VSC                          添加到VCS
 >F7                             Next Difference                     下一个差异
 >Ctrl + N                       Go To Changed File...                                           ???
 >```
->### Shelve                     
+>### Shelve
 >```
 >F2                             Rename...                           重命名
 >Shift + F6                     Rename...                           重命名
 >```
 ---
-## Editor Actions               
+## Editor Actions
 ```
 Alt + Shift + Insert            Column Selection Mode               列选择模式
 Ctrl + D                        Duplicate Line or Selection         复制行
@@ -334,7 +336,7 @@ todo                            // TODO: $date$ $todo$
 >```
 >### html/xml
 >```
->CD                             <![CDATA[ $SELECTION$ ]]>          
+>CD                             <![CDATA[ $SELECTION$ ]]>
 >```
 >### other
 >```

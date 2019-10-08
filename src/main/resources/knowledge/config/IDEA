@@ -1,6 +1,6 @@
-强制换行：   File → Other Settings → Default Settings → Editor → Code Style → Hard wrap at: 150
+强制换行：   File → Other Settings → Default Settings → Editor → Code Style → Hard wrap at: 120
 
-默认换行符：  File → Other Settings → Default Settings → Editor → Code Style → Line separator: Unix and OS X (\n)
+默认换行符：  File → Other Settings → Default Settings → Editor → Code Style → Line separator: System-Dependent
 
 Terminal：   File → Other Settings → Default Settings → Tools → Terminal → Shell path: git\bin\bash.exe
 
