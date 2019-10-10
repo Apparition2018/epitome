@@ -28,11 +28,8 @@
         <spring>5.1.9.RELEASE</spring>
         <springboot-mybatis>2.1.0</springboot-mybatis>
         <springboot-pagehelper>1.2.12</springboot-pagehelper>
-        <mysql>5.1.43</mysql>
         <druid>1.1.12</druid>
-        <quartz>2.3.1</quartz>
         <poi>3.17</poi>
-        <httpclient>4.5.9</httpclient>
         <guava>28.0-jre</guava>
         <commons-math3>3.6.1</commons-math3>
         <commons-text>1.6</commons-text>
@@ -40,14 +37,11 @@
         <commons-email>1.5</commons-email>
         <commons-beanutils>1.9.3</commons-beanutils>
         <commons-fileupload>1.4</commons-fileupload>
-        <joda-time>2.10.2</joda-time>
-        <gson>2.8.5</gson>
         <fastjson>1.2.58</fastjson>
         <jackson>2.9.9</jackson>
         <kryo>4.0.2</kryo>
         <protostuff>1.6.0</protostuff>
         <bouncycastle>1.62</bouncycastle>
-        <lombok>1.18.8</lombok>
         <swagger>2.9.2</swagger>
         <zxing>3.4.0</zxing>
         <pinyin4j>2.5.0</pinyin4j>
@@ -56,6 +50,12 @@
         <mybatis-generator>1.3.7</mybatis-generator>
     </properties>
 
+
+    <!--
+        没有写版本号的依赖在顶级模块 spring-boot-dependencies 已经定义了版本号
+            <lombok.version>1.18.8</lombok.version>
+            <mysql.version>8.0.17</mysql.version>
+    -->
     <dependencies>
         <!-- spring-boot-starter：https://www.cnblogs.com/yaowen/p/8623902.html -->
 
@@ -84,7 +84,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <!-- optional=true, 依赖不会传递, 该项目依赖devtools;
-				之后依赖boot项目的项目如果想要使用, 需要重新引入 -->
+				之后依赖此项目的项目如果想要使用, 需要重新引入 -->
             <optional>true</optional>
         </dependency>
 
@@ -130,7 +130,6 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -138,7 +137,6 @@
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
-            <version>${quartz}</version>
         </dependency>
 
         <!-- poi：处理 microsoft office 格式文件
@@ -165,17 +163,14 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${httpclient}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient-cache</artifactId>
-            <version>${httpclient}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpmime</artifactId>
-            <version>${httpclient}</version>
         </dependency>
 
         <!-- guava -->
@@ -215,21 +210,19 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.4</version>
+            <version>${commons-fileupload}</version>
         </dependency>
 
         <!-- joda-time：处理日期 -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>${joda-time}</version>
         </dependency>
 
         <!-- gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>${gson}</version>
         </dependency>
 
         <!-- fastjson -->
@@ -284,7 +277,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok}</version>
             <scope>provided</scope>
         </dependency>
 
