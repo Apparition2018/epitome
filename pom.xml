@@ -33,7 +33,7 @@
         <guava>28.0-jre</guava>
         <commons-math3>3.6.1</commons-math3>
         <commons-text>1.6</commons-text>
-        <commons-compress>1.18</commons-compress>
+        <commons-compress>1.19</commons-compress>
         <commons-email>1.5</commons-email>
         <commons-beanutils>1.9.3</commons-beanutils>
         <commons-fileupload>1.4</commons-fileupload>
