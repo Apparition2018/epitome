@@ -14,6 +14,7 @@ import org.junit.Test;
  * <p>
  * 例模式的七种写法：https://cantellow.iteye.com/blog/838473
  * 深入理解单例模式：https://blog.csdn.net/mnb65482/article/details/80458571
+ * 单例模式 | 菜鸟教程：https://www.runoob.com/design-pattern/singleton-pattern.html
  * <p>
  * https://www.imooc.com/video/1778
  *
@@ -83,7 +84,6 @@ class Singleton2 {
  * 静态内部类，线程安全
  */
 class Singleton3 {
-
     // 1.将构造方法私有化，不允许外部直接创建对象
     private Singleton3() {
 
