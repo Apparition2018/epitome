@@ -27,10 +27,11 @@ mybatis         通过自动回复机器人学Mybatis---基础版|加强版
                 servlet + mysql + jdbc/mybatis + jsp + log4j +
                 接口式编程 + 代理模式 + mybatis拦截器实现分页 + 数组参数(看源码的思路)
 
-mybatis-plus    Mybatis-Plus入门
-                SM + mysql + logging
-                mybatis-plus + mybatis-plus分页 + 单元测试(断言)
-
+mybatis-plus    Mybatis-Plus
+                SM + mysql + logging +
+                mp分页 + mp通用Mapper + mp通用Service + mp常用注解 + mp常用配置 + ActiveRecord模式 + 单元测试(断言) +
+                逻辑删除 + 自动填充 + 乐观锁 + SQL性能分析(p6spy) + 多租户 + 动态表 + SQL注入器 + 阻断攻击SQL + MybatisX插件
+                生成代码 + 通用枚举(未学习) + 动态数据源(未学习)
 
 
 ssh-2           基于SSH实现员工管理系统之案例实现篇
