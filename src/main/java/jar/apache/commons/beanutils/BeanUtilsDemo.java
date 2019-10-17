@@ -87,7 +87,7 @@ public class BeanUtilsDemo {
         BeanUtils.setProperty(obj, "id", "1");
         BeanUtils.setProperty(obj, "name", "John");
         BeanUtils.setProperty(obj, "age", "18");
-        BeanUtils.setProperty(obj, "birth", "2000-01-01"); // String -> Date 不能自动转换，需注册一个转换器
+        BeanUtils.setProperty(obj, "birth", "2000-01-01"); // String → Date 不能自动转换，需注册一个转换器
 
         System.out.println(obj);
     }
