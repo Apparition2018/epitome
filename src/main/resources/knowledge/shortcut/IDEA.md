@@ -128,6 +128,8 @@
 >```
 >### Refactor
 >```
+>F5                             Copy...
+>F6                             Move...
 >Alt + Delete                   Safe Delete...                      安全删除
 >Shift + F6                     Rename...                           重命名
 >Ctrl + F6                      Change Signature...
@@ -137,8 +139,6 @@
 >```
 >>#### Extract
 >>```
->F5                             Copy...
->F6                             Move...
 >>Ctrl + Alt + C                Constant...                         常量
 >>Ctrl + Alt + V                Variable...                         变量
 >>Ctrl + Alt + F                Field...                            字段
@@ -213,6 +213,8 @@ Alt + 7                         Structure                                       
 Alt + 8                         Services
 Alt + 9                         Version Control
 Alt + F12                       Terminal
+Alt + ,                         Maven
+Alt + .                         Database
 ```
 ---
 ## Other
