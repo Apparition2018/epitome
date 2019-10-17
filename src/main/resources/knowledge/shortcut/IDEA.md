@@ -319,6 +319,7 @@ todo                            // TODO: $date$ $todo$
 ```
 >### output
 >```
+>serr                           System.err.println($END$);
 >souf                           System.out.printf("$END$");
 >sout                           System.out.println($END$);
 >soum                           System.out.println("$CLASS_NAME$.$METHOD_NAME$");
@@ -330,22 +331,35 @@ todo                            // TODO: $date$ $todo$
 >fori                           for (int $INDEX$ = 0; $INDEX$ < $LIMIT$; $INDEX$++) { $END$ }
 >itar                           for (int $INDEX$ = 0; $INDEX$ < $ARRAY$.length; $INDEX$++) { ... }
 >ritar                          for (int $INDEX$ = $ARRAY$.length - 1; $INDEX$ >= 0; $INDEX$--) { ... }
->itli                           for (int $INDEX$ = 0; $INDEX$ < $LIST$.size(); $INDEX$++) { ... }
 >iter                           for ($ELEMENT_TYPE$ $VAR$ : $ITERABLE_TYPE$) { $END$ }
+>itli                           for (int $INDEX$ = 0; $INDEX$ < $LIST$.size(); $INDEX$++) { ... }
 >itit                           while($ITER$.hasNext()){ $TYPE$ $VAR$ = $CAST$ $ITER$.next(); $END$ }
 >```
 >### html/xml
 >```
 >CD                             <![CDATA[ $SELECTION$ ]]>
 >```
+>### plain
+>```
+>prsf                           private static final
+>psf                            public static final
+>psfi                           public static final int
+>psfs                           public static final String
+>St                             String
+>thr                            throw new
+>```
 >### other
 >```
+>geti                           public static $CLASS_NAME$ getInstance() { return $VALUE$; }
 >ifn                            if ($VAR$ == null) { $END$ }
 >inn                            if ($VAR$ != null) { $END$ }
 >lst                            $ARRAY$[$ARRAY$.length - 1]
+>inst                           if ($EXPR$ instanceof $TYPE$) { $TYPE$ $VAR1$ = ($TYPE$)$EXPR$; $END$ }
 >mn                             $VAR$ = Math.min($VAR$, $END$)
 >mx                             $VAR$ = Math.max($VAR$, $END$)
+>mian                           public static void main(String[] args){ $END$ }
 >psvm                           public static void main(String[] args){ $END$ }
+>toar                           $COLLECTION$.toArray(new $COMPONENT_TYPE$[$COLLECTION$.size()])$END$
 >```
 ---
 ## [Postfix Completion](https://www.cnblogs.com/invoker-/p/8994157.html)
