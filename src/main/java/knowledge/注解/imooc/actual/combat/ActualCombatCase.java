@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
  * 2.方便地对每个字段或字段的组合条件进行检索，并打印出SQL
  * 3.使用方式要足够简单，见代码实例
  */
-public class Test {
+public class ActualCombatCase {
     public static void main(String[] args) {
         // 查询id为10的用户
         Filter filter1 = new Filter();

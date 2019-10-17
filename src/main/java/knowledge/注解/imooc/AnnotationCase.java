@@ -1,6 +1,6 @@
 package knowledge.注解.imooc;
 
-public class Test {
+public class AnnotationCase {
 
     @SuppressWarnings("deprecation")
     public void sing() {
