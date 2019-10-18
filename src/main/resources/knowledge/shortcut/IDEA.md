@@ -164,6 +164,7 @@
 >### File
 >```
 >Alt + Shift + O                Open Recent (user)
+>Ctrl + Shift + O               Open... (user)
 >Ctrl + Alt + S                 Settings...
 >Ctrl + Shift + Alt + S         Project Structure...
 >Ctrl + Alt + Y                 Synchronize                         同步

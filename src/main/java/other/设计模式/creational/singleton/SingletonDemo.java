@@ -12,6 +12,8 @@ import org.junit.Test;
  * 4.缓存
  * 5.日志对象
  * <p>
+ * 关键代码：构造器私有，另外提供一个用于获取实例的方法
+ * <p>
  * 例模式的七种写法：https://cantellow.iteye.com/blog/838473
  * 深入理解单例模式：https://blog.csdn.net/mnb65482/article/details/80458571
  * 单例模式 | 菜鸟教程：https://www.runoob.com/design-pattern/singleton-pattern.html
