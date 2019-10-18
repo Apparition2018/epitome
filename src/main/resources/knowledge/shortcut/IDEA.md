@@ -102,21 +102,20 @@
 >>Ctrl + F7                     Find Usages in File                 跳转到本文件被调用的位置
 >>Ctrl + Alt + F7               Show Usages                         显示在哪里被调用            ***
 >>Ctrl + Shift + F7             Highlight Usages in File            在文件中高亮相同的选中代码    ***
->>F3                            Find Next / Move to Next Occurrence
+>>F3                            Find Next / Move to Next Occurrence 跳转到搜索结果下一个位置
 >>Shift + F3                    Find Previous / Move to Previous Occurrence
->>Alt + F3                      Find...
->>Ctrl + F3                     Find Word at Caret
->>Ctrl + Shift + F              Find in Path...
->>Ctrl + R                      Repalce...
->>Ctrl + Shift + R              Replace in Path...
->>Ctrl + Shift + Alt + J        Select All Occurrencees                                         ???
+>>Alt + F3                      Find...                             最近一次搜索
+>>Ctrl + F3                     Find Word at Caret                                          ???
+>>Ctrl + Shift + F              Find in Path...                     全局搜索
+>>Ctrl + Shift + R              Replace in Path...                  全局替换
+>>Ctrl + Shift + Alt + J        Select All Occurrences              选中所有匹配
 >>```
 >### View
 >```
 >F4                             Jump to Source
 >Alt + Q                        Context Info                                                    ???
 >Ctrl + D                       Compare Files                       对比文件
->Ctrl + P                       Parameter Info                      提示参数信息
+>Ctrl + P                       Parameter Info                      提/示参数信息
 >Ctrl + F1                      Error Description                   显示错误描述
 >Ctrl + Shift + I               Quick Definition                                                ***
 >```
