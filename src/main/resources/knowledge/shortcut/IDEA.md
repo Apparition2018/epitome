@@ -10,10 +10,10 @@
 >```
 >>#### Active Tool Window
 >>```
->>F12                           Jump to Last Tool Window
+>>F12                           Jump to Last Tool Window            跳转到上一个工具窗口          ***    
 >>Shift + ESC                   Hide Active Tool Window             隐藏活动工具窗口              ***
 >>Ctrl + Shift + F12            Hide All Tool Windows               隐藏所有工具窗口
->>Ctrl + Shift + F4             Active Tool Window                  关闭当前活动 Tab
+>>Ctrl + Shift + F4             Close Active Tab                    关闭当前活动 Tab
 >>Alt + ↓                       Show List of Tabs
 >>```
 >>#### Editor Tabs
@@ -28,53 +28,51 @@
 >Ctrl + I                       Implement Methods...                实现方法
 >Ctrl + O                       Override Methods...                 重写方法
 >Ctrl + Alt + L                 Reformat Code                       格式化代码
->Ctrl + Alt + O                 Optimize Imports                    删除没有使用的import
->Ctrl + Alt + T                 Surround With...
->Ctrl + Shift + Delete          Unwrap/Remove...
+>Ctrl + Alt + O                 Optimize Imports                    优化导入
+>Ctrl + Shift + Delete          Unwrap/Remove...                                                ***
 >Ctrl + J                       Insert Live Template...             插入动态模板
+>Ctrl + Alt + T                 Surround With...
 >Ctrl + Alt + J                 Surround with Live Template...
 >Ctrl + /                       Comment with Line Comment           注释
 >Ctrl + Shift + /               Comment with Block Comment          块注释
 >Ctrl + Shift + ↑ / ↓           Move Statement Up / Down            上下移动语句                  ***
 >Alt + Shift + ↑ / ↓            Move Line Up / Down                 上下移动行
->Ctrl + Shift + Alt + ← / →     Movo Element Left / Right
+>Ctrl + Shift + Alt + ← / →     Move Element Left / Right                                       ???
 >```
 >>#### Completion
 >>```
->>Alt + /                       Cyclic Expand Word                                              ???
->>Ctrl + Space                  Basic
->>Ctrl + Shift + Space          SmartType
+>>Alt + /                       Cyclic Expand Word                  循环向上选择单词            ***
+>>Alt + Shift + /               Cyclic Expand Word (Backward)       循环向下选择单词
+>>Ctrl + Space                  Basic                               代码补全
+>>Ctrl + Shift + Space          SmartType                           智能类型补全
 >>```
 >>#### Folding
 >>```
->>Ctrl + +                      Expand                              展开当前方法
->>Ctrl + -                      Collapse                            收起当前方法
->>Ctrl + Alt + +                Expand Recursively
->>Ctrl + Alt + -                Collapse Recursively
+>>Ctrl + +                      Expand                              展开
+>>Ctrl + -                      Collapse                            收起
+>>Ctrl + Alt + +                Expand Recursively                  递归展开
+>>Ctrl + Alt + -                Collapse Recursively                递归收起
 >>Ctrl + Shift + +              Expand All                          展开所有
 >>Ctrl + Shift + -              Collapse All                        收起所有
 >>```
 >### Navigate
 >```
->F2                             Next Highlighted Error              下一条高亮错误
->Shift + F2                     Previous Highlighted Error          上一条高亮错误
->Alt + F1                       Change View...                                                  ???
+>F2                             Next Highlighted Error              下一条错误
+>Shift + F2                     Previous Highlighted Error          上一条错误
+>Alt + F1                       Select In...
 >Ctrl + G                       Line/Column...                      定位到指定行
 >Ctrl + F12                     File Structure                      文件结构
->Ctrl + Alt + ←                 Back                                上一个位置                   ***
->Ctrl + Alt + →                 Forward                             下一个位置                   ***
+>Ctrl + Alt + ←                 Back                                上一个位置
+>Ctrl + Alt + →                 Forward                             下一个位置
 >Ctrl + H                       Type Hierarchy                      查看类的继承层次
->Ctrl + Shift + H               Method Hierarchy                    查看方法的继承层次
->Ctrl + Alt + H                 Call Hierarchy                      查看方法的调用层次
+>Ctrl + Shift + H               Method Hierarchy                    查看方法的继承层次           ***
+>Ctrl + Alt + H                 Call Hierarchy                      查看方法的调用层次           ***
 >Ctrl + N                       Class...                            按类名搜索
 >Ctrl + Shift + N               File...                             按文件搜索
 >Ctrl + Shift + Alt + N         Symbol...                           按Symbol搜索
 >Ctrl + B                       Declaration                         定位到声明的位置
->Ctrl + Click1                  Declaration                         定位到声明的位置
->Click2                         Declaration                         定位到声明的位置
 >Ctrl + Shift + B               Type Declaration                    定位到变量类型定义的位置
 >Ctrl + Alt + B                 Implemention(s)                     定位到实现的位置
->Ctrl + Alt + Click1            Implemention(s)                     定位到实现的位置
 >Ctrl + U                       Super Method                        定位到父类/父类方法
 >Alt + ↑                        Previous Method                     定位到上一个方法
 >Alt + ↓                        Next Method                         定位到下一个方法
@@ -128,8 +126,6 @@
 >```
 >### Refactor
 >```
->F5                             Copy...
->F6                             Move...
 >Alt + Delete                   Safe Delete...                      安全删除
 >Shift + F6                     Rename...                           重命名
 >Ctrl + F6                      Change Signature...
@@ -222,7 +218,7 @@ Alt + .                         Database
 ```
 Alt + Insert                    New...                              生成代码/新建
 Alt + Enter                     Show Intention Actions              显示建议
-Alt + F1                        Select In...                                                    ???
+Alt + F1                        Change View...                                                  ???
 Ctrl + Tab                      Switcher
 Ctrl + -                        Collapse All / Component
 Shift + F4                      Open source in new window           在新窗口中打
