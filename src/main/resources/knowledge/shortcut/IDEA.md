@@ -4,7 +4,7 @@
 ## Main Menu
 >### Window
 >```
->Shift + F12                    Restore Default Layout              还原布局
+>Shift + F12                    Restore Default Layout              还原布局                    ***
 >Ctrl + Alt + [                 Previous Project Window             前一个项目窗口
 >Ctrl + Alt + ]                 Next Project Window                 下一个项目窗口
 >```
@@ -72,39 +72,35 @@
 >Ctrl + Shift + Alt + N         Symbol...                           按Symbol搜索
 >Ctrl + B                       Declaration                         定位到声明的位置
 >Ctrl + Shift + B               Type Declaration                    定位到变量类型定义的位置
->Ctrl + Alt + B                 Implemention(s)                     定位到实现的位置
->Ctrl + U                       Super Method                        定位到父类/父类方法
->Alt + ↑                        Previous Method                     定位到上一个方法
+>Ctrl + Alt + B                 Implemention(s)                     定位到实现的位置            ***
+>Ctrl + U                       Super Method                        定位到父类/父类方法          ***
+>Alt + ↑                        Previous Method                     定位到上一个方法            ***
 >Alt + ↓                        Next Method                         定位到下一个方法
->Ctrl + Alt + ←                 Back                                                            ***
->Ctrl + Alt + →                 Forward                                                         ***
->Ctrl + Alt + F12               File Path                           资源管理器打开文件夹
->Ctrl + Shift + Backspace       Last Edit Location                  最近编辑位置
+>Ctrl + Alt + F12               File Path                           资源管理器打开文件夹          ***
+>Ctrl + Shift + Backspace       Last Edit Location                  最近编辑位置                  ***
 >```
 >### Edit
 >```
 >Alt + Shift + Insert           Column Selection Mode               列选择模式
 >Ctrl + D                       Duplicate Line or Selection         复制行
 >Ctrl + Shift + J               Join Lines                          合并行
->Ctrl + Shift + Insert          Paste from History...               从历史中粘贴
+>Ctrl + Shift + Insert          Paste from History...               从历史中粘贴                  ***
 >Ctrl + Shift + V               Paste from History...               从历史中粘贴
 >Ctrl + Shift + Enter           Complete Current Statement          补全当前语句                  ???
->Ctrl + Shift + C               Copy Paths                          复制当前文件磁盘路径到剪贴板
->Ctrl + Shift + Alt + C         Copy Reference                      复制Reference到剪贴板         ???
+>Ctrl + Shift + C               Copy Paths                          复制当前文件磁盘路径到剪贴板  ***
+>Ctrl + Shift + Alt + C         Copy Reference                      复制全路径到剪贴板
 >Ctrl + W                       Extend Selection                    扩大选中代码
 >Ctrl + Shift + W               Shrink Selection                    收缩选中代码
 >Ctrl + Z                       Undo                                撤销
->Alt + Backspace                Undo                                撤销
 >Ctrl + Shift + Z               Redo                                重做
->Alt + Shift + Backspace        Redo                                重做
 >Ctrl + Shift + U               Toggle Case                         切换大小写
 >```
 >>#### Find
 >>```
->>Alt + F7                      Find Usages
->>Ctrl + Shift + Alt + F7       Find Usages Settings...
->>Ctrl + F7                     Find Usages in File
->>Ctrl + Alt + F7               Show Usages
+>>Alt + F7                      Find Usages                         查找在哪里被调用            ***
+>>Ctrl + Shift + Alt + F7       Find Usages Settings...             查找在哪里被调用(设置)
+>>Ctrl + F7                     Find Usages in File                 跳转到本文件被调用的位置
+>>Ctrl + Alt + F7               Show Usages                         显示在哪里被调用            ***
 >>Ctrl + Shift + F7             Highlight Usages in File            在文件中高亮相同的选中代码    ***
 >>F3                            Find Next / Move to Next Occurrence
 >>Shift + F3                    Find Previous / Move to Previous Occurrence
