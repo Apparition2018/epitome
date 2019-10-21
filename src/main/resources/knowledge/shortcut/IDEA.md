@@ -126,6 +126,10 @@
 >Ctrl + F1                      Error Description                   显示错误描述
 >Ctrl + Shift + I               Quick Definition                                                ***
 >```
+>>#### Appearance
+>>```
+>>Alt + Shift + \               Descriptions in Tree Views          在树视图中显示文件描述
+>>```
 >### Refactor
 >```
 >Alt + Delete                   Safe Delete...                      安全删除
