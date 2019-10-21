@@ -57,9 +57,15 @@
 >>```
 >### Navigate
 >```
+>Alt + F1 +                     Select In...
+>   1                           Project View
+>   7                           File Structure
+>   B                           Show in Explorer
+>   C                           Web Browser
+>   E                           Project Structure
+>   F                           Maven
 >F2                             Next Highlighted Error              下一条错误
 >Shift + F2                     Previous Highlighted Error          上一条错误
->Alt + F1                       Select In...
 >Ctrl + G                       Line/Column...                      定位到指定行
 >Ctrl + F12                     File Structure                      文件结构
 >Ctrl + Alt + ←                 Back                                上一个位置
@@ -243,7 +249,7 @@ Shift + F4                      Jump to Object Source                           
 ## Version Control Systems
 ```
 Alt + `                         VCS Operations Popup...             VCS操作弹窗
-Alt + H                         Show History                        显示历史
+Alt + H                         Show History  (user)                显示历史
 Ctrl + D                        Compare Files / Show Diff           对比文件/显示差异
 Ctrl + Alt + Z                  Revert / Rollback                   恢复/回滚
 Ctrl + K                        Commit                              提交
