@@ -28,6 +28,7 @@
 >Ctrl + I                       Implement Methods...                实现方法
 >Ctrl + O                       Override Methods...                 重写方法
 >Ctrl + Alt + L                 Reformat Code                       格式化代码
+>Ctrl + Alt + I                 Auto-Indent Lines                   自动缩进行
 >Ctrl + Alt + O                 Optimize Imports                    优化导入
 >Ctrl + Shift + Delete          Unwrap/Remove...                                                ***
 >Ctrl + J                       Insert Live Template...             插入动态模板
@@ -179,8 +180,8 @@
 >```
 >### View
 >```
->Ctrl + E                       Recent Files                        最近的文件
->Ctrl + Shift + E               Recently Changed Files              最近修改的文件
+>Ctrl + E                       Recent Files                        最近文件
+>Ctrl + Shift + E               Recent Locations                    最近位置
 >Alt + Shift + C                Recent Changes                      最近修改
 >```
 >### Analyze
