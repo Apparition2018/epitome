@@ -1,10 +1,10 @@
 ssm-1           Java高并发秒杀
                 SSM + mysql + cp30 + jsp + jstl + logback +
-                mybatis-generator + 声明式事务 + redis(jedis) + 存储过程 + 通用返回对象 + protostuff + entity|dto +
+                mybatis-generator + 声明式事务 + redis(jedis) + 存储过程 + 通用返回对象 + Protostuff + entity|dto +
                 枚举 + result接口
 
 permission      Java开发企业级权限管理系统
-                SSM + mysql + druid + jsp + mustache + Bootstrap(Dual Listbox) + ztree + logback +
+                SSM + mysql + druid + jsp + mustache + Bootstrap(Dual Listbox) + zTree + logback +
                 mybatis-generator + redis(jedis) + 通用返回对象 + 分页 + 异常处理 + Validator + jackson + param|model|dto +
                 Interceptor + Filter(Login|AclControl) + ThreadLocal + Spring上下文工具(ApplicationContextHelper) +
                 操作记录 + Comparator + stream + 枚举 + MD5 + 获取IP + 发送邮件 + 随机生成密码 + 随机生成code
@@ -19,7 +19,7 @@ springboot-2    SpringBoot构建电商基础秒杀项目
 
 springboot-3    SpringBoot开发常用技术整合
                 SM + mysql + druid + freemarker|thymeleaf(国际化i18n) +
-                MyBatisGenerator* + 通用Maper + 事务 + pagehelper + redis + 通用返回对象 + jackson +
+                MyBatisGenerator* + 通用Mapper + 事务 + PageHelper + redis + 通用返回对象 + jackson +
                 异常处理(web|ajax) + 资源文件读取 + server|tomcat配置 + 定时任务 + 异步任务 + Interceptor +
                 idWorker
 
