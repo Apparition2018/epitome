@@ -4,6 +4,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,7 +89,7 @@ public class ByteStream {
             int len;
             StringBuilder sb = new StringBuilder();
             while ((len = is.read(data)) != -1) {
-                sb.append(new String(data, 0, len, "UTF-8"));
+                sb.append(new String(data, 0, len, StandardCharsets.UTF_8));
             }
 
             System.out.println(sb);
@@ -118,7 +119,7 @@ public class ByteStream {
 
             String s = "FileOutputStream 用于写入诸如图像数据之类的原始字节的流。要写入字符流，请考虑使用 FileWriter。";
             // 2.写入操作
-            os.write(s.getBytes("UTF-8"));
+            os.write(s.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -140,7 +141,7 @@ public class ByteStream {
             os = new BufferedOutputStream(new FileOutputStream(dirPath + "BufferedOutputStream.txt"));
 
             String s = "该类实现缓冲的输出流。通过设置这种输出流，应用程序就可以将各个字节写入底层输出流中，而不必针对每次字节写入调用底层系统。";
-            os.write(s.getBytes("UTF-8"));
+            os.write(s.getBytes(StandardCharsets.UTF_8));
 
             os.flush();
         } catch (IOException e) {
@@ -209,7 +210,7 @@ public class ByteStream {
 
             // 第二种获取数据：toByteArray()
             byte[] data = baos.toByteArray();
-            String str = new String(data, "UTF-8");
+            String str = new String(data, StandardCharsets.UTF_8);
             System.out.println(str);
 
         } catch (IOException e) {

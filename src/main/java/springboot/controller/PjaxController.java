@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 @Controller
 @RequestMapping("/weather")
@@ -68,7 +69,7 @@ public class PjaxController {
             String isoBody = EntityUtils.toString(response.getEntity());
             client.close();
 
-            String utfBody = new String(isoBody.getBytes("iso-8859-1"), "utf-8");
+            String utfBody = new String(isoBody.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
             JSONObject json = JSON.parseObject(utfBody).getJSONObject("data");
 
             result = String.format(TEXTAREA, JSON.toJSONString(json, true));
