@@ -1,5 +1,6 @@
 package knowledge.api.lang.system;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -28,13 +29,13 @@ public class SystemDemo {
     @Test
     public void currentTimeMills() throws InterruptedException {
         long t1 = System.currentTimeMillis();
-        Thread.sleep(1000);
+        Thread.sleep(DateUtils.MILLIS_PER_SECOND);
         long t2 = System.currentTimeMillis();
         long t3 = t2 - t1;
         System.out.println(t3);         // 1000
 
         long t4 = System.nanoTime();
-        Thread.sleep(1000);
+        Thread.sleep(DateUtils.MILLIS_PER_SECOND);
         long t5 = System.nanoTime();
         long t6 = t5 - t4;
         System.out.println(t6);         // 999606313

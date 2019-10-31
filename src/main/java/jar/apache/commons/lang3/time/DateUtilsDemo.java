@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * DateUtils
- * DateUtilsFormat
+ * DateFormatUtils
  * <p>
  * https://www.cnblogs.com/aston/p/9053201.html
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html
@@ -39,10 +39,10 @@ public class DateUtilsDemo {
      */
     @Test
     public void addXXX() {
-        p(date1);                                  // Mon Nov 19 10:00:42 CST 2018
-        p(DateUtils.addYears(date1, 1));   // Tue Nov 19 10:00:42 CST 2019
-        p(DateUtils.addMonths(date1, 1));  // Wed Dec 19 10:00:42 CST 2018
-        p(DateUtils.addWeeks(date1, 1));   // Mon Nov 26 10:00:42 CST 2018
+        dp(date1);                                  // 2019-10-31 16:55:42
+        dp(DateUtils.addYears(date1, 1));   // 2020-10-31 16:55:42
+        dp(DateUtils.addMonths(date1, 1));  // 2019-11-30 16:55:42
+        dp(DateUtils.addWeeks(date1, 1));   // 2019-11-07 16:55:42
     }
 
     /**
@@ -53,12 +53,12 @@ public class DateUtilsDemo {
     @Test
     public void setXXX() {
         Date date = new Date();
-        p(DateUtils.setMonths(date, 0));   // 0-11
-        p(DateUtils.setDays(date, 1));     // 1-31
-        p(DateUtils.setHours(date, 0));    // 0-23
-        p(DateUtils.setMinutes(date, 0));  // 0-59
-        p(DateUtils.setSeconds(date, 0));  // 0-59
-        p(DateUtils.setMilliseconds(date, 0)); // 0-999
+        dp(DateUtils.setMonths(date, 0));       // 2019-01-31 16:54:51
+        dp(DateUtils.setDays(date, 1));         // 2019-10-01 16:54:51
+        dp(DateUtils.setHours(date, 0));        // 2019-10-31 00:54:51
+        dp(DateUtils.setMinutes(date, 0));      // 2019-10-31 16:00:51
+        dp(DateUtils.setSeconds(date, 0));      // 2019-10-31 16:54:00
+        dp(DateUtils.setMilliseconds(date, 0)); // 2019-10-31 16:54:51
     }
 
     /**
@@ -68,28 +68,28 @@ public class DateUtilsDemo {
      */
     @Test
     public void ceilRoundTruncate() {
-        p(date1);                                      // Mon Nov 19 09:58:17 CST 2018
+        dp(date1);                                      // 2019-10-31 16:56:44
         p("=============================\n");
 
-        p(DateUtils.ceiling(date1, Calendar.YEAR));    // Tue Jan 01 00:00:00 CST 2019
-        p(DateUtils.ceiling(date1, Calendar.MONTH));   // Sat Dec 01 00:00:00 CST 2018
-        p(DateUtils.ceiling(date1, Calendar.DATE));    // Tue Nov 20 00:00:00 CST 2018
-        p(DateUtils.ceiling(date1, Calendar.HOUR));    // Mon Nov 19 10:00:00 CST 2018
-        p(DateUtils.ceiling(date1, Calendar.MINUTE));  // Mon Nov 19 09:59:00 CST 2018
+        dp(DateUtils.ceiling(date1, Calendar.YEAR));    // 2020-01-01 00:00:00
+        dp(DateUtils.ceiling(date1, Calendar.MONTH));   // 2019-11-01 00:00:00
+        dp(DateUtils.ceiling(date1, Calendar.DATE));    // 2019-11-01 00:00:00
+        dp(DateUtils.ceiling(date1, Calendar.HOUR));    // 2019-10-31 17:00:00
+        dp(DateUtils.ceiling(date1, Calendar.MINUTE));  // 2019-10-31 16:57:00
         p("=============================\n");
 
-        p(DateUtils.round(date1, Calendar.YEAR));      // Tue Jan 01 00:00:00 CST 2019
-        p(DateUtils.round(date1, Calendar.MONTH));     // Sat Dec 01 00:00:00 CST 2018
-        p(DateUtils.round(date1, Calendar.DATE));      // Mon Nov 19 00:00:00 CST 2018
-        p(DateUtils.round(date1, Calendar.HOUR));      // Mon Nov 19 10:00:00 CST 2018
-        p(DateUtils.round(date1, Calendar.MINUTE));    // Mon Nov 19 09:58:00 CST 2018
+        dp(DateUtils.round(date1, Calendar.YEAR));      // 2020-01-01 00:00:00
+        dp(DateUtils.round(date1, Calendar.MONTH));     // 2019-11-01 00:00:00
+        dp(DateUtils.round(date1, Calendar.DATE));      // 2019-11-01 00:00:00
+        dp(DateUtils.round(date1, Calendar.HOUR));      // 2019-10-31 17:00:00
+        dp(DateUtils.round(date1, Calendar.MINUTE));    // 2019-10-31 16:57:00
         p("=============================\n");
 
-        p(DateUtils.truncate(date1, Calendar.YEAR));   // Mon Jan 01 00:00:00 CST 2018
-        p(DateUtils.truncate(date1, Calendar.MONTH));  // Thu Nov 01 00:00:00 CST 2018
-        p(DateUtils.truncate(date1, Calendar.DATE));   // Mon Nov 19 00:00:00 CST 2018
-        p(DateUtils.truncate(date1, Calendar.HOUR));   // Mon Nov 19 09:00:00 CST 2018
-        p(DateUtils.truncate(date1, Calendar.MINUTE)); // Mon Nov 19 09:58:00 CST 2018
+        dp(DateUtils.truncate(date1, Calendar.YEAR));   // 2019-01-01 00:00:00
+        dp(DateUtils.truncate(date1, Calendar.MONTH));  // 2019-10-01 00:00:00
+        dp(DateUtils.truncate(date1, Calendar.DATE));   // 2019-10-31 00:00:00
+        dp(DateUtils.truncate(date1, Calendar.HOUR));   // 2019-10-31 16:00:00
+        dp(DateUtils.truncate(date1, Calendar.MINUTE)); // 2019-10-31 16:56:00
     }
 
     /**
@@ -145,14 +145,14 @@ public class DateUtilsDemo {
     public void iterator() {
         Iterator<Calendar> it = DateUtils.iterator(date1, DateUtils.RANGE_WEEK_MONDAY);
         while (it.hasNext()) {
-            p(new Date(it.next().getTimeInMillis()));
-//            Mon Nov 19 00:00:00 CST 2018
-//            Tue Nov 20 00:00:00 CST 2018
-//            Wed Nov 21 00:00:00 CST 2018
-//            Thu Nov 22 00:00:00 CST 2018
-//            Fri Nov 23 00:00:00 CST 2018
-//            Sat Nov 24 00:00:00 CST 2018
-//            Sun Nov 25 00:00:00 CST 2018
+            dp(new Date(it.next().getTimeInMillis()));
+//            2019-10-28 00:00:00
+//            2019-10-29 00:00:00
+//            2019-10-30 00:00:00
+//            2019-10-31 00:00:00
+//            2019-11-01 00:00:00
+//            2019-11-02 00:00:00
+//            2019-11-03 00:00:00
         }
     }
 
@@ -227,9 +227,14 @@ public class DateUtilsDemo {
         p(DateUtils.truncatedEquals(date1, date2, Calendar.MILLISECOND));      // false
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
+    }
+
+    private static <T> void dp(T obj) {
+        if (obj == null) return;
+        System.out.println(DateFormatUtils.ISO_8601_EXTENDED_DATETIME_FORMAT.format(obj).replace("T", " "));
     }
 
 }

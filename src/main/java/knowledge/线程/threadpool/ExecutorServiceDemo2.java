@@ -1,5 +1,7 @@
 package knowledge.线程.threadpool;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -39,7 +41,7 @@ class MyThread extends Thread {
     @Override
     public void run() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(DateUtils.MILLIS_PER_SECOND);
             System.out.println(Thread.currentThread().getName() + "正在执行。。。" + arr[index++]);
         } catch (InterruptedException e) {
             e.printStackTrace();

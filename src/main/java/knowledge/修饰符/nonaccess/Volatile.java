@@ -1,5 +1,7 @@
 package knowledge.修饰符.nonaccess;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 /**
  * volatile
  * <p>
@@ -35,7 +37,7 @@ public class Volatile {
 
         Volatile v = new Volatile();
         new Thread(v::run).start();
-        Thread.sleep(1000);
+        Thread.sleep(DateUtils.MILLIS_PER_SECOND);
         v.createObj();
     }
 

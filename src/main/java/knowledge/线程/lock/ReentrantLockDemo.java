@@ -1,5 +1,7 @@
 package knowledge.线程.lock;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -37,7 +39,7 @@ public class ReentrantLockDemo {
         t2.start();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(DateUtils.MILLIS_PER_SECOND);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

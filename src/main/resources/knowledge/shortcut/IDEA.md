@@ -326,9 +326,9 @@ todo                            // TODO: $date$ $todo$
 >serr                           System.err.println($END$);
 >souf                           System.out.printf("$END$");
 >sout                           System.out.println($END$);
->soum                           System.out.println("$CLASS_NAME$.$METHOD_NAME$");
->soup                           System.out.println($FORMAT$);
->souv                           System.out.println("$EXPR_COPY$ = " + $EXPR$);
+>soutm                          System.out.println("$CLASS_NAME$.$METHOD_NAME$");
+>soutp                          System.out.println($FORMAT$);
+>soutv                          System.out.println("$EXPR_COPY$ = " + $EXPR$);
 >```
 >### iterations
 >```

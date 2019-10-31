@@ -1,5 +1,7 @@
 package knowledge.线程.lock;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
@@ -15,7 +17,7 @@ public class ReentrantReadWriteLockDemo {
             long start = System.currentTimeMillis();
             System.out.println("线程 " + thread.getName() + " 开始读操作...");
             int count = 0;
-            while (System.currentTimeMillis() - start <= 1000) {
+            while (System.currentTimeMillis() - start <= DateUtils.MILLIS_PER_SECOND) {
                 if (++count % 100 == 0) {
                     System.out.println("线程 " + thread.getName() + " 正在进行读操作...");
                 }

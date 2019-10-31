@@ -1,5 +1,6 @@
 package knowledge.日期和时间;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -37,7 +38,7 @@ public class DateDemo2 {
         long time = date.getTime();
         System.out.println(time);
 
-        time += 1000 * 60 * 60 * 24; // 1天
+        time += DateUtils.MILLIS_PER_DAY;
 
         // long → Date
         date.setTime(time);

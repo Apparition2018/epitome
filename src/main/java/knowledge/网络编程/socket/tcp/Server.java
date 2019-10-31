@@ -1,5 +1,7 @@
 package knowledge.网络编程.socket.tcp;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -36,7 +38,7 @@ public class Server extends Thread {
 
         // void	setSoTimeout(int timeout)
         // 通过指定超时值启用/禁用 SO_TIMEOUT，以毫秒为单位
-        serverSocket.setSoTimeout(1000 * 3600);
+        serverSocket.setSoTimeout(Math.toIntExact(DateUtils.MILLIS_PER_HOUR));
     }
 
     public void run() {

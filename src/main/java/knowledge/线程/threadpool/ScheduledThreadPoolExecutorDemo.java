@@ -1,5 +1,7 @@
 package knowledge.线程.threadpool;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -20,9 +22,9 @@ public class ScheduledThreadPoolExecutorDemo {
         // 也就是将在 initialDelay 后开始执行，然后在 initialDelay+period 后执行，接着在 initialDelay + 2 * period 后执行，依此类推
         exec.scheduleAtFixedRate(() -> {
             System.out.println("================");
-        }, 1000, 6000, TimeUnit.MILLISECONDS);
+        }, DateUtils.MILLIS_PER_SECOND, DateUtils.MILLIS_PER_SECOND * 6, TimeUnit.MILLISECONDS);
 
-        exec.scheduleAtFixedRate(() -> System.out.println(System.nanoTime()), 1000, 2000, TimeUnit.MILLISECONDS);
+        exec.scheduleAtFixedRate(() -> System.out.println(System.nanoTime()), DateUtils.MILLIS_PER_SECOND, DateUtils.MILLIS_PER_SECOND * 2, TimeUnit.MILLISECONDS);
     }
 
 }
