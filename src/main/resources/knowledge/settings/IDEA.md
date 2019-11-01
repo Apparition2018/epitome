@@ -22,12 +22,10 @@
     2. File and Code Templates
     3. Files
     4. Class / Interface
-```
-/**
- * ${NAME}
- *
- * @author ${USER}
- * created on ${DATE} ${TIME}
- */
-```
+    /**
+     * ${NAME}
+     *
+     * @author ${USER}
+     * created on ${DATE} ${TIME}
+     */
 ---
