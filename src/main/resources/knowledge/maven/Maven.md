@@ -21,13 +21,10 @@ mvn deploy          上传到私服
 ```
 ---              
 ## 仓库
-####1. 本地仓库：
-```
-修改 settings.xml 中的 <localRepository>xxx</localRepository> 路径
-```
-####2. 远程仓库：
-#####1. settings.xml 中：
-```
+#### 1. 本地仓库：
+    修改 settings.xml 中的 <localRepository>xxx</localRepository> 路径
+#### 2. 远程仓库：
+##### 1. settings.xml 中：
     <mirrors>
         <mirror>
             <id>alimaven</id>
@@ -36,9 +33,7 @@ mvn deploy          上传到私服
             <mirrorOf>central</mirrorOf>
         </mirror>
     <mirrors>
-```
-#####2. pom.xml 中：
-```
+##### 2. pom.xml 中：
     <repositories>
         <repository>
             <id>alimaven</id>
@@ -46,5 +41,4 @@ mvn deploy          上传到私服
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
     </repositories>
-```
 ---
