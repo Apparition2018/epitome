@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<settings>
-    <!-- maven本地仓库 -->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <!-- maven 本地仓库路径 -->
     <localRepository>E:\apache-maven-3.5.2\repository</localRepository>
+
+    <!-- 远程仓库镜像 -->
     <mirrors>
         <!-- 阿里maven中央仓库 -->
         <mirror>
@@ -24,37 +28,72 @@
             <url>http://repo2.maven.org/maven2/</url>
             <mirrorOf>central</mirrorOf>
         </mirror>
+        <mirror>
+            <id>net-cn</id>
+            <mirrorOf>central</mirrorOf>
+            <name>Human Readable Name for this Mirror.</name>
+            <url>http://maven.net.cn/content/groups/public/</url>
+        </mirror>
+        <mirror>
+            <id>ui</id>
+            <mirrorOf>central</mirrorOf>
+            <name>Human Readable Name for this Mirror.</name>
+            <url>http://uk.maven.org/maven2/</url>
+        </mirror>
+        <mirror>
+            <id>ibiblio</id>
+            <mirrorOf>central</mirrorOf>
+            <name>Human Readable Name for this Mirror.</name>
+            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
+        </mirror>
+        <mirror>
+            <id>jboss-public-repository-group</id>
+            <mirrorOf>central</mirrorOf>
+            <name>JBoss Public Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public</url>
+        </mirror>
     </mirrors>
-    <!--<profiles>-->
-        <!--<profile>-->
-            <!--<id>nexus</id>-->
-            <!--<repositories>-->
-                <!--<repository>-->
-                    <!--<id>nexus</id>-->
-                    <!--<name>local private nexus</name>-->
-                    <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
-                    <!--<releases>-->
-                        <!--<enabled>true</enabled>-->
-                    <!--</releases>-->
-                    <!--<snapshots>-->
-                        <!--<enabled>false</enabled>-->
-                    <!--</snapshots>-->
-                <!--</repository>-->
-            <!--</repositories>-->
 
-            <!--<pluginRepositories>-->
-                <!--<pluginRepository>-->
-                    <!--<id>nexus</id>-->
-                    <!--<name>local private nexus</name>-->
-                    <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
-                    <!--<releases>-->
-                        <!--<enabled>true</enabled>-->
-                    <!--</releases>-->
-                    <!--<snapshots>-->
-                        <!--<enabled>false</enabled>-->
-                    <!--</snapshots>-->
-                <!--</pluginRepository>-->
-            <!--</pluginRepositories>-->
-        <!--</profile>-->
-    <!--</profiles>-->
+    <!-- 指定连接到特定服务器时使用的身份验证信息
+        一般跟 pom.xml 的 <distributionManagement> 配合搭建私服 -->
+    <servers>
+        <server>
+            <id>xxx</id>
+            <username>xxx</username>
+            <password>xxx</password>
+        </server>
+    </servers>
+
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>nexus</id>-->
+<!--            <repositories>-->
+<!--                <repository>-->
+<!--                    <id>nexus</id>-->
+<!--                    <name>local private nexus</name>-->
+<!--                    <url>http://maven.oschina.net/content/groups/public/</url>-->
+<!--                    <releases>-->
+<!--                        <enabled>true</enabled>-->
+<!--                    </releases>-->
+<!--                    <snapshots>-->
+<!--                        <enabled>false</enabled>-->
+<!--                    </snapshots>-->
+<!--                </repository>-->
+<!--            </repositories>-->
+
+<!--            <pluginRepositories>-->
+<!--                <pluginRepository>-->
+<!--                    <id>nexus</id>-->
+<!--                    <name>local private nexus</name>-->
+<!--                    <url>http://maven.oschina.net/content/groups/public/</url>-->
+<!--                    <releases>-->
+<!--                        <enabled>true</enabled>-->
+<!--                    </releases>-->
+<!--                    <snapshots>-->
+<!--                        <enabled>false</enabled>-->
+<!--                    </snapshots>-->
+<!--                </pluginRepository>-->
+<!--            </pluginRepositories>-->
+<!--        </profile>-->
+<!--    </profiles>-->
 </settings>
