@@ -30,7 +30,7 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/html");
-        response.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("UTF-8");
         PrintWriter pw = response.getWriter();
         pw.append("Hello Servlet!<br />");
         pw.append("servletName: ").append(getServletName()).append("<br />"); // servletName

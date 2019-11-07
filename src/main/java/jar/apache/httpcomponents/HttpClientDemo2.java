@@ -24,7 +24,7 @@ public class HttpClientDemo2 {
         List<NameValuePair> formParams = new ArrayList<>();
         formParams.add(new BasicNameValuePair("account", ""));
         formParams.add(new BasicNameValuePair("password", ""));
-        HttpEntity reqEntity = new UrlEncodedFormEntity(formParams, "utf-8");
+        HttpEntity reqEntity = new UrlEncodedFormEntity(formParams, "UTF-8");
 
         RequestConfig requestConfig = RequestConfig.custom()
                 .setConnectTimeout(5000)    // 连接超时：指连接一个 url 的连接等待时间
@@ -40,7 +40,7 @@ public class HttpClientDemo2 {
 
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
             HttpEntity resEntity = response.getEntity();
-            String message = EntityUtils.toString(resEntity, "utf-8");
+            String message = EntityUtils.toString(resEntity, "UTF-8");
             System.out.println(message);
         } else {
             System.out.println("请求失败");
