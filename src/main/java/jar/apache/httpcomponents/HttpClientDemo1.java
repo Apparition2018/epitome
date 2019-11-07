@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 /*
  * HttpClient编写程序流程总结:
@@ -74,7 +75,7 @@ public class HttpClientDemo1 {
             // 方法二：使用 InputStream（官方推荐）
             if (entity != null) {
                 inputStream = entity.getContent();
-                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
                 String line;
                 while ((line = br.readLine()) != null) {
                     System.out.println(line);

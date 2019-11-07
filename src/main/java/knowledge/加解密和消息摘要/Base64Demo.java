@@ -6,7 +6,7 @@ import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
 /**
@@ -28,30 +28,25 @@ public class Base64Demo {
      */
     @Test
     public void javaUtilBase64() {
-        try {
-            // 基本：输出被映射到一组字符 A-Za-z0-9+/，编码不添加任何行标，输出的解码仅支持 A-Za-z0-9+/。
-            String encode = java.util.Base64.getEncoder().encodeToString(src.getBytes("utf-8"));
-            System.out.println("encode: " + encode + "\n");
+        // 基本：输出被映射到一组字符 A-Za-z0-9+/，编码不添加任何行标，输出的解码仅支持 A-Za-z0-9+/。
+        String encode = java.util.Base64.getEncoder().encodeToString(src.getBytes(StandardCharsets.UTF_8));
+        System.out.println("encode: " + encode + "\n");
 
-            byte[] bytes = java.util.Base64.getDecoder().decode(encode);
-            System.out.println("decode: " + new String(bytes, "utf-8") + "\n");
+        byte[] bytes = java.util.Base64.getDecoder().decode(encode);
+        System.out.println("decode: " + new String(bytes, StandardCharsets.UTF_8) + "\n");
 
-            // URL：输出映射到一组字符 A-Za-z0-9+_，输出是 URL 和文件。
-            encode = java.util.Base64.getUrlEncoder().encodeToString("TutorialsPoint?java8".getBytes("utf-8"));
-            System.out.println("encodeUrl: " + encode + "\n");
+        // URL：输出映射到一组字符 A-Za-z0-9+_，输出是 URL 和文件。
+        encode = java.util.Base64.getUrlEncoder().encodeToString("TutorialsPoint?java8".getBytes(StandardCharsets.UTF_8));
+        System.out.println("encodeUrl: " + encode + "\n");
 
-            // MIME：输出隐射到 MIME 友好格式。输出每行不超过76字符，并且使用'\r'并跟随'\n'作为分割。编码输出最后没有行分割。
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < 10; ++i) {
-                sb.append(UUID.randomUUID().toString());
-            }
-            bytes = sb.toString().getBytes("utf-8");
-            encode = java.util.Base64.getMimeEncoder().encodeToString(bytes);
-            System.out.println("encodeMime:\n" + encode + "\n");
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        // MIME：输出隐射到 MIME 友好格式。输出每行不超过76字符，并且使用'\r'并跟随'\n'作为分割。编码输出最后没有行分割。
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 10; ++i) {
+            sb.append(UUID.randomUUID().toString());
         }
+        bytes = sb.toString().getBytes(StandardCharsets.UTF_8);
+        encode = java.util.Base64.getMimeEncoder().encodeToString(bytes);
+        System.out.println("encodeMime:\n" + encode + "\n");
 
     }
 
