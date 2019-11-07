@@ -16,6 +16,8 @@ package knowledge.面向对象;
  * 2.接口中的成员变量只能是 public static final 类型的，抽象类可以是各种类型的
  * 3.接口中不能含有静态代码块和静态方法，抽象类可以有
  * 4.一个类可以实现多个接口，一个类只能继承一个抽象类
+ * <p>
+ * 抽象类和接口的区别，使用场景：https://www.iteye.com/blog/yinny-1152430
  */
 public class Interface {
 
