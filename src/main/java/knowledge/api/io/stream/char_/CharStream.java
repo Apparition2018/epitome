@@ -4,6 +4,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class CharStream {
 
@@ -80,7 +81,7 @@ public class CharStream {
     public void inputStreamReader() {
         Reader reader = null;
         try {
-            reader = new InputStreamReader(new FileInputStream(dirPath + "Reader.txt"), "UTF-8");
+            reader = new InputStreamReader(new FileInputStream(dirPath + "Reader.txt"), StandardCharsets.UTF_8);
 
             char[] data = new char[64];
             StringBuilder sb = new StringBuilder();

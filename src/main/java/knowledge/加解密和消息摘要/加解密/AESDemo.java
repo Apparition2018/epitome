@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -44,7 +44,7 @@ public class AESDemo {
             // 创建密码器
             Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
 
-            byte[] byteCotent = content.getBytes("UTF-8");
+            byte[] byteCotent = content.getBytes(StandardCharsets.UTF_8);
 
             // 初始化为加密模式的密码器
             cipher.init(Cipher.ENCRYPT_MODE, getSecretKey(key));
@@ -54,7 +54,7 @@ public class AESDemo {
 
             // 通过 Base64 转码返回
             return Base64.encodeBase64String(result);
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException | UnsupportedEncodingException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
             e.printStackTrace();
         }
 
@@ -72,8 +72,8 @@ public class AESDemo {
             // 执行操作
             byte[] result = cipher.doFinal(Base64.decodeBase64(content));
 
-            return new String(result, "UTF-8");
-        } catch (NoSuchAlgorithmException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException | UnsupportedEncodingException e) {
+            return new String(result, StandardCharsets.UTF_8);
+        } catch (NoSuchAlgorithmException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
             e.printStackTrace();
         }
 

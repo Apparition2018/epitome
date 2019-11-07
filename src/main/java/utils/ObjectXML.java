@@ -3,6 +3,7 @@ package utils;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class ObjectXML {
         encoder.writeObject(obj);
         encoder.flush();
         encoder.close();
-        String rtnVal = new String(baos.toByteArray(), "UTF-8");
+        String rtnVal = new String(baos.toByteArray(), StandardCharsets.UTF_8);
         baos.close();
         return rtnVal;
     }
@@ -44,7 +45,7 @@ public class ObjectXML {
     }
 
     public static List objectXMLDecoderByString(String ins) throws Exception {
-        return objectXmlDecoder(new ByteArrayInputStream(ins.getBytes("UTF-8")));
+        return objectXmlDecoder(new ByteArrayInputStream(ins.getBytes(StandardCharsets.UTF_8)));
     }
 
     @SuppressWarnings("unchecked")

@@ -6,7 +6,7 @@ import utils.Tools;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -50,13 +50,13 @@ public class MD5Demo {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
 
             // update(bytes[])类似StringBuilder对象的append()方法，追加模式，属于一个累计更改的过程
-            md5.update(src.getBytes("UTF-8"));
+            md5.update(src.getBytes(StandardCharsets.UTF_8));
 
             // digest()被调用后，MessageDigest对象就被重置，即不能连续再次调用该方法计算原数据的MD5值（可以手动调用reset()方法重置输入源）
             // digest()返回16位长度的哈希值，由byte[]承接
             byte[] bytes = md5.digest();
 
-//			byte[] bytes = md5.digest(src.getBytes("UTF-8"));
+//			byte[] bytes = md5.digest(src.getBytes(StandardCharsets.UTF_8));
 
             // 加密后的bytes[]转化为十六进制的32位长度的字符串
             System.out.println("16进制字符串：" + Tools.bytes2Hex2(bytes));
@@ -64,7 +64,7 @@ public class MD5Demo {
             // 加密后的bytes[]通过Base64再次加密成字符串
             System.out.println("Base64字符串：" + Base64.getEncoder().encodeToString(bytes));
 
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
 
@@ -79,8 +79,8 @@ public class MD5Demo {
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             md5.digest(src.getBytes());
-            byte[] bytes = md5.digest(src.getBytes("UTF-8"));
-            StringBuffer sb = new StringBuffer();
+            byte[] bytes = md5.digest(src.getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
             // 把每一个byte 做一个与运算 0xff;
             for (byte b : bytes) {
                 // 与运算
@@ -93,7 +93,7 @@ public class MD5Demo {
             }
 
             System.out.println("加盐字符串：" + sb.toString());
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
     }
@@ -108,10 +108,10 @@ public class MD5Demo {
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             md5.digest(src.getBytes());
-            byte[] bytes = md5.digest(("id" + src).getBytes("UTF-8")); // 加盐
+            byte[] bytes = md5.digest(("id" + src).getBytes(StandardCharsets.UTF_8)); // 加盐
 
             System.out.println("加盐字符串：" + Tools.bytes2Hex2(bytes));
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
     }

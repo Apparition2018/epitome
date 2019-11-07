@@ -3,6 +3,7 @@ package knowledge.api.lang.string;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
@@ -34,7 +35,7 @@ public class StringDemo {
     public void string() throws UnsupportedEncodingException {
         byte[] data = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
                 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-        String s = new String(data, 0, 26, "UTF-8");
+        String s = new String(data, 0, 26, StandardCharsets.UTF_8);
         p(s); // abcdefghijklmnopqrstuvwxyz
     }
 
@@ -127,12 +128,7 @@ public class StringDemo {
         byte[] bArr1 = s.getBytes();
         byte[] bArr2 = new byte[0];
 
-        try {
-            bArr2 = s.getBytes("UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            p("不支持的字符集");
-        }
+        bArr2 = s.getBytes(StandardCharsets.UTF_8);
 
         p(new String(bArr1));  // hello world
         p(new String(bArr2));  // hello world

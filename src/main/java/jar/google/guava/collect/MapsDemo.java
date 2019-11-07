@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -31,7 +32,7 @@ public class MapsDemo {
     @Getter
     @Setter
     @AllArgsConstructor
-    class Person {
+    private static class Person {
         private String Id;
         private String name;
     }
@@ -140,7 +141,7 @@ public class MapsDemo {
     public void fromProperties() throws IOException {
         Properties capitals = new Properties();
         capitals.load(new InputStreamReader(
-                new FileInputStream("src/main/java/jar/google/guava/collect/capitals" + ".properties"), "UTF-8"));
+                new FileInputStream("src/main/java/jar/google/guava/collect/capitals" + ".properties"), StandardCharsets.UTF_8));
 
         ImmutableMap<String, String> map = Maps.fromProperties(capitals);
         System.out.println(map); // {广东=广州, 江苏=南京, 山东=济南}

@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 
 /**
  * URL
@@ -45,7 +46,7 @@ public class URLDemo {
     public void openStream() throws IOException {
         URL url = new URL("http://www.baidu.com");
         InputStream is = url.openStream();
-        BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
         String line;
         StringBuilder sb = new StringBuilder();
         while ((line = br.readLine()) != null) {

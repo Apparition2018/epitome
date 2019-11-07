@@ -2,8 +2,8 @@ package knowledge.加解密和消息摘要.消息摘要算法;
 
 import org.junit.Test;
 
-import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -36,13 +36,13 @@ public class SHADemo {
 
             MessageDigest sha = MessageDigest.getInstance("SHA-384");
 
-            sha.update(src.getBytes("UTF-8"));
+            sha.update(src.getBytes(StandardCharsets.UTF_8));
 
             byte[] bytes = sha.digest();
 
             System.out.println("SHA-512加密：" + new BigInteger(1, bytes).toString(32));
 
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
 
