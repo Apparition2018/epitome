@@ -1,8 +1,9 @@
 package knowledge.api.util.properties;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import org.apache.commons.io.IOUtils;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 /**
@@ -15,20 +16,18 @@ public class PropertiesUtil {
 
     public static Properties loadProps(String fileName) {
         Properties props = new Properties();
-        InputStream is = null;
-        try {
-            is = PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName);
-            props.load(new InputStreamReader(is, "UTF-8"));
+        Reader reader = null;
+        try (InputStream is = PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName)) {
+            if (is != null) {
+                props.load(new InputStreamReader(is, StandardCharsets.UTF_8));
+            } else {
+                reader = new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8);
+                props.load(reader);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            IOUtils.closeQuietly(reader);
         }
         return props;
     }

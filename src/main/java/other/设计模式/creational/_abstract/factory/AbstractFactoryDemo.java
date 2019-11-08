@@ -1,135 +1,123 @@
 package other.设计模式.creational._abstract.factory;
 
+import java.util.Objects;
+
 /**
  * 抽象工厂模式：提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类
+ * <p>
+ * 抽象工厂模式 | 菜鸟教程：https://www.runoob.com/design-pattern/abstract-factory-pattern.html
+ * <p>
+ * 应用场合：系统的产品有多于一个的产品族，而系统只消费其中某一族的产品
+ * <p>
+ * 关键代码：抽象工厂
+ * <p>
+ * https://www.imooc.com/learn/261
  *
- * https://www.runoob.com/design-pattern/abstract-factory-pattern.html
+ * @author ljh
+ * created on 2019/11/7 15:04
  */
 public class AbstractFactoryDemo {
     public static void main(String[] args) {
-        AbstractFactory shapeFactory = FactoryProducer.getFactory("SHAPE");
-        Shape square = shapeFactory.getShape("SQUARE");
-        square.draw();
+        PcFactory dellFactory = FactoryProducer.getFactory("DELL");
+        Mouse dellMouse = Objects.requireNonNull(dellFactory).createMouse();
+        dellMouse.click();
 
-        AbstractFactory colorFactory = FactoryProducer.getFactory("COLOR");
-        Color red = colorFactory.getColor("RED");
-        red.fill();
+        PcFactory hpFactory = FactoryProducer.getFactory("HP");
+        Keyboard hpKeyboard = Objects.requireNonNull(hpFactory).createKeyboard();
+        hpKeyboard.press();
     }
 }
 
-interface Shape {
-    void draw();
+/**
+ * 抽象产品
+ */
+interface Mouse {
+    void click();
 }
 
-class Rectangle implements Shape {
+class DellMouse implements Mouse {
+
     @Override
-    public void draw() {
-        System.out.println("Inside Rectangle::draw() method.");
+    public void click() {
+        System.out.println("DellMouse.click");
     }
 }
 
-class Square implements Shape {
+class HpMouse implements Mouse {
 
     @Override
-    public void draw() {
-        System.out.println("Inside Square::draw() method.");
+    public void click() {
+        System.out.println("HpMouse.click");
     }
 }
 
-class Circle implements Shape {
+/**
+ * 抽象产品
+ */
+interface Keyboard {
+    void press();
+}
+
+class DellKeyboard implements Keyboard {
 
     @Override
-    public void draw() {
-        System.out.println("Inside Circle::draw() method.");
+    public void press() {
+        System.out.println("DellKeyboard.press");
     }
 }
 
-interface Color {
-    void fill();
-}
-
-class Red implements Color {
+class HpKeyboard implements Keyboard {
 
     @Override
-    public void fill() {
-        System.out.println("Inside Red::fill() method.");
+    public void press() {
+        System.out.println("HpKeyboard.press");
     }
 }
 
-class Green implements Color {
+/**
+ * 抽象工厂
+ */
+interface PcFactory {
+    Mouse createMouse();
 
-    @Override
-    public void fill() {
-        System.out.println("Inside Green::fill() method.");
-    }
+    Keyboard createKeyboard();
 }
 
-class Blue implements Color {
+class DellFactory implements PcFactory {
 
     @Override
-    public void fill() {
-        System.out.println("Inside Blue::fill() method.");
-    }
-}
-
-abstract class AbstractFactory {
-    public abstract Color getColor(String color);
-
-    public abstract Shape getShape(String shape);
-}
-
-class ShapeFactory extends AbstractFactory {
-
-    @Override
-    public Shape getShape(String shapeType) {
-        if (shapeType == null) {
-            return null;
-        }
-        if (shapeType.equalsIgnoreCase("RECTANGLE")) {
-            return new Rectangle();
-        } else if (shapeType.equalsIgnoreCase("SQUARE")) {
-            return new Square();
-        } else if (shapeType.equalsIgnoreCase("CIRCLE")) {
-            return new Circle();
-        }
-        return null;
+    public Mouse createMouse() {
+        return new DellMouse();
     }
 
     @Override
-    public Color getColor(String color) {
-        return null;
+    public Keyboard createKeyboard() {
+        return new DellKeyboard();
     }
 }
 
-class ColorFactory extends AbstractFactory {
+class HpFactory implements PcFactory {
 
     @Override
-    public Shape getShape(String shapeType) {
-        return null;
+    public Mouse createMouse() {
+        return new HpMouse();
     }
 
     @Override
-    public Color getColor(String color) {
-        if (color == null) {
-            return null;
-        }
-        if (color.equalsIgnoreCase("RED")) {
-            return new Red();
-        } else if (color.equalsIgnoreCase("GREEN")) {
-            return new Green();
-        } else if (color.equalsIgnoreCase("BLUE")) {
-            return new Blue();
-        }
-        return null;
+    public Keyboard createKeyboard() {
+        return new HpKeyboard();
     }
 }
 
+/**
+ * 工厂生成器
+ */
 class FactoryProducer {
-    public static AbstractFactory getFactory(String choice) {
-        if (choice.equalsIgnoreCase("SHAPE")) {
-            return new ShapeFactory();
-        } else if (choice.equalsIgnoreCase("COLOR")) {
-            return new ColorFactory();
+    static PcFactory getFactory(String factoryName) {
+        if ("DELL".equalsIgnoreCase(factoryName)) {
+            return new DellFactory();
+        } else if ("HP".equalsIgnoreCase(factoryName)) {
+            return new HpFactory();
         }
         return null;
     }

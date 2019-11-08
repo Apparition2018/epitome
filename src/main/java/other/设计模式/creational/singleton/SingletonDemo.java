@@ -7,17 +7,21 @@ import org.junit.Test;
  * 单例模式：保证整个应用程序中某个实例有且只有一个
  * <p>
  * 应用场合：有些对象只需要一个就足够了
+ * <p>
+ * 使用场景：
  * 1.配置文件
  * 2.工具类
  * 3.线程池
  * 4.缓存
  * 5.日志对象
+ * 6.计数器
  * <p>
  * 关键代码：构造器私有，另外提供一个用于获取实例的方法
  * <p>
  * 例模式的七种写法：https://cantellow.iteye.com/blog/838473
  * 深入理解单例模式：https://blog.csdn.net/mnb65482/article/details/80458571
  * 单例模式 | 菜鸟教程：https://www.runoob.com/design-pattern/singleton-pattern.html
+ * 单例模式：https://blog.csdn.net/wangwei129549/article/details/50623579
  * <p>
  * https://www.imooc.com/video/1778
  *
