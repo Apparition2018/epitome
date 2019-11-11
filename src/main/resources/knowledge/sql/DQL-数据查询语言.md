@@ -32,7 +32,7 @@
 >SELECT ename, job, deptno FROM emp WHERE deptno NOT IN(10, 20, 40);
 >```
 ---
-## 分组查询 (GROUY BY / HAVING)
+## 分组查询 (GROUP BY / HAVING)
 ```
 SELECT deptno, MAX(sal) max_sal FROM emp GROUP BY deptno HAVING MAX(sal) > 2000;
 ```

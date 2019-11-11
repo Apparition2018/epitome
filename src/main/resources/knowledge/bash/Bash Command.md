@@ -101,6 +101,7 @@ tree                                            以树状图显示目录内容
 quota                                           显示磁盘已使用的空间与限制
 df          disk free                           显示磁盘使用情况
 du          disk usage                          显示目录或文件所占空间
+stat                                            显示 inode 内容
 
 mkdir       make directory                      创建目录
     -p      --parents                           创建多级目录
