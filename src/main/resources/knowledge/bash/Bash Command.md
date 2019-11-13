@@ -5,7 +5,7 @@
 ---
 ## 参考网站
 1. [Linux 命令大全 | 菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
-2. [Linu x命令教程 | 易百教程](https://www.yiibai.com/linux)
+2. [Linux 命令教程 | 易百教程](https://www.yiibai.com/linux)
 3. [Linux 常见命令缩写](https://www.cnblogs.com/h2mm/p/6691309.html)
 4. [Linux 常用 bash 命令](https://www.cnblogs.com/shiyou00/p/10369321.html)
 ---
