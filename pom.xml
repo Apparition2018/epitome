@@ -29,6 +29,7 @@
         <springboot-druid>1.1.18</springboot-druid>
         <springboot-pagehelper>1.2.12</springboot-pagehelper>
         <poi>3.17</poi>
+        <hutool>4.5.16</hutool>
         <guava>28.0-jre</guava>
         <commons-math3>3.6.1</commons-math3>
         <commons-text>1.6</commons-text>
@@ -50,9 +51,10 @@
 
 
     <!--
-        没有写版本号的依赖在顶级模块 spring-boot-dependencies 已经定义了版本号
+        没有写版本号的依赖在顶级模块 spring-boot-dependencies 已经定义了版本号，如：
             <lombok.version>1.18.8</lombok.version>
-            <mysql.version>8.0.17</mysql.version>
+            <httpclient.version>4.5.9</httpclient.version>
+            ......
     -->
     <dependencies>
         <!-- spring-boot-starter：https://www.cnblogs.com/yaowen/p/8623902.html -->
@@ -153,7 +155,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>4.5.16</version>
+            <version>${hutool}</version>
         </dependency>
 
         <!-- httpclient -->
