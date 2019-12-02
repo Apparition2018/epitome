@@ -152,6 +152,15 @@ public class StringDemo {
     }
 
     /**
+     * join(CharSequence delimiter, Iterable<? extends CharSequence>/CharSequence... elements)
+     * 返回由 elements 和指定分隔符组成的新字符串。
+     */
+    @Test
+    public void join() {
+        p(String.join(",", "1", "2", "3")); // 1,2,3
+    }
+
+    /**
      * boolean	matches(String regex)
      * 告知此字符串是否匹配给定的正则表达式
      * <p>
