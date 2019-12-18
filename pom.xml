@@ -25,9 +25,9 @@
         <!-- https://blog.csdn.net/weixin_34360651/article/details/91778454 -->
         <java.version>1.8</java.version>
         <!-- dependency -->
-        <springboot-mybatis>2.1.0</springboot-mybatis>
+        <springboot-mybatis>2.1.1</springboot-mybatis>
         <springboot-druid>1.1.18</springboot-druid>
-        <springboot-pagehelper>1.2.12</springboot-pagehelper>
+        <springboot-pagehelper>1.2.13</springboot-pagehelper>
         <poi>3.17</poi>
         <hutool>4.5.16</hutool>
         <guava>28.0-jre</guava>
@@ -72,7 +72,8 @@
             <!--<scope>test</scope>-->
         </dependency>
 
-        <!-- spring boot 整合 freemarker -->
+        <!-- spring boot 整合 freemarker
+            包含了 spring-context-support -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
@@ -117,19 +118,17 @@
             <version>${springboot-pagehelper}</version>
         </dependency>
 
-        <!-- spring-context-support
-            spring-boot-starter-freemarker 包含了 spring-context-support
-        -->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-context-support</artifactId>-->
-        <!--</dependency>-->
-
         <!-- mysql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- logback: 包含了 logback-core, slf4j-api -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
         </dependency>
 
         <!-- quartz：定时任务 -->

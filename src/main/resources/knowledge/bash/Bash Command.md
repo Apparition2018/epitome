@@ -14,6 +14,12 @@
 2. [Linux 命令之 ssh 基本用法](https://blog.csdn.net/gaoxilong526/article/details/79757285)
 3. [Linux 下命令行 curl 的 10 种常见用法示例](https://www.cnblogs.com/zxqblogrecord/p/8900219.html)
 ---
+## 其它
+```
+&                                               后台执行
+|                                               管道命令
+```
+---
 ## 文件管理
 ```
 cat         concatenate                         显示文件内容                    ???
