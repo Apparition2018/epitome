@@ -300,6 +300,13 @@
             <artifactId>javase</artifactId>
             <version>${zxing}</version>
         </dependency>
+        
+        <!-- easy-captcha：生成验证码 -->
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
+            <version>1.6.2</version>
+        </dependency>
 
         <!-- pinyin4j：汉字转拼音 -->
         <dependency>
