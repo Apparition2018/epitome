@@ -23,7 +23,7 @@ public class ValidCodeServlet extends HttpServlet {
         if (inCode.equalsIgnoreCase(validCode)) {
             response.sendRedirect("index.jsp");
         } else {
-            request.getSession().setAttribute("err", "验证码输入错误，请重新输入");
+            request.getSession().setAttribute("err", "验证码输入错误，请重新输入！");
             // 返回上一页
             response.sendRedirect(request.getHeader("Referer"));
         }

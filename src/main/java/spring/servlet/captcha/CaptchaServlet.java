@@ -21,8 +21,8 @@ public class CaptchaServlet extends HttpServlet {
 
     private Random random = new Random(); // 随机数对象
     private int width = 80;     // 宽度
-    private int height = 30;    // 高度
-    private int fontSize = 12;  // 字体大小
+    private int height = 24;    // 高度
+    private int fontSize = 16;  // 字体大小
     private String str = "0123456789abcdef";
 
     @Override
