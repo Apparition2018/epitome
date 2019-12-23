@@ -6,17 +6,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * ArithmeticCaptchaServlet
- * 算术验证码
+ * CaptchaRandomServlet
+ * 随机字符串验证码
  *
  * @author Arsenal
- * created on 2019/12/23 22:52
+ * created on 2019/12/23 10:20
  */
-public class ArithmeticCaptchaServlet extends HttpServlet {
+public class CaptchaRandomServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        CaptchaUtils.createCaptcha(request, response, "arithmetic");
+        CaptchaUtils.createCaptcha(request, response, "random");
     }
 
     @Override

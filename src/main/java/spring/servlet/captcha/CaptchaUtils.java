@@ -1,5 +1,7 @@
 package spring.servlet.captcha;
 
+import com.google.code.kaptcha.Constants;
+
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -36,9 +38,9 @@ public class CaptchaUtils {
             request.getSession().setAttribute("validCode", result);
         }
         // 2.创建画板
-        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         // 3.创建画笔
-        Graphics2D pen = (Graphics2D) img.getGraphics();
+        Graphics2D pen = (Graphics2D) image.getGraphics();
         // 4.绘制内容
         //  4.1设置绘制区域
         pen.fillRect(0, 0, width, height);
@@ -58,10 +60,38 @@ public class CaptchaUtils {
             pen.drawLine(random.nextInt(width / 2), random.nextInt(height), random.nextInt(width), random.nextInt(height));
         }
         // 5.存为图片并发送
-        ServletOutputStream outputStream = response.getOutputStream();
-        ImageIO.write(img, "png", outputStream);
-        outputStream.flush();
-        outputStream.close();
+        ServletOutputStream sos = response.getOutputStream();
+        ImageIO.write(image, "png", sos);
+        sos.flush();
+        sos.close();
+    }
+    
+    public static void valid (HttpServletRequest request, HttpServletResponse response, String captchaType) throws IOException {
+        // 1.得到数据
+        String validCode;
+        if (captchaType.contains("kaptcha")) {
+            validCode = request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY).toString();
+        } else {
+            validCode = request.getSession().getAttribute("validCode").toString();
+        }
+        String inCode;
+        if ("kaptcha2".equals(captchaType)) {
+            inCode = request.getParameter("inCode2");
+        } else {
+            inCode = request.getParameter("inCode");
+        }
+        // 2.验证是否正确
+        if (inCode.equalsIgnoreCase(validCode)) {
+            response.sendRedirect("index.jsp");
+        } else {
+            if ("kaptcha2".equals(captchaType)) {
+                request.getSession().setAttribute("err2", "验证码输入错误，请重新输入！");
+            } else {
+                request.getSession().setAttribute("err", "验证码输入错误，请重新输入！");
+            }
+            // 返回上一页
+            response.sendRedirect(request.getHeader("Referer"));
+        }
     }
 
     /**

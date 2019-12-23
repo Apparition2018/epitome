@@ -6,16 +6,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * ValidServlet
+ * ValidKaptcha2Servlet
  *
  * @author Arsenal
- * created on 2019/12/23 16:25
+ * created on 2019/12/24 0:09
  */
-public class ValidServlet extends HttpServlet {
+public class ValidKaptcha2Servlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        CaptchaUtils.valid(request, response, "captcha");
+        CaptchaUtils.valid(request, response, "kaptcha2");
     }
 
     @Override
