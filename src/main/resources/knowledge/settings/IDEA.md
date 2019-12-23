@@ -21,6 +21,12 @@
      * created on ${DATE} ${TIME}
      */
 ---
+## Terminal
+    1. Settings
+    2. Tools
+    3. Terminal
+    4. Shell path
+---
 ## 强制换行
     1. Settings
     2. Editor
@@ -34,10 +40,4 @@
     3. Code Style
     4. General
     5. Line Separator
----
-## Terminal
-    1. Settings
-    2. Tools
-    3. Terminal
-    4. Shell path
 ---
