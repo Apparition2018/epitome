@@ -33,6 +33,11 @@ mybatis-plus    Mybatis-Plus
                 逻辑删除 + 自动填充 + 乐观锁 + SQL性能分析(p6spy) + 多租户 + 动态表 + SQL注入器 + 阻断攻击SQL + MybatisX插件
                 生成代码 + 通用枚举(未学习) + 动态数据源(未学习)
 
+elasticsearch-1 ElasticSearch入门
+                ResponseEntity + log4j2 + mvn spring-boot:run
+
+elasticsearch-2 ElasticSearch 构建博客检索系统
+                
 
 ssh-2           基于SSH实现员工管理系统之案例实现篇
                 SSH + mysql + c3p0 + jsp + log4j2 + 分页查询

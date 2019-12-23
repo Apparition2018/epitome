@@ -12,7 +12,7 @@ import java.util.UUID;
  * 通过 easy-captcha 生成图片验证码
  * https://github.com/whvcse/EasyCaptcha
  *
- * @author NL-PC001
+ * @author arsenal
  * created on 2019/12/20 10:07
  */
 public class EasyCaptchaDemo {
