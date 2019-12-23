@@ -6,7 +6,7 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>Captcha|随机验证码</title>
+    <title>Captcha|算术验证码</title>
     <style>
         section {
             height: 100px;
@@ -22,7 +22,7 @@
     <form action="valid.do" method="post">
         <label for="inCode">验证码：</label>
         <input type="text" id="inCode" name="inCode"/>
-        <img src="captcha.do" alt="captcha" id="imgCode" onclick="changeCode()"/><br/>
+        <img src="arithmeticCaptcha.do" alt="captcha" id="imgCode" onclick="changeCode()"/><br/>
         <input type="submit" value="登录">
     </form>
     <div style="color:red">${err}</div>
@@ -35,7 +35,7 @@
     <script>
         function changeCode() {
             let imgCode = document.getElementById("imgCode");
-            imgCode.src = "captcha.do?" + Math.random();
+            imgCode.src = "arithmeticCaptcha.do?" + Math.random();
         }
     </script>
 </section>
@@ -65,7 +65,7 @@
 
         function valid() {
             let code = document.getElementById("inCode2").value;
-            if (code.toLowerCase() === validCode.toLowerCase()) {
+            if (code.toString() === validCode.toString()) {
                 return true;
             } else {
                 document.getElementById("err").innerHTML = "验证码输入错误，请重新输入！";
@@ -77,23 +77,19 @@
         let w = 80;
         let h = 24;
         let fontSize = h - 6;
-        let str = "0123456789abcdefABCDEF";
+        let operators = "+-";
 
         // 随机生成最大值不超过 max 的整数
         function ranInt(max) {
             return Math.floor(Math.random() * 100000 % max);
         }
 
-        // 生成随机长度字符串验证码
-        function ranCode(len) {
-            if (len < 4) {
-                len = 4;
-            }
-            let code = "";
-            for (let i = 0; i < len; i++) {
-                code += str.charAt(ranInt(str.length));
-            }
-            return code;
+        // 生成随机算术表达式
+        function ranCode() {
+            let one = ranInt(100);
+            let two = ranInt(100);
+            let operator = operators.charAt(ranInt(operators.length));
+            return "" + one + operator + two + "=?";
         }
 
         // 生成随机颜色
@@ -106,7 +102,7 @@
 
         // 绘制图片
         function drawCode(canvas) {
-            let validCode = ranCode(4);
+            let validCode = ranCode();
             w = 5 + fontSize * validCode.length;
             if (canvas != null && canvas.getContext && canvas.getContext("2d")) {
                 // 设置显式区域大小
@@ -135,7 +131,9 @@
                     pen.lineWidth = 2;
                     pen.stroke();
                 }
-                return validCode;
+                validCode = validCode. substr(0, validCode.length - 2);
+                // eval(): 把字符串当表达式处理 
+                return eval(validCode);
             }
         }
 

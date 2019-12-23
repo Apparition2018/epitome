@@ -1,9 +1,7 @@
 package spring.servlet.captcha;
 
 import javax.imageio.ImageIO;
-import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
@@ -12,24 +10,31 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * CaptchaServlet
+ * CaptchaUtils
  *
- * @author NL-PC001
- * created on 2019/12/23 10:20
+ * @author Arsenal
+ * created on 2019/12/23 23:08
  */
-public class CaptchaServlet extends HttpServlet {
+public class CaptchaUtils {
 
-    private Random random = new Random(); // 随机数对象
-    private int width = 80;     // 宽度
-    private int height = 24;    // 高度
-    private int fontSize = 16;  // 字体大小
-    private String str = "0123456789abcdef";
+    private static Random random = new Random(); // 随机数对象
+    private static int width = 140;    // 宽度
+    private static int height = 24;    // 高度
+    private static int fontSize = 18;  // 字体大小
+    private static String randoms = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static String operators = "+-";
+    private static int result = -1; // 保存计算结果
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public static void createCaptcha(HttpServletRequest request, HttpServletResponse response, String captchaType) throws IOException {
         // 1.生成随机内容
-        String code = ranCode(4);
-        request.getSession().setAttribute("validCode", code);
+        String code;
+        if ("random".equals(captchaType)) {
+            code = ranCode(4);
+            request.getSession().setAttribute("validCode", code);
+        } else {
+            code = ranCode();
+            request.getSession().setAttribute("validCode", result);
+        }
         // 2.创建画板
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         // 3.创建画笔
@@ -59,15 +64,36 @@ public class CaptchaServlet extends HttpServlet {
         outputStream.close();
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request, response);
+    /**
+     * 随机算术表达式
+     */
+    private static String ranCode() {
+        // 更改宽度
+        width = 5 + fontSize * 7;
+        int one = random.nextInt(100);
+        int two = random.nextInt(100);
+        char operator = operators.charAt(random.nextInt(operators.length()));
+        switch (operator) {
+            case '+':
+                result = one + two;
+                break;
+            case '-':
+                result = one - two;
+                break;
+            case '*':
+                result = one * two;
+                break;
+            case '/':
+                result = one / two;
+                break;
+        }
+        return "" + one + operator + two + "=?";
     }
 
     /**
      * 生成最少4个字符的随机字符串
      */
-    private String ranCode(int len) {
+    private static String ranCode(int len) {
         if (len < 4) {
             len = 4;
         }
@@ -76,7 +102,7 @@ public class CaptchaServlet extends HttpServlet {
         // 生成字符串
         StringBuilder code = new StringBuilder();
         for (int i = 0; i < len; i++) {
-            code.append(str.charAt(random.nextInt(str.length())));
+            code.append(randoms.charAt(random.nextInt(randoms.length())));
         }
         return code.toString();
     }
@@ -84,7 +110,7 @@ public class CaptchaServlet extends HttpServlet {
     /**
      * 生成随机颜色
      */
-    private Color ranColor() {
+    private static Color ranColor() {
         int r = random.nextInt(256);
         int g = random.nextInt(256);
         int b = random.nextInt(256);

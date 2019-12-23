@@ -26,20 +26,29 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>CaptchaServlet</servlet-name>
-        <servlet-class>spring.servlet.captcha.CaptchaServlet</servlet-class>
+        <servlet-name>RandomCaptchaServlet</servlet-name>
+        <servlet-class>spring.servlet.captcha.RandomCaptchaServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CaptchaServlet</servlet-name>
-        <url-pattern>/captcha.do</url-pattern>
+        <servlet-name>RandomCaptchaServlet</servlet-name>
+        <url-pattern>/randomCaptcha.do</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ArithmeticCaptchaServlet</servlet-name>
+        <servlet-class>spring.servlet.captcha.ArithmeticCaptchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ArithmeticCaptchaServlet</servlet-name>
+        <url-pattern>/arithmeticCaptcha.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ValidCodeServlet</servlet-name>
-        <servlet-class>spring.servlet.captcha.ValidCodeServlet</servlet-class>
+        <servlet-name>ValidServlet</servlet-name>
+        <servlet-class>spring.servlet.captcha.ValidServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ValidCodeServlet</servlet-name>
+        <servlet-name>ValidServlet</servlet-name>
         <url-pattern>/valid.do</url-pattern>
     </servlet-mapping>
 </web-app>
