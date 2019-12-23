@@ -36,6 +36,10 @@ public class Captcha {
      */
     private static final String[] FONTS = {"Consolas", "Arial", "Algerian"};
     /**
+     * 验证码位数
+     */
+    private static final int SIZE = 4;
+    /**
      * 随机字符
      */
     private static final String RANDOM_CHARS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -63,7 +67,7 @@ public class Captcha {
         // 生成随机 key，作为 redis key，用于后期验证码验证
         String key = UUID.randomUUID().toString();
         // 生成验证码画布
-        BufferedImage bufferedImage = createBufferedImage("ABCD".toCharArray());
+        BufferedImage bufferedImage = createBufferedImage(getNumber(SIZE).toCharArray());
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         // 将图片按照指定的格式（jpeg）画到流上
         ImageIO.write(bufferedImage, "jpg", outputStream);
@@ -77,7 +81,7 @@ public class Captcha {
      */
     public static void servlet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 获取随机数（验证码）
-        String number = getNumber(4);
+        String number = getNumber(SIZE);
         // 将验证码绑定到 session 对象上
         request.getSession().setAttribute("captcha", number);
         // 生成验证码画布
@@ -106,7 +110,7 @@ public class Captcha {
             Font font = randomFont();
             g.setFont(font);
             // 在图片上绘制随机数
-            g.drawString(Character.toString(numbers[i]), WIDTH / 4 * i, (HEIGHT + font.getSize() * 2 / 3) / 2);
+            g.drawString(Character.toString(numbers[i]), WIDTH / SIZE * i, (HEIGHT + font.getSize() * 2 / 3) / 2);
         }
         // 添加干扰线
         drawLine(image);
@@ -121,6 +125,9 @@ public class Captcha {
      * @param size 位数
      */
     private static String getNumber(int size) {
+        if (size < 4) {
+            size = 4;
+        }
         StringBuilder number = new StringBuilder();
         for (int i = 0; i < size; i++) {
             number.append(RANDOM_CHARS.charAt(random.nextInt(RANDOM_CHARS.length())));
@@ -141,7 +148,7 @@ public class Captcha {
     private static Font randomFont() {
         String name = FONTS[random.nextInt(FONTS.length)];
         int style = random.nextInt(3);
-        int size = (int) (random.nextInt(5) + HEIGHT);
+        int size = random.nextInt(5) + HEIGHT;
         return new Font(name, style, size);
     }
 

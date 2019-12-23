@@ -24,4 +24,22 @@
         <!-- 默认匹配所有的请求 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CaptchaServlet</servlet-name>
+        <servlet-class>spring.servlet.captcha.CaptchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CaptchaServlet</servlet-name>
+        <url-pattern>/captcha.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ValidCodeServlet</servlet-name>
+        <servlet-class>spring.servlet.captcha.ValidCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValidCodeServlet</servlet-name>
+        <url-pattern>/valid.do</url-pattern>
+    </servlet-mapping>
 </web-app>
