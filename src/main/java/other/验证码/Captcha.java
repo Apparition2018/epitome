@@ -1,5 +1,7 @@
 package other.验证码;
 
+import com.google.common.hash.Hashing;
+
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +16,7 @@ import java.util.UUID;
 /**
  * Captcha
  *
- * @author NL-PC001
+ * @author Arsenal
  * created on 2019/12/20 14:09
  */
 public class Captcha {
@@ -22,43 +24,33 @@ public class Captcha {
     /**
      * 画布宽
      */
-    private static final int WIDTH = 120;
+    private static int width = 120;
     /**
      * 画布高
      */
-    private static final int HEIGHT = 40;
-    /**
-     * 画布背景色
-     */
-    private static final Color BG_COLOR = Color.WHITE;
+    private static int height = 40;
     /**
      * 字体数组
      */
-    private static final String[] FONTS = {"Consolas", "Arial", "Algerian"};
+    private static String[] fonts = {"Consolas", "Arial", "Algerian"};
     /**
      * 验证码位数
      */
-    private static final int SIZE = 4;
+    private static int size = 4;
     /**
      * 随机字符
      */
-    private static final String RANDOM_CHARS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static String randoms = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     /**
      * 干扰线条数
      */
-    private static final int LINE = 4;
+    private static int line = 4;
     /**
      * 噪点率
      */
-    private static final double NOISE_RATE = 0.05f;
+    private static double noiseRate = 0.05f;
 
     private static Random random = new Random();
-
-    private static boolean borderGap = true;
-
-    public static void main(String[] args) throws IOException {
-        System.out.println(frontBackStageDecoupling());
-    }
 
     /**
      * 前后段分离方式
@@ -67,7 +59,7 @@ public class Captcha {
         // 生成随机 key，作为 redis key，用于后期验证码验证
         String key = UUID.randomUUID().toString();
         // 生成验证码画布
-        BufferedImage bufferedImage = createBufferedImage(getNumber(SIZE).toCharArray());
+        BufferedImage bufferedImage = createBufferedImage(getNumber(size).toCharArray());
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         // 将图片按照指定的格式（jpeg）画到流上
         ImageIO.write(bufferedImage, "jpg", outputStream);
@@ -81,7 +73,7 @@ public class Captcha {
      */
     public static void servlet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 获取随机数（验证码）
-        String number = getNumber(SIZE);
+        String number = getNumber(size);
         // 将验证码绑定到 session 对象上
         request.getSession().setAttribute("captcha", number);
         // 生成验证码画布
@@ -96,13 +88,14 @@ public class Captcha {
      * 生成验证码画布
      */
     private static BufferedImage createBufferedImage(char[] numbers) {
-        BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+        // 创建画布
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         // 获得画笔
-        Graphics g = image.getGraphics();
+        Graphics2D g = (Graphics2D) image.getGraphics();
         // 给笔设置颜色
-        g.setColor(BG_COLOR);
+        g.setColor(Color.WHITE);
         // 填充矩形区域
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+        g.fillRect(0, 0, width, height);
         for (int i = 0; i < numbers.length; i++) {
             // 重新给笔设置颜色
             g.setColor(randomColor());
@@ -110,7 +103,7 @@ public class Captcha {
             Font font = randomFont();
             g.setFont(font);
             // 在图片上绘制随机数
-            g.drawString(Character.toString(numbers[i]), WIDTH / SIZE * i, (HEIGHT + font.getSize() * 2 / 3) / 2);
+            g.drawString(Character.toString(numbers[i]), width / size * i, (height + font.getSize() * 2 / 3) / 2);
         }
         // 添加干扰线
         drawLine(image);
@@ -130,7 +123,7 @@ public class Captcha {
         }
         StringBuilder number = new StringBuilder();
         for (int i = 0; i < size; i++) {
-            number.append(RANDOM_CHARS.charAt(random.nextInt(RANDOM_CHARS.length())));
+            number.append(randoms.charAt(random.nextInt(randoms.length())));
         }
         return number.toString();
     }
@@ -139,16 +132,19 @@ public class Captcha {
      * 随机颜色
      */
     private static Color randomColor() {
-        return new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255));
+        int r = random.nextInt(256);
+        int g = random.nextInt(256);
+        int b = random.nextInt(256);
+        return new Color(r, g, b);
     }
 
     /**
      * 随机字体
      */
     private static Font randomFont() {
-        String name = FONTS[random.nextInt(FONTS.length)];
+        String name = fonts[random.nextInt(fonts.length)];
         int style = random.nextInt(3);
-        int size = random.nextInt(5) + HEIGHT;
+        int size = random.nextInt(5) + height;
         return new Font(name, style, size);
     }
 
@@ -156,10 +152,10 @@ public class Captcha {
      * 添加干扰线
      */
     private static void drawLine(BufferedImage image) {
-        Graphics g = image.getGraphics();
-        for (int i = 0; i < LINE; i++) {
-            g.drawLine(random.nextInt(WIDTH), random.nextInt(HEIGHT), random.nextInt(WIDTH), random.nextInt(HEIGHT));
+        Graphics2D g = (Graphics2D) image.getGraphics();
+        for (int i = 0; i < line; i++) {
             g.setColor(randomColor());
+            g.drawLine(random.nextInt(width / 2), random.nextInt(height), random.nextInt(width), random.nextInt(height));
         }
     }
 
@@ -167,10 +163,10 @@ public class Captcha {
      * 添加噪点
      */
     private static void drawNoise(BufferedImage image) {
-        int area = (int) (NOISE_RATE * WIDTH * HEIGHT);
+        int area = (int) (noiseRate * width * height);
         for (int i = 0; i < area; i++) {
-            int x = random.nextInt(WIDTH);
-            int y = random.nextInt(HEIGHT);
+            int x = random.nextInt(width);
+            int y = random.nextInt(height);
             image.setRGB(x, y, randomColor().getRGB());
         }
     }
