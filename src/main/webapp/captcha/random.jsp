@@ -22,7 +22,7 @@
     <form action="valid.do" method="post">
         <label for="inCode">验证码：</label>
         <input type="text" id="inCode" name="inCode"/>
-        <img src="randomCaptcha.do" alt="captcha" id="imgCode" onclick="changeCode()"/><br/>
+        <img src="captchaRandom.do" alt="captcha" id="imgCode" onclick="changeCode()"/><br/>
         <input type="submit" value="登录">
     </form>
     <div style="color:red">${err}</div>
@@ -35,7 +35,7 @@
     <script>
         function changeCode() {
             let imgCode = document.getElementById("imgCode");
-            imgCode.src = "randomCaptcha.do?" + Math.random();
+            imgCode.src = "captchaRandom.do?" + Math.random();
         }
     </script>
 </section>
@@ -132,7 +132,7 @@
                     pen.moveTo(ranInt(w) / 2, ranInt(h));   // 设置起点
                     pen.lineTo(ranInt(w), ranInt(h));       // 设置终点
                     pen.strokeStyle = ranColor();
-                    pen.lineWidth = 2;
+                    pen.lineWidth = 1;
                     pen.stroke();
                 }
                 return validCode;
