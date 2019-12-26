@@ -96,7 +96,7 @@ lprm                                            将一个工作由打印机贮�
 ---
 ## 磁盘管理
 ```
-cd          change directory                    切换目录
+cd          change directory                    切换目录R
 
 ls          list                                显示目录下内容
     -a      --all                               显示目录下内容，包括以 . 开头的隐藏文件
@@ -148,6 +148,7 @@ tty         teletypewriter                      显示终端机连接标准输�
 rsh         remote shell                        登入远端 shell
 su          switch user                         切换用户
 chsh        change shell                        更改使用者 shell 设定
+sudo        super user do                       以系统管理者的身份执行指令
 ulimit      user's limit                        控制 shell 程序的资源
 kill                                            杀死进程
 top                                             显示 process 的动态
@@ -188,7 +189,14 @@ usermod                                         修改用户
 userdel                                         删除用户
 passwd      password                            更改密码
 eval        evaluate                            读取一连串的参数，然后再依参数本身的特性来执行
+
 rpm         redhat package manager              红帽子打包管理器
+    -a                                          查询所有套件
+    -i                                          安装指定的套件档
+    -h                                          套件安装时列出标记
+    -v                                          显示指令执行过程
+    -q                                          使用询问模式，当遇到任何问题时，会先询问用户
+
 yum         yellow dog updater, modified        前端软件包管理器
 lsmod       list modules                        显示已载入模块
 insmod      install modules                     载入模块                            ???
