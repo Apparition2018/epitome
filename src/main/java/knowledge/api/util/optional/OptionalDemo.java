@@ -2,6 +2,7 @@ package knowledge.api.util.optional;
 
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -50,7 +51,7 @@ public class OptionalDemo {
 
         // orElseThrow() 与 orElse() 类似，区别在于返回值
         // orElseThrow() 抛出由传入的 lambda 表达式/方法生成异常
-        try {
+        try { 
             empty.orElseThrow(RuntimeException::new);
         } catch (Throwable throwable) {
             System.out.println(throwable.getMessage());  // null

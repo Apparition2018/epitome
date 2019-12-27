@@ -10,25 +10,25 @@ permission      Java开发企业级权限管理系统
                 操作记录 + Comparator + stream + 枚举 + MD5 + 获取IP + 发送邮件 + 随机生成密码 + 随机生成code
 
 springboot-1    SpringBoot+MyBatis搭建迷你小程序
-                SM + mysql + c3p0 + 微信小程序 + 异常处理 + 单元测试(断言)
+                SpringBoot + Mybatis + mysql + c3p0 + 微信小程序 + 异常处理 + 单元测试(断言)
 
 springboot-2    SpringBoot构建电商基础秒杀项目
-                SM + mysql + druid + html + metronic +
+                SpringBoot + Mybatis + mysql + druid + metronic +
                 mybatis-generator + 通用返回对象 + 异常处理 + Validator(优化) + model|do|vo +
                 跨域 + session + joda-time
 
 springboot-3    SpringBoot开发常用技术整合
-                SM + mysql + druid + freemarker|thymeleaf(国际化i18n) +
+                SpringBoot + Mybatis + mysql + druid + freemarker|thymeleaf(国际化i18n) +
                 MyBatisGenerator* + 通用Mapper + 事务 + PageHelper + redis + 通用返回对象 + jackson +
                 异常处理(web|ajax) + 资源文件读取 + server|tomcat配置 + 定时任务 + 异步任务 + Interceptor +
                 idWorker
 
 mybatis         通过自动回复机器人学Mybatis---基础版|加强版
-                servlet + mysql + jdbc/mybatis + jsp + log4j +
+                servlet + jdbc/mybatis + mysql + jsp + log4j +
                 接口式编程 + 代理模式 + mybatis拦截器实现分页 + 数组参数(看源码的思路)
 
 mybatis-plus    Mybatis-Plus
-                SM + mysql + logging +
+                SpringBoot + Mybatis + mysql + logging +
                 mp分页 + mp通用Mapper + mp通用Service + mp常用注解 + mp常用配置 + ActiveRecord模式 + 单元测试(断言) +
                 逻辑删除 + 自动填充 + 乐观锁 + SQL性能分析(p6spy) + 多租户 + 动态表 + SQL注入器 + 阻断攻击SQL + MybatisX插件
                 生成代码 + 通用枚举(未学习) + 动态数据源(未学习)
@@ -37,6 +37,8 @@ elasticsearch-1 ElasticSearch入门
                 ResponseEntity + log4j2 + mvn spring-boot:run
 
 elasticsearch-2 ElasticSearch 构建博客检索系统
+                SpringBoot + spring-data-jpa + mysql + Hikari + vue + axios + marked
+                跨域 + StopWatch + devtools + configuration-processor
                 
 
 ssh-2           基于SSH实现员工管理系统之案例实现篇

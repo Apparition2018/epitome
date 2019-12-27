@@ -27,17 +27,9 @@
     3. Terminal
     4. Shell path
 ---
-## 强制换行
+## JavaScript version
     1. Settings
-    2. Editor
-    3. Code Style
-    4. General
-    5. Hard wrap at
----
-## 换行符
-    1. Settings
-    2. Editor
-    3. Code Style
-    4. General
-    5. Line Separator
+    2. Languages & Frameworks
+    3. JavaScript
+    4. JavaScript language version
 ---

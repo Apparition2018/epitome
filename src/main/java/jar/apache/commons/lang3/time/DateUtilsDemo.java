@@ -213,7 +213,7 @@ public class DateUtilsDemo {
     /**
      * static int	        truncatedCompareTo(Calendar cal1, Calendar cal2, int field)
      * static int	        truncatedCompareTo(Date date1, Date date2, int field)
-     * 比较两个 Date 或 Calendar 在指定字段上 的差值
+     * 比较两个 Date 或 Calendar 在指定字段上大小
      * <p>
      * static boolean	    truncatedEquals(Calendar cal1, Calendar cal2, int field)
      * static boolean	    truncatedEquals(Date date1, Date date2, int field)

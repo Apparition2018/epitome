@@ -150,9 +150,9 @@ su          switch user                         切换用户
 chsh        change shell                        更改使用者 shell 设定
 sudo        super user do                       以系统管理者的身份执行指令
 ulimit      user's limit                        控制 shell 程序的资源
-kill                                            杀死进程
-top                                             显示 process 的动态
+top                                             显示进程的动态
 ps          process status                      显示进程状态
+kill                                            杀死进程
 whoami                                          显示自身用户名称
 id                                              显示用户 ID，以及所属群组 ID
 w                                               显示当前用户的信息
