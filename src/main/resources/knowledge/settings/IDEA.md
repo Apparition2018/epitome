@@ -12,7 +12,7 @@
     2. Editor
     3. File and Code Templates
     4. Files
-    5. Class / Interface
+    5. Class / Interface / Enum / AnnotationType
     
     /**
      * ${NAME}
