@@ -26,15 +26,14 @@ cat         concatenate                         显示文件内容              
 nl                                              显示文件内容，添加行号
 more                                            显示文件内容，以一页一页的形式
 head                                            显示文件头部内容
+    -n                                          显示的行数
 tail                                            显示文件尾部内容
 od          octal dump                          以八进制显示文件内容
 cut                                             切割文件并显示
 tee                                             读取标准输入的数据，并将其内容输出成文件
 paste                                           合并文件的列
-
 cp          copy                                复制文件或目录
     -r      --recursive                         递归复制
-
 scp         secure copy                         Linux 之间复制文件或目录
 mv          move                                更改文件或目录名字或位置
 chmod       change mode                         更改文件或目录访问权限
@@ -42,12 +41,10 @@ chgrp       change group                        更改文件或目录群组
 chown       change owner                        更改文件拥有者
 chattr      change attribute                    更改文件属性
 touch                                           更改文件或目录的时间属性
-
 rm          remove                              删除文件或目录
     -f      --force                             不存在的文件也不给出提示
     -i      --interactive                       交互式删除
     -r      --recursive                         递归删除
-
 find                                            查找文件
 whereis                                         查找文件
 which                                           查找文件
@@ -64,7 +61,6 @@ mc          midnight commander                  提供一个菜单式的文件�
 grep        global regular expression print     查找文件里符合条件的字符串
     -i                                          不区分大小写
     -n                                          显示行号
-
 egrep       extended grep                       查找文件里符合条件的字符串 (grep -e)
 fgrep       fixed grep                          查找文件里符合条件的字符串 (grep -f)
 uniq        unique                              删除重复的行列
@@ -79,7 +75,6 @@ fmt         format                              格式化文本
 col                                             过滤控制字符
 join                                            将两个文件中，指定栏位内容相同的行连接起来
 split                                           将一个文件分割成数个文件
-
 wc          word count                          统计字数
     -w                                          统计字数
     -c                                          统计字节数
@@ -97,21 +92,17 @@ lprm                                            将一个工作由打印机贮�
 ## 磁盘管理
 ```
 cd          change directory                    切换目录R
-
 ls          list                                显示目录下内容
     -a      --all                               显示目录下内容，包括以 . 开头的隐藏文件
     -i                                          显示目录下内容及其详细信息
-    
 pwd         print work directory                显示当前目录
 tree                                            以树状图显示目录内容
 quota                                           显示磁盘已使用的空间与限制
 df          disk free                           显示磁盘使用情况
 du          disk usage                          显示目录或文件所占空间
 stat                                            显示 inode 内容
-
 mkdir       make directory                      创建目录
     -p      --parents                           创建多级目录
-    
 rmdir       remove directory                    删除目录
 mount                                           挂载 Linux 系统外的文件
 umount      unmount                             卸除文件系统
@@ -159,17 +150,14 @@ w                                               显示当前用户的信息
 finger                                          显示其它用户的信息
 who                                             显示系统所有使用者信息
 whois                                           查找并显示用户信息
-
 uname       unix name                           显示系统信息
     -a      --all                               显示全部信息
     -n      --nodename                          显示主机名称
     -m      --machine                           显示处理器架构
     -s      --sysname                           显示操作系统名称
-
 shutdown                                        关闭系统
     -h                                          关闭系统后停机
     -r                                          关闭系统后重新开机
-
 reboot                                          重启系统
 logout                                          退出系统
 ```
@@ -189,14 +177,12 @@ usermod                                         修改用户
 userdel                                         删除用户
 passwd      password                            更改密码
 eval        evaluate                            读取一连串的参数，然后再依参数本身的特性来执行
-
 rpm         redhat package manager              红帽子打包管理器
     -a                                          查询所有套件
     -i                                          安装指定的套件档
     -h                                          套件安装时列出标记
     -v                                          显示指令执行过程
     -q                                          使用询问模式，当遇到任何问题时，会先询问用户
-
 yum         yellow dog updater, modified        前端软件包管理器
 lsmod       list modules                        显示已载入模块
 insmod      install modules                     载入模块                            ???
@@ -210,7 +196,6 @@ tar         tape archive                        备份文件
     -c      --create                            建立新的备份文件
     -x      --extract                           从备份文件中还原文件
     -f      --file                              指定备份文件
-
 gzip                                            压缩文件
 gunzip                                          解压 gzip 文件
 gzcat                                           查看 gzip 文件
