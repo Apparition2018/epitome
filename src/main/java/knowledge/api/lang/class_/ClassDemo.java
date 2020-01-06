@@ -77,7 +77,7 @@ public class ClassDemo {
 
     /**
      * String	getName()           返回此 Class 对象所表示的实体（类、接口、数组类、基本类型或 void）名称
-     * String	getCanonicalName()  返回 Java Language Specification 中所定义的底层类的规范化名称
+     * String	getCanonicalName()  返回 JLS (Java Language Specification) 中所定义的底层类的规范化名称
      * String	getSimpleName()     返回源代码中给出的底层类的简称
      * <p>
      * https://blog.csdn.net/moakun/article/details/80402562
