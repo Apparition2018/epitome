@@ -1165,6 +1165,7 @@ public class Suggestions {
      * 建议83：使用枚举定义常量
      * <p>
      * JLS (Java Language Specification) 提倡枚举项字母大写，单词间用下划线分割
+     * JLS: https://docs.oracle.com/javase/specs/jls/se8/html/index.html
      * <p>
      * 优点：
      * 1.简单：只需定义枚举项名称，接口常量或类常量必须还要定义值
