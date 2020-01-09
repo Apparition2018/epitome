@@ -198,7 +198,7 @@
 >Ctrl + K                       Commit                              提交
 >Ctrl + Shift + K               Push
 >Ctrl + T                       Update Project                      更新项目
->Ctrl + Q                       Quick Documentation                 查看文档
+>Ctrl + Q                       Quick Documentation                 快捷查看文档
 >Ctrl + Alt + A                 Add to VSC                          添加到VCS
 >```
 ---

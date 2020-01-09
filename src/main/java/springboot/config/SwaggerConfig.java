@@ -36,7 +36,7 @@ public class SwaggerConfig {
     // 构建 api 文档的详细信息函数
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("mavenTest")
+                .title("epitome")
                 .contact(new Contact("ljh", "localhost:3333/swagger-ui.html", "88850180@163.com"))
                 .version("1.0")
                 .build();

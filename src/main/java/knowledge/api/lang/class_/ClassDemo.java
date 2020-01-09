@@ -112,11 +112,11 @@ public class ClassDemo {
     @Test
     public void getResource() {
         // Class.getResource()
-        p(ClassDemo.class.getResource(""));                     // file:/C:/Users/234607/git/mavenTest/target/classes/knowledge/api/lang/class_/
-        p(ClassDemo.class.getResource("/"));                    // file:/C:/Users/234607/git/mavenTest/target/test-classes/
+        p(ClassDemo.class.getResource(""));                     // file:/C:/Users/234607/git/epitome/target/classes/knowledge/api/lang/class_/
+        p(ClassDemo.class.getResource("/"));                    // file:/C:/Users/234607/git/epitome/target/test-classes/
 
         // ClassLoader.getResource()
-        p(ClassDemo.class.getClassLoader().getResource(""));    // file:/C:/Users/234607/git/mavenTest/target/test-classes/
+        p(ClassDemo.class.getClassLoader().getResource(""));    // file:/C:/Users/234607/git/epitome/target/test-classes/
         p(ClassDemo.class.getClassLoader().getResource("/"));   //
 
         // PS：在获取资源路径时推荐使用 Class.getResource("/")

@@ -107,8 +107,8 @@ public class PathDemo {
     public void relativize() {
         p(p1); // src\main\java\knowledge\api\nio\path
         p(p2); // src\main\java\knowledge\api\io\file
-        p(p3); // C:\Users\234607\git\mavenTest\src\main\java\knowledge\api\nio\path
-        p(p4); // C:\Users\234607\git\mavenTest\src\main\java\knowledge\api\io\file
+        p(p3); // C:\Users\234607\git\epitome\src\main\java\knowledge\api\nio\path
+        p(p4); // C:\Users\234607\git\epitome\src\main\java\knowledge\api\io\file
 
         p(p1.relativize(p2)); // ..\..\io\file
         p(p3.relativize(p4)); // ..\..\io\file
@@ -128,12 +128,12 @@ public class PathDemo {
         Path p5 = Paths.get("src/main/java/knowledge/api/nio/path/PathDemo.java");
         p(p1.resolve("PathDemo.java"));     // src\main\java\knowledge\api\nio\path\PathDemo.java
         p(p1.resolve("/PathDemo.java"));    // \PathDemo.java
-        p(p1.resolve(p5.toAbsolutePath())); // C:\Users\234607\git\mavenTest\src\main\java\knowledge\api\nio\path\PathDemo.java
+        p(p1.resolve(p5.toAbsolutePath())); // C:\Users\234607\git\epitome\src\main\java\knowledge\api\nio\path\PathDemo.java
 
         Path p6 = p2.resolve("FilesDemo.java");
         p(p1.resolveSibling("files/FilesDemo.java"));   // src\main\java\knowledge\api\nio\files\FilesDemo.java
         p(p1.resolveSibling("/files/FilesDemo.java"));  // \files\FilesDemo.java
-        p(p1.resolveSibling(p6.toAbsolutePath()));      // C:\Users\234607\git\mavenTest\src\main\java\knowledge\api\io\file\FilesDemo.java
+        p(p1.resolveSibling(p6.toAbsolutePath()));      // C:\Users\234607\git\epitome\src\main\java\knowledge\api\io\file\FilesDemo.java
     }
 
     /**
@@ -160,9 +160,9 @@ public class PathDemo {
      */
     @Test
     public void toXXX() throws IOException {
-        p(p1.toAbsolutePath()); // C:\Users\234607\git\mavenTest\src\main\java\knowledge\nio\path
+        p(p1.toAbsolutePath()); // C:\Users\234607\git\epitome\src\main\java\knowledge\nio\path
 
-        p(p1.toRealPath(LinkOption.NOFOLLOW_LINKS)); // C:\Users\234607\git\mavenTest\src\main\java\knowledge\api\nio\path
+        p(p1.toRealPath(LinkOption.NOFOLLOW_LINKS)); // C:\Users\234607\git\epitome\src\main\java\knowledge\api\nio\path
     }
 
     public static <T> void p(T obj) {

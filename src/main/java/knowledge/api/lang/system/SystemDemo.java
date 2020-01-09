@@ -63,7 +63,7 @@ public class SystemDemo {
         System.out.println(System.getProperty("line.separator"));       // "\n" on Unix, "\r\n" on windows
         System.out.println(System.getProperty("user.name"));            // 234607
         System.out.println(System.getProperty("user.home"));            // C:\Users\234607
-        System.out.println(System.getProperty("user.dir"));             // C:\Users\234607\git\mavenTest
+        System.out.println(System.getProperty("user.dir"));             // C:\Users\234607\git\epitome
     }
 
     /**

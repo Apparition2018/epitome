@@ -11,19 +11,18 @@ import java.util.function.Predicate;
  * <p>
  * Java8 之前已有的函数式接口：
  * java.lang.Runnable
+ * java.lang.reflect.InvocationHandler
  * java.util.concurrent.Callable
- * java.security.PrivilegedAction
  * java.util.Comparator
  * java.io.FileFilter
  * java.nio.file.PathMatcher
- * java.lang.reflect.InvocationHandler
  * java.beans.PropertyChangeListener
  * java.awt.event.ActionListener
+ * java.security.PrivilegedAction
  * javax.swing.event.ChangeListener
  * <p>
  * Java8 新增的函数式接口：
  * java.util.function
- * 它包含了很多类，用来支持 Java 的函数式编程
  * <p>
  * https://blog.csdn.net/icarusliu/article/details/79495534
  */

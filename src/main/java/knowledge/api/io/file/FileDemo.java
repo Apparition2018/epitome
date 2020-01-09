@@ -182,14 +182,14 @@ public class FileDemo {
         final String DIR = System.getProperty("user.dir");
 
         File f1 = new File(DIR + "/src/main/java/knowledge/api/io/file/File.txt");
-        p("相对路径：" + f1.getPath());          // 相对路径：C:\Users\234607\git\mavenTest\src\main\java\knowledge\api\io\file\File.txt
-        p("绝对路径：" + f1.getAbsolutePath());  // 绝对路径：C:\Users\234607\git\mavenTest\src\main\java\knowledge\api\io\file\File.txt
-        p("抽象路径：" + f1.getCanonicalPath()); // 抽象路径：C:\Users\234607\git\mavenTest\src\main\java\knowledge\api\io\file\File.txt
+        p("相对路径：" + f1.getPath());          // 相对路径：C:\Users\234607\git\epitome\src\main\java\knowledge\api\io\file\File.txt
+        p("绝对路径：" + f1.getAbsolutePath());  // 绝对路径：C:\Users\234607\git\epitome\src\main\java\knowledge\api\io\file\File.txt
+        p("抽象路径：" + f1.getCanonicalPath()); // 抽象路径：C:\Users\234607\git\epitome\src\main\java\knowledge\api\io\file\File.txt
 
         File f2 = new File("./src/main/java/knowledge/api/io/file/File.txt");
         p("相对路径：" + f2.getPath());          // 相对路径：.\src\main\java\knowledge\api\io\file\File.txt
-        p("绝对路径：" + f2.getAbsolutePath());  // 绝对路径：C:\Users\234607\git\mavenTest\.\src\main\java\knowledge\api\io\file\File.txt
-        p("抽象路径：" + f2.getCanonicalPath()); // 抽象路径：C:\Users\234607\git\mavenTest\src\main\java\knowledge\api\io\file\File.txt
+        p("绝对路径：" + f2.getAbsolutePath());  // 绝对路径：C:\Users\234607\git\epitome\.\src\main\java\knowledge\api\io\file\File.txt
+        p("抽象路径：" + f2.getCanonicalPath()); // 抽象路径：C:\Users\234607\git\epitome\src\main\java\knowledge\api\io\file\File.txt
     }
 
     /**

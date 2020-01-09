@@ -14,7 +14,7 @@ public class SystemUtilsDemo {
     public void system() {
         System.out.println(SystemUtils.getJavaHome());      // C:\Program Files\Java\jdk1.8.0_131\jre
         System.out.println(SystemUtils.getJavaIoTmpDir());  // C:\Users\234607\AppData\Local\Temp
-        System.out.println(SystemUtils.getUserDir());       // C:\Users\234607\git\mavenTest
+        System.out.println(SystemUtils.getUserDir());       // C:\Users\234607\git\epitome
         System.out.println(SystemUtils.getUserHome());      // C:\Users\234607
         System.out.println(SystemUtils.isJavaAwtHeadless());// false
 
