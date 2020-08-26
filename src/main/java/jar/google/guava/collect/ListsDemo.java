@@ -60,7 +60,7 @@ public class ListsDemo {
 
     /**
      * static <T> List<List<T>>         partition(List<T> list, int size)
-     * 根据 size 对 list 进行切割
+     * 根据 size 对 list 进行切割，可用于分页
      */
     @Test
     public void partition() {
