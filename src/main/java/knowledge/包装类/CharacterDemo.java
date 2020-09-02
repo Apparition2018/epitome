@@ -79,7 +79,7 @@ public class CharacterDemo {
         p(Character.isWhitespace('\t'));   // true，tab
     }
     
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

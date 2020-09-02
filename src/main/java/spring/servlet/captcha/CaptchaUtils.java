@@ -90,7 +90,7 @@ public class CaptchaUtils {
         sos.close();
     }
     
-    public static void valid (HttpServletRequest request, HttpServletResponse response, String captchaType) throws IOException {
+    public static void valid(HttpServletRequest request, HttpServletResponse response, String captchaType) throws IOException {
         // 1.得到数据
         String validCode;
         if (captchaType.contains("kaptcha")) {

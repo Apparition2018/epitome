@@ -95,7 +95,7 @@ public class BigIntegerDemo {
         p(bi.testBit(3)); // false
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

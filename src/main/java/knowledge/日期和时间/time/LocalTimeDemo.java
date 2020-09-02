@@ -118,7 +118,7 @@ public class LocalTimeDemo {
         p(lt.truncatedTo(ChronoUnit.SECONDS)); // 20:08:08
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

@@ -196,7 +196,7 @@ public class CollectionsDemo {
         list.set(0, -1); // UnsupportedOperationException
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

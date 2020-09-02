@@ -62,7 +62,7 @@ public class ZoneIdDemo {
         p(zone.getDisplayName(TextStyle.NARROW_STANDALONE, Locale.CHINA));  // CT
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

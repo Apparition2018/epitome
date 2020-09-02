@@ -79,7 +79,7 @@ public class DateUtilsDemo {
         dp(DateUtils.ceiling(date1, Calendar.MINUTE));  // 2019-10-31 17:21:00.000
         p("=============================\n");
 
-        dp(DateUtils.round(date1, Calendar.YEAR));      // 2020-01-01 00:00:00.000
+        dp(DateUtils.round(date1, Calendar.YEAR));      // 2019-01-01 00:00:00.000
         dp(DateUtils.round(date1, Calendar.MONTH));     // 2019-11-01 00:00:00.000
         dp(DateUtils.round(date1, Calendar.DATE));      // 2019-11-01 00:00:00.000
         dp(DateUtils.round(date1, Calendar.HOUR));      // 2019-10-31 17:00:00.000

@@ -40,7 +40,7 @@ public class StackDemo {
         p(st);              // []
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

@@ -1,8 +1,8 @@
 package knowledge.api.lang.string;
 
 import org.junit.Test;
+import utils.LUtils;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
  * int	    length()                            返回此字符序列的长度
  * char     charAt(int index)                   返回指定索引处的 char 值
  * String   concat(String str)                  将指定字符串连接到此字符串的结尾
+ * boolean  contains(CharSequence s)            当且仅当此字符串包含指定的 char 值序列时，返回 true 
  * boolean	endsWith(String suffix)
  * boolean	startsWith(String prefix[, int toffset])
  * boolean	equals(Object anObject)             将此字符串与指定的对象比较
@@ -32,11 +33,10 @@ public class StringDemo {
      * 通过使用指定的 charset/字符集 解码指定的 byte 子数组，构造一个新的 String
      */
     @Test
-    public void string() throws UnsupportedEncodingException {
-        byte[] data = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
-                'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-        String s = new String(data, 0, 26, StandardCharsets.UTF_8);
-        p(s); // abcdefghijklmnopqrstuvwxyz
+    public void constructor() {
+        byte[] data = {'e', 'p', 'i', 't', 'o', 'm', 'e'};
+        String s = new String(data, 0, data.length, StandardCharsets.UTF_8);
+        p(s); // epitome
     }
 
     /**
@@ -48,27 +48,8 @@ public class StringDemo {
      */
     @Test
     public void compareTo() {
-        String s1 = "abc";
-        String s2 = "abcd";
-        String s3 = "abd";
-
-        p(s1.compareTo(s2)); // -1
-        p(s1.compareTo(s3)); // -1
-        p(s2.compareTo(s3)); // -1
-    }
-
-    /**
-     * boolean	contains(CharSequence s)
-     * 当且仅当此字符串包含指定的 char 值序列时，返回 true
-     */
-    @Test
-    public void contains() {
-        String s1 = "water";
-        String s2 = "fire";
-        String s3 = "watermelon";
-
-        p(s3.contains(s1)); // true
-        p(s3.contains(s2)); // false
+        p("a".compareTo("b"));  //  -1
+        p("a".compareTo("ab")); //  -1
     }
 
     /**
@@ -80,12 +61,8 @@ public class StringDemo {
      */
     @Test
     public void contentEquals() {
-        String s1 = "String";
-        String s2 = "String";
-        StringBuffer sb = new StringBuffer("String");
-
-        p(s1.contentEquals(s2)); // true
-        p(s1.contentEquals(sb)); // true
+        p("abc".equals(new StringBuffer("abc")));   // false
+        p("abc".contains(new StringBuffer("abc"))); // true
     }
 
     /**
@@ -124,14 +101,8 @@ public class StringDemo {
     @Test
     public void getBytes() {
         String s = "hello world";
-
-        byte[] bArr1 = s.getBytes();
-        byte[] bArr2 = new byte[0];
-
-        bArr2 = s.getBytes(StandardCharsets.UTF_8);
-
-        p(new String(bArr1));  // hello world
-        p(new String(bArr2));  // hello world
+        byte[] bytes = s.getBytes(StandardCharsets.UTF_8);
+        p(new String(bytes));  // hello world
     }
 
     /**
@@ -147,7 +118,7 @@ public class StringDemo {
         char[] cArr = new char[5];
 
         s.getChars(6, 11, cArr, 0);
-        p(cArr); // world
+        LUtils.p(cArr); // world
 
     }
 
@@ -277,7 +248,7 @@ public class StringDemo {
     }
 
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

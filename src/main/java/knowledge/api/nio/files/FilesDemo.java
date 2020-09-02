@@ -166,7 +166,7 @@ public class FilesDemo {
         BufferedWriter bw = Files.newBufferedWriter(path);
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

@@ -91,7 +91,7 @@ lprm                                            将一个工作由打印机贮�
 ---
 ## 磁盘管理
 ```
-cd          change directory                    切换目录R
+cd          change directory                    切换目录
 ls          list                                显示目录下内容
     -a      --all                               显示目录下内容，包括以 . 开头的隐藏文件
     -i                                          显示目录下内容及其详细信息

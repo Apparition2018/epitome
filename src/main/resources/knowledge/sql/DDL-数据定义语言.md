@@ -130,6 +130,11 @@ ALTER TABLE score ADD grade VARCHAR(1);                 -- 增加字段
 ALTER TABLE score MODIFY grade VARCHAR(2);              -- 修改字段
 ALTER TABLE score DROP COLUMN grade;                    -- 删除字段
 ```
+>### 修改字段名
+>>### MySQL
+>>```
+>>ALTER TABLE score CHANGE course subject VARCHAR(10) COMMENT '课程';
+>>```
 ---
 ## 删除
 ```

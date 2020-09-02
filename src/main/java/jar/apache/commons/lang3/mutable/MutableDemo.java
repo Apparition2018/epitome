@@ -20,7 +20,7 @@ public class MutableDemo {
         p(mi); // 21
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

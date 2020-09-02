@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.junit.Test;
-import utils.Tools;
+import utils.LUtils;
 
 import java.lang.reflect.Field;
 import java.util.function.Predicate;
@@ -69,9 +69,9 @@ public class ClassDemo {
         Field[] fields1 = Dog.class.getDeclaredFields();
         // getFields() 获取某个类的 public 字段，包括父类
         Field[] fields2 = Dog.class.getFields();
-        Tools.p(fields1);
+        LUtils.p(fields1);
         // [public java.lang.String knowledge.api.lang.class_.Dog.dog1, private java.lang.String knowledge.api.lang.class_.Dog.dog2]
-        Tools.p(fields2);
+        LUtils.p(fields2);
         // [public java.lang.String knowledge.api.lang.class_.Dog.dog1, public java.lang.String knowledge.api.lang.class_.Animal.name]
     }
 
@@ -150,7 +150,7 @@ public class ClassDemo {
     }
 
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }
