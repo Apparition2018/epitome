@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class FileUtils {
 
-    private static final Logger logger = LoggerFactory.getLogger(Tools.class);
+    private static final Logger logger = LoggerFactory.getLogger(LUtils.class);
 
     // 创建文件
     public static boolean createNewFile(File file) throws IOException {

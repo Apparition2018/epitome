@@ -89,7 +89,7 @@ public class NumberFormatDemo {
         p(nf1.getMinimumFractionDigits()); // 0
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

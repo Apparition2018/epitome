@@ -1,7 +1,7 @@
 package knowledge.网络编程;
 
 import org.junit.Test;
-import utils.Tools;
+import utils.LUtils;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -19,22 +19,22 @@ public class InetAddressDemo {
         // static InetAddress	getLocalHost()
         // 返回本地主机
         InetAddress address = InetAddress.getLocalHost();
-        Tools.p(address);                   // IT-LJH234607/192.168.131.36
+        System.out.println(address);                   // IT-LJH234607/192.168.131.36
 
         // static InetAddress	getByName(String host)
         // 在给定主机名的情况下确定主机的 IP 地址
         address = InetAddress.getByName("www.baidu.com");
-        Tools.p(address);                   // www.baidu.com/14.215.177.39
+        System.out.println(address);                   // www.baidu.com/14.215.177.39
 
         // String	getHostName()
         // 获取此 IP 地址的主机名
-        Tools.p(address.getHostName());     // www.baidu.com
+        System.out.println(address.getHostName());     // www.baidu.com
         // String	getHostAddress()
         // 返回 IP 地址字符串（以文本表现形式）
-        Tools.p(address.getHostAddress());  // 14.215.177.39
+        System.out.println(address.getHostAddress());  // 14.215.177.39
         // byte[]	getAddress()
         // 返回此 InetAddress 对象的原始 IP 地址
-        Tools.p(Arrays.toString(address.getAddress())); // [14, -41, -79, 38]
+        System.out.println(Arrays.toString(address.getAddress())); // [14, -41, -79, 38]
 
     }
 

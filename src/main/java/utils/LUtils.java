@@ -3,21 +3,58 @@ package utils;
 import java.math.BigInteger;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.UUID;
 
-public class Tools {
+public class LUtils {
 
-    public Tools() {
+    public LUtils() {
+        // 防止用户通过实力对象访问，而不是通过类名访问
         throw new Error("Don't instantiate " + getClass());
     }
-
 
     // 简写 System.out.println()
     public static <T> void p(T obj) {
         if (obj == null) return;
+        // 数组
         if (obj.getClass().isArray()) {
+            if (obj instanceof long[]) {
+                System.out.println(Arrays.toString((long[]) obj));
+                return;
+            }
+            if (obj instanceof int[]) {
+                System.out.println(Arrays.toString((int[]) obj));
+                return;
+            }
+            if (obj instanceof short[]) {
+                System.out.println(Arrays.toString((short[]) obj));
+                return;
+            }
+            if (obj instanceof char[]) {
+                System.out.println(Arrays.toString((char[]) obj));
+                return;
+            }
+            if (obj instanceof byte[]) {
+                System.out.println(Arrays.toString((byte[]) obj));
+                return;
+            }
+            if (obj instanceof boolean[]) {
+                System.out.println(Arrays.toString((boolean[]) obj));
+                return;
+            }
+            if (obj instanceof float[]) {
+                System.out.println(Arrays.toString((float[]) obj));
+                return;
+            }
             System.out.println(Arrays.toString((Object[]) obj));
+            return;
+        }
+        // 日期时间
+        if (obj instanceof Date) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+            System.out.println(sdf.format(obj));
             return;
         }
         System.out.println(obj);
@@ -27,11 +64,6 @@ public class Tools {
     public static boolean isWindows() {
         String os = System.getProperty("os.name");
         return os != null && os.toLowerCase().contains("windows");
-    }
-
-    // 生成UUID
-    public static String getUUID() {
-        return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
     // 获取IP地址

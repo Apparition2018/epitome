@@ -35,7 +35,7 @@ public class ClassLoaderDemo {
         p(classLoader3);
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

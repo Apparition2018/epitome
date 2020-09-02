@@ -52,7 +52,7 @@ public class TimeDemo {
         p(ldt); // 2008-08-08T20:08:08
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

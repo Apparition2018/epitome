@@ -2338,7 +2338,7 @@ public class Suggestions {
      * 20.横向扩展
      */
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         if (obj.getClass().isArray()) {
             System.out.println(Arrays.toString((Object[]) obj));

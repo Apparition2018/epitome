@@ -179,7 +179,7 @@ public class CollectionUtilsDemo {
         p(CollectionUtils.disjunction(list1, list2)); // [A, B]
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

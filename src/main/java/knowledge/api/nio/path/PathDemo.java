@@ -165,7 +165,7 @@ public class PathDemo {
         p(p1.toRealPath(LinkOption.NOFOLLOW_LINKS)); // C:\Users\234607\git\epitome\src\main\java\knowledge\api\nio\path
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

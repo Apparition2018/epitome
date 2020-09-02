@@ -402,12 +402,12 @@ public class StringUtilsDemo {
     }
 
     @SafeVarargs
-    public static <T> void p(T... obj) {
+    private static <T> void p(T... obj) {
         if (obj == null) return;
         System.out.println(Arrays.toString(obj));
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

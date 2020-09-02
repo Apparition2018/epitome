@@ -84,7 +84,7 @@ public class WordUtilsDemo {
         // Click here to jump <br /> to the commons <br /> website - <br /> http://commons.apach <br /> e.org
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

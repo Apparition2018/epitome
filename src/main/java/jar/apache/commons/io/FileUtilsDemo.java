@@ -136,7 +136,7 @@ public class FileUtilsDemo {
         // [src\main\java\jar\apache\commons\io\FilenameUtilsDemo.java, src\main\java\jar\apache\commons\io\FileUtils.txt, src\main\java\jar\apache\commons\io\FileUtilsDemo.java, src\main\java\jar\apache\commons\io\IOUtils.txt, src\main\java\jar\apache\commons\io\IOUtilsDemo.java, src\main\java\jar\apache\commons\io\write.txt, src\main\java\jar\apache\commons\io\writeLines.txt]
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

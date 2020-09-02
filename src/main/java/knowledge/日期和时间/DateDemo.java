@@ -75,7 +75,7 @@ public class DateDemo {
         p(date);                // Sun Sep 09 09:46:40 CST 2001
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

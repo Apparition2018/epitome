@@ -66,7 +66,7 @@ public class JacksonUtil {
         try {
             return src instanceof String ? (String) src : objectMapper.writeValueAsString(src);
         } catch (Exception e) {
-            log.warn("parse Object to String exception, error:{}", e);
+            log.warn("parse Object to String exception, error:{}", e.getMessage());
             return null; // 暂时返回空，也可抛出异常
         }
     }

@@ -185,7 +185,7 @@ public class RSADemo2 {
         p("甲方解密后的数据：" + new String(decode2));
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

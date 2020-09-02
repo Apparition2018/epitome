@@ -39,7 +39,7 @@ public class ZonedDateTimeDemo {
         p(zdt.toInstant());         // 2018-08-08T12:08:08Z
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

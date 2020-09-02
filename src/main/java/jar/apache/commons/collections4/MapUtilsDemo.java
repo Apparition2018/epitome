@@ -84,7 +84,7 @@ public class MapUtilsDemo {
         p(map); // {a=1, b=2, c=3, d=}
     }
 
-    public static <T> void p(T obj) {
+    private static <T> void p(T obj) {
         if (obj == null) return;
         System.out.println(obj);
     }

@@ -2,7 +2,7 @@ package knowledge.加解密和消息摘要.消息摘要算法;
 
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
-import utils.Tools;
+import utils.LUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -59,7 +59,7 @@ public class MD5Demo {
 //			byte[] bytes = md5.digest(src.getBytes(StandardCharsets.UTF_8));
 
             // 加密后的bytes[]转化为十六进制的32位长度的字符串
-            System.out.println("16进制字符串：" + Tools.bytes2Hex2(bytes));
+            System.out.println("16进制字符串：" + LUtils.bytes2Hex2(bytes));
 
             // 加密后的bytes[]通过Base64再次加密成字符串
             System.out.println("Base64字符串：" + Base64.getEncoder().encodeToString(bytes));
@@ -110,7 +110,7 @@ public class MD5Demo {
             md5.digest(src.getBytes());
             byte[] bytes = md5.digest(("id" + src).getBytes(StandardCharsets.UTF_8)); // 加盐
 
-            System.out.println("加盐字符串：" + Tools.bytes2Hex2(bytes));
+            System.out.println("加盐字符串：" + LUtils.bytes2Hex2(bytes));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -130,7 +130,7 @@ public class MD5Demo {
                 md5.update(buf, 0, len);
             }
             fis.close();
-            System.out.println(Tools.bytes2Hex2(md5.digest()));
+            System.out.println(LUtils.bytes2Hex2(md5.digest()));
         } catch (IOException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
