@@ -63,6 +63,35 @@
         <style>
         </style>
         <script class="code" contenteditable="true">
+            $(function () {
+                var data = {};
+                data.pageNum = 1;
+                data.pageSize = 4;
+                data.schoolId = 11046;
+                data.type = 2;
+                data.date = 1596384000000;
+                $.ajax({
+                    type: "POST",
+                    url: "http://192.168.15.23:18080/nzp-jxhd-attendance-server/rest/attendance/teacher/report",
+                    contentType: 'application/json;charset=utf-8',
+                    data: JSON.stringify(data),
+                    async: false,
+                    dataType: 'json', 
+                    success: function (data) {
+                        console.log(data);
+                        console.log(data.data.dateList[0]);
+                        console.log(data.data.list[0].dayMap);
+                        var map = data.data.list[0].dayMap;
+                        console.log(map[data.data.dateList[0]]);
+                        console.log(map[1596211200000]);
+                        console.log(map["2020-07-31T16:00:00.000+0000"]);
+                        
+                    },
+                    error: function (data, status, e) {
+                        console.log(e);
+                    }
+                });
+            });
         </script>
     </section>
 

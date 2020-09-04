@@ -1,8 +1,8 @@
 package knowledge.数据结构.集合框架;
 
+import l.demo.Demo;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -10,39 +10,31 @@ import java.util.stream.Collectors;
 
 /**
  * Collections
+ * https://jdk6.net/util/Collections.html
  * <p>
- * static <T> List<T>	emptyList()
- * 返回空的列表（不可变的）
- * static <K,V> Map<K,V>	emptyMap()
- * 返回空的映射（不可变的）
- * static <T> Set<T>	emptySet()
- * 返回空的 set（不可变的）
+ * static <T> List<T>	            emptyList()                 返回空的列表（不可变的）
+ * static <K,V> Map<K,V>	        emptyMap()                  回空的映射（不可变的）
+ * static <T> Set<T>	            emptySet()                  返回空的 set（不可变的）
+ * static void	                    reverse(List<?> list)       反转指定列表中元素的顺序
  * <p>
- * static <T extends Object & Comparable<? super T>> T	max(Collection<? extends T> coll)
- * 根据元素的自然顺序，返回给定 collection 的最大元素
- * static <T extends Object & Comparable<? super T>> T	min(Collection<? extends T> coll)
- * 根据元素的自然顺序 返回给定 collection 的最小元素
- * static void	reverse(List<?> list)                               反转指定列表中元素的顺序
+ * static <T extends Object & Comparable<? super T>> T	max(Collection<? extends T> coll[, Comparator<? super T> comp])   根据元素的自然顺序，返回给定 collection 的最大元素
+ * static <T extends Object & Comparable<? super T>> T	min(Collection<? extends T> coll[, Comparator<? super T> comp])   根据元素的自然顺序 返回给定 collection 的最小元素
  */
-public class CollectionsDemo {
+public class CollectionsDemo extends Demo {
 
     /**
      * static <T> int	        binarySearch(List<? extends Comparable<? super T>> list, T key)
-     * 使用二分搜索法搜索指定列表，以获得指定对象
-     * <p>
      * static <T> int	        binarySearch(List<? extends T> list, T key, Comparator<? super T> c)
      * 使用二分搜索法搜索指定列表，以获得指定对象
-     * <p>
-     * 试用期前必须必须先进行排序
      */
     @Test
     public void binarySearch() {
-        List<String> list = Arrays.asList("X", "M", "D", "A", "O");
-        Collections.sort(list);
-        p(list);   // [A, D, M, O, X]
+        // 使用前必须必须先进行排序
+        Collections.sort(descList);
+        p(descList); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-        int index = Collections.binarySearch(list, "M");
-        p(index);  // 2
+        int index = Collections.binarySearch(descList, "6");
+        p(index);  // 6
     }
 
     /**
@@ -54,10 +46,9 @@ public class CollectionsDemo {
      */
     @Test
     public void indexOfSubList() {
-        List<String> list1 = Arrays.asList("0 1 2 3 4 5 6 7 8 9".split(" "));
-        List<String> list2 = Arrays.asList("1 2 3".split(" "));
-
-        p(Collections.indexOfSubList(list1, list2)); // 1
+        p(list); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        p(subList); // [1, 2, 3, 5]
+        p(Collections.indexOfSubList(list, subList)); // 1
     }
 
     /**
@@ -66,8 +57,8 @@ public class CollectionsDemo {
      */
     @Test
     public void nCopies() {
-        List<Integer> initData = Collections.nCopies(100, 0);
-        p(initData.size()); // 100
+        List<Integer> initData = Collections.nCopies(10, 0);
+        p(initData); // [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     }
 
     /**
@@ -76,27 +67,10 @@ public class CollectionsDemo {
      */
     @Test
     public void replaceAll() {
-        List<String> list = Arrays.asList("0 1 2 3 4 5 6 7 8 9".split(" "));
-        p("List :" + list);
-
-        Collections.replaceAll(list, "0", "-1");
-        p("replaceAll: " + list);
-    }
-
-    /**
-     * static void	        reverse(List<?> list)
-     * 反转指定列表中元素的顺序
-     */
-    @Test
-    public void reverse() {
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        p(list); // [1, 2, 3]
-
-        Collections.reverse(list);
-        p(list); // [3, 2, 1]
+        p(list); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        boolean b = Collections.replaceAll(list, "0", "-1");
+        p(b); // true
+        p(list); // [-1, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
 
     /**
@@ -105,11 +79,9 @@ public class CollectionsDemo {
      */
     @Test
     public void rotate() {
-        List list = Arrays.asList("one Two three Four five six".split(" "));
-        p(list); // [one, Two, three, Four, five, six]
-
+        p(list); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         Collections.rotate(list, 3);
-        p(list); // [Four, five, six, one, Two, three]
+        p(list); // [7, 8, 9, 0, 1, 2, 3, 4, 5, 6]
     }
 
     /**
@@ -118,10 +90,8 @@ public class CollectionsDemo {
      */
     @Test
     public void shuffle() {
-        List<Integer> list = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-
         Collections.shuffle(list);
-        p(list); // [7, 4, 8, 5, 0, 9, 2, 6, 1, 3]
+        p(list); // [0, 5, 1, 8, 6, 9, 7, 2, 3, 4]
     }
 
     /**
@@ -142,9 +112,9 @@ public class CollectionsDemo {
      */
     @Test
     public void sort() {
-        List<String> list = Arrays.asList("X", "M", "D", "A", "O");
-        Collections.sort(list);
-        p(list);
+        p(descList); // [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+        Collections.sort(descList);
+        p(descList); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
 
     /**
@@ -167,10 +137,9 @@ public class CollectionsDemo {
      */
     @Test
     public void swap() {
-        List<String> list = Arrays.asList("A", "B", "C", "D");
-
-        Collections.swap(list, 0, list.size() - 1);
-        p(list); // [D, B, C, A]
+        p(list); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        Collections.swap(list, 3, list.size() - 2);
+        p(list); // [0, 1, 2, 8, 4, 5, 6, 7, 3, 9]
     }
 
     /**
@@ -179,7 +148,6 @@ public class CollectionsDemo {
      */
     @Test
     public void synchronizedXXX() {
-        List<String> list = Arrays.asList("A", "B", "C");
         list = Collections.synchronizedList(list);
         p(list);
     }
@@ -190,15 +158,7 @@ public class CollectionsDemo {
      */
     @Test
     public void unmodifiableXXX() {
-        List<Integer> list = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-        list = new ArrayList<>(list);
         list = Collections.unmodifiableList(list);
-        list.set(0, -1); // UnsupportedOperationException
+        list.set(0, "-1"); // UnsupportedOperationException
     }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
-
 }

@@ -20,43 +20,45 @@ import org.junit.Test;
  */
 public class IntegerCacheDemo extends Demo {
 
+    /**
+     * valueOf(int i) 方法引用了 Integer.Cache
+     * 如果数值在 [-128,127] 之间，便返回指向 IntegerCache.cache 中已经存在的对象的引用
+     */
     @Test
-    public void integerCache() {
+    public void testInteger() {
         Integer x1 = 100;
         Integer x2 = 100;
         Integer x3 = 200;
         Integer x4 = 200;
+        
+        p(x1 == x2); // true
+        p(x3 == x4); // false
+    }
 
-        Integer y1 = new Integer(100);
-        Integer y2 = new Integer(100);
-        Integer y3 = new Integer(200);
+    /**
+     * valueOf(boolean b) 返回 Boolean 中已定义的两个静态属性 new Boolean(false) 和 new Boolean(true)
+     */
+    @Test
+    public void testBoolean() {
+        Boolean x1 = false;
+        Boolean x2 = false;
+        
+        p(x1 == x2); // true
+    }
 
-        p(x1 == x2);            // true
-        p(x3 == x4);            // false    超过了127
-        p(x1 == y1);            // false    用构造器创建的 Integer 对象不能被缓存
-        p(y1 == y2);            // false
-
-        // 包装类运算有一个操作数是表达式会自动拆箱，所以下面全是 true
-        p(x3 == (x1 + x2));     // true
-        p(x3 == (y1 + y2));     // true
-        p(y3 == (x1 + x2));     // true
-        p(y3 == (y1 + y2));     // true
-
-        Double d1 = 100.0;
-        Double d2 = 100.0;
-        p(d1 == d2);            // false    浮点数没有实现缓存技术；因为在一个区间内，有无数个浮点数，不能提前创建
-
-        Boolean b1 = false;
-        Boolean b2 = false;
-        Boolean b3 = true;
-        Boolean b4 = true;
-        p(b1 == b2);            // true     查看 Boolean valueOf(boolean b) 源码
-        p(b3 == b4);            // true
-
-        Long la = 100L;
-        Long lb = 200L;
-        p(lb.equals(x1 + x2));  // false    查看 equals(Object o) 源码：1)类型相同，2)值相等
-        p(lb.equals(x1 + la));  // true
+    /**
+     * int + long，结果为 long
+     */
+    @Test
+    public void testArithmetic() {
+        Integer x1 = 100;
+        Integer x2 = 100;
+        
+        Long y1 = 100L;
+        Long y2 = 200L;
+        
+        p(y2.equals(x1 + x2)); // false 值相等，但类型不相等
+        p(y2.equals(x1 + y1)); // true  值相等，类型相等
     }
 
 }

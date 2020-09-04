@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 // 史上最强整理: https://mp.weixin.qq.com/s/kJpRgfI3zT77XqMeRfmmQQ
 // SpringBoot 之整合 Swagger2: https://www.cnblogs.com/zhangyinhua/p/9286391.html
@@ -30,11 +31,6 @@ public class Test {
         System.out.println(SecureUtil.md5().digestHex16("123"));
 
         System.out.println(LUtils.getHostAddress());
-        
-        List list = Lists.newArrayList();
-        List list2 = new ArrayList();
-        list.addAll(list2);
-        System.out.println(list);
 
     }
 

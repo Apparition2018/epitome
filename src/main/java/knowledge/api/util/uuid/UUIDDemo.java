@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.UUID;
 
 /**
- * UUIDDemo
+ * UUID
  * https://jdk6.net/util/UUID.html
  *
  * @author ljh

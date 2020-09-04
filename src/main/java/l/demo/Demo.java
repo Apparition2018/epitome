@@ -1,8 +1,7 @@
 package l.demo;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Demo
@@ -11,6 +10,19 @@ import java.util.Date;
  * created on 2020/9/3 10:15
  */
 public class Demo {
+
+    public List<String> list = new ArrayList<>(Arrays.asList("0 1 2 3 4 5 6 7 8 9".split(" ")));
+    public List<String> descList = Arrays.asList("9 8 7 6 5 4 3 2 1 0".split(" "));
+    public List<String> subList = new ArrayList<>(list.subList(1, 6));
+    public List<String> subList2 = list.subList(3, 8);
+    
+    public static final Map<String, String> map = new HashMap<>();
+
+    static {
+        map.put("1", "A");
+        map.put("2", "B");
+        map.put("3", "C");
+    }
 
     public static <T> void p(T obj) {
         p(obj, false);

@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * MessageFormatDemo
+ * MessageFormat
  * 提供了以与语言无关方式生成连接消息的方式。使用此方法构造向终端用户显示的消息。
  * https://jdk6.net/text/MessageFormat.html
  * <p>
