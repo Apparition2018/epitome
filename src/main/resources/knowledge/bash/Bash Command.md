@@ -167,7 +167,7 @@ logout                                          退出系统
 ssh-keygen                                      创建 SSH Key
     -t                                          指定要创建密钥类型 (RSA|DSA)
     -C                                          添加备注
-date                                            显示或设定系统的日期与时间
+date        date '+%Y-%m-%d %H:%M:%S'           显示或设定系统的日期与时间
 cal                                             显示公历日历
 uptime                                          显示系统运行时间或系统的平均负载
 export                                          设置或显示环境变量

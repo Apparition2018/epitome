@@ -7,15 +7,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class StringExercises {
+public class StringExercise {
 
     /**
-     * 假如有字符串"46dsal452d4a5"，用最快速的方法去掉字符"sal"，
+     * 假如有字符串"46sal452d4a5"，用最快速的方法去掉字符"sal"，
      * 不能用java内置字符串方法。
      */
     @Test
     public void test1() {
-        String str = "46dsal452d4a5";
+        String str = "46sal452d4a5";
         StringBuffer newStr = new StringBuffer();
 
         char c1 = 's';
@@ -29,7 +29,6 @@ public class StringExercises {
             }
         }
         System.out.println(newStr);
-
     }
 
     /**
@@ -55,6 +54,5 @@ public class StringExercises {
         for (Entry<Character, Integer> entry : entrySet) {
             System.out.println(entry);
         }
-
     }
 }

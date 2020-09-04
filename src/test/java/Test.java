@@ -1,7 +1,11 @@
 import cn.hutool.crypto.SecureUtil;
+import com.google.common.collect.Lists;
+import l.utils.LUtils;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 // 史上最强整理: https://mp.weixin.qq.com/s/kJpRgfI3zT77XqMeRfmmQQ
 // SpringBoot 之整合 Swagger2: https://www.cnblogs.com/zhangyinhua/p/9286391.html
@@ -24,6 +28,13 @@ public class Test {
     public static void main(String[] args) throws ParseException, IOException {
 
         System.out.println(SecureUtil.md5().digestHex16("123"));
+
+        System.out.println(LUtils.getHostAddress());
+        
+        List list = Lists.newArrayList();
+        List list2 = new ArrayList();
+        list.addAll(list2);
+        System.out.println(list);
 
     }
 

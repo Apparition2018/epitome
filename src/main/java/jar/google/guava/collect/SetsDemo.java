@@ -1,8 +1,8 @@
 package jar.google.guava.collect;
 
 import com.google.common.collect.Sets;
+import l.demo.Demo;
 import org.junit.Test;
-import utils.LUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +14,7 @@ import java.util.Set;
  * http://www.ibloger.net/article/3313.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Sets.html
  */
-public class SetsDemo {
+public class SetsDemo extends Demo {
 
 
     /**
@@ -32,10 +32,10 @@ public class SetsDemo {
         Set<Integer> set1 = Sets.newHashSet(1, 2, 3);
         Set<Integer> set2 = Sets.newHashSet(5, 4, 3);
 
-        LUtils.p(Sets.union(set1, set2));                 // [1, 2, 3, 4, 5]
-        LUtils.p(Sets.intersection(set1, set2));          // [3]
-        LUtils.p(Sets.difference(set1, set2));            // [1, 2]
-        LUtils.p(Sets.symmetricDifference(set1, set2));   // [1, 2, 4, 5]
+        p(Sets.union(set1, set2));                 // [1, 2, 3, 4, 5]
+        p(Sets.intersection(set1, set2));          // [3]
+        p(Sets.difference(set1, set2));            // [1, 2]
+        p(Sets.symmetricDifference(set1, set2));   // [1, 2, 4, 5]
     }
 
     /**
@@ -48,7 +48,7 @@ public class SetsDemo {
         Set<String> set1 = Sets.newHashSet("i love u", "i hate u");
         Set<String> set2 = Sets.newHashSet("tom", "jerry");
         Set<List<String>> set = Sets.cartesianProduct(set1, set2);
-        LUtils.p(set); // [[i hate u, tom], [i hate u, jerry], [i love u, tom], [i love u, jerry]]
+        p(set); // [[i hate u, tom], [i hate u, jerry], [i love u, tom], [i love u, jerry]]
     }
 
     /**
@@ -59,8 +59,8 @@ public class SetsDemo {
     public void powerSet() {
         Set<String> set = Sets.newHashSet("A", "B", "C");
         Set<Set<String>> sets = Sets.powerSet(set);
-        LUtils.p(sets);              // powerSet({A=0, B=1, C=2})
-        LUtils.p(sets.toArray());    // [[], [A], [B], [A, B], [C], [A, C], [B, C], [A, B, C]]
+        p(sets);              // powerSet({A=0, B=1, C=2})
+        p(sets.toArray());    // [[], [A], [B], [A, B], [C], [A, C], [B, C], [A, B, C]]
     }
 
     /**
@@ -71,8 +71,8 @@ public class SetsDemo {
     public void combinations() {
         Set<String> set = Sets.newHashSet("A", "B", "C");
         Set<Set<String>> sets = Sets.combinations(set, 2);
-        LUtils.p(sets);              // Sets.combinations([A, B, C], 2)
-        LUtils.p(sets.toArray());    // [[A, B], [A, C], [B, C]]
+        p(sets);              // Sets.combinations([A, B, C], 2)
+        p(sets.toArray());    // [[A, B], [A, C], [B, C]]
     }
 
     /**
@@ -85,7 +85,7 @@ public class SetsDemo {
     public void filter() {
         Set<String> set = Sets.newHashSet("i like u", "i miss u", "i love u");
         Set<String> filterSet = Sets.filter(set, e -> Objects.requireNonNull(e).contains("love"));
-        LUtils.p(filterSet); // [i love u]
+        p(filterSet); // [i love u]
     }
 
 

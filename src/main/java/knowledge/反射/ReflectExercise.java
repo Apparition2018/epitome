@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * https://www.cnblogs.com/dreammyle/p/5610906.html
  */
-public class ReflectExercises {
+public class ReflectExercise {
 
     /**
      * JavaBean <=> Map

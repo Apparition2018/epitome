@@ -1,5 +1,6 @@
 package knowledge.api.text;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.text.NumberFormat;
@@ -10,22 +11,7 @@ import java.util.Locale;
 
 /**
  * NumberFormat
- * NumberFormat 是所有数值格式的抽象基类
- * <p>
- * static Locale[]	getAvailableLocales()                   返回一个数组，它包含所有此类的 get*Instance 方法可以为其返回本地化实例的语言环境
- * <p>
- * int	            getMaximumFractionDigits()              返回数的小数部分所允许的最大位数
- * int	            getMinimumFractionDigits()              返回数的小数部分所允许的最小位数
- * int	            getMaximumIntegerDigits()               返回数的整数部分所允许的最大位数
- * int	            getMinimumIntegerDigits()               返回数的整数部分所允许的最小位数
- * <p>
- * void	            setMaximumFractionDigits(int newValue)  设置数的小数部分所允许的最大位数
- * void	            setMinimumFractionDigits(int newValue)  设置数的小数部分所允许的最小位数
- * void	            setMaximumIntegerDigits(int newValue)   设置数的整数部分所允许的最大位数
- * void	            setMinimumIntegerDigits(int newValue)   设置数的整数部分所允许的最小位数
- * <p>
- * RoundingMode	    getRoundingMode()                       获取在此 NumberFormat 中使用的 RoundingMode
- * void	            setRoundingMode(RoundingMode roundingMode)设置在此 NumberFormat 中使用的 RoundingMode
+ * https://jdk6.net/text/NumberFormat.html
  * <p>
  * boolean	        isGroupingUsed()                        如果此格式中使用了分组，则返回 true
  * void	            setGroupingUsed(boolean newValue)       设置此格式中是否使用分组
@@ -33,67 +19,96 @@ import java.util.Locale;
  * boolean	        isParseIntegerOnly()                    如果此格式只将数作为整数解析，则返回 true
  * void	            setParseIntegerOnly(boolean value)      设置数是否应该仅作为整数进行解析
  */
-public class NumberFormatDemo {
+public class NumberFormatDemo extends Demo {
 
-    // 返回指定语言环境的通用数值格式
-    private NumberFormat nf1 = NumberFormat.getInstance();
-    // 返回指定语言环境的通用数值格式
-    private NumberFormat nf2 = NumberFormat.getNumberInstance();
-    // 返回指定语言环境的货币格式
-    private NumberFormat nf3 = NumberFormat.getCurrencyInstance();
-    // 返回指定语言环境的百分比格式
-    private NumberFormat nf4 = NumberFormat.getPercentInstance();
+    public static final NumberFormat FORMAT;
+    public static final NumberFormat INTEGER_FORMAT;
+    public static final NumberFormat NUMBER_FORMAT;
+    public static final NumberFormat CURRENCY_FORMAT;
+    public static final NumberFormat PERCENT_FORMAT;
+    
+    static {
+        // static NumberFormat	getInstance([Locale inLocale])              返回当前默认语言环境的通用数值格式
+        FORMAT = NumberFormat.getInstance();
+        // static NumberFormat	getIntegerInstance([Locale inLocale])       返回当前默认语言环境的整数格式
+        INTEGER_FORMAT = NumberFormat.getIntegerInstance();
+        // static NumberFormat	getNumberInstance([Locale inLocale])        返回指定语言环境的通用数值格式
+        NUMBER_FORMAT = NumberFormat.getNumberInstance();
+        // static NumberFormat	getCurrencyInstance([Locale inLocale])      返回指定语言环境的货币格式
+        CURRENCY_FORMAT = NumberFormat.getCurrencyInstance();
+        // static NumberFormat	getPercentInstance([Locale inLocale])       返回指定语言环境的百分比格式
+        PERCENT_FORMAT = NumberFormat.getPercentInstance();
+    }
 
-    /**
-     * 格式化
-     */
     @Test
-    public void format() {
-        p(nf1.format(200)); // 200
-        p(nf2.format(200)); // 200
-        p(nf3.format(200)); // ￥200.00
-        p(nf4.format(200)); // 20,000%
+    public void testNumberFormat() throws ParseException {
+        p(FORMAT.format(0.1234));          // 0.123
+        p(INTEGER_FORMAT.format(0.1234));  // 0
+        p(NUMBER_FORMAT.format(0.1234));   // 0.123
+        p(CURRENCY_FORMAT.format(0.1234)); // ￥0.12
+        p(PERCENT_FORMAT.format(0.1234));  // 12%
+
+        p(CURRENCY_FORMAT.parse("￥0.12")); // 0.12
+        p(PERCENT_FORMAT.parse("12%")); // 0.12
     }
 
     /**
-     * 解析
-     */
-    @Test
-    public void parse() throws ParseException {
-        p(nf3.parse("￥200")); // 200
-        p(nf4.parse("20,000%")); // 200
-    }
-
-    /**
-     * Currency getCurrency()                   获取格式化货币值时此数值格式使用的货币
-     * void	    setCurrency(Currency currency)  设置格式化货币值时此数值格式使用的货币
+     * Currency         getCurrency()                       获取格式化货币值时此数值格式使用的货币
+     * void	            setCurrency(Currency currency)      设置格式化货币值时此数值格式使用的货币
      */
     @Test
     public void currency() {
-        p(nf1.getCurrency()); // CNY
+        p(CURRENCY_FORMAT.getCurrency()); // CNY
 
-        nf1 = NumberFormat.getInstance(Locale.US);
-        p(nf1.getCurrency()); // USD
+        CURRENCY_FORMAT.setCurrency(Currency.getInstance(Locale.US));
+        p(CURRENCY_FORMAT.getCurrency()); // USD
 
-        nf1.setCurrency(Currency.getInstance(Locale.JAPAN));
-        p(nf1.getCurrency()); // JPY
+        CURRENCY_FORMAT.setCurrency(Currency.getInstance(Locale.JAPAN));
+        p(CURRENCY_FORMAT.getCurrency()); // JPY
     }
 
     /**
-     * int	getMaximumFractionDigits()  返回数的小数部分所允许的最大位数
-     * int	getMinimumFractionDigits()  返回数的小数部分所允许的最小位数
+     * int	            getMaximumFractionDigits()          返回数的小数部分所允许的最大位数
+     * int	            getMinimumFractionDigits()          返回数的小数部分所允许的最小位数
      */
     @Test
     public void getFractionDigits() {
-        p(nf1.getMaximumFractionDigits()); // 3
-        p(nf1.getMinimumFractionDigits()); // 0
+        p(FORMAT.getMaximumFractionDigits());           // 3
+        p(FORMAT.getMinimumFractionDigits());           // 0
+        
+        p(INTEGER_FORMAT.getMaximumFractionDigits());   // 0
+        p(INTEGER_FORMAT.getMinimumFractionDigits());   // 0
+        
+        p(NUMBER_FORMAT.getMaximumFractionDigits());    // 3
+        p(NUMBER_FORMAT.getMinimumFractionDigits());    // 0
+        
+        p(CURRENCY_FORMAT.getMaximumFractionDigits());  // 2
+        p(CURRENCY_FORMAT.getMinimumFractionDigits());  // 2
+        
+        p(PERCENT_FORMAT.getMaximumFractionDigits());   // 0
+        p(PERCENT_FORMAT.getMinimumFractionDigits());   // 0
     }
 
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
+    /**
+     * boolean	        isGroupingUsed()                    如果此格式中使用了分组，则返回 true
+     * boolean	        isParseIntegerOnly()                如果此格式只将数作为整数解析，则返回 true
+     */
+    @Test
+    public void is() {
+        p(FORMAT.isGroupingUsed());             // true
+        p(FORMAT.isParseIntegerOnly());         // false
+        
+        p(INTEGER_FORMAT.isGroupingUsed());     // true
+        p(INTEGER_FORMAT.isParseIntegerOnly()); // true
+        
+        p(NUMBER_FORMAT.isGroupingUsed());      // true
+        p(NUMBER_FORMAT.isParseIntegerOnly());  // false
+        
+        p(CURRENCY_FORMAT.isGroupingUsed());    // true
+        p(CURRENCY_FORMAT.isParseIntegerOnly());// false
+        
+        p(PERCENT_FORMAT.isGroupingUsed());     // true
+        p(PERCENT_FORMAT.isParseIntegerOnly()); // false
     }
-
-
 }
 

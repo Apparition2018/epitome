@@ -2,7 +2,7 @@ package knowledge.加解密和消息摘要.消息摘要算法;
 
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
-import utils.LUtils;
+import l.utils.LUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
