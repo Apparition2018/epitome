@@ -35,9 +35,9 @@
 >Ctrl + Alt + J                 Surround with Live Template...
 >Ctrl + /                       Comment with Line Comment           注释
 >Ctrl + Shift + /               Comment with Block Comment          块注释
->Ctrl + Shift + ↑ / ↓           Move Statement Up / Down            上下移动语句                  ***
->Alt + Shift + ↑ / ↓            Move Line Up / Down                 上下移动行
->Ctrl + Shift + Alt + ← / →     Move Element Left / Right                                       ???
+>Ctrl + Shift + ↑ | ↓           Move Statement Up | Down            上下移动语句                  ***
+>Alt + Shift + ↑ | ↓            Move Line Up | Down                 上下移动行
+>Ctrl + Shift + Alt + ← | →     Move Element Left | Right                                       ???
 >```
 >>#### Completion
 >>```
@@ -233,7 +233,7 @@ Ctrl + Alt + Enter              Show Quick Actions Popup                        
 Shift + Enter                   Open In New Editor Window           在新编辑窗口打开
 
 Alt + Select                                                        选择方块区域
-Shift + Click                                                       关闭文件
+Ctrl + F4 | Shift + Click                                           关闭文件
 Shift + Shift                   Search Everywhere
 ```
 >### Bookmarks
@@ -369,15 +369,15 @@ todo                            // TODO: $date$ $todo$
 ## [Postfix Completion](https://www.cnblogs.com/invoker-/p/8994157.html)
 >### Java
 >```
->! / not                        !expr
+>! | not                        !expr
 >assert                         assert expr
->for / iter                     for (T item : expr)
+>for | iter                     for (T item : expr)
 >fori                           for (int i = 0; i < expr.length; i++)
 >forr                           for (int i = expr.length - 1; i >= 0; i--)
 >format                         String.format(expr)
 >if                             if (expr)
 >else                           if (!expr)
->nn / notnull                   if (expr != null)
+>nn | notnull                   if (expr != null)
 >inst                           expr instanceof Type ? ((Type) expr) : null
 >lambda                         () -> expr
 >opt                            Optional.ofNullable(expr)

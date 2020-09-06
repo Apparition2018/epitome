@@ -1,13 +1,14 @@
 package knowledge.日期和时间;
 
+import l.demo.Demo;
 import org.junit.Test;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * SimpleDateFormatDemo
+ * https://jdk6.net/text/SimpleDateFormat.html
  * <p>
  * 字母   日期或时间元素             表示          示例
  * G        Era 标志符             Text          AD
@@ -30,35 +31,26 @@ import java.util.Date;
  * z        时区             General time zone  Pacific Standard Time; PST; GMT-08:00
  * Z        时区             RFC 822 time zone  -0800
  */
-public class SimpleDateFormatDemo {
+public class SimpleDateFormatDemo extends Demo {
 
-    /**
-     * String	format(Date date)
-     * 将一个 Date 格式化为日期/时间字符串
-     * <p>
-     * 从类 java.text.DateFormat 继承的方法
-     */
-    @Test
-    public void format() {
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(sdf.format(date)); // 2018-10-26
+    private static final SimpleDateFormat SDF;
+
+    static {
+        // SimpleDateFormat([String pattern], [Locale locale])
+        // 用给定的模式和给定语言环境的默认日期格式符号构造 SimpleDateFormat
+        SDF = new SimpleDateFormat("yyyy-MM-dd");
     }
 
-    /**
-     * Date parse(String text, ParsePosition pos)
-     * 解析字符串的文本，生成 Date
-     */
     @Test
-    public void parse() {
-        String s = "2008-08-08";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            System.out.println(sdf.parse(s)); // Fri Aug 08 00:00:00 CST 2008
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void testSimpleDateFormat() {
+        // void	        applyPattern(String pattern)        将给定模式字符串应用于此日期格式
+        SDF.applyPattern("yyyy-MM-dd HH:mm:ss");
+        p(SDF.format(new Date()));  // 2020-09-03 11:29:36
+
+        // String	    toPattern()                         返回描述此日期格式的模式字符串
+        p(SDF.toPattern());         // yyyy-MM-dd HH:mm:ss
+
+        // String	    toLocalizedPattern()                返回描述此日期格式的本地化模式字符串
+        p(SDF.toLocalizedPattern());// aaaa-nn-jj HH:mm:ss
     }
-
-
 }

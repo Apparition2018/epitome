@@ -19,7 +19,7 @@ import java.io.*;
  * 2.转换流：   InputStreamReader OutputStreamWriter
  * 3.数据流：   DataInputStream DataOutputStream
  */
-public class StreamExercises {
+public class StreamExercise {
 
     private final static String dirPath = "src/main/java/knowledge/api/io/";
 

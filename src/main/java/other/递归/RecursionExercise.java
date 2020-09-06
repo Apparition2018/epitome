@@ -1,6 +1,6 @@
 package other.递归;
 
-public class RecursionExercises {
+public class RecursionExercise {
 
     public static void main(String[] args) {
         System.out.println(getBinary(3));

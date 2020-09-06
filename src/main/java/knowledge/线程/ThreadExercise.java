@@ -5,7 +5,7 @@ package knowledge.线程;
  * https://blog.csdn.net/ankeyuan/article/details/39671979
  * 设计4个线程，其中两个每次对j增加1，另外两个对j每次减少1。循环100次。
  */
-public class ThreadExercises {
+public class ThreadExercise {
 
     private int j;
 
@@ -42,7 +42,7 @@ public class ThreadExercises {
     }
 
     public static void main(String[] args) {
-        ThreadExercises rd = new ThreadExercises();
+        ThreadExercise rd = new ThreadExercise();
 
         Thread thread;
 

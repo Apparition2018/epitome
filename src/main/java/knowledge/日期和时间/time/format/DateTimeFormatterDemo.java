@@ -1,5 +1,6 @@
 package knowledge.日期和时间.time.format;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
@@ -75,38 +76,17 @@ import java.time.format.FormatStyle;
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
  */
-public class DateTimeFormatterDemo {
-
-    @Test
-    public void test() {
-        DateTimeFormatter[] formatters = new DateTimeFormatter[]{
-                // 直接使用常量创建DateTimeFormatter格式器
-                DateTimeFormatter.ISO_LOCAL_DATE,
-                DateTimeFormatter.ISO_LOCAL_TIME,
-                DateTimeFormatter.ISO_LOCAL_DATE_TIME,
-                // 使用本地化的不同风格来创建DateTimeFormatter格式器
-                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.MEDIUM),
-                DateTimeFormatter.ofLocalizedTime(FormatStyle.LONG),
-                // 根据模式字符串来创建DateTimeFormatter格式器
-                DateTimeFormatter.ofPattern("Gyyyy%%MMM%%dd HH:mm:ss")
-        };
-        LocalDateTime date = LocalDateTime.now();
-        for (DateTimeFormatter formatter : formatters) {
-            System.out.println(formatter.format(date));
-        }
-    }
-
+public class DateTimeFormatterDemo extends Demo {
+    
     /**
      * 各种格式器
-     *
      * static DateTimeFormatter	    ofLocalizedDate(FormatStyle dateStyle)
      * static DateTimeFormatter	    ofLocalizedTime(FormatStyle timeStyle)
-     * static DateTimeFormatter	    ofLocalizedDateTime(FormatStyle dateTimeStyle)
-     * static DateTimeFormatter	    ofLocalizedDateTime(FormatStyle dateStyle, FormatStyle timeStyle)
+     * static DateTimeFormatter	    ofLocalizedDateTime(FormatStyle dateTimeStyle[, FormatStyle timeStyle])
      * static DateTimeFormatter	    ofPattern(String pattern[, Locale locale])
      */
     @Test
-    public void dateTimeFormatter() {
+    public void testDateTimeFormatter() {
         DateTimeFormatter[] formatters = new DateTimeFormatter[]{
                 // 常量
                 DateTimeFormatter.ISO_LOCAL_DATE,                                               // 2019-01-04
@@ -125,21 +105,11 @@ public class DateTimeFormatterDemo {
                 // 指定模式
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")                              // 2019-01-04 08:54:03
         };
-
         LocalDateTime ldt = LocalDateTime.now();
-
         for (DateTimeFormatter formatter : formatters) {
-            // String       format(TemporalAccessor temporal)
-            // 使用此格式化程序格式化日期时间对象
             p(formatter.format(ldt));
         }
 
-    }
-
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

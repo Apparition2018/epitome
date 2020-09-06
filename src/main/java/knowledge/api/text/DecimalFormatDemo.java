@@ -1,13 +1,17 @@
 package knowledge.api.text;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Locale;
 
 /**
  * DecimalFormat
  * DecimalFormat 是 NumberFormat 的一个具体子类，用于格式化十进制数字。
+ * https://jdk6.net/text/DecimalFormat.html
  * <p>
  * 特殊模式字符：
  * 符号	        位置	        本地化？	    含义
@@ -23,75 +27,61 @@ import java.text.ParseException;
  * ¤ (\u00A4)	前缀或后缀     否	       货币记号，由货币符号替换。如果两个同时出现，则用国际货币符号替换。如果出现在某个模式中，则使用货币小数分隔符，而不使用小数分隔符。
  * '	        前缀或后缀     否	       用于在前缀或或后缀中为特殊字符加引号，例如 "'#'#" 将 123 格式化为 "#123"。要创建单引号本身，请连续使用两个单引号："# o''clock"。
  * <p>
- * int	        getGroupingSize()                               返回分组大小
- * void	        setGroupingSize(int newValue)                   设置分组大小
- * <p>
- * int	        getMultiplier()                                 获取百分数、千分数和类似格式中使用的乘数
- * void	        setMultiplier(int newValue)                     设置百分数、千分数和类似格式中使用的乘数
- * <p>
- * String	    getNegativePrefix()                             获取负数前缀
- * String	    getNegativeSuffix()                             获取负数后缀
- * String	    getPositivePrefix()                             获取正数前缀
- * String	    getPositiveSuffix()                             获取正数后缀
- * <p>
- * void	        setNegativePrefix(String newValue)              设置负数前缀
- * void	        setNegativeSuffix(String newValue)              设置负数后缀
- * void	        setPositivePrefix(String newValue)              设置正数前缀
- * void	        setPositiveSuffix(String newValue)              设置正数后缀
- * <p>
- * boolean	    isDecimalSeparatorAlwaysShown()                 允许获取整数中小数分隔符的行为
- * void	        setDecimalSeparatorAlwaysShown(boolean newValue)允许设置整数中小数分隔符的行为
- * <p>
  * boolean	    isParseBigDecimal()                             返回 parse(java.lang.String, java.text.ParsePosition) 方法是否返回 BigDecimal
  * void	        setParseBigDecimal(boolean newValue)            设置 parse(java.lang.String, java.text.ParsePosition) 方法是否返回 BigDecimal
- * <p>
- * void	        applyLocalizedPattern(String pattern)           将给定的模式应用于此 Format 对象
- * void	        applyPattern(String pattern)                    将给定的模式应用于此 Format 对象
  * <p>
  * String	    toLocalizedPattern()                            合成一个表示此 Format 对象当前状态的、已本地化的模式字符串
  * String	    toPattern()                                     合成一个表示此 Format 对象当前状态的模式字符串
  */
-public class DecimalFormatDemo {
+public class DecimalFormatDemo extends Demo {
 
-    // DecimalFormat([String pattern, DecimalFormatSymbols symbols])
-    // 使用给定的模式和符号创建一个 DecimalFormat
-    private DecimalFormat df = new DecimalFormat("#,###");
+    public static final DecimalFormat FORMAT1;
+    public static final DecimalFormat FORMAT2;
+    public static final DecimalFormat FORMAT3;
 
-    /**
-     * 格式化：
-     * <p>
-     * StringBuffer	format(double number, StringBuffer result, FieldPosition fieldPosition)
-     * 格式化一个 double 值，以生成一个字符串
-     * <p>
-     * StringBuffer	format(long number, StringBuffer result, FieldPosition fieldPosition)
-     * 格式化一个 long 值，以生成一个字符串
-     * <p>
-     * StringBuffer	format(Object number, StringBuffer toAppendTo, FieldPosition pos)
-     * 格式化一个数，并将所得文本追加到给定的字符串缓冲区
-     * <p>
-     * AttributedCharacterIterator	formatToCharacterIterator(Object obj)
-     * 格式化一个 Object，以生成一个 AttributedCharacterIterator
-     */
-    @Test
-    public void format() {
-        p(df.format(1000000)); // 1,000,000
+    static {
+        // DecimalFormat([String pattern, DecimalFormatSymbols symbols])
+        // 使用给定的模式和符号创建一个 DecimalFormat
+        FORMAT1 = new DecimalFormat("00.000");
+        FORMAT2 = new DecimalFormat("#0.000");
+        FORMAT3 = new DecimalFormat("0.###");
+        // void	        applyPattern(String pattern)        将给定的模式应用于此 Format 对象
+        FORMAT3.applyPattern("0.###");
     }
 
+    @Test
+    public void testDecimalFormat() throws ParseException {
+        p(FORMAT1.format(0.12));    // 00.120
+        p(FORMAT2.format(0.12));    // 0.120
+        p(FORMAT3.format(0.12));    // 0.12
+        
+        // Currency	    getCurrency()                       获取格式化货币值时，此十进制格式使用的货币
+        p(FORMAT1.getCurrency());   // CNY
+
+        p(FORMAT1.parse("00.120")); // 0.12
+        p(FORMAT2.parse("00.120")); // 0.12
+        p(FORMAT3.parse("00.120")); // 0.12
+
+        // String	    toPattern()                         合成一个表示此 Format 对象当前状态的模式字符串
+        p(FORMAT1.toPattern());     // #00.000
+        p(FORMAT2.toPattern());     // #0.000
+        p(FORMAT3.toPattern());     // #0.###
+    }    
+    
     /**
-     * 解析：
-     * <p>
-     * Number	parse(String text, ParsePosition pos)
-     * 解析字符串中的文本，以生成一个 Number
+     * int	            getMaximumFractionDigits()          返回数的小数部分所允许的最大位数
+     * int	            getMinimumFractionDigits()          返回数的小数部分所允许的最小位数
      */
     @Test
-    public void parse() throws ParseException {
-        p(df.parse("1,000,000")); // 1000000
-    }
-
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
+    public void getFractionDigits() {
+        p(FORMAT1.getMaximumFractionDigits()); // 3
+        p(FORMAT1.getMinimumFractionDigits()); // 3
+                                               
+        p(FORMAT2.getMaximumFractionDigits()); // 3
+        p(FORMAT2.getMinimumFractionDigits()); // 3
+                                               
+        p(FORMAT3.getMaximumFractionDigits()); // 3
+        p(FORMAT3.getMinimumFractionDigits()); // 0
     }
 
 }
