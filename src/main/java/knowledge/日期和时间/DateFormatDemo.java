@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
- * DateFormatDemo
+ * DateFormat
  * https:*jdk6.net/text/DateFormat.html
  * <p>
  * DateFormat <-> Calendar

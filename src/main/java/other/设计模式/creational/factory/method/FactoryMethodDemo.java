@@ -1,6 +1,6 @@
 package other.设计模式.creational.factory.method;
 
-import knowledge.api.util.properties.PropertiesUtil;
+import knowledge.数据结构.集合框架.map.properties.PropertiesUtil;
 
 /**
  * 工厂模式：定义一个创建对象的接口，让子类来决定哪些类需要被实例化，使一个类的实例化推迟到子类。工厂模式是抽象工厂的一种常见情况。

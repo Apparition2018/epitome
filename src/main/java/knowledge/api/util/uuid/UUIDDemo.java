@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.UUID;
 
 /**
- * UUIDDemo
+ * UUID
  * https://jdk6.net/util/UUID.html
  *
  * @author ljh
@@ -24,8 +24,6 @@ public class UUIDDemo extends Demo {
         uuid = UUID.fromString("6a0ab1b5-5231-4872-907b-78894221d361");
         p(uuid.toString()); // 6a0ab1b5-5231-4872-907b-78894221d361
 
-        // int          hashCode()              返回此 UUID 的哈希码
-        p(uuid.hashCode()); // -362720721
         // int          variant()               与此 UUID 相关联的变体号
         p(uuid.variant());  // 2
         // int          version()               与此 UUID 相关联的版本号

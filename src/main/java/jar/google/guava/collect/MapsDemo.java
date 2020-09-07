@@ -1,7 +1,7 @@
 package jar.google.guava.collect;
 
 import com.google.common.collect.*;
-import knowledge.api.util.properties.PropertiesUtil;
+import knowledge.数据结构.集合框架.map.properties.PropertiesUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

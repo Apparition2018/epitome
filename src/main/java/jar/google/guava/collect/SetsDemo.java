@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * SetsDemo
+ * Sets
  * <p>
  * http://www.ibloger.net/article/3313.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Sets.html

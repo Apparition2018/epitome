@@ -1,5 +1,6 @@
 package knowledge.数据结构.集合框架.map;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Enumeration;
@@ -8,61 +9,41 @@ import java.util.Set;
 
 /**
  * Hashtable
- * <p>
  * Hashtable 继承 Dictionary，实现 Map
- * Hashtable 是同步的
+ * 
+ * Map              HashMap                     Hashtable
+ * 线程               同步              Collections.synchronizedList(map);
+ * 键为 null          不可以                         可以
+ * https://jdk6.net/util/Hashtable.html
  */
-public class HashtableDemo {
+public class HashtableDemo extends Demo {
 
     /**
-     * Hashtable([int initialCapacity, float loadFactor])
-     * 用指定初始容量和指定加载因子构造一个新的空哈希表
-     * 默认初始容量：11
-     * 默认加载因子：0.75
-     * <p>
-     * Hashtable(Map<? extends K,? extends V> t)
-     * 构造一个与给定的 Map 具有相同映射关系的新哈希表
+     *
      */
     @Test
-    public void test() {
-        Hashtable<String, Double> balance = new Hashtable<>();
-        Enumeration names;
-        Set keySet;
-        String str;
-        double d;
+    public void testHashtable() {
+        // Hashtable(int initialCapacity, float loadFactor)     用指定初始容量和指定加载因子构造一个新的空哈希表。默认初始容量11，加载因子0.75
+        // Hashtable(Map<? extends K,? extends V> t)            构造一个与给定的 Map 具有相同映射关系的新哈希表
+        Hashtable<String, String> hashtable = new Hashtable<>();
 
-        balance.put("Zara", 3434.34);
-        balance.put("Mahnaz", 123.22);
-        balance.put("Ayan", 1378.00);
-        balance.put("Daisy", 99.22);
-        balance.put("Qadir", -19.08);
-
-        // Enumeration<K>	keys()
-        // 返回此哈希表中的键的枚举
-        names = balance.keys();
-        while (names.hasMoreElements()) {
-            str = (String) names.nextElement();
-            System.out.println(str + ": " + balance.get(str));
+        hashtable.put("1", "A");
+        hashtable.put("2", "B");
+        hashtable.put("3", "C");
+        
+        // boolean	        contains(Object value)  测试此映射表中是否存在与指定值关联的键
+        p(hashtable.contains("A")); // ture
+        
+        // Enumeration<K>	keys()                  返回此哈希表中的键的枚举
+        Enumeration<String> keyEnumeration = hashtable.keys();
+        while (keyEnumeration.hasMoreElements()) {
+            p("keys(): " + keyEnumeration.nextElement());
         }
 
-        System.out.println("********************");
-
-        // Set<K>	keySet()
-        // 返回此映射中包含的键的 Set 视图
-        keySet = balance.keySet();
-        for (Object aKeySet : keySet) {
-            str = (String) aKeySet;
-            System.out.println(str + ": " + balance.get(str));
-        }
-
-        System.out.println("********************");
-
-        // Enumeration<V>	elements()
-        // 返回此哈希表中的值的枚举
-        names = balance.elements();
-        while (names.hasMoreElements()) {
-            d = (double) names.nextElement();
-            System.out.println(d);
+        // Enumeration<V>	elements()              返回此哈希表中的值的枚举
+        Enumeration<String> elements = hashtable.elements();
+        while (elements.hasMoreElements()) {
+            p("elements(): " + elements.nextElement());
         }
 
     }

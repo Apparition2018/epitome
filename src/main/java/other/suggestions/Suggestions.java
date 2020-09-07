@@ -2173,7 +2173,7 @@ public class Suggestions {
      *      java -XX:+UseParallelGC -XX:parallelGCThreads=20
      * 4.更换 JVM
      *
-     * PS: 带有"-XX"的 JVM 参数可能是不健壮的，SUN 不推荐使用，但它又是非常好用，这需要在系统升级、迁移时谨慎考虑
+     * PS：带有"-XX"的 JVM 参数可能是不健壮的，SUN 不推荐使用，但它又是非常好用，这需要在系统升级、迁移时谨慎考虑
      */
 
     /* 建议138：没有慢的系统

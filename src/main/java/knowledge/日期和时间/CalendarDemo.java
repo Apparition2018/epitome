@@ -184,7 +184,7 @@ public class CalendarDemo {
      * void	set(int year, int month, int date[, int hourOfDay, int minute, int second])
      * 设置字段 YEAR、MONTH、DAY_OF_MONTH、HOUR_OF_DAY、MINUTE 和 SECOND 的值
      * <p>
-     * 注：HOUR - 12小时，HOUR_OF_DAY - 24小时
+     * PS：HOUR - 12小时，HOUR_OF_DAY - 24小时
      */
     @Test
     public void set() {
