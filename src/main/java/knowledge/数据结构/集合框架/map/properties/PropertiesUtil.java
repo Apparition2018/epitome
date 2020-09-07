@@ -1,4 +1,4 @@
-package knowledge.api.util.properties;
+package knowledge.数据结构.集合框架.map.properties;
 
 import org.apache.commons.io.IOUtils;
 

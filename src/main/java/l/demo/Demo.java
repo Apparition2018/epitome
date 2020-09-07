@@ -16,7 +16,7 @@ public class Demo {
     public List<String> subList = new ArrayList<>(list.subList(1, 6));
     public List<String> subList2 = list.subList(3, 8);
     
-    public static final Map<String, String> map = new HashMap<>();
+    public static Map<String, String> map = new HashMap<>();
 
     static {
         map.put("1", "A");

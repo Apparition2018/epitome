@@ -1,6 +1,6 @@
 package other.设计模式.creational.prototype;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 /**
  * 原型模式：用原型实例指定创建对象的种类，并且通过拷贝这个原型来创建新的对象
@@ -86,9 +86,9 @@ class Circle extends Shape {
     }
 }
 
-// 创建一个类，从数据库获取实体类，并把它们存储在一个 Hashtable 中
+// 创建一个类，从数据库获取实体类，并把它们存储在一个 HashMap 中
 class ShapeCache {
-    private static Hashtable<String, Shape> shapeMap = new Hashtable<>();
+    private static HashMap<String, Shape> shapeMap = new HashMap<>();
 
     public static Shape getShape(String shapeId) {
         Shape cachedShape = shapeMap.get(shapeId);

@@ -9,10 +9,11 @@ import java.util.TreeSet;
 
 /**
  * Set
+ * Set 继承 Collection
  * <p>
- * HashSet  此类实现 Set 接口，由哈希表（实际上是一个 HashMap 实例）支持。它不保证 set 的迭代顺序；特别是它不保证该顺序恒久不变。此类允许使用 null 元素。
- * TreeSet  基于 TreeMap 的 NavigableSet 实现。使用元素的自然顺序对元素进行排序，或者根据创建 set 时提供的 Comparator 进行排序，具体取决于使用的构造方法。
- * --   http://www.cnblogs.com/bravolove/p/5810267.html
+ * Set          HashSet                 LinkedHashSet           TreeSet
+ * 适用场景     快速访问                记录插入顺序              自动排序
+ * https://jdk6.net/util/Set.html
  *
  * @author ljh
  * created on 2020/9/4 17:14
@@ -20,6 +21,12 @@ import java.util.TreeSet;
 public class SetDemo extends Demo {
 
     /**
+     * TreeSet
+     * TreeSet → NavigableSet → SortedSet → Set
+     * 基于 TreeMap 的 NavigableSet 实现。使用元素的自然顺序对元素进行排序，或者根据创建 set 时提供的 Comparator 进行排序。
+     * http://www.cnblogs.com/bravolove/p/5810267.html
+     * https://jdk6.net/util/TreeSet.html
+     * <p>
      * Comparator<? super E>	comparator()        返回对此 set 中的元素进行排序的比较器；如果此 set 使用其元素的自然顺序，则返回 null
      */
     @Test
@@ -30,12 +37,12 @@ public class SetDemo extends Demo {
         treeSet.add("3");
         treeSet.add("4");
         treeSet.add("5");
-        
+
         // E	            first()                 返回此 set 中当前第一个（最低）元素
         p(treeSet.first()); // 1
         // E	            last()                  返回此 set 中当前最后一个（最高）元素
         p(treeSet.last());  // 5
-                                                
+
         // E	            ceiling(E e)            返回此 set 中大于等于给定元素的最小元素；如果不存在这样的元素，则返回 null
         p(treeSet.ceiling("1.5"));  // 2
         // E	            higher(E e)             返回此 set 中严格大于给定元素的最小元素；如果不存在这样的元素，则返回 null
@@ -44,11 +51,6 @@ public class SetDemo extends Demo {
         p(treeSet.floor("1.5"));    // 1
         // E	            lower(E e)              返回此 set 中严格小于给定元素的最大元素；如果不存在这样的元素，则返回 null
         p(treeSet.lower("1.5"));    // 1
-
-        // Iterator<E>	    descendingIterator()    返回在此 set 元素上按降序进行迭代的迭代器
-        // NavigableSet<E>	descendingSet()         返回此 set 中所包含元素的逆序视图
-        NavigableSet<String> descSet = treeSet.descendingSet();
-        p(descSet); // [5, 4, 3, 2, 1]
 
         // SortedSet<E>	    headSet(E toElement)    返回此 set 的部分视图，其元素严格小于 toElement
         // NavigableSet<E>	headSet(E toElement, boolean inclusive)     返回此 set 的部分视图，其元素小于（或等于，如果 inclusive 为 true）toElement
@@ -65,10 +67,15 @@ public class SetDemo extends Demo {
         SortedSet<String> subSet = treeSet.subSet("0.8", "4.6");
         p(subSet);  // [1, 2, 3, 4]
 
-        // E	            lower(E e)              返回此 set 中严格小于给定元素的最大元素；如果不存在这样的元素，则返回 null
+        // Iterator<E>	    descendingIterator()    返回在此 set 元素上按降序进行迭代的迭代器
+        // NavigableSet<E>	descendingSet()         返回此 set 中所包含元素的逆序视图
+        NavigableSet<String> descSet = treeSet.descendingSet();
+        p(descSet); // [5, 4, 3, 2, 1]
+
+        // E	            pollFirst(E e)          获取并移除第一个（最低）元素；如果此 set 为空，则返回 null
         p(treeSet.pollFirst()); // 1
         p(treeSet);             // [2, 3, 4, 5]
-        
+
         // E	            pollLast()              获取并移除最后一个（最高）元素；如果此 set 为空，则返回 null
         p(treeSet.pollLast());  // 5
         p(treeSet);             // [2, 3, 4]

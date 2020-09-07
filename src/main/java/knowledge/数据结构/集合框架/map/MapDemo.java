@@ -4,9 +4,13 @@ import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Map;
+import java.util.NavigableSet;
+import java.util.TreeMap;
 
 /**
  * Map
+ * Map          HashMap                 LinkedHashMap           TreeMap
+ * 适用场景     快速访问                记录插入顺序              自动排序
  * https://jdk6.net/util/Map.html
  * <p>
  * void	    putAll(Map<? extends K,? extends V> m)  从指定映射中将所有映射关系复制到此映射中（可选操作）
@@ -44,6 +48,29 @@ public class MapDemo extends Demo {
 
         // 方法四
         map.forEach((k, v) -> System.out.println("key = " + k + " and value = " + v));
+    }
+
+    /**
+     * TreeMap
+     * TreeMap → NavigableMap → SortedMap → Map
+     * 基于红黑树（Red-Black tree）的 NavigableMap 实现。该映射根据其键的自然顺序进行排序，或者根据创建映射时提供的 Comparator 进行排序。
+     * https://jdk6.net/util/TreeMap.html
+     * <p>
+     * PS：大部分 API 类似 TreeSet，可参考 TreeSetDemo
+     */
+    @Test
+    public void testTreeMap() {
+        map.put("5", "E");
+        map.put("4", "D");
+        TreeMap<String, String> treeMap = new TreeMap<>(map);
+        p(map); // {1=A, 2=B, 3=C, 4=D, 5=E}
+
+        // NavigableSet<K>	    navigableKeySet()       返回此映射中所包含键的 NavigableSet 视图
+        NavigableSet<String> keySet = treeMap.navigableKeySet();
+        for (String key : keySet) {
+            p(key);
+        }
+
     }
 
 }

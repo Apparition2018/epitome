@@ -5,6 +5,7 @@ import org.junit.Test;
 
 /**
  * Collection
+ * Collection 继承 Iterable
  * https://jdk6.net/util/Collection.html
  * <p>
  * 接口        Set        List
