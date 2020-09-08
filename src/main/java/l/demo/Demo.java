@@ -15,13 +15,17 @@ public class Demo {
     public List<String> descList = Arrays.asList("9 8 7 6 5 4 3 2 1 0".split(" "));
     public List<String> subList = new ArrayList<>(list.subList(1, 6));
     public List<String> subList2 = list.subList(3, 8);
-    
+
     public static Map<String, String> map = new HashMap<>();
 
     static {
         map.put("1", "A");
         map.put("2", "B");
         map.put("3", "C");
+    }
+
+    public static <T> void p() {
+        System.out.println();
     }
 
     public static <T> void p(T obj) {
