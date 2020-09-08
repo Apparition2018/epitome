@@ -1,6 +1,7 @@
 package other.suggestions;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -11,7 +12,7 @@ class Task {
     void doSomething() {
         try {
             // 每个线程等待2秒钟，注意此时线程的状态变为 Warning 状态
-            Thread.sleep(2000);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

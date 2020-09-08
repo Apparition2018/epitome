@@ -24,7 +24,6 @@ public class ThreadInterrupt {
         Thread thread = new Thread(() -> {
             try {
                 TimeUnit.SECONDS.sleep(5);
-                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

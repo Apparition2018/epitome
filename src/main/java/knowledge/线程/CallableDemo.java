@@ -1,11 +1,11 @@
 package knowledge.线程;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Callable
@@ -29,7 +29,7 @@ public class CallableDemo {
     @Test
     public void test() {
         Callable<String> callable = () -> {
-            Thread.sleep(DateUtils.MILLIS_PER_SECOND);
+            TimeUnit.SECONDS.sleep(1);
             return "Callable";
         };
 

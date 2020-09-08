@@ -1,6 +1,7 @@
 package knowledge.线程.lock;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -44,7 +45,7 @@ class Data {
         try {
             System.out.println(Thread.currentThread().getName() + "准备写入数据");
             try {
-                Thread.sleep(20);
+                TimeUnit.MILLISECONDS.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -61,7 +62,7 @@ class Data {
         try {
             System.out.println(Thread.currentThread().getName() + "准备读取数据");
             try {
-                Thread.sleep(20);
+                TimeUnit.MILLISECONDS.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

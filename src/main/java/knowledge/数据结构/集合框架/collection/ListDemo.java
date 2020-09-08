@@ -101,12 +101,15 @@ public class ListDemo extends Demo {
      * 原理：引用着一个数组作为实际的存储容器。该数组的 length 就是 capacity
      * capacity 总共可以装多少个元素
      * size     已经装了多少个元素
+     * <p>
+     * 多线程环境下可以考虑用 Collections.synchronizedList(List l) 返回一个线程安全的 ArrayList 类，
+     * 也可以使用 concurrent 并发包下的 CopyOnWriteArrayList。
      */
     @Test
     public void testArrayList() {
         /* ensureCapacity() */
         final int N = 10000000;
-        
+
         ArrayList<Object> list = new ArrayList<>();
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < N; i++) {
@@ -125,7 +128,7 @@ public class ListDemo extends Demo {
         endTime = System.currentTimeMillis();
         p("调用了 ensureCapacity() 所需时间：" + (endTime - startTime)); // 没有调用 ensureCapacity() 所需时间：766
 
-        
+
         p(getArrayListCapacity(list)); // 15000000
         // void	    trimToSize()                        将此 ArrayList 实例的容量调整为列表的当前大小，即把 capacity = size，减少内存消耗
         list.trimToSize();

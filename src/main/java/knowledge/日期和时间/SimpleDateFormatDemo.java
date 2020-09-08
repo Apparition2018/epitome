@@ -36,7 +36,7 @@ public class SimpleDateFormatDemo extends Demo {
     private static final SimpleDateFormat SDF;
 
     static {
-        // SimpleDateFormat([String pattern], [Locale locale])
+        // SimpleDateFormat([String pattern[, Locale locale]])
         // 用给定的模式和给定语言环境的默认日期格式符号构造 SimpleDateFormat
         SDF = new SimpleDateFormat("yyyy-MM-dd");
     }

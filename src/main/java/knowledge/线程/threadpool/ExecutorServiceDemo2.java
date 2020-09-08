@@ -1,9 +1,8 @@
 package knowledge.线程.threadpool;
 
-import org.apache.commons.lang3.time.DateUtils;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 测试 newSingleThreadExecutor
@@ -41,7 +40,7 @@ class MyThread extends Thread {
     @Override
     public void run() {
         try {
-            Thread.sleep(DateUtils.MILLIS_PER_SECOND);
+            TimeUnit.SECONDS.sleep(1);
             System.out.println(Thread.currentThread().getName() + "正在执行。。。" + arr[index++]);
         } catch (InterruptedException e) {
             e.printStackTrace();

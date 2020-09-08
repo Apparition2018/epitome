@@ -170,7 +170,7 @@ public class StringDemo extends Demo {
     @Test
     public void split() {
         String[] sArr = "www.google.com".split("\\.", 2);
-        p(Arrays.toString(sArr)); // [www, google.com]
+        p(Arrays.toString(sArr)); // [www, google.com]F
     }
 
     /**

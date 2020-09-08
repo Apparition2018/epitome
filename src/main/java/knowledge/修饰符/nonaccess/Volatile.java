@@ -1,6 +1,6 @@
 package knowledge.修饰符.nonaccess;
 
-import org.apache.commons.lang3.time.DateUtils;
+import java.util.concurrent.TimeUnit;
 
 /**
  * volatile
@@ -37,7 +37,7 @@ public class Volatile {
 
         Volatile v = new Volatile();
         new Thread(v::run).start();
-        Thread.sleep(DateUtils.MILLIS_PER_SECOND);
+        TimeUnit.SECONDS.sleep(1);
         v.createObj();
     }
 

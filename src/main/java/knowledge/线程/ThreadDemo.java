@@ -2,6 +2,8 @@ package knowledge.线程;
 
 import org.junit.Test;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Thread
  * <p>
@@ -110,7 +112,7 @@ public class ThreadDemo {
             for (int i = 0; i < 100; i++) {
                 System.out.println("down:" + i + "%");
                 try {
-                    Thread.sleep(30);
+                    TimeUnit.MILLISECONDS.sleep(30);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -160,7 +162,7 @@ public class ThreadDemo {
             for (int i = 0; i < 10; i++) {
                 System.out.println("rose: let me go!");
                 try {
-                    Thread.sleep(500);
+                    TimeUnit.MILLISECONDS.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -173,7 +175,7 @@ public class ThreadDemo {
             while (true) {
                 System.out.println("jack: you jump! I jump!");
                 try {
-                    Thread.sleep(500);
+                    TimeUnit.MILLISECONDS.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

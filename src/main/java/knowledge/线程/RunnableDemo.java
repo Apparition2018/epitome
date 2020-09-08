@@ -1,5 +1,7 @@
 package knowledge.线程;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Runnable
  * <p>
@@ -35,7 +37,7 @@ class TicketRunnable implements Runnable {
     public void run() {
         while (ticket > 0) {
             try {
-                Thread.sleep(100);
+                TimeUnit.MILLISECONDS.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

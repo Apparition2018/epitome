@@ -1,11 +1,11 @@
 package knowledge.线程.threadpool;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * ExecutorService
@@ -31,7 +31,7 @@ public class ExecutorServiceDemo {
                 try {
                     Thread t = Thread.currentThread();
                     System.out.println(t.getName() + "：正在运行任务...");
-                    Thread.sleep(DateUtils.MILLIS_PER_SECOND);
+                    TimeUnit.SECONDS.sleep(1);
                     System.out.println(t.getName() + "：运行任务完毕！");
                 } catch (InterruptedException e) {
                     System.out.println("线程被中断了！");

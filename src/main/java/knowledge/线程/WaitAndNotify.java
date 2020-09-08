@@ -1,5 +1,7 @@
 package knowledge.线程;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * wait(), notify()
  * 对象锁，锁池，等待池
@@ -66,7 +68,7 @@ class Increase extends Thread {
             try {
                 // 随机睡眠0~500毫秒
                 // sleep() 不会释放对象 t 的锁
-                Thread.sleep((long) (Math.random() * 500));
+                TimeUnit.MILLISECONDS.sleep((long) (Math.random() * 5));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -89,7 +91,7 @@ class Decrease extends Thread {
     public void run() {
         for (int i = 0; i < 30; i++) {
             try {
-                Thread.sleep((long) (Math.random() * 500));
+                TimeUnit.MILLISECONDS.sleep((long) (Math.random() * 500));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -64,7 +65,7 @@ public class LombokDemo3 {
     public void sneakyThrows() {
         p(System.currentTimeMillis());
 
-        Thread.sleep(2000);
+        TimeUnit.SECONDS.sleep(2);
 
         p(System.currentTimeMillis());
     }

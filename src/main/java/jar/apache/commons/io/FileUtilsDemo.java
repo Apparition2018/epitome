@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * FileUtils
@@ -91,7 +92,7 @@ public class FileUtilsDemo {
         // copyFileToDirectory()
         FileUtils.copyFileToDirectory(file1, file2);
 
-        Thread.sleep(3000);
+        TimeUnit.SECONDS.sleep(3);
         FileUtils.deleteQuietly(file2);
 
         // 更多方法

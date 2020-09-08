@@ -2010,7 +2010,7 @@ public class Suggestions {
             new Thread(() -> {
                 try {
                     lock.lock();
-                    Thread.sleep(2000);
+                    TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {

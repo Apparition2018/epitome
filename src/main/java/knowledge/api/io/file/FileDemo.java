@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.concurrent.TimeUnit;
 
 /**
  * File
@@ -86,7 +87,7 @@ public class FileDemo {
     @Test
     public void createTempFile() throws IOException, InterruptedException {
         File temp = File.createTempFile("tmp", ".txt", new File("C:/"));
-        Thread.sleep(5000);
+        TimeUnit.SECONDS.sleep(5);
         temp.deleteOnExit();
     }
 

@@ -4,9 +4,7 @@ import l.demo.Demo;
 import org.junit.Test;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.Locale;
 
 /**
  * DecimalFormat
@@ -40,7 +38,7 @@ public class DecimalFormatDemo extends Demo {
     public static final DecimalFormat FORMAT3;
 
     static {
-        // DecimalFormat([String pattern, DecimalFormatSymbols symbols])
+        // DecimalFormat([String pattern[, DecimalFormatSymbols symbols]])
         // 使用给定的模式和符号创建一个 DecimalFormat
         FORMAT1 = new DecimalFormat("00.000");
         FORMAT2 = new DecimalFormat("#0.000");
@@ -54,7 +52,7 @@ public class DecimalFormatDemo extends Demo {
         p(FORMAT1.format(0.12));    // 00.120
         p(FORMAT2.format(0.12));    // 0.120
         p(FORMAT3.format(0.12));    // 0.12
-        
+
         // Currency	    getCurrency()                       获取格式化货币值时，此十进制格式使用的货币
         p(FORMAT1.getCurrency());   // CNY
 
@@ -66,8 +64,8 @@ public class DecimalFormatDemo extends Demo {
         p(FORMAT1.toPattern());     // #00.000
         p(FORMAT2.toPattern());     // #0.000
         p(FORMAT3.toPattern());     // #0.###
-    }    
-    
+    }
+
     /**
      * int	            getMaximumFractionDigits()          返回数的小数部分所允许的最大位数
      * int	            getMinimumFractionDigits()          返回数的小数部分所允许的最小位数
@@ -76,10 +74,10 @@ public class DecimalFormatDemo extends Demo {
     public void getFractionDigits() {
         p(FORMAT1.getMaximumFractionDigits()); // 3
         p(FORMAT1.getMinimumFractionDigits()); // 3
-                                               
+
         p(FORMAT2.getMaximumFractionDigits()); // 3
         p(FORMAT2.getMinimumFractionDigits()); // 3
-                                               
+
         p(FORMAT3.getMaximumFractionDigits()); // 3
         p(FORMAT3.getMinimumFractionDigits()); // 0
     }

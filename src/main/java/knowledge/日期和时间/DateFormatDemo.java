@@ -33,11 +33,11 @@ public class DateFormatDemo extends Demo {
     static {
         // static DateFormat	getInstance()
         // 获取为日期和时间使用 SHORT 风格的默认日期/时间格式器
-        // static DateFormat	getDateInstance([int style, Locale aLocale])  
+        // static DateFormat	getDateInstance([int style[, Locale aLocale]])
         // 获取日期格式器，该格式器具有给定语言环境的给定格式化风格
-        // static DateFormat	getDateTimeInstance([int dateStyle, int timeStyle, Locale aLocale])   
+        // static DateFormat	getDateTimeInstance([int dateStyle, int timeStyle[, Locale aLocale]])
         // 获取日期/时间格式器，该格式器具有给定语言环境的给定格式化风格
-        // static DateFormat	getTimeInstance([int style, Locale aLocale])
+        // static DateFormat	getTimeInstance([int style[, Locale aLocale]])
         // 获取时间格式器，该格式器具有给定语言环境的给定格式化风格
         FORMAT = DateFormat.getDateInstance();
     }

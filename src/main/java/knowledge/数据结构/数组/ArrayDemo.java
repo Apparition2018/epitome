@@ -1,12 +1,12 @@
 package knowledge.数据结构.数组;
 
-import knowledge.api.lang.system.SystemDemo;
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class ArrayDemo {
+public class ArrayDemo extends Demo {
 
     /**
      * 创建数组
@@ -37,7 +37,7 @@ public class ArrayDemo {
         }
 
         for (int[] ints : arr) {
-            System.out.println(Arrays.toString(ints));
+            p(ints);
             // [0, 1, 2]
             // [0, 1, 2]
         }
@@ -51,21 +51,24 @@ public class ArrayDemo {
      */
     @Test
     public void arraycopy() {
-        SystemDemo.arraycopy();
+        int[] arr1 = new int[]{1, 2, 3};
+        int[] arr2 = new int[arr1.length + 1];
+
+        System.arraycopy(arr1, 0, arr2, 0, 3);
+        p(arr2);
     }
 
 
     /**
      * static Object	newInstance(Class<?> componentType, int... dimensions)
      * 创建一个具有指定的组件类型和维度的新数组
-     *
      * static Object	newInstance(Class<?> componentType, int length)
      * 创建一个具有指定的组件类型和长度的新数组
      */
     @Test
     public void newInstance() {
         int[][] ints = (int[][]) Array.newInstance(int.class, 2, 3);
-        System.out.println(Arrays.toString(ints));
+        p(ints);
     }
 
 }

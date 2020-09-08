@@ -21,6 +21,16 @@
      * created on ${DATE} ${TIME}
      */
 ---
+## 去除尾行空格
+    1. Settings
+    2. Editor
+    3. General
+    4. Virtual Space
+        4.1 Allow placement of caret after end of line 取消勾选
+    5. Other
+        5.1 Strip trailing spaces on Save: All
+        5.2 Always keep trailing spaces on caret line 取消勾选
+---
 ## Terminal
     1. Settings
     2. Tools
