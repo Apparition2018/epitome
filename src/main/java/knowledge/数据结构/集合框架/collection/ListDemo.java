@@ -17,7 +17,7 @@ import java.util.List;
  * <p>
  * List             Vector              ArrayList                       LinkedList
  * 线程同步             是                   否                               否
- * 查找               效率高     效率高 (实现 RandomAccess)                   效率低
+ * 查找               效率高 (实现 RandomAccess)                           效率低
  * 插入删除         效率低             效率低                                 效率高
  * 其它           自动扩容 100%       自动扩容 50%                实现 Deque，提供了更多的方法，包括 offer(), peek(), poll() 等，多与一些线程池一起使用
  * <p>
