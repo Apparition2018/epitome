@@ -69,7 +69,7 @@ public class CollectionsDemo extends Demo {
         Collections.sort(descList);
         p(descList);// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-        int index = Collections.binarySearch(descList, "6");
+        int index = Collections.binarySearch(descList, 6);
         p(index);   // 6
     }
 
@@ -95,16 +95,13 @@ public class CollectionsDemo extends Demo {
     }
 
     /**
-     * default Stream<E>	stream()
-     * Returns a sequential Stream with this collection as its source
-     * <p>
-     * default Stream<E>	parallelStream()
-     * Returns a possibly parallel Stream with this collection as its source
+     * default Stream<E>	stream()            返回以此集合作为源的顺序 Stream
+     * default Stream<E>	parallelStream()    返回可能并行的 Stream 与此集合作为其来源
      */
     @Test
     public void stream() {
         p(list);    // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ]
-        List<String> filtered = list.stream().filter(i -> Integer.parseInt(i) > 5).collect(Collectors.toList());
+        List<Integer> filtered = list.stream().filter(i -> i > 5).collect(Collectors.toList());
         p(filtered);// [6, 7, 8, 9]
     }
 

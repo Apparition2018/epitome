@@ -38,12 +38,12 @@ public class ListDemo extends Demo {
     @Test
     public void traversal() {
         // 方法一
-        for (String str : list) {
+        for (Integer str : list) {
             p(str);
         }
 
         // 方法二
-        Iterator<String> it = list.iterator();
+        Iterator<Integer> it = list.iterator();
         while (it.hasNext()) {
             p(it.next());
         }
@@ -61,8 +61,8 @@ public class ListDemo extends Demo {
      */
     @Test
     public void add() {
-        list.addAll(1, Arrays.asList("x", "y", "z"));
-        p(list); // [0, x, y, z, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        sList.addAll(1, Arrays.asList("x", "y", "z"));
+        p(sList); // [0, x, y, z, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
 
     /**
@@ -82,7 +82,7 @@ public class ListDemo extends Demo {
      */
     @Test
     public void subList() {
-        List<String> subList = list.subList(2, 7);
+        List<Integer> subList = list.subList(2, 7);
         p(subList); // [2, 3, 4, 5, 6]
     }
 

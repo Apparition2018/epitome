@@ -1,5 +1,6 @@
 package knowledge.表达式.lambda;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 /**
@@ -14,7 +15,7 @@ import org.junit.Test;
  * <p>
  * http://www.runoob.com/java/java8-lambda-expressions.html
  */
-public class Lambda {
+public class Lambda extends Demo {
 
     /**
      * Lambda 表达式主要用来定义行内执行的方法类型接口。
@@ -24,7 +25,7 @@ public class Lambda {
     public void test() {
         // 声明类型
         MathOperation addition = (int a, int b) -> a + b;
-        System.out.println(addition);
+        p(addition);
 
         // 不声明类型
         MathOperation subtraction = (a, b) -> a - b;
@@ -38,13 +39,13 @@ public class Lambda {
         MathOperation division = (a, b) -> a / b;
 
         Lambda lambda = new Lambda();
-        System.out.println("10 + 5 = " + lambda.operate(10, 5, addition));
-        System.out.println("10 - 5 = " + lambda.operate(10, 5, subtraction));
-        System.out.println("10 x 5 = " + lambda.operate(10, 5, multiplication));
-        System.out.println("10 / 5 = " + lambda.operate(10, 5, division));
+        p("10 + 5 = " + lambda.operate(10, 5, addition));
+        p("10 - 5 = " + lambda.operate(10, 5, subtraction));
+        p("10 x 5 = " + lambda.operate(10, 5, multiplication));
+        p("10 / 5 = " + lambda.operate(10, 5, division));
 
         // 不用括号
-        GreetingService greetingService = message -> System.out.println("Hello " + message);
+        GreetingService greetingService = message -> p("Hello " + message);
         greetingService.sayMessage("Google");
     }
 
@@ -69,7 +70,7 @@ public class Lambda {
         String salutation = "Hello! ";
         GreetingService greetingService = message -> {
             // salutation += ""; // Variable used in lambda expression should be final or effectively final
-            System.out.println(salutation + message);
+            p(salutation + message);
         };
         greetingService.sayMessage("Google");
     }

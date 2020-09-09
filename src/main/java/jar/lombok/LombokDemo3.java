@@ -1,5 +1,6 @@
 package jar.lombok;
 
+import l.demo.Demo;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -17,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  * 日志
  */
 @Slf4j
-public class LombokDemo3 {
+public class LombokDemo3 extends Demo {
 
     /**
      * var （已过时）
@@ -97,12 +98,7 @@ public class LombokDemo3 {
 
     @Test
     public void lazy() {
-        p(Arrays.toString(getCached()));
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
+        p(getCached());
     }
 
 }

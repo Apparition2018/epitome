@@ -26,9 +26,9 @@ public class Fail extends Demo {
      */
     @Test
     public void testFailSafe() {
-        for (String key : map.keySet()) {
+        for (Integer key : map.keySet()) {
             p(map.get(key));
-            map.put("4", "D"); // ConcurrentModificationException
+            map.put(4, "D"); // ConcurrentModificationException
         }
     }
 
@@ -41,9 +41,9 @@ public class Fail extends Demo {
     public void testFailFast() {
         map = new ConcurrentHashMap<>(map);
 
-        for (String key : map.keySet()) {
+        for (Integer key : map.keySet()) {
             p(map.get(key));
-            map.put("4", "D");
+            map.put(4, "D");
             // A
             // B
             // C

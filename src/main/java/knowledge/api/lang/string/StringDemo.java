@@ -2,10 +2,8 @@ package knowledge.api.lang.string;
 
 import l.demo.Demo;
 import org.junit.Test;
-import l.utils.LUtils;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.regex.Pattern;
 
 /**
@@ -169,8 +167,7 @@ public class StringDemo extends Demo {
      */
     @Test
     public void split() {
-        String[] sArr = "www.google.com".split("\\.", 2);
-        p(Arrays.toString(sArr)); // [www, google.com]F
+        p("www.google.com".split("\\.", 2)); // [www, google.com]
     }
 
     /**
@@ -197,8 +194,7 @@ public class StringDemo extends Demo {
      */
     @Test
     public void toCharArray() {
-        char[] chars = "hello world".toCharArray();
-        p(Arrays.toString(chars)); // [h, e, l, l, o,  , w, o, r, l, d]
+        p("hello world".toCharArray()); // [h, e, l, l, o,  , w, o, r, l, d]
     }
 
     /**

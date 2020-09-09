@@ -32,13 +32,13 @@ public class MapDemo extends Demo {
     public void traversal() {
         // 方法一
         // Set<K>	                keySet()        返回此映射中包含的键的 Set 视图
-        for (String key : map.keySet()) {
+        for (Integer key : map.keySet()) {
             System.out.println("key = " + key + " and value = " + map.get(key));
         }
 
         // 方法二
         // Set<Map.Entry<K,V>>	    entrySet()      返回此映射中包含的映射关系的 Set 视图
-        for (Map.Entry<String, String> entry : map.entrySet()) {
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
             System.out.println("key = " + entry.getKey() + " and value = " + entry.getValue());
         }
 
@@ -62,17 +62,17 @@ public class MapDemo extends Demo {
      */
     @Test
     public void testTreeMap() {
-        map.put("5", "E");
-        map.put("4", "D");
+        map.put(5, "E");
+        map.put(4, "D");
         // TreeMap([Comparator<? super K> comparator])  构造一个新的、空的树映射，该映射根据给定比较器进行排序
         // TreeMap(Map<? extends K,? extends V> m)      构造一个与给定映射具有相同映射关系的新的树映射，该映射根据其键的自然顺序 进行排序
         // TreeMap(SortedMap<K,? extends V> m)          构造一个与指定有序映射具有相同映射关系和相同排序顺序的新的树映射
-        TreeMap<String, String> treeMap = new TreeMap<>(map);
+        TreeMap<Integer, String> treeMap = new TreeMap<>(map);
         p(map); // {1=A, 2=B, 3=C, 4=D, 5=E}
 
         // NavigableSet<K>	    navigableKeySet()       返回此映射中所包含键的 NavigableSet 视图
-        NavigableSet<String> keySet = treeMap.navigableKeySet();
-        for (String key : keySet) {
+        NavigableSet<Integer> keySet = treeMap.navigableKeySet();
+        for (Integer key : keySet) {
             p(key);
         }
     }

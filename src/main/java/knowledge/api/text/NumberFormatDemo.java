@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.Currency;
 import java.util.Locale;
 

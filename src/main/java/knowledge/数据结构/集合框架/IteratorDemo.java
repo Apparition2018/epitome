@@ -14,7 +14,7 @@ public class IteratorDemo extends Demo {
 
     @Test
     public void testIterator() {
-        Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+        Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
 
         // boolean	    hasNext()       如果仍有元素可以迭代，则返回 true
         while (it.hasNext()) {

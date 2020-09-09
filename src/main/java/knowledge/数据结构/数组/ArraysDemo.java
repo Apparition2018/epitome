@@ -1,6 +1,7 @@
 package knowledge.数据结构.数组;
 
 import com.google.common.primitives.Ints;
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -11,7 +12,7 @@ import java.util.List;
  * <p>
  * 它提供的所有方法都是静态的
  */
-public class ArraysDemo {
+public class ArraysDemo extends Demo {
 
     /**
      * static <T>List<T> asList(T... a)
@@ -25,26 +26,26 @@ public class ArraysDemo {
     public void asList() {
         String[] arr = {"A", "B", "C", "D"};
         List<String> list = Arrays.asList(arr);
-        p(list);   // [A, B, C, D]
+        p(list);    // [A, B, C, D]
 
         // 修改数组，影响list
         arr[0] = "Z";
-        p(list);                   // [Z, B, C, D]
-        p(Arrays.toString(arr));   // [Z, B, C, D]
+        p(list);    // [Z, B, C, D]
+        p(arr);     // [Z, B, C, D]
 
         // 修改list，影响数组
         list.set(1, "E");
-        p(list);                   // [Z, E, C, D]
-        p(Arrays.toString(arr));   // [Z, E, C, D]
+        p(list);    // [Z, E, C, D]
+        p(arr);     // [Z, E, C, D]
 
         // list长度不能变
-        // list.add("F");                              // UnsupportedOperationException
+        // list.add("F"); // UnsupportedOperationException
 
         // 不能把基本数据类型转化为列表
         int[] intArr = {1, 2, 3, 4, 5};
         // List<Integer> intList = Arrays.asList(intArr);   // 编译不通过，asList接受的参数是一个泛型的变长参数，而基本数据类型是无法泛型化的
         List<Integer> intList = Ints.asList(intArr);        // guava类库的工具方法
-        p(intList);                        // [1, 2, 3, 4, 5]
+        p(intList); // [1, 2, 3, 4, 5]
     }
 
     /**
@@ -58,7 +59,7 @@ public class ArraysDemo {
         int[] arr = {2, 5, -2, 6, -3, 8, 0, -7, -9, 4};
 
         Arrays.sort(arr);
-        p(Arrays.toString(arr));
+        p(arr);
 
         int index = Arrays.binarySearch(arr, 0);
         p("元素 0 在第 " + index + " 个位置"); // 元素 0 在第 4 个位置
@@ -72,7 +73,7 @@ public class ArraysDemo {
     public void copyOf() {
         int[] arr1 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] arr2 = Arrays.copyOf(arr1, 5);
-        p(Arrays.toString(arr2)); // [1, 2, 3, 4, 5]
+        p(arr2); // [1, 2, 3, 4, 5]
 
     }
 
@@ -114,7 +115,7 @@ public class ArraysDemo {
         int[] arr = new int[5];
         Arrays.fill(arr, 3);
 
-        p(Arrays.toString(arr)); // [3, 3, 3, 3, 3]
+        p(arr); // [3, 3, 3, 3, 3]
     }
 
     /**
@@ -125,10 +126,4 @@ public class ArraysDemo {
     public void sort() {
         binarySearch();
     }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
-
 }

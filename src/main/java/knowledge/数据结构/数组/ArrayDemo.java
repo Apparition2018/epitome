@@ -4,7 +4,6 @@ import l.demo.Demo;
 import org.junit.Test;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class ArrayDemo extends Demo {
 

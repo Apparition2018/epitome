@@ -39,6 +39,7 @@ SELECT deptno, MAX(sal) max_sal FROM emp GROUP BY deptno HAVING MAX(sal) > 2000;
 >## 高级分组查询
 >### MySQL &nbsp;&nbsp;(GROUP_CONCAT)
 >```
+>-- 合并列值
 >SELECT d.loc, GROUP_CONCAT(e.ename ORDER BY e.ename)
 >FROM emp e
 >JOIN dept d ON e.deptno = d.deptno

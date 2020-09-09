@@ -1,10 +1,10 @@
 package jar.apache.commons.lang3;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -12,7 +12,7 @@ import java.util.Collections;
  * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ClassUtils.html
  */
-public class ClassUtilsDemo {
+public class ClassUtilsDemo extends Demo {
 
     @Test
     public void class_() throws ClassNotFoundException {
@@ -73,13 +73,7 @@ public class ClassUtilsDemo {
 
         // static Class<?>[]	toClass(Object... array)
         // 对象 → Class 对象
-        p(Arrays.toString(ClassUtils.toClass(ArrayUtils.toArray(1, "2", this)))); // [class java.lang.Integer, class java.lang.String, class jar.apache.commons.lang.ClassUtilsDemo]
+        p(ClassUtils.toClass(ArrayUtils.toArray(1, "2", this))); // [class java.lang.Integer, class java.lang.String, class jar.apache.commons.lang.ClassUtilsDemo]
 
     }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
-
 }

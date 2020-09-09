@@ -3,7 +3,6 @@ package knowledge.api.math;
 import org.junit.Test;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 
 /**
  * BigInteger

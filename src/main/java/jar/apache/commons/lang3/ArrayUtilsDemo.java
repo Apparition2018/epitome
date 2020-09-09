@@ -1,9 +1,8 @@
 package jar.apache.commons.lang3;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * ArrayUtils
@@ -11,7 +10,7 @@ import java.util.Arrays;
  * https://blog.csdn.net/u010046887/article/details/47398213
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ArrayUtils.html
  */
-public class ArrayUtilsDemo {
+public class ArrayUtilsDemo extends Demo {
 
     /**
      * 常量
@@ -19,13 +18,13 @@ public class ArrayUtilsDemo {
     @Test
     public void constant() {
         // 各种类型的空数组
-        System.out.println(Arrays.toString(ArrayUtils.EMPTY_OBJECT_ARRAY));
-        System.out.println(Arrays.toString(ArrayUtils.EMPTY_INT_ARRAY));
-        System.out.println(Arrays.toString(ArrayUtils.EMPTY_INTEGER_OBJECT_ARRAY));
+        p(ArrayUtils.EMPTY_OBJECT_ARRAY);
+        p(ArrayUtils.EMPTY_INT_ARRAY);
+        p(ArrayUtils.EMPTY_INTEGER_OBJECT_ARRAY);
         // ...
 
         // INDEX_ONT_FOUND
-        System.out.println(ArrayUtils.INDEX_NOT_FOUND);
+        p(ArrayUtils.INDEX_NOT_FOUND);
     }
 
     @Test
@@ -87,21 +86,10 @@ public class ArrayUtilsDemo {
         p(ArrayUtils.toObject(new int[]{1, 2, 3, 4, 5})); // [1, 2, 3, 4, 5]
 
         // 包装类型数组 → 基本类型数组
-        p(Arrays.toString(ArrayUtils.toPrimitive(new Integer[]{1, 2, 3, 4, 5}))); // [1, 2, 3, 4, 5]
+        p(ArrayUtils.toPrimitive(new Integer[]{1, 2, 3, 4, 5})); // [1, 2, 3, 4, 5]
 
         // 包装类型数组 → 字符串类型数组
         // p(ArrayUtils.toStringArray(new Integer[]{1, 2, 3, 4, 5}));
-    }
-
-    @SafeVarargs
-    private static <T> void p(T... obj) {
-        if (obj == null) return;
-        System.out.println(Arrays.toString(obj));
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }
