@@ -16,8 +16,8 @@ public class Demo {
     public List<Integer> descList = Arrays.asList(9, 8, 7, 6, 5, 4, 3, 2, 1);
     public List<Integer> subList = new ArrayList<>(list.subList(1, 6));
     public List<Integer> subList2 = list.subList(3, 8);
-
     public static Map<Integer, String> map = new HashMap<>();
+    public final static String DEMO_PATH = "src/main/resources/demo/";
 
     static {
         map.put(1, "A");
