@@ -1,31 +1,34 @@
 package knowledge.api.io.file;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.Objects;
 
-public class FileFilterDemo {
-
+/**
+ * FileFilter
+ * 用于抽象路径名的过滤器
+ * https://jdk6.net/io/FileFilter.html
+ *
+ * @author ljh
+ * 
+ * created on 2020/9/14 10:40
+ */
+public class FileFilterDemo extends Demo {
+    
     @Test
-    public void fileFilter() {
-        File file = new File("src/main/java/knowledge/api/io/file");
-
-
-        FileFilter filter = pathname -> {
-            // boolean	accept(File pathname)
-            // 测试指定抽象路径名是否应该包含在某个路径名列表中
-            String name = pathname.getName();
-            return name.startsWith("File");
-        };
-
-        File[] subs = file.listFiles(filter);
-        if (subs != null) {
-            for (File sub : subs) {
-                System.out.println(sub.getName());
-            }
-        } else {
-            System.out.println("目录不存在或它不是一个目录");
+    public void testFileFilter() {
+        File file = new File(USER_DIR);
+        
+        // boolean	    accept(File pathname)
+        // 测试指定抽象路径名是否应该包含在某个路径名列表中
+        FileFilter filter = f -> f.getName().startsWith("p");
+        
+        File[] subFiles = file.listFiles(filter);
+        for (File subFile : Objects.requireNonNull(subFiles, "目录不存在或它不是一个目录")) {
+            p(subFile.getName());
         }
     }
 }

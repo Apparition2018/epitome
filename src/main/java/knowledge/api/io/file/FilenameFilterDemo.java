@@ -1,31 +1,33 @@
 package knowledge.api.io.file;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.Objects;
 
 /**
  * FilenameFilter
+ * 实现此接口的类实例可用于过滤器文件名。
+ * https://jdk6.net/io/FilenameFilter.html
+ *
+ * @author ljh
+ * created on 2020/9/14 10:51
  */
-public class FilenameFilterDemo {
-
+public class FilenameFilterDemo extends Demo {
+    
     @Test
-    public void filenameFilter() {
-        File file = new File("src/main/java/knowledge/api/io/file");
-
-        // boolean	accept(File dir, String name)
+    public void testFilenameFilter() {
+        File file = new File(USER_DIR);
+        
+        // boolean	    accept(File dir, String name)
         // 测试指定文件是否应该包含在某一文件列表中
-        FilenameFilter filter = (dir, name) -> name.startsWith("File");
+        FilenameFilter filter = (dir, name) -> name.startsWith("p");
 
-        String[] subs = file.list(filter);
-        if (subs != null) {
-            for (String sub : subs) {
-                System.out.println(sub);
-            }
-        } else {
-            System.out.println("目录不存在或它不是一个目录");
+        File[] subFiles = file.listFiles(filter);
+        for (File subFile : Objects.requireNonNull(subFiles, "目录不存在或它不是一个目录")) {
+            p(subFile.getName());
         }
     }
-
 }

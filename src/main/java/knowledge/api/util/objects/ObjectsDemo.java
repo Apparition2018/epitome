@@ -1,5 +1,6 @@
 package knowledge.api.util.objects;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Comparator;
@@ -7,7 +8,6 @@ import java.util.Objects;
 
 /**
  * Objects
- * <p>
  * Objects 是 jdk1.7 新增的工具类
  * Objects 由一些静态方法组成，这些方法是空指针安全的 (null-safe)，容忍空指针的 (null-tolerant)
  * <p>
@@ -15,7 +15,7 @@ import java.util.Objects;
  * https://blog.csdn.net/xinghuo0007/article/details/78895577
  * https://blog.csdn.net/yamaxifeng_132/article/details/53538903
  */
-public class ObjectsDemo {
+public class ObjectsDemo extends Demo {
 
     /**
      * static <T> int	compare(T a, T b, Comparator<? super T> c)
@@ -28,7 +28,7 @@ public class ObjectsDemo {
     public void compare() {
         Integer n1 = null;
         Integer n2 = 2;
-        System.out.println(Objects.compare(n1, n2, Comparator.comparingInt(o -> o)));
+        p(Objects.compare(n1, n2, Comparator.comparingInt(o -> o)));
     }
 
     /**
@@ -40,8 +40,8 @@ public class ObjectsDemo {
         Number n1 = null;
         Number n2 = 2;
         Number n3 = null;
-        System.out.println(Objects.equals(n1, n2)); // false
-        System.out.println(Objects.equals(n1, n3)); // true
+        p(Objects.equals(n1, n2)); // false
+        p(Objects.equals(n1, n3)); // true
     }
 
     /**
@@ -55,8 +55,8 @@ public class ObjectsDemo {
         String[][] name1 = {{"L", "i", "a", "n", "g"}, {"J", "i", "e"}, {"H", "u", "i"}};
         String[][] name2 = {{"L", "i", "a", "n", "g"}, {"J", "i", "e"}, {"H", "u", "i"}};
 
-        System.out.println(Objects.equals(name1, name2));       // false
-        System.out.println(Objects.deepEquals(name1, name2));   // true
+        p(Objects.equals(name1, name2));       // false
+        p(Objects.deepEquals(name1, name2));   // true
     }
 
     /**
@@ -66,7 +66,7 @@ public class ObjectsDemo {
     @Test
     public void hashCode_() {
         Number n = null;
-        System.out.println(Objects.hashCode(n)); // 0
+        p(Objects.hashCode(n)); // 0
     }
 
     /**
@@ -76,8 +76,8 @@ public class ObjectsDemo {
     @Test
     public void isNull() {
         Number n = null;
-        System.out.println(Objects.isNull(n));  // true
-        System.out.println(Objects.nonNull(n)); // false
+        p(Objects.isNull(n));  // true
+        p(Objects.nonNull(n)); // false
     }
 
     /**
@@ -85,19 +85,18 @@ public class ObjectsDemo {
      * Returns true if the provided reference is non-null otherwise returns false
      */
     @Test
-    public void nonNull() { isNull(); }
+    public void nonNull() {
+        isNull();
+    }
 
     /**
-     * static <T> T	requireNonNull(T obj[, String message])
-     * static <T> T	requireNonNull(T obj, Supplier<String> messageSupplier)
-     * Checks that the specified object reference is not null and throws a customized NullPointerException if it is
-     * <p>
-     * 主要在方法，构造函数中做参数校验
+     * static <T> T	requireNonNull(T obj[, String message/Supplier<String> messageSupplier])
+     * 检查指定的对象引用不是null并抛出自定义的NullPointerException（如果是）。主要在方法，构造函数中做参数校验
      */
     @Test
     public void requireNonNull() {
         Number n = null;
-        System.out.println(Objects.requireNonNull(n, "n 不能为空"));
+        p(Objects.requireNonNull(n, "n 不能为空"));
     }
 
     /**
@@ -107,7 +106,7 @@ public class ObjectsDemo {
     @Test
     public void toString_() {
         Number n = null;
-        System.out.println(Objects.toString(n)); // null
+        p(Objects.toString(n)); // null
     }
 
 

@@ -17,7 +17,10 @@ public class Demo {
     public List<Integer> subList = new ArrayList<>(list.subList(1, 6));
     public List<Integer> subList2 = list.subList(3, 8);
     public static Map<Integer, String> map = new HashMap<>();
-    public final static String DEMO_PATH = "src/main/resources/demo/";
+    public static final String JAVA_PATH = "src/main/Java";
+    public static final String RESOURCES_PATH = "src/main/resources/";
+    public static final String DEMO_PATH = RESOURCES_PATH + "demo/";
+    public static final String USER_DIR = System.getProperty("user.dir"); 
 
     static {
         map.put(1, "A");

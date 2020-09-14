@@ -1,6 +1,6 @@
 package knowledge.api.io.stream;
 
-import org.apache.commons.io.IOUtils;
+import l.demo.Demo;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -15,47 +15,39 @@ import java.io.*;
  * 4.管道：    PipedInputStream PipedOutputStream PipedReader PipedWriter
  * <p>
  * 处理流
- * 1.缓冲流：   BufferedInputStream BufferedOutputStream BufferedReader BufferedWriter  (flush)
+ * 1.缓冲流：   BufferedInputStream BufferedOutputStream BufferedReader BufferedWriter
  * 2.转换流：   InputStreamReader OutputStreamWriter
  * 3.数据流：   DataInputStream DataOutputStream
  */
-public class StreamExercise {
+public class StreamExercise extends Demo {
 
     private final static String dirPath = "src/main/java/knowledge/api/io/";
+
+
+    @Test
+    public void copy() {
+        copy(DEMO_PATH + "demo", DEMO_PATH + "demo_copy");
+    }
 
     /**
      * 复制
      */
-    @Test
-    public void copy() {
-        // 1.提供读入、写出的文件
-        File f1 = new File(dirPath + "io.png");
-        File f2 = new File(dirPath + "io_copy.png");
-
-        // 2.提供相应的流
-        InputStream is = null;
-        OutputStream os = null;
-
-        try {
-            is = new BufferedInputStream(new FileInputStream(f1));
-            os = new BufferedOutputStream(new FileOutputStream(f2));
-
-            // 3.实现文件的复制
-            byte[] b = new byte[1024];
+    public boolean copy(String src, String desc) {
+        try (InputStream is = new BufferedInputStream(new FileInputStream(src));
+             OutputStream os = new BufferedOutputStream(new FileOutputStream(desc))) {
             int len;
-            while ((len = is.read(b)) != -1) {
-                os.write(b, 0, len);
+            byte[] buffer = new byte[1024];
+            while ((len = is.read(buffer)) != -1) {
+                os.write(buffer, 0, len);
             }
-
-            System.out.println("复制完毕！");
+            os.flush();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            IOUtils.closeQuietly(is);
-            IOUtils.closeQuietly(os);
+            p("复制失败！");
+            return false;
         }
-
-
+        p("复制成功！");
+        return true;
     }
 
     /**
@@ -63,15 +55,10 @@ public class StreamExercise {
      * <p>
      * 文件 → BufferedImage → 流 → byte[] → 流 → BufferedImage → 文件
      */
-    @Test
-    public void copy2() {
-        File f1 = new File(dirPath + "io.png");
-        File f2 = new File(dirPath + "io_copy.png");
-        BufferedImage bi;
-
+    public boolean copy2(String src, String desc) {
         try {
             // 文件 → BufferedImage
-            bi = ImageIO.read(f1);
+            BufferedImage bi = ImageIO.read(new File(src));
 
             // BufferedImage → 流
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -87,10 +74,14 @@ public class StreamExercise {
             bi = ImageIO.read(bais);
 
             // BufferedImage → 文件
-            ImageIO.write(bi, "png", f2);
+            ImageIO.write(bi, "png", new File(desc));
         } catch (IOException e) {
             e.printStackTrace();
+            p("复制失败！");
+            return false;
         }
+        p("复制成功！");
+        return true;
     }
 
 }
