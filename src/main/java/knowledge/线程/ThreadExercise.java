@@ -1,15 +1,26 @@
 package knowledge.线程;
 
+import l.demo.Demo;
+
 /**
  * https://blog.csdn.net/never_cxb/article/details/50379047
- * https://blog.csdn.net/ankeyuan/article/details/39671979
  * 设计4个线程，其中两个每次对j增加1，另外两个对j每次减少1。循环100次。
  */
-public class ThreadExercise {
+public class ThreadExercise extends Demo {
 
-    private int j;
+    private static int j;
 
-    class Inc implements Runnable {
+    public static void main(String[] args) {
+        for (int i = 0; i < 2; i++) {
+            new Inc().start();
+        }
+
+        for (int i = 0; i < 2; i++) {
+            new Dec().start();
+        }
+    }
+    
+    static class Inc extends Thread {
 
         @Override
         public void run() {
@@ -20,7 +31,7 @@ public class ThreadExercise {
         }
     }
 
-    class Dec extends Thread {
+    static class Dec extends Thread {
 
         @Override
         public void run() {
@@ -31,30 +42,14 @@ public class ThreadExercise {
         }
     }
 
-    private synchronized void inc() {
+    private static synchronized void inc() {
         j++;
-        System.out.println(Thread.currentThread().getName() + "--inc--" + j);
+        p(Thread.currentThread().getName() + "--inc--" + j);
     }
 
-    private synchronized void dec() {
+    private static synchronized void dec() {
         j--;
-        System.out.println(Thread.currentThread().getName() + "--dec--" + j);
-    }
-
-    public static void main(String[] args) {
-        ThreadExercise rd = new ThreadExercise();
-
-        Thread thread;
-
-        for (int i = 0; i < 2; i++) {
-            thread = new Thread(rd.new Inc());
-            thread.start();
-        }
-
-        for (int i = 0; i < 2; i++) {
-            thread = rd.new Dec();
-            thread.start();
-        }
+        p(Thread.currentThread().getName() + "--dec--" + j);
     }
 
 }
