@@ -1,5 +1,7 @@
 package knowledge.线程.threadpool;
 
+import l.demo.Demo;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * 该方法返回一个只有一个线程的线程池，即每次只能执行一个线程任务，多余的任务会保存到一个任务队列中，
  * 等待这一个线程空闲，当这个线程空闲了再按FIFO方式顺序执行任务队列中的任务
  */
-public class ExecutorServiceDemo2 {
+public class ExecutorServiceDemo2 extends Demo {
     public static void main(String[] args) {
         //创建一个可重用固定线程数的线程池
         ExecutorService pool = Executors.newSingleThreadExecutor();
@@ -31,19 +33,19 @@ public class ExecutorServiceDemo2 {
         //关闭线程池
         pool.shutdown();
     }
-}
 
-class MyThread extends Thread {
-    private static int[] arr = {1, 2, 3, 4, 5};
-    private static int index = 0;
+    static class MyThread extends Thread {
+        private static int[] arr = {1, 2, 3, 4, 5};
+        private static int index = 0;
 
-    @Override
-    public void run() {
-        try {
-            TimeUnit.SECONDS.sleep(1);
-            System.out.println(Thread.currentThread().getName() + "正在执行。。。" + arr[index++]);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        @Override
+        public void run() {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+                System.out.println(Thread.currentThread().getName() + "正在执行。。。" + arr[index++]);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

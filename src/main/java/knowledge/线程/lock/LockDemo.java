@@ -1,5 +1,6 @@
 package knowledge.线程.lock;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -8,6 +9,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Lock （显式锁）
+ * Lock 实现提供了比使用 synchronized 方法和语句可获得的更广泛的锁定操作。此实现允许更灵活的结构，可以具有差别很大的属性，可以支持多个相关的 Condition 对象。
+ * https://jdk6.net/util-concurrent-locks/Lock.html
  * <p>
  * 相对于 synchronized 的优点：
  * 1.lock 可以不让等待的线程一直无限期地等待下去 (tryLock(long time, TimeUnit unit) 只等待一定时间，lockInterruptibly() 响应中断)
@@ -26,18 +29,17 @@ import java.util.concurrent.locks.ReentrantLock;
  * <p>
  * https://www.cnblogs.com/dolphin0520/p/3923167.html
  */
-public class LockDemo {
+public class LockDemo extends Demo {
 
     /**
-     * void	lockInterruptibly()
-     * 如果当前线程未被中断，则获取锁
+     * void	        lockInterruptibly()                     如果当前线程未被中断，则获取锁
      */
     @Test
     public void lockInterruptibly() throws InterruptedException {
         Lock lock = new ReentrantLock();
         lock.lockInterruptibly();
         try {
-            System.out.println("do something");
+            p("do something");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -46,25 +48,21 @@ public class LockDemo {
     }
 
     /**
-     * boolean	tryLock()
-     * 仅在调用时锁为空闲状态才获取该锁
-     *
-     * boolean	tryLock(long time, TimeUnit unit)
-     * 如果锁在给定的等待时间内空闲，并且当前线程未被中断，则获取锁
+     * boolean	    tryLock([long time, TimeUnit unit])     如果锁在给定的等待时间内空闲，并且当前线程未被中断，则获取锁
      */
     @Test
     public void tryLock() throws InterruptedException {
         Lock lock = new ReentrantLock();
         if (lock.tryLock(2, TimeUnit.SECONDS)) {
             try {
-                System.out.println("do something");
+                p("do something");
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 lock.unlock();
             }
         } else {
-            System.out.println("do something else");
+            p("do something else");
         }
     }
 }

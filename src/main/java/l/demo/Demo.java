@@ -2,6 +2,7 @@ package l.demo;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * Demo
@@ -20,7 +21,8 @@ public class Demo {
     public static final String JAVA_PATH = "src/main/Java";
     public static final String RESOURCES_PATH = "src/main/resources/";
     public static final String DEMO_PATH = RESOURCES_PATH + "demo/";
-    public static final String USER_DIR = System.getProperty("user.dir"); 
+    public static final String USER_DIR = System.getProperty("user.dir");
+    public CountDownLatch countDownLatch;
 
     static {
         map.put(1, "A");
@@ -28,6 +30,13 @@ public class Demo {
         map.put(3, "C");
     }
 
+    public void setCountDownLatch(int n) {
+        countDownLatch = new CountDownLatch(n);
+    }
+
+    /**
+     * 简写 System.out.println()
+     */
     public static <T> void p() {
         System.out.println();
     }
@@ -36,9 +45,6 @@ public class Demo {
         p(obj, false);
     }
 
-    /**
-     * 简写 System.out.println()
-     */
     public static <T> void p(T obj, boolean original) {
         if (obj == null) return;
         // 数组

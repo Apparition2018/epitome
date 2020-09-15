@@ -1,6 +1,6 @@
 package knowledge.线程;
 
-import org.junit.Test;
+import l.demo.Demo;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Callable
+ * https://jdk6.net/util-concurrent/Callable.html
  * <p>
  * 和 Runnable 比较
  * 相同点：
@@ -20,14 +21,13 @@ import java.util.concurrent.TimeUnit;
  * 3.Callable 接口的 call() 方法允许抛出异常；而 Runnable 接口的 run() 方法的异常只能在内部消化，不能继续上抛；
  * 4.Callable 接口支持返回执行结果，此时需要调用 FutureTask.get() 方法实现，此方法会阻塞主线程直到获取'将来'结果；当不调用此方法时，主线程不会阻塞！
  */
-public class CallableDemo {
+public class CallableDemo extends Demo {
 
     /**
-     * Java线程之FutureTask与Future浅析
+     * Java 线程之 FutureTask 与 Future 浅析
      * https://blog.csdn.net/zmx729618/article/details/51596414
      */
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         Callable<String> callable = () -> {
             TimeUnit.SECONDS.sleep(1);
             return "Callable";
@@ -42,18 +42,9 @@ public class CallableDemo {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-        System.out.println(result);
+        p(result);
 
-        System.out.println("main线程完毕");
+        p("main线程完毕");
     }
 
-}
-
-
-class MyCall implements Callable {
-
-    @Override
-    public Object call() throws Exception {
-        return null;
-    }
 }

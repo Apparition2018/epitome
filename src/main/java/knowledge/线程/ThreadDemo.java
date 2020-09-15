@@ -47,12 +47,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadDemo extends Demo {
 
-    CountDownLatch countDownLatch;
-
-    public void setCountDownLatch(int n) {
-        countDownLatch = new CountDownLatch(n);
-    }
-
     @Test
     public void testThread() {
         // 当前正在执行的线程对象的引用
