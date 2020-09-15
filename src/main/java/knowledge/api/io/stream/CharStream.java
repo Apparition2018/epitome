@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * CharStream
  * 字符流
+ * https://blog.csdn.net/u012426327/article/details/77160400
  *
  * @author ljh
  * created on 2020/9/14 14:15

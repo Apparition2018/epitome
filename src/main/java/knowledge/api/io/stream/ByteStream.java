@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * ByteStream
  * 字节流
+ * https://blog.csdn.net/u012426327/article/details/77160400
  *
  * @author ljh
  * created on 2020/9/14 11:02
@@ -125,6 +126,32 @@ public class ByteStream extends Demo {
     }
 
     /**
+     * DataInputStream          数据输入流
+     * 以与机器无关方式从底层输入流中读取基本 Java 数据类型
+     * https://jdk6.net/io/DataInputStream.html
+     * <p>
+     * DataOutputStream
+     * 以适当方式将基本 Java 数据类型写入输出流中
+     * https://jdk6.net/io/DataOutputStream.html
+     */
+    @Test
+    public void testDataXXXStream() {
+        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(DEMO_PATH + "io.dat"));
+             DataInputStream dis = new DataInputStream(new FileInputStream(DEMO_PATH + "io.dat"))) {
+            // void	    writeXXX(XXX v)     将一个 xxx 值以 xxx 值形式写入基础输出流
+            dos.writeInt(10);
+            dos.writeUTF("io");
+            dos.flush();
+
+            // char	    readXXX()           读取两个输入字节并返回一个 xxx 值
+            p(dis.readInt());
+            p(dis.readUTF());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * ObjectInputStream        对象输入流
      * https://jdk6.net/io/ObjectInputStream.html
      * 对象输入流读取的内容必须是通过 ObjectOutputStream 序列化的对象
@@ -137,7 +164,7 @@ public class ByteStream extends Demo {
         Person person = new Person("松岛枫", 18, "女", Arrays.asList("是一名演员", "促进中日文化交流", "广大男性同胞的启蒙老师"));
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DEMO_PATH + "person.obj"));
              ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DEMO_PATH + "person.obj"))) {
-            
+
             /*
              * 将给定对象转换为一组字节后写出
              *

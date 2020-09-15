@@ -1,5 +1,6 @@
 package knowledge.api.util.concurrent;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,23 +10,21 @@ import java.util.concurrent.*;
 
 /**
  * CountDownLatch
- * <p>
  * CountDownLatch 一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待
+ * https://jdk6.net/util-concurrent/CountDownLatch.html
  * <p>
- * void	    await()                                 使当前线程在锁存器倒计数至零之前一直等待，除非线程被中断
- * boolean	await(long timeout, TimeUnit unit)      使当前线程在锁存器倒计数至零之前一直等待，除非线程被中断或超出了指定的等待时间
- * void	    countDown()                             递减锁存器的计数，如果计数到达零，则释放所有等待的线程
- * long	    getCount()                              返回当前计数
- * <p>
- * http://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/CountDownLatch.html
+ * void	        await()                                 使当前线程在锁存器倒计数至零之前一直等待，除非线程被中断
+ * boolean	    await(long timeout, TimeUnit unit)      使当前线程在锁存器倒计数至零之前一直等待，除非线程被中断或超出了指定的等待时间
+ * void	        countDown()                             递减锁存器的计数，如果计数到达零，则释放所有等待的线程
+ * long	        getCount()                              返回当前计数
  */
-public class CountDownLatchDemo {
+public class CountDownLatchDemo extends Demo {
 
     /**
      * 案例：百米赛跑，多个参加赛跑的人员在听到发令枪响后，开始跑步，到达终点后结束计时，然后统计平均成绩
      */
     @Test
-    public void test() throws InterruptedException, ExecutionException {
+    public void testCountDownLatch() throws InterruptedException, ExecutionException {
         class Runner implements Callable<Integer> {
 
             // 开始信号
@@ -75,10 +74,10 @@ public class CountDownLatchDemo {
         int count = 0;
         // 统计总分
         for (Future<Integer> future : futures) {
-            System.out.println(future.get());
+            p(future.get());
             count += future.get();
         }
-        System.out.println("平均分数为：" + count / num);
+        p("平均分数为：" + count / num);
     }
 
 }
