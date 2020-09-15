@@ -1,12 +1,12 @@
 package jar.apache.httpcomponents;
 
+import l.demo.Demo;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,7 +32,7 @@ import java.nio.charset.StandardCharsets;
  * 					.setParameter("oq","")
  * 					.build();
  * 			HttpGet httpGet = new HttpGet(uri);
- * 			System.out.println(httpget.getURI());
+ * 			p(httpget.getURI());
  * 		Post：用setEntity(HttpEntity entity)来设置参数
  * 4.发送请求
  *		CloseableHttpResponse response = client.execute(httpGet);
@@ -43,15 +43,13 @@ import java.nio.charset.StandardCharsets;
  * https://www.cnblogs.com/LuckyBao/p/6096145.html
  */
 
-public class HttpClientDemo1 {
+public class HttpClientDemo1 extends Demo {
 
     public static void main(String[] args) {
-        String url = "http://www.baidu.com";
-
         // 1.使用默认配置的 httpclient
         CloseableHttpClient client = HttpClients.createDefault();
         // 2.创建 HttpGet 请求
-        HttpGet httpGet = new HttpGet(url);
+        HttpGet httpGet = new HttpGet(BAIDU_URL);
         InputStream inputStream = null;
         CloseableHttpResponse response = null;
 
@@ -60,7 +58,7 @@ public class HttpClientDemo1 {
             response = client.execute(httpGet);
 
             // 打印 http 状态码，看请求是否成功
-            System.out.println("StatusCode: " + response.getStatusLine().getStatusCode());
+            p("StatusCode: " + response.getStatusLine().getStatusCode());
 
             // 4.获取响应的实体内容，就是我们所要抓取的网页内容
             HttpEntity entity = response.getEntity();
@@ -68,7 +66,7 @@ public class HttpClientDemo1 {
             // 5.将其打印到控制台上面
 //			// 方法一：使用 EntityUtils
 //			if (entity != null) {
-//				System.out.println(EntityUtils.toString(entity, "UTF-8"));
+//				p(EntityUtils.toString(entity, "UTF-8"));
 //			}
 //			EntityUtils.consume(entity); // 释放资源
 
@@ -78,7 +76,7 @@ public class HttpClientDemo1 {
                 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
                 String line;
                 while ((line = br.readLine()) != null) {
-                    System.out.println(line);
+                    p(line);
                 }
             }
         } catch (UnsupportedOperationException | IOException e) {

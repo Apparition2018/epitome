@@ -1,5 +1,6 @@
 package jar.apache.commons.io;
 
+import l.demo.Demo;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 import org.junit.Test;
@@ -17,7 +18,7 @@ import java.util.List;
  * https://www.cnblogs.com/xing901022/p/5978989.html
  * http://commons.apache.org/proper/commons-io/javadocs/api-release/org/apache/commons/io/IOUtils.html
  */
-public class IOUtilsDemo {
+public class IOUtilsDemo extends Demo {
 
     private final static String dirPath = "src/main/java/jar/apache/commons/io/";
 
@@ -26,13 +27,12 @@ public class IOUtilsDemo {
      */
     @Test
     public void constant() {
-        // System.out.println(IOUtils.EOF);                    // -1
-        System.out.println(IOUtils.DIR_SEPARATOR_UNIX);     // /
-        System.out.println(IOUtils.DIR_SEPARATOR_WINDOWS);  // \
-        System.out.println(IOUtils.DIR_SEPARATOR);          // \
-        System.out.println(IOUtils.LINE_SEPARATOR_UNIX);    // "\n"
-        System.out.println(IOUtils.LINE_SEPARATOR_WINDOWS); // "\r\n"
-        System.out.println(IOUtils.LINE_SEPARATOR);         //
+        p(IOUtils.DIR_SEPARATOR_UNIX);      // /
+        p(IOUtils.DIR_SEPARATOR_WINDOWS);   // \
+        p(IOUtils.DIR_SEPARATOR);           // \
+        p(IOUtils.LINE_SEPARATOR_UNIX);     // "\n"
+        p(IOUtils.LINE_SEPARATOR_WINDOWS);  // "\r\n"
+        p(IOUtils.LINE_SEPARATOR);          //
     }
 
     /**
@@ -53,7 +53,7 @@ public class IOUtilsDemo {
     public void contentEquals() throws IOException {
         InputStream is = new URL("http://www.apache.org").openStream();
         InputStream is2 = new URL("http://www.apache.org").openStream();
-        System.out.println(IOUtils.contentEquals(is, is2)); // true
+        p(IOUtils.contentEquals(is, is2)); // true
         IOUtils.closeQuietly(is);
         IOUtils.closeQuietly(is2);
     }
@@ -74,7 +74,7 @@ public class IOUtilsDemo {
         InputStream is = new URL("http://www.apache.org").openStream();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         IOUtils.copy(is, baos); // 默认 bufferSize 就是 1024 * 4
-        System.out.println(baos.size()); // 62019
+        p(baos.size()); // 62019
     }
 
     /**
@@ -85,10 +85,10 @@ public class IOUtilsDemo {
     @Test
     public void lineIterator() throws IOException {
         InputStream is = new URL("http://www.apache.org").openStream();
-        LineIterator lt = IOUtils.lineIterator(is, "UTF-8");
+        LineIterator lt = IOUtils.lineIterator(is, UTF_8);
         while (lt.hasNext()) {
             String line = lt.nextLine();
-            System.out.println(line);
+            p(line);
         }
     }
 
@@ -106,11 +106,11 @@ public class IOUtilsDemo {
      */
     @Test
     public void read() throws IOException {
-        InputStream is = IOUtils.toInputStream("Hello World!", "UTF-8");
+        InputStream is = IOUtils.toInputStream("Hello World!", UTF_8);
         byte[] bytes = new byte[16];
         IOUtils.read(is, bytes);
 //        IOUtils.readFully(is, bytes); // EOFException: Length to read: 16 actual: 11
-        System.out.println(new String(bytes)); // Hello world
+        p(new String(bytes)); // Hello world
     }
 
     /**
@@ -121,9 +121,9 @@ public class IOUtilsDemo {
     @Test
     public void readLines() throws IOException {
         InputStream is = new FileInputStream(dirPath + "IOUtils.txt");
-        List<String> lines = IOUtils.readLines(is, "UTF-8");
+        List<String> lines = IOUtils.readLines(is, UTF_8);
         for (String line : lines) {
-            System.out.println(line);
+            p(line);
         }
     }
 
@@ -140,9 +140,9 @@ public class IOUtilsDemo {
      */
     @Test
     public void skip() throws IOException {
-        InputStream is = IOUtils.toInputStream("Hello World!", "UTF-8");
+        InputStream is = IOUtils.toInputStream("Hello World!", UTF_8);
         IOUtils.skipFully(is, 20); // EOFException: Bytes to skip: 20 actual: 11
-        System.out.println(IOUtils.toString(is, "UTF-8"));
+        p(IOUtils.toString(is, UTF_8));
     }
 
     /**
@@ -177,7 +177,7 @@ public class IOUtilsDemo {
     @Test
     public void write() throws IOException {
         OutputStream os = new FileOutputStream(dirPath + "write.txt");
-        IOUtils.write("Hello World!", os, "UTF-8");
+        IOUtils.write("Hello World!", os, UTF_8);
     }
 
     /**
@@ -192,7 +192,7 @@ public class IOUtilsDemo {
         lines.add("B");
         lines.add("C");
         OutputStream os = new FileOutputStream(dirPath + "writeLines.txt");
-        IOUtils.writeLines(lines, IOUtils.LINE_SEPARATOR, os, "UTF-8");
+        IOUtils.writeLines(lines, IOUtils.LINE_SEPARATOR, os, UTF_8);
     }
 
 

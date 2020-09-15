@@ -1,5 +1,6 @@
 package l.demo;
 
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
@@ -17,18 +18,23 @@ public class Demo {
     public List<Integer> descList = Arrays.asList(9, 8, 7, 6, 5, 4, 3, 2, 1);
     public List<Integer> subList = new ArrayList<>(list.subList(1, 6));
     public List<Integer> subList2 = list.subList(3, 8);
-    public static Map<Integer, String> map = new HashMap<>();
+    public CountDownLatch countDownLatch;
+    public Map<Integer, String> map = new HashMap<Integer, String>(3) {
+        {
+            put(1, "A");
+            put(2, "B");
+            put(3, "C");
+        }
+    };
+    public static final String UTF_8 = String.valueOf(StandardCharsets.UTF_8);
+    public static final String DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";
+    public static final String BAIDU_URL = "https://www.baidu.com/";
+    public static final String GOOGLE_URL = "https://www.google.com/";
     public static final String JAVA_PATH = "src/main/Java";
     public static final String RESOURCES_PATH = "src/main/resources/";
     public static final String DEMO_PATH = RESOURCES_PATH + "demo/";
+    public static final String ARSENAL_LOGO = "http://f.hiphotos.baidu.com/xiaodu/pic/item/34fae6cd7b899e511a9cc9d848a7d933c9950def.jpg";
     public static final String USER_DIR = System.getProperty("user.dir");
-    public CountDownLatch countDownLatch;
-
-    static {
-        map.put(1, "A");
-        map.put(2, "B");
-        map.put(3, "C");
-    }
 
     public void setCountDownLatch(int n) {
         countDownLatch = new CountDownLatch(n);

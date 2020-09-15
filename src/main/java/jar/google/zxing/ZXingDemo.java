@@ -6,6 +6,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import l.demo.Demo;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -13,10 +14,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.HashMap;
 
-public class ZXingDemo {
+public class ZXingDemo extends Demo {
 
     private final static String dirPath = "src/main/java/jar/google/zxing/QRCode.png";
 
@@ -30,7 +32,7 @@ public class ZXingDemo {
 
         // 定义二维码参数
         HashMap<EncodeHintType, Serializable> hints = new HashMap<>();
-        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        hints.put(EncodeHintType.CHARACTER_SET, UTF_8);
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M); // 纠错等级
         hints.put(EncodeHintType.MARGIN, 2);                                // 边距
 
@@ -58,7 +60,7 @@ public class ZXingDemo {
 
             // 定义二维码参数
             HashMap hints = new HashMap();
-            hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+            hints.put(EncodeHintType.CHARACTER_SET, StandardCharsets.UTF_8);
 
             Result result = formatReader.decode(binaryBitmap, hints);
 

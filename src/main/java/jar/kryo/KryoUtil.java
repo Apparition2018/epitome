@@ -3,6 +3,7 @@ package jar.kryo;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import l.demo.Demo;
 import org.apache.commons.codec.binary.Base64;
 import org.objenesis.strategy.StdInstantiatorStrategy;
 
@@ -13,8 +14,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * Kryo 使用指南：http://www.cnblogs.com/hntyzgn/p/7122709.html
  */
-public class KryoUtil {
-    private static final String DEFAULT_ENCODING = "UTF-8";
+public class KryoUtil extends Demo {
 
     // 每个线程的 Kryo 实例
     private static final ThreadLocal<Kryo> kryoLocal = ThreadLocal.withInitial(() -> {
@@ -81,7 +81,7 @@ public class KryoUtil {
      */
     public static <T> String writeToString(T obj) {
         try {
-            return new String(Base64.encodeBase64(writeToByteArray(obj)), DEFAULT_ENCODING);
+            return new String(Base64.encodeBase64(writeToByteArray(obj)), UTF_8);
         } catch (UnsupportedEncodingException e) {
             throw new IllegalStateException(e);
         }
@@ -113,7 +113,7 @@ public class KryoUtil {
      */
     public static <T> T readFromString(String str) {
         try {
-            return readFromByteArray(Base64.decodeBase64(str.getBytes(DEFAULT_ENCODING)));
+            return readFromByteArray(Base64.decodeBase64(str.getBytes(UTF_8)));
         } catch (UnsupportedEncodingException e) {
             throw new IllegalStateException(e);
         }
@@ -152,7 +152,7 @@ public class KryoUtil {
      */
     public static <T> String writeObjectToString(T obj) {
         try {
-            return new String(Base64.encodeBase64(writeObjectToByteArray(obj)), DEFAULT_ENCODING);
+            return new String(Base64.encodeBase64(writeObjectToByteArray(obj)), UTF_8);
         } catch (UnsupportedEncodingException e) {
             throw new IllegalStateException(e);
         }
@@ -185,7 +185,7 @@ public class KryoUtil {
      */
     public static <T> T readObjectFromString(String str, Class<T> clazz) {
         try {
-            return readObjectFromByteArray(Base64.decodeBase64(str.getBytes(DEFAULT_ENCODING)), clazz);
+            return readObjectFromByteArray(Base64.decodeBase64(str.getBytes(UTF_8)), clazz);
         } catch (UnsupportedEncodingException e) {
             throw new IllegalStateException(e);
         }

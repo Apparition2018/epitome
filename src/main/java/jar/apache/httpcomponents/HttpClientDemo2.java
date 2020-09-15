@@ -1,5 +1,6 @@
 package jar.apache.httpcomponents;
 
+import l.demo.Demo;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -13,18 +14,19 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * https://my.oschina.net/xinxingegeya/blog/282683
  */
-public class HttpClientDemo2 {
+public class HttpClientDemo2 extends Demo {
     public static void main(String[] args) throws IOException {
         List<NameValuePair> formParams = new ArrayList<>();
         formParams.add(new BasicNameValuePair("account", ""));
         formParams.add(new BasicNameValuePair("password", ""));
-        HttpEntity reqEntity = new UrlEncodedFormEntity(formParams, "UTF-8");
+        HttpEntity reqEntity = new UrlEncodedFormEntity(formParams, StandardCharsets.UTF_8);
 
         RequestConfig requestConfig = RequestConfig.custom()
                 .setConnectTimeout(5000)    // 连接超时：指连接一个 url 的连接等待时间
@@ -40,10 +42,10 @@ public class HttpClientDemo2 {
 
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
             HttpEntity resEntity = response.getEntity();
-            String message = EntityUtils.toString(resEntity, "UTF-8");
-            System.out.println(message);
+            String message = EntityUtils.toString(resEntity, StandardCharsets.UTF_8);
+            p(message);
         } else {
-            System.out.println("请求失败");
+            p("请求失败");
         }
 
     }

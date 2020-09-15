@@ -1,17 +1,19 @@
 package jar.apache.commons.email;
 
+import l.demo.Demo;
 import org.apache.commons.mail.*;
 import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 /**
  * https://www.cnblogs.com/jimboi/p/6406237.html
  *
  * http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/Email.html
  */
-public class MailDemo {
+public class MailDemo extends Demo {
 
     /**
      * SimpleEmail
@@ -40,7 +42,7 @@ public class MailDemo {
 
         EmailAttachment attachment = new EmailAttachment();
         // 附件路径，可以是绝对路径，也可以是相对路径
-        attachment.setPath("http://f.hiphotos.baidu.com/xiaodu/pic/item/34fae6cd7b899e511a9cc9d848a7d933c9950def.jpg");
+        attachment.setPath(ARSENAL_LOGO);
         // 配置 ?
         attachment.setDescription(EmailAttachment.ATTACHMENT);
         // 描述
@@ -60,7 +62,7 @@ public class MailDemo {
         email.attach(attachment);
 
         // 附件   URL 定位的文件
-        email.attach(new URL("http://f.hiphotos.baidu.com/xiaodu/pic/item/34fae6cd7b899e511a9cc9d848a7d933c9950def.jpg"), "Arsenal", "A Football Club", "attachment");
+        email.attach(new URL(ARSENAL_LOGO), "Arsenal", "A Football Club", "attachment");
 
         email.send();
     }
@@ -77,7 +79,7 @@ public class MailDemo {
         common(email);
 
         // 嵌入，返回 id
-        String cid = email.embed(new URL("http://f.hiphotos.baidu.com/xiaodu/pic/item/34fae6cd7b899e511a9cc9d848a7d933c9950def.jpg"), "Arsenal");
+        String cid = email.embed(new URL(ARSENAL_LOGO), "Arsenal");
 
         // HTML 内容
         email.setHtmlMsg("<html>Arsenal - <img src=\"cid:" + cid + "\"></html>");
@@ -98,7 +100,7 @@ public class MailDemo {
 
         common(email);
 
-        String htmlEmailTemplate = "<html>Arsenal - <img src=\"http://f.hiphotos.baidu.com/xiaodu/pic/item/34fae6cd7b899e511a9cc9d848a7d933c9950def.jpg\"></html>";
+        String htmlEmailTemplate = "<html>Arsenal - <img src=\"" + ARSENAL_LOGO + "\"></html>";
 
         email.setHtmlMsg(htmlEmailTemplate);
 
@@ -122,13 +124,13 @@ public class MailDemo {
         // email.setSSLOnConnect(true);
 
         // 消息字符集，在添加 message content 前添加
-        email.setCharset("UTF-8");
+        email.setCharset(UTF_8);
 
         // 主题
         email.setSubject("Simple Email");
 
         // 发件人邮件地址，名称
-        email.setFrom("mail_assistanter@dayang.com", "邮件助手", "UTF-8");
+        email.setFrom("mail_assistanter@dayang.com", "邮件助手", UTF_8);
 
         // 收件人
         email.addTo("234607@dayang.com");

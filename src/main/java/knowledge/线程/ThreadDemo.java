@@ -51,7 +51,7 @@ public class ThreadDemo extends Demo {
     public void testThread() {
         // 当前正在执行的线程对象的引用
         Thread t = Thread.currentThread();
-        p("Thread = " + Thread.currentThread());
+        p("Thread = " + t);
         // 线程标识符
         p("id = " + t.getId());
         // 线程名字

@@ -1,5 +1,6 @@
 package jar.apache.commons.io;
 
+import l.demo.Demo;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  * https://www.cnblogs.com/my-blogs-for-everone/p/8029846.html
  * http://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FileUtils.html
  */
-public class FileUtilsDemo {
+public class FileUtilsDemo extends Demo {
 
     private final static String dirPath = "src/main/java/jar/apache/commons/io/";
 
@@ -27,7 +28,7 @@ public class FileUtilsDemo {
         File file = new File(dirPath + "FileUtils.txt");
 
         // write()
-        FileUtils.write(file, "静夜思\n", "UTF-8", false);
+        FileUtils.write(file, "静夜思\n", UTF_8, false);
 
         List<String> lines = new ArrayList<>();
         lines.add("床前明月光，");
@@ -36,7 +37,7 @@ public class FileUtilsDemo {
         FileUtils.writeLines(file, lines, true);
 
         // writeStringToFile()
-        FileUtils.writeStringToFile(file, "举头望明月，\n低头思故乡。", "UTF-8", true);
+        FileUtils.writeStringToFile(file, "举头望明月，\n低头思故乡。", UTF_8, true);
     }
 
     // 读
@@ -45,10 +46,10 @@ public class FileUtilsDemo {
         File file = new File(dirPath + "FileUtils.txt");
 
         // readFileToString()
-        p(FileUtils.readFileToString(file, "UTF-8"));
+        p(FileUtils.readFileToString(file, UTF_8));
 
         // readLines()
-        p(FileUtils.readLines(file, "UTF-8"));
+        p(FileUtils.readLines(file, UTF_8));
         // [静夜思, 床前明月光，, 疑是地上霜。, 举头望明月，, 低头思故乡。]
     }
 
@@ -135,11 +136,6 @@ public class FileUtilsDemo {
         Collection<File> coll = FileUtils.listFiles(file1, null, true);
         p(coll);
         // [src\main\java\jar\apache\commons\io\FilenameUtilsDemo.java, src\main\java\jar\apache\commons\io\FileUtils.txt, src\main\java\jar\apache\commons\io\FileUtilsDemo.java, src\main\java\jar\apache\commons\io\IOUtils.txt, src\main\java\jar\apache\commons\io\IOUtilsDemo.java, src\main\java\jar\apache\commons\io\write.txt, src\main\java\jar\apache\commons\io\writeLines.txt]
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

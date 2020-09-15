@@ -19,6 +19,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class HttpClientUtils {
                 for (String key : params.keySet()) {
                     list.add(new BasicNameValuePair(key, params.get(key)));
                 }
-                HttpEntity entity = new UrlEncodedFormEntity(list, "UTF-8"); // 模拟表单
+                HttpEntity entity = new UrlEncodedFormEntity(list, StandardCharsets.UTF_8); // 模拟表单
                 httpPost.setEntity(entity);
             }
 
@@ -56,7 +57,7 @@ public class HttpClientUtils {
 
             // 4.获取响应的实体内容
             HttpEntity entity = response.getEntity();
-            resultStr = EntityUtils.toString(entity, "UTF-8");
+            resultStr = EntityUtils.toString(entity, StandardCharsets.UTF_8);
             EntityUtils.consume(entity);
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,7 +83,7 @@ public class HttpClientUtils {
             StringEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
             httpPost.setEntity(entity);
             response = client.execute(httpPost);
-            resultStr = EntityUtils.toString(response.getEntity(), "UTF-8");
+            resultStr = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
             EntityUtils.consume(entity);
         } catch (IOException e) {
             e.printStackTrace();
@@ -123,7 +124,7 @@ public class HttpClientUtils {
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 // 4.获取响应的实体内容
                 HttpEntity entity = response.getEntity();
-                resultStr = EntityUtils.toString(entity, "UTF-8");
+                resultStr = EntityUtils.toString(entity, StandardCharsets.UTF_8);
                 EntityUtils.consume(entity);
             }
         } catch (URISyntaxException | IOException e) {
