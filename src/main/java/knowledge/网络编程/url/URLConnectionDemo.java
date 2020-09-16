@@ -1,79 +1,93 @@
 package knowledge.网络编程.url;
 
+import l.demo.Demo;
+import org.apache.http.HttpStatus;
 import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * URLConnection
+ * https://jdk6.net/net/URLConnection.html
+ * <p>
+ * HTTP头部字段总结：https://www.cnblogs.com/soldierback/p/11714052.html
  */
-public class URLConnectionDemo {
+public class URLConnectionDemo extends Demo {
+
+    @Test
+    public void testURLConnection() throws IOException {
+        URL url = new URL(BAIDU_URL);
+        URLConnection conn = url.openConnection();
+        // 设置连接超时时间
+        conn.setConnectTimeout(1000 * 10);
+        // 设置读超时时间
+        conn.setReadTimeout(1000 * 10);
+
+        // 打开到此 URL 引用的资源的通信链接（如果尚未建立这样的连接）
+        conn.connect();
+
+        // 响应状态信息
+        String statusInfo = conn.getHeaderField(0);
+        if (statusInfo == null || statusInfo.contains(String.valueOf(HttpStatus.SC_OK))) {
+            p("请求失败！");
+        }
+
+        p("======== map ========");
+        // 头字段的不可修改的 Map
+        Map<String, List<String>> headerFields = conn.getHeaderFields();
+        Set<String> keySet = headerFields.keySet();
+        for (Object key : keySet) {
+            // 指定的头字段的值
+            String val = conn.getHeaderField(String.valueOf(key));
+            p(key + " = " + val);
+        }
+
+        p("======== get ========");
+        // 字节长度
+        p("ContentLength = " + conn.getContentLength());    // ContentLength = 97996
+        // 编码类型
+        p("ContentEncoding = " + conn.getContentEncoding());// ContentEncoding = null
+        // MIME类型
+        p("ContentType = " + conn.getContentType());        // ContentType = image/png
+        // 最后修改时间
+        p("LastModified = " + conn.getLastModified());      // LastModified = 0
+        // Date
+        p("Date = " + conn.getDate());                      // Date = 1600221472000
+        // 过期时间
+        p("Expiration = " + conn.getExpiration());          // Expiration = 1602848715000
+    }
 
     /**
-     * InputStream	getInputStream()
-     * 返回从此打开的连接读取的输入流
+     * InputStream	                getInputStream()                返回从此打开的连接读取的输入流
      */
     @Test
     public void getInputStream() throws IOException {
-        URL url = new URL("http://www.baidu.com");
+        URL url = new URL(BAIDU_URL);
         URLConnection urlConn = url.openConnection();
         HttpURLConnection conn;
         if (urlConn instanceof HttpURLConnection) {
             conn = (HttpURLConnection) urlConn;
-            System.out.println(conn);
+            p(conn);
         } else {
-            System.out.println("请输入 url 地址");
+            p("请输入 url 地址");
             return;
         }
-        InputStream is = conn.getInputStream();
-        BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
         String line;
         StringBuilder sb = new StringBuilder();
         while ((line = br.readLine()) != null) {
             sb.append(line).append("\n");
         }
-        System.out.println(sb);
-        br.close();
-    }
-
-    @Test
-    public void test() throws IOException {
-        URL url = new URL("http://www.runoob.com/wp-content/themes/runoob/assets/img/newlogo.png");
-        URLConnection conn = url.openConnection();
-
-        // Map<String,List<String>>	getHeaderFields()
-        // 返回头字段的不可修改的 Map
-        Map headers = conn.getHeaderFields();
-        Set keys = headers.keySet();
-        for (Object key : keys) {
-            // String	getHeaderField(String name)
-            // 返回指定的头字段的值
-            String val = conn.getHeaderField(String.valueOf(key));
-            System.out.println(key + "   " + val);
-        }
-
-        System.out.println("====================");
-
-        // int	getContentLength()
-        // 返回 content-length 头字段的值
-        System.out.println("文件大小为：" + conn.getContentLength() + " bytes");
-
-        // long	getLastModified()
-        // 返回 last-modified 头字段的值
-        System.out.println("文件最后修改时间：" + conn.getLastModified());
-
-        // long	getDate()
-        // 返回 date 头字段的值
-        System.out.println("Date: " + conn.getDate());
+        p(sb);
     }
 
 }

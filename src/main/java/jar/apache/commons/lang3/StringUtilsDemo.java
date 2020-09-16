@@ -1,24 +1,24 @@
 package jar.apache.commons.lang3;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 /**
  * StringUtils
- * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/StringUtils.html
  */
-public class StringUtilsDemo {
+public class StringUtilsDemo extends Demo {
 
-    // 常量
+    /**
+     * 常量
+     */
     @Test
     public void constant() {
-        System.out.println(StringUtils.SPACE);  // " "
-        System.out.println(StringUtils.EMPTY);  // ""
-        System.out.println(StringUtils.LF);     // "\n"，Line Feed，换行
-        System.out.println(StringUtils.CR);     // "\r"，Carriage Return，回车
+        p(StringUtils.SPACE);   // " "
+        p(StringUtils.EMPTY);   // ""
+        p(StringUtils.LF);      // "\n"，Line Feed，换行
+        p(StringUtils.CR);      // "\r"，Carriage Return，回车
     }
 
     // Abbreviate
@@ -28,7 +28,7 @@ public class StringUtilsDemo {
         p(StringUtils.abbreviate("123456789", 8));              // 12345...
         // p(StringUtils.abbreviate("123456789", 3));           // IllegalArgumentException
 
-        p(StringUtils.abbreviate("123456789", 6, 8));           // ???
+        p(StringUtils.abbreviate("123456789", 6, 8));           // 12345...
 
         p(StringUtils.abbreviateMiddle("123456789", "..", 8));  // 123..789
     }
@@ -36,35 +36,35 @@ public class StringUtilsDemo {
     // AppendIfMissing / PrependIfMissing
     // 如果开头/结尾不是指定的 suffix / prefix，则拼接到开头/结果
     @Test
-    public void appendIfMissing() {
-        p(StringUtils.appendIfMissing(null, null));     //
-        p(StringUtils.appendIfMissing("abc", null));    // abc
-        p(StringUtils.appendIfMissing("", "xyz"));      // xyz
-        p(StringUtils.appendIfMissing("abc", "xyz"));   // abcxyz
-        p(StringUtils.appendIfMissing("abcxyz", "xyz"));// abcxyz
-        p(StringUtils.appendIfMissing("abcXYZ", "xyz"));// abcXYZxyz
+    public void ifMissing() {
+        p(StringUtils.appendIfMissing(null, null));             //
+        p(StringUtils.appendIfMissing("abc", null));            // abc
+        p(StringUtils.appendIfMissing("", "xyz"));              // xyz
+        p(StringUtils.appendIfMissing("abc", "xyz"));           // abcxyz
+        p(StringUtils.appendIfMissing("abcxyz", "xyz"));        // abcxyz
+        p(StringUtils.appendIfMissing("abcXYZ", "xyz"));        // abcXYZxyz
         p(StringUtils.appendIfMissing("abc", "xyz", "mno"));    // abcxyz
         p(StringUtils.appendIfMissing("abcmno", "xyz", "mno")); // abcmno
         p(StringUtils.appendIfMissing("abcXYZ", "xyz", "mno")); // abcXYZxyz
     }
 
-    @Test
-    public void prependIfMissing() {
-        appendIfMissing();
-    }
-
-    // UpperCase / LowerCase / SwapCase / Capitalize / UnCapitalize
+    /**
+     * UpperCase / LowerCase / SwapCase / Capitalize / UnCapitalize
+     * 大小写相关
+     */
     @Test
     public void case_() {
-        p(StringUtils.upperCase("abc"));       // ABC
-        p(StringUtils.lowerCase("ABC"));       // abc
-        p(StringUtils.swapCase("aBc"));        // AbC
-        p(StringUtils.capitalize("abc"));      // Abc
-        p(StringUtils.uncapitalize("ABC"));    // aBC
+        p(StringUtils.upperCase("abc"));    // ABC
+        p(StringUtils.lowerCase("ABC"));    // abc
+        p(StringUtils.swapCase("aBc"));     // AbC
+        p(StringUtils.capitalize("abc"));   // Abc
+        p(StringUtils.uncapitalize("ABC")); // aBC
     }
 
-    // Chomp / Chop
-    // 删除最后一位
+    /**
+     * Chomp / Chop
+     * 删除最后一位
+     */
     @Test
     public void chomp() {
         // 最后一位如果是 "\n", "\r", or "\r\n", 删除
@@ -77,6 +77,7 @@ public class StringUtilsDemo {
         p(StringUtils.chop("www.baidu.com\n"));     // www.baidu.com
         p(StringUtils.chop("www.baidu.com\r\n"));   // www.baidu.com
     }
+
     @Test
     public void chop() {
         chomp();
@@ -264,7 +265,7 @@ public class StringUtilsDemo {
         p(StringUtils.replaceChars("ABcdabCD", "ABCD", "abcd"));// abcdabcd
 
         // A → a, C → c
-        p(StringUtils.replaceEach("AbcdabCd", new String[] {"A", "C"}, new String[] {"a", "c"})); // abcdabcd
+        p(StringUtils.replaceEach("AbcdabCd", new String[]{"A", "C"}, new String[]{"a", "c"})); // abcdabcd
     }
 
     @Test
@@ -400,17 +401,5 @@ public class StringUtilsDemo {
         // 去音调符号
         p(StringUtils.stripAccents("àbcdé")); // abcde
     }
-
-    @SafeVarargs
-    private static <T> void p(T... obj) {
-        if (obj == null) return;
-        System.out.println(Arrays.toString(obj));
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
-
 
 }

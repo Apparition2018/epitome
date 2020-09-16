@@ -21,16 +21,7 @@ import java.nio.charset.StandardCharsets;
  * 2.创建请求方法的实例，并指定请求URL
  * 		HttpGet, HttpPost
  * 3.发送请求参数
- * 		Get：直接写在url后面或使用setParameter来设置参数  --请查看URIDemo
- * 			URI uri = new URIBuilder()
- * 					.setScheme("http")
- * 					.setHost("www.google.com")
- * 					.setPath("/search")
- * 					.setParameter("q","httpclient")
- * 					.setParameter("btnG","Google搜索")
- * 					.setParameter("aq","f")
- * 					.setParameter("oq","")
- * 					.build();
+ * 		Get：直接写在url后面或使用setParameter来设置参数  --请查看 URIBuilderDemo
  * 			HttpGet httpGet = new HttpGet(uri);
  * 			p(httpget.getURI());
  * 		Post：用setEntity(HttpEntity entity)来设置参数

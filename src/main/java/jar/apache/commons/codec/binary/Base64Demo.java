@@ -1,5 +1,6 @@
 package jar.apache.commons.codec.binary;
 
+import l.demo.Demo;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import org.junit.Test;
  * <p>
  * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/binary/Base64.html
  */
-public class Base64Demo {
+public class Base64Demo extends Demo {
 
     /**
      * 加密：
@@ -30,31 +31,26 @@ public class Base64Demo {
     @Test
     public void base64() {
         /* 加密 */
-        String src = "www.baidu.com";
+        String src = "epitome";
         byte[] encodeBytes = Base64.encodeBase64(src.getBytes());
-        p(new String(encodeBytes)); // d3d3LmJhaWR1LmNvbQ==
+        p(new String(encodeBytes)); // ZXBpdG9tZQ==
         encodeBytes = Base64.encodeBase64URLSafe(src.getBytes());
-        p(new String(encodeBytes)); // d3d3LmJhaWR1LmNvbQ
+        p(new String(encodeBytes)); // ZXBpdG9tZQ
 
         String encode = Base64.encodeBase64String(src.getBytes());
-        p(encode); // d3d3LmJhaWR1LmNvbQ==
+        p(encode); // ZXBpdG9tZQ==
         encode = Base64.encodeBase64URLSafeString(src.getBytes());
-        p(encode); // d3d3LmJhaWR1LmNvbQ
+        p(encode); // ZXBpdG9tZQ
 
         /* 判断是否为 Base64 */
-        p(Base64.isBase64(encodeBytes)); // true
-        p(Base64.isBase64(encode));
+        p(Base64.isBase64(encodeBytes));// true
+        p(Base64.isBase64(encode));     //true
 
         /* 解密 */
         byte[] decodeBytes = Base64.decodeBase64(encodeBytes);
-        p(new String(decodeBytes)); // www.baidu.com
+        p(new String(decodeBytes)); // epitome
 
         decodeBytes = Base64.decodeBase64(encode);
-        p(new String(decodeBytes)); // www.baidu.com
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
+        p(new String(decodeBytes)); // epitome
     }
 }

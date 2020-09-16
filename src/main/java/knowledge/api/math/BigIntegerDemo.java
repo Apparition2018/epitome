@@ -1,5 +1,6 @@
 package knowledge.api.math;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.math.BigInteger;
@@ -9,6 +10,7 @@ import java.math.BigInteger;
  * BigInteger 不可变的任意精度的整数。所有操作中，都以二进制补码形式表示 BigInteger（如 Java 的基本整数类型）。
  * BigInteger 提供所有 Java 的基本整数操作符的对应物，并提供 java.lang.Math 的所有相关方法。
  * 另外，BigInteger 还提供以下运算：模算术、GCD 计算、质数测试、素数生成、位操作以及一些其他操作。
+ * https://jdk6.net/math/BigInteger.html
  * <p>
  * BigInteger   and(BigInteger val)             this & val      当且仅当 this 和 val 同时为负时，此方法返回一个负 BigInteger
  * BigInteger   andNot(BigInteger val)          this & ~val     当且仅当 this 为负且 val 为正时，此方法返回一个负 BigInteger
@@ -25,6 +27,7 @@ import java.math.BigInteger;
  * BigInteger	multiply(BigInteger val)        this * val
  * BigInteger	divide(BigInteger val)          this / val
  * BigInteger[]	divideAndRemainder(BI val)      this / val，this % val
+ * BigInteger   gcd(BigInteger val)             (this, val)     返回一个 BigInteger，其值是 abs(this) 和 abs(val) 的最大公约数
  * BigInteger	negate()                        -this
  * BigInteger	pow(int exponent)               this^exponent
  * BigInteger	mod(BigInteger m)               this mod m，结果始终是负数
@@ -40,63 +43,29 @@ import java.math.BigInteger;
  * static BI	valueOf(long val)               返回其值等于指定 long 的值的 BigInteger
  * <p>
  * int	        compareTo(BigInteger val)       将此 BigInteger 与指定的 BigInteger 进行比较
- * <p>
  * int	        signum()                        返回此 BigInteger 的正负号函数
  */
-public class BigIntegerDemo {
+public class BigIntegerDemo extends Demo {
 
     @Test
-    public void BigInteger() {
+    public void testBigInteger() {
         // BigInteger(String val[, int radix])
-        // String → BigInteger
-        BigInteger bi = new BigInteger("100");
-        p(bi);
+        // 将指定基数的 BigInteger 的字符串表示形式转换为 BigInteger
+        BigInteger bi = new BigInteger("9"); // 二进制 1001
 
-        // 更多构造方法请查看 API
-    }
+        // BigInteger   nextProbablePrime()
+        // 返回大于此 BigInteger 的可能为素数的第一个整数
+        p(bi.nextProbablePrime());
+        // boolean	    isProbablePrime(int certainty)  
+        // 如果此 BigInteger 可能为素数，则返回 true，如果它一定为合数，则返回 false
+        p(bi.isProbablePrime(10));
 
-    /**
-     * BigInteger	gcd(BigInteger val)
-     * 返回一个 BigInteger，其值是 abs(this) 和 abs(val) 的最大公约数
-     */
-    @Test
-    public void gcd() {
-        BigInteger bi1 = new BigInteger("64");
-        BigInteger bi2 = new BigInteger("56");
-        p(bi1.gcd(bi2)); // 8
-    }
-
-    /**
-     * BigInteger	nextProbablePrime()
-     * 返回大于此 BigInteger 的可能为素数的第一个整数
-     *
-     * boolean	    isProbablePrime(int certainty)  ???
-     * 如果此 BigInteger 可能为素数，则返回 true，如果它一定为合数，则返回 false
-     */
-    @Test
-    public void prime() {
-        BigInteger bi = new BigInteger("9");
-        p(bi.nextProbablePrime()); // 11
-        p(bi.isProbablePrime(1));   // false
-        p(bi.isProbablePrime(-1));  // true
-    }
-
-    /**
-     * boolean	    testBit(int n)
-     * 当且仅当设置了指定的位时，返回 true。（计算 ((this & (1<<n)) != 0)。）
-     */
-    @Test
-    public void testBit() {
-        BigInteger bi = new BigInteger("4");
-        p(bi.testBit(0)); // false
-        p(bi.testBit(1)); // false
-        p(bi.testBit(2)); // true
-        p(bi.testBit(3)); // false
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
+        // boolean	    testBit(int n)                  
+        // 当且仅当设置了指定的位时，返回 true
+        p(bi.testBit(0));
+        p(bi.testBit(1));
+        p(bi.testBit(2));
+        p(bi.testBit(3));
     }
 
 }

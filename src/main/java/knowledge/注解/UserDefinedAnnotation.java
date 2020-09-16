@@ -1,5 +1,7 @@
 package knowledge.注解;
 
+import l.demo.Demo;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -25,7 +27,7 @@ import java.lang.reflect.Field;
  * <p>
  * https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html
  */
-public class UserDefinedAnnotation {
+public class UserDefinedAnnotation extends Demo {
 
     public static void main(String[] args) {
         getFruitInfo(Apple.class);
@@ -50,98 +52,98 @@ public class UserDefinedAnnotation {
                  */
                 FruitName fruitName = field.getAnnotation(FruitName.class);
                 strFruitName += fruitName.value();
-                System.out.println(strFruitName);
+                p(strFruitName);
             } else if (field.isAnnotationPresent(FruitColor.class)) {
                 FruitColor fruitColor = field.getAnnotation(FruitColor.class);
                 strFruitColor += fruitColor.fruitColor().toString();
-                System.out.println(strFruitColor);
+                p(strFruitColor);
             } else if (field.isAnnotationPresent(FruitProvider.class)) {
                 FruitProvider fruitProvider = field.getAnnotation(FruitProvider.class);
                 strFruitProvider += " 供应商编号：" + fruitProvider.id() + "; 供应商名称：" + fruitProvider.name() + "; 供应商地址：" + fruitProvider.address();
-                System.out.println(strFruitProvider);
+                p(strFruitProvider);
             }
         }
     }
-}
 
-/**
- * 使用自定义注解
- */
-class Apple {
-    @FruitName("Apple")
-    private String appleName;
+    /**
+     * 使用自定义注解
+     */
+    static class Apple {
+        @FruitName("Apple")
+        private String appleName;
 
-    @FruitColor(fruitColor = FruitColor.Color.RED)
-    private String appleColor;
+        @FruitColor(fruitColor = FruitColor.Color.RED)
+        private String appleColor;
 
-    @FruitProvider(id = 1, name = "陕西红富士集团", address = "陕西省西安市延安路89号红富士大厦")
-    private String appleProvider;
+        @FruitProvider(id = 1, name = "陕西红富士集团", address = "陕西省西安市延安路89号红富士大厦")
+        private String appleProvider;
 
-    public String getAppleName() {
-        return appleName;
+        public String getAppleName() {
+            return appleName;
+        }
+
+        public void setAppleName(String appleName) {
+            this.appleName = appleName;
+        }
+
+        public String getAppleColor() {
+            return appleColor;
+        }
+
+        public void setAppleColor(String appleColor) {
+            this.appleColor = appleColor;
+        }
+
+        public String getAppleProvider() {
+            return appleProvider;
+        }
+
+        public void setAppleProvider(String appleProvider) {
+            this.appleProvider = appleProvider;
+        }
+
+        public void displayName() {
+            p("水果名称是：苹果");
+        }
     }
 
-    public void setAppleName(String appleName) {
-        this.appleName = appleName;
+    /**
+     * 水果名称注解
+     */
+    @Target(ElementType.FIELD)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface FruitName {
+        String value() default "";
     }
 
-    public String getAppleColor() {
-        return appleColor;
+    /**
+     * 水果颜色注解
+     */
+    @Target(ElementType.FIELD)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface FruitColor {
+        // 颜色枚举
+        enum Color {
+            BLUE, RED, GREEN
+        }
+
+        // 颜色属性
+        Color fruitColor() default Color.GREEN;
     }
 
-    public void setAppleColor(String appleColor) {
-        this.appleColor = appleColor;
+    /**
+     * 水果供应商注解
+     */
+    @Target(ElementType.FIELD)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface FruitProvider {
+        // 供应商编号
+        int id() default -1;
+
+        // 供应商名称
+        String name() default "";
+
+        // 供应商地址
+        String address() default "";
     }
-
-    public String getAppleProvider() {
-        return appleProvider;
-    }
-
-    public void setAppleProvider(String appleProvider) {
-        this.appleProvider = appleProvider;
-    }
-
-    public void displayName() {
-        System.out.println("水果名称是：苹果");
-    }
-}
-
-/**
- * 水果名称注解
- */
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-@interface FruitName {
-    String value() default "";
-}
-
-/**
- * 水果颜色注解
- */
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-@interface FruitColor {
-    // 颜色枚举
-    enum Color {
-        BLUE, RED, GREEN
-    }
-
-    // 颜色属性
-    Color fruitColor() default Color.GREEN;
-}
-
-/**
- * 水果供应商注解
- */
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-@interface FruitProvider {
-    // 供应商编号
-    int id() default -1;
-
-    // 供应商名称
-    String name() default "";
-
-    // 供应商地址
-    String address() default "";
 }

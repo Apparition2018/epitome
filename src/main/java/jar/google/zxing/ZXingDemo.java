@@ -20,15 +20,15 @@ import java.util.HashMap;
 
 public class ZXingDemo extends Demo {
 
-    private final static String dirPath = "src/main/java/jar/google/zxing/QRCode.png";
-
-    // 生成 QR Code
+    /**
+     * 生成 QR Code
+     */
     @Test
     public void CreateQRCode() {
         int width = 300;
         int height = 300;
         String format = "png";
-        String content = "www.imooc.com";
+        String content = "epitome";
 
         // 定义二维码参数
         HashMap<EncodeHintType, Serializable> hints = new HashMap<>();
@@ -39,7 +39,7 @@ public class ZXingDemo extends Demo {
         // 生成二维码
         try {
             BitMatrix bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, width, height, hints);
-            Path file = new File(dirPath).toPath();
+            Path file = new File(DEMO_PATH + "QRCode.png").toPath();
             MatrixToImageWriter.writeToPath(bitMatrix, format, file);
         } catch (WriterException | IOException e) {
             e.printStackTrace();
@@ -53,7 +53,7 @@ public class ZXingDemo extends Demo {
         try {
             MultiFormatReader formatReader = new MultiFormatReader();
 
-            File file = new File(dirPath);
+            File file = new File(DEMO_PATH + "QRCode.png");
             BufferedImage image = ImageIO.read(file);
 
             BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(image)));

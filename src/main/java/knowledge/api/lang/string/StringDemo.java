@@ -126,8 +126,8 @@ public class StringDemo extends Demo {
      */
     @Test
     public void matches() {
-        p("www.google.com".matches("(.*)google(.*)"));          // true
-        p(Pattern.matches("(.*)google(.*)", "www.google.com")); // true
+        p("www.baidu.com".matches("(.*)baidu(.*)"));            // true
+        p(Pattern.matches("(.*)baidu(.*)", "www.baidu.com"));   // true
     }
 
     /**
@@ -136,9 +136,9 @@ public class StringDemo extends Demo {
      */
     @Test
     public void regionMatches() {
-        p("www.google.com".regionMatches(4, "google", 0, 5));       // true
-        p("www.google.com".regionMatches(4, "GOOGLE", 0, 5));       // false
-        p("www.google.com".regionMatches(true, 4, "google", 0, 5)); // true
+        p("www.baidu.com".regionMatches(4, "baidu", 0, 5));         // true
+        p("www.baidu.com".regionMatches(4, "baidu", 0, 5));         // false
+        p("www.baidu.com".regionMatches(true, 4, "baidu", 0, 5));   // true
     }
 
     /**
@@ -167,7 +167,7 @@ public class StringDemo extends Demo {
      */
     @Test
     public void split() {
-        p("www.google.com".split("\\.", 2)); // [www, google.com]
+        p("www.baidu.com".split("\\.", 2)); // [www, baidu.com]
     }
 
     /**
@@ -176,7 +176,7 @@ public class StringDemo extends Demo {
      */
     @Test
     public void subSequence() {
-        p("www.google.com".subSequence(4, 10)); // google
+        p("www.baidu.com".subSequence(4, 10)); // baidu
     }
 
     /**
@@ -185,7 +185,7 @@ public class StringDemo extends Demo {
      */
     @Test
     public void substring() {
-        p("www.google.com".substring(4, 10)); // google
+        p("www.baidu.com".substring(4, 10)); // baidu
     }
 
     /**

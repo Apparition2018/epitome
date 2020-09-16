@@ -6,7 +6,6 @@ import org.junit.Test;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
@@ -14,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * URL
- * 类 URL 代表一个统一资源定位符，它是指向互联网“资源”的指针。
+ * 统一资源定位符，它是指向互联网“资源”的指针。
  * 资源可以是简单的文件或目录，也可以是对更为复杂的对象的引用，例如对数据库或搜索引擎的查询。
  * https://jdk6.net/net/URL.html
  */
@@ -44,8 +43,7 @@ public class URLDemo extends Demo {
     @Test
     public void openStream() throws IOException {
         URL url = new URL(BAIDU_URL);
-        InputStream is = url.openStream();
-        BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+        BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         String line;
         StringBuilder sb = new StringBuilder();
         while ((line = br.readLine()) != null) {
@@ -65,7 +63,7 @@ public class URLDemo extends Demo {
      */
     @Test
     public void openConnection() throws IOException {
-        URL url = new URL(GOOGLE_URL);
+        URL url = new URL(BAIDU_URL);
         URLConnection urlConn = url.openConnection();
         HttpsURLConnection conn;
         if (urlConn instanceof HttpsURLConnection) {
