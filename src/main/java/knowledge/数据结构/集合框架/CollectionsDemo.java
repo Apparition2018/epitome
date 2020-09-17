@@ -111,22 +111,16 @@ public class CollectionsDemo extends Demo {
      */
     @Test
     public void checkedXXX() {
-        List<Dog> dogList = new ArrayList<>();
+        List<Chicken> dogList = new ArrayList<>();
         addCat(dogList); // 这里插入了错误类型，但不会报错
 
-        dogList = Collections.checkedList(dogList, Dog.class);
+        dogList = Collections.checkedList(dogList, Chicken.class);
         addCat(dogList); // ClassCastException
     }
 
     @SuppressWarnings("unchecked")
     private void addCat(List list) {
         list.add(new Cat());
-    }
-
-    static class Dog {
-    }
-
-    static class Cat {
     }
 
     @Test

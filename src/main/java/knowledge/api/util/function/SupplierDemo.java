@@ -49,10 +49,4 @@ public class SupplierDemo extends Demo {
         p(supplier.get());
     }
 
-    @Getter
-    @Setter
-    static class Student {
-        private String name;
-        private int age;
-    }
 }

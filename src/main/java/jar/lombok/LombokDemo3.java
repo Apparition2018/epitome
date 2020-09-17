@@ -40,7 +40,7 @@ public class LombokDemo3 extends Demo {
      * 自动资源管理，不用再使用 close() 释放资源
      */
     @Test
-    public void cleanup() {
+    public void testCleanup() {
         try {
             @Cleanup InputStream is = new ByteArrayInputStream("Arsenal".getBytes());
 
@@ -63,7 +63,7 @@ public class LombokDemo3 extends Demo {
      */
     @Test
     @SneakyThrows
-    public void sneakyThrows() {
+    public void testSneakyThrows() {
         p(System.currentTimeMillis());
 
         TimeUnit.SECONDS.sleep(2);
@@ -77,7 +77,7 @@ public class LombokDemo3 extends Demo {
      */
     @Test
     @Synchronized
-    public void synchronized_() {
+    public void testSynchronized() {
     }
 
     /**
@@ -85,6 +85,11 @@ public class LombokDemo3 extends Demo {
      * 实际使用到的时候才生成
      * 提高代码效率，同时由 lombok 管理线程安全问题
      */
+    @Test
+    public void testGetterLazy() {
+        p(getCached());
+    }
+    
     @Getter(lazy = true)
     private final double[] cached = expensive();
 
@@ -94,11 +99,6 @@ public class LombokDemo3 extends Demo {
             result[i] = (int) (Math.random() * 100);
         }
         return result;
-    }
-
-    @Test
-    public void lazy() {
-        p(getCached());
     }
 
 }

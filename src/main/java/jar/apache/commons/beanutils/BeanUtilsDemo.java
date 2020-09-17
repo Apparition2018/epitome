@@ -1,5 +1,6 @@
 package jar.apache.commons.beanutils;
 
+import l.demo.Demo;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
@@ -17,7 +18,7 @@ import java.util.Map;
  *
  * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.2/apidocs/org/apache/commons/beanutils/BeanUtils.html
  */
-public class BeanUtilsDemo {
+public class BeanUtilsDemo extends Demo {
 
     /**
      * JavaBean → JavaBean
@@ -33,7 +34,7 @@ public class BeanUtilsDemo {
         Student s2 = new Student();
         BeanUtils.copyProperties(s2, s1);
 
-        System.out.println(s2.getName() + "的id是" + s2.getId() + "，年龄是" + s2.getAge() + "岁");
+        p(s2.getName() + "的id是" + s2.getId() + "，年龄是" + s2.getAge() + "岁");
     }
 
     /**
@@ -48,7 +49,7 @@ public class BeanUtilsDemo {
         s.setAge(18);
 
         Map<String, String> map = BeanUtils.describe(s);
-        System.out.println(map); // {name=John, birth=null, id=1, class=class jar.apache.commons.beanutils.Student, age=18}
+        p(map); // {no=null, score=null, name=John, birth=null, id=1, class=class l.demo.Demo$Student, age=18, home=null}
     }
 
     /**
@@ -65,7 +66,7 @@ public class BeanUtilsDemo {
         Student s = new Student();
         BeanUtils.populate(s, map);
 
-        System.out.println(s.getName() + "的id是" + s.getId() + "，年龄是" + s.getAge() + "岁");
+        p(s.getName() + "的id是" + s.getId() + "，年龄是" + s.getAge() + "岁");
     }
 
     /**
@@ -75,7 +76,7 @@ public class BeanUtilsDemo {
     public void setProperty() throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
 
         // 1.得到 JavaBean 的一个字节码对象
-        Class clazz = Class.forName("jar.apache.commons.beanutils.Student");
+        Class clazz = Class.forName("l.demo.Demo$Student");
 
         // 2.生成该字节码的一个对象
         Object obj = clazz.newInstance();
@@ -89,7 +90,7 @@ public class BeanUtilsDemo {
         BeanUtils.setProperty(obj, "age", "18");
         BeanUtils.setProperty(obj, "birth", "2000-01-01"); // String → Date 不能自动转换，需注册一个转换器
 
-        System.out.println(obj);
+        p(obj);
     }
 
     /**

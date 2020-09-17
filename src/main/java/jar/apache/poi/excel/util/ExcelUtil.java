@@ -1,7 +1,7 @@
 package jar.apache.poi.excel.util;
 
 import jar.apache.poi.excel.common.Common;
-import jar.apache.poi.excel.vo.Student;
+import l.demo.Demo.Student;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -76,7 +76,7 @@ public class ExcelUtil {
                     XSSFCell score = cell.getCell(3);
                     student.setNo(getValue(no));
                     student.setName(getValue(name));
-                    student.setAge(getValue(age));
+                    student.setAge(Integer.parseInt(getValue(age)));
                     student.setScore(Float.valueOf(getValue(score)));
                     list.add(student);
                 }
@@ -108,7 +108,7 @@ public class ExcelUtil {
                     HSSFCell score = hssfRow.getCell(3);
                     student.setNo(getValue(no));
                     student.setName(getValue(name));
-                    student.setAge(getValue(age));
+                    student.setAge(Integer.parseInt(getValue(age)));
                     student.setScore(Float.valueOf(getValue(score)));
                     list.add(student);
                 }

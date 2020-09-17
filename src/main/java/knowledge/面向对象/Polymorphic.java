@@ -1,5 +1,7 @@
 package knowledge.面向对象;
 
+import l.demo.Demo;
+
 /**
  * 多态
  * <p>
@@ -18,7 +20,7 @@ package knowledge.面向对象;
  * 2.重写
  * 3.父类引用指向子类对象
  */
-public class Polymorphic {
+public class Polymorphic extends Demo {
 
     public static void main(String[] args) {
 
@@ -27,34 +29,6 @@ public class Polymorphic {
         Cat c = (Cat) a;        // 向下转型
         c.work();               // 调用的是 Cat 的 work
 
-    }
-
-}
-
-abstract class Animal {
-    abstract void eat();
-}
-
-class Cat extends Animal {
-
-    void eat() {
-        System.out.println("吃鱼");
-    }
-
-    public void work() {
-        System.out.println("抓老鼠");
-    }
-
-}
-
-class Dog extends Animal {
-
-    void eat() {
-        System.out.println("吃骨头");
-    }
-
-    public void work() {
-        System.out.println("看家");
     }
 
 }

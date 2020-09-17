@@ -33,14 +33,6 @@ import java.util.Date;
  */
 public class SimpleDateFormatDemo extends Demo {
 
-    private static final SimpleDateFormat SDF;
-
-    static {
-        // SimpleDateFormat([String pattern[, Locale locale]])
-        // 用给定的模式和给定语言环境的默认日期格式符号构造 SimpleDateFormat
-        SDF = new SimpleDateFormat("yyyy-MM-dd");
-    }
-
     @Test
     public void testSimpleDateFormat() {
         // void	        applyPattern(String pattern)        将给定模式字符串应用于此日期格式

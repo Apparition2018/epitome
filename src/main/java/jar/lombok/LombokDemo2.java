@@ -11,7 +11,7 @@ import java.util.Set;
 public class LombokDemo2 extends Demo {
 
     @Test
-    public void accessorsFluentAndChain() {
+    public void testAccessorsFluentAndChain() {
         User5 u = new User5();
         u.id(1).name("Henry").password("123");
         p("id = " + u.id());
@@ -20,7 +20,7 @@ public class LombokDemo2 extends Demo {
     }
 
     @Test
-    public void accessorsPrefix() {
+    public void testAccessorsPrefix() {
         User5 u = new User5();
         u.number("123456");
         p(u.number());
@@ -46,7 +46,7 @@ public class LombokDemo2 extends Demo {
     }
 
     @Test
-    public void fieldDefaults() {
+    public void testFieldDefaults() {
         User6 u = new User6(1, "Henry", "123");
         p(u);
     }
@@ -65,7 +65,7 @@ public class LombokDemo2 extends Demo {
     }
 
     @Test
-    public void value() {
+    public void testValue() {
         User7 u = new User7(1, "Henry", "123");
         // u.setId(2); // cannot resolve method 'setName()'
     }
@@ -84,7 +84,7 @@ public class LombokDemo2 extends Demo {
     }
 
     @Test
-    public void builder() {
+    public void testBuilder() {
         User8 u = User8.builder()
                 .id(1)
                 .name("Henry")

@@ -1,5 +1,6 @@
 package jar.apache.commons.beanutils;
 
+import l.demo.Demo;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.beanutils.Converter;
@@ -12,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
  * <p>
  * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.2/apidocs/org/apache/commons/beanutils/ConvertUtilsBean.html
  */
-public class ConvertUtilsBeanDemo {
+public class ConvertUtilsBeanDemo extends Demo {
 
     /**
      * 案例：把一个 Bean 的所有 String 类型属性在输出之前加上一个前缀
@@ -20,7 +21,7 @@ public class ConvertUtilsBeanDemo {
     @Test
     public void test() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         // 一个简单的 Bean 对象
-        Student s = new Student("张三", 18);
+        Person p = new Person("张三", 18);
         // 转换工具
         ConvertUtilsBean cub = new ConvertUtilsBean();
         // 注册一个转换器
@@ -36,7 +37,7 @@ public class ConvertUtilsBeanDemo {
         // BeanUtilsBean([ConvertUtilsBean convertUtilsBean, PropertyUtilsBean propertyUtilsBean])
         BeanUtilsBean beanUtils = new BeanUtilsBean(cub);
         // 输出结果
-        System.out.println(beanUtils.getProperty(s, "name")); // prefix-张三
+        p(beanUtils.getProperty(p, "name")); // prefix-张三
     }
 
 }

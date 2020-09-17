@@ -190,23 +190,4 @@ public class ByteStream extends Demo {
         }
     }
 
-    /**
-     * 该类用于测试对象流的对象读写操作
-     * 若一个类的实例需要被对象输出流序列化，那么该类必须实现可序列化接口 java.io.Serializable
-     */
-    @Data
-    @AllArgsConstructor
-    static class Person implements Serializable {
-        /**
-         * 当一个类实现了可序列化接口，就要定义一个常量：版本号 (serialVersionUID)
-         * 版本号决定着对象反序列化是否成功：
-         * 1：反序列化的对象的版本号若与当前类版本号一致，反序列化成功。若反序列化对象的结构与当前类接口有变化，那么可以还原的属性就还原，没有的属性就忽略
-         * 2：版本号若不一致，则反序列化直接失败
-         */
-        private static final long serialVersionUID = 1L;
-        private String name;
-        private transient int age; // 被 transient 修饰的属性，在进行对象序列化时该值会被忽略，已达到对象瘦身的目的
-        private String gender;
-        private List<String> otherInfo;
-    }
 }

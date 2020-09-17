@@ -19,7 +19,7 @@ import org.junit.Test;
 public class LombokDemo extends Demo {
 
     @Test
-    public void nonNull() {
+    public void testNonNull() {
         User1 u = new User1(1, "Henry", null); // NullPointerException: password is marked non-null but is null
         p(u);
     }
@@ -45,7 +45,7 @@ public class LombokDemo extends Demo {
     }
 
     @Test
-    public void requiredArgsConstructor() {
+    public void testRequiredArgsConstructor() {
         User2 u = new User2("Henry", "123");
         p(u);
     }
@@ -76,7 +76,7 @@ public class LombokDemo extends Demo {
     }
 
     @Test
-    public void requiredArgsConstructorOf() {
+    public void testRequiredArgsConstructortaticName() {
         User3 u = User3.of("Henry", "123");
         p(u);
     }
@@ -97,7 +97,7 @@ public class LombokDemo extends Demo {
     }
 
     @Test
-    public void toStringExcludeAndCallSuper() {
+    public void testToStringExcludeAndCallSuper() {
         User4 u = new User4();
         u.setId(1);
         u.setName("Henry");
@@ -107,14 +107,14 @@ public class LombokDemo extends Demo {
     }
 
     @Test
-    public void equalsExclude() {
+    public void testEqualsAndHashCodeExclude() {
         User4 u1 = new User4(1, "Henry", "123");
         User4 u2 = new User4(2, "Henry", "123");
         p(u1.equals(u2)); // true
     }
 
     @Test
-    public void accessLevel() {
+    public void testGetterAccessLevel() {
         User4 u = new User4();
         u.setName("Henry");
         // String name = u.getName(); // 编译错误，getName() has private access ...

@@ -328,11 +328,11 @@ public class StringUtilsDemo extends Demo {
     @Test
     public void with() {
         p(StringUtils.startsWith("abc", "A"));          // false
-        p(StringUtils.startsWithAny("abc", "a", "A"));   // true
+        p(StringUtils.startsWithAny("abc", "a", "A"));  // true
         p(StringUtils.startsWithIgnoreCase("abc", "A"));// true
 
         p(StringUtils.endsWith("abc", "C"));            // false
-        p(StringUtils.endsWithAny("abc", "c", "C"));     // true
+        p(StringUtils.endsWithAny("abc", "c", "C"));    // true
         p(StringUtils.endsWithIgnoreCase("abc", "C"));  // true
     }
 

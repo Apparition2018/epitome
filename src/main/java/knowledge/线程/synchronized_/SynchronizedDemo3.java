@@ -17,7 +17,7 @@ public class SynchronizedDemo3 extends Demo {
         new Thread(s::dining).start();
     }
 
-    static class Student {
+    private static class Student {
         public synchronized void learning() {
             try {
                 p("learning start");

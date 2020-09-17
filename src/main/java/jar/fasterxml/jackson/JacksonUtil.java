@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import l.demo.Demo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,7 +26,7 @@ import java.util.Date;
  * https://my.oschina.net/u/3681868/blog/3075150
  */
 @Slf4j
-public class JacksonUtil {
+public class JacksonUtil extends Demo {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -54,8 +55,8 @@ public class JacksonUtil {
         student.setAge(0);
         student.setBirth(new Date());
         String json = obj2String(student);
-        log.info(obj2String(student));
-        log.info(string2Obj(json, new TypeReference<Student>() {
+        log.info("Obj -> String:\n" + json + "\n");
+        log.info("String -> Obj:\n" + string2Obj(json, new TypeReference<Student>() {
         }).toString());
     }
 
@@ -84,18 +85,18 @@ public class JacksonUtil {
     }
 }
 
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
-class Student {
-    private String name;
-    @JsonIgnore
-    private String password;
-    private Integer age;
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss a", locale = "zh", timezone = "GMT+8")
-    private Date birth;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String desc;
-}
+//@Getter
+//@Setter
+//@NoArgsConstructor
+//@ToString
+//class Student {
+//    private String name;
+//    @JsonIgnore
+//    private String password;
+//    private Integer age;
+//    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss a", locale = "zh", timezone = "GMT+8")
+//    private Date birth;
+//    @JsonInclude(JsonInclude.Include.NON_NULL)
+//    private String desc;
+//}
 

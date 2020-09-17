@@ -1,6 +1,6 @@
 package knowledge.网络编程.socket.tcp;
 
-import jar.apache.poi.excel.vo.Student;
+import l.demo.Demo;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -14,23 +14,25 @@ import java.net.Socket;
  * 3)通过输入流获取服务器响应的信息。
  * 4)关闭相应资源。
  */
-public class Client {
+public class Client extends Demo {
 
     public static void main(String[] args) {
         try {
-            // 1.创建客户端Socket，指定服务器地址和端口
+            // Socket(String host, int port[, InetAddress localAddr, int localPort])
+            // 创建一个套接字并将其连接到指定远程主机上的指定远程端口
             Socket socket = new Socket("localhost", 4444);
-            System.out.println("远程主机地址：" + socket.getRemoteSocketAddress());
+            // SocketAddress	getRemoteSocketAddress()    返回此套接字连接的端点的地址，如果未连接则返回 null
+            p("远程主机地址：" + socket.getRemoteSocketAddress());
 
+            // OutputStream	    getOutputStream()           返回此套接字的输出流
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-            Student student = new Student();
-            student.setId(1);
-            student.setName("Mary");
-            student.setAge("20");
+
+            Student student = new Student(1, "007", "Mary", 20, 100.0f);
             out.writeUTF(student + "");
 
+            // InputStream	    getInputStream()            返回此套接字的输入流
             DataInputStream in = new DataInputStream(socket.getInputStream());
-            System.out.println("服务器响应：" + in.readUTF());
+            p("服务器响应：" + in.readUTF());
 
             socket.close();
         } catch (IOException e) {

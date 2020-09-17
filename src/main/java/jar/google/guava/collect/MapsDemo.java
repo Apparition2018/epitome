@@ -2,12 +2,9 @@ package jar.google.guava.collect;
 
 import com.google.common.collect.*;
 import knowledge.数据结构.集合框架.map.properties.PropertiesUtil;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import l.demo.Demo;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -16,56 +13,41 @@ import java.util.*;
  * http://www.ibloger.net/article/3314.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Maps.html
  */
-public class MapsDemo {
+public class MapsDemo extends Demo {
 
-    private Person p1;
-    private Person p2;
-    private Map<String, Person> map;
-
-    {
-        p1 = new Person("001", "张三");
-        p2 = new Person("002", "李四");
-    }
-
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    private static class Person {
-        private String Id;
-        private String name;
-    }
+    private Person p1 = new Person(1, "张三");
+    private Person p2 = new Person(2, "李四");
+    private Map<Integer, Person> pMap;
 
     /**
-     * static <K,V> NavigableMap<K,V>	    asMap(NavigableSet<K> set, Function<? super K,V> function)
-     * static <K,V> Map<K,V>	            asMap(Set<K> set, Function<? super K,V> function)
-     * static <K,V> SortedMap<K,V>	        asMap(SortedSet<K> set, Function<? super K,V> function)
-     * 返回一个 Map，键为 set 中的元素，值为 Function 返回的值
+     * List<Person>  →  Map<Object, Person>
      * <p>
-     * List<Person>  →  Map<Person, Object>
-     */
-    @Test
-    public void asMap() {
-        Set<Person> set = Sets.newHashSet(p1, p2);
-
-        Map<Person, String> map = Maps.asMap(set, Person::getId);
-        System.out.println(map);
-        // {jar.google.guava.collect.MapsDemo$Person@5e025e70=001, jar.google.guava.collect.MapsDemo$Person@1fbc7afb=002}
-    }
-
-    /**
      * static <K,V> ImmutableMap<K,V>	    uniqueIndex(Iterable<V> values, Function<? super V,K> keyFunction)
      * static <K,V> ImmutableMap<K,V>	    uniqueIndex(Iterator<V> values, Function<? super V,K> keyFunction)
      * 返回一个 Map，键为 Function 返回的值，值为 Iterable/Iterator 中相应的元素
-     * <p>
-     * List<Person>  →  Map<Object, Person>
      */
     @Test
     public void uniqueIndex() {
         List<Person> list = Lists.newArrayList(p1, p2);
 
-        map = Maps.uniqueIndex(list.iterator(), Person::getId);
-        System.out.println(map);
-        // {001=jar.google.guava.collect.MapsDemo$Person@4590c9c3, 002=jar.google.guava.collect.MapsDemo$Person@32e6e9c3}
+        pMap = Maps.uniqueIndex(list.iterator(), Person::getId);
+        p(pMap); // {1=Person{id=1, name='张三'}, 2=Person{id=2, name='李四'}}
+    }
+
+    /**
+     * List<Person>  →  Map<Person, Object>
+     * <p>
+     * static <K,V> NavigableMap<K,V>	    apMap(NavigableSet<K> set, Function<? super K,V> function)
+     * static <K,V> Map<K,V>	            apMap(Set<K> set, Function<? super K,V> function)
+     * static <K,V> SortedMap<K,V>	        apMap(SortedSet<K> set, Function<? super K,V> function)
+     * 返回一个 Map，键为 set 中的元素，值为 Function 返回的值
+     */
+    @Test
+    public void apMap() {
+        Set<Person> set = Sets.newHashSet(p1, p2);
+
+        Map<Person, Integer> map = Maps.asMap(set, Person::getId);
+        p(map); // {Person{id=1, name='张三'}=1, Person{id=2, name='李四'}=2}
     }
 
     /**
@@ -77,8 +59,8 @@ public class MapsDemo {
     public void transform() {
         uniqueIndex();
 
-        Map<String, String> transMap = Maps.transformValues(map, Person::getName);
-        System.out.println(transMap); // {001=张三, 002=李四}
+        Map<Integer, String> tranpMap = Maps.transformValues(pMap, Person::getName);
+        p(tranpMap); // {1=张三, 2=李四}
     }
 
     /**
@@ -88,30 +70,26 @@ public class MapsDemo {
      */
     @Test
     public void toMap() {
-        List<Integer> list = Lists.newArrayList(1, 2, 2, 3, 4, 4, 5);
+        p(repeatList); // [1, 1, 2, 2, 3, 3, 4, 5]
 
-        ImmutableMap<Integer, Integer> map = Maps.toMap(list, i -> Objects.requireNonNull(i) * 3);
-        System.out.println(map); // {1=3, 2=6, 3=9, 4=12, 5=15}
+        ImmutableMap<Integer, Integer> map = Maps.toMap(repeatList, i -> Objects.requireNonNull(i) * 3);
+        p(map); // {1=3, 2=6, 3=9, 4=12, 5=15}
     }
 
     /**
      * static <K,V> MapDifference<K,V>	        difference(Map<? extends K,? extends V> left, Map<? extends K,? extends V> right)
      * static <K,V> MapDifference<K,V>	        difference(Map<? extends K,? extends V> left, Map<? extends K,? extends V> right, Equivalence<? super V> valueEquivalence)
-     * static <K,V> SortedMapDifference<K,V>	difference(SortedMap<K,? extends V> left, Map<? extends K,? extends V> right)
+     * static <K,V> SortedMapDifference<K,V>    difference(SortedMap<K,? extends V> left, Map<? extends K,? extends V> right)
      * 返回一个 MapDifference，返回两个给定 map 之间的差异
      */
     @Test
     public void difference() {
-        Map<String, String> map1 = Maps.newHashMap();
-        map1.put("1", "壹");
-        map1.put("2", "贰");
+        p(map); // {1=A, 2=B, 3=C}
+        p(map2);// {1=A, 2=B, 3=C, 4=E, 5=D}
 
-        Map<String, String> map2 = Maps.newHashMap(map1);
-        map2.put("3", "叁");
-
-        MapDifference<String, Object> difference = Maps.difference(map1, map2);
-        System.out.println(difference.entriesInCommon());       // {1=壹, 2=贰}
-        System.out.println(difference.entriesOnlyOnRight());    // {3=叁}
+        MapDifference<Integer, Object> difference = Maps.difference(map, map2);
+        p(difference.entriesInCommon());    // {1=A, 2=B, 3=C}
+        p(difference.entriesOnlyOnRight()); // {4=E, 5=D}
     }
 
     /**
@@ -122,25 +100,21 @@ public class MapsDemo {
      */
     @Test
     public void filter() {
-        Map<String, String> map = Maps.newHashMap();
-        map.put("1", "壹");
-        map.put("2", "贰");
-        map.put("3", "叁");
-
-        Map<String, String> filterMap = Maps.filterEntries(map, kvEntry -> Integer.parseInt(Objects.requireNonNull(kvEntry).getKey()) >= 2);
-        System.out.println(filterMap); // {2=贰, 3=叁}
+        p(map); // {1=A, 2=B, 3=C}
+        Map<Integer, String> filterMap = Maps.filterEntries(map, kvEntry -> Integer.parseInt(String.valueOf(Objects.requireNonNull(kvEntry).getKey())) >= 2);
+        p(filterMap); // {2=B, 3=C}
     }
 
     /**
-     * static ImmutableMap<String,String>	fromProperties(Properties properties)
      * Properties  →  ImmutableMap
+     * static ImmutableMap<String,String>	fromProperties(Properties properties)
      */
     @Test
-    public void fromProperties() throws IOException {
-        Properties capitals = PropertiesUtil.loadProps("src/main/java/jar/google/guava/collect/capitals.properties");
+    public void fromProperties() {
+        Properties capitals = PropertiesUtil.loadProps("jdbc.properties");
 
         ImmutableMap<String, String> map = Maps.fromProperties(capitals);
-        System.out.println(map); // {广东=广州, 江苏=南京, 山东=济南}
+        p(map); // {jdbc.url=jdbc:mysql://127.0.0.1:3306/epitome?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC, jdbc.username=root, jdbc.driver=com.mysql.jdbc.Driver, jdbc.password=root}
     }
 
 }

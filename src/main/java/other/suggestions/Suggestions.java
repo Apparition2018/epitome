@@ -1,5 +1,6 @@
 package other.suggestions;
 
+import l.demo.Demo;
 import lombok.*;
 import org.junit.Test;
 
@@ -26,7 +27,7 @@ import static java.text.NumberFormat.getInstance;
 
 /**
  * 编写高质量代码 改善java程序的151个建议
- * https://www.cnblogs.com/selene/p/5829605.html#3506492
+ * https://www.cnblogs.com/selene/category/876189.html
  * <p>
  * 建议5： 变长方法参数 null 值问题
  * 建议6： 变长方法重写必须也是变长方法
@@ -99,7 +100,7 @@ import static java.text.NumberFormat.getInstance;
  * 建议149：依赖抽象而不是实现
  */
 @SuppressWarnings("unchecked")
-public class Suggestions {
+public class Suggestions extends Demo {
 
     /* 第一章：Java 开发中通用的方法和准则 */
 
@@ -552,24 +553,24 @@ public class Suggestions {
     @Test
     public void test036() {
 
-        class Person {
+        class Demo {
 
             {
                 p("执行构造代码块");
             }
 
-            private Person() {
+            private Demo() {
                 p("执行无参构造");
             }
 
-            private Person(String name) {
+            private Demo(String name) {
                 p("执行有参构造");
             }
 
         }
 
-        new Person();
-        new Person("");
+        new Demo();
+        new Demo("");
     }
 
     // 建议37：构造代码块不会插入到添加了 this() 的构造器中
@@ -588,8 +589,8 @@ public class Suggestions {
      */
     @Test
     public void test038() {
-        Person p = new Person("张三");
-        p.setHome(new Person.Home("北京", "010"));
+        Student student = new Student();
+        student.setHome(new Student.Home("北京", "010"));
     }
 
     // 建议39：使用匿名类的构造函数
@@ -718,27 +719,6 @@ public class Suggestions {
     // hashCode() 的主要作用是配合基于散列的集合一起正常运行，如 HashMap, HashSet, HashTable
     @Test
     public void test48() {
-
-        @Getter
-        @Setter
-        @EqualsAndHashCode
-        class Person {
-
-            private String name;
-
-            Person(String _name) {
-                name = _name;
-            }
-
-//            @Override
-//            public boolean equals(Object o) {
-//                if (this == o) return true;
-//                if (o == null || getClass() != o.getClass()) return false;
-//                Person user = (Person) o;
-//                return Objects.equals(name, user.name);
-//            }
-
-        }
 
         Map<Person, Object> map = new HashMap<Person, Object>() {
             {
@@ -869,7 +849,7 @@ public class Suggestions {
     }
 
     private static <T> T[] expandCapacity(T[] datas, int newLen) {
-        newLen = newLen < 0 ? 0 : newLen;
+        newLen = Math.max(newLen, 0);
         return Arrays.copyOf(datas, newLen);
     }
 
@@ -1124,36 +1104,20 @@ public class Suggestions {
      */
     @Test
     public void test081() {
-        @Getter
-        @Setter
-        class Person implements Comparable<Person> {
-
-            private int height;
-
-            private Person(int _height) {
-                height = _height;
-            }
-
-            @Override
-            public int compareTo(Person o) {
-                return height - o.height;
-            }
-        }
-
         SortedSet<Person> set = new TreeSet<>();
-        set.add(new Person(180));
-        set.add(new Person(175));
+        set.add(new Person("张三", 18));
+        set.add(new Person("李四", 22));
         for (Person p : set) {
-            p("身高：" + p.getHeight());
-            // 身高：175
-            // 身高：180
+            p("年龄：" + p.getAge());
+            // 年龄：175
+            // 年龄：180
         }
 
-        set.first().setHeight(185);
+        set.first().setAge(11);
         for (Person p : set) {
-            p("身高：" + p.getHeight());
-            // 身高：185
-            // 身高：180
+            p("年龄：" + p.getAge());
+            // 年龄：185
+            // 年龄：180
         }
     }
 
@@ -1523,6 +1487,27 @@ public class Suggestions {
             p("恭喜你，您的车票打八折！");
         }
     }
+    
+    static class People implements Staff, Passenger {
+        @Override
+        public int getSalary() {
+            return 2000;
+        }
+
+        @Override
+        public boolean isStanding() {
+            return true;
+        }
+    }
+
+    interface Staff {
+        public int getSalary();
+    }
+
+    interface Passenger {
+        public boolean isStanding();
+    }
+
 
     // 建议100：泛型数组的真实类型必须是泛型类型的子类型（包括自身）
     @Test
@@ -2337,14 +2322,5 @@ public class Suggestions {
      * 19.刨根问底
      * 20.横向扩展
      */
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        if (obj.getClass().isArray()) {
-            System.out.println(Arrays.toString((Object[]) obj));
-            return;
-        }
-        System.out.println(obj);
-    }
 
 }

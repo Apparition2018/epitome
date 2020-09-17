@@ -1,10 +1,10 @@
 package knowledge.api.lang.class_;
 
+import l.demo.Demo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.junit.Test;
-import l.utils.LUtils;
 
 import java.lang.reflect.Field;
 import java.util.function.Predicate;
@@ -37,7 +37,7 @@ import java.util.function.Predicate;
  * <p>
  * http://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Class.html
  */
-public class ClassDemo {
+public class ClassDemo extends Demo {
 
     private static class ClassInnerDemo {
     }
@@ -53,8 +53,8 @@ public class ClassDemo {
         // Class.forName("Foo", true, this.getClass().getClassLoader())
         // true 表示初始化，执行 static 静态块
 
-        Class.forName("knowledge.api.lang.class_.Animal", false, this.getClass().getClassLoader());
-        // The is a Dog.
+        Class.forName("l.demo.Demo$Animal", true, this.getClass().getClassLoader());
+        // The is a Animal.
     }
 
     /**
@@ -66,13 +66,14 @@ public class ClassDemo {
     @Test
     public void getFields() {
         // getDeclaredFields() 获取某个类的所有字段，不包括父类
-        Field[] fields1 = Dog.class.getDeclaredFields();
-        // getFields() 获取某个类的 public 字段，包括父类
-        Field[] fields2 = Dog.class.getFields();
+        Field[] fields1 = Chicken.class.getDeclaredFields();
         p(fields1);
-        // [public java.lang.String knowledge.api.lang.class_.Dog.dog1, private java.lang.String knowledge.api.lang.class_.Dog.dog2]
+        // [public int l.demo.Demo$Chicken.age, private int l.demo.Demo$Chicken.wing]
+        
+        // getFields() 获取某个类的 public 字段，包括父类
+        Field[] fields2 = Chicken.class.getFields();
         p(fields2);
-        // [public java.lang.String knowledge.api.lang.class_.Dog.dog1, public java.lang.String knowledge.api.lang.class_.Animal.name]
+        // [public int l.demo.Demo$Chicken.age, public java.lang.String l.demo.Demo$Animal.name]
     }
 
     /**
@@ -132,12 +133,12 @@ public class ClassDemo {
      */
     @Test
     public void is() {
-        Dog dog = new Dog();
+        Chicken chicken = new Chicken();
 
-        p(dog instanceof Animal);                       // true
-        p(Animal.class.isInstance(dog));                // true
-        p(Animal.class.isAssignableFrom(Dog.class));    // true
-        p(Dog.class.isAssignableFrom(Animal.class));    // false
+        p(chicken instanceof Animal);                       // true
+        p(Animal.class.isInstance(chicken));                // true
+        p(Animal.class.isAssignableFrom(Chicken.class));    // true
+        p(Chicken.class.isAssignableFrom(Animal.class));    // false
     }
 
     /**
@@ -149,37 +150,4 @@ public class ClassDemo {
         p(Predicate.class.isAnnotationPresent(FunctionalInterface.class)); // true
     }
 
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
 }
-
-@Data
-@Accessors(chain = true)
-class Animal {
-
-    public String name;
-    private int age;
-
-    static {
-        System.out.println("The is a Animal.");
-    }
-
-}
-
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
-class Dog extends Animal {
-
-    public String dog1;
-    private String dog2;
-
-    static {
-        System.out.println("The is a Dog.");
-    }
-
-}
-

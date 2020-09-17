@@ -13,47 +13,55 @@ public class AdapterDemo {
         adapter.postcode();
         adapter.city();
     }
-}
 
-// 源角色
-class Address {
-    public void block() {
-        System.out.println("block");
-    }
-    public void zip() {
-        System.out.println("zip");
-    }
-    public void plat() {
-        System.out.println("plat");
-    }
-}
+    // 源角色
+    private static class Address {
+        public void block() {
+            System.out.println("block");
+        }
 
-// 目标角色
-class DutchAddress {
-    public void street() {
-        System.out.println("street");
-    }
-    public void postcode() {
-        System.out.println("street");
-    }
-    public void city() {
-        System.out.println("city");
-    }
-}
+        public void zip() {
+            System.out.println("zip");
+        }
 
-// 适配器角色
-class DutchAddressAdapter extends DutchAddress {
-    private Address address;
-    DutchAddressAdapter(Address address) {
-        this.address = address;
+        public void plat() {
+            System.out.println("plat");
+        }
     }
-    public void street() {
-        address.block();
+
+    // 目标角色
+    private static class DutchAddress {
+        public void street() {
+            System.out.println("street");
+        }
+
+        public void postcode() {
+            System.out.println("street");
+        }
+
+        public void city() {
+            System.out.println("city");
+        }
     }
-    public void postcode() {
-        address.zip();
-    }
-    public void city() {
-        address.plat();
+
+    // 适配器角色
+    private static class DutchAddressAdapter extends DutchAddress {
+        private Address address;
+
+        DutchAddressAdapter(Address address) {
+            this.address = address;
+        }
+
+        public void street() {
+            address.block();
+        }
+
+        public void postcode() {
+            address.zip();
+        }
+
+        public void city() {
+            address.plat();
+        }
     }
 }

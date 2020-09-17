@@ -1,10 +1,6 @@
 package knowledge.数据结构.集合框架.collection;
 
 import l.demo.Demo;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.junit.Test;
 
 import java.util.PriorityQueue;
@@ -24,50 +20,33 @@ public class PriorityQueueDemo extends Demo {
     @Test
     public void testPriorityQueue() {
         p("----- 小顶堆 -----");
-        PriorityQueue<Student> queue = new PriorityQueue<>();
+        PriorityQueue<Person> queue = new PriorityQueue<>();
         addData(queue);
         while (!queue.isEmpty()) {
             p(queue.poll());
-            // 姓名：王五-67分
-            // 姓名：李四-89分
-            // 姓名：赵六-92分
-            // 姓名：张三-95分
+            // Person{name='张三', age=18}
+            // Person{name='李四', age=22}
+            // Person{name='王五', age=25}
+            // Person{name='赵六', age=30}
         }
 
         p("----- 大顶堆 -----");
-        queue = new PriorityQueue<>((o1, o2) -> o2.getScore() - o1.getScore());
+        queue = new PriorityQueue<>((o1, o2) -> o2.getAge() - o1.getAge());
         addData(queue);
-
         while (!queue.isEmpty()) {
             p(queue.poll());
-            // 姓名：张三-95分
-            // 姓名：赵六-92分
-            // 姓名：李四-89分
-            // 姓名：王五-67分
+            // Person{name='赵六', age=30}
+            // Person{name='王五', age=25}
+            // Person{name='李四', age=22}
+            // Person{name='张三', age=18}
         }
     }
 
-    public void addData(PriorityQueue<Student> queue) {
-        queue.add(new Student(95, "张三"));
-        queue.add(new Student(89, "李四"));
-        queue.add(new Student(67, "王五"));
-        queue.add(new Student(92, "赵六"));
+    public void addData(PriorityQueue<Person> queue) {
+        queue.add(new Person("张三", 18));
+        queue.add(new Person("李四", 22));
+        queue.add(new Person("王五", 25));
+        queue.add(new Person("赵六", 30));
     }
 
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    static class Student implements Comparable<Student> {
-        private int score;
-        private String name;
-
-        public String toString() {
-            return "姓名：" + name + "-" + score + "分";
-        }
-
-        @Override
-        public int compareTo(Student o) {
-            return new CompareToBuilder().append(score, o.score).toComparison();
-        }
-    }
 }
