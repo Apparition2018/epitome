@@ -36,7 +36,7 @@ public class CustomExceptionDemo extends Demo {
     /**
      * 自定义异常类
      */
-    public static class CustomException extends RuntimeException {
+    private static class CustomException extends RuntimeException {
 
         private double amount;
 
@@ -55,7 +55,7 @@ public class CustomExceptionDemo extends Demo {
     /**
      * 模拟银行账户
      */
-    static class CheckingAccount {
+    private static class CheckingAccount {
 
         /**
          * 余额

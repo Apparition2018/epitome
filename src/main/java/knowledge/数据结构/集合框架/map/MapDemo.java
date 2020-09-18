@@ -103,7 +103,7 @@ public class MapDemo extends Demo {
 
     }
 
-    static class SimpleLRUCache<K, V> {
+    private static class SimpleLRUCache<K, V> {
 
         private final int MAX_CACHE_SIZE;
         private final float DEFAULT_LOAD_FACTORY = 0.75f;

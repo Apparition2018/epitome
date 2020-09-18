@@ -28,7 +28,7 @@ public class SynchronizedDemo2 extends Demo {
         }).start();
     }
 
-    static class Fly {
+    private static class Fly {
         public synchronized static void fly() {
             try {
                 p("fly start");

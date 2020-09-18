@@ -34,7 +34,7 @@ public class ExecutorServiceDemo2 extends Demo {
         pool.shutdown();
     }
 
-    static class MyThread extends Thread {
+    private static class MyThread extends Thread {
         private static int[] arr = {1, 2, 3, 4, 5};
         private static int index = 0;
 

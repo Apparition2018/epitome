@@ -74,7 +74,7 @@ public class FutureTaskDemo extends Demo {
         es.shutdown();
     }
 
-    static class MyFutureTask extends FutureTask<String> {
+    private static class MyFutureTask extends FutureTask<String> {
 
         MyFutureTask(Callable<String> callable) {
             super(callable);
@@ -92,7 +92,7 @@ public class FutureTaskDemo extends Demo {
         }
     }
 
-    static class MyCallable implements Callable<String> {
+    private static class MyCallable implements Callable<String> {
 
         @Override
         public String call() throws Exception {

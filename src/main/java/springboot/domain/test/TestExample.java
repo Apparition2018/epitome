@@ -235,14 +235,14 @@ public class TestExample {
         }
     }
 
-    public static class Criteria extends GeneratedCriteria {
+    private static class Criteria extends GeneratedCriteria {
 
         protected Criteria() {
             super();
         }
     }
 
-    public static class Criterion {
+    private static class Criterion {
         private String condition;
 
         private Object value;

@@ -1,12 +1,17 @@
 package knowledge.网络编程.socket.udp;
 
+import l.demo.Demo;
+
 import java.io.IOException;
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 /**
- * 客户端 (TCP)
+ * 客户端
  */
-public class UDPClient {
+public class UDPClient extends Demo {
+
     public static void main(String[] args) throws IOException {
         /*
          * 向服务器端发送数据
@@ -32,7 +37,7 @@ public class UDPClient {
         socket.receive(packet2);
         // 3.读取数据
         String reply = new String(data2, 0, packet2.getLength());
-        System.out.println("我是客户端，服务器说：" + reply);
+        p("我是客户端，服务器说：" + reply);
         // 4.关闭资源
         socket.close();
 

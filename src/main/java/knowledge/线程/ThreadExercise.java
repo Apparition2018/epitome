@@ -19,8 +19,8 @@ public class ThreadExercise extends Demo {
             new Dec().start();
         }
     }
-    
-    static class Inc extends Thread {
+
+    private static class Inc extends Thread {
 
         @Override
         public void run() {
@@ -31,7 +31,7 @@ public class ThreadExercise extends Demo {
         }
     }
 
-    static class Dec extends Thread {
+    private static class Dec extends Thread {
 
         @Override
         public void run() {

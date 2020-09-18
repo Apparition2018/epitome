@@ -15,7 +15,7 @@ import java.net.Socket;
  * 3)通过输入流获取服务器响应的信息。
  * 4)关闭相应资源。
  */
-public class Client extends Demo {
+public class TCPClient extends Demo {
 
     public static void main(String[] args) {
         try {

@@ -1,5 +1,13 @@
-package knowledge.注解.imooc.actual.combat;
+package knowledge.注解;
 
+import l.demo.Demo;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -9,8 +17,12 @@ import java.lang.reflect.Method;
  * 1.有一张用户表，字段包括用户ID，用户名，昵称，年龄，性别，所在城市，邮箱，手机号
  * 2.方便地对每个字段或字段的组合条件进行检索，并打印出SQL
  * 3.使用方式要足够简单，见代码实例
+ *
+ * @author ljh
+ * created on 2020/9/18 18:01
  */
-public class ActualCombatCase {
+public class UserDefinedAnnotationExercise extends Demo {
+
     public static void main(String[] args) {
         // 查询id为10的用户
         Filter filter1 = new Filter();
@@ -29,14 +41,14 @@ public class ActualCombatCase {
         String sql2 = query(filter2);
         String sql3 = query(filter3);
 
-        System.out.println(sql1);
-        System.out.println(sql2);
-        System.out.println(sql3);
+        p(sql1);
+        p(sql2);
+        p(sql3);
 
         Filter2 filter4 = new Filter2();
         filter4.setAmount(10);
         filter4.setName("技术部");
-        System.out.println(query(filter4));
+        p(query(filter4));
     }
 
     public static String query(Object filter) {
@@ -44,8 +56,7 @@ public class ActualCombatCase {
         // 1.获取到class
         Class clazz = filter.getClass();
         // 2.获取到table的名字
-        boolean isExist = clazz.isAnnotationPresent(Table.class);
-        if (!isExist) {
+        if (!clazz.isAnnotationPresent(Table.class)) {
             return null;
         }
         Table table = (Table) clazz.getAnnotation(Table.class);
@@ -96,5 +107,54 @@ public class ActualCombatCase {
         }
         return sb.toString();
     }
+
+
+    @Table("user")
+    @Getter
+    @Setter
+    private static class Filter {
+        @Column("id")
+        private int id;
+        @Column("user_name")
+        private String userName;
+        @Column("nick_name")
+        private String nickName;
+        @Column("age")
+        private int age;
+        @Column("city")
+        private String city;
+        @Column("email")
+        private String email;
+        @Column("mobile")
+        private String mobile;
+    }
+
+    @Table("department")
+    @Getter
+    @Setter
+    private static class Filter2 {
+        @Column("id")
+        private int id;
+        @Column("name")
+        private String name;
+        @Column("leader")
+        private String leader;
+        @Column("amount")
+        private int amount;
+    }
+
+
+    @Target({ElementType.TYPE})
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface Table {
+        String value();
+    }
+
+    @Target({ElementType.FIELD})
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface Column {
+        String value();
+    }
+
 
 }

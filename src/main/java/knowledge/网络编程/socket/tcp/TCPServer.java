@@ -18,12 +18,13 @@ import java.net.SocketTimeoutException;
  * 4)通过输出流向客户端发送响应信息。
  * 5)关闭响应的资源。
  * <p>
- * https://www.cnblogs.com/yiwangzhibujian/p/7107785.html
- * https://blog.csdn.net/a78270528/article/details/80318571
- * http://www.runoob.com/java/net-serversocket-socket.html
- * http://www.runoob.com/java/net-multisoc.html
+ * Java Socket 编程基础及深入讲解：https://www.cnblogs.com/yiwangzhibujian/p/7107785.html
+ * Java 网络编程 之 socket 的用法与实现：https://blog.csdn.net/a78270528/article/details/80318571
+ * Java 实例 - Socket 实现多线程服务器程序：http://www.runoob.com/java/net-multisoc.html
+ * <p>
+ * 单工，半双工，全双工：https://blog.csdn.net/u012426327/article/details/77160503
  */
-public class Server extends Demo implements Runnable {
+public class TCPServer extends Demo implements Runnable {
 
     private ServerSocket serverSocket;
 
@@ -31,14 +32,14 @@ public class Server extends Demo implements Runnable {
 
     public static void main(String[] args) {
         try {
-            Thread t = new Thread(new Server(4444));
+            Thread t = new Thread(new TCPServer(4444));
             t.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public Server(int port) throws IOException {
+    public TCPServer(int port) throws IOException {
         // ServerSocket([int port[, int backlog[, InetAddress bindAddr]]])
         // 使用指定的端口、侦听 backlog 和要绑定到的本地 IP 地址创建服务器
         serverSocket = new ServerSocket(port);

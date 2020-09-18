@@ -30,7 +30,7 @@ public class ReentrantReadWriteLockDemo2 extends Demo {
         }
     }
 
-    static class Data {
+    private static class Data {
         // 共享数据
         private int data;
         // 可重入的读写锁

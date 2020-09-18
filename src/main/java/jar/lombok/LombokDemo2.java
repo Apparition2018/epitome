@@ -37,7 +37,7 @@ public class LombokDemo2 extends Demo {
     @Getter
     @Setter
     @Accessors(fluent = true, chain = true)
-    static class User5 {
+    private static class User5 {
         private Integer id;
         private String name;
         private String password;
@@ -58,7 +58,7 @@ public class LombokDemo2 extends Demo {
     @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
     @AllArgsConstructor
     @ToString
-    static class User6 {
+    private static class User6 {
         private Integer id;
         private String name;
         private String password;
@@ -77,7 +77,7 @@ public class LombokDemo2 extends Demo {
      * 相当于 Getter, FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE), AllArgsConstructor, ToString, EqualsAndHashCode
      */
     @Value
-    static class User7 {
+    private static class User7 {
         Integer id;
         String name;
         String password;
@@ -105,7 +105,7 @@ public class LombokDemo2 extends Demo {
      */
     @ToString
     @Builder(toBuilder = true)
-    static class User8 {
+    private static class User8 {
         private Integer id;
         private String name;
         private String password;

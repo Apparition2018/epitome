@@ -48,7 +48,7 @@ public class ReentrantLockDemo extends Demo {
 
     }
 
-    static class MyThread extends Thread {
+    private static class MyThread extends Thread {
         private ReentrantLockDemo rlDemo;
 
         MyThread(ReentrantLockDemo rlDemo, String name) {

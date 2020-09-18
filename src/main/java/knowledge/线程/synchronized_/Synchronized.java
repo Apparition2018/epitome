@@ -32,7 +32,7 @@ public class Synchronized extends Demo {
 
     }
 
-    static class Table {
+    private static class Table {
 
         private int beans = 20;
 

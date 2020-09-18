@@ -31,7 +31,7 @@ public class RunnableDemo extends Demo {
         t3.start();
     }
 
-    static class TicketRunnable implements Runnable {
+    private static class TicketRunnable implements Runnable {
 
         private int ticket = 100;
 
