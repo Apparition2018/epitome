@@ -1,7 +1,5 @@
 package jar.fasterxml.jackson;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -9,10 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import l.demo.Demo;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import l.demo.Person.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -21,7 +16,7 @@ import java.util.Date;
 
 /**
  * https://www.cnblogs.com/yuanmo396022993/p/9118308.html
- * 
+ * <p>
  * spring-boot 中 spring.jackson.date-format 失效及解决办法：
  * https://my.oschina.net/u/3681868/blog/3075150
  */

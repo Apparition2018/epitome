@@ -1,6 +1,7 @@
 package jar.apache.commons.beanutils;
 
 import l.demo.Demo;
+import l.demo.Person.Student;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
@@ -49,7 +50,7 @@ public class BeanUtilsDemo extends Demo {
         s.setAge(18);
 
         Map<String, String> map = BeanUtils.describe(s);
-        p(map); // {no=null, score=null, name=John, birth=null, id=1, class=class l.demo.Demo$Student, age=18, home=null}
+        p(map); // {no=null, otherInfo=null, score=null, password=null, gender=null, name=John, birth=null, id=1, class=class l.demo.Person$Student, age=18, home=null}
     }
 
     /**
@@ -76,7 +77,7 @@ public class BeanUtilsDemo extends Demo {
     public void setProperty() throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
 
         // 1.得到 JavaBean 的一个字节码对象
-        Class clazz = Class.forName("l.demo.Demo$Student");
+        Class clazz = Class.forName("l.demo.Person$Student");
 
         // 2.生成该字节码的一个对象
         Object obj = clazz.newInstance();
@@ -98,7 +99,7 @@ public class BeanUtilsDemo extends Demo {
      * <p>
      * https://www.cnblogs.com/vmax-tam/p/4159985.html
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "unused"})
     public static <T> T requestToBean(HttpServletRequest request, Class<T> clazz) {
 
         // 创建 JavaBean 对象

@@ -1,12 +1,13 @@
 package knowledge.注解;
 
 import l.demo.Demo;
+import lombok.Getter;
+import lombok.Setter;
+import org.junit.Test;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * 用户自定义注解
@@ -19,26 +20,17 @@ import java.lang.reflect.Field;
  * Annotation 是附加在代码中的一些元信息，用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。
  * Annotation 不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。
  * <p>
- * 4种元注解：
- * Documented   注解是否包含在 JavaDoc 中
- * Retention    什么时候使用注解
- * Target       注解用于什么地方
- * Inherited    是否允许子类继承该注解
- * <p>
  * https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html
  */
 public class UserDefinedAnnotation extends Demo {
 
-    public static void main(String[] args) {
-        getFruitInfo(Apple.class);
-    }
-
-    private static void getFruitInfo(Class<?> clazz) {
+    @Test
+    public void testTargetField() {
         String strFruitName = "水果名称：";
         String strFruitColor = "水果颜色：";
         String strFruitProvider = "供应商信息：";
 
-        Field[] fields = clazz.getDeclaredFields();
+        Field[] fields = Apple.class.getDeclaredFields();
 
         for (Field field : fields) {
             /*
@@ -65,9 +57,54 @@ public class UserDefinedAnnotation extends Demo {
         }
     }
 
+    @Test
+    public void testTargetTypeAndMethod() {
+        try {
+            // 1.使用类加载器加载类
+            @SuppressWarnings(value = {"rawtypes"})
+            Class clazz = Class.forName("l.demo.Animal$Cat");
+            // 2.找到类上面的注解
+            // boolean	    isAnnotationPresent(Class<? extends Annotation> annotationClass)
+            // 如果指定类型的注释存在于此元素上，则返回 true，否则返回 false
+            if (clazz.isAnnotationPresent(Description.class)) {
+                // 3.拿到注解实例
+                //<A extends Annotation> A	    getAnnotation(Class<A> annotationClass)
+                // 如果存在该元素的指定类型的注释，则返回这些注释，否则返回 null
+                Description description = (Description) clazz.getAnnotation(Description.class);
+                p(description.desc());
+            }
+
+            // 4.找到方法上的注解
+            Method[] methods = clazz.getMethods();
+            for (Method method : methods) {
+                if (method.isAnnotationPresent(Description.class)) {
+                    Description description = method.getAnnotation(Description.class);
+                    p(description.desc());
+                }
+            }
+
+            // 另外一种解析方法
+            for (Method method : methods) {
+                // Annotation[]	    getAnnotations()
+                // 返回此元素上存在的所有注释
+                Annotation[] annotations = method.getAnnotations();
+                for (Annotation annotation : annotations) {
+                    if (annotation instanceof Description) {
+                        p(((Description) annotation).desc());
+                    }
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 使用自定义注解
      */
+    @Getter
+    @Setter
+    @Description(desc = "Apple")
     static class Apple {
         @FruitName("Apple")
         private String appleName;
@@ -78,30 +115,8 @@ public class UserDefinedAnnotation extends Demo {
         @FruitProvider(id = 1, name = "陕西红富士集团", address = "陕西省西安市延安路89号红富士大厦")
         private String appleProvider;
 
-        public String getAppleName() {
-            return appleName;
-        }
-
-        public void setAppleName(String appleName) {
-            this.appleName = appleName;
-        }
-
-        public String getAppleColor() {
-            return appleColor;
-        }
-
-        public void setAppleColor(String appleColor) {
-            this.appleColor = appleColor;
-        }
-
-        public String getAppleProvider() {
-            return appleProvider;
-        }
-
-        public void setAppleProvider(String appleProvider) {
-            this.appleProvider = appleProvider;
-        }
-
+        @Description(desc = "displayName")
+        @SuppressWarnings("unused")
         public void displayName() {
             p("水果名称是：苹果");
         }
@@ -109,10 +124,26 @@ public class UserDefinedAnnotation extends Demo {
 
     /**
      * 水果名称注解
+     * <p>
+     * 使用 @interface 关键字定义注解
+     * 注解类可以没有成员，没有成员的注解成为标识注解
+     * <p>
+     * 4种元注解：
+     * Documented   注解是否包含在 JavaDoc 中
+     * Retention    生命周期 (SOURCE / CLASS / RUNTIME)，什么时候使用注解
+     * Target       作用域，注解用于什么地方
+     * Inherited    是否允许子类继承该注解 (子类会继承父类的类注解，不会继承父类的方法注解)
+     * <p>
      */
     @Target(ElementType.FIELD)
     @Retention(RetentionPolicy.RUNTIME)
     @interface FruitName {
+        /**
+         * 成员以无参无异常方式声明
+         * 合法的成员类型包括 String，Class，Annotation，Enumeration，原始类型
+         * 如果注解只有一个成员，则成员名必须取名为value()，在使用时可以忽略成员名和赋值号(=)
+         * 可以使用 default 为成员指定一个默认值
+         */
         String value() default "";
     }
 
@@ -145,5 +176,14 @@ public class UserDefinedAnnotation extends Demo {
 
         // 供应商地址
         String address() default "";
+    }
+
+    @Target({ElementType.METHOD, ElementType.TYPE})
+    @Retention(RetentionPolicy.RUNTIME)
+    @Inherited
+    @Documented
+    public @interface Description {
+
+        String desc();
     }
 }

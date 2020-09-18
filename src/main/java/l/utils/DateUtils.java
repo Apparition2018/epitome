@@ -3,7 +3,7 @@ package l.utils;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateUtils {
+public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     // 获取某年第一天的日期
     public static Date getFirstDayOfYear(int year) {

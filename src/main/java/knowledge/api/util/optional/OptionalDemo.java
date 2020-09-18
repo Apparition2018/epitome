@@ -15,7 +15,7 @@ import java.util.Optional;
 public class OptionalDemo extends Demo {
 
     @Test
-    public void test1() {
+    public void testOptional1() {
         // of()         创建 Optional 实例，不接受 null
         // ofNullable() 创建 Optional 实例，接受 null
         // empty()      创建空的 Optional 实例
@@ -78,7 +78,7 @@ public class OptionalDemo extends Demo {
     }
 
     @Test
-    public void test2() {
+    public void testOptional2() {
 
         Person person = new Person();
         Address address = new Address();

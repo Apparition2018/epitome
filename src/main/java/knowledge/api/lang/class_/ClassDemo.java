@@ -1,9 +1,8 @@
 package knowledge.api.lang.class_;
 
+import l.demo.Animal;
+import l.demo.Animal.Chicken;
 import l.demo.Demo;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -53,7 +52,7 @@ public class ClassDemo extends Demo {
         // Class.forName("Foo", true, this.getClass().getClassLoader())
         // true 表示初始化，执行 static 静态块
 
-        Class.forName("l.demo.Demo$Animal", true, this.getClass().getClassLoader());
+        Class.forName("l.demo.Animal", true, this.getClass().getClassLoader());
         // The is a Animal.
     }
 
@@ -68,12 +67,12 @@ public class ClassDemo extends Demo {
         // getDeclaredFields() 获取某个类的所有字段，不包括父类
         Field[] fields1 = Chicken.class.getDeclaredFields();
         p(fields1);
-        // [public int l.demo.Demo$Chicken.age, private int l.demo.Demo$Chicken.wing]
+        // [public int l.demo.Animal$Chicken.age, private int l.demo.Animal$Chicken.wing]
         
         // getFields() 获取某个类的 public 字段，包括父类
         Field[] fields2 = Chicken.class.getFields();
         p(fields2);
-        // [public int l.demo.Demo$Chicken.age, public java.lang.String l.demo.Demo$Animal.name]
+        // [public int l.demo.Animal$Chicken.age, public java.lang.String l.demo.Animal.name]
     }
 
     /**

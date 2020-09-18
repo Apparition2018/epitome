@@ -1,7 +1,12 @@
 package other.suggestions;
 
 import l.demo.Demo;
-import lombok.*;
+import l.demo.Person;
+import l.demo.Person.Student;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.Test;
 
 import javax.script.*;
@@ -1487,7 +1492,7 @@ public class Suggestions extends Demo {
             p("恭喜你，您的车票打八折！");
         }
     }
-    
+
     static class People implements Staff, Passenger {
         @Override
         public int getSalary() {

@@ -1,14 +1,12 @@
 package knowledge.api.io.stream;
 
 import l.demo.Demo;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import l.demo.Person;
 import org.junit.Test;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * ByteStream

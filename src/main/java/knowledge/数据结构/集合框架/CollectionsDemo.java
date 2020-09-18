@@ -1,5 +1,6 @@
 package knowledge.数据结构.集合框架;
 
+import l.demo.Animal.Chicken;
 import l.demo.Demo;
 import org.junit.Test;
 
@@ -120,7 +121,7 @@ public class CollectionsDemo extends Demo {
 
     @SuppressWarnings("unchecked")
     private void addCat(List list) {
-        list.add(new Cat());
+        list.add(new Chicken());
     }
 
     @Test

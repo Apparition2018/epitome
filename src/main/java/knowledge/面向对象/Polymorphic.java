@@ -1,5 +1,7 @@
 package knowledge.面向对象;
 
+import l.demo.Animal;
+import l.demo.Animal.Cat;
 import l.demo.Demo;
 
 /**

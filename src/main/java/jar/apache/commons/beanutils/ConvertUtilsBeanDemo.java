@@ -1,6 +1,7 @@
 package jar.apache.commons.beanutils;
 
 import l.demo.Demo;
+import l.demo.Person;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.beanutils.Converter;
@@ -28,7 +29,7 @@ public class ConvertUtilsBeanDemo extends Demo {
         cub.register(new Converter() {
             @Override
             @SuppressWarnings("unchecked")
-            public <T> T  convert(Class<T> type, Object value) {
+            public <T> T convert(Class<T> type, Object value) {
                 // 为每个 String 类型的属性加上前缀
                 return (T) ("prefix-" + value);
             }

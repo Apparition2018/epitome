@@ -1,8 +1,7 @@
 package knowledge.api.util.function;
 
 import l.demo.Demo;
-import lombok.Getter;
-import lombok.Setter;
+import l.demo.Person.Student;
 import org.junit.Test;
 
 import java.util.function.Supplier;
