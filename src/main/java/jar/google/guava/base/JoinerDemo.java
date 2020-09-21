@@ -25,7 +25,7 @@ public class JoinerDemo {
      * null 值处理
      */
     @Test
-    public void _null() {
+    public void null_() {
         String join = Joiner.on("-")
                 // Joiner	skipNulls()
                 // 用于过滤集合中为null的元素，然后返回一个新的Joiner对象实例

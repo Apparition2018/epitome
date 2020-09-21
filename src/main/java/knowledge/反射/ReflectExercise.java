@@ -1,45 +1,53 @@
 package knowledge.反射;
 
+import l.demo.Demo;
+import l.demo.Person;
+import l.demo.Person.Home;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * https://www.cnblogs.com/dreammyle/p/5610906.html
  */
-public class ReflectExercise {
+public class ReflectExercise extends Demo {
 
-    /**
-     * JavaBean <=> Map
-     */
     @Test
-    public void test() {
-
-        Letter letter = new Letter();
-
-        letter.setA("a1");
-        letter.setB("b2");
-        letter.setC("c3");
-
-        try {
-            Map<String, Object> map = bean2Map(letter);
-
-            System.out.println(map);
-
-            letter = (Letter) map2Bean(map, letter.getClass());
-            letter.setC("c3*");
-
-            System.out.println(letter.getC());
-
-        } catch (IllegalAccessException | InstantiationException e) {
-            e.printStackTrace();
-        }
-
+    public void test() throws IllegalAccessException, InstantiationException {
+        /* bean2Map */
+        Person person = new Person(1, "张三", 18, "男", Collections.singletonList("程序员"), new Home("广东中山", "123456"));
+        Map<String, Object> map = bean2Map(person);
+        p(map); // {otherInfo=[程序员], serialVersionUID=1, gender=男, name=张三, id=1, age=18, home=Person.Home(address=广东中山, tel=123456)}
+        
+        /* map2Bean */
+        p(map2Bean(map, Person.class)); // Person{id=1, name='张三', age=18, gender='男', otherInfo=[程序员], home=Home(address='广东中山', tel='123456')}
     }
 
+    /**
+     * JavaBean → Map
+     */
+    private Map<String, Object> bean2Map(Object obj) throws IllegalAccessException {
+
+        if (obj == null) {
+            return null;
+        }
+
+        Map<String, Object> map = new HashMap<>();
+
+        Field[] fields = obj.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            map.put(field.getName(), field.get(obj));
+        }
+
+        return map;
+
+    }
+    
     /**
      * Map → JavaBean
      */
@@ -63,27 +71,6 @@ public class ReflectExercise {
         }
 
         return obj;
-
-    }
-
-    /**
-     * JavaBean → Map
-     */
-    private Map<String, Object> bean2Map(Object obj) throws IllegalAccessException {
-
-        if (obj == null) {
-            return null;
-        }
-
-        Map<String, Object> map = new HashMap<>();
-
-        Field[] fields = obj.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            map.put(field.getName(), field.get(obj));
-        }
-
-        return map;
 
     }
 

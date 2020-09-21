@@ -15,7 +15,7 @@ import java.util.List;
 public class ListsDemo {
 
     @Test
-    public void _new() {
+    public void new_() {
         List<String> list = Lists.newArrayList("1", "2", "3");
         List<String> list2 = Lists.newArrayList(list);
         System.out.println(list2);

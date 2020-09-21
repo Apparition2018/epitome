@@ -18,7 +18,7 @@ class CarFactory {
     }
 }
 
-enum CarFactory1 {
+enum CarEnumFactory1 {
     FORD_CAR, BUICK_CAR;
 
     public Car create() {
@@ -34,7 +34,7 @@ enum CarFactory1 {
 
 }
 
-enum CarFactory2 {
+enum CarEnumFactory2 {
 
     FORD_CAR {
         public Car create() {

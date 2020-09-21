@@ -1280,10 +1280,9 @@ public class Suggestions extends Demo {
     @Test
     public void test088() {
         // 非静态方法实现
-        p(CarFactory1.BUICK_CAR.create());
+        p(CarEnumFactory1.BUICK_CAR.create());
         // 抽象方法实现
-        p(CarFactory2.BUICK_CAR.create());
-
+        p(CarEnumFactory2.BUICK_CAR.create());
         // 一般工厂模式
         p(CarFactory.createCar(Car.class)); // InstantiationException
     }

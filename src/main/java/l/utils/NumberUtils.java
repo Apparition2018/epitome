@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 public class NumberUtils {
 
     // 格式化数字 #,###
-    public static String formatTosepara(float data) {
+    public static String formatToSeparate(float data) {
         DecimalFormat df = new DecimalFormat("#,###");
         return df.format(data);
     }

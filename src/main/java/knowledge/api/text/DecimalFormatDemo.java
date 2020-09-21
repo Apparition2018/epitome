@@ -25,6 +25,8 @@ import java.text.ParseException;
  * ¤ (\u00A4)	前缀或后缀     否	       货币记号，由货币符号替换。如果两个同时出现，则用国际货币符号替换。如果出现在某个模式中，则使用货币小数分隔符，而不使用小数分隔符。
  * '	        前缀或后缀     否	       用于在前缀或或后缀中为特殊字符加引号，例如 "'#'#" 将 123 格式化为 "#123"。要创建单引号本身，请连续使用两个单引号："# o''clock"。
  * <p>
+ * void	        setRoundingMode(RoundingMode roundingMode)      设置在此 DecimalFormat 中使用的 RoundingMode
+ * <p>
  * boolean	    isParseBigDecimal()                             返回 parse(java.lang.String, java.text.ParsePosition) 方法是否返回 BigDecimal
  * void	        setParseBigDecimal(boolean newValue)            设置 parse(java.lang.String, java.text.ParsePosition) 方法是否返回 BigDecimal
  * <p>

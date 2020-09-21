@@ -1,24 +1,24 @@
 package jar.apache.commons.lang3;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.EnumUtils;
 import org.junit.Test;
 
 /**
  * EnumUtils
- * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/EnumUtils.html
  */
-public class EnumUtilsDemo {
+public class EnumUtilsDemo extends Demo {
 
     @Test
     public void enum_() {
         // static <E extends Enum<E>> E	            getEnum(Class<E> enumClass, String enumName)
         // static <E extends Enum<E>> E	            getEnumIgnoreCase(Class<E> enumClass, String enumName)
-        p(EnumUtils.getEnum(ImagesTypeEnum.class, "JPG")); // JPG
+        p(EnumUtils.getEnum(ImagesTypeEnum.class, "JPG"));  // JPG
         // static <E extends Enum<E>> List<E>	    getEnumList(Class<E> enumClass)
-        p(EnumUtils.getEnumList(ImagesTypeEnum.class)); // [JPG, JPEG, PNG, BPM, GIF]
+        p(EnumUtils.getEnumList(ImagesTypeEnum.class));     // [JPG, JPEG, PNG, BPM, GIF]
         // static <E extends Enum<E>> Map<String,E>	getEnumMap(Class<E> enumClass)
-        p(EnumUtils.getEnumMap(ImagesTypeEnum.class));  // {JPG=JPG, JPEG=JPEG, PNG=PNG, BPM=BPM, GIF=GIF}
+        p(EnumUtils.getEnumMap(ImagesTypeEnum.class));      // {JPG=JPG, JPEG=JPEG, PNG=PNG, BPM=BPM, GIF=GIF}
 
         // static <E extends Enum<E>> boolean	    isValidEnum(Class<E> enumClass, String enumName)
         // static <E extends Enum<E>> boolean	    isValidEnumIgnoreCase(Class<E> enumClass, String enumName)
@@ -38,14 +38,8 @@ public class EnumUtilsDemo {
 
     }
 
-    enum ImagesTypeEnum {
+    private enum ImagesTypeEnum {
         JPG, JPEG, PNG, BPM, GIF
     }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
-
 
 }

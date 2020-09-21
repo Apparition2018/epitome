@@ -23,7 +23,7 @@ public class LoadClass {
      * 静态加载
      */
     @Test
-    public void _new() {
+    public void new_() {
         new SonClass();
         // GrandClass init
         // FatherClass init

@@ -1,5 +1,6 @@
 package knowledge.api.math;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -11,113 +12,60 @@ import java.math.BigDecimal;
  * 如果为零或正数，则标度是小数点后的位数。
  * 如果为负数，则将该数的非标度值乘以 10 的负 scale 次幂。
  * 因此，BigDecimal 表示的数值是 (unscaledValue × 10-scale)。
+ * https://jdk6.net/math/BigDecimal.html
  * <p>
- * 算术运算结果的首选标度：
- * 加	max(addend.scale(), augend.scale())
- * 减	max(minuend.scale(), subtrahend.scale())
- * 乘	multiplier.scale() + multiplicand.scale()
- * 除	dividend.scale() - divisor.scale()
+ * BigDecimal	add(BigDecimal augend)              this + augend
+ * BigDecimal	subtract(BigDecimal subtrahend)     this - subtrahend
+ * BigDecimal	multiply(BigDecimal multiplicand)   this × multiplicand
+ * BigDecimal	divide(BigDecimal divisor, ...)     this / divisor
  * <p>
- * BigInteger	toBigInteger()                  BigDecimal → BigInteger
- * String	    toEngineeringString()           返回此 BigDecimal 的字符串表示形式，需要指数时，则使用工程计数法
- * String	    toPlainString()                 返回不带指数字段的此 BigDecimal 的字符串表示形式
+ * BigInteger	toBigInteger()                      BigDecimal → BigInteger
+ * String	    toEngineeringString()               返回此 BigDecimal 的字符串表示形式，需要指数时，则使用工程计数法
+ * String	    toPlainString()                     返回不带指数字段的此 BigDecimal 的字符串表示形式
  */
-public class BigDecimalDemo {
+public class BigDecimalDemo extends Demo {
 
     /**
-     * BigDecimal(BigInteger val)   BigInteger → BigDecimal
-     * BigDecimal(double val)       double → BigDecimal，不建议使用
-     * BigDecimal(int val)          int → BigDecimal
-     * BigDecimal(long val)         long → BigDecimal
-     * BigDecimal(String val)       String → BigDecimal
+     * 参考 RoundingModeDemo
      */
     @Test
-    public void BigDecimal() {
-        BigDecimal bd1 = new BigDecimal(2.3);
-        BigDecimal bd2 = new BigDecimal("2.3");
-        p(bd1); // 2.29999999999999982236431605997495353221893310546875
-        p(bd2); // 2.3
+    public void constant() {
+        p(BigDecimal.ROUND_UP);             // 舍入远离零的舍入模式
+        p(BigDecimal.ROUND_DOWN);           // 接近零的舍入模式
+        p(BigDecimal.ROUND_CEILING);        // 接近正无穷大的舍入模式
+        p(BigDecimal.ROUND_FLOOR);          // 接近负无穷大的舍入模式
+        p(BigDecimal.ROUND_HALF_UP);        // 向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则向上舍入的舍入模式
+        p(BigDecimal.ROUND_HALF_DOWN);      // 向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则向下舍入的舍入模式
+        p(BigDecimal.ROUND_HALF_EVEN);      // 向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则向相邻的偶数舍入
+        p(BigDecimal.ROUND_UNNECESSARY);    // 断言请求的操作具有精确的结果，因此不需要舍入
     }
 
-    /**
-     * BigDecimal	divide(BigDecimal divisor[, int scale, RoundingMode roundingMode])
-     * 返回一个 BigDecimal，其值为 (this / divisor)，其标度为指定标度
-     */
     @Test
-    public void divide() {
-        BigDecimal bd1 = new BigDecimal("100");
-        BigDecimal bd2 = new BigDecimal("3");
-        p(bd1.divide(bd2, 2, BigDecimal.ROUND_HALF_UP)); // 33.33
+    public void testBigDecimal() {
+        // BigDecimal(BigInteger val)               BigInteger → BigDecimal
+        // BigDecimal(double/int/long/String val)   XXX → BigDecimal
+        p(new BigDecimal(12.34));   // 12.339999999999999857891452847979962825775146484375；unpredictable，不建议使用
+        p(new BigDecimal("12.34")); // 12.34
+        p(new BigDecimal("12.340"));// 12.340
+        // BigDecimal	stripTrailingZeros()    返回数值上等于此小数，但从该表示形式移除所有尾部零的 BigDecimal
+        p(new BigDecimal("12.340").stripTrailingZeros());   // 12.34
+        
+        // BigDecimal	movePointLeft(int n)    返回一个 BigDecimal，它等效于将该值的小数点向左移动 n 位
+        // BigDecimal	movePointRight(int n)   返回一个 BigDecimal，它等效于将该值的小数点向右移动 n 位
+        p(new BigDecimal("12.34").movePointLeft(1));        // 1.234
+        p(new BigDecimal("12.34").movePointRight(1));       // 123.4
+        
+        // int	        precision()             返回此 BigDecimal 的精度
+        p(new BigDecimal("12.34").precision());             // 4
+        p(new BigDecimal("12340").precision());             // 5
+
+        // int	        scale()                 返回此 BigDecimal 的标度
+        p(new BigDecimal("12.34").scale());                 // 2
+        p(new BigDecimal("12340").scale());                 // 0
+        
+        // BigDecimal	ulp()                   返回此 BigDecimal 的 ulp（最后一位的单位）的大小
+        p(new BigDecimal("12.34").ulp());                   // 0.01
+        p(new BigDecimal("12340").ulp());                   // 1
     }
 
-    /**
-     * BigDecimal	movePointLeft(int n)    返回一个 BigDecimal，它等效于将该值的小数点向左移动 n 位
-     * BigDecimal	movePointRight(int n)   返回一个 BigDecimal，它等效于将该值的小数点向右移动 n 位
-     */
-    @Test
-    public void movePoint() {
-        BigDecimal bd1 = new BigDecimal("12.3456");
-        p(bd1.movePointLeft(2));    // 0.123456
-        p(bd1.movePointRight(2));   // 1234.56
-    }
-
-    /**
-     * int	        precision()             返回此 BigDecimal 的精度
-     */
-    @Test
-    public void precision() {
-        BigDecimal bd1 = new BigDecimal("12.3456");
-        BigDecimal bd2 = new BigDecimal("123");
-        p(bd1.precision()); // 6
-        p(bd2.precision()); // 3
-    }
-
-    /**
-     * int	        scale()                 返回此 BigDecimal 的标度
-     */
-    @Test
-    public void scale() {
-        BigDecimal bd1 = new BigDecimal("12.3456");
-        BigDecimal bd2 = new BigDecimal("123");
-        p(bd1.scale()); // 4
-        p(bd2.scale()); // 0
-    }
-
-    /**
-     * BigDecimal	setScale(int newScale, RoundingMode roundingMode)
-     * 返回 BigDecimal，其标度为指定值，其非标度值通过此 BigDecimal 的非标度值乘以或除以十的适当次幂来确定，以维护其总值
-     */
-    @Test
-    public void setScale() {
-        BigDecimal bd = new BigDecimal("12.3456");
-        p(bd.setScale(3, BigDecimal.ROUND_HALF_UP)); // 12.346
-    }
-
-    /**
-     * BigDecimal	stripTrailingZeros()
-     * 返回数值上等于此小数，但从该表示形式移除所有尾部零的 BigDecimal
-     */
-    @Test
-    public void stripTrailingZeros() {
-        BigDecimal bd = new BigDecimal("12.340000");
-        p(bd); // 12.340000
-        p(bd.stripTrailingZeros()); // 12.34
-    }
-
-    /**
-     * BigDecimal	ulp()
-     * 返回此 BigDecimal 的 ulp（最后一位的单位）的大小
-     */
-    @Test
-    public void ulp() {
-        BigDecimal bd1 = new BigDecimal("12.3456");
-        BigDecimal bd2 = new BigDecimal("123");
-        p(bd1.ulp()); // 0.0001
-        p(bd2.ulp()); // 1
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
 }

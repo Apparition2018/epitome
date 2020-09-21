@@ -8,5 +8,7 @@ package knowledge.日期和时间.time.temporal;
  * ChronoField      NanoOfSecond NanoOfDay MicroOfSecond MicroOfDay MilliOfSecond MilliOfDay SecondOfMinute SecondOfDay MinuteOfHour MinuteOfDay HourOfAmPm ClockHourOfAmPm HourOfDay ClockHourOfDay AmPmOfDay DayOfWeek AlignedDayOfWeekInMonth AlignedDayOfWeekInYear DayOfMonth DayOfYear EpochDay AlignedWeekOfMonth AlignedWeekOfYear MonthOfYear ProlepticMonth YearOfEra Year Era InstantSeconds OffsetSeconds
  */
 public class TemporalEnum {
+    
+    
 
 }
