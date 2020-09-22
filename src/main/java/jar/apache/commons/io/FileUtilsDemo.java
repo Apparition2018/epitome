@@ -20,12 +20,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class FileUtilsDemo extends Demo {
 
-    private final static String dirPath = "src/main/java/jar/apache/commons/io/";
-
     // 写
     @Test
     public void write() throws IOException {
-        File file = new File(dirPath + "FileUtils.txt");
+        File file = new File(DEMO_PATH + "demo");
 
         // write()
         FileUtils.write(file, "静夜思\n", UTF_8, false);
@@ -43,7 +41,7 @@ public class FileUtilsDemo extends Demo {
     // 读
     @Test
     public void read() throws IOException {
-        File file = new File(dirPath + "FileUtils.txt");
+        File file = new File(DEMO_PATH + "demo");
 
         // readFileToString()
         p(FileUtils.readFileToString(file, UTF_8));
@@ -56,11 +54,10 @@ public class FileUtilsDemo extends Demo {
     // 删除
     @Test
     public void delete() throws IOException {
-        File file1 = new File(dirPath + "a/b/c");
-        File file2 = new File(dirPath + "a");
+        File file1 = new File(DEMO_PATH + "a/b/c");
+        File file2 = new File(DEMO_PATH + "a/b");
 
-        boolean b = file1.mkdirs();
-        if (b) {
+        if (file1.mkdirs()) {
             // deleteDirectory()
             FileUtils.deleteDirectory(file2);
             // deleteQuietly
@@ -71,8 +68,8 @@ public class FileUtilsDemo extends Demo {
     // 移动
     @Test
     public void move() throws IOException {
-        File file1 = new File(dirPath + "FileUtils.txt");
-        File file2 = new File(dirPath + "a/FileUtils.txt");
+        File file1 = new File(DEMO_PATH + "demo");
+        File file2 = new File(DEMO_PATH + "a/demo");
 
         // moveFile()
         FileUtils.moveFile(file1, file2);
@@ -87,14 +84,11 @@ public class FileUtilsDemo extends Demo {
     // 复制
     @Test
     public void copy() throws IOException, InterruptedException {
-        File file1 = new File(dirPath + "FileUtils.txt");
-        File file2 = new File(dirPath + "a");
+        File file1 = new File(DEMO_PATH + "demo");
+        File file2 = new File(DEMO_PATH + "a");
 
         // copyFileToDirectory()
         FileUtils.copyFileToDirectory(file1, file2);
-
-        TimeUnit.SECONDS.sleep(3);
-        FileUtils.deleteQuietly(file2);
 
         // 更多方法
         // copyDirectoryToDirectory()
@@ -108,8 +102,8 @@ public class FileUtilsDemo extends Demo {
     // 其它
     @Test
     public void other() throws IOException {
-        File file1 = new File(dirPath);
-        File file2 = new File(dirPath + "FileUtils.txt");
+        File file1 = new File(DEMO_PATH);
+        File file2 = new File(DEMO_PATH + "demo");
 
         // directoryContains()
         // 判断是否包含文件或者文件夹
@@ -117,8 +111,8 @@ public class FileUtilsDemo extends Demo {
 
         // getTempDirectoryPath(), getUserDirectoryPath()
         // 获得临时目录和用户目录
-        p(FileUtils.getTempDirectoryPath());   // C:\Users\234607\AppData\Local\Temp\
-        p(FileUtils.getUserDirectoryPath());   // C:\Users\234607
+        p(FileUtils.getTempDirectoryPath());   // C:\Users\NL-PC001\AppData\Local\Temp\
+        p(FileUtils.getUserDirectoryPath());   // C:\Users\NL-PC001
 
         // openOutputStream()
         // 打开流
@@ -129,13 +123,13 @@ public class FileUtilsDemo extends Demo {
         // sizeOf(), sizeOfDirectory()
         // 文件/文件夹大小
         p(FileUtils.sizeOf(file2));            // 100
-        p(FileUtils.sizeOfDirectory(file1));   // 15833
+        p(FileUtils.sizeOfDirectory(file1));   // 1484
 
         // listFiles()
         // 在给定目录(或其子目录)中查找与扩展名数组匹配的文件
         Collection<File> coll = FileUtils.listFiles(file1, null, true);
         p(coll);
-        // [src\main\java\jar\apache\commons\io\FilenameUtilsDemo.java, src\main\java\jar\apache\commons\io\FileUtils.txt, src\main\java\jar\apache\commons\io\FileUtilsDemo.java, src\main\java\jar\apache\commons\io\IOUtils.txt, src\main\java\jar\apache\commons\io\IOUtilsDemo.java, src\main\java\jar\apache\commons\io\write.txt, src\main\java\jar\apache\commons\io\writeLines.txt]
+        // [src\main\resources\demo\a.zip, src\main\resources\demo\demo, src\main\resources\demo\demo.zip, src\main\resources\demo\Input, src\main\resources\demo\io.dat, src\main\resources\demo\key, src\main\resources\demo\Output, src\main\resources\demo\person.obj, src\main\resources\demo\QRCode.png]
     }
 
 }

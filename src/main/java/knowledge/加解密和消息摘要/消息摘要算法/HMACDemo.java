@@ -1,5 +1,6 @@
 package knowledge.加解密和消息摘要.消息摘要算法;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import javax.crypto.KeyGenerator;
@@ -41,7 +42,13 @@ import java.util.List;
  * https://www.cnblogs.com/fishou/p/4159092.html
  * https://www.cnblogs.com/oumyye/p/4593592.html
  */
-public class HMACDemo {
+public class HMACDemo extends Demo {
+
+    @Test
+    public void testHMAC() {
+        String inputStr = "明文";
+        p(getResult1(inputStr).equals(getResult2(inputStr)));
+    }
 
     /**
      * MAC 有多种算法：
@@ -56,8 +63,6 @@ public class HMACDemo {
      * HmacSHA512
      */
     private static final String KEY_MAC = "HmacMD5";
-
-    public static final String dirPath = System.getProperty("user.dir") + "/src/main/java/knowledge/加解密和消息摘要算法/消息摘要算法/";
 
     /**
      * 初始化 HMAC 密钥
@@ -91,7 +96,7 @@ public class HMACDemo {
     }
 
     private String getResult1(String inputStr) {
-        Path keyFilePath = Paths.get(dirPath + "key");
+        Path keyFilePath = Paths.get(DEMO_PATH + "key");
         String result = null;
         try {
             byte[] inputData = inputStr.getBytes();
@@ -107,7 +112,7 @@ public class HMACDemo {
     }
 
     private String getResult2(String inputStr) {
-        Path keyFilePath = Paths.get(dirPath + "key");
+        Path keyFilePath = Paths.get(DEMO_PATH + "key");
         List<String> keyList;
         String result = null;
         try {
@@ -120,12 +125,4 @@ public class HMACDemo {
         }
         return result;
     }
-
-
-    @Test
-    public void test() {
-        String inputStr = "明文";
-        System.out.println(getResult1(inputStr).equals(getResult2(inputStr)));
-    }
-
 }

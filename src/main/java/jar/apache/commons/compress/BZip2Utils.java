@@ -1,5 +1,6 @@
 package jar.apache.commons.compress;
 
+import l.demo.Demo;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
 import org.junit.Test;
@@ -10,21 +11,19 @@ import java.io.*;
  * BZip2 文件压缩/解压工具
  * http://snowolf.iteye.com/blog/644591
  */
-public class BZip2Utils {
+public class BZip2Utils extends Demo {
 
     private static final int BUFFER = 1024;
     private static final CharSequence EXT = ".bz2";
 
-    private static final String dirPath = "src/main/java/jar/apache/commons/compress/a/";
-
     @Test
     public void compress() throws Exception {
-        BZip2Utils.compress(dirPath + "a.txt");
+        BZip2Utils.compress(DEMO_PATH + "demo");
     }
 
     @Test
     public void decompress() throws Exception {
-        BZip2Utils.decompress(dirPath + "a.txt.bz2");
+        BZip2Utils.decompress(DEMO_PATH + "demo" + EXT);
     }
 
     /**
@@ -68,7 +67,7 @@ public class BZip2Utils {
         fos.close();
 
         if (delete) {
-            file.delete();
+            boolean b = file.delete();
         }
     }
 
@@ -81,7 +80,7 @@ public class BZip2Utils {
         BZip2CompressorOutputStream gos = new BZip2CompressorOutputStream(os);
 
         int count;
-        byte data[] = new byte[BUFFER];
+        byte[] data = new byte[BUFFER];
         while ((count = is.read(data, 0, BUFFER)) != -1) {
             gos.write(data, 0, count);
         }
@@ -147,7 +146,7 @@ public class BZip2Utils {
         fos.close();
 
         if (delete) {
-            file.delete();
+            boolean b = file.delete();
         }
     }
 
@@ -160,7 +159,7 @@ public class BZip2Utils {
         BZip2CompressorInputStream gis = new BZip2CompressorInputStream(is);
 
         int count;
-        byte data[] = new byte[BUFFER];
+        byte[] data = new byte[BUFFER];
         while ((count = gis.read(data, 0, BUFFER)) != -1) {
             os.write(data, 0, count);
         }

@@ -1,5 +1,6 @@
 package jar.apache.commons.compress;
 
+import l.demo.Demo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.zip.Zip64Mode;
@@ -18,45 +19,37 @@ import java.util.*;
 
 /**
  * Zip 压缩/解压工具
- * <p>
  * https://blog.csdn.net/u012848709/article/details/82263154
  * http://www.cnblogs.com/luxh/archive/2012/06/28/2568758.html
  */
 @Slf4j
-public class ZipUtils {
-
-    private static final String dirPath = "src/main/java/jar/apache/commons/compress/";
+public class ZipUtils extends Demo {
 
     @Test
     public void compress() {
-        File srcFile = new File(dirPath + "a");
-        String zipPath = dirPath + "a.zip";
-
-        if (srcFile.exists()) {
-            File[] files = srcFile.listFiles();
-            compress(files, zipPath);
-        }
+        compress(new File(DEMO_PATH + "a").listFiles(), DEMO_PATH + "a.zip");
     }
 
     @Test
     public void compress2() {
-        String srcFile = dirPath + "a";
-        String zipPath = dirPath + "a.zip";
+        String srcFile = DEMO_PATH + "demo";
+        String zipPath = DEMO_PATH + "demo.zip";
 
         compress2(srcFile, zipPath);
     }
 
     @Test
     public void decompress() {
-        String zipPath = dirPath + "a.zip";
+        String zipPath = DEMO_PATH + "a.zip";
 
-        decompress(zipPath, dirPath);
+        decompress(zipPath, DEMO_PATH);
     }
 
     /**
      * 压缩
-     * @param files     文件
-     * @param zipFile   压缩路径
+     *
+     * @param files   文件夹和文件
+     * @param zipFile 压缩路径
      */
     public static void compress(File[] files, String zipFile) {
 
@@ -97,9 +90,53 @@ public class ZipUtils {
     }
 
     /**
+     * 压缩
+     *
+     * @param srcFile 文件路径
+     * @param zipFile 压缩路径
+     */
+    public static void compress2(String srcFile, String zipFile) {
+        Collection<File> filesToArchive;
+        File file = Paths.get(srcFile).toFile();
+        if (file.isFile()) {
+            filesToArchive = Collections.singletonList(file);
+        } else {
+            filesToArchive = FileUtils.listFiles(file, null, true);
+        }
+
+        ZipArchiveOutputStream zaos = null;
+        InputStream is = null;
+
+        String rootPath = file.getParent();
+        rootPath = rootPath.endsWith(File.separator) ? rootPath : rootPath + File.separator;
+
+        try {
+            zaos = new ZipArchiveOutputStream(new File(zipFile));
+
+            for (File f : filesToArchive) {
+                ArchiveEntry entry = zaos.createArchiveEntry(f, f.getCanonicalPath().substring(rootPath.length()));
+                zaos.putArchiveEntry(entry);
+                if (f.isFile()) {
+                    is = Files.newInputStream(f.toPath());
+                    IOUtils.copy(is, zaos);
+                }
+                zaos.closeArchiveEntry();
+            }
+            zaos.finish();
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            IOUtils.closeQuietly(zaos);
+            IOUtils.closeQuietly(is);
+        }
+
+    }
+
+    /**
      * 解压
-     * @param zipFile   压缩包路径
-     * @param destDir   解压路径
+     *
+     * @param zipFile 压缩包路径
+     * @param destDir 解压路径
      */
     public static void decompress(String zipFile, String destDir) {
 
@@ -169,50 +206,5 @@ public class ZipUtils {
         }
         return flag;
     }
-
-
-
-    /**
-     * 压缩
-     * @param srcFile   文件路径
-     * @param zipFile   压缩路径
-     */
-    public static void compress2(String srcFile, String zipFile) {
-        Collection<File> filesToArchive;
-        File file = Paths.get(srcFile).toFile();
-        if (file.isFile()) {
-            filesToArchive = Collections.singletonList(file);
-        } else {
-            filesToArchive = FileUtils.listFiles(file, null, true);
-        }
-
-        ZipArchiveOutputStream zaos = null;
-        InputStream is = null;
-
-        String rootPath = file.getParent();
-        rootPath = rootPath.endsWith(File.separator) ? rootPath : rootPath + File.separator;
-
-        try {
-            zaos = new ZipArchiveOutputStream(new File(zipFile));
-
-            for (File f : filesToArchive) {
-                ArchiveEntry entry = zaos.createArchiveEntry(f, f.getCanonicalPath().substring(rootPath.length()));
-                zaos.putArchiveEntry(entry);
-                if(f.isFile()) {
-                    is = Files.newInputStream(f.toPath());
-                    IOUtils.copy(is, zaos);
-                }
-                zaos.closeArchiveEntry();
-            }
-            zaos.finish();
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
-        } finally {
-            IOUtils.closeQuietly(zaos);
-            IOUtils.closeQuietly(is);
-        }
-
-    }
-
 
 }

@@ -17,28 +17,24 @@ import java.net.Socket;
  */
 public class TCPClient extends Demo {
 
-    public static void main(String[] args) {
-        try {
-            // Socket(String host, int port[, InetAddress localAddr, int localPort])
-            // 创建一个套接字并将其连接到指定远程主机上的指定远程端口
-            Socket socket = new Socket("localhost", 4444);
-            // SocketAddress	getRemoteSocketAddress()    返回此套接字连接的端点的地址，如果未连接则返回 null
-            p("远程主机地址：" + socket.getRemoteSocketAddress());
+    public static void main(String[] args) throws IOException {
+        // Socket(String host, int port[, InetAddress localAddr, int localPort])
+        // 创建一个套接字并将其连接到指定远程主机上的指定远程端口
+        Socket socket = new Socket("localhost", 4444);
+        // SocketAddress	getRemoteSocketAddress()    返回此套接字连接的端点的地址，如果未连接则返回 null
+        p("远程主机地址：" + socket.getRemoteSocketAddress());
 
-            // OutputStream	    getOutputStream()           返回此套接字的输出流
-            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+        // OutputStream	    getOutputStream()           返回此套接字的输出流
+        DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
-            Student student = new Student(1, "007", "Mary", 20, 100.0f);
-            out.writeUTF(student + "");
+        Student student = new Student(1, "007", "Mary", 20, 100.0f);
+        out.writeUTF(student + "");
 
-            // InputStream	    getInputStream()            返回此套接字的输入流
-            DataInputStream in = new DataInputStream(socket.getInputStream());
-            p("服务器响应：" + in.readUTF());
+        // InputStream	    getInputStream()            返回此套接字的输入流
+        DataInputStream in = new DataInputStream(socket.getInputStream());
+        p("服务器响应：" + in.readUTF());
 
-            socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        socket.close();
     }
 
 }
