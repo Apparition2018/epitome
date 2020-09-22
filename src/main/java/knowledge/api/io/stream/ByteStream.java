@@ -36,8 +36,8 @@ public class ByteStream extends Demo {
      * FileDescriptor	getFD()                 返回表示到文件系统中实际文件的连接的 FileDescriptor 对象，该文件系统正被此 FileInputStream 使用<p>
      * <p>
      * 乱码解决方法：
-     * 1) 使用转换率 InputStreamReader
-     * 2) 扩大缓冲区容量，一次性存储完整个内容 byte[] data = new byte[1024]
+     * 1.使用转换率 InputStreamReader
+     * 2.扩大缓冲区容量，一次性存储完整个内容 byte[] data = new byte[1024]
      */
     @Test
     public void testInputStream() {

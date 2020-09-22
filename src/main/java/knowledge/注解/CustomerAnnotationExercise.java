@@ -21,7 +21,7 @@ import java.lang.reflect.Method;
  * @author ljh
  * created on 2020/9/18 18:01
  */
-public class UserDefinedAnnotationExercise extends Demo {
+public class CustomerAnnotationExercise extends Demo {
 
     public static void main(String[] args) {
         // 查询id为10的用户

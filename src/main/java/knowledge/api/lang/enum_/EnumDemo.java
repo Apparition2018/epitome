@@ -11,9 +11,9 @@ import java.util.EnumSet;
  * https://jdk6.net/lang/Enum.html
  * <p>
  * 优点：
- * 1) 枚举有更多灵活的用法
- * 2) 有效的提高代码的整洁性、可读性
- * 3) 限制非法值的传入
+ * 1.枚举有更多灵活的用法
+ * 2.有效的提高代码的整洁性、可读性
+ * 3.限制非法值的传入
  * <p>
  * switch:
  * 1) jdk1.5-: byte, short, char, int

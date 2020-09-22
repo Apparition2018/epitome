@@ -21,9 +21,6 @@ import java.io.*;
  */
 public class StreamExercise extends Demo {
 
-    private final static String dirPath = "src/main/java/knowledge/api/io/";
-
-
     @Test
     public void copy() {
         copy(DEMO_PATH + "demo", DEMO_PATH + "demo_copy");

@@ -1,11 +1,11 @@
 package knowledge.api.lang.classloader;
 
 
+import l.demo.Demo;
 import org.junit.Test;
 
 /**
  * ClassLoader
- * <p>
  * JVM 中类的装载是由 ClassLoader 和它的子类来实现的，Java ClassLoader 是一个重要的 Java 运行时系统组件。它负责在运行时查找和装入类文件的类。
  * <p>
  * 类加载到卸载的生命周期：
@@ -14,7 +14,7 @@ import org.junit.Test;
  * https://blog.csdn.net/briblue/article/details/54973413
  * http://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/ClassLoader.html
  */
-public class ClassLoaderDemo {
+public class ClassLoaderDemo extends Demo {
 
     /**
      * 获得 ClassLoader 的三种途径
@@ -33,10 +33,5 @@ public class ClassLoaderDemo {
         p(classLoader1);
         p(classLoader2);
         p(classLoader3);
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 }

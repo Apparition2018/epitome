@@ -12,11 +12,11 @@ import java.net.SocketTimeoutException;
 
 /**
  * 服务端
- * 1)创建ServerSocket对象，绑定监听端口。
- * 2)通过accept()监听客户端请求。
- * 3)连接建立后，通过输入流读取客户端发送的请求信息。
- * 4)通过输出流向客户端发送响应信息。
- * 5)关闭响应的资源。
+ * 1.创建ServerSocket对象，绑定监听端口。
+ * 2.通过accept()监听客户端请求。
+ * 3.连接建立后，通过输入流读取客户端发送的请求信息。
+ * 4.通过输出流向客户端发送响应信息。
+ * 5.关闭响应的资源。
  * <p>
  * Java Socket 编程基础及深入讲解：https://www.cnblogs.com/yiwangzhibujian/p/7107785.html
  * Java 网络编程 之 socket 的用法与实现：https://blog.csdn.net/a78270528/article/details/80318571
