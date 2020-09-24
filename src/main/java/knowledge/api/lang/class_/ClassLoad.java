@@ -21,9 +21,9 @@ public class ClassLoad extends Demo {
      */
     @Test
     public void filed() {
-        p(SonClass.value);
-        // GrandClass init
-        // FatherClass init
+        p(Son.value);
+        // Grand init
+        // Father init
         // 123
     }
 
@@ -32,12 +32,12 @@ public class ClassLoad extends Demo {
      */
     @Test
     public void new_() {
-        new SonClass();
-        // GrandClass init
-        // FatherClass init
-        // SonClass init
-        // init FatherClass
-        // init SonClass
+        new Son();
+        // Grand init
+        // Father init
+        // Son init
+        // init Father
+        // init Son
     }
 
     /**
@@ -48,12 +48,12 @@ public class ClassLoad extends Demo {
         // 内部调用 Class.forName(className, true, classloader);
         // boolean 值表示是否初始化，执行 static 静态块
         Class<?> clazz = Class.forName("knowledge.api.lang.class_.ClassLoad$SonClass");
-        // GrandClass init
-        // FatherClass init
-        // SonClass init
+        // Grand init
+        // Father init
+        // Son init
         clazz.newInstance();
-        // init FatherClass
-        // init SonClass
+        // init Father
+        // init Son
     }
 
     /**
@@ -66,40 +66,40 @@ public class ClassLoad extends Demo {
         // 进行链接意味着进行包括初始化等一系列步骤，比如静态块和静态对象
         Class<?> clazz = ClassLoader.getSystemClassLoader().loadClass("knowledge.api.lang.class_.ClassLoad$SonClass");
         clazz.newInstance();
-        // GrandClass init
-        // FatherClass init
-        // SonClass init
-        // init FatherClass
-        // init SonClass
+        // Grand init
+        // Father init
+        // Son init
+        // init Father
+        // init Son
     }
 
-    private static class GrandClass {
+    private static class Grand {
         static {
-            p("GrandClass init");
+            p("Grand init");
         }
     }
 
-    private static class FatherClass extends GrandClass {
+    private static class Father extends Grand {
         static {
-            p("FatherClass init");
+            p("Father init");
         }
 
         public static int value = 123;
 
-        FatherClass() {
-            p("init FatherClass");
+        Father() {
+            p("init Father");
         }
     }
 
-    private static class SonClass extends FatherClass {
+    private static class Son extends Father {
         static {
-            p("SonClass init");
+            p("Son init");
         }
 
         static int a;
 
-        SonClass() {
-            p("init SonClass");
+        Son() {
+            p("init Son");
         }
     }
 }

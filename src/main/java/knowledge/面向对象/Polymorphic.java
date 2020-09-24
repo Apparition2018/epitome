@@ -6,8 +6,9 @@ import l.demo.Demo;
 
 /**
  * 多态
- * <p>
  * 多态是同一个行为具有不同表现形式或形态的能力
+ * java 语言是一门静态多分派，动态单分派的语言
+ * https://www.cnblogs.com/mengchunchen/p/7860397.html
  * <p>
  * 优点：
  * 1.消除类型之间的耦合关系
@@ -31,6 +32,73 @@ public class Polymorphic extends Demo {
         Cat c = (Cat) a;        // 向下转型
         c.work();               // 调用的是 Cat 的 work
 
+    }
+
+    /**
+     * 静态分派     重载
+     */
+    private static class StaticDispatch {
+
+        public static void main(String[] args) {
+            Human man = new Man();
+            Human woman = new Woman();
+            sayHello(man);
+            sayHello(woman);
+        }
+
+        static abstract class Human {
+        }
+
+        static class Man extends Human {
+        }
+
+        static class Woman extends Human {
+        }
+
+        public static void sayHello(Human guy) {
+            p("hello, guy!");
+        }
+
+        public static void sayHello(Man man) {
+            p("hello, gentlemen!");
+        }
+
+        public static void sayHello(Woman lady) {
+            p("hello, lady!");
+        }
+    }
+
+    /**
+     * 动态分派     重写
+     */
+    private static class DynamicDispatch {
+
+        public static void main(String[] args) {
+            Human man = new Man();
+            Human woman = new Woman();
+            man.sayHello();
+            woman.sayHello();
+            man = new Woman();
+            man.sayHello();
+        }
+        
+        static abstract class Human {
+            protected abstract void sayHello();
+        }
+
+        static class Man extends Human {
+            @Override
+            protected void sayHello() {
+                System.out.println("man say hello!");
+            }
+        }
+
+        static class Woman extends Human {
+            @Override
+            protected void sayHello() {
+                System.out.println("woman say hello!");
+            }
+        }
     }
 
 }

@@ -30,27 +30,27 @@ public class OverrideAndOverload {
         System.out.println("我是" + name);
     }
 
-}
 
+    private class Override extends OverrideAndOverload {
 
-class Override extends OverrideAndOverload {
+        /**
+         * 重写
+         * <p>
+         * 运行时多态
+         * <p>
+         * 1.参数列表和重写方法的相同
+         * 2.返回值类型和重写方法的相同
+         * 3.访问权限 >= 重写方法的访问权限
+         * 4.父类的成员方法只能被它的子类重写 ???
+         * 5.final 方法不能被重写
+         * 6.static 方法不能被重写，但可以再次声明
+         * 7.不能抛出新的检测性异常，或比重写方法更广泛的检测性异常
+         * 8.构造方法不能被重写
+         */
+        public void say() {
+            System.out.println("我是儿子");
+        }
 
-    /**
-     * 重写
-     * <p>
-     * 运行时多态
-     * <p>
-     * 1.参数列表和重写方法的相同
-     * 2.返回值类型和重写方法的相同
-     * 3.访问权限 >= 重写方法的访问权限
-     * 4.父类的成员方法只能被它的子类重写 ???
-     * 5.final 方法不能被重写
-     * 6.static 方法不能被重写，但可以再次声明
-     * 7.不能抛出新的检测性异常，或比重写方法更广泛的检测性异常
-     * 8.构造方法不能被重写
-     */
-    public void say() {
-        System.out.println("我是儿子");
     }
 
 }

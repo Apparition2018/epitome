@@ -21,33 +21,33 @@ package knowledge.面向对象;
  */
 public class Interface {
 
-}
+    /**
+     * 接口特性：
+     * 1.接口隐式抽象，abstract
+     * 2.接口中的变量隐式指定为 public static final
+     * 3.接口中的每一个方法隐式抽象，并且是公开的，public abstract
+     * <p>
+     * 接口可以继承接口
+     */
+    interface Sports {
+        void setHomeTeam(String name);
 
-/**
- * 接口特性：
- * 1.接口隐式抽象，abstract
- * 2.接口中的变量隐式指定为 public static final
- * 3.接口中的每一个方法隐式抽象，并且是公开的，public abstract
- * <p>
- * 接口可以继承接口
- */
-interface Sports {
-    void setHomeTeam(String name);
+        void setVisitingTeam(String name);
+    }
 
-    void setVisitingTeam(String name);
-}
+    interface Football extends Sports {
+        String Classification = "BALL";
 
-interface Football extends Sports {
-    String Classification = "BALL";
+        void homeTeamScored(int points);
 
-    void homeTeamScored(int points);
+        void visitingTeamScored(int points);
 
-    void visitingTeamScored(int points);
-
-    void endOfQuarter(int quarter);
-}
+        void endOfQuarter(int quarter);
+    }
 
 /**
  * 接口标记 (Mark Interface)
+ * Serializable Cloneable RandomAccess
  * https://blog.csdn.net/x_iya/article/details/79071839
  */
+}

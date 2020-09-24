@@ -3,6 +3,8 @@ package other.suggestions;
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
+import other.suggestions.Family.Son;
+import other.suggestions.Family.Daughter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -709,7 +711,7 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test045() {
-        Daughter d = new Daughter("Amy ");
+        Daughter d = new Daughter("Amy");
         List<Daughter> list = new ArrayList<>();
         list.add(d);
         p(list.contains(d)); // false

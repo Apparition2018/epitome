@@ -1,5 +1,9 @@
 package knowledge.面向对象;
 
+import l.demo.Demo;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 抽象类
  * <p>
@@ -8,75 +12,61 @@ package knowledge.面向对象;
  * 3.构造方法，类方法 (static) 不能声明为抽象方法
  * 4.抽象类的子类必须重写父类的抽象方法，或者声明自身为抽象类
  */
-public class AbstractClass {
+public class AbstractClass extends Demo {
 
     public static void main(String[] args) {
         Employee e = new Salary("Mary", "London", 1);
-        e.computePay();
-    }
-
-}
-
-/**
- * 抽象类
- */
-abstract class Employee {
-    private String name;
-    private String address;
-    private int number;
-
-    public Employee(String name, String address, int number) {
-        System.out.println("Constructing an Employee");
-        this.name = name;
-        this.address = address;
-        this.number = number;
+        p(e.computePay());
     }
 
     /**
-     * 抽象方法
-     * <p>
-     * 1.如果一个类包含抽象方法，那么该类必须是抽象类
-     * 2.抽象类的子类必须重写父类的抽象方法，或者声明自身为抽象类
+     * 抽象类
      */
-    public abstract double computePay();
+    @Getter
+    @Setter
+    private static abstract class Employee {
+        private String name;
+        private String address;
+        private int number;
 
-    public void mailCheck() {
-        System.out.println("Mailing a check to " + this.name
-                + " " + this.address);
+        public Employee(String name, String address, int number) {
+            p("Constructing an Employee");
+            this.name = name;
+            this.address = address;
+            this.number = number;
+        }
+
+        /**
+         * 抽象方法
+         * <p>
+         * 1.如果一个类包含抽象方法，那么该类必须是抽象类
+         * 2.抽象类的子类必须重写父类的抽象方法，或者声明自身为抽象类
+         */
+        public abstract double computePay();
+
+        public void mailCheck() {
+            p("Mailing a check to " + this.name + " " + this.address);
+        }
+
+        public String toString() {
+            return name + " " + address + " " + number;
+        }
+
     }
 
-    public String toString() {
-        return name + " " + address + " " + number;
+    private static class Salary extends Employee {
+
+        private double salary;
+
+        public Salary(String name, String address, int number) {
+            super(name, address, number);
+        }
+
+        // 重写父类抽象方法
+        public double computePay() {
+            p("Computing salary pay for " + getName());
+            return salary / 52;
+        }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String newAddress) {
-        address = newAddress;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-}
-
-class Salary extends Employee {
-
-    private double salary;
-
-    public Salary(String name, String address, int number) {
-        super(name, address, number);
-    }
-
-    // 重写父类抽象方法
-    public double computePay() {
-        System.out.println("Computing salary pay for " + getName());
-        return salary / 52;
-    }
 }
