@@ -1392,13 +1392,13 @@ public class Suggestions extends Demo {
     @Test
     public void test095() {
 
-        List list = ArrayUtils.asList();
+        List list = Collections.emptyList();
         // 参数为空，等同于 List<Object> list = ArrayUtils.asList();
 
-        List list2 = ArrayUtils.asList(1, 2, 3.1);
+        List list2 = Arrays.asList(1, 2, 3.1);
         // 等同于 List<Object> list = ArrayUtils.asList(1, 2, 3.1);
         // 如果期望泛型参数是 Number，强制声明泛型类型
-        List<Number> list3 = ArrayUtils.asList(1, 2, 3.1);
+        List<Number> list3 = Arrays.asList(1, 2, 3.1);
     }
 
     /**

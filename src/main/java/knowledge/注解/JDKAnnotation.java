@@ -4,6 +4,8 @@ import l.demo.Animal.Chicken;
 import l.demo.Demo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -13,6 +15,7 @@ import java.util.List;
  * 1. @Override
  * 2. @Deprecation
  * 3. @SuppressWarnings 抑制编译器产生警告信息
+ * 4. @SafeVarargs
  * https://www.cnblogs.com/fsjohnhuang/p/4040785.html
  *
  * @author JDKAnnotation
@@ -42,10 +45,21 @@ public class JDKAnnotation extends Demo {
      * unchecked    未检测转换
      */
     @SuppressWarnings(value = {"unchecked", "rawtypes"})
-    public void testRawTypes(String item) {
+    public void testRawTypesAndUnchecked(String item) {
         List<Object> items = new ArrayList();
         items.add(item);
         p(items.size());
+    }
+
+    /**
+     * SafeVarargs
+     * https://www.cnblogs.com/cxuanBlog/p/10927483.html
+     */
+    @SafeVarargs
+    public static <T> List<T> testSafeVarargs(T... t) {
+        List<T> list = new ArrayList<>();
+        Collections.addAll(list, t);
+        return list;
     }
 
 }
