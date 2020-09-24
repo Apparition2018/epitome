@@ -1,7 +1,5 @@
 package knowledge.线程.threadpool;
 
-import l.demo.Demo;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * 该方法返回一个只有一个线程的线程池，即每次只能执行一个线程任务，多余的任务会保存到一个任务队列中，
  * 等待这一个线程空闲，当这个线程空闲了再按FIFO方式顺序执行任务队列中的任务
  */
-public class ExecutorServiceDemo2 extends Demo {
+public class ExecutorServiceDemo2 {
     public static void main(String[] args) {
         //创建一个可重用固定线程数的线程池
         ExecutorService pool = Executors.newSingleThreadExecutor();

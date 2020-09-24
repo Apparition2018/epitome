@@ -2,7 +2,6 @@ package springboot.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import l.demo.Demo;
 import l.demo.Person.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +14,7 @@ import java.util.Date;
 @RequestMapping("/jackson")
 @Api("jackson")
 @Slf4j
-public class JacksonController extends Demo {
+public class JacksonController {
 
     /**
      * http://localhost:3333/jackson/test

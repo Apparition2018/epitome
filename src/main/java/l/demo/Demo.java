@@ -21,7 +21,6 @@ public class Demo {
     public List<Integer> repeatList = new ArrayList<>(Arrays.asList(1, 1, 2, 2, 3, 3, 4, 5));
     public List<Integer> subList = new ArrayList<>(list.subList(1, 6));
     public List<Integer> subList2 = list.subList(3, 8);
-    public CountDownLatch countDownLatch;
     public Map<Integer, String> map = new HashMap<Integer, String>(3) {
         {
             put(1, "A");
@@ -39,6 +38,7 @@ public class Demo {
         }
     };
     public SimpleDateFormat SDF = DATE_SDF;
+    public static CountDownLatch countDownLatch;
     public static final SimpleDateFormat DATE_SDF = new SimpleDateFormat("yyyy-MM-dd");
     public static final SimpleDateFormat DATE_TIME_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
     public static final String UTF_8 = String.valueOf(StandardCharsets.UTF_8);
@@ -50,7 +50,7 @@ public class Demo {
     public static final String ARSENAL_LOGO = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1113375911,3381445023&fm=26&gp=0.jpg";
     public static final String USER_DIR = System.getProperty("user.dir");
 
-    public void setCountDownLatch(int n) {
+    public static void setCountDownLatch(int n) {
         countDownLatch = new CountDownLatch(n);
     }
 

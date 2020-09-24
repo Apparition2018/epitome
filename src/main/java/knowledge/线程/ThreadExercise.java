@@ -1,12 +1,10 @@
 package knowledge.线程;
 
-import l.demo.Demo;
-
 /**
  * https://blog.csdn.net/never_cxb/article/details/50379047
  * 设计4个线程，其中两个每次对j增加1，另外两个对j每次减少1。循环100次。
  */
-public class ThreadExercise extends Demo {
+public class ThreadExercise {
 
     private static int j;
 
@@ -44,12 +42,12 @@ public class ThreadExercise extends Demo {
 
     private static synchronized void inc() {
         j++;
-        p(Thread.currentThread().getName() + "--inc--" + j);
+        System.out.println(Thread.currentThread().getName() + "--inc--" + j);
     }
 
     private static synchronized void dec() {
         j--;
-        p(Thread.currentThread().getName() + "--dec--" + j);
+        System.out.println(Thread.currentThread().getName() + "--dec--" + j);
     }
 
 }

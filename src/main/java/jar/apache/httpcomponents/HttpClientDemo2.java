@@ -1,6 +1,5 @@
 package jar.apache.httpcomponents;
 
-import l.demo.Demo;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -21,7 +20,7 @@ import java.util.List;
 /**
  * https://my.oschina.net/xinxingegeya/blog/282683
  */
-public class HttpClientDemo2 extends Demo {
+public class HttpClientDemo2 {
     public static void main(String[] args) throws IOException {
         List<NameValuePair> formParams = new ArrayList<>();
         formParams.add(new BasicNameValuePair("account", ""));
@@ -43,9 +42,9 @@ public class HttpClientDemo2 extends Demo {
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
             HttpEntity resEntity = response.getEntity();
             String message = EntityUtils.toString(resEntity, StandardCharsets.UTF_8);
-            p(message);
+            System.out.println(message);
         } else {
-            p("请求失败");
+            System.out.println("请求失败");
         }
 
     }

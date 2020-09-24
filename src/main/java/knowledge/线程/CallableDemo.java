@@ -1,7 +1,5 @@
 package knowledge.线程;
 
-import l.demo.Demo;
-
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -21,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * 3.Callable 接口的 call() 方法允许抛出异常；而 Runnable 接口的 run() 方法的异常只能在内部消化，不能继续上抛；
  * 4.Callable 接口支持返回执行结果，此时需要调用 FutureTask.get() 方法实现，此方法会阻塞主线程直到获取'将来'结果；当不调用此方法时，主线程不会阻塞！
  */
-public class CallableDemo extends Demo {
+public class CallableDemo {
 
     /**
      * Java 线程之 FutureTask 与 Future 浅析
@@ -42,9 +40,9 @@ public class CallableDemo extends Demo {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-        p(result);
+        System.out.println(result);
 
-        p("main线程完毕");
+        System.out.println("main线程完毕");
     }
 
 }

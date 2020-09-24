@@ -1,6 +1,5 @@
 package jar.lombok;
 
-
 import l.demo.Demo;
 import lombok.*;
 import org.junit.Test;

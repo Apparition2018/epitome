@@ -46,13 +46,13 @@ public class Polymorphic extends Demo {
             sayHello(woman);
         }
 
-        static abstract class Human {
+        private static abstract class Human {
         }
 
-        static class Man extends Human {
+        private static class Man extends Human {
         }
 
-        static class Woman extends Human {
+        private static class Woman extends Human {
         }
 
         public static void sayHello(Human guy) {
@@ -81,19 +81,19 @@ public class Polymorphic extends Demo {
             man = new Woman();
             man.sayHello();
         }
-        
-        static abstract class Human {
+
+        private static abstract class Human {
             protected abstract void sayHello();
         }
 
-        static class Man extends Human {
+        private static class Man extends Human {
             @Override
             protected void sayHello() {
                 System.out.println("man say hello!");
             }
         }
 
-        static class Woman extends Human {
+        private static class Woman extends Human {
             @Override
             protected void sayHello() {
                 System.out.println("woman say hello!");

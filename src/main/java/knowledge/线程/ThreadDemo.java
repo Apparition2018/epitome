@@ -3,7 +3,6 @@ package knowledge.线程;
 import l.demo.Demo;
 import org.junit.Test;
 
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -220,12 +219,11 @@ public class ThreadDemo extends Demo {
      * static boolean	interrupted()       测试当前线程（当前线程指 main 线程）是否已经中断，会清除线程的中断状态
      * boolean	        isInterrupted()     测试线程是否已经中断
      * <p>
-     * https://www.cnblogs.com/huangyichun/p/7126851.html
-     * https://blog.csdn.net/lx_Frolf/article/details/82560841
-     * https://blog.csdn.net/github_34889651/article/details/52474869
-     * http://www.runoob.com/java/thread-interrupt.html
-     * <p>
      * 在 sleep() 时调用 interrupt()，会抛出 InterruptedException 异常
+     * <p>
+     * Java 实例 - 中断线程：http://www.runoob.com/java/thread-interrupt.html
+     * Java 线程停止的几种方法：https://blog.csdn.net/lx_Frolf/article/details/82560841
+     * interrupt(), interrupted(), isInterrupted() 区别：https://www.cnblogs.com/huangyichun/p/7126851.html
      */
     @Test
     public void interruptWhenSleep() throws InterruptedException {

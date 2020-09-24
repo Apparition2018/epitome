@@ -1,6 +1,5 @@
 package knowledge.api.util.concurrent;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Random;
@@ -26,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * void	        reset()                             将屏障重置为其初始状态
  * <p>
  */
-public class CyclicBarrierDemo extends Demo {
+public class CyclicBarrierDemo {
 
     /**
      * 案例：两个工人从两端挖掘隧道，各自独立奋战，中间不沟通，如果两个人在汇合点处碰头了，则表明隧道已经挖通。
@@ -46,7 +45,7 @@ public class CyclicBarrierDemo extends Demo {
             public void run() {
                 try {
                     TimeUnit.SECONDS.sleep(new Random().nextInt(10));
-                    p(Thread.currentThread().getName() + "- 到达汇合点");
+                    System.out.println(Thread.currentThread().getName() + "- 到达汇合点");
                     // 到达汇合点
                     cb.await();
                 } catch (InterruptedException | BrokenBarrierException e) {
@@ -56,7 +55,7 @@ public class CyclicBarrierDemo extends Demo {
         }
 
         // 设置汇集数量，以及汇集完成后的任务
-        CyclicBarrier cb = new CyclicBarrier(2, () -> p("隧道已经打通！"));
+        CyclicBarrier cb = new CyclicBarrier(2, () -> System.out.println("隧道已经打通！"));
         // 工人1挖隧道
         new Thread(new Worker(cb) + "工人1").start();
         // 工人2挖隧道

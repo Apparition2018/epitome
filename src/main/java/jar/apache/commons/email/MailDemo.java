@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
 /**
  * https://www.cnblogs.com/jimboi/p/6406237.html

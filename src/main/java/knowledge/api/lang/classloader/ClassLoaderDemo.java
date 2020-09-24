@@ -1,6 +1,5 @@
 package knowledge.api.lang.classloader;
 
-
 import l.demo.Demo;
 import org.junit.Test;
 

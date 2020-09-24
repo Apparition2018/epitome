@@ -1,10 +1,8 @@
 package knowledge.注解;
 
 import l.demo.Animal.Chicken;
-import l.demo.Demo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,7 +19,7 @@ import java.util.List;
  * @author JDKAnnotation
  * created on 2020/9/18 10:13
  */
-public class JDKAnnotation extends Demo {
+public class JDKAnnotation {
 
     /**
      * deprecation  过期
@@ -48,7 +46,7 @@ public class JDKAnnotation extends Demo {
     public void testRawTypesAndUnchecked(String item) {
         List<Object> items = new ArrayList();
         items.add(item);
-        p(items.size());
+        System.out.println(items.size());
     }
 
     /**

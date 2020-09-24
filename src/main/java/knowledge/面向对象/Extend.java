@@ -1,7 +1,5 @@
 package knowledge.面向对象;
 
-import l.demo.Demo;
-
 import java.io.Serializable;
 
 /**
@@ -11,11 +9,11 @@ import java.io.Serializable;
  * <p>
  * 子类拥有父类非 private 属性，方法
  */
-public class Extend extends Demo {
+public class Extend {
 
     public static void main(String[] args) {
         Parent p = new Son(1, "apple");
-        p(p.name);
+        System.out.println(p.name);
     }
 
     private static class Parent {

@@ -1,6 +1,5 @@
 package knowledge.api.util.concurrent;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ import java.util.concurrent.*;
  * void	        countDown()                             递减锁存器的计数，如果计数到达零，则释放所有等待的线程
  * long	        getCount()                              返回当前计数
  */
-public class CountDownLatchDemo extends Demo {
+public class CountDownLatchDemo {
 
     /**
      * 案例：百米赛跑，多个参加赛跑的人员在听到发令枪响后，开始跑步，到达终点后结束计时，然后统计平均成绩
@@ -74,10 +73,10 @@ public class CountDownLatchDemo extends Demo {
         int count = 0;
         // 统计总分
         for (Future<Integer> future : futures) {
-            p(future.get());
+            System.out.println(future.get());
             count += future.get();
         }
-        p("平均分数为：" + count / num);
+        System.out.println("平均分数为：" + count / num);
     }
 
 }

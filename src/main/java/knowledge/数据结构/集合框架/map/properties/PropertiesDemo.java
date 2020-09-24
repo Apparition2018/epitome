@@ -1,6 +1,5 @@
 package knowledge.数据结构.集合框架.map.properties;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ import java.util.Properties;
  * <p>
  * void	    list(PrintStream out/PrintStream out)       将属性列表输出到指定的输出流
  */
-public class PropertiesDemo extends Demo {
+public class PropertiesDemo {
 
     @Test
     public void testProperties() throws IOException, InterruptedException {
@@ -33,7 +32,7 @@ public class PropertiesDemo extends Demo {
         while (keys.hasMoreElements()) {
             String key = (String) keys.nextElement();
             // String	    getProperty(String key[, String defaultValue])  用指定的键在属性列表中搜索属性
-            p(key + " = " + props.getProperty(key));
+            System.out.println(key + " = " + props.getProperty(key));
         }
 
         // Object	        setProperty(String key, String value)           调用 Hashtable 的方法 put

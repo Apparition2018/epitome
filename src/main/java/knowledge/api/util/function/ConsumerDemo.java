@@ -1,6 +1,5 @@
 package knowledge.api.util.function;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.function.Consumer;
@@ -13,16 +12,16 @@ import java.util.function.Consumer;
  * @author ljh
  * created on 2020/9/9 14:02
  */
-public class ConsumerDemo extends Demo {
+public class ConsumerDemo {
 
     @Test
     public void testConsumer() {
         Consumer<String> consumer1 = o -> {
-            p("length: " + o.length());
+            System.out.println("length: " + o.length());
         };
 
         Consumer<String> consumer2 = o -> {
-            p("isStartsWithA: " + o.startsWith(o));
+            System.out.println("isStartsWithA: " + o.startsWith(o));
         };
 
         consumer1.andThen(consumer2).accept("ABC");

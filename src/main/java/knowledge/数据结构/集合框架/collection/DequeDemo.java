@@ -1,7 +1,5 @@
 package knowledge.数据结构.集合框架.collection;
 
-import l.demo.Demo;
-
 /**
  * Deque 双端队列  (double ended queue)
  * Deque 继承 Queue
@@ -34,5 +32,5 @@ import l.demo.Demo;
  * boolean	        remove(Object o)        从此双端队列中移除第一次出现的指定元素
  * boolean	        removeLastOccurrence(Object o)  从此双端队列移除最后一次出现的指定元素
  */
-public class DequeDemo extends Demo {
+public class DequeDemo {
 }
