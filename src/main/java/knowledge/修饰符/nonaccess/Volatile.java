@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
  * 2.内存可见性：
  * <p>
  * volatile 关键字解惑：https://www.jianshu.com/p/195ae7c77afe
- * https://blog.csdn.net/csdnlijingran/article/details/80967359
  */
 public class Volatile {
 

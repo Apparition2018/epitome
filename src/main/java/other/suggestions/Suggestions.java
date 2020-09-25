@@ -1885,7 +1885,7 @@ public class Suggestions extends Demo {
 
     /* 建议123：volatile 不能保证数据同步
      * volatile 适用于一个线程更改，多个线程读取的情况
-     * 多个线程更改的情况，请是使用 AtomicInteger 或 AtomicLong 等
+     * 多个线程更改的情况，请使用 AtomicInteger 或 AtomicLong 等
      * https://mouselearnjava.iteye.com/blog/1920154
      */
 

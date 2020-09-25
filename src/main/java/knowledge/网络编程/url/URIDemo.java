@@ -20,8 +20,10 @@ public class URIDemo extends Demo {
 
     @Test
     public void testURI() throws URISyntaxException {
-        // URI(String str)          通过解析给定的字符串构造一个 URI
+        // URI(String str)                  通过解析给定的字符串构造一个 URI
         URI uri = new URI(DEMO_URL);
+        // static URI	create(String str)  通过解析给定的字符串创建 URI
+        URI uri2 = URI.create(BAIDU_URL);
 
         p(uri);                         // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
         p(uri.getScheme());             // 方案组成部分

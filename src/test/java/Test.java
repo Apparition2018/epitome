@@ -1,27 +1,16 @@
-import cn.hutool.crypto.SecureUtil;
-import com.google.common.collect.Lists;
-import l.utils.LUtils;
-
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 // 史上最强整理: https://mp.weixin.qq.com/s/kJpRgfI3zT77XqMeRfmmQQ
 // SpringBoot 之整合 Swagger2: https://www.cnblogs.com/zhangyinhua/p/9286391.html
-// Gradle / Groovy
-// SMB
-// Desktop
-// ACL
-// NIO
-// JAVA与模式
 // SpringBoot + Spring Batch
-// JWT
-// Guava (140)
-// shiro
-// 多种 Collections (143)
 // SSL：https://www.cnblogs.com/crazyacking/p/5648520.html
+// JAVA与模式
+// NIO
+// JWT
+// shiro
+// Guava (140)
+// 多种 Collections (143)
 
 // https://blog.csdn.net/u012426327/article/list/13
 
@@ -30,18 +19,6 @@ import java.util.Set;
 public class Test {
 
     public static void main(String[] args) throws ParseException, IOException {
-
-        System.out.println(SecureUtil.md5().digestHex16("123"));
-
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        
-        
-        list.add(0, 0);
-        list.add(4);
-        System.out.println(list);
 
     }
 
