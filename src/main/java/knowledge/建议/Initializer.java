@@ -1,4 +1,4 @@
-package other.suggestions;
+package knowledge.建议;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

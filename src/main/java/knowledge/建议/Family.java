@@ -1,4 +1,4 @@
-package other.suggestions;
+package knowledge.建议;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

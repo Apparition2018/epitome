@@ -1,10 +1,10 @@
-package other.suggestions;
+package knowledge.建议;
 
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
-import other.suggestions.Family.Son;
-import other.suggestions.Family.Daughter;
+import knowledge.建议.Family.Son;
+import knowledge.建议.Family.Daughter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
