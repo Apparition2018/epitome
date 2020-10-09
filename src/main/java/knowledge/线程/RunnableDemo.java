@@ -1,6 +1,7 @@
 package knowledge.线程;
 
 import l.demo.Demo;
+import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,22 +19,19 @@ import java.util.concurrent.TimeUnit;
  * 2：继承 Thread 类，多个线程不能处理或者共享同一个资源，但是实现 Runnable 接口可以处理同一个资源。
  */
 public class RunnableDemo extends Demo {
-
-    public static void main(String[] args) {
-        TicketRunnable runnable = new TicketRunnable();
-
-        Thread t1 = new Thread(runnable);
-        Thread t2 = new Thread(runnable);
-        Thread t3 = new Thread(runnable);
-
-        t1.start();
-        t2.start();
-        t3.start();
+    
+    @Test
+    public void testThread() throws InterruptedException {
+        setCountDownLatch(3);
+        new TicketThread().start();
+        new TicketThread().start();
+        new TicketThread().start();
+        countDownLatch.await();
     }
 
-    private static class TicketRunnable implements Runnable {
+    private static class TicketThread extends Thread {
 
-        private int ticket = 100;
+        private int ticket = 5;
 
         @Override
         public synchronized void run() {
@@ -45,6 +43,35 @@ public class RunnableDemo extends Demo {
                 }
                 p(Thread.currentThread().getName() + "正在卖票" + ticket--);
             }
+            countDownLatch.countDown();
+        }
+    }
+    
+    @Test
+    public void testRunnable() throws InterruptedException {
+        setCountDownLatch(3);
+        TicketRunnable runnable = new TicketRunnable();
+        new Thread(runnable).start();
+        new Thread(runnable).start();
+        new Thread(runnable).start();
+        countDownLatch.await();
+    }
+
+    private static class TicketRunnable implements Runnable {
+
+        private int ticket = 5;
+
+        @Override
+        public synchronized void run() {
+            while (ticket > 0) {
+                try {
+                    TimeUnit.MILLISECONDS.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                p(Thread.currentThread().getName() + "正在卖票" + ticket--);
+            }
+            countDownLatch.countDown();
         }
     }
 

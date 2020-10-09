@@ -7,18 +7,24 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Queue 队列
- * Queue 继承 Collection
- * Queue 实现了一个先进先出 (FIFO) 的数据结构
- * https://jdk6.net/util/Queue.html
- * <p>\
- * 操作       抛出异常	    返回特殊值（推荐使用）
- * 插入	    add(e)	        offer(e)
- * 移除	    remove()	    poll()  
- * 检查	    element()	    peek()
+ * QueueDemo
+ *
+ * @author ljh
+ * created on 2020/10/9 14:38
  */
 public class QueueDemo extends Demo {
 
+    /**
+     * Queue 队列
+     * Queue 继承 Collection
+     * Queue 实现了一个先进先出 (FIFO) 的数据结构
+     * https://jdk6.net/util/Queue.html
+     * <p>
+     * 操作       抛出异常	    返回特殊值（推荐使用）
+     * 插入	    add(e)	        offer(e)
+     * 移除	    remove()	    poll()  
+     * 检查	    element()	    peek()
+     */
     @Test
     public void testQueue() {
         Queue<String> queue = new LinkedList<>();
@@ -40,7 +46,20 @@ public class QueueDemo extends Demo {
 
         // E	    peek()          获取但不移除此队列的头；如果此队列为空，则返回 null
         p("peek=" + queue.peek());
-
     }
 
+    /**
+     * BlockingQueue    阻塞队列
+     * BlockingQueue 继承 Queue
+     * https://www.imooc.com/article/257739
+     * <p>
+     * 操作       抛出异常	    返回特殊值       阻塞          超时退出
+     * 插入	    add(e)	        offer(e)        put(e)      offer(e, time, unit)
+     * 移除	    remove()	    poll()          take()      poll(e, time, unit)
+     * 检查	    element()	    peek()
+     */
+    @Test
+    public void testBlockingQueue() {
+
+    }
 }

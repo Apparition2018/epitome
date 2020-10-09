@@ -1,4 +1,4 @@
-package knowledge.线程;
+package knowledge.线程.executor;
 
 import l.demo.Demo;
 import org.junit.Test;
@@ -19,14 +19,14 @@ public class FutureTaskDemo extends Demo {
     @Test
     public void testFuture() {
 
-        ExecutorService es = Executors.newFixedThreadPool(5);
+        ExecutorService pool = Executors.newFixedThreadPool(5);
 
         List<Future<String>> results = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
 
             // <T> Future<T>	submit(Callable<T> task)
             // 提交一个 Callable 任务用于执行，并返回一个表示该任务的 Future
-            Future<String> f = es.submit(new MyCallable());
+            Future<String> f = pool.submit(new MyCallable());
             results.add(f);
         }
 
@@ -55,7 +55,7 @@ public class FutureTaskDemo extends Demo {
         }
 
         p("执行完毕");
-        es.shutdownNow();
+        pool.shutdownNow();
 
     }
 
@@ -63,15 +63,15 @@ public class FutureTaskDemo extends Demo {
      * 使用 futureTask 实现上面例子，解决多任务结果，效果最优
      */
     public static void main(String[] args) {
-        ExecutorService es = Executors.newFixedThreadPool(5);
+        ExecutorService pool = Executors.newFixedThreadPool(5);
 
         for (int i = 0; i < 5; i++) {
             // FutureTask(Callable<V> callable)
             // 创建一个 FutureTask，一旦运行就执行给定的 Callable
             MyFutureTask ft = new MyFutureTask(new MyCallable());
-            es.submit(ft);
+            pool.submit(ft);
         }
-        es.shutdown();
+        pool.shutdown();
     }
 
     private static class MyFutureTask extends FutureTask<String> {

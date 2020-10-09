@@ -1,4 +1,4 @@
-package knowledge.线程.threadpool;
+package knowledge.线程.executor;
 
 import l.demo.Demo;
 import org.junit.Test;
@@ -20,12 +20,17 @@ import java.util.concurrent.TimeUnit;
  * CachedThreadPool         可根据需要创建新线程的线程池，但是在以前构造的线程可用时将重用它们；适用于快速处理大量耗时较短的任务，如 Netty 的 NIO 接受请求时
  * SingleThreadExecutor     一个使用单个 worker 线程的 Executor，以无界队列方式来运行该线程
  * ScheduledThreadPool      一个线程池，它可安排在给延迟后运行命令或者定期地执行
+ * <p>
+ * 以上四种线程池都是使用 ThreadPoolExecutor 实现的，所以 ThreadPoolExecutor 更灵活
  */
 public class ExecutorServiceDemo extends Demo {
 
+    /**
+     * FixedThreadPool
+     */
     @Test
-    public void newFixedThreadPool() {
-        ExecutorService threadPool = Executors.newFixedThreadPool(2);
+    public void testFixedThreadPool() {
+        ExecutorService pool = Executors.newFixedThreadPool(2);
         for (int i = 0; i < 5; i++) {
             Runnable runnable = () -> {
                 try {
@@ -38,21 +43,64 @@ public class ExecutorServiceDemo extends Demo {
                 }
             };
 
-            // void	execute(Runnable command)
+            // void	        execute(Runnable command)
             // 在未来某个时间执行给定的命令
-            threadPool.execute(runnable);   // 将任务指派给线程池
+            pool.execute(runnable);   // 将任务指派给线程池
             p("指派了一个任务给线程池！");
         }
 
         // List<Runnable>	shutdownNow()
         // 试图停止所有正在执行的活动任务，暂停处理正在等待的任务，并返回等待执行的任务列表
-        // threadPool.shutdownNow();
+        // pool.shutdownNow();
 
-        // void	shutdown()
+        // void	            shutdown()
         // 启动一次顺序关闭，执行以前提交的任务，但不接受新任务
-        // threadPool.shutdown();
+        // pool.shutdown();
 
         // p("线程池停止了");
+    }
+
+    /**
+     * SingleThreadExecutor
+     * 该方法返回一个只有一个线程的线程池，即每次只能执行一个线程任务，多余的任务会保存到一个任务队列中，
+     * 等待这一个线程空闲，当这个线程空闲了再按FIFO方式顺序执行任务队列中的任务
+     */
+    @Test
+    public void testSingleThreadExecutor() {
+        //创建一个可重用固定线程数的线程池
+        ExecutorService pool = Executors.newSingleThreadExecutor();
+
+        //创建实现了Runnable接口对象，Thread对象当然也实现了Runnable接口
+        Thread t1 = new MyThread();
+        Thread t2 = new MyThread();
+        Thread t3 = new MyThread();
+        Thread t4 = new MyThread();
+        Thread t5 = new MyThread();
+
+        //将线程放入池中进行执行
+        pool.execute(t1);
+        pool.execute(t2);
+        pool.execute(t3);
+        pool.execute(t4);
+        pool.execute(t5);
+
+        //关闭线程池
+        pool.shutdown();
+    }
+
+    private static class MyThread extends Thread {
+        private static int[] arr = {1, 2, 3, 4, 5};
+        private static int index = 0;
+
+        @Override
+        public void run() {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+                p(Thread.currentThread().getName() + "正在执行。。。" + arr[index++]);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

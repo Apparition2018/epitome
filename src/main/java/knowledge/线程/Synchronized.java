@@ -7,9 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Synchronized     内置锁
- * https://www.cnblogs.com/xyhuangjinfu/p/6505329.html
- * <p>
  * 同步监视器对象是同一个的时候，这些代码间就具有了互斥效果，可称之为互斥锁
+ * <p>
+ * Java内置锁的简单认识：https://www.cnblogs.com/xyhuangjinfu/p/6505329.html
+ * 并发编程中实现内存可见的两种方法比较：https://blog.csdn.net/u012426327/article/details/77469733
  */
 public class Synchronized extends Demo {
 

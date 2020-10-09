@@ -1913,9 +1913,9 @@ public class Suggestions extends Demo {
         }
 
         // 生成一个单线程的异步执行器
-        ExecutorService es = Executors.newSingleThreadExecutor();
+        ExecutorService pool = Executors.newSingleThreadExecutor();
         // 线程执行后的期望值
-        Future<Integer> future = es.submit(new TaxCalculator(100));
+        Future<Integer> future = pool.submit(new TaxCalculator(100));
         while (!future.isDone()) {
             // 还没有运算完成，等待200毫秒
             TimeUnit.MILLISECONDS.sleep(20);
@@ -1923,7 +1923,7 @@ public class Suggestions extends Demo {
             System.out.print("*");
         }
         p("\n计算完成，税金是：" + future.get() + " 元");
-        es.shutdown();
+        pool.shutdown();
 
         TimeUnit.SECONDS.sleep(10);
     }
@@ -1957,15 +1957,15 @@ public class Suggestions extends Demo {
 
     private void executors() {
         // 2个线程的线程池
-        ExecutorService es = Executors.newFixedThreadPool(2);
+        ExecutorService pool = Executors.newFixedThreadPool(2);
         // 多次执行线程体
         for (int i = 0; i < 4; i++) {
-            es.submit(() -> {
+            pool.submit(() -> {
                 p(Thread.currentThread().getName());
             });
         }
         // 关闭执行器
-        es.shutdown();
+        pool.shutdown();
     }
 
     /* 建议126：不同的线程池
@@ -2021,17 +2021,17 @@ public class Suggestions extends Demo {
     }
 
     private void runTasks(Class<? extends Runnable> clz) throws IllegalAccessException, InstantiationException, InterruptedException {
-        ExecutorService es = Executors.newCachedThreadPool();
+        ExecutorService pool = Executors.newCachedThreadPool();
         p("***开始执行 " + clz.getSimpleName() + " 任务***");
         // 启动3个线程
         for (int i = 0; i < 3; i++) {
-            es.submit(clz.newInstance());
+            pool.submit(clz.newInstance());
         }
         // 等待足够长的时间，然后关闭执行器
         TimeUnit.SECONDS.sleep(10);
         p("---" + clz.getSimpleName() + " 任务执行完毕---\n");
         // 关闭执行器
-        es.shutdown();
+        pool.shutdown();
     }
 
     /**

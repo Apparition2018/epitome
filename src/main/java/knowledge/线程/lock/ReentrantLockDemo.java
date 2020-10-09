@@ -13,7 +13,9 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ReentrantLockDemo extends Demo {
 
-    private Lock lock = new ReentrantLock();
+    // ReentrantLock(boolean fair)
+    // 根据给定的公平政策创建一个 ReentrantLock 的实例
+    private Lock lock = new ReentrantLock(true);
 
     public void insert(Thread thread) throws InterruptedException {
         if (lock.tryLock(2, TimeUnit.SECONDS)) {

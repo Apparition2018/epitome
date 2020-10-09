@@ -10,7 +10,11 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 两大特性：
  * 1.禁止重排序
- * 2.内存可见性：
+ * 2.内存可见性
+ * <p>
+ * 使用条件：
+ * 1.对变量的写入操作不依赖变量的当前值，或者你能确保只有单个线程更新变量的值。
+ * 2.该变量没有包含在具有其他变量的不变式中。
  * <p>
  * volatile 关键字解惑：https://www.jianshu.com/p/195ae7c77afe
  */

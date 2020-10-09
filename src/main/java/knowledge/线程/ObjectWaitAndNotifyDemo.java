@@ -11,7 +11,8 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * https://blog.csdn.net/u012426327/article/details/77160444
  * <p>
- * 对象锁，锁池，等待池 ???
+ * 锁池   : Monitor，多个线程争夺某个对象的锁的拥有权，没有争夺成功的线程就处于对象的锁池中，锁池中的线程会去争夺锁的拥有权
+ * 等待池 : WaitSet，线程调用了对象的 wait()，那么线程就处于该对象的等待池中，等待池中的线程不会去争夺锁的拥有权
  */
 public class ObjectWaitAndNotifyDemo extends Demo {
     public static void main(String[] args) {

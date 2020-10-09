@@ -1,6 +1,7 @@
 package knowledge.注解;
 
 import l.demo.Animal.Chicken;
+import l.demo.Demo;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,10 +20,10 @@ import java.util.List;
  * @author JDKAnnotation
  * created on 2020/9/18 10:13
  */
-public class JDKAnnotation {
+public class JDKAnnotation extends Demo {
 
     /**
-     * deprecation  过期
+     * deprecation              过期
      */
     @SuppressWarnings("deprecation")
     public void testDeprecation() {
@@ -31,7 +32,7 @@ public class JDKAnnotation {
     }
 
     /**
-     * unused       未使用
+     * unused                   未使用
      */
     public void testUnused() {
         @SuppressWarnings("unused")
@@ -39,14 +40,24 @@ public class JDKAnnotation {
     }
 
     /**
-     * rawtypes     原生类型未使用泛型
-     * unchecked    未检测转换
+     * rawtypes                 原生类型未使用泛型
+     * unchecked                未检测转换
      */
     @SuppressWarnings(value = {"unchecked", "rawtypes"})
     public void testRawTypesAndUnchecked(String item) {
         List<Object> items = new ArrayList();
         items.add(item);
-        System.out.println(items.size());
+        p(items.size());
+    }
+
+    /**
+     * InfiniteLoopStatement    无线循环语句
+     */
+    @SuppressWarnings("InfiniteLoopStatement")
+    public void testInfiniteLoopStatement() {
+        while (true) {
+            p(" ");
+        }
     }
 
     /**

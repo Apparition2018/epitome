@@ -57,12 +57,12 @@ public class CountDownLatchDemo {
         // 参与跑步有多个
         CountDownLatch end = new CountDownLatch(num);
         // 每个跑步者一个跑道
-        ExecutorService es = Executors.newFixedThreadPool(num);
+        ExecutorService pool = Executors.newFixedThreadPool(num);
         // 记录比赛成绩
         List<Future<Integer>> futures = new ArrayList<>();
         // 跑步者就位，所有线程处于等待状态
         for (int i = 0; i < 10; i++) {
-            futures.add(es.submit(new Runner(begin, end)));
+            futures.add(pool.submit(new Runner(begin, end)));
         }
         // 模拟热身时间
         TimeUnit.SECONDS.sleep(1);
