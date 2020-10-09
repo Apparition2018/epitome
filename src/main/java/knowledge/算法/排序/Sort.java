@@ -32,14 +32,20 @@ public class Sort extends Demo {
     }
 
     /**
-     * 冒泡排序
+     * 交换排序
      */
-    static class BubbleSort {
+    static class ChangeSort {
         public static void main(String[] args) {
-            bubbleSort(arr);
+            bubbleSort(arr.clone());
+
+            long t1 = System.nanoTime();
+            p("快速排序：" + Arrays.toString(quickSort(arr.clone(), 0, arr.length - 1)));
+            long t2 = System.nanoTime();
+            p("消耗时间：" + (t2 - t1));
         }
 
         /**
+         * 冒泡排序
          * 从数组的第一个位置开始两两比较 arr[index] 和 arr[index+1]，如果 arr[index] 大于 arr[index+1]，则交换 arr[index] 和 arr[index+1] 的位置
          * <p>
          * [88, 23, 97, 19, 85, 35, 81, 54, 75, 50]
@@ -73,108 +79,10 @@ public class Sort extends Demo {
             long t2 = System.nanoTime();
             p("冒泡排序：" + Arrays.toString(arr) + "\n消耗时间：" + (t2 - t1));
         }
-    }
-
-    /**
-     * 选择排序
-     */
-    static class SelectionSort {
-        public static void main(String[] args) {
-            selectionSort(arr);
-        }
-
-        /**
-         * 选择一个值 arr[0] 作为标杆，然后循环找到除这个值外最小的值（查找小于标杆的最小值），交换这两个值，
-         * 这时最小值就被放到了arr[0]上，然后再将arr[1]作为标杆，从剩下未排序的值中找到最小值，并交换这两个值
-         * <p>
-         * [88, 23, 97, 19, 85, 35, 81, 54, 75, 50]
-         * <p>
-         * [19, 23, 97, 88, 85, 35, 81, 54, 75, 50]
-         * [19, 23, 97, 88, 85, 35, 81, 54, 75, 50]
-         * [19, 23, 35, 88, 85, 97, 81, 54, 75, 50]
-         * [19, 23, 35, 50, 85, 97, 81, 54, 75, 88]
-         * [19, 23, 35, 50, 54, 97, 81, 85, 75, 88]
-         * [19, 23, 35, 50, 54, 75, 81, 85, 97, 88]
-         * [19, 23, 35, 50, 54, 75, 81, 85, 97, 88]
-         * [19, 23, 35, 50, 54, 75, 81, 85, 97, 88]
-         * [19, 23, 35, 50, 54, 75, 81, 85, 88, 97]
-         */
-        private static void selectionSort(int[] arr) {
-            long t1 = System.nanoTime();
-            for (int i = 0, len = arr.length; i < len - 1; i++) {
-                int min = i;
-                for (int j = i + 1; j < len; j++) {
-                    if (arr[min] > arr[j]) {
-                        min = j;
-                    }
-                }
-                if (min != i) {
-                    int temp = arr[i];
-                    arr[i] = arr[min];
-                    arr[min] = temp;
-                }
-            }
-            long t2 = System.nanoTime();
-            p("选择排序：" + Arrays.toString(arr) + "\n消耗时间：" + (t2 - t1));
-        }
-    }
-
-    /**
-     * 插入排序
-     */
-    static class InsertSort {
-        public static void main(String[] args) {
-            insertionSort(arr);
-        }
-
-        /**
-         * 插入排序的思想是数组是部分有序的，然后将无序的部分循环插入到已有序的序列中
-         * <p>
-         * [88, 23, 97, 19, 85, 35, 81, 54, 75, 50]
-         * <p>
-         * [23, 88, 97, 19, 85, 35, 81, 54, 75, 50]
-         * [23, 88, 97, 19, 85, 35, 81, 54, 75, 50]
-         * [19, 23, 88, 97, 85, 35, 81, 54, 75, 50]
-         * [19, 23, 85, 88, 97, 35, 81, 54, 75, 50]
-         * [19, 23, 35, 85, 88, 97, 81, 54, 75, 50]
-         * [19, 23, 35, 81, 85, 88, 97, 54, 75, 50]
-         * [19, 23, 35, 54, 81, 85, 88, 97, 75, 50]
-         * [19, 23, 35, 54, 75, 81, 85, 88, 97, 50]
-         * [19, 23, 35, 50, 54, 75, 81, 85, 88, 97]
-         */
-        private static void insertionSort(int[] arr) {
-            long t1 = System.nanoTime();
-            for (int i = 1, len = arr.length; i < len; i++) {
-                // 被标记的值或者说是当前需要插入的值
-                int temp = arr[i];
-                int j = i;
-                // 如果轮循值大于被标记值则往后移
-                while (j > 0 && temp < arr[j - 1]) {
-                    arr[j] = arr[j - 1];
-                    j--;
-                }
-                // 将被标记值插入最终移除的空位置
-                arr[j] = temp;
-            }
-            long t2 = System.nanoTime();
-            p("插入排序：" + Arrays.toString(arr) + "\n消耗时间：" + (t2 - t1));
-        }
-    }
-
-    /**
-     * 快速排序
-     */
-    static class QuickSort {
-        public static void main(String[] args) {
-            long t1 = System.nanoTime();
-            p("快速排序：" + Arrays.toString(quickSort(arr, 0, arr.length - 1)));
-            long t2 = System.nanoTime();
-            p("消耗时间：" + (t2 - t1));
-        }
 
         /**
          * 挖坑法快速排序
-         * https://blog.csdn.net/qq_36528114/article/details/78667034
+         * https://blog.c插入排序sdn.net/qq_36528114/article/details/78667034
          */
         private static int[] quickSort(int[] arr, int l, int r) {
             if (l < r) {
@@ -233,6 +141,101 @@ public class Sort extends Demo {
     }
 
     /**
+     * 选择排序
+     */
+    static class SelectionSort {
+        public static void main(String[] args) {
+            easySelectionSort(arr.clone());
+        }
+
+        /**
+         * 简单选择排序
+         * 选择一个值 arr[0] 作为标杆，然后循环找到除这个值外最小的值（查找小于标杆的最小值），交换这两个值，
+         * 这时最小值就被放到了arr[0]上，然后再将arr[1]作为标杆，从剩下未排序的值中找到最小值，并交换这两个值
+         * <p>
+         * [88, 23, 97, 19, 85, 35, 81, 54, 75, 50]
+         * <p>
+         * [19, 23, 97, 88, 85, 35, 81, 54, 75, 50]
+         * [19, 23, 97, 88, 85, 35, 81, 54, 75, 50]
+         * [19, 23, 35, 88, 85, 97, 81, 54, 75, 50]
+         * [19, 23, 35, 50, 85, 97, 81, 54, 75, 88]
+         * [19, 23, 35, 50, 54, 97, 81, 85, 75, 88]
+         * [19, 23, 35, 50, 54, 75, 81, 85, 97, 88]
+         * [19, 23, 35, 50, 54, 75, 81, 85, 97, 88]
+         * [19, 23, 35, 50, 54, 75, 81, 85, 97, 88]
+         * [19, 23, 35, 50, 54, 75, 81, 85, 88, 97]
+         */
+        private static void easySelectionSort(int[] arr) {
+            long t1 = System.nanoTime();
+            for (int i = 0, len = arr.length; i < len - 1; i++) {
+                int min = i;
+                for (int j = i + 1; j < len; j++) {
+                    if (arr[min] > arr[j]) {
+                        min = j;
+                    }
+                }
+                if (min != i) {
+                    int temp = arr[i];
+                    arr[i] = arr[min];
+                    arr[min] = temp;
+                }
+            }
+            long t2 = System.nanoTime();
+            p("选择排序：" + Arrays.toString(arr) + "\n消耗时间：" + (t2 - t1));
+        }
+
+        /**
+         * 堆排序
+         * https://www.cnblogs.com/guizimo/p/13454676.html#/cnblog/works/article/13454676
+         */
+        private static void heapSort(int[] arr) {
+            
+        }
+    }
+
+    /**
+     * 插入排序
+     */
+    static class InsertSort {
+        public static void main(String[] args) {
+            insertionSort(arr);
+        }
+
+        /**
+         * 插入排序的思想是数组是部分有序的，然后将无序的部分循环插入到已有序的序列中
+         * <p>
+         * [88, 23, 97, 19, 85, 35, 81, 54, 75, 50]
+         * <p>
+         * [23, 88, 97, 19, 85, 35, 81, 54, 75, 50]
+         * [23, 88, 97, 19, 85, 35, 81, 54, 75, 50]
+         * [19, 23, 88, 97, 85, 35, 81, 54, 75, 50]
+         * [19, 23, 85, 88, 97, 35, 81, 54, 75, 50]
+         * [19, 23, 35, 85, 88, 97, 81, 54, 75, 50]
+         * [19, 23, 35, 81, 85, 88, 97, 54, 75, 50]
+         * [19, 23, 35, 54, 81, 85, 88, 97, 75, 50]
+         * [19, 23, 35, 54, 75, 81, 85, 88, 97, 50]
+         * [19, 23, 35, 50, 54, 75, 81, 85, 88, 97]
+         */
+        private static void insertionSort(int[] arr) {
+            long t1 = System.nanoTime();
+            for (int i = 1, len = arr.length; i < len; i++) {
+                // 被标记的值或者说是当前需要插入的值
+                int temp = arr[i];
+                int j = i;
+                // 如果轮循值大于被标记值则往后移
+                while (j > 0 && temp < arr[j - 1]) {
+                    arr[j] = arr[j - 1];
+                    j--;
+                }
+                // 将被标记值插入最终移除的空位置
+                arr[j] = temp;
+            }
+            long t2 = System.nanoTime();
+            p("插入排序：" + Arrays.toString(arr) + "\n消耗时间：" + (t2 - t1));
+        }
+    }
+
+    /**
      * 归并排序
      */
     static class MergeSort {
@@ -283,12 +286,4 @@ public class Sort extends Demo {
             }
         }
     }
-
-    /**
-     * 堆排序
-     */
-    static class HeapSort {
-
-    }
-
 }
