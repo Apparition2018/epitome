@@ -21,6 +21,8 @@ import java.net.SocketTimeoutException;
  * Java Socket 编程基础及深入讲解：https://www.cnblogs.com/yiwangzhibujian/p/7107785.html
  * Java 网络编程 之 socket 的用法与实现：https://blog.csdn.net/a78270528/article/details/80318571
  * Java 实例 - Socket 实现多线程服务器程序：http://www.runoob.com/java/net-multisoc.html
+ * 互联网协议入门（一）：http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html
+ * 互联网协议入门（二）：http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html
  * <p>
  * 单工，半双工，全双工：https://blog.csdn.net/u012426327/article/details/77160503
  */

@@ -72,16 +72,16 @@ public class URLConnectionDemo extends Demo {
     @Test
     public void getInputStream() throws IOException {
         URL url = new URL(BAIDU_URL);
-        URLConnection urlConn = url.openConnection();
-        HttpURLConnection conn;
-        if (urlConn instanceof HttpURLConnection) {
-            conn = (HttpURLConnection) urlConn;
-            p(conn);
+        URLConnection conn = url.openConnection();
+        HttpURLConnection httpConn;
+        if (conn instanceof HttpURLConnection) {
+            httpConn = (HttpURLConnection) conn;
+            p(httpConn);
         } else {
             p("请输入 url 地址");
             return;
         }
-        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
+        BufferedReader br = new BufferedReader(new InputStreamReader(httpConn.getInputStream(), StandardCharsets.UTF_8));
         String line;
         StringBuilder sb = new StringBuilder();
         while ((line = br.readLine()) != null) {

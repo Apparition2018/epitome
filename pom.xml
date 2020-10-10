@@ -28,7 +28,9 @@
         <springboot-mybatis>2.1.1</springboot-mybatis>
         <springboot-druid>1.1.18</springboot-druid>
         <springboot-pagehelper>1.2.13</springboot-pagehelper>
+        <dbcp2>2.8.0</dbcp2>
         <poi>3.17</poi>
+        <easyexcel>2.2.6</easyexcel>
         <hutool>4.5.16</hutool>
         <guava>28.0-jre</guava>
         <commons-math3>3.6.1</commons-math3>
@@ -121,6 +123,13 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- dbcp2 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${dbcp2}</version>
+        </dependency>
+
         <!-- logback: 包含了 logback-core, slf4j-api -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -143,6 +152,13 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>${poi}</version>
+        </dependency>
+        
+        <!-- easyexcel -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>${easyexcel}</version>
         </dependency>
 
         <!-- hutool -->
@@ -325,13 +341,13 @@
         </dependency>
     </dependencies>
 
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>alimaven</id>-->
-<!--            <name>aliyun maven</name>-->
-<!--            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
