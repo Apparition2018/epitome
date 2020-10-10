@@ -1,5 +1,6 @@
 package knowledge.api.util.concurrent;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Random;
@@ -25,40 +26,43 @@ import java.util.concurrent.TimeUnit;
  * void	        reset()                             将屏障重置为其初始状态
  * <p>
  */
-public class CyclicBarrierDemo {
+public class CyclicBarrierDemo extends Demo {
 
     /**
      * 案例：两个工人从两端挖掘隧道，各自独立奋战，中间不沟通，如果两个人在汇合点处碰头了，则表明隧道已经挖通。
+     * http://www.blogjava.net/polang1002/archive/2015/02/27/423067.html
      */
-    @Test
-    public void test() {
-        class Worker implements Runnable {
+    public static void main(String[] args) {
+        // 设置汇集数量，以及汇集完成后的任务
+        // CyclicBarrier(int parties[, Runnable barrierAction])
+        // 创建一个新的 CyclicBarrier，它将在给定数量的参与者（线程）处于等待状态时启动，并在启动 barrier 时执行给定的屏障操作，该操作由最后一个进入 barrier 的线程执行
+        CyclicBarrier cb = new CyclicBarrier(2, () -> p("隧道已经打通！"));
+        // 工人1挖隧道
+        new Thread(new Worker(cb), "工人1").start();
+        // 工人2挖隧道
+        new Thread(new Worker(cb), "工人2").start();
+    }
+    
+    private static class Worker implements Runnable {
+        // 关卡
+        private CyclicBarrier cb;
 
-            // 关卡
-            private CyclicBarrier cb;
-
-            private Worker(CyclicBarrier cb) {
-                this.cb = cb;
-            }
-
-            @Override
-            public void run() {
-                try {
-                    TimeUnit.SECONDS.sleep(new Random().nextInt(10));
-                    System.out.println(Thread.currentThread().getName() + "- 到达汇合点");
-                    // 到达汇合点
-                    cb.await();
-                } catch (InterruptedException | BrokenBarrierException e) {
-                    e.printStackTrace();
-                }
-            }
+        private Worker(CyclicBarrier cb) {
+            this.cb = cb;
         }
 
-        // 设置汇集数量，以及汇集完成后的任务
-        CyclicBarrier cb = new CyclicBarrier(2, () -> System.out.println("隧道已经打通！"));
-        // 工人1挖隧道
-        new Thread(new Worker(cb) + "工人1").start();
-        // 工人2挖隧道
-        new Thread(new Worker(cb) + "工人2").start();
+        @Override
+        public void run() {
+            try {
+                TimeUnit.SECONDS.sleep(new Random().nextInt(5));
+                p(Thread.currentThread().getName() + "- 到达汇合点");
+                // 到达汇合点
+                // int	    await([long timeout, TimeUnit unit])
+                // 等待所有 parties已经在此屏障上调用 await ，或指定的等待时间过去
+                cb.await();
+            } catch (InterruptedException | BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

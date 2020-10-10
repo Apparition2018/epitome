@@ -5,6 +5,9 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 /**
  * QueueDemo
@@ -59,7 +62,11 @@ public class QueueDemo extends Demo {
      * 检查	    element()	    peek()
      */
     @Test
-    public void testBlockingQueue() {
-
+    public void testBlockingQueue() throws InterruptedException {
+        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(20);
+        for (int i = 0; i < 25; i++) {
+            queue.offer(i, 1, TimeUnit.SECONDS);
+        }
+        p(queue.size());
     }
 }

@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 生产者-消费者 模式
+ * 本例基于 BlockingQueue 实现
  * <p>
  * https://www.cnblogs.com/chentingk/p/6497107.html
  *
@@ -33,7 +34,6 @@ public class ProducerAndConsumerPattern extends Demo {
         p2.stop();
         TimeUnit.SECONDS.sleep(3);
         pool.shutdown();
-        
     }
 
     private static class Producer implements Runnable {
