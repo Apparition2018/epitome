@@ -20,6 +20,16 @@ public class ArrayDemo extends Demo {
 
         // 方式三
         int[] arr3 = new int[]{0, 0, 0};
+
+        // 方式四
+        // static Object	newInstance(Class<?> componentType, int... dimensions)
+        // 创建一个具有指定的组件类型和维度的新数组
+        // static Object	newInstance(Class<?> componentType, int length)
+        // 创建一个具有指定的组件类型和长度的新数组
+        int[][] intArrArr = (int[][]) Array.newInstance(int.class, 2, 3);
+        for (int[] intArr : intArrArr) {
+            p(intArr);
+        }
     }
 
     /**
@@ -27,25 +37,18 @@ public class ArrayDemo extends Demo {
      */
     @Test
     public void multidimensionalArray() {
-        int[][] arr = new int[2][3];
-
-        for (int i = 0, len1 = arr.length; i < len1; i++) {
-            for (int j = 0, len2 = arr[i].length; j < len2; j++) {
-                arr[i][j] = j;
-            }
-        }
+        // nt[][] arr = new int[2][3];
+        int[][] arr = {{0, 1, 2}, {0, 1, 2}};
 
         for (int[] ints : arr) {
             p(ints);
             // [0, 1, 2]
             // [0, 1, 2]
         }
-
     }
 
     /**
      * 数组扩容
-     * <p>
      * System.arraycopy()
      */
     @Test
@@ -55,19 +58,6 @@ public class ArrayDemo extends Demo {
 
         System.arraycopy(arr1, 0, arr2, 0, 3);
         p(arr2);
-    }
-
-
-    /**
-     * static Object	newInstance(Class<?> componentType, int... dimensions)
-     * 创建一个具有指定的组件类型和维度的新数组
-     * static Object	newInstance(Class<?> componentType, int length)
-     * 创建一个具有指定的组件类型和长度的新数组
-     */
-    @Test
-    public void newInstance() {
-        int[][] ints = (int[][]) Array.newInstance(int.class, 2, 3);
-        p(ints);
     }
 
 }
