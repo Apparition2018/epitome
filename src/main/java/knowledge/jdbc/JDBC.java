@@ -31,7 +31,7 @@ public class JDBC {
             // static Connection	getConnection(String url, Properties info)
             // static Connection	getConnection(String url[, String user, String password])
             // 试图建立到给定数据库 URL 的连接
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC", "root", "root");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/epitome?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC", "root", "root");
             
             // 3. 创建 Statement
             // Statement	        createStatement(int resultSetType[, int resultSetConcurrency, int resultSetHoldability])
