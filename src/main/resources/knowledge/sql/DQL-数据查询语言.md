@@ -46,10 +46,12 @@ SELECT deptno, MAX(sal) max_sal FROM emp GROUP BY deptno HAVING MAX(sal) > 2000;
 >GROUP BY d.loc
 >```
 >#### Oracle
+>```
 >1. ROLLUP
 >2. CUBE
 >3. GROUPING SETS
->---
+>```
+---
 ## 关联查询
 ```
 SELECT e.ename, d.loc FROM emp e, dept d;                                           笛卡儿积
@@ -112,15 +114,15 @@ SELECT e.ename, m.ename, e.sal, m.sal FROM emp e, emp m WHERE e.mgr = m.empno;  
 >```
 >```
 >### Oracle
->#### ROW_NUMBER: 连续且唯一
+>>#### ROW_NUMBER: 连续且唯一
 >>```
 >>SELECT ename, deptno, sal, ROW_NUMBER() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
 >>```
->#### RANK: 不连续不唯一
+>>#### RANK: 不连续不唯一
 >>```
 >>SELECT ename, deptno, sal, RANK() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
 >>```
->#### DENSE_RANK: 连续不唯一
+>>#### DENSE_RANK: 连续不唯一
 >>```
 >>SELECT ename, deptno, sal, DENSE_RANK() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
 >>```
