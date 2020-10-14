@@ -1,12 +1,10 @@
 package knowledge.api.util.stream;
 
 import l.demo.Demo;
+import l.demo.Person;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.*;
 
 /**
@@ -23,10 +21,22 @@ import java.util.stream.*;
  * http://www.runoob.com/java/java8-streams.html
  */
 public class StreamDemo extends Demo {
+    
+    @Test
+    public void testStream() {
+        List<Person> personList = new ArrayList<>();
+        personList.add(new Person(1, "张三"));
+        personList.add(new Person(2, "李四"));
 
-    static {
-
+        // List<Object> -> List<Integer>
+        List<Integer> idList = personList.stream().map(Person::getId).collect(Collectors.toList());
+        p(idList);  // [1, 2]
+        
+        // List<Object> -> Map<Integer, Object>
+        Map<Integer, Person> map = personList.stream().collect(Collectors.toMap(Person::getId, person -> person));
+        p(map);     // {1=Person{id=1, name='张三'}, 2=Person{id=2, name='李四'}}
     }
+
 
     /**
      * 创建 Stream 对象

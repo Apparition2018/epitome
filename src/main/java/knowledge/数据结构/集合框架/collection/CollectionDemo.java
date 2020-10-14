@@ -39,7 +39,7 @@ public class CollectionDemo extends Demo {
     @Test
     public void contains() {
         p(list);                        // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        p(list.contains("6"));          // true
+        p(list.contains(6));            // true
 
         p(subList);                     // [1, 2, 3, 4, 5]
         p(list.containsAll(subList));   // true
@@ -47,6 +47,7 @@ public class CollectionDemo extends Demo {
 
     /**
      * boolean	    removeAll(Collection<?> c)      移除此 collection 中那些也包含在指定 collection 中的所有元素（可选操作）
+     * 差集
      */
     @Test
     public void removeAll() {
@@ -59,6 +60,7 @@ public class CollectionDemo extends Demo {
 
     /**
      * boolean	    retainAll(Collection<?> c)      仅保留此 collection 中那些也包含在指定 collection 的元素（可选操作）
+     * 交集
      */
     @Test
     public void retainAll() {
@@ -74,7 +76,7 @@ public class CollectionDemo extends Demo {
      */
     @Test
     public void toArray() {
-        String[] arr = new String[list.size()];
+        Integer[] arr = new Integer[list.size()];
         arr = list.toArray(arr);
         p(arr); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
