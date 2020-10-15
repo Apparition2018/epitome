@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * int	    length()                            返回此字符序列的长度
  * char     charAt(int index)        1           返回指定索引处的 char 值
  * String   concat(String str)                  将指定字符串连接到此字符串的结尾
- * boolean  contains(CharSequence s)            当且仅当此字符串包含指定的 char 值序列时，返回 true 
+ * boolean  contains(CharSequence s)            当且仅当此字符串包含指定的 char 值序列时，返回 true
  * boolean	endsWith(String suffix)
  * boolean	startsWith(String prefix[, int toffset])
  * boolean	equals(Object anObject)             将此字符串与指定的对象比较
@@ -28,117 +28,100 @@ import java.util.regex.Pattern;
  */
 public class StringDemo extends Demo {
 
-    /**
-     * String([byte[] bytes, int offset, int length, Charset charset / String charsetName])
-     * 通过使用指定的 charset/字符集 解码指定的 byte 子数组，构造一个新的 String
-     */
     @Test
-    public void constructor() {
-        byte[] data = {'e', 'p', 'i', 't', 'o', 'm', 'e'};
-        String s = new String(data, 0, data.length, StandardCharsets.UTF_8);
-        p(s); // epitome
-    }
+    public void testString() {
+        // byte[]	    getBytes([Charset charset/String charsetName])
+        // 使用指定的 charset/字符集 将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中
+        byte[] bytes = "hello world".getBytes(StandardCharsets.UTF_8);          // 编码
+        // String([byte[] bytes, int offset, int length, Charset charset / String charsetName])
+        // 通过使用指定的 charset/字符集 解码指定的 byte 子数组，构造一个新的 String
+        String s = new String(bytes, 0, bytes.length, StandardCharsets.UTF_8);  // 解码
+        p(s); // hello world
 
-    /**
-     * int          compareTo(String anotherString)
-     * 按字典顺序比较两个字符串
-     * int          compareToIgnoreCase(String str)
-     * 按字典顺序比较两个字符串，不考虑大小写
-     */
-    @Test
-    public void compareTo() {
-        p("a".compareTo("b"));  //  -1
-        p("a".compareTo("ab")); //  -1
-    }
 
-    /**
-     * boolean      contentEquals(CharSequence cs)
-     * 将此字符串与指定的 CharSequence 比较
-     * boolean	    contentEquals(StringBuffer sb)
-     * 将此字符串与指定的 StringBuffer 比较
-     */
-    @Test
-    public void contentEquals() {
-        p("abc".equals(new StringBuffer("abc")));   // false
-        p("abc".contains(new StringBuffer("abc"))); // true
-    }
-
-    /**
-     * static String    copyValueOf(char[] data[, int offset, int count])
-     * 返回指定数组中表示该字符序列的 String
-     */
-    @Test
-    public void copyValueOf() {
-        char[] cArr = {'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'};
-        p(String.copyValueOf(cArr));        // hello world
-        p(String.copyValueOf(cArr, 0, 6));  // hello
-    }
-
-    /**
-     * static String	format([Locale l, ]String format, Object... args)
-     * 使用指定的语言环境、格式字符串和参数返回一个格式化字符串
-     * <p>
-     * https://www.cnblogs.com/Dhouse/p/7776780.html
-     */
-    @Test
-    public void format() {
+        // static String	format([Locale l, ]String format, Object... args)
+        // 使用指定的语言环境、格式字符串和参数返回一个格式化字符串
+        // https://www.cnblogs.com/Dhouse/p/7776780.html
         p(String.format("%s来自%s", "我", "中国")); // 我来自中国
     }
 
-    /**
-     * byte[]       getBytes()
-     * 使用平台的默认字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中
-     * byte[]	    getBytes(Charset charset)
-     * 使用给定的 charset 将此 String 编码到 byte 序列，并将结果存储到一个新的 byte 数组中
-     * byte[]	    getBytes(String charsetName)
-     * 使用指定的字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中
-     */
     @Test
-    public void getBytes() {
-        byte[] bytes = "hello world".getBytes(StandardCharsets.UTF_8);
-        p(new String(bytes)); // hello world
+    public void testValueOf() {
+        // static String    copyValueOf(char[] data[, int offset, int count])
+        // 返回指定数组中表示该字符序列的 String
+        char[] cArr = {'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'};
+        p(String.copyValueOf(cArr, 0, 11));  // hello world
+
+        // static String    valueOf(XXX xxx)
+        // 返回 XXX 参数的字符串表示形式
+        p(String.valueOf(true));            // true
+        p(String.valueOf(123456L));         // 123456
+        p(String.valueOf(cArr));            // hello world
     }
+    
+    public void testSplitAndJoin() {
+        // String[]	        split(String regex, int limit)
+        // 根据匹配给定的正则表达式来拆分此字符串
+        p("www.baidu.com".split("\\.", 2)); // [www, baidu.com]
+
+        // static String    join(CharSequence delimiter, Iterable<? extends CharSequence> / CharSequence... elements)
+        // 返回由 elements 和指定分隔符组成的新字符串。
+        p(String.join(",", "A", "B", "C"));
+        
+    }
+    
 
     /**
-     * void         getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
-     * 将字符从此字符串复制到目标字符数组
+     * 测试比较相关 API
      */
     @Test
-    public void getChars() {
-        char[] cArr = new char[5];
-        "hello world".getChars(6, 11, cArr, 0);
-        p(cArr); // world
-    }
+    public void testCompare() {
+        // boolean	        contentEquals([CharSequence / StringBuffer cs])
+        // 将此字符串与指定的 CharSequence / StringBuffer 比较内容是否相等
+        p("abc".equals(new StringBuffer("abc")));               // false
+        p("abc".contentEquals(new StringBuffer("abc")));        // true
 
-    /**
-     * join(CharSequence delimiter, Iterable<? extends CharSequence>/CharSequence... elements)
-     * 返回由 elements 和指定分隔符组成的新字符串。
-     */
-    @Test
-    public void join() {
-        p(String.join(",", "1", "2", "3")); // 1,2,3
-    }
+        // boolean	        regionMatches([boolean ignoreCase, ]int toffset, String other, int ooffset, int len)
+        // 测试两个字符串区域是否相等
+        p("www.baidu.com".regionMatches(true, 4, "BAIDU", 0, 5));// true
 
-    /**
-     * boolean	    matches(String regex)
-     * 告知此字符串是否匹配给定的正则表达式
-     * 和 Pattern.matches(regex, str) 返回的结果完全相同
-     */
-    @Test
-    public void matches() {
+        // boolean	        matches(String regex)
+        // 告知此字符串是否匹配给定的正则表达式，和 Pattern.matches(regex, str) 返回的结果完全相同
         p("www.baidu.com".matches("(.*)baidu(.*)"));            // true
         p(Pattern.matches("(.*)baidu(.*)", "www.baidu.com"));   // true
+
+
+        // int              compareTo(String anotherString)
+        // 按字典顺序比较两个字符串
+        // int              compareToIgnoreCase(String str)
+        // 按字典顺序比较两个字符串，不考虑大小写
+        p("a".compareTo("b"));      //  -1
+        p("ab".compareTo("abc"));   //  -1
+    }
+    
+    @Test
+    public void testToCharArray() {
+        final String S = "hello world";
+        
+        char[] cArr = new char[S.length()];
+        // void             getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+        // 将字符从此字符串复制到目标字符数组
+        S.getChars(0, S.length(), cArr, 0);
+        p(cArr);            // [h, e, l, l, o,  , w, o, r, l, d]
+
+        // char[]	        toCharArray()
+        // 将此字符串转换为一个新的字符数组
+        p(S.toCharArray()); // [h, e, l, l, o,  , w, o, r, l, d]
     }
 
-    /**
-     * boolean	    regionMatches([boolean ignoreCase, ]int toffset, String other, int ooffset, int len)
-     * 测试两个字符串区域是否相等
-     */
     @Test
-    public void regionMatches() {
-        p("www.baidu.com".regionMatches(4, "baidu", 0, 5));         // true
-        p("www.baidu.com".regionMatches(4, "baidu", 0, 5));         // false
-        p("www.baidu.com".regionMatches(true, 4, "baidu", 0, 5));   // true
+    public void testSubString() {
+        // CharSequence	    subSequence(int beginIndex, int endIndex)
+        // 返回一个新的字符序列，它是此序列的一个子序列
+        p("www.baidu.com".subSequence(4, 10));  // baidu
+        // String	        substring(int beginIndex[, int endIndex])
+        // 返回一个新字符串，它是此字符串的一个子字符串
+        p("www.baidu.com".substring(4, 10));    // baidu
     }
 
     /**
@@ -159,52 +142,5 @@ public class StringDemo extends Demo {
         p("abc123cba".replaceFirst("[a-z]*", "ABC"));   // ABC123cba
 
         p("13800123456".replaceAll("(.*\\d{3})\\d{4}(\\d{4})", "$1****$2")); // 138****3456，分组替换
-    }
-
-    /**
-     * String[]	    split(String regex, int limit)
-     * 根据匹配给定的正则表达式来拆分此字符串
-     */
-    @Test
-    public void split() {
-        p("www.baidu.com".split("\\.", 2)); // [www, baidu.com]
-    }
-
-    /**
-     * CharSequence	subSequence(int beginIndex, int endIndex)
-     * 返回一个新的字符序列，它是此序列的一个子序列
-     */
-    @Test
-    public void subSequence() {
-        p("www.baidu.com".subSequence(4, 10)); // baidu
-    }
-
-    /**
-     * String	    substring(int beginIndex[, int endIndex])
-     * 返回一个新字符串，它是此字符串的一个子字符串
-     */
-    @Test
-    public void substring() {
-        p("www.baidu.com".substring(4, 10)); // baidu
-    }
-
-    /**
-     * char[]	    toCharArray()
-     * 将此字符串转换为一个新的字符数组
-     */
-    @Test
-    public void toCharArray() {
-        p("hello world".toCharArray()); // [h, e, l, l, o,  , w, o, r, l, d]
-    }
-
-    /**
-     * static String    valueOf(XXX xxx)
-     * 返回 XXX 参数的字符串表示形式
-     */
-    @Test
-    public void valueOf() {
-        p(String.valueOf(true));    // true
-        p(String.valueOf(123456L)); // 123456
-        p(String.valueOf(new char[]{'h', 'e', 'l', 'l', 'o'})); // hello
     }
 }
