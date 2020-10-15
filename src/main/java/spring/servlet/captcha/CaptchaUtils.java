@@ -134,6 +134,8 @@ public class CaptchaUtils {
             case '-':
                 result = one - two;
                 break;
+            default:
+                assert false : "error";
         }
         return "" + one + operator + two + "=?";
     }

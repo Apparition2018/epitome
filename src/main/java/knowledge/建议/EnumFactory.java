@@ -28,7 +28,7 @@ enum CarEnumFactory1 {
             case BUICK_CAR:
                 return new BuickCar();
             default:
-                throw new AssertException("无效参数");
+                throw new AssertException("Invalid Param");
         }
     }
 

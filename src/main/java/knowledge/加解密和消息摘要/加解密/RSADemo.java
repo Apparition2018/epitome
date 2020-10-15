@@ -177,7 +177,7 @@ public class RSADemo {
                 k = keyFactory.generatePublic(x509KeySpec);
                 break;
             default:
-                assert false : "error";
+                assert false : "Invalid Param";
         }
 
         // String	getAlgorithm()
@@ -198,7 +198,7 @@ public class RSADemo {
                 MAX_BLOCK = MAX_DECRYPT_BLOCK;
                 break;
             default:
-                assert false : "error";
+                assert false : "Invalid Param";
         }
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -239,7 +239,7 @@ public class RSADemo {
                 key = (Key) keyMap.get(PUBLIC_KEY);
                 break;
             default:
-                assert false : "error";
+                assert false : "Invalid Param";
         }
         return key.getEncoded();
     }

@@ -1,10 +1,10 @@
 package knowledge.建议;
 
+import knowledge.建议.Family.Daughter;
+import knowledge.建议.Family.Son;
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
-import knowledge.建议.Family.Son;
-import knowledge.建议.Family.Daughter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -344,6 +344,11 @@ public class Suggestions extends Demo {
     }
 
     /* 建议19：断言
+     * assertion 检查通常在开发和测试时开启。为了提高性能，在软件发布后，assertion 检查通常是关闭的。
+     * <p>
+     * 用法：
+     * 1. assert <boolean expression>
+     * 2. assert <boolean expression> : <error message>
      * <p>
      * 可以是用断言的地方：
      * 1.程序不应到达的地方，可以放置断言：assert false
@@ -362,6 +367,7 @@ public class Suggestions extends Demo {
         int age = -1;
         if (age >= 0) {
             p("ok");
+            return;
         }
         assert false : "到达这里就表示错误";
     }
@@ -1202,6 +1208,8 @@ public class Suggestions extends Demo {
             case WINTER:
                 p("this is" + Season.WINTER);
                 break;
+            default:
+                assert false : "Invalid Param";
         }
     }
 
@@ -1232,8 +1240,7 @@ public class Suggestions extends Demo {
                 p("Three");
                 break;
             default:
-                p("error");
-                break;
+                assert false : "Invalid Param";
         }
     }
 
@@ -1252,7 +1259,7 @@ public class Suggestions extends Demo {
                 p("秋");
                 break;
             default:
-                assert false : "error"; // AssertionError: error
+                assert false : "Invalid Param"; // AssertionError: error
         }
     }
 

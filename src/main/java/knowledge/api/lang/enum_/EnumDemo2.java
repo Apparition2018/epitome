@@ -52,6 +52,8 @@ public class EnumDemo2 extends Demo {
             case SUN:
                 p("星期天");
                 break;
+            default:
+                assert false : "Invalid Param";
         }
     }
 
