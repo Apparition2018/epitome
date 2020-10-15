@@ -25,6 +25,12 @@ import java.util.regex.Pattern;
  * String	toLowerCase()
  * String	toUpperCase()
  * String	trim()
+ * <p>
+ * 字符集合（形状）         编码字符集（数字）           字符编码方案（字节）              字符集 (编码字符集+字符编码方案)
+ * character set        coded character set         character-encoding schema           charset
+ * -                        Unicode                  UTF-8:  变长                     GBK: 1个汉字2字节，1个英文或数字1字节
+ * -                        USC-2: 1个字符2字节       UTF-16: 变长                     GB18030: 兼容 GBK
+ * -                        USC-4: 1个字符4字节       UTF-32: 1个字符4字节            iso-88591-1: 兼容ASCII
  */
 public class StringDemo extends Demo {
 
@@ -58,7 +64,7 @@ public class StringDemo extends Demo {
         p(String.valueOf(123456L));         // 123456
         p(String.valueOf(cArr));            // hello world
     }
-    
+
     public void testSplitAndJoin() {
         // String[]	        split(String regex, int limit)
         // 根据匹配给定的正则表达式来拆分此字符串
@@ -67,9 +73,9 @@ public class StringDemo extends Demo {
         // static String    join(CharSequence delimiter, Iterable<? extends CharSequence> / CharSequence... elements)
         // 返回由 elements 和指定分隔符组成的新字符串。
         p(String.join(",", "A", "B", "C"));
-        
+
     }
-    
+
 
     /**
      * 测试比较相关 API
@@ -98,11 +104,11 @@ public class StringDemo extends Demo {
         p("a".compareTo("b"));      //  -1
         p("ab".compareTo("abc"));   //  -1
     }
-    
+
     @Test
     public void testToCharArray() {
         final String S = "hello world";
-        
+
         char[] cArr = new char[S.length()];
         // void             getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
         // 将字符从此字符串复制到目标字符数组

@@ -701,8 +701,7 @@ public class Suggestions extends Demo {
             e.printStackTrace();
         }
 
-        assert cloneS != null;
-        p(cloneS.strong());
+        p(Objects.requireNonNull(cloneS).strong());
     }
 
     /* 建议45：重写 equals() 时不要做"多余"操作
