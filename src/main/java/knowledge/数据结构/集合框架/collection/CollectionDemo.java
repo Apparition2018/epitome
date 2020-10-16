@@ -23,8 +23,16 @@ import org.junit.Test;
  * int	                size()                              返回此 collection 中的元素数
  * Iterator<E>	        iterator()                          返回按适当顺序在列表的元素上进行迭代的迭代器
  * <p>
- * default Stream<E>	stream()                            返回连续 Stream                                          
+ * default Stream<E>	stream()                            返回连续 Stream
  * default Stream<E>	parallelStream()                    返回并行 Stream
+ * ************************************************************
+ * AbstractCollection
+ * <p>
+ * 1.实现 Collection，专为继承而设计的类。
+ * 2.有抽象方法 iterator(), size()
+ * 3.实现了 Collection 中除以上两个方法外的所有方法，但 add() 会抛出 UnsupportedOperationException。
+ * 如果想要通过 AbstractCollection 派生出来的 Collection 支持 add()，需要重写 add()
+ * ************************************************************
  */
 public class CollectionDemo extends Demo {
 

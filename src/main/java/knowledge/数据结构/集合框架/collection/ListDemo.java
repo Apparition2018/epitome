@@ -2,7 +2,6 @@ package knowledge.数据结构.集合框架.collection;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -28,6 +27,22 @@ import java.util.List;
  * int	            indexOf(Object o)           返回此列表中首次出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1
  * int	            lastIndexOf(Object o)       返回此列表中最后出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1
  * ListIterator<E>	listIterator([int index])   返回列表中元素的列表迭代器（按适当顺序），从列表的指定位置开始
+ * ************************************************************
+ * AbstractList
+ * 1.实现 List，专为继承而设计的类
+ * 2.有抽象方法：get(), size()
+ * 3.实现了 List 中除以上两个方法外的所有方法，但 set(int, E) / add(int, E) / remove(int) 会抛出 UnsupportedOperationException。
+ * 如果想要通过 AbstractList 派生出来的 List 支持 set(int, E) / add(int, E) / remove(int)，需要重写
+ * 4.有内部迭代器 Itr, ListItr
+ * 5.有内部类 SubList, RandomAccessSublist
+ * 6.get() 效率快于 iterator()
+ * ************************************************************
+ * AbstractSequentialList
+ * 1.继承 AbstractList，LinkedList 的父类，专为继承而设计的类 (只能按次序访问)
+ * 2.有抽象方法：listIterator(), size()
+ * 3.get() 效率慢于 iterator()
+ * 4....
+ * ************************************************************
  */
 public class ListDemo extends Demo {
 
@@ -72,9 +87,10 @@ public class ListDemo extends Demo {
         // Iterable 接口下方法
         list.forEach(System.out::println);
     }
-    
+
     /**
-     * ArrayList 作为一个动态数组，它有 capacity 和 size 两个概念。0 <= size <= capacity，可以访问的下标则是 0 <= index < size
+     * ArrayList
+     * 作为一个动态数组，它有 capacity 和 size 两个概念。0 <= size <= capacity，可以访问的下标则是 0 <= index < size
      * 原理：引用着一个数组作为实际的存储容器。该数组的 length 就是 capacity
      * capacity 总共可以装多少个元素
      * size     已经装了多少个元素
