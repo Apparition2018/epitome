@@ -1,6 +1,7 @@
 package knowledge.数据结构.集合框架.collection;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -108,28 +109,27 @@ public class ListDemo extends Demo {
     @Test
     public void testArrayList() {
         final int N = 10000000;
+        StopWatch watch = StopWatch.createStarted();
 
         //********** 没有调用 ensureCapacity() **********//
         ArrayList<Object> list = new ArrayList<>();
-        long startTime = System.currentTimeMillis();
         for (int i = 0; i < N; i++) {
             list.add(new Object());
         }
-        long endTime = System.currentTimeMillis();
-        p("没有调用 ensureCapacity() 所需时间：" + (endTime - startTime)); // 没有调用 ensureCapacity() 所需时间：2813
-
+        p("没有调用 ensureCapacity() 所需时间：" + watch.getTime()); // 没有调用 ensureCapacity() 所需时间：2813
 
         //********** 调用了 ensureCapacity() **********//
+        watch.reset();
+        watch.start();
         list = new ArrayList<>();
-        startTime = System.currentTimeMillis();
         // void	    ensureCapacity(int minCapacity)     
         // 如有必要，增加此 ArrayList 实例的容量，以确保它至少能够容纳最小容量参数所指定的元素数。
         list.ensureCapacity(N);
         for (int i = 0; i <= N; i++) {
             list.add(new Object());
         }
-        endTime = System.currentTimeMillis();
-        p("调用了 ensureCapacity() 所需时间：" + (endTime - startTime));    // 调用了 ensureCapacity() 所需时间：766
+        p("调用了 ensureCapacity() 所需时间：" + watch.getTime());  // 调用了 ensureCapacity() 所需时间：766
+        watch.stop();
 
 
         p(getArrayListCapacity(list)); // 15000000

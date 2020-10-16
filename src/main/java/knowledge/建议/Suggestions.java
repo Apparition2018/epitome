@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
 import javax.script.*;
@@ -781,32 +782,32 @@ public class Suggestions extends Demo {
     // 建议56：字符串拼接的各种方法
     @Test
     public void test056() {
+        StopWatch watch = StopWatch.createStarted();
+        
         // +
         String str = "";
-        long start1 = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
             str += "c";
         }
-        long end1 = System.currentTimeMillis();
-        p("+：" + (end1 - start1) + "ms"); // 100ms
+        p("+：" + watch.getTime() + "ms");               // +：147ms
 
         // concat
+        watch.reset();
+        watch.start();
         str = "";
-        long start2 = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
             str = str.concat("c");
         }
-        long end2 = System.currentTimeMillis();
-        p("concat：" + (end2 - start2) + "ms"); // 31ms
+        p("concat：" + watch.getTime() + "ms");          // concat：25ms
 
         // StringBuilder
+        watch.reset();
+        watch.start();
         StringBuilder builder = new StringBuilder("");
-        long start3 = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
             builder.append("c");
         }
-        long end3 = System.currentTimeMillis();
-        p("StringBuilder：" + (end3 - start3) + "ms"); /// 0ms
+        p("StringBuilder：" + watch.getTime() + "ms");   // StringBuilder：0ms
     }
 
     // 建议57：在复杂字符串操作中使用正则表达式
@@ -940,10 +941,9 @@ public class Suggestions extends Demo {
             scores.add(new Random().nextInt(150));
         }
 
-        long start = System.currentTimeMillis();
-        p("平均分是：" + average(scores));
-        long end = System.currentTimeMillis();
-        p("执行时间：" + (end - start) + "ms");
+        StopWatch watch = StopWatch.createStarted();
+        p("平均分是：" + average(scores));           // 平均分是：74
+        p("执行时间：" + watch.getTime() + "ms");    // 执行时间：9ms
     }
 
     private int average(List<Integer> scores) {
@@ -964,14 +964,13 @@ public class Suggestions extends Demo {
     @Test
     public void test068() {
         int stuNum = 100 * 10000;
-//        List<Integer> scores = new ArrayList<>(); // 非常久
-        List<Integer> scores = new LinkedList<>(); // 150ms
-        long start = System.currentTimeMillis();
+        // List<Integer> scores = new ArrayList<>(); // 非常久
+        List<Integer> scores = new LinkedList<>();
+        StopWatch watch = StopWatch.createStarted();
         for (int i = 0; i < stuNum; i++) {
             scores.add(0, new Random().nextInt(150));
         }
-        long end = System.currentTimeMillis();
-        p("执行时间：" + (end - start) + "ms");
+        p("执行时间：" + watch.getTime() + "ms");    // 执行时间：139ms
     }
 
     // 建议69：集合相等只跟元素有关

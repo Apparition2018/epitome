@@ -50,7 +50,7 @@ public class SystemDemo extends Demo {
         long t1 = System.currentTimeMillis();
         TimeUnit.SECONDS.sleep(1);
         long t2 = System.currentTimeMillis();
-        p(t2 - t1); // 1001
+        p(t2 - t1); // 1000
     }
 
     /**

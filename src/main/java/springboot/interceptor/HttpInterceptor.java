@@ -23,7 +23,6 @@ public class HttpInterceptor extends HandlerInterceptorAdapter {
     // 请求处理之前
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String url = request.getRequestURI();
         long start = System.currentTimeMillis();
         request.setAttribute(START_TIME, start);
         return true;
