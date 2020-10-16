@@ -2,6 +2,7 @@ package jar.google.guava.collect;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.List;
@@ -12,13 +13,13 @@ import java.util.List;
  * http://www.ibloger.net/article/3312.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Lists.html
  */
-public class ListsDemo {
+public class ListsDemo extends Demo {
 
     @Test
     public void new_() {
         List<String> list = Lists.newArrayList("1", "2", "3");
         List<String> list2 = Lists.newArrayList(list);
-        System.out.println(list2);
+        p(list2);
     }
 
     /**
@@ -31,7 +32,7 @@ public class ListsDemo {
         String str2 = "1";
         String[] strs = {"2", " 3", "4"};
         List<String> list = Lists.asList(str1, str2, strs);
-        System.out.println(list); // [0, 1, 2,  3, 4]
+        p(list); // [0, 1, 2,  3, 4]
     }
 
     /**
@@ -44,7 +45,7 @@ public class ListsDemo {
         List<String> list1 = Lists.newArrayList("1", "2", "3");
         List<String> list2 = Lists.newArrayList("a", "b", "c");
         List<List<String>> lists = Lists.cartesianProduct(list1, list2);
-        System.out.println(lists);
+        p(lists);
     }
 
     /**
@@ -55,7 +56,7 @@ public class ListsDemo {
     @Test
     public void charactersOf() {
         ImmutableList<Character> characters = Lists.charactersOf("I Love You");
-        System.out.println(characters); // [I,  , L, o, v, e,  , Y, o, u]
+        p(characters); // [I,  , L, o, v, e,  , Y, o, u]
     }
 
     /**
@@ -66,7 +67,7 @@ public class ListsDemo {
     public void partition() {
         List<String> list = Lists.newArrayList("1", "2", "3", "4", "5");
         List<List<String>> lists = Lists.partition(list, 2);
-        System.out.println(lists); // [[1, 2], [3, 4], [5]]
+        p(lists); // [[1, 2], [3, 4], [5]]
     }
 
     /**
@@ -76,7 +77,7 @@ public class ListsDemo {
     @Test
     public void reverse() {
         List<String> list = Lists.newArrayList("1", "2", "3");
-        System.out.println(Lists.reverse(list)); // [3, 2, 1]
+        p(Lists.reverse(list)); // [3, 2, 1]
     }
 
     /**
@@ -87,7 +88,7 @@ public class ListsDemo {
     public void transform() {
         List<String> list = Lists.newArrayList("a", "b", "c");
         List<String> newList = Lists.transform(list, String::toUpperCase);
-        System.out.println(newList); //         System.out.println(newList);
+        p(newList); //         p(newList);
     }
 
 }

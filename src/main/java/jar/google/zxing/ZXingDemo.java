@@ -47,8 +47,8 @@ public class ZXingDemo extends Demo {
     }
 
     // 读取 QR Code
-    @SuppressWarnings(value = {"unchecked", "rawtypes"})
     @Test
+    @SuppressWarnings(value = {"unchecked", "rawtypes"})
     public void ReadQRCode() {
         try {
             MultiFormatReader formatReader = new MultiFormatReader();
@@ -64,9 +64,9 @@ public class ZXingDemo extends Demo {
 
             Result result = formatReader.decode(binaryBitmap, hints);
 
-            System.out.println("解析结果：" + result.toString());
-            System.out.println("二维码格式类型：" + result.getBarcodeFormat());
-            System.out.println("二维码文本内容：" + result.getText());
+            p("解析结果：" + result.toString());
+            p("二维码格式类型：" + result.getBarcodeFormat());
+            p("二维码文本内容：" + result.getText());
         } catch (IOException | NotFoundException e) {
             e.printStackTrace();
         }

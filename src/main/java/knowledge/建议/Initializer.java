@@ -1,5 +1,7 @@
 package knowledge.建议;
 
+import l.demo.Demo;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -8,7 +10,7 @@ import java.lang.reflect.Modifier;
  * 建议108：反射结合模板方法模式
  */
 // 抽象模板角色类
-abstract class Initializer {
+abstract class Initializer extends Demo {
 
     // 模板方法
     public final void dataInitialing() throws InvocationTargetException, IllegalAccessException {
@@ -31,7 +33,7 @@ abstract class Initializer {
 
     // 基本方法-具体方法
     private void doSomething() {
-        System.out.println("do something ...");
+        p("do something ...");
     }
 
 }
@@ -39,14 +41,14 @@ abstract class Initializer {
 // 具体模板角色类
 class UserInitializer extends Initializer {
     public void initUser() {
-        System.out.println("init user");
+        p("init user");
     }
 
     public void initPassword() {
-        System.out.println("init password");
+        p("init password");
     }
 
     public void initJobs() {
-        System.out.println("init jobs");
+        p("init jobs");
     }
 }

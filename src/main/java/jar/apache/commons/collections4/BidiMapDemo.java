@@ -1,5 +1,6 @@
 package jar.apache.commons.collections4;
 
+import l.demo.Demo;
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.TreeBidiMap;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import org.junit.Test;
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/BidiMap.html
  * https://blog.csdn.net/sinat_34093604/article/details/79551924
  */
-public class BidiMapDemo {
+public class BidiMapDemo extends Demo {
 
     @Test
     public void bidiMap() {
@@ -20,26 +21,26 @@ public class BidiMapDemo {
         bidi.put("One", "1");
         bidi.put("Tow", "2");
         bidi.put("Three", "3");
-        System.out.println(bidi);                   // {One=1, Three=3, Tow=2}
+        p(bidi);                // {One=1, Three=3, Tow=2}
 
         // Set<V>	    values()
         // 返回此映射中包含的值的 Set 视图
-        System.out.println(bidi.values());          // [1, 3, 2]
+        p(bidi.values());       // [1, 3, 2]
 
-        System.out.println(bidi.get("Three"));      // 3
+        p(bidi.get("Three"));   // 3
         // K	        getKey(Object value)
         // 获取当前映射到指定值的键
-        System.out.println(bidi.getKey("3"));    // Three
+        p(bidi.getKey("3"));    // Three
 
         // BidiMap<V,K>	inverseBidiMap()
         // 获取相反 BidiMap
         BidiMap<String, String> inverseBidi = bidi.inverseBidiMap();
-        System.out.println(inverseBidi);            // {1=One, 2=Tow, 3=Three}
+        p(inverseBidi);         // {1=One, 2=Tow, 3=Three}
 
         // K	        removeValue(Object value)
         // 删除当前映射到指定值的键值对
         bidi.removeValue("2");
-        System.out.println();
+        p();
 
     }
 

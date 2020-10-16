@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.CharUtils;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import org.junit.Test;
  * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/CharUtils.html
  */
-public class CharUtilsDemo {
+public class CharUtilsDemo extends Demo {
 
     /**
      * static int	compare(char x, char y)
@@ -17,7 +18,7 @@ public class CharUtilsDemo {
     public void compare() {
         char c1 = 'a';
         char c2 = 'A';
-        System.out.println(CharUtils.compare(c1, c2)); // 32
+        p(CharUtils.compare(c1, c2)); // 32
     }
 
     @Test
@@ -29,23 +30,23 @@ public class CharUtilsDemo {
         char c5 = '\n';
         char c6 = '©';
 
-        System.out.println(CharUtils.isAscii(c1));          // true
-        System.out.println(CharUtils.isAscii(c6));          // false
+        p(CharUtils.isAscii(c1));               // true
+        p(CharUtils.isAscii(c6));               // false
 
-        System.out.println(CharUtils.isAsciiPrintable(c5)); // false
-        System.out.println(CharUtils.isAsciiPrintable(c6)); // false
+        p(CharUtils.isAsciiPrintable(c5));      // false
+        p(CharUtils.isAsciiPrintable(c6));      // false
 
-        System.out.println(CharUtils.isAsciiControl(c1));   // false
+        p(CharUtils.isAsciiControl(c1));        // false
 
-        System.out.println(CharUtils.isAsciiAlpha(c2));     // true
-        
-        System.out.println(CharUtils.isAsciiAlphaLower(c2));// true
-        System.out.println(CharUtils.isAsciiAlphaUpper(c3));// true
+        p(CharUtils.isAsciiAlpha(c2));          // true
 
-        System.out.println(CharUtils.isAsciiNumeric(c1));   // true
+        p(CharUtils.isAsciiAlphaLower(c2));     // true
+        p(CharUtils.isAsciiAlphaUpper(c3));     // true
 
-        System.out.println(CharUtils.isAsciiAlphanumeric(c1));// true
-        System.out.println(CharUtils.isAsciiAlphanumeric(c2));// true
+        p(CharUtils.isAsciiNumeric(c1));        // true
+
+        p(CharUtils.isAsciiAlphanumeric(c1));   // true
+        p(CharUtils.isAsciiAlphanumeric(c2));   // true
     }
 
     /**
@@ -56,16 +57,16 @@ public class CharUtilsDemo {
     public void toChar() {
         String s = null;
 
-        System.out.println(CharUtils.toChar(' '));                  //
-        System.out.println(CharUtils.toChar('A'));                  // A
-        System.out.println(CharUtils.toChar("A"));              // A
-//        System.out.println(CharUtils.toChar(s)); // IllegalArgumentException: The String must not be empty
-        System.out.println(CharUtils.toChar(s, '?'));   // ?
+        p(CharUtils.toChar(' '));               //
+        p(CharUtils.toChar('A'));               // A
+        p(CharUtils.toChar("A"));               // A
+        // p(CharUtils.toChar(s));              // IllegalArgumentException: The String must not be empty
+        p(CharUtils.toChar(s, '?'));            // ?
 
-        System.out.println(CharUtils.toCharacterObject(null));  // null
-        System.out.println(CharUtils.toCharacterObject(""));    // null
-        System.out.println(CharUtils.toCharacterObject("A"));   // A
-        System.out.println(CharUtils.toCharacterObject("AB"));  // A
+        p(CharUtils.toCharacterObject(null));   // null
+        p(CharUtils.toCharacterObject(""));     // null
+        p(CharUtils.toCharacterObject("A"));    // A
+        p(CharUtils.toCharacterObject("AB"));   // A
     }
 
     /**
@@ -73,10 +74,10 @@ public class CharUtilsDemo {
      */
     @Test
     public void toIntValue() {
-        System.out.println(CharUtils.toIntValue('3'));                  // 3
-//        System.out.println(CharUtils.toIntValue('A'));                    // IllegalArgumentException: The character A is not in the range '0' - '9'
-        System.out.println(CharUtils.toIntValue('A', -1));  // -1
-//        System.out.println(CharUtils.toIntValue(null));                   // IllegalArgumentException: The character must not be null
+        p(CharUtils.toIntValue('3'));       // 3
+        // p(CharUtils.toIntValue('A'));    // IllegalArgumentException: The character A is not in the range '0' - '9'
+        p(CharUtils.toIntValue('A', -1));   // -1
+        // p(CharUtils.toIntValue(null));   // IllegalArgumentException: The character must not be null
     }
 
     /**
@@ -84,8 +85,8 @@ public class CharUtilsDemo {
      */
     @Test
     public void toString_() {
-        System.out.println(CharUtils.toString('A'));    // A
-        System.out.println(CharUtils.toString(null));   // null
+        p(CharUtils.toString('A')); // A
+        p(CharUtils.toString(null));// null
     }
 
     /**
@@ -93,9 +94,9 @@ public class CharUtilsDemo {
      */
     @Test
     public void unicodeEscaped() {
-        System.out.println(CharUtils.unicodeEscaped(' '));  // \u0020
-        System.out.println(CharUtils.unicodeEscaped('A'));  // \u0041
-        System.out.println(CharUtils.unicodeEscaped(null)); // null
+        p(CharUtils.unicodeEscaped(' '));   // \u0020
+        p(CharUtils.unicodeEscaped('A'));   // \u0041
+        p(CharUtils.unicodeEscaped(null));  // null
     }
 
 }

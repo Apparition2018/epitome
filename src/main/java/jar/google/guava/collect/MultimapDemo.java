@@ -3,6 +3,7 @@ package jar.google.guava.collect;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Collection;
@@ -26,7 +27,7 @@ import java.util.Map;
  * https://blog.csdn.net/yaomingyang/article/details/80955872
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Multimap.html
  */
-public class MultimapDemo {
+public class MultimapDemo extends Demo {
 
     private Multimap<Integer, Integer> map;
 
@@ -41,7 +42,7 @@ public class MultimapDemo {
         map.put(3, 3);
         map.put(4, 3);
         map.put(5, 3);
-        System.out.println(map); // {1=[2, 2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3]}
+        p(map); // {1=[2, 2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3]}
 
     }
 
@@ -52,7 +53,7 @@ public class MultimapDemo {
     @Test
     public void asMap() {
         Map<Integer, Collection<Integer>> map2 = map.asMap();
-        System.out.println(map2);
+        p(map2);
     }
 
     /**
@@ -62,7 +63,7 @@ public class MultimapDemo {
     @Test
     public void clear() {
         map.clear();
-        System.out.println(map); // {}
+        p(map); // {}
     }
 
     /**
@@ -73,9 +74,9 @@ public class MultimapDemo {
      */
     @Test
     public void contains() {
-        System.out.println(map.containsEntry(3, 3)); // true
-        System.out.println(map.containsKey(3));         // true
-        System.out.println(map.containsValue(3));       // true
+        p(map.containsEntry(3, 3)); // true
+        p(map.containsKey(3));         // true
+        p(map.containsValue(3));       // true
     }
 
     /**
@@ -84,7 +85,7 @@ public class MultimapDemo {
     @Test
     public void entries() {
         for (Map.Entry<Integer, Integer> entry : map.entries()) {
-            System.out.println(entry);
+            p(entry);
             // 1=2
             // 1=2
             // 1=3
@@ -103,13 +104,13 @@ public class MultimapDemo {
     @Test
     public void putAll() {
         map.putAll(6, Lists.newArrayList(4, 5));
-        System.out.println(map); // {1=[2, 2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3], 6=[4, 5]}
+        p(map); // {1=[2, 2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3], 6=[4, 5]}
 
         Multimap<Integer, Integer> map2 = ArrayListMultimap.create();
         map2.put(7, 1);
         map2.put(7, 7);
         map.putAll(map2);
-        System.out.println(map); // {1=[2, 2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3], 6=[4, 5], 7=[1, 7]}
+        p(map); // {1=[2, 2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3], 6=[4, 5], 7=[1, 7]}
     }
 
     /**
@@ -119,10 +120,10 @@ public class MultimapDemo {
     @Test
     public void removeAll() {
         map.remove(1, 2);
-        System.out.println(map); // {1=[2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3]}
+        p(map); // {1=[2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3]}
 
         map.removeAll(1);
-        System.out.println(map); // {2=[3], 3=[3], 4=[3], 5=[3]}
+        p(map); // {2=[3], 3=[3], 4=[3], 5=[3]}
     }
 
     /**
@@ -131,10 +132,6 @@ public class MultimapDemo {
     @Test
     public void replaceValues() {
         map.replaceValues(1, Lists.newArrayList(3, 3, 3));
-        System.out.println(map); // {1=[3, 3, 3], 2=[3], 3=[3], 4=[3], 5=[3]}
-    }
-
-    @Test
-    public void test() {
+        p(map); // {1=[3, 3, 3], 2=[3], 3=[3], 4=[3], 5=[3]}
     }
 }

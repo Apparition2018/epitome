@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.ClassPathUtils;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import org.junit.Test;
  * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ClassPathUtils.html
  */
-public class ClassPathUtilsDemo {
+public class ClassPathUtilsDemo extends Demo {
 
     /**
      * static String	toFullyQualifiedName(Class<?>/Package context, String resourceName)
@@ -16,12 +17,10 @@ public class ClassPathUtilsDemo {
      */
     @Test
     public void classPath() {
-        System.out.println(ClassPathUtils.toFullyQualifiedName(Integer.class, ""));                 // java.lang.
-        System.out.println(ClassPathUtils.toFullyQualifiedName(Integer.class.getPackage(), ""));    // java.lang.
-        System.out.println(ClassPathUtils.toFullyQualifiedPath(Integer.class, ""));                 // java/lang/
-        System.out.println(ClassPathUtils.toFullyQualifiedPath(Integer.class.getPackage(), ""));    // java/lang/
+        p(ClassPathUtils.toFullyQualifiedName(Integer.class, ""));              // java.lang.
+        p(ClassPathUtils.toFullyQualifiedName(Integer.class.getPackage(), "")); // java.lang.
+        p(ClassPathUtils.toFullyQualifiedPath(Integer.class, ""));              // java/lang/
+        p(ClassPathUtils.toFullyQualifiedPath(Integer.class.getPackage(), "")); // java/lang/
     }
-
-
 
 }

@@ -1,5 +1,6 @@
 package jar.apache.commons.collections4;
 
+import l.demo.Demo;
 import org.apache.commons.collections4.ListUtils;
 import org.junit.Test;
 
@@ -30,7 +31,7 @@ import java.util.List;
  * <p>
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/ListUtils.html
  */
-public class ListUtilsDemo {
+public class ListUtilsDemo extends Demo {
 
     /**
      * static <E> int	indexOf(List<E> list, Predicate<E> predicate)
@@ -40,7 +41,7 @@ public class ListUtilsDemo {
     public void indexOf() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
         int index = ListUtils.indexOf(list, e -> e > 3);
-        System.out.println(index); // 3
+        p(index); // 3
     }
 
     /**
@@ -123,11 +124,5 @@ public class ListUtilsDemo {
         List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 
         p(ListUtils.select(list, e -> e % 2 == 0)); // [2, 4, 6]
-    }
-
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 }

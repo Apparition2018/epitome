@@ -3,6 +3,7 @@ package jar.google.guava.base;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.io.File;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
  * http://www.ibloger.net/article/3334.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/base/Joiner.html
  */
-public class JoinerDemo {
+public class JoinerDemo extends Demo {
 
     private final List<String> list = Lists.newArrayList("A", "B", "C");
     private final List<String> listWithNull = Lists.newArrayList("A", "B", "C", null);
@@ -31,14 +32,14 @@ public class JoinerDemo {
                 // 用于过滤集合中为null的元素，然后返回一个新的Joiner对象实例
                 .skipNulls()
                 .join(listWithNull);
-        System.out.println(join); // A-B-C
+        p(join); // A-B-C
 
         join = Joiner.on("-")
                 // Joiner	useForNull(String nullText)
                 // 连接器做join连接操作时用nullText替换null元素值
                 .useForNull("D")
                 .join(listWithNull);
-        System.out.println(join); // A-B-C-D
+        p(join); // A-B-C-D
     }
 
     /**
@@ -58,7 +59,7 @@ public class JoinerDemo {
         // StringBuilder	appendTo(StringBuilder builder, Iterable<?> parts)
         // 将parts通过连接器的连接符连接成字符串，并拼接到builder后，返回StringBuilder
         StringBuilder join = Joiner.on("-").appendTo(builder, list);
-        System.out.println(join); // SSS-SS-S-A-B-C
+        p(join); // SSS-SS-S-A-B-C
     }
 
     /**
@@ -70,7 +71,7 @@ public class JoinerDemo {
         // Joiner.MapJoiner	withKeyValueSeparator(char|String keyValueSeparator)
         // 初始化一个Map连接器，连接器连接Map对象时，keyValueSeparator为key和value之间的分隔符
         String join = Joiner.on("; ").withKeyValueSeparator("=").join(map);
-        System.out.println(join); // A=1; B=2
+        p(join); // A=1; B=2
     }
 
     /**
@@ -80,7 +81,7 @@ public class JoinerDemo {
     public void joining() {
         String collect = listWithNull.stream().filter(s -> s != null && !s.isEmpty())
                 .collect(Collectors.joining("-"));
-        System.out.println(collect); // A-B-C
+        p(collect); // A-B-C
     }
 
 

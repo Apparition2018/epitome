@@ -1,5 +1,6 @@
 package jar.apache.commons.collections4;
 
+import l.demo.Demo;
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.Test;
 
@@ -32,7 +33,7 @@ import java.util.*;
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/CollectionUtils.html
  * https://blog.csdn.net/sinat_34093604/article/details/79551924
  */
-public class CollectionUtilsDemo {
+public class CollectionUtilsDemo extends Demo {
 
     /**
      * 返回一个新集合，根据 Comparable 合并两个有序集合
@@ -121,7 +122,7 @@ public class CollectionUtilsDemo {
         map.put("b", 2);
         map.put("c", 3);
 
-        System.out.println(CollectionUtils.get(map, 2)); // c=3
+        p(CollectionUtils.get(map, 2)); // c=3
     }
 
     /**
@@ -132,7 +133,7 @@ public class CollectionUtilsDemo {
     public void getCardinalityMap() {
         List<Integer> list = Arrays.asList(1, 6, 9, 1, 8, 4, 8, 1, 8, 1, 9, 8, 4);
 
-        System.out.println(CollectionUtils.getCardinalityMap(list)); // {1=4, 4=2, 6=1, 8=4, 9=2}
+        p(CollectionUtils.getCardinalityMap(list)); // {1=4, 4=2, 6=1, 8=4, 9=2}
     }
 
     /**
@@ -178,11 +179,5 @@ public class CollectionUtilsDemo {
 
         p(CollectionUtils.disjunction(list1, list2)); // [A, B]
     }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
-
 
 }

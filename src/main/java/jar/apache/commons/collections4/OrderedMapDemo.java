@@ -1,5 +1,6 @@
 package jar.apache.commons.collections4;
 
+import l.demo.Demo;
 import org.apache.commons.collections4.OrderedMap;
 import org.apache.commons.collections4.map.LinkedMap;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import org.junit.Test;
  * <p>
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/OrderedMap.html
  */
-public class OrderedMapDemo {
+public class OrderedMapDemo extends Demo {
 
     @Test
     public void orderedMap() {
@@ -23,17 +24,17 @@ public class OrderedMapDemo {
 
         // K	firstKey()
         // 第一个键
-        System.out.println(om.firstKey());  // A
+        p(om.firstKey());       // A
         // K	lastKey()
         // 最后一个键
-        System.out.println(om.lastKey());   // C
+        p(om.lastKey());        // C
 
         // K	nextKey(K key)
         // 指定键的下一个键
-        System.out.println(om.nextKey("A"));     // B
+        p(om.nextKey("A"));     // B
         // K	previousKey(K key)
         // 指定键的上一个键
-        System.out.println(om.previousKey("C")); // B
+        p(om.previousKey("C")); // B
     }
 
 }

@@ -1,5 +1,6 @@
 package knowledge.加解密和消息摘要.消息摘要算法;
 
+import l.demo.Demo;
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
 import l.utils.LUtils;
@@ -36,7 +37,7 @@ import java.util.Base64;
  * <p>
  * https://blog.csdn.net/iblade/article/details/73288822
  */
-public class MD5Demo {
+public class MD5Demo extends Demo {
 
     private static String src = "Hello World!";
 
@@ -44,7 +45,7 @@ public class MD5Demo {
     public void test1() {
 
         try {
-            System.out.println("加密前数据：" + src);
+            p("加密前数据：" + src);
 
             // 获取MessageDigest对象，参数为MD5字符串，表示这是一个MD5算法（还有SHA1算法等）
             MessageDigest md5 = MessageDigest.getInstance("MD5");
@@ -59,10 +60,10 @@ public class MD5Demo {
 //			byte[] bytes = md5.digest(src.getBytes(StandardCharsets.UTF_8));
 
             // 加密后的bytes[]转化为十六进制的32位长度的字符串
-            System.out.println("16进制字符串：" + LUtils.bytes2Hex2(bytes));
+            p("16进制字符串：" + LUtils.bytes2Hex2(bytes));
 
             // 加密后的bytes[]通过Base64再次加密成字符串
-            System.out.println("Base64字符串：" + Base64.getEncoder().encodeToString(bytes));
+            p("Base64字符串：" + Base64.getEncoder().encodeToString(bytes));
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -92,7 +93,7 @@ public class MD5Demo {
                 sb.append(str);
             }
 
-            System.out.println("加盐字符串：" + sb.toString());
+            p("加盐字符串：" + sb.toString());
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -110,7 +111,7 @@ public class MD5Demo {
             md5.digest(src.getBytes());
             byte[] bytes = md5.digest(("id" + src).getBytes(StandardCharsets.UTF_8)); // 加盐
 
-            System.out.println("加盐字符串：" + LUtils.bytes2Hex2(bytes));
+            p("加盐字符串：" + LUtils.bytes2Hex2(bytes));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -130,7 +131,7 @@ public class MD5Demo {
                 md5.update(buf, 0, len);
             }
             fis.close();
-            System.out.println(LUtils.bytes2Hex2(md5.digest()));
+            p(LUtils.bytes2Hex2(md5.digest()));
         } catch (IOException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -144,9 +145,9 @@ public class MD5Demo {
     @Test
     public void test5() {
         // spring
-        System.out.println(DigestUtils.md5DigestAsHex("123".getBytes()));
+        p(DigestUtils.md5DigestAsHex("123".getBytes()));
         // apache
-        System.out.println(org.apache.commons.codec.digest.DigestUtils.md5Hex("123"));
+        p(org.apache.commons.codec.digest.DigestUtils.md5Hex("123"));
     }
 
 }

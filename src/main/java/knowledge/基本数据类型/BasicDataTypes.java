@@ -1,5 +1,6 @@
 package knowledge.基本数据类型;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 /**
@@ -17,7 +18,7 @@ import org.junit.Test;
  * 对象、数组都是引用类型
  * 默认值 null
  */
-public class BasicDataTypes {
+public class BasicDataTypes extends Demo {
 
     /**
      * byte 是8位、有符号的，以二进制补码表示的整数
@@ -27,9 +28,9 @@ public class BasicDataTypes {
      */
     @Test
     public void byte_() {
-        System.out.println("二进制位数：Byte.SIZE = " + Byte.SIZE);       // 8
-        System.out.println("最小值：Byte.MIN_VALUE = " + Byte.MIN_VALUE); // -128 (-2^7)
-        System.out.println("最大值：Byte.MAX_VALUE = " + Byte.MAX_VALUE); // 127 (2^7-1)
+        p("二进制位数：Byte.SIZE = " + Byte.SIZE);        // 8
+        p("最小值：Byte.MIN_VALUE = " + Byte.MIN_VALUE); // -128 (-2^7)
+        p("最大值：Byte.MAX_VALUE = " + Byte.MAX_VALUE); // 127 (2^7-1)
     }
 
     /**
@@ -38,9 +39,9 @@ public class BasicDataTypes {
      */
     @Test
     public void short_() {
-        System.out.println("二进制位数：Short.SIZE = " + Short.SIZE);       // 16
-        System.out.println("最小值：Short.MIN_VALUE = " + Short.MIN_VALUE); // -32768 (-2^15)
-        System.out.println("最大值：Short.MAX_VALUE = " + Short.MAX_VALUE); // 32767 (2^15-1)
+        p("二进制位数：Short.SIZE = " + Short.SIZE);        // 16
+        p("最小值：Short.MIN_VALUE = " + Short.MIN_VALUE); // -32768 (-2^15)
+        p("最大值：Short.MAX_VALUE = " + Short.MAX_VALUE); // 32767 (2^15-1)
     }
 
     /**
@@ -50,9 +51,9 @@ public class BasicDataTypes {
      */
     @Test
     public void int_() {
-        System.out.println("二进制位数：Integer.SIZE = " + Integer.SIZE);       // 32
-        System.out.println("最小值：Integer.MIN_VALUE = " + Integer.MIN_VALUE); // -2147483648 (-2^31)
-        System.out.println("最大值：Integer.MAX_VALUE = " + Integer.MAX_VALUE); // 2147483647 (2^31-1)
+        p("二进制位数：Integer.SIZE = " + Integer.SIZE);       // 32
+        p("最小值：Integer.MIN_VALUE = " + Integer.MIN_VALUE); // -2147483648 (-2^31)
+        p("最大值：Integer.MAX_VALUE = " + Integer.MAX_VALUE); // 2147483647 (2^31-1)
     }
 
     /**
@@ -63,9 +64,9 @@ public class BasicDataTypes {
      */
     @Test
     public void long_() {
-        System.out.println("二进制位数：Long.SIZE = " + Long.SIZE);       // 64
-        System.out.println("最小值：Long.MIN_VALUE = " + Long.MIN_VALUE); // -9223372036854775808 (-2^63)
-        System.out.println("最大值：Long.MAX_VALUE = " + Long.MAX_VALUE); // 9223372036854775807 (2^63-1)
+        p("二进制位数：Long.SIZE = " + Long.SIZE);       // 64
+        p("最小值：Long.MIN_VALUE = " + Long.MIN_VALUE); // -9223372036854775808 (-2^63)
+        p("最大值：Long.MAX_VALUE = " + Long.MAX_VALUE); // 9223372036854775807 (2^63-1)
     }
 
     /**
@@ -77,9 +78,9 @@ public class BasicDataTypes {
      */
     @Test
     public void float_() {
-        System.out.println("二进制位数：Float.SIZE = " + Float.SIZE);       // 32
-        System.out.println("最小值：Float.MIN_VALUE = " + Float.MIN_VALUE); // 1.4E-45
-        System.out.println("最大值：Float.MAX_VALUE = " + Float.MAX_VALUE); // 3.4028235E38
+        p("二进制位数：Float.SIZE = " + Float.SIZE);       // 32
+        p("最小值：Float.MIN_VALUE = " + Float.MIN_VALUE); // 1.4E-45
+        p("最大值：Float.MAX_VALUE = " + Float.MAX_VALUE); // 3.4028235E38
     }
 
     /**
@@ -90,9 +91,9 @@ public class BasicDataTypes {
      */
     @Test
     public void double_() {
-        System.out.println("二进制位数：Double.SIZE = " + Double.SIZE);       // 64
-        System.out.println("最小值：Double.MIN_VALUE = " + Double.MIN_VALUE); // 4.9E-324
-        System.out.println("最大值：Double.MAX_VALUE = " + Double.MAX_VALUE); // 1.7976931348623157E308
+        p("二进制位数：Double.SIZE = " + Double.SIZE);       // 64
+        p("最小值：Double.MIN_VALUE = " + Double.MIN_VALUE); // 4.9E-324
+        p("最大值：Double.MAX_VALUE = " + Double.MAX_VALUE); // 1.7976931348623157E308
     }
 
     /**
@@ -101,9 +102,9 @@ public class BasicDataTypes {
      */
     @Test
     public void char_() {
-        System.out.println("二进制位数：Character.SIZE = " + Character.SIZE);             // 16
-        System.out.println("最小值：Character.MIN_VALUE = " + (int) Character.MIN_VALUE); // 0 (\u0000)
-        System.out.println("最大值：Character.MAX_VALUE = " + (int) Character.MAX_VALUE); // 65535 (\uffff)
+        p("二进制位数：Character.SIZE = " + Character.SIZE);             // 16
+        p("最小值：Character.MIN_VALUE = " + (int) Character.MIN_VALUE); // 0 (\u0000)
+        p("最大值：Character.MAX_VALUE = " + (int) Character.MAX_VALUE); // 65535 (\uffff)
     }
 
     /*

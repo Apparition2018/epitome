@@ -1,5 +1,6 @@
 package knowledge.表达式.正则表达式;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -9,7 +10,7 @@ import java.util.regex.Pattern;
 /**
  * Pattern
  */
-public class PatternDemo {
+public class PatternDemo extends Demo {
 
     /**
      * static Pattern	compile(String regex[, int flags])
@@ -23,8 +24,8 @@ public class PatternDemo {
 
         Matcher m = p.matcher("aaaaab");
 
-        System.out.println(m.matches());
-        System.out.println(p.pattern());        // a*b
+        p(m.matches());
+        p(p.pattern()); // a*b
     }
 
     /**
@@ -62,13 +63,13 @@ public class PatternDemo {
     public void quote() {
         String regex = "a*b";
 
-        System.out.println(Pattern.matches(regex, "aaaaab"));   // true
+        p(Pattern.matches(regex, "aaaaab"));// true
 
         regex = Pattern.quote(regex);
-        System.out.println(regex); // \Qa*b\E
+        p(regex); // \Qa*b\E
 
-        System.out.println(Pattern.matches(regex, "aaaaab"));   // false
-        System.out.println(Pattern.matches(regex, "a*b"));      // true，只能匹配 "a*b" 了
+        p(Pattern.matches(regex, "aaaaab"));// false
+        p(Pattern.matches(regex, "a*b"));   // true，只能匹配 "a*b" 了
     }
 
     /**
@@ -80,6 +81,6 @@ public class PatternDemo {
         Pattern p = Pattern.compile(":");
 
         String[] result = p.split("boo:and:foo", 2);
-        System.out.println(Arrays.toString(result)); // [boo, and:foo]
+        p(Arrays.toString(result)); // [boo, and:foo]
     }
 }

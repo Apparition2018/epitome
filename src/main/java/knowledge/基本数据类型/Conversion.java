@@ -1,11 +1,12 @@
 package knowledge.基本数据类型;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 /**
  * 转换
  */
-public class Conversion {
+public class Conversion extends Demo {
 
     /**
      * 自动类型转换:
@@ -16,7 +17,7 @@ public class Conversion {
     @Test
     public void auto() {
         char a = 'a';
-        System.out.println(a + 1); // 98
+        p(a + 1); // 98
     }
 
     /**
@@ -33,11 +34,11 @@ public class Conversion {
         // 精度损失
         int i = 128;
         byte b = (byte) i;
-        System.out.println("b = " + b);     // -128
+        p("b = " + b);     // -128
 
         // 浮点数 ==> 整数，舍弃小数
-        System.out.println((int) 23.7);     // 23
-        System.out.println((int) -45.89f);  // -45
+        p((int) 23.7);     // 23
+        p((int) -45.89f);  // -45
     }
 
     // int <=> String

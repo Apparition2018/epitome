@@ -1,5 +1,6 @@
 package knowledge.api.lang.string;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 /**
@@ -15,7 +16,7 @@ import org.junit.Test;
  * CharSequence	subSequence(int start, int end)
  * String	    substring(int start[, int end])
  */
-public class StringBufferBuilderDemo {
+public class StringBufferBuilderDemo extends Demo {
 
     /**
      * StringBuffer/StringBuilder   append(XXX xxx)
@@ -25,7 +26,7 @@ public class StringBufferBuilderDemo {
     public void append() {
         StringBuilder sb = new StringBuilder("hello");
 
-        System.out.println(sb.append(" world")); // hello world
+        p(sb.append(" world")); // hello world
     }
 
     /**
@@ -36,7 +37,7 @@ public class StringBufferBuilderDemo {
     public void reverse() {
         StringBuilder sb = new StringBuilder("hello");
 
-        System.out.println(sb.reverse()); // olleh
+        p(sb.reverse()); // olleh
     }
 
     /**
@@ -50,8 +51,8 @@ public class StringBufferBuilderDemo {
     public void delete() {
         StringBuilder sb = new StringBuilder("hello");
 
-        System.out.println(sb.delete(3, 5));    // hel
-        System.out.println(sb.deleteCharAt(1)); // hl
+        p(sb.delete(3, 5));    // hel
+        p(sb.deleteCharAt(1)); // hl
     }
 
     /**
@@ -62,7 +63,7 @@ public class StringBufferBuilderDemo {
     public void insert() {
         StringBuilder sb = new StringBuilder("hello");
 
-        System.out.println(sb.insert(5, " world")); // hello world
+        p(sb.insert(5, " world")); // hello world
     }
 
     /**
@@ -72,7 +73,7 @@ public class StringBufferBuilderDemo {
     public void replace() {
         StringBuilder sb = new StringBuilder("abc123cba");
 
-        System.out.println(sb.replace(3, 6, "321")); // abc321cba
+        p(sb.replace(3, 6, "321")); // abc321cba
     }
 
     /**
@@ -83,10 +84,10 @@ public class StringBufferBuilderDemo {
     public void capacity() {
         StringBuilder sb = new StringBuilder("hello");
 
-        System.out.println(sb.capacity()); // 21
+        p(sb.capacity()); // 21
 
         sb.setLength(10);
-        System.out.println(sb);
+        p(sb);
 
     }
 
@@ -99,7 +100,7 @@ public class StringBufferBuilderDemo {
         StringBuilder sb = new StringBuilder("AbC");
 
         sb.setCharAt(1, 'B');
-        System.out.println(sb); // ABC
+        p(sb); // ABC
     }
 
 

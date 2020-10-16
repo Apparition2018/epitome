@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.BooleanUtils;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import org.junit.Test;
  * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/BooleanUtils.html
  */
-public class BooleanUtilsDemo {
+public class BooleanUtilsDemo extends Demo {
 
     private boolean[] b1 = new boolean[]{true, true};
     private boolean[] b2 = new boolean[]{true, false};
@@ -19,42 +20,42 @@ public class BooleanUtilsDemo {
     public void boolean_() {
 
         // and
-        System.out.println(BooleanUtils.and(b1));   // true
-        System.out.println(BooleanUtils.and(b2));   // false
-        System.out.println(BooleanUtils.and(b3));   // false
-        System.out.println(BooleanUtils.and(b4));   // false
-        // or
-        System.out.println(BooleanUtils.or(b1));    // true
-        System.out.println(BooleanUtils.or(b2));    // true
-        System.out.println(BooleanUtils.or(b3));    // true
-        System.out.println(BooleanUtils.or(b4));    // false
-        // xor
-        System.out.println(BooleanUtils.xor(b1));   // false
-        System.out.println(BooleanUtils.xor(b2));   // true
-        System.out.println(BooleanUtils.xor(b3));   // true
-        System.out.println(BooleanUtils.xor(b4));   // false
+        p(BooleanUtils.and(b1));        // true
+        p(BooleanUtils.and(b2));        // false
+        p(BooleanUtils.and(b3));        // false
+        p(BooleanUtils.and(b4));        // false
+        // or                           
+        p(BooleanUtils.or(b1));         // true
+        p(BooleanUtils.or(b2));         // true
+        p(BooleanUtils.or(b3));         // true
+        p(BooleanUtils.or(b4));         // false
+        // xor                          
+        p(BooleanUtils.xor(b1));        // false
+        p(BooleanUtils.xor(b2));        // true
+        p(BooleanUtils.xor(b3));        // true
+        p(BooleanUtils.xor(b4));        // false
         // negate
-        System.out.println(BooleanUtils.negate(true));  // false
-        System.out.println(BooleanUtils.negate(false)); // true
-        System.out.println(BooleanUtils.negate(null));  // null
+        p(BooleanUtils.negate(true));   // false
+        p(BooleanUtils.negate(false));  // true
+        p(BooleanUtils.negate(null));   // null
 
     }
 
     @Test
     public void compare() {
-        System.out.println(BooleanUtils.compare(true, true));   // 0
-        System.out.println(BooleanUtils.compare(true, false));  // 1
-        System.out.println(BooleanUtils.compare(false, true));  // -1
-        System.out.println(BooleanUtils.compare(false, false)); // 0
+        p(BooleanUtils.compare(true, true));    // 0
+        p(BooleanUtils.compare(true, false));   // 1
+        p(BooleanUtils.compare(false, true));   // -1
+        p(BooleanUtils.compare(false, false));  // 0
     }
 
     @Test
     public void is() {
 
-        System.out.println(BooleanUtils.isTrue(true));     // true
-        System.out.println(BooleanUtils.isNotTrue(true));  // false
-        System.out.println(BooleanUtils.isFalse(true));    // false
-        System.out.println(BooleanUtils.isNotFalse(true)); // true
+        p(BooleanUtils.isTrue(true));       // true
+        p(BooleanUtils.isNotTrue(true));    // false
+        p(BooleanUtils.isFalse(true));      // false
+        p(BooleanUtils.isNotFalse(true));   // true
     }
 
     @Test
@@ -62,32 +63,32 @@ public class BooleanUtilsDemo {
         // toBoolean(Boolean bool)
         // null will return false
         Boolean b = null;
-        System.out.println(BooleanUtils.toBoolean(b)); // false
+        p(BooleanUtils.toBoolean(b)); // false
 
         // toBoolean(int value)
         // toBooleanObject(int value)
         // toBooleanObject(Integer value)
         // 0 will return false
-        System.out.println(BooleanUtils.toBoolean(0));      // false
-        System.out.println(BooleanUtils.toBooleanObject(0));// false
+        p(BooleanUtils.toBoolean(0));       // false
+        p(BooleanUtils.toBooleanObject(0)); // false
 
         // toBoolean(String str)
         // 'true', 'on', 'y', 't' or 'yes' (case insensitive) will return true
-        System.out.println(BooleanUtils.toBoolean("true")); // true
-        System.out.println(BooleanUtils.toBoolean("on"));   // true
-        System.out.println(BooleanUtils.toBoolean("y"));    // true
-        System.out.println(BooleanUtils.toBoolean("t"));    // true
-        System.out.println(BooleanUtils.toBoolean("yes"));  // true
-        System.out.println(BooleanUtils.toBoolean("1"));    // false
-        System.out.println(BooleanUtils.toBoolean("null")); // false
+        p(BooleanUtils.toBoolean("true"));  // true
+        p(BooleanUtils.toBoolean("on"));    // true
+        p(BooleanUtils.toBoolean("y"));     // true
+        p(BooleanUtils.toBoolean("t"));     // true
+        p(BooleanUtils.toBoolean("yes"));   // true
+        p(BooleanUtils.toBoolean("1"));     // false
+        p(BooleanUtils.toBoolean("null"));  // false
 
         // toBooleanObject(String str)
         // 'true', 'on', 'y', 't' or 'yes' (case insensitive) will return true
         // 'false', 'off', 'n', 'f' or 'no' (case insensitive) will return false
         // Otherwise, null is returned
-        System.out.println(BooleanUtils.toBooleanObject("y"));  // true
-        System.out.println(BooleanUtils.toBooleanObject("t"));  // false
-        System.out.println(BooleanUtils.toBooleanObject("1"));  // null
+        p(BooleanUtils.toBooleanObject("y")); // true
+        p(BooleanUtils.toBooleanObject("t")); // false
+        p(BooleanUtils.toBooleanObject("1")); // null
 
         // toBoolean(int value, int trueValue, int falseValue)
         // toBoolean(Integer value, Integer trueValue, Integer falseValue)
@@ -95,32 +96,32 @@ public class BooleanUtilsDemo {
         // toBooleanObject(int value, int trueValue, int falseValue, int nullValue)
         // toBooleanObject(Integer value, Integer trueValue, Integer falseValue, Integer nullValue)
         // toBooleanObject(String str, String trueString, String falseString, String nullString)
-        System.out.println(BooleanUtils.toBoolean(1, 1, 2));                      // true; 指定 1 为 true, 2 为 false
-        System.out.println(BooleanUtils.toBoolean("2", "1", "2"));                 // false; 指定 "1" 为 true, "2" 为 false
-        System.out.println(BooleanUtils.toBooleanObject(3, 1, 2, 3));   // null; 指定 1 为 true, 2 为 false, 3 为 null
+        p(BooleanUtils.toBoolean(1, 1, 2));         // true; 指定 1 为 true, 2 为 false
+        p(BooleanUtils.toBoolean("2", "1", "2"));   // false; 指定 "1" 为 true, "2" 为 false
+        p(BooleanUtils.toBooleanObject(3, 1, 2, 3));// null; 指定 1 为 true, 2 为 false, 3 为 null
 
         // toBooleanDefaultIfNull(Boolean bool, boolean valueIfNull)
-        System.out.println(BooleanUtils.toBooleanDefaultIfNull(null, true)); // true
+        p(BooleanUtils.toBooleanDefaultIfNull(null, true)); // true
     }
 
     @Test
     public void toInteger() {
-        System.out.println(BooleanUtils.toInteger(true));       // 1
-        System.out.println(BooleanUtils.toIntegerObject(null)); // null
+        p(BooleanUtils.toInteger(true));            // 1
+        p(BooleanUtils.toIntegerObject(null));      // null
 
-        System.out.println(BooleanUtils.toInteger(true, 1, 0)); // 1
-        System.out.println(BooleanUtils.toInteger(null, 1, 0, 2)); // 2
+        p(BooleanUtils.toInteger(true, 1, 0));      // 1
+        p(BooleanUtils.toInteger(null, 1, 0, 2));   // 2
     }
 
     @Test
     public void toString_() {
 
-        System.out.println(BooleanUtils.toString(true, "1", "2")); // 1
-        System.out.println(BooleanUtils.toString(null, "1", "2", "3")); // 3
+        p(BooleanUtils.toString(true, "1", "2"));       // 1
+        p(BooleanUtils.toString(null, "1", "2", "3"));  // 3
 
-        System.out.println(BooleanUtils.toStringYesNo(true));       // yes
-        System.out.println(BooleanUtils.toStringOnOff(true));       // on
-        System.out.println(BooleanUtils.toStringTrueFalse(true));   // true
+        p(BooleanUtils.toStringYesNo(true));            // yes
+        p(BooleanUtils.toStringOnOff(true));            // on
+        p(BooleanUtils.toStringTrueFalse(true));        // true
     }
 
 

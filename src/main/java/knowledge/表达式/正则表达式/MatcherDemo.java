@@ -1,5 +1,6 @@
 package knowledge.表达式.正则表达式;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.regex.Matcher;
@@ -8,7 +9,7 @@ import java.util.regex.Pattern;
 /**
  * Matcher
  */
-public class MatcherDemo {
+public class MatcherDemo extends Demo {
 
     /**
      * boolean	find()
@@ -26,17 +27,17 @@ public class MatcherDemo {
         if (m.find()) {
             // 捕获组是从 1 开始从左到右的索引。
             // 组零表示整个模式，因此表达式 m.group(0) 等效于 m.group()
-            System.out.println(m.group());  // aabfoo
-            System.out.println(m.group(0)); // aabfoo
-            System.out.println(m.group(1)); // aab
-            System.out.println(m.group(2)); // foo
+            p(m.group());   // aabfoo
+            p(m.group(0));  // aabfoo
+            p(m.group(1));  // aab
+            p(m.group(2));  // foo
         }
 
         if (m.find(10)) {
-            System.out.println(m.group());  // abfoo
-            System.out.println(m.group(0)); // abfoo
-            System.out.println(m.group(1)); // ab
-            System.out.println(m.group(2)); // foo
+            p(m.group());   // abfoo
+            p(m.group(0));  // abfoo
+            p(m.group(1));  // ab
+            p(m.group(2));  // foo
         }
     }
 
@@ -68,13 +69,13 @@ public class MatcherDemo {
         Matcher m = p.matcher("aabfooaabfooabfoob");
 
         while(m.find()) {
-            System.out.println(m.start());         // 0 6  12
-            System.out.println(m.start(1)); // 0 6  12
-            System.out.println(m.start(2)); // 3 9  14
+            p(m.start());   // 0 6  12
+            p(m.start(1));  // 0 6  12
+            p(m.start(2));  // 3 9  14
 
-            System.out.println(m.end());           // 6 12 17
-            System.out.println(m.end(1));   // 3 9  14
-            System.out.println(m.end(2));   // 6 12 17
+            p(m.end());     // 6 12 17
+            p(m.end(1));    // 3 9  14
+            p(m.end(2));    // 6 12 17
         }
     }
 
@@ -100,10 +101,10 @@ public class MatcherDemo {
         Pattern p = Pattern.compile("foo");
 
         Matcher m = p.matcher("fooooooooooooooooo");
-        System.out.println(m.lookingAt()); // true
+        p(m.lookingAt()); // true
 
         m = p.matcher("boofoooooooooooooo");
-        System.out.println(m.lookingAt()); // false
+        p(m.lookingAt()); // false
     }
 
     /**
@@ -115,10 +116,10 @@ public class MatcherDemo {
         Pattern p = Pattern.compile("foo");
 
         Matcher m = p.matcher("fooooooooooooooooo");
-        System.out.println(m.matches()); // false
+        p(m.matches()); // false
 
         m = p.matcher("foo");
-        System.out.println(m.matches()); // true
+        p(m.matches()); // true
     }
 
     // 替换方法
@@ -139,7 +140,7 @@ public class MatcherDemo {
         }
 
         m.appendTail(buffer);
-        System.out.println(buffer); // -foo-foo-foo-
+        p(buffer); // -foo-foo-foo-
     }
 
     /**
@@ -162,10 +163,10 @@ public class MatcherDemo {
         Matcher m = p.matcher("aabfooaabfooabfoob");
 
         String result = m.replaceAll("-");
-        System.out.println(result); // -foo-foo-foo-
+        p(result); // -foo-foo-foo-
 
         result = m.replaceFirst("-");
-        System.out.println(result); // -fooaabfooabfoob
+        p(result); // -fooaabfooabfoob
     }
 
     /**
@@ -190,13 +191,13 @@ public class MatcherDemo {
         String result;
         try {
             result = m.replaceAll("-$");
-            System.out.println(result);
+            p(result);
         } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage()); // Exception: Illegal group reference: group index is missing
+            p("Exception: " + e.getMessage()); // Exception: Illegal group reference: group index is missing
         }
 
         result = m.replaceAll(Matcher.quoteReplacement("-$"));
-        System.out.println(result); // -$foo-$foo-$foo-$
+        p(result); // -$foo-$foo-$foo-$
     }
 
 }

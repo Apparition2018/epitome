@@ -1,11 +1,12 @@
 package knowledge.api.lang.object;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 /**
  * Object
  */
-public class ObjectDemo {
+public class ObjectDemo extends Demo {
 
     /**
      * protected  Object	clone()
@@ -30,10 +31,10 @@ public class ObjectDemo {
     public void equals_() {
         Object x = 1;
         Object y = 2;
-        System.out.println(x.equals(y)); // false
+        p(x.equals(y)); // false
 
         Object z = x;
-        System.out.println(x.equals(z)); // true
+        p(x.equals(z)); // true
     }
 
     /**
@@ -58,10 +59,10 @@ public class ObjectDemo {
 
         Number n = 2;
         // object.getClass()
-        System.out.println(n.getClass().getName()); // java.lang.Integer
+        p(n.getClass().getName()); // java.lang.Integer
 
         // Object.class
-        System.out.println(Number.class.getName()); // java.lang.Number
+        p(Number.class.getName()); // java.lang.Number
     }
 
     /**
