@@ -1,6 +1,5 @@
 package jar.freemarker;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
