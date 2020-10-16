@@ -3,6 +3,7 @@ package jar.google.gson;
 import com.google.gson.*;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
+import lombok.AllArgsConstructor;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -105,18 +106,12 @@ public class GsonDemo {
         }
     }
 
-    class User {
+    @AllArgsConstructor
+    private static class User {
         public String name;
         public int age;
         @SerializedName(value = "emailAddress", alternate = {"email", "email_address"})
         // 当上面的三个属性(email_address、email、emailAddress)都中出现任意一个时均可以得到正确的结果。
-        String emailAddress;
-
-        public User(String name, int age, String emailAddress) {
-            super();
-            this.name = name;
-            this.age = age;
-            this.emailAddress = emailAddress;
-        }
+                String emailAddress;
     }
 }

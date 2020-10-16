@@ -19,6 +19,11 @@ import org.junit.Test;
  */
 public class PreconditionsDemo {
 
+    private static class User {
+        private String userName;
+        private String password;
+    }
+
     /**
      * checkArgument:
      * static void	checkArgument(boolean expression[, @Nullable Object errorMessage])
@@ -60,18 +65,11 @@ public class PreconditionsDemo {
      */
     @Test
     public void checkIndex() {
-        ImmutableList list = ImmutableList.of("A", "B", "C", "E", "F");
+        ImmutableList<String> list = ImmutableList.of("A", "B", "C", "E", "F");
 
         Preconditions.checkElementIndex(6, list.size());    // index (6) must be less than size (5)
         Preconditions.checkPositionIndex(6, list.size());   // index (6) must not be greater than size (5)
         Preconditions.checkPositionIndexes(2, 6, list.size());  // end index (6) must not be greater than size (5)
-    }
-
-    @AllArgsConstructor
-    @NoArgsConstructor
-    private class User {
-        private String userName;
-        private String password;
     }
 
 }

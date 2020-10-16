@@ -1,6 +1,5 @@
 package jar.protostuff;
 
-
 import io.protostuff.LinkedBuffer;
 import io.protostuff.ProtostuffIOUtil;
 import io.protostuff.Schema;

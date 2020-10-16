@@ -3,7 +3,8 @@ package springboot.controller;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.validator.constraints.*;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -16,9 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.*;
 import javax.validation.constraints.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.lang.annotation.*;
 import java.util.List;
 import java.util.Locale;
@@ -84,88 +82,89 @@ public class ValidatorController {
         }
         return "验证通过，" + "\t名称：" + user.getName() + "\t年龄：" + user.getAge() + "\t邮箱地址：" + user.getMail();
     }
-}
 
-@Getter
-@Setter
-class User {
 
-    @NotBlank(message = "用户名称不能为空")
-    private String name;
+    @Getter
+    @Setter
+    private static class User {
 
-    @Range(max = 150, min = 1, message = "年龄范围应该在1~150内")
-    private Integer age;
+        @NotBlank(message = "用户名称不能为空")
+        private String name;
 
-    @NotEmpty(message = "密码不能为空")
-    @Length(max = 8, min = 6, message = "密码长度为6~8位")
-    @Pattern(regexp = "[a-zA-Z]*", message = "密码不合法")
-    private String password;
-}
+        @Range(max = 150, min = 1, message = "年龄范围应该在1~150内")
+        private Integer age;
 
-@Getter
-@Setter
-class User2 {
-
-    @NotBlank
-    @Length(min = 2, max = 10)
-    private String name;
-
-    @Min(value = 1)
-    private int age;
-
-    @NotBlank
-    @Email
-    private String mail;
-
-    // 自定义验证，值为1或2或3，其他均不可通过验证
-    @FlagValidator(values = "1,2,3")
-    private String flag;
-}
-
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.PARAMETER, ElementType.FIELD})
-@Constraint(validatedBy = FlagValidatorClass.class)
-@interface FlagValidator {
-
-    // flag的有效值多个使用','隔开
-    String values();
-
-    // 提示内容
-    String message() default "flag不存在";
-
-    Class<?>[] groups() default {};
-
-    Class<? extends Payload>[] payload() default {};
-}
-
-class FlagValidatorClass implements ConstraintValidator<FlagValidator, Object> {
-
-    // 临时变量保存flag值列表
-    private String values;
-
-    // 初始化values的值
-    @Override
-    public void initialize(FlagValidator flagValidator) {
-        // 将注解内配置的值赋值给临时变量
-        this.values = flagValidator.values();
+        @NotEmpty(message = "密码不能为空")
+        @Length(max = 8, min = 6, message = "密码长度为6~8位")
+        @Pattern(regexp = "[a-zA-Z]*", message = "密码不合法")
+        private String password;
     }
 
-    // 实现验证
-    @Override
-    public boolean isValid(Object value, ConstraintValidatorContext constraintValidatorContext) {
-        // 分割定义的有效值
-        String[] value_array = values.split(",");
-        boolean isFlag = false;
-        // 遍历比对有效值
-        for (String aValue_array : value_array) {
-            //存在一致跳出循环，赋值isFlag=true
-            if (aValue_array.equals(value)) {
-                isFlag = true;
-                break;
-            }
+    @Getter
+    @Setter
+    private static class User2 {
+
+        @NotBlank
+        @Length(min = 2, max = 10)
+        private String name;
+
+        @Min(value = 1)
+        private int age;
+
+        @NotBlank
+        @Email
+        private String mail;
+
+        // 自定义验证，值为1或2或3，其他均不可通过验证
+        @FlagValidator(values = "1,2,3")
+        private String flag;
+    }
+
+    @Documented
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target({ElementType.PARAMETER, ElementType.FIELD})
+    @Constraint(validatedBy = FlagValidatorClass.class)
+    @interface FlagValidator {
+
+        // flag的有效值多个使用','隔开
+        String values();
+
+        // 提示内容
+        String message() default "flag不存在";
+
+        Class<?>[] groups() default {};
+
+        Class<? extends Payload>[] payload() default {};
+    }
+
+    private static class FlagValidatorClass implements ConstraintValidator<FlagValidator, Object> {
+
+        // 临时变量保存flag值列表
+        private String values;
+
+        // 初始化values的值
+        @Override
+        public void initialize(FlagValidator flagValidator) {
+            // 将注解内配置的值赋值给临时变量
+            this.values = flagValidator.values();
         }
-        // 返回是否存在boolean
-        return isFlag;
+
+        // 实现验证
+        @Override
+        public boolean isValid(Object value, ConstraintValidatorContext constraintValidatorContext) {
+            // 分割定义的有效值
+            String[] value_array = values.split(",");
+            boolean isFlag = false;
+            // 遍历比对有效值
+            for (String aValue_array : value_array) {
+                //存在一致跳出循环，赋值isFlag=true
+                if (aValue_array.equals(value)) {
+                    isFlag = true;
+                    break;
+                }
+            }
+            // 返回是否存在boolean
+            return isFlag;
+        }
     }
 }
