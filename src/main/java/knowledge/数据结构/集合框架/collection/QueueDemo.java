@@ -10,7 +10,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
- * QueueDemo
+ * Queue
  *
  * @author ljh
  * created on 2020/10/9 14:38

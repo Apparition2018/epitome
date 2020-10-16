@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.Date;
 
 /**
- * SimpleDateFormatDemo
+ * SimpleDateFormat
  * https://jdk6.net/text/SimpleDateFormat.html
  * <p>
  * 字母   日期或时间元素             表示          示例

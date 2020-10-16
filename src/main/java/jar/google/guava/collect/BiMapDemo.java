@@ -5,7 +5,7 @@ import com.google.common.collect.HashBiMap;
 import org.junit.Test;
 
 /**
- * BiMapDemo
+ * BiMap
  * <p>
  * BidMap 是一个接口，该接口要求值和键都不能重复，即双向映射
  * <p>

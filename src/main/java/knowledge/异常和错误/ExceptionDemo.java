@@ -3,7 +3,7 @@ package knowledge.异常和错误;
 import org.junit.Test;
 
 /**
- * ExceptionDemo
+ * Exception
  *
  * @author ljh
  * created on 2020/9/4 13:59

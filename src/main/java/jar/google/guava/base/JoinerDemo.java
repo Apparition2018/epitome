@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * JoinerDemo
+ * Joiner
  * <p>
  * http://www.ibloger.net/article/3334.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/base/Joiner.html

@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
- * SplitterDemo
+ * Splitter
  *
  * http://www.ibloger.net/article/3335.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/base/Splitter.html

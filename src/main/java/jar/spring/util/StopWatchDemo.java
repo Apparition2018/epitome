@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
- * StopWatchDemo
+ * StopWatch
  *
  * @author ljh
  * created on 2020/10/16 11:05
