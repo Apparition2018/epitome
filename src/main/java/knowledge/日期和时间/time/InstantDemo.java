@@ -1,5 +1,6 @@
 package knowledge.日期和时间.time;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.Instant;
@@ -19,7 +20,7 @@ import java.time.temporal.ChronoUnit;
  * https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html
  * https://www.yiibai.com/javatime/javatime_instant.html
  */
-public class InstantDemo {
+public class InstantDemo extends Demo {
 
     private Instant instant;
     private Instant instant2;
@@ -88,12 +89,6 @@ public class InstantDemo {
         p(instant.truncatedTo(ChronoUnit.HOURS));   // 2008-08-08T20:00:00Z
         p(instant.truncatedTo(ChronoUnit.MINUTES)); // 2008-08-08T20:08:00Z
         p(instant.truncatedTo(ChronoUnit.SECONDS)); // 2008-08-08T20:08:08Z
-    }
-
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

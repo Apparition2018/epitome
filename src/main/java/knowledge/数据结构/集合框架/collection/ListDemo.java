@@ -107,9 +107,9 @@ public class ListDemo extends Demo {
      */
     @Test
     public void testArrayList() {
-        /* ensureCapacity() */
         final int N = 10000000;
 
+        //********** 没有调用 ensureCapacity() **********//
         ArrayList<Object> list = new ArrayList<>();
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < N; i++) {
@@ -118,25 +118,29 @@ public class ListDemo extends Demo {
         long endTime = System.currentTimeMillis();
         p("没有调用 ensureCapacity() 所需时间：" + (endTime - startTime)); // 没有调用 ensureCapacity() 所需时间：2813
 
+
+        //********** 调用了 ensureCapacity() **********//
         list = new ArrayList<>();
         startTime = System.currentTimeMillis();
-        // void	    ensureCapacity(int minCapacity)     如有必要，增加此 ArrayList 实例的容量，以确保它至少能够容纳最小容量参数所指定的元素数。
+        // void	    ensureCapacity(int minCapacity)     
+        // 如有必要，增加此 ArrayList 实例的容量，以确保它至少能够容纳最小容量参数所指定的元素数。
         list.ensureCapacity(N);
         for (int i = 0; i <= N; i++) {
             list.add(new Object());
         }
         endTime = System.currentTimeMillis();
-        p("调用了 ensureCapacity() 所需时间：" + (endTime - startTime)); // 没有调用 ensureCapacity() 所需时间：766
+        p("调用了 ensureCapacity() 所需时间：" + (endTime - startTime));    // 调用了 ensureCapacity() 所需时间：766
 
 
         p(getArrayListCapacity(list)); // 15000000
-        // void	    trimToSize()                        将此 ArrayList 实例的容量调整为列表的当前大小，即把 capacity = size，减少内存消耗
+        // void	    trimToSize()                        
+        // 将此 ArrayList 实例的容量调整为列表的当前大小，即把 capacity = size，减少内存消耗
         list.trimToSize();
         p(getArrayListCapacity(list)); // 10000001
     }
 
     /**
-     * 通过反射获取 ArrayList capacity
+     * 通过反射获取 ArrayList 的 capacity
      */
     public static int getArrayListCapacity(List<?> arrayList) {
         Class<ArrayList> arrayListClass = ArrayList.class;

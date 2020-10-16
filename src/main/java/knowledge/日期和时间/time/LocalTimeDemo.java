@@ -1,5 +1,6 @@
 package knowledge.日期和时间.time;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -19,7 +20,7 @@ import java.time.temporal.ChronoUnit;
  * https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html
  * https://www.yiibai.com/javatime/javatime_localtime.html#
  */
-public class LocalTimeDemo {
+public class LocalTimeDemo extends Demo {
 
     private LocalTime lt;
     private LocalTime lt2;
@@ -116,11 +117,6 @@ public class LocalTimeDemo {
         p(lt.truncatedTo(ChronoUnit.HOURS));   // 20:00
         p(lt.truncatedTo(ChronoUnit.MINUTES)); // 20:08
         p(lt.truncatedTo(ChronoUnit.SECONDS)); // 20:08:08
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

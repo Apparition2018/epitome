@@ -1,5 +1,6 @@
 package knowledge.api.util.resourcebundle;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Enumeration;
@@ -14,7 +15,7 @@ import java.util.ResourceBundle;
  * <p>
  * https://www.cnblogs.com/tonghun/p/7124245.html
  */
-public class ResourceBundleDemo {
+public class ResourceBundleDemo extends Demo {
 
     @Test
     public void test() {
@@ -40,10 +41,5 @@ public class ResourceBundleDemo {
             p(key + " = " + bundle.getString(key));
         }
 
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 }

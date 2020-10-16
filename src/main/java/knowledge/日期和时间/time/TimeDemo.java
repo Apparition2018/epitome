@@ -1,5 +1,6 @@
 package knowledge.日期和时间.time;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.*;
@@ -18,7 +19,7 @@ import java.util.Date;
  * https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html
  * https://www.yiibai.com/javatime
  */
-public class TimeDemo {
+public class TimeDemo extends Demo {
 
     /**
      * LocalDateTime <=> String
@@ -50,11 +51,6 @@ public class TimeDemo {
         instant = date.toInstant();
         ldt = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
         p(ldt); // 2008-08-08T20:08:08
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

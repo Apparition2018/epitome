@@ -1,5 +1,6 @@
 package knowledge.日期和时间.time;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -19,7 +20,7 @@ import java.time.LocalTime;
  * https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html
  * https://www.yiibai.com/javatime/javatime_localdate.html
  */
-public class LocalDateDemo {
+public class LocalDateDemo extends Demo {
 
     private LocalDate ld;
     private LocalDate ld2;
@@ -115,11 +116,6 @@ public class LocalDateDemo {
     @Test
     public void toEpochDay() {
         p(ld.toEpochDay());         // 14099
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

@@ -1,5 +1,6 @@
 package jar.apache.commons.math3.stat;
 
+import l.demo.Demo;
 import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
 import org.apache.commons.math3.stat.descriptive.rank.Median;
@@ -13,25 +14,25 @@ import java.util.Arrays;
  * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/stat/StatUtils.html
  * http://www.cnblogs.com/xiao02fang/p/9883909.html
  */
-public class StatDemo {
+public class StatDemo extends Demo {
 
     private double[] values = new double[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private double[] values2 = new double[]{2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
     @Test
-    public void statUtils() {
+    public void testStatUtils() {
 
         // static double	max(double[] values[, int begin, int length])
         // 最大值
-        p("max = " + StatUtils.max(values));   // 10.0
+        p("max = " + StatUtils.max(values));        // 10.0
 
         // static double	min(double[] values[, int begin, int length])
         // 最小值
-        p("min = " + StatUtils.min(values));   // 1.0
+        p("min = " + StatUtils.min(values));        // 1.0
 
         // static double	sum(double[] values[, int begin, int length])
         // 总和
-        p("sum = " + StatUtils.sum(values));   // 55.0
+        p("sum = " + StatUtils.sum(values));        // 55.0
 
         // static double	sumSq(double[] values[, int begin, int length])
         // 平方和
@@ -39,15 +40,15 @@ public class StatDemo {
 
         // static double	sumLog(double[] values[, int begin, int length])
         // 对数和
-        p("sum log = " + StatUtils.sumLog(values));   // 385.0
+        p("sum log = " + StatUtils.sumLog(values)); // 385.0
 
         // static double	product(double[] values[, int begin, int length])
         // 返回乘积
-        p("product = " + StatUtils.product(values));  // 3628800.0
+        p("product = " + StatUtils.product(values));// 3628800.0
 
         // static double	mean(double[] values[, int begin, int length])
         // 算数平均数
-        p("mean = " + StatUtils.mean(values)); // 5.5
+        p("mean = " + StatUtils.mean(values));      // 5.5
 
         // static double	geometricMean(double[] values[, int begin, int length])
         // 几何平均数
@@ -61,9 +62,9 @@ public class StatDemo {
         // static double	percentile(double[] values[, int begin, int length], double p)
         // 百分位数
         // https://www.sohu.com/a/236882664_660796
-        p("percentile = " + StatUtils.percentile(values, 1));   // 1.0
-        p("percentile = " + StatUtils.percentile(values, 50));  // 5.5，中位数
-        p("percentile = " + StatUtils.percentile(values, 99));  // 10.0
+        p("percentile = " + StatUtils.percentile(values, 1));       // 1.0
+        p("percentile = " + StatUtils.percentile(values, 50));      // 5.5，中位数
+        p("percentile = " + StatUtils.percentile(values, 99));      // 10.0
 
         // static double	variance(double[] values[, double mean, int begin, int length])
         // 方差
@@ -74,7 +75,7 @@ public class StatDemo {
 
         // static double	populationVariance(double[] values[, double mean, int begin, int length])
         // 总体方差
-        p("population variance = " + StatUtils.populationVariance(values));     // 8.25
+        p("population variance = " + StatUtils.populationVariance(values)); // 8.25
 
 
         // static double	meanDifference(double[] sample1, double[] sample2)
@@ -94,21 +95,15 @@ public class StatDemo {
 
     // 中位数
     @Test
-    public void median() {
+    public void testMedian() {
         Median median = new Median();
         p("median = " + median.evaluate(values)); // 5.5
     }
 
     // 标准差
     @Test
-    public void standardDeviation() {
+    public void testStandardDeviation() {
         StandardDeviation sd = new StandardDeviation();
         p("standard deviation = " + sd.evaluate(values)); // 3.0276503540974917
-    }
-
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 }

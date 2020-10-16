@@ -64,11 +64,9 @@ public class LombokDemo3 extends Demo {
     @Test
     @SneakyThrows
     public void testSneakyThrows() {
-        p(System.currentTimeMillis());
-
+        p("sleep start");
         TimeUnit.SECONDS.sleep(2);
-
-        p(System.currentTimeMillis());
+        p("sleep end");
     }
 
     /**

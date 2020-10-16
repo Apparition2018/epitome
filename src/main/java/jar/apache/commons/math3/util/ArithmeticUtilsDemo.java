@@ -1,5 +1,6 @@
 package jar.apache.commons.math3.util;
 
+import l.demo.Demo;
 import org.apache.commons.math3.util.ArithmeticUtils;
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ import org.junit.Test;
  * <p>
  * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/util/ArithmeticUtils.html
  */
-public class ArithmeticUtilsDemo {
+public class ArithmeticUtilsDemo extends Demo {
 
     @Test
     public void arithmetic() {
@@ -42,11 +43,6 @@ public class ArithmeticUtilsDemo {
         p(ArithmeticUtils.isPowerOfTwo(1024)); // true
 
 
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

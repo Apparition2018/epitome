@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.ObjectUtils;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import org.junit.Test;
  * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ObjectUtils.html
  */
-public class ObjectUtilsDemo {
+public class ObjectUtilsDemo extends Demo {
 
     /**
      * static boolean	allNotNull(Object... values)
@@ -126,12 +127,6 @@ public class ObjectUtilsDemo {
     @Test
     public void mode() {
         p(ObjectUtils.mode(1, 2, 2, 3, 3, 3, 4, 4, 5)); // 3
-    }
-
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

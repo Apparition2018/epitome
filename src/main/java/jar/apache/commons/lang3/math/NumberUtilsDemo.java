@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3.math;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import org.junit.Test;
  * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/NumberUtils.html
  */
-public class NumberUtilsDemo {
+public class NumberUtilsDemo extends Demo {
 
     /**
      * static int	compare(byte/int/long/short x, byte/int/long/short y)
@@ -83,12 +84,6 @@ public class NumberUtilsDemo {
     public void max_min() {
         p(NumberUtils.max(1.111, 11.11, 111.1, 1111));  // 1111.0
         p(NumberUtils.min(1.111, 11.11, 111.1, 1111));  // 1.111
-    }
-
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

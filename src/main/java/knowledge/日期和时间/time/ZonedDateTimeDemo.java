@@ -1,5 +1,6 @@
 package knowledge.日期和时间.time;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.ZoneId;
@@ -12,7 +13,7 @@ import java.time.ZonedDateTime;
  * https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html
  * https://www.yiibai.com/javatime/javatime_zoneddatetime.html
  */
-public class ZonedDateTimeDemo {
+public class ZonedDateTimeDemo extends Demo {
 
     private ZonedDateTime zdt;
 
@@ -37,11 +38,6 @@ public class ZonedDateTimeDemo {
         p(zdt.toLocalTime());       // 20:08:08
         p(zdt.toLocalDateTime());   // 2018-08-08T20:08:08
         p(zdt.toInstant());         // 2018-08-08T12:08:08Z
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

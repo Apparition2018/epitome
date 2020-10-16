@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.LocaleUtils;
 import org.junit.Test;
 
@@ -12,7 +13,7 @@ import java.util.Set;
  *
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/LocaleUtils.html
  */
-public class LocaleUtilsDemo {
+public class LocaleUtilsDemo extends Demo {
 
     @Test
     public void test() {
@@ -43,11 +44,5 @@ public class LocaleUtilsDemo {
         // static boolean	    isAvailableLocale(Locale locale)
         // 检查指定的区域设置是否在可用区域设置列表中
         p(LocaleUtils.isAvailableLocale(locale)); // true
-    }
-
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 }

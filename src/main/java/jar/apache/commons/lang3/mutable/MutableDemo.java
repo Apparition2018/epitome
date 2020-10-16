@@ -14,15 +14,10 @@ public class MutableDemo {
     public void mutable() {
         MutableInt mi = new MutableInt(10);
         mi.add(10);
-        p(mi); // 20
+        System.out.println(mi); // 20
 
         mi.increment();
-        p(mi); // 21
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
+        System.out.println(mi); // 21
     }
 
 }

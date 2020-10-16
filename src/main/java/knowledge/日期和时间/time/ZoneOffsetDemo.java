@@ -1,6 +1,7 @@
 package knowledge.日期和时间.time;
 
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.ZoneId;
@@ -19,7 +20,7 @@ import java.time.temporal.ChronoField;
  * https://docs.oracle.com/javase/8/docs/api/java/time/ZoneOffset.html
  * https://www.yiibai.com/javatime/javatime_zoneoffset.html
  */
-public class ZoneOffsetDemo {
+public class ZoneOffsetDemo extends Demo {
 
     private ZoneOffset zo;
     private ZoneOffset zo2;
@@ -73,10 +74,5 @@ public class ZoneOffsetDemo {
         p(zo.getTotalSeconds());                    // 0
         p(zo2.getTotalSeconds());                   // 25200
         p(zo3.getTotalSeconds());                   // 32949
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 }

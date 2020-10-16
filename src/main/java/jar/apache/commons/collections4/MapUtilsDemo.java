@@ -1,5 +1,6 @@
 package jar.apache.commons.collections4;
 
+import l.demo.Demo;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
@@ -32,7 +33,7 @@ import java.util.Map;
  * <p>
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapUtils.html
  */
-public class MapUtilsDemo {
+public class MapUtilsDemo extends Demo {
 
     private Map<String, Object> map = new HashMap<>();
 
@@ -83,11 +84,5 @@ public class MapUtilsDemo {
         MapUtils.safeAddToMap(map, "d", null);
         p(map); // {a=1, b=2, c=3, d=}
     }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
-
 
 }

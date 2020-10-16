@@ -1,11 +1,12 @@
 package knowledge.运算符;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 /**
  * 运算符
  */
-public class Operators {
+public class Operators extends Demo {
 
     /**
      * 相等运算符
@@ -83,8 +84,4 @@ public class Operators {
         p(d instanceof Number); // true
     }
     
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
 }

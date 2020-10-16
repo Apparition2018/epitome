@@ -1,5 +1,6 @@
 package jar.apache.commons.io;
 
+import l.demo.Demo;
 import org.apache.commons.io.FilenameUtils;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import org.junit.Test;
  * <p>
  * http://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html
  */
-public class FilenameUtilsDemo {
+public class FilenameUtilsDemo extends Demo {
 
     @Test
     public void getXXX() {
@@ -49,11 +50,6 @@ public class FilenameUtilsDemo {
         // 获取前缀长度
         p(FilenameUtils.getPrefixLength("C:/a/b/c.txt"));   // 3
 
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

@@ -22,9 +22,4 @@ public class MathUtilsDemo {
 
     }
 
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
-
 }

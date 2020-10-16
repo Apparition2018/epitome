@@ -16,13 +16,8 @@ public class CaseUtilsDemo {
     @Test
     public void toCamelCase() {
 
-        p(CaseUtils.toCamelCase("To.Camel.Case", true, '.'));   // ToCamelCase
-        p(CaseUtils.toCamelCase("To.Camel.Case", false, '.'));  // toCamelCase
+        System.out.println(CaseUtils.toCamelCase("To.Camel.Case", true, '.'));  // ToCamelCase
+        System.out.println(CaseUtils.toCamelCase("To.Camel.Case", false, '.')); // toCamelCase
 
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 }

@@ -1,5 +1,7 @@
 package knowledge.加解密和消息摘要.加解密;
 
+import l.demo.Demo;
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -27,7 +29,7 @@ import java.util.Map;
  *
  *
  */
-public class RSADemo2 {
+public class RSADemo2 extends Demo {
 
     // 非对称加密算法 RSA
     private static final String KEY_ALGORITHM = "RSA";
@@ -184,9 +186,5 @@ public class RSADemo2 {
         byte[] decode2 = RSADemo2.decryptByPrivateKey(code2, privateKey);
         p("甲方解密后的数据：" + new String(decode2));
     }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
+    
 }

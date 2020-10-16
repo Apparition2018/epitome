@@ -1,5 +1,6 @@
 package knowledge.日期和时间.time;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.Duration;
@@ -20,7 +21,7 @@ import java.time.temporal.ChronoUnit;
  * https://docs.oracle.com/javase/8/docs/api/java/time/Period.html
  * https://www.yiibai.com/javatime/javatime_period.html
  */
-public class PeriodDemo {
+public class PeriodDemo extends Demo {
 
     private Period period;
     private Period period2;
@@ -107,9 +108,4 @@ public class PeriodDemo {
         p(pMonth.minusDays(1));             // P2M-1D
     }
 
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
 }

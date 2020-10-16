@@ -1,5 +1,6 @@
 package jar.apache.commons.text;
 
+import l.demo.Demo;
 import org.apache.commons.text.WordUtils;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import org.junit.Test;
  * <p>
  * https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/WordUtils.html
  */
-public class WordUtilsDemo {
+public class WordUtilsDemo extends Demo {
 
     /**
      * static String	abbreviate​(String str, int lower, int upper, String appendToEnd)
@@ -82,11 +83,6 @@ public class WordUtilsDemo {
         // Click here to jump <br /> to the commons <br /> website - <br /> http://commons.apache.org
         p(WordUtils.wrap(str, 20, " <br /> ", true));
         // Click here to jump <br /> to the commons <br /> website - <br /> http://commons.apach <br /> e.org
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

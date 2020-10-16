@@ -1,5 +1,6 @@
 package knowledge.日期和时间;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.Instant;
@@ -15,7 +16,7 @@ import java.util.Date;
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/util/Date.html
  */
-public class DateDemo {
+public class DateDemo extends Demo {
 
     private Date date;
 
@@ -30,7 +31,7 @@ public class DateDemo {
     @Test
     public void clone_() {
         Object date2 = date.clone();
-        p(date2);               // Wed May 18 11:33:20 CST 2033
+        p(date2);           // Wed May 18 11:33:20 CST 2033
     }
 
 
@@ -55,10 +56,10 @@ public class DateDemo {
      */
     @Test
     public void time() {
-        p(date.getTime());      // 1000000000000
+        p(date.getTime());  // 1000000000000
 
         date.setTime(2000000000000L);
-        p(date);                // Wed May 18 11:33:20 CST 2033
+        p(date);            // Wed May 18 11:33:20 CST 2033
 
     }
 
@@ -69,16 +70,10 @@ public class DateDemo {
     @Test
     public void instant() {
         Instant instant = date.toInstant();
-        p(instant);             // 2001-09-09T01:46:40Z
+        p(instant);         // 2001-09-09T01:46:40Z
 
         date = Date.from(instant);
-        p(date);                // Sun Sep 09 09:46:40 CST 2001
+        p(date);            // Sun Sep 09 09:46:40 CST 2001
     }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
-
 
 }

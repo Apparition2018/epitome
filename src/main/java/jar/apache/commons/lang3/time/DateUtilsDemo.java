@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3.time;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
@@ -20,7 +21,7 @@ import java.util.concurrent.TimeUnit;
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html
  */
-public class DateUtilsDemo {
+public class DateUtilsDemo extends Demo {
 
     private Date date1;
     private Date date2;
@@ -40,10 +41,10 @@ public class DateUtilsDemo {
      */
     @Test
     public void addXXX() {
-        dp(date1);                                  // 2019-10-31 17:19:10.372
-        dp(DateUtils.addYears(date1, 1));   // 2020-10-31 17:19:10.372
-        dp(DateUtils.addMonths(date1, 1));  // 2019-11-30 17:19:10.372
-        dp(DateUtils.addWeeks(date1, 1));   // 2019-11-07 17:19:10.372
+        p(date1);                               // 2019-10-31 17:19:10.372
+        p(DateUtils.addYears(date1, 1));        // 2020-10-31 17:19:10.372
+        p(DateUtils.addMonths(date1, 1));       // 2019-11-30 17:19:10.372
+        p(DateUtils.addWeeks(date1, 1));        // 2019-11-07 17:19:10.372
     }
 
     /**
@@ -54,12 +55,12 @@ public class DateUtilsDemo {
     @Test
     public void setXXX() {
         Date date = new Date();
-        dp(DateUtils.setMonths(date, 0));       // 2019-01-31 17:19:56.070
-        dp(DateUtils.setDays(date, 1));         // 2019-10-01 17:19:56.070
-        dp(DateUtils.setHours(date, 0));        // 2019-10-31 00:19:56.070
-        dp(DateUtils.setMinutes(date, 0));      // 2019-10-31 17:00:56.070
-        dp(DateUtils.setSeconds(date, 0));      // 2019-10-31 17:19:00.070
-        dp(DateUtils.setMilliseconds(date, 0)); // 2019-10-31 17:19:56.000
+        p(DateUtils.setMonths(date, 0));        // 2019-01-31 17:19:56.070
+        p(DateUtils.setDays(date, 1));          // 2019-10-01 17:19:56.070
+        p(DateUtils.setHours(date, 0));         // 2019-10-31 00:19:56.070
+        p(DateUtils.setMinutes(date, 0));       // 2019-10-31 17:00:56.070
+        p(DateUtils.setSeconds(date, 0));       // 2019-10-31 17:19:00.070
+        p(DateUtils.setMilliseconds(date, 0));  // 2019-10-31 17:19:56.000
     }
 
     /**
@@ -69,28 +70,28 @@ public class DateUtilsDemo {
      */
     @Test
     public void ceilRoundTruncate() {
-        dp(date1);                                      // 2019-10-31 17:20:13.450
+        p(date1);                                       // 2019-10-31 17:20:13.450
         p("=============================\n");
 
-        dp(DateUtils.ceiling(date1, Calendar.YEAR));    // 2020-01-01 00:00:00.000
-        dp(DateUtils.ceiling(date1, Calendar.MONTH));   // 2019-11-01 00:00:00.000
-        dp(DateUtils.ceiling(date1, Calendar.DATE));    // 2019-11-01 00:00:00.000
-        dp(DateUtils.ceiling(date1, Calendar.HOUR));    // 2019-10-31 18:00:00.000
-        dp(DateUtils.ceiling(date1, Calendar.MINUTE));  // 2019-10-31 17:21:00.000
-        p("=============================\n");
-
-        dp(DateUtils.round(date1, Calendar.YEAR));      // 2019-01-01 00:00:00.000
-        dp(DateUtils.round(date1, Calendar.MONTH));     // 2019-11-01 00:00:00.000
-        dp(DateUtils.round(date1, Calendar.DATE));      // 2019-11-01 00:00:00.000
-        dp(DateUtils.round(date1, Calendar.HOUR));      // 2019-10-31 17:00:00.000
-        dp(DateUtils.round(date1, Calendar.MINUTE));    // 2019-10-31 17:20:00.000
-        p("=============================\n");
-
-        dp(DateUtils.truncate(date1, Calendar.YEAR));   // 2019-01-01 00:00:00.000
-        dp(DateUtils.truncate(date1, Calendar.MONTH));  // 2019-10-01 00:00:00.000
-        dp(DateUtils.truncate(date1, Calendar.DATE));   // 2019-10-31 00:00:00.000
-        dp(DateUtils.truncate(date1, Calendar.HOUR));   // 2019-10-31 17:00:00.000
-        dp(DateUtils.truncate(date1, Calendar.MINUTE)); // 2019-10-31 17:20:00.000
+        p(DateUtils.ceiling(date1, Calendar.YEAR));     // 2020-01-01 00:00:00.000
+        p(DateUtils.ceiling(date1, Calendar.MONTH));    // 2019-11-01 00:00:00.000
+        p(DateUtils.ceiling(date1, Calendar.DATE));     // 2019-11-01 00:00:00.000
+        p(DateUtils.ceiling(date1, Calendar.HOUR));     // 2019-10-31 18:00:00.000
+        p(DateUtils.ceiling(date1, Calendar.MINUTE));   // 2019-10-31 17:21:00.000
+        p("=============================\n");           
+                                                        
+        p(DateUtils.round(date1, Calendar.YEAR));       // 2019-01-01 00:00:00.000
+        p(DateUtils.round(date1, Calendar.MONTH));      // 2019-11-01 00:00:00.000
+        p(DateUtils.round(date1, Calendar.DATE));       // 2019-11-01 00:00:00.000
+        p(DateUtils.round(date1, Calendar.HOUR));       // 2019-10-31 17:00:00.000
+        p(DateUtils.round(date1, Calendar.MINUTE));     // 2019-10-31 17:20:00.000
+        p("=============================\n");           
+                                                        
+        p(DateUtils.truncate(date1, Calendar.YEAR));    // 2019-01-01 00:00:00.000
+        p(DateUtils.truncate(date1, Calendar.MONTH));   // 2019-10-01 00:00:00.000
+        p(DateUtils.truncate(date1, Calendar.DATE));    // 2019-10-31 00:00:00.000
+        p(DateUtils.truncate(date1, Calendar.HOUR));    // 2019-10-31 17:00:00.000
+        p(DateUtils.truncate(date1, Calendar.MINUTE));  // 2019-10-31 17:20:00.000
     }
 
     /**
@@ -112,28 +113,28 @@ public class DateUtilsDemo {
      */
     @Test
     public void getFragmentInXXX() {
-        p(DateFormatUtils.format(date1, "yyyy-MM-dd HH:mm:ss"));   // 2018-11-19 10:41:10
+        p(DateFormatUtils.format(date1, "yyyy-MM-dd HH:mm:ss"));    // 2018-11-19 10:41:10
         p("=============================\n");
 
         p("从 2018-01-01 00:00:00 到 当前时间");
-        p(DateUtils.getFragmentInDays(date1, Calendar.YEAR));              // 323
-        p(DateUtils.getFragmentInHours(date1, Calendar.YEAR));             // 7738
-        p(DateUtils.getFragmentInMinutes(date1, Calendar.YEAR));           // 464322
-        p(DateUtils.getFragmentInSeconds(date1, Calendar.YEAR));           // 27859353
+        p(DateUtils.getFragmentInDays(date1, Calendar.YEAR));       // 323
+        p(DateUtils.getFragmentInHours(date1, Calendar.YEAR));      // 7738
+        p(DateUtils.getFragmentInMinutes(date1, Calendar.YEAR));    // 464322
+        p(DateUtils.getFragmentInSeconds(date1, Calendar.YEAR));    // 27859353
         p("=============================\n");
 
         p("从 2018-11-01 00:00:00 到 当前时间");
-        p(DateUtils.getFragmentInDays(date1, Calendar.MONTH));             // 19
-        p(DateUtils.getFragmentInHours(date1, Calendar.MONTH));            // 442
-        p(DateUtils.getFragmentInMinutes(date1, Calendar.MONTH));          // 26562
-        p(DateUtils.getFragmentInSeconds(date1, Calendar.MONTH));          // 1593753
+        p(DateUtils.getFragmentInDays(date1, Calendar.MONTH));      // 19
+        p(DateUtils.getFragmentInHours(date1, Calendar.MONTH));     // 442
+        p(DateUtils.getFragmentInMinutes(date1, Calendar.MONTH));   // 26562
+        p(DateUtils.getFragmentInSeconds(date1, Calendar.MONTH));   // 1593753
         p("=============================\n");
 
         p("从 2018-11-01 10:00:00 到 当前时间");
-        p(DateUtils.getFragmentInDays(date1, Calendar.DATE));              // 0
-        p(DateUtils.getFragmentInHours(date1, Calendar.DATE));             // 10
-        p(DateUtils.getFragmentInMinutes(date1, Calendar.DATE));           // 642
-        p(DateUtils.getFragmentInSeconds(date1, Calendar.DATE));           // 38553
+        p(DateUtils.getFragmentInDays(date1, Calendar.DATE));       // 0
+        p(DateUtils.getFragmentInHours(date1, Calendar.DATE));      // 10
+        p(DateUtils.getFragmentInMinutes(date1, Calendar.DATE));    // 642
+        p(DateUtils.getFragmentInSeconds(date1, Calendar.DATE));    // 38553
         p("=============================\n");
     }
 
@@ -146,7 +147,7 @@ public class DateUtilsDemo {
     public void iterator() {
         Iterator<Calendar> it = DateUtils.iterator(date1, DateUtils.RANGE_WEEK_MONDAY);
         while (it.hasNext()) {
-            dp(new Date(it.next().getTimeInMillis()));
+            p(new Date(it.next().getTimeInMillis()));
 //            2019-10-28 00:00:00.000
 //            2019-10-29 00:00:00.000
 //            2019-10-30 00:00:00.000
@@ -221,22 +222,11 @@ public class DateUtilsDemo {
      */
     @Test
     public void truncatedXXX() {
-        p(DateUtils.truncatedCompareTo(date1, date2, Calendar.SECOND));        // 0
-        p(DateUtils.truncatedCompareTo(date1, date2, Calendar.MILLISECOND));   // -1
+        p(DateUtils.truncatedCompareTo(date1, date2, Calendar.SECOND));         // 0
+        p(DateUtils.truncatedCompareTo(date1, date2, Calendar.MILLISECOND));    // -1
 
-        p(DateUtils.truncatedEquals(date1, date2, Calendar.SECOND));           // true
-        p(DateUtils.truncatedEquals(date1, date2, Calendar.MILLISECOND));      // false
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
-    }
-
-    private static <T> void dp(T obj) {
-        if (obj == null) return;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-        System.out.println(sdf.format(obj));
+        p(DateUtils.truncatedEquals(date1, date2, Calendar.SECOND));            // true
+        p(DateUtils.truncatedEquals(date1, date2, Calendar.MILLISECOND));       // false
     }
 
 }

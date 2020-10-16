@@ -1,5 +1,6 @@
 package knowledge.日期和时间.time.temporal;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.*;
@@ -18,7 +19,7 @@ import java.time.temporal.ChronoUnit;
  * 实现类：
  * LocalDateTime, LocalDate, LocalTime, ZonedDateTime, OffsetDateTime, offsetTime, Instant, Year, YearMonth
  */
-public class TemporalDemo {
+public class TemporalDemo extends Demo {
 
     private LocalDateTime ldt;
     private LocalDate ld;
@@ -133,12 +134,6 @@ public class TemporalDemo {
         p(ld.get(ChronoField.DAY_OF_WEEK));                 // 5
         p(lt.get(ChronoField.AMPM_OF_DAY));                 // 1
         p(instant.getLong(ChronoField.INSTANT_SECONDS));    // 1218226088
-    }
-
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }

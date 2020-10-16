@@ -1,5 +1,6 @@
 package knowledge.日期和时间.time;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.Duration;
@@ -20,7 +21,7 @@ import java.time.temporal.ChronoUnit;
  * https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html
  * https://www.yiibai.com/javatime/javatime_duration.html
  */
-public class DurationDemo {
+public class DurationDemo extends Demo {
 
     private Duration dur;
     private Duration dur2;
@@ -122,11 +123,6 @@ public class DurationDemo {
     public void to() {
         p(durDay.toHours());    // 24
         p(durHour.toMinutes()); // 60
-    }
-
-    private static <T> void p(T obj) {
-        if (obj == null) return;
-        System.out.println(obj);
     }
 
 }
