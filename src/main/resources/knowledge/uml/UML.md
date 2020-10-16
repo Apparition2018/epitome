@@ -8,6 +8,7 @@ UML (Unified Modeling Language) 统一建模语言，是一种为面向对象系
 2. [深入浅出UML类图](https://blog.csdn.net/u012426327/article/details/77500701)
 3. [UML类图](https://www.jianshu.com/p/57620b762160)
 4. [UML类图几种关系的总结](https://www.cnblogs.com/liuxiaoji/p/4704294.html)
+5. [Bug管理系统UML2.0建模实例](https://blog.csdn.net/lovelion/article/details/17352343)
 ---
 ## 用例图
 ```

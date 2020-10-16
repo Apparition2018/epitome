@@ -54,7 +54,7 @@ public class ListDemo extends Demo {
         // Iterable 接口下方法
         list.forEach(System.out::println);
     }
-
+    
     /**
      * void	    add(int index, E element)       在列表的指定位置插入指定元素（可选操作）
      * boolean  addAll([int index, ]Collection<? extends E> c)

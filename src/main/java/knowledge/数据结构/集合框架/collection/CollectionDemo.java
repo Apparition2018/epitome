@@ -15,70 +15,51 @@ import org.junit.Test;
  * 插入删除    效率高       效率低（会引起其他元素位置改变）
  * contains   效率高       效率低
  * <p>
- * boolean	        addAll(Collection<? extends E> c)   将指定 collection 中的所有元素都添加到此 collection 中（可选操作）。
- * boolean	        remove(Object o)                    从此 collection 中移除指定元素的单个实例，如果存在的话（可选操作）
- * Iterator<E>	    iterator()                          返回按适当顺序在列表的元素上进行迭代的迭代器
- * boolean	        isEmpty()                           如果此 collection 不包含元素，则返回 true
+ * boolean	            addAll(Collection<? extends E> c)   将指定 collection 中的所有元素都添加到此 collection 中（可选操作）。
+ * boolean	            remove(Object o)                    从此 collection 中移除指定元素的单个实例，如果存在的话（可选操作）
+ * boolean	            contains(Object o)                  如果此 collection 包含指定的元素，则返回 true
+ * boolean	            isEmpty()                           如果此 collection 不包含元素，则返回 true
+ * int	                size()                              返回此 collection 中的元素数
+ * Iterator<E>	        iterator()                          返回按适当顺序在列表的元素上进行迭代的迭代器
+ * <p>
+ * default Stream<E>	stream()                            返回连续 Stream                                          
+ * default Stream<E>	parallelStream()                    返回并行 Stream
  */
 public class CollectionDemo extends Demo {
 
-    /**
-     * void	        clear()                         移除此 collection 中的所有元素（可选操作）
-     */
     @Test
-    public void clear() {
-        p(list); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        list.subList(1, 3).clear();
-        p(list); // [0, 3, 4, 5, 6, 7, 8, 9]
-    }
-
-    /**
-     * boolean	    contains(Object o)              如果此 collection 包含指定的元素，则返回 true
-     * boolean	    containsAll(Collection<?> c)    如果此 collection 包含指定 collection 中的所有元素，则返回 true
-     */
-    @Test
-    public void contains() {
-        p(list);                        // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        p(list.contains(6));            // true
-
-        p(subList);                     // [1, 2, 3, 4, 5]
-        p(list.containsAll(subList));   // true
-    }
-
-    /**
-     * boolean	    removeAll(Collection<?> c)      移除此 collection 中那些也包含在指定 collection 中的所有元素（可选操作）
-     * 差集
-     */
-    @Test
-    public void removeAll() {
+    public void testCollection() {
         p(list);    // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        p(subList); // [1, 2, 3, 4, 5]
-        
-        list.removeAll(subList);
-        p(list);    // [0, 6, 7, 8, 9]
-    }
+        p(subList); // [2, 3, 4, 5, 6]
 
-    /**
-     * boolean	    retainAll(Collection<?> c)      仅保留此 collection 中那些也包含在指定 collection 的元素（可选操作）
-     * 交集
-     */
-    @Test
-    public void retainAll() {
-        p(subList); // [1, 2, 3, 4, 5]
-        p(subList2);// [3, 4, 5, 6, 7]
-        subList.retainAll(subList2);
-        p(subList); // [3, 4, 5]
-    }
+        // containsAll(Collection<?> c)     是否包含所有元素
+        p(list.containsAll(subList)); // true
 
-    /**
-     * Object[]	    toArray()                       返回按适当顺序包含列表中的所有元素的数组（从第一个元素到最后一个元素）
-     * <T> T[]	    toArray(T[] a)                  返回按适当顺序（从第一个元素到最后一个元素）包含列表中所有元素的数组；返回数组的运行时类型是指定数组的运行时类型
-     */
-    @Test
-    public void toArray() {
+        // clear()                          移除所有元素
+        list.subList(5, list.size()).clear();
+        p(list); // [1, 2, 3, 4, 5]
+
+        // toArray(T[] a)                   Collection → Array
         Integer[] arr = new Integer[list.size()];
         arr = list.toArray(arr);
-        p(arr); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        p(arr); // [1, 2, 3, 4, 5]
+    }
+
+    /**
+     * 交集 差集
+     */
+    @Test
+    public void testOperation() {
+        p(subList); // [2, 3, 4, 5, 6]
+        p(subList2);// [4, 5, 6, 7, 8]
+
+        // 交集
+        subList.retainAll(subList2);
+        p(subList); // [4, 5, 6] 
+
+        // 差集
+        subList2.removeAll(subList);
+        p(subList2);// [7, 8]
     }
 
 }
