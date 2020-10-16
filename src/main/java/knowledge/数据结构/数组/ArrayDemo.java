@@ -5,6 +5,17 @@ import org.junit.Test;
 
 import java.lang.reflect.Array;
 
+/**
+ * Array
+ * 
+ * Array 与 List 不同之处：
+ * 1.List 不可以存基本数据类型
+ * 2.Array 容量固定不可改变
+ * 3.Array 效率更高
+ *
+ * @author ljh
+ * created on 2020/10/16 16:23
+ */
 public class ArrayDemo extends Demo {
 
     /**
