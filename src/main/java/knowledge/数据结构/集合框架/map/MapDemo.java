@@ -33,23 +33,23 @@ public class MapDemo extends Demo {
         // 方法一
         // Set<K>	                keySet()        返回此映射中包含的键的 Set 视图
         for (Integer key : map.keySet()) {
-            System.out.println("key = " + key + " and value = " + map.get(key));
+            p("key = " + key + " and value = " + map.get(key));
         }
 
         // 方法二
         // Set<Map.Entry<K,V>>	    entrySet()      返回此映射中包含的映射关系的 Set 视图
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
-            System.out.println("key = " + entry.getKey() + " and value = " + entry.getValue());
+            p("key = " + entry.getKey() + " and value = " + entry.getValue());
         }
 
         // 方法三
         // Collection<V>	        values()        返回此映射中包含的值的 Collection 视图
         for (String v : map.values()) {
-            System.out.println("value = " + v);
+            p("value = " + v);
         }
 
         // 方法四
-        map.forEach((k, v) -> System.out.println("key = " + k + " and value = " + v));
+        map.forEach((k, v) -> p("key = " + k + " and value = " + v));
     }
 
     /**
