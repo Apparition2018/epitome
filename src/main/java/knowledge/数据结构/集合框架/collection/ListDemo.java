@@ -5,10 +5,7 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * List
@@ -18,6 +15,7 @@ import java.util.List;
  * List             Vector              ArrayList                       LinkedList
  * 线程同步             是                   否                               否
  * 查找               效率高 (实现 RandomAccess)                           效率低
+ * 实现               数组              数组                                  链表          
  * 插入删除         效率低             效率低                                 效率高
  * 其它           自动扩容 100%       自动扩容 50%                实现 Deque，提供了更多的方法，包括 offer(), peek(), poll() 等，多与一些线程池一起使用
  * <p>
@@ -134,6 +132,7 @@ public class ListDemo extends Demo {
     /**
      * 通过反射获取 ArrayList 的 capacity
      */
+    @SuppressWarnings("rawtypes")
     public static int getArrayListCapacity(List<?> arrayList) {
         Class<ArrayList> arrayListClass = ArrayList.class;
         try {
@@ -146,5 +145,5 @@ public class ListDemo extends Demo {
             return -1;
         }
     }
+    
 }
-

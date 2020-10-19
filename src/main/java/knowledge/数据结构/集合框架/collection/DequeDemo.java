@@ -26,10 +26,10 @@ package knowledge.数据结构.集合框架.collection;
  * pop()	        removeFirst()
  * peek()	        peekFirst()
  * <p>
- * Iterator<E>	    iterator()              返回以恰当顺序在此双端队列的元素上进行迭代的迭代器
- * Iterator<E>	    descendingIterator()    返回以逆向顺序在此双端队列的元素上进行迭代的迭代器
- * <p>
- * boolean	        remove(Object o)        从此双端队列中移除第一次出现的指定元素
+ * API:
+ * Iterator<E>	    iterator()                      返回以恰当顺序在此双端队列的元素上进行迭代的迭代器
+ * Iterator<E>	    descendingIterator()            返回以逆向顺序在此双端队列的元素上进行迭代的迭代器
+ * boolean	        remove(Object o)                从此双端队列中移除第一次出现的指定元素
  * boolean	        removeLastOccurrence(Object o)  从此双端队列移除最后一次出现的指定元素
  */
 public class DequeDemo {

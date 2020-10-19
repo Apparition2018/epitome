@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 生产者-消费者 模式
- * 本例基于 BlockingQueue 实现
+ * 一个系统中，存在生产者和消费者两种角色，他们通过内存缓冲区进行通信，生产者生产消费者需要的资料，消费者把资料做成产品。
  * <p>
  * https://www.cnblogs.com/chentingk/p/6497107.html
  *
@@ -18,6 +18,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ProducerAndConsumerPattern extends Demo {
 
+    /**
+     * 本例基于 BlockingQueue 实现
+     */
     public static void main(String[] args) throws InterruptedException {
         BlockingQueue<PCData> queue = new LinkedBlockingDeque<>(10);
         Producer p1 = new Producer(queue);
