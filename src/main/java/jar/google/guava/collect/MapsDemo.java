@@ -19,6 +19,12 @@ public class MapsDemo extends Demo {
     private Person p1 = new Person(1, "张三");
     private Person p2 = new Person(2, "李四");
     private Map<Integer, Person> pMap;
+    
+    @Test
+    public void testMaps() {
+        Map<Integer, String> map2 = Maps.newHashMapWithExpectedSize(map.size());
+        p(map2.size());
+    }
 
     /**
      * List<Person>  →  Map<Object, Person>

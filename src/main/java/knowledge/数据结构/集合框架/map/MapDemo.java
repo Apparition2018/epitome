@@ -11,7 +11,6 @@ import java.util.*;
  * 适用场景     快速访问                记录插入顺序              自动排序
  * https://jdk6.net/util/Map.html
  * <p>
- * Map API:
  * void	        putAll(Map<? extends K,? extends V> m)      从指定映射中将所有映射关系复制到此映射中（可选操作）
  * V	        remove(Object key)                          如果存在一个键的映射关系，则将其从此映射中移除（可选操作）
  * void	        clear()                                     从此映射中移除所有映射关系（可选操作）
@@ -19,9 +18,26 @@ import java.util.*;
  * boolean      containsValue(Object value)                 如果此映射将一个或多个键映射到指定值，则返回 true
  * boolean      isEmpty()                                   如果此映射未包含键-值映射关系，则返回 true
  * <p>
- * HashMap API:
+ * ************************************************************
+ * HashMap
+ * 1.底层实现是链表数组，JDK8 加上了红黑树
+ * 2.允许空键和空值（但空键只有一个，且放在第一位）
+ * 3.遍历整个 Map 需要的时间与 桶（数组） 的长度成正比
+ * 4.两个关键因子：初始容量、加载因子；哈希表的容量一定要是2的整数次幂 ???
+ * <p>
  * HashMap([int initialCapacity[, float loadFactor]])       构造一个带指定初始容量和加载因子的空 HashMap
  * HashMap(Map<? extends K,? extends V> m)                  构造一个映射关系与指定 Map 相同的新 HashMap
+ * <p>
+ * HashMap 主要特点和关键方法源码解读：https://blog.csdn.net/u012426327/article/details/77504839
+ * HashMap初始化容量带大小设置成多少合适：https://blog.csdn.net/mcsdnuser/article/details/106698237
+ * ************************************************************
+ * AbstractMap
+ * 1.实现 Map，专为继承而设计的类
+ * 2.有抽象方法：entrySet()
+ * 3.如果想要通过 AbstractMap 派生出 Map。需要实现 entrySet() 和重写 put(K, V)，
+ * 因为 put(K, V) 会抛出 UnsupportedOperationException。
+ * 4.有内部类 SimpleImmutableEntry（不可变的键值对）, SimpleEntry（可变的键值对）
+ * ************************************************************
  */
 public class MapDemo extends Demo {
 

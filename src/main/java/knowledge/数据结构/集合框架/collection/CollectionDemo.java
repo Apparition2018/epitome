@@ -30,8 +30,8 @@ import org.junit.Test;
  * <p>
  * 1.实现 Collection，专为继承而设计的类。
  * 2.有抽象方法 iterator(), size()
- * 3.实现了 Collection 中除以上两个方法外的所有方法，但 add() 会抛出 UnsupportedOperationException。
- * 如果想要通过 AbstractCollection 派生出来的 Collection 支持 add()，需要重写 add()
+ * 3.如果想要通过 AbstractCollection 派生出 Collection。需要实现 iterator(), size() 和重写 add(E)，
+ * 因为 add(E) 会抛出 UnsupportedOperationException。
  * ************************************************************
  */
 public class CollectionDemo extends Demo {

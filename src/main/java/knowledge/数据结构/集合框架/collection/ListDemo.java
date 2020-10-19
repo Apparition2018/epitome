@@ -29,8 +29,8 @@ import java.util.*;
  * AbstractList
  * 1.实现 List，专为继承而设计的类
  * 2.有抽象方法：get(), size()
- * 3.实现了 List 中除以上两个方法外的所有方法，但 set(int, E) / add(int, E) / remove(int) 会抛出 UnsupportedOperationException。
- * 如果想要通过 AbstractList 派生出来的 List 支持 set(int, E) / add(int, E) / remove(int)，需要重写
+ * 3.如果想要通过 AbstractList 派生出 List。需要实现 get(), size() 和重写 set(int, E) / add(int, E) / remove(int)，
+ * 因为 set(int, E) / add(int, E) / remove(int) 会抛出 UnsupportedOperationException。
  * 4.有内部迭代器 Itr, ListItr
  * 5.有内部类 SubList, RandomAccessSublist
  * 6.get() 效率快于 iterator()
