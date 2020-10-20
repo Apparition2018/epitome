@@ -26,7 +26,7 @@ public class UDPServer extends Demo {
         byte[] data = new byte[1024]; // 创建字节数组，指定接收的数据包的大小
         DatagramPacket packet = new DatagramPacket(data, data.length);
         // 3.接收客户端发送的数据
-        p("****服务器端已经启动，等待客户端发送数据");
+        p("***服务器端已经启动，等待客户端发送数据");
         socket.receive(packet); // 此方法在接收到数据之前会一直阻塞
         // 4.读取数据
         String info = new String(data, 0, packet.getLength());

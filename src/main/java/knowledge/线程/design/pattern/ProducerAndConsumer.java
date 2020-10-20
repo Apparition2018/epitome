@@ -1,4 +1,4 @@
-package knowledge.线程;
+package knowledge.线程.design.pattern;
 
 import l.demo.Demo;
 
@@ -16,10 +16,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author ljh
  * created on 2020/10/9 13:53
  */
-public class ProducerAndConsumerPattern extends Demo {
+public class ProducerAndConsumer extends Demo {
 
     /**
-     * 本例基于 BlockingQueue 实现
+     * 本例基于 LinkedBlockingDeque 实现
      */
     public static void main(String[] args) throws InterruptedException {
         BlockingQueue<PCData> queue = new LinkedBlockingDeque<>(10);

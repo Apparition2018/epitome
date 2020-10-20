@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Queue
+ * <p>
+ * https://pic4.zhimg.com/v2-c1f2992fb01c501a5dada75d0b27b0b3_r.jpg
  *
  * @author ljh
  * created on 2020/10/9 14:38
@@ -26,7 +28,7 @@ public class QueueDemo extends Demo {
      * <p>
      * 操作       抛出异常	    返回特殊值（推荐使用）
      * 插入	    add(e)	        offer(e)
-     * 移除	    remove()	    poll()  
+     * 移除	    remove()	    poll()
      * 检查	    element()	    peek()
      */
     @Test
@@ -61,6 +63,13 @@ public class QueueDemo extends Demo {
      * 插入	    add(e)	        offer(e)        put(e)      offer(e, time, unit)
      * 移除	    remove()	    poll()          take()      poll(e, time, unit)
      * 检查	    element()	    peek()
+     * <p>
+     * ArrayBlockingQueue       有界，数组结构
+     * LinkedBlockingQueue      可选有界或无界，链表结构
+     * LinkedTransferQueue      无界，链表结构 ???
+     * PriorityBlockingQueue    无界，优先级
+     * DelayQueue               无界，延迟
+     * SynchronousQueue         无空间
      */
     @Test
     public void testBlockingQueue() throws InterruptedException {

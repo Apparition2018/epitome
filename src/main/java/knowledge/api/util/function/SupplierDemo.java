@@ -23,13 +23,14 @@ public class SupplierDemo extends Demo {
      */
     @Test
     public void testSupplier() {
-        p("\n********** Supplier get() *********");
+        //********** Supplier get() **********
         Supplier<Stream<Integer>> streamSupplier = () -> Stream.of(1, 2, 3);
         streamSupplier.get().forEach(x -> System.out.print(x + " "));
         streamSupplier.get().forEach(x -> System.out.print(x + 3 + " "));
         // 1 2 3 4 5 6 ，因为 supplier.get() 每次都会获取一个新的对象，所以不会抛异常
+        p();
 
-        p("\n********* Stream **********");
+        //********** Stream **********
         Stream<Integer> stream = Stream.of(1, 2, 3);
         stream.forEach(x -> System.out.print(x + " "));
         stream.forEach(x -> System.out.print(x + 3 + " "));

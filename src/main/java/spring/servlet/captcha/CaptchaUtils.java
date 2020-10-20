@@ -41,9 +41,9 @@ public class CaptchaUtils {
         String key = UUID.randomUUID().toString();
         // 生成验证码画布
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        // ****************
-        // ** 画图过程省略 **
-        // ****************
+        // ***************
+        // * 画图过程省略 *
+        // ***************
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         // 将图片按照指定的格式（jpeg）画到流上
         ImageIO.write(bufferedImage, "jpg", outputStream);
