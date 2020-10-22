@@ -10,7 +10,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 生产者-消费者 模式
  * 一个系统中，存在生产者和消费者两种角色，他们通过内存缓冲区进行通信，生产者生产消费者需要的资料，消费者把资料做成产品。
  * <p>
- * https://www.cnblogs.com/chentingk/p/6497107.html
+ * 多线程设计模式：https://www.cnblogs.com/agilestyle/p/11494963.html
+ * 多线程设计模式：https://www.cnblogs.com/chinaifae/p/10271107.html
+ * 透彻理解Java并发编程：https://segmentfault.com/blog/ressmix_multithread?page=3
+ * 生产者消费者模式-Java实现：https://www.cnblogs.com/chentingk/p/6497107.html
  *
  * @author ljh
  * created on 2020/10/9 13:53

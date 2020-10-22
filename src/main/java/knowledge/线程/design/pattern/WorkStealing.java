@@ -5,9 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadInfo;
-import java.lang.management.ThreadMXBean;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -27,9 +24,8 @@ import java.util.stream.Collectors;
  * 在大多数时候，它们只是访问自己的双端队列。即使需要访问另一个队列时，也是从队列的尾部获取工作，降低了队列上的竞争程度。
  * 工作密取非常适用于即是消费者也是生产者的问题，当执行某个工作时可能导致出现更多的工作。
  * <p>
- * https://img-blog.csdnimg.cn/20190602161352675.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xhdm9yYW5nZQ==,size_16,color_FFFFFF,t_70
- * https://blog.csdn.net/hxpjava1/article/details/44245593
- * https://blog.csdn.net/ryo1060732496/article/details/88889886
+ * 工作密取示意图：https://img-blog.csdnimg.cn/20190602161352675.png
+ * LinkedBlockingDeque工作密取：https://blog.csdn.net/hxpjava1/article/details/44245593
  *
  * @author ljh
  * created on 2020/10/19 16:17
@@ -69,7 +65,7 @@ public class WorkStealing extends Demo {
         }
         p("********** 工作全部完成 **********");
         pool.shutdown();
-        
+
         try {
             if (!pool.awaitTermination(2, TimeUnit.SECONDS)) {
                 pool.shutdownNow();
