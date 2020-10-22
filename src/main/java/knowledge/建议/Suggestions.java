@@ -2068,12 +2068,12 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test129() {
-        BlockingQueue<String> bq = new ArrayBlockingQueue<>(3);
-        bq.add("a");
-        bq.add("b");
-        bq.add("c");
-        p(bq.remainingCapacity()); // 0
-        bq.add("d"); // IllegalStateException: Queue full
+        BlockingQueue<String> queue = new ArrayBlockingQueue<>(3);
+        queue.add("a");
+        queue.add("b");
+        queue.add("c");
+        p(queue.remainingCapacity()); // 0
+        queue.add("d"); // IllegalStateException: Queue full
     }
 
     // 建议130：使用 CountDownLatch 协调子线程

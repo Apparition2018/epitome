@@ -1,10 +1,10 @@
 package knowledge.数据结构.集合框架.collection;
 
 import l.demo.Demo;
+import l.demo.Person;
 import org.junit.Test;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.PriorityQueue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Queue
  * <p>
- * https://pic4.zhimg.com/v2-c1f2992fb01c501a5dada75d0b27b0b3_r.jpg
+ * Java 常见队列：https://pic4.zhimg.com/v2-c1f2992fb01c501a5dada75d0b27b0b3_r.jpg
  *
  * @author ljh
  * created on 2020/10/9 14:38
@@ -33,25 +33,8 @@ public class QueueDemo extends Demo {
      */
     @Test
     public void testQueue() {
-        Queue<String> queue = new LinkedList<>();
-
-        // boolean  offer(E e)
-        // 将指定的元素插入此队列（如果立即可行且不会违反容量限制），当使用有容量限制的队列时，
-        // 此方法通常要优于 add(E)，后者可能无法插入元素，而只是抛出一个异常
-        queue.offer("1");
-        queue.offer("2");
-        queue.offer("3");
-        queue.offer("4");
-        queue.offer("5");
-
-        // E	    poll()          获取并移除此队列的头，如果此队列为空，则返回 null
-        p("poll=" + queue.poll());
-
-        // E	    element()       获取但不移除此队列的头
-        p("element=" + queue.element());
-
-        // E	    peek()          获取但不移除此队列的头；如果此队列为空，则返回 null
-        p("peek=" + queue.peek());
+        DequeDemo dequeDemo = new DequeDemo();
+        dequeDemo.testDequeAsQueue();
     }
 
     /**
@@ -78,5 +61,46 @@ public class QueueDemo extends Demo {
             queue.offer(i, 1, TimeUnit.SECONDS);
         }
         p(queue.size());
+    }
+
+    /**
+     * PriorityQueue
+     * PriorityQueue → AbstractQueue → Queue
+     * 一个基于优先级堆的无界优先级队列。
+     * 优先级队列的元素按照其自然顺序进行排序，或者根据构造队列时提供的 Comparator 进行排序。
+     * 优先级队列不允许使用 null 元素。
+     * 依靠自然顺序的优先级队列还不允许插入不可比较的对象（这样做可能导致 ClassCastException）。
+     * https://jdk6.net/util/AbstractQueue.html
+     */
+    @Test
+    public void testPriorityQueue() {
+        p("----- 小顶堆 -----");
+        PriorityQueue<Person> queue = new PriorityQueue<>();
+        addData(queue);
+        while (!queue.isEmpty()) {
+            p(queue.poll());
+            // Person{name='张三', age=18}
+            // Person{name='李四', age=22}
+            // Person{name='王五', age=25}
+            // Person{name='赵六', age=30}
+        }
+
+        p("----- 大顶堆 -----");
+        queue = new PriorityQueue<>((o1, o2) -> o2.getAge() - o1.getAge());
+        addData(queue);
+        while (!queue.isEmpty()) {
+            p(queue.poll());
+            // Person{name='赵六', age=30}
+            // Person{name='王五', age=25}
+            // Person{name='李四', age=22}
+            // Person{name='张三', age=18}
+        }
+    }
+
+    public void addData(PriorityQueue<Person> queue) {
+        queue.add(new Person("张三", 18));
+        queue.add(new Person("李四", 22));
+        queue.add(new Person("王五", 25));
+        queue.add(new Person("赵六", 30));
     }
 }

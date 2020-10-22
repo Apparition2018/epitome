@@ -1,5 +1,6 @@
 package knowledge.日期和时间;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateDemo2 {
+public class DateDemo2 extends Demo {
 
     private Date date = new Date();
 
@@ -19,15 +20,15 @@ public class DateDemo2 {
         Date date2 = new Date(2000000000000L);
 
         // 方法一：compareTo()
-        System.out.println(date1.compareTo(date2)); // -1
+        p(date1.compareTo(date2));  // -1
 
         // 方法二：getTime()
         Long time1 = date1.getTime();
         Long time2 = date2.getTime();
-        System.out.println(time1 < time2);          // true
+        p(time1 < time2);           // true
 
         // 方法三：before(), after(), equals()
-        System.out.println(date1.before(date2));    // true
+        p(date1.before(date2));     // true
     }
 
     // Date <=> Long
@@ -36,16 +37,16 @@ public class DateDemo2 {
 
         // Date → long
         long time = date.getTime();
-        System.out.println(time);
+        p(time);
 
         time += DateUtils.MILLIS_PER_DAY;
 
         // long → Date
         date.setTime(time);
-        System.out.println(date);
+        p(date);
 
         date = new Date(time);
-        System.out.println(date);
+        p(date);
 
     }
 
@@ -57,11 +58,11 @@ public class DateDemo2 {
 
         // Date → String
         String dateStr = sdf.format(date);
-        System.out.println(dateStr);
+        p(dateStr);
 
         // String → Date
         date = sdf.parse(dateStr);
-        System.out.println(date);
+        p(date);
 
     }
 
@@ -74,12 +75,12 @@ public class DateDemo2 {
 
         // Date → Calendar
         calendar.setTime(date);
-        System.out.println(calendar);
+        p(calendar);
 
         calendar.add(Calendar.DAY_OF_MONTH, 1); // 1天
 
         // Calendar → Date
-        System.out.println(calendar.getTime());
+        p(calendar.getTime());
 
     }
 

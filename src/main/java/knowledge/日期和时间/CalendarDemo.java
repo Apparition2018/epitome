@@ -1,5 +1,6 @@
 package knowledge.日期和时间;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -13,7 +14,7 @@ import java.util.TimeZone;
  * <p>
  * 抽象类
  */
-public class CalendarDemo {
+public class CalendarDemo extends Demo {
 
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -25,18 +26,18 @@ public class CalendarDemo {
     @Test
     public void add() {
         Calendar cal = Calendar.getInstance();
-        cal.set(2018, Calendar.DECEMBER, 25); // 2018-12-25
+        cal.set(2018, Calendar.DECEMBER, 25);   // 2018-12-25
 
         cal.add(Calendar.DAY_OF_MONTH, 10);     // + 10 天
-        System.out.println(sdf.format(cal.getTime()));  // 2019-01-04
+        p(sdf.format(cal.getTime()));           // 2019-01-04
 
         cal.set(2018, Calendar.DECEMBER, 25);
         cal.roll(Calendar.DAY_OF_MONTH, 10);    // + 10 天
-        System.out.println(sdf.format(cal.getTime()));  // 2018-12-04
+        p(sdf.format(cal.getTime()));           // 2018-12-04
 
         cal.set(2018, Calendar.DECEMBER, 25);
-        cal.roll(Calendar.DAY_OF_MONTH, true);      // + 1 月
-        System.out.println(sdf.format(cal.getTime()));  // 2018-12-26
+        cal.roll(Calendar.DAY_OF_MONTH, true);  // + 1 月
+        p(sdf.format(cal.getTime()));           // 2018-12-26
     }
 
     /**
@@ -48,7 +49,7 @@ public class CalendarDemo {
         Calendar cal = Calendar.getInstance();
 
         cal.clear();
-        System.out.println(cal.getTime());  // Thu Jan 01 00:00:00 CST 1970
+        p(cal.getTime());  // Thu Jan 01 00:00:00 CST 1970
     }
 
     /**
@@ -59,8 +60,8 @@ public class CalendarDemo {
     public void get() {
         Calendar cal = Calendar.getInstance();
 
-        System.out.println(cal.get(Calendar.MONTH));    // 11
-        System.out.println(cal.get(Calendar.SECOND));   // 7
+        p(cal.get(Calendar.MONTH));     // 11
+        p(cal.get(Calendar.SECOND));    // 7
     }
 
     /**
@@ -70,13 +71,14 @@ public class CalendarDemo {
     @Test
     public void getActualMaximum() {
         Calendar cal = Calendar.getInstance();
-        cal.set(2018, Calendar.FEBRUARY, 1); // 2 月有 28天
+        // 2 月有 28天
+        cal.set(2018, Calendar.FEBRUARY, 1);
 
-        System.out.println(cal.getActualMaximum(Calendar.DAY_OF_MONTH));    // 28
-        System.out.println(cal.getMaximum(Calendar.DAY_OF_MONTH));          // 31，综合所有月份
+        p(cal.getActualMaximum(Calendar.DAY_OF_MONTH)); // 28
+        p(cal.getMaximum(Calendar.DAY_OF_MONTH));       // 31，综合所有月份
 
-        System.out.println(cal.getActualMinimum(Calendar.DAY_OF_MONTH));    // 1
-        System.out.println(cal.getMinimum(Calendar.DAY_OF_MONTH));          // 1
+        p(cal.getActualMinimum(Calendar.DAY_OF_MONTH)); // 1
+        p(cal.getMinimum(Calendar.DAY_OF_MONTH));       // 1
     }
 
     /**
@@ -115,7 +117,7 @@ public class CalendarDemo {
     @Test
     public void getInstance() {
         Calendar cal = Calendar.getInstance();
-        System.out.println(cal);
+        p(cal);
     }
 
     /**
@@ -133,7 +135,7 @@ public class CalendarDemo {
             e.printStackTrace();
         }
 
-        System.out.println(cal.getTime()); // Thu Oct 18 00:00:00 CST 2018
+        p(cal.getTime()); // Thu Oct 18 00:00:00 CST 2018
     }
 
     /**
@@ -144,10 +146,10 @@ public class CalendarDemo {
     public void getTimeInMillis() {
         Calendar cal = Calendar.getInstance();
 
-        System.out.println(cal.getTimeInMillis());  // 1540522116619
+        p(cal.getTimeInMillis());   // 1540522116619
 
         cal.setTimeInMillis(1000000000000L);
-        System.out.println(cal.getTime());          // Sun Sep 09 09:46:40 CST 2001
+        p(cal.getTime());           // Sun Sep 09 09:46:40 CST 2001
     }
 
     /**
@@ -158,10 +160,10 @@ public class CalendarDemo {
     public void getTimeZone() {
         Calendar cal = Calendar.getInstance();
 
-        System.out.println(cal.getTimeZone().getID()); // Asia/Shanghai
+        p(cal.getTimeZone().getID()); // Asia/Shanghai
 
         cal.setTimeZone(TimeZone.getTimeZone("GMT-7:00"));
-        System.out.println(cal.getTimeZone().getID()); // GMT-07:00
+        p(cal.getTimeZone().getID()); // GMT-07:00
     }
 
     /**
