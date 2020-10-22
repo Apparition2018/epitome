@@ -2,7 +2,6 @@ package knowledge.线程.design.pattern;
 
 import l.demo.Demo;
 
-import java.text.MessageFormat;
 import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -17,12 +16,16 @@ import java.util.concurrent.atomic.AtomicInteger;
  * created on 2020/10/9 13:53
  */
 public class ProducerAndConsumer extends Demo {
+    private static volatile boolean isRunning = true;
+    private static final int SLEEP_TIME = 1000;
 
     /**
      * 本例基于 LinkedBlockingDeque 实现
      */
     public static void main(String[] args) throws InterruptedException {
-        BlockingQueue<PCData> queue = new LinkedBlockingDeque<>(10);
+        final int CAPACITY = 10;
+
+        BlockingQueue<PCData> queue = new LinkedBlockingQueue<>(CAPACITY);
         Producer p1 = new Producer(queue);
         Producer p2 = new Producer(queue);
         Consumer c1 = new Consumer(queue);
@@ -32,19 +35,22 @@ public class ProducerAndConsumer extends Demo {
         pool.execute(p2);
         pool.execute(c1);
         pool.execute(c2);
-        TimeUnit.SECONDS.sleep(10);
+
+        TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         p1.stop();
         p2.stop();
-        TimeUnit.SECONDS.sleep(3);
+        p("********** 生产者停止生产 **********");
+
+        while (queue.remainingCapacity() != CAPACITY) {
+            TimeUnit.MILLISECONDS.sleep(SLEEP_TIME + 1);
+        }
         pool.shutdown();
+        p("********** 消费者消费完毕 **********");
     }
 
     private static class Producer implements Runnable {
-
-        private volatile boolean isRunning = true;
         private BlockingQueue<PCData> queue;
         private static AtomicInteger count = new AtomicInteger();
-        private static final int SLEEP_TIME = 1000;
 
         public Producer(BlockingQueue<PCData> queue) {
             this.queue = queue;
@@ -54,16 +60,17 @@ public class ProducerAndConsumer extends Demo {
         public void run() {
             PCData data;
             Random r = new Random();
-            p("start produce id:" + Thread.currentThread().getId());
+            p("start Producer id: " + Thread.currentThread().getId());
             try {
                 while (isRunning) {
-                    TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
+                    TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME / 2));
                     data = new PCData(count.incrementAndGet());
-                    p(data + "加入队列");
+                    p("生产：" + data);
                     if (!queue.offer(data, 2, TimeUnit.SECONDS)) {
-                        System.err.println("加入队列失败");
+                        System.err.println("生产失败");
                     }
                 }
+                p("stop Producer id: " + Thread.currentThread().getId());
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
@@ -76,26 +83,24 @@ public class ProducerAndConsumer extends Demo {
     }
 
     private static class Consumer implements Runnable {
-
         private BlockingQueue<PCData> queue;
-        private static final int SLEEP_TIME = 1000;
 
         public Consumer(BlockingQueue<PCData> queue) {
             this.queue = queue;
         }
 
         @Override
-        @SuppressWarnings("InfiniteLoopStatement")
         public void run() {
-            p("start Consume id:" + Thread.currentThread().getId());
+            p("start Consume id: " + Thread.currentThread().getId());
             Random r = new Random();
             try {
-                while (true) {
+                // 生产者在生产中 或 
+                while (isRunning || queue.size() != 0) {
                     PCData data = queue.take();
-                    int re = data.getData() * data.getData();
-                    p(MessageFormat.format("{0}*{1}={2}", data.getData(), data.getData(), re));
+                    p("消费：" + data.getData());
                     TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
                 }
+                p("stop Consume id: " + Thread.currentThread().getId());
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();

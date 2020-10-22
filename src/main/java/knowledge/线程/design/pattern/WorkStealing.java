@@ -1,10 +1,20 @@
 package knowledge.线程.design.pattern;
 
 import l.demo.Demo;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.SneakyThrows;
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadInfo;
+import java.lang.management.ThreadMXBean;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 /**
  * 工作密取
@@ -26,84 +36,100 @@ import java.util.concurrent.TimeUnit;
  */
 public class WorkStealing extends Demo {
 
-    private static class Work implements Runnable {
-        private static final Object object = new Object();
-        private static int count = 0;
-        public final int id;
-        private long putThread;
+    /**
+     * 本例基于 LinkedBlockingDeque 实现
+     */
+    public static void main(String[] args) throws InterruptedException {
+        LinkedBlockingDeque<Work> deque1 = new LinkedBlockingDeque<>();
+        LinkedBlockingDeque<Work> deque2 = new LinkedBlockingDeque<>();
 
-        public Work() {
-            synchronized (object) {
-                id = count++;
-            }
+        ProducerAndConsumer pc1 = new ProducerAndConsumer(deque1, deque2);
+        ProducerAndConsumer pc2 = new ProducerAndConsumer(deque2, deque1);
+
+        ExecutorService pool = Executors.newCachedThreadPool();
+        pool.execute(pc1);
+        pool.execute(pc2);
+
+        TimeUnit.MILLISECONDS.sleep(1000);
+        pc1.stopProduce();
+        pc2.stopProduce();
+        p("********** 停止分派工作 **********");
+
+        while (deque1.size() != 0 && deque2.size() != 0) {
+            TimeUnit.MILLISECONDS.sleep(1000);
+        }
+        pool.shutdown();
+        p("********** 工作全部完成 **********");
+
+        ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
+        long[] threadIds = threadMXBean.getAllThreadIds();
+        ThreadInfo[] threadInfos = threadMXBean.getThreadInfo(threadIds);
+        for (ThreadInfo threadInfo : threadInfos) {
+            System.out.println(threadInfo.getThreadId()+": "+threadInfo.getThreadName());
+        }
+    }
+
+    @Getter
+    @Setter
+    private static class Work implements Runnable {
+        private long assignId;
+        private final int jobId;
+
+        public Work(int jobId) {
+            this.jobId = jobId;
         }
 
+        @SneakyThrows
         @Override
         public void run() {
-            if (Thread.currentThread().getId() != putThread) {
-                p(Thread.currentThread().getId() + ":" + putThread + "// finish job " + id);
-            }
-        }
-
-        public long getPutThread() {
-            return putThread;
-        }
-
-        public void setPutThread(long putThread) {
-            this.putThread = putThread;
+            TimeUnit.MILLISECONDS.sleep(100);
+            long finishId = Thread.currentThread().getId();
+            p("[" + finishId + "] finish job " + jobId + " assigned by " + (finishId == assignId ? "itself" : "others"));
         }
     }
 
-    public static Work generateWork() {
-        return new Work();
-    }
-
-    private static class ConsumerAndProducer implements Runnable {
+    private static class ProducerAndConsumer implements Runnable {
+        public volatile boolean isRunning = true;
+        public volatile boolean isProducing = true;
+        private static AtomicInteger jobId = new AtomicInteger();
         private Random random = new Random();
         private final LinkedBlockingDeque<Work> deque1;
         private final LinkedBlockingDeque<Work> deque2;
 
-        public ConsumerAndProducer(LinkedBlockingDeque<Work> deque1, LinkedBlockingDeque<Work> deque2) {
+        public ProducerAndConsumer(LinkedBlockingDeque<Work> deque1, LinkedBlockingDeque<Work> deque2) {
             this.deque1 = deque1;
             this.deque2 = deque2;
         }
 
         @Override
         public void run() {
-            while(!Thread.interrupted()) {
+            while (isRunning) {
                 try {
-                    TimeUnit.MILLISECONDS.sleep(200);
-                    if (random.nextBoolean()) {
-                        int count = random.nextInt(5);
-                        for (int i = 0; i < count; i++) {
-                            Work work = generateWork();
-                            work.setPutThread(Thread.currentThread().getId());
+                    if (isProducing && random.nextBoolean()) {
+                        for (int i = 0; i < random.nextInt(5); i++) {
+                            Work work = new Work(jobId.incrementAndGet());
+                            work.setAssignId(Thread.currentThread().getId());
                             deque1.putLast(work);
+                            long assignId = Thread.currentThread().getId();
+//                            p("[" + assignId + "] assign job " + jobId + ". job deque " + assignId + ": " + deque1.stream().map(Work::getJobId).collect(Collectors.toList()));
                         }
                     }
-                    if (deque1.isEmpty()) {
+                    TimeUnit.MILLISECONDS.sleep(100);
+                    if (!deque1.isEmpty()) {
+                        deque1.takeFirst().run();
+                    } else {
                         if (!deque2.isEmpty()) {
                             deque2.takeLast().run();
                         }
-                    } else {
-                        deque1.takeFirst().run();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }
-    }
 
-    public static void main(String[] args) {
-        LinkedBlockingDeque<Work> deque1 = new LinkedBlockingDeque<>();
-        LinkedBlockingDeque<Work> deque2 = new LinkedBlockingDeque<>();
-        
-        new Thread(new ConsumerAndProducer(deque1, deque2)).start();
-        new Thread(new ConsumerAndProducer(deque1, deque2)).start();
-        
-        new Thread(new ConsumerAndProducer(deque2, deque1)).start();
-        new Thread(new ConsumerAndProducer(deque2, deque1)).start();
-        
+        public void stopProduce() {
+            isProducing = false;
+        }
     }
 }

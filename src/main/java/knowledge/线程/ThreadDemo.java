@@ -219,26 +219,34 @@ public class ThreadDemo extends Demo {
      * static boolean	interrupted()       测试当前线程（当前线程指 main 线程）是否已经中断，会清除线程的中断状态
      * boolean	        isInterrupted()     测试线程是否已经中断
      * <p>
-     * 在 sleep() 时调用 interrupt()，会抛出 InterruptedException 异常
-     * <p>
-     * Java 实例 - 中断线程：http://www.runoob.com/java/thread-interrupt.html
-     * Java 线程停止的几种方法：https://blog.csdn.net/lx_Frolf/article/details/82560841
+     * Java终止线程的三种方式：https://www.cnblogs.com/liyutian/p/10196044.html
+     * Thread的中断机制(interrupt)，循环线程停止的方法：https://www.cnblogs.com/panchanggui/p/9668284.html
      * interrupt(), interrupted(), isInterrupted() 区别：https://www.cnblogs.com/huangyichun/p/7126851.html
      */
     @Test
     public void interruptWhenSleep() throws InterruptedException {
         Thread thread = new Thread(() -> {
             try {
-                TimeUnit.SECONDS.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                for (int i = 0; i < 10000; i++) {
+                    long now = System.currentTimeMillis();
+                    while (System.currentTimeMillis() - now < 3)
+                        ;
+                    p(i);
+                    if (Thread.currentThread().isInterrupted()) {
+                        p("线程中断");
+                        break;
+                    }
+                }
+                countDownLatch.countDown();
+            } catch (Exception e) {
+                Thread.currentThread().interrupt();
             }
         });
 
         thread.start();
+        TimeUnit.MILLISECONDS.sleep(100);
+        p("发送中断请求");
         thread.interrupt();
-        thread.join();
-        p("线程已经退出!");
     }
 
 }

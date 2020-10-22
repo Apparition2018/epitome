@@ -4,6 +4,7 @@ import l.demo.Demo;
 import l.demo.Person;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -44,7 +45,7 @@ public class QueueDemo extends Demo {
      * <p>
      * 操作       抛出异常	    返回特殊值       阻塞          超时退出
      * 插入	    add(e)	        offer(e)        put(e)      offer(e, time, unit)
-     * 移除	    remove()	    poll()          take()      poll(e, time, unit)
+     * 移除	    remove()	    poll()          take()      poll(time, unit)
      * 检查	    element()	    peek()
      * <p>
      * ArrayBlockingQueue       有界，数组结构
@@ -56,15 +57,29 @@ public class QueueDemo extends Demo {
      */
     @Test
     public void testBlockingQueue() throws InterruptedException {
-        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(20);
-        for (int i = 0; i < 25; i++) {
-            queue.offer(i, 1, TimeUnit.SECONDS);
+        // ArrayBlockingQueue(int capacity[, boolean fair[, Collection<? extends E> c]])
+        // 创建一个具有给定的（固定）容量和指定访问策略的 ArrayBlockingQueue，它最初包含给定 collection 的元素，并以 collection 迭代器的遍历顺序添加元素
+        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(20, true, list);
+        p(queue);       // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        
+        // int	        remainingCapacity()
+        // 返回在无阻塞的理想情况下（不存在内存或资源约束）此队列能接受的附加元素数量；如果没有内部限制，则返回 Integer.MAX_VALUE
+        p(queue.remainingCapacity()); // 11
+        
+        for (int i = 0; i < 15; i++) {
+            queue.offer(i, 1, TimeUnit.MILLISECONDS);
         }
-        p(queue.size());
+        p(queue);       // [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        p(list);        // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        // int	        drainTo(Collection<? super E> c[, int maxElements])
+        // 最多从此队列中移除给定数量的可用元素，并将这些元素添加到给定 collection 中
+        queue.drainTo(list, 5);
+        p(list);        // [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5]
     }
 
     /**
-     * PriorityQueue
+     * PriorityQueue    优先级队列
      * PriorityQueue → AbstractQueue → Queue
      * 一个基于优先级堆的无界优先级队列。
      * 优先级队列的元素按照其自然顺序进行排序，或者根据构造队列时提供的 Comparator 进行排序。

@@ -15,19 +15,19 @@ import java.util.Stack;
  * <p>
  * 操作位              第一个元素（头部）	                    最后一个元素（尾部）
  * 操作               抛出异常	    特殊值	                抛出异常	        特殊值
- * 插入	            addFirst(e)	    offerFirst(e)	        addLast(e)	    offerLast(e)
+ * 插入	            addFirst(e)     offerFirst(e)	        addLast(e)	    offerLast(e)
  * 移除	            removeFirst()	pollFirst()	            removeLast()	pollLast()
  * 检查	            getFirst()	    peekFirst()	            getLast()	    peekLast()
  * <p>
  * Iterator<E>	    iterator()                      返回以恰当顺序在此双端队列的元素上进行迭代的迭代器
  * Iterator<E>	    descendingIterator()            返回以逆向顺序在此双端队列的元素上进行迭代的迭代器
- * boolean	        remove(Object o)                从此双端队列中移除第一次出现的指定元素
+ * boolean	        removeFirstOccurrence(Object o) 从此双端队列中移除第一次出现的指定元素
  * boolean	        removeLastOccurrence(Object o)  从此双端队列移除最后一次出现的指定元素
  * <p>
  * 算法刻意练习之栈、队列、双端队列、优先队列：https://www.pianshen.com/article/27711847617/
  */
 public class DequeDemo extends Demo {
-
+    
     /**
      * 用作队列时 (FIFO) :
      * 数据结构                     Queue                                   Deque
@@ -97,5 +97,24 @@ public class DequeDemo extends Demo {
         p(deque);               // [1, 2, 3]
         p(deque.removeFirst()); // 3
         p(deque.peekFirst());   // 2
+    }
+
+    /**
+     * BlockingDeque    阻塞双端队列
+     * <p>
+     * 操作位                          第一个元素（头部）
+     * 操作       抛出异常            特殊值             阻塞          超时退出
+     * 插入       addFirst(e)     offerFirst(e)   putFirst(e)     offerFirst(e, time, unit)
+     * 移除       removeFirst()   pollFirst()     takeFirst(e)    pollFirst(time, unit)
+     * 检查       getFirst()      peekFirst()
+     * 操作位                          最后一个元素（尾部）                                                               
+     * 操作       抛出异常            特殊值             阻塞          超时退出
+     * 插入       addLast(e)      offerLast(e)   putLast(e)       offerLast(e, time, unit)
+     * 移除       removeLast()    pollLast()     takeLast(e)      pollLast(time, unit)
+     * 检查       getLast()       peekLast()
+     */
+    @Test
+    public void testBlockingDeque() {
+        
     }
 }

@@ -23,7 +23,7 @@ public class ReentrantLockDemo extends Demo {
                 p("time=" + System.currentTimeMillis() + ", 线程 " + thread.getName() + " 得到了锁...");
                 long now = System.currentTimeMillis();
                 while (System.currentTimeMillis() - now < 3000)
-                    ; // 为了避免 Thread.sleep() 而需要捕获 InterruptedException 而带来的理解上的困惑
+                    ; // 模拟 Thread.sleep()，为了避免 Thread.sleep() 而需要捕获 InterruptedException 而带来的理解上的困惑
             } finally {
                 lock.unlock();
                 p("线程 " + thread.getName() + " 释放了锁...");
