@@ -20,9 +20,9 @@ import java.util.EnumSet;
  * 2) jdk1.5:  Byte, Short, Character, Integer, enum
  * 3) jdk1.7:  String
  * <p>
- * int	                            ordinal()           返回枚举常量的序数（它在枚举声明中的位置，其中初始常量序数为零）
- * String	                        name()              返回此枚举常量的名称，在其枚举声明中对其进行声明
- * Class<E>	                        getDeclaringClass() 返回与此枚举常量的枚举类型相对应的 Class 对象
+ * int	                            ordinal()               返回枚举常量的序数（它在枚举声明中的位置，其中初始常量序数为零）
+ * String	                        name()                  返回此枚举常量的名称，在其枚举声明中对其进行声明
+ * Class<E>	                        getDeclaringClass()     返回与此枚举常量的枚举类型相对应的 Class 对象
  * static <T extends Enum<T>> T	    valueOf(Class<T> enumType, String name) 返回带指定名称的指定枚举类型的枚举常量
  */
 public class EnumDemo extends Demo {

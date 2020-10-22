@@ -1,4 +1,4 @@
-package knowledge.api.lang.classloader;
+package knowledge.api.lang.class_;
 
 import l.demo.Demo;
 import org.junit.Test;

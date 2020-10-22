@@ -1,4 +1,4 @@
-package knowledge.api.lang.system;
+package knowledge.api.lang;
 
 import l.demo.Demo;
 import org.junit.Test;

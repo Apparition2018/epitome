@@ -36,6 +36,8 @@ import java.util.stream.Collectors;
  */
 public class WorkStealing extends Demo {
 
+    public static volatile boolean isRunning = true;
+
     /**
      * 本例基于 LinkedBlockingDeque 实现
      */
@@ -44,29 +46,38 @@ public class WorkStealing extends Demo {
         LinkedBlockingDeque<Work> deque2 = new LinkedBlockingDeque<>();
 
         ProducerAndConsumer pc1 = new ProducerAndConsumer(deque1, deque2);
-        ProducerAndConsumer pc2 = new ProducerAndConsumer(deque2, deque1);
+        ProducerAndConsumer pc2 = new ProducerAndConsumer(deque1, deque2);
+        ProducerAndConsumer pc3 = new ProducerAndConsumer(deque2, deque1);
+        ProducerAndConsumer pc4 = new ProducerAndConsumer(deque2, deque1);
 
         ExecutorService pool = Executors.newCachedThreadPool();
         pool.execute(pc1);
         pool.execute(pc2);
+        pool.execute(pc3);
+        pool.execute(pc4);
 
-        TimeUnit.MILLISECONDS.sleep(1000);
+        TimeUnit.SECONDS.sleep(1);
         pc1.stopProduce();
         pc2.stopProduce();
+        pc3.stopProduce();
+        pc4.stopProduce();
         p("********** 停止分派工作 **********");
 
-        while (deque1.size() != 0 && deque2.size() != 0) {
-            TimeUnit.MILLISECONDS.sleep(1000);
+        while (deque1.size() != 0 || deque2.size() != 0) {
+            TimeUnit.MILLISECONDS.sleep(300);
+            isRunning = false;
         }
-        pool.shutdown();
         p("********** 工作全部完成 **********");
-
-        ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
-        long[] threadIds = threadMXBean.getAllThreadIds();
-        ThreadInfo[] threadInfos = threadMXBean.getThreadInfo(threadIds);
-        for (ThreadInfo threadInfo : threadInfos) {
-            System.out.println(threadInfo.getThreadId()+": "+threadInfo.getThreadName());
+        pool.shutdown();
+        
+        try {
+            if (!pool.awaitTermination(2, TimeUnit.SECONDS)) {
+                pool.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            pool.shutdownNow();
         }
+        p("********** 线程全部关闭 **********");
     }
 
     @Getter
@@ -84,12 +95,11 @@ public class WorkStealing extends Demo {
         public void run() {
             TimeUnit.MILLISECONDS.sleep(100);
             long finishId = Thread.currentThread().getId();
-            p("[" + finishId + "] finish job " + jobId + " assigned by " + (finishId == assignId ? "itself" : "others"));
+            p("[" + finishId + "] finish job " + jobId + " assigned by " + (finishId == assignId ? "itself" : assignId));
         }
     }
 
     private static class ProducerAndConsumer implements Runnable {
-        public volatile boolean isRunning = true;
         public volatile boolean isProducing = true;
         private static AtomicInteger jobId = new AtomicInteger();
         private Random random = new Random();
@@ -111,10 +121,9 @@ public class WorkStealing extends Demo {
                             work.setAssignId(Thread.currentThread().getId());
                             deque1.putLast(work);
                             long assignId = Thread.currentThread().getId();
-//                            p("[" + assignId + "] assign job " + jobId + ". job deque " + assignId + ": " + deque1.stream().map(Work::getJobId).collect(Collectors.toList()));
+                            p("[" + assignId + "] assign job " + jobId + ". job deque " + assignId + ": " + deque1.stream().map(Work::getJobId).collect(Collectors.toList()));
                         }
                     }
-                    TimeUnit.MILLISECONDS.sleep(100);
                     if (!deque1.isEmpty()) {
                         deque1.takeFirst().run();
                     } else {
