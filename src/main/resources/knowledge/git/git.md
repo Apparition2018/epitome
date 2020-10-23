@@ -31,6 +31,7 @@
 >core.excludesFile                          .ignore 文件地址
 >core.autocrlf                              提交或检出转换 lf 和 crlf
 >core.safecrlf                              提交混合换行符提示
+>merge.tool                                 合并工具
 >alias                                      别名
 >```
 ---
@@ -61,6 +62,7 @@ log                                         显示提交日志
     -p <file>                               显示指定文件的提交日志
     --pretty=oneline                        只显示版本号和备注
 reflog                                      ???
+show [<object>…​]                           显示各种类型的对象，包括 lobs, trees, tags and commits
 blame                                       显示文件的每一行最后修改的版本和作者
 ```
 ---
@@ -81,8 +83,8 @@ tag                                         创建、列表、删除或验证用
     <tag_name>                              基于最新提交创建标签
     -d <tag_name>                           删除标签
 checkout                                    切换分支或恢复工作树文件
-    <branhc|tag>                            切换分支或标签
-    -b <new_branch>                         创建并切换分支
+    [<branhc|tag>]                          切换分支或标签
+    [-b <new_branch>]                       创建并切换分支
 ```
 ---
 ## 合并与衍合
@@ -106,6 +108,11 @@ push                                        将本地分支的更新，推送到
     <remote> :<branch|tag>                  删除远程分支或标签
     <remote> --tags                         推送所有标签
     -u                                      指定默认主机，以后就可以不加任何参数，直接使用 git push
+```
+---
+## 其它
+```
+help [COMMAND|GUIDE]                        帮助
 ```
 ---
 ## git-bash shortcut
