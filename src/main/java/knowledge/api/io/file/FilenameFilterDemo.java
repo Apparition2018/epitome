@@ -16,11 +16,11 @@ import java.util.Objects;
  * created on 2020/9/14 10:51
  */
 public class FilenameFilterDemo extends Demo {
-    
+
     @Test
     public void testFilenameFilter() {
         File file = new File(USER_DIR);
-        
+
         // boolean	    accept(File dir, String name)
         // 测试指定文件是否应该包含在某一文件列表中
         FilenameFilter filter = (dir, name) -> name.startsWith("p");

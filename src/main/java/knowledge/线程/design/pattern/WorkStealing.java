@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -63,17 +64,9 @@ public class WorkStealing extends Demo {
             TimeUnit.MILLISECONDS.sleep(300);
             isRunning = false;
         }
-        p("********** 工作全部完成 **********");
         pool.shutdown();
-
-        try {
-            if (!pool.awaitTermination(2, TimeUnit.SECONDS)) {
-                pool.shutdownNow();
-            }
-        } catch (InterruptedException e) {
-            pool.shutdownNow();
-        }
-        p("********** 线程全部关闭 **********");
+        p("********** 工作全部完成 **********");
+        
     }
 
     @Getter
@@ -112,6 +105,7 @@ public class WorkStealing extends Demo {
             while (isRunning) {
                 try {
                     if (isProducing && random.nextBoolean()) {
+                        TimeUnit.MILLISECONDS.sleep(100);
                         for (int i = 0; i < random.nextInt(5); i++) {
                             Work work = new Work(jobId.incrementAndGet());
                             work.setAssignId(Thread.currentThread().getId());
@@ -121,10 +115,10 @@ public class WorkStealing extends Demo {
                         }
                     }
                     if (!deque1.isEmpty()) {
-                        deque1.takeFirst().run();
+                        Objects.requireNonNull(deque1.pollFirst(100, TimeUnit.MILLISECONDS)).run();
                     } else {
                         if (!deque2.isEmpty()) {
-                            deque2.takeLast().run();
+                            Objects.requireNonNull(deque2.pollLast(100, TimeUnit.MILLISECONDS)).run();
                         }
                     }
                 } catch (InterruptedException e) {

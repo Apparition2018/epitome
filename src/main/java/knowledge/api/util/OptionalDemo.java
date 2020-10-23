@@ -1,4 +1,4 @@
-package knowledge.api.util.optional;
+package knowledge.api.util;
 
 import l.demo.Demo;
 import org.junit.Test;

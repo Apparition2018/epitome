@@ -1,4 +1,4 @@
-package knowledge.api.util.scanner;
+package knowledge.api.util;
 
 import org.junit.Test;
 
@@ -6,12 +6,16 @@ import java.util.Scanner;
 
 /**
  * Scanner
+ * 一个可以使用正则表达式来解析基本类型和字符串的简单文本扫描器。
+ * 使用分隔符模式将其输入分解为标记，默认情况下该分隔符模式与空白匹配。
+ * 然后可以使用不同的 next 方法将得到的标记转换为不同类型的值。
+ * https://jdk6.net/util/Scanner.html
  * <p>
- * next()       不能获得带有空格的字符串，前置空格会去掉，后置空格会作为分隔符或结束符
- * nextLine()   可以获得带有空格的字符串，
- * <p>
+ * next()                   不能获得带有空格的字符串，前置空格会去掉，后置空格会作为分隔符或结束符
+ * nextLine()               可以获得带有空格的字符串，
  * XXX	nextXXX()           将输入信息的下一个标记扫描为一个 XXX
  * boolean	hasNextXXX()    如果通过使用 nextXXX() 方法，此扫描器输入信息中的下一个标记可以解释为默认基数中的一个字节值，则返回 true
+ * <p>
  */
 public class ScannerDemo {
 

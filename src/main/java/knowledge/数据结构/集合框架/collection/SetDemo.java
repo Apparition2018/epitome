@@ -10,10 +10,10 @@ import java.util.TreeSet;
 /**
  * Set
  * Set 继承 Collection
+ * https://jdk6.net/util/Set.html
  * <p>
  * Set          HashSet                 LinkedHashSet           TreeSet
  * 适用场景     快速访问                记录插入顺序              自动排序
- * https://jdk6.net/util/Set.html
  *
  * @author ljh
  * created on 2020/9/4 17:14

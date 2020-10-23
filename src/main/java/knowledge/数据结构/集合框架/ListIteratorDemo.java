@@ -8,12 +8,11 @@ import java.util.ListIterator;
 /**
  * ListIterator
  * 列表迭代器，允许程序员按任一方向遍历列表、迭代期间修改列表，并获得迭代器在列表中的当前位置。
+ * https://jdk6.net/util/ListIterator.html
  * <p>
  * void	    add(E e)            将指定的元素插入列表（可选操作）
  * void	    set(E e)            用指定元素替换 next 或 previous 返回的最后一个元素（可选操作）
  * void	    remove()            从列表中移除由 next 或 previous 返回的最后一个元素（可选操作）
- * <p>
- * https://jdk6.net/util/ListIterator.html
  *
  * @author ljh
  * created on 2020/10/16 15:22

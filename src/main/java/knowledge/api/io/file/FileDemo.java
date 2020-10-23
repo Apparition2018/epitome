@@ -59,7 +59,7 @@ public class FileDemo extends Demo {
         boolean renameFlag = FILE.renameTo(new File(DEMO_PATH + "a/b/demo"));
         if (renameFlag) {
             p("文件移动成功！");
-        } 
+        }
         delete(new File(DEMO_PATH + "a"));
 
         // static File	    createTempFile(String prefix, String suffix[, File directory])

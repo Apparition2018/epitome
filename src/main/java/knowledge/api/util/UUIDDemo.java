@@ -1,4 +1,4 @@
-package knowledge.api.util.uuid;
+package knowledge.api.util;
 
 import l.demo.Demo;
 import org.junit.Test;

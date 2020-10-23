@@ -9,11 +9,11 @@ import java.util.Hashtable;
 /**
  * Hashtable
  * Hashtable 继承 Dictionary，实现 Map
+ * https://jdk6.net/util/Hashtable.html
  * <p>
  * Map              HashMap                     Hashtable
  * 线程               同步              Collections.synchronizedList(map);
  * 键为 null          不可以                         可以
- * https://jdk6.net/util/Hashtable.html
  */
 public class HashtableDemo extends Demo {
 

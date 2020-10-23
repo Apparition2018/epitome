@@ -9,7 +9,7 @@ import java.math.BigInteger;
  * BigInteger
  * BigInteger 不可变的任意精度的整数。所有操作中，都以二进制补码形式表示 BigInteger（如 Java 的基本整数类型）。
  * BigInteger 提供所有 Java 的基本整数操作符的对应物，并提供 java.lang.Math 的所有相关方法。
- * 另外，BigInteger 还提供以下运算：模算术、GCD 计算、质数测试、素数生成、位操作以及一些其他操作。
+ * BigInteger 还提供以下运算：模算术、GCD 计算、质数测试、素数生成、位操作以及一些其他操作。
  * https://jdk6.net/math/BigInteger.html
  * <p>
  * BigInteger   and(BigInteger val)             this & val      当且仅当 this 和 val 同时为负时，此方法返回一个负 BigInteger
