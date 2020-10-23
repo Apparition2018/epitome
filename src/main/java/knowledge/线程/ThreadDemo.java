@@ -224,7 +224,7 @@ public class ThreadDemo extends Demo {
      * interrupt(), interrupted(), isInterrupted() 区别：https://www.cnblogs.com/huangyichun/p/7126851.html
      */
     @Test
-    public void interruptWhenSleep() throws InterruptedException {
+    public void interrupt() throws InterruptedException {
         Thread thread = new Thread(() -> {
             try {
                 for (int i = 0; i < 10000; i++) {

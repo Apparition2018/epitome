@@ -41,6 +41,12 @@ import java.util.*;
  * 3.get() 效率慢于 iterator()
  * 4....
  * ************************************************************
+ * CopyOnWriteArrayList
+ * 1.实现了List接口
+ * 2.内部持有一个ReentrantLock lock = new ReentrantLock();
+ * 3.底层是用 volatile transient 声明的数组 array
+ * 4.读写分离，写时复制出一个新的数组，完成插入、修改或者移除操作后将新数组赋值给 array
+ * ************************************************************
  */
 public class ListDemo extends Demo {
 

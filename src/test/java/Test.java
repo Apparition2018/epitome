@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 // https://blog.csdn.net/u012426327/article/list/13
 // 【小家java】java5新特性（简述十大新特性） 重要一跃：https://blog.csdn.net/f641385712/article/details/81783266
 // 【小家Spring】Spring Framework提供的实用纯Java工具类大合集（一）：https://blog.csdn.net/f641385712/article/details/86749481
+// java长连接
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot

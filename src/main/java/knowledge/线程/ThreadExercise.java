@@ -1,8 +1,12 @@
 package knowledge.线程;
 
+import lombok.SneakyThrows;
+
+import java.util.concurrent.TimeUnit;
+
 /**
+ * 设计4个线程，其中两个每次对j增加1，另外两个对j每次减少1。循环5次。
  * https://blog.csdn.net/never_cxb/article/details/50379047
- * 设计4个线程，其中两个每次对j增加1，另外两个对j每次减少1。循环100次。
  */
 public class ThreadExercise {
 
@@ -20,10 +24,12 @@ public class ThreadExercise {
 
     private static class Inc extends Thread {
 
+        @SneakyThrows
         @Override
         public void run() {
             int i = 0;
-            while (i++ < 100) {
+            while (i++ < 5) {
+                TimeUnit.MILLISECONDS.sleep(100);
                 inc();
             }
         }
@@ -31,10 +37,12 @@ public class ThreadExercise {
 
     private static class Dec extends Thread {
 
+        @SneakyThrows
         @Override
         public void run() {
             int i = 0;
-            while (i++ < 100) {
+            while (i++ < 5) {
+                TimeUnit.MILLISECONDS.sleep(100);
                 dec();
             }
         }

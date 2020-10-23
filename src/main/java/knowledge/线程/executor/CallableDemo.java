@@ -34,8 +34,10 @@ public class CallableDemo {
         FutureTask<String> task = new FutureTask<>(callable);
         new Thread(task).start();
 
-        String result = null; // 如有必要，等待计算完成，然后获取其结果，会阻塞主线程
+        String result = null;
         try {
+            // V	    get([long timeout, TimeUnit unit])
+            // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用）
             result = task.get();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();

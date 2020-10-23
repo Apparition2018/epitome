@@ -1,10 +1,11 @@
 package knowledge.线程.executor;
 
 import l.demo.Demo;
+import lombok.ToString;
 import org.apache.commons.lang3.time.DateUtils;
 
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * ThreadPoolExecutor
@@ -19,6 +20,63 @@ import java.util.concurrent.TimeUnit;
  * handler              由于超出线程范围和队列容量而使执行被阻塞时所使用的处理程序
  */
 public class ThreadPoolExecutorDemo {
+
+    /**
+     * 不推荐使用Executors操作线程池类：https://www.jianshu.com/p/8f9ba86ddf13
+     */
+    public static void main(String[] args) {
+        ThreadPoolExecutor pool = new ThreadPoolExecutor(2, 4, 10, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(2), new MyThreadFactory(), new MyRejectHandler());
+
+        for (int i = 0; i < 10; i++) {
+            pool.execute(new MyTask(i));
+        }
+    }
+
+    @ToString
+    private static class MyTask implements Runnable {
+
+        private int i;
+
+        public MyTask(int i) {
+            this.i = i;
+        }
+
+        @Override
+        public void run() {
+            System.out.println(this.toString() + " 正在执行");
+            try {
+                TimeUnit.MILLISECONDS.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static class MyThreadFactory implements ThreadFactory {
+
+        private final AtomicInteger count = new AtomicInteger(1);
+
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread thread = new Thread(r);
+            thread.setName("ljh-thread-" + count.getAndIncrement());
+            System.out.println(thread.getName() + " is created");
+            return thread;
+        }
+    }
+
+    private static class MyRejectHandler implements RejectedExecutionHandler {
+
+        @Override
+        public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+            printLog(r, executor);
+        }
+
+        private void printLog(Runnable r, ThreadPoolExecutor executor) {
+            System.err.println(r.toString() + " is rejected, " + executor.toString());
+        }
+    }
 
     /**
      * ScheduledThreadPoolExecutor

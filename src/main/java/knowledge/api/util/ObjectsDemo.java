@@ -31,7 +31,7 @@ public class ObjectsDemo extends Demo {
     }
 
     @Test
-    public void testToString() {
+    public void toString_() {
         p(Objects.toString(null, "参数不能为空"));
     }
     

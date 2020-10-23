@@ -50,10 +50,10 @@ public class QueueDemo extends Demo {
      * <p>
      * ArrayBlockingQueue       有界，数组结构
      * LinkedBlockingQueue      可选有界或无界，链表结构
-     * LinkedTransferQueue      无界，链表结构 ???
-     * PriorityBlockingQueue    无界，优先级
-     * DelayQueue               无界，延迟
-     * SynchronousQueue         无空间
+     * PriorityBlockingQueue    无界，数组结构，优先级
+     * DelayQueue               无界，延迟获取元素
+     * LinkedTransferQueue      无界，链表结构，CPU 自旋等待消费者取走元素，自旋一定次数后结束
+     * SynchronousQueue         无空间，一个添加操作后必须等待一个获取操作才可以继续添加
      */
     @Test
     public void testBlockingQueue() throws InterruptedException {

@@ -14,6 +14,9 @@ import java.util.TreeSet;
  * <p>
  * Set          HashSet                 LinkedHashSet           TreeSet
  * 适用场景     快速访问                记录插入顺序              自动排序
+ * ************************************************************
+ * ConcurrentSkipListSet
+ * ConcurrentSkipListSet 是线程安全的有序的集合，适用于高并发的场景
  *
  * @author ljh
  * created on 2020/9/4 17:14
