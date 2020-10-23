@@ -1,6 +1,7 @@
 package knowledge.jdbc;
 
 import knowledge.数据结构.集合框架.map.properties.PropertiesUtil;
+import l.demo.Demo;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
@@ -13,13 +14,13 @@ import java.util.Properties;
  * @author ljh
  * created on 2020/10/10 17:00
  */
-public class DBUtil {
+public class DBUtil extends Demo {
 
     private static BasicDataSource dataSource;
 
     static {
         try {
-            Properties props = PropertiesUtil.loadProps("jdbc.properties");
+            Properties props = PropertiesUtil.loadProps(JDBC_PROP_FILENAME);
             dataSource = new BasicDataSource();
             // Class.forName()
             dataSource.setDriverClassName(props.getProperty("jdbc.driver"));

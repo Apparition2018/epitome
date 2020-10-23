@@ -118,7 +118,7 @@ public class MapsDemo extends Demo {
      */
     @Test
     public void fromProperties() {
-        Properties capitals = PropertiesUtil.loadProps("jdbc.properties");
+        Properties capitals = PropertiesUtil.loadProps(JDBC_PROP_FILENAME);
 
         ImmutableMap<String, String> map = Maps.fromProperties(capitals);
         p(map); // {jdbc.url=jdbc:mysql://127.0.0.1:3306/epitome?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC, jdbc.username=root, jdbc.driver=com.mysql.jdbc.Driver, jdbc.password=root}

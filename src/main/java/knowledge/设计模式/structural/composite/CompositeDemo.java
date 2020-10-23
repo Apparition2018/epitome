@@ -1,6 +1,5 @@
 package knowledge.设计模式.structural.composite;
 
-
 /**
  * Component: 抽象构件角色
  * Leaf: 树叶构件角色

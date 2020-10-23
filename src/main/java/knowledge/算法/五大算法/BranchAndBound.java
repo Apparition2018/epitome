@@ -68,10 +68,10 @@ public class BranchAndBound extends Demo {
 
         public static void main(String[] args) {
 
-            Scanner input = new Scanner(System.in);
+            Scanner scan = new Scanner(System.in);
             System.out.print("请输入节点个数N，路径总数M： ");
-            N = input.nextInt();
-            M = input.nextInt();
+            N = scan.nextInt();
+            M = scan.nextInt();
             max = 10000;
             bestmin = new int[N + 1];
             distance = new int[N + 1][N + 1];
@@ -92,12 +92,12 @@ public class BranchAndBound extends Demo {
 
             p("请输入" + M + "条数据x，y，z（表示x点到y点的距离为z）：");
             for (int i = 1; i <= M; i++) {
-                int x = input.nextInt();
-                int y = input.nextInt();
-                int z = input.nextInt();
+                int x = scan.nextInt();
+                int y = scan.nextInt();
+                int z = scan.nextInt();
                 distance[x][y] = z;
             }
-            input.close();
+            scan.close();
 
             dijkstra();
         }

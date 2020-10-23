@@ -38,18 +38,19 @@ public class Demo {
             put(5, "D");
         }
     };
-    public SimpleDateFormat SDF = DATE_SDF;
     public static CountDownLatch countDownLatch;
     public static final SimpleDateFormat DATE_SDF = new SimpleDateFormat("yyyy-MM-dd");
     public static final SimpleDateFormat DATE_TIME_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    public static final SimpleDateFormat SDF = DATE_SDF;
     public static final String UTF_8 = String.valueOf(StandardCharsets.UTF_8);
     public static final String DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";
     public static final String BAIDU_URL = "https://www.baidu.com/";
+    public static final String USER_DIR = System.getProperty("user.dir");
     public static final String BAIDU_HOST = "www.baidu.com";
     public static final String RESOURCES_PATH = "src/main/resources/";
     public static final String DEMO_PATH = RESOURCES_PATH + "demo/";
     public static final String ARSENAL_LOGO = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1113375911,3381445023&fm=26&gp=0.jpg";
-    public static final String USER_DIR = System.getProperty("user.dir");
+    public static final String JDBC_PROP_FILENAME = "jdbc.properties";
 
     public static void setCountDownLatch(int n) {
         countDownLatch = new CountDownLatch(n);

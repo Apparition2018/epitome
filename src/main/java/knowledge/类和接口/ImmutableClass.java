@@ -1,6 +1,5 @@
 package knowledge.类和接口;
 
-
 /**
  * 不可变类
  * <p>
