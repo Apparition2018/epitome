@@ -1,4 +1,5 @@
-# [Git](https://git-scm.com/) 
+# [Git](https://git-scm.com/)
+
 ---
 ## 参考网站
 1. [Git](https://git-scm.com/)
@@ -52,7 +53,7 @@
 >```
 >add [<pathspec>…​]                             将文件内容添加到 index
 >   .                                           将修改的文件，新建的文件，添加到 index
->   -u                                          将修改的文件，删除的文件，添加到 index                                        
+>   -u                                          将修改的文件，删除的文件，添加到 index
 >   -A | --all                                  将修改的文件，删除的文件，新建的文件，添加到 index
 >status [<pathspec>…​]                          显示 working tree 状态
 >commit                                         将变更记录到 repository
@@ -89,7 +90,7 @@
 >push                                           使用 local refs 更新 remote refs，并发送相关 objects
 >   <repository> <refname>                      更新到远程 ref
 >   <repository> :<expect>                      删除远程 ref
->   -u | --set-upstream                         下次输入同样的命令，只需输入 git push，无需输入参数                                      
+>   -u | --set-upstream                         下次输入同样的命令，只需输入 git push，无需输入参数
 >remote                                         管理一组被跟踪的 repository
 >   -v | --verbose                              显示 remote 的 url 在 name 之后
 >   show <name>…​                               显示指定 name 的 remote 的信息
@@ -102,7 +103,7 @@
 >log                                            显示提交日志
 >   <file>                                      显示文件提交日志
 >   -p <file>                                   显示文件提交差异
->   -p -2                                       显示最近两次提交差异                                   
+>   -p -2                                       显示最近两次提交差异
 >   --pretty=oneline                            只显示版本号和备注
 >diff                                           显示 commits, commit 和 working tree 等之间的更改
 >                                               显示 working tree 和 next commit 之间的更改
@@ -111,29 +112,28 @@
 >   --stat                                      显示更改统计
 >```
 >## 补丁
+>[活用 git apply 合入 patch 补丁](https://juejin.im/post/6844903560564441101)
 >```
->rebase <branch>                             在另一个分支基础之上重新应用提交，用于把一个分支的修改合并到当前分支
->revert <commit>                             撤销指定的提交
+>apply [<patch>…​]                              将补丁文件打入文件和/或 index
+>rebase [<newbase> [<branch>]]                  把分叉的提交历史"整理"成一条直线的提交
+>revert <commit>…                               撤销指定的提交
 >```
 >## 调式
 >```
->blame                                       显示文件的每一行最后修改的版本和作者
+>blame <file>                                   显示文件的每一行最后修改的版本和作者
 >```
->## 管理
+>## 管理  
 >```
->reflog                                      ???
->```
->## 底层命令
->```
+>reflog <subcommand>                            管理 reflog 信息 (包括 已删除的 commit 记录 和 reset 记录)
 >```
 ---
 ## git-bash shortcut
 ```
-Ctrl + Ins          Copy                    复制
-Shift + Ins         Paste                   粘贴
-Alt + F3            Search                  搜索
-Alt + F8            Reset                   清屏
-Alt + F10           Default Size            还原屏幕
-Alt + F11           Full Screen             全屏幕
-Alt + F12           Flip Screen             翻转屏幕
+Ctrl + Ins              Copy                    复制
+Shift + Ins             Paste                   粘贴
+Alt + F3                Search                  搜索
+Alt + F8                Reset                   清屏
+Alt + F10               Default Size            还原屏幕
+Alt + F11               Full Screen             全屏幕
+Alt + F12               Flip Screen             翻转屏幕
 ```
