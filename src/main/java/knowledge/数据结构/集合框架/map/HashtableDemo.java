@@ -1,7 +1,6 @@
 package knowledge.数据结构.集合框架.map;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -17,8 +16,7 @@ import java.util.Hashtable;
  */
 public class HashtableDemo extends Demo {
 
-    @Test
-    public void testHashtable() {
+    public static void main(String[] args) {
         // Hashtable([int initialCapacity[, float loadFactor]]) 用指定初始容量和指定加载因子构造一个新的空哈希表。默认初始容量11，加载因子0.75
         // Hashtable(Map<? extends K,? extends V> t)            构造一个与给定的 Map 具有相同映射关系的新哈希表
         Hashtable<String, String> hashtable = new Hashtable<>();

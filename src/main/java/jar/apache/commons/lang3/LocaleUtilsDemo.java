@@ -2,7 +2,6 @@ package jar.apache.commons.lang3;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.LocaleUtils;
-import org.junit.Test;
 
 import java.util.List;
 import java.util.Locale;
@@ -10,16 +9,15 @@ import java.util.Set;
 
 /**
  * LocaleUtils
- *
+ * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/LocaleUtils.html
  */
 public class LocaleUtilsDemo extends Demo {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         // static List<Locale>	availableLocaleList()
         // 获取不可更改的已安装区域设置列表
-        List<Locale> localeList =  LocaleUtils.availableLocaleList();
+        List<Locale> localeList = LocaleUtils.availableLocaleList();
         p(localeList);
 
         // static Set<Locale>	availableLocaleSet()

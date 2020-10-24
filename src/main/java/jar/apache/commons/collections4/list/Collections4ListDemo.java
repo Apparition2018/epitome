@@ -1,12 +1,9 @@
 package jar.apache.commons.collections4.list;
 
 import com.google.common.collect.Lists;
-import org.apache.commons.collections4.Factory;
 import org.apache.commons.collections4.list.LazyList;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

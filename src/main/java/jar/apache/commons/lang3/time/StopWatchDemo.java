@@ -2,7 +2,6 @@ package jar.apache.commons.lang3.time;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,8 +15,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class StopWatchDemo extends Demo {
 
-    @Test
-    public void testStopWatch() throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         // 创建一个 StopWatch，并且马上开始
         // 相当于 StopWatch watch = StopWatch.create(); watch.start();
         StopWatch watch = StopWatch.createStarted();

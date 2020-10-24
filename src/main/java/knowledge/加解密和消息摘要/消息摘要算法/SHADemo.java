@@ -1,7 +1,5 @@
 package knowledge.加解密和消息摘要.消息摘要算法;
 
-import org.junit.Test;
-
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -27,8 +25,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class SHADemo {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
 
         try {
             String src = "Hello World!";

@@ -1,7 +1,6 @@
 package knowledge.数据结构.集合框架;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.util.ListIterator;
 
@@ -19,8 +18,7 @@ import java.util.ListIterator;
  */
 public class ListIteratorDemo extends Demo {
 
-    @Test
-    public void testListIterator() {
+    public static void main(String[] args) {
         p(list);
         ListIterator<Integer> listIterator = list.listIterator(0);
 

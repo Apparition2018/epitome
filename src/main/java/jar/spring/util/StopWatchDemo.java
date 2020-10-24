@@ -2,7 +2,6 @@ package jar.spring.util;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Test;
 import org.springframework.util.StopWatch;
 
 import java.util.concurrent.TimeUnit;
@@ -14,12 +13,11 @@ import java.util.concurrent.TimeUnit;
  * created on 2020/10/16 11:05
  */
 public class StopWatchDemo extends Demo {
-    
-    @Test
-    public void testStopWatch() throws InterruptedException {
+
+    public static void main(String[] args) throws InterruptedException {
         // 创建一个 StopWatch，并设置 id
         StopWatch watch = new StopWatch(RandomStringUtils.randomAlphanumeric(8));
-        
+
         watch.start("起床");
         TimeUnit.MILLISECONDS.sleep(100);
         p("当前任务名称：" + watch.currentTaskName()); // 当前任务名称：起床
@@ -34,7 +32,7 @@ public class StopWatchDemo extends Demo {
         TimeUnit.MILLISECONDS.sleep(50);
         p("当前任务名称：" + watch.currentTaskName()); // 当前任务名称：锁门
         watch.stop();
-        
+
         p(watch.prettyPrint());
         //  StopWatch 'sUZjSLp4': running time = 351835400 ns
         //  ---------------------------------------------
@@ -43,7 +41,7 @@ public class StopWatchDemo extends Demo {
         //  100332100  029%  起床
         //  200388000  057%  洗漱
         //  051115300  015%  锁门
-        
+
         // StopWatch 摘要
         p(watch.shortSummary());        // StopWatch 'sUZjSLp4': running time = 350664200 ns
         // 任务数

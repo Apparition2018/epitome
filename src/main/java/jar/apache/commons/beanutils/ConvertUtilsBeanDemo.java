@@ -4,7 +4,6 @@ import l.demo.Person;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConvertUtilsBean;
 import org.apache.commons.beanutils.Converter;
-import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -18,8 +17,7 @@ public class ConvertUtilsBeanDemo {
     /**
      * 案例：把一个 Bean 的所有 String 类型属性在输出之前加上一个前缀
      */
-    @Test
-    public void test() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    public static void main(String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         // 一个简单的 Bean 对象
         Person p = new Person("张三", 18);
         // 转换工具

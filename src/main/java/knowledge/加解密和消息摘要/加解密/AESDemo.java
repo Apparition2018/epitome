@@ -1,7 +1,6 @@
 package knowledge.加解密和消息摘要.加解密;
 
 import org.apache.commons.codec.binary.Base64;
-import org.junit.Test;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
@@ -34,11 +33,12 @@ public class AESDemo {
 
     /**
      * AES 加密操作
+     *
      * @param content 待加密内容
      * @param key     加密密钥
      * @return Base64转码后的加密数据
      */
-    private String encrypt(String content, String key) {
+    private static String encrypt(String content, String key) {
         try {
             // Cipher 为加密和解密提供密码功能
             // 创建密码器
@@ -61,7 +61,7 @@ public class AESDemo {
         return null;
     }
 
-    private String decrypt(String content, String key) throws NoSuchPaddingException {
+    private static String decrypt(String content, String key) throws NoSuchPaddingException {
         try {
             // 实例化
             Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
@@ -83,7 +83,7 @@ public class AESDemo {
     /**
      * 生成密钥
      */
-    private SecretKeySpec getSecretKey(final String key) {
+    private static SecretKeySpec getSecretKey(final String key) {
         // 返回生成指定算法密钥生成器的 keyGenerator 对象
         KeyGenerator kg;
 
@@ -105,8 +105,7 @@ public class AESDemo {
         return null;
     }
 
-    @Test
-    public void test() throws NoSuchPaddingException {
+    public static void main(String[] args) throws NoSuchPaddingException {
         String content = "hello";
         String key = "sde@5f98H*^hsff%dfs$r344&df8543*er";
         String h = encrypt(content, key);

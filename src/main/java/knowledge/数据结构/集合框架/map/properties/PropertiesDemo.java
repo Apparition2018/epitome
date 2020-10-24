@@ -1,7 +1,6 @@
 package knowledge.数据结构.集合框架.map.properties;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -18,8 +17,7 @@ import java.util.Properties;
  */
 public class PropertiesDemo extends Demo {
 
-    @Test
-    public void testProperties() throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
         // Properties([Properties defaults])                创建一个带有指定默认值的空属性列表
         Properties props = new Properties();
 

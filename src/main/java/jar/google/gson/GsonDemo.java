@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import l.demo.Demo;
 import lombok.AllArgsConstructor;
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,12 +13,15 @@ import java.util.List;
 import java.util.Map.Entry;
 
 /**
+ * Gson
  * Gson使用指南：https://www.jianshu.com/p/e740196225a4
+ *
+ * @author Arsenal
+ * created on 2020/10/25 2:16
  */
 public class GsonDemo extends Demo {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         /* Gson的基本用法 */
         Gson gson = new Gson();
         String jsonStr = "100";

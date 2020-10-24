@@ -1,7 +1,6 @@
 package knowledge.异常和错误;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 /**
  * CustomException
@@ -16,8 +15,7 @@ import org.junit.Test;
  */
 public class CustomExceptionDemo extends Demo {
 
-    @Test
-    public void testCustomException() {
+    public static void main(String[] args) {
         CheckingAccount ca = new CheckingAccount(101);
         p("Depositing $500...");
         ca.deposit(500.00);

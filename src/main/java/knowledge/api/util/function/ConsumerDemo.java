@@ -1,7 +1,5 @@
 package knowledge.api.util.function;
 
-import org.junit.Test;
-
 import java.util.function.Consumer;
 
 /**
@@ -14,8 +12,7 @@ import java.util.function.Consumer;
  */
 public class ConsumerDemo {
 
-    @Test
-    public void testConsumer() {
+    public static void main(String[] args) {
         Consumer<String> consumer1 = o -> {
             System.out.println("length: " + o.length());
         };

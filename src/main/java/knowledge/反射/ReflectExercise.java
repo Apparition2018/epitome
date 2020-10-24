@@ -3,7 +3,6 @@ package knowledge.反射;
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Home;
-import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -16,13 +15,12 @@ import java.util.Map;
  */
 public class ReflectExercise extends Demo {
 
-    @Test
-    public void test() throws IllegalAccessException, InstantiationException {
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException {
         /* bean2Map */
         Person person = new Person(1, "张三", 18, "男", Collections.singletonList("程序员"), new Home("广东中山", "123456"));
         Map<String, Object> map = bean2Map(person);
         p(map); // {otherInfo=[程序员], serialVersionUID=1, gender=男, name=张三, id=1, age=18, home=Person.Home(address=广东中山, tel=123456)}
-        
+
         /* map2Bean */
         p(map2Bean(map, Person.class)); // Person{id=1, name='张三', age=18, gender='男', otherInfo=[程序员], home=Home(address='广东中山', tel='123456')}
     }
@@ -30,7 +28,7 @@ public class ReflectExercise extends Demo {
     /**
      * JavaBean → Map
      */
-    private Map<String, Object> bean2Map(Object obj) throws IllegalAccessException {
+    private static Map<String, Object> bean2Map(Object obj) throws IllegalAccessException {
 
         if (obj == null) {
             return null;
@@ -47,11 +45,11 @@ public class ReflectExercise extends Demo {
         return map;
 
     }
-    
+
     /**
      * Map → JavaBean
      */
-    private Object map2Bean(Map<String, Object> map, Class<?> beanClass) throws IllegalAccessException, InstantiationException {
+    private static Object map2Bean(Map<String, Object> map, Class<?> beanClass) throws IllegalAccessException, InstantiationException {
 
         if (map == null) {
             return null;

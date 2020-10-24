@@ -24,9 +24,11 @@ import org.junit.Test;
  */
 public class FunctionalInterface {
 
-    // 使用 Lambda 表达式来表示函数式接口的一个实现
+    /**
+     * 使用 Lambda 表达式来表示函数式接口的一个实现
+     */
     @Test
-    public void test() {
+    public void testFunctionalInterface() {
         GreetingService greetingService = message -> System.out.println("Hello " + message);
         greetingService.sayMessage("World!");
     }

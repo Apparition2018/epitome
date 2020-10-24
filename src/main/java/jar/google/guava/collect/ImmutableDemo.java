@@ -2,7 +2,6 @@ package jar.google.guava.collect;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import org.junit.Test;
 
 /**
  * 不可变集合
@@ -17,8 +16,7 @@ import org.junit.Test;
  */
 public class ImmutableDemo {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         // 不可变 List
         ImmutableList<String> list = ImmutableList.of("A", "B", "C");
 

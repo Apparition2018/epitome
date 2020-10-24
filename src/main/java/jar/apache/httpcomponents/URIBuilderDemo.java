@@ -48,7 +48,7 @@ public class URIBuilderDemo extends Demo {
     }
 
     @Test
-    public void test() throws URISyntaxException {
+    public void testURIBuilder() throws URISyntaxException {
 
         Map<String, String> params = new HashMap<>();
         params.put("a", "1");

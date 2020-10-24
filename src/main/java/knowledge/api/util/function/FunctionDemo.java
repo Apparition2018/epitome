@@ -1,7 +1,6 @@
 package knowledge.api.util.function;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.util.function.Function;
 
@@ -13,9 +12,8 @@ import java.util.function.Function;
  * created on 2020/9/9 15:13
  */
 public class FunctionDemo extends Demo {
-    
-    @Test
-    public void testFunction() {
+
+    public static void main(String[] args) {
         Function<Integer, Integer> plusSelf = i -> i + i;
         Function<Integer, Integer> mulSelf = i -> i * i;
         p(plusSelf.apply(3));                   // 3 + 3 = 6

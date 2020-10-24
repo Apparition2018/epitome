@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import l.demo.Person.Student;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -42,8 +41,7 @@ public class JacksonUtil {
         objectMapper.enable(JsonParser.Feature.ALLOW_SINGLE_QUOTES);
     }
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
         Student student = new Student();
         student.setPassword("123");
         student.setAge(0);

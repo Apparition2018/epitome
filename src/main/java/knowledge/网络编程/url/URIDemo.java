@@ -1,7 +1,6 @@
 package knowledge.网络编程.url;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,8 +17,7 @@ import java.net.URISyntaxException;
  */
 public class URIDemo extends Demo {
 
-    @Test
-    public void testURI() throws URISyntaxException {
+    public static void main(String[] args) throws URISyntaxException {
         // URI(String str)                  通过解析给定的字符串构造一个 URI
         URI uri = new URI(DEMO_URL);
         // static URI	create(String str)  通过解析给定的字符串创建 URI

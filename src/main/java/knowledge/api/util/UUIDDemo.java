@@ -1,7 +1,6 @@
 package knowledge.api.util;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.util.UUID;
 
@@ -13,9 +12,8 @@ import java.util.UUID;
  * created on 2020/9/2 17:43
  */
 public class UUIDDemo extends Demo {
-    
-    @Test
-    public void testUUid() {
+
+    public static void main(String[] args) {
         // static UUID  randomUUID()            获取类型 4（伪随机生成的）UUID 的静态工厂
         UUID uuid = UUID.randomUUID();
         p(uuid.toString()); // 6a0ab1b5-5231-4872-907b-78894221d361

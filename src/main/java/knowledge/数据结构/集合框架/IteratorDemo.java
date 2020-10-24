@@ -1,7 +1,6 @@
 package knowledge.数据结构.集合框架;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -13,8 +12,7 @@ import java.util.Map;
  */
 public class IteratorDemo extends Demo {
 
-    @Test
-    public void testIterator() {
+    public static void main(String[] args) {
         Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
 
         // boolean	    hasNext()       如果仍有元素可以迭代，则返回 true

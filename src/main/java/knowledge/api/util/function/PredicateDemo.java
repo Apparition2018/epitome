@@ -1,7 +1,6 @@
 package knowledge.api.util.function;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -17,8 +16,7 @@ import java.util.function.Predicate;
  */
 public class PredicateDemo extends Demo {
 
-    @Test
-    public void testPredicate() {
+    public static void main(String[] args) {
         p("\n输出所有数据:");
         eval(list, n -> true);          // 1 2 3 4 5 6 7 8 9 
 
@@ -34,7 +32,7 @@ public class PredicateDemo extends Demo {
         eval(list, predicate1.and(predicate2)); // 4 6 8 
     }
 
-    private void eval(List<Integer> list, Predicate<Integer> predicate) {
+    private static void eval(List<Integer> list, Predicate<Integer> predicate) {
         for (Integer n : list) {
             if (predicate.test(n)) {
                 System.out.print(n + " ");

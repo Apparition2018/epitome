@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.*;
-import org.junit.Test;
 
 import java.math.BigDecimal;
 
@@ -17,9 +16,8 @@ import java.math.BigDecimal;
  */
 public class BuilderDemo {
 
-    @Test
-    public void test() {
-        TaxReturn tr = new TaxReturn("012-68-3242", 1998, "O'Brien", new BigDecimal(43000.00));
+    public static void main(String[] args) {
+        TaxReturn tr = new TaxReturn("012-68-3242", 1998, "O'Brien", new BigDecimal("43000.00"));
         System.out.println(tr.toString());  // jar.apache.commons.lang.builder.TaxReturn@763d9750[ssn=012-68-3242,year=1998,lastName=O'Brien]
         System.out.println(tr.toString2()); // jar.apache.commons.lang.builder.TaxReturn@763d9750[
                                             //   ssn=012-68-3242
@@ -34,7 +32,7 @@ public class BuilderDemo {
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
-    class TaxReturn {
+    private static class TaxReturn {
         private String ssn;
         private int year;
         private String lastName;

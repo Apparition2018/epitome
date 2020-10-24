@@ -1,7 +1,6 @@
 package knowledge.api.awt;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.awt.*;
 import java.io.File;
@@ -20,8 +19,7 @@ import java.net.URI;
  */
 public class DesktopDemo extends Demo {
 
-    @Test
-    public void testDesktop() throws IOException {
+    public static void main(String[] args) throws IOException {
         // static boolean	    isDesktopSupported()        测试当前平台是否支持此类
         if (Desktop.isDesktopSupported()) {
             // static Desktop	getDesktop()                返回当前浏览器上下文的 Desktop 实例

@@ -22,11 +22,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class SystemDemo extends Demo {
 
-    @Test
-    public void test() {
-        p(System.getenv());
-    }
-
     /**
      * static void	    arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
      * 从指定源数组中复制一个数组，复制从指定的位置开始，到目标数组的指定位置结束

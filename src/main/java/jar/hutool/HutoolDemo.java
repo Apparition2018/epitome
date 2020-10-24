@@ -5,7 +5,7 @@ import l.demo.Demo;
 import org.junit.Test;
 
 /**
- * HutoolDemo
+ * Hutool
  *
  * @author Arsenal
  * created on 2020/10/24 21:53

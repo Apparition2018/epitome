@@ -1,7 +1,5 @@
 package knowledge.加解密和消息摘要.加解密;
 
-import org.junit.Test;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -242,11 +240,6 @@ public class RSADemo {
                 assert false : "Invalid Param";
         }
         return key.getEncoded();
-    }
-
-    @Test
-    public void test() {
-
     }
 
 }

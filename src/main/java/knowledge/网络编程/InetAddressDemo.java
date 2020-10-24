@@ -1,11 +1,9 @@
 package knowledge.网络编程;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Arrays;
 
 /**
  * InetAddress
@@ -15,8 +13,7 @@ import java.util.Arrays;
  */
 public class InetAddressDemo extends Demo {
 
-    @Test
-    public void test() throws UnknownHostException {
+    public static void main(String[] args) throws UnknownHostException {
         // 获取本地主机
         InetAddress address = InetAddress.getLocalHost();
         p(address);                 // JS3-LJH/192.168.8.223

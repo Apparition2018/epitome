@@ -24,9 +24,10 @@ import org.junit.Test;
  *  3.包也限定了访问权限，拥有包访问权限的类才能访问某个包中的类。
  */
 public class Package {
-
+    
     @Test
-    public void test() {
+    public void testPackage() {
+        
     }
 
 }

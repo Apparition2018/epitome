@@ -1,7 +1,6 @@
 package knowledge.日期和时间;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.util.Date;
 
@@ -32,8 +31,7 @@ import java.util.Date;
  */
 public class SimpleDateFormatDemo extends Demo {
 
-    @Test
-    public void testSimpleDateFormat() {
+    public static void main(String[] args) {
         // void	        applyPattern(String pattern)        将给定模式字符串应用于此日期格式
         SDF.applyPattern("yyyy-MM-dd HH:mm:ss");
         p(SDF.format(new Date()));  // 2020-09-03 11:29:36

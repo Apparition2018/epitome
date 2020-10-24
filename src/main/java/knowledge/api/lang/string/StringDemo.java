@@ -65,6 +65,7 @@ public class StringDemo extends Demo {
         p(String.valueOf(cArr));            // hello world
     }
 
+    @Test
     public void testSplitAndJoin() {
         // String[]	        split(String regex, int limit)
         // 根据匹配给定的正则表达式来拆分此字符串

@@ -2,7 +2,6 @@ package jar.google.guava.collect;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import org.junit.Test;
 
 /**
  * BiMap
@@ -14,8 +13,7 @@ import org.junit.Test;
  */
 public class BiMapDemo {
 
-    @Test
-    public void test() {
+    public static void main(String[] args) {
 
         BiMap<String, String> map = HashBiMap.create();
         map.put("1", "壹");

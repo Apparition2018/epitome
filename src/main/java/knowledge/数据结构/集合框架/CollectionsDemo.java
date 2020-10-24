@@ -123,9 +123,5 @@ public class CollectionsDemo extends Demo {
     private void addCat(List list) {
         list.add(new Chicken());
     }
-
-    @Test
-    public void test() {
-        p(Collections.reverseOrder());
-    }
+    
 }

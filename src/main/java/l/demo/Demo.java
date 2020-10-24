@@ -13,23 +13,21 @@ import java.util.concurrent.CountDownLatch;
  */
 public class Demo {
 
-    public String projectName = "epitome";
-    public String numString = "123456789";
-    public Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    public List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-    public List<String> sList = new ArrayList<>(Arrays.asList("1 2 3 4 5 6 7 8 9".split(" ")));
-    public List<Integer> descList = Arrays.asList(9, 8, 7, 6, 5, 4, 3, 2, 1);
-    public List<Integer> repeatList = new ArrayList<>(Arrays.asList(1, 1, 2, 2, 3, 3, 4, 5));
-    public List<Integer> subList = new ArrayList<>(list.subList(1, 6));
-    public List<Integer> subList2 = list.subList(3, 8);
-    public Map<Integer, String> map = new HashMap<Integer, String>(3) {
+    public static Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    public static List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+    public static List<String> sList = new ArrayList<>(Arrays.asList("1 2 3 4 5 6 7 8 9".split(" ")));
+    public static List<Integer> descList = Arrays.asList(9, 8, 7, 6, 5, 4, 3, 2, 1);
+    public static List<Integer> repeatList = new ArrayList<>(Arrays.asList(1, 1, 2, 2, 3, 3, 4, 5));
+    public static List<Integer> subList = new ArrayList<>(list.subList(1, 6));
+    public static List<Integer> subList2 = list.subList(3, 8);
+    public static Map<Integer, String> map = new HashMap<Integer, String>(3) {
         {
             put(1, "A");
             put(2, "B");
             put(3, "C");
         }
     };
-    public Map<Integer, String> map2 = new HashMap<Integer, String>(5) {
+    public static Map<Integer, String> map2 = new HashMap<Integer, String>(5) {
         {
             put(1, "A");
             put(2, "B");
