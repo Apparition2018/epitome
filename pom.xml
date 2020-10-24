@@ -30,7 +30,7 @@
         <tika>1.24.1</tika>
         <commons-text>1.6</commons-text>
         <commons-email>1.5</commons-email>
-        <commons-beanutils>1.9.3</commons-beanutils>
+        <commons-beanutils>1.9.4</commons-beanutils>
         <easyexcel>2.2.6</easyexcel>
         <hutool>5.4.6</hutool>
         <fastjson>1.2.58</fastjson>
