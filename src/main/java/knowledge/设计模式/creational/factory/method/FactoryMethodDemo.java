@@ -1,6 +1,7 @@
 package knowledge.设计模式.creational.factory.method;
 
 import knowledge.数据结构.集合框架.map.properties.PropertiesUtil;
+import l.demo.Demo;
 
 /**
  * 工厂模式：定义一个创建对象的接口，让子类来决定哪些类需要被实例化，使一个类的实例化推迟到子类。工厂模式是抽象工厂的一种常见情况。
@@ -22,7 +23,7 @@ import knowledge.数据结构.集合框架.map.properties.PropertiesUtil;
  * @author ljh
  * created on 2019/11/1 9:36
  */
-public class FactoryMethodDemo {
+public class FactoryMethodDemo extends Demo {
 
     public static void main(String[] args) {
         ShapeFactory factory = new ShapeFactory();
@@ -86,7 +87,7 @@ public class FactoryMethodDemo {
 
         Shape getShapeByClassKey(String key) {
             try {
-                String className = PropertiesUtil.getProperty("src/main/java/knowledge/设计模式/creational/factory/method/shape.properties", key);
+                String className = PropertiesUtil.getProperty(JAVA_PATH + "knowledge/设计模式/creational/factory/method/shape.properties", key);
                 return (Shape) Class.forName(className).newInstance();
             } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                 e.printStackTrace();

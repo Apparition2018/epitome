@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3;
 
+import l.demo.Demo;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.SerializationUtils;
 import org.junit.Test;
@@ -11,7 +12,7 @@ import java.util.Objects;
 /**
  * SerializationUtils
  */
-public class SerializationUtilsDemo {
+public class SerializationUtilsDemo extends Demo {
 
     private static Date date = new Date();
 
@@ -20,7 +21,7 @@ public class SerializationUtilsDemo {
         // static <T extends Serializable> T	clone(T object)
         // 深克隆
         Date cDate = SerializationUtils.clone(date);
-        System.out.println(Objects.equals(date, cDate));    // true
+        p(Objects.equals(date, cDate));     // true
 
         // static byte[]	serialize(Serializable obj)
         // 序列化，Object → byte[]
@@ -29,7 +30,7 @@ public class SerializationUtilsDemo {
         // static <T> T     deserialize(byte[] objectData)
         // 反序列化，byte[] → T
         Date deDate = SerializationUtils.deserialize(bytes);
-        System.out.println(Objects.equals(cDate, deDate));  // true
+        p(Objects.equals(cDate, deDate));   // true
     }
 
     @Test
@@ -38,7 +39,7 @@ public class SerializationUtilsDemo {
         InputStream is = null;
 
         try {
-            String filePath = "src/main/java/jar/apache/commons/lang3/Serialization.obj";
+            String filePath = DEMO_PATH + "Serialization.obj";
             os = new FileOutputStream(filePath);
             is = new FileInputStream(filePath);
 
@@ -50,7 +51,7 @@ public class SerializationUtilsDemo {
             // 反序列持久化，File → bytes[] → T
             Date deDate = SerializationUtils.deserialize(is);
 
-            System.out.println(date.equals(deDate)); // true
+            p(date.equals(deDate)); // true
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

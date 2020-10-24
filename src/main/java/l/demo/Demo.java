@@ -45,6 +45,7 @@ public class Demo {
     public static final String BAIDU_URL = "https://www.baidu.com/";
     public static final String USER_DIR = System.getProperty("user.dir");
     public static final String BAIDU_HOST = "www.baidu.com";
+    public static final String JAVA_PATH = "src/main/java/";
     public static final String RESOURCES_PATH = "src/main/resources/";
     public static final String DEMO_PATH = RESOURCES_PATH + "demo/";
     public static final String DEMO_FILE_PATH = RESOURCES_PATH + "demo/demo";

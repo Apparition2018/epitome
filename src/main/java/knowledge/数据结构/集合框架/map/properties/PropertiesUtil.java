@@ -17,7 +17,7 @@ public class PropertiesUtil {
     public static Properties loadProps(String fileName) {
         Properties props = new Properties();
         Reader reader = null;
-        try (InputStream is = PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName)) {
+        try (InputStream is = ClassLoader.getSystemResourceAsStream(fileName)) {
             if (is != null) {
                 props.load(new InputStreamReader(is, StandardCharsets.UTF_8));
             } else {

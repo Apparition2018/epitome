@@ -123,7 +123,7 @@ public class MD5Demo extends Demo {
     @Test
     public void test4() {
         try {
-            FileInputStream fis = new FileInputStream("src/main/java/knowledge/加密和解密/Base64Demo.java");
+            FileInputStream fis = new FileInputStream(DEMO_FILE_PATH);
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             byte[] buf = new byte[1024];
             int len;

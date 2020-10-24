@@ -47,7 +47,7 @@ public class JoinerDemo extends Demo {
      */
     @Test
     public void appendTo() {
-        try (FileWriter writer = new FileWriter(new File("src/main/java/jar/google/guava/base/join.txt"))) {
+        try (FileWriter writer = new FileWriter(new File(DEMO_PATH + "join.txt"))) {
             // <A extendsAppendable> A	appendTo(A appendable, Iterable<?> parts)
             // 将parts通过连接器的连接符连接成字符串，并拼接到appendable后
             Joiner.on("-").appendTo(writer, list);

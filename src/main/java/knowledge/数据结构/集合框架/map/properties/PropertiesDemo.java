@@ -23,7 +23,7 @@ public class PropertiesDemo extends Demo {
 
         // void	            load(InputStream inStream)      从输入流中读取属性列表（键和元素对）
         // void	            load(Reader reader)             按简单的面向行的格式从输入字符流中读取属性列表（键和元素对）
-        props.load(PropertiesDemo.class.getClassLoader().getResourceAsStream(JDBC_PROP_FILENAME));
+        props.load(ClassLoader.getSystemResourceAsStream(JDBC_PROP_FILENAME));
 
         // Enumeration<?>	propertyNames()                 返回属性列表中所有键的枚举，如果在主属性列表中未找到同名的键，则包括默认属性列表中不同的键
         // Set<String>	    stringPropertyNames()           返回此属性列表中的键集，其中该键及其对应值是字符串，如果在主属性列表中未找到同名的键，则还包括默认属性列表中不同的键

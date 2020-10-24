@@ -64,8 +64,8 @@ public class PathDemo extends Demo {
      */
     @Test
     public void normalize() {
-        Path path = Paths.get("src/main/resources/demo/a/../demo/");
-        p(path.normalize());     // src\main\resources\demo\demo
+        Path path = Paths.get(DEMO_PATH+ "a/../demo/");
+        p(path.normalize()); // src\main\resources\demo\demo
     }
 
     /**
