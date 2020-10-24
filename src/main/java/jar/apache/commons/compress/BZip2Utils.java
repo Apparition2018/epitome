@@ -18,12 +18,12 @@ public class BZip2Utils extends Demo {
 
     @Test
     public void compress() throws Exception {
-        BZip2Utils.compress(DEMO_PATH + "demo");
+        BZip2Utils.compress(DEMO_FILE_PATH);
     }
 
     @Test
     public void decompress() throws Exception {
-        BZip2Utils.decompress(DEMO_PATH + "demo" + EXT);
+        BZip2Utils.decompress(DEMO_FILE_PATH + EXT);
     }
 
     /**

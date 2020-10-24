@@ -32,7 +32,7 @@ public class ZipUtils extends Demo {
 
     @Test
     public void compress2() {
-        String srcFile = DEMO_PATH + "demo";
+        String srcFile = DEMO_FILE_PATH;
         String zipPath = DEMO_PATH + "demo.zip";
 
         compress2(srcFile, zipPath);

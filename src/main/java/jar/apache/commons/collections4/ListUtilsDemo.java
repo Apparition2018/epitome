@@ -1,6 +1,7 @@
 package jar.apache.commons.collections4;
 
 import l.demo.Demo;
+import org.apache.commons.collections4.Factory;
 import org.apache.commons.collections4.ListUtils;
 import org.junit.Test;
 
@@ -46,11 +47,10 @@ public class ListUtilsDemo extends Demo {
 
     /**
      * static <E> List<E>	lazyList(List<E> list, Factory<? extends E> factory)
-     * LazyList
      */
     @Test
     public void lazyList() {
-        List<Date> lazyList = ListUtils.lazyList(new ArrayList<>(), Date::new);
+        List<Date> lazyList = ListUtils.lazyList(new ArrayList<>(), (Factory<Date>) Date::new);
         Date date = lazyList.get(3);
         p(date);       // Mon Nov 26 15:57:23 CST 2018
         p(lazyList);   // [null, null, null, Mon Nov 26 15:57:23 CST 2018]

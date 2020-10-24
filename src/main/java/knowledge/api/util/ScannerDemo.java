@@ -73,7 +73,7 @@ public class ScannerDemo extends Demo {
     public void testConstructorByFile() throws FileNotFoundException {
         // Scanner(File source, String charsetName)
         // 构造一个新的 Scanner，它生成的值是从指定文件扫描的
-        Scanner scan = new Scanner(new File(DEMO_PATH + "demo"));
+        Scanner scan = new Scanner(new File(DEMO_FILE_PATH));
         // boolean	    hasNextLine()
         // 如果在此扫描器的输入中存在另一行，则返回 true
         while (scan.hasNextLine()) {

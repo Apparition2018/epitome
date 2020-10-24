@@ -115,7 +115,7 @@ public class IOUtilsDemo extends Demo {
      */
     @Test
     public void write() throws IOException {
-        OutputStream os = new FileOutputStream(DEMO_PATH + "demo");
+        OutputStream os = new FileOutputStream(DEMO_FILE_PATH);
         IOUtils.write("静夜思", os, UTF_8);
     }
 
@@ -132,7 +132,7 @@ public class IOUtilsDemo extends Demo {
         lines.add("疑是地上霜。");
         lines.add("举头望明月，");
         lines.add("低头思故乡。");
-        OutputStream os = new FileOutputStream(DEMO_PATH + "demo");
+        OutputStream os = new FileOutputStream(DEMO_FILE_PATH);
         IOUtils.writeLines(lines, IOUtils.LINE_SEPARATOR, os, UTF_8);
     }
 
@@ -164,7 +164,7 @@ public class IOUtilsDemo extends Demo {
      */
     @Test
     public void readLines() throws IOException {
-        InputStream is = new FileInputStream(DEMO_PATH + "demo");
+        InputStream is = new FileInputStream(DEMO_FILE_PATH);
         List<String> lines = IOUtils.readLines(is, UTF_8);
         for (String line : lines) {
             p(line);

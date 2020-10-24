@@ -2,12 +2,10 @@ package jar.protostuff;
 
 import com.google.common.collect.Lists;
 import l.demo.Person;
-import org.junit.Test;
 
 public class ProtostuffDemo {
 
-    @Test
-    public void testProtostuff() {
+    public static void main(String[] args) {
         Person person = new Person("张三", 18);
         person.setOtherInfo(Lists.newArrayList("学生", "踢足球"));
 

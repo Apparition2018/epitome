@@ -49,6 +49,7 @@ public class Demo {
     public static final String BAIDU_HOST = "www.baidu.com";
     public static final String RESOURCES_PATH = "src/main/resources/";
     public static final String DEMO_PATH = RESOURCES_PATH + "demo/";
+    public static final String DEMO_FILE_PATH = RESOURCES_PATH + "demo/demo";
     public static final String ARSENAL_LOGO = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1113375911,3381445023&fm=26&gp=0.jpg";
     public static final String JDBC_PROP_FILENAME = "jdbc.properties";
 

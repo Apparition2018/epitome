@@ -24,34 +24,27 @@
         <!-- https://blog.csdn.net/weixin_34360651/article/details/91778454 -->
         <java.version>1.8</java.version>
         <!-- dependency -->
-        <springboot-mybatis>2.1.1</springboot-mybatis>
         <springboot-druid>1.1.18</springboot-druid>
         <springboot-pagehelper>1.2.13</springboot-pagehelper>
         <dbcp2>2.8.0</dbcp2>
-        <easyexcel>2.2.6</easyexcel>
-        <hutool>4.5.16</hutool>
-        <guava>28.0-jre</guava>
-        <commons-math3>3.6.1</commons-math3>
+        <tika>1.24.1</tika>
         <commons-text>1.6</commons-text>
-        <commons-compress>1.19</commons-compress>
         <commons-email>1.5</commons-email>
         <commons-beanutils>1.9.3</commons-beanutils>
-        <commons-fileupload>1.4</commons-fileupload>
+        <easyexcel>2.2.6</easyexcel>
+        <hutool>5.4.6</hutool>
         <fastjson>1.2.58</fastjson>
-        <kryo>4.0.2</kryo>
         <protostuff>1.6.0</protostuff>
-        <bouncycastle>1.62</bouncycastle>
-        <swagger>2.9.2</swagger>
-        <zxing>3.4.0</zxing>
+        <swagger>3.0.0</swagger>
+        <zxing>3.4.1</zxing>
         <easy-captcha>1.6.2</easy-captcha>
         <kaptcha>2.3.2</kaptcha>
-        <pinyin4j>2.5.0</pinyin4j>
-        <jpinyin>1.1.8</jpinyin>
+        <tinypinyin>2.0.3</tinypinyin>
         <!-- plugin -->
         <mybatis-generator>1.3.7</mybatis-generator>
     </properties>
 
-    
+
     <!--
         没有写版本号的依赖在顶级模块 spring-boot-dependencies 已经定义了版本号，如：
             <lombok.version>1.18.8</lombok.version>
@@ -59,8 +52,12 @@
             ......
     -->
     <dependencies>
-        
-        <!-- spring-boot-starter：https://www.cnblogs.com/yaowen/p/8623902.html -->
+        <!-- spring-boot-starter：https://www.cnblogs.com/yaowen/p/8623902.html
+            spring-boot-starter-web 包含了 jackson-databind
+                jackson-databind 包含了 jackson-core, jackson-annotations
+            spring-boot-starter-web 包含了 spring-boot-starter-logging
+                spring-boot-starter-logging 包含了 logback-classic
+                    logback-classic 包含了 logback-core, slf4j-api -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -73,6 +70,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <!-- spring boot 整合 quartz -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
         <!-- spring boot 整合 freemarker
             包含了 spring-context-support -->
@@ -95,23 +97,16 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        
-        <!-- spring boot 整合 mybatis -->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${springboot-mybatis}</version>
-        </dependency>
-        
+
         <!-- spring boot 整合 druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${springboot-druid}</version>
         </dependency>
-        
+
         <!-- spring boot 整合 pagehelper
-            pagehelper-spring-boot-starter 包含了 mybatis-spring-boot-starter -->
+            包含了 mybatis-spring-boot-starter -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
@@ -132,16 +127,36 @@
             <version>${dbcp2}</version>
         </dependency>
 
-        <!-- logback：包含了 logback-core, slf4j-api -->
+        <!-- tika：内容抽取的工具集合
+            包含了 gson, guava, commons-compress, commons-math3, httpmime
+                bcprov-jdk15on, juniversalchardet -->
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-parsers</artifactId>
+            <version>${tika}</version>
         </dependency>
 
-        <!-- quartz：定时任务 -->
+        <!-- httpclient -->
         <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient-cache</artifactId>
+        </dependency>
+
+        <!-- commons -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>${commons-email}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons-beanutils}</version>
         </dependency>
 
         <!-- easyexcel：包含了 poi 和 poi-ooxml
@@ -159,87 +174,11 @@
             <version>${hutool}</version>
         </dependency>
 
-        <!-- httpclient -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient-cache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpmime</artifactId>
-        </dependency>
-
-        <!-- guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava}</version>
-            <!--<type>bundle</type>-->
-        </dependency>
-
-        <!-- commons -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>${commons-math3}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>${commons-text}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-compress</artifactId>
-            <version>${commons-compress}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-email</artifactId>
-            <version>${commons-email}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>${commons-beanutils}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>${commons-fileupload}</version>
-        </dependency>
-
-        <!-- gson -->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-
         <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson}</version>
-        </dependency>
-
-        <!-- jackson
-            jackson-databind 包含 jackson-core, jackson-annotations
-            spring-boot-starter-web 包含了 jackson-databind
-        -->
-        <!--<dependency>-->
-            <!--<groupId>com.fasterxml.jackson.core</groupId>-->
-            <!--<artifactId>jackson-databind</artifactId>-->
-        <!--</dependency>-->
-
-        <!-- kryo：序列化/反序列化 -->
-        <dependency>
-            <groupId>com.esotericsoftware</groupId>
-            <artifactId>kryo-shaded</artifactId>
-            <version>${kryo}</version>
         </dependency>
 
         <!-- protostuff：基于 protobuf，序列化/反序列化 -->
@@ -252,18 +191,6 @@
             <groupId>io.protostuff</groupId>
             <artifactId>protostuff-runtime</artifactId>
             <version>${protostuff}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.protostuff</groupId>
-            <artifactId>protostuff-api</artifactId>
-            <version>${protostuff}</version>
-        </dependency>
-
-        <!-- Bouncy Castle：密码包 -->
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>${bouncycastle}</version>
         </dependency>
 
         <!-- lombok -->
@@ -285,18 +212,14 @@
             <version>${swagger}</version>
         </dependency>
 
-        <!-- zxing：生成二维码 -->
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>${zxing}</version>
-        </dependency>
+        <!-- zxing：生成二维码
+            包含了 core -->
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>javase</artifactId>
             <version>${zxing}</version>
         </dependency>
-        
+
         <!-- easy-captcha：生成验证码 -->
         <dependency>
             <groupId>com.github.whvcse</groupId>
@@ -311,19 +234,13 @@
             <version>${kaptcha}</version>
         </dependency>
 
-        <!-- pinyin4j：汉字转拼音 -->
+        <!-- tinypinyin：汉字转拼音 -->
         <dependency>
-            <groupId>com.belerweb</groupId>
-            <artifactId>pinyin4j</artifactId>
-            <version>${pinyin4j}</version>
+            <groupId>com.github.promeg</groupId>
+            <artifactId>tinypinyin</artifactId>
+            <version>${tinypinyin}</version>
         </dependency>
 
-        <!-- jpinyin：汉字转拼音 -->
-        <dependency>
-            <groupId>com.github.stuxuhai</groupId>
-            <artifactId>jpinyin</artifactId>
-            <version>${jpinyin}</version>
-        </dependency>
     </dependencies>
 
     <repositories>
@@ -339,7 +256,7 @@
             <id>alimaven</id>
             <name>aliyun maven</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-<!--            <url>https://maven.aliyun.com/repository/spring-plugin</url>-->
+            <!--            <url>https://maven.aliyun.com/repository/spring-plugin</url>-->
         </pluginRepository>
     </pluginRepositories>
 

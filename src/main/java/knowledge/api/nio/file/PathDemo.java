@@ -90,7 +90,7 @@ public class PathDemo extends Demo {
      */
     @Test
     public void resolve() {
-        Path p5 = Paths.get(DEMO_PATH + "demo");
+        Path p5 = Paths.get(DEMO_FILE_PATH);
         p(p1);                              // src\main\resources\demo
         p(p5);                              // src\main\resources\demo\demo
         p(p1.resolve("demo"));              // src\main\resources\demo\demo

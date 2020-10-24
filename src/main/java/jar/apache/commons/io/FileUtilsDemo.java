@@ -23,7 +23,7 @@ public class FileUtilsDemo extends Demo {
     // 写
     @Test
     public void write() throws IOException {
-        File file = new File(DEMO_PATH + "demo");
+        File file = new File(DEMO_FILE_PATH);
 
         // write()
         FileUtils.write(file, "静夜思\n", UTF_8, false);
@@ -41,7 +41,7 @@ public class FileUtilsDemo extends Demo {
     // 读
     @Test
     public void read() throws IOException {
-        File file = new File(DEMO_PATH + "demo");
+        File file = new File(DEMO_FILE_PATH);
 
         // readFileToString()
         p(FileUtils.readFileToString(file, UTF_8));
@@ -68,7 +68,7 @@ public class FileUtilsDemo extends Demo {
     // 移动
     @Test
     public void move() throws IOException {
-        File file1 = new File(DEMO_PATH + "demo");
+        File file1 = new File(DEMO_FILE_PATH);
         File file2 = new File(DEMO_PATH + "a/demo");
 
         // moveFile()
@@ -84,7 +84,7 @@ public class FileUtilsDemo extends Demo {
     // 复制
     @Test
     public void copy() throws IOException, InterruptedException {
-        File file1 = new File(DEMO_PATH + "demo");
+        File file1 = new File(DEMO_FILE_PATH);
         File file2 = new File(DEMO_PATH + "a");
 
         // copyFileToDirectory()
@@ -103,7 +103,7 @@ public class FileUtilsDemo extends Demo {
     @Test
     public void other() throws IOException {
         File file1 = new File(DEMO_PATH);
-        File file2 = new File(DEMO_PATH + "demo");
+        File file2 = new File(DEMO_FILE_PATH);
 
         // directoryContains()
         // 判断是否包含文件或者文件夹

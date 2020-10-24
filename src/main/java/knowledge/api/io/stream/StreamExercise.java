@@ -23,7 +23,7 @@ public class StreamExercise extends Demo {
 
     @Test
     public void copy() {
-        copy(DEMO_PATH + "demo", DEMO_PATH + "demo_copy");
+        copy(DEMO_FILE_PATH, DEMO_PATH + "demo_copy");
     }
 
     /**

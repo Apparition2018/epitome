@@ -72,7 +72,7 @@ public class NioServer extends Demo {
 
                 } else if (key.isWritable()) {
                     SocketChannel socketChannel = (SocketChannel) key.channel();
-                    FileInputStream file = new FileInputStream(DEMO_PATH + "demo");
+                    FileInputStream file = new FileInputStream(DEMO_FILE_PATH);
                     FileChannel fileChannel = file.getChannel();
                     // 500M 堆外内存
                     ByteBuffer byteBuffer = ByteBuffer.allocateDirect(524288000);

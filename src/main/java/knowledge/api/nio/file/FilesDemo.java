@@ -22,7 +22,7 @@ public class FilesDemo extends Demo {
     // 写
     @Test
     public void write() throws IOException {
-        Path path = Paths.get(DEMO_PATH + "demo");
+        Path path = Paths.get(DEMO_FILE_PATH);
 
         List<String> lines = new ArrayList<>();
         lines.add("静夜思");
@@ -37,7 +37,7 @@ public class FilesDemo extends Demo {
     // 读
     @Test
     public void read() throws IOException {
-        Path path = Paths.get(DEMO_PATH + "demo");
+        Path path = Paths.get(DEMO_FILE_PATH);
 
         // 读取内容
         p(Files.readAllLines(path)); // [静夜思, 床前明月光，, 疑是地上霜。, 举头望明月，, 低头思故乡。]
@@ -80,7 +80,7 @@ public class FilesDemo extends Demo {
     // 移动
     @Test
     public void move() throws IOException {
-        Path path1 = Paths.get(DEMO_PATH + "demo");
+        Path path1 = Paths.get(DEMO_FILE_PATH);
         Path path2 = Paths.get(DEMO_PATH + "a/b/demo");
 
         // ATOMIC_MOVE，原子性操作，要么移动成功完成，要么源文件保持在原位置
@@ -91,7 +91,7 @@ public class FilesDemo extends Demo {
     // 复制
     @Test
     public void copy() throws IOException {
-        Path path1 = Paths.get(DEMO_PATH + "demo");
+        Path path1 = Paths.get(DEMO_FILE_PATH);
         Path path2 = Paths.get(DEMO_PATH + "a/b/demo");
 
         // REPLACE_EXISTING，覆盖
@@ -152,7 +152,7 @@ public class FilesDemo extends Demo {
     // 其它
     @Test
     public void other() throws IOException {
-        Path path = Paths.get(DEMO_PATH + "demo");
+        Path path = Paths.get(DEMO_FILE_PATH);
 
         // 探测文件类型
         p(Files.probeContentType(path));
