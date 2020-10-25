@@ -26,7 +26,7 @@ public class ThreadPoolExecutorDemo {
      */
     public static void main(String[] args) {
         ThreadPoolExecutor pool = new ThreadPoolExecutor(2, 4, 10, TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(2), new MyThreadFactory(), new MyRejectHandler());
+                new ArrayBlockingQueue<>(1024), new MyThreadFactory(), new MyRejectHandler());
 
         for (int i = 0; i < 10; i++) {
             pool.execute(new MyTask(i));

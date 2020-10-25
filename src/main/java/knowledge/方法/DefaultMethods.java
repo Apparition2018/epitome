@@ -34,7 +34,7 @@ public class DefaultMethods extends Demo {
 
     interface FourWheeler {
         default void print() {
-            p("我是一辆四轮车!");
+            p("我是一辆四轮车！");
         }
     }
 
