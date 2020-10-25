@@ -44,11 +44,11 @@ public class CaptchaUtils {
         // ***************
         // * 画图过程省略 *
         // ***************
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
         // 将图片按照指定的格式（jpeg）画到流上
-        ImageIO.write(bufferedImage, "jpg", outputStream);
+        ImageIO.write(bufferedImage, "jpg", baos);
         // 将流转换成 base64 字符串
-        return "data:image/jpg;base64," + Base64.getEncoder().encodeToString(outputStream.toByteArray());
+        return "data:image/jpg;base64," + Base64.getEncoder().encodeToString(baos.toByteArray());
     }
 
     /**

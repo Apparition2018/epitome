@@ -160,11 +160,11 @@ public class MapDemo extends Demo {
 
         @Override
         public String toString() {
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             for (Map.Entry<K, V> entry : map.entrySet()) {
-                stringBuilder.append(String.format("%s:%s ", entry.getKey(), entry.getValue()));
+                sb.append(String.format("%s:%s ", entry.getKey(), entry.getValue()));
             }
-            return stringBuilder.toString();
+            return sb.toString();
         }
     }
 

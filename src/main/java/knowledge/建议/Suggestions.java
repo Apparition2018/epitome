@@ -803,9 +803,9 @@ public class Suggestions extends Demo {
         // StringBuilder
         watch.reset();
         watch.start();
-        StringBuilder builder = new StringBuilder("");
+        StringBuilder sb = new StringBuilder("");
         for (int i = 0; i < 10000; i++) {
-            builder.append("c");
+            sb.append("c");
         }
         p("StringBuilder：" + watch.getTime() + "ms");   // StringBuilder：0ms
     }

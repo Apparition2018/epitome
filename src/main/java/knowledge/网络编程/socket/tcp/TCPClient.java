@@ -25,14 +25,14 @@ public class TCPClient extends Demo {
         p("远程主机地址：" + socket.getRemoteSocketAddress());
 
         // OutputStream	    getOutputStream()           返回此套接字的输出流
-        DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 
         Student student = new Student(1, "007", "Mary", 20, 100.0f);
-        out.writeUTF(student + "");
+        dos.writeUTF(student + "");
 
         // InputStream	    getInputStream()            返回此套接字的输入流
-        DataInputStream in = new DataInputStream(socket.getInputStream());
-        p("服务器响应：" + in.readUTF());
+        DataInputStream dis = new DataInputStream(socket.getInputStream());
+        p("服务器响应：" + dis.readUTF());
 
         socket.close();
     }

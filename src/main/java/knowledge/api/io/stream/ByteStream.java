@@ -44,13 +44,13 @@ public class ByteStream extends Demo {
         // FileInputStream(File file)               通过打开一个到实际文件的连接来创建一个 FileInputStream，该文件通过文件系统中的 File 对象 file 指定
         // FileInputStream(String name)             通过打开一个到实际文件的连接来创建一个 FileInputStream，该文件通过文件系统中的路径名 name 指定
         // FileInputStream(FileDescriptor fdObj)    通过使用文件描述符 fdObj 创建一个 FileInputStream，该文件描述符表示到文件系统中某个实际文件的现有连接
-        try (FileInputStream is = new FileInputStream(DEMO_PATH + "Input")) {
+        try (FileInputStream fis = new FileInputStream(DEMO_PATH + "Input")) {
             byte[] data = new byte[256];
             StringBuilder sb = new StringBuilder();
             int len;
             // abstract  int	read()                              从输入流中读取数据的下一个字节
             // int	            read(byte[] b[, int off, int len])  将输入流中最多 len 个数据字节读入 byte 数组
-            while ((len = is.read(data)) != -1) {
+            while ((len = fis.read(data)) != -1) {
                 sb.append(new String(data, 0, len, StandardCharsets.UTF_8));
             }
 
@@ -107,20 +107,20 @@ public class ByteStream extends Demo {
     public void testByteArrayXXXStream() {
         // ByteArrayInputStream(byte[] buf[, int offset, int length])
         // 创建 ByteArrayInputStream，使用 buf 作为其缓冲区数组
-        ByteArrayInputStream is = new ByteArrayInputStream("Input Input Input Input Input ".getBytes());
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        ByteArrayInputStream bais = new ByteArrayInputStream("Input Input Input Input Input ".getBytes());
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
         int data;
-        while ((data = is.read()) != -1) {
-            os.write(data);
+        while ((data = bais.read()) != -1) {
+            baos.write(data);
         }
 
         // 第一种获取数据：toString()
-        p(os + "\n");
+        p(baos + "\n");
 
         // 第二种获取数据：toByteArray()
         // byte[]	        toByteArray()                   创建一个新分配的 byte 数组
-        p(new String(os.toByteArray(), StandardCharsets.UTF_8));
+        p(new String(baos.toByteArray(), StandardCharsets.UTF_8));
     }
 
     /**

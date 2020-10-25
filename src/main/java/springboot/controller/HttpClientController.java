@@ -26,11 +26,11 @@ public class HttpClientController {
     @RequestMapping("/json")
     public String testJson(HttpServletRequest request) throws IOException {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
+        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 
         String line;
         StringBuilder sb = new StringBuilder();
-        while ((line = reader.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             sb.append(line);
         }
 

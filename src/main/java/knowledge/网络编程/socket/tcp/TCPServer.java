@@ -70,15 +70,15 @@ public class TCPServer extends Demo implements Runnable {
                 p("远程主机地址：" + socket.getRemoteSocketAddress());
 
                 // InputStream	    getInputStream()            返回此套接字的输入流
-                DataInputStream in = new DataInputStream(socket.getInputStream());
-                p(in.readUTF());
+                DataInputStream dis = new DataInputStream(socket.getInputStream());
+                p(dis.readUTF());
                 // void	            shutdownInput()             此套接字的输入流置于“流的末尾”
                 socket.shutdownInput();
 
                 // OutputStream	    getOutputStream()           返回此套接字的输出流
-                DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+                DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
                 // SocketAddress	getLocalSocketAddress()     返回此套接字绑定的端点的地址，如果尚未绑定则返回 null
-                out.writeUTF("谢谢连接我：" + socket.getLocalSocketAddress() + "\nGoodbye!");
+                dos.writeUTF("谢谢连接我：" + socket.getLocalSocketAddress() + "\nGoodbye!");
             } catch (SocketTimeoutException s) {
                 p("Socket timed out!");
             } catch (IOException e) {

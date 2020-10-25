@@ -55,10 +55,10 @@ public class JoinerDemo extends Demo {
             e.printStackTrace();
         }
 
-        StringBuilder builder = new StringBuilder("SSS-SS-S-");
+        StringBuilder sb = new StringBuilder("SSS-SS-S-");
         // StringBuilder	appendTo(StringBuilder builder, Iterable<?> parts)
         // 将parts通过连接器的连接符连接成字符串，并拼接到builder后，返回StringBuilder
-        StringBuilder join = Joiner.on("-").appendTo(builder, list);
+        StringBuilder join = Joiner.on("-").appendTo(sb, list);
         p(join); // SSS-SS-S-A-B-C
     }
 

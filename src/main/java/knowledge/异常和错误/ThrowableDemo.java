@@ -57,8 +57,8 @@ public class ThrowableDemo extends Demo {
      */
     @Test
     public void testTryWithResources() {
-        try (FileInputStream inputStream = new FileInputStream(new File("test"))) {
-            p(inputStream.read());
+        try (FileInputStream fis = new FileInputStream(new File("test"))) {
+            p(fis.read());
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
@@ -73,24 +73,24 @@ public class ThrowableDemo extends Demo {
     @Test
     public void suppressed() {
         try {
-            FileInputStream inputStream = new FileInputStream(new File("test"));
+            FileInputStream fis = new FileInputStream(new File("test"));
             Throwable var2 = null;
 
             try {
-                p(inputStream.read());
+                p(fis.read());
             } catch (Throwable var12) {
                 var2 = var12;
                 throw var12;
             } finally {
-                if (inputStream != null) {
+                if (fis != null) {
                     if (var2 != null) {
                         try {
-                            inputStream.close();
+                            fis.close();
                         } catch (Throwable var11) {
                             var2.addSuppressed(var11);
                         }
                     } else {
-                        inputStream.close();
+                        fis.close();
                     }
                 }
             }

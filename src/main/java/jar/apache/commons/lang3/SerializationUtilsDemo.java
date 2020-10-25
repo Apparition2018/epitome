@@ -1,7 +1,6 @@
 package jar.apache.commons.lang3;
 
 import l.demo.Demo;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.SerializationUtils;
 import org.junit.Test;
 
@@ -35,14 +34,9 @@ public class SerializationUtilsDemo extends Demo {
 
     @Test
     public void test2() {
-        OutputStream os = null;
-        InputStream is = null;
 
-        try {
-            String filePath = DEMO_PATH + "Serialization.obj";
-            os = new FileOutputStream(filePath);
-            is = new FileInputStream(filePath);
-
+        try (OutputStream os = new FileOutputStream(DEMO_PATH + "Serialization.obj");
+             InputStream is = new FileInputStream(DEMO_PATH + "Serialization.obj")) {
             // static void	serialize(Serializable obj, OutputStream outputStream)
             // 序列持久化，Object → bytes[] → File
             SerializationUtils.serialize(date, os);
@@ -54,9 +48,6 @@ public class SerializationUtilsDemo extends Demo {
             p(date.equals(deDate)); // true
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            IOUtils.closeQuietly(os);
-            IOUtils.closeQuietly(is);
         }
     }
 

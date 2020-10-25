@@ -43,40 +43,40 @@ public class CharStream extends Demo {
     public void testReader() {
         // InputStreamReader(InputStream in[, Charset cs/CharsetDecoder dec/String charsetName])
         // 创建使用给定字符集/字符集解码器的 InputStreamReader
-        try (InputStreamReader isReader = new InputStreamReader(new FileInputStream(DEMO_PATH + "Input"), StandardCharsets.UTF_8);
+        try (InputStreamReader isr = new InputStreamReader(new FileInputStream(DEMO_PATH + "Input"), StandardCharsets.UTF_8);
              // FileReader(File file)                   在给定从中读取数据的 File 的情况下创建一个新 FileReader
              // FileReader(String fileName)             在给定从中读取数据的文件名的情况下创建一个新 FileReader
              // FileReader(FileDescriptor fd)           在给定从中读取数据的 FileDescriptor 的情况下创建一个新 FileReader
-             FileReader fReader = new FileReader(DEMO_PATH + "Input");
+             FileReader fr = new FileReader(DEMO_PATH + "Input");
              // BufferedReader(Reader in[, int sz])     创建一个使用指定大小输入缓冲区的缓冲字符输入流
-             BufferedReader bReader = new BufferedReader(new FileReader(DEMO_PATH + "Input"))) {
+             BufferedReader br = new BufferedReader(new FileReader(DEMO_PATH + "Input"))) {
 
             char[] data = new char[64];
 
             /* InputStreamReader */
-            StringBuilder isReaderString = new StringBuilder();
+            StringBuilder isrString = new StringBuilder();
             // int	            read([char[] cbuf]/CharBuffer target)   将字符读入数组/字符缓冲区
             // abstract  int	read(char[] cbuf, int off, int len)     将字符读入数组的某一部分
-            while (isReader.read(data) != -1) {
-                isReaderString.append(new String(data));
+            while (isr.read(data) != -1) {
+                isrString.append(new String(data));
             }
-            p(isReaderString + "\n");
+            p(isrString + "\n");
 
             /* FileReader */
-            StringBuilder fReaderString = new StringBuilder();
-            while (fReader.read(data) != -1) {
-                fReaderString.append(new String(data));
+            StringBuilder frString = new StringBuilder();
+            while (fr.read(data) != -1) {
+                frString.append(new String(data));
             }
-            p(fReaderString + "\n");
+            p(frString + "\n");
 
             /* BufferedReader */
             String line;
-            StringBuilder bReaderString = new StringBuilder();
+            StringBuilder brString = new StringBuilder();
             // String	        readLine()                              读取一个文本行
-            while ((line = bReader.readLine()) != null) {
-                bReaderString.append(line);
+            while ((line = br.readLine()) != null) {
+                brString.append(line);
             }
-            p(bReaderString);
+            p(brString);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,7 +105,7 @@ public class CharStream extends Demo {
     public void testWriter() {
         try (Writer writer = new FileWriter(DEMO_PATH + "Output");
              // PrintWriter(OutputStream out, boolean autoFlush)        通过现有的 OutputStream 创建新的 PrintWriter
-             PrintWriter pWriter = new PrintWriter(new OutputStreamWriter(new FileOutputStream(DEMO_PATH + "Output")), true)) {
+             PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream(DEMO_PATH + "Output")), true)) {
 
             /* FileWriter */
             // void	            write([char[] cbuf]/int c)              写入字符数组/单个字符
@@ -117,9 +117,9 @@ public class CharStream extends Demo {
 
             /* PrintWriter */
             // void	            println(XXX x)                          打印 XXX，然后终止该行
-            pWriter.println("Output");
-            pWriter.println("Output");
-            pWriter.println("Output");
+            pw.println("Output");
+            pw.println("Output");
+            pw.println("Output");
         } catch (IOException e) {
             e.printStackTrace();
         }

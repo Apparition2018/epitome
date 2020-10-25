@@ -65,12 +65,13 @@ public class IOUtilsDemo extends Demo {
      * 对比两个流是否相等[，忽略换行符]
      */
     @Test
-    public void contentEquals() throws IOException {
-        InputStream is = new URL(BAIDU_URL).openStream();
-        InputStream is2 = new URL(BAIDU_URL).openStream();
-        p(IOUtils.contentEquals(is, is2)); // true
-        IOUtils.closeQuietly(is);
-        IOUtils.closeQuietly(is2);
+    public void contentEquals() {
+        try (InputStream is = new URL(BAIDU_URL).openStream();
+             InputStream is2 = new URL(BAIDU_URL).openStream();) {
+            p(IOUtils.contentEquals(is, is2)); // true
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
