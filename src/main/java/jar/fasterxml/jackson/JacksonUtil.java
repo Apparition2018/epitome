@@ -53,7 +53,7 @@ public class JacksonUtil {
     }
 
     public static <T> String obj2String(T src) {
-        if (src == null) {
+        if (null == src) {
             return null;
         }
         try {
@@ -65,7 +65,7 @@ public class JacksonUtil {
     }
 
     public static <T> T string2Obj(String src, TypeReference<T> typeReference) {
-        if (src == null || typeReference == null) {
+        if (null == src || null == typeReference) {
             return null;
         }
         try {

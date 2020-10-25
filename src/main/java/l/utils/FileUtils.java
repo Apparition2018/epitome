@@ -35,7 +35,7 @@ public class FileUtils {
     private static boolean deleteDir(File file) {
         if (file.isDirectory()) {
             File[] subs = file.listFiles();
-            if (subs != null) {
+            if (null != subs) {
                 for (File sub : subs) {
                     deleteDir(sub);
                 }

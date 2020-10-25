@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -24,19 +25,20 @@ public class HttpClientController {
     }
 
     @RequestMapping("/json")
+    @SuppressWarnings("unchecked")
     public String testJson(HttpServletRequest request) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 
         String line;
         StringBuilder sb = new StringBuilder();
-        while ((line = br.readLine()) != null) {
+        while (null != (line = br.readLine())) {
             sb.append(line);
         }
 
-        Map map = (Map) JSON.parse(sb.toString());
+        HashMap<String, String> map = (HashMap<String, String>) JSON.parse(sb.toString());
 
-        return (String) map.get("a") + map.get("b");
+        return map.get("a") + map.get("b");
     }
 
 }

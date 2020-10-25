@@ -80,7 +80,7 @@ public class SingletonDemo {
         // 3.提供一个用于获取实例的方法，使用 public static 修饰
         // 调用方法才创建唯一实例，形象成为懒汉模式
         public static LazySingleton getSInstance() {
-            if (instance == null) {
+            if (null == instance) {
                 instance = new LazySingleton();
             }
             return instance;

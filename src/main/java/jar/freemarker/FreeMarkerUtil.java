@@ -39,7 +39,7 @@ public class FreeMarkerUtil {
     }
 
     public static FreeMarkerUtil getInstance(String pName) {
-        if (util == null) {
+        if (null == util) {
             cfg = fmcf.getConfiguration(); // 依赖： spring-context-support
             cfg.setClassForTemplateLoading(FreeMarkerUtil.class, pName);
             util = new FreeMarkerUtil();

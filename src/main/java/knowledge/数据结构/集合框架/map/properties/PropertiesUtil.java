@@ -18,7 +18,7 @@ public class PropertiesUtil {
         Properties props = new Properties();
         Reader reader = null;
         try (InputStream is = ClassLoader.getSystemResourceAsStream(fileName)) {
-            if (is != null) {
+            if (null != is) {
                 props.load(new InputStreamReader(is, StandardCharsets.UTF_8));
             } else {
                 reader = new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8);
@@ -27,7 +27,13 @@ public class PropertiesUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            IOUtils.closeQuietly(reader);
+            if (null != reader) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return props;
     }

@@ -68,7 +68,7 @@ public class Demo {
     }
 
     public static <T> void p(T obj, boolean original) {
-        if (obj == null) return;
+        if (null == obj) return;
         // 数组
         if (obj.getClass().isArray()) {
             if (obj instanceof long[]) {

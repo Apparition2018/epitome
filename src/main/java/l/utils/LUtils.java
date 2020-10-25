@@ -16,7 +16,7 @@ public class LUtils {
      */
     public static boolean isWindows() {
         String os = System.getProperty("os.name");
-        return os != null && os.toLowerCase().contains("windows");
+        return null != os && os.toLowerCase().contains("windows");
     }
 
     /**

@@ -54,7 +54,7 @@ public class ObjectXML {
         XMLDecoder decoder = new XMLDecoder(ins);
         Object obj = null;
         try {
-            while ((obj = decoder.readObject()) != null)
+            while (null != (obj = decoder.readObject()))
                 objList.add(obj);
         } catch (Exception localException) {
         }

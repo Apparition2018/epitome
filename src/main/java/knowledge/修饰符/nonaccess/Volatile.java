@@ -25,7 +25,7 @@ public class Volatile {
 
     public void run() {
         while (true) {
-            if (o != null) {
+            if (null != o) {
                 System.out.println("stop");
                 break;
             }

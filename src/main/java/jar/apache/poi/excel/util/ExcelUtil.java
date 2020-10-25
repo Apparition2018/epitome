@@ -21,7 +21,7 @@ import java.util.List;
 public class ExcelUtil {
 
     public void writeExcel(List<Student> list, String path) throws Exception {
-        if (list != null && path != null && !Common.EMPTY.equals(path)) {
+        if (null != list && null != path && !Common.EMPTY.equals(path)) {
             String suffix = Util.getSuffix(path);
             if (!Common.EMPTY.equals(suffix)) {
                 if (Common.OFFICE_EXCEL_2003_POSTFIX.equals(suffix)) {
@@ -36,7 +36,7 @@ public class ExcelUtil {
     }
 
     public List<Student> readExcel(String path) throws IOException {
-        if (path == null || Common.EMPTY.equals(path)) {
+        if (null == path || Common.EMPTY.equals(path)) {
             return null;
         } else {
             String suffix = Util.getSuffix(path);
@@ -62,13 +62,13 @@ public class ExcelUtil {
         // Read the Sheet
         for (int numSheet = 0; numSheet < xssfWorkbook.getNumberOfSheets(); numSheet++) {
             XSSFSheet xssfSheet = xssfWorkbook.getSheetAt(numSheet);
-            if (xssfSheet == null) {
+            if (null == xssfSheet) {
                 continue;
             }
             // Read the Row
             for (int rowNum = 1; rowNum <= xssfSheet.getLastRowNum(); rowNum++) {
                 XSSFRow cell = xssfSheet.getRow(rowNum);
-                if (cell != null) {
+                if (null != cell) {
                     student = new Student();
                     XSSFCell no = cell.getCell(0);
                     XSSFCell name = cell.getCell(1);
@@ -94,13 +94,13 @@ public class ExcelUtil {
         // Read the Sheet
         for (int numSheet = 0; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++) {
             HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(numSheet);
-            if (hssfSheet == null) {
+            if (null == hssfSheet) {
                 continue;
             }
             // Read the Row
             for (int rowNum = 1; rowNum <= hssfSheet.getLastRowNum(); rowNum++) {
                 HSSFRow hssfRow = hssfSheet.getRow(rowNum);
-                if (hssfRow != null) {
+                if (null != hssfRow) {
                     student = new Student();
                     HSSFCell no = hssfRow.getCell(0);
                     HSSFCell name = hssfRow.getCell(1);
@@ -129,7 +129,7 @@ public class ExcelUtil {
     }
 
     public void writeXls(List<Student> list, String path) throws Exception {
-        if (list == null) {
+        if (null == list) {
             return;
         }
         int countColumnNum = list.size();
@@ -166,7 +166,7 @@ public class ExcelUtil {
     }
 
     public void writeXlsx(List<Student> list, String path) throws Exception {
-        if (list == null) {
+        if (null == list) {
             return;
         }
         //XSSFWorkbook

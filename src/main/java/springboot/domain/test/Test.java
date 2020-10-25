@@ -22,6 +22,6 @@ public class Test implements Serializable {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = null == content ? null : content.trim();
     }
 }

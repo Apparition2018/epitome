@@ -73,7 +73,7 @@ public class CharStream extends Demo {
             String line;
             StringBuilder brString = new StringBuilder();
             // String	        readLine()                              读取一个文本行
-            while ((line = br.readLine()) != null) {
+            while (null != (line = br.readLine())) {
                 brString.append(line);
             }
             p(brString);

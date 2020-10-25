@@ -49,7 +49,7 @@ public class DBCP {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            if (conn != null) {
+            if (null != conn) {
                 try {
                     conn.rollback();
                 } catch (SQLException e1) {
@@ -57,7 +57,7 @@ public class DBCP {
                 }
             }
         } finally {
-            if (conn != null) {
+            if (null != conn) {
                 try {
                     conn.close();
                 } catch (SQLException e) {

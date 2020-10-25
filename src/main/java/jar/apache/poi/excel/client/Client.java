@@ -27,7 +27,7 @@ public class Client {
         System.out.println("======================================");
         // read the 2010 excel
         List<Student> list1 = new ExcelUtil().readExcel(read_excel2010_path);
-        if (list1 != null) {
+        if (null != list1) {
             for (Student student : list1) {
                 System.out.println("No. : " + student.getNo() + ", name : " + student.getName() + ", age : " + student.getAge() + ", score : " + student.getScore());
             }

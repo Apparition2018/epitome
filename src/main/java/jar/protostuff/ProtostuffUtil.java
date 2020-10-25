@@ -18,10 +18,10 @@ public class ProtostuffUtil {
     private static <T> Schema<T> getSchema(Class<T> clazz) {
         @SuppressWarnings("unchecked")
         Schema<T> schema = (Schema<T>) cachedSchema.get(clazz);
-        if (schema == null) {
+        if (null == schema) {
             // RuntimeSchema    用于在运行时从 Java 实体对象中生成所需要的模式 Schema
             schema = RuntimeSchema.getSchema(clazz);
-            if (schema != null) {
+            if (null != schema) {
                 cachedSchema.put(clazz, schema);
             }
         }

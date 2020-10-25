@@ -26,13 +26,13 @@ public class JDBC {
             // static Class<?>	    forName(String name[, boolean initialize, ClassLoader loader])
             // 使用给定的类加载器，返回与带有给定字符串名的类或接口相关联的 Class 对象
             Class.forName("com.mysql.cj.jdbc.Driver");
-            
+
             // 2. 建立连接
             // static Connection	getConnection(String url, Properties info)
             // static Connection	getConnection(String url[, String user, String password])
             // 试图建立到给定数据库 URL 的连接
             conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/epitome?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC", "root", "root");
-            
+
             // 3. 创建 Statement
             // Statement	        createStatement(int resultSetType[, int resultSetConcurrency, int resultSetHoldability])
             // 创建一个 Statement 对象，该对象将生成具有给定类型、并发性和可保存性的 ResultSet 对象
@@ -42,18 +42,18 @@ public class JDBC {
             // 3.2 int	            executeUpdate(String sql)       DML 语句，返回一个整数，表示影响了多少条数据 
             // 3.3 ResultSet	    executeQuery(String sql)        DQL 语句，返回查询结果集
             ResultSet resultSet = statement.executeQuery(dqlSql);
-            
+
             while (resultSet.next()) {
                 Integer id = resultSet.getInt(1);
                 String name = resultSet.getString("name");
                 String course = resultSet.getString("course");
                 String score = resultSet.getString("score");
-                System.out.println(id + " " + name + course + (score != null ? "成绩为" + score : "没有成绩"));
+                System.out.println(id + " " + name + course + (null != score ? "成绩为" + score : "没有成绩"));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } finally {
-            if (conn != null) {
+            if (null != conn) {
                 try {
                     // 5. 关闭连接
                     conn.close();

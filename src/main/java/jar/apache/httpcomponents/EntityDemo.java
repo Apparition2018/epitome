@@ -42,7 +42,7 @@ public class EntityDemo extends Demo {
         HttpGet httpget = new HttpGet("http://localhost/");
         HttpResponse response = client.execute(httpget);
         HttpEntity entity = response.getEntity();
-        if (entity != null) {
+        if (null != entity) {
             entity = new BufferedHttpEntity(entity);
         }
 

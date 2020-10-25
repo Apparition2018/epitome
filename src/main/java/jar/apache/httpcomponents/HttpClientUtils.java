@@ -43,7 +43,7 @@ public class HttpClientUtils {
             HttpPost httpPost = new HttpPost(url);
 
             // 请求内容
-            if (params != null) {
+            if (null != params) {
                 List<NameValuePair> list = new ArrayList<>();
                 for (String key : params.keySet()) {
                     list.add(new BasicNameValuePair(key, params.get(key)));
@@ -106,7 +106,7 @@ public class HttpClientUtils {
         try {
             // URI 传参
             URIBuilder builder = new URIBuilder(url);
-            if (params != null) {
+            if (null != params) {
                 for (String key : params.keySet()) {
                     builder.addParameter(key, params.get(key));
                 }

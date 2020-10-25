@@ -462,7 +462,7 @@ public class Suggestions extends Demo {
         int sum = 0;
         for (Integer i : list) {
             // sum += i; // NullPointerException
-            sum += i != null ? i : 0;
+            sum += null != i ? i : 0;
         }
         p(sum);
     }

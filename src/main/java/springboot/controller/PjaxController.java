@@ -29,7 +29,7 @@ public class PjaxController {
     @RequestMapping(value = "/{city}", method = RequestMethod.GET)
     public String index(@PathVariable String city, HttpServletRequest req, Model model) {
         //pjax 请求
-        if (req.getHeader("X-PJAX") != null) {
+        if (null != req.getHeader("X-PJAX")) {
             LOGGER.info("pjax request");
             return String.format("forward:/weather/pjax/%s", city);
         }

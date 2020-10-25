@@ -62,11 +62,11 @@ public class HttpClientDemo1 extends Demo {
 //			EntityUtils.consume(entity); // 释放资源
 
             // 方法二：使用 InputStream（官方推荐）
-            if (entity != null) {
+            if (null != entity) {
                 inputStream = entity.getContent();
                 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
                 String line;
-                while ((line = br.readLine()) != null) {
+                while (null != (line = br.readLine())) {
                     p(line);
                 }
             }

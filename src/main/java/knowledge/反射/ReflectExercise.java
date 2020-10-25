@@ -30,7 +30,7 @@ public class ReflectExercise extends Demo {
      */
     private static Map<String, Object> bean2Map(Object obj) throws IllegalAccessException {
 
-        if (obj == null) {
+        if (null == obj) {
             return null;
         }
 
@@ -51,7 +51,7 @@ public class ReflectExercise extends Demo {
      */
     private static Object map2Bean(Map<String, Object> map, Class<?> beanClass) throws IllegalAccessException, InstantiationException {
 
-        if (map == null) {
+        if (null == map) {
             return null;
         }
 

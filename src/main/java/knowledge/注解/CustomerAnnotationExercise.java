@@ -85,7 +85,7 @@ public class CustomerAnnotationExercise extends Demo {
                 e.printStackTrace();
             }
             // 4.3拼装sql
-            if (fieldValue == null || (fieldValue instanceof Integer && (Integer) fieldValue == 0)) {
+            if (null == fieldValue || (fieldValue instanceof Integer && (Integer) fieldValue == 0)) {
                 continue;
             }
             sb.append(" and ").append(columnName);

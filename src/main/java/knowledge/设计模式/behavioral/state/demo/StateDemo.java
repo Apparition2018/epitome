@@ -60,7 +60,7 @@ class SpiteVoteState implements VoteState {
     public void vote(String user, String voteItem, VoteManager voteManager) {
         // 恶意投票，取消用户的投票资格，并取消投票记录
         String str = voteManager.getMapVote().get(user);
-        if (str != null) {
+        if (null != str) {
             voteManager.getMapVote().remove(user);
         }
         System.out.println("你有恶意刷屏行为，取消投票资格");
@@ -103,7 +103,7 @@ class VoteManager {
         // 1.为该用户增加投票次数
         // 从记录中取出该用户已有的投票次数
         Integer oldVoteCount = mapVoteCount.get(user);
-        if (oldVoteCount == null) {
+        if (null == oldVoteCount) {
             oldVoteCount = 0;
         }
         oldVoteCount += 1;

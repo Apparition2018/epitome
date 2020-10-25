@@ -55,8 +55,8 @@ public class Greedy {
             for (int i = 0; i < n; i++) {
                 node = nodes[i]; // 从每个叶子节点，向上追溯，直到根节点，确定每个字符的编码
                 sb = new StringBuffer();
-                while (node != null) {
-                    if (node.parent != null) {
+                while (null != node) {
+                    if (null != node.parent) {
                         if (node == node.parent.left) {
                             sb.insert(0, 0); // 如果是左边的，编码取0
                         } else {

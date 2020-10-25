@@ -79,7 +79,7 @@ public class JoinerDemo extends Demo {
      */
     @Test
     public void joining() {
-        String collect = listWithNull.stream().filter(s -> s != null && !s.isEmpty())
+        String collect = listWithNull.stream().filter(s -> null != s && !s.isEmpty())
                 .collect(Collectors.joining("-"));
         p(collect); // A-B-C
     }

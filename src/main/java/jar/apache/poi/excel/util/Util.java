@@ -12,7 +12,7 @@ public class Util {
      * get postfix of the path
      */
     public static String getSuffix(String path) {
-        if (path == null || Common.EMPTY.equals(path.trim())) {
+        if (null == path || Common.EMPTY.equals(path.trim())) {
             return Common.EMPTY;
         }
         if (path.contains(Common.POINT)) {

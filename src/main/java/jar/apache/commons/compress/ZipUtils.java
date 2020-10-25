@@ -53,7 +53,7 @@ public class ZipUtils extends Demo {
      */
     public static void compress(File[] files, String zipFile) {
 
-        if (files != null && files.length > 0) {
+        if (null != files && files.length > 0) {
 
             if (isEndsWithZip(zipFile)) {
                 Map<String, File> map = new HashMap<>();
@@ -154,7 +154,7 @@ public class ZipUtils extends Demo {
 
                     ArchiveEntry entry;
                     // 把 zip 包中的每个文件读取出来，然后把文件写到指定的文件夹
-                    while ((entry = zais.getNextZipEntry()) != null) {
+                    while (null != (entry = zais.getNextZipEntry())) {
                         if (!zais.canReadEntryData(entry)) {
                             continue;
                         }
@@ -199,7 +199,7 @@ public class ZipUtils extends Demo {
 
     public static boolean isEndsWithZip(String fileName) {
         boolean flag = false;
-        if (fileName != null && !"".equals(fileName.trim())) {
+        if (null != fileName && !"".equals(fileName.trim())) {
             if (fileName.toLowerCase().endsWith(".zip")) {
                 flag = true;
             }

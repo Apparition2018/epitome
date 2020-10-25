@@ -46,7 +46,7 @@ public class URLDemo extends Demo {
         BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         String line;
         StringBuilder sb = new StringBuilder();
-        while ((line = br.readLine()) != null) {
+        while (null != (line = br.readLine())) {
             sb.append(line).append("\n");
         }
         p(sb);

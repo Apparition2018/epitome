@@ -73,7 +73,7 @@ public class Person implements Comparable<Person>, Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (null == o || getClass() != o.getClass()) return false;
         Person p = (Person) o;
         return Objects.equals(id, p.id);
     }

@@ -37,7 +37,7 @@ public class URLConnectionDemo extends Demo {
 
         // 响应状态信息
         String statusInfo = conn.getHeaderField(0);
-        if (statusInfo == null || statusInfo.contains(String.valueOf(HttpStatus.SC_OK))) {
+        if (null == statusInfo || statusInfo.contains(String.valueOf(HttpStatus.SC_OK))) {
             p("请求失败！");
         }
 
@@ -84,7 +84,7 @@ public class URLConnectionDemo extends Demo {
         BufferedReader br = new BufferedReader(new InputStreamReader(httpConn.getInputStream(), StandardCharsets.UTF_8));
         String line;
         StringBuilder sb = new StringBuilder();
-        while ((line = br.readLine()) != null) {
+        while (null != (line = br.readLine())) {
             sb.append(line).append("\n");
         }
         p(sb);

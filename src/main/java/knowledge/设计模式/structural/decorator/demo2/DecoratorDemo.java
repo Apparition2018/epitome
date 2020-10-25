@@ -33,7 +33,7 @@ class Decorator extends Invoice {
     }
 
     public void printInvoice() {
-        if (ticket != null) {
+        if (null != ticket) {
             ticket.printInvoice();
         }
     }
