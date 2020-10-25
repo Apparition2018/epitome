@@ -1,21 +1,21 @@
 package l.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 
+@Slf4j
 public class FileUtils {
-
-    private static final Logger logger = LoggerFactory.getLogger(LUtils.class);
 
     // 创建文件
     public static boolean createNewFile(File file) throws IOException {
         if (!file.exists()) {
             return file.createNewFile();
         } else {
-            logger.info("文件已存在！");
+            log.info("文件已存在！");
             return false;
         }
 
@@ -26,7 +26,7 @@ public class FileUtils {
         if (!dir.exists()) {
             return dir.mkdirs();
         } else {
-            logger.info("目录已存在！");
+            log.info("目录已存在！");
             return false;
         }
     }

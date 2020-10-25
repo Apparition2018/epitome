@@ -2,6 +2,9 @@ package jar.google.guava.base;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
@@ -17,6 +20,8 @@ import org.junit.Test;
  */
 public class PreconditionsDemo {
 
+    @ToString
+    @AllArgsConstructor
     private static class User {
         private String userName;
         private String password;
@@ -48,7 +53,7 @@ public class PreconditionsDemo {
     }
 
     private User queryUserByUserNameAndPassword(String userName, String password) {
-        return new User();
+        return new User(userName, password);
     }
 
     /**
