@@ -2,6 +2,7 @@ package jar.fasterxml.jackson;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,7 +37,7 @@ public class JacksonUtil {
         // 允许对象忽略json中不存在的属性
         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         // 允许出现特殊字符和转义符
-        objectMapper.enable(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS);
+        objectMapper.configure(JsonReadFeature.ALLOW_UNESCAPED_CONTROL_CHARS.mappedFeature(), true);
         // 允许出现单引号
         objectMapper.enable(JsonParser.Feature.ALLOW_SINGLE_QUOTES);
     }
@@ -64,6 +65,7 @@ public class JacksonUtil {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> T string2Obj(String src, TypeReference<T> typeReference) {
         if (null == src || null == typeReference) {
             return null;

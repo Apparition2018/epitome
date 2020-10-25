@@ -6,6 +6,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.entity.BufferedHttpEntity;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -29,7 +30,7 @@ public class EntityDemo extends Demo {
         StringEntity myEntity = new StringEntity("important message", StandardCharsets.UTF_8);
         p(myEntity.getContentType());                   // Content-Type: text/plain; charset=UTF-8
         p(myEntity.getContentLength());                 // 17
-        p(EntityUtils.getContentCharSet(myEntity));     // UTF-8
+        p(ContentType.getOrDefault(myEntity));          // text/plain; charset=UTF-8
         p(EntityUtils.toString(myEntity));              // important message
         p(EntityUtils.toByteArray(myEntity).length);    // 17
 

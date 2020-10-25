@@ -41,12 +41,10 @@ public class HttpClientDemo1 extends Demo {
         CloseableHttpClient client = HttpClients.createDefault();
         // 2.创建 HttpGet 请求
         HttpGet httpGet = new HttpGet(BAIDU_URL);
-        InputStream inputStream = null;
-        CloseableHttpResponse response = null;
+        InputStream is = null;
 
-        try {
+        try (CloseableHttpResponse response = client.execute(httpGet)) {
             // 3.执行请求，获取响应
-            response = client.execute(httpGet);
 
             // 打印 http 状态码，看请求是否成功
             p("StatusCode: " + response.getStatusLine().getStatusCode());
@@ -63,8 +61,8 @@ public class HttpClientDemo1 extends Demo {
 
             // 方法二：使用 InputStream（官方推荐）
             if (null != entity) {
-                inputStream = entity.getContent();
-                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+                is = entity.getContent();
+                BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
                 String line;
                 while (null != (line = br.readLine())) {
                     p(line);
@@ -73,8 +71,13 @@ public class HttpClientDemo1 extends Demo {
         } catch (UnsupportedOperationException | IOException e) {
             e.printStackTrace();
         } finally {
-            IOUtils.closeQuietly(inputStream);
-            IOUtils.closeQuietly(response);
+            if (null != is) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
     }

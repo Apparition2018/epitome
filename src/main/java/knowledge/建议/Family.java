@@ -1,11 +1,9 @@
 package knowledge.建议;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * 建议41：内部类实现多继承
@@ -60,7 +58,9 @@ public class Family {
         }
     }
 
-    @Data
+    @Getter
+    @Setter
+    @ToString
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Daughter extends MotherImpl implements Father {
@@ -76,6 +76,11 @@ public class Family {
                     return super.strong() - 2;
                 }
             }.strong();
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name);
         }
 
         public boolean equals(Object obj) {

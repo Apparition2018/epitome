@@ -54,12 +54,12 @@ public class CustomerAnnotationExercise extends Demo {
     public static String query(Object filter) {
         StringBuilder sb = new StringBuilder();
         // 1.获取到class
-        Class clazz = filter.getClass();
+        Class<?> clazz = filter.getClass();
         // 2.获取到table的名字
         if (!clazz.isAnnotationPresent(Table.class)) {
             return null;
         }
-        Table table = (Table) clazz.getAnnotation(Table.class);
+        Table table = clazz.getAnnotation(Table.class);
         String tableName = table.value();
         sb.append("select * from ").append(tableName).append(" where 1 = 1");
         // 3.遍历所有的字段

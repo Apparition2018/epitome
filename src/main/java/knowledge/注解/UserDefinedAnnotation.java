@@ -61,8 +61,7 @@ public class UserDefinedAnnotation extends Demo {
     public void testTargetTypeAndMethod() {
         try {
             // 1.使用类加载器加载类
-            @SuppressWarnings(value = {"rawtypes"})
-            Class clazz = Class.forName("l.demo.Animal$Cat");
+            Class<?> clazz = Class.forName("l.demo.Animal$Cat");
             // 2.找到类上面的注解
             // boolean	    isAnnotationPresent(Class<? extends Annotation> annotationClass)
             // 如果指定类型的注释存在于此元素上，则返回 true，否则返回 false
@@ -70,7 +69,7 @@ public class UserDefinedAnnotation extends Demo {
                 // 3.拿到注解实例
                 //<A extends Annotation> A	    getAnnotation(Class<A> annotationClass)
                 // 如果存在该元素的指定类型的注释，则返回这些注释，否则返回 null
-                Description description = (Description) clazz.getAnnotation(Description.class);
+                Description description = clazz.getAnnotation(Description.class);
                 p(description.desc());
             }
 

@@ -42,7 +42,7 @@ public class GsonDemo extends Demo {
 
 
         /* 将Json字符串转换成JsonObject对象 */
-        JsonObject jo = new JsonParser().parse(jsonUser).getAsJsonObject();
+        JsonObject jo = JsonParser.parseString(jsonUser).getAsJsonObject();
         p(jo); // {"name":"怪盗基德","age":24,"emailAddress":"kidou@163.com"}
         for (Entry<String, JsonElement> entry : jo.entrySet()) {
             p(entry.getKey() + ":" + entry.getValue());
@@ -65,13 +65,13 @@ public class GsonDemo extends Demo {
 
 
         /* 将JsonArray类型的Json字符串解析成对象 */
-        JsonArray Jarray = new JsonParser().parse(jsonArray).getAsJsonArray();
-        p(Jarray); // ["Android","Java","PHP"]
+        JsonArray jarray = JsonParser.parseString(jsonArray).getAsJsonArray();
+        p(jarray); // ["Android","Java","PHP"]
 
 
         /* 获取JsonObject中指定key值对应的JsonArray对象 */
         String json = "{\"pids\":[\"1\",\"2\",\"3\"]}";
-        JsonObject jo2 = new JsonParser().parse(json).getAsJsonObject();
+        JsonObject jo2 = JsonParser.parseString(json).getAsJsonObject();
         p(jo2.getAsJsonArray("pids").get(1).getAsString()); // 2; toString()返回"2",getAsString()返回2
         p("--------------------");
 

@@ -2,7 +2,6 @@ package jar.apache.commons.collections4;
 
 import l.demo.Demo;
 import org.apache.commons.collections4.MapUtils;
-import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -71,7 +70,7 @@ public class MapUtilsDemo extends Demo {
      */
     @Test
     public void putAll() {
-        p(MapUtils.putAll(map, ArrayUtils.toArray("d", 4, "e", 5, "f", 6, "g", 7)));
+        p(MapUtils.putAll(map, new Object[]{"d", 4, "e", 5, "f", 6, "g", 7}));
         // {a=1, b=2, c=3, d=4, e=5, f=6, g=7}
     }
 

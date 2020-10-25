@@ -1,6 +1,5 @@
 package jar.apache.httpcomponents;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -34,11 +33,8 @@ public class HttpClientUtils {
         String resultStr = "";
 
         // 1.使用默认配置的 httpclient
-        CloseableHttpClient client = HttpClients.createDefault();
-
         CloseableHttpResponse response = null;
-
-        try {
+        try (CloseableHttpClient client = HttpClients.createDefault()) {
             // 2.创建 HttpPost 请求
             HttpPost httpPost = new HttpPost(url);
 
@@ -62,8 +58,13 @@ public class HttpClientUtils {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            IOUtils.closeQuietly(response);
-            IOUtils.closeQuietly(client);
+            if (null != response) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         return resultStr;
@@ -75,9 +76,9 @@ public class HttpClientUtils {
 
     public static String doPost(String url, String json) {
         String resultStr = "";
-        CloseableHttpClient client = HttpClients.createDefault();
+
         CloseableHttpResponse response = null;
-        try {
+        try (CloseableHttpClient client = HttpClients.createDefault()) {
             HttpPost httpPost = new HttpPost(url);
             // 请求内容
             StringEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
@@ -88,8 +89,13 @@ public class HttpClientUtils {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            IOUtils.closeQuietly(response);
-            IOUtils.closeQuietly(client);
+            if (null != response) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return resultStr;
     }
@@ -99,11 +105,8 @@ public class HttpClientUtils {
         String resultStr = "";
 
         // 1.使用默认配置的 httpclient
-        CloseableHttpClient client = HttpClients.createDefault();
-
         CloseableHttpResponse response = null;
-
-        try {
+        try (CloseableHttpClient client = HttpClients.createDefault()) {
             // URI 传参
             URIBuilder builder = new URIBuilder(url);
             if (null != params) {
@@ -130,8 +133,13 @@ public class HttpClientUtils {
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         } finally {
-            IOUtils.closeQuietly(response);
-            IOUtils.closeQuietly(client);
+            if (null != response) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         return resultStr;

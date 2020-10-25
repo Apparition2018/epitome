@@ -49,16 +49,16 @@ public class ObjectXML {
     }
 
     @SuppressWarnings("unchecked")
-    public static List objectXmlDecoder(InputStream ins) throws IOException, Exception {
+    public static List objectXmlDecoder(InputStream is) throws IOException, Exception {
         List objList = new ArrayList();
-        XMLDecoder decoder = new XMLDecoder(ins);
+        XMLDecoder decoder = new XMLDecoder(is);
         Object obj = null;
         try {
             while (null != (obj = decoder.readObject()))
                 objList.add(obj);
         } catch (Exception localException) {
         }
-        ins.close();
+        is.close();
         decoder.close();
         return objList;
     }

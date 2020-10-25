@@ -117,11 +117,10 @@ public class ExcelUtil {
         return list;
     }
 
-    @SuppressWarnings("static-access")
     private String getValue(Cell cell) {
-        if (cell.getCellTypeEnum() == CellType.BOOLEAN) {
+        if (cell.getCellType() == CellType.BOOLEAN) {
             return String.valueOf(cell.getBooleanCellValue());
-        } else if (cell.getCellTypeEnum() == CellType.NUMERIC) {
+        } else if (cell.getCellType() == CellType.NUMERIC) {
             return String.valueOf(cell.getNumericCellValue());
         } else {
             return String.valueOf(cell.getStringCellValue());

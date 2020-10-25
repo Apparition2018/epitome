@@ -32,10 +32,9 @@ public class ZipUtils extends Demo {
 
     @Test
     public void compress2() {
-        String srcFile = DEMO_FILE_PATH;
         String zipPath = DEMO_PATH + "demo.zip";
 
-        compress2(srcFile, zipPath);
+        compress2(DEMO_FILE_PATH, zipPath);
     }
 
     @Test
@@ -61,10 +60,8 @@ public class ZipUtils extends Demo {
                     listFilesToMap(file, FilenameUtils.getBaseName(zipFile), map);
                 }
 
-                ZipArchiveOutputStream zaos = null;
                 InputStream is = null;
-                try {
-                    zaos = new ZipArchiveOutputStream(new File(zipFile));
+                try (ZipArchiveOutputStream zaos = new ZipArchiveOutputStream(new File(zipFile))) {
                     // Use Zip64 extensions for all entries where they are required
                     zaos.setUseZip64(Zip64Mode.AsNeeded);
 
@@ -82,8 +79,13 @@ public class ZipUtils extends Demo {
                 } catch (IOException e) {
                     log.error(e.getMessage(), e);
                 } finally {
-                    IOUtils.closeQuietly(is);
-                    IOUtils.closeQuietly(zaos);
+                    if (null != is) {
+                        try {
+                            is.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
         }
@@ -104,14 +106,12 @@ public class ZipUtils extends Demo {
             filesToArchive = FileUtils.listFiles(file, null, true);
         }
 
-        ZipArchiveOutputStream zaos = null;
-        InputStream is = null;
-
         String rootPath = file.getParent();
         rootPath = rootPath.endsWith(File.separator) ? rootPath : rootPath + File.separator;
 
-        try {
-            zaos = new ZipArchiveOutputStream(new File(zipFile));
+        InputStream is = null;
+
+        try (ZipArchiveOutputStream zaos = new ZipArchiveOutputStream(new File(zipFile))) {
 
             for (File f : filesToArchive) {
                 ArchiveEntry entry = zaos.createArchiveEntry(f, f.getCanonicalPath().substring(rootPath.length()));
@@ -126,8 +126,13 @@ public class ZipUtils extends Demo {
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         } finally {
-            IOUtils.closeQuietly(zaos);
-            IOUtils.closeQuietly(is);
+            if (null != is) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
     }
@@ -147,10 +152,8 @@ public class ZipUtils extends Demo {
                 destDir = destDir.endsWith(File.separator) ? destDir : destDir + File.separator;
 
                 OutputStream os = null;
-                ZipArchiveInputStream zais = null;
 
-                try {
-                    zais = new ZipArchiveInputStream(new BufferedInputStream(new FileInputStream(file), 1024 * 5));
+                try (ZipArchiveInputStream zais = new ZipArchiveInputStream(new BufferedInputStream(new FileInputStream(file), 1024 * 5))) {
 
                     ArchiveEntry entry;
                     // 把 zip 包中的每个文件读取出来，然后把文件写到指定的文件夹
@@ -175,8 +178,13 @@ public class ZipUtils extends Demo {
                 } catch (IOException e) {
                     log.error(e.getMessage(), e);
                 } finally {
-                    IOUtils.closeQuietly(os);
-                    IOUtils.closeQuietly(zais);
+                    if (null != os) {
+                        try {
+                            os.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             } else {
                 log.error("the file doesn't exist " + zipFile);
