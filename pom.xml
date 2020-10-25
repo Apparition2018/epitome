@@ -28,13 +28,13 @@
         <springboot-pagehelper>1.2.13</springboot-pagehelper>
         <dbcp2>2.8.0</dbcp2>
         <tika>1.24.1</tika>
-        <commons-text>1.6</commons-text>
+        <commons-text>1.9</commons-text>
         <commons-email>1.5</commons-email>
-        <commons-beanutils>1.9.3</commons-beanutils>
+        <commons-beanutils>1.9.4</commons-beanutils>
         <easyexcel>2.2.6</easyexcel>
         <hutool>5.4.6</hutool>
-        <fastjson>1.2.58</fastjson>
-        <protostuff>1.6.0</protostuff>
+        <fastjson>1.2.74</fastjson>
+        <protostuff>1.7.2</protostuff>
         <swagger>3.0.0</swagger>
         <zxing>3.4.1</zxing>
         <easy-captcha>1.6.2</easy-captcha>

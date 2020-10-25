@@ -46,7 +46,9 @@ public class ZXingDemo extends Demo {
         }
     }
 
-    // 读取 QR Code
+    /**
+     * 读取 QR Code
+     */
     @Test
     @SuppressWarnings(value = {"unchecked", "rawtypes"})
     public void ReadQRCode() {

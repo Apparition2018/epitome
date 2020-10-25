@@ -24,7 +24,6 @@ public abstract class Animal {
     public abstract void eat();
 
     @Data
-    @EqualsAndHashCode(callSuper = true)
     public static class Cat extends Animal {
         public int age;
         public int foot;
@@ -44,7 +43,6 @@ public abstract class Animal {
     }
 
     @Data
-    @EqualsAndHashCode(callSuper = true)
     public static class Chicken extends Animal {
 
         public int age;

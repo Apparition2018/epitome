@@ -108,7 +108,6 @@ public class Person implements Comparable<Person>, Serializable {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    @EqualsAndHashCode(callSuper = true)
     public static class Student extends Person implements Serializable {
         /**
          * 当一个类实现了可序列化接口，就要定义一个常量：版本号 (serialVersionUID)
