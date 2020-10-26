@@ -12,8 +12,9 @@ import java.util.*;
  * https://jdk6.net/util/Map.html
  * <p>
  * void	        putAll(Map<? extends K,? extends V> m)      从指定映射中将所有映射关系复制到此映射中（可选操作）
- * V	        remove(Object key)                          如果存在一个键的映射关系，则将其从此映射中移除（可选操作）
  * void	        clear()                                     从此映射中移除所有映射关系（可选操作）
+ * default V	getOrDefault(Object key, V defaultValue)    返回指定键映射到的值，如果该映射不包含该键的映射，则返回 defaultValue。
+ * V	        remove(Object key)                          如果存在一个键的映射关系，则将其从此映射中移除（可选操作）
  * boolean      containsKey(Object key)                     如果此映射包含指定键的映射关系，则返回 true
  * boolean      containsValue(Object value)                 如果此映射将一个或多个键映射到指定值，则返回 true
  * boolean      isEmpty()                                   如果此映射未包含键-值映射关系，则返回 true

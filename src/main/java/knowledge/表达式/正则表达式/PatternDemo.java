@@ -38,15 +38,6 @@ public class PatternDemo extends Demo {
     }
 
     /**
-     * static boolean	matches(String regex, CharSequence input)
-     * 编译给定正则表达式并尝试将给定输入与其匹配
-     */
-    @Test
-    public void matches() {
-        quote();
-    }
-
-    /**
      * String	pattern()
      * 返回在其中编译过此模式的正则表达式
      */
@@ -70,6 +61,15 @@ public class PatternDemo extends Demo {
 
         p(Pattern.matches(regex, "aaaaab"));// false
         p(Pattern.matches(regex, "a*b"));   // true，只能匹配 "a*b" 了
+    }
+
+    /**
+     * static boolean	matches(String regex, CharSequence input)
+     * 编译给定正则表达式并尝试将给定输入与其匹配
+     */
+    @Test
+    public void matches() {
+        quote();
     }
 
     /**
