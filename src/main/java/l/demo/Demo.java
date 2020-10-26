@@ -1,9 +1,13 @@
 package l.demo;
 
+import com.google.common.collect.Maps;
+
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Demo
@@ -117,5 +121,59 @@ public class Demo {
             return;
         }
         System.out.println(obj);
+    }
+
+    /**
+     * 模拟 Thread.sleep()，为了避免 Thread.sleep() 而需要捕获 InterruptedException 而带来的理解上的困惑
+     */
+    public static void sleep(int millis, TimeUnit timeUnit) {
+        long now = System.currentTimeMillis();
+        while (System.currentTimeMillis() - now < timeUnit.toMillis(millis)) {
+            // Thread.onSpinWait(); 需要升级到 JDK8
+        }
+    }
+
+    public static class MyTask implements Runnable {
+        int taskId;
+
+        public MyTask(int taskId) {
+            this.taskId = taskId;
+        }
+
+        @Override
+        public void run() {
+            try {
+                Thread t = Thread.currentThread();
+                p(t.getName() + "：正在运行任务 " + taskId + " ...");
+                TimeUnit.MILLISECONDS.sleep(300);
+                if (null != countDownLatch) {
+                    countDownLatch.countDown();
+                }
+                p(t.getName() + "：运行任务 " + taskId + " 完毕！");
+            } catch (InterruptedException e) {
+                p("线程被中断了！");
+            }
+        }
+    }
+
+    public static class MyCallable implements Callable<Map<Integer, String>> {
+        int taskId;
+
+        public MyCallable(int taskId) {
+            this.taskId = taskId;
+        }
+
+        @Override
+        public Map<Integer, String> call() throws Exception {
+            Thread t = Thread.currentThread();
+            p(t.getName() + "：正在运行任务 " + taskId + " ...");
+            TimeUnit.MILLISECONDS.sleep(300);
+            Map<Integer, String> map = Maps.newHashMap();
+            map.put(taskId, Thread.currentThread().getName());
+            if (null != countDownLatch) {
+                countDownLatch.countDown();
+            }
+            return map;
+        }
     }
 }

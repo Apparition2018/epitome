@@ -1,7 +1,6 @@
 package knowledge.线程.executor;
 
 import l.demo.Demo;
-import lombok.ToString;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.concurrent.*;
@@ -11,6 +10,12 @@ import java.util.concurrent.atomic.AtomicInteger;
  * ThreadPoolExecutor
  * http://tool.oschina.net/uploads/apidocs/jdk-zh/index.html?java/util/concurrent/ThreadPoolExecutor.html
  * <p>
+ * 线程池对待线程的策略:
+ * 1.如果池中任务数 < corePoolSize -> 放入立即执行
+ * 2.如果池中任务数 > corePoolSize -> 放入队列等待
+ * 3.队列满 -> 新建线程立即执行
+ * 4.执行中的线程 > maxPoolSize -> 触发handler（RejectedExecutionHandler）异常
+ * <p>
  * corePoolSize         池中所保存的线程数，包括空闲线程
  * maximumPoolSize      池中允许的最大线程数
  * keepAliveTime        当线程数大于核心时，此为终止前多余的空闲线程等待新任务的最长时间
@@ -19,37 +24,17 @@ import java.util.concurrent.atomic.AtomicInteger;
  * threadFactory        执行程序创建新线程时使用的工厂
  * handler              由于超出线程范围和队列容量而使执行被阻塞时所使用的处理程序
  */
-public class ThreadPoolExecutorDemo {
+public class ThreadPoolExecutorDemo extends Demo {
 
     /**
      * 不推荐使用Executors操作线程池类：https://www.jianshu.com/p/8f9ba86ddf13
      */
     public static void main(String[] args) {
-        ThreadPoolExecutor pool = new ThreadPoolExecutor(2, 4, 10, TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(1024), new MyThreadFactory(), new MyRejectHandler());
+        ThreadPoolExecutor pool = new ThreadPoolExecutor(2, 5, 10, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(3), new MyThreadFactory(), new MyRejectHandler());
 
         for (int i = 0; i < 10; i++) {
             pool.execute(new MyTask(i));
-        }
-    }
-
-    @ToString
-    private static class MyTask implements Runnable {
-
-        private int i;
-
-        public MyTask(int i) {
-            this.i = i;
-        }
-
-        @Override
-        public void run() {
-            System.out.println(this.toString() + " 正在执行");
-            try {
-                TimeUnit.MILLISECONDS.sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 

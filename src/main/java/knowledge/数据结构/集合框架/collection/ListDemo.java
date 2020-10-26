@@ -87,7 +87,7 @@ public class ListDemo extends Demo {
         }
 
         // 方法三
-        // java8 新增遍历方法 forEach
+        // JDK8 新增遍历方法 forEach
         // Iterable 接口下方法
         list.forEach(System.out::println);
     }

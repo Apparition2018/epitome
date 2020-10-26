@@ -23,7 +23,7 @@ public class DefaultMethods extends Demo {
         }
 
         /**
-         * Java8 新特性：接口可以声明（并且可以提供实现）静态方法
+         * JDK8 新特性：接口可以声明（并且可以提供实现）静态方法
          * https://zhuanlan.zhihu.com/p/108274393
          */
         static void blowHorn() {

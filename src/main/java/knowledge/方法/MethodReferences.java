@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 
 /**
  * 方法引用 (Method References)
- * Java8 新特性，通过方法的名字来指向一个方法
+ * JDK8 新特性，通过方法的名字来指向一个方法
  */
 public class MethodReferences extends Demo {
 

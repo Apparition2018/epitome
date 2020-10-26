@@ -24,7 +24,7 @@ public class Base64Demo extends Demo {
     private static String src = "Hello World!";
 
     /**
-     * Base64 编码在 Java8已经成为 Java 类库的标准。
+     * Base64 编码在 JDK8 已经成为 Java 类库的标准。
      * http://www.runoob.com/java/java8-base64.html
      */
     @Test

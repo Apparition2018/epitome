@@ -1,7 +1,6 @@
 package jar.hutool;
 
 import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.extra.pinyin.PinyinUtil;
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import cn.hutool.extra.qrcode.QrConfig;
@@ -10,10 +9,12 @@ import org.junit.Test;
 
 import java.awt.*;
 import java.io.File;
-import java.util.concurrent.ExecutorService;
 
 /**
  * Hutool
+ * <p>
+ * https://apidoc.gitee.com/loolly/hutool/
+ * https://hutool.cn/docs/#/
  *
  * @author Arsenal
  * created on 2020/10/24 21:53
@@ -53,35 +54,5 @@ public class HutoolDemo extends Demo {
 
         // 识别二维码
         p(QrCodeUtil.decode(FileUtil.file(USER_DIR + File.separator + DEMO_PATH + "QRCode.png")));
-    }
-
-    /**
-     * ThreadUtil   线程工具
-     * https://hutool.cn/docs/#/core/%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/%E7%BA%BF%E7%A8%8B%E5%B7%A5%E5%85%B7-ThreadUtil?id=%e7%ba%bf%e7%a8%8b%e5%b7%a5%e5%85%b7-threadutil
-     */
-    @Test
-    public void testThread() {
-        // 创建 核心线程数为2，最大线程数为5，等待工作队列容量为1024 的线程池
-        ExecutorService pool = ThreadUtil.newExecutor(2, 5, 1024);
-//
-//        for (int i = 0; i < 10; i++) {
-//            final int num = i + 1;
-//            pool.execute(() -> {
-//                Thread t = Thread.currentThread();
-//                p(t.getName() + "：正在运行任务 " + num + " ...");
-//                ThreadUtil.sleep(1000);
-//                p(t.getName() + "：运行任务 " + num + " 完毕！");
-//            });
-//        }
-
-        for (int i = 0; i < 10; i++) {
-            final int num = i + 1;
-            ThreadUtil.execute(() -> {
-                Thread t = Thread.currentThread();
-                p(t.getName() + "：正在运行任务 " + num + " ...");
-                ThreadUtil.sleep(1000);
-                p(t.getName() + "：运行任务 " + num + " 完毕！");
-            });
-        }
     }
 }

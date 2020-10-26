@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * 函数式接口 (Functional Interface)
  * <p>
- * Java8 之前已有的函数式接口：
+ * JDK8 之前已有的函数式接口：
  * java.lang.Runnable
  * java.lang.reflect.InvocationHandler
  * java.util.concurrent.Callable
@@ -17,7 +17,7 @@ import org.junit.Test;
  * java.security.PrivilegedAction
  * javax.swing.event.ChangeListener
  * <p>
- * Java8 新增的函数式接口：
+ * JDK8 新增的函数式接口：
  * java.util.function
  * <p>
  * https://blog.csdn.net/icarusliu/article/details/79495534

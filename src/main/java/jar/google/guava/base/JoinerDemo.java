@@ -75,7 +75,7 @@ public class JoinerDemo extends Demo {
     }
 
     /**
-     * java8 joining
+     * JDK8 joining
      */
     @Test
     public void joining() {

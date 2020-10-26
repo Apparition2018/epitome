@@ -13,26 +13,6 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ReentrantLockDemo extends Demo {
 
-    // ReentrantLock(boolean fair)
-    // 根据给定的公平政策创建一个 ReentrantLock 的实例
-    private Lock lock = new ReentrantLock(true);
-
-    public void insert(Thread thread) throws InterruptedException {
-        if (lock.tryLock(2, TimeUnit.SECONDS)) {
-            try {
-                p("time=" + System.currentTimeMillis() + ", 线程 " + thread.getName() + " 得到了锁...");
-                long now = System.currentTimeMillis();
-                while (System.currentTimeMillis() - now < 3000)
-                    ; // 模拟 Thread.sleep()，为了避免 Thread.sleep() 而需要捕获 InterruptedException 而带来的理解上的困惑
-            } finally {
-                lock.unlock();
-                p("线程 " + thread.getName() + " 释放了锁...");
-            }
-        } else {
-            p("线程 " + thread.getName() + " 放弃了对锁的获取...");
-        }
-    }
-
     public static void main(String[] args) {
         ReentrantLockDemo rdlDemo = new ReentrantLockDemo();
 
@@ -48,6 +28,24 @@ public class ReentrantLockDemo extends Demo {
         }
         t2.interrupt(); // 因为 1s 后线程 t2 还在等待中，所以可以中断
 
+    }
+
+    // ReentrantLock(boolean fair)
+    // 根据给定的公平政策创建一个 ReentrantLock 的实例
+    private Lock lock = new ReentrantLock(true);
+
+    public void insert(Thread thread) throws InterruptedException {
+        if (lock.tryLock(2, TimeUnit.SECONDS)) {
+            try {
+                p("time=" + System.currentTimeMillis() + ", 线程 " + thread.getName() + " 得到了锁...");
+                sleep(3000, TimeUnit.MILLISECONDS);
+            } finally {
+                lock.unlock();
+                p("线程 " + thread.getName() + " 释放了锁...");
+            }
+        } else {
+            p("线程 " + thread.getName() + " 放弃了对锁的获取...");
+        }
     }
 
     private static class MyThread extends Thread {

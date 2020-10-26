@@ -8,7 +8,6 @@ import java.util.concurrent.*;
 
 /**
  * ExecutorService
- * https://jdk6.net/util-concurrent/ExecutorService.html
  * <p>
  * 线程池的主要功能是：
  * 1：控制线程数量
@@ -16,6 +15,9 @@ import java.util.concurrent.*;
  * <p>
  * FixedThreadPool, CachedThreadPool, SingleThreadExecutor, ScheduledThreadPool
  * 四种线程池都是使用 ThreadPoolExecutor 实现的，所以 ThreadPoolExecutor 更灵活
+ * <p>
+ * 如何在队列排队之前让ThreadPoolExecutor将线程增加到最大数量：https://blog.csdn.net/fy_java1995/article/details/107920983
+ * https://jdk6.net/util-concurrent/ExecutorService.html
  */
 public class ExecutorServiceDemo extends Demo {
 
@@ -62,7 +64,7 @@ public class ExecutorServiceDemo extends Demo {
         executeTask(scheduledPool);
     }
 
-    private final static int NUM_OF_TASK = 4;
+    private final static int NUM_OF_TASK = 5;
 
     private void executeTask(ExecutorService pool) throws InterruptedException {
         setCountDownLatch(NUM_OF_TASK);
@@ -72,12 +74,12 @@ public class ExecutorServiceDemo extends Demo {
             if (pool instanceof ScheduledThreadPoolExecutor) {
                 // ScheduledFuture<?>	schedule(Runnable command, long delay, TimeUnit unit)
                 // 创建并执行在给定延迟后启用的一次性操作
-                ((ScheduledThreadPoolExecutor) pool).schedule(new Task(i), 1, TimeUnit.SECONDS);
+                ((ScheduledThreadPoolExecutor) pool).schedule(new MyTask(i), 1, TimeUnit.SECONDS);
             } else {
                 // void	                execute(Runnable command)
                 // 在未来某个时间执行给定的命令
                 // 将任务指派给线程池
-                pool.execute(new Task(i));
+                pool.execute(new MyTask(i));
             }
             p("指派了一个任务 " + i + " 给线程池！");
         }
@@ -99,28 +101,6 @@ public class ExecutorServiceDemo extends Demo {
             }
         } catch (InterruptedException e) {
             pool.shutdownNow();
-        }
-    }
-
-    @Getter
-    private static class Task implements Runnable {
-        int taskId;
-
-        public Task(int taskId) {
-            this.taskId = taskId;
-        }
-
-        @Override
-        public void run() {
-            try {
-                Thread t = Thread.currentThread();
-                p(t.getName() + "：正在运行任务 " + taskId + " ...");
-                TimeUnit.MILLISECONDS.sleep(300);
-                countDownLatch.countDown();
-                p(t.getName() + "：运行任务 " + taskId + " 完毕！");
-            } catch (InterruptedException e) {
-                p("线程被中断了！");
-            }
         }
     }
 

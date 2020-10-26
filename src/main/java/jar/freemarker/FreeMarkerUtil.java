@@ -64,7 +64,6 @@ public class FreeMarkerUtil {
      */
     public void sprint(Map<String, Object> params, String fName) {
         try {
-            // Objects 是 Java7 新增的一个工具类，它提供了一些工具方法来操作对象，这些工具方法大多是"空指针"安全的。
             Objects.requireNonNull(getTemplate(fName)).process(params, new PrintWriter(System.out));
         } catch (TemplateException | IOException e) {
             e.printStackTrace();
