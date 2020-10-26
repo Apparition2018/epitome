@@ -16,24 +16,24 @@ public class StopWatchDemo extends Demo {
 
     public static void main(String[] args) throws InterruptedException {
         // 创建一个 StopWatch，并设置 id
-        StopWatch watch = new StopWatch(RandomStringUtils.randomAlphanumeric(8));
+        StopWatch stopWatch = new StopWatch(RandomStringUtils.randomAlphanumeric(8));
 
-        watch.start("起床");
+        stopWatch.start("起床");
         TimeUnit.MILLISECONDS.sleep(100);
-        p("当前任务名称：" + watch.currentTaskName()); // 当前任务名称：起床
-        watch.stop();
+        p("当前任务名称：" + stopWatch.currentTaskName()); // 当前任务名称：起床
+        stopWatch.stop();
 
-        watch.start("洗漱");
+        stopWatch.start("洗漱");
         TimeUnit.MILLISECONDS.sleep(200);
-        p("当前任务名称：" + watch.currentTaskName()); // 当前任务名称：洗漱
-        watch.stop();
+        p("当前任务名称：" + stopWatch.currentTaskName()); // 当前任务名称：洗漱
+        stopWatch.stop();
 
-        watch.start("锁门");
+        stopWatch.start("锁门");
         TimeUnit.MILLISECONDS.sleep(50);
-        p("当前任务名称：" + watch.currentTaskName()); // 当前任务名称：锁门
-        watch.stop();
+        p("当前任务名称：" + stopWatch.currentTaskName()); // 当前任务名称：锁门
+        stopWatch.stop();
 
-        p(watch.prettyPrint());
+        p(stopWatch.prettyPrint());
         //  StopWatch 'sUZjSLp4': running time = 351835400 ns
         //  ---------------------------------------------
         //  ns         %     Task name
@@ -43,18 +43,18 @@ public class StopWatchDemo extends Demo {
         //  051115300  015%  锁门
 
         // StopWatch 摘要
-        p(watch.shortSummary());        // StopWatch 'sUZjSLp4': running time = 350664200 ns
+        p(stopWatch.shortSummary());        // StopWatch 'sUZjSLp4': running time = 350664200 ns
         // 任务数
-        p(watch.getTaskCount());        // 3
+        p(stopWatch.getTaskCount());        // 3
         // 总耗时
-        p(watch.getTotalTimeMillis());  // 350
+        p(stopWatch.getTotalTimeMillis());  // 350
         // 当前任务名
-        p(watch.currentTaskName());     // null，stop() 后为任务名为 null
+        p(stopWatch.currentTaskName());     // null，stop() 后为任务名为 null
         // 所有任务信息
-        StopWatch.TaskInfo[] taskInfo = watch.getTaskInfo();
+        StopWatch.TaskInfo[] taskInfo = stopWatch.getTaskInfo();
         // 最后一个任务名
-        p(watch.getLastTaskName());     // 锁门
+        p(stopWatch.getLastTaskName());     // 锁门
         // 最后一个任务信息
-        StopWatch.TaskInfo lastTaskInfo = watch.getLastTaskInfo();
+        StopWatch.TaskInfo lastTaskInfo = stopWatch.getLastTaskInfo();
     }
 }

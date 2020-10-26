@@ -38,7 +38,7 @@ public class SystemDemo extends Demo {
     }
 
     /**
-     * static long	    currentTimeMillis()                     回以毫秒为单位的当前时间
+     * static long	    currentTimeMillis()                     返回以毫秒为单位的当前时间
      */
     @Test
     public void currentTimeMills() throws InterruptedException {

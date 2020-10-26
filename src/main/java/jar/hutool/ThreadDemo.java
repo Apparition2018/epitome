@@ -13,7 +13,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 线程相关
+ * 线程
  *
  * @author ljh
  * created on 2020/10/26 9:30

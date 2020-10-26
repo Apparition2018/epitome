@@ -42,7 +42,7 @@ public class Demo {
     };
     public static CountDownLatch countDownLatch;
     public static final SimpleDateFormat DATE_SDF = new SimpleDateFormat("yyyy-MM-dd");
-    public static final SimpleDateFormat DATE_TIME_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    public static final SimpleDateFormat DATE_TIME_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     public static final SimpleDateFormat SDF = DATE_SDF;
     public static final String UTF_8 = String.valueOf(StandardCharsets.UTF_8);
     public static final String DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";

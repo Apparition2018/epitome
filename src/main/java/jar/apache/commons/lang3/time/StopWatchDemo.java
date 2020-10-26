@@ -17,33 +17,33 @@ public class StopWatchDemo extends Demo {
 
     public static void main(String[] args) throws InterruptedException {
         // 创建一个 StopWatch，并且马上开始
-        // 相当于 StopWatch watch = StopWatch.create(); watch.start();
-        StopWatch watch = StopWatch.createStarted();
+        // 相当于 StopWatch stopWatch = StopWatch.create(); stopWatch.start();
+        StopWatch stopWatch = StopWatch.createStarted();
 
         TimeUnit.MILLISECONDS.sleep(100);
-        watch.split();
-        p("从开始到现在的运行时间：" + watch.getTime() + "ms");                     // 从开始到现在的运行时间：100ms
-        p("从开始到现在的运行时间：" + watch.getTime(TimeUnit.MILLISECONDS) + "ms");// 从开始到现在的运行时间：100ms
+        stopWatch.split();
+        p("从开始到现在的运行时间：" + stopWatch.getTime() + "ms");                     // 从开始到现在的运行时间：100ms
+        p("从开始到现在的运行时间：" + stopWatch.getTime(TimeUnit.MILLISECONDS) + "ms");// 从开始到现在的运行时间：100ms
 
         TimeUnit.MILLISECONDS.sleep(100);
-        p("从开始到现在的运行时间：" + watch.getTime() + "ms");                     // 从开始到现在的运行时间：200ms
-        p("从开始到切点的运行时间：" + watch.getSplitTime() + "ms");                // 从开始到切点的运行时间：100ms
+        p("从开始到现在的运行时间：" + stopWatch.getTime() + "ms");                     // 从开始到现在的运行时间：200ms
+        p("从开始到切点的运行时间：" + stopWatch.getSplitTime() + "ms");                // 从开始到切点的运行时间：100ms
 
         // 重置，之后必须 开始
-        watch.reset();
-        watch.start();
+        stopWatch.reset();
+        stopWatch.start();
         TimeUnit.MILLISECONDS.sleep(100);
-        p("从开始到现在的运行时间：" + watch.getTime() + "ms");                     // 从开始到现在的运行时间：100ms
+        p("从开始到现在的运行时间：" + stopWatch.getTime() + "ms");                     // 从开始到现在的运行时间：100ms
 
         // 暂停
-        watch.suspend();
+        stopWatch.suspend();
         TimeUnit.MILLISECONDS.sleep(100);
         // 恢复暂停
-        watch.resume();
-        p("从开始到现在的运行时间：" + watch.getTime() + "ms");                     // 从开始到现在的运行时间：100ms
+        stopWatch.resume();
+        p("从开始到现在的运行时间：" + stopWatch.getTime() + "ms");                     // 从开始到现在的运行时间：100ms
 
         // 停止
-        watch.stop();
+        stopWatch.stop();
 
     }
 }
