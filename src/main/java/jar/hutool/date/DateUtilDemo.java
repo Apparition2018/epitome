@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.date;
 
 import cn.hutool.core.date.*;
 import l.demo.Demo;
@@ -49,7 +49,7 @@ public class DateUtilDemo extends Demo {
         p(DateUtil.hour(DATE, true));                   // 20
         p(DateUtil.minute(DATE));                       // 8
 
-        //********** 开始和结束时间 **********//
+        //********** 开始和结束 **********//
         // Year, Quarter, Month, Week, Day, Second
         p(DateUtil.beginOfYear(DATE), true);            // 2008-01-01 00:00:00
         p(DateUtil.beginOfQuarter(DATE), true);         // 2008-07-01 00:00:00
@@ -126,9 +126,6 @@ public class DateUtilDemo extends Demo {
         p(DateUtil.isAM(DATE));                         // false
         p(DateUtil.isPM(DATE));                         // true
 
-        // 年龄
-        p(DateUtil.ageOfNow(DATE_TIME_STR));            // 12
-
         //********** 闰年 **********//
         // 是否闰年
         p(DateUtil.isLeapYear(2008));                   // true
@@ -136,6 +133,9 @@ public class DateUtilDemo extends Demo {
         p(DateUtil.lengthOfYear(2008));                 // 366
         // 月的天数
         p(DateUtil.lengthOfMonth(8, true));             // 31
+
+        // 年龄
+        p(DateUtil.ageOfNow(DATE_TIME_STR));            // 12
 
         // 年季度数组
         p(DateUtil.yearAndQuarter(DATE, new Date()));
