@@ -30,19 +30,23 @@ public class NumberDemo extends Demo {
     @Test
     public void testSubClassConstantsAndMethods() {
         // 常量
-        p(Byte.MAX_VALUE);      // 127                      2^7-1
-        p(Double.MAX_VALUE);    // 1.7976931348623157E308   (2-2^-52)*2^1023
-        p(Float.MAX_VALUE);     // 3.4028235E38             (2-2^-23)·2^127
-        p(Integer.MAX_VALUE);   // 2147483647               2^31-1
-        p(Long.MAX_VALUE);      // 9223372036854775807      2^63-1
-        p(Short.MAX_VALUE);     // 32767                    2^15-1
+        p(Byte.MAX_VALUE);              // 127                      2^7-1
+        p(Double.MAX_VALUE);            // 1.7976931348623157E308   (2-2^-52)*2^1023
+        p(Float.MAX_VALUE);             // 3.4028235E38             (2-2^-23)·2^127
+        p(Integer.MAX_VALUE);           // 2147483647               2^31-1
+        p(Long.MAX_VALUE);              // 9223372036854775807      2^63-1
+        p(Short.MAX_VALUE);             // 32767                    2^15-1
 
-        p(Byte.MIN_VALUE);      // -128                     -2^7
-        p(Double.MIN_VALUE);    // 4.9E-324                 2^-1074
-        p(Float.MIN_VALUE);     // 1.4E-45                  2^-149
-        p(Integer.MIN_VALUE);   // -2147483648              -2^31
-        p(Long.MIN_VALUE);      // -9223372036854775808     -2^63
-        p(Short.MIN_VALUE);     // -32768                   -2^15
+        p(Byte.MIN_VALUE);              // -128                     -2^7
+        p(Double.MIN_VALUE);            // 4.9E-324                 2^-1074
+        p(Float.MIN_VALUE);             // 1.4E-45                  2^-149
+        p(Integer.MIN_VALUE);           // -2147483648              -2^31
+        p(Long.MIN_VALUE);              // -9223372036854775808     -2^63
+        p(Short.MIN_VALUE);             // -32768                   -2^15
+
+        p(Double.POSITIVE_INFINITY);    // Infinity
+        p(Float.NEGATIVE_INFINITY);     // -Infinity
+        p(Double.NaN);                  // NaN
 
 
         // static XXX           parseXXX(String s[, int radix])
@@ -72,7 +76,7 @@ public class NumberDemo extends Demo {
         // static XXX           decode(String nm)
         // 将 String 解码为 XXX
         p(Integer.decode("0x11"));      // 17
-        p(Integer.valueOf("0x11"));     // NumberFormatException: For input string: "0x11"
+        // p(Integer.valueOf("0x11"));  // NumberFormatException: For input string: "0x11"
 
         // Integer/Long 共有：
         // static String	    toBinaryString(int/long i)
@@ -81,6 +85,12 @@ public class NumberDemo extends Demo {
         // 以十六进制（基数 16）无符号整数形式返回一个整数参数的字符串表示形式
         p(Integer.toBinaryString(11));  // 1011
         p(Integer.toHexString(11));     // b
+        
+        // Double/Float 共有：
+        p(Double.isFinite(Float.POSITIVE_INFINITY));    // false
+        p(Float.isInfinite(Float.POSITIVE_INFINITY));   // true
+        p(Double.isNaN(Float.NaN));                     // true
+        
     }
 
 }

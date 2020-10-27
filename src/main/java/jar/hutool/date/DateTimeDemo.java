@@ -107,7 +107,7 @@ public class DateTimeDemo extends Demo {
      * 判断
      */
     @Test
-    public void is() {
+    public void testIs() {
         p(DATETIME.isAfter(NOW));           // false
         p(DATETIME.isAfterOrEquals(NOW));   // false
         p(DATETIME.isBefore(NOW));          // true

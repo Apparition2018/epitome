@@ -74,8 +74,4 @@ public class LocalDateTimeUtilDemo extends Demo {
                 LocalDateTimeUtil.ofDate(NOW_LDT)));                            // P12Y2M19D
     }
 
-    @Test
-    public void testParseAndFormat() {
-    }
-
 }
