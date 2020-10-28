@@ -142,9 +142,9 @@ public class LombokDemo extends Demo {
     private static class User4 extends User {
 
         private Integer id;
-        // 修改默认访问修饰符 public 为 protected
-        private @Getter(AccessLevel.PRIVATE)
-        String name;
+        // 将 getter 默认访问修饰符 public 改为 protected
+        @Getter(AccessLevel.PRIVATE)
+        private String name;
         private String password;
 
     }
