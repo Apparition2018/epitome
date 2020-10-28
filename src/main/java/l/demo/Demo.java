@@ -1,7 +1,5 @@
 package l.demo;
 
-import com.google.common.collect.Maps;
-
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -168,7 +166,7 @@ public class Demo {
             Thread t = Thread.currentThread();
             p(t.getName() + "：正在运行任务 " + taskId + " ...");
             TimeUnit.MILLISECONDS.sleep(300);
-            Map<Integer, String> map = Maps.newHashMap();
+            Map<Integer, String> map = new HashMap<>();
             map.put(taskId, Thread.currentThread().getName());
             if (null != countDownLatch) {
                 countDownLatch.countDown();
