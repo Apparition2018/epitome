@@ -30,7 +30,7 @@ public class ObjectUtilDemo extends Demo {
         p(ObjectUtil.clone(map));               // {1=A, 2=B, 3=C}
         // 返回克隆后的对象，如果克隆失败，返回原对象
         p(ObjectUtil.cloneIfPossible(map));     // {1=A, 2=B, 3=C}
-        //  序列化后拷贝流的方式克隆，对象必须实现 Serializable 接口
+        // 序列化后拷贝流的方式克隆，对象必须实现 Serializable 接口
         p(ObjectUtil.cloneByStream(map));       // {1=A, 2=B, 3=C}
 
         // 序列化 和 反序列化 ?
