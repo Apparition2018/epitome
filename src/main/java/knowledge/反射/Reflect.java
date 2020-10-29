@@ -1,13 +1,8 @@
 package knowledge.反射;
 
+import l.demo.Animal.Cat;
 import l.demo.Demo;
-import lombok.Getter;
-import lombok.Setter;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -54,40 +49,26 @@ public class Reflect extends Demo {
         //********** 1.获取类 **********//
         // 1.1 Class.forName()
         // "动态"（运行期间）加载类到内存中
-        Class<?> clazz = Class.forName("knowledge.反射.Reflect$Letter");
+        Class<?> clazz = Class.forName("l.demo.Animal$Cat");
 
         // 1.2 XXX.class
-        Class<?> clazz2 = Letter.class;
+        Class<?> clazz2 = Cat.class;
 
         // 1.3 xxx.getClass()
-        Letter letter = new Letter();
-        Class<?> clazz3 = letter.getClass();
-        
+        Cat cat = new Cat();
+        Class<?> clazz3 = cat.getClass();
+
         //********** 2.动态创建对象 **********//
-        letter = (Letter) clazz.newInstance();
-
-        //********** 3.Method **********//
-        // 动态获取类中声明的方法
-        Method[] methods = clazz.getDeclaredMethods();
-        for (Method method : methods) {
-            // 改变访问限制
-            method.setAccessible(true);
-            // 获取方法名称
-            p("mName = " + method.getName());
-        }
-
-        // 动态查找一个方法
-        Method method = clazz.getDeclaredMethod("setA", String.class);
-        // 动态调用方法
-        method.invoke(letter, "A");
-        p("letter.getA() = " + letter.getA() + "\n");
+        cat = (Cat) clazz.newInstance();
 
 
-        //********** 4.Field **********//
+        //********** 3.Field **********//
+        Field[] fields;
         // 动态获取类中声明的属性
-        Field[] fields = clazz.getDeclaredFields();
+        fields = clazz.getDeclaredFields();
+        // 动态获取类中声明的属性，包括父类
+        fields = clazz.getFields();
         for (Field field : fields) {
-            int mod = field.getModifiers();
             /*
              *  PUBLIC: 1
              *  PRIVATE: 2
@@ -102,37 +83,33 @@ public class Reflect extends Demo {
              *  ABSTRACT: 1024
              *  STRICT: 2048
              */
-            if (Modifier.isStatic(mod)) {
+            if (Modifier.isPublic(field.getModifiers()))
                 p("fieldName = " + field.getName());
-            }
         }
 
         // 动态查找一个属性
-        Field field = clazz.getDeclaredField("a");
+        Field field = clazz.getDeclaredField("age");
+        // 改变访问限制
         field.setAccessible(true);
-        field.set(letter, "a");
-        p("letter.getA() = " + letter.getA());
+        field.set(cat, 3);
+        p("cat.getA() = " + cat.getAge() + "\n");
 
-    }
-
-    @Getter
-    @Setter
-    static class Letter {
-
-        private final static String LETTER = "LETTER";
-
-        @Value
-        private String a;
-
-        private String b;
-
-        private String c;
-
-        @Target(ElementType.FIELD)
-        @Retention(RetentionPolicy.RUNTIME)
-        @interface Value {
-            String value() default "";
+        //********** 4.Method **********//
+        Method[] methods;
+        // 动态获取类中声明的方法
+        methods = clazz.getDeclaredMethods();
+        // 动态获取类中声明的方法，包括父类
+        methods = clazz.getMethods();
+        for (Method method : methods) {
+            method.setAccessible(true);
+            p("methodName = " + method.getName());
         }
+
+        // 动态查找一个方法
+        Method method = clazz.getDeclaredMethod("setAge", int.class);
+        // 动态调用方法
+        method.invoke(cat, 3);
+        p("cat.getA() = " + cat.getAge());
 
     }
 

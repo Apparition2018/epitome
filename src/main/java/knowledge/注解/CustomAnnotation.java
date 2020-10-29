@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
  * <p>
  * https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html
  */
-public class UserDefinedAnnotation extends Demo {
+public class CustomAnnotation extends Demo {
 
     @Test
     public void testTargetField() {
