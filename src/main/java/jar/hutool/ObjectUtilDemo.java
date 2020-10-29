@@ -41,7 +41,7 @@ public class ObjectUtilDemo extends Demo {
         p(ObjectUtil.compare(null, 1));         // -1
         p(ObjectUtil.compare(null, 1, true));   // 1
 
-        // ???
+        // 获取类型的泛型的类型，TypeUtil.getTypeArgument(type, 0)
         p(ObjectUtil.getTypeArgument(map, 0));  // class java.lang.Integer
         p(ObjectUtil.getTypeArgument(map, 1));  // class java.lang.String
         p(ObjectUtil.getTypeArgument(map, 2));  // null

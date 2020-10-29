@@ -1,7 +1,6 @@
 package jar.hutool.collection;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.lang.Editor;
 import l.demo.Demo;
 import org.junit.Test;
 
@@ -9,20 +8,44 @@ import java.util.*;
 
 /**
  * CollUtil
+ * <p>
+ * static <T> Set<T>            emptyIfNull(Set<T> set)                                             如果为空则返回空 Set
+ * static <T> List<T>           emptyIfNull(List<T> set)                                            如果为空则返回空 List
+ * static <T> Collection<T>     addAll(Collection<T> coll, Object value[, Type elementType])        将多个数据合并成一个 Coll
+ * <p>
+ * static <T> boolean           contains(Collection<T> coll, Predicate<? super T> containFunc)      包含
+ * static boolean               contains(Collection<?> coll, Object value)                          包含
+ * static boolean               containsAll(Collection<?> coll1, Collection<?> coll2)               包含所有
+ * static boolean               containsAny(Collection<?> coll1, Collection<?> coll2)               包含任意
+ * <p>
  * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7-CollUtil?id=%e9%9b%86%e5%90%88%e5%b7%a5%e5%85%b7-collutil
  *
  * @author Arsenal
  * created on 2020/10/27 20:13
  */
 public class CollUtilDemo extends Demo {
+    
+    @Test
+    public void testCollUtil() {
+    }
 
     @Test
-    public void testFCollUtil() {
-        // join(Iterable, conjunction, prefix, suffix)  StrUtil.split() 的反方法
-        p(CollUtil.join(list, "-", "[", "]"));      // [1]-[2]-[3]-[4]-[5]-[6]-[7]-[8]-[9]
-
-        // addAll(Collection, Object, Type)             将多个数据合并成一个数组
-        p(CollUtil.addAll(list, map, String.class));// [1, 2, 3, 4, 5, 6, 7, 8, 9, {1=A, 2=B, 3=C}]
+    public void testCollUtil2() {
+        p(subList);                                                     // [2, 3, 4, 5, 6]
+        p(subList2);                                                    // [4, 5, 6, 7, 8]
+        p(descList);                                                    // [9, 8, 7, 6, 5, 4, 3, 2, 1]
+        // union()
+        p(CollUtil.union(subList, subList2, descList));                 // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        p(CollUtil.unionAll(subList, subList2, descList));              // [2, 3, 4, 5, 6, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+        p(CollUtil.unionDistinct(subList, subList2, descList));         // [2, 3, 4, 5, 6, 7, 8, 9, 1]
+        // subtract()
+        p(CollUtil.subtract(subList, subList2));                        // [2, 3]
+        p(CollUtil.subtractToList(subList, subList2));                  // [2, 3]
+        // intersection()
+        p(CollUtil.intersection(subList, subList2));                    // [4, 5, 6]
+        p(CollUtil.intersectionDistinct(subList, subList2, descList));  // [4, 5, 6]
+        // disjunction()
+        p(CollUtil.disjunction(subList, subList2));                     // [2, 3, 7, 8]
     }
 
     /**

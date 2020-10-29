@@ -9,6 +9,7 @@ import java.util.Map;
 
 /**
  * MapUtil
+ * https://hutool.cn/docs/#/core/Map/Map%E5%B7%A5%E5%85%B7-MapUtil
  *
  * @author Arsenal
  * created on 2020/10/29 2:36

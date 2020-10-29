@@ -1,12 +1,12 @@
 package jar.hutool.collection;
 
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.ListUtil;
 import l.demo.Demo;
 import org.junit.Test;
 
 /**
  * ListUtil
+ * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E5%88%97%E8%A1%A8%E5%B7%A5%E5%85%B7-ListUtil
  *
  * @author Arsenal
  * created on 2020/10/29 2:06
@@ -28,7 +28,7 @@ public class ListUtilDemo extends Demo {
         // sub(List/Collection, start, end, step)   对集合切片，其他类型的集合会转换成 List
         p(ListUtil.sub(list, 0, list.size(), 2));   // [1, 3, 5, 7, 9]
 
-        // filter(List, Editor)             过滤
+        // filter(List, Editor)                     过滤
         p(ListUtil.filter(list, i -> {
             if (i % 2 == 1) {
                 return i;
