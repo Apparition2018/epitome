@@ -7,6 +7,7 @@ import org.junit.Test;
 /**
  * ObjectUtil
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E5%AF%B9%E8%B1%A1%E5%B7%A5%E5%85%B7-ObjectUtil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/ObjectUtil.html
  *
  * @author ljh
  * created on 2020/10/27 12:51
@@ -49,7 +50,7 @@ public class ObjectUtilDemo extends Demo {
         // 是否为基本类型
         p(ObjectUtil.isBasicType(map));         // false
 
-        // 是否为???
+        // 是否为有效的数字，Double 和 Float 的 POSITIVE_INFINITY, NEGATIVE_INFINITY, NaN 返回 false
         p(ObjectUtil.isValidIfNumber(map));     // true
     }
 

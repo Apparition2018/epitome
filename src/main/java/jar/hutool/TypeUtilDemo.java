@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * TypeUtil     泛型类型工具
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B%E5%B7%A5%E5%85%B7-TypeUtil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/TypeUtil.html
  *
  * @author ljh
  * created on 2020/10/29 12:48
@@ -36,7 +37,7 @@ public class TypeUtilDemo extends Demo {
         // getTypeArguments(Type type)          获取类型的泛型的类型
         p(TypeUtil.getTypeArgument(type, 0));   // class java.lang.String
         
-        // isUnknown(Type)                      ???
+        // isUnknown(Type)                      是否未知类型，null 和 TypeVariable 都视为未知类型
         p(TypeUtil.isUnknown(type));            // false
     }
     
