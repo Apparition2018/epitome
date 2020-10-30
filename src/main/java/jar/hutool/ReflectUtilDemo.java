@@ -23,13 +23,13 @@ public class ReflectUtilDemo extends Demo {
     @Test
     public void testReflectUtil() {
 
-        //********** 2.动态创建对象 **********//
+        //********** 1.动态创建对象 **********//
         Cat cat = ReflectUtil.newInstanceIfPossible(Cat.class);
         cat.setName("白猫");
         cat.setAge(3);
         cat.setFoot(4);
 
-        //********** 3.Field **********//
+        //********** 2.Field **********//
         Field ageField = null;
         Field staticField = null;
         // 动态获取类中声明的属性，包括父类
@@ -59,7 +59,7 @@ public class ReflectUtilDemo extends Demo {
         p(ReflectUtil.getFieldsValue(cat));
         p();
 
-        //********** 4.Method **********//
+        //********** 3.Method **********//
         // 动态过滤获取类中声明的方法，包括父类
         ReflectUtil.getMethods(Cat.class, method -> Modifier.isPrivate(method.getModifiers()));
         // 动态获取类中声明的方法，true 包括父类，false 不包括父类
