@@ -3,6 +3,7 @@ package jar.hutool.io;
 import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.io.FileUtil;
 import l.demo.Demo;
+import org.apache.commons.codec.digest.XXHash32;
 import org.junit.Test;
 
 import java.io.File;
@@ -34,15 +35,12 @@ import java.util.List;
  * static <T> File	            appendLines(Collection<T>/String, path/file, String charset)    将 XXX 写入文件，追加模式
  * static <T> File	            appendUtf8Lines(Collection<T>/String, path/file)                将 XXX 写入文件，追加模式
  * <p>
- * static Checksum	            checksum(File file, Checksum checksum)                          计算文件校验码
- * static long	                checksumCRC32(File file)                                        计算文件 CRC32 校验码
- * <p>
  * static boolean	            containsInvalid(String fileName)                                文件名中是否包含在 Windows 下不支持的非法字符，包括： \ / : * ? " < > |
  * static String	            cleanInvalid(String fileName)                                   清除文件名中的在 Windows 下不支持的非法字符，包括： \ / : * ? " < > |
  * <p>
  * static BOMInputStream	    getBOMInputStream(File file)                                    获得 BOM 输入流，用于处理带 BOM 头的文件
- * static PrintWriter	        getPrintWriter(file/path, Charset/charset, isAppend)            获得一个打印写入对象，可以有 print
  * static BufferedWriter	    getWriter(file/path, Charset/charset, isAppend)                 获得一个带缓存的写入对象
+ * static PrintWriter	        getPrintWriter(file/path, Charset/charset, isAppend)            获得一个打印写入对象，可以有 print
  * <p>
  * https://hutool.cn/docs/#/core/IO/%E6%96%87%E4%BB%B6%E5%B7%A5%E5%85%B7%E7%B1%BB-FileUtil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/io/FileUtil.html
@@ -147,6 +145,11 @@ public class FileUtilDemo extends Demo {
         p(FileUtil.size(file));                     // 227
         // 可读的文件大小
         p(FileUtil.readableFileSize(file));         // 227 B
+        // 计算文件 XXX 校验码
+        p(FileUtil.checksum(file, new XXHash32())
+                .getValue());                       // 2688023182
+        // 计算文件 CRC32 校验码
+        p(FileUtil.checksumCRC32(file));            // 696136591
         // 最后一个文件路径分隔符的位置
         p(FileUtil.lastIndexOfSeparator(filePath)); // 23
 

@@ -11,7 +11,6 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 /**
  * PathUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/io/file/PathUtil.html
  * <p>
  * static boolean	            isDirectory(Path path, boolean isFollowLinks)   判断是否为目录，如果 file 为 null，则返回 false
  * static boolean	            isDirEmpty(Path dirPath)                        目录是否为空
@@ -22,6 +21,8 @@ import java.nio.file.attribute.BasicFileAttributes;
  * static BufferedOutputStream	getOutputStream(Path path)                      获得输出流
  * static BufferedReader	    getReader(Path path, Charset charset)           获得一个文件读取器
  * static BufferedReader	    getUtf8Reader(Path path)                        获得一个文件读取器
+ * <p>
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/io/file/PathUtil.html
  *
  * @author ljh
  * created on 2020/10/30 9:25

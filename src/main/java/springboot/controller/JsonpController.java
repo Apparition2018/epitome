@@ -31,10 +31,10 @@ public class JsonpController {
             map.put("result", "content");
             String jsonStr = new Gson().toJson(map);
             String jsonpCallback = request.getParameter("jsonpCallback");
-            PrintWriter out = response.getWriter();
-            out.println(jsonpCallback + "(" + jsonStr + ")");
-            out.flush();
-            out.close();
+            PrintWriter pw = response.getWriter();
+            pw.println(jsonpCallback + "(" + jsonStr + ")");
+            pw.flush();
+            pw.close();
 
         } catch (IOException e) {
             e.printStackTrace();
