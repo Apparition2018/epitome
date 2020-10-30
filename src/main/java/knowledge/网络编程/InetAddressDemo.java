@@ -15,19 +15,18 @@ public class InetAddressDemo extends Demo {
 
     public static void main(String[] args) throws UnknownHostException {
         // 获取本地主机
-        InetAddress address = InetAddress.getLocalHost();
-        p(address);                 // JS3-LJH/192.168.8.223
+        p(InetAddress.getLocalHost());  // JS3-LJH/192.168.8.223
 
         // 在给定主机名的情况下确定主机的 IP 地址
-        address = InetAddress.getByName(BAIDU_HOST);
-        p(address);                 // www.baidu.com/14.215.177.39
+        InetAddress inetAddress = InetAddress.getByName(BAIDU_HOST);
+        p(inetAddress);                 // www.baidu.com/14.215.177.39
 
         // 获取主机名
-        p(address.getHostName());   // www.baidu.com
+        p(inetAddress.getHostName());   // www.baidu.com
         // 获取 IP 地址字符串（以文本表现形式）
-        p(address.getHostAddress());// 14.215.177.39
+        p(inetAddress.getHostAddress());// 14.215.177.39
         // 获取原始 IP 地址
-        p(address.getAddress());    // [14, -41, -79, 38]
+        p(inetAddress.getAddress());    // [14, -41, -79, 38]
 
     }
 

@@ -5,7 +5,7 @@ import l.demo.Demo;
 import org.junit.Test;
 
 /**
- * ResourceUtil
+ * ResourceUtil     资源工具
  * https://hutool.cn/docs/#/core/IO/%E8%B5%84%E6%BA%90/%E8%B5%84%E6%BA%90%E5%B7%A5%E5%85%B7-ResourceUtil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/io/resource/ResourceUtil.html
  *
