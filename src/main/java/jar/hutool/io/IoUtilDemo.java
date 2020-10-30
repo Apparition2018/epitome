@@ -21,6 +21,7 @@ import java.nio.charset.StandardCharsets;
  * static OutputStreamWriter 	    getUtf8Writer(OutputStream out)                     获得 Writer，默认 UTF-8
  * <p>
  * https://hutool.cn/docs/#/core/IO/IO%E5%B7%A5%E5%85%B7%E7%B1%BB-IoUtil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/io/IoUtil.html
  *
  * @author ljh
  * created on 2020/10/29 17:45
@@ -33,26 +34,28 @@ public class IoUtilDemo extends Demo {
         File file2 = FileUtil.touch(new File(DEMO_PATH), "a/Input");
 
         // 写入
-        IoUtil.writeUtf8(FileUtil.getOutputStream(file2), true, "Input Input Input Input Input ");
+        BufferedOutputStream bos = FileUtil.getOutputStream(file2);
+        IoUtil.writeUtf8(bos, false, "Input Input Input Input Input ");
 
         // 读取，各种 readXXX() 请查看 API
-        p(IoUtil.readUtf8(IoUtil.toStream(file2)));
+        FileInputStream fis = IoUtil.toStream(file2);
+        p(IoUtil.readUtf8(fis));
 
         // 复制
         BufferedInputStream bis = FileUtil.getInputStream(file);
-        BufferedOutputStream bos = FileUtil.getOutputStream(file2);
         IoUtil.copy(bis, bos, IoUtil.DEFAULT_BUFFER_SIZE);
         BufferedReader br = FileUtil.getUtf8Reader(file);
         PrintWriter pw = FileUtil.getPrintWriter(file2, StandardCharsets.UTF_8, false);
         IoUtil.copy(br, pw, IoUtil.DEFAULT_BUFFER_SIZE);
 
-        FileUtil.del(file2);
-
         // 关闭
+        IoUtil.closeIfPosible(fis);
         IoUtil.closeIfPosible(bis);
         IoUtil.closeIfPosible(bos);
         IoUtil.closeIfPosible(br);
         IoUtil.closeIfPosible(pw);
+        
+        file2.deleteOnExit();
     }
 
     /**

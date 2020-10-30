@@ -20,7 +20,7 @@ import java.util.List;
  * static boolean	            isNotEmpty(File file)                                           文件是否不为空
  * static boolean	            isModifed(File file, long lastModifyTime)                       判断文件是否被改动
  * static boolean	            isSub(File parent, File sub)                                    判断给定的目录是否为给定文件或文件夹的子目录
- * static boolean	            isWindows()                                                     是否为Windows环境
+ * static boolean	            isWindows()                                                     是否为 Windows 环境
  * static boolean	            newerThan(File file, long timeMillis/File reference)            给定文件或目录的最后修改时间是否晚于给定时间
  * static boolean	            pathEndsWith(File file, String suffix)                          判断文件路径是否有指定后缀，忽略大小写
  * static boolean	            pathEquals(File file1, File file2)                              文件路径是否相同，Windows 下忽略大小写，Linux 不忽略

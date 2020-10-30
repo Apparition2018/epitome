@@ -3,7 +3,6 @@ package jar.spring;
 import l.demo.Demo;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +14,7 @@ import java.io.IOException;
  * created on 2020/10/29 17:38
  */
 public class ClassPathResourceDemo extends Demo {
-    
+
     @Test
     public void testClassPathResource() throws IOException {
         ClassPathResource classPathResource = new ClassPathResource("demo/demo");
