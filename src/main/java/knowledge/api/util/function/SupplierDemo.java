@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 /**
  * Supplier<T>
- * 不接受参数，返回一个新的对象
+ * 不接受参数，返回一个新的对象 T
  * https://blog.csdn.net/m0_37779570/article/details/81871197
  *
  * @author ljh

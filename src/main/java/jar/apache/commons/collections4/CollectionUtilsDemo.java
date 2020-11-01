@@ -2,12 +2,12 @@ package jar.apache.commons.collections4;
 
 import l.demo.Demo;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.ListUtils;
+import org.apache.commons.collections4.list.FixedSizeList;
+import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 /**
  * CollectionsUtils
@@ -138,19 +138,20 @@ public class CollectionUtilsDemo extends Demo {
     }
 
     /**
-     * 不可变集合相关方法    ???
+     * BoundedCollection 相关方法
      */
     @Test
-    public void testUnmodifiableCollection() {
-        List<Integer> unmodifiableList = ListUtils.unmodifiableList(list);
+    public void testBoundedCollection() {
+        CircularFifoQueue<Object> circularFifoQueue = new CircularFifoQueue<>(list);
+        FixedSizeList<Integer> fixedSizeList = FixedSizeList.fixedSizeList(list);
 
         // static boolean       isFull(Collection<? extends Object> coll)       判断能否添加元素
-        p(CollectionUtils.isFull(unmodifiableList));
-        p(CollectionUtils.isFull(subList));
+        p(CollectionUtils.isFull(circularFifoQueue));   // false
+        p(CollectionUtils.isFull(fixedSizeList));       // true
 
         // static int           maxSize(Collection<? extends Object> coll)      返回不可变集合最大长度
-        p(CollectionUtils.maxSize(unmodifiableList));
-        p(CollectionUtils.maxSize(subList));
+        p(CollectionUtils.maxSize(circularFifoQueue));  // 9
+        p(CollectionUtils.maxSize(fixedSizeList));      // 9
     }
 
 }

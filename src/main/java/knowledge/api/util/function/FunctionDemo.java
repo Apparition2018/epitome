@@ -6,7 +6,7 @@ import java.util.function.Function;
 
 /**
  * Function<T, R>
- * 接收一个参数，返回一个值
+ * 接收一个参数 T，返回一个值 R
  *
  * @author ljh
  * created on 2020/9/9 15:13

@@ -22,6 +22,14 @@ public class Demo {
     public static List<Integer> repeatList = new ArrayList<>(Arrays.asList(1, 1, 2, 2, 3, 3, 4, 5));
     public static List<Integer> subList = new ArrayList<>(list.subList(1, 6));
     public static List<Integer> subList2 = list.subList(3, 8);
+    public static List<Person> personList = new ArrayList<Person>(3) {
+        {
+            add(new Person(1, "张三"));
+            add(new Person(2, "李四"));
+            add(new Person(3, "王五"));
+        }
+    };
+
     public static Map<Integer, String> map = new HashMap<Integer, String>(3) {
         {
             put(1, "A");

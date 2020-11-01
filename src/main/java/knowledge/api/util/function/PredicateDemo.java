@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 
 /**
  * Predicate<T>
- * 接受一个参数，返回一个布尔值结果，用来进行判断是否符合条件
+ * 接受一个参数 T，返回一个 Boolean，用来进行判断是否符合条件
  * 该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。
  * https://blog.csdn.net/w605283073/article/details/89410918
  *

@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 /**
  * Consumer<T>
- * 接收一个参数，不返回结果，用来对参数进行任意(消费)处理
+ * 接收一个参数 T，不返回结果，用来对参数进行任意(消费)处理
  * https://www.jianshu.com/p/63771441ba31
  *
  * @author ljh

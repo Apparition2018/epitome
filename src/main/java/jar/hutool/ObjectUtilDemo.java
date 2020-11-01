@@ -27,7 +27,7 @@ public class ObjectUtilDemo extends Demo {
         p(ObjectUtil.contains(map, "A"));       // true
 
         // 克隆
-        // 如果对象实现Cloneable接口，调用其 clone()，如果实现 Serializable 接口，执行深度克隆，否则返回 null
+        // 如果对象实现 Cloneable 接口，调用其 clone()，如果实现 Serializable 接口，执行深度克隆，否则返回 null
         p(ObjectUtil.clone(map));               // {1=A, 2=B, 3=C}
         // 返回克隆后的对象，如果克隆失败，返回原对象
         p(ObjectUtil.cloneIfPossible(map));     // {1=A, 2=B, 3=C}

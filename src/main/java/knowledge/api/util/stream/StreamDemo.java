@@ -21,20 +21,17 @@ import java.util.stream.*;
  * http://www.runoob.com/java/java8-streams.html
  */
 public class StreamDemo extends Demo {
-    
+
     @Test
     public void testStream() {
-        List<Person> personList = new ArrayList<>();
-        personList.add(new Person(1, "张三"));
-        personList.add(new Person(2, "李四"));
 
         // List<Object> -> List<Integer>
         List<Integer> idList = personList.stream().map(Person::getId).collect(Collectors.toList());
-        p(idList);  // [1, 2]
-        
+        p(idList);  // [1, 2, 3]
+
         // List<Object> -> Map<Integer, Object>
         Map<Integer, Person> map = personList.stream().collect(Collectors.toMap(Person::getId, person -> person));
-        p(map);     // {1=Person{id=1, name='张三'}, 2=Person{id=2, name='李四'}}
+        p(map);     // {1=Person{id=1, name='张三'}, 2=Person{id=2, name='李四'}, 3=Person{id=3, name='王五'}}
     }
 
 

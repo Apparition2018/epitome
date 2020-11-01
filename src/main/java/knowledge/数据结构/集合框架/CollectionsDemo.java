@@ -1,5 +1,6 @@
 package knowledge.数据结构.集合框架;
 
+import l.demo.Animal.Cat;
 import l.demo.Animal.Chicken;
 import l.demo.Demo;
 import org.junit.Test;
@@ -23,7 +24,8 @@ import java.util.stream.Collectors;
  * <p>
  * static <T> List<T>	    emptyList()                                     返回空的列表（不可变的）
  * static <T> Set<T>	    emptySet()                                      返回空的 set（不可变的）
- * static <K,V> Map<K,V>    emptyMap()                                      回空的映射（不可变的）
+ * static <K,V> Map<K,V>    emptyMap()                                      返回空的映射（不可变的）
+ * static <T> Iterator<T>   emptyIterator()                                 返回空的 Iterator
  * <p>
  * static <T> XXX<T>	    singletonXXX(T o)                               返回一个只包含指定对象的不可变列表
  * static <T> List<T>	    nCopies(int n, T o)                             返回由指定对象的 n 个副本组成的不可变列表
@@ -57,6 +59,9 @@ public class CollectionsDemo extends Demo {
         p(list);    // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         p(subList); // [1, 2, 3, 5]
         p(Collections.indexOfSubList(list, subList)); // 1
+
+        List<Integer> newList = Collections.unmodifiableList(list);
+        newList.add(10);
     }
 
     /**
@@ -119,9 +124,9 @@ public class CollectionsDemo extends Demo {
         addCat(dogList); // ClassCastException
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings(value = {"unchecked", "rawtypes"})
     private void addCat(List list) {
-        list.add(new Chicken());
+        list.add(new Cat());
     }
-    
+
 }
