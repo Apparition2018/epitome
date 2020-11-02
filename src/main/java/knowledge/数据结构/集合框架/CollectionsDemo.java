@@ -59,9 +59,6 @@ public class CollectionsDemo extends Demo {
         p(list);    // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         p(subList); // [1, 2, 3, 5]
         p(Collections.indexOfSubList(list, subList)); // 1
-
-        List<Integer> newList = Collections.unmodifiableList(list);
-        newList.add(10);
     }
 
     /**

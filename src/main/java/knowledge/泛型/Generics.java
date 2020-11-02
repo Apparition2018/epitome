@@ -127,8 +127,8 @@ public class Generics<T> extends Demo {
 
         // 写入
         // 我们无法确定往 list 中装的元素具体是哪个类型，但可以确定一定是 Number 的子类，所以对于下面的添加是允许的
-        list.add(new Integer(1));
-        list.add(new Byte((byte) 2));
+        list.add(1);
+        list.add((byte) 2);
 
         // 读取
         // 我们无法确定的获取的元素具体是什么类型，只能确定一定是 Number 的子类，因此我们获取元素只能进行强制类型转换

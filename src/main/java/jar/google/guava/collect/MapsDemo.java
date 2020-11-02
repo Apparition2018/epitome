@@ -30,7 +30,7 @@ public class MapsDemo extends Demo {
         // 返回两个 map 之间的差异
         MapDifference<Integer, Object> difference = Maps.difference(map, map2);
         p(difference.entriesInCommon());    // {1=A, 2=B, 3=C}
-        p(difference.entriesOnlyOnRight()); // {4=E, 5=D}
+        p(difference.entriesOnlyOnRight()); // {4=E, 5=F, 6=G, 7=H, 8=I, 9=J}
     }
 
     /**
@@ -59,7 +59,7 @@ public class MapsDemo extends Demo {
         // static <K,V> Map<K,V>	            filterKeys(Map<K,V> unfiltered, Predicate<? super K> keyPredicate)
         // static <K,V> Map<K,V>	            filterValues(Map<K,V> unfiltered, Predicate<? super V> valuePredicate)
         // 经过 Predicate 处理返回
-        p(Maps.filterEntries(map2, (entry -> Objects.requireNonNull(entry).getKey() >= 2))); // {2=B, 3=C, 4=E, 5=D}
+        p(Maps.filterEntries(map2, (entry -> Objects.requireNonNull(entry).getKey() >= 2))); // {2=B, 3=C, 4=E, 5=F, 6=G, 7=H, 8=I, 9=J}
 
         // static ImmutableMap<String,String>	fromProperties(Properties properties)
         // Properties  →  ImmutableMap

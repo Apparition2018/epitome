@@ -33,25 +33,22 @@ import java.util.Map;
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapUtils.html
  */
 public class MapUtilsDemo extends Demo {
-
-    private Map<String, Object> map = new HashMap<>();
-
-    public MapUtilsDemo() {
-        map.put("a", 1);
-        map.put("b", 2);
-        map.put("c", 3);
-    }
+    
+    Map<Integer, Object> map = new HashMap<Integer, Object>(3) {
+        {
+            put(1, "A");
+            put(2, "B");
+            put(3, "C");
+        }
+    };
 
     /**
      * static <K> XXX	getXXX(Map<? super K,?> map, K key[, Boolean defaultValue])
-     * <p>
-     * XXX: Boolean, Byte, Double, Float, Integer, Long, Short, Number, String, Map, Object
-     * boolean, byte, double, float, int, long, short
      */
     @Test
     public void getXXX() {
-        p(MapUtils.getInteger(map, "d", 4)); // 4
-        p(MapUtils.getIntValue(map, "a")); // 1
+        p(MapUtils.getString(map, 4, "D")); // 4
+        p(MapUtils.getIntValue(map, 1));    // 1
     }
 
     /**
@@ -60,8 +57,7 @@ public class MapUtilsDemo extends Demo {
      */
     @Test
     public void invertMap() {
-        p(map);                     // {a=1, b=2, c=3}
-        p(MapUtils.invertMap(map)); // {1=a, 2=b, 3=c}
+        p(MapUtils.invertMap(map)); // {A=1, B=2, C=3}
     }
 
     /**
@@ -70,8 +66,8 @@ public class MapUtilsDemo extends Demo {
      */
     @Test
     public void putAll() {
-        p(MapUtils.putAll(map, new Object[]{"d", 4, "e", 5, "f", 6, "g", 7}));
-        // {a=1, b=2, c=3, d=4, e=5, f=6, g=7}
+        p(MapUtils.putAll(map, new Object[]{4, "D", 5, "E", 6, "F"}));
+        // {1=A, 2=B, 3=C, 4=D, 5=E, 6=F}
     }
 
     /**
@@ -80,8 +76,8 @@ public class MapUtilsDemo extends Demo {
      */
     @Test
     public void safeAddToMap() {
-        MapUtils.safeAddToMap(map, "d", null);
-        p(map); // {a=1, b=2, c=3, d=}
+        MapUtils.safeAddToMap(map, 4, "D");
+        p(Demo.map); // {1=A, 2=B, 3=C}
     }
 
 }
