@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/chinese")
 public class ChineseController {
 
+    /**
+     * http://localhost:3333/chinese/test
+     */
     @RequestMapping("/test")
     public void test(@RequestBody String data) {
         System.out.println(data);

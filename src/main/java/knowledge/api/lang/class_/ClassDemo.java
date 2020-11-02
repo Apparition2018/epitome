@@ -18,6 +18,7 @@ import java.util.function.Predicate;
  * <p>
  * Class 没有公共构造方法。Class 对象是在加载类时由 Java 虚拟机以及通过调用类加载器中的 defineClass 方法自动构造的。
  * <p>
+ * Class<?>         getEnclosingClass()         返回底层类的立即封闭类
  * ClassLoader	    getClassLoader()            返回该类的类加载器
  * Package	        getPackage()                返回该类的包
  * Class<? super T>	getSuperclass()             返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的超类的 Class
@@ -68,7 +69,7 @@ public class ClassDemo extends Demo {
         Field[] fields1 = Chicken.class.getDeclaredFields();
         p(fields1);
         // [public int l.demo.Animal$Chicken.age, private int l.demo.Animal$Chicken.wing]
-        
+
         // getFields() 获取某个类的 public 字段，包括父类
         Field[] fields2 = Chicken.class.getFields();
         p(fields2);

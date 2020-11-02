@@ -43,7 +43,7 @@ public class ThreadDemo extends Demo {
      * static void                      waitForDie([Thread thread])                             等待线程结束. 调用 Thread.join() 并忽略 InterruptedException
      * static void                      sync(Object obj)                                        同步对象
      */
-    public static class ThreadUtilDemo {
+    private static class ThreadUtilDemo {
 
         private final static int NUM_OF_TASK = 5;
 
@@ -98,7 +98,7 @@ public class ThreadDemo extends Demo {
      * ExecutorBuilder      自定义线程池
      * https://hutool.cn/docs/#/core/%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%BF%E7%A8%8B%E6%B1%A0-ExecutorBuilder
      */
-    public static class ExecutorBuilderDemo {
+    private static class ExecutorBuilderDemo {
 
         public static void main(String[] args) {
             ExecutorService pool;
@@ -137,7 +137,7 @@ public class ThreadDemo extends Demo {
      * ConcurrencyTester    高并发测试
      * https://hutool.cn/docs/#/core/%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/%E9%AB%98%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95-ConcurrencyTester
      */
-    public static class ConcurrencyTesterDemo {
+    private static class ConcurrencyTesterDemo {
 
         public static void main(String[] args) {
             ConcurrencyTester tester = ThreadUtil.concurrencyTest(100, () -> {

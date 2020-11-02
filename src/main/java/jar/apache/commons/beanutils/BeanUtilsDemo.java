@@ -77,7 +77,7 @@ public class BeanUtilsDemo extends Demo {
     public void setProperty() throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
 
         // 1.得到 JavaBean 的一个字节码对象
-        Class clazz = Class.forName("l.demo.Person$Student");
+        Class<?> clazz = Class.forName("l.demo.Person$Student");
 
         // 2.生成该字节码的一个对象
         Object obj = clazz.newInstance();

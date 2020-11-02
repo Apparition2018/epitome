@@ -1553,11 +1553,11 @@ public class Suggestions extends Demo {
         // Class 类是 Java 的反射入口，只有获得一个类的描述对象才能动态加载和调用
         // 获得一个 Class 对象有三种途径：
         // 1.类属性方式
-        Class clazz1 = String.class;
+        Class<?> clazz1 = String.class;
         // 2.getClass()
-        Class clazz2 = new String().getClass();
+        Class<?> clazz2 = new String().getClass();
         // 3.forName()
-        Class clazz3 = Class.forName("java.lang.String");
+        Class<?> clazz3 = Class.forName("java.lang.String");
     }
 
     /* 建议102：getDeclaredXXX() 和 getXXX()
@@ -1573,7 +1573,7 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test103() throws ClassNotFoundException {
-        Class clazz = Class.forName("java.lang.String");
+        Class<?> clazz = Class.forName("java.lang.String");
         Method[] methods = clazz.getDeclaredMethods();
         for (Method method : methods) {
             method.setAccessible(true);
