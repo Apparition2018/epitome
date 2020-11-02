@@ -11,9 +11,9 @@ import java.util.List;
  * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E5%88%97%E8%A1%A8%E5%B7%A5%E5%85%B7-ListUtil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/collection/ListUtil.html
  * 
- * static <T> List<T>	    reverse(List<T> list)                       反序给定 List，会在原 List 基础上直接修改
- * static <T> List<T>	    reverseNew(List<T> list)                    反序给定 List，会创建一个新的 List
- * static <T> List<T>	    sort(List<T> list, Comparator<? super T> c) 针对List排序，排序会修改原List
+ * static <T> List<T>	    reverse(List<T> list)                       反转 List，会在原 List 基础上直接修改
+ * static <T> List<T>	    reverseNew(List<T> list)                    反转 List，会创建一个新的 List
+ * static <T> List<T>	    sort(List<T> list, Comparator<? super T> c) List 排序，排序会修改原 List
  * static List<String>	    sortByPinyin(List<String> list)             根据汉字的拼音顺序排序
  * static <T> List<T>	    sortByPropertysortByProperty(List<T> list, String property)根据 Bean 的属性排序
  *

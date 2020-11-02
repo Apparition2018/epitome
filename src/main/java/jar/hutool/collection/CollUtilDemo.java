@@ -28,9 +28,9 @@ import java.util.*;
  * static <T extends Comparable> T	max(Collection<T> coll)                                         最大值
  * static <T extends Comparable> T	min(Collection<T> coll)                                         最小值
  * <p>
- * static <T> Set<T>                emptyIfNull(Set<T> set)                                         如果为空则返回空 Set
- * static <T> List<T>               emptyIfNull(List<T> set)                                        如果为空则返回空 List
- * static <T extends Coll<E>,E> T   defaultIfEmpty(T collection, T defaultCollection)               如果给定集合为空，返回默认集合
+ * static <T> Set<T>                emptyIfNull(Set<T> set)                                         如果为空则返回空 set
+ * static <T> List<T>               emptyIfNull(List<T> set)                                        如果为空则返回空 list
+ * static <T extends Coll<E>,E> T   defaultIfEmpty(T collection, T defaultCollection)               如果为空则返回默认 collection
  * <p>
  * static boolean	                isEmpty(Enumeration/Iterable/Iterator/Map)                      是否为空
  * static boolean	                isNotEmpty(Enumeration/Iterable/Iterator/Map)                   是否不为空
@@ -40,7 +40,7 @@ import java.util.*;
  * static boolean                   containsAll(Collection<?> coll1, Collection<?> coll2)           包含所有
  * static boolean                   containsAny(Collection<?> coll1, Collection<?> coll2)           包含任意
  * <p>
- * static void	                    clear(Collection<?>... collections)                             清除一个或多个集合内的元素，每个集合调用clear()方法
+ * static void	                    clear(Collection<?>... collections)                             清除一个或多个集合内的元素，每个集合调用 clear()
  * <p>
  * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7-CollUtil?id=%e9%9b%86%e5%90%88%e5%b7%a5%e5%85%b7-collutil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/collection/CollUtil.html
@@ -125,10 +125,10 @@ public class CollUtilDemo extends Demo {
 
     /**
      * 修改原集合相关方法
-     * static T	        removeAny(T collection, E... elesRemoved)       去掉集合中的多个元素，此方法直接修改原集合
-     * static T	        removeBlank(T collection)                       去除 null 或 "" 或 空白字符串 元素，此方法直接修改原集合
-     * static T	        removeEmpty(T collection)                       去除 null 或 "" 元素，此方法直接修改原集合
-     * static T	        removeNull(T collection)                        去除 null 元素，此方法直接修改原集合
+     * static T	        removeAny(T collection, E... elesRemoved)       去除集合中的多个元素，修改原集合
+     * static T	        removeBlank(T collection)                       去除 null 或 "" 或 空白字符串 元素，修改原集合
+     * static T	        removeEmpty(T collection)                       去除 null 或 "" 元素，修改原集合
+     * static T	        removeNull(T collection)                        去除 null 元素，修改原集合
      */
     @Test
     public void modifyOriginal() {
