@@ -17,9 +17,11 @@
 // 2019 年度最受欢迎中国开源软件：https://www.oschina.net/question/2918182_2313492
 // java长连接
 
+import l.demo.Demo;
+
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
-public class Test {
+public class Test extends Demo {
 
     public static void main(String[] args) {
         System.out.println();

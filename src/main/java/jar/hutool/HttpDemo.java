@@ -56,7 +56,7 @@ public class HttpDemo extends Demo {
      * 此模块基于 JDK 的 HttpUrlConnection 封装完成，完整支持 https、代理和文件上传。
      * https://hutool.cn/docs/#/http/Http%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%A5%E5%85%B7%E7%B1%BB-HttpUtil
      */
-    private static class HttpUtilDemo {
+    public static class HttpUtilDemo {
         /**
          * 上传
          */
@@ -73,10 +73,9 @@ public class HttpDemo extends Demo {
          */
         @Test
         public void testDownload() {
-            String fileUrl = "http://mirrors.sohu.com/centos/7.3.1611/isos/x86_64/CentOS-7-x86_64-DVD-1611.iso";
             // 如果想更加灵活的将 HTTP 内容转换写出，
             // 可以使用 HttpUtil.download(String url, OutputStream out, boolean isCloseOut[, StreamProgress streamProgress])
-            HttpUtil.downloadFile(fileUrl, FileUtil.file("E:/"), new StreamProgress() {
+            HttpUtil.downloadFile(ARSENAL_LOGO, FileUtil.file("E:/"), new StreamProgress() {
                 @Override
                 public void start() {
                     p("开始下载...");
@@ -101,12 +100,23 @@ public class HttpDemo extends Demo {
      */
     private static class HtmlUtilDemo {
 
-        @Test
-        public void testHtmlUtil() {
+        public static void main(String[] args) {
             String html = HttpUtil.get(BAIDU_URL);
-            
+
             // filter(html)                     过滤 html 文本，防止 XSS 攻击
-            p(HtmlUtil.filter(html));
+            html = HtmlUtil.filter(html);
+
+            // removeHtml(html, tagName...)     去除指定标签及其内容
+            p(HtmlUtil.removeHtmlTag("a<img src='xxx/xxx/test.jpg'>", "img"));      // a
+            // unwrapHtmlTag(html, tagName...)  去除指定标签保留内容
+            p(HtmlUtil.unwrapHtmlTag("a<div class='test_div'>b</div>", "div"));     // ab
+            // cleanHtmlTag(html)               去除所有标签保留内容
+            p(HtmlUtil.cleanHtmlTag("a<div class='test_div'>b</div><div>c</div>")); // abc
+
+            // removeHtmlAttr(html, attr...)    去除指定属性
+            p(HtmlUtil.removeHtmlAttr("<div class='test_div'></div><span class='test_span'></span>", "class")); // <div></div><span></span>
+            // removeAllHtmlAttr(html);         去除指定标签所有属性
+            p(HtmlUtil.removeAllHtmlAttr("<div class='test_div' width='120'></div>", "div"));                   // <div></div>
 
             // escape(html)                     转义
             // ' 替换为 &#039;
@@ -114,24 +124,10 @@ public class HttpDemo extends Demo {
             // & 替换为 &amp;
             // < 替换为 &lt;
             // > 替换为 &gt;
-            String escape = HtmlUtil.escape(html);
-            p(escape);
-
+            String escape = HtmlUtil.escape("<div class='test_div'>&</div>"); // <div></div>
+            p(escape);                          // &lt;div class=&#039;test_div&#039;&gt;&amp;&lt;/div&gt;
             // unescape(escape)                 还原转义
-            p(HtmlUtil.unescape(escape));
-
-            // removeHtml(html, tagName...)     去除指定标签及其内容
-            p(HtmlUtil.removeHtmlTag(html, "html"));
-            // unwrapHtmlTag(html, tagName...)  去除指定标签保留内容
-            p(HtmlUtil.unwrapHtmlTag(html, "html"));
-            // cleanHtmlTag(html)               去除所有标签保留内容
-            p(HtmlUtil.cleanHtmlTag(html));
-            
-            // removeHtmlAttr(html, attr...)    去除指定属性
-            p(HtmlUtil.removeHtmlAttr(html, "class"));
-            // removeAllHtmlAttr(html);         去除所有属性
-            p(HtmlUtil.removeAllHtmlAttr(html));
-
+            p(HtmlUtil.unescape(escape));       // <div class='test_div'>&</div>
 
         }
     }

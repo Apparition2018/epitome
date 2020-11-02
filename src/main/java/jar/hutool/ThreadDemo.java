@@ -43,7 +43,7 @@ public class ThreadDemo extends Demo {
      * static void                      waitForDie([Thread thread])                             等待线程结束. 调用 Thread.join() 并忽略 InterruptedException
      * static void                      sync(Object obj)                                        同步对象
      */
-    private static class ThreadUtilDemo {
+    public static class ThreadUtilDemo {
 
         private final static int NUM_OF_TASK = 5;
 
@@ -64,7 +64,7 @@ public class ThreadDemo extends Demo {
          * 执行异步方法
          */
         @Test
-        public void xcAsync() throws InterruptedException {
+        public void execAsync() throws InterruptedException {
             setCountDownLatch(1);
             ThreadUtil.execAsync(() -> {
                 Thread t = Thread.currentThread();
