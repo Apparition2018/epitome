@@ -13,7 +13,6 @@ import java.util.Map;
 
 /**
  * MapUtil
- * https://hutool.cn/docs/#/core/Map/Map%E5%B7%A5%E5%85%B7-MapUtil
  * <p>
  * static <K,V> Map<K,V>	            createMap(Class<?> mapType)                         创建 Map
  * static <K,V> HashMap<K,V>	        newHashMap([[int size][, boolean isOrder]])         新建 HashMap
@@ -36,6 +35,9 @@ import java.util.Map;
  * static boolean                       isNotEmpty(Map<?, ?> map)                           是否不为空
  * static <K, V> Map<K, V>              emptyIfNull(Map<K, V> map)                          如果为空则返回空 map
  * static <T extends Map<K,V>,K,V> T    defaultIfEmpty(T map, T defaultMap)                 如果为空则返回空默认 map
+ * <p>
+ * https://hutool.cn/docs/#/core/Map/Map%E5%B7%A5%E5%85%B7-MapUtil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/map/MapUtil.html
  *
  * @author Arsenal
  * created on 2020/10/29 2:36
