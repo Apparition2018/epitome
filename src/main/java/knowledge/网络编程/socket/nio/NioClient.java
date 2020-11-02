@@ -63,7 +63,7 @@ public class NioClient extends Demo {
                     }
                     channel.configureBlocking(false);
                     // 向服务器发送消息
-                    channel.write(ByteBuffer.wrap(new String("send message to server.").getBytes()));
+                    channel.write(ByteBuffer.wrap("send message to server.".getBytes()));
                     // 连接成功后，注册接收服务器消息的事件
                     channel.register(selector, SelectionKey.OP_READ);//订阅读取事件
                     p("客户端连接成功");

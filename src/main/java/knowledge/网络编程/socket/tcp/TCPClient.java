@@ -29,6 +29,7 @@ public class TCPClient extends Demo {
 
         Student student = new Student(1, "007", "Mary", 20, 100.0f);
         dos.writeUTF(student + "");
+        dos.flush();
 
         // InputStream	    getInputStream()            返回此套接字的输入流
         DataInputStream dis = new DataInputStream(socket.getInputStream());
