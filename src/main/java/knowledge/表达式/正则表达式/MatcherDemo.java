@@ -18,172 +18,106 @@ import java.util.regex.Pattern;
 public class MatcherDemo extends Demo {
 
     /**
-     * boolean	find()
-     * 尝试查找与该模式匹配的输入序列的下一个子序列
+     * 索引方法
+     * 索引方法提供了有用的索引值，精确表明输入字符串中在哪能找到匹配
      * <p>
-     * boolean	find(int start)
-     * 重置此匹配器，然后尝试查找匹配该模式、从指定索引开始的输入序列的下一个子序列
+     * int	    start([int group])      返回在以前的匹配操作期间，由给定组所捕获的子序列的初始索引
+     * int	    end([int group])        返回在以前的匹配操作期间，由给定组所捕获子序列的最后字符之后的偏移量
      */
     @Test
-    public void find() {
-        Pattern p = Pattern.compile("(a*b)(foo)");
-
-        Matcher m = p.matcher("aabfooaabfooabfoob");
-
-        if (m.find()) {
-            // 捕获组是从 1 开始从左到右的索引。
-            // 组零表示整个模式，因此表达式 m.group(0) 等效于 m.group()
-            p(m.group());   // aabfoo
-            p(m.group(0));  // aabfoo
-            p(m.group(1));  // aab
-            p(m.group(2));  // foo
-        }
-
-        if (m.find(10)) {
-            p(m.group());   // abfoo
-            p(m.group(0));  // abfoo
-            p(m.group(1));  // ab
-            p(m.group(2));  // foo
-        }
-    }
-
-    /**
-     * String	group()
-     * 返回由以前匹配操作所匹配的输入子序列
-     * <p>
-     * String	group(int group)
-     * 返回在以前匹配操作期间由给定组捕获的输入子序列
-     */
-    @Test
-    public void group() {
-        find();
-    }
-
-    // 索引方法
-
-    /**
-     * int	start()
-     * 返回上一个匹配的初始索引
-     * <p>
-     * int	start(int group)
-     * 返回上一个匹配操作期间，由给定组所捕获的子序列的初始索引
-     */
-    @Test
-    public void start() {
-        Pattern p = Pattern.compile("(a*b)(foo)");
-
-        Matcher m = p.matcher("aabfooaabfooabfoob");
-
-        while (m.find()) {
-            p(m.start());   // 0 6  12
-            p(m.start(1));  // 0 6  12
-            p(m.start(2));  // 3 9  14
-
-            p(m.end());     // 6 12 17
-            p(m.end(1));    // 3 9  14
-            p(m.end(2));    // 6 12 17
+    public void index() {
+        Pattern pattern = Pattern.compile("(a*b)(foo)");
+        Matcher matcher = pattern.matcher("abfooaabfooaaabfoob");
+        while (matcher.find()) {
+            // String	    group([int group])
+            // 返回在以前匹配操作期间由给定组捕获的输入子序列，group() 相当于 group(0)
+            p(matcher.group());
+            p(String.format("全分组：start[%s]，end[%s]", matcher.start(), matcher.end()));
+            p(String.format("分组1：start[%s]，end[%s]", matcher.start(1), matcher.end(1)));
+            p(String.format("分组2：start[%s]，end[%s]", matcher.start(2), matcher.end(2)));
+            // abfoo
+            // 全分组：start[0]，end[5]
+            // 分组1：start[0]，end[2]
+            // 分组2：start[2]，end[5]
+            // aabfoo
+            // 全分组：start[5]，end[11]
+            // 分组1：start[5]，end[8]
+            // 分组2：start[8]，end[11]
+            // aaabfoo
+            // 全分组：start[11]，end[18]
+            // 分组1：start[11]，end[15]
+            // 分组2：start[15]，end[18]
         }
     }
 
     /**
-     * int	end()
-     * 返回最后匹配字符之后的偏移量
+     * 研究方法
+     * 研究方法用来检查输入字符串并返回一个布尔值，表示是否找到该模式
      * <p>
-     * int	end(int group)
-     * 返回在以前的匹配操作期间，由给定组所捕获子序列的最后字符之后的偏移量
+     * boolean  find([int start])       重置此匹配器，然后尝试查找匹配该模式、从指定索引开始的输入序列的下一个子序列
+     * boolean	lookingAt()             尝试将从区域开头开始的输入序列与该模式匹配
+     * boolean	matches()               尝试将整个区域与模式匹配
      */
     @Test
-    public void end() {
-        start();
-    }
-
-    // 研究方法
-
-    /**
-     * boolean	lookingAt()
-     * 尝试将从区域开头开始的输入序列与该模式匹配
-     */
-    @Test
-    public void lookingAt() {
-        Pattern p = Pattern.compile("foo");
-
-        Matcher m = p.matcher("fooooooooooooooooo");
-        p(m.lookingAt()); // true
-
-        m = p.matcher("boofoooooooooooooo");
-        p(m.lookingAt()); // false
-    }
-
-    /**
-     * boolean	matches()
-     * 尝试将整个区域与模式匹配
-     */
-    @Test
-    public void matches() {
-        Pattern p = Pattern.compile("foo");
-
-        Matcher m = p.matcher("fooooooooooooooooo");
-        p(m.matches()); // false
-
-        m = p.matcher("foo");
-        p(m.matches()); // true
-    }
-
-    // 替换方法
-
-    /**
-     * Matcher	appendReplacement(StringBuffer sb, String replacement)
-     * 实现非终端添加和替换步骤
-     */
-    @Test
-    public void appendReplacement() {
-        Pattern p = Pattern.compile("a*b");
-
-        Matcher m = p.matcher("aabfooaabfooabfoob");
-
-        StringBuffer buffer = new StringBuffer();
-
-        while (m.find()) {
-            m.appendReplacement(buffer, "-");
+    public void research() {
+        // find()
+        Pattern pattern = Pattern.compile("(a*b)(foo)");
+        Matcher matcher = pattern.matcher("abfooaabfooaaabfoob");
+        if (matcher.find()) {
+            p(matcher.group());     // abfoo
+            p(matcher.group(0));    // abfoo
+            p(matcher.group(1));    // ab
+            p(matcher.group(2));    // foo
+        }
+        if (matcher.find(10)) {
+            p(matcher.group());     // aaabfoo
+            p(matcher.group(0));    // aaabfoo
+            p(matcher.group(1));    // aaab
+            p(matcher.group(2));    // foo
         }
 
-        m.appendTail(buffer);
-        p(buffer); // -foo-foo-foo-
+        // lookingAt()
+        Pattern pattern2 = Pattern.compile("foo");
+        Matcher matcher2 = pattern2.matcher("fooooooooooooooooo");
+        p(matcher2.lookingAt());    // true
+        matcher2 = pattern.matcher("boofoooooooooooooo");
+        p(matcher2.lookingAt());    // false
+
+        // matches()
+        Pattern pattern3 = Pattern.compile("foo");
+        Matcher matcher3 = pattern3.matcher("fooooooooooooooooo");
+        p(matcher3.matches());      // false
+        matcher3 = pattern3.matcher("foo");
+        p(matcher3.matches());      // true
     }
 
     /**
-     * StringBuffer	appendTail(StringBuffer sb)
-     * 实现终端添加和替换步骤
+     * 替换方法
+     * 替换方法是替换输入字符串里文本的方法
+     * <p>
+     * String	        replaceFirst(String replacement)    替换模式与给定替换字符串匹配的输入序列的第一个子序列
+     * String	        replaceAll(String replacement)      替换模式与给定替换字符串相匹配的输入序列的每个子序列
+     * Matcher	        appendReplacement(StringBuffer sb, String replacement)  实现非终端添加和替换步骤
+     * StringBuffer	    appendTail(StringBuffer sb)         实现终端添加和替换步骤
+     * static String	quoteReplacement(String s)          返回指定 String 的字面值替换 String
      */
     @Test
-    public void appendTail() {
-        appendReplacement();
-    }
+    public void replace() {
+        // replaceFirst(), replaceAll()
+        Pattern pattern = Pattern.compile("a*b");
+        Matcher matcher = pattern.matcher("abfooaabfooaaabfoob");
+        p(matcher.replaceFirst("-"));   // -fooaabfooaaabfoob
+        p(matcher.replaceAll("-"));     // -foo-foo-foo-
 
-    /**
-     * String	replaceAll(String replacement)
-     * 替换模式与给定替换字符串相匹配的输入序列的每个子序列
-     */
-    @Test
-    public void replaceAll() {
-        Pattern p = Pattern.compile("a*b");
+        // appendReplacement(), appendTail()
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            matcher.appendReplacement(sb, "-");
+        }
+        matcher.appendTail(sb);
+        p(sb); // -foo-foo-foo-
 
-        Matcher m = p.matcher("aabfooaabfooabfoob");
 
-        String result = m.replaceAll("-");
-        p(result); // -foo-foo-foo-
-
-        result = m.replaceFirst("-");
-        p(result); // -fooaabfooabfoob
-    }
-
-    /**
-     * String	replaceFirst(String replacement)
-     * 替换模式与给定替换字符串匹配的输入序列的第一个子序列
-     */
-    @Test
-    public void replaceFirst() {
-        replaceAll();
     }
 
     /**
