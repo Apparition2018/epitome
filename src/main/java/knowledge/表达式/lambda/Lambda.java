@@ -22,10 +22,9 @@ public class Lambda extends Demo {
      * Lambda 表达式免去了使用匿名方法的麻烦，并且给予 Java 简单但是强大的函数化的编程能力。
      */
     @Test
-    public void test() {
+    public void testLambda() {
         // 声明类型
         MathOperation addition = (int a, int b) -> a + b;
-        p(addition);
 
         // 不声明类型
         MathOperation subtraction = (a, b) -> a - b;

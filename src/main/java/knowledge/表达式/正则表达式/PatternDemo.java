@@ -3,84 +3,57 @@ package knowledge.表达式.正则表达式;
 import l.demo.Demo;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Pattern
+ * 正则表达式的编译表示形式
+ * https://jdk6.net/util-regex/Pattern.html
  */
 public class PatternDemo extends Demo {
 
     /**
-     * static Pattern	compile(String regex[, int flags])
-     * 将给定的正则表达式编译到具有给定标志的模式中
-     *
-     * flags    -- 匹配标志，可能包括 CASE_INSENSITIVE、 MULTILINE、 DOTALL、 UNICODE_CASE、 CANON_EQ、 UNIX_LINES、 LITERAL 和 COMMENTS 的位掩码
+     * 用法一 Pattern.compile()
      */
     @Test
     public void compile() {
-        Pattern p = Pattern.compile("a*b");
-
-        Matcher m = p.matcher("aaaaab");
-
-        p(m.matches());
-        p(p.pattern()); // a*b
+        // static Pattern   compile(String regex[, int flags])
+        // 将给定的正则表达式编译到具有给定标志的模式中
+        Pattern pattern = Pattern.compile("a*b");
+        // Matcher	        matcher(CharSequence input)
+        // 创建匹配给定输入与此模式的匹配器
+        Matcher matcher = pattern.matcher("aab");
     }
 
     /**
-     * Matcher	matcher(CharSequence input)
-     * 创建匹配给定输入与此模式的匹配器
+     * 用法二 Pattern.matches()
      */
     @Test
     public void matcher() {
-        compile();
+        // static boolean    matches(String regex, CharSequence input)
+        // 编译给定正则表达式并尝试将给定输入与其匹配
+        p(Pattern.matches("a*b", "aab")); // true
     }
 
     /**
-     * String	pattern()
-     * 返回在其中编译过此模式的正则表达式
-     */
-    @Test
-    public void pattern() {
-        compile();
-    }
-
-    /**
-     * static String	quote(String s)
+     * static String        quote(String s)
      * 返回指定 String 的字面值模式 String
      */
     @Test
     public void quote() {
-        String regex = "a*b";
-
-        p(Pattern.matches(regex, "aaaaab"));// true
-
-        regex = Pattern.quote(regex);
-        p(regex); // \Qa*b\E
-
-        p(Pattern.matches(regex, "aaaaab"));// false
-        p(Pattern.matches(regex, "a*b"));   // true，只能匹配 "a*b" 了
+        String quote = Pattern.quote("a*b");
+        p(Pattern.matches("a*b", "aab")); // true
+        p(Pattern.matches(quote, "aab")); // false
     }
 
     /**
-     * static boolean	matches(String regex, CharSequence input)
-     * 编译给定正则表达式并尝试将给定输入与其匹配
-     */
-    @Test
-    public void matches() {
-        quote();
-    }
-
-    /**
-     * String[]	split(CharSequence input, int limit)
+     * String[]	            split(CharSequence input, int limit)
      * 围绕此模式的匹配拆分给定输入序列
      */
     @Test
     public void split() {
-        Pattern p = Pattern.compile(":");
-
-        String[] result = p.split("boo:and:foo", 2);
-        p(Arrays.toString(result)); // [boo, and:foo]
+        Pattern pattern = Pattern.compile(":");
+        p(pattern.split("boo:and:foo", 2)); // [boo, and:foo]
     }
 }

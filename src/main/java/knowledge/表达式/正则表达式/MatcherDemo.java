@@ -8,13 +8,19 @@ import java.util.regex.Pattern;
 
 /**
  * Matcher
+ * 通过解释 Pattern 对 character sequence 执行匹配操作的引擎。
+ * 通过调用模式的 matcher 方法从模式创建匹配器。创建匹配器后，可以使用它执行三种不同的匹配操作：
+ * 1.matches 方法尝试将整个输入序列与该模式匹配。
+ * 2.lookingAt 尝试将输入序列从头开始与该模式匹配。
+ * 3.find 方法扫描输入序列以查找与该模式匹配的下一个子序列。
+ * https://jdk6.net/util-regex/Matcher.html
  */
 public class MatcherDemo extends Demo {
 
     /**
      * boolean	find()
      * 尝试查找与该模式匹配的输入序列的下一个子序列
-     *
+     * <p>
      * boolean	find(int start)
      * 重置此匹配器，然后尝试查找匹配该模式、从指定索引开始的输入序列的下一个子序列
      */
@@ -44,7 +50,7 @@ public class MatcherDemo extends Demo {
     /**
      * String	group()
      * 返回由以前匹配操作所匹配的输入子序列
-     *
+     * <p>
      * String	group(int group)
      * 返回在以前匹配操作期间由给定组捕获的输入子序列
      */
@@ -58,7 +64,7 @@ public class MatcherDemo extends Demo {
     /**
      * int	start()
      * 返回上一个匹配的初始索引
-     *
+     * <p>
      * int	start(int group)
      * 返回上一个匹配操作期间，由给定组所捕获的子序列的初始索引
      */
@@ -68,7 +74,7 @@ public class MatcherDemo extends Demo {
 
         Matcher m = p.matcher("aabfooaabfooabfoob");
 
-        while(m.find()) {
+        while (m.find()) {
             p(m.start());   // 0 6  12
             p(m.start(1));  // 0 6  12
             p(m.start(2));  // 3 9  14
@@ -82,7 +88,7 @@ public class MatcherDemo extends Demo {
     /**
      * int	end()
      * 返回最后匹配字符之后的偏移量
-     *
+     * <p>
      * int	end(int group)
      * 返回在以前的匹配操作期间，由给定组所捕获子序列的最后字符之后的偏移量
      */
@@ -92,6 +98,7 @@ public class MatcherDemo extends Demo {
     }
 
     // 研究方法
+
     /**
      * boolean	lookingAt()
      * 尝试将从区域开头开始的输入序列与该模式匹配
@@ -123,6 +130,7 @@ public class MatcherDemo extends Demo {
     }
 
     // 替换方法
+
     /**
      * Matcher	appendReplacement(StringBuffer sb, String replacement)
      * 实现非终端添加和替换步骤
@@ -135,7 +143,7 @@ public class MatcherDemo extends Demo {
 
         StringBuffer buffer = new StringBuffer();
 
-        while(m.find()) {
+        while (m.find()) {
             m.appendReplacement(buffer, "-");
         }
 

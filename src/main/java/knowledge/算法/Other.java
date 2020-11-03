@@ -109,7 +109,7 @@ public class Other extends Demo {
             flags[index] = true;
         }
 
-        p(Arrays.toString(chs));
+        p(chs);
     }
 
     /**

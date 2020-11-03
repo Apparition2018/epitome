@@ -129,8 +129,7 @@ public class StreamDemo extends Demo {
         p(Stream.of(9, 7, 5, 3, 1).isParallel()); // false
 
         // toArray()        返回所有元素的数组
-        Object[] arr = Stream.of(9, 7, 5, 3, 1).toArray();
-        p(Arrays.toString(arr)); // [9, 7, 5, 3, 1]
+        p(Stream.of(9, 7, 5, 3, 1).toArray()); // [9, 7, 5, 3, 1]
 
         // max()            返回元素中最大的 Optional 对象
         // min()            返回元素中最小的 Optional 对象
