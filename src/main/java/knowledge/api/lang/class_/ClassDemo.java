@@ -19,6 +19,7 @@ import java.util.function.Predicate;
  * Class 没有公共构造方法。Class 对象是在加载类时由 Java 虚拟机以及通过调用类加载器中的 defineClass 方法自动构造的。
  * <p>
  * Class<?>         getEnclosingClass()         返回底层类的立即封闭类
+ * Class<?> 	    getComponentType()          返回表示数组组件类型的 Class
  * ClassLoader	    getClassLoader()            返回该类的类加载器
  * Package	        getPackage()                返回该类的包
  * Class<? super T>	getSuperclass()             返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的超类的 Class
