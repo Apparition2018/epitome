@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
  * 2.lookingAt 尝试将输入序列从头开始与该模式匹配。
  * 3.find 方法扫描输入序列以查找与该模式匹配的下一个子序列。
  * https://jdk6.net/util-regex/Matcher.html
+ * https://blog.csdn.net/luyaran/article/details/80175651
  */
 public class MatcherDemo extends Demo {
 
@@ -100,6 +101,7 @@ public class MatcherDemo extends Demo {
      * Matcher	        appendReplacement(StringBuffer sb, String replacement)  实现非终端添加和替换步骤
      * StringBuffer	    appendTail(StringBuffer sb)         实现终端添加和替换步骤
      * static String	quoteReplacement(String s)          返回指定 String 的字面值替换 String
+     * static String	quoteReplacement(String s)          返回指定 String 的字面值替换 String
      */
     @Test
     public void replace() {
@@ -109,37 +111,32 @@ public class MatcherDemo extends Demo {
         p(matcher.replaceFirst("-"));   // -fooaabfooaaabfoob
         p(matcher.replaceAll("-"));     // -foo-foo-foo-
 
+
         // appendReplacement(), appendTail()
+        // https://blog.zzkun.com/archives/89
+        Pattern pattern2 = Pattern.compile("a*b");
+        Matcher matcher2 = pattern2.matcher("abfooaabfooaaabfoob");
         StringBuffer sb = new StringBuffer();
-        while (matcher.find()) {
-            matcher.appendReplacement(sb, "-");
+        while (matcher2.find()) {
+            matcher2.appendReplacement(sb, "-");
+            p(sb);
+            // -
+            // -foo-
+            // -foo-foo-
+            // -foo-foo-foo-
         }
-        matcher.appendTail(sb);
+        matcher2.appendTail(sb);
         p(sb); // -foo-foo-foo-
-
-
-    }
-
-    /**
-     * static String	quoteReplacement(String s)
-     * 返回指定 String 的字面值替换 String
-     */
-    @Test
-    public void quoteReplacement() {
-        Pattern p = Pattern.compile("a*b");
-
-        Matcher m = p.matcher("aabfooaabfooabfoob");
-
-        String result;
+        
+        
+        Pattern pattern3 = Pattern.compile("a*b");
+        Matcher mather3 = pattern3.matcher("abfooaabfooaaabfoob");
         try {
-            result = m.replaceAll("-$");
-            p(result);
+            p(mather3.replaceAll("-$"));
         } catch (Exception e) {
-            p("Exception: " + e.getMessage()); // Exception: Illegal group reference: group index is missing
+            p(e.getMessage()); // Illegal group reference: group index is missing
         }
-
-        result = m.replaceAll(Matcher.quoteReplacement("-$"));
-        p(result); // -$foo-$foo-$foo-$
+        p(mather3.replaceAll(Matcher.quoteReplacement("-$"))); // -$foo-$foo-$foo-$
     }
 
 }
