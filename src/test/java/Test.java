@@ -25,5 +25,6 @@ public class Test extends Demo {
 
     public static void main(String[] args) {
         System.out.println();
+        p("123456".split(""));
     }
 }

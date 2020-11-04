@@ -24,9 +24,9 @@ public class StringBufferBuilderDemo extends Demo {
      */
     @Test
     public void append() {
-        StringBuilder sb = new StringBuilder("hello");
+        StringBuilder sb = new StringBuilder("Hello");
 
-        p(sb.append(" world")); // hello world
+        p(sb.append(" World!")); // Hello World!
     }
 
     /**
@@ -61,9 +61,9 @@ public class StringBufferBuilderDemo extends Demo {
      */
     @Test
     public void insert() {
-        StringBuilder sb = new StringBuilder("hello");
+        StringBuilder sb = new StringBuilder("Hello");
 
-        p(sb.insert(5, " world")); // hello world
+        p(sb.insert(5, " World!")); // Hello World!
     }
 
     /**

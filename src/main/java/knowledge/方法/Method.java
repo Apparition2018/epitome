@@ -23,7 +23,7 @@ public class Method {
     }
 
     public static int max(int num1, int num2) {
-        return num1 > num2 ? num1 : num2;
+        return Math.max(num1, num2);
     }
 
     /**
@@ -35,16 +35,16 @@ public class Method {
      */
     public static int getMax(int... nums) {
         for (int num : nums) {
-            max = num > max ? num : max;
+            max = Math.max(num, max);
         }
         return max;
     }
 
     public static void main(String[] args) {
-        System.out.println(getMax(3, 7, 1, 5, 9)); // 9
+        System.out.println(getMax(3, 7, 1, 5, 9));  // 9
 
         int[] arr = {3, 7, 1, 5, 9};
-        System.out.println(getMax(arr));                   // 9
+        System.out.println(getMax(arr));            // 9
     }
 
 }

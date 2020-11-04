@@ -1,6 +1,5 @@
 package jar.google.guava.collect;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import l.demo.Demo;
 import org.junit.Test;
@@ -10,85 +9,41 @@ import java.util.List;
 /**
  * Lists
  * <p>
+ * static <E> LinkedList<E>             newLinkedList([Iterable<? extends E> elements])             创建 LinkedList
+ * static <E> CopyOnWriteArrayList<E>   newCopyOnWriteArrayList([Iterable<? extends E> elements])   创建 CopyOnWriteArrayList
+ * <p>
+ * static <T> List<T>	                reverse(List<T> list)                                       返回指定列表的反向视图
+ * <p>
  * http://www.ibloger.net/article/3312.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Lists.html
  */
 public class ListsDemo extends Demo {
 
     @Test
-    public void new_() {
-        List<String> list = Lists.newArrayList("1", "2", "3");
-        List<String> list2 = Lists.newArrayList(list);
-        p(list2);
-    }
+    public void testLists() {
+        List<Integer> guavaList;
 
-    /**
-     * static <E> List<E>	            asList(E first[, E second], E[] rest)
-     * 返回一个不可变 List，其中包含指定的第一个和第二个元素，和指定的附加元素数组。
-     */
-    @Test
-    public void asList() {
-        String str1 = "0";
-        String str2 = "1";
-        String[] strs = {"2", " 3", "4"};
-        List<String> list = Lists.asList(str1, str2, strs);
-        p(list); // [0, 1, 2,  3, 4]
-    }
+        // static <E> ArrayList<E>	        newArrayListWithExpectedSize(int estimatedSize)
+        // 创建 list，有足够的初始容量来容纳元素，而不需要扩容
+        guavaList = Lists.newArrayListWithExpectedSize(list.size());
 
-    /**
-     * static <B> List<List<B>>	        cartesianProduct(List<? extends B>... lists)
-     * static <B> List<List<B>>	        cartesianProduct(List<? extends List<? extends B>> lists)
-     * 返回按顺序从给定列表中选择一个元素可以形成的所有可能列表;列表的“n元笛卡尔积”。
-     */
-    @Test
-    public void cartesianProduct() {
-        List<String> list1 = Lists.newArrayList("1", "2", "3");
-        List<String> list2 = Lists.newArrayList("a", "b", "c");
-        List<List<String>> lists = Lists.cartesianProduct(list1, list2);
-        p(lists);
-    }
+        // static <E> List<E>	            asList(E first[, E second], E[] rest)
+        // 返回一个不可变 List，其中包含指定的第一个和第二个元素，和指定的附加元素数组。
+        guavaList = Lists.asList(1, 2, new Integer[]{3, 4, 5, 6, 7, 8, 9});
 
-    /**
-     * static List<Character>	        charactersOf(CharSequence sequence)
-     * static ImmutableList<Character>	charactersOf(String string)
-     * 将 sequence 或 string 分割为单个字符
-     */
-    @Test
-    public void charactersOf() {
-        ImmutableList<Character> characters = Lists.charactersOf("I Love You");
-        p(characters); // [I,  , L, o, v, e,  , Y, o, u]
-    }
+        // static <T> List<List<T>>         partition(List<T> list, int size)
+        // 根据 size 对 list 进行切割，可用于分页
+        p(Lists.partition(list, 2)); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
 
-    /**
-     * static <T> List<List<T>>         partition(List<T> list, int size)
-     * 根据 size 对 list 进行切割，可用于分页
-     */
-    @Test
-    public void partition() {
-        List<String> list = Lists.newArrayList("1", "2", "3", "4", "5");
-        List<List<String>> lists = Lists.partition(list, 2);
-        p(lists); // [[1, 2], [3, 4], [5]]
-    }
+        // static <B> List<List<B>>         cartesianProduct(List<? extends B>... lists)
+        // 笛卡尔积
+        p(Lists.cartesianProduct(subList, subList2));
+        // [[2, 4], [2, 5], [2, 6], [2, 7], [2, 8], [3, 4], [3, 5], [3, 6], [3, 7], [3, 8], [4, 4], [4, 5], [4, 6], [4, 7], [4, 8], [5, 4], [5, 5], [5, 6], [5, 7], [5, 8], [6, 4], [6, 5], [6, 6], [6, 7], [6, 8]]
 
-    /**
-     * static <T> List<T>	            reverse(List<T> list)
-     * 返回指定列表的反向视图
-     */
-    @Test
-    public void reverse() {
-        List<String> list = Lists.newArrayList("1", "2", "3");
-        p(Lists.reverse(list)); // [3, 2, 1]
-    }
-
-    /**
-     * static <F,T> List<T>	            transform(List<F> fromList, Function<? super F,? extends T> function)
-     * 根据 function 对 fromList 进行相应处理，并返回处理后的 list
-     */
-    @Test
-    public void transform() {
-        List<String> list = Lists.newArrayList("a", "b", "c");
-        List<String> newList = Lists.transform(list, String::toUpperCase);
-        p(newList); //         p(newList);
+        // static List<Character>	        charactersOf(CharSequence sequence)
+        // static ImmutableList<Character>	charactersOf(String string)
+        // 将 CharSequence 分割为单个字符
+        p(Lists.charactersOf("Hello World!")); // [H, e, l, l, o,  , W, o, r, l, d, !]
     }
 
 }

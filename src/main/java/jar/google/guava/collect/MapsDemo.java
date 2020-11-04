@@ -13,7 +13,12 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Maps
+ * Map
+ * static ConcurrentMap<K, V>   newConcurrentMap()                              创建 ConcurrentMap
+ * static TreeMap<K, V>         newTreeMap([SortedMap<K, ? extends V> map])     创建 TreeMap
+ * static TreeMap<K, V>         newTreeMap(@Nullable Comparator<C> comparator)  创建 TreeMap，根据 Comparator
+ * static EnumMap<K, V>         newEnumMap(Map<K, ? extends V>/Class<K>)        创建 EnumMap
+ * static IdentityHashMap<K, V> newIdentityHashMap()                            创建 IdentityHashMap
  * <p>
  * http://www.ibloger.net/article/3314.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Maps.html
@@ -23,7 +28,8 @@ public class MapsDemo extends Demo {
     @Test
     public void testMaps() {
         // static <K, V> HashMap<K, V>          newHashMapWithExpectedSize(int expectedSize)
-        // 创建 HashMap，有足够的初始容量来容纳元素，而不需要 growth
+        // static <K, V> HashMap<K, V>          newLinkedHashMapWithExpectedSize(int expectedSize)
+        // 创建 HashMap/LinkedHashMap，有足够的初始容量来容纳元素，而不需要 growth
         Map<Integer, String> guavaMap = Maps.newHashMapWithExpectedSize(map.size());
 
         // static <K, V> MapDifference<K, V>    difference(Map<? extends K, ? extends V> left, Map<? extends K, ? extends V> right)
@@ -35,6 +41,8 @@ public class MapsDemo extends Demo {
 
     /**
      * 函数式接口相关
+     * <p>
+     * static <K, V1, V2> Map<K, V2>    transformEntries(Map<K, V1> fromMap, Maps.EntryTransformer<? s K, ? s V1, V2> transformer)  ???
      */
     @Test
     public void testFunctionalInterface() {
@@ -64,6 +72,17 @@ public class MapsDemo extends Demo {
         // static ImmutableMap<String,String>	fromProperties(Properties properties)
         // Properties  →  ImmutableMap
         p(Maps.fromProperties(PropertiesUtil.loadProps(JDBC_PROP_FILENAME)));
+    }
+
+    /**
+     * static ImmutableMap<K, V>    immutableEnumMap(Map<K, ? extends V> map)           Map → immutableEnumMap
+     * static XXXMap<K, V>          unmodifiableXXXMap(XXXMap<K, ? extends V> map)      XXXMap → unmodifiableXXXMap
+     * static XXXMap<K, V>          synchronizedXXXMap(XXXMap<K, V> map)                XXXMap → synchronizedXXXMap
+     * static Entry<K, V>           immutableEntry(@Nullable K key, @Nullable V value)  key + value → Entry
+     * static Converter<A, B>       asConverter(BiMap<A, B> bimap)                      BiMap → Converter
+     */
+    @Test
+    public void convert() {
     }
 
 }
