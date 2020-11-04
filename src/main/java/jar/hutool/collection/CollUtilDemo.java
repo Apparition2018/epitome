@@ -23,6 +23,7 @@ import java.util.*;
  * static <T> List<T>	            addAllIfNotContains(List<T> list, List<T> otherList)            加入全部，除非元素已经存在
  * <p>
  * static <T> T	                    get(Collection<T> collection, int index)                        获取集合中指定下标的元素值，支持负数
+ * static <T> List<T>               getAny(Collection<T> collection, int... indexes)                获取集合中指定多个下标的元素，支持负数
  * static <T> T	                    getLast(Collection<T> collection)                               获取集合的最后一个元素
  * <p>
  * static <T extends Comparable> T	max(Collection<T> coll)                                         最大值
@@ -61,9 +62,6 @@ public class CollUtilDemo extends Demo {
 
         // getFieldValues(Iterable, fieldName, ignoreNull)              获取 Iterable 中指定 fileName 值的列表，支持 Bean 与 Map
         p(CollUtil.getFieldValues(personList, "name", true));           // [张三, 李四, 王五]
-
-        // getAny(Collection, int... indexes)                           获取集合中指定多个下标的元素，支持负数
-        p(CollUtil.getAny(list, 1, 3, 5, -2));                          // [2, 4, 6, 8]
 
         // indexOfAll(Collection, Matcher)                              获取满足指定规则所有的元素的位置
         p(CollUtil.indexOfAll(ListUtil.of(1, 2, 3, 2, 1),
@@ -121,6 +119,9 @@ public class CollUtilDemo extends Demo {
 
         // valuesOfKeys(Map<K,V>, Iterable<K>/Iterator<K>/K... keys)    根据 Keys 获取对应 key 的 value，如果为 null 则返回 null
         p(CollUtil.valuesOfKeys(map, list));                            // [A, B, C, null, null, null, null, null, null]
+        
+        // zip(Collection<K> keys, Collection<V> values)                给定两个集合，然后两个集合中的元素一一对应，成为一个 Map
+        p(CollUtil.zip(list, list));                                    // {1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, 8=8, 9=9}
     }
 
     /**
@@ -200,14 +201,4 @@ public class CollUtilDemo extends Demo {
         p(queue);                       // [3]
     }
 
-    /**
-     * 给定两个集合，然后两个集合中的元素一一对应，成为一个 Map
-     */
-    @Test
-    public void zip() {
-        Collection<Integer> keys = CollUtil.newArrayList(1, 2, 3, 4, 5);
-        Collection<String> values = CollUtil.newArrayList("A", "B", "C", "D", "E");
-        Map<Integer, String> map = CollUtil.zip(keys, values);
-        p(map); // {1=A, 2=B, 3=C, 4=D, 5=E}
-    }
 }
