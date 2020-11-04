@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  * static void	            shuffle(List<?> list[, Random rnd])             使用指定的随机源对指定列表进行置换
  * static void	            reverse(List<?> list)                           反转指定列表中元素的顺序
  * static <T> void	        sort(List<T> list, Comparator<? super T> c)     根据指定比较器产生的顺序对指定列表进行排序
- * static <T extends Comparable<? super T>> void	sort(List<T> list)      根据元素的自然顺序 对指定列表按升序进行排序
+ * static <T> void	        sort(List<T> list)                              根据元素的自然顺序 对指定列表按升序进行排序
  * <p>
  * static <T> List<T>	    emptyList()                                     返回空的列表（不可变的）
  * static <T> Set<T>	    emptySet()                                      返回空的 set（不可变的）
