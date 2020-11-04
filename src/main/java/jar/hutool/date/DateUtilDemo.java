@@ -16,6 +16,7 @@ import java.util.Date;
  * static int       compare(Date date1, Date date2)
  * <p>
  * https://hutool.cn/docs/#/core/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7-DateUtil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/date/DateUtil.html
  *
  * @author ljh
  * created on 2020/10/26 22:16
@@ -229,6 +230,7 @@ public class DateUtilDemo extends Demo {
 
     /**
      * 计时器
+     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/date/TimeInterval.html
      */
     @Test
     public void timer() throws InterruptedException {
@@ -240,11 +242,17 @@ public class DateUtilDemo extends Demo {
         }
         countDownLatch.await();
 
-        // Week, Day, Hour, Minute, Second, Ms 
-        p(timeInterval.interval());         // 310
-        p(timeInterval.intervalMs());       // 310
-        p(timeInterval.intervalRestart());  // 310
-        p(timeInterval.intervalPretty());   // 0 毫秒
+        p(timeInterval.interval());         // 314
+        p(timeInterval.intervalMs());       // 314
+        p(timeInterval.intervalSecond());   // 0
+        p(timeInterval.intervalHour());     // 0
+        p(timeInterval.intervalDay());      // 0
+        p(timeInterval.intervalWeek());     // 0
+        // XX天XX小时XX分XX秒XX毫秒
+        p(timeInterval.intervalPretty());   // 316毫秒
+        // 重新开始计时
+        p(timeInterval.intervalRestart());  // 319
+        p(timeInterval.interval());         // 0
     }
 
     /**

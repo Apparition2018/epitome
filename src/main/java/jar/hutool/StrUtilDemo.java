@@ -7,6 +7,7 @@ import org.junit.Test;
 /**
  * StrUtilDemo
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B7%A5%E5%85%B7-StrUtil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/StrUtil.html
  *
  * @author ljh
  * created on 2020/10/27 14:25
