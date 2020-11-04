@@ -3,22 +3,22 @@ package knowledge.api.lang;
 import l.demo.Demo;
 import org.junit.Test;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * System
  * https://jdk6.net/lang/System.html
  * <p>
- * static void	                exit(int status)                终止当前正在运行的 Java 虚拟机
- * static void	                gc()                            运行垃圾回收器
- * static void	                load(String filename)           从作为动态库的本地文件系统中以指定的文件名加载代码文件
- * static void	                loadLibrary(String libname)     加载由 libname 参数指定的系统库
- * static void	                setProperties(Properties props) 将系统属性设置为 Properties 参数
+ * static void	                exit(int status)                        终止当前正在运行的 Java 虚拟机
+ * static void	                gc()                                    运行垃圾回收器
+ * static void	                load(String filename)                   从作为动态库的本地文件系统中以指定的文件名加载代码文件
+ * static void	                loadLibrary(String libname)             加载由 libname 参数指定的系统库
+ * static void	                setProperties(Properties props)         将系统属性设置为 Properties 参数
  * static String	            setProperty(String key, String value)   设置指定键指示的系统属性
- * static String	            clearProperty(String key)       移除指定键指示的系统属性
- * static Map<String,String>	getenv()                        返回一个不能修改的当前系统环境的字符串映射视图
- * static Console	            console()                       返回与当前 Java 虚拟机关联的唯一 Console 对象（如果有）
- * static int	                identityHashCode(Object x)      返回给定对象的哈希码，该代码与默认的方法 hashCode() 返回的代码一样，无论给定对象的类是否重写 hashCode()
+ * static String	            clearProperty(String key)               移除指定键指示的系统属性
+ * static Map<String,String>	getenv()                                返回一个不能修改的当前系统环境的字符串映射视图
+ * static Console	            console()                               返回与当前 Java 虚拟机关联的唯一 Console 对象（如果有）
+ * static int	                identityHashCode(Object x)              返回给定对象的哈希码，该代码与默认的方法 hashCode() 返回的代码一样，无论给定对象的类是否重写 hashCode()
+ * static long	                currentTimeMillis()                     返回以毫秒为单位的当前时间
+ * static long	                nanoTime()                              返回最准确的可用系统计时器的当前值，以毫微秒为单位
  */
 public class SystemDemo extends Demo {
 
@@ -32,31 +32,8 @@ public class SystemDemo extends Demo {
     public void arraycopy() {
         int[] arr1 = new int[]{1, 2, 3};
         int[] arr2 = new int[arr1.length + 1];
-
         System.arraycopy(arr1, 0, arr2, 0, 3);
         p(arr2); // [1, 2, 3, 0]
-    }
-
-    /**
-     * static long	    currentTimeMillis()                     返回以毫秒为单位的当前时间
-     */
-    @Test
-    public void currentTimeMills() throws InterruptedException {
-        long t1 = System.currentTimeMillis();
-        TimeUnit.SECONDS.sleep(1);
-        long t2 = System.currentTimeMillis();
-        p(t2 - t1); // 1000
-    }
-
-    /**
-     * static long	    nanoTime()                              返回最准确的可用系统计时器的当前值，以毫微秒为单位
-     */
-    @Test
-    public void nanoTime() throws InterruptedException {
-        long t1 = System.nanoTime();
-        TimeUnit.SECONDS.sleep(1);
-        long t2 = System.nanoTime();
-        p(t2 - t1); // 999885400
     }
 
     /**
