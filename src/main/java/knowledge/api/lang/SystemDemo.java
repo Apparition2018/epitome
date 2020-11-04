@@ -23,7 +23,7 @@ import org.junit.Test;
 public class SystemDemo extends Demo {
 
     /**
-     * static void	    arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
+     * static void	        arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
      * 从指定源数组中复制一个数组，复制从指定的位置开始，到目标数组的指定位置结束
      * <p>
      * PS：native 接口，建议在复制大量数组元素时用该方法，以取得更高的效率
@@ -37,25 +37,26 @@ public class SystemDemo extends Demo {
     }
 
     /**
-     * static String	getProperty([String key[, String def]]) 获取用指定键描述的系统属性
+     * static String	    getProperty([String key[, String def]]) 获取用指定键描述的系统属性
+     * static Properties	getProperties()                         确定当前的系统属性
      */
     @Test
     public void getProperty() {
-        p(System.getProperty("java.version"));         // 1.8.0_131
-        p(System.getProperty("java.vendor"));          // Oracle Corporation
-        p(System.getProperty("java.vendor.url"));      // http://java.oracle.com/
-        p(System.getProperty("java.home"));            // C:\Program Files\Java\jdk1.8.0_131\jre
-        p(System.getProperty("java.class.version"));   // 52.0
-        p(System.getProperty("java.class.path"));      // ...
-        p(System.getProperty("os.name"));              // Windows 7
-        p(System.getProperty("os.arch"));              // amd64
-        p(System.getProperty("os.version"));           // 6.1
-        p(System.getProperty("file.separator"));       // "/" on Unix, "\\" on windows
-        p(System.getProperty("path.separator"));       // ":" on Unix, ";" on windows
-        p(System.getProperty("line.separator"));       // "\n" on Unix, "\r\n" on windows
-        p(System.getProperty("user.name"));            // 234607
-        p(System.getProperty("user.home"));            // C:\Users\234607
-        p(System.getProperty("user.dir"));             // C:\Users\234607\git\epitome
+        p(System.getProperty("user.name"));             // NL-PC001
+        p(System.getProperty("user.home"));             // C:\Users\NL-PC001
+        p(System.getProperty("user.dir"));              // D:\L\git\epitome
+        p(System.getProperty("os.arch"));               // amd64
+        p(System.getProperty("os.name"));               // Windows 10
+        p(System.getProperty("os.version"));            // 10.0
+        p(System.getProperty("java.vendor"));           // Oracle Corporation
+        p(System.getProperty("java.vendor.url"));       // http://java.oracle.com/
+        p(System.getProperty("java.version"));          // 1.8.0_221
+        p(System.getProperty("java.home"));             // D:\Java\jdk1.8.0_221\jre
+        p(System.getProperty("java.class.version"));    // 52.0
+        p(System.getProperty("java.class.path"));       // ...
+        p(System.getProperty("file.separator"));        // "/" on Unix, "\\" on windows
+        p(System.getProperty("path.separator"));        // ":" on Unix, ";" on windows
+        p(System.getProperty("line.separator"));        // "\n" on Unix, "\r\n" on windows
     }
 
 }

@@ -31,7 +31,12 @@ public class SystemUtilsDemo extends Demo {
         p(SystemUtils.IS_JAVA_1_8);         // true
         p(SystemUtils.JAVA_VM_NAME);        // Java HotSpot(TM) 64-Bit Server VM
         p(SystemUtils.JAVA_VM_INFO);        // mixed mode
+        p(SystemUtils.JAVA_VENDOR);         // Oracle Corporation
+        p(SystemUtils.JAVA_VENDOR_URL);     // http://java.oracle.com/
         p(SystemUtils.JAVA_VERSION);        // 1.8.0_221
+        p(SystemUtils.JAVA_HOME);           // D:\Java\jdk1.8.0_221\jre
+        p(SystemUtils.JAVA_CLASS_VERSION);  // 52.0
+        p(SystemUtils.JAVA_CLASS_PATH);     // ...
         p(SystemUtils.FILE_ENCODING);       // UTF-8
     }
 
