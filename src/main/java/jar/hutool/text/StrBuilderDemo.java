@@ -19,7 +19,7 @@ public class StrBuilderDemo extends Demo {
     @Test
     public void testStrBuilder() {
         TimeInterval timer = DateUtil.timer();
-        // JDK StringBuilder
+        // 1.JDK StringBuilder
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 1000000; i++) {
             sb.append("test");
@@ -28,14 +28,14 @@ public class StrBuilderDemo extends Demo {
         }
         p(timer.interval());
         
-        TimeInterval timer2 = DateUtil.timer();
-        // HuTool StrBuilder
+        timer.restart();
+        // 2.HuTool StrBuilder
         StrBuilder sb2 = new StrBuilder();
         for (int i = 0; i < 1000000; i++) {
             sb2.append("test");
             // 重新构建新的字符串，不必开辟新内存
             sb2.reset();
         }
-        p(timer2.interval());
+        p(timer.interval());
     }
 }

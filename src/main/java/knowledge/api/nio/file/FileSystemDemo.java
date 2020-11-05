@@ -11,7 +11,7 @@ import java.nio.file.attribute.BasicFileAttributes;
  * FileSystem
  * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/FileSystem.html
  * <p>
- * FileSystem
+ * FileSystems
  * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/FileSystems.html
  */
 public class FileSystemDemo extends Demo {
