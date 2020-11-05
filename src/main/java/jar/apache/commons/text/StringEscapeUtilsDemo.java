@@ -17,7 +17,9 @@ public class StringEscapeUtilsDemo extends Demo {
         String str = "{\"name\":\"Jack\",\"age\":18}";
         String json = StringEscapeUtils.escapeJson(str);
         p("json = " + json);
+        // json = {\"name\":\"Jack\",\"age\":18}
         p("str = " + StringEscapeUtils.unescapeJson(json));
+        // str = {"name":"Jack","age":18}
     }
 
     @Test
@@ -25,7 +27,9 @@ public class StringEscapeUtilsDemo extends Demo {
         String str = "<div class=\"table-td\">红豆生南国<br/>春来发几枝<br/>愿君多采撷<br/>此物最相思</div>";
         String html = StringEscapeUtils.unescapeHtml4(str);
         p("html = " + html);
+        // html = <div class="table-td">红豆生南国<br/>春来发几枝<br/>愿君多采撷<br/>此物最相思</div>
         p("str = " + StringEscapeUtils.escapeHtml4(html));
+        // str = &lt;div class=&quot;table-td&quot;&gt;红豆生南国&lt;br/&gt;春来发几枝&lt;br/&gt;愿君多采撷&lt;br/&gt;此物最相思&lt;/div&gt;
     }
 
 }
