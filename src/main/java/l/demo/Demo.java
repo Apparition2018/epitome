@@ -55,10 +55,10 @@ public class Demo {
     public static final SimpleDateFormat DATE_TIME_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     public static final SimpleDateFormat SDF = DATE_SDF;
     public static final String UTF_8 = String.valueOf(StandardCharsets.UTF_8);
-    public static final String DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";
-    public static final String BAIDU_URL = "https://www.baidu.com/";
-    public static final String USER_DIR = System.getProperty("user.dir");
     public static final String BAIDU_HOST = "www.baidu.com";
+    public static final String BAIDU_URL = "https://" + BAIDU_HOST;
+    public static final String DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";
+    public static final String USER_DIR = System.getProperty("user.dir");
     public static final String JAVA_PATH = "src/main/java/";
     public static final String RESOURCES_PATH = "src/main/resources/";
     public static final String DEMO_PATH = RESOURCES_PATH + "demo/";

@@ -1,44 +1,43 @@
 package knowledge.加解密和消息摘要;
 
 import l.demo.Demo;
-import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.UUID;
 
 /**
  * BASE64
+ * BASE64 使用了 64 个字符，包括 A-Za-z0-9+/，其中 +/ 在一些场景下代表着特殊含义(如 url)，会用 -_ 代替
  * BASE64 严格地说，属于编码格式，而非加密算法。
  * BASE 加密后产生的字节位数是8的倍数，如果不够位数以 = 符号填充。
+ * 应用场景：e-mail、密钥、证书文件
+ * https://www.matools.com/file/manual/jdk_api_1.8_google/java/util/Base64.html
+ * https://www.matools.com/file/manual/jdk_api_1.8_google/java/util/Base64.Encoder.html
  * <p>
  * Base64 算法原理：     https://www.cnblogs.com/chengmo/archive/2014/05/18/3735917.html
- * 图片 Base64 互转：    https://www.cnblogs.com/libra0920/p/5754356.html
  * Java实现Base64加密：  https://www.imooc.com/learn/285
  */
 public class Base64Demo extends Demo {
 
-    private static String src = "Hello World!";
-
     /**
      * Base64 编码在 JDK8 已经成为 Java 类库的标准。
+     * 而且效率都比 apache-commons-codec, sun.misc, Bouncy Castle 都要快
      * http://www.runoob.com/java/java8-base64.html
      */
     @Test
-    public void javaUtilBase64() {
+    public void testBase64() {
         // 基本：输出被映射到一组字符 A-Za-z0-9+/，编码不添加任何行标，输出的解码仅支持 A-Za-z0-9+/。
-        String encode = java.util.Base64.getEncoder().encodeToString(src.getBytes(StandardCharsets.UTF_8));
-        p("encode: " + encode + "\n");
+        String encode = Base64.getEncoder().encodeToString(BAIDU_URL.getBytes(StandardCharsets.UTF_8));
+        p("encode: " + encode);
 
-        byte[] bytes = java.util.Base64.getDecoder().decode(encode);
-        p("decode: " + new String(bytes, StandardCharsets.UTF_8) + "\n");
+        byte[] bytes = Base64.getDecoder().decode(encode);
+        p("decode: " + new String(bytes, StandardCharsets.UTF_8));
 
         // URL：输出映射到一组字符 A-Za-z0-9+_，输出是 URL 和文件。
-        encode = java.util.Base64.getUrlEncoder().encodeToString("TutorialsPoint".getBytes(StandardCharsets.UTF_8));
-        p("encodeUrl: " + encode + "\n");
+        encode = Base64.getUrlEncoder().encodeToString(BAIDU_URL.getBytes(StandardCharsets.UTF_8));
+        p("encodeUrl: " + encode);
 
         // MIME：输出隐射到 MIME 友好格式。输出每行不超过76字符，并且使用'\r'并跟随'\n'作为分割。编码输出最后没有行分割。
         StringBuilder sb = new StringBuilder();
@@ -46,41 +45,8 @@ public class Base64Demo extends Demo {
             sb.append(UUID.randomUUID().toString());
         }
         bytes = sb.toString().getBytes(StandardCharsets.UTF_8);
-        encode = java.util.Base64.getMimeEncoder().encodeToString(bytes);
-        p("encodeMime:\n" + encode + "\n");
-
-    }
-
-    @Test
-    public void sunMiscBase64() {
-        try {
-            BASE64Encoder encoder = new BASE64Encoder();
-            String encode = encoder.encode(src.getBytes());
-            p("encode:" + encode);
-
-            BASE64Decoder decoder = new BASE64Decoder();
-            p("decode:" + new String(decoder.decodeBuffer(encode)) + "\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void commonsCodecBase64() {
-        byte[] encodeBytes = Base64.encodeBase64(src.getBytes());
-        p("encode:" + new String(encodeBytes));
-
-        byte[] decodeBytes = Base64.decodeBase64(encodeBytes);
-        p("decode:" + new String(decodeBytes) + "\n");
-    }
-
-    @Test
-    public void bouncyCastleBase64() {
-        byte[] encodeBytes = org.bouncycastle.util.encoders.Base64.encode(src.getBytes());
-        p("encode:" + new String(encodeBytes));
-
-        byte[] decodeBytes = org.bouncycastle.util.encoders.Base64.decode(encodeBytes);
-        p("decode:" + new String(decodeBytes) + "\n");
+        encode = Base64.getMimeEncoder().encodeToString(bytes);
+        p("encodeMime:\n" + encode);
     }
 
 }
