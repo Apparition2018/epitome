@@ -118,7 +118,7 @@ public class FileDemo extends Demo {
         p("绝对路径：" + f0.getAbsolutePath());  // 绝对路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
         p("抽象路径：" + f0.getCanonicalPath()); // 抽象路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
 
-        File f1 = new File(USER_DIR + File.separator + DEMO_PATH + "Demo.txt");
+        File f1 = new File(DEMO_ABSOLUTE_PATH + "Demo.txt");
         p("相对路径：" + f1.getPath());          // 相对路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
         p("绝对路径：" + f1.getAbsolutePath());  // 绝对路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
         p("抽象路径：" + f1.getCanonicalPath()); // 抽象路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt

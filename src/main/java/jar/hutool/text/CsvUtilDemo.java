@@ -26,7 +26,7 @@ import java.util.List;
  */
 public class CsvUtilDemo extends Demo {
 
-    private static final String CSV_FILE_ABSOLUTE_PATH = USER_DIR + File.separator + DEMO_PATH + "demo.csv";
+    private static final String CSV_FILE_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "demo.csv";
 
     @Test
     public void testCsvUtil() throws InterruptedException {

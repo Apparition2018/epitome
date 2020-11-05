@@ -33,8 +33,8 @@ public class PathDemo extends Demo {
     // 使用 Paths.get(String first[, String... more]) 创建 Path
     private Path p2 = Paths.get(RESOURCES_PATH, "knowledge");
 
-    private Path p3 = Paths.get(USER_DIR + File.separator + DEMO_PATH);
-    private Path p4 = Paths.get(USER_DIR + File.separator + RESOURCES_PATH + "knowledge");
+    private Path p3 = Paths.get(DEMO_ABSOLUTE_PATH);
+    private Path p4 = Paths.get(RESOURCES_ABSOLUTE_PATH + "knowledge");
     
     @Test
     public void testGet() {
