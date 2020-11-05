@@ -66,6 +66,7 @@ public class Demo {
     public static final String DEMO_PATH = RESOURCES_PATH + "demo/";
     public static final String DEMO_ABSOLUTE_PATH = USER_DIR + File.separator + DEMO_PATH;
     public static final String DEMO_FILE_PATH = DEMO_PATH + "demo";
+    public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "demo";
     public static final String ARSENAL_LOGO = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1113375911,3381445023&fm=26&gp=0.jpg";
     public static final String NOHARA_SINNOSUKE = RESOURCES_ABSOLUTE_PATH + "static/static/img/people/NoharaSinnosuke.png";
     public static final String JDBC_PROP_FILENAME = "jdbc.properties";
