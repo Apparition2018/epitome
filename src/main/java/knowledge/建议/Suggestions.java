@@ -522,7 +522,7 @@ public class Suggestions extends Demo {
     @Test
     public void test030() {
         Random r = new Random(1000); // 种子默认是 System.nanoTime() 的返回值
-        IntStream.range(0, 4).forEach(i -> p(r.nextInt()));
+        IntStream.rangeClosed(1, 4).forEach(i -> p(r.nextInt()));
         // 每次输出都如下：
         // -1244746321
         // 1060493871

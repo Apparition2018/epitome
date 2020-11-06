@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -26,8 +27,6 @@ import java.util.stream.Stream;
  * http://www.runoob.com/java/java8-streams.html
  */
 public class StreamDemo extends Demo {
-
-    private static final Stream<Integer> STREAM = Stream.of(arr);
 
     @Test
     public void testStream() {
@@ -104,13 +103,13 @@ public class StreamDemo extends Demo {
         // limit()          返回指定元素个数的流
         Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9).limit(7)
                 .filter(n -> n % 2 == 0).sorted()
-                .forEach(n -> System.out.print(n + " ")); // 2 4 6 8 
+                .forEach(n -> System.out.print(n + " ")); // 2 4 6
         p("\n");
 
         // sequential()     返回串行 Stream 对象
         // parallel()       返回并行 Stream 对象
         // skip()           跳过指定个数元素
-        Stream.of(9, 7, 5, 3, 1).parallel().skip(2).forEach(n -> System.out.print(n + " ")); // 3 1 5;
+        Stream.of(9, 7, 5, 3, 1).parallel().skip(2).forEach(n -> System.out.print(n + " ")); // 3 1 5
 
         // close()          关闭 Stream 对象
         Stream.of(9, 7, 5, 3, 1).close();
@@ -147,12 +146,35 @@ public class StreamDemo extends Demo {
         p(Stream.of(3, 1, -1, -3).findFirst().get());              // 3
 
         // reduce()
-        Integer sum;
-        sum = Stream.of(1, 2, 3, 4, 5, 6).reduce((i1, i2) -> i1 + 2).get();
-        sum = Stream.of(1, 2, 3, 4, 5, 6).reduce(7, (i1, i2) -> i1 + 2);
+        p(Stream.of(1, 2, 3, 4, 5, 6).reduce((i1, i2) -> i1 + 2).get()); // 19
+        p(Stream.of(1, 2, 3, 4, 5, 6).reduce(7, (i1, i2) -> i1 + 2));    // 19
 
         // collect()
         List<Integer> list = Stream.of(9, 7, 5, 3, 1).collect(Collectors.toList());
+    }
+
+    /**
+     * other operation
+     * 其它操作
+     */
+    @Test
+    public void other() {
+        // Optional<T>	    findFirst()                 返回 Optional(first)，空 Stream 返回 Optional.empty()
+        p(Stream.of(arr).findFirst().orElse(null));     // 1
+        // Optional<T>	    findAny()                   串行一般返回 Optional(first)，并行翻译 Optional(any)，空 Stream 返回 Optional.empty()
+        p(Stream.of(arr).findAny().orElse(null));       // 1
+
+        // boolean          allMatch(IntPredicate)      // 全匹配
+        p(Stream.of(arr).allMatch(i -> i > 5));         // false
+        // boolean          anyMatch(IntPredicate)      // 任意一个匹配
+        p(Stream.of(arr).anyMatch(i -> i > 5));         // true
+        // boolean          noneMatch(IntPredicate)     // 全匹配
+        p(Stream.of(arr).noneMatch(i -> i > 5));        // false
+
+        // XxxStream        mapToXxx(XxxFunction<? super T>)                        Stream → XxxStream
+        IntStream intStream = Stream.of(arr).mapToInt(value -> value);
+        // XxxStream        flatMapToInt(Function<? super T, ? extends IntStream>)  Stream → XxxStream
+        IntStream intStream2 = Stream.of(arr).flatMapToInt(IntStream::of);
     }
 
     /**
@@ -161,9 +183,11 @@ public class StreamDemo extends Demo {
      */
     @Test
     public void collectors() {
+        // toCollection(), toList(), toSet(), toMap(), toConcurrentMap()
         List<Integer> list = Stream.of(9, 7, 5, 3, 1).collect(Collectors.toList());
         p(list);   // [9, 7, 5, 3, 1]
 
+        // joining()
         String str = Stream.of("9", "7", "5", "3", "1").collect(Collectors.joining(","));
         p(str);    // 9,7,5,3,1
     }
