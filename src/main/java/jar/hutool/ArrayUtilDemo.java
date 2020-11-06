@@ -121,7 +121,7 @@ public class ArrayUtilDemo extends Demo {
             }
         })); // [1, 3, 5, 7, 9]
 
-        // static <T> T[]       filter(T[] array, Filter<T> filter)     经过 filter 处理返回
+        // static <T> T[]       filter(T[] array, Filter<T> filter)     经过 filter 判断返回
         p(ArrayUtil.filter(arr, new Filter<Integer>() {
             @Override
             public boolean accept(Integer i) {

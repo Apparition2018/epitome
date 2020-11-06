@@ -36,7 +36,7 @@ public class IterUtilDemo extends Demo {
         // join(Iterator, conj, prefix, suffix)                 StrUtil.split() 的反方法
         p(IterUtil.join(list.iterator(), "-", "[", "]"));       // [1]-[2]-[3]-[4]-[5]-[6]-[7]-[8]-[9]
 
-        // filter(T/Iterator, Filter)                           经过 Filter 过滤返回
+        // filter(T/Iterator, Filter)                           经过 Filter 判断返回
         p(IterUtil.filter(list, i -> i % 2 == 1));              // [1, 3, 5, 7, 9]
 
         // trans(Iterator<F>, Function<? super F, ? extends T>) 经过 Function 处理返回

@@ -50,7 +50,7 @@ public class SetsDemo extends Demo {
         // [[i hate u, tom], [i hate u, jerry], [i love u, tom], [i love u, jerry]]
 
         // static <E> Set<E>            filter(Set</SortedSet/NavigableSet<E>, Predicate<? super E>)
-        // 经过 Predicate 处理返回
+        // 经过 Predicate 判断返回
         p(Sets.filter(Sets.newHashSet(arr), i -> Objects.requireNonNull(i) > 2)); // [3, 4, 5, 6, 7, 8, 9]
 
         TreeSet<Integer> treeSet = Sets.newTreeSet();

@@ -26,19 +26,19 @@ public class IntStreamDemo extends Demo {
     public void create() {
         IntStream intStream;
 
-        //********** 1.具体元素 **********//
+        //********** 1.范围内元素 **********//
+        // IntStream.range()
+        intStream = IntStream.range(1, 6);
+        // IntStream.rangeClosed()
+        intStream = IntStream.rangeClosed(1, 5);
+
+        //********** 2.具体元素 **********//
         // IntStream.of()
         intStream = IntStream.of(1, 2, 3, 4, 5);
         // IntStream.builder().add()...build()
         intStream = IntStream.builder().add(1).add(2).add(3).add(4).add(5).build();
         // IntStream.empty()
         intStream = IntStream.empty();
-
-        //********** 2.范围内元素 **********//
-        // IntStream.range()
-        intStream = IntStream.range(1, 6);
-        // IntStream.rangeClosed()
-        intStream = IntStream.rangeClosed(1, 5);
 
         //********** 3.指定生成函数 **********//
         // IntStream.generate()
@@ -47,6 +47,7 @@ public class IntStreamDemo extends Demo {
         intStream = IntStream.iterate(0, operand -> ++operand).limit(5);
 
         //********** 4.通过 Random **********//
+        // ints()
         intStream = new Random().ints(0, 10).limit(5);
 
         //********** 4.合并两个 IntStream **********//

@@ -119,7 +119,7 @@ public class CollUtilDemo extends Demo {
 
         // valuesOfKeys(Map<K,V>, Iterable<K>/Iterator<K>/K... keys)    根据 Keys 获取对应 key 的 value，如果为 null 则返回 null
         p(CollUtil.valuesOfKeys(map, list));                            // [A, B, C, null, null, null, null, null, null]
-        
+
         // zip(Collection<K> keys, Collection<V> values)                给定两个集合，然后两个集合中的元素一一对应，成为一个 Map
         p(CollUtil.zip(list, list));                                    // {1=1, 2=2, 3=3, 4=4, 5=5, 6=6, 7=7, 8=8, 9=9}
     }

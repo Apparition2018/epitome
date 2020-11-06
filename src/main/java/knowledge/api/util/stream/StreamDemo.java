@@ -92,9 +92,9 @@ public class StreamDemo extends Demo {
         // flatMap()        元素一对一执行，返回元素的 Stream
         // peek()           元素一对一执行，无返回
         List<Integer> list = Stream.of(3, 2, 2, 3, 7, 3, 5)
+                .distinct()
                 .map(i -> i * i)
                 .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
-                .distinct()
                 .peek(n -> System.out.print(n + " ")) // 3 2 7 5
                 .collect(Collectors.toList());
         p("\n");
