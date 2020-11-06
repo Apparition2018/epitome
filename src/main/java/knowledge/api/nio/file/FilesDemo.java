@@ -107,8 +107,9 @@ public class FilesDemo extends Demo {
         // glob，其过滤作用
         DirectoryStream<Path> entries = Files.newDirectoryStream(path, "demo*");
         for (Path entry : entries) {
-            p(entry);   // src\main\resources\demo\demo
-                        // src\main\resources\demo\demo_copy
+            p(entry);
+            // src\main\resources\demo\demo
+            // src\main\resources\demo\demo_copy
         }
 
         // Files.newDirectoryStream() 不会遍历子孙目录

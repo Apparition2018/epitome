@@ -24,7 +24,19 @@ import java.nio.file.attribute.UserPrincipalLookupService;
  * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/FileSystems.html
  */
 public class FileSystemDemo extends Demo {
-    
+
+    /**
+     * FileStore
+     * 表示存储池、设备、分区、卷、具体文件系统或其他实现文件存储的具体方式
+     * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/FileStore.html
+     * PathMatcher
+     * 用于路径匹配
+     * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/PathMatcher.html
+     * <p>
+     * UserPrincipalLookupService
+     * 按名称查找用户和组主体的对象
+     * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/attribute/UserPrincipalLookupService.html
+     */
     @Test
     public void testFileSystem() throws IOException {
         // static FileSystem    getDefault()                            返回默认 FileSystem
@@ -33,7 +45,7 @@ public class FileSystemDemo extends Demo {
         // Path                 getPath(String first, String... more)   将路径字符串或多个路径字符串连接起来转换为 Path 
         Path path = fileSystem.getPath(DEMO_PATH, "demo");
         p(path); // src\main\resources\demo\demo
-        
+
         // Set<String>	        supportedFileAttributeViews()           返回此文件系统支持的文件属性视图的名称集
         p(fileSystem.supportedFileAttributeViews()); // [owner, dos, acl, basic, user]
 
@@ -53,10 +65,10 @@ public class FileSystemDemo extends Demo {
         PathMatcher pathMatcher = fileSystem.getPathMatcher("glob:**demo");
         p(pathMatcher.matches(path)); // true
 
-        // UserPrincipalLookupService   getUserPrincipalLookupService() 返回按名称查找用户和组主体的对象 UserPrincipalLookupService
+        // UserPrincipalLookupService   getUserPrincipalLookupService() 返回 UserPrincipalLookupService
         UserPrincipalLookupService userPrincipalLookupService = fileSystem.getUserPrincipalLookupService();
-        UserPrincipal arsenal = userPrincipalLookupService.lookupPrincipalByName("Arsenal");
-        Files.setOwner(Paths.get(DEMO_FILE_ABSOLUTE_PATH), arsenal);
+        UserPrincipal userPrincipal = userPrincipalLookupService.lookupPrincipalByName(System.getProperty("user.name"));
+        Files.setOwner(Paths.get(DEMO_FILE_ABSOLUTE_PATH), userPrincipal);
 
         fileSystem.close();
     }
