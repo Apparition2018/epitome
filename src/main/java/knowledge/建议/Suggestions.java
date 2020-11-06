@@ -26,6 +26,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 import java.util.zip.DataFormatException;
 
 import static java.lang.Double.parseDouble;
@@ -213,7 +214,7 @@ public class Suggestions extends Demo {
     public void test007() {
         int count = 0;
         for (int i = 0; i < 10; i++) {
-            // count = count++;
+//             count = count++;
             count = ++count;
         }
         p("count = " + count);
@@ -521,14 +522,12 @@ public class Suggestions extends Demo {
     @Test
     public void test030() {
         Random r = new Random(1000); // 种子默认是 System.nanoTime() 的返回值
-        for (int i = 1; i <= 4; i++) {
-            p(r.nextInt());
-            // 每次输出都如下：
-            // -1244746321
-            // 1060493871
-            // -1826063944
-            // 1976922248
-        }
+        IntStream.range(0, 4).forEach(i -> p(r.nextInt()));
+        // 每次输出都如下：
+        // -1244746321
+        // 1060493871
+        // -1826063944
+        // 1976922248
     }
 
     /* 第三章：对象及方法 */

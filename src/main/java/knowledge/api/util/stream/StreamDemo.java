@@ -4,7 +4,11 @@ import l.demo.Demo;
 import l.demo.Person;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.function.Function;
 import java.util.stream.*;
 
 /**
@@ -21,6 +25,8 @@ import java.util.stream.*;
  * http://www.runoob.com/java/java8-streams.html
  */
 public class StreamDemo extends Demo {
+
+    private static final Stream<Integer> STREAM = Stream.of(arr);
 
     @Test
     public void testStream() {
@@ -40,12 +46,10 @@ public class StreamDemo extends Demo {
      */
     @Test
     public void createStream() {
-        List<Integer> list = Arrays.asList(1, 3, 5, 7, 9);
         Stream<?> stream;
 
         // 通过 Collection 中的 stream() 创建
         stream = list.stream();
-
         // 通过 Collection 中的 parallelStream() 创建
         stream = list.parallelStream();
 
@@ -84,10 +88,13 @@ public class StreamDemo extends Demo {
     public void intermediate() {
         // distinct()       去重
         // map()            元素一对一执行，有返回
+        // flatMap()        元素一对一执行，返回元素的 Stream
         // peek()           元素一对一执行，无返回
         List<Integer> list = Stream.of(3, 2, 2, 3, 7, 3, 5)
-                .map(i -> i * i).distinct()
-                .peek(n -> System.out.print(n + " ")) // 9 4 49 25
+                .map(i -> i * i)
+                .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
+                .distinct()
+                .peek(n -> System.out.print(n + " ")) // 3 2 7 5
                 .collect(Collectors.toList());
         p("\n");
 
