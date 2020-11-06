@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
-import java.util.stream.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Stream
@@ -42,39 +43,39 @@ public class StreamDemo extends Demo {
 
 
     /**
-     * 创建 Stream 对象
+     * 创建
      */
     @Test
     public void createStream() {
         Stream<?> stream;
 
-        // 通过 Collection 中的 stream() 创建
+        //********** 1.通过 Collection **********//
+        // stream()
         stream = list.stream();
-        // 通过 Collection 中的 parallelStream() 创建
+        // parallelStream()
         stream = list.parallelStream();
 
-        // 通过 Stream 中的 empty() 创建
+        //********** 2.具体元素 **********//
+        // Stream.of()
+        stream = Stream.of(arr);
+        // Stream.build().add()...build()
+        stream = Stream.builder().add(1).add(2).add(3).add(4).add(5).build();
+        // Stream.empty()
         stream = Stream.empty();
 
-        // 通过 Stream 中的 of 创建
-        stream = Stream.of(list);
+        //********** 3.指定生成函数 **********//
+        // Stream.generate()
+        stream = Stream.generate(() -> new Random().nextInt(100)).limit(9);
+        // Stream.iterate()
+        stream = Stream.iterate(0, i -> ++i).limit(9);
 
-        // 通过 Stream 中的 iterate() 创建，无限连续有序 Stream
-        stream = Stream.iterate(0, integer -> integer + 2).limit(5);
-        p(stream.collect(Collectors.toList())); // [0, 2, 4, 6, 8]
+        //********** 3.其他 Stream 装箱 **********//
+        // InStream.boxed()
+        stream = new Random().ints(0, 10).limit(9).boxed();
 
-        // 通过 Stream 中的 generate() 创建，无限连续无序 Stream
-        stream = Stream.generate(() -> (int) (Math.random() * 100)).limit(10);
-        p(stream.collect(Collectors.toList())); // [44, 32, 27, 58, 74, 98, 75, 30, 47, 59]
-
-        // 通过 Random 中的 xxxs() 创建
-        IntStream ints = new Random().ints(0, 20).limit(10);
-        p(ints.boxed().collect(Collectors.toList()));   // [11, 4, 5, 4, 4, 17, 8, 17, 0, 16]
-        LongStream longs = new Random().longs(0, 20).limit(10);
-        p(longs.boxed().collect(Collectors.toList()));  // [9, 15, 4, 18, 5, 7, 2, 10, 1, 15]
-        DoubleStream doubles = new Random().doubles(0, 20).limit(5);
-        p(doubles.boxed().collect(Collectors.toList()));// [13.614316700842945, 12.76938839840684, 5.622812500500778, 17.309614249352602, 18.441259588808695]
-
+        //********** 5.合并两个 Stream **********//
+        // Stream.concat()
+        stream = Stream.concat(stream, stream);
     }
 
     /**
