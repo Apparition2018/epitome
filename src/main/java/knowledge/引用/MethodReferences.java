@@ -1,4 +1,4 @@
-package knowledge.方法;
+package knowledge.引用;
 
 import l.demo.Demo;
 
@@ -14,7 +14,7 @@ public class MethodReferences extends Demo {
 
     public static void main(String[] args) {
 
-        // 构造器引用：Class::new，或 Class< T >::new
+        // 构造器引用：Class::new 或 Class<T>::new
         final Bus car = Bus.create(Bus::new);
         final List<Bus> cars = Collections.singletonList(car);
 

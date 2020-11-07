@@ -248,4 +248,3 @@ public class ThreadDemo extends Demo {
     }
 
 }
-

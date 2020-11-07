@@ -12,6 +12,7 @@ import org.junit.Test;
  * static void	                load(String filename)                   从作为动态库的本地文件系统中以指定的文件名加载代码文件
  * static void	                loadLibrary(String libname)             加载由 libname 参数指定的系统库
  * static void	                setProperties(Properties props)         将系统属性设置为 Properties 参数
+ * static void	                exit(int status)                        终止当前正在运行的 Java 虚拟机
  * static String	            setProperty(String key, String value)   设置指定键指示的系统属性
  * static String	            clearProperty(String key)               移除指定键指示的系统属性
  * static Map<String,String>	getenv()                                返回一个不能修改的当前系统环境的字符串映射视图
