@@ -4,7 +4,6 @@ import l.demo.Demo;
 import l.demo.Person;
 import org.junit.Test;
 
-import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -69,7 +68,7 @@ public class StreamDemo extends Demo {
         stream = Stream.iterate(0, i -> ++i).limit(9);
 
         //********** 3.其他 Stream 装箱 **********//
-        // InStream.boxed()
+        // XxxStream.boxed()
         stream = new Random().ints(0, 10).limit(9).boxed();
 
         //********** 5.合并两个 Stream **********//
@@ -161,7 +160,7 @@ public class StreamDemo extends Demo {
     public void other() {
         // Optional<T>	    findFirst()                 返回 Optional(first)，空 Stream 返回 Optional.empty()
         p(Stream.of(arr).findFirst().orElse(null));     // 1
-        // Optional<T>	    findAny()                   串行一般返回 Optional(first)，并行翻译 Optional(any)，空 Stream 返回 Optional.empty()
+        // Optional<T>	    findAny()                   串行返回 Optional(first)，并行返回 Optional(any)，空 Stream 返回 Optional.empty()
         p(Stream.of(arr).findAny().orElse(null));       // 1
 
         // boolean          allMatch(IntPredicate)      // 全匹配
@@ -171,9 +170,9 @@ public class StreamDemo extends Demo {
         // boolean          noneMatch(IntPredicate)     // 全匹配
         p(Stream.of(arr).noneMatch(i -> i > 5));        // false
 
-        // XxxStream        mapToXxx(XxxFunction<? super T>)                        Stream → XxxStream
+        // XxxStream        mapToXxx(XxxFunction<? super T>)                        经过 XxxFunction Stream → XxxStream
         IntStream intStream = Stream.of(arr).mapToInt(value -> value);
-        // XxxStream        flatMapToInt(Function<? super T, ? extends IntStream>)  Stream → XxxStream
+        // XxxStream        flatMapToInt(Function<? super T, ? extends IntStream>)  经过 Function Stream → XxxStream
         IntStream intStream2 = Stream.of(arr).flatMapToInt(IntStream::of);
     }
 
@@ -190,19 +189,6 @@ public class StreamDemo extends Demo {
         // joining()
         String str = Stream.of("9", "7", "5", "3", "1").collect(Collectors.joining(","));
         p(str);    // 9,7,5,3,1
-    }
-
-    /**
-     * XXXSummaryStatistics
-     */
-    @Test
-    public void statistics() {
-        IntSummaryStatistics stats = Stream.of(3, 2, 2, 3, 7, 3, 5).mapToInt(x -> x).summaryStatistics();
-
-        p("列表中最大的数 : " + stats.getMax());  // 7
-        p("列表中最小的数 : " + stats.getMin());  // 2
-        p("所有数之和 : " + stats.getSum()); // 25
-        p("平均数 : " + stats.getAverage()); // 3.5714285714285716
     }
 
 }

@@ -3,6 +3,7 @@ package knowledge.api.util.stream;
 import l.demo.Demo;
 import org.junit.Test;
 
+import java.util.IntSummaryStatistics;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -20,43 +21,45 @@ import java.util.stream.IntStream;
 public class IntStreamDemo extends Demo {
 
     /**
-     * 创建
+     * 大部分 API 跟 Stream 一样，可查看 StreamDemo
+     * <p>
+     * DoubleStream                 asDoubleStream()
+     * LongStream                   asLongStream()
+     * Stream<Integer>              boxed()
+     * PrimitiveIterator.OfInt      iterator()
+     * Spliterator.OfInt            spliterator()
      */
     @Test
-    public void create() {
+    public void testIntStream() {
         IntStream intStream;
 
-        //********** 1.范围内元素 **********//
-        // IntStream.range()
-        intStream = IntStream.range(1, 6);
-        // IntStream.rangeClosed()
-        intStream = IntStream.rangeClosed(1, 5);
+        // ints()                               通过 Random 的 ints() 生成 IntStream                     
+        intStream = new Random().ints(0, 10).limit(9);
+        // IntStream.range(start, end)          范围内元素，不包括 end
+        intStream = IntStream.range(1, 10);
+        // IntStream.rangeClosed(start, end)    范围内元素，包括 end
+        intStream = IntStream.rangeClosed(1, 9);
 
-        //********** 2.具体元素 **********//
-        // IntStream.of()
-        intStream = IntStream.of(1, 2, 3, 4, 5);
-        // IntStream.builder().add()...build()
-        intStream = IntStream.builder().add(1).add(2).add(3).add(4).add(5).build();
-        // IntStream.empty()
-        intStream = IntStream.empty();
-
-        //********** 3.指定生成函数 **********//
-        // IntStream.generate()
-        intStream = IntStream.generate(() -> new Random().nextInt(100)).limit(5);
-        // IntStream.iterate()
-        intStream = IntStream.iterate(0, operand -> ++operand).limit(5);
-
-        //********** 4.通过 Random **********//
-        // ints()
-        intStream = new Random().ints(0, 10).limit(5);
-
-        //********** 4.合并两个 IntStream **********//
-        // IntStream.concat()
-        intStream = IntStream.concat(intStream, intStream);
+        // average()                            平均数              
+        p(intStream.average());
+        // sum()                                总和
+        p(intStream.sum());
     }
 
     @Test
-    public void intermediate() {
+    public void summaryStatistics() {
+        IntSummaryStatistics stats = IntStream.rangeClosed(1, 2).summaryStatistics();
+        IntSummaryStatistics stats2 = IntStream.rangeClosed(3, 4).summaryStatistics();
 
+        // 合并
+        stats.combine(stats2);
+        // 添加统计值
+        stats.accept(5);
+        
+        p(stats.getCount());    // 5
+        p(stats.getSum());      // 15
+        p(stats.getMin());      // 1
+        p(stats.getMax());      // 5
+        p(stats.getAverage());  // 3.0
     }
 }
