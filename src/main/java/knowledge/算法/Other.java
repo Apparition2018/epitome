@@ -4,7 +4,6 @@ import l.demo.Demo;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Other extends Demo {

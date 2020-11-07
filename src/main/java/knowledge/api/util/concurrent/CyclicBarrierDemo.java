@@ -1,7 +1,6 @@
 package knowledge.api.util.concurrent;
 
 import l.demo.Demo;
-import org.junit.Test;
 
 import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;

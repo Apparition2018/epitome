@@ -1,6 +1,9 @@
 package knowledge.线程;
 
-import org.junit.Test;
+import com.google.common.collect.Lists;
+import l.demo.Demo;
+
+import java.util.List;
 
 /**
  * ThreadLocal
@@ -18,10 +21,31 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/6 12:55
  */
-public class ThreadLocalDemo {
+public class ThreadLocalDemo extends Demo {
 
-    @Test
-    public void testThreadLocal() {
-        
+    private static ThreadLocal<List<String>> threadLocal = new ThreadLocal<>();
+
+    public void getThreadLocal() {
+        threadLocal.get().forEach(name -> p(Thread.currentThread().getName() + " : " + name));
+    }
+
+    public void setThreadLocal(List<String> value) {
+        threadLocal.set(value);
+    }
+
+    public static void main(String[] args) {
+        ThreadLocalDemo demo = new ThreadLocalDemo();
+
+        new Thread(() -> {
+            List<String> strList = Lists.newArrayList("1", "2", "3");
+            demo.setThreadLocal(strList);
+            demo.getThreadLocal();
+        }).start();
+
+        new Thread(() -> {
+            List<String> strList = Lists.newArrayList("a", "b", "c");
+            demo.setThreadLocal(strList);
+            demo.getThreadLocal();
+        }).start();
     }
 }

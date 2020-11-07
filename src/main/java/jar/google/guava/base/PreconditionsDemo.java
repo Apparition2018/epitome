@@ -3,7 +3,6 @@ package jar.google.guava.base;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;

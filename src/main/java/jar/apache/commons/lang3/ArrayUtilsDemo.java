@@ -4,8 +4,6 @@ import l.demo.Demo;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 /**
  * ArrayUtils
  * static void	    shift(XXX[] array[, int startIndexInclusive, int endIndexExclusive], int offset)    移动 ???

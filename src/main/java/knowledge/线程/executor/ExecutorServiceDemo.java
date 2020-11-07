@@ -1,7 +1,6 @@
 package knowledge.线程.executor;
 
 import l.demo.Demo;
-import lombok.Getter;
 import org.junit.Test;
 
 import java.util.concurrent.*;

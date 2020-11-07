@@ -3,7 +3,6 @@ package knowledge.api.nio.file;
 import l.demo.Demo;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.LinkOption;
