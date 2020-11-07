@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
+import java.util.stream.IntStream;
 
 /**
  * CountDownLatch
@@ -61,9 +62,7 @@ public class CountDownLatchDemo {
         // 记录比赛成绩
         List<Future<Integer>> futures = new ArrayList<>();
         // 跑步者就位，所有线程处于等待状态
-        for (int i = 0; i < 10; i++) {
-            futures.add(pool.submit(new Runner(begin, end)));
-        }
+        IntStream.rangeClosed(1, 10).forEach((i) -> futures.add(pool.submit(new Runner(begin, end))));
         // 模拟热身时间
         TimeUnit.SECONDS.sleep(1);
         // 发令枪响，跑步者开始跑步

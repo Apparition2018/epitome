@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.Random;
 import java.util.UUID;
+import java.util.stream.IntStream;
 
 /**
  * CaptchaUtils
@@ -151,9 +152,7 @@ public class CaptchaUtils {
         width = 6 + fontSize * len;
         // 生成字符串
         StringBuilder code = new StringBuilder();
-        for (int i = 0; i < len; i++) {
-            code.append(randoms.charAt(random.nextInt(randoms.length())));
-        }
+        IntStream.rangeClosed(1, len).forEach(i -> code.append(randoms.charAt(random.nextInt(randoms.length()))));
         return code.toString();
     }
 

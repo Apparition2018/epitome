@@ -9,6 +9,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.stream.IntStream;
 
 /**
  * DateUtil
@@ -237,9 +238,7 @@ public class DateUtilDemo extends Demo {
         setCountDownLatch(100);
         TimeInterval timeInterval = DateUtil.timer();
 
-        for (int i = 0; i < 100; i++) {
-            new Thread(new MyTask(i)).start();
-        }
+        IntStream.rangeClosed(1, 100).forEach(i -> new Thread(new MyTask(i)).start());
         countDownLatch.await();
 
         p(timeInterval.interval());         // 314
@@ -265,9 +264,7 @@ public class DateUtilDemo extends Demo {
         StopWatch stopWatch = DateUtil.createStopWatch("StopWatch");
 
         stopWatch.start("执行任务");
-        for (int i = 0; i < 100; i++) {
-            new Thread(new MyTask(i)).start();
-        }
+        IntStream.rangeClosed(1, 100).forEach(i -> new Thread(new MyTask(i)).start());
         countDownLatch.await();
         stopWatch.stop();
 

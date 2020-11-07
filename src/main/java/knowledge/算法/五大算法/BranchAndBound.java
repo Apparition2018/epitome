@@ -3,6 +3,7 @@ package knowledge.算法.五大算法;
 import l.demo.Demo;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 /**
  * Branch and Bound
@@ -57,13 +58,9 @@ public class BranchAndBound extends Demo {
             }
 
             // 输出路径
-            for (int i = 1; i <= N; i++) {
-                p("从" + 1 + "出发到" + i + "的最短路径为：" + path[i]);
-            }
+            IntStream.rangeClosed(1, N).forEach(i -> p("从" + 1 + "出发到" + i + "的最短路径为：" + path[i]));
             p("=====================================");
-            for (int i = 1; i <= N; i++) {
-                p("从1出发到" + i + "点的最短距离为：" + bestmin[i]);
-            }
+            IntStream.rangeClosed(1, N).forEach(i -> p("从1出发到" + i + "点的最短距离为：" + bestmin[i]));
         }
 
         public static void main(String[] args) {

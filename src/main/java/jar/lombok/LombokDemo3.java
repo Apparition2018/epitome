@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 
 /**
@@ -93,9 +94,7 @@ public class LombokDemo3 extends Demo {
 
     private double[] expensive() {
         double[] result = new double[1000000];
-        for (int i = 0, len = result.length; i < len; i++) {
-            result[i] = (int) (Math.random() * 100);
-        }
+        IntStream.rangeClosed(1, result.length).forEach(i -> result[i] = (int) (Math.random() * 100));
         return result;
     }
 

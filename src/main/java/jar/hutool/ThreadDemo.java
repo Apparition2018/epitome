@@ -11,6 +11,7 @@ import org.junit.Test;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 /**
  * 线程
@@ -53,10 +54,8 @@ public class ThreadDemo extends Demo {
         @Test
         public void execute() throws InterruptedException {
             setCountDownLatch(NUM_OF_TASK);
-            for (int i = 1; i <= NUM_OF_TASK; i++) {
-                // 直接在公共线程池中执行线程
-                ThreadUtil.execute(new MyTask(i));
-            }
+            // 直接在公共线程池中执行线程
+            IntStream.rangeClosed(1, NUM_OF_TASK).forEach(i -> ThreadUtil.execute(new MyTask(i)));
             countDownLatch.await();
         }
 

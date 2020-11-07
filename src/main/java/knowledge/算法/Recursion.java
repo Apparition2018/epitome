@@ -2,6 +2,8 @@ package knowledge.算法;
 
 import l.demo.Demo;
 
+import java.util.stream.IntStream;
+
 /**
  * Recursion
  * 递归：
@@ -56,9 +58,7 @@ public class Recursion extends Demo {
     private static class FibonacciSequence {
 
         public static void main(String[] args) {
-            for (int i = 0; i <= 100; i++) {
-                System.out.print(fibonacci(i) + " ");
-            }
+            IntStream.rangeClosed(0, 100).forEach(i -> System.out.print(fibonacci(i) + " "));
         }
 
         private static long fibonacci(long num) {

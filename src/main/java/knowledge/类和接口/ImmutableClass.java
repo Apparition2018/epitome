@@ -1,5 +1,7 @@
 package knowledge.类和接口;
 
+import java.util.stream.IntStream;
+
 /**
  * 不可变类
  * <p>
@@ -26,9 +28,7 @@ public final class ImmutableClass {
 
     public String toString() {
         StringBuilder sb = new StringBuilder("Numbers are: ");
-        for (int a : arr) {
-            sb.append(a).append(" ");
-        }
+        IntStream.rangeClosed(1, arr.length).forEach(i -> sb.append(arr[i]).append(" "));
         return sb.toString();
     }
 

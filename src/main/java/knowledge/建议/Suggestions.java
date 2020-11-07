@@ -66,7 +66,7 @@ import static java.text.NumberFormat.getInstance;
  * 建议61：变长数组
  * 建议63：在明确的场景下，为集合指定初始容量
  * 建议65：泛型不支持基本类型
- * 建议67：LinkedList 使用 foreach 遍历
+ * 建议67：可以随机存取，使用下标遍历
  * 建议69：集合相等只跟元素有关
  * 建议71：使用 subList() 处理局部列表
  * 建议72：subList() 生成字列表后，不要操作原列表
@@ -883,9 +883,7 @@ public class Suggestions extends Demo {
 
 
         Balloon[] box1 = new Balloon[7];
-        for (int i = 0, len = box1.length; i < len; i++) {
-            box1[i] = new Balloon(i, Color.values()[i]);
-        }
+        IntStream.rangeClosed(1, box1.length).forEach(i -> box1[i] = new Balloon(i, Color.values()[i]));
 
         Balloon[] box2 = Arrays.copyOf(box1, box1.length);
         box2[6].setColor(Color.Blue);
@@ -927,18 +925,16 @@ public class Suggestions extends Demo {
         p(list);
     }
 
-    // 建议67：LinkedList 使用 foreach 遍历
+    // 建议67：可以随机存取，使用下标遍历
     @Test
     public void test067() {
         // 学生人数 100 万
         int stuNum = 100 * 10000;
         // List 集合，记录所有学生的份数
         List<Integer> scores = new ArrayList<>(); // 16ms
-//        List<Integer> scores = new LinkedList<>(); // 31ms
+        //  List<Integer> scores = new LinkedList<>(); // 31ms
         // 写入份数
-        for (int i = 0; i < stuNum; i++) {
-            scores.add(new Random().nextInt(150));
-        }
+        IntStream.rangeClosed(1, stuNum).forEach(i -> scores.add(new Random().nextInt(150)));
 
         StopWatch watch = StopWatch.createStarted();
         p("平均分是：" + average(scores));           // 平均分是：74
@@ -947,11 +943,12 @@ public class Suggestions extends Demo {
 
     private int average(List<Integer> scores) {
         int sum = 0;
-        if (scores instanceof RandomAccess) {   // ArrayList
+        if (scores instanceof RandomAccess) {
+            // 可以随机存取，使用下标遍历
             for (int i = 0, len = scores.size(); i < len; i++) {
                 sum += scores.get(i);
             }
-        } else {                                // LinkedList
+        } else {
             for (int i : scores) {
                 sum += i;
             }
@@ -966,9 +963,7 @@ public class Suggestions extends Demo {
         // List<Integer> scores = new ArrayList<>(); // 非常久
         List<Integer> scores = new LinkedList<>();
         StopWatch watch = StopWatch.createStarted();
-        for (int i = 0; i < stuNum; i++) {
-            scores.add(0, new Random().nextInt(150));
-        }
+        IntStream.rangeClosed(1, stuNum).forEach(i -> scores.add(0, new Random().nextInt(150)));
         p("执行时间：" + watch.getTime() + "ms");    // 执行时间：139ms
     }
 
@@ -1089,9 +1084,7 @@ public class Suggestions extends Demo {
         // 火车票列表
         List<String> tickets = new ArrayList<>(100000);
         // 初始化票据池
-        for (int i = 0; i < 100000; i++) {
-            tickets.add("火车票" + i);
-        }
+        IntStream.rangeClosed(1, 100000).forEach(i -> tickets.add("火车票" + i));
         // 10个窗口售票
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
@@ -1530,9 +1523,7 @@ public class Suggestions extends Demo {
     // 自定义一个 List → 数组 方法
     public static <T> T[] toArray(List<T> list, Class<T> tClass) {
         T[] t = (T[]) Array.newInstance(tClass, list.size());
-        for (int i = 0, len = list.size(); i < len; i++) {
-            t[i] = list.get(i);
-        }
+        IntStream.rangeClosed(1, list.size()).forEach(i -> t[i] = list.get(i));
         return t;
     }
 

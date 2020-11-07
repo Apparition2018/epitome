@@ -58,15 +58,15 @@ public class ArraysDemo extends Demo {
         p(arr); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
         // static <T> void	parallelPrefix(XXX[] array[, int fromIndex, int toIndex], XxxOperator<T> op)
-        // 根据 XxxOperator 函数(参数：前一个索引的元素和当前元素)和并发地 Cumulates 每个元素
+        // 根据 XxxOperator 函数(参数：前一个索引的元素和当前元素)并发地 Cumulates 每个元素
         Arrays.parallelPrefix(arr, (left, cur) -> cur - left);
         p(arr); // [1, 1, 2, 2, 3, 3, 4, 4, 5]
 
-        // static void	setAll(int[] array, XxxOperator generator)
+        // static void	    setAll(int[] array, XxxOperator generator)
         // 根据 XxxOperator 函数(参数：当前索引) 计算每个元素
         Arrays.setAll(arr, index -> ++index);
         p(arr); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        // static void	parallelSetAll(int[] array, XxxOperator generator)
+        // static void	    parallelSetAll(int[] array, XxxOperator generator)
         // 根据 XxxOperator 函数(参数：当前索引) 并发计算每个元素
         Arrays.parallelSetAll(arr, index -> ++index);
         p(arr); // [1, 2, 3, 4, 5, 6, 7, 8, 9]

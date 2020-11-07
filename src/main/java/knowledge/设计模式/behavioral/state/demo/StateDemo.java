@@ -2,6 +2,7 @@ package knowledge.设计模式.behavioral.state.demo;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * Context: 环境角色
@@ -15,9 +16,7 @@ import java.util.Map;
 public class StateDemo {
     public static void main(String[] args) {
         VoteManager vm = new VoteManager();
-        for (int i = 0; i < 9; i++) {
-            vm.vote("u1", "A");
-        }
+        IntStream.rangeClosed(1, 9).forEach(i -> vm.vote("u1", "A"));
     }
 }
 

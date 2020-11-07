@@ -5,6 +5,7 @@ import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
 
 /**
  * ThreadPoolExecutor
@@ -33,9 +34,7 @@ public class ThreadPoolExecutorDemo extends Demo {
         ThreadPoolExecutor pool = new ThreadPoolExecutor(2, 5, 10, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(3), new MyThreadFactory(), new MyRejectHandler());
 
-        for (int i = 0; i < 10; i++) {
-            pool.execute(new MyTask(i));
-        }
+        IntStream.rangeClosed(1, 10).forEach(i -> pool.execute(new MyTask(i)));
     }
 
     private static class MyThreadFactory implements ThreadFactory {

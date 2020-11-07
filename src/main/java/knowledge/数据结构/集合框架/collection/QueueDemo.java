@@ -4,7 +4,6 @@ import l.demo.Demo;
 import l.demo.Person;
 import org.junit.Test;
 
-import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -65,7 +64,7 @@ public class QueueDemo extends Demo {
         // int	        remainingCapacity()
         // 返回在无阻塞的理想情况下（不存在内存或资源约束）此队列能接受的附加元素数量；如果没有内部限制，则返回 Integer.MAX_VALUE
         p(queue.remainingCapacity()); // 11
-        
+
         for (int i = 0; i < 15; i++) {
             queue.offer(i, 1, TimeUnit.MILLISECONDS);
         }

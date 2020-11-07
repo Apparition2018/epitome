@@ -1,5 +1,7 @@
 package knowledge.线程;
 
+import org.junit.Test;
+
 /**
  * ThreadLocal
  * ThreadLocal 中填充的变量属于当前线程，该变量对其他线程而言是隔离的。
@@ -17,4 +19,9 @@ package knowledge.线程;
  * created on 2020/11/6 12:55
  */
 public class ThreadLocalDemo {
+
+    @Test
+    public void testThreadLocal() {
+        
+    }
 }

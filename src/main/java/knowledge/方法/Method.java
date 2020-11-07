@@ -1,5 +1,7 @@
 package knowledge.方法;
 
+import java.util.stream.IntStream;
+
 /**
  * 方法
  * <p>
@@ -34,9 +36,7 @@ public class Method {
      * 可变参数的各个参数用 "," 隔开，也可以直接传入一个数组
      */
     public static int getMax(int... nums) {
-        for (int num : nums) {
-            max = Math.max(num, max);
-        }
+        IntStream.rangeClosed(1, nums.length).forEach(i -> max = Math.max(nums[i], max));
         return max;
     }
 

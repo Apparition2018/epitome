@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.UUID;
+import java.util.stream.IntStream;
 
 /**
  * BASE64
@@ -41,9 +42,7 @@ public class Base64Demo extends Demo {
 
         // MIME：输出隐射到 MIME 友好格式。输出每行不超过76字符，并且使用'\r'并跟随'\n'作为分割。编码输出最后没有行分割。
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 10; ++i) {
-            sb.append(UUID.randomUUID().toString());
-        }
+        IntStream.rangeClosed(1, 10).forEach(i -> sb.append(UUID.randomUUID().toString()));
         bytes = sb.toString().getBytes(StandardCharsets.UTF_8);
         encode = Base64.getMimeEncoder().encodeToString(bytes);
         p("encodeMime:\n" + encode);

@@ -4,6 +4,7 @@ import l.demo.Demo;
 import org.junit.Test;
 
 import java.lang.reflect.Array;
+import java.util.stream.IntStream;
 
 /**
  * Array
@@ -38,9 +39,7 @@ public class ArrayDemo extends Demo {
         // static Object	newInstance(Class<?> componentType, int length)
         // 创建一个具有指定的组件类型和长度的新数组
         int[][] intArrArr = (int[][]) Array.newInstance(int.class, 2, 3);
-        for (int[] intArr : intArrArr) {
-            p(intArr);
-        }
+        IntStream.rangeClosed(1, intArrArr.length).forEach(i -> p(intArrArr));
     }
 
     /**
@@ -51,11 +50,9 @@ public class ArrayDemo extends Demo {
         // nt[][] arr = new int[2][3];
         int[][] arr = {{0, 1, 2}, {0, 1, 2}};
 
-        for (int[] ints : arr) {
-            p(ints);
-            // [0, 1, 2]
-            // [0, 1, 2]
-        }
+        IntStream.rangeClosed(1, arr.length).forEach(i -> p(arr[i]));
+        // [0, 1, 2]
+        // [0, 1, 2]
     }
 
     /**

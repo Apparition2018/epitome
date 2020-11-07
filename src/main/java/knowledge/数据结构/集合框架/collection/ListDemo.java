@@ -121,7 +121,7 @@ public class ListDemo extends Demo {
         // void	    ensureCapacity(int minCapacity)     
         // 如有必要，增加此 ArrayList 实例的容量，以确保它至少能够容纳最小容量参数所指定的元素数。
         list.ensureCapacity(N);
-        for (int i = 0; i <= N; i++) {
+        for (int i = 0; i < N; i++) {
             list.add(new Object());
         }
         p("调用了 ensureCapacity() 所需时间：" + watch.getTime());  // 调用了 ensureCapacity() 所需时间：766

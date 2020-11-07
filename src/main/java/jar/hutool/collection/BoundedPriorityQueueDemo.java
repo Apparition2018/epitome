@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * BoundedPriorityQueue     有界优先队列
@@ -24,9 +25,7 @@ public class BoundedPriorityQueueDemo {
         BoundedPriorityQueue<Integer> queue = new BoundedPriorityQueue<>(5, Comparator.naturalOrder());
 
         int[] user = new int[]{5, 7, 9, 2, 3, 8};
-        for (int u : user) {
-            queue.offer(u);
-        }
+        IntStream.rangeClosed(1, user.length).forEach(u -> queue.offer(u));
 
         List<Integer> list = queue.toList();
         System.out.println(list);

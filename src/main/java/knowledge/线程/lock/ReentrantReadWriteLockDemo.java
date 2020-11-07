@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.stream.IntStream;
 
 /**
  * ReentrantReadWriteLock
@@ -19,16 +20,12 @@ public class ReentrantReadWriteLockDemo extends Demo {
         final Data data = new Data();
         for (int i = 0; i < 2; i++) {
             new Thread(() -> {
-                for (int j = 0; j < 3; j++) {
-                    data.write(new Random().nextInt(30));
-                }
+                IntStream.rangeClosed(1, 3).forEach(j -> data.write(new Random().nextInt(30)));
             }, "写" + i + "线程").start();
         }
         for (int i = 0; i < 2; i++) {
             new Thread(() -> {
-                for (int j = 0; j < 3; j++) {
-                    data.read();
-                }
+                IntStream.rangeClosed(1, 3).forEach(j -> data.read());
             }, "读" + i + "线程").start();
         }
     }

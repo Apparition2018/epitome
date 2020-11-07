@@ -12,7 +12,6 @@ import java.util.stream.IntStream;
  * IntStream 支持顺序和并行聚合操作的 int 序列
  * <p>
  * IntStream 用法全解：https://blog.csdn.net/qq_31865983/article/details/106443244
- * 玩转Java8Stream（四、IntStream）：https://www.jianshu.com/p/461429a5edc9
  * https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html
  *
  * @author ljh

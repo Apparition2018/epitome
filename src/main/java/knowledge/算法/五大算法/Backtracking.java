@@ -2,6 +2,8 @@ package knowledge.算法.五大算法;
 
 import l.demo.Demo;
 
+import java.util.stream.IntStream;
+
 /**
  * Backtracking
  * 回溯法
@@ -16,9 +18,7 @@ public class Backtracking extends Demo {
     private static int[] b = new int[R];
 
     public static void main(String[] args) {
-        for (int i = 0; i < N; i++) {
-            a[i] = i + 1;
-        }
+        IntStream.rangeClosed(1, N).forEach(i -> a[i] = i + 1);
 
         CombinationOfNumber(N, R);
     }
