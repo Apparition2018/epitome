@@ -13,7 +13,10 @@ import java.security.SecureRandom;
  * 对称加密 (Symmetric Cryptography)
  * 加密和解密使用相同密钥的算法
  * <p>
- * 常见的有 DES, 3DES, AES, PBE 算法，安全性一次递增
+ * 常见的对称加密算法有：
+ * AES, ARCFOUR, Blowfish, DES, DESX, 3DES, DESede, IDEA,
+ * PBEWithMD5AndDES, PBEWithSHA1AndDESede, PBEWithSHA1AndRC2_40, PBE,
+ * RC2, RC4, RC5, RC6
  * <p>
  * 优点：
  * 速度快，常在消息发送方需要加密大量数据时使用，算法公开，计算量小，加密速度快，加密效率高

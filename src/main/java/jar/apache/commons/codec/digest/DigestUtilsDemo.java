@@ -1,27 +1,19 @@
 package jar.apache.commons.codec.digest;
 
+import l.demo.Demo;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
 
 /**
  * DigestUtils
- * <p>
  * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/digest/DigestUtils.html
  */
-public class DigestUtilsDemo {
+public class DigestUtilsDemo extends Demo {
 
     @Test
     public void digest() {
-        String src = "epitome";
-
-        // static String	    md5Hex(byte[]/InputStream/String data)
-        // md5，返回16进制字符串
-        System.out.println(DigestUtils.md5Hex(src));  // 7180fbd80d7c1ea33c55018a8adae65a
-
-        // static String	    sha1Hex(byte[]/InputStream/String data)
-        // sha1，返回16进制字符串
-        System.out.println(DigestUtils.sha1Hex(src)); // 492ddc9b1c89154a446288ca644bf726e8bc40d5
-
+        p(DigestUtils.md5Hex(HELLO_WORLD));     // ed076287532e86365e841e92bfc50d8c
+        p(DigestUtils.sha256Hex(HELLO_WORLD));  // 7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069
     }
 
 }

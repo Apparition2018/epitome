@@ -23,11 +23,14 @@ import java.util.Map;
  * 如果用私有秘钥对数据进行加密，那么只有用对应的公开密钥才能解密。
  * 一般公钥是公开的，私钥是自己保存。
  * <p>
+ * 常见的非对称加密算法有：RSA, DSA(数字签名), ECC(移动设备), Diffie-Hellman, El Gamal
+ * <p>
  * 字符串格式的密钥在未特殊说明的情况下都为 Base64 格式。
  * 由于非对称性加密速度极其慢，一般文件不使用它来加密而使用对称加密，
  * 非对称加密算法可以用来对对称加密的密钥加密，这样保证密钥的安全也就是保证了数据的安全
  * <p>
  * https://blog.csdn.net/chengbinbbs/article/details/78640589
+ * https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#Signature
  */
 public class RSADemo {
 
@@ -112,11 +115,11 @@ public class RSADemo {
         // 数字签名用于确保数字数据的验证和完整性。
         Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
 
-        // void	initSign(PrivateKey privateKey)
+        // void	        initSign(PrivateKey privateKey)
         // 初始化这个用于签名的对象
         signature.initSign(privateK);
 
-        // void	update(byte[] data)
+        // void	        update(byte[] data)
         // 使用指定的 byte 数组更新要签名或验证的数据
         signature.update(data);
 
@@ -131,7 +134,7 @@ public class RSADemo {
      * @param sign      数字签名
      * @return 是否通过验证
      */
-    public static boolean vertify(byte[] data, String publicKey, String sign) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, SignatureException {
+    public static boolean verify(byte[] data, String publicKey, String sign) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, SignatureException {
         // byte[] → String
         byte[] keyBytes = Base64.getDecoder().decode(publicKey);
 
@@ -178,7 +181,7 @@ public class RSADemo {
                 assert false : "Invalid Param";
         }
 
-        // String	getAlgorithm()
+        // String	    getAlgorithm()
         // 获取与此 KeyFactory 关联的算法的名称
         Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
 
