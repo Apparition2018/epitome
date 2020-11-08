@@ -35,9 +35,7 @@ public class StringBufferBuilderDemo extends Demo {
      */
     @Test
     public void reverse() {
-        StringBuilder sb = new StringBuilder("hello");
-
-        p(sb.reverse()); // olleh
+        p(new StringBuilder("Hello")); // olleH
     }
 
     /**
@@ -49,10 +47,10 @@ public class StringBufferBuilderDemo extends Demo {
      */
     @Test
     public void delete() {
-        StringBuilder sb = new StringBuilder("hello");
+        StringBuilder sb = new StringBuilder("Hello");
 
-        p(sb.delete(3, 5));    // hel
-        p(sb.deleteCharAt(1)); // hl
+        p(sb.delete(3, 5));    // Hel
+        p(sb.deleteCharAt(1)); // Hl
     }
 
     /**
@@ -82,7 +80,7 @@ public class StringBufferBuilderDemo extends Demo {
      */
     @Test
     public void capacity() {
-        StringBuilder sb = new StringBuilder("hello");
+        StringBuilder sb = new StringBuilder("Hello");
 
         p(sb.capacity()); // 21
 

@@ -38,7 +38,7 @@ public class StringDemo extends Demo {
     public void testString() {
         // byte[]	    getBytes([Charset charset/String charsetName])
         // 使用指定的 charset/字符集 将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中
-        byte[] bytes = "Hello World".getBytes(StandardCharsets.UTF_8);          // 编码
+        byte[] bytes = HELLO_WORLD.getBytes(StandardCharsets.UTF_8);            // 编码
         // String([byte[] bytes, int offset, int length, Charset charset / String charsetName])
         // 通过使用指定的 charset/字符集 解码指定的 byte 子数组，构造一个新的 String
         String s = new String(bytes, 0, bytes.length, StandardCharsets.UTF_8);  // 解码
@@ -56,7 +56,7 @@ public class StringDemo extends Demo {
         // static String    copyValueOf(char[] data[, int offset, int count])
         // 返回指定数组中表示该字符序列的 String
         char[] cArr = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'};
-        p(String.copyValueOf(cArr, 0, 11));  // Hello World
+        p(String.copyValueOf(cArr, 0, 11)); // Hello World
 
         // static String    valueOf(XXX xxx)
         // 返回 XXX 参数的字符串表示形式
@@ -108,17 +108,15 @@ public class StringDemo extends Demo {
 
     @Test
     public void testToCharArray() {
-        final String S = "Hello World";
-
-        char[] cArr = new char[S.length()];
+        char[] cArr = new char[HELLO_WORLD.length()];
         // void             getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
         // 将字符从此字符串复制到目标字符数组
-        S.getChars(0, S.length(), cArr, 0);
-        p(cArr);            // [H, e, l, l, o,  , W, o, r, l, d]
+        HELLO_WORLD.getChars(0, HELLO_WORLD.length(), cArr, 0);
+        p(cArr); // [H, e, l, l, o,  , W, o, r, l, d]
 
         // char[]	        toCharArray()
         // 将此字符串转换为一个新的字符数组
-        p(S.toCharArray()); // [H, e, l, l, o,  , W, o, r, l, d]
+        p(HELLO_WORLD.toCharArray()); // [H, e, l, l, o,  , W, o, r, l, d]
     }
 
     @Test

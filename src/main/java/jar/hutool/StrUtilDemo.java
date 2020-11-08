@@ -29,9 +29,9 @@ public class StrUtilDemo extends Demo {
         p(StrUtil.removeSuffixIgnoreCase(ARSENAL_LOGO, ".jpg"));
 
         // sub
-        p(StrUtil.sub("Hello World!", 0, 5));           // Hello
-        p(StrUtil.sub("Hello World!", 0, -1));          // Hello World，支持负数
-        p(StrUtil.sub("Hello World!", -1, 0));          // Hello World，支持位置写反了
+        p(StrUtil.sub(HELLO_WORLD, 0, 5));              // Hello
+        p(StrUtil.sub(HELLO_WORLD, 0, -1));             // Hello World，支持负数
+        p(StrUtil.sub(HELLO_WORLD, -1, 0));             // Hello World，支持位置写反
 
         // format
         p(StrUtil.format("{}来自{}", "我", "中国"));     // 我来自中国

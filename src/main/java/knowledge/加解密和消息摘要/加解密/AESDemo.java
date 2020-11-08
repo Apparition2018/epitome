@@ -106,7 +106,7 @@ public class AESDemo {
     }
 
     public static void main(String[] args) throws NoSuchPaddingException {
-        String content = "hello";
+        String content = "Hello";
         String key = "sde@5f98H*^hsff%dfs$r344&df8543*er";
         String h = encrypt(content, key);
         System.out.println(h);

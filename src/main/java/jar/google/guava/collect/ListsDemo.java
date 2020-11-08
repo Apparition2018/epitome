@@ -43,7 +43,7 @@ public class ListsDemo extends Demo {
         // static List<Character>	        charactersOf(CharSequence sequence)
         // static ImmutableList<Character>	charactersOf(String string)
         // 将 CharSequence 分割为单个字符
-        p(Lists.charactersOf("Hello World!")); // [H, e, l, l, o,  , W, o, r, l, d, !]
+        p(Lists.charactersOf(HELLO_WORLD)); // [H, e, l, l, o,  , W, o, r, l, d, !]
     }
 
 }

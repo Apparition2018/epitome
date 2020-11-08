@@ -1,5 +1,7 @@
 package knowledge.加解密和消息摘要.消息摘要算法;
 
+import l.demo.Demo;
+
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -23,27 +25,17 @@ import java.security.NoSuchAlgorithmException;
  * 2.对密码分析的安全性：由于 MD5 的设计，易受密码分析的攻击，SHA-1 显得不易受这样的攻击
  * 3.速度：MD5 比 SHA-1 快
  */
-public class SHADemo {
+public class SHADemo extends Demo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
 
-        try {
-            String src = "Hello World!";
-            System.out.println("加密前数据：" + src);
+        MessageDigest sha = MessageDigest.getInstance("SHA-384");
 
-            MessageDigest sha = MessageDigest.getInstance("SHA-384");
+        sha.update(HELLO_WORLD.getBytes(StandardCharsets.UTF_8));
 
-            sha.update(src.getBytes(StandardCharsets.UTF_8));
+        byte[] bytes = sha.digest();
 
-            byte[] bytes = sha.digest();
-
-            System.out.println("SHA-512加密：" + new BigInteger(1, bytes).toString(32));
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-
+        System.out.println("SHA-512-384: " + new BigInteger(1, bytes).toString(32));
     }
 
 }

@@ -151,11 +151,11 @@ public class IOUtilsDemo extends Demo {
      */
     @Test
     public void read() throws IOException {
-        InputStream is = IOUtils.toInputStream("Hello World!", UTF_8);
+        InputStream is = IOUtils.toInputStream(HELLO_WORLD, UTF_8);
         byte[] bytes = new byte[16];
         IOUtils.read(is, bytes);
-//        IOUtils.readFully(is, bytes); // EOFException: Length to read: 16 actual: 11
-        p(new String(bytes)); // Hello world
+        // IOUtils.readFully(is, bytes); // EOFException: Length to read: 16 actual: 11
+        p(new String(bytes)); // Hello World!
     }
 
     /**
