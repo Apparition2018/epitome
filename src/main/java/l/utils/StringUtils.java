@@ -23,14 +23,15 @@ public class StringUtils {
         return p.matcher(str).matches();
     }
 
-    // 匹配分组
     /**
-     * @param str       被匹配字符串
-     * @param regex     匹配正则        如："[\\u4e00-\\u9fa5]+|[a-zA-Z0-9]+"
-     * @return          Matcher m = return matcherGruop(str, regex);
-     *                  while(m.find()) {
-     *                      System.out.println(m.group());
-     *                  }
+     * 匹配分组
+     *
+     * @param str   被匹配字符串
+     * @param regex 匹配正则，如："[\\u4e00-\\u9fa5]+|[a-zA-Z0-9]+"
+     * @return Matcher m = return matcherGroup(str, regex);
+     * -        while(m.find()) {
+     * -            System.out.println(m.group());
+     * -        }
      */
     public static Matcher matcherGroup(String str, String regex) {
         Pattern p = Pattern.compile(regex);

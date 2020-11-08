@@ -42,7 +42,7 @@ public class MessageDigestDemo extends Demo {
         MessageDigest messageDigest = MessageDigest.getInstance(MESSAGE_DIGEST);
 
         byte[] bytes;
-        if (0 == new Random().ints(0, 1).limit(1).sum()) {
+        if (new Random().nextBoolean()) {
             // void	                update(byte[] input[, int offset, int len])
             // 使用指定的 byte 数组，从指定的偏移量开始更新摘要；类似 StringBuilder 的 append()，追加模式
             messageDigest.update(HELLO_WORLD.getBytes(StandardCharsets.UTF_8));

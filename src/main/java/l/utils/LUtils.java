@@ -1,32 +1,50 @@
 package l.utils;
 
 import java.math.BigInteger;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.util.Random;
 
 public class LUtils {
 
     public LUtils() {
-        // 防止用户通过实力对象访问，而不是通过类名访问
+        // 防止用户通过实例对象访问，而不是通过类名访问
         throw new Error("Don't instantiate " + getClass());
     }
 
     /**
-     * 判断是否为 Windows 操作系统
+     * 随机返回 true 或 false
      */
-    public static boolean isWindows() {
-        String os = System.getProperty("os.name");
-        return null != os && os.toLowerCase().contains("windows");
+    public static boolean randomBoolean() {
+        return new Random().nextBoolean();
     }
 
     /**
-     * 获取IP地址
+     * 随机返回 0, 1, 2...
+     * 最大为 Integer.MAX_VALUE
      */
-    public static String getHostAddress() throws UnknownHostException {
-        return InetAddress.getLocalHost().getHostAddress();
+    public static int randomInt(int end) {
+        if (end < 0) throw new RuntimeException("end < 0");
+        return randomInt(0, end);
     }
 
-    // 16进制字符串 → 字节数组
+    /**
+     * 随机返回范围内整数
+     * 最大为 Integer.MAX_VALUE
+     */
+    public static int randomInt(int start, int end) {
+        if (start >= end) throw new RuntimeException("start >= end");
+        if (start < 0) throw new RuntimeException("start < 0");
+        if (randomBoolean()) {
+            // 方法1
+            return new Random().ints(start, ++end).limit(1).sum();
+        } else {
+            // 方法2
+            return new Random().nextInt(++end - start) + start;
+        }
+    }
+
+    /**
+     * 16进制字符串 → 字节数组
+     */
     public static byte[] hex2Byte(String s) {
         byte[] src = s.toLowerCase().getBytes();
         byte[] ret = new byte[src.length / 2];
@@ -42,8 +60,18 @@ public class LUtils {
         return ret;
     }
 
-    // byte[] → 16进制字符串，通过位运算
-    public static String bytes2Hex1(byte[] bytes) {
+    /**
+     * byte[] → 16进制字符串，通过BigInteger
+     */
+    public static String bytes2Hex(byte[] bytes) {
+        BigInteger bi = new BigInteger(1, bytes);
+        return bi.toString(16);
+    }
+
+    /**
+     * byte[] → 16进制字符串，通过位运算
+     */
+    public static String bytes2Hex2(byte[] bytes) {
         char[] Digit = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',
                 'b', 'c', 'd', 'e', 'f'};
         char[] out = new char[bytes.length * 2];
@@ -56,13 +84,9 @@ public class LUtils {
         return new String(out);
     }
 
-    // byte[] → 16进制字符串，通过BigInteger
-    public static String bytes2Hex2(byte[] bytes) {
-        BigInteger bi = new BigInteger(1, bytes);
-        return bi.toString(16);
-    }
-
-    // byte[] → 16进制字符串，通过...
+    /**
+     * byte[] → 16进制字符串，通过...
+     */
     public static String bytes2Hex3(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
         for (byte aByte : bytes) {

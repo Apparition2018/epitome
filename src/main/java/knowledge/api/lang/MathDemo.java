@@ -9,7 +9,7 @@ import org.junit.Test;
  * <p>
  * static XXX	    abs(XXX a)              返回 XXX 值的绝对值
  * <p>
- * static double	random()                返回带正号的 double 值，该值大于等于 0.0 且小于 1.0
+ * static double	random()                返回带正号的 double 值，该值 ≥ 0.0 且 ＜ 1.0
  * <p>
  * static XXX	    max(XXX a, XXX b)	    返回两个 XXX 值中较大的一个
  * static XXX	    min(XXX a, XXX b)       返回两个 XXX 值中较小的一个

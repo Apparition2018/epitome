@@ -14,20 +14,20 @@ import java.net.UnknownHostException;
 public class InetAddressDemo extends Demo {
 
     public static void main(String[] args) throws UnknownHostException {
-        // 获取本地主机
-        p(InetAddress.getLocalHost());  // JS3-LJH/192.168.8.223
+        // static InetAddress	getLocalHost()          获取本地主机
+        p(InetAddress.getLocalHost());                  // JS3-LJH/192.168.8.223
 
+        // static InetAddress	getByName(String host)  在给定主机名的情况下确定主机的 IP 地址
         // 在给定主机名的情况下确定主机的 IP 地址
         InetAddress inetAddress = InetAddress.getByName(BAIDU_HOST);
-        p(inetAddress);                 // www.baidu.com/14.215.177.39
+        p(inetAddress);                                 // www.baidu.com/14.215.177.39
 
-        // 获取主机名
-        p(inetAddress.getHostName());   // www.baidu.com
-        // 获取 IP 地址字符串（以文本表现形式）
-        p(inetAddress.getHostAddress());// 14.215.177.39
-        // 获取原始 IP 地址
-        p(inetAddress.getAddress());    // [14, -41, -79, 38]
-
+        // String	            getHostName()           获取此 IP 地址的主机名
+        p(inetAddress.getHostName());                   // www.baidu.com
+        // String	            getHostAddress()        获取 IP 地址字符串（以文本表现形式）
+        p(inetAddress.getHostAddress());                // 14.215.177.39         、
+        // byte[]	            getAddress()            获取此 InetAddress 对象的原始 IP 地址
+        p(inetAddress.getAddress());                    // [14, -41, -79, 38]
     }
 
 }
