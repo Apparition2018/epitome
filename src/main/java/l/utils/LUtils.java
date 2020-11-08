@@ -44,8 +44,8 @@ public class LUtils {
 
     // byte[] → 16进制字符串，通过位运算
     public static String bytes2Hex1(byte[] bytes) {
-        char[] Digit = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A',
-                'B', 'C', 'D', 'E', 'F'};
+        char[] Digit = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',
+                'b', 'c', 'd', 'e', 'f'};
         char[] out = new char[bytes.length * 2];
         for (int i = 0; i < bytes.length; i++) {
             byte c = bytes[i];

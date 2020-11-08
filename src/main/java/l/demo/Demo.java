@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * created on 2020/9/3 10:15
  */
 public class Demo {
-
+    
     public static Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     public static List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
     public static List<String> sList = new ArrayList<>(Arrays.asList("1 2 3 4 5 6 7 8 9".split(" ")));
@@ -52,9 +52,7 @@ public class Demo {
         }
     };
     public static CountDownLatch countDownLatch;
-    public static final SimpleDateFormat DATE_SDF = new SimpleDateFormat("yyyy-MM-dd");
-    public static final SimpleDateFormat DATE_TIME_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    public static final SimpleDateFormat SDF = DATE_SDF;
+    public static final String HELLO_WORLD = "Hello World!";
     public static final String UTF_8 = String.valueOf(StandardCharsets.UTF_8);
     public static final String BAIDU_HOST = "www.baidu.com";
     public static final String BAIDU_URL = "https://" + BAIDU_HOST;
@@ -70,6 +68,9 @@ public class Demo {
     public static final String ARSENAL_LOGO = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1113375911,3381445023&fm=26&gp=0.jpg";
     public static final String NOHARA_SINNOSUKE = RESOURCES_ABSOLUTE_PATH + "static/static/img/people/NoharaSinnosuke.png";
     public static final String JDBC_PROP_FILENAME = "jdbc.properties";
+    public static final SimpleDateFormat DATE_SDF = new SimpleDateFormat("yyyy-MM-dd");
+    public static final SimpleDateFormat DATE_TIME_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public static final SimpleDateFormat SDF = DATE_SDF;
 
     public static void setCountDownLatch(int n) {
         countDownLatch = new CountDownLatch(n);

@@ -4,6 +4,7 @@ import l.demo.Demo;
 import org.junit.Test;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 
 /**
  * BigInteger
@@ -55,17 +56,26 @@ public class BigIntegerDemo extends Demo {
 
         // BigInteger   nextProbablePrime()
         // 返回大于此 BigInteger 的可能为素数的第一个整数
-        p(bi.nextProbablePrime());
+        p(bi.nextProbablePrime()); // 11
         // boolean	    isProbablePrime(int certainty)  
         // 如果此 BigInteger 可能为素数，则返回 true，如果它一定为合数，则返回 false
-        p(bi.isProbablePrime(10));
+        p(bi.isProbablePrime(10)); // false
 
         // boolean	    testBit(int n)                  
         // 当且仅当设置了指定的位时，返回 true
-        p(bi.testBit(0));
-        p(bi.testBit(1));
-        p(bi.testBit(2));
-        p(bi.testBit(3));
+        p(bi.testBit(0)); // true
+        p(bi.testBit(1)); // false
+        p(bi.testBit(2)); // false
+        p(bi.testBit(3)); // true
+    }
+
+    /**
+     * String   →   16进制字符串
+     * bytes[]  →   16进制字符串
+     */
+    @Test
+    public void testBigInteger2() {
+        p(new BigInteger(1, HELLO_WORLD.getBytes(StandardCharsets.UTF_8)).toString(16));
     }
 
 }

@@ -5,7 +5,7 @@ import l.demo.Demo;
 import org.junit.Test;
 
 /**
- * StrUtilDemo
+ * StrUtil
  * <p>
  * C_COMMA              ','
  * C_SLASH              '/'

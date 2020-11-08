@@ -1,19 +1,19 @@
 package knowledge.加解密和消息摘要.消息摘要算法;
 
 import l.demo.Demo;
+import l.utils.LUtils;
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
-import l.utils.LUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 /**
- * 作用：
  * MD5 即 Message-Digest Algorithm 5（信息-摘要算法5），用于确保信息传输完整一致。
  * MD5 是输入不定长度信息，输出固定长度 128-bits 的算法。
  * 严格意义上来讲，MD5 以及 SHA1 并不属于加密算法，也不属于签名算法，而是一种摘要算法，用于数据完整性校验等
@@ -39,103 +39,78 @@ import java.util.Base64;
  */
 public class MD5Demo extends Demo {
 
-    private static String src = "Hello World!";
-
     @Test
-    public void test1() {
+    public void testMD5() throws NoSuchAlgorithmException {
 
-        try {
-            p("加密前数据：" + src);
+        p("SRC：" + HELLO_WORLD);
 
-            // 获取MessageDigest对象，参数为MD5字符串，表示这是一个MD5算法（还有SHA1算法等）
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
+        // 获取MessageDigest对象，参数为MD5字符串，表示这是一个MD5算法（还有SHA1算法等）
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
 
-            // update(bytes[])类似StringBuilder对象的append()方法，追加模式，属于一个累计更改的过程
-            md5.update(src.getBytes(StandardCharsets.UTF_8));
+        // update(bytes[])类似StringBuilder对象的append()方法，追加模式，属于一个累计更改的过程
+        md5.update(HELLO_WORLD.getBytes(StandardCharsets.UTF_8));
 
-            // digest()被调用后，MessageDigest对象就被重置，即不能连续再次调用该方法计算原数据的MD5值（可以手动调用reset()方法重置输入源）
-            // digest()返回16位长度的哈希值，由byte[]承接
-            byte[] bytes = md5.digest();
+        // digest()被调用后，MessageDigest对象就被重置，即不能连续再次调用该方法计算原数据的MD5值（可以手动调用reset()方法重置输入源）
+        // digest()返回16位长度的哈希值，由byte[]承接
+        byte[] bytes = md5.digest();
 
-//			byte[] bytes = md5.digest(src.getBytes(StandardCharsets.UTF_8));
+        // 等于以上两个步骤
+        // byte[] bytes = md5.digest(HELLO_WORLD.getBytes(StandardCharsets.UTF_8));
 
-            // 加密后的bytes[]转化为十六进制的32位长度的字符串
-            p("16进制字符串：" + LUtils.bytes2Hex2(bytes));
-
-            // 加密后的bytes[]通过Base64再次加密成字符串
-            p("Base64字符串：" + Base64.getEncoder().encodeToString(bytes));
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+        // 加密后的bytes[]再转成16进制字符串
+        p("MD5：" + new BigInteger(1, bytes).toString(16));
 
     }
 
     /**
-     * 密码进行加盐加密
-     * 方法一：每一个 byte 和 Oxff 做一个与运算
+     * 加盐加密 1
+     * 每一个 byte 和 Oxff 做一个与运算
      */
     @Test
-    public void test2() {
-        try {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
-            md5.digest(src.getBytes());
-            byte[] bytes = md5.digest(src.getBytes(StandardCharsets.UTF_8));
-            StringBuilder sb = new StringBuilder();
-            // 把每一个byte 做一个与运算 0xff;
-            for (byte b : bytes) {
-                // 与运算
-                int number = b & 0xff; // 加盐
-                String str = Integer.toHexString(number);
-                if (str.length() == 1) {
-                    sb.append("0");
-                }
-                sb.append(str);
+    public void testSaltEncryption1() throws NoSuchAlgorithmException {
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        byte[] bytes = md5.digest(HELLO_WORLD.getBytes(StandardCharsets.UTF_8));
+        StringBuilder sb = new StringBuilder();
+        // 把每一个 byte 做一个与运算 0xff;
+        for (byte b : bytes) {
+            // 与运算
+            int number = b & 0xff; // 加盐
+            String str = Integer.toHexString(number);
+            if (str.length() == 1) {
+                sb.append("0");
             }
-
-            p("加盐字符串：" + sb.toString());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            sb.append(str);
         }
+        p("Salt MD5：" + sb.toString());
     }
 
     /**
-     * 密码进行加盐加密
-     * 方法二：primary key + 密码一起 md5
-     * 例如：id + password 一起 md5
+     * 加盐加密 2
+     * primary key + SRC
+     * 例如：id + password
      */
     @Test
-    public void test3() {
-        try {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
-            md5.digest(src.getBytes());
-            byte[] bytes = md5.digest(("id" + src).getBytes(StandardCharsets.UTF_8)); // 加盐
-
-            p("加盐字符串：" + LUtils.bytes2Hex2(bytes));
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+    public void testSaltEncryption2() throws NoSuchAlgorithmException {
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        byte[] bytes = md5.digest(("id" + HELLO_WORLD).getBytes(StandardCharsets.UTF_8)); // 加盐
+        p("Salt MD5：" + new BigInteger(1, bytes).toString(16));
     }
 
     /**
-     * 文件获取 MD5
+     * 获取文件 MD5
      */
     @Test
-    public void test4() {
-        try {
-            FileInputStream fis = new FileInputStream(DEMO_FILE_PATH);
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
-            byte[] buf = new byte[1024];
-            int len;
-            while ((len = fis.read(buf)) != -1) {
-                md5.update(buf, 0, len);
-            }
-            fis.close();
-            p(LUtils.bytes2Hex2(md5.digest()));
-        } catch (IOException | NoSuchAlgorithmException e) {
-            e.printStackTrace();
+    public void test4() throws IOException, NoSuchAlgorithmException {
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        FileInputStream fis = new FileInputStream(DEMO_FILE_PATH);
+        byte[] buf = new byte[1024];
+        int len;
+        while ((len = fis.read(buf)) != -1) {
+            md5.update(buf, 0, len);
         }
-
+        byte[] bytes = md5.digest();
+        p("File MD5：" + new BigInteger(1, bytes).toString(16));
+        fis.close();
     }
 
     /**
@@ -145,9 +120,9 @@ public class MD5Demo extends Demo {
     @Test
     public void test5() {
         // spring
-        p(DigestUtils.md5DigestAsHex("123".getBytes()));
-        // apache
-        p(org.apache.commons.codec.digest.DigestUtils.md5Hex("123"));
+        p(DigestUtils.md5DigestAsHex(HELLO_WORLD.getBytes()));
+        // commons-codec
+        p(org.apache.commons.codec.digest.DigestUtils.md5Hex(HELLO_WORLD));
     }
 
 }
