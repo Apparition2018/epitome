@@ -1,7 +1,6 @@
 package knowledge.加解密和消息摘要.消息摘要算法;
 
 import l.demo.Demo;
-import l.utils.LUtils;
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
 
@@ -11,7 +10,6 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 /**
  * MD5 即 Message-Digest Algorithm 5（信息-摘要算法5），用于确保信息传输完整一致。
@@ -42,8 +40,6 @@ public class MD5Demo extends Demo {
     @Test
     public void testMD5() throws NoSuchAlgorithmException {
 
-        p("SRC：" + HELLO_WORLD);
-
         // 获取MessageDigest对象，参数为MD5字符串，表示这是一个MD5算法（还有SHA1算法等）
         MessageDigest md5 = MessageDigest.getInstance("MD5");
 
@@ -63,34 +59,12 @@ public class MD5Demo extends Demo {
     }
 
     /**
-     * 加盐加密 1
-     * 每一个 byte 和 Oxff 做一个与运算
-     */
-    @Test
-    public void testSaltEncryption1() throws NoSuchAlgorithmException {
-        MessageDigest md5 = MessageDigest.getInstance("MD5");
-        byte[] bytes = md5.digest(HELLO_WORLD.getBytes(StandardCharsets.UTF_8));
-        StringBuilder sb = new StringBuilder();
-        // 把每一个 byte 做一个与运算 0xff;
-        for (byte b : bytes) {
-            // 与运算
-            int number = b & 0xff; // 加盐
-            String str = Integer.toHexString(number);
-            if (str.length() == 1) {
-                sb.append("0");
-            }
-            sb.append(str);
-        }
-        p("Salt MD5：" + sb.toString());
-    }
-
-    /**
-     * 加盐加密 2
+     * 加盐加密
      * primary key + SRC
      * 例如：id + password
      */
     @Test
-    public void testSaltEncryption2() throws NoSuchAlgorithmException {
+    public void testSaltEncryption() throws NoSuchAlgorithmException {
         MessageDigest md5 = MessageDigest.getInstance("MD5");
         byte[] bytes = md5.digest(("id" + HELLO_WORLD).getBytes(StandardCharsets.UTF_8)); // 加盐
         p("Salt MD5：" + new BigInteger(1, bytes).toString(16));
@@ -119,10 +93,8 @@ public class MD5Demo extends Demo {
      */
     @Test
     public void test5() {
-        // spring
-        p(DigestUtils.md5DigestAsHex(HELLO_WORLD.getBytes()));
-        // commons-codec
-        p(org.apache.commons.codec.digest.DigestUtils.md5Hex(HELLO_WORLD));
+        p("Spring MD5：" + DigestUtils.md5DigestAsHex(HELLO_WORLD.getBytes()));
+        p("commons-codec MD5：" + org.apache.commons.codec.digest.DigestUtils.md5Hex(HELLO_WORLD));
     }
 
 }

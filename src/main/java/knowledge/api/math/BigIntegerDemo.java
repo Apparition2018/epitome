@@ -51,7 +51,7 @@ public class BigIntegerDemo extends Demo {
     @Test
     public void testBigInteger() {
         // BigInteger(String val[, int radix])
-        // 将指定基数的 BigInteger 的字符串表示形式转换为 BigInteger
+        // 将指定基数(进制)的 BigInteger 的字符串表示形式转换为 BigInteger
         BigInteger bi = new BigInteger("9"); // 二进制 1001
 
         // BigInteger   nextProbablePrime()
@@ -75,6 +75,10 @@ public class BigIntegerDemo extends Demo {
      */
     @Test
     public void testBigInteger2() {
+        // BigInteger(int signum, byte[] magnitude)
+        // 将 BigInteger 的 sign-magnitude 表示形式转换为 BigInteger
+        // String	    toString([int radix])
+        // 返回此 BigInteger 的给定基数(进制)的字符串表示形式
         p(new BigInteger(1, HELLO_WORLD.getBytes(StandardCharsets.UTF_8)).toString(16));
     }
 
