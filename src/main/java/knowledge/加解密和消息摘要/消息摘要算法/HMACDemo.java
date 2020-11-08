@@ -46,7 +46,7 @@ public class HMACDemo extends Demo {
 
     @Test
     public void testHMAC() {
-        String inputStr = "明文";
+        String inputStr = HELLO_WORLD;
         p(getResult1(inputStr).equals(getResult2(inputStr)));
     }
 
