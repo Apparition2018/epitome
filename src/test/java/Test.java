@@ -19,11 +19,19 @@
 
 import l.demo.Demo;
 
+import java.beans.XMLDecoder;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
 public class Test extends Demo {
 
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws FileNotFoundException {
+        XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(new File(DEMO_PATH + "student.xml")));
+        Object o = xmlDecoder.readObject();
+        xmlDecoder.close();
+        p(o);
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_221" class="java.beans.XMLDecoder">
+ <object class="l.demo.Person">
+  <void property="id">
+   <int>1</int>
+  </void>
+  <void property="name">
+   <string>张三</string>
+  </void>
+ </object>
+ <object class="l.demo.Person">
+  <void property="id">
+   <int>2</int>
+  </void>
+  <void property="name">
+   <string>李四</string>
+  </void>
+ </object>
+ <object class="l.demo.Person">
+  <void property="id">
+   <int>3</int>
+  </void>
+  <void property="name">
+   <string>王五</string>
+  </void>
+ </object>
+</java>

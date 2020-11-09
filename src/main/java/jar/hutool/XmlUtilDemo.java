@@ -73,7 +73,7 @@ public class XmlUtilDemo extends Demo {
             // Object → XML File
             XmlUtil.writeObjectAsXml(new File(DEMO_ABSOLUTE_PATH + "student.xml"), student);
             // XML File → Object
-            // p(XmlUtil.readObjectFromXml(new File(DEMO_ABSOLUTE_PATH + "student.xml")));
+            p(XmlUtil.readObjectFromXml(new File(DEMO_ABSOLUTE_PATH + "student.xml")));
 
             // Map → Document
             Document studentDoc = XmlUtil.mapToXml(studentMap, "student");
