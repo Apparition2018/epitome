@@ -159,7 +159,6 @@ public class ByteStream extends Demo {
      */
     @Test
     public void testObjectXXXStream() {
-        Person person = new Person("松岛枫", 18, "女", Arrays.asList("是一名演员", "促进中日文化交流", "广大男性同胞的启蒙老师"));
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DEMO_PATH + "person.obj"));
              ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DEMO_PATH + "person.obj"))) {
 
@@ -177,12 +176,11 @@ public class ByteStream extends Demo {
              * 	2）持久化：将这组字节码写入文件（磁盘中）长久保存
              */
             // void	        writeObject(Object obj)     将指定的对象写入 ObjectOutputStream
-            oos.writeObject(person);
+            oos.writeObject(personList.get(0));
             p("对象写出完毕！");
 
             // Object	    readObject()                从 ObjectInputStream 读取对象
-            person = (Person) ois.readObject();
-            p(person);
+            p(ois.readObject());
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
