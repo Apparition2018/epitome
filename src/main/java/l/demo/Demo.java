@@ -53,6 +53,7 @@ public class Demo {
     };
     public static CountDownLatch countDownLatch;
     public static final String HELLO_WORLD = "Hello World!";
+    public static final String CHINESE_NAME = "梁杰辉";
     public static final String UTF_8 = String.valueOf(StandardCharsets.UTF_8);
     public static final String BAIDU_HOST = "www.baidu.com";
     public static final String BAIDU_URL = "https://" + BAIDU_HOST;
