@@ -26,11 +26,12 @@
         <!-- dependency -->
         <springboot-druid>1.1.18</springboot-druid>
         <springboot-pagehelper>1.2.13</springboot-pagehelper>
-        <dbcp2>2.8.0</dbcp2>
-        <tika>1.24.1</tika>
+        <commons-dbcp2>2.8.0</commons-dbcp2>
         <commons-text>1.9</commons-text>
         <commons-email>1.5</commons-email>
         <commons-beanutils>1.9.4</commons-beanutils>
+        <commons-net>3.7.2</commons-net>
+        <tika>1.24.1</tika>
         <easyexcel>2.2.6</easyexcel>
         <hutool>5.4.6</hutool>
         <fastjson>1.2.74</fastjson>
@@ -124,22 +125,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>${dbcp2}</version>
-        </dependency>
-
-        <!-- tika：内容抽取的工具集合
-            包含了 gson, guava, commons-compress, commons-math3, httpmime
-                bcprov-jdk15on, juniversalchardet -->
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-parsers</artifactId>
-            <version>${tika}</version>
-        </dependency>
-
-        <!-- httpclient -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient-cache</artifactId>
+            <version>${commons-dbcp2}</version>
         </dependency>
 
         <!-- commons -->
@@ -157,6 +143,26 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>${commons-beanutils}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>${commons-net}</version>
+        </dependency>
+
+        <!-- tika：内容抽取的工具集合
+            包含了 gson, guava, commons-compress, commons-math3, httpmime
+                bcprov-jdk15on, juniversalchardet -->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-parsers</artifactId>
+            <version>${tika}</version>
+        </dependency>
+
+        <!-- httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient-cache</artifactId>
         </dependency>
 
         <!-- easyexcel：包含了 poi 和 poi-ooxml

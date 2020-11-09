@@ -104,7 +104,7 @@ public class CustomAnnotation extends Demo {
     @Getter
     @Setter
     @Description(desc = "Apple")
-    private static class Apple {
+    public static class Apple {
         @FruitName("Apple")
         private String appleName;
 
