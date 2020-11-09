@@ -27,7 +27,7 @@ import java.security.SecureRandom;
  * 另外，每对用户每次使用对称加密算法时，都需要使用其他人不知道的唯一密钥，
  * 这会使得收、发双方所拥有的密钥数量巨大，密钥管理成为双方的负担。
  */
-public class AESDemo {
+public class SymmetricCryptography {
 
     private static final String KEY_ALGORITHM = "AES";
 
@@ -91,6 +91,7 @@ public class AESDemo {
         KeyGenerator kg;
 
         try {
+            // https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyGenerator
             kg = KeyGenerator.getInstance(KEY_ALGORITHM);
 
             // AES 要求密钥长度为128

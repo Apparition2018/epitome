@@ -29,7 +29,7 @@ import java.util.Map;
  *
  *
  */
-public class RSADemo2 extends Demo {
+public class AsymmetricCryptography2 extends Demo {
 
     // 非对称加密算法 RSA
     private static final String KEY_ALGORITHM = "RSA";
@@ -147,13 +147,13 @@ public class RSADemo2 extends Demo {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException, BadPaddingException, InvalidKeySpecException, NoSuchPaddingException {
         // 生成密钥对
-        Map<String, Object> keyMap = RSADemo2.initKey();
+        Map<String, Object> keyMap = AsymmetricCryptography2.initKey();
 
         // 公钥
-        byte[] publicKey = RSADemo2.getPublicKey(keyMap);
+        byte[] publicKey = AsymmetricCryptography2.getPublicKey(keyMap);
 
         // 私钥
-        byte[] privateKey = RSADemo2.getPrivateKey(keyMap);
+        byte[] privateKey = AsymmetricCryptography2.getPrivateKey(keyMap);
 
         p("公钥：" + Base64.getEncoder().encodeToString(publicKey));
         p("私钥：" + Base64.getEncoder().encodeToString(privateKey));
@@ -164,12 +164,12 @@ public class RSADemo2 extends Demo {
 
         p("\n========== 甲方向乙方发送加密数据 ==========");
         // 甲方进行数据的加密
-        byte[] code1 = RSADemo2.encryptByPrivateKey(str.getBytes(), privateKey);
+        byte[] code1 = AsymmetricCryptography2.encryptByPrivateKey(str.getBytes(), privateKey);
         p("甲方加密后的数据：" + Base64.getEncoder().encodeToString(code1));
 
         p("\n========== 乙方使用公钥对数据进行解密 ==========");
         // 乙方进行数据的解密
-        byte[] decode1 = RSADemo2.decryptByPublicKey(code1, publicKey);
+        byte[] decode1 = AsymmetricCryptography2.decryptByPublicKey(code1, publicKey);
         p("乙方解密后的数据：" + new String(decode1));
 
         p("\n========== 进行反向操作，乙方向甲方发送数据 ==========");
@@ -178,12 +178,12 @@ public class RSADemo2 extends Demo {
 
         p("\n========== 乙方向甲方发送加密数据 ==========");
         // 乙方进行数据的加密
-        byte[] code2 = RSADemo2.encryptByPublicKey(str.getBytes(), publicKey);
+        byte[] code2 = AsymmetricCryptography2.encryptByPublicKey(str.getBytes(), publicKey);
         p("乙方加密后的数据：" + Base64.getEncoder().encodeToString(code2));
 
         p("\n========== 用甲使用私钥对数据进行解密 ==========");
         // 乙方进行数据的解密
-        byte[] decode2 = RSADemo2.decryptByPrivateKey(code2, privateKey);
+        byte[] decode2 = AsymmetricCryptography2.decryptByPrivateKey(code2, privateKey);
         p("甲方解密后的数据：" + new String(decode2));
     }
     

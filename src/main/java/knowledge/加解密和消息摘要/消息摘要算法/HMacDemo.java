@@ -42,7 +42,7 @@ import java.util.List;
  * https://www.cnblogs.com/fishou/p/4159092.html
  * https://www.cnblogs.com/oumyye/p/4593592.html
  */
-public class HMACDemo extends Demo {
+public class HMacDemo extends Demo {
 
     @Test
     public void testHMAC() {

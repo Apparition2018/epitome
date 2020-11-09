@@ -19,8 +19,8 @@ import java.util.Map;
 /**
  * 非对称加密 (Asymmetric Cryptography)
  * 非对称加密算法需要两个密钥：公开密钥和私有秘钥。
- * 公开密钥与私有秘钥是一对，如果公开密钥对数据进行加密，只有用对应的私有秘钥车你能解密；
- * 如果用私有秘钥对数据进行加密，那么只有用对应的公开密钥才能解密。
+ * 加密：公开密钥对数据加密，私有秘钥对数据解密。
+ * 签名：私有秘钥对数据加密，公开密钥对数据解密。
  * 一般公钥是公开的，私钥是自己保存。
  * <p>
  * 常见的非对称加密算法有：RSA, DSA(数字签名), ECC(移动设备), Diffie-Hellman, El Gamal
@@ -32,7 +32,7 @@ import java.util.Map;
  * https://blog.csdn.net/chengbinbbs/article/details/78640589
  * https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#Signature
  */
-public class RSADemo {
+public class AsymmetricCryptography {
 
     // 非对称加密算法 RSA
     private static final String KEY_ALGORITHM = "RSA";
