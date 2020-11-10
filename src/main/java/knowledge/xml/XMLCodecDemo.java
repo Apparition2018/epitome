@@ -1,4 +1,4 @@
-package knowledge.api.beans;
+package knowledge.xml;
 
 import l.demo.Demo;
 import l.demo.Person;
@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * XML
+ * XMLCodec
  *
  * @author ljh
  * created on 2020/11/9 14:07
  */
-public class XMLDemo extends Demo {
+public class XMLCodecDemo extends Demo {
 
     private static final File FILE = new File(DEMO_PATH + "person.xml");
 
