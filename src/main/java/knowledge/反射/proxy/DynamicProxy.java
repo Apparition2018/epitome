@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.concurrent.TimeUnit;
 
 /**
  * DynamicProxy    动态代理
@@ -22,7 +21,7 @@ public class DynamicProxy extends Demo {
 
     @Test
     public void testDynamicProxy1() {
-        TimeIntervalHandler timeIntervalHandler = new TimeIntervalHandler();
+        StopWatchProxyHandler timeIntervalHandler = new StopWatchProxyHandler();
         People proxy = (People) timeIntervalHandler.newProxy(new Man());
         proxy.hello();
         proxy.goodbye();
@@ -35,42 +34,17 @@ public class DynamicProxy extends Demo {
                 man.getClass().getClassLoader(),
                 man.getClass().getInterfaces(),
                 (proxy, method, args) -> {
-                    long t1 = System.currentTimeMillis();
+                    long start = System.currentTimeMillis();
                     Object result = method.invoke(man, args);
-                    long t2 = System.currentTimeMillis();
-                    p(method.getName() + " execute spend [" + (t2 - t1) + "]ms.");
+                    long end = System.currentTimeMillis();
+                    p(method.getName() + " execute spend [" + (end - start) + "]ms.");
                     return result;
                 });
         peopleProxy.hello();
         peopleProxy.goodbye();
     }
 
-    interface People {
-
-        void hello();
-
-        void goodbye();
-    }
-
-    /**
-     * 被代理的类
-     */
-    private static class Man implements People {
-
-        @Override
-        public void hello() {
-            p("hello");
-            sleep(500, TimeUnit.MILLISECONDS);
-        }
-
-        @Override
-        public void goodbye() {
-            p("goodbye");
-            sleep(500, TimeUnit.MILLISECONDS);
-        }
-    }
-
-    private static class TimeIntervalHandler implements InvocationHandler {
+    private static class StopWatchProxyHandler implements InvocationHandler {
 
         /**
          * 目标对象
@@ -89,7 +63,7 @@ public class DynamicProxy extends Demo {
             return Proxy.newProxyInstance(
                     target.getClass().getClassLoader(), // 目标对象的加载器
                     target.getClass().getInterfaces(),  // 目标对象实现的接口
-                    this); // 实现代理类的对象
+                    this); // 代理对象
         }
 
         /**
@@ -101,10 +75,10 @@ public class DynamicProxy extends Demo {
          */
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            long t1 = System.currentTimeMillis();
+            long start = System.currentTimeMillis();
             Object result = method.invoke(target, args);
-            long t2 = System.currentTimeMillis();
-            p(method.getName() + " execute spend [" + (t2 - t1) + "]ms.");
+            long end = System.currentTimeMillis();
+            p(method.getName() + " execute spend [" + (end - start) + "]ms.");
             return result;
         }
     }

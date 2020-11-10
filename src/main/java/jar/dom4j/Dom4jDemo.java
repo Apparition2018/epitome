@@ -50,7 +50,6 @@ public class Dom4jDemo extends Demo {
     }
 
     @Test
-    @SuppressWarnings("unchecked")
     public void readXML() throws DocumentException {
         // 新建 SAXReader
         SAXReader reader = new SAXReader();
@@ -81,15 +80,14 @@ public class Dom4jDemo extends Demo {
     }
 
     @Test
-    @SuppressWarnings("unchecked")
     public void xPath() throws DocumentException {
         SAXReader reader = new SAXReader();
         Document doc = reader.read(new File(XML_PATH));
         String xpath = "//student[@id='1' or age='19']/name";
         // 根据 XPath 表达式 select
-        List<Element> list = doc.selectNodes(xpath);
-        for (Element element : list) {
-            p(element.getTextTrim());
+        List<Node> nodeList = doc.selectNodes(xpath);
+        for (Node node : nodeList) {
+            p(node.getText());
         }
     }
 }

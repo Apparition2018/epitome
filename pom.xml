@@ -40,7 +40,7 @@
         <zxing>3.4.1</zxing>
         <easy-captcha>1.6.2</easy-captcha>
         <kaptcha>2.3.2</kaptcha>
-        <dom4j>1.6.1</dom4j>
+        <dom4j>2.1.3</dom4j>
         <jaxen>1.2.0</jaxen>
         <tinypinyin>2.0.3</tinypinyin>
         <!-- plugin -->
@@ -248,11 +248,11 @@
 
         <!-- dom4j：解析 XML -->
         <dependency>
-            <groupId>dom4j</groupId>
+            <groupId>org.dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>${dom4j}</version>
         </dependency>
-        
+
         <!-- jaxen：XPath -->
         <dependency>
             <groupId>jaxen</groupId>
