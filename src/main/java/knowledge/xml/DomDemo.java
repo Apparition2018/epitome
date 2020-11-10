@@ -51,7 +51,7 @@ public class DomDemo extends Demo {
         }
 
         @Test
-        public void createXML() throws TransformerException {
+        public void writeXML() throws TransformerException {
             // 新建 Document
             Document doc = builder.newDocument();
 
@@ -75,10 +75,10 @@ public class DomDemo extends Demo {
             transformer.transform(new DOMSource(doc), new StreamResult(new File(XML_PATH)));
         }
 
-        private void appendStudent(Document doc, Element school, String idText, String nameText, String ageText) {
+        private void appendStudent(Document doc, Element school, String id, String nameText, String ageText) {
             Element student = doc.createElement("student");
             // 在 Element 添加 Attribute
-            student.setAttribute("id", idText);
+            student.setAttribute("id", id);
             school.appendChild(student);
 
             Element name = doc.createElement("name");
@@ -97,18 +97,18 @@ public class DomDemo extends Demo {
             // 根据 Tag Name 获取 NodeList
             NodeList schools = doc.getElementsByTagName("school");
 
-            IntStream.range(0, schools.getLength()).forEach(i -> {
+            for (int i = 0; i < schools.getLength(); i++) {
                 // 根据 index 获取 Node，并向下转型为 Element
                 Element school = (Element) schools.item(i);
                 NodeList students = school.getElementsByTagName("student");
-                IntStream.range(0, students.getLength()).forEach(j -> {
+                for (int j = 0; j < students.getLength(); j++) {
                     Element student = (Element) students.item(j);
                     Node name = student.getElementsByTagName("name").item(0);
                     Node age = student.getElementsByTagName("age").item(0);
                     // 获取次节点及其子节点的文本内容
                     p(name.getTextContent() + ": " + age.getTextContent() + "岁");
-                });
-            });
+                }
+            }
         }
     }
 

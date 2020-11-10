@@ -24,7 +24,7 @@ import java.util.Map;
 public class XmlUtilDemo extends Demo {
 
     @Test
-    public void createXML() {
+    public void writeXML() {
         Document doc = XmlUtil.createXml();
 
         Element school = XmlUtil.appendChild(doc, "school");
@@ -35,9 +35,9 @@ public class XmlUtilDemo extends Demo {
         XmlUtil.toFile(doc, DEMO_ABSOLUTE_PATH + "demo.xml");
     }
 
-    private void appendStudent(Element school, String idText, String nameText, String ageText) {
+    private void appendStudent(Element school, String id, String nameText, String ageText) {
         Element student = XmlUtil.appendChild(school, "student");
-        student.setAttribute("id", idText);
+        student.setAttribute("id", id);
 
         Element name = XmlUtil.appendChild(student, "name");
         XmlUtil.appendText(name, nameText);
