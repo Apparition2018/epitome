@@ -1,9 +1,12 @@
 package knowledge.反射.proxy;
 
+import knowledge.反射.proxy.domain.Man;
+import knowledge.反射.proxy.domain.People;
 import l.demo.Demo;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
@@ -23,8 +26,8 @@ public class DynamicProxy extends Demo {
     public void testDynamicProxy1() {
         StopWatchProxyHandler timeIntervalHandler = new StopWatchProxyHandler();
         People proxy = (People) timeIntervalHandler.newProxy(new Man());
-        proxy.hello();
-        proxy.goodbye();
+        proxy.work();
+        proxy.sleep();
     }
 
     @Test
@@ -40,8 +43,8 @@ public class DynamicProxy extends Demo {
                     p(method.getName() + " execute spend [" + (end - start) + "]ms.");
                     return result;
                 });
-        peopleProxy.hello();
-        peopleProxy.goodbye();
+        peopleProxy.work();
+        peopleProxy.sleep();
     }
 
     private static class StopWatchProxyHandler implements InvocationHandler {
@@ -74,11 +77,19 @@ public class DynamicProxy extends Demo {
          * @param args   用于接收目标方法中的实际参数的值
          */
         @Override
-        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        public Object invoke(Object proxy, Method method, Object[] args) {
+            String methodName = method.getName();
             long start = System.currentTimeMillis();
-            Object result = method.invoke(target, args);
+            p(methodName + " start.time = " + start);
+            Object result = null;
+            try {
+                result = method.invoke(target, args);
+            } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+                p(e.getCause().getMessage());
+            }
             long end = System.currentTimeMillis();
-            p(method.getName() + " execute spend [" + (end - start) + "]ms.");
+            p(methodName + " end.time = " + end);
+            p(methodName + " execute spend [" + (end - start) + "]ms.\n");
             return result;
         }
     }

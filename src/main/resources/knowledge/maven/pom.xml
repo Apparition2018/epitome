@@ -56,7 +56,8 @@
             <type>xxx</type>
             <!-- 范围 -->
             <scope>test</scope>
-            <!-- 设置依赖是否可选 -->
+            <!-- 设置依赖是否可以传递
+                optional=true，依赖不会传递，之后依赖此项目的项目如果想要使用, 需要重新引入 -->
             <optional>true</optional>
             <!-- 排除依赖传递列表 -->
             <exclusions>

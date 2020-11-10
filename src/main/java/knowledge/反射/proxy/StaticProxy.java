@@ -1,5 +1,7 @@
 package knowledge.反射.proxy;
 
+import knowledge.反射.proxy.domain.Man;
+import knowledge.反射.proxy.domain.People;
 import l.demo.Demo;
 
 /**
@@ -15,8 +17,8 @@ public class StaticProxy extends Demo {
 
     public static void main(String[] args) {
         People proxy = new StopWatchProxy(new Man());
-        proxy.hello();
-        proxy.goodbye();
+        proxy.work();
+        proxy.sleep();
     }
 
     /**
@@ -33,19 +35,27 @@ public class StaticProxy extends Demo {
         }
 
         @Override
-        public void hello() {
+        public void work() {
             long start = System.currentTimeMillis();
-            man.hello();
+            p("work start.time = " + start);
+            man.work();
             long end = System.currentTimeMillis();
-            p("hello execute spend [" + (end - start) + "]ms.");
+            p("work end.time = " + end);
+            p("work execute spend [" + (end - start) + "]ms.\n");
         }
 
         @Override
-        public void goodbye() {
+        public void sleep() {
             long start = System.currentTimeMillis();
-            man.goodbye();
+            p("sleep start.time = " + start);
+            try {
+                man.sleep();
+            } catch (Exception e) {
+                p(e.getMessage());
+            }
             long end = System.currentTimeMillis();
-            p("goodbye execute spend [" + (start - end) + "]ms.");
+            p("sleep end.time = " + end);
+            p("sleep execute spend [" + (end - start) + "]ms.\n");
         }
     }
 }
