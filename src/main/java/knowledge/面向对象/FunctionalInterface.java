@@ -1,4 +1,4 @@
-package knowledge.类和接口;
+package knowledge.面向对象;
 
 import org.junit.Test;
 

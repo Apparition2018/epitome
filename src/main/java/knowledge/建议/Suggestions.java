@@ -931,14 +931,12 @@ public class Suggestions extends Demo {
         // 学生人数 100 万
         int stuNum = 100 * 10000;
         // List 集合，记录所有学生的份数
-        List<Integer> scores = new ArrayList<>(); // 16ms
-        //  List<Integer> scores = new LinkedList<>(); // 31ms
-        // 写入份数
+        List<Integer> scores = new ArrayList<>(); // 10ms
+//          List<Integer> scores = new LinkedList<>(); // 15ms
         IntStream.rangeClosed(1, stuNum).forEach(i -> scores.add(new Random().nextInt(150)));
-
         StopWatch watch = StopWatch.createStarted();
-        p("平均分是：" + average(scores));           // 平均分是：74
-        p("执行时间：" + watch.getTime() + "ms");    // 执行时间：9ms
+        p("平均分是：" + average(scores));
+        p("执行时间：" + watch.getTime() + "ms");
     }
 
     private int average(List<Integer> scores) {
@@ -964,7 +962,7 @@ public class Suggestions extends Demo {
         List<Integer> scores = new LinkedList<>();
         StopWatch watch = StopWatch.createStarted();
         IntStream.rangeClosed(1, stuNum).forEach(i -> scores.add(0, new Random().nextInt(150)));
-        p("执行时间：" + watch.getTime() + "ms");    // 执行时间：139ms
+        p("执行时间：" + watch.getTime() + "ms");    // 执行时间：204ms
     }
 
     // 建议69：集合相等只跟元素有关

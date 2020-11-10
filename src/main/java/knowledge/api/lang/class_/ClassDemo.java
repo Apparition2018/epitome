@@ -21,6 +21,7 @@ import java.util.function.Predicate;
  * Class<?>         getEnclosingClass()         返回底层类的立即封闭类
  * Class<?> 	    getComponentType()          返回表示数组组件类型的 Class
  * ClassLoader	    getClassLoader()            返回该类的类加载器
+ * Class<?>[]	    getInterfaces()             确定此对象所表示的类或接口实现的接口
  * Package	        getPackage()                返回该类的包
  * Class<? super T>	getSuperclass()             返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的超类的 Class
  * T	            newInstance()               创建此 Class 对象所表示的类的一个新实例
