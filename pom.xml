@@ -24,15 +24,15 @@
         <!-- https://blog.csdn.net/weixin_34360651/article/details/91778454 -->
         <java.version>1.8</java.version>
         <!-- dependency -->
-        <springboot-druid>1.1.18</springboot-druid>
-        <springboot-pagehelper>1.2.13</springboot-pagehelper>
+        <springboot-druid>1.2.3</springboot-druid>
+        <springboot-pagehelper>1.3.0</springboot-pagehelper>
         <commons-dbcp2>2.8.0</commons-dbcp2>
         <commons-text>1.9</commons-text>
         <commons-email>1.5</commons-email>
         <commons-beanutils>1.9.4</commons-beanutils>
         <commons-net>3.7.2</commons-net>
         <tika>1.24.1</tika>
-        <hutool>5.4.6</hutool>
+        <hutool>5.4.7</hutool>
         <easyexcel>2.2.6</easyexcel>
         <fastjson>1.2.75</fastjson>
         <protostuff>1.7.2</protostuff>

@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class Man extends Demo implements People {
 
-    @AOP
     @Override
+    @AOP
     public void work() {
         p("work ...");
         sleep(500, TimeUnit.MILLISECONDS);
