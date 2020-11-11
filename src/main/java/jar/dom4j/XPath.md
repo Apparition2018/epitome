@@ -33,7 +33,7 @@ XPath 是 W3C XSLT 标准的主要元素，并且 XQuery 和 XPointer 都构建�
        <price>39.95</price>
    </book>
 </bookstore>
->```
+```
 ---
 ## XPath 语法
 >### 选取节点
