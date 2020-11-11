@@ -19,6 +19,10 @@
 // 2019 年度最受欢迎中国开源软件：https://www.oschina.net/question/2918182_2313492
 // java长连接
 
+
+// 1.什么mq
+// 2.dayang mysql version
+
 import com.alibaba.fastjson.JSON;
 import l.demo.Demo;
 
