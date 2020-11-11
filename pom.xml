@@ -156,8 +156,8 @@
         </dependency>
 
         <!-- tika：内容抽取的工具集合
-            包含了 gson, guava, commons-compress, commons-math3, httpmime
-                bcprov-jdk15on, juniversalchardet -->
+            包含了 gson, guava, jsoup, commons-compress, commons-math3,
+            httpmime, bcprov-jdk15on, juniversalchardet -->
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parsers</artifactId>

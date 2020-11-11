@@ -1,7 +1,7 @@
-package knowledge.反射.proxy;
+package knowledge.reflect.proxy;
 
-import knowledge.反射.proxy.domain.Man;
-import knowledge.反射.proxy.domain.People;
+import knowledge.reflect.proxy.domain.Man;
+import knowledge.reflect.proxy.domain.People;
 import l.demo.Demo;
 import org.junit.Test;
 

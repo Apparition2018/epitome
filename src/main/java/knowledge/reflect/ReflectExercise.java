@@ -1,4 +1,4 @@
-package knowledge.反射;
+package knowledge.reflect;
 
 import l.demo.Demo;
 import l.demo.Person;

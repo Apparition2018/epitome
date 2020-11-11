@@ -27,6 +27,7 @@ import java.util.concurrent.TimeUnit;
  * 异步运行：多段代码可以同时运行，各干个的
  * 同步运行：运行代码有先后顺序的一句一句执行
  * <p>
+ * static void	                setDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler eh)  设置该线程由于未捕获到异常而突然终止时调用的处理程序
  * Thread.UncaughtExceptionHandler	        getUncaughtExceptionHandler()           返回该线程由于未捕获到异常而突然终止时调用的处理程序
  * static Thread.UncaughtExceptionHandler	getDefaultUncaughtExceptionHandler()    返回线程由于未捕获到异常而突然终止时调用的默认处理程序
  * static Map<Thread,StackTraceElement[]>	getAllStackTraces()                     返回所有活动线程的堆栈跟踪的一个映射

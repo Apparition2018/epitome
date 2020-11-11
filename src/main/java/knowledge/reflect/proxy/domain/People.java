@@ -1,4 +1,4 @@
-package knowledge.反射.proxy.domain;
+package knowledge.reflect.proxy.domain;
 
 /**
  * People

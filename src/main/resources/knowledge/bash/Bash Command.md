@@ -1,7 +1,5 @@
 # Bash abbr
-```
---help                                          显示帮助信息
-```
+
 ---
 ## 参考网站
 1. [Linux 命令大全 | 菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
@@ -16,6 +14,7 @@
 ---
 ## 其它
 ```
+--help                                          显示帮助信息
 &                                               后台执行
 |                                               管道命令
 ```

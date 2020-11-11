@@ -1,6 +1,6 @@
-package knowledge.反射.proxy;
+package knowledge.reflect.proxy;
 
-import knowledge.反射.proxy.domain.People;
+import knowledge.reflect.proxy.domain.People;
 import l.demo.Demo;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -115,11 +115,11 @@ public class AOP extends Demo {
     @Component
     public static class TransactionAspect {
         
-        @Pointcut("@annotation(knowledge.反射.proxy.domain.Man.AOP)")
+        @Pointcut("@annotation(knowledge.reflect.proxy.domain.Man.AOP)")
         public void pointcut1() {
         }
 
-        @Pointcut("within(knowledge.反射.proxy..*) && args()")
+        @Pointcut("within(knowledge.reflect.proxy..*) && args()")
         public void pointcut2() {
         }
 
