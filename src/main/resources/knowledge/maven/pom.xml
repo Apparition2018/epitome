@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 父模块 -->
+    <parent>
+        <groupId>xxx</groupId>
+        <artifactId>xxx</artifactId>
+        <version>xxx</version>
+    </parent>
     <!-- 指定了当前 pom 版本 -->
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>反写的公司网址+项目名</groupId>
     <artifactId>项目名+模块名</artifactId>
+    <!-- 默认是 jar
+        war zip pom -->
+    <packaging>打包类型</packaging>
     <!-- 第一个0：大版本号
         第二个0：分支版本号
         第三个0：小版本号
@@ -16,31 +23,25 @@
         Release 稳定
         GA 正式发布 -->
     <version>版本号</version>
-    <!-- 默认是 jar
-        war zip pom -->
-    <packaging>打包类型</packaging>
-
     <name>项目名</name>
-    <url>项目地址</url>
     <description>项目描述</description>
+    <url>项目地址</url>
 
-    <developers>
-        <developer>
-            <name>开发人员列表</name>
-        </developer>
-    </developers>
-
+    <organization>
+        <name>组织</name>
+        <url>...</url>
+    </organization>
     <licenses>
         <license>
             <name>许可证</name>
             <url>...</url>
         </license>
     </licenses>
-
-    <organization>
-        <name>组织</name>
-        <url>...</url>
-    </organization>
+    <developers>
+        <developer>
+            <name>开发人员列表</name>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,13 +77,6 @@
         <plugins>
         </plugins>
     </build>
-
-    <!-- 父模块 -->
-    <parent>
-        <groupId>xxx</groupId>
-        <artifactId>xxx</artifactId>
-        <version>xxx</version>
-    </parent>
 
     <!-- 远程仓库，如果已在setting.xml中配置了远程仓库，这里则不需要配置 -->
     <repositories>
