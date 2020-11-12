@@ -19,20 +19,13 @@
 // 2019 年度最受欢迎中国开源软件：https://www.oschina.net/question/2918182_2313492
 // java长连接
 
-
-// 1.什么mq
-// 2.dayang mysql version
-
-import com.alibaba.fastjson.JSON;
 import l.demo.Demo;
-
-import java.io.FileNotFoundException;
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
 public class Test extends Demo {
 
     public static void main(String[] args) {
-        
+
     }
 }
