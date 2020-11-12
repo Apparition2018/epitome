@@ -31,10 +31,6 @@ import java.util.Random;
  */
 public class HttpClientUtils extends Demo {
 
-    public static void main(String[] args) {
-        p(doGet(BAIDU_URL));
-    }
-
     public static String doPost(String url, Map<String, String> params) {
         String resultStr = "";
         HttpEntity httpEntity = null;
@@ -96,11 +92,13 @@ public class HttpClientUtils extends Demo {
         return resultStr;
     }
 
+    public static void main(String[] args) {
+        p(doGet(BAIDU_URL));
+    }
+
     public static String doGet(String url, Map<String, String> params) {
         StringBuilder resultStr = new StringBuilder();
-        CloseableHttpResponse response = null;
         HttpEntity httpEntity = null;
-        InputStream is = null;
         BufferedReader br = null;
 
         // 1.使用默认配置的 httpclient
@@ -115,23 +113,23 @@ public class HttpClientUtils extends Demo {
             HttpGet httpGet = new HttpGet(builder.build());
 
             // 3.执行请求，获取响应
-            response = client.execute(httpGet);
-            httpGet.releaseConnection();
-
-            // 4.获取响应的实体内容
-            // 判断返回状态是否成功 200
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                httpEntity = response.getEntity();
-                if (new Random().nextBoolean()) {
-                    resultStr.append(EntityUtils.toString(httpEntity, StandardCharsets.UTF_8));
-                } else {
-                    is = httpEntity.getContent();
-                    br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-                    String line;
-                    while (null != (line = br.readLine())) {
-                        resultStr.append(line);
+            try (CloseableHttpResponse response = client.execute(httpGet)) {
+                // 4.获取响应的实体内容
+                if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                    httpEntity = response.getEntity();
+                    if (new Random().nextBoolean()) {
+                        resultStr.append(EntityUtils.toString(httpEntity, StandardCharsets.UTF_8));
+                    } else {
+                        InputStream is = httpEntity.getContent();
+                        br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+                        String line;
+                        while (null != (line = br.readLine())) {
+                            resultStr.append(line);
+                        }
                     }
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
@@ -143,8 +141,6 @@ public class HttpClientUtils extends Demo {
                     e.printStackTrace();
                 }
             }
-            close(response);
-            close(is);
             close(br);
         }
 

@@ -33,14 +33,9 @@ public class BZip2Utils extends Demo {
         ByteArrayInputStream bais = new ByteArrayInputStream(data);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        // 压缩
         compress(bais, baos);
 
-        byte[] output = baos.toByteArray();
-
-        baos.flush();
-
-        return output;
+        return baos.toByteArray();
     }
 
     /**
@@ -71,8 +66,7 @@ public class BZip2Utils extends Demo {
     /**
      * 数据压缩
      */
-    private static void compress(InputStream is, OutputStream os)
-            throws Exception {
+    private static void compress(InputStream is, OutputStream os) throws Exception {
 
         BZip2CompressorOutputStream cos = new BZip2CompressorOutputStream(os);
 
@@ -110,14 +104,9 @@ public class BZip2Utils extends Demo {
         ByteArrayInputStream bais = new ByteArrayInputStream(data);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        // 解压缩
-
         decompress(bais, baos);
-
+        
         data = baos.toByteArray();
-
-        baos.flush();
-
         return data;
     }
 
@@ -147,9 +136,7 @@ public class BZip2Utils extends Demo {
     /**
      * 数据解压缩
      */
-    private static void decompress(InputStream is, OutputStream os)
-            throws Exception {
-
+    private static void decompress(InputStream is, OutputStream os) throws Exception {
         BZip2CompressorInputStream cis = new BZip2CompressorInputStream(is);
 
         int count;
@@ -157,7 +144,6 @@ public class BZip2Utils extends Demo {
         while ((count = cis.read(data, 0, BUFFER)) != -1) {
             os.write(data, 0, count);
         }
-
         cis.close();
     }
 

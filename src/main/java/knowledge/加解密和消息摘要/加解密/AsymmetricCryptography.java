@@ -222,8 +222,7 @@ public class AsymmetricCryptography {
             offSet = i * MAX_BLOCK;
         }
 
-        byte[] resultData = baos.toByteArray();
-        return resultData;
+        return baos.toByteArray();
     }
 
     /**
