@@ -86,7 +86,6 @@ public class NetUtilDemo extends Demo {
         oos.writeObject(obj);
         oos.flush();
         byte[] bytes = baos.toByteArray();
-        baos.close();
         oos.close();
         return bytes;
     }

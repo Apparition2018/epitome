@@ -39,9 +39,6 @@ public class BZip2Utils extends Demo {
         byte[] output = baos.toByteArray();
 
         baos.flush();
-        baos.close();
-
-        bais.close();
 
         return output;
     }
@@ -120,9 +117,6 @@ public class BZip2Utils extends Demo {
         data = baos.toByteArray();
 
         baos.flush();
-        baos.close();
-
-        bais.close();
 
         return data;
     }
