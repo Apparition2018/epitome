@@ -202,7 +202,7 @@ public class AsymmetricCryptography {
                 assert false : "Invalid Param";
         }
 
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
         int inputLen = data.length;
         int offSet = 0;
         byte[] cache;
@@ -217,13 +217,12 @@ public class AsymmetricCryptography {
             } else {
                 cache = cipher.doFinal(data, offSet, inputLen - offSet);
             }
-            out.write(cache, 0, cache.length);
+            baos.write(cache, 0, cache.length);
             i++;
             offSet = i * MAX_BLOCK;
         }
 
-        byte[] resultData = out.toByteArray();
-        out.close();
+        byte[] resultData = baos.toByteArray();
         return resultData;
     }
 

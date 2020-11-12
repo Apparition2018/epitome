@@ -26,11 +26,11 @@ public class NioDemo {
     @Test
     public void testNioServer() {
         NioServer server = new NioServer(8080);
-        server.setChannelHandler((sc) -> {
+        server.setChannelHandler((socketChannel) -> {
             ByteBuffer readBuffer = ByteBuffer.allocate(1024);
             try {
                 // 从channel读数据到缓冲区
-                int readBytes = sc.read(readBuffer);
+                int readBytes = socketChannel.read(readBuffer);
                 if (readBytes > 0) {
                     // Flips this buffer.  The limit is set to the current position and then
                     // the position is set to zero，就是表示要从起始位置开始读取数据
@@ -41,10 +41,10 @@ public class NioDemo {
                     // 将缓冲区的数据读到bytes数组
                     readBuffer.get(bytes);
                     String body = StrUtil.utf8Str(bytes);
-                    Console.log("[{}]: {}", sc.getRemoteAddress(), body);
-                    doWrite(sc, body);
+                    Console.log("[{}]: {}", socketChannel.getRemoteAddress(), body);
+                    doWrite(socketChannel, body);
                 } else if (readBytes < 0) {
-                    IoUtil.close(sc);
+                    IoUtil.close(socketChannel);
                 }
             } catch (IOException e) {
                 throw new IORuntimeException(e);
@@ -62,10 +62,10 @@ public class NioDemo {
     @Test
     public void testNioClient() {
         NioClient client = new NioClient("127.0.0.1", 8080);
-        client.setChannelHandler((sc) -> {
+        client.setChannelHandler((socketChannel) -> {
             ByteBuffer readBuffer = ByteBuffer.allocate(1024);
             // 从channel读数据到缓冲区
-            int readBytes = sc.read(readBuffer);
+            int readBytes = socketChannel.read(readBuffer);
             if (readBytes > 0) {
                 // Flips this buffer.  The limit is set to the current position and then
                 // the position is set to zero，就是表示要从起始位置开始读取数据
@@ -76,9 +76,9 @@ public class NioDemo {
                 // 将缓冲区的数据读到bytes数组
                 readBuffer.get(bytes);
                 String body = StrUtil.utf8Str(bytes);
-                Console.log("[{}]: {}", sc.getRemoteAddress(), body);
+                Console.log("[{}]: {}", socketChannel.getRemoteAddress(), body);
             } else if (readBytes < 0) {
-                sc.close();
+                socketChannel.close();
             }
         });
         client.listen();

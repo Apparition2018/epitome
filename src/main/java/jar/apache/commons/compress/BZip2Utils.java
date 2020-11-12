@@ -74,18 +74,18 @@ public class BZip2Utils extends Demo {
     private static void compress(InputStream is, OutputStream os)
             throws Exception {
 
-        BZip2CompressorOutputStream gos = new BZip2CompressorOutputStream(os);
+        BZip2CompressorOutputStream cos = new BZip2CompressorOutputStream(os);
 
         int count;
         byte[] data = new byte[BUFFER];
         while ((count = is.read(data, 0, BUFFER)) != -1) {
-            gos.write(data, 0, count);
+            cos.write(data, 0, count);
         }
 
-        gos.finish();
+        cos.finish();
 
-        gos.flush();
-        gos.close();
+        cos.flush();
+        cos.close();
     }
 
     /**
@@ -150,15 +150,15 @@ public class BZip2Utils extends Demo {
     private static void decompress(InputStream is, OutputStream os)
             throws Exception {
 
-        BZip2CompressorInputStream gis = new BZip2CompressorInputStream(is);
+        BZip2CompressorInputStream cis = new BZip2CompressorInputStream(is);
 
         int count;
         byte[] data = new byte[BUFFER];
-        while ((count = gis.read(data, 0, BUFFER)) != -1) {
+        while ((count = cis.read(data, 0, BUFFER)) != -1) {
             os.write(data, 0, count);
         }
 
-        gis.close();
+        cis.close();
     }
 
     /**

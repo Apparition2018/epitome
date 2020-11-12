@@ -68,34 +68,34 @@ public class NioClient extends Demo {
                     channel.register(selector, SelectionKey.OP_READ);//订阅读取事件
                     p("客户端连接成功");
                 } else if (key.isReadable()) {
-                    SocketChannel channel = (SocketChannel) key.channel();
+                    SocketChannel socketChannel = (SocketChannel) key.channel();
                     ByteBuffer byteBuffer = ByteBuffer.allocate(10);
-                    int readLength = channel.read(byteBuffer);
+                    int readLength = socketChannel.read(byteBuffer);
                     byteBuffer.flip();
                     int count = 0;
                     File file = new File(DEMO_PATH + "demo_copy");
                     if (!file.exists()) {
                         boolean b = file.createNewFile();
                     }
-                    FileOutputStream fe = new FileOutputStream(file, true);
-                    FileChannel outFileChannel = fe.getChannel();
+                    FileOutputStream fos = new FileOutputStream(file, true);
+                    FileChannel fileChannel = fos.getChannel();
                     // 分多次读取
                     while (readLength != -1) {
                         count = count + readLength;
                         p("count=" + count + " readLength=" + readLength);
                         // 将 socketChannel 数据读到 byteBuffer
-                        readLength = channel.read(byteBuffer);
+                        readLength = socketChannel.read(byteBuffer);
                         byteBuffer.flip();
                         // byteBuffer 数据写到 FileChannel
-                        outFileChannel.write(byteBuffer);
-                        fe.flush();
+                        fileChannel.write(byteBuffer);
+                        fos.flush();
                         byteBuffer.clear();
                     }
-                    outFileChannel.close();
+                    fileChannel.close();
 
-                    fe.close();
+                    fos.close();
                     p("读取结束");
-                    channel.close();
+                    socketChannel.close();
                 }
             }
         }
