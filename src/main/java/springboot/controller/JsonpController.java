@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * https://www.cnblogs.com/dream0530/p/6179819.html
- * 请查看 - knowledge/other/jsonp/jsonp-demo3.html
+ * @see static/other/jsonp/jsonp-demo3.html
  */
 @RequestMapping("/jsonp")
 @RestController

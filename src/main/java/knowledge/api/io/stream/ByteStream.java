@@ -1,16 +1,16 @@
 package knowledge.api.io.stream;
 
 import l.demo.Demo;
-import l.demo.Person;
 import org.junit.Test;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 /**
  * ByteStream
  * 字节流
+ * <p>
+ * Java IO包装流如何关闭？:https://blog.csdn.net/q13315149158/article/details/79277403
  * https://blog.csdn.net/u012426327/article/details/77160400
  *
  * @author ljh
@@ -22,7 +22,7 @@ public class ByteStream extends Demo {
      * InputStream
      * 字节输入流的所有类的超类
      * https://jdk6.net/io/InputStream.html
-     * void	            close()                 关闭此输入流并释放与该流关联的所有系统资源
+     * void	            close()                 关闭此输入流并释放与该流关联的所有系统资源，（关闭最外层
      * void	            mark(int readlimit)     在此输入流中标记当前的位置
      * void	            reset()                 将此流重新定位到最后一次对此输入流调用 mark 方法时的位置
      * boolean	        markSupported()         测试此输入流是否支持 mark 和 reset 方法

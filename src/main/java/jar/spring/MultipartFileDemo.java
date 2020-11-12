@@ -15,9 +15,9 @@ package jar.spring;
  * <p>                                              
  * void	            transferTo(File dest)           将接收到的文件传输到给定的目标文件
  * void	            transferTo(Path dest)           将接收到的文件传输到给定的目标文件
+ * 
+ * @see springboot.controller.MultipartFileController
  */
 public class MultipartFileDemo {
-
-    // 查看 MultipartFileController
 
 }

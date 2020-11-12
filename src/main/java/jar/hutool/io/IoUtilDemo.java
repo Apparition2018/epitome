@@ -37,7 +37,7 @@ public class IoUtilDemo extends Demo {
         BufferedOutputStream bos = FileUtil.getOutputStream(file2);
         IoUtil.writeUtf8(bos, false, "Input Input Input Input Input ");
 
-        // 读取，各种 readXXX() 请查看 API
+        // 读取
         FileInputStream fis = IoUtil.toStream(file2);
         p(IoUtil.readUtf8(fis));
 
