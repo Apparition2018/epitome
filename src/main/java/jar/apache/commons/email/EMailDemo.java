@@ -8,11 +8,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * https://www.cnblogs.com/jimboi/p/6406237.html
- *
+ * 使用 Apache Commons Email 发生邮件：https://www.cnblogs.com/jimboi/p/6406237.html
  * http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/Email.html
  */
-public class MailDemo extends Demo {
+public class EMailDemo extends Demo {
 
     /**
      * SimpleEmail
