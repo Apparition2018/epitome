@@ -1,0 +1,12 @@
+# Hutool 邮件配置文件
+
+# 邮件服务器的 SMTP 地址，可选，默认为 smtp.<发件人邮箱后缀>
+host = smtp.yeah.net
+# 邮件服务器的 SMTP 端口，可选，默认25
+port = 25
+# 发件人（必须正确，否则发送失败）
+from = hutool@yeah.net
+# 用户名，默认为发件人邮箱前缀
+user = hutool
+# 密码（注意，某些邮箱需要为 SMTP 服务单独设置授权码，详情查看相关帮助）
+pass = q1w2e3

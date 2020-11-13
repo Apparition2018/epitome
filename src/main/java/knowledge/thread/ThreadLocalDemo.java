@@ -40,12 +40,12 @@ public class ThreadLocalDemo extends Demo {
             List<String> strList = Lists.newArrayList("1", "2", "3");
             demo.setThreadLocal(strList);
             demo.getThreadLocal();
-        }).start();
+        }, "Thread-A").start();
 
         new Thread(() -> {
             List<String> strList = Lists.newArrayList("a", "b", "c");
             demo.setThreadLocal(strList);
             demo.getThreadLocal();
-        }).start();
+        }, "Thread-B").start();
     }
 }

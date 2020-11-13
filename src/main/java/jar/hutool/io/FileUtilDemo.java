@@ -149,6 +149,8 @@ public class FileUtilDemo extends Demo {
         p(FileUtil.checksum(file, new XXHash32())
                 .getValue());                       // 2688023182
         // 计算文件 CRC32 校验码
+        // CRC32：Cyclic Redundancy Check，循环冗余校验；在数据存储和数据通讯领域，为了保证数据的正确，最常用的校验
+        // 特点：检错能力极强，开销小
         p(FileUtil.checksumCRC32(file));            // 696136591
         // 最后一个文件路径分隔符的位置
         p(FileUtil.lastIndexOfSeparator(filePath)); // 23
