@@ -22,7 +22,7 @@
 
         <!-- 指定数据库连接的属性 -->
         <jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/demo"
-                        driverClass="com.mysql.jdbc.Driver"
+                        driverClass="com.mysql.cj.jdbc.Driver"
                         userId="ljh" password="123456"/>
 
         <!-- 指定JDBC类型和Java类型如何转换 -->

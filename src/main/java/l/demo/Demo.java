@@ -66,6 +66,7 @@ public class Demo {
     public static final String DEMO_ABSOLUTE_PATH = USER_DIR + File.separator + DEMO_PATH;
     public static final String DEMO_FILE_PATH = DEMO_PATH + "demo";
     public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "demo";
+    public static final String DEMO_URI = "http://localhost:3333/demo/";
     public static final String ARSENAL_LOGO = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1113375911,3381445023&fm=26&gp=0.jpg";
     public static final String NOHARA_SINNOSUKE = RESOURCES_ABSOLUTE_PATH + "static/static/img/people/NoharaSinnosuke.png";
     public static final String JDBC_PROP_FILENAME = "jdbc.properties";
@@ -146,6 +147,38 @@ public class Demo {
         long now = System.currentTimeMillis();
         while (System.currentTimeMillis() - now < timeUnit.toMillis(millis)) {
             // Thread.onSpinWait(); 需要升级到 JDK8
+        }
+    }
+
+    /**
+     * 随机返回 true 或 false
+     */
+    public static boolean randomBoolean() {
+        return new Random().nextBoolean();
+    }
+
+    /**
+     * 随机返回 0, 1, 2...
+     * 最大为 Integer.MAX_VALUE
+     */
+    public static int randomInt(int end) {
+        if (end < 0) throw new RuntimeException("end < 0");
+        return randomInt(0, end);
+    }
+
+    /**
+     * 随机返回范围内整数
+     * 最大为 Integer.MAX_VALUE
+     */
+    public static int randomInt(int start, int end) {
+        if (start > end) throw new RuntimeException("start > end");
+        if (start < 0) throw new RuntimeException("start < 0");
+        if (randomBoolean()) {
+            // 方法1
+            return new Random().ints(start, ++end).limit(1).sum();
+        } else {
+            // 方法2
+            return new Random().nextInt(++end - start) + start;
         }
     }
 

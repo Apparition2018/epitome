@@ -11,38 +11,6 @@ public class LUtils {
     }
 
     /**
-     * 随机返回 true 或 false
-     */
-    public static boolean randomBoolean() {
-        return new Random().nextBoolean();
-    }
-
-    /**
-     * 随机返回 0, 1, 2...
-     * 最大为 Integer.MAX_VALUE
-     */
-    public static int randomInt(int end) {
-        if (end < 0) throw new RuntimeException("end < 0");
-        return randomInt(0, end);
-    }
-
-    /**
-     * 随机返回范围内整数
-     * 最大为 Integer.MAX_VALUE
-     */
-    public static int randomInt(int start, int end) {
-        if (start >= end) throw new RuntimeException("start >= end");
-        if (start < 0) throw new RuntimeException("start < 0");
-        if (randomBoolean()) {
-            // 方法1
-            return new Random().ints(start, ++end).limit(1).sum();
-        } else {
-            // 方法2
-            return new Random().nextInt(++end - start) + start;
-        }
-    }
-
-    /**
      * 16进制字符串 → 字节数组
      */
     public static byte[] hex2Byte(String s) {

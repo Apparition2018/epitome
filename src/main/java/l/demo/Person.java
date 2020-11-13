@@ -125,6 +125,10 @@ public class Person implements Comparable<Person>, Serializable {
         // 当不为 null 时才返回该属性
         @JsonInclude(JsonInclude.Include.NON_NULL)
         private Float score;
+        
+        public Student(Integer id, String name) {
+            super(id, name);
+        }
 
         public Student(Integer id, String no, String name, Integer age, Float score) {
             super.id = id;
