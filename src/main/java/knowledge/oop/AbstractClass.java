@@ -1,4 +1,4 @@
-package knowledge.面向对象;
+package knowledge.oop;
 
 import l.demo.Demo;
 import lombok.Getter;
@@ -7,10 +7,12 @@ import lombok.Setter;
 /**
  * 抽象类
  * <p>
- * 1.抽象类不能实例化对象
- * 2.抽象类不一定包含抽象方法，但是有抽象方法的类必定是抽象类
- * 3.构造方法，类方法 (static) 不能声明为抽象方法
- * 4.抽象类的子类必须重写父类的抽象方法，或者声明自身为抽象类
+ * 1.不能实例化
+ * 2.不一定包含抽象方法，但是有抽象方法的类必定是抽象类
+ * 3.抽象类的子类必须重写父类的抽象方法，或者声明自身为抽象类
+ * <p>
+ * 抽象类和接口的区别，使用场景：https://www.iteye.com/blog/yinny-1152430
+ * 抽象类实现接口有什么意义？：https://www.zhihu.com/question/36909455/answer/303566988
  */
 public class AbstractClass extends Demo {
 
@@ -38,9 +40,6 @@ public class AbstractClass extends Demo {
 
         /**
          * 抽象方法
-         * <p>
-         * 1.如果一个类包含抽象方法，那么该类必须是抽象类
-         * 2.抽象类的子类必须重写父类的抽象方法，或者声明自身为抽象类
          */
         public abstract double computePay();
 

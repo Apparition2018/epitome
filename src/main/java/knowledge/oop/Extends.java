@@ -1,4 +1,4 @@
-package knowledge.面向对象;
+package knowledge.oop;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ import java.io.Serializable;
  * <p>
  * 子类拥有父类非 private 属性，方法
  */
-public class Extend {
+public class Extends {
 
     public static void main(String[] args) {
         Parent p = new Son(1, "apple");

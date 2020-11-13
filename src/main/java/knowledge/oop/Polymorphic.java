@@ -1,4 +1,4 @@
-package knowledge.面向对象;
+package knowledge.oop;
 
 import l.demo.Animal;
 import l.demo.Animal.Cat;

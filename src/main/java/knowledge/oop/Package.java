@@ -3,7 +3,7 @@
  * 包声明在源文件的第一行，每个源文件只有一个包声明，这个文件中的每个类型都应用于它
  * 如果一个源文件中没有使用包声明，那么其中的类，接口，枚举，注解等都放在一个无名的包(unnamed package)中
  */
-package knowledge.面向对象;
+package knowledge.oop;
 
 /*
  * import

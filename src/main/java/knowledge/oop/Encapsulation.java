@@ -1,4 +1,4 @@
-package knowledge.面向对象;
+package knowledge.oop;
 
 /**
  * 封装
@@ -13,6 +13,5 @@ package knowledge.面向对象;
  * 2.对每个值属性提供对外的公共方法访问 (getter, setter)
  */
 public class Encapsulation {
-
 
 }
