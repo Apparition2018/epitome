@@ -10,46 +10,28 @@ import org.junit.Test;
  */
 public class Base64Demo extends Demo {
 
-    /**
-     * 加密：
-     * static byte[]	    encodeBase64(byte[] binaryData[, boolean isChunked, boolean urlSafe, int maxResultSize])
-     * static String	    encodeBase64String(byte[] binaryData)
-     * static byte[]	    encodeBase64URLSafe(byte[] binaryData)
-     * static String	    encodeBase64URLSafeString(byte[] binaryData)
-     * <p>
-     * 解密：
-     * static byte[]	    decodeBase64(byte[] base64Data)
-     * static byte[]	    decodeBase64(String base64String)
-     * static BigInteger	decodeInteger(byte[] pArray)
-     * <p>
-     * 判断是否为 Base64：
-     * static boolean	    isBase64(byte octet)
-     * static boolean	    isBase64(byte[] arrayOctet)
-     * static boolean	    isBase64(String base64)
-     */
     @Test
     public void base64() {
-        /* 加密 */
-        String src = "epitome";
-        byte[] encodeBytes = Base64.encodeBase64(src.getBytes());
-        p(new String(encodeBytes)); // ZXBpdG9tZQ==
-        encodeBytes = Base64.encodeBase64URLSafe(src.getBytes());
-        p(new String(encodeBytes)); // ZXBpdG9tZQ
+        // 加密
+        byte[] encodeBytes = Base64.encodeBase64(HELLO_WORLD.getBytes());
+        p(new String(encodeBytes)); // SGVsbG8gV29ybGQh
+        encodeBytes = Base64.encodeBase64URLSafe(HELLO_WORLD.getBytes());
+        p(new String(encodeBytes)); // SGVsbG8gV29ybGQh
 
-        String encode = Base64.encodeBase64String(src.getBytes());
-        p(encode); // ZXBpdG9tZQ==
-        encode = Base64.encodeBase64URLSafeString(src.getBytes());
-        p(encode); // ZXBpdG9tZQ
+        String encode = Base64.encodeBase64String(HELLO_WORLD.getBytes());
+        p(encode);                  // SGVsbG8gV29ybGQh==
+        encode = Base64.encodeBase64URLSafeString(HELLO_WORLD.getBytes());
+        p(encode);                  // SGVsbG8gV29ybGQh
 
-        /* 判断是否为 Base64 */
+        // 判断是否为 Base64
         p(Base64.isBase64(encodeBytes));// true
-        p(Base64.isBase64(encode));     //true
+        p(Base64.isBase64(encode));     // true
 
-        /* 解密 */
+        // 解密
         byte[] decodeBytes = Base64.decodeBase64(encodeBytes);
-        p(new String(decodeBytes)); // epitome
+        p(new String(decodeBytes));
 
         decodeBytes = Base64.decodeBase64(encode);
-        p(new String(decodeBytes)); // epitome
+        p(new String(decodeBytes));
     }
 }

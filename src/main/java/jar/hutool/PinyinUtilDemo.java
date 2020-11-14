@@ -18,15 +18,15 @@ public class PinyinUtilDemo extends Demo {
     public void testPinyinUtil() {
         // static boolean	isChinese(char c)
         // 是否为中文字符
-        p(PinyinUtil.isChinese(CHINESE_NAME.toCharArray()[0])); // true
+        p(PinyinUtil.isChinese(MY_NAME.toCharArray()[0]));  // true
 
         // static String    getPinyin(String str[, String separator])
         // 将输入字符串转为拼音，以字符为单位插入分隔符
-        p(PinyinUtil.getPinyin(CHINESE_NAME));                  // liang jie hui
-        p(PinyinUtil.getPinyin(CHINESE_NAME, "-"));             // liang-jie-hui
+        p(PinyinUtil.getPinyin(MY_NAME));                   // liang jie hui
+        p(PinyinUtil.getPinyin(MY_NAME, "-"));              // liang-jie-hui
 
         // static String	getFirstLetter(String str[, String separator])
         // 将输入字符串转为拼音首字母，其它字符原样返回
-        p(PinyinUtil.getFirstLetter(CHINESE_NAME, "-"));        // l-j-h
+        p(PinyinUtil.getFirstLetter(MY_NAME, "-"));         // l-j-h
     }
 }

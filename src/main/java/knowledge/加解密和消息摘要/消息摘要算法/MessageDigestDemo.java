@@ -66,7 +66,7 @@ public class MessageDigestDemo extends Demo {
         // 加密后的 bytes[] 再转成16进制字符串
         // int                       getDigestLength()
         // 返回以字节为单位的摘要长度，如果提供者不支持此操作并且实现是不可复制的，则返回 0
-        p(MESSAGE_DIGEST + ": " + new BigInteger(1, bytes).toString(messageDigest.getDigestLength()));
+        p(MESSAGE_DIGEST + ": " + new BigInteger(1, bytes).toString(16));
     }
 
     @Test
@@ -139,15 +139,10 @@ public class MessageDigestDemo extends Demo {
      * <p>
      * https://blog.csdn.net/iblade/article/details/73288822
      */
-    public static class MD5Demo extends Demo {
+    private static class MD5Demo extends Demo {
 
-        @Test
-        public void testMD5() throws NoSuchAlgorithmException {
+        public static void main(String[] args) throws NoSuchAlgorithmException {
             testMessageDigest("MD5");
-        }
-
-        @Test
-        public void testOtherMD5() {
             p("Spring MD5：" + DigestUtils.md5DigestAsHex(HELLO_WORLD.getBytes()));
             p("commons-codec MD5：" + org.apache.commons.codec.digest.DigestUtils.md5Hex(HELLO_WORLD));
         }
@@ -172,10 +167,11 @@ public class MessageDigestDemo extends Demo {
      * 2.对密码分析的安全性：由于 MD5 的设计，易受密码分析的攻击，SHA-1 显得不易受这样的攻击
      * 3.速度：MD5 比 SHA-1 快
      */
-    private static class SHADemo {
+    public static class SHADemo {
 
         public static void main(String[] args) throws NoSuchAlgorithmException {
-            testMessageDigest("SHA-224");
+            testMessageDigest("SHA-256");
+            p("commons-codec SHA：" + org.apache.commons.codec.digest.DigestUtils.sha256Hex(HELLO_WORLD));
         }
     }
 }

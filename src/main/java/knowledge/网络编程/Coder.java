@@ -12,8 +12,8 @@ public class Coder extends Demo {
 
         // static String	    encode(String s, String enc)
         // 使用指定的编码机制将字符串转换为 application/x-www-form-urlencoded 格式
-        String encode = URLEncoder.encode("李白", UTF_8);
-        p(encode);
+        String encode = URLEncoder.encode(MY_NAME, UTF_8);
+        p(encode); // %E6%A2%81%E6%9D%B0%E8%BE%89
 
         // static String	    decode(String s, String enc)
         // 使用指定的编码机制对 application/x-www-form-urlencoded 字符串解码
