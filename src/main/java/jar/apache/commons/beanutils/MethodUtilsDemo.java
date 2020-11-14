@@ -19,8 +19,12 @@ public class MethodUtilsDemo {
     @Test
     public void testMethodUtils() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Person person = new Person();
+        // static Method	    getAccessibleMethod(Class<?> clazz, String methodName, Class<?> parameterType)
+        // 返回一个具有给定名和单个参数的可访问方法
         Method method = MethodUtils.getAccessibleMethod(Person.class, "setId", Integer.class);
         method.invoke(person, 1);
+        // static Object	    invokeMethod(Object object, String methodName, Object arg)
+        // 调用参数类型与对象类型匹配的方法
         MethodUtils.invokeMethod(person, "setName", "张三");
         System.out.println(person);
     }

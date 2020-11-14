@@ -1,11 +1,11 @@
 package jar.apache.commons.beanutils;
 
-import l.demo.Person;
-import org.apache.commons.beanutils.BeanUtilsBean;
-import org.apache.commons.beanutils.ConvertUtilsBean;
-import org.apache.commons.beanutils.Converter;
+        import l.demo.Person;
+        import org.apache.commons.beanutils.BeanUtilsBean;
+        import org.apache.commons.beanutils.ConvertUtilsBean;
+        import org.apache.commons.beanutils.Converter;
 
-import java.lang.reflect.InvocationTargetException;
+        import java.lang.reflect.InvocationTargetException;
 
 /**
  * ConvertUtilsBean
@@ -17,9 +17,8 @@ public class ConvertUtilsBeanDemo {
      * 案例：把一个 Bean 的所有 String 类型属性在输出之前加上一个前缀
      */
     public static void main(String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        // 一个简单的 Bean 对象
-        Person p = new Person("张三", 18);
-        // 转换工具
+        Person person = new Person("张三", 18);
+        // 转换工具 Bean
         ConvertUtilsBean cub = new ConvertUtilsBean();
         // 注册一个转换器
         cub.register(new Converter() {
@@ -30,11 +29,11 @@ public class ConvertUtilsBeanDemo {
                 return (T) ("prefix-" + value);
             }
         }, String.class);
-        // 建立一个依赖特定转换工具的 Bean 工具类
+        // 建立一个依赖特定转换工具 Bean 的 BeanUtilsBean
         // BeanUtilsBean([ConvertUtilsBean convertUtilsBean, PropertyUtilsBean propertyUtilsBean])
         BeanUtilsBean beanUtils = new BeanUtilsBean(cub);
         // 输出结果
-        System.out.println(beanUtils.getProperty(p, "name")); // prefix-张三
+        System.out.println(beanUtils.getProperty(person, "name")); // prefix-张三
     }
 
 }

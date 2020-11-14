@@ -2,7 +2,6 @@ package jar.apache.commons.beanutils;
 
 import l.demo.Demo;
 import l.demo.Person;
-import l.demo.Person.Student;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
@@ -34,6 +33,10 @@ public class BeanUtilsDemo extends Demo {
         // Map → JavaBean
         BeanUtils.populate(person, map);
         p(String.format("%s的 id 是 %s", person.getName(), person.getId())); // 张三的 id 是 1
+
+        BeanUtils.setProperty(person, "id", 2);
+        BeanUtils.setProperty(person, "name", "李四");
+        p(person); // Person{id=2, name='李四', age=0}
     }
 
     /**

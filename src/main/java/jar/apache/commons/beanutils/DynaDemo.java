@@ -12,7 +12,7 @@ import org.junit.Test;
  * DynaBean
  * LazyDynaBean
  * <p>
- * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/package-summary.html#package_description
+ * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/package-summary.html
  */
 public class DynaDemo {
 
