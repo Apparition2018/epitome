@@ -27,6 +27,9 @@ import java.util.concurrent.TimeUnit;
  * 异步运行：多段代码可以同时运行，各干个的
  * 同步运行：运行代码有先后顺序的一句一句执行
  * <p>
+ * 线程安全：如果有多个线程在同时运行，而这些线程可能会同时运行这段代码。程序每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。
+ * 线程同步：当有一个线程在对内存进行操作时，其他线程都不可以对这个内存地址进行操作，直到该线程完成操作，其他线程才能对该内存地址进行操作
+ * <p>
  * static void	                setDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler eh)  设置该线程由于未捕获到异常而突然终止时调用的处理程序
  * Thread.UncaughtExceptionHandler	        getUncaughtExceptionHandler()           返回该线程由于未捕获到异常而突然终止时调用的处理程序
  * static Thread.UncaughtExceptionHandler	getDefaultUncaughtExceptionHandler()    返回线程由于未捕获到异常而突然终止时调用的默认处理程序
@@ -44,6 +47,7 @@ import java.util.concurrent.TimeUnit;
  * void	                        start()                             使该线程开始执行；Java 虚拟机调用该线程的 run 方法
  * <p>
  * 如何使用 JUnit 测试异步代码：https://zhuanlan.zhihu.com/p/240281836
+ * 线程安全及三种解决方案：https://zhuanlan.zhihu.com/p/143811831
  */
 public class ThreadDemo extends Demo {
 

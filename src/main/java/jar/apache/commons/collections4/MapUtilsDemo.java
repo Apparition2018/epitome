@@ -33,7 +33,7 @@ import java.util.Map;
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapUtils.html
  */
 public class MapUtilsDemo extends Demo {
-    
+
     Map<Integer, Object> map = new HashMap<Integer, Object>(3) {
         {
             put(1, "A");

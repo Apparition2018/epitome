@@ -105,7 +105,7 @@ public class MapDemo extends Demo {
      */
     @Test
     public void lruByLinkedHashMap() {
-        SimpleLRUCache<Integer, String> lru = new SimpleLRUCache<>(5);
+        SimpleLRUCache<Integer, String> lru = new SimpleLRUCache<>(3);
         lru.put(1, "A");
         lru.put(2, "B");
         lru.put(3, "C");
@@ -116,11 +116,7 @@ public class MapDemo extends Demo {
 
         lru.put(4, "D");
         lru.put(5, "E");
-        p(lru); // 1:A 2:B 3:C 4:D 5:E
-
-        lru.put(6, "F");
-        p(lru); // 2:B 3:C 4:D 5:E 6:F
-
+        p(lru); // 1:A 4:D 5:E 
     }
 
     private static class SimpleLRUCache<K, V> {
