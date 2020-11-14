@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * StopWatch
- * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/StopWatch.html
  *
  * @author ljh

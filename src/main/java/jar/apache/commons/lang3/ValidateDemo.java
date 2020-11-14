@@ -9,9 +9,8 @@ import java.util.Map;
 
 /**
  * Validate
- * <p>
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/Validate.html
  * https://blog.csdn.net/yaomingyang/article/details/80876009
+ * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/Validate.html
  */
 public class ValidateDemo {
 

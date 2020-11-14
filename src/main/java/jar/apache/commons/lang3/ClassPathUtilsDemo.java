@@ -6,7 +6,6 @@ import org.junit.Test;
 
 /**
  * ClassPathUtils
- * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ClassPathUtils.html
  */
 public class ClassPathUtilsDemo extends Demo {

@@ -7,7 +7,6 @@ import org.junit.Test;
 
 /**
  * MapIterator
- * <p>
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapIterator.html
  */
 public class MapIteratorDemo {

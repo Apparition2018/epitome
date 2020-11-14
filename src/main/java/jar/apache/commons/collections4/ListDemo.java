@@ -13,7 +13,6 @@ import org.junit.Test;
  * NodeCachingLinkedList    一个 List 实现，存储内部节点对象的缓存，以减少浪费的对象创建；
  * -                        适用于 add 和 remove 操作的 long-lived List，不适用于 short-lived List 和只增长的 List；
  * -                        线程不同步
- * <p>
  * http://commons.apache.org/proper/commons-collections/apidocs/allclasses-noframe.html
  *
  * @author Arsenal

@@ -9,7 +9,6 @@ import java.util.Collections;
 
 /**
  * ClassUtils
- * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ClassUtils.html
  */
 public class ClassUtilsDemo extends Demo {

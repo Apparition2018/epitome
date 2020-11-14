@@ -6,7 +6,6 @@ import org.junit.Test;
 
 /**
  * FilenameUtils
- * <p>
  * http://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html
  */
 public class FilenameUtilsDemo extends Demo {

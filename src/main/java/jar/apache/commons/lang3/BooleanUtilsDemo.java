@@ -6,7 +6,6 @@ import org.junit.Test;
 
 /**
  * BooleanUtils
- * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/BooleanUtils.html
  */
 public class BooleanUtilsDemo extends Demo {

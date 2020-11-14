@@ -6,7 +6,6 @@ import org.junit.Test;
 
 /**
  * WordUtils
- * <p>
  * https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/WordUtils.html
  */
 public class WordUtilsDemo extends Demo {

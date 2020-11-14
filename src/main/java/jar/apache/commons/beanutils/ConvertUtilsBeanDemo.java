@@ -9,8 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 
 /**
  * ConvertUtilsBean
- * <p>
- * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.2/apidocs/org/apache/commons/beanutils/ConvertUtilsBean.html
+ * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/ConvertUtilsBean.html
  */
 public class ConvertUtilsBeanDemo {
 

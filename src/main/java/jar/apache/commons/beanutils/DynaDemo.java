@@ -11,6 +11,8 @@ import org.junit.Test;
  * BasicDynaClass
  * DynaBean
  * LazyDynaBean
+ * <p>
+ * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/package-summary.html#package_description
  */
 public class DynaDemo {
 
@@ -22,7 +24,7 @@ public class DynaDemo {
     @Test
     public void test() throws InstantiationException, IllegalAccessException {
         // 动态 Bean，首先定义 Bean 类
-        DynaProperty[] props = new DynaProperty[] {
+        DynaProperty[] props = new DynaProperty[]{
                 new DynaProperty("name", String.class),
                 new DynaProperty("age", int.class)
         };

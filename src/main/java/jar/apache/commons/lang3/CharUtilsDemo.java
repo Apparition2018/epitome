@@ -6,7 +6,6 @@ import org.junit.Test;
 
 /**
  * CharUtils
- * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/CharUtils.html
  */
 public class CharUtilsDemo extends Demo {

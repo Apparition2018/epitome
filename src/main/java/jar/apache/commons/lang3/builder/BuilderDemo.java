@@ -9,10 +9,10 @@ import org.apache.commons.lang3.builder.*;
 import java.math.BigDecimal;
 
 /**
- * ToStringBuilder
- * <p>
+ * XXXBuilder
  * https://www.jianshu.com/p/23c36b6fc8af
  * https://www.cnblogs.com/E-star/p/3725916.html
+ * http://commons.apache.org/proper/commons-lang/apidocs/allclasses-noframe.html
  */
 public class BuilderDemo {
 

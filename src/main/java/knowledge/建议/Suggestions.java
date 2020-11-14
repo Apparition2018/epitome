@@ -4,7 +4,6 @@ import knowledge.建议.Family.Daughter;
 import knowledge.建议.Family.Son;
 import l.demo.Demo;
 import l.demo.Person;
-import l.demo.Person.Student;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -602,8 +601,8 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test038() {
-        Student student = new Student();
-        student.setHome(new Student.Home("北京", "010"));
+        Person person = new Person();
+        person.setHome(new Person.Home("北京", "010"));
     }
 
     // 建议39：使用匿名类的构造函数

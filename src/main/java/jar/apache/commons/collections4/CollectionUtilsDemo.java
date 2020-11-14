@@ -28,7 +28,6 @@ import java.util.Comparator;
  * static <E> Collection<E>	transformingCollection(Collection<E> collection, Transformer<? super E,? extends E> transformer)o
  * <p>
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/CollectionUtils.html
- * https://blog.csdn.net/sinat_34093604/article/details/79551924
  */
 public class CollectionUtilsDemo extends Demo {
 

@@ -20,7 +20,6 @@ import org.junit.Test;
  * static boolean   isEmpty(XXX[] array)                                    判断是否为空
  * static boolean   isNotEmpty(XXX[] array)                                 判断是否不为空
  * static boolean   isSorted(XXX[] array)                                   判断是否已排序
- *
  * <p>
  * https://blog.csdn.net/u010046887/article/details/47398213
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ArrayUtils.html

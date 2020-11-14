@@ -6,6 +6,7 @@ import org.junit.Test;
 
 /**
  * RandomUtils
+ * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/RandomUtils.html
  */
 public class RandomUtilsDemo extends Demo {
 

@@ -6,7 +6,6 @@ import org.junit.Test;
 
 /**
  * Base64
- * <p>
  * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/binary/Base64.html
  */
 public class Base64Demo extends Demo {

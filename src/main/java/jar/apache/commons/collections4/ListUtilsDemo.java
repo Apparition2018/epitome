@@ -12,7 +12,6 @@ import java.util.List;
  * <p>
  * static <T> List<T>	defaultIfNull(List<T> list, List<T> defaultList)                如果为 null，返回给定默认 List
  * static <T> List<T>	emptyIfNull(List<T> list)                                       如果为 null，返回空 List
- * <p>
  * static int	        hashCodeForList(Collection<?> list)                             生成 HashCode
  * static boolean	    isEqualList(Collection<?> list1, Collection<?> list2)           判断两个集合是否相等
  * <p>

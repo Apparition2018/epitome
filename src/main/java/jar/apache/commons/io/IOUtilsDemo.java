@@ -12,7 +12,6 @@ import java.util.List;
 
 /**
  * IOUtils
- * http://commons.apache.org/proper/commons-io/javadocs/api-release/org/apache/commons/io/IOUtils.html
  * <p>
  * static InputStream	    toInputStream(CharSequence/String input, Charset/String encoding)
  * static InputStream       toBufferedInputStream(InputStream input[, int size])
@@ -34,6 +33,7 @@ import java.util.List;
  * static void	            skipFully(XXX input, long toSkip)           跳过指定长度的流，如果不够跳会抛出异常
  * <p>
  * https://www.cnblogs.com/xing901022/p/5978989.html
+ * http://commons.apache.org/proper/commons-io/javadocs/api-release/org/apache/commons/io/IOUtils.html
  */
 public class IOUtilsDemo extends Demo {
 

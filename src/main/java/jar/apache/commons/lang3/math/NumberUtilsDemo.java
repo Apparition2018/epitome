@@ -6,7 +6,6 @@ import org.junit.Test;
 
 /**
  * NumberUtils
- * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/NumberUtils.html
  */
 public class NumberUtilsDemo extends Demo {

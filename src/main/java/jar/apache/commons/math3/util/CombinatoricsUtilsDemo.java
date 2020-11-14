@@ -5,8 +5,7 @@ import org.apache.commons.math3.util.CombinatoricsUtils;
 import org.junit.Test;
 
 /**
- * CombinatoricsUtils
- * 组合学
+ * CombinatoricsUtils   组合学
  * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/util/CombinatoricsUtils.html
  */
 public class CombinatoricsUtilsDemo extends Demo {

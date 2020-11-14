@@ -1,6 +1,7 @@
 package jar.apache.commons.beanutils;
 
 import l.demo.Demo;
+import l.demo.Person;
 import l.demo.Person.Student;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
@@ -11,63 +12,28 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
  * BeanUtils
- * <p>
- * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.2/apidocs/org/apache/commons/beanutils/BeanUtils.html
+ * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/BeanUtils.html
  */
 public class BeanUtilsDemo extends Demo {
-
-    /**
-     * JavaBean → JavaBean
-     */
+    
     @Test
-    public void copyProperties() throws InvocationTargetException, IllegalAccessException {
+    public void testBeanUtils() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        // JavaBean → JavaBean
+        Person person = new Person();
+        BeanUtils.copyProperties(person, personList.get(0));
+        p(String.format("%s的 id 是 %s", person.getName(), person.getId())); // 张三的 id 是 1
 
-        Student s1 = new Student();
-        s1.setId(1);
-        s1.setName("John");
-        s1.setAge(18);
+        // JavaBean → Map
+        Map<String, String> map = BeanUtils.describe(person);
+        p(map); // {otherInfo=null, gender=null, name=张三, id=1, age=null, home=null}
 
-        Student s2 = new Student();
-        BeanUtils.copyProperties(s2, s1);
-
-        p(s2.getName() + "的id是" + s2.getId() + "，年龄是" + s2.getAge() + "岁");
-    }
-
-    /**
-     * JavaBean → Map
-     */
-    @Test
-    public void describe() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-
-        Student s = new Student();
-        s.setId(1);
-        s.setName("John");
-        s.setAge(18);
-
-        Map<String, String> map = BeanUtils.describe(s);
-        p(map); // {no=null, otherInfo=null, score=null, password=null, gender=null, name=John, birth=null, id=1, class=class l.demo.Person$Student, age=18, home=null}
-    }
-
-    /**
-     * Map → JavaBean
-     */
-    @Test
-    public void populate() throws InvocationTargetException, IllegalAccessException {
-
-        Map<String, String> map = new HashMap<>();
-        map.put("id", "1");
-        map.put("name", "John");
-        map.put("age", "18");
-
-        Student s = new Student();
-        BeanUtils.populate(s, map);
-
-        p(s.getName() + "的id是" + s.getId() + "，年龄是" + s.getAge() + "岁");
+        // Map → JavaBean
+        BeanUtils.populate(person, map);
+        p(String.format("%s的 id 是 %s", person.getName(), person.getId())); // 张三的 id 是 1
     }
 
     /**
@@ -91,7 +57,7 @@ public class BeanUtilsDemo extends Demo {
         BeanUtils.setProperty(obj, "age", "18");
         BeanUtils.setProperty(obj, "birth", "2000-01-01"); // String → Date 不能自动转换，需注册一个转换器
 
-        p(obj);
+        p(obj); // Student{id=1, name='John', age=18, birth=2000-01-01}
     }
 
     /**

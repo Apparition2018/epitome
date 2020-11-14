@@ -9,7 +9,6 @@ import java.util.Set;
 
 /**
  * LocaleUtils
- * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/LocaleUtils.html
  */
 public class LocaleUtilsDemo extends Demo {

@@ -29,7 +29,6 @@ import java.util.concurrent.TimeUnit;
  * ReferenceIdentityMap     一个 Map 的实现，允许垃圾收集器删除映射，基于 == 而不是 equals() 匹配键和值
  * SingletonMap             一个 Map 的实现，保存单个项且大小固定
  * StaticBucketMap          一个 Map 的高效、线程安全的实现
- * <p>
  * 除了 UnmodifiableXXXMap，SingletonMap，StaticBucketMap 都不是线程同步的，且线程不安全的
  * <p>
  * http://commons.apache.org/proper/commons-collections/apidocs/allclasses-noframe.html
@@ -67,14 +66,12 @@ public class MapDemo extends Demo {
     }
 
     /**
-     * LinkedMap
-     * 一个维持顺序的 Map 实现，顺序为原始插入顺序
-     * <p>
-     * ListOrderedMap
-     * 修饰另一个 Map，使其顺序保持为添加顺序
+     * OrderedMap       定义一个 Map，维持进入顺序，并允许向前和向后迭代
+     * LinkedMap        一个维持顺序的 Map 实现，顺序为原始插入顺序
+     * ListOrderedMap   修饰另一个 Map，使其顺序保持为添加顺序
      */
     @Test
-    public void testOrderMap() {
+    public void testOrderedMap() {
         LinkedMap<Integer, String> linkedMap = new LinkedMap<>();
         linkedMap.put(3, "C");
         linkedMap.put(2, "B");
@@ -85,6 +82,11 @@ public class MapDemo extends Demo {
         listOrderedMap.put(5, "F");
         listOrderedMap.put(4, "E");
         p(listOrderedMap);  // {1=A, 2=B, 3=C, 5=F, 4=E}
+        
+        p(linkedMap.firstKey());        // 3
+        p(listOrderedMap.lastKey());    // 4
+        p(listOrderedMap.nextKey(1));   // 2 
+        p(linkedMap.previousKey(1));    // 2
     }
 
     /**

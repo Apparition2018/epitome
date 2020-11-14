@@ -5,8 +5,8 @@ import org.junit.Test;
 
 /**
  * NormalDistribution
- * <p>
  * http://yzd.iteye.com/blog/852082
+ * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/distribution/NormalDistribution.html
  */
 public class NormalDistributionDemo {
     /**

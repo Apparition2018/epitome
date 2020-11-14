@@ -25,7 +25,6 @@ import java.util.List;
  * static String	identityToString(Object object)                     ???
  * static void	    identityToString(Appendable/StringBuffer/StringBuilder,
  * -                    Object object)                                  ???
- *
  * <p>
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ObjectUtils.html
  */

@@ -6,7 +6,6 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -16,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * DateUtils
  * DateFormatUtils
- * <p>
  * https://www.cnblogs.com/aston/p/9053201.html
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html

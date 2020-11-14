@@ -10,9 +10,8 @@ import java.util.Arrays;
 
 /**
  * StatUtils
- * <p>
- * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/stat/StatUtils.html
  * http://www.cnblogs.com/xiao02fang/p/9883909.html
+ * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/stat/StatUtils.html
  */
 public class StatDemo extends Demo {
 

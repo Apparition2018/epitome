@@ -5,9 +5,7 @@ import org.apache.commons.math3.util.ArithmeticUtils;
 import org.junit.Test;
 
 /**
- * ArithmeticUtils
- * 算术
- * <p>
+ * ArithmeticUtils  算术
  * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/util/ArithmeticUtils.html
  */
 public class ArithmeticUtilsDemo extends Demo {
