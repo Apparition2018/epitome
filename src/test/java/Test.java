@@ -11,7 +11,7 @@
 // Nutz: http://nutzam.com/index.html
 // htmlcleaner + jsoup
 
-// https://blog.csdn.net/u012426327/article/list/8
+// https://blog.csdn.net/u012426327/article/list/7
 // 【小家java】java5新特性（简述十大新特性） 重要一跃：https://blog.csdn.net/f641385712/article/details/81783266
 // 【小家Spring】Spring Framework提供的实用纯Java工具类大合集（一）：https://blog.csdn.net/f641385712/article/details/86749481
 // 分析了5万个开源项目，得出的排名前16的Java工具类：https://blog.csdn.net/weixin_35381618/article/details/80741956
