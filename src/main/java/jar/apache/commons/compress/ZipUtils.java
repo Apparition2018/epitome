@@ -20,7 +20,7 @@ import java.util.*;
 /**
  * Zip 压缩/解压工具
  * https://blog.csdn.net/u012848709/article/details/82263154
- * http://www.cnblogs.com/luxh/archive/2012/06/28/2568758.html
+ * http://commons.apache.org/proper/commons-compress/examples.html
  */
 @Slf4j
 public class ZipUtils extends Demo {
@@ -32,16 +32,12 @@ public class ZipUtils extends Demo {
 
     @Test
     public void compress2() {
-        String zipPath = DEMO_PATH + "demo.zip";
-
-        compress2(DEMO_FILE_PATH, zipPath);
+        compress2(DEMO_FILE_PATH, DEMO_PATH + "demo.zip");
     }
 
     @Test
     public void decompress() {
-        String zipPath = DEMO_PATH + "a.zip";
-
-        decompress(zipPath, DEMO_PATH);
+        decompress(DEMO_PATH + "a.zip", DEMO_PATH);
     }
 
     /**
@@ -60,7 +56,6 @@ public class ZipUtils extends Demo {
                     listFilesToMap(file, FilenameUtils.getBaseName(zipFile), map);
                 }
 
-                InputStream is = null;
                 try (ZipArchiveOutputStream zaos = new ZipArchiveOutputStream(new File(zipFile))) {
                     // Use Zip64 extensions for all entries where they are required
                     zaos.setUseZip64(Zip64Mode.AsNeeded);
@@ -69,23 +64,16 @@ public class ZipUtils extends Demo {
                         File file = entry.getValue();
                         ZipArchiveEntry zae = new ZipArchiveEntry(file, entry.getKey());
                         zaos.putArchiveEntry(zae);
-                        is = new FileInputStream(file);
-                        if (file.isFile()) {
-                            IOUtils.copy(is, zaos);
+                        try (InputStream is = new FileInputStream(file)) {
+                            if (file.isFile()) {
+                                IOUtils.copy(is, zaos);
+                            }
                         }
                         zaos.closeArchiveEntry();
                     }
                     zaos.finish();
                 } catch (IOException e) {
                     log.error(e.getMessage(), e);
-                } finally {
-                    if (null != is) {
-                        try {
-                            is.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
                 }
             }
         }
@@ -109,30 +97,21 @@ public class ZipUtils extends Demo {
         String rootPath = file.getParent();
         rootPath = rootPath.endsWith(File.separator) ? rootPath : rootPath + File.separator;
 
-        InputStream is = null;
-
         try (ZipArchiveOutputStream zaos = new ZipArchiveOutputStream(new File(zipFile))) {
 
             for (File f : filesToArchive) {
                 ArchiveEntry entry = zaos.createArchiveEntry(f, f.getCanonicalPath().substring(rootPath.length()));
                 zaos.putArchiveEntry(entry);
                 if (f.isFile()) {
-                    is = Files.newInputStream(f.toPath());
-                    IOUtils.copy(is, zaos);
+                    try (InputStream  is = Files.newInputStream(f.toPath())) {
+                        IOUtils.copy(is, zaos);
+                    }
                 }
                 zaos.closeArchiveEntry();
             }
             zaos.finish();
         } catch (IOException e) {
             log.error(e.getMessage(), e);
-        } finally {
-            if (null != is) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
 
     }
@@ -150,8 +129,6 @@ public class ZipUtils extends Demo {
 
             if (file.exists()) {
                 destDir = destDir.endsWith(File.separator) ? destDir : destDir + File.separator;
-
-                OutputStream os = null;
 
                 try (ZipArchiveInputStream zais = new ZipArchiveInputStream(new BufferedInputStream(new FileInputStream(file), 1024 * 5))) {
 
@@ -171,20 +148,13 @@ public class ZipUtils extends Demo {
                             if (!parent.isDirectory() && !parent.mkdirs()) {
                                 throw new IOException("failed to create directory " + parent);
                             }
-                            os = Files.newOutputStream(file.toPath());
-                            IOUtils.copy(zais, os);
+                            try (OutputStream os = Files.newOutputStream(file.toPath())) {
+                                IOUtils.copy(zais, os);
+                            }
                         }
                     }
                 } catch (IOException e) {
                     log.error(e.getMessage(), e);
-                } finally {
-                    if (null != os) {
-                        try {
-                            os.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
                 }
             } else {
                 log.error("the file doesn't exist " + zipFile);
