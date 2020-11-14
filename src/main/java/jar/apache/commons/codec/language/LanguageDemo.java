@@ -16,7 +16,7 @@ import org.junit.Test;
  * @author Arsenal
  * created on 2020/11/15 0:28
  */
-public class Language extends Demo {
+public class LanguageDemo extends Demo {
 
     @Test
     public void testLanguage() {
