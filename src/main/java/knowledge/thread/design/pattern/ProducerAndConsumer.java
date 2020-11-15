@@ -28,7 +28,7 @@ public class ProducerAndConsumer extends Demo {
     public static void main(String[] args) throws InterruptedException {
         final int CAPACITY = 10;
 
-        BlockingQueue<Integer> queue = new LinkedBlockingQueue<>(CAPACITY);
+        BlockingQueue<Integer> queue = new MyLinkedBlockingQueue<>(CAPACITY);
 
         Producer p1 = new Producer(queue);
         Producer p2 = new Producer(queue);
@@ -65,17 +65,13 @@ public class ProducerAndConsumer extends Demo {
         public void run() {
             Random r = new Random();
             String threadName = Thread.currentThread().getName();
-            p("start produce thread: " + threadName);
+            p(threadName + "+ start");
             try {
                 while (isRunning) {
-                    goodsId.incrementAndGet();
-                    if (!queue.offer(goodsId.intValue(), 2, TimeUnit.SECONDS)) {
-                        System.err.println("produce error");
-                    }
                     TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME / 2));
-                    p(threadName + "+" + queue);
+                    queue.put(goodsId.incrementAndGet());
                 }
-                p("stop produce thread: " + threadName);
+                p(threadName + "+ end");
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
@@ -97,15 +93,14 @@ public class ProducerAndConsumer extends Demo {
         @Override
         public void run() {
             String threadName = Thread.currentThread().getName();
-            p("start consume thread: " + threadName);
+            p(threadName + "- start");
             Random r = new Random();
             try {
                 while (isRunning || queue.size() != 0) {
                     queue.take();
                     TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
-                    p(threadName + "-" + queue);
                 }
-                p("stop consume thread: " + threadName);
+                p(threadName + "- end");
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
@@ -113,6 +108,33 @@ public class ProducerAndConsumer extends Demo {
         }
     }
 
+    /**
+     * 自定义 LinkedBlockingQueue
+     * 为了打印线程安全，重写 put(e)，take()，在末尾添加打印当前 queue
+     */
+    private static class MyLinkedBlockingQueue<E> extends LinkedBlockingQueue<E> {
+
+        public MyLinkedBlockingQueue(int capacity) {
+            super(capacity);
+        }
+
+        @Override
+        public void put(E e) throws InterruptedException {
+            super.put(e);
+            System.out.println(Thread.currentThread().getName() + "+" + this);
+        }
+
+        @Override
+        public E take() throws InterruptedException {
+            E take = super.take();
+            System.out.println(Thread.currentThread().getName() + "-" + this);
+            return take;
+        }
+    }
+
+    /**
+     * 给线程池的线程命名
+     */
     private static class MyThreadFactory implements ThreadFactory {
 
         private final AtomicInteger count = new AtomicInteger(1);
