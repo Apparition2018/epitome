@@ -28,14 +28,14 @@ public class ProducerAndConsumer extends Demo {
     public static void main(String[] args) throws InterruptedException {
         final int CAPACITY = 10;
 
-        BlockingQueue<PCData> queue = new LinkedBlockingQueue<>(CAPACITY);
-        
+        BlockingQueue<Integer> queue = new LinkedBlockingQueue<>(CAPACITY);
+
         Producer p1 = new Producer(queue);
         Producer p2 = new Producer(queue);
         Consumer c1 = new Consumer(queue);
         Consumer c2 = new Consumer(queue);
-        
-        ExecutorService pool = Executors.newCachedThreadPool();
+
+        ExecutorService pool = Executors.newCachedThreadPool(new MyThreadFactory());
         pool.execute(p1);
         pool.execute(p2);
         pool.execute(c1);
@@ -54,28 +54,28 @@ public class ProducerAndConsumer extends Demo {
     }
 
     private static class Producer implements Runnable {
-        private BlockingQueue<PCData> queue;
-        private static AtomicInteger count = new AtomicInteger();
+        private BlockingQueue<Integer> queue;
+        private static AtomicInteger goodsId = new AtomicInteger();
 
-        public Producer(BlockingQueue<PCData> queue) {
+        public Producer(BlockingQueue<Integer> queue) {
             this.queue = queue;
         }
 
         @Override
         public void run() {
-            PCData data;
             Random r = new Random();
-            p("start producer id: " + Thread.currentThread().getId());
+            String threadName = Thread.currentThread().getName();
+            p("start produce thread: " + threadName);
             try {
                 while (isRunning) {
-                    TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME / 2));
-                    data = new PCData(count.incrementAndGet());
-                    p("生产：" + data);
-                    if (!queue.offer(data, 2, TimeUnit.SECONDS)) {
-                        System.err.println("生产失败");
+                    goodsId.incrementAndGet();
+                    if (!queue.offer(goodsId.intValue(), 2, TimeUnit.SECONDS)) {
+                        System.err.println("produce error");
                     }
+                    TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME / 2));
+                    p(threadName + "+" + queue);
                 }
-                p("stop producer id: " + Thread.currentThread().getId());
+                p("stop produce thread: " + threadName);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
@@ -88,23 +88,24 @@ public class ProducerAndConsumer extends Demo {
     }
 
     private static class Consumer implements Runnable {
-        private BlockingQueue<PCData> queue;
+        private BlockingQueue<Integer> queue;
 
-        public Consumer(BlockingQueue<PCData> queue) {
+        public Consumer(BlockingQueue<Integer> queue) {
             this.queue = queue;
         }
 
         @Override
         public void run() {
-            p("start consume id: " + Thread.currentThread().getId());
+            String threadName = Thread.currentThread().getName();
+            p("start consume thread: " + threadName);
             Random r = new Random();
             try {
                 while (isRunning || queue.size() != 0) {
-                    PCData data = queue.take();
-                    p("消费：" + data.getData());
+                    queue.take();
                     TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
+                    p(threadName + "-" + queue);
                 }
-                p("stop consume id: " + Thread.currentThread().getId());
+                p("stop consume thread: " + threadName);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
@@ -112,20 +113,15 @@ public class ProducerAndConsumer extends Demo {
         }
     }
 
-    private static class PCData {
-        private final int intData;
+    private static class MyThreadFactory implements ThreadFactory {
 
-        public PCData(int d) {
-            intData = d;
-        }
-
-        public int getData() {
-            return intData;
-        }
+        private final AtomicInteger count = new AtomicInteger(1);
 
         @Override
-        public String toString() {
-            return intData + "";
+        public Thread newThread(Runnable r) {
+            Thread thread = new Thread(r);
+            thread.setName(map2.get(count.getAndIncrement()));
+            return thread;
         }
     }
 }

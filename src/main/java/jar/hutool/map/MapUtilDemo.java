@@ -57,14 +57,14 @@ public class MapUtilDemo extends Demo {
                 return intStrEntry;
             }
             return null;
-        })); // {1=A, 3=C, 5=F, 7=H, 9=J}
+        })); // {1=A, 3=C, 5=E, 7=G, 9=I}
 
         // Map<K, V> getAny(Map<K, V> map, K... keys)           获取 Map 的指定 key 生成新的 Map
-        p(MapUtil.getAny(map2, 1, 3, 5));       // {1=A, 3=C, 5=D}
+        p(MapUtil.getAny(map2, 1, 3, 5));       // {1=A, 3=C, 5=E}
 
         // filter(Map, Filter)                                  经过 Filter 判断返回
         p(MapUtil.filter(map2, (Filter<Map.Entry<Integer, String>>) entry -> entry.getKey() % 2 == 1));
-        // {1=A, 3=C, 5=F, 7=H, 9=J}
+        // {1=A, 3=C, 5=E, 7=G, 9=I}
 
         // toListMap(Iterable<? extends Map<K, V>> mapList)     合并相同的键，键的值合并为列表
         Map<Integer, List<String>> integerListMap = MapUtil.toListMap(ListUtil.of(map, map, map));

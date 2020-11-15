@@ -41,7 +41,6 @@ public class WorkStealing extends Demo {
     public static void main(String[] args) throws InterruptedException {
         LinkedBlockingDeque<Work> deque1 = new LinkedBlockingDeque<>();
         LinkedBlockingDeque<Work> deque2 = new LinkedBlockingDeque<>();
-
         ProducerAndConsumer pc1 = new ProducerAndConsumer(deque1, deque2);
         ProducerAndConsumer pc2 = new ProducerAndConsumer(deque1, deque2);
         ProducerAndConsumer pc3 = new ProducerAndConsumer(deque2, deque1);
