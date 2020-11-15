@@ -29,10 +29,12 @@ public class ProducerAndConsumer extends Demo {
         final int CAPACITY = 10;
 
         BlockingQueue<PCData> queue = new LinkedBlockingQueue<>(CAPACITY);
+        
         Producer p1 = new Producer(queue);
         Producer p2 = new Producer(queue);
         Consumer c1 = new Consumer(queue);
         Consumer c2 = new Consumer(queue);
+        
         ExecutorService pool = Executors.newCachedThreadPool();
         pool.execute(p1);
         pool.execute(p2);
@@ -45,7 +47,7 @@ public class ProducerAndConsumer extends Demo {
         p("********** 生产者停止生产 **********");
 
         while (queue.remainingCapacity() != CAPACITY) {
-            TimeUnit.MILLISECONDS.sleep(SLEEP_TIME + 1);
+            TimeUnit.MILLISECONDS.sleep(SLEEP_TIME + 300);
         }
         pool.shutdown();
         p("********** 消费者消费完毕 **********");
@@ -63,7 +65,7 @@ public class ProducerAndConsumer extends Demo {
         public void run() {
             PCData data;
             Random r = new Random();
-            p("start Producer id: " + Thread.currentThread().getId());
+            p("start producer id: " + Thread.currentThread().getId());
             try {
                 while (isRunning) {
                     TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME / 2));
@@ -73,7 +75,7 @@ public class ProducerAndConsumer extends Demo {
                         System.err.println("生产失败");
                     }
                 }
-                p("stop Producer id: " + Thread.currentThread().getId());
+                p("stop producer id: " + Thread.currentThread().getId());
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
@@ -94,7 +96,7 @@ public class ProducerAndConsumer extends Demo {
 
         @Override
         public void run() {
-            p("start Consume id: " + Thread.currentThread().getId());
+            p("start consume id: " + Thread.currentThread().getId());
             Random r = new Random();
             try {
                 while (isRunning || queue.size() != 0) {
@@ -102,7 +104,7 @@ public class ProducerAndConsumer extends Demo {
                     p("消费：" + data.getData());
                     TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
                 }
-                p("stop Consume id: " + Thread.currentThread().getId());
+                p("stop consume id: " + Thread.currentThread().getId());
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();

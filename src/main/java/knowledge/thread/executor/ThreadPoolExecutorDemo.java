@@ -45,7 +45,7 @@ public class ThreadPoolExecutorDemo extends Demo {
         public Thread newThread(Runnable r) {
             Thread thread = new Thread(r);
             thread.setName("ljh-thread-" + count.getAndIncrement());
-            System.out.println(thread.getName() + " is created");
+            p(thread.getName() + " is created");
             return thread;
         }
     }
