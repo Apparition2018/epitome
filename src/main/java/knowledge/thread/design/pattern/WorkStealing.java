@@ -51,14 +51,13 @@ public class WorkStealing extends Demo {
 
         TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         isProducing = false;
-        p("********** 停止分派工作 **********");
+        p("********** 生产者停止生产 **********");
 
         while (!BooleanUtils.and(isAllStop)) {
             TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         }
         pool.shutdown();
-        p("********** 工作全部完成 **********");
-
+        p("********** 消费者消费完毕 **********");
     }
 
     @Getter
@@ -116,6 +115,7 @@ public class WorkStealing extends Demo {
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                    Thread.currentThread().interrupt();
                 }
             }
             isAllStop[machineIndex] = true;

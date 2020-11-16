@@ -222,32 +222,41 @@ public class ThreadDemo extends Demo {
     /**
      * void	            interrupt()         中断线程，在当前线程中打了一个停止标志，并不是真的停止线程，它不会中断一个正在运行的线程，只会中断阻塞过程中的线程
      * static boolean	interrupted()       测试当前线程（当前线程指 main 线程）是否已经中断，会清除线程的中断状态
-     * boolean	        isInterrupted()     测试线程是否已经中断
+     * boolean	        isInterrupted()     测试线程是否已经中断，不会清除线程的中断状态
      * <p>
-     * Java终止线程的三种方式：https://www.cnblogs.com/liyutian/p/10196044.html
-     * Thread的中断机制(interrupt)，循环线程停止的方法：https://www.cnblogs.com/panchanggui/p/9668284.html
-     * interrupt(), interrupted(), isInterrupted() 区别：https://www.cnblogs.com/huangyichun/p/7126851.html
+     * 不可中断的操作：
+     * 1，synchronized
+     * 2.
+     * <p>
+     * Java 终止线程的三种方式：https://www.cnblogs.com/liyutian/p/10196044.html
+     * Thread 的中断机制 (interrupt)，循环线程停止的方法：https://www.cnblogs.com/panchanggui/p/9668284.html
+     * Thread 生命周期及 interrupted() 作用分析：https://blog.csdn.net/zwx900102/article/details/106741458
+     * 如何理解java中的中断机制：https://zhuanlan.zhihu.com/p/73302931
      */
     @Test
-    public void interrupt() throws InterruptedException {
+    public void interrupt() {
         Thread thread = new Thread(() -> {
             try {
-                for (int i = 0; i < 10000; i++) {
-                    sleep(3, TimeUnit.MILLISECONDS);
+                for (int i = 0; i < 1000; i++) {
+                    TimeUnit.MILLISECONDS.sleep(3);
                     p(i);
                     if (Thread.currentThread().isInterrupted()) {
-                        p("线程中断");
+                        p("线程中断1");
                         break;
                     }
                 }
-                countDownLatch.countDown();
-            } catch (Exception e) {
+            } catch (InterruptedException e) {
+                // 抛出 InterruptedException 异常后，会清除中断状态
+                // 因为线程为了处理异常，必须重新进入就绪状态
+                p(Thread.currentThread().isInterrupted());
+                // 看情况，是否需要重新设置中断标记
                 Thread.currentThread().interrupt();
+                p("线程中断2");
             }
         });
 
         thread.start();
-        TimeUnit.MILLISECONDS.sleep(100);
+        sleep(100, TimeUnit.MILLISECONDS);
         p("发送中断请求");
         thread.interrupt();
     }
