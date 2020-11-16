@@ -23,6 +23,8 @@
 // Android学习：https://blog.csdn.net/u012426327/article/list/7
 // 牛逼！java程序员必看经典书单，以及各个阶段学习建议!：https://blog.csdn.net/u012426327/article/details/78491295
 // 前端知识体系及修炼攻略：https://blog.csdn.net/u012426327/article/details/78665872
+// java同步非阻塞IO：https://segmentfault.com/a/1190000015449773
+// 玩转Java并发工具，精通JUC，成为并发多面手：https://coding.imooc.com/class/409.html
 // java长连接
 
 import l.demo.Demo;

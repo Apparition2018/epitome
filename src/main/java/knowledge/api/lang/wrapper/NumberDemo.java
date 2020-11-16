@@ -90,7 +90,6 @@ public class NumberDemo extends Demo {
         p(Double.isFinite(Float.POSITIVE_INFINITY));    // false
         p(Float.isInfinite(Float.POSITIVE_INFINITY));   // true
         p(Double.isNaN(Float.NaN));                     // true
-        
     }
 
 }
