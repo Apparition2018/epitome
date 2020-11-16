@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * 4.阻塞状态：如果一个线程执行了sleep（睡眠）、suspend（挂起）等方法，失去所占用资源之后，该线程就从运行状态进入阻塞状态。在睡眠时间已到或获得设备资源后可以重新进入就绪状态。
  * -    等待阻塞：运行状态中的线程执行 wait() 方法，使线程进入到等待阻塞状态。
  * -    同步阻塞：线程在获取 synchronized 同步锁失败(因为同步锁被其他线程占用)。
- * -    其他阻塞：通过调用线程的 sfleep() 或 join() 或 发出了 I/O 请求时，线程就会进入到阻塞状态。当 sleep() 状态超时，join() 等待线程终止或超时，或者 I/O 处理完毕，线程重新转入就绪状态。
+ * -    其他阻塞：通过调用线程的 sleep() 或 join() 或 发出了 I/O 请求时，线程就会进入到阻塞状态。当 sleep() 状态超时，join() 等待线程终止或超时，或者 I/O 处理完毕，线程重新转入就绪状态。
  * 5.死亡状态：一个运行状态的线程完成任务或者其他终止条件发生时，该线程就切换到终止状态。
  * <p>
  * 线程是异步执行代码的
@@ -224,10 +224,6 @@ public class ThreadDemo extends Demo {
      * static boolean	interrupted()       测试当前线程（当前线程指 main 线程）是否已经中断，会清除线程的中断状态
      * boolean	        isInterrupted()     测试线程是否已经中断，不会清除线程的中断状态
      * <p>
-     * 不可中断的操作：
-     * 1，synchronized
-     * 2.
-     * <p>
      * Java 终止线程的三种方式：https://www.cnblogs.com/liyutian/p/10196044.html
      * Thread 的中断机制 (interrupt)，循环线程停止的方法：https://www.cnblogs.com/panchanggui/p/9668284.html
      * Thread 生命周期及 interrupted() 作用分析：https://blog.csdn.net/zwx900102/article/details/106741458
@@ -249,7 +245,7 @@ public class ThreadDemo extends Demo {
                 // 抛出 InterruptedException 异常后，会清除中断状态
                 // 因为线程为了处理异常，必须重新进入就绪状态
                 p(Thread.currentThread().isInterrupted());
-                // 看情况，是否需要重新设置中断标记
+                // 看情况是否需要重新设置中断标记
                 Thread.currentThread().interrupt();
                 p("线程中断2");
             }
