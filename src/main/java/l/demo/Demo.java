@@ -6,7 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Demo
@@ -15,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  * created on 2020/9/3 10:15
  */
 public class Demo {
-    
+
     public static Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     public static List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
     public static List<String> sList = new ArrayList<>(Arrays.asList("1 2 3 4 5 6 7 8 9".split(" ")));
@@ -223,6 +225,21 @@ public class Demo {
                 countDownLatch.countDown();
             }
             return map;
+        }
+    }
+
+    /**
+     * 给线程池的线程命名
+     */
+    public static class MyThreadFactory implements ThreadFactory {
+
+        private final AtomicInteger count = new AtomicInteger(1);
+
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread thread = new Thread(r);
+            thread.setName(map2.get(count.getAndIncrement()));
+            return thread;
         }
     }
 }

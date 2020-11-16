@@ -108,19 +108,4 @@ public class ProducerAndConsumer extends Demo {
             }
         }
     }
-
-    /**
-     * 给线程池的线程命名
-     */
-    private static class MyThreadFactory implements ThreadFactory {
-
-        private final AtomicInteger count = new AtomicInteger(1);
-
-        @Override
-        public Thread newThread(Runnable r) {
-            Thread thread = new Thread(r);
-            thread.setName(map2.get(count.getAndIncrement()));
-            return thread;
-        }
-    }
 }
