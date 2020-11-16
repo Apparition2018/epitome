@@ -1,6 +1,7 @@
 package knowledge.thread.design.pattern;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.Random;
 import java.util.concurrent.*;
@@ -19,21 +20,20 @@ import java.util.concurrent.atomic.AtomicInteger;
  * created on 2020/10/9 13:53
  */
 public class ProducerAndConsumer extends Demo {
-    private static volatile boolean isRunning = true;
+    private static volatile boolean isProducerRunning = true;
+    private static volatile boolean[] isAllConsumerStop = new boolean[]{false, false};
     private static final int SLEEP_TIME = 1000;
 
     /**
      * 本例基于 LinkedBlockingDeque 实现
      */
     public static void main(String[] args) throws InterruptedException {
-        final int CAPACITY = 10;
-
-        BlockingQueue<Integer> queue = new MyLinkedBlockingQueue<>(CAPACITY);
+        BlockingQueue<Integer> queue = new LinkedBlockingQueue<>(10);
 
         Producer p1 = new Producer(queue);
         Producer p2 = new Producer(queue);
-        Consumer c1 = new Consumer(queue);
-        Consumer c2 = new Consumer(queue);
+        Consumer c1 = new Consumer(queue, 0);
+        Consumer c2 = new Consumer(queue, 1);
 
         ExecutorService pool = Executors.newCachedThreadPool(new MyThreadFactory());
         pool.execute(p1);
@@ -42,20 +42,20 @@ public class ProducerAndConsumer extends Demo {
         pool.execute(c2);
 
         TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
-        p1.stop();
-        p2.stop();
+        p1.stopProduce();
+        p2.stopProduce();
         p("********** 生产者停止生产 **********");
 
-        while (queue.remainingCapacity() != CAPACITY) {
-            TimeUnit.MILLISECONDS.sleep(SLEEP_TIME + 300);
+        while (!BooleanUtils.and(isAllConsumerStop)) {
+            TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         }
         pool.shutdown();
         p("********** 消费者消费完毕 **********");
     }
 
     private static class Producer implements Runnable {
-        private BlockingQueue<Integer> queue;
         private static AtomicInteger goodsId = new AtomicInteger();
+        private BlockingQueue<Integer> queue;
 
         public Producer(BlockingQueue<Integer> queue) {
             this.queue = queue;
@@ -65,70 +65,53 @@ public class ProducerAndConsumer extends Demo {
         public void run() {
             Random r = new Random();
             String threadName = Thread.currentThread().getName();
-            p(threadName + "+ start");
+            p(threadName + " + start");
             try {
-                while (isRunning) {
+                while (isProducerRunning) {
                     TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME / 2));
                     queue.put(goodsId.incrementAndGet());
+                    p(threadName + " + " + goodsId);
                 }
-                p(threadName + "+ end");
+                p(threadName + " + end");
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
             }
         }
 
-        public void stop() {
-            isRunning = false;
+        public void stopProduce() {
+            isProducerRunning = false;
         }
     }
 
     private static class Consumer implements Runnable {
         private BlockingQueue<Integer> queue;
+        private int consumerIndex;
 
-        public Consumer(BlockingQueue<Integer> queue) {
+        public Consumer(BlockingQueue<Integer> queue, int consumerIndex) {
             this.queue = queue;
+            this.consumerIndex = consumerIndex;
         }
 
         @Override
         public void run() {
             String threadName = Thread.currentThread().getName();
-            p(threadName + "- start");
+            p(threadName + " - start");
             Random r = new Random();
             try {
-                while (isRunning || queue.size() != 0) {
-                    queue.take();
-                    TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
+                while (isProducerRunning || queue.size() != 0) {
+                    Integer goodsId = queue.poll(r.nextInt(SLEEP_TIME), TimeUnit.MILLISECONDS);
+                    if (null != goodsId) {
+                        p(threadName + " - " + goodsId);
+                        TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
+                    }
                 }
-                p(threadName + "- end");
+                isAllConsumerStop[consumerIndex] = true;
+                p(threadName + " - end");
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
             }
-        }
-    }
-
-    /**
-     * 自定义 LinkedBlockingQueue
-     * 为了打印线程安全，重写 put(e)，take()，在末尾添加打印当前 queue
-     */
-    private static class MyLinkedBlockingQueue<E> extends LinkedBlockingQueue<E> {
-
-        public MyLinkedBlockingQueue(int capacity) {
-            super(capacity);
-        }
-
-        @Override
-        public void put(E e) throws InterruptedException {
-            super.put(e);
-            System.out.println(Thread.currentThread().getName() + "+" + this);
-        }
-
-        @Override
-        public E take() throws InterruptedException {
-            E take = super.take();
-            System.out.println(Thread.currentThread().getName() + "-" + this);
-            return take;
         }
     }
 

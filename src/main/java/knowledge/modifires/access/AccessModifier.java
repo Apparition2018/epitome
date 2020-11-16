@@ -1,4 +1,4 @@
-package knowledge.修饰符.access;
+package knowledge.modifires.access;
 
 /**
  * 访问修饰符: private, default, protected, public

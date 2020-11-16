@@ -1,4 +1,4 @@
-package knowledge.修饰符.nonaccess;
+package knowledge.modifires.nonaccess;
 
 /**
  * 非访问修饰符：static, final, abstract, synchronized, transient, volatile

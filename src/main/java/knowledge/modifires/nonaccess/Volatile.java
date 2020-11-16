@@ -1,4 +1,4 @@
-package knowledge.修饰符.nonaccess;
+package knowledge.modifires.nonaccess;
 
 import java.util.concurrent.TimeUnit;
 
