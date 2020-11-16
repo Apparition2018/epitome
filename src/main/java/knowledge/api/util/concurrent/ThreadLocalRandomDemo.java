@@ -21,7 +21,7 @@ public class ThreadLocalRandomDemo {
     public void testThreadLocalRandom() throws InterruptedException {
         // 错误用法
         // static ThreadLocalRandom     current()       返回当前线程的 ThreadLocalRandom
-        final ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
+        ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 System.out.print(threadLocalRandom.nextInt() + " ");
@@ -39,17 +39,17 @@ public class ThreadLocalRandomDemo {
 
         // 正确用法
         new Thread(() -> {
+            ThreadLocalRandom threadLocalRandom2 = ThreadLocalRandom.current();
             for (int i = 0; i < 10; i++) {
-                ThreadLocalRandom threadLocalRandom1 = ThreadLocalRandom.current();
-                System.out.print(threadLocalRandom1.nextInt() + " ");
+                System.out.print(threadLocalRandom2.nextInt() + " ");
             }
         }).start();
         TimeUnit.SECONDS.sleep(1);
         System.out.println();
         new Thread(() -> {
+            ThreadLocalRandom threadLocalRandom2 = ThreadLocalRandom.current();
             for (int i = 0; i < 10; i++) {
-                ThreadLocalRandom threadLocalRandom1 = ThreadLocalRandom.current();
-                System.out.print(threadLocalRandom1.nextInt() + " ");
+                System.out.print(threadLocalRandom2.nextInt() + " ");
             }
         }).start();
     }

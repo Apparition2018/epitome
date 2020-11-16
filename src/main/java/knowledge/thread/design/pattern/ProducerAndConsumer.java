@@ -3,7 +3,6 @@ package knowledge.thread.design.pattern;
 import l.demo.Demo;
 import org.apache.commons.lang3.BooleanUtils;
 
-import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -20,15 +19,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  * created on 2020/10/9 13:53
  */
 public class ProducerAndConsumer extends Demo {
-    private static volatile boolean isProducerRunning = true;
+    private static volatile boolean isProducing = true;
     private static volatile boolean[] isAllConsumerStop = new boolean[]{false, false};
     private static final int SLEEP_TIME = 1000;
 
     /**
-     * 本例基于 LinkedBlockingDeque 实现
+     * 本例基于 LinkedBlockingQueue 实现
      */
     public static void main(String[] args) throws InterruptedException {
-        BlockingQueue<Integer> queue = new LinkedBlockingQueue<>(10);
+        BlockingQueue<Integer> queue = new LinkedBlockingQueue<>();
 
         Producer p1 = new Producer(queue);
         Producer p2 = new Producer(queue);
@@ -42,8 +41,7 @@ public class ProducerAndConsumer extends Demo {
         pool.execute(c2);
 
         TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
-        p1.stopProduce();
-        p2.stopProduce();
+        isProducing = false;
         p("********** 生产者停止生产 **********");
 
         while (!BooleanUtils.and(isAllConsumerStop)) {
@@ -63,11 +61,11 @@ public class ProducerAndConsumer extends Demo {
 
         @Override
         public void run() {
-            Random r = new Random();
             String threadName = Thread.currentThread().getName();
             p(threadName + " + start");
+            ThreadLocalRandom r = ThreadLocalRandom.current();
             try {
-                while (isProducerRunning) {
+                while (isProducing) {
                     TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME / 2));
                     queue.put(goodsId.incrementAndGet());
                     p(threadName + " + " + goodsId);
@@ -77,10 +75,6 @@ public class ProducerAndConsumer extends Demo {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
             }
-        }
-
-        public void stopProduce() {
-            isProducerRunning = false;
         }
     }
 
@@ -97,9 +91,9 @@ public class ProducerAndConsumer extends Demo {
         public void run() {
             String threadName = Thread.currentThread().getName();
             p(threadName + " - start");
-            Random r = new Random();
+            ThreadLocalRandom r = ThreadLocalRandom.current();
             try {
-                while (isProducerRunning || queue.size() != 0) {
+                while (isProducing || queue.size() != 0) {
                     Integer goodsId = queue.poll(r.nextInt(SLEEP_TIME), TimeUnit.MILLISECONDS);
                     if (null != goodsId) {
                         p(threadName + " - " + goodsId);

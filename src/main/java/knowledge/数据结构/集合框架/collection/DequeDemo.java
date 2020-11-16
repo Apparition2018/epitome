@@ -105,12 +105,12 @@ public class DequeDemo extends Demo {
      * 操作位                          第一个元素（头部）
      * 操作       抛出异常            特殊值             阻塞          超时退出
      * 插入       addFirst(e)     offerFirst(e)   putFirst(e)     offerFirst(e, time, unit)
-     * 移除       removeFirst()   pollFirst()     takeFirst(e)    pollFirst(time, unit)
+     * 移除       removeFirst()   pollFirst()     takeFirst()    pollFirst(time, unit)
      * 检查       getFirst()      peekFirst()
      * 操作位                          最后一个元素（尾部）                                                               
      * 操作       抛出异常            特殊值             阻塞          超时退出
      * 插入       addLast(e)      offerLast(e)   putLast(e)       offerLast(e, time, unit)
-     * 移除       removeLast()    pollLast()     takeLast(e)      pollLast(time, unit)
+     * 移除       removeLast()    pollLast()     takeLast()      pollLast(time, unit)
      * 检查       getLast()       peekLast()
      */
     @Test

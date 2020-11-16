@@ -3,16 +3,11 @@ package knowledge.thread.design.pattern;
 import l.demo.Demo;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.SneakyThrows;
+import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.Objects;
-import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 /**
  * 工作密取
@@ -33,7 +28,9 @@ import java.util.stream.Collectors;
  */
 public class WorkStealing extends Demo {
 
-    public static volatile boolean isRunning = true;
+    public static volatile boolean isProducing = true;
+    private static volatile boolean[] isAllStop = new boolean[]{false, false, false, false};
+    private static final int SLEEP_TIME = 1000;
 
     /**
      * 本例基于 LinkedBlockingDeque 实现
@@ -41,93 +38,102 @@ public class WorkStealing extends Demo {
     public static void main(String[] args) throws InterruptedException {
         LinkedBlockingDeque<Work> deque1 = new LinkedBlockingDeque<>();
         LinkedBlockingDeque<Work> deque2 = new LinkedBlockingDeque<>();
-        ProducerAndConsumer pc1 = new ProducerAndConsumer(deque1, deque2);
-        ProducerAndConsumer pc2 = new ProducerAndConsumer(deque1, deque2);
-        ProducerAndConsumer pc3 = new ProducerAndConsumer(deque2, deque1);
-        ProducerAndConsumer pc4 = new ProducerAndConsumer(deque2, deque1);
+        Machine m1 = new Machine(deque1, deque2, 0);
+        Machine m2 = new Machine(deque1, deque2, 1);
+        Machine m3 = new Machine(deque2, deque1, 2);
+        Machine m4 = new Machine(deque2, deque1, 3);
 
-        ExecutorService pool = Executors.newCachedThreadPool();
-        pool.execute(pc1);
-        pool.execute(pc2);
-        pool.execute(pc3);
-        pool.execute(pc4);
+        ExecutorService pool = Executors.newCachedThreadPool(new MyThreadFactory());
+        pool.execute(m1);
+        pool.execute(m2);
+        pool.execute(m3);
+        pool.execute(m4);
 
-        TimeUnit.SECONDS.sleep(1);
-        pc1.stopProduce();
-        pc2.stopProduce();
-        pc3.stopProduce();
-        pc4.stopProduce();
+        TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
+        isProducing = false;
         p("********** 停止分派工作 **********");
 
-        while (deque1.size() != 0 || deque2.size() != 0) {
-            TimeUnit.MILLISECONDS.sleep(300);
-            isRunning = false;
+        while (!BooleanUtils.and(isAllStop)) {
+            TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         }
         pool.shutdown();
         p("********** 工作全部完成 **********");
-        
+
     }
 
     @Getter
     @Setter
     private static class Work implements Runnable {
-        private long assignId;
+        private String assignName;
         private final int jobId;
 
-        public Work(int jobId) {
+        public Work(int jobId, String assignName) {
             this.jobId = jobId;
+            this.assignName = assignName;
         }
 
-        @SneakyThrows
         @Override
         public void run() {
-            TimeUnit.MILLISECONDS.sleep(100);
-            long finishId = Thread.currentThread().getId();
-            p("[" + finishId + "] finish job " + jobId + " assigned by " + (finishId == assignId ? "itself" : assignId));
+            ThreadLocalRandom r = ThreadLocalRandom.current();
+            sleep(r.nextInt(SLEEP_TIME), TimeUnit.MILLISECONDS);
+            String finishName = Thread.currentThread().getName();
+            p(finishName + " - " + jobId + (finishName.equals(assignName) ? "" : " + " + assignName));
         }
     }
 
-    private static class ProducerAndConsumer implements Runnable {
-        public volatile boolean isProducing = true;
+    private static class Machine implements Runnable {
         private static AtomicInteger jobId = new AtomicInteger();
-        private Random random = new Random();
         private final LinkedBlockingDeque<Work> deque1;
         private final LinkedBlockingDeque<Work> deque2;
+        private int machineIndex;
 
-        public ProducerAndConsumer(LinkedBlockingDeque<Work> deque1, LinkedBlockingDeque<Work> deque2) {
+        public Machine(LinkedBlockingDeque<Work> deque1, LinkedBlockingDeque<Work> deque2, int machineIndex) {
             this.deque1 = deque1;
             this.deque2 = deque2;
+            this.machineIndex = machineIndex;
         }
 
         @Override
         public void run() {
-            while (isRunning) {
+            ThreadLocalRandom r = ThreadLocalRandom.current();
+            while (isProducing || deque1.size() != 0 || deque2.size() != 0) {
                 try {
-                    if (isProducing && random.nextBoolean()) {
-                        TimeUnit.MILLISECONDS.sleep(100);
-                        for (int i = 0; i < random.nextInt(5); i++) {
-                            Work work = new Work(jobId.incrementAndGet());
-                            work.setAssignId(Thread.currentThread().getId());
+                    if (isProducing && r.nextBoolean()) {
+                        String assignName = Thread.currentThread().getName();
+                        TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
+                        for (int i = 0; i < r.nextInt(4); i++) {
+                            Work work = new Work(jobId.incrementAndGet(), assignName);
                             deque1.putLast(work);
-                            long assignId = Thread.currentThread().getId();
-                            p("[" + assignId + "] assign job " + jobId + ". job deque " + assignId + ": " + deque1.stream().map(Work::getJobId).collect(Collectors.toList()));
+                            p(assignName + " + " + jobId);
                         }
                     }
                     if (!deque1.isEmpty()) {
-                        Objects.requireNonNull(deque1.pollFirst(100, TimeUnit.MILLISECONDS)).run();
+                        Objects.requireNonNull(deque1.pollFirst()).run();
                     } else {
                         if (!deque2.isEmpty()) {
-                            Objects.requireNonNull(deque2.pollLast(100, TimeUnit.MILLISECONDS)).run();
+                            Objects.requireNonNull(deque2.pollLast()).run();
                         }
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
+            isAllStop[machineIndex] = true;
         }
+    }
 
-        public void stopProduce() {
-            isProducing = false;
+    /**
+     * 给线程池的线程命名
+     */
+    private static class MyThreadFactory implements ThreadFactory {
+
+        private final AtomicInteger count = new AtomicInteger(1);
+
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread thread = new Thread(r);
+            thread.setName(map2.get(count.getAndIncrement()));
+            return thread;
         }
     }
 }
