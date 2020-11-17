@@ -5,7 +5,7 @@ package knowledge.oop.interface_;
  * 1.没有 this 指针，没有构造方法，静态快，不能实例化，不能保存状态
  * 2.变量只能是 public static final，而且隐式
  * 3.方法只能是 abstract, default, static
- * 4.支持多继承
+ * 4.支持接口多继承
  * <p>
  * 1.接口隐式 abstract
  * 2.变量隐式 public static final

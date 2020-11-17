@@ -105,7 +105,7 @@ public class ThreadDemo extends Demo {
     @Test
     public void join() throws InterruptedException {
         setCountDownLatch(1);
-        final Thread download = new Thread(() -> {
+        Thread download = new Thread(() -> {
             p("down:开始下载图片...");
             for (int i = 0; i < 100; i++) {
                 p("down:" + i + "%");
