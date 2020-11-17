@@ -30,10 +30,10 @@ public class PathDemo extends Demo {
     // 使用 FileSystem.getDefault().getPath(...) 创建 Path
     private Path p1 = FileSystems.getDefault().getPath(DEMO_PATH);
     // 使用 Paths.get(String first[, String... more]) 创建 Path
-    private Path p2 = Paths.get(RESOURCES_PATH, "knowledge");
+    private Path p2 = Paths.get(RESOURCES_PATH, "spring");
 
     private Path p3 = Paths.get(DEMO_ABSOLUTE_PATH);
-    private Path p4 = Paths.get(RESOURCES_ABSOLUTE_PATH + "knowledge");
+    private Path p4 = Paths.get(RESOURCES_ABSOLUTE_PATH + "spring");
     
     @Test
     public void testGet() {
@@ -73,12 +73,12 @@ public class PathDemo extends Demo {
     @Test
     public void relativize() {
         p(p1); // src\main\resources\demo
-        p(p2); // src\main\resources\knowledge
+        p(p2); // src\main\resources\spring
         p(p3); // D:\L\git\epitome\src\main\resources\demo
-        p(p4); // D:\L\git\epitome\src\main\resources\knowledge
+        p(p4); // D:\L\git\epitome\src\main\resources\spring
 
-        p(p1.relativize(p2)); // ..\knowledge
-        p(p3.relativize(p4)); // ..\knowledge
+        p(p1.relativize(p2)); // ..\spring
+        p(p3.relativize(p4)); // ..\spring
 
         p(p1.relativize(p3)); // IllegalArgumentException: 'other' is different type of Path
     }
@@ -90,18 +90,18 @@ public class PathDemo extends Demo {
     @Test
     public void resolve() {
         Path p5 = Paths.get(DEMO_FILE_PATH);
-        p(p1);                              // src\main\resources\demo
-        p(p5);                              // src\main\resources\demo\demo
-        p(p1.resolve("demo"));              // src\main\resources\demo\demo
-        p(p1.resolve("/demo"));             // \demo
-        p(p1.resolve(p5.toAbsolutePath())); // D:\L\git\epitome\src\main\resources\demo\demo
+        p(p1);                                          // src\main\resources\demo
+        p(p5);                                          // src\main\resources\demo\demo
+        p(p1.resolve("demo"));                          // src\main\resources\demo\demo
+        p(p1.resolve("/demo"));                         // \demo
+        p(p1.resolve(p5.toAbsolutePath()) + "\n");      // D:\L\git\epitome\src\main\resources\demo\demo
 
-        Path p6 = p2.resolve("new 1.txt");
-        p(p2);                                          // src\main\resources\knowledge                              
-        p(p6);                                          // src\main\resources\knowledge\new 1.txt                             
-        p(p1.resolveSibling("knowledge/new 1.txt"));    // src\main\resources\knowledge\new 1.txt
-        p(p1.resolveSibling("/knowledge/new 1.txt"));   // \knowledge\new 1.txt
-        p(p1.resolveSibling(p6.toAbsolutePath()));      // D:\L\git\epitome\src\main\resources\knowledge\new 1.txt
+        Path p6 = p2.resolve("spring-dao.xml");
+        p(p2);                                          // src\main\resources\spring                              
+        p(p6);                                          // src\main\resources\spring\spring-dao.xml                             
+        p(p1.resolveSibling("spring/spring-dao.xml"));  // src\main\resources\spring\spring-dao.xml
+        p(p1.resolveSibling("/spring/spring-dao.xml")); // \spring\spring-dao.xml
+        p(p1.resolveSibling(p6.toAbsolutePath()));      // D:\L\git\epitome\src\main\resources\spring\spring-dao.xml
     }
 
     /**

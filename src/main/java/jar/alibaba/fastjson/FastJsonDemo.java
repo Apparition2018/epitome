@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * https://segmentfault.com/a/1190000011212806
+ * FastJson 的简单使用：https://segmentfault.com/a/1190000011212806
  */
 public class FastJsonDemo extends Demo {
 
