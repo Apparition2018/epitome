@@ -18,9 +18,9 @@ import java.util.Map;
  * 3.限制非法值的传入
  * <p>
  * switch:
- * 1) jdk1.5-: byte, short, char, int
- * 2) jdk1.5:  Byte, Short, Character, Integer, enum
- * 3) jdk1.7:  String
+ * 1) JDK1.5-: byte, short, char, int
+ * 2) JDK1.5:  Byte, Short, Character, Integer, enum
+ * 3) JDK1.7:  String
  * <p>
  * int	                            ordinal()               返回枚举常量的序数（它在枚举声明中的位置，其中初始常量序数为零）
  * String	                        name()                  返回此枚举常量的名称，在其枚举声明中对其进行声明

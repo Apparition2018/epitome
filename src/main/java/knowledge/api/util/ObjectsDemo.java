@@ -8,7 +8,7 @@ import java.util.Objects;
 
 /**
  * Objects
- * Objects 是 jdk1.7 新增的工具类
+ * Objects 是 JDK1.7 新增的工具类
  * Objects 由一些静态方法组成，这些方法是空指针安全的 (null-safe)，容忍空指针的 (null-tolerant)
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html

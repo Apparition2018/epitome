@@ -36,7 +36,7 @@ import java.util.concurrent.atomic.LongAdder;
  * <p>
  * 原子类（一）如何保证线程安全？：https://www.jianshu.com/p/66758b960698
  * 原子类（二）高并发下的 AtomicInteger 和 LongAdder：https://www.jianshu.com/p/18aa29f72252
- * 原子类（三）原子类和 volatile：https://www.jianshu.com/p/61fc48f84056
+ * 原子类（三）原子类和 volatile：volatile 
  * 原子类（四）AtomicInteger 和 synchronized：https://www.jianshu.com/p/85af7c8bc8a1
  * 原子类（五）Adder 和 Accumulator：https://www.jianshu.com/p/492f1f5f7763
  * 什么是 CAS 机制：https://www.sohu.com/a/314272265_120104204
