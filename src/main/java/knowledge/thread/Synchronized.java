@@ -7,11 +7,16 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Synchronized     内置锁
+ * <p>
  * 同步监视器对象是同一个的时候，这些代码间就具有了互斥效果，可称之为互斥锁
+ * <p>
+ * 膨胀锁机制：无锁 → 偏向锁 → 轻量级锁 → 重量级锁
+ * 可重入性：同一个线程的外层函数获得锁后，内层函数可以直接获取该锁
+ * 不可中断性：当锁被别的线程获得以后，如当前线程想获得，只能等待或堵塞，直到其他线程释放了这个锁
  * <p>
  * Java 内置锁的简单认识：https://www.cnblogs.com/xyhuangjinfu/p/6505329.html
  * Synchronized 的可重入性和不可中断性：https://blog.csdn.net/x541211190/article/details/106397437
- * 并发编程中实现内存可见的两种方法比较：https://blog.csdn.net/u012426327/article/details/77469733
+ * monitor 机制实现：https://www.cnblogs.com/qingshan-tang/p/12698705.html
  */
 public class Synchronized extends Demo {
 
