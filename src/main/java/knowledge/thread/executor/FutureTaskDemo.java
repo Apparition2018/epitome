@@ -26,9 +26,9 @@ public class FutureTaskDemo extends Demo {
 
             // <T> Future<T>	submit(Callable<T> task)
             // 提交一个 Callable 任务用于执行，并返回一个表示该任务的 Future
-            Future<Map<Integer, String>> f = pool.submit(new MyCallable(i));
+            Future<Map<Integer, String>> future = pool.submit(new MyCallable(i));
             p("指派了一个任务 " + i + " 给线程池！");
-            results.add(f);
+            results.add(future);
         }
 
         boolean flag = true;
