@@ -10,21 +10,21 @@ import java.util.regex.Pattern;
  * String
  * https://jdk6.net/lang/String.html
  * <p>
- * int	    length()                            返回此字符序列的长度
- * char     charAt(int index)        1           返回指定索引处的 char 值
- * String   concat(String str)                  将指定字符串连接到此字符串的结尾
- * boolean  contains(CharSequence s)            当且仅当此字符串包含指定的 char 值序列时，返回 true
- * boolean	endsWith(String suffix)
- * boolean	startsWith(String prefix[, int toffset])
- * boolean	equals(Object anObject)             将此字符串与指定的对象比较
- * boolean  equalsIgnoreCase(String str)        与另一个 String 比较，不考虑大小写
- * int	    indexOf(int ch, int fromIndex)      返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索
- * int	    indexOf(String str[, int fromIndex])返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始
- * int	    lastIndexOf(int ch, int fromIndex)
- * int	    lastIndexOf(String str[, int fromIndex])
- * String	toLowerCase()
- * String	toUpperCase()
- * String	trim()
+ * int	        length()                                    返回此字符序列的长度
+ * char         charAt(int index)                           返回指定索引处的 char 值
+ * String       concat(String str)                          将指定字符串连接到此字符串的结尾
+ * boolean      contains(CharSequence s)                    当且仅当此字符串包含指定的 char 值序列时，返回 true
+ * boolean	    endsWith(String suffix)
+ * boolean	    startsWith(String prefix[, int toffset])
+ * boolean	    equals(Object anObject)                     将此字符串与指定的对象比较
+ * boolean      equalsIgnoreCase(String str)                与另一个 String 比较，不考虑大小写
+ * int	        indexOf(int ch, int fromIndex)              返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索
+ * int	        indexOf(String str[, int fromIndex])        返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始
+ * int	        lastIndexOf(int ch, int fromIndex)
+ * int	        lastIndexOf(String str[, int fromIndex])
+ * String	    toLowerCase()
+ * String	    toUpperCase()
+ * String	    trim()
  * <p>
  * 字符集合（形状）         编码字符集（数字）           字符编码方案（字节）              字符集 (编码字符集+字符编码方案)
  * character set        coded character set         character-encoding schema           charset

@@ -106,8 +106,7 @@ public class DateUtilDemo extends Demo {
     @Test
     public void testDateUtil2() {
         //********** xxx 的当前时间 **********//
-        p(DateUtil.current(true));                      // 20487750638072
-        p(DateUtil.current(false));                     // 1603731559103
+        p(DateUtil.current());                          // 1603731559103
         p(DateUtil.currentSeconds());                   // 1603731559
 
         //********** 星座和属相 **********//

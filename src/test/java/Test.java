@@ -29,11 +29,15 @@
 
 import l.demo.Demo;
 
+import java.util.Collections;
+import java.util.List;
+
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
 public class Test extends Demo {
 
     public static void main(String[] args) {
-
+        Integer i = null;
+        List<Integer> list = Collections.singletonList(i);
     }
 }
