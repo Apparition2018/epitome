@@ -54,7 +54,7 @@ public class DateTimeDemo extends Demo {
         // DateUnit
         p(DATETIME.between(new Date(), DateUnit.DAY));  // 4462
         p(DATETIME.between(new Date(), DateUnit.DAY,
-                BetweenFormater.Level.SECOND));         // 4462天15小时12分38秒
+                BetweenFormatter.Level.SECOND));         // 4462天15小时12分38秒
     }
 
     /**

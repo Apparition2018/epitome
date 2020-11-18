@@ -100,7 +100,7 @@ public class DateUtilDemo extends Demo {
         //********** 时间差格式化 **********//
         p(DateUtil.formatBetween(
                 DateUtil.betweenMs(DATE, new Date()),
-                BetweenFormater.Level.MINUTE));         // 4462天4小时24分
+                BetweenFormatter.Level.MINUTE));         // 4462天4小时24分
     }
 
     @Test
