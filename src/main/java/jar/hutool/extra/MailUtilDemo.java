@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.extra;
 
 import org.junit.Test;
 

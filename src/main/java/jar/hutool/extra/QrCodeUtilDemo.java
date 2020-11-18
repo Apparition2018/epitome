@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.extra;
 
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import cn.hutool.extra.qrcode.QrConfig;

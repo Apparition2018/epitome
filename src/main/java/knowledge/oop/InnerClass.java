@@ -26,7 +26,7 @@ import l.demo.Demo;
  * @author Arsenal
  * created on 2020/11/17 23:49
  */
-public class InnerCass extends Demo {
+public class InnerClass extends Demo {
 
     private interface S {
     }

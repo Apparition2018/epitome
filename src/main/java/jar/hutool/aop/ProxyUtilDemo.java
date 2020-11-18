@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.aop;
 
 import cn.hutool.aop.ProxyUtil;
 import cn.hutool.aop.aspects.TimeIntervalAspect;

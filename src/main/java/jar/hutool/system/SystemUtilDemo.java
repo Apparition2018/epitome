@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.system;
 
 import cn.hutool.system.SystemUtil;
 import l.demo.Demo;

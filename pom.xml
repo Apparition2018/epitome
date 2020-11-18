@@ -30,7 +30,7 @@
         <commons-cli>1.4</commons-cli>
         <commons-configuration2>2.7</commons-configuration2>
         <tika>1.24.1</tika>
-        <hutool>5.4.7</hutool>
+        <hutool>5.5.1</hutool>
         <easyexcel>2.2.6</easyexcel>
         <fastjson>1.2.75</fastjson>
         <protostuff>1.7.2</protostuff>
@@ -174,7 +174,7 @@
             <artifactId>httpclient-cache</artifactId>
         </dependency>
 
-        <!-- hutool -->
+        <!-- hutool：https://www.hutool.cn/docs/#/ -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>

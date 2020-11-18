@@ -1,13 +1,10 @@
 package jar.hutool;
 
 import cn.hutool.core.annotation.AnnotationUtil;
-import knowledge.注解.CustomAnnotation;
 import knowledge.注解.CustomAnnotation.Apple;
 import knowledge.注解.CustomAnnotation.Description;
 import l.demo.Demo;
 import org.junit.Test;
-
-import java.security.acl.AclNotFoundException;
 
 /**
  * AnnotationUtil   注解工具
@@ -27,8 +24,8 @@ public class AnnotationUtilDemo extends Demo {
         // [@knowledge.注解.CustomAnnotation$Description(desc=Apple)]
         p(AnnotationUtil.getAnnotations(Apple.class.getDeclaredField("appleProvider"), true));
         // [@knowledge.注解.CustomAnnotation$FruitProvider(name=陕西红富士集团, address=陕西省西安市延安路89号红富士大厦, id=1)]
-        
-        
+
+
         Description annotation;
         // static boolean	                hasAnnotation(AnnotatedElement, Class<? extends Annotation>)
         // 是否有指定注解
@@ -43,7 +40,7 @@ public class AnnotationUtilDemo extends Demo {
             // static <A e Annotation> A    getAnnotation(AnnotatedElement, Class<A>)
             // 获取指定注解
             annotation = AnnotationUtil.getAnnotation(Apple.class, Description.class);
-            
+
             // 是否有元注解 @Documented
             p(AnnotationUtil.isDocumented(annotation.getClass()));          // false
             // 是否有元注解 @Inherited

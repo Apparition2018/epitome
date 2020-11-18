@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.extra;
 
 import cn.hutool.extra.pinyin.PinyinUtil;
 import l.demo.Demo;

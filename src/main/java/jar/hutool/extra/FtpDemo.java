@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.extra;
 
 import cn.hutool.extra.ftp.Ftp;
 import org.junit.Test;
