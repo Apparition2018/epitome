@@ -44,7 +44,6 @@ public class IOUtilsDemo extends Demo {
         p(IOUtils.DIR_SEPARATOR);           // \
         p(IOUtils.LINE_SEPARATOR_UNIX);     // "\n"
         p(IOUtils.LINE_SEPARATOR_WINDOWS);  // "\r\n"
-        p(IOUtils.LINE_SEPARATOR);          //
     }
 
     /**
@@ -131,7 +130,7 @@ public class IOUtilsDemo extends Demo {
         lines.add("举头望明月，");
         lines.add("低头思故乡。");
         OutputStream os = new FileOutputStream(DEMO_FILE_PATH);
-        IOUtils.writeLines(lines, IOUtils.LINE_SEPARATOR, os, UTF_8);
+        IOUtils.writeLines(lines, IOUtils.LINE_SEPARATOR_WINDOWS, os, UTF_8);
     }
 
     /**

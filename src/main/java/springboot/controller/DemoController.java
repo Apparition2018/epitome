@@ -3,6 +3,7 @@ package springboot.controller;
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * @author ljh
  * created on 2020/11/13 8:52
  */
+@Slf4j
 @RestController
 @RequestMapping("/demo")
 public class DemoController extends Demo {
@@ -54,6 +56,7 @@ public class DemoController extends Demo {
      */
     @RequestMapping("/path/{id}/{name}")
     public Student path(@PathVariable("id") Integer id, @PathVariable("name") String name) {
+        log.info("path 参数：id-{}，name-{}", id, name);
         return new Student(id, name);
     }
 
