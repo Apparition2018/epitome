@@ -1,4 +1,4 @@
-package knowledge.modifires.nonaccess;
+package knowledge.modifires;
 
 /**
  * 非访问修饰符：static, final, abstract, synchronized, transient, volatile

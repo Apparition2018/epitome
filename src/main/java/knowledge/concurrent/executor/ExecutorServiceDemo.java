@@ -94,7 +94,7 @@ public class ExecutorServiceDemo extends Demo {
             // boolean	                awaitTermination(long timeout, TimeUnit unit)
             // 请求关闭、发生超时或者当前线程中断，无论哪一个首先发生之后，都将导致阻塞，直到所有任务完成执行
             if (!pool.awaitTermination(30, TimeUnit.SECONDS)) {
-                // List<Runnable>	        shutdownNow()
+                // List<Runnable>	    shutdownNow()
                 // 试图停止所有正在执行的活动任务，暂停处理正在等待的任务，并返回等待执行的任务列表
                 pool.shutdownNow();
             }
@@ -111,7 +111,7 @@ public class ExecutorServiceDemo extends Demo {
         Runnable runnable = () -> {
         };
 
-        // static <T> Callable<T>	callable(Runnable task[, T result])
+        // static <T> Callable<T>	    callable(Runnable task[, T result])
         // 返回 Callable 对象，调用它时可运行给定的任务并返回给定的结果
         Callable<Object> callable = Executors.callable(runnable);
     }

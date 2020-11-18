@@ -13,7 +13,7 @@ import java.util.Spliterator;
  * <p>
  * default Comparator<? super T>	getComparator()         返回 Comparator
  * <p>
- * Java8中Spliterator详解：https://blog.csdn.net/sl1992/article/details/100149187
+ * Java8 中 Spliterator 详解：https://blog.csdn.net/sl1992/article/details/100149187
  * https://docs.oracle.com/javase/8/docs/api/java/util/Spliterator.html
  *
  * @author Arsenal

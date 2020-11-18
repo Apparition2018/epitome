@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
  * https://jdk6.net/lang/Thread.html
  * https://blog.csdn.net/u012426327/article/details/77160416
  * <p>
+ * 进程：一个进程包括由操作系统分配的内存空间,包含一个或多个线程。
  * 线程：指进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。
- * 进程：括由操作系统分配的内存空间，包含一个或多个线程。
  * <p>
  * 线程状态：
  * 1.新建状态：使用 new 关键字和 Thread 类或其子类建立一个线程对象后，该线程对象就处于新建状态。它保持这个状态直到程序 start() 这个线程。
@@ -23,12 +23,17 @@ import java.util.concurrent.TimeUnit;
  * -    其他阻塞：通过调用线程的 sleep() 或 join() 或 发出了 I/O 请求时，线程就会进入到阻塞状态。当 sleep() 状态超时，join() 等待线程终止或超时，或者 I/O 处理完毕，线程重新转入就绪状态。
  * 5.死亡状态：一个运行状态的线程完成任务或者其他终止条件发生时，该线程就切换到终止状态。
  * <p>
+ * 并发；可以处理多个任务
+ * 并行：同时处理多个任务
+ * 并发与并行的区别是什么？ - 知乎：https://www.zhihu.com/question/33515481/answer/58849148
+ * <p>
  * 线程是异步执行代码的
  * 异步运行：多段代码可以同时运行，各干个的
  * 同步运行：运行代码有先后顺序的一句一句执行
  * <p>
  * 线程安全：如果有多个线程在同时运行，而这些线程可能会同时运行这段代码。程序每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。
  * 线程同步：当有一个线程在对内存进行操作时，其他线程都不可以对这个内存地址进行操作，直到该线程完成操作，其他线程才能对该内存地址进行操作
+ * 线程安全及三种解决方案：https://zhuanlan.zhihu.com/p/143811831
  * <p>
  * static void	                setDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler eh)  设置该线程由于未捕获到异常而突然终止时调用的处理程序
  * Thread.UncaughtExceptionHandler	        getUncaughtExceptionHandler()           返回该线程由于未捕获到异常而突然终止时调用的处理程序
@@ -47,7 +52,6 @@ import java.util.concurrent.TimeUnit;
  * void	                        start()                             使该线程开始执行；Java 虚拟机调用该线程的 run 方法
  * <p>
  * 如何使用 JUnit 测试异步代码：https://zhuanlan.zhihu.com/p/240281836
- * 线程安全及三种解决方案：https://zhuanlan.zhihu.com/p/143811831
  */
 public class ThreadDemo extends Demo {
 
@@ -149,10 +153,11 @@ public class ThreadDemo extends Demo {
 
     /**
      * void	            setDaemon(boolean on)           将该线程标记为守护线程或用户线程
-     * 守护线程又称为"后台线程"
-     * 默认创建出来的线程都是前台线程，后台线程需要进行单独设置
-     * 前台与后台线程使用没有区别，区别在于结束时机上，
-     * 当一个进程结束时，进程中的所有后台程序会被强制中断，而进程的结束时机是当一个进程中的所有前台线程都结束时
+     * 守护线程：又称为"后台线程"，
+     * 注意事项：
+     * 1.不要在守护线程中执行业务逻辑操作
+     * 2.setDaemon(true)，必须在 start() 之前执行
+     * 3.在守护线程中产生的新线程也是守护线程
      */
     @Test
     public void setDaemon() throws InterruptedException {
@@ -184,7 +189,8 @@ public class ThreadDemo extends Demo {
 
         rose.start();
 
-        jack.setDaemon(true); // main 线程和 rose 线程结束后，jack 线程结束
+        // main 线程和 rose 线程结束后，jack 线程结束
+        jack.setDaemon(true);
         jack.start();
         countDownLatch.await();
 

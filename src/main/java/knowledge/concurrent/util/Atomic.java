@@ -15,6 +15,13 @@ import java.util.stream.IntStream;
 
 /**
  * Atomic
+ * Atomic 类是通过自旋 CAS 操作 volatile 变量实现的
+ * <p>
+ * CAS：Compare And Set
+ * 1.三个基本操作数：内存地址 V，旧的预期值 A，修改后的新值 B
+ * 2.定义：更新一个变量时，只有当变量的预期值 A 和内存地址 V 当中的实际值相同时，才会将内存地址 V 对应的值修改为 B
+ * 3.在高并发场景下，CAS 的冲突概率大，会导致经常自旋，影响整体效率
+ * <p>
  * 原子性：一组操作要么全都操作成功，要么全都失败，不能只操作成功其中的一部分
  * <p>
  * 原子类分类：
@@ -29,18 +36,12 @@ import java.util.stream.IntStream;
  * 1.粒度细：原子变量可以把竞争范围缩小到变量级别
  * 2.效率高：原子类底层利用了 CAS 操作，不会阻塞线程
  * <p>
- * CAS 操作：
- * 1.三个基本操作数：内存地址 V，旧的预期值 A，修改后的新值 B
- * 2.定义：更新一个变量时，只有当变量的预期值 A 和内存地址 V 当中的实际值相同时，才会将内存地址 V 对应的值修改为 B
- * 3.在高并发场景下，CAS 的冲突概率大，会导致经常自旋，影响整体效率
- * <p>
  * 原子类（一）如何保证线程安全？：https://www.jianshu.com/p/66758b960698
  * 原子类（二）高并发下的 AtomicInteger 和 LongAdder：https://www.jianshu.com/p/18aa29f72252
  * 原子类（三）原子类和 volatile：volatile :https://www.jianshu.com/p/61fc48f84056
  * 原子类（四）AtomicInteger 和 synchronized：https://www.jianshu.com/p/85af7c8bc8a1
  * 原子类（五）Adder 和 Accumulator：https://www.jianshu.com/p/492f1f5f7763
  * 什么是 CAS 机制：https://www.sohu.com/a/314272265_120104204
- * 什么是乐观锁，什么是悲观锁：https://www.jianshu.com/p/d2ac26ca6525
  *
  * @author Arsenal
  * created on 2020/11/17 0:52
@@ -89,7 +90,7 @@ public class Atomic extends Demo {
         testEff(10, 10000000);
         testEff(100, 10000000);
     }
-    
+
     private void testEff(int threadCount, int times) throws InterruptedException {
         p("threadCount: " + threadCount + ", times: " + times);
         testLongAdder(threadCount, times);

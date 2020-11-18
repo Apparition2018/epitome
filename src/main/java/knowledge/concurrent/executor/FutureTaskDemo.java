@@ -16,6 +16,9 @@ import java.util.concurrent.*;
  */
 public class FutureTaskDemo extends Demo {
 
+    /**
+     * Future 实现
+     */
     @Test
     public void testFuture() {
 
@@ -63,7 +66,7 @@ public class FutureTaskDemo extends Demo {
     }
 
     /**
-     * 使用 futureTask 实现上面例子，解决多任务结果，效果最优
+     * 使用 FutureTask 实现上面例子，解决多任务结果，效果最优
      */
     @Test
     public void testFutureTask() throws InterruptedException {

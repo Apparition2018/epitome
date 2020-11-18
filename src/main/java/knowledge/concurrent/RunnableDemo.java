@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
  * implements Runnable 比 extends Thread 的有优势：
  * 1：因为 java 只能单继承，实现 Runnable 接口可以避免单继承的局限性
  * 2：继承 Thread 类，多个线程不能处理或者共享同一个资源，但是实现 Runnable 接口可以处理同一个资源。
+ * Runnable 和 Thread 实现多线程的区别：https://blog.csdn.net/ns_code/article/details/17161237
  */
 public class RunnableDemo extends Demo {
     
