@@ -12,22 +12,24 @@ import java.security.SecureRandom;
 /**
  * 对称加密 (Symmetric Cryptography)
  * 加密和解密使用相同密钥的算法
+ * 密钥越大，越难被黑客破解，但加解密效率越慢。
  * <p>
  * 常见的对称加密算法有：
  * AES, ARCFOUR, Blowfish, DES, DESX, 3DES, DESede, IDEA,
  * PBEWithMD5AndDES, PBEWithSHA1AndDESede, PBEWithSHA1AndRC2_40, PBE,
  * RC2, RC4, RC5, RC6
  * <p>
- * 优点：
- * 速度快，常在消息发送方需要加密大量数据时使用，算法公开，计算量小，加密速度快，加密效率高
+ * 优点：速度快，常在消息发送方需要加密大量数据时使用，算法公开，计算量小，加密速度快，加密效率高
  * <p>
- * 缺点：
- * 在数据传送前，发送方和接收方必须商定好密钥，然后双方都能保存好密密钥。
- * 其次如果一方的密钥被泄露，那么加密信息也就不安全了。
- * 另外，每对用户每次使用对称加密算法时，都需要使用其他人不知道的唯一密钥，
- * 这会使得收、发双方所拥有的密钥数量巨大，密钥管理成为双方的负担。
+ * 缺点：密钥的分配与管理
+ * 1.密钥在保管和传送时被泄露，那么加密信息也就不安全了。一般将对称加密的密钥进行非对称加密，然后传送给需要它的人。
+ * 2.如果密钥被多个用户共享，不能提供身份验证（抗抵赖性）
+ * 3.N 个用户需要 N(N-1)/2 个共享密钥，当用户量增大，密钥空间急剧增大
  * <p>
+ * 通俗解释对称加密、非对称加密、散列算法与PKI：https://blog.csdn.net/weixin_43853965/article/details/103870110
  * Java 对称加密与非对称加密：https://blog.csdn.net/chengbinbbs/article/details/78640589
+ * 各种加密算法比较：https://www.cnblogs.com/sunxuchu/p/5483956.html
+ * 加解密（Encryption）& 哈希（Hash）算法----入门指引 - 知乎：https://zhuanlan.zhihu.com/p/20064358
  */
 public class SymmetricCryptography {
 

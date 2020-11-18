@@ -22,8 +22,9 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * JSR303注解
- * https://www.cnblogs.com/rocky-AGE-24/p/5245022.html
+ * springboot 使用 hibernate validator 校验：https://www.cnblogs.com/mr-yang-localhost/p/7812038.html
+ * JSR303注解：https://www.cnblogs.com/rocky-AGE-24/p/5245022.html
+ * Hibernate Validator：https://docs.jboss.org/hibernate/validator/4.2/reference/zh-CN/html_single
  */
 @RestController
 @Slf4j

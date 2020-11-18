@@ -8,3 +8,8 @@
 4. tasklist|findstr "9776"，根据指定 PID 字符串查找任务，记下任务名
 5. taskkill /f /t /im WXWork.exe，杀死任务
 ---
+## 开源镜像站
+1. [阿里巴巴开源镜像站](https://developer.aliyun.com/mirror/)
+2. [腾讯软件源](https://mirrors.cloud.tencent.com)
+3. [网易开源镜像站](https://mirrors.163.com/)
+---
