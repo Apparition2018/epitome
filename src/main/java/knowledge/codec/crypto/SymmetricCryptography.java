@@ -1,4 +1,4 @@
-package knowledge.加解密和消息摘要.加解密;
+package knowledge.codec.crypto;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -22,10 +22,12 @@ import java.security.SecureRandom;
  * 速度快，常在消息发送方需要加密大量数据时使用，算法公开，计算量小，加密速度快，加密效率高
  * <p>
  * 缺点：
- * 在数据传送前，发送方和接收方必须商定好密钥，然后双方都能保存好密码要。
+ * 在数据传送前，发送方和接收方必须商定好密钥，然后双方都能保存好密密钥。
  * 其次如果一方的密钥被泄露，那么加密信息也就不安全了。
  * 另外，每对用户每次使用对称加密算法时，都需要使用其他人不知道的唯一密钥，
  * 这会使得收、发双方所拥有的密钥数量巨大，密钥管理成为双方的负担。
+ * <p>
+ * Java 对称加密与非对称加密：https://blog.csdn.net/chengbinbbs/article/details/78640589
  */
 public class SymmetricCryptography {
 

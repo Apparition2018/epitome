@@ -1,4 +1,4 @@
-package knowledge.加解密和消息摘要;
+package knowledge.codec;
 
 import l.demo.Demo;
 import org.junit.Test;
@@ -14,18 +14,18 @@ import java.util.stream.IntStream;
  * BASE64 严格地说，属于编码格式，而非加密算法。
  * BASE 加密后产生的字节位数是8的倍数，如果不够位数以 = 符号填充。
  * 应用场景：e-mail、密钥、证书文件
- * https://www.matools.com/file/manual/jdk_api_1.8_google/java/util/Base64.html
- * https://www.matools.com/file/manual/jdk_api_1.8_google/java/util/Base64.Encoder.html
  * <p>
- * Base64 算法原理：     https://www.cnblogs.com/chengmo/archive/2014/05/18/3735917.html
- * Java实现Base64加密：  https://www.imooc.com/learn/285
+ * Base64 算法原理：https://www.cnblogs.com/chengmo/archive/2014/05/18/3735917.html
+ * Java 实现 Base64 加密：https://www.imooc.com/learn/285
+ * https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html
+ * https://docs.oracle.com/javase/8/docs/api/java/util/Base64.Decoder.html
  */
 public class Base64Demo extends Demo {
 
     /**
      * Base64 编码在 JDK8 已经成为 Java 类库的标准。
      * 而且效率都比 apache-commons-codec, sun.misc, Bouncy Castle 都要快
-     * http://www.runoob.com/java/java8-base64.html
+     * Java8 Base64 | 菜鸟教程：http://www.runoob.com/java/java8-base64.html
      */
     @Test
     public void testBase64() {

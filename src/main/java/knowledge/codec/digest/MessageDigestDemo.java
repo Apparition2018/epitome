@@ -1,4 +1,4 @@
-package knowledge.加解密和消息摘要.消息摘要算法;
+package knowledge.codec.digest;
 
 import l.demo.Demo;
 import org.junit.Test;
@@ -20,6 +20,7 @@ import java.util.Random;
  * 常见消息摘要有：
  * MD2, MD4, MD5, SHA, SHA-1, SHA-256, SHA-384, SHA-512,
  * HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384, HmacSHA512, HAVAL
+ * Base64 和消息摘要：https://www.cnblogs.com/oumyye/p/4593592.html
  * https://jdk6.net/security/MessageDigest.html
  * https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#MessageDigest
  *
@@ -126,18 +127,18 @@ public class MessageDigestDemo extends Demo {
      * 3.抗修改性：对原数据进行任何改动，哪怕只修改1个字节，所得到的 MD5 值都有很大区别。
      * 4.弱抗碰撞：已知原数据和其 MD5 值，想找到一个具有相同MD5值的数据（即伪造数据）是非常困难的。
      * 5.强抗碰撞：想找到两个不同的数据，使它们具有相同的MD5值，是非常困难的。
-     * 4.5要特别介绍一下。MD5 使用的是散列函数（也称哈希函数），一定概率上也存在哈希冲突（也称哈希碰撞），即多个不同的原数据对应一个相同的 MD5 值。
+     * 4 和 5要特别介绍一下。MD5 使用的是散列函数（也称哈希函数），一定概率上也存在哈希冲突（也称哈希碰撞），即多个不同的原数据对应一个相同的 MD5 值。
      * 不过，经过 MD4、MD3 等几代算法的优化，MD5 已经充分利用散列的分散性高度避免碰撞的发生。
      * 可以看出，MD5 是一种不可逆的算法，也就说，你无法通过得到的 MD5 值逆向算出原数据内容。正是凭借这些特点，MD5 被广泛使用。
      * <p>
      * 应用：
      * 1.比如，客户端与服务器的 HTTP 通信，通信双方可以将报文内容做一个 MD5 计算，并将计算所得 MD5 值一并传递给彼此，
-     * 这样，接收方可以通过对报文内容再次做 MD5 计算得到一个 MD5 值，与传递报文中的 MD5 值做比较，验证数据是否完整，或者是否中途被拦截篡改过。
+     * - 这样，接收方可以通过对报文内容再次做 MD5 计算得到一个 MD5 值，与传递报文中的 MD5 值做比较，验证数据是否完整，或者是否中途被拦截篡改过。
      * 2.再比如，网络云盘中的文件秒传功能也运用到 MD5 算法。服务器存储文件的时候，同时记录每一个文件的 MD5 值，不同文件对应着不同的 MD5 值。
-     * 这样，遇到用户上传文件时，将上传文件的 MD5 值与服务器上所有存储的 MD5 值做比较，如果相同，则说明用户上传的文件已经在服务器存有。
-     * 这样，只需要在数据库表中添加一个记录，映射到对应的文件，而不用重复上传，实现所谓秒传的功能。
+     * - 这样，遇到用户上传文件时，将上传文件的 MD5 值与服务器上所有存储的 MD5 值做比较，如果相同，则说明用户上传的文件已经在服务器存有。
+     * - 这样，只需要在数据库表中添加一个记录，映射到对应的文件，而不用重复上传，实现所谓秒传的功能。
      * <p>
-     * https://blog.csdn.net/iblade/article/details/73288822
+     * Java 如何获取 MD5 值：https://blog.csdn.net/iblade/article/details/73288822
      */
     private static class MD5Demo extends Demo {
 
@@ -160,10 +161,9 @@ public class MessageDigestDemo extends Demo {
      * SHA-256/224  256/224     256         2^64 − 1        32			64	      尚未出现
      * SHA-512/384	512/384     512         2^128 − 1	    64			80	      尚未出现
      * <p>
-     * SHA-1 和 MD5 比较：
-     * 同：二者均由 MD4 导出，SHA-1 和 MD5 彼此很相似
-     * 异：
-     * 1.对强行攻击的安全性：SHA-1 摘要比 MD5 摘要长32 位
+     * SHA-1 和 MD5 不同点：
+     * 1.对强行攻击的安全性：SHA-1 摘要比 MD5 摘要长 32 位。使用强行技术，产生任何一个报文使其摘要等于给定报摘要的难度对 MD5 是 2^128 数量级的操作，
+     * - 而对 SHA-1 则是 2^160 数量级的操作。这样，SHA-1 对强行攻击有更大的强度。
      * 2.对密码分析的安全性：由于 MD5 的设计，易受密码分析的攻击，SHA-1 显得不易受这样的攻击
      * 3.速度：MD5 比 SHA-1 快
      */

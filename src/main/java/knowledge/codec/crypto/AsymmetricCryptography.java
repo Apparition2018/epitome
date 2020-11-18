@@ -1,4 +1,4 @@
-package knowledge.加解密和消息摘要.加解密;
+package knowledge.codec.crypto;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -29,13 +29,23 @@ import java.util.Map;
  * 由于非对称性加密速度极其慢，一般文件不使用它来加密而使用对称加密，
  * 非对称加密算法可以用来对对称加密的密钥加密，这样保证密钥的安全也就是保证了数据的安全
  * <p>
- * https://blog.csdn.net/chengbinbbs/article/details/78640589
- * https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#Signature
+ * JAVA 加解密16-非对称加密算法- RSA 算法：https://www.jianshu.com/p/aff5492d64f0
+ * JAVA RSA 非对称加密详解：https://blog.csdn.net/a394268045/article/details/52232120
+ * Java 进行 RSA 加解密时不得不考虑到的那些事儿：https://blog.csdn.net/defonds/article/details/42775183
+ * 数字签名是什么？ - 阮一峰的网络日志：https://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html
+ * RSA 公钥 私钥：https://www.cnblogs.com/jtlgb/p/6668691.html
+ * 标准算法名称文档：https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html
  */
 public class AsymmetricCryptography {
 
     // 非对称加密算法 RSA
     private static final String KEY_ALGORITHM = "RSA";
+
+    /**
+     * 密钥长度必须是 64 的倍数，在 512~65536 位之间
+     * DH 算法的默认密钥长度是 1024
+     */
+    private static final int KEY_SIZE = 1024;
 
     // 签名算法
     private static final String SIGNATURE_ALGORITHM = "MD5withRSA";
@@ -69,7 +79,7 @@ public class AsymmetricCryptography {
 
         // void	initialize(int keysize)
         // 初始化确定密钥大小的密钥对生成器，使用默认的参数集合，并使用以最高优先级安装的提供者的 SecureRandom 实现作为随机源
-        keyPairGenerator.initialize(1024);
+        keyPairGenerator.initialize(KEY_SIZE);
 
         // KeyPair	generateKeyPair()
         // 生成一个密钥对

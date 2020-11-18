@@ -1,4 +1,4 @@
-package knowledge.加解密和消息摘要.消息摘要算法;
+package knowledge.codec.digest;
 
 import l.demo.Demo;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * MAC (Message Authentication Code)，消息认证码，基于密钥的认证协议 (密钥 + 算法 → digest)
- * HMAC (Hash Message Authentication Code)，散列消息鉴别码，基于密钥的 Hash 算法的认证协议 (密钥 + Hash算法 → digest)
+ * HMAC (keyed-Hash Message Authentication Code)，散列消息鉴别码，基于密钥的 Hash 算法的认证协议 (密钥 + Hash算法 → digest)
  * <p>
  * MAC 算法结合了 MD5 和 SHA 算法的优势，并加入密钥的支持，是一种更为安全的消息摘要算法。
  * <p>
@@ -34,13 +34,9 @@ import java.util.List;
  * 2.客户端填写登录表单，点击提交后，运行 HMAC 算法，根据密钥将用户信息加密后 post 到服务器
  * 3.服务器读取数据库中的密钥，用 HMAC 将密码和 session 中的密钥进行加密产生密码的密文，将密文与用户提交的进行比较
  * <p>
- * 应用2：挑战/响应 (Challenge/Response)
- * https://www.cnblogs.com/fishou/p/4206980.html
+ * 应用2：HMAC 结合"挑战/响应"保障数据传输安全：https://www.cnblogs.com/fishou/p/4206980.html
  * <p>
- * https://blog.csdn.net/u014078154/article/details/69944189
- * http://www.cnblogs.com/oumyye/p/4593592.html
- * https://www.cnblogs.com/fishou/p/4159092.html
- * https://www.cnblogs.com/oumyye/p/4593592.html
+ * HMAC 的 JAVA 实现和应用：https://www.cnblogs.com/fishou/p/4159092.html
  */
 public class HMacDemo extends Demo {
 
