@@ -37,9 +37,6 @@ import java.util.List;
  */
 public class IOUtilsDemo extends Demo {
 
-    /**
-     * 常量
-     */
     @Test
     public void constant() {
         p(IOUtils.DIR_SEPARATOR_UNIX);      // /

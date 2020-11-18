@@ -10,9 +10,6 @@ import org.junit.Test;
  */
 public class StringUtilsDemo extends Demo {
 
-    /**
-     * 常量
-     */
     @Test
     public void constant() {
         p(StringUtils.SPACE);   // " "

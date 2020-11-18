@@ -45,9 +45,6 @@ public class LocalTimeDemo extends Demo {
         lt4 = LocalTime.parse("20:08:08");
     }
 
-    /**
-     * 常量
-     */
     @Test
     public void constant() {
         p(LocalTime.MIN);           // 00:00

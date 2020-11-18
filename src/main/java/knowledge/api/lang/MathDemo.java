@@ -23,9 +23,6 @@ import org.junit.Test;
  */
 public class MathDemo extends Demo {
 
-    /**
-     * 常量
-     */
     @Test
     public void constant() {
         // static           double	                E比任何其他值都更接近 e（即自然对数的底数）的 double 值

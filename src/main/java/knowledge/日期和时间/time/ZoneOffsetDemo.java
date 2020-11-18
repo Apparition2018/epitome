@@ -38,9 +38,6 @@ public class ZoneOffsetDemo extends Demo {
         zo3 = ZoneOffset.ofHoursMinutesSeconds(9, 9, 9);
     }
 
-    /**
-     * 常量
-     */
     @Test
     public void constant() {
         p(ZoneOffset.MAX);  // +18:00

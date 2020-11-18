@@ -7,7 +7,7 @@ import java.util.Objects;
  * <p>
  * 抽象工厂模式 | 菜鸟教程：https://www.runoob.com/design-pattern/abstract-factory-pattern.html
  * <p>
- * 应用场合：系统的产品有多于一个的产品族，而系统只消费其中某一族的产品
+ * 应用场景：系统的产品有多于一个的产品族，而系统只消费其中某一族的产品
  * <p>
  * 关键代码：抽象工厂
  * <p>

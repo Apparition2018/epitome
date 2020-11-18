@@ -26,9 +26,6 @@ import org.junit.Test;
  */
 public class ArrayUtilsDemo extends Demo {
 
-    /**
-     * 常量
-     */
     @Test
     public void constant() {
         // 各种类型的空数组

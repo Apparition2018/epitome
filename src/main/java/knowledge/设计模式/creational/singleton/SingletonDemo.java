@@ -1,6 +1,5 @@
 package knowledge.设计模式.creational.singleton;
 
-import cn.hutool.core.lang.Singleton;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,7 +13,7 @@ import java.util.Map;
  * <p>
  * 应用场合：有些对象只需要一个就足够了
  * <p>
- * 使用场景：
+ * 应用场景：
  * 1.配置文件
  * 2.工具类
  * 3.线程池

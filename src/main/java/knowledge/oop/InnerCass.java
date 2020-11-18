@@ -16,7 +16,7 @@ import l.demo.Demo;
  * 访问规则：
  * 1.内部类可以直接访问外部类的成员
  * 2.外部类访问内部类成员，需要创建对象
- * 一些使用场景：
+ * 应用场景：
  * 1.封装代码
  * 2.解决继承的类和实现的接口出现相同方法名的问题
  * 3.实现多继承：建议41
@@ -51,7 +51,7 @@ public class InnerCass extends Demo {
         }
 
         /**
-         * 内部类使用场景一：封装代码
+         * 内部类应用场景一：封装代码
          * 如果我们的内部类不想轻易被任何人访问，可以选择使用 private 修饰内部类，这样就无法通过创建对象的方法来访问，
          * 想要访问只需要在外部类中定义一个 public 修饰的方法，间接调用。
          * 这样做的好处是，可以在这个对外课件的方法中增加一些判断语句，起到数据安全的作用。
@@ -107,7 +107,12 @@ public class InnerCass extends Demo {
         }
     }
 
-    private static class D {
+    public static class D {
+        
+        protected void DMethod() {
+            p("DMethod");
+        }
+        
         public static void main(String[] args) {
             /*
              * 4.匿名内部类：没有名字的类，是内部类的简化写法
@@ -120,6 +125,15 @@ public class InnerCass extends Demo {
 
                 }
             };
+
+            /*
+             * 使用匿名内部类调用 protected 方法 
+             */
+            new D() {
+                void callDMethod() {
+                    super.DMethod();
+                }
+            }.callDMethod();
         }
     }
 
@@ -134,7 +148,7 @@ public class InnerCass extends Demo {
     }
 
     /**
-     * 内部类使用场景二：
+     * 内部类应用场景二：
      * 解决继承的类和实现的接口出现相同方法名的问题
      */
     private static class XY extends Y {
