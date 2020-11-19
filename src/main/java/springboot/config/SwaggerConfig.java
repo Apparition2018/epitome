@@ -1,5 +1,6 @@
 package springboot.config;
 
+import l.demo.Demo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -21,7 +22,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig {
+public class SwaggerConfig extends Demo {
 
     @Bean
     public Docket createRestApi() {
@@ -37,7 +38,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("epitome")
-                .contact(new Contact("ljh", "localhost:3333/swagger-ui.html", "88850180@163.com"))
+                .contact(new Contact("ljh", "localhost:3333/swagger-ui.html", MY_EMAIL))
                 .version("1.0")
                 .build();
     }
