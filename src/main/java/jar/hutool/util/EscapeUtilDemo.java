@@ -6,7 +6,8 @@ import org.junit.Test;
 
 /**
  * EscapeUtil
- * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/Escape%E5%B7%A5%E5%85%B7-EscapeUtil?id=escape%e5%b7%a5%e5%85%b7-escapeutil
+ * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/Escape%E5%B7%A5%E5%85%B7-EscapeUtil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/EscapeUtil.html
  *
  * @author ljh
  * created on 2020/11/19 9:31

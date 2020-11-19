@@ -75,11 +75,12 @@ public class CodecDemo extends Demo {
     }
 
     /**
-     * BCD (Binary-Coded Decimal)
+     * BCD (Binary-Coded Decimal)   二进码十进数
      * 一种二进制的数字编码形式，用二进制编码的十进制代码。
      * 这种编码形式利用了四个位元来储存一个十进制的数码，使二进制和十进制之间的转换得以快捷的进行。
      * 这种编码技巧最常用于会计系统的设计里。
      * 关于 BCD 编码 BCD 与十进制转换：https://www.iteye.com/blog/cuisuqiang-1429956
+     * https://hutool.cn/docs/#/core/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/%E4%BA%8C%E8%BF%9B%E7%A0%81%E5%8D%81%E8%BF%9B%E6%95%B0-BCD
      * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/codec/BCD.html
      */
     @Test
