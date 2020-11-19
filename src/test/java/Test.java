@@ -27,17 +27,13 @@
 // 玩转Java并发工具，精通JUC，成为并发多面手：https://coding.imooc.com/class/409.html
 // java长连接
 
-import cn.hutool.system.oshi.OshiUtil;
 import l.demo.Demo;
-
-import java.util.Collections;
-import java.util.List;
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
 public class Test extends Demo {
 
     public static void main(String[] args) {
-//        p(OshiUtil.getOs());
+
     }
 }
