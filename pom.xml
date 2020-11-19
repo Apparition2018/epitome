@@ -36,7 +36,8 @@
         <zxing>3.4.1</zxing>
         <easy-captcha>1.6.2</easy-captcha>
         <kaptcha>2.3.2</kaptcha>
-        <tinypinyin>2.0.3</tinypinyin>
+        <TinyPinyin>2.0.3.RELEASE</TinyPinyin>
+        <oshi>5.3.6</oshi>
         <!-- plugin -->
         <mybatis-generator>1.4.0</mybatis-generator>
     </properties>
@@ -275,11 +276,18 @@
             <version>${kaptcha}</version>
         </dependency>
 
-        <!-- tinypinyin：汉字转拼音 -->
+        <!-- TinyPinyin：汉字转拼音 -->
         <dependency>
-            <groupId>com.github.promeg</groupId>
-            <artifactId>tinypinyin</artifactId>
-            <version>${tinypinyin}</version>
+            <groupId>io.github.biezhi</groupId>
+            <artifactId>TinyPinyin</artifactId>
+            <version>${TinyPinyin}</version>
+        </dependency>
+
+        <!-- oshi: -->
+        <dependency>
+            <groupId>com.github.oshi</groupId>
+            <artifactId>oshi-core</artifactId>
+            <version>${oshi}</version>
         </dependency>
     </dependencies>
 

@@ -6,8 +6,8 @@ import org.junit.Test;
 import java.io.IOException;
 
 /**
- * Ftp
- * FTP 客户端封装，此客户端基于 apache commons-net
+ * Ftp      FTP 封装
+ * 需要引入 commons-net:commons-net
  * https://hutool.cn/docs/#/extra/CommonsNet%E5%B0%81%E8%A3%85/FTP%E5%B0%81%E8%A3%85-Ftp
  *
  * @author ljh

@@ -27,6 +27,7 @@
 // 玩转Java并发工具，精通JUC，成为并发多面手：https://coding.imooc.com/class/409.html
 // java长连接
 
+import cn.hutool.system.oshi.OshiUtil;
 import l.demo.Demo;
 
 import java.util.Collections;
@@ -37,7 +38,6 @@ import java.util.List;
 public class Test extends Demo {
 
     public static void main(String[] args) {
-        Integer i = null;
-        List<Integer> list = Collections.singletonList(i);
+//        p(OshiUtil.getOs());
     }
 }
