@@ -7,6 +7,7 @@ import l.demo.Demo;
 /**
  * ChineseDate  农历日期
  * https://hutool.cn/docs/#/core/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/%E5%86%9C%E5%8E%86%E6%97%A5%E6%9C%9F-ChineseDate
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/date/ChineseDate.html
  *
  * @author ljh
  * created on 2020/10/27 11:29

@@ -13,8 +13,6 @@ import java.util.Map;
 
 /**
  * BeanUtil     Bean工具
- * https://hutool.cn/docs/#/core/JavaBean/Bean%E5%B7%A5%E5%85%B7-BeanUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/bean/BeanUtil.html
  * <p>
  * static PropertyEditor        findEditor(Class<?> type)                               返回类型转换器 PropertyEditor
  * static PropertyDescriptor[]  getPropertyDescriptors(Class<?>[, fieldName][, ignoreCase])  返回 Bean 字段描述数组
@@ -29,6 +27,9 @@ import java.util.Map;
  * static boolean	            isMatchName(Object bean, beanClassName, isSimple)       是否匹配类名
  * static boolean               hasSetter(Class<?> clazz)                               是否有 Setter 方法
  * static boolean               hasGetter(Class<?> clazz)                               是否有 Getter 方法
+ * <p>
+ * https://hutool.cn/docs/#/core/JavaBean/Bean%E5%B7%A5%E5%85%B7-BeanUtil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/bean/BeanUtil.html
  *
  * @author ljh
  * created on 2020/11/9 14:54

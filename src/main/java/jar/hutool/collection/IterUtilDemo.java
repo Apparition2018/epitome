@@ -11,8 +11,6 @@ import java.util.Vector;
 
 /**
  * IterUtil
- * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/Iterator%E5%B7%A5%E5%85%B7-IterUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/collection/IterUtil.html
  * <p>
  * static <T> Iterator<T>	empty()                                 返回一个空 Iterator
  * static Class<?>	        getElementType(Iterable/Iterator)       获得 Iterable 对象的元素类型
@@ -21,6 +19,9 @@ import java.util.Vector;
  * static boolean	        hasNull(Iterable/Iterator)              是否包含 null 元素
  * static boolean	        isEmpty(Iterable/Iterator)              是否为空 Iterable
  * static boolean	        isNotEmpty(Iterable/Iterator)           是否不为空 Iterable
+ * <p>
+ * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/Iterator%E5%B7%A5%E5%85%B7-IterUtil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/collection/IterUtil.html
  *
  * @author Arsenal
  * created on 2020/10/29 2:22

@@ -16,8 +16,6 @@ import java.util.Map;
  * HttpUtil
  * 此工具封装了 HttpRequest 对象常用操作。
  * 此模块基于 JDK 的 HttpUrlConnection 封装完成，完整支持 https、代理和文件上传。
- * https://hutool.cn/docs/#/http/Http%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%A5%E5%85%B7%E7%B1%BB-HttpUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/http/HttpUtil.html
  * <p>
  * Hutool-http 优点：
  * 1.根据 URL 自动判断是请求 HTTP 还是 HTTPS，不需要单独写多余的代码。
@@ -26,6 +24,9 @@ import java.util.Map;
  * 4.自动识别 304 跳转并二次请求
  * 5.自动识别页面编码，即根据 header 信息或者页面中的相关标签信息自动识别编码，最大可能避免乱码。
  * 6.自动识别并解压 Gzip 格式返回内容
+ * <p>
+ * https://hutool.cn/docs/#/http/Http%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%A5%E5%85%B7%E7%B1%BB-HttpUtil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/http/HttpUtil.html
  *
  * @author Arsenal
  * created on 2020/11/2 23:32

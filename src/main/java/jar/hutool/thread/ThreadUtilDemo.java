@@ -10,8 +10,6 @@ import java.util.stream.IntStream;
 
 /**
  * ThreadUtil       线程工具
- * https://hutool.cn/docs/#/core/%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/%E7%BA%BF%E7%A8%8B%E5%B7%A5%E5%85%B7-ThreadUtil?id=%e7%ba%bf%e7%a8%8b%e5%b7%a5%e5%85%b7-threadutil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/thread/ThreadUtil.html
  * <p>
  * static ThreadFactory             newNamedThreadFactory(String prefix[, ThreadGroup threadGroup,]
  * -                                    boolean isDaemon[, UncaughtExceptionHandler handler)]]      创建 ThreadFactory
@@ -31,6 +29,9 @@ import java.util.stream.IntStream;
  * static void                      interrupt(Thread thread, boolean isJoin)                结束线程，调用此方法后，线程将抛出InterruptedException异常
  * static void                      waitForDie([Thread thread])                             等待线程结束. 调用 Thread.join() 并忽略 InterruptedException
  * static void                      sync(Object obj)                                        同步对象
+ * <p>
+ * https://hutool.cn/docs/#/core/%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/%E7%BA%BF%E7%A8%8B%E5%B7%A5%E5%85%B7-ThreadUtil?id=%e7%ba%bf%e7%a8%8b%e5%b7%a5%e5%85%b7-threadutil
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/thread/ThreadUtil.html
  *
  * @author ljh
  * created on 2020/10/26 9:30

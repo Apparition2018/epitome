@@ -17,6 +17,8 @@ import java.nio.ByteBuffer;
 /**
  * AIO
  * https://hutool.cn/docs/#/socket/AIO%E5%B0%81%E8%A3%85-AioServer%E5%92%8CAioClient
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/socket/aio/AioClient.html
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/socket/aio/AioServer.html
  *
  * @author ljh
  * created on 2020/11/2 13:39
