@@ -30,7 +30,7 @@ public class WorkStealing extends Demo {
 
     public static volatile boolean isProducing = true;
     private static volatile boolean[] isAllStop = new boolean[]{false, false, false, false};
-    private static final int SLEEP_TIME = 1000;
+    private static final long SLEEP_TIME = TimeUnit.SECONDS.toMillis(1);
 
     /**
      * 本例基于 LinkedBlockingDeque 实现
@@ -74,7 +74,7 @@ public class WorkStealing extends Demo {
         @Override
         public void run() {
             ThreadLocalRandom r = ThreadLocalRandom.current();
-            sleep(r.nextInt(SLEEP_TIME), TimeUnit.MILLISECONDS);
+            sleep(r.nextLong(SLEEP_TIME), TimeUnit.MILLISECONDS);
             String finishName = Thread.currentThread().getName();
             p(finishName + " - " + jobId + (finishName.equals(assignName) ? "" : " + " + assignName));
         }
@@ -99,7 +99,7 @@ public class WorkStealing extends Demo {
                 try {
                     if (isProducing && r.nextBoolean()) {
                         String assignName = Thread.currentThread().getName();
-                        TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
+                        TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
                         for (int i = 0; i < r.nextInt(4); i++) {
                             Work work = new Work(jobId.incrementAndGet(), assignName);
                             deque1.putLast(work);

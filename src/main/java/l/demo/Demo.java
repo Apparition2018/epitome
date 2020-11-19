@@ -148,7 +148,7 @@ public class Demo {
     /**
      * 模拟 Thread.sleep()，为了避免 Thread.sleep() 而需要捕获 InterruptedException 而带来的理解上的困惑
      */
-    public static void sleep(int millis, TimeUnit timeUnit) {
+    public static void sleep(long millis, TimeUnit timeUnit) {
         long now = System.currentTimeMillis();
         while (System.currentTimeMillis() - now < timeUnit.toMillis(millis)) {
             // Thread.onSpinWait(); 需要升级到 JDK8

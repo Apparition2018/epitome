@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * URLConnection
@@ -28,9 +29,9 @@ public class URLConnectionDemo extends Demo {
         URL url = new URL(BAIDU_URL);
         URLConnection conn = url.openConnection();
         // 设置连接超时时间
-        conn.setConnectTimeout(1000 * 10);
+        conn.setConnectTimeout((int) TimeUnit.SECONDS.toMillis(10));
         // 设置读超时时间
-        conn.setReadTimeout(1000 * 10);
+        conn.setReadTimeout((int) TimeUnit.SECONDS.toMillis(10));
 
         // 打开到此 URL 引用的资源的通信链接（如果尚未建立这样的连接）
         conn.connect();

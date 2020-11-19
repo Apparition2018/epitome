@@ -25,7 +25,7 @@ public class ConditionDemo extends Demo {
 
     private static volatile boolean isProducing = true;
     private static volatile boolean[] isAllConsumerStop = new boolean[]{false, false};
-    private static final int SLEEP_TIME = 1000;
+    private static final long SLEEP_TIME = TimeUnit.SECONDS.toMillis(1);
     private static final int MAX = 10;
 
     private static final ReentrantLock ADD_LOCK = new ReentrantLock();
@@ -78,7 +78,7 @@ public class ConditionDemo extends Demo {
             ThreadLocalRandom r = ThreadLocalRandom.current();
             try {
                 while (isProducing) {
-                    TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME / 2));
+                    TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME / 2));
                     ADD_LOCK.lock();
                     try {
                         while (MAX == list.size()) {
@@ -125,14 +125,14 @@ public class ConditionDemo extends Demo {
                         while (list.size() == 0) {
                             // boolean	    await(long time, TimeUnit unit)
                             // 造成当前线程在接到信号、被中断或到达指定等待时间之前一直处于等待状态
-                            POLL_CON.await(r.nextInt(SLEEP_TIME / 4), TimeUnit.MILLISECONDS);
+                            POLL_CON.await(r.nextLong(SLEEP_TIME / 4), TimeUnit.MILLISECONDS);
                         }
                         p(threadName + " - " + list.pollLast());
                         if (list.size() > 1) POLL_CON.signalAll();
                     } finally {
                         POLL_LOCK.unlock();
                     }
-                    TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
+                    TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
                 }
                 isAllConsumerStop[consumerIndex] = true;
                 p(threadName + " - end");

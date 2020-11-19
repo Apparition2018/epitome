@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ProducerAndConsumer extends Demo {
     private static volatile boolean isProducing = true;
     private static volatile boolean[] isAllConsumerStop = new boolean[]{false, false};
-    private static final int SLEEP_TIME = 1000;
+    private static final long SLEEP_TIME = TimeUnit.SECONDS.toMillis(1);
 
     /**
      * 本例基于 LinkedBlockingQueue 实现
@@ -65,7 +65,7 @@ public class ProducerAndConsumer extends Demo {
             ThreadLocalRandom r = ThreadLocalRandom.current();
             try {
                 while (isProducing) {
-                    TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME / 2));
+                    TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME / 2));
                     queue.put(goodsId.incrementAndGet());
                     p(threadName + " + " + goodsId);
                 }
@@ -93,10 +93,10 @@ public class ProducerAndConsumer extends Demo {
             ThreadLocalRandom r = ThreadLocalRandom.current();
             try {
                 while (isProducing || queue.size() != 0) {
-                    Integer goodsId = queue.poll(r.nextInt(SLEEP_TIME), TimeUnit.MILLISECONDS);
+                    Integer goodsId = queue.poll(r.nextLong(SLEEP_TIME), TimeUnit.MILLISECONDS);
                     if (null != goodsId) {
                         p(threadName + " - " + goodsId);
-                        TimeUnit.MILLISECONDS.sleep(r.nextInt(SLEEP_TIME));
+                        TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
                     }
                 }
                 isAllConsumerStop[consumerIndex] = true;

@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * RestTemplate
@@ -44,9 +45,9 @@ public class RestTemplateDemo extends Demo {
         HttpComponentsClientHttpRequestFactory requestFactory =
                 new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create()
                         .setMaxConnTotal(20).setMaxConnPerRoute(20).build());
-        requestFactory.setConnectionRequestTimeout(1000 * 5);
-        requestFactory.setConnectTimeout(1000 * 5);
-        requestFactory.setReadTimeout(1000 * 5);
+        requestFactory.setConnectionRequestTimeout((int) TimeUnit.SECONDS.toMillis(5));
+        requestFactory.setConnectTimeout((int) TimeUnit.SECONDS.toMillis(5));
+        requestFactory.setReadTimeout((int) TimeUnit.SECONDS.toMillis(5));
 
         restTemplate = new RestTemplate(requestFactory);
         requestHeaders.setContentType(MediaType.APPLICATION_JSON);
