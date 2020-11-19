@@ -41,7 +41,7 @@ public class HtmlUtilDemo extends Demo {
         // & 替换为 &amp;
         // < 替换为 &lt;
         // > 替换为 &gt;
-        String escape = HtmlUtil.escape("<div class='test_div'>&</div>"); // <div></div>
+        String escape = HtmlUtil.escape("<div class='test_div'>&</div>");
         p(escape);                          // &lt;div class=&#039;test_div&#039;&gt;&amp;&lt;/div&gt;
         // unescape(escape)                 还原转义
         p(HtmlUtil.unescape(escape));       // <div class='test_div'>&</div>
