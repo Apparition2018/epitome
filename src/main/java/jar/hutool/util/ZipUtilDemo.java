@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.util;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ZipUtil;

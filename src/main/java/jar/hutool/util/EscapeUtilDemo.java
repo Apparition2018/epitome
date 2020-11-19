@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.util;
 
 import cn.hutool.core.util.EscapeUtil;
 import l.demo.Demo;

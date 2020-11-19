@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.codec;
 
 import cn.hutool.core.codec.Base32;
 import cn.hutool.core.codec.Base62;

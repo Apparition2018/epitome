@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.util;
 
 import cn.hutool.core.util.ObjectUtil;
 import l.demo.Demo;

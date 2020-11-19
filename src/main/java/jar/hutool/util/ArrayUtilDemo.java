@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.util;
 
 import cn.hutool.core.lang.Editor;
 import cn.hutool.core.lang.Filter;

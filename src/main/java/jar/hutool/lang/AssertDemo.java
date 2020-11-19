@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.lang;
 
 import cn.hutool.core.lang.Assert;
 import l.demo.Demo;
