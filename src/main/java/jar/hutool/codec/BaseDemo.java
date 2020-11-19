@@ -22,6 +22,7 @@ public class BaseDemo extends Demo {
      * Base64
      * BASE64 使用了 64 个字符，包括 A-Za-z0-9+/
      * https://hutool.cn/docs/#/core/Codec%E7%BC%96%E7%A0%81/Base64%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81-Base64
+     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/codec/Base64.html
      */
     @Test
     public void testBase64() {
@@ -36,6 +37,7 @@ public class BaseDemo extends Demo {
      * BASE62 使用了 62 个字符，包括 A-Za-z0-9，因为 +/ 在一些场景下代表着特殊含义
      * 多用于安全领域和短 URL 生成
      * https://hutool.cn/docs/#/core/Codec%E7%BC%96%E7%A0%81/Base62%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81-Base62
+     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/codec/Base62.html
      */
     @Test
     public void testBase62() {
@@ -49,6 +51,7 @@ public class BaseDemo extends Demo {
      * Base32
      * BASE32 使用了 32 个字符，包括 A-Z2-7
      * https://hutool.cn/docs/#/core/Codec%E7%BC%96%E7%A0%81/Base32%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81-Base32
+     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/codec/Base32.html
      */
     @Test
     public void testBase32() {

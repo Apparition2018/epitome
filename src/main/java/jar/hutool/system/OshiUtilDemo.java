@@ -5,7 +5,7 @@ import l.demo.Demo;
 import org.junit.Test;
 
 /**
- * OshiUtil
+ * OshiUtil     获取系统和硬件信息工具
  * 需要引入 com.github.oshi:oshi-core
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/system/oshi/OshiUtil.html
  * 使用 oshi 获取主机信息：https://www.cnblogs.com/weechang/p/12493978.html
