@@ -38,6 +38,8 @@
         <kaptcha>2.3.2</kaptcha>
         <TinyPinyin>2.0.3.RELEASE</TinyPinyin>
         <oshi>5.3.6</oshi>
+        <jsch>0.1.55</jsch>
+        <emoji>5.1.1</emoji>
         <!-- plugin -->
         <mybatis-generator>1.4.0</mybatis-generator>
     </properties>
@@ -283,7 +285,7 @@
             <version>${TinyPinyin}</version>
         </dependency>
 
-        <!-- oshi: -->
+        <!-- oshi：获取系统和硬件信息工具 -->
         <dependency>
             <groupId>com.github.oshi</groupId>
             <artifactId>oshi-core</artifactId>
@@ -298,6 +300,20 @@
                     <artifactId>jna-platform</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!-- jsch：SSH2 的 Java 实现 -->
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>${jsch}</version>
+        </dependency>
+
+        <!-- emoji -->
+        <dependency>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>emoji-java</artifactId>
+            <version>${emoji}</version>
         </dependency>
     </dependencies>
 
