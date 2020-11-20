@@ -7,5 +7,5 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 扫描service包下所有使用注解的类型 -->
-    <context:component-scan base-package="spring, knowledge.reflect.proxy"/>
+    <context:component-scan base-package="spring.service, knowledge.reflect.proxy"/>
 </beans>

@@ -1,6 +1,7 @@
 package springboot.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.ResourceUtils;
@@ -8,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import springboot.interceptor.HttpInterceptor;
+import spring.interceptor.HttpInterceptor;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
  * SpringBoot 1.0 addCorsMappings 跨域
  * public class WebMvcConfig extends WebMvcConfigurerAdapter {}
  */
-//@Configuration
+@Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     /**
@@ -45,7 +46,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/jackson/**").excludePathPatterns("");
+        registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**").excludePathPatterns("");
         super.addInterceptors(registry);
     }
 

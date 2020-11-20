@@ -1,6 +1,13 @@
 package jar.hutool;
 
-import org.junit.Test;
+import cn.hutool.extra.servlet.ServletUtil;
+import lombok.extern.slf4j.Slf4j;
+
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * ServletUtil
@@ -10,10 +17,19 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/20 14:03
  */
-public class ServletUtilDemo {
+@Slf4j
+@WebServlet(name = "HutoolServlet", urlPatterns = "/HutoolServlet", initParams = {
+        @WebInitParam(name = "password", value = "123456")
+})
+public class ServletUtilDemo extends HttpServlet {
     
-    @Test
-    public void testServletUtil() {
-        
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+        log.info("ParamMap: {}", ServletUtil.getParamMap(req));
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        doPost(req, resp);
     }
 }
