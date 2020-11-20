@@ -1,120 +1,129 @@
 package jar.google.gson;
 
+import com.google.common.collect.Maps;
 import com.google.gson.*;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import l.demo.Demo;
-import lombok.AllArgsConstructor;
+import l.demo.JsonDemo;
+import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
 /**
- * Gson
- * Gson使用指南：https://www.jianshu.com/p/e740196225a4
+ * Gson 使用指南：https://www.jianshu.com/p/e740196225a4
  *
  * @author Arsenal
  * created on 2020/10/25 2:16
  */
-public class GsonDemo extends Demo {
+public class GsonDemo extends Demo implements JsonDemo {
 
-    public static void main(String[] args) {
-        /* Gson的基本用法 */
-        Gson gson = new Gson();
-        String jsonStr = "100";
-        // 反序列化，将Json字符串转换成对象
-        int i = gson.fromJson(jsonStr, int.class);
-        // 序列化，将对象转换成Json字符串
-        jsonStr = gson.toJson(i);
+    Gson gson = new Gson();
+    JsonObject jsonObject;
+    JsonArray jsonArray;
+    String jsonStr;
+    Teacher teacher;
+    List<Student> students;
+    JsonObject courseJsonObject;
+    JsonArray studentsJsonArray;
 
+    /**
+     * 复杂/简单对象JSON ⇆ JsonObject ⇆ JavaBean
+     */
+    @Test
+    public void testJSONObject() {
+        // 复杂对象JSON → JsonObject
+        jsonObject = JsonParser.parseString(JSON_COMPLEX).getAsJsonObject();
+        courseJsonObject = jsonObject.getAsJsonObject("course");
+        studentsJsonArray = jsonObject.getAsJsonArray("students");
+        p(jsonObject);
+        // JsonObject → 复杂对象JSON
+        jsonStr = gson.toJson(jsonObject);
+        p(jsonStr + "\n");
 
-        /* 属性重命名 @SerializedName 注解的使用 */
-        User user = new User("怪盗基德", 24, "kidou@163.com");
-        String jsonUser = gson.toJson(user);
-        p(jsonUser); // {"name":"怪盗基德","age":24,"emailAddress":"ikidou@163.com"}
-        String jsonUser2 = "{\"name\":\"怪盗基德\",\"age\":24,\"email\":\"kidou@163.com\"}";
-        user = gson.fromJson(jsonUser2, User.class);
-        p(user.emailAddress); // kidou@163.com
-        p("--------------------");
+        // 复杂对象JSON → JavaBean
+        teacher = gson.fromJson(JSON_COMPLEX, Teacher.class);
+        p(teacher);
+        // JavaBean → 复杂对象JSON
+        jsonStr = gson.toJson(teacher);
+        p(jsonStr + "\n");
 
+        // JsonObject → JavaBean
+        teacher = gson.fromJson(jsonObject, Teacher.class);
+        p(teacher);
 
-        /* 将Json字符串转换成JsonObject对象 */
-        JsonObject jo = JsonParser.parseString(jsonUser).getAsJsonObject();
-        p(jo); // {"name":"怪盗基德","age":24,"emailAddress":"kidou@163.com"}
-        for (Entry<String, JsonElement> entry : jo.entrySet()) {
-            p(entry.getKey() + ":" + entry.getValue());
-        }
-        p("--------------------");
-
-        /* Gson中使用泛型 */
-        String jsonArray = "[\"Android\",\"Java\",\"PHP\"]";
-        // 解析成数组
-        String[] strings = gson.fromJson(jsonArray, String[].class);
-        p("数组:" + Arrays.toString(strings));
-        // 解析成List，Gson为我们提供了TypeToken来实现对泛型的支持
-        List<String> stringList = gson.fromJson(jsonArray, new TypeToken<List<String>>() {
-        }.getType());
-        p("List:");
-        for (String s : stringList) {
-            p(s);
-        }
-        p("--------------------");
-
-
-        /* 将JsonArray类型的Json字符串解析成对象 */
-        JsonArray jarray = JsonParser.parseString(jsonArray).getAsJsonArray();
-        p(jarray); // ["Android","Java","PHP"]
-
-
-        /* 获取JsonObject中指定key值对应的JsonArray对象 */
-        String json = "{\"pids\":[\"1\",\"2\",\"3\"]}";
-        JsonObject jo2 = JsonParser.parseString(json).getAsJsonObject();
-        p(jo2.getAsJsonArray("pids").get(1).getAsString()); // 2; toString()返回"2",getAsString()返回2
-        p("--------------------");
-
-
-        /* JsonObject对象转化成HashMap */
-        HashMap<String, Object> map = new HashMap<>();
-        jsonObject2Map(jo, map);
-        for (Entry<String, Object> entry : map.entrySet()) {
-            p(entry.getKey() + ":" + entry.getValue());
-        }
-
+        // JavaBean → JsonObject
+        jsonObject = (JsonObject) gson.toJsonTree(teacher);
+        p(jsonObject + "\n");
     }
 
-    // JsonObject对象转化成HashMap
-    private static void jsonObject2Map(JsonObject jo, HashMap<String, Object> map) {
+    /**
+     * 数组对象JSON ⇆ JSONObject ⇆ List<JavaBean>
+     */
+    @Test
+    public void testJSONArray() {
+        // 数组对象JSON → JSONArray
+        jsonArray = JsonParser.parseString(JSON_ARRAY).getAsJsonArray();
+        p(jsonArray);
+        // JSONArray → 数组对象JSON
+        jsonStr = gson.toJson(jsonArray);
+        p(jsonStr + "\n");
+
+        // 数组对象JSON → List<JavaBean>
+        students = gson.fromJson(JSON_ARRAY, new TypeToken<List<Student>>() {
+        }.getType());
+        p(students);
+        // List<JavaBean> → 数组对象JSON
+        jsonStr = gson.toJson(students);
+        p(jsonStr + "\n");
+
+        // JSONArray → List<JavaBean>
+        students = gson.fromJson(jsonArray, new TypeToken<List<Student>>() {
+        }.getType());
+        p(students);
+        // List<JavaBean> → JSONArray
+        jsonArray = (JsonArray) gson.toJsonTree(students);
+        p(jsonArray + "\n");
+    }
+
+    /**
+     * `@SerializedName 字段别名
+     */
+    @Test
+    public void testSerializedName() {
+        p(gson.fromJson(JSON_PLAIN, Student.class));
+    }
+
+    @Test
+    public void testJsonObjectToMap() {
+        jsonObject = JsonParser.parseString(JSON_COMPLEX).getAsJsonObject();
+        p(jsonObject2Map(jsonObject));
+    }
+
+    /**
+     * JsonObject → Map
+     */
+    private HashMap<String, Object> jsonObject2Map(JsonObject jo) {
+        HashMap<String, Object> map = Maps.newHashMap();
         for (Entry<String, JsonElement> entry : jo.entrySet()) {
             if (entry.getValue().isJsonArray()) {
                 JsonArray array = (JsonArray) entry.getValue();
                 List<HashMap<String, Object>> list = new ArrayList<>();
                 for (JsonElement obj : array) {
-                    HashMap<String, Object> ch = new HashMap<>();
-                    jsonObject2Map(obj.getAsJsonObject(), ch);
+                    HashMap<String, Object> ch = jsonObject2Map(obj.getAsJsonObject());
                     list.add(ch);
                 }
                 map.put(entry.getKey(), list);
             } else {
                 if (entry.getValue().isJsonObject()) {
-                    HashMap<String, Object> ch = new HashMap<>();
-                    map.put(entry.getKey(), ch);
-                    jsonObject2Map(entry.getValue().getAsJsonObject(), ch);
+                    map.put(entry.getKey(), jsonObject2Map(entry.getValue().getAsJsonObject().getAsJsonObject()));
                 } else {
                     map.put(entry.getKey(), entry.getValue().getAsString());
                 }
             }
         }
-    }
-
-    @AllArgsConstructor
-    private static class User {
-        public String name;
-        public int age;
-        @SerializedName(value = "emailAddress", alternate = {"email", "email_address"})
-        // 当上面的三个属性(email_address、email、emailAddress)都中出现任意一个时均可以得到正确的结果。
-                String emailAddress;
+        return map;
     }
 }
