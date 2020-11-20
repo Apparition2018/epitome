@@ -1,0 +1,3 @@
+# hutool 定义任务配置文件
+[jar.hutool]
+CronUtilDemo.cronTask = */2 * * * * *

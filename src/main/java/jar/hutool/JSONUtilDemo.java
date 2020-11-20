@@ -1,4 +1,4 @@
-package jar.hutool.json;
+package jar.hutool;
 
 import cn.hutool.core.lang.TypeReference;
 import cn.hutool.json.JSONArray;

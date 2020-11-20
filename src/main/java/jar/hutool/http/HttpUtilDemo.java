@@ -6,6 +6,7 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import l.demo.Demo;
+import org.apache.http.HttpStatus;
 import org.junit.Test;
 
 import java.io.File;
@@ -86,6 +87,8 @@ public class HttpUtilDemo extends Demo {
         HttpResponse response = HttpRequest.post(BAIDU_URL)
                 .body("baidu")
                 .execute();
-        p(response.getStatus()); // 302
+        if (response.getStatus() == HttpStatus.SC_OK) {
+            p("success");
+        }
     }
 }
