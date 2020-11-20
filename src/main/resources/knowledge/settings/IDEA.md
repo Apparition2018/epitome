@@ -43,3 +43,16 @@
     3. JavaScript
     4. JavaScript language version
 ---
+## [Project Settings](https://www.jianshu.com/p/39b2206999e7)
+>### Facets
+>   1. Project Structure
+>   2. Facets
+>   3. Web
+>   4. Deployment Descriptors 配置 web.xml
+>   5. Web Resource Directories 配置 webapp
+>### Artifacts
+>   1. Project Structure
+>   2. Artifacts
+>   3. \+ Web Application: Exploded ▶ From Modules...
+>   4. Output directory: xxx\target
+---

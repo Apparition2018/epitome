@@ -1,4 +1,4 @@
-package jar.serlvet3;
+package jar.javax.serlvet;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

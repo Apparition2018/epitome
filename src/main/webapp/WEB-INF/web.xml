@@ -7,31 +7,56 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <!-- 配置DispatcherServlet -->
+    <display-name>Epitome</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- 监听上下文 spring bean 加载 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- spring mvc 配置 -->
     <servlet>
-        <servlet-name>epitome-dispatcher</servlet-name>
+        <servlet-name>spring</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <!-- 配置springMVC需要加载的配置文件
-            spring-dao.xml,spring-service.xml,spring-web.xml
-            Mybatis -> spring -> springMVC
-        -->
+        <!-- 配置 springMVC 需要加载的配置文件
+            spring-dao.xml, spring-service.xml, spring-web.xml
+            Mybatis -> spring -> springMVC -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/spring-*.xml</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
-        <servlet-name>epitome-dispatcher</servlet-name>
+        <servlet-name>spring</servlet-name>
         <!-- 默认匹配所有的请求 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    
-    <!--  
-         *************************
+    <!-- Encoding -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- *************************
          ********* 验证码 *********
-         *************************
-     -->
+         ************************* -->
     <servlet>
         <servlet-name>CaptchaRandomServlet</servlet-name>
         <servlet-class>spring.servlet.captcha.CaptchaRandomServlet</servlet-class>
@@ -40,7 +65,7 @@
         <servlet-name>CaptchaRandomServlet</servlet-name>
         <url-pattern>/captchaRandom.do</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>CaptchaArithmeticServlet</servlet-name>
         <servlet-class>spring.servlet.captcha.CaptchaArithmeticServlet</servlet-class>
