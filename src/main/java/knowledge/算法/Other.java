@@ -54,8 +54,8 @@ public class Other extends Demo {
      */
     @Test
     public void testPrimeNumber() {
-        java.util.Random ran = new Random();
-        int n = ran.nextInt(50) + 51;
+        Random random = new Random();
+        int n = random.nextInt(50) + 51;
         p("输出" + n + "内的质数：");
 
         int count = 0;

@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.other;
 
 import cn.hutool.dfa.WordTree;
 import l.demo.Demo;

@@ -63,7 +63,7 @@ class ConcreteBuilder implements Builder {
     private Product product = new Product();
 
     /**
-     * 产品零件建造方法1
+     * 产品零件建造方法一
      */
     @Override
     public void buildPart1() {
@@ -72,7 +72,7 @@ class ConcreteBuilder implements Builder {
     }
 
     /**
-     * 产品零件建造方法2
+     * 产品零件建造方法二
      */
     @Override
     public void buildPart2() {

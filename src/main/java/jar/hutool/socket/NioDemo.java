@@ -1,4 +1,4 @@
-package jar.hutool.net;
+package jar.hutool.socket;
 
 import cn.hutool.core.io.BufferUtil;
 import cn.hutool.core.io.IORuntimeException;

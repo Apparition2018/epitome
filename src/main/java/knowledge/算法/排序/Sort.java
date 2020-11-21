@@ -24,9 +24,9 @@ public class Sort extends Demo {
     private static int[] arr = new int[10];
 
     static {
-        Random ran = new Random();
+        Random random = new Random();
         for (int i = 0, len = arr.length; i < len; i++) {
-            arr[i] = ran.nextInt(100);
+            arr[i] = random.nextInt(100);
         }
         p("原始数组：" + Arrays.toString(arr));
     }

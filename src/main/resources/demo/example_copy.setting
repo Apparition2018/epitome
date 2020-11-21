@@ -1,7 +1,0 @@
-[demo]
-ds.setting.path = config/other.setting
-driver = com.mysql.jdbc.Driver
-url = jdbc:mysql://fedora.vmware:3306/extractor
-user = rootcom.mysql.jdbc.Driver
-pass = 123456
-max-active = 50
