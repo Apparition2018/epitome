@@ -35,6 +35,7 @@ import l.demo.Demo;
 public class Test extends Demo {
 
     public static void main(String[] args) {
-
+        int[] x = new int[]{1, 2, 3};
+        int y = x[0];
     }
 }

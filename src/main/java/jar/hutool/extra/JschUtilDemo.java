@@ -2,6 +2,7 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.ssh.JschUtil;
 import com.jcraft.jsch.Session;
+import l.demo.Demo;
 import org.junit.Test;
 
 /**
@@ -13,10 +14,11 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/20 17:28
  */
-public class JschUtilDemo {
-    
-    @Test
-    public void testJschUtil() {
-        Session session = JschUtil.getSession("192.168.15.14", 22, "root", "123456");
+public class JschUtilDemo extends Demo {
+
+    public static void main(String[] args) {
+        Session session = JschUtil.getSession(REMOTE_IP, 22, REMOTE_ACCT, REMOTE_PWD);
+        p(session.getClientVersion());  // SSH-2.0-JSCH-0.1.54
+        p(session.getServerVersion());  // SSH-2.0-OpenSSH_5.3
     }
 }

@@ -57,6 +57,9 @@ public class Demo {
     public static final String HELLO_WORLD = "Hello World!";
     public static final String MY_NAME = "李白";
     public static final String MY_EMAIL = "88850180@163.com";
+    public static final String REMOTE_IP = "192.168.58.128";
+    public static final String REMOTE_ACCT = "ljh";
+    public static final String REMOTE_PWD = "111111";
     public static final String MOBILE = "13800589230";
     public static final String ID_CARD = "110101199003077950";
     public static final String UTF_8 = StandardCharsets.UTF_8.name();

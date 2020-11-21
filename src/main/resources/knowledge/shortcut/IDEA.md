@@ -76,7 +76,7 @@
 >Ctrl + N                       Class...                            按类名搜索
 >Ctrl + Shift + N               File...                             按文件搜索
 >Ctrl + Shift + Alt + N         Symbol...                           按Symbol搜索
->Ctrl + B                       Declaration                         定位到声明的位置
+>Ctrl + B / Cick | Click2       Declaration or Usages               定位到声明的位置或显示在哪里被调用
 >Ctrl + Shift + B               Type Declaration                    定位到变量类型定义的位置
 >Ctrl + Alt + B                 Implemention(s)                     定位到实现的位置            ***
 >Ctrl + U                       Super Method                        定位到父类/父类方法          ***
