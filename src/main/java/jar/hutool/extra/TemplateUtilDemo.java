@@ -9,6 +9,7 @@ import org.junit.Test;
 
 /**
  * TemplateUtil     模板引擎封装
+ * 需要引入 org.freemarker:freemarker
  * https://hutool.cn/docs/#/extra/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E5%B0%81%E8%A3%85-TemplateUtil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/template/TemplateUtil.html
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/template/TemplateEngine.html
@@ -29,6 +30,5 @@ public class TemplateUtilDemo {
         
         // 将模板与绑定参数融合后返回为字符串
         System.out.println(template.render(MapUtil.of("name", "World!")));
-        
     }
 }

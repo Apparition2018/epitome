@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.springframework.context.annotation.Bean;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -61,6 +62,11 @@ public class Person implements Comparable<Person>, Serializable {
         this.age = age;
         this.gender = gender;
         this.otherInfo = otherInfo;
+    }
+    
+    @Bean("person")
+    public Person getInstance(Integer id, String name) {
+        return new Person(id,name);
     }
 
     @Override

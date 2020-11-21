@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * EmojiUtil
+ * 需要引入 com.vdurmont:emoji-java
  * https://hutool.cn/docs/#/extra/emoji/Emoji%E5%B7%A5%E5%85%B7-EmojiUtil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/emoji/EmojiUtil.html
  *
