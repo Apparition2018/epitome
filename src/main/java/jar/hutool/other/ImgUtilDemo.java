@@ -117,7 +117,7 @@ public class ImgUtilDemo extends Demo {
      */
     @Test
     public void create() throws IOException {
-        ImgUtil.createImage("ABC", new Font("黑体", Font.PLAIN, 36), Color.WHITE, Color.BLACK,
+        ImgUtil.createImage("ABC", new Font("黑体", Font.PLAIN, 28), Color.WHITE, Color.BLACK,
                 new FileImageOutputStream(new File(HU_TOOL_DEMO_PATH + "capture_createImage.jpg")));
     }
 }

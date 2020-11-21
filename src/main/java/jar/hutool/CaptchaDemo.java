@@ -26,8 +26,8 @@ import java.io.OutputStream;
  */
 public class CaptchaDemo extends Demo {
     
-    private static final int WIDTH = 100;
-    private static final int HEIGHT = 40;
+    private static final int WIDTH = 80;
+    private static final int HEIGHT = 30;
     private static final int CODE_COUNT = 4;
     private static final int Interference_COUNT = 50;
 
