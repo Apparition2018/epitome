@@ -71,9 +71,9 @@ public class Demo {
     public static final String RESOURCES_PATH = "src/main/resources/";
     public static final String RESOURCES_ABSOLUTE_PATH = USER_DIR + File.separator + RESOURCES_PATH;
     public static final String DEMO_PATH = RESOURCES_PATH + "demo/";
-    public static final String HU_TOOL_DEMO_PATH = DEMO_PATH + "hutool/";
+    public static final String HU_DEMO_PATH = DEMO_PATH + "hutool/";
     public static final String DEMO_ABSOLUTE_PATH = USER_DIR + File.separator + DEMO_PATH;
-    public static final String HU_TOOL_DEMO_ABSOLUTE_PATH = USER_DIR + File.separator + HU_TOOL_DEMO_PATH;
+    public static final String HU_DEMO_ABSOLUTE_PATH = USER_DIR + File.separator + HU_DEMO_PATH;
     public static final String DEMO_FILE_PATH = DEMO_PATH + "demo";
     public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "demo";
     public static final String DEMO_URI = "http://localhost:3333/demo/";

@@ -26,7 +26,7 @@ public class SettingDemo extends Demo {
 
     @Test
     public void testSetting() {
-        Setting setting = new Setting(new File(HU_TOOL_DEMO_PATH + "example.setting"), StandardCharsets.UTF_8, true);
+        Setting setting = new Setting(new File(HU_DEMO_PATH + "example.setting"), StandardCharsets.UTF_8, true);
         // 在配置文件变更时自动加载
         setting.autoLoad(true);
 
@@ -46,7 +46,7 @@ public class SettingDemo extends Demo {
         // 设置值
         setting.set("demo", "max-active", "50");
         // 持久化
-        setting.store(HU_TOOL_DEMO_ABSOLUTE_PATH + "example_copy.setting");
+        setting.store(HU_DEMO_ABSOLUTE_PATH + "example_copy.setting");
     }
 
     @ToString
