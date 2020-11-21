@@ -1,5 +1,6 @@
 package jar.hutool.http;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.StreamProgress;
 import cn.hutool.http.HttpRequest;
@@ -10,6 +11,7 @@ import org.apache.http.HttpStatus;
 import org.junit.Test;
 
 import java.io.File;
+import java.net.HttpCookie;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -85,7 +87,9 @@ public class HttpUtilDemo extends Demo {
     public void testHttp() {
         // Restful
         HttpResponse response = HttpRequest.post(BAIDU_URL)
-                .body("baidu")
+                .form(BeanUtil.beanToMap(personList.get(0)))
+                .body(HELLO_WORLD)
+                .cookie(new HttpCookie("cookie", "oreo"))
                 .execute();
         if (response.getStatus() == HttpStatus.SC_OK) {
             p("success");
