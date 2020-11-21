@@ -40,14 +40,15 @@ public class FilesDemo extends Demo {
         Path path = Paths.get(DEMO_FILE_PATH);
 
         // 读取内容
-        p(Files.readAllLines(path)); // [静夜思, 床前明月光，, 疑是地上霜。, 举头望明月，, 低头思故乡。]
+        p(Files.readAllLines(path));
 
         // 读取内容
         Stream<String> lines = Files.lines(path);
         lines.forEach(FilesDemo::p);
 
         // 读取文件属性，"*" 表示 读取所有属性
-        p(Files.readAttributes(path, "*")); // {lastAccessTime=2020-09-22T06:16:01.487644Z, lastModifiedTime=2020-09-22T06:16:01.487644Z, size=91, creationTime=2020-09-14T06:22:45.436145Z, isSymbolicLink=false, isRegularFile=true, fileKey=null, isOther=false, isDirectory=false}
+        p(Files.readAttributes(path, "*"));
+        // {lastAccessTime=2020-09-22T06:16:01.487644Z, lastModifiedTime=2020-09-22T06:16:01.487644Z, size=91, creationTime=2020-09-14T06:22:45.436145Z, isSymbolicLink=false, isRegularFile=true, fileKey=null, isOther=false, isDirectory=false}
     }
 
     // 创建

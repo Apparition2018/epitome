@@ -1,4 +1,4 @@
-package jar.hutool.other;
+package jar.hutool.math;
 
 import cn.hutool.core.math.MathUtil;
 import l.demo.Demo;

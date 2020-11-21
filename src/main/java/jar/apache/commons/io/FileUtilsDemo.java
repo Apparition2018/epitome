@@ -47,7 +47,6 @@ public class FileUtilsDemo extends Demo {
 
         // readLines()
         p(FileUtils.readLines(file, UTF_8));
-        // [静夜思, 床前明月光，, 疑是地上霜。, 举头望明月，, 低头思故乡。]
     }
 
     // 删除

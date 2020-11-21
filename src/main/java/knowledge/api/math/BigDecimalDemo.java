@@ -36,7 +36,7 @@ public class BigDecimalDemo extends Demo {
         p(BigDecimal.ROUND_FLOOR);          // 接近负无穷大的舍入模式
         p(BigDecimal.ROUND_HALF_UP);        // 向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则向上舍入的舍入模式
         p(BigDecimal.ROUND_HALF_DOWN);      // 向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则向下舍入的舍入模式
-        p(BigDecimal.ROUND_HALF_EVEN);      // 向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则向相邻的偶数舍入
+        p(BigDecimal.ROUND_HALF_EVEN);      // 向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则向相邻的偶数舍入（银行家舍入法）
         p(BigDecimal.ROUND_UNNECESSARY);    // 断言请求的操作具有精确的结果，因此不需要舍入
     }
 

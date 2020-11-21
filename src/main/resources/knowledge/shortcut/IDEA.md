@@ -20,6 +20,7 @@
 >>Alt + R                       Split Vertically (user)             垂直分屏
 >>Alt + ←                       Select Previous Tab                 上一个Tab
 >>Alt + →                       Select Next Tab                     下一个Tab
+>>Ctrl + F4 | Ctrl + Click3     Close                               关闭
 >>```
 >### Code
 >```

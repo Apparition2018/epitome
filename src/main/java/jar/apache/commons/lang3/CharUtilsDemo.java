@@ -21,31 +21,35 @@ public class CharUtilsDemo extends Demo {
     }
 
     @Test
-    public void is() {
-        char c1 = '1';
-        char c2 = 'a';
-        char c3 = 'A';
-        char c4 = '-';
-        char c5 = '\n';
-        char c6 = '©';
+    public void isAscii() {
+        p(CharUtils.isAscii('1'));              // true
+        p(CharUtils.isAscii('©'));              // false
 
-        p(CharUtils.isAscii(c1));               // true
-        p(CharUtils.isAscii(c6));               // false
+        // 可见
+        p(CharUtils.isAsciiPrintable('1'));     // false
+        p(CharUtils.isAsciiPrintable('\n'));    // false
 
-        p(CharUtils.isAsciiPrintable(c5));      // false
-        p(CharUtils.isAsciiPrintable(c6));      // false
+        // 不可见
+        p(CharUtils.isAsciiControl('\n'));      // true
+        p(CharUtils.isAsciiControl('1'));       // false
 
-        p(CharUtils.isAsciiControl(c1));        // false
+        // 字母
+        p(CharUtils.isAsciiAlpha('a'));         // true
+        p(CharUtils.isAsciiAlpha('1'));         // false
 
-        p(CharUtils.isAsciiAlpha(c2));          // true
+        // 大写字母
+        p(CharUtils.isAsciiAlphaLower('a'));    // true
+        // 小写字母
+        p(CharUtils.isAsciiAlphaUpper('A'));    // false
 
-        p(CharUtils.isAsciiAlphaLower(c2));     // true
-        p(CharUtils.isAsciiAlphaUpper(c3));     // true
+        // 数字
+        p(CharUtils.isAsciiNumeric('1'));       // true
+        p(CharUtils.isAsciiNumeric('a'));       // false
 
-        p(CharUtils.isAsciiNumeric(c1));        // true
-
-        p(CharUtils.isAsciiAlphanumeric(c1));   // true
-        p(CharUtils.isAsciiAlphanumeric(c2));   // true
+        // 字幕数字
+        p(CharUtils.isAsciiAlphanumeric('1'));   // true
+        p(CharUtils.isAsciiAlphanumeric('a'));   // true
+        p(CharUtils.isAsciiAlphanumeric('©'));   // false
     }
 
     /**
