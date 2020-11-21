@@ -18,10 +18,10 @@ public class EscapeUtilDemo extends Demo {
     public void test() {
         // ISO Latin（Unicode 字符集的一个子集）字符串编码
         // escape(CharSequence) 默认不对 *@-_+" 编码 
-        p(EscapeUtil.escape(MY_NAME + "*@-_+"));                        // %u6881%u6770%u8f89*@-_+
-        p(EscapeUtil.escapeAll(MY_NAME + "*@-_+"));                     // %u6881%u6770%u8f89%2a%40%2d%5f%2b
-        p(EscapeUtil.unescape("%u6881%u6770%u8f89*@-_+"));              // 梁杰辉*@-_+
-        p(EscapeUtil.unescape("%u6881%u6770%u8f89%2a%40%2d%5f%2b"));    // 梁杰辉*@-_+
+        p(EscapeUtil.escape(MY_NAME + "*@-_+"));                        // %u674e%u767d*@-_+
+        p(EscapeUtil.escapeAll(MY_NAME + "*@-_+"));                     // %u674e%u767d%2a%40%2d%5f%2b
+        p(EscapeUtil.unescape("%u674e%u767d*@-_+"));                    // 李白*@-_+
+        p(EscapeUtil.unescape("%u674e%u767d%2a%40%2d%5f%2b"));          // 李白*@-_+
         
         // HTML 转义
         p(EscapeUtil.escapeHtml4("<div class='test_div'>&</div>"));                     // &lt;div class='test_div'&gt;&amp;&lt;/div&gt;

@@ -1,5 +1,6 @@
 package jar.hutool.lang;
 
+import cn.hutool.core.codec.Rot;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.IdUtil;
 import l.demo.Demo;
@@ -49,9 +50,9 @@ public class ValidatorDemo extends Demo {
         // 生日
         p(Validator.isBirthday("20200808"));
         // 手机
-        p(Validator.isMobile(MY_PHONE));
+        p(Validator.isMobile(MOBILE));
         // 身份证
-        p(Validator.isCitizenId(MY_ID_CARD));
+        p(Validator.isCitizenId(ID_CARD));
         // 邮箱
         p(Validator.isEmail(MY_EMAIL));
         // 邮政编码

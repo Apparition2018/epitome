@@ -1,6 +1,8 @@
 package jar.hutool.util;
 
+import cn.hutool.core.codec.Rot;
 import cn.hutool.core.util.IdcardUtil;
+import cn.hutool.crypto.digest.DigestUtil;
 import l.demo.Demo;
 import org.junit.Test;
 
@@ -17,10 +19,9 @@ import java.util.Date;
  */
 public class IdcardUtilDemo extends Demo {
     
-    private static final String ID_CARD = "442000199010160716";
-    
     @Test
     public void testIdcardUtil() {
+        
         // 是否合法
         p(IdcardUtil.isValidCard(ID_CARD));
         
@@ -40,5 +41,4 @@ public class IdcardUtilDemo extends Demo {
         // 隐藏
         p(IdcardUtil.hide(ID_CARD, 4, 14));
     }
-    
 }

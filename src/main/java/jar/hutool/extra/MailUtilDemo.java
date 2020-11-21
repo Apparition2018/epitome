@@ -1,5 +1,7 @@
 package jar.hutool.extra;
 
+import cn.hutool.extra.mail.MailUtil;
+import l.demo.Demo;
 import org.junit.Test;
 
 /**
@@ -11,10 +13,10 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/13 17:31
  */
-public class MailUtilDemo {
+public class MailUtilDemo extends Demo {
 
     @Test
     public void testMailUtil() {
-
+        MailUtil.send(MY_EMAIL, "测试", HELLO_WORLD, false);
     }
 }

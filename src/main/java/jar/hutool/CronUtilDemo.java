@@ -25,6 +25,8 @@ public class CronUtilDemo extends Demo {
         setCountDownLatch(2);
         // 支持秒，如果为 true，则定时任务表达式中的第一位为秒，否则为分
         CronUtil.setMatchSecond(true);
+        // 自定义定时任务配置文件路径
+        CronUtil.setCronSetting("cron.setting");
         // 开始，true 为守护线程模式
         CronUtil.start(true);
         countDownLatch.countDown();
