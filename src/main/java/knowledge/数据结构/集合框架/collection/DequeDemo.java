@@ -11,7 +11,7 @@ import java.util.Stack;
 /**
  * Deque 双端队列  (double ended queue)
  * Deque 继承 Queue
- * https://jdk6.net/util/Deque.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/Deque.html
  * <p>
  * 操作位              第一个元素（头部）	                    最后一个元素（尾部）
  * 操作               抛出异常	    特殊值	                抛出异常	        特殊值

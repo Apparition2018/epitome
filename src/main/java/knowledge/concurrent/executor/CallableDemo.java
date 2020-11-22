@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Callable
- * https://jdk6.net/util-concurrent/Callable.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/Callable.html
  * <p>
  * 和 Runnable 比较
  * 相同点：

@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
  * ReentrantReadWriteLock
  * 实现与 ReentrantLock 类似语义的 ReadWriteLock
  * 读和写互斥，写和写互斥，读和读不需要互斥
- * https://jdk6.net/util-concurrent-locks/ReentrantReadWriteLock.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/locks/ReentrantReadWriteLock.html
  */
 public class ReentrantReadWriteLockDemo extends Demo {
     public static void main(String[] args) {

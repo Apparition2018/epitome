@@ -9,7 +9,10 @@ import java.util.regex.Pattern;
 /**
  * Pattern
  * 正则表达式的编译表示形式
- * https://jdk6.net/util-regex/Pattern.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/regex/Pattern.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class PatternDemo extends Demo {
 

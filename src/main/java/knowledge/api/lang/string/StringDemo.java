@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 /**
  * String
- * https://jdk6.net/lang/String.html
+ * https://www.runoob.com/manual/jdk1.6/java/lang/String.html
  * <p>
  * int	        length()                                    返回此字符序列的长度
  * char         charAt(int index)                           返回指定索引处的 char 值

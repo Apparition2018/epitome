@@ -13,7 +13,7 @@ import java.util.Arrays;
  * Throwable 有两个子类 Error 和 Exception
  * Error 指示运行时环境发生的错误，一般发生在严重的故障时，java 程序通常不捕获此类错误，它们在 java 程序处理范畴之外
  * Exception 分为检测性异常 (Check Exception)，和非检测性异常 (Uncheck Exception)
- * https://jdk6.net/lang/Throwable.html
+ * https://www.runoob.com/manual/jdk1.6/java/lang/Throwable.html
  */
 public class ThrowableDemo extends Demo {
 

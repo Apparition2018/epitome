@@ -9,7 +9,7 @@ import java.text.ParseException;
 /**
  * DecimalFormat
  * DecimalFormat 是 NumberFormat 的一个具体子类，用于格式化十进制数字。
- * https://jdk6.net/text/DecimalFormat.html
+ * https://www.runoob.com/manual/jdk1.6/java/text/DecimalFormat.html
  * <p>
  * 特殊模式字符：
  * 符号	        位置	        本地化？	    含义
@@ -32,6 +32,9 @@ import java.text.ParseException;
  * <p>
  * String	    toLocalizedPattern()                            合成一个表示此 Format 对象当前状态的、已本地化的模式字符串
  * String	    toPattern()                                     合成一个表示此 Format 对象当前状态的模式字符串
+ *
+ * @author ljh
+ * created on 2020/11/23 0:45
  */
 public class DecimalFormatDemo extends Demo {
 

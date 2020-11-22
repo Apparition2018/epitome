@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * Enum
- * https://jdk6.net/lang/Enum.html
+ * https://www.runoob.com/manual/jdk1.6/java/lang/Enum.html
  * <p>
  * 优点：
  * 1.枚举有更多灵活的用法

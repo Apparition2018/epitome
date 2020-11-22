@@ -16,7 +16,10 @@ import java.util.concurrent.*;
  * 四种线程池都是使用 ThreadPoolExecutor 实现的，所以 ThreadPoolExecutor 更灵活
  * <p>
  * 如何在队列排队之前让ThreadPoolExecutor将线程增加到最大数量：https://blog.csdn.net/fy_java1995/article/details/107920983
- * https://jdk6.net/util-concurrent/ExecutorService.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/ExecutorService.html
+ *
+ * @author ljh
+ * created on 2020/11/17 19:09
  */
 public class ExecutorServiceDemo extends Demo {
 

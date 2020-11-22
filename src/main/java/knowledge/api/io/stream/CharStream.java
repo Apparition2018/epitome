@@ -18,7 +18,7 @@ public class CharStream extends Demo {
 
     /**
      * Reader
-     * https://jdk6.net/io/Reader.html
+     * https://www.runoob.com/manual/jdk1.6/java/io/Reader.html
      * abstract  void	close()                     关闭该流并释放与之关联的所有资源
      * void	            mark(int readAheadLimit)    标记流中的当前位置
      * void	            reset()                     重置该流
@@ -28,16 +28,16 @@ public class CharStream extends Demo {
      * <p>
      * InputStreamReader
      * 字节流通向字符流的桥梁：它使用指定的 charset 读取字节并将其解码为字符。
-     * https://jdk6.net/io/InputStreamReader.html
+     * https://www.runoob.com/manual/jdk1.6/java/io/InputStreamReader.html
      * <p>
      * FileReader
      * 用来读取字符文件的便捷类。此类的构造方法假定默认字符编码和默认字节缓冲区大小都是适当的。
      * 要自己指定这些值，可以先在 FileInputStream 上构造一个 InputStreamReader。
-     * https://jdk6.net/io/FileReader.html
+     * https://www.runoob.com/manual/jdk1.6/java/io/FileReader.html
      * <p>
      * BufferedReader       缓冲字符输入流
      * 从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取。
-     * https://jdk6.net/io/BufferedReader.html
+     * https://www.runoob.com/manual/jdk1.6/java/io/BufferedReader.html
      */
     @Test
     public void testReader() {
@@ -84,22 +84,22 @@ public class CharStream extends Demo {
 
     /**
      * Writer
-     * https://jdk6.net/io/Writer.html
+     * https://www.runoob.com/manual/jdk1.6/java/io/Writer.html
      * Writer	        append(CharSequence csq[, int start, int end])  将指定字符序列的子序列添加到此 writer.Appendable
      * abstract  void	close()                         关闭此流，但要先刷新它
      * <p>
      * OutputStreamWriter
      * 字符流通向字节流的桥梁：可使用指定的 charset 将要写入流中的字符编码成字节。
-     * https://jdk6.net/io/OutputStreamWriter.html
+     * https://www.runoob.com/manual/jdk1.6/java/io/OutputStreamWriter.html
      * <p>
      * FileWriter
      * 用来写入字符文件的便捷类。此类的构造方法假定默认字符编码和默认字节缓冲区大小都是可接受的。
      * 要自己指定这些值，可以先在 FileOutputStream 上构造一个 OutputStreamWriter。
-     * https://jdk6.net/io/FileWriter.html
+     * https://www.runoob.com/manual/jdk1.6/java/io/FileWriter.html
      * <p>
      * PrintWriter      缓冲字符输出流
      * 可以按行写出字符串，并且具有自动行刷新功能
-     * https://jdk6.net/io/PrintWriter.html
+     * https://www.runoob.com/manual/jdk1.6/java/io/PrintWriter.html
      */
     @Test
     public void testWriter() {
@@ -128,13 +128,13 @@ public class CharStream extends Demo {
     /**
      * CharArrayReader
      * 用作字符输入流的字符缓冲区
-     * https://jdk6.net/io/CharArrayReader.html
+     * https://www.runoob.com/manual/jdk1.6/java/io/CharArrayReader.html
      * <p>
      * CharArrayWriter
      * 用作 Writer 的字符缓冲区。缓冲区会随向流中写入数据而自动增长。
      * 可使用 toCharArray() 和 toString() 获取数据。
      * 不需要关闭。
-     * https://jdk6.net/io/CharArrayWriter.html
+     * https://www.runoob.com/manual/jdk1.6/java/io/CharArrayWriter.html
      */
     @Test
     public void testCharArray() {

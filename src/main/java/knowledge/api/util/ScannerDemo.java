@@ -12,7 +12,7 @@ import java.util.Scanner;
  * 一个可以使用正则表达式来解析基本类型和字符串的简单文本扫描器。
  * 使用分隔符模式将其输入分解为标记，默认情况下该分隔符模式与空白匹配。
  * 然后可以使用不同的 next 方法将得到的标记转换为不同类型的值。
- * https://jdk6.net/util/Scanner.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/Scanner.html
  */
 public class ScannerDemo extends Demo {
 

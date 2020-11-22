@@ -25,7 +25,7 @@ import org.junit.Test;
  * https://www.runoob.com/manual/jdk1.6/java/lang/Character.html
  *
  * @author Arsenal
- * created on 2020/09/07 01:28
+ * created on 2020/9/7 01:28
  */
 public class CharacterDemo extends Demo {
 

@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * 如果为零或正数，则标度是小数点后的位数。
  * 如果为负数，则将该数的非标度值乘以 10 的负 scale 次幂。
  * 因此，BigDecimal 表示的数值是 (unscaledValue × 10-scale)。
- * https://jdk6.net/math/BigDecimal.html
+ * https://www.runoob.com/manual/jdk1.6/java/math/BigDecimal.html
  * <p>
  * BigDecimal	add(BigDecimal augend)              this + augend
  * BigDecimal	subtract(BigDecimal subtrahend)     this - subtrahend

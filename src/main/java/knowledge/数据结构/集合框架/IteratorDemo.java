@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Iterator
  * Iterator 替代 Enumeration
- * https://jdk6.net/lang/Iterable.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/Iterator.html
  */
 public class IteratorDemo extends Demo {
 

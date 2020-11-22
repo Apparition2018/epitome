@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * DateFormat
- * https://jdk6.net/text/DateFormat.html
+ * https://www.runoob.com/manual/jdk1.6/java/text/DateFormat.html
  * <p>
  * DateFormat <-> Calendar
  * Calendar     getCalendar()                       获取与此日期/时间格式器关联的日历

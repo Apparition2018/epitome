@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Thread
- * https://jdk6.net/lang/Thread.html
+ * https://www.runoob.com/manual/jdk1.6/java/lang/Thread.html
  * https://blog.csdn.net/u012426327/article/details/77160416
  * <p>
  * 进程：一个进程包括由操作系统分配的内存空间,包含一个或多个线程。
@@ -52,6 +52,9 @@ import java.util.concurrent.TimeUnit;
  * void	                        start()                             使该线程开始执行；Java 虚拟机调用该线程的 run 方法
  * <p>
  * 如何使用 JUnit 测试异步代码：https://zhuanlan.zhihu.com/p/240281836
+ *
+ * @author ljh
+ * created on 2020/11/17 19:09
  */
 public class ThreadDemo extends Demo {
 

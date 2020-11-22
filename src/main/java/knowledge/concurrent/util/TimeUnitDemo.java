@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * TimeUnit 表示给定单元粒度的时间段，它提供在这些单元中进行跨单元转换和执行计时及延迟操作的实用工具方法。
  * TimeUnit 是一个枚举类，NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS
  * TimeUnit 主要用于通知基于时间的方法如何解释给定的计时参数。
- * https://jdk6.net/util-concurrent/TimeUnit.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/TimeUnit.html
  */
 public class TimeUnitDemo extends Demo {
 
