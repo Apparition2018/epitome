@@ -6,6 +6,10 @@ import org.junit.Test;
 
 import java.util.Random;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 public class Other extends Demo {
 
     /**

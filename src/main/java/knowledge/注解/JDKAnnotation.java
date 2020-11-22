@@ -17,7 +17,7 @@ import java.util.List;
  * 4. @SafeVarargs
  * https://www.cnblogs.com/fsjohnhuang/p/4040785.html
  *
- * @author JDKAnnotation
+ * @author ljh
  * created on 2020/9/18 10:13
  */
 public class JDKAnnotation extends Demo {

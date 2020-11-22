@@ -6,8 +6,10 @@ import java.util.stream.IntStream;
 
 /**
  * 方法
- * <p>
  * 修饰符 返回值类型 方法名 参数类型 方法体
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class Method {
 

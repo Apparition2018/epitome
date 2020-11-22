@@ -8,10 +8,11 @@ import java.util.stream.IntStream;
  * Context: 环境角色
  * State: 抽象状态角色
  * ConcreteState: 具体状态角色
- * <p>
  * 状态模式：允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类
- * <p>
  * http://www.cnblogs.com/java-my-life/archive/2012/06/08/2538146.html
+ *
+ * @author ljh
+ * created on 2020/9/26 2:51
  */
 public class StateDemo {
     public static void main(String[] args) {

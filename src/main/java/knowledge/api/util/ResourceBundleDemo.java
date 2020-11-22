@@ -14,6 +14,9 @@ import java.util.ResourceBundle;
  * <p>
  * https://www.runoob.com/manual/jdk1.6/java/util/ResourceBundle.html
  * https://www.cnblogs.com/tonghun/p/7124245.html
+ *
+ * @author ljh
+ * created on 2020/10/23 20:09
  */
 public class ResourceBundleDemo extends Demo {
 

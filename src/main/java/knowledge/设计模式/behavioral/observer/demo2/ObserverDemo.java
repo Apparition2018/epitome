@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * https://www.runoob.com/design-pattern/observer-pattern.html
+ *
+ * @author ljh
+ * created on 2020/9/26 2:51
  */
 public class ObserverDemo {
     public static void main(String[] args) {

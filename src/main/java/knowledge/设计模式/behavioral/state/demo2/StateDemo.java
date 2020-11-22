@@ -4,6 +4,9 @@ package knowledge.设计模式.behavioral.state.demo2;
  * 某航空公司的会员积分系统将其会员划分为：普卡（Basic）、银卡（Silver）和金卡（Gold）三个等级。
  * 非会员（NonMember）可以申请成为普卡会员。会员的等级根据其一年内累积的里程数进行调整。
  * 描述会员等级调整的状态图如图6-1 所示。现在采用状态（State）模式实现上述场景，得到如图6-2 所示的类图。
+ *
+ * @author ljh
+ * created on 2020/9/26 2:51
  */
 public class StateDemo {
     public static void main(String[] args) {

@@ -15,6 +15,9 @@ import l.demo.Demo;
  * 9.子类非静态代码块
  * 10.子类构造器
  * https://blog.csdn.net/mmd0308/article/details/75453720
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ClassInitialization extends Demo {
 
