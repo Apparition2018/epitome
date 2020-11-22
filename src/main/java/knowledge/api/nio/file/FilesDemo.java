@@ -12,10 +12,13 @@ import java.util.stream.Stream;
 /**
  * Files
  * 该类包含操作文件、目录或其他类型文件的静态方法
- * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/Files.html
+ * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html
  * <p>
  * https://www.cnblogs.com/ixenos/p/5851976.html
  * https://www.cnblogs.com/digdeep/p/4478734.html
+ *
+ * @author ljh
+ * created on 2020/9/26 2:51
  */
 public class FilesDemo extends Demo {
 

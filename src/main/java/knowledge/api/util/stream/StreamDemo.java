@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 /**
  * Stream
  * Stream 支持元素流功能性操作的类，是 JDK8 的新特性。
- * https://www.matools.com/file/manual/jdk_api_1.8_google/java/util/stream/Stream.html
+ * https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
  * <p>
  * Stream 应该只允许被中间或终端操作操作一次，如 Stream 被检测到重用，将抛出 IllegalStateException。
  * 如果实在要重复操作同一个 Stream，可以通过 Supplier 获取新的 Stream (参考 SupplierDemo testSupplier())
@@ -24,6 +24,9 @@ import java.util.stream.Stream;
  * https://blog.csdn.net/icarusliu/article/details/79504602
  * https://blog.csdn.net/u011001723/article/details/52794455
  * http://www.runoob.com/java/java8-streams.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class StreamDemo extends Demo {
 

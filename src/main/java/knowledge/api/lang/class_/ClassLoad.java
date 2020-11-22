@@ -13,6 +13,9 @@ import org.junit.Test;
  * - 1) new()
  * - 2) Class.forName()
  * - 3) ClassLoader’s loadClass()
+ *
+ * @author ljh
+ * created on 2020/9/26 2:51
  */
 public class ClassLoad extends Demo {
 

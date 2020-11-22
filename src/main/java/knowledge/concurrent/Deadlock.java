@@ -32,6 +32,9 @@ import java.util.concurrent.TimeUnit;
  * 1.撤销进程：撤销一个或多个死锁，知道打破循环等待
  * 2.进程回退：让一个或多个死锁进程回退到死锁前的状态
  * 3.资源剥夺：挂起某些死锁进程，并抢占它的资源，将这些资源分配给其它的死锁进程
+ *
+ * @author ljh
+ * created on 2020/11/17 19:09
  */
 public class Deadlock extends Demo {
 

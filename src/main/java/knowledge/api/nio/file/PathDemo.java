@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 /**
  * Path
  * 可用于在文件系统中定位文件的对象。它通常表示与系统相关的文件路径。
- * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/Path.html
+ * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html
  * <p>
  * int	        compareTo(Path other)           比较两个抽象路径的词法，如果返回值为 0 则相等
  * boolean	    equals(Object other)            判断此路径是否与给定对象相等
@@ -23,7 +23,10 @@ import java.nio.file.Paths;
  * <p>
  * Paths
  * 该类只包含通过转换路径字符串或 URI 返回路径的静态方法。
- * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/Paths.html
+ * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html
+ *
+ * @author ljh
+ * created on 2020/9/26 2:51
  */
 public class PathDemo extends Demo {
 

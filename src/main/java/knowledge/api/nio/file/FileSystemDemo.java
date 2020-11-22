@@ -17,25 +17,28 @@ import java.nio.file.attribute.UserPrincipalLookupService;
  * FileSystemProvider	provider()              返回 FileSystemProvider
  * boolean	            isOpen()                是否打开
  * boolean	            isReadOnly()            是否只读
- * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/FileSystem.html
+ * https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html
  * <p>
  * FileSystems
  * 文件系统的工厂方法。 该类定义了 getDefault() 来获取默认文件系统和工厂方法来构建其他类型的文件系统。
- * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/FileSystems.html
+ * https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystems.html
+ *
+ * @author ljh
+ * created on 2020/9/26 2:51
  */
 public class FileSystemDemo extends Demo {
 
     /**
      * FileStore
      * 表示存储池、设备、分区、卷、具体文件系统或其他实现文件存储的具体方式
-     * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/FileStore.html
+     * https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileStore.html
      * PathMatcher
      * 用于路径匹配
-     * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/PathMatcher.html
+     * https://docs.oracle.com/javase/8/docs/api/java/nio/file/PathMatcher.html
      * <p>
      * UserPrincipalLookupService
      * 按名称查找用户和组主体的对象
-     * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/attribute/UserPrincipalLookupService.html
+     * https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/UserPrincipalLookupService.html
      */
     @Test
     public void testFileSystem() throws IOException {

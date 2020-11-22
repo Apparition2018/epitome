@@ -13,6 +13,9 @@ import java.util.Objects;
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html
  * https://www.cnblogs.com/quiet-snowy-day/p/6387321.html
+ *
+ * @author ljh
+ * created on 2020/10/23 20:09
  */
 public class ObjectsDemo extends Demo {
     

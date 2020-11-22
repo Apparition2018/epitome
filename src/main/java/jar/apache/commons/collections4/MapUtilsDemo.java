@@ -9,6 +9,8 @@ import java.util.Map;
 
 /**
  * MapUtils
+ * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapUtils.html
+ * <p>
  * static <K,V> IterableMap<K,V>	fixedSizeMap(Map<K,V> map)                          固定长度
  * static <K,V> SortedMap<K,V>	    fixedSizeSortedMap(SortedMap<K,V> map)              固定长度排序
  * static <K,V> IterableMap<K,V>	iterableMap(Map<K,V> map)                           可迭代
@@ -29,8 +31,9 @@ import java.util.Map;
  * static boolean	                isEmpty(Map<?,?> map)                               判断为空
  * static boolean	                isNotEmpty(Map<?,?> map)                            判断非空
  * static <K,V> Properties	        toProperties(Map<K,V> map)                          转换成 Properties
- * <p>
- * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class MapUtilsDemo extends Demo {
 
