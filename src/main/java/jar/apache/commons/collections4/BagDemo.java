@@ -8,12 +8,14 @@ import org.junit.Test;
 /**
  * Bag
  * Bag 是一个接口，该接口可以计算一个对象出现在集合中的次数
+ * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/Bag.html
+ * Commons Collections4 简单使用：https://blog.csdn.net/sinat_34093604/article/details/79551924
  * <p>
  * Iterator<E>	iterator()
  * int	        size()
- * <p>
- * Commons Collections4 简单使用：https://blog.csdn.net/sinat_34093604/article/details/79551924
- * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/Bag.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class BagDemo extends Demo {
 

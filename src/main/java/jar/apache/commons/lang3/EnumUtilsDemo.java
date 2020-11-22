@@ -7,6 +7,9 @@ import org.junit.Test;
 /**
  * EnumUtils
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/EnumUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class EnumUtilsDemo extends Demo {
 

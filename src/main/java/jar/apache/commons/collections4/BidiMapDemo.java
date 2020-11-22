@@ -9,6 +9,9 @@ import org.junit.Test;
  * BidiMap
  * BidMap 是一个接口，该接口要求值和键都不能重复，并允许键值双向查找
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/BidiMap.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class BidiMapDemo extends Demo {
 

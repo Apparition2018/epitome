@@ -12,6 +12,9 @@ import java.util.List;
 
 /**
  * FastJson 的简单使用：https://segmentfault.com/a/1190000011212806
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class FastJsonDemo extends Demo implements JsonDemo {
     JSONObject jsonObject;

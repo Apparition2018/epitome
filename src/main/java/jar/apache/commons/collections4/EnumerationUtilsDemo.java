@@ -11,6 +11,9 @@ import java.util.Vector;
 /**
  * EnumerationUtils
  * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/EnumerationUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class EnumerationUtilsDemo extends Demo {
 

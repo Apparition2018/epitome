@@ -7,6 +7,9 @@ import springboot.Application;
 
 /**
  * https://blog.csdn.net/limenghua9112/article/details/79694849
+ *
+ * @author ljh
+ * created on 2020/1/9 19:28
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
