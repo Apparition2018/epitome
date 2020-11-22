@@ -31,6 +31,8 @@ import java.util.regex.Pattern;
  * -                        Unicode                  UTF-8:  变长                     GBK: 1个汉字2字节，1个英文或数字1字节
  * -                        USC-2: 1个字符2字节       UTF-16: 变长                     GB18030: 兼容 GBK
  * -                        USC-4: 1个字符4字节       UTF-32: 1个字符4字节            iso-88591-1: 兼容ASCII
+ * <p>
+ * 字符编码笔记：ASCII，Unicode 和 UTF-8:http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html
  */
 public class StringDemo extends Demo {
 

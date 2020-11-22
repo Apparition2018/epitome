@@ -5,23 +5,27 @@ import org.junit.Test;
 
 /**
  * Character
- * https://jdk6.net/lang/Character.html
  * <p>
- * static boolean   isUpperCase(char ch / int codePoint)        确定指定字符（Unicode 代码点）是否为大写字母
- * static boolean   isLowerCase(char ch / int codePoint)        确定指定字符（Unicode 代码点）是否为小写字母
+ * static boolean   isUpperCase(char ch / int codePoint)            确定指定字符（Unicode 代码点）是否为大写字母
+ * static boolean   isLowerCase(char ch / int codePoint)            确定指定字符（Unicode 代码点）是否为小写字母
  * <p>
- * static boolean	isDigit(char ch / int codePoint)            确定指定字符（Unicode 代码点）是否为数字
- * static boolean	isLetter(char ch / int codePoint)           确定指定字符（Unicode 代码点）是否为字母
- * static boolean	isLetterOrDigit(char ch / int codePoint)    确定指定字符（Unicode 代码点）是否为字母或数字
+ * static boolean	isDigit(char ch / int codePoint)                确定指定字符（Unicode 代码点）是否为数字
+ * static boolean	isLetter(char ch / int codePoint)               确定指定字符（Unicode 代码点）是否为字母
+ * static boolean	isLetterOrDigit(char ch / int codePoint)        确定指定字符（Unicode 代码点）是否为字母或数字
  * <p>
- * static boolean	isDefined(char ch / int codePoint)          确定字符（Unicode 代码点）是否被定义为 Unicode 中的字符
- * static boolean	isMirrored(char ch / int codePoint)         确定指定字符（Unicode 代码点）依据 Unicode 规范是否对称
+ * static boolean	isDefined(char ch / int codePoint)              确定字符（Unicode 代码点）是否被定义为 Unicode 中的字符
+ * static boolean	isMirrored(char ch / int codePoint)             确定指定字符（Unicode 代码点）依据 Unicode 规范是否对称
  * <p>
- * static boolean	isJavaIdentifierPart(char ch / int codePoint)确定字符（Unicode 代码点）是否可以是 Java 标识符中首字符以外的部分
- * static boolean	isJavaIdentifierStart(char ch / int codePoint)确定是否允许将字符（Unicode 代码点）作为 Java 标识符中的首字符
+ * static boolean	isJavaIdentifierPart(char ch / int codePoint)   确定字符（Unicode 代码点）是否可以是 Java 标识符中首字符以外的部分
+ * static boolean	isJavaIdentifierStart(char ch / int codePoint)  确定是否允许将字符（Unicode 代码点）作为 Java 标识符中的首字符
  * <p>
- * static char      toUpperCase(char ch / int codePoint)        使用取自 UnicodeData 文件的大小写映射信息将字符（Unicode 代码点）参数转换为大写
- * static char      toLowerCase(char ch / int codePoint)        使用取自 UnicodeData 文件的大小写映射信息将字符（Unicode 代码点）参数转换为小写
+ * static char      toUpperCase(char ch / int codePoint)            使用取自 UnicodeData 文件的大小写映射信息将字符（Unicode 代码点）参数转换为大写
+ * static char      toLowerCase(char ch / int codePoint)            使用取自 UnicodeData 文件的大小写映射信息将字符（Unicode 代码点）参数转换为小写
+ * <p>
+ * https://www.runoob.com/manual/jdk1.6/java/lang/Character.html
+ *
+ * @author Arsenal
+ * created on 2020/09/07 01:28
  */
 public class CharacterDemo extends Demo {
 
@@ -42,12 +46,12 @@ public class CharacterDemo extends Demo {
 
     /**
      * static boolean	    isSpaceChar(char ch / int codePoint)
-     * 确定指定字符（Unicode 代码点）是否为 Unicode 空白字符
-     * 空白字符指 Unicode 空格字符（SPACE_SEPARATOR、LINE_SEPARATOR 或 PARAGRAPH_SEPARATOR)
+     * 确定指定字符是否为 Unicode 空白字符
+     * SPACE_SEPARATOR, LINE_SEPARATOR, PARAGRAPH_SEPARATOR
      * <p>
      * static boolean       isWhitespace(char ch / int codePoint)       建议使用
-     * 确定指定字符（Unicode 代码点）依据 Java 标准是否为空白字符
-     * 同上，但不是非中断空格（'\u00A0'、'\u2007'、'\u202F'）
+     * 确定指定字符依据 Java 标准是否为空白字符
+     * Unicode 空白字符，但不是非中断空格（'\u00A0'、'\u2007'、'\u202F'）
      * '\u0009' \t  HORIZONTAL TABULATION   水平制表符
      * '\u000A' \n  LINE FEED               换行
      * '\u000B'     VERTICAL TABULATION     纵向制表符
@@ -60,22 +64,16 @@ public class CharacterDemo extends Demo {
      */
     @Test
     public void isSpace() {
-        p(Character.isSpaceChar(' '));    // true
-        p(Character.isSpaceChar('\f'));   // false，换页
-        p(Character.isSpaceChar('\n'));   // false，换行
-        p(Character.isSpaceChar('\r'));   // false，回车
-        p(Character.isSpaceChar('\t'));   // false，tab
+        p(Character.isSpaceChar(' '));      // true
+        p(Character.isSpaceChar('\u00A0')); // true
+        p(Character.isSpaceChar('\u2007')); // true
+        p(Character.isSpaceChar('\u202F')); // true
 
         p(Character.isWhitespace(' '));    // true
         p(Character.isWhitespace('\f'));   // true，换页
         p(Character.isWhitespace('\n'));   // true，换行
         p(Character.isWhitespace('\r'));   // true，回车
         p(Character.isWhitespace('\t'));   // true，tab
-    }
-
-    @Test
-    public void is() {
-        p(Character.charCount(22));
     }
 
 }

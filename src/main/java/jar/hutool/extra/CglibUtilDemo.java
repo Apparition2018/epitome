@@ -8,7 +8,7 @@ import org.junit.Test;
 
 /**
  * CglibUtil
- * CGLib：一个强大的,高性能,高质量的Code生成类库，通过此库可以完成动态代理、Bean拷贝等操作。
+ * CGLib：一个强大的，高性能，高质量的 Code 生成类库，通过此库可以完成动态代理、Bean 拷贝等操作。
  * https://hutool.cn/docs/#/extra/cglib/Cglib%E5%B7%A5%E5%85%B7-CglibUtil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/cglib/CglibUtil.html
  *
