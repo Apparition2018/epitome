@@ -13,8 +13,11 @@ import java.util.Objects;
  * 类加载到卸载的生命周期：
  * 1)加载（Loading） 2)验证（Verification） 3)准备(Preparation) 4)解析(Resolution) 5)初始化(Initialization) 6)使用(Using) 7)卸载(Unloading)
  * <p>
+ * https://www.runoob.com/manual/jdk1.6/java/lang/ClassLoader.html
  * https://blog.csdn.net/briblue/article/details/54973413
- * http://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/ClassLoader.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ClassLoaderDemo extends Demo {
 

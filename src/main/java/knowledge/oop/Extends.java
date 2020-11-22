@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 /**
  * 继承
- * <p>
  * 继承提供高代码的复用性
- * <p>
  * 子类拥有父类非 private 属性，方法
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class Extends {
 

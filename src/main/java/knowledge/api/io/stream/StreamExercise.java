@@ -18,6 +18,9 @@ import java.io.*;
  * 1.缓冲流：   BufferedInputStream BufferedOutputStream BufferedReader BufferedWriter
  * 2.转换流：   InputStreamReader OutputStreamWriter
  * 3.数据流：   DataInputStream DataOutputStream
+ *
+ * @author ljh
+ * created on 2020/9/7 1:28
  */
 public class StreamExercise extends Demo {
 

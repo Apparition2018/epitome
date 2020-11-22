@@ -20,6 +20,9 @@ import org.junit.Test;
  * static double	cos(double a)           返回角的三角余弦
  * static double	sin(double a)           返回角的三角正弦
  * static double	tan(double a)           返回角的三角正切
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class MathDemo extends Demo {
 
