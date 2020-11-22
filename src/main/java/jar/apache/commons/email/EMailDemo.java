@@ -10,6 +10,9 @@ import java.net.URL;
 /**
  * 使用 Apache Commons Email 发生邮件：https://www.cnblogs.com/jimboi/p/6406237.html
  * http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/Email.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class EMailDemo extends Demo {
 

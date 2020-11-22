@@ -10,6 +10,9 @@ import java.nio.charset.StandardCharsets;
 /**
  * DigestUtils
  * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/digest/DigestUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class DigestUtilsDemo extends Demo {
 
