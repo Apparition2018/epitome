@@ -23,6 +23,9 @@ import org.junit.Test;
  * <p>
  * https://blog.csdn.net/u010046887/article/details/47398213
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ArrayUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ArrayUtilsDemo extends Demo {
 

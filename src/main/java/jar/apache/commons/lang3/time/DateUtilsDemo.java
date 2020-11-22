@@ -18,6 +18,9 @@ import java.util.concurrent.TimeUnit;
  * https://www.cnblogs.com/aston/p/9053201.html
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class DateUtilsDemo extends Demo {
 
