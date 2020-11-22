@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * SimpleDateFormat
- * https://jdk6.net/text/SimpleDateFormat.html
+ * https://www.runoob.com/manual/jdk1.6/java/text/SimpleDateFormat.html
  * <p>
  * 字母   日期或时间元素             表示          示例
  * G        Era 标志符             Text          AD
@@ -28,6 +28,9 @@ import java.util.Date;
  * S        毫秒数                 Number        978
  * z        时区             General time zone  Pacific Standard Time; PST; GMT-08:00
  * Z        时区             RFC 822 time zone  -0800
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class SimpleDateFormatDemo extends Demo {
 

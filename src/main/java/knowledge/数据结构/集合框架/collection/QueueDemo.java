@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Queue
- * <p>
+ * https://www.runoob.com/manual/jdk1.6/java/util/Queue.html
  * Java 常见队列：https://pic4.zhimg.com/v2-c1f2992fb01c501a5dada75d0b27b0b3_r.jpg
  *
  * @author ljh
@@ -85,7 +85,7 @@ public class QueueDemo extends Demo {
      * 优先级队列的元素按照其自然顺序进行排序，或者根据构造队列时提供的 Comparator 进行排序。
      * 优先级队列不允许使用 null 元素。
      * 依靠自然顺序的优先级队列还不允许插入不可比较的对象（这样做可能导致 ClassCastException）。
-     * https://jdk6.net/util/AbstractQueue.html
+     * https://www.runoob.com/manual/jdk1.6/java/util/PriorityQueue.html
      */
     @Test
     public void testPriorityQueue() {

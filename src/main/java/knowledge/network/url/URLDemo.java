@@ -15,7 +15,10 @@ import java.nio.charset.StandardCharsets;
  * URL
  * 统一资源定位符，它是指向互联网“资源”的指针。
  * 资源可以是简单的文件或目录，也可以是对更为复杂的对象的引用，例如对数据库或搜索引擎的查询。
- * https://jdk6.net/net/URL.html
+ * https://www.runoob.com/manual/jdk1.6/java/net/URL.html
+ *
+ * @author ljh
+ * created on 2020/11/17 19:09
  */
 public class URLDemo extends Demo {
 

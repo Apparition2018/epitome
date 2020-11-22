@@ -9,7 +9,7 @@ import java.util.*;
  * Map
  * Map          HashMap                 LinkedHashMap           TreeMap
  * 适用场景     快速访问                记录插入顺序              自动排序
- * https://jdk6.net/util/Map.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/Map.html
  * <p>
  * void	        putAll(Map<? extends K,? extends V> m)      从指定映射中将所有映射关系复制到此映射中（可选操作）
  * void	        clear()                                     从此映射中移除所有映射关系（可选操作）
@@ -41,7 +41,9 @@ import java.util.*;
  * 3.如果想要通过 AbstractMap 派生出 Map。需要实现 entrySet() 和重写 put(K, V)，
  * 因为 put(K, V) 会抛出 UnsupportedOperationException。
  * 4.有内部类 SimpleImmutableEntry（不可变的键值对）, SimpleEntry（可变的键值对）
- * ************************************************************
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class MapDemo extends Demo {
 
@@ -76,7 +78,7 @@ public class MapDemo extends Demo {
      * TreeMap
      * TreeMap → NavigableMap → SortedMap → Map
      * 基于红黑树（Red-Black tree）的 NavigableMap 实现。该映射根据其键的自然顺序进行排序，或者根据创建映射时提供的 Comparator 进行排序。
-     * https://jdk6.net/util/TreeMap.html
+     * https://www.runoob.com/manual/jdk1.6/java/util/TreeMap.html
      * <p>
      * PS：大部分 API 类似 TreeSet，可参考 TreeSetDemo
      */

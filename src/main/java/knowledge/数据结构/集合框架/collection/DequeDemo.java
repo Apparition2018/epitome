@@ -25,6 +25,9 @@ import java.util.Stack;
  * boolean	        removeLastOccurrence(Object o)  从此双端队列移除最后一次出现的指定元素
  * <p>
  * 算法刻意练习之栈、队列、双端队列、优先队列：https://www.pianshen.com/article/27711847617/
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class DequeDemo extends Demo {
     
@@ -65,7 +68,7 @@ public class DequeDemo extends Demo {
      * Stack
      * Stack 继承 Vector
      * Stack 类表示后进先出（LIFO）的对象堆栈。它通过五个操作对类 Vector 进行了扩展 ，允许将向量视为堆栈。
-     * https://jdk6.net/util/Stack.html
+     * https://www.runoob.com/manual/jdk1.6/java/util/Stack.html
      * <p>
      * Deque 接口及其实现提供了 LIFO 堆栈操作的更完整和更一致的集合，应该优先使用 Deque，而非 stack。
      * <p>
@@ -101,6 +104,7 @@ public class DequeDemo extends Demo {
 
     /**
      * BlockingDeque    阻塞双端队列
+     * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/BlockingDeque.html
      * <p>
      * 操作位                          第一个元素（头部）
      * 操作       抛出异常            特殊值             阻塞          超时退出

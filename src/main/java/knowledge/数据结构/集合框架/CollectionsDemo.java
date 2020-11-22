@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 /**
  * Collections
- * https://jdk6.net/util/Collections.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/Collections.html
  * <p>
  * static void	            copy(List<? super T> dest, List<? extends T> src) 将所有元素从一个列表复制到另一个列表
  * static void	            fill(List<? super T> list, T obj)               使用指定元素替换指定列表中的所有元素
@@ -45,6 +45,9 @@ import java.util.stream.Collectors;
  * <p>
  * static <T extends Object & Comparable<? super T>> T	max(Collection<? extends T> coll[, Comparator<? super T> comp])   根据元素的自然顺序，返回给定 collection 的最大元素
  * static <T extends Object & Comparable<? super T>> T	min(Collection<? extends T> coll[, Comparator<? super T> comp])   根据元素的自然顺序 返回给定 collection 的最小元素
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class CollectionsDemo extends Demo {
 

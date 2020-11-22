@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * List
  * List 继承 Collection
- * https://jdk6.net/util/List.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/List.html
  * <p>
  * List             Vector              ArrayList                       LinkedList
  * 线程同步             是                   否                               否
@@ -46,7 +46,9 @@ import java.util.*;
  * 2.内部持有一个ReentrantLock lock = new ReentrantLock();
  * 3.底层是用 volatile transient 声明的数组 array
  * 4.读写分离，写时复制出一个新的数组，完成插入、修改或者移除操作后将新数组赋值给 array
- * ************************************************************
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ListDemo extends Demo {
 
@@ -101,6 +103,7 @@ public class ListDemo extends Demo {
      * <p>
      * 多线程环境下可以考虑用 Collections.synchronizedList(List l) 返回一个线程安全的 ArrayList 类，
      * 也可以使用 concurrent 并发包下的 CopyOnWriteArrayList。
+     * https://www.runoob.com/manual/jdk1.6/java/util/ArrayList.html
      */
     @Test
     public void testArrayList() {

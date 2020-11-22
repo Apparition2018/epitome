@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * Collection
  * Collection 继承 Iterable
- * https://jdk6.net/util/Collection.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/Collection.html
  * <p>
  * 接口        Set        List
  * 有序         否          是
@@ -33,7 +33,9 @@ import org.junit.Test;
  * 2.有抽象方法 iterator(), size()
  * 3.如果想要通过 AbstractCollection 派生出 Collection。需要实现 iterator(), size() 和重写 add(E)，
  * 因为 add(E) 会抛出 UnsupportedOperationException。
- * ************************************************************
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class CollectionDemo extends Demo {
 

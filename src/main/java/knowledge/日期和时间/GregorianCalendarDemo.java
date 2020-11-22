@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 
 /**
  * GregorianCalendar
+ * https://www.runoob.com/manual/jdk1.6/java/util/GregorianCalendar.html
  * <p>
  * 字段                                               默认值
  * ERA                                                  AD
@@ -17,6 +18,9 @@ import java.util.GregorianCalendar;
  * WEEK_OF_MONTH                                        0
  * AM_PM                                                1
  * HOUR, HOUR_OF_DAY, MINUTE, SECOND, MILLISECOND       0
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class GregorianCalendarDemo extends GregorianCalendar {
 

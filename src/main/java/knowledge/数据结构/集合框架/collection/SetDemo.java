@@ -10,7 +10,7 @@ import java.util.TreeSet;
 /**
  * Set
  * Set 继承 Collection
- * https://jdk6.net/util/Set.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/Set.html
  * <p>
  * Set          HashSet                 LinkedHashSet           TreeSet
  * 适用场景     快速访问                记录插入顺序              自动排序
@@ -27,8 +27,8 @@ public class SetDemo extends Demo {
      * TreeSet
      * TreeSet → NavigableSet → SortedSet → Set
      * 基于 TreeMap 的 NavigableSet 实现。使用元素的自然顺序对元素进行排序，或者根据创建 set 时提供的 Comparator 进行排序。
+     * https://www.runoob.com/manual/jdk1.6/java/util/TreeSet.html
      * http://www.cnblogs.com/bravolove/p/5810267.html
-     * https://jdk6.net/util/TreeSet.html
      * <p>
      * Comparator<? super E>	comparator()        返回对此 set 中的元素进行排序的比较器；如果此 set 使用其元素的自然顺序，则返回 null
      */

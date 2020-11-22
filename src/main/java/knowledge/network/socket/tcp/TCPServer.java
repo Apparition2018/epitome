@@ -25,6 +25,9 @@ import java.net.SocketTimeoutException;
  * 互联网协议入门（二）：http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html
  * <p>
  * 单工，半双工，全双工：https://blog.csdn.net/u012426327/article/details/77160503
+ *
+ * @author ljh
+ * created on 2020/11/17 19:09
  */
 public class TCPServer extends Demo implements Runnable {
 
@@ -54,9 +57,9 @@ public class TCPServer extends Demo implements Runnable {
 
     /**
      * Socket
-     * https://jdk6.net/net/Socket.html
+     * https://www.runoob.com/manual/jdk1.6/java/net/Socket.html
      * ServerSocket
-     * https://jdk6.net/net/ServerSocket.html
+     * https://www.runoob.com/manual/jdk1.6/java/net/ServerSocket.html
      */
     public void run() {
         while (true) {

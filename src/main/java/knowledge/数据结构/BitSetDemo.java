@@ -7,7 +7,7 @@ import java.util.BitSet;
 /**
  * BitSet (未完待续)
  * 实现了一个按需增长的位向量。位 set 的每个组件都有一个 boolean 值。
- * https://jdk6.net/util/BitSet.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/BitSet.html
  * https://blog.csdn.net/jiangnan2014/article/details/53735429
  * <p>
  * boolean	    get(int bitIndex)                   返回指定索引处的位值
@@ -21,6 +21,9 @@ import java.util.BitSet;
  * void	        flip(int fromIndex, int toIndex)    将指定的 fromIndex（包括）到指定的 toIndex（不包括）范围内的每个位设置为其当前值的补码
  * <p>
  * int	        cardinality()                       返回此 BitSet 中设置为 true 的位数
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class BitSetDemo extends Demo {
 

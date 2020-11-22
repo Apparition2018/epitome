@@ -8,11 +8,14 @@ import java.util.Hashtable;
 /**
  * Hashtable
  * Hashtable 继承 Dictionary，实现 Map
- * https://jdk6.net/util/Hashtable.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/Hashtable.html
  * <p>
  * Map              HashMap                     Hashtable
  * 线程               同步              Collections.synchronizedList(map);
  * 键为 null          不可以                         可以
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class HashtableDemo extends Demo {
 

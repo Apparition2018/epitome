@@ -14,7 +14,10 @@ import java.util.Date;
  * int	        compareTo(Date anotherDate)     比较两个日期的顺序
  * boolean	    equals(Object obj)              比较两个日期的相等性
  * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/util/Date.html
+ * https://www.runoob.com/manual/jdk1.6/java/util/Date.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class DateDemo extends Demo {
 
