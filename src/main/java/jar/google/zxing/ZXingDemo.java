@@ -17,6 +17,12 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
+/**
+ * zxing
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 public class ZXingDemo extends Demo {
 
     private static final String FORMAT = "png";

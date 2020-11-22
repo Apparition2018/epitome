@@ -15,6 +15,9 @@ import org.junit.Test;
  * http://www.ibloger.net/article/3316.html
  * https://blog.csdn.net/yaomingyang/article/details/80955872
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Multimap.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class MultimapDemo extends Demo {
 

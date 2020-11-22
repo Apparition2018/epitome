@@ -5,14 +5,16 @@ import com.google.common.collect.ImmutableMap;
 
 /**
  * 不可变集合
+ * 效率高，占内存少
  * <p>
  * ImmutableList
  * ImmutableMap
  * ImmutableSet
  * ImmutableSortedMap
  * ImmutableSortedSet
- * <p>
- * 效率高，占内存少
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ImmutableDemo {
 

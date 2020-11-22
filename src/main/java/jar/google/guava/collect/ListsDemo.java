@@ -16,6 +16,9 @@ import java.util.List;
  * <p>
  * http://www.ibloger.net/article/3312.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Lists.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ListsDemo extends Demo {
 

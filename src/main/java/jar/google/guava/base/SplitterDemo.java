@@ -10,9 +10,11 @@ import java.util.regex.Pattern;
 
 /**
  * Splitter
- *
  * http://www.ibloger.net/article/3335.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/base/Splitter.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class SplitterDemo {
 

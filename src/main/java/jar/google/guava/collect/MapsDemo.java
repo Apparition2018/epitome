@@ -14,6 +14,9 @@ import java.util.Objects;
 
 /**
  * Map
+ * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Maps.html
+ * http://www.ibloger.net/article/3314.html
+ * <p>
  * static ConcurrentMap<K, V>   newConcurrentMap()                                  创建 ConcurrentMap
  * static TreeMap<K, V>         newTreeMap([SortedMap<K, ? extends V> map])         创建 TreeMap
  * static TreeMap<K, V>         newTreeMap(@Nullable Comparator<C> comparator)      创建 TreeMap，根据 Comparator
@@ -25,9 +28,9 @@ import java.util.Objects;
  * static XXXMap<K, V>          synchronizedXXXMap(XXXMap<K, V> map)                XXXMap → synchronizedXXXMap
  * static Entry<K, V>           immutableEntry(@Nullable K key, @Nullable V value)  key + value → Entry
  * static Converter<A, B>       asConverter(BiMap<A, B> bimap)                      BiMap → Converter
- * <p>
- * http://www.ibloger.net/article/3314.html
- * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Maps.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class MapsDemo extends Demo {
 

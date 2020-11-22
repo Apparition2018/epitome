@@ -13,9 +13,11 @@ import java.util.stream.Collectors;
 
 /**
  * Joiner
- * <p>
  * http://www.ibloger.net/article/3334.html
  * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/base/Joiner.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class JoinerDemo extends Demo {
 

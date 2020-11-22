@@ -11,18 +11,20 @@ import java.util.TreeSet;
 
 /**
  * Sets
+ * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Sets.html
+ * http://www.ibloger.net/article/3313.html
  * <p>
  * static Set<E>                    newConcurrentHashSet([Iterable<? extends E> elements])      创建 ConcurrentHashSet
  * static CopyOnWriteArraySet<E>    newCopyOnWriteArraySet(Iterable<? extends E> elements)      创建 CopyOnWriteArraySet
  * static TreeSet<E>                newTreeSet(Iterable<? extends E> elements)                  创建 TreeSet
  * static EnumSet<E>                newEnumSet(Iterable<E> iterable, Class<E> elementType)      创建 EnumSet
  * static Set<E>                    newIdentityHashSet()                                        创建 IdentityHashSet
- *
+ * <p>
  * static <E> NavigableSet<E>       unmodifiableNavigableSet(NavigableSet<E> set)
  * static <E> NavigableSet<E>       synchronizedNavigableSet(NavigableSet<E> navigableSet)
- * <p>
- * http://www.ibloger.net/article/3313.html
- * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Sets.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class SetsDemo extends Demo {
 
