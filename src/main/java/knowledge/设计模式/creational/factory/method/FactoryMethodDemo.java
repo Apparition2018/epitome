@@ -5,19 +5,14 @@ import l.demo.Demo;
 
 /**
  * 工厂模式：定义一个创建对象的接口，让子类来决定哪些类需要被实例化，使一个类的实例化推迟到子类。工厂模式是抽象工厂的一种常见情况。
- * <p>
  * 应用场合：计划不同条件下创建不同实例
- * <p>
- * 使用场景：
- * 1.数据存储
- * <p>
+ * 使用场景：1.数据存储
  * 关键代码：抽象产品
  * <p>
  * 工厂模式 | 菜鸟教程：https://www.runoob.com/design-pattern/factory-pattern.html
  * 工厂模式-场景以及优缺点：https://www.cnblogs.com/aspirant/p/8980573.html
  * 简单工厂模式及在实际项目中的应用：https://www.jianshu.com/p/72567cc1d63f
  * 工厂方法：https://blog.csdn.net/wangwei129549/article/details/50623809
- * <p>
  * https://www.imooc.com/learn/261
  *
  * @author ljh

@@ -1,5 +1,9 @@
 package knowledge.设计模式.creational.builder.demo2;
 
+/**
+ * @author ljh
+ * created on 2020/9/26 2:51
+ */
 public class BuilderDemo {
     public static void main(String[] args) {
         Waiter waiter = new Waiter();

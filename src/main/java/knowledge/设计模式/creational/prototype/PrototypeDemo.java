@@ -4,8 +4,10 @@ import java.util.HashMap;
 
 /**
  * 原型模式：用原型实例指定创建对象的种类，并且通过拷贝这个原型来创建新的对象
- * <p>
  * https://www.runoob.com/design-pattern/prototype-pattern.html
+ *
+ * @author ljh
+ * created on 2020/9/26 2:51
  */
 public class PrototypeDemo {
     public static void main(String[] args) {

@@ -5,10 +5,11 @@ package knowledge.设计模式.creational.builder.demo;
  * ConcreteBuilder: 具体建造者角色
  * Director: 导演者角色
  * Product: 产品角色
- * <p>
  * 建造者模式：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示
- * <p>
  * http://www.cnblogs.com/java-my-life/archive/2012/04/07/2433939.html
+ *
+ * @author ljh
+ * created on 2020/9/26 2:51
  */
 public class BuilderDemo {
 
