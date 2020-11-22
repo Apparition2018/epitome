@@ -17,6 +17,9 @@ import java.util.concurrent.TimeUnit;
  * Java 内置锁的简单认识：https://www.cnblogs.com/xyhuangjinfu/p/6505329.html
  * Synchronized 的可重入性和不可中断性：https://blog.csdn.net/x541211190/article/details/106397437
  * monitor 机制实现：https://www.cnblogs.com/qingshan-tang/p/12698705.html
+ *
+ * @author ljh
+ * created on 2020/11/17 19:09
  */
 public class Synchronized extends Demo {
 

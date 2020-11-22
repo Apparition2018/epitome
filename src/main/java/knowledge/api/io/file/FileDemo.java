@@ -33,6 +33,9 @@ import java.util.Objects;
  * String	    getName()                   返回由此抽象路径名表示的文件或目录的名称
  * Path         toPath()                    返回从此抽象路径构造的java.nio.file.Path对象
  * URI	        toURI()                     构造一个表示此抽象路径名的 file: URI
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class FileDemo extends Demo {
 

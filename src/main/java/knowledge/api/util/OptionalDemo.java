@@ -9,8 +9,12 @@ import java.util.Optional;
 /**
  * Optional
  * <p>
+ * https://docs.oracle.com/javase/8/docs/api/allclasses-noframe.html
  * https://www.cnblogs.com/xingzc/p/5778090.htmlsout
  * https://www.oschina.net/translate/understanding-accepting-and-leveraging-optional-in?lang=chs&page=1#
+ *
+ * @author ljh
+ * created on 2020/11/17 19:09
  */
 public class OptionalDemo extends Demo {
 

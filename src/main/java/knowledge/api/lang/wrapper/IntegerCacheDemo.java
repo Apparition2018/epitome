@@ -17,6 +17,9 @@ import org.junit.Test;
  * <p>
  * https://www.cnblogs.com/dolphin0520/p/3780005.html
  * https://www.cnblogs.com/wang-yaz/p/8516151.html
+ *
+ * @author ljh
+ * created on 2020/9/7 1:28
  */
 public class IntegerCacheDemo extends Demo {
 

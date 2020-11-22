@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 
 /**
  * Paths
- * https://www.matools.com/file/manual/jdk_api_1.8_google/java/nio/file/Paths.html
+ * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html
  *
  * @author ljh
  * created on 2020/11/5 10:06

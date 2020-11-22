@@ -19,6 +19,9 @@ import java.util.stream.IntStream;
  * Java 实现 Base64 加密：https://www.imooc.com/learn/285
  * https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html
  * https://docs.oracle.com/javase/8/docs/api/java/util/Base64.Decoder.html
+ *
+ * @author ljh
+ * created on 2020/11/18 19:37
  */
 public class Base64Demo extends Demo {
 

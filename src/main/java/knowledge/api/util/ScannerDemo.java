@@ -13,6 +13,9 @@ import java.util.Scanner;
  * 使用分隔符模式将其输入分解为标记，默认情况下该分隔符模式与空白匹配。
  * 然后可以使用不同的 next 方法将得到的标记转换为不同类型的值。
  * https://www.runoob.com/manual/jdk1.6/java/util/Scanner.html
+ *
+ * @author ljh
+ * created on 2020/10/23 20:09
  */
 public class ScannerDemo extends Demo {
 
