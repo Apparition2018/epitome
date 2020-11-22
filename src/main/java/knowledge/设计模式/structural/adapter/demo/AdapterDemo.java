@@ -4,11 +4,13 @@ package knowledge.设计模式.structural.adapter.demo;
  * Target: 目标角色
  * Adaptee: 源角色
  * Adapter: 适配器角色
- * <p>
  * 适配器模式：将已有的接口转换为需要的接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作
  * <p>
  * http://www.cnblogs.com/java-my-life/archive/2012/04/13/2442795.html
  * https://www.runoob.com/design-pattern/adapter-pattern.html
+ *
+ * @author Arsenal
+ * created on 2020/9/26 2:51
  */
 public class AdapterDemo {
     public static void main(String[] args) {

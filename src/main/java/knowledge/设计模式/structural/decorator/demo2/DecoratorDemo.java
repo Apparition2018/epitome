@@ -3,6 +3,9 @@ package knowledge.设计模式.structural.decorator.demo2;
 /**
  * 某发票（Invoice）由抬头（Head）部分、正文部分和脚注（Foot）部分构成。
  * 现采用装饰（Decorator）模式实现打印发票的功能，得到如图6-1 所示的类图。
+ *
+ * @author Arsenal
+ * created on 2020/9/26 2:51
  */
 public class DecoratorDemo {
     public static void main(String[] args) {

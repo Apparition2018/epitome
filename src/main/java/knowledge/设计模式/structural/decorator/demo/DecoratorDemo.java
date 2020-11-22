@@ -5,10 +5,11 @@ package knowledge.设计模式.structural.decorator.demo;
  * ConcreteComponent: 具体构建角色
  * Decorator: 装饰角色
  * ConcreteDecorator: 具体装饰角色
- *
  * 装饰器模式：动态地给一个对象添加新的职责
- *
  * http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html
+ *
+ * @author Arsenal
+ * created on 2020/9/26 2:51
  */
 public class DecoratorDemo {
     public static void main(String[] args) {
@@ -23,7 +24,7 @@ public class DecoratorDemo {
 
 // 抽象构建角色
 interface TheGreatestSage { // 大圣
-    public void move();
+    void move();
 }
 
 // 具体构建角色

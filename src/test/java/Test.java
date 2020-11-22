@@ -29,13 +29,36 @@
 // java长连接
 
 import l.demo.Demo;
+import org.apache.commons.io.FileUtils;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
 public class Test extends Demo {
 
-    public static void main(String[] args) {
-        int[] x = new int[]{1, 2, 3};
-        int y = x[0];
+    public static void main(String[] args) throws IOException {
+        File f = new File("D:\\git\\epitome");
+
+        List<File> files = (List<File>) FileUtils.listFiles(f, null, true);
+        System.out.println(files.size());
+        for (File file : files) {
+            if (file.getName().contains(".java")) {
+                BufferedReader br = new BufferedReader(new FileReader(file.getAbsoluteFile()));
+                String line;
+                StringBuilder brString = new StringBuilder();
+                // String	        readLine()                              读取一个文本行
+                while (null != (line = br.readLine())) {
+                    brString.append(line);
+                }
+                if (!brString.toString().contains("@author")) {
+                    System.out.println(file.getName());
+                }
+            }
+        }
     }
 }
