@@ -10,6 +10,9 @@ import java.util.List;
 /**
  * Freemarker 整合 SpringMVC
  * http://blog.csdn.net/u012759397/article/details/54091895
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 @Controller
 public class FreeMarkerController {

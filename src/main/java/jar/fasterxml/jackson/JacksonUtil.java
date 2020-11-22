@@ -18,6 +18,9 @@ import java.util.Date;
  * <p>
  * spring-boot 中 spring.jackson.date-format 失效及解决办法：
  * https://my.oschina.net/u/3681868/blog/3075150
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 @Slf4j
 public class JacksonUtil {
