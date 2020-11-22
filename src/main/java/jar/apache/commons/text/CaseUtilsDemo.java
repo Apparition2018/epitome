@@ -6,6 +6,9 @@ import org.junit.Test;
 /**
  * CaseUtils
  * https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/CaseUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class CaseUtilsDemo {
 

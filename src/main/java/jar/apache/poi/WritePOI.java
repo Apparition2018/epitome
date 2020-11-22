@@ -9,6 +9,10 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 public class WritePOI {
 	public static void main(String[] args) {
 

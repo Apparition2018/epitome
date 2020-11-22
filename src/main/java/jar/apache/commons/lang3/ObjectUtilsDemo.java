@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * ObjectUtils
+ * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ObjectUtils.html
  * <p>
  * static boolean   notEqual(Object object1, Object object2)            是否不相等
  * static boolean   isEmpty(Object object)                              是否为空
@@ -25,8 +26,9 @@ import java.util.List;
  * static String	identityToString(Object object)                     ???
  * static void	    identityToString(Appendable/StringBuffer/StringBuilder,
  * -                    Object object)                                  ???
- * <p>
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ObjectUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ObjectUtilsDemo extends Demo {
 

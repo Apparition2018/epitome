@@ -7,8 +7,10 @@ import org.junit.Test;
 /**
  * StringEscapeUtils
  * 转义和反转义 Java, JavaScript, HTML, XML 字符串
- * <p>
  * https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/StringEscapeUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class StringEscapeUtilsDemo extends Demo {
 

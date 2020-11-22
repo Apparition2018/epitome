@@ -11,6 +11,7 @@ import java.util.Comparator;
 
 /**
  * CollectionsUtils
+ * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/CollectionUtils.html
  * <p>
  * static Object                get(Object object, int index)
  * static <K, V> Entry<K, V>    get(Map<K, V> map, int index)
@@ -26,8 +27,9 @@ import java.util.Comparator;
  * <p>
  * static <C> Collection<C>	predicatedCollection(Collection<C> collection, Predicate<? super C> predicate)
  * static <E> Collection<E>	transformingCollection(Collection<E> collection, Transformer<? super E,? extends E> transformer)o
- * <p>
- * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/CollectionUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class CollectionUtilsDemo extends Demo {
 
