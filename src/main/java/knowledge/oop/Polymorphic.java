@@ -22,6 +22,9 @@ import l.demo.Demo;
  * 1.继承
  * 2.重写
  * 3.父类引用指向子类对象
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class Polymorphic extends Demo {
 

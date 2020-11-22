@@ -9,6 +9,9 @@ import java.util.function.Supplier;
 /**
  * 方法引用 (Method References)
  * JDK8 新特性，通过方法的名字来指向一个方法
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class MethodReferences extends Demo {
 

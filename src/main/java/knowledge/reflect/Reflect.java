@@ -43,6 +43,9 @@ import java.lang.reflect.Modifier;
  * Modifier API:
  * static boolean	isXXX(int mod)                          如果整数参数包括 XXX 修饰符，则返回 true，否则返回 false
  * static String	toString(int mod)                       返回描述指定修饰符中的访问修饰符标志的字符串
+ *
+ * @author ljh
+ * created on 2020/11/11 19:18
  */
 public class Reflect extends Demo {
 

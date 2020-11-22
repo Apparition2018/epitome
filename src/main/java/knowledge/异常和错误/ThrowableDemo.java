@@ -14,6 +14,9 @@ import java.util.Arrays;
  * Error 指示运行时环境发生的错误，一般发生在严重的故障时，java 程序通常不捕获此类错误，它们在 java 程序处理范畴之外
  * Exception 分为检测性异常 (Check Exception)，和非检测性异常 (Uncheck Exception)
  * https://www.runoob.com/manual/jdk1.6/java/lang/Throwable.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ThrowableDemo extends Demo {
 

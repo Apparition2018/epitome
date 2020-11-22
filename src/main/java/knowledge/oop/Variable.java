@@ -4,6 +4,9 @@ import org.junit.Test;
 
 /**
  * 变量
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class Variable {
 

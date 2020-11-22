@@ -13,6 +13,9 @@ package knowledge.modifires;
  * 1.父类中声明为 public 的方法在子类中也必须为 public
  * 2.父类中声明为 protected 的方法在子类中要么声明为 protected，要么声明为 public，不能声明为 private
  * 3.父类中声明为 private 的方法，不能够被继承
+ *
+ * @author ljh
+ * created on 2020/11/18 19:37
  */
 public class AccessModifier {
 
