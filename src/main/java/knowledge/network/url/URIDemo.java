@@ -8,8 +8,7 @@ import java.net.URISyntaxException;
 /**
  * URI
  * 统一资源标识符
- * https://jdk6.net/net/URI.html
- * <p>
+ * https://www.runoob.com/manual/jdk1.6/java/net/URI.html
  * HTTP 协议中 URI 和 URL 有什么区别：https://www.zhihu.com/question/21950864
  *
  * @author ljh

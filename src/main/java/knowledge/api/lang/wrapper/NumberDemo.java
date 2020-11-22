@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * Number
  * Number 是 AtomicInteger, AtomicLong, BigDecimal, BigInteger, Byte, Double, Float, Integer, Long 和 Short 类的超类。
- * https://jdk6.net/lang/Number.html
+ * https://www.runoob.com/manual/jdk1.6/java/lang/Number.html
  */
 public class NumberDemo extends Demo {
 

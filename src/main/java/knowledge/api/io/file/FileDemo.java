@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  * File
- * https://jdk6.net/io/File.html
+ * https://www.runoob.com/manual/jdk1.6/java/io/File.html
  * <p>
  * boolean	    setExecutable(boolean executable[, boolean ownerOnly])  设置此抽象路径名的所有者或所有用户的执行权限
  * boolean	    setReadable(boolean readable[, boolean ownerOnly])      设置此抽象路径名的所有者或所有用户的读权限

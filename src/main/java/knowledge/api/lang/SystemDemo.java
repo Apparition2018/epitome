@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
  * System
- * https://jdk6.net/lang/System.html
+ * https://www.runoob.com/manual/jdk1.6/java/lang/System.html
  * <p>
  * static void	                exit(int status)                        终止当前正在运行的 Java 虚拟机
  * static void	                gc()                                    运行垃圾回收器

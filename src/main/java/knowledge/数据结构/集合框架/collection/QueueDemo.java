@@ -24,7 +24,7 @@ public class QueueDemo extends Demo {
      * Queue 继承 Collection
      * Queue 实现了一个先进先出 (FIFO) 的数据结构
      * Queue 用来存放 等待处理元素 的集合，这种场景一般用于缓冲、并发访问。
-     * https://jdk6.net/util/Queue.html
+     * https://www.runoob.com/manual/jdk1.6/java/util/Queue.html
      * <p>
      * 操作       抛出异常	    返回特殊值（推荐使用）
      * 插入	    add(e)	        offer(e)
@@ -40,6 +40,7 @@ public class QueueDemo extends Demo {
     /**
      * BlockingQueue    阻塞队列
      * BlockingQueue 继承 Queue
+     * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/BlockingQueue.html
      * https://www.imooc.com/article/257739
      * <p>
      * 操作       抛出异常	    返回特殊值       阻塞          超时退出

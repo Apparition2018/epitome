@@ -38,7 +38,7 @@ public class Management {
     /**
      * ThreadMXBean
      * Java 虚拟机线程系统的管理接口。
-     * https://jdk6.net/lang-management/ThreadMXBean.html
+     * https://www.runoob.com/manual/jdk1.6/java/lang/management/ThreadMXBean.html
      * https://www.cnblogs.com/jiaoyiping/p/9250668.html
      */
     @Test

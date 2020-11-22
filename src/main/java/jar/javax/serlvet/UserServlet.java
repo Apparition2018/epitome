@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 
 /**
- * 从Servlet3.0开始，配置Servlet支持注解方式
+ * 从 Servlet3.0 开始，配置 Servlet 支持注解方式
  * http://blog.csdn.net/mytt_10566/article/details/70173007
  */
 @WebServlet(name = "myUserServlet", urlPatterns = "/user/test", loadOnStartup = 1, initParams = {
@@ -27,8 +27,7 @@ public class UserServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         PrintWriter pw = response.getWriter();
@@ -53,9 +52,8 @@ public class UserServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
-        doGet(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        doPost(request, response);
     }
 
 }

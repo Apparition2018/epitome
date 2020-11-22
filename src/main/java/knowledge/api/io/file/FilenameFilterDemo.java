@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * FilenameFilter
  * 实现此接口的类实例可用于过滤器文件名。
- * https://jdk6.net/io/FilenameFilter.html
+ * https://www.runoob.com/manual/jdk1.6/java/io/FilenameFilter.html
  *
  * @author ljh
  * created on 2020/9/14 10:51

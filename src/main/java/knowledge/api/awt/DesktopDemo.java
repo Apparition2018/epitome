@@ -9,10 +9,9 @@ import java.net.URI;
 
 /**
  * Desktop
- * https://jdk6.net/awt/Desktop.html
- * <p>
+ * https://www.runoob.com/manual/jdk1.6/java/awt/Desktop.html
  * Desktop.Action
- * https://jdk6.net/awt/Desktop-Action.html
+ * https://www.runoob.com/manual/jdk1.6/java/awt/Desktop.Action.html
  *
  * @author ljh
  * created on 2020/9/25 17:42

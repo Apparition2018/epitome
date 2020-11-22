@@ -43,7 +43,7 @@
 |:---|:---|:---|
 |ASCII|American Standard Code for Information Interchange|美国信息交换标准代码|
 |UCS|Universal Multiple-Octet Coded Character Set|通用字符集|
-|Unicode|Unique, Universal and Uniform character encoding|单一码、万国码、统一码|
+|Unicode|Unique, Universal and Uniform Character Encoding|单一码、万国码、统一码|
 |UTF|Unicode Transformation Format|Unicode 转换格式|
 |GBK|Chinese Internal Code Specification|汉字内码扩展规范|
 ---
@@ -140,6 +140,7 @@
 ## 其它
 ||||
 |:---|:---|:---|
+|UUID|Universally Unique Identifier|通用唯一标识符|
 |IDE|Integrated Development Environment|集成开发环境|
 |GUI|Graphical User Interface|图形用户界面|
 |UML|Unified Modeling Language|统一建模语言|
