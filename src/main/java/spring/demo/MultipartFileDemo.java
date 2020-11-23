@@ -1,4 +1,4 @@
-package jar.spring;
+package spring.demo;
 
 /**
  * MultipartFile

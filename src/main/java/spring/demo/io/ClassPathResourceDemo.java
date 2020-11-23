@@ -1,4 +1,4 @@
-package jar.spring.io;
+package spring.demo.io;
 
 import l.demo.Demo;
 import org.junit.Test;

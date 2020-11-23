@@ -1,4 +1,4 @@
-package jar.spring.util;
+package spring.demo.util;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.RandomStringUtils;

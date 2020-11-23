@@ -1,4 +1,4 @@
-package jar.spring.util;
+package spring.demo.util;
 
 /**
  * ResourceUtils
