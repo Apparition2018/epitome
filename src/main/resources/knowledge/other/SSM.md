@@ -62,7 +62,7 @@ Spring SpringMVC Mybatis
 >### Spring IOC 和 DI
 >1. IOC：对象之间的依赖关系由容器来建立，IOC 是目的
 >2. DI：容器调用 set() 或构造器来建立对象之间的依赖关系，DI 是手段
->   1. set() 注入
+>   1. set 注入
 >   ```
 >   <bean id="date" class="java.util.Date"/>
 >   <bean id="student" class="l.demo.Person.Student">
@@ -76,7 +76,38 @@ Spring SpringMVC Mybatis
 >       <constructor-arg index="1" value="张三"/>
 >   </bean>
 >   ```
->   3. 自动装配
+>   3. p 命名空间注入：和 set 注入原理一样，都是通过 setter 给属性赋值
+>   ```
+>   <bean id="student3" class="l.demo.Person.Student" p:id="1" p:name="张三"/>
+>   ```
+>   4. 自动装配 (autowire)
+>       1. no：默认值，禁用自动装配
+>       2. byName：根据属性名自动装配
+>       3. byType：根据属性类型自动装配
+>       4. constructor：与 byType 类似，应用于构造函数
+>       5. autodetect：通过 bean 类来决定使用 byType 还是 constructor。如果发现默认的构造器，将使用 byType
+>### Spring 参数注入
+>1. 基本类型：&lt;property name="age" value="18"/&gt;
+>   - 字段属性为 org.springframework.core.io.Resource 时，value="classpath:mybatis-config.xml"
+>2. 集合类型：&lt;list/&gt; &lt;set/&gt; &lt;map/&gt; &lt;props/&gt; 或 ref
+>   ```
+>   <bean id="person" class="l.demo.Person">
+>       <property name="otherInfo">
+>           <list>
+>               <value>父亲</value>
+>               <value>医生</value>
+>           </list>
+>       </property>
+>   </bean>
+>   
+>   <util:properties location="classpath:jdbc.properties" id="jdbc"/>
+>   <bean id="properties" class="spring.demo.bean.BeanDemo.Bean">
+>       <property name="properties" ref="jdbc"/>
+>   </bean>
+>   ```
+>3. Bean：ref
+>4. null：&lt;property name="age"&gt; &lt;null/gt; &lt;/property&gt;
+>5. Spring 表达式：#{...}，读取其它对象/集合中的数据
 ---
 
 

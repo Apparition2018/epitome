@@ -36,6 +36,7 @@ public class Person implements Comparable<Person>, Serializable {
     private Home home;
 
     @Data
+    @NoArgsConstructor
     @AllArgsConstructor
     public static class Home implements Serializable {
         private static final long serialVersionUID = 1L;
