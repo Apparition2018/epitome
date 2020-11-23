@@ -16,6 +16,9 @@ import java.util.Map;
 /**
  * BeanUtils
  * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/BeanUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class BeanUtilsDemo extends Demo {
     

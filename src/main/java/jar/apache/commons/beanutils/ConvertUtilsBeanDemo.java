@@ -10,6 +10,9 @@ package jar.apache.commons.beanutils;
 /**
  * ConvertUtilsBean
  * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/ConvertUtilsBean.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ConvertUtilsBeanDemo {
 
