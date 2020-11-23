@@ -2,11 +2,6 @@ package knowledge.api.lang.string;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
 /**
  * @author ljh
  * created on 2020/9/7 1:28
@@ -36,27 +31,24 @@ public class StringExercise {
     }
 
     /**
-     * 统计在字符串"abcdabftfalhhkk"中每个字符出现的次数。
+     * String s1 = new String("abc"); String s2 = "a" + "b"; 分别创建了几个对象？
      */
     @Test
     public void test2() {
-        String str = "abcdabftfalhhkk";
+        // String s1 = new String("abc");
+        // 答：1个或2个
+        // jvm 读到 "abc" 时，会检查常量池是否已有 "abc"
+        // jvm 读到 "new" 时，会在堆中创建一个对象，内容为 "abc" 的引用地址
 
-        char[] chars = str.toCharArray();
-
-        Map<Character, Integer> map = new HashMap<>();
-
-        for (char c : chars) {
-            if (!map.containsKey(c)) {
-                map.put(c, 1);
-            } else {
-                map.put(c, map.get(c) + 1);
-            }
-        }
-
-        Set<Entry<Character, Integer>> entrySet = map.entrySet();
-        for (Entry<Character, Integer> entry : entrySet) {
-            System.out.println(entry);
-        }
+        // String s2 = "a" + "b";
+        // 答：1个
+        String s1 = "a";
+        String s2 = "b";
+        String s3 = "ab";
+        String s4 = "a" + "b";
+        System.out.println(s3 == s4); // true
+        s4 = s1 + "b";
+        System.out.println(s3 == s4); // false
     }
+
 }
