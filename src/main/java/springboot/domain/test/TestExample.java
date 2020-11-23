@@ -3,6 +3,10 @@ package springboot.domain.test;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 21:07
+ */
 public class TestExample {
     protected String orderByClause;
 

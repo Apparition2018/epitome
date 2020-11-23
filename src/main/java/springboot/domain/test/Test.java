@@ -2,6 +2,10 @@ package springboot.domain.test;
 
 import java.io.Serializable;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 21:07
+ */
 public class Test implements Serializable {
     private Integer id;
 

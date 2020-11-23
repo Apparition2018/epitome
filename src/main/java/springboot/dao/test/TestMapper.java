@@ -5,6 +5,10 @@ import org.apache.ibatis.annotations.Param;
 import springboot.domain.test.Test;
 import springboot.domain.test.TestExample;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 21:07
+ */
 public interface TestMapper {
     long countByExample(TestExample example);
 
