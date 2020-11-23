@@ -9,7 +9,10 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Protostuff使用示例：https://blog.csdn.net/chszs/article/details/80354356
+ * Protostuff 使用示例：https://blog.csdn.net/chszs/article/details/80354356
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ProtostuffUtil {
 

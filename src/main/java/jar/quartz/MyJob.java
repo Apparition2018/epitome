@@ -6,6 +6,10 @@ import org.quartz.JobExecutionContext;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 public class MyJob implements Job {
 
 	@Override

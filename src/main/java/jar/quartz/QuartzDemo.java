@@ -7,6 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 public class QuartzDemo {
     public void go() throws Exception {
         // 首先，必需要取得一个Scheduler的引用
