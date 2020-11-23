@@ -12,6 +12,9 @@ import java.util.Arrays;
  * StatUtils
  * http://www.cnblogs.com/xiao02fang/p/9883909.html
  * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/stat/StatUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class StatDemo extends Demo {
 

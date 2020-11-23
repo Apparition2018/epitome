@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Arrays
  * Arrays 提供的所有方法都是静态的
+ * https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
  * <p>
  * static void	        sort(XXX[] a[, int fromIndex, int toIndex])                 对指定 XXX 型数组的指定范围按数字升序进行排序
  * static boolean	    equals(XXX[] xxx, XXX[] xxx)                                如果两个指定的 XXX 型数组彼此相等，则返回 true
@@ -18,8 +19,9 @@ import java.util.List;
  * <p>
  * static Stream	    stream(XXX[] arr[, int startInclusive, int endExclusive])   返回 Stream
  * static Spliterator[.OfXXX]	spliterator(XXX[] array)                            返回 Spliterator
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ArraysDemo extends Demo {
 
