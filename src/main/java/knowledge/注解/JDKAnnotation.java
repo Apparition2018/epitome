@@ -2,6 +2,8 @@ package knowledge.注解;
 
 import l.demo.Animal.Chicken;
 import l.demo.Demo;
+import org.apache.commons.lang3.time.StopWatch;
+import sun.misc.Contended;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +16,7 @@ import java.util.List;
  * 2. @Deprecation
  * 3. @SuppressWarnings 抑制编译器产生警告信息
  * 4. @SafeVarargs
+ * 5. @Contended
  * https://www.cnblogs.com/fsjohnhuang/p/4040785.html
  *
  * @author ljh
@@ -70,4 +73,36 @@ public class JDKAnnotation extends Demo {
         return list;
     }
 
+    /**
+     * Contended
+     * JDK8 新增的注解，减少伪共享(False Sharing)的发生
+     * <p>
+     * Java 经典面试题：伪共享问题及如何解决方案：https://www.zhihu.com/zvideo/1312762510748577792
+     */
+    private static class ContendedDemo {
+        @Contended
+        private volatile static long x;
+        @Contended
+        private volatile static long y;
+        private static final long TIMES = 100000000L;
+
+        public static void main(String[] args) throws InterruptedException {
+            StopWatch stopWatch = StopWatch.createStarted();
+            Thread t1 = new Thread(() -> {
+                for (long i = 0; i < TIMES; i++) {
+                    x = i;
+                }
+            });
+            Thread t2 = new Thread(() -> {
+                for (long i = 0; i < TIMES; i++) {
+                    y = i;
+                }
+            });
+            t1.start();
+            t2.start();
+            t1.join();
+            t2.join();
+            p(stopWatch.getTime());
+        }
+    }
 }
