@@ -8,6 +8,10 @@ import org.junit.Test;
 
 import java.util.Set;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 public class LombokDemo2 extends Demo {
 
     @Test

@@ -6,14 +6,10 @@ import org.junit.Test;
 
 /**
  * Lombok
- * <p>
- * https://www.cnblogs.com/maoshiling/p/8534980.html
- * http://www.cnblogs.com/exmyth/p/8710902.html
- * http://himichaelchu.iteye.com/blog/2124584
- * https://www.cnblogs.com/zhangyinhua/p/8623018.html
- * https://www.cnblogs.com/yrml/p/9015968.html
- * https://www.lwhweb.com/2017/11/08/lombok-use/
- * https://projectlombok.org/features/all
+ * Stable：https://projectlombok.org/features/all
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class LombokDemo extends Demo {
 
