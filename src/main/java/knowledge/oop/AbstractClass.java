@@ -12,6 +12,9 @@ import lombok.Setter;
  * <p>
  * 抽象类和接口的区别，使用场景：https://www.iteye.com/blog/yinny-1152430
  * 抽象类实现接口有什么意义？：https://www.zhihu.com/question/36909455/answer/303566988
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class AbstractClass extends Demo {
 

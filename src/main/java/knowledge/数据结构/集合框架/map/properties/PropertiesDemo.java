@@ -14,6 +14,9 @@ import java.util.Properties;
  * https://www.cnblogs.com/tonghun/p/7124245.html
  * <p>
  * void	    list(PrintStream out/PrintStream out)       将属性列表输出到指定的输出流
+ *
+ * @author ljh
+ * created on 2020/9/7 19:43
  */
 public class PropertiesDemo extends Demo {
 

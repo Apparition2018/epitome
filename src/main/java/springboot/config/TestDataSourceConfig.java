@@ -14,6 +14,10 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 @Configuration
 @MapperScan(basePackages = "springboot.dao.test", sqlSessionTemplateRef = "testSqlSessionTemplate")
 public class TestDataSourceConfig {

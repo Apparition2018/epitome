@@ -13,7 +13,7 @@ package knowledge.oop;
 
 import org.junit.Test;
 
-/*
+/**
  * 包
  * 作用：
  *  1.把功能相似或相关的类或接口组织在同一个包中，方便类(class)、接口(interface)、枚举(enum)、注解(Annotation)的查找和使用
@@ -22,6 +22,9 @@ import org.junit.Test;
  *      当同时调用两个不同包中相同类名的类时，应该加上包名加以区别。
  *      因此，包可以避免名字冲突。
  *  3.包也限定了访问权限，拥有包访问权限的类才能访问某个包中的类。
+ *  
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class Package {
     

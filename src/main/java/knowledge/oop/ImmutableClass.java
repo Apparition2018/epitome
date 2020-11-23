@@ -4,7 +4,6 @@ import java.util.stream.IntStream;
 
 /**
  * 不可变类
- * <p>
  * 创建该类的实例后，该实例的实例变量是不可改变的。
  * Java 提供的 8 个包装类和 String 类都是不可变类。
  * <p>
@@ -16,6 +15,9 @@ import java.util.stream.IntStream;
  * 优点：线程安全
  * <p>
  * 可变类与不可变类的区别：https://www.cnblogs.com/yg_zhang/p/4355354.html
+ *
+ * @author ljh
+ * created on 2020/11/10 19:19
  */
 public final class ImmutableClass {
 

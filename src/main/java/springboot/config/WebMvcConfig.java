@@ -20,6 +20,9 @@ import java.util.List;
  * <p>
  * SpringBoot 1.0 addCorsMappings 跨域
  * public class WebMvcConfig extends WebMvcConfigurerAdapter {}
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {

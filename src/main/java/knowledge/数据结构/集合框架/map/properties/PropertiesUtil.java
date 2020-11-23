@@ -1,7 +1,5 @@
 package knowledge.数据结构.集合框架.map.properties;
 
-import org.apache.commons.io.IOUtils;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
