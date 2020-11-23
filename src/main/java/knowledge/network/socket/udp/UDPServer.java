@@ -11,6 +11,9 @@ import java.net.InetAddress;
  * 服务器端
  * https://blog.csdn.net/u012426327/article/details/77160517
  * https://blog.csdn.net/u012426327/article/details/77162296
+ *
+ * @author ljh
+ * created on 2020/11/17 19:09
  */
 public class UDPServer extends Demo {
 

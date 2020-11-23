@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * JDKAnnotation
- * <p>
  * JDK 自带注解
  * 1. @Override
  * 2. @Deprecation

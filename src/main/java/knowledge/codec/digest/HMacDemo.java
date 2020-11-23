@@ -36,6 +36,9 @@ import java.util.List;
  * 应用场景二：HMAC 结合"挑战/响应"保障数据传输安全：https://www.cnblogs.com/fishou/p/4206980.html
  * <p>
  * HMAC 的 JAVA 实现和应用：https://www.cnblogs.com/fishou/p/4159092.html
+ *
+ * @author ljh
+ * created on 2020/11/18 19:37
  */
 public class HMacDemo extends Demo {
 
