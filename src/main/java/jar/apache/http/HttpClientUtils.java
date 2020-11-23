@@ -29,6 +29,9 @@ import java.util.Map;
  * HttpClientUtil 工具类：https://www.cnblogs.com/bignew/p/6715671.html
  * HttpComponents之httpclient基本使用方法：https://my.oschina.net/xinxingegeya/blog/282683
  * http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/
+ *
+ * @author ljh
+ * created on 2020/11/12 21:35
  */
 public class HttpClientUtils extends Demo {
 

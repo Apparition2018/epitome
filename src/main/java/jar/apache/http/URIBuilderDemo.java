@@ -13,6 +13,9 @@ import java.util.Map;
 /**
  * URIBuilder
  * https://blog.csdn.net/wxy1234556/article/details/79022402
+ *
+ * @author ljh
+ * created on 2020/11/12 21:35
  */
 public class URIBuilderDemo extends Demo {
 

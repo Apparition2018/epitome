@@ -23,6 +23,9 @@ import java.nio.charset.StandardCharsets;
  * 1.streamed 流式：内容从流中获得，或者在运行中产生。特别是这种分类包含从 HTTP 响应中获取的实体。流式实体是不可重复生成的。
  * 2.self-contained 自我包含式：内容在内存中或通过独立的连接或其它实体中获得。自我包含式的实体是可以重复生成的。这种类型的实体会经常用于封闭 HTTP 请求的实体。
  * 3.wrapping 包装式：内容从另外一个实体中获得。
+ *
+ * @author ljh
+ * created on 2020/11/12 21:35
  */
 public class EntityDemo extends Demo {
     public static void main(String[] args) throws ParseException, IOException {

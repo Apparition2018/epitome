@@ -5,7 +5,10 @@ import org.apache.http.*;
 import org.apache.http.message.BasicHeaderElementIterator;
 import org.apache.http.message.BasicHttpResponse;
 
-
+/**
+ * @author ljh
+ * created on 2020/11/12 21:35
+ */
 public class HeaderDemo extends Demo {
 
     public static void main(String[] args) {
