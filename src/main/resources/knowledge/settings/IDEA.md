@@ -55,5 +55,5 @@
 >   2. Artifacts
 >   3. \+ Web Application: Exploded ▶ From Modules...
 >   4. Output directory: xxx\target
->   5. 把 Available Elements 中需要用到的 jar Put into /WEB-INF/lib
+>   5. 把 Available Elements 中需要用到的 jar Put into /WEB-INF/lib，特别是 javax.servlet-api
 ---

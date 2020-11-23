@@ -4,8 +4,6 @@ import cn.hutool.extra.emoji.EmojiUtil;
 import l.demo.Demo;
 import org.junit.Test;
 
-import java.util.List;
-
 /**
  * EmojiUtil
  * 需要引入 com.vdurmont:emoji-java
