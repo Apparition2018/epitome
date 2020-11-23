@@ -14,12 +14,15 @@ import java.time.temporal.ChronoUnit;
  * <p>
  * boolean	        equals(Object otherDuration)            检查此持续时间是否等于指定的持续时间
  * int	            compareTo(Duration otherDuration)       将此持续时间与指定持续时间进行比较
- *
+ * <p>
  * boolean          isNegative()                            检查此持续时间是否为负值，不包括零
  * boolean	        isZero()                                检查此持续时间是否为零长度
- *
+ * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html
  * https://www.yiibai.com/javatime/javatime_duration.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class DurationDemo extends Demo {
 
@@ -66,10 +69,10 @@ public class DurationDemo extends Demo {
      * Duration	        negated()                       返回此持续时间负值的副本
      * Duration	        dividedBy(long divisor)         返回此持续时间除以指定值的副本
      * Duration	        multipliedBy(long multiplicand) 返回此持续时间乘以标量的副本
-     *
+     * <p>
      * Duration	        withNanos(int nanoOfSecond)     以指定的毫微秒数返回此持续时间的副本
      * Duration	        withSeconds(long seconds)       返回指定秒数的此持续时间的副本
-     *
+     * <p>
      * Temporal	        addTo(Temporal temporal)        将此持续时间添加到指定的时态对象
      * Temporal	        subtractFrom(Temporal temporal) 从指定的时态对象中减去这个持续时间
      */
@@ -99,7 +102,7 @@ public class DurationDemo extends Demo {
      * Duration	        plus(Duration duration)
      * Duration	        plus(long amountToAdd, TemporalUnit unit)
      * Duration	        plusXXX(long xxxToAdd)  (Days, Hours, Minutes, Seconds, Millis, Nanos)
-     *
+     * <p>
      * Duration	        minus(Duration duration)
      * Duration	        minus(long amountToSubtract, TemporalUnit unit)
      * Duration	        minus(long xxxToSubtract)

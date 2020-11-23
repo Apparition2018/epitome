@@ -18,6 +18,9 @@ import java.time.Period;
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/time/Period.html
  * https://www.yiibai.com/javatime/javatime_period.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class PeriodDemo extends Demo {
 

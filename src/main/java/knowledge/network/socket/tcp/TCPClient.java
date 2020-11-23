@@ -14,6 +14,9 @@ import java.net.Socket;
  * 2.连接建立后，通过输出流向服务器发送请求信息。
  * 3.通过输入流获取服务器响应的信息。
  * 4.关闭相应资源。
+ *
+ * @author ljh
+ * created on 2020/11/17 19:09
  */
 public class TCPClient extends Demo {
 

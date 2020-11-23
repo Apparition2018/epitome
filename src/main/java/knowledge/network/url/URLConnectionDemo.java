@@ -20,6 +20,9 @@ import java.util.concurrent.TimeUnit;
  * URLConnection
  * https://www.runoob.com/manual/jdk1.6/java/net/URLConnection.html
  * HTTP头部字段总结：https://www.cnblogs.com/soldierback/p/11714052.html
+ *
+ * @author ljh
+ * created on 2020/11/17 19:09
  */
 public class URLConnectionDemo extends Demo {
 

@@ -4,6 +4,9 @@ package knowledge.design.structural.bridge.demo2;
  * 某图像预览程序要求能够查看 BMP、JPEG 和GIF 三种格式的文件，而且能够在 Windows 和 Linux 两种操作系统上运行。
  * 程序需具有较好的扩展性以支持新的文件格式和操作系统。
  * 为满足上述需求并减少所需生成的子类数目，现采用桥接模式进行设计，得到如图6-1 所示的类图。
+ *
+ * @author ljh
+ * created on 2020/11/23 19:38
  */
 public class BridgeDemo {
 

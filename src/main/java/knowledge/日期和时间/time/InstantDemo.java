@@ -19,6 +19,9 @@ import java.time.temporal.ChronoUnit;
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html
  * https://www.yiibai.com/javatime/javatime_instant.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class InstantDemo extends Demo {
 

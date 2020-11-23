@@ -16,6 +16,9 @@ import java.time.temporal.ChronoField;
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/time/ZoneOffset.html
  * https://www.yiibai.com/javatime/javatime_zoneoffset.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ZoneOffsetDemo extends Demo {
 

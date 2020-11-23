@@ -9,6 +9,9 @@ package knowledge.design.structural.bridge.demo;
  * <p>
  * https://www.cnblogs.com/java-my-life/archive/2012/05/07/2480938.html
  * https://www.runoob.com/design-pattern/bridge-pattern.html
+ *
+ * @author ljh
+ * created on 2020/11/23 19:38
  */
 public class BridgeDemo {
     public static void main(String[] args) {

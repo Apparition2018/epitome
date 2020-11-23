@@ -75,6 +75,9 @@ import java.time.format.FormatStyle;
  * RFC_1123_DATE_TIME	        'Tue, 3 Jun 2008 11:05:30 GMT'
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
+ *
+ * @author ljh
+ * created on 2020/9/26 2:51
  */
 public class DateTimeFormatterDemo extends Demo {
     
