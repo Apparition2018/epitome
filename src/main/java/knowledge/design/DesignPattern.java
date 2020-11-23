@@ -29,7 +29,7 @@ public class DesignPattern extends Demo {
 
     /**
      * 单一责任原则
-     * 有且仅有一个原因引起类(方法)的变更
+     * 有且仅有一个原因引起类/方法的变更（一个类只负责一项职责）
      * https://www.cnblogs.com/liebrother/p/10182494.html
      */
     private static class SRP {

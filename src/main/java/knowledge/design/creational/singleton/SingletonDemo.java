@@ -10,7 +10,8 @@ import java.util.Map;
 
 /**
  * 单例模式：保证整个应用程序中某个实例有且只有一个
- * 应用场合：有些对象只需要一个就足够了
+ * 主要解决：多个线程使用同一个配置信息对象时，确保对象唯一性；一个对象频繁地创建与销毁
+ * 应用场合：某种类型的对象有且只有一个；创建一个对象需要消耗的资源过多，如I/0和数据库连接；
  * 应用场景：
  * 1.配置文件
  * 2.工具类
@@ -19,6 +20,7 @@ import java.util.Map;
  * 5.日志对象
  * 6.计数器
  * 关键代码：构造器私有，另外提供一个用于获取实例的方法
+ * 缺点：没有接口，不能继承，与单一职责原则冲突，单例模式把"要单例"和业务逻辑融合在一个类中
  * <p>
  * 《设计模式解析与实战》单例模式：https://blog.csdn.net/wangwei129549/article/details/50623579
  * 深入理解单例模式：https://blog.csdn.net/mnb65482/article/details/80458571
@@ -37,7 +39,7 @@ public class SingletonDemo {
         // 类加载就创建唯一实例，以空间换时间，故不存在线程安全问题，形象称为饿汉模式
         private static EagerSingleton instance = new EagerSingleton();
 
-        // 2.将构造方法私有化，不允许外部直接创建对象
+        // 2.将构造方法私有化，不允许外部通过 new 直接创建对象
         private EagerSingleton() {
 
         }
@@ -52,15 +54,12 @@ public class SingletonDemo {
      * 懒汉模式，线程不安全
      */
     private static class LazySingleton {
-        // 1.创建类的唯一实例，使用 private static 修饰
         private static LazySingleton instance;
 
-        // 2.将构造方法私有化，不允许外部直接创建对象
         private LazySingleton() {
 
         }
 
-        // 3.提供一个用于获取实例的方法，使用 public static 修饰
         // 调用方法才创建唯一实例，以时间换空间，存在线程安全问题，形象称为懒汉模式
         // 添加 synchronized 修饰方法则线程安全，但降低了效率
         public static LazySingleton getInstance() {
@@ -110,17 +109,14 @@ public class SingletonDemo {
      */
     private static class StaticInnerClassSingleton {
 
-        // 1.静态内部类创建类的唯一实例
         private static class SingletonHolder {
             private static StaticInnerClassSingleton instance = new StaticInnerClassSingleton();
         }
 
-        // 2.将构造方法私有化，不允许外部直接创建对象
         private StaticInnerClassSingleton() {
 
         }
 
-        // 3.提供一个用于获取实例的方法，使用 public static 修饰
         public static StaticInnerClassSingleton getInstance() {
             return SingletonHolder.instance;
         }
