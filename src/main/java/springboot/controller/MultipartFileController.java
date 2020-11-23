@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 @Slf4j
 @RestController
 @RequestMapping("/multipart-file")

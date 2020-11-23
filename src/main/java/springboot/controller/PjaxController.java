@@ -21,6 +21,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 @Controller
 @RequestMapping("/weather")
 public class PjaxController {

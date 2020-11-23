@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 @RestController
 @RequestMapping("/jackson")
 @Api("jackson")

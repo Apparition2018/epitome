@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 @RestController
 @RequestMapping("/httpclient")
 public class HttpClientController {

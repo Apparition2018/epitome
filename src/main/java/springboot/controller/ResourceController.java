@@ -10,6 +10,9 @@ import springboot.domain.Resource;
  * https://www.xttblog.com/?p=2834
  * https://www.cnblogs.com/duanxz/p/4520571.html
  * https://blog.csdn.net/michaelwubo/article/details/81289504
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 @RestController
 @RequestMapping("/resource")

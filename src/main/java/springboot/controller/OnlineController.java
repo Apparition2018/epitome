@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  * 使用 HttpSessionListener 实现统计在线人数
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 @RestController
 @RequestMapping("/online")

@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * PathVariable
  * https://www.cnblogs.com/fangpengchengbupter/p/7823493.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 @RestController
 public class PathVariableController {
