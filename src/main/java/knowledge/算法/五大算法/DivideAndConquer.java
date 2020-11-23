@@ -50,15 +50,18 @@ public class DivideAndConquer {
 
         private static void find(int leftIndex, int rightIndex, int val, int[] arr) {
             int midIndex = (rightIndex + leftIndex) / 2;
-            int midVal = arr[midIndex]; // 找到中间的数
+            // 找到中间的数
+            int midVal = arr[midIndex];
             if (rightIndex >= leftIndex) {
-                // 如果要找的数比midVal大
+                // 如果要找的数比 midVal 大
                 if (midVal > val) {
                     idx++;
-                    find(leftIndex, midIndex - 1, val, arr); // 在arr左边数中找
+                    // 在 arr 左边数中找
+                    find(leftIndex, midIndex - 1, val, arr);
                 } else if (midVal < val) {
                     idx++;
-                    find(midIndex + 1, rightIndex, val, arr); // 在arr的右边去查找
+                    // 在 arr 的右边去查找
+                    find(midIndex + 1, rightIndex, val, arr);
                 } else {
                     System.out.println("共查找了" + idx + "次" + "，在下标" + midIndex + "找到");
                 }
