@@ -18,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  * 3、实例化我们自定义的拦截器，然后将对像手动添加到拦截器链中（在addInterceptors方法中添加）。
  * StopWatch + Interceptor 的使用：https://www.jb51.net/article/178518.html
  * Spring Interceptor 与 Servlet Filter：https://blog.csdn.net/qq_41788977/article/details/103610068
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 @Slf4j
 public class HttpInterceptor extends HandlerInterceptorAdapter {

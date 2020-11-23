@@ -30,6 +30,9 @@ import java.security.SecureRandom;
  * Java 对称加密与非对称加密：https://blog.csdn.net/chengbinbbs/article/details/78640589
  * 各种加密算法比较：https://www.cnblogs.com/sunxuchu/p/5483956.html
  * 加解密（Encryption）& 哈希（Hash）算法----入门指引 - 知乎：https://zhuanlan.zhihu.com/p/20064358
+ *
+ * @author ljh
+ * created on 2020/11/18 19:37
  */
 public class SymmetricCryptography {
 

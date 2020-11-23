@@ -10,6 +10,9 @@ import java.io.*;
 /**
  * BZip2 文件压缩/解压工具
  * http://snowolf.iteye.com/blog/644591
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class BZip2Utils extends Demo {
 

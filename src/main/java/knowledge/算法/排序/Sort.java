@@ -7,7 +7,6 @@ import java.util.Random;
 
 /**
  * 排序
- * <p>
  * 1.数据规模较少：插入排序最佳，选择排序
  * 2.数据规模较大：快速排序最佳，堆排序、归并排序
  * 3.数据基本有序：插入排序、冒泡排序最佳，快速排序
@@ -18,6 +17,9 @@ import java.util.Random;
  * https://www.cnblogs.com/chengxiao/p/6103002.html
  * https://www.cnblogs.com/onepixel/articles/7674659.html
  * https://www.cnblogs.com/end/archive/2011/10/22/2220995.html
+ *
+ * @author ljh
+ * created on 2020/10/10 19:23
  */
 public class Sort extends Demo {
 

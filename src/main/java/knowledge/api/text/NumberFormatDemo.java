@@ -17,6 +17,9 @@ import java.util.Locale;
  * <p>
  * boolean	        isParseIntegerOnly()                    如果此格式只将数作为整数解析，则返回 true
  * void	            setParseIntegerOnly(boolean value)      设置数是否应该仅作为整数进行解析
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class NumberFormatDemo extends Demo {
 

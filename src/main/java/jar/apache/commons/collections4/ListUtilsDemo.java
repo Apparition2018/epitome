@@ -9,13 +9,15 @@ import java.util.List;
 
 /**
  * ListUtils
+ * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/ListUtils.html
  * <p>
  * static <T> List<T>	defaultIfNull(List<T> list, List<T> defaultList)                如果为 null，返回给定默认 List
  * static <T> List<T>	emptyIfNull(List<T> list)                                       如果为 null，返回空 List
  * static int	        hashCodeForList(Collection<?> list)                             生成 HashCode
  * static boolean	    isEqualList(Collection<?> list1, Collection<?> list2)           判断两个集合是否相等
- * <p>
- * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/ListUtils.html
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class ListUtilsDemo extends Demo {
 
