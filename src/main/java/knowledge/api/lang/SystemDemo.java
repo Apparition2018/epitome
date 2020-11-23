@@ -20,6 +20,9 @@ import org.junit.Test;
  * static int	                identityHashCode(Object x)              返回给定对象的哈希码，该代码与默认的方法 hashCode() 返回的代码一样，无论给定对象的类是否重写 hashCode()
  * static long	                currentTimeMillis()                     返回以毫秒为单位的当前时间
  * static long	                nanoTime()                              返回最准确的可用系统计时器的当前值，以毫微秒为单位
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class SystemDemo extends Demo {
 

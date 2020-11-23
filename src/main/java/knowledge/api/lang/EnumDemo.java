@@ -10,13 +10,10 @@ import java.util.Map;
 
 /**
  * Enum
- * https://www.runoob.com/manual/jdk1.6/java/lang/Enum.html
- * <p>
  * 优点：
  * 1.枚举有更多灵活的用法
  * 2.有效的提高代码的整洁性、可读性
  * 3.限制非法值的传入
- * <p>
  * switch:
  * 1) JDK1.5-: byte, short, char, int
  * 2) JDK1.5:  Byte, Short, Character, Integer, enum
@@ -27,7 +24,11 @@ import java.util.Map;
  * Class<E>	                        getDeclaringClass()     返回与此枚举常量的枚举类型相对应的 Class 对象
  * static <T extends Enum<T>> T	    valueOf(Class<T> enumType, String name) 返回带指定名称的指定枚举类型的枚举常量
  * <p>
+ * https://www.runoob.com/manual/jdk1.6/java/lang/Enum.html
  * https://blog.csdn.net/cndmss/article/details/51441617
+ *
+ * @author ljh
+ * created on 2020/11/2 19:39
  */
 public class EnumDemo extends Demo {
 

@@ -45,6 +45,9 @@ import java.nio.charset.StandardCharsets;
  * <p>
  * int	        compareTo(BigInteger val)       将此 BigInteger 与指定的 BigInteger 进行比较
  * int	        signum()                        返回此 BigInteger 的正负号函数
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class BigIntegerDemo extends Demo {
 

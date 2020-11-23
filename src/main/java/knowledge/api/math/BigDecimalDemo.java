@@ -22,6 +22,9 @@ import java.math.BigDecimal;
  * BigInteger	toBigInteger()                      BigDecimal → BigInteger
  * String	    toEngineeringString()               返回此 BigDecimal 的字符串表示形式，需要指数时，则使用工程计数法
  * String	    toPlainString()                     返回不带指数字段的此 BigDecimal 的字符串表示形式
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class BigDecimalDemo extends Demo {
 

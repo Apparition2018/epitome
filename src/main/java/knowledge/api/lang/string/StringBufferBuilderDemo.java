@@ -15,6 +15,9 @@ import org.junit.Test;
  * int	        indexOf(int ch, int fromIndex)
  * CharSequence	subSequence(int start, int end)
  * String	    substring(int start[, int end])
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39 
  */
 public class StringBufferBuilderDemo extends Demo {
 

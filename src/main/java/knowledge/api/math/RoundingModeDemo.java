@@ -19,6 +19,9 @@ package knowledge.api.math;
  * -1.6	    -2	    -1	    -1	        -2	        -2	        -2	        -2	                抛出 ArithmeticException
  * -2.5	    -3	    -2	    -2	        -3	        -3	        -2	        -2	                抛出 ArithmeticException
  * -5.5	    -6	    -5	    -5	        -6	        -6	        -5	        -6	                抛出 ArithmeticException
+ *
+ * @author ljh
+ * created on 2019/8/8 19:39
  */
 public class RoundingModeDemo {
 }
