@@ -8,6 +8,10 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 public class FreeMarkerDemo {
 	private FreeMarkerUtil util = FreeMarkerUtil.getInstance("/WEB-INF/ftl");
 	private Map<String, Object> params = new HashMap<String, Object>();
