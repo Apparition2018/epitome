@@ -1,8 +1,11 @@
 package l.utils;
 
 import java.math.BigInteger;
-import java.util.Random;
 
+/**
+ * @author ljh
+ * created on 2020/9/7 1:28
+ */
 public class LUtils {
 
     public LUtils() {

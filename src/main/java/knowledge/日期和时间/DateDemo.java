@@ -8,12 +8,10 @@ import java.util.Date;
 
 /**
  * Date
- * <p>
  * boolean	    before(Date when)               测试此日期是否在指定日期之前
  * boolean	    after(Date when)                测试此日期是否在指定日期之后
  * int	        compareTo(Date anotherDate)     比较两个日期的顺序
  * boolean	    equals(Object obj)              比较两个日期的相等性
- * <p>
  * https://www.runoob.com/manual/jdk1.6/java/util/Date.html
  *
  * @author ljh

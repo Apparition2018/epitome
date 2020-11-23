@@ -24,6 +24,9 @@ import java.util.concurrent.TimeUnit;
  * volatile 关键字解惑：https://www.jianshu.com/p/195ae7c77afe
  * 深入 Java 内存模型—happen-before 规则及其对 DCL 的分析：https://blog.csdn.net/dhfzhishi/article/details/74279091
  * 深入 Java 内存模型—内存操作规则总结：https://blog.csdn.net/ns_code/article/details/17377197
+ *
+ * @author ljh
+ * created on 2020/11/18 19:37
  */
 public class Volatile {
 

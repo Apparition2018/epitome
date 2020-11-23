@@ -9,6 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * @author ljh
+ * created on 2019/8/8 19:39
+ */
 public class DateDemo2 extends Demo {
 
     private Date date = new Date();

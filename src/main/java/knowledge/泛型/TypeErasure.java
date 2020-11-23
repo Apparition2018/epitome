@@ -12,6 +12,9 @@ import java.util.List;
  * 好处：
  * 1.避免 JVM 的大换血。如果 JVM 将泛型类型延续到运行期，那么到运行期时 JVM 就需要进行大量的重构工作了，提高了运行期的效率
  * 2.版本兼容。 在编译期擦除可以更好地支持原生类型 (Raw Type)
+ *
+ * @author ljh
+ * created on 2019/9/9 00:51
  */
 public class TypeErasure extends Demo {
     public static void main(String[] args) {

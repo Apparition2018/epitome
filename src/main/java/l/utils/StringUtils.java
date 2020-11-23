@@ -3,6 +3,10 @@ package l.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author ljh
+ * created on 2020/9/7 1:28
+ */
 public class StringUtils {
 
     // 判断字符串是否为整数字符串

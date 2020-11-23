@@ -3,6 +3,10 @@ package l.utils;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
+/**
+ * @author ljh
+ * created on 2020/9/7 1:28
+ */
 public class NumberUtils {
 
     // 格式化数字 #,###

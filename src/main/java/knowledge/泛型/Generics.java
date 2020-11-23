@@ -21,6 +21,9 @@ import java.util.List;
  * 这体现了 Java 语言中基本类型的独立状态。
  * <p>
  * https://www.cnblogs.com/songhuiqiang/p/10631268.html
+ *
+ * @author ljh
+ * created on 2019/9/9 00:51
  */
 public class Generics<T> extends Demo {
 
