@@ -8,6 +8,9 @@ import java.lang.reflect.Modifier;
 
 /**
  * 建议108：反射结合模板方法模式
+ *
+ * @author ljh
+ * created on 2020/10/10 19:23
  */
 // 抽象模板角色类
 abstract class Initializer extends Demo {

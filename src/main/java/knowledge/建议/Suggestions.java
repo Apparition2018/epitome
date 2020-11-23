@@ -106,6 +106,9 @@ import static java.text.NumberFormat.getInstance;
  * 建议147：单一职责原则 (Single Responsibility Principle)
  * 建议148：增强类的可替换性
  * 建议149：依赖抽象而不是实现
+ *
+ * @author ljh
+ * created on 2020/10/10 19:23
  */
 @SuppressWarnings("unchecked")
 public class Suggestions extends Demo {

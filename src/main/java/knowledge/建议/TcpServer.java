@@ -4,6 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 建议122：使用线程异常处理器提升系统可靠性
+ *
+ * @author ljh
+ * created on 2020/10/10 19:23
  */
 public class TcpServer implements Runnable {
 

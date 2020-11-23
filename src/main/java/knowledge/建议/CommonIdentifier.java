@@ -7,6 +7,9 @@ import java.lang.annotation.Target;
 
 /**
  * 建议91：枚举和注解实现 ACL (Access Control List) 访问控制列表
+ *
+ * @author ljh
+ * created on 2020/10/10 19:23
  */
 enum CommonIdentifier implements Identifier {
     // 权限级别

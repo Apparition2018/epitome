@@ -6,6 +6,9 @@ import java.lang.reflect.Proxy;
 
 /**
  * 建议106：动态代理
+ *
+ * @author ljh
+ * created on 2020/10/10 19:23
  */
 class ProxyHandler implements InvocationHandler {
 

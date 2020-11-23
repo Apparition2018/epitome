@@ -21,6 +21,9 @@ import org.junit.Test;
  * java.util.function
  * <p>
  * https://blog.csdn.net/icarusliu/article/details/79495534
+ *
+ * @author ljh
+ * created on 2020/11/10 19:19
  */
 public class FunctionalInterface {
 

@@ -13,6 +13,9 @@ package knowledge.oop.interface_;
  * <p>
  * JDK8 接口改变：静态方法与默认方法：https://mp.weixin.qq.com/s/LEbhb5H2AMQOqvK_wTIVnA
  * JDK8 接口中方法可以不是抽象的：https://zhuanlan.zhihu.com/p/108274393
+ *
+ * @author ljh
+ * created on 2020/8/8 19:39
  */
 public class Interface {
 

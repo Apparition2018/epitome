@@ -8,6 +8,9 @@ import java.util.Objects;
 /**
  * 建议41：内部类实现多继承
  * 建议44：使用序列化对象的拷贝
+ *
+ * @author ljh
+ * created on 2020/10/10 19:23
  */
 public class Family {
 
