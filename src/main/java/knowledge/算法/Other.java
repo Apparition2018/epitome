@@ -13,25 +13,6 @@ import java.util.Random;
 public class Other extends Demo {
 
     /**
-     * 交换位置
-     */
-    @Test
-    public void testSwap() {
-        int i = 6;
-        int j = 9;
-
-        i = i ^ j;
-        j = i ^ j;
-        i = i ^ j;
-        p("i = " + i + ", j = " + j);
-
-        i = i + j;
-        j = i - j;
-        i = i - j;
-        p("i = " + i + ", j = " + j);
-    }
-
-    /**
      * 求 a + aa + aaa + aaaa + aaaaa = ?
      */
     @Test

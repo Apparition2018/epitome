@@ -10,12 +10,10 @@ public class Operators extends Demo {
 
     /**
      * 相等运算符
-     * <p>
-     * 比较值是否相等
+     * String 缓冲池概念的举例说明：http://xiaohuafyle.iteye.com/blog/1473335
      */
     @Test
     public void equality() {
-        // http://xiaohuafyle.iteye.com/blog/1473335
         String s1 = "a";
         String s2 = "b";
         String s3 = "ab";
@@ -74,7 +72,6 @@ public class Operators extends Demo {
 
     /**
      * instanceof
-     * <p>
      * 用于操作对象实例，如果被比较的对象兼容于右侧类型，该运算符仍然返回 true
      * (Object reference variable) instanceof (Class/Interface type)
      */
@@ -83,5 +80,5 @@ public class Operators extends Demo {
         Double d = 3.3;
         p(d instanceof Number); // true
     }
-    
+
 }
