@@ -41,6 +41,11 @@ import java.util.*;
  * 3.如果想要通过 AbstractMap 派生出 Map。需要实现 entrySet() 和重写 put(K, V)，
  * 因为 put(K, V) 会抛出 UnsupportedOperationException。
  * 4.有内部类 SimpleImmutableEntry（不可变的键值对）, SimpleEntry（可变的键值对）
+ * ************************************************************
+ * ConcurrentHashMap
+ * HashMap 线程安全的实现。使用局部锁技术，实际上就是把 Map 分成了分成了 N 个 Segment，
+ * put 和 get 的时候，都是现根据 key.hashCode() 算出放到哪个 Segment 中，
+ * 而这里的每个 segment 都相当于一个小的 Hashtable，性能高于 Hashtable
  *
  * @author ljh
  * created on 2019/8/8 19:39

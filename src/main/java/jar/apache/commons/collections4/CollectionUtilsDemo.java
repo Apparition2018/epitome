@@ -123,7 +123,7 @@ public class CollectionUtilsDemo extends Demo {
     }
 
     /**
-     * 返回一个新集合，根据 Comparable 合并两个有序集合 ???
+     * 返回一个新集合，根据 Comparable 合并两个有序集合
      */
     @Test
     public void collate() {
