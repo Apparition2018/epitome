@@ -124,6 +124,67 @@
 |config|ServletConfig|Servlet 配置对象|
 |exception|Throwable|捕获网页异常|
 --- 
+## JSP 指令
+<table>
+    <tr>
+        <td rowspan="14">page</td>
+        <td>contentType="text/html;charset=utf-8"</td>
+        <td>指定服务器发送给客户端的文本类型和编码格式</td>
+    </tr>
+    <tr>
+        <td>pageEncoding="utf-8"</td>
+        <td>指定当前 JSP 页面的字符编码</td>
+    </tr>
+    <tr>
+        <td>import="java.util.Date"</td>
+        <td>导入要使用的 Java 类</td>
+    </tr>
+    <tr>
+        <td>language="java"</td>
+        <td>定义 JSP 页面锁用的脚本语言，目前只支持 Java，默认也是 Java</td>
+    </tr>
+    <tr>
+        <td>errorPage="error.jsp"</td>
+        <td>指定当 JSP 页面发生异常时需要转向的错误处理页面</td>
+    </tr>
+    <tr>
+        <td>isErrorPage="true"</td>
+        <td>指定当前页面是否可以作为另一个 JSP 页面的错误处理页面</td>
+    </tr>
+    <tr>
+        <td>buffer="10kb"</td>
+        <td>指定 out 对象使用缓冲区的大小，默认8kb</td>
+    </tr>
+    <tr>
+        <td>autoFlush="true"</td>
+        <td>控制 out 对象的缓存区</td>
+    </tr>
+    <tr>
+        <td>extends</td>
+        <td>指定 servlet 从哪一个类继承，一般不需要设置</td>
+    </tr>
+    <tr>
+        <td>info="测试页面"</td>
+        <td>定义 JSP 页面的描述信息，可通过 servlet.getServletInfo() 获得</td>
+    </tr>
+    <tr>
+        <td>isThreadSafe="true"</td>
+        <td>指定对 JSP 页面的访问是否为线程安全。设置为 false，则以单线程运行</td>
+    </tr>
+    <tr>
+        <td>session="true"</td>
+        <td>指定 JSP 页面是否使用 session</td>
+    </tr>
+    <tr>
+        <td>isELIgnored="ture"</td>
+        <td>指定是否执行 EL 表达式。设置为 true，则忽略"${}的计算"</td>
+    </tr>
+    <tr>
+        <td>isScriptingEnabled="true"</td>
+        <td>默认值为 true，它表示启用脚本，表达式和声明</td>
+    </tr>
+</table>
+---
 ## EL 表达式
 - 一套简单的运算规则，用于给 JSP 标签的属性赋值，也可以直接用来输出
 - 作用：
