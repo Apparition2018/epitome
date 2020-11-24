@@ -1,4 +1,4 @@
-package jar.javax.serlvet;
+package jar.javax.servlet;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -21,9 +21,8 @@ import java.util.Enumeration;
  * @author ljh
  * created on 2020/11/23 19:39
  */
-//@WebServlet(name = "myUserServlet", urlPatterns = "/user/test", loadOnStartup = 1, initParams = {
-//        @WebInitParam(name = "name", value = "小明"), @WebInitParam(name = "pwd", value = "123456")})
-@WebServlet(name = "myUserServlet", urlPatterns = "/user/test", loadOnStartup = 1)
+@WebServlet(name = "myUserServlet", urlPatterns = "/user/test", loadOnStartup = 1, initParams = {
+        @WebInitParam(name = "name", value = "小明"), @WebInitParam(name = "pwd", value = "123456")})
 public class MyServlet extends HttpServlet {
 
     @Override
@@ -36,29 +35,36 @@ public class MyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-        
+
         PrintWriter pw = response.getWriter();
-        pw.append("Hello Servlet!<br />");
+        pw.append("***** Hello Servlet! *****<br />");
         pw.append("servletName: ").append(getServletName()).append("<br />");   // myUserServlet
-        
-        // ServletConfig
-        ServletConfig servletConfig = getServletConfig();
-        Enumeration<String> paramNames = servletConfig.getInitParameterNames();
-        while (paramNames.hasMoreElements()) {
-            String paramName = paramNames.nextElement();
-            pw.append(paramName).append(": ").append(servletConfig.getInitParameter(paramName)).append("<br />");
+
+        pw.append("<br />***** ServletContext *****<br />");
+        ServletContext servletContext = getServletContext();
+        Enumeration<String> contextParamNames = servletContext.getInitParameterNames();
+        while (contextParamNames.hasMoreElements()) {
+            String paramName = contextParamNames.nextElement();
+            pw.append(paramName).append(": ").append(servletContext.getInitParameter(paramName)).append("<br />");
         }
 
-        // ServletContext
-        ServletContext servletContext = request.getServletContext();
-        pw.append("ServletContextName: ").append(servletContext.getServletContextName()).append("<br />"); // Epitome
-        pw.append("RealPath: ").append(servletContext.getRealPath("")).append("<br />");                   // D:\L\git\epitome\src\main\webapp\
+        pw.append("<br />***** ServletConfig *****<br />");
+        Enumeration<String> initParamNames = getInitParameterNames();
+        while (initParamNames.hasMoreElements()) {
+            String paramName = initParamNames.nextElement();
+            pw.append(paramName).append(": ").append(getInitParameter(paramName)).append("<br />");
+        }
 
-        // Session
-        HttpSession session = request.getSession();
-        pw.append("Online: ").append(session.getServletContext().getAttribute("count").toString()).append("<br />");
-        
-        // HttpServletRequest
+        pw.append("<br />***** Request.ServletContext *****<br />");
+        ServletContext requestServletContext = request.getServletContext();
+        pw.append("ServletContextName: ").append(requestServletContext.getServletContextName()).append("<br />"); // Epitome
+        pw.append("RealPath: ").append(requestServletContext.getRealPath("")).append("<br />");                   // D:\L\git\epitome\src\main\webapp\
+
+        pw.append("<br />***** Request.Session.ServletContext *****<br />");
+        ServletContext sessionServletContext = request.getSession().getServletContext();
+        pw.append("Online: ").append(sessionServletContext.getAttribute("count").toString()).append("<br />");
+
+        pw.append("<br />***** Request *****<br />");
         pw.append("RequestURL: ").append(request.getRequestURL()).append("<br />");                     // http://localhost:8080/epitome/user/test
         pw.append("RequestURI: ").append(request.getRequestURI()).append("<br />");                     // /epitome/user/test
         pw.append("Schema: ").append(request.getScheme()).append("<br />");                             // http

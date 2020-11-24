@@ -18,7 +18,7 @@
     </welcome-file-list>
 
     <error-page>
-        <error-code>500</error-code>
+        <error-code>404</error-code>
         <location>/WEB-INF/jsp/error.jsp</location>
     </error-page>
 
@@ -27,6 +27,10 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/spring-*.xml</param-value>
+    </context-param>
+    <context-param>
+        <param-name>myParam</param-name>
+        <param-value>xyz</param-value>
     </context-param>
 
     <!-- 监听器 -->
