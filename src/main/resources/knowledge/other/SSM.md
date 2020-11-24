@@ -10,8 +10,6 @@ Spring SpringMVC Mybatis
 ---
 ## MVC
 <img alt="mvc" src="../notes/img/mvc.png" width="550px"><br/>
-<img alt="mvc五大组件" src="../notes/img/mvc五大组件.png" width="550px"><br/>
-<img alt="mvc案例分析" src="../notes/img/mvc案例分析.png" width="550px"><br/>
 - 软件开发过程中的设计思想，是表示层的一种架构模式
 1. Model：封装应用程序的数据结构和事务逻辑，集中体现应用程序的状态
 2. View：是 Model 的外在表现，负责提供界面（JSP)
@@ -34,14 +32,14 @@ Spring SpringMVC Mybatis
 >### Spring 容器
 >1. BeanFactory：负责读取 bean 配置文档，管理 bean 的加载，实例化，维护 bean 之间的依赖关系，负责 bean 的声明周期
 >2. ApplicationContext：是 BeanFactory 子接口，它提供了比 BeanFactory 更完善的功能
->   1. 继承 MessageSource 接口，因此提供国际化支持
->   2. 资源访问
->   3. 事件机制
->   4. 载入多个配置文件
->   5. 以声明式的方式启动，并创建 Spring 容器
+>       1. 继承 MessageSource 接口，因此提供国际化支持
+>       2. 资源访问
+>       3. 事件机制
+>       4. 载入多个配置文件
+>       5. 以声明式的方式启动，并创建 Spring 容器
 >3. FileSystemXmlApplicationContext：是 ApplicationContext 的子孙类，基于文件系统的 XML 配置文件创建
 >4. ClassPathXmlApplicationContext：是 ApplicationContext 的子孙类，以类加载路径下的 XML 配置文件创建  
->>####启动容器实例：
+>>#### 启动容器实例：
 >>```
 >>ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring-service.xml", "spring/spring-aop.xml");
 >>```
@@ -62,30 +60,30 @@ Spring SpringMVC Mybatis
 >### Spring IOC 和 DI
 >1. IOC：对象之间的依赖关系由容器来建立，IOC 是目的
 >2. DI：容器调用 set() 或构造器来建立对象之间的依赖关系，DI 是手段
->   1. set 注入
->   ```
->   <bean id="date" class="java.util.Date"/>
->   <bean id="student" class="l.demo.Person.Student">
->       <property name="birth" ref="date"/>
->   </bean>
->   ```
->   2. 构造器注入
->   ```
->   <bean id="student2" class="l.demo.Person.Student">
->       <constructor-arg index="0" value="1"/>
->       <constructor-arg index="1" value="张三"/>
->   </bean>
->   ```
->   3. p 命名空间注入：和 set 注入原理一样，都是通过 setter 给属性赋值
->   ```
->   <bean id="student3" class="l.demo.Person.Student" p:id="1" p:name="张三"/>
->   ```
->   4. 自动装配 (autowire)
->       1. no：默认值，禁用自动装配
->       2. byName：根据属性名自动装配
->       3. byType：根据属性类型自动装配
->       4. constructor：与 byType 类似，应用于构造函数
->       5. autodetect：通过 bean 类来决定使用 byType 还是 constructor。如果发现默认的构造器，将使用 byType
+>       1. set 注入
+>       ```
+>       <bean id="date" class="java.util.Date"/>
+>       <bean id="student" class="l.demo.Person.Student">
+>           <property name="birth" ref="date"/>
+>       </bean>
+>       ```
+>       2. 构造器注入
+>       ```
+>       <bean id="student2" class="l.demo.Person.Student">
+>           <constructor-arg index="0" value="1"/>
+>           <constructor-arg index="1" value="张三"/>
+>       </bean>
+>       ```
+>       3. p 命名空间注入：和 set 注入原理一样，都是通过 setter 给属性赋值
+>       ```
+>       <bean id="student3" class="l.demo.Person.Student" p:id="1" p:name="张三"/>
+>       ```
+>       4. 自动装配 (autowire)
+>           1. no：默认值，禁用自动装配
+>           2. byName：根据属性名自动装配
+>           3. byType：根据属性类型自动装配
+>           4. constructor：与 byType 类似，应用于构造函数
+>           5. autodetect：通过 bean 类来决定使用 byType 还是 constructor。如果发现默认的构造器，将使用 byType
 >### Spring 参数注入
 >1. 基本类型：&lt;property name="age" value="18"/&gt;
 >   - 字段属性为 org.springframework.core.io.Resource 时，value="classpath:mybatis-config.xml"
@@ -141,5 +139,60 @@ Spring SpringMVC Mybatis
 >   - @Lazy(true)：延迟加载，写在类前
 >   - @PostConstruct @PreDestroy：指定初始化方法和销毁方法
 >   - @Value("#{config.max-wait}")：写在成员变量前或 set 方法前
+>### Spring MVC
+>- 用来简化基于 MVC 架构的 WEB 应用程序开发的框架，是 Spring 框架的一部分
+><img alt="SpringMVC 运行流程" src="https://www.jianshu.com/p/23ad68d8b421" width="550px"><br/>
+>#### 基于XML配置 MVC
+>>1. 搭建环境：
+>>      1. 创建 web 工程，导包 spring-webmvc
+>>      2. 添加 xml 配置文件
+>>      3. 在 web.xml 配置 DispatcherServlet 前端控制器
+>>      ```
+>>      <servlet>
+>>          <servlet-name>spring</servlet-name>
+>>          <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+>>          <init-param>
+>>              <param-name>contextConfigLocation</param-name>
+>>              <param-value>classpath:spring/spring-web.xml</param-value>
+>>          </init-param>
+>>      </servlet>
+>>      ```
+>>2. HandlerMapping：通过此组件，Dispatcher 可将客户 HTTP 请求映射到 Controller 上
+>>      1. SimpleUrlHandlerMapping
+>>      ```
+>>      <bean class="org.springframe.web.servlet.handler.SimpleUrlHandlerMapping">
+>>          <property name="mappings">
+>>              <props>
+>>      　           <prop key="/hello.do">hc</prop>
+>>              </props>
+>>      　   </property>
+>>      </bean>
+>>      ```    
+>>      2. BeanNameUrlHandlerMapping
+>>      3. RequestMappingHandlerMapping
+>>3. Controller：负责执行具体的业务处理，实现 Controller 接口及约定方法 handleRequest(req, resp)
+>>      ```
+>>        <bean id="hc" class="controller.HelloController"/>
+>>      ```
+>>4. ModelAndView：handlerRequest() 返回一个 ModelAndView 对象，该对象可封装模型数据和视图名相应信息
+>>5. ViewResolver：
+>>      1. UrlBasedViewResolver
+>>      2. InternalResourceViewResolver
+>>      ```
+>>      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+>>          <property name="prefix" value="/WEB-INF/views/"/>
+>>          <property name="suffix" value=".jsp"/>
+>>      </bean>
+>>      ```           
+>>      3. XmlViewResolver
+>>      4. FreeMarkerViewResolver
+>>#### 基于注解配置的 MVC
+>>1. 添加注解驱动：<mvc:annotation-driven />
+>>      1. 自动注册：HandlerMapping，HandlerAdapter，HandlerExceptionResolver
+>>      2. 其它扩展功能
+>>2. 添加包扫描：<context:component-scan base-package="spring.web"/>
+>>3. @Controller：用于组件扫描，Controller 不用实现 Controller 接口了
+>>4. @RequestMapping：相当于 HandlerMapping
+>>5. ViewResolver：同基于 XML 配置
 ---
 

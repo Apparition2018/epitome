@@ -245,25 +245,23 @@
 							<ol>
 								<li>创建web工程，导包： spring-webmvc</li>
 								<li>添加xml配置文件</li>
-								<li>在web.xml中配DispatcherServlet前端控制器组件<br />
-									　　（DispatcherServlet组件在spring mvc中已提供，只需配置即可）</li>
+								<li><details><summary>在web.xml中配DispatcherServlet前端控制器组件</summary>
+									<span class="none">&lt;servlet&gt;<br />
+									　　&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;<br />
+									　　&lt;servlet-class&gt;<br />
+									　　　　<span class="val">org.springframework.web.wervlet.DispatcherServlet</span><br />
+									　　&lt;/servlet-class&gt;<br />
+									　　&lt;init-parma&gt;<br />
+									　　　　&lt;param-name&gt;<span class="val">contextConfigLocation</span>&lt;/param-name&gt;<br />
+									　　　　&lt;param-value&gt;<span class="val">classpath:springmvc.xml</span>&lt;/param-value&gt;<br />
+									　　&lt;/init-param&gt;<br />
+									　　&lt;<span class="tag">load-on-startup</span>&gt;1&lt;/load-on-startup&gt;<br />
+									&lt;servlet-mapping&gt;<br />
+									......</span></details>
+								</li>
 							</ol>
 						</li>
-						<li><details><summary>DispatcherServlet控制器：</summary>
-							<span class="none">&lt;servlet&gt;<br />
-							　　&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;<br />
-							　　&lt;servlet-class&gt;<br />
-							　　　　<span class="val">org.springframework.web.wervlet.DispatcherServlet</span><br />
-							　　&lt;/servlet-class&gt;<br />
-							　　&lt;init-parma&gt;<br />
-							　　　　&lt;param-name&gt;<span class="val">contextConfigLocation</span>&lt;/param-name&gt;<br />
-							　　　　&lt;param-value&gt;<span class="val">classpath:springmvc.xml</span>&lt;/param-value&gt;<br />
-							　　&lt;/init-param&gt;<br />
-							　　&lt;<span class="tag">load-on-startup</span>&gt;1&lt;/load-on-startup&gt;<br />
-							&lt;servlet-mapping&gt;<br />
-							......</span></details>
-						</li>
-						<li>HanderMapping组件:通过此组件，Dispatcher可将客户HTTP请求映射到Controller上
+						<li>HandlerMapping组件:通过此组件，Dispatcher可将客户HTTP请求映射到Controller上
 							<details><summary>配置HandlerMapping：</summary>
 							<span class="none">&lt;bean class="org.springframe.web.servlet.handler.<span class="val">SimpleUrlHandlerMapping</span>"&gt;<br />
 							　　&lt;<span class="tag">property</span> name="mappings"&gt;<br />

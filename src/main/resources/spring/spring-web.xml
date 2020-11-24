@@ -9,29 +9,31 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-    <!-- 配置SpringMVC -->
-    <!-- 1:开启SpringMVC注解模式 -->
-    <!-- 简化配置：
-        (1)自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
-        (2)提供一些列功能：数据绑定; 数字和日期的format @NumberFormat,@DataTimeFormat; xml,json默认读写支持
-    -->
+    <!-- 配置 SpringMVC -->
+    <!-- 1:注解驱动
+        https://www.zhihu.com/question/362051844/answer/1286615054
+        (1)自动注册：
+            HandlerMapping: RequestMappingHandlerMapping, BeanNameUrlHandlerMapping
+            HandlerAdapter: RequestMappingHandlerAdapter, HttpRequestHandlerAdapter, SimpleControllerHandlerAdapter
+            HandlerExceptionResolver: ExceptionHandlerExceptionResolver, RequestMappingHandlerAdapter, DefaultHandlerExceptionResolver
+        (2)其它扩展：https://spring.io/blog/2009/12/21/mvc-simplifications-in-spring-3-0 -->
     <mvc:annotation-driven/>
 
-    <!-- 2:静态资源默认Servlet配置
-        1:假如对静态资源的处理：js,gif,png
-        2:允许使用"/"做整体映射
-     -->
-    <mvc:default-servlet-handler/>
+    <!-- 2:扫描web相关的bean -->
+    <context:component-scan base-package="spring.web"/>
 
-    <!-- 3:配置jsp 显示ViewResolver -->
+    <!-- 3:配置 ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!-- 4:扫描web相关的bean -->
-    <context:component-scan base-package="spring.web"/>
+    <!-- 4:静态资源默认Servlet配置 https://www.cnblogs.com/dflmg/p/6393416.html
+        1:假如对静态资源的处理：js,gif,png 
+        2:允许使用"/"做整体映射
+     -->
+    <mvc:default-servlet-handler/>
 
     <!-- 5:拦截器 -->
     <mvc:interceptors>
