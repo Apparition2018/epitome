@@ -1,6 +1,7 @@
 package knowledge.运算符;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
 
 /**
@@ -45,9 +46,7 @@ public class Bitwise extends Demo {
      */
     @Test
     public void testSwapValue() {
-        int x = 6;
-        int y = 9;
-
+        int x = 6, y = 9;
         x = x ^ y;
         y = x ^ y;
         x = x ^ y;
@@ -71,7 +70,7 @@ public class Bitwise extends Demo {
      * 求 x 的绝对值
      */
     @Test
-    public void testABS() {
+    public void testAbsolute() {
         int x = -12;
         int sign = x >> 31;     // int 为32位，右移31位得到符号位，赋值给 sign，正数 sign == 0，负数 sign == -1
         p((x ^ sign) - sign);   // x ^ 0 = x，x ^ -1 = |x| - 1
@@ -99,7 +98,7 @@ public class Bitwise extends Demo {
         y |= y >>> 16;
         return y < 0 ? 1 : (y >= 1073741824 ? 1073741824 : y + 1);
     }
-    
+
     /**
      * 计算状态位 1 的个数
      */
@@ -109,7 +108,7 @@ public class Bitwise extends Demo {
         int count = 0;
         while (x != 0) {
             count++;
-            x = x & (x -1);
+            x = x & (x - 1);
         }
         p(count);   // 4
     }

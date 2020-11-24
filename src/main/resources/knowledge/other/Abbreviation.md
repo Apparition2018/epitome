@@ -6,7 +6,7 @@
 |:---|:---|:---|
 |JVM|Java Virtual Machine|Java 虚拟机|
 |JRE|Java Runtime Environment|Java 运行环境|
-|JDK|Java Development Kit|Java开发工具包|
+|JDK|Java Development Kit|Java 开发工具包|
 |OOAD|Object-Oriented Analysis and Design|面向对象分析与设计|
 |OOP|Object-Oriented Programming|面向对象编程|
 |API|Application Programming Interface|应用编程接口|
@@ -81,9 +81,9 @@
 ||||
 |:---|:---|:---|
 |SGML|Standard Generalized Markup Language|标准通用标记语言|
-|HTML|Hypertext Markup Language|超文本标记语言|
-|XHTML|Extensible Hypertext Markup Language|可扩展超文本标记语言|
 |XML|Extensible Markup Language|可扩展标记语言|
+|XHTML|Extensible Hypertext Markup Language|可扩展超文本标记语言|
+|HTML|Hypertext Markup Language|超文本标记语言|
 |CSS|Cascading Style Sheets|层叠样式表单|
 |CGI|Common Gateway Interface|通用网关接口|
 |JSP|Java Server Page|Java 服务器页面|
@@ -103,8 +103,6 @@
 ## HTML
 ||||
 |:---|:---|:---|
-|XHTML|Extensible Hypertext Markup Language|可扩展超文本标记语言|
-|HTML|Hypertext Markup Language|超文本标记语言|
 |ol|ordered list|有序列表|
 |ul|unordered list|无序列表|
 |li|list item|列表项目|

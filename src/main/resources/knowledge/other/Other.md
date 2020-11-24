@@ -11,7 +11,7 @@
 ## [Maven 环境变量](http://www.xitongcheng.com/jiaocheng/dnrj_article_44449.html)
 1. WIN+R 输入 sysdm.cpl → 高级 → 环境变量
 2. 在系统变量新建 MAVEN_HOME：D:\tts9\apache-maven-3.3.9
-3. 在系统变量找到 path，增加 %MAVEN_HOME%\bin;
+3. 在系统变量找到 Path，增加 %MAVEN_HOME%\bin;
 4. 在 cmd 输入 mvn -v
 ---
 ## Tomcat 启动中文乱码
