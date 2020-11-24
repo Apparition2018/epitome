@@ -3,16 +3,16 @@ Spring SpringMVC Mybatis
   
 ---
 ## 系统分层
-上一层调用接口调用下一层的服务，这样做的好处是，当下一层的实现发生改变，不影响上一层
+- 上一层调用接口调用下一层的服务，这样做的好处是，当下一层的实现发生改变，不影响上一层
 1. 表示层：UI层，数据展现和操作界面，另外还要负责请求分发
 2. 业务层：服务层，封装业务处理逻辑
 3. 持久层：数据访问层，封装数据访问逻辑
 ---
 ## MVC
-<img alt="mvc" src="../notes/img/mvc.png"><br/>
-<img alt="mvc五大组件" src="../notes/img/mvc五大组件.png"><br/>
-<img alt="mvc案例分析" src="../notes/img/mvc案例分析.png"><br/>
-软件开发过程中的设计思想，是表示层的一种架构模式
+<img alt="mvc" src="../notes/img/mvc.png" width="550px"><br/>
+<img alt="mvc五大组件" src="../notes/img/mvc五大组件.png" width="550px"><br/>
+<img alt="mvc案例分析" src="../notes/img/mvc案例分析.png" width="550px"><br/>
+- 软件开发过程中的设计思想，是表示层的一种架构模式
 1. Model：封装应用程序的数据结构和事务逻辑，集中体现应用程序的状态
 2. View：是 Model 的外在表现，负责提供界面（JSP)
 3. Controller：负责协调模型和视图（Servlet）
@@ -22,7 +22,7 @@ Spring SpringMVC Mybatis
 >3. 方便分工协作
 ---
 ## Spring
-解决企业应用开发的复杂性，让J2EE开发更简单
+- 解决企业应用开发的复杂性，让J2EE开发更简单
 >### Spring 优点:
 >1. 轻量级：相对于 EJB 这种重量级的容器而言，Spring 的 IOC 是完全不依赖底层容器，零侵入性的设计。便于开发测试，Spring 部署方便，而且可以运行在任何 J2EE 支持的容器上或 APP 中
 >2. 控制反转：Spring 使用控制反转技术实现了松耦合，依赖被注入到对象，而不是创建或寻找依赖对象
@@ -101,14 +101,45 @@ Spring SpringMVC Mybatis
 >   </bean>
 >   
 >   <util:properties location="classpath:jdbc.properties" id="jdbc"/>
->   <bean id="properties" class="spring.demo.bean.BeanDemo.Bean">
+>   <bean id="properties" class="spring.demo.bean.SpringBeanDemo.Bean">
 >       <property name="properties" ref="jdbc"/>
 >   </bean>
 >   ```
 >3. Bean：ref
 >4. null：&lt;property name="age"&gt; &lt;null/gt; &lt;/property&gt;
 >5. Spring 表达式：#{...}，读取其它对象/集合中的数据
+>### Spring 其它功能
+>- init-method：初始化方法
+>- destroy-method：销毁方法
+>- scope：作用域
+>   1. singleton：单例，缺省值
+>   2. prototype：多实例，Spring 初始化时不会实例化
+>   3. request：
+>   4. session：
+>- lazy-int：延迟加载，如果值为 true，即使 scope="singleton" 也不会加载
+>### Spring 基于注解的组件扫描
+>- 组件扫描：容器启动之后，会扫描指定的包及其子包下面的所有的类，如果该类前面有一些特定的注解（比如 @Component），则容器会将该类纳入容器进行管理（相当于在配置文件里面有一个 bean）
+>- 步骤：
+>   1. 配置文件：<context:component-scan base-package="com.*"/>
+>   2. 类前面添加注解：
+>       - @Component：通用注解，默认生成 id 为小写开头的类型，和 @Autowired 一起使用
+>       - @Named：通用注解，默认生成 id 为小写开头的类型，和 @Inject 一起使用
+>       - @Repository：持久化层组件注解
+>       - @Service：业务层组件注解
+>       - @Controller：控制层组件注解
+>- 依赖注入注解：
+>   1. @Autowired：写在构造器前面，声明需要为其注入 Bean
+>   2. @Inject：写在构造器前面，声明需要为其注入 Bean
+>   3. @Qualifier：写在参数前面，声明需要注入的 bean 的 id 值
+>       - 当创建相同类型的 Bean 时，和 @Autowired 配合使用
+>       - 注入的对象为单例时，可省略 value，此时，Spring 按照类型匹配
+>   4. @Resource：set 方法注入推荐使用
+>       - 可省略 value，此时，Spring 按照类型匹配
+>   - 把注解写在成员变量前，会利用 Java 反射机制来对属性赋值
+>- 其它注解：
+>   - @Scope("prototype")：指定作用域，写在类前
+>   - @Lazy(true)：延迟加载，写在类前
+>   - @PostConstruct @PreDestroy：指定初始化方法和销毁方法
+>   - @Value("#{config.max-wait}")：写在成员变量前或 set 方法前
 ---
-
-
 

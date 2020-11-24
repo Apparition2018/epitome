@@ -14,12 +14,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.*;
 
 /**
- * BeanFactory
+ * Spring Bean
  *
  * @author ljh
  * created on 2020/11/23 17:17
  */
-public class BeanDemo extends Demo {
+public class SpringBeanDemo extends Demo {
 
     ClassPathXmlApplicationContext ac;
 

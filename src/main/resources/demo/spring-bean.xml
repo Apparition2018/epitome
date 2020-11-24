@@ -40,7 +40,7 @@
 
     <!-- 注入 Properties -->
     <util:properties location="classpath:jdbc.properties" id="jdbc"/>
-    <bean id="properties" class="spring.demo.bean.BeanDemo.Bean">
+    <bean id="properties" class="spring.demo.bean.SpringBeanDemo.Bean">
         <property name="properties" ref="jdbc"/>
     </bean>
 </beans>
