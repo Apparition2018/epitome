@@ -186,7 +186,7 @@ Spring SpringMVC Mybatis
 >>      ```           
 >>      3. XmlViewResolver
 >>      4. FreeMarkerViewResolver
->>#### 基于注解配置的 MVC
+>#### 基于注解配置的 MVC
 >>1. 添加注解驱动：<mvc:annotation-driven />
 >>      1. 自动注册：HandlerMapping，HandlerAdapter，HandlerExceptionResolver
 >>      2. 其它扩展功能
