@@ -29,6 +29,37 @@
 >### 五层模型
 >- 为了方便学习计算机网络原理而采用的，综合了 OSI 七层模型和 TCP/IP 的四层模型而得到的五层模型
 ---
+## HTTP 数据包
+>### Request Headers
+>```
+>POST /demo/post2 HTTP/1.1                  // 请求行
+>Host: localhost:3333
+>Connection: keep-alive
+>Content-Length: 28
+>Accept: */*
+>Sec-Fetch-Dest: empty
+>User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36
+>Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+>Origin: null
+>Sec-Fetch-Site: cross-site
+>Sec-Fetch-Mode: cors
+>Accept-Encoding: gzip, deflate, br
+>Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,ja;q=0.7
+>```
+>### Response Headers
+>```
+>HTTP/1.1 200                               // 状态行
+>Vary: Origin                               
+>Vary: Access-Control-Request-Method
+>Vary: Access-Control-Request-Headers
+>Access-Control-Allow-Origin: null
+>Access-Control-Allow-Credentials: true
+>Content-Type: application/json
+>Transfer-Encoding: chunked
+>Date: Tue, 24 Nov 2020 15:40:10 GMT
+>Keep-Alive: timeout=60
+>Connection: keep-alive
+>```
 ## HTTP 状态码
 |状态码|英文名称|描述|
 |:---|:---|:---|
@@ -40,6 +71,7 @@
 |401|Unauthorized|请求的页面需要用户名和密码|
 |403|Forbidden|服务器理解请求客户端的请求，但是拒绝执行此请求|
 |404|Not Found|服务器找不到请求的页面|
+|415|Unsupported Media Type|服务器无法处理请求附带的媒体格式|
 |405|Method Not Allowed|请求中的方法是被禁止|
 |500|Internal Server Error|服务器内部错误，无法完成请求|
 ---
