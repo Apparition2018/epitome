@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
  * <p>
  * 字符：
  * \\               反斜线字符（Java \\\\）
- * \uhhhh	        带有十六进制值 0x 的字符 hhhh
  * 字符类：
  * [abc]	        a、b 或 c（简单类）
  * [^abc]	        任何字符，除了 a、b 或 c（否定）

@@ -29,10 +29,10 @@ public class URLDemo extends Demo {
 
         p(url);                     // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
         p(url.getProtocol());       // 协议名称：https
-        p(url.getPort());           // 端口号：-1
-        p(url.getDefaultPort());    // 默认端口号：443
         p(url.getAuthority());      // 授权部分：developer.mozilla.org
         p(url.getHost());           // 主机名：developer.mozilla.org
+        p(url.getDefaultPort());    // 默认端口号：443
+        p(url.getPort());           // 端口号：-1
         p(url.getFile());           // 文件名：/en-US/search?q=URL
         p(url.getPath());           // 路径部分：/en-US/search
         p(url.getQuery());          // 查询部分：q=URL

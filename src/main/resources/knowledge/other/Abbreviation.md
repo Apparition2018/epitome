@@ -71,6 +71,7 @@
 ## 网络协议
 ||||
 |:---|:---|:---|
+|OSI|Open System Interconnection|开放系统互连|
 |IP|Internet Protocol|网络互连协议（网络层）|
 |TCP|Transmission Control Protocol|传输控制协议（传输层）|
 |UDP|User Datagram Protocol|用户数据报协议（传输层）|

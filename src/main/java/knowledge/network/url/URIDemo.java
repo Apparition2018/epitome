@@ -24,13 +24,13 @@ public class URIDemo extends Demo {
 
         p(uri);                         // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
         p(uri.getScheme());             // 方案组成部分
-        p(uri.getPort());               // 端口号：-1
         p(uri.getAuthority());          // 授权部分：developer.mozilla.org
         p(uri.getHost());               // 主机名：developer.mozilla.org
+        p(uri.getSchemeSpecificPart()); // //developer.mozilla.org/en-US/search?q=URL
+        p(uri.getPort());               // 端口号：-1
         p(uri.getPath());               // 路径部分：/en-US/search
         p(uri.getQuery());              // 查询部分：q=URL
-        p(uri.getFragment());           // 锚点
-        p(uri.getSchemeSpecificPart()); // //developer.mozilla.org/en-US/search?q=URL
+        p(uri.getFragment());           // 锚点：search-results-close-container
 
     }
 

@@ -31,8 +31,6 @@ public class URIBuilderDemo extends Demo {
         p(builder.getPath());           // /search
         p(builder.getQueryParams());    // [q=URL]
         p(builder.getFragment());       // search-results-close-container
-        p(builder.getUserInfo());       // null
-        p(builder.getCharset());        // null
     }
 
     @Test
