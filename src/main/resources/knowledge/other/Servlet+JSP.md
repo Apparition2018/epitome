@@ -183,7 +183,17 @@
         <td>isScriptingEnabled="true"</td>
         <td>默认值为 true，它表示启用脚本，表达式和声明</td>
     </tr>
+    <tr>
+        <td>include</td>
+        <td>file="header.jsp"</td>
+        <td>用来包含其他外部文件（JSP, HTML），用于导航栏，版权声明，logo 等</td>
+    </tr>
+    <tr>
+        <td>taglib</td>
+        <td colspan="2">引入一个自定义标签集合的定义，包括库路径、自定义标签 <br/> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %></td>
+    </tr>
 </table>
+
 ---
 ## EL 表达式
 - 一套简单的运算规则，用于给 JSP 标签的属性赋值，也可以直接用来输出
