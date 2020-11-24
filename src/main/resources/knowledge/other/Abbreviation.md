@@ -7,8 +7,10 @@
 |JVM|Java Virtual Machine|Java 虚拟机|
 |JRE|Java Runtime Environment|Java 运行环境|
 |JDK|Java Development Kit|Java 开发工具包|
-|OOAD|Object-Oriented Analysis and Design|面向对象分析与设计|
+|OPP|Procedure-Oriented Programming|面向过程编程|
 |OOP|Object-Oriented Programming|面向对象编程|
+|AOP|Aspect-Oriented Programming|面向切面编程|
+|OOAD|Object-Oriented Analysis and Design|面向对象分析与设计|
 |API|Application Programming Interface|应用编程接口|
 |JNI|Java Native Interface|Java 本地接口|
 |GC|Garbage Collection|垃圾回收器|
@@ -25,7 +27,6 @@
 |ORM|Object Relational Mapping|对象关系映射|
 |IOC|Inversion of Control|控制反转|
 |DI|Dependency Injection|依赖注入|
-|AOP|Aspect-Oriented Programming|面向切面编程|
 |SSM|Spring MVC, Spring, MyBatis||	
 |SSH|Struts2, Spring, Hibernate|	
 ---

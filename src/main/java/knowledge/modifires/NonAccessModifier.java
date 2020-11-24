@@ -15,9 +15,10 @@ public class NonAccessModifier {
      * -    2)局部变量不能声明为 static 变量
      * -    3)通过 ClassName.VariableName 访问
      * 2.静态方法：
-     * -    1)静态方法不能使用类的非静态变量
+     * -    1)静态方法不能非静态方法和变量
      * -    2)静态方法从参数列表得到数据，然后计算这些数据 ?
      * -    3)通过 ClassName.MethodName 访问
+     * 为什么静态方法不能调用非静态方法和变量？ - 知乎：https://zhuanlan.zhihu.com/p/112001357
      */
     private static int numInstances = 0;
 
@@ -34,6 +35,7 @@ public class NonAccessModifier {
      * 2.final 方法：可以被子类继承，不能被子类重写
      * 3.final 类：不能被继承
      * <p>
+     * JDK8 常量池整理：https://www.cnblogs.com/wangymd/p/13213265.html
      * Java 常量池理解和经典总结：https://blog.csdn.net/qq_26947195/article/details/79505553
      */
     final int value = 10;

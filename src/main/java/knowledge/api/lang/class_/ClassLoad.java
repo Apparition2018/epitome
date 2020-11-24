@@ -12,7 +12,7 @@ import org.junit.Test;
  * 2.显式加载：
  * - 1) new()
  * - 2) Class.forName()
- * - 3) ClassLoader’s loadClass()
+ * - 3) classLoader.loadClass()
  *
  * @author ljh
  * created on 2020/9/26 2:51

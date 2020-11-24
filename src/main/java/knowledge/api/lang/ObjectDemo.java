@@ -17,7 +17,6 @@ public class ObjectDemo extends Demo {
      * 创建并返回此对象的一个副本
      * <p>
      * https://www.zhihu.com/question/52490586
-     * https://www.zhihu.com/question/52490586
      */
     @Test
     public void clone_() {
@@ -79,7 +78,6 @@ public class ObjectDemo extends Demo {
      * 如果两个对象的 hashCode 值相等，他们不一定相等
      * <p>
      * https://zhuanlan.zhihu.com/p/26814793
-     * http://www.importnew.com/20381.html
      */
     @Test
     public void hashCode_() {

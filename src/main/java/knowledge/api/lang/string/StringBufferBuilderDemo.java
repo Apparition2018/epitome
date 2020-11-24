@@ -4,20 +4,21 @@ import l.demo.Demo;
 import org.junit.Test;
 
 /**
- * StringBuffer     线性安全
- * StringBuilder    非线性安全，速度稍快
+ * StringBuffer     线性安全，长度可变
+ * StringBuilder    非线性安全，速度稍快，长度可变
+ * String           被 final 修饰，不能被继承使用，一旦声明不能被改变；重写 equals
  * <p>
  * 类似 String 的方法：
  * <p>
- * int	        length()
- * char	        charAt(int index)
- * void         getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
- * int	        indexOf(int ch, int fromIndex)
- * CharSequence	subSequence(int start, int end)
- * String	    substring(int start[, int end])
+ * int	            length()
+ * char	            charAt(int index)
+ * void             getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+ * int	            indexOf(int ch, int fromIndex)
+ * CharSequence	    subSequence(int start, int end)
+ * String	        substring(int start[, int end])
  *
  * @author ljh
- * created on 2019/8/8 19:39 
+ * created on 2019/8/8 19:39
  */
 public class StringBufferBuilderDemo extends Demo {
 
