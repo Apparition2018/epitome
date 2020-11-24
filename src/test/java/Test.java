@@ -3,7 +3,6 @@
 // SpringBoot + Spring Batch
 // SSL：https://www.cnblogs.com/crazyacking/p/5648520.html
 // JAVA与模式
-// NIO / AIO
 // JWT
 // shiro
 // Guava (140)
@@ -27,6 +26,8 @@
 // 前端知识体系及修炼攻略：https://blog.csdn.net/u012426327/article/details/78665872
 // java同步非阻塞IO：https://segmentfault.com/a/1190000015449773
 // 玩转Java并发工具，精通JUC，成为并发多面手：https://coding.imooc.com/class/409.html
+// 高并发Java NIO和AIO：https://zhuanlan.zhihu.com/p/70273939
+// 8分钟深入浅出搞懂BIO、NIO、AIO：https://zhuanlan.zhihu.com/p/83597838
 // java长连接
 
 import l.demo.Demo;
