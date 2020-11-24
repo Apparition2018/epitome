@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import spring.interceptor.HttpInterceptor;
+import springboot.interceptor.HttpInterceptor;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;

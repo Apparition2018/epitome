@@ -35,6 +35,6 @@
 
     <!-- 5:拦截器 -->
     <mvc:interceptors>
-        <bean class="spring.interceptor.HttpInterceptor"/>
+        <bean class="springboot.interceptor.HttpInterceptor"/>
     </mvc:interceptors>
 </beans>

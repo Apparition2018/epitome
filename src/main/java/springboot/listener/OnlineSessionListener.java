@@ -5,7 +5,15 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 /**
- * OnlineSessionListener
+ * Listener     监听器
+ * 生命周期相关：
+ * -    1.ServletRequestListener
+ * -    2.HttpSessionListener：统计网站在线人数
+ * -    3.ServletContextListener：统计网站历史访问次数，系统启动时初始化信息
+ * 绑定数据相关：
+ * -    1.ServletRequestAttributeListener
+ * -    2.HttpSessionAttributeListener
+ * -    3.ServletContextAttributeListener
  *
  * @author Arsenal
  * created on 2019/7/22 11:44

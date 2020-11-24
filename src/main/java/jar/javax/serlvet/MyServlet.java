@@ -1,12 +1,14 @@
 package jar.javax.serlvet;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
@@ -19,8 +21,9 @@ import java.util.Enumeration;
  * @author ljh
  * created on 2020/11/23 19:39
  */
-@WebServlet(name = "myUserServlet", urlPatterns = "/user/test", loadOnStartup = 1, initParams = {
-        @WebInitParam(name = "name", value = "小明"), @WebInitParam(name = "pwd", value = "123456")})
+//@WebServlet(name = "myUserServlet", urlPatterns = "/user/test", loadOnStartup = 1, initParams = {
+//        @WebInitParam(name = "name", value = "小明"), @WebInitParam(name = "pwd", value = "123456")})
+@WebServlet(name = "myUserServlet", urlPatterns = "/user/test", loadOnStartup = 1)
 public class MyServlet extends HttpServlet {
 
     @Override
@@ -36,17 +39,26 @@ public class MyServlet extends HttpServlet {
         
         PrintWriter pw = response.getWriter();
         pw.append("Hello Servlet!<br />");
-        pw.append("servletName: ").append(getServletName()).append("<br />");
-        // initParam
+        pw.append("servletName: ").append(getServletName()).append("<br />");   // myUserServlet
+        
+        // ServletConfig
         ServletConfig servletConfig = getServletConfig();
         Enumeration<String> paramNames = servletConfig.getInitParameterNames();
         while (paramNames.hasMoreElements()) {
             String paramName = paramNames.nextElement();
             pw.append(paramName).append(": ").append(servletConfig.getInitParameter(paramName)).append("<br />");
         }
-        pw.append("ServletContextName: ").append(request.getServletContext().getServletContextName()).append("<br />"); // Epitome
-        pw.append("RealPath: ").append(request.getServletContext().getRealPath("")).append("<br />");                   // D:\L\git\epitome\src\main\webapp\
+
+        // ServletContext
+        ServletContext servletContext = request.getServletContext();
+        pw.append("ServletContextName: ").append(servletContext.getServletContextName()).append("<br />"); // Epitome
+        pw.append("RealPath: ").append(servletContext.getRealPath("")).append("<br />");                   // D:\L\git\epitome\src\main\webapp\
+
+        // Session
+        HttpSession session = request.getSession();
+        pw.append("Online: ").append(session.getServletContext().getAttribute("count").toString()).append("<br />");
         
+        // HttpServletRequest
         pw.append("RequestURL: ").append(request.getRequestURL()).append("<br />");                     // http://localhost:8080/epitome/user/test
         pw.append("RequestURI: ").append(request.getRequestURI()).append("<br />");                     // /epitome/user/test
         pw.append("Schema: ").append(request.getScheme()).append("<br />");                             // http

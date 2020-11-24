@@ -6,22 +6,70 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <icon>
+        <small-icon>../static/static/img/ico/NoharaSinnosuke.ico</small-icon>
+    </icon>
 
     <display-name>Epitome</display-name>
+    <description>Epitome</description>
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
+
+    <!-- context-param → listener → filter → servlet -->
+    <!-- 声明应用范围内的初始化参数，用于向 ServletContext 提供键值对，Listener, Filter 等在初始化时会用到这些上下文中的信息 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/spring-*.xml</param-value>
     </context-param>
 
-    <!-- 监听上下文 spring bean 加载 -->
+    <!-- 监听器 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <listener>
+        <listener-class>springboot.listener.OnlineSessionListener</listener-class>
+    </listener>
+
+    <!-- 过滤器 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>FirstFilter</filter-name>
+        <filter-class>springboot.filter.FirstFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FirstFilter</filter-name>
+        <url-pattern>/user/test</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>SecondFilter</filter-name>
+        <filter-class>springboot.filter.SecondFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecondFilter</filter-name>
+        <url-pattern>/user/test</url-pattern>
+    </filter-mapping>
 
     <!-- spring mvc 配置 -->
     <servlet>
@@ -40,24 +88,6 @@
         <!-- 默认匹配所有的请求 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
-    <!-- Encoding -->
-    <filter>
-        <filter-name>encodingFilter</filter-name>
-        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-        <init-param>
-            <param-name>forceEncoding</param-name>
-            <param-value>true</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>encodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
     <!-- *************************
          ********* 验证码 *********
@@ -166,4 +196,35 @@
         <servlet-name>ValidKaptcha2Servlet</servlet-name>
         <url-pattern>/validKaptcha2.do</url-pattern>
     </servlet-mapping>
+
+    <!-- session 配置 -->
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
+
+    <!-- 为下载的文件自动装配相应的 mime 类型 -->
+    <mime-mapping>
+        <extension>doc</extension>
+        <mime-type>application/vnd.ms-word</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xls</extension>
+        <mime-type>application/msexcel</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>ppt</extension>
+        <mime-type>application/vnd.ms-powerpoint</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>docx</extension>
+        <mime-type>application/vnd.openxmlformats-officedocument.wordprocessingml.document</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xlsx</extension>
+        <mime-type>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pptx</extension>
+        <mime-type>application/vnd.openxmlformats-officedocument.presentationml.presentation</mime-type>
+    </mime-mapping>
 </web-app>

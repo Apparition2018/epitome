@@ -16,21 +16,17 @@ import java.io.IOException;
 @Slf4j
 public class SecondFilter implements Filter {
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         log.info("second filter 1");
-        log.info("before: " + servletResponse);
         filterChain.doFilter(servletRequest, servletResponse);
-        log.info("after: " + servletResponse);
         log.info("second filter 2");
-
     }
 
     @Override
     public void destroy() {
-
     }
 }
