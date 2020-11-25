@@ -3,8 +3,6 @@ package jar.hutool.extra;
 import cn.hutool.extra.emoji.EmojiUtil;
 import org.junit.Test;
 
-import static l.demo.Demo.p;
-
 /**
  * EmojiUtil
  * 需要引入 com.vdurmont:emoji-java
@@ -19,14 +17,14 @@ public class EmojiUtilDemo {
     @Test
     public void testEmojiUtil() {
         String emoji = EmojiUtil.toUnicode(":smile:");
-        p(emoji);       // 😄
+        System.out.println(emoji);      // 😄
 
         if (EmojiUtil.isEmoji(emoji)) {
             String alias = EmojiUtil.toAlias(emoji);
-            p(alias);   // :smile:
+            System.out.println(alias);  // :smile:
         }
 
         String html = EmojiUtil.toHtml(emoji);
-        p(html);        // &#x1f604;
+        System.out.println(html);       // &#x1f604;
     }
 }

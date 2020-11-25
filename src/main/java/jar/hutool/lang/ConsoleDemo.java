@@ -3,8 +3,6 @@ package jar.hutool.lang;
 import cn.hutool.core.lang.Console;
 import org.junit.Test;
 
-import static l.demo.Demo.p;
-
 /**
  * Console      控制台打印封装
  * <p>
@@ -27,8 +25,8 @@ public class ConsoleDemo {
         Console.print("{}来自{}", "我", "中国\n");   // 程序出现错误
 
         // 当前行号
-        p(Console.lineNumber());                    // 29
+        System.out.println(Console.lineNumber());   // 29
         // 当前位置和行号
-        p(Console.where());                         // jar.hutool.lang.ConsoleDemo.testConsole(ConsoleDemo.java:30)
+        System.out.println(Console.where());        // jar.hutool.lang.ConsoleDemo.testConsole(ConsoleDemo.java:30)
     }
 }

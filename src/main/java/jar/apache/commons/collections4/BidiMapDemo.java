@@ -41,7 +41,6 @@ public class BidiMapDemo {
         // K	        removeValue(Object value)
         // 删除当前映射到指定值的键值对
         bidi.removeValue("2");
-        p();
 
     }
 
