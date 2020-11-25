@@ -1,6 +1,6 @@
-# SSM    
+# SSM
 Spring SpringMVC Mybatis  
-  
+
 ---
 ## 系统分层
 - 上一层调用接口调用下一层的服务，这样做的好处是，当下一层的实现发生改变，不影响上一层
@@ -12,8 +12,8 @@ Spring SpringMVC Mybatis
 <img alt="mvc" src="../notes/img/mvc.png" width="550px"><br/>
 - 软件开发过程中的设计思想，是表示层的一种架构模式
 1. Model：封装应用程序的数据结构和事务逻辑，集中体现应用程序的状态
-2. View：是 Model 的外在表现，负责提供界面（JSP)
-3. Controller：负责协调模型和视图（Servlet）
+2. View：是 Model 的外在表现，负责提供界面 (JSP)
+3. Controller：负责协调模型和视图 (Servlet)
 >### 好处
 >1. 方便测试，业务逻辑写在java可直接测试
 >2. 方便维护，修改视图、模型，互不影响
@@ -38,7 +38,7 @@ Spring SpringMVC Mybatis
 >       4. 载入多个配置文件
 >       5. 以声明式的方式启动，并创建 Spring 容器
 >3. FileSystemXmlApplicationContext：是 ApplicationContext 的子孙类，基于文件系统的 XML 配置文件创建
->4. ClassPathXmlApplicationContext：是 ApplicationContext 的子孙类，以类加载路径下的 XML 配置文件创建  
+>4. ClassPathXmlApplicationContext：是 ApplicationContext 的子孙类，以类加载路径下的 XML 配置文件创建
 >>#### 启动容器实例：
 >>```
 >>ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring-service.xml", "spring/spring-aop.xml");
@@ -52,7 +52,7 @@ Spring SpringMVC Mybatis
 >```
 >   <bean id="calendar" class="java.util.Calendar" factory-method="getInstance"/>
 >```
->3. 工厂实例方法 
+>3. 工厂实例方法
 >```
 >   <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
 >   <bean id="time" factory-bean="calendar" factory-method="getTime"/>
@@ -175,6 +175,7 @@ Spring SpringMVC Mybatis
 >>        <bean id="hc" class="controller.HelloController"/>
 >>      ```
 >>4. ModelAndView：handlerRequest() 返回一个 ModelAndView 对象，该对象可封装模型数据和视图名相应信息
+>       - ModelAndView(String ViewName); 或 ModelAndView(String viewName, Map model);
 >>5. ViewResolver：
 >>      1. UrlBasedViewResolver
 >>      2. InternalResourceViewResolver
@@ -194,5 +195,77 @@ Spring SpringMVC Mybatis
 >>3. @Controller：用于组件扫描，Controller 不用实现 Controller 接口了
 >>4. @RequestMapping：相当于 HandlerMapping
 >>5. ViewResolver：同基于 XML 配置
+>### Spring 获取请求参数
+>1. 通过 HttpServletRequest 对象：
+>       - request.getParameter(x), request.getParameterMap();
+>2. 通过 @RequestParam：参数类型自动转换，但可能出现类型转换异常
+>       - public String bmi(@RequestParam("height") String h, String weight);
+>3. 通过 JavaBean：封装请求参数，属性名与请求参数名要一致，类型要一致
+>### Spring 向页面传值
+>1. 通过 HttpServletRequest 对象：
+>       - request.setAttribute(String name, Object obj);
+>2. 通过 HttpSession 对象：
+>       - session.setAttribute(String name, Object obj);
+>3. 通过 ModelAndView 对象：
+>       ```
+>       Map<String, Object> data = new HashMap<String, Object>();
+>       data.put("status", status);
+>       return ModelAndView(String viewName, Map data);
+>       ```
+>4. 通过 ModelMap 对象：
+>       ```
+>       public String bmi(BmiParam bp, ModelMap modelMap) {
+>           ...
+>           modelMap.put("status", status);
+>           return viewName;
+>       }
+>       ```
+>5. 通过 [@ModelAttribute](https://www.4spaces.org/spring-mvc-and-the-modelattribute-annotation/)
+>### Spring 重定向
+>- SpringMVC 默认采用转发方式定位视图，可依据返回值类型分别采用以下方法
+>   1. ModelAndView：RedirectView view = new RedirectView("hello.do"); return new ModelAndView(view);
+>   2. String：return "redirect:hello.do";
+>### Spring 字符编码过滤器
+>- 只在容器初始化时调用一次，依赖于 Servlet 容器
+>```
+>   <filter>
+>       <filter-name>encodingFilter</filter-name>
+>       <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+>       <init-param>
+>           <param-name>encoding</param-name>
+>           <param-value>UTF-8</param-value>
+>       </init-param>
+>       <init-param>
+>           <param-name>forceEncoding</param-name>
+>           <param-value>true</param-value>
+>       </init-param>
+>   </filter>
+>   <filter-mapping>
+>       <filter-name>encodingFilter</filter-name>
+>       <url-pattern>/*</url-pattern>
+>   </filter-mapping>
+>   <filter>
+>       <filter-name>FirstFilter</filter-name>
+>       <filter-class>springboot.filter.FirstFilter</filter-class>
+>   </filter>
+>```
+>### Spring 拦截器       
+>- DispatchServlet → interceptor.preHandle() → Controller → interceptor.postHandle() → interceptor.afterCompletion()
+>- Interceptor 属于 Spring 框架，Filter 属于 Servlet 规范
+>- 步骤：
+>       1. 创建拦截器类 实现 HandlerInterceptor 或 继承 HandlerInterceptorAdapter
+>       2. 再拦截器方法中，实现拦截处理逻辑
+>       3. 配置拦截器
+>       ```
+>       <mvc:interceptors>
+>           <mvc:interceptor>
+>               <mvc:mapping path="/**" />
+>               <mvc:exclude-mapping path="/toLogin.do" />
+>               <mvc:exclude-mapping path="/login.do" />
+>               <mvc:exclude-mapping path="/checkcode.do" />
+>               <bean class="cn.tedu.ems.interceptors.SessionInterceptor" />
+>           </mvc:interceptor>
+>       </mvc:interceptors>
+>       ```
 ---
 

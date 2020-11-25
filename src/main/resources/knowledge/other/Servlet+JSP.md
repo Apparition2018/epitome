@@ -1,4 +1,5 @@
-# Servlet + JSP  
+# Servlet + JSP
+
 ---
 ## [网络模型](https://mp.weixin.qq.com/s?__biz=MzkxOTE0NzYzNA==&mid=2247489909&idx=1&sn=29b5957038b55b966016c7ddbb5eea55&source=41#wechat_redirect)
 ![网络模型](https://mmbiz.qpic.cn/mmbiz_png/GBXuAtjkoVG3F1Bz4mlQxF82KQNrYNNiav1HXicXtVrH60iarUuibWeT4fHN5CHhMHejs2yponrEw1WgqzTUypn2uw/640)
@@ -6,7 +7,7 @@
 >- OSI（Open System Interconnection，开放系统互连）七层网络模型称为开放式系统互联参考模型 ，是一个逻辑上的定义，一个规范，它把网络从逻辑上分为了7层。
 >- 主要目的：解决异种网络互连时所遇到的兼容性问题
 >- 主要功能：帮助不同类型的主机实现数据传输
->- 最大优点：将服务、接口和协议这三个概念明确地区分开来，通过七个层次化的结构模型使不同的系统不同的网络之间实现可靠的通讯  
+>- 最大优点：将服务、接口和协议这三个概念明确地区分开来，通过七个层次化的结构模型使不同的系统不同的网络之间实现可靠的通讯
 >
 >|层级|功能|硬件&协议|
 >|:---|:---|:---|
@@ -49,7 +50,7 @@
 >### Response Headers
 >```
 >HTTP/1.1 200                               // 状态行
->Vary: Origin                               
+>Vary: Origin
 >Vary: Access-Control-Request-Method
 >Vary: Access-Control-Request-Headers
 >Access-Control-Allow-Origin: null
@@ -115,11 +116,11 @@
     2. 采用同步锁来保证安全
 ---
 ## Cookie - Session
-- 状态管理：HTTP 是无状态的，无状态是指协议对于事务处理没有记忆能力。将浏览器与 web 服务器之间多次交互当做一个整体来看待（即为了完成某个业务，需要多次交互，比如购物），并且将多次交互所涉及的数据（即状态）保存下来  
+- 状态管理：HTTP 是无状态的，无状态是指协议对于事务处理没有记忆能力。将浏览器与 web 服务器之间多次交互当做一个整体来看待（即为了完成某个业务，需要多次交互，比如购物），并且将多次交互所涉及的数据（即状态）保存下来
 
 |Cookie|Session|
 |:---|:---|
-|服务器临时存放在浏览器端的少量的数据，当浏览器再次访问服务器时，会将这些数据发送给服务器|服务器端为了保存状态而创建的一个特殊对象，服务器会将这个对象唯一的 sessionId 以 cookie 的形式发送给浏览器| 
+|服务器临时存放在浏览器端的少量的数据，当浏览器再次访问服务器时，会将这些数据发送给服务器|服务器端为了保存状态而创建的一个特殊对象，服务器会将这个对象唯一的 sessionId 以 cookie 的形式发送给浏览器|
 |new Cookie(String name, String value)|request.getSession()|
 |cookie.setMaxAge(0)|session.invalidate()|
 |将状态保存在浏览器，安全性低，可以被改写|将状态保存在服务器的内存中，安全性高；也可以持久化到 file，数据库，memcache，redis 等|
@@ -259,4 +260,3 @@
     </c:forEach>
     ```
 ---
-

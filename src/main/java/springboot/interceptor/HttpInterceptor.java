@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Interceptor  拦截器
  * 自定义拦截器步骤：
- * 1、创建我们自己的拦截器类并实现 HandlerInterceptor 接口。
+ * 1、创建我们自己的拦截器类并实现 HandlerInterceptor 接口 或 继承 HandlerInterceptorAdapter 抽象类
  * 2、创建一个 Java 类继承 WebMvcConfigurationSupport，并重写 addInterceptors 方法。
  * 3、实例化我们自定义的拦截器，然后将对像手动添加到拦截器链中（在addInterceptors方法中添加）。
  * <p>
