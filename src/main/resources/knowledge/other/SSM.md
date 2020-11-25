@@ -62,21 +62,21 @@ Spring SpringMVC Mybatis
 >2. DI：容器调用 set() 或构造器来建立对象之间的依赖关系，DI 是手段
 >       1. set 注入
 >       ```
->       <bean id="date" class="java.util.Date"/>
->       <bean id="student" class="l.demo.Person.Student">
->           <property name="birth" ref="date"/>
->       </bean>
+>           <bean id="date" class="java.util.Date"/>
+>           <bean id="student" class="l.demo.Person.Student">
+>               <property name="birth" ref="date"/>
+>           </bean>
 >       ```
 >       2. 构造器注入
 >       ```
->       <bean id="student2" class="l.demo.Person.Student">
->           <constructor-arg index="0" value="1"/>
->           <constructor-arg index="1" value="张三"/>
->       </bean>
+>           <bean id="student2" class="l.demo.Person.Student">
+>               <constructor-arg index="0" value="1"/>
+>               <constructor-arg index="1" value="张三"/>
+>           </bean>
 >       ```
 >       3. p 命名空间注入：和 set 注入原理一样，都是通过 setter 给属性赋值
 >       ```
->       <bean id="student3" class="l.demo.Person.Student" p:id="1" p:name="张三"/>
+>           <bean id="student3" class="l.demo.Person.Student" p:id="1" p:name="张三"/>
 >       ```
 >       4. 自动装配 (autowire)
 >           1. no：默认值，禁用自动装配
@@ -88,21 +88,21 @@ Spring SpringMVC Mybatis
 >1. 基本类型：&lt;property name="age" value="18"/&gt;
 >       - 字段属性为 org.springframework.core.io.Resource 时，value="classpath:mybatis-config.xml"
 >2. 集合类型：&lt;list/&gt; &lt;set/&gt; &lt;map/&gt; &lt;props/&gt; 或 ref
->       ```
->           <bean id="person" class="l.demo.Person">
->               <property name="otherInfo">
->                   <list>
->                       <value>父亲</value>
->                       <value>医生</value>
->                   </list>
->               </property>
->           </bean>
->           
->           <util:properties location="classpath:jdbc.properties" id="jdbc"/>
->           <bean id="properties" class="spring.demo.bean.SpringBeanDemo.Bean">
->               <property name="properties" ref="jdbc"/>
->           </bean>
->       ```
+>   ```
+>       <bean id="person" class="l.demo.Person">
+>           <property name="otherInfo">
+>               <list>
+>                   <value>父亲</value>
+>                   <value>医生</value>
+>               </list>
+>           </property>
+>       </bean>
+>       
+>       <util:properties location="classpath:jdbc.properties" id="jdbc"/>
+>       <bean id="properties" class="spring.demo.bean.SpringBeanDemo.Bean">
+>           <property name="properties" ref="jdbc"/>
+>       </bean>
+>   ```
 >3. Bean：ref
 >4. null：&lt;property name="age"&gt; &lt;null/gt; &lt;/property&gt;
 >5. Spring 表达式：#{...}，读取其它对象/集合中的数据
@@ -258,13 +258,13 @@ Spring SpringMVC Mybatis
 >   2. 再拦截器方法中，实现拦截处理逻辑
 >   3. 配置拦截器
 >   ```
->   <mvc:interceptors>
->       <mvc:interceptor>
->           <mvc:mapping path="/**"/>
->           <mvc:exclude-mapping path="/login.do"/> <!-- 排除地址 -->
->           <bean class="xxx.MyInterceptor"/>
->       </mvc:interceptor>
->   </mvc:interceptors>
+>       <mvc:interceptors>
+>           <mvc:interceptor>
+>               <mvc:mapping path="/**"/>
+>               <mvc:exclude-mapping path="/login.do"/> <!-- 排除地址 -->
+>               <bean class="xxx.MyInterceptor"/>
+>           </mvc:interceptor>
+>       </mvc:interceptors>
 >   ```
 >- Listener → Filter → Interceptor
 >### Spring 异常处理

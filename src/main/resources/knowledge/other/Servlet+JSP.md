@@ -72,6 +72,7 @@
 |401|Unauthorized|请求的页面需要用户名和密码|
 |403|Forbidden|服务器理解请求客户端的请求，但是拒绝执行此请求|
 |404|Not Found|服务器找不到请求的页面|
+|405|Method Not Allowed|客户端请求中的方法被禁止|
 |415|Unsupported Media Type|服务器无法处理请求附带的媒体格式|
 |405|Method Not Allowed|请求中的方法是被禁止|
 |500|Internal Server Error|服务器内部错误，无法完成请求|
@@ -87,21 +88,20 @@
 1. 浏览器依据 ip，port 建立与 web 服务器（Servlet容器）之间的连接
 2. 浏览器将相关数据打包（按 http 协议创建一个请求数据报），发送给 web 服务器
 3. web 服务器拆包（按 http 协议将请求数据报中的相关数据解析出来），将解析到的数据添加到 request 对象里，同时，创建一个 response 对象
-4. web 服务器依据路径找到 Servlet 对象
-5. web 服务器调用 service 处理请求，处理结果写到 response 对象里
-6. web 服务器将 response 对象中的数据取出来，打包（按 http 协议创建数据包），发送给浏览器
-7. 浏览器拆包（按 http 协议将数据包中的数据解析出来），生成相应的页面
+4. web 服务器依据路径找到 Servlet 对象，调用 service 处理请求，处理结果写到 response 对象里
+5. web 服务器将 response 对象中的数据取出来，打包（按 http 协议创建数据包），发送给浏览器
+6. 浏览器拆包（按 http 协议将数据包中的数据解析出来），生成相应的页面
 ---
 ## 重定向 - 转发
 |重定向|转发|
 |:---|:---|
 |服务器向浏览器发送一个302状态码和一个 Location 消息头（地址），浏览器收到后立即向重定向地址发出请求|一个 web 组件（Servlet/JSP）将未完成的处理通过容器转交给另外一个 web 组件继续完成|
-|response.sendRedirect("xxx.jsp")|1. 绑定数据到 request 对象：<br/> request.setAttribute(String name, Object o); <br/> 2. 获得转发器: <br/> request.getRequestDispatcher("xxx.jsp"); <br/> 3. 转发：<br/> rd.forward(request, response);|
+|response.sendRedirect("xxx.jsp"); <br/> |response.sendRedirect("xxx.do");|1. 绑定数据到 request 对象：<br/> request.setAttribute(String name, Object o); <br/> 2. 获得转发器: <br/> request.getRequestDispatcher("xxx.jsp"); <br/> 3. 转发：<br/> rd.forward(request, response);|
 |重定向地址栏的地址发生改变|转发后地址栏地址不变|
 |重定向地址可以是任意的|转发的地址必须是同一个应用内部的某个地址|
 |重定向所涉及到的 Web 组件不共享 request 和 response|转发所涉及到的 Web 组件共享同 request 和 response|
 ---
-## Servlet 生命周期
+## [Servlet 生命周期](https://www.runoob.com/servlet/servlet-life-cycle.html)
 |时期|说明|
 |:---|:---|
 |实例化|容器调用 Servlet 的构造器，创建一个 Servlet 对象 <br/> 1)默认：容器收到请求之后，开始创建 <br/> 2)配置<load-on-start-up>：容器启动之后立即创建|
@@ -125,7 +125,7 @@
 |cookie.setMaxAge(0)|session.invalidate()|
 |将状态保存在浏览器，安全性低，可以被改写|将状态保存在服务器的内存中，安全性高；也可以持久化到 file，数据库，memcache，redis 等|
 |只能保存4kb左右的数据，且个数在20个左右|能保存更多的数据|
-|只能保存ASCII字符串 <br/> new Cookie("city", URLEncoder.encode("北京", "UTF-8");|能存放对象，可设置生命周期，但当存放对象过多时，会影响服务器的性能|
+|只能保存 ASCII 字符串 <br/> new Cookie("city", URLEncoder.encode("北京", "UTF-8");|能存放对象，可设置生命周期，但当存放对象过多时，会影响服务器的性能|
 |可被用户禁止，如 Cookie 被完全禁用，Session 也将失效|当用户第一次请求生成 Session 对象时会生成 SessionID，SessionID 保存在 Cookie 中|
 ---
 ## Scriptlet
@@ -143,7 +143,7 @@
 |输出到浏览器|如果设置了 charset 则浏览器就会使用指定的编码格式进行解码，否则采用默认的 ISO-8859-1| 
 ---
 ## JSP 九大内置对象（隐含对象）
-- 容器会依次从 pageContext → request → session → application 中查找
+- 容器会依次从 pageContext → request → session → application 中查找，调用"getXXX"方法输出
 
 |隐含对象|类型|说明|
 |:---|:---|:---|
@@ -231,9 +231,18 @@
 ## EL 表达式
 - 一套简单的运算规则，用于给 JSP 标签的属性赋值，也可以直接用来输出
 - 作用：
-    1. 访问 Bean 属性：${sessionScope.user.name}; ${user['name']}; ${user.interest[0]}
-    2. 进行简单计算：${"1"+"2"}; ${empty 引用} 判断是否空集合，空字符串，null
-    3. 获取请求参数：${param.name}; ${param.Values.name[0];
+    1. 访问 Bean 属性：如果没有赋值或名字写错，输出""
+        - ${sessionScope.user.name};
+        - ${user['name']};
+        - ${user.interest[0]}
+    2. 进行简单计算：
+        - 算术运算：${"1"+"2"}; // 3，+ 只能求和，不能连接字符串
+        - 关系运算：${1>2}; ${str=="abc"}
+        - 逻辑运算：${1>0 && 2<3}
+        - empty 运算：${empty 引用} 判断是否为空字符串，空集合，null，找不到对应值
+    3. 获取请求参数：
+        - ${param.name}; 相当于 request.getParameter("name");
+        - ${paramValues.name}; 相当于 request.getParameterValues("name");
 ---
 ## JSTL
 - apache 开发的一套 JSP 标签，后来捐献给了 sun，sun 将其命名为 JSTL。简化了 JSP 和 WEB 应用程序的开发。

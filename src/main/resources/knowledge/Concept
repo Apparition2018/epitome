@@ -3,7 +3,7 @@ JavaSE:	Java Standard Edition，标准版；自JDK5.0开始，从J2SE改名为Ja
 		是JavaEE的基础，主要包括了Java的基本语法规范，面向对象等内容；
 		主要用于桌面应用程序开发。
 JavaEE:	Java Enterprise Edition，企业版；JavaEE是J2EE的一个新名称；
-		是为开发企业环境下的应用程序提供的一套解决方案，包含的技术如Sevlet Jsp等；
+		是为开发企业环境下的应用程序提供的一套解决方案，包含的技术如Servlet Jsp等；
 		主要用于Web应用程序开发，可以使用一些现有的框架来快速的做企业网站。
 JavaME:	Java Micro Edition，微版；
 		为移动设备（包括消费类产品、嵌入式设备、高级移动设备等）提供基于java环境的开发与应用平台，包括虚拟机和一系列标准化的Java API。
