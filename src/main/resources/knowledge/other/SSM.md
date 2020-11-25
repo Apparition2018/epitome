@@ -86,23 +86,23 @@ Spring SpringMVC Mybatis
 >           5. autodetect：通过 bean 类来决定使用 byType 还是 constructor。如果发现默认的构造器，将使用 byType
 >### Spring 参数注入
 >1. 基本类型：&lt;property name="age" value="18"/&gt;
->   - 字段属性为 org.springframework.core.io.Resource 时，value="classpath:mybatis-config.xml"
+>       - 字段属性为 org.springframework.core.io.Resource 时，value="classpath:mybatis-config.xml"
 >2. 集合类型：&lt;list/&gt; &lt;set/&gt; &lt;map/&gt; &lt;props/&gt; 或 ref
->   ```
->   <bean id="person" class="l.demo.Person">
->       <property name="otherInfo">
->           <list>
->               <value>父亲</value>
->               <value>医生</value>
->           </list>
->       </property>
->   </bean>
->   
->   <util:properties location="classpath:jdbc.properties" id="jdbc"/>
->   <bean id="properties" class="spring.demo.bean.SpringBeanDemo.Bean">
->       <property name="properties" ref="jdbc"/>
->   </bean>
->   ```
+>       ```
+>           <bean id="person" class="l.demo.Person">
+>               <property name="otherInfo">
+>                   <list>
+>                       <value>父亲</value>
+>                       <value>医生</value>
+>                   </list>
+>               </property>
+>           </bean>
+>           
+>           <util:properties location="classpath:jdbc.properties" id="jdbc"/>
+>           <bean id="properties" class="spring.demo.bean.SpringBeanDemo.Bean">
+>               <property name="properties" ref="jdbc"/>
+>           </bean>
+>       ```
 >3. Bean：ref
 >4. null：&lt;property name="age"&gt; &lt;null/gt; &lt;/property&gt;
 >5. Spring 表达式：#{...}，读取其它对象/集合中的数据
@@ -149,31 +149,31 @@ Spring SpringMVC Mybatis
 >>      2. 添加 xml 配置文件
 >>      3. 在 web.xml 配置 DispatcherServlet 前端控制器
 >>      ```
->>      <servlet>
->>          <servlet-name>spring</servlet-name>
->>          <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
->>          <init-param>
->>              <param-name>contextConfigLocation</param-name>
->>              <param-value>classpath:spring/spring-web.xml</param-value>
->>          </init-param>
->>      </servlet>
+>>          <servlet>
+>>              <servlet-name>spring</servlet-name>
+>>              <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+>>              <init-param>
+>>                  <param-name>contextConfigLocation</param-name>
+>>                  <param-value>classpath:spring/spring-web.xml</param-value>
+>>              </init-param>
+>>          </servlet>
 >>      ```
 >>2. HandlerMapping：通过此组件，Dispatcher 可将客户 HTTP 请求映射到 Controller 上
 >>      1. SimpleUrlHandlerMapping
 >>      ```
->>      <bean class="org.springframe.web.servlet.handler.SimpleUrlHandlerMapping">
->>          <property name="mappings">
->>              <props>
->>      　           <prop key="/hello.do">hc</prop>
->>              </props>
->>      　   </property>
->>      </bean>
+>>          <bean class="org.springframe.web.servlet.handler.SimpleUrlHandlerMapping">
+>>              <property name="mappings">
+>>                  <props>
+>>          　           <prop key="/hello.do">hc</prop>
+>>                  </props>
+>>          　   </property>
+>>          </bean>
 >>      ```    
 >>      2. BeanNameUrlHandlerMapping
 >>      3. RequestMappingHandlerMapping
 >>3. Controller：负责执行具体的业务处理，实现 Controller 接口及约定方法 handleRequest(req, resp)
 >>      ```
->>        <bean id="hc" class="controller.HelloController"/>
+>>          <bean id="hc" class="controller.HelloController"/>
 >>      ```
 >>4. ModelAndView：handlerRequest() 返回一个 ModelAndView 对象，该对象可封装模型数据和视图名相应信息
 >       - ModelAndView(String ViewName); 或 ModelAndView(String viewName, Map model);
@@ -181,10 +181,10 @@ Spring SpringMVC Mybatis
 >>      1. UrlBasedViewResolver
 >>      2. InternalResourceViewResolver
 >>      ```
->>      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
->>          <property name="prefix" value="/WEB-INF/views/"/>
->>          <property name="suffix" value=".jsp"/>
->>      </bean>
+>>          <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+>>              <property name="prefix" value="/WEB-INF/views/"/>
+>>              <property name="suffix" value=".jsp"/>
+>>          </bean>
 >>      ```           
 >>      3. XmlViewResolver
 >>      4. FreeMarkerViewResolver
@@ -269,32 +269,32 @@ Spring SpringMVC Mybatis
 >- Listener → Filter → Interceptor
 >### Spring 异常处理
 >1. XML 配置：
->   - DefaultHandlerExceptionResolver
->   - ExceptionHandlerExceptionResolver
->   - ResponseStatusExceptionResolver
->   - SimpleMappingExceptionResolver
->```
->   <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
->       <property name="exceptionMappings">
->           <props>
->               <prop key="java.lang.NumberFormatException">erorViewName</prop>
->           </pops>
->       </propety>	
->   </bean>
->```
+>       - DefaultHandlerExceptionResolver
+>       - ExceptionHandlerExceptionResolver
+>       - ResponseStatusExceptionResolver
+>       - SimpleMappingExceptionResolver
+>       ```
+>          <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+>              <property name="exceptionMappings">
+>                  <props>
+>                      <prop key="java.lang.NumberFormatException">erorViewName</prop>
+>                  </pops>
+>              </propety>	
+>          </bean>
+>       ```
 >2. 自定义：创建异常处理类 实现 HandlerExceptionResolver 接口
 >3. [注解配置](https://www.cnblogs.com/xd502djj/p/9873172.html)：
->   - @ControllerAdvice：类注解，作用于整个 Spring 工程，定义了一个全局的异常处理器
->   - @ExceptionHandler：方法注解，作用于 Controller，为一个 Controller 定义一个异常处理器
->```
->@ControllerAdvice
->public class BaseExceptionHandler {
->	@ExceptionHandler(RuntimeException.class)
->	@ResponseBody
->	public JsonResult handleRuntimeException(Exception e) {
->		return new JsonResult(e);
->	}
->}
->```
+>       - @ControllerAdvice：类注解，作用于整个 Spring 工程，定义了一个全局的异常处理器
+>       - @ExceptionHandler：方法注解，作用于 Controller，为一个 Controller 定义一个异常处理器
+>       ```
+>       @ControllerAdvice
+>       public class BaseExceptionHandler {
+>       	@ExceptionHandler(RuntimeException.class)
+>       	@ResponseBody
+>       	public JsonResult handleRuntimeException(Exception e) {
+>       		return new JsonResult(e);
+>       	}
+>       }
+>       ```
 ---
 

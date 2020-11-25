@@ -241,22 +241,22 @@
 - 常用标签：
     1. if
     ```
-    <c:if test="表达式为 true 时，执行标签体内容" var="指定一个绑定名" scope="指定绑定范围">
-        ...
-    </c:if>
+        <c:if test="表达式为 true 时，执行标签体内容" var="指定一个绑定名" scope="指定绑定范围">
+            ...
+        </c:if>
     ```
     2. choose
     ```
-    <c:choose>
-        <c:when test="">...</c:when>   <!-- 可以出现多次 -->
-        <c:otherwise>...</c:otherwise> <!-- 可以出现0次或1次 -->
-    </c:choose>
+        <c:choose>
+            <c:when test="">...</c:when>   <!-- 可以出现多次 -->
+            <c:otherwise>...</c:otherwise> <!-- 可以出现0次或1次 -->
+        </c:choose>
     ```
     3. forEach
     ```
-    <c:forEach iteams="表示要遍历的集合或数组" var="指定绑定名，容器每次从集合取一个对象，然后绑定到 pageContext 上"
-        varStatus="指定绑定名，绑定值是一个由容器创建的对象，该对象封装了当前迭代的状态">
-        ...${e.name}...${s.index}...${s.count}...
-    </c:forEach>
+        <c:forEach iteams="表示要遍历的集合或数组" var="指定绑定名，容器每次从集合取一个对象，然后绑定到 pageContext 上"
+            varStatus="指定绑定名，绑定值是一个由容器创建的对象，该对象封装了当前迭代的状态">
+            ...${e.name}...${s.index}...${s.count}...
+        </c:forEach>
     ```
 ---
