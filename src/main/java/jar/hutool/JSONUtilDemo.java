@@ -4,12 +4,13 @@ import cn.hutool.core.lang.TypeReference;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import l.demo.Demo;
 import l.demo.JsonDemo;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static l.demo.Demo.p;
 
 /**
  * JSONUtil
@@ -17,12 +18,12 @@ import java.util.List;
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/json/JSONUtil.html
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/json/JSON.html
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/json/JSONObject.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/json/JSONArray.html 
+ * https://apidoc.gitee.com/loolly/hutool/cn/hutool/json/JSONArray.html
  *
  * @author ljh
  * created on 2020/11/20 8:43
  */
-public class JSONUtilDemo extends Demo implements JsonDemo {
+public class JSONUtilDemo implements JsonDemo {
     JSONObject jsonObject;
     JSONArray jsonArray;
     String jsonStr;

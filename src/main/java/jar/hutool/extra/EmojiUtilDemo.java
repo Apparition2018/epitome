@@ -1,8 +1,9 @@
 package jar.hutool.extra;
 
 import cn.hutool.extra.emoji.EmojiUtil;
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * EmojiUtil
@@ -13,8 +14,8 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/20 17:46
  */
-public class EmojiUtilDemo extends Demo {
-    
+public class EmojiUtilDemo {
+
     @Test
     public void testEmojiUtil() {
         String emoji = EmojiUtil.toUnicode(":smile:");

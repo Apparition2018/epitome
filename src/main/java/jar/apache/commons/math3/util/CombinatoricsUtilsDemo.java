@@ -1,8 +1,9 @@
 package jar.apache.commons.math3.util;
 
-import l.demo.Demo;
 import org.apache.commons.math3.util.CombinatoricsUtils;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * CombinatoricsUtils   组合学
@@ -11,7 +12,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class CombinatoricsUtilsDemo extends Demo {
+public class CombinatoricsUtilsDemo {
 
     @Test
     public void combinatorics() {

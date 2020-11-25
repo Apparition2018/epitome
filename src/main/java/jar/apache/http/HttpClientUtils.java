@@ -1,6 +1,5 @@
 package jar.apache.http;
 
-import l.demo.Demo;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -33,7 +32,7 @@ import java.util.Map;
  * @author ljh
  * created on 2020/11/12 21:35
  */
-public class HttpClientUtils extends Demo {
+public class HttpClientUtils {
 
     private static RequestConfig requestConfig = RequestConfig.custom()
             .setConnectTimeout(5000)    // 连接超时：指连接一个 url 的连接等待时间

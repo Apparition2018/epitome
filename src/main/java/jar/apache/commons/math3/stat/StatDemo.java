@@ -1,12 +1,13 @@
 package jar.apache.commons.math3.stat;
 
-import l.demo.Demo;
 import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
 import org.apache.commons.math3.stat.descriptive.rank.Median;
 import org.junit.Test;
 
 import java.util.Arrays;
+
+import static l.demo.Demo.p;
 
 /**
  * StatUtils
@@ -16,7 +17,7 @@ import java.util.Arrays;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class StatDemo extends Demo {
+public class StatDemo {
 
     private double[] values = new double[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private double[] values2 = new double[]{2, 3, 4, 5, 6, 7, 8, 9, 10, 11};

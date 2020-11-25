@@ -1,8 +1,9 @@
 package jar.hutool;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * ExceptionUtil    异常工具
@@ -12,7 +13,7 @@ import org.junit.Test;
  * @author Arsenal
  * created on 2020/11/19 23:31
  */
-public class ExceptionUtilDemo extends Demo {
+public class ExceptionUtilDemo {
 
     @Test
     public void testExceptionUtil() {
@@ -25,7 +26,7 @@ public class ExceptionUtilDemo extends Demo {
             p(ExceptionUtil.getSimpleMessage(e));   // / by zero
             // 异常链中最尾端的异常的消息
             p(ExceptionUtil.getRootCauseMessage(e));// ArithmeticException: / by zero
-            
+
             // 堆栈转为完整字符串
             p(ExceptionUtil.stacktraceToString(e));
             // 堆栈转为单行完整字符串

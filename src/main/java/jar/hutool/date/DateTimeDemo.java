@@ -1,10 +1,11 @@
 package jar.hutool.date;
 
 import cn.hutool.core.date.*;
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Date;
+
+import static l.demo.Demo.p;
 
 /**
  * DateTime
@@ -16,7 +17,7 @@ import java.util.Date;
  * @author Arsenal
  * created on 2020/10/27 2:31
  */
-public class DateTimeDemo extends Demo {
+public class DateTimeDemo {
 
     private static final DateTime DATETIME = new DateTime("2008-08-08 20:08:08", DatePattern.NORM_DATETIME_PATTERN);
     private static final DateTime NOW = DateTime.now();
@@ -60,7 +61,7 @@ public class DateTimeDemo extends Demo {
 
     /**
      * 获取和设置
-     * 
+     * <p>
      * TimeZone         getTimeZone()
      * ZoneId           getZoneId()
      * DateTime         setTimeZone(TimeZone timeZone)
@@ -73,7 +74,7 @@ public class DateTimeDemo extends Demo {
         // 设置一周的第一天 ? 
         p(DATETIME.setFirstDayOfWeek(Week.SUNDAY));     // 2020-08-08 20:08:08
         p(DATETIME.getFirstDayOfWeek());                // SUNDAY
-        
+
         DATETIME.setTime(DateUtil.toInstant(DATETIME).toEpochMilli());
     }
 
@@ -137,7 +138,7 @@ public class DateTimeDemo extends Demo {
         DateTime offset;
         offset = DATETIME.offset(DateField.YEAR, 1);
         p(offset.equals(DATETIME)); // true
-        
+
         // 修改为不可变对象
         DATETIME.setMutable(false);
         offset = DATETIME.offset(DateField.YEAR, 1);

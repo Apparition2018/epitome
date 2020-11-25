@@ -1,8 +1,9 @@
 package jar.apache.commons.lang3;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * RandomStringUtils
@@ -11,7 +12,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class RandomStringUtilsDemo extends Demo {
+public class RandomStringUtilsDemo {
 
     @Test
     public void random() {

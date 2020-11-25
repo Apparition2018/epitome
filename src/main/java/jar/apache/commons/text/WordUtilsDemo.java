@@ -1,8 +1,9 @@
 package jar.apache.commons.text;
 
-import l.demo.Demo;
 import org.apache.commons.text.WordUtils;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * WordUtils
@@ -11,14 +12,14 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class WordUtilsDemo extends Demo {
+public class WordUtilsDemo {
 
     /**
      * static String	abbreviate​(String str, int lower, int upper, String appendToEnd)
      * 缩写
      */
     @Test
-    public void abbreviate(){
+    public void abbreviate() {
         p(WordUtils.abbreviate("Now is the time for all good men", 0, 40, null));   // Now
         p(WordUtils.abbreviate("Now is the time for all good men", 10, 40, ""));    // Now is the
         p(WordUtils.abbreviate("Now is the time for all good men", 20, 40, " ..."));// Now is the time for all ...
@@ -30,7 +31,7 @@ public class WordUtilsDemo extends Demo {
      * static String	capitalize​(String str[, char... delimiters])
      * static String	capitalizeFully​(String str[, char... delimiters])
      * 首字母大写
-     *
+     * <p>
      * static String	uncapitalize​(String str, char... delimiters)
      * 取消首字母大写
      */

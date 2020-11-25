@@ -3,8 +3,9 @@ package jar.hutool;
 import cn.hutool.core.annotation.AnnotationUtil;
 import knowledge.注解.CustomAnnotation.Apple;
 import knowledge.注解.CustomAnnotation.Description;
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * AnnotationUtil   注解工具
@@ -14,7 +15,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/9 16:25
  */
-public class AnnotationUtilDemo extends Demo {
+public class AnnotationUtilDemo {
 
     @Test
     public void testAnnotationUtil() throws NoSuchFieldException {

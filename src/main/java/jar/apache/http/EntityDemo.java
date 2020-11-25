@@ -1,6 +1,5 @@
 package jar.apache.http;
 
-import l.demo.Demo;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
@@ -15,6 +14,8 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+import static l.demo.Demo.p;
+
 /**
  * 实体可以在一些请求和响应中找到，使用了实体的请求被称为封闭实体请求。HTTP 规范定义了两种封闭实体的方法：POST 和 PUT。
  * 响应通常期望包含一个内容实体。这个规则也有特例，比如 HEAD 方法的响应和 204 No Content，304 Not Modified 和 205 Reset Content 响应。
@@ -27,7 +28,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * created on 2020/11/12 21:35
  */
-public class EntityDemo extends Demo {
+public class EntityDemo {
     public static void main(String[] args) throws ParseException, IOException {
         // 当为一个传出报文创建实体时，这个元数据不得不通过实体创建器来提供。
         StringEntity myEntity = new StringEntity("important message", StandardCharsets.UTF_8);

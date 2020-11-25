@@ -2,8 +2,9 @@ package jar.hutool.http;
 
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * UserAgentUtil    User Agent 工具类
@@ -14,10 +15,10 @@ import org.junit.Test;
  * @author Arsenal
  * created on 2020/11/2 23:38
  */
-public class UserAgentUtilDemo extends Demo {
+public class UserAgentUtilDemo {
     @Test
     public void testUserAgentUtil() {
-        
+
         UserAgent userAgent = UserAgentUtil.parse("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36");
 
         p(userAgent.getBrowser());      // Chrome

@@ -1,10 +1,11 @@
 package spring.demo.util;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.util.StopWatch;
 
 import java.util.concurrent.TimeUnit;
+
+import static l.demo.Demo.p;
 
 /**
  * StopWatch
@@ -12,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * created on 2020/10/16 11:05
  */
-public class StopWatchDemo extends Demo {
+public class StopWatchDemo {
 
     public static void main(String[] args) throws InterruptedException {
         // 创建一个 StopWatch，并设置 id

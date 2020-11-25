@@ -2,7 +2,6 @@ package jar.hutool.lang;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Singleton;
-import l.demo.Demo;
 import l.demo.Person;
 import org.junit.Test;
 
@@ -22,7 +21,7 @@ import org.junit.Test;
  * @author Arsenal
  * created on 2020/11/19 20:46
  */
-public class SingletonDemo extends Demo {
+public class SingletonDemo {
 
     @Test
     public void testSingleton() {

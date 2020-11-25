@@ -1,9 +1,10 @@
 package jar.hutool.bean;
 
 import cn.hutool.core.bean.DynaBean;
-import l.demo.Demo;
 import l.demo.Person;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * DynaBean
@@ -14,17 +15,17 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/9 15:55
  */
-public class DynaBeanDemo extends Demo {
-    
+public class DynaBeanDemo {
+
     @Test
     public void testDynaBean() {
         DynaBean dynaBean = DynaBean.create(Person.class);
-        
+
         dynaBean.set("id", 1);
         dynaBean.set("name", "张三");
-        
+
         p(dynaBean.get("name"));
-        
+
         dynaBean.invoke("getName");
     }
 }

@@ -1,6 +1,5 @@
 package jar.apache.commons.lang3.time;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
@@ -12,6 +11,8 @@ import java.util.Iterator;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
+import static l.demo.Demo.p;
+
 /**
  * DateUtils
  * DateFormatUtils
@@ -22,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class DateUtilsDemo extends Demo {
+public class DateUtilsDemo {
 
     private Date date1;
     private Date date2;
@@ -79,15 +80,15 @@ public class DateUtilsDemo extends Demo {
         p(DateUtils.ceiling(date1, Calendar.DATE));     // 2019-11-01 00:00:00.000
         p(DateUtils.ceiling(date1, Calendar.HOUR));     // 2019-10-31 18:00:00.000
         p(DateUtils.ceiling(date1, Calendar.MINUTE));   // 2019-10-31 17:21:00.000
-        p("=============================\n");           
-                                                        
+        p("=============================\n");
+
         p(DateUtils.round(date1, Calendar.YEAR));       // 2019-01-01 00:00:00.000
         p(DateUtils.round(date1, Calendar.MONTH));      // 2019-11-01 00:00:00.000
         p(DateUtils.round(date1, Calendar.DATE));       // 2019-11-01 00:00:00.000
         p(DateUtils.round(date1, Calendar.HOUR));       // 2019-10-31 17:00:00.000
         p(DateUtils.round(date1, Calendar.MINUTE));     // 2019-10-31 17:20:00.000
-        p("=============================\n");           
-                                                        
+        p("=============================\n");
+
         p(DateUtils.truncate(date1, Calendar.YEAR));    // 2019-01-01 00:00:00.000
         p(DateUtils.truncate(date1, Calendar.MONTH));   // 2019-10-01 00:00:00.000
         p(DateUtils.truncate(date1, Calendar.DATE));    // 2019-10-31 00:00:00.000
