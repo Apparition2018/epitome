@@ -15,7 +15,7 @@
         (1)自动注册：
             HandlerMapping: RequestMappingHandlerMapping, BeanNameUrlHandlerMapping
             HandlerAdapter: RequestMappingHandlerAdapter, HttpRequestHandlerAdapter, SimpleControllerHandlerAdapter
-            HandlerExceptionResolver: ExceptionHandlerExceptionResolver, RequestMappingHandlerAdapter, DefaultHandlerExceptionResolver
+            HandlerExceptionResolver: ExceptionHandlerExceptionResolver, ResponseStatusExceptionResolver, DefaultHandlerExceptionResolver
         (2)其它扩展：https://spring.io/blog/2009/12/21/mvc-simplifications-in-spring-3-0 -->
     <mvc:annotation-driven/>
 

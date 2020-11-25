@@ -450,8 +450,8 @@
 					　　&lt;/property&gt;<br />
 					&lt;/bean&gt;</span></details>					
 				</li>
-				<li>实现<span>HandlerExceptionResovler</span>接口自定义异常处理器<br />
-					&lt;bean id="exceptionHandler" class="....MyMappingExceptionResovler" /&gt;</li>
+				<li>实现<span>HandlerExceptionResoler</span>接口自定义异常处理器<br />
+					&lt;bean id="exceptionHandler" class="....MyMappingExceptionResolver" /&gt;</li>
 				<li><span>@ExceptionHandler</span>
 					<ol>
 						<li><details open="open"><summary>先编写一个BaseController类</summary>
@@ -466,7 +466,7 @@
 							　　　　return "视图名";<br />
 							　　}<br />
 							}</span></details></li>
-						<li>其它Controller继承BaseController（如没有@@ControllerAdvice）</li>
+						<li>其它Controller继承BaseController（如没有@ControllerAdvice）</li>
 					</ol>
 				</li>
 			</ol><br />

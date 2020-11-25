@@ -141,7 +141,8 @@ Spring SpringMVC Mybatis
 >   - @Value("#{config.max-wait}")：写在成员变量前或 set 方法前
 >### Spring MVC
 >- 用来简化基于 MVC 架构的 WEB 应用程序开发的框架，是 Spring 框架的一部分
-><img alt="SpringMVC 运行流程" src="https://www.jianshu.com/p/23ad68d8b421" width="550px"><br/>
+>
+><img alt="SpringMVC 运行流程" src="https://upload-images.jianshu.io/upload_images/4322526-873dc442cdc93555.png" width="880px"><br/>
 >#### 基于XML配置 MVC
 >>1. 搭建环境：
 >>      1. 创建 web 工程，导包 spring-webmvc
@@ -253,19 +254,47 @@ Spring SpringMVC Mybatis
 >- DispatchServlet → interceptor.preHandle() → Controller → interceptor.postHandle() → interceptor.afterCompletion()
 >- Interceptor 属于 Spring 框架，Filter 属于 Servlet 规范
 >- 步骤：
->       1. 创建拦截器类 实现 HandlerInterceptor 或 继承 HandlerInterceptorAdapter
->       2. 再拦截器方法中，实现拦截处理逻辑
->       3. 配置拦截器
->       ```
->       <mvc:interceptors>
->           <mvc:interceptor>
->               <mvc:mapping path="/**" />
->               <mvc:exclude-mapping path="/toLogin.do" />
->               <mvc:exclude-mapping path="/login.do" />
->               <mvc:exclude-mapping path="/checkcode.do" />
->               <bean class="cn.tedu.ems.interceptors.SessionInterceptor" />
->           </mvc:interceptor>
->       </mvc:interceptors>
->       ```
+>   1. 创建拦截器类 实现 HandlerInterceptor 或 继承 HandlerInterceptorAdapter
+>   2. 再拦截器方法中，实现拦截处理逻辑
+>   3. 配置拦截器
+>   ```
+>   <mvc:interceptors>
+>       <mvc:interceptor>
+>           <mvc:mapping path="/**"/>
+>           <mvc:exclude-mapping path="/login.do"/> <!-- 排除地址 -->
+>           <bean class="xxx.MyInterceptor"/>
+>       </mvc:interceptor>
+>   </mvc:interceptors>
+>   ```
+>- Listener → Filter → Interceptor
+>### Spring 异常处理
+>1. XML 配置：
+>   - DefaultHandlerExceptionResolver
+>   - ExceptionHandlerExceptionResolver
+>   - ResponseStatusExceptionResolver
+>   - SimpleMappingExceptionResolver
+>```
+>   <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+>       <property name="exceptionMappings">
+>           <props>
+>               <prop key="java.lang.NumberFormatException">erorViewName</prop>
+>           </pops>
+>       </propety>	
+>   </bean>
+>```
+>2. 自定义：创建异常处理类 实现 HandlerExceptionResolver 接口
+>3. [注解配置](https://www.cnblogs.com/xd502djj/p/9873172.html)：
+>   - @ControllerAdvice：类注解，作用于整个 Spring 工程，定义了一个全局的异常处理器
+>   - @ExceptionHandler：方法注解，作用于 Controller，为一个 Controller 定义一个异常处理器
+>```
+>@ControllerAdvice
+>public class BaseExceptionHandler {
+>	@ExceptionHandler(RuntimeException.class)
+>	@ResponseBody
+>	public JsonResult handleRuntimeException(Exception e) {
+>		return new JsonResult(e);
+>	}
+>}
+>```
 ---
 
