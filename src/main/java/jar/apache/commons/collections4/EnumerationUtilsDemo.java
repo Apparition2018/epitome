@@ -1,12 +1,13 @@
 package jar.apache.commons.collections4;
 
-import l.demo.Demo;
 import org.apache.commons.collections4.EnumerationUtils;
 import org.junit.Test;
 
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
+
+import static l.demo.Demo.p;
 
 /**
  * EnumerationUtils
@@ -15,7 +16,7 @@ import java.util.Vector;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class EnumerationUtilsDemo extends Demo {
+public class EnumerationUtilsDemo {
 
     @Test
     public void enumeration() {

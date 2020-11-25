@@ -1,9 +1,10 @@
 package jar.apache.commons.collections4;
 
-import l.demo.Demo;
 import org.apache.commons.collections4.Bag;
 import org.apache.commons.collections4.bag.HashBag;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * Bag
@@ -17,7 +18,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class BagDemo extends Demo {
+public class BagDemo {
 
     @Test
     public void testBag() {

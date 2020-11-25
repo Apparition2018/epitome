@@ -1,6 +1,5 @@
 package knowledge.注解;
 
-import l.demo.Demo;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +11,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import static l.demo.Demo.p;
+
 /**
  * 需求：
  * 1.有一张用户表，字段包括用户ID，用户名，昵称，年龄，性别，所在城市，邮箱，手机号
@@ -21,7 +22,7 @@ import java.lang.reflect.Method;
  * @author ljh
  * created on 2020/9/18 18:01
  */
-public class CustomAnnotationExercise extends Demo {
+public class CustomAnnotationExercise {
 
     public static void main(String[] args) {
         // 查询id为10的用户
@@ -154,6 +155,5 @@ public class CustomAnnotationExercise extends Demo {
     public @interface Column {
         String value();
     }
-
 
 }

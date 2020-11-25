@@ -1,6 +1,5 @@
 package jar.apache.commons.beanutils;
 
-import l.demo.Demo;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
 import org.junit.Test;
@@ -8,6 +7,8 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static l.demo.Demo.p;
 
 /**
  * ConvertUtils
@@ -18,7 +19,7 @@ import java.util.Date;
  * @author Arsenal
  * created on 2020/11/14 21:54
  */
-public class ConvertUtilsDemo extends Demo {
+public class ConvertUtilsDemo {
 
     @Test
     @SuppressWarnings("unchecked")
@@ -34,10 +35,10 @@ public class ConvertUtilsDemo extends Demo {
                 }
             }
         }, Date.class);
-        
+
         String DateStr = "2008-08-08 20:08:08";
         p(ConvertUtils.convert(DateStr, Date.class), true); // Fri Aug 08 20:08:08 CST 2008
-        
+
         String[] DateStrArr = new String[]{DateStr, DateStr};
         p(ConvertUtils.convert(DateStrArr, Date.class));    // [Fri Aug 08 20:08:08 CST 2008, Fri Aug 08 20:08:08 CST 2008]
     }

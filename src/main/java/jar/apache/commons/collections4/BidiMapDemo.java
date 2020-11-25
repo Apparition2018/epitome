@@ -1,9 +1,10 @@
 package jar.apache.commons.collections4;
 
-import l.demo.Demo;
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.TreeBidiMap;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * BidiMap
@@ -13,7 +14,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class BidiMapDemo extends Demo {
+public class BidiMapDemo {
 
     @Test
     public void bidiMap() {

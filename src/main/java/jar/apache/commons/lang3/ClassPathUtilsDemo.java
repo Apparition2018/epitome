@@ -1,8 +1,9 @@
 package jar.apache.commons.lang3;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.ClassPathUtils;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * ClassPathUtils
@@ -11,7 +12,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class ClassPathUtilsDemo extends Demo {
+public class ClassPathUtilsDemo {
 
     /**
      * static String	toFullyQualifiedName(Class<?>/Package context, String resourceName)

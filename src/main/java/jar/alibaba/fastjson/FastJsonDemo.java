@@ -3,12 +3,13 @@ package jar.alibaba.fastjson;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import l.demo.Demo;
 import l.demo.JsonDemo;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static l.demo.Demo.p;
 
 /**
  * FastJson 的简单使用：https://segmentfault.com/a/1190000011212806
@@ -16,7 +17,7 @@ import java.util.List;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class FastJsonDemo extends Demo implements JsonDemo {
+public class FastJsonDemo implements JsonDemo {
     JSONObject jsonObject;
     JSONArray jsonArray;
     String jsonStr;

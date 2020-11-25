@@ -1,11 +1,12 @@
 package jar.apache.commons.lang3;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.LocaleUtils;
 
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
+import static l.demo.Demo.p;
 
 /**
  * LocaleUtils
@@ -14,7 +15,7 @@ import java.util.Set;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class LocaleUtilsDemo extends Demo {
+public class LocaleUtilsDemo {
 
     public static void main(String[] args) {
         // static List<Locale>	availableLocaleList()

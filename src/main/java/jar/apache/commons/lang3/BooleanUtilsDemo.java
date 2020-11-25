@@ -1,8 +1,9 @@
 package jar.apache.commons.lang3;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.BooleanUtils;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * BooleanUtils
@@ -11,7 +12,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class BooleanUtilsDemo extends Demo {
+public class BooleanUtilsDemo {
 
     private boolean[] b1 = new boolean[]{true, true};
     private boolean[] b2 = new boolean[]{true, false};

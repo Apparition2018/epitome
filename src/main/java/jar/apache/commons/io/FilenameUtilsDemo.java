@@ -1,8 +1,9 @@
 package jar.apache.commons.io;
 
-import l.demo.Demo;
 import org.apache.commons.io.FilenameUtils;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * FilenameUtils
@@ -11,7 +12,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class FilenameUtilsDemo extends Demo {
+public class FilenameUtilsDemo {
 
     @Test
     public void getXXX() {

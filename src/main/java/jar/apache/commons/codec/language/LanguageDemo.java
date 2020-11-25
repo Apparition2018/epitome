@@ -1,10 +1,11 @@
 package jar.apache.commons.codec.language;
 
-import l.demo.Demo;
 import org.apache.commons.codec.language.Metaphone;
 import org.apache.commons.codec.language.RefinedSoundex;
 import org.apache.commons.codec.language.Soundex;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * Language
@@ -16,7 +17,7 @@ import org.junit.Test;
  * @author Arsenal
  * created on 2020/11/15 0:28
  */
-public class LanguageDemo extends Demo {
+public class LanguageDemo {
 
     @Test
     public void testLanguage() {
