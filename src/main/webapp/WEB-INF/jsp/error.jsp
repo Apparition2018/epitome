@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Error!</h2>
+<h2>Internal Server Error!</h2>
 </body>
 </html>

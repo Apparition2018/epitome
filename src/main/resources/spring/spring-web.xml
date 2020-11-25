@@ -19,8 +19,8 @@
         (2)其它扩展：https://spring.io/blog/2009/12/21/mvc-simplifications-in-spring-3-0 -->
     <mvc:annotation-driven/>
 
-    <!-- 2:扫描web相关的bean -->
-    <context:component-scan base-package="spring.web"/>
+    <!-- 2:扫描指定包 -->
+    <context:component-scan base-package="spring"/>
 
     <!-- 3:配置 ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -29,11 +29,10 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!-- 4:静态资源默认Servlet配置 https://www.cnblogs.com/dflmg/p/6393416.html
-        1:假如对静态资源的处理：js,gif,png 
-        2:允许使用"/"做整体映射
-     -->
-    <mvc:default-servlet-handler/>
+    <!-- 4:静态资源请求配置
+        https://www.cnblogs.com/caoyc/p/5639078.html
+        http://www.javacoder.cn/?p=178 -->
+    <mvc:resources location="classpath:static/" mapping="/**" cache-period="86400"/>
 
     <!-- 5:拦截器 -->
     <mvc:interceptors>

@@ -7,6 +7,6 @@
         http://www.springframework.org/schema/aop
         https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!-- 使aspectj注解生效，自动为目标对象生成代理对象 -->
+    <!-- 使 aspectj 注解生效，自动为目标对象生成代理对象 -->
     <aop:aspectj-autoproxy/>
 </beans>

@@ -99,13 +99,13 @@ Spring SpringMVC Mybatis
 >       </bean>
 >       
 >       <util:properties location="classpath:jdbc.properties" id="jdbc"/>
->       <bean id="properties" class="spring.demo.bean.SpringBeanDemo.Bean">
+>       <bean id="bean" class="spring.bean.Bean">
 >           <property name="properties" ref="jdbc"/>
 >       </bean>
 >   ```
 >3. Bean：ref
 >4. null：&lt;property name="age"&gt; &lt;null/gt; &lt;/property&gt;
->5. Spring 表达式：#{...}，读取其它对象/集合中的数据
+>5. SpEL 表达式：#{id.attribute}，读取其它对象/集合中的数据
 >### Spring 其它功能
 >- init-method：初始化方法
 >- destroy-method：销毁方法
@@ -138,7 +138,8 @@ Spring SpringMVC Mybatis
 >   - @Scope("prototype")：指定作用域，写在类前
 >   - @Lazy(true)：延迟加载，写在类前
 >   - @PostConstruct @PreDestroy：指定初始化方法和销毁方法
->   - @Value("#{config.max-wait}")：写在成员变量前或 set 方法前
+>   - @Value("#{config.max-wait}")：config 要是注册 Bean 的 id
+>   - @Value("${jdbc.password"}})
 >### Spring MVC
 >- 用来简化基于 MVC 架构的 WEB 应用程序开发的框架，是 Spring 框架的一部分
 >
@@ -192,7 +193,7 @@ Spring SpringMVC Mybatis
 >>1. 添加注解驱动：<mvc:annotation-driven />
 >>      1. 自动注册：HandlerMapping，HandlerAdapter，HandlerExceptionResolver
 >>      2. 其它扩展功能
->>2. 添加包扫描：<context:component-scan base-package="spring.web"/>
+>>2. 添加包扫描：<context:component-scan base-package="spring"/>
 >>3. @Controller：用于组件扫描，Controller 不用实现 Controller 接口了
 >>4. @RequestMapping：相当于 HandlerMapping
 >>5. ViewResolver：同基于 XML 配置
@@ -296,5 +297,9 @@ Spring SpringMVC Mybatis
 >       	}
 >       }
 >       ```
+>### Spring JDBC
+>- 步骤： 
+>       1. 导包：spring-jdbc，数据库连接池 (commons-dbcp2)，数据库 (mysql-connector-java)
+>       2. XML 配置
 ---
 
