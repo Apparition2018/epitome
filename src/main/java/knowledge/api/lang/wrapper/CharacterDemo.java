@@ -1,7 +1,8 @@
 package knowledge.api.lang.wrapper;
 
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * Character
@@ -27,7 +28,7 @@ import org.junit.Test;
  * @author Arsenal
  * created on 2020/9/7 01:28
  */
-public class CharacterDemo extends Demo {
+public class CharacterDemo {
 
     /**
      * static int	    codePointAt(char[]/CharSequence a, int index[, int limit])

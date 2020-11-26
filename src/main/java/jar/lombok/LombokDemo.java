@@ -1,8 +1,9 @@
 package jar.lombok;
 
-import l.demo.Demo;
 import lombok.*;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * Lombok
@@ -11,7 +12,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class LombokDemo extends Demo {
+public class LombokDemo {
 
     @Test
     public void testNonNull() {

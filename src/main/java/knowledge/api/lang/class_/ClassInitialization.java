@@ -1,6 +1,6 @@
 package knowledge.api.lang.class_;
 
-import l.demo.Demo;
+import static l.demo.Demo.p;
 
 /**
  * 类的初始化初始化顺序：
@@ -19,7 +19,7 @@ import l.demo.Demo;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class ClassInitialization extends Demo {
+public class ClassInitialization {
 
     static {
         p("classloader 静态块");

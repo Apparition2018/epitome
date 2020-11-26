@@ -1,7 +1,8 @@
 package knowledge.api.lang.class_;
 
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * 类加载
@@ -17,7 +18,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/9/26 2:51
  */
-public class ClassLoad extends Demo {
+public class ClassLoad {
 
     /**
      * 字段

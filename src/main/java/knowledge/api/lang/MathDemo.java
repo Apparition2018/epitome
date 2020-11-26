@@ -1,7 +1,8 @@
 package knowledge.api.lang;
 
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * Math
@@ -24,7 +25,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class MathDemo extends Demo {
+public class MathDemo {
 
     @Test
     public void constant() {
@@ -66,7 +67,7 @@ public class MathDemo extends Demo {
         // static double    copySign(double/float magnitude, double/float sign)
         // 返回带有第二个浮点参数符号的第一个浮点参数
         p(Math.copySign(1.5, -2)); // -1.5
-        
+
         // static double	signum(double d)
         // 返回参数的符号函数；如果参数为 0，则返回 0；如果参数大于 0，则返回 1.0；如果参数小于 0，则返回 -1.0
         p(Math.signum(99)); // 1.0

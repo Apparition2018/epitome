@@ -2,11 +2,12 @@ package knowledge.api.lang.class_;
 
 import l.demo.Animal;
 import l.demo.Animal.Chicken;
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.util.function.Predicate;
+
+import static l.demo.Demo.p;
 
 /**
  * Class
@@ -39,7 +40,7 @@ import java.util.function.Predicate;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class ClassDemo extends Demo {
+public class ClassDemo {
 
     private static class ClassInnerDemo {
     }

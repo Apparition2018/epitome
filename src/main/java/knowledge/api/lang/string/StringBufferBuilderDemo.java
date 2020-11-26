@@ -1,7 +1,8 @@
 package knowledge.api.lang.string;
 
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * StringBuffer     线性安全，长度可变
@@ -20,7 +21,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class StringBufferBuilderDemo extends Demo {
+public class StringBufferBuilderDemo {
 
     /**
      * StringBuffer/StringBuilder   append(XXX xxx)

@@ -1,6 +1,5 @@
 package knowledge.api.lang;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 /**
@@ -10,7 +9,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class ObjectDemo extends Demo {
+public class ObjectDemo {
 
     /**
      * protected  Object	clone()
@@ -34,10 +33,10 @@ public class ObjectDemo extends Demo {
     public void equals_() {
         Object x = 1;
         Object y = 2;
-        p(x.equals(y)); // false
+        System.out.println(x.equals(y)); // false
 
         Object z = x;
-        p(x.equals(z)); // true
+        System.out.println(x.equals(z)); // true
     }
 
     /**
@@ -62,10 +61,10 @@ public class ObjectDemo extends Demo {
 
         Number n = 2;
         // object.getClass()
-        p(n.getClass().getName()); // java.lang.Integer
+        System.out.println(n.getClass().getName()); // java.lang.Integer
 
         // Object.class
-        p(Number.class.getName()); // java.lang.Number
+        System.out.println(Number.class.getName()); // java.lang.Number
     }
 
     /**
