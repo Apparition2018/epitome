@@ -1,10 +1,11 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.ClassUtil;
-import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * ClassUtil
@@ -14,7 +15,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/2 14:43
  */
-public class ClassUtilDemo extends Demo {
+public class ClassUtilDemo {
 
     @Test
     public void testClassUtil() {

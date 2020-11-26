@@ -1,8 +1,9 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.CharUtil;
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * CharUtil
@@ -11,7 +12,7 @@ import org.junit.Test;
  * @author Arsenal
  * created on 2020/11/22 3:27
  */
-public class CharUtilDemo extends Demo {
+public class CharUtilDemo {
 
     @Test
     public void testCharUtil() {

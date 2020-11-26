@@ -2,8 +2,9 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.EnumUtil;
 import l.demo.Company;
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * EnumUtil
@@ -13,7 +14,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/2 13:58
  */
-public class EnumUtilDemo extends Demo {
+public class EnumUtilDemo {
 
     @Test
     public void testEnumUtil() {
@@ -24,7 +25,7 @@ public class EnumUtilDemo extends Demo {
 
         // getNames
         p(EnumUtil.getNames(Company.class));                // [SF, YTO, STO, EMS, DHL]
-        
+
         //getFieldNames
         p(EnumUtil.getFieldNames(Company.class));           // [company, code, name]
 
@@ -42,10 +43,10 @@ public class EnumUtilDemo extends Demo {
 
         // isEnum
         p(EnumUtil.isEnum(Company.SF));                     // true
-        
+
         // contains, notContains
         p(EnumUtil.contains(Company.class, "DHL"));         // true
-        
+
         // equals, equalsIgnoreCase
         p(EnumUtil.equals(Company.DHL, "DHL"));             // true
     }

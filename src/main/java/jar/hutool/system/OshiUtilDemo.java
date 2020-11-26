@@ -1,8 +1,9 @@
 package jar.hutool.system;
 
 import cn.hutool.system.oshi.OshiUtil;
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * OshiUtil     获取系统和硬件信息工具
@@ -13,8 +14,8 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/19 14:39
  */
-public class OshiUtilDemo extends Demo {
-    
+public class OshiUtilDemo {
+
     @Test
     public void testOshiUtil() {
         // 操作系统
@@ -27,7 +28,7 @@ public class OshiUtilDemo extends Demo {
         p(OshiUtil.getDiskStores());    // [\\.\PHYSICALDRIVE0: (model: ST1000DM003-1ER162 (标准磁盘驱动器) - S/N:             Z4YCFTFH) size: 1.0 TB, reads: 4496234 (108.7 GiB), writes: 4616345 (166.9 GiB), xfer: 1605632518143]
         // 硬件
         p(OshiUtil.getHardware());      // oshi.hardware.platform.windows.WindowsHardwareAbstractionLayer@55b53d44
-        
+
         // CPU
         p(OshiUtil.getCpuInfo());
         // CpuInfo{cpu核心数=4, CPU总的使用率=4440.0, CPU系统使用率=5.65, CPU用户使用率=19.35, CPU当前等待率=0.0, CPU当前空闲率=75.0, CPU利用率=25.0, CPU型号信息='Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz
@@ -37,7 +38,7 @@ public class OshiUtilDemo extends Demo {
         // Identifier: Intel64 Family 6 Model 60 Stepping 3
         // ProcessorID: BFEBFBFF000306C3
         // Microarchitecture: Haswell (Client)'}
-        
+
         // CPU
         p(OshiUtil.getProcessor());
         // Intel(R) Core(TM) i5-4590 CPU @ 3.30GHz
@@ -47,7 +48,7 @@ public class OshiUtilDemo extends Demo {
         // Identifier: Intel64 Family 6 Model 60 Stepping 3
         // ProcessorID: BFEBFBFF000306C3
         // Microarchitecture: Haswell (Client)
-        
+
         // 网络
         p(OshiUtil.getNetworkIFs());
         // [Name: eth4 (Realtek PCIe GBE Family Controller)
@@ -56,7 +57,7 @@ public class OshiUtilDemo extends Demo {
         //   IPv4: [192.168.8.223/23]
         //   IPv6: [fe80:0:0:0:c582:686f:2b98:a92b/64]
         //   Traffic: received 89940 packets/98.3 MiB (0 err, 0 drop); transmitted 63976 packets/10.9 MiB (0 err, 0 coll);]
-        
+
         // 传感器
         p(OshiUtil.getSensors());
         // ...... Error was -2147217405: Failed to enumerate results.

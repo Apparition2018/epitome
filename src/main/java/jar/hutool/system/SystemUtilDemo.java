@@ -1,8 +1,9 @@
 package jar.hutool.system;
 
 import cn.hutool.system.SystemUtil;
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * SystemUtil   系统属性
@@ -17,7 +18,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/4 17:23
  */
-public class SystemUtilDemo extends Demo {
+public class SystemUtilDemo {
 
     @Test
     public void testSystemUtil() {

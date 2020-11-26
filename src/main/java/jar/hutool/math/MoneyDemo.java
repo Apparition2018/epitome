@@ -1,7 +1,6 @@
 package jar.hutool.math;
 
 import cn.hutool.core.math.Money;
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -16,13 +15,13 @@ import java.util.Locale;
  * @author Arsenal
  * created on 2020/11/22 2:43
  */
-public class MoneyDemo extends Demo {
+public class MoneyDemo {
 
     @Test
     public void testMoney() {
         Money money = new Money(new BigDecimal("12.34"), Currency.getInstance(Locale.CHINA), RoundingMode.HALF_EVEN);
-        p(money.getCurrency()); // CNY
-        p(money.getCent());     // 1234
-        p(money.add(new Money(new BigDecimal("43.21"))));
+        System.out.println(money.getCurrency());// CNY
+        System.out.println(money.getCent());    // 1234
+        System.out.println(money.add(new Money(new BigDecimal("43.21"))));
     }
 }

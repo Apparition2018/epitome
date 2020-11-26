@@ -1,7 +1,6 @@
 package jar.hutool.net;
 
 import cn.hutool.core.net.url.UrlBuilder;
-import l.demo.Demo;
 import org.junit.Test;
 
 /**
@@ -18,7 +17,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/2 9:46
  */
-public class UrlBuilderDemo extends Demo {
+public class UrlBuilderDemo {
 
     @Test
     public void testUrlBuilder() {
@@ -27,7 +26,8 @@ public class UrlBuilderDemo extends Demo {
                 .addPath("en-US").addPath("search")
                 .addQuery("q", "URL").setFragment("search-results-close-container")
                 .build();
-        p(url); // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
+        System.out.println(url);
+        // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
     }
 
 }

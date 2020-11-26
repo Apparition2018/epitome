@@ -2,7 +2,6 @@ package jar.hutool.other;
 
 import cn.hutool.bloomfilter.BitMapBloomFilter;
 import cn.hutool.core.lang.Assert;
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Random;
@@ -17,7 +16,7 @@ import java.util.Random;
  * @author Arsenal
  * created on 2020/11/21 17:11
  */
-public class BitMapBloomFilterDemo extends Demo {
+public class BitMapBloomFilterDemo {
 
     private static final int SIZE = 2000;
 

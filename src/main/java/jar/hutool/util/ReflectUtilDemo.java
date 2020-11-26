@@ -2,12 +2,13 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.ReflectUtil;
 import l.demo.Animal.Cat;
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+
+import static l.demo.Demo.p;
 
 /**
  * ReflectUtil  反射工具
@@ -17,7 +18,7 @@ import java.lang.reflect.Modifier;
  * @author ljh
  * created on 2020/10/29 13:38
  */
-public class ReflectUtilDemo extends Demo {
+public class ReflectUtilDemo {
 
     public static final String X = "X";
 

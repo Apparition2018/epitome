@@ -2,8 +2,9 @@ package jar.hutool.text;
 
 import cn.hutool.core.text.StrSpliter;
 import cn.hutool.core.util.StrUtil;
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * StrSpliter   字符串切割
@@ -13,7 +14,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/5 10:20
  */
-public class StrSpliterDemo extends Demo {
+public class StrSpliterDemo {
 
     private static final String CSV_COMMA = " A , B ,, C ";
     private static final String CSV_SLASH = " A / B // C ";

@@ -3,8 +3,9 @@ package jar.hutool.text;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.TimeInterval;
 import cn.hutool.core.text.StrBuilder;
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * StrBuilder       可复用字符串生成器
@@ -14,7 +15,7 @@ import org.junit.Test;
  * @author Arsenal
  * created on 2020/11/5 2:20
  */
-public class StrBuilderDemo extends Demo {
+public class StrBuilderDemo {
 
     @Test
     public void testStrBuilder() {
@@ -27,7 +28,7 @@ public class StrBuilderDemo extends Demo {
             sb = new StringBuilder();
         }
         p(timer.interval());
-        
+
         timer.restart();
         // 2.HuTool StrBuilder
         StrBuilder sb2 = new StrBuilder();

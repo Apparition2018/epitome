@@ -1,10 +1,11 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.ReUtil;
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.regex.Pattern;
+
+import static l.demo.Demo.p;
 
 /**
  * ReUtil   正则工具
@@ -14,7 +15,7 @@ import java.util.regex.Pattern;
  * @author Arsenal
  * created on 2020/11/2 22:47
  */
-public class ReUtilDemo extends Demo {
+public class ReUtilDemo {
 
     private static final String CONTENT = "ZZZaaabbbccc中文1234";
     private static final String REGEX = "(\\w)aa(\\w)";
