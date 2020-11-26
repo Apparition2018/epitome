@@ -1,7 +1,8 @@
 package knowledge.基本数据类型;
 
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * Java 基本数据类型：
@@ -21,7 +22,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class BasicDataTypes extends Demo {
+public class BasicDataTypes {
 
     /**
      * byte 是8位、有符号的，以二进制补码表示的整数

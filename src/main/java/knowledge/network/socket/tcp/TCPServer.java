@@ -1,6 +1,5 @@
 package knowledge.network.socket.tcp;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.io.DataInputStream;
@@ -9,6 +8,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+
+import static l.demo.Demo.p;
 
 /**
  * 服务端
@@ -29,7 +30,7 @@ import java.net.SocketTimeoutException;
  * @author ljh
  * created on 2020/11/17 19:09
  */
-public class TCPServer extends Demo implements Runnable {
+public class TCPServer implements Runnable {
 
     private ServerSocket serverSocket;
 

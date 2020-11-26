@@ -1,8 +1,8 @@
 package knowledge.数据结构;
 
-import l.demo.Demo;
-
 import java.util.BitSet;
+
+import static l.demo.Demo.p;
 
 /**
  * BitSet (未完待续)
@@ -25,7 +25,7 @@ import java.util.BitSet;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class BitSetDemo extends Demo {
+public class BitSetDemo {
 
     public static void main(String[] args) {
         // BitSet([int nbits])      创建一个位 set，它的初始大小足以显式表示索引范围在 0 到 nbits-1 的位

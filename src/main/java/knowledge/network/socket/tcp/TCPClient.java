@@ -1,6 +1,5 @@
 package knowledge.network.socket.tcp;
 
-import l.demo.Demo;
 import l.demo.Person.Student;
 
 import java.io.DataInputStream;
@@ -18,14 +17,14 @@ import java.net.Socket;
  * @author ljh
  * created on 2020/11/17 19:09
  */
-public class TCPClient extends Demo {
+public class TCPClient {
 
     public static void main(String[] args) throws IOException {
         // Socket(String host, int port[, InetAddress localAddr, int localPort])
         // 创建一个套接字并将其连接到指定远程主机上的指定远程端口
         Socket socket = new Socket("localhost", 4444);
         // SocketAddress	getRemoteSocketAddress()    返回此套接字连接的端点的地址，如果未连接则返回 null
-        p("远程主机地址：" + socket.getRemoteSocketAddress());
+        System.out.println("远程主机地址：" + socket.getRemoteSocketAddress());
 
         // OutputStream	    getOutputStream()           返回此套接字的输出流
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
@@ -36,7 +35,7 @@ public class TCPClient extends Demo {
 
         // InputStream	    getInputStream()            返回此套接字的输入流
         DataInputStream dis = new DataInputStream(socket.getInputStream());
-        p("服务器响应：" + dis.readUTF());
+        System.out.println("服务器响应：" + dis.readUTF());
 
         socket.close();
     }

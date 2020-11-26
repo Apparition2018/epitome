@@ -1,7 +1,6 @@
 package knowledge.reflect.proxy;
 
 import knowledge.reflect.proxy.domain.People;
-import l.demo.Demo;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -10,6 +9,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import static l.demo.Demo.p;
+
 /**
  * AOP
  * 详解请查看 spring-aop 项目
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
  * @author ljh
  * created on 2020/11/10 15:43
  */
-public class AOP extends Demo {
+public class AOP {
 
     ClassPathXmlApplicationContext ac;
 
@@ -114,7 +115,7 @@ public class AOP extends Demo {
     @Aspect
     @Component
     public static class TransactionAspect {
-        
+
         @Pointcut("@annotation(knowledge.reflect.proxy.domain.Man.AOP)")
         public void pointcut1() {
         }

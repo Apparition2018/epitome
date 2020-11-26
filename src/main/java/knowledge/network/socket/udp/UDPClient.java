@@ -1,7 +1,5 @@
 package knowledge.network.socket.udp;
 
-import l.demo.Demo;
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -13,7 +11,7 @@ import java.net.InetAddress;
  * @author ljh
  * created on 2020/11/17 19:09
  */
-public class UDPClient extends Demo {
+public class UDPClient {
 
     public static void main(String[] args) throws IOException {
         /*
@@ -40,7 +38,7 @@ public class UDPClient extends Demo {
         socket.receive(packet2);
         // 3.读取数据
         String reply = new String(data2, 0, packet2.getLength());
-        p("我是客户端，服务器说：" + reply);
+        System.out.println("我是客户端，服务器说：" + reply);
         // 4.关闭资源
         socket.close();
 

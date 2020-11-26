@@ -13,7 +13,7 @@ import java.lang.reflect.Modifier;
  * created on 2020/10/10 19:23
  */
 // 抽象模板角色类
-abstract class Initializer extends Demo {
+abstract class Initializer {
 
     // 模板方法
     public final void dataInitialing() throws InvocationTargetException, IllegalAccessException {
@@ -36,7 +36,7 @@ abstract class Initializer extends Demo {
 
     // 基本方法-具体方法
     private void doSomething() {
-        p("do something ...");
+        System.out.println("do something ...");
     }
 
 }
@@ -44,14 +44,14 @@ abstract class Initializer extends Demo {
 // 具体模板角色类
 class UserInitializer extends Initializer {
     public void initUser() {
-        p("init user");
+        System.out.println("init user");
     }
 
     public void initPassword() {
-        p("init password");
+        System.out.println("init password");
     }
 
     public void initJobs() {
-        p("init jobs");
+        System.out.println("init jobs");
     }
 }

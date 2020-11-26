@@ -16,11 +16,11 @@ import lombok.Setter;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class AbstractClass extends Demo {
+public class AbstractClass {
 
     public static void main(String[] args) {
         Employee e = new Salary("Mary", "London", 1);
-        p(e.computePay());
+        System.out.println(e.computePay());
     }
 
     /**
@@ -34,7 +34,7 @@ public class AbstractClass extends Demo {
         private int number;
 
         public Employee(String name, String address, int number) {
-            p("Constructing an Employee");
+            System.out.println("Constructing an Employee");
             this.name = name;
             this.address = address;
             this.number = number;
@@ -46,7 +46,7 @@ public class AbstractClass extends Demo {
         public abstract double computePay();
 
         public void mailCheck() {
-            p("Mailing a check to " + this.name + " " + this.address);
+            System.out.println("Mailing a check to " + this.name + " " + this.address);
         }
 
         public String toString() {
@@ -65,7 +65,7 @@ public class AbstractClass extends Demo {
 
         // 重写父类抽象方法
         public double computePay() {
-            p("Computing salary pay for " + getName());
+            System.out.println("Computing salary pay for " + getName());
             return salary / 52;
         }
     }

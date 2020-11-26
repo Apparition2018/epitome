@@ -1,11 +1,12 @@
 package knowledge.数据结构.集合框架.collection;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.NavigableSet;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
+import static l.demo.Demo.p;
 
 /**
  * Set
@@ -21,7 +22,7 @@ import java.util.TreeSet;
  * @author ljh
  * created on 2020/9/4 17:14
  */
-public class SetDemo extends Demo {
+public class SetDemo {
 
     /**
      * TreeSet

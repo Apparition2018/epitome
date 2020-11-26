@@ -1,6 +1,6 @@
 package knowledge.oop;
 
-import l.demo.Demo;
+import static l.demo.Demo.p;
 
 /**
  * 内部类
@@ -24,7 +24,7 @@ import l.demo.Demo;
  * @author Arsenal
  * created on 2020/11/17 23:49
  */
-public class InnerClass extends Demo {
+public class InnerClass {
 
     private interface S {
     }
@@ -106,11 +106,11 @@ public class InnerClass extends Demo {
     }
 
     public static class D {
-        
+
         protected void DMethod() {
             p("DMethod");
         }
-        
+
         public static void main(String[] args) {
             /*
              * 4.匿名内部类：没有名字的类，是内部类的简化写法
@@ -125,7 +125,7 @@ public class InnerClass extends Demo {
             };
 
             /*
-             * 使用匿名内部类调用 protected 方法 
+             * 使用匿名内部类调用 protected 方法
              */
             new D() {
                 void callDMethod() {

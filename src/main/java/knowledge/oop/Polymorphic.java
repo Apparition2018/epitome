@@ -2,7 +2,6 @@ package knowledge.oop;
 
 import l.demo.Animal;
 import l.demo.Animal.Cat;
-import l.demo.Demo;
 
 /**
  * 多态
@@ -26,7 +25,7 @@ import l.demo.Demo;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class Polymorphic extends Demo {
+public class Polymorphic {
 
     public static void main(String[] args) {
 
@@ -59,15 +58,15 @@ public class Polymorphic extends Demo {
         }
 
         public static void sayHello(Human guy) {
-            p("hello, guy!");
+            System.out.println("hello, guy!");
         }
 
         public static void sayHello(Man man) {
-            p("hello, gentlemen!");
+            System.out.println("hello, gentlemen!");
         }
 
         public static void sayHello(Woman lady) {
-            p("hello, lady!");
+            System.out.println("hello, lady!");
         }
     }
 

@@ -1,7 +1,5 @@
 package knowledge.引用;
 
-import l.demo.Demo;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
@@ -13,7 +11,7 @@ import java.util.function.Supplier;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class MethodReferences extends Demo {
+public class MethodReferences {
 
     public static void main(String[] args) {
 
@@ -39,15 +37,15 @@ public class MethodReferences extends Demo {
         }
 
         public static void collide(final Bus car) {
-            p("Collided " + car.toString());
+            System.out.println("Collided " + car.toString());
         }
 
         public void follow(final Bus another) {
-            p("Following the " + another.toString());
+            System.out.println("Following the " + another.toString());
         }
 
         public void repair() {
-            p("Repaired " + this.toString());
+            System.out.println("Repaired " + this.toString());
         }
 
     }

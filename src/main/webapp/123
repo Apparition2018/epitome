@@ -1,26 +1,4 @@
 
-
-TCPClient.java
-TCPServer.java
-UDPClient.java
-UDPServer.java
-AbstractClass.java
-InnerClass.java
-Polymorphic.java
-AOP.java
-Man.java
-DynamicProxy.java
-StaticProxy.java
-Reflect.java
-BasicDataTypes.java
-Conversion.java
-Initializer.java
-CustomExceptionDemo.java
-ThrowableDemo.java
-MethodReferences.java
-BitSetDemo.java
-DequeDemo.java
-SetDemo.java
 CalendarDemo.java
 CalendarDemo2.java
 DateDemo.java

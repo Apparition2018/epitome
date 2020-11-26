@@ -1,12 +1,13 @@
 package knowledge.数据结构.集合框架.collection;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
+
+import static l.demo.Demo.p;
 
 /**
  * Deque 双端队列  (double ended queue)
@@ -29,8 +30,8 @@ import java.util.Stack;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class DequeDemo extends Demo {
-    
+public class DequeDemo {
+
     /**
      * 用作队列时 (FIFO) :
      * 数据结构                     Queue                                   Deque
@@ -111,7 +112,7 @@ public class DequeDemo extends Demo {
      * 插入       addFirst(e)     offerFirst(e)   putFirst(e)     offerFirst(e, time, unit)
      * 移除       removeFirst()   pollFirst()     takeFirst()    pollFirst(time, unit)
      * 检查       getFirst()      peekFirst()
-     * 操作位                          最后一个元素（尾部）                                                               
+     * 操作位                          最后一个元素（尾部）
      * 操作       抛出异常            特殊值             阻塞          超时退出
      * 插入       addLast(e)      offerLast(e)   putLast(e)       offerLast(e, time, unit)
      * 移除       removeLast()    pollLast()     takeLast()      pollLast(time, unit)
@@ -119,6 +120,6 @@ public class DequeDemo extends Demo {
      */
     @Test
     public void testBlockingDeque() {
-        
+
     }
 }

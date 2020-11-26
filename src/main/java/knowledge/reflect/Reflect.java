@@ -1,7 +1,6 @@
 package knowledge.reflect;
 
 import l.demo.Animal.Cat;
-import l.demo.Demo;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -47,7 +46,7 @@ import java.lang.reflect.Modifier;
  * @author ljh
  * created on 2020/11/11 19:18
  */
-public class Reflect extends Demo {
+public class Reflect {
 
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException, NoSuchFieldException {
 
@@ -89,7 +88,7 @@ public class Reflect extends Demo {
              *  STRICT: 2048
              */
             if (Modifier.isPublic(field.getModifiers()))
-                p("fieldName = " + field.getName());
+                System.out.println("fieldName = " + field.getName());
         }
 
         // 动态查找一个属性
@@ -97,7 +96,7 @@ public class Reflect extends Demo {
         // 改变访问限制
         field.setAccessible(true);
         field.set(cat, 3);
-        p("cat.getA() = " + cat.getAge() + "\n");
+        System.out.println("cat.getA() = " + cat.getAge() + "\n");
 
         //********** 4.Method **********//
         Method[] methods;
@@ -107,14 +106,14 @@ public class Reflect extends Demo {
         methods = clazz.getMethods();
         for (Method method : methods) {
             method.setAccessible(true);
-            p("methodName = " + method.getName());
+            System.out.println("methodName = " + method.getName());
         }
 
         // 动态查找一个方法
         Method method = clazz.getDeclaredMethod("setAge", int.class);
         // 动态调用方法
         method.invoke(cat, 3);
-        p("cat.getA() = " + cat.getAge());
+        System.out.println("cat.getA() = " + cat.getAge());
 
     }
 

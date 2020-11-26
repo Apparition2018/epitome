@@ -13,20 +13,20 @@ import l.demo.Demo;
  * @author ljh
  * created on 2020/9/4 14:10
  */
-public class CustomExceptionDemo extends Demo {
+public class CustomExceptionDemo {
 
     public static void main(String[] args) {
         CheckingAccount ca = new CheckingAccount(101);
-        p("Depositing $500...");
+        System.out.println("Depositing $500...");
         ca.deposit(500.00);
 
         try {
-            p("Withdrawing $100...");
+            System.out.println("Withdrawing $100...");
             ca.withdraw(100.00);
-            p("Withdrawing $600...");
+            System.out.println("Withdrawing $600...");
             ca.withdraw(600.00);
         } catch (CustomException e) {
-            p("Sorry, but you are short $" + e.getAmount());
+            System.out.println("Sorry, but you are short $" + e.getAmount());
             e.printStackTrace();
         }
     }
