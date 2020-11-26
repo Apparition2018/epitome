@@ -29,7 +29,7 @@ public class AOP {
 
     @Test
     public void aop() {
-        People people = (People) ac.getBean("man");
+        People people = ac.getBean("man", People.class);
         people.work();
         people.sleep();
     }

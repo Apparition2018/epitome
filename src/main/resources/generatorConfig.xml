@@ -50,9 +50,5 @@
         </javaClientGenerator>
 
         <table tableName="demo" domainObjectName="Demo"/>
-
-        <!--<table tableName="sys_org_person" domainObjectName="SysOrgPerson" />-->
-        <!--<table tableName="sys_org_element" domainObjectName="SysOrgElement" />-->
-        <!--<table tableName="km_review_main" domainObjectName="KmReviewMain" />-->
     </context>
 </generatorConfiguration>
