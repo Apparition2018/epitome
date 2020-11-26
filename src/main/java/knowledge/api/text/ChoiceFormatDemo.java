@@ -1,10 +1,11 @@
 package knowledge.api.text;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.text.ChoiceFormat;
 import java.text.ParsePosition;
+
+import static l.demo.Demo.p;
 
 /**
  * ChoiceFormat
@@ -16,7 +17,7 @@ import java.text.ParsePosition;
  * @author ljh
  * created on 2020/9/3 16:22
  */
-public class ChoiceFormatDemo extends Demo {
+public class ChoiceFormatDemo {
 
     @Test
     public void testChoiceFormat() {

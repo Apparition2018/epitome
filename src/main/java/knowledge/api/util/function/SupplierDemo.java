@@ -1,11 +1,12 @@
 package knowledge.api.util.function;
 
-import l.demo.Demo;
 import l.demo.Person.Student;
 import org.junit.Test;
 
 import java.util.function.Supplier;
 import java.util.stream.Stream;
+
+import static l.demo.Demo.p;
 
 /**
  * Supplier<T>
@@ -15,7 +16,7 @@ import java.util.stream.Stream;
  * @author ljh
  * created on 2020/9/9 11:49
  */
-public class SupplierDemo extends Demo {
+public class SupplierDemo {
 
     /**
      * 一个 Stream 只允许被中间或终端操作操作一次，

@@ -1,11 +1,12 @@
 package knowledge.api.util.stream;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.IntSummaryStatistics;
 import java.util.Random;
 import java.util.stream.IntStream;
+
+import static l.demo.Demo.p;
 
 /**
  * IntStream
@@ -17,7 +18,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * created on 2020/11/6 14:43
  */
-public class IntStreamDemo extends Demo {
+public class IntStreamDemo {
 
     /**
      * 大部分 API 跟 Stream 一样，可查看 StreamDemo
@@ -54,7 +55,7 @@ public class IntStreamDemo extends Demo {
         stats.combine(stats2);
         // 添加统计值
         stats.accept(5);
-        
+
         p(stats.getCount());    // 5
         p(stats.getSum());      // 15
         p(stats.getMin());      // 1

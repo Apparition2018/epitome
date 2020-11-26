@@ -1,6 +1,5 @@
 package knowledge.api.lang.wrapper;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 /**
@@ -21,7 +20,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/9/7 1:28
  */
-public class IntegerCacheDemo extends Demo {
+public class IntegerCacheDemo {
 
     /**
      * valueOf(int i) 方法引用了 Integer.Cache
@@ -33,9 +32,9 @@ public class IntegerCacheDemo extends Demo {
         Integer x2 = 100;
         Integer x3 = 200;
         Integer x4 = 200;
-        
-        p(x1 == x2); // true
-        p(x3 == x4); // false
+
+        System.out.println(x1 == x2); // true
+        System.out.println(x3 == x4); // false
     }
 
     /**
@@ -45,8 +44,8 @@ public class IntegerCacheDemo extends Demo {
     public void testBoolean() {
         Boolean x1 = false;
         Boolean x2 = false;
-        
-        p(x1 == x2); // true
+
+        System.out.println(x1 == x2); // true
     }
 
     /**
@@ -59,9 +58,9 @@ public class IntegerCacheDemo extends Demo {
         
         Long y1 = 100L;
         Long y2 = 200L;
-        
-        p(y2.equals(x1 + x2)); // false 值相等，但类型不相等
-        p(y2.equals(x1 + y1)); // true  值相等，类型相等
+
+        System.out.println(y2.equals(x1 + x2)); // false 值相等，但类型不相等
+        System.out.println(y2.equals(x1 + y1)); // true  值相等，类型相等
     }
 
 }

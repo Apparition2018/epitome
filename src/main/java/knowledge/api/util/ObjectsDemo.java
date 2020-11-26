@@ -1,10 +1,11 @@
 package knowledge.api.util;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Comparator;
 import java.util.Objects;
+
+import static l.demo.Demo.p;
 
 /**
  * Objects
@@ -17,12 +18,12 @@ import java.util.Objects;
  * @author ljh
  * created on 2020/10/23 20:09
  */
-public class ObjectsDemo extends Demo {
-    
+public class ObjectsDemo {
+
     @Test
     public void testNull() {
         Integer x = null;
-        
+
         // static boolean	    isNull(Object obj)
         p(Objects.isNull(x));   // true
         // static boolean	    nonNull(Object obj)
@@ -37,7 +38,7 @@ public class ObjectsDemo extends Demo {
     public void toString_() {
         p(Objects.toString(null, "参数不能为空"));
     }
-    
+
     @Test
     public void testCompareAndEquals() {
         Integer a = 2;
@@ -45,7 +46,7 @@ public class ObjectsDemo extends Demo {
         Integer c = 3;
         Integer d = null;
         Integer e = null;
-        
+
         // static <T> int	    compare(T a, T b, Comparator<? super T> c)
         // 如果两个参数都为 null，返回整数0，否则返回-1
         // 如果其中一个参数是 null，是否会抛出 NullPointerException 取决于排序策略
@@ -53,7 +54,7 @@ public class ObjectsDemo extends Demo {
         p(Objects.compare(d, e, Comparator.comparingInt(i -> i)));      // 0
         p(Objects.compare(a, c, Comparator.comparingInt(i -> i)));      // -1
         // p(Objects.compare(a, d, Comparator.comparingInt(i -> i)));   // NullPointerException
-        
+
         // static boolean	    equals(Object a, Object b)
         // 如果两个参数相等，则返回 true，否则返回 false
         p(Objects.equals(a, b)); // true
@@ -61,7 +62,7 @@ public class ObjectsDemo extends Demo {
         p(Objects.equals(a, c)); // false
         p(Objects.equals(a, d)); // false
 
-        
+
         String[][] name1 = {{"L", "i", "a", "n", "g"}, {"J", "i", "e"}, {"H", "u", "i"}};
         String[][] name2 = {{"L", "i", "a", "n", "g"}, {"J", "i", "e"}, {"H", "u", "i"}};
 
@@ -71,7 +72,7 @@ public class ObjectsDemo extends Demo {
         p(Objects.equals(name1, name2));       // false
         p(Objects.deepEquals(name1, name2));   // true
     }
-    
+
     @Test
     public void testHash() {
         p(new Object().hashCode());         // 896681694

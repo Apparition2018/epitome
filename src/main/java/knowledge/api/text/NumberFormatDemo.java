@@ -1,12 +1,13 @@
 package knowledge.api.text;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Currency;
 import java.util.Locale;
+
+import static l.demo.Demo.p;
 
 /**
  * NumberFormat
@@ -21,14 +22,14 @@ import java.util.Locale;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class NumberFormatDemo extends Demo {
+public class NumberFormatDemo {
 
     public static final NumberFormat FORMAT;
     public static final NumberFormat INTEGER_FORMAT;
     public static final NumberFormat NUMBER_FORMAT;
     public static final NumberFormat CURRENCY_FORMAT;
     public static final NumberFormat PERCENT_FORMAT;
-    
+
     static {
         // static NumberFormat	getInstance([Locale inLocale])              返回当前默认语言环境的通用数值格式
         FORMAT = NumberFormat.getInstance();
@@ -77,16 +78,16 @@ public class NumberFormatDemo extends Demo {
     public void getFractionDigits() {
         p(FORMAT.getMaximumFractionDigits());           // 3
         p(FORMAT.getMinimumFractionDigits());           // 0
-        
+
         p(INTEGER_FORMAT.getMaximumFractionDigits());   // 0
         p(INTEGER_FORMAT.getMinimumFractionDigits());   // 0
-        
+
         p(NUMBER_FORMAT.getMaximumFractionDigits());    // 3
         p(NUMBER_FORMAT.getMinimumFractionDigits());    // 0
-        
+
         p(CURRENCY_FORMAT.getMaximumFractionDigits());  // 2
         p(CURRENCY_FORMAT.getMinimumFractionDigits());  // 2
-        
+
         p(PERCENT_FORMAT.getMaximumFractionDigits());   // 0
         p(PERCENT_FORMAT.getMinimumFractionDigits());   // 0
     }
@@ -99,16 +100,16 @@ public class NumberFormatDemo extends Demo {
     public void is() {
         p(FORMAT.isGroupingUsed());             // true
         p(FORMAT.isParseIntegerOnly());         // false
-        
+
         p(INTEGER_FORMAT.isGroupingUsed());     // true
         p(INTEGER_FORMAT.isParseIntegerOnly()); // true
-        
+
         p(NUMBER_FORMAT.isGroupingUsed());      // true
         p(NUMBER_FORMAT.isParseIntegerOnly());  // false
-        
+
         p(CURRENCY_FORMAT.isGroupingUsed());    // true
         p(CURRENCY_FORMAT.isParseIntegerOnly());// false
-        
+
         p(PERCENT_FORMAT.isGroupingUsed());     // true
         p(PERCENT_FORMAT.isParseIntegerOnly()); // false
     }

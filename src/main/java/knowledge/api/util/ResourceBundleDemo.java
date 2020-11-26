@@ -1,6 +1,5 @@
 package knowledge.api.util;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Enumeration;
@@ -18,7 +17,7 @@ import java.util.ResourceBundle;
  * @author ljh
  * created on 2020/10/23 20:09
  */
-public class ResourceBundleDemo extends Demo {
+public class ResourceBundleDemo {
 
     @Test
     public void test() {
@@ -30,18 +29,18 @@ public class ResourceBundleDemo extends Demo {
 
         // String	                getString(String key)
         // 从此资源包或它的某个父包中获取给定键的字符串
-        p("driver = " + bundle.getString("jdbc.driver"));
-        p("url = " + bundle.getString("jdbc.url"));
-        p("username = " + bundle.getString("jdbc.username"));
-        p("password = " + bundle.getString("jdbc.password"));
+        System.out.println("driver = " + bundle.getString("jdbc.driver"));
+        System.out.println("url = " + bundle.getString("jdbc.url"));
+        System.out.println("username = " + bundle.getString("jdbc.username"));
+        System.out.println("password = " + bundle.getString("jdbc.password"));
 
         // abstract  Enumeration<String>	getKeys()
         // 返回键的枚举
         Enumeration<String> keys = bundle.getKeys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
-            p(key + " = " + bundle.getString(key));
+            System.out.println(key + " = " + bundle.getString(key));
         }
-        
+
     }
 }

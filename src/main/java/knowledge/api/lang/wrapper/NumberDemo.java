@@ -1,7 +1,8 @@
 package knowledge.api.lang.wrapper;
 
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * Number
@@ -11,7 +12,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/9/7 1:28
  */
-public class NumberDemo extends Demo {
+public class NumberDemo {
 
     /**
      * Number 方法
@@ -88,7 +89,7 @@ public class NumberDemo extends Demo {
         // 以十六进制（基数 16）无符号整数形式返回一个整数参数的字符串表示形式
         p(Integer.toBinaryString(11));  // 1011
         p(Integer.toHexString(11));     // b
-        
+
         // Double/Float 共有：
         p(Double.isFinite(Float.POSITIVE_INFINITY));    // false
         p(Float.isInfinite(Float.POSITIVE_INFINITY));   // true

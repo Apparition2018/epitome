@@ -1,8 +1,8 @@
 package knowledge.api.util.function;
 
-import l.demo.Demo;
-
 import java.util.function.Function;
+
+import static l.demo.Demo.p;
 
 /**
  * Function<T, R>
@@ -11,7 +11,7 @@ import java.util.function.Function;
  * @author ljh
  * created on 2020/9/9 15:13
  */
-public class FunctionDemo extends Demo {
+public class FunctionDemo {
 
     public static void main(String[] args) {
         Function<Integer, Integer> plusSelf = i -> i + i;

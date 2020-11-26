@@ -1,10 +1,11 @@
 package knowledge.api.text;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
+
+import static l.demo.Demo.p;
 
 /**
  * DecimalFormat
@@ -36,7 +37,7 @@ import java.text.ParseException;
  * @author ljh
  * created on 2020/11/23 0:45
  */
-public class DecimalFormatDemo extends Demo {
+public class DecimalFormatDemo {
 
     public static final DecimalFormat FORMAT1;
     public static final DecimalFormat FORMAT2;

@@ -1,9 +1,10 @@
 package knowledge.api.math;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+
+import static l.demo.Demo.p;
 
 /**
  * BigDecimal
@@ -26,7 +27,7 @@ import java.math.BigDecimal;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class BigDecimalDemo extends Demo {
+public class BigDecimalDemo {
 
     /**
      * 参考 RoundingModeDemo
@@ -52,12 +53,12 @@ public class BigDecimalDemo extends Demo {
         p(new BigDecimal("12.340"));// 12.340
         // BigDecimal	stripTrailingZeros()    返回数值上等于此小数，但从该表示形式移除所有尾部零的 BigDecimal
         p(new BigDecimal("12.340").stripTrailingZeros());   // 12.34
-        
+
         // BigDecimal	movePointLeft(int n)    返回一个 BigDecimal，它等效于将该值的小数点向左移动 n 位
         // BigDecimal	movePointRight(int n)   返回一个 BigDecimal，它等效于将该值的小数点向右移动 n 位
         p(new BigDecimal("12.34").movePointLeft(1));        // 1.234
         p(new BigDecimal("12.34").movePointRight(1));       // 123.4
-        
+
         // int	        precision()             返回此 BigDecimal 的精度
         p(new BigDecimal("12.34").precision());             // 4
         p(new BigDecimal("12340").precision());             // 5
@@ -65,7 +66,7 @@ public class BigDecimalDemo extends Demo {
         // int	        scale()                 返回此 BigDecimal 的标度
         p(new BigDecimal("12.34").scale());                 // 2
         p(new BigDecimal("12340").scale());                 // 0
-        
+
         // BigDecimal	ulp()                   返回此 BigDecimal 的 ulp（最后一位的单位）的大小
         p(new BigDecimal("12.34").ulp());                   // 0.01
         p(new BigDecimal("12340").ulp());                   // 1
