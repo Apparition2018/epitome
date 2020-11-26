@@ -26,15 +26,18 @@ import static l.demo.Demo.p;
  */
 @Controller
 @RequestMapping("/demo")
-public class BmiController {
+public class DemoController {
 
     private final BmiService bmiService;
 
     @Autowired
-    public BmiController(BmiService bmiService) {
+    public DemoController(BmiService bmiService) {
         this.bmiService = bmiService;
     }
 
+    /**
+     * SpringMVC 默认采用转发方式定位视图
+     */
     @RequestMapping("/toBmi")
     public String toBmi() {
         p("toBmi()");

@@ -224,7 +224,7 @@ Spring SpringMVC Mybatis
 >       ```
 >5. 通过 [@ModelAttribute](https://www.4spaces.org/spring-mvc-and-the-modelattribute-annotation/)
 >### Spring 重定向
->- SpringMVC 默认采用转发方式定位视图，可依据返回值类型分别采用以下方法
+>- SpringMVC 默认采用转发方式定位视图，，如果要重定向可采用以下方法
 >   1. ModelAndView：RedirectView view = new RedirectView("hello.do"); return new ModelAndView(view);
 >   2. String：return "redirect:hello.do";
 >### Spring 字符编码过滤器
@@ -289,7 +289,7 @@ Spring SpringMVC Mybatis
 >       - @ExceptionHandler：方法注解，作用于 Controller，为一个 Controller 定义一个异常处理器
 >       ```
 >       @ControllerAdvice
->       public class BaseExceptionHandler {
+>       public class GlobalExceptionHandler {
 >       	@ExceptionHandler(RuntimeException.class)
 >       	@ResponseBody
 >       	public JsonResult handleRuntimeException(Exception e) {

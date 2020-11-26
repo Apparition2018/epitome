@@ -36,6 +36,10 @@
 
     <!-- 5:拦截器 -->
     <mvc:interceptors>
-        <bean class="springboot.interceptor.HttpInterceptor"/>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/"/>
+            <bean class="springboot.interceptor.HttpInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 </beans>
