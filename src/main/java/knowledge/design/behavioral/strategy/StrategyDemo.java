@@ -1,7 +1,5 @@
 package knowledge.design.behavioral.strategy;
 
-import l.demo.Demo;
-
 /**
  * 策略模式：定义了一系列的算法，并将每一个算法封装起来，而且它们还可以互相替换
  * Context: 环境角色
@@ -11,16 +9,16 @@ import l.demo.Demo;
  * @author ljh
  * created on 2020/9/26 2:51
  */
-public class StrategyDemo extends Demo {
+public class StrategyDemo {
     public static void main(String[] args) {
         Context context = new Context(new AddOperation());
-        p("10 + 5 = " + context.executeStrategy(10, 5));
+        System.out.println("10 + 5 = " + context.executeStrategy(10, 5));
 
         context = new Context(new SubtractOperation());
-        p("10 - 5 = " + context.executeStrategy(10, 5));
+        System.out.println("10 - 5 = " + context.executeStrategy(10, 5));
 
         context = new Context(new MultiplyOperation());
-        p("10 * 5 = " + context.executeStrategy(10, 5));
+        System.out.println("10 * 5 = " + context.executeStrategy(10, 5));
     }
 
     interface Strategy {

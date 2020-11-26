@@ -1,6 +1,5 @@
 package knowledge.design.creational.factory.method;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 /**
@@ -22,7 +21,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/11/1 9:36
  */
-public class FactoryMethodDemo extends Demo {
+public class FactoryMethodDemo {
 
     /**
      * 工厂方法模式

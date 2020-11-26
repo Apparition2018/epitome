@@ -1,7 +1,5 @@
 package knowledge.concurrent;
 
-import l.demo.Demo;
-
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * created on 2020/11/17 19:09
  */
-public class ObjectWaitAndNotifyDemo extends Demo {
+public class ObjectWaitAndNotifyDemo {
     public static void main(String[] args) {
         Target t = new Target();
 

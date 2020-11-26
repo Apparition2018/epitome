@@ -1,9 +1,10 @@
 package knowledge.concurrent.util;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
+
+import static l.demo.Demo.p;
 
 /**
  * TimeUnit
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * created on 2020/11/17 19:09
  */
-public class TimeUnitDemo extends Demo {
+public class TimeUnitDemo {
 
     /**
      * long	    convert(long sourceDuration, TimeUnit sourceUnit)

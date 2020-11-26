@@ -1,7 +1,5 @@
 package knowledge.concurrent.lock;
 
-import l.demo.Demo;
-
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -18,7 +16,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * created on 2020/11/17 19:09
  */
-public class ReentrantReadWriteLockDemo extends Demo {
+public class ReentrantReadWriteLockDemo {
     public static void main(String[] args) {
         final Data data = new Data();
         for (int i = 0; i < 2; i++) {
@@ -53,7 +51,7 @@ public class ReentrantReadWriteLockDemo extends Demo {
                     e.printStackTrace();
                 }
                 this.data = data;
-                p(Thread.currentThread().getName() + " 写入" + this.data);
+                System.out.println(Thread.currentThread().getName() + " 写入" + this.data);
             } finally {
                 w.unlock(); // 释放写锁
             }
@@ -68,7 +66,7 @@ public class ReentrantReadWriteLockDemo extends Demo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                p(Thread.currentThread().getName() + " 读取" + this.data);
+                System.out.println(Thread.currentThread().getName() + " 读取" + this.data);
             } finally {
                 r.unlock(); // 释放读锁
             }

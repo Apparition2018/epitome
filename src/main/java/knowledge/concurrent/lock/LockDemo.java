@@ -1,6 +1,5 @@
 package knowledge.concurrent.lock;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -36,7 +35,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author ljh
  * created on 2020/11/17 19:09
  */
-public class LockDemo extends Demo {
+public class LockDemo {
 
     /**
      * void	        lockInterruptibly()                     如果当前线程未被中断，则获取锁
@@ -46,7 +45,7 @@ public class LockDemo extends Demo {
         Lock lock = new ReentrantLock();
         lock.lockInterruptibly();
         try {
-            p("do something");
+            System.out.println("do something");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -62,14 +61,14 @@ public class LockDemo extends Demo {
         Lock lock = new ReentrantLock();
         if (lock.tryLock(2, TimeUnit.SECONDS)) {
             try {
-                p("do something");
+                System.out.println("do something");
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 lock.unlock();
             }
         } else {
-            p("do something else");
+            System.out.println("do something else");
         }
     }
 }

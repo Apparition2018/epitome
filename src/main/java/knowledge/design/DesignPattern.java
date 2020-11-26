@@ -1,6 +1,5 @@
 package knowledge.design;
 
-import l.demo.Demo;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +26,7 @@ import lombok.Setter;
  * @author ljh
  * created on 2020/9/24 16:13
  */
-public class DesignPattern extends Demo {
+public class DesignPattern {
 
     /**
      * 单一责任原则
@@ -224,7 +223,7 @@ public class DesignPattern extends Demo {
             public void beManaged() {
             }
         }
-        
+
         private static class Robot implements Work, Managed {
 
             @Override
@@ -235,13 +234,13 @@ public class DesignPattern extends Demo {
             public void beManaged() {
             }
         }
-        
+
         private static class Captain {
             public void manage(Managed managed) {
                 managed.beManaged();
             }
         }
-        
+
     }
 
     /**
@@ -255,24 +254,26 @@ public class DesignPattern extends Demo {
             private Star star;
             private Fan fan;
             private Company company;
-            public void meeting () {
-                p(star.getName() + "与粉丝" + fan.getName() + "见面");
+
+            public void meeting() {
+                System.out.println(star.getName() + "与粉丝" + fan.getName() + "见面");
             }
-            public void business () {
-                p(star.getName() + "与" + company.getName() + "洽谈业务");
+
+            public void business() {
+                System.out.println(star.getName() + "与" + company.getName() + "洽谈业务");
             }
         }
-        
+
         @Data
         private static class Star {
             private String name;
         }
-        
+
         @Data
         private static class Fan {
             private String name;
         }
-        
+
         @Data
         private static class Company {
             private String name;

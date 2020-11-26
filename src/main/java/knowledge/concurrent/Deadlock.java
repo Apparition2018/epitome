@@ -1,7 +1,5 @@
 package knowledge.concurrent;
 
-import l.demo.Demo;
-
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -31,7 +29,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * created on 2020/11/17 19:09
  */
-public class Deadlock extends Demo {
+public class Deadlock {
 
     private static final Object A = new Object();
     private static final Object B = new Object();
@@ -43,14 +41,14 @@ public class Deadlock extends Demo {
     private static void deadlock() {
         new Thread(() -> {
             synchronized (A) {
-                p("线程 t1 拿到 A 锁");
+                System.out.println("线程 t1 拿到 A 锁");
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 synchronized (B) {
-                    p("线程 t1 拿到 B 锁");
+                    System.out.println("线程 t1 拿到 B 锁");
                 }
 
             }
@@ -58,14 +56,14 @@ public class Deadlock extends Demo {
 
         new Thread(() -> {
             synchronized (B) {
-                p("线程 t2 拿到 B 锁");
+                System.out.println("线程 t2 拿到 B 锁");
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 synchronized (A) {
-                    p("线程 t2 拿到 A 锁");
+                    System.out.println("线程 t2 拿到 A 锁");
                 }
 
             }
