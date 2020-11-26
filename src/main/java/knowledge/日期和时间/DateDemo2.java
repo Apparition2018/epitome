@@ -1,6 +1,5 @@
 package knowledge.日期和时间;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
@@ -9,11 +8,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import static l.demo.Demo.p;
+
 /**
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class DateDemo2 extends Demo {
+public class DateDemo2 {
 
     private Date date = new Date();
 

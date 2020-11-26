@@ -1,10 +1,11 @@
 package knowledge.表达式.正则表达式;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static l.demo.Demo.p;
 
 /**
  * Matcher
@@ -19,7 +20,7 @@ import java.util.regex.Pattern;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class MatcherDemo extends Demo {
+public class MatcherDemo {
 
     /**
      * 索引方法

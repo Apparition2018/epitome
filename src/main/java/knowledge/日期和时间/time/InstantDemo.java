@@ -1,12 +1,13 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+
+import static l.demo.Demo.p;
 
 /**
  * Instant
@@ -23,7 +24,7 @@ import java.time.temporal.ChronoUnit;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class InstantDemo extends Demo {
+public class InstantDemo {
 
     private Instant instant;
     private Instant instant2;

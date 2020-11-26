@@ -1,7 +1,8 @@
 package knowledge.算法;
 
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * PrintGraphs
@@ -9,7 +10,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/23 10:13
  */
-public class PrintGraphs extends Demo {
+public class PrintGraphs {
 
     /**
      * 打印平行四边形

@@ -1,6 +1,5 @@
 package knowledge.日期和时间;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.text.DateFormat;
@@ -26,7 +25,7 @@ import java.util.Date;
  * @author ljh
  * created on 2020/9/3 10:39
  */
-public class DateFormatDemo extends Demo {
+public class DateFormatDemo {
 
     private static final DateFormat FORMAT;
 
@@ -46,10 +45,10 @@ public class DateFormatDemo extends Demo {
     public void testDateFormat() throws ParseException {
         // String	            format(Date date)           将一个 Date 格式化为日期/时间字符串
         String dateString = FORMAT.format(new Date());
-        p(dateString);  // 2020-9-3
+        System.out.println(dateString); // 2020-9-3
 
         // Date	                parse(String source)        从给定字符串的开始解析文本，以生成一个日期
         Date date = FORMAT.parse(dateString);
-        p(date, true);  // Thu Sep 03 00:00:00 CST 2020
+        System.out.println(date);       // Thu Sep 03 00:00:00 CST 2020
     }
 }

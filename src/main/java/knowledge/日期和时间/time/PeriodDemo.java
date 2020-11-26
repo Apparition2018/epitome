@@ -1,11 +1,12 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
+
+import static l.demo.Demo.p;
 
 /**
  * Period
@@ -13,7 +14,7 @@ import java.time.Period;
  * <p>
  * boolean          isNegative()                            检查这个周期的三个单位中是否有一个是负的
  * boolean	        isZero()                                检查这个周期的三个单位是否都为零
- *
+ * <p>
  * long	            toTotalMonths()                         获取此期间的月总数
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/time/Period.html
@@ -22,7 +23,7 @@ import java.time.Period;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class PeriodDemo extends Demo {
+public class PeriodDemo {
 
     private Period period;
     private Period period2;
@@ -66,11 +67,11 @@ public class PeriodDemo extends Demo {
     /**
      * Period	        negated()                       返回此持续时间负值的副本
      * Period	        multipliedBy(int scalar)        返回此持续时间乘以标量的副本
-     *
+     * <p>
      * Period	        withYears(int years)            以指定的年数返回此持续时间的副本
      * Period	        withMonths(int months)          以指定的月数返回此持续时间的副本
      * Period	        withDays(int days)              以指定的日数返回此持续时间的副本
-     *
+     * <p>
      * Temporal	        addTo(Temporal temporal)        将此持续时间添加到指定的时态对象
      * Temporal	        subtractFrom(Temporal temporal) 从指定的时态对象中减去这个持续时间
      */
@@ -96,7 +97,7 @@ public class PeriodDemo extends Demo {
     /**
      * Period	        plus(TemporalAmount amountToAdd)
      * Period	        plusXXX(long xxxToAdd)  (Year, Months, Days)
-     *
+     * <p>
      * Period	        minus(TemporalAmount amountToSubtract)
      * Period	        minus(long xxxToSubtract)
      */

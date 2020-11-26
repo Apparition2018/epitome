@@ -1,6 +1,5 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.ZoneId;
@@ -8,6 +7,8 @@ import java.time.ZonedDateTime;
 import java.time.format.TextStyle;
 import java.util.Locale;
 import java.util.Set;
+
+import static l.demo.Demo.p;
 
 /**
  * ZoneId
@@ -22,7 +23,7 @@ import java.util.Set;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class ZoneIdDemo extends Demo {
+public class ZoneIdDemo {
 
     private ZoneId zone;
     private ZoneId zone2;
@@ -65,5 +66,5 @@ public class ZoneIdDemo extends Demo {
         p(zone.getDisplayName(TextStyle.NARROW, Locale.CHINA));             // Asia/Shanghai
         p(zone.getDisplayName(TextStyle.NARROW_STANDALONE, Locale.CHINA));  // CT
     }
-    
+
 }

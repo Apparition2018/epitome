@@ -1,9 +1,9 @@
 package knowledge.算法.五大算法;
 
-import l.demo.Demo;
-
 import java.util.Scanner;
 import java.util.stream.IntStream;
+
+import static l.demo.Demo.p;
 
 /**
  * Branch and Bound
@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * created on 2020/9/29 10:28
  */
-public class BranchAndBound extends Demo {
+public class BranchAndBound {
 
     /**
      * 单源最短路径

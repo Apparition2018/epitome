@@ -1,16 +1,17 @@
 package knowledge.算法;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Test;
 
 import java.util.Random;
 
+import static l.demo.Demo.p;
+
 /**
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class Other extends Demo {
+public class Other {
 
     /**
      * 求 a + aa + aaa + aaaa + aaaaa = ?

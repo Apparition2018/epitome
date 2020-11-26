@@ -1,11 +1,12 @@
 package knowledge.日期和时间.time.temporal;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.*;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
+
+import static l.demo.Demo.p;
 
 /**
  * Temporal
@@ -22,7 +23,7 @@ import java.time.temporal.ChronoUnit;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class TemporalDemo extends Demo {
+public class TemporalDemo {
 
     private LocalDateTime ldt;
     private LocalDate ld;

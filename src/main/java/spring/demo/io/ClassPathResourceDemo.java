@@ -1,6 +1,5 @@
 package spring.demo.io;
 
-import l.demo.Demo;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 
@@ -13,16 +12,16 @@ import java.io.IOException;
  * @author ljh
  * created on 2020/10/29 17:38
  */
-public class ClassPathResourceDemo extends Demo {
+public class ClassPathResourceDemo {
 
     @Test
     public void testClassPathResource() throws IOException {
         ClassPathResource classPathResource = new ClassPathResource("demo/demo");
 
-        p(classPathResource.exists());          // true
-        p(classPathResource.getDescription());  // class path resource [demo/demo]
-        p(classPathResource.getPath());         // demo/demo
-        p(classPathResource.getFilename());     // demo
+        System.out.println(classPathResource.exists());          // true
+        System.out.println(classPathResource.getDescription());  // class path resource [demo/demo]
+        System.out.println(classPathResource.getPath());         // demo/demo
+        System.out.println(classPathResource.getFilename());     // demo
         File file = classPathResource.getFile();
     }
 }

@@ -1,12 +1,13 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+
+import static l.demo.Demo.p;
 
 /**
  * Duration
@@ -24,7 +25,7 @@ import java.time.temporal.ChronoUnit;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class DurationDemo extends Demo {
+public class DurationDemo {
 
     private Duration dur;
     private Duration dur2;

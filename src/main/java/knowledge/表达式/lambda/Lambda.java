@@ -1,7 +1,8 @@
 package knowledge.表达式.lambda;
 
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * Lambda
@@ -15,7 +16,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class Lambda extends Demo {
+public class Lambda {
 
     /**
      * Lambda 表达式主要用来定义行内执行的方法类型接口。

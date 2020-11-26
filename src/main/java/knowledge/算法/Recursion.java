@@ -1,8 +1,8 @@
 package knowledge.算法;
 
-import l.demo.Demo;
-
 import java.util.stream.IntStream;
+
+import static l.demo.Demo.p;
 
 /**
  * Recursion
@@ -32,7 +32,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * created on 2020/9/29 11:13
  */
-public class Recursion extends Demo {
+public class Recursion {
 
     /**
      * 阶乘

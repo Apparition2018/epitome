@@ -1,7 +1,5 @@
 package knowledge.算法.五大算法;
 
-import l.demo.Demo;
-
 import java.util.stream.IntStream;
 
 /**
@@ -11,7 +9,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * created on 2020/9/29 10:32
  */
-public class Backtracking extends Demo {
+public class Backtracking {
     private static int N = 6;
     private static int R = 3;
     public static int[] a = new int[N];

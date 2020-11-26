@@ -1,6 +1,5 @@
 package springboot.controller;
 
-import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/demo")
-public class DemoController extends Demo {
+public class DemoController {
 
     /**
      * http://localhost:3333/demo/get

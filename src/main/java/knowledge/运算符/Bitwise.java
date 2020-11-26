@@ -1,8 +1,8 @@
 package knowledge.运算符;
 
-import l.demo.Demo;
-import org.apache.commons.lang3.time.StopWatch;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * Bitwise  位运算
@@ -22,7 +22,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2020/11/23 17:57
  */
-public class Bitwise extends Demo {
+public class Bitwise {
 
     /**
      * 变量占据的内存迅速清零

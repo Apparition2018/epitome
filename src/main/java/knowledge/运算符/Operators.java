@@ -1,7 +1,8 @@
 package knowledge.运算符;
 
-import l.demo.Demo;
 import org.junit.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * 运算符
@@ -9,7 +10,7 @@ import org.junit.Test;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class Operators extends Demo {
+public class Operators {
 
     /**
      * 相等运算符

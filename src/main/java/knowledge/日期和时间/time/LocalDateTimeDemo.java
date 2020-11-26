@@ -1,10 +1,11 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.*;
 import java.time.temporal.ChronoUnit;
+
+import static l.demo.Demo.p;
 
 /**
  * LocalDateTime
@@ -22,7 +23,7 @@ import java.time.temporal.ChronoUnit;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class LocalDateTimeDemo extends Demo {
+public class LocalDateTimeDemo {
 
     private LocalDateTime ldt;
     private LocalDateTime ldt2;
@@ -125,5 +126,5 @@ public class LocalDateTimeDemo extends Demo {
         p(ldt.truncatedTo(ChronoUnit.MINUTES)); // 2018-08-08T20:08
         p(ldt.truncatedTo(ChronoUnit.SECONDS)); // 2018-08-08T20:08:08
     }
-    
+
 }

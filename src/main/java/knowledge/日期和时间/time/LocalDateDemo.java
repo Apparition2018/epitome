@@ -1,11 +1,12 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+
+import static l.demo.Demo.p;
 
 /**
  * LocalDate
@@ -23,7 +24,7 @@ import java.time.LocalTime;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class LocalDateDemo extends Demo {
+public class LocalDateDemo {
 
     private LocalDate ld;
     private LocalDate ld2;

@@ -1,12 +1,13 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+
+import static l.demo.Demo.p;
 
 /**
  * LocalTime
@@ -23,7 +24,7 @@ import java.time.temporal.ChronoUnit;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class LocalTimeDemo extends Demo {
+public class LocalTimeDemo {
 
     private LocalTime lt;
     private LocalTime lt2;

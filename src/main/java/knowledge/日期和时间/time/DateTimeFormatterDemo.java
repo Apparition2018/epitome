@@ -1,6 +1,5 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
@@ -79,8 +78,8 @@ import java.time.format.FormatStyle;
  * @author ljh
  * created on 2020/9/26 2:51
  */
-public class DateTimeFormatterDemo extends Demo {
-    
+public class DateTimeFormatterDemo {
+
     /**
      * 各种格式器
      * static DateTimeFormatter	    ofLocalizedDate(FormatStyle dateStyle)
@@ -110,7 +109,7 @@ public class DateTimeFormatterDemo extends Demo {
         };
         LocalDateTime ldt = LocalDateTime.now();
         for (DateTimeFormatter formatter : formatters) {
-            p(formatter.format(ldt));
+            System.out.println(formatter.format(ldt));
         }
 
     }

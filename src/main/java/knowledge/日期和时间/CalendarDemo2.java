@@ -1,15 +1,16 @@
 package knowledge.日期和时间;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.Calendar;
+
+import static l.demo.Demo.p;
 
 /**
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class CalendarDemo2 extends Demo {
+public class CalendarDemo2 {
 
     private Calendar calendar = Calendar.getInstance();
 

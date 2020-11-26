@@ -1,6 +1,5 @@
 package knowledge.注解;
 
-import l.demo.Demo;
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.Test;
@@ -8,6 +7,8 @@ import org.junit.Test;
 import java.lang.annotation.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+
+import static l.demo.Demo.p;
 
 /**
  * 用户自定义注解
@@ -23,7 +24,7 @@ import java.lang.reflect.Method;
  * @author ljh
  * created on 2020/9/18 18:01
  */
-public class CustomAnnotation extends Demo {
+public class CustomAnnotation {
 
     @Test
     public void testTargetField() {

@@ -1,10 +1,11 @@
 package knowledge.表达式.正则表达式;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static l.demo.Demo.p;
 
 /**
  * Pattern
@@ -67,7 +68,7 @@ import java.util.regex.Pattern;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class PatternDemo extends Demo {
+public class PatternDemo {
 
     /**
      * 用法一 Pattern.compile()

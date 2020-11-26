@@ -1,10 +1,11 @@
 package knowledge.日期和时间;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.Instant;
 import java.util.Date;
+
+import static l.demo.Demo.p;
 
 /**
  * Date
@@ -17,7 +18,7 @@ import java.util.Date;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class DateDemo extends Demo {
+public class DateDemo {
 
     private Date date;
 

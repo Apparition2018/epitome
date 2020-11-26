@@ -1,6 +1,5 @@
 package knowledge.日期和时间;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -9,6 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
+import static l.demo.Demo.p;
+
 /**
  * Calendar
  * https://www.runoob.com/manual/jdk1.6/java/util/Calendar.html
@@ -16,7 +17,7 @@ import java.util.TimeZone;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class CalendarDemo extends Demo {
+public class CalendarDemo {
 
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 

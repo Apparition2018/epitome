@@ -1,11 +1,15 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
-import java.time.*;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+
+import static l.demo.Demo.p;
 
 /**
  * Time 包下的类都是不可变的、线程安全的
@@ -22,7 +26,7 @@ import java.util.Date;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class TimeDemo extends Demo {
+public class TimeDemo {
 
     /**
      * LocalDateTime <=> String

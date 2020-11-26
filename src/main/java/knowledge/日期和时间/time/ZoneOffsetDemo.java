@@ -1,15 +1,16 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoField;
 
+import static l.demo.Demo.p;
+
 /**
  * ZoneOffset
  * 格林威治/UTC偏移时区，如+02:00
- *
+ * <p>
  * boolean	        equals(Object obj)                  检查是否等
  * int	            compareTo(ZoneOffset other)         将此 offset 按降序与另一个 offset 进行比较
  *
@@ -20,7 +21,7 @@ import java.time.temporal.ChronoField;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class ZoneOffsetDemo extends Demo {
+public class ZoneOffsetDemo {
 
     private ZoneOffset zo;
     private ZoneOffset zo2;

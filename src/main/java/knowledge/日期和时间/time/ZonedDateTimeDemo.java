@@ -1,6 +1,5 @@
 package knowledge.日期和时间.time;
 
-import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.ZoneId;
@@ -16,7 +15,7 @@ import java.time.ZonedDateTime;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class ZonedDateTimeDemo extends Demo {
+public class ZonedDateTimeDemo {
 
     private ZonedDateTime zdt;
 
@@ -30,17 +29,17 @@ public class ZonedDateTimeDemo extends Demo {
      * LocalDate	    toLocalDate()                       ZonedDateTime → LocalDate
      * LocalTime	    toLocalTime()                       ZonedDateTime → LocalTime
      * LocalDateTime	toLocalDateTime()                   ZonedDateTime → LocalDateTime
-     *
+     * <p>
      * ChronoZonedDateTime
      * default Instant	toInstant()                         ZonedDateTime → Instant
      * default long	    toEpochSecond()                     ZonedDateTime → Second (纪元)
      */
     @Test
     public void to() {
-        p(zdt.toLocalDate());       // 2018-08-08
-        p(zdt.toLocalTime());       // 20:08:08
-        p(zdt.toLocalDateTime());   // 2018-08-08T20:08:08
-        p(zdt.toInstant());         // 2018-08-08T12:08:08Z
+        System.out.println(zdt.toLocalDate());       // 2018-08-08
+        System.out.println(zdt.toLocalTime());       // 20:08:08
+        System.out.println(zdt.toLocalDateTime());   // 2018-08-08T20:08:08
+        System.out.println(zdt.toInstant());         // 2018-08-08T12:08:08Z
     }
 
 }
