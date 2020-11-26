@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE generatorConfiguration
-        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <!-- https://blog.csdn.net/u014365133/article/details/78884751 -->
 <!-- https://www.cnblogs.com/maanshancss/p/6027999.html -->
 <generatorConfiguration>
     <!-- 数据库驱动路径 -->
-    <classPathEntry location="D:\tts9\apache-maven-3.3.9\repository\mysql\mysql-connector-java\5.1.43\mysql-connector-java-5.1.43.jar"/>
+    <classPathEntry
+            location="D:\tts9\apache-maven-3.3.9\repository\mysql\mysql-connector-java\8.0.22\mysql-connector-java-8.0.22.jar"/>
 
     <context id="mysql" targetRuntime="MyBatis3">
         <!-- 使生成的bean实现Serializable接口 -->
@@ -32,7 +32,7 @@
         </javaTypeResolver>
 
         <!-- 定义生成的model -->
-        <javaModelGenerator targetPackage="springboot.domain.demo" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="spring.bean" targetProject="src/main/java">
             <!-- 是否根据数据库的catalog和schema生成子包 -->
             <property name="enableSubPackages" value="true"/>
             <!-- 是否进行trim() -->
@@ -40,15 +40,15 @@
         </javaModelGenerator>
 
         <!-- 定义生成的sql xml文件 -->
-        <sqlMapGenerator targetPackage="mapper.demo" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapper.score" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 定义生成的dao -->
-        <javaClientGenerator targetPackage="springboot.dao.demo" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="spring.dao" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="demo" domainObjectName="Demo"/>
+        <table tableName="score" domainObjectName="Score"/>
     </context>
 </generatorConfiguration>

@@ -365,9 +365,7 @@
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>${mybatis-generator}</version>
                 <configuration>
-                    <configurationFile>
-                        ${basedir}/src/main/resources/generatorConfig.xml
-                    </configurationFile>
+                    <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
                     <!-- 是否重写文件
                         注意：XML 不会重写，总是将新生成的内容合并到旧文件之下 -->
                     <overwrite>true</overwrite>
