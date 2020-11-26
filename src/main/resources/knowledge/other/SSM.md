@@ -213,6 +213,11 @@ Spring SpringMVC Mybatis
 >       Map<String, Object> data = new HashMap<String, Object>();
 >       data.put("status", status);
 >       return ModelAndView(String viewName, Map data);
+>                           or
+>       ModelAndView modelAndView = new ModelAndView();
+>       modelAndView.addObject("status", status);
+>       modelAndView.setViewName("view");
+>       return modelAndView;
 >       ```
 >4. 通过 ModelMap 对象：
 >       ```

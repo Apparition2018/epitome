@@ -85,11 +85,23 @@ public class DemoController {
     }
 
     /**
-     * ModelMap 传递参数
+     * ModelAndView 传递参数
      */
     @RequestMapping("/bmi5")
-    public String bmi5(BmiParam bp, ModelMap mm) {
+    public ModelAndView bmi5(BmiParam bp) {
         p("bmi5()");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
+        modelAndView.setViewName("view");
+        return modelAndView;
+    }
+
+    /**
+     * ModelMap 传递参数
+     */
+    @RequestMapping("/bmi6")
+    public String bmi6(BmiParam bp, ModelMap mm) {
+        p("bmi6()");
         mm.addAttribute("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
         return "view";
     }
@@ -97,9 +109,9 @@ public class DemoController {
     /**
      * HttpSession 传递参数
      */
-    @RequestMapping("/bmi6")
-    public String bmi6(BmiParam bp, HttpSession session) {
-        p("bmi6()");
+    @RequestMapping("/bmi7")
+    public String bmi7(BmiParam bp, HttpSession session) {
+        p("bmi7()");
         session.setAttribute("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
         return "view";
     }
@@ -110,7 +122,7 @@ public class DemoController {
     @RequestMapping("/redirect1")
     public String redirect1() {
         p("redirect1()");
-        return "redirect:hello";
+        return "hello";
     }
 
     /**
