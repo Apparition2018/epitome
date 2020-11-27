@@ -371,6 +371,18 @@ Spring SpringMVC Mybatis
 >       </select>
 >   ```
 >- 动态 SQL：if，choose(when, otherwise)，trim(where, set)，foreach
+>- ["#" 与 "$" 的区别](https://mybatis.org/mybatis-3/zh/sqlmap-xml.html#Parameters)
+>   - \#：使用 #{} 参数语法时，MyBatis 会创建 PreparedStatement 参数占位符，并通过占位符安全地设置参数（就像使用 ? 一样，可防止 SQL 注入）。 这样做更安全，更迅速，通常也是首选做法
+>   - $：在 SQL 语句中直接插入一个不转义的字符串，一般用于传入数据库对象或 order by
+>       - 使用场景一：ORDER BY 子句
+>       ```
+>       ORDER BY ${columnName}
+>       ```
+>       - 使用场景二：select 一个表任意一列的数据
+>       ```
+>       @Select("select * from user where ${column} = #{value}")
+>       User findByColumn(@Param("column") String column, @Param("value") String value);
+>       ```
 >### Spring 整合 Mybatis
 >1. 导包：spring-webmvc，spring-jdbc，mybatis-spring，commons-dbcp2， mysql-connector-java
 >2. XML 配置 SqlSessionFactoryBean
