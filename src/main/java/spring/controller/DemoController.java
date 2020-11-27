@@ -81,7 +81,7 @@ public class DemoController {
         p("bmi4()");
         Map<String, Object> data = new HashMap<>();
         data.put("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
-        return new ModelAndView("view", data);
+        return new ModelAndView("bmi2", data);
     }
 
     /**
@@ -92,7 +92,7 @@ public class DemoController {
         p("bmi5()");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
-        modelAndView.setViewName("view");
+        modelAndView.setViewName("bmi2");
         return modelAndView;
     }
 
@@ -103,7 +103,7 @@ public class DemoController {
     public String bmi6(BmiParam bp, ModelMap mm) {
         p("bmi6()");
         mm.addAttribute("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
-        return "view";
+        return "bmi2";
     }
 
     /**
@@ -113,7 +113,7 @@ public class DemoController {
     public String bmi7(BmiParam bp, HttpSession session) {
         p("bmi7()");
         session.setAttribute("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
-        return "view";
+        return "bmi2";
     }
 
     /**
@@ -145,7 +145,7 @@ public class DemoController {
     private String bmi(double height, double weight, HttpServletRequest request) {
         String status = bmiService.bmi(height, weight);
         request.setAttribute("status", status);
-        return "view";
+        return "bmi2";
     }
 
     @Getter

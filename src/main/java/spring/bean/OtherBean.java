@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.List;
-import java.util.Properties;
 
 import static l.demo.Demo.p;
 

@@ -3,7 +3,7 @@ package spring.demo;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import spring.bean.Score;
+import spring.model.Score;
 import spring.dao.ScoreDao;
 
 import javax.sql.DataSource;
@@ -25,7 +25,7 @@ public class SpringJdbcDemo {
 
     @Before
     public void init() {
-        ac = new ClassPathXmlApplicationContext("demo/spring/spring-jdbc.xml");
+        ac = new ClassPathXmlApplicationContext("spring/spring-dao.xml", " spring/spring-service.xml");
         scoreDao = ac.getBean("scoreDao", ScoreDao.class);
     }
 
@@ -34,7 +34,7 @@ public class SpringJdbcDemo {
      */
     @Test
     public void testConnection() throws SQLException {
-        DataSource dataSource = ac.getBean("dataSource", DataSource.class);
+        DataSource dataSource = ac.getBean("dbcpDataSource", DataSource.class);
         p(dataSource.getConnection());
     }
     

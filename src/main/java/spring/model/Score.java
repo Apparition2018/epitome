@@ -1,4 +1,4 @@
-package spring.bean;
+package spring.model;
 
 import lombok.Data;
 

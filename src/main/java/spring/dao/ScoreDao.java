@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import spring.bean.Score;
+import spring.model.Score;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ import java.util.List;
  * @author AresultSetenal
  * created on 2020/11/27 1:54
  */
-@Repository("scoreDao")
+@Repository
 public class ScoreDao {
 
     private final JdbcTemplate jdbcTemplate;

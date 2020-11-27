@@ -9,20 +9,22 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-    <!-- 配置 SpringMVC -->
-    <!-- 1:注解驱动
+    <!-- <mvc:annotation-driven/> 和 <context:component-scan> 之间的关系：https://segmentfault.com/a/1190000012193685 -->
+
+    <!-- 扫描包 -->
+    <context:component-scan base-package="spring.controller"/>
+    
+    <!-- 注解驱动
         https://www.zhihu.com/question/362051844/answer/1286615054
         (1)自动注册：
             HandlerMapping: RequestMappingHandlerMapping, BeanNameUrlHandlerMapping
             HandlerAdapter: RequestMappingHandlerAdapter, HttpRequestHandlerAdapter, SimpleControllerHandlerAdapter
             HandlerExceptionResolver: ExceptionHandlerExceptionResolver, ResponseStatusExceptionResolver, DefaultHandlerExceptionResolver
-        (2)其它扩展：https://spring.io/blog/2009/12/21/mvc-simplifications-in-spring-3-0 -->
+        (2)其它支持：@RequestMapping, @NumberFormat，@DateTimeFormat，@Valid，JAXB，Jackson
+            https://spring.io/blog/2009/12/21/mvc-simplifications-in-spring-3-0 -->
     <mvc:annotation-driven/>
 
-    <!-- 2:扫描指定包 -->
-    <context:component-scan base-package="spring"/>
-
-    <!-- 3:配置 ViewResolver -->
+    <!-- ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 需导入 jstl -->
         <!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
@@ -30,12 +32,12 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!-- 4:静态资源请求配置
+    <!-- 静态资源
         https://www.cnblogs.com/caoyc/p/5639078.html
         http://www.javacoder.cn/?p=178 -->
     <mvc:resources location="classpath:static/" mapping="/**" cache-period="86400"/>
 
-    <!-- 5:拦截器 -->
+    <!-- 拦截器 -->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
