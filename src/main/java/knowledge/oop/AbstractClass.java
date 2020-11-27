@@ -1,6 +1,5 @@
 package knowledge.oop;
 
-import l.demo.Demo;
 import lombok.Getter;
 import lombok.Setter;
 

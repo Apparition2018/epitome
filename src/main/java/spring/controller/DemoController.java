@@ -151,6 +151,16 @@ public class DemoController {
     }
 
     /**
+     * Spring 异常处理
+     * `@ExceptionHandler
+     */
+    @RequestMapping("/error")
+    public String error() {
+        p("error()");
+        throw new RuntimeException("error");
+    }
+
+    /**
      * <mvc:annotation-driven/> 支持的 @NumberFormat，@DateTimeFormat
      * http://localhost:8080/demo/format?salary=1,000&payDate=2008-08-08
      */

@@ -2,8 +2,6 @@ package jar.hutool;
 
 import cn.hutool.captcha.AbstractCaptcha;
 import cn.hutool.captcha.CaptchaUtil;
-import cn.hutool.captcha.CircleCaptcha;
-import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.captcha.generator.CodeGenerator;
 import cn.hutool.captcha.generator.MathGenerator;
 import cn.hutool.captcha.generator.RandomGenerator;
@@ -25,7 +23,7 @@ import java.io.OutputStream;
  * created on 2020/11/21 17:37
  */
 public class CaptchaDemo extends Demo {
-    
+
     private static final int WIDTH = 80;
     private static final int HEIGHT = 30;
     private static final int CODE_COUNT = 4;

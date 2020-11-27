@@ -1,8 +1,6 @@
 package jar.hutool.util;
 
-import cn.hutool.core.codec.Rot;
 import cn.hutool.core.util.IdcardUtil;
-import cn.hutool.crypto.digest.DigestUtil;
 import l.demo.Demo;
 import org.junit.Test;
 
@@ -18,13 +16,13 @@ import java.util.Date;
  * created on 2020/11/13 17:39
  */
 public class IdcardUtilDemo extends Demo {
-    
+
     @Test
     public void testIdcardUtil() {
-        
+
         // 是否合法
         p(IdcardUtil.isValidCard(ID_CARD));
-        
+
         // 年龄
         p(IdcardUtil.getAgeByIdCard(ID_CARD, new Date()));
         // 生日
@@ -37,7 +35,7 @@ public class IdcardUtilDemo extends Demo {
         p(IdcardUtil.getProvinceByIdCard(ID_CARD));
         // 城市 code
         p(IdcardUtil.getCityCodeByIdCard(ID_CARD));
-        
+
         // 隐藏
         p(IdcardUtil.hide(ID_CARD, 4, 14));
     }

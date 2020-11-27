@@ -138,13 +138,13 @@ Spring SpringMVC Mybatis
 >   - @Scope("prototype")：指定作用域，写在类前
 >   - @Lazy(true)：延迟加载，写在类前
 >   - @PostConstruct @PreDestroy：指定初始化方法和销毁方法
->   - @Value("#{config.max-wait}")：config 要是注册 Bean 的 id
+>   - @Value("#{config.max-wait}")：config 是 Spring 管理 Bean 的 id
 >   - @Value("${jdbc.password"}})
 >### Spring MVC
 >- 用来简化基于 MVC 架构的 WEB 应用程序开发的框架，是 Spring 框架的一部分
 >
 ><img alt="SpringMVC 运行流程" src="https://upload-images.jianshu.io/upload_images/4322526-873dc442cdc93555.png" width="880px"><br/>
->#### 基于XML配置 MVC
+>>#### 基于XML配置 MVC
 >>1. 搭建环境：
 >>      1. 创建 web 工程，导包 spring-webmvc
 >>      2. 添加 xml 配置文件
@@ -177,7 +177,7 @@ Spring SpringMVC Mybatis
 >>          <bean id="hc" class="controller.HelloController"/>
 >>      ```
 >>4. ModelAndView：handlerRequest() 返回一个 ModelAndView 对象，该对象可封装模型数据和视图名相应信息
->       - ModelAndView(String ViewName); 或 ModelAndView(String viewName, Map model);
+>>      - ModelAndView(String ViewName); 或 ModelAndView(String viewName, Map model);
 >>5. ViewResolver：
 >>      1. UrlBasedViewResolver
 >>      2. InternalResourceViewResolver
@@ -189,7 +189,7 @@ Spring SpringMVC Mybatis
 >>      ```           
 >>      3. XmlViewResolver
 >>      4. FreeMarkerViewResolver
->#### 基于注解配置的 MVC
+>>#### 基于注解配置的 MVC
 >>1. 添加注解驱动：<mvc:annotation-driven />
 >>      1. 自动注册：HandlerMapping，HandlerAdapter，HandlerExceptionResolver
 >>      2. 其它扩展功能
@@ -290,8 +290,8 @@ Spring SpringMVC Mybatis
 >       ```
 >2. 自定义：创建异常处理类 实现 HandlerExceptionResolver 接口
 >3. [注解配置](https://www.cnblogs.com/xd502djj/p/9873172.html)：
->       - @ControllerAdvice：类注解，作用于整个 Spring 工程，定义了一个全局的异常处理器
->       - @ExceptionHandler：方法注解，作用于 Controller，为一个 Controller 定义一个异常处理器
+>       - @ControllerAdvice：类注解，声明一些全局性的东西
+>       - @ExceptionHandler：方法注解，统一处理方法抛出的异常
 >       ```
 >       @ControllerAdvice
 >       public class GlobalExceptionHandler {

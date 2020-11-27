@@ -1,19 +1,13 @@
 package jar.hutool.poi;
 
-import cn.hutool.core.lang.Console;
 import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
 import cn.hutool.poi.excel.StyleSet;
-import cn.hutool.poi.excel.sax.Excel07SaxReader;
-import cn.hutool.poi.excel.sax.handler.RowHandler;
 import l.demo.Demo;
-import l.demo.Person;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.junit.Test;
-
-import java.util.List;
 
 /**
  * ExcelUtil
@@ -69,7 +63,7 @@ public class ExcelUtilDemo extends Demo {
         // 将数据输出到文件
         writer.flush();
     }
-    
+
     /**
      * https://hutool.cn/docs/#/poi/Excel%E8%AF%BB%E5%8F%96-ExcelReader
      * https://hutool.cn/docs/#/poi/%E6%B5%81%E6%96%B9%E5%BC%8F%E8%AF%BB%E5%8F%96Excel2007-Excel07SaxReader

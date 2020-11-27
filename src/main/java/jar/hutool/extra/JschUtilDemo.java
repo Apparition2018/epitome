@@ -3,7 +3,6 @@ package jar.hutool.extra;
 import cn.hutool.extra.ssh.JschUtil;
 import com.jcraft.jsch.Session;
 import l.demo.Demo;
-import org.junit.Test;
 
 /**
  * JschUtil

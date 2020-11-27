@@ -8,5 +8,5 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 扫描指定包下使用构造型(stereotype)注解所标注的类，如 @Component，@Controller，@Service，@Repository，交由 Spring 管理 -->
     <context:component-scan base-package="spring.service, 
-        spring.bean, knowledge.reflect.proxy"/>
+        spring.bean, spring.global, knowledge.reflect.proxy"/>
 </beans>

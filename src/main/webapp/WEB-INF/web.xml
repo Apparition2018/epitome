@@ -17,10 +17,10 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <error-page>
-        <error-code>500</error-code>
-        <location>/WEB-INF/jsp/error.jsp</location>
-    </error-page>
+<!--    <error-page>-->
+<!--        <error-code>500</error-code>-->
+<!--        <location>/WEB-INF/jsp/error.jsp</location>-->
+<!--    </error-page>-->
 
     <!-- context-param → listener → filter → servlet -->
     <!-- 声明应用范围内的初始化参数，用于向 ServletContext 提供键值对，Listener, Filter 等在初始化时会用到这些上下文中的信息 -->
