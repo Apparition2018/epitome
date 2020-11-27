@@ -45,38 +45,38 @@ Spring SpringMVC Mybatis
 >>```
 >### Spring 实例化 Bean
 >1. 无参构造器
->   ```
->   <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
->   ```
+>       ```
+>           <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
+>       ```
 >2. 工厂静态方法
->   ```
->   <bean id="calendar" class="java.util.Calendar" factory-method="getInstance"/>
->   ```
+>       ```
+>           <bean id="calendar" class="java.util.Calendar" factory-method="getInstance"/>
+>       ```
 >3. 工厂实例方法
->   ```
->   <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
->   <bean id="time" factory-bean="calendar" factory-method="getTime"/>
->   ```
+>       ```
+>           <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
+>           <bean id="time" factory-bean="calendar" factory-method="getTime"/>
+>       ```
 >### Spring IOC 和 DI
 >1. IOC：对象之间的依赖关系由容器来建立，IOC 是目的
 >2. DI：容器调用 set() 或构造器来建立对象之间的依赖关系，DI 是手段
 >       1. set 注入
 >           ```
->           <bean id="date" class="java.util.Date"/>
->           <bean id="student" class="l.demo.Person.Student">
->               <property name="birth" ref="date"/>
->           </bean>
+>               <bean id="date" class="java.util.Date"/>
+>               <bean id="student" class="l.demo.Person.Student">
+>                   <property name="birth" ref="date"/>
+>               </bean>
 >           ```
 >       2. 构造器注入
 >           ```
->           <bean id="student2" class="l.demo.Person.Student">
->               <constructor-arg index="0" value="1"/>
->               <constructor-arg index="1" value="张三"/>
->           </bean>
+>               <bean id="student2" class="l.demo.Person.Student">
+>                   <constructor-arg index="0" value="1"/>
+>                   <constructor-arg index="1" value="张三"/>
+>               </bean>
 >           ```
 >       3. p 命名空间注入：和 set 注入原理一样，都是通过 setter 给属性赋值
 >           ```
->           <bean id="student3" class="l.demo.Person.Student" p:id="1" p:name="张三"/>
+>               <bean id="student3" class="l.demo.Person.Student" p:id="1" p:name="张三"/>
 >           ```
 >       4. 自动装配 (autowire)
 >           1. no：默认值，禁用自动装配
@@ -88,21 +88,21 @@ Spring SpringMVC Mybatis
 >1. 基本类型：&lt;property name="age" value="18"/&gt;
 >       - 字段属性为 org.springframework.core.io.Resource 时，value="classpath:mybatis-config.xml"
 >2. 集合类型：&lt;list/&gt; &lt;set/&gt; &lt;map/&gt; &lt;props/&gt; 或 ref
->   ```
->       <bean id="person" class="l.demo.Person">
->           <property name="otherInfo">
->               <list>
->                   <value>父亲</value>
->                   <value>医生</value>
->               </list>
->           </property>
->       </bean>
->       
->       <util:properties location="classpath:jdbc.properties" id="jdbc"/>
->       <bean id="bean" class="spring.bean.Bean">
->           <property name="properties" ref="jdbc"/>
->       </bean>
->   ```
+>       ```
+>           <bean id="person" class="l.demo.Person">
+>               <property name="otherInfo">
+>                   <list>
+>                       <value>父亲</value>
+>                       <value>医生</value>
+>                   </list>
+>               </property>
+>           </bean>
+>           
+>           <util:properties location="classpath:jdbc.properties" id="jdbc"/>
+>           <bean id="bean" class="spring.bean.Bean">
+>               <property name="properties" ref="jdbc"/>
+>           </bean>
+>       ```
 >3. Bean：ref
 >4. null：&lt;property name="age"&gt; &lt;null/gt; &lt;/property&gt;
 >5. SpEL 表达式：#{id.attribute}，读取其它对象/集合中的数据
@@ -149,27 +149,27 @@ Spring SpringMVC Mybatis
 >>      1. 创建 web 工程，导包 spring-webmvc
 >>      2. 添加 xml 配置文件
 >>      3. 在 web.xml 配置 DispatcherServlet 前端控制器
->>      ```
->>          <servlet>
->>              <servlet-name>spring</servlet-name>
->>              <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
->>              <init-param>
->>                  <param-name>contextConfigLocation</param-name>
->>                  <param-value>classpath:spring/spring-web.xml</param-value>
->>              </init-param>
->>          </servlet>
->>      ```
+>>          ```
+>>              <servlet>
+>>                  <servlet-name>spring</servlet-name>
+>>                  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+>>                  <init-param>
+>>                      <param-name>contextConfigLocation</param-name>
+>>                      <param-value>classpath:spring/spring-web.xml</param-value>
+>>                  </init-param>
+>>              </servlet>
+>>          ```
 >>2. HandlerMapping：通过此组件，Dispatcher 可将客户 HTTP 请求映射到 Controller 上
 >>      1. SimpleUrlHandlerMapping
->>      ```
->>          <bean class="org.springframe.web.servlet.handler.SimpleUrlHandlerMapping">
->>              <property name="mappings">
->>                  <props>
->>          　           <prop key="/hello.do">hc</prop>
->>                  </props>
->>          　   </property>
->>          </bean>
->>      ```    
+>>          ```
+>>              <bean class="org.springframe.web.servlet.handler.SimpleUrlHandlerMapping">
+>>                  <property name="mappings">
+>>                      <props>
+>>              　           <prop key="/hello.do">hc</prop>
+>>                      </props>
+>>              　   </property>
+>>              </bean>
+>>          ```    
 >>      2. BeanNameUrlHandlerMapping
 >>      3. RequestMappingHandlerMapping
 >>3. Controller：负责执行具体的业务处理，实现 Controller 接口及约定方法 handleRequest(req, resp)
@@ -181,12 +181,12 @@ Spring SpringMVC Mybatis
 >>5. ViewResolver：
 >>      1. UrlBasedViewResolver
 >>      2. InternalResourceViewResolver
->>      ```
->>          <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
->>              <property name="prefix" value="/WEB-INF/views/"/>
->>              <property name="suffix" value=".jsp"/>
->>          </bean>
->>      ```           
+>>          ```
+>>              <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+>>                  <property name="prefix" value="/WEB-INF/views/"/>
+>>                  <property name="suffix" value=".jsp"/>
+>>              </bean>
+>>          ```           
 >>      3. XmlViewResolver
 >>      4. FreeMarkerViewResolver
 >>#### 基于注解配置的 MVC
@@ -210,22 +210,22 @@ Spring SpringMVC Mybatis
 >       - session.setAttribute(String name, Object obj);
 >3. 通过 ModelAndView 对象：
 >       ```
->       Map<String, Object> data = new HashMap<String, Object>();
->       data.put("status", status);
->       return ModelAndView(String viewName, Map data);
->                           or
->       ModelAndView modelAndView = new ModelAndView();
->       modelAndView.addObject("status", status);
->       modelAndView.setViewName("view");
->       return modelAndView;
+>           Map<String, Object> data = new HashMap<String, Object>();
+>           data.put("status", status);
+>           return ModelAndView(String viewName, Map data);
+>                               or
+>           ModelAndView modelAndView = new ModelAndView();
+>           modelAndView.addObject("status", status);
+>           modelAndView.setViewName("view");
+>           return modelAndView;
 >       ```
 >4. 通过 ModelMap 对象：
 >       ```
->       public String bmi(BmiParam bp, ModelMap modelMap) {
->           ...
->           modelMap.put("status", status);
->           return viewName;
->       }
+>           public String bmi(BmiParam bp, ModelMap modelMap) {
+>               ...
+>               modelMap.put("status", status);
+>               return viewName;
+>           }
 >       ```
 >5. 通过 [@ModelAttribute](https://www.4spaces.org/spring-mvc-and-the-modelattribute-annotation/)
 >### Spring 重定向
@@ -263,15 +263,15 @@ Spring SpringMVC Mybatis
 >   1. 创建拦截器类 实现 HandlerInterceptor 或 继承 HandlerInterceptorAdapter
 >   2. 再拦截器方法中，实现拦截处理逻辑
 >   3. 配置拦截器
->   ```
->       <mvc:interceptors>
->           <mvc:interceptor>
->               <mvc:mapping path="/**"/>
->               <mvc:exclude-mapping path="/login.do"/> <!-- 排除地址 -->
->               <bean class="xxx.MyInterceptor"/>
->           </mvc:interceptor>
->       </mvc:interceptors>
->   ```
+>       ```
+>           <mvc:interceptors>
+>               <mvc:interceptor>
+>                   <mvc:mapping path="/**"/>
+>                   <mvc:exclude-mapping path="/login.do"/> <!-- 排除地址 -->
+>                   <bean class="xxx.MyInterceptor"/>
+>               </mvc:interceptor>
+>           </mvc:interceptors>
+>       ```
 >- Listener → Filter → Interceptor
 >### Spring 异常处理
 >1. XML 配置：
@@ -279,45 +279,45 @@ Spring SpringMVC Mybatis
 >       - ExceptionHandlerExceptionResolver
 >       - ResponseStatusExceptionResolver
 >       - SimpleMappingExceptionResolver
->       ```
->          <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
->              <property name="exceptionMappings">
->                  <props>
->                      <prop key="java.lang.NumberFormatException">erorViewName</prop>
->                  </pops>
->              </propety>	
->          </bean>
->       ```
+>           ```
+>              <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+>                  <property name="exceptionMappings">
+>                      <props>
+>                          <prop key="java.lang.NumberFormatException">erorViewName</prop>
+>                      </pops>
+>                  </propety>	
+>              </bean>
+>           ```
 >2. 自定义：创建异常处理类 实现 HandlerExceptionResolver 接口
 >3. [注解配置](https://www.cnblogs.com/xd502djj/p/9873172.html)：
 >       - @ControllerAdvice：类注解，声明一些全局性的东西
 >       - @ExceptionHandler：方法注解，统一处理方法抛出的异常
->       ```
->       @ControllerAdvice
->       public class GlobalExceptionHandler {
->       	@ExceptionHandler(RuntimeException.class)
->       	@ResponseBody
->       	public JsonResult handleRuntimeException(Exception e) {
->       		return new JsonResult(e);
->       	}
->       }
->       ```
+>           ```
+>               @ControllerAdvice
+>               public class GlobalExceptionHandler {
+>               	@ExceptionHandler(RuntimeException.class)
+>               	@ResponseBody
+>               	public JsonResult handleRuntimeException(Exception e) {
+>               		return new JsonResult(e);
+>               	}
+>               }
+>           ```
 >### Spring JDBC
 >- 导包：spring-jdbc，commons-dbcp2（数据库连接池）， mysql-connector-java（数据库）
 >- XML 配置：
->```                
->    <context:property-placeholder location="classpath:jdbc.properties"/>
->    <bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
->        <property name="driverClassName" value="${jdbc.driver}"/>
->        <property name="url" value="${jdbc.url}"/>
->        <property name="username" value="${jdbc.username}"/>
->        <property name="password" value="${jdbc.password}"/>
->        ...
->    </bean>
->    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
->        <property name="dataSource" ref="dbcpDataSource"/>
->    </bean>
->```
+>   ```                
+>       <context:property-placeholder location="classpath:jdbc.properties"/>
+>       <bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+>           <property name="driverClassName" value="${jdbc.driver}"/>
+>           <property name="url" value="${jdbc.url}"/>
+>           <property name="username" value="${jdbc.username}"/>
+>           <property name="password" value="${jdbc.password}"/>
+>           ...
+>       </bean>
+>       <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+>           <property name="dataSource" ref="dbcpDataSource"/>
+>       </bean>
+>   ```
 >- 写一个 Dao 注入 JdbcTemplate，调用 JdbcTemplate 提供的方法来访问数据库
 ---
 ## [Mybatis](https://mybatis.org/mybatis-3/zh/index.html)
@@ -325,24 +325,24 @@ Spring SpringMVC Mybatis
 >### SqlSession
 >- SqlSession 提供了在数据库执行 SQL 命令所需的所有方法
 >1. 获取 SqlSession
->   ```
->   1. SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
->   2. Reader is = Resources.getResourceAsReader("mybatis.xml");
->               Or
->      InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis.xml");
->   3. SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
->   4. try (SqlSession session = sqlSessionFactory.openSession()) {}
->   ```
+>       ```
+>           1. SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+>           2. Reader is = Resources.getResourceAsReader("mybatis.xml");
+>                       Or
+>              InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis.xml");
+>           3. SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
+>           4. try (SqlSession session = sqlSessionFactory.openSession()) {}
+>       ```
 >2. SqlSession 常用 API：
->   ```
->   int             insert(String var1, Object var2);
->   <E> List<E>     selectList(String var1);
->   <T> T           selectOne(String var1, Object var2);
->   int             update(String var1, Object var2);
->   int             delete(String var1, Object var2);
->   void            commit();
->   void            close();
->   ```
+>       ```
+>           int             insert(String var1, Object var2);
+>           <E> List<E>     selectList(String var1);
+>           <T> T           selectOne(String var1, Object var2);
+>           int             update(String var1, Object var2);
+>           int             delete(String var1, Object var2);
+>           void            commit();
+>           void            close();
+>       ```
 >### Mapper 映射器
 >- 一个符合 XML 映射文件要求的借口
 >- 要求：
@@ -350,9 +350,9 @@ Spring SpringMVC Mybatis
 >   2. 参数类型要与 XML 映射文件当中的 parameterType 一致
 >   3. 返回类型要与 XML 映射文件当中的 resultType 一致
 >- 获取：MyBatis 在底层会依据接口的要求生成符合要求的对象
->   ```
->   XxxMapper mapper = sqlSession.getMapper(XxxDao.class);
->   ```
+>       ```
+>           XxxMapper mapper = sqlSession.getMapper(XxxDao.class);
+>       ```
 >### XML 映射文件
 >- 包含了 SQL 代码和映射定义信息
 >- 顶级元素
@@ -361,64 +361,64 @@ Spring SpringMVC Mybatis
 >   - sql – 可被其它语句引用的可重用语句块
 >   - insert, update delete, select
 >   - resultMap – 描述如何从数据库结果集中加载对象，是最复杂也是最强大的元素
->   ```
->       <resultMap type="entity.Emp" id="empResultMap">
->           <result property="empNo" column="id"/>
->           <result property="ename" column="name"/>
->       </resultMap>
->       <select id="findById" parameterType="int" resultMap="empResultMap">
->       	SELECT * FROM t_emp WHERE id = #{id}
->       </select>
->   ```
+>       ```
+>           <resultMap type="entity.Emp" id="empResultMap">
+>               <result property="empNo" column="id"/>
+>               <result property="ename" column="name"/>
+>           </resultMap>
+>           <select id="findById" parameterType="int" resultMap="empResultMap">
+>           	SELECT * FROM t_emp WHERE id = #{id}
+>           </select>
+>       ```
 >- 动态 SQL：if，choose(when, otherwise)，trim(where, set)，foreach
 >- ["#" 与 "$" 的区别](https://mybatis.org/mybatis-3/zh/sqlmap-xml.html#Parameters)
 >   - \#：使用 #{} 参数语法时，MyBatis 会创建 PreparedStatement 参数占位符，并通过占位符安全地设置参数（就像使用 ? 一样，可防止 SQL 注入）。 这样做更安全，更迅速，通常也是首选做法
 >   - $：在 SQL 语句中直接插入一个不转义的字符串，一般用于传入数据库对象或 order by
 >       - 使用场景一：ORDER BY 子句
->       ```
->       ORDER BY ${columnName}
->       ```
+>           ```
+>               ORDER BY ${columnName}
+>           ```
 >       - 使用场景二：select 一个表任意一列的数据
->       ```
->       @Select("select * from user where ${column} = #{value}")
->       User findByColumn(@Param("column") String column, @Param("value") String value);
->       ```
+>           ```
+>               @Select("select * from user where ${column} = #{value}")
+>               User findByColumn(@Param("column") String column, @Param("value") String value);
+>           ```
 >### Spring 整合 Mybatis
 >1. 导包：spring-webmvc，spring-jdbc，mybatis-spring，commons-dbcp2， mysql-connector-java
 >2. XML 配置 SqlSessionFactoryBean
->   ```
->      <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
->          <property name="dataSource" ref="druidDataSource"/>
->          <property name="mapperLocations" value="classpath:mapper/*/*.xml"/>
->          <property name="typeAliasesPackage" value="spring.bean"/>
->          <!-- MyBatis 全局文件：mybatis-config.xml，后续属性会覆盖配置文件对应的属性 -->
->          <property name="configLocation" value="classpath:mybatis-config.xml"/>
->      </bean>
->   ```
+>       ```
+>          <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+>              <property name="dataSource" ref="druidDataSource"/>
+>              <property name="mapperLocations" value="classpath:mapper/*/*.xml"/>
+>              <property name="typeAliasesPackage" value="spring.bean"/>
+>              <!-- MyBatis 全局文件：mybatis-config.xml，后续属性会覆盖配置文件对应的属性 -->
+>              <property name="configLocation" value="classpath:mybatis-config.xml"/>
+>          </bean>
+>       ```
 >3. 实体类，XML 映射文件，Mapper 映射器
 >4. XML 配置 MapperScannerConfigurer：扫描指定包及其子包下面的 Mapper 映射器，然后调用 SqlSession 的 getMapper() 返回符合 Mapper 映射器要求的对象，并且将这些对象添加到 Spring 容器里
->   ```
->       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
->           <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
->           <property name="basePackage" value="spring.dao"/>
->       </bean>
->   ```  
+>       ```
+>           <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+>               <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+>               <property name="basePackage" value="spring.dao"/>
+>           </bean>
+>       ```  
 >### [mybatis-config.xml](https://mybatis.org/mybatis-3/zh/configuration.html)
 >```
-><configuration>
->   <settings>
->       <!-- 是否允许在嵌套语句中使用分页(RowBounds)，如果允许使用则设置为 false -->
->       <setting name="safeRowBoundsEnabled" value="true"/>
->       <!-- 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存 -->
->       <setting name="cacheEnabled" value="false"/>
->       <!-- 允许 JDBC 支持自动生成主键，需要数据库驱动支持 -->
->       <setting name="useGeneratedKeys" value="true"/>
->       <!-- 使用列标签代替列名 -->
->       <setting name="useColumnLabel" value="true"/>
->       <!-- 是否开启驼峰命名自动映射 -->
->       <setting name="mapUnderscoreToCamelCase" value="true"/>
->   </settings>
-></configuration>
+>   <configuration>
+>      <settings>
+>          <!-- 是否允许在嵌套语句中使用分页(RowBounds)，如果允许使用则设置为 false -->
+>          <setting name="safeRowBoundsEnabled" value="true"/>
+>          <!-- 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存 -->
+>          <setting name="cacheEnabled" value="false"/>
+>          <!-- 允许 JDBC 支持自动生成主键，需要数据库驱动支持 -->
+>          <setting name="useGeneratedKeys" value="true"/>
+>          <!-- 使用列标签代替列名 -->
+>          <setting name="useColumnLabel" value="true"/>
+>          <!-- 是否开启驼峰命名自动映射 -->
+>          <setting name="mapUnderscoreToCamelCase" value="true"/>
+>      </settings>
+>   </configuration>
 >```
 ---
 ## AOP
@@ -426,17 +426,17 @@ Spring SpringMVC Mybatis
 >1. 导包 aspectjweaver
 >2. XML 配置 \<aop:aspectj-autoproxy/>，使 aspectj 注解生效，自动为目标对象生成代理对象
 >3. 业务组件
->   ```
->   @Service
->   public class Man implements People { ... }
->   ```
+>       ```
+>           @Service
+>           public class Man implements People { ... }
+>       ```
 >4. 定义切面
->   ```
->   @Order(1)
->   @Aspect
->   @Component
->   public static class XxxAspect { ... }
->   ```
+>       ```
+>           @Order(1)
+>           @Aspect
+>           @Component
+>           public static class XxxAspect { ... }
+>       ```
 >5. 定义切入点
 >   - @Pointcut("execution(public * knowledge..Man.*(..))")
 >   - @Around("bean(man)")
@@ -444,9 +444,9 @@ Spring SpringMVC Mybatis
 >   - @Pointcut("within(knowledge.reflect.proxy..*) && args()")
 >   - ......
 >6. 获取代理对象
->   ```
->   People people = ac.getBean("man", People.class);
->   ```
+>       ```
+>           People people = ac.getBean("man", People.class);
+>       ```
 >### Spring 如何选择动态代理模式
 >- 如果目标对象实现了接口，则采用 JDK 动态代理
 >- 如果目标对象没有实现接口，则采用 Cglib 动态代理
@@ -458,11 +458,11 @@ Spring SpringMVC Mybatis
 >- 步骤：
 >   1. XML 配置  
 >       ```
->       <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
->           <!-- 注入数据库连接池 -->
->           <property name="dataSource" ref="druidDataSource"/>
->       </bean>
->       <tx:annotation-driven transaction-manager="transactionManager"/>
+>           <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+>               <!-- 注入数据库连接池 -->
+>               <property name="dataSource" ref="druidDataSource"/>
+>           </bean>
+>           <tx:annotation-driven transaction-manager="transactionManager"/>
 >       ```
 >   2. 在类或方法前添加 @Transactional 注解
 ---
