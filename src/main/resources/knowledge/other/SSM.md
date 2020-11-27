@@ -41,7 +41,7 @@ Spring SpringMVC Mybatis
 >4. ClassPathXmlApplicationContext：是 ApplicationContext 的子孙类，以类加载路径下的 XML 配置文件创建
 >>#### 启动容器实例：
 >>```
->>ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring-service.xml", "spring/spring-aop.xml");
+>>      ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring-service.xml", "spring/spring-aop.xml");
 >>```
 >### Spring 实例化 Bean
 >1. 无参构造器
@@ -465,5 +465,65 @@ Spring SpringMVC Mybatis
 >           <tx:annotation-driven transaction-manager="transactionManager"/>
 >       ```
 >   2. 在类或方法前添加 @Transactional 注解
+>- 注解属性：
+>   - value：别名 transactionManager，当配置了多个 TransactionManager，可以用该属性指定选择哪个事务管理器
+>   - propagation：事务传播机制
+>   - isolation：事务隔离级别
+>   - readOnly：设置当前事务是否为只读事务
+>   - timeout：设置事务的超时秒数，默认值为-1，表示永不超时
+>   - rollbackFo：设置需要进行事务回滚的异常类数组
+>   - noRollbackFor：设置不需要进行事务回滚的异常类数组
+>>#### 事务传播机制 Propagation 
+>>  ```
+>>    REQUIRED        支持当前事务，如果当前没有事务，就新建一个事务，默认
+>>    SUPPORTS        支持当前事务，如果当前没有事务，就以非事务方式执行
+>>    MANDATORY       支持当前事务，如果当前没有事务，就抛出异常
+>>    REQUIRES_NEW    新建事务，如果当前存在事务，把当前事务挂起
+>>    NOT_SUPPORTED   以非事务方式执行，如果当前存在事务，就把当前事务挂起
+>>    NEVER           以非事务方式执行，如果当前存在事务，则抛出异常
+>>    NESTED          如果当前存在事务，则在嵌套事务内执行。如外层事务回滚，那么内层必须回滚；反之，内层事务不影响外层事务
+>>  ```
+>>#### 事务隔离级别 Isolation
+>><table>
+>>  <tr>
+>>      <th>Isolation</th>
+>>      <th>数据库默认</th>
+>>      <th>脏读</th>
+>>      <th>不可重复读</th>
+>>      <th>幻读</th>
+>>  </tr>
+>>  <tr>
+>>      <td>READ_UNCOMMITTED</td>
+>>      <td></td>
+>>      <td>可能</td>
+>>      <td>可能</td>
+>>      <td>可能</td>
+>>  </tr>
+>>  <tr>
+>>      <td>READ_COMMITTED</td>
+>>      <td>Oracle, SQL Server</td>
+>>      <td>不可能</td>
+>>      <td>可能</td>
+>>      <td>可能</td>
+>>  </tr>
+>>  <tr>
+>>      <td>REPEATABLE_READ</td>
+>>      <td>MySQL</td>
+>>      <td>不可能</td>
+>>      <td>不可能</td>
+>>      <td>可能</td>
+>>  </tr>
+>>  <tr>
+>>      <td>SERIALIZABLE</td>
+>>      <td></td>
+>>      <td>不可能</td>
+>>      <td>不可能</td>
+>>      <td>不可能</td>
+>>  </tr>
+>>  <tr>
+>>      <td>DEFAULT</td>
+>>      <td colspan="4">默认的隔离级别，使用数据库默认的事务隔离级别</td>
+>>  </tr>
+>></table>
 ---
 
