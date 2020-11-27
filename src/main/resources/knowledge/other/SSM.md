@@ -196,7 +196,7 @@ Spring SpringMVC Mybatis
 >>2. 添加包扫描：<context:component-scan base-package="spring"/>
 >>3. @Controller：用于组件扫描，Controller 不用实现 Controller 接口了
 >>4. @RequestMapping：相当于 HandlerMapping
->>5. ViewResolver：同基于 XML 配置
+>>5. ViewResolver：和上面的基于 XML 配置相同
 >### Spring 获取请求参数
 >1. 通过 HttpServletRequest 对象：
 >       - request.getParameter(x), request.getParameterMap();
@@ -325,24 +325,24 @@ Spring SpringMVC Mybatis
 >### SqlSession
 >- SqlSession 提供了在数据库执行 SQL 命令所需的所有方法
 >1. 获取 SqlSession
->   ```
->   1. SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
->   2. Reader is = Resources.getResourceAsReader("mybatis.xml");
->               Or
->      InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis.xml");
->   3. SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
->   4. try (SqlSession session = sqlSessionFactory.openSession()) {}
->   ```
+>```
+>1. SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+>2. Reader is = Resources.getResourceAsReader("mybatis.xml");
+>            Or
+>   InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis.xml");
+>3. SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
+>4. try (SqlSession session = sqlSessionFactory.openSession()) {}
+>```
 >2. SqlSession 常用 API：
->   ```
->   int             insert(String var1, Object var2);
->   <E> List<E>     selectList(String var1);
->   <T> T           selectOne(String var1, Object var2);
->   int             update(String var1, Object var2);
->   int             delete(String var1, Object var2);
->   void            commit();
->   void            close();
->   ```
+>```
+>int             insert(String var1, Object var2);
+><E> List<E>     selectList(String var1);
+><T> T           selectOne(String var1, Object var2);
+>int             update(String var1, Object var2);
+>int             delete(String var1, Object var2);
+>void            commit();
+>void            close();
+>```
 >### Mapper 映射器
 >- 一个符合 XML 映射文件要求的借口
 >- 要求：
@@ -420,5 +420,50 @@ Spring SpringMVC Mybatis
 >   </settings>
 ></configuration>
 >```
+---
+## AOP
+>### Spring AOP
+>1. 导包 aspectjweaver
+>2. XML 配置 \<aop:aspectj-autoproxy/>，使 aspectj 注解生效，自动为目标对象生成代理对象
+>3. 业务组件
+>   ```
+>   @Service
+>   public class Man implements People { ... }
+>   ```
+>4. 定义切面
+>   ```
+>   @Order(1)
+>   @Aspect
+>   @Component
+>   public static class XxxAspect { ... }
+>   ```
+>5. 定义切入点
+>   - @Pointcut("execution(public * knowledge..Man.*(..))")
+>   - @Around("bean(man)")
+>   - @Pointcut("@annotation(knowledge.reflect.proxy.domain.Man.AOP)")
+>   - @Pointcut("within(knowledge.reflect.proxy..*) && args()")
+>   - ......
+>6. 获取代理对象
+>   ```
+>   People people = ac.getBean("man", People.class);
+>   ```
+>### Spring 如何选择动态代理模式
+>- 如果目标对象实现了接口，则采用 JDK 动态代理
+>- 如果目标对象没有实现接口，则采用 Cglib 动态代理
+>- 如果目标对象实现了接口，且强制使用 Cglib 代理，则使用 Cglib 代理
+>### 基于注解的 Spring 声明式事务管理
+>- Spring 声明式事务管理是通过 Spring AOP 实现的。其本质是对方法前后进行拦截，然后在目标方法开始之前创建或者加入一个事务，在执行目标方法之后根据执行情况提交或回滚事务。
+>   1. 只有 public 方法起作用
+>   2. 只有来自外部的方法调用才会被 AOP 代理捕获，类内部方法调用本类内部的其它方法不会引起事务行为
+>- 步骤：
+>   1. XML 配置  
+>       ```
+>       <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+>           <!-- 注入数据库连接池 -->
+>           <property name="dataSource" ref="druidDataSource"/>
+>       </bean>
+>       <tx:annotation-driven transaction-manager="transactionManager"/>
+>       ```
+>   2. 在类或方法前添加 @Transactional 注解
 ---
 
