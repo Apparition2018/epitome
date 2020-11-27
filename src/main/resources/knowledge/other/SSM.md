@@ -303,7 +303,7 @@ Spring SpringMVC Mybatis
 >       }
 >       ```
 >### Spring JDBC
->- 导包：spring-jdbc，数据库连接池 (commons-dbcp2)，数据库 (mysql-connector-java)
+>- 导包：spring-jdbc，commons-dbcp2（数据库连接池）， mysql-connector-java（数据库）
 >- XML 配置：
 >```                
 >    <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -320,6 +320,93 @@ Spring SpringMVC Mybatis
 >```
 >- 写一个 Dao 注入 JdbcTemplate，调用 JdbcTemplate 提供的方法来访问数据库
 ---
-## Mybatis
-
+## [Mybatis](https://mybatis.org/mybatis-3/zh/index.html)
+<img alt="Mybatis 工作原理" src="https://img-blog.csdn.net/20180624002302854" width="650px"><br/>
+>### SqlSession
+>- SqlSession 提供了在数据库执行 SQL 命令所需的所有方法
+>1. 获取 SqlSession
+>   ```
+>   1. SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+>   2. Reader is = Resources.getResourceAsReader("mybatis.xml");
+>               Or
+>      InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis.xml");
+>   3. SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
+>   4. try (SqlSession session = sqlSessionFactory.openSession()) {}
+>   ```
+>2. SqlSession 常用 API：
+>   ```
+>   int             insert(String var1, Object var2);
+>   <E> List<E>     selectList(String var1);
+>   <T> T           selectOne(String var1, Object var2);
+>   int             update(String var1, Object var2);
+>   int             delete(String var1, Object var2);
+>   void            commit();
+>   void            close();
+>   ```
+>### Mapper 映射器
+>- 一个符合 XML 映射文件要求的借口
+>- 要求：
+>   1. 方法名要与 XML 映射文件当中的 SQL 语句的 id 一致
+>   2. 参数类型要与 XML 映射文件当中的 parameterType 一致
+>   3. 返回类型要与 XML 映射文件当中的 resultType 一致
+>- 获取：MyBatis 在底层会依据接口的要求生成符合要求的对象
+>   ```
+>   XxxMapper mapper = sqlSession.getMapper(XxxDao.class);
+>   ```
+>### XML 映射文件
+>- 包含了 SQL 代码和映射定义信息
+>- 顶级元素
+>   - cache – 该命名空间的缓存配置
+>   - cache-ref – 引用其它命名空间的缓存配置
+>   - sql – 可被其它语句引用的可重用语句块
+>   - insert, update delete, select
+>   - resultMap – 描述如何从数据库结果集中加载对象，是最复杂也是最强大的元素
+>   ```
+>       <resultMap type="entity.Emp" id="empResultMap">
+>           <result property="empNo" column="id"/>
+>           <result property="ename" column="name"/>
+>       </resultMap>
+>       <select id="findById" parameterType="int" resultMap="empResultMap">
+>       	SELECT * FROM t_emp WHERE id = #{id}
+>       </select>
+>   ```
+>- 动态 SQL：if，choose(when, otherwise)，trim(where, set)，foreach
+>### Spring 整合 Mybatis
+>1. 导包：spring-webmvc，spring-jdbc，mybatis-spring，commons-dbcp2， mysql-connector-java
+>2. XML 配置 SqlSessionFactoryBean
+>   ```
+>      <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+>          <property name="dataSource" ref="druidDataSource"/>
+>          <property name="mapperLocations" value="classpath:mapper/*/*.xml"/>
+>          <property name="typeAliasesPackage" value="spring.bean"/>
+>          <!-- MyBatis 全局文件：mybatis-config.xml，后续属性会覆盖配置文件对应的属性 -->
+>          <property name="configLocation" value="classpath:mybatis-config.xml"/>
+>      </bean>
+>   ```
+>3. 实体类，XML 映射文件，Mapper 映射器
+>4. XML 配置 MapperScannerConfigurer：扫描指定包及其子包下面的 Mapper 映射器，然后调用 SqlSession 的 getMapper() 返回符合 Mapper 映射器要求的对象，并且将这些对象添加到 Spring 容器里
+>   ```
+>       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+>           <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+>           <property name="basePackage" value="spring.dao"/>
+>       </bean>
+>   ```  
+>### [mybatis-config.xml](https://mybatis.org/mybatis-3/zh/configuration.html)
+>```
+><configuration>
+>   <settings>
+>       <!-- 是否允许在嵌套语句中使用分页(RowBounds)，如果允许使用则设置为 false -->
+>       <setting name="safeRowBoundsEnabled" value="true"/>
+>       <!-- 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存 -->
+>       <setting name="cacheEnabled" value="false"/>
+>       <!-- 允许 JDBC 支持自动生成主键，需要数据库驱动支持 -->
+>       <setting name="useGeneratedKeys" value="true"/>
+>       <!-- 使用列标签代替列名 -->
+>       <setting name="useColumnLabel" value="true"/>
+>       <!-- 是否开启驼峰命名自动映射 -->
+>       <setting name="mapUnderscoreToCamelCase" value="true"/>
+>   </settings>
+></configuration>
+>```
+---
 

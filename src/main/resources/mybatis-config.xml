@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- https://mybatis.org/mybatis-3/zh/configuration.html -->
 <configuration>
-
-    <!-- 可配置项请查看 org.apache.ibatis.session.Configuration -->
     <settings>
+        <!-- 是否允许在嵌套语句中使用分页(RowBounds)，如果允许使用则设置为 false -->
         <setting name="safeRowBoundsEnabled" value="true"/>
+        <!-- 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存 -->
         <setting name="cacheEnabled" value="false"/>
-        <!-- 使用 jdbc 的 getGeneratedKeys 获取数据库自增主键值 -->
+        <!-- 允许 JDBC 支持自动生成主键，需要数据库驱动支持 -->
         <setting name="useGeneratedKeys" value="true"/>
-        <!-- 使用列别名替换列名 默认：true
-            select name as title from table -->
+        <!-- 使用列标签代替列名 -->
         <setting name="useColumnLabel" value="true"/>
-        <!-- 开启驼峰命名转换：Table{create_time} -> Entity{createTime} -->
+        <!-- 是否开启驼峰命名自动映射 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
-
-    <!-- 别名 -->
+    <!-- 类型别名 -->
     <!--<typeAliases></typeAliases>-->
-
-    <!-- mybatis 监控 sql -->
-    <!--<plugins><plugin interceptor=""></plugin></plugins>-->
-
-    <!-- 使用情况：类定义了枚举，无法使用映射时使用 -->
+    <!-- 插件 -->
+    <!--<plugins></plugins>-->
+    <!-- 类型处理器
+        使用场景一：类定义了枚举，无法使用映射时使用 -->
     <!--<typeHandlers></typeHandlers>-->
-
 </configuration>
