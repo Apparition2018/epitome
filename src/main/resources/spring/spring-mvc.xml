@@ -13,7 +13,7 @@
 
     <!-- 扫描包 -->
     <context:component-scan base-package="spring.controller"/>
-    
+
     <!-- 注解驱动
         https://www.zhihu.com/question/362051844/answer/1286615054
         (1)自动注册：
@@ -24,7 +24,7 @@
             https://spring.io/blog/2009/12/21/mvc-simplifications-in-spring-3-0 -->
     <mvc:annotation-driven/>
 
-    <!-- ViewResolver -->
+    <!-- ViewResolver，默认为转发 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 需导入 jstl -->
         <!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->

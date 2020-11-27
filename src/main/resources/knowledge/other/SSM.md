@@ -303,8 +303,21 @@ Spring SpringMVC Mybatis
 >       }
 >       ```
 >### Spring JDBC
->- 步骤： 
->       1. 导包：spring-jdbc，数据库连接池 (commons-dbcp2)，数据库 (mysql-connector-java)
->       2. XML 配置
+>- 导包：spring-jdbc，数据库连接池 (commons-dbcp2)，数据库 (mysql-connector-java)
+>- XML 配置：
+>```                
+>    <context:property-placeholder location="classpath:jdbc.properties"/>
+>    <bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+>        <property name="driverClassName" value="${jdbc.driver}"/>
+>        <property name="url" value="${jdbc.url}"/>
+>        <property name="username" value="${jdbc.username}"/>
+>        <property name="password" value="${jdbc.password}"/>
+>        ...
+>    </bean>
+>    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+>        <property name="dataSource" ref="dbcpDataSource"/>
+>    </bean>
+>```
+>- 写一个 Dao 注入 JdbcTemplate，调用 JdbcTemplate 提供的方法来访问数据库
 ---
 

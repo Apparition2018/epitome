@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import spring.bean.OtherBean;
 import spring.service.BmiService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -146,6 +148,16 @@ public class DemoController {
         String status = bmiService.bmi(height, weight);
         request.setAttribute("status", status);
         return "bmi2";
+    }
+
+    /**
+     * <mvc:annotation-driven/> 支持的 @NumberFormat，@DateTimeFormat
+     * http://localhost:8080/demo/format?salary=1,000&payDate=2008-08-08
+     */
+    @ResponseBody
+    @RequestMapping("format")
+    public OtherBean testFormat(OtherBean otherBean) {
+        return otherBean;
     }
 
     @Getter

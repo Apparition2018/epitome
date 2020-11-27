@@ -97,7 +97,7 @@ public class SpringDemo {
 
         // spring el expression
         OtherBean otherBean = ac.getBean("otherBean", OtherBean.class);
-        p(otherBean.getScore()); // com.mysql.cj.jdbc.Driver
+        p(otherBean.getScore()); // 100
     }
 
     /**
