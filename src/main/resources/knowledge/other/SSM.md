@@ -45,39 +45,39 @@ Spring SpringMVC Mybatis
 >>```
 >### Spring 实例化 Bean
 >1. 无参构造器
->```
+>   ```
 >   <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
->```
+>   ```
 >2. 工厂静态方法
->```
+>   ```
 >   <bean id="calendar" class="java.util.Calendar" factory-method="getInstance"/>
->```
+>   ```
 >3. 工厂实例方法
->```
+>   ```
 >   <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
 >   <bean id="time" factory-bean="calendar" factory-method="getTime"/>
->```
+>   ```
 >### Spring IOC 和 DI
 >1. IOC：对象之间的依赖关系由容器来建立，IOC 是目的
 >2. DI：容器调用 set() 或构造器来建立对象之间的依赖关系，DI 是手段
 >       1. set 注入
->       ```
+>           ```
 >           <bean id="date" class="java.util.Date"/>
 >           <bean id="student" class="l.demo.Person.Student">
 >               <property name="birth" ref="date"/>
 >           </bean>
->       ```
+>           ```
 >       2. 构造器注入
->       ```
+>           ```
 >           <bean id="student2" class="l.demo.Person.Student">
 >               <constructor-arg index="0" value="1"/>
 >               <constructor-arg index="1" value="张三"/>
 >           </bean>
->       ```
+>           ```
 >       3. p 命名空间注入：和 set 注入原理一样，都是通过 setter 给属性赋值
->       ```
+>           ```
 >           <bean id="student3" class="l.demo.Person.Student" p:id="1" p:name="张三"/>
->       ```
+>           ```
 >       4. 自动装配 (autowire)
 >           1. no：默认值，禁用自动装配
 >           2. byName：根据属性名自动装配
@@ -325,24 +325,24 @@ Spring SpringMVC Mybatis
 >### SqlSession
 >- SqlSession 提供了在数据库执行 SQL 命令所需的所有方法
 >1. 获取 SqlSession
->```
->1. SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
->2. Reader is = Resources.getResourceAsReader("mybatis.xml");
->            Or
->   InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis.xml");
->3. SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
->4. try (SqlSession session = sqlSessionFactory.openSession()) {}
->```
+>   ```
+>   1. SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+>   2. Reader is = Resources.getResourceAsReader("mybatis.xml");
+>               Or
+>      InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis.xml");
+>   3. SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
+>   4. try (SqlSession session = sqlSessionFactory.openSession()) {}
+>   ```
 >2. SqlSession 常用 API：
->```
->int             insert(String var1, Object var2);
-><E> List<E>     selectList(String var1);
-><T> T           selectOne(String var1, Object var2);
->int             update(String var1, Object var2);
->int             delete(String var1, Object var2);
->void            commit();
->void            close();
->```
+>   ```
+>   int             insert(String var1, Object var2);
+>   <E> List<E>     selectList(String var1);
+>   <T> T           selectOne(String var1, Object var2);
+>   int             update(String var1, Object var2);
+>   int             delete(String var1, Object var2);
+>   void            commit();
+>   void            close();
+>   ```
 >### Mapper 映射器
 >- 一个符合 XML 映射文件要求的借口
 >- 要求：
