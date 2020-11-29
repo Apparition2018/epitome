@@ -24,10 +24,16 @@
 
     <!-- context-param → listener → filter → servlet -->
     <!-- 声明应用范围内的初始化参数，用于向 ServletContext 提供键值对，Listener, Filter 等在初始化时会用到这些上下文中的信息 -->
+    <!-- 1.XmlWebApplicationContext: 基于 XML 配置 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/spring-*.xml</param-value>
     </context-param>
+    <!-- 2.AnnotationConfigApplicationContext: 基于 Java 配置  -->
+<!--    <context-param>-->
+<!--        <param-name>contextInitializerClasses</param-name>-->
+<!--        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
+<!--    </context-param>-->
     <context-param>
         <param-name>myParam</param-name>
         <param-value>xyz</param-value>
@@ -86,7 +92,7 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/spring-mvc.xml</param-value>
         </init-param>
-<!--        <load-on-startup>1</load-on-startup>-->
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>spring-mvc</servlet-name>
