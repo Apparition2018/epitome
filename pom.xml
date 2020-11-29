@@ -169,14 +169,14 @@
             <artifactId>commons-cli</artifactId>
             <version>${commons-cli}</version>
         </dependency>
-        
+
         <!-- smartch：中文智能分析 -->
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-smartcn</artifactId>
             <version>${smartcn}</version>
         </dependency>
-        
+
         <!-- tika：内容抽取的工具集合
             包含了 gson, guava, commons-compress, commons-math3, commons-collections4,
             poi, poi-ooxml, poi-ooxmll-schemas, poi-scratchpad,
@@ -358,31 +358,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- mybatis generator
-                http://www.mybatis.org/generator/index.html -->
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>${mybatis-generator}</version>
-                <configuration>
-                    <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
-                    <!-- 是否重写文件
-                        注意：XML 不会重写，总是将新生成的内容合并到旧文件之下 -->
-                    <overwrite>true</overwrite>
-                    <!-- 是否在输出日志中打印进度信息 -->
-                    <verbose>true</verbose>
-                </configuration>
-                <!-- 编译代码时，自动执行mybatis generator -->
-                <!--<executions>-->
-                <!--<execution>-->
-                <!--<id>Generate MyBatis Artifacts</id>-->
-                <!--<goals>-->
-                <!--<goal>generate</goal>-->
-                <!--</goals>-->
-                <!--</execution>-->
-                <!--</executions>-->
-            </plugin>
-
             <!-- maven-compiler-plugin
                 http://maven.apache.org/plugins/maven-compiler-plugin/ -->
             <plugin>
@@ -415,6 +390,31 @@
                         </manifest>
                     </archive>
                 </configuration>
+            </plugin>
+
+            <!-- mybatis generator
+                http://www.mybatis.org/generator/index.html -->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${mybatis-generator}</version>
+                <configuration>
+                    <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
+                    <!-- 是否重写文件
+                        注意：XML 不会重写，总是将新生成的内容合并到旧文件之下 -->
+                    <overwrite>true</overwrite>
+                    <!-- 是否在输出日志中打印进度信息 -->
+                    <verbose>true</verbose>
+                </configuration>
+                <!-- 编译代码时，自动执行mybatis generator -->
+                <!--<executions>-->
+                <!--<execution>-->
+                <!--<id>Generate MyBatis Artifacts</id>-->
+                <!--<goals>-->
+                <!--<goal>generate</goal>-->
+                <!--</goals>-->
+                <!--</execution>-->
+                <!--</executions>-->
             </plugin>
         </plugins>
     </build>
