@@ -3,7 +3,7 @@ package springboot.controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import springboot.domain.demo.Demo;
+import springboot.domain.Score;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -28,8 +28,8 @@ public class FetchController {
     }
 
     @RequestMapping("/json-clazz")
-    public Demo jsonClazz(@RequestBody Demo demo) {
-        return demo;
+    public Score jsonClazz(@RequestBody Score score) {
+        return score;
     }
 
     @RequestMapping("/json-map")

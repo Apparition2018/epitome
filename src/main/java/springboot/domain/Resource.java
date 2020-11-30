@@ -1,8 +1,6 @@
 package springboot.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -11,12 +9,10 @@ import org.springframework.stereotype.Component;
  * @author ljh
  * created on 2019/8/8 19:39
  */
+@Data
 @Component
 @ConfigurationProperties(prefix = "resource")
 @PropertySource(value = "classpath:resource.properties")
-@Getter
-@Setter
-@ToString
 public class Resource {
 
     private String name;
