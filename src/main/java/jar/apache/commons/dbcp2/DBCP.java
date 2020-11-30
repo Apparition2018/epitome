@@ -1,17 +1,16 @@
-package knowledge.jdbc;
+package jar.apache.commons.dbcp2;
 
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Arrays;
 
 /**
  * DBCP (Database Connection Pool)
  * <p>
  * JDBC: JAVA 连接数据库和执行 SQL 语句的 API
- * DBCP: 依赖 Jakarta commons-pool 对象池机制的数据库连接池
+ * DBCP: 依赖 Jakarta commons-pool2 对象池机制的数据库连接池
  *
  * @author ljh
  * created on 2020/10/10 15:55

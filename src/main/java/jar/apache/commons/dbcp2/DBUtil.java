@@ -1,4 +1,4 @@
-package knowledge.jdbc;
+package jar.apache.commons.dbcp2;
 
 import knowledge.数据结构.集合框架.map.properties.PropertiesUtil;
 import l.demo.Demo;
@@ -34,7 +34,7 @@ public class DBUtil extends Demo {
             e.printStackTrace();
         }
     }
-    
+
     public static Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
