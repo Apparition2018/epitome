@@ -1,9 +1,5 @@
 package knowledge.oop;
 
-import org.junit.Test;
-
-import java.util.stream.IntStream;
-
 /**
  * 方法
  * 修饰符 返回值类型 方法名 参数类型 方法体
@@ -34,26 +30,6 @@ public class Method {
 
     final int min(int num1, int num2) {
         return Math.min(num1, num2);
-    }
-
-    /**
-     * 可变参数 (varargs)
-     * <p>
-     * JDK1.5 开始，Java 支持传递同类型的可变参数给一个方法
-     * 一个方法中只能指定一个可变参数，它必须是方法的最后一个参数
-     * 可变参数的各个参数用 "," 隔开，也可以直接传入一个数组
-     */
-    public int getMax(int... nums) {
-        IntStream.range(0, nums.length).forEach(i -> max = Math.max(nums[i], max));
-        return max;
-    }
-
-    @Test
-    public void testVarargs() {
-        System.out.println(getMax(3, 7, 1, 5, 9));  // 9
-
-        int[] arr = {3, 7, 1, 5, 9};
-        System.out.println(getMax(arr));            // 9
     }
 
     /**
