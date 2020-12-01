@@ -1,4 +1,4 @@
-package knowledge.api.io.file;
+package knowledge.io.file;
 
 import l.demo.Demo;
 import org.junit.Test;

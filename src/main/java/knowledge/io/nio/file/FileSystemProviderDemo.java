@@ -1,4 +1,4 @@
-package knowledge.api.nio.file;
+package knowledge.io.nio.file;
 
 import com.alibaba.fastjson.JSON;
 import l.demo.Demo;
@@ -34,7 +34,7 @@ public class FileSystemProviderDemo extends Demo {
     public void testFileSystemProvider() throws IOException {
         FileSystemProvider fileSystemProvider = FileSystems.getDefault().provider();
         Path path = Paths.get(DEMO_PATH, "demo" + ThreadLocalRandom.current().nextInt(999));
-        
+
         // abstract String	getScheme()                 返回标识此提供程序的 URI 方案
         p(fileSystemProvider.getScheme());
 
@@ -42,13 +42,13 @@ public class FileSystemProviderDemo extends Demo {
         // 创建文件夹
         fileSystemProvider.createDirectory(path);
 
-        // abstract <A extends BasicFileAttributes> A	
+        // abstract <A extends BasicFileAttributes> A
         // readAttributes(Path path, Class<A> type, LinkOption... options)
         // 以批量操作的形式读取文件的属性
         BasicFileAttributes basicFileAttributes = fileSystemProvider.readAttributes(path, BasicFileAttributes.class);
         p(JSON.toJSON(basicFileAttributes));
         // {"other":false,"system":false,"hidden":false,"symbolicLink":false,"archive":false,"readOnly":false,"regularFile":false,"directory":true}
-        
+
         // boolean	        deleteIfExists(Path path)   如果 path 存在则删除
         fileSystemProvider.deleteIfExists(path);
     }

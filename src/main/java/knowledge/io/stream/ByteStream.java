@@ -1,4 +1,4 @@
-package knowledge.api.io.stream;
+package knowledge.io.stream;
 
 import l.demo.Demo;
 import org.junit.Test;

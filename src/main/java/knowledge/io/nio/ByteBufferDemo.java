@@ -1,4 +1,4 @@
-package knowledge.api.nio;
+package knowledge.io.nio;
 
 /**
  * ByteBuffer

@@ -1,4 +1,4 @@
-package knowledge.api.nio.file;
+package knowledge.io.nio.file;
 
 import l.demo.Demo;
 import org.junit.Test;
@@ -37,7 +37,7 @@ public class PathDemo extends Demo {
 
     private Path p3 = Paths.get(DEMO_ABSOLUTE_PATH);
     private Path p4 = Paths.get(RESOURCES_ABSOLUTE_PATH + "spring");
-    
+
     @Test
     public void testGet() {
         // 返回文件名或目录名
@@ -46,7 +46,7 @@ public class PathDemo extends Demo {
         p(p1.getParent());      // src\main\resources
         // 返回根组件，如果该路径没有根组件，则返回null
         p(p1.getRoot());        //
-        
+
         // 返回路径中名称元素的数量
         p(p1.getNameCount());   // 4
         // 返回指定 index 的名称元素的名称
@@ -100,8 +100,8 @@ public class PathDemo extends Demo {
         p(p1.resolve(p5.toAbsolutePath()) + "\n");      // D:\L\git\epitome\src\main\resources\demo\demo
 
         Path p6 = p2.resolve("spring-dao.xml");
-        p(p2);                                          // src\main\resources\spring                              
-        p(p6);                                          // src\main\resources\spring\spring-dao.xml                             
+        p(p2);                                          // src\main\resources\spring
+        p(p6);                                          // src\main\resources\spring\spring-dao.xml
         p(p1.resolveSibling("spring/spring-dao.xml"));  // src\main\resources\spring\spring-dao.xml
         p(p1.resolveSibling("/spring/spring-dao.xml")); // \spring\spring-dao.xml
         p(p1.resolveSibling(p6.toAbsolutePath()));      // D:\L\git\epitome\src\main\resources\spring\spring-dao.xml

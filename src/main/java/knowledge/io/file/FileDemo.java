@@ -1,4 +1,4 @@
-package knowledge.api.io.file;
+package knowledge.io.file;
 
 import l.demo.Demo;
 import org.junit.Test;
@@ -142,7 +142,7 @@ public class FileDemo extends Demo {
     public void list() {
         p(USER_DIR); // D:\L\git\epitome
         File[] files = new File(USER_DIR).listFiles();
-        p(files);   // [D:\L\git\epitome\.git, D:\L\git\epitome\.gitignore, D:\L\git\epitome\.idea, D:\L\git\epitome\epitome.iml, 
+        p(files);   // [D:\L\git\epitome\.git, D:\L\git\epitome\.gitignore, D:\L\git\epitome\.idea, D:\L\git\epitome\epitome.iml,
         // D:\L\git\epitome\logs, D:\L\git\epitome\plugins, D:\L\git\epitome\pom.xml, D:\L\git\epitome\src, D:\L\git\epitome\target]
     }
 

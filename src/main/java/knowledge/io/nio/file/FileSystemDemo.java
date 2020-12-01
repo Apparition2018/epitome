@@ -1,4 +1,4 @@
-package knowledge.api.nio.file;
+package knowledge.io.nio.file;
 
 import l.demo.Demo;
 import org.junit.Test;
@@ -45,7 +45,7 @@ public class FileSystemDemo extends Demo {
         // static FileSystem    getDefault()                            返回默认 FileSystem
         FileSystem fileSystem = FileSystems.getDefault();
 
-        // Path                 getPath(String first, String... more)   将路径字符串或多个路径字符串连接起来转换为 Path 
+        // Path                 getPath(String first, String... more)   将路径字符串或多个路径字符串连接起来转换为 Path
         Path path = fileSystem.getPath(DEMO_PATH, "demo");
         p(path); // src\main\resources\demo\demo
 
