@@ -1,6 +1,9 @@
 # 其它
 
 ---
+## 杂
+1. [版本号命名规则](https://mp.weixin.qq.com/s/ZoUG9h1TndW2QpnPyGeIQA)
+---
 ## [端口被占用](https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html)
 1. 打开 cmd.exe
 2. netstat -ano

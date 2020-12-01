@@ -10,7 +10,7 @@ import java.util.concurrent.*;
  * CompletionService 为线程池中任务的执行结果服务的，即为 Executor 中任务返回 Future 而服务的。
  * CompletionService 的实现目标是任务先完成可优先获取到，即结果按照完成先后顺序排序。
  * <p>
- * https://www.cnblogs.com/shijiaqi1066/p/10454237.html
+ * CompletionService 使用与原理：https://www.cnblogs.com/shijiaqi1066/p/10454237.html
  *
  * @author ljh
  * created on 2020/10/26 10:44
