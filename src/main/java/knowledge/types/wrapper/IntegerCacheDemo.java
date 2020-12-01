@@ -1,4 +1,4 @@
-package knowledge.api.lang.wrapper;
+package knowledge.types.wrapper;
 
 import org.junit.Test;
 
@@ -55,7 +55,7 @@ public class IntegerCacheDemo {
     public void testArithmetic() {
         Integer x1 = 100;
         Integer x2 = 100;
-        
+
         Long y1 = 100L;
         Long y2 = 200L;
 

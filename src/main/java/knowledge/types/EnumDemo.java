@@ -1,4 +1,4 @@
-package knowledge.api.lang;
+package knowledge.types;
 
 import l.demo.Company;
 import l.demo.Demo;
@@ -24,8 +24,9 @@ import java.util.Map;
  * Class<E>	                        getDeclaringClass()     返回与此枚举常量的枚举类型相对应的 Class 对象
  * static <T extends Enum<T>> T	    valueOf(Class<T> enumType, String name) 返回带指定名称的指定枚举类型的枚举常量
  * <p>
+ * JAVA 常量类的实现方式_枚举类＿项目实践：https://www.cnblogs.com/lihaoyang/p/6913295.html
+ * JAVA 枚举常用场景小结：https://blog.csdn.net/cndmss/article/details/51441617
  * https://www.runoob.com/manual/jdk1.6/java/lang/Enum.html
- * https://blog.csdn.net/cndmss/article/details/51441617
  *
  * @author ljh
  * created on 2020/11/2 19:39

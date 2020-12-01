@@ -1,4 +1,4 @@
-package knowledge.泛型;
+package knowledge.types.generic;
 
 import l.demo.Demo;
 import org.junit.Test;
@@ -25,7 +25,7 @@ import java.util.List;
  * @author ljh
  * created on 2019/9/9 00:51
  */
-public class Generics<T> extends Demo {
+public class Generic<T> extends Demo {
 
     private T t;
 
@@ -44,8 +44,8 @@ public class Generics<T> extends Demo {
      */
     @Test
     public void genericsClass() {
-        Generics<Integer> iBox = new Generics<>();
-        Generics<Double> dBox = new Generics<>();
+        Generic<Integer> iBox = new Generic<>();
+        Generic<Double> dBox = new Generic<>();
 
         iBox.add(1);
         dBox.add(1.1);

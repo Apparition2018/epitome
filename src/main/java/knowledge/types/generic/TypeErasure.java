@@ -1,4 +1,4 @@
-package knowledge.泛型;
+package knowledge.types.generic;
 
 import l.demo.Demo;
 

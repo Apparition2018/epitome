@@ -1,4 +1,4 @@
-package knowledge.api.lang.wrapper;
+package knowledge.types.wrapper;
 
 import org.junit.Test;
 

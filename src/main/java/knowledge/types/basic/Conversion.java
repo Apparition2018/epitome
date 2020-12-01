@@ -1,4 +1,4 @@
-package knowledge.基本数据类型;
+package knowledge.types.basic;
 
 import org.junit.Test;
 
