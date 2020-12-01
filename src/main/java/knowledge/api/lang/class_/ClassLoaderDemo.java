@@ -42,11 +42,13 @@ public class ClassLoaderDemo extends Demo {
     }
 
     /**
+     * URL	                getResource(String name)                查找具有给定名称的资源
      * InputStream	        getResourceAsStream(String name)        返回读取指定资源的输入流
      * static InputStream   getSystemResourceAsStream(String name)  从用来加载类的搜索路径打开具有指定名称的资源，以读取该资源
      */
     @Test
-    public void getSystemResourceAsStream() {
+    public void getResource() {
+        p(ClassLoaderDemo.class.getResource(""));
         InputStream is1 = ClassLoaderDemo.class.getResourceAsStream(DEMO_FILE_PATH);
         InputStream is2 = ClassLoader.getSystemResourceAsStream(DEMO_FILE_PATH);
         p(Objects.equals(is1, is2));
