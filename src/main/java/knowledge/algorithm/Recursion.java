@@ -1,4 +1,4 @@
-package knowledge.算法;
+package knowledge.algorithm;
 
 import java.util.stream.IntStream;
 

@@ -1,4 +1,4 @@
-package knowledge.算法;
+package knowledge.algorithm;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package knowledge.算法.五大算法;
+package knowledge.algorithm.five;
 
 /**
  * Divide and Conquer

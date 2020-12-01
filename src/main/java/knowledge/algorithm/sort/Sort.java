@@ -1,4 +1,4 @@
-package knowledge.算法.排序;
+package knowledge.algorithm.sort;
 
 import l.demo.Demo;
 
@@ -191,7 +191,7 @@ public class Sort extends Demo {
          * https://www.cnblogs.com/guizimo/p/13454676.html#/cnblog/works/article/13454676
          */
         private static void heapSort(int[] arr) {
-            
+
         }
     }
 

@@ -1,4 +1,4 @@
-package knowledge.算法;
+package knowledge.algorithm;
 
 /**
  * 表示法
