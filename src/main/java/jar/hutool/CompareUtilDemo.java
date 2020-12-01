@@ -4,7 +4,7 @@ import cn.hutool.core.comparator.CompareUtil;
 import org.junit.Test;
 
 /**
- * CompareUtilDemo      比较工具
+ * CompareUtil      比较工具
  * https://hutool.cn/docs/#/core/%E6%AF%94%E8%BE%83%E5%99%A8/%E6%AF%94%E8%BE%83%E5%B7%A5%E5%85%B7-CompareUtil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/comparator/CompareUtil.html
  *

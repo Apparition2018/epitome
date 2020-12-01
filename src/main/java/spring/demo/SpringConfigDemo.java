@@ -8,7 +8,7 @@ import spring.bean.Bean;
 import spring.config.DemoConfig;
 
 /**
- * SpringConfigDemo
+ * spring @Configuration
  *
  * @author Arsenal
  * created on 2020/11/29 16:45

@@ -1088,12 +1088,9 @@ public class Suggestions extends Demo {
         // 10个窗口售票
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
-                while (true) {
+                do {
                     p(Thread.currentThread().getId() + "----" + tickets.remove(0));
-                    if (tickets.size() == 0) {
-                        break;
-                    }
-                }
+                } while (tickets.size() != 0);
             }).start();
         }
 

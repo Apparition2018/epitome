@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import static l.demo.Demo.p;
 
 /**
- * SpringJdbcDemo
+ * spring jdbc
  *
  * @author Arsenal
  * created on 2020/11/27 1:43
@@ -37,7 +37,7 @@ public class SpringJdbcDemo {
         DataSource dataSource = ac.getBean("dbcpDataSource", DataSource.class);
         p(dataSource.getConnection());
     }
-    
+
     @Test
     public void testSave() {
         Score score = new Score();
@@ -46,17 +46,17 @@ public class SpringJdbcDemo {
         score.setScore(100);
         scoreDao.save(score);
     }
-    
+
     @Test
     public void testFindById() {
         p(scoreDao.findById(9));
     }
-    
+
     @Test
     public void testFindAll() {
         p(scoreDao.findAll());
     }
-    
+
     @Test
     public void testDelete() {
         scoreDao.delete(9);

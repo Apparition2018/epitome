@@ -26,7 +26,7 @@ public class BoundedPriorityQueueDemo {
         BoundedPriorityQueue<Integer> queue = new BoundedPriorityQueue<>(5, Comparator.naturalOrder());
 
         int[] user = new int[]{5, 7, 9, 2, 3, 8};
-        IntStream.rangeClosed(1, user.length).forEach(u -> queue.offer(u));
+        IntStream.rangeClosed(1, user.length).forEach(queue::offer);
 
         List<Integer> list = queue.toList();
         System.out.println(list);
