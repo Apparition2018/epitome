@@ -1,7 +1,7 @@
-package knowledge.建议;
+package knowledge.suggestions;
 
-import knowledge.建议.Family.Daughter;
-import knowledge.建议.Family.Son;
+import knowledge.suggestions.Family.Daughter;
+import knowledge.suggestions.Family.Son;
 import l.demo.Demo;
 import l.demo.Person;
 import lombok.AllArgsConstructor;
@@ -784,7 +784,7 @@ public class Suggestions extends Demo {
     @Test
     public void test056() {
         StopWatch watch = StopWatch.createStarted();
-        
+
         // +
         String str = "";
         for (int i = 0; i < 10000; i++) {

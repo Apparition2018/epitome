@@ -1,6 +1,4 @@
-package knowledge.建议;
-
-import l.demo.Demo;
+package knowledge.suggestions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

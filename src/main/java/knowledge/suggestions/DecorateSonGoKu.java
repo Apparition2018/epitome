@@ -1,4 +1,4 @@
-package knowledge.建议;
+package knowledge.suggestions;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Modifier;

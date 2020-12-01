@@ -1,4 +1,4 @@
-package knowledge.建议;
+package knowledge.suggestions;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;

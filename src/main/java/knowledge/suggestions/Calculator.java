@@ -1,4 +1,4 @@
-package knowledge.建议;
+package knowledge.suggestions;
 
 /**
  * 建议40：匿名类的构造函数

@@ -1,4 +1,4 @@
-package knowledge.建议;
+package knowledge.suggestions;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
