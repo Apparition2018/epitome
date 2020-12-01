@@ -109,7 +109,7 @@ public class ClassDemo {
      * URL	        getResource(String name)            查找具有给定名称的资源
      * InputStream	getResourceAsStream(String name)    查找具有给定名称的资源
      * <p>
-     * Class.getResource 和ClassLoader.getResource 的区别：
+     * Class.getResource 和 ClassLoader.getResource 的区别：
      * https://blog.csdn.net/zhangshk_/article/details/82704010
      * https://www.cnblogs.com/doit8791/p/5851026.html
      */
