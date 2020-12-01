@@ -26,6 +26,14 @@
 2. [腾讯软件源](https://mirrors.cloud.tencent.com)
 3. [网易开源镜像站](https://mirrors.163.com/)
 ---
+## Redis 下载，启动，可视化工具
+1. [Releases/redis](https://github.com/microsoftarchive/redis/releases)
+2. 点击最新版本
+3. 点击 Redis-x64-x.y.z.zip 下载
+4. 启动：
+    1. 双击 Redis 目录下 redis-server.exe
+    2. 启动 cmd cd 到 Redis 目录，输入命令 redis-server.exe redis.window.conf
+5. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
 ## 服务
 1. WIN+R 输入 services.msc
 ---
