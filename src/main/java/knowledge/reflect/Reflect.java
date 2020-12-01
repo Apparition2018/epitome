@@ -2,10 +2,9 @@ package knowledge.reflect;
 
 import l.demo.Animal.Cat;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
+
+import static l.demo.Demo.p;
 
 /**
  * 反射
@@ -88,15 +87,15 @@ public class Reflect {
              *  STRICT: 2048
              */
             if (Modifier.isPublic(field.getModifiers()))
-                System.out.println("fieldName = " + field.getName());
+                p("fieldName = " + field.getName());
         }
 
         // 动态查找一个属性
-        Field field = clazz.getDeclaredField("age");
+        Field field = clazz.getDeclaredField("foot");
         // 改变访问限制
         field.setAccessible(true);
         field.set(cat, 3);
-        System.out.println("cat.getA() = " + cat.getAge() + "\n");
+        p("cat.getFoot() = " + cat.getAge() + "\n");
 
         //********** 4.Method **********//
         Method[] methods;
@@ -106,14 +105,19 @@ public class Reflect {
         methods = clazz.getMethods();
         for (Method method : methods) {
             method.setAccessible(true);
-            System.out.println("methodName = " + method.getName());
+            p("methodName = " + method.getName());
         }
 
         // 动态查找一个方法
-        Method method = clazz.getDeclaredMethod("setAge", int.class);
+        Method method = clazz.getDeclaredMethod("setFoot", int.class);
         // 动态调用方法
         method.invoke(cat, 3);
-        System.out.println("cat.getA() = " + cat.getAge());
+        p("cat.getFoot() = " + cat.getAge());
+
+        // 遍历方法的参数
+        for (Parameter parameter : method.getParameters()) {
+            p(parameter.getName());
+        }
 
     }
 
