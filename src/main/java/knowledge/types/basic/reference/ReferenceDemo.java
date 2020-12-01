@@ -1,4 +1,4 @@
-package knowledge.引用;
+package knowledge.types.basic.reference;
 
 import l.demo.Demo;
 import l.demo.Person;
@@ -36,10 +36,10 @@ public class ReferenceDemo extends Demo {
          */
         public static void main(String[] args) {
             SoftCache<OOMClass> softCache = new SoftCache<>();
-            
+
             IntStream.rangeClosed(1, 40).forEach(i -> softCache.add(new OOMClass("OOM Obj-" + i)));
             p(softCache.size());
-            
+
             IntStream.rangeClosed(1, softCache.size()).forEach(i -> {
                 OOMClass obj = softCache.get(i);
                 p(obj == null ? "null" : obj.name);

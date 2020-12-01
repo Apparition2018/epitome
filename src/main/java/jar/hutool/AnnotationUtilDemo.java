@@ -1,8 +1,8 @@
 package jar.hutool;
 
 import cn.hutool.core.annotation.AnnotationUtil;
-import knowledge.注解.CustomAnnotation.Apple;
-import knowledge.注解.CustomAnnotation.Description;
+import knowledge.annotation.CustomAnnotation.Apple;
+import knowledge.annotation.CustomAnnotation.Description;
 import org.junit.Test;
 
 import static l.demo.Demo.p;

@@ -1,4 +1,4 @@
-package knowledge.注解;
+package knowledge.annotation;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package knowledge.引用;
+package knowledge.types.basic.reference;
 
 import java.util.Collections;
 import java.util.List;

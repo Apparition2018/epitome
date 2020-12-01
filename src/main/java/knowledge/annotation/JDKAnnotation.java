@@ -1,4 +1,4 @@
-package knowledge.注解;
+package knowledge.annotation;
 
 import l.demo.Animal.Chicken;
 import l.demo.Demo;
