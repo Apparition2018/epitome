@@ -1,4 +1,4 @@
-package knowledge.异常和错误;
+package knowledge.throwable;
 
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class ExceptionDemo {
      * BeanCreationException: error creating bean with name 'xxx' ...... cause: Failed to bind to: /0.0.0.0:20880
      * 20880端口被占用
      * https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html
-     * 
+     *
      * BindException
      * BindException: Address already in use: bind
      * 端口被占用

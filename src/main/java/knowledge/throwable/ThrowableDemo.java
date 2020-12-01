@@ -1,4 +1,4 @@
-package knowledge.异常和错误;
+package knowledge.throwable;
 
 import org.junit.Test;
 

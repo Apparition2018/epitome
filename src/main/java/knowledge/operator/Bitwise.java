@@ -1,4 +1,4 @@
-package knowledge.运算符;
+package knowledge.operator;
 
 import org.junit.Test;
 
@@ -59,7 +59,7 @@ public class Bitwise {
      */
     @Test
     public void testReplaceMod() {
-        p(103 % 4);     // 3     
+        p(103 % 4);     // 3
         p(103 & 3);     // 3
 
         p(103 % 64);    // 39

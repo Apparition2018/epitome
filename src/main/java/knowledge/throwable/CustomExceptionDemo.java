@@ -1,6 +1,4 @@
-package knowledge.异常和错误;
-
-import l.demo.Demo;
+package knowledge.throwable;
 
 /**
  * CustomException
