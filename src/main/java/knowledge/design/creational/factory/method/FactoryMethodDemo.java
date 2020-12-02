@@ -16,7 +16,7 @@ import org.junit.Test;
  * 工厂模式 | 菜鸟教程：https://www.runoob.com/design-pattern/factory-pattern.html
  * 工厂模式-场景以及优缺点：https://www.cnblogs.com/aspirant/p/8980573.html
  * 简单工厂模式、工厂方法模式和抽象工厂模式有何区别？ - 知乎：https://www.zhihu.com/question/27125796
- * https://www.imooc.com/learn/261
+ * 模式的秘密——工厂模式：https://www.imooc.com/learn/261
  *
  * @author ljh
  * created on 2019/11/1 9:36
