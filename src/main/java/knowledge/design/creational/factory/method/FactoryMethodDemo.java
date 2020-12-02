@@ -1,11 +1,12 @@
 package knowledge.design.creational.factory.method;
 
 import org.junit.Test;
+import org.springframework.stereotype.Component;
 
 /**
  * 工厂模式：定义一个创建对象的接口，让子类来决定哪些类需要被实例化，使一个类的实例化推迟到子类。工厂模式是抽象工厂的一种常见情况。
  * 应用场合：计划不同条件下创建不同实例；一个对象的创建过程比较复杂；对象的创建和使用解耦；
- * 使用场景：1.数据存储
+ * 使用场景：Spring IOC
  * 关键代码：抽象产品
  * 优点：
  * 1.只要知道名称就可以创建一个对象
@@ -24,6 +25,17 @@ import org.junit.Test;
 public class FactoryMethodDemo {
 
     /**
+     * 简单/静态工厂模式
+     * 工厂方法模式的简化
+     * 增加一种动物，需要修改原来有工厂类的代码，不符合开闭原则
+     */
+    @Test
+    public void testSimpleFactory() {
+        Animal a = AnimalSimpleFactory.createAnimal("dog");
+        if (null != a) a.eat();
+    }
+
+    /**
      * 工厂方法模式
      * 增加一种动物，只需增加一种动物的工厂类
      */
@@ -35,20 +47,9 @@ public class FactoryMethodDemo {
     }
 
     /**
-     * 简单/静态工厂模式
-     * 工厂方法模式的简化
-     * 增加一种动物，需要修改原来有工厂类的代码，不符合开闭原则
-     */
-    @Test
-    public void testSimpleFactory() {
-        Animal a = AnimalFactory2.createAnimal("dog");
-        if (null != a) a.eat();
-    }
-
-    /**
      * 简单/静态工厂
      */
-    public static class AnimalFactory2 {
+    private static class AnimalSimpleFactory {
         public static Dog createDog() {
             return new Dog();
         }
@@ -57,10 +58,10 @@ public class FactoryMethodDemo {
             return new Cat();
         }
 
-        public static Animal createAnimal(String type) {
-            if ("dog".equals(type)) {
+        public static Animal createAnimal(String name) {
+            if ("dog".equals(name)) {
                 return new Dog();
-            } else if ("cat".equals(type)) {
+            } else if ("cat".equals(name)) {
                 return new Cat();
             } else {
                 return null;

@@ -28,7 +28,7 @@
     4. Virtual Space
         4.1 Allow placement of caret after end of line 取消勾选
     5. Other
-        5.1 Strip trailing spaces on Save: All
+        5.1 Strip trailing spaces on Save: Modified Lines
         5.2 Always keep trailing spaces on caret line 取消勾选
 ---
 ## Terminal

@@ -11,7 +11,11 @@ import java.util.List;
  * 抽象观察者角色 Observer
  * 具体观察者角色 ConcreteObserver
  * <p>
+ * https://www.runoob.com/design-pattern/observer-pattern.html
  * http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html
+ * https://zhuanlan.zhihu.com/p/85975439
+ * https://zhuanlan.zhihu.com/p/51357583
+ * https://www.zhihu.com/question/23486749
  *
  * @author ljh
  * created on 2020/9/26 2:51
@@ -40,8 +44,6 @@ public class ObserverDemo {
 
         /**
          * 注册观察者对象
-         *
-         * @param observer 观察者对象
          */
         public void attach(Observer observer) {
             list.add(observer);
@@ -50,8 +52,6 @@ public class ObserverDemo {
 
         /**
          * 删除观察者对象
-         *
-         * @param observer 观察者对象
          */
         public void detach(Observer observer) {
             list.remove(observer);
@@ -92,8 +92,6 @@ public class ObserverDemo {
     interface Observer {
         /**
          * 更新接口
-         *
-         * @param state 更新的状态
          */
         void update(String state);
     }
@@ -102,8 +100,9 @@ public class ObserverDemo {
      * 具体观察者角色类
      */
     private static class ConcreteObserver implements Observer {
-
-        // 观察者的状态
+        /**
+         * 观察者的状态
+         */
         private String observerState;
 
         @Override
