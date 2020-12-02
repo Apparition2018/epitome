@@ -178,6 +178,8 @@ passwd      password                            更改密码
 eval        evaluate                            读取一连串的参数，然后再依参数本身的特性来执行
 rpm         redhat package manager              红帽子打包管理器
     -a                                          查询所有套件
+    -e                                          删除指定套件
+    --nodeps                                    不验证套件档的相互关联性
     -i                                          安装指定的套件档
     -h                                          套件安装时列出标记
     -v                                          显示指令执行过程
