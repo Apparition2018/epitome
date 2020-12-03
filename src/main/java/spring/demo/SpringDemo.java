@@ -23,12 +23,12 @@ import static l.demo.Demo.p;
  */
 public class SpringDemo {
 
-    ClassPathXmlApplicationContext ac;
-    ClassPathXmlApplicationContext annAc;
+    ClassPathXmlApplicationContext applicationContext;
+    ClassPathXmlApplicationContext annAppliactionContext;
 
     @Before
     public void init() {
-        ac = new ClassPathXmlApplicationContext("demo/spring/spring-bean.xml");
+        applicationContext = new ClassPathXmlApplicationContext("demo/spring/spring-bean.xml");
     }
 
     /**
@@ -36,7 +36,7 @@ public class SpringDemo {
      */
     @Test
     public void testLifecycle() {
-        Bean bean = ac.getBean("bean", Bean.class);
+        Bean bean = applicationContext.getBean("bean", Bean.class);
         bean.service();
     }
 
@@ -45,7 +45,7 @@ public class SpringDemo {
      */
     @Test
     public void testLazy() {
-        OtherBean otherBean = ac.getBean("otherBean", OtherBean.class);
+        OtherBean otherBean = applicationContext.getBean("otherBean", OtherBean.class);
         otherBean.service();
         // Bean.construct()
         // Bean.init()
@@ -57,13 +57,13 @@ public class SpringDemo {
     @Test
     public void getBean() {
         // 无参构造创建
-        GregorianCalendar gregorianCalendar = ac.getBean("gregorianCalendar", GregorianCalendar.class);
+        GregorianCalendar gregorianCalendar = applicationContext.getBean("gregorianCalendar", GregorianCalendar.class);
 
         // 工厂静态方法
-        Calendar calendar = ac.getBean("calendar", Calendar.class);
+        Calendar calendar = applicationContext.getBean("calendar", Calendar.class);
 
         // 工厂实例方法
-        Date date = ac.getBean("time", Date.class);
+        Date date = applicationContext.getBean("time", Date.class);
     }
 
     /**
@@ -72,15 +72,15 @@ public class SpringDemo {
     @Test
     public void testDependencyInjection() {
         // set 注入
-        Student student = ac.getBean("student", Student.class);
+        Student student = applicationContext.getBean("student", Student.class);
         p(student.getBirth()); // 2020-11-24 01:53:36
 
         // 构造器注入
-        Student student2 = ac.getBean("student2", Student.class);
+        Student student2 = applicationContext.getBean("student2", Student.class);
         p(student2);    // Student{id=1, name='张三'}
 
         // p 命名空间注入
-        Student student3 = ac.getBean("student3", Student.class);
+        Student student3 = applicationContext.getBean("student3", Student.class);
         p(student3);    // Student{id=1, name='张三'}
     }
 
@@ -89,14 +89,14 @@ public class SpringDemo {
      */
     @Test
     public void testInjectValue() {
-        Person person = ac.getBean("person", Person.class);
+        Person person = applicationContext.getBean("person", Person.class);
         p(person);  // Person{otherInfo=[父亲, 医生]}
 
-        Bean bean = ac.getBean("bean", Bean.class);
+        Bean bean = applicationContext.getBean("bean", Bean.class);
         p(bean.properties.getProperty("jdbc.driver")); // com.mysql.cj.jdbc.Driver
 
         // spring el expression
-        OtherBean otherBean = ac.getBean("otherBean", OtherBean.class);
+        OtherBean otherBean = applicationContext.getBean("otherBean", OtherBean.class);
         p(otherBean.getScore()); // 100
     }
 
@@ -105,8 +105,8 @@ public class SpringDemo {
      */
     @Test
     public void testScope() {
-        p(ac.getBean("student") == ac.getBean("student"));  // false
-        p(ac.getBean("person") == ac.getBean("person"));    // true
+        p(applicationContext.getBean("student") == applicationContext.getBean("student"));  // false
+        p(applicationContext.getBean("person") == applicationContext.getBean("person"));    // true
     }
 
     /**
@@ -114,11 +114,11 @@ public class SpringDemo {
      */
     @Test
     public void testAnn() {
-        annAc = new ClassPathXmlApplicationContext("demo/spring/spring-ann.xml");
+        annAppliactionContext = new ClassPathXmlApplicationContext("demo/spring/spring-ann.xml");
 
         // @PostConstruct @PreDestroy @Lazy
-        OtherBean otherBean = annAc.getBean("otherBean", OtherBean.class);
-        OtherBean otherBean2 = annAc.getBean("otherBean", OtherBean.class);
+        OtherBean otherBean = annAppliactionContext.getBean("otherBean", OtherBean.class);
+        OtherBean otherBean2 = annAppliactionContext.getBean("otherBean", OtherBean.class);
 
         // @scope
         p(otherBean == otherBean2); // false
@@ -126,11 +126,11 @@ public class SpringDemo {
         // @Autowired @Qualifier @Value
         p(otherBean); // OtherBean(bean=Bean(score=100, properties=null), str=[x,y,z.split(',')], score=100, password=root)
 
-        annAc.close();
+        annAppliactionContext.close();
     }
 
     @After
     public void destroy() {
-        ac.close();
+        applicationContext.close();
     }
 }

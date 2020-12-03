@@ -14,12 +14,12 @@ import spring.config.DemoConfig;
  * created on 2020/11/29 16:45
  */
 public class SpringConfigDemo {
-    AnnotationConfigApplicationContext ac;
+    AnnotationConfigApplicationContext applicationContext;
 
     @Before
     public void init() {
-        ac = new AnnotationConfigApplicationContext();
-        ac.register(DemoConfig.class);
+        applicationContext = new AnnotationConfigApplicationContext();
+        applicationContext.register(DemoConfig.class);
     }
 
     /**
@@ -27,12 +27,12 @@ public class SpringConfigDemo {
      */
     @Test
     public void testLifecycle() {
-        Bean bean = ac.getBean("bean", Bean.class);
+        Bean bean = applicationContext.getBean("bean", Bean.class);
         bean.service();
     }
 
     @After
     public void destroy() {
-        ac.close();
+        applicationContext.close();
     }
 }

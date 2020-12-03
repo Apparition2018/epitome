@@ -41,7 +41,7 @@ Spring SpringMVC Mybatis
 >4. ClassPathXmlApplicationContext：是 ApplicationContext 的子孙类，以类加载路径下的 XML 配置文件创建
 >>#### 启动容器实例：
 >>```
->>      ApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring-service.xml", "spring/spring-aop.xml");
+>>      ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/spring-service.xml", "spring/spring-aop.xml");
 >>```
 >### Spring 实例化 Bean
 >1. 无参构造器

@@ -20,23 +20,23 @@ import static l.demo.Demo.p;
  */
 public class AOP {
 
-    ClassPathXmlApplicationContext ac;
+    ClassPathXmlApplicationContext applicationContext;
 
     @org.junit.Before
     public void init() {
-        ac = new ClassPathXmlApplicationContext("spring/spring-service.xml", "spring/spring-aop.xml");
+        applicationContext = new ClassPathXmlApplicationContext("spring/spring-service.xml", "spring/spring-aop.xml");
     }
 
     @Test
     public void aop() {
-        People people = ac.getBean("man", People.class);
+        People people = applicationContext.getBean("man", People.class);
         people.work();
         people.sleep();
     }
 
     @org.junit.After
     public void destroy() {
-        ac.close();
+        applicationContext.close();
     }
 
 

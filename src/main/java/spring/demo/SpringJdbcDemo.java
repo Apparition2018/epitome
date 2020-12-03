@@ -20,13 +20,13 @@ import static l.demo.Demo.p;
  */
 public class SpringJdbcDemo {
 
-    ClassPathXmlApplicationContext ac;
+    ClassPathXmlApplicationContext applicationContext;
     ScoreDao scoreDao;
 
     @Before
     public void init() {
-        ac = new ClassPathXmlApplicationContext("spring/spring-dao.xml", " spring/spring-service.xml");
-        scoreDao = ac.getBean("scoreDao", ScoreDao.class);
+        applicationContext = new ClassPathXmlApplicationContext("spring/spring-dao.xml", " spring/spring-service.xml");
+        scoreDao = applicationContext.getBean("scoreDao", ScoreDao.class);
     }
 
     /**
@@ -34,7 +34,7 @@ public class SpringJdbcDemo {
      */
     @Test
     public void testConnection() throws SQLException {
-        DataSource dataSource = ac.getBean("dbcpDataSource", DataSource.class);
+        DataSource dataSource = applicationContext.getBean("dbcpDataSource", DataSource.class);
         p(dataSource.getConnection());
     }
 
