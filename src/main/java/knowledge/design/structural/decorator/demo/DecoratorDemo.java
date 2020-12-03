@@ -20,59 +20,69 @@ public class DecoratorDemo {
 
         fish.move();
     }
-}
 
-// 抽象构建角色
-interface TheGreatestSage { // 大圣
-    void move();
-}
-
-// 具体构建角色
-class Monkey implements TheGreatestSage { // 大圣本尊
-
-    @Override
-    public void move() {
-        System.out.println("Monkey Move");
-    }
-}
-
-// 抽象装饰角色
-class Change implements TheGreatestSage {
-
-    private TheGreatestSage sage;
-
-    public Change(TheGreatestSage sage) {
-        this.sage = sage;
+    /**
+     * 抽象构建角色
+     */
+    interface TheGreatestSage {
+        void move();
     }
 
-    @Override
-    public void move() {
-        sage.move();
-    }
-}
+    /**
+     * 具体构建角色
+     */
+    private static class Monkey implements TheGreatestSage {
 
-// 具体装饰角色
-class Fish extends Change { // 鱼儿
-
-    public Fish(TheGreatestSage sage) {
-        super(sage);
+        @Override
+        public void move() {
+            System.out.println("Monkey Move");
+        }
     }
 
-    @Override
-    public void move() {
-        System.out.println("Fish Move");
+    /**
+     * 抽象装饰角色
+     */
+    private static class Change implements TheGreatestSage {
+
+        private TheGreatestSage sage;
+
+        public Change(TheGreatestSage sage) {
+            this.sage = sage;
+        }
+
+        @Override
+        public void move() {
+            sage.move();
+        }
     }
-}
 
-// 具体装饰角色
-class Bird extends Change { // 鸟儿
+    /**
+     * 具体装饰角色
+     */
+    private static class Fish extends Change {
 
-    public Bird(TheGreatestSage sage) {
-        super(sage);
+        public Fish(TheGreatestSage sage) {
+            super(sage);
+        }
+
+        @Override
+        public void move() {
+            System.out.println("Fish Move");
+        }
     }
 
-    @Override
-    public void move() {
-        System.out.println("Bird Move");
+    /**
+     * 具体装饰角色
+     */
+    private static class Bird extends Change {
+
+        public Bird(TheGreatestSage sage) {
+            super(sage);
+        }
+
+        @Override
+        public void move() {
+            System.out.println("Bird Move");
+        }
     }
 }

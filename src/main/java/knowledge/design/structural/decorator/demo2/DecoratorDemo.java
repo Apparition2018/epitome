@@ -20,48 +20,48 @@ public class DecoratorDemo {
         ticket = new FootDecorator((new HeadDecorator(new Decorator(null))));
         ticket.printInvoice();
     }
-}
 
-class Invoice {
-    public void printInvoice() {
-        System.out.println("This is the content of the invoice");
-    }
-}
-
-class Decorator extends Invoice {
-    protected Invoice ticket;
-
-    Decorator(Invoice t) {
-        ticket = t;
+    private static class Invoice {
+        public void printInvoice() {
+            System.out.println("This is the content of the invoice");
+        }
     }
 
-    public void printInvoice() {
-        if (null != ticket) {
+    private static class Decorator extends Invoice {
+        protected Invoice ticket;
+
+        Decorator(Invoice t) {
+            ticket = t;
+        }
+
+        public void printInvoice() {
+            if (null != ticket) {
+                ticket.printInvoice();
+            }
+        }
+    }
+
+    private static class HeadDecorator extends Decorator {
+
+        HeadDecorator(Invoice t) {
+            super(t);
+        }
+
+        public void printInvoice() {
+            System.out.println("This is the header of the invoice!");
             ticket.printInvoice();
         }
     }
-}
 
-class HeadDecorator extends Decorator {
+    private static class FootDecorator extends Decorator {
 
-    HeadDecorator(Invoice t) {
-        super(t);
-    }
+        FootDecorator(Invoice t) {
+            super(t);
+        }
 
-    public void printInvoice() {
-        System.out.println("This is the header of the invoice!");
-        ticket.printInvoice();
-    }
-}
-
-class FootDecorator extends Decorator {
-
-    FootDecorator(Invoice t) {
-        super(t);
-    }
-
-    public void printInvoice() {
-        ticket.printInvoice();
-        System.out.println("This is the footnote of the invoice!");
+        public void printInvoice() {
+            ticket.printInvoice();
+            System.out.println("This is the footnote of the invoice!");
+        }
     }
 }
