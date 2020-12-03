@@ -17,6 +17,7 @@ package knowledge.design.structural.decorator.demo;
  * <p>
  * 《JAVA与模式》之装饰模式：http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html
  * 装饰器模式 | 菜鸟教程：https://www.runoob.com/design-pattern/decorator-pattern.html
+ * https://blog.csdn.net/lmj623565791/article/details/24269409
  *
  * @author Arsenal
  * created on 2020/9/26 2:51
