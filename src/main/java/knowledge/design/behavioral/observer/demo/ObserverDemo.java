@@ -57,7 +57,6 @@ public class ObserverDemo {
          * 抽象主题角色类
          */
         private static abstract class Subject {
-
             /**
              * 用来保存注册的观察者对象
              */
@@ -168,7 +167,6 @@ public class ObserverDemo {
         }
 
         public static class Watcher implements java.util.Observer {
-
             public Watcher(Observable o) {
                 o.addObserver(this);
             }
