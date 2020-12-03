@@ -44,7 +44,6 @@ public class ArithmeticUtilsDemo {
         // 如果是 2 的幂，则返回 true
         p(ArithmeticUtils.isPowerOfTwo(1024)); // true
 
-
     }
 
 }

@@ -127,5 +127,4 @@ public class BooleanUtilsDemo {
         p(BooleanUtils.toStringTrueFalse(true));        // true
     }
 
-
 }

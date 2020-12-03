@@ -26,7 +26,6 @@ public class AnnotationUtilDemo {
         p(AnnotationUtil.getAnnotations(Apple.class.getDeclaredField("appleProvider"), true));
         // [@knowledge.注解.CustomAnnotation$FruitProvider(name=陕西红富士集团, address=陕西省西安市延安路89号红富士大厦, id=1)]
 
-
         Description annotation;
         // static boolean	                hasAnnotation(AnnotatedElement, Class<? extends Annotation>)
         // 是否有指定注解
@@ -51,7 +50,6 @@ public class AnnotationUtilDemo {
             // 获取注解的 @Target 的值
             p(AnnotationUtil.getTargetType(annotation.getClass()));         // [TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE, ANNOTATION_TYPE, PACKAGE]
         }
-
-
     }
+
 }

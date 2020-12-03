@@ -106,5 +106,4 @@ public class StringBufferBuilderDemo {
         p(sb); // ABC
     }
 
-
 }

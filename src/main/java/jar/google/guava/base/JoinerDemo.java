@@ -86,5 +86,4 @@ public class JoinerDemo extends Demo {
         p(collect); // A-B-C
     }
 
-
 }

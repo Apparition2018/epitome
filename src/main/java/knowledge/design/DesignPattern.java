@@ -66,7 +66,6 @@ public class DesignPattern {
             public void washing() {
             }
         }
-
     }
 
     /**
@@ -133,7 +132,6 @@ public class DesignPattern {
             public void send(Customer c) {
             }
         }
-
     }
 
     /**
@@ -242,7 +240,6 @@ public class DesignPattern {
                 managed.beManaged();
             }
         }
-
     }
 
     /**
@@ -281,4 +278,5 @@ public class DesignPattern {
             private String name;
         }
     }
+
 }

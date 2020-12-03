@@ -127,5 +127,4 @@ public class SystemUtilDemo {
         SystemUtil.getGarbageCollectorMXBeans();
     }
 
-
 }

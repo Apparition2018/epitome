@@ -109,7 +109,6 @@ public class ReferenceDemo extends Demo {
         str = weakReference.get();
     }
 
-
     /**
      * 虚引用
      * 你不可不知的 Java 引用类型之——虚引用：https://www.cnblogs.com/mfrank/p/9837070.html
@@ -161,6 +160,5 @@ public class ReferenceDemo extends Demo {
         }
 
     }
-
 
 }
