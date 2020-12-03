@@ -10,23 +10,27 @@ import java.util.Observable;
  * 2.拉模型：主题对象在通知观察者的时候，只传递少量信息。如果观察者需要更具体的信息，由观察者主动到主题对象中获取，相当于是观察者从主题对象中拉数据。
  * -    一般这种模型的实现中，会把主题对象自身传递给观察者，这样在观察者需要获取数据的时候，就可以通过这个引用来获取了。
  * 应用场合：主题的状态发生改变，所有观察者对象都将得到通知
- * 使用场景：Spring 事件驱动模型
+ * 使用场景：
+ * 1.事件多级触发场景
+ * 2.跨系统的消息交换场景，如消息队列、事件总线的处理机制
  * 关键代码：主题有一个存放观察者的 List
- * 优点：主题和观察者之间是松耦合的
+ * 优点：主题和观察者之间实现了松耦合 (loosely coupled)，耦合的双方都依赖于抽象，从而使得各自的变换都不会影响到另一边的变换
  * 缺点：
  * 1.如果过观察者很多，通知所有观察者将花费很多时间
  * 2.如果主题和观察者之间有循环依赖，会触发循环调用，导致系统崩溃
- * <p>
+ * 角色:
  * 抽象主题角色 Subject
  * 具体主题角色 ConcreteSubject
  * 抽象观察者角色 Observer
  * 具体观察者角色 ConcreteObserver
  * <p>
+ * 观察者模式 & 发布订阅模式 的区别：
+ * 观察者模式：主题，观察者；松耦合的关系
+ * 发布订阅模式：发布者，订阅者，经纪人 Broker；不存在耦合
+ * <p>
  * 《JAVA与模式》之观察者模式：http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html
  * 观察者模式 | 菜鸟教程：https://www.runoob.com/design-pattern/observer-pattern.html
- * https://zhuanlan.zhihu.com/p/85975439
- * https://zhuanlan.zhihu.com/p/51357583
- * https://www.zhihu.com/question/23486749
+ * 观察者模式 vs 发布订阅模式：https://www.zhihu.com/question/23486749
  *
  * @author ljh
  * created on 2020/9/26 2:51

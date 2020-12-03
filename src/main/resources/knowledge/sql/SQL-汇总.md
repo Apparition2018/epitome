@@ -21,6 +21,7 @@
 >1. [使用 mysql 应该注意的细节](https://www.cnblogs.com/zhangyiqinga/p/9753484.html)
 >2. [delimiter 的用法和作用](https://blog.csdn.net/langkeziju/article/details/14446671)
 >3. [MySQL 中实现 rank 排名查询](https://blog.csdn.net/justry_deng/article/details/80597916)
+>4. [Mysql中key 、primary key 、unique key 与index区别](https://www.cnblogs.com/zjfjava/p/6922494.html)
 ---
 ## 数据库名词
 - 关系：表

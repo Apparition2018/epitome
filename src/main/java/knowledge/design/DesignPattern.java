@@ -20,6 +20,7 @@ import lombok.Setter;
  * <p>
  * 哪些设计模式比较常用？ - 知乎:https://www.zhihu.com/question/39972591
  * -    论面向组合子程序设计方法 之二 失乐园：http://www.blogjava.net/ajoo/archive/2015/04/03/27839.html
+ * java 23种设计模式 深入理解：https://www.cnblogs.com/foryang/p/5849402.html
  * 23种经典设计模式UML类图汇总：https://blog.csdn.net/u012426327/article/details/77417229
  * 设计模式的六大原则：https://blog.csdn.net/yucaixiang/article/details/90239817
  *
