@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * https://www.runoob.com/design-pattern/observer-pattern.html
+ * 多种观察者
  *
  * @author ljh
  * created on 2020/9/26 2:51

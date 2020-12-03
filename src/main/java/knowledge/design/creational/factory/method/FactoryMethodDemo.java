@@ -1,13 +1,12 @@
 package knowledge.design.creational.factory.method;
 
 import org.junit.Test;
-import org.springframework.stereotype.Component;
 
 /**
  * 工厂模式：定义一个创建对象的接口，让子类来决定哪些类需要被实例化，使一个类的实例化推迟到子类。工厂模式是抽象工厂的一种常见情况。
  * 应用场合：计划不同条件下创建不同实例；一个对象的创建过程比较复杂；对象的创建和使用解耦；
  * 使用场景：Spring IOC
- * 关键代码：抽象产品
+ * 关键代码：具体创建过程在子类执行
  * 优点：
  * 1.只要知道名称就可以创建一个对象
  * 2.扩展性高，想增加一个产品，只需扩展一个工厂类

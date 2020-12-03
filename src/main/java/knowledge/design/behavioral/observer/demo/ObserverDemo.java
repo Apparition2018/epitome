@@ -8,15 +8,22 @@ import java.util.Observable;
  * 观察者模式：定义了对象间的一种一对多依赖关系，使得每当一个对象改变状态，则所有依赖于它的对象都会得到通知并被自动更新
  * 1.推模型：主题对象向观察者推送主题的详细信息，不管观察者是否需要，推送的信息通常是主题对象的全部或部分数据。
  * 2.拉模型：主题对象在通知观察者的时候，只传递少量信息。如果观察者需要更具体的信息，由观察者主动到主题对象中获取，相当于是观察者从主题对象中拉数据。
- * -    一般这种模型的实现中，会把主题对象自身通过 update(this) 方法传递给观察者，这样在观察者需要获取数据的时候，就可以通过这个引用来获取了。
- * Java 提供了一个接口 Observer 和 一个类 Observable 对观察者模式的支持
+ * -    一般这种模型的实现中，会把主题对象自身传递给观察者，这样在观察者需要获取数据的时候，就可以通过这个引用来获取了。
+ * 应用场合：主题的状态发生改变，所有观察者对象都将得到通知
+ * 使用场景：Spring 事件驱动模型
+ * 关键代码：主题有一个存放观察者的 List
+ * 优点：主题和观察者之间是松耦合的
+ * 缺点：
+ * 1.如果过观察者很多，通知所有观察者将花费很多时间
+ * 2.如果主题和观察者之间有循环依赖，会触发循环调用，导致系统崩溃
  * <p>
  * 抽象主题角色 Subject
  * 具体主题角色 ConcreteSubject
  * 抽象观察者角色 Observer
  * 具体观察者角色 ConcreteObserver
  * <p>
- * http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html
+ * 《JAVA与模式》之观察者模式：http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html
+ * 观察者模式 | 菜鸟教程：https://www.runoob.com/design-pattern/observer-pattern.html
  * https://zhuanlan.zhihu.com/p/85975439
  * https://zhuanlan.zhihu.com/p/51357583
  * https://www.zhihu.com/question/23486749
@@ -26,11 +33,11 @@ import java.util.Observable;
  */
 public class ObserverDemo {
 
+    /**
+     * 拉模型观察者模型
+     * http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html
+     */
     private static class PullObserver {
-
-        /**
-         * 拉模型观察者模型
-         */
         public static void main(String[] args) {
             // 创建主题对象
             ConcreteSubject subject = new ConcreteSubject();
@@ -126,9 +133,9 @@ public class ObserverDemo {
 
     /**
      * JAVA 对观察者模式的支持
+     * Java 提供了一个接口 Observer 和 一个类 Observable 对观察者模式的支持
      */
     private static class JdkObserver {
-
         public static void main(String[] args) {
             // 创建被观察者对象
             Watched watched = new Watched();
