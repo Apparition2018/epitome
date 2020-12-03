@@ -87,6 +87,19 @@
 |string (variable)|varchar / nvarchar|varchar / nvarchar|varchar2 / nvarchar2|
 |binary object|blob / text|binary (fixed up to 8k) <br> varbinary (<8k) <br> image (<2GB)|long / raw|
 ---
+## SQL 优化
+1. 避免全表扫描：对 无索引的表进行的查询 或 放弃索引进行的查询 称为全表扫描
+   1. 考虑在 where，order by，group by 涉及的列上建立索引
+   2. 避免使用 is null 和 is not null，建议建表时设置默认值
+   3. 避免使用 != 和 <>
+   4. 避免使用 or 来连接条件，可以使用 union 合并查询
+   5. 避免使用 in 和 not in，考虑是否能用 between，exists，not exists 代替
+   6. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"
+   7. 避免使用 参数，如 num=@num
+   8. 避免对索引进行表达式和函数操作，num/2=100 可以改为 num=100*2
+   9. 复合索引，必须使用该索引中的第一个字段作为条件
+2. 
+---
 ## 各层命名规约【参考】
 1. Service/DAO层方法命名规约
     1. 获取单个对象的方法用get做前缀。
