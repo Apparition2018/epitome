@@ -14,9 +14,6 @@
 2. [distinct 和 group by 的去重逻辑浅析](https://www.cnblogs.com/dancesir/p/7505730.html)
 3. [select 和 in 的区别](https://www.cnblogs.com/emilyyoucan/p/7833769.html)
 4. [varchar 与 nvarchar](https://www.cnblogs.com/Jashinck/p/8384388.html)
->### 优化
->1. [SQL语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html)
->2. [SQL语句性能优化](https://www.cnblogs.com/zhangtan/p/7440960.html)
 >### MySQL
 >1. [使用 mysql 应该注意的细节](https://www.cnblogs.com/zhangyiqinga/p/9753484.html)
 >2. [delimiter 的用法和作用](https://blog.csdn.net/langkeziju/article/details/14446671)
@@ -96,9 +93,19 @@
    5. 避免使用 in 和 not in，考虑是否能用 between，exists，not exists 代替
    6. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"
    7. 避免使用 参数，如 num=@num
-   8. 避免对索引进行表达式和函数操作，num/2=100 可以改为 num=100*2
-   9. 复合索引，必须使用该索引中的第一个字段作为条件
-2. 
+   8. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
+   9. 避免对索引进行表达式和函数操作，num/2=100 可以改为 num=100*2
+   10. 使用 limit
+   11. 复合索引，必须使用该索引中的第一个字段作为条件
+   - 索引可以提高 select 效率，但会降低 insert 和 update 效率，因为 insert 或 update 时有可能会重建索。一个表的索引数不要超过6个。
+2. 使用 explain 查看执行计划  
+2. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
+3. [hint](https://www.cnblogs.com/jpfss/p/11490765.html)
+>#### 参考
+>1. [SQL 性能优化梳理](https://zhuanlan.zhihu.com/p/85724757)
+>2. [SQL性能优化的最佳21条经验](https://zhuanlan.zhihu.com/p/21956773)
+>3. [SQL语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html)
+>4. [SQL语句性能优化](https://www.cnblogs.com/zhangtan/p/7440960.html)
 ---
 ## 各层命名规约【参考】
 1. Service/DAO层方法命名规约

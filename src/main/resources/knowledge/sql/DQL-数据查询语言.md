@@ -3,15 +3,17 @@
 ## 查询语句执行顺序
 ```
 1   FROM                右 → 左                 数据量较少的放后面
-2   WHERE               右 → 左                 将过滤多的放后面
-3   GROUP BY            左 → 右
-4   AGGREGATE                                   MAX, MIN, SUM, AVG, COUNT
-5   HAVING                                      消耗资源
-6   SELECT                                      避免使用 * 号
-7   DISTINCT
-8   UNION
-9   ORDER BY            左 → 右                 消耗资源
-10  LIMIT|TOP
+2   ON
+3   JOIN
+4   WHERE               右 → 左                 将过滤多的放后面
+5   GROUP BY            左 → 右
+6   AGGREGATE                                   MAX, MIN, SUM, AVG, COUNT
+7   HAVING                                      消耗资源
+8   SELECT                                      避免使用 * 号
+9   DISTINCT
+10  UNION
+11  ORDER BY            左 → 右                 消耗资源
+12  LIMIT|TOP
 ```
 ---
 ## 基础查询
