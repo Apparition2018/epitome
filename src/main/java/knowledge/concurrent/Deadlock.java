@@ -50,7 +50,6 @@ public class Deadlock {
                 synchronized (B) {
                     System.out.println("线程 t1 拿到 B 锁");
                 }
-
             }
         }, "t1").start();
 
@@ -65,7 +64,6 @@ public class Deadlock {
                 synchronized (A) {
                     System.out.println("线程 t2 拿到 A 锁");
                 }
-
             }
         }, "t2").start();
     }

@@ -111,7 +111,6 @@ public class DateTimeFormatterDemo {
         for (DateTimeFormatter formatter : formatters) {
             System.out.println(formatter.format(ldt));
         }
-
     }
 
 }

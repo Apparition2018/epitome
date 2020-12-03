@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 public class ResourceBundleDemo {
 
     @Test
-    public void test() {
+    public void testResourceBundle() {
 
         // static ResourceBundle	getBundle(String baseName[, ...])
         // 使用指定的基本名称...加载器获取资源包
@@ -41,6 +41,6 @@ public class ResourceBundleDemo {
             String key = keys.nextElement();
             System.out.println(key + " = " + bundle.getString(key));
         }
-
     }
+
 }

@@ -118,7 +118,6 @@ public class Reflect {
         for (Parameter parameter : method.getParameters()) {
             p(parameter.getName());
         }
-
     }
 
 }

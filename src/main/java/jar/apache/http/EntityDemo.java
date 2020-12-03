@@ -29,6 +29,7 @@ import static l.demo.Demo.p;
  * created on 2020/11/12 21:35
  */
 public class EntityDemo {
+
     public static void main(String[] args) throws ParseException, IOException {
         // 当为一个传出报文创建实体时，这个元数据不得不通过实体创建器来提供。
         StringEntity myEntity = new StringEntity("important message", StandardCharsets.UTF_8);
@@ -50,7 +51,6 @@ public class EntityDemo {
         if (null != entity) {
             entity = new BufferedHttpEntity(entity);
         }
-
     }
 
 }

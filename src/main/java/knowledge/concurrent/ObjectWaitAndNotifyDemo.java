@@ -84,7 +84,6 @@ public class ObjectWaitAndNotifyDemo {
                 t.increase();
             }
         }
-
     }
 
     private static class Decrease extends Thread {
@@ -107,6 +106,5 @@ public class ObjectWaitAndNotifyDemo {
                 t.decrease();
             }
         }
-
     }
 }

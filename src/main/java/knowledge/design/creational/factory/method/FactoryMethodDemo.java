@@ -72,7 +72,6 @@ public class FactoryMethodDemo {
      * 工厂方法工厂
      */
     private interface AnimalFactory {
-
         Animal createAnimal();
     }
 
@@ -84,35 +83,28 @@ public class FactoryMethodDemo {
     }
 
     private static class DogFactory implements AnimalFactory {
-
         @Override
         public Animal createAnimal() {
             return new Dog();
         }
-
     }
 
     private abstract static class Animal {
-
         public abstract void eat();
     }
 
     private static class Cat extends Animal {
-
         @Override
         public void eat() {
             System.out.println("猫吃鱼");
         }
-
     }
 
     private static class Dog extends Animal {
-
         @Override
         public void eat() {
             System.out.println("狗吃肉");
         }
-
     }
 
 }
