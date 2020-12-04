@@ -142,7 +142,7 @@ public class SingletonDemo {
         INSTANCE;
 
         public void doSomething() {
-            // TODO something
+            // ...
         }
     }
 
