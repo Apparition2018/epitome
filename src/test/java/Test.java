@@ -26,7 +26,7 @@
 // 2019 年度最受欢迎中国开源软件：https://www.oschina.net/question/2918182_2313492
 // Java程序员从笨鸟到菜鸟全部博客目录：https://blog.csdn.net/u012426327/article/details/77765651
 // 史上最全设计模式导学目录（完整版）：https://blog.csdn.net/u012426327/article/details/77766203
-// Android学习：https://blog.csdn.net/u012426327/article/list/7
+// Android学习：https://blog.csdn.net/u012426327/article/list/7C
 // 牛逼！java程序员必看经典书单，以及各个阶段学习建议!：https://blog.csdn.net/u012426327/article/details/78491295
 // 前端知识体系及修炼攻略：https://blog.csdn.net/u012426327/article/details/78665872
 // java同步非阻塞IO：https://segmentfault.com/a/1190000015449773
