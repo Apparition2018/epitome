@@ -353,6 +353,7 @@ todo                            // TODO: $date$ $todo$
 >psfs                           public static final String
 >St                             String
 >thr                            throw new
+>psc                            private static class (User)
 >pvt                            public void test (user)
 >```
 >### other
