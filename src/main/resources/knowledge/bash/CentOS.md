@@ -6,8 +6,7 @@
 2. [centos磁盘安装与磁盘分区方案详解](https://www.cnblogs.com/sunmoonp/p/10968359.html)
 3. [CentOS6.8联网设置](https://blog.csdn.net/Catdingwt/article/details/79585929)
 4. [SSH登录：WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!](https://blog.csdn.net/xlgen157387/article/details/52669709)
-5. [YumRepo Error: All mirror URLs are not using问题解决](http://blog.sina.com.cn/s/blog_541a3cf10101h245.html)
-6. [Linux环境下字符串替换](https://blog.csdn.net/ymaini/article/details/80724806)
+5. [VMware-yum配置安装](https://blog.csdn.net/bin330720911/article/details/90482711)
 ---
 ## Partition
     1. /boot：Linux 系统启动有关的程序，256mb
@@ -24,13 +23,14 @@
     ssh ljh@192.168.58.128
     123456
 ## common commands
-    su                       切换用户
+    su
     ip addr
-    vim; %s/xyz/XYZ/g        vim 模式下替换所有字符串
+    vi /etc/sysconfig/network-scripts/ifcfg-eth0; ONBOOT=yes;
+    vi ~/.ssh/known_hosts
 ---
 ## install
 >### jdk
 >1. yum list installed|grep java 或 rpm -qa|grep java，查看自带的 java
 >2. yum remove XXX (上面命令的结果)，删除
->3. yum search java -i --color jdk
+>3. yum -y list java*
 ---
