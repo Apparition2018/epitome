@@ -56,10 +56,11 @@
     grep        global regular expression print     查找文件里符合条件的字符串
         -i                                          不区分大小写
         -n                                          显示行号
+        --color                                     红色字体
     egrep       extended grep                       查找文件里符合条件的字符串 (grep -e)
     fgrep       fixed grep                          查找文件里符合条件的字符串 (grep -f)
     uniq        unique                              删除重复的行列
-    tr          translate                            转换大小写或删除字符
+    tr          translate                           转换大小写或删除字符
     sort                                            排序文本
     ed          editor                              编辑文本
     joe         joe's own editor                    编辑文本
@@ -195,22 +196,9 @@
     bg          background                          将一个在后台暂停的命令，变成继续执行
 ---
 ## 其它
-    printf      print formatted
-    echo                                            输出字符串
     xargs       extended arguments                  给命令传递参数的一个过滤器，也是组合多个命令的一个工具
     man         manual                              手册
     bc          basic calculator                    计算器
----
-## 管线命令
-    cut                                             切割文件并显示
-    grep        global regular expression print     查找文件里符合条件的字符串
-    sort                                            排序文本
-    wc          word count                          统计字数
-    uniq        unique                              删除重复的行列
-    tee                                             读取标准输入的数据，并将其内容输出成文件
-    tr          translate                            转换大小写或删除字符
-    col                                             过滤控制字符
-    join                                            将两个文件中，指定栏位内容相同的行连接起来
-    paste                                           合并文件的列
-    split                                           将一个文件分割成数个文件
+    printf      print formatted
+    echo                                            输出字符串
 ---
