@@ -36,6 +36,7 @@
         -R                                          递归的方式逐个变更               
     chgrp       change group                        更改文件或目录群组
     chown       change owner                        更改文件拥有者
+        -R      recursion                           处理指定目录以及其子目录下的所有文件
     chattr      change attribute                    更改文件属性
     touch                                           更改文件或目录的时间属性
     rm          remove                              删除文件或目录
@@ -93,6 +94,7 @@
     ls          list                                显示目录下内容
         -a      --all                               显示目录下内容，包括以 . 开头的隐藏文件
         -i                                          显示目录下内容及其详细信息
+        -l                                          除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出
     pwd         print work directory                显示当前目录
     tree                                            以树状图显示目录内容
     quota                                           显示磁盘已使用的空间与限制
@@ -101,7 +103,7 @@
     stat                                            显示 inode 内容
     mkdir       make directory                      创建目录
         -p      --parents                           创建多级目录
-    rmdir       remove directory                    删除目录
+    rmdir       remove directory                    删除空的目录
     mount                                           挂载 Linux 系统外的文件
     umount      unmount                             卸除文件系统
 ---
@@ -130,6 +132,7 @@
 ---
 ## 系统管理
     rsh         remote shell                        登入远端 shell
+    adduser                                         新增使用者帐号或更新预设的使用者资料
     su          switch user                         切换用户
     chsh        change shell                        更改使用者 shell 设定
     sudo        super user do                       以系统管理者的身份执行指令
