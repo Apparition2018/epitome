@@ -32,5 +32,5 @@
 >### jdk
 >1. yum list installed|grep java 或 rpm -qa|grep java，查看自带的 java
 >2. yum remove XXX (上面命令的结果)，删除
->3. yum -y list java*
+>3. yum list java* 或 yum search jdk，查看可安装 java
 ---
