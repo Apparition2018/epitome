@@ -215,6 +215,13 @@
     split                                           将一个文件分割成数个文件
 ---
 ## YUM
+```
+[options] [command] [packages ...]
+options:
+    -h          help                                帮助
+    -y          yes                                 当安装过程提示选择，默认全部选 yes
+    -q                                              不显示安装的过程
+command:
     list                                            列出所有可安装的软件
     search <package_name>                           查找指定软件包
     install <package_name>                          安装指定软件
@@ -227,4 +234,6 @@
         headers                                     清除缓存目录下的 headers
         oldheaders                                  清除缓存目录下的旧 headers
         all                                         清除缓存目录下的软件包和旧 headers
+    makecache        
+```
 ---
