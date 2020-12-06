@@ -7,6 +7,7 @@
 3. [CentOS6.8联网设置](https://blog.csdn.net/Catdingwt/article/details/79585929)
 4. [SSH登录：WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!](https://blog.csdn.net/xlgen157387/article/details/52669709)
 5. [CentOS6 YUM 源失效问题解决办法](https://www.cnblogs.com/binbingg/p/14082610.html)
+6. [Centos7配置JAVA_HOME](https://www.cnblogs.com/baojun/p/10832624.html)
 ---
 ## Partition
     1. /boot：   Linux 系统启动有关的程序，256mb
@@ -34,4 +35,10 @@
 >2. yum remove XXX (上面命令的结果)，删除
 >3. yum search java | grep -i --color jdk，查看可安装 java
 >4. yum install java-1.8.0-openjdk java-1.8.0-openjdk-devel
+>5. 添加环境变量
+>   1. which java
+>   2. ls -l /usr/bin/java
+>   3. ls -l /etc/alternatives/java
+>   4. vi /etc/profile
+>       - export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk.x86_64
 ---
