@@ -2,9 +2,9 @@ package knowledge.design.behavioral.strategy;
 
 /**
  * 策略模式：定义了一系列的算法，并将每一个算法封装起来，而且它们还可以互相替换
- * Context: 环境角色
- * Strategy: 抽象策略角色
- * ConcreteStrategy: 具体策略角色
+ * 环境角色 Context
+ * 抽象策略角色 Strategy
+ * 具体策略角色 ConcreteStrategy
  *
  * @author ljh
  * created on 2020/9/26 2:51
