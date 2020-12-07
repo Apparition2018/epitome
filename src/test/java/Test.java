@@ -12,10 +12,12 @@
 // Groovy Gradle
 // combinator
 // Mockito
+// spring data jpa + Querydsl
 // spring cloud, dubbo
 // redis, rocketmq, mycat
 // docker, k8s
 // 主从数据库
+// nginx
 // 策略模式，外观模式
 // Spring @Cache
 
