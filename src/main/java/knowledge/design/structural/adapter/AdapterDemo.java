@@ -1,4 +1,4 @@
-package knowledge.design.structural.adapter.demo;
+package knowledge.design.structural.adapter;
 
 /**
  * 适配器模式：将已有的接口转换为需要的接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作
@@ -10,12 +10,17 @@ package knowledge.design.structural.adapter.demo;
  * 1.IO
  * 2.JDBC
  * 3.Spring AOP @BeforeAdvice @AfterAdvice @ThrowsAdvice 借助 AdvisorAdapter 适配器实现功能
+ * 关键代码：适配器 继承或依赖源角色，继承或实现目标角色
  * 优点：提高了系统现有类的复用
  * 缺点：过多的使用适配器，会让系统非常零乱，不易整体进行把握，应优先考虑直接对功能进行重构
  * 角色：
  * 目标角色 Target
  * 源角色 Adaptee
  * 适配器角色 Adapter
+ * 分类：
+ * 1.类适配器模式
+ * 2.对象适配器模式
+ * 3.接口适配器模式
  * <p>
  * 适配器模式 | 菜鸟教程：https://www.runoob.com/design-pattern/adapter-pattern.html
  * 浅谈适配器设计模式 - 知乎：https://zhuanlan.zhihu.com/p/56518978
@@ -32,12 +37,12 @@ public class AdapterDemo {
      * 让 AudioPlayer 可以播放其他格式的文件
      */
     public static void main(String[] args) {
-        AudioPlayer audioPlayer = new AudioPlayer();
+        AudioPlayer audioPlayer = new MediaAdapter();
 
-        audioPlayer.play("mp3", "beyond the horizon.mp3");
-        audioPlayer.play("mp4", "alone.mp4");
-        audioPlayer.play("vlc", "far far away.vlc");
-        audioPlayer.play("avi", "mind me.avi");
+        audioPlayer.play("beyond the horizon.mp3");
+        audioPlayer.play("alone.mp4");
+        audioPlayer.play("far far away.vlc");
+        audioPlayer.play("mind me.avi");
     }
 
     interface AdvancedMediaPlayer {
@@ -76,54 +81,39 @@ public class AdapterDemo {
         }
     }
 
-    interface MediaPlayer {
-        void play(String audioType, String fileName);
-    }
-
     /**
      * 目标角色
      */
-    private static class AudioPlayer implements MediaPlayer {
+    private static class AudioPlayer {
 
-        private MediaAdapter mediaAdapter;
-
-        @Override
-        public void play(String audioType, String fileName) {
+        public void play(String fileName) {
             // 播放 mp3 音乐文件的内置支持
-            if (audioType.equalsIgnoreCase("mp3")) {
-                System.out.println("Playing mp3 file. Name: " + fileName);
-            }
-            // mediaAdapter 提供了播放其他文件格式的支持
-            else if (audioType.equalsIgnoreCase("vlc") || audioType.equalsIgnoreCase("mp4")) {
-                mediaAdapter = new MediaAdapter(audioType);
-                mediaAdapter.play(audioType, fileName);
-            } else {
-                System.out.println("Invalid media. " + audioType + " format not supported");
-            }
+            System.out.println("Playing mp3 file. Name: " + fileName);
         }
     }
 
     /**
      * 适配器角色
      */
-    private static class MediaAdapter implements MediaPlayer {
+    private static class MediaAdapter extends AudioPlayer {
 
+        /**
+         * 接口适配器模式
+         */
         private AdvancedMediaPlayer advancedMediaPlayer;
 
-        MediaAdapter(String audioType) {
-            if (audioType.equalsIgnoreCase("vlc")) {
-                advancedMediaPlayer = new VlcPlayer();
-            } else if (audioType.equalsIgnoreCase("mp4")) {
-                advancedMediaPlayer = new Mp4Player();
-            }
-        }
-
         @Override
-        public void play(String audioType, String fileName) {
-            if (audioType.equalsIgnoreCase("vlc")) {
+        public void play(String fileName) {
+            if (fileName.toLowerCase().endsWith("vlc")) {
+                advancedMediaPlayer = new VlcPlayer();
                 advancedMediaPlayer.playVlc(fileName);
-            } else if (audioType.equalsIgnoreCase("mp4")) {
+            } else if (fileName.toLowerCase().endsWith("mp4")) {
+                advancedMediaPlayer = new Mp4Player();
                 advancedMediaPlayer.playMp4(fileName);
+            } else if (fileName.toLowerCase().endsWith("mp3")) {
+                super.play(fileName);
+            } else {
+                System.out.println("Invalid media. " + fileName.split("\\.")[1] + " format not supported");
             }
         }
     }
