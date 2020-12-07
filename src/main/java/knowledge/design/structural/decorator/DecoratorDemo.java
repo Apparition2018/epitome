@@ -3,8 +3,8 @@ package knowledge.design.structural.decorator;
 /**
  * 装饰器模式：允许向一个现有的对象添加新的功能，同时又不改变其结构，符合开闭原则（对扩展开放，对修改关闭）
  * 主要解决：我们为了扩展一个类经常使用继承方式实现，随着扩展功能的增多，子类会变得很多
- * 使用场景：Java IO
- * 关键代码：装饰类继承和引用 Component，重写或扩展方法
+ * 使用场景：IO
+ * 关键代码：装饰类继承和引用 Component，重写父类方法
  * 优点：
  * 1.装饰类和被装饰类可以独立发展，不会相互耦合，装饰模式是继承的一个替代模式，装饰模式可以动态扩展或删除实现类的功能。
  * 2.通过对不同的装饰类排列组合，可以创造出很多不同的组合。
@@ -23,6 +23,13 @@ package knowledge.design.structural.decorator;
  * created on 2020/9/26 2:51
  */
 public class DecoratorDemo {
+
+    /**
+     * 案例：
+     * 1.武器（攻击力50），盔甲（防御力50），饰品（攻击力25，防御力25）
+     * 2.红宝石（攻击力30），蓝宝石（防御力30），黄宝石（攻击力20，防御力20）
+     * 计算镶嵌了宝石的装备的攻击力和防御力
+     */
     public static void main(String[] args) {
         Equip equip = new RedGem(new BlueGem(new YellowGem(new Weapon())));
         System.out.println("攻击力：" + equip.calAttack());

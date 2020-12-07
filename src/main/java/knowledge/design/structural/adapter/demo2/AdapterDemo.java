@@ -19,22 +19,9 @@ public class AdapterDemo {
         adapter.city();
     }
 
-    // 源角色
-    private static class Address {
-        public void block() {
-            p("block");
-        }
-
-        public void zip() {
-            p("zip");
-        }
-
-        public void plat() {
-            p("plat");
-        }
-    }
-
-    // 目标角色
+    /**
+     * 目标角色
+     */
     private static class DutchAddress {
         public void street() {
             p("street");
@@ -49,7 +36,26 @@ public class AdapterDemo {
         }
     }
 
-    // 适配器角色
+    /**
+     * 源角色
+     */
+    private static class Address {
+        public void block() {
+            p("block");
+        }
+
+        public void zip() {
+            p("zip");
+        }
+
+        public void plat() {
+            p("plat");
+        }
+    }
+
+    /**
+     * 适配器角色
+     */
     private static class DutchAddressAdapter extends DutchAddress {
         private Address address;
 
