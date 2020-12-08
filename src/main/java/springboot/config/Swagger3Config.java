@@ -1,32 +1,34 @@
 package springboot.config;
 
-import l.demo.Demo;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import static l.demo.Demo.MY_EMAIL;
 
 /**
  * SwaggerConfig
- * <p>
- * https://blog.csdn.net/xtj332/article/details/80595768
+ * Swagger2：https://blog.csdn.net/xtj332/article/details/80595768
+ * Swagger3：https://zhuanlan.zhihu.com/p/161947638
  *
  * @author ljh
  * created on 2019/8/21 16:19
  */
+@EnableOpenApi
 @Configuration
-@EnableSwagger2
-public class SwaggerConfig extends Demo {
+public class Swagger3Config {
 
     @Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.OAS_30).pathMapping("/")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.any())
@@ -38,7 +40,8 @@ public class SwaggerConfig extends Demo {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("epitome")
-                .contact(new Contact("ljh", "localhost:3333/swagger-ui.html", MY_EMAIL))
+                .description("epitome")
+                .contact(new Contact("ljh", null, MY_EMAIL))
                 .version("1.0")
                 .build();
     }

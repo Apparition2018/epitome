@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * created on 2019/8/8 19:39
  */
 @SpringBootApplication
-@EnableTransactionManagement
 // Servlet, Filter, Listener 直接通过 @WebServlet, @WebFilter, @WebListener 注解自动注册
 @ServletComponentScan
+@EnableTransactionManagement
 @EnableAsync
 public class Application {
 

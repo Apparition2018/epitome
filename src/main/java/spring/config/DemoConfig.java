@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.util.ResourceUtils;
 
 /**
  * DemoConfig
@@ -19,7 +20,7 @@ import org.springframework.core.env.Environment;
  */
 // @Configuration 相当于 xml 配置文件中的 <beans>
 @Configuration
-@PropertySource("classpath:jdbc.properties")
+@PropertySource(ResourceUtils.CLASSPATH_URL_PREFIX + "jdbc.properties")
 public class DemoConfig {
 
     private final Environment environment;

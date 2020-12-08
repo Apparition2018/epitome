@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
 
 /**
  * @author ljh
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @ConfigurationProperties(prefix = "resource")
-@PropertySource(value = "classpath:resource.properties")
+@PropertySource(value = ResourceUtils.CLASSPATH_URL_PREFIX + "resource.properties")
 public class Resource {
 
     private String name;
