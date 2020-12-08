@@ -6,12 +6,14 @@
 // JWT
 // shiro
 // Guava (140)
-// 多种 Collections (143)
 // Nutz: http://nutzam.com/index.html
 // htmlcleaner + jsoup
 // Groovy Gradle
 // combinator
 // Mockito
+// API tester
+// jmeter
+// 注册中心，配置中心 nacos
 // spring data jpa + Querydsl
 // spring cloud, dubbo
 // redis, rocketmq, mycat

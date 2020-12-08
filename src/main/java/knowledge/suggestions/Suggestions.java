@@ -2182,7 +2182,9 @@ public class Suggestions extends Demo {
 
     // 建议142：使用 Joda 日期时间扩展包
 
-    // 建议143：多种 Collections 扩展
+    /* 建议143：多种 Collections 扩展
+     * 1.Koloboke 4.GS Collections 5.HPPC 2.FastUtil 3.Trove
+     */
 
     /* 第十二章：思想为源 */
 
