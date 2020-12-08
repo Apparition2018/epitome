@@ -1,10 +1,6 @@
 // 史上最强整理: https://mp.weixin.qq.com/s/kJpRgfI3zT77XqMeRfmmQQ
-// SpringBoot 之整合 Swagger2: https://www.cnblogs.com/zhangyinhua/p/9286391.html
 // SpringBoot + Spring Batch
-// SSL：https://www.cnblogs.com/crazyacking/p/5648520.html
-// JAVA与模式
-// JWT
-// shiro
+// shiro oauth2
 // Guava (140)
 // Nutz: http://nutzam.com/index.html
 // htmlcleaner + jsoup

@@ -1,4 +1,4 @@
-package springboot.domain;
+package springboot.domain.score;
 
 import java.io.Serializable;
 

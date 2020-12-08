@@ -19,31 +19,31 @@ import javax.sql.DataSource;
  * created on 2019/8/8 19:39
  */
 @Configuration
-@MapperScan(basePackages = "springboot.dao.test", sqlSessionTemplateRef = "testSqlSessionTemplate")
-public class TestDataSourceConfig {
+@MapperScan(basePackages = "springboot.dao.score", sqlSessionTemplateRef = "scoreSqlSessionTemplate")
+public class ScoreDataSourceConfig {
 
-    @Bean(name = "testDataSource", destroyMethod = "close", initMethod = "init")
-    @ConfigurationProperties(prefix = "spring.datasource.test")
-    public DruidDataSource testDataSource() {
+    @Bean(name = "scoreDataSource", destroyMethod = "close", initMethod = "init")
+    @ConfigurationProperties(prefix = "spring.datasource.score")
+    public DruidDataSource scoreDataSource() {
         return new DruidDataSource();
     }
 
-    @Bean(name = "testSqlSessionFactory")
-    public SqlSessionFactory testSqlSessionFactory(@Qualifier("testDataSource") DataSource dataSource) throws Exception {
+    @Bean(name = "scoreSqlSessionFactory")
+    public SqlSessionFactory scoreSqlSessionFactory(@Qualifier("scoreDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/test/*.xml"));
-        bean.setTypeAliasesPackage("springboot.domain.test");
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/score/*.xml"));
+        bean.setTypeAliasesPackage("springboot.domain.score");
         return bean.getObject();
     }
 
-    @Bean(name = "testTransactionManager")
-    public DataSourceTransactionManager testTransactionManager(@Qualifier("testDataSource") DataSource dataSource) {
+    @Bean(name = "scoreTransactionManager")
+    public DataSourceTransactionManager scoreTransactionManager(@Qualifier("scoreDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    @Bean(name = "testSqlSessionTemplate")
-    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("testSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    @Bean(name = "scoreSqlSessionTemplate")
+    public SqlSessionTemplate scoreSqlSessionTemplate(@Qualifier("scoreSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

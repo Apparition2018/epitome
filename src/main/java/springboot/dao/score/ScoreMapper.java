@@ -1,6 +1,6 @@
-package springboot.dao;
+package springboot.dao.score;
 
-import springboot.domain.Score;
+import springboot.domain.score.Score;
 
 public interface ScoreMapper {
     int deleteByPrimaryKey(Integer id);
