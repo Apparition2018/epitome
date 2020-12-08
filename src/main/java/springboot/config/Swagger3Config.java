@@ -16,7 +16,7 @@ import static l.demo.Demo.MY_EMAIL;
 /**
  * SwaggerConfig
  * Swagger2：https://blog.csdn.net/xtj332/article/details/80595768
- * Swagger3：https://zhuanlan.zhihu.com/p/161947638
+ * Swagger3：http://www.yihaomen.com/article/1831.html
  *
  * @author ljh
  * created on 2019/8/21 16:19
