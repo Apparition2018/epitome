@@ -16,11 +16,12 @@
 // docker, k8s
 // 主从数据库
 // nginx
-// 策略模式，外观模式
+// 外观模式，策略模式
 // Spring @Cache
 // Spring Boot 2.x基础教程  http://blog.didispace.com/spring-boot-learning-2x/
 
 // https://www.jianshu.com/u/8bbac962b31a
+// Java开发人员必知必会的20种常用类库和API：https://zhuanlan.zhihu.com/p/54716716
 // 【小家java】java5新特性（简述十大新特性） 重要一跃：https://blog.csdn.net/f641385712/article/details/81783266
 // 【小家Spring】Spring Framework提供的实用纯Java工具类大合集（一）：https://blog.csdn.net/f641385712/article/details/86749481
 // 分析了5万个开源项目，得出的排名前16的Java工具类：https://blog.csdn.net/weixin_35381618/article/details/80741956

@@ -28,7 +28,7 @@ import java.nio.charset.StandardCharsets;
 @Controller
 @RequestMapping("/weather")
 public class PjaxController {
-    private static Logger LOGGER = LoggerFactory.getLogger(PjaxController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PjaxController.class);
 
     @RequestMapping(value = "/{city}", method = RequestMethod.GET)
     public String index(@PathVariable String city, HttpServletRequest req, Model model) {

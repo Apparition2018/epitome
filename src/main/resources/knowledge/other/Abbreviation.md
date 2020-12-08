@@ -17,6 +17,8 @@
 |AWT|Abstract Window Toolkit|抽象窗口工具包|
 |POJO|Plain Ordinary Java Object|简单的 Java 对象|
 |EJB|Enterprise JavaBean|企业 JavaBean|
+|Log4j|Log for Java||
+|SLF4J|Simple Logging Facade for Java||
 ---
 ## J2EE
 ||||
