@@ -7,7 +7,7 @@ package knowledge.design.structural.adapter;
  * 2.需要建立一个可以重复使用的类，用于一些彼此关系不大的类，并易于扩展，以便于面对将来会出现的类
  * 3.需要一个统一的输出接口，但是输入类型却不可预知
  * 使用场景：
- * 1.IO：Reader-目标角色，InputStream-源角色，InputStreamReader-适配器角色
+ * 1.IO：Reader（目标角色），InputStream（源角色），InputStreamReader（适配器角色）
  * 2.JDBC
  * 3.Spring AOP @BeforeAdvice @AfterAdvice @ThrowsAdvice 借助 AdvisorAdapter 适配器实现功能
  * 关键代码：适配器 继承或依赖源角色，继承或实现目标角色

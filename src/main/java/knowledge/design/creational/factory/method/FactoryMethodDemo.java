@@ -30,8 +30,8 @@ public class FactoryMethodDemo {
      */
     @Test
     public void testSimpleFactory() {
-        Animal a = AnimalSimpleFactory.createAnimal("dog");
-        if (null != a) a.eat();
+        Animal animal = AnimalSimpleFactory.createAnimal("dog");
+        if (null != animal) animal.eat();
     }
 
     /**
@@ -40,9 +40,9 @@ public class FactoryMethodDemo {
      */
     @Test
     public void testFactoryMethod() {
-        AnimalFactory f = new DogFactory();
-        Animal a = f.createAnimal();
-        a.eat();
+        AnimalFactory animalFactory = new DogFactory();
+        Animal animal = animalFactory.createAnimal();
+        animal.eat();
     }
 
     /**
