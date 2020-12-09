@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- logback 配置详解：https://www.cnblogs.com/cb0327/p/5759441.html -->
+<!-- logback 配置详解（一）：https://www.cnblogs.com/zhuawang/p/4002975.html
+     logback 常用配置详解（二） <appender>：https://www.cnblogs.com/zhuawang/p/4002976.html
+     logback 常用配置详解（三） <filter>：https://www.cnblogs.com/zhuawang/p/4002977.html
+     项目中用到的logback例子：https://www.cnblogs.com/zhuawang/p/4002979.html -->
 <!-- 60秒扫描一次，发现文件有更新重新加载 -->
-<configuration scan="true" scanPeriod="60 seconds">
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <!-- http://logback.qos.ch/manual/layouts.html#conversionWord -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) --- [%thread] %cyan(%-50logger{50}) : %msg%n</pattern>
         </encoder>
     </appender>
 
     <!-- RollingFileAppender 根据设置对日志文件进行压缩归档并生成新的日志文件 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 日志路径和名称 -->
-        <file>logs/output.log</file>
+        <file>logs/epitome.log</file>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-            <charset>utf-8</charset>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
         </encoder>
         <!-- 压缩规则：
             TimeBasedRollingPolicy 根据时间进行日志压缩
