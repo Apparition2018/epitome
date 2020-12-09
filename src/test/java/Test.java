@@ -24,7 +24,6 @@
 // Java开发人员必知必会的20种常用类库和API：https://zhuanlan.zhihu.com/p/54716716
 // 【小家java】java5新特性（简述十大新特性） 重要一跃：https://blog.csdn.net/f641385712/article/details/81783266
 // 【小家Spring】Spring Framework提供的实用纯Java工具类大合集（一）：https://blog.csdn.net/f641385712/article/details/86749481
-// 分析了5万个开源项目，得出的排名前16的Java工具类：https://blog.csdn.net/weixin_35381618/article/details/80741956
 // To Be Top Javaer - Java工程师成神之路：https://github.com/hollischuang/toBeTopJavaer
 // 2019 年度最受欢迎中国开源软件：https://www.oschina.net/question/2918182_2313492
 // Java程序员从笨鸟到菜鸟全部博客目录：https://blog.csdn.net/u012426327/article/details/77765651
