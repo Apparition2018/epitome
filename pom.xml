@@ -55,8 +55,9 @@
     -->
     <dependencies>
         <!-- spring-boot-starter：https://www.cnblogs.com/yaowen/p/8623902.html
-            spring-boot-starter-web 包含了 jackson-databind
-                jackson-databind 包含了 jackson-core, jackson-annotations
+            spring-boot-starter-web 包含了 spring-boot-starter-json
+                spring-boot-starter-json 包含了 jackson-databind
+                    jackson-databind 包含了 jackson-core, jackson-annotations
             spring-boot-starter-web 包含了 spring-boot-starter-logging
                 spring-boot-starter-logging 包含了 logback-classic
                     logback-classic 包含了 logback-core, slf4j-api -->
@@ -67,7 +68,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <!--<scope>test</scope>-->
             <exclusions>
                 <exclusion>
                     <groupId>org.ow2.asm</groupId>
