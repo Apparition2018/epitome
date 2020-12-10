@@ -30,6 +30,11 @@ public class SpringConfigDemo {
         Bean bean = applicationContext.getBean("bean", Bean.class);
         bean.service();
     }
+    
+    @Test
+    public void testInterface() {
+        Bean game = applicationContext.getBean("game", Bean.class);
+    }
 
     @After
     public void destroy() {

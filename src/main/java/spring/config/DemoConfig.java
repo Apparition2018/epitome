@@ -34,4 +34,29 @@ public class DemoConfig {
     public spring.bean.Bean bean() {
         return new spring.bean.Bean();
     }
+
+    @Bean(name = "game")
+    public Game a() {
+        return i -> {
+            System.out.println("> 0");
+        };
+    }
+
+//    @Bean(name = "game")
+//    public Game b() {
+//        return i -> {
+//            System.out.println("< 0");
+//        };
+//    }
+//
+//    @Bean(name = "game")
+//    public Game c() {
+//        return i -> {
+//            System.out.println("< 0");
+//        };
+//    }
+
+    interface Game {
+        void play(int i);
+    }
 }
