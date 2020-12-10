@@ -15,6 +15,7 @@
 2. [Git 和 Github 绑定ssh key](https://blog.csdn.net/smiple9102/article/details/79254577)
 3. [解决 git ERROR: Permission to XXX.git denied to user](https://www.cnblogs.com/chevin/p/9236674.html)
 4. [解决github 打开、拉取、推送速度慢的问题](https://blog.csdn.net/natahew/article/details/81387885)
+5. [如何解决 GitHub 提交次数过多 .git 文件过大的问题？ - 知乎](https://www.zhihu.com/question/29769130)
 ---
 ## Git 常用命令速查表
 ![Git 常用命令速查表](https://img-blog.csdn.net/20171126101742109)
@@ -48,14 +49,16 @@
 >```
 >init                                           创建一个空的 Git repository 或重新初始化一个现有的 repository
 >clone <repository>                             克隆一个 repository 到一个新目录
+>   --depth <depth>                             创建一个浅克隆，其中历史记录被截断为指定提交次数
+>   -b <name> | --branch <name>                 分支
 >```
->## 快照基础
+>## 基本快照
 >```
->add [<pathspec>…​]                             将文件内容添加到 index
+>add [<pathspec>…]                              将文件内容添加到 index
 >   .                                           将修改的文件，新建的文件，添加到 index
 >   -u                                          将修改的文件，删除的文件，添加到 index
 >   -A | --all                                  将修改的文件，删除的文件，新建的文件，添加到 index
->status [<pathspec>…​]                          显示 working tree 状态
+>status [<pathspec>…]                           显示 working tree 状态
 >commit                                         将变更记录到 repository
 >    -m <msg>                                   备注
 >    --amend                                    通过创建一个 new commit 来替换 the tip of the current branch
@@ -63,7 +66,7 @@
 >   --soft                                      复位 repository
 >   --mixed                                     复位 repository 和 index
 >   --hard                                      复位 repository 和 index 和 working tree
->rm [<pathspec>…​]                              从 working tree 和 index 中删除文件
+>rm [<pathspec>…]                               从 working tree 和 index 中删除文件
 >    --cached                                   从 index 中删除文件
 >mv                                             移动或重命名文件，目录或符号链接
 >```
@@ -71,7 +74,7 @@
 >```
 >branch                                         列出，创建或删除 branch
 >   <branchname>                                创建 branch
->   -d | --delete <branchname>…​                删除 branch
+>   -d | --delete <branchname>…                 删除 branch
 >checkout                                       切换 branch 或 恢复 working tree 文件
 >   <branhc|tag>                                切换 branch 或 tag
 >   -b <new_branch>                             创建并切换 branch
@@ -81,25 +84,25 @@
 >   list/show/apply/drop/pop                    列出/显示/恢复/删除/恢复并删除储藏的工作
 >tag                                            创建、列表、删除或验证用 GPG 签名的 tag 对象
 >   <tagname>                                   基于最新提交创建 tag
->   -d | --delete <tagname>…​                   删除 tag
+>   -d | --delete <tagname>…                    删除 tag
 >```
 >## 项目分享与更新
 >```
->fetch [<repository> [<refspec>…​]]             从另一个 directory 下载 objects 和 refs
->pull [<repository> [<refspec>…​]]              从另一个 directory 或 local branch 获取并与之集成
+>fetch [<repository> [<refspec>…]]              从另一个 directory 下载 objects 和 refs
+>pull [<repository> [<refspec>…]]               从另一个 directory 或 local branch 获取并与之集成
 >push                                           使用 local refs 更新 remote refs，并发送相关 objects
 >   <repository> <refname>                      更新到远程 ref
 >   <repository> :<expect>                      删除远程 ref
 >   -u | --set-upstream                         下次输入同样的命令，只需输入 git push，无需输入参数
 >remote                                         管理一组被跟踪的 repository
 >   -v | --verbose                              显示 remote 的 url 在 name 之后
->   show <name>…​                               显示指定 name 的 remote 的信息
+>   show <name>…                                显示指定 name 的 remote 的信息
 >   add <name> <url>                            给在 url 的 repository 添加一个名为 name 的 remote
 >   remove | rm <name>                          删除名为 name 的 remote
 >```
 >## 检查和比较
 >```
->show [<object>…​]                              显示各种类型的 objects，包括 lobs, trees, tags and commits
+>show [<object>…]                               显示各种类型的 objects，包括 lobs, trees, tags and commits
 >log                                            显示提交日志
 >   <file>                                      显示文件提交日志
 >   -p <file>                                   显示文件提交差异
@@ -114,7 +117,7 @@
 >## 补丁
 >[活用 git apply 合入 patch 补丁](https://juejin.im/post/6844903560564441101)
 >```
->apply [<patch>…​]                              将补丁文件打入文件和/或 index
+>apply [<patch>…]                               将补丁文件打入文件和/或 index
 >rebase [<newbase> [<branch>]]                  把分叉的提交历史"整理"成一条直线的提交
 >revert <commit>…                               撤销指定的提交
 >```
@@ -124,7 +127,21 @@
 >```
 >## 管理  
 >```
->reflog <subcommand>                            管理 reflog 信息 (包括 已删除的 commit 记录 和 reset 记录)
+>gc                                             清除不必要的文件并优化本地存储库
+>   --prune=<date>                              删除日期之前的松散对象(默认是2周前)
+>   --aggressive                                更积极地优化存储库，但会花费更多的时间
+>reflog [<subcommand>]                          管理 reflog 信息 (包括 已删除的 commit 记录 和 reset 记录)
+>   expire                                      删除掉更老的 reflog 条目
+>   delete                                      从 reflog 中删除一个条目
+>   exists                                      检查一个 ref 是否有一个 reflog
+>```
+>## 管道命令
+>```
+>rev-list [<<commit>…>]                         以反时间顺序列出提交对象
+>   --objects
+>   --all
+>verify-pack <pack>.idx …                       验证已打包的 Git 归档文件
+>   -v|--verbose
 >```
 ---
 ## git-bash shortcut

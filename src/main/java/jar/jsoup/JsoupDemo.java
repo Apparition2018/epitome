@@ -22,21 +22,21 @@ import java.io.IOException;
  * created on 2020/11/12 10:43
  */
 public class JsoupDemo extends Demo {
-    
+
     @Test
     public void testJsoup() throws IOException {
-        // static Connection	connect​(String url)
+        // static Connection	connect(String url)
         // 创建到 URL 的连接
         Connection connect = Jsoup.connect(BAIDU_URL);
-        
+
         // Document	            get()
         // 执行 Get 请求，并解析结果
         Document document = connect.get();
 
-        // Element	            getElementById​(String id)
+        // Element	            getElementById(String id)
         // 根据 ID 查找元素及其子元素
         Element su = document.getElementById("su");
-        
+
         // 获取一个表单元素的值 (input, textarea 等)
         p(su.val()); // 百度一下
     }

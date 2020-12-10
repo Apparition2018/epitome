@@ -15,7 +15,7 @@ import static l.demo.Demo.p;
 public class WordUtilsDemo {
 
     /**
-     * static String	abbreviate​(String str, int lower, int upper, String appendToEnd)
+     * static String	abbreviate(String str, int lower, int upper, String appendToEnd)
      * 缩写
      */
     @Test
@@ -28,11 +28,11 @@ public class WordUtilsDemo {
     }
 
     /**
-     * static String	capitalize​(String str[, char... delimiters])
-     * static String	capitalizeFully​(String str[, char... delimiters])
+     * static String	capitalize(String str[, char... delimiters])
+     * static String	capitalizeFully(String str[, char... delimiters])
      * 首字母大写
      * <p>
-     * static String	uncapitalize​(String str, char... delimiters)
+     * static String	uncapitalize(String str, char... delimiters)
      * 取消首字母大写
      */
     @Test
@@ -47,7 +47,7 @@ public class WordUtilsDemo {
     }
 
     /**
-     * static boolean	containsAllWords​(CharSequence word, CharSequence... words)
+     * static boolean	containsAllWords(CharSequence word, CharSequence... words)
      * 判断是否包含单词
      */
     @Test
@@ -57,7 +57,7 @@ public class WordUtilsDemo {
     }
 
     /**
-     * static String	initials​(String str[, char... delimiters])
+     * static String	initials(String str[, char... delimiters])
      * 提取首字母
      */
     @Test
@@ -66,7 +66,7 @@ public class WordUtilsDemo {
     }
 
     /**
-     * static String	swapCase​(String str)
+     * static String	swapCase(String str)
      * 转换大小写
      */
     @Test
@@ -75,7 +75,7 @@ public class WordUtilsDemo {
     }
 
     /**
-     * static String	wrap​(String str, int wrapLength[, String newLineStr, boolean wrapLongWords, String wrapOn])
+     * static String	wrap(String str, int wrapLength[, String newLineStr, boolean wrapLongWords, String wrapOn])
      * 换行
      */
     @Test

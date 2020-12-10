@@ -13,7 +13,7 @@ import org.junit.Test;
 public class CaseUtilsDemo {
 
     /**
-     * static String	toCamelCase​(String str, boolean capitalizeFirstLetter, char... delimiters)
+     * static String	toCamelCase(String str, boolean capitalizeFirstLetter, char... delimiters)
      */
     @Test
     public void toCamelCase() {
