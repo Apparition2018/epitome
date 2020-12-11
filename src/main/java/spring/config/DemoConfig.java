@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.util.ResourceUtils;
+import spring.service.GameService;
 
 /**
  * DemoConfig
@@ -33,30 +34,5 @@ public class DemoConfig {
     @Bean(name = "bean", initMethod = "init", destroyMethod = "destroy")
     public spring.bean.Bean bean() {
         return new spring.bean.Bean();
-    }
-
-    @Bean(name = "game")
-    public Game a() {
-        return i -> {
-            System.out.println("> 0");
-        };
-    }
-
-//    @Bean(name = "game")
-//    public Game b() {
-//        return i -> {
-//            System.out.println("< 0");
-//        };
-//    }
-//
-//    @Bean(name = "game")
-//    public Game c() {
-//        return i -> {
-//            System.out.println("< 0");
-//        };
-//    }
-
-    interface Game {
-        void play(int i);
     }
 }

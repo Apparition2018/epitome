@@ -40,6 +40,7 @@
 import l.demo.Demo;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
@@ -47,5 +48,19 @@ public class Test extends Demo {
 
     public static void main(String[] args) throws IOException {
         System.out.println();
+        BigDecimal bigDecimal = new BigDecimal("0.0");
+        System.out.println(new BigDecimal(0).equals(bigDecimal));
+        System.out.println(new BigDecimal(0) == bigDecimal);
+        System.out.println(new BigDecimal(0).intValue() == bigDecimal.intValue());
+    }
+
+    public static Integer temperatureStatus(BigDecimal temperature){
+        if (temperature.compareTo(new BigDecimal(38.5d)) > 0) {
+            return 3;
+        } else if (temperature.compareTo(new BigDecimal(37.3d)) > 0) {
+            return 2;
+        } else {
+            return 1;
+        }
     }
 }
