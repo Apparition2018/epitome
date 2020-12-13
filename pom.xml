@@ -22,9 +22,9 @@
         <!-- https://blog.csdn.net/weixin_34360651/article/details/91778454 -->
         <java.version>1.8</java.version>
         <!-- dependency -->
-        <druid-spring-boot-starter>1.2.3</druid-spring-boot-starter>
+        <druid-spring-boot>1.2.3</druid-spring-boot>
         <swagger>3.0.0</swagger>
-        <pagehelper-spring-boot-starter>1.3.0</pagehelper-spring-boot-starter>
+        <pagehelper-spring-boot>1.3.0</pagehelper-spring-boot>
         <commons-email>1.5</commons-email>
         <commons-configuration2>2.7</commons-configuration2>
         <commons-beanutils>1.9.4</commons-beanutils>
@@ -119,7 +119,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid-spring-boot-starter}</version>
+            <version>${druid-spring-boot}</version>
         </dependency>
 
         <!-- spring boot 整合 pagehelper
@@ -127,7 +127,7 @@
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>${pagehelper-spring-boot-starter}</version>
+            <version>${pagehelper-spring-boot}</version>
         </dependency>
 
         <!-- Swagger3 -->
