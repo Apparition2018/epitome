@@ -138,11 +138,13 @@
     rsh                                     remote shell                        登入远端 shell
     adduser                                                                     新增使用者帐号或更新预设的使用者资料
     su                                      switch user                         切换用户
-    chsh                                    change shell                        更改使用者 shell 设定
     sudo                                    super user do                       以系统管理者的身份执行指令
+    chsh                                    change shell                        更改使用者 shell 设定
     ulimit                                  user's limit                        控制 shell 程序的资源
     top                                                                         显示进程的动态
     ps                                      process status                      显示进程状态
+        -e                                                                      显示所有进程
+        -f                                                                      显示 UID, PPID, C 与 STIME 栏位
     kill                                                                        杀死进程
     whoami                                                                      显示自身用户名称
     id                                                                          显示用户 ID，以及所属群组 ID
@@ -160,6 +162,7 @@
         -r                                                                      关闭系统后重新开机
     reboot                                                                      重启系统
     logout                                                                      退出系统
+    exit                                                                        退出目前的 shell
 ---
 ## 系统设置
     ssh-keygen                                                                  创建 SSH Key
@@ -173,6 +176,7 @@
     useradd                                                                     添加用户
     usermod                                                                     修改用户
     userdel                                                                     删除用户
+        -r                                                                      删除用户登入目录以及目录中所有文件
     passwd                                  password                            更改密码
     eval                                    evaluate                            读取一连串的参数，然后再依参数本身的特性来执行
     rpm                                     redhat package manager              红帽子打包管理器

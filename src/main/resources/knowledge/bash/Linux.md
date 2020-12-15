@@ -5,6 +5,9 @@
 1. [Linux vi/vim | 菜鸟教程](https://www.runoob.com/linux/linux-vim.html)
 2. [linux yum 命令 | 菜鸟教程](https://www.runoob.com/linux/linux-yum.html)
 ---
+## 问题
+1. [详解Linux中/etc/passwd文件](https://www.linuxprobe.com/explain-etc-passwd.html)
+---
 ## vim
 >### 命令模式
 >```
