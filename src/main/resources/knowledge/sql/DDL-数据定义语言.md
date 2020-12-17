@@ -147,6 +147,7 @@ TRUNCATE TABLE score;                                   -- 删除表数据
 >### MySQL
 >```
 >ALTER TABLE score DROP INDEX idx_course;
+>DROP INDEX idx_course ON score;
 >```
 >### SQL Server
 >```
