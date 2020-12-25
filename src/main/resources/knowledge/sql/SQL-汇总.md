@@ -14,6 +14,7 @@
 2. [distinct 和 group by 的去重逻辑浅析](https://www.cnblogs.com/dancesir/p/7505730.html)
 3. [select 和 in 的区别](https://www.cnblogs.com/emilyyoucan/p/7833769.html)
 4. [varchar 与 nvarchar](https://www.cnblogs.com/Jashinck/p/8384388.html)
+5. [Mysql 8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
 >### MySQL
 >1. [使用 mysql 应该注意的细节](https://www.cnblogs.com/zhangyiqinga/p/9753484.html)
 >2. [delimiter 的用法和作用](https://blog.csdn.net/langkeziju/article/details/14446671)

@@ -1,4 +1,4 @@
-package knowledge.oop;
+package knowledge.oop.class_;
 
 import static l.demo.Demo.p;
 

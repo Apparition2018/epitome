@@ -1,4 +1,4 @@
-package knowledge.oop;
+package knowledge.oop.class_;
 
 import lombok.Getter;
 import lombok.Setter;
