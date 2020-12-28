@@ -12,6 +12,7 @@ import static l.demo.Demo.p;
  * 子系统角色 SubSystem
  * <p>
  * 外观模式 | 菜鸟教程：https://www.runoob.com/design-pattern/facade-pattern.html
+ * 《JAVA与模式》之门面模式：https://www.cnblogs.com/java-my-life/archive/2012/05/02/2478101.html
  *
  * @author Arsenal
  * created on 2020/9/26 2:51
@@ -24,6 +25,9 @@ public class FacadeDemo {
         computer.shutdown();
     }
 
+    /**
+     * 门面角色
+     */
     private static class Computer {
         private CPU cpu;
         private Memory memory;
@@ -52,6 +56,9 @@ public class FacadeDemo {
         }
     }
 
+    /**
+     * 子系统角色
+     */
     private static class CPU {
         public void on() {
             p("CPU on!");

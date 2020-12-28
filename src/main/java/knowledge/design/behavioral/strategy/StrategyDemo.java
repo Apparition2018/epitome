@@ -6,7 +6,7 @@ package knowledge.design.behavioral.strategy;
  * 1.存在多个类，它们之间的区别仅在于它们的行为
  * 2.需要在几种算法中选择一种
  * 3.一个对象有很多行为
- * 适用场景：
+ * 使用场景：
  * 1.自定义 Comparator
  * 2.ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit,
  *      - BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory, RejectedExecutionHandler handler)
