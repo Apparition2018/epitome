@@ -13,7 +13,3 @@ $('.css-live-wrap').each(function () {
         $this.find('.centered').css('top', top * 100 + '%');
     }
 });
-
-function demoLog(dom, msg) {
-    dom.innerHTML += msg + '<br/>';
-}

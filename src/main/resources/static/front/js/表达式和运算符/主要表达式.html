@@ -130,7 +130,7 @@
             function timeOut(msg) {
                 return new Promise(
                     resolve => setTimeout(() => {
-                        resolve(demoLog(boxAsync, msg));
+                        resolve(boxAsync.innerHTML += msg + '<br/>');
                     }, 1000)
                 )
             }
@@ -162,25 +162,25 @@
             var boxTiming = document.getElementsByClassName('box-timing')[0]
 
             async function async1() {
-                demoLog(boxTiming, 'async1 start');
+                boxTiming.innerHTML += 'async1 start' + '<br/>';
                 await async2();
-                demoLog(boxTiming, 'async1 end');
+                boxTiming.innerHTML += 'async1 end' + '<br/>';
             }
             async function async2() {
-                demoLog(boxTiming, 'async2');
+                boxTiming.innerHTML += 'async2' + '<br/>';
             }
-            demoLog(boxTiming, 'script start');
+            boxTiming.innerHTML += 'script start' + '<br/>';
             setTimeout(function () {
-                demoLog(boxTiming, 'settimeout'); // macrotasks
+                boxTiming.innerHTML += 'settimeout' + '<br/>'; // macrotasks
             }, 0);
             async1();
             new Promise(function (resolve) {
-                demoLog(boxTiming, 'promise1');
+                boxTiming.innerHTML += 'promise1' + '<br/>';
                 resolve();
             }).then(function () {
-                demoLog(boxTiming, 'promise2'); // microtasks
+                boxTiming.innerHTML += 'promise2' + '<br/>'; // microtasks
             });
-            demoLog(boxTiming, 'script end');
+            boxTiming.innerHTML += 'script end' + '<br/>';
         </script>
     </section>
 </body>
