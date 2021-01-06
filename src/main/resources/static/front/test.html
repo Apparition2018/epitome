@@ -96,7 +96,6 @@
         <script class="code" contenteditable="true">
             console.log($('#serverListForm'));
             console.log($('#serverListForm')[0]);
-            console.log($('#serverListForm').context);
         </script>
     </section>
 
@@ -104,6 +103,12 @@
         <div class="css-live-wrap w40p">
             <div class="caption"></div>
             <div class="centered">
+                <select id="status" name="status" class="col-xs-9">
+                    <option value="0">已作废</option>
+                    <option value="1" selected="selected">未分配</option>
+                    <option value="2">已分配</option>
+                    <option value="3">已激活</option>
+                </select>
             </div>
         </div>
         <style>
