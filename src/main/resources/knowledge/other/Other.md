@@ -21,6 +21,10 @@
 1. 打开 D:\tts9\apache-tomcat-9.0.40\conf\logging.properties
 2. 修改 java.util.logging.ConsoleHandler.encoding = GBK
 ---
+## [Tomcat 热部署](https://blog.csdn.net/w15321271041/article/details/80597962)
+1. On 'Update' action: Update classes and resources
+2. Debug 启动项目 (修改 Java 文件时可以立刻生效)
+---
 ## 开源镜像站
 1. [阿里巴巴开源镜像站](https://developer.aliyun.com/mirror/)
 2. [腾讯软件源](https://mirrors.cloud.tencent.com)
