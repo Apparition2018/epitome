@@ -18,7 +18,7 @@ package spring.demo;
  *
  * @author ljh
  * created on 2020/9/7 1:28
- * @see springboot.controller.UploadController
+ * @see springboot.controller.MultipartFileController
  */
 public class MultipartFileDemo {
 

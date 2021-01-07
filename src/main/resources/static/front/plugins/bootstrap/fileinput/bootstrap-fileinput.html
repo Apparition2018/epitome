@@ -21,7 +21,7 @@
         <div class="caption"><a href="https://plugins.krajee.com/file-input">documentation</a>&nbsp;&amp;
             <a href="https://plugins.krajee.com/file-input/demo">demos</a></div>
         <div class="centered">
-            <input id="input" name="input" type="file">
+            <input id="file-input" name="file-input" type="file">
             <div id="kartik-file-errors"></div>
         </div>
     </div>
@@ -31,20 +31,21 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-fileinput/5.1.3/js/locales/zh.min.js"></script>
     <script class="code" contenteditable="true">
         $(function () {
-            $("#input").fileinput({
-                showPreview: false,
+            $("#file-input").fileinput({
                 language: 'zh',
-                // uploadurl: '',
-                maxfilesize: 1,    // 触发 msgsizetoolarge 提示
-                // {name}：将被上传的文件名替换，{size}：将被上传的文件大小替换，{maxsize}：将被 maxfilesize 参数替换。
+                showPreview: false,
+                uploadurl: 'localhost:3333/multipart-file/file-input',
+                enctype: 'multipart/form-data',
+                maxfilesize: 102400,    
                 msgsizetoolarge: '"{name}" ({size} kb) 超过允许的最大上传大小 {maxsize} kb。请重新上传!',
                 allowedFileExtensions: ['xls', 'xlsx'],
                 elErrorContainer: '#kartik-file-errors',
-            }).on("fileuploaded", function (e, data, previewid, index) {
-                // 上传成功后触发的事件
-            }).on("fileclear", function (e) {
-                // 移除按钮触发的事件，用该事件批量删除
             })
+            //     .on("fileuploaded", function (e, data, previewid, index) {
+            //     // 上传成功后触发的事件
+            // }).on("fileclear", function (e) {
+            //     // 移除按钮触发的事件，用该事件批量删除
+            // })
         })
     </script>
 </section>
