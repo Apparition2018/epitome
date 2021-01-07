@@ -91,12 +91,20 @@ public class ExcelUtil<T> {
                     String cellValue = this.getCellValue(row, j).toString();
                     if (!"".equals(cellValue)) {
                         if (j == 2) {
-                            
+                            code = cellValue;
+                        }
+                        if (j == 3) {
+                            orderTime = cellValue;
+                        }
+                        if (j == 4) {
+                            orderNumber = cellValue;
                         }
                         cellMap.put(j, cellValue);
                     }
                 }
-                keyValueList.add(cellMap);
+                if (code.length() != 0 && orderTime.length() !=0 && orderNumber.length() != 0) {
+                    keyValueList.add(cellMap);
+                }
             }
 
             System.out.println(keyValueList);
@@ -108,13 +116,14 @@ public class ExcelUtil<T> {
                 //ExcelModel excelModel=new ExcelModel();
 
                 T t = clazz.newInstance();
-                System.out.println("t:" + t);
                 for (Integer index : indexs) {
                     String fieldName = allFields[index].getName();
+                    System.out.println(fieldName);
                     String setterMethodName = "set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+                    System.out.println(setterMethodName);
 
                     // Method method = clazz.getClass().getMethod("print", new Class[]{});
-                    Method method = clazz.getDeclaredMethod(setterMethodName, Integer.class);
+                    Method method = clazz.getDeclaredMethod(setterMethodName, allFields[index].getType());
                     Object o = cellMap.get(index);
                     method.invoke(t, o);
                 }
