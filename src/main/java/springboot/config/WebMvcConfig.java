@@ -47,7 +47,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**").excludePathPatterns("/swagger-ui/**");
+        registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/chinese/**").excludePathPatterns("/swagger-ui/**");
         super.addInterceptors(registry);
     }
 

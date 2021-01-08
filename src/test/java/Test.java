@@ -20,6 +20,7 @@
 // Spring Boot 2.x基础教程  http://blog.didispace.com/spring-boot-learning-2x/
 // @HeaderParam
 // ON DUPLICATE KEY UPDATE
+// 上传/下载文件
 
 // https://www.jianshu.com/u/8bbac962b31a
 // Java开发人员必知必会的20种常用类库和API：https://zhuanlan.zhihu.com/p/54716716
@@ -39,17 +40,43 @@
 // 8分钟深入浅出搞懂BIO、NIO、AIO：https://zhuanlan.zhihu.com/p/83597838
 
 import l.demo.Demo;
+import org.apache.commons.io.IOUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.math.BigDecimal;
+import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
 public class Test extends Demo {
 
     public static void main(String[] args) throws IOException {
-//        ExcelUtil<ExcelModel> excelUtil = new ExcelUtil<>(ExcelModel.class);
-//        List<ExcelModel> excelModels = excelUtil.importExcel(file.getInputStream());
+        System.out.println(1.1 % 1);
+    }
+
+    @RequestMapping("/downloadExcel")
+    @ResponseBody
+    public void downloadExcelTemplate(HttpServletResponse response) {
+
+        URL classesUrl = Thread.currentThread().getContextClassLoader().getResource("/");
+        String classesUrlPath = Objects.requireNonNull(classesUrl).getPath();
+        String templatePath = new File(classesUrlPath).getParentFile().getParentFile().getPath() +
+                File.separator + "doc" + File.separator + "Contract_1606122467519.xlsx";
+        File template = new File(templatePath);
+
+        try (InputStream inputStream = new FileInputStream(template);
+             OutputStream outputStream = response.getOutputStream();) {
+            response.setContentType("application/x-download");
+            response.addHeader("Content-Disposition", "attachment;filename=template.xlsx");
+            IOUtils.copy(inputStream, outputStream);
+            outputStream.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
