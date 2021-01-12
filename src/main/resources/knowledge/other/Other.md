@@ -3,6 +3,9 @@
 ---
 ## 杂
 1. [版本号命名规则](https://mp.weixin.qq.com/s/ZoUG9h1TndW2QpnPyGeIQA)
+2. [反向代理为何叫反向代理？](https://www.zhihu.com/question/24723688)
+3. [五分钟带你了解啥是JWT](https://zhuanlan.zhihu.com/p/86937325)
+4. [Kubernetes和Docker到底有啥关系？](https://zhuanlan.zhihu.com/p/87186261)
 ---
 ## [端口被占用](https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html)
 1. 打开 cmd.exe
@@ -30,14 +33,17 @@
 2. [腾讯软件源](https://mirrors.cloud.tencent.com)
 3. [网易开源镜像站](https://mirrors.163.com/)
 ---
-## Redis 下载，启动，可视化工具
-1. [Releases/redis](https://github.com/microsoftarchive/redis/releases)
-2. 点击最新版本
-3. 点击 Redis-x64-x.y.z.zip 下载
-4. 启动：
+## Redis
+1. [Releases/redis](https://github.com/microsoftarchive/redis/releases) 下载最新发布版本
+2. 点击 Redis-x64-x.y.z.zip 下载
+3. 启动：
     1. 双击 Redis 目录下 redis-server.exe
     2. 启动 cmd cd 到 Redis 目录，输入命令 redis-server.exe redis.window.conf
-5. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
+4. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
+>### 参考网站
+>1. [windows下安装redis并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
+>2. [Redis 密码设置和登录](https://www.cnblogs.com/xiaozong/p/5652563.html)
+>3. [Redis 教程](https://www.cnblogs.com/yiwangzhibujian/category/1020818.html)
 ## 服务
 1. WIN+R 输入 services.msc
 ---

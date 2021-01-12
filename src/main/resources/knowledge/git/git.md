@@ -16,7 +16,8 @@
 3. [git clone 报错：error: RPC failed; curl 18 transfer closed with outstanding read data remaining](https://www.jianshu.com/p/ddd1a39dcbc8)
 4. [解决 git ERROR: Permission to XXX.git denied to user](https://www.cnblogs.com/chevin/p/9236674.html)
 5. [解决github 打开、拉取、推送速度慢的问题](https://blog.csdn.net/natahew/article/details/81387885)
-6. [如何解决 GitHub 提交次数过多 .git 文件过大的问题？ - 知乎](https://www.zhihu.com/question/29769130)
+6. [解决no supported authentication methods available](https://blog.csdn.net/qq706352062/article/details/103030082)
+7. [如何解决 GitHub 提交次数过多 .git 文件过大的问题？ - 知乎](https://www.zhihu.com/question/29769130)
 ---
 ## Git 常用命令速查表
 ![Git 常用命令速查表](https://img-blog.csdn.net/20171126101742109)
