@@ -4,6 +4,10 @@ import l.demo.Demo;
 import l.demo.Person;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -17,7 +21,7 @@ import java.util.stream.Stream;
  * Stream 支持元素流功能性操作的类，是 JDK8 的新特性。
  * https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
  * <p>
- * Stream 应该只允许被中间或终端操作操作一次，如 Stream 被检测到重用，将抛出 IllegalStateException。
+ * Stream 应该只允许被中间或终端操作操作一次，若 Stream 被检测到重用，将抛出 IllegalStateException。
  * 如果实在要重复操作同一个 Stream，可以通过 Supplier 获取新的 Stream (参考 SupplierDemo testSupplier())
  * <p>
  * https://blog.csdn.net/icarusliu/article/details/79495534
@@ -47,22 +51,20 @@ public class StreamDemo extends Demo {
      * 创建
      */
     @Test
-    public void createStream() {
+    public void createStream() throws IOException {
         Stream<?> stream;
 
-        //********** 1.通过 Collection **********//
+        //********** 1.Collection **********//
         // stream()
         stream = list.stream();
         // parallelStream()
         stream = list.parallelStream();
 
-        //********** 2.具体元素 **********//
+        //********** 2.通过数组 **********//
         // Stream.of()
         stream = Stream.of(arr);
-        // Stream.build().add()...build()
-        stream = Stream.builder().add(1).add(2).add(3).add(4).add(5).build();
-        // Stream.empty()
-        stream = Stream.empty();
+        // Arrays.stream()
+        stream = Arrays.stream(arr);
 
         //********** 3.指定生成函数 **********//
         // Stream.generate()
@@ -70,11 +72,18 @@ public class StreamDemo extends Demo {
         // Stream.iterate()
         stream = Stream.iterate(0, i -> ++i).limit(9);
 
-        //********** 3.其他 Stream 装箱 **********//
+        //********** 4.文件 **********//
+        stream = Files.lines(Paths.get(DEMO_FILE_PATH));
+
+        //********** 5.其它 **********//
+        // Stream.empty()
+        stream = Stream.empty();
+        // Stream.build().add()...build()
+        stream = Stream.builder().add(1).add(2).add(3).add(4).add(5).build();
         // XxxStream.boxed()
         stream = new Random().ints(0, 10).limit(9).boxed();
 
-        //********** 5.合并两个 Stream **********//
+        //********** 6.合并两个 Stream **********//
         // Stream.concat()
         stream = Stream.concat(stream, stream);
     }
@@ -84,7 +93,7 @@ public class StreamDemo extends Demo {
      * 中间操作
      * <p>
      * 返回值为 Stream 的操作都是惰性求值
-     * https://blog.csdn.net/zebe1989/article/details/82692508
+     * https://blog.csdn.net/zebe1989/article/details/82692508st
      */
     @Test
     public void intermediate() {
@@ -148,7 +157,7 @@ public class StreamDemo extends Demo {
         p(Stream.of(3, 1, -1, -3).findFirst().get());              // 3
 
         // reduce()
-        p(Stream.of(1, 2, 3, 4, 5, 6).reduce((i1, i2) -> i1 + 2).get()); // 19
+        p(Stream.of(1, 2, 3, 4, 5, 6).reduce((i1, i2) -> i1 + 2).get()); // 11
         p(Stream.of(1, 2, 3, 4, 5, 6).reduce(7, (i1, i2) -> i1 + 2));    // 19
 
         // collect()
@@ -174,6 +183,7 @@ public class StreamDemo extends Demo {
         p(Stream.of(arr).noneMatch(i -> i > 5));        // false
 
         // XxxStream        mapToXxx(XxxFunction<? super T>)                        经过 XxxFunction Stream → XxxStream
+        // 当流操作均为数值操作时，将普通流转换成数值流，能获得较高的效率
         IntStream intStream = Stream.of(arr).mapToInt(value -> value);
         // XxxStream        flatMapToInt(Function<? super T, ? extends IntStream>)  经过 Function Stream → XxxStream
         IntStream intStream2 = Stream.of(arr).flatMapToInt(IntStream::of);

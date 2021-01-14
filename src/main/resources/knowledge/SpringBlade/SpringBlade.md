@@ -3,6 +3,7 @@
 ---
 ## Nacos
 1. [windows 安装nacos并启动](https://blog.csdn.net/qq_22656655/article/details/109504234)
+2. [nacos发布为Windows服务自启动](https://www.freesion.com/article/28391377050/)
 ---
 ## Sentinel
 1. [Sentinel 控制台](https://github.com/alibaba/Sentinel/wiki/%E6%8E%A7%E5%88%B6%E5%8F%B0)

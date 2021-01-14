@@ -12,7 +12,7 @@
 2. netstat -ano
 3. netstat -ano|findstr 8080，根据指定端口字符串查找，记下 PID
 4. tasklist|findstr 9776，根据指定 PID 字符串查找任务，记下任务名
-5. taskkill /f /t /im WXWork.exe，或 taskkill /pid 333412 /t
+5. taskkill /f /t /im WXWork.exe，或 taskkill /f /t /pid 333412 
 ---
 ## [Maven 环境变量](http://www.xitongcheng.com/jiaocheng/dnrj_article_44449.html)
 1. WIN+R 输入 sysdm.cpl → 高级 → 环境变量
@@ -37,13 +37,23 @@
 1. [Releases/redis](https://github.com/microsoftarchive/redis/releases) 下载最新发布版本
 2. 点击 Redis-x64-x.y.z.zip 下载
 3. 启动：
-    1. 双击 Redis 目录下 redis-server.exe
-    2. 启动 cmd cd 到 Redis 目录，输入命令 redis-server.exe redis.window.conf
+    - 双击 Redis 目录下 redis-server.exe
+    - 启动 cmd cd 到 Redis 目录，输入命令 redis-server.exe redis.window.conf
 4. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
->### 参考网站
+>#### 参考网站
 >1. [windows下安装redis并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
 >2. [Redis 密码设置和登录](https://www.cnblogs.com/xiaozong/p/5652563.html)
 >3. [Redis 教程](https://www.cnblogs.com/yiwangzhibujian/category/1020818.html)
 ## 服务
-1. WIN+R 输入 services.msc
+WIN+R 输入 services.msc
+>1. 使用 winsw 将应用制作成 windows 服务
+>>1. [将应用制作成windows服务](https://www.cnblogs.com/franson-2016/p/11672666.html)
+>>2. [使用winsw部署Windows服务](https://segmentfault.com/a/1190000019520072)
+>>3. [winsw打包jar](https://www.cnblogs.com/xinglongbing521/p/11157742.html)
+>>4. [使用winSW工具将批处理bat注册为windows系统服务](https://blog.csdn.net/qq_31519989/article/details/106787276)
+>2. 使用 DOS 命令 sc create 创建 windows 服务
+>>1. [SC命令创建和删除windows服务](https://www.cnblogs.com/inuex/p/4299690.html)
+---
+## npm
+1. [windows安装npm教程](https://www.cnblogs.com/jianguo221/p/11487532.html)
 ---

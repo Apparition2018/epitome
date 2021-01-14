@@ -63,6 +63,10 @@ rem                                     在批处理文件或 CONFIG.SYS 里加�
 
 ren                                     重命名文件
 
+sc                                      显示或配置服务<后台处理>
+    create                              在注册表和服务数据库中创建服务项                
+    delete                              从注册表删除服务项                              
+
 set                                     显示、设置或删除 cmd.exe 环境变量
     /a expression                       指定等号右边的字符串为被评估的数字表达式                    ?
 
