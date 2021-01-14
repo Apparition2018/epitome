@@ -9,7 +9,7 @@ import java.util.Optional;
 /**
  * Optional
  * <p>
- * https://docs.oracle.com/javase/8/docs/api/allclasses-noframe.html
+ * https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html
  * https://www.cnblogs.com/xingzc/p/5778090.htmlsout
  * https://www.oschina.net/translate/understanding-accepting-and-leveraging-optional-in?lang=chs&page=1#
  *
@@ -27,17 +27,17 @@ public class OptionalDemo extends Demo {
         Optional<Object> empty = Optional.ofNullable(null);
         empty = Optional.empty();
 
-        // isPresent() 用来检查 Optional 实例是否有值
-        if (name.isPresent()) {
-            // 调用 get() 返回 Optional 的值
-            p(name.get()); // Mary
-        }
-
         // get() 返回存在的值，或抛出 NoSuchElementException
         try {
             p(empty.get());
         } catch (NoSuchElementException ex) {
             p(ex.getMessage()); // No value present
+        }
+
+        // isPresent() 用来检查 Optional 实例是否有值
+        if (name.isPresent()) {
+            // 调用 get() 返回 Optional 的值
+            p(name.get()); // Mary
         }
 
         // ifPresent() 接受 lambda 表达式参数
@@ -50,8 +50,8 @@ public class OptionalDemo extends Demo {
 
         // orElseGet() 与 orElse() 类似，区别在于传入的默认值
         // orElseGet() 接受 lambda 表达式生成默认值
-        p(empty.orElse("Default Value"));  // Default Value
-        p(name.orElse("Default Value"));   // Mary
+        p(empty.orElseGet(() -> "Default Value"));  // Default Value
+        p(name.orElseGet(() -> "Default Value"));   // Mary
 
         // orElseThrow() 与 orElse() 类似，区别在于返回值
         // orElseThrow() 抛出由传入的 lambda 表达式/方法生成异常

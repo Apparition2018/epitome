@@ -57,7 +57,7 @@ public class StreamDemo extends Demo {
         //********** 1.Collection **********//
         // stream()
         stream = list.stream();
-        // parallelStream()
+        // parallelStream()         默认线程数等于 CPU 核心数
         stream = list.parallelStream();
 
         //********** 2.通过数组 **********//
@@ -187,21 +187,6 @@ public class StreamDemo extends Demo {
         IntStream intStream = Stream.of(arr).mapToInt(value -> value);
         // XxxStream        flatMapToInt(Function<? super T, ? extends IntStream>)  经过 Function Stream → XxxStream
         IntStream intStream2 = Stream.of(arr).flatMapToInt(IntStream::of);
-    }
-
-    /**
-     * Collectors
-     * Collectors 类实现了很多归约操作，例如将流转换成集合和聚合元素。
-     */
-    @Test
-    public void collectors() {
-        // toCollection(), toList(), toSet(), toMap(), toConcurrentMap()
-        List<Integer> list = Stream.of(9, 7, 5, 3, 1).collect(Collectors.toList());
-        p(list);   // [9, 7, 5, 3, 1]
-
-        // joining()
-        String str = Stream.of("9", "7", "5", "3", "1").collect(Collectors.joining(","));
-        p(str);    // 9,7,5,3,1
     }
 
 }

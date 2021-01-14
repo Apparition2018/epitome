@@ -2,7 +2,6 @@ package knowledge.api.util.stream;
 
 import org.junit.Test;
 
-import java.util.IntSummaryStatistics;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -10,7 +9,7 @@ import static l.demo.Demo.p;
 
 /**
  * IntStream
- * IntStream 支持顺序和并行聚合操作的 int 序列
+ * IntStream 支持顺序和并行聚合操作的 int 序列，类似的还有 LongStream, DoubleStream
  * <p>
  * IntStream 用法全解：https://blog.csdn.net/qq_31865983/article/details/106443244
  * https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html
@@ -44,22 +43,5 @@ public class IntStreamDemo {
         p(intStream.average());
         // sum()                                总和
         p(intStream.sum());
-    }
-
-    @Test
-    public void summaryStatistics() {
-        IntSummaryStatistics stats = IntStream.rangeClosed(1, 2).summaryStatistics();
-        IntSummaryStatistics stats2 = IntStream.rangeClosed(3, 4).summaryStatistics();
-
-        // 合并
-        stats.combine(stats2);
-        // 添加统计值
-        stats.accept(5);
-
-        p(stats.getCount());    // 5
-        p(stats.getSum());      // 15
-        p(stats.getMin());      // 1
-        p(stats.getMax());      // 5
-        p(stats.getAverage());  // 3.0
     }
 }
