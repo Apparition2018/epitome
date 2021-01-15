@@ -2157,6 +2157,7 @@ public class Suggestions extends Demo {
      * 4.更换 JVM
      *
      * PS：带有"-XX"的 JVM 参数可能是不健壮的，SUN 不推荐使用，但它又是非常好用，这需要在系统升级、迁移时谨慎考虑
+     * 生产环境的jvm会把Xms和Xmx配置为相等：https://blog.csdn.net/u010900754/article/details/86629240
      */
 
     /* 建议138：没有慢的系统

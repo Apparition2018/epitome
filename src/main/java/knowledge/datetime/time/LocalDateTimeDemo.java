@@ -26,9 +26,6 @@ import static l.demo.Demo.p;
 public class LocalDateTimeDemo {
 
     private LocalDateTime ldt;
-    private LocalDateTime ldt2;
-    private LocalDateTime ldt3;
-    private LocalDateTime ldt4;
 
     /**
      * 获取 LocalDateTime
@@ -43,10 +40,10 @@ public class LocalDateTimeDemo {
      * static LocalDateTime	parse(CharSequence text[, DateTimeFormatter formatter])
      */
     public LocalDateTimeDemo() {
+        ldt = LocalDateTime.now();
+        ldt = LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault());
+        ldt = LocalDateTime.parse("2008-08-08T20:08:08");
         ldt = LocalDateTime.of(2018, 8, 8, 20, 8, 8);
-        ldt2 = LocalDateTime.now();
-        ldt3 = LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault());
-        ldt4 = LocalDateTime.parse("2008-08-08T20:08:08");
     }
 
     /**

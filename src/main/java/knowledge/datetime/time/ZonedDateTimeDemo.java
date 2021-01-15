@@ -7,7 +7,8 @@ import java.time.ZonedDateTime;
 
 /**
  * ZoneDateTime
- * ISO-8601日历，具有时区的日期时间，如2007-12-03T10:15:30+01:00 Europe/Paris
+ * ISO-8601日历，具有时区的日期时间，如2007-12-03T10:15:30+01:00 Europe/Paris，
+ * 2007-12-03T10:15:30 为 LocalDateTime，+01:00 Europe/Paris 为 ZoneId
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html
  * https://www.yiibai.com/javatime/javatime_zoneddatetime.html
