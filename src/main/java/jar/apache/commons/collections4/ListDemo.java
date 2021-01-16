@@ -5,7 +5,6 @@ import l.demo.Demo;
 import org.apache.commons.collections4.list.*;
 import org.junit.Test;
 
-
 /**
  * List
  * UnmodifiableList         修饰另一个 List，使 List 不允许被修改

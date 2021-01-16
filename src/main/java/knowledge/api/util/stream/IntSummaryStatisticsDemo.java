@@ -12,7 +12,7 @@ import static l.demo.Demo.p;
  * 用于收集计数、最小值、最大值、和和平均值等统计信息的状态对象
  * 类似的还有 LongSummaryStatistics，DoubleSummaryStatistics
  *
- * @author Administrator
+ * @author ljh
  * created on 2021/1/14 15:41
  */
 public class IntSummaryStatisticsDemo {

@@ -8,7 +8,7 @@ import java.util.StringJoiner;
 /**
  * StringJoiner
  *
- * @author Administrator
+ * @author ljh
  * created on 2021/1/14 14:57
  */
 public class StringJoinerDemo extends Demo {

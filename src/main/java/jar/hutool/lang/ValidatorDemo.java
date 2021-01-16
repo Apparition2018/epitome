@@ -16,7 +16,6 @@ import org.junit.Test;
  */
 public class ValidatorDemo extends Demo {
 
-
     /**
      * equal(Object t1, Object t2)
      * isEmpty(Object value)

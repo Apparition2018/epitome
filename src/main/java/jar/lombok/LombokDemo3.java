@@ -13,7 +13,6 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
-
 /**
  * @author ljh
  * created on 2019/8/8 19:39
@@ -88,7 +87,7 @@ public class LombokDemo3 extends Demo {
     public void testGetterLazy() {
         p(getCached());
     }
-    
+
     @Getter(lazy = true)
     private final double[] cached = expensive();
 
