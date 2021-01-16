@@ -2,7 +2,6 @@ package knowledge.datetime.time;
 
 import org.junit.Test;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -48,16 +47,22 @@ public class TimeDemo {
      */
     @Test
     public void test2() {
-        /* LocalDateTime → Date */
         LocalDateTime ldt = LocalDateTime.parse("2008-08-08T20:08:08");
-        Instant instant = ldt.toInstant(ZoneOffset.ofHours(8)); // 东8区
-        Date date = Date.from(instant);
-        p(date);// Fri Aug 08 20:08:08 CST 2008
+        Date date;
+
+        /* LocalDateTime → Date */
+        date = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
+        p(date);    // 2008-08-08 20:08:08
+
+        date = Date.from(ldt.toInstant(ZoneOffset.ofHours(8)));
+        p(date);    // 2008-08-08 20:08:08
 
         /* Date → LocalDateTime */
-        instant = date.toInstant();
-        ldt = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-        p(ldt); // 2008-08-08T20:08:08
+        ldt = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+        p(ldt);     // 2008-08-08T20:08:08
+
+        ldt = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        p(ldt);     // 2008-08-08T20:08:08
     }
 
 }

@@ -3,7 +3,6 @@ package knowledge.datetime.time;
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import static l.demo.Demo.p;
@@ -27,99 +26,59 @@ import static l.demo.Demo.p;
 public class LocalDateDemo {
 
     private LocalDate ld;
-    private LocalDate ld2;
-    private LocalDate ld3;
-    private LocalDate ld4;
-
 
     /**
-     * 获取 LocalDate
-     * static LocalDate from(TemporalAccessor temporal)
-     * static LocalDate	now()
-     * static LocalDate	now(Clock clock)
-     * static LocalDate	now(ZoneId zone)
-     * static LocalDate	of(int year, int/Month month, int dayOfMonth)
-     * static LocalDate of(LocalDate date, LocalTime time)
-     * static LocalDate	ofEpochDay(long epochDay)
-     * static LocalDate	ofYearDay(int year, int dayOfYear)
-     * static LocalDate	parse(CharSequence text[, DateTimeFormatter formatter])
+     * static LocalDate                 from(TemporalAccessor temporal)
+     * static LocalDate	                ofEpochDay(long epochDay)
      */
     public LocalDateDemo() {
+        // static LocalDate	            now([Clock clock / ZoneId zone])
+        ld = LocalDate.now();
+        // static LocalDate	            of(int year, int/Month month, int dayOfMonth)
+        // static LocalDate             of(LocalDate date, LocalTime time)
         ld = LocalDate.of(2008, 8, 8);
-        ld2 = LocalDate.now();
-        ld3 = LocalDate.ofYearDay(2008, 200);
-        ld4 = LocalDate.parse("2008-08-08");
+        // static LocalDate	            ofYearDay(int year, int dayOfYear)
+        ld = LocalDate.ofYearDay(2008, 200);
+        // static LocalDate	            parse(CharSequence text[, DateTimeFormatter formatter])
+        ld = LocalDate.parse("2008-08-08");
     }
 
-    /**
-     * int              getXXX()
-     */
     @Test
-    public void get() {
-        p(ld.getDayOfYear());       // 220
-        p(ld.getDayOfMonth());      // 8
-        p(ld.getDayOfWeek());       // WEDNESDAY
-        p(ld.getYear());            // 2018
-        p(ld.getMonth());           // AUGUST
-        p(ld.getMonthValue());      // 8
+    public void testLocalDate() {
+        // int                          getXXX()
+        p(ld.getDayOfYear());           // 220
+        p(ld.getDayOfMonth());          // 8
+        p(ld.getDayOfWeek());           // WEDNESDAY
+        p(ld.getYear());                // 2018
+        p(ld.getMonth());               // AUGUST
+        p(ld.getMonthValue());          // 8
+
+        // int                          lengthOfMonth()                     返回某月的天数
+        p(ld.lengthOfMonth());          // 31
+        // int                          lengthOfYear()                      返回某年的天数
+        p(ld.lengthOfYear());           // 366
+
+        // LocalDate	                plusXXX(long xxxToAdd)
+        p(ld.plusYears(1));             // 2009-08-08
+        p(ld.plusMonths(1));            // 2008-09-08
+        // LocalDate	                minusXXX(long xxxToSubtract)
+        p(ld.minusWeeks(1));            // 2008-08-01
+        p(ld.minusDays(1));             // 2008-08-07
+
+        // LocalDate	                witXXX(int xxx)                     返回更改xxx后的本地时间副本
+        p(ld.withYear(2008));           // 2008-08-08
+        p(ld.withMonth(8));             // 2008-08-08
+        p(ld.withDayOfYear(221));       // 2008-08-08
+        p(ld.withDayOfMonth(8));        // 2008-08-18
+
+        // LocalDateTime                atStartOfDay([ZoneId zone])                                     LocalDate + midnight [+ time-zone] → LocalDateTime
+        p(ld.atStartOfDay());           // 2008-08-08T00:00
+        // LocalDateTime	            atTime(int hour, int minute[, int second, int nanoOfSecond])    LocalDate + time → LocalDateTime
+        p(ld.atTime(20, 8));            // 2008-08-08T20:08
+        // LocalDateTime	            atTime(LocalTime time)                                          LocalDate + LocalTime → LocalDateTime
+        p(ld.atTime(LocalTime.parse("20:08:08")));  // 2008-08-08T20:08:08
+
+        // long	                        toEpochDay()                        将此日期转换为纪元日
+        p(ld.toEpochDay());             // 14099
     }
-
-    /**
-     * int              lengthOfMonth()                     返回某月的天数
-     * int              lengthOfYear()                      返回某年的天数
-     */
-    @Test
-    public void length() {
-        p(ld.lengthOfMonth());      // 31
-        p(ld.lengthOfYear());       // 366
-    }
-
-    /**
-     * LocalDate	    plusXXX(long xxxToAdd)
-     * LocalDate	    minusXXX(long xxxToSubtract)
-     */
-    @Test
-    public void plus_minus() {
-        p(ld.plusYears(1));         // 2009-08-08
-        p(ld.plusMonths(1));        // 2008-09-08
-        p(ld.minusWeeks(1));        // 2008-08-01
-        p(ld.minusDays(1));         // 2008-08-07
-    }
-
-    /**
-     * LocalDate	    witXXX(int xxx)                     返回更改xxx后的本地时间副本
-     */
-    @Test
-    public void with() {
-        p(ld.withYear(2018));       // 2018-08-08
-        p(ld.withMonth(10));        // 2008-10-08
-        p(ld.withDayOfYear(200));   // 2008-07-18
-        p(ld.withDayOfMonth(18));   // 2008-08-18
-    }
-
-    /**
-     * LocalDateTime    atStartOfDay([ZoneId zone])                                     LocalDate + midnight [+ time-zone] → LocalDateTime
-     * LocalDateTime	atTime(int hour, int minute[, int second, int nanoOfSecond])    LocalDate + time → LocalDateTime
-     * LocalDateTime	atTime(LocalTime time)                                          LocalDate + LocalTime → LocalDateTime
-     */
-    @Test
-    public void at() {
-        LocalDateTime ldt = ld.atStartOfDay();
-        p(ldt);                     // 2008-08-08T00:00
-
-        ldt = ld.atTime(8, 38);
-        p(ldt);                     // 2008-08-08T08:38
-
-        ldt = ld.atTime(LocalTime.parse("20:08:08"));
-        p(ldt);                     // 2008-08-08T20:08:08
-    }
-
-    /**
-     * long	            toEpochDay()                        将此日期转换为纪元日
-     */
-    @Test
-    public void toEpochDay() {
-        p(ld.toEpochDay());         // 14099
-    }
-
 }

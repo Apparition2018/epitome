@@ -3,6 +3,8 @@ package knowledge.datetime.time;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
@@ -91,25 +93,29 @@ public class DateTimeFormatterDemo {
     public void testDateTimeFormatter() {
         DateTimeFormatter[] formatters = new DateTimeFormatter[]{
                 // 常量
-                DateTimeFormatter.ISO_LOCAL_DATE,                                               // 2019-01-04
-                DateTimeFormatter.ISO_LOCAL_TIME,                                               // 08:54:03.457
-                DateTimeFormatter.ISO_LOCAL_DATE_TIME,                                          // 2019-01-04T08:54:03.457
+                DateTimeFormatter.BASIC_ISO_DATE,                                               // 20080808
+                DateTimeFormatter.ISO_LOCAL_DATE,                                               // 2008-08-08
+                DateTimeFormatter.ISO_LOCAL_TIME,                                               // 20:08:08
+                DateTimeFormatter.ISO_LOCAL_DATE_TIME,                                          // 2008-08-08T20:08:08
+                DateTimeFormatter.ISO_OFFSET_DATE_TIME,                                         // 2008-08-08T20:08:08+08:00
+                DateTimeFormatter.ISO_ZONED_DATE_TIME,                                          // 2008-08-08T20:08:08+08:00
+                DateTimeFormatter.ISO_INSTANT,                                                  // 2008-08-08T12:08:08Z
                 // ISO chronology
-                DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL),                            // 2019年1月4日 星期五
-                DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG),                            // 2019年1月4日
-                DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM),                          // 2019-1-4
-                DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT),                           // 19-1-4
-                DateTimeFormatter.ofLocalizedTime(FormatStyle.LONG),                            // 上午08时54分03秒
-                DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM),                          // 8:54:03
-                DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT),                           // 上午8:54
-                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.LONG),      // 2019年1月4日 星期五 上午08时54分03秒
-                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT),   // 2019-1-4 上午8:54
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL),                            // 2008年8月8日 星期五
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG),                            // 2008年8月8日
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM),                          // 2008-8-8
+                DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT),                           // 08-8-8
+                DateTimeFormatter.ofLocalizedTime(FormatStyle.LONG),                            // 下午08时08分08秒
+                DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM),                          // 20:08:08
+                DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT),                           // 下午8:08
+                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.LONG),      // 2008年8月8日 星期五 下午08时08分08秒
+                DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT),   // 2008-8-8 下午8:08
                 // 指定模式
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")                              // 2019-01-04 08:54:03
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")                              // 2008-08-08 20:08:08
         };
-        LocalDateTime ldt = LocalDateTime.now();
+        OffsetDateTime odt = OffsetDateTime.parse("2008-08-08T20:08:08+08:00");
         for (DateTimeFormatter formatter : formatters) {
-            System.out.println(formatter.format(ldt));
+            System.out.println(formatter.format(odt));
         }
     }
 

@@ -1,5 +1,6 @@
 package knowledge.datetime.time;
 
+import l.demo.Demo;
 import org.junit.Test;
 
 import java.time.ZoneId;
@@ -28,31 +29,30 @@ public class ZoneIdDemo {
     
     @Test
     public void testZoneId() {
-        ZoneId zone;
+        ZoneId zoneId;
         // static ZoneId	    systemDefault()                             获取系统默认时区
-        zone = ZoneId.systemDefault();
+        zoneId = ZoneId.systemDefault();
         // static ZoneId	    from(TemporalAccessor temporal)             从时间对象中获取ZoneId的实例
-        zone = ZoneId.from(ZonedDateTime.now());
+        zoneId = ZoneId.from(ZonedDateTime.now());
         // static ZoneId	    ofOffset(String prefix, ZoneOffset offset)  获取包装偏移量的ZoneId实例
-        zone = ZoneId.ofOffset("UTC", ZoneOffset.UTC);
+        zoneId = ZoneId.ofOffset("UTC", ZoneOffset.UTC);
         // static ZoneId	    of(String zoneId[, Map<String,String> aliasMap])
         // 从一个ID中获取一个ZoneId的实例，确保这个ID是有效的并且可以使用
         // 使用别名映射获取ZoneId实例，以补充标准的zone ID
-        zone = ZoneId.of("Asia/Shanghai");
+        zoneId = ZoneId.of("UTC+8");
+        zoneId = ZoneId.of("Asia/Shanghai");
         
         
         // static Set<String>	getAvailableZoneIds()                       获取可用的zone id集
         Set<String> set = ZoneId.getAvailableZoneIds();
-        for (String zoneId : set) {
-            p(zoneId);
-        }
+        set.forEach(Demo::p);
         
         // String           getDisplayName(TextStyle style, Locale locale)  获取区域的文本表示，如"英国时间"或"+02:00"
-        p(zone.getDisplayName(TextStyle.FULL, Locale.CHINA));               // 中国时间
-        p(zone.getDisplayName(TextStyle.FULL_STANDALONE, Locale.CHINA));    // 中国时间
-        p(zone.getDisplayName(TextStyle.SHORT, Locale.CHINA));              // CT
-        p(zone.getDisplayName(TextStyle.SHORT_STANDALONE, Locale.CHINA));   // CT
-        p(zone.getDisplayName(TextStyle.NARROW, Locale.CHINA));             // Asia/Shanghai
-        p(zone.getDisplayName(TextStyle.NARROW_STANDALONE, Locale.CHINA));  // CT
+        p(zoneId.getDisplayName(TextStyle.FULL, Locale.CHINA));             // 中国时间
+        p(zoneId.getDisplayName(TextStyle.FULL_STANDALONE, Locale.CHINA));  // 中国时间
+        p(zoneId.getDisplayName(TextStyle.SHORT, Locale.CHINA));            // CT
+        p(zoneId.getDisplayName(TextStyle.SHORT_STANDALONE, Locale.CHINA)); // CT
+        p(zoneId.getDisplayName(TextStyle.NARROW, Locale.CHINA));           // Asia/Shanghai
+        p(zoneId.getDisplayName(TextStyle.NARROW_STANDALONE, Locale.CHINA));// CT
     }
 }

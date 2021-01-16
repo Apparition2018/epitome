@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.time.*;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 
 import static l.demo.Demo.p;
 
@@ -17,7 +18,7 @@ import static l.demo.Demo.p;
  * TemporalAdjuster
  * Temporal	        adjustInto(Temporal temporal)               调整指定的时间对象以获得此瞬间
  * <p>
- * 实现类：
+ * 它们的实现类：
  * LocalDateTime, LocalDate, LocalTime, ZonedDateTime, OffsetDateTime, offsetTime, Instant, Year, YearMonth
  *
  * @author ljh
@@ -34,7 +35,7 @@ public class TemporalDemo {
         ldt = LocalDateTime.parse("2008-08-08T20:08:08");
         ld = LocalDate.parse("2008-08-08");
         lt = LocalTime.parse("20:08:08");
-        instant = Instant.parse("2008-08-08T20:08:08.00Z");
+        instant = Instant.parse("2008-08-08T12:08:08.00Z");
     }
 
     /* Temporal */
@@ -75,7 +76,7 @@ public class TemporalDemo {
         p(ldt.plus(1, ChronoUnit.DAYS));            // 2008-08-09T20:08:08
         p(ld.plus(Period.ofDays(1)));               // 2008-08-09
         p(lt.minus(1, ChronoUnit.HOURS));           // 19:08:08
-        p(instant.minus(Duration.ofHours(1)));      // 2008-08-08T19:08:08Z
+        p(instant.minus(Duration.ofHours(1)));      // 2008-08-08T11:08:08Z
     }
 
     /**
@@ -85,20 +86,38 @@ public class TemporalDemo {
     @Test
     public void until() {
         p(ldt.until(LocalDateTime.parse("2018-08-08T20:08:08"), ChronoUnit.YEARS)); // 10
-        p(instant.until(Instant.parse("2018-08-08T20:08:08Z"), ChronoUnit.DAYS));   // 3652
+        p(instant.until(Instant.parse("2018-08-08T12:08:08.00Z"), ChronoUnit.DAYS));// 3652
     }
 
     /**
      * default Temporal	with(TemporalAdjuster adjuster)             返回即时调整后的副本
+     * - TemporalAdjusters methods:
+     * -    dayOfWeekInMonth                                        返回同一个月中每周的第几天
+     * -    firstDayOfMonth                                         返回当月的第一天
+     * -    firstDayOfNextMonth                                     返回下月的第一天
+     * -    firstDayOfNextYear                                      返回下一年的第一天
+     * -    firstDayOfYear                                          返回本年的第一天
+     * -    firstInMonth                                            返回同一个月中第一个星期几
+     * -    lastDayOfMonth                                          返回当月的最后一天
+     * -    lastDayOfNextMonth                                      返回下月的最后一天
+     * -    lastDayOfNextYear                                       返回下一年的最后一天
+     * -    lastDayOfYear                                           返回本年的最后一天
+     * -    lastInMonth                                             返回同一个月中最后一个星期几
+     * -    next / previous                                         返回后一个/前一个给定的星期几
+     * -    nextOrSame / previousOrSame                             返回后一个/前一个给定的星期几，如果这个值满足条件，直接返回
+     * <p>
      * Temporal	        with(TemporalField field, long newValue)    返回指定字段设置为新值的即时副本
      */
     @Test
     public void with() {
-        p(ldt.with(Month.OCTOBER).with(DayOfWeek.MONDAY));  // 2008-10-06T20:08:08
-        p(lt.with(LocalTime.NOON));                         // 12:00
+        p(ldt.with(TemporalAdjusters.lastDayOfMonth()));        // 2008-08-31T20:08:08
+        p(ldt.with(TemporalAdjusters.firstDayOfNextMonth()));   // 2008-08-01T20:08:08
 
-        p(ld.with(ChronoField.DAY_OF_WEEK, 7));             // 2008-08-10
-        p(instant.with(ChronoField.INSTANT_SECONDS, 59));   // 1970-01-01T00:00:59Z ???
+        p(ldt.with(Month.OCTOBER).with(DayOfWeek.MONDAY));      // 2008-10-06T20:08:08
+        p(lt.with(LocalTime.NOON));                             // 12:00
+
+        p(ld.with(ChronoField.DAY_OF_WEEK, 7));                 // 2008-08-10
+        p(instant.with(ChronoField.INSTANT_SECONDS, 59));       // 1970-01-01T00:00:59Z
     }
 
     /* TemporalAccessor */
@@ -137,7 +156,7 @@ public class TemporalDemo {
         p(ldt.get(ChronoField.DAY_OF_YEAR));                // 221
         p(ld.get(ChronoField.DAY_OF_WEEK));                 // 5
         p(lt.get(ChronoField.AMPM_OF_DAY));                 // 1
-        p(instant.getLong(ChronoField.INSTANT_SECONDS));    // 1218226088
+        p(instant.getLong(ChronoField.INSTANT_SECONDS));    // 1218197288
     }
 
 }

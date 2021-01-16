@@ -6,6 +6,7 @@ import java.util.Date;
 
 /**
  * SimpleDateFormat
+ * SimpleDateFormat的线程安全问题与解决方案：https://www.cnblogs.com/zemliu/p/3290585.html   
  * https://www.runoob.com/manual/jdk1.6/java/text/SimpleDateFormat.html
  * <p>
  * 字母   日期或时间元素             表示          示例

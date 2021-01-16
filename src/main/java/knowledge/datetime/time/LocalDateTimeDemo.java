@@ -2,7 +2,10 @@ package knowledge.datetime.time;
 
 import org.junit.Test;
 
-import java.time.*;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 
 import static l.demo.Demo.p;
@@ -28,100 +31,71 @@ public class LocalDateTimeDemo {
     private LocalDateTime ldt;
 
     /**
-     * 获取 LocalDateTime
-     * static LocalDateTime from(TemporalAccessor temporal)
-     * static LocalDateTime	now()
-     * static LocalDateTime	now(Clock clock)
-     * static LocalDateTime	now(ZoneId zone)
-     * static LocalDateTime	of(int year, int/Month month, int dayOfMonth, int hour, int minute[, int second, int nanoOfSecond])
-     * static LocalDateTime of(LocalDate date, LocalTime time)
-     * static LocalDateTime	ofEpochSecond(long epochSecond, int nanoOfSecond, ZoneOffset offset)
-     * static LocalDateTime	ofInstant(Instant instant, ZoneId zone)
-     * static LocalDateTime	parse(CharSequence text[, DateTimeFormatter formatter])
+     * static LocalDateTime             from(TemporalAccessor temporal)
+     * static LocalDateTime	            ofEpochSecond(long epochSecond, int nanoOfSecond, ZoneOffset offset)
      */
     public LocalDateTimeDemo() {
+        // static LocalDateTime	        now([Clock clock / ZoneId zone])
         ldt = LocalDateTime.now();
+        // static LocalDateTime	        of(int year, int/Month month, int dayOfMonth, int hour, int minute[, int second, int nanoOfSecond])
+        // static LocalDateTime         of(LocalDate date, LocalTime time)
+        ldt = LocalDateTime.of(2008, 8, 8, 20, 8, 8);
+        // static LocalDateTime	ofInstant(Instant instant, ZoneId zone)
         ldt = LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault());
+        // static LocalDateTime	        parse(CharSequence text[, DateTimeFormatter formatter])
         ldt = LocalDateTime.parse("2008-08-08T20:08:08");
-        ldt = LocalDateTime.of(2018, 8, 8, 20, 8, 8);
     }
 
-    /**
-     * int	            getXXX()
-     */
     @Test
-    public void get() {
-        p(ldt.getDayOfYear());      // 220
-        p(ldt.getDayOfMonth());     // 8
-        p(ldt.getDayOfWeek());      // WEDNESDAY
-        p(ldt.getYear());           // 2018
-        p(ldt.getMonth());          // AUGUST
-        p(ldt.getMonthValue());     // 8
-        p(ldt.getHour());           // 20
-        p(ldt.getMinute());         // 8
-        p(ldt.getSecond());         // 8
-        p(ldt.getNano());           // 0
+    public void testLocalDateTime() {
+        // int	                                getXXX()            
+        p(ldt.getDayOfYear());                  // 221
+        p(ldt.getDayOfMonth());                 // 8
+        p(ldt.getDayOfWeek());                  // FRIDAY
+        p(ldt.getYear());                       // 2008
+        p(ldt.getMonth());                      // AUGUST
+        p(ldt.getMonthValue());                 // 8
+        p(ldt.getHour());                       // 20
+        p(ldt.getMinute());                     // 8
+        p(ldt.getSecond());                     // 8
+        p(ldt.getNano());                       // 0
+
+        // LocalDateTime                        plusXXX(long xxxToAdd)
+        p(ldt.plusWeeks(1));                    // 2008-08-15T20:08:08
+        // LocalDateTime                        minusXXX(long xxxToSubtract)
+        p(ldt.minusMinutes(1));                 // 2008-08-08T20:07:08
+
+        // LocalDateTim                         witXXX(int xxx)                     返回更改xxx后的本地时间副本
+        p(ldt.withYear(2018));                  // 2018-08-08T20:08:08
+        p(ldt.withMonth(10));                   // 2008-10-08T20:08:08
+        p(ldt.withDayOfYear(200));              // 2008-07-18T20:08:08
+        p(ldt.withDayOfMonth(18));              // 2008-08-18T20:08:08
+        p(ldt.withHour(8));                     // 2008-08-08T08:08:08
+        p(ldt.withMinute(38));                  // 2008-08-08T20:38:08
+        p(ldt.withSecond(38));                  // 2008-08-08T20:08:38
+        p(ldt.withNano(38));                    // 2008-08-08T20:08:08.000000038
+
+        // LocalDateTime                        truncatedTo(TemporalUnit unit)      返回截断到指定单元的副本
+        p(ldt.truncatedTo(ChronoUnit.DAYS));    // 2008-08-08T00:00
+        p(ldt.truncatedTo(ChronoUnit.HOURS));   // 2008-08-08T20:00
+        p(ldt.truncatedTo(ChronoUnit.MINUTES)); // 2008-08-08T20:08
+        p(ldt.truncatedTo(ChronoUnit.SECONDS)); // 2008-08-08T20:08:08
     }
 
-    /**
-     * LocalDateTime    plusXXX(long xxxToAdd)
-     * LocalDateTime    minusXXX(long xxxToSubtract)
-     */
     @Test
-    public void plus_minus() {
-        p(ldt.plusWeeks(1));        // 2018-08-15T20:08:08
-        p(ldt.minusMinutes(1));     // 2018-08-08T20:07:08
-    }
+    public void convert() {
+        // ZonedDateTime	                        atZone(ZoneId zone)                 LocalDateTime + time-zone → ZonedDateTime
+        p(ldt.atZone(ZoneId.systemDefault()));      // 2008-08-08T20:08:08+08:00[Asia/Shanghai]
+        // OffsetDateTime	                        atOffset(ZoneOffset offset)         LocalDateTime + offset → ZonedDateTime
+        p(ldt.atOffset(ZoneOffset.ofHours(8)));     // 2008-08-08T20:08:08+08:00
 
-    /**
-     * LocalDateTim     witXXX(int xxx)                     返回更改xxx后的本地时间副本
-     */
-    @Test
-    public void with() {
-        p(ldt.withYear(2018));      // 2018-08-08T20:08:08
-        p(ldt.withMonth(10));       // 2018-10-08T20:08:08
-        p(ldt.withDayOfYear(200));  // 2018-07-19T20:08:08
-        p(ldt.withDayOfMonth(18));  // 2018-08-18T20:08:08
-        p(ldt.withHour(8));         // 2018-08-08T08:08:08
-        p(ldt.withMinute(38));      // 2018-08-08T20:38:08
-        p(ldt.withSecond(38));      // 2018-08-08T20:08:38
-        p(ldt.withNano(38));        // 2018-08-08T20:08:08.000000038
+        // LocalDate	                            toLocalDate()                       LocalDateTime → LocalDate
+        p(ldt.toLocalDate());                       // 2008-08-08
+        // LocalTime	                            toLocalTime()                       LocalDateTime → LocalTime
+        p(ldt.toLocalTime());                       // 20:08:08
+        // default Instant	                        toInstant(ZoneOffset offset)        LocalDateTime → Instant
+        p(ldt.toInstant(ZoneOffset.ofHours(8)));    // 2008-08-08T12:08:08Z
+        // default long	                            toEpochSecond(ZoneOffset offset)    LocalDateTime → Second (纪元)
+        p(ldt.toEpochSecond(ZoneOffset.ofHours(8)));// 1218197288
     }
-
-    /**
-     * ZonedDateTime	atZone(ZoneId zone)                 LocalDateTime + time-zone → ZonedDateTime
-     */
-    @Test
-    public void atZone() {
-        ZonedDateTime zdt = ldt.atZone(ZoneId.systemDefault());
-        p(zdt);                     // 2018-08-08T20:08:08+08:00[Asia/Shanghai]
-    }
-
-    /**
-     * LocalDate	    toLocalDate()                       LocalDateTime → LocalDate
-     * LocalTime	    toLocalTime()                       LocalDateTime → LocalTime
-     * <p>
-     * ChronoLocalDateTime
-     * default Instant	toInstant(ZoneOffset offset)        LocalDateTime → Instant
-     * default long	toEpochSecond(ZoneOffset offset)        LocalDateTime → Second (纪元)
-     */
-    @Test
-    public void to() {
-        p(ldt.toLocalDate());                   // 2018-08-08
-        p(ldt.toLocalTime());                   // 20:08:08
-        p(ldt.toInstant(ZoneOffset.UTC));       // 2018-08-08T20:08:08Z
-        p(ldt.toEpochSecond(ZoneOffset.UTC));   // 1533758888
-    }
-
-    /**
-     * LocalDateTime    truncatedTo(TemporalUnit unit)      返回截断到指定单元的副本
-     */
-    @Test
-    public void truncatedTo() {
-        p(ldt.truncatedTo(ChronoUnit.DAYS));    // 2018-08-08T00:00
-        p(ldt.truncatedTo(ChronoUnit.HOURS));   // 2018-08-08T20:00
-        p(ldt.truncatedTo(ChronoUnit.MINUTES)); // 2018-08-08T20:08
-        p(ldt.truncatedTo(ChronoUnit.SECONDS)); // 2018-08-08T20:08:08
-    }
-
 }
