@@ -54,6 +54,3 @@ WIN+R 输入 services.msc
 >2. 使用 DOS 命令 sc create 创建 windows 服务
 >>1. [SC命令创建和删除windows服务](https://www.cnblogs.com/inuex/p/4299690.html)
 ---
-## npm
-1. [windows安装npm教程](https://www.cnblogs.com/jianguo221/p/11487532.html)
----
