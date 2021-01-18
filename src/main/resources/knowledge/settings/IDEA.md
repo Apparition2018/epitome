@@ -7,6 +7,12 @@
     4. IDE Settings Sync
     5. Sync Plugins Silently
 ---
+## 编辑器内中文字体
+    1. Settings → Editor → Font
+    2. Show only monospaced fonts (只显示等宽字体) 取消勾选
+    3. Fallback font: SimHei
+    4. Enable font ligatures (启用字体连写) 勾选
+---
 ## 文件和代码模板
     1. Settings → Editor → File and Code Templates
     2. Files
@@ -39,7 +45,14 @@
 ---
 ## JavaScript version
     1. Settings → Languages & Frameworks → JavaScript
-    2. JavaScript language version
+    2. JavaScript language version: ECMAScript 6
+---
+## npm
+    1. package.json 右键 Show npm Scripts
+---
+## webpack.config.js
+    1. Settings → Language & Frameworks → JavaScript → Webpack
+    2. webpack configuration file: xxx\node_modules\@vue\cli-service\webpack.config.js
 ---
 ## [Project Settings](https://www.jianshu.com/p/39b2206999e7)
 >### Facets
