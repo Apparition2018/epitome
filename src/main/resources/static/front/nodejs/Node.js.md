@@ -19,8 +19,9 @@
     npm config set cache "nodejs安装目录\node_cache"
     npm config get cache
     npm config list
-    npm install -g npm
+    npm install|i [-g] npm
     npm install -g yarn --registry=https://registry.npm.taobao.org
+    npm uninstall i -g npm
     npm info yarn
     npm list -g --depth=0
     npm run dev

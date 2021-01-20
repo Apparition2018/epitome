@@ -44,6 +44,8 @@ public class ValidatorController {
     /**
      * SpringBoot 整合 validator
      * http://www.leftso.com/blog/328.html
+     * <p>
+     * localhost:3333/validator/valid
      */
     @RequestMapping("/valid")
     public void valid(@Validated User user, BindingResult result) {
@@ -65,6 +67,8 @@ public class ValidatorController {
      * <p>
      * Validated 和 Valid 的区别：
      * https://blog.csdn.net/quanaianzj/article/details/80883029
+     * <p>
+     * localhost:3333/validator/valid2
      */
     @RequestMapping("/valid2")
     public String validator(@Valid User2 user, BindingResult result) {

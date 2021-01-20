@@ -12,7 +12,7 @@
     basedir=F:\mysql-8.0.16-winx64
     # 自定义设置mysql数据库的数据存放目录
     datadir=F:\mysql-8.0.16-winx64\data
-    # 允许最大连接数`__`
+    # 允许最大连接数
     max_connections=200
     # 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统
     max_connect_errors=10
@@ -25,6 +25,12 @@
     default-storage-engine=INNODB
     # 默认使用“mysql_native_password”插件认证
     default_authentication_plugin=mysql_native_password
+    ###
+    performance_schema=off
+    table_definition_cache=400
+    table_open_cache=64
+    innodb_buffer_pool_chunk_size=64M
+    innodb_buffer_pool_size=64M
     [mysql]
     # 设置mysql客户端默认字符集
     default-character-set=utf8mb4
