@@ -15,17 +15,22 @@
 ## 常用命令
     node -v
     npm -v
+    npm config set registry=http://registry.npm.taobao.org
     npm config set prefix "nodejs安装目录\node_global"
     npm config set cache "nodejs安装目录\node_cache"
-    npm config get cache
     npm config list
-    npm install|i [-g] npm
+    npm i -g npm --registry=https://registry.npm.taobao.org
     npm install -g yarn --registry=https://registry.npm.taobao.org
     npm uninstall i -g npm
     npm info yarn
     npm list -g --depth=0
     npm run dev
     yarn conifg set registry https://registry.npm.taobao.org -g
+    yarn config set global-folder "E:\nodejs\yarn_global"
+    yarn config set cache-folder "E:\nodejs\yarn_cache"
+    yarn config list
+    yarn global add @vue/cli
+    yarn global remove @vue-cli
     yarn install
     yarn run serve
 ---

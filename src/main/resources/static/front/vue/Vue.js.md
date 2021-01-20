@@ -32,7 +32,8 @@
 ## 选项|其它
     name                    
 ---
-## 实例 property
+## 实例属性
+    vm.$data                Vue 实例观察的数据对象
     vm.$refs                一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例
 ---
 ## 实例方法|事件
