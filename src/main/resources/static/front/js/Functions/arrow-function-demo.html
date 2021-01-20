@@ -18,25 +18,21 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 函数体只有一句话可省略 {}
-            var func = (x, y) => x * y;
+            let func = (x, y) => x * y;
 
             // 如不省略 {}
-            var func = (x, y) => { return x * y };
+            func = (x, y) => { return x * y };
 
             // 只有一个参数，可省略括号
-            var func = x => x * x;
+            func = x => x * x;
 
             // 没有参数，要保留 ()
-            var func = () => 2 * 2;
+            func = () => 2 * 2;
 
             // 如函数直接返回一个对象，必须在 {} 外面加上 ()
-            var func = () => ({ name: 'Henry', age: 41 });
-
-
+            func = () => ({ name: 'Henry', age: 41 });
         </script>
     </section>
 
@@ -47,8 +43,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function Person() {
                 this.age = 0;
@@ -58,7 +52,7 @@
             }
 
             function foo(n) {
-                var f = () => arguments[0] + n; // 隐式绑定 foo 函数的 arguments 对象
+                let f = () => arguments[0] + n; // 隐式绑定 foo 函数的 arguments 对象
                 return f();
             }
             foo(4); // 8
@@ -72,14 +66,12 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var adder = {
+            let adder = {
                 base: 1,
                 add: function (a) {
-                    var f = v => v + this.base;
-                    var b = { base: 2 };
+                    let f = v => v + this.base;
+                    let b = { base: 2 };
                     return f.call(b, a); // b会被忽略
                 }
             };

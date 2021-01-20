@@ -93,20 +93,17 @@
                     href="http://es6.ruanyifeng.com/#docs/promise#Promise-prototype-catch#Promise-prototype-catch">Promise.prototype.catch()</a>
             </div>
             <div class="caption">
-                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises#Catch_的后续链式操作">Catch
-                    的后续链式操作</a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises#Catch_的后续链式操作">Catch 的后续链式操作</a>
             </div>
             <div class="centered box-catch">
 
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
             (function () {
-                var boxCatch = document.getElementsByClassName('box-catch')[0];
+                let boxCatch = document.getElementsByClassName('box-catch')[0];
 
-                new Promise((resoleve, reject) => {
+                new Promise((resolve, reject) => {
                     boxCatch.innerHTML = 'Initial';
 
                     resolve();
@@ -130,14 +127,12 @@
                 <a
                     href="http://es6.ruanyifeng.com/#docs/promise#Promise-prototype-catch#Promise-resolve">Promise.resolve()</a>
             </div>
-            <div class="caption">在本轮"事件循环"（event loop）的结束时，而不是在下一轮"事件循环"的开始时</div>
+            <div class="caption">在本轮"事件循环"(event loop)的结束时，而不是在下一轮"事件循环"的开始时</div>
             <div class="centered box-resolve"></div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
                 (function () {
-                    var boxResolve = document.getElementsByClassName('box-resolve')[0];
+                    let boxResolve = document.getElementsByClassName('box-resolve')[0];
 
                     setTimeout(() => {
                         boxResolve.innerHTML += '<br/> three';
@@ -159,15 +154,13 @@
             </div>
             <div class="centered box-all"></div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
                 (function () {
-                    var boxAll = document.getElementsByClassName('box-all')[0];
+                    let boxAll = document.getElementsByClassName('box-all')[0];
 
-                    var p1 = Promise.resolve(3);
-                    var p2 = 42;
-                    var p3 = new Promise((resolve, reject) => {
+                    let p1 = Promise.resolve(3);
+                    let p2 = 42;
+                    let p3 = new Promise((resolve, reject) => {
                         setTimeout(resolve, 100, 'foo');
                     });
 
@@ -186,16 +179,14 @@
             </div>
             <div class="centered box-race"></div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
                 (function () {
-                    var boxRace = document.getElementsByClassName('box-race')[0];
+                    let boxRace = document.getElementsByClassName('box-race')[0];
 
-                    var p1 = new Promise((resolve, reject) => {
+                    let p1 = new Promise((resolve, reject) => {
                         setTimeout(resolve, 500, 'p1');
-                    })
-                    var p2 = new Promise((resolve, reject) => {
+                    });
+                    let p2 = new Promise((resolve, reject) => {
                         setTimeout(resolve, 100, 'two');
                     });
 
@@ -213,8 +204,6 @@
             </div>
             <div class="centered box-image"></div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
                 (function () {
                     const preloadImage = function (path) {

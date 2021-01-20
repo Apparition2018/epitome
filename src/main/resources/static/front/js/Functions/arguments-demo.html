@@ -41,14 +41,12 @@
             <div class="stack centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function stackTrace() {
                 // arguments.caller 已不可使用
                 // Function.caller 指向调用当前函数的函数，非标准
-                var f = stackTrace.caller; // 等同于 arguments.callee.caller
-                var s = "stack Trace:\n";
+                let f = stackTrace.caller; // 等同于 arguments.callee.caller
+                let s = "stack Trace:\n";
                 while (f) {
                     s += f.name;
                     s += "\n";
@@ -77,11 +75,9 @@
             <div class="centered" id="eg1">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function myConcat(separator) {
-                var args = [].slice.call(arguments, 1);
+                let args = [].slice.call(arguments, 1);
                 return args.join(separator);
             }
 
@@ -113,14 +109,14 @@
         </style>
         <script class="code w67p" contenteditable="true">
             function list(type) {
-                var result = "<" + type + "l><li>";
-                var args = Array.prototype.slice.call(arguments, 1);
+                let result = "<" + type + "l><li>";
+                let args = Array.prototype.slice.call(arguments, 1);
                 result += args.join("</li><li>");
                 result += "</li></" + type + "l>"; // end list
                 return result;
             }
 
-            var listHTML = list("u", "One", "Two", "Three");
+            let listHTML = list("u", "One", "Two", "Three");
             document.querySelector('.eg2').innerHTML = listHTML;
         </script>
     </section>

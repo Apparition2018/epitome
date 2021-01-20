@@ -13,12 +13,12 @@
 <body>
     <section class="code-wrap h100">
         <div class="css-live-wrap w33p">
-            <div class="caption">严格模式下，无法再意外创建全局变量</div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode" target="_blank">严格模式</a>下，无法再意外创建全局变量
+            </div>
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict"
             // a = "1"; // ReferenceError: a is not defined
@@ -32,8 +32,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
 
@@ -60,8 +58,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict"
             // delete Object.prototype; // TypeError: Cannot delete property 'prototype' of function Object() { [native code] }
@@ -74,8 +70,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
             // function sum(a, a, b, c) {}; SyntaxError: Duplicate parameter name not allowed in this context
@@ -88,8 +82,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
             // var eight = 015; // SyntaxError: Octal literals are not allowed in strict mode.
@@ -102,8 +94,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
             // false.true = '';         // TypeError: Cannot create property 'true' on boolean 'false'
@@ -118,8 +108,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
             var c = 17;
@@ -137,8 +125,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 正常模式下，JS有两种变量作用域：全局作用域和函数作用域
             // 严格模式创设了第三种作用域：eval 作用域
@@ -154,8 +140,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
             var e;
@@ -170,8 +154,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
             // eval = 17;
@@ -190,8 +172,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
             function f(x) {
@@ -208,11 +188,9 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
-            var g = function () { return arguments.callee };
+            let g = function () { return arguments.callee };
             // g(); // TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
         </script>
     </section>
@@ -224,8 +202,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function i() {
                 "use strict";
@@ -245,8 +221,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
             // function package(protected) { }; // SyntaxError: Unexpected strict mode reserved word
@@ -261,8 +235,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
             function h() { return this; }
@@ -281,15 +253,13 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             "use strict";
             if (true) {
                 function k() { }    // 没有报错?
                 k();
             }
-            for (var i = 0; i < 5; i++) {
+            for (let i = 0; i < 5; i++) {
                 function l() { }    // 没有报错?
                 l();
             }

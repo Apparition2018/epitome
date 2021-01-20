@@ -5,45 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <title>Closures （闭包）</title>
+    <title>Closure|闭包</title>
     <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../static/css/demo.css">
 </head>
 
 <body>
-    <section class="code-wrap h450">
+    <section class="code-wrap  h250 ">
         <div class="css-live-wrap w33p">
-            <div class="caption">闭包</div>
-            <div class="caption">闭包是函数和声明该函数的词法环境的组合</div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures" target="_blank">闭包|MDN</a>
+            </div>
+            <div class="caption">
+                <a href="https://www.zhihu.com/question/34210214" target="_blank">闭包|知乎</a>
+            </div>
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            // 基本示例
             function init() {
-                var name = "Mozilla";       // 局部变量
+                var name = "Closure";       // 局部变量
                 function displayName() {    // 内部函数，一个闭包
                     console.log(name);      // 使用了父函数中声明的变量
                 }
                 displayName();
             }
-
             init();
-
-
-            // 特殊示例1
-            function makeAdder(x) {
-                return function (y) {
-                    return x + y;
-                }
-            }
-
-            // add5 和 add10 都是闭包。它们共享相同的函数定义，但是保存了不同的词法环境。
-            // 在 add5 的环境中，x 为 5；add10 中，x 则为 10。
-            var add5 = makeAdder(5);
-            var add10 = makeAdder(10);
         </script>
     </section>
 
@@ -100,8 +87,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 因为 setTimeout 里的匿名函数是闭包，每次循环创建一个闭包，而且共享了同一个词法作用域
             // 又因为循环在第一次回调函数触发前早已执行完毕，所以 i 每次循环都输出3

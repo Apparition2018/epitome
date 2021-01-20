@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <base target="_blank">
     <title>Document-demo</title>
     <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../static/css/demo.css">
 </head>
 
 <body>
-    <section class="code-wrap">
+    <section class="code-wrap h450">
         <div class="css-live-wrap w100p">
             <div class="caption">属性</div>
             <div class="centered">
@@ -178,7 +177,7 @@
         <script class="code w60p" contenteditable="true">
             if (!document.referrer) {
                 /* 如果document.referrer为假，则跳转到百度首页 */
-                var a = document.querySelector('.jsBack a');
+                let a = document.querySelector('.jsBack a');
                 a.setAttribute('href', 'https://www.baidu.com');
             }
         </script>
@@ -220,7 +219,7 @@
         <div class="css-live-wrap w40p">
             <div class="caption">createAttribute &amp; createElement &amp; createTextNode</div>
             <div class="create centered">
-                <a href="../Node/Node-demo.html#create">create</a>
+                <a href="../Node/Node-demo.html#create" target="_blank">create</a>
             </div>
         </div>
         <style>
@@ -290,7 +289,7 @@
                 return obj.currentStyle[style];
             }
 
-            var oTimer = setInterval(function () {
+            let oTimer = setInterval(function () {
                 document.title = num.innerHTML = parseInt(getCSS(percent, 'width'));
             }, 100);
 

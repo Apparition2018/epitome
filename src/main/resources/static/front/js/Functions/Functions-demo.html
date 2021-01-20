@@ -18,8 +18,6 @@
             <div class="default centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function go() {
                 return ':P';
@@ -40,8 +38,6 @@
             <div class="rest centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 简单示例
             function sortArgs(...args) {
@@ -68,13 +64,11 @@
             <div class="definitions centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var bar = {
+            let bar = {
                 foo0: function () { return 0; },
                 foo1() { return 1; },           // 简写
-                ['foo' + 2]() { return 2; }      // 简写支持计算属性名
+                ['foo' + 2]() { return 2; }     // 简写支持计算属性名
             }
         </script>
     </section>
@@ -86,11 +80,9 @@
             <div class="getter centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 在新对象初始化时定义一个getter
-            var obj = {
+            let obj = {
                 log: ['example', 'test'],
                 get latest() { // 伪属性
                     return this.log.length === 0 ? undefined : this.log[this.log.length - 1];
@@ -110,11 +102,9 @@
             <div class="setter centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 在对象初始化时定义 setter
-            var language = {
+            let language = {
                 log: [],
                 set current(name) {
                     this.log.push(name);
