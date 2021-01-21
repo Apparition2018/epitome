@@ -26,11 +26,17 @@
 ## 选项|资源
     components              组件
 ---
+## 选项|生命周期钩子
+    created                 在实例创建完成后被立即调用
+---
 ## 选项|其它
     name                    
 ---
+## 实例 property
+    vm.$refs                一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例
+---
 ## 实例方法|事件
-    vm.$emit                触发事件，附加参数传给监听器回调
+    vm.$emit                触发当前实例上的事件。附加参数都会传给监听器回调
 ---
 ## 指令
     v-text                  textConent
