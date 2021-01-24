@@ -1,9 +1,9 @@
 // 默认导出
 export default function operation() {
-    var plus = function (a, b) { return a + b; };
-    var subtract = function (a, b) { return a - b; };
-    var multiply = function (a, b) { return a * b; };
-    var divide = function (a, b) { return a / b; };
+    let plus = function (a, b) { return a + b; };
+    let subtract = function (a, b) { return a - b; };
+    let multiply = function (a, b) { return a * b; };
+    let divide = function (a, b) { return a / b; };
     return {
         plus: plus,
         subtract: subtract,

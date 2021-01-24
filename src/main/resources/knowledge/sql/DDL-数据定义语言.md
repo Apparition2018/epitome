@@ -73,7 +73,7 @@ CREATE TEMPORARY TABLE sales(
 >  day_id NUMBER NOT NULL,
 >  sales_value NUMBER(10, 2) NOT NULL
 >);
->-----
+> ------------------------------
 >
 >CREATE TABLE score (
 >	id NUMBER(10) PRIMARY KEY,                          -- 自增：使用 CREATE SEQUENCE 实现

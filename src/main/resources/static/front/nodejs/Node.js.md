@@ -19,12 +19,12 @@
     npm config set prefix "nodejs安装目录\node_global"
     npm config set cache "nodejs安装目录\node_cache"
     npm config list
-    npm i -g npm --registry=https://registry.npm.taobao.org
+    npm i -g npm
     npm install -g yarn --registry=https://registry.npm.taobao.org
     npm uninstall i -g npm
     npm info yarn
     npm list -g --depth=0
-    npm run dev
+    npm run serve
     yarn conifg set registry https://registry.npm.taobao.org -g
     yarn config set global-folder "E:\nodejs\yarn_global"
     yarn config set cache-folder "E:\nodejs\yarn_cache"
