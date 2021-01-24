@@ -35,6 +35,10 @@
 >el                                 挂载目标
 >template                           模板
 >```
+>### 选项 / 生命周期钩子
+>```
+>mounted                            实例被挂载后调用
+>```
 >### 选项|资源
 >```
 >components                         组件
@@ -258,4 +262,18 @@
     vue init webpack                (vue-cli2.x)
     vue create                      (vue-cli3.x)
     vue ui
+---
+## 调试方法
+1. console.log(), alter(), debugger + this
+2. mounted + window.vue = this
+```
+    mounted () {
+        window.vue = this
+    }
+```
+3. var app = new Vue({...})
+4. Chrome
+    - Network (XHR 等)
+    - Presets (Slow 3G)
+5. Vue Devtools
 ---
