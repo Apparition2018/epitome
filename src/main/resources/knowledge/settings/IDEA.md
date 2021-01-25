@@ -17,13 +17,20 @@
     1. Settings → Editor → File and Code Templates
     2. Files
     3. Class / Interface / Enum / AnnotationType
-    
-    /**
-     * ${NAME}
-     *
-     * @author ${USER}
-     * created on ${DATE} ${TIME}
-     */
+        /**
+         * ${NAME}
+         *
+         * @author ${USER}
+         * created on ${DATE} ${TIME}
+         */
+    4. Vue Single File Component
+        name: '${COMPONENT_NAME}'
+---
+## ESLint: Missing space before function parentheses
+    1. Settings → Editor → Code Style → JavaScript
+    2. Spaces
+    3. Before parenthese
+    4. Function declaration parentheses 勾选
 ---
 ## 去除尾行空格
     1. Settings → Editor → General
