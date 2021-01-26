@@ -96,7 +96,7 @@
         -a                                  --all                               显示目录下内容，包括以.开头的隐藏文件
         -h                                                                      以合适的单位显示文件大小
         -i                                                                      显示目录下内容及其详细信息
-        -l                                                                      除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出
+        -l                                  ll                                  除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出
         -r                                                                      按时间倒序显示
         -t                                                                      按时间顺序显示
     pwd                                     print work directory                显示当前目录
@@ -124,7 +124,7 @@
 ## 网络通信
     ping                                    packet internet grouper             检测主机
     ip                                                                          显示或设置网络设备，比 ipconfig 功能强大
-    ipconfig                                                                    显示或设置网络设备
+    ifconfig                                                                    显示或设置网络设备
     netstat                                                                     显示网络状态
     dig                                                                         显示域的 DNS 信息
     wget                                                                        下载文件
@@ -177,6 +177,7 @@
     usermod                                                                     修改用户
     userdel                                                                     删除用户
         -r                                                                      删除用户登入目录以及目录中所有文件
+        -f                                                                      强制删除用户
     passwd                                  password                            更改密码
     eval                                    evaluate                            读取一连串的参数，然后再依参数本身的特性来执行
     rpm                                     redhat package manager              红帽子打包管理器
@@ -188,6 +189,7 @@
         -v                                                                      显示指令执行过程
         -q                                                                      使用询问模式，当遇到任何问题时，会先询问用户
     yum                                     yellow dog updater, modified        前端软件包管理器
+        -y                                                                      提示全部选择 "yes"
     lsmod                                   list modules                        显示已载入模块
     insmod                                  install modules                     载入模块
     rmmod                                   remove modules                      删除模块
@@ -197,6 +199,7 @@
         -z                                  --gzip                              通过 gzip指令处理备份文件
         -c                                  --create                            建立新的备份文件
         -x                                  --extract                           从备份文件中还原文件
+        -v                                  --verbose                           显示指定执行过程
         -f                                  --file                              指定备份文件
     gzip                                                                        压缩文件
     gunzip                                                                      解压 gzip 文件
