@@ -108,11 +108,12 @@ tree                                    以图形显示驱动器或路径的文�
 type                                    显示文本文件的内容
 ```
 ---
-## 符号
+## [符号](https://www.cnblogs.com/liangxiaofeng/p/5028727.html)
     @                                   使命令也适用于自己
     ^                                   特殊符号的前导字符
     :                                   标签
     ::                                  注释
+    <                                   将其后面的文件的内容作为其前面命令的输入
     >                                   输出重定向命令，清空原文件
     >>                                  输出重定向命令，追加
     &                                   顺序执行多条命令
@@ -127,33 +128,38 @@ type                                    显示文本文件的内容
 ---
 
 ## 字符串
-### [截取](https://www.jb51.net/article/52744.htm)
-    @echo off
-    set info=abcde
-    echo %info:~0,-2%
-    
-    结果：
-    abc
+>### [截取](https://www.jb51.net/article/52744.htm)
+>```
+>    @echo off
+>    set info=abcde
+>    echo %info:~0,-2%
+>    
+>    结果：abc
+>```
 ---
 ## 其它
     setlocal enabledelayedexpansion         延迟变量：https://www.jb51.net/article/29323.htm
     errorlevel                              上一条命令的返回值：https://blog.csdn.net/qq_33811402/article/details/51774287
 ---
 ## 例子
-### [%~dp0](https://www.cnblogs.com/cnpirate/p/5282324.html) 和 复制
-    @echo off
-    set BASE_DIR=%~dp0
-    set desk=%userprofile%\Desktop
-    copy %BASE_DIR%\Batch.md %desk%
-    echo Please press any key to delete... && pause>nul
-    del %desk%\Batch.md
-### call 和 >
-    @echo off
-    call other.bat 999
-    echo Please press any key to delete... && pause>nul
-    del %userprofile%\Desktop\arg.txt
-    
-    --- other.bat ---
-    SET /A arg=%1
-    echo %arg% > %userprofile%\Desktop\arg.txt
+>### [%~dp0](https://www.cnblogs.com/cnpirate/p/5282324.html) 和 复制
+>```
+>    @echo off
+>    set BASE_DIR=%~dp0
+>    set desk=%userprofile%\Desktop
+>    copy %BASE_DIR%\Batch.md %desk%
+>    echo Please press any key to delete... && pause>nul
+>    del %desk%\Batch.md
+>```
+>### call 和 >
+>```
+>    @echo off
+>    call other.bat 999
+>    echo Please press any key to delete... && pause>nul
+>    del %userprofile%\Desktop\arg.txt
+>    
+>    --- other.bat ---
+>    SET /A arg=%1
+>    echo %arg% > %userprofile%\Desktop\arg.txt
+>```
 ---

@@ -4,6 +4,12 @@
 ## 参考网站
 
 ---
+## 安装
+1. [mysql完全卸载教程](https://blog.csdn.net/qq_41140741/article/details/81489531)
+2. [同时安装MySQL5和MySQL8](https://blog.csdn.net/qq_32793985/article/details/105807328)
+3. [MySql5.6版修改用户登录密码](https://www.cnblogs.com/zhouerba/p/7380504.html)
+- mysql 5.6 不需要执行 mysqld --initialize
+---
 ## [my.ini](https://www.cnblogs.com/missmeng/p/13404228.html)
     [mysqld]
     # 设置3306端口

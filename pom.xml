@@ -43,6 +43,8 @@
         <TinyPinyin>2.0.3.RELEASE</TinyPinyin>
         <oshi>5.3.6</oshi>
         <jsch>0.1.55</jsch>
+        <thumbnailator>0.4.13</thumbnailator>
+        <truelicense>1.33</truelicense>
         <emoji>5.1.1</emoji>
         <!-- plugin -->
         <mybatis-generator>1.4.0</mybatis-generator>
@@ -321,6 +323,22 @@
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
             <version>${jsch}</version>
+        </dependency>
+
+        <!-- thumbnailator：一个 Java 的缩略图生成库 -->>
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>${thumbnailator}</version>
+        </dependency>
+
+        <!-- truelicense：安全许可证管理
+            https://www.cnblogs.com/xifengxiaoma/p/9377654.html -->
+        <dependency>
+            <groupId>de.schlichtherle.truelicense</groupId>
+            <artifactId>truelicense-core</artifactId>
+            <version>${truelicense}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- emoji -->

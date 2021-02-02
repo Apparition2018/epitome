@@ -10,13 +10,11 @@
 1. [数据库设计那些事](https://www.imooc.com/learn/117)
 ---
 ## 问题
-1. [mysql完全卸载教程](https://blog.csdn.net/qq_41140741/article/details/81489531)
-2. [同时安装MySQL5和MySQL8](https://blog.csdn.net/qq_32793985/article/details/105807328)
-3. [MySQL, SQL Server, Oracle 的区别](https://www.cnblogs.com/cherxu/p/6856262.html)
-4. [distinct 和 group by 的去重逻辑浅析](https://www.cnblogs.com/dancesir/p/7505730.html)
-5. [select 和 in 的区别](https://www.cnblogs.com/emilyyoucan/p/7833769.html)
-6. [varchar 与 nvarchar](https://www.cnblogs.com/Jashinck/p/8384388.html)
-7. [Mysql 8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
+1. [MySQL, SQL Server, Oracle 的区别](https://www.cnblogs.com/cherxu/p/6856262.html)
+2. [distinct 和 group by 的去重逻辑浅析](https://www.cnblogs.com/dancesir/p/7505730.html)
+3. [select 和 in 的区别](https://www.cnblogs.com/emilyyoucan/p/7833769.html)
+4. [varchar 与 nvarchar](https://www.cnblogs.com/Jashinck/p/8384388.html)
+5. [Mysql 8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
 >### MySQL
 >1. [使用 mysql 应该注意的细节](https://www.cnblogs.com/zhangyiqinga/p/9753484.html)
 >2. [delimiter 的用法和作用](https://blog.csdn.net/langkeziju/article/details/14446671)
