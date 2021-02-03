@@ -91,7 +91,7 @@
 >   chown -R ftpuser.ftpuser /ftpfile                   修改 ftp 文件夹权限
 >   passwd ftpuser                                      重置 ftpuser 用户密码
 >3. 配置
->   3.1. cd /etc/vsftpd/chroot_list                     添加 ftpuser 
+>   3.1. vim /etc/vsftpd/chroot_list                     添加 ftpuser 
 >   3.2. vim /etc/selinux/config                        修改 SELINUX=disabled
 >       setenforce 0                                    临时生效
 >   3.3. 550 拒绝访问
@@ -112,8 +112,41 @@
 >6. ftp 192.168.58.129
 >```
 >### Nginx
->
+>- Nginx 是一款轻量级 web 服务器，也是一款反向代理服务器；特点有高稳定，高性能，资源占用少，功能丰富，模块化结构，支持热部署
 >```
->
+>1. yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
+>2. wget xxx.tar.gz
+>3. tar -zxvf xxx.tar.gz
+>4. 安装
+>   4.1. ./configure
+>       ①可指定安装目录，--prefix=/home/ljh/nginx
+>       ②默认安装位置，/usr/local/nginx
+>   4.2. make
+>   4.3. make install
+>5. 防火墙设置
+>   5.1. vim /etc/sysconfig/iptables
+>       -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+>   5.2. service iptables restart
+>6. 虚拟域名配置及测试验证
+>   6.1. vim /usr/local/nginx/conf/nginx.conf
+>       # 加载 vhost/ 目录下的配置文件（方便维护），在 Server 节点前
+>       include vhost/*.conf;                             
+>   6.2 mkdir /usr/local/nginx/conf/vhost
+>   6.3 创建域名转发配置文件
+>       www.ljh.com.conf
+>       ...
+>7. 常用命令
+>   ./sbin/nginx -t                         测试配置文件
+>   ./sbin/nginx                            启动
+>   ./sbin/nginx -s stop                    停止
+>   ./sbin/ngxin -s quit                    停止
+>   ./sbin/ngxin -s reload                  重启
+>   kill -HUP PID                           平滑重启（进程号查询：ps -ef|grep nginx）
+>8. 修改 hosts 文件，配置域名转发
+>   C:\Windows\System32\dirvers\etc\hosts   Windows
+>   /etc/hosts                              Linux
+>       192.168.58.129 www.ljh.com
+>       192.168.58.129 image.ljh.com
+>       192.168.58.129 s.ljh.com
 >```
 ---

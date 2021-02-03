@@ -7,6 +7,7 @@
 ---
 ## 问题
 1. [详解Linux中/etc/passwd文件](https://www.linuxprobe.com/explain-etc-passwd.html)
+2. [命令详解 ./configure、make、make install](https://www.cnblogs.com/tinywan/p/7230039.html)
 ---
 ## vim
 >### 命令模式
