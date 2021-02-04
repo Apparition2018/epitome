@@ -1,7 +1,7 @@
 视图/虚表(VIEW) 
   简单视图：基于单表建立，不包含任何函数运算、表达式或分组函数;           可以通过DML操作影响到基表数据
   复杂视图：基于单表建立，包含了单行函数、表达式、分组函数或GROUP BY子句; 不允许DML操作
-  连接试图：基于多表建立 
+  连接视图：基于多表建立 
   -- suquery代表SELECT查询语句
     CREATE [OR REPLACE] VIEW view_name[(alias[, alias…])] AS subquery;
   -- CHECK OPTION约束:通过视图所做的修改，必须在视图的可见范围内
