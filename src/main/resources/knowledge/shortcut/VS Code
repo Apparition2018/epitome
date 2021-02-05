@@ -18,17 +18,7 @@ Ctrl + D                将选择添加到下一个查找匹配项      *
 Ctrl + F2               更改所有匹配项                     *
 Ctrl + Shit + L         选择所有找到的查找匹配项            *
 
-Alt + ↑                 向上移动行
-Alt + ↓                 向下移动行
-
-Alt + Shift + F         格式化文件
 Alt + Ctrl + F          格式化选定代码             自定义
-
-Alt + Shift + ↑         向上复制行
-Alt + Shift + ↓         向下复制行
- 
-Alt + Shift + ←         缩小选择
-Alt + Shift + →         扩大选择                        *
 
 Ctrl + B                切换侧边栏可见性                  *
 Ctrl + I                选中当前行                       *
@@ -64,9 +54,6 @@ Ctrl + P                QuickOpen                      *
 Ctrl + W                关闭编辑器/窗口
 Ctrl + Shift + W        关闭窗口
 
-Ctrl + Enter            在下面插入行
-Ctrl + Shift + Enter    在上面插入行
-
 Ctrl + [                行减少缩进
 Ctrl + ]                行缩进
 
@@ -77,7 +64,6 @@ Ctrl + Shift + B        运行生成任务
 Ctrl + Shift + D        显示调试
 Ctrl + Shift + E        显示源管理器
 Ctrl + Shift + F        显示搜索搜索
-Ctrl + Shift + K        删除行
 Ctrl + Shift + M        切换显示问题视图                    *
 Ctrl + Shift + N        新建窗口                        *
 Ctrl + Shift + P        显示所有命令

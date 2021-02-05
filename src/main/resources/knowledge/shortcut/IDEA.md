@@ -37,8 +37,8 @@
 >Ctrl + Alt + J                 Surround with Live Template...
 >Ctrl + /                       Comment with Line Comment           注释
 >Ctrl + Shift + /               Comment with Block Comment          块注释
->Ctrl + Shift + ↑ | ↓           Move Statement Up | Down            上下移动语句                  ***
->Alt + Shift + ↑ | ↓            Move Line Up | Down                 上下移动行
+>Ctrl + Shift + ↑ | ↓           Move Statement Up | Down            移动语句                    ***
+>Alt + Shift + ↑ | ↓            Move Line Up | Down                 移动行
 >Ctrl + Shift + Alt + ← | →     Move Element Left | Right                                       ???
 >```
 >>#### Completion

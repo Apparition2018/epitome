@@ -4,9 +4,8 @@
 ## 收藏
 1. [程序员你为什么这么累？(编程规范)](https://zhuanlan.zhihu.com/p/28705206)
 2. [反向代理为何叫反向代理？](https://www.zhihu.com/question/24723688)
-3. [五分钟带你了解啥是JWT](https://zhuanlan.zhihu.com/p/86937325)
-4. [session与token的区别](https://www.cnblogs.com/shijianchuzhenzhi/p/12317439.html)
-5. [Kubernetes和Docker到底有啥关系？](https://zhuanlan.zhihu.com/p/87186261)
+3. [session与token的区别](https://www.cnblogs.com/shijianchuzhenzhi/p/12317439.html)
+4. [Kubernetes和Docker到底有啥关系？](https://zhuanlan.zhihu.com/p/87186261)
 ---
 ## [端口被占用](https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html)
 1. 打开 cmd.exe
@@ -30,10 +29,17 @@
 >### Tomcat 启动中文乱码
 >1. 打开 D:\tts9\apache-tomcat-9.0.40\conf\logging.properties
 >2. 修改 java.util.logging.ConsoleHandler.encoding = GBK
->---
 >### [Tomcat 热部署](https://blog.csdn.net/w15321271041/article/details/80597962)
 >1. On 'Update' action: Update classes and resources
 >2. Debug 启动项目 (修改 Java 文件时可以立刻生效)
+---
+## JWT
+1. [五分钟带你了解啥是JWT](https://zhuanlan.zhihu.com/p/86937325)
+2. [JWT 超详细分析](https://learnku.com/articles/17883)
+3. [jwt与token+redis，哪种方案更好用？](https://www.zhihu.com/question/274566992)
+---
+## Token
+
 ---
 ## Redis
 1. [Releases/redis](https://github.com/microsoftarchive/redis/releases) 下载最新发布版本
