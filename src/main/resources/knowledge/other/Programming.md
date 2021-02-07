@@ -7,13 +7,6 @@
 3. [session与token的区别](https://www.cnblogs.com/shijianchuzhenzhi/p/12317439.html)
 4. [Kubernetes和Docker到底有啥关系？](https://zhuanlan.zhihu.com/p/87186261)
 ---
-## [端口被占用](https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html)
-1. 打开 cmd.exe
-2. netstat -ano
-3. netstat -ano|findstr 8080，根据指定端口字符串查找，记下 PID
-4. tasklist|findstr 9776，根据指定 PID 字符串查找任务，记下任务名
-5. taskkill /f /t /im WXWork.exe，或 taskkill /f /t /pid 333412 
----
 ## [环境变量](http://www.xitongcheng.com/jiaocheng/dnrj_article_44449.html)
 1. WIN+R 输入 sysdm.cpl → 高级 → 环境变量
 2. 在系统变量新建 MAVEN_HOME：D:\tts9\apache-maven-3.3.9
@@ -33,13 +26,24 @@
 >1. On 'Update' action: Update classes and resources
 >2. Debug 启动项目 (修改 Java 文件时可以立刻生效)
 ---
+## RESTful API
+1. [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+2. [RESTful API 最佳实践](https://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
+---
+## [端口被占用](https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html)
+1. 打开 cmd.exe
+2. netstat -ano
+3. netstat -ano|findstr 8080，根据指定端口字符串查找，记下 PID
+4. tasklist|findstr 9776，根据指定 PID 字符串查找任务，记下任务名
+5. taskkill /f /t /im WXWork.exe，或 taskkill /f /t /pid 333412
+---
 ## JWT
 1. [五分钟带你了解啥是JWT](https://zhuanlan.zhihu.com/p/86937325)
 2. [JWT 超详细分析](https://learnku.com/articles/17883)
 3. [jwt与token+redis，哪种方案更好用？](https://www.zhihu.com/question/274566992)
 ---
-## Token
-
+## Token 登录
+1. [RESTful登录设计（基于Spring及Redis的Token鉴权）](www.scienjus.com/restful-token-authorization/)
 ---
 ## Redis
 1. [Releases/redis](https://github.com/microsoftarchive/redis/releases) 下载最新发布版本

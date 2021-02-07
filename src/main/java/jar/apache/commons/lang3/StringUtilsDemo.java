@@ -66,7 +66,7 @@ public class StringUtilsDemo extends Demo {
      * 删除最后一位
      */
     @Test
-    public void chomp() {
+    public void chompAndChop() {
         // 最后一位如果是 "\n", "\r", or "\r\n", 删除
         p(StringUtils.chomp("www.baidu.com"));      // www.baidu.com
         p(StringUtils.chomp("www.baidu.com\n"));    // www.baidu.com
@@ -76,11 +76,6 @@ public class StringUtilsDemo extends Demo {
         p(StringUtils.chop("www.baidu.com"));       // www.baidu.co
         p(StringUtils.chop("www.baidu.com\n"));     // www.baidu.com
         p(StringUtils.chop("www.baidu.com\r\n"));   // www.baidu.com
-    }
-
-    @Test
-    public void chop() {
-        chomp();
     }
 
     // CountMatches
