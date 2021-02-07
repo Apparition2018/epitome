@@ -1,3 +1,6 @@
+apache-shiro        Apache Shiro权限框架理论与实战演练
+                    SpringBoot + mysql + druid + jsp + mybatis + shiro
+
 permission          Java开发企业级权限管理系统
                     SSM + mysql + druid + jsp  + jstl + mustache + Bootstrap(Dual Listbox) + zTree + logback +
                     mybatis-generator + redis(jedis) + 通用返回对象 + 分页 + 异常处理 + Validator + jackson + param|model|dto +

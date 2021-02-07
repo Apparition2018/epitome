@@ -89,9 +89,9 @@
 >   mkdir /ftpfile                                      创建 ftp 文件夹
 >   useradd ftpuser -d /ftpfile -s /sbin/nologin        添加匿名用户 ftpuser
 >   chown -R ftpuser.ftpuser /ftpfile                   修改 ftp 文件夹权限
->   passwd ftpuser                                      重置 ftpuser 用户密码
+>   passwd ftpuser                                      重置 ftpuser 用户密码为 123456
 >3. 配置
->   3.1. vim /etc/vsftpd/chroot_list                     添加 ftpuser 
+>   3.1. vim /etc/vsftpd/chroot_list                    添加 ftpuser 
 >   3.2. vim /etc/selinux/config                        修改 SELINUX=disabled
 >       setenforce 0                                    临时生效
 >   3.3. 550 拒绝访问
@@ -110,6 +110,8 @@
 >5. service vsftpd restart
 >   ftp://192.168.58.129                           
 >6. ftp 192.168.58.129
+>   ftpuser
+>   123456
 >```
 >### Nginx
 >- Nginx 是一款轻量级 web 服务器，也是一款反向代理服务器；特点有高稳定，高性能，资源占用少，功能丰富，模块化结构，支持热部署
@@ -134,6 +136,7 @@
 >   6.2 mkdir /usr/local/nginx/conf/vhost
 >   6.3 创建域名转发配置文件
 >       www.ljh.com.conf
+>       image.ljh.com.conf
 >       ...
 >7. 常用命令
 >   ./sbin/nginx -t                         测试配置文件
