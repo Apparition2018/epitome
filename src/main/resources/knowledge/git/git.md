@@ -18,6 +18,7 @@
 5. [解决github 打开、拉取、推送速度慢的问题](https://blog.csdn.net/natahew/article/details/81387885)
 6. [解决no supported authentication methods available](https://blog.csdn.net/qq706352062/article/details/103030082)
 7. [如何解决 GitHub 提交次数过多 .git 文件过大的问题？ - 知乎](https://www.zhihu.com/question/29769130)
+8. [解决Github网页上图片显示失败的问题](https://blog.csdn.net/qq_38232598/article/details/91346392)
 ---
 ## Git 常用命令速查表
 ![Git 常用命令速查表](https://img-blog.csdn.net/20171126101742109)
