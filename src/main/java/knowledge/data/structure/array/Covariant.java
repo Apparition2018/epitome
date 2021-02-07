@@ -1,6 +1,6 @@
 package knowledge.data.structure.array;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Java 数组的协变性指：如果 Base 是 Sub 的基类，name Base[] 就是 Sub[] 的基类

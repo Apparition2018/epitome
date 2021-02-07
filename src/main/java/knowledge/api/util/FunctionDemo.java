@@ -2,7 +2,7 @@ package knowledge.api.util;
 
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.function.*;

@@ -1,7 +1,7 @@
 package jar.hutool.extra;
 
 import cn.hutool.extra.spring.SpringUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
 /**

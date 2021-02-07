@@ -1,7 +1,7 @@
 package jar.hutool;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

@@ -5,7 +5,7 @@ import cn.hutool.core.codec.Base62;
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.lang.Console;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Base

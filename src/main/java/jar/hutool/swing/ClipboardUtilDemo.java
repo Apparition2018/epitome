@@ -2,7 +2,7 @@ package jar.hutool.swing;
 
 import cn.hutool.core.swing.clipboard.ClipboardUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;

@@ -1,7 +1,7 @@
 package jar.apache.commons.lang3.mutable;
 
 import org.apache.commons.lang3.mutable.MutableInt;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 可变包装类

@@ -1,7 +1,7 @@
 package jar.apache.commons.math3.util;
 
 import org.apache.commons.math3.util.ArithmeticUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

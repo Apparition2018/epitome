@@ -5,7 +5,7 @@ import cn.hutool.core.codec.Caesar;
 import cn.hutool.core.codec.Morse;
 import cn.hutool.core.codec.Rot;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Codec

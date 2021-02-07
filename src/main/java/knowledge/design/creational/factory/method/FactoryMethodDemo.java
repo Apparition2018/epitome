@@ -1,6 +1,6 @@
 package knowledge.design.creational.factory.method;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 工厂模式：定义一个创建对象的接口，让子类来决定哪些类需要被实例化，使一个类的实例化推迟到子类。工厂模式是抽象工厂的一种常见情况。

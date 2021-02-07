@@ -7,7 +7,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;
 import java.io.File;

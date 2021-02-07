@@ -2,7 +2,7 @@ package jar.apache.commons.collections4;
 
 import l.demo.Demo;
 import org.apache.commons.collections4.MapUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;

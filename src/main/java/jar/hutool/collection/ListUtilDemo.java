@@ -2,7 +2,7 @@ package jar.hutool.collection;
 
 import cn.hutool.core.collection.ListUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

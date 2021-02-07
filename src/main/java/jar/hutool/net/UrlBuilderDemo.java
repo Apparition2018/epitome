@@ -1,7 +1,7 @@
 package jar.hutool.net;
 
 import cn.hutool.core.net.url.UrlBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * UrlBuilder

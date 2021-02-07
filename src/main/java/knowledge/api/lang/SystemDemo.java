@@ -1,7 +1,7 @@
 package knowledge.api.lang;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * System

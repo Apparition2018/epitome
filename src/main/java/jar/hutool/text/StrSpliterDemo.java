@@ -2,7 +2,7 @@ package jar.hutool.text;
 
 import cn.hutool.core.text.StrSpliter;
 import cn.hutool.core.util.StrUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

@@ -7,7 +7,7 @@ import cn.hutool.core.lang.Console;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.socket.nio.NioClient;
 import cn.hutool.socket.nio.NioServer;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

@@ -2,7 +2,7 @@ package knowledge.api.util.stream;
 
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;

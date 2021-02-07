@@ -2,7 +2,7 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.EnumUtil;
 import l.demo.Company;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

@@ -3,7 +3,7 @@ package jar.lombok;
 import l.demo.Demo;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

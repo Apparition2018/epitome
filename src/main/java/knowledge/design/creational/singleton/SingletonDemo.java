@@ -1,7 +1,7 @@
 package knowledge.design.creational.singleton;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -131,7 +131,7 @@ public class SingletonDemo {
         Constructor<StaticInnerClassSingleton> constructor = StaticInnerClassSingleton.class.getDeclaredConstructor();
         constructor.setAccessible(true);
         StaticInnerClassSingleton singleton2 = constructor.newInstance();
-        Assert.assertSame(singleton, singleton2);
+        Assertions.assertSame(singleton, singleton2);
     }
 
     /**

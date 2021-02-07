@@ -2,7 +2,7 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.HexUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.math.BigInteger;

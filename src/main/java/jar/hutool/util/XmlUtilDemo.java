@@ -3,7 +3,7 @@ package jar.hutool.util;
 import cn.hutool.core.util.XmlUtil;
 import l.demo.Demo;
 import l.demo.Person.Student;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

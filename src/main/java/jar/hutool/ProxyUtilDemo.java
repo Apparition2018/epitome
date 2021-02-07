@@ -3,7 +3,7 @@ package jar.hutool;
 import cn.hutool.aop.ProxyUtil;
 import cn.hutool.aop.aspects.TimeIntervalAspect;
 import l.demo.Animal.Cat;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * ProxyUtil    切面代理工具

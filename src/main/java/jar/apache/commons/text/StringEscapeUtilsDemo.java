@@ -1,7 +1,7 @@
 package jar.apache.commons.text;
 
 import org.apache.commons.text.StringEscapeUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * StringEscapeUtils

@@ -2,7 +2,7 @@ package knowledge.network.url;
 
 import l.demo.Demo;
 import org.apache.http.HttpStatus;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;

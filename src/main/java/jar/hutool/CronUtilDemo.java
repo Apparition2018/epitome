@@ -3,7 +3,7 @@ package jar.hutool;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * CronUtil     全局定时任务

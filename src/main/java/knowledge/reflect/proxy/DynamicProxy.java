@@ -3,7 +3,7 @@ package knowledge.reflect.proxy;
 import knowledge.reflect.proxy.domain.Man;
 import knowledge.reflect.proxy.domain.People;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;

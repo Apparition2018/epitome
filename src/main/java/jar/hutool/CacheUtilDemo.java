@@ -4,7 +4,7 @@ import cn.hutool.cache.CacheUtil;
 import cn.hutool.cache.file.LFUFileCache;
 import cn.hutool.cache.impl.WeakCache;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
 

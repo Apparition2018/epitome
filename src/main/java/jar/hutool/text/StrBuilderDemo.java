@@ -3,7 +3,7 @@ package jar.hutool.text;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.TimeInterval;
 import cn.hutool.core.text.StrBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

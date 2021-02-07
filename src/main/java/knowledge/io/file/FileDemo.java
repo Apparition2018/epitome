@@ -1,7 +1,7 @@
 package knowledge.io.file;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;

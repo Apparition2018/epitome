@@ -3,7 +3,7 @@ package jar.hutool;
 import cn.hutool.core.annotation.AnnotationUtil;
 import knowledge.annotation.CustomAnnotation.Apple;
 import knowledge.annotation.CustomAnnotation.Description;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

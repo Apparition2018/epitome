@@ -3,7 +3,7 @@ package jar.hutool.extra;
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import cn.hutool.extra.qrcode.QrConfig;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.io.File;

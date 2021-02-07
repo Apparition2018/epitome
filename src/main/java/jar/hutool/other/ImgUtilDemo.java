@@ -2,7 +2,7 @@ package jar.hutool.other;
 
 import cn.hutool.core.img.ImgUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.imageio.stream.FileImageOutputStream;
 import java.awt.*;

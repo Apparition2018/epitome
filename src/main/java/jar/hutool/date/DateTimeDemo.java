@@ -1,7 +1,7 @@
 package jar.hutool.date;
 
 import cn.hutool.core.date.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 

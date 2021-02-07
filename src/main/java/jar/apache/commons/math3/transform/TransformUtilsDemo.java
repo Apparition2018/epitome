@@ -1,7 +1,7 @@
 package jar.apache.commons.math3.transform;
 
 import org.apache.commons.math3.transform.TransformUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 

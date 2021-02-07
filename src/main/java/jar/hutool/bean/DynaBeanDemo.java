@@ -2,7 +2,7 @@ package jar.hutool.bean;
 
 import cn.hutool.core.bean.DynaBean;
 import l.demo.Person;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

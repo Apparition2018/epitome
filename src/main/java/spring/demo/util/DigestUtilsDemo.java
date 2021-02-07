@@ -2,7 +2,7 @@ package spring.demo.util;
 
 import l.demo.Demo;
 import org.springframework.util.DigestUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 

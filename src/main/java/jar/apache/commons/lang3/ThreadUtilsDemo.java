@@ -1,7 +1,7 @@
 package jar.apache.commons.lang3;
 
 import org.apache.commons.lang3.ThreadUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * ThreadUtils

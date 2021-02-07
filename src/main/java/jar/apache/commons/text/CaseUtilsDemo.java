@@ -1,7 +1,7 @@
 package jar.apache.commons.text;
 
 import org.apache.commons.text.CaseUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * CaseUtils

@@ -1,7 +1,7 @@
 package knowledge.api.util.zip;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.util.Enumeration;

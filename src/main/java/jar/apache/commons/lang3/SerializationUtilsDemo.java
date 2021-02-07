@@ -2,7 +2,7 @@ package jar.apache.commons.lang3;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.SerializationUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.util.Date;

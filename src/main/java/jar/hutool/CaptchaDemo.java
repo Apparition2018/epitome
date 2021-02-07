@@ -6,7 +6,7 @@ import cn.hutool.captcha.generator.CodeGenerator;
 import cn.hutool.captcha.generator.MathGenerator;
 import cn.hutool.captcha.generator.RandomGenerator;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

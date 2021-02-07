@@ -2,7 +2,7 @@ package knowledge.data.structure.collections.framework.collection;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.util.*;

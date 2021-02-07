@@ -2,7 +2,7 @@ package jar.hutool.other;
 
 import cn.hutool.bloomfilter.BitMapBloomFilter;
 import cn.hutool.core.lang.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 

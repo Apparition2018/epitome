@@ -1,7 +1,7 @@
 package jar.hutool.text;
 
 import cn.hutool.core.text.UnicodeUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * UnicodeUtil  Unicode 编码转换工具

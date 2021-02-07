@@ -1,6 +1,6 @@
 package knowledge.api.util;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Enumeration;
 import java.util.ResourceBundle;

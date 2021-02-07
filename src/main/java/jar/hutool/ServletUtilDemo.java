@@ -7,7 +7,7 @@ import cn.hutool.json.JSONUtil;
 import l.demo.Demo;
 import l.demo.Person;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

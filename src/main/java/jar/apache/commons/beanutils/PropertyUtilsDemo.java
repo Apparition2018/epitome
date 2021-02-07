@@ -3,7 +3,7 @@ package jar.apache.commons.beanutils;
 import l.demo.Demo;
 import l.demo.Person;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;

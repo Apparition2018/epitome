@@ -1,6 +1,6 @@
 package knowledge.design.behavioral.observer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

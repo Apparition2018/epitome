@@ -3,7 +3,7 @@ package jar.hutool.lang;
 import cn.hutool.core.lang.Dict;
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Dict

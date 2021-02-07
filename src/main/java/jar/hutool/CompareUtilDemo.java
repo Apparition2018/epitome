@@ -1,7 +1,7 @@
 package jar.hutool;
 
 import cn.hutool.core.comparator.CompareUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * CompareUtil      比较工具

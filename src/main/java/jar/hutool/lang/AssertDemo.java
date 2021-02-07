@@ -2,7 +2,7 @@ package jar.hutool.lang;
 
 import cn.hutool.core.lang.Assert;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Assert

@@ -1,6 +1,6 @@
 package knowledge.oop.interface_;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 函数式接口 (Functional Interface)

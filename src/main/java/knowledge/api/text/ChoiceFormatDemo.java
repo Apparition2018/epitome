@@ -1,6 +1,6 @@
 package knowledge.api.text;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.ChoiceFormat;
 import java.text.ParsePosition;

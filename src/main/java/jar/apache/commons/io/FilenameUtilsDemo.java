@@ -1,7 +1,7 @@
 package jar.apache.commons.io;
 
 import org.apache.commons.io.FilenameUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

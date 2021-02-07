@@ -2,7 +2,7 @@ package jar.hutool.map;
 
 import cn.hutool.core.map.BiMap;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * BiMap    双向查找 Map

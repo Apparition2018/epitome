@@ -2,9 +2,9 @@ package spring.demo;
 
 import l.demo.Person;
 import l.demo.Person.Student;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import spring.bean.Bean;
 import spring.bean.OtherBean;
@@ -26,7 +26,7 @@ public class SpringDemo {
     ClassPathXmlApplicationContext applicationContext;
     ClassPathXmlApplicationContext annAppliactionContext;
 
-    @Before
+    @BeforeEach
     public void init() {
         applicationContext = new ClassPathXmlApplicationContext("demo/spring/spring-bean.xml");
     }
@@ -129,7 +129,7 @@ public class SpringDemo {
         annAppliactionContext.close();
     }
 
-    @After
+    @AfterEach
     public void destroy() {
         applicationContext.close();
     }

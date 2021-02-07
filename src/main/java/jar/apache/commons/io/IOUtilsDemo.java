@@ -3,7 +3,7 @@ package jar.apache.commons.io;
 import l.demo.Demo;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.net.URL;

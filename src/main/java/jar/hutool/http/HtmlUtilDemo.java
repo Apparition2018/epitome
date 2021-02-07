@@ -3,7 +3,7 @@ package jar.hutool.http;
 import cn.hutool.http.HtmlUtil;
 import cn.hutool.http.HttpUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * HtmlUtil

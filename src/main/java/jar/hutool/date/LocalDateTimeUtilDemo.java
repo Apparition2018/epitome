@@ -2,7 +2,7 @@ package jar.hutool.date;
 
 import cn.hutool.core.date.LocalDateTimeUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.time.LocalDate;

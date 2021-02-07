@@ -1,7 +1,7 @@
 package jar.hutool.lang;
 
 import cn.hutool.core.lang.Console;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Console      控制台打印封装

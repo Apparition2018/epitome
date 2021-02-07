@@ -1,7 +1,7 @@
 package knowledge.api.util;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;

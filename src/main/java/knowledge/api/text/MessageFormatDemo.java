@@ -1,7 +1,7 @@
 package knowledge.api.text;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.ChoiceFormat;
 import java.text.MessageFormat;

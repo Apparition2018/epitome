@@ -4,7 +4,7 @@ import org.apache.commons.beanutils.BasicDynaClass;
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.DynaProperty;
 import org.apache.commons.beanutils.LazyDynaBean;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * DynaProperty

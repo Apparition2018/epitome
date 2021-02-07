@@ -4,7 +4,7 @@ import cn.hutool.extra.tokenizer.Result;
 import cn.hutool.extra.tokenizer.TokenizerEngine;
 import cn.hutool.extra.tokenizer.TokenizerUtil;
 import cn.hutool.extra.tokenizer.Word;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * TokenizerUtil    中文分词封装

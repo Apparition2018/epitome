@@ -2,7 +2,7 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.RandomUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * RandomUtil   随机工具

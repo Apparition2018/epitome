@@ -3,7 +3,7 @@ package jar.apache.commons.codec.network;
 import l.demo.Demo;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.net.URLCodec;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.UnsupportedEncodingException;
 

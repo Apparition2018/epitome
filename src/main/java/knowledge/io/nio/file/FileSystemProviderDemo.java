@@ -2,7 +2,7 @@ package knowledge.io.nio.file;
 
 import com.alibaba.fastjson.JSON;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;

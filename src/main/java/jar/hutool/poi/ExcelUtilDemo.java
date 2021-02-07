@@ -7,7 +7,7 @@ import cn.hutool.poi.excel.StyleSet;
 import l.demo.Demo;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * ExcelUtil

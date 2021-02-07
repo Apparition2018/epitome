@@ -3,7 +3,7 @@ package jar.apache.commons.collections4;
 import org.apache.commons.collections4.IterableMap;
 import org.apache.commons.collections4.MapIterator;
 import org.apache.commons.collections4.map.HashedMap;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * MapIterator

@@ -7,7 +7,7 @@ import org.apache.commons.configuration2.builder.fluent.Configurations;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.commons.configuration2.tree.DefaultExpressionEngine;
 import org.apache.commons.configuration2.tree.DefaultExpressionEngineSymbols;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 

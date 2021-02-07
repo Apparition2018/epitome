@@ -3,7 +3,7 @@ package jar.hutool.util;
 import cn.hutool.core.lang.ObjectId;
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

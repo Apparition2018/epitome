@@ -5,7 +5,7 @@ import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.map.*;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

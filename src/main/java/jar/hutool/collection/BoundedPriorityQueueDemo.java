@@ -1,7 +1,7 @@
 package jar.hutool.collection;
 
 import cn.hutool.core.collection.BoundedPriorityQueue;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
 import java.util.List;

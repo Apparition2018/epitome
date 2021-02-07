@@ -4,7 +4,7 @@ import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.TypeReference;
 import l.demo.Company;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;

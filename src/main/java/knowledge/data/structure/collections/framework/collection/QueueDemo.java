@@ -2,7 +2,7 @@ package knowledge.data.structure.collections.framework.collection;
 
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.PriorityQueue;
 import java.util.concurrent.ArrayBlockingQueue;

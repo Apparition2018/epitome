@@ -5,7 +5,7 @@ import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

@@ -5,7 +5,7 @@ import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.text.csv.*;
 import l.demo.Demo;
 import lombok.Data;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;

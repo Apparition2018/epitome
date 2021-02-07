@@ -1,6 +1,6 @@
 package knowledge.types.wrapper;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 整型缓存

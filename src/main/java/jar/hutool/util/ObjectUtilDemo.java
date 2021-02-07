@@ -2,7 +2,7 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.ObjectUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * ObjectUtil

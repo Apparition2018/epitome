@@ -4,7 +4,7 @@ import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.util.LinkedMultiValueMap;

@@ -3,7 +3,7 @@ package jar.apache.commons.compress;
 import l.demo.Demo;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.*;
 

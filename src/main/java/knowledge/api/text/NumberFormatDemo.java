@@ -1,6 +1,6 @@
 package knowledge.api.text;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.NumberFormat;
 import java.text.ParseException;

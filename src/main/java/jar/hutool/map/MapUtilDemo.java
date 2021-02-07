@@ -6,7 +6,7 @@ import cn.hutool.core.lang.Filter;
 import cn.hutool.core.map.MapBuilder;
 import cn.hutool.core.map.MapUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;

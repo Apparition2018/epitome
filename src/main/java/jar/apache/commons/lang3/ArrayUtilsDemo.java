@@ -2,7 +2,7 @@ package jar.apache.commons.lang3;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.ArrayUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * ArrayUtils

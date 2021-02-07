@@ -1,6 +1,6 @@
 package knowledge.datetime.time.chrono;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.chrono.ChronoLocalDate;
 import java.time.chrono.Chronology;

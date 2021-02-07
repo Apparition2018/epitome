@@ -2,7 +2,7 @@ package jar.hutool;
 
 import cn.hutool.core.clone.CloneSupport;
 import cn.hutool.core.clone.Cloneable;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Cloneable

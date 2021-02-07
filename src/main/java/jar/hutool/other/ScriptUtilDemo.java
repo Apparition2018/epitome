@@ -1,7 +1,7 @@
 package jar.hutool.other;
 
 import cn.hutool.script.ScriptUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.script.CompiledScript;
 import javax.script.ScriptException;

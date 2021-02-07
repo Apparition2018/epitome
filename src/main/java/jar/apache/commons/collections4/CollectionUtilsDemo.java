@@ -4,7 +4,7 @@ import l.demo.Demo;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.list.FixedSizeList;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;

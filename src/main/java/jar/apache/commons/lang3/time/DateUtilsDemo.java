@@ -2,7 +2,7 @@ package jar.apache.commons.lang3.time;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.util.Calendar;

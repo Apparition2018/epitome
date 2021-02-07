@@ -3,7 +3,7 @@ package jar.hutool.util;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.TypeUtil;
 import l.demo.Person;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;

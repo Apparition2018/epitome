@@ -3,7 +3,7 @@ package jar.hutool.lang;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Singleton;
 import l.demo.Person;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Singleton    单例工具

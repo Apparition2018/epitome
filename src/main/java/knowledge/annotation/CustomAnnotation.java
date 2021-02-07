@@ -2,7 +2,7 @@ package knowledge.annotation;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.annotation.*;
 import java.lang.reflect.Field;

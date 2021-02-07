@@ -1,7 +1,7 @@
 package knowledge.codec.digest;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;

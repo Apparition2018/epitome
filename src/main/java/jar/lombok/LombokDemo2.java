@@ -3,7 +3,7 @@ package jar.lombok;
 import lombok.*;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 

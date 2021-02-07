@@ -2,7 +2,7 @@ package jar.hutool.math;
 
 import cn.hutool.core.math.MathUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * MathUtil

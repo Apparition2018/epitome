@@ -7,7 +7,7 @@ import com.google.common.collect.Sets;
 import knowledge.data.structure.collections.framework.map.properties.PropertiesUtil;
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 import java.util.Objects;

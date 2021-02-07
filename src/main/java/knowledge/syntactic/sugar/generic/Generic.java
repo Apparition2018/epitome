@@ -1,7 +1,7 @@
 package knowledge.syntactic.sugar.generic;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package jar.hutool.http;
 
 import cn.hutool.http.webservice.SoapClient;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * SoapClient   Soap 客户端

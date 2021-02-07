@@ -1,7 +1,7 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.CharUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

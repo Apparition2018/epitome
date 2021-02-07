@@ -1,7 +1,7 @@
 package jar.hutool.extra;
 
 import cn.hutool.extra.ftp.Ftp;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 

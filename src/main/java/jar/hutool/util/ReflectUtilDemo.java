@@ -2,7 +2,7 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.ReflectUtil;
 import l.demo.Animal.Cat;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

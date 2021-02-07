@@ -1,8 +1,8 @@
 package spring.demo;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.bean.Bean;
 import spring.config.DemoConfig;
@@ -16,7 +16,7 @@ import spring.config.DemoConfig;
 public class SpringConfigDemo {
     AnnotationConfigApplicationContext applicationContext;
 
-    @Before
+    @BeforeEach
     public void init() {
         applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(DemoConfig.class);
@@ -30,13 +30,13 @@ public class SpringConfigDemo {
         Bean bean = applicationContext.getBean("bean", Bean.class);
         bean.service();
     }
-    
+
     @Test
     public void testInterface() {
         Bean game = applicationContext.getBean("game", Bean.class);
     }
 
-    @After
+    @AfterEach
     public void destroy() {
         applicationContext.close();
     }

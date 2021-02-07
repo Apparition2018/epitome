@@ -2,7 +2,7 @@ package jar.apache.commons.codec.digest;
 
 import l.demo.Demo;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;

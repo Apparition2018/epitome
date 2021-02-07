@@ -1,8 +1,8 @@
 package knowledge.data.structure;
 
 import l.demo.Demo;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Fail extends Demo {
 
-    @Before
+    @BeforeEach
     public void before() {
         p(map);
     }

@@ -1,7 +1,7 @@
 package knowledge.network.url;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;

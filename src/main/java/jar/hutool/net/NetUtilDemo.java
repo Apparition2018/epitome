@@ -3,7 +3,7 @@ package jar.hutool.net;
 import cn.hutool.core.net.NetUtil;
 import l.demo.Demo;
 import l.demo.Person.Student;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

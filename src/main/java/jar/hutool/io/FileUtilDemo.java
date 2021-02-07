@@ -4,7 +4,7 @@ import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.io.FileUtil;
 import l.demo.Demo;
 import org.apache.commons.codec.digest.XXHash32;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;

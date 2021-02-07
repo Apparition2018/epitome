@@ -1,6 +1,6 @@
 package knowledge.api.lang;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Runtime

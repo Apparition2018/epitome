@@ -1,7 +1,7 @@
 package jar.hutool.system;
 
 import cn.hutool.system.oshi.OshiUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

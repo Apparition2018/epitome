@@ -6,7 +6,7 @@ import cn.hutool.core.collection.ListUtil;
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Home;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 

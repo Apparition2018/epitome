@@ -11,7 +11,7 @@ package knowledge.oop;
  * import 语句位于 package 语句之后，所有类的定义之前
  */
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 包

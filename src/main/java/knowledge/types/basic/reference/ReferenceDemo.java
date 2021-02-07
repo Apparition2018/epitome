@@ -2,7 +2,7 @@ package knowledge.types.basic.reference;
 
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.ref.*;
 import java.util.ArrayList;

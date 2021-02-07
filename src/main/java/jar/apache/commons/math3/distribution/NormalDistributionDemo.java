@@ -1,7 +1,7 @@
 package jar.apache.commons.math3.distribution;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * NormalDistribution

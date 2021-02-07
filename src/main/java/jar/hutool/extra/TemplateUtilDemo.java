@@ -5,7 +5,7 @@ import cn.hutool.extra.template.Template;
 import cn.hutool.extra.template.TemplateConfig;
 import cn.hutool.extra.template.TemplateEngine;
 import cn.hutool.extra.template.TemplateUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * TemplateUtil     模板引擎封装

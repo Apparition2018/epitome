@@ -8,7 +8,7 @@ import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.SM2;
 import cn.hutool.crypto.symmetric.SM4;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;

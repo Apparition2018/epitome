@@ -1,7 +1,7 @@
 package knowledge.data.structure.collections.framework.collection;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Enumeration;

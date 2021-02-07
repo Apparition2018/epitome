@@ -1,6 +1,6 @@
 package knowledge.algorithm;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

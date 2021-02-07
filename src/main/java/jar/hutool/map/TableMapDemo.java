@@ -2,7 +2,7 @@ package jar.hutool.map;
 
 import cn.hutool.core.map.TableMap;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * TableMap     可重复键 Map

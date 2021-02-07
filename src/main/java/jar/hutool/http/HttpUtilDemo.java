@@ -8,7 +8,7 @@ import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import l.demo.Demo;
 import org.apache.http.HttpStatus;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.net.HttpCookie;

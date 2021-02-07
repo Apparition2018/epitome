@@ -3,7 +3,7 @@ package knowledge.data.structure.collections.framework;
 import l.demo.Animal.Cat;
 import l.demo.Animal.Chicken;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;

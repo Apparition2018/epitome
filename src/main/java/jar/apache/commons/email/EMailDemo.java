@@ -2,7 +2,7 @@ package jar.apache.commons.email;
 
 import l.demo.Demo;
 import org.apache.commons.mail.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;

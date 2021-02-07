@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableList;
 import lombok.AllArgsConstructor;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Preconditions    先决条件

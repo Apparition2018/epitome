@@ -1,6 +1,6 @@
 package knowledge.data.structure.collections.framework.collection;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Deque;
 import java.util.LinkedList;

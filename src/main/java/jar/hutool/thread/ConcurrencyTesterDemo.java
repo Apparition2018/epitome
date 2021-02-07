@@ -4,7 +4,7 @@ import cn.hutool.core.lang.Console;
 import cn.hutool.core.thread.ConcurrencyTester;
 import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.RandomUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * ConcurrencyTester    高并发测试

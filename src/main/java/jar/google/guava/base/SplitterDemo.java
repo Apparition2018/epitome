@@ -2,7 +2,7 @@ package jar.google.guava.base;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Splitter;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;

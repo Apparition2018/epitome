@@ -1,7 +1,7 @@
 package jar.hutool.other;
 
 import cn.hutool.dfa.WordTree;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * DFA (Deterministic Finite Automaton)     确定有穷自动机

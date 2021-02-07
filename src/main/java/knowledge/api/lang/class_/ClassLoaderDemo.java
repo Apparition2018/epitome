@@ -1,7 +1,7 @@
 package knowledge.api.lang.class_;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
 import java.util.Objects;

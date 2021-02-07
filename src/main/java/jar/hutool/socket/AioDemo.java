@@ -9,7 +9,7 @@ import cn.hutool.socket.aio.AioClient;
 import cn.hutool.socket.aio.AioServer;
 import cn.hutool.socket.aio.AioSession;
 import cn.hutool.socket.aio.SimpleIoAction;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;

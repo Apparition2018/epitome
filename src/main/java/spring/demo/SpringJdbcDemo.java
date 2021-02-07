@@ -1,13 +1,12 @@
 package spring.demo;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import spring.model.Score;
 import spring.dao.ScoreDao;
+import spring.model.Score;
 
 import javax.sql.DataSource;
-
 import java.sql.SQLException;
 
 import static l.demo.Demo.p;
@@ -23,7 +22,7 @@ public class SpringJdbcDemo {
     ClassPathXmlApplicationContext applicationContext;
     ScoreDao scoreDao;
 
-    @Before
+    @BeforeEach
     public void init() {
         applicationContext = new ClassPathXmlApplicationContext("spring/spring-dao.xml", " spring/spring-service.xml");
         scoreDao = applicationContext.getBean("scoreDao", ScoreDao.class);

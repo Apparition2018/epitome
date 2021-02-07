@@ -5,7 +5,7 @@ import l.demo.Person;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;

@@ -3,7 +3,7 @@ package jar.apache.commons.collections4;
 import com.google.common.collect.Lists;
 import l.demo.Demo;
 import org.apache.commons.collections4.list.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * List

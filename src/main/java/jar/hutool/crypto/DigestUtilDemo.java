@@ -2,7 +2,7 @@ package jar.hutool.crypto;
 
 import cn.hutool.crypto.digest.DigestUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * DigestUtil   消息摘要

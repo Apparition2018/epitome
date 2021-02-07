@@ -2,7 +2,7 @@ package jar.apache.commons.beanutils;
 
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

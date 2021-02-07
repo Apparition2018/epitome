@@ -1,6 +1,6 @@
 package knowledge.datetime.time;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
 import java.time.Clock;

@@ -4,7 +4,7 @@ import cn.hutool.core.codec.Rot;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.IdUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Validator        字段验证器

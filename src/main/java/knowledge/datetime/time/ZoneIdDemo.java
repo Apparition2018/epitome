@@ -1,7 +1,7 @@
 package knowledge.datetime.time;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.ZoneId;
 import java.time.ZoneOffset;

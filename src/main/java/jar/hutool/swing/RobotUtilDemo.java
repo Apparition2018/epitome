@@ -2,7 +2,7 @@ package jar.hutool.swing;
 
 import cn.hutool.core.swing.RobotUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.io.File;

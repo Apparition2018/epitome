@@ -1,7 +1,7 @@
 package knowledge.data.structure.collections.framework.map;
 
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 

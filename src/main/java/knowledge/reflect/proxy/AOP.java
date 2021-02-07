@@ -4,7 +4,9 @@ import knowledge.reflect.proxy.domain.People;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -22,7 +24,7 @@ public class AOP {
 
     ClassPathXmlApplicationContext applicationContext;
 
-    @org.junit.Before
+    @BeforeEach
     public void init() {
         applicationContext = new ClassPathXmlApplicationContext("spring/spring-service.xml", "spring/spring-aop.xml");
     }
@@ -34,7 +36,7 @@ public class AOP {
         people.sleep();
     }
 
-    @org.junit.After
+    @AfterEach
     public void destroy() {
         applicationContext.close();
     }

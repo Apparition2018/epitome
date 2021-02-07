@@ -1,7 +1,7 @@
 package jar.apache.commons.lang3;
 
 import org.apache.commons.lang3.CharUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

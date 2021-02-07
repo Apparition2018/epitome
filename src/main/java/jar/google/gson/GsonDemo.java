@@ -5,7 +5,7 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import l.demo.Demo;
 import l.demo.JsonDemo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;

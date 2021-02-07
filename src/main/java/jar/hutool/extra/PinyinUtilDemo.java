@@ -2,7 +2,7 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.pinyin.PinyinUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * PinyinUtil   拼音工具

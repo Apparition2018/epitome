@@ -4,7 +4,7 @@ import cn.hutool.extra.cglib.CglibUtil;
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * CglibUtil

@@ -6,7 +6,7 @@ import cn.hutool.crypto.asymmetric.SignAlgorithm;
 import cn.hutool.crypto.digest.HMac;
 import cn.hutool.crypto.digest.HmacAlgorithm;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;

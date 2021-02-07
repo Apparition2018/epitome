@@ -2,7 +2,7 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.mail.MailUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * MailUtil     邮件工具

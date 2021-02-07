@@ -1,7 +1,7 @@
 package jar.lombok;
 
 import lombok.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

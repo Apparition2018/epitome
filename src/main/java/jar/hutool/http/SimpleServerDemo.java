@@ -4,7 +4,7 @@ import cn.hutool.core.net.multipart.UploadFile;
 import cn.hutool.http.ContentType;
 import cn.hutool.http.HttpUtil;
 import l.demo.Demo;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * SimpleServer     简易 Http 服务器

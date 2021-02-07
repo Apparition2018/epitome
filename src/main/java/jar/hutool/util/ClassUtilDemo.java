@@ -3,7 +3,7 @@ package jar.hutool.util;
 import cn.hutool.core.util.ClassUtil;
 import l.demo.Person;
 import l.demo.Person.Student;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 

@@ -2,7 +2,7 @@ package knowledge.api.lang.class_;
 
 import l.demo.Animal;
 import l.demo.Animal.Chicken;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.util.function.Predicate;
