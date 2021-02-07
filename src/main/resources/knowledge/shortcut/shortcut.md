@@ -1,7 +1,7 @@
 # Shortcut
 
 ```
-    IDEA                    WE Chat             VS Code
+    IDEA                    WE Chat                 VS Code
 Ctrl + Alt + L          Alt + Shift + F         Alt + Shift + F             格式化
 
 Ctrl + D                Alt + Shift + ↑ | ↓     Alt + Shift + ↑ | ↓         复制行
@@ -21,7 +21,8 @@ Ctrl + F9               Ctrl + B                                            编�
 
                         Ctrl + P                                            跳转到文件
                         
-                        Ctrl + Shift + D                                    模拟器
 Alt + 1                 Ctrl + Shift + M        Ctrl + Shift + E            Project/目录树/源管理器
+                        Ctrl + Shift + I                                    调试器
+                        Ctrl + Shift + D                                    模拟器
                 
 ```
