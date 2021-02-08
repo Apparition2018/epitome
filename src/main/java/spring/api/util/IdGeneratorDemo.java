@@ -1,4 +1,4 @@
-package spring.demo.util;
+package spring.api.util;
 
 import org.springframework.util.AlternativeJdkIdGenerator;
 import org.springframework.util.JdkIdGenerator;

@@ -1,4 +1,4 @@
-package spring.demo;
+package spring.api.context;
 
 import l.demo.Person;
 import l.demo.Person.Student;
@@ -16,15 +16,15 @@ import java.util.GregorianCalendar;
 import static l.demo.Demo.p;
 
 /**
- * Spring
+ * spring
  *
  * @author ljh
  * created on 2020/11/23 17:17
  */
-public class SpringDemo {
+public class ClassPathXmlDemo {
 
     ClassPathXmlApplicationContext applicationContext;
-    ClassPathXmlApplicationContext annAppliactionContext;
+    ClassPathXmlApplicationContext annApplicationContext;
 
     @BeforeEach
     public void init() {
@@ -114,11 +114,11 @@ public class SpringDemo {
      */
     @Test
     public void testAnn() {
-        annAppliactionContext = new ClassPathXmlApplicationContext("demo/spring/spring-ann.xml");
+        annApplicationContext = new ClassPathXmlApplicationContext("demo/spring/spring-ann.xml");
 
         // @PostConstruct @PreDestroy @Lazy
-        OtherBean otherBean = annAppliactionContext.getBean("otherBean", OtherBean.class);
-        OtherBean otherBean2 = annAppliactionContext.getBean("otherBean", OtherBean.class);
+        OtherBean otherBean = annApplicationContext.getBean("otherBean", OtherBean.class);
+        OtherBean otherBean2 = annApplicationContext.getBean("otherBean", OtherBean.class);
 
         // @scope
         p(otherBean == otherBean2); // false
@@ -126,7 +126,7 @@ public class SpringDemo {
         // @Autowired @Qualifier @Value
         p(otherBean); // OtherBean(bean=Bean(score=100, properties=null), str=[x,y,z.split(',')], score=100, password=root)
 
-        annAppliactionContext.close();
+        annApplicationContext.close();
     }
 
     @AfterEach

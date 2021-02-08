@@ -1,4 +1,4 @@
-package spring.demo.http;
+package spring.api.http;
 
 import l.demo.Demo;
 import l.demo.Person;

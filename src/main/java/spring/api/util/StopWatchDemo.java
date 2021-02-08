@@ -1,4 +1,4 @@
-package spring.demo.util;
+package spring.api.util;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.util.StopWatch;

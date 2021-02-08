@@ -1,4 +1,4 @@
-package spring.demo;
+package spring.api.context;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +13,7 @@ import spring.config.DemoConfig;
  * @author Arsenal
  * created on 2020/11/29 16:45
  */
-public class SpringConfigDemo {
+public class AnnotationConfigDemo {
     AnnotationConfigApplicationContext applicationContext;
 
     @BeforeEach

@@ -1,4 +1,4 @@
-package spring.demo.util;
+package spring.api.util;
 
 import l.demo.Demo;
 import org.springframework.util.DigestUtils;

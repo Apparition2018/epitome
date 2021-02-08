@@ -1,4 +1,4 @@
-package spring.demo.util;
+package spring.api.util;
 
 import org.junit.jupiter.api.Test;
 

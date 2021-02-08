@@ -1,4 +1,4 @@
-package spring.demo.io;
+package spring.api.io;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;

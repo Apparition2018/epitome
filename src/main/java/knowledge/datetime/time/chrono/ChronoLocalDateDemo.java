@@ -7,7 +7,7 @@ import java.time.chrono.Chronology;
 import java.util.Locale;
 
 /**
- * ChronoLocalDateDemo
+ * ChronoLocalDate
  * 子类：LocalDate, HijrahDate(伊斯兰历), MinguoDate(中华民国历), JapanseDate(日本历), ThaiBuddhistDate(泰国佛教历)
  *
  * @author ljh

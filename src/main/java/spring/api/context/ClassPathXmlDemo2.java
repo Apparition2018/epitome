@@ -1,4 +1,4 @@
-package spring.demo;
+package spring.api.context;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ import static l.demo.Demo.p;
  * @author Arsenal
  * created on 2020/11/27 1:43
  */
-public class SpringJdbcDemo {
+public class ClassPathXmlDemo2 {
 
     ClassPathXmlApplicationContext applicationContext;
     ScoreDao scoreDao;

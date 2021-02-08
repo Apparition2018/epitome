@@ -1,4 +1,4 @@
-package spring.demo.http;
+package spring.api.http;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.http.HttpEntity;
