@@ -29,6 +29,7 @@
 ## RESTful API
 1. [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
 2. [RESTful API 最佳实践](https://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
+3. [RESTful API 登录设计](https://www.v2ex.com/t/118049)
 ---
 ## [端口被占用](https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html)
 1. 打开 cmd.exe
