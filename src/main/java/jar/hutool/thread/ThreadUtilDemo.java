@@ -30,7 +30,7 @@ import java.util.stream.IntStream;
  * static void                      waitForDie([Thread thread])                             等待线程结束. 调用 Thread.join() 并忽略 InterruptedException
  * static void                      sync(Object obj)                                        同步对象
  * <p>
- * https://hutool.cn/docs/#/core/%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/%E7%BA%BF%E7%A8%8B%E5%B7%A5%E5%85%B7-ThreadUtil?id=%e7%ba%bf%e7%a8%8b%e5%b7%a5%e5%85%b7-threadutil
+ * https://hutool.cn/docs/#/core/%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/%E7%BA%BF%E7%A8%8B%E5%B7%A5%E5%85%B7-ThreadUtil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/thread/ThreadUtil.html
  *
  * @author ljh

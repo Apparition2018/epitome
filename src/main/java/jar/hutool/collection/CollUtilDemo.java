@@ -43,7 +43,7 @@ import java.util.*;
  * <p>
  * static void	                    clear(Collection<?>... collections)                             清除一个或多个集合内的元素，每个集合调用 clear()
  * <p>
- * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7-CollUtil?id=%e9%9b%86%e5%90%88%e5%b7%a5%e5%85%b7-collutil
+ * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7-CollUtil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/collection/CollUtil.html
  *
  * @author Arsenal

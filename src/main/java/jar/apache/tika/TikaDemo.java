@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Tika
  * <p>
- * Apache Tika容抽取工具集合：https://www.oschina.net/p/tika?hmsr=aladdin1e1
+ * Apache Tika容抽取工具集合：https://www.oschina.net/p/tika
  * apache Tika介绍及使用：https://blog.csdn.net/weixin_42184707/article/details/91045592
  *
  * @author Arsenal

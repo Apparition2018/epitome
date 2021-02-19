@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * SecureUtil   加密解密工具
- * https://hutool.cn/docs/#/crypto/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E5%B7%A5%E5%85%B7-SecureUtil?id=%e5%8a%a0%e5%af%86%e8%a7%a3%e5%af%86%e5%b7%a5%e5%85%b7-secureutil
+ * https://hutool.cn/docs/#/crypto/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E5%B7%A5%E5%85%B7-SecureUtil
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/crypto/SecureUtil.html
  *
  * @author Arsenal

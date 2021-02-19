@@ -18,7 +18,6 @@ import static l.demo.Demo.p;
  * Month        JANUARY FEBRUARY MARCH APRIL MAY JUNE JULY AUGUST SEPTEMBER OCTOBER NOVEMBER DECEMBER
  * <p>
  * https://www.cnblogs.com/wt20/p/8179118.html
- * https://baijiahao.baidu.com/s?id=1580329434941516154&wfr=spider&for=pc
  * https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html
  * https://www.yiibai.com/javatime
  *

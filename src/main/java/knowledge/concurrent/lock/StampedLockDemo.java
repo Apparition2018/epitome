@@ -20,7 +20,7 @@ import java.util.concurrent.locks.StampedLock;
  * 2.不支持 Condition 条件将线程等待
  * 3.写锁和悲观读锁加锁成功之后，都会返回一个 stamp；然后解锁的时候，需要传入这个 stamp
  * <p>
- * 高性能解决线程饥饿的利器 StampedLock：https://zhuanlan.zhihu.com/p/257118211?utm_source=wechat_timeline
+ * 高性能解决线程饥饿的利器 StampedLock：https://zhuanlan.zhihu.com/p/257118211
  * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/locks/StampedLock.html
  *
  * @author ljh

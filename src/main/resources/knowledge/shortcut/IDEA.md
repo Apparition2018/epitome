@@ -1,4 +1,4 @@
-# [IDEA Shortcut](https://www.jianshu.com/p/68ed588329d2?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation)
+# IDEA Shortcut
 ---
 ## Main Menu
 >### Window

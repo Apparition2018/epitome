@@ -50,7 +50,7 @@ public class Atomic extends Demo {
 
     /**
      * Reference    引用类型
-     * J.U.C 之 Atomic 框架：AtomicReference：https://segmentfault.com/a/1190000015831791?utm_source=tag-newest#articleHeader0
+     * J.U.C 之 Atomic 框架：AtomicReference：https://segmentfault.com/a/1190000015831791
      */
     @Test
     public void testReference() {

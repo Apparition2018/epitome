@@ -1,7 +1,7 @@
 # Servlet + JSP
 
 ---
-## [网络模型](https://mp.weixin.qq.com/s?__biz=MzkxOTE0NzYzNA==&mid=2247489909&idx=1&sn=29b5957038b55b966016c7ddbb5eea55&source=41#wechat_redirect)
+## [网络模型](https://mp.weixin.qq.com/s?__biz=MzkxOTE0NzYzNA==&mid=2247489909&idx=1&sn=29b5957038b55b966016c7ddbb5eea55&source=41)
 ![网络模型](https://mmbiz.qpic.cn/mmbiz_png/GBXuAtjkoVG3F1Bz4mlQxF82KQNrYNNiav1HXicXtVrH60iarUuibWeT4fHN5CHhMHejs2yponrEw1WgqzTUypn2uw/640)
 >### OSI 七层模型
 >- OSI（Open System Interconnection，开放系统互连）七层网络模型称为开放式系统互联参考模型 ，是一个逻辑上的定义，一个规范，它把网络从逻辑上分为了7层。
