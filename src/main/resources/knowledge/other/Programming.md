@@ -26,10 +26,27 @@
 >1. On 'Update' action: Update classes and resources
 >2. Debug 启动项目 (修改 Java 文件时可以立刻生效)
 ---
-## RESTful API
-1. [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
-2. [RESTful API 最佳实践](https://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
-3. [RESTful API 登录设计](https://www.v2ex.com/t/118049)
+## RPC
+1. [谁能用通俗的语言解释一下什么是 RPC 框架？](https://www.zhihu.com/question/25536695)
+2. [RPC是什么，与WebService有什么异同？](https://zhuanlan.zhihu.com/p/97640202)
+3. [TCP/IP、Http、Socket的区别?](https://www.zhihu.com/question/39541968)
+---
+## API 设计
+>### RESTful API
+>1. [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+>2. [RESTful API 最佳实践](https://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
+>3. [RESTful API 登录设计](https://www.v2ex.com/t/118049)
+>4. [RESTful API 设计最佳实践](https://www.oschina.net/translate/best-practices-for-a-pragmatic-restful-api)
+>5. [RESTful API 的十个最佳实践](https://www.cnblogs.com/xiaoyaojian/p/4612503.html)
+>6. [HiddenHttpMethodFilter进行请求过滤，实现Rest风格的url](https://www.cnblogs.com/Coder-Pig/p/7340694.html)
+>7. [为什么很多后端写接口都不按照restful规范？](https://www.zhihu.com/question/438825740/answer/1692268189)
+>8. [WEB开发中，使用JSON-RPC好，还是RESTful API好？](https://www.zhihu.com/question/28570307/answer/541465581)
+>### GraphQL
+>1. [GraphQL | 一种为你的 API 而生的查询语言](https://graphql.cn)
+>2. [使用 GraphQL 的 6 个月](https://zhuanlan.zhihu.com/p/139226118)
+>3. [GraphQL 为何没有火起来?](https://www.zhihu.com/question/38596306/answer/79714979)
+>### Google API Design Guide
+>1. [Google API Design Guide](https://www.bookstack.cn/read/API-design-guide/API-design-guide-README.md)
 ---
 ## [端口被占用](https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html)
 1. 打开 cmd.exe
