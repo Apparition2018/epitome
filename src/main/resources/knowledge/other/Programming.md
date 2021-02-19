@@ -29,7 +29,7 @@
 ## RPC
 1. [谁能用通俗的语言解释一下什么是 RPC 框架？](https://www.zhihu.com/question/25536695)
 2. [RPC是什么，与WebService有什么异同？](https://zhuanlan.zhihu.com/p/97640202)
-3. [TCP/IP、Http、Socket的区别?](https://www.zhihu.com/question/39541968)
+3. [HTTP，TCP， socket，RPC 与gRPC都是啥？](https://www.jianshu.com/p/959030de7f1c)
 ---
 ## API 设计
 >### RESTful API
