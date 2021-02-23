@@ -30,6 +30,10 @@
 1. [谁能用通俗的语言解释一下什么是 RPC 框架？](https://www.zhihu.com/question/25536695)
 2. [RPC是什么，与WebService有什么异同？](https://zhuanlan.zhihu.com/p/97640202)
 3. [HTTP，TCP， socket，RPC 与gRPC都是啥？](https://www.jianshu.com/p/959030de7f1c)
+4. [阿里P8架构师谈：Restful、SOAP、RPC、SOA、微服务之间的区别](https://youzhixueyuan.com/the-difference-between-restful-soap-rpc-soa-and-micro-service.html)
+5. [既然有 HTTP 请求，为什么还要用 RPC 调用？](https://www.zhihu.com/question/41609070)
+>### Web Services
+>1. [Web Services——重整山河待后生](https://zhuanlan.zhihu.com/p/26252433)
 ---
 ## API 设计
 >### RESTful API

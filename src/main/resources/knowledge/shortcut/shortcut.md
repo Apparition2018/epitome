@@ -21,6 +21,8 @@ Ctrl + F9               Ctrl + B                                            编�
 
                         Ctrl + P                                            跳转到文件
                         
+                        Ctrl + L                                            清除控制台
+                        
 Alt + 1                 Ctrl + Shift + M        Ctrl + Shift + E            Project/目录树/源管理器
                         Ctrl + Shift + I                                    调试器
                         Ctrl + Shift + D                                    模拟器

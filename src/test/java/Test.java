@@ -24,6 +24,7 @@
 // BladeX + Saber
 // uni-app
 // mybatis-plus activeRecord
+// 最小 rpc：https://link.zhihu.com/?target=https%3A//github.com/yeecode/EasyRPC
 
 // https://www.jianshu.com/u/8bbac962b31a
 // Java开发人员必知必会的20种常用类库和API：https://zhuanlan.zhihu.com/p/54716716
