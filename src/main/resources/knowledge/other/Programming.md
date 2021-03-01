@@ -45,6 +45,7 @@
 >6. [HiddenHttpMethodFilter进行请求过滤，实现Rest风格的url](https://www.cnblogs.com/Coder-Pig/p/7340694.html)
 >7. [为什么很多后端写接口都不按照restful规范？](https://www.zhihu.com/question/438825740/answer/1692268189)
 >8. [WEB开发中，使用JSON-RPC好，还是RESTful API好？](https://www.zhihu.com/question/28570307/answer/541465581)
+>9. [REST API一对多,多对多调用设计](https://www.iteye.com/blog/wwwcomy-2422101)
 >### GraphQL
 >1. [GraphQL | 一种为你的 API 而生的查询语言](https://graphql.cn)
 >2. [使用 GraphQL 的 6 个月](https://zhuanlan.zhihu.com/p/139226118)

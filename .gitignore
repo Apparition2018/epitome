@@ -73,6 +73,3 @@ out/
 *.ipr
 *.iml
 *.iws
-
-### ljh ###
-!**/phantomjs/bin/
