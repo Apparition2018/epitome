@@ -9,6 +9,9 @@
 2. [delimiter 的用法和作用](https://blog.csdn.net/langkeziju/article/details/14446671)
 3. [MySQL 中实现 rank 排名查询](https://blog.csdn.net/justry_deng/article/details/80597916)
 4. [Mysql 为什么默认定义varchar(255) 而不是varchar(256)](https://juejin.cn/post/6844903894703685646)
+5. [Mysql 8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
+6. [mysql中的回表查询与索引覆盖](https://www.cnblogs.com/yanggb/p/11252966.html)
+7. [索引：SQL 性能优化](https://zhuanlan.zhihu.com/p/145119015)
 ---
 ## 安装
 1. [mysql完全卸载教程](https://blog.csdn.net/qq_41140741/article/details/81489531)

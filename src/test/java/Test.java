@@ -1,31 +1,25 @@
 // 史上最强整理: https://mp.weixin.qq.com/s/kJpRgfI3zT77XqMeRfmmQQ
 // SpringBoot + Spring Batch
-// shiro oauth2
 // Guava (140)
 // Nutz: http://nutzam.com/index.html
-// htmlcleaner + jsoup
 // Groovy Gradle
-// combinator
-// Mockito
-// API tester
-// jmeter
 // 注册中心，配置中心 nacos
 // spring data jpa + Querydsl
 // spring cloud, dubbo
+// BladeX + Saber
 // redis, rocketmq, mycat
 // docker, k8s
-// 主从数据库
 // nginx
 // Spring @Cache
 // Spring Boot 2.x基础教程  http://blog.didispace.com/spring-boot-learning-2x/
 // @HeaderParam
-// ON DUPLICATE KEY UPDATE
 // 上传/下载文件
-// BladeX + Saber
 // uni-app
 // mybatis-plus activeRecord
 // 最小 rpc：https://link.zhihu.com/?target=https%3A//github.com/yeecode/EasyRPC
+// springboot+redis+shiro+spring-session实现session共享：https://blog.csdn.net/qq_29281307/article/details/90041380
 
+// 记一次完整的java项目压力测试：https://www.cnblogs.com/jpfss/p/11645793.html
 // https://www.jianshu.com/u/8bbac962b31a
 // Java开发人员必知必会的20种常用类库和API：https://zhuanlan.zhihu.com/p/54716716
 // 【小家java】java5新特性（简述十大新特性） 重要一跃：https://blog.csdn.net/f641385712/article/details/81783266

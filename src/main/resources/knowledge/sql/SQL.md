@@ -14,8 +14,7 @@
 2. [distinct 和 group by 的去重逻辑浅析](https://www.cnblogs.com/dancesir/p/7505730.html)
 3. [select 和 in 的区别](https://www.cnblogs.com/emilyyoucan/p/7833769.html)
 4. [varchar 与 nvarchar](https://www.cnblogs.com/Jashinck/p/8384388.html)
-5. [Mysql 8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
-6. [当要给字符串创建前缀索引时，如何确定我应该使用多长的前缀呢？](https://blog.csdn.net/qq_38670588/article/details/108499966)
+5. [当要给字符串创建前缀索引时，如何确定我应该使用多长的前缀呢？](https://blog.csdn.net/qq_38670588/article/details/108499966)
 ---
 ## 数据库名词
 - 关系：表
@@ -88,14 +87,14 @@
    3. 避免使用 != 和 <>
    4. 避免使用 or 来连接条件，可以使用 union 合并查询
    5. 避免使用 in 和 not in，考虑是否能用 between，exists，not exists 代替
-   6. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"
+   6. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"；可使用 locate('x', 'field') > 0 代替，效率较高
    7. 避免使用 参数，如 num=@num
    8. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
    9. 避免对索引进行表达式和函数操作，num/2=100 可以改为 num=100*2
    10. 使用 limit
    11. 复合索引，必须使用该索引中的第一个字段作为条件
    - 索引可以提高 select 效率，但会降低 insert 和 update 效率，因为 insert 或 update 时有可能会重建索。一个表的索引数不要超过6个。
-2. 使用 explain 查看执行计划  
+2. 使用 explain 查看执行计划
 2. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
 3. [hint](https://www.cnblogs.com/jpfss/p/11490765.html)
 >#### 参考
