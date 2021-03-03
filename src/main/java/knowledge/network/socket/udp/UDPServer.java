@@ -1,7 +1,5 @@
 package knowledge.network.socket.udp;
 
-import l.demo.Demo;
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
