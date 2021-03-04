@@ -38,7 +38,9 @@
 - HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议
     - 全双工：允许二台设备间同时进行双向资料传输
 - 客户端向服务端发送一个 HTTP 请求，握手后创建一个用于通信的 TCP 连接
-![WebSocket Connection Lifecycle](http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051502.png)
+<img alt="[WebSocket Connection Lifecycle" src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051502.png" style="width: 500px;"/>
+1. 服务端
+2. 客户端
 >### 参考网站
 >1. [WebSocket 教程](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
 ---

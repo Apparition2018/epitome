@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebSocket</title>
+</head>
+<body>
+<form onsubmit="return false;">
+    <input type="text" name="message" value=""/>
+    <br/><br/>
+    <input type="button" value="发送 WebSocket 请求消息" onclick="send(this.form.message.value)"/>
+    <hr color="red"/>
+    <h2>客户端接收到服务端返回的应答消息</h2>
+    <textarea id="responseContent" style="width: 1024px; height: 300px;"></textarea>
+</form>
+<script>
+    let socket;
+    if (!window.WebSocket) {
+        window.WebSocket = window.MozWebSocket;
+    }
+    if (window.WebSocket) {
+        console.log('websocket');
+        socket = new WebSocket("ws://localhost:8888/websocket");
+        socket.onmessage = function(event) {
+            console.log('onmessage');
+            let textarea = document.getElementById('responseContent');
+            textarea.value += event.data + "\r\n";
+        };
+        socket.onopen = function(event) {
+            console.log('onopen');
+            let textarea = document.getElementById('responseContent');
+            textarea.value = "您当前的浏览器支持 WebSocket，请进行后续操作\r\n";
+        };
+        socket.onclose = function(event) {
+            console.log('onclose');
+            let textarea = document.getElementById('responseContent');
+            textarea.value = "";
+            textarea.value = "WebSocket 连接已经关闭\r\n";
+        }
+    } else {
+        alert("您的浏览器不支持 WebSocket")
+    }
+    
+    function send(message) {
+        if (!window.WebSocket) {
+            return;
+        }
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(message);
+        } else {
+            alert("WebSocket 连接没有建立成功");
+        }
+    }
+</script>
+</body>
+</html>
