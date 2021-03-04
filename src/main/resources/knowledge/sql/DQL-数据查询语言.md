@@ -13,7 +13,7 @@
 9   DISTINCT
 10  UNION
 11  ORDER BY            左 → 右                 消耗资源
-12  LIMIT|TOP
+12  LIMIT|TOP|OFFSET|FETCH
 ```
 ---
 ## 基础查询

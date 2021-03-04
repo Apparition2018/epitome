@@ -19,9 +19,9 @@ public class UserAgentUtilDemo {
     @Test
     public void testUserAgentUtil() {
 
-        UserAgent userAgent = UserAgentUtil.parse("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36");
+        UserAgent userAgent = UserAgentUtil.parse("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome.md/80.0.3987.87 Safari/537.36");
 
-        p(userAgent.getBrowser());      // Chrome
+        p(userAgent.getBrowser());      // Chrome.md
         p(userAgent.getVersion());      // 80.0.3987.87
         p(userAgent.getEngine());       // Webkit
         p(userAgent.getEngineVersion());// 537.36

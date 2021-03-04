@@ -1,4 +1,5 @@
 # IDEA Shortcut
+
 ---
 ## Main Menu
 >### Window

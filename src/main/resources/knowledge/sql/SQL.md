@@ -5,7 +5,7 @@
 1. [SQL Fiddle](http://sqlfiddle.com/)
 2. [SQL Tutorial](https://www.techonthenet.com/sql/)
 3. [建表规范](https://www.cnblogs.com/xphdbky/p/7154434.html)
-4. [SQL Server 常用数据类型](https://www.cnblogs.com/mcgrady/p/3840812.html)
+4. [SQL 语法速成手册](https://mp.weixin.qq.com/s?__biz=MzU2MTI4MjI0MQ==&mid=2247491550&idx=2&sn=cfe8ed6eea2e61646e5cc3d0b5e96b68)
 ## 课程
 1. [数据库设计那些事](https://www.imooc.com/learn/117)
 ---
@@ -82,19 +82,20 @@
 ---
 ## SQL 优化
 1. 避免全表扫描：对 无索引的表进行的查询 或 放弃索引进行的查询 称为全表扫描
-   1. 考虑在 where，order by，group by 涉及的列上建立索引
+   1. 考虑在 where，order by，group by，多表关联涉及的列上建立索引
    2. 避免使用 is null 和 is not null，建议建表时设置默认值
    3. 避免使用 != 和 <>
    4. 避免使用 or 来连接条件，可以使用 union 合并查询
    5. 避免使用 in 和 not in，考虑是否能用 between，exists，not exists 代替
-   6. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"；可使用 locate('x', 'field') > 0 代替，效率较高
+   6. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"；可使用 locate('x', 'field') > 0 代替，或数据库提供的全文检索功能和专门的全文搜索引擎
    7. 避免使用 参数，如 num=@num
    8. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
-   9. 避免对索引进行表达式和函数操作，num/2=100 可以改为 num=100*2
+   9. 避免对索引进行表达式和函数操作，num/2=100 可以改为 num=100*2，包括数据类型不匹配，如字符串和整数进行比较
    10. 使用 limit
    11. 复合索引，必须使用该索引中的第一个字段作为条件
-   - 索引可以提高 select 效率，但会降低 insert 和 update 效率，因为 insert 或 update 时有可能会重建索。一个表的索引数不要超过6个。
-2. 使用 explain 查看执行计划
+   - 索引可以提高 select 效率，但会降低 insert 和 update 效率，因为 insert 或 update 时有可能会重建索。
+   - 一个表的索引数不要超过6个。
+2. [使用 explain 查看执行计划](https://tonydong.blog.csdn.net/article/details/103579177)
 2. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
 3. [hint](https://www.cnblogs.com/jpfss/p/11490765.html)
 >#### 参考
@@ -102,6 +103,8 @@
 >2. [SQL性能优化的最佳21条经验](https://zhuanlan.zhihu.com/p/21956773)
 >3. [SQL语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html)
 >4. [SQL语句性能优化](https://www.cnblogs.com/zhangtan/p/7440960.html)
+>5. [索引：SQL 性能优化](https://zhuanlan.zhihu.com/p/145119015)
+>6. [SQL 优化极简法则](https://zhuanlan.zhihu.com/p/269434753)
 ---
 ## 各层命名规约【参考】
 1. Service/DAO层方法命名规约

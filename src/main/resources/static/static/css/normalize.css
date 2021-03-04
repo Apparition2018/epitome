@@ -41,7 +41,7 @@ section {
 
 /**
  * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
+ * `article` contexts in Chrome.md, Firefox, and Safari.
  */
 
 h1 {
@@ -106,8 +106,8 @@ a {
 }
 
 /**
- * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ * 1. Remove the bottom border in Chrome.md 57- and Firefox 39-.
+ * 2. Add the correct text decoration in Chrome.md, Edge, IE, Opera, and Safari.
  */
 
 abbr[title] {
@@ -126,7 +126,7 @@ strong {
 }
 
 /**
- * Add the correct font weight in Chrome, Edge, and Safari.
+ * Add the correct font weight in Chrome.md, Edge, and Safari.
  */
 
 b,
@@ -330,7 +330,7 @@ legend {
 
 /**
  * 1. Add the correct display in IE 9-.
- * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ * 2. Add the correct vertical alignment in Chrome.md, Firefox, and Opera.
  */
 
 progress {
@@ -358,7 +358,7 @@ textarea {
 }
 
 /**
- * Correct the cursor style of increment and decrement buttons in Chrome.
+ * Correct the cursor style of increment and decrement buttons in Chrome.md.
  */
 
 [type="number"]::-webkit-inner-spin-button,
@@ -367,7 +367,7 @@ textarea {
 }
 
 /**
- * 1. Correct the odd appearance in Chrome and Safari.
+ * 1. Correct the odd appearance in Chrome.md and Safari.
  * 2. Correct the outline style in Safari.
  */
 
@@ -377,7 +377,7 @@ textarea {
 }
 
 /**
- * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ * Remove the inner padding and cancel buttons in Chrome.md and Safari on macOS.
  */
 
 [type="search"]::-webkit-search-cancel-button,
