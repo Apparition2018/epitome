@@ -43,17 +43,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.math.BigDecimal;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
-import java.util.List;
 import java.util.Objects;
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
 public class Test extends Demo {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         System.out.println(1.1 % 1);
     }
 

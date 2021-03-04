@@ -105,6 +105,7 @@
 >4. [SQL语句性能优化](https://www.cnblogs.com/zhangtan/p/7440960.html)
 >5. [索引：SQL 性能优化](https://zhuanlan.zhihu.com/p/145119015)
 >6. [SQL 优化极简法则](https://zhuanlan.zhihu.com/p/269434753)
+>7. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
 ---
 ## 各层命名规约【参考】
 1. Service/DAO层方法命名规约

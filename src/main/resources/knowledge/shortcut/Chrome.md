@@ -8,7 +8,7 @@
 ## 标签页和窗口
 Ctrl + 1~8                  定位到指定位置标号标签页
 Ctrl + 9                    定位到最后一个标签页
-Ctrl + PgDown               下一个标签页
+Ctrl + PgDown | Ctrl + Tab  下一个标签页
 Ctrl + PgUp                 上一个标签页
 Ctrl + N                    打开新窗口
 Ctrl + Shift + N            在隐身模式下打开新窗口
