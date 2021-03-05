@@ -43,4 +43,6 @@
 2. 客户端
 >### 参考网站
 >1. [WebSocket 教程](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
+>2. [WebSocket 是什么原理？为什么可以实现持久连接？](https://www.zhihu.com/question/20215561)
+>3. [HTML5 WebSocket | 菜鸟教程](https://www.runoob.com/html/html5-websocket.html)
 ---
