@@ -4,6 +4,7 @@
 3. 优点：提供事件驱动的、异步的非阻塞的网络应用程序框架和工具
 ---
 ## 参考网站
+1. [Netty.docs: Netty.docs: Home](https://netty.io/wiki/)
 1. [解锁网络编程之NIO的前世今生](https://www.imooc.com/learn/1118)
 2. [Netty入门之WebSocket初体验](https://www.imooc.com/learn/941)
 3. [通俗地讲，Netty 能做什么？](https://www.zhihu.com/question/24322387)
@@ -34,11 +35,18 @@
 >### 参考网站
 >1. [8分钟深入浅出搞懂BIO、NIO、AIO](https://zhuanlan.zhihu.com/p/83597838)
 ---
+## Reactor 线程模型
+- Reactor 是一种为处理并发服务请求，并将请求提交到一个或者多个服务处理程序的事件驱动设计模式
+<img alt="Reactor" src="http://5b0988e595225.cdn.sohucs.com/images/20181102/10d4cec7f05c4a319084fd60e8644e50.jpeg" width="550"/>
+>### 参考网站
+>1. [Reactor模式](https://www.cnblogs.com/crazymakercircle/p/9833847.html)
+>2. [如何深刻理解Reactor和Proactor？](https://www.zhihu.com/question/26943938)
+---
 ## WebSocket
 - HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议
     - 全双工：允许二台设备间同时进行双向资料传输
 - 客户端向服务端发送一个 HTTP 请求，握手后创建一个用于通信的 TCP 连接
-<img alt="[WebSocket Connection Lifecycle" src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051502.png" style="width: 500px;"/>
+<img alt="WebSocket Connection Lifecycle" src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051502.png" width="500"/>
 1. 服务端
 2. 客户端
 >### 参考网站

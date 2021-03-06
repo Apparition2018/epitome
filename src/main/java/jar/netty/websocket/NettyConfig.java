@@ -13,7 +13,7 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 public class NettyConfig {
 
     /**
-     * 存储每一个客户端接入进来的 channel 对象
+     * 存储每一个客户端接入进来的 channel 对象，并在提供各种批量操作
      */
     public static ChannelGroup group = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 }
