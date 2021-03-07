@@ -5,8 +5,8 @@
 ---
 ## 参考网站
 1. [Netty.docs: Netty.docs: Home](https://netty.io/wiki/)
-1. [解锁网络编程之NIO的前世今生](https://www.imooc.com/learn/1118)
-2. [Netty入门之WebSocket初体验](https://www.imooc.com/learn/941)
+1. [解锁网络编程之NIO的前世今生-慕课网](https://www.imooc.com/learn/1118)
+2. [Netty入门之WebSocket初体验-慕课网](https://www.imooc.com/learn/941)
 3. [通俗地讲，Netty 能做什么？](https://www.zhihu.com/question/24322387)
 4. [Netty知多少？](https://my.oschina.net/sunny0931/blog/4443529)
 ---
