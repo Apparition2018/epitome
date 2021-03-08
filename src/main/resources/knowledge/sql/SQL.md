@@ -16,7 +16,7 @@
 4. [varchar 与 nvarchar](https://www.cnblogs.com/Jashinck/p/8384388.html)
 5. [当要给字符串创建前缀索引时，如何确定我应该使用多长的前缀呢？](https://blog.csdn.net/qq_38670588/article/details/108499966)
 ---
-## 数据库名词
+## [数据库名词](https://www.cnblogs.com/dmeck/p/10507936.html)
 - 关系：表
 - 属性：表中的一列即为一个属性
 - 域：属性的取值范围
@@ -26,7 +26,6 @@
 - 超码：关系中的一个码移去某个属性，仍然是这个关系的码，则这样的码为该关系的超码
 - 候选码：关系中的一个码移去某个属性后，就不是这个关系的码，则这样的码为该关系的候选码；即关系的最小超码
 - 主属性：关系中的任一个候选码中的属性
->#### 参考：[关系数据库基本术语](https://www.cnblogs.com/dmeck/p/10507936.html)
 ---
 ## 数据操作异常
 1. 插入异常：如果某实体随着另一个实体的存在而存在，即缺少某个实体时无法表示这个实体，那么这个表就存在插入异常
@@ -44,7 +43,7 @@
 ## 设计范式
 - 数据库范式分为 1NF，2NF，3NF，BCNF，4NF，5NF，一般考虑到 BCNF 就可以了。符合高一级范式的设计，必定符合低一级范式。
 - 解决了数据冗余过大，插入异常，修改异常，删除异常问题
-1. 1NF：符合 1NF 的关系中的每个属性都不可再分
+1. 1NF：每个属性不可再分
 2. 2NF：在 1NF 的基础上，消除非主属性对于码的部分函数依赖  
    2.1 找出数据表中所有的码  
    2.2 根据第一步所得到的码，找出所有的主属性  
@@ -89,15 +88,22 @@
    5. 避免使用 in 和 not in，考虑是否能用 between，exists，not exists 代替
    6. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"；可使用 locate('x', 'field') > 0 代替，或数据库提供的全文检索功能和专门的全文搜索引擎
    7. 避免使用 参数，如 num=@num
-   8. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
-   9. 避免对索引进行表达式和函数操作，num/2=100 可以改为 num=100*2，包括数据类型不匹配，如字符串和整数进行比较
-   10. 使用 limit
-   11. 复合索引，必须使用该索引中的第一个字段作为条件
-   - 索引可以提高 select 效率，但会降低 insert 和 update 效率，因为 insert 或 update 时有可能会重建索。
-   - 一个表的索引数不要超过6个。
-2. [使用 explain 查看执行计划](https://tonydong.blog.csdn.net/article/details/103579177)
-2. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
-3. [hint](https://www.cnblogs.com/jpfss/p/11490765.html)
+   8. 避免对索引进行表达式和函数操作，num/2=100 可以改为 num=100*2，包括数据类型不匹配，如字符串和整数进行比较
+   9. 使用 limit
+   10. 复合索引，必须使用该索引中的第一个字段作为条件
+2. 索引相关
+   - [选择性高的列放在索引的前面](https://www.cnblogs.com/lty-fly/p/10693849.html)
+   - 索引不要包含太长的字段，可考虑前缀索引
+   - 索引过多不但会降低写效率，可能还会降低读的效率
+   - 定期维护索引碎片
+   - MYSQL 不要使用强制索引关键字
+3. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
+   1. 增加网络开销
+   2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
+   3. 失去了覆盖索引的可能性
+4. [使用 explain 查看执行计划](https://tonydong.blog.csdn.net/article/details/103579177)
+5. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
+6. [hint](https://www.cnblogs.com/jpfss/p/11490765.html)
 >#### 参考
 >1. [SQL 性能优化梳理](https://zhuanlan.zhihu.com/p/85724757)
 >2. [SQL性能优化的最佳21条经验](https://zhuanlan.zhihu.com/p/21956773)
@@ -106,6 +112,7 @@
 >5. [索引：SQL 性能优化](https://zhuanlan.zhihu.com/p/145119015)
 >6. [SQL 优化极简法则](https://zhuanlan.zhihu.com/p/269434753)
 >7. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
+>8. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
 ---
 ## 各层命名规约【参考】
 1. Service/DAO层方法命名规约
