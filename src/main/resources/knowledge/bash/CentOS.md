@@ -40,17 +40,17 @@
 >3. wget XXX.rpm                yum search java|grep -i --color XXX     查看可安装软件
 >4. rpm -ivh XXX                yum install XXX                         安装软件
 >5. 添加环境变量
->   5.1. which java
->   5.2. ls -l /usr/bin/java
->   5.3. ls -l /etc/alternatives/java
->   5.4. vim /etc/profile
+>   5.1 which java
+>   5.2 ls -l /usr/bin/java
+>   5.3 ls -l /etc/alternatives/java
+>   5.4 vim /etc/profile
 >       - export JAVA_HOME=/usr/java/jdk1.8.0_281-amd64
 >       - export CLASSPATH=.:$JAVE_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 >       - export PATH=$PATH:$JAVA_HOME/bin
->   5.5. source /etc/profile
+>   5.5 source /etc/profile
 >```
 >### Tomcat
->1. [在虚拟机下的tomcat，通过本地的浏览器进行访问](https://jingyan.baidu.com/article/d169e18621a4a1436611d8d3.html)
+>- [在虚拟机下的tomcat，通过本地的浏览器进行访问](https://jingyan.baidu.com/article/d169e18621a4a1436611d8d3.html)
 >```
 >1. wget xxx.tar.gz
 >2. tar -zxvf xxx.tar.gz
@@ -91,22 +91,22 @@
 >   chown -R ftpuser.ftpuser /ftpfile                   修改 ftp 文件夹权限
 >   passwd ftpuser                                      重置 ftpuser 用户密码为 123456
 >3. 配置
->   3.1. vim /etc/vsftpd/chroot_list                    添加 ftpuser 
->   3.2. vim /etc/selinux/config                        修改 SELINUX=disabled
+>   3.1 vim /etc/vsftpd/chroot_list                    添加 ftpuser 
+>   3.2 vim /etc/selinux/config                        修改 SELINUX=disabled
 >       setenforce 0                                    临时生效
->   3.3. 550 拒绝访问
+>   3.3 550 拒绝访问
 >       setsebool -P ftp_home_dir 1
 >       重启 linux，执行 reboot 命令
->   4.4. vim /etc/vsftpd/vsftpd.conf                    http://learning.happymmall.com/vsftpdconfig/vsftpd.conf.readme.html
+>   4.4 vim /etc/vsftpd/vsftpd.conf                    http://learning.happymmall.com/vsftpdconfig/vsftpd.conf.readme.html
 >4. 防火墙配置
->   4.1. vim /etc/sysconfig/iptables
+>   4.1 vim /etc/sysconfig/iptables
 >       -A INPUT -p TCP --dport 61001:62000 -j ACCEPT
 >       -A OUTPUT -p TCP --sport 61001:62000 -j ACCEPT
 >       -A INPUT -p TCP --dport 20 -j ACCEPT
 >       -A OUTPUT -p TCP --sport 20 -j ACCEPT
 >       -A INPUT -p TCP --dport 21 -j ACCEPT
 >       -A OUTPUT -p TCP --sport 21 -j ACCEPT
->   4.2. service iptables restart
+>   4.2 service iptables restart
 >5. service vsftpd restart
 >   ftp://192.168.58.129                           
 >6. ftp 192.168.58.129
@@ -120,17 +120,17 @@
 >2. wget xxx.tar.gz
 >3. tar -zxvf xxx.tar.gz
 >4. 安装
->   4.1. ./configure
+>   4.1 ./configure
 >       ①可指定安装目录，--prefix=/home/ljh/nginx
 >       ②默认安装位置，/usr/local/nginx
->   4.2. make
->   4.3. make install
+>   4.2 make
+>   4.3 make install
 >5. 防火墙设置
->   5.1. vim /etc/sysconfig/iptables
+>   5.1 vim /etc/sysconfig/iptables
 >       -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
->   5.2. service iptables restart
+>   5.2 service iptables restart
 >6. 虚拟域名配置及测试验证
->   6.1. vim /usr/local/nginx/conf/nginx.conf
+>   6.1 vim /usr/local/nginx/conf/nginx.conf
 >       # 加载 vhost/ 目录下的配置文件（方便维护），在 Server 节点前
 >       include vhost/*.conf;                             
 >   6.2 mkdir /usr/local/nginx/conf/vhost

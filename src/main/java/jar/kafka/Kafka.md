@@ -64,3 +64,34 @@
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |4 bytes|4 bytes|4 bytes|1 bytes|1 bytes|8 bytes|4bytes| |4bytes| |
 ---
+## 安装和使用
+1. [windows10安装zookeeper-3.6.2并生成zookeeper服务](https://www.cnblogs.com/fps2tao/p/13869428.html)
+2. [ZooKeeper audit is disabled](https://blog.csdn.net/u011702673/article/details/109963726)
+3. [windows下搭建kafka](https://www.cnblogs.com/seeall/p/14464516.html)
+>### Zookeeper
+>1. 配置文件：./conf/zoo.cfg
+>   1.1 dataDir=D:\dev\apache-zookeeper-3.6.2-bin\data
+>   1.2 dataLogDir=D:\dev\apache-zookeeper-3.6.2-bin\logs
+>   1.3 admin.serverPort=8888
+>   1.4 audit.enable=true
+>2. 添加环境
+>   2.1 添加 ZOOKEEPER_HOME=D:\dev\apache-zookeeper-3.6.2-bin
+>   2.2 PATCH 添加 %ZOOKEEPER_HOME%\bin
+>3. 启动和测试
+>   3.1 ./bin/zkServer.cmd
+>   3.2 ./bin/zkCli.cmd
+>### Kafka
+>1. 配置文件：./config/server.properties
+>   1.1 log.dirs=D:\dev\kafka_2.13-2.7.0\logs
+>2. 启动
+>   2.1 启动 Zookeeper ./bin/zkServer.cmd
+>   2.2 启动 Kafka ./bin/windows/kafka-server-start.bat ./config/server.properties
+>3. 命令测试
+>   3.1 cd bin 或 cd bin/windows
+>   3.2 创建主题：kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic test-topic
+>   3.3 查看主题：kafka-topics.bat --list --zookeeper localhost:2181
+>   3.4 创建生产者：kafka-console-producer.bat --broker-list localhost:9092 --topic test-topic
+>   3.5 创建消费者：kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning
+>   3.6 在生产者输入 first message，消费者可以看到 first message
+>   [在Windows安装运行Kafka](https://blog.csdn.net/qq_42715450/article/details/114278321)
+---
