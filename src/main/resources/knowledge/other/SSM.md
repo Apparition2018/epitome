@@ -104,7 +104,7 @@ Spring SpringMVC Mybatis
 >           </bean>
 >       ```
 >3. Bean：ref
->4. null：&lt;property name="age"&gt; &lt;null/gt; &lt;/property&gt;
+>4. null：&lt;property name="age"&gt; &lt;null/&gt; &lt;/property&gt;
 >5. SpEL 表达式：#{id.attribute}，读取其它对象/集合中的数据
 >### Spring 其它功能
 >- init-method：初始化方法
@@ -128,7 +128,7 @@ Spring SpringMVC Mybatis
 >- 依赖注入注解：
 >   1. @Autowired：写在构造器前面，声明需要为其注入 Bean
 >   2. @Inject：写在构造器前面，声明需要为其注入 Bean
->   3. @Qualifier：写在参数前面，声明需要注入的 bean 的 id 值
+>   3. @Qualifier：写在参数前面，声明需要注入的 Bean 的 id 值
 >       - 当创建相同类型的 Bean 时，和 @Autowired 配合使用
 >       - 注入的对象为单例时，可省略 value，此时，Spring 按照类型匹配
 >   4. @Resource：set 方法注入推荐使用

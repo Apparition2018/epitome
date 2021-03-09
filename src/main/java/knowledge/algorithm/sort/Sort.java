@@ -23,15 +23,7 @@ import java.util.Random;
  */
 public class Sort extends Demo {
 
-    private static int[] arr = new int[10];
-
-    static {
-        Random random = new Random();
-        for (int i = 0, len = arr.length; i < len; i++) {
-            arr[i] = random.nextInt(100);
-        }
-        p("原始数组：" + Arrays.toString(arr));
-    }
+    private static int[] arr = new int[]{88, 23, 97, 19, 85, 35, 81, 54, 75, 50};
 
     /**
      * 交换排序
@@ -49,6 +41,9 @@ public class Sort extends Demo {
         /**
          * 冒泡排序
          * 从数组的第一个位置开始两两比较 arr[index] 和 arr[index+1]，如果 arr[index] 大于 arr[index+1]，则交换 arr[index] 和 arr[index+1] 的位置
+         * 第一轮排序完毕后，最大的数会排到数组最后
+         * 第二轮排序完毕后，倒数第二大的数会排到数组倒数第二位
+         * ...
          * <p>
          * [88, 23, 97, 19, 85, 35, 81, 54, 75, 50]
          * <p>
@@ -59,13 +54,12 @@ public class Sort extends Demo {
          * [19, 23, 35, 54, 50, 75, 81, 85, 88, 97]
          * [19, 23, 35, 50, 54, 75, 81, 85, 88, 97] 已排序完毕
          * [19, 23, 35, 50, 54, 75, 81, 85, 88, 97]
-         * [19, 23, 35, 50, 54, 75, 81, 85, 88, 97]
-         * [19, 23, 35, 50, 54, 75, 81, 85, 88, 97]
          */
         private static void bubbleSort(int[] arr) {
             long t1 = System.nanoTime();
             for (int i = 0, len = arr.length; i < len - 1; i++) {
-                boolean flag = true; // 标记，这次循环是否没有进行交换
+                // flag 表示本轮是否没有进行交换，没有进行交换表示排序已完成
+                boolean flag = true;
                 for (int j = 0; j < len - 1 - i; j++) {
                     if (arr[j] > arr[j + 1]) {
                         int temp = arr[j];
@@ -181,6 +175,7 @@ public class Sort extends Demo {
                     arr[i] = arr[min];
                     arr[min] = temp;
                 }
+                p("选择排序：" + Arrays.toString(arr));
             }
             long t2 = System.nanoTime();
             p("选择排序：" + Arrays.toString(arr) + "\n消耗时间：" + (t2 - t1));

@@ -47,14 +47,43 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Random;
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
 public class Test extends Demo {
 
     public static void main(String[] args) throws Exception {
-        System.out.println(1.1 % 1);
+        bubbleSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+    
+    private static int[] arr = new int[10];
+    
+    static {
+        Random random = new Random();
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(100);
+        }
+    }
+    
+    private static void bubbleSort(int[] arr) {
+        for (int i = 0, len = arr.length; i < len - 1; i++) {
+            boolean flag = true;
+            for (int j = 0; j < len - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    flag = false;
+                }
+            }
+            if (flag) {
+                break;
+            }
+        }
     }
 
     @RequestMapping("/downloadExcel")
