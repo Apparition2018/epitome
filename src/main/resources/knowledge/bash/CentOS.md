@@ -107,11 +107,11 @@
 >       -A INPUT -p TCP --dport 21 -j ACCEPT
 >       -A OUTPUT -p TCP --sport 21 -j ACCEPT
 >   4.2 service iptables restart
->5. service vsftpd restart
->   ftp://192.168.58.129                           
->6. ftp 192.168.58.129
->   ftpuser
->   123456
+>5. 启动和访问
+>   5.1 service vsftpd restart
+>   5.2 浏览器访问 ftp://192.168.58.129                           
+>6. 登录服务器：ftp 192.168.58.129
+>7. FTP 软件：filezilla
 >```
 >### Nginx
 >- Nginx 是一款轻量级 web 服务器，也是一款反向代理服务器；特点有高稳定，高性能，资源占用少，功能丰富，模块化结构，支持热部署
