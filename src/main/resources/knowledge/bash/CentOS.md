@@ -71,7 +71,7 @@
 >3. 添加环境变量
 >   3.1 vim /etc/profile
 >       - export MAVEN_HOME=/home/ljh/software/apache-maven-3.6.3
->       - export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
+>       - export PATH=$PATH:$MAVEN_HOME/bin
 >   3.2 source /etc/profile
 >4. mvn -version
 >5. 常用命令
