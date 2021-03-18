@@ -61,8 +61,12 @@
 >4. 配置 UTF-8 字符集
 >   4.1 vim ${CATALINA_HOME}/conf/server.xml
 >   4.2 在 <connector port="8080" 最后添加 URIEncoding="UTF-8"/>
->5. ${CATALINA_HOME}/bin/startup.sh
->6. ${CATALINA_HOME}/bin/shutdown.sh
+>5. 防火墙配置
+>   5.1 vim /etc/sysconfig/iptables
+>       -A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+>   5.2 service iptables restart
+>6. ${CATALINA_HOME}/bin/startup.sh
+>   ${CATALINA_HOME}/bin/shutdown.sh
 >```
 >### Maven
 >```
@@ -100,12 +104,12 @@
 >   4.4 vim /etc/vsftpd/vsftpd.conf                    http://learning.happymmall.com/vsftpdconfig/vsftpd.conf.readme.html
 >4. 防火墙配置
 >   4.1 vim /etc/sysconfig/iptables
->       -A INPUT -p TCP --dport 61001:62000 -j ACCEPT
->       -A OUTPUT -p TCP --sport 61001:62000 -j ACCEPT
->       -A INPUT -p TCP --dport 20 -j ACCEPT
->       -A OUTPUT -p TCP --sport 20 -j ACCEPT
->       -A INPUT -p TCP --dport 21 -j ACCEPT
->       -A OUTPUT -p TCP --sport 21 -j ACCEPT
+>       -A INPUT -p tcp --dport 61001:62000 -j ACCEPT
+>       -A OUTPUT -p tcp --sport 61001:62000 -j ACCEPT
+>       -A INPUT -p tcp --dport 20 -j ACCEPT
+>       -A OUTPUT -p tcp --sport 20 -j ACCEPT
+>       -A INPUT -p tcp --dport 21 -j ACCEPT
+>       -A OUTPUT -p tcp --sport 21 -j ACCEPT
 >   4.2 service iptables restart
 >5. 启动和访问
 >   5.1 service vsftpd restart
@@ -151,5 +155,46 @@
 >       192.168.58.129 www.ljh.com
 >       192.168.58.129 image.ljh.com
 >       192.168.58.129 s.ljh.com
+>```
+>### MySQL
+>```
+>1. yum list installed|grep mysql       查看已安装 mysql
+>2. yum remove mysql-libs.x86_64        删除 msyql
+>3. yum -y install mysql-server         安装 mysql （yum 只能安装 mysql-5.1.73）
+>4. 字符集配置
+>   4.1 vim /etc/my.cnf
+>   4.2 [mysqld] 节点下添加
+>       default-character-set=utf8  [5.1]
+>       character-set-server=utf8   [5.5+]
+>5. 自启动配置
+>   5.1 chkconfig mysqld on
+>   5.2 chkconfig --list mysqld （如果2-5位启用on状态即为OK）
+>6. 防火墙设置
+>   6.1 vim /etc/sysconfig/iptables
+>       -A INPUT -m tcp -p tcp --dport 3306 -j ACCEPT
+>   6.2 service iptables restart
+>7. MySQL 配置
+>   7.0 mysql -u root
+>   7.1 查看目前 mysql 用户
+>       select user, host, password from mysql.user;
+>   7.2 修改 root 密码
+>       set password for root@localhost=password('yourpassword');
+>   7.3 删除匿名用户
+>       delete from mysql.user where user='';
+>       flush privileges;
+>   7.4 新增 mysql 用户
+>       insert into mysql.user(Host, User, Password) values("localhost", "yourusername", passowrd("yourpassword"));
+>       flush privileges;
+>   7.5 创建数据库
+>       create database `mmall` default character set utf8 collate utf8_general_ci;
+>   7.6 查看权限（\G 表示格式化）
+>       select * from mysql.user \G;
+>   7.7 授权
+>       grant all privileges on mmall.* to yourusername@localhost identified by 'yourpassword' with grant option;
+>   7.8 外网权限
+>       grant all privileges on mmall.* to yourusername@'%' identified by 'yourpassword';
+>       grant select on mmall.* to yourusername@192.11.11.11 identified by 'yourpassword';
+>8. 常用命令
+>   service mysqld start|stop|restart
 >```
 ---
