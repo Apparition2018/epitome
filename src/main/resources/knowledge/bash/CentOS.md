@@ -52,7 +52,8 @@
 >### Tomcat
 >- [在虚拟机下的tomcat，通过本地的浏览器进行访问](https://jingyan.baidu.com/article/d169e18621a4a1436611d8d3.html)
 >```
->1. wget xxx.tar.gz
+>1. wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz
+>   - https://tomcat.apache.org/download-90.cgi
 >2. tar -zxvf xxx.tar.gz
 >3. 添加环境变量
 >   3.1 vim /etc/profile
@@ -70,7 +71,8 @@
 >```
 >### Maven
 >```
->1. wget xxx.tar.gz
+>1. wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+>   - https://maven.apache.org/download.cgi
 >2. tar -zxvf xxx.tar.gz
 >3. 添加环境变量
 >   3.1 vim /etc/profile
@@ -121,7 +123,8 @@
 >- Nginx 是一款轻量级 web 服务器，也是一款反向代理服务器；特点有高稳定，高性能，资源占用少，功能丰富，模块化结构，支持热部署
 >```
 >1. yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
->2. wget xxx.tar.gz
+>2. wget http://nginx.org/download/nginx-1.18.0.tar.gz
+>   - http://nginx.org/en/download.html
 >3. tar -zxvf xxx.tar.gz
 >4. 安装
 >   4.1 ./configure
@@ -157,6 +160,7 @@
 >       192.168.58.129 s.ljh.com
 >```
 >### MySQL
+>- [Access denied for user 'root'@'192.168.1.xxx' (using password: YES)](https://blog.csdn.net/qq_34885405/article/details/93041509)
 >```
 >1. yum list installed|grep mysql       查看已安装 mysql
 >2. yum remove mysql-libs.x86_64        删除 msyql
@@ -197,4 +201,34 @@
 >8. 常用命令
 >   service mysqld start|stop|restart
 >```
+>### Git
+>```
+>1. yum -y install zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
+>2. wget https://github.com/git/git/archive/refs/tags/v2.31.0.tar.gz
+>   - https://github.com/git/git/releases
+>3. tar -zxvf xxx.tar.gz
+>4. 安装
+>   4.1 cd git-2.31.0
+>   4.2 make prefix=/usr/local all
+>   4.3 make prefix=/usr/local install
+>   4.4 git --version
+>5. 基础配置
+>   5.1 配置用户名
+>       git config --global user.name 'Apparition2018'
+>   5.2 配置邮箱
+>       git config --global user.email '88850180@163.com'
+>   5.3 忽略 Windows/Unix 换行符转换
+>       git config --global core.autocrlf false
+>   5.4 编码相关配置
+>       git config --global gui.encoding utf-8
+>       git config --global core.quotepath off
+>   5.5 关闭忽略大小写
+>       git config --global core.ignorecase flase
+>6. 配置 ssh key pair
+>   6.1 ssh-keygen -t rsa -C '88850180@163.com'
+>   6.2 一路回车，生成 ssh key pair
+>   6.3 ssh-add ~/.ssh/id_rsa
+>       如果出现 Could not open a connection to your authentication agent，先执行 eval `ssh-agent`
+>   6.4 cat ~/.ssh/id_rsa.pub
+>   6.5 登录码云设置 SSH 公钥
 ---
