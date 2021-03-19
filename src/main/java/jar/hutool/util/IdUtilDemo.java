@@ -27,12 +27,12 @@ public class IdUtilDemo {
         p(IdUtil.simpleUUID()); // f2843351a7d8486ca84fcb2857b6283d
 
         // ObjectId：UUID version1 的变种
-        p(ObjectId.next());
-        p(IdUtil.objectId());
+        p(ObjectId.next());     // 605417e6f6735b3a8062c04d
+        p(IdUtil.objectId());   // 605417e6f6735b3a8062c04e
 
         // Snowflake：简短且按时间有序生成
         // 终端 ID，数据中心 ID
         Snowflake snowflake = IdUtil.getSnowflake(1, 1);
-        p(snowflake.nextId());
+        p(snowflake.nextId());  // 1372749159878234112
     }
 }

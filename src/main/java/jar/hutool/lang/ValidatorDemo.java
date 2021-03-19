@@ -1,6 +1,5 @@
 package jar.hutool.lang;
 
-import cn.hutool.core.codec.Rot;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.IdUtil;
 import l.demo.Demo;

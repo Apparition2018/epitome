@@ -55,7 +55,8 @@
     2. JavaScript language version: ECMAScript 6
 ---
 ## npm
-    1. package.json 右键 Show npm Scripts
+    1. package.json 右鍵 Run 'npm install'，下载依赖生成 node_modules
+    2. package.json 右键 Show npm Scripts，显示 npm 面板
 ---
 ## webpack.config.js
     1. Settings → Language & Frameworks → JavaScript → Webpack
