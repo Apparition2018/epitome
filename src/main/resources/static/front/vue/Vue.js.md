@@ -79,22 +79,42 @@
 >v-slot          #                  可放置在函数参数位置的 JavaScript 表达式
 >```
 ---
+## 常用命令
+    vue -V|--version
+    vue init webpack                (vue-cli2.x)
+    vue create                      (vue-cli3.x)
+    vue ui
+---
+## 调试方法
+1. console.log(), alter(), debugger + this
+2. mounted + window.vue = this
+```
+    mounted () {
+        window.vue = this
+    }
+```
+3. var app = new Vue({...})
+4. Chrome
+    - Network (XHR 等)
+    - Presets (Slow 3G)
+5. Vue Devtools
+---
 ## 风格指南
 >### 必要
 >1. 组件名为多个单词
->   - 因为所有的 HTML 元素名称都是单个单词的
+    >   - 因为所有的 HTML 元素名称都是单个单词的
 >2. 组件 data 必须是一个函数，除了 (new Vue)
->   - 使组件总是返回一份新的 data
+    >   - 使组件总是返回一份新的 data
 >3. props 定义应尽量详细
 >4. 为 v-for 设置 key
 >5. 避免 v-if 和 v-for 使用在同一元素
->   - v-for 比 v-if 具有更高优先级
+    >   - v-for 比 v-if 具有更高优先级
 >6. 为组件样式设置作用域
->   - scoped
+    >   - scoped
 >   - CSS Modules
 >   - BEM
 >7. 在插件、混入等扩展中始终为自定义的私有属性使用 $_ 前缀 或使用模块作用域
->   - 不允许外部访问的函数的私有性
+    >   - 不允许外部访问的函数的私有性
 >### 强力推荐
 >1. 一个组件，一个 .vue 文件
 >2. 单文件组件的文件名应该要么始终是单词 PascalCase (大写开头)，要么始终是 kebab-case (横线连接)
@@ -128,8 +148,8 @@
 >   <my-component></my-component>   DOM 模板
 >   <my-component></my-component>   所有地放
 >```
->9. JS/JSX 中的组件名应该始终是 PascalCase 的 
->   - 简单的应用中只使用 Vue.component 进行全局组件注册时，可以使用 kebab-case
+>9. JS/JSX 中的组件名应该始终是 PascalCase 的
+    >   - 简单的应用中只使用 Vue.component 进行全局组件注册时，可以使用 kebab-case
 >```
 >   Vue.component('MyComponent', {
 >     // ...
@@ -251,29 +271,9 @@
 >### 谨慎使用
 >1. 没有在 v-if/v-else-if/v-else 中使用 key
 >2. scoped 中使用的元素选择器
->   - 大量使用元素选择器是很慢的
+    >   - 大量使用元素选择器是很慢的
 >3. 隐性的父子组件通信
->   - 优先通过 prop 和事件进行父子组件之间的通信，而不是 this.$parent 或变更 prop
+    >   - 优先通过 prop 和事件进行父子组件之间的通信，而不是 this.$parent 或变更 prop
 >4. 非 Flux 的全局状态管理
->   - 应该优先通过 Vuex 管理全局状态，而不是通过 this.$root 或一个全局事件总线
----
-## 常用命令
-    vue -V|--version
-    vue init webpack                (vue-cli2.x)
-    vue create                      (vue-cli3.x)
-    vue ui
----
-## 调试方法
-1. console.log(), alter(), debugger + this
-2. mounted + window.vue = this
-```
-    mounted () {
-        window.vue = this
-    }
-```
-3. var app = new Vue({...})
-4. Chrome
-    - Network (XHR 等)
-    - Presets (Slow 3G)
-5. Vue Devtools
+    >   - 应该优先通过 Vuex 管理全局状态，而不是通过 this.$root 或一个全局事件总线
 ---

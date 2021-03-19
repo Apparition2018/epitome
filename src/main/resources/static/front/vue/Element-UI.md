@@ -1,7 +1,20 @@
 # Element-UI
 
 ---
-## Notice
+## Basic
+### Layout 布局
+>#### Row Attributes
+>```
+>   gutter               栅格间隔
+>```
+>#### Col Attributes
+>```
+>   span                 栅格占据的列数
+>```
+### Dialog 对话框
+
+---
+## Notice 
 ### Message 消息提示
     this.$message({
         message: '恭喜你，这是一条成功消息',
