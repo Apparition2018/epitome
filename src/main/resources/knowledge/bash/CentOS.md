@@ -180,6 +180,7 @@
 >   7.2 修改 root 密码
 >       set password for root@localhost=password('yourpassword');
 >   7.3 删除匿名用户
+>       select user, host from mysql.user where user='';
 >       delete from mysql.user where user='';
 >       flush privileges;
 >   7.4 新增 mysql 用户
@@ -187,13 +188,12 @@
 >       flush privileges;
 >   7.5 创建数据库
 >       create database `mmall` default character set utf8 collate utf8_general_ci;
->   7.6 查看权限（\G 表示格式化）
+>   7.6 查看权限（\G 格式化查询）
 >       select * from mysql.user \G;
 >   7.7 授权
 >       grant all privileges on mmall.* to yourusername@localhost identified by 'yourpassword' with grant option;
->   7.8 外网权限
 >       grant all privileges on mmall.* to yourusername@'%' identified by 'yourpassword';
->       grant select on mmall.* to yourusername@192.11.11.11 identified by 'yourpassword';
+>       show grants for yourusername@localhost;
 >8. 常用命令
 >   service mysqld start|stop|restart
 >```

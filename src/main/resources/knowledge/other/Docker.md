@@ -18,5 +18,8 @@ docker run -d --name redis -p 6379:6379 [-v D:/Docker/Redis/data:/data] redis [-
 ```
 docker run -d --name mysql -p 3306:3306 [-v D:/Docker/MySQL/my.cnf:/etc/mysql/my.cnf -v D:/Docker/MySQL/data:/var/lib/mysql] -e MYSQL_ROOT_PASSWORD=root mysql  
 docker exec -it mysql mysql -uroot -proot
+     create user ljh@172.17.0.1 identified by '123456';                         创建用户
+     grant all privileges on `ry-vue`.* to ljh@172.17.0.1 with grant option;    授权
+     flush privileges;
 ```
 --- 
