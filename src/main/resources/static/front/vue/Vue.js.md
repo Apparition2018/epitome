@@ -149,7 +149,7 @@
 >   <my-component></my-component>   所有地放
 >```
 >9. JS/JSX 中的组件名应该始终是 PascalCase 的
-    >   - 简单的应用中只使用 Vue.component 进行全局组件注册时，可以使用 kebab-case
+>   - 简单的应用中只使用 Vue.component 进行全局组件注册时，可以使用 kebab-case
 >```
 >   Vue.component('MyComponent', {
 >     // ...
