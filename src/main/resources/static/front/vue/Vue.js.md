@@ -99,23 +99,23 @@
     - Presets (Slow 3G)
 5. Vue Devtools
 ---
-## 风格指南
->### 必要
+## [风格指南](https://vuejs.bootcss.com/style-guide/)
+>### [必要](https://vuejs.bootcss.com/style-guide/#%E4%BC%98%E5%85%88%E7%BA%A7-A-%E7%9A%84%E8%A7%84%E5%88%99%EF%BC%9A%E5%BF%85%E8%A6%81%E7%9A%84-%E8%A7%84%E9%81%BF%E9%94%99%E8%AF%AF)
 >1. 组件名为多个单词
-    >   - 因为所有的 HTML 元素名称都是单个单词的
+>   - 因为所有的 HTML 元素名称都是单个单词的
 >2. 组件 data 必须是一个函数，除了 (new Vue)
-    >   - 使组件总是返回一份新的 data
+>   - 使组件总是返回一份新的 data
 >3. props 定义应尽量详细
 >4. 为 v-for 设置 key
 >5. 避免 v-if 和 v-for 使用在同一元素
-    >   - v-for 比 v-if 具有更高优先级
+>   - v-for 比 v-if 具有更高优先级
 >6. 为组件样式设置作用域
-    >   - scoped
+>   - scoped
 >   - CSS Modules
 >   - BEM
 >7. 在插件、混入等扩展中始终为自定义的私有属性使用 $_ 前缀 或使用模块作用域
-    >   - 不允许外部访问的函数的私有性
->### 强力推荐
+>   - 不允许外部访问的函数的私有性
+>### [强力推荐](https://vuejs.bootcss.com/style-guide/#%E4%BC%98%E5%85%88%E7%BA%A7-B-%E7%9A%84%E8%A7%84%E5%88%99%EF%BC%9A%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90-%E5%A2%9E%E5%BC%BA%E5%8F%AF%E8%AF%BB%E6%80%A7)
 >1. 一个组件，一个 .vue 文件
 >2. 单文件组件的文件名应该要么始终是单词 PascalCase (大写开头)，要么始终是 kebab-case (横线连接)
 >```
@@ -146,7 +146,7 @@
 >```
 >   <MyComponent/>                  单文件组件、字符串模板  
 >   <my-component></my-component>   DOM 模板
->   <my-component></my-component>   所有地放
+>   <my-component></my-component>   所有地方
 >```
 >9. JS/JSX 中的组件名应该始终是 PascalCase 的
 >   - 简单的应用中只使用 Vue.component 进行全局组件注册时，可以使用 kebab-case
@@ -186,7 +186,7 @@
 >14. 应该把复杂计算属性分割为尽可能多的更简单的 property
 >15. 非空 HTML attribute 值应该始终带引号
 >16. 指令缩写要么都用要么都不用
->### 推荐
+>### [推荐](https://vuejs.bootcss.com/style-guide/#%E4%BC%98%E5%85%88%E7%BA%A7-C-%E7%9A%84%E8%A7%84%E5%88%99%EF%BC%9A%E6%8E%A8%E8%8D%90-%E5%B0%86%E9%80%89%E6%8B%A9%E5%92%8C%E8%AE%A4%E7%9F%A5%E6%88%90%E6%9C%AC%E6%9C%80%E5%B0%8F%E5%8C%96)
 >1. 组件/实例的选项的顺序
 >```
 >   1. 副作用（触发组件外的影响）
@@ -268,12 +268,12 @@
 >   <style>/* ... */</style>
 >```
 >4. 在多个 property 之间增加空行
->### 谨慎使用
+>### [谨慎使用](https://vuejs.bootcss.com/style-guide/#%E4%BC%98%E5%85%88%E7%BA%A7-D-%E7%9A%84%E8%A7%84%E5%88%99%EF%BC%9A%E8%B0%A8%E6%85%8E%E4%BD%BF%E7%94%A8-%E6%9C%89%E6%BD%9C%E5%9C%A8%E5%8D%B1%E9%99%A9%E7%9A%84%E6%A8%A1%E5%BC%8F)
 >1. 没有在 v-if/v-else-if/v-else 中使用 key
 >2. scoped 中使用的元素选择器
-    >   - 大量使用元素选择器是很慢的
+>   - 大量使用元素选择器是很慢的
 >3. 隐性的父子组件通信
-    >   - 优先通过 prop 和事件进行父子组件之间的通信，而不是 this.$parent 或变更 prop
+>   - 优先通过 prop 和事件进行父子组件之间的通信，而不是 this.$parent 或变更 prop
 >4. 非 Flux 的全局状态管理
-    >   - 应该优先通过 Vuex 管理全局状态，而不是通过 this.$root 或一个全局事件总线
+>   - 应该优先通过 Vuex 管理全局状态，而不是通过 this.$root 或一个全局事件总线
 ---
