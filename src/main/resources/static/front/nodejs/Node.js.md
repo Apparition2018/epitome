@@ -6,7 +6,7 @@
 2. [IntelliJ IDEA：npm和Yarn](https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-drm430d9.html)
 ### npm
 >1. [windows安装npm教程](https://www.cnblogs.com/jianguo221/p/11487532.html)
->2. [npm 安装文档 | npm 中文网](caibaojian.com/npm/)
+>2. [npm 安装文档 | npm 中文网](http://caibaojian.com/npm/)
 >3. [npm 常用命令详解](https://www.cnblogs.com/PeunZhang/p/5553574.html#npm-install)
 ### yarn
 >1. [yarn.lock 是干什么的](https://www.cnblogs.com/yangzhou33/p/11494819.html)
