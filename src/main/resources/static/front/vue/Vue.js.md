@@ -8,6 +8,7 @@
 4. [vue-20-hello-world - CodeSandbox](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-hello-world)   
 5. [Vue Documentation Guide](https://scrimba.com/learn/vuedocs)
 6. [Vue风格指南总结及对应ESLint规则配置](https://www.cnblogs.com/dreamsqin/p/10906951.html)
+7. [Vue项目中的文件/文件夹命名规范](https://www.jianshu.com/p/7e397fc3dd5c)
 ---
 ## 教程
 >### 模板语法
@@ -78,12 +79,6 @@
 >v-model                            双向绑定属性或组件
 >v-slot          #                  可放置在函数参数位置的 JavaScript 表达式
 >```
----
-## 常用命令
-    vue -V|--version
-    vue init webpack                (vue-cli2.x)
-    vue create                      (vue-cli3.x)
-    vue ui
 ---
 ## 调试方法
 1. console.log(), alter(), debugger + this
