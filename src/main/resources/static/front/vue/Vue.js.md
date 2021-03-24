@@ -9,6 +9,7 @@
 5. [Vue Documentation Guide](https://scrimba.com/learn/vuedocs)
 6. [Vue风格指南总结及对应ESLint规则配置](https://www.cnblogs.com/dreamsqin/p/10906951.html)
 7. [Vue项目中的文件/文件夹命名规范](https://www.jianshu.com/p/7e397fc3dd5c)
+8. [vue 开发命名规范](https://segmentfault.com/a/1190000009805187)
 ---
 ## 教程
 >### 模板语法

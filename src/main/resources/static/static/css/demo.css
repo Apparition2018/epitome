@@ -45,6 +45,10 @@
     margin-top: 60px;
 }
 
+.caption:nth-child(3) {
+    margin-top: 100px;
+}
+
 .caption:hover {
     background-position: -0em bottom;
 }
@@ -55,7 +59,7 @@
 }
 
 
-/* 234607 */
+/* ljh */
 :root {
     --gy1: #cbc9cf;
     --gy2: #807f83;
@@ -159,7 +163,7 @@
     position: fixed;
     padding: 8px;
     background-color: #333;
-    color: #fff;
+    color: var(--gga1);
     font-size: 12px;
     border: 1px solid #000;
     border-radius: 2px;
@@ -175,7 +179,7 @@ table {
 
 th {
     padding: 5px 15px 5px 6px;
-    color: #ffffff;
+    color: var(--gga1);
     text-align: left;
     background-color: var(--gy5);
     border: 1px solid var(--gy5);
@@ -243,6 +247,30 @@ a {
     height: 100vh;
 }
 
+.h1100 {
+    height: 1100px;
+}
+
+.h1000 {
+    height: 1000px;
+}
+
+.h950 {
+    height: 950px;
+}
+
+.h900 {
+    height: 900px;
+}
+
+.h850 {
+    height: 850px;
+}
+
+.h800 {
+    height: 800px;
+}
+
 .h750 {
     height: 750px;
 }
@@ -259,12 +287,12 @@ a {
     height: 600px;
 }
 
-.h500 {
-    height: 500px;
-}
-
 .h550 {
     height: 550px;
+}
+
+.h500 {
+    height: 500px;
 }
 
 .h450 {
