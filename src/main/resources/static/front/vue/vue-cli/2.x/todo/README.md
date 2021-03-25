@@ -28,6 +28,18 @@
 - 4-3 全局样式与局部样式
 - 4-4 课程总结
 ---
+## 创建项目
+    1. vue init webpack demo
+    2. Project name
+    3. Project description
+    4. Author
+    5. Vue build                                            Runtime + Compiler: recommended for most users
+    6. Install vue-router?                                  No
+    7. Use ESLint to lint your code?                        Y, Standard
+    8. Set up unit tests                                    No
+    9. Setup e2e tests with Nightwatch?                     No
+    10.Should we run `npm install` for you after the project has been created?    Yes, use NPM
+---
 ## Build Setup
 
 ``` bash

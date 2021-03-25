@@ -37,6 +37,17 @@
 - 5-1 重点知识点回顾
 - 5-2 课程总结
 ---
+## 创建项目
+    1. vue create demo
+    2. Please pick a preset                                 Manually select features
+    3. Check the features needed for your project           Babel + Router + Vuex + CSS Pre-procesors + Linter / Formatter
+    4. Use history mode for router?                         Yes
+    5. Pick a CSS pre-processor                             Sass/SCSS
+    6. Pick a linter / formatter config                     ESLint + Airbnb config
+    7. Pick additional lint feautres                        Lint on Save
+    8. Where do you prefer placing config for Babel, PostCSS, ESLint, etc.?     In dedicated config files
+    9. Save this as a preset for future projects?           N                    
+---
 ## Build Setup
 
 ``` bash

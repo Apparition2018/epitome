@@ -8,7 +8,7 @@
 ---
 ## 常用命令
     vue -V|--version
-    vue init webpack                (vue-cli2.x)
-    vue create                      (vue-cli3.x)
+    vue init webpack <project_name>         (vue-cli2.x)
+    vue create <project_name>               (vue-cli3.x)
     vue ui
 ---
