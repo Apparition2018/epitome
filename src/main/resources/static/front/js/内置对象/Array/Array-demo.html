@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>Array-demo</title>
-    <base target="_blank">
     <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../static/css/demo.css">
 </head>
@@ -125,7 +124,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice">splice()</a>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank">splice()</a>
                         </td>
                         <td>从数组中删除或添加元素，返回被删除元素组成的数组</td>
                         <td>var myFish = ['angel', 'clown', 'drum', 'sturgeon'];
@@ -145,14 +144,16 @@
                         <td>forEach()</td>
                         <td>对数组的每个元素执行一次提供的函数</td>
                         <td>
-                            <a href="javascript: ['Apple', 'Banana'].forEach(function (item, index, array) {alert(item, index)});">['Apple', 'Banana'].forEach(<br/>function (item, index, array) {alert(item, index)<br/>})</a>
+                            <a href="javascript: ['Apple', 'Banana'].forEach(function (value, index, array) {alert(value, index)});">['Apple', 'Banana'].forEach(<br/>function (value, index, array) {alert(value, index)<br/>})</a>
                         </td>
                     </tr>
                     <tr>
-                        <td>map()</td>
+                        <td>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">map()</a>
+                        </td>
                         <td>创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果</td>
                         <td>
-                            <a href="javascript: alert([1,2,3].map(function(v){return v*v}))">[1,2,3].map(function(v){return v*v})</a>
+                            <a href="javascript: alert([1,2,3].map(function(value, index, array){return value*value}))">[1,2,3].map(function(value, index, array){return value*value})</a>
                         </td>
                     </tr>
                     <tr>
@@ -185,8 +186,6 @@
             <div class="bracket centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             var lottery = { "1A": "a", "2B": "b", "3C": "c" };
             // lottery.1A; // 语法错误
@@ -201,8 +200,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function combine() {
                 var arr = [].concat.apply([], arguments); // 没有去重复的新数组
@@ -221,8 +218,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function filterName(obj) {
                 return obj.name === 'apple';
@@ -243,8 +238,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // callback 可接受4个参数:
             //      accumulator 返回上一次调用回调时返回的累积值，或initialValue

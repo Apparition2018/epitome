@@ -23,14 +23,14 @@
                     </tr>
                     <tr>
                         <td>expr1 &amp;&amp; expr2</td>
-                        <td>如果 expr1 能转换成 false 则返回 expr1，否则返回 expr2。</td>
+                        <td>如果 expr1 能转换成 false 则返回 expr1(false)，否则返回 expr2。</td>
                         <td>
                             <a href="javascript: alert(2 &amp;&amp; 3)">2 &amp;&amp; 3</a>
                         </td>
                     </tr>
                     <tr>
                         <td>expr1 || expr2</td>
-                        <td>如果 expr1 能转换成 true 则返回 expr1，否则返回 expr2。</td>
+                        <td>如果 expr1 能转换成 true 则返回 expr1(true)，否则返回 expr2。</td>
                         <td>
                             <a href="javascript: alert(2 || 3)">2 || 3</a>
                         </td>
@@ -40,14 +40,35 @@
         </div>
     </section>
 
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w40p">
+            <div class="caption">&& || 代替 if else</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            let obj1 = {};
+            let addArr = [1, 2, 3];
+            let arr;
+            
+            // 正常
+            if (obj1['arr']) {
+                arr = obj1['arr'].concat(addArr);
+            } else {
+                arr = addArr;
+            }
+            
+            // 简化
+            arr = obj1['arr'] && obj1['arr'].concat(addArr) || addArr;
+        </script>
+    </section>
+
     <section class="code-wrap h150">
         <div class="css-live-wrap w40p">
             <div class="caption">如果某个运算数是 undefined，可能会发生错误</div>
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
             var a = 'a';
 
