@@ -25,6 +25,7 @@
     npm info yarn
     npm list -g --depth=0
     npm run serve
+    cnmp
     yarn conifg set registry https://registry.npm.taobao.org -g
     yarn config set global-folder "E:\nodejs\yarn_global"
     yarn config set cache-folder "E:\nodejs\yarn_cache"

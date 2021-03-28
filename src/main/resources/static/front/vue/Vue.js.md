@@ -83,13 +83,13 @@
 ---
 ## 调试方法
 1. console.log(), alter(), debugger + this
-2. mounted + window.vue = this
+2. mounted() 里 window.vue = this
 ```
     mounted () {
         window.vue = this
     }
 ```
-3. var app = new Vue({...})
+3. vm 实例：var app = new Vue({...})
 4. Chrome
     - Network (XHR 等)
     - Presets (Slow 3G)

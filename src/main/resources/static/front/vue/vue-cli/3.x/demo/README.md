@@ -37,16 +37,27 @@
 - 5-1 重点知识点回顾
 - 5-2 课程总结
 ---
-## 创建项目
+## 创建项目 
     1. vue create demo
     2. Please pick a preset                                 Manually select features
-    3. Check the features needed for your project           Babel + Router + Vuex + CSS Pre-procesors + Linter / Formatter
+    3. Check the features needed for your project           Babel + Router + Vuex + CSS Pre-processors + Linter / Formatter
     4. Use history mode for router?                         Yes
     5. Pick a CSS pre-processor                             Sass/SCSS
     6. Pick a linter / formatter config                     ESLint + Airbnb config
     7. Pick additional lint feautres                        Lint on Save
     8. Where do you prefer placing config for Babel, PostCSS, ESLint, etc.?     In dedicated config files
-    9. Save this as a preset for future projects?           N                    
+    9. Save this as a preset for future projects?           N
+
+    1. vue ui
+    2. localhost:8000
+    3. 选择 + Create → + Create a new project here
+    4. 输入项目名 → 选择包管理器 npm → 下一步
+    5. 手动配置项目
+    6. Babel + Router + Vuex + Css Pre-processors + Linter / Formatter + 使用配置文件（将插件的配置保存在各自的配置文件（比如'.babelrc'）中
+    7. Pick a CSS pre-processor                             Sass/SCSS
+       Pick a linter / formatter config                     ESLint + Standard config
+       创建项目
+    8. 保存为新预设：vuex+router
 ---
 ## Build Setup
 
