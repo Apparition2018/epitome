@@ -60,7 +60,6 @@
     8. 保存为新预设：vuex+router
 ---
 ## Build Setup
-
 ``` bash
 # Project setup
 npm install

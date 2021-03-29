@@ -5,6 +5,9 @@
 1. [Vue Router](https://router.vuejs.org/zh/guide/)
 2. [Course: Vue Router For Everyone](https://vueschool.io/courses/vue-router-for-everyone)
 ---
+## 实例方法
+    router.push
+---
 ## HTML
 ```html
 <div id="app">
