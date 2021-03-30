@@ -22,7 +22,8 @@
 ## API
 >### 全局 API
 >```
->Vue.component(id, [definition])    全局组件
+>Vue.set                            向响应式对象中添加一个 property，并确保这个新 property 同样是响应式的，且处罚试图更新
+>Vue.component(id, [definition])    注册或获取全局组件
 >Vue.use(plugin)                    安装 Vue.js 插件，需在调用 new Vue() 之前被调用
 >```
 >### 选项|数据
@@ -55,6 +56,10 @@
 >```
 >vm.$data                           Vue 实例观察的数据对象
 >vm.$refs                           一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例
+>```
+>### 实力方法|数据
+>```
+>vm.$set                            Vue.set 的别名
 >```
 >### 实例方法|事件
 >```
