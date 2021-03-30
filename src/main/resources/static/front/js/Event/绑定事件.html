@@ -8,24 +8,6 @@
     <title>绑定事件</title>
     <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../static/css/demo.css">
-    <style>
-        .eg {
-            padding: 6px 24px;
-            background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-            color: #666666;
-            font-size: 15px;
-            font-weight: bold;
-            text-shadow: 0 1px 0 #ffffff;
-            border: 1px solid #dcdcdc;
-            border-radius: 6px;
-            box-shadow: inset 0 1px 0 0 #ffffff;
-            cursor: pointer;
-        }
-
-        .eg:hover {
-            background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-        }
-    </style>
 </head>
 
 <body>
@@ -35,12 +17,12 @@
     <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">在DOM元素中直接绑定</div>
-            <div class="eg eg1 centered" onclick="eg1()">
+            <div class="demo-button eg1 centered" onclick="eg1()">
                 方法一
             </div>
         </div>
         <code class="code w60p" contenteditable="true">
-            &lt;div class="eg eg1 centered" onclick="eg1()"&gt;
+            &lt;div onclick="eg1()"&gt;
             方法一
             &lt;/div&gt;
         </code>
@@ -61,7 +43,7 @@
         <div class="css-live-wrap w40p">
             <div class="caption">onclick 绑定 (DOM0级)</div>
             <div class="caption">object.onclick=function(){SomeJavaScriptCode};</div>
-            <div class="eg eg2 centered">
+            <div class="demo-button eg2 centered">
                 方法二
             </div>
         </div>
@@ -86,7 +68,7 @@
             <div class="caption">element.addEventListener(event, function, useCapture),
                 <br/>useCapture，指定事件在捕获或冒泡阶段执行；
                 <br/>默认false，事件句柄在冒泡阶段执行</div>
-            <div class="eg eg3 centered">
+            <div class="demo-button eg3 centered">
                 方法三
             </div>
         </div>
@@ -116,7 +98,7 @@
         <div class="css-live-wrap w40p">
             <div class="caption">jQuery on 绑定</div>
             <div class="caption">$(selector).on(event,childSelector,data,function)</div>
-            <div class="eg eg4 centered">
+            <div class="demo-button eg4 centered">
                 方法四
             </div>
         </div>
@@ -131,7 +113,7 @@
         <div class="css-live-wrap w40p">
             <div class="caption">jQuery click 绑定</div>
             <div class="caption">$(selector).on(event,childSelector,data,function)</div>
-            <div class="eg eg5 centered">
+            <div class="demo-button eg5 centered">
                 方法五
             </div>
         </div>
@@ -150,7 +132,7 @@
         <div class="css-live-wrap w40p">
             <div class="caption">事件委托</div>
             <div class="caption">利用冒泡的原理，把事件加到父元素或祖先元素上</div>
-            <div class="eg eg6 centered">
+            <div class="demo-button eg6 centered">
                 方法六
             </div>
         </div>

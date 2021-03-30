@@ -38,8 +38,8 @@
         <div class="css-live-wrap">
             <div class="caption">:target</div>
             <div class="caption">标签卡切换</div>
-            <div class="tablist centered">
-                <ul class="tabmenu">
+            <div class="tab-list centered">
+                <ul class="tab-menu">
                     <li>
                         <a href="#tab1">标签一</a>
                     </li>
@@ -50,18 +50,18 @@
                         <a href="#tab3">标签三</a>
                     </li>
                 </ul>
-                <div id="tab1" class="tab_content">1</div>
-                <div id="tab2" class="tab_content">2</div>
-                <div id="tab3" class="tab_content">3</div>
+                <div id="tab1" class="tab-content">1</div>
+                <div id="tab2" class="tab-content">2</div>
+                <div id="tab3" class="tab-content">3</div>
             </div>
         </div>
         <style class="code" contenteditable="true">
-            .tablist {
+            .tab-list {
                 width: 450px;
                 min-height: 500px;
             }
 
-            .tab_content {
+            .tab-content {
                 position: absolute;
                 width: 450px;
                 height: 470px;
@@ -80,17 +80,17 @@
                 z-index: 1;
             }
 
-            .tabmenu {
+            .tab-menu {
                 position: absolute;
                 top: 100%;
                 margin: 0;
             }
 
-            .tabmenu li {
+            .tab-menu li {
                 display: inline-block;
             }
 
-            .tabmenu li a {
+            .tab-menu li a {
                 display: block;
                 padding: 5px 10px;
                 margin-right: 10px;
@@ -103,12 +103,14 @@
         </style>
     </section>
 
-    <!-- https://www.zhangxinxu.com/wordpress/2018/03/css3-default-pseudo-class-selector/
-        https://developer.mozilla.org/zh-CN/docs/Web/CSS/:default -->
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption">:default</div>
-            <div class="caption">根据checked设置推荐选项</div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:default">:default</a>
+            </div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/wordpress/2018/03/css3-default-pseudo-class-selector/">根据checked设置推荐选项</a>
+            </div>
             <div class="payment centered">
                 <label>
                     <input type="radio" name="pay" value="0">
@@ -151,7 +153,9 @@
         https://www.zhangxinxu.com/study/201201/css-radio-tab-switch.html -->
     <section class="code-wrap" id=":checked">
         <div class="css-live-wrap">
-            <div class="caption">:checked</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/wordpress/2012/01/css-css3-selector-element-display-tab-listdown/">:checked</a>
+            </div>
             <div class="caption">利用 checkbox、checked、position: absolute、left: -999em、~ 实现</div>
             <div class="detail centered">
                 <input type="checkbox" id="toggleCheckbox" />
@@ -289,7 +293,9 @@
     <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/:lang -->
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption">:lang</div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:lang">:lang</a>
+            </div>
             <div class="lang centered">
                 <div lang="en">
                     <q>This English quote has a

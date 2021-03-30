@@ -22,6 +22,7 @@
 ## API
 >### 全局 API
 >```
+>Vue.nextTick([callback, context])           在下次 DOM 更新循环结束之后执行延迟回调      
 >Vue.set(target, propertyName/index, value)  向响应式对象中添加一个 property，并确保这个新 property 同样是响应式的，且处罚试图更新
 >Vue.component(id, [definition])             注册或获取全局组件
 >Vue.use(plugin)                             安装 Vue.js 插件，需在调用 new Vue() 之前被调用
@@ -55,11 +56,12 @@
 >### 实例属性
 >```
 >vm.$data                                    Vue 实例观察的数据对象
+>vm.$el                                      Vue 实例使用的根 DOM 元素
 >vm.$refs                                    一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例
 >```
 >### 实力方法|数据
 >```
->vm.$set                                     Vue.set 的别名
+>vm.$set                                     Vue.set 的别名；set 绑在 Vue.set 上，$set 绑在 Vue.prototype.$set 上
 >```
 >### 实例方法|事件
 >```
@@ -68,6 +70,7 @@
 >### 实例方法|生命周期
 >```
 >vm.$mount                                   手动地挂载一个未挂载的实例
+>vm.$nextTick                                将回调延迟到下次 DOM 更新循环之后执行
 >```
 >### 指令
 >```
