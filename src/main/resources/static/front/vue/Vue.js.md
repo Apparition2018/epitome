@@ -22,31 +22,31 @@
 ## API
 >### 全局 API
 >```
->Vue.set                            向响应式对象中添加一个 property，并确保这个新 property 同样是响应式的，且处罚试图更新
->Vue.component(id, [definition])    注册或获取全局组件
->Vue.use(plugin)                    安装 Vue.js 插件，需在调用 new Vue() 之前被调用
+>Vue.set(target, propertyName/index, value)  向响应式对象中添加一个 property，并确保这个新 property 同样是响应式的，且处罚试图更新
+>Vue.component(id, [definition])             注册或获取全局组件
+>Vue.use(plugin)                             安装 Vue.js 插件，需在调用 new Vue() 之前被调用
 >```
 >### 选项|数据
 >```
->data                               数据对象
->props                              父组件数据
->methods                            方法
->computed                           计算属性 (数据联动)
->watch                              侦听器 (异步场景)
+>data                                        数据对象
+>props                                       父组件数据
+>methods                                     方法
+>computed                                    计算属性 (数据联动)
+>watch                                       侦听器 (异步场景)
 >```
 >### 选项|DOM
 >```
->el                                 挂载目标
->template                           模板
+>el                                          挂载目标
+>template                                    模板
 >```
 >### 选项|生命周期钩子
 >```
->created                            在实例创建完成后被立即调用
->mounted                            实例被挂载后调用
+>created                                     在实例创建完成后被立即调用
+>mounted                                     实例被挂载后调用
 >```
 >### 选项|资源
 >```
->components                         组件
+>components                                  组件
 >```
 >### 选项|其它
 >```
@@ -54,42 +54,42 @@
 >```
 >### 实例属性
 >```
->vm.$data                           Vue 实例观察的数据对象
->vm.$refs                           一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例
+>vm.$data                                    Vue 实例观察的数据对象
+>vm.$refs                                    一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例
 >```
 >### 实力方法|数据
 >```
->vm.$set                            Vue.set 的别名
+>vm.$set                                     Vue.set 的别名
 >```
 >### 实例方法|事件
 >```
->vm.$emit                           触发当前实例上的事件。附加参数都会传给监听器回调
+>vm.$emit                                    触发当前实例上的事件。附加参数都会传给监听器回调
 >```
 >### 实例方法|生命周期
 >```
->vm.$mount                          手动地挂载一个未挂载的实例
+>vm.$mount                                   手动地挂载一个未挂载的实例
 >```
 >### 指令
 >```
->v-text                             textConent
->v-html                             innerHTML
->v-show                             条件渲染 (display: none)
->v-if                               条件渲染
+>v-text                                      textConent
+>v-html                                      innerHTML
+>v-show                                      条件渲染 (display: none)
+>v-if                                        条件渲染
 >v-else
 >v-else-if
->v-for                              列表渲染
->v-on:           @                  绑定事件
->v-bind          :                  绑定属性或组件
->v-model                            双向绑定属性或组件
->v-slot          #                  可放置在函数参数位置的 JavaScript 表达式
+>v-for                                       列表渲染
+>v-on:           @                           绑定事件
+>v-bind          :                           绑定属性或组件
+>v-model                                     双向绑定属性或组件
+>v-slot          #                           可放置在函数参数位置的 JavaScript 表达式
 >```
 >### 特殊 attribute
 >```
->v-slot                             用于标记往哪个具名插槽中插入子组件内容
+>v-slot                                      用于标记往哪个具名插槽中插入子组件内容
 >```
 >### 内置的组件
 >```
->slot                               作为组件模板之中的内容分发插槽，自身将被替换
+>slot                                        作为组件模板之中的内容分发插槽，自身将被替换
 >```
 ---
 ## 调试方法
