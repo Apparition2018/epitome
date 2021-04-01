@@ -8,11 +8,12 @@
     <title>a-demo</title>
     <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../static/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../../static/js/demo.js"></script>
 </head>
 
 <body>
-    <!-- https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a -->
-    <section class="code-wrap">
+    <section class="code-wrap h300">
         <div class="css-live-wrap">
             <div class="caption">点击图片，在新窗口打开链接，并跳转到指定锚点</div>
             <div class="caption">利用 target="_blank" 实现</div>
@@ -29,11 +30,11 @@
         </code>
     </section>
 
-    <!--http://www.daqianduan.com/3803.html
-        https://www.cnblogs.com/bincoding/p/5741574.html -->
-    <section class="code-wrap">
+    <section class="code-wrap h300">
         <div class="css-live-wrap">
-            <div class="caption">创建email，电话链接</div>
+            <div class="caption">
+                <a href="https://www.cnblogs.com/bincoding/p/5741574.html">创建email，电话链接</a>
+            </div>
             <div class="caption">利用 href="mailto:..."、href="tel:..." 实现 继续修改</div>
             <div class="centered" id="eg2">
                 <p>
@@ -44,6 +45,16 @@
                 </p>
             </div>
         </div>
+        <code class="code" contenteditable="true">
+            &lt;p&gt;
+            &lt;a href="mailto:88850180@163.com"&gt;Send email to nowhere&lt;/a&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+            &lt;a href="tel:+491570156"&gt;+49 157 0156&lt;/a&gt;
+            &lt;/p&gt;
+
+            // 伪类顺序: link → visited → hover → active
+        </code>
         <style>
             #eg2 a:link {
                 color: blue;
@@ -61,22 +72,25 @@
                 color: red;
             }
         </style>
+    </section>
+    
+    <section class="code-wrap h300">
+        <div class="css-live-wrap">
+            <div class="caption">下载模板文件</div>
+            <div class="centered">
+                <p><a href="http://localhost:3333/multipart-file/download?filename=person" class="demo-click">Download</a></p>
+            </div>
+        </div>
         <code class="code" contenteditable="true">
-            &lt;p&gt;
-                &lt;a href="mailto:88850180@163.com"&gt;Send email to nowhere&lt;/a&gt; 
-            &lt;/p&gt;
-            &lt;p&gt;
-                &lt;a href="tel:+491570156"&gt;+49 157 0156&lt;/a&gt;
-            &lt;/p&gt;
-            
-            // 伪类顺序: link → visited → hover → active
+            &lt;p&gt;&lt;a href="xxx"&gt;&lt;/a&gt;&lt;/p&gt;
         </code>
     </section>
 
-    <!-- http://jsfiddle.net/codepo8/V6ufG/2/ -->
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption">下载画布</div>
+            <div class="caption">
+                <a href="http://jsfiddle.net/codepo8/V6ufG/2/">下载画布</a>
+            </div>
             <div class="caption">利用 a标签、download属性、canvas 实现</div>
             <div class="canvas centered">
                 <canvas></canvas>
@@ -91,14 +105,7 @@
 
             .canvas a {
                 position: relative;
-                top: -15px;
-                padding: 10px;
-                background: dodgerblue;
-                color: white;
-                font-size: 14px;
-                text-decoration: none;
-                border-radius: 2px;
-                cursor: pointer;
+                top: -10px;
             }
         </style>
         <script class="code" contenteditable="true">
@@ -143,6 +150,7 @@
             }, false);
 
             var link = document.createElement('a');
+            link.classList.add('demo-button');
             link.innerHTML = 'download';
             link.addEventListener('click', function () {
                 link.href = canvas.toDataURL();
@@ -151,8 +159,6 @@
             document.getElementsByClassName('canvas')[0].append(link);
         </script>
     </section>
-
-
 
 
 </body>

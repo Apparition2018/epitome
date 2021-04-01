@@ -146,7 +146,7 @@
 
 .demo-button {
     display: inline-block;
-    padding: 6px 24px;
+    padding: 6px 20px;
     background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
     color: #666666;
     font-size: 15px;

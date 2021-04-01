@@ -36,6 +36,7 @@
 
 import l.demo.Demo;
 import org.apache.commons.io.IOUtils;
+import org.springframework.http.MediaTypeFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -82,27 +83,6 @@ public class Test extends Demo {
             if (flag) {
                 break;
             }
-        }
-    }
-
-    @RequestMapping("/downloadExcel")
-    @ResponseBody
-    public void downloadExcelTemplate(HttpServletResponse response) {
-
-        URL classesUrl = Thread.currentThread().getContextClassLoader().getResource("/");
-        String classesUrlPath = Objects.requireNonNull(classesUrl).getPath();
-        String templatePath = new File(classesUrlPath).getParentFile().getParentFile().getPath() +
-                File.separator + "doc" + File.separator + "Contract_1606122467519.xlsx";
-        File template = new File(templatePath);
-
-        try (InputStream inputStream = new FileInputStream(template);
-             OutputStream outputStream = response.getOutputStream();) {
-            response.setContentType("application/x-download");
-            response.addHeader("Content-Disposition", "attachment;filename=template.xlsx");
-            IOUtils.copy(inputStream, outputStream);
-            outputStream.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

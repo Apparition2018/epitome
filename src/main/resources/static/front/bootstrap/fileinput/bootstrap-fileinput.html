@@ -34,18 +34,22 @@
             $("#file-input").fileinput({
                 language: 'zh',
                 showPreview: false,
-                uploadurl: 'localhost:3333/multipart-file/file-input',
+                uploadurl: 'localhost:3333/multipart-file/input',
                 enctype: 'multipart/form-data',
-                maxfilesize: 102400,    
+                maxfilesize: 10240,
                 msgsizetoolarge: '"{name}" ({size} kb) 超过允许的最大上传大小 {maxsize} kb。请重新上传!',
                 allowedFileExtensions: ['xls', 'xlsx'],
                 elErrorContainer: '#kartik-file-errors',
             })
-            //     .on("fileuploaded", function (e, data, previewid, index) {
-            //     // 上传成功后触发的事件
-            // }).on("fileclear", function (e) {
-            //     // 移除按钮触发的事件，用该事件批量删除
-            // })
+                .on('filebatchuploadsuccess', (e, data, previewId, i) => {
+                    console.log("filebatchuploadsuccess");
+                })
+                .on("fileuploaded", (e, data, previewId, i) => {
+                    console.log("上传成功后触发的事件");
+                })
+                .on("fileclear", function (e) {
+                    console.log("移除按钮触发的事件，用该事件批量删除");
+                })
         })
     </script>
 </section>

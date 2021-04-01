@@ -4,18 +4,24 @@ import jar.apache.poi.ExcelUtils;
 import l.demo.Demo;
 import l.demo.Person;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.MediaTypeFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author ljh
@@ -56,6 +62,24 @@ public class MultipartFileController extends Demo {
             List<Person> personList = excelUtils.excel2BeanList(file.getInputStream(), colNumAndFieldNameMap);
             System.out.println(personList);
         } catch (IllegalAccessException | InstantiationException | IOException | NoSuchMethodException | NoSuchFieldException | InvocationTargetException | ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/download")
+    @ResponseBody
+    public void download(@RequestParam("filename") String filename, HttpServletResponse response) {
+        URL classesUrl = Thread.currentThread().getContextClassLoader().getResource("");
+        String classesPath = StringUtils.substringAfter(Objects.requireNonNull(classesUrl).toString(), "file:/");
+        File template = new File(classesPath + "demo" + File.separator + filename + ".xlsx");
+
+        try (InputStream inputStream = new FileInputStream(template);
+             OutputStream outputStream = response.getOutputStream()) {
+            response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
+            response.addHeader("Content-Disposition", "attachment;filename=download.xlsx");
+            IOUtils.copy(inputStream, outputStream);
+            outputStream.flush();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

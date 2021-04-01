@@ -64,7 +64,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         // 设置允许跨域的路径
         registry.addMapping("/**")
                 // 设置允许跨域请求的域名
-                .allowedOrigins("*")
+                .allowedOriginPatterns("*")
                 // 是否允许证书 不再默认开启
                 .allowCredentials(true)
                 // 设置允许的方法

@@ -19,11 +19,21 @@
                     name="iframe_a"></iframe>
             <p>
                 <a href="http://www.w3school.com.cn" target="iframe_a">
-                    <b>W3</b>School</a>
+                    <b>W3</b>School
+                </a>
             </p>
         </div>
     </div>
-    <style class="code w60p" contenteditable="true">
+    <code class="code w60p" contenteditable="true">
+        &lt;iframe src="xxx" name="iframe_a"&gt;&lt;/iframe&gt;
+        
+        &lt;p&gt;
+            &lt;a href="http://www.w3school.com.cn" target="iframe_a"&gt;
+                &lt;b&gt;W3&lt;/b&gt;School
+            &lt;/a&gt;
+        &lt;/p&gt;
+    </code>
+    <style>
         #eg1 iframe {
             width: 350px;
             height: 200px;
@@ -46,28 +56,6 @@
             font-style: normal;
         }
     </style>
-</section>
-
-<section class="code-wrap">
-    <div class="css-live-wrap w40p">
-        <div class="caption">form 表单提交，页面不跳转</div>
-        <div class="caption">利用 隐藏的 &lt;iframe&gt; 和 &lt;form&gt; 的 target 属性实现</div>
-        <div class="centered non-jump">
-            <form method="post" enctype="multipart/form-data" target="frame1" action="/multipart-file/input2">
-                <p><input type="file" name="file"/></p>
-                <p><input type="submit" value="上传"/></p>
-            </form>
-            <iframe id="frame1" name="frame1" style="display:none;"></iframe>
-        </div>
-    </div>
-    <code class="code w60p" contenteditable="true">
-        &lt;form method="post" enctype="multipart/form-data" target="frame1" action="/multipart-file/excel"&gt;
-            &lt;p&gt;&lt;input type="file" name="file"/&gt;&lt;/p&gt;
-            &lt;p&gt;&lt;input type="submit" value="上传"/&gt;&lt;/p&gt;
-        &lt;/form&gt;
-
-        &lt;iframe id="frame1" name="frame1" style="display:none;"&gt;&lt;/iframe&gt;
-    </code>
 </section>
 </body>
 
