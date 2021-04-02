@@ -26,12 +26,6 @@
     4. Vue Single File Component
         name: '${COMPONENT_NAME}'
 ---
-## ESLint: Missing space before function parentheses
-    1. Settings → Editor → Code Style → JavaScript
-    2. Spaces
-    3. Before parenthese
-    4. Function declaration parentheses 勾选
----
 ## 去除尾行空格
     1. Settings → Editor → General
     2. Virtual Space
@@ -40,19 +34,23 @@
         2.1 Strip trailing spaces on Save: Modified Lines
         2.2 Always keep trailing spaces on caret line 取消勾选
 ---
+## 启用注解处理
+    1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
+    2. Enable annotation processing 勾选
+---
 ## HTML 代码不换行
     1. Settings → Editor → Code Style → HTML
     2. Other
     3. Hard wrap at: 240
     4. Wrap attributes: Do not wrap
 ---
-## Terminal
-    1. Settings → Tools → Terminal
-    2. Shell path
----
 ## JavaScript version
     1. Settings → Languages & Frameworks → JavaScript
     2. JavaScript language version: ECMAScript 6
+---
+## Terminal
+    1. Settings → Tools → Terminal
+    2. Shell path
 ---
 ## npm
     1. package.json 右鍵 Run 'npm install'，下载依赖生成 node_modules
@@ -61,6 +59,12 @@
 ## webpack.config.js
     1. Settings → Language & Frameworks → JavaScript → Webpack
     2. webpack configuration file: xxx\node_modules\@vue\cli-service\webpack.config.js
+---
+## ESLint: Missing space before function parentheses
+    1. Settings → Editor → Code Style → JavaScript
+    2. Spaces
+    3. Before parenthese
+    4. Function declaration parentheses 勾选
 ---
 ## [Project Settings](https://www.jianshu.com/p/39b2206999e7)
 >### Facets
