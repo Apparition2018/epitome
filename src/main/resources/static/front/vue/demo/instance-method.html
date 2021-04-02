@@ -17,8 +17,8 @@
             <a href="https://segmentfault.com/a/1190000014826146">Vue 不能检测数组和对象的变化</a>
         </div>
         <div class="centered" id="app" style="text-align:center;">
-            <div class="circles">
-                <div v-for="(item, index) in items" :key="index" class="circle" @click="plus(index)">{{ item }}</div>
+            <div>
+                <div v-for="(item, index) in items" :key="index" class="demo-circle" @click="plus(index)">{{ item }}</div>
             </div>
         </div>
     </div>
@@ -44,17 +44,6 @@
             }
         })
     </script>
-    <style>
-        .circle {
-            display: inline-block;
-            width: 50px;
-            line-height: 50px;
-            margin: 5px;
-            background-image: linear-gradient(300deg, #dfe9f3 0%, #ffffff 100%);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-    </style>
 </section>
 
 <section class="code-wrap h350">

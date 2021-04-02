@@ -91,34 +91,23 @@
             <div class="eg2 centered">
             </div>
         </div>
-        <style>
-            .eg2 ul {
-                list-style: none;
-                margin-top: 40px;
-            }
-
-            .eg2 li {
-                padding: 10px 12px;
-                margin: 15px auto;
-                color: #999;
-                font-size: 20px;
-                text-align: center;
-                border: 1px solid #a9a9a9;
-                border-radius: 2px;
-            }
-        </style>
         <script class="code w67p" contenteditable="true">
             function list(type) {
-                let result = "<" + type + "l><li>";
+                let result = "<" + type + "><li class='demo-circle'>";
                 let args = Array.prototype.slice.call(arguments, 1);
-                result += args.join("</li><li>");
-                result += "</li></" + type + "l>"; // end list
+                result += args.join("</li><li class='demo-circle'>");
+                result += "</li></" + type + ">"; // end list
                 return result;
             }
 
-            let listHTML = list("u", "One", "Two", "Three");
+            let listHTML = list("ul", "A", "B", "C");
             document.querySelector('.eg2').innerHTML = listHTML;
         </script>
+        <style>
+            .eg2 {
+                text-align: center;
+            }
+        </style>
     </section>
 
 </body>
