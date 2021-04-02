@@ -152,6 +152,9 @@
 >   ./sbin/ngxin -s quit                    停止
 >   ./sbin/ngxin -s reload                  重启
 >   kill -HUP PID                           平滑重启（进程号查询：ps -ef|grep nginx）
+>   ./sbin/nginx -v                         版本
+>   ./sbin/nginx -V                         版本和配置选项
+>   ./sbin/nginx -h                         帮助
 >8. 修改 hosts 文件，配置域名转发
 >   C:\Windows\System32\dirvers\etc\hosts   Windows
 >   /etc/hosts                              Linux
