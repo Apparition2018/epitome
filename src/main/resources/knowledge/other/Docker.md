@@ -22,9 +22,19 @@ mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
 ```
 2. 下载地址：https://hub.docker.com/editions/community/docker-ce-desktop-windows
 ---
-## 常用命令
-```bash
-docker version
+## [常用命令](https://www.runoob.com/docker/docker-command-manual.html)
+```
+docker version                      显示版本
+docker images                       列出 iamges
+docker pull                         拉取 image 或 repository
+docker rm                           移除 containers
+docker rmi                          移除 images
+docker run                          创建新的 container 并运行命令；run 接 iamge，start 接 container
+docker start|stop|restart           启动|停止|重启 containers
+docker ps                           列出 containers
+docker kill                         杀掉 containers
+docker exec                         在执行的 container 中执行命令
+docker commit                       从 container 创建 image
 ```
 ---
 ## 
@@ -39,5 +49,13 @@ docker exec -it mysql mysql -uroot -proot
      create user ljh@172.17.0.1 identified by '123456';                         创建用户
      grant all privileges on `ry-vue`.* to ljh@172.17.0.1 with grant option;    授权
      flush privileges;
+```
+3. Zookeeper
+```bash
+docker run -d --name zookeeper -p 2181:2181 zookeeper
+```
+4. Tomcat
+```bash
+docker run -d --name tomcat -p 8080:8080 tomcat
 ```
 --- 
