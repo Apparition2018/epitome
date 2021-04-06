@@ -9,7 +9,7 @@
 # /mtk/do.c 过滤某个具体文件
 
 ### 可以根据自己需要参考配置自己的 .ignore 文件：https://github.com/github/gitignore
-
+### Java ###
 # Compiled class file
 *.class
 
@@ -55,8 +55,13 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+
 ### maven ###
 target/
+
+### Gradle ###
+.gradle
+**/build/
 
 ### eclipse ###
 bin/
@@ -70,6 +75,4 @@ Servers/
 ### IntelliJ IDEA ###
 out/
 .idea/
-*.ipr
 *.iml
-*.iws
