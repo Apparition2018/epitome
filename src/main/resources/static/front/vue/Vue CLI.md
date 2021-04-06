@@ -1,4 +1,5 @@
 # Vue CLI
+Command-Line Interface: 命令行界面或字符用户界面
 
 ---
 ## 参考网站

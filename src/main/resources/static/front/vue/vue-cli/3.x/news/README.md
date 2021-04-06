@@ -38,7 +38,7 @@
 - 5-2 课程总结
 ---
 ## 创建项目 
-    1. vue create demo
+    1. vue create projectName
     2. Please pick a preset                                 Manually select features
     3. Check the features needed for your project           Babel + Router + Vuex + CSS Pre-processors + Linter / Formatter
     4. Use history mode for router?                         Yes

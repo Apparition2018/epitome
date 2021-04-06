@@ -29,7 +29,7 @@
 - 4-4 课程总结
 ---
 ## 创建项目
-    1. vue init webpack demo
+    1. vue init webpack projectName
     2. Project name
     3. Project description
     4. Author

@@ -16,11 +16,12 @@
     node -v
     npm -v
     npm config set registry=http://registry.npm.taobao.org
-    npm config set prefix "nodejs安装目录\node_global"
-    npm config set cache "nodejs安装目录\node_cache"
+    npm config set prefix "D:\nodejs\node_global"
+    npm config set cache "D:\nodejs\node_cache"
     npm config list
     npm i -g npm
     npm install -g yarn --registry=https://registry.npm.taobao.org
+    npm install -g cnpm --registry=https://registry.npm.taobao.org
     npm uninstall i -g npm
     npm info yarn
     npm list -g --depth=0
