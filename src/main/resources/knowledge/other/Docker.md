@@ -10,9 +10,7 @@
 ## 问题
 1. [更改Docker for windows的Hyper-v虚拟机的位置](https://blog.csdn.net/chuweisan2257/article/details/100906248)
 2. [从零开始的Docker Desktop使用,Docker快速上手](https://xunmi.blog.csdn.net/article/details/108641842)
-3. [window10 下 docker 启动 redis](https://blog.csdn.net/qq_34670974/article/details/94051251)
-4. [Windows下docker安装mysql并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
-5. [windows10 docker -v 映射问题](https://www.80shihua.com/archives/2589)
+3. [windows10 docker -v 映射问题](https://www.80shihua.com/archives/2589)
 ---
 ## Docker Desktop 安装
 1. 安装前创建目录链接
@@ -21,6 +19,14 @@ mklink /j "C:\Program Files\Docker" "D:\Docker"
 mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
 ```
 2. 下载地址：https://hub.docker.com/editions/community/docker-ce-desktop-windows
+3. 设置可挂载目录：Settings → Resources → FILE SHARING
+4. 设置 Docker Engine：Settings → Docker Engine
+```
+  "registry-mirrors": [
+    "http://hub-mirror.c.163.com",
+    "https://docker.mirrors.ustc.edu.cn"
+  ],
+```
 ---
 ## [常用命令](https://www.runoob.com/docker/docker-command-manual.html)
 ```
@@ -34,28 +40,44 @@ docker start|stop|restart           启动|停止|重启 containers
 docker ps                           列出 containers
 docker kill                         杀掉 containers
 docker exec                         在执行的 container 中执行命令
+    -it ... bash
 docker commit                       从 container 创建 image
 ```
 ---
 ## 
-1. Redis
+1. [Redis](https://blog.csdn.net/qq_34670974/article/details/94051251)
 ```bash
-docker run -d --name redis -p 6379:6379 [-v D:/Docker/Redis/data:/data] redis [--requirepass "Password" redis-server --appendonly yes]
+docker run -d --name redis -p 6379:6379
+[-v D:/Docker/Redis/data:/data]
+redis [--requirepass "Password" redis-server --appendonly yes]
 ```
-2. MySQL
+2. [MySQL](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
-docker run -d --name mysql -p 3306:3306 [-v D:/Docker/MySQL/my.cnf:/etc/mysql/my.cnf -v D:/Docker/MySQL/data:/var/lib/mysql] -e MYSQL_ROOT_PASSWORD=root mysql
+docker run -d --name mysql -p 3306:3306
+[-v D:/Docker/MySQL/my.cnf:/etc/mysql/my.cnf -v D:/Docker/MySQL/data:/var/lib/mysql]
+-e MYSQL_ROOT_PASSWORD=root mysql
+
 docker exec -it mysql mysql -uroot -proot
      create user ljh@172.17.0.1 identified by '123456';                         创建用户
      grant all privileges on `ry-vue`.* to ljh@172.17.0.1 with grant option;    授权
      flush privileges;
 ```
-3. Zookeeper
+3. [Tomcat](https://www.cnblogs.com/liyiran/p/12544715.html)
+```bash
+docker run -d --name tomcat -p 8080:8080 
+[-v D:\Docker\Tomcat\webapps:/usr/local/tomcat/webapps]
+tomcat:9.0.45
+```
+4. [Nginx](https://www.cnblogs.com/javafucker/p/10033589.html)
+```bash
+docker run -d --name nginx -p 80:80
+[-v D:\Docker\Nginx\conf/nginx.conf:/etc/nginx/nginx.conf]
+[-v D:\Docker\Nginx\log:/var/log/nginx]
+[-v D:\Docker\Nginx\html:/usr/share/nginx/html]
+nginx
+```
+5. Zookeeper
 ```bash
 docker run -d --name zookeeper -p 2181:2181 zookeeper
-```
-4. Tomcat
-```bash
-docker run -d --name tomcat -p 8080:8080 tomcat
 ```
 --- 
