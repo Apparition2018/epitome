@@ -35,39 +35,30 @@
 // SpringCloud微服务实战：https://github.com/fengzhimiwu/fw-spring-cloud
 
 import l.demo.Demo;
-import org.apache.commons.io.IOUtils;
-import org.springframework.http.MediaTypeFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import lombok.extern.slf4j.Slf4j;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Random;
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
+@Slf4j
 public class Test extends Demo {
 
     public static void main(String[] args) throws Exception {
         bubbleSort(arr);
         System.out.println(Arrays.toString(arr));
     }
-    
+
     private static int[] arr = new int[10];
-    
+
     static {
         Random random = new Random();
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(100);
         }
     }
-    
+
     private static void bubbleSort(int[] arr) {
         int temp;
         for (int i = 0, len = arr.length; i < len - 1; i++) {
@@ -76,7 +67,7 @@ public class Test extends Demo {
                 if (arr[j] > arr[j + 1]) {
                     temp = arr[j];
                     arr[j] = arr[j + 1];
-                    arr[j +1] = temp;
+                    arr[j + 1] = temp;
                     flag = false;
                 }
             }
