@@ -6,7 +6,7 @@
      SpringBoot 默认日志 logback 配置解析：https://blog.csdn.net/qq_37859539/article/details/82464745 -->
 <!-- 60秒扫描一次，发现文件有更新重新加载 -->
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <property name="logDir" value="logs/"/>
+    <property name="logPath" value="logs"/>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <!-- http://logback.qos.ch/manual/layouts.html#conversionWord -->
@@ -17,7 +17,7 @@
     <!-- RollingFileAppender 根据设置对日志文件进行压缩归档并生成新的日志文件 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- 日志路径和名称 -->
-        <file>${logDir}epitome.log</file>
+        <file>${logPath}/epitome.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{36} - %msg%n</pattern>
             <charset>UTF-8</charset>
@@ -27,7 +27,7 @@
             FixedWindowRollingPolicy 根据固定窗口算法重命名文件 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 压缩文件后的名字 -->
-            <fileNamePattern>${logDir}epitome.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <fileNamePattern>${logPath}/epitome.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>5MB</MaxFileSize>
