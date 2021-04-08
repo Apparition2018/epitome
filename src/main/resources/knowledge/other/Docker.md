@@ -23,6 +23,7 @@ mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
 4. 设置 Docker Engine：Settings → Docker Engine
 ```
   "registry-mirrors": [
+    "https://registry.docker-cn.com",
     "http://hub-mirror.c.163.com",
     "https://docker.mirrors.ustc.edu.cn"
   ],
@@ -67,6 +68,8 @@ docker exec -it mysql mysql -uroot -proot
 docker run -d --name tomcat -p 8080:8080 
 [-v D:\Docker\Tomcat\webapps:/usr/local/tomcat/webapps]
 tomcat:9.0.45
+
+docker run -d --name tomcat -p 8080:8080 -v D:\Docker\Tomcat\webapps:/usr/local/tomcat/webapps tomcat:9.0.45
 ```
 4. [Nginx](https://www.cnblogs.com/javafucker/p/10033589.html)
 ```bash
