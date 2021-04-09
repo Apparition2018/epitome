@@ -42,7 +42,7 @@ public class StreamDemo extends Demo {
         p(idList);  // [1, 2, 3]
 
         // List<Object> -> Map<Integer, Object>
-        Map<Integer, Person> map = personList.stream().collect(Collectors.toMap(Person::getId, person -> person));
+        Map<Integer, Person> map = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity()));
         p(map);     // {1=Person{id=1, name='张三'}, 2=Person{id=2, name='李四'}, 3=Person{id=3, name='王五'}}
     }
 
