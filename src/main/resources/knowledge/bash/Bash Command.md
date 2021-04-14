@@ -11,6 +11,7 @@
 1. [Linux 下如何查看系统和内核版本](https://www.cnblogs.com/lcword/p/5680731.html)
 2. [Linux 命令之 ssh 基本用法](https://blog.csdn.net/gaoxilong526/article/details/79757285)
 3. [Linux 下命令行 curl 的 10 种常见用法示例](https://www.cnblogs.com/zxqblogrecord/p/8900219.html)
+4. [linux 日志常用查看技巧](https://blog.csdn.net/zw235345721/article/details/70792195)
 ---
 ## 其它
     --help                                                                      显示帮助信息
