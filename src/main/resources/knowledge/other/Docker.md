@@ -39,6 +39,7 @@ docker rmi                          移除 images
 docker run                          创建新的 container 并运行命令；run 接 iamge，start 接 container
 docker start|stop|restart           启动|停止|重启 containers
 docker ps                           列出 containers
+    -a
 docker kill                         杀掉 containers
 docker exec                         在执行的 container 中执行命令
     -it ... bash
@@ -89,5 +90,9 @@ docker run -d --name zookeeper -p 2181:2181 zookeeper
 docker run -d --name rabbitmq -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 rabbitmq
 docker exec rabbitmq rabbitmq-plugins enable rabbitmq_management
 localhost:15672       Username:guest      Password:guest
+```
+7. [Ubuntu]
+```bash
+docker run -itd --name ubuntu ubuntu:20.04
 ```
 --- 

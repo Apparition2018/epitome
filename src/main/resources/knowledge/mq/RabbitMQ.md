@@ -11,5 +11,14 @@
 <img alt="AMQP 协议模型" src="https://img.mukewang.com/606f4d220001240219201080.jpg" width="500"/>  
 ——-
 ## 安装
-
+```
+1. vim /etc/hostname
+    bhz81
+2. vim /etc/hosts
+    192.168.11.81 bhz81
+    192.168.11.82 bhz82
+    192.168.11.83 bhz83
+3. 防火墙设置
+4. 
+```
 ---
