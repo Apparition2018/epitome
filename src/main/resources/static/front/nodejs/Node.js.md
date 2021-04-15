@@ -14,19 +14,24 @@
 ---
 ## 常用命令
     node -v
+
     npm -v
     npm config set registry=http://registry.npm.taobao.org
     npm config set prefix "D:\nodejs\node_global"
     npm config set cache "D:\nodejs\node_cache"
     npm config list
+    npm root -g
     npm i -g npm
     npm install -g yarn --registry=https://registry.npm.taobao.org
     npm install -g cnpm --registry=https://registry.npm.taobao.org
     npm uninstall i -g npm
     npm info yarn
     npm list -g --depth=0
-    npm run serve
-    cnmp i
+    npm init -f
+    npm run
+
+    cnpm -v
+
     yarn conifg set registry https://registry.npm.taobao.org -g
     yarn config set global-folder "E:\nodejs\yarn_global"
     yarn config set cache-folder "E:\nodejs\yarn_cache"

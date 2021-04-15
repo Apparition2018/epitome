@@ -33,8 +33,8 @@ Command-Line Interface: 命令行界面或字符用户界面
     5. babel.config.js      babel 配置
     6. package.json         依赖配置
         - scripts           npm 命令行缩写
-        - dependencies      生产环境用到的依赖，如 element-ui，vue-router   (npm i -S | --save)
-        - devDependencies   开发环境用到的依赖，如 webpack，gulp            (npm i -D | --save-dev)
+        - dependencies      生产环境用到的依赖，如 element-ui，vue-router   (npm i -S|--save)
+        - devDependencies   开发环境用到的依赖，如 webpack，gulp            (npm i -D|--save-dev)
     7. package-lock.json    保存依赖的信息（版本，下载地址）。在多人开发项目，保证下载依赖是一致的。
 >### 参考网站
 >1. [index.html 什么时候加载 main.js](https://blog.csdn.net/u013605060/article/details/109601098)
