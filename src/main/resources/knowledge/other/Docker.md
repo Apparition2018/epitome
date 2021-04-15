@@ -92,7 +92,7 @@ docker run -d --name rabbitmq -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15
 docker exec -it rabbitmq bash
     rabbitmq-plugins list
     rabbitmq-plugins enable rabbitmq_management
-        localhost:15672       Username:guest      Password:guest
+        http://localhost:15672       Username:guest      Password:guest
     rabbitmq-plugins enable rabbitmq_mqtt
 ```
 7. [Ubuntu]
