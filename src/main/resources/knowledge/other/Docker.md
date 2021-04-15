@@ -87,9 +87,13 @@ docker run -d --name zookeeper -p 2181:2181 zookeeper
 ```
 6. [RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash
-docker run -d --name rabbitmq -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 rabbitmq
-docker exec rabbitmq rabbitmq-plugins enable rabbitmq_management
-localhost:15672       Username:guest      Password:guest
+docker run -d --name rabbitmq -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 8883:8883 rabbitmq
+
+docker exec -it rabbitmq bash
+    rabbitmq-plugins list
+    rabbitmq-plugins enable rabbitmq_management
+        localhost:15672       Username:guest      Password:guest
+    rabbitmq-plugins enable rabbitmq_mqtt
 ```
 7. [Ubuntu]
 ```bash

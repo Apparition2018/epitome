@@ -3,6 +3,12 @@
 ---
 ## 参考网站
 1. [React 官方中文文档](https://react.docschina.org)
+2. [Ant Design Mobile](https://mobile.ant.design/index-cn)
+---
+## 特性
+1. 声明式
+2. 组件化
+3. 一次学习，随处编写
 ---
 ## Create React App
 ```bash
