@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import TodoItem from "./TodoItem";
 
-
 // 定义一个 React 组件
 class TodoList extends Component {
     constructor (props) {
