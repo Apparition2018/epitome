@@ -1,4 +1,5 @@
 # 数据定义语言 Data Definition Language
+
 ---
 ## 参考网站
 1. [Oracle、MySQL、SQL Server创建表和给表和字段加注释](https://www.cnblogs.com/zt528/p/5386516.html)
@@ -124,6 +125,21 @@ CREATE TEMPORARY TABLE sales(
 CREATE INDEX idx_course ON score(course);
 ```
 ---
+## 删除索引
+>### MySQL
+>```
+>ALTER TABLE score DROP INDEX idx_course;
+>DROP INDEX idx_course ON score;
+>```
+>### SQL Server
+>```
+>DROP INDEX score.idx_course;
+>```
+>### Oracle
+>```
+>DROP INDEX idx_course;
+>```
+---
 ## 修改字段
 ```
 ALTER TABLE score ADD grade VARCHAR(1);                 -- 增加字段
@@ -143,17 +159,3 @@ DROP TABLE score;                                       -- 删除表
 TRUNCATE TABLE score;                                   -- 删除表数据
 ```
 ---
-## 删除索引
->### MySQL
->```
->ALTER TABLE score DROP INDEX idx_course;
->DROP INDEX idx_course ON score;
->```
->### SQL Server
->```
->DROP INDEX score.idx_course;
->```
->### Oracle
->```
->DROP INDEX idx_course;
->```
