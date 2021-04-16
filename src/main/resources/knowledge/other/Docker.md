@@ -87,7 +87,7 @@ docker run -d --name zookeeper -p 2181:2181 zookeeper
 ```
 6. [RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash
-docker run -d --name rabbitmq -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 8883:8883 rabbitmq
+docker run -d --name rabbitmq -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 8883:8883 rabbitmq:management-alpine
 
 docker exec -it rabbitmq bash
     rabbitmq-plugins list

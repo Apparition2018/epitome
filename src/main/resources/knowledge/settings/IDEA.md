@@ -38,6 +38,10 @@
     1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
     2. Enable annotation processing 勾选
 ---
+## serialVersionUID
+    1. Settings → Editor → Inspections
+    2. 搜索并勾选 Serializable class without 'serialVersionUID'
+---
 ## HTML 代码不换行
     1. Settings → Editor → Code Style → HTML
     2. Other
