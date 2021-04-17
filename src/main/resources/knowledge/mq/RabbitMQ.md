@@ -38,3 +38,7 @@
 8. Routing Key: 一个路由规则，虚拟机可用它来确定如何路由一个特定消息
 9. Queue: 也称为 Message Queue，消息队列，保存消息并将它们转发给消费者  
 ---
+## 消息可靠性投递
+<img alt="消息100%投递成功方案" src="https://img3.mukewang.com/607a7e6800017ed319201080.jpg" width="500"/>  
+
+---
