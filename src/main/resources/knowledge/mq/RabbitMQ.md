@@ -2,7 +2,7 @@
 
 ---
 ## 参考网站
-1. [白话讲解：消息队列到底解决了什么问题？](https://blog.csdn.net/broadview2006/article/details/107940981)
+1. [消息队列的优缺点，区别](https://www.jianshu.com/p/eaafb1581e55)
 2. [RabbitMQ消息中间件极速入门与实战-慕课网](https://www.imooc.com/learn/1042)
 3. [RabbitMQ 端口号解析](https://blog.csdn.net/qq_37356556/article/details/104700411)
 4. [理解 RabbitMQ Exchange](https://blog.csdn.net/y4x5M0nivSrJaY3X92c/article/details/80416996)
