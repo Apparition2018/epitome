@@ -25,16 +25,6 @@
 *天下没有不散的筵席，再见也会再见，我们在这一章节先做一个课程总结，然后也对未来有所展望，期待我们下一次的见面。*
 - 4-1 课程总结及展望
 ---
-## 创建项目
-    1. vue create el-components
-    2. Please pick a preset                                 Manually select features
-    3. Check the features needed for your project           Babel + Router + CSS Pre-processors
-    4. Use history mode for router?                         Yes
-    5. Pick a CSS pre-processor                             Sass/SCSS (with node-sass)
-    6. Pick additional lint feautres                        Lint on Save
-    7. Where do you prefer placing config for Babel, PostCSS, ESLint, etc.?     In dedicated config files
-    8. Save this as a preset for future projects?           N
----
 ## Build Setup
 ```bash
 # Project setup

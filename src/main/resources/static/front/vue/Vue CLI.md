@@ -7,11 +7,49 @@ Command-Line Interface: 命令行界面或字符用户界面
 2. [【Vue】教程:一、windows下vue cli3安装及搭建项目详解](https://www.jianshu.com/p/da5719804018)
 4. [【Vue】教程:三、Vue Cli3项目结构优化](https://www.jianshu.com/p/37cec256e9ed)
 ---
-## 常用命令
-    vue -V|--version
-    vue init webpack <project_name>         (vue-cli2.x)
-    vue create <project_name>               (vue-cli3.x)
-    vue ui
+## 安装
+>### 2.x
+>```
+>   1. vue init webpack <project_name>
+>   2. Project name
+>   3. Project description
+>   4. Author
+>   5. Vue build
+>   6. Install vue-router?
+>   7. Use ESLint to lint your code?
+>   8. Set up unit tests
+>   9. Setup e2e tests with Nightwatch?
+>   10.Should we run `npm install` for you after the project has been created?
+>```
+>### 3.x
+>```
+>   1. vue create <project_name>
+>   2. Please pick a preset
+>   3. Check the features needed for your project
+>   4. Use history mode for router?
+>   5. Pick a CSS pre-processor
+>   6. Pick additional lint feautres
+>   7. Where do you prefer placing config for Babel, PostCSS, ESLint, etc.?
+>   8. Save this as a preset for future projects?
+>   --------------------------------------------------
+>   1. vue ui
+>   2. localhost:8000
+>   3. 选择 + 创建 → + 在此创建新项目
+>   4. 输入项目名 → 选择包管理器 → 下一步
+>   5. 默认|手动
+>   6. Babel + Router + Vuex + Css Pre-processors + Linter / Formatter + 使用配置文件（将插件的配置保存在各自的配置文件（比如'.babelrc'）中
+>   7. Pick a CSS pre-processor
+>      Pick a linter / formatter config
+>      创建项目
+>   8. 保存为新预设
+>```
+>### 手动
+>```
+>   1. npm install
+>   2. npm init -f|--force|--yes，表示使用默认配置
+>   3. npm install -S|--save
+>      npm install -D|--save-dev
+>```
 ---
 ## [项目结构](https://www.jianshu.com/p/90c6a5384e54)
     1. public               公共资源目录。
