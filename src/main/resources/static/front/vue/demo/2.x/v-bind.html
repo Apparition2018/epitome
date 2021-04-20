@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/theme-chalk/index.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/index.min.js"></script>
+</head>
+<body>
+<section class="code-wrap h500">
+    <div class="css-live-wrap">
+        <div class="caption">绑定 class</div>
+        <div class="centered" id="app">
+            <!-- 对象 -->
+            <div class="static" :class="{ 'active': isActive, 'error': isError }">obj1</div>
+            <div :class="classes">obj2</div>
+            <!-- 数组 -->
+            <div :class="[{'active': isActive}, isError]">arr1</div>
+            <div :class="classes2">arr2</div>
+            <!-- 组件 -->
+            <my-component class="active"></my-component>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        Vue.component('my-component', {
+            template: '<div class="article">component</div>'
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                isError: false,
+                size: 'large',
+                disabled: true
+            },
+            computed: {
+                classes: () => {
+                    return {
+                        active: this.isActive && !this.isError,
+                        'text-fail': this.isError && this.isError.type === 'fail'
+                    }
+                },
+                classes2: () => {
+                    return [
+                        'btn',
+                        {
+                            ['btn-' + this.size]: this.size !== '',
+                            ['btn-disabled']: this.disabled
+                        }
+                    ]
+                }
+            }
+        })
+    </script>
+</section>
+
+</body>
+</html>

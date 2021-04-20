@@ -27,39 +27,41 @@
 >Vue.component(id, [definition])             注册或获取全局组件
 >Vue.use(plugin)                             安装 Vue.js 插件，需在调用 new Vue() 之前被调用
 >```
->### 选项|数据
->```
->data                                        数据对象
->props                                       父组件数据
->methods                                     方法
->computed                                    计算属性 (数据联动)
->watch                                       侦听器 (异步场景)
->```
->### 选项|DOM
->```
->el                                          挂载目标
->template                                    模板
->```
->### 选项|生命周期钩子
->```
->created                                     在实例创建完成后被立即调用
->mounted                                     实例被挂载后调用
->```
->### 选项|资源
->```
->components                                  组件
->```
->### 选项|其它
->```
->name                    
->```
+>### 选项
+>>### Data
+>>```
+>>data                                       数据对象
+>>props                                      父组件数据
+>>computed                                   计算属性 (数据联动)
+>>methods                                    方法
+>>watch                                      侦听器 (异步场景)
+>>```
+>>### DOM
+>>```
+>>el                                         挂载目标
+>>template                                   模板
+>>```
+>>### 生命周期钩子
+>>```
+>>created                                    在实例创建完成后被立即调用
+>>mounted                                    实例被挂载后调用
+>>beforeDestroy                              实例销毁之前调用
+>>```
+>>### 资源
+>>```
+>>components                                 组件
+>>```
+>>### 杂项
+>>```
+>>name                    
+>>```
 >### 实例属性
 >```
 >vm.$data                                    Vue 实例观察的数据对象
 >vm.$el                                      Vue 实例使用的根 DOM 元素
 >vm.$refs                                    一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例
 >```
->### 实力方法|数据
+>### 实例方法|数据
 >```
 >vm.$set                                     Vue.set 的别名；set 绑在 Vue.set 上，$set 绑在 Vue.prototype.$set 上
 >```
@@ -85,6 +87,7 @@
 >v-bind          :                           绑定属性或组件
 >v-model                                     双向绑定属性或组件
 >v-slot          #                           可放置在函数参数位置的 JavaScript 表达式
+>v-pre                                       跳过这个元素和它的子元素的编译过程
 >```
 >### 特殊 attribute
 >```
@@ -226,16 +229,20 @@
 >   9. 事件（通过响应式事件触发的回调）
 >      - watch
 >      - 生命周期钩子（按照它们被调用的顺序）
->          - beforeCreate
->          - created
->          - beforeMount
->          - mounted
->          - beforeUpdate
->          - updated
->          - activated
->          - deactivated
->          - beforeDestroy
->          - destroyed
+>              2.x                  3.x
+>                    - beforeCreate
+>                    - created
+>                    - beforeMount
+>                    - mounted
+>                    - beforeUpdate
+>                    - updated
+>                    - activated
+>        - deactivated
+>        - beforeDestroy      - beforeUnmount
+>        - destroyed          - unmounted
+>                             - errorCaptured
+>                             - renderTracked
+>                             - renderTriggered
 >   10. 非响应式的 property（不依赖响应系统的实例 property）
 >      - methods
 >   11. 渲染（组件输出的声明式描述）

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>实例方法</title>
-    <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
-    <link rel="stylesheet" href="../../../static/css/demo.css">
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/theme-chalk/index.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/index.min.js"></script>
@@ -14,7 +14,7 @@
     <div class="css-live-wrap">
         <div class="caption">使用 $set() 更新视图</div>
         <div class="caption">
-            <a href="https://segmentfault.com/a/1190000014826146">Vue 不能检测数组和对象的变化</a>
+            <a href="https://segmentfault.com/a/1190000014826146" target="_blank">Vue 不能检测数组和对象的变化</a>
         </div>
         <div class="centered" id="app" style="text-align:center;">
             <div>
@@ -23,19 +23,17 @@
         </div>
     </div>
     <script class="code" contenteditable="true">
-        new Vue({
+        let app = new Vue({
             el: '#app',
-            data() {
-                return {
-                    isClick: true,
-                    items: [1, 2, 3]
-                }
+            data: {
+                isClick: true,
+                items: [1, 2, 3]
             },
             methods: {
                 plus(i) {
                     if (this.isClick) {
                         this.isClick = false;
-                        setTimeout(() => {this.isClick = true}, 1000);
+                        setTimeout(() => {this.isClick = true}, 800);
                         // this.items[i] = this.items[i] + 1;
                         this.$set(this.items, i, ++this.items[i])
                         console.log(this.items)
@@ -58,10 +56,8 @@
     <script class="code" contenteditable="true">
         new Vue({
             el: '#app2',
-            data() {
-                return {
-                    message: 'Click Me',
-                }
+            data: {
+                message: 'Click Me',
             },
             methods: {
                 updateMessage(e) {

@@ -139,7 +139,7 @@ Spring SpringMVC Mybatis
 >   - @Lazy(true)：延迟加载，写在类前
 >   - @PostConstruct @PreDestroy：指定初始化方法和销毁方法
 >   - @Value("#{config.max-wait}")：config 是 Spring 管理 Bean 的 id
->   - @Value("${jdbc.password"}})
+>   - @Value("${jdbc.password:root"}})，若找不到 jdbc.password 属性值，则默认值 root
 >### Spring MVC
 >- 用来简化基于 MVC 架构的 WEB 应用程序开发的框架，是 Spring 框架的一部分
 >

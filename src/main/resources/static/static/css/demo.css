@@ -14,6 +14,13 @@
     height: 100%;
 }
 
+.css-live-wrap-r {
+    position: relative;
+    float: right;
+    width: 50%;
+    height: 100%;
+}
+
 .code {
     display: block;
     float: right;

@@ -37,6 +37,7 @@
 
 import l.demo.Demo;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -49,6 +50,10 @@ public class Test extends Demo {
     public static void main(String[] args) throws Exception {
         bubbleSort(arr);
         System.out.println(Arrays.toString(arr));
+        
+        String s = "http://teacher.dev.linclassedu.cn/api/#/ssoLogin";
+        System.out.println(s.substring(0, StringUtils.indexOf(s, "/api/")));
+        System.out.println(StringUtils.substringBefore(s, "/api/"));
     }
 
     private static int[] arr = new int[10];

@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vue Todo</title>
-    <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
-    <link rel="stylesheet" href="../../../static/css/demo.css">
+    <title>Todo</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
 </head>
 <body>
 <section class="code-wrap h600">
@@ -56,11 +56,9 @@
             // components: {
             //     'to-item': todoItem
             // },
-            data() {
-                return {
-                    inputValue: '',
-                    list: []
-                }
+            data: {
+                inputValue: '',
+                list: []
             },
             methods: {
                 handleSubmit() {

@@ -30,6 +30,8 @@
 >### 五层模型
 >- 为了方便学习计算机网络原理而采用的，综合了 OSI 七层模型和 TCP/IP 的四层模型而得到的五层模型
 ---
+## HTTP 协议
+1. [HTTP是一个无状态的协议。这句话里的无状态是什么意思？](https://www.zhihu.com/question/23202402/answer/527748675)
 ## HTTP 数据包
 >### Request Headers
 >```
