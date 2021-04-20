@@ -22,9 +22,10 @@
     npm config list
     npm root -g
     npm i -g npm
+    npm uni -g npm
     npm install -g yarn --registry=https://registry.npm.taobao.org
     npm install -g cnpm --registry=https://registry.npm.taobao.org
-    npm uninstall i -g npm
+    npm uninstall -g cnpm
     npm info yarn
     npm list -g --depth=0
     npm init -f
@@ -37,7 +38,7 @@
     yarn config set cache-folder "E:\nodejs\yarn_cache"
     yarn config list
     yarn global add @vue/cli
-    yarn global remove @vue-cli
+    yarn global remove @vue/cli
     yarn install
     yarn run serve
 ---
