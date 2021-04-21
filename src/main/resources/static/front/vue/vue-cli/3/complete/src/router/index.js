@@ -10,6 +10,10 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    component: () => import('@/views/Index')
+  },
+  {
+    path: '/first',
     name: 'First',
     component: First,
     children: [
