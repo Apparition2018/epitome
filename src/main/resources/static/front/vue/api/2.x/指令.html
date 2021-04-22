@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base target="_blank">
+    <title>指令</title>
+    <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../static/css/demo.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/theme-chalk/index.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/index.min.js"></script>
+</head>
+<body>
+<section class="code-wrap h700">
+    <div class="css-live-wrap w100p">
+        <div class="caption">指令</div>
+        <div class="math centered">
+            <table class="w1280">
+                <tr>
+                    <th>指令</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.jianshu.com/p/f56cde007210?utm_source=oschina-app">v-cloak</a>
+                    </td>
+                    <td>和 CSS [v-cloak] { display: none } 一起使用时，可以隐藏未编译的 Mustache 标签直到组件实例准备完毕</td>
+                    <td>&lt;div id="app" v-cloak&gt;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://cn.vuejs.org/v2/api/#v-once">v-once</a>
+                    </td>
+                    <td>只渲染元素和组件一次。随后的重新渲染，元素/组件及其所有的子节点将被视为静态内容并跳过。可用于优化更新性能。</td>
+                    <td>&lt;span v-once&gt;This will never change: {{ msg }}&lt;/span&gt;</td>
+                </tr>
+                <tr>
+                    <td>Math.SQRT2</td>
+                    <td>2的平方根</td>
+                    <td>约等于 1.414</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="code-wrap h200">
+    <div class="css-live-wrap">
+        <div class="caption">
+        </div>
+        <div class="caption">v-if</div>
+        <div class="centered" id="app">
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+    </script>
+</section>
+
+</body>
+</html>
