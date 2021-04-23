@@ -9,6 +9,8 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/theme-chalk/index.min.css" rel="stylesheet">
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/index.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../../static/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h700">
@@ -45,19 +47,20 @@
     </div>
 </section>
 
-<section class="code-wrap h200">
+<section class="code-wrap h300">
     <div class="css-live-wrap">
         <div class="caption">
         </div>
         <div class="caption">v-if</div>
+        <div class="caption">内置 &lt;template&gt; 元素上使用条件指令，最终渲染不包含该元素</div>
         <div class="centered" id="app">
-            <template v-if="type === 'name'">
-                <label>用户名：</label>
-                <input placeholder="输入用户名">
+            <template v-if="this.type === 'name'">
+                <label key="name-label">用户名：</label>
+                <input placeholder="输入用户名" key="name-input">
             </template>
             <template v-else>
-                <label>邮箱：</label>
-                <input placeholder="输入邮箱">
+                <label key="mail-label">邮箱：</label>
+                <input placeholder="输入邮箱" key="mail-input">
             </template>
             <button @click="handleToggleClick">切换输入类型</button>
         </div>
@@ -65,11 +68,15 @@
     <script class="code" contenteditable="true">
         new Vue({
             el: '#app',
-            data: {
-                type: 'name'
+            data() {
+                return {
+                    type: 'name'
+                }
             },
             methods: {
                 handleToggleClick: () => {
+                    console.log(1)
+                    console.log(this.type)
                     this.type = this.type === 'name' ? 'mail' : 'name'
                 }
             }

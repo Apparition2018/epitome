@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import First from '@/components/First'
-import A from '@/components/A'
-import B from '@/components/B'
-import A1 from '@/components/A1'
+import Link from '@/components/link/Link'
+import A from '@/components/link/A'
+import B from '@/components/link/B'
+import A1 from '@/components/link/A1'
 
 Vue.use(VueRouter)
 
@@ -13,9 +13,9 @@ const routes = [
     component: () => import('@/views/Index')
   },
   {
-    path: '/first',
-    name: 'First',
-    component: First,
+    path: '/link',
+    name: 'Link',
+    component: Link,
     children: [
       {
         path: '/a',
@@ -39,6 +39,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: () => import('@/views/Test')
   }
 ]
 
