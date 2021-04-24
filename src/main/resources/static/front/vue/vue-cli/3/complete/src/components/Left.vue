@@ -34,11 +34,14 @@ export default {
 <style scoped>
 .title {
   width: 100px;
+  height: 50px;
+  line-height: 50px;
   color: red;
 }
 
 .menu {
   padding: 0;
+  margin: 0;
 }
 
 .menu li {
