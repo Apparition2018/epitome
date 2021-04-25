@@ -41,8 +41,9 @@ public class MinioDemo extends Demo {
     @Test
     public void upload() throws Exception {
         File file = new File(NOHARA_SINNOSUKE);
-        String date = DateFormatUtils.format(new Date(), "yyyy" + File.separator + "MMdd");
-        String fileName = "images" + File.separator + date + File.separator + "蜡笔小新." + FilenameUtils.getExtension(file.getName());
+        // 这里不能使用 File.separator，否则 window 系统不能创建文件夹
+        String date = DateFormatUtils.format(new Date(), "yyyy/MMdd");
+        String fileName = "images/" + date + "/蜡笔小新." + FilenameUtils.getExtension(file.getName());
         String contentType = new MimetypesFileTypeMap().getContentType(file);
         try (FileInputStream fis = new FileInputStream(file)) {
             ObjectWriteResponse response = minioClient.putObject(
@@ -53,7 +54,12 @@ public class MinioDemo extends Demo {
                             .contentType(contentType)
                             .build()
             );
-            p(response.etag());
+            System.out.println("etag = " + response.etag());
+            System.out.println("versionId = " + response.versionId());
+            System.out.println("headers = " + response.headers().toString());
+            System.out.println("bucket = " + response.bucket());
+            System.out.println("region = " + response.region());
+            System.out.println("object = " + response.object());
         }
 
     }
