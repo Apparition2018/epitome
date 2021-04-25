@@ -1,24 +1,22 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import Vuex from 'vuex'
 
 Vue.config.productionTip = false
 
-Vue.prototype.$store = store
-
-router.beforeEach((to, from, next) => {
-  if (store.state.userInfo || to.path === "/login") {
-    next()
-  } else {
-    next({
-      path: "/login"
-    })
-  }
+Vue.use(Vuex)
+const store = new Vuex.Store({
+    state: {
+        count: 0
+    },
+    mutations: {
+        countIncrease(state) {
+            state.count++
+        }
+    }
 })
 
 new Vue({
-  store,
-  router,
-  render: h => h(App),
+    store,
+    render: h => h(App),
 }).$mount('#app')
