@@ -1,22 +1,41 @@
 <template>
   <div>
-    {{ kk }}
+    <div v-if="current === 1">
+      <GoodsList :goodsId="1"></GoodsList>
+    </div>
+    <div v-else-if="current === 2">
+      <GoodsList :goodsId="2"></GoodsList>
+    </div>
+    <div v-else-if="current === 3">
+      <GoodsList></GoodsList>
+    </div>
+    <div v-else-if="current === 4">
+      <GoodsList></GoodsList>
+    </div>
+    <div v-else>
+      <GoodsList :goods-id="0"></GoodsList>
+    </div>
   </div>
 </template>
 
 <script>
-import Msg from './msg'
+import {EventBus} from '@/api/event-bus'
+import GoodsList from "@/components/GoodsList";
+
 export default {
   name: "Right",
+  components: {
+    GoodsList
+  },
   data () {
     return {
-      kk: 0
+      current: 0
     }
   },
-  mounted: () => {
+  mounted () {
     const _this = this
-    Msg.$on('val', (m) => {
-      _this.kk = m
+    EventBus.$on('val', (m) => {
+      _this.current = m
     })
   }
 }

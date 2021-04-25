@@ -54,13 +54,13 @@ export default {
 
 .left, .right {
   background-color: #f5f5f5;
-  height: 500px;
 }
 
 .top .title {
-  height: 200px;
   width: 1000px;
-  line-height: 200px;
+  height: 180px;
+  line-height: 180px;
   border: #1e1e1f 1px solid;
+  background-color: #9f8ece;
 }
 </style>
