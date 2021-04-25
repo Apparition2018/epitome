@@ -1,13 +1,11 @@
 package knowledge.throwable;
 
+import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Arrays;
-
-import static l.demo.Demo.p;
 
 /**
  * Throwable
@@ -29,7 +27,7 @@ import static l.demo.Demo.p;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class ThrowableDemo {
+public class ThrowableDemo extends Demo {
 
     /**
      * try-catch 捕获异常
@@ -70,7 +68,7 @@ public class ThrowableDemo {
      */
     @Test
     public void testTryWithResources() {
-        try (FileInputStream fis = new FileInputStream(new File("test"))) {
+        try (FileInputStream fis = new FileInputStream(new File(DEMO_FILE_PATH))) {
             p(fis.read());
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);
@@ -86,7 +84,7 @@ public class ThrowableDemo {
     @Test
     public void suppressed() {
         try {
-            FileInputStream fis = new FileInputStream(new File("test"));
+            FileInputStream fis = new FileInputStream(new File("src/main/resources/demo/demo"));
             Throwable var2 = null;
 
             try {
@@ -108,7 +106,6 @@ public class ThrowableDemo {
                 }
             }
         } catch (IOException var14) {
-            p(Arrays.toString(var14.getSuppressed()));
             throw new RuntimeException(var14.getMessage(), var14);
         }
     }

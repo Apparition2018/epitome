@@ -41,7 +41,7 @@
 >>el                                         挂载目标
 >>template                                   模板
 >>```
->>### 生命周期钩子
+>>### [生命周期钩子](https://cn.vuejs.org/v2/guide/instance.html#生命周期图示)
 >>```
 >>created                                    在实例创建完成后被立即调用
 >>mounted                                    实例被挂载后调用

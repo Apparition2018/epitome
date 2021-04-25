@@ -38,9 +38,11 @@
                     <td>&lt;span v-once&gt;This will never change: {{ msg }}&lt;/span&gt;</td>
                 </tr>
                 <tr>
-                    <td>Math.SQRT2</td>
-                    <td>2的平方根</td>
-                    <td>约等于 1.414</td>
+                    <td>
+                        <a href="https://cn.vuejs.org/v2/api/#v-show">v-show</a>
+                    </td>
+                    <td>根据表达式之真假值，切换元素的 display CSS property</td>
+                    <td>&lt;p v-show="status === 1"&gt;show&lt;/p&gt;</td>
                 </tr>
             </table>
         </div>
@@ -49,17 +51,18 @@
 
 <section class="code-wrap h300">
     <div class="css-live-wrap">
-        <div class="caption">
-        </div>
         <div class="caption">v-if</div>
         <div class="caption">内置 &lt;template&gt; 元素上使用条件指令，最终渲染不包含该元素</div>
+        <div class="caption">
+            <a href="https://cn.vuejs.org/v2/guide/conditional.html#用 key 管理可复用的元素">用 key 管理可复用的元素</a>
+        </div>
         <div class="centered" id="app">
-            <template v-if="this.type === 'name'">
-                <label key="name-label">用户名：</label>
+            <template v-if="type === 'name'">
+                <label>用户名：</label>
                 <input placeholder="输入用户名" key="name-input">
             </template>
             <template v-else>
-                <label key="mail-label">邮箱：</label>
+                <label>邮箱：</label>
                 <input placeholder="输入邮箱" key="mail-input">
             </template>
             <button @click="handleToggleClick">切换输入类型</button>
@@ -68,15 +71,11 @@
     <script class="code" contenteditable="true">
         new Vue({
             el: '#app',
-            data() {
-                return {
-                    type: 'name'
-                }
+            data: {
+                type: 'name'
             },
             methods: {
-                handleToggleClick: () => {
-                    console.log(1)
-                    console.log(this.type)
+                handleToggleClick () {
                     this.type = this.type === 'name' ? 'mail' : 'name'
                 }
             }

@@ -95,8 +95,17 @@ docker exec -it rabbitmq bash
         http://localhost:15672       Username:guest      Password:guest
     rabbitmq-plugins enable rabbitmq_mqtt
 ```
-7. [Ubuntu]
+7. [MinIO](https://www.jianshu.com/p/52dbc679094a)
 ```bash
-docker run -itd --name ubuntu ubuntu:20.04
+docker run -d --name minio -p 9000:9000 --restart=always
+[-v D:\Docker\MinIO:/data]
+[-v D:\Docker\MinIO\config:/root/.minio]
+-e MINIO_ACCESS_KEY=minio
+-e MINIO_SECRET_KEY=minio123
+minio/minio server /data
+```
+8. [Ubuntu]
+```bash
+docker run -d --name ubuntu ubuntu:20.04
 ```
 --- 
