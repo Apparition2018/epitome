@@ -56,7 +56,7 @@
         <div class="caption">
             <a href="https://cn.vuejs.org/v2/guide/conditional.html#用 key 管理可复用的元素">用 key 管理可复用的元素</a>
         </div>
-        <div class="centered" id="app">
+        <div class="centered" id="if">
             <template v-if="type === 'name'">
                 <label>用户名：</label>
                 <input placeholder="输入用户名" key="name-input">
@@ -70,7 +70,7 @@
     </div>
     <script class="code" contenteditable="true">
         new Vue({
-            el: '#app',
+            el: '#if',
             data: {
                 type: 'name'
             },
@@ -78,6 +78,50 @@
                 handleToggleClick () {
                     this.type = this.type === 'name' ? 'mail' : 'name'
                 }
+            }
+        })
+    </script>
+</section>
+
+<section class="code-wrap h500">
+    <div class="css-live-wrap">
+        <div class="caption">v-for</div>
+        <div class="caption">
+            <a href="https://www.cnblogs.com/Scooby/p/12160313.html">VUE列表渲染 FOR-IN和FOR-OF的区别</a>
+        </div>
+        <div class="centered" id="for" style="text-align:center;">
+            <!-- 遍历数组 -->
+            <template v-for="color in colors" >
+                <div class="demo-circle" :style="{ 'color': color.english }">{{ color.chinese }}</div>
+            </template>
+            <!-- 迭代整数 -->
+            <hr/>
+            <div v-for="n in colors.length" :key="n" class="demo-circle">{{ n }}</div>
+            <!-- 遍历对象属性 -->
+            <hr/>
+            <template v-for="(value, key, index) in colors[0]">
+                <div>{{index}}. {{ key }}-{{ value }}</div>
+            </template>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        new Vue({
+            el: '#for',
+            data: {
+                colors: [
+                    {
+                        chinese: '红',
+                        english: 'red'
+                    },
+                    {
+                        chinese: '黄',
+                        english: 'yellow'
+                    },
+                    {
+                        chinese: '蓝',
+                        english: 'blue'
+                    }
+                ]
             }
         })
     </script>

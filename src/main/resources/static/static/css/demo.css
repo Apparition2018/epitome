@@ -170,6 +170,7 @@
     width: 50px;
     line-height: 50px;
     margin: 5px;
+    text-align: center;
     color: var(--gy4);
     background-image: linear-gradient(300deg, #dfe9f3 0%, #ffffff 100%);
     border-radius: 50%;

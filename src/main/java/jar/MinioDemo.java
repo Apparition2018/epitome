@@ -1,6 +1,7 @@
 package jar;
 
 import io.minio.*;
+import io.minio.errors.*;
 import l.demo.Demo;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -10,11 +11,16 @@ import org.junit.jupiter.api.Test;
 import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 /**
  * Minio
  * 
+ * Java Client 快速入门指南：http://docs.minio.org.cn/docs/master/java-client-quickstart-guide
+ * Java Client API 参考文档：http://docs.minio.org.cn/docs/master/java-client-api-reference
  * MinIO 工具类：https://blog.csdn.net/weixin_42170236/article/details/109356921
  *
  * @author ljh
@@ -45,21 +51,26 @@ public class MinioDemo extends Demo {
         String date = DateFormatUtils.format(new Date(), "yyyy/MMdd");
         String fileName = "images/" + date + "/蜡笔小新." + FilenameUtils.getExtension(file.getName());
         String contentType = new MimetypesFileTypeMap().getContentType(file);
-        try (FileInputStream fis = new FileInputStream(file)) {
-            ObjectWriteResponse response = minioClient.putObject(
-                    PutObjectArgs.builder()
-                            .bucket(bucket)
-                            .object(fileName)
-                            .stream(fis, fis.available(), -1)
-                            .contentType(contentType)
-                            .build()
-            );
-            System.out.println("etag = " + response.etag());
-            System.out.println("versionId = " + response.versionId());
-            System.out.println("headers = " + response.headers().toString());
-            System.out.println("bucket = " + response.bucket());
-            System.out.println("region = " + response.region());
-            System.out.println("object = " + response.object());
+        try {
+            minioClient.statObject(StatObjectArgs.builder().bucket(bucket).object(fileName).build());
+            try (FileInputStream fis = new FileInputStream(file)) {
+                ObjectWriteResponse response = minioClient.putObject(
+                        PutObjectArgs.builder()
+                                .bucket(bucket)
+                                .object(fileName)
+                                .stream(fis, fis.available(), -1)
+                                .contentType(contentType)
+                                .build()
+                );
+                p("etag = " + response.etag());
+                p("versionId = " + response.versionId());
+                p("headers = " + response.headers().toString());
+                p("bucket = " + response.bucket());
+                p("region = " + response.region());
+                p("object = " + response.object());
+            }
+        } catch (Exception e) {
+            p(e.getMessage());
         }
 
     }

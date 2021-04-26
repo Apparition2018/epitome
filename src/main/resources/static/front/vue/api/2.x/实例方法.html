@@ -16,7 +16,7 @@
         <div class="caption">
             <a href="https://segmentfault.com/a/1190000014826146" target="_blank">Vue 不能检测数组和对象的变化</a>
         </div>
-        <div class="centered" id="app" style="text-align:center;">
+        <div class="centered" id="app">
             <div>
                 <div v-for="(item, index) in items" :key="index" class="demo-circle" @click="plus(index)">{{ item }}</div>
             </div>
