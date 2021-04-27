@@ -1,5 +1,5 @@
 export default {
-    login (state, v) {
+    login(state, v) {
         state.userInfo = v
     }
 }
