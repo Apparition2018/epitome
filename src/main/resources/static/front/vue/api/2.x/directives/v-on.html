@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <link rel="icon" href="../../../../../static/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../../static/css/demo.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/theme-chalk/index.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/index.min.js"></script>
+</head>
+<body>
+<section class="code-wrap h150">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://segmentfault.com/q/1010000011186651" target="_blank">vue中自定义按钮组件为什么要加.native</a>
+        </div>
+    </div>
+</section>
+
+<section class="code-wrap h200">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://cn.vuejs.org/v2/api/#v-on">v-on</a>
+        </div>
+        <div class="caption">$event</div>
+        <div class="centered" id="event">
+            <a href="http://www.google.com" @click="handleClick('禁止打开', $event)">Google</a>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        new Vue({
+            el: '#event',
+            methods: {
+                handleClick: function (message, event) {
+                    event.preventDefault()
+                    alert(message)
+                }
+            }
+        })
+    </script>
+</section>
+
+<section class="code-wrap h200">
+    <div class="css-live-wrap">
+        <div class="caption">.prevent</div>
+        <div class="centered" id="prevent">
+            <a href="http://www.google.com" @click.prevent="handleClick('禁止打开')">Google</a>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        new Vue({
+            el: '#prevent',
+            methods: {
+                handleClick: function (message) {
+                    alert(message)
+                }
+            }
+        })
+    </script>
+</section>
+
+<section class="code-wrap h200">
+    <div class="css-live-wrap">
+        <div class="caption">keyup</div>
+        <div class="centered" id="keyup">
+            <form id="form">
+                <input @keyup.enter="handleSubmit">
+                <button @click.prevent="handleSubmit">提交</button>
+            </form>
+        </div>  
+    </div>
+    <script class="code" contenteditable="true">
+        new Vue({
+            el: '#keyup',
+            methods: {
+                handleSubmit(){
+                    alert('submit')
+                }
+            }
+        })
+    </script>
+</section>
+
+
+</body>
+</html>

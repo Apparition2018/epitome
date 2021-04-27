@@ -8,21 +8,16 @@
     <title>replace()-demo</title>
     <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../static/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../../static/js/demo.js"></script>
 </head>
 
 <body>
-    <!--https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace
-        
-        str.replace(regexp|substr, newSubStr|function)
-
-        replace():  返回一个由替换值替换一些或所有匹配的模式后的新字符串。
-                    模式可以是一个字符串或者一个正则表达式, 
-                    替换值可以是一个字符串或者一个每次匹配都要调用的函数。
-
-        注意：原字符串不会改变 -->
-
-    <section class="code-wrap h350">
+    <section class="code-wrap">
         <div class="css-live-wrap w33p">
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace" target="_blank">replace()</a>
+            </div>
             <div class="caption">textarea 替换空格和换行符，保存到数据库</div>
             <div class="caption">利用 replace()中的 global 选项 实现</div>
             <div class="centered" id="eg1">
@@ -49,8 +44,8 @@
         </style>
         <script class="code w67p" contenteditable="true">
             function eg1() {
-                var text = document.querySelector("#eg1 .text");
-                var textarea = document.querySelector("#eg1 textarea");
+                let text = document.querySelector("#eg1 .text");
+                let textarea = document.querySelector("#eg1 textarea");
                 text.textContent = textarea.value.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, '&nbsp;');
             }
         </script>
@@ -62,25 +57,23 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var str = '1a2b3';
+            let str = '1a2b3';
 
             // $$: 插入一个 "$"
-            var newStr = str.replace(/[a-z]/g, '$$'); // "1$2$3"
+            let newStr = str.replace(/[a-z]/g, '$$');   // "1$2$3"
 
             // $&: 插入匹配的子串
-            var newStr = str.replace(/[a-z]/g, '$&'); // "1a2b3"
+            newStr = str.replace(/[a-z]/g, '$&');       // "1a2b3"
 
             // $`: 插入当前匹配的子串左边的内容
-            var newStr = str.replace(/[a-z]/g, '$`'); // "1121a23"
+            newStr = str.replace(/[a-z]/g, '$`');       // "1121a23"
 
             // $': 插入当前匹配的子串右边的内容
-            var newStr = str.replace(/[a-z]/g, "$'"); // "12b3233"
+            newStr = str.replace(/[a-z]/g, "$'");       // "12b3233"
 
             // $$: 假如第一个参数是 RegExp对象，并且 n 是个小于100的非负整数，那么插入第 n 个括号匹配的字符串
-            var newStr = str.replace(/([a-z])\d([a-z])/g, '$2'); // "1b3"
+            newStr = str.replace(/([a-z])\d([a-z])/g, '$2'); // "1b3"
         </script>
     </section>
 
@@ -91,25 +84,20 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var re = /(\w+)\s(\w+)/;
-            var str = "Henry Reyes";
-            var newStr = str.replace(re, "$2 $1"); // "Reyes Henry"
+            let name = "Henry Reyes";
+            let reg = /(\w+)\s(\w+)/;
+            let newName = str.replace(reg, "$2 $1"); // "Reyes Henry"
         </script>
     </section>
 
     <section class="code-wrap h200">
         <div class="css-live-wrap w33p">
-            <div class="caption">将驼峰命名转换成-命名</div>
-            <div class="caption">利用 match 实现</div>
+            <div class="caption">将驼峰命名转换成横线连接命名</div>
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
-        <script class="code w67p" contenteditable="true">            
+        <script class="code w67p" contenteditable="true">
             function styleHyphenFormat(propertyName) {
                 function upperToHyphenLower(match) {
                     return '-' + match.toLowerCase();
@@ -118,6 +106,17 @@
             }
 
             styleHyphenFormat('backgroundColor');
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">千位分隔符</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            '123456789'.replace(/\B(?=(\d{3})+$)/g ,',');
         </script>
     </section>
 </body>

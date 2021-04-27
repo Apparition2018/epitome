@@ -48,11 +48,9 @@
             <div class="caption">JSON.parse()</div>
             <div class="centered eg2">2</div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             (function () {
-                var eg2 = document.getElementsByClassName('eg2')[0];
+                let eg2 = document.getElementsByClassName('eg2')[0];
 
                 JSON.parse('{"1": 1, "2": 2,"3": {"4": 4, "5": {"6": 6}}}', function (k, v) {
                     eg2.innerText += ' ' + k;   // 输出当前的属性名，从而得知遍历顺序是从内向外的，最后一个属性名会是个空字符串。
@@ -68,8 +66,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // undefined、任意的函数以及 symbol 值，在序列化过程中会被忽略，或者被转换成 null（出现在数组中时）
             JSON.stringify({ x: undefined, y: Object, z: Symbol("") }); // "{}"，Object 也是一个函数
@@ -98,12 +94,10 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var foo = { a: 'a', b: 2, c: 'c', d: 4 };
+            let foo = { a: 'a', b: 2, c: 'c', d: 4 };
 
-            // repalcer 是一个函数
+            // replacer 是一个函数
             JSON.stringify(foo, (k, v) => {
                 if (typeof v === 'string') {
                     return undefined;
@@ -111,7 +105,7 @@
                 return v;
             })                                  // "{"b":2,"d":4}"
 
-            // repalcer 是一个数组
+            // replacer 是一个数组
             JSON.stringify(foo, ['b', 'c']);    // "{"b":2,"c":"c"}"
 
         </script>

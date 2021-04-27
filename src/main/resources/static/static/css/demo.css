@@ -142,6 +142,13 @@
     transform: translate(-50%, -50%);
 }
 
+.demo-text {
+    color: var(--buf5);
+    font-size: 1.5em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
 .demo-click {
     color: var(--buf5);
     font-size: 1.5em;
