@@ -40,6 +40,7 @@ docker run                          创建新的 container 并运行命令；run
 docker start|stop|restart           启动|停止|重启 containers
 docker ps                           列出 containers
     -a
+docker inspect                      获取 containers/images 元数据
 docker kill                         杀掉 containers
 docker exec                         在执行的 container 中执行命令
     -it ... bash
@@ -52,6 +53,8 @@ docker commit                       从 container 创建 image
 docker run -d --name redis -p 6379:6379
 [-v D:/Docker/Redis/data:/data]
 redis [--requirepass "Password" redis-server --appendonly yes]
+
+docker exec -it redis redis-cli
 ```
 2. [MySQL](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash

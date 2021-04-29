@@ -148,6 +148,7 @@
         -e                                                                      显示所有进程
         -f                                                                      显示 UID, PPID, C 与 STIME 栏位
     kill                                                                        杀死进程
+        -9                                                                      彻底杀死进程
     whoami                                                                      显示自身用户名称
     id                                                                          显示用户 ID，以及所属群组 ID
     w                                                                           显示当前用户的信息

@@ -117,7 +117,7 @@
 >   5.1 service vsftpd restart
 >   5.2 浏览器访问 ftp://192.168.58.129                           
 >6. 登录服务器：ftp 192.168.58.129
->7. FTP 软件：filezilla
+>7. FTP 软件：FileZilla
 >```
 >### Nginx
 >- Nginx 是一款轻量级 web 服务器，也是一款反向代理服务器；特点有高稳定，高性能，资源占用少，功能丰富，模块化结构，支持热部署
@@ -234,4 +234,24 @@
 >       如果出现 Could not open a connection to your authentication agent，先执行 eval `ssh-agent`
 >   6.4 cat ~/.ssh/id_rsa.pub
 >   6.5 登录码云设置 SSH 公钥
+>```
+>### Redis
+>```
+>1. yum install gcc-c++
+>2. wget https://github.com/redis/redis/archive/refs/tags/6.2.2.tar.gz
+>3. tar -zxvf xxx.tar.gz
+>4. 安装
+>   4.1 cd redis-6.2.2
+>   4.2 make
+>   4.4 make PREFIX=/usr/local/redis install
+>5. 配置
+>   5.1 cd redis-6.2.2
+>   5.2 cp redis.conf /usr/local/redis
+>6. 启动
+>   6.1 cd /usr/local/redis
+>   6.2 vim redis.conf，修改 daemonize no 改成 daemonize yes，保存退出
+>   6.3 ./bin/redis-server ./redis.conf
+>7. 客户端操作：./bin/redis-cli
+>8. 停止：./bin/redis-cli shutdown
+>```
 ---
