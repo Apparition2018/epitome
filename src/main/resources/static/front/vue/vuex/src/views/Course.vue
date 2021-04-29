@@ -22,8 +22,7 @@ export default {
   name: "Course",
   methods: {
     share () {
-      let c = confirm("课程分享，地址： http://www.muke.com")
-      if (c) {
+      if (confirm("课程分享，地址： http://www.muke.com")) {
         store.dispatch('getFreeVip').then(res => {
           alert(res)
         })

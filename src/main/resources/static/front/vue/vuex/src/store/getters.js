@@ -6,7 +6,7 @@ export default {
             case 1:
                 return 'vip会员'
             case 2:
-                return `vip${state.vipLevel}会员`
+                return `高级vip${state.vipLevel}会员`
             default:
                 return '普通会员'
         }

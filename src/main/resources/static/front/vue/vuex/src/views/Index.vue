@@ -73,8 +73,7 @@ export default {
       this.$router.push("./user-center")
     },
     goVideoList (e) {
-      const res = this.checkPermission(e);
-      if (res) {
+      if (this.checkPermission(e)) {
         this.$router.push({
           name: 'Course',
           params: {
@@ -88,11 +87,7 @@ export default {
     checkPermission (e) {
       const userStatus = this.$store.state.userStatus
       const vipLevel = this.$store.state.vipLevel
-      if (userStatus >= e.userStatus) {
-        return vipLevel >= e.vipLevel
-      } else {
-        return false
-      }
+      return userStatus >= e.userStatus && vipLevel >= e.vipLevel;
     }
   }
 }
