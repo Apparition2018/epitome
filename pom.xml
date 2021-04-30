@@ -23,9 +23,10 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- dependency -->
-        <druid-spring-boot>1.2.5</druid-spring-boot>
+        <druid-spring-boot>1.2.6</druid-spring-boot>
         <pagehelper-spring-boot>1.3.0</pagehelper-spring-boot>
         <swagger>3.0.0</swagger>
+        <jedis>3.6.0</jedis>
         <commons-email>1.5</commons-email>
         <commons-configuration2>2.7</commons-configuration2>
         <commons-beanutils>1.9.4</commons-beanutils>
@@ -33,17 +34,17 @@
         <smartcn>8.8.2</smartcn>
         <tika>1.26</tika>
         <netty>4.1.63.Final</netty>
-        <hutool>5.6.3</hutool>
+        <hutool>5.6.4</hutool>
         <fastjson>1.2.76</fastjson>
         <minio>8.2.1</minio>
-        <protostuff>1.7.2</protostuff>
+        <protostuff>1.7.4</protostuff>
         <cglib>3.3.0</cglib>
         <dom4j>2.1.3</dom4j>
         <zxing>3.4.1</zxing>
         <easy-captcha>1.6.2</easy-captcha>
         <kaptcha>2.3.2</kaptcha>
         <TinyPinyin>2.0.3.RELEASE</TinyPinyin>
-        <oshi>5.7.0</oshi>
+        <oshi>5.7.1</oshi>
         <jsch>0.1.55</jsch>
         <thumbnailator>0.4.14</thumbnailator>
         <truelicense>1.33</truelicense>
@@ -148,6 +149,13 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- Jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis}</version>
         </dependency>
 
         <!-- commons -->

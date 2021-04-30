@@ -7,36 +7,29 @@
     4. IDE Settings Sync
     5. Sync Plugins Silently
 ---
-## 编辑器内中文字体
+## 字体
     1. Settings → Editor → Font
-    2. Show only monospaced fonts (只显示等宽字体) 取消勾选
-    3. Fallback font: SimHei
-    4. Enable font ligatures (启用字体连写) 勾选
+    2. Enable ligatures (启用字体连写) 勾选
+    3. Typography Settings → Fallback font: SimHei
 ---
 ## 文件和代码模板
     1. Settings → Editor → File and Code Templates
     2. Files
-    3. Class / Interface / Enum / AnnotationType
+    3. Class / Interface / Enum / Record / AnnotationType
         /**
          * ${NAME}
          *
          * @author ${USER}
          * created on ${DATE} ${TIME}
          */
-    4. Vue Single File Component
-        name: '${COMPONENT_NAME}'
 ---
 ## 去除尾行空格
     1. Settings → Editor → General
     2. Virtual Space
-        2.1 Allow placement of caret after end of line 取消勾选
-    3. Other
-        2.1 Strip trailing spaces on Save: Modified Lines
-        2.2 Always keep trailing spaces on caret line 取消勾选
----
-## 启用注解处理
-    1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
-    2. Enable annotation processing 勾选
+        2.1 Allow caret placement: After the end of line 取消勾选
+    3. On Save
+        3.1 Remove trailing spaces on: Modified Lines 取消勾选
+        3.2 Keep trailing spaces on caret line 取消勾选
 ---
 ## serialVersionUID
     1. Settings → Editor → Inspections
@@ -48,27 +41,23 @@
     3. Hard wrap at: 240
     4. Wrap attributes: Do not wrap
 ---
+## ESLint: Missing space before function parentheses
+    1. Settings → Editor → Code Style → JavaScript
+    2. Spaces
+    3. Before parenthese
+    4. Function declaration parentheses 勾选
+---
+## 启用注解处理
+    1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
+    2. Enable annotation processing 勾选
+---
 ## JavaScript version
     1. Settings → Languages & Frameworks → JavaScript
     2. JavaScript language version: ECMAScript 6
 ---
 ## Terminal
     1. Settings → Tools → Terminal
-    2. Shell path
----
-## npm
-    1. package.json 右鍵 Run 'npm install'，下载依赖生成 node_modules
-    2. package.json 右键 Show npm Scripts，显示 npm 面板
----
-## webpack.config.js
-    1. Settings → Language & Frameworks → JavaScript → Webpack
-    2. webpack configuration file: xxx\node_modules\@vue\cli-service\webpack.config.js
----
-## ESLint: Missing space before function parentheses
-    1. Settings → Editor → Code Style → JavaScript
-    2. Spaces
-    3. Before parenthese
-    4. Function declaration parentheses 勾选
+    2. Shell path: %GIT_HOME%\bin\bash.exe
 ---
 ## [Project Settings](https://www.jianshu.com/p/39b2206999e7)
 >### Facets
