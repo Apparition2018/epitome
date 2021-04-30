@@ -247,11 +247,15 @@
 >5. 配置
 >   5.1 cd redis-6.2.2
 >   5.2 cp redis.conf /usr/local/redis
->6. 启动
->   6.1 cd /usr/local/redis
->   6.2 vim redis.conf，修改 daemonize no 改成 daemonize yes，保存退出
->   6.3 ./bin/redis-server ./redis.conf
->7. 客户端操作：./bin/redis-cli
->8. 停止：./bin/redis-cli shutdown
+>6. 防火墙
+>   6.1 vim /etc/sysconfig/iptables
+>       -A INPUT -m state --state NEW -m tcp -p tcp --dport 6379 -j ACCEPT
+>   6.2 service iptables restart
+>7. 启动
+>   7.1 cd /usr/local/redis
+>   7.2 vim redis.conf，修改 daemonize no 改成 daemonize yes，保存退出
+>   7.3 ./bin/redis-server ./redis.conf
+>8. 客户端操作：./bin/redis-cli
+>9. 停止：./bin/redis-cli shutdown
 >```
 ---

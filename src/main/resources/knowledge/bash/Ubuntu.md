@@ -22,13 +22,13 @@ apt-get dist-upgrade
 apt-get install tzdata
     # 修改时区
     tzselect
-# wget
-apt-get install wget
 wget --version
 # c/c++
 apt-get isntall build-essential
-# vim
+apt-get install wget
 apt-get isntall vim
+apt-get isntall iptables
+apt-get isntall net-tools
 
 # 卸载
 apt-get remove software
