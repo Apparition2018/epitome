@@ -4,6 +4,11 @@
 ## 参考网站
 1. [Redis入门](https://www.imooc.com/learn/839)
 2. [Redis 教程 | 菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
+3. [Redis 教程](https://www.cnblogs.com/yiwangzhibujian/category/1020818.html)
+4. [Redis 密码设置和登录](https://www.cnblogs.com/xiaozong/p/5652563.html)
+5. [Windows Redis](https://github.com/microsoftarchive/redis/releases)
+6. [windows下安装redis并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)   
+7. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
 ---
 ## NoSQL
 - 非关系型数据库 Not Only SQL
@@ -45,9 +50,48 @@
 - 多数据库
 - Redis 事务
 ---
+## [Redis 配置](https://raw.githubusercontent.com/redis/redis/6.0/redis.conf)
+>### 常规配置
+>```
+># 设置客户端密码
+>requirepass password
+># 绑定 IPv4 地址
+>bind 127.0.0.1
+># 是否开启保护模式
+>protected-mode yes
+># 是否守护线程运行
+># yes 会和 docker run -d 冲突
+>daemonize no
+># 持久化文件存储目录
+>dir ./
+># 包含其它配置文件
+>include other.conf
+>```
+>### RDB 持久化
+>```
+># RDB 持久化文件名
+>dbfilename dump.rdb
+># 当 seconds 秒内至少有 changes 个键被改动时，自动进行数据集保存操作
+># save "" 并删除 dump.rdb 相当于光比 RDB 持久化
+>save <seconds> <changes>
+>```
+>### AOF 持久化
+>```
+># 是否开启 AOF 持久化
+>appendonly yes
+># AOF 持久化文件名
+>appendfilename "appendonly.aof"
+># 同步策略
+>appendfsync always | everysec | no
+>```
+---
+## [Redis 持久化](https://segmentfault.com/a/1190000016021217)
+- RDB 持久化
+- AOF 持久化
+---
 ## [客户端操作](https://www.cnblogs.com/javastack/p/9854489.html)
 - 连接远程 redis：redis-cli -h host -p port -a password
-- 命令
+- [命令](https://www.runoob.com/redis/redis-commands.html)
   - Key
   ```
   KEYS pattern[?|*]                                 查看
@@ -143,6 +187,7 @@
   ```
   - 连接
   ```
+  AUTH [usename] password                           验权
   SELECT index                                      切换数据库
   ```
   - 事务
@@ -153,9 +198,11 @@
   ```
   - 服务器
   ```
-  FLUSHALL                                          冲洗所有数据库 key
-  FLUSHDB                                           冲洗当前库所有 key
+  SAVE                                              同步保存到 .rdb 文件
+  BGSAVE [SCHEDULE]                                 异步保存到 .rdb 文件
   DBSIZE                                            当前库 key 数量
+  FLUSHALL [ASYNC|SYNC]                             冲洗所有数据库 key
+  FLUSHDB [ASYNC|SYNC]                              冲洗当前库所有 key
   ```
 ---
   

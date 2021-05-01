@@ -50,15 +50,16 @@ docker commit                       从 container 创建 image
 ## 
 1. [Redis](https://blog.csdn.net/qq_34670974/article/details/94051251)
 ```bash
-docker run -d --name redis -p 6379:6379
-[-v D:/Docker/Redis/data:/data]
-redis [--requirepass "Password" redis-server --appendonly yes]
+docker run -d --name redis -p 6379:6379 --restart=always
+[-v D:/Docker/Redis/data:/data:rw]
+[-v D:/Docker/Redis/conf/redis.conf:/etc/redis/redis.conf:ro]
+redis redis-server /etc/redis/redis.conf
 
 docker exec -it redis redis-cli
 ```
 2. [MySQL](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
-docker run -d --name mysql -p 3306:3306
+docker run -d --name mysql -p 3306:3306 --restart=always --privileged=true
 [-v D:/Docker/MySQL/my.cnf:/etc/mysql/my.cnf -v D:/Docker/MySQL/data:/var/lib/mysql]
 -e MYSQL_ROOT_PASSWORD=root mysql
 
@@ -77,7 +78,7 @@ docker run -d --name tomcat -p 8080:8080 -v D:\Docker\Tomcat\webapps:/usr/local/
 ```
 4. [Nginx](https://blog.csdn.net/goodboy31985/article/details/106676475/)
 ```bash
-docker run -d --name nginx -p 80:80
+docker run -d --name nginx -p 80:80 --restart=always
 [-v D:\Docker\Nginx\conf\nginx.conf:/etc/nginx/nginx.conf]
 [-v D:\Docker\nginx\conf\conf.d:/etc/nginx/conf.d]
 [-v D:\Docker\Nginx\log:/var/log/nginx]

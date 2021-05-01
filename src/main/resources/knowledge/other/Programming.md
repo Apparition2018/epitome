@@ -68,18 +68,6 @@
 ## Token 登录
 1. [RESTful登录设计（基于Spring及Redis的Token鉴权）](www.scienjus.com/restful-token-authorization/)
 ---
-## Redis
-1. [Releases/redis](https://github.com/microsoftarchive/redis/releases) 下载最新发布版本
-2. 点击 Redis-x64-x.y.z.zip 下载
-3. 启动：
-    - 双击 Redis 目录下 redis-server.exe
-    - 启动 cmd cd 到 Redis 目录，输入命令 redis-server.exe redis.window.conf
-4. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
->### 参考网站
->1. [windows下安装redis并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
->2. [Redis 密码设置和登录](https://www.cnblogs.com/xiaozong/p/5652563.html)
->3. [Redis 教程](https://www.cnblogs.com/yiwangzhibujian/category/1020818.html)
----
 ## 微信小程序
 >### 登录设计
 >1. 

@@ -125,6 +125,7 @@
 ---
 ## 网络通信
     ping                                    packet internet grouper             检测主机
+    telnet                                  telecommunications network          远端登入
     ip                                                                          显示或设置网络设备，比 ipconfig 功能强大
     ifconfig                                                                    显示或设置网络设备
     netstat                                                                     显示网络状态
