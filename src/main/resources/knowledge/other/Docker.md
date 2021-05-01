@@ -13,6 +13,10 @@
 2. [从零开始的Docker Desktop使用,Docker快速上手](https://xunmi.blog.csdn.net/article/details/108641842)
 3. [windows10 docker -v 映射问题](https://www.80shihua.com/archives/2589)
 ---
+## VM vs DOcker
+![VM vs Docker](https://img3.mukewang.com/608d8eeb0001298319201080-500-284.jpg)
+
+---
 ## Docker Desktop 安装
 1. 安装前创建目录链接
 ```bash
@@ -37,11 +41,14 @@ service docker start
 service docker status
 
 docker version [OPTIONS]                                        显示版本信息
+docker info [OPTIONS]                                           显示系统信息
 docker images [OPTIONS] [REPOSITORY[:TAG]]                      列出 iamges
+docker search [OPTIONS] TERM                                    在 Docker Hub 搜索 images
 docker pull [OPTIONS] NAME[:TAG|@DIGEST]                        拉取 image 或 repository
 docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                   创建新的 container 并运行 command
     -d                                                          后台运行
-    -v                                                          绑定 volume
+    -v                                                          绑定挂载 volume，$PWD 当前目录
+    --volumes-from                                              从指定 container 挂载 volumes
     -p                                                          指定端口映射
     -P                                                          暴露容器所有端口到宿主随机端口
     --restart=always                                            总是启动
@@ -57,24 +64,56 @@ docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   返回 Docker �
 docker kill [OPTIONS] CONTAINER [CONTAINER...]                  杀掉 containers
 docker build [OPTIONS] PATH | URL | -                           从 Dockerfile 构建 image
     -t                                                          命名 'name:tag'
-docker commit                                                   从 container 创建 image
+docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-              在 container 和本地文件系统之间 复制文件或文件夹
+docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]            根据 container 的更改创建 image
+    -m                                                          提交消息
+docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                创建 container
+docker push [OPTIONS] NAME[:TAG]                                将 image 或 repository 推到 registry
+docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]                创建与 SOURCE_IMAGE 关联的 TARGET_IMAGE[:TAG]
+docker login [OPTIONS] [SERVER]                                 登录
 ```
 ---
 ## Docker 网络
 ![Docker 网络](https://img.mukewang.com/608d6a4c0001e15019201080-500-284.jpg)
 - 网络类型：1-Bridge 2-Host 3-None
 - 端口映射
-## Dockerfile
-0. 下载一个 [JPress war 包](http://www.jpress.io/club/post/116)
-1. 编写 Dockerfile 文件
-```
-from tomcat
-MAINTAINER ljh xxx@163.com
-COPY jpress-v3.3.0.war /usr/local/tomcat/webapps
-```
-2. docker build -t jpress .
-3. docker run -d -p 8888:8080 --name jpress jpress
-4. localhost:8888/jpress-v3.3.0
+## [Dockerfile](https://www.runoob.com/docker/docker-dockerfile.html)
+>### 语法
+>```
+>FROM                                               基于 image
+>RUN                                                执行命令，docker build 时运行
+>   shell 格式：RUN ./test.php dev offine
+>   exec 格式：RUN ["./test.php", "dev", "offine"]
+>CMD                                                执行命令，docker run 时运行
+>ENTRYPOINT                                         执行命令，不会被 docker run 的参数指定的指令所覆盖，而且参数会传送给指定的程序
+>ADD                                                添加文件，gzip 和 bzip2 会自动解压
+>COPY                                               复制文件
+>ENV                                                设置环境变量
+>ARG                                                设置环境变量，仅在 Dockerfile 内有效
+>   docker build --build-arg
+>MAINTAINER                                         维护者
+>USER                                               用户
+>VOLUME                                             VOLUME
+>WORKDIR                                            工作目录
+>EXPOSE                                             端口
+>```
+>### 镜像分层
+>![镜像分层](https://img2.mukewang.com/608d9d330001dd2819201080-500-284.jpg)
+>### Demo
+>1. 编写 Dockerfile 文件
+>```
+>FROM ubuntu:latest
+>MAINTAINER ljh
+>RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+>RUN apt-get update
+>RUN apt-get install -y nginx
+>COPY index.html /var/www/html
+>ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
+>EXPOSE 80
+>```
+>2. docker build -t hello_docker .
+>3. docker run hello_docker
+>4. localhost:80
 ---
 ## 安装软件
 1. [Redis](https://blog.csdn.net/qq_34670974/article/details/94051251)
