@@ -1,0 +1,32 @@
+version: '3'
+
+networks:
+  ghost:
+
+services:
+  db:
+    image: 'mysql'
+    networks:
+      - ghost
+    environment:
+      MYSQL_ROOT_PASSWORD: mysqlroot
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: ghost
+    ports:
+      - "3306:3306"
+  ghost-app:
+    build: ghost
+    networks:
+      - ghost
+    depends_on:
+      - db
+    ports:
+      - "2368:2368"
+  nginx:
+    build: nginx
+    networks:
+      - ghost
+    depends_on:
+      - ghost-app
+    ports:
+      - "80:80"

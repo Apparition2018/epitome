@@ -34,7 +34,9 @@
     scp                                     secure copy                         Linux 之间复制文件或目录
     mv                                      move                                更改文件或目录名字或位置
     chmod                                   change mode                         更改文件或目录访问权限
-        -R                                                                      递归的方式逐个变更               
+        -R                                                                      递归的方式逐个变更
+        a+x                                 all+execute                         所有人可执行
+        777                                                                     所有人可读写执行
     chgrp                                   change group                        更改文件或目录群组
     chown                                   change owner                        更改文件拥有者
         -R                                  recursion                           处理指定目录以及其子目录下的所有文件

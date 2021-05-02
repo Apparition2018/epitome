@@ -41,8 +41,8 @@ mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
 apt-get install -y docker.io
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 curl -sSL https://get.daocloud.io/docker | sh
-# 安装 docker-compose
-sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m) > /usr/local/bin/docker-compose
+# 安装 docker-compose：https://docs.docker.com/compose/install/
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 # 卸载 docker
 apt-get autoremove docker docker-ce docker-engine docker.io containerd runc
 dpkg -l | grep docker
@@ -93,6 +93,7 @@ docker login [OPTIONS] [SERVER]                                 登录
 ![Docker 网络](https://img.mukewang.com/608d6a4c0001e15019201080-500-284.jpg)
 - 网络类型：1-Bridge 2-Host 3-None
 - 端口映射
+---
 ## [Dockerfile](https://www.runoob.com/docker/docker-dockerfile.html)
 >### 语法
 >```
@@ -130,6 +131,26 @@ docker login [OPTIONS] [SERVER]                                 登录
 >2. docker build -t hello_docker .
 >3. docker run hello_docker
 >4. localhost:80
+---
+## [Docker Compose](https://docs.docker.com/compose/) 
+- [docker安装Ghost博客](https://www.cnblogs.com/xbblogs/p/9531069.html)
+1. Dockerfile 定义应用程序环境
+2. [docker-compose.yml](https://docs.docker.com/compose/compose-file/compose-file-v3/) 定义构成应用程序的服务
+    ```
+    build                           构建时的配置选项，可直接指定一个文件夹
+    image                           指定镜像
+    networks                        所属网路
+    depends_on                      服务之间的依赖关系
+    ```
+3. [docker-compose CLI](https://docs.docker.com/compose/reference/)
+    ```
+    build                           构建或重构 services
+    up -d                           创建并启动 containers
+    ps                              列出 containers
+    logs                            查看 containers output
+    stop                            停止 services
+    rm                              删除已停止的 containers
+    ```
 ---
 ## 安装软件
 1. [Redis](https://blog.csdn.net/qq_34670974/article/details/94051251)
