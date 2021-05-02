@@ -35,6 +35,22 @@ mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
   ],
 ```
 ---
+## Linux 安装 Docker
+```bash
+# 安装 docker 三种方式
+apt-get install -y docker.io
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+curl -sSL https://get.daocloud.io/docker | sh
+# 安装 docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m) > /usr/local/bin/docker-compose
+# 卸载 docker
+apt-get autoremove docker docker-ce docker-engine docker.io containerd runc
+dpkg -l | grep docker
+apt-get autoremove docker-ce-*
+rm -rf /etc/systemd/system/docker.service.d
+rm -rf /var/lib/docker
+```
+---
 ## [常用命令](https://docs.docker.com/engine/reference/commandline/docker/)
 ```
 service docker start
@@ -132,8 +148,8 @@ docker run -d --name mysql -p 3306:3306 --privileged
 -e MYSQL_ROOT_PASSWORD=root mysql
 
 docker exec -it mysql mysql -uroot -proot
-     create user ljh@172.17.0.1 identified by '123456';                         创建用户
-     grant all privileges on `ry-vue`.* to ljh@172.17.0.1 with grant option;    授权
+     create user ljh@172.17.0.1 identified by '123456';
+     grant all privileges on `ry-vue`.* to ljh@172.17.0.1 with grant option;
      flush privileges;
 ```
 3. [Tomcat](https://www.cnblogs.com/liyiran/p/12544715.html)
@@ -178,6 +194,6 @@ minio/minio server /data
 ```
 8. Ubuntu
 ```bash
-docker run -itd --name ubuntu --privileged ubuntu:latest
+docker run -itd --name ubuntu --privileged ubuntu
 ```
 --- 
