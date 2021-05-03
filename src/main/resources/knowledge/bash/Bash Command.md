@@ -20,6 +20,7 @@
 ---
 ## 文件管理
     cat                                     concatenate                         显示文件内容
+        /etc/issue                                                              登录欢迎语
     nl                                                                          显示文件内容，添加行号
     more                                                                        显示文件内容，以一页一页的形式
     head                                                                        显示文件头部内容
@@ -34,7 +35,7 @@
     scp                                     secure copy                         Linux 之间复制文件或目录
     mv                                      move                                更改文件或目录名字或位置
     chmod                                   change mode                         更改文件或目录访问权限
-        -R                                                                      递归的方式逐个变更               
+        -R                                                                      递归的方式逐个变更
     chgrp                                   change group                        更改文件或目录群组
     chown                                   change owner                        更改文件拥有者
         -R                                  recursion                           处理指定目录以及其子目录下的所有文件
@@ -160,6 +161,7 @@
         -a                                  --all                               显示全部信息
         -n                                  --nodename                          显示主机名称
         -m                                  --machine                           显示处理器架构
+        -r                                  --release                           显示操作系统的发行编号
         -s                                  --sysname                           显示操作系统名称
     shutdown                                                                    关闭系统
         -h                                                                      关闭系统后停机

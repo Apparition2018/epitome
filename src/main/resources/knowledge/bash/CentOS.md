@@ -97,8 +97,8 @@
 >   chown -R ftpuser.ftpuser /ftpfile                   修改 ftp 文件夹权限
 >   passwd ftpuser                                      重置 ftpuser 用户密码为 123456
 >3. 配置
->   3.1 vim /etc/vsftpd/chroot_list                    添加 ftpuser 
->   3.2 vim /etc/selinux/config                        修改 SELINUX=disabled
+>   3.1 vim /etc/vsftpd/chroot_list                     添加 ftpuser
+>   3.2 vim /etc/selinux/config                         修改 SELINUX=disabled
 >       setenforce 0                                    临时生效
 >   3.3 550 拒绝访问
 >       setsebool -P ftp_home_dir 1
@@ -115,7 +115,7 @@
 >   4.2 service iptables restart
 >5. 启动和访问
 >   5.1 service vsftpd restart
->   5.2 浏览器访问 ftp://192.168.58.129                           
+>   5.2 浏览器访问 ftp://192.168.58.129
 >6. 登录服务器：ftp 192.168.58.129
 >7. FTP 软件：FileZilla
 >```
@@ -139,7 +139,7 @@
 >6. 虚拟域名配置及测试验证
 >   6.1 vim /usr/local/nginx/conf/nginx.conf
 >       # 加载 vhost/ 目录下的配置文件（方便维护），在 Server 节点前
->       include vhost/*.conf;                             
+>       include vhost/*.conf;
 >   6.2 mkdir /usr/local/nginx/conf/vhost
 >   6.3 创建域名转发配置文件
 >       www.ljh.com.conf
