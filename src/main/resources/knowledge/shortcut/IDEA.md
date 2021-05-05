@@ -107,6 +107,8 @@
 >>#### Find
 >>```
 >>Alt + F7                      Find Usages                         查找在哪里被调用            ***
+>>Ctrl + F                      Find...
+>>  Alt + W                     Words
 >>Ctrl + Shift + Alt + F7       Find Usages Settings...             查找在哪里被调用(设置)
 >>Ctrl + F7                     Find Usages in File                 跳转到本文件被调用的位置
 >>Ctrl + Alt + F7               Show Usages                         显示在哪里被调用            ***
