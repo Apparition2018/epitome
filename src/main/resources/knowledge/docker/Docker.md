@@ -213,9 +213,16 @@ docker run -d --name minio -p 9000:9000 --restart=always
 [-v D:\Docker\MinIO\config:/root/.minio]
 -e MINIO_ACCESS_KEY=minio
 -e MINIO_SECRET_KEY=minio123
-minio/minio server /data
+minio server /data
 ```
-8. Ubuntu
+8. [Jenkins](https://www.cnblogs.com/fuzongle/p/12834080.html)
+```bash
+docker run -d --name jenkins -p 8080:8080 -p 50000:50000 
+[-v D:\Docker\Jenkins:/var/jenkins_home]
+[-v /etc/localtime:/ect/localtime]
+jenkins
+```
+9. Ubuntu
 ```bash
 docker run -itd --name ubuntu --privileged ubuntu
 ```

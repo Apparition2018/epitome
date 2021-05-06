@@ -21,6 +21,8 @@
 ## 文件管理
     cat                                     concatenate                         显示文件内容
         /etc/issue                                                              登录欢迎语
+        /etc/localtime                                                          时间
+        /etc/timezone                                                           时区
     nl                                                                          显示文件内容，添加行号
     more                                                                        显示文件内容，以一页一页的形式
     head                                                                        显示文件头部内容
