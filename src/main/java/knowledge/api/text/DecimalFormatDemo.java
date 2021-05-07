@@ -10,7 +10,7 @@ import static l.demo.Demo.p;
 /**
  * DecimalFormat
  * DecimalFormat 是 NumberFormat 的一个具体子类，用于格式化十进制数字。
- * https://www.runoob.com/manual/jdk1.6/java/text/DecimalFormat.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/text/DecimalFormat.html
  * <p>
  * 特殊模式字符：
  * 符号	        位置	        本地化？	    含义

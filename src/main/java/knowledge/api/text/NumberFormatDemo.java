@@ -11,7 +11,7 @@ import static l.demo.Demo.p;
 
 /**
  * NumberFormat
- * https://www.runoob.com/manual/jdk1.6/java/text/NumberFormat.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/text/NumberFormat.html
  * <p>
  * boolean	        isGroupingUsed()                        如果此格式中使用了分组，则返回 true
  * void	            setGroupingUsed(boolean newValue)       设置此格式中是否使用分组

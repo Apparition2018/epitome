@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
  * -                        USC-2: 1个字符2字节       UTF-16: 变长                     GB18030: 兼容 GBK
  * -                        USC-4: 1个字符4字节       UTF-32: 1个字符4字节            iso-88591-1: 兼容ASCII
  * <p>
- * https://www.runoob.com/manual/jdk1.6/java/lang/String.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/String.html
  * 字符编码笔记：ASCII，Unicode 和 UTF-8:http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html
  *
  * @author ljh

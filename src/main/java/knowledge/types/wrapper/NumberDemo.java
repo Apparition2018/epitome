@@ -7,7 +7,7 @@ import static l.demo.Demo.p;
 /**
  * Number
  * Number 是 AtomicInteger, AtomicLong, BigDecimal, BigInteger, Byte, Double, Float, Integer, Long 和 Short 类的超类。
- * https://www.runoob.com/manual/jdk1.6/java/lang/Number.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Number.html
  *
  * @author ljh
  * created on 2020/9/7 1:28

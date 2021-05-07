@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Queue
- * https://www.runoob.com/manual/jdk1.6/java/util/Queue.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Queue.html
  * Java 常见队列：https://pic4.zhimg.com/v2-c1f2992fb01c501a5dada75d0b27b0b3_r.jpg
  *
  * @author ljh
@@ -24,7 +24,7 @@ public class QueueDemo extends Demo {
      * Queue 继承 Collection
      * Queue 实现了一个先进先出 (FIFO) 的数据结构
      * Queue 用来存放 等待处理元素 的集合，这种场景一般用于缓冲、并发访问。
-     * https://www.runoob.com/manual/jdk1.6/java/util/Queue.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Queue.html
      * <p>
      * 操作       抛出异常	    返回特殊值（推荐使用）
      * 插入	    add(e)	        offer(e)
@@ -40,7 +40,7 @@ public class QueueDemo extends Demo {
     /**
      * BlockingQueue    阻塞队列
      * BlockingQueue 继承 Queue
-     * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/BlockingQueue.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/BlockingQueue.html
      * https://www.imooc.com/article/257739
      * <p>
      * 操作       抛出异常	    返回特殊值       阻塞          超时退出
@@ -85,7 +85,7 @@ public class QueueDemo extends Demo {
      * 优先级队列的元素按照其自然顺序进行排序，或者根据构造队列时提供的 Comparator 进行排序。
      * 优先级队列不允许使用 null 元素。
      * 依靠自然顺序的优先级队列还不允许插入不可比较的对象（这样做可能导致 ClassCastException）。
-     * https://www.runoob.com/manual/jdk1.6/java/util/PriorityQueue.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/PriorityQueue.html
      */
     @Test
     public void testPriorityQueue() {

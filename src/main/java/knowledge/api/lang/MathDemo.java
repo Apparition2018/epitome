@@ -6,7 +6,7 @@ import static l.demo.Demo.p;
 
 /**
  * Math
- * https://www.runoob.com/manual/jdk1.6/java/lang/Math.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Math.html
  * <p>
  * static XXX	    abs(XXX a)              返回 XXX 值的绝对值
  * <p>

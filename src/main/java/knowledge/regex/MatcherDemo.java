@@ -14,7 +14,7 @@ import static l.demo.Demo.p;
  * 1.matches 方法尝试将整个输入序列与该模式匹配。
  * 2.lookingAt 尝试将输入序列从头开始与该模式匹配。
  * 3.find 方法扫描输入序列以查找与该模式匹配的下一个子序列。
- * https://www.runoob.com/manual/jdk1.6/java/util/regex/Matcher.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/regex/Matcher.html
  * https://blog.csdn.net/luyaran/article/details/80175651
  *
  * @author ljh

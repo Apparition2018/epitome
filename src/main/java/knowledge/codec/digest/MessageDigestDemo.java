@@ -21,7 +21,7 @@ import java.util.Random;
  * MD2, MD4, MD5, SHA, SHA-1, SHA-256, SHA-384, SHA-512,
  * HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384, HmacSHA512, HAVAL
  * Base64 和消息摘要：https://www.cnblogs.com/oumyye/p/4593592.html
- * https://www.runoob.com/manual/jdk1.6/java/security/MessageDigest.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/security/MessageDigest.html
  * https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#MessageDigest
  *
  * @author Arsenal

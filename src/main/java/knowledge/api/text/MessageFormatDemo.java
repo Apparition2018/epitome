@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * MessageFormat
  * 提供了以与语言无关方式生成连接消息的方式。使用此方法构造向终端用户显示的消息。
- * https://www.runoob.com/manual/jdk1.6/java/text/MessageFormat.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/text/MessageFormat.html
  * <p>
  * 值映射到 Format 实例：
  * 格式类型	        格式样式	                        创建的子格式

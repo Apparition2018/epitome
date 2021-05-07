@@ -22,7 +22,7 @@ import java.io.IOException;
  * -        ArithmeticException, ArrayStoreException, IllegalArgumentException, IndexOutOfBoundException, NumberFormatException, NegativeArraySizeException
  * <p>
  * 选择 Checked Exception 还是 Unchecked Exception：https://blog.csdn.net/kingzone_2008/article/details/8535287
- * https://www.runoob.com/manual/jdk1.6/java/lang/Throwable.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Throwable.html
  *
  * @author ljh
  * created on 2019/8/8 19:39
@@ -41,20 +41,23 @@ public class ThrowableDemo extends Demo {
             // 子类异常 catch 放在上面
             p("io exception");
 
-            // String	            getMessage()        返回此 throwable 的详细消息字符串
+            // String	            getMessage()            返回此 throwable 的详细消息字符串
             p(e.getMessage());
 
-            // Throwable	        getCause()          返回此 throwable 的 cause；如果 cause 不存在或未知，则返回 null
+            // String	            getLocalizedMessage()   返回此 throwable 的详本地化描述
+            p(e.getLocalizedMessage());
+
+            // Throwable	        getCause()              返回此 throwable 的 cause；如果 cause 不存在或未知，则返回 null
             e.getCause().getMessage();
 
             // void	                printStackTrace([PrintStream s / PrintWriter s])
             // 将此 throwable 及其追踪输出到指定的 错误流 / 输出流 / PrintWriter
             e.printStackTrace();
         } catch (Exception e) {
-            // StackTraceElement[]	getStackTrace()     供编程访问由 printStackTrace() 输出的堆栈跟踪信息
+            // StackTraceElement[]	getStackTrace()         供编程访问由 printStackTrace() 输出的堆栈跟踪信息
             e.getStackTrace();
 
-            // Throwable	        fillInStackTrace()  在异常堆栈跟踪中填充
+            // Throwable	        fillInStackTrace()      在异常堆栈跟踪中填充
             e.fillInStackTrace();
         } finally {
             p("finally");

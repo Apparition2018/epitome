@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * FileFilter
  * 用于抽象路径名的过滤器
- * https://www.runoob.com/manual/jdk1.6/java/io/FileFilter.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/io/FileFilter.html
  *
  * @author ljh
  * created on 2020/9/14 10:40

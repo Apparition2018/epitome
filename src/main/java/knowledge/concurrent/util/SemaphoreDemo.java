@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * 如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。
  * 每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。
  * 但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。
- * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/Semaphore.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/Semaphore.html
  *
  * @author ljh
  * created on 2020/11/17 19:09

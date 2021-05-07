@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Lock     显式锁
  * Lock 实现提供了比使用 synchronized 方法和语句可获得的更广泛的锁定操作。此实现允许更灵活的结构，可以具有差别很大的属性，可以支持多个相关的 Condition 对象。
- * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/locks/Lock.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/locks/Lock.html
  * <p>
  * 相对于 synchronized（内置锁） 的优点：
  * 1.Lock 可以不让等待的线程一直无限期地等待下去 (tryLock(long time, TimeUnit unit) 只等待一定时间，lockInterruptibly() 响应中断)

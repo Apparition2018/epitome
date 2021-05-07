@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 /**
  * ThreadPoolExecutor
- * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/ThreadPoolExecutor.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/ThreadPoolExecutor.html
  * <p>
  * 线程池对待线程的策略:
  * 1.如果池中任务数 < corePoolSize -> 放入立即执行
@@ -68,7 +68,7 @@ public class ThreadPoolExecutorDemo extends Demo {
     /**
      * ScheduledThreadPoolExecutor
      * 创建一个定长线程池，支持定时及周期性任务执行
-     * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/ScheduledThreadPoolExecutor.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/ScheduledThreadPoolExecutor.html
      */
     private static class ScheduledThreadPoolExecutorDemo extends Demo {
 

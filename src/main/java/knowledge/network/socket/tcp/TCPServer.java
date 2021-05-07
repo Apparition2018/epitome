@@ -58,9 +58,9 @@ public class TCPServer implements Runnable {
 
     /**
      * Socket
-     * https://www.runoob.com/manual/jdk1.6/java/net/Socket.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/net/Socket.html
      * ServerSocket
-     * https://www.runoob.com/manual/jdk1.6/java/net/ServerSocket.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/net/ServerSocket.html
      */
     public void run() {
         while (true) {

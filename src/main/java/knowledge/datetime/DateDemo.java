@@ -13,7 +13,7 @@ import static l.demo.Demo.p;
  * boolean	    after(Date when)                测试此日期是否在指定日期之后
  * int	        compareTo(Date anotherDate)     比较两个日期的顺序
  * boolean	    equals(Object obj)              比较两个日期的相等性
- * https://www.runoob.com/manual/jdk1.6/java/util/Date.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Date.html
  *
  * @author ljh
  * created on 2019/8/8 19:39

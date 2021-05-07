@@ -21,7 +21,7 @@ public class ByteStream extends Demo {
     /**
      * InputStream
      * 字节输入流的所有类的超类
-     * https://www.runoob.com/manual/jdk1.6/java/io/InputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/InputStream.html
      * void	            close()                 关闭此输入流并释放与该流关联的所有系统资源
      * void	            mark(int readlimit)     在此输入流中标记当前的位置
      * void	            reset()                 将此流重新定位到最后一次对此输入流调用 mark 方法时的位置
@@ -31,7 +31,7 @@ public class ByteStream extends Demo {
      * <p>
      * FileInputStream          文件输入流
      * 从文件系统中的某个文件中获得输入字节。哪些文件可用取决于主机环境。
-     * https://www.runoob.com/manual/jdk1.6/java/io/FileInputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/FileInputStream.html
      * FileChannel	    getChannel()            返回与此文件输入流有关的唯一 FileChannel 对象
      * FileDescriptor	getFD()                 返回表示到文件系统中实际文件的连接的 FileDescriptor 对象，该文件系统正被此 FileInputStream 使用<p>
      * <p>
@@ -63,15 +63,15 @@ public class ByteStream extends Demo {
     /**
      * OutputStream
      * 输出字节流的所有类的超类
-     * https://www.runoob.com/manual/jdk1.6/java/io/OutputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/OutputStream.html
      * void	    close()     关闭此输出流并释放与此流有关的所有系统资源
      * <p>
      * FileOutputStream         文件输出流
      * 用于将数据写入 File 或 FileDescriptor 的输出流
-     * https://www.runoob.com/manual/jdk1.6/java/io/FileOutputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/FileOutputStream.html
      * <p>
      * BufferedOutputStream     缓冲输出流
-     * https://www.runoob.com/manual/jdk1.6/java/io/BufferedOutputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/BufferedOutputStream.html
      */
     @Test
     public void testOutputStream() {
@@ -93,13 +93,13 @@ public class ByteStream extends Demo {
     /**
      * ByteArrayInputStream     字节数组输入流
      * 包含一个内部缓冲区，该缓冲区包含从流中读取的字节
-     * https://www.runoob.com/manual/jdk1.6/java/io/ByteArrayInputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/ByteArrayInputStream.html
      * https://www.cnblogs.com/zhangj-ymm/p/9842657.html
      * <p>
      * ByteArrayOutputStream    字节数组输出流
      * 实现了一个输出流，其中的数据被写入一个 byte 数组。缓冲区会随着数据的不断写入而自动增长。
      * 可使用 toByteArray() 和 toString() 获取数据。
-     * https://www.runoob.com/manual/jdk1.6/java/io/ByteArrayOutputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/ByteArrayOutputStream.html
      * <p>
      * 字节数组流不需要关闭
      */
@@ -126,11 +126,11 @@ public class ByteStream extends Demo {
     /**
      * DataInputStream          数据输入流
      * 以与机器无关方式从底层输入流中读取基本 Java 数据类型
-     * https://www.runoob.com/manual/jdk1.6/java/io/DataInputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/DataInputStream.html
      * <p>
      * DataOutputStream
      * 以适当方式将基本 Java 数据类型写入输出流中
-     * https://www.runoob.com/manual/jdk1.6/java/io/DataOutputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/DataOutputStream.html
      */
     @Test
     public void testDataXXXStream() {
@@ -151,11 +151,11 @@ public class ByteStream extends Demo {
 
     /**
      * ObjectInputStream        对象输入流
-     * https://www.runoob.com/manual/jdk1.6/java/io/ObjectInputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/ObjectInputStream.html
      * 对象输入流读取的内容必须是通过 ObjectOutputStream 序列化的对象
      * <p>
      * ObjectOutputStream       对象输出流
-     * https://www.runoob.com/manual/jdk1.6/java/io/ObjectOutputStream.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/ObjectOutputStream.html
      */
     @Test
     public void testObjectXXXStream() {

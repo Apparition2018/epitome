@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Runnable
- * https://www.runoob.com/manual/jdk1.6/java/lang/Runnable.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Runnable.html
  * void	    run()       使用实现接口 Runnable 的对象创建一个线程时，启动该线程将导致在独立执行的线程中调用对象的 run 方法。
  * <p>
  * extends Thread 创建线程的不足：

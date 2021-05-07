@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Thread
- * https://www.runoob.com/manual/jdk1.6/java/lang/Thread.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Thread.html
  * https://blog.csdn.net/u012426327/article/details/77160416
  * <p>
  * 进程：具有一定独立功能的程序关于某个数据集合上的一次运行活动，是操作系统分配资源的最小单元。

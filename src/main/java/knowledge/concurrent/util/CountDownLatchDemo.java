@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 /**
  * CountDownLatch
  * CountDownLatch 一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待
- * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/CountDownLatch.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/CountDownLatch.html
  * <p>
  * void	        await()                                 使当前线程在锁存器倒计数至零之前一直等待，除非线程被中断
  * boolean	    await(long timeout, TimeUnit unit)      使当前线程在锁存器倒计数至零之前一直等待，除非线程被中断或超出了指定的等待时间

@@ -8,7 +8,7 @@ import java.util.Hashtable;
 /**
  * Hashtable
  * Hashtable 继承 Dictionary，实现 Map
- * https://www.runoob.com/manual/jdk1.6/java/util/Hashtable.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Hashtable.html
  * <p>
  * Map              HashMap                         Hashtable
  * 线程       Collections.synchronizedList(map);      同步

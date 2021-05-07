@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * URLConnection
- * https://www.runoob.com/manual/jdk1.6/java/net/URLConnection.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/net/URLConnection.html
  * HTTP头部字段总结：https://www.cnblogs.com/soldierback/p/11714052.html
  *
  * @author ljh

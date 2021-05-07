@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * List
  * List 继承 Collection
- * https://www.runoob.com/manual/jdk1.6/java/util/List.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/List.html
  * <p>
  * List             Vector              ArrayList                       LinkedList
  * 线程同步             是                   否                               否
@@ -103,7 +103,7 @@ public class ListDemo extends Demo {
      * <p>
      * 多线程环境下可以考虑用 Collections.synchronizedList(List l) 返回一个线程安全的 ArrayList 类，
      * 也可以使用 concurrent 并发包下的 CopyOnWriteArrayList。
-     * https://www.runoob.com/manual/jdk1.6/java/util/ArrayList.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/ArrayList.html
      */
     @Test
     public void testArrayList() {

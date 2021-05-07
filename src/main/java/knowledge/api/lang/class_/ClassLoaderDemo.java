@@ -15,7 +15,7 @@ import java.util.Objects;
  * <p>
  * ClassLoader 详解：https://blog.csdn.net/briblue/article/details/54973413
  * 可以自定义一个 Java.lang.String 吗？:https://blog.csdn.net/xiongyouqiang/article/details/79151903
- * https://www.runoob.com/manual/jdk1.6/java/lang/ClassLoader.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/ClassLoader.html
  *
  * @author ljh
  * created on 2019/8/8 19:39

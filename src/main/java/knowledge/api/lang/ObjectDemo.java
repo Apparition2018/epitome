@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Object
- * https://www.runoob.com/manual/jdk1.6/java/lang/Object.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Object.html
  *
  * @author ljh
  * created on 2019/8/8 19:39

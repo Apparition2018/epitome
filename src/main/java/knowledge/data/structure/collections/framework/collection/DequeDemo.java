@@ -12,7 +12,7 @@ import static l.demo.Demo.p;
 /**
  * Deque 双端队列  (double ended queue)
  * Deque 继承 Queue
- * https://www.runoob.com/manual/jdk1.6/java/util/Deque.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Deque.html
  * <p>
  * 操作位              第一个元素（头部）	                    最后一个元素（尾部）
  * 操作               抛出异常	    特殊值	                抛出异常	        特殊值
@@ -69,7 +69,7 @@ public class DequeDemo {
      * Stack
      * Stack 继承 Vector
      * Stack 类表示后进先出（LIFO）的对象堆栈。它通过五个操作对类 Vector 进行了扩展 ，允许将向量视为堆栈。
-     * https://www.runoob.com/manual/jdk1.6/java/util/Stack.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Stack.html
      * <p>
      * Deque 接口及其实现提供了 LIFO 堆栈操作的更完整和更一致的集合，应该优先使用 Deque，而非 stack。
      * <p>
@@ -105,7 +105,7 @@ public class DequeDemo {
 
     /**
      * BlockingDeque    阻塞双端队列
-     * https://www.runoob.com/manual/jdk1.6/java/util/concurrent/BlockingDeque.html
+     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/BlockingDeque.html
      * <p>
      * 操作位                          第一个元素（头部）
      * 操作       抛出异常            特殊值             阻塞          超时退出

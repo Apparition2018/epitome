@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Collection
  * Collection 继承 Iterable
- * https://www.runoob.com/manual/jdk1.6/java/util/Collection.html
+ * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Collection.html
  * <p>
  * 接口        Set        List
  * 有序         否          是
