@@ -163,5 +163,36 @@
     </script>
 </section>
 
+<section class="code-wrap h300">
+    <div class="css-live-wrap">
+        <div class="caption"></div>
+        <div class="centered" id="model">
+            <input type=” radio ” v-model=” picked” value=” html ” id=” html” >
+            <label for=” html” >HTML</label>
+            <br>
+            <input type=” radio” v-model=” picked” value=” j s ” id=” j s ” >
+            <label for=” j s ” >JavaScript</ labe l >
+            <br>
+            <input type=” radio model picked va ue ＝ css d＝ cs s ” >
+            <label for=” css” >CSS</label>
+            <br>
+            <p ＞选择的项是 （（ picked ))</p>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        new Vue({
+            el: '#if',
+            data: {
+                type: 'name'
+            },
+            methods: {
+                handleToggleClick () {
+                    this.type = this.type === 'name' ? 'mail' : 'name'
+                }
+            }
+        })
+    </script>
+</section>
+
 </body>
 </html>

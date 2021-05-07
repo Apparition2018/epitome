@@ -23,6 +23,8 @@
         /etc/issue                                                              登录欢迎语
         /etc/localtime                                                          时间
         /etc/timezone                                                           时区
+        /etc/hostname                                                           主机名
+        /etc/hosts                                                              IP 和主机名映射
     nl                                                                          显示文件内容，添加行号
     more                                                                        显示文件内容，以一页一页的形式
     head                                                                        显示文件头部内容

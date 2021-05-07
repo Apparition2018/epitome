@@ -30,7 +30,7 @@ npm start
 1. Props（属性）- NameCard.js
     - 组件像一个函数一样，接受特定的不可变的输入(props)，产出特定的输出(React elements)，纯函数
     - V = f(props) 
-2. State（状态) - LikesButton.js
+2. State（状态）- LikesButton.js
     - 组件内部的数据，可以动态改变
     - this.setState() 是更新 state 的唯一途径
 3. 生命周期 - DigitalClock.js  
