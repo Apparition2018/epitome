@@ -75,13 +75,15 @@
 >mv                                             移动或重命名文件，目录或符号链接
 >```
 >## [分支与合并](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%AE%80%E4%BB%8B)
+>- [Git分支管理策略](https://www.ruanyifeng.com/blog/2012/07/git.html)
+>- [Git Flow 的正确使用姿势](https://www.jianshu.com/p/41910dc6ef29)
 >```
 >branch                                         列出，创建或删除 branch
 >   <branchname>                                创建 branch
 >   -d | --delete <branchname>…                 删除 branch
 >checkout                                       切换 branch 或 恢复 working tree 文件
 >   <branhc|tag>                                切换 branch 或 tag
->   -b <new_branch>                             创建并切换 branch
+>   -b <new_branch> [<start_point>]             创建并切换 branch
 >merge                                          将两个或两个以上的开发历史合并在一起
 >   --no-ff                                     禁用 fast forward (禁用后能看出来曾经做过合并)，会生成一个新的 commit (所以可加上-m)
 >stash                                          将更改 stash 在 dirty working directory
