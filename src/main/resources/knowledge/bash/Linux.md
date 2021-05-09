@@ -45,14 +45,15 @@ apt-get dist-upgrade                            更新系统版本
 
 apt-get install -y tzdata                       Time Zone Database
     tzselect                                    修改时区
-apt-get isntall build-essential                 c/c++
+apt-get isntall -y build-essential              c/c++
 apt-get install -y wget
-apt-get isntall vim
-apt-get isntall iptables
-apt-get isntall net-tools
+apt-get isntall -y vim
+apt-get isntall -y iptables
+apt-get isntall -y net-tools
 apt-get install -y curl
 apt-get install -y systemctl
 apt-get install -y daemon
+apt-get install -y openjdk-8-jdk
 
 apt-get remove pkg                              卸载
 apt-get autoremove                              自动卸载
