@@ -41,7 +41,7 @@ elasticsearch-1     ElasticSearch入门
 
 elasticsearch-2     ElasticSearch 构建博客检索系统
                     SpringBoot + spring-data-jpa + mysql + Hikari + vue + axios + marked
-                    跨域 + StopWatch + devtools + configuration-processor
+                    跨域 + devtools + configuration-processor
 
 ssh-2               基于SSH实现员工管理系统之案例实现篇
                     SSH + mysql + c3p0 + 分页查询+ jsp + log4j2

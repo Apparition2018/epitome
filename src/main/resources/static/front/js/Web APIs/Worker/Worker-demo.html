@@ -14,7 +14,7 @@
     <!-- http://www.w3school.com.cn/html/html5_webworkers.asp -->
     <!-- https://www.cnblogs.com/flash3d/archive/2014/05/08/3715600.html -->
     <!-- https://www.xuanfengge.com/js-realizes-precise-countdown.html -->
-    <section class="code-wrap h100vh">
+    <section class="code-wrap h900">
         <div class="css-live-wrap w33p">
             <div class="caption">秒表</div>
             <div class="caption">利用 Web Worker 实现</div>
@@ -66,13 +66,13 @@
             }
         </style>
         <script class="code w67p" contenteditable="true">
-            var worker;
-            var timeFlag = false;
-            var data = {};
-            var millisecond = 0;
-            var min, second;
-            var timeText;
-            var output = document.querySelector("#eg1 output");
+            let worker;
+            let timeFlag = false;
+            let data = {};
+            let millisecond = 0;
+            let min, second;
+            let timeText;
+            let output = document.querySelector("#eg1 output");
 
             function time() {
                 if (!timeFlag) {
@@ -104,9 +104,9 @@
 
             function print() {
                 if (millisecond) {
-                    var textNode = document.createTextNode(timeText);
-                    var docfrag = document.createDocumentFragment();
-                    var output = document.createElement('output');
+                    let textNode = document.createTextNode(timeText);
+                    let docfrag = document.createDocumentFragment();
+                    let output = document.createElement('output');
                     output.appendChild(textNode);
                     docfrag.appendChild(output);
                     document.querySelector('#timePrint p').appendChild(docfrag);
@@ -138,7 +138,7 @@
         </div>
         <script class="code w67p" contenteditable="true">
             if (typeof (Worker) !== "undefined") {
-                var worker2 = new Worker("demo_workers2.js");
+                let worker2 = new Worker("demo_workers2.js");
                 worker2.onmessage = function (e) {
                     document.querySelectorAll("#eg2 output")[1].innerHTML = e.data;
                 };

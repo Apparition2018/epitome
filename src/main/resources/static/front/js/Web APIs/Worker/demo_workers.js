@@ -6,16 +6,16 @@ self.onmessage = function (e) {
     setTimeout(countTime, 10);
 };
 
-var startTime;
-var millisecond;
-var startMillisecond;
-var error = 0;
+let startTime;
+let millisecond;
+let startMillisecond;
+let error = 0;
 
 function countTime() {
     millisecond += 1;
     postMessage(millisecond);
-    var offset = new Date().getTime() - (startTime + (millisecond - startMillisecond) * 10);
-    var nextTime = 10 - (offset + error);
+    let offset = new Date().getTime() - (startTime + (millisecond - startMillisecond) * 10);
+    let nextTime = 10 - (offset + error);
     if (nextTime < 0) {
         error = 0 - nextTime;
         console.log(error);
