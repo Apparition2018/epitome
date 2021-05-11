@@ -18,6 +18,8 @@ import lombok.Setter;
  * 5.接口隔离原则 (Interface Segregation Principle)
  * 6.迪米特法则 (Law of Demeter)
  * <p>
+ * 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式（阿里编程规约）
+ * <p>
  * 哪些设计模式比较常用？ - 知乎:https://www.zhihu.com/question/39972591
  * -    论面向组合子程序设计方法 之二 失乐园：http://www.blogjava.net/ajoo/archive/2015/04/03/27839.html
  * Java 深入理解：https://www.cnblogs.com/foryang/p/5849402.html

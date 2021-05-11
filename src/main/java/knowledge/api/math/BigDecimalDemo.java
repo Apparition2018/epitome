@@ -48,7 +48,8 @@ public class BigDecimalDemo {
     public void testBigDecimal() {
         // BigDecimal(BigInteger val)               BigInteger → BigDecimal
         // BigDecimal(double/int/long/String val)   XXX → BigDecimal
-        p(new BigDecimal(12.34));   // 12.339999999999999857891452847979962825775146484375；unpredictable，不建议使用
+        p(new BigDecimal(12.34));   // 12.339999999999999857891452847979962825775146484375；unpredictable，
+                                    // 禁止使用构造方法 BigDecimal(double)的方式把 double 值转化为 BigDecimal 对象（阿里编程规约）
         p(new BigDecimal("12.34")); // 12.34
         p(new BigDecimal("12.340"));// 12.340
         // BigDecimal	stripTrailingZeros()    返回数值上等于此小数，但从该表示形式移除所有尾部零的 BigDecimal
@@ -70,6 +71,17 @@ public class BigDecimalDemo {
         // BigDecimal	ulp()                   返回此 BigDecimal 的 ulp（最后一位的单位）的大小
         p(new BigDecimal("12.34").ulp());                   // 0.01
         p(new BigDecimal("12340").ulp());                   // 1
+    }
+
+    /**
+     * BigDecimal 的等值比较应使用 compareTo()方法，而不是 equals()方法（阿里编程规约）
+     */
+    @Test
+    public void testCompareTo() {
+        // equals() 会比较精度
+        p(new BigDecimal("1.0").equals(new BigDecimal("1.00")));
+        // compareTo() 会忽略精度
+        p(new BigDecimal("1.0").compareTo(new BigDecimal("1.00")));
     }
 
 }

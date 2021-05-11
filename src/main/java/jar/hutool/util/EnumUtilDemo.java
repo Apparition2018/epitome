@@ -1,7 +1,7 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.EnumUtil;
-import l.demo.Company;
+import l.demo.CompanyEnum;
 import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
@@ -20,34 +20,34 @@ public class EnumUtilDemo {
     public void testEnumUtil() {
 
         // getEnumMap
-        p(EnumUtil.getEnumMap(Company.class));
+        p(EnumUtil.getEnumMap(CompanyEnum.class));
         // {SF=Company{company='顺丰速运', code=1001}, YTO=Company{company='圆通速递', code=1002}, STO=Company{company='申通物流', code=1003}, EMS=Company{company='中国邮政', code=1004}, DHL=Company{company='中外运敦豪', code=1005}}
 
         // getNames
-        p(EnumUtil.getNames(Company.class));                // [SF, YTO, STO, EMS, DHL]
+        p(EnumUtil.getNames(CompanyEnum.class));                // [SF, YTO, STO, EMS, DHL]
 
         //getFieldNames
-        p(EnumUtil.getFieldNames(Company.class));           // [company, code, name]
+        p(EnumUtil.getFieldNames(CompanyEnum.class));           // [company, code, name]
 
         // getFieldValues
-        p(EnumUtil.getFieldValues(Company.class, "code"));  // [1001, 1002, 1003, 1004, 1005]
+        p(EnumUtil.getFieldValues(CompanyEnum.class, "code"));  // [1001, 1002, 1003, 1004, 1005]
 
         // getEnumAt
-        p(EnumUtil.getEnumAt(Company.class, 0));            // Company{company='顺丰速运', code=1001}
+        p(EnumUtil.getEnumAt(CompanyEnum.class, 0));            // Company{company='顺丰速运', code=1001}
 
         // fromString, fromStringQuietly
-        p(EnumUtil.fromString(Company.class, "SF"));        // Company{company='顺丰速运', code=1001}
+        p(EnumUtil.fromString(CompanyEnum.class, "SF"));        // Company{company='顺丰速运', code=1001}
 
         // likeValueOf
-        p(EnumUtil.likeValueOf(Company.class, "SF"));       // Company{company='顺丰速运', code=1001} 
+        p(EnumUtil.likeValueOf(CompanyEnum.class, "SF"));       // Company{company='顺丰速运', code=1001} 
 
         // isEnum
-        p(EnumUtil.isEnum(Company.SF));                     // true
+        p(EnumUtil.isEnum(CompanyEnum.SF));                     // true
 
         // contains, notContains
-        p(EnumUtil.contains(Company.class, "DHL"));         // true
+        p(EnumUtil.contains(CompanyEnum.class, "DHL"));         // true
 
         // equals, equalsIgnoreCase
-        p(EnumUtil.equals(Company.DHL, "DHL"));             // true
+        p(EnumUtil.equals(CompanyEnum.DHL, "DHL"));             // true
     }
 }

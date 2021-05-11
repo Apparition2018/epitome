@@ -2,7 +2,7 @@ package jar.hutool;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.TypeReference;
-import l.demo.Company;
+import l.demo.CompanyEnum;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +30,7 @@ public class ConvertDemo extends Demo {
         p(Convert.toList(arr));
         p(Convert.toMap(Integer.class, Object.class, map));
         p(Convert.toDate("2020-08-08"));
-        p(Convert.toEnum(Company.class, "SF"));
+        p(Convert.toEnum(CompanyEnum.class, "SF"));
 
         // 转换为指定类型
         p(Convert.convert(String.class, arr));

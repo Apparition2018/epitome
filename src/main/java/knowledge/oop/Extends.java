@@ -6,6 +6,8 @@ import java.io.Serializable;
  * 继承
  * 继承提供高代码的复用性
  * 子类拥有父类非 private 属性，方法
+ * <p>
+ * 避免在子父类的成员变量之间、或者不同代码块的局部变量之间采用完全相同的命名（阿里编程规约）
  *
  * @author ljh
  * created on 2019/8/8 19:39

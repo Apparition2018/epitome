@@ -59,17 +59,17 @@ public class Sort extends Demo {
             long t1 = System.nanoTime();
             int temp;
             for (int i = 0, len = arr.length; i < len - 1; i++) {
-                // flag 表示本轮是否没有进行交换，没有进行交换表示排序已完成
-                boolean flag = true;
+                // hasChange 表示本轮是否有进行交换，没有进行交换表示排序已完成
+                boolean hasChange = false;
                 for (int j = 0; j < len - 1 - i; j++) {
                     if (arr[j] > arr[j + 1]) {
                         temp = arr[j];
                         arr[j] = arr[j + 1];
                         arr[j + 1] = temp;
-                        flag = false;
+                        hasChange = true;
                     }
                 }
-                if (flag) {
+                if (!hasChange) {
                     break;
                 }
             }

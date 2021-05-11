@@ -7,6 +7,8 @@ import static l.demo.Demo.p;
 /**
  * Number
  * Number 是 AtomicInteger, AtomicLong, BigDecimal, BigInteger, Byte, Double, Float, Integer, Long 和 Short 类的超类。
+ * 任何货币金额，均以最小货币单位且整型类型来进行存储（阿里编程规约）
+ * 浮点数之间的等值判断，基本数据类型不能用==来比较，包装数据类型不能用 equals 来判断（阿里编程规约）
  * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Number.html
  *
  * @author ljh

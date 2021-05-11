@@ -11,7 +11,7 @@ package l.demo;
  * @author ljh
  * created on 2020/11/2 14:04
  */
-public enum Company {
+public enum CompanyEnum {
     // 利用构造函数传参
     SF("顺丰速运", 1001),
     YTO("圆通速递", 1002),
@@ -24,7 +24,7 @@ public enum Company {
     private int code;
 
     // 构造函数默认为私有
-    Company(String company, int code) {
+    CompanyEnum(String company, int code) {
         this.company = company;
         this.code = code;
     }
@@ -49,7 +49,7 @@ public enum Company {
      * 根据物流公司名字获取对应的编码
      */
     public static int getCodeByCompany(String company) {
-        for (Company c : Company.values()) {
+        for (CompanyEnum c : CompanyEnum.values()) {
             if (c.getCompany().equals(company.trim())) {
                 return c.code;
             }
@@ -61,7 +61,7 @@ public enum Company {
      * 根据物流公司编码获取对应的名字
      */
     public static String getCompanyByCode(int code) {
-        for (Company c : Company.values()) {
+        for (CompanyEnum c : CompanyEnum.values()) {
             if (c.getCode() == code) {
                 return c.getCompany();
             }
@@ -73,17 +73,17 @@ public enum Company {
      * 遍历
      */
     public void traversal() {
-        Company[] companies = Company.values();
-        for (Company company : companies) {
-            System.out.println("name: " + company.name());
-            System.out.println("ordinal: " + company.ordinal());
-            System.out.println("company: " + company);
+        CompanyEnum[] companies = CompanyEnum.values();
+        for (CompanyEnum companyEnum : companies) {
+            System.out.println("name: " + companyEnum.name());
+            System.out.println("ordinal: " + companyEnum.ordinal());
+            System.out.println("company: " + companyEnum);
         }
     }
 
     @Override
     public String toString() {
-        return "Company{" +
+        return "CompanyEnum{" +
                 "company='" + company + '\'' +
                 ", code=" + code +
                 '}';

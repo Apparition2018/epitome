@@ -238,6 +238,7 @@ Ctrl + Alt + Space              Class Name Completion               类名或接
 Alt + Shift + F                 Add to Favorites                    添加到喜欢
 Ctrl + Alt + Enter              Show Quick Actions Popup                                        ???
 Shift + Enter                   Open In New Editor Window           在新编辑窗口打开
+Ctrl + Shfit + Alt + /          Maintenance
 
 Alt + Select                                                        选择方块区域
 Ctrl + F4 | Shift + Click                                           关闭文件
