@@ -10,7 +10,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * DistributedLocks
+ * 分布式锁
  *
  * @author Arsenal
  * created on 2021/5/11 1:47
@@ -23,8 +23,8 @@ public class DistributedLocks {
 
     static {
         JedisPoolConfig poolConfig = new JedisPoolConfig();
+        poolConfig.setMaxTotal(10);
         poolConfig.setMaxIdle(5);
-        poolConfig.setMaxIdle(2);
         JEDIS_POOL = new JedisPool(poolConfig, "127.0.0.1", 6379);
     }
 
@@ -39,12 +39,6 @@ public class DistributedLocks {
                 e.printStackTrace();
             }
         };
-    }
-
-    private void calImpl(Jedis jedis) {
-        int money = Integer.parseInt(jedis.get(MONEY));
-        jedis.set(MONEY, String.valueOf(money - 100));
-        System.out.println("计算" + Thread.currentThread().getName());
     }
 
     /**
@@ -62,12 +56,19 @@ public class DistributedLocks {
     }
 
     private void cal(LockInitial lockInitial, Jedis jedis) {
-        if (lockInitial.tryLock(jedis, MONEY, "100", 1000L)) {
+        String lockValue = String.valueOf(lockInitial.getRandom().nextInt());
+        if (lockInitial.tryLock(jedis, MONEY_LOCK, lockValue, 1000L)) {
             calImpl(jedis);
-            lockInitial.releaseLock(jedis, MONEY, "100");
+            lockInitial.releaseLock(jedis, MONEY_LOCK, lockValue);
         } else {
             cal(lockInitial, jedis);
         }
+    }
+
+    private void calImpl(Jedis jedis) {
+        int money = Integer.parseInt(jedis.get(MONEY));
+        jedis.set(MONEY, String.valueOf(money - 100));
+        System.out.println("计算" + Thread.currentThread().getName());
     }
 
     @Test
@@ -84,8 +85,7 @@ public class DistributedLocks {
         }
         TimeUnit.SECONDS.sleep(3);
         try (Jedis jedis = JEDIS_POOL.getResource()) {
-            int money = Integer.parseInt(jedis.get(MONEY));
-            System.out.println(money);
+            System.out.println(Integer.parseInt(jedis.get(MONEY)));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -116,6 +116,10 @@ public class DistributedLocks {
                 return jedis.del(key) > 0;
             }
             return false;
+        }
+        
+        public Random getRandom() {
+            return random;
         }
     }
 }
