@@ -13,7 +13,7 @@ public class ObjectDemo {
 
     /**
      * protected  Object	clone()
-     * 创建并返回此对象的一个副本
+     * 创建并返回此对象的一个副本，浅克隆
      * <p>
      * https://www.zhihu.com/question/52490586
      */

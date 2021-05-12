@@ -41,7 +41,7 @@ public class StringDemo extends Demo {
 
     @Test
     public void testString() {
-        // byte[]	    getBytes([Charset charset/String charsetName])
+        // byte[]	        getBytes([Charset charset/String charsetName])
         // 使用指定的 charset/字符集 将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中
         byte[] bytes = HELLO_WORLD.getBytes(StandardCharsets.UTF_8);            // 编码
         // String([byte[] bytes, int offset, int length, Charset charset / String charsetName])
@@ -75,6 +75,9 @@ public class StringDemo extends Demo {
         // String[]	        split(String regex, int limit)
         // 根据匹配给定的正则表达式来拆分此字符串
         p("www.baidu.com".split("\\.", 2)); // [www, baidu.com]
+        // 使用索引访问用 String 的 split 方法得到的数组时，需做最后一个分隔符后有无内容的检查，否则会有抛 IndexOutOfBoundsException 的风险（阿里编程规约）
+        p("a,b,c,,".split(","));            // [a,b,c]
+        p("a,b,c,,".split(",").length);     // 3
 
         // static String    join(CharSequence delimiter, Iterable<? extends CharSequence> / CharSequence... elements)
         // 返回由 elements 和指定分隔符组成的新字符串。

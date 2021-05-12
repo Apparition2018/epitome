@@ -1,7 +1,6 @@
 package jar;
 
 import io.minio.*;
-import io.minio.errors.*;
 import l.demo.Demo;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -11,14 +10,10 @@ import org.junit.jupiter.api.Test;
 import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 /**
  * Minio
- * 
  * Java Client 快速入门指南：http://docs.minio.org.cn/docs/master/java-client-quickstart-guide
  * Java Client API 参考文档：http://docs.minio.org.cn/docs/master/java-client-api-reference
  * MinIO 工具类：https://blog.csdn.net/weixin_42170236/article/details/109356921

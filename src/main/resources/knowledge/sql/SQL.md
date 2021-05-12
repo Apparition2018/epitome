@@ -114,7 +114,7 @@
 >7. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
 >8. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
 ---
-## 各层命名规约【参考】
+## 各层命名规约（阿里编程规约）
 1. Service/DAO层方法命名规约
     1. 获取单个对象的方法用get做前缀。
     2. 获取多个对象的方法用list做前缀，复数形式结尾如：listObjects。

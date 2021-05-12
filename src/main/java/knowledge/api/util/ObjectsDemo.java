@@ -57,6 +57,8 @@ public class ObjectsDemo {
 
         // static boolean	    equals(Object a, Object b)
         // 如果两个参数相等，则返回 true，否则返回 false
+        // Object 的 equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用 equals
+        // 推荐使用 JDK7 引入的工具类 java.util.Objects#equals(Object a, Object b)（阿里编程规约）
         p(Objects.equals(a, b)); // true
         p(Objects.equals(d, e)); // true
         p(Objects.equals(a, c)); // false
@@ -69,17 +71,17 @@ public class ObjectsDemo {
         // static boolean	    deepEquals(Object a, Object b)
         // 如果两个参数完全相等，则返回 true，否则返回 false
         // 底层调用了 Arrays.deepEquals(a, b)
-        p(Objects.equals(name1, name2));       // false
-        p(Objects.deepEquals(name1, name2));   // true
+        p(Objects.equals(name1, name2));        // false
+        p(Objects.deepEquals(name1, name2));    // true
     }
 
     @Test
     public void testHash() {
-        p(new Object().hashCode());         // 896681694
+        p(new Object().hashCode());             // 896681694
         // static int	        hash(Object... values)
-        p(Objects.hash(new Object(), null));// -170335782
+        p(Objects.hash(new Object(), null));    // -170335782
         // static int	        hashCode(Object o)
-        p(Objects.hashCode(new Object()));  // 627185331
+        p(Objects.hashCode(new Object()));      // 627185331
     }
 
 }

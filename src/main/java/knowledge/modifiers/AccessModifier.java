@@ -13,6 +13,16 @@ package knowledge.modifiers;
  * 1.父类中声明为 public 的方法在子类中也必须为 public
  * 2.父类中声明为 protected 的方法在子类中要么声明为 protected，要么声明为 public，不能声明为 private
  * 3.父类中声明为 private 的方法，不能够被继承
+ * <p>
+ * 阿里编程规约 类成员与方法访问控制从严，利于模块解耦、重构：
+ * 1） 如果不允许外部直接通过 new 来创建对象，那么构造方法必须是 private。
+ * 2） 工具类不允许有 public 或 default 构造方法。
+ * 3） 类非 static 成员变量并且与子类共享，必须是 protected。
+ * 4） 类非 static 成员变量并且仅在本类使用，必须是 private。
+ * 5） 类 static 成员变量如果仅在本类使用，必须是 private。 
+ * 6） 若是 static 成员变量，考虑是否为 final。 
+ * 7） 类成员方法只供类内部调用，必须是 private。 
+ * 8） 类成员方法只对继承类公开，那么限制为 protected。
  *
  * @author ljh
  * created on 2020/11/18 19:37
@@ -37,7 +47,6 @@ public class AccessModifier {
      * 子类与基类不在同一包中：那么在子类中，子类实例可以访问其从基类继承而来的 protected 方法，而不能访问基类实例的 protected 方法
      */
     protected int y = 1;
-
 
 
     /**

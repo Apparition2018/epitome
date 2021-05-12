@@ -109,6 +109,9 @@ public class Person implements Comparable<Person>, Serializable {
      * 1.有一些属性是私有的 private，每一个属性提供 getter 和 setter 方法
      * 2.没有继承任何类，没有实现任何接口
      * 3.没有被其它框架侵入
+     * 阿里编程规约：
+     * 定义 DO/DTO/VO 等 POJO 类时，不要设定任何属性默认值
+     * POJO 类必须写 toString 方法。如果继承了另一个 POJO 类，注意在前面加一下 super.toString
      */
     @Data
     @NoArgsConstructor
@@ -119,6 +122,7 @@ public class Person implements Comparable<Person>, Serializable {
          * 版本号决定着对象反序列化是否成功：
          * 1：反序列化的对象的版本号若与当前类版本号一致，反序列化成功。若反序列化对象的结构与当前类接口有变化，那么可以还原的属性就还原，没有的属性就忽略
          * 2：版本号若不一致，则反序列化直接失败
+         * 如果完全不兼容升级，避免反序列化混乱，那么请修改 serialVersionUID 值（阿里编程规约）
          */
         private static final long serialVersionUID = 1L;
         private String no;
