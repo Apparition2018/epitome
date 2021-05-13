@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
  * boolean	            remove(Object o)                    从此 collection 中移除指定元素的单个实例，如果存在的话（可选操作）
  * boolean	            contains(Object o)                  如果此 collection 包含指定的元素，则返回 true
  * boolean	            containsAll(Collection<?> c)        如果此 collection 包含指定 collection 中的所有元素，则返回 true
- * boolean	            isEmpty()                           如果此 collection 不包含元素，则返回 true
+ * boolean	            isEmpty()                           如果此 collection 不包含元素，则返回 true；判断所有集合内部的元素是否为空，使用 isEmpty()方法，而不是 size()==0 的方式（阿里编程规约）
  * int	                size()                              返回此 collection 中的元素数
  * Iterator<E>	        iterator()                          返回按适当顺序在列表的元素上进行迭代的迭代器
  * <p>

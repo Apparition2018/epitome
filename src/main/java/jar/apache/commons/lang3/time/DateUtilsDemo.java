@@ -25,15 +25,15 @@ import static l.demo.Demo.p;
  */
 public class DateUtilsDemo {
 
-    private Date date1;
-    private Date date2;
+    private final Date DATE1;
+    private final Date DATE2;
     private Calendar cal1 = Calendar.getInstance();
     private Calendar cal2 = Calendar.getInstance();
 
     public DateUtilsDemo() throws InterruptedException {
-        date1 = new Date();
+        DATE1 = new Date();
         TimeUnit.MILLISECONDS.sleep(1);
-        date2 = new Date();
+        DATE2 = new Date();
     }
 
     /**
@@ -43,10 +43,10 @@ public class DateUtilsDemo {
      */
     @Test
     public void addXXX() {
-        p(date1);                               // 2019-10-31 17:19:10.372
-        p(DateUtils.addYears(date1, 1));        // 2020-10-31 17:19:10.372
-        p(DateUtils.addMonths(date1, 1));       // 2019-11-30 17:19:10.372
-        p(DateUtils.addWeeks(date1, 1));        // 2019-11-07 17:19:10.372
+        p(DATE1);                               // 2019-10-31 17:19:10.372
+        p(DateUtils.addYears(DATE1, 1));        // 2020-10-31 17:19:10.372
+        p(DateUtils.addMonths(DATE1, 1));       // 2019-11-30 17:19:10.372
+        p(DateUtils.addWeeks(DATE1, 1));        // 2019-11-07 17:19:10.372
     }
 
     /**
@@ -72,28 +72,28 @@ public class DateUtilsDemo {
      */
     @Test
     public void ceilRoundTruncate() {
-        p(date1);                                       // 2019-10-31 17:20:13.450
+        p(DATE1);                                       // 2019-10-31 17:20:13.450
         p("=============================\n");
 
-        p(DateUtils.ceiling(date1, Calendar.YEAR));     // 2020-01-01 00:00:00.000
-        p(DateUtils.ceiling(date1, Calendar.MONTH));    // 2019-11-01 00:00:00.000
-        p(DateUtils.ceiling(date1, Calendar.DATE));     // 2019-11-01 00:00:00.000
-        p(DateUtils.ceiling(date1, Calendar.HOUR));     // 2019-10-31 18:00:00.000
-        p(DateUtils.ceiling(date1, Calendar.MINUTE));   // 2019-10-31 17:21:00.000
+        p(DateUtils.ceiling(DATE1, Calendar.YEAR));     // 2020-01-01 00:00:00.000
+        p(DateUtils.ceiling(DATE1, Calendar.MONTH));    // 2019-11-01 00:00:00.000
+        p(DateUtils.ceiling(DATE1, Calendar.DATE));     // 2019-11-01 00:00:00.000
+        p(DateUtils.ceiling(DATE1, Calendar.HOUR));     // 2019-10-31 18:00:00.000
+        p(DateUtils.ceiling(DATE1, Calendar.MINUTE));   // 2019-10-31 17:21:00.000
         p("=============================\n");
 
-        p(DateUtils.round(date1, Calendar.YEAR));       // 2019-01-01 00:00:00.000
-        p(DateUtils.round(date1, Calendar.MONTH));      // 2019-11-01 00:00:00.000
-        p(DateUtils.round(date1, Calendar.DATE));       // 2019-11-01 00:00:00.000
-        p(DateUtils.round(date1, Calendar.HOUR));       // 2019-10-31 17:00:00.000
-        p(DateUtils.round(date1, Calendar.MINUTE));     // 2019-10-31 17:20:00.000
+        p(DateUtils.round(DATE1, Calendar.YEAR));       // 2019-01-01 00:00:00.000
+        p(DateUtils.round(DATE1, Calendar.MONTH));      // 2019-11-01 00:00:00.000
+        p(DateUtils.round(DATE1, Calendar.DATE));       // 2019-11-01 00:00:00.000
+        p(DateUtils.round(DATE1, Calendar.HOUR));       // 2019-10-31 17:00:00.000
+        p(DateUtils.round(DATE1, Calendar.MINUTE));     // 2019-10-31 17:20:00.000
         p("=============================\n");
 
-        p(DateUtils.truncate(date1, Calendar.YEAR));    // 2019-01-01 00:00:00.000
-        p(DateUtils.truncate(date1, Calendar.MONTH));   // 2019-10-01 00:00:00.000
-        p(DateUtils.truncate(date1, Calendar.DATE));    // 2019-10-31 00:00:00.000
-        p(DateUtils.truncate(date1, Calendar.HOUR));    // 2019-10-31 17:00:00.000
-        p(DateUtils.truncate(date1, Calendar.MINUTE));  // 2019-10-31 17:20:00.000
+        p(DateUtils.truncate(DATE1, Calendar.YEAR));    // 2019-01-01 00:00:00.000
+        p(DateUtils.truncate(DATE1, Calendar.MONTH));   // 2019-10-01 00:00:00.000
+        p(DateUtils.truncate(DATE1, Calendar.DATE));    // 2019-10-31 00:00:00.000
+        p(DateUtils.truncate(DATE1, Calendar.HOUR));    // 2019-10-31 17:00:00.000
+        p(DateUtils.truncate(DATE1, Calendar.MINUTE));  // 2019-10-31 17:20:00.000
     }
 
     /**
@@ -103,7 +103,7 @@ public class DateUtilsDemo {
      */
     @Test
     public void format() {
-        p(DateFormatUtils.format(date1, "yyyy-MM-dd")); // 2018-11-19
+        p(DateFormatUtils.format(DATE1, "yyyy-MM-dd")); // 2018-11-19
     }
 
     /**
@@ -115,28 +115,28 @@ public class DateUtilsDemo {
      */
     @Test
     public void getFragmentInXXX() {
-        p(DateFormatUtils.format(date1, "yyyy-MM-dd HH:mm:ss"));    // 2018-11-19 10:41:10
+        p(DateFormatUtils.format(DATE1, "yyyy-MM-dd HH:mm:ss"));    // 2018-11-19 10:41:10
         p("=============================\n");
 
         p("从 2018-01-01 00:00:00 到 当前时间");
-        p(DateUtils.getFragmentInDays(date1, Calendar.YEAR));       // 323
-        p(DateUtils.getFragmentInHours(date1, Calendar.YEAR));      // 7738
-        p(DateUtils.getFragmentInMinutes(date1, Calendar.YEAR));    // 464322
-        p(DateUtils.getFragmentInSeconds(date1, Calendar.YEAR));    // 27859353
+        p(DateUtils.getFragmentInDays(DATE1, Calendar.YEAR));       // 323
+        p(DateUtils.getFragmentInHours(DATE1, Calendar.YEAR));      // 7738
+        p(DateUtils.getFragmentInMinutes(DATE1, Calendar.YEAR));    // 464322
+        p(DateUtils.getFragmentInSeconds(DATE1, Calendar.YEAR));    // 27859353
         p("=============================\n");
 
         p("从 2018-11-01 00:00:00 到 当前时间");
-        p(DateUtils.getFragmentInDays(date1, Calendar.MONTH));      // 19
-        p(DateUtils.getFragmentInHours(date1, Calendar.MONTH));     // 442
-        p(DateUtils.getFragmentInMinutes(date1, Calendar.MONTH));   // 26562
-        p(DateUtils.getFragmentInSeconds(date1, Calendar.MONTH));   // 1593753
+        p(DateUtils.getFragmentInDays(DATE1, Calendar.MONTH));      // 19
+        p(DateUtils.getFragmentInHours(DATE1, Calendar.MONTH));     // 442
+        p(DateUtils.getFragmentInMinutes(DATE1, Calendar.MONTH));   // 26562
+        p(DateUtils.getFragmentInSeconds(DATE1, Calendar.MONTH));   // 1593753
         p("=============================\n");
 
         p("从 2018-11-01 10:00:00 到 当前时间");
-        p(DateUtils.getFragmentInDays(date1, Calendar.DATE));       // 0
-        p(DateUtils.getFragmentInHours(date1, Calendar.DATE));      // 10
-        p(DateUtils.getFragmentInMinutes(date1, Calendar.DATE));    // 642
-        p(DateUtils.getFragmentInSeconds(date1, Calendar.DATE));    // 38553
+        p(DateUtils.getFragmentInDays(DATE1, Calendar.DATE));       // 0
+        p(DateUtils.getFragmentInHours(DATE1, Calendar.DATE));      // 10
+        p(DateUtils.getFragmentInMinutes(DATE1, Calendar.DATE));    // 642
+        p(DateUtils.getFragmentInSeconds(DATE1, Calendar.DATE));    // 38553
         p("=============================\n");
     }
 
@@ -147,7 +147,7 @@ public class DateUtilsDemo {
      */
     @Test
     public void iterator() {
-        Iterator<Calendar> it = DateUtils.iterator(date1, DateUtils.RANGE_WEEK_MONDAY);
+        Iterator<Calendar> it = DateUtils.iterator(DATE1, DateUtils.RANGE_WEEK_MONDAY);
         while (it.hasNext()) {
             p(new Date(it.next().getTimeInMillis()));
 //            2019-10-28 00:00:00.000
@@ -162,11 +162,11 @@ public class DateUtilsDemo {
 
     /**
      * static boolean	    isSameDay(Calendar cal1, Calendar cal2)
-     * static boolean	    isSameDay(Date date1, Date date2)
+     * static boolean	    isSameDay(Date DATE1, Date DATE2)
      * 判断 Date 或 Calendar 是否是同一天
      * <p>
      * static boolean	    isSameInstant(Calendar cal1, Calendar cal2)
-     * static boolean	    isSameInstant(Date date1, Date date2)
+     * static boolean	    isSameInstant(Date DATE1, Date DATE2)
      * 判断 Date 或 Calendar 是否是同一毫秒
      * <p>
      * static boolean	    isSameLocalTime(Calendar cal1, Calendar cal2)
@@ -174,11 +174,11 @@ public class DateUtilsDemo {
      */
     @Test
     public void isSameDay() {
-        p(DateUtils.isSameDay(date1, date2));      // true
-        p(DateUtils.isSameInstant(date1, date2));  // false
+        p(DateUtils.isSameDay(DATE1, DATE2));      // true
+        p(DateUtils.isSameInstant(DATE1, DATE2));  // false
 
-        cal1.setTime(date1);
-        cal2.setTime(date2);
+        cal1.setTime(DATE1);
+        cal2.setTime(DATE2);
         p(DateUtils.isSameLocalTime(cal1, cal2));  // false
     }
 
@@ -207,28 +207,28 @@ public class DateUtilsDemo {
      */
     @Test
     public void toCalendar() {
-        cal1 = DateUtils.toCalendar(date1);
-        cal2 = DateUtils.toCalendar(date2, TimeZone.getTimeZone("Europe/Paris"));
+        cal1 = DateUtils.toCalendar(DATE1);
+        cal2 = DateUtils.toCalendar(DATE2, TimeZone.getTimeZone("Europe/Paris"));
         p(cal1.getTime()); // Calendar → Date
         p(cal2.getTime()); // Calendar → Date
     }
 
     /**
      * static int	        truncatedCompareTo(Calendar cal1, Calendar cal2, int field)
-     * static int	        truncatedCompareTo(Date date1, Date date2, int field)
+     * static int	        truncatedCompareTo(Date DATE1, Date DATE2, int field)
      * 比较两个 Date 或 Calendar 在指定字段上大小
      * <p>
      * static boolean	    truncatedEquals(Calendar cal1, Calendar cal2, int field)
-     * static boolean	    truncatedEquals(Date date1, Date date2, int field)
+     * static boolean	    truncatedEquals(Date DATE1, Date DATE2, int field)
      * 比较两个 Date 或 Calendar 在指定字段上 的是否相等
      */
     @Test
     public void truncatedXXX() {
-        p(DateUtils.truncatedCompareTo(date1, date2, Calendar.SECOND));         // 0
-        p(DateUtils.truncatedCompareTo(date1, date2, Calendar.MILLISECOND));    // -1
+        p(DateUtils.truncatedCompareTo(DATE1, DATE2, Calendar.SECOND));         // 0
+        p(DateUtils.truncatedCompareTo(DATE1, DATE2, Calendar.MILLISECOND));    // -1
 
-        p(DateUtils.truncatedEquals(date1, date2, Calendar.SECOND));            // true
-        p(DateUtils.truncatedEquals(date1, date2, Calendar.MILLISECOND));       // false
+        p(DateUtils.truncatedEquals(DATE1, DATE2, Calendar.SECOND));            // true
+        p(DateUtils.truncatedEquals(DATE1, DATE2, Calendar.MILLISECOND));       // false
     }
 
 }

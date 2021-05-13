@@ -51,7 +51,7 @@ public class InstantDemo {
         p(instant.atZone(ZoneId.systemDefault()));          // 2008-08-08T20:08:08+08:00[Asia/Shanghai]
 
         // long	            toEpochMilli()                  将此instant转换为从1970-01-01T00:00:00Z的纪元开始的毫秒数
-            p(instant.toEpochMilli());                          // 1218197288000
+        p(instant.toEpochMilli());                          // 1218197288000
         // long	            getEpochSecond()                获取来从1970-01-01T00:00:00Z的纪元开始的秒数
         p(instant.getEpochSecond());                        // 1218197288
 

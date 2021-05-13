@@ -1,229 +1,74 @@
 package knowledge.datetime;
 
+import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
-
-import static l.demo.Demo.p;
 
 /**
  * Calendar
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Calendar.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Calendar.html
+ * <p>
+ * 使用枚举值来指代月份。如果使用数字，注意 Date，Calendar 等日期相关类的月份 month 取值在 0-11 之间（阿里编程规约）
  *
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class CalendarDemo {
+public class CalendarDemo extends Demo {
 
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    // static Calendar	    getInstance([TimeZone zone, Locale aLocale])
+    // 使用指定时区和语言环境获得一个日历
+    private static final Calendar CAL = Calendar.getInstance();
 
-    /**
-     * abstract  void	add(int field, int amount)
-     * 根据日历的规则，为给定的日历字段添加或减去指定的时间
-     * 子类 GregorianCalendar 实现
-     */
-    @Test
-    public void add() {
-        Calendar cal = Calendar.getInstance();
-        cal.set(2018, Calendar.DECEMBER, 25);   // 2018-12-25
-
-        cal.add(Calendar.DAY_OF_MONTH, 10);     // + 10 天
-        p(sdf.format(cal.getTime()));           // 2019-01-04
-
-        cal.set(2018, Calendar.DECEMBER, 25);
-        cal.roll(Calendar.DAY_OF_MONTH, 10);    // + 10 天
-        p(sdf.format(cal.getTime()));           // 2018-12-04
-
-        cal.set(2018, Calendar.DECEMBER, 25);
-        cal.roll(Calendar.DAY_OF_MONTH, true);  // + 1 月
-        p(sdf.format(cal.getTime()));           // 2018-12-26
+    static {
+        // void	set(int year, int month, int date[[, int hourOfDay, int minute], int second])
+        // 设置字段中的值 YEAR ， MONTH ， DAY_OF_MONTH ， HOUR_OF_DAY ， MINUTE和 SECOND
+        // 使用枚举值来指代月份。如果使用数字，注意 Date，Calendar 等日期相关类的月份 month 取值在 0-11 之间（阿里编程规约）
+        CAL.set(2018, Calendar.FEBRUARY, 25);
+        // void	            set(int field, int value)       将给定的日历字段设置为给定值
+        CAL.set(Calendar.HOUR_OF_DAY, 12);
+        CAL.set(Calendar.MINUTE, 30);
+        CAL.set(Calendar.SECOND, 0);
     }
 
-    /**
-     * void	clear([int field])
-     * 将此 Calendar 的给定日历字段值和时间值（从历元至现在的毫秒偏移量）设置成未定义
-     */
     @Test
-    public void clear() {
-        Calendar cal = Calendar.getInstance();
+    public void testCalendar() {
+        // Date	            getTime()                       返回一个表示此 Calendar 时间值（从历元至现在的毫秒偏移量）的 Date 对象
+        Date dateTime = CAL.getTime();
+        p(CAL.getTime());                                   // 2018-02-25 12:30:00
+        // void	            setTime(Date date)              使用给定的 Date 设置此 Calendar 的时间
+        CAL.setTime(dateTime);
 
-        cal.clear();
-        p(cal.getTime());  // Thu Jan 01 00:00:00 CST 1970
-    }
+        // long	            getTimeInMillis()               返回此 Calendar 的时间值，以毫秒为单位
+        p(CAL.getTimeInMillis());                           // 1519533000871
+        // TimeZone	        getTimeZone()                   获得时区
+        p(CAL.getTimeZone());                               // sun.util.calendar.ZoneInfo[id="Asia/Shanghai",offset=28800000,dstSavings=0,useDaylight=false,transitions=31,lastRule=null]
 
-    /**
-     * boolean	equals(Object obj)
-     * 将此 Calendar 与指定 Object 比较
-     */
-    @Test
-    public void get() {
-        Calendar cal = Calendar.getInstance();
+        // int	            get(int field)                  返回给定日历字段的值
+        p(CAL.get(Calendar.MONTH));                         // 1
+        p(CAL.get(Calendar.DAY_OF_MONTH));                  // 25
 
-        p(cal.get(Calendar.MONTH));     // 11
-        p(cal.get(Calendar.SECOND));    // 7
-    }
+        // int	            getActualMaximum(int field)     给定此 Calendar 的时间值，返回指定日历字段可能拥有的最大值
+        p(CAL.getActualMaximum(Calendar.DAY_OF_MONTH));     // 28
+        // abstract  int	getMaximum(int field)           返回此 Calendar 实例给定日历字段的最大值
+        p(CAL.getMaximum(Calendar.DAY_OF_MONTH));           // 31
+        p(CAL.getActualMinimum(Calendar.DAY_OF_MONTH));     // 1
+        p(CAL.getMinimum(Calendar.DAY_OF_MONTH));           // 1
 
-    /**
-     * int	getActualMaximum(int field)
-     * 给定此 Calendar 的时间值，返回指定日历字段可能拥有的最大值
-     */
-    @Test
-    public void getActualMaximum() {
-        Calendar cal = Calendar.getInstance();
-        // 2 月有 28天
-        cal.set(2018, Calendar.FEBRUARY, 1);
+        // abstract  void	add(int field, int amount)      根据日历的规则，将指定的时间量添加或减去给定的日历字段
+        CAL.add(Calendar.DAY_OF_MONTH, 10);                 // + 10 天
+        p(SDF.format(CAL.getTime()));                       // 2018-03-07
+        // void	            roll(int field, int amount)     将指定的（已签名）金额添加到指定的日历字段，而不更改更大的字段
+        CAL.roll(Calendar.DAY_OF_MONTH, 10);                // + 10 天
+        p(SDF.format(CAL.getTime()));                       // 2018-03-17
+        // abstract void	roll(int field, boolean up)     在给定时间字段上添加或减去（向上/向下）单个时间单位而不更改更大的字段
+        CAL.roll(Calendar.DAY_OF_MONTH, true);              // + 1 月
+        p(SDF.format(CAL.getTime()));                       // 2018-03-18
 
-        p(cal.getActualMaximum(Calendar.DAY_OF_MONTH)); // 28
-        p(cal.getMaximum(Calendar.DAY_OF_MONTH));       // 31，综合所有月份
-
-        p(cal.getActualMinimum(Calendar.DAY_OF_MONTH)); // 1
-        p(cal.getMinimum(Calendar.DAY_OF_MONTH));       // 1
-    }
-
-    /**
-     * int	getActualMinimum(int field)
-     * 给定此 Calendar 的时间值，返回指定日历字段可能拥有的最小值
-     */
-    @Test
-    public void getActualMinimum() {
-        getActualMaximum();
-    }
-
-    /**
-     * abstract  int	getMaximum(int field)
-     * 返回此 Calendar 实例给定日历字段的最大值
-     * 子类 GregorianCalendar 实现
-     */
-    @Test
-    public void getMaximum() {
-        getActualMaximum();
-    }
-
-    /**
-     * abstract  int	getMinimum(int field)
-     * 返回此 Calendar 实例给定日历字段的最小值
-     * 子类 GregorianCalendar 实现
-     */
-    @Test
-    public void getMinimum() {
-        getActualMinimum();
-    }
-
-    /**
-     * static Calendar	getInstance([TimeZone zone, Locale aLocale])
-     * 使用指定时区和语言环境获得一个日历
-     */
-    @Test
-    public void getInstance() {
-        Calendar cal = Calendar.getInstance();
-        p(cal);
-    }
-
-    /**
-     * Date	getTime()
-     * 返回一个表示此 Calendar 时间值（从历元至现在的毫秒偏移量）的 Date 对象
-     */
-    @Test
-    public void getTime() {
-        Calendar cal = Calendar.getInstance();
-
-        try {
-            Date date = sdf.parse("2018-10-18");
-            cal.setTime(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        p(cal.getTime()); // Thu Oct 18 00:00:00 CST 2018
-    }
-
-    /**
-     * long	getTimeInMillis()
-     * 返回此 Calendar 的时间值，以毫秒为单位
-     */
-    @Test
-    public void getTimeInMillis() {
-        Calendar cal = Calendar.getInstance();
-
-        p(cal.getTimeInMillis());   // 1540522116619
-
-        cal.setTimeInMillis(1000000000000L);
-        p(cal.getTime());           // Sun Sep 09 09:46:40 CST 2001
-    }
-
-    /**
-     * TimeZone	getTimeZone()
-     * 获得时区
-     */
-    @Test
-    public void getTimeZone() {
-        Calendar cal = Calendar.getInstance();
-
-        p(cal.getTimeZone().getID()); // Asia/Shanghai
-
-        cal.setTimeZone(TimeZone.getTimeZone("GMT-7:00"));
-        p(cal.getTimeZone().getID()); // GMT-07:00
-    }
-
-    /**
-     * abstract  void	roll(int field, boolean up)
-     * 在给定的时间字段上添加或减去（上/下）单个时间单元，不更改更大的字段
-     * 子类 GregorianCalendar 实现
-     * <p>
-     * void	roll(int field, int amount)
-     * 向指定日历字段添加指定（有符号的）时间量，不更改更大的字段
-     */
-    @Test
-    public void roll() {
-        add();
-    }
-
-    /**
-     * void	set(int field, int value)
-     * 将给定的日历字段设置为给定值
-     * <p>
-     * void	set(int year, int month, int date[, int hourOfDay, int minute, int second])
-     * 设置字段 YEAR、MONTH、DAY_OF_MONTH、HOUR_OF_DAY、MINUTE 和 SECOND 的值
-     * <p>
-     * PS：HOUR - 12小时，HOUR_OF_DAY - 24小时
-     */
-    @Test
-    public void set() {
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, 2008);
-
-        cal.set(2008, Calendar.AUGUST, 8); // 设置 2008-08-08
-    }
-
-    /**
-     * void	setTime(Date date)
-     * 使用给定的 Date 设置此 Calendar 的时间
-     */
-    @Test
-    public void setTime() {
-        getTime();
-    }
-
-    /**
-     * void	setTimeInMillis(long millis)
-     * 用给定的 long 值设置此 Calendar 的当前时间值
-     */
-    @Test
-    public void setTimeInMillis() {
-        getTimeInMillis();
-    }
-
-    /**
-     * void	setTimeZone(TimeZone value)
-     * 使用给定的时区值来设置时区
-     */
-    @Test
-    public void setTimeZone() {
-        getTimeZone();
+        // void	clear([int field])                          // 设置此 Calendar未定义的所有日历字段值和时间值（距离 Epoch的毫秒偏移量）
+        CAL.clear();
+        System.out.println(CAL.getTime());                  // Thu Jan 01 00:00:00 CST 1970
     }
 
 }

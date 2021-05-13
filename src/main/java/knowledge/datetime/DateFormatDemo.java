@@ -1,10 +1,12 @@
 package knowledge.datetime;
 
+import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * DateFormat
@@ -25,30 +27,37 @@ import java.util.Date;
  * @author ljh
  * created on 2020/9/3 10:39
  */
-public class DateFormatDemo {
+public class DateFormatDemo extends Demo {
 
-    private static final DateFormat FORMAT;
-
-    static {
-        // static DateFormat	getInstance()
-        // 获取为日期和时间使用 SHORT 风格的默认日期/时间格式器
-        // static DateFormat	getDateInstance([int style[, Locale aLocale]])
-        // 获取日期格式器，该格式器具有给定语言环境的给定格式化风格
-        // static DateFormat	getDateTimeInstance([int dateStyle, int timeStyle[, Locale aLocale]])
-        // 获取日期/时间格式器，该格式器具有给定语言环境的给定格式化风格
-        // static DateFormat	getTimeInstance([int style[, Locale aLocale]])
-        // 获取时间格式器，该格式器具有给定语言环境的给定格式化风格
-        FORMAT = DateFormat.getDateInstance();
-    }
+    // static DateFormat	getInstance()
+    // 获取为日期和时间使用 SHORT 风格的默认日期/时间格式器
+    // static DateFormat	getDateInstance([int style[, Locale aLocale]])
+    // 获取日期格式器，该格式器具有给定语言环境的给定格式化风格
+    // static DateFormat	getDateTimeInstance([int dateStyle, int timeStyle[, Locale aLocale]])
+    // 获取日期/时间格式器，该格式器具有给定语言环境的给定格式化风格
+    // static DateFormat	getTimeInstance([int style[, Locale aLocale]])
+    // 获取时间格式器，该格式器具有给定语言环境的给定格式化风格
+    private final DateFormat FORMAT = DateFormat.getDateInstance();
+    private final DateFormat SHORT_FORMAT = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH);
+    private final DateFormat MEDIUM_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.ENGLISH);
+    private final DateFormat LONG_FORMAT = DateFormat.getDateInstance(DateFormat.LONG, Locale.ENGLISH);
+    private final DateFormat FULL_FORMAT = DateFormat.getDateInstance(DateFormat.FULL, Locale.ENGLISH);
 
     @Test
     public void testDateFormat() throws ParseException {
-        // String	            format(Date date)           将一个 Date 格式化为日期/时间字符串
-        String dateString = FORMAT.format(new Date());
-        System.out.println(dateString); // 2020-9-3
+        // String       format(Date date)           将一个 Date 格式化为日期/时间字符串
+        String date = FORMAT.format(new Date());
+        p(date);        // 2021-5-13
+        String shortDate = SHORT_FORMAT.format(new Date());
+        p(shortDate);   // 5/13/21
+        String mediumDate = MEDIUM_FORMAT.format(new Date());
+        p(mediumDate);  // May 13, 2021
+        String longDate = LONG_FORMAT.format(new Date());
+        p(longDate);    // May 13, 2021
+        String fullDate = FULL_FORMAT.format(new Date());
+        p(fullDate);    // Thursday, May 13, 2021
 
-        // Date	                parse(String source)        从给定字符串的开始解析文本，以生成一个日期
-        Date date = FORMAT.parse(dateString);
-        System.out.println(date);       // Thu Sep 03 00:00:00 CST 2020
+        // Date	p       parse(String source)       从给定字符串的开始解析文本，以生成一个日期
+        System.out.println(SHORT_FORMAT.parse(shortDate));  // Thu May 13 00:00:00 CST 2021
     }
 }
