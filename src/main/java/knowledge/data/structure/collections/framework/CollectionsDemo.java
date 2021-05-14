@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
  * static <K,V> Map<K,V>    emptyMap()                                      返回空的映射（不可变的）
  * static <T> Iterator<T>   emptyIterator()                                 返回空的 Iterator
  * <p>
- * static <T> XXX<T>	    singletonXXX(T o)                               返回一个只包含指定对象的不可变列表
+ * static <T> XXX<T>	    singletonXXX(T o)                               返回一个只包含指定对象的不可变列表（不可变的）
  * static <T> List<T>	    nCopies(int n, T o)                             返回由指定对象的 n 个副本组成的不可变列表
  * <p>
  * static <T> Queue<T>	    asLifoQueue(Deque<T> deque)                     以后进先出 (Lifo) Queue 的形式返回某个 Deque 的视图

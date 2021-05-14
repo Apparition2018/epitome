@@ -42,6 +42,7 @@
 >       core.excludesFile                       .ignore 文件地址
 >       core.autocrlf                           提交或检出转换 lf 和 crlf
 >       core.safecrlf                           提交混合换行符提示
+>       http.postBuffer                         
 >       merge.tool                              合并工具
 >       alias                                   别名
 >           .co checkout

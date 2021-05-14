@@ -66,7 +66,7 @@ public class Lambda {
      * lambda 表达式的局部变量可以不用声明为 final，但是必须不可被后面的代码修改（即隐性的具有 final 的语义）
      */
     @Test
-    public void test2() {
+    public void testChangeVariable() {
         String salutation = "Hello! ";
         GreetingService greetingService = message -> {
             // salutation += ""; // Variable used in lambda expression should be final or effectively final

@@ -1,7 +1,6 @@
 package knowledge.api.util.stream;
 
 import l.demo.Demo;
-import l.demo.Person;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -9,7 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -33,18 +31,6 @@ import java.util.stream.Stream;
  * created on 2019/8/8 19:39
  */
 public class StreamDemo extends Demo {
-
-    @Test
-    public void testStream() {
-
-        // List<Object> -> List<Integer>
-        List<Integer> idList = personList.stream().map(Person::getId).collect(Collectors.toList());
-        p(idList);  // [1, 2, 3]
-
-        // List<Object> -> Map<Integer, Object>
-        Map<Integer, Person> map = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity()));
-        p(map);     // {1=Person{id=1, name='张三'}, 2=Person{id=2, name='李四'}, 3=Person{id=3, name='王五'}}
-    }
 
 
     /**

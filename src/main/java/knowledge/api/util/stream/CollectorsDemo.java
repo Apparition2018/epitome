@@ -22,6 +22,30 @@ import java.util.stream.Collectors;
 public class CollectorsDemo extends Demo {
 
     @Test
+    public void testStream() {
+
+        // List<Object> -> List<String>
+        List<String> idList = personList.stream().map(Person::getName).collect(Collectors.toList());
+        p(idList);  // [张三, 李四, 王五]
+
+        // List<Object> -> Map<Integer, Object>
+        // 1.在使用 Collectors 类的 toMap()方法转为 Map 集合时，一定要使用含有参数类型为 BinaryOperator，参数名为 mergeFunction 的方法，
+        // 否则当出现相同 key 值时会抛出 IllegalStateException 异常（阿里编程规约）
+        personList.add(new Person(3, "赵六"));
+        Map<Integer, Object> map = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity(),
+                (duplicate1, duplicate2) -> duplicate2, // 合并函数
+                TreeMap::new                            // 自定义返回 Map 类型
+        ));
+        p(map);     // {1=Person{id=1, name='张三'}, 2=Person{id=2, name='李四'}, 3=Person{id=3, name='赵六'}}
+        // map = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity())); // Duplicate key Person{id=3, name='王五'}
+        // 2.在使用 Collectors 类的 toMap()方法转为 Map 集合时，一定要注意当 value 为 null 时会抛 NPE 异常（阿里编程规约）
+        personList.add(new Person(4, null));
+        Map<Integer, String> map2 = personList.stream().collect(Collectors.toMap(Person::getId, entry -> Optional.ofNullable(entry.getName()).orElse("未知"), (d1, d2) -> d2));
+        p(map2);    // {1=张三, 2=李四, 3=赵六, 4=未知}
+        map2 = personList.stream().collect(Collectors.toMap(Person::getId, Person::getName, (d1, d2) -> d2));   // NullPointerException
+    }
+
+    @Test
     public void testCollectors() {
         List<String> names = Arrays.asList("Luna", "Olivia", "Cora", "Leo", "Henry");
 
