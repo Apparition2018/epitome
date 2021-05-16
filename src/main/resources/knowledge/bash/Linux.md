@@ -46,6 +46,7 @@ apt-get dist-upgrade                            更新系统版本
 apt-get install -y tzdata                       Time Zone Database
     tzselect                                    修改时区
 apt-get isntall -y build-essential              c/c++
+apt-get install -y openssh-server
 apt-get install -y wget
 apt-get isntall -y vim
 apt-get isntall -y iptables
