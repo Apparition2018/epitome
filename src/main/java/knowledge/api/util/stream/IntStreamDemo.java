@@ -20,7 +20,7 @@ import static l.demo.Demo.p;
 public class IntStreamDemo {
 
     /**
-     * 大部分 API 跟 Stream 一样，可查看 StreamDemo
+     * 大部分 API 跟 Stream 一样 {@link StreamDemo}
      * <p>
      * DoubleStream                 asDoubleStream()
      * LongStream                   asLongStream()

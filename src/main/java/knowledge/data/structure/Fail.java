@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * http://www.cnblogs.com/songanwei/p/9387745.html
- *
  * @author ljh
  * created on 2020/9/7 16:55
  */

@@ -11,9 +11,9 @@ import java.util.Vector;
  * Vector 向量
  * Vector 实现 List
  * Vector 是同步的。可以实现可增长的对象数组。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Vector.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Vector.html
  * <p>
- * void	        trimToSize()                    对此向量的容量进行微调，使其等于向量的当前大小 (参考 ListDemo 中的 testArrayList())
+ * void	        trimToSize()                    对此向量的容量进行微调，使其等于向量的当前大小 {@link ListDemo#testArrayList()}
  *
  * @author ljh
  * created on 2019/8/8 19:39

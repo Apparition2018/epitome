@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.util.ResourceUtils;
-import spring.service.GameService;
 
 /**
  * DemoConfig

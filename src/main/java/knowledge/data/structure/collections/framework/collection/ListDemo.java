@@ -59,11 +59,11 @@ public class ListDemo extends Demo {
         // Object[]	    toArray()
         // 返回按适当顺序包含列表中的所有元素的数组（从第一个元素到最后一个元素）
         // 使用集合转数组的方法，必须使用集合的 toArray(T[] array)，传入的是类型完全一致、长度为 0 的空数组（阿里编程规约）
-        // 直接使用 toArray 无参方法存在问题，此方法返回值只能是 Object[]类，若强转其它类型数组将出现 ClassCastException 错误
+        // 数组长度等于 0，动态创建与 size 相同的数组，性能最好
         Integer[] integers = list.toArray(new Integer[0]);
         p(integers);    // [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        Object[] objects = list.toArray();
-        // integers = (Integer[]) objects; // ClassCastException
+        // 直接使用 toArray 无参方法存在问题，此方法返回值只能是 Object[]类，若强转其它类型数组将出现 ClassCastException 错误
+        // integers = (Integer[]) list.toArray();; // ClassCastException
 
         // List<E>      subList(int fromIndex, int toIndex):
         // 返回列表中指定的 fromIndex（包括 ）和 toIndex（不包括）之间的部分视图；子列表与主列表共享同一个存储空间
@@ -72,6 +72,7 @@ public class ListDemo extends Demo {
 
         // boolean      addAll([int index, ]Collection<? extends E> c)
         // 将指定 collection 中的所有元素都插入到列表中的指定位置（可选操作）
+        // 在使用 Collection 接口任何实现类的 addAll() 方法时，都要对输入的集合参数进行 NPE 判断（阿里编程规约）
         list.addAll(0, Arrays.asList(-1, -1));
         p(list);        // [-1, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -112,7 +113,7 @@ public class ListDemo extends Demo {
      * <p>
      * 多线程环境下可以考虑用 Collections.synchronizedList(List l) 返回一个线程安全的 ArrayList 类，
      * 也可以使用 concurrent 并发包下的 CopyOnWriteArrayList。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/ArrayList.html
+     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/ArrayList.html
      */
     @Test
     public void testArrayList() {

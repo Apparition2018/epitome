@@ -8,12 +8,7 @@ import java.util.Hashtable;
 /**
  * Hashtable
  * Hashtable 继承 Dictionary，实现 Map
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Hashtable.html
- * <p>
- * Map              HashMap                         Hashtable
- * 线程       Collections.synchronizedList(map);      同步
- * 键值为 null         不可以                         可以
- * hash             重新结算 hash                   直接使用对象的 hashcode
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Hashtable.html
  *
  * @author ljh
  * created on 2019/8/8 19:39

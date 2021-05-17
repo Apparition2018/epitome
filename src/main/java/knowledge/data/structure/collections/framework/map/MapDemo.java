@@ -7,9 +7,18 @@ import java.util.*;
 
 /**
  * Map
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Map.html
+ * <p>
  * Map          HashMap                 LinkedHashMap           TreeMap
  * 适用场景     快速访问                记录插入顺序              自动排序
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Map.html
+ * <p>
+ * 阿里编程规约：
+ * 集合类          Hashtable       ConcurrentHashMap       TreeMap             HashMap
+ * Key          不允许为 null       不允许为 null           不允许为 null       允许为 null
+ * Value        不允许为 null       不允许为 null           允许为 null        允许为 null
+ * Super        Dictionary      AbstractMap             AbstractMap         AbstractMap
+ * ThreadSafely 线程安全        锁分段技术(JDK8:CAS)     线程不安全           Collections.synchronizedMap(map)
+ * Hash     直接使用对象的 hashcode                                            重新结算 hash
  * <p>
  * void	        putAll(Map<? extends K,? extends V> m)      从指定映射中将所有映射关系复制到此映射中（可选操作）
  * void	        clear()                                     从此映射中移除所有映射关系（可选操作）
@@ -18,7 +27,6 @@ import java.util.*;
  * boolean      containsKey(Object key)                     如果此映射包含指定键的映射关系，则返回 true
  * boolean      containsValue(Object value)                 如果此映射将一个或多个键映射到指定值，则返回 true
  * boolean      isEmpty()                                   如果此映射未包含键-值映射关系，则返回 true
- * <p>
  * ************************************************************
  * HashMap
  * 1.底层实现是链表数组，JDK8 加上了红黑树
@@ -26,8 +34,8 @@ import java.util.*;
  * 3.两个关键因子：初始容量、加载因子
  * - 3.1.扩容总是原来的2倍，即容量始终为2的幂次方
  * - 3.2.遍历整个 Map 需要的时间与 桶（数组） 的长度成正比
- * - 3.3.加载因子越大，发生冲突的可能性就越大，反之需要频繁 resize，性能降低
- * - 3.4.建议在创建 HashMap 的时候指定初始化容量，可使用 guava 工具方法 Maps.newHashMapWithExpectedSize(expectedSize)
+ * - 3.3.加载因子越大（默认0.75），发生冲突的可能性就越大，反之需要频繁 resize，性能降低
+ * - 3.4.建议在创建 HashMap 的时候指定初始化容量，可使用 guava 工具方法 {@link com.google.common.collect.Maps#newHashMapWithExpectedSize(int)}（阿里编程规约）
  * <p>
  * HashMap([int initialCapacity[, float loadFactor]])       构造一个带指定初始容量和加载因子的空 HashMap
  * HashMap(Map<? extends K,? extends V> m)                  构造一个映射关系与指定 Map 相同的新 HashMap
@@ -53,20 +61,23 @@ import java.util.*;
 public class MapDemo extends Demo {
 
     /**
-     * 遍历
+     * 阿里编程规约：
+     * 使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历
+     * keySet 其实是遍历了 2 次，一次是转为 Iterator 对象，另一次是从 hashMap 中取出 key 所对应的value。
+     * 而 entrySet 只是遍历了一次就把 key 和 value 都放到了 entry 中，效率更高。如果是 JDK8，使用 Map.forEach 方法
      */
     @Test
     public void traversal() {
         // 方法一
-        // Set<K>	                keySet()        返回此映射中包含的键的 Set 视图
-        for (Integer key : map.keySet()) {
-            p("key = " + key + " and value = " + map.get(key));
-        }
-
-        // 方法二
         // Set<Map.Entry<K,V>>	    entrySet()      返回此映射中包含的映射关系的 Set 视图
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
             p("key = " + entry.getKey() + " and value = " + entry.getValue());
+        }
+
+        // 方法二
+        // Set<K>	                keySet()        返回此映射中包含的键的 Set 视图
+        for (Integer key : map.keySet()) {
+            p("key = " + key + " and value = " + map.get(key));
         }
 
         // 方法三
@@ -83,9 +94,9 @@ public class MapDemo extends Demo {
      * TreeMap
      * TreeMap → NavigableMap → SortedMap → Map
      * 基于红黑树（Red-Black tree）的 NavigableMap 实现。该映射根据其键的自然顺序进行排序，或者根据创建映射时提供的 Comparator 进行排序。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/TreeMap.html
+     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/TreeMap.html
      * <p>
-     * PS：大部分 API 类似 TreeSet，可参考 TreeSetDemo
+     * 大部分 API 类似 TreeSet {@link knowledge.data.structure.collections.framework.collection.SetDemo#testTreeSet}
      */
     @Test
     public void testTreeMap() {

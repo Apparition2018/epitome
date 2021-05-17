@@ -1,5 +1,6 @@
 package knowledge.api.util.stream;
 
+import knowledge.api.util.FunctionDemo;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ import java.util.stream.Stream;
  * https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
  * <p>
  * Stream 应该只允许被中间或终端操作操作一次，若 Stream 被检测到重用，将抛出 IllegalStateException。
- * 如果实在要重复操作同一个 Stream，可以通过 Supplier 获取新的 Stream (参考 SupplierDemo testSupplier())
+ * 如果实在要重复操作同一个 Stream，可以通过 Supplier 获取新的 Stream {@link FunctionDemo.SupplierDemo#testSupplier()}
  * <p>
  * https://blog.csdn.net/icarusliu/article/details/79495534
  * https://blog.csdn.net/icarusliu/article/details/79504602
