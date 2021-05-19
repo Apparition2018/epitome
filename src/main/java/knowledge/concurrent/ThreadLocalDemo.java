@@ -24,27 +24,26 @@ public class ThreadLocalDemo {
 
     private static ThreadLocal<List<String>> threadLocal = new ThreadLocal<>();
 
-    public void getThreadLocal() {
-        threadLocal.get().forEach(name -> System.out.println(Thread.currentThread().getName() + " : " + name));
-    }
-
-    public void setThreadLocal(List<String> value) {
-        threadLocal.set(value);
-    }
-
     public static void main(String[] args) {
-        ThreadLocalDemo demo = new ThreadLocalDemo();
-
         new Thread(() -> {
             List<String> strList = Lists.newArrayList("1", "2", "3");
-            demo.setThreadLocal(strList);
-            demo.getThreadLocal();
+            try {
+                threadLocal.set(strList);
+                threadLocal.get().forEach(name -> System.out.println(Thread.currentThread().getName() + " : " + name));
+            } finally {
+                // 必须回收自定义的 ThreadLocal 变量（阿里编程规约）
+                threadLocal.remove();
+            }
         }, "Thread-A").start();
 
         new Thread(() -> {
             List<String> strList = Lists.newArrayList("a", "b", "c");
-            demo.setThreadLocal(strList);
-            demo.getThreadLocal();
+            try {
+                threadLocal.set(strList);
+                threadLocal.get().forEach(name -> System.out.println(Thread.currentThread().getName() + " : " + name));
+            } finally {
+                threadLocal.remove();
+            }
         }, "Thread-B").start();
     }
 }

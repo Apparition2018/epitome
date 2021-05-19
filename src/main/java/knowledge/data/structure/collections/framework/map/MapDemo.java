@@ -17,7 +17,7 @@ import java.util.*;
  * Key          不允许为 null       不允许为 null           不允许为 null       允许为 null
  * Value        不允许为 null       不允许为 null           允许为 null        允许为 null
  * Super        Dictionary      AbstractMap             AbstractMap         AbstractMap
- * ThreadSafely 线程安全        锁分段技术(JDK8:CAS)     线程不安全           Collections.synchronizedMap(map)
+ * ThreadSafety 线程安全        锁分段技术(JDK8:CAS)     线程不安全           Collections.synchronizedMap(map)
  * Hash     直接使用对象的 hashcode                                            重新结算 hash
  * <p>
  * void	        putAll(Map<? extends K,? extends V> m)      从指定映射中将所有映射关系复制到此映射中（可选操作）

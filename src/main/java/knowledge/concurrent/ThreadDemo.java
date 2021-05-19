@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Thread
- * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Thread.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Thread.html
  * https://blog.csdn.net/u012426327/article/details/77160416
  * <p>
  * 进程：具有一定独立功能的程序关于某个数据集合上的一次运行活动，是操作系统分配资源的最小单元。
@@ -23,7 +23,6 @@ import java.util.concurrent.TimeUnit;
  * -    其他阻塞：通过调用线程的 sleep() 或 join() 或 发出了 I/O 请求时，线程就会进入到阻塞状态。当 sleep() 状态超时，join() 等待线程终止或超时，或者 I/O 处理完毕，线程重新转入就绪状态。
  * 5.死亡状态：一个运行状态的线程完成任务或者其他终止条件发生时，该线程就切换到终止状态。
  * <p>
- * 线程是异步执行代码的
  * 异步运行：多段代码可以同时运行，各干个的
  * 同步运行：运行代码有先后顺序的一句一句执行
  * <p>

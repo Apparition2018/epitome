@@ -24,6 +24,13 @@ import java.util.concurrent.locks.ReentrantLock;
  * 3.synchronized 不需要手动释放锁；Lock 必须手动释放锁，否则可能导致死锁，一般在 finally 中释放锁
  * 4.在竞争资源非常激烈时，Lock 的性能要远远高于 synchronized；但随着版本的不断优化，synchronized 效率越来越高，一般情况下还是优先使用 synchronized
  * <p>
+ * 阿里编程规约：
+ * 1.高并发时，尽可能使加锁的代码块工作量尽可能的小，避免在锁代码块中调用 RPC 方法
+ * 2.对多个资源、数据库表、对象同时加锁时，不同线程需要保持一致的加锁顺序，否则可能会造成死锁
+ * 3.并发修改同一记录时，避免更新丢失，需要加锁。要么在应用层加锁，要么在缓存加锁，要么在数据库层使用乐观锁，使用 version 作为更新依据
+ * -    如果每次访问冲突概率小于 20%，推荐使用乐观锁，否则使用悲观锁。乐观锁的重试次数不得小于 3 次
+ * 4.资金相关的金融敏感信息，使用悲观锁策略；悲观锁遵循一锁、二判、三更新、四释放的原则
+ * <p>
  * ReentrantLock([boolean fair])        创建一个具有给定公平策略的锁
  * void	lock()                          获取锁
  * void	unlock()                        释放锁
@@ -43,6 +50,7 @@ public class LockDemo {
     @Test
     public void lockInterruptibly() throws InterruptedException {
         Lock lock = new ReentrantLock();
+        // 在使用阻塞等待获取锁的方式中，必须在 try 代码块之外，并且在加锁方法与 try 代码块之间没有任何可能抛出异常的方法调用，避免加锁成功后，在 finally 中无法解锁（阿里编程规约）
         lock.lockInterruptibly();
         try {
             System.out.println("do something");
@@ -59,6 +67,7 @@ public class LockDemo {
     @Test
     public void tryLock() throws InterruptedException {
         Lock lock = new ReentrantLock();
+        // 在使用尝试机制来获取锁的方式中，进入业务代码块之前，必须先判断当前线程是否持有锁（阿里编程规约）
         if (lock.tryLock(2, TimeUnit.SECONDS)) {
             try {
                 System.out.println("do something");

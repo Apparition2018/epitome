@@ -1,13 +1,16 @@
 package knowledge.datetime;
 
 import l.demo.Demo;
+import org.junit.jupiter.api.Test;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * SimpleDateFormat
- * SimpleDateFormat的线程安全问题与解决方案：https://www.cnblogs.com/zemliu/p/3290585.html   
- * https://www.runoob.com/manual/jdk1.6/java.base/java/text/SimpleDateFormat.html
+ * SimpleDateFormat的线程安全问题与解决方案：https://www.cnblogs.com/zemliu/p/3290585.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/SimpleDateFormat.html
  * <p>
  * 字母   日期或时间元素             表示          示例
  * G        Era 标志符             Text          AD
@@ -35,7 +38,8 @@ import java.util.Date;
  */
 public class SimpleDateFormatDemo extends Demo {
 
-    public static void main(String[] args) {
+    @Test
+    public void testSimpleDateFormat(String[] args) {
         // void	        applyPattern(String pattern)        将给定模式字符串应用于此日期格式
         SDF.applyPattern("yyyy-MM-dd HH:mm:ss");
         p(SDF.format(new Date()));  // 2020-09-03 11:29:36
@@ -46,4 +50,16 @@ public class SimpleDateFormatDemo extends Demo {
         // String	    toLocalizedPattern()                返回描述此日期格式的本地化模式字符串
         p(SDF.toLocalizedPattern());// aaaa-nn-jj HH:mm:ss
     }
+
+    /**
+     * 阿里编程规约：
+     * SimpleDateFormat 是线程不安全的类，可使用如下方式获取
+     * JDK8 可以使用 Instant 代替 Date，LocalDateTime 代替 Calendar，DateTimeFormatter 代替 SimpleDateFormat
+     */
+    private static final ThreadLocal<DateFormat> DATE_FORMAT = new ThreadLocal<DateFormat>() {
+        @Override
+        protected DateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd");
+        }
+    };
 }

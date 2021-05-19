@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 /**
  * ThreadPoolExecutor
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/ThreadPoolExecutor.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ThreadPoolExecutor.html
  * <p>
  * 线程池对待线程的策略:
  * 1.如果池中任务数 < corePoolSize -> 放入立即执行
@@ -24,6 +24,8 @@ import java.util.stream.IntStream;
  * workQueue            执行前用于保持任务的队列。此队列仅保持由 execute() 提交的 Runnable 任务
  * threadFactory        执行程序创建新线程时使用的工厂
  * handler              由于超出线程范围和队列容量而使执行被阻塞时所使用的处理程序
+ * <p>
+ * 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程（阿里编程规约）
  *
  * @author ljh
  * created on 2020/11/17 19:09
@@ -32,22 +34,33 @@ public class ThreadPoolExecutorDemo extends Demo {
 
     /**
      * 不推荐使用Executors操作线程池类：https://www.jianshu.com/p/8f9ba86ddf13
+     * 线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式，规避资源耗尽的风险，阿里编程规约：
+     * 1.FixedThreadPool 和 SingleThreadPool：允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM
+     * 2.CachedThreadPool：允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM
      */
     public static void main(String[] args) {
         ThreadPoolExecutor pool = new ThreadPoolExecutor(2, 5, 10, TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(3), new MyThreadFactory(), new MyRejectHandler());
+                new ArrayBlockingQueue<>(3), new MyThreadFactory("test"), new MyRejectHandler());
 
         IntStream.rangeClosed(1, 10).forEach(i -> pool.execute(new MyTask(i)));
     }
 
+    /**
+     * 创建线程或线程池时请指定有意义的线程名称，方便出错时回溯（阿里编程规约）
+     */
     private static class MyThreadFactory implements ThreadFactory {
 
-        private final AtomicInteger count = new AtomicInteger(1);
+        private final String namePrefix;
+        private final AtomicInteger nextId = new AtomicInteger(1);
+
+        private MyThreadFactory(String featureOfGroup) {
+            namePrefix = "From LjhThreadFactory's " + featureOfGroup + "-Worker-";
+        }
 
         @Override
         public Thread newThread(Runnable r) {
             Thread thread = new Thread(r);
-            thread.setName("ljh-thread-" + count.getAndIncrement());
+            thread.setName(namePrefix + nextId.getAndIncrement());
             p(thread.getName() + " is created");
             return thread;
         }
@@ -68,7 +81,7 @@ public class ThreadPoolExecutorDemo extends Demo {
     /**
      * ScheduledThreadPoolExecutor
      * 创建一个定长线程池，支持定时及周期性任务执行
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/ScheduledThreadPoolExecutor.html
+     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ScheduledThreadPoolExecutor.html
      */
     private static class ScheduledThreadPoolExecutorDemo extends Demo {
 

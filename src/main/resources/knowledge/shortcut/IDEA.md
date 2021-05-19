@@ -211,19 +211,17 @@
 ---
 ## Tool Windows
 ```
-Alt + 0                         Message
+Alt + 0                         Commit
 Alt + 1                         Project
 Alt + 2                         Favorites
 Alt + 3                         Find
 Alt + 4                         Run
 Alt + 5                         Debug
-Alt + 6                         TODO
+Alt + 6                         Problems
 Alt + 7                         Structure                                                       ***
 Alt + 8                         Services
-Alt + 9                         Version Control
+Alt + 9                         Git
 Alt + F12                       Terminal
-Alt + ,                         Maven
-Alt + .                         Database
 ```
 ---
 ## Other
