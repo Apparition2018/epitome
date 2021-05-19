@@ -17,8 +17,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // number => String, numObj.toString([radix])
             (10).toString(2);       // "1010"
@@ -42,13 +40,11 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // Boolean()
             Boolean("");            // false
             Boolean(undefined);     // false
-            Boolean(new Object());	// true
+            Boolean(new Object());  // true
 
             // number()
             Number(false);          // 0
@@ -72,38 +68,45 @@
                 <table class="w1024">
                     <tr>
                         <th></th>
-                        <th></th>
+                        <th>运行环境</th>
                         <th>数据类型</th>
                         <th>转换之后的值</th>
+                        <th>示例</th>
                     </tr>
                     <tr>
-                        <td rowspan="6">ToBoolean</td>
-                        <td rowspan="6">逻辑判断 和 逻辑运算</td>
-                        <td>0</td>
-                        <td rowspan="6">false</td>
-                    </tr>
-                    <tr>
-                        <td>NaN</td>
-                    </tr>
-                    <tr>
-                        <td>""</td>
+                        <td rowspan="5">ToNumber</td>
+                        <td rowspan="5">1.parseInt(str), Number(value) 等；<br />
+                            2.+ 号用作一元操作符；<br />
+                            3.其它运算符；
+                        </td>
+                        <td>String</td>
+                        <td>ToNumber(String)</td>
+                        <td rowspan="5">90 - "10" // 80</td>
                     </tr>
                     <tr>
                         <td>null</td>
+                        <td>0</td>
                     </tr>
                     <tr>
                         <td>undefined</td>
+                        <td>NaN</td>
                     </tr>
                     <tr>
-                        <td>false</td>
+                        <td>true / false</td>
+                        <td>1 / 0</td>
+                    </tr>
+                    <tr>
+                        <td>Object</td>
+                        <td>ToPrimitive(Object)</td>
                     </tr>
                     <tr>
                         <td rowspan="5">ToString</td>
-                        <td rowspan="5">运行环境：如 alert(str), String(thing) 等；
-                            <br />+ 号用作字符串拼接（其中一个为z字符串）；
+                        <td rowspan="5">1.alert(str), String(thing) 等；<br />
+                            2.+ 号用作字符串拼接（其中一个为字符串）；
                         </td>
                         <td>Number</td>
                         <td>Number 的字符串表示</td>
+                        <td rowspan="5">90 + "10" // 9010</td>
                     </tr>
                     <tr>
                         <td>null</td>
@@ -122,35 +125,30 @@
                         <td>ToPrimitive(Object)</td>
                     </tr>
                     <tr>
-                        <td rowspan="5">ToNumber</td>
-                        <td rowspan="5">运行环境：如 parseInt(str), Number(value) 等；
-                            <br />+ 号用作一元操作符；
-                            <br />其它运算符；
-                        </td>
-                        <td>String</td>
-                        <td>ToNumber(String)</td>
-                    </tr>
-                    <tr>
-                        <td>null</td>
+                        <td rowspan="6">ToBoolean</td>
+                        <td rowspan="6">1.逻辑判断<br />2.逻辑运算</td>
                         <td>0</td>
+                        <td rowspan="6">false</td>
+                        <td rowspan="6"></td>
                     </tr>
                     <tr>
-                        <td>undefined</td>
                         <td>NaN</td>
                     </tr>
                     <tr>
-                        <td>true / false</td>
-                        <td>1 / 0</td>
+                        <td>""</td>
                     </tr>
                     <tr>
-                        <td>Object</td>
-                        <td>ToPrimitive(Object)</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>undefined</td>
+                    </tr>
+                    <tr>
+                        <td>false</td>
                     </tr>
                 </table>
             </div>
         </div>
-        <style>
-        </style>
     </section>
 </body>
 

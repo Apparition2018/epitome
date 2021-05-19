@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>Math-demo</title>
     <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../static/css/demo.css">
@@ -71,16 +72,18 @@
                             <br/>Math.imul(0xfffffffe, 5) //-10</td>
                     </tr>
                     <tr>
-                        <td>Math.max([value1[,value2, ...]])</td>
+                        <td>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/max">Math.max([value1[,value2, ...]])</a>
+                        </td>
                         <td>返回一组数中的最大值</td>
-                        <td>function getMaxOfArray(numArray) {
-                            <br/>&nbsp;&nbsp;&nbsp;&nbsp;return Math.max.apply(null, numArray);
-                            <br/>}</td>
+                        <td>Math.max() // -Infinity</td>
                     </tr>
                     <tr>
-                        <td>Math.min([value1[,value2, ...]])</td>
+                        <td>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/min">Math.min([value1[,value2, ...]])</a>
+                        </td>
                         <td>返回零个或更多个数值的最小值</td>
-                        <td></td>
+                        <td>Math.min() // Infinity</td>
                     </tr>
                     <tr>
                         <td>Math.pow(base, exponent) </td>
@@ -114,11 +117,9 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 得到一个两数之间的随机数
-            function getRandomArbirary(min, max) {
+            function getRandomArbitrary(min, max) {
                 return Math.random() * (max - min) + min;
             }
 
