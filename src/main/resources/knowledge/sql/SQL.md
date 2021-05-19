@@ -3,7 +3,7 @@
 ---
 ## 参考网站
 1. [SQL Fiddle](http://sqlfiddle.com/)
-2. [SQL Tutorial](https://www.techonthenet.com/sql/)
+2. [TechOnTheNet](https://www.techonthenet.com/)
 3. [建表规范](https://www.cnblogs.com/xphdbky/p/7154434.html)
 4. [SQL 语法速成手册](https://mp.weixin.qq.com/s?__biz=MzU2MTI4MjI0MQ==&mid=2247491550&idx=2&sn=cfe8ed6eea2e61646e5cc3d0b5e96b68)
 ## 课程
