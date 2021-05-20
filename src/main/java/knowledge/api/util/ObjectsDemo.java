@@ -57,8 +57,9 @@ public class ObjectsDemo {
 
         // static boolean	    equals(Object a, Object b)
         // 如果两个参数相等，则返回 true，否则返回 false
+        // 阿里编程规约：
         // Object 的 equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用 equals
-        // 推荐使用 JDK7 引入的工具类 java.util.Objects#equals(Object a, Object b)（阿里编程规约）
+        // 推荐使用 JDK7 引入的工具类 java.util.Objects#equals(Object a, Object b)
         p(Objects.equals(a, b)); // true
         p(Objects.equals(d, e)); // true
         p(Objects.equals(a, c)); // false

@@ -29,8 +29,9 @@ public class CollectorsDemo extends Demo {
         p(idList);  // [张三, 李四, 王五]
 
         // List<Object> -> Map<Integer, Object>
+        // 阿里编程规约：
         // 1.在使用 Collectors 类的 toMap()方法转为 Map 集合时，一定要使用含有参数类型为 BinaryOperator，参数名为 mergeFunction 的方法，
-        // 否则当出现相同 key 值时会抛出 IllegalStateException 异常（阿里编程规约）
+        // 否则当出现相同 key 值时会抛出 IllegalStateException 异常
         personList.add(new Person(3, "赵六"));
         Map<Integer, Object> map = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity(),
                 (duplicate1, duplicate2) -> duplicate2, // 合并函数

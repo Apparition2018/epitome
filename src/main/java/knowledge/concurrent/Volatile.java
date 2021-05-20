@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * -    插入一条内存屏障（内存栅栏，一个 CPU 指令）告诉编译器和 CPU：不管什么指令都不能给这条 Memory Barrier 指令重排序
  * 2.内存可见性：基于内存屏障禁止重排序实现
  * -    2.1：普通变量：读操作会优先读取工作内存的数据，如果工作内存中不存在，则从主内存（所有线程共享）中拷贝一份数据到工作内存中；写操作只会修改工作内存的副本数据，其它线程无法读取变量的最新值
- * -    2.2：volatile 变量：操作时 JMM 把工作内存中对应的值设为无效，要求线程从主内存中读取数据；写操作时 JMM 把工作内存中对应的数据刷新到主内存中，其它线程可以读取变量的最新值
+ * -    2.2：volatile 变量：操作时 JMM(Java memory model) 把工作内存中对应的值设为无效，要求线程从主内存中读取数据；写操作时 JMM 把工作内存中对应的数据刷新到主内存中，其它线程可以读取变量的最新值
  * <p>
  * 使用条件：
  * 1.对变量的写入操作不依赖变量的当前值，如多线程下 a++，无法通过 volatile 保证结果的准确。
@@ -24,6 +24,8 @@ import java.util.concurrent.TimeUnit;
  * volatile 关键字解惑：https://www.jianshu.com/p/195ae7c77afe
  * 深入 Java 内存模型—happen-before 规则及其对 DCL 的分析：https://blog.csdn.net/dhfzhishi/article/details/74279091
  * 深入 Java 内存模型—内存操作规则总结：https://blog.csdn.net/ns_code/article/details/17377197
+ * Java 关键字 volatile 的理解与正确使用：https://www.jb51.net/article/115374.htm
+ * volatile的适用场景：https://www.cnblogs.com/ouyxy/p/7242563.html
  *
  * @author ljh
  * created on 2020/11/18 19:37

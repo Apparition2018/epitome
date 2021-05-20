@@ -71,9 +71,9 @@ public class SingletonDemo {
     }
 
     /**
-     * 双重检查锁 (DCL)，线程安全，懒汉模式的升级版
+     * 双重检查锁 (double-checked locking)，线程安全，懒汉模式的升级版
      * <p>
-     * volatile 解决 DCL 失效问题：
+     * volatile 解决 DCL（在并发场景下）存在延迟初始化的优化问题隐患（阿里编程规约）
      * instance = new DoubleCheckLockSingleton(); 在 JVM 里面的执行分为三步：
      * 1.在堆内存开辟内存空间
      * 2.在堆内存中实例化 SingleTon 里面的各个参数

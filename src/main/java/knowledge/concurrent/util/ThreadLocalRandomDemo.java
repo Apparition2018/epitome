@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * ThreadLocalRandom
  * 线程隔离的随机数生成器，在并发程序中使用 ThreadLocalRandom 比使用 Random，能够减少开销和降低争用。
+ * 避免 Random 实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一 seed 导致的性能下降（阿里编程规约）
  * <p>
  * 为什么要使用ThreadLocalRandom代替Random生成随机数：https://www.cnblogs.com/shamo89/p/8052161.html
  * https://docs.oracle.com/javase/8/docs/api/index.html?java/nio/file/attribute/FileAttributeView.html

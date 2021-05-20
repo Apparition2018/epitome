@@ -16,6 +16,7 @@ import java.util.List;
  * <p>
  * 知道ThreadLocal嘛？谈谈你对它的理解？：https://baijiahao.baidu.com/s?id=1653790035315010634
  * ThreadLocal作用、场景、原理 - 简书：https://www.jianshu.com/p/6fc3bba12f38
+ * 说说线程封闭与ThreadLocal的关系：https://blog.csdn.net/qq_33589510/article/details/105071141
  *
  * @author ljh
  * created on 2020/11/6 12:55
@@ -31,7 +32,7 @@ public class ThreadLocalDemo {
                 threadLocal.set(strList);
                 threadLocal.get().forEach(name -> System.out.println(Thread.currentThread().getName() + " : " + name));
             } finally {
-                // 必须回收自定义的 ThreadLocal 变量（阿里编程规约）
+                // 必须回收自定义的 ThreadLocal 变量，否者可能会影响后续业务逻辑和造成内存泄露等问题（阿里编程规约）
                 threadLocal.remove();
             }
         }, "Thread-A").start();
