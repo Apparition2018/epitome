@@ -158,8 +158,7 @@ public class Greedy {
 
             public T get(int index) {
                 if (index >= size)
-                    throw new IllegalArgumentException("index is greater than size : "
-                            + index);
+                    throw new IllegalArgumentException("index is greater than size : " + index);
                 return (T) data[index];
             }
 

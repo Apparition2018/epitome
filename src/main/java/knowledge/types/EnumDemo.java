@@ -14,10 +14,7 @@ import java.util.Map;
  * 1.枚举有更多灵活的用法
  * 2.有效的提高代码的整洁性、可读性
  * 3.限制非法值的传入
- * switch:
- * 1) JDK1.5-: byte, short, char, int
- * 2) JDK1.5:  Byte, Short, Character, Integer, enum
- * 3) JDK1.7:  String
+ * <p>
  * 枚举类名带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开（阿里编程规约）
  * <p>
  * JAVA 常量类的实现方式_枚举类＿项目实践：https://www.cnblogs.com/lihaoyang/p/6913295.html

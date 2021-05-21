@@ -58,8 +58,10 @@ public class CustomAnnotationExercise {
         Class<?> clazz = filter.getClass();
         // 2.获取到table的名字
         if (!clazz.isAnnotationPresent(Table.class)) {
+            // 当某个方法的代码总行数超过 10 行时，return / throw 等中断逻辑的右大括号后均需要加一个空行（阿里编程规约）
             return null;
         }
+
         Table table = clazz.getAnnotation(Table.class);
         String tableName = table.value();
         sb.append("select * from ").append(tableName).append(" where 1 = 1");

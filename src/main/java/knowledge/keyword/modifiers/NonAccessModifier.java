@@ -1,4 +1,4 @@
-package knowledge.modifiers;
+package knowledge.keyword.modifiers;
 
 /**
  * 非访问修饰符：static, final, abstract, synchronized, transient, volatile

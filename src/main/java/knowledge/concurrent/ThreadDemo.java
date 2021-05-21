@@ -34,6 +34,10 @@ import java.util.concurrent.TimeUnit;
  * 线程同步：将操作共享数据的代码行作为一个整体，同一时间只允许一个线程执行，执行过程中其他线程不能参与执行。
  * 线程安全及三种解决方案：https://zhuanlan.zhihu.com/p/143811831
  * <p>
+ * 阿里编程规约：
+ * 在高并发场景中，避免使用”等于”判断作为中断或退出的条件；
+ * 如果并发控制没有处理好，容易产生等值判断被“击穿”的情况，使用大于或小于的区间判断条件来代替
+ * <p>
  * static void	                setDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler eh)  设置该线程由于未捕获到异常而突然终止时调用的处理程序
  * Thread.UncaughtExceptionHandler	        getUncaughtExceptionHandler()           返回该线程由于未捕获到异常而突然终止时调用的处理程序
  * static Thread.UncaughtExceptionHandler	getDefaultUncaughtExceptionHandler()    返回线程由于未捕获到异常而突然终止时调用的默认处理程序

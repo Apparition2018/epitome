@@ -1,4 +1,4 @@
-package knowledge.modifiers;
+package knowledge.keyword.modifiers;
 
 /**
  * 访问修饰符: private, default, protected, public
