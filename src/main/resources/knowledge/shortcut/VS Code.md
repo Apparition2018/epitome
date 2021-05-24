@@ -1,0 +1,134 @@
+# VS Code Shortcut
+
+---
+## View
+```
+F6                          Focus Next Part
+F11                         Toggle Full Screen                  全换全屏
+Ctrl + Shift + D            Show Run and Debug                  显示调试
+Ctrl + Shift + E            SHow Explorer                       显示源管理器
+Ctrl + Shift + F            Show Search                         显示搜索
+Ctrl + Shift + G            Show Source Control                 显示资源控制
+Ctrl + Shift + M            Toggle Problems                     切换显示问题视图
+Ctrl + Shift + T            Reopen Closed Editor                重新打开已关闭的编辑器
+Ctrl + Shift + U            Toggle Output                       切换输出
+Ctrl + Shift + W            Close Window                        关闭窗口
+Ctrl + Shift + X            Show Extensions                     显示扩展
+Ctrl + Shift + Y            Toggle Debug Console                切换调试控制台
+Ctrl + K Ctrl + Shift + W   Close All Editor Groups             关闭所有编辑组
+```
+---
+## Search
+```
+Ctrl + Shift + H            Replace inf Files                   全局替换
+```
+## Search Editor
+```
+F4                          Focus Next Search Result
+Ctrl + Shift + L            Select All Matches                  选择所有匹配
+Ctrl + Shift + R            Search Again                        再次搜索
+```
+---
+## Debug
+```
+F5                          Start Debugging                     开始调试
+F5                          Continue                            继续
+F6                          Pause                               暂停
+F9                          Toggle Breakpoint                   切换断点
+F10                         Start Debugging and Stop on Entry   开始调试并停在输入时停止
+F10                         Step Over
+F11                         Start Debugging and Stop on Entry   开始调试并停在输入时停止
+F11                         Step Into
+```
+---
+## Tasks
+```
+Ctrl + Shift + B            Run Build Task                      运行生成任务
+```
+---
+## Markdown
+```
+Ctrl + Shift + V            Open Previw                         打开预览
+```
+---
+## Other
+```
+Ctrl + SHift + K            Delete Line                         删除行
+Ctrl + Shift + N            New Window                          新建窗口           
+Ctrl + Shift + O            Go to Symbol in Editor...           跳转到 Symbol
+Ctrl + Shift + P            Show All Commands                   显示所有命令
+Ctrl + Shift + R            Refactor...                         重构
+Ctrl + Shift + Z            Redo                                重做
+Ctrl + Shift + \            Go to Bracket                       转到括号
+
+Ctrl + ,                    worbench.action.openSettings        打开设置
+```
+---
+## FX
+```
+F1                          Show All Commands                   显示所有命令
+F2                          Rename Symbol                       重命名 Symbol
+F3                          Find Next                           查找下一个匹配
+F4                          Go to Next Reference                跳转到下一个引用
+F7                          Go to Next Difference               跳转到下一个差异
+F7                          Go to Next Symbol Highlight         跳转到下一个高亮
+F8                          Go to Next Problem in Files         跳转到下一个问题
+F12                         Go to Definition                    跳转到定义
+```
+---
+
+Alt + F12               速览定义                        *  
+
+Alt + F D               将文件夹添加到工作区
+Ctrl + K F              关闭工作区
+
+Ctrl + K R              在资源管理器中显示当前文件
+Alt + Shift + R			在资源管理器中显示
+
+Alt + Click             添加cursor
+Ctrl + D                将选择添加到下一个查找匹配项      *
+Ctrl + F2               更改所有匹配项                     *
+Ctrl + Shit + L         选择所有找到的查找匹配项            *
+
+Alt + Ctrl + F          格式化选定代码             自定义
+
+Ctrl + B                切换侧边栏可见性                  *
+Ctrl + I                选中当前行                       *
+Ctrl + N                新的无标题文件
+Ctrl + O                打开文件
+Ctrl + Q                Quick Open 视图
+Ctrl + \                拆分编辑器
+Ctrl + `                切换集成终端                        *
+Ctrl + Delete           删除右侧的字符                     *
+
+Ctrl + H                替换
+Ctrl + Alt + Enter      全部替换                        *
+
+
+Ctrl + K M              更改语言模式
+Ctrl + K Z              切换 Zen 模式
+Ctrl + K Ctrl + S       打开键盘快捷方式
+Ctrl + K Ctrl + 0		全部折叠
+Ctrl + K Ctrl + Q       最后编辑位置
+
+Ctrl + K P              复制当前文件路径
+Alt + Shift + C         复制文件路径
+
+Ctrl + P                QuickOpen                      *
+?                       列出当前可执行的动作
+!/Ctrl + Shift + M      显示Errors或Warnings
+:/Ctrl + G              跳转到行数
+@:/Ctrl + Shift + O:    根据分类跳转到Symbol
+#/Ctrl + T              根据名字查找Symbol
+
+Ctrl + W                关闭编辑器/窗口
+Ctrl + Shift + W        关闭窗口
+
+Ctrl + [                行减少缩进
+Ctrl + ]                行缩进
+
+Ctrl + Shift + [        折叠
+Ctrl + Shift + ]        展开
+
+右键文件 → 以进行对比 → 右键需要对比的文件 → 将...与...比较
+按Alt不放 → 点下一个修改的地方  multiCursorModifier
