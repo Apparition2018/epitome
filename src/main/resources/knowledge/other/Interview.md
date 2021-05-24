@@ -26,13 +26,17 @@
    logger.info("Hello World!")
    ```
    2. 当天日志，以“应用名.log”来保存，保存在/home/admin/应用名/logs/目录下，过往日志格式为: {logname}.log.{保存日期}，日期格式：yyyy-MM-dd
-   3. 对于 trace/debug/info 级别的日志输出，必须进行日志级别的开关判断；
+   3. 对于 trace/debug/info 级别的日志输出，必须进行日志级别的开关判断
    ```
    if (logger.isDebugEnabled()) {
       logger.debug("Current ID is: {} and name is: {}", id, getName());
    }
    ```
    4. 避免重复打印日志，浪费磁盘空间，务必在日志配置文件中设置 additivity=false
+   5. 异常信息应该包括两类信息：案发现场信息和异常堆栈信息。如果不处理，那么通过关键字 throws 往上抛出
+   6. 日志打印时禁止直接用 JSON 工具将对象转换成 String
+   7. 谨慎地记录日志。生产环境禁止输出 debug 日志；有选择地输出 info 日志；如果使用 warn 来记录刚上线时的业务行为信息，一定要注意日志输出量的问题，并记得及时删除这些观察日志
+   8. 可以使用 warn 日志级别来记录用户输入参数错误的情况，避免用户投诉时，无所适从。如非必要，请不要在此场景打出 error 级别，避免频繁报警
 >### 参考网站
 >1. [一个著名的日志系统是怎么设计出来的？](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45)
 >2. [如何设计一个良好的日志格式](https://www.bilibili.com/video/BV1Kk4y1U7ep/)
