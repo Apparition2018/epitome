@@ -43,6 +43,7 @@ public class AbstractClass {
 
         /**
          * 抽象方法
+         * 所有的抽象方法（包括接口中的方法）必须要用 Javadoc 注释、除了返回值、参数、异常说明外，还必须指出该方法做什么事情，实现什么功能（阿里编程规约）
          */
         public abstract double computePay();
 

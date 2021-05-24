@@ -1,5 +1,6 @@
 package knowledge.concurrent;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -74,9 +75,9 @@ public class ObjectWaitAndNotifyDemo {
         public void run() {
             for (int i = 0; i < 30; i++) {
                 try {
-                    // 随机睡眠0~500毫秒
+                    // 随机睡眠[0~500)毫秒
                     // sleep() 不会释放对象 t 的锁
-                    TimeUnit.MILLISECONDS.sleep((long) (Math.random() * 5));
+                    TimeUnit.MILLISECONDS.sleep(new Random().nextInt(500));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -98,7 +99,7 @@ public class ObjectWaitAndNotifyDemo {
         public void run() {
             for (int i = 0; i < 30; i++) {
                 try {
-                    TimeUnit.MILLISECONDS.sleep((long) (Math.random() * 500));
+                    TimeUnit.MILLISECONDS.sleep(new Random().nextInt(500));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

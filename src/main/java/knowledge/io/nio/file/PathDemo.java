@@ -39,7 +39,7 @@ public class PathDemo extends Demo {
     private Path p4 = Paths.get(RESOURCES_ABSOLUTE_PATH + "spring");
 
     @Test
-    public void testGet() {
+    public void get() {
         // 返回文件名或目录名
         p(p1.getFileName());    // demo
         // 返回父路径，如果该路径没有父路径，则返回null

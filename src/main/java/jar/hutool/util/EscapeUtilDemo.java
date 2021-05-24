@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 public class EscapeUtilDemo extends Demo {
     
     @Test
-    public void test() {
+    public void testEscapeUtil() {
         // ISO Latin（Unicode 字符集的一个子集）字符串编码
         // escape(CharSequence) 默认不对 *@-_+" 编码 
         p(EscapeUtil.escape(MY_NAME + "*@-_+"));                        // %u674e%u767d*@-_+

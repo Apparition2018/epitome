@@ -27,7 +27,7 @@ public class CharUtilDemo {
     }
 
     @Test
-    public void testIs() {
+    public void is() {
         // ASCII
         p(CharUtil.isAscii('1'));                               // true
         // 可见 ASCII

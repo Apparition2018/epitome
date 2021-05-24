@@ -55,7 +55,7 @@ public class ObjectUtilDemo extends Demo {
     }
 
     @Test
-    public void testNullAndEmpty() {
+    public void nullAndEmpty() {
         p(ObjectUtil.isNull(null));                         // true
         p(ObjectUtil.isNotNull(null));                      // false
         p(ObjectUtil.isEmpty(map));                         // false

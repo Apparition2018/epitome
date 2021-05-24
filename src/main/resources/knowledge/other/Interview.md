@@ -16,14 +16,23 @@
     2. JUL: java.util.logging
     3. log4j2
     4. logback
-- 应用中不应直接使用日志系统 (Log4j, Logback) 中的 API，而应依赖使用日志框架 SLF4J 中的 API。因为使用过门面模式的日志框架，有利于维护各个类的日志处理方式统一。
-```
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-Logger logger = LoggerFactory.getLogger(Test.class);
-logger.info("Hello World!")
-```
+3. 阿里日志规约：
+   1. 应用中不应直接使用日志系统 (Log4j, Logback) 中的 API，而应依赖使用日志框架 SLF4J 中的 API。因为使用过门面模式的日志框架，有利于维护各个类的日志处理方式统一
+   ```
+   import org.slf4j.Logger;
+   import org.slf4j.LoggerFactory;
+   
+   Logger logger = LoggerFactory.getLogger(Test.class);
+   logger.info("Hello World!")
+   ```
+   2. 当天日志，以“应用名.log”来保存，保存在/home/admin/应用名/logs/目录下，过往日志格式为: {logname}.log.{保存日期}，日期格式：yyyy-MM-dd
+   3. 对于 trace/debug/info 级别的日志输出，必须进行日志级别的开关判断；
+   ```
+   if (logger.isDebugEnabled()) {
+      logger.debug("Current ID is: {} and name is: {}", id, getName());
+   }
+   ```
+   4. 避免重复打印日志，浪费磁盘空间，务必在日志配置文件中设置 additivity=false
 >### 参考网站
 >1. [一个著名的日志系统是怎么设计出来的？](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45)
 >2. [如何设计一个良好的日志格式](https://www.bilibili.com/video/BV1Kk4y1U7ep/)

@@ -14,13 +14,16 @@ import static l.demo.Demo.p;
  * 1.matches 方法尝试将整个输入序列与该模式匹配。
  * 2.lookingAt 尝试将输入序列从头开始与该模式匹配。
  * 3.find 方法扫描输入序列以查找与该模式匹配的下一个子序列。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/regex/Matcher.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/regex/Matcher.html
  * https://blog.csdn.net/luyaran/article/details/80175651
  *
  * @author ljh
  * created on 2019/8/8 19:39
  */
 public class MatcherDemo {
+    
+    // 在使用正则表达式时，利用好其预编译功能，可以有效加快正则匹配速度（阿里编程规约）
+    private static final Pattern pattern = Pattern.compile("(a*b)(foo)");
 
     /**
      * 索引方法
@@ -31,7 +34,6 @@ public class MatcherDemo {
      */
     @Test
     public void index() {
-        Pattern pattern = Pattern.compile("(a*b)(foo)");
         Matcher matcher = pattern.matcher("abfooaabfooaaabfoob");
         while (matcher.find()) {
             // String	    group([int group])
@@ -66,7 +68,6 @@ public class MatcherDemo {
     @Test
     public void research() {
         // find()
-        Pattern pattern = Pattern.compile("(a*b)(foo)");
         Matcher matcher = pattern.matcher("abfooaabfooaaabfoob");
         if (matcher.find()) {
             p(matcher.group());     // abfoo

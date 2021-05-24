@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 /**
  * BooleanUtil
- * 
+ * <p>
  * static boolean	toBoolean(String valueStr)      转换字符串为 boolean 值
  * static XXX	    toXXX(boolean xxx)              boolean 值转为 XXX
- * 
+ * <p>
  * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/BooleanUtil.html
  *
  * @author Arsenal
@@ -15,9 +15,23 @@ import org.junit.jupiter.api.Test;
  */
 public class BooleanUtilDemo {
 
+    /**
+     * and, or, xor, negate, isTrue, isNotTrue, isFalse, isNotFalse
+     *
+     * @see jar.apache.commons.lang3.BooleanUtilsDemo#boolean_()
+     */
     @Test
-    public void testBooleanUtil() {
-        // and, or, xor, negate, isTrue, isNotTrue, isFalse, isNotFalse @see BooleanUtilsDemo.boolean_()
-        // isTrue, isNotTrue, isFalse, isNotFalse                       @see BooleanUtilsDemo.is()
+    public void boolean_() {
+
+    }
+
+    /**
+     * isTrue, isNotTrue, isFalse, isNotFalse
+     *
+     * @see jar.apache.commons.lang3.BooleanUtilsDemo#is()
+     */
+    @Test
+    public void is() {
+
     }
 }

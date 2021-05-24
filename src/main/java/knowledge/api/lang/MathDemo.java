@@ -6,11 +6,14 @@ import static l.demo.Demo.p;
 
 /**
  * Math
- * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Math.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Math.html
  * <p>
  * static XXX	    abs(XXX a)              返回 XXX 值的绝对值
  * <p>
  * static double	random()                返回带正号的 double 值，该值 ≥ 0.0 且 ＜ 1.0
+ * 阿里编程规约：
+ * 注意 Math.random() 这个方法返回是 double 类型，注意取值的范围 0≤x<1（能够取到零值，注意除零异常），
+ * 如果想获取整数类型的随机数，不要将 x 放大 10 的若干倍然后取整，直接使用 Random 对象的 nextInt 或者 nextLong 方法
  * <p>
  * static XXX	    max(XXX a, XXX b)	    返回两个 XXX 值中较大的一个
  * static XXX	    min(XXX a, XXX b)       返回两个 XXX 值中较小的一个

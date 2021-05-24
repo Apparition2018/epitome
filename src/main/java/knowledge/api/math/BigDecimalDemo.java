@@ -77,7 +77,7 @@ public class BigDecimalDemo {
      * BigDecimal 的等值比较应使用 compareTo()方法，而不是 equals()方法（阿里编程规约）
      */
     @Test
-    public void testCompareTo() {
+    public void compareTo() {
         // equals() 会比较精度
         p(new BigDecimal("1.0").equals(new BigDecimal("1.00")));    // false
         // compareTo() 会忽略精度

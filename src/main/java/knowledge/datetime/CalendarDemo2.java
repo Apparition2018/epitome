@@ -29,7 +29,7 @@ public class CalendarDemo2 {
      * 查看3年2个月零5天以后那天所在周的周一？
      */
     @Test
-    public void testAddAndSet() {
+    public void addAndSet() {
         CALENDAR.add(Calendar.YEAR, 3);         // 加3年
         CALENDAR.add(Calendar.MONTH, 2);        // 加2个月
         CALENDAR.add(Calendar.DAY_OF_MONTH, 5); // 加5天
@@ -38,7 +38,7 @@ public class CalendarDemo2 {
     }
 
     @Test
-    public void testGet() {
+    public void get() {
         int year = CALENDAR.get(Calendar.YEAR);
         int month = CALENDAR.get(Calendar.MONTH) + 1;       // 月从0开始
         int day = CALENDAR.get(Calendar.DAY_OF_MONTH);

@@ -86,7 +86,7 @@ public class Algorithm {
         for (int i = 0; i < chs.length; i++) {
             int index;
             do {
-                index = (int) (Math.random() * len);
+                index = new Random().nextInt(len);
             } while (flags[index]);
             chs[i] = letters[index];
             flags[index] = true;

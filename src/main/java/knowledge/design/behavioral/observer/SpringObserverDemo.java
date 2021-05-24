@@ -32,7 +32,7 @@ public class SpringObserverDemo {
     public static class SpringListener {
 
         @Test
-        public void test() {
+        public void testSpringListener() {
             // 获取 IOC 容器
             AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
             // 注册监听者

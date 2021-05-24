@@ -36,7 +36,7 @@ public class ScoreDao {
     public Score findById(int id) {
         String sql = "SELECT id, name, course, score FROM score WHERE id=?";
         Object[] args = {id};
-        return jdbcTemplate.queryForObject(sql, args, new ScoreRowMapper());
+        return jdbcTemplate.queryForObject(sql, new ScoreRowMapper(), args);
     }
 
     public List<Score> findAll() {

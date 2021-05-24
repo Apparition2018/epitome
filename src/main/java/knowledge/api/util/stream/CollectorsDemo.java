@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class CollectorsDemo extends Demo {
 
     @Test
-    public void testStream() {
+    public void toXXX() {
 
         // List<Object> -> List<String>
         List<String> idList = personList.stream().map(Person::getName).collect(Collectors.toList());
@@ -91,7 +91,7 @@ public class CollectorsDemo extends Demo {
      * Java 官方例子：统计每个城市个子最高的人
      */
     @Test
-    public void testReducing() {
+    public void reducing() {
         List<Person> personList = new ArrayList<Person>(3) {
             {
                 add(new Person("张三", 20, "男", null));

@@ -10,7 +10,7 @@ import static l.demo.Demo.p;
 /**
  * Pattern
  * 正则表达式的编译表示形式
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/regex/Pattern.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/regex/Pattern.html
  * <p>
  * 字符：
  * \\               反斜线字符（Java \\\\）

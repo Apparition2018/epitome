@@ -38,7 +38,7 @@ public class DateDemo2 {
 
     // Date <=> Long
     @Test
-    public void testDateToLong() {
+    public void dateToLong() {
 
         // Date → long
         long time = date.getTime();
@@ -57,7 +57,7 @@ public class DateDemo2 {
 
     // Date <=> String
     @Test
-    public void testDateToString() throws ParseException {
+    public void dateToString() throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -73,7 +73,7 @@ public class DateDemo2 {
 
     // Date <=> Calendar
     @Test
-    public void testDateToCalendar() {
+    public void dateToCalendar() {
 
         Calendar calendar = Calendar.getInstance();
 //        Calendar calendar = GregorianCalendar.getInstance();

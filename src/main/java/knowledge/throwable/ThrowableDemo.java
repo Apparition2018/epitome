@@ -10,6 +10,7 @@ import java.io.IOException;
 /**
  * Throwable
  * Throwable 有两个子类 Error 和 Exception
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Throwable.html
  * <p>
  * Error 指示运行时环境发生的错误，一般发生在严重的故障时，java 程序通常不捕获此类错误，它们在 java 程序处理范畴之外
  * -    InternalError, NoClassDefFoundError, IOError, StackOverflowError, outOfMemoryError,
@@ -21,8 +22,17 @@ import java.io.IOException;
  * -        NullPointerException, ClassCastException, UnsupportedOperationException
  * -        ArithmeticException, ArrayStoreException, IllegalArgumentException, IndexOutOfBoundException, NumberFormatException, NegativeArraySizeException
  * <p>
+ * 阿里异常日志：
+ * 1.错误码为字符串类型，共 5 位，分成两个部分：错误产生来源+四位数字编号；来源分为 A/B/C，A 来源于用户，B 来源于当前系统，C 来源于第三方服务
+ * 2.Java 类库中定义的可以通过预检查方式规避的 RuntimeException 异常不应该通过 catch 的方式来处理，比如：NullPointerException，IndexOutOfBoundsException 等等
+ * 3.对大段代码进行 try-catch，使程序无法根据不同的异常做出正确的应激反应，也不利于定位问题，这是一种不负责任的表现
+ * 4.事务场景中，抛出异常被 catch 后，如果需要回滚，一定要注意手动回滚事务 ?
+ * 5.不要在 finally 块中使用 return
+ * 6.在调用 RPC、二方包、或动态生成类的相关方法时，捕捉异常必须使用 Throwable 类来进行拦截
+ * 7.定义时区分 unchecked / checked 异常，避免直接抛出 new RuntimeException()，应使用有业务含义的自定义异常。推荐业界已定义过的自定义异常，如：DAOException / ServiceException 等
+ * 8.对于公司外的 http/api 开放接口必须使用 errorCode；而应用内部推荐异常抛出；跨应用间 RPC 调用优先考虑使用 Result 方式，封装 isSuccess()方法、errorCode、errorMessage；而应用内部直接抛出异常即可
+ * <p>
  * 选择 Checked Exception 还是 Unchecked Exception：https://blog.csdn.net/kingzone_2008/article/details/8535287
- * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Throwable.html
  *
  * @author ljh
  * created on 2019/8/8 19:39
