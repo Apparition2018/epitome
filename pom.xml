@@ -10,6 +10,12 @@
         <version>2.4.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <!-- 定义 GAV 遵从以下规则，阿里编程规约：
+     1. GroupID 格式：com.{公司/BU}.业务线 [.子业务线]，最多 4 级
+        com.taobao.jstorm 或 com.alibaba.dubbo.register
+     2. ArtifactID 格式：产品线名-模块名。语义不重复不遗漏，先到中央仓库去查证一下
+        dubbo-client / fastjson-api / jstorm-tool
+     3. Version：主版本号.次版本号.修订号 -->
     <groupId>com.ljh</groupId>
     <artifactId>epitome</artifactId>
     <version>0.0.1-SNAPSHOT</version>

@@ -2,8 +2,8 @@
 
 ---
 ## 参考网站
-1. [SQL Fiddle](http://sqlfiddle.com/)
-2. [TechOnTheNet](https://www.techonthenet.com/)
+1. [TechOnTheNet](https://www.techonthenet.com/)
+2. [SQL Fiddle](http://sqlfiddle.com/)
 3. [建表规范](https://www.cnblogs.com/xphdbky/p/7154434.html)
 4. [SQL 语法速成手册](https://mp.weixin.qq.com/s?__biz=MzU2MTI4MjI0MQ==&mid=2247491550&idx=2&sn=cfe8ed6eea2e61646e5cc3d0b5e96b68)
 ## 课程
@@ -47,6 +47,18 @@
 >3. 当某一列的值全是 NULL 时，count(col)的返回结果为 0，但 sum(col)的返回结果为 NULL，因此使用 sum()时需注意 NPE 问题，避免方法：SELECT IFNULL(SUM(column), 0) FROM table
 >4. 不得使用外键与级联，一切外键概念必须在应用层解决
 >5. 禁止使用存储过程，存储过程难以调试和扩展，更没有移植性
+>6. 数据订正（特别是删除或修改记录操作）时，要先 select，避免出现误删除，确认无误才能执行更新语句
+>7. in 操作能避免则避免，若实在避免不了，需要仔细评估 in 后边的集合元素数量，控制在 1000 个之内
+>```
+>### ORM 映射
+>```
+>1. POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行字段与属性之间的映射
+>2. 不要用 resultClass 当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义<resultMap>；反过来，每一个表也必然有一个<resultMap>与之对应
+>3. sql.xml 配置参数使用：#{}，#param# 不要使用${} 此种方式容易出现 SQL 注入
+>4. iBATIS 自带的 queryForList(String statementName,int start,int size)不推荐使用
+>5. 不允许直接拿 HashMap 与 Hashtable 作为查询结果集的输出
+>6. 不要写一个大而全的数据更新接口。传入为 POJO 类，不管是不是自己的目标更新字段，都进行 update table set c1=value1,c2=value2,c3=value3; 不要更新无改动的字段，一是易出错；二是效率低；三是增加 binlog 存储
+>7. 使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等
 >```
 ---
 ## [数据库名词](https://www.cnblogs.com/dmeck/p/10507936.html)
@@ -148,24 +160,23 @@
 >8. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
 ---
 ## 各层命名规约（阿里编程规约）
-1. Service/DAO层方法命名规约
-    1. 获取单个对象的方法用get做前缀。
-    2. 获取多个对象的方法用list做前缀，复数形式结尾如：listObjects。
-    3. 获取统计值的方法用count做前缀。
-    4. 插入的方法用save/insert(batch)做前缀。
-    5. 删除的方法用remove/delete做前缀。
-    6. 修改的方法用update做前缀。
+1. Service/DAO 层方法命名规约
+   1. 获取单个对象的方法用 get 做前缀。
+   2. 获取多个对象的方法用 list 做前缀，复数结尾，如：listObjects。 
+   3. 获取统计值的方法用 count 做前缀。 
+   4. 插入的方法用 save/insert 做前缀。
+   5. 删除的方法用 remove/delete 做前缀。
+   6. 修改的方法用 update 做前缀。
 2. 领域模型命名规约
-    1. 数据对象：xxxDO，xxx即为数据表名。
-    2. 数据传输对象：xxxDTO，xxx为业务领域相关的名称。
-    3. 展示对象：xxxVO，xxx一般为网页名称。
-    4. POJO是DO/DTO/BO/VO的统称，禁止命名成xxxPOJO。
+   1. 数据对象：xxxDO，xxx 即为数据表名。
+   2. 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。
+   3. 展示对象：xxxVO，xxx 一般为网页名称。
+   4. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO。
 ---
 ## 分层领域模型规约【参考】
-- DO（Data Object）：此对象与数据库表结构一一对应，通过DAO层向上传输数据源对象。
-- DTO（Data Transfer Object）：数据传输对象，Service或Manager向外传输的对象。
-- BO（Business Object）：业务对象，由Service层输出的封装业务逻辑的对象。
-- AO（Application Object）：应用对象，在Web层与Service层之间抽象的复用对象模型，极为贴近展示层，复用度不高。
-- VO（View Object）：显示层对象，通常是Web向模板渲染引擎层传输的对象。
-- Query：数据查询对象，各层接收上层的查询请求。注意超过2个参数的查询封装，禁止使用Map类来传输。
+1. DO（Data Object）：此对象与数据库表结构一一对应，通过 DAO 层向上传输数据源对象。
+2. DTO（Data Transfer Object）：数据传输对象，Service 或 Manager 向外传输的对象。
+3. BO（Business Object）：业务对象，可以由 Service 层输出的封装业务逻辑的对象。
+4. Query：数据查询对象，各层接收上层的查询请求。注意超过 2 个参数的查询封装，禁止使用 Map 类来传输。
+5. VO（View Object）：显示层对象，通常是 Web 向模板渲染引擎层传输的对象。
 ---

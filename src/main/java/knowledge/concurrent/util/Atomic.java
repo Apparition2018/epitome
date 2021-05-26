@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
  * Atomic
  * Atomic 类是通过自旋 CAS 操作 volatile 变量实现的
  * <p>
- * CAS：Compare And Set
+ * CAS：Compare And Swap
  * 1.三个基本操作数：内存地址 V，旧的预期值 A，修改后的新值 B
  * 2.定义：更新一个变量时，只有当变量的预期值 A 和内存地址 V 当中的实际值相同时，才会将内存地址 V 对应的值修改为 B
  * 3.在高并发场景下，CAS 的冲突概率大，会导致经常自旋，影响整体效率

@@ -383,6 +383,12 @@ Spring SpringMVC Mybatis
 >               @Select("select * from user where ${column} = #{value}")
 >               User findByColumn(@Param("column") String column, @Param("value") String value);
 >           ```
+>### Mybatis 标签
+>```
+><isEqual>
+><isNotEmpty>
+><isNotNull>
+>```
 >### Spring 整合 Mybatis
 >1. 导包：spring-webmvc，spring-jdbc，mybatis-spring，commons-dbcp2， mysql-connector-java
 >2. XML 配置 SqlSessionFactoryBean
@@ -420,8 +426,6 @@ Spring SpringMVC Mybatis
 >      </settings>
 >   </configuration>
 >```
->### Mybatis Generator
->
 ---
 ## AOP
 >### Spring AOP

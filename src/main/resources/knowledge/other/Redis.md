@@ -10,6 +10,9 @@
 5. [Windows Redis](https://github.com/microsoftarchive/redis/releases)
 6. [windows下安装redis并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)   
 7. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
+8. [熟悉Redis？说说Redis的各种应用场景核心设计](https://zhuanlan.zhihu.com/p/100460843)
+9. [如何使用Redis统计用户独立访问量](https://www.ximalaya.com/keji/30104600/229090353)
+10. [Redis中bitmap的妙用](https://segmentfault.com/a/1190000008188655)
 ---
 ## NoSQL
 - 非关系型数据库 Not Only SQL
@@ -32,7 +35,7 @@
 - 字符串 String
     - 二进制安全的，存入和获取的数据相同
     - 可存储 512M
-    - 缓存、限流、计数器、分布式锁、分布式 session
+    - 缓存、限流、计数器、时效信息存储、分布式锁、分布式 session
       - 计数器应用场景：
         - 频率控制：接口防刷，密码尝试次数限制
         - 数量统计：请求量统计
@@ -40,7 +43,7 @@
 - 散列 Hash
     - 字符串键值的 Map
     - 可存储 4294967295 个键值对
-    - 用户信息、用户主页访问量、组合查询
+    - 用户信息、用户访问量、组合查询
 - 列表 List
     - 微博未关注人时间轴列表、简单队列  
     ![RPOPLPUSH](https://img3.mukewang.com/608c3a3e0001e0eb13660768-500-284.jpg)
@@ -119,10 +122,12 @@
   - String
   ```
   SET key value [command]                           设置
+  SETBIT key offset value                           设置
   SETNX key value                                   不存在才设置
   GETSET key value                                  设置，并获取旧值
   MSET key value [key value...]                     批量设置
   GET key                                           获取
+  GETBIT key offset                                 获取
   MGET key [key...]                                 批量获取
   APPEND key value                                  追加
   INCR key                                          增一
@@ -137,7 +142,7 @@
   HMSET key field value [field value...]            批量设置
   HSETNX key field                                  不存在才设置
   HGET key field                                    获取
-  HMET key field [field...]                         批量获取
+  HMGET key field [field...]                        批量获取
   HGETALL key                                       获取所有键值
   HKEYS key                                         获取所有键
   HVALS key                                         获取所有值
