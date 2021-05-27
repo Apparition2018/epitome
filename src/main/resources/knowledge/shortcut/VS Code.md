@@ -1,4 +1,5 @@
 # VS Code Shortcut
+- 按Alt不放 → 点下一个修改的地方  multiCursorModifier
 
 ---
 ## View
@@ -6,6 +7,10 @@
 F6                          Focus Next Part
 F11                         Toggle Full Screen                                  全换全屏
 Ctrl + B                    Toggle Side Bar Visibility                          切换侧边栏可见性
+Ctrl + J                    Toggle Panel                                        切换面板
+Ctrl + Q                    Quick Open View                                     快速打开试图
+Ctrl + `                    Toggle Terminal                                     切换终端
+Ctrl + \                    Split Editor                                        切分编辑器
 Ctrl + Shift + D            Show Run and Debug                                  显示调试
 Ctrl + Shift + E            SHow Explorer                                       显示源管理器
 Ctrl + Shift + F            Show Search                                         显示搜索
@@ -44,12 +49,21 @@ F11                         Step Into
 ---
 ## File
 ```
+Alt + Shift + C             Copy Path of Active File                            复制当前文件路径
 Alt + Shift + R             Reveal in File Explorer                             在资源管理器中显示     
+Ctrl + N                    New Untitled File                                   新建无标题文件
+Ctrl + O                    Open File...                                        打开文件
+Ctrl + R                    Open Recent...                                      打开最近
 ```
 ---
 ## Workspaces
 ```
 Ctrl + K F                  Close Workspace                                     关闭工作区
+```
+---
+## Preferences
+```
+Ctrl + K Ctrl + S           Open Keyboard Shortcuts                             打开键盘快捷键
 ```
 ---
 ## Tasks
@@ -64,22 +78,37 @@ Ctrl + Shift + V            Open Previw                                         
 ---
 ## Other
 ```
-Ctrl + ,                    workbench.action.openSettings                       打开设置
 Ctrl + F2                   Change All Occurrences                              更改所有匹配项
 Ctrl + D                    Add Selection To Next Find Match                    将选择添加到下一个查找匹配项
+Ctrl + E                    Go to File...                                       跳转到文件
 Ctrl + G                    Go to Line/Column...                                跳转到行/列
+Ctrl + I                    Trigger Suggest                                     建议
+Ctrl + L                    expandLineSelection                                 选中当前行
 Ctrl + P                    Go to File...                                       跳转到文件
 Ctrl + K Ctrl + F           Format Selection                                    格式化所选
+Ctrl + K Ctrl + Q           Go to Last Edit Location                            跳转到最后修改位置                             
+Ctrl + K M                  Change Language Mode                                改变语言模式
+Ctrk + K P                  workbench.action.files.copyPathOfActiveFile         复制当前文件路径
 Ctrl + K R                  workbench.action.files.revealActiveFileInWindows    在资源管理器中显示当前文件
+Ctrl + T                    Go to Symbol in Workspace...                        跳转到工作空间的 Symbol
+Ctrl + U                    Cursor Undo                                         光标撤回
+Ctrl + Y                    Redo                                                重做
+Ctrl + ,                    workbench.action.openSettings                       打开设置
+Ctrl + [                    Outdent Line                                        反缩进
+Ctrl + ]                    Indent Line                                         缩进
+Ctrl + Delete               deleteWordRight                                     删除右侧字符
 
 Ctrl + SHift + K            Delete Line                                         删除行
 Ctrl + Shift + N            New Window                                          新建窗口           
-Ctrl + Shift + O            Go to Symbol in Editor...                           跳转到 Symbol
+Ctrl + Shift + O            Go to Symbol in Editor...                           跳转到编辑器的 Symbol
 Ctrl + Shift + P            Show All Commands                                   显示所有命令
 Ctrl + Shift + R            Refactor...                                         重构
 Ctrl + Shift + Z            Redo                                                重做
 Ctrl + Shift + \            Go to Bracket                                       转到括号
+Ctrl + Shift + [            Fold                                                折叠
+Ctrl + Shift + ]            Unfold                                              展开
 
+Alt + 1                     workbench.action.openEditorAtIndex1~9               
 Alt + F3                    Show Next Change
 Alt + F5                    Move to Next Change
 Alt + F8                    Go to Next Problem (Error, Warning, Info)
@@ -104,35 +133,3 @@ F12                         Go to Definition                                    
 #                           Ctrl + T                                            在工作区跳转到 Symbol
 ```
 ---
-Ctrl + I                选中当前行                       *
-Ctrl + N                新的无标题文件
-Ctrl + O                打开文件
-Ctrl + Q                Quick Open 视图
-Ctrl + \                拆分编辑器
-Ctrl + `                切换集成终端                        *
-Ctrl + Delete           删除右侧的字符                     *
-
-Ctrl + H                替换
-Ctrl + Alt + Enter      全部替换                        *
-
-
-Ctrl + K M              更改语言模式
-Ctrl + K Z              切换 Zen 模式
-Ctrl + K Ctrl + S       打开键盘快捷方式
-Ctrl + K Ctrl + 0		全部折叠
-Ctrl + K Ctrl + Q       最后编辑位置
-
-Ctrl + K P              复制当前文件路径
-Alt + Shift + C         复制文件路径
-
-Ctrl + W                关闭编辑器/窗口
-Ctrl + Shift + W        关闭窗口
-
-Ctrl + [                行减少缩进
-Ctrl + ]                行缩进
-
-Ctrl + Shift + [        折叠
-Ctrl + Shift + ]        展开
-
-右键文件 → 以进行对比 → 右键需要对比的文件 → 将...与...比较
-按Alt不放 → 点下一个修改的地方  multiCursorModifier
