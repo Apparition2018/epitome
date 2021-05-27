@@ -15,6 +15,7 @@ import lombok.Setter;
  * 接口：实现多态
  * <p>
  * 抽象类和接口的区别，使用场景：https://www.iteye.com/blog/yinny-1152430
+ * Java 8 中的接口和抽象类到底有啥区别？:https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&mid=2247510272&idx=1&sn=ece5d0df4895d267be05b7e79494b3b7&scene=21
  * 抽象类实现接口有什么意义？：https://www.zhihu.com/question/36909455/answer/303566988
  *
  * @author ljh

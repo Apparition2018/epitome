@@ -1,4 +1,5 @@
 # Redis
+![Redis 思维导图](https://img2018.cnblogs.com/blog/967517/201904/967517-20190417162215588-320188667.png)
 - 单进程阻塞式
 - 不适合缓存大尺寸对象(>100kb )
 ---
@@ -10,9 +11,6 @@
 5. [Windows Redis](https://github.com/microsoftarchive/redis/releases)
 6. [windows下安装redis并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)   
 7. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
-8. [熟悉Redis？说说Redis的各种应用场景核心设计](https://zhuanlan.zhihu.com/p/100460843)
-9. [如何使用Redis统计用户独立访问量](https://www.ximalaya.com/keji/30104600/229090353)
-10. [Redis中bitmap的妙用](https://segmentfault.com/a/1190000008188655)
 ---
 ## NoSQL
 - 非关系型数据库 Not Only SQL
@@ -43,7 +41,7 @@
 - 散列 Hash
     - 字符串键值的 Map
     - 可存储 4294967295 个键值对
-    - 用户信息、用户访问量、组合查询
+    - 用户信息、用户访问量
 - 列表 List
     - 微博未关注人时间轴列表、简单队列  
     ![RPOPLPUSH](https://img3.mukewang.com/608c3a3e0001e0eb13660768-500-284.jpg)
@@ -53,6 +51,10 @@
 - 有序集合 Sorted Set
     - 从小到大
     - 排行榜、构建索引数据
+>### 参考网站
+>1. [熟悉Redis？说说Redis的各种应用场景核心设计](https://zhuanlan.zhihu.com/p/100460843)
+>2. [Redis中bitmap的妙用](https://segmentfault.com/a/1190000008188655)
+>3. [Redis中Hash实现条件查询](https://www.jianshu.com/p/98b9a56cd036)
 ---
 ## Redis 数量控制
 1. 并发问题  
@@ -115,6 +117,8 @@
   TYPE key                                          返回类型
   EXPIRE key seconds                                设置过期时间，秒
   EXPIREAT key timestamp                            设置过期时间点，时间戳
+  PEXPIRE key milliseconds                          设置过期时间，毫秒
+  PEXPIREAT key milliseconds-timestamp              设置过期时间点，时间戳
   TTL key                                           返回生存时间，秒
   PERSIST key                                       持久保持
   MOVE key db                                       移动

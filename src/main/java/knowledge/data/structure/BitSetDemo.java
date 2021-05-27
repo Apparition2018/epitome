@@ -5,10 +5,10 @@ import java.util.BitSet;
 import static l.demo.Demo.p;
 
 /**
- * BitSet (未完待续)
+ * BitSet
  * 实现了一个按需增长的位向量。位 set 的每个组件都有一个 boolean 值。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/BitSet.html
- * https://blog.csdn.net/jiangnan2014/article/details/53735429
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/BitSet.html
+ * Java中BitSet的使用及详解：https://blog.csdn.net/jiangnan2014/article/details/53735429
  * <p>
  * boolean	    get(int bitIndex)                   返回指定索引处的位值
  * BitSet	    get(int fromIndex, int toIndex)     返回一个新的 BitSet，它由此 BitSet 中从 fromIndex（包括）到 toIndex（不包括）范围内的位组成
