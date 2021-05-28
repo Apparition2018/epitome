@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @author Arsenal
  * created on 2021/5/11 1:47
  */
-public class DistributedLocks {
+public class RedisDistributedLocks {
 
     public static final String MONEY = "MONEY";
     public static final String MONEY_LOCK = "MONEY_LOCK";
@@ -75,8 +75,6 @@ public class DistributedLocks {
     public void test() throws InterruptedException {
         try (Jedis jedis = JEDIS_POOL.getResource()) {
             jedis.set(MONEY, "1000");
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         Runnable runnable = lock();
         for (int i = 0; i < 10; i++) {
@@ -86,8 +84,6 @@ public class DistributedLocks {
         TimeUnit.SECONDS.sleep(3);
         try (Jedis jedis = JEDIS_POOL.getResource()) {
             System.out.println(Integer.parseInt(jedis.get(MONEY)));
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

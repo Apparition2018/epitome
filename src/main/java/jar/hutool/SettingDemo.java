@@ -44,7 +44,7 @@ public class SettingDemo extends Demo {
         p(demoSetting.toBean(new SettingBean()));
 
         // 设置值
-        setting.set("demo", "max-active", "50");
+        setting.setByGroup("max-active", "demo", "50");
         // 持久化
         setting.store(HU_DEMO_ABSOLUTE_PATH + "example_copy.setting");
     }

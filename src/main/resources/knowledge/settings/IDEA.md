@@ -35,6 +35,20 @@
     1. Settings → Editor → Inspections
     2. 搜索并勾选 Serializable class without 'serialVersionUID'
 ---
+## 加快编译速度
+>### 调整 JVM 参数
+>   ```
+>   1. Help → Edit Custom VM Options... | idea64.exe.vmoptions
+>   2. 设置 -Xms 和 -Xmx
+>   ```
+>### Use compiler Eclipse
+>   ```
+>   1. Settings → Build, Execution, Deployment → Compiler → Java Compiler
+>   2. Use compiler: Eclipse
+>   3. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing
+>   4. Detect compiler automatically 取消勾选
+>   ```
+---
 ## HTML 代码不换行
     1. Settings → Editor → Code Style → HTML
     2. Other

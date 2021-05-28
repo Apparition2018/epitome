@@ -43,18 +43,19 @@
     - 可存储 4294967295 个键值对
     - 用户信息、用户访问量
 - 列表 List
-    - 微博未关注人时间轴列表、简单队列  
+    - 简单队列、定时排行榜、最近浏览  
     ![RPOPLPUSH](https://img3.mukewang.com/608c3a3e0001e0eb13660768-500-284.jpg)
 - 集合类型 Set
     - 可存储 4294967295
     - 赞、踩、标签、唯一性数据、数据对象之间的关系
 - 有序集合 Sorted Set
     - 从小到大
-    - 排行榜、构建索引数据
+    - 实时排行榜、构建索引数据
 >### 参考网站
 >1. [熟悉Redis？说说Redis的各种应用场景核心设计](https://zhuanlan.zhihu.com/p/100460843)
 >2. [Redis中bitmap的妙用](https://segmentfault.com/a/1190000008188655)
 >3. [Redis中Hash实现条件查询](https://www.jianshu.com/p/98b9a56cd036)
+>4. [Redis高并发场景设计，阿里Java架构师100分钟助你搞定大厂项目实战！](https://www.bilibili.com/video/av81324631)
 ---
 ## Redis 数量控制
 1. 并发问题  
@@ -198,6 +199,7 @@
   ZREVRANGE key start pop [WITHSCORES]              倒叙获取
   ZSCORE key member                                 获取分数
   ZRANK key mebmer                                  获取排名
+  ZUNIONSTORE destination numkeys key [key ...]     并集并另外存储
   ZREM key member [member...]                       删除
   ZREMRANGEBYRANK key start stop                    删除排名区间成员
   ZREMRANGEBYSCORE key min max                      删除分数区间成员
