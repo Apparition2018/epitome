@@ -9,8 +9,6 @@ import java.util.stream.IntStream;
 
 /**
  * Redis List 类型用例
- * <p>
- * redis 存储list_Redis经典案例场景：https://blog.csdn.net/weixin_39530437/article/details/111616754
  *
  * @author ljh
  * created on 2021/5/27 14:41

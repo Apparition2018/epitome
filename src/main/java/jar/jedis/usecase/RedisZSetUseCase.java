@@ -24,9 +24,9 @@ public class RedisZSetUseCase {
     public static class HotBooks {
 
         private static final String HOT_BOOKS_KEY = "hot_articles";
-        private static final String HOT_BOOKS_20210501 = HOT_BOOKS_KEY.concat("20210501");
-        private static final String HOT_BOOKS_20210502 = HOT_BOOKS_KEY.concat("20210502");
-        private static final String HOT_BOOKS_20210503 = HOT_BOOKS_KEY.concat("20210503");
+        private static final String HOT_BOOKS_20210501 = HOT_BOOKS_KEY.concat(":20210501");
+        private static final String HOT_BOOKS_20210502 = HOT_BOOKS_KEY.concat(":20210502");
+        private static final String HOT_BOOKS_20210503 = HOT_BOOKS_KEY.concat(":20210503");
 
         @Test
         public void testHotBooks() {

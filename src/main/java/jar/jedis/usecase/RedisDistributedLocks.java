@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 分布式锁
+ * <p>
+ * Redis分布式锁的正确实现方式：https://www.cnblogs.com/moxiaotao/p/10829799.html
  *
  * @author Arsenal
  * created on 2021/5/11 1:47
@@ -22,10 +24,14 @@ public class RedisDistributedLocks {
     public static final JedisPool JEDIS_POOL;
 
     static {
-        JedisPoolConfig poolConfig = new JedisPoolConfig();
-        poolConfig.setMaxTotal(10);
-        poolConfig.setMaxIdle(5);
-        JEDIS_POOL = new JedisPool(poolConfig, "127.0.0.1", 6379);
+        JedisPoolConfig config = new JedisPoolConfig();
+        config.setMaxTotal(20);
+        config.setMaxIdle(10);
+        config.setMinIdle(5);
+        config.setTestOnBorrow(true);
+        config.setTestOnReturn(false);
+        config.setBlockWhenExhausted(true);
+        JEDIS_POOL = new JedisPool(config, "127.0.0.1", 6379);
     }
 
     /**
@@ -113,7 +119,7 @@ public class RedisDistributedLocks {
             }
             return false;
         }
-        
+
         public Random getRandom() {
             return random;
         }

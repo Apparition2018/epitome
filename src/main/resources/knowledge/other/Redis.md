@@ -33,7 +33,7 @@
 - 字符串 String
     - 二进制安全的，存入和获取的数据相同
     - 可存储 512M
-    - 缓存、限流、计数器、时效信息存储、分布式锁、分布式 session
+    - 缓存、限流、计数器、自增 id、时效信息存储、分布式 session、分布式锁
       - 计数器应用场景：
         - 频率控制：接口防刷，密码尝试次数限制
         - 数量统计：请求量统计
@@ -41,13 +41,13 @@
 - 散列 Hash
     - 字符串键值的 Map
     - 可存储 4294967295 个键值对
-    - 用户信息、用户访问量
+    - 各种信息详情、用户访问量
 - 列表 List
-    - 简单队列、定时排行榜、最近浏览  
+    - 简单队列、定时排行榜、最近浏览、最新新闻、省市区表、字典表
     ![RPOPLPUSH](https://img3.mukewang.com/608c3a3e0001e0eb13660768-500-284.jpg)
 - 集合类型 Set
     - 可存储 4294967295
-    - 赞、踩、标签、唯一性数据、数据对象之间的关系
+    - 赞、踩、标签、唯一性数据、抽奖、数据对象之间的关系
 - 有序集合 Sorted Set
     - 从小到大
     - 实时排行榜、构建索引数据
@@ -55,7 +55,11 @@
 >1. [熟悉Redis？说说Redis的各种应用场景核心设计](https://zhuanlan.zhihu.com/p/100460843)
 >2. [Redis中bitmap的妙用](https://segmentfault.com/a/1190000008188655)
 >3. [Redis中Hash实现条件查询](https://www.jianshu.com/p/98b9a56cd036)
->4. [Redis高并发场景设计，阿里Java架构师100分钟助你搞定大厂项目实战！](https://www.bilibili.com/video/av81324631)
+>4. [redis 存储list_Redis经典案例场景](https://blog.csdn.net/weixin_39530437/article/details/111616754)
+>5. [Redis高并发场景设计，阿里Java架构师100分钟助你搞定大厂项目实战！](https://www.bilibili.com/video/av81324631)
+>6. [跟我一起学Redis之五种基本类型及其应用场景举例](https://zhuanlan.zhihu.com/p/263390414)
+>7. [Redis实战场景中相关问题](https://www.shuzhiduo.com/A/RnJWKG9BJq/) 
+>8. [Redis 数据类型及应用场景](https://segmentfault.com/a/1190000012212663)
 ---
 ## Redis 数量控制
 1. 并发问题  
@@ -127,12 +131,14 @@
   - String
   ```
   SET key value [command]                           设置
-  SETBIT key offset value                           设置
   SETNX key value                                   不存在才设置
+  SETRANGE key offset value                         替换
+  SETBIT key offset value                           设置 bit
   GETSET key value                                  设置，并获取旧值
   MSET key value [key value...]                     批量设置
   GET key                                           获取
-  GETBIT key offset                                 获取
+  GETRANGE key start end                            截取
+  GETBIT key offset                                 获取 bit
   MGET key [key...]                                 批量获取
   APPEND key value                                  追加
   INCR key                                          增一
@@ -163,13 +169,15 @@
   RPUSHX key ele [ele...]                           存在才添加
   LPUSHX key ele [ele...]                           存在才头部添加
   LINSERT key before|after pivot ele                在元素前或后添加
-  LSET key index ele                                索引添加
+  LSET key index ele                                索引设置
   RPOPLPUSH source destination                      移除最后并添加到另外最后
   LRANGE key start stop                             获取
     LRANGE key 0 -1                                 获取全部
   LINDEX key index                                  索引获取
   RPOP key [count]                                  移除
   LPOP key [count]                                  头部移除
+  BRPOP key [key ...] timeout                       阻塞移除
+  BLPOP key [key ...] timeout                       阻塞头部移除
   LREM key count element                            删除
   LTRIM key start stop                              范围删除
   LLEN key                                          长度
