@@ -18,24 +18,22 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // let 的作用域在声明的块或子块中
-            function varTest() {
+            function letTest () {
                 let x = 1;
-                if (1) { var x = 2; console.log(x); }   // 2
+                if (1) { let x = 2; console.log(x); }   // 2
                 console.log(x);                         // 1
             }
 
             // var 的作用域在整个封闭函数
-            function varTest() {
+            function varTest () {
                 var x = 1;
                 if (1) { var x = 2; console.log(x); }   // 2
                 console.log(x);                         // 2
             }
 
-            // 在程序或函数的顶层，var会在全局对象上创造一个属性
+            // 在程序或函数的顶层，var 成为容器对象的属性
             var x = 1;
             let y = 1;
             this.x; // 1
@@ -43,33 +41,41 @@
         </script>
     </section>
 
-    <section class="code-wrap h350">
+    <section class="code-wrap h500">
         <div class="css-live-wrap w33p">
             <div class="caption">通过 let 模仿私有接口</div>
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 构造函数
-            var SomeConstructor;
+            var Thing;
             {
-                let privateScope = {};
+                let privateScope = new WeakMap();
+                let counter = 0;
 
-                SomeConstructor = function SomeConstructor() {
+                Thing = function () {
                     this.someProperty = 'foo';
-                    privateScope.hiddenProperty = 'bar';
+
+                    privateScope.set(this, {
+                        hidden: ++counter,
+                    })
                 };
-                SomeConstructor.prototype.showPublic = function () { return this.someProperty };
-                SomeConstructor.prototype.showPrivate = function () { return privateScope.hiddenProperty };
+
+                Thing.prototype.showPublic = function () {
+                    return this.someProperty
+                };
+                Thing.prototype.showPrivate = function () {
+                    return privateScope.get(this).hidden
+                };
             }
 
-            var myInstance = new SomeConstructor();
-            myInstance.showPublic();    // 'foo'
-            myInstance.someProperty;    // 'foo'
-            myInstance.showPrivate();   // 'bar'
-            myInstance.privateScope;    // undefined
+            console.log(typeof privateScope);   // undefined
+
+            var thing = new Thing();
+            console.log(thing);                 // Thing {someProperty: "foo"}
+            thing.showPublic();                 // "foo"
+            thing.showPrivate();                // 1
         </script>
     </section>
 
@@ -79,13 +85,11 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 在同一个函数或同一个作用域中，不能用 let 重复定义一个变量
             if (1) {
                 let x;
-                let x; // SyntaxError: Identifier 'x' has already been declared
+                // let x; // SyntaxError: Identifier 'x' has already been declared
             }
 
             // 在 ECMAScript 2015 中，let 绑定不受变量提升的约束

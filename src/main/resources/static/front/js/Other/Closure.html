@@ -24,7 +24,7 @@
         </div>
         <script class="code w67p" contenteditable="true">
             function init() {
-                var name = "Closure";       // 局部变量
+                let name = "Closure";       // 局部变量
                 function displayName() {    // 内部函数，一个闭包
                     console.log(name);      // 使用了父函数中声明的变量
                 }
@@ -36,17 +36,15 @@
 
     <section class="code-wrap h650">
         <div class="css-live-wrap w33p">
-            <div class="caption">闭包实现模块模式（module pattern）</div>
+            <div class="caption">闭包实现模块模式 (module pattern)</div>
             <div class="caption">用闭包来定义公共函数，并令其可以访问私有函数和变量</div>
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 一个计数器
-            var Counter = (function () {
-                var privateCounter = 0;
+            let Counter = (function () {
+                let privateCounter = 0;
                 function changeBy(val) {
                     privateCounter += val;
                 }
@@ -64,8 +62,8 @@
             Counter.value();    // 0
 
             // 多个计数器
-            var makeCounter = function () {
-                var privateCounter = 0;
+            let makeCounter = function () {
+                let privateCounter = 0;
                 function changeBy(val) {
                     privateCounter += val;
                 }
@@ -76,8 +74,8 @@
                 }
             };
 
-            var Counter1 = makeCounter();
-            var Counter2 = makeCounter();
+            let Counter1 = makeCounter();
+            let Counter2 = makeCounter();
         </script>
     </section>
 
@@ -124,8 +122,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 在创建新的对象或者类时，方法通常应该关联于对象的原型，而不是定义到对象的构造器中
             function MyObject(name, msg) {

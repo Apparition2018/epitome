@@ -22,11 +22,11 @@
             </div>
         </div>
         <script class="code w67p" contenteditable="true">
-            // 不要用for in语句对数组进行遍历
+            // 不要用 for in 语句对数组进行遍历
             // for in 会遍历到数组的后面添加的原型链属性，不会遍历到原生原型链上的属性
-            var arr = [1, 2, 3, 4];
+            let arr = [1, 2, 3, 4];
             Array.prototype.age = 13;
-            for (var i in arr) {
+            for (let i in arr) {
                 console.log(arr[i]); // 1 2 3 4 13，
             }
         </script>

@@ -38,7 +38,7 @@
 
     <section class="code-wrap h250">
         <div class="css-live-wrap w33p">
-            <div class="caption">箭头函数不绑定 this，arguments</div>
+            <div class="caption">箭头函数不绑定 this 和 arguments</div>
             <div class="caption">它会从自己的作用域链的上一层继承 this, arguments</div>
             <div class="centered">
             </div>
@@ -47,12 +47,12 @@
             function Person() {
                 this.age = 0;
                 setInterval(() => {
-                    this.age++; // this 正确地指向 person 对象
+                    this.age++; // this 指向 person 对象
                 }, 1000);
             }
 
             function foo(n) {
-                let f = () => arguments[0] + n; // 隐式绑定 foo 函数的 arguments 对象
+                let f = () => arguments[0] + n; // arguments 指向 foo 函数
                 return f();
             }
             foo(4); // 8

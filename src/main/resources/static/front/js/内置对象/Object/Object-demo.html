@@ -165,7 +165,7 @@
             </div>
         </div>
         <script>
-            var p1 = {};
+            let p1 = {};
             Object.defineProperty(p1, 'name', {
                 value: '张三',
                 writable: true,
@@ -173,7 +173,7 @@
                 configurable: false
             });
 
-            var p2 = {};
+            let p2 = {};
             Object.defineProperties(p2, {
                 name: {
                     value: '张三',
@@ -204,12 +204,12 @@
         </div>
         <script class="code w67p" contenteditable="true">
             // 指向构造器的原型对象
-            var arr1 = new Array(1, 2, 3);
+            let arr1 = new Array(1, 2, 3);
             arr1.__proto__ === Array.prototype; // true
 
             // 指向 Object.create() 设置的原型
-            var o = { length: 3, "0": 1, "1": 2, "2": 3 };
-            var arr2 = Object.create(o);
+            let o = { length: 3, "0": 1, "1": 2, "2": 3 };
+            let arr2 = Object.create(o);
             arr2.__proto__ === o;               // true
         </script>
     </section>
@@ -224,7 +224,7 @@
             </div>
         </div>
         <script class="code w67p" contenteditable="true">
-            var o = {};
+            let o = {};
 
             o.a = 1;
             // 等同于：

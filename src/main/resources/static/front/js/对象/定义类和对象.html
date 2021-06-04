@@ -32,10 +32,8 @@
                 </ul>
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
-            var oCar = {
+            let oCar = {
                 "color": "blue",
                 "doors": 4,
                 "mpg": 25,
@@ -53,14 +51,12 @@
                 </ul>
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
-            var oCar = new Object;
+            let oCar = new Object;
             oCar.color = "blue";
             oCar.doors = 4;
             oCar.mpg = 25;
-            oCar.showColor = function () { consolelog(this.color) }
+            oCar.showColor = function () { console.log(this.color) }
         </script>
     </section>
 
@@ -74,13 +70,11 @@
                 </ul>
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
-            function showColor() { console.log(this.color) };
+            function showColor() { console.log(this.color) }
 
             function createCar(sColor, iDoors, iMpg) {
-                var oTempCar = new Object;
+                let oTempCar = new Object;
                 oTempCar.color = sColor;
                 oTempCar.doors = iDoors;
                 oTempCar.mpg = iMpg;
@@ -100,8 +94,6 @@
                 </ul>
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
             function Car(sColor, iDoors, iMpg) {
                 this.color = sColor;
@@ -127,8 +119,6 @@
                 </ul>
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
             function Car() { }
 
@@ -168,8 +158,8 @@
 
             Car.prototype.showColor = function () { console.log(this.color) };
 
-            var oCar1 = new Car("red", 4, 23);
-            var oCar2 = new Car("blue", 3, 25);
+            let oCar1 = new Car("red", 4, 23);
+            let oCar2 = new Car("blue", 3, 25);
 
             oCar1.drivers.push("Bill");
 
@@ -187,8 +177,6 @@
                 </ul>
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
             function Car(sColor, iDoors, iMpg) {
                 this.color = sColor;

@@ -17,8 +17,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p"  contenteditable="true">
             // isPrototypeOf(): 用于测试一个对象是否存在于另一个对象的原型链上
             function A() { }
@@ -28,7 +26,7 @@
             B.prototype = Object.create(A.prototype);
             C.prototype = Object.create(B.prototype);
 
-            var c = new C();
+            let c = new C();
 
             B.prototype.isPrototypeOf(c);      // true
             C.prototype.isPrototypeOf(c);      // true

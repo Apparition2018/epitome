@@ -54,7 +54,7 @@
 
     <!-- http://www.cnblogs.com/xiaohuochai/p/6381029.html -->
     <!-- https://www.cnblogs.com/rubylouvre/archive/2009/10/14/1583362.html -->
-    <section class="code-wrap h100vh">
+    <section class="code-wrap h1100">
         <div class="css-live-wrap w33p">
             <div class="caption">能力检测 （特性检测）</div>
             <div class="caption">判断当前的浏览器是否支持特定的能力</div>
@@ -73,7 +73,7 @@
             /********** 测试任何对象的某个特性是否存在 **********/
             // 在IE中 typeof xhr.open 会返回 "unknown"
             function isHostMethod(object, property) {
-                var t = typeof object[property];
+                let t = typeof object[property];
                 return t === "function" || (!!(t === "object" && object[property])) || t === "unknown";
             }
             console.log(isHostMethod(window, 'screen')); // true
@@ -149,18 +149,16 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            // 在 IE8以及更早的版本中存在着这样一个 bug：
+            // 在 IE8 以及更早的版本中存在着这样一个 bug：
             // 如果某个实例属性与标记为 [[DontEnum]] 的某个原型属性同名，那么这个实例属性不会出现在 for-in 循环中
-            var hasDontEnumQuirk = function () {
-                var o = {
+            let hasDontEnumQuirk = function () {
+                let o = {
                     toString: function () {
 
                     }
                 };
-                for (var prop in o) {
+                for (let prop in o) {
                     if (prop === "toString") {
                         return false;
                     }
@@ -170,14 +168,14 @@
             console.log(hasDontEnumQuirk);
 
             // Safari3 之前的版本会枚举被隐藏的属性
-            var hasEnumShadowsQuirk = function () {
-                var o = {
+            let hasEnumShadowsQuirk = function () {
+                let o = {
                     toString: function () {
 
                     }
                 };
-                var count = 0;
-                for (var prop in o) {
+                let count = 0;
+                for (let prop in o) {
                     if (prop === "toString") {
                         count++;
                     }
@@ -197,8 +195,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
 
         </script>
