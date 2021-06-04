@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <base target="_blank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>Functions-demo</title>
@@ -13,8 +14,10 @@
 <body>
     <section class="code-wrap h250">
         <div class="css-live-wrap w33p">
-            <div class="caption">默认参数值</div>
-            <div class="caption">允许在没有值或undefined被传入时使用默认形参</div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Default_parameters">默认参数值</a>
+            </div>
+            <div class="caption">允许在没有值或 undefined 被传入时使用默认形参</div>
             <div class="default centered">
             </div>
         </div>
@@ -27,13 +30,15 @@
                 return [a, b, c, d, e, f, g];
             }
 
-            defaults.call({ value: '?' }); //  [undefined, 5, 5, ":P", {value: "?"}, Arguments(0), "?"]
+            defaults.call({ value: '?' }); // [undefined, 5, 5, ":P", {value: "?"}, Arguments(0), "?"]
         </script>
     </section>
 
     <section class="code-wrap h350">
         <div class="css-live-wrap w33p">
-            <div class="caption">剩余参数 function(a, b, ...theArgs) {}</div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Rest_parameters">剩余参数 function(a, b, ...theArgs) {}</a>
+            </div>
             <div class="caption">允许我们将一个不定数量的参数表示为一个数组</div>
             <div class="rest centered">
             </div>
@@ -76,7 +81,7 @@
     <section class="code-wrap h250">
         <div class="css-live-wrap w33p">
             <div class="caption">getter</div>
-            <div class="caption">get语法将对象属性绑定到查询该属性时将被调用的函数</div>
+            <div class="caption">get 语法将对象属性绑定到查询该属性时将被调用的函数</div>
             <div class="getter centered">
             </div>
         </div>
@@ -98,7 +103,7 @@
     <section class="code-wrap h300">
         <div class="css-live-wrap w33p">
             <div class="caption">setter</div>
-            <div class="caption">set语法将对象属性绑定到要调用的函数</div>
+            <div class="caption">set 语法将对象属性绑定到要调用的函数</div>
             <div class="setter centered">
             </div>
         </div>

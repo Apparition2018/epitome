@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- 监测childList的变动
 	https://www.cnblogs.com/tugenhua0707/p/6849948.html -->
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -16,14 +16,14 @@
 	</div>
 
 	<script type="text/javascript">
-		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+		let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 
-		var list = document.querySelector('ol');
+		let list = document.querySelector('ol');
 
 		// 使用 MutationObserver 构造函数，新建一个观察器实例，同时指定该实例的回调函数
-		var Observer = new MutationObserver(function (mutations, instance) {
-			console.log(mutations); // 变动数组； [MutationRecord, MutationRecord, MutationRecord, MutationRecord]
-			console.log(instance); // 观察器实例；   MutationObserver {}
+		let Observer = new MutationObserver(function (mutations, instance) {
+			console.log(mutations); // 变动数组；[MutationRecord, MutationRecord, MutationRecord, MutationRecord]
+			console.log(instance); // 观察器实例；   MutationObserver{}
 			mutations.forEach(function (mutation) {
 				console.log(mutation);
 			})

@@ -17,15 +17,13 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var a, b, c, rest;
+            let a, b, c, rest;
 
             // 解构数组
             [a, b, ...rest] = [10, 20, 30, 40];
 
-            // 解构对象, 要 ()
+            // 解构对象, 要加 ()
             ({ a, b, ...rest } = { a: 10, b: 20, c: 30, d: 40 });
 
             [a, b] = [10, 20, 30];
@@ -41,13 +39,11 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var a = 1, b = 3;
-            [a, b] = [b, a];
-            a; // 3
-            b; // 1
+            let x = 1, y = 3;
+            [x, y] = [y, x];
+            x; // 3
+            y; // 1
         </script>
     </section>
 
@@ -57,10 +53,8 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var people = [
+            let people = [
                 {
                     name: 'Jack',
                     interest: ['Math', 'Football']
@@ -71,7 +65,7 @@
                 }
             ];
 
-            for (var { name: x, interest: [y, z] } of people) {
+            for (let { name: x, interest: [y, z] } of people) {
                 console.log("Name: " + x + ", interest: " + y + "-" + z);
             }
             // Name: Jack, interest: Math-Football
@@ -85,14 +79,12 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function whois({ displayName: displayName, fullName: { firstName: name } }) {
                 console.log(displayName + " is " + name);
             }
 
-            var user = {
+            let user = {
                 id: 41,
                 displayName: 'Henry',
                 fullName: {

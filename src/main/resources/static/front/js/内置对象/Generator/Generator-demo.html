@@ -93,14 +93,14 @@
         </div>
         <script class="code w60p" contenteditable="true">
             function* gNext(x) {
-                var y = 2 * (yield (x + 1));
-                var z = yield (y / 3);
+                let y = 2 * (yield (x + 1));
+                let z = yield (y / 3);
                 return (x + y + z);
             }
 
-            var gN = gNext(5);
+            let gN = gNext(5);
 
-            var boxNext = document.getElementsByClassName('box-next')[0];
+            let boxNext = document.getElementsByClassName('box-next')[0];
             boxNext.innerHTML = JSON.stringify(gN.next());      // 5 + 1 = 6
             boxNext.innerHTML += JSON.stringify(gN.next(12));   // 2 * 12 / 3 = 8
             boxNext.innerHTML += JSON.stringify(gN.next(13));   // 5 + 2 * 12 + 13 = 42
@@ -121,7 +121,7 @@
                 }
             }
 
-            var gTR = gThrowReturn();
+            let gTR = gThrowReturn();
 
             gTR.next();
             gTR.throw(new Error("Something went wrong"));
@@ -169,8 +169,8 @@
         </div>
         <script class="code w60p" contenteditable="true">
             // 不使用 Generator 写法
-            var ticking = true;
-            var clock = function () {
+            let ticking = true;
+            let clock = function () {
                 if (ticking)
                     conosle.log('Tick!');
                 else
@@ -179,7 +179,7 @@
             }
 
             // 使用 Generator 写法
-            var clock = function* () {
+            let clock2 = function* () {
                 while (true) {
                     console.log('Tick!');
                     yield;
