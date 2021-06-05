@@ -21,3 +21,9 @@
     8. Where do you prefer placing config for Babel, PostCSS, ESLint, etc.?     In dedicated config files
     9. Save this as a preset for future projects?           N                    
 ---
+## 安装和使用
+    1. npm i axios
+    2. public 下新建 data.json 文件
+    3. import axios from 'axios'
+    4. axios.get('/data.json').then((res) => { console.log(res) }
+---

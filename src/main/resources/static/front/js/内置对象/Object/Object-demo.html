@@ -78,6 +78,11 @@
                             <br/>}); // {name: "张三", age: 18}</td>
                     </tr>
                     <tr>
+                    <td>Object.freeze()</td>
+                    <td>冻结一个对象，注意是浅冻结，只冻结第一层</td>
+                    <td></td>
+                </tr>
+                <tr>
                         <td>Object.getOwnPropertyDescriptor()</td>
                         <td>返回指定对象上一个自有属性对应的属性描述符</td>
                         <td>
@@ -97,10 +102,16 @@
                             <br/>包括不可枚举属性但不包括Symbol值作为名称的属性
                         </td>
                         <td>var arr = [1, 2, 3];
-                            <br/>Object.getOwnPropertySymbols(arr);
+                            <br/>Object.getOwnPropertyNames(arr);
                             <br/>// ["0", "1", "2", "length"]</td>
                     </tr>
                     <tr>
+                    <td>Object.getOwnPropertySymbols()</td>
+                    <td>返回一个指定对象自身的所有 Symbol 属性组成的数组</td>
+                    <td>var o = { a: 1, [Symbol('sym')]: 'sym' };
+                        <br/>Object.getOwnPropertySymbols(o); // [Symbol(sym)]</td>
+                </tr>
+                <tr>
                         <td>Object.keys()</td>
                         <td>返回一个指定对象自身的所有可枚举属性名组成的数组，
                             <br/>数组中属性名排列顺序和使用 for...in 返回的顺序一致 </td>
@@ -112,12 +123,6 @@
                         <td>Object.preventExtensions()</td>
                         <td>让一个对象变的不可扩展，也就是永远不能再添加新的属性</td>
                         <td>Object.preventExtensions(obj)</td>
-                    </tr>
-                    <tr>
-                        <td>Object.getOwnPropertySymbols()</td>
-                        <td>返回一个指定对象自身的所有 Symbol 属性组成的数组</td>
-                        <td>var o = { a: 1, [Symbol('sym')]: 'sym' };
-                            <br/>Object.getOwnPropertySymbols(o); // [Symbol(sym)]</td>
                     </tr>
                     <tr>
                         <td>Object.getPrototypeOf()</td>

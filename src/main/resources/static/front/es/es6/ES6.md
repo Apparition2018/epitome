@@ -6,11 +6,79 @@
 1. [es.xiecheng.live](ECMAScript2015~2020语法全解析)
 2. [带你快速入坑ES6](https://www.imooc.com/learn/1246)
 ---
-## 声明常量
+## const
+1. 不允许重复声明
+2. 不属于顶层对象 window
+3. 不存在变量提升
+4. 暂时性死区
+5. 块级作用域
+6. 优先选择 const，再次 let
 ```javascript
+console.log(es);
 var es = 'es6';
 es = 'es2015';
+console.log(es);        // es2015
+
+// ES3
+var BASE_URL = 'http://es.xiecheng.live';
+BASE_URL = 'http://www.imooc.com';
+console.log(BASE_URL);  // http://www.imooc.com
+
+// ES5
 console.log(es);
+Object.defineProperty(window, 'es', {
+    value: 'es6',
+    writable: false
+})
+es = 'es2015';
+console.log(es);        // es6
+console.log(window.es); // es6
+
+// ES6
+console.log(es);        // Uncaught ReferenceError: Cannot access 'es' before initialization
+const es = 'es6';
+console.log(window.es); // undefined
+es = 'es2015';
+console.log(es);        // Uncaught TypeError: Assignment to constant variable.
+const es2;
+es2 = 'es6';            // Uncaught SyntaxError: Missing initializer in const declaration
+const es = 'es2015';    // Uncaught SyntaxError: Identifier 'es' has already been declared
+if (true) {
+    const str = 'es6';
+}
+console.log(str);       // Uncaught ReferenceError: str is not defined
+
+const arr = ['es6', 'es7', 'es8'];
+arr[0] = 'es2015';
+console.log(arr);       // ["es2015", "es7", "es8"]
+const arr2 = ['es6', 'es7', 'es8'];
+Object.freeze(arr2);
+arr2[0] = 'es2015';
+console.log(arr2);      // ["es6", "es7", "es8"]
+const esObj = {
+    name: 'es6',
+    year: 2015,
+    extension: ['es7', 'es8', 'es9']
+};
+Object.freeze(esObj);
+esObj.extension[0] = 'es2016';
+console.log(esObj);     // {name: "es6", year: 2015, extension: ["es2016", "es8", "es9"]}
+const esObj2 = {
+    name: 'es6',
+    year: 2015,
+    extension: ['es7', 'es8', 'es9']
+};
+myFreeze(esObj2);
+esObj2.extension[0] = 'es2016';
+console.log(esObj2);    // {name: "es6", year: 2015, extension: ["es2016", "es8", "es9"]}
+function myFreeze(obj) {
+    Object.freeze(obj);
+    Object.keys(obj).forEach(function(key) {
+        if (typeof obj[key] === 'object') {
+            myFreeze(obj[key]);
+        }
+    })
+}
 ```
 ---
 ## 箭头函数

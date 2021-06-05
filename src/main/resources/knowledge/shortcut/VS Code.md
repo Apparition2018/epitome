@@ -76,6 +76,11 @@ Ctrl + Shift + B            Run Build Task                                      
 Ctrl + Shift + V            Open Previw                                         打开预览
 ```
 ---
+## Live Server
+```
+Alt + L Alt + O             Open with Live Server                               使用 Live Server 打开
+```
+---
 ## Other
 ```
 Ctrl + F2                   Change All Occurrences                              更改所有匹配项
@@ -113,6 +118,8 @@ Alt + F3                    Show Next Change
 Alt + F5                    Move to Next Change
 Alt + F8                    Go to Next Problem (Error, Warning, Info)
 Alt + F12                   Peek Definition                                     速览定义
+
+Alt + Shift + ↑ | ↓         Copy Line Up | Down                                 复制行
 
 F1                          Show All Commands                                   显示所有命令
 F2                          Rename Symbol                                       重命名 Symbol
