@@ -44,7 +44,7 @@
 >Vue.use(VueRouter)
 >
 >// 1. 定义 (路由) 组件
->// 可以从其他文件 import 进来
+>// 可以从其他文件 import 进来（立即加载组件）
 >const Bar = { template: '<div>bar</div>' }
 >
 >// 2. 定义路由
@@ -52,6 +52,7 @@
 >// 其中"component" 可以是通过 Vue.extend() 创建的组件构造器，
 >// 或者，只是一个组件配置对象。
 >const routes = [
+>   // 访问再加载组件
 >   { path: '/', component: () => import('@/view/Index') },
 >   { path: '/foo', name: Foo, component: Foo, hidden: true },
 >   { path: '/bar', naem: Bar, component: Bar, children: [] }

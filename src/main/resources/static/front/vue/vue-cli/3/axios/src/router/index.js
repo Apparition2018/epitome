@@ -20,8 +20,13 @@ const routes = [
     },
     {
         path: '/request-method',
-        name: 'axios 请i去方法',
+        name: 'axios 请求方法',
         component: () => import('../views/RequestMethod')
+    },
+    {
+        path: '/concurrent-request',
+        name: 'axios 并发请求',
+        component: () => import('../views/ConcurrentRequest')
     }
 ]
 
