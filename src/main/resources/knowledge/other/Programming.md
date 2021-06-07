@@ -7,12 +7,6 @@
 3. [session与token的区别](https://www.cnblogs.com/shijianchuzhenzhi/p/12317439.html)
 4. [Kubernetes和Docker到底有啥关系？](https://zhuanlan.zhihu.com/p/87186261)
 ---
-## [环境变量](http://www.xitongcheng.com/jiaocheng/dnrj_article_44449.html)
-1. WIN+R 输入 sysdm.cpl → 高级 → 环境变量
-2. 在系统变量新建 MAVEN_HOME：D:\tts9\apache-maven-3.3.9
-3. 在系统变量找到 Path，增加 %MAVEN_HOME%\bin;
-4. 在 cmd 输入 mvn -v
----
 ## 开源镜像站
 1. [阿里巴巴开源镜像站](https://developer.aliyun.com/mirror/)
 2. [腾讯软件源](https://mirrors.cloud.tencent.com)

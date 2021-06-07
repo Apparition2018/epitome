@@ -155,16 +155,7 @@ docker login [OPTIONS] [SERVER]                                 登录
     ```
 ---
 ## 安装软件
-1. [Redis](https://blog.csdn.net/qq_34670974/article/details/94051251)
-```bash
-docker run -d --name redis -p 6379:6379 --restart=always
-[-v D:/Docker/Redis/data:/data:rw]
-[-v D:/Docker/Redis/conf/redis.conf:/etc/redis/redis.conf:ro]
-redis redis-server /etc/redis/redis.conf
-
-docker exec -it redis redis-cli
-```
-2. [MySQL](https://blog.csdn.net/pall_scall/article/details/112154454)
+1. [MySQL](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
 docker run -d --name mysql -p 3306:3306 --privileged
 [-v D:/Docker/MySQL/my.cnf:/etc/mysql/my.cnf -v D:/Docker/MySQL/data:/var/lib/mysql]
@@ -175,7 +166,26 @@ docker exec -it mysql mysql -uroot -proot
      grant all privileges on `ry-vue`.* to ljh@172.17.0.1 with grant option;
      flush privileges;
 ```
-3. [Tomcat](https://www.cnblogs.com/liyiran/p/12544715.html)
+2. [Redis](https://blog.csdn.net/qq_34670974/article/details/94051251)
+```bash
+docker run -d --name redis -p 6379:6379 --restart=always
+[-v D:/Docker/Redis/data:/data:rw]
+[-v D:/Docker/Redis/conf/redis.conf:/etc/redis/redis.conf:ro]
+redis [redis-server /etc/redis/redis.conf]
+
+docker exec -it redis redis-cli
+```
+3. [MongoDB](https://www.cnblogs.com/yunquan/p/11174265.html)
+```bash
+docker run -itd --name mongo -p 27017:27017 mongo [--auth]
+
+docker exec -it mongo mongo admin
+# 创建用户和密码
+db.createUser({user: 'admin', pwd:'123', roles: [{role: "userAdminAnyDatabase", db: "admin"}]})
+# 验证
+db.auth("admin", "123") 
+```
+4. [Tomcat](https://www.cnblogs.com/liyiran/p/12544715.html)
 ```bash
 docker run -d --name tomcat -p 8080:8080 
 [-v D:\Docker\Tomcat\webapps:/usr/local/tomcat/webapps]
@@ -183,7 +193,7 @@ tomcat:9.0.45
 
 docker run -d --name tomcat -p 8080:8080 -v D:\Docker\Tomcat\webapps:/usr/local/tomcat/webapps tomcat:9.0.45
 ```
-4. [Nginx](https://blog.csdn.net/goodboy31985/article/details/106676475/)
+5. [Nginx](https://blog.csdn.net/goodboy31985/article/details/106676475/)
 ```bash
 docker run -d --name nginx -p 80:80 --restart=always
 [-v D:\Docker\Nginx\conf\nginx.conf:/etc/nginx/nginx.conf]
@@ -192,11 +202,11 @@ docker run -d --name nginx -p 80:80 --restart=always
 [-v D:\Docker\Nginx\html:/usr/share/nginx/html]
 nginx
 ```
-5. Zookeeper
+6. Zookeeper
 ```bash
 docker run -d --name zookeeper -p 2181:2181 zookeeper
 ```
-6. [RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
+7. [RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash
 docker run -d --name rabbitmq -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 8883:8883 rabbitmq:management-alpine
 
@@ -206,7 +216,7 @@ docker exec -it rabbitmq bash
         http://localhost:15672       Username:guest      Password:guest
     rabbitmq-plugins enable rabbitmq_mqtt
 ```
-7. [MinIO](https://www.jianshu.com/p/52dbc679094a)
+8. [MinIO](https://www.jianshu.com/p/52dbc679094a)
 ```bash
 docker run -d --name minio -p 9000:9000 --restart=always
 [-v D:\Docker\MinIO:/data]
@@ -215,14 +225,14 @@ docker run -d --name minio -p 9000:9000 --restart=always
 -e MINIO_SECRET_KEY=minio123
 minio server /data
 ```
-8. [Jenkins](https://www.cnblogs.com/fuzongle/p/12834080.html)
+9. [Jenkins](https://www.cnblogs.com/fuzongle/p/12834080.html)
 ```bash
 docker run -d --name jenkins -p 8080:8080 -p 50000:50000 
 [-v D:\Docker\Jenkins:/var/jenkins_home]
 [-v /etc/localtime:/ect/localtime]
 jenkins
 ```
-9. Ubuntu
+10. Ubuntu
 ```bash
 docker run -itd --name ubuntu --privileged ubuntu
 ```

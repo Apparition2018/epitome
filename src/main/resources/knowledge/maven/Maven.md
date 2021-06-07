@@ -9,6 +9,14 @@
 1. [IDEA 创建 maven 多模块项目](https://www.cnblogs.com/wangmingshun/p/6383576.html)
 2. [release 和 snapshot](https://www.cnblogs.com/huang0925/p/5169624.html)
 ---
+## 环境变量
+```
+1. WIN+R 输入 sysdm.cpl → 高级 → 环境变量
+2. 在系统变量新建 M2_HOME：D:\tts9\apache-maven-3.3.9
+3. 在系统变量找到 Path，增加 %M2_HOME%\bin;
+4. 在 cmd 输入 mvn -v
+```
+---
 ## 常用命令
 ```
     mvn -v                                              查看版本

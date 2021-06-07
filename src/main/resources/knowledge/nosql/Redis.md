@@ -12,23 +12,6 @@
 6. [windows下安装redis并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)   
 7. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
 ---
-## NoSQL
-- 非关系型数据库 Not Only SQL
-- 为什么使用 NoSL
-    - High performance 高并发读写
-    - Huge Storage 海量数据的高效率存储和访问
-    - High Scalability && High Availability 高可扩展性和高可用性
-- 分类
-    - 键值(k-v)存储：Redis，Memcached
-    - 列存储：Cassandra，HBase，RiaK
-    - 文档数据库：MongoDB
-    - 图形数据库：Neo4J
-- 特点
-    - 易扩展
-    - 灵活的数据模型
-    - 大数据量，高性能
-    - 高可用
----
 ## Redis 支持类型及应用场景
 - 字符串 String
     - 二进制安全的，存入和获取的数据相同
