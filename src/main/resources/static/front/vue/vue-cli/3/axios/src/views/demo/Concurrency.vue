@@ -4,11 +4,11 @@
 </template>
 
 <script>
-// 并发请求：同时进行多个请求，并统一处理返回值
+// 并发：同时进行多个请求，并统一处理返回值
 import axios from 'axios'
 
 export default {
-  name: 'ConcurrentRequest',
+  name: 'Concurrency',
   created () {
     // axios.all() axios.spread()
     axios.all([axios.get('/data.json'), axios.get('/city.json')]

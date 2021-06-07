@@ -1,4 +1,4 @@
-package jar.jedis.usecase;
+package jar.jedis.case_;
 
 import jar.jedis.JedisUtils;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * created on 2021/5/28 16:30
  */
-public class RedisZSetUseCase {
+public class RedisZSetCase {
 
     /**
      * 热门书籍

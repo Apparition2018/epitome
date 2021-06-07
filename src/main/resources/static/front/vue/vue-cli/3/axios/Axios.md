@@ -3,7 +3,7 @@
 - 可用于浏览器和 node.js 
 ---
 ## 参考网站
-1. [axios中文网|axios API 中文文档 | axios](http://www.axios-js.com/)
+1. axios - npm(https://www.npmjs.com/package/axios)
 2. [axios在vue中的使用-慕课网](https://www.imooc.com/learn/1152)
 ---
 ## 特性
@@ -33,44 +33,45 @@
 ---
 ## 请求方法
 1. get
- ```javascript
- axios.get('/get', { params: { id: 12 }}).then(res => {})
- ```
+```javascript
+axios.get('/get', { params: { id: 12 }}).then(res => {})
+```
 2. post
- ```javascript
- let data = { id: 12 }
- // application/json
- axios.post('/post', data}).then(res => {})
- // multipart/form-data
- let formData = new FormData()
- for (let key in data) {
-     formData.append(key, data[key])
- }
- axios.post('/post', formData).then(res => {})
- ```
+```javascript
+let data = { id: 12 }
+// application/json
+axios.post('/post', data}).then(res => {})
+// multipart/form-data
+let formData = new FormData()
+for (let key in data) {
+    formData.append(key, data[key])
+}
+axios.post('/post', formData).then(res => {})
+```
 3. put/patch
- ```javascript
- axios.put('put', { id: 12 }).then(res => {})
- ```
+```javascript
+axios.put('put', { id: 12 }).then(res => {})
+```
 3. delete
- ```javascript
- // Query String Parameters
- axios.delete('delete', { params: { id: 12 }}).then(res => {})
- // application/json
- axios.delete('delete', { data: { id: 12 }}).then(res => {})
- ```
+```javascript
+// Query String Parameters
+axios.delete('delete', { params: { id: 12 }}).then(res => {})
+// application/json
+axios.delete('delete', { data: { id: 12 }}).then(res => {})
+```
 ---
-## 并发请求
+## [并发](https://www.npmjs.com/package/axios#concurrency-deprecated)
 - 同时进行多个请求，并统一处理返回值
- ```javascript
+- 已过时，使用 Promise.all 代替此功能
+```javascript
 axios.all([axios.get('/data.json'), axios.get('/city.json')]).then(
     axios.spread((dataRes, cityRes) => {})
 )
- ```
+```
 ---
-## axios 实例
+## [创建实例](https://www.npmjs.com/package/axios#creating-an-instance)
 - 后端接口域名有多个，或部分接口配置需求不一致
- ```javascript
+```javascript
 let instance = axios.create({
     baseURL: 'http://localhost:8080',
     timeout: 1000
@@ -83,8 +84,8 @@ instance.get('/data.json').then(res => {})
 instance2.get('/city.json').then(res => {})
  ```
 ---
-## axios 基本配置
- ```
+## [配置](https://www.npmjs.com/package/axios#request-config)
+```
 baseURL                     请求域名
 timeout                     超时时长，ms
 url                         请求路径
@@ -92,8 +93,8 @@ method                      请求方法
 headers                     请求头
 params                      URL 参数
 data                        请求体参数
- ```
- ```javascript
+```
+```javascript
 // 1. axios 全局配置
 axios.defaults.baseURL = 'http://localhost:8080'
 axios.defaults.timeout = 1000
@@ -106,5 +107,50 @@ instance.defaults.timeout = 3000
 instance.get('/data.json', {
     timeout: 5000
 })
- ```
+```
+---
+## [拦截器](https://www.npmjs.com/package/axios#interceptors)
+```javascript
+// 1. 请求拦截器
+axios.interceptors.request.use(config => { return config }, err => { return Promise.reject(err) })
+// 2. 响应拦截器
+axios.interceptors.response.use(res => { return res }, err => { return Promise.reject(err) })
+// 3. 取消拦截器
+let myInterceptor = axios.interceptors.request.use(config => {
+    config.headers.auth = true
+    return config
+})
+axios.interceptors.request.eject(myInterceptor)
+```
+---
+## 其它
+1. [错误处理](https://www.npmjs.com/package/axios#handling-errors)
+2. [取消请求](https://www.npmjs.com/package/axios#cancellation)
+---
+## [Vant](https://youzan.github.io/vant/#/zh-CN/)
+```
+npm i vant -S
+npm i babel-plugin-import -D
+```
+```javascript
+# babel.config.js
+module.exports = {
+    plugins: [
+        ['import', {
+            libraryName: 'vant',
+            libraryDirectory: 'es',
+            style: true
+        }, 'vant']
+    ]
+};
+
+# Xxx.vue
+import {Button} from 'vant'
+export default {
+    name: 'Xxx',
+    comments: {
+        [Button.name]: Button
+    }
+}
+```
 ---

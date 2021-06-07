@@ -21,12 +21,17 @@ const routes = [
     {
         path: '/request-method',
         name: 'axios 请求方法',
-        component: () => import('../views/RequestMethod')
+        component: () => import('../views/demo/RequestMethod')
     },
     {
         path: '/concurrent-request',
         name: 'axios 并发请求',
-        component: () => import('../views/ConcurrentRequest')
+        component: () => import('../views/demo/Concurrency')
+    },
+    {
+        path: '/contact-list',
+        name: '联系人列表',
+        component: () => import('../views/case/ContactList')
     }
 ]
 

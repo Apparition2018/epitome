@@ -8,7 +8,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'AxiosConfig',
+  name: 'Config',
   created () {
     axios.create({
       baseURL: 'http://localhost:8080', // 请求域名
@@ -53,7 +53,6 @@ export default {
     }).then(res => {
       console.log(res)
     })
-    
   }
 }
 </script>

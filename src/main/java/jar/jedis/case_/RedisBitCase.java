@@ -1,4 +1,4 @@
-package jar.jedis.usecase;
+package jar.jedis.case_;
 
 import jar.jedis.JedisUtils;
 import redis.clients.jedis.BitOP;
@@ -10,7 +10,7 @@ import redis.clients.jedis.Jedis;
  * @author ljh
  * created on 2021/5/27 9:51
  */
-public class RedisBitUseCase {
+public class RedisBitCase {
 
     /**
      * 活跃用户统计

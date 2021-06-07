@@ -1,4 +1,4 @@
-package jar.jedis.usecase;
+package jar.jedis.case_;
 
 import jar.jedis.JedisUtils;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * created on 2021/5/27 14:41
  */
-public class RedisListUseCase {
+public class RedisListCase {
 
     /**
      * 最近浏览商品

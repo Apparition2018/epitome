@@ -8,7 +8,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'AxiosInstance',
+  name: 'CreateInstance',
   created () {
     let instance = axios.create({
       baseURL: 'http://localhost:8080',

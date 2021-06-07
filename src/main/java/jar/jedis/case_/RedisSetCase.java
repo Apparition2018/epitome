@@ -1,4 +1,4 @@
-package jar.jedis.usecase;
+package jar.jedis.case_;
 
 import jar.jedis.JedisUtils;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ import java.util.Set;
  * @author ljh
  * created on 2021/5/28 14:23
  */
-public class RedisSetUseCase {
+public class RedisSetCase {
 
     /**
      * 关注的人

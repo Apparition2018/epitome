@@ -1,4 +1,4 @@
-package jar.jedis.usecase;
+package jar.jedis.case_;
 
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
