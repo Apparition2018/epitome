@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * GlobalExceptionHandler
+ * GlobalHandler
  * `@ControllerAdvice 是在类上声明的注解，用来声明一些全局性的东西
  * -    1.@ExceptionHandler 处理异常
  * -    2.@InitBinder       给 WebDataBinder 进行初始化
