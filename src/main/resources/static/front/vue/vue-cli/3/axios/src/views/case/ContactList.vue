@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import {ContactList, Toast, ContactEdit, Popup} from 'vant'
-import axios from 'axios'
+import {ContactEdit, ContactList, Popup, Toast} from 'vant'
+import axios from "axios"
 
 export default {
   name: 'ContactList',
@@ -54,14 +54,14 @@ export default {
       baseURL: 'http://localhost:9000/api',
       timeout: 1000
     })
-    this.instance.get('contactList').then(res => {
-      this.list = res.data.data
-    }).catch(err => {
-      console.log(err)
-      Toast('请求失败，请稍后重试')
-    })
+    this.getList()
   },
   methods: {
+    // 获取联系人列表
+    async getList () {
+      let res = await this.$Http.getContactList()
+      this.list = res.data
+    },
     // 添加联系人
     onAdd () {
       this.showEdit = true
@@ -74,22 +74,44 @@ export default {
       this.editingContact = info
     },
     // 保存联系人
-    onSave () {
-      this.showEdit = true
-      this.isEdit = false
-
+    async onSave (info) {
+      if (this.isEdit) {
+        // 编辑保存
+        let res = await this.$Http.editContact(info)
+        if (res.code === 200) {
+          await this.getList()
+          Toast('编辑成功')
+          this.showEdit = false
+        }
+      } else {
+        // 新建保存
+        let res = await this.$Http.newContactJson(info)
+        if (res.code === 200) {
+          await this.getList()
+          Toast('新建成功')
+          this.showEdit = false
+        }
+      }
     },
     // 删除联系人
-    onDelete () {
-
+    async onDelete (info) {
+      let res = await this.$Http.deleteContact({
+        id: info.id
+      })
+      if (res.code === 200) {
+        await this.getList()
+        Toast('删除成功')
+        this.showEdit = false
+      }
     }
   }
 }
 </script>
 <style scoped>
-.van-contafct-list__add {
+.van-contact-list__add {
   z-index: 0;
 }
+
 .van-popup {
   height: 100%;
 }

@@ -123,6 +123,9 @@ let myInterceptor = axios.interceptors.request.use(config => {
 axios.interceptors.request.eject(myInterceptor)
 ```
 ---
+## 封装 axios
+
+---
 ## 其它
 1. [错误处理](https://www.npmjs.com/package/axios#handling-errors)
 2. [取消请求](https://www.npmjs.com/package/axios#cancellation)
