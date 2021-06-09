@@ -355,3 +355,4 @@ local.properties
 #####[ LJH ]#####
 .idea/
 *.iml
+!src/**/dist/index.html
