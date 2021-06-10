@@ -205,6 +205,8 @@ nginx
 6. Zookeeper
 ```bash
 docker run -d --name zookeeper -p 2181:2181 zookeeper
+
+docker exec -it zookeeper bash
 ```
 7. [RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash

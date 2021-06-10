@@ -210,6 +210,7 @@
     tar                                     tape archive                        备份文件
         -z                                  --gzip                              通过 gzip指令处理备份文件
         -c                                  --create                            建立新的备份文件
+        -C | --directory                                                        解压到指定目录
         -x                                  --extract                           从备份文件中还原文件
         -v                                  --verbose                           显示指定执行过程
         -f                                  --file                              指定备份文件
