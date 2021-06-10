@@ -8,6 +8,8 @@
     <title>绑定事件</title>
     <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../static/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../static/js/demo.js"></script>
 </head>
 
 <body>
@@ -26,14 +28,9 @@
             方法一
             &lt;/div&gt;
         </code>
-        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>
-            // jQuery click 绑定事件，如果原本已有 onclick 事件，则新绑定的时候在原事件之后/之前触发???
-            $('.eg1').click(function () {
-                alert('在 onclick 之后/之前触发???');
-            });
             function eg1() {
-                var eg1 = document.getElementsByClassName('eg1')[0];
+                const eg1 = document.getElementsByClassName('eg1')[0];
                 eg1.textContent = '在DOM元素中直接绑定'
             }
         </script>
@@ -48,7 +45,7 @@
             </div>
         </div>
         <script class="code w60p" contenteditable="true">
-            var eg2 = document.getElementsByClassName('eg2')[0];
+            const eg2 = document.getElementsByClassName('eg2')[0];
             eg2.onclick = function () {
                 // 只执行最后绑定的事件
                 this.textContent = 'onclick 绑定';
@@ -73,14 +70,14 @@
             </div>
         </div>
         <script class="code w60p" contenteditable="true">
-            var obj = document.getElementsByClassName('eg3')[0];
+            const obj = document.getElementsByClassName('eg3')[0];
             addEvent(obj, 'click', eg3);
             function addEvent(obj, type, func) {
                 if (obj.addEventListener) {         // DOM2
                     obj.addEventListener(type, func, false);
                     // addEventListener可以绑定多个事件; 回调函数默认传入一个event; 第三个参数，false为冒泡（默认）, true为捕获
                     // 解除相应的绑定：removeEventListener(type, listener[, useCapture])
-                } else if (element.attachEvent) {   // IE
+                } else if (obj.attachEvent) {       // IE
                     obj.attachEvent('on' + type, func);
                     // 解除相应的绑定：detachEvent(eventNameWithOn, callback)
                 } else {                            // DOM0
@@ -137,19 +134,16 @@
             </div>
         </div>
         <script class="code w60p" contenteditable="true">
-            var eg6 = document.getElementsByClassName('eg6')[0];
+            const eg6 = document.getElementsByClassName('eg6')[0];
             document.onclick = function (event) {
                 event = event || window.event;
-                var target = event.target || event.srcElement;
+                const target = event.target || event.srcElement;
                 if (target === eg6) {
                     eg6.textContent = '事件委托';
                 }
             }
         </script>
     </section>
-
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../../../static/js/demo.js"></script>
 </body>
 
 </html>

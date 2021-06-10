@@ -115,8 +115,8 @@
             }
         </style>
         <script class="code w60p" contenteditable="true">
-            var outer = document.getElementById('outer');
-            var inner = document.getElementById('inner');
+            const outer = document.getElementById('outer');
+            const inner = document.getElementById('inner');
             addEvent(outer, 'click', targetColor);
             addEvent(inner, 'click', targetColor);
             function targetColor(e) {
@@ -135,11 +135,11 @@
         <div class="css-live-wrap w40p">
             <div class="caption">取消默认行为</div>
             <div class="centered box-prevent">
-                <a href="http://www.cnblogs.com" class="demo-click">preventDefault</a>
+                <a href="http://www.baidu.com" class="demo-click">preventDefault</a>
             </div>
         </div>
         <script class="code w60p" contenteditable="true">
-            var prevent = document.querySelector('.box-prevent>a');
+            const prevent = document.querySelector('.box-prevent>a');
             prevent.onclick = function (e) {
                 e = e || event;
                 if (e.preventDefault) {

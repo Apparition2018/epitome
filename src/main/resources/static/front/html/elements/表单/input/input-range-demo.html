@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>input-range-demo</title>
     <link rel="icon" href="../../../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../../static/css/demo.css">
 </head>
 
 <body>
-    <!-- https://www.cnblogs.com/nelsonlei/p/7878073.html -->
-    <!-- https://blog.csdn.net/u013347241/article/details/51560290 -->
     <section class="code-wrap h600">
         <div class="css-live-wrap w40p">
-            <div class="caption">美化 range</div>
+            <div class="caption">
+                <a href="https://www.cnblogs.com/nelsonlei/p/7878073.html">美化 range</a>
+                <a href="https://blog.csdn.net/u013347241/article/details/51560290">自定义样式</a>
+            </div>
             <div class="centered beautify">
                 <p>
                     <input type="range" id="snrPollInterval" min="0" max="100" step="5"  title=""/>
@@ -61,7 +63,7 @@
         <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>
             (function () {
-                //滑动时的样式
+                // 滑动时的样式
                 $.fn.RangeSlider = function (cfg) {
                     this.sliderCfg = {
                         min: cfg && !isNaN(parseFloat(cfg.min)) ? Number(cfg.min) : null,
@@ -70,13 +72,13 @@
                         callback: cfg && cfg.callback ? cfg.callback : null
                     };
 
-                    var $input = $(this);
-                    var text = document.getElementById('text');
+                    const $input = $(this);
+                    const text = document.getElementById('text');
 
-                    var min = this.sliderCfg.min;
-                    var max = this.sliderCfg.max;
-                    var step = this.sliderCfg.step;
-                    var callback = this.sliderCfg.callback;
+                    const min = this.sliderCfg.min;
+                    const max = this.sliderCfg.max;
+                    const step = this.sliderCfg.step;
+                    const callback = this.sliderCfg.callback;
 
                     $input.attr('min', min).attr('max', max).attr('step', step);
 

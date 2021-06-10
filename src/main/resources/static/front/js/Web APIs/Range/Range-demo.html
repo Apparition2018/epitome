@@ -31,17 +31,11 @@
         </style>
         <script class="code w60p" contenteditable="true">
             onload = function () {
-                var oBtn = document.getElementById("button");
+                const oBtn = document.getElementById("button");
                 oBtn.onclick = function () {
-                    var userSelection, text;
-                    if (window.getSelection) {
-                        userSelection = window.getSelection();
-                    } else if (document.selection) {
-                        userSelection = document.selection.createRange();
-                    }
-                    if (!(text = userSelection.text)) {
-                        text = userSelection;
-                    }
+                    let userSelection, text;
+                    window.getSelection && (userSelection = window.getSelection()) || document.selection && (userSelection = document.selection.createRange())
+                    !(text = userSelection.text) && (text = userSelection)
                     alert(text);
                 }
             }

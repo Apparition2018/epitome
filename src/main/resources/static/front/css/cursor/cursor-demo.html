@@ -11,10 +11,11 @@
 </head>
 
 <body>
-    <!-- https://www.zhangxinxu.com/study/201412/cursor-zoom-in-zoom-out.html -->
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption">放大缩小图片</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/study/201412/cursor-zoom-in-zoom-out.html" target="_blank">放大缩小图片</a>
+            </div>
             <div class="centered">
                 <a href="javascript:" class="zoom zoom-in">
                     <img src="../../../static/img/people/穗波玉.jpg" alt="穗波玉">
@@ -36,9 +37,9 @@
             }
         </style>
         <script>
-            var zoom = document.getElementsByClassName('zoom')[0];
+            const zoom = document.getElementsByClassName('zoom')[0];
             zoom.onclick = function () {
-                var img = document.querySelector('.zoom img');
+                const img = document.querySelector('.zoom img');
                 if (/in/.test(this.className)) {
                     img.style.width = "300px";
                     this.className = "zoom zoom-out";

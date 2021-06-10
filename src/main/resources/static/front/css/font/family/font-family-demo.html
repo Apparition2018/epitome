@@ -11,10 +11,11 @@
 </head>
 
 <body>
-    <!-- https://www.zhangxinxu.com/wordpress/2016/07/monospaced-font-css3-ch-unit/ -->
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption">字符模拟solid/dashed/dotted</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/wordpress/2016/07/monospaced-font-css3-ch-unit/" target="_blank">字符模拟solid/dashed/dotted</a>
+            </div>
             <div class="caption">利用等宽字体实现</div>
             <div class="monospace centered">
                 <select title="">
@@ -41,7 +42,7 @@
             }
         </style>
         <script>
-            var monospace = document.getElementsByClassName('monospace')[0];
+            constA monospace = document.getElementsByClassName('monospace')[0];
             document.getElementsByTagName('select')[0].onchange = function () {
                 monospace.style.borderStyle = this.value;
                 if (this.value === "none") {

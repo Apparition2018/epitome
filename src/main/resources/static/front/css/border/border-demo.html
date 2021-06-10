@@ -15,7 +15,7 @@
 <body>
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption">默认3px，支持关键字 thin,medium,thick</div>
+            <div class="caption">默认3px，支持关键字 thin, medium, thick</div>
             <div class="caption">不支持百分比</div>
             <div class="centered box-border">
                 <div class="demo"></div>
@@ -48,13 +48,9 @@
         </style>
         <script>
             document.getElementsByTagName('select')[0].onchange = function () {
-                var demo = document.getElementsByClassName('demo')[0];
-                demo.textContent = "";
-                if (this.value === "10%") {
-                    demo.textContent = "不支持百分比值"
-                } else {
-                    demo.style.borderWidth = this.value;
-                }
+                const demo = document.getElementsByClassName('demo')[0];
+                demo.textContent = '';
+                this.value === '10%' && (demo.textContent = "不支持百分比值") || (demo.style.borderWidth = this.value);
             }
         </script>
     </section>

@@ -11,12 +11,9 @@
 </head>
 
 <body>
-    <!-- http://www.runoob.com/jsref/event-onload.html -->
-    <!-- 以下 HTML 标签支持 onload :
-            <body>, <frame>, <frameset>, <iframe>, <img>, <input type="image">, <link>, <script>, <style> -->
     <section class="code-wrap h350">
         <div class="css-live-wrap w40p">
-            <div class="caption">图片建在完成后执行函数</div>
+            <div class="caption">图片加载完成后执行函数</div>
             <div class="centered">
                 <img src="../../../../static/img/people/AudreyHepburn.jpg" onload="imgOnload(event)">
             </div>
@@ -37,17 +34,10 @@
             <div class="cookie centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
             onload = function () {
-                var cookie = document.getElementsByClassName('cookie')[0];
-                if (navigator.cookieEnabled === true) {
-                    cookie.innerHTML = 'Cookies are enabled';
-                }
-                else {
-                    cookie.innerHTML = 'Cookies are not enabled';
-                }
+                const cookie = document.getElementsByClassName('cookie')[0];
+                navigator.cookieEnabled && (cookie.innerHTML = 'Cookies are enabled') || (cookie.innerHTML = 'Cookies are not enabled')
             }
         </script>
     </section>

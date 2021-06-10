@@ -180,16 +180,16 @@
         </style>
         <script>
             window.onload = function () {
-                var degs = document.querySelector("input[type='range']").value;
+                const degs = document.querySelector("input[type='range']").value;
                 document.getElementsByClassName("deg")[0].textContent = degs + "°";
-                var style = document.getElementById("style");
-                var styleTextContent = style.textContent;
-                var browser = document.getElementsByName("browser");
-                var radio = document.getElementsByClassName("radio")[0];
+                const style = document.getElementById("style");
+                const styleTextContent = style.textContent;
+                const browser = document.getElementsByName("browser");
+                const radio = document.getElementsByClassName("radio")[0];
                 radio.onclick = function () {
-                    var degs = document.querySelector("input[type='range']").value;
+                    const degs = document.querySelector("input[type='range']").value;
                     document.getElementsByClassName("deg")[0].textContent = degs + "°";
-                    for (var i = 0, len = browser.length; i < len; i++) {
+                    for (let i = 0, len = browser.length; i < len; i++) {
                         if (browser[i].checked) {
                             if (browser[i].value === "std") {
                                 style.textContent = styleTextContent + ".deg { background-image: linear-gradient(" + degs + "deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }"
@@ -267,8 +267,6 @@
     <!-- https://www.zhangxinxu.com/wordpress/2017/11/css3-radial-gradient-syntax-example/
     https://www.zhangxinxu.com/wordpress/2018/03/background-gradient-transtion/
     https://www.w3cplus.com/css3/why-do-we-have-repeating-linear-gradient-anyway.html -->
-
-
 
 
 </body>

@@ -133,10 +133,11 @@
             </div>
         </div>
     </section>
-    <!-- http://www.cnblogs.com/coco1s/p/3637866.html -->
     <section class="code-wrap h350">
         <div class="css-live-wrap w50p">
-            <div class="caption">Element.innerHTML &amp; Node.innerText</div>
+            <div class="caption">
+                <a href="http://www.cnblogs.com/coco1s/p/3637866.html">Element.innerHTML &amp; Node.innerText</a>
+            </div>
             <div class="caption">设置 S&lt;b&gt;E&lt;/b&gt;T</div>
             <div class="centered">
                 <div class="set">
@@ -170,7 +171,7 @@
         </code>
         <script>
             function set(e) {
-                var ele = e.target;
+                const ele = e.target;
                 if (ele.className === "iH") {
                     ele.innerHTML = "S<b>E</b>T";
                 }
@@ -193,14 +194,10 @@
             <div class="caption">获取</div>
             <div class="centered">
                 <div class="get">
-                    <div class="iH">inner
-                        <b>H</b>TML</div>
-                    <div class="oH">outer
-                        <b>H</b>TML</div>
-                    <div class="iT">inner
-                        <b>T</b>ext</div>
-                    <div class="oT">outer
-                        <b>T</b>ext</div>
+                    <div class="iH">inner<b>H</b>TML</div>
+                    <div class="oH">outer<b>H</b>TML</div>
+                    <div class="iT">inner<b>T</b>ext</div>
+                    <div class="oT">outer<b>T</b>ext</div>
                 </div>
                 <div class="text"></div>
             </div>
@@ -236,13 +233,13 @@
             &lt;div class="oT">outer&lt;b&gt;T&lt;/b&gt;ext&lt;/div&gt;
         </code>
         <script contenteditable="true">
-            var eleDivs = document.querySelectorAll(".get div");
-            eleDivs.forEach(function (value, index, array) {
-                value.addEventListener("click", get, event);
+            const eleDivs = document.querySelectorAll(".get div");
+            eleDivs.forEach(function (ele, index, array) {
+                ele.addEventListener("click", get, false);
             });
 
             function get(e) {
-                var ele = e.target;
+                const ele = e.target;
                 if (ele.className === "iH") {
                     console.log(document.getElementById("text"));
                     document.getElementsByClassName("text")[0].textContent = ele.innerHTML;
@@ -267,7 +264,7 @@
             </div>
             <div class="caption">滚动条宽17px</div>
             <div class="height centered">
-                <img src="../../../../static/img/Element-height.png" alt="xxxy" width="400px">
+                <img src="../../../../static/img/Element-height.png" alt="Element-height" width="400">
             </div>
         </div>
         <code class="code" contenteditable="true">
