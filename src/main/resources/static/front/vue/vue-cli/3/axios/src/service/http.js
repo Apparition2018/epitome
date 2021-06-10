@@ -37,7 +37,7 @@ for (let key in service) {
         // 请求的返回值
         let response = {};
         // 不同请求的判断
-        if (['put', 'post', 'patch'].indexOf(api.method) > 0) {
+        if (['put', 'post', 'patch'].indexOf(api.method) >= 0) {
             try {
                 response = await instance[api.method](api.url, newParams, config)
             } catch (err) {

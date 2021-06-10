@@ -63,7 +63,7 @@ export default {
 
     /** delete */
     // Query String Parameters
-    axios.delete('delete', {
+    axios.delete('/delete', {
       params: {
         id: 12
       }
@@ -71,7 +71,7 @@ export default {
       console.log(res)
     })
     // application/json
-    axios.delete('delete', {
+    axios.delete('/delete', {
       data: {
         id: 12
       }

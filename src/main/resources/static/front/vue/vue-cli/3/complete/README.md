@@ -50,7 +50,7 @@
 - 5-1 vue-cli3课程小结
 ---
 ## Build Setup
-``` bash
+```bash
 # Project setup
 npm install
 

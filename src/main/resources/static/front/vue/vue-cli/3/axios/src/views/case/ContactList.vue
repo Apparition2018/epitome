@@ -22,7 +22,6 @@
 
 <script>
 import {ContactEdit, ContactList, Popup, Toast} from 'vant'
-import axios from "axios"
 
 export default {
   name: 'ContactList',
@@ -39,8 +38,6 @@ export default {
       //    tel: ''
       // }
       list: [],
-      // instance 实例
-      instance: null,
       // 编辑弹窗的显隐
       showEdit: false,
       // 正在编辑的联系人
@@ -50,10 +47,6 @@ export default {
     }
   },
   created () {
-    this.instance = axios.create({
-      baseURL: 'http://localhost:9000/api',
-      timeout: 1000
-    })
     this.getList()
   },
   methods: {

@@ -40,7 +40,7 @@ axios.get('/get', { params: { id: 12 }}).then(res => {})
 ```javascript
 let data = { id: 12 }
 // application/json
-axios.post('/post', data}).then(res => {})
+axios.post('/post', data).then(res => {})
 // multipart/form-data
 let formData = new FormData()
 for (let key in data) {
@@ -50,14 +50,14 @@ axios.post('/post', formData).then(res => {})
 ```
 3. put/patch
 ```javascript
-axios.put('put', { id: 12 }).then(res => {})
+axios.put('/put', { id: 12 }).then(res => {})
 ```
 3. delete
 ```javascript
 // Query String Parameters
-axios.delete('delete', { params: { id: 12 }}).then(res => {})
+axios.delete('/delete', { params: { id: 12 }}).then(res => {})
 // application/json
-axios.delete('delete', { data: { id: 12 }}).then(res => {})
+axios.delete('/delete', { data: { id: 12 }}).then(res => {})
 ```
 ---
 ## [并发](https://www.npmjs.com/package/axios#concurrency-deprecated)
@@ -124,7 +124,8 @@ axios.interceptors.request.eject(myInterceptor)
 ```
 ---
 ## 封装 axios
-
+1. @see ruoyi-ui#@/utils/request
+2. @see axios#@/service
 ---
 ## 其它
 1. [错误处理](https://www.npmjs.com/package/axios#handling-errors)
