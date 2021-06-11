@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- 使用jQuery获取iframe的元素 -->
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Child</title>
@@ -13,7 +13,7 @@
 	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript">
 		function parentPlus() {
-			var value = $('input', parent.document)[0].value;
+			const value = $('input', parent.document)[0].value;
 			$('input', parent.document)[0].value = parseInt(value) +1;
 		}
 	</script>

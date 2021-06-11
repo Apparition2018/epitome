@@ -11,19 +11,20 @@
 </head>
 
 <body>
-    <!-- https://blog.csdn.net/qq_34099161/article/details/53081904 -->
     <section class="code-wrap">
         <div class="css-live-wrap w33p">
-            <div class="caption">解决跨域问题</div>
+            <div class="caption">
+                <a href="https://blog.csdn.net/qq_34099161/article/details/53081904" target="_blank">解决跨域问题</a>
+            </div>
             <div class="caption">window.name 在不同的页面（甚至不同域名）加载后依旧存在</div>
             <div class="domain centered">
             </div>
         </div>
         <script class="code w67p" contenteditable="true">
             onload = function () {
-                var data;
-                var iframe = document.createElement('iframe');
-                var domain = document.getElementsByClassName('domain')[0];
+                let data;
+                const iframe = document.createElement('iframe');
+                const domain = document.getElementsByClassName('domain')[0];
                 iframe.style.display = 'none';
                 domain.appendChild(iframe);
                 // 1. iframe 先加载不同源下的 name2.html，name2.html 设置 window.name

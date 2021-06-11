@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<!-- 监测属性的变动 
-	https://www.cnblogs.com/tugenhua0707/p/6849948.html-->
-<html>
+<!-- 监测属性的变动：https://www.cnblogs.com/tugenhua0707/p/6849948.html -->
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -16,11 +15,11 @@
 	</div>
 
 	<script type="text/javascript">
-		var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+		const MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 
-		var list = document.querySelector('ol');
+		const list = document.querySelector('ol');
 
-		var Observer = new MutationObserver(function (mutations, instance) {
+		const Observer = new MutationObserver(function (mutations, instance) {
 			mutations.forEach(function (mutation) {
 				console.log(mutation);
 			});

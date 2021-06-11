@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Javase</title>
@@ -27,7 +27,7 @@
 				<li>API:　 一些已写好、可供直接调用的功能（在Java中，这些功能以类的形式封装）</li>
 				<li><details><summary><span class="none">JDK类包结构:</span></summary>
 					<img src="../img/常用包.jpg" width=450px; height=227px; />
-					</details><br /></li>
+					</details><br></li>
 			</ul>
 		</li>
 		<li><span class="que">String</span>
@@ -44,7 +44,7 @@
 				<li>char <span>charAt</span>(int index)</li>
 				<li>boolean <span>startsWith/endsWith</span>(String prefix[, int toffset])
 				<li>boolean <span>matches</span>(String regex)</li>
-				<li>byte[] <span>getBytes</span>([String charsetName])<br /><br /></li>
+				<li>byte[] <span>getBytes</span>([String charsetName])<br><br></li>
 			</ul>
 		</li>
 		<li><span class="que">StringBuffer</span>
@@ -53,7 +53,7 @@
 				<li>StringBuffer <span>insert</span>(int offset, ...)</li>
 				<li>StringBuffer <span>delete</span>(int start, int end)</li> 
 				<li>StringBuffer <span>replace</span>(int start, int end, String str)</li>
-				<li>StringBUffer <span>reverse</span>()<br /><br /></li>
+				<li>StringBUffer <span>reverse</span>()<br><br></li>
 			</ul>
 		</li>
 		<li><span class="que">正则</span>
@@ -69,12 +69,12 @@
 					</details></li>
 				<li>分组： (\+86|0086)?\s?\d{11}</li>
 				<li>边界匹配： ^-代表字符串开始　$-代表字符串结束</li>
-			</ul><br />
+			</ul><br>
 		</li>
 		<li><span class="que">Date</span>
 			<ul>
 				<li>void <span>setTime</span>(long time):1970 年 1 月 1 日 00:00:00GMT以后time毫秒的时间点</li>
-				<li>long <span>getTime</span>():自 1970 年 1 月 1 日 00:00:00GMT以来此Date对象表示的毫秒数<br /><br /></li>
+				<li>long <span>getTime</span>():自 1970 年 1 月 1 日 00:00:00GMT以来此Date对象表示的毫秒数<br><br></li>
 			</ul>
 		</li>		
 		<li><span class="que">SimpleDateFormat</span>
@@ -90,7 +90,7 @@
 					</ol>
 				</li>
 				<li>String <span>format</span>(Date date)???</li>
-				<li>Date <span>parse</span>(String str)<br /><br /></li>
+				<li>Date <span>parse</span>(String str)<br><br></li>
 			</ul>
 		</li>	
 		<li><span class="que">Calendar</span>
@@ -102,18 +102,18 @@
 				<li>int <span>getActualMax/Minimum</span>(int field)</li>
 				<li>void <span>add</span>(int field, int amount)</li>
 				<li>void <span>setTime</span>(Date date)</li>
-				<li>Date <span>getTime</span>()<br /><br /></li>
+				<li>Date <span>getTime</span>()<br><br></li>
 			</ul>
 		</li>
 		<li><span class="que">File</span>
 			<ol>
 				<li>构造方法:抽象路径尽量使用相对路径
 					<ol>
-						<li><span class="span2">File</span>(String pathname):<br />
+						<li><span class="span2">File</span>(String pathname):<br>
 							File("." + File.separator + "path" + File.separator + "path.txt")</li>
-						<li><span class="span2">File</span>(String parent, String child):<br />
+						<li><span class="span2">File</span>(String parent, String child):<br>
 							File("." + File.separator + "path","path2.txt")</li>
-						<li><span class="span2">File</span>(File parent, String child) :<br />
+						<li><span class="span2">File</span>(File parent, String child) :<br>
 							File(fileParent,"path3.txt");</li>
 					</ol>
 				</li>
@@ -122,31 +122,31 @@
 						<li>boolean <span>isFile</span>()</li>
 						<li>long <span>length</span>():返回由此抽象路径名（当前对象）表示的文件的长度（所占字节量）</li>
 						<li>String <span>getName</span>()<hr></li>
-						<li>if (!file.exists()) { // boolean <span>exists</span>()<br />
-							　　file.createNewFile(); // boolean <span>createNewFile</span>()<br />
+						<li>if (!file.exists()) { // boolean <span>exists</span>()<br>
+							　　file.createNewFile(); // boolean <span>createNewFile</span>()<br>
 							}<hr></li>
-						<li>if (!dir.exists()) {<br />
-							　　dir.mkdirs(); // boolean <span>mkdirs</span>()<br /> 
-							　　dir2.mkdirs(); // boolean <span>mkdirs</span>():连同将不存在的父目录创建出来<br />
+						<li>if (!dir.exists()) {<br>
+							　　dir.mkdirs(); // boolean <span>mkdirs</span>()<br> 
+							　　dir2.mkdirs(); // boolean <span>mkdirs</span>():连同将不存在的父目录创建出来<br>
 							}<hr></li>
-						<li>public static void delete(File file) {<br />
-							　　if (file.isDirectory()) { // boolean<span>isDirectory</span>()<br />
-							　　　　File[] subs = file.listFiles(); // File[] <span>listFiles</span>()<br />
-							　　　　for(File sub : subs) {<br />
-							　　　　　　delete(sub);<br />
-							　　　　}<br />
-							　　}<br />
-							　　file.delete(); // boolean <span>delete</span>()<br />
+						<li>public static void delete(File file) {<br>
+							　　if (file.isDirectory()) { // boolean<span>isDirectory</span>()<br>
+							　　　　File[] subs = file.listFiles(); // File[] <span>listFiles</span>()<br>
+							　　　　for(File sub : subs) {<br>
+							　　　　　　delete(sub);<br>
+							　　　　}<br>
+							　　}<br>
+							　　file.delete(); // boolean <span>delete</span>()<br>
 							}</li>						
 					</ol>
 				</li>
 				<li>FileFilter接口
 					<ul>
-						<li>File[] subs = dir.listFiles(new FileFilter() { // File[] <span>listFiles</span>(FileFilter filter)<br /> 
-							　　public boolean accept(File file) {<br />
-							　　　　return file.getName().endsWith(".txt");<br />
+						<li>File[] subs = dir.listFiles(new FileFilter() { // File[] <span>listFiles</span>(FileFilter filter)<br> 
+							　　public boolean accept(File file) {<br>
+							　　　　return file.getName().endsWith(".txt");<br>
 							　　}</li>
-						<li>});<br /><br /></li>
+						<li>});<br><br></li>
 					</ul>
 				</li>
 			</ol>
@@ -158,13 +158,13 @@
 				<li>int <span>read</span>():读取1个字节(低八位)，s若返回值为-1，则表示读取到了文件末尾 </li>
 				<li>byte[] data = new byte[1024 * 10];</li> 
 				<li>int len = -1;</li>
-				<li>while((len = src.read(data)) != -1) { // int <span>read</span>(byte[] b[, int off, int len])<br />
-					　　desc.write(data, 0, len); // void <span>write</span>(byte[] b[, int off, int len])<br />
+				<li>while((len = src.read(data)) != -1) { // int <span>read</span>(byte[] b[, int off, int len])<br>
+					　　desc.write(data, 0, len); // void <span>write</span>(byte[] b[, int off, int len])<br>
 					}</li>
 				<li>void <span>close</span>()</li> 				  
 				<li>long <span>getFilePointer</span>():获取当前RandomAcessFile指针位置</li> 
 				<li>void <span>seek</span>(long pos):移动当前RandomAcessFile指针位置</li> 
-				<li>int <span>skipBytes</span>(int n):不抛出EOFException，返回跳过的字节数，负数则不跳过任何字节<br /><br /></li> 
+				<li>int <span>skipBytes</span>(int n):不抛出EOFException，返回跳过的字节数，负数则不跳过任何字节<br><br></li> 
 			</ul>
 		</li>		
 		<li><span class="que">InputStream &amp; OutputStream</span> 所有字节流的父类
@@ -173,18 +173,18 @@
 				<li>int <span>read</span>(byte[] b[, int off, int len])</li> 
 				<li>void <span>write</span>(int b)</li>
 				<li>void <span>write</span>(byte[] b[, int off, int len])</li>  
-				<li>void <span>close</span>()<br /><br /></li> 
+				<li>void <span>close</span>()<br><br></li> 
 			</ul>
 		</li>		
 		<li><span class="que">FOS &amp; FIS（文件流）</span>
 			<ul>
 				<li>若指定文件已包含内容，那么当使用FOS写入数据，会将该文件中原有数据全部清除</li>
-				<li><span class="span2">FileOutputStream</span>(File file/String name[, boolean append]):为true则文件末尾增加<br /><br /></li>
+				<li><span class="span2">FileOutputStream</span>(File file/String name[, boolean append]):为true则文件末尾增加<br><br></li>
 			</ul>
 		</li>	
 		<li><span class="que">BOS &amp; BIS（缓冲流）</span>
 			<ul>
-				<li>void <span>plush</span>()<br /><br /></li> 
+				<li>void <span>plush</span>()<br><br></li> 
 			</ul>
 		</li>
 		<li><span class="que">OOS &amp; OIS（对象流）</span>
@@ -198,7 +198,7 @@
 				</li>
 				<li>对象反序列化：ObjectInputStream
 					<ul>
-						<li>Object <span>readObject</span>()<br /><br /></li> 
+						<li>Object <span>readObject</span>()<br><br></li> 
 					</ul>
 				</li>
 			</ol>
@@ -211,13 +211,13 @@
 				<li>void <span>write</span>(int c):写出给定int值“低16”位表示的字符</li>
 				<li>void <span>write</span>(String str[, int off, int len])</li>
 				<li>void <span>write</span>(String str):写入字符串</li> 
-				<li>void <span>close</span>()<br /><br /></li> 
+				<li>void <span>close</span>()<br><br></li> 
 			</ul>
 		</li>	
 		<li><span class="que">OSW &amp; ISR（转换流）</span>
 			<ul>
 				<li><span class="span2">OutputStreamWriter</span>(OutputStream out[, String charsetName])</li>
-				<li><span class="span2">InputStreamReader</span>(InputStream in[, String charsetName])<br /><br /></li>
+				<li><span class="span2">InputStreamReader</span>(InputStream in[, String charsetName])<br><br></li>
 			</ul>
 		</li>	
 		<li><span class="que">PW &amp; BR</span>
@@ -263,25 +263,25 @@
 				<li>String <span>toString</span>():返回当前对象的“句柄”——类的完全限定名@hashcode</li>
 				<li>boolean <span>equals</span>():Object中该方法使用“==”比较,子类中需要比较对象内容就要重写equals()
 					<ul>
-						<li>public boolean <span>equals</span>(Object obj) {<br />
-							　　if(this == obj)<br />
-							　　　　return true;<br />
-							　　if(obj == null)<br />
-							　　　　return false;<br />
-							　　if(<span>getClass</span>() != obj.getClass())<br />
-							　　　　return false;<br />
-							　　Cell other = (Cell) obj;<br />
-							　　if(row != other.row)<br />
-							　　　　return false;<br />
-							　　if(col != other.col)<br />
-							　　　　return false;<br />
-							　　return true;<br />
+						<li>public boolean <span>equals</span>(Object obj) {<br>
+							　　if(this == obj)<br>
+							　　　　return true;<br>
+							　　if(obj == null)<br>
+							　　　　return false;<br>
+							　　if(<span>getClass</span>() != obj.getClass())<br>
+							　　　　return false;<br>
+							　　Cell other = (Cell) obj;<br>
+							　　if(row != other.row)<br>
+							　　　　return false;<br>
+							　　if(col != other.col)<br>
+							　　　　return false;<br>
+							　　return true;<br>
 							}</li>
 					</ul>
 				</li>
 				<li>void <span>wait</span>([long timeout, int nanos]):使当前线程等待</li>
 				<li>void <span>notify</span>():随机唤醒在此对象监视器上等待的单个线程</li> 
-				<li>void <span>notifyAll</span>():一个个地随机唤醒在此对象监视器上等待的所有线程<br /><br /></li> 
+				<li>void <span>notifyAll</span>():一个个地随机唤醒在此对象监视器上等待的所有线程<br><br></li> 
 			</ol>
 		</li>
 		<li><details><summary><span class="que">包装类</span></summary>
@@ -293,7 +293,7 @@
 					<ul>
 						<li>static <span>valueOf</span>(...)　//　基本类型转成包装类</li>
 						<li>Integer in = 1;　//　自动装箱</li>
-						<li>int i = new Integer(1);　//　自动拆箱<br /><br /></li>
+						<li>int i = new Integer(1);　//　自动拆箱<br><br></li>
 					</ul>
 				</li>
 			</ol>
@@ -309,7 +309,7 @@
 				<li>boolean <span>isEmpty</span>():判断当前集合中是否不包含元素</li>
 				<li>boolean <span>addAll</span>(Collection&lt;? extends E&gt; c)</li>
 				<li>boolean <span>containsAll</span>(Collection&lt;?&gt; c)</li>
-				<li>Iterator&lt;E&gt; <span>iterator</span>():返回在此collection的元素上进行迭代的迭代器<br /><br /></li>
+				<li>Iterator&lt;E&gt; <span>iterator</span>():返回在此collection的元素上进行迭代的迭代器<br><br></li>
 			</ul>
 		</li>	
 		<li><span class="que">Iterator</span>
@@ -317,19 +317,19 @@
 				<li>遍历集合:
 					<ul>
 						<li>Iterator&lt;String&gt; it = c.iterator();</li>
-						<li>while (it.hasNext()) {　// boolean <span>hasNext</span>()<br />
-		   					　　String str = it.next();　// E <span>next</span>()<br />
-							　　if (str.indexOf("c") != -1) {<br />
-							　　　　it.remove();　// void <span>remove</span>():删除迭代器当次从集合中获取的元素<br />
-							　　}<br /> 
+						<li>while (it.hasNext()) {　// boolean <span>hasNext</span>()<br>
+		   					　　String str = it.next();　// E <span>next</span>()<br>
+							　　if (str.indexOf("c") != -1) {<br>
+							　　　　it.remove();　// void <span>remove</span>():删除迭代器当次从集合中获取的元素<br>
+							　　}<br> 
 						<li>}</li>
 					</ul>
 				</li>
 				<li>for循环（新循环）:
 					<ul>
-						<li>for(元素类型 e : 集合或数组){<br />
-							　循环体<br /> 
-							}<br /><br /></li> 
+						<li>for(元素类型 e : 集合或数组){<br>
+							　循环体<br> 
+							}<br><br></li> 
 					</ul>
 				</li>
 			</ul>
@@ -342,7 +342,7 @@
 				<li>boolean <span>add</span>(E e)</li>
 				<li>void <span>add</span>(int index, E element)</li>
 				<li>E <span>remove</span>(int index)</li>
-				<li>List&lt;E&gt; <span>subList</span>(int fromIndex, int toIndex)：<br />
+				<li>List&lt;E&gt; <span>subList</span>(int fromIndex, int toIndex)：<br>
 					　　获取的List与原List占有相同的存储空间，对子List的操作会影响的原List</li>
 				<li>&lt;T&gt;T[] <span>toArray</span>(T[] a)
 					<ol>
@@ -350,26 +350,26 @@
 		 				<li>如果数组长度&lt;集合长度，则返回时新数组的引用</li>
 					</ol>
 				</li>
-				<li>PS:Arrays类中提供数组转List的方法:static &lt;T&gt;List&lt;T&gt; <span>asList</span>&lt;T… a&gt;<br />
-					　　不能对其增删元素,并且对集合的元素进行的修改会影响数组对应的元素<br /><br /></li>
+				<li>PS:Arrays类中提供数组转List的方法:static &lt;T&gt;List&lt;T&gt; <span>asList</span>&lt;T… a&gt;<br>
+					　　不能对其增删元素,并且对集合的元素进行的修改会影响数组对应的元素<br><br></li>
 			</ul>
 		</li>	
 		<li><span class="que">Collections</span>
 			<ul>
 				<li>1.static &lt;T extends Comparable&lt;? super T&gt;&gt; void <span>sort</span>(List&lt;T&gt; list)</li>
-				<li>2.Collections.<span>sort</span>(cells, new Comparator&lt;Cell&gt;() {<br />
-			    	　　public int compare(Cell o1, Cell o2) {<br />
-			    	　　　　return o1.col - o2.col;<br />
-			    	　　}<br />
+				<li>2.Collections.<span>sort</span>(cells, new Comparator&lt;Cell&gt;() {<br>
+			    	　　public int compare(Cell o1, Cell o2) {<br>
+			    	　　　　return o1.col - o2.col;<br>
+			    	　　}<br>
 			    	　});</li>
-			   	<li>3.static List/Map/Set... <span>synchronized...</span>(...):返回指定List/Map/Set...支持的线程安全的List/Map/Set...<br /><br /></li>
+			   	<li>3.static List/Map/Set... <span>synchronized...</span>(...):返回指定List/Map/Set...支持的线程安全的List/Map/Set...<br><br></li>
 			</ul>
 		</li>
 		<li><span class="que">Queue（队列）</span>一端添加(offer)，另一端取出(poll)
 			<ul>
 				<li>boolean <span>offer</span>(E e):将元素追加到队列末尾</li>
 				<li>E <span>poll</span>():返回队首元素，并删除</li>
-				<li>E <span>peek</span>():返回队首元素，但是不删除<br /><br /></li>
+				<li>E <span>peek</span>():返回队首元素，但是不删除<br><br></li>
 			</ul>
 		</li>
 		<li><details><summary><span class="que">Deque（双端队列）&amp; Stack（栈）</span></summary>
@@ -377,21 +377,21 @@
 			<ul>
 				<li>offer(offerLast),push(offerFirst),pollLast,pop/poll(pollFirst)</li>
 				<li>void/E <span>push</span>():将一个元素推入（双端队列）/（堆栈）顶部</li>
-				<li>E <span>pop</span>():移除（双端队列）/（堆栈）顶部的对象，并作为此函数的值返回该对象<br /><br /></li>
+				<li>E <span>pop</span>():移除（双端队列）/（堆栈）顶部的对象，并作为此函数的值返回该对象<br><br></li>
 			</ul>
 		</li>		
 		<li><span class="que">Map（映射）</span>
 			<ul>
 				<li>V <span>put</span>(K key, V value):将key-value对存入Map中;若已经存在，则是替换操作</li> 
 				<li>V <span>get</span>(Object key)</li>
-				<li>boolean <span>containsKey</span>(Object key)<br /><br /></li> 
+				<li>boolean <span>containsKey</span>(Object key)<br><br></li> 
 				<li>HaspMap: 
 					<ul>
 						<li><details><summary>Hash表原理</summary>
 							<img src="../img/Hash表原理.jpg" width=500; /></details>???</li> 
 					</ul>
 				</li>
-				<li>LinkedHashMap：<br /><br /></li>
+				<li>LinkedHashMap：<br><br></li>
 			</ul>
 		</li>
 		<li><span class="que">Throwable</span>
@@ -451,8 +451,8 @@
 					</ol>
 					</details>
 				</li>
-				<li>class [自定义异常类名] extends Exception {<br />
-					　　通过Eclipse自动生成构造方法<br />
+				<li>class [自定义异常类名] extends Exception {<br>
+					　　通过Eclipse自动生成构造方法<br>
 					　}
 				</li>
 			</ol>
@@ -461,9 +461,9 @@
 					<ol>
 						<li>多个catch: 由上至下的捕获异常类型的顺序应是子类到父类</li>
 						<li>finally： 代码始终被执行，通常进行资源的释放工作：关闭打开的文件、删除临时文件等</li>
-						<li>throw: 自行抛出异常，生成指定的异常对象后抛出<br />
+						<li>throw: 自行抛出异常，生成指定的异常对象后抛出<br>
 							　　　　如： throw new ArithmeticException()</li>
-						<li>throws: 方法可能抛出异常的声明　　格式： throws 异常类<br />
+						<li>throws: 方法可能抛出异常的声明　　格式： throws 异常类<br>
 							　　　　 如果继承的父类的某个方法宣告了throw异常,子类重新定义该方法时：
 							　　　<ol>
 									<li>不处理异常</li>
@@ -476,16 +476,16 @@
 				<li>void <span>printStackTrace</span>([PrintStream s/PrintWriter s]):输出执行堆栈信息</li> 
 				<li>String <span>getMessage</span>():得到有关异常事件的信息</li> 
 				<li>Throwable <span>getCause</span>():获取该异常出现的原因，不存在或未知则返回null</li>
-			</ul><br />
+			</ul><br>
 		</li>
 		<li><span class="que">Thread</span>
 			<ul>
 				<li><details><summary>线程状态</summary>
 					<img src="../img/线程状态.jpg" width=500px; /></details></li>
-				<li>Thread t1 = new Thread(new Runnable() {<br />
-					　　public void run() {<br />
-					　　　　．．．<br />
-					　　}<br />
+				<li>Thread t1 = new Thread(new Runnable() {<br>
+					　　public void run() {<br>
+					　　　　．．．<br>
+					　　}<br>
 					};<hr></li>
 				<li>static Thread <span>currentThread</span>():返回对当前正在执行的线程对象的引用/获取运行当前代码片段的线程</li> 
 				<li>long <span>getId</span>():返回该线程的标识符</li> 
@@ -500,40 +500,40 @@
 				<li>boolean <span>isDaemon</span>():测试该线程是否为守护线程</li> 
 				<li>void <span>setDaemon</span>(boolean on):将该线程标记为守护或用户线程 ;在start前设置；GC运行在一个守护线上 </li>
 				<li>void <span>start</span>():使该线程开始执行；Java 虚拟机调用该线程的 run 方法</li>
-				<li>static void <span>sleep</span>(long millis[, int nanos]):使当前进程进入阻塞状态，持续指定秒数<br /><br /></li> 
+				<li>static void <span>sleep</span>(long millis[, int nanos]):使当前进程进入阻塞状态，持续指定秒数<br><br></li> 
 			</ul>
 		</li>
 		<li><span class="que">synchronized</span>
 			<ul>
 				<li>通常锁的对象：1）this 2）调用方法的引用</li>
-				<li>静态方法锁：当我们对一个静态方法加锁，那么该方法锁的对象是类对象。<br />
+				<li>静态方法锁：当我们对一个静态方法加锁，那么该方法锁的对象是类对象。<br>
 					　　每个类都有唯一的一个类对象。获取类对象的方式:类名.class。</li>
 				<li>线性安全的：StringBuffer、Vector、Hashtable</li>
-				<li>非线性安全的：StringBuilder、ArrayList、HashMap、HashSet<br /><br /></li>
+				<li>非线性安全的：StringBuilder、ArrayList、HashMap、HashSet<br><br></li>
 			</ul>
 		</li>
 		<li><span class="que">Executors</span>
 			<ol>
-				<li>static ExcutorService <span>newCachedThreadPool</span>()<br />
+				<li>static ExcutorService <span>newCachedThreadPool</span>()<br>
 					创建一个可根据需要创建新线程的线程池，但是在以前构造的线程可用时将重用它们</li>
-				<li>static ExcutorService <span>newFixedThreadPool</span>(int nThreads)<br />
+				<li>static ExcutorService <span>newFixedThreadPool</span>(int nThreads)<br>
 					创建一个可重用固定线程数的线程池，以共享的无界队列方式来运行这些线程</li>
-				<li>static ScheduledExecutorService <span>newScheduledThreadPool</span>(int corePoolSize)<br />
+				<li>static ScheduledExecutorService <span>newScheduledThreadPool</span>(int corePoolSize)<br>
 					创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行</li>
-				<li>static ExecutorService <span>newSingleThreadExecutor</span>()<br />
-					创建一个使用单个worker线程的Executor，以无界队列方式来运行该线程<br /><br /></li>
+				<li>static ExecutorService <span>newSingleThreadExecutor</span>()<br>
+					创建一个使用单个worker线程的Executor，以无界队列方式来运行该线程<br><br></li>
 			</ol>
 		</li>
 		<li><details><summary><span class="que">BlockingQueue（双缓冲队列）</span></summary>
 			<img src="../img/BlockingQueue.jpg" width=550px; /></details>
 			<ul>
-				<li><span class="span2">ArrayBlockingQueue</span>(int capacity[, boolean fair]):<br />
+				<li><span class="span2">ArrayBlockingQueue</span>(int capacity[, boolean fair]):<br>
 					　　规定大小的BlockingDeque;其所含对象以FIFO顺序排序</li>
-				<li><span class="span2">LinkedBlockingQueue</span>([int capacity]):<br />
-					　　大小不定的BlockingDeque；若不带参数，大小由Integer.MAX_VALUE决定;<br />
+				<li><span class="span2">LinkedBlockingQueue</span>([int capacity]):<br>
+					　　大小不定的BlockingDeque；若不带参数，大小由Integer.MAX_VALUE决定;<br>
 					　　其所含对象以FIFO顺序排序</li>
-				<li><span class="span2">PriorityBlockingQueue</span>:([int initialCapacity, Comparator&lt;? super E&gt; comparator]):<br />
-					　　类似于LinkedBlockDeque,但所含对象以FIFO顺序排序，<br />
+				<li><span class="span2">PriorityBlockingQueue</span>:([int initialCapacity, Comparator&lt;? super E&gt; comparator]):<br>
+					　　类似于LinkedBlockDeque,但所含对象以FIFO顺序排序，<br>
 					　　而是依据自然顺序或构造函数的Comparator决定的顺序</li>
 				<li><span class="span2">SynchronousQueue</span>([boolean fair]):对其操作必须是放和取交替完成的</li>
 			</ul>

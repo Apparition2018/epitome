@@ -44,7 +44,7 @@
                     <tr>
                         <td>Number.MAX_VALUE</td>
                         <td>表示在 JavaScript 里所能表示的最大数值，
-                            <br />大于 MAX_VALUE 的值代表 "Infinity"</td>
+                            <br/>大于 MAX_VALUE 的值代表 "Infinity"</td>
                         <td>1.7976931348623157e+308</td>
                     </tr>
                     <tr>
@@ -86,14 +86,14 @@
                         <td>Number.isFinite()</td>
                         <td>用来检测传入的参数是否是一个有穷数</td>
                         <td>Number.isFinite(NaN); // false
-                            <br />Number.isFinite('0'); // false, 全局函数 isFinite('0') 会返回 true</td>
+                            <br/>Number.isFinite('0'); // false, 全局函数 isFinite('0') 会返回 true</td>
                     </tr>
                     <tr>
                         <td>Number.isInteger()</td>
                         <td>用来判断给定的参数是否为整数</td>
                         <td>Number.isInteger(Infinity); // false
-                            <br />Number.isInteger(true); // false
-                            <br />Number.isInteger([1]); // false</td>
+                            <br/>Number.isInteger(true); // false
+                            <br/>Number.isInteger([1]); // false</td>
                     </tr>
                     <tr>
                         <td>Number.isSafeInteger()</td>
@@ -123,20 +123,20 @@
                         <td>toFixed(digits)</td>
                         <td>使用定点表示法来格式化一个数</td>
                         <td>2.34.toFixed(1); // "2.3"
-                            <br />-2.34.toFixed(1); // -2.3 （由于操作符优先级，负数不会返回字符串）
-                            <br />(-2.34).toFixed(1); // "-2.3" （若用括号提高优先级，则返回字符串）</td>
+                            <br/>-2.34.toFixed(1); // -2.3 （由于操作符优先级，负数不会返回字符串）
+                            <br/>(-2.34).toFixed(1); // "-2.3" （若用括号提高优先级，则返回字符串）</td>
                     </tr>
                     <tr>
                         <td>toPrecision(precision)</td>
                         <td>以指定的精度返回该数值的字符串表示形式</td>
                         <td>123.456.toPrecision(4); // "123.5"
-                            <br /> 123.456.toPrecision(8); // "123.45600"
-                            <br />123.456.toPrecision(2); // "1.2e+2"</td>
+                            <br/>123.456.toPrecision(8); // "123.45600"
+                            <br/>123.456.toPrecision(2); // "1.2e+2"</td>
                     </tr>
                     <tr>
                         <td>toString([radix])</td>
                         <td>回指定 Number 对象的字符串表示形式
-                            <br />radix 指定要用于数字到字符串的转换的基数(从2到36)</td>
+                            <br/>radix 指定要用于数字到字符串的转换的基数(从2到36)</td>
                         <td>(15).toString(16); // "f"
                             <br/>(2).toString(2); // "10"
                         </td>
@@ -144,10 +144,10 @@
                     <tr>
                         <td>valueOf()</td>
                         <td>返回一个被 Number 对象包装的原始值</td>
-                        <td>var numObj = new Number(10);
-                            <br /> typeof numObj; // object
-                            <br /> var num = numObj.valueOf(); // 10
-                            <br /> typeof num; // number</td>
+                        <td>const numObj = new Number(10);
+                            <br/>typeof numObj; // object
+                            <br/>const num = numObj.valueOf(); // 10
+                            <br/>typeof num; // number</td>
                     </tr>
                 </table>
             </div>
@@ -232,8 +232,6 @@
                 </table>
             </div>
         </div>
-        <style>
-        </style>
         <script class="code" contenteditable="true">
             // 和全局函数 isNaN() 相比，该方法不会强制将参数转换成数字
 
@@ -251,8 +249,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code" contenteditable="true">
             function withinErrorMargin(num1, num2) {
                 return Math.abs(num1 - num2) < Number.EPSILON * Math.pow(2, 2);

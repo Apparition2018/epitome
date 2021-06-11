@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- JSONP教程：http://www.runoob.com/json/json-jsonp.html -->
-<html>
+<!-- JSONP教程：https://www.runoob.com/json/json-jsonp.html -->
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -12,15 +12,15 @@
 
 	<script type="text/javascript">
 		function callbackFunction(result) {
-			var html = '<ul>';
-			for (var i = 0; i < result.length; i++) {
+			let html = '<ul>';
+			for (let i = 0; i < result.length; i++) {
 				html += '<li>' + result[i] + '</li>';
 			}
 			html += '</ul>';
 			document.getElementById('divCustomers').innerHTML = html;
 		}
 	</script>
-	<script type="text/javascript" src="http://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction"></script>
+	<script type="text/javascript" src="https://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction"></script>
 </body>
 
 </html>

@@ -27,7 +27,7 @@
                     <tr>
                         <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch">fetch()</a></td>
                         <td>fetch() 必须接受一个参数——资源的路径。无论请求成功与否，它都返回一个 Promise 对象，resolve 对应请求的
-                            Response。<br />你也可以传一个可选的第二个参数init（参见 Request）。</td>
+                            Response。<br>你也可以传一个可选的第二个参数init（参见 Request）。</td>
                     </tr>
                     <tr>
                         <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Headers">Headers</a></td>
@@ -99,13 +99,13 @@
         </div>
         <script class="code w60p" contenteditable="true">
             (function () {
-                var boxFectch1 = document.getElementsByClassName('box-fetch1')[0];
+                const boxFetch1 = document.getElementsByClassName('box-fetch1')[0];
                 fetch('http://localhost:3333/fetch/string', {
                     method: 'post',
                     headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }),
                     body: "data=heihei"
                 }).then(response => response.text()).then(data => {
-                    boxFectch1.innerHTML += data + '<br/>';
+                    boxFetch1.innerHTML += data + '<br/>';
                 }).catch(function (e) {
                     console.log(e);
                 })
@@ -121,14 +121,14 @@
         </div>
         <script class="code w60p" contenteditable="true">
                 (function () {
-                    var boxFectch2 = document.getElementsByClassName('box-fetch2')[0];
-                    var demo = { id: '1', name: 'zhangsan', course: 'math', score: '99' };
+                    const boxFetch2 = document.getElementsByClassName('box-fetch2')[0];
+                    const demo = { id: '1', name: 'zhangsan', course: 'math', score: '99' };
                     fetch('http://localhost:3333/fetch/json-clazz', {
                         method: 'post',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(demo)
                     }).then(response => response.text()).then(data => {
-                        boxFectch2.innerHTML += data + '<br/>';
+                        boxFetch2.innerHTML += data + '<br/>';
                     }).catch(function (e) {
                         console.log(e);
                     })
@@ -144,14 +144,14 @@
         </div>
         <script class="code w60p" contenteditable="true">
                 (function () {
-                    var boxFectch3 = document.getElementsByClassName('box-fetch3')[0];
-                    var club = { name: 'Arsenal', points: '100' };
+                    const boxFetch3 = document.getElementsByClassName('box-fetch3')[0];
+                    const club = { name: 'Arsenal', points: '100' };
                     fetch('http://localhost:3333/fetch/json-map', {
                         method: 'post',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(club)
                     }).then(response => response.text()).then(data => {
-                        boxFectch3.innerHTML += data + '<br/>';
+                        boxFetch3.innerHTML += data + '<br/>';
                     }).catch(function (e) {
                         console.log(e);
                     })
@@ -166,7 +166,7 @@
             <div class="centered box-fetch4">
                 <form>
                     <input type="file">
-                    <br /><br />
+                    <br><br>
                     <button type="button">上传图片</button>
                 </form>
             </div>
@@ -174,8 +174,8 @@
         <script class="code w60p" contenteditable="true">
                 (function () {
                     document.querySelector('.box-fetch4 button').onclick = function () {
-                        var pictures = document.querySelector('.box-fetch4 input').files;
-                        var formData = new FormData();
+                        const pictures = document.querySelector('.box-fetch4 input').files;
+                        const formData = new FormData();
                         formData.append('file', pictures[0]);
                         fetch('http://localhost:3333/fetch/upload-picture', {
                             method: 'post',
@@ -197,7 +197,7 @@
             <div class="centered box-fetch5">
                 <form>
                     <input type="file" multiple="multiple">
-                    <br /><br />
+                    <br><br>
                     <button type="button">上传图片</button>
                 </form>
             </div>
@@ -205,8 +205,8 @@
         <script class="code w60p" contenteditable="true">
                 (function () {
                     document.querySelector('.box-fetch5 button').onclick = function () {
-                        var pictures = document.querySelector('.box-fetch5 input').files;
-                        var formData = new FormData();
+                        const pictures = document.querySelector('.box-fetch5 input').files;
+                        const formData = new FormData();
                         for (let i = 0; i < pictures.length; i++) {
                             formData.append('file', pictures[i]);
                         }
@@ -263,7 +263,7 @@
                     fetch('http://127.0.0.1:3333/static/static/img/people/穗波玉.jpg', {
                         mode: 'cors' // cors: 跨域 | same-origin: 同源 | no-cors: 禁止跨域
                     }).then(response => response.blob()).then(response => {
-                        var objectURL = URL.createObjectURL(response);
+                        const objectURL = URL.createObjectURL(response);
                         document.querySelector('.box-blob img').src = objectURL;
                     }).catch(function (e) {
                         console.log(e);

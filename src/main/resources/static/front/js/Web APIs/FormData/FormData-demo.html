@@ -105,16 +105,16 @@
         <script class="code w60p" contenteditable="true">
             (function () {
                 document.getElementById('submit').onclick = function(e) {
-                    var myForm = document.getElementById("myForm");
+                    const myForm = document.getElementById("myForm");
 
                     // 构造器
-                    var formData1 = new FormData(myForm);
-                    for (var pair of formData1.entries()) {
+                    const formData1 = new FormData(myForm);
+                    for (const pair of formData1.entries()) {
                         alert(pair[0] + ", " + pair[1]);
                     }
 
                     // append()
-                    var formData2 = new FormData();
+                    const formData2 = new FormData();
                     formData2.append('username', document.getElementById('username').value);
                     alert(formData1.get("username"));
 

@@ -18,11 +18,9 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             /*** 慢 ***/
-            var str = "I ";
+            let str = "I ";
             str += "am ";
             str += "hero";
 
@@ -39,11 +37,11 @@
                 return this._strings_.join("");
             };
 
-            var buffer = new StringBuffer();
+            const buffer = new StringBuffer();
             buffer.append("I ");
             buffer.append("am ");
             buffer.append("hero");
-            var result = buffer.toString(); // "I am hero"
+            const result = buffer.toString(); // "I am hero"
            console.log(result);
 
 

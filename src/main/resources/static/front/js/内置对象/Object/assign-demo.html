@@ -18,13 +18,11 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var o1 = { a: 0, b: { c: 0 } };
+            let o1 = { a: 0, b: { c: 0 } };
 
             // 浅拷贝
-            var o2 = Object.assign({}, o1);
+            const o2 = Object.assign({}, o1);
             JSON.stringify(o2); // { a: 0, b: { c: 0 }}
 
             // 浅拷贝，源字面量改变，copy对象不改变
@@ -39,7 +37,7 @@
 
             // 深拷贝，无论源如何改变，copy对象均不改变
             o1 = { a: 0, b: { c: 0 } };
-            var o3 = JSON.parse(JSON.stringify(o1));
+            const o3 = JSON.parse(JSON.stringify(o1));
             o1.a = 4;
             o1.b.c = 4;
             JSON.stringify(o3); // {"a":0,"b":{"c":0}}
@@ -52,17 +50,15 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var v1 = "abcd";
-            var v2 = true;
-            var v3 = 10;
-            var v4 = Symbol("foo");
+            const v1 = "abcd";
+            const v2 = true;
+            const v3 = 10;
+            const v4 = Symbol("foo");
 
             // 原始类型会被包装，null 和 undefined 会被忽略
             // 只有字符串的包装对象才可能有自身可枚举属性，所以合并后结果 {0: "a", 1: "b", 2: "c", 3: "d"}
-            var obj = Object.assign({}, v1, null, v2, undefined, v3, v4);
+            let obj = Object.assign({}, v1, null, v2, undefined, v3, v4);
 
             obj = Object.assign(obj, [1, 2, 3]); // {0: 1, 1: 2, 2: 3, 3: "d"}，属性被后续参数中具有相同属性的其他对象覆盖
         </script>
@@ -74,10 +70,8 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var obj = Object.create({ foo: 1 }, {   // foo 是继承属性
+            const obj = Object.create({ foo: 1 }, {   // foo 是继承属性
                 bar: {
                     value: 2                        // bar 是不可枚举属性
                 },
@@ -87,7 +81,7 @@
                 }
             });
 
-            var copy = Object.assign({}, obj);      // { baz: 3 }
+            const copy = Object.assign({}, obj);      // { baz: 3 }
         </script>
     </section>
 

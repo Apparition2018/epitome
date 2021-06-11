@@ -48,7 +48,7 @@
                         <td>表示原始值 undefined，是一个原始数据类型，
                             <br/>一个没有被赋值的变量会有个默认值 undefined
                         </td>
-                        <td>var x = null;
+                        <td>const x = null;
                             <br/>x == undefined; // true
                             <br/>x === undefined; // false</td>
                     </tr>
@@ -83,9 +83,9 @@
                         <td>将传入的字符串当做 JavaScript 代码进行执行
                             <br/>返回最后一个表达式的值
                         </td>
-                        <td>var str = "if (a) { 1 + 1; } else { 1 + 2; }";
-                            <br/>var a = 0;
-                            <br/>var b = eval(str); // 3
+                        <td>const str = "if (a) { 1 + 1; } else { 1 + 2; }";
+                            <br/>const a = 0;
+                            <br/>const b = eval(str); // 3
                         </td>
                     </tr>
                     <tr>
@@ -128,10 +128,8 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var x;
+            let x;
 
             // 方法一
             x === undefined; // true
@@ -153,13 +151,11 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function test() {
-                var x = 2, y = 4;
+                const x = 2, y = 4;
                 eval('x + y');      // 6，直接调用，使用本地作用域
-                var geval = eval;   // 将 eval 赋给一个引用
+                const geval = eval; // 将 eval 赋给一个引用
                 geval('x + y');     // ReferenceError: x is not defined，间接调用，使用全局作用域
                 (0, eval)('x + y'); // 另一个间接调用的例子
             }

@@ -44,15 +44,13 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var animals = [
+            const animals = [
                 { species: 'Lion', name: 'King' },
                 { species: 'Whale', name: 'Fail' }
             ];
 
-            for (var i = 0; i < animals.length; i++) {
+            for (let i = 0; i < animals.length; i++) {
                 (function (i) {
                     this.print = function () {
                         console.log('#' + i + ' ' + this.species + ': ' + this.name);
@@ -70,12 +68,10 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function toArray(a, b, c) {
                 // [].slice.call() 等同于 Array.prototype.slice.call()
-                var args = [].slice.call(arguments);
+                const args = [].slice.call(arguments);
                 console.log(args);
             }
 

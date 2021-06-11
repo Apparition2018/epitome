@@ -26,37 +26,39 @@
                         <th>示例</th>
                     </tr>
                     <tr>
-                        <td><a
-                                href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield#描述">yield</a>
+                        <td>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield#描述">yield</a>
                         </td>
                         <td>[rv] = yield [expression]</td>
                         <td>暂停和恢复一个生成器函数（function* 或遗留的生成器函数）</td>
                         <td><a href="#primary-yield" target="_self">yield</a></td>
                     </tr>
                     <tr>
-                        <td><a
-                                href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield*">yield*</a>
+                        <td>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield*">yield*</a>
                         </td>
                         <td>yield* [[expression]]</td>
                         <td>委托给另一个 generator 或可迭代对象</td>
-                        <td><a href="#primary-yield*" target="_self">yield*</a></td>
+                        <td>
+                            <a href="#primary-yield*" target="_self">yield*</a>
+                        </td>
                     </tr>
                     <tr>
-                        <td><a
-                                href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/async允许声明一个函数为一个包含异步操作的函数">async
-                                function</a></td>
+                        <td>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/async允许声明一个函数为一个包含异步操作的函数">async function</a>
+                        </td>
                         <td>async function [name](param1[, param2...]){ statements }</td>
                         <td>在表达式中定义异步函数，返回一个 Promise 对象</td>
                         <td rowspan="2"><a href="#primary-async" target="_self">async & await</a></td>
                     </tr>
                     <tr>
-                        <td><a
-                                href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await">await</a>
+                        <td>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await">await</a>
                         </td>
                         <td>[return_value] = await expression</td>
-                        <td>等待一个 Promise 对象。它只能在异步函数 async function 中使用。<br />
-                            如果是一个 Promise 对象，将返回正常处理结果或抛出异常，<br />
-                            如果不是一个 Promise 对象，会自动转成立即 resolved 的 Promise 对象。<br />
+                        <td>等待一个 Promise 对象。它只能在异步函数 async function 中使用。<br>
+                            如果是一个 Promise 对象，将返回正常处理结果或抛出异常，<br>
+                            如果不是一个 Promise 对象，会自动转成立即 resolved 的 Promise 对象。<br>
                             如果是一个 thenable 对象，将视同 Promise 对象
                         </td>
                     </tr>
@@ -67,20 +69,20 @@
 
     <section class="code-wrap h300" id="primary-yield">
         <div class="css-live-wrap w33p">
-            <div class="caption"><a href="http://es6.ruanyifeng.com/#docs/generator#yield-表达式">yield 表达式</a></div>
+            <div class="caption"><a href="https://es6.ruanyifeng.com/#docs/generator#yield-表达式">yield 表达式</a></div>
             <div class="centered box-yield"></div>
         </div>
         <script class="code w67p" contenteditable="true">
             function* countAppleSales() {
-                var saleList = [3, 7, 5];
-                for (var i = 0; i < saleList.length; i++) {
+                const saleList = [3, 7, 5];
+                for (let i = 0; i < saleList.length; i++) {
                     yield saleList[i];
                 }
             }
 
-            var appleStore = countAppleSales();
+            const appleStore = countAppleSales();
 
-            var boxYield = document.getElementsByClassName('box-yield')[0];
+            const boxYield = document.getElementsByClassName('box-yield')[0];
             boxYield.innerHTML = JSON.stringify(appleStore.next());
             boxYield.innerHTML += JSON.stringify(appleStore.next());
             boxYield.innerHTML += JSON.stringify(appleStore.next());
@@ -105,9 +107,9 @@
                 yield* "45";
             }
 
-            var iterator = g2();
+            const iterator = g2();
 
-            var boxYield2 = document.getElementsByClassName('box-yield*')[0];
+            const boxYield2 = document.getElementsByClassName('box-yield*')[0];
             boxYield2.innerHTML = JSON.stringify(iterator.next());
             boxYield2.innerHTML += JSON.stringify(iterator.next());
             boxYield2.innerHTML += JSON.stringify(iterator.next());
@@ -125,7 +127,7 @@
             <div class="centered box-async"></div>
         </div>
         <script class="code w67p" contenteditable="true">
-            var boxAsync = document.getElementsByClassName('box-async')[0];
+            const boxAsync = document.getElementsByClassName('box-async')[0];
 
             function timeOut(msg) {
                 return new Promise(
@@ -159,7 +161,7 @@
             <div class="centered box-timing"></div>
         </div>
         <script class="code w67p" contenteditable="true">
-            var boxTiming = document.getElementsByClassName('box-timing')[0]
+            const boxTiming = document.getElementsByClassName('box-timing')[0]
 
             async function async1() {
                 boxTiming.innerHTML += 'async1 start' + '<br/>';

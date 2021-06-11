@@ -41,18 +41,18 @@
                     <tr>
                         <td>Object.assign()</td>
                         <td>用于将所有可枚举属性的值从一个或多个源对象复制到目标对象</td>
-                        <td>var obj = { a: 1 };
-                            <br/>var copy = Object.assign( {}, obj ); // { a: 1 }</td>
+                        <td>const obj = { a: 1 };
+                            <br/>const copy = Object.assign( {}, obj ); // { a: 1 }</td>
                     </tr>
                     <tr>
                         <td>Object.create()</td>
                         <td>创建一个新对象，使用现有的对象来提供新创建的对象的__proto__</td>
-                        <td>var o = Object.create(null); // 创建一个原型为null的空对象</td>
+                        <td>const o = Object.create(null); // 创建一个原型为null的空对象</td>
                     </tr>
                     <tr>
                         <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Object.defineProperty()</a></td>
                         <td>在指定对象上定义一个新的属性或修改一个现有属性，并返回该对象</td>
-                        <td>var p1 = new Object();
+                        <td>const p1 = {};
                             <br/>Object.defineProperty(p1, 'name', {
                             <br/>&nbsp;&nbsp;value: '张三',
                             <br/>&nbsp;&nbsp;writable: true,
@@ -63,7 +63,7 @@
                     <tr>
                         <td>Object.defineProperties()</td>
                         <td>在指定对象上定义新的属性或修改现有属性，并返回该对象</td>
-                        <td>var p2 = new Object();
+                        <td>const p2 = new Object();
                             <br/>Object.defineProperties(p2, {
                             <br/>&nbsp;&nbsp;name: {
                             <br/>&nbsp;&nbsp;&nbsp;&nbsp;value: '张三',
@@ -101,21 +101,21 @@
                         <td>返回一个指定对象自身的所有属性的属性名组成的数组
                             <br/>包括不可枚举属性但不包括Symbol值作为名称的属性
                         </td>
-                        <td>var arr = [1, 2, 3];
+                        <td>const arr = [1, 2, 3];
                             <br/>Object.getOwnPropertyNames(arr);
                             <br/>// ["0", "1", "2", "length"]</td>
                     </tr>
                     <tr>
                     <td>Object.getOwnPropertySymbols()</td>
                     <td>返回一个指定对象自身的所有 Symbol 属性组成的数组</td>
-                    <td>var o = { a: 1, [Symbol('sym')]: 'sym' };
+                    <td>const o = { a: 1, [Symbol('sym')]: 'sym' };
                         <br/>Object.getOwnPropertySymbols(o); // [Symbol(sym)]</td>
                 </tr>
                 <tr>
                         <td>Object.keys()</td>
                         <td>返回一个指定对象自身的所有可枚举属性名组成的数组，
                             <br/>数组中属性名排列顺序和使用 for...in 返回的顺序一致 </td>
-                        <td>var arr = [1, 2, 3];
+                        <td>const arr = [1, 2, 3];
                             <br/>Object.keys(arr); // ["0", "1", "2"]
                         </td>
                     </tr>
@@ -137,7 +137,7 @@
                     <tr>
                         <td>Object.prototype.hasOwnProperty()</td>
                         <td>返回一个布尔值，表示对象自身属性中是否具有指定的属性</td>
-                        <td>var o = { prop: 'exists' };
+                        <td>const o = { prop: 'exists' };
                             <br/>o.hasOwnProperty('prop'); // true
                             <br/>delete o.prop
                             <br/>o.hasOwnProperty('prop'); // false
@@ -147,13 +147,13 @@
                     <tr>
                         <td>Object.prototype.isPrototypeOf()</td>
                         <td>返回一个布尔值，表示对象是否存在于另一个对象的原型链上</td>
-                        <td>var arr = [1, 2, 3];
+                        <td>const arr = [1, 2, 3];
                             <br/>Array.prototype.isPrototypeOf(arr); // true</td>
                     </tr>
                     <tr>
                         <td>Object.prototype.propertyIsEnumerable()</td>
                         <td>返回一个布尔值，表示指定的属性是否可枚举</td>
-                        <td>var arr = [1, 2, 3];
+                        <td>const arr = [1, 2, 3];
                             <br/>arr.propertyIsEnumerable(2); // true</td>
                     </tr>
                     <tr>
@@ -170,7 +170,7 @@
             </div>
         </div>
         <script>
-            let p1 = {};
+            const p1 = {};
             Object.defineProperty(p1, 'name', {
                 value: '张三',
                 writable: true,
@@ -178,7 +178,7 @@
                 configurable: false
             });
 
-            let p2 = {};
+            const p2 = {};
             Object.defineProperties(p2, {
                 name: {
                     value: '张三',
@@ -209,13 +209,13 @@
         </div>
         <script class="code w67p" contenteditable="true">
             // 指向构造器的原型对象
-            let arr1 = new Array(1, 2, 3);
+            const arr1 = [1, 2, 3];
             arr1.__proto__ === Array.prototype; // true
 
             // 指向 Object.create() 设置的原型
-            let o = { length: 3, "0": 1, "1": 2, "2": 3 };
-            let arr2 = Object.create(o);
-            arr2.__proto__ === o;               // true
+            const obj = { length: 3, "0": 1, "1": 2, "2": 3 };
+            const arr2 = Object.create(obj);
+            arr2.__proto__ === obj;               // true
         </script>
     </section>
 
@@ -229,7 +229,7 @@
             </div>
         </div>
         <script class="code w67p" contenteditable="true">
-            let o = {};
+            const o = {};
 
             o.a = 1;
             // 等同于：

@@ -64,20 +64,16 @@
             </div>
         </div>
         <script class="code w67p" contenteditable="true">
-            var blocked = 0;
+            let blocked = 0;
             try {
                 $('body').on('click', '#three button', function () {
-                    var newWin = open('HTML页面间传值2.html?index=lemon3');
-                    if (newWin == null) {
-                        blocked = 1;
-                    }
+                    const newWin = open('HTML页面间传值2.html?index=lemon3');
+                    (newWin == null) && (blocked = 1);
                 })
             } catch (ex) {
                 blocked = 1;
             }
-            if (blocked) {
-                alert("弹出窗口被阻止!");
-            }
+            blocked && alert("弹出窗口被阻止!"); 
         </script>
     </section>
 </body>

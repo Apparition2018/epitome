@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge，chrome=1">
-    <base target="_blank">
     <title>Window-demo</title>
     <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../static/css/demo.css">
@@ -43,13 +42,13 @@
                         <td>innerHeight</td>
                         <td>浏览器的视口（viewport）高度，包括水平滚动条</td>
                         <td rowspan="2">
-                            <a href="https://mdn.mozillademos.org/files/443/FirefoxInnerVsOuterHeight2.png">图像示例</a>
+                            <a href="https://mdn.mozillademos.org/files/443/FirefoxInnerVsOuterHeight2.png" target="_blank">图像示例</a>
                         </td>
                     </tr>
                     <tr>
                         <td>outerheight</td>
                         <td>浏览器的高度，包括侧边栏、窗口镶边（window chrome），
-                            <br />和窗口调正边框（window resizing borders/handles）</td>
+                            <br>和窗口调正边框（window resizing borders/handles）</td>
                     </tr>
                     <tr>
                         <td>innerWidth</td>
@@ -61,7 +60,7 @@
                     <tr>
                         <td>outerWidth</td>
                         <td>浏览器的宽度，包括侧边栏、窗口镶边（window chrome），
-                            <br />和窗口调正边框（window resizing borders/handles）</td>
+                            <br>和窗口调正边框（window resizing borders/handles）</td>
                         <td>
                             <a href="javascript: alert(outerWidth);">outerWidth</a>
                         </td>
@@ -142,15 +141,14 @@
                         <td>prompt()</td>
                         <td>显示可提示用户输入的对话框</td>
                         <td>
-                            <a href="javascript: var result = prompt('请输入您的名字', ''); alert(result);">prompt('请输入您的名字',
-                                '')</a>
+                            <a href="javascript: const result = prompt('请输入您的名字', ''); alert(result);">prompt('请输入您的名字', '')</a>
                         </td>
                     </tr>
                     <tr>
                         <td>open()</td>
                         <td>打开一个新的浏览器窗口或查找一个已命名的窗口</td>
                         <td>
-                            <a href="javascript: open('http://baidu.com')">open('http://baidu.com')</a>
+                            <a href="javascript: open('https://baidu.com')">open('https://baidu.com')</a>
                         </td>
                     </tr>
                     <tr>
@@ -201,16 +199,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><a
-                                href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getComputedStyle">getComputedStyle()</a>
+                        <td>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getComputedStyle" target="_blank">getComputedStyle()</a>
                         </td>
                         <td>获取指定元素的 CSS 样式</td>
                         <td>getComputedStyle(ele, null).getPropertyValue('color')</td>
                     </tr>
                     <tr>
                         <td colspan="3">moveXX, resizeXX 在以下情况无效
-                            <br />1.当前窗口或标签页不是由 window.open 方法创建的
-                            <br />2.当前标签页所在的窗口包含有多个标签页
+                            <br>1.当前窗口或标签页不是由 window.open 方法创建的
+                            <br>2.当前标签页所在的窗口包含有多个标签页
                         </td>
                     </tr>
                 </table>
@@ -266,7 +264,7 @@
         </div>
         <script class="code w67p" contenteditable="true">
             function openWindow() {
-                let myWindow = open('http://www.runoob.com/jsref/met-win-open.html', '', 'width=800,height=600,left=200,top=50');
+                let myWindow = open('https://www.runoob.com/jsref/met-win-open.html', '', 'width=800,height=600,left=200,top=50');
                 myWindow.focus();
                 setTimeout(function () {
                     myWindow.close(); // 因为窗口是 window.open() 打开的，所以可以使用 window.close() 关闭

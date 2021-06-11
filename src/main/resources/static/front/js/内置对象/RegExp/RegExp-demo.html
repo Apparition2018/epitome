@@ -74,8 +74,8 @@
                         <th>示例</th>
                     </tr>
                     <tr>
-                        <td colspan="4">var re = /quick\s(brown).+?(jumps)/ig;
-                            <br/>var result = re.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
+                        <td colspan="4">const re = /quick\s(brown).+?(jumps)/ig;
+                            <br/>const result = re.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
                         </td>
                     </tr>
                     <tr>
@@ -164,15 +164,13 @@
                 </table>
             </div>
         </div>
-        <style>
-        </style>
         <script class="code" contenteditable="true">
-            var re = /quick\s(brown).+?(jumps)/gi;
+            const re = /quick\s(brown).+?(jumps)/gi;
 
-            var matchResult = ('The Quick Brown Fox Jumps Over The Lazy Dog').match(re);
+            const matchResult = ('The Quick Brown Fox Jumps Over The Lazy Dog').match(re);
             // ["Quick Brown Fox Jumps"]
 
-            var execresult = re.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
+            const execresult = re.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
             // ["Quick Brown Fox Jumps", "Brown", "Jumps", index: 4, input: "The Quick Brown Fox Jumps Over The Lazy Dog", groups: undefined]
         </script>
     </section>
@@ -183,15 +181,13 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code" contenteditable="true">
             // x(?=y) 仅匹配被y跟随的x
-            var re = /\b\w{2}(?=a)/g;
+            const re = /\b\w{2}(?=a)/g;
             "aaa aab aac bba bbb bbc cca ccb ccc".match(re); // ["aa", "bb", "cc"]
 
             // x(?!y) 仅匹配不被y跟随的x
-            var re = /\b\w{2}(?!a)/g;
+            const re = /\b\w{2}(?!a)/g;
             "aaa aab aac bba bbb bbc cca ccb ccc".match(re); // ["aa", "aa", "bb", "bb", "cc", "cc"]
         </script>
     </section>

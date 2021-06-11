@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Servlet &amp; JSP</title>
@@ -36,7 +36,7 @@
 				<ul>
 					<li><details><summary>Servlet组件运行原理</summary>
 						<img src="../img/Servlet组件运行原理.jpg" width=500px /></details></li>
-				</ul><br />
+				</ul><br>
 			</li>
 			<li><span class="que">Servlet运行步骤</span>
 				<ol>
@@ -46,7 +46,7 @@
 					<li>web服务器依据路径找到Servlet创建对象，调用service处理请求，处理结果写到response对象里</li>
 					<li>web服务器将response对象中的数据取出来，打包（按http协议创建数据包），发送给浏览器</li>
 					<li>浏览器拆包（按http协议将数据包中的数据解析出来），生成相应的页面</li>
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><span class="que">开发Servlet步骤</span>
 				<ol>
@@ -55,9 +55,9 @@
 					<li><details><summary>将编译完的组件打包</summary>
 						<img src="../img/将编译完的组件打包.jpg" width=400px /></details></li>
 					<li>部署：将appName整个文件夹拷贝到Tomcat的webapps文件下 ???</li>
-					<li>启动Tomcat并访问Servlet：在地址栏输入符合一定规范的地址<br />
+					<li>启动Tomcat并访问Servlet：在地址栏输入符合一定规范的地址<br>
 						　　<span class="val">http://ip:port/appName/servlet的URL</span>(URL在web.xml描述文件中可以找到)</li>
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><span class="que">状态码</span>
 				<ul>
@@ -85,7 +85,7 @@
 							<li>service方法中的代码运行时抛出异常</li>
 						</ol>
 					</li>
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><span class="que">Http协议</span>
 				<ol>
@@ -112,7 +112,7 @@
 							</li>	
 						</ol>
 					</li>
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><span class="que">Servlet如何处理Http协议</span>
 				<ul>
@@ -144,7 +144,7 @@
 							<li>实现重定向</li>
 						</ol>
 					</li>
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><span class="que2">处理中文</span>
 				<ol>
@@ -152,7 +152,7 @@
 						<ol>
 							<li>设置发往服务器的参数以何种编码，设置从request取得的值或数据库中取出的值</li>
 							<li>如没设置，服务器默认使用"iso-8859-1"来编码</li>
-							<li>get请求提交的参数在URI中，一开始就已按默认编码分析内容，<br />所以setCharacterEncoding无效；应该在server.xml中指定：URIEncoding=utf-8,<br />
+							<li>get请求提交的参数在URI中，一开始就已按默认编码分析内容，<br>所以setCharacterEncoding无效；应该在server.xml中指定：URIEncoding=utf-8,<br>
 								或：username = new String(username.<span>getBytes</span>("iso-8859-1"),"utf-8")</li>
 						</ol>
 					</li>
@@ -163,7 +163,7 @@
 							<li>要在response.getWriter()执行之前或response提交之前使用</li>
 						</ol>
 					</li>  
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><span class="que">获取请求参数</span>
 				<ol>
@@ -181,7 +181,7 @@
 							<li>对于多选框，如果一个都不选，则浏览器不会将多选框的值发送给服务器,返回null</li>
 						</ol>
 					</li>
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><details><summary><span class="que">请求方式</span></summary>
 				<img src="../img/请求方式.jpg" width=400px /></details>
@@ -213,7 +213,7 @@
 							</li>
 						</ul>
 					</li>
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><details><summary><span class="que">重定向</span></summary>
 				<img src="../img/重定向原理.jpg" width=450px /></details>
@@ -229,16 +229,16 @@
 							<li>重定向后，清空响应对象数据</li>
 						</ol>
 					</li>
-				</ul><br />
+				</ul><br>
 			</li>
 			<li><span class="que">Servlet如何处理请求资源路径</span>
 				<ul>
 					<li><details><summary>对请求地址的处理过程</summary>
 						<img src="../img/容器如何找到service方法.jpg" width=500px; /></details>
 						<ol>
-							<li>浏览器依据ip,port建立与Servlet容器之间的连接，<br />
+							<li>浏览器依据ip,port建立与Servlet容器之间的连接，<br>
 								然后将请求资源路径appName/xx.html发送给容器</li>
-							<li>容器依据应用名"/appName"找到应用所在的文件夹，容器会默认请求的时一个Servlet，<br />
+							<li>容器依据应用名"/appName"找到应用所在的文件夹，容器会默认请求的时一个Servlet，<br>
 								查找web.xml文件中所有的Servlet配置"&lt;url-pattern&gt;",看是否有匹配的Servlet</li>
 						</ol>
 					</li>
@@ -250,7 +250,7 @@
 						</ol>
 						ps: 均没有匹配成功时，容器会查找相应的文件???，如找不到返回404
 					</li>
-				</ul><br />
+				</ul><br>
 			</li>
 			<li><details><summary><span class="que">Servlet的生命周期</span></summary>
 				<img src="../img/Servlet生命周期.jpg" width=450px /></details>
@@ -263,16 +263,16 @@
 					</li>
 					<li>初始化： 容器在创建好Servlet之后，立即调用init方法，执行一次
 						<ul>
-							<li><span class="att">GenericServvet</span>实现了init方法（将ServletConig保存下来，<br />
+							<li><span class="att">GenericServvet</span>实现了init方法（将ServletConig保存下来，<br>
 								　　并提供<span>getServletConfig</span>来获得ServletConfig对象）</li>
 							<li><details><summary>&lt;init-param&gt;</summary>
-								<span class="none">　　&lt;param-name&gt;company&lt;/param-name&gt;<br />
-								　　&lt;param-value&gt;北京达内&lt;/param-value&gt;<br />
+								<span class="none">　　&lt;param-name&gt;company&lt;/param-name&gt;<br>
+								　　&lt;param-value&gt;北京达内&lt;/param-value&gt;<br>
 								　&lt;init-param&gt;</span></details></li>
 							<li>String <span>getInitParameter</span>(String name)</li>							
 						</ul>
 					</li>
-					<li>就绪： 容器收到请求之后调用Servlet对象的service()处理请求<br />
+					<li>就绪： 容器收到请求之后调用Servlet对象的service()处理请求<br>
 						<ul>
 							<li><span class="att">HttpServlet</span>实现了service方法
 						</ul>
@@ -283,7 +283,7 @@
 						</ul>
 					</li>
 				</ol><details><summary>Servlet核心接口与类</summary>
-					<img src="../img/Servlet核心接口与类.jpg" width=480px/></details><br />
+					<img src="../img/Servlet核心接口与类.jpg" width=480px/></details><br>
 			</li>
 			<li><span class="que">ServletContent</span>
 				<ul>
@@ -295,14 +295,14 @@
 							<li>绑定的数据可被整个应用上的所有组件共享</li>
 						</ol>
 					</li>
-					<li>如何获得：通过GenericServlet、ServletConfig、HttpSession、FilterConfig提供的<br />
+					<li>如何获得：通过GenericServlet、ServletConfig、HttpSession、FilterConfig提供的<br>
 						　　　　　... <span>getServletContext</span>()</li>
 					<li>常用方法：
 						<ol>
 							<li>void (ServletContext).<span>setAttribute</span>(String name, java.lang.Object object) 
 						</ol>
 					</li>
-				</ul><br />
+				</ul><br>
 			</li>
 			<li><details><summary><span class="que">转发</span></summary>
 				<img src="../img/转发的原理.jpg" width=500px /></details>
@@ -313,7 +313,7 @@
 							<li>Object (ServletRequest).<span>getAttribute</span>(String name)　//　没有值返回null</li> 
 						</ul>
 					</li>
-					<li>获得转发器:<br />
+					<li>获得转发器:<br>
 						　　RequestDispatcher (ServletRequest).<span>getRequestDispatcher</span>(String path)</li>
 					<li>转发： void (RequestDispatcher).<span>forward</span>(ServletRequest request, ServletResponse response)</li> 
 				</ol>
@@ -324,38 +324,38 @@
 					<li>转发所涉及到的Web组件并会共享同一个request和response对象</li>
 				</ul>
 				<details><summary>重定向和转发示意图</summary>
-				<img src="../img/重定向和转发示意图.jpg" width=450px /></details><br />
+				<img src="../img/重定向和转发示意图.jpg" width=450px /></details><br>
 			</li>
 			<li><span class="que">异常处理</span>
 				<ol>
-					<li>编程式的异常处理： 使用转发进行跳转到指定页面进行提示说明　//　error.jsp<br />
+					<li>编程式的异常处理： 使用转发进行跳转到指定页面进行提示说明　//　error.jsp<br>
 						（程序本身的异常使用）</li>
 					<li>容器中声明式处理：（系统级别的异常使用）
 						<ol>
-							<li>将异常抛给容器，但底层的错误提示不要返回用户；???<br />
+							<li>将异常抛给容器，但底层的错误提示不要返回用户；???<br>
 								如：throw new ServletException(e);</li>
 							<li><details><summary>&lt;exception-type&gt;</summary>
-								<span class="none">　　&lt;exception-type&gt;<br />
-								　　　　javax.servlet.ServletException<br />
-								　　&lt;/exception-type&gt;<br />
-								　　&lt;location&gt;/error.jsp&lt;/location&gt;<br />
+								<span class="none">　　&lt;exception-type&gt;<br>
+								　　　　javax.servlet.ServletException<br>
+								　　&lt;/exception-type&gt;<br>
+								　　&lt;location&gt;/error.jsp&lt;/location&gt;<br>
 								　&lt;/error-page&gt;</span></details></li>
 						</ol>
 					</li> 
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><span class="que">路径处理技巧</span>
 				<ul>
 					<li>链接地址、表单提交、重定向从应用名开始写</li>
 					<li>转发从应用名之后开始写???</li>
 					<li>String (HttpServletRequest).<span>getContextPath</span>()　//　获取应用的实际部署名称</li> 
-				</ul><br />
+				</ul><br>
 			</li>
 			<li><span class="que">状态管理</span>
 				<ul>
-					<li>将客户端（浏览器）与服务器之间多次交互（一次请求，一次响应）当做一个整体来看待，<br />
+					<li>将客户端（浏览器）与服务器之间多次交互（一次请求，一次响应）当做一个整体来看待，<br>
 						并将多次交互所涉及的数据即状态保存下来，管理指的是多次交互时对数据的修改</li>
-				</ul><br />
+				</ul><br>
 			</li>
 			<li><details><summary><span class="que">Cookie</span></summary>
 				<img src="../img/Cookie原理.jpg" width=500px /></details>
@@ -391,12 +391,12 @@
 							<li>只能保存字符串</li>
 						</ol>
 					</li>
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><details><summary><span class="que">Session（会话）</span></summary>
 				<img src="../img/Session原理.jpg" width=500px /></details>
 				<ol>
-					<li>HttpSession (HttpServletRequest).<span>getSession</span>()　//　等价于参数为true<br />
+					<li>HttpSession (HttpServletRequest).<span>getSession</span>()　//　等价于参数为true<br>
 						　　先查看请求中有没有SessionId，如果没有服务器则创建一个Session对象</li>
 					<li>void (HttpSession).<span>setAttribute</span>(String name, Object value)　//　绑定对象</li>
 					<li>Object (HttpSession).<span>getAttribute</span>(String name)　//　获取绑定对象</li>
@@ -405,10 +405,10 @@
 					<li>void (HttpSession).<span>invalidate</span>()　//　删除Session对象</li>
 					<li>修改Session的缺省时间限制:默认30分钟
 						<ol>
-							<li>void <span>setMaxInactiveInterval</span>(int interval)　//　修改Session超时时间<br />
-							<li>修改tomcat中conf/web.xml文件的设置：<br />
+							<li>void <span>setMaxInactiveInterval</span>(int interval)　//　修改Session超时时间<br>
+							<li>修改tomcat中conf/web.xml文件的设置：<br>
 								<details><summary>&lt;session-config&gt;</summary>
-								<span class="none">　　&lt;session-timout&gt;30&lt;/session-timout&gt;<br />
+								<span class="none">　　&lt;session-timout&gt;30&lt;/session-timout&gt;<br>
 								　&lt;/session-config&gt;</span></details></li>
 						</ol>
 					</li>
@@ -429,7 +429,7 @@
 							<li>ps: 占用服务器内存，如果用户量过大，会严重影响服务器的性能</li>
 						</ul>
 					</li> 
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><details><summary><span class="que">过滤器</span></summary>
 				<img src="../img/过滤器执行流程.jpg" width=480px /></details>
@@ -459,16 +459,16 @@
 							<li>将过滤器添加到Web应用中
 								<ul>
 									<li><details><summary>&lt;<span class="tag">filter</span>&gt;</summary>
-										<span class="none">　　&lt;filter-name&gt;filter1&lt;/filter-name&gt;<br />
-										　　&lt;filter-class&gt;web.xxxServlet&lt;/Servlet-class&gt;<br />
-										　　&lt;init-param&gt;　//　由FilterConfig读取: String <span>getInitParameter</span>(String name)<br />
-										　　　　&lt;param-name&gt;illeaglStr&lt;/param-name&gt;<br />
-										　　　　&lt;param-value&gt;value&lt;param-value&gt;<br />
-										　　&lt;init-param&gt;<br />
-										　&lt;filter&gt;<br />
-										　&lt;filter-mapping&gt;<br />
-										　　&lt;filter-name&gt;filter1&lt;/filter-name&gt;<br />
-										　　&lt;url-pattern&gt;/xxx&lt;/url-pattern&gt;<br />
+										<span class="none">　　&lt;filter-name&gt;filter1&lt;/filter-name&gt;<br>
+										　　&lt;filter-class&gt;web.xxxServlet&lt;/Servlet-class&gt;<br>
+										　　&lt;init-param&gt;　//　由FilterConfig读取: String <span>getInitParameter</span>(String name)<br>
+										　　　　&lt;param-name&gt;illeaglStr&lt;/param-name&gt;<br>
+										　　　　&lt;param-value&gt;value&lt;param-value&gt;<br>
+										　　&lt;init-param&gt;<br>
+										　&lt;filter&gt;<br>
+										　&lt;filter-mapping&gt;<br>
+										　　&lt;filter-name&gt;filter1&lt;/filter-name&gt;<br>
+										　　&lt;url-pattern&gt;/xxx&lt;/url-pattern&gt;<br>
 										　&lt;/filter-mapping&gt;</span></details>
 									</li>
 								</ul>
@@ -483,7 +483,7 @@
 							<li>可将多个相同处理逻辑的模块集中写在过滤器里面，方便代码的维护???</li>
 						</ol>
 					</li>
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><span class="que">监听器</span>
 				<ul>
@@ -530,9 +530,9 @@
 						<ol>
 							<li>编写Java类，依据监听的事件类型选择实现相应的监听器接口</li>
 							<li>在监听器接口方法中，实现相应的监听处理逻辑</li>
-							<li>在web.xml文件中注册该监听器<br />
+							<li>在web.xml文件中注册该监听器<br>
 								<details><summary>&lt;listener&gt;</summary>
-								<span class="none">　　&lt;listener-class&gt;web.CouListener&lt;/listener-class&gt;<br />
+								<span class="none">　　&lt;listener-class&gt;web.CouListener&lt;/listener-class&gt;<br>
 								　&lt;/listener&gt;</span></details>
 								ps:实现相同的Listener接口的多个监听器，在执行时按web.xml注册出现的顺序来决定
 							</li>
@@ -580,33 +580,33 @@
 						<ol>
 							<li><span class="tag">page</span>指令：导包、设置页面属性
 								<ul>
-									<li>&lt;%@ page <span class="att">import</span>="java.util.*,java.sql.*" contentType="text/html;<br />
-										　　charset=utf-8" <span class="att">pageEncoding</span>="utf-8" <span class="att">errorPage</span>="a4.jsp"<br />
+									<li>&lt;%@ page <span class="att">import</span>="java.util.*,java.sql.*" contentType="text/html;<br>
+										　　charset=utf-8" <span class="att">pageEncoding</span>="utf-8" <span class="att">errorPage</span>="a4.jsp"<br>
 										　　<span class="att">isErrorPage</span>="true" <span class="att">session</span>="false"&gt;</li>
 								</ul>
 							</li>
 							<li><span class="tag">include</span>指令： &lt;%@ include file="url" %&gt;</li>
-							<li><span class="tag">taglib</span>指令：&lt;%@ taglib <span class="att">uri</span>="标签的命名空间" <span class="att">prefix</span>="命名空间的前缀"&gt;<br />// 用于导入jsp标签</li>
+							<li><span class="tag">taglib</span>指令：&lt;%@ taglib <span class="att">uri</span>="标签的命名空间" <span class="att">prefix</span>="命名空间的前缀"&gt;<br>// 用于导入jsp标签</li>
 						</ol>
 					</li>
-				</ol><br />
+				</ol><br>
 			</li>
 			<li><details><summary><span class="que">隐含对象</span></summary>
 				<img src="../img/隐含对象.jpg" width=450px />
 				<img src="../img/隐含对象2.jpg" width=450px /></details>
 				<ul>
 					<li>
-				</ul><br />
+				</ul><br>
 			</li>
 			<li><details><summary><span class="que">JSP运行原理</span></summary>
-				<img src="../img/JSP如何运行.jpg" width=480px /></details><br />
+				<img src="../img/JSP如何运行.jpg" width=480px /></details><br>
 			</li>
 			<li><span class="que">EL表达式</span>
 				<ul>
 					<li><span class="att">JavaBean</span>: 一个公共的类，含有一个空参的构造方法一些属性和访问这些属性的get/set方法</li>
 					<li>EL表达式的作用：
 						<ol>
-							<li>访问Bean的属性： 容器会依次从<span class="val">pageContext,request,session,application</span>中查找，<br />
+							<li>访问Bean的属性： 容器会依次从<span class="val">pageContext,request,session,application</span>中查找，<br>
 								　　　　　　　　　调用"getxxx"方法输出
 								<ol>
 									<li>${对象名.属性名}　${user.name}</li>
@@ -628,8 +628,8 @@
 									<li>算术运算： ${1+1}　　${"100"+"200"}　//　300，"+"只能求和，不能连接字符串</li>
 									<li>关系运算： ${1>2}　　${str=="abc"}</li>
 									<li>逻辑运算： ${1>0 &amp;&amp; 2&lt;3}</li>
-									<li>empty运算： ${empty str1}　　${empty null}<br />
-										　　　　　　用来判断一个字符串或集合是否为空，以下情况结果为true：<br />
+									<li>empty运算： ${empty str1}　　${empty null}<br>
+										　　　　　　用来判断一个字符串或集合是否为空，以下情况结果为true：<br>
 										　　　　　　空字符串，空集合，值为null，找不到对应的值</li>
 								</ol>
 							</li>
@@ -641,7 +641,7 @@
 							</li>
 						</ol>
 					</li>
-				</ul><br />
+				</ul><br>
 			</li>
 			<li><span class="que">JSTL ???</span>
 				<ul>
@@ -655,18 +655,18 @@
 						</ol>
 					</li>
 					<li><details><summary>&lt;c:<span class="tag">choose</span>&gt;</summary>
-						<span class="none">　　&lt;c:when test=""&gt;内容&lt;/c:when&gt;　//　when可出现1次或多次<br />
-						　　......<br />
-						　　&lt;c:otherwise&gt;内容&lt;/c:therwise&gt;　//　otherwise可出现0次或1次<br />
+						<span class="none">　　&lt;c:when test=""&gt;内容&lt;/c:when&gt;　//　when可出现1次或多次<br>
+						　　......<br>
+						　　&lt;c:otherwise&gt;内容&lt;/c:therwise&gt;　//　otherwise可出现0次或1次<br>
 						　&lt;/c:choose&gt;</span></details>
 					</li>
 					<li><details><summary>&lt;c:<span class="tag">forEach</span> <span class="att">iteams</span>="${...}" <span class="att">var</span>="e" <span class="att">varStatus</span>="s"&gt;</summary>
-						<span class="none">　　...${e.name}...${s.<span class="val">index</span>}...${s.<span class="val">count</span>}...<br />
+						<span class="none">　　...${e.name}...${s.<span class="val">index</span>}...${s.<span class="val">count</span>}...<br>
 						　&lt;/c:forEach&gt;</span></details>
 						<ol>
 							<li>items属性： 指定要遍历的集合</li>
 							<li>var属性： 指定一个绑定名称，容器每次从集合取一个对象，然后绑定到pageContext上</li>
-							<li>varStatus属性： 指定一个绑定名称，绑定值是一个由容器创建的对象，<br />
+							<li>varStatus属性： 指定一个绑定名称，绑定值是一个由容器创建的对象，<br>
 								　　　　　　　　该对象封装了当前迭代的状态</li>
 						</ol>
 					</li>
@@ -680,20 +680,20 @@
 							</li>
 							<li>在doTag方法中添加处理逻辑</li>
 							<li><details><summary>配置标签说明文件</summary>
-								<span class="none">&lt;taglib ...&gt;<br />
-								　　&lt;tlib-version&gt;版本&lt;/tlib-version&gt;<br />
-								　　&lt;short-name&gt;prefix值&lt;/short-name&gt;<br />
-								　　&lt;uri&gt;uri值&lt;/uri&gt;<br />
-								　　&lt;tag&gt;<br />
-								　　　　&lt;name&gt;标签名&lt;/name&gt;<br />
-								　　　　&lt;tag-class&gt;类名&lt;/tag-class&gt;<br />
-								　　　　&lt;body-content&gt;定义标签内容empty/scriptless/...&lt;/body-contetn&gt;<br />
-								　　　　&lt;attribute&gt;<br />
-								　　　　　　&lt;name&gt;属性名&lt;/name&gt;<br />
-								　　　　　　&lt;required&gt;是否必须设置true/false&lt;/required&gt;<br />
-								　　　　　　&lt;rtexpvalue&gt;是否能制定一个JSP动态元素true/false&lt;/rtexpvalue&gt;<br />
-								　　　　&lt;/attribute&gt;<br />
-								　　&lt;/tag&gt;<br />
+								<span class="none">&lt;taglib ...&gt;<br>
+								　　&lt;tlib-version&gt;版本&lt;/tlib-version&gt;<br>
+								　　&lt;short-name&gt;prefix值&lt;/short-name&gt;<br>
+								　　&lt;uri&gt;uri值&lt;/uri&gt;<br>
+								　　&lt;tag&gt;<br>
+								　　　　&lt;name&gt;标签名&lt;/name&gt;<br>
+								　　　　&lt;tag-class&gt;类名&lt;/tag-class&gt;<br>
+								　　　　&lt;body-content&gt;定义标签内容empty/scriptless/...&lt;/body-contetn&gt;<br>
+								　　　　&lt;attribute&gt;<br>
+								　　　　　　&lt;name&gt;属性名&lt;/name&gt;<br>
+								　　　　　　&lt;required&gt;是否必须设置true/false&lt;/required&gt;<br>
+								　　　　　　&lt;rtexpvalue&gt;是否能制定一个JSP动态元素true/false&lt;/rtexpvalue&gt;<br>
+								　　　　&lt;/attribute&gt;<br>
+								　　&lt;/tag&gt;<br>
 								　&lt;/taglib&gt;</span></details></li>
 						</ol>
 					</li>

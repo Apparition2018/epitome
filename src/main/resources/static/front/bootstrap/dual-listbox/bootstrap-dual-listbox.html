@@ -30,12 +30,12 @@
             <option value="9">Option 9</option>
             <option value="10">Option 10</option>
         </select>
-        <br />
+        <br>
         <input id="showValue" type="button" value="show selected data" />
     </div>
     <script>
         $(function () {
-            var demo2 = $('.demo1').bootstrapDualListbox({
+            const demo2 = $('.demo1').bootstrapDualListbox({
                 nonSelectedListLabel: 'Non-selected',
                 selectedListLabel: 'Selected',
                 preserveSelectionOnMove: 'moved',
@@ -43,7 +43,7 @@
                 // nonSelectedFilter: 'ion ([7-9]|[1][0-2])'
             });
 
-            $("#showValue").click(function () {
+            $("#showValue").on('click', function () {
                 alert($('[name="duallistbox_demo1"]').val());
             });
         });

@@ -42,8 +42,8 @@
                         <td colspan="2">第一个形参</td>
                         <td>
                             <a href="javascript: alert((function() { return this }).call(7))">(function() {
-                                <br />&nbsp;&nbsp;return this
-                                <br />}).call(7)</a>
+                                <br/>&nbsp;&nbsp;return this
+                                <br/>}).call(7)</a>
                         </td>
                     </tr>
                     <tr>
@@ -59,31 +59,39 @@
                         <td colspan="2">与封闭词法上下文的 this 保持一致</td>
                         <td>
                             <a href="javascript: alert((function() { this.age = 18; return (() => this.age)() })())">(function() {
-                                <br />&nbsp;&nbsp;this.age = 18;
-                                <br />&nbsp;&nbsp;return (() => this.age)()
-                                <br />})()</a>
+                                <br/>&nbsp;&nbsp;this.age = 18;
+                                <br/>&nbsp;&nbsp;return (() => this.age)()
+                                <br/>})()</a>
                         </td>
                     </tr>
                     <tr>
                         <td>作为对象的方法</td>
                         <td colspan="2" rowspan="3">该对象</td>
                         <td>
-                            <a href="javascript: alert((function() { var o = { prop: 37, f: function() { return this.prop }}; return o.f()})())">var o = {
-                                <br />&nbsp;&nbsp;prop: 37,
-                                <br />&nbsp;&nbsp;f: function() {
-                                <br />&nbsp;&nbsp;&nbsp;&nbsp;return this this.prop;
-                                <br />&nbsp;&nbsp;}
-                                <br />};
-                                <br />o.f();
+                            <a href="javascript: alert((function() { const o = { prop: 37, f: function() { return this.prop }}; return o.f()})())">
+                                const o = {
+                                <br/>&nbsp;&nbsp;prop: 37,
+                                <br/>&nbsp;&nbsp;f: function() {
+                                <br/>&nbsp;&nbsp;&nbsp;&nbsp;return this.prop;
+                                <br/>&nbsp;&nbsp;}
+                                <br/>};
+                                <br/>o.f();
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <td>原型链</td>
                         <td>
-                            <a href="javascript: alert((function() { var o = { prop: 37, f: function() { return this.prop }}; var p = Object.create(o); p.prop = 38; return p.f() })())">var p = Object.create(o);
-                                <br />p.prop = 38;
-                                <br />p.f();
+                            <a href="javascript: alert((function() { const o = { prop: 37, f: function() { return this.prop }}; const p = Object.create(o); p.prop = 38; return p.f() })())">
+                                const o = {
+                                <br/>&nbsp;&nbsp;prop: 37,
+                                <br/>&nbsp;&nbsp;f: function() {
+                                <br/>&nbsp;&nbsp;&nbsp;&nbsp;return this.prop;
+                                <br/>&nbsp;&nbsp;}
+                                <br/>};
+                                <br/>const p = Object.create(o);
+                                <br/>p.prop = 38;
+                                <br/>p.f();
                             </a>
                         </td>
                     </tr>
@@ -95,9 +103,10 @@
                         <td>构造函数</td>
                         <td colspan="2">新创建的对象</td>
                         <td>
-                            <a href="javascript: alert((function(){ function C() { this.a = 37 } var o = new C(); return o.a })())">function C() { this.a = 37 }
-                                <br />var o = new C();
-                                <br />o.a;
+                            <a href="javascript: alert((function(){ function C() { this.a = 37 } const o = new C(); return o.a })())">
+                                function C() { this.a = 37 }
+                                <br/>const o = new C();
+                                <br/>o.a;
                             </a>
                         </td>
                     </tr>

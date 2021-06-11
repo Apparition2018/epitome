@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -20,13 +20,13 @@
 		</div>
 		<script class="code w60p" contenteditable="true">
 			// 绘制形状
-			var canvas = document.getElementById('canvas-1'),
+			const canvas = document.getElementById('canvas-1'),
 				ctx = canvas.getContext('2d');
 			ctx.clearRect(0, 0, 200, 200); // 擦除(0,0)位置大小为200x200的矩形，擦除的意思是把该区域变为透明
 			ctx.fillStyle = '#dddddd'; // 使用内部方式描述颜色和样式
 			ctx.fillRect(35, 35, 130, 130); // 把(35,35)位置大小为130x130的矩形涂色
 			// 利用Path绘制复杂路径:
-			var path = new Path2D();
+			const path = new Path2D();
 			path.arc(100, 100, 50, 0, Math.PI * 2, true); // 添加一条圆弧路径
 			path.moveTo(135, 100); // 将一个新的子路径的起始点移动到(x，y)坐标
 			path.arc(100, 100, 35, 0, Math.PI, false);
@@ -48,7 +48,7 @@
 		</div>
 		<script class="code w60p" contenteditable="true">
 			// 绘制文本
-			var canvas = document.getElementById('canvas-2'),
+			const canvas = document.getElementById('canvas-2'),
 				ctx = canvas.getContext('2d');
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			ctx.shadowOffsetX = 2; // 阴影水平偏移距离

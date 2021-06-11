@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title>child</title>
 </head>
+
 <body>
 	<div id='child' style='width: 100px; height: 100px; background-color: red;' onclick="doChild()">子页面</div>
 	<script type="text/javascript">
 		function doChild() {
-			var _parent = window.parent;
-			var _div = _parent.document.getElementById('parent');
+			const _parent = window.parent;
+			const _div = _parent.document.getElementById('parent');
 			_div.style.color = 'red';
 
 			document.write(parent.a);

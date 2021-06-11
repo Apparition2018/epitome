@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Spring &amp; MyBatis</title>
@@ -28,7 +28,7 @@
 			<ul>
 				<li>String config = "applicationContext.xml";</li>
 				<li><span>applicationContext</span> applicationContext = new <span>ClassPathXmlApplicationContext</span>(config);</li>
-			</ul><br />
+			</ul><br>
 		</li>
 		<li><span class="que">Spring容器的使用</span>
 			<ul>
@@ -46,23 +46,23 @@
 				</li>
 				<li>使用静态工厂方法实例化：
 					<ul>
-						<li>&lt;bean id="claenderObj2" class="java.util.Calendar" <br />
-							factory-method="<span class="val">getInstance</span>" /&gt;<br />
+						<li>&lt;bean id="claenderObj2" class="java.util.Calendar" <br>
+							factory-method="<span class="val">getInstance</span>" /&gt;<br>
 					</ul>
 				</li>
 				<li>使用实例工厂方法实例化：
 					<ol>
 						<li>&lt;bean id="calendarObj3" class="java.util.GregorianCalendar" /&gt;</li>
-						<li>&lt;bean id="dateObj" factory-bean="<span class="val">calendarObj3</span>"<br />
+						<li>&lt;bean id="dateObj" factory-bean="<span class="val">calendarObj3</span>"<br>
 							factory-method="<span class="val">getTime</span>" /&gt;</li>
 					</ol>
 				</li>
-			</ol><br />
+			</ol><br>
 		</li>
 		<li><span class="que">alias ???</span>
 			<ul>
 				<li>
-			</ul><br />
+			</ul><br>
 		</li>
 		<li><details><summary><span class="que">Bean作用域</span></summary>
 			<img src="../img/Bean作用域.jpg" width=450px /></details>
@@ -73,22 +73,22 @@
 						<li><span class="att">prototype</span>: 一个bean定义对应多个对象实例</li>
 					</ol>
 				</li>
-			</ul><br />
+			</ul><br>
 		</li>
 		<li><span class="que">Bean的生命周期回调</span>
 			<ul>
 				<li>指定初始化回调方法: <span class="att">init-method</span>="方法名"</li>
 				<li>指定销毁回调方法: <span class="att">destroy-method</span>="方法名"　//　仅适用于<span class="val">单例</span></li>
-				<li>ps: 顶级的&lt;beans/&gt;元素中的<span class="att">default-init/destroy-method</span><br />
+				<li>ps: 顶级的&lt;beans/&gt;元素中的<span class="att">default-init/destroy-method</span><br>
 					　　可为所有&lt;bean&gt;指定初始化/销毁回调方法</li>
-			</ul><br />
+			</ul><br>
 		</li>
 		<li><span class="que">Bean的延迟实例化</span>
 			<ul>
 				<li>ApplicationContext实现的默认行为就在启动时<span class="val">将所有singleton bean提前实例化</span></li>
 				<li><span class="att">lazy-init</span>="true"，第一次被用到才实例化</li>
-				<li>ps:顶级的&lt;beans/&gt;元素中的<span class="att">default-lazy-init-method</span>可为所有&lt;bean&gt;指定延迟实例化<br />
-			</ul><br />
+				<li>ps:顶级的&lt;beans/&gt;元素中的<span class="att">default-lazy-init-method</span>可为所有&lt;bean&gt;指定延迟实例化<br>
+			</ul><br>
 		</li>
 		<li><span class="que">IOC</span>
 			<ol>
@@ -100,9 +100,9 @@
 					</ol>
 					<ul>
 						<li><details open="open"><summary>&lt;bean id="computer" class="Bean类型"&gt;</summary>
-							<span class="none">　　&lt;property name="mainboard" <span class="att">value</span>="技嘉" /&gt;<br />
-							　　// <span class="att">name</span>:表示调用哪个方法　<span class="att">ref</span>：指定被注入的bean的id<br />
-							　　......<br />
+							<span class="none">　　&lt;property name="mainboard" <span class="att">value</span>="技嘉" /&gt;<br>
+							　　// <span class="att">name</span>:表示调用哪个方法　<span class="att">ref</span>：指定被注入的bean的id<br>
+							　　......<br>
 							　&lt;/bean&gt;</span></details>
 						</li>
 					</ul>
@@ -115,8 +115,8 @@
 					</ol>
 					<ul>
 						<li><details open="open"><summarY>&lt;bean id="phone" class="Bean类型"&gt;</summarY>
-							<span class="none">　　&lt;constructor-arg index="0" ref="ARM"/&gt;<br />
-							　　//　<span class="att">index</span>:构造器参数的下标（从0开始）<br />
+							<span class="none">　　&lt;constructor-arg index="0" ref="ARM"/&gt;<br>
+							　　//　<span class="att">index</span>:构造器参数的下标（从0开始）<br>
 							　&lt;/bean&gt;</span></details>
 					</ul>
 				</li>
@@ -132,14 +132,14 @@
 						</li>
 					</ul>
 				</li>
-			</ol><br />
+			</ol><br>
 		</li>
 		<li><span class="que">参数值注入</span>
 			<ol>
 				<li>注入基本类型:容器将字符串从String类型转化为实际的属性或参数类型后给Bean注入
 					<ol>
 						<li><details><summary>&lt;property name="name"&gt;</summary>
-							<span class="none">　　&lt;value&gt;张三&lt;/value&gt;<br />
+							<span class="none">　　&lt;value&gt;张三&lt;/value&gt;<br>
 							　&lt;/property&gt;</span></details></li>
 						<li>&lt;property name="age" value="25" /&gt;</li>
 					</ol>
@@ -149,16 +149,16 @@
 						<li>&lt;list /&gt;、&lt;set /&gt;、&lt;map /&gt;、&lt;props /&gt;
 							<ol>
 								<li><details><summary>&lt;property name="标识符"&gt;</summary>
-									<span class="none">　　&lt;map&gt;<br />
-									　　　　&lt;<span class="tag">entry</span> key="englisg" value="88" /&gt;<br />
-									　　　　&lt;entry ....../&gt;<br />
-									　　&lt;/map&gt;<br />
+									<span class="none">　　&lt;map&gt;<br>
+									　　　　&lt;<span class="tag">entry</span> key="englisg" value="88" /&gt;<br>
+									　　　　&lt;entry ....../&gt;<br>
+									　　&lt;/map&gt;<br>
 									　&lt;/property&gt;</span></details></li>
 								<li><details><summary>&lt;property name="标识符"&gt;</summary>
-									<span class="none">　　&lt;<span class="tag">props</span>&gt;<br />
-									　　　　&lt;<span class="tag">prop</span> key="user"&gt;lhh&lt;/prop&gt;<br />
-									　　　　&lt;prop......<br />
-									　　&lt;/props&gt;<br />
+									<span class="none">　　&lt;<span class="tag">props</span>&gt;<br>
+									　　　　&lt;<span class="tag">prop</span> key="user"&gt;lhh&lt;/prop&gt;<br>
+									　　　　&lt;prop......<br>
+									　　&lt;/props&gt;<br>
 									　&lt;/property&gt;</span></details>
 								
 							</ol>
@@ -170,11 +170,11 @@
 						<li>使用引用方式注入集合：&lt;util:list/&gt;, &lt;util:set/&gt;, &lt;map/&gt;
 							<ul>
 								<li><details open="open"><summary>&lt;<span class="tag">util:properties</span> id="标识符"&gt;</summary>
-									<span class="none">　　　&lt;<span class="tag">prop</span> key="username" value="70" /&gt;<br />
-									　　　&lt;prop ....../prop&gt;<br />
-									　&lt;/util:properties&gt;<br />
-									　&lt;bean id="标识符" class="Bean类型"&gt;<br />
-									　　　&lt;property name="标识符" <span class="att">ref</span>="<span class="val">util:properties的id属性的值</span>" /&gt;<br />
+									<span class="none">　　　&lt;<span class="tag">prop</span> key="username" value="70" /&gt;<br>
+									　　　&lt;prop ....../prop&gt;<br>
+									　&lt;/util:properties&gt;<br>
+									　&lt;bean id="标识符" class="Bean类型"&gt;<br>
+									　　　&lt;property name="标识符" <span class="att">ref</span>="<span class="val">util:properties的id属性的值</span>" /&gt;<br>
 									　&lt;/bean&gt;</span></details>
 							</ul>
 						</li>
@@ -183,26 +183,26 @@
 				<li>注入Spring表达式：读取其它bean对象/集合中的数据
 					<ul>
 						<li><details><summary>&lt;bean id="标识符" class="Bean类型"&gt;</summary>
-							<span class="none">　　&lt;property name="interest" value="#{eb1.interest[0]}" /&gt;　//　集合<br />
-							　　&lt;property name="score" value="#{eb1.score.english}" /&gt;　//　map<br />
-							　　&lt;property name="pageSize" value="#{config.pageSize}" /&gt;　//　properties<br />
-							　　&lt;property name="pageSize" value="#{<span class="val">config.['pageSize']</span>}" /&gt;　//　properties<br />
+							<span class="none">　　&lt;property name="interest" value="#{eb1.interest[0]}" /&gt;　//　集合<br>
+							　　&lt;property name="score" value="#{eb1.score.english}" /&gt;　//　map<br>
+							　　&lt;property name="pageSize" value="#{config.pageSize}" /&gt;　//　properties<br>
+							　　&lt;property name="pageSize" value="#{<span class="val">config.['pageSize']</span>}" /&gt;　//　properties<br>
 							　&lt;/bean&gt;</span></details></li>
 					</ul>
 				</li>
 				<li>注入null和空字符串 ????</li>
-			</ol><br />
+			</ol><br>
 		</li>
 		<li><span class="que">读取.properties文件</span>
 			<ul>
 				<li>&lt;<span class="tag">util:properties</span> id="config" <span class="att">location</span>="<span class="val">classpath</span>:config.properties" /&gt;
 				<li>classpath属性：告诉容器，使用类路径来查找</li>
 				<li>容器会读取文件内容，并存放到Properties对象里</li>
-			</ul><br />
+			</ul><br>
 		</li>
 		<li><span class="que">基于注解的组件扫描</span>
 			<ol>
-				<li>指定扫描类路径： &lt;<span class="tag">context:component-scan</span> <span class="att">base-package</span>="<span class="val">父级package路径</span>" /&gt;<br />
+				<li>指定扫描类路径： &lt;<span class="tag">context:component-scan</span> <span class="att">base-package</span>="<span class="val">父级package路径</span>" /&gt;<br>
 					　　　　容器会自动扫描包及其子包下所有组件，并实例化bean</li>
 				<li><details open="open"><summary>自动扫描的注解标记 ???</summary>
 					<img src="../img/注解标记.jpg" width=450px /></details></li>
@@ -216,11 +216,11 @@
 				<li>指定初始化和销毁回调：<span> @PostConstruct</span>　　<span>@PreDestroy</span></li>
 				<li>指定依赖注入关系：
 					<ol>
-						<li><span>@Autowired</span>　　//　构造器注入推荐使用<br />
-							public Programmer(<span>@Qualifier</span>("标识符") Computer computer) {<br />
-							ps：注入的对象单例时，@Qualifier可省略，此时Spring按照类型匹配参数<br />
+						<li><span>@Autowired</span>　　//　构造器注入推荐使用<br>
+							public Programmer(<span>@Qualifier</span>("标识符") Computer computer) {<br>
+							ps：注入的对象单例时，@Qualifier可省略，此时Spring按照类型匹配参数<br>
 							<details><summary>@Autowired也可以写在属性上，</summary>
-							<span class="none">　@Qualifier("cp")<br />
+							<span class="none">　@Qualifier("cp")<br>
 							　private String str;</span></details></li>
 						<li><span>@Resource</span>　//　Setter注入推荐使用,加到Setter方法前或属性前使用</li>
 						<li>@Inject/@Named　//　用法和@Atuowired一致
@@ -246,49 +246,49 @@
 								<li>创建web工程，导包： spring-webmvc</li>
 								<li>添加xml配置文件</li>
 								<li><details><summary>在web.xml中配DispatcherServlet前端控制器组件</summary>
-									<span class="none">&lt;servlet&gt;<br />
-									　　&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;<br />
-									　　&lt;servlet-class&gt;<br />
-									　　　　<span class="val">org.springframework.web.wervlet.DispatcherServlet</span><br />
-									　　&lt;/servlet-class&gt;<br />
-									　　&lt;init-parma&gt;<br />
-									　　　　&lt;param-name&gt;<span class="val">contextConfigLocation</span>&lt;/param-name&gt;<br />
-									　　　　&lt;param-value&gt;<span class="val">classpath:springmvc.xml</span>&lt;/param-value&gt;<br />
-									　　&lt;/init-param&gt;<br />
-									　　&lt;<span class="tag">load-on-startup</span>&gt;1&lt;/load-on-startup&gt;<br />
-									&lt;servlet-mapping&gt;<br />
+									<span class="none">&lt;servlet&gt;<br>
+									　　&lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;<br>
+									　　&lt;servlet-class&gt;<br>
+									　　　　<span class="val">org.springframework.web.wervlet.DispatcherServlet</span><br>
+									　　&lt;/servlet-class&gt;<br>
+									　　&lt;init-parma&gt;<br>
+									　　　　&lt;param-name&gt;<span class="val">contextConfigLocation</span>&lt;/param-name&gt;<br>
+									　　　　&lt;param-value&gt;<span class="val">classpath:springmvc.xml</span>&lt;/param-value&gt;<br>
+									　　&lt;/init-param&gt;<br>
+									　　&lt;<span class="tag">load-on-startup</span>&gt;1&lt;/load-on-startup&gt;<br>
+									&lt;servlet-mapping&gt;<br>
 									......</span></details>
 								</li>
 							</ol>
 						</li>
 						<li>HandlerMapping组件:通过此组件，Dispatcher可将客户HTTP请求映射到Controller上
 							<details><summary>配置HandlerMapping：</summary>
-							<span class="none">&lt;bean class="org.springframe.web.servlet.handler.<span class="val">SimpleUrlHandlerMapping</span>"&gt;<br />
-							　　&lt;<span class="tag">property</span> name="mappings"&gt;<br />
-							　　　　&lt;props&gt;<br />
-							　　　　　　&lt;prop key="/hello.do"&gt;<span class="val">hc</span>&lt;/prop&gt;<br />
-							　　　　&lt;/props&gt;<br />
-							　　&lt;/property&gt;<br />
+							<span class="none">&lt;bean class="org.springframe.web.servlet.handler.<span class="val">SimpleUrlHandlerMapping</span>"&gt;<br>
+							　　&lt;<span class="tag">property</span> name="mappings"&gt;<br>
+							　　　　&lt;props&gt;<br>
+							　　　　　　&lt;prop key="/hello.do"&gt;<span class="val">hc</span>&lt;/prop&gt;<br>
+							　　　　&lt;/props&gt;<br>
+							　　&lt;/property&gt;<br>
 							&lt;/bean&gt;</span></details>
 							<details><summary>配置处理器:</summary>
 							<span class="none">&lt;bean id="<span class="val">hc</span>" class="controller.HelloController" /&gt;</span></details>
 						</li>
-						<li>Controller组件：负责执行具体的业务处理，可调用DAO等组件；<br />
+						<li>Controller组件：负责执行具体的业务处理，可调用DAO等组件；<br>
 							　　　　　　　　编写时实现Controller接口及约定方法(<span>handleRequest</span>())</li>
-						<li>ModelAndView组件：Controller组件约定的handlerRequest方法执行后返回一个<br />
+						<li>ModelAndView组件：Controller组件约定的handlerRequest方法执行后返回一个<br>
 							　　　　　　　　　ModelAndView对象，该对象可封装模型数据和视图名相应信息
 							<ul>
 								<li><span>ModelAndView</span>(String viewName)　//　viewName -- jsp页面名字</li>
-								<li><span>ModelAndView</span>(String viewName, Map model)　//　model的数据 -- <br />
+								<li><span>ModelAndView</span>(String viewName, Map model)　//　model的数据 -- <br>
 									　　　　　　　　　　　　　　　　　　　　　　　　存储到request的attribute中</li>
 							</ul>
 						</li>
 						<li><details><summary>ViewResolver组件：通过ModelAndView封装的视图名来解析视图</summary>
 							<img src="../img/ViewResolver类型.jpg" width=600px /></details>
 							<details open="open"><summary>配置视图解析器:</summary>
-							<span class="none">&lt;bean class="org.springframework.web.servlet.view.<span class="val">InternalResourceViewResolver</span>" /&gt;<br />
-							　　&lt;property name="<span class="val">prefix</span>" value="/WEB-INF/" /&gt;<br />
-							　　&lt;property name="<span class="val">suffix</span>" value=".jsp" /&gt;<br />
+							<span class="none">&lt;bean class="org.springframework.web.servlet.view.<span class="val">InternalResourceViewResolver</span>" /&gt;<br>
+							　　&lt;property name="<span class="val">prefix</span>" value="/WEB-INF/" /&gt;<br>
+							　　&lt;property name="<span class="val">suffix</span>" value=".jsp" /&gt;<br>
 							&lt;/bean&gt;</span></details>
 						</li>
 					</ol>
@@ -298,7 +298,7 @@
 						<li><span>@Controller</span>　//　用于组件扫描，不用实现Controller接口了
 							<ol>
 								<li>写在类前面</li>
-								<li>开启组件扫描定义： <br />
+								<li>开启组件扫描定义： <br>
 									   &lt;<span class="tag">context:component-scan</span> <span class="att">base-package</span>="controller" /&gt;</li>
 							</ol>
 						</li>
@@ -316,47 +316,47 @@
 						</li>
 					</ol>
 				</li>
-			</ol><br />
+			</ol><br>
 		</li>
 		<li><span class="que2">接收请求参数值</span>
 			<ol>
 				<li>HttpServletRequest: (ServletRequest).getParameter("height");</li>
-				<li><span>@RequestParam</span>: @RequestParam("height")String ht: Spring自动将表单参数注入形参，<br />
+				<li><span>@RequestParam</span>: @RequestParam("height")String ht: Spring自动将表单参数注入形参，<br>
 					　　参数类型自动转换，但可能出现类型转换异常</li>
 				<li>javaBean： 
 					<ol>
 						<li>定义User实体类，属性名与&lt;form&gt;表单组件的name相同</li>
 						<li><details><summary>在Controller组件处理方法定义User类型参数：</summary>
-							<span class="none">　　@RequestMapping("/register.do")<br />
-							　　public String checkLogin3(User user) {<br />
+							<span class="none">　　@RequestMapping("/register.do")<br>
+							　　public String checkLogin3(User user) {<br>
 							　　...</span></details></li>
 					</ol>
 				</li>
-			</ol><br />
+			</ol><br>
 		<li>
 		<li><span class="que2">向页面传值</span>
 			<ol>
 				<li>HttpServletRequest:
 				<li>Session:
 				<li><details open="open"><summary><span>ModelAndView</span>对象: Model数据会利用HttpServletRequest的Attribute传递到JSP页面中</summary>
-					<span class="none">Map&lt;String, Object&gt; data = new HashMap&lt;String, Object&gt;();<br />
-					data.put.("status", status);<br />
+					<span class="none">Map&lt;String, Object&gt; data = new HashMap&lt;String, Object&gt;();<br>
+					data.put.("status", status);<br>
 					return new ModelAndView("视图名", data);</span></details></li>
 				<li><details><summary>ModelMap参数对象: 原理同上</summary>
-					<span class="none">@RequestMapping("/bmi.do")<br />
-					public String bmi6(BmiParam bp, <span class="att">ModelMap</span> mm) {<br />
-					　　.....<br />
-					　　mm.<span>addAttribute</span>("status", status);<br />
+					<span class="none">@RequestMapping("/bmi.do")<br>
+					public String bmi6(BmiParam bp, <span class="att">ModelMap</span> mm) {<br>
+					　　.....<br>
+					　　mm.<span>addAttribute</span>("status", status);<br>
 					　　return "视图名"</span></details></li>
 				<li>@ModelAttribute注解: ???</li>
-			</ol><br />
+			</ol><br>
 		</li>
 		<li><span class="que2">重定向视图</span>
 			<ol>
 				<li>返回值String:　return <span class="val">"redirect:login.do"</span>;</li>
-				<li>返回值ModelAndView:　RedirectView view = new <span>RedirectView</span>("login.do");<br />
+				<li>返回值ModelAndView:　RedirectView view = new <span>RedirectView</span>("login.do");<br>
 					　　　　　　　　　　　return new <span class="val">ModelAndView(view)</span>;
-			</ol><br />
+			</ol><br>
 		<li>
 		<li><details><summary><span class="que2">系统分层</span></summary>
 			<img src="../img/系统分层.png" width=500px />
@@ -371,7 +371,7 @@
 					<ul>
 						<li>注意: 
 							<ol>
-								<li>上一层调用接口调用下一层业的服务（比如，业务层要调用接口调用持久层），<br />
+								<li>上一层调用接口调用下一层业的服务（比如，业务层要调用接口调用持久层），<br>
 									这样的好处是，当下一层的实现发生改变，不会影响上一层
 								<li>表示层调用业务层，业务层调用持久层
 								<li>MVC属于表示层的一种架构模式
@@ -379,7 +379,7 @@
 						</li>
 					</ul>			
 				</li>
-			</ul><br />
+			</ul><br>
 		<li>
 		<li><span class="que2">处理中文</span>
 			<ul>
@@ -388,24 +388,24 @@
 					<ol>
 						<li>表单数据以post方式提交</li>
 						<li><details><summary>在web.xml中配置过滤器：</summary>
-							<span class="none">&lt;filter&gt;<br />
-							　　&lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;<br />
-							　　&lt;filter-class&gt;<br />
-							　　　　<span class="val">org.springframework.web.filter.CharacterEncodingFilter</span><br />
-							　　&lt;/filter-class&gt;<br />
-							　　&lt;init-param&gt;<br />
-							　　　　&lt;param-name&gt;encoding&lt;/param-name&gt;<br />
-							　　　　&lt;param-value&gt;UTF-8&lt;/paaram-value&gt;<br />
-							　　&lt;/init-param&gt;<br />
-							&lt;/filter&gt;<br />
-							&lt;filter-mapping&gt;<br />
-							　　&lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;<br />
-							　　&lt;url-pattern&gt;<span class="val">/*</span>&lt;/url-pattern&gt;<br />
+							<span class="none">&lt;filter&gt;<br>
+							　　&lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;<br>
+							　　&lt;filter-class&gt;<br>
+							　　　　<span class="val">org.springframework.web.filter.CharacterEncodingFilter</span><br>
+							　　&lt;/filter-class&gt;<br>
+							　　&lt;init-param&gt;<br>
+							　　　　&lt;param-name&gt;encoding&lt;/param-name&gt;<br>
+							　　　　&lt;param-value&gt;UTF-8&lt;/paaram-value&gt;<br>
+							　　&lt;/init-param&gt;<br>
+							&lt;/filter&gt;<br>
+							&lt;filter-mapping&gt;<br>
+							　　&lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;<br>
+							　　&lt;url-pattern&gt;<span class="val">/*</span>&lt;/url-pattern&gt;<br>
 							&lt;/filter-mapping&gt;</span></details></li>
 						<li>页面配置和过滤器指定编码要保持一致</li>						
 					</ol>
 				</li>
-			</ul><br />
+			</ul><br>
 		</li>
 		<li><details><summary><span class="que2">拦截器</span></summary>
 			<img src="../img/拦截器.png" width=550px />
@@ -414,101 +414,101 @@
 				<li>ps：过滤器属于Servlet规范，而拦截器属于Spring框架</li>
 				<li>写一个java类，实现<span>HandlerInterceptor</span>接口，有如下3个方法
 					<ol>
-						<li><span>preHandle</span>(...): 处理器执行前调用；<span class="val">返回ture表示继续调用其它拦截器或处理器</span>，<br />
+						<li><span>preHandle</span>(...): 处理器执行前调用；<span class="val">返回ture表示继续调用其它拦截器或处理器</span>，<br>
 							　　　　　　　返回false表示中断拦截器</li>
-						<li><span>postHandle</span>(...)： 处理器执行后、视图处理前调用；<br />
+						<li><span>postHandle</span>(...)： 处理器执行后、视图处理前调用；<br>
 							　　　　　　　此时可通过modelAndView对象对模型数据进行处理或对视图进行处理</li>
-						<li><span>afterCompletion</span>(...): 整个请求处理完毕后调用；<br />
+						<li><span>afterCompletion</span>(...): 整个请求处理完毕后调用；<br>
 							　　　　　　　可在此记录结束时间并输出消耗时间,资源清理等</li>
 					</ol>
 					<ul>
 						<li>ps: 如只需要某一个方法可以继承<span>HandlerInterceptorAdapter</span></li>
 					</ul>
 				</li>
-				<li>配置拦截器：<br />
+				<li>配置拦截器：<br>
 						<details><summary>&lt;<span class="tag">mvc:interceptors</span>&gt;</summary>
-						<span class="none">　　&lt;<span class="tag">mvc:interceptor</span>&gt;<br />
-						　　　　&lt;<span class="tag">mvc:mapping</span> <span class="att">path</span>="/**" /&gt; // 拦截哪一些请求<br />
-						　　　　&lt;<span class="tag">mvc:exclude-mapping</span> path="toLogin.do" /&gt;　//　排除哪一些请求<br />
-						　　　　&lt;<span class="tag">mvc:exclude-mapping</span> path="login.do" /&gt;<br />
-						　　　　&lt;mvc:exclude-mapping path="/checkcode.do" /&gt;<br />
-						　　　　&lt;bean class="interceptors.SomeInterceptor" /&gt;<br />
-						　　&lt;/mvc:interceptor&gt;<br />
+						<span class="none">　　&lt;<span class="tag">mvc:interceptor</span>&gt;<br>
+						　　　　&lt;<span class="tag">mvc:mapping</span> <span class="att">path</span>="/**" /&gt; // 拦截哪一些请求<br>
+						　　　　&lt;<span class="tag">mvc:exclude-mapping</span> path="toLogin.do" /&gt;　//　排除哪一些请求<br>
+						　　　　&lt;<span class="tag">mvc:exclude-mapping</span> path="login.do" /&gt;<br>
+						　　　　&lt;mvc:exclude-mapping path="/checkcode.do" /&gt;<br>
+						　　　　&lt;bean class="interceptors.SomeInterceptor" /&gt;<br>
+						　　&lt;/mvc:interceptor&gt;<br>
 						　&lt;/mvc:interceptors&gt;</span></details></li>
-			</ul><br />
+			</ul><br>
 		<li>
 		<li><span class="que2">异常处理</span>
 			<ol>
-				<li>简单异常处理器<span>SimpleMappingExceptionResolver</span><br />
+				<li>简单异常处理器<span>SimpleMappingExceptionResolver</span><br>
 					<details><summary>在spring的XML配置文件中定义：</summary>
-					<span class="none">&lt;bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"&gt;<br />
-					　　&lt;property name="exceptionMappings"&gt;<br />
-					　　　　&lt;props&gt;<br />
-					　　　　　　&lt;prop key="java.lang.<span class="val">Exception（异常类型）</span>"&gt;<span class="val">error（视图页面）</span>&lt;/prop&gt;<br />
-					　　　　　　&lt;prop key="com.tarena.TimeoutException"&gt;login&lt;/prop&gt;<br />
-					　　　　&lt;props&gt;<br />
-					　　&lt;/property&gt;<br />
+					<span class="none">&lt;bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"&gt;<br>
+					　　&lt;property name="exceptionMappings"&gt;<br>
+					　　　　&lt;props&gt;<br>
+					　　　　　　&lt;prop key="java.lang.<span class="val">Exception（异常类型）</span>"&gt;<span class="val">error（视图页面）</span>&lt;/prop&gt;<br>
+					　　　　　　&lt;prop key="com.tarena.TimeoutException"&gt;login&lt;/prop&gt;<br>
+					　　　　&lt;props&gt;<br>
+					　　&lt;/property&gt;<br>
 					&lt;/bean&gt;</span></details>					
 				</li>
-				<li>实现<span>HandlerExceptionResoler</span>接口自定义异常处理器<br />
+				<li>实现<span>HandlerExceptionResoler</span>接口自定义异常处理器<br>
 					&lt;bean id="exceptionHandler" class="....MyMappingExceptionResolver" /&gt;</li>
 				<li><span>@ExceptionHandler</span>
 					<ol>
 						<li><details open="open"><summary>先编写一个BaseController类</summary>
-							<span class="none"><span>@ControllerAdvice</span>　//　全局异常处理类<br />
-							public class BaseController {<br />
-							　　@ExceptionHandler<br />
-							　　public String execute(HttpServletRequest request, <span class="val">Exception ex</span>)<br />
-							　　　　if (ex <span class="val">instanceof</span> NumberFormatException) {<br />
-							　　　　　　request.setAttribute("msg", "请输入合法的数字");<br />
-							  　　　　　　return "视图名";<br />
-							　　　　}<br />
-							　　　　return "视图名";<br />
-							　　}<br />
+							<span class="none"><span>@ControllerAdvice</span>　//　全局异常处理类<br>
+							public class BaseController {<br>
+							　　@ExceptionHandler<br>
+							　　public String execute(HttpServletRequest request, <span class="val">Exception ex</span>)<br>
+							　　　　if (ex <span class="val">instanceof</span> NumberFormatException) {<br>
+							　　　　　　request.setAttribute("msg", "请输入合法的数字");<br>
+							  　　　　　　return "视图名";<br>
+							　　　　}<br>
+							　　　　return "视图名";<br>
+							　　}<br>
 							}</span></details></li>
 						<li>其它Controller继承BaseController（如没有@ControllerAdvice）</li>
 					</ol>
 				</li>
-			</ol><br />
+			</ol><br>
 		<li>
 		<li><span class="que2">SpringJdbc</span>
 			<ol>
 				<li>导包</li>
 				<li>添加spring配置文件（加载jdbc源文件、定义数据源）：</li>
 				<li><details open="open"><summary>配置JdbcTemplate：</summary>
-					<span class="none">&lt;bean id="jt" class="<span class="val">org.springframework.jdbc.core.JdbcTemplate</span>"&gt;<br />
-					　　&lt;property name="<span class="val">dataSource</span>" ref="数据源id" /&gt;<br />
+					<span class="none">&lt;bean id="jt" class="<span class="val">org.springframework.jdbc.core.JdbcTemplate</span>"&gt;<br>
+					　　&lt;property name="<span class="val">dataSource</span>" ref="数据源id" /&gt;<br>
 					&lt;/bean&gt;</span></details>
 				</li>
 				<li>调用JdbcTemplate提供的方法来访问数据库
 					<ol>
-						<li>List <span>query</span>(String sql, MyRowMapper myRowMapper)<br />
+						<li>List <span>query</span>(String sql, MyRowMapper myRowMapper)<br>
 							<details><summary>写一个内部类实现RowMapper</summary>
-							<span class="none">class MyRowMapper implements <span>RowMapper</span>&lt;<span class="val">T</span>&gt; {<br />
-							   //　RowMapper可以将每一行数据封装成用户定义的类<br />
-							　　public <span class="val">T</span> mapRow(<span class="val">ResultSet rs</span>, <span class="val">int index</span>) {<br />
-							　　　　T t = new T();<br />
-							　　　　T.setId(rs.getInt("id"));<br />
-							　　　　......<br />
+							<span class="none">class MyRowMapper implements <span>RowMapper</span>&lt;<span class="val">T</span>&gt; {<br>
+							   //　RowMapper可以将每一行数据封装成用户定义的类<br>
+							　　public <span class="val">T</span> mapRow(<span class="val">ResultSet rs</span>, <span class="val">int index</span>) {<br>
+							　　　　T t = new T();<br>
+							　　　　T.setId(rs.getInt("id"));<br>
+							　　　　......<br>
 							　　　　return T;</span></details></li> 
  						<li><details><summary>Object <span>queryForObject</span>(String sql, Object[] args, RowMapper rowMapper)</summary>
- 							<span class="none">public Employee findById(int id) {<br />
- 							　　String sql = "SELECT * FROM emp WHERE id=?";<br />
- 							　　Object[] args = {id};<br />
- 							　　Employee e = null;<br />
- 							　　try {<br />
- 							　　　　e = jt.queryForObject(sql, args, new MyRowMapper());<br />
- 							 　　　　// JdbcTemplate jt<br />
- 							　　} catch (EmptyResultDataAccessException e2) {<br />
- 							　　　　return null;<br />
- 							　　}<br />
- 							　　return e;<br />
+ 							<span class="none">public Employee findById(int id) {<br>
+ 							　　String sql = "SELECT * FROM emp WHERE id=?";<br>
+ 							　　Object[] args = {id};<br>
+ 							　　Employee e = null;<br>
+ 							　　try {<br>
+ 							　　　　e = jt.queryForObject(sql, args, new MyRowMapper());<br>
+ 							 　　　　// JdbcTemplate jt<br>
+ 							　　} catch (EmptyResultDataAccessException e2) {<br>
+ 							　　　　return null;<br>
+ 							　　}<br>
+ 							　　return e;<br>
  							}</span></details></li>
  						<li><details><summary>int <span>update</span>(String sql, Object[] args)</summary>
- 							<span class="none">public void update(Employee e) {<br />
- 							　　String sql = "UPDATE emp SET salary=?, age=? WHERE id=?";<br />
- 							　　Object[] args = {e.getSalary(),e.getAge(),e.getId()};<br />
- 							　　jt.update(sql, args)；<br />
+ 							<span class="none">public void update(Employee e) {<br>
+ 							　　String sql = "UPDATE emp SET salary=?, age=? WHERE id=?";<br>
+ 							　　Object[] args = {e.getSalary(),e.getAge(),e.getId()};<br>
+ 							　　jt.update(sql, args)；<br>
  							}</span></details></li> 
 					</ol>
 				</li>
@@ -524,51 +524,51 @@
 			<ol>
 				<li>导包：mybatis, ojdbc14(Oracle的jdbc驱动), junit</li>
 				<li><details><summary>添加主配置文件SqlMapConfig.xml(1个):用于指定数据库连接参数和框架参数</summary>
-					<span class="none">&lt;configuration&gt;<br />
-							&lt;environments default="environment"&gt;<br />
-							　　&lt;environment id="environment"&gt;<br />
-							　　　　&lt;transactionManager type="JDBC" /&gt;<br />
-							　　　　&lt;dataSource type="POOLED"&gt;<br />
-							　　　　　　&lt;property name="drivername" value="..." /&gt;<br />
-							　　　　　　&lt;property name="url" value="..." /&gt;<br />
-							　　　　　　&lt;property name="username" value="ljh" /&gt;<br />
-							　　　　　　&lt;property name="password" value="123456" /&gt;<br />
-							　　　　&lt;/dataSource&gt;<br />
-							　　&lt;/environment&gt;<br />
-							&lt;/environments&gt;<br />
+					<span class="none">&lt;configuration&gt;<br>
+							&lt;environments default="environment"&gt;<br>
+							　　&lt;environment id="environment"&gt;<br>
+							　　　　&lt;transactionManager type="JDBC" /&gt;<br>
+							　　　　&lt;dataSource type="POOLED"&gt;<br>
+							　　　　　　&lt;property name="drivername" value="..." /&gt;<br>
+							　　　　　　&lt;property name="url" value="..." /&gt;<br>
+							　　　　　　&lt;property name="username" value="ljh" /&gt;<br>
+							　　　　　　&lt;property name="password" value="123456" /&gt;<br>
+							　　　　&lt;/dataSource&gt;<br>
+							　　&lt;/environment&gt;<br>
+							&lt;/environments&gt;<br>
 							&lt;/configuration&gt;</span></details></li>
 				<li>实体类：属性名要与表的字段名一样（忽略大小写）</li>
 				<li><details open="open"><summary>添加映射文件：主要是一些sql语句</summary>
-					<span class="none">&lt;mapper <span class="att">namespace</span>="test"&gt;<br />
-					　　&lt;<span class="tag">insert</span> id="save" <span class="att">parameterType（参数类型）</span>="entity.Employee"&gt;<br />
-					　　　　INSERT INTO t_emp VALUES(t_hemp_seq.nextval, <span class="val">#{name}</span>, ...)<br />
-					　　　　　　　　　　　　　　　　　　　　　　　　　　//　调用getter方法<br />
-					　　　　&lt;<span class="tag">where</span>&gt;<br />
-					　　　　　　&lt;<span class="tag">if</span> <span class="att">test</span>="..."&gt;<br />
+					<span class="none">&lt;mapper <span class="att">namespace</span>="test"&gt;<br>
+					　　&lt;<span class="tag">insert</span> id="save" <span class="att">parameterType（参数类型）</span>="entity.Employee"&gt;<br>
+					　　　　INSERT INTO t_emp VALUES(t_hemp_seq.nextval, <span class="val">#{name}</span>, ...)<br>
+					　　　　　　　　　　　　　　　　　　　　　　　　　　//　调用getter方法<br>
+					　　　　&lt;<span class="tag">where</span>&gt;<br>
+					　　　　　　&lt;<span class="tag">if</span> <span class="att">test</span>="..."&gt;<br>
 					　　　　　　　　where语句<br/>
-					　　　　　　&lt;/if&gt;<br />
-					　　　　　　...<br />
-					　　　　&lt;/where&gt;<br />
-					　　&lt;/insert&gt;<br />
-					　　&lt;<span class="tag">select</span> id="findById" parameter=“int” <br />
-					　　　　<span class="att">resultType（返回类型）</span>="<span class="val">java.util.HashMap</span>"&gt;<br />
-					　　　　SELECT * FROM t_emp<br />
-					　　&lt;/select&gt;<br />
-					　　&lt;<span class="tag">update</span> id="validById"&gt;<br />
-					　　　　UPDATE tms_projects SET valid = #{valid} WHERE id IN<br />
-					　　　　&lt;<span class="tag">foreach</span> <span class="att">collection</span>="ids" <span class="att">open</span>="(" <span class="att">close</span>=")" <span class="att">separator</span>="," <span class="att">item</span>="<span class="val">item</span>"&gt;<br />
-					　　　　　　#{<span class="val">item</span>}<br />
-					　　　　&lt;/foreach&gt;<br />
-					　　&lt;/update&gt;<br />
+					　　　　　　&lt;/if&gt;<br>
+					　　　　　　...<br>
+					　　　　&lt;/where&gt;<br>
+					　　&lt;/insert&gt;<br>
+					　　&lt;<span class="tag">select</span> id="findById" parameter=“int” <br>
+					　　　　<span class="att">resultType（返回类型）</span>="<span class="val">java.util.HashMap</span>"&gt;<br>
+					　　　　SELECT * FROM t_emp<br>
+					　　&lt;/select&gt;<br>
+					　　&lt;<span class="tag">update</span> id="validById"&gt;<br>
+					　　　　UPDATE tms_projects SET valid = #{valid} WHERE id IN<br>
+					　　　　&lt;<span class="tag">foreach</span> <span class="att">collection</span>="ids" <span class="att">open</span>="(" <span class="att">close</span>=")" <span class="att">separator</span>="," <span class="att">item</span>="<span class="val">item</span>"&gt;<br>
+					　　　　　　#{<span class="val">item</span>}<br>
+					　　　　&lt;/foreach&gt;<br>
+					　　&lt;/update&gt;<br>
 					&lt;mapper&gt;</span></details></li>
 				<li><details><summary>映射定义文件SqlMap.xml(N):用于定义SQL语句和映射信息</summary>
-					<span class="none">&lt;mappers&gt;<br />
-					　　&lt;mapper resource="entity/EmpMapper.xml" /&gt;<br />
+					<span class="none">&lt;mappers&gt;<br>
+					　　&lt;mapper resource="entity/EmpMapper.xml" /&gt;<br>
 					&lt;/mappers&gt;</span></details></li>
 				<li>获取SqlSession对象：
 					<ul>
 						<li>SqlSessionFactoryBuilder ssfb = new <span>SqlSessionFactoryBuilder</span>();</li>
-						<li><span>SqlSessionFactory</span> ssf = ssfb.<span>build</span>(TestCase2.class<br />
+						<li><span>SqlSessionFactory</span> ssf = ssfb.<span>build</span>(TestCase2.class<br>
 							.getClassLoader().getResourceAsStream("SqlMapConfig.xml"));</li> 
 						<li>SqlSession session = ssf.<span>openSession</span>();</li>
 					</ul>
@@ -585,18 +585,18 @@
 				</li>
 				<li>提交事务：session.commit();</li>
 				<li>释放SqlSession对象资源：session.close();</li>
-			</ol><br />
+			</ol><br>
 		</li>
 		<li><span class="que">解决字段名与属性名不一致的情况</span>
 			<ol>
 				<li>使用别名：将别名设置成与属性名一样</li>
-				<li>使用resultMap：<br />
-					　　&lt;<span class="tag">resultMap</span> type="entity.Emp" id="<span class="val">empRM</span>"&gt;<br />
-					　　　　&lt;result <span class="att">property</span>="empNO" <span class="att">colunm</span>="id" /&gt;<br />
-					　　&lt;/resultMap&gt;<br />
-					　　&lt;select id="findById" parameterType="int" <span class="att">resultMap</span>="<span class="val">empRM</span>"&gt;<br />
+				<li>使用resultMap：<br>
+					　　&lt;<span class="tag">resultMap</span> type="entity.Emp" id="<span class="val">empRM</span>"&gt;<br>
+					　　　　&lt;result <span class="att">property</span>="empNO" <span class="att">colunm</span>="id" /&gt;<br>
+					　　&lt;/resultMap&gt;<br>
+					　　&lt;select id="findById" parameterType="int" <span class="att">resultMap</span>="<span class="val">empRM</span>"&gt;<br>
 					　　...</li>
-			</ol><br />
+			</ol><br>
 		</li>
 		<li><span class="que">Mapper映射器</span>
 			<ol>
@@ -609,7 +609,7 @@
 				</li>
 				<li>修改映射文件：<span class="att">namespace</span>="接口完整的名字"</li>
 				<li>调用SqlSession对象的方法来获得映射器的实现：<span>getMapper</span>(Class&lt;T&gt; arg0)</li>
-			</ol><br />
+			</ol><br>
 		</li>
 		<li><span class="que">Spring集成MyBatis</span>
 			<ol>
@@ -619,20 +619,20 @@
 						<li>添加Spring配置文件</li>
 						<li><details><summary>配置<span>SqlSessionFactoryBean</span>（代替MyBatis配置文件）</summary>
 							<img src="../img/SqlSessionFactoryBean属性名.jpg" width=555 />
-							<span class="none">&lt;bean id="ssfb" class="<span class="val">org.mybatis.spring.SqlSessionFactoryBean</span>"&gt;<br />
-							　　&lt;property name="dataSource" ref="ds" /&gt;　//　指定连接池<br />
-							　　&lt;property name="mapperLocations" <br />
-							　　　　value="<span class="val">classpath:entity/*.xml</span>" /&gt;　//　指定映射文件位置<br />
-							　　　　//　sqlSessionFactory属性会以Autowired方式自动注入<br />
+							<span class="none">&lt;bean id="ssfb" class="<span class="val">org.mybatis.spring.SqlSessionFactoryBean</span>"&gt;<br>
+							　　&lt;property name="dataSource" ref="ds" /&gt;　//　指定连接池<br>
+							　　&lt;property name="mapperLocations" <br>
+							　　　　value="<span class="val">classpath:entity/*.xml</span>" /&gt;　//　指定映射文件位置<br>
+							　　　　//　sqlSessionFactory属性会以Autowired方式自动注入<br>
 							&lt;/bean&gt;</span></details>
 						<li>实体类</li>
 						<li>映射文件：namespace="接口完整的名字"</li>
 						<li>Mapper映射器</li>
-						<li><details><summary>配置<span>MapperScannerConfigurer</span>: 扫描指定包及其子包下面的所有Mapper映射器<br />
-							然后调用SqlSession的getMapper方法（方法会返回符合Mapper映射器要求的对象），<br />
+						<li><details><summary>配置<span>MapperScannerConfigurer</span>: 扫描指定包及其子包下面的所有Mapper映射器<br>
+							然后调用SqlSession的getMapper方法（方法会返回符合Mapper映射器要求的对象），<br>
 							并且将这些对象添加到Spring容器里面（默认id是首字母小写之后的接口名）</summary>
-							<span class="none">&lt; bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt;<br />
-							　　&lt;property name="basePackage" value="dao" /&gt;　//　指定要扫描的包<br />
+							<span class="none">&lt; bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt;<br>
+							　　&lt;property name="basePackage" value="dao" /&gt;　//　指定要扫描的包<br>
 							&lt;/bean&gt;</span></details></li>
 						<li>启动Spring容器</li>
 					</ol>
@@ -641,7 +641,7 @@
 							<ol>
 								<li>开发一个注解：Annotation</li>
 								<li>将该注解添加到要扫描的接口之上</li>
-								<li>修改MapperScannerConfigurer的配置:<br />
+								<li>修改MapperScannerConfigurer的配置:<br>
 									　　&lt;property name="<span class="val">annotationClass</span>" value="注解" /&gt;</li>
 							</ol>					
 						</li>
@@ -657,8 +657,8 @@
 						<li>DAO接口：不要求与映射文件一致</li>
 						<li>写DAO实现类：
 							　　<details><summary>注入SqlSessionTemplate(SqlSessionTemplate封装了对SqlSession的操作)</summary>
-							　　<span class="none">&lt;bean id="sst" class="org.mybatis.spring.SqlSessionTemplate" /&gt;<br />
-							　　　　&lt;constructor-arg index="0" ref="ssfb" /&gt;<br />
+							　　<span class="none">&lt;bean id="sst" class="org.mybatis.spring.SqlSessionTemplate" /&gt;<br>
+							　　　　&lt;constructor-arg index="0" ref="ssfb" /&gt;<br>
 							　　&lt;/bean&gt;</span></details></li>
 						<li>启动Spring容器，获得DAO对象</li>
 					</ol>

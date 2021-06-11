@@ -41,21 +41,22 @@
         </style>
         <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script class="code w67p" contenteditable="true">
-            $("#save").click(function () {
+            let $save = $("#save");
+            $save.on('click', function () {
                 let index = $(this).data("index");
                 index = index ? index + 1 : 1; // 记录次数
                 $(this).data("index", index);
                 const cache = $("#text").val();
-                $(this).data("cashe" + index, cache); // 缓存
+                $(this).data("cache" + index, cache); // 缓存
             });
-            $("#repeal").click(function () {
-                const index = $("#save").data("index");
+            $("#repeal").on('click', function () {
+                const index = $save.data("index");
                 console.log(index);
                 if (!index) {
                     return;
                 }
-                $("#text").val($("#save").data("cashe" + index)); // 重新加载缓存的对象
-                $("#save").data("cashe" + index, "").data("index", index - 1); // 把已经回退的对象清空;计数减一，
+                $("#text").val($save.data("cache" + index)); // 重新加载缓存的对象
+                $save.data("cache" + index, "").data("index", index - 1); // 把已经回退的对象清空;计数减一，
             });
         </script>
     </section>

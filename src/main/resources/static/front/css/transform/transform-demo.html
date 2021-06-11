@@ -13,10 +13,11 @@
 </head>
 
 <body>
-    <!-- https://www.zhangxinxu.com/study/201011/css3-transition-animate-demo-13.html -->
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption">图片轮转切换</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/study/201011/css3-transition-animate-demo-13.html">图片轮转切换</a>
+            </div>
             <div class="centered" id="eg1">
                 <div id="slideBox" class="slide_box">
                     <img class="slide_img" src="../../../static/img/people/關羽.png" alt="關羽">
@@ -67,20 +68,20 @@
             }
         </style>
         <script>
-            var $ = function (id) {
+            const $ = function (id) {
                 return document.getElementById(id);
             };
-            var oBox = $("slideBox"),
+            const oBox = $("slideBox"),
                 oTrigger = $("slideTrigger").getElementsByTagName("a"),
                 lTrigger = oTrigger.length;
             oTrigger[0].style.background = "#fff";                  
             if (oBox && lTrigger) {
-                for (var i = 0; i < lTrigger; i += 1) {
+                for (let i = 0; i < lTrigger; i += 1) {
                     oTrigger[i].onmouseenter = function () {
-                        var index = Number(this.href.replace(/.*#/g, "")) || 1;
+                        const index = Number(this.href.replace(/.*#/g, "")) || 1;
                         // oBox.style.marginLeft = (1 - index) * 200 + "px"; // 利用 margin-left 实现
                         oBox.style.transform = "translateX(" + (1 - index) * 250 + "px" + ")"; // 利用 translateX 实现
-                        for (var i = 0; i < lTrigger; i += 1) {
+                        for (let i = 0; i < lTrigger; i += 1) {
                             oTrigger[i].style.background = "#dfdfdf";
                         }
                         oTrigger[index - 1].style.background = "#fff";

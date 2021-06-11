@@ -63,7 +63,7 @@
             </div>
         </div>
         <script class="code w67p" contenteditable="true">
-            var a = 5.6, b = 7.4;
+            let a = 5.6, b = 7.4;
 
             [a, b] = [b, a]; // [7.4, 5.6]
         </script>
@@ -76,8 +76,8 @@
             </div>
         </div>
         <script class="code w67p" contenteditable="true">
-            var x = { a: 1, b: { c: 3, d: 4 } };
-            var y = JSON.parse(JSON.stringify(x));
+            const x = { a: 1, b: { c: 3, d: 4 } };
+            const y = JSON.parse(JSON.stringify(x));
         </script>
     </section>
 
@@ -170,7 +170,7 @@
             new function () { }();
             new function () { };
 
-            var f = function () { }();
+            const f = function () { }();
 
             1, function () { }();
             1 ^ function () { }();

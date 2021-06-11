@@ -78,7 +78,7 @@
 
             function g() {
                 var h = 44;
-                delete z;   // false；delete 对局部变量名不起作用
+                delete h;   // false；delete 对局部变量名不起作用
             }
         </script>
     </section>
@@ -90,7 +90,7 @@
             <div class="centered"></div>
         </div>
         <script class="code w67p" contenteditable="true">
-            var trees = ["redwood", "bay", "cedar", "oak", "maple"];
+            const trees = ["redwood", "bay", "cedar", "oak", "maple"];
 
             delete trees[4]; // ["redwood", "bay", "cedar", "oak", empty]
         </script>
@@ -105,7 +105,7 @@
                         Change Color1
                     </a>
                 </div>
-                <br />
+                <br>
                 <div>
 
                     <a href="javascript: void(document.body.style.backgroundColor='lightcyan');">
@@ -207,7 +207,7 @@
             <div class="centered"></div>
         </div>
         <script class="code w67p" contenteditable="true">
-            var a;
+            let a;
             console.log(a);             // undefined
             console.log(typeof a);      // 'undefined'
             console.log(typeof a === a); // false

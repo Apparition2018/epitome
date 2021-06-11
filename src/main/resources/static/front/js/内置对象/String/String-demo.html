@@ -108,9 +108,9 @@
                     <tr>
                         <td>match()</td>
                         <td>使用正则表达式与字符串相比较</td>
-                        <td>var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-                            <br/> var regexp = /[A-E]/gi;
-                            <br/> var matches_array = str.match(regexp);
+                        <td>const str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+                            <br/>const regexp = /[A-E]/gi;
+                            <br/>const matches_array = str.match(regexp);
                             <br/>// ['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']</td>
                     </tr>
                     <tr>
@@ -208,10 +208,8 @@
 
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var longString = "This is a very long string which needs \
+            const longString = "This is a very long string which needs \
                 to wrap across multiple lines because \
                 otherwise my code is unreadable.";
             // "This is a very long string which needs to wrap across multiple lines because otherwise my code is unreadable."
@@ -227,8 +225,6 @@
 
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             'cat'.charAt(1); // "a"
             'cat'[1]; // "a"
@@ -241,10 +237,8 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var str = "hello world";
+            const str = "hello world";
 
             str.slice(3, 7);        // "lo w"
             str.substring(3, 7);    // "lo w"

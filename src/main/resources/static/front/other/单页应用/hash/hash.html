@@ -55,7 +55,7 @@
 
     // 初始化
     Router.prototype.init = function () {
-        var self = this;
+        const self = this;
         window.addEventListener('load', function () {
             self.refresh();
         }, false);
@@ -67,7 +67,7 @@
 </script>
 
 <script>
-    var wrap = document.querySelector('.router-wrap');
+    const wrap = document.querySelector('.router-wrap');
 
     window.Router = new Router();
     Router.route('/', function () {

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>animation-demo</title>
     <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../static/css/demo.css">
@@ -132,10 +133,11 @@
         </script>
     </section>
 
-    <!-- https://www.zhangxinxu.com/study/201305/IE10-css-hack.html -->
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption">loading</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/study/201305/IE10-css-hack.html">loading</a>
+            </div>
             <div class="centered">
                 <div class="img">
                     <span class="loading spin"></span>
@@ -193,9 +195,9 @@
             onload = function () {
                 // setTimeout 模拟读取图片
                 setTimeout(function () {
-                    var eleBox = $(".img");
-                    var funStep = function () {
-                        var myImage = new Image(), src = '../../../static/img/people/穗波玉.jpg';
+                    const eleBox = $(".img");
+                    const funStep = function () {
+                        const myImage = new Image(), src = '../../../static/img/people/穗波玉.jpg';
                         myImage.onload = function () {
                             eleBox.eq(0).html('<img src="' + src + '"width="160px">');
                         };
@@ -313,10 +315,10 @@
             }
         </style>
         <script>
-            var img = document.querySelector('.img-modal>img');
-            var modal = document.getElementById('modal');
-            var modalContent = document.getElementById("modal-content");
-            var modalCaption = document.getElementById("modal-caption");
+            const img = document.querySelector('.img-modal>img');
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById("modal-content");
+            const modalCaption = document.getElementById("modal-caption");
 
             img.onclick = function () {
                 console.log(this);
@@ -327,7 +329,7 @@
                 modalCaption.innerHTML = this.alt;
             };
 
-            var span = document.getElementsByClassName("close")[0];
+            const span = document.getElementsByClassName("close")[0];
 
             span.onclick = function () {
                 modal.style.display = "none";

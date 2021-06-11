@@ -39,7 +39,7 @@
         }
     </style>
     <script class="code w60p" contenteditable="true">
-        var
+        const
             fileInput = document.getElementById('image-file'),
             info = document.getElementById('file-info'),
             preview = document.getElementById('image-preview');
@@ -54,7 +54,7 @@
                 return;
             }
             // 获取File引用:
-            var file = fileInput.files[0];
+            const file = fileInput.files[0];
             // 获取File信息:
             info.innerHTML = '文件: ' + file.name + '<br>' + '大小: ' + file.size
                 + '<br>' + '修改: ' + file.lastModifiedDate;
@@ -64,9 +64,9 @@
                 return;
             }
             // 读取文件:
-            var reader = new FileReader();
+            const reader = new FileReader();
             reader.onload = function (e) {
-                var data = e.target.result; // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+                const data = e.target.result; // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
                 preview.style.backgroundImage = 'url(' + data + ')';
             };
             // 以DataURL的形式读取文件:

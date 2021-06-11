@@ -327,12 +327,12 @@
         </div>
         <script class="code w60p" contenteditable="true">
             $(function () {
-                var obj1 = {
+                const obj1 = {
                     apple: 0,
                     banana: { weight: 52, price: 100 },
                     cherry: 97
                 };
-                var obj2 = {
+                const obj2 = {
                     banana: { price: 200 },
                     durian: 100
                 };
@@ -340,7 +340,7 @@
                 // $.extend( [deep ], target, object1 [, objectN ] )
                 $.extend(true, obj1, obj2);
 
-                $('.box-extend>div').click(function () {
+                $('.box-extend>div').on('click', function () {
                     alert(JSON.stringify(obj1, null, 4))
                 });
             })
@@ -381,10 +381,10 @@
             </div>
         </div>
         <script class="code w60p" contenteditable="true">
-            var name = "全局变量";
+            const name = "全局变量";
             $(function () {
-                var name = "局部变量";
-                $('.box-globalEval div').click(function () {
+                const name = "局部变量";
+                $('.box-globalEval div').on('click', function () {
                     alert(name);
                     eval("alert('alert: ' + name)");
                     $.globalEval("alert('globalEval: ' + name)");
@@ -417,8 +417,8 @@
         </style>
         <script class="code w60p" contenteditable="true">
             $(function () {
-                $('.box-makeArray .demo-button').click(function () {
-                    var arr = $.makeArray(document.querySelectorAll('.box-makeArray li'));
+                $('.box-makeArray .demo-button').on('click', function () {
+                    const arr = $.makeArray(document.querySelectorAll('.box-makeArray li'));
                     $(arr.reverse()).appendTo($('.box-makeArray ul'));
                 })
             })
@@ -435,9 +435,9 @@
         </div>
         <script class="code w60p" contenteditable="true">
             $(function () {
-                var str = "hello, <b>my name is</b> jQuery";
-                var dom = $.parseHTML(str);
-                var nodeNames = [];
+                const str = "hello, <b>my name is</b> jQuery";
+                const dom = $.parseHTML(str);
+                const nodeNames = [];
                 $.each(dom, function (i, e) {
                     nodeNames[i] = "<li>" + e.nodeName + "</li>";
                 });

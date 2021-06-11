@@ -89,7 +89,7 @@
     <section class="code-wrap">
         <div class="css-live-wrap">
             <div class="caption">
-                <a href="http://jsfiddle.net/codepo8/V6ufG/2/">下载画布</a>
+                <a href="https://jsfiddle.net/codepo8/V6ufG/2/">下载画布</a>
             </div>
             <div class="caption">利用 a标签、download属性、canvas 实现</div>
             <div class="canvas centered">
@@ -109,7 +109,7 @@
             }
         </style>
         <script class="code" contenteditable="true">
-            var canvas = document.querySelector('canvas'),
+            let canvas = document.querySelector('canvas'),
                 c = canvas.getContext('2d'),
                 mouseX = 0,
                 mouseY = 0,
@@ -149,7 +149,7 @@
                 mousedown = false;
             }, false);
 
-            var link = document.createElement('a');
+            const link = document.createElement('a');
             link.classList.add('demo-button');
             link.innerHTML = 'download';
             link.addEventListener('click', function () {

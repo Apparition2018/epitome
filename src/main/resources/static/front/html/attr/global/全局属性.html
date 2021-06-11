@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>全局属性</title>
     <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../static/css/demo.css">
@@ -135,29 +136,28 @@
         </script>
     </section>
 
-    <!-- https://www.zhangxinxu.com/study/201705/accesskey-js-enhance.html -->
     <section class="code-wrap">
         <div class="css-live-wrap w40p">
-            <div class="caption">accesskey.js</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/study/201705/accesskey-js-enhance.html">accesskey.js</a>
+            </div>
             <div class="centered" id="eg1">
 
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w60p" contenteditable="true">
             (function (doc, win) {
                 // 操作系统和浏览器设备检测
-                var ua = navigator.userAgent;
+                const ua = navigator.userAgent;
 
-                var syetem = 'windows';
+                let system = 'windows';
 
                 if (/Mac\sOS\sX/i.test(ua)) {
-                    syetem = 'mac';
+                    system = 'mac';
                 }
 
                 // 浏览器判断
-                var browser = 'chrome';
+                let browser = 'chrome';
                 if (typeof doc.mozFullScreen !== 'undefined') {
                     browser = 'moz';
                 } else if (typeof doc.msHidden !== 'undefined' || typeof doc.hidden === 'undefined') {
@@ -165,7 +165,7 @@
                 }
 
                 // 快捷键组合
-                var keyPrefix = ({
+                const keyPrefix = ({
                     windows: (browser === 'moz' ? {
                         ctrlKey: false,
                         altKey: true,
@@ -180,26 +180,26 @@
                         altKey: true,
                         shiftKey: false
                     }
-                })[syetem];
+                })[system];
 
                 // 获取字符Unicode值方法
-                var U = function (a, b) {
+                const U = function (a, b) {
                     if (!a) return "";
-                    for (var b = b || "x", c = "", d = 0, e; d < a.length; d += 1) a.charCodeAt(d) >= 55296 && a.charCodeAt(d) <= 56319 ? (e = (65536 + 1024 * (Number(a.charCodeAt(d)) - 55296) + Number(a.charCodeAt(d + 1)) - 56320).toString(16), d += 1) : e = a.charCodeAt(d).toString(16),
+                    for (let b = b || "x", c = "", d = 0, e; d < a.length; d += 1) a.charCodeAt(d) >= 55296 && a.charCodeAt(d) <= 56319 ? (e = (65536 + 1024 * (Number(a.charCodeAt(d)) - 55296) + Number(a.charCodeAt(d + 1)) - 56320).toString(16), d += 1) : e = a.charCodeAt(d).toString(16),
                         c += b + e;
                     return c.substr(b.length);
                 };
 
                 // 提示当前元素快捷键的方法
-                var timerTips = null;
-                var tips = function (arrEles) {
+                let timerTips = null;
+                const tips = function (arrEles) {
                     // 已经显示中，忽略
                     if (doc.hasTipsShow) {
                         return;
                     }
                     // 页面的滚动高度
-                    var scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop;
-                    var scrollLeft = doc.documentElement.scrollLeft || doc.body.scrollLeft;
+                    const scrollTop = doc.documentElement.scrollTop || doc.body.scrollTop;
+                    const scrollLeft = doc.documentElement.scrollLeft || doc.body.scrollLeft;
 
                     // 遍历创建提示元素
                     arrEles.forEach(function (ele) {
@@ -209,9 +209,9 @@
                             return;
                         }
 
-                        var accesskey = ele.getAttribute('accesskey');
-                        var arrAccesskey = [];
-                        for (var key in keyPrefix) {
+                        const accesskey = ele.getAttribute('accesskey');
+                        const arrAccesskey = [];
+                        for (const key in keyPrefix) {
                             if (keyPrefix[key]) {
                                 arrAccesskey.push(key);
                             }
@@ -219,10 +219,10 @@
                         arrAccesskey.push(accesskey);
 
                         // 当前元素相对于文档的偏移
-                        var bounding = ele.getBoundingClientRect();
+                        const bounding = ele.getBoundingClientRect();
 
                         // 创建tips提示元素
-                        var div = document.createElement('div');
+                        const div = document.createElement('div');
                         div.className = 'AK_Tips';
                         div.setAttribute('style', 'position:absolute;top:' + (bounding.top + scrollTop) + 'px;left:' + (bounding.left + scrollLeft) + 'px;z-index:9999;font-family:consolas,"Liberation Mono",courier,monospace;font-size:12px;border-radius:2px;color:#fff;background:rgba(0,0,0,.75);opacity:0.8;line-height:13px;padding:0 3px;');
                         div.innerHTML = arrAccesskey.map(function (key) {
@@ -243,10 +243,10 @@
                     }, 3000);
                 };
                 // 隐藏tips
-                var removeTips = function () {
+                const removeTips = function () {
                     clearTimeout(timerTips);
                     // 移除所有的快捷键提示
-                    var elesTips = doc.querySelectorAll('.AK_Tips');
+                    const elesTips = doc.querySelectorAll('.AK_Tips');
                     [].slice.call(elesTips).forEach(function (ele) {
                         if (ele.fromTarget) {
                             ele.fromTarget.hasTipsShow = null;
@@ -260,28 +260,28 @@
                     // IE9+
                     doc.addEventListener('keydown', function (event) {
                         // 当前元素是否是可输入的input或者textarea
-                        var isTargetInputable = false;
-                        var eleTarget = event.target || doc.activeElement;
-                        var tagName = eleTarget.tagName.toLowerCase();
+                        let isTargetInputable = false;
+                        const eleTarget = event.target || doc.activeElement;
+                        const tagName = eleTarget.tagName.toLowerCase();
                         if (tagName === 'textarea' || (tagName === 'input' && /checkbox|radio|select|file|button|image|hidden/.test(eleTarget.type) === false)) {
                             isTargetInputable = true;
                         }
 
                         // 遍历所有设置了accesskey的符合HTML4.0.1规范的元素
                         // 包括<a>, <area>, <button>, <input>, <label>, <legend>以及<textarea>
-                        var elesOwnAccesskey = doc.querySelectorAll('a[accesskey],area[accesskey],button[accesskey],input[accesskey],label[accesskey],legend[accesskey],textarea[accesskey]');
+                        const elesOwnAccesskey = doc.querySelectorAll('a[accesskey],area[accesskey],button[accesskey],input[accesskey],label[accesskey],legend[accesskey],textarea[accesskey]');
                         if (elesOwnAccesskey.length === 0) {
                             return;
                         }
                         // 对象列表转换成数组
-                        var arrElesOwnAccesskey = [].slice.call(elesOwnAccesskey);
+                        const arrElesOwnAccesskey = [].slice.call(elesOwnAccesskey);
                         // 进行遍历
-                        var arrAcceeekey = arrElesOwnAccesskey.map(function (ele) {
+                        const arrAcceeekey = arrElesOwnAccesskey.map(function (ele) {
                             return ele.getAttribute('accesskey');
                         });
                         // windows下图下直接event.key就是按下的键对于的内容，但OS X系统却没有key属性，有的是event.keyIdentifier，表示字符的Unicode值
                         // 根据这个判断按键是否有对应的匹配
-                        var indexMatch = -1;
+                        let indexMatch = -1;
                         arrAcceeekey.forEach(function (accesskey, index) {
                             if ((event.key && event.key === accesskey) || (event.keyIdentifier && parseInt(event.keyIdentifier.toLowerCase().replace('u+', ''), 16) === parseInt(U(accesskey), 16))) {
                                 indexMatch = index;
@@ -331,10 +331,11 @@
 
 
 
-    <!-- https://www.zhangxinxu.com/wordpress/2017/05/html-tabindex/ -->
     <section class="code-wrap h200">
         <div class="css-live-wrap w40p">
-            <div class="caption">tabindex</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/wordpress/2017/05/html-tabindex/">tabindex</a>
+            </div>
             <div class="centered">
                 <div id="btn" class="btn">Modal</div>
             </div>
@@ -385,9 +386,9 @@
             }
         </style>
         <script>
-            var btn = document.getElementById("btn");
-            var modal = document.getElementById("modal");
-            var close = document.getElementById("close");
+            const btn = document.getElementById("btn");
+            const modal = document.getElementById("modal");
+            const close = document.getElementById("close");
             btn.onclick = function () {
                 modal.style.display = 'block';
                 modal.style.boxShadow = '0 0 0 1920px rgba(0, 0, 0, .7)';
@@ -430,7 +431,7 @@
         <script class="code w60p" contenteditable="true">
             function checkLen(x, y) {
                 if (y.length === x.maxLength) {
-                    var next = x.tabIndex;
+                    const next = x.tabIndex;
                     if (next < document.getElementById("myForm").length) {
                         document.getElementById("myForm").elements[next].focus()
                     }

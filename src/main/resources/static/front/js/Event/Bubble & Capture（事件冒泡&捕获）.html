@@ -11,10 +11,12 @@
 </head>
 
 <body>
-    <!-- https://www.cnblogs.com/Chen-XiaoJun/p/6210987.html -->
     <section class="code-wrap h100vh">
         <div class="css-live-wrap w40p">
-            <div class="caption">Bubble（事件冒泡）和Capture（事件捕获）</div>
+            <div class="caption">
+                <a href="https://www.cnblogs.com/Chen-XiaoJun/p/6210987.html" target="_blank"></a>
+                Bubble（事件冒泡）和 Capture（事件捕获）
+            </div>
             <div class="caption">现代浏览器总是先 capture，后 bubble</div>
             <div class="centered" id="blue">
                 <p id="yellow">
@@ -56,9 +58,9 @@
             }
         </style>
         <script class="code w60p" contenteditable="true">
-            var blue = document.getElementById("blue");
-            var yellow = document.getElementById("yellow");
-            var red = document.getElementById("red");
+            const blue = document.getElementById("blue");
+            const yellow = document.getElementById("yellow");
+            const red = document.getElementById("red");
 
             // 捕获阶段绑定事件
             window.addEventListener("click", function (e) {

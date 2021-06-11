@@ -11,19 +11,17 @@
 </head>
 
 <body>
-    <!-- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply -->
-
     <section class="code-wrap h100">
         <div class="css-live-wrap w33p">
-            <div class="caption">将一个数组添加到另一个数组</div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank">将一个数组添加到另一个数组</a>
+            </div>
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var array = ['w', 'a', 't', 'e', 'r'];
-            var elements = ['m', 'e', 'l', 'o', 'n'];
+            const array = ['w', 'a', 't', 'e', 'r'];
+            const elements = ['m', 'e', 'l', 'o', 'n'];
             array.push.apply(array, elements); // ["w", "a", "t", "e", "r", "m", "e", "l", "o", "n"]
         </script>
     </section>
@@ -36,21 +34,19 @@
             <div class="eg2 centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function minOfArray(arr) {
-                var min = Infinity;
-                var QUANTUM = 32768;
-                for (var i = 0, len = arr.length; i < len; i += QUANTUM) {
-                    var submin = Math.min.apply(null, arr.slice(i, Math.min(i + QUANTUM, len)));
+                let min = Infinity;
+                const QUANTUM = 32768;
+                for (let i = 0, len = arr.length; i < len; i += QUANTUM) {
+                    const submin = Math.min.apply(null, arr.slice(i, Math.min(i + QUANTUM, len)));
                     min = Math.min(submin, min);
                 }
 
                 return min;
             }
 
-            var min = minOfArray([2, 8, 3, 7, 4, 6]); // 2
+            const min = minOfArray([2, 8, 3, 7, 4, 6]); // 2
         </script>
     </section>
 
