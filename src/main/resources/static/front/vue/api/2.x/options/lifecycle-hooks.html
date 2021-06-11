@@ -21,7 +21,7 @@
         new Vue({
             el: '#app',
             data: {
-                date : new Date().toLocaleString()
+                date: new Date().toLocaleString()
             },
             methods: {},
             created () {
@@ -30,7 +30,7 @@
             mounted () {
                 console.log(this.$el) // <div id="app" class="centered"></div>
 
-                let _this = this
+                const _this = this
                 this.timer = setInterval(() => {
                     _this.date = new Date().toLocaleString()
                 }, 1000)

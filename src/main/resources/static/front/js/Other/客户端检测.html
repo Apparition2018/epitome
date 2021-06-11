@@ -73,7 +73,7 @@
             /********** 测试任何对象的某个特性是否存在 **********/
             // 在IE中 typeof xhr.open 会返回 "unknown"
             function isHostMethod(object, property) {
-                let t = typeof object[property];
+                const t = typeof object[property];
                 return t === "function" || (!!(t === "object" && object[property])) || t === "unknown";
             }
             console.log(isHostMethod(window, 'screen')); // true
@@ -152,13 +152,13 @@
         <script class="code w67p" contenteditable="true">
             // 在 IE8 以及更早的版本中存在着这样一个 bug：
             // 如果某个实例属性与标记为 [[DontEnum]] 的某个原型属性同名，那么这个实例属性不会出现在 for-in 循环中
-            let hasDontEnumQuirk = function () {
-                let o = {
+            const hasDontEnumQuirk = function () {
+                const o = {
                     toString: function () {
 
                     }
                 };
-                for (let prop in o) {
+                for (const prop in o) {
                     if (prop === "toString") {
                         return false;
                     }
@@ -168,17 +168,15 @@
             console.log(hasDontEnumQuirk);
 
             // Safari3 之前的版本会枚举被隐藏的属性
-            let hasEnumShadowsQuirk = function () {
-                let o = {
+            const hasEnumShadowsQuirk = function () {
+                const o = {
                     toString: function () {
 
                     }
                 };
                 let count = 0;
-                for (let prop in o) {
-                    if (prop === "toString") {
-                        count++;
-                    }
+                for (const prop in o) {
+                    prop === "toString" && count++;
                 }
 
                 return (count > 1);

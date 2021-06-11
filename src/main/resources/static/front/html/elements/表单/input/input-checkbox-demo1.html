@@ -93,9 +93,9 @@
 
             // 点击多选框，在input框输出选中的元素
             function clickCheckBox() {
-                var subjects = document.getElementsByName("subject");
-                var text = "";
-                for (var i in subjects) {
+                const subjects = document.getElementsByName("subject");
+                let text = "";
+                for (const i in subjects) {
                     if (subjects[i].checked) {
                         text += subjects[i].value + ", "
                     }

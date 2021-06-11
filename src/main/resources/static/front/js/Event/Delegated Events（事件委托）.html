@@ -11,10 +11,11 @@
 </head>
 
 <body>
-    <!-- https://www.cnblogs.com/dfyg-xiaoxiao/articles/6213063.html -->
     <section class="code-wrap h100vh">
         <div class="css-live-wrap w40p">
-            <div class="caption">事件委托</div>
+            <div class="caption">
+                <a href="https://www.cnblogs.com/dfyg-xiaoxiao/articles/6213063.html" target="_blank">事件委托</a>
+            </div>
             <div class="centered">
                 <div class="eg1">
                     <div id="a">ID</div>
@@ -42,7 +43,7 @@
         </style>
         <script class="code w60p" contenteditable="true">
             onload = function () {
-                var eg1 = document.getElementsByClassName('eg1')[0];
+                const eg1 = document.getElementsByClassName('eg1')[0];
                 delegateEvent(eg1, "#a", "click", function () {
                     eg1.querySelector("#a").textContent = '#a';
                 });
@@ -63,11 +64,9 @@
 
                 function eventfn(e) {
                     e = e || window.event;
-                    var target = e.target || e.srcElement;
+                    const target = e.target || e.srcElement;
                     if (matchSelector(target, selector)) {
-                        if (fn) {
-                            fn.call(target, e);
-                        }
+                        fn && fn.call(target, e);
                     }
                 }
             }

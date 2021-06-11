@@ -5,16 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>datalist-demo</title>
     <link rel="icon" href="../../../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../../static/css/demo.css">
 </head>
 
 <body>
-    <!-- https://www.zhangxinxu.com/wordpress/2013/03/html5-datalist-实际应用-可行性/comment-page-1/#comment-385107 -->
-    <section class="code-wrap">
+    <section class="code-wrap h600">
         <div class="css-live-wrap w33p">
-            <div class="caption">邮箱后缀自动提示</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/wordpress/2013/03/html5-datalist-%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8-%e5%8f%af%e8%a1%8c%e6%80%a7/">邮箱后缀自动提示</a>
+            </div>
             <div class="centered" id="eg1">
                 邮箱：
                 <input type="email" id="email" list="emailList" name="off_autocomplete"  title="email"/>
@@ -33,7 +35,7 @@
             }
         </style>
         <script class="code w67p" contenteditable="true">
-            var eleList = document.getElementById("emailList"),
+            let eleList = document.getElementById("emailList"),
                 eleMail = document.getElementById("email"),
                 htmlListInit = '', arrEmailList = [];
 
@@ -44,7 +46,7 @@
                 });
 
                 eleMail.fnListReplace = function () {
-                    var arrValue = this.value.trim().split("@");
+                    const arrValue = this.value.trim().split("@");
                     // 修复FireFox浏览器下无限input问题
                     // 如果值不完全匹配某option值，执行动态替换 
                     if (arrValue.length !== 2 || arrEmailList.indexOf(arrValue[1]) === -1) {
@@ -67,10 +69,11 @@
         </script>
     </section>
 
-    <!-- https://blog.csdn.net/dai_qingyun/article/details/52856835 -->
-    <section class="code-wrap">
+    <section class="code-wrap h900">
         <div class="css-live-wrap w33p">
-            <div class="caption">模仿天猫搜索框</div>
+            <div class="caption">
+                <a href="https://blog.csdn.net/dai_qingyun/article/details/52856835">模仿天猫搜索框</a>
+            </div>
             <div class="centered" id="eg2">
             </div>
         </div>
@@ -131,10 +134,10 @@
             }
         </style>
         <script class="code w67p" contenteditable="true">
-            var datalist = ['男裤', '男鞋', '男士外套', '男士内衣', '男袜', '男士洗面奶', '男士皮带'];
-            var base = '<a href="javascript:;">*</a>';
-            var tip = document.getElementById('tip');
-            var goods = document.getElementById('goods');
+            const datalist = ['男裤', '男鞋', '男士外套', '男士内衣', '男袜', '男士洗面奶', '男士皮带'];
+            const base = '<a href="javascript:;">*</a>';
+            const tip = document.getElementById('tip');
+            const goods = document.getElementById('goods');
             goods.addEventListener('input', function () {
                 if (this.value) {
                     //当有值得时候，查找对应的提示项。
@@ -149,7 +152,7 @@
 
             //点击推荐的结果 进入。
             tip.addEventListener('click', function (e) {
-                var target = e.target;
+                const target = e.target;
                 if (target.tagName === 'A') {
                     goods.value = target.innerHTML;
                     tip.style.display = 'none';
@@ -158,17 +161,17 @@
 
             //查找数据
             function update(val) {
-                var arr = [];
+                const arr = [];
                 datalist.map(function (item) {
                     if (item.indexOf(val) !== -1) {
                         arr.push(item);
                     }
                 });
                 if (arr.length !== 0) {
-                    var len = arr.length;
-                    var htmlStr = '';
-                    for (var i = 0; i < len; i++) {
-                        var temp = base;
+                    const len = arr.length;
+                    let htmlStr = '';
+                    for (let i = 0; i < len; i++) {
+                        let temp = base;
                         //使用正则那是相当的方便啊
                         temp = temp.replace(/\*/, arr[i]);
                         htmlStr += temp;

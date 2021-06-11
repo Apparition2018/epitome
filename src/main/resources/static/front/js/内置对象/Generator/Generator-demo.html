@@ -93,14 +93,14 @@
         </div>
         <script class="code w60p" contenteditable="true">
             function* gNext(x) {
-                let y = 2 * (yield (x + 1));
-                let z = yield (y / 3);
+                const y = 2 * (yield (x + 1));
+                const z = yield (y / 3);
                 return (x + y + z);
             }
 
-            let gN = gNext(5);
+            const gN = gNext(5);
 
-            let boxNext = document.getElementsByClassName('box-next')[0];
+            const boxNext = document.getElementsByClassName('box-next')[0];
             boxNext.innerHTML = JSON.stringify(gN.next());      // 5 + 1 = 6
             boxNext.innerHTML += JSON.stringify(gN.next(12));   // 2 * 12 / 3 = 8
             boxNext.innerHTML += JSON.stringify(gN.next(13));   // 5 + 2 * 12 + 13 = 42
@@ -121,7 +121,7 @@
                 }
             }
 
-            let gTR = gThrowReturn();
+            const gTR = gThrowReturn();
 
             gTR.next();
             gTR.throw(new Error("Something went wrong"));
@@ -149,12 +149,12 @@
             Array.from(numbers()); // [1, 2]
 
             // 解构赋值
-            let [x, y] = numbers();
+            const [x, y] = numbers();
             x; // 1
             y; // 2
 
             // for...of 循环
-            for (let n of numbers()) {
+            for (const n of numbers()) {
                 console.log(n);
             }
             // 1
@@ -164,22 +164,19 @@
 
     <section class="code-wrap">
         <div class="css-live-wrap w40p">
-            <div class="caption"><a href="http://es6.ruanyifeng.com/#docs/generator#Generator-与状态机">Generator 与状态机</a></div>
+            <div class="caption"><a href="https://es6.ruanyifeng.com/#docs/generator#Generator-与状态机">Generator 与状态机</a></div>
             <div class="centered"></div>
         </div>
         <script class="code w60p" contenteditable="true">
             // 不使用 Generator 写法
             let ticking = true;
-            let clock = function () {
-                if (ticking)
-                    conosle.log('Tick!');
-                else
-                    console.log('Tock!');
+            const clock = function () {
+                ticking && console.log('Tick!') || console.log('Tock!');
                 ticking = !ticking;
             }
 
             // 使用 Generator 写法
-            let clock2 = function* () {
+            const clock2 = function* () {
                 while (true) {
                     console.log('Tick!');
                     yield;

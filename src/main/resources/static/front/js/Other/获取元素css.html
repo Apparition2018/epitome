@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>获取元素css</title>
     <link rel="icon" href="../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../static/css/demo.css">
@@ -31,9 +32,8 @@
 </head>
 
 <body>
-    <!--https://blog.csdn.net/lzding/article/details/46317777
-        https://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/
-        http://www.w3cbus.com/dom/css.html -->
+    <!-- CSS操作：http://www.w3cbus.com/dom/css.html
+        js获取css值的方法：https://blog.csdn.net/lzding/article/details/46317777 -->
     <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
             <div class="caption">element.style</div>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <script class="code w60p" contenteditable="true">
-            var eg1 = document.getElementsByClassName('eg1')[0];
+            const eg1 = document.getElementsByClassName('eg1')[0];
             eg1.onclick = function () {
                 this.nextSibling.nextSibling.innerHTML = this.style.backgroundColor;
                 this.style.setProperty('background-color', 'springgreen')
@@ -71,7 +71,7 @@
             }
         </style>
         <script class="code w60p" contenteditable="true">
-            var eg2 = document.getElementsByClassName('eg2')[0];
+            const eg2 = document.getElementsByClassName('eg2')[0];
             eg2.onclick = function () {
                 try {
                     this.nextSibling.nextSibling.innerHTML = this.currentStyle.backgroundColor;
@@ -84,7 +84,9 @@
 
     <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
-            <div class="caption">getComputedStyle</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/">getComputedStyle</a>
+            </div>
             <div class="caption">返回的style是一个实时的 CSSStyleDeclaration 对象</div>
             <div class="centered">
                 <div class="eg eg3">
@@ -99,7 +101,7 @@
             }
         </style>
         <script class="code w60p" contenteditable="true">
-            var eg3 = document.getElementsByClassName('eg3')[0];
+            const eg3 = document.getElementsByClassName('eg3')[0];
             eg3.onclick = function () {
                 // 不同浏览器下，获取 css 属性值 的兼容写法
                 this.nextSibling.nextSibling.innerHTML = this.currentStyle ? this.currentStyle.backgroundColor : getComputedStyle(this, null).getPropertyValue('background-color');
@@ -125,7 +127,7 @@
             }
         </style>
         <script class="code w60p" contenteditable="true">
-            var eg4 = document.getElementsByClassName('eg4')[0];
+            const eg4 = document.getElementsByClassName('eg4')[0];
             eg4.onclick = function () {
                 this.nextSibling.nextSibling.innerHTML = document.styleSheets[4].rules[0].style.background;
             }
@@ -149,17 +151,18 @@
         </style>
         <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script class="code w60p" contenteditable="true">
-            var eg5 = document.getElementsByClassName('eg5')[0];
+            const eg5 = document.getElementsByClassName('eg5')[0];
             eg5.onclick = function () {
                 this.nextSibling.nextSibling.innerHTML = $(this).css('background-color');
             }
         </script>
     </section>
 
-    <!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia -->
     <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
-            <div class="caption">matchMedia</div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia">matchMedia</a>
+            </div>
             <div class="centered">
                 <div class="eg eg6">
                     matchMedia
@@ -173,7 +176,7 @@
             }
         </style>
         <script class="code w60p" contenteditable="true">
-            var eg6 = document.getElementsByClassName('eg6')[0];
+            const eg6 = document.getElementsByClassName('eg6')[0];
             eg6.onclick = function () {
                 if (window.matchMedia("(min-width: 400px").matches) {
                     this.nextSibling.nextSibling.innerHTML = 'matches';

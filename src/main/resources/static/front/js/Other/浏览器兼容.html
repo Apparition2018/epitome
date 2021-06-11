@@ -122,11 +122,7 @@
             function targetColor(e) {
                 e = e || window.event;
                 alert(this.id);
-                if (e.stopPropagation) {
-                    e.stopPropagation();
-                } else {
-                    e.cancelBubble = true;
-                }
+                e.stopPropagation() && e.stopPropagation() || (e.cancelBubble = true);
             }
         </script>
     </section>
@@ -142,11 +138,7 @@
             const prevent = document.querySelector('.box-prevent>a');
             prevent.onclick = function (e) {
                 e = e || event;
-                if (e.preventDefault) {
-                    e.preventDefault();
-                } else {
-                    e.returnValue = false;
-                }
+                e.preventDefault() && e.preventDefault() || (e.returnValue = false);
             }
 
             // 不要使用 return false，它实际上做了3件事：

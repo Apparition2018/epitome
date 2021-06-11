@@ -109,8 +109,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 10进制 => 2进制
             // 计算9.25的二进制
@@ -141,8 +139,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // 314 原码
             00000000000000000000000100111010
@@ -167,10 +163,8 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var a = 1, b = 2;
+            const a = 1, b = 2;
 
             ~(a & b) === (~a | ~b); // true
             ~(a | b) === (~a & ~b); // true
@@ -184,15 +178,13 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // String (base 2) ==> number (base 10)
-            var str = '1011';
-            var num = parseInt(str, 2); // 11
+            let str = '1011';
+            const num = parseInt(str, 2); // 11
 
             // number (base 10) ==> String (base 2);
-            str = num.toString(2);      // "1011"
+            str = num.toString(2); // "1011"
         </script>
     </section>
 
@@ -202,22 +194,20 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             // DCBA (Dog Cat Banana Apple)
 
             // 标志位
-            var flags = 5; // 0101，表示没有 Dog，有 Cat，没有 Banana，有 Apple
+            let flags = 5;      // 0101，表示没有 Dog，有 Cat，没有 Banana，有 Apple
 
             // 掩码
-            var FLAG_A = 1; // 0001，Apple
-            var FLAG_B = 2; // 0010，Banana
-            var FLAG_C = 4; // 0100，Cat
-            var FLAG_D = 8; // 1000，Dog
+            const FLAG_A = 1;   // 0001，Apple
+            const FLAG_B = 2;   // 0010，Banana
+            const FLAG_C = 4;   // 0100，Cat
+            const FLAG_D = 8;   // 1000，Dog
 
             // 获取新掩码
-            var mask = FLAG_A | FLAG_B | FLAG_D;    // 0001 | 0010 | 1000 => 1011
+            let mask = FLAG_A | FLAG_B | FLAG_D;    // 0001 | 0010 | 1000 => 1011
 
             // 判断特定位置是否为被置位（是否为1）
             if (flags & FLAG_C) { }                 // 0101 & 0100 => 0100
@@ -238,17 +228,15 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function createMask() {
-                var nMask = 0, nFlag = 0, nLen = arguments.length > 32 ? 32 : arguments.length;
+                let nMask = 0, nFlag = 0, nLen = arguments.length > 32 ? 32 : arguments.length;
                 for (nFlag; nFlag < nLen; nMask |= arguments[nFlag] << nFlag++);
                 return nMask;
             }
 
-            var mask1 = createMask(1, 1, 0, 1);         // 11 (base 10), 1011 (base 2)
-            var mask2 = createMask(false, false, true); // 4 (base 10), 0100 (base 2)
+            const mask1 = createMask(1, 1, 0, 1);           // 11 (base 10), 1011 (base 2)
+            const mask2 = createMask(false, false, true);   // 4 (base 10), 0100 (base 2)
         </script>
     </section>
 
@@ -258,20 +246,18 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function arrayFromMask(nMask) {
                 // nMask 必须介于 -2147483648 和 2147483647 之间
                 if (nMask > 0x7fffffff || nMask < -0x80000000) {
                     throw new TypeError('arrayFromMask - out of range');
                 }
-                for (var nShifted = nMask, aFromMask = []; nShifted; aFromMask.push(Boolean(nShifted & 1)), nShifted >>>= 1);
+                for (const nShifted = nMask, aFromMask = []; nShifted; aFromMask.push(Boolean(nShifted & 1)), nShifted >>>= 1);
                 return aFromMask;
             }
 
-            var mask1 = arrayFromMask(11);  // [true, true, false, true]
-            var mask2 = arrayFromMask(4);   // [false, false, true]
+            const mask1 = arrayFromMask(11);// [true, true, false, true]
+            const mask2 = arrayFromMask(4); // [false, false, true]
         </script>
     </section>
 </body>

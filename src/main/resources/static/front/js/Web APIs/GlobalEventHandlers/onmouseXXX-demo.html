@@ -55,23 +55,19 @@
             }
         </style>
         <script class="code" contenteditable="true">
-            var omOutput = document.querySelector('.onmouse .output');
+            const omOutput = document.querySelector('.onmouse .output');
 
             function mOver(e) {
-                var node = e.target;
+                const node = e.target;
                 node.style.backgroundColor = 'var(--gyb5)';
-                if (node.nodeName === 'LI') {
-                    node.style.color = '#fff';
-                }
+                (node.nodeName === 'LI') && (node.style.color = '#fff');
                 omOutput.textContent += 'over ';
             }
 
             function mOut(e) {
-                var node = e.target;
+                const node = e.target;
                 node.style.backgroundColor = '';
-                if (node.nodeName === 'LI') {
-                    node.style.color = 'var(--gyb5)';
-                }
+                (node.nodeName === 'LI') && (node.style.color = 'var(--gyb5)');
                 omOutput.textContent += 'out ';
             }
 

@@ -43,8 +43,8 @@
             };
             ap.ondrag = function (e) {
                 console.log('事件源ap拖动中');
-                var x = e.pageX;
-                var y = e.pageY;
+                let x = e.pageX;
+                let y = e.pageY;
                 console.log(x + '-' + y);
                 // drag事件最后一刻，无法读取鼠标的坐标，pageX和pageY都变为0  
                 if (x === 0 && y === 0) {
@@ -104,9 +104,9 @@
             }
         </style>
         <script class="code" contenteditable="true">
-            var moveItem = document.getElementsByTagName('label');
+            const moveItem = document.getElementsByTagName('label');
 
-            for (var i = 0; i < moveItem.length; i++) {
+            for (let i = 0; i < moveItem.length; i++) {
                 // 动态设置label元素id
                 moveItem[i].setAttribute('id', 'label' + i);
                 moveItem[i].ondragstart = function (ev) {
@@ -121,9 +121,9 @@
             };
             document.getElementById('right').ondrop = function (ev) {
                 ev.preventDefault(); // 阻止数据的浏览器默认处理方式（drop 事件的默认行为是以链接形式打开）
-                var id = ev.dataTransfer.getData('Text');
-                var elem = document.getElementById(id); // 当前拖动的元素
-                var toElem = ev.toElement.id; // 放置位置
+                const id = ev.dataTransfer.getData('Text');
+                const elem = document.getElementById(id); // 当前拖动的元素
+                const toElem = ev.toElement.id; // 放置位置
                 if (toElem === 'right') {
                     // 如果为container，元素放置在末尾
                     this.appendChild(elem);
@@ -139,9 +139,9 @@
             };
             document.getElementById('left').ondrop = function (ev) {
                 ev.preventDefault();
-                var id = ev.dataTransfer.getData('Text');
-                var elem = document.getElementById(id);
-                var toElem = ev.toElement.id;
+                const id = ev.dataTransfer.getData('Text');
+                const elem = document.getElementById(id);
+                const toElem = ev.toElement.id;
                 if (toElem === 'left') {
                     // 如果为container，元素放置在末尾
                     this.appendChild(elem);
@@ -194,13 +194,13 @@
             }
         </style>
         <script class="code" contenteditable="true">
-            var iosDragDropShim = { enableEnterLeave: true }; 					// 兼容移动端
-            var source = document.querySelectorAll('.list'),
+            const iosDragDropShim = { enableEnterLeave: true }; 		        // 兼容移动端
+            let source = document.querySelectorAll('.list'),
                 recycleBin = document.getElementById('recycle-bin'),
                 dragElement = null, 											// 用于存放拖动元素
                 lock = true; 													// 最后元素拖放时会进入enter和leave的循环，用来锁住
 
-            for (var i = 0; i < source.length; i++) {
+            for (let i = 0; i < source.length; i++) {
                 source[i].addEventListener('dragstart', function (ev) {			// 开始拖动元素时触发
                     dragElement = this; 										// 用于存放拖动元素
                     this.style.backgroundColor = '#eeeeee'; 					// 设置拖动元素的背景

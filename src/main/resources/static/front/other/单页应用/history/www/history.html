@@ -61,7 +61,7 @@
         // 初始化
         Router.prototype.init = function () {
 
-            var self = this;
+            const self = this;
 
             // 重新加载函数，这里使用的主机是http://localhost:8088/
             window.addEventListener('load', function () {
@@ -78,8 +78,8 @@
             }, false);
 
             // 对所有的link标签进行绑定事件
-            var historyLinks = document.querySelectorAll('.history-link');
-            for (var i = 0, len = historyLinks.length; i < len; i++) {
+            const historyLinks = document.querySelectorAll('.history-link');
+            for (let i = 0, len = historyLinks.length; i < len; i++) {
                 historyLinks[i].onclick = function(e) {
                     // 阻止默认
                     e.preventDefault();
@@ -91,7 +91,7 @@
     </script>
 
     <script>
-        var wrap = document.querySelector('.router-wrap');
+        const wrap = document.querySelector('.router-wrap');
 
         // 实例化Router
         window.Router = new Router();

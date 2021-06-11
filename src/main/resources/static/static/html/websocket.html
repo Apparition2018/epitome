@@ -17,6 +17,7 @@
 </form>
 <script>
     let socket;
+    const textarea = document.getElementById('responseContent');
     if (!window.WebSocket) {
         window.WebSocket = window.MozWebSocket;
     }
@@ -25,17 +26,14 @@
         socket = new WebSocket("ws://localhost:8888/websocket");
         socket.onmessage = function(event) {
             console.log('onmessage');
-            let textarea = document.getElementById('responseContent');
             textarea.value += event.data + "\r\n";
         };
         socket.onopen = function(event) {
             console.log('onopen');
-            let textarea = document.getElementById('responseContent');
             textarea.value = "您当前的浏览器支持 WebSocket，请进行后续操作\r\n";
         };
         socket.onclose = function(event) {
             console.log('onclose');
-            let textarea = document.getElementById('responseContent');
             textarea.value = "";
             textarea.value = "WebSocket 连接已经关闭\r\n";
         }
@@ -47,11 +45,7 @@
         if (!window.WebSocket) {
             return;
         }
-        if (socket.readyState === WebSocket.OPEN) {
-            socket.send(message);
-        } else {
-            alert("WebSocket 连接没有建立成功");
-        }
+        (socket.readyState === WebSocket.OPEN) && socket.send(message) || alert("WebSocket 连接没有建立成功");
     }
 </script>
 </body>

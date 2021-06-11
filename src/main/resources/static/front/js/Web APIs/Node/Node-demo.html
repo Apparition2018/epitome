@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>Node-demo</title>
     <link rel="icon" href="../../../../static/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../static/css/demo.css">
@@ -383,11 +384,15 @@
         </div>
     </section>
 
-    <!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Node/textContent -->
-    <!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeValue -->
     <section class="code-wrap h350">
         <div class="css-live-wrap w100p">
-            <div class="caption">innerText &amp; textContent</div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/textContent">textContent</a>
+                
+            </div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/innerText">innerText</a>
+            </div>
             <div class="text centered">
                 <table class="w1024">
                     <tr>
@@ -417,8 +422,6 @@
                 </table>
             </div>
         </div>
-        <style>
-        </style>
     </section>
 
     <section class="code-wrap h550" id="create">
@@ -498,26 +501,26 @@
             }
         </style>
         <script class="code w60p" contenteditable="true">
-            var current2 = document.querySelector('.insert ul').children[2];
+            const current2 = document.querySelector('.insert ul').children[2];
 
             function insertChange(e) {
                 e = e.target;
 
-                var heroes = document.querySelector('.insert ul').children;
+                const heroes = document.querySelector('.insert ul').children;
 
-                for (var i = 0; i < heroes.length; i++) {
+                for (let i = 0; i < heroes.length; i++) {
                     heroes[i].className = '';
                 }
 
-                var ul = document.querySelector('.insert ul');
+                const ul = document.querySelector('.insert ul');
 
                 /* 创建元素节点 */
-                var liubei = document.createElement('li');
+                const liubei = document.createElement('li');
                 /* 创建文本节点 */
-                var newContent = document.createTextNode('刘备');
+                const newContent = document.createTextNode('刘备');
                 liubei.appendChild(newContent);
                 /* 创建 Attr 节点 */
-                var att = document.createAttribute('class');
+                const att = document.createAttribute('class');
                 att.nodeValue = 'active';
                 /* 向元素中添加指定的属性节点 */
                 liubei.setAttributeNode(att);
@@ -531,7 +534,7 @@
         </script>
     </section>
 
-    <!--https://cnodejs.org/topic/55e31bd6898f6bdc7e5551ac
+    <!--前端性能优化指南：https://cnodejs.org/topic/55e31bd6898f6bdc7e5551ac
         https://developer.mozilla.org/zh-CN/docs/Web/API/Node/cloneNode -->
     <section class="code-wrap h500">
         <div class="css-live-wrap w40p">
@@ -623,12 +626,12 @@
         </style>
         <script class="code w60p" contenteditable="true">
             function replace() {
-                var origin = document.getElementsByClassName('origin')[0];
+                const origin = document.getElementsByClassName('origin')[0];
                 // 如果为true，深度克隆，则该节点的所有后代节点也都会被克隆
-                var clone = origin.cloneNode(true);
-                var list = ['關羽', '張飛', '趙雲', '馬超', '趙雲'];
-                var li;
-                for (var i = 0, len = list.length; i < len; i++) {
+                const clone = origin.cloneNode(true);
+                const list = ['關羽', '張飛', '趙雲', '馬超', '趙雲'];
+                let li;
+                for (let i = 0, len = list.length; i < len; i++) {
                     li = document.createElement('li');
                     li.textContent = list[i];
                     clone.appendChild(li);
@@ -637,21 +640,22 @@
             }
 
             function remove() {
-                var origin = document.getElementsByClassName('origin')[0];
+                const origin = document.getElementsByClassName('origin')[0];
                 /* 返回包含指定节点的子节点的集合，该集合为即时更新的集合 */
-                var childs = origin.childNodes;
-                for (var i = childs.length - 1; i >= 0; i--) {
-                    origin.removeChild(childs[i]);
+                const children = origin.childNodes;
+                for (let i = children.length - 1; i >= 0; i--) {
+                    origin.removeChild(children[i]);
                 }
             }
         </script>
     </section>
 
-    <!-- https://www.zhangxinxu.com/wordpress/2015/11/know-dom-queryselectorall/
-        https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelectorAll -->
     <section class="code-wrap h500">
         <div class="css-live-wrap w40p">
-            <div class="caption">querySelectorAll</div>
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelectorAll">querySelectorAll</a>
+                <a href="https://www.zhangxinxu.com/wordpress/2015/11/know-dom-queryselectorall/">querySelectorAll</a>
+            </div>
             <div class="eg1 centered">
                 <label class="label">
                     <input class="radio" type="radio" name="radio" value="">
@@ -735,12 +739,12 @@
             }
         </style>
         <script class="code w60p" contenteditable="true">
-            var selects = document.querySelectorAll(".label");
+            const selects = document.querySelectorAll(".label");
             selects.forEach(function (value, index, array) {
                 value.onclick = function (e) {
                     if (e.target.name === 'radio') {
-                        var text = document.querySelector(".radio:checked").parentNode.querySelector(".text").textContent;
-                        var selects = document.querySelectorAll(".querySelectorAll span");
+                        const text = document.querySelector(".radio:checked").parentNode.querySelector(".text").textContent;
+                        let selects = document.querySelectorAll(".querySelectorAll span");
                         if (text.indexOf(".eg1 span span") !== -1) {
                             selects.forEach(function (value, index, array) {
                                 value.style.background = "#fff";

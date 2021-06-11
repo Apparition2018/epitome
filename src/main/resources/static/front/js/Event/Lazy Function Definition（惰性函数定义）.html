@@ -25,8 +25,6 @@
                 addEvent
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function addEvent(type, element, fun) {
                 if (element.addEventListener) {
@@ -55,8 +53,6 @@
                 createXHR
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function createXHR() {
                 if (typeof XMLHttpRequest !== "undefined") {
@@ -65,12 +61,12 @@
                     };
                     return new XMLHttpRequest();
                 } else if (typeof ActiveXObject !== "undefined") { // 兼容IE7和之前的版本
-                    var curxhr;
-                    var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0",
+                    let curxhr;
+                    const versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0",
                         "MSXML2.XMLHttp"];
-                    for (var i = 0, len = versions.length; i < len; i++) {
+                    for (const i = 0, len = versions.length; i < len; i++) {
                         try {
-                            var xhr = new ActiveXObject(versions[i]);
+                            const xhr = new ActiveXObject(versions[i]);
                             curxhr = versions[i];
                             createXHR = function () {
                                 return new ActiveXObject(curxhr);
@@ -94,10 +90,8 @@
                 getScrollY
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
-            var getScrollY = function () {
+            let getScrollY = function () {
                 if (typeof window.pageYOffset === 'number') {
                     getScrollY = function () {
                         return window.pageYOffset;
@@ -131,12 +125,10 @@
                 instance
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             function Universe() {
                 // 缓存的实例
-                var instance = this;
+                const instance = this;
 
                 // 其它内容
                 this.start_time = 0;

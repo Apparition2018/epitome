@@ -33,7 +33,7 @@
             </div>
         </div>
         <script class="code w60p" contenteditable="true">
-            let oCar = {
+            const oCar = {
                 "color": "blue",
                 "doors": 4,
                 "mpg": 25,
@@ -52,7 +52,7 @@
             </div>
         </div>
         <script class="code w60p" contenteditable="true">
-            let oCar = new Object;
+            const oCar = {};
             oCar.color = "blue";
             oCar.doors = 4;
             oCar.mpg = 25;
@@ -74,7 +74,7 @@
             function showColor() { console.log(this.color) }
 
             function createCar(sColor, iDoors, iMpg) {
-                let oTempCar = new Object;
+                const oTempCar = {};
                 oTempCar.color = sColor;
                 oTempCar.doors = iDoors;
                 oTempCar.mpg = iMpg;
@@ -125,15 +125,15 @@
             Car.prototype.color = "blue";
             Car.prototype.doors = 4;
             Car.prototype.mpg = 25;
-            Car.prototype.drivers = new Array("Mike", "John"); // 各新创建对象指向同一引用
+            Car.prototype.drivers = ["Mike", "John"]; // 各新创建对象指向同一引用
             Car.prototype.showColor = function () { console.log(this.color) }
         </script>
     </section>
 
-    <!-- http://www.w3school.com.cn/js/pro_js_object_defining.asp -->
+    <!-- ECMAScript 定义类或对象：https://www.w3school.com.cn/js/pro_js_object_defining.asp -->
     <section class="code-wrap h350">
         <div class="css-live-wrap w40p">
-            <div class="caption">混合的构造函数/原型方式 （推荐）</div>
+            <div class="caption">混合的构造函数/原型方式（推荐）</div>
             <div class="eg1 centered">
                 <ul>
                     <li>好处：</li>
@@ -153,13 +153,13 @@
                 this.color = sColor;
                 this.doors = iDoors;
                 this.mpg = iMpg;
-                this.drivers = new Array('Mike', 'John');
+                this.drivers = ['Mike', 'John'];
             }
 
             Car.prototype.showColor = function () { console.log(this.color) };
 
-            let oCar1 = new Car("red", 4, 23);
-            let oCar2 = new Car("blue", 3, 25);
+            const oCar1 = new Car("red", 4, 23);
+            const oCar2 = new Car("blue", 3, 25);
 
             oCar1.drivers.push("Bill");
 
@@ -182,7 +182,7 @@
                 this.color = sColor;
                 this.doors = iDoors;
                 this.mpg = iMpg;
-                this.drivers = new Array('Mike', 'John');
+                this.drivers = ['Mike', 'John'];
 
                 if (typeof Car._initialized == "undefined") {
                     Car.prototype.showColor = function () { console.log(this.color) };

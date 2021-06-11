@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <!-- http://www.w3school.com.cn/js/pro_js_object_modifying.asp -->
+    <!-- ECMAScript 修改对象：https://www.w3school.com.cn/js/pro_js_object_modifying.asp -->
 
     <section class="code-wrap h150">
         <div class="css-live-wrap w33p">
@@ -19,8 +19,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             Number.prototype.toHexString = function () {
                 return this.toString(16);
@@ -36,8 +34,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             Array.prototype.enqueue = function (vItem) {
                 this.push(vItem);
@@ -48,7 +44,7 @@
                 return this.shift();
             };
 
-            var aArr = [];
+            const aArr = [];
             aArr.enqueue(1).enqueue(2).enqueue(3); // [1, 2, 3]
             aArr.dequeue(); // 1
 
@@ -61,11 +57,9 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             Array.prototype.indexOf = function (vItem) {
-                for (var i = 0, len = this.length; i < len; i++) {
+                for (let i = 0, len = this.length; i < len; i++) {
                     if (vItem === this[i]) {
                         return i;
                     }
@@ -73,7 +67,7 @@
                 return -1;
             };
 
-            var aColors = new Array("red", "yellow", "blue", "green");
+            const aColors = ["red", "yellow", "blue", "green"];
             aColors.indexOf("yellow"); // 1
         </script>
     </section>
@@ -84,8 +78,6 @@
             <div class="centered">
             </div>
         </div>
-        <style>
-        </style>
         <script class="code w67p" contenteditable="true">
             Function.prototype.originalToString = Function.prototype.toString; // 存储原方法，以便以后的使用
 

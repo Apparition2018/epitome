@@ -88,9 +88,9 @@
         </style>
         <script src="https://cdn.bootcss.com/localforage/1.7.3/localforage.min.js"></script>
         <script class="code w67p" contenteditable="true">
-            let eleResult = document.getElementById('result');
+            const eleResult = document.getElementById('result');
             // 图片资源
-            let eleImg = document.createElement('img');
+            const eleImg = document.createElement('img');
             // 获取本地存储数据
             localforage.getItem('zxxImg', function (err, value) {
                 if (err == null && value) {
@@ -99,25 +99,21 @@
                 }
             });
             // 选择的本地文件以Blob形式呈现
-            let reader = new FileReader();
+            const reader = new FileReader();
             // 文件base64化，以便获知图片原始尺寸
             reader.onload = function (event) {
-                if (!eleImg.src) {
-                    eleResult.appendChild(eleImg);
-                }
-                let blob = URL.createObjectURL(new Blob([event.target.result]));
+                !eleImg.src && eleResult.appendChild(eleImg); 
+                const blob = URL.createObjectURL(new Blob([event.target.result]));
                 eleImg.src = blob;
                 // blob本地存储
                 localforage.setItem('zxxImg', blob);
             };
             // 选择的文件对象
-            let file = null;
+            let file;
             document.getElementById('fileImg').addEventListener('change', function (event) {
                 file = event.target.files[0];
                 // 选择的文件是图片
-                if (file.type.indexOf("image") === 0) {
-                    reader.readAsArrayBuffer(file);
-                }
+                (file.type.indexOf("image") === 0) && reader.readAsArrayBuffer(file); 
             });
         </script>
     </section>
