@@ -55,10 +55,28 @@
 ## 起步
 ```
 1. mkdir webpack && cd webpack
+
 2. npm init -y
+
 3. npm install webpack webpack-cli --save-dev
+
 4. npm install --save lodash
+
+// 加载各类文件
 5. npm install --save-dev style-loader css-loader file-loader csv-loader xml-loader
+
+// 生成 index.html
+// https://blog.csdn.net/u012443286/article/details/93363949
+6. npm install --save-dev html-webpack-plugin
+
+// 清理插件
+7. npm install --save-dev clean-webpack-plugin
+
+// 快速开发应用程序，可以实时重新加载(live reloading)
+8. npm install --save-dev webpack-dev-server
+
+// 合并配置文件
+9. npm install --save-dev webpack-merge
 ```
 ---
 ## 目录结构
@@ -67,8 +85,40 @@ src     源代码，用于书写和编辑的代码
 dist    分发代码，构建过程产生的代码最小化和优化后的 输出(output) 目录，最终将在浏览器中加载
 ```
 ---
-## 常用命令
+## 常用命令 & npm scripts
 ```
 npx webpack [--config webpack.config.js]                    默认使用 webpack.config.js
+npx webpack serve
+
+"build": "webpack"
+"build2": "webpack --config webpack.prod.js"
+"start": "webpack serve"
+"dev": "webpack serve --config webpack.dev.js",
 ```
+---
+## tree shaking
+- 移除 JavaScript 上下文中的未引用代码(dead-code)
+1. 使用 ES2015 模块语法（即 import 和 export）
+2. 确保没有 compiler 将 ES2015 模块语法转换为 CommonJS 模块
+3. 在项目 package.json 文件中，添加一个 "sideEffects" 属性
+4. 通过将 mode 选项设置为 production，启用 minification(代码压缩) 和 tree shaking
+---
+## development VS production
+1. development
+```
+1. 强大的 source map
+2. live reloading（实时重新加载）
+3. hot module replacement（热模块替换）
+```
+2. production
+```
+1. 压缩 bundle
+2. 更轻量的 source map
+3. 资源优化
+```
+---
+## 代码分离
+1. 入口起点：使用 entry 配置手动地分离代码
+2. 防止重复：使用 SplitChunksPlugin 去重和分离 chunk
+3. 动态导入：通过模块中的内联函数调用来分离代码
 ---
