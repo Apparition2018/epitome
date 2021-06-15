@@ -42,9 +42,9 @@
 >```
 >### SQL 语句
 >```
->1. 不要使用 count(列名)或 count(常量)来替代 count(*)，count(*)是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关
+>1. 不要使用 count(列名) 或 count(常量) 来替代 count(*)，count(*) 是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关
 >2. count(distinct col) 计算该列除 NULL 之外的不重复行数，注意 count(distinct col1, col2) 如果其中一列全为 NULL，那么即使另一列有不同的值，也返回为 0
->3. 当某一列的值全是 NULL 时，count(col)的返回结果为 0，但 sum(col)的返回结果为 NULL，因此使用 sum()时需注意 NPE 问题，避免方法：SELECT IFNULL(SUM(column), 0) FROM table
+>3. 当某一列的值全是 NULL 时，count(col) 的返回结果为 0，但 sum(col) 的返回结果为 NULL，因此使用 sum() 时需注意 NPE 问题，避免方法：SELECT IFNULL(SUM(column), 0) FROM table
 >4. 不得使用外键与级联，一切外键概念必须在应用层解决
 >5. 禁止使用存储过程，存储过程难以调试和扩展，更没有移植性
 >6. 数据订正（特别是删除或修改记录操作）时，要先 select，避免出现误删除，确认无误才能执行更新语句
@@ -54,10 +54,10 @@
 >```
 >1. POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行字段与属性之间的映射
 >2. 不要用 resultClass 当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义<resultMap>；反过来，每一个表也必然有一个<resultMap>与之对应
->3. sql.xml 配置参数使用：#{}，#param# 不要使用${} 此种方式容易出现 SQL 注入
->4. iBATIS 自带的 queryForList(String statementName,int start,int size)不推荐使用
+>3. sql.xml 配置参数使用：#{}，#param# 不要使用 ${} 此种方式容易出现 SQL 注入
+>4. iBATIS 自带的 queryForList(String statementName,int start,int size) 不推荐使用
 >5. 不允许直接拿 HashMap 与 Hashtable 作为查询结果集的输出
->6. 不要写一个大而全的数据更新接口。传入为 POJO 类，不管是不是自己的目标更新字段，都进行 update table set c1=value1,c2=value2,c3=value3; 不要更新无改动的字段，一是易出错；二是效率低；三是增加 binlog 存储
+>6. 不要写一个大而全的数据更新接口。传入为 POJO 类，不管是不是自己的目标更新字段，都进行 update table set c1=value1, c2=value2, c3=value3; 不要更新无改动的字段，一是易出错；二是效率低；三是增加 binlog 存储
 >7. 使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等
 >```
 ---

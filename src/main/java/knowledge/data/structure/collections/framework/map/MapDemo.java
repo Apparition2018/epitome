@@ -63,7 +63,7 @@ public class MapDemo extends Demo {
     /**
      * 阿里编程规约：
      * 使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历
-     * keySet 其实是遍历了 2 次，一次是转为 Iterator 对象，另一次是从 hashMap 中取出 key 所对应的value。
+     * keySet 其实是遍历了 2 次，一次是转为 Iterator 对象，另一次是从 hashMap 中取出 key 所对应的 value。
      * 而 entrySet 只是遍历了一次就把 key 和 value 都放到了 entry 中，效率更高。如果是 JDK8，使用 Map.forEach 方法
      */
     @Test

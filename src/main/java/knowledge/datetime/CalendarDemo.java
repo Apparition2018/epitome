@@ -9,8 +9,6 @@ import java.util.Date;
 /**
  * Calendar
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Calendar.html
- * <p>
- * 使用枚举值来指代月份。如果使用数字，注意 Date，Calendar 等日期相关类的月份 month 取值在 0-11 之间（阿里编程规约）
  *
  * @author ljh
  * created on 2019/8/8 19:39

@@ -52,7 +52,7 @@
         -i                                  --interactive                       交互式删除
         -r                                  --recursive                         递归删除
     find                                                                        查找文件
-        -iname                                                                  文件名称符合的文件，忽略大小写
+        -iname                                                                  文件名称符合的文件，忽略大小写                 find / -iname zoo.cfg
     whereis                                                                     查找文件
     which                                                                       查找文件
     locate                                                                      查找符合条件的文件

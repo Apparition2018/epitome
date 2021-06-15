@@ -31,7 +31,7 @@ public class ProcessControl {
      * <p>
      * 阿里编程规约：
      * 1.在一个 switch 块内，每个 case 要么通过 continue/break/return 等来终止，要么注释说明程序将继续执行到哪一个 case 为止；
-     * 在一个 switch 块内，都必须包含一个 default语句并且放在最后，即使它什么代码也没有
+     * 在一个 switch 块内，都必须包含一个 default 语句并且放在最后，即使它什么代码也没有
      * 2.当 switch 括号内的变量类型为 String 并且此变量为外部参数时，必须先进行 null 判断
      */
     @Test
