@@ -69,6 +69,10 @@ public class NumberDemo {
         // 返回一个 XXX 对象，该对象中保存了用第二个参数提供的基数进行解析时从指定的 String 中提取的值
         p(Integer.valueOf("11", 10));   // 11
         p(Integer.valueOf("b", 16));    // 11
+        // 返回 Boolean 中已定义的两个静态属性 new Boolean(false) 和 new Boolean(true)
+        Boolean x1 = false;
+        Boolean x2 = false;
+        System.out.println(x1 == x2);   // true
 
         // int	                compareTo(xxx anotherXXX)
         // 比较两个 XXX 对象所表示的数值
@@ -102,5 +106,4 @@ public class NumberDemo {
         p(Float.isInfinite(Float.POSITIVE_INFINITY));   // true
         p(Double.isNaN(Float.NaN));                     // true
     }
-
 }

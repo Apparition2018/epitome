@@ -23,7 +23,7 @@ import static l.demo.Demo.p;
  * static char      toUpperCase(char ch / int codePoint)            使用取自 UnicodeData 文件的大小写映射信息将字符（Unicode 代码点）参数转换为大写
  * static char      toLowerCase(char ch / int codePoint)            使用取自 UnicodeData 文件的大小写映射信息将字符（Unicode 代码点）参数转换为小写
  * <p>
- * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Character.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Character.html
  *
  * @author Arsenal
  * created on 2020/9/7 01:28

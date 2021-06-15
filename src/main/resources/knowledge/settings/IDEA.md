@@ -15,7 +15,7 @@
 ## 文件和代码模板
     1. Settings → Editor → File and Code Templates
     2. Files
-    3. Class / Interface / Enum / Record / AnnotationType
+    3. Class | Interface | Enum | Record | AnnotationType
         /**
          * ${NAME}
          *
@@ -60,6 +60,10 @@
     2. Spaces
     3. Before parenthese
     4. Function declaration parentheses 勾选
+---
+## 更换编译器
+    1. Settings → Build, Execution, Deployment → Compiler → Java Compiler
+    2. Use compiler: Eclipse
 ---
 ## 启用注解处理
     1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors

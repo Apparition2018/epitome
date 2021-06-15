@@ -13,13 +13,20 @@ public class Conversion {
     /**
      * 自动类型转换:
      * <p>
-     * 低  ------------------------------------------->  高
-     * byte, short, char --> int --> long --> float --> double
+     * 低  --------------------------------------->  高
+     * byte, short, char → int → long → float → double
      */
     @Test
     public void auto() {
+        // char → int
         char a = 'a';
         System.out.println(a + 1); // 98
+        
+        // int → long
+        long l = 100 + 100L;
+        
+        // long → double
+        double d = 100L + 100d;
     }
 
     /**
@@ -38,7 +45,7 @@ public class Conversion {
         byte b = (byte) i;
         System.out.println("b = " + b);     // -128
 
-        // 浮点数 ==> 整数，舍弃小数
+        // 浮点数 → 整数，舍弃小数
         System.out.println((int) 23.7);     // 23
         System.out.println((int) -45.89f);  // -45
     }
@@ -57,7 +64,6 @@ public class Conversion {
         s = String.valueOf(2);
         s = Integer.toString(2);
         s = "" + 2;
-
     }
 
 }
