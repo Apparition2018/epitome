@@ -33,6 +33,7 @@ import java.io.IOException;
  * 8.对于公司外的 http/api 开放接口必须使用 errorCode；而应用内部推荐异常抛出；跨应用间 RPC 调用优先考虑使用 Result 方式，封装 isSuccess()方法、errorCode、errorMessage；而应用内部直接抛出异常即可
  * <p>
  * 选择 Checked Exception 还是 Unchecked Exception：https://blog.csdn.net/kingzone_2008/article/details/8535287
+ * Java生鲜电商平台-统一异常处理及架构实战：https://www.cnblogs.com/jurendage/p/11255197.html
  *
  * @author ljh
  * created on 2019/8/8 19:39

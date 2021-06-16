@@ -4,27 +4,19 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
+    mode: 'development',
     entry: {
         index: './src/index.js',
-        another: './src/another-module.js'
     },
-    // 控制是否生成，以及如何生成 source map
-    // https://v4.webpack.docschina.org/configuration/devtool
-    devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
         hot: true
     },
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            }
-        ]
-    },
     plugins: [
         new CleanWebpackPlugin(),
+        // 1.创建 html 文件
+        // 2.把所有 bundle.js 添加到 html 文件
+        // https://blog.csdn.net/u012443286/article/details/93363949
         new HtmlWebpackPlugin({
             title: 'html 标题',
         }),
@@ -33,8 +25,15 @@ module.exports = {
     ],
     output: {
         filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    // mode: 'production' 会自动添加 ModuleConcatenationPlugin 插件
-    // mode: 'production',
+    optimization: {
+        // 不导出未使用的代码
+        // usedExports: true
+        // 提取公共代码
+        // splitChunks: {
+        //     chunks: 'all'
+        // }
+    }
 }

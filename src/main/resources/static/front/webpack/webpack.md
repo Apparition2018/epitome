@@ -58,15 +58,14 @@
 
 2. npm init -y
 
-3. npm install webpack webpack-cli --save-dev
+3. npm install --save-dev webpack webpack-cli
 
 4. npm install --save lodash
 
 // 加载各类文件
 5. npm install --save-dev style-loader css-loader file-loader csv-loader xml-loader
 
-// 生成 index.html
-// https://blog.csdn.net/u012443286/article/details/93363949
+// 生成 html 文件
 6. npm install --save-dev html-webpack-plugin
 
 // 清理插件
@@ -119,6 +118,21 @@ npx webpack serve
 ---
 ## 代码分离
 1. 入口起点：使用 entry 配置手动地分离代码
+```
+entry: {
+    index: './src/index.js',
+    another: './src/another-module.js'
+}
+```
 2. 防止重复：使用 SplitChunksPlugin 去重和分离 chunk
+```
+optimization: {
+    splitChunks: {
+        chunks: 'all'
+    }
+}
+```
 3. 动态导入：通过模块中的内联函数调用来分离代码
+```
+```
 ---
