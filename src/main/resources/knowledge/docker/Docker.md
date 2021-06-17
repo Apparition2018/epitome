@@ -195,7 +195,7 @@ tomcat:9.0.45
 
 docker run -d --name tomcat -p 8080:8080 -v D:\Docker\Tomcat\webapps:/usr/local/tomcat/webapps tomcat:9.0.45
 ```
-5. [Nginx](https://blog.csdn.net/goodboy31985/article/details/106676475/)
+5. [Nginx](https://blog.csdn.net/goodboy31985/articleb/details/106676475/)
 ```bash
 docker run -d --name nginx -p 80:80 --restart=always
 [-v D:\Docker\Nginx\conf\nginx.conf:/etc/nginx/nginx.conf]
@@ -204,21 +204,11 @@ docker run -d --name nginx -p 80:80 --restart=always
 [-v D:\Docker\Nginx\html:/usr/share/nginx/html]
 nginx
 ```
-6. Zookeeper
+6. [Zookeeper](https://www.cnblogs.com/kingkoo/p/8732448.html)
+- @see docker/compose/zookeeper/docker-compose.yml
 ```bash
-docker run -d --name zookeeper1 -e ALLOW_ANONYMOUS_LOGIN=yes -e ZOO_SERVER_ID=1 
--e ZOO_SERVERS=0.0.0.0:2881:3881,zookeeper2:2882:3882,zookeeper3:2883:3883 
--p 2181:2181 -p 2881:2888 -p 3881:3888 zookeeper
-
-docker run -d --name zookeeper2 -e ALLOW_ANONYMOUS_LOGIN=yes -e ZOO_SERVER_ID=2 
--e ZOO_SERVERS=zookeeper1:2881:3881,0.0.0.0:2882:3882,zookeeper3:2883:3883 
--p 2182:2181 -p 2882:2888 -p 3882:3888 zookeeper
-
-docker run -d --name zookeeper3 -e ALLOW_ANONYMOUS_LOGIN=yes -e ZOO_SERVER_ID=3 
--e ZOO_SERVERS=zookeeper1:2881:3881,zookeeper2:2882:3882,0.0.0.0:2883:3883 
--p 2183:2181 -p 2883:2888 -p 3883:3888 zookeeper
-
-docker exec -it zookeeper bash
+COMPOSE_PROJECT_NAME=zk_test docker-compose up
+COMPOSE_PROJECT_NAME=zk_test docker-compose ps
 ```
 7. [RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash
