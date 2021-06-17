@@ -1,5 +1,7 @@
 package l.demo;
 
+import lombok.Getter;
+
 /**
  * CompanyEnum
  * <p>
@@ -11,7 +13,8 @@ package l.demo;
  * @author ljh
  * created on 2020/11/2 14:04
  */
-public enum CompanyEnum {
+@Getter
+public enum CompanyEnum implements BaseEnum {
     // 利用构造函数传参
     SF("顺丰速运", 1001),
     YTO("圆通速递", 1002),
@@ -19,29 +22,12 @@ public enum CompanyEnum {
     EMS("中国邮政", 1004),
     DHL("中外运敦豪", 1005);
 
-    private String company;
+    private final String company;
 
-    private int code;
+    private final Integer code;
 
-    // 构造函数默认为私有
-    CompanyEnum(String company, int code) {
+    CompanyEnum(String company, Integer code) {
         this.company = company;
-        this.code = code;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
         this.code = code;
     }
 

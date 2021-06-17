@@ -75,6 +75,8 @@ docker ps [OPTIONS]                                             列出 container
 docker exec [OPTIONS] CONTAINER COMMAND [ARG...]                在 container 中运行 command
     -it IMAGE /bin/bash
 docker start|stop|restart [OPTIONS] CONTAINER [CONTAINER...]    启动|停止|重启 containers
+docker container                                                管理 containers
+    update [OPTIONS] CONTAINER [CONTAINER...]                   修改一个或多个 containers 的配置
 docker rm [OPTIONS] CONTAINER [CONTAINER...]                    移除 containers
 docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
     -a
@@ -157,7 +159,7 @@ docker login [OPTIONS] [SERVER]                                 登录
 ## 安装软件
 1. [MySQL](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
-docker run -d --name mysql -p 3306:3306 --privileged
+docker run -d --name mysql -p 3306:3306 --privileged --restart=always
 [-v D:/Docker/MySQL/my.cnf:/etc/mysql/my.cnf -v D:/Docker/MySQL/data:/var/lib/mysql]
 -e MYSQL_ROOT_PASSWORD=root mysql
 

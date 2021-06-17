@@ -2,6 +2,7 @@ package springboot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.ResourceUtils;
@@ -9,6 +10,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import springboot.converter.IntegerToEnumConverterFactory;
+import springboot.converter.StringToEnumConverterFactory;
 import springboot.interceptor.HttpInterceptor;
 
 import java.nio.charset.StandardCharsets;
@@ -84,5 +87,14 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(responseBodyStringConverter());
+    }
+
+    /**
+     * Spring Boot 使用枚举类型作为请求参数：https://xkcoding.com/2019/01/30/spring-boot-request-use-enums-params.html
+     */
+    @Override
+    protected void addFormatters(FormatterRegistry registry) {
+        registry.addConverterFactory(new IntegerToEnumConverterFactory());
+        registry.addConverterFactory(new StringToEnumConverterFactory());
     }
 }

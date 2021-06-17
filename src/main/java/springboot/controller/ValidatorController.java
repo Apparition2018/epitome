@@ -1,7 +1,10 @@
 package springboot.controller;
 
+import cn.hutool.json.JSONUtil;
+import l.demo.CompanyEnum;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
@@ -10,10 +13,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.*;
@@ -26,9 +26,9 @@ import java.util.Map;
 
 /**
  * springboot 使用 hibernate validator 校验：https://www.cnblogs.com/mr-yang-localhost/p/7812038.html
+ * Spring Boot 参数校验：https://www.cnblogs.com/cjsblog/p/8946768.html
  * JSR303注解：https://www.cnblogs.com/rocky-AGE-24/p/5245022.html
  * Hibernate Validator：https://docs.jboss.org/hibernate/validator/4.2/reference/zh-CN/html_single
- * <p>
  * 参数验证 @Validated 和 @Valid 的区别：https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&mid=2247488213&idx=1&sn=24fe329101274d54c0039f0c98008ef3
  *
  * @author ljh
@@ -52,7 +52,7 @@ public class ValidatorController {
      * localhost:3333/validator/valid
      */
     @RequestMapping("/valid")
-    public String validator(@Valid User user, BindingResult result) {
+    public String valid(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             StringBuilder msg = new StringBuilder();
             // 获取错误字段集合
@@ -77,7 +77,9 @@ public class ValidatorController {
      * localhost:3333/validator/valid2
      */
     @RequestMapping("/valid2")
-    public Map<String, Object> valid(@NotNull(message="id不能为空")@RequestParam("id") Integer id) {
+    public Map<String, Object> valid2(@Valid User user) {
+        log.info(user.toString());
+        log.info(JSONUtil.toJsonStr(user));
         Map<String, Object> map = new HashMap<>();
         map.put("code", 200);
         map.put("msg", "ok");
@@ -86,6 +88,7 @@ public class ValidatorController {
 
     @Getter
     @Setter
+    @ToString
     private static class User {
 
         @NotBlank(message = "用户名称不能为空")
@@ -102,6 +105,9 @@ public class ValidatorController {
 
         @Email(message = "邮箱格式错误")
         private String mail;
+        
+        @NotNull(message = "公司不能为空或无效")
+        private CompanyEnum company;
 
         /**
          * 自定义验证，值为1或2或3，其他均不可通过验证

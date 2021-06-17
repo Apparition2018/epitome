@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
  * `@RestControllerAdvice = @ControllerAdvice + @ResponseBody
  * <p>
  * `@RestControllerAdvice 作用及原理：https://www.cnblogs.com/UncleWang001/p/10949318.html
- * Spring 捕捉校验参数异常并统一处理：https://www.cnblogs.com/bookc/p/10384347.html
  *
  * @author ljh
  * created on 2020/11/26 17:51
@@ -58,7 +57,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 捕获 @RequestParam 异常
+     * 捕获 Controller 上注解 @Validated 参数异常
      */
     @ExceptionHandler(ConstraintViolationException.class)
     public Map<String, Object> handleConstraintViolationException(ConstraintViolationException e) {
