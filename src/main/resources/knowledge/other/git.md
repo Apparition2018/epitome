@@ -55,7 +55,7 @@
 >init                                           创建一个空的 Git repository 或重新初始化一个现有的 repository
 >clone <repository>                             克隆一个 repository 到一个新目录
 >   --depth <depth>                             创建一个浅克隆，其中历史记录被截断为指定提交次数
->   -b <name> | --branch <name>                 分支
+>   -b | --branch <name>                        克隆分支
 >```
 >## 基本快照
 >```
@@ -76,11 +76,14 @@
 >mv                                             移动或重命名文件，目录或符号链接
 >```
 >## [分支与合并](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%AE%80%E4%BB%8B)
+>- [Git如何拉取指定远程分支](https://www.jianshu.com/p/856ce249ed78)
 >- [Git分支管理策略](https://www.ruanyifeng.com/blog/2012/07/git.html)
 >- [Git Flow 的正确使用姿势](https://www.jianshu.com/p/41910dc6ef29)
 >```
 >branch                                         列出，创建或删除 branch
 >   <branchname>                                创建 branch
+>   -a | --all                                  列出远程和本地所有分支
+>   -r | --remotes                              列出或删除（与 -d 一起使用）远程所有分支
 >   -d | --delete <branchname>…                 删除 branch
 >checkout                                       切换 branch 或 恢复 working tree 文件
 >   <branhc|tag>                                切换 branch 或 tag

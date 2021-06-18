@@ -1,6 +1,5 @@
 package springboot.controller;
 
-import cn.hutool.json.JSONUtil;
 import l.demo.CompanyEnum;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +13,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.*;
@@ -78,8 +78,14 @@ public class ValidatorController {
      */
     @RequestMapping("/valid2")
     public Map<String, Object> valid2(@Valid User user) {
-        log.info(user.toString());
-        log.info(JSONUtil.toJsonStr(user));
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", 200);
+        map.put("msg", "ok");
+        return map;
+    }
+
+    @RequestMapping("/valid3")
+    public Map<String, Object> valid3(@RequestParam("id") Integer id) {
         Map<String, Object> map = new HashMap<>();
         map.put("code", 200);
         map.put("msg", "ok");
@@ -105,7 +111,7 @@ public class ValidatorController {
 
         @Email(message = "邮箱格式错误")
         private String mail;
-        
+
         @NotNull(message = "公司不能为空或无效")
         private CompanyEnum company;
 

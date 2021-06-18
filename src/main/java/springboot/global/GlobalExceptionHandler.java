@@ -1,12 +1,17 @@
 package springboot.global;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.servlet.Servlet;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.HashMap;
@@ -26,12 +31,17 @@ import java.util.stream.Collectors;
  * @author ljh
  * created on 2020/11/26 17:51
  */
+// springboot注解@Configuration属性proxyBeanMethods详解：https://mingyang.blog.csdn.net/article/details/108238121
+@Configuration(proxyBeanMethods = false)
+// @ConditionalOnBean与@ConditionalOnClass：https://www.cnblogs.com/qdhxhz/p/11027546.html
+@ConditionalOnClass({Servlet.class, DispatcherServlet.class})
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
 
     /**
-     * 捕获 GET 参数异常 
+     * 捕获 GET 参数异常
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
@@ -68,4 +78,14 @@ public class GlobalExceptionHandler {
         map.put("msg", message);
         return map;
     }
+
+//    @ExceptionHandler(MissingServletRequestParameterException.class)
+//    public Map<String, Object> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
+//        log.info("MissingServletRequestParameterException");
+//        String message = e.getMessage();
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("code", 500);
+//        map.put("msg", message);
+//        return map;
+//    }
 }
