@@ -71,10 +71,14 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                   创建新的 con
     -P                                                          暴露容器所有端口到宿主随机端口
     --restart=always                                            总是启动
     --privileged                                                扩展权限
+    --rm                                                        当容器退出时自动删除
+    --link                                                      连接其它容器
+    --net                                                       将容器连接到网络
 docker ps [OPTIONS]                                             列出 containers
 docker exec [OPTIONS] CONTAINER COMMAND [ARG...]                在 container 中运行 command
     -it IMAGE /bin/bash
 docker start|stop|restart [OPTIONS] CONTAINER [CONTAINER...]    启动|停止|重启 containers
+docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                创建 container
 docker container                                                管理 containers
     update [OPTIONS] CONTAINER [CONTAINER...]                   修改一个或多个 containers 的配置
 docker rm [OPTIONS] CONTAINER [CONTAINER...]                    移除 containers
@@ -82,15 +86,16 @@ docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
     -a
 docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   返回 Docker 对象的 low-level 信息
 docker kill [OPTIONS] CONTAINER [CONTAINER...]                  杀掉 containers
-docker build [OPTIONS] PATH | URL | -                           从 Dockerfile 构建 image
-    -t                                                          命名 'name:tag'
 docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-              在 container 和本地文件系统之间 复制文件或文件夹
 docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]            根据 container 的更改创建 image
     -m                                                          提交消息
-docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                创建 container
 docker push [OPTIONS] NAME[:TAG]                                将 image 或 repository 推到 registry
 docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]                创建与 SOURCE_IMAGE 关联的 TARGET_IMAGE[:TAG]
 docker login [OPTIONS] [SERVER]                                 登录
+docker network                                                  管理网络
+    create                                                      创建网络
+docker build [OPTIONS] PATH | URL | -                           从 Dockerfile 构建 image
+    -t                                                          命名 'name:tag'
 ```
 ---
 ## Docker 网络
@@ -204,11 +209,23 @@ docker run -d --name nginx -p 80:80 --restart=always
 [-v D:\Docker\Nginx\html:/usr/share/nginx/html]
 nginx
 ```
-6. [Zookeeper](https://www.cnblogs.com/kingkoo/p/8732448.html)
-- @see docker/compose/zookeeper/docker-compose.yml
+6. [Zookeeper](https://www.cnblogs.com/idea360/p/12405113.html)
+- @see docker/compose/zookeeper/docker-compose-zookeeper-cluster.yml
 ```bash
-COMPOSE_PROJECT_NAME=zk_test docker-compose up
-COMPOSE_PROJECT_NAME=zk_test docker-compose ps
+docker network create docker_net
+docker-compose -f docker-compose-zookeeper-cluster.yml up -d
+
+docker exec -it zoo1 bash
+./bin/zkServer.sh status                          Mode: follower
+
+docker exec -it zoo2 bash
+./bin/zkServer.sh status                          Mode: follower
+
+docker exec -it zoo3 bash
+./bin/zkServer.sh status                          Mode: leader
+echo srvr | nc localhost 2181
+
+docker run -it --rm --name ZookeeperCluster --link zoo1 --link zoo2 --link zoo3 --net docker_net zookeeper zkCli.sh -server zoo1:2181,zoo2:2181,zoo3:2181
 ```
 7. [RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash
