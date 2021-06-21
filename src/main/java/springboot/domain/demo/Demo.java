@@ -3,11 +3,10 @@ package springboot.domain.demo;
 import java.io.Serializable;
 
 public class Demo implements Serializable {
+
+    private static final long serialVersionUID = -388873145067363215L;
     private Integer id;
-
     private String name;
-
-    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;

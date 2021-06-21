@@ -27,7 +27,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Person implements Comparable<Person>, Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -8205619618185839521L;
     private Integer id;
     private String name;
     private Integer age;
@@ -39,7 +39,7 @@ public class Person implements Comparable<Person>, Serializable {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Home implements Serializable {
-        private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 5624494519989168136L;
         private String address;
         private String tel;
     }
@@ -64,10 +64,10 @@ public class Person implements Comparable<Person>, Serializable {
         this.gender = gender;
         this.otherInfo = otherInfo;
     }
-    
+
     @Bean("person")
     public Person getInstance(Integer id, String name) {
-        return new Person(id,name);
+        return new Person(id, name);
     }
 
     @Override
@@ -119,12 +119,20 @@ public class Person implements Comparable<Person>, Serializable {
     public static class Student extends Person implements Serializable {
         /**
          * 当一个类实现了可序列化接口，就要定义一个常量：版本号 (serialVersionUID)
+         * <p>
+         * 生成方式：
+         * 1.1L
+         * 2.根据类名、接口名、成员方法及属性等来生成
+         * <p>
          * 版本号决定着对象反序列化是否成功：
-         * 1：反序列化的对象的版本号若与当前类版本号一致，反序列化成功。若反序列化对象的结构与当前类接口有变化，那么可以还原的属性就还原，没有的属性就忽略
-         * 2：版本号若不一致，则反序列化直接失败
+         * 1.反序列化的对象的版本号若与当前类版本号一致，反序列化成功。若反序列化对象的结构与当前类接口有变化，那么可以还原的属性就还原，没有的属性就忽略
+         * 2.版本号若不一致，则反序列化直接失败
+         * <p>
          * 如果完全不兼容升级，避免反序列化混乱，那么请修改 serialVersionUID 值（阿里编程规约）
+         * <p>
+         * serialVersionUID的作用：https://www.zhihu.com/question/24852886/answer/117314768
          */
-        private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 527285523879940432L;
         private String no;
         // 不返回该属性
         @JsonIgnore
@@ -136,7 +144,7 @@ public class Person implements Comparable<Person>, Serializable {
         // 当不为 null 时才返回该属性
         @JsonInclude(JsonInclude.Include.NON_NULL)
         private Float score;
-        
+
         public Student(Integer id, String name) {
             super(id, name);
         }

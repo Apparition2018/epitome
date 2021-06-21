@@ -12,17 +12,14 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import springboot.result.Result;
 
 import javax.validation.*;
 import javax.validation.constraints.*;
 import java.lang.annotation.*;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 /**
  * springboot 使用 hibernate validator 校验：https://www.cnblogs.com/mr-yang-localhost/p/7812038.html
@@ -34,8 +31,8 @@ import java.util.Map;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-@RestController
 @Slf4j
+@RestController
 @RequestMapping("/validator")
 public class ValidatorController {
 
@@ -76,20 +73,25 @@ public class ValidatorController {
      * <p>
      * localhost:3333/validator/valid2
      */
-    @RequestMapping("/valid2")
-    public Map<String, Object> valid2(@Valid User user) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("code", 200);
-        map.put("msg", "ok");
-        return map;
+    @GetMapping(value = "/valid2")
+    public Result<User> valid2(@Valid User user) {
+        return Result.success(user);
     }
 
-    @RequestMapping("/valid3")
-    public Map<String, Object> valid3(@RequestParam("id") Integer id) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("code", 200);
-        map.put("msg", "ok");
-        return map;
+    /**
+     * localhost:3333/validator/valid3
+     */
+    @PostMapping("/valid3")
+    public Result<User> valid3(@Valid @RequestBody User user) {
+        return Result.success(user);
+    }
+
+    /**
+     * localhost:3333/validator/test
+     */
+    @RequestMapping("/test")
+    public Result<Object> test() {
+        return Result.success();
     }
 
     @Getter

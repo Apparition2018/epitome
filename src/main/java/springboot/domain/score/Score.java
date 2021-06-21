@@ -3,15 +3,12 @@ package springboot.domain.score;
 import java.io.Serializable;
 
 public class Score implements Serializable {
+
+    private static final long serialVersionUID = -2370593631437965516L;
     private Integer id;
-
     private String name;
-
     private String course;
-
     private Integer score;
-
-    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;

@@ -23,7 +23,7 @@
          * created on ${DATE} ${TIME}
          */
 ---
-## 去除尾行空格
+## 去除尾行空格s
     1. Settings → Editor → General
     2. Virtual Space
         2.1 Allow caret placement: After the end of line 取消勾选
@@ -34,6 +34,7 @@
 ## serialVersionUID
     1. Settings → Editor → Inspections
     2. 搜索并勾选 Serializable class without 'serialVersionUID'
+    3. 搜索并勾选 'serialVersionUID' field not declared 'private static final long'
 ---
 ## 加快编译速度
 >### 调整 JVM 参数

@@ -12,5 +12,5 @@ public interface IResultCode extends Serializable {
 
     String getMsg();
 
-    String getCode();
+    int getCode();
 }

@@ -147,7 +147,7 @@ public class LombokDemo {
     }
 
     /**
-     * Data
+     * `@Data
      * 相当于 Getter, 非 final Setter, ToString, EqualsAndHashCode, RequiredArgsConstructor
      */
     @Data

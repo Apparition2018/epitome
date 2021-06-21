@@ -1,12 +1,12 @@
 package knowledge.throwable;
 
 /**
- * CustomException
  * 自定义异常
  * 1.所有异常都必须是 Throwable 的子类
  * 2.写一个检查性异常类，需要继承 Exception 类
  * 3.写一个运行时异常类，需要继承 RuntimeException 类
- * https://zhuanlan.zhihu.com/p/66228306
+ * <p>
+ * 自定义异常详解：https://zhuanlan.zhihu.com/p/66228306
  *
  * @author ljh
  * created on 2020/9/4 14:10
@@ -34,6 +34,7 @@ public class CustomExceptionDemo {
      */
     private static class CustomException extends RuntimeException {
 
+        private static final long serialVersionUID = 1612100152025079049L;
         private double amount;
 
         CustomException() {
@@ -60,7 +61,7 @@ public class CustomExceptionDemo {
         /**
          * 卡号
          */
-        private int number;
+        private final int number;
 
         CheckingAccount(int number) {
             this.number = number;

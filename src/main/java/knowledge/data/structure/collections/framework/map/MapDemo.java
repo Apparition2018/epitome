@@ -147,7 +147,7 @@ public class MapDemo extends Demo {
             MAX_CACHE_SIZE = cacheSize;
             int capacity = (int) Math.ceil(MAX_CACHE_SIZE / DEFAULT_LOAD_FACTORY) + 1;
             map = new LinkedHashMap<K, V>(capacity, DEFAULT_LOAD_FACTORY, true) {
-                private static final long serialVersionUID = 1L;
+                private static final long serialVersionUID = -2584653547800826492L;
 
                 @Override
                 protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
