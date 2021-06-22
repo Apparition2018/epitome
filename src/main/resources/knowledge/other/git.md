@@ -26,11 +26,11 @@
 
 ---
 ## Git Data Transport Commands
-![Git Data Transport Commands](https://i.stack.imgur.com/caci5.png)
+![Git Data Transport Commands](http://www.findme.wang/Uploads/Editor/2017-04-13/58ef783b96ebd.png)
 
 ---
 ## 命令
->### 设置与配置
+>### [设置与配置](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E8%AE%BE%E7%BD%AE%E4%B8%8E%E9%85%8D%E7%BD%AE)
 >```
 >help [COMMAND|GUIDE]                           帮助
 >config                                         获取和设置 repository 或全局选项
@@ -50,14 +50,14 @@
 >           .ci commit
 >           .st status
 >```
->## 获取与创建项目
+>## [获取与创建项目](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E8%8E%B7%E5%8F%96%E4%B8%8E%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE)
 >```
 >init                                           创建一个空的 Git repository 或重新初始化一个现有的 repository
 >clone <repository>                             克隆一个 repository 到一个新目录
 >   --depth <depth>                             创建一个浅克隆，其中历史记录被截断为指定提交次数
 >   -b | --branch <name>                        克隆分支
 >```
->## 基本快照
+>## [快照基础](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E5%BF%AB%E7%85%A7%E5%9F%BA%E7%A1%80)
 >```
 >add [<pathspec>…]                              将文件内容添加到 index
 >   .                                           将修改的文件，新建的文件，添加到 index
@@ -66,10 +66,10 @@
 >status [<pathspec>…]                           显示 working tree 状态
 >commit                                         将变更记录到 repository
 >    -m <msg>                                   备注
->    --amend                                    通过创建一个 new commit 来替换 the tip of the current branch
+>    --amend                                    通过创建一个新的 commit 来替换当前分支尖端（最近）的 commit
 >reset                                          将当前 HEAD 复位到指定状态
 >   --soft                                      复位 repository
->   --mixed                                     复位 repository 和 index
+>   --mixed                                     复位 repository 和 index，默认
 >   --hard                                      复位 repository 和 index 和 working tree
 >rm [<pathspec>…]                               从 working tree 和 index 中删除文件
 >    --cached                                   从 index 中删除文件
@@ -96,7 +96,7 @@
 >   <tagname>                                   基于最新提交创建 tag
 >   -d | --delete <tagname>…                    删除 tag
 >```
->## 项目分享与更新
+>## [项目分享与更新](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB%E4%B8%8E%E6%9B%B4%E6%96%B0)
 >```
 >fetch [<repository> [<refspec>…]]              从另一个 directory 下载 objects 和 refs
 >pull [<repository> [<refspec>…]]               从另一个 directory 或 local branch 获取并与之集成
@@ -110,7 +110,7 @@
 >   add <name> <url>                            给在 url 的 repository 添加一个名为 name 的 remote
 >   remove | rm <name>                          删除名为 name 的 remote
 >```
->## 检查和比较
+>## [检查和比较](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E6%A3%80%E6%9F%A5%E4%B8%8E%E6%AF%94%E8%BE%83)
 >```
 >show [<object>…]                               显示各种类型的 objects，包括 lobs, trees, tags and commits
 >log                                            显示提交日志
@@ -124,18 +124,18 @@
 >   HEDAD                                       显示 working tree 和 last commit 之间的更改
 >   --stat                                      显示更改统计
 >```
->## 补丁
+>## [调式](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E8%B0%83%E8%AF%95)
+>```
+>blame <file>                                   显示文件的每一行最后修改的版本和作者
+>```
+>## [补丁](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E8%A1%A5%E4%B8%81)
 >[活用 git apply 合入 patch 补丁](https://juejin.im/post/6844903560564441101)
 >```
 >apply [<patch>…]                               将补丁文件打入文件和/或 index
 >rebase [<newbase> [<branch>]]                  把分叉的提交历史"整理"成一条直线的提交
 >revert <commit>…                               撤销指定的提交
 >```
->## 调式
->```
->blame <file>                                   显示文件的每一行最后修改的版本和作者
->```
->## 管理
+>## [管理](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E7%AE%A1%E7%90%86)
 >```
 >gc                                             清除不必要的文件并优化本地存储库
 >   --prune=<date>                              删除日期之前的松散对象(默认是2周前)
@@ -145,7 +145,7 @@
 >   delete                                      从 reflog 中删除一个条目
 >   exists                                      检查一个 ref 是否有一个 reflog
 >```
->## 管道命令
+>## [底层命令](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E5%BA%95%E5%B1%82%E5%91%BD%E4%BB%A4)
 >```
 >rev-list [<<commit>…>]                         以反时间顺序列出提交对象
 >   --objects
