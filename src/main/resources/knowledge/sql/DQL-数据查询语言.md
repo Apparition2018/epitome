@@ -2,18 +2,21 @@
 
 ---
 ## 查询语句执行顺序
+- Oracle FROM 和 WHERE 执行顺序：右 → 左
+    - FROM 两个表时：小表放后面
+    - FROM 多个表示：交叉表（被其他表所引用的表）放后面
 ```
-1   FROM                右 → 左                 数据量较少的放后面
+1   FROM
 2   ON
 3   JOIN
-4   WHERE               右 → 左                 将过滤多的放后面
-5   GROUP BY            左 → 右
-6   AGGREGATE                                   MAX, MIN, SUM, AVG, COUNT
-7   HAVING                                      消耗资源
-8   SELECT                                      避免使用 * 号
+4   WHERE                       不能使用别名，因为还没执行 SELECT
+5   GROUP BY                    只保留了分组字段和聚合函数的结果，因此 SELECT、ORDER BY 只能使用这些字段 
+6   AGGREGATE
+7   HAVING                      能用 WHERE 过滤就不要用 HAVING
+8   SELECT
 9   DISTINCT
-10  UNION
-11  ORDER BY            左 → 右                 消耗资源
+10  UNION|INTERSECT|EXCEPT
+11  ORDER BY
 12  LIMIT|TOP|OFFSET|FETCH
 ```
 ---

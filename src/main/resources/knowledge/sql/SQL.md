@@ -126,38 +126,47 @@
 ---
 ## SQL 优化
 1. 避免全表扫描：对 无索引的表进行的查询 或 放弃索引进行的查询 称为全表扫描
-   1. 考虑在 where，order by，group by，多表关联涉及的列上建立索引
-   2. 避免使用 is null 和 is not null，建议建表时设置默认值
+   1. 在 where，order by，group by，多表关联涉及的列上建立索引
+   2. 避免使用 is null 和 is not null，建表时尽量所有字段设置 NOT NULL
    3. 避免使用 != 和 <>
-   4. 避免使用 or 来连接条件，可以使用 union 合并查询
-   5. 避免使用 in 和 not in，考虑是否能用 between，exists，not exists 代替
-   6. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"；可使用 locate('x', 'field') > 0 代替，或数据库提供的全文检索功能和专门的全文搜索引擎
-   7. 避免使用 参数，如 num=@num
-   8. 避免对索引进行表达式和函数操作，num/2=100 可以改为 num=100*2，包括数据类型不匹配，如字符串和整数进行比较
-   9. 使用 limit
-   10. 复合索引，必须使用该索引中的第一个字段作为条件
+   4. 避免使用 or 来连接条件，可以使用 union 或 union all 代替
+   5. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"；可使用 locate('x', 'field') > 0 代替，或数据库提供的全文检索功能和专门的全文搜索引擎
+   6. 避免使用 参数，如 where num=@num
+   7. 避免对字段进行表达式和函数操作，num/2=100 可以改为 num=100*2，包括数据类型不匹配，如字符串和整数进行比较
+   8. 谨慎使用 in 和 not in，考虑是否能用 between，exists，not exists 代替
+   9. 复合索引，必须使用该索引中的第一个字段作为条件
 2. 索引相关
    - [选择性高的列放在索引的前面](https://www.cnblogs.com/lty-fly/p/10693849.html)
-   - 索引不要包含太长的字段，可考虑前缀索引
-   - 索引过多不但会降低写效率，可能还会降低读的效率
-   - 定期维护索引碎片
+   - 索引不要包含太长的字段，可考虑前缀索引：ALTER TABLE <table_name> ADD INDEX idx_content(content(6))
+   - 索引不是越多越好
+      - 索引也占用空间，还需要定期维护索引
+      - DML 操作都需要重建索引，消耗资源
+      - 执行计划的制定要消耗更多的资源
    - MYSQL 不要使用强制索引关键字
 3. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
    1. 增加网络开销
    2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
    3. 失去了覆盖索引的可能性
-4. [使用 explain 查看执行计划](https://tonydong.blog.csdn.net/article/details/103579177)
-5. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
-6. [hint](https://www.cnblogs.com/jpfss/p/11490765.html)
+4. 小表驱动大表
+   - JOIN 小表连大表
+   - IN 小表内大表外
+   - EXISTS 小表外大表内
+5. 避免使用子查询
+6. [使用 explain 查看执行计划](https://tonydong.blog.csdn.net/article/details/103579177)
+7. 不要使用 OFFSET 实现分页
+8. 垂直分表：把不常读取的字段分割到另外一张表中
+9. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
 >#### 参考
->1. [SQL 性能优化梳理](https://zhuanlan.zhihu.com/p/85724757)
->2. [SQL性能优化的最佳21条经验](https://zhuanlan.zhihu.com/p/21956773)
->3. [SQL语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html)
->4. [SQL语句性能优化](https://www.cnblogs.com/zhangtan/p/7440960.html)
->5. [索引：SQL 性能优化](https://zhuanlan.zhihu.com/p/145119015)
->6. [SQL 优化极简法则](https://zhuanlan.zhihu.com/p/269434753)
->7. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
->8. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
+>1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
+>2. [SQL 语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html)
+>3. [SQL 语句性能优化](https://www.cnblogs.com/zhangtan/p/7440960.html)
+>4. [索引：SQL 性能优化](https://zhuanlan.zhihu.com/p/145119015)
+>5. [SQL 优化极简法则](https://blog.csdn.net/horses/article/details/105695431)
+>6. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
+>7. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
+>8. [MySql千万级limit优化方案](https://www.jianshu.com/p/f46b0f3d296b)
+>9. [mysql建立索引的几大原则](https://zhuanlan.zhihu.com/p/88963084)
+>10. [索引失效分析、in与exists使用场合](https://www.cnblogs.com/zjxiang/p/9160810.html)
 ---
 ## 各层命名规约（阿里编程规约）
 1. Service/DAO 层方法命名规约

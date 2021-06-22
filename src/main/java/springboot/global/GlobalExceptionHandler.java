@@ -75,14 +75,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({MissingServletRequestParameterException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(MissingServletRequestParameterException e) {
-        log.warn("缺少请求参数: {}", e.getMessage());
+        log.warn("缺少请求参数：{}", e.getMessage());
         return Result.failure(ResultCode.PARAM_MISS, String.format("缺少必要的请求参数: %s", e.getParameterName()));
     }
 
     @ExceptionHandler({MethodArgumentTypeMismatchException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(MethodArgumentTypeMismatchException e) {
-        log.warn("请求参数格式错误: {}", e.getMessage());
+        log.warn("请求参数格式错误：{}", e.getMessage());
         return Result.failure(ResultCode.PARAM_TYPE_ERROR, String.format("请求参数格式错误: %s", e.getName()));
     }
 
@@ -92,13 +92,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({BindException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(BindException e) {
-        log.warn("参数绑定失败: {}", e.getMessage());
+        log.warn("参数绑定失败：{}", e.getMessage());
         String message = e.getBindingResult().getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining("; "));
         return Result.failure(ResultCode.PARAM_BIND_ERROR, message);
     }
 
     public Result<Object> handleException2(BindException e) {
-        log.warn("参数绑定失败: {}", e.getMessage());
+        log.warn("参数绑定失败：{}", e.getMessage());
         return this.handleException(e.getBindingResult());
     }
 
@@ -108,13 +108,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(MethodArgumentNotValidException e) {
-        log.warn("参数验证失败: {}", e.getMessage());
+        log.warn("参数验证失败：{}", e.getMessage());
         String message = e.getBindingResult().getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining("; "));
         return Result.failure(ResultCode.PARAM_BIND_ERROR, message);
     }
 
     public Result<Object> handleException2(MethodArgumentNotValidException e) {
-        log.warn("参数验证失败: {}", e.getMessage());
+        log.warn("参数验证失败：{}", e.getMessage());
         return this.handleException(e.getBindingResult());
     }
 
@@ -136,13 +136,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({ConstraintViolationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(ConstraintViolationException e) {
-        log.warn("参数验证失败: {}", e.getMessage());
+        log.warn("参数验证失败：{}", e.getMessage());
         String message = e.getConstraintViolations().stream().map(ConstraintViolation::getMessage).collect(Collectors.joining("; "));
         return Result.failure(ResultCode.PARAM_VALID_ERROR, message);
     }
 
     public Result<Object> handleException2(ConstraintViolationException e) {
-        log.warn("参数验证失败: {}", e.getMessage());
+        log.warn("参数验证失败：{}", e.getMessage());
         Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
         ConstraintViolation<?> violation = violations.iterator().next();
         String path = ((PathImpl) violation.getPropertyPath()).getLeafNode().getName();
@@ -153,7 +153,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({NoHandlerFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Result<Object> handleError(NoHandlerFoundException e) {
-        log.error("404 找不到请求: {}", e.getMessage());
+        log.error("404 找不到请求：{}", e.getMessage());
         return Result.failure(ResultCode.NOT_FOUND, e.getMessage());
     }
 
@@ -164,21 +164,21 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({HttpMessageNotReadableException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleError(HttpMessageNotReadableException e) {
-        log.error("消息不能读取: {}", e.getMessage());
+        log.error("消息不能读取：{}", e.getMessage());
         return Result.failure(ResultCode.MSG_NOT_READABLE, e.getMessage());
     }
 
     @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public Result<Object> handleError(HttpRequestMethodNotSupportedException e) {
-        log.error("不支持当前请求方法: {}", e.getMessage());
+        log.error("不支持当前请求方法：{}", e.getMessage());
         return Result.failure(ResultCode.METHOD_NOT_SUPPORTED, e.getMessage());
     }
 
     @ExceptionHandler({HttpMediaTypeNotSupportedException.class})
     @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     public Result<Object> handleError(HttpMediaTypeNotSupportedException e) {
-        log.error("不支持当前媒体类型: {}", e.getMessage());
+        log.error("不支持当前媒体类型：{}", e.getMessage());
         return Result.failure(ResultCode.MEDIA_TYPE_NOT_SUPPORTED, e.getMessage());
     }
 
