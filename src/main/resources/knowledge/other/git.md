@@ -58,6 +58,7 @@
 >   -b | --branch <name>                        克隆分支
 >```
 >## [快照基础](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E5%BF%AB%E7%85%A7%E5%9F%BA%E7%A1%80)
+>- [git commit -amend：重写 commit 历史](https://blog.csdn.net/weixin_39558754/article/details/110643585)
 >```
 >add [<pathspec>…]                              将文件内容添加到 index
 >   .                                           将修改的文件，新建的文件，添加到 index
