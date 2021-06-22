@@ -158,15 +158,16 @@
 9. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
 >#### 参考
 >1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
->2. [SQL 语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html)
+>2. [SQL 语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html) 39~
 >3. [SQL 语句性能优化](https://www.cnblogs.com/zhangtan/p/7440960.html)
->4. [索引：SQL 性能优化](https://zhuanlan.zhihu.com/p/145119015)
->5. [SQL 优化极简法则](https://blog.csdn.net/horses/article/details/105695431)
->6. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
->7. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
->8. [MySql千万级limit优化方案](https://www.jianshu.com/p/f46b0f3d296b)
->9. [mysql建立索引的几大原则](https://zhuanlan.zhihu.com/p/88963084)
+>4. [mysql建立索引的几大原则](https://zhuanlan.zhihu.com/p/88963084)
+>5. [MySQL 之覆盖索引](https://zhuanlan.zhihu.com/p/145119015)
+>6. [联合索引的最左前缀匹配原则](https://blog.csdn.net/i_silence/article/details/106499430)
+>7. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
+>8. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
+>9. [MySql千万级limit优化方案](https://www.jianshu.com/p/f46b0f3d296b)
 >10. [索引失效分析、in与exists使用场合](https://www.cnblogs.com/zjxiang/p/9160810.html)
+>11. [复合索引的优点和注意事项](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
 ---
 ## 各层命名规约（阿里编程规约）
 1. Service/DAO 层方法命名规约
