@@ -3,23 +3,19 @@
 ---
 ## 参考网站
 1. [Git](https://git-scm.com/)
-2. [Git 教程 | 菜鸟教程](https://www.runoob.com/git/git-tutorial.html)
-3. [Git 教程 | 易百教程](https://www.yiibai.com/git)
-4. [Git 教程 - 廖雪峰](https://www.liaoxuefeng.com/wiki/896043488029600)
-5. [Git 一些比较常用的命令](https://blog.csdn.net/weixin_37292229/article/details/71080573)
+2. [Learn Git Branching](https://learngitbranching.js.org/?locale=zh_CN)
+3. [Git 教程 | 菜鸟教程](https://www.runoob.com/git/git-tutorial.html)
+4. [Git 教程 | 易百教程](https://www.yiibai.com/git)
+5. [Git 教程 - 廖雪峰](https://www.liaoxuefeng.com/wiki/896043488029600)
 6. [Git 术语及中英文对照](https://blog.csdn.net/xufive/article/details/84647423)
 7. [github/gitignore](https://github.com/github/gitignore)
 ---
 ## 问题
 1. [Git 忽略提交 .gitignore](https://www.cnblogs.com/youyoui/p/8337147.html)
-2. [Git 和 Github 绑定ssh key](https://blog.csdn.net/smiple9102/article/details/79254577)
-3. [git clone 报错：error: RPC failed; curl 18 transfer closed with outstanding read data remaining](https://www.jianshu.com/p/ddd1a39dcbc8)
-4. [解决 git ERROR: Permission to XXX.git denied to user](https://www.cnblogs.com/chevin/p/9236674.html)
-5. [解决github 打开、拉取、推送速度慢的问题](https://blog.csdn.net/natahew/article/details/81387885)
-6. [解决no supported authentication methods available](https://blog.csdn.net/qq706352062/article/details/103030082)
-7. [如何解决 GitHub 提交次数过多 .git 文件过大的问题？](https://www.zhihu.com/question/29769130)
-8. [解决Github网页上图片显示失败的问题](https://blog.csdn.net/qq_38232598/article/details/91346392)
-9. [git如何撤销push](https://blog.csdn.net/chenyiyue/article/details/79461624)
+2. [Git 和 Github 绑定 ssh key](https://blog.csdn.net/smiple9102/article/details/79254577)
+3. [解决 GitHub 打开、拉取、推送速度慢的问题](https://blog.csdn.net/natahew/article/details/81387885)
+4. [解决 GitHub 提交次数过多 .git 文件过大的问题？](https://www.zhihu.com/question/29769130)
+5. [解决 GitHub 网页上图片显示失败的问题](https://blog.csdn.net/qq_38232598/article/details/91346392)
 ---
 ## Git 常用命令速查表
 ![Git 常用命令速查表](https://img-blog.csdn.net/20171126101742109)
@@ -59,6 +55,7 @@
 >```
 >## [快照基础](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E5%BF%AB%E7%85%A7%E5%9F%BA%E7%A1%80)
 >- [git commit -amend：重写 commit 历史](https://blog.csdn.net/weixin_39558754/article/details/110643585)
+>- [git 撤销 push](https://blog.csdn.net/chenyiyue/article/details/79461624)
 >```
 >add [<pathspec>…]                              将文件内容添加到 index
 >   .                                           将修改的文件，新建的文件，添加到 index
@@ -77,8 +74,8 @@
 >mv                                             移动或重命名文件，目录或符号链接
 >```
 >## [分支与合并](https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%AE%80%E4%BB%8B)
->- [Git如何拉取指定远程分支](https://www.jianshu.com/p/856ce249ed78)
->- [Git分支管理策略](https://www.ruanyifeng.com/blog/2012/07/git.html)
+>- [Git 拉取指定远程分支](https://www.jianshu.com/p/856ce249ed78)
+>- [Git 分支管理策略](https://www.ruanyifeng.com/blog/2012/07/git.html)
 >- [Git Flow 的正确使用姿势](https://www.jianshu.com/p/41910dc6ef29)
 >```
 >branch                                         列出，创建或删除 branch

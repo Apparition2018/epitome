@@ -12,19 +12,20 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import springboot.result.Result;
 
 import javax.validation.*;
 import javax.validation.constraints.*;
 import java.lang.annotation.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 /**
  * springboot 使用 hibernate validator 校验：https://www.cnblogs.com/mr-yang-localhost/p/7812038.html
  * Spring Boot 参数校验：https://www.cnblogs.com/cjsblog/p/8946768.html
- * JSR303注解：https://www.cnblogs.com/rocky-AGE-24/p/5245022.html
  * Hibernate Validator：https://docs.jboss.org/hibernate/validator/4.2/reference/zh-CN/html_single
  * 参数验证 @Validated 和 @Valid 的区别：https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&mid=2247488213&idx=1&sn=24fe329101274d54c0039f0c98008ef3
  *
@@ -32,24 +33,20 @@ import java.util.Locale;
  * created on 2019/8/8 19:39
  */
 @Slf4j
+@Validated
 @RestController
-@RequestMapping("/validator")
-public class ValidatorController {
+@RequestMapping("/validation")
+public class ValidationController {
 
     private final MessageSource messageSource;
 
     @Autowired
-    public ValidatorController(MessageSource messageSource) {
+    public ValidationController(MessageSource messageSource) {
         this.messageSource = messageSource;
     }
 
-    /**
-     * 单独处理参数异常
-     * <p>
-     * localhost:3333/validator/valid
-     */
-    @RequestMapping("/valid")
-    public String valid(@Valid User user, BindingResult result) {
+    @GetMapping("/bindingResult")
+    public String bindingResult(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             StringBuilder msg = new StringBuilder();
             // 获取错误字段集合
@@ -65,33 +62,34 @@ public class ValidatorController {
             }
             return msg.substring(0, msg.lastIndexOf(","));
         }
-        return "验证通过，" + "\t名称：" + user.getName() + "\t年龄：" + user.getAge() + "\t邮箱地址：" + user.getMail();
+        return "验证通过，" + " 名称：" + user.getName() + " 年龄：" + user.getAge() + " 邮箱地址：" + user.getEmail();
     }
 
-    /**
-     * 全局处理参数异常
-     * <p>
-     * localhost:3333/validator/valid2
-     */
-    @GetMapping(value = "/valid2")
-    public Result<User> valid2(@Valid User user) {
+    @GetMapping(value = "/bindException")
+    public Result<User> bindException(@Valid User user) {
         return Result.success(user);
     }
 
-    /**
-     * localhost:3333/validator/valid3
-     */
-    @PostMapping("/valid3")
-    public Result<User> valid3(@Valid @RequestBody User user) {
+    @PostMapping("/methodArgumentNotValidException")
+    public Result<User> methodArgumentNotValidException(@Valid @RequestBody User user) {
         return Result.success(user);
     }
 
-    /**
-     * localhost:3333/validator/test
-     */
-    @RequestMapping("/test")
-    public Result<Object> test() {
-        return Result.success();
+    @GetMapping("/constraintViolationException")
+    public Result<String> constraintViolationException(@NotBlank(message = "用户名不能为空") String name,
+                                                       @NotEmpty(message = "密码不能为空") String pwd) {
+        return Result.success(name + ":" + pwd);
+    }
+
+    @GetMapping("/missingServletRequestParameterException")
+    public Result<String> missingServletRequestParameterException(@RequestParam String name,
+                                                                  @RequestParam String pwd) {
+        return Result.success(name + ":" + pwd);
+    }
+
+    @GetMapping("/methodArgumentTypeMismatchException")
+    public Result<Date> methodArgumentTypeMismatchException(Date date) {
+        return Result.success(date);
     }
 
     @Getter
@@ -112,10 +110,12 @@ public class ValidatorController {
         private String pwd;
 
         @Email(message = "邮箱格式错误")
-        private String mail;
+        private String email;
 
         @NotNull(message = "公司不能为空或无效")
         private CompanyEnum company;
+
+        private Date date;
 
         /**
          * 自定义验证，值为1或2或3，其他均不可通过验证
