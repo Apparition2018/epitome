@@ -33,7 +33,7 @@
 ---
 ## serialVersionUID
     1. Settings → Editor → Inspections
-    2. 搜索并勾选 Serializable class without 'serialVersionUID'
+    2. 搜索并勾选 Serializable class without 'serialVersionUID'，Severity：Weaking Warning
     3. 搜索并勾选 'serialVersionUID' field not declared 'private static final long'
 ---
 ## 加快编译速度

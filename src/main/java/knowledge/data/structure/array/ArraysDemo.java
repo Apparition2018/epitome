@@ -33,6 +33,7 @@ public class ArraysDemo extends Demo {
 
         // static XXX[]	    copyOf(XXX[] original, int newLength[, Class<? extends T[]> newType])
         // 复制指定的数组，截取或用 0/false/null 填充（如有必要），以使副本具有指定的长度
+        // 底层调用了 System.arraycopy()
         p(Arrays.copyOf(arr, 5));           // [1, 2, 3, 4, 5]
 
         // static XXX[]	    copyOfRange(XXX[] original, int from, int to[, Class<? extends T[]> newType])

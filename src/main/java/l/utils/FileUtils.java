@@ -10,7 +10,7 @@ import java.io.IOException;
  * created on 2020/9/7 1:28
  */
 @Slf4j
-public class FileUtils {
+public abstract class FileUtils {
 
     // 创建文件
     public static boolean createNewFile(File file) throws IOException {

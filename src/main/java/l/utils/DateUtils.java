@@ -7,7 +7,7 @@ import java.util.Date;
  * @author ljh
  * created on 2020/9/7 1:28
  */
-public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
+public abstract class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     // 获取某年第一天的日期
     public static Date getFirstDayOfYear(int year) {

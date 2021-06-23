@@ -32,9 +32,9 @@ import java.util.Map;
  * @author ljh
  * created on 2020/11/12 21:35
  */
-public class HttpClientUtils {
+public abstract class HttpClientUtils {
 
-    private static RequestConfig requestConfig = RequestConfig.custom()
+    private static final RequestConfig REQUEST_CONFIG = RequestConfig.custom()
             .setConnectTimeout(5000)    // 连接超时：指连接一个 url 的连接等待时间
             .setSocketTimeout(5000)     // 读取数据超时：指连接上一个 url ，获取 response 的返回等待时间
             .setConnectionRequestTimeout(5000)
@@ -50,7 +50,7 @@ public class HttpClientUtils {
         try (CloseableHttpClient client = HttpClients.createDefault()) {
             // 2.创建 HttpPost 请求
             HttpPost httpPost = new HttpPost(url);
-            httpPost.setConfig(requestConfig);
+            httpPost.setConfig(REQUEST_CONFIG);
             if (null != params) {
                 List<NameValuePair> nameValuePairList = new ArrayList<>();
                 for (String key : params.keySet()) {
@@ -84,7 +84,7 @@ public class HttpClientUtils {
         try (CloseableHttpClient client = HttpClients.createDefault()) {
             StringEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
             HttpPost httpPost = new HttpPost(url);
-            httpPost.setConfig(requestConfig);
+            httpPost.setConfig(REQUEST_CONFIG);
             httpPost.setEntity(entity);
             try (CloseableHttpResponse response = client.execute(httpPost)) {
                 if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -111,7 +111,7 @@ public class HttpClientUtils {
                 }
             }
             HttpGet httpGet = new HttpGet(builder.build());
-            httpGet.setConfig(requestConfig);
+            httpGet.setConfig(REQUEST_CONFIG);
 
             // 3.执行请求，获取响应
             try (CloseableHttpResponse response = client.execute(httpGet)) {

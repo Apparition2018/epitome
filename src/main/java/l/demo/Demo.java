@@ -1,5 +1,7 @@
 package l.demo;
 
+import org.springframework.lang.NonNull;
+
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
@@ -156,7 +158,7 @@ public class Demo {
     public static void sleep(long millis, TimeUnit timeUnit) {
         long now = System.currentTimeMillis();
         while (System.currentTimeMillis() - now < timeUnit.toMillis(millis)) {
-            // Thread.onSpinWait(); 需要升级到 JDK8
+            // Thread.onSpinWait(); // 需要升级到 JDK9
         }
     }
 
@@ -244,7 +246,7 @@ public class Demo {
         private final AtomicInteger count = new AtomicInteger(1);
 
         @Override
-        public Thread newThread(Runnable r) {
+        public Thread newThread(@NonNull Runnable r) {
             Thread thread = new Thread(r);
             thread.setName(map2.get(count.getAndIncrement()));
             return thread;

@@ -89,7 +89,7 @@ public class Family {
         public boolean equals(Object obj) {
             if (null != obj && obj.getClass() == this.getClass()) {
                 Daughter d = (Daughter) obj;
-                return name.equalsIgnoreCase(d.getName().trim());
+                return name.equalsIgnoreCase(d.getName());
             }
             return false;
         }

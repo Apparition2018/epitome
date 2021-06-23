@@ -3,7 +3,7 @@ package spring.api.util;
 import org.springframework.util.ObjectUtils;
 
 /**
- * ObjectUtilsDemo
+ * ObjectUtils
  *
  * @author ljh
  * created on 2021/6/18 17:07

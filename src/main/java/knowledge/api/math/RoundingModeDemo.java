@@ -3,7 +3,7 @@ package knowledge.api.math;
 /**
  * RoundingMode
  * RoundingMode 是一个枚举类，为可能丢弃精度的数值操作指定一种舍入行为。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/math/RoundingMode.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/math/RoundingMode.html
  * <p>
  * 不同舍入模式下的舍入操作汇总：
  * 输入数字	UP	    DOWN    CEILING	    FLOOR	    HALF_UP	    HALF_DOWN	HALF_EVEN	        UNNECESSARY

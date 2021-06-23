@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
  * @author Arsenal
  * created on 2019/12/23 23:08
  */
-public class CaptchaUtils {
+public abstract class CaptchaUtils {
 
     private static Random random = new Random();
     private static int width = 80;     // 宽度

@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
  * -                        USC-2: 1个字符2字节       UTF-16: 变长                     GB18030: 兼容 GBK
  * -                        USC-4: 1个字符4字节       UTF-32: 1个字符4字节            iso-88591-1: 兼容ASCII
  * <p>
- * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/String.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/String.html
  * 字符编码笔记：ASCII，Unicode 和 UTF-8:http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html
  *
  * @author ljh
@@ -56,8 +56,26 @@ public class StringDemo extends Demo {
         p(String.format("%s来自%s", "我", "中国")); // 我来自中国
     }
 
+    /**
+     * String.intern()发生了啥：https://zhuanlan.zhihu.com/p/55468381
+     * intern()：https://zhuanlan.zhihu.com/p/357872204
+     */
     @Test
-    public void testValueOf() {
+    public void intern() {
+        String s1 = "aaa";
+        String s2 = new String("aaa");
+        String s3 = s1.intern();
+        String s4 = s2.intern();
+        p(s1 == s2); // false
+        p(s1 == s3); // true
+        p(s1 == s4); // true
+        p(s2 == s3); // false
+        p(s2 == s4); // false
+        p(s3 == s4); // true
+    }
+
+    @Test
+    public void valueOf() {
         // static String    copyValueOf(char[] data[, int offset, int count])
         // 返回指定数组中表示该字符序列的 String
         char[] cArr = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'};
@@ -71,7 +89,7 @@ public class StringDemo extends Demo {
     }
 
     @Test
-    public void testSplitAndJoin() {
+    public void splitAndJoin() {
         // String[]	        split(String regex, int limit)
         // 根据匹配给定的正则表达式来拆分此字符串
         p("www.baidu.com".split("\\.", 2)); // [www, baidu.com]
@@ -90,7 +108,7 @@ public class StringDemo extends Demo {
      * 测试比较相关 API
      */
     @Test
-    public void testCompare() {
+    public void compare() {
         // boolean	        contentEquals([CharSequence / StringBuffer cs])
         // 将此字符串与指定的 CharSequence / StringBuffer 比较内容是否相等
         p("abc".equals(new StringBuffer("abc")));               // false
@@ -115,7 +133,7 @@ public class StringDemo extends Demo {
     }
 
     @Test
-    public void testToCharArray() {
+    public void toCharArray() {
         char[] cArr = new char[HELLO_WORLD.length()];
         // void             getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
         // 将字符从此字符串复制到目标字符数组
@@ -128,7 +146,7 @@ public class StringDemo extends Demo {
     }
 
     @Test
-    public void testSubString() {
+    public void subString() {
         // CharSequence	    subSequence(int beginIndex, int endIndex)
         // 返回一个新的字符序列，它是此序列的一个子序列
         p("www.baidu.com".subSequence(4, 10));  // baidu

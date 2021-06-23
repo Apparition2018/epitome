@@ -5,10 +5,10 @@ import knowledge.suggestions.Family.Son;
 import l.demo.Demo;
 import l.demo.Person;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.time.StopWatch;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import javax.script.*;
@@ -18,7 +18,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
@@ -28,45 +27,33 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 import java.util.zip.DataFormatException;
 
-import static java.lang.Double.parseDouble;
-import static java.lang.Integer.parseInt;
-import static java.lang.Math.PI;
-import static java.text.NumberFormat.getInstance;
-
 /**
  * 编写高质量代码 改善java程序的151个建议
  * https://www.cnblogs.com/selene/category/876189.html
  * <p>
- * 建议5： 变长方法参数 null 值问题
+ * 建议3： 三元操作符的类型务必一致
  * 建议6： 变长方法重写必须也是变长方法
- * 建议9： 少用静态导入
- * 建议11：实现 Serializable 接口，要显式声明 UID
  * 建议12：避免序列化类在构造函数中为不变量赋值
  * 建议13：避免序列化类为final变量复杂赋值
  * 建议14：使用序列化类的私有方法巧妙解决部分属性持久化问题
  * 建议16：使用脚本语言编写常常需要修改的业务
- * 建议18：避免 instanceof 非预期结果
+ * 建议17：慎用动态编译
  * 建议19：断言
  * 建议22：用 BigDecimal 或整数类型处理货币
  * 建议25：银行的四舍六入五考虑
- * 建议28：IntegerCache 整型池
- * 建议30：不要随便设置随机种子
- * 建议33：静态方法没有重写，有隐藏
+ * 建议29：优先选择基本类型
+ * 建议30：不要设置随机种子
+ * 建议33：覆写静态方法不叫重写，叫隐藏
  * 建议36：使用构造代码块精简程序
  * 建议38：使用静态内部类提高封装性
  * 建议41：内部类实现多继承
- * 建议42：让工具类不可实例化
  * 建议43：避免对象的浅拷贝
  * 建议44：使用序列化对象的拷贝
  * 建议50：package-info
- * 建议54：正确使用 String, StringBuffer, StringBuilder
  * 建议57：在复杂字符串操作中使用正则表达式
- * 建议60：数组性能最快
- * 建议61：变长数组
- * 建议63：在明确的场景下，为集合指定初始容量
  * 建议65：泛型不支持基本类型
  * 建议67：可以随机存取，使用下标遍历
- * 建议69：集合相等只跟元素有关
+ * 建议69：列表相等只跟元素有关
  * 建议71：使用 subList() 处理局部列表
  * 建议72：subList() 生成字列表后，不要操作原列表
  * 建议73：Comparable 可用做类的默认排序算法，Comparator 可用做扩展排序工具
@@ -115,26 +102,12 @@ public class Suggestions extends Demo {
 
     /* 第一章：Java 开发中通用的方法和准则 */
 
-    // 建议1：不要在常量和变量中出现易混淆的字母
-    @Test
-    public void test001() {
-        long i = 1l; // 1l 会误认为 11，应写成 1L
-        p("i 的两倍是：" + (i * 2));
-    }
-
-    // 建议2：莫让常量"蜕变成"变量
-    @Test
-    public void test002() {
-        final int RAND_CONST = new Random().nextInt(); // 虽然变量定义成 final，但变量却在运行时确认，可读性差，也不符合标准
-        p(RAND_CONST);
-    }
-
     /* 建议3：三元操作符的类型务必一致
      * <p>
      * 三元操作符类型的转换规则:
      * 1.若两个操作数不可转换，则不作转换，返回值是Object类型；
      * 2.若两个操作数是明确类型的表达式(比如变量)，则按照正常的二进制数字转换，int转为long，long转为float等;
-     * 3.若两个操作数中有一个是数字S,另外一个是表达式，且其类型标志位T，那么，若数字S在T的范围内，则转换为T类型；若S超出了T的范围，则T转换为S;
+     * 3.若两个操作数中有一个是数字S，另外一个是表达式，且其类型标志位T，那么，若数字S在T的范围内，则转换为T类型；若S超出了T的范围，则T转换为S;
      * 4.若两个操作数都是直接量数字，则返回值类型范围较大者。
      */
     @Test
@@ -142,50 +115,7 @@ public class Suggestions extends Demo {
         int i = 80;
         String s1 = String.valueOf(i < 100 ? 90 : 100);
         String s2 = String.valueOf(i < 100 ? 90 : 100.0);
-        p("两者是否相等：" + s1.equals(s2)); // false
-    }
-
-    // 建议4：避免带有变长参数的方法重载
-    // 易读性差
-    @Test
-    public void test004() {
-        Suggestions sug = new Suggestions();
-        sug.calPrice(499, 75);
-    }
-
-    // 简单折扣计算
-    private void calPrice(int price, int discount) {
-        float knockdownPrice = price * discount / 100.0F;
-        p("简单折扣后的价格是：" + formatCurrency(knockdownPrice));
-    }
-
-    // 复杂多折扣计算
-    private void calPrice(int price, int... discounts) {
-        float knockdownPrice = price;
-        for (int discount : discounts) {
-            knockdownPrice = knockdownPrice * discount / 100;
-        }
-        p("复杂折扣后的价格是：" + formatCurrency(knockdownPrice));
-    }
-
-    private String formatCurrency(float price) {
-        return NumberFormat.getCurrencyInstance().format(price);
-    }
-
-    // 建议5：变长方法参数 null 值问题
-    @Test
-    public void test005() {
-        Suggestions sug = new Suggestions();
-        // sug.methodA("Arsenal"); // Ambiguous，编译器不知道要调用哪个方法
-
-        String s = null;
-        sug.method1("Arsenal", s);
-    }
-
-    private void method1(String str, Integer... is) {
-    }
-
-    private void method1(String str, String... strs) {
+        Assertions.assertEquals(s1, s2);
     }
 
     // 建议6：变长方法重写必须也是变长方法
@@ -208,56 +138,8 @@ public class Suggestions extends Demo {
         base.fun(100, 50);
 
         Sub1 sub = new Sub1();
-        // sub.fun(100, 50); // 编译错误，Sub1 并没有重写 fun()
+        // sub.fun(100, 50);
     }
-
-    // 建议7：自增陷阱
-    @Test
-    public void test007() {
-        int count = 0;
-        for (int i = 0; i < 10; i++) {
-//             count = count++;
-            count = ++count;
-        }
-        p("count = " + count);
-    }
-
-    // 建议8：旧语法
-    @Test
-    public void test008() {
-        saveDefault:
-        // Unused label 'saveDefault'
-        save(200);
-    }
-
-    void saveDefault() {
-        p("saveDefault...");
-    }
-
-    void save(int fee) {
-        p("save...");
-    }
-
-    /* 建议9：少用静态导入
-     * <p>
-     * 1.不使用*(星号)通配符，除非是导入静态常量类(只包含常量的类或接口)
-     * 2.方法名是具有明确、清晰表象意义的工具类
-     */
-    @Test
-    public void test009() {
-        // import static java.lang.Math.*;
-        // import static java.lang.Double.*;
-        // import static java.lang.Integer.*;
-        // import static java.text.NumberFormat.*;
-        double s = PI * parseDouble("3"); // 可读性差
-        NumberFormat nf = getInstance();
-        nf.setMaximumFractionDigits(parseInt("2"));
-        p("圆面积是：" + nf.format(s));
-    }
-
-    // 建议10：不要覆盖静态导入的变量和方法
-
-    // 建议11：实现 Serializable 接口，要显式声明 UID
 
     /* 建议12：避免序列化类在构造函数中为不变量赋值
      * 反序列化时构造函数不会执行
@@ -278,16 +160,12 @@ public class Suggestions extends Demo {
      * 同样，在从流数据恢复成实例对象时，也会检查是否有一个私有的readObject方法，如果有，则会通过该方法读取属性值。
      */
 
-    // 建议15：switch 语句要记得添加 break
-
     /* 建议16：使用脚本语言编写常常需要修改的业务
      * <p>
      * 脚本语言的三大特征，如下所示：
      * 1.灵活：脚本语言一般都是动态类型，可以不用声明变量类型而直接使用，可以再运行期改变类型。
      * 2.便捷：脚本语言是一种解释性语言，不需要编译成二进制代码，也不需要像Java一样生成字节码。它的执行时依靠解释器解释的，因此在运行期间变更代码很容易，而且不用停止应用；
      * 3.简单：只能说部分脚本语言简单，比如Groovy，对于程序员来说，没有多大的门槛。
-     * <p>
-     * 修改Js代码，不需重新部署
      */
     @Test
     public void test016() throws FileNotFoundException, ScriptException, NoSuchMethodException {
@@ -303,7 +181,7 @@ public class Suggestions extends Demo {
         int second = 99;
 
         // 指定 Js 代码
-        engine.eval(new FileReader(JAVA_PATH + "other/suggestions/model.js"));
+        engine.eval(new FileReader(JAVA_PATH + "knowledge/suggestions/model.js"));
         // 是否可调用方法
         if (engine instanceof Invocable) {
             Invocable in = (Invocable) engine;
@@ -324,20 +202,14 @@ public class Suggestions extends Demo {
     // 建议18：避免 instanceof 非预期结果
     @Test
     public void test018() {
-        // Object对象是否是String的实例 false
-        p(new Object() instanceof String); // 只要 instanceof 关键字左右两个操作数有继承或实现关系，就可以编译通过
+        // 空对象是否是 String 的实例：false，instanceof 规则，弱操作数为 null，直接返回 false
+        p(null instanceof String);
 
-        // 拆箱类型是否是装箱类型的实例
-        // p('A' instanceof Character); // instanceof 只能用于对象的判断
+        // 转换后的空对象是否是 String 的实例：false，即使强转，也是 null
+        p((String) null instanceof String);
 
-        // 空对象是否是String的实例 false
-        p(null instanceof String); // instanceof 规则，弱操作数为 null，直接返回 false
-
-        // 转换后的空对象是否是String的实例 false
-        p((String) null instanceof String); // 即使强转，也是 null
-
-        // 在泛型类型中判断String对象是否是Date的实例 false
-        p(new GenericClass<String>().isDateInstance("")); // 编译成字节码时，T 是 Object 类型，所以等价于 Object instanceof Date，编译通过
+        // 在泛型类型中判断String对象是否是Date的实例：false，编译成字节码时，T 是 Object 类型，所以等价于 Object instanceof Date，编译通过
+        p(new GenericClass<String>().isDateInstance(""));
     }
 
     class GenericClass<T> {
@@ -363,7 +235,7 @@ public class Suggestions extends Demo {
      * 1.public 方法的参数检查
      * 2.断言语句不可以有任何边界效应，不要使用断言语句去修改变量和改变方法的返回值
      * <p>
-     * JAVA断言使用：http://www.blogjava.net/liulu/archive/2006/10/24/77005.html
+     * Java 断言使用：http://www.blogjava.net/liulu/archive/2006/10/24/77005.html
      * 浅谈契约式编程：http://www.nowamagic.net/internet/internet_ContractProgramming.php
      */
     @Test
@@ -376,20 +248,7 @@ public class Suggestions extends Demo {
         assert false : "到达这里就表示错误";
     }
 
-    // 建议20：final 变量初始值变更要从新编译 class 文件
-    @Test
-    public void test020() {
-    }
-
     /* 第二章：基本类型 */
-
-    // 建议21：% 用 =0 判断奇偶
-    @Test
-    public void test021() {
-        int i = -1;
-        p(i % 2 == 1 ? "奇数" : "偶数"); // 偶数
-        p(i % 2 == 0 ? "偶数" : "奇数"); // 奇数
-    }
 
     // 建议22：用 BigDecimal 或整数类型处理货币
     @Test
@@ -398,36 +257,12 @@ public class Suggestions extends Demo {
         p(d + "元"); // 0.40000000000000036元
 
         // 方法一：BigDecimal
-        BigDecimal bd = new BigDecimal(10).subtract(new BigDecimal(9.6));
+        BigDecimal bd = new BigDecimal(10).subtract(new BigDecimal(String.valueOf(9.6)));
         p(bd + "元"); // 0.4元
 
         // 方法二
         double d2 = (10 * 100 - 9.6 * 100) / 100;
         p(d2 + "元"); // 0.4元
-    }
-
-    // 建议23：注意隐式转换
-    @Test
-    public void test023() {
-        int i = 30 * 10000 * 1000;
-        long i2 = i * 60 * 8;
-        p(i2); // -2028888064
-        long i3 = i * 60L * 8;
-        p(i3); // 144000000000
-    }
-
-    // 建议24：数据溢出
-    @Test
-    public void test024() {
-        final int LIMIT = 2000; // 最多预订2000个
-        int cur = 1000;         // 目前预订数
-        int add = 2147483647;   // 新预订数
-        p(cur + add); // -2147482649，数据溢出了
-        if (add > 0 && add + cur <= LIMIT) {
-            p("你已经成功预订：" + add + "个产品");
-        } else {
-            p("超过限额，预订失败！");
-        }
     }
 
     /* 建议25：银行的四舍六入五考虑
@@ -445,66 +280,22 @@ public class Suggestions extends Demo {
         // 存款
         BigDecimal d = new BigDecimal(12345678);
         // 月利率
-        BigDecimal r = new BigDecimal(0.001875);
+        BigDecimal r = new BigDecimal(String.valueOf(0.001875));
         // 计算利息
         BigDecimal i = d.multiply(r).setScale(2, RoundingMode.HALF_EVEN); // 四舍六入五考虑
         p("月利息是：" + i); // 23148.15
     }
 
-    /* 建议26：注意包装类型的 null 值
-     * <p>
-     * 包装类型参与运算时，要做 null 值校验
-     */
-    @Test
-    public void test026() {
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(null);
-
-        int sum = 0;
-        for (Integer i : list) {
-            // sum += i; // NullPointerException
-            sum += null != i ? i : 0;
-        }
-        p(sum);
-    }
-
-    // 建议27：包装类型的大小比较
-    @Test
-    public void test027() {
-        Integer i = new Integer(100);
-        Integer j = new Integer(100);
-
-        p(i == j);  // false，判断地址是否相等
-        p(i < j);   // false
-        p(i > j);   // false
-    }
-
-    /* 建议28：IntegerCache 整型池
-     * <p>
-     * -128 ~ 127
-     */
-    @Test
-    public void test028() {
-        Integer i = 127;
-        Integer j = 127;
-        p(i == j); // true
-        i = 128;
-        j = 128;
-        p(i == j); // false
-    }
-
     /* 建议29：优先选择基本类型
-     * <p>
-     * 从安全性、性能、稳定性来说，基本类型都是首选方案
      */
     @Test
     public void test029() {
         Suggestions sg = new Suggestions();
         int i = 140;
-        sg.testMethod(i);               // 基本类型的方法被调用
-        sg.testMethod(new Integer(i));  // 基本类型的方法被调用
+        sg.testMethod(i);
+        // 自动装箱：基本类型可以先加宽，再转变成宽类型的包装类型，但不能直接转变成宽类型的包装类型
+        // int → Integer → int → long，所以调用了 testMethod(long a)
+        sg.testMethod(new Integer(i));
     }
 
     public void testMethod(long a) {
@@ -515,7 +306,7 @@ public class Suggestions extends Demo {
         p("包装类型的方法被调用");
     }
 
-    /* 建议30：不要随便设置随机种子
+    /* 建议30：不要设置随机种子
      * <p>
      * 随机数和种子之间的关系：
      * 1.种子不同，产生不同的随机数
@@ -523,7 +314,8 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test030() {
-        Random r = new Random(1000); // 种子默认是 System.nanoTime() 的返回值
+        // 种子默认是 System.nanoTime() 的返回值，这里设置为 1000，所以每次随机结果都相等
+        Random r = new Random(1000);
         IntStream.rangeClosed(1, 4).forEach(i -> p(r.nextInt()));
         // 每次输出都如下：
         // -1244746321
@@ -534,26 +326,7 @@ public class Suggestions extends Demo {
 
     /* 第三章：对象及方法 */
 
-    // 建议31：在接口中不要存在实现代码
-
-    // 建议32：静态变量应先声明后赋值
-    // JVM 会先查找类中所有的静态声明，然后分配空间，之后根据类中静态赋值的先后顺序来执行（类似 js 中的变量提升）
-    @Test
-    public void test032() {
-        p(Suggestions.X); // 1
-    }
-
-    static {
-        X = 100;
-    }
-
-    public static int X = 1;
-
-    // 建议33：静态方法没有重写，有隐藏
-
-    // 建议34：构造函数尽量简化
-
-    // 建议35：避免在构造函数中初始化其它类
+    // 建议33：覆写静态方法不叫重写，叫隐藏
 
     /* 建议36：使用构造代码块精简程序
      * <p>
@@ -562,8 +335,10 @@ public class Suggestions extends Demo {
      * 2.静态代码块：在类中使用static修饰，并用"{}"括起来的代码片段，用于静态变量初始化或对象创建前的环境初始化；
      * 3.同步代码块：使用synchronized关键字修饰，并使用"{}"括起来的代码片段，它表示同一时间只能有一个线程进入到该方法块中，是一种多线程保护机制；
      * 4.构造代码块：在类中没有任何前缀和后缀,并使用"{}"括起来的代码片段；
+     *     4.1 构造代码块会插入到每个构造函数的最前端
+     *     4.2 构造代码块不会插入到添加了 this() 的构造器中
      * <p>
-     * 构造代码块会插入到每个构造函数的最前端
+     * Java 中静态代码块、构造代码块、构造函数、普通代码块：https://www.cnblogs.com/ysocean/p/8194428.html
      */
     @Test
     public void test036() {
@@ -588,8 +363,6 @@ public class Suggestions extends Demo {
         new Demo("");
     }
 
-    // 建议37：构造代码块不会插入到添加了 this() 的构造器中
-
     /* 建议38：使用静态内部类提高封装性
      * <p>
      * 静态内部类优点：
@@ -609,25 +382,16 @@ public class Suggestions extends Demo {
     }
 
     // 建议39：使用匿名类的构造函数
-    // 匿名类构造函数即构造代码块 {}
     @Test
     public void test039() {
-        List list = new ArrayList() {
+        // 匿名类
+        List<String> list = new ArrayList<String>() {
+            // 匿名类的构造函数
             {
-            }
-
-            {
-            }
-
-            {
-            }
-
-            {
-            }
-
-            {
+                add("A");
             }
         };
+        p(list);
     }
 
     // 建议40：匿名类的构造函数
@@ -664,17 +428,11 @@ public class Suggestions extends Demo {
         p(new Daughter().kind());   // 8
     }
 
-    /* 建议42：让工具类不可实例化
-     * <p>
-     * 在构造器中抛出错误
-     * throw new Error("Don't instantiate "+getClass());
-     */
-
     /* 建议43：避免对象的浅拷贝
      * <p>
      * 浅克隆规则：
      * 1.基本类型：如果变量是基本类型，则拷贝其值；
-     * 2.对象：如果变量是一个实例对象，则拷贝其地址引用，也就是说此时拷贝出的对象与原有对象共享该实例变量，不受访问权限的控制，这在Java中是很疯狂的，因 为它突破了访问权限的定义：一个private修饰的变量，竟然可以被两个不同的实例对象访问，这让java的访问权限体系情何以堪；
+     * 2.对象：如果变量是一个实例对象，则拷贝其地址引用，也就是说此时拷贝出的对象与原有对象共享该实例变量，不受访问权限的控制；
      * 3.String：这个比较特殊，拷贝的也是一个地址，是个引用，但是在修改时，它会从字符串池(String pool)中重新生成新的字符串，原有的字符串对象保持不变，在此处我们可以认为String是一个基本类型；
      */
 
@@ -712,73 +470,13 @@ public class Suggestions extends Demo {
         p(Objects.requireNonNull(cloneS).strong());
     }
 
-    /* 建议45：重写 equals() 时不要做"多余"操作
-     * <p>
-     * 例如不要 trim()
+    /* 建议50：package-info
+     * 1.声明友好类和包内访问常量
+     * 2.为在包上提供注解提供便利
+     * 3.提供包的整体注释说明
      */
-    @Test
-    public void test045() {
-        Daughter d = new Daughter("Amy");
-        List<Daughter> list = new ArrayList<>();
-        list.add(d);
-        p(list.contains(d)); // false
-    }
-
-    // 建议46：equals() 要先加上非空判断
-
-    // 建议47：equals() 使用 getClass() 进行类型判断
-    // 不要使用 instanceof
-
-    // 建议48：重写 equals() 必须重写 hashCode()
-    // hashCode() 的主要作用是配合基于散列的集合一起正常运行，如 HashMap, HashSet, HashTable
-    @Test
-    public void test48() {
-
-        Map<Person, Object> map = new HashMap<Person, Object>() {
-            {
-                put(new Person("张三"), new Object());
-            }
-        };
-
-        p(map.containsKey(new Person("张三"))); // false
-
-    }
-
-    // 建议49：重写 toString()
-
-    // 建议50：package-info
-
-    // 建议51：不要主动进行垃圾回收
 
     /* 第四章：字符串 */
-
-    // 建议52：使用 == 给 String 赋值
-    @Test
-    public void test052() {
-        String s1 = "abc";
-        String s2 = "abc";
-        String s3 = new String("abc");
-        String s4 = s1.intern();
-
-        p(s1 == s2); // true
-        p(s1 == s3); // false
-        p(s1 == s4); // true
-    }
-
-    // 建议53：注意方法中传递的参数要求
-
-    /* 建议54：正确使用 String, StringBuffer, StringBuilder
-     * String: 在字符串不经常变化的场景中使用 String；例如：常量的声明，少量的变量运算
-     * StringBuffer: 在频繁进行字符串的运算，并运行在多线程的环境中；例如：XML 解析，HTTP 参数解析和封装
-     * StringBuilder: 在频繁进行字符串的运算，并运行在单线程的环境中；例如：SQL 语句的拼接，JSON 封装
-     */
-
-    // 建议55："+" 和 String
-    @Test
-    public void test055() {
-        p(1 + 2 + "3"); // 3
-        p("1" + 2 + 3); // 123
-    }
 
     // 建议56：字符串拼接的各种方法
     @Test
@@ -790,7 +488,7 @@ public class Suggestions extends Demo {
         for (int i = 0; i < 10000; i++) {
             str += "c";
         }
-        p("+：" + watch.getTime() + "ms");               // +：147ms
+        p("+：" + watch.getTime() + "ms");               // +：111ms
 
         // concat
         watch.reset();
@@ -799,7 +497,7 @@ public class Suggestions extends Demo {
         for (int i = 0; i < 10000; i++) {
             str = str.concat("c");
         }
-        p("concat：" + watch.getTime() + "ms");          // concat：25ms
+        p("concat：" + watch.getTime() + "ms");          // concat：23ms
 
         // StringBuilder
         watch.reset();
@@ -838,93 +536,20 @@ public class Suggestions extends Demo {
         p(str + "单词数：" + wordsCount);
     }
 
-    // 建议58：建议使用 UTF 编码
-
-    // 建议59：中文排序可以使用 Collator，或其它开源项目
-    // Collator.getInstance(Locale.CHINA)
-
     /* 第五章：数组和集合 */
-
-    // 建议60：数组性能最快
-
-    // 建议61：变长数组
-    @Test
-    public void test061() {
-        // 一间办公室最多容纳60个人
-        Person[] pArr = new Person[60];
-        for (int i = 0, len = pArr.length; i < len; i++) {
-            pArr[i] = new Person("办公人员" + i + 1);
-        }
-
-        // 办公室重建，可容纳80人
-        pArr = expandCapacity(pArr, 80);
-        p(pArr[59].getName()); // 办公人员59
-        p(pArr[60].getName()); // NullPointerException
-    }
-
-    private static <T> T[] expandCapacity(T[] datas, int newLen) {
-        newLen = Math.max(newLen, 0);
-        return Arrays.copyOf(datas, newLen);
-    }
-
-    // 建议62：警惕数组的浅拷贝
-    enum Color {
-        Red, Orange, Yellow, Green, Indigo, Blue, Violet
-    }
-
-    @Test
-    public void test062() {
-        @Data
-        @AllArgsConstructor
-        class Balloon {
-            private int id;
-
-            private Color color;
-
-        }
-
-
-        Balloon[] box1 = new Balloon[7];
-        IntStream.rangeClosed(1, box1.length).forEach(i -> box1[i] = new Balloon(i, Color.values()[i]));
-
-        Balloon[] box2 = Arrays.copyOf(box1, box1.length);
-        box2[6].setColor(Color.Blue);
-
-        for (Balloon balloon : box1) {
-            p(balloon);
-        }
-    }
-
-    /* 建议63：在明确的场景下，为集合指定初始容量
-     * <p>
-     * ArrayList 初始容量为 10，每次扩容 1.5
-     * 初始容量可显著提高系统性能
-     */
-
-    // 建议64：最值计算集合最简单，数组性能最优
-    // TreeSet 不重复且升序集合
 
     // 建议65：泛型不支持基本类型
     @Test
     public void test065() {
         int[] arr1 = {1, 2, 3, 4, 5};
         // static <T> List<T>	asList(T... a)
-        List<int[]> list1 = Arrays.asList(arr1);
-        p(list1); // [[I@18e8568]
+        List<int[]> list1 = Collections.singletonList(arr1);
+        p(list1); // [[I@75f32542]
         // 在Java中任何一个一维数组的类型都是 "[I"，究其原因就是 Java 并没有定义数组这一个类，它是在编译器编译的时候生成的，是一个特殊的类
 
         Integer[] arr2 = {1, 2, 3, 4, 5};
         List<Integer> list2 = Arrays.asList(arr2);
         p(list2); // [1, 2, 3, 4, 5]
-    }
-
-    // 建议66：Arrays.asList(T... a) 生成的 List 不是"完整"的 List
-    @Test
-    public void test066() {
-        Integer[] arr = {1, 2, 3, 4, 5};
-        List<Integer> list = Arrays.asList(arr);
-        list.add(6); // UnsupportedOperationException
-        p(list);
     }
 
     // 建议67：可以随机存取，使用下标遍历
@@ -944,11 +569,12 @@ public class Suggestions extends Demo {
     private int average(List<Integer> scores) {
         int sum = 0;
         if (scores instanceof RandomAccess) {
-            // 可以随机存取，使用下标遍历
+            // 随机存取，使用下标遍历
             for (int i = 0, len = scores.size(); i < len; i++) {
                 sum += scores.get(i);
             }
         } else {
+            // 有序存取，使用foreach遍历
             for (int i : scores) {
                 sum += i;
             }
@@ -956,18 +582,7 @@ public class Suggestions extends Demo {
         return sum / scores.size();
     }
 
-    // 建议68：频繁插入和删除时使用 LinkedList
-    @Test
-    public void test068() {
-        int stuNum = 100 * 10000;
-        // List<Integer> scores = new ArrayList<>(); // 非常久
-        List<Integer> scores = new LinkedList<>();
-        StopWatch watch = StopWatch.createStarted();
-        IntStream.rangeClosed(1, stuNum).forEach(i -> scores.add(0, new Random().nextInt(150)));
-        p("执行时间：" + watch.getTime() + "ms");    // 执行时间：204ms
-    }
-
-    // 建议69：集合相等只跟元素有关
+    // 建议69：列表相等只跟元素有关
     @Test
     public void test069() {
         ArrayList<String> strs1 = new ArrayList<>();
@@ -983,19 +598,6 @@ public class Suggestions extends Demo {
         p(strs1.equals(strs2)); // true
     }
 
-    // 建议70：subList() 生成的 子列表是原列表的一个视图
-    @Test
-    public void test070() {
-        List<String> c1 = new ArrayList<>();
-        c1.add("a");
-        c1.add("b");
-
-        List<String> c2 = c1.subList(0, c1.size());
-        c2.add("c");
-
-        p(c1.equals(c2)); // true
-    }
-
     // 建议71：使用 subList() 处理局部列表
     @Test
     public void test071() {
@@ -1006,6 +608,7 @@ public class Suggestions extends Demo {
         List<Integer> list = new LinkedList<>(initData);
         // 删除指定范围内的元素
         list.subList(20, 30).clear();
+        p(list.size()); // 90
     }
 
     // 建议72：subList() 生成字列表后，不要操作原列表
@@ -1021,8 +624,7 @@ public class Suggestions extends Demo {
 
         // 原列表增加一个元素
         list.add(4);
-
-        p("原列表长度：" + list.size());
+        p("原列表长度：" + list.size());    // 4
         p("子列表长度：" + subList.size()); // ConcurrentModificationException
 
     }
@@ -1054,74 +656,25 @@ public class Suggestions extends Demo {
         }
     }
 
-    // 建议74：在数据量巨大的情况下使用 Collections.binarySearch() 检索元素
-    // 一般情况下使用 List 的 indexOf() 即可
-
-    /* 建议75：重写 compareTo() 必须重写 equals()
-     * List 的 indexOf() 根据 equals() 查找
-     * Collections.binarySearch() 根据 compareTo() 查找
-     */
-
-    /* 建议76：集合运算
-     * 并集：addAll
-     * 交集：retainAll
-     * 差集：removeAll
-     * 无重复并集：removeAll + addAll
-     */
-
-    // 建议77：使用 Collections.shuffle() 打乱集合
-
-    /* 建议78：HashMap 中元素不宜太多
-     * HashMap: HashMap 把键值对封装成一个 Entry 对象放在数组中，当 size 为容量的75%时扩容2倍
-     * List:    当 size 即将超过容量时扩容1.5倍
-     */
-
-    // 建议79：集合中的 hashcode 不要重复
-
     // 建议80：多线程使用 Vector 或 Hashtable
     @Test
     public void test080() throws InterruptedException {
         // 火车票列表
-        List<String> tickets = new ArrayList<>(100000);
+        Vector<String> tickets = new Vector<>(100000);
         // 初始化票据池
         IntStream.rangeClosed(1, 100000).forEach(i -> tickets.add("火车票" + i));
         // 10个窗口售票
+        setCountDownLatch(10);
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
                 do {
                     p(Thread.currentThread().getId() + "----" + tickets.remove(0));
                 } while (tickets.size() != 0);
+                countDownLatch.countDown();
             }).start();
         }
-
-        TimeUnit.SECONDS.sleep(10);
+        countDownLatch.await();
     }
-
-    /**
-     * 建议81：SortedSet 只对元素加入集合时进行排序
-     * 元素修改后不重新排序
-     * 所以 SortedSet 适合不变量的集合数据排序
-     */
-    @Test
-    public void test081() {
-        SortedSet<Person> set = new TreeSet<>();
-        set.add(new Person("张三", 18));
-        set.add(new Person("李四", 22));
-        for (Person p : set) {
-            p("年龄：" + p.getAge());
-            // 年龄：175
-            // 年龄：180
-        }
-
-        set.first().setAge(11);
-        for (Person p : set) {
-            p("年龄：" + p.getAge());
-            // 年龄：185
-            // 年龄：180
-        }
-    }
-
-    // 建议82：集合总结
 
     /* 第六章：枚举和注解 */
 
@@ -1139,7 +692,6 @@ public class Suggestions extends Demo {
      * <p>
      * 缺点：不能继承
      * <p>
-     * <p>
      * 其它定义常量方式：
      * 1.接口常量
      * 2.类常量
@@ -1148,7 +700,7 @@ public class Suggestions extends Demo {
     enum Season {
         SPRING("春"), SUMMER("夏"), AUTUMN("秋"), WINTER("冬");
 
-        private String desc;
+        private final String desc;
 
         Season(String _desc) {
             desc = _desc;
@@ -1195,37 +747,6 @@ public class Suggestions extends Demo {
                 break;
             case WINTER:
                 p("this is" + Season.WINTER);
-                break;
-            default:
-                assert false : "Invalid Param";
-        }
-    }
-
-    // 建议84：枚举中添加变量、构造函数
-    @Test
-    public void test084() {
-        for (Season season : Season.values()) {
-            p(season.name() + ": " + season.getDesc());
-            // SPRING: 春
-            // SUMMER: 夏
-            // AUTUMN: 秋
-            // WINTER: 冬
-        }
-    }
-
-    // 建议85：switch 要空指针判断
-    @Test
-    public void test085() {
-        Integer n = null;
-        switch (n) { // NullPointerException
-            case 1:
-                p("One");
-                break;
-            case 2:
-                p("Two");
-                break;
-            case 3:
-                p("Three");
                 break;
             default:
                 assert false : "Invalid Param";

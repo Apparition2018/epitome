@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * List
  * List 继承 Collection
- * https://tool.oschina.net/apidocs/apidoc?api=jdk-zh
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/List.html   
  * <p>
  * List             Vector              ArrayList                       LinkedList
  * 线程同步             是                   否                               否
@@ -54,8 +54,6 @@ public class ListDemo extends Demo {
 
     @Test
     public void testList() {
-        p(list);        // [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
         // Object[]	    toArray()
         // 返回按适当顺序包含列表中的所有元素的数组（从第一个元素到最后一个元素）
         // 使用集合转数组的方法，必须使用集合的 toArray(T[] array)，传入的是类型完全一致、长度为 0 的空数组（阿里编程规约）
@@ -80,6 +78,26 @@ public class ListDemo extends Demo {
         // 用指定元素替换列表中指定位置的元素（可选操作）
         list.set(1, 0);
         p(list);        // [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    }
+
+    @Test
+    public void testSetOperations() {
+        p(subList);                     // [2, 3, 4, 5, 6]
+        p(subList2);                    // [4, 5, 6, 7, 8]
+
+        list = new ArrayList<>(subList);
+        list.addAll(subList2);
+        p(list);                        // [2, 3, 4, 5, 6, 4, 5, 6, 7, 8]
+
+        // 交集
+        list = new ArrayList<>(subList);
+        list.retainAll(subList2);
+        p(list);                        // [4, 5, 6]
+
+        // 差集
+        list = new ArrayList<>(subList);
+        list.removeAll(subList2);
+        p(list);                        // [2, 3]
     }
 
     /**
@@ -108,7 +126,7 @@ public class ListDemo extends Demo {
      * ArrayList
      * 作为一个动态数组，它有 capacity 和 size 两个概念。0 <= size <= capacity，可以访问的下标则是 0 <= index < size
      * 原理：引用着一个数组作为实际的存储容器。该数组的 length 就是 capacity
-     * capacity 总共可以装多少个元素
+     * capacity 总共可以装多少个元素，初始 10
      * size     已经装了多少个元素
      * <p>
      * 多线程环境下可以考虑用 Collections.synchronizedList(List l) 返回一个线程安全的 ArrayList 类，
