@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * 一个同步辅助类，它允许一组线程互相等待，直到到达某个公共屏障点 (common barrier point)。
  * 在涉及一组固定大小的线程的程序中，这些线程必须不时地互相等待，此时 CyclicBarrier 很有用。
  * 因为该 barrier 在释放等待线程后可以重用，所以称它为循环 的 barrie。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/CyclicBarrier.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/CyclicBarrier.html
  * <p>
  * CyclicBarrier(int parties[, Runnable barrierAction])
  * 创建一个新的 CyclicBarrier，它将在给定数量的参与者（线程）处于等待状态时启动，并在启动 barrier 时执行给定的屏障操作，该操作由最后一个进入 barrier 的线程执行

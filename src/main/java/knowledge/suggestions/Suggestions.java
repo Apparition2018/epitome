@@ -25,7 +25,6 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
-import java.util.zip.DataFormatException;
 
 /**
  * 编写高质量代码 改善java程序的151个建议
@@ -43,7 +42,6 @@ import java.util.zip.DataFormatException;
  * 建议25：银行的四舍六入五考虑
  * 建议29：优先选择基本类型
  * 建议30：不要设置随机种子
- * 建议33：覆写静态方法不叫重写，叫隐藏
  * 建议36：使用构造代码块精简程序
  * 建议38：使用静态内部类提高封装性
  * 建议41：内部类实现多继承
@@ -52,7 +50,7 @@ import java.util.zip.DataFormatException;
  * 建议50：package-info
  * 建议57：在复杂字符串操作中使用正则表达式
  * 建议65：泛型不支持基本类型
- * 建议67：可以随机存取，使用下标遍历
+ * 建议67：不同的列表选择不同的遍历算法
  * 建议69：列表相等只跟元素有关
  * 建议71：使用 subList() 处理局部列表
  * 建议72：subList() 生成字列表后，不要操作原列表
@@ -60,36 +58,31 @@ import java.util.zip.DataFormatException;
  * 建议80：多线程使用 Vector 或 Hashtable
  * 建议83：使用枚举定义常量
  * 建议88：枚举实现工厂模式
- * 建议90：自定义注解不建议使用 @Inherited
+ * 建议89：枚举项的数量限制在64个以内
  * 建议91：枚举和注解实现 ACL (Access Control List) 访问控制列表
- * 建议93：泛型擦除
- * 建议94：不能初始化泛型参数和泛型数组
- * 建议95：强制声明泛型的实际类型
+ * 建议94：不能初始化泛型参数和数组
  * 建议96：泛型通配符
- * 建议99：泛型多重界限
+ * 建议97：泛型不支持协变和逆变
+ * 建议98：建议使用顺序 List<T> > List<?> > List<Object>
+ * 建议99：严格限定泛型类型采用多重界限
  * 建议101：Class 类的特殊性
  * 建议103：反射访问属性和方法时设置 xxx.setAccessible(true)
+ * 建议105：动态加载不适合数组
  * 建议106：动态代理
  * 建议107：动态代理结合装饰器模式
  * 建议108：反射结合模板方法模式
  * 建议110：一次捕获多个异常
- * 建议114：不要在构造器中抛出异常
+ * 建议112：检测性异常尽可能转化为非检测性异常
  * 建议115：使用 Throwable 获得栈信息
  * 建议120：不要使用 stop() 终止线程
- * 建议121：线程优先级只是用 MIN, NORMAL, MAX 三个级别
  * 建议122：使用线程异常处理器提升系统可靠性
- * 建议123：volatile 不能保证数据同步
- * 建议124：Callable
- * 建议125：线程池
  * 建议127：Lock 和 synchronized
- * 建议128：死锁
- * 建议130：使用 CountDownLatch 协调子线程
- * 建议131：CyclicBarrier 让多线程齐步走
  * 建议132：提升 Java 性能的基本方法
- * 建议133：clone() 对象并不比 new 对象效率高
+ * 建议133：若非必要，不要 clone() 对象
  * 建议137：调优 JVM 参数
  * 建议139：大胆采用开源工具
  * 建议145：不要完全依靠单元测试来发现问题
+ * 建议146：让注释正确、清晰、简洁
  * 建议147：单一职责原则 (Single Responsibility Principle)
  * 建议148：增强类的可替换性
  * 建议149：依赖抽象而不是实现
@@ -102,7 +95,8 @@ public class Suggestions extends Demo {
 
     /* 第一章：Java 开发中通用的方法和准则 */
 
-    /* 建议3：三元操作符的类型务必一致
+    /**
+     * 建议3：三元操作符的类型务必一致
      * <p>
      * 三元操作符类型的转换规则:
      * 1.若两个操作数不可转换，则不作转换，返回值是Object类型；
@@ -118,7 +112,9 @@ public class Suggestions extends Demo {
         Assertions.assertEquals(s1, s2);
     }
 
-    // 建议6：变长方法重写必须也是变长方法
+    /**
+     * 建议6：变长方法重写必须也是变长方法
+     */
     @Test
     public void test006() {
         class Base1 {
@@ -143,10 +139,10 @@ public class Suggestions extends Demo {
 
     /* 建议12：避免序列化类在构造函数中为不变量赋值
      * 反序列化时构造函数不会执行
-     * 所以，在序列化类中不能使用构造函数为final变量赋值
      */
 
     /* 建议13：避免序列化类为final变量复杂赋值
+     * <p>
      * 反序列化时final变量在以下情况下不会被重新赋值:
      * 1.通过构造函数为final变量赋值
      * 2.通过方法返回值为final变量赋值
@@ -160,7 +156,8 @@ public class Suggestions extends Demo {
      * 同样，在从流数据恢复成实例对象时，也会检查是否有一个私有的readObject方法，如果有，则会通过该方法读取属性值。
      */
 
-    /* 建议16：使用脚本语言编写常常需要修改的业务
+    /**
+     * 建议16：使用脚本语言编写常常需要修改的业务
      * <p>
      * 脚本语言的三大特征，如下所示：
      * 1.灵活：脚本语言一般都是动态类型，可以不用声明变量类型而直接使用，可以再运行期改变类型。
@@ -192,14 +189,18 @@ public class Suggestions extends Demo {
     }
 
     /* 建议17：慎用动态编译
+     * <p>
      * 使用动态编译时，需要注意以下几点：
      * 1.在框架中谨慎使用：比如要在struts中使用动态编译，动态实现一个类，它若继承自ActionSupport就希望它成为一个Action。能做到，但是debug很困难；再比如在Spring中，写一个动态类，要让它注入到Spring容器中，这是需要花费老大功夫的。
      * 2.不要在要求性能高的项目中使用：如果你在web界面上提供了一个功能，允许上传一个java文件然后运行，那就等于说:"我的机器没有密码，大家都可以看看"，这是非常典型的注入漏洞，只要上传一个恶意Java程序就可以让你所有的安全工作毁于一旦。
      * 3.记录动态编译过程：建议记录源文件，目标文件，编译过程，执行过程等日志，不仅仅是为了诊断，还是为了安全和审计，对Java项目来说，空中编译和运行时很不让人放心的，留下这些依据可以很好地优化程序
+     * <p>
      * 动态编译有很好的替代方案：比如Groovy, Jruby等无缝的脚本语言
      */
 
-    // 建议18：避免 instanceof 非预期结果
+    /**
+     * 建议18：避免 instanceof 非预期结果
+     */
     @Test
     public void test018() {
         // 空对象是否是 String 的实例：false，instanceof 规则，弱操作数为 null，直接返回 false
@@ -219,7 +220,8 @@ public class Suggestions extends Demo {
         }
     }
 
-    /* 建议19：断言
+    /**
+     * 建议19：断言
      * assertion 检查通常在开发和测试时开启。为了提高性能，在软件发布后，assertion 检查通常是关闭的。
      * <p>
      * 用法：
@@ -250,7 +252,9 @@ public class Suggestions extends Demo {
 
     /* 第二章：基本类型 */
 
-    // 建议22：用 BigDecimal 或整数类型处理货币
+    /**
+     * 建议22：用 BigDecimal 或整数类型处理货币
+     */
     @Test
     public void test022() {
         double d = 10 - 9.6;
@@ -265,7 +269,8 @@ public class Suggestions extends Demo {
         p(d2 + "元"); // 0.4元
     }
 
-    /* 建议25：银行的四舍六入五考虑
+    /**
+     * 建议25：银行的四舍六入五考虑
      * <p>
      * 四舍五入：
      * 0.000, 0.001, 0.002, 0.003, 0.004 舍弃
@@ -286,7 +291,8 @@ public class Suggestions extends Demo {
         p("月利息是：" + i); // 23148.15
     }
 
-    /* 建议29：优先选择基本类型
+    /**
+     * 建议29：优先选择基本类型
      */
     @Test
     public void test029() {
@@ -306,7 +312,8 @@ public class Suggestions extends Demo {
         p("包装类型的方法被调用");
     }
 
-    /* 建议30：不要设置随机种子
+    /**
+     * 建议30：不要设置随机种子
      * <p>
      * 随机数和种子之间的关系：
      * 1.种子不同，产生不同的随机数
@@ -326,17 +333,16 @@ public class Suggestions extends Demo {
 
     /* 第三章：对象及方法 */
 
-    // 建议33：覆写静态方法不叫重写，叫隐藏
-
-    /* 建议36：使用构造代码块精简程序
+    /**
+     * 建议36：使用构造代码块精简程序
      * <p>
      * Java 中四种类型的代码块：
      * 1.普通代码块：就是在方法后面使用"{}"括起来的代码片段，它不能单独运行，必须通过方法名调用执行；
      * 2.静态代码块：在类中使用static修饰，并用"{}"括起来的代码片段，用于静态变量初始化或对象创建前的环境初始化；
      * 3.同步代码块：使用synchronized关键字修饰，并使用"{}"括起来的代码片段，它表示同一时间只能有一个线程进入到该方法块中，是一种多线程保护机制；
      * 4.构造代码块：在类中没有任何前缀和后缀,并使用"{}"括起来的代码片段；
-     *     4.1 构造代码块会插入到每个构造函数的最前端
-     *     4.2 构造代码块不会插入到添加了 this() 的构造器中
+     * 4.1 构造代码块会插入到每个构造函数的最前端
+     * 4.2 构造代码块不会插入到添加了 this() 的构造器中
      * <p>
      * Java 中静态代码块、构造代码块、构造函数、普通代码块：https://www.cnblogs.com/ysocean/p/8194428.html
      */
@@ -363,7 +369,8 @@ public class Suggestions extends Demo {
         new Demo("");
     }
 
-    /* 建议38：使用静态内部类提高封装性
+    /**
+     * 建议38：使用静态内部类提高封装性
      * <p>
      * 静态内部类优点：
      * 1.加强了类的封装
@@ -381,7 +388,9 @@ public class Suggestions extends Demo {
         person.setHome(new Person.Home("北京", "010"));
     }
 
-    // 建议39：使用匿名类的构造函数
+    /**
+     * 建议39：使用匿名类的构造函数
+     */
     @Test
     public void test039() {
         // 匿名类
@@ -394,7 +403,9 @@ public class Suggestions extends Demo {
         p(list);
     }
 
-    // 建议40：匿名类的构造函数
+    /**
+     * 建议40：匿名类的构造函数
+     */
     @Test
     public void test040() {
         Calculator c = new Calculator(1, 2) {
@@ -419,7 +430,9 @@ public class Suggestions extends Demo {
         p(a.getResult());
     }
 
-    // 建议41：内部类实现多继承
+    /**
+     * 建议41：内部类实现多继承
+     */
     @Test
     public void test041() {
         p(new Son().strong());      // 9
@@ -436,10 +449,10 @@ public class Suggestions extends Demo {
      * 3.String：这个比较特殊，拷贝的也是一个地址，是个引用，但是在修改时，它会从字符串池(String pool)中重新生成新的字符串，原有的字符串对象保持不变，在此处我们可以认为String是一个基本类型；
      */
 
-    /* 建议44：使用序列化对象的拷贝
-     * <p>
-     * 被拷贝的对象需实现 Serializable 接口
-     * 或使用 SerializationUtils.clone(T object)
+    /**
+     * 建议44：使用序列化对象的拷贝
+     * 1.被拷贝的对象需实现 Serializable 接口
+     * 2.SerializationUtils.clone(T object)
      */
     @Test
     public void test044() {
@@ -478,7 +491,9 @@ public class Suggestions extends Demo {
 
     /* 第四章：字符串 */
 
-    // 建议56：字符串拼接的各种方法
+    /**
+     * 建议56：字符串拼接的各种方法
+     */
     @Test
     public void test056() {
         StopWatch watch = StopWatch.createStarted();
@@ -509,7 +524,9 @@ public class Suggestions extends Demo {
         p("StringBuilder：" + watch.getTime() + "ms");   // StringBuilder：0ms
     }
 
-    // 建议57：在复杂字符串操作中使用正则表达式
+    /**
+     * 建议57：在复杂字符串操作中使用正则表达式
+     */
     @Test
     public void test057() {
         // 判断有多少个单词
@@ -538,7 +555,9 @@ public class Suggestions extends Demo {
 
     /* 第五章：数组和集合 */
 
-    // 建议65：泛型不支持基本类型
+    /**
+     * 建议65：泛型不支持基本类型
+     */
     @Test
     public void test065() {
         int[] arr1 = {1, 2, 3, 4, 5};
@@ -552,7 +571,11 @@ public class Suggestions extends Demo {
         p(list2); // [1, 2, 3, 4, 5]
     }
 
-    // 建议67：可以随机存取，使用下标遍历
+    /**
+     * 建议67：不同的列表选择不同的遍历算法
+     * 1. instanceof RandomAccess 的列表：使用下表遍历 x.get(i)
+     * 2. 其它：foreach 遍历
+     */
     @Test
     public void test067() {
         // 学生人数 100 万
@@ -582,7 +605,9 @@ public class Suggestions extends Demo {
         return sum / scores.size();
     }
 
-    // 建议69：列表相等只跟元素有关
+    /**
+     * 建议69：列表相等只跟元素有关
+     */
     @Test
     public void test069() {
         ArrayList<String> strs1 = new ArrayList<>();
@@ -598,7 +623,9 @@ public class Suggestions extends Demo {
         p(strs1.equals(strs2)); // true
     }
 
-    // 建议71：使用 subList() 处理局部列表
+    /**
+     * 建议71：使用 subList() 处理局部列表
+     */
     @Test
     public void test071() {
         /* 需求：一个列表有100个元素，现在要删除索引位置为20~30的元素 */
@@ -611,8 +638,10 @@ public class Suggestions extends Demo {
         p(list.size()); // 90
     }
 
-    // 建议72：subList() 生成字列表后，不要操作原列表
-    // 可通过 Collections.unmodifiableList() 设置列表为只读状态
+    /**
+     * 建议72：subList() 生成字列表后，不要操作原列表
+     * 可通过 Collections.unmodifiableList() 设置列表为只读状态
+     */
     @Test
     public void test072() {
         List<Integer> list = new ArrayList<>();
@@ -629,7 +658,9 @@ public class Suggestions extends Demo {
 
     }
 
-    // 建议73：Comparable 可用做类的默认排序算法，Comparator 可用做扩展排序工具
+    /**
+     * 建议73：Comparable 可用做类的默认排序算法，Comparator 可用做扩展排序工具
+     */
     @Test
     public void test073() {
         p("----- Comparable -----");
@@ -656,7 +687,9 @@ public class Suggestions extends Demo {
         }
     }
 
-    // 建议80：多线程使用 Vector 或 Hashtable
+    /**
+     * 建议80：多线程使用 Vector 或 Hashtable
+     */
     @Test
     public void test080() throws InterruptedException {
         // 火车票列表
@@ -753,43 +786,13 @@ public class Suggestions extends Demo {
         }
     }
 
-    // 建议86：enum 和 switch 配合使用时， 在 default 代码中添加 AssertionError
-    @Test
-    public void test086() {
-        Season s = Season.WINTER;
-        switch (s) {
-            case SPRING:
-                p("春");
-                break;
-            case SUMMER:
-                p("夏");
-                break;
-            case AUTUMN:
-                p("秋");
-                break;
-            default:
-                assert false : "Invalid Param"; // AssertionError: error
-        }
-    }
-
-    /**
-     * 建议87：枚举方法 valueOf() 使用前必须校验
-     * 枚举类添加自定义 contains()
-     */
-    @Test
-    public void test087() {
-        if (Season.contains("Spring")) {
-            Season.valueOf("Spring");
-        }
-    }
-
     /**
      * 建议88：枚举实现工厂模式
-     * 1.通过非静态方法实现工厂模式，详见 CarFactory1
-     * 2.通过抽象方法实现工厂模式，详见 CarFactory2
+     * 1.通过非静态方法实现工厂模式，{@link knowledge.suggestions.CarEnumFactory1}
+     * 2.通过抽象方法实现工厂模式，{@link knowledge.suggestions.CarEnumFactory2}
      * <p>
      * 枚举实现工厂模式的优点：
-     * 1.一般工厂模式可接受3种类型参数：类型参数，String，int
+     * 1.一般工厂模式可接受3种类型参数：类型参数、String、int
      * 这三种参数是宽泛的数据类型，很容易发生错误，且这类错误编译器不会警报
      * 2.性能好，使用简洁
      * 3.降低耦合，不需接受参数
@@ -805,15 +808,18 @@ public class Suggestions extends Demo {
     }
 
     /* 建议89：枚举项的数量限制在64个以内
-     * 1.枚举项少于等于64时，创建一个 RegularEnumSet 实例对象
-     * RegularEnumSet 把每个枚举项的 ordinal 映射到一个 long 的每个位置上 ...
-     * 2.枚举项大于64时，创建一个 JumboEnumSet 实例对象
-     * JumboEnumSet 把枚举项按照64个元素一组拆分成多组，每组都映射到一个 long
+     * 1.枚举项少于等于64时，创建一个 RegularEnumSet 实例对象，把每个枚举项的 ordinal 映射到一个 long 的每个位置上
+     * 2.枚举项大于64时，创建一个 JumboEnumSet 实例对象，把枚举项按照64个元素一组拆分成多组，每组都映射到一个 long
      */
 
-    // 建议90：自定义注解不建议使用 @Inherited
-
-    // 建议91：枚举和注解实现 ACL (Access Control List) 访问控制列表
+    /**
+     * 建议91：枚举和注解实现 ACL (Access Control List) 访问控制列表 ???
+     * <p>
+     * ACL 三元素：
+     * 1.资源，有哪些信息是要被控制起来的
+     * 2.权限级别，不同的访问者规划在不同的级别中
+     * 3。控制器(也叫鉴权人)，控制不同的级别访问不同的资源
+     */
     @Test
     public void test091() {
         // 初始化商业逻辑
@@ -828,44 +834,10 @@ public class Suggestions extends Demo {
         }
     }
 
-    /* 建议92：@Override 在1.5和1.6的区别
-     * 1.5: 严格遵守重写
-     * 1.6：实现接口的方法也可以加上 @override，可以避免粗心大意导致方法名称与接口不一致的情况发生
-     */
-
     /* 第七章：泛型和反射 */
 
     /**
-     * 建议93：泛型擦除
-     * Java 泛型在编译器有效，在运行期被删除
-     * <p>
-     * List<String>, List<Integer>, List<T> 擦除后类型为 List
-     * List<String>[] 擦除后类型为 List[]
-     * List<? extends E>, List<? super E> 擦除后类型为 List<E>
-     * List<T extends Serializable & Cloneable> 擦除后乐行为 List<Serializable>
-     */
-    @Test
-    public void test093() {
-
-        List<String> list = new ArrayList<>();
-        List<Integer> list2 = new ArrayList<>();
-        p(list.equals(list2)); // true
-
-        // instanceof 不允许存在泛型参数
-        // p(list instanceof List<String>); // Illegal generic type for instanceof
-
-        class Foo {
-            // 此方法编译失败，List<String> === erase ==> List，泛型擦除后和下面方法完全一样了
-            // public void listMethod(List<String> stringList) { }
-
-            // List<Integer> === erase ===> List
-            public void listMethod(List<Integer> intList) {
-            }
-        }
-    }
-
-    /**
-     * 建议94：不能初始化泛型参数和泛型数组
+     * 建议94：不能初始化泛型参数和数组
      * Java 不支持声明泛型数组，更确切的表达式：数组的类型不可以是类型变量，除非是采用通配符的方式 ?
      */
     @Test
@@ -903,33 +875,20 @@ public class Suggestions extends Demo {
 
     }
 
-    // 建议95：强制声明泛型的实际类型
-    @Test
-    public void test095() {
-
-        List list = Collections.emptyList();
-        // 参数为空，等同于 List<Object> list = ArrayUtils.asList();
-
-        List list2 = Arrays.asList(1, 2, 3.1);
-        // 等同于 List<Object> list = ArrayUtils.asList(1, 2, 3.1);
-        // 如果期望泛型参数是 Number，强制声明泛型类型
-        List<Number> list3 = Arrays.asList(1, 2, 3.1);
-    }
-
     /**
      * 建议96：泛型通配符
-     * 1.只参与"读"操作则限定上界 (extends)
-     * 2.只参与"写"操作则限定下届 (super)
-     * 3.既参与"读"操作，又参与"写"操作，则都不限定
+     * 1.只参与"读"操作则限定上界 <? extends E>
+     * 2.只参与"写"操作则限定下届 <? super E>
+     * 3.既参与"读"操作，又参与"写"操作，则都不限定 <E>
      */
     @Test
     public void test096() {
         List<Number> list = new ArrayList<>();
 
-        // super
+        // 限定下届 (super)
         write(list);
 
-        // extends
+        // 限定上界 (extends)
         read(list);
     }
 
@@ -944,7 +903,11 @@ public class Suggestions extends Demo {
         list.add(2.3);
     }
 
-    // 建议97：泛型不支持协变和逆变
+    /**
+     * 建议97：泛型不支持协变和逆变
+     * 协变：窄类型替换宽类型
+     * 逆变：宽类型覆盖窄类型
+     */
     @Test
     public void test097() {
         // List<Number> list = new ArrayList<Integer>(); // 编译错误，泛型不支持协变
@@ -960,14 +923,11 @@ public class Suggestions extends Demo {
 
 
     /**
-     * 建议98：使用顺序 List<T>, List<?>, List<Object>
+     * 建议98：建议使用顺序 List<T> > List<?> > List<Object>
      * <p>
      * List<T>: 表示 List 中的元素为 T 类型，具体类型在运行期决定
-     * List<?>: 表示的是任意类型
-     * List<Object>: 表示 List 中的元素为 Object 类型
-     * <p>
-     * List<?>: 读取的元素都是 Object 类型，需要主动转型
-     * List<Object>: 读取时要向下转型，写入时需要向上转型
+     * List<?>: 表示的是任意类型；读取的元素都是 Object 类型，需要主动转型，常用于泛型方法的返回值
+     * List<Object>: 表示 List 中的元素为 Object 类型；读取时要向下转型，写入时需要向上转型
      */
     @Test
     public void test098() {
@@ -994,8 +954,8 @@ public class Suggestions extends Demo {
     }
 
     /**
-     * 建议99：泛型多重界限
-     * 只有上界才有多重限定
+     * 建议99：严格限定泛型类型采用多重界限
+     * 只有上界才有多重界限
      */
     @Test
     public void test099() {
@@ -1030,7 +990,9 @@ public class Suggestions extends Demo {
     }
 
 
-    // 建议100：泛型数组的真实类型必须是泛型类型的子类型（包括自身）
+    /**
+     * 建议100：泛型数组的真实类型必须是泛型类型的子类型（包括自身）
+     */
     @Test
     public void test100() {
         List<Integer> list = Arrays.asList(1, 3, 5, 7, 9);
@@ -1041,16 +1003,14 @@ public class Suggestions extends Demo {
     // 自定义一个 List → 数组 方法
     public static <T> T[] toArray(List<T> list, Class<T> tClass) {
         T[] t = (T[]) Array.newInstance(tClass, list.size());
-        IntStream.rangeClosed(1, list.size()).forEach(i -> t[i] = list.get(i));
+        IntStream.range(0, list.size()).forEach(i -> t[i] = list.get(i));
         return t;
     }
 
     /**
      * 建议101：Class 类的特殊性
-     * <p>
      * 1.没有公共构造方法：Class 对象是在加载类时由 JVM 以及通过调用类加载器中的 defineClass() 自动构造的
-     * 2.可以描述基本类型：虽然8个基本类型在 JVM 中并不是一个对象，它们一般存在于栈内存中。
-     * 但是 class 类仍然可以描述它们，如：int.class
+     * 2.可以描述基本类型：虽然8个基本类型在 JVM 中并不是一个对象（一般存在于栈内存中）但是 class 类仍然可以描述它们，如：int.class
      * 3.其对象都是单例模式：一个 Class 实例对象只描述一个类，一个类只有一个 Class 实例对象
      */
     @Test
@@ -1068,16 +1028,10 @@ public class Suggestions extends Demo {
         Class<?> clazz3 = Class.forName("java.lang.String");
     }
 
-    /* 建议102：getDeclaredXXX() 和 getXXX()
-     * getDeclaredFields()  获取某个类的所有字段，不包括父类
-     * getFields()          获取某个类的 public 字段，包括父类
-     */
-
     /**
      * 建议103：反射访问属性和方法时设置 xxx.setAccessible(true)
-     * Accessible 属性并不是访问权限的意思，而是者是否更容易获得
-     * 更容易获得又指是否可以快速访问而不是进行访问控制检查
-     * 设置为 true 将大幅提升系统性能
+     * Accessible：并不是访问权限的意思，而是指是否更容易获得，是否进行安全检查
+     * 设置为 true 将大幅提升系统性能（20倍）
      */
     @Test
     public void test103() throws ClassNotFoundException {
@@ -1089,31 +1043,21 @@ public class Suggestions extends Demo {
         }
     }
 
-    /* 建议104：使用 Class.forName(className) 动态加载类文件
-     * <p>
-     * 一个对象生成必须经过两个步骤：
-     * 1.加载到内存中生成 Class 的实例对象
-     * 2.通过 new 生成实例对象
-     *
-     * Class.forName(className) 将类加载到内存中了
-     */
-
     /**
      * 建议105：动态加载不适合数组
-     * <p>
      * Class.forName(className) 要求必须是一个类，所以8个基本类型排除在外
      * 其次，必须具有可追溯的类路径，否则报 ClassNotFoundException
-     * 数组时一个非常特殊的类，虽然它是一个类，但没有定义类路径
+     * 数组是一个非常特殊的类，虽然它是一个类，但没有定义类路径
      * <p>
      * 元素类型	                编译后的类型
      * byte[]	                    [B
      * char[]	                    [C
-     * Double[]	                    [D
-     * Float[]	                    [F
-     * Int[]	                    [I
-     * Long[]	                    [J
-     * Short[]	                    [S
-     * Boolean[]	                [Z
+     * double[]	                    [D
+     * float[]	                    [F
+     * int[]	                    [I
+     * long[]	                    [J
+     * short[]	                    [S
+     * boolean[]	                [Z
      * 引用类型(如String[])	[L引用类型(如：[Ljava.lang.String;)
      */
     @Test
@@ -1121,21 +1065,22 @@ public class Suggestions extends Demo {
         // 加载一个数组
         Class.forName("[Ljava.lang.String");
         // 加载一个 Long 数组
-        Class.forName("[LJ");
+        Class.forName("[J");
 
         // 以上代码可以把一个数组类加载到内存中（如果内存中没有该类的话），
         // 但不能通过 newInstance() 生成一个实例对象，因为没有定义数组的长度，
-        // 在 Java 中数组时定长的，没有长度的数组是不存在的
+        // 在 Java 中数组是定长的，没有长度的数组是不存在的
 
         // 依据参数动态生成数组
         // 动态创建数组
         String[] strs = (String[]) Array.newInstance(String.class, 8);
         // 创建一个多维数组
         int[][] ints = (int[][]) Array.newInstance(int.class, 2, 3);
-
     }
 
-    // 建议106：动态代理
+    /**
+     * 建议106：动态代理
+     */
     @Test
     public void test106() {
         // 被代理对象
@@ -1150,7 +1095,9 @@ public class Suggestions extends Demo {
         proxy.goodbye();
     }
 
-    // 建议107：动态代理结合装饰器模式
+    /**
+     * 建议107：动态代理结合装饰器模式
+     */
     @Test
     public void test107() {
         SonGoKu sgk = new Monkey();
@@ -1163,20 +1110,20 @@ public class Suggestions extends Demo {
         sgk.ability();
     }
 
-    // 建议108：反射结合模板方法模式
+    /**
+     * 建议108：反射结合模板方法模式
+     */
     @Test
     public void test108() throws InvocationTargetException, IllegalAccessException {
         Initializer ier = new UserInitializer();
         ier.dataInitialing();
     }
 
-    /* 建议109：不需要太多关注反射效率
-     * 反射的效率相对于其它代码确实低很多，但很少有项目时因为反射问题引起系统效率故障
-     */
-
     /* 第八章：异常 */
 
-    // 建议110：一次捕获多个异常
+    /**
+     * 建议110：一次捕获多个异常
+     */
     @Test
     public void test110() {
         try {
@@ -1188,7 +1135,7 @@ public class Suggestions extends Demo {
         }
     }
 
-    class MyException extends Exception {
+    static class MyException extends Exception {
         private List<Throwable> causes = new ArrayList<>();
 
         MyException(List<? extends Throwable> causes) {
@@ -1225,58 +1172,20 @@ public class Suggestions extends Demo {
 
     private void validatePWD(String pwd) {
         if (!pwd.matches("[a-zA-Z]{6,12}")) {
-            throw new RuntimeException("账号只能包含字母、数字，且6到12位");
+            throw new RuntimeException("密码只能包含字母、数字，且6到12位");
         }
     }
 
 
-    /* 建议111：采用异常链传递异常
-     * try {
-     *     // doSomething
-     * } catch (Exception e) {
-     *     throw new RuntimeException(e);
-     * }
+    /* 建议112：检测性异常尽可能转化为非检测性异常
+     * 1.检测性异常使接口声明脆弱：可能出现实现类"逆影响"接口的情景
+     * 2.检测性异常使代码可读性降低
+     * 3.检测性异常增加了开发工作量
      */
 
-    /* 建议112：检查型异常尽可能转化为非检查型异常
-     * 1.检查型异常使接口声明脆弱：可能出现实现类"逆影响"接口的情景
-     * 2.检查型异常使代码可读性降低
-     * 3.检查型异常增加了开发工作量
+    /**
+     * 建议115：使用 Throwable 获得栈信息
      */
-
-    // 建议113：不要在 finally 块中处理返回值
-    @Test
-    public void test113() {
-        try {
-            p(testFinally(-1));
-            p(testFinally(100));
-        } catch (DataFormatException e) {
-            p("这里永远不会到达");
-        }
-
-    }
-
-    private int testFinally(int p) throws DataFormatException {
-        try {
-            if (p < 0) {
-                throw new DataFormatException("数据格式错误");
-            } else {
-                return p;
-            }
-        } catch (DataFormatException e) {
-            e.printStackTrace();
-            throw e;
-        } finally {
-            // 1.覆盖了 try 代码块中的 return
-            // 2.屏蔽了异常
-            return -1;
-        }
-
-    }
-
-    // 建议114：不要在构造器中抛出异常
-
-    // 建议115：使用 Throwable 获得栈信息
     @Test
     public void test115() {
         class Foo {
@@ -1307,36 +1216,7 @@ public class Suggestions extends Demo {
         new Invoker().methodB();
     }
 
-    // 建议116：让异常只为异常服务
-    @Test
-    public void test116() {
-        int[] arr = {1, 2, 3, 4};
-        p(length5(arr));
-    }
-
-    /* 这里异常被当做主逻辑使用
-     * 1.异常判断降低了系统的性能
-     * 2.降低了代码的可读性
-     * 3.隐藏了运行期可能产生的错误
-     */
-    private boolean length5(int[] arr) {
-        boolean result = false;
-        try {
-            arr[4] = 4;
-            result = true;
-        } catch (ArrayIndexOutOfBoundsException e) {
-        }
-        return result;
-    }
-
-    // 建议117：多使用异常，把性能问题放一边
-
     /* 第九章：多线程和并发 */
-
-    // 建议118：不要重写 start()
-
-    // 建议119：启动线程前 stop() 是不可靠的
-    // 执行了 stop() 的程序还是可以执行 start() 启动线程
 
     /**
      * 建议120：不要使用 stop() 终止线程
@@ -1375,14 +1255,11 @@ public class Suggestions extends Demo {
         }
     }
 
-    /* 建议121：线程优先级只是用 MIN, NORMAL, MAX 三个级别
-     * 1.线程并不是严格按照优先级来执行
-     * 2.优先级差别越大，运行机会差别越明显
-     */
-
     /**
      * 建议122：使用线程异常处理器提升系统可靠性
-     * 详见 TcpServer
+     *
+     * @see TcpServer
+     * <p>
      * 实际应用中需注意以下三个方面：
      * 1.共享资源锁定
      * 2.脏数据引起系统逻辑混乱
@@ -1396,14 +1273,9 @@ public class Suggestions extends Demo {
         TimeUnit.SECONDS.sleep(10);
     }
 
-    /* 建议123：volatile 不能保证数据同步
-     * volatile 适用于一个线程更改，多个线程读取的情况
-     * 多个线程更改的情况，请使用 AtomicInteger 或 AtomicLong 等
-     * https://mouselearnjava.iteye.com/blog/1920154
+    /**
+     * 建议124：异步运算考虑使用Callable接口
      */
-
-    // 建议124：Callable
-    // 实现 Callable 接口的任务线程能返回执行结果；而实现 Runnable 接口的任务线程不能返回结果
     @Test
     public void test124() throws InterruptedException, ExecutionException {
         // 税款计算器
@@ -1421,12 +1293,14 @@ public class Suggestions extends Demo {
             public Integer call() throws Exception {
                 // 模拟复杂计算
                 TimeUnit.MILLISECONDS.sleep(2000);
+                countDownLatch.countDown();
                 return seedMoney / 10;
             }
         }
 
         // 生成一个单线程的异步执行器
         ExecutorService pool = Executors.newSingleThreadExecutor();
+        setCountDownLatch(1);
         // 线程执行后的期望值
         Future<Integer> future = pool.submit(new TaxCalculator(100));
         while (!future.isDone()) {
@@ -1436,66 +1310,12 @@ public class Suggestions extends Demo {
             System.out.print("*");
         }
         p("\n计算完成，税金是：" + future.get() + " 元");
-        pool.shutdown();
-
-        TimeUnit.SECONDS.sleep(10);
-    }
-
-    /**
-     * 建议125：线程池
-     * 使用线程池减少的是线程的创建和销毁时间
-     */
-    @Test
-    public void test125() throws InterruptedException {
-//        starts();
-        executors();
-
-        TimeUnit.SECONDS.sleep(10);
-    }
-
-    // 多次启动一个线程是非法的。特别是当线程已经结束执行后，不能再重新启动。
-    // 只能重新创建一个线程，而每次创建一个线程都需要经过启动、运行、销毁时间，这势必增大系统的响应时间
-    private void starts() throws InterruptedException {
-
-        Thread t = new Thread(() -> p("线程正在运行"));
-        // 运行状态
-        t.start();
-        // 是否是运行状态，若不是则等待10毫秒
-        while (!t.getState().equals(Thread.State.TERMINATED)) {
-            TimeUnit.MICROSECONDS.sleep(10);
-        }
-        // 直接由结束转变为运行状态
-        t.start(); // IllegalThreadStateException；
-    }
-
-    private void executors() {
-        // 2个线程的线程池
-        ExecutorService pool = Executors.newFixedThreadPool(2);
-        // 多次执行线程体
-        for (int i = 0; i < 4; i++) {
-            pool.submit(() -> {
-                p(Thread.currentThread().getName());
-            });
-        }
-        // 关闭执行器
+        countDownLatch.await();
         pool.shutdown();
     }
-
-    /* 建议126：不同的线程池
-     * ThreadPoolExecutor
-     * Executors.newCachedThreadPool()      无界线程池，可以进行自动线程回收
-     * Executors.newFixedThreadPool(int)    固定大小线程池
-     * Executors.newSingleThreadExecutor()  单个后台线程
-     */
 
     /**
      * 建议127：Lock 和 synchronized
-     * 1.Lock 支持更细精度的锁控制：ReentrantReadWriteLock
-     * 2.Lock 是无阻塞锁，synchronized 是阻塞锁
-     * 当线程A持有锁时，线程B也期望获得锁，此时，如果程序中使用的显示锁，则B线程为等待状态(在通常的描述中，也认为此线程被阻塞了)，若使用的是内部锁则为阻塞状态。
-     * 3.Lock 可实现公平锁，synchronized 只能是非公平锁
-     * new ReentrantLock(true) 即创建一个公平锁
-     * 4.Lock 是代码级别的，synchronized 是 JVM 级别的
      */
     @Test
     public void test127() throws IllegalAccessException, InterruptedException, InstantiationException {
@@ -1547,48 +1367,6 @@ public class Suggestions extends Demo {
         pool.shutdown();
     }
 
-    /**
-     * 建议128：死锁
-     * 避免死锁的方法：
-     * 1.避免或减少资源共享
-     * 2.使用自旋锁 lock.tryLock
-     */
-    @Test
-    public void test128() {
-        final Lock lock = new ReentrantLock();
-        // 自旋锁
-        try {
-            // 立刻获得锁，或者2秒等待锁资源
-            if (lock.tryLock(2, TimeUnit.SECONDS)) {
-                p("doSomething ...");
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * 建议129：阻塞队列
-     * BlockingQueue 容量是固定的，不能自动扩容。
-     * 可以在声明的时候指定队列容量，若不指定，队列容量为 Integer.MAX_VALUE
-     */
-    @Test
-    public void test129() {
-        BlockingQueue<String> queue = new ArrayBlockingQueue<>(3);
-        queue.add("a");
-        queue.add("b");
-        queue.add("c");
-        p(queue.remainingCapacity()); // 0
-        queue.add("d"); // IllegalStateException: Queue full
-    }
-
-    // 建议130：使用 CountDownLatch 协调子线程
-
-    // 建议131：CyclicBarrier 让多线程齐步走
-
-
     /* 第十章：性能和效率 */
 
     /**
@@ -1614,7 +1392,10 @@ public class Suggestions extends Demo {
         }
     }
 
-    // 建议133：clone() 对象并不比 new 对象效率高
+    /**
+     * 建议133：若非必要，不要 clone() 对象
+     * JVM 对 new 做了大量的系能优化
+     */
     @Test
     public void test133() {
         @Getter
@@ -1649,13 +1430,6 @@ public class Suggestions extends Demo {
         p("new 生成对象耗时：" + (end - mid) + " ms");
     }
 
-    // 建议134：推荐使用"望闻问切"的方式诊断性能
-
-    // 建议135：必须定义性能衡量标准
-
-    // 建议136：枪打出头鸟
-    // 对性能问题按照重要优先级和响应时间进行排序，优先解决
-
     /* 建议137：调优 JVM 参数
      * 1.调整堆内存大小
      *      栈内存：空间小，速度快，用来存放对象的引用及程序中的基本类型
@@ -1681,13 +1455,6 @@ public class Suggestions extends Demo {
      * 生产环境的jvm会把Xms和Xmx配置为相等：https://blog.csdn.net/u010900754/article/details/86629240
      */
 
-    /* 建议138：没有慢的系统
-     * 1.没有慢的系统，只有不满足业务的系统
-     * 2.没有慢的系统，只有架构不良的系统
-     * 3.没有慢的系统，只有懒惰的技术人员
-     * 4.没有慢的系统，只有不愿意投入的系统
-     */
-
     /* 第十一章：开源世界 */
 
     /* 建议139：大胆采用开源工具
@@ -1698,21 +1465,7 @@ public class Suggestions extends Demo {
      * 5.高热度原则：一个开源项目的热度越高，更新就越频繁，使用人群就越广，Bug 的曝光率就越快，修复效率也越高，这对于我们项目的稳定性非常重要
      */
 
-    // 建议140：使用 Guava 扩展包
-
-    // 建议141：使用 Apache 扩展包
-
-    // 建议142：使用 Joda 日期时间扩展包
-
-    /* 建议143：多种 Collections 扩展
-     * 1.Koloboke 4.GS Collections 5.HPPC 2.FastUtil 3.Trove
-     */
-
     /* 第十二章：思想为源 */
-
-    /* 建议144：良好的代码风格
-     * 1.整洁    2.统一    3.流行    4.便捷
-     */
 
     /* 建议145：不要完全依靠单元测试来发现问题
      * 1.单元测试不可能测试所有的场景
@@ -1806,43 +1559,6 @@ public class Suggestions extends Demo {
      *      接口：负责定义 public 属性和方法，并且声明与其他对象的依赖关系
      *      抽象类：负责公共构造部分的实现
      *      实现类：准确地实现了业务逻辑，同时在适当的时候对父类进行了细化
-     */
-
-    /* 建议150：7条不良的编码习惯
-     * 1.自由格式的代码
-     * 2.不使用抽象的代码
-     * 3.彰显个性的代码
-     *      最小诧异原则 (Principle Of Least Surprise)：使用最常见，而不是最新颖的功能
-     * 4.死代码
-     * 5.冗余代码
-     * 6.拒绝变化的代码
-     * 7.自以为是的代码
-     *      序列化工具：kryo, protostuff
-     *      日期工具：Joda，date4j
-     *      批处理框架：Spring Batch
-     */
-
-    /* 建议151：以技术员自律而不是工人
-     * 1.熟悉工具
-     * 2.使用 IDE
-     * 3.坚持编码
-     * 4.编码前思考
-     * 5.坚持重构
-     * 6.多写文档
-     * 7.保持程序版本的简单性
-     * 8.做好备份
-     * 9.做单元测试
-     * 10.不要重复发明轮子
-     * 11.不要拷贝
-     * 12.让代码充满灵性
-     * 13.测试自动化 ???
-     * 14.做压力测试
-     * 15."剽窃"不可耻
-     * 16.坚持向敏捷学习
-     * 17.重里更重面
-     * 18.分享
-     * 19.刨根问底
-     * 20.横向扩展
      */
 
 }

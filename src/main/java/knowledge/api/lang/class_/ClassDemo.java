@@ -15,7 +15,6 @@ import static l.demo.Demo.p;
  * 枚举是一种类，注释是一种接口。
  * 每个数组属于被映射为 Class 对象的一个类，所有具有相同元素类型和维数的数组都共享该 Class 对象。
  * 基本的 Java 类型（boolean、byte、char、short、int、long、float 和 double）和关键字 void 也表示为 Class 对象。
- * Class 没有公共构造方法。Class 对象是在加载类时由 Java 虚拟机以及通过调用类加载器中的 defineClass 方法自动构造的。
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Class.html
  * <p>
  * Class<?>         getEnclosingClass()         返回底层类的立即封闭类
@@ -48,6 +47,8 @@ public class ClassDemo {
     /**
      * static Class<?>	forName(String name[, boolean initialize, ClassLoader loader])
      * 使用给定的类加载器，返回与带有给定字符串名的类或接口相关联的 Class 对象
+     * <p>
+     * forName 只是把一个类加载到内存中，之所以会初始化 static 代码，那是由类加载机制所决定的
      */
     @Test
     public void forName() throws ClassNotFoundException {

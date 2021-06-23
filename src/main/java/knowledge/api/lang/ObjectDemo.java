@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Object.html
  * <p>
  * protected  Object	clone()             创建并返回此对象的一个副本
- * https://www.zhihu.com/question/52490586
+ * 为什么实现了 Cloneable 接口，就能调用 clone()？：https://www.zhihu.com/question/52490586
  * <p>
  * protected  void	    finalize()          当垃圾回收器确定不存在对该对象的更多引用时，由对象的垃圾回收器调用此方法
- * 为什么在Java中不使用finalize()方法：https://blog.csdn.net/maoyeqiu/article/details/49562093
+ * 为什么不使用 finalize()：https://blog.csdn.net/maoyeqiu/article/details/49562093
  * <p>
  * int	                hashCode()          返回该对象的哈希码值
  * hashCode() 的主要作用是配合基于散列的集合一起正常运行，如 HashMap, HashSet, HashTable
  * 如果两个对象相等，他们的 hashCode 值一定相等；如果两个对象的 hashCode 值相等，他们不一定相等
- * Java中的HashCode：https://zhuanlan.zhihu.com/p/26814793
+ * Java 中的 HashCode：https://zhuanlan.zhihu.com/p/26814793
  * <p>
  * boolean	            equals(Object obj)  指示其他某个对象是否与此对象“相等”
  * 对于基本类型，比较的是基本类型的值；对于引用类型，比较的是对象的内存地址
@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
  * <p>
  * void	                wait([long timeout, int nanos])
  * 在其他线程调用此对象的 notify() 方法或 notifyAll() 方法，或者其他某个线程中断当前线程，或者已超过某个实际时间量前，导致当前线程等待
- * wait和notify的理解与使用：https://blog.csdn.net/jianiuqi/article/details/53448849
+ * wait 和 notify 的理解与使用：https://blog.csdn.net/jianiuqi/article/details/53448849
  *
  * @author ljh
  * created on 2019/8/8 19:39

@@ -16,11 +16,10 @@ import java.util.List;
  * 2.消费者: 如果你需要一个只能装入 E 类型元素的集合，使用泛型通配符<? super E>。它好比一个消费者，可以消费你提供的数据。
  * 3.既是生产者也是消费者: 既要存储又要读取，那就别使用泛型通配符。
  * <p>
- * 不能用基本类型实例化类型参数：
- * 其原因是类型擦除。例如：Pair<double> 擦除之后，Pair 类含有 Object 类型的域，而 Object 不能存储 double 值。
- * 这体现了 Java 语言中基本类型的独立状态。
+ * 为什么不能用基本类型实例化类型参数？
+ * 其原因是类型擦除。例如：Pair<double> 擦除之后，Pair 类含有 Object 类型的域，而 Object 不能存储 double 值，这体现了 Java 语言中基本类型的独立状态。
  * <p>
- * https://www.cnblogs.com/songhuiqiang/p/10631268.html
+ * 泛型类、泛型方法、类型通配符的使用：https://www.cnblogs.com/songhuiqiang/p/10631268.html
  *
  * @author ljh
  * created on 2019/9/9 00:51
@@ -54,6 +53,13 @@ public class Generic<T> extends Demo {
         p(dBox.get());
     }
 
+    /**
+     * 泛型方法
+     * 1.所有泛型方法声明都有一个类型参数声明部分（由尖括号分隔），该类型参数声明部分在方法返回类型之前（在下面例子中的<E>）。
+     * 2.每一个类型参数声明部分包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。
+     * 3.类型参数能被用来声明返回值类型，并且能作为泛型方法得到的实际参数类型的占位符。
+     * 4.泛型方法体的声明和其他方法一样。注意类型参数只能代表引用型类型，不能是原始类型。
+     */
     @Test
     public void genericsMethod() {
         Double[] dArr = {1.1, 2.2, 3.3, 4.4};
@@ -63,13 +69,6 @@ public class Generic<T> extends Demo {
         printArray(cArr);
     }
 
-    /**
-     * 泛型方法
-     * 1.所有泛型方法声明都有一个类型参数声明部分（由尖括号分隔），该类型参数声明部分在方法返回类型之前（在下面例子中的<E>）。
-     * 2.每一个类型参数声明部分包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。
-     * 3.类型参数能被用来声明返回值类型，并且能作为泛型方法得到的实际参数类型的占位符。
-     * 4.泛型方法体的声明和其他方法一样。注意类型参数只能代表引用型类型，不能是原始类型。
-     */
     private static <E> void printArray(E[] inputArray) {
         for (E e : inputArray) {
             System.out.printf("%s ", e);
@@ -78,7 +77,7 @@ public class Generic<T> extends Demo {
     }
 
     /**
-     * ? 通配符
+     * ? 表示任意类
      */
     @Test
     public void wildcard() {

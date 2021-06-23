@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * 深入 Java 内存模型—happen-before 规则及其对 DCL 的分析：https://blog.csdn.net/dhfzhishi/article/details/74279091
  * 深入 Java 内存模型—内存操作规则总结：https://blog.csdn.net/ns_code/article/details/17377197
  * Java 关键字 volatile 的理解与正确使用：https://www.jb51.net/article/115374.htm
- * volatile的适用场景：https://www.cnblogs.com/ouyxy/p/7242563.html
+ * volatile 的适用场景：https://www.cnblogs.com/ouyxy/p/7242563.html
  *
  * @author ljh
  * created on 2020/11/18 19:37

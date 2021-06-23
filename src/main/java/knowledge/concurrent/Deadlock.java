@@ -1,6 +1,11 @@
 package knowledge.concurrent;
 
+import l.demo.Demo;
+import org.junit.jupiter.api.Test;
+
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 死锁
@@ -13,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  * 解决死锁：
  * 1.synchronized
  * 2.Lock
- * 防止死锁：
+ * 避免死锁：
  * 1.避免一个线程同时获取多个锁
  * 2.避免一个线程在锁内同时占用多个资源，尽量保证每个锁只占用一个资源
  * 3.尝试使用定时锁 lock.tryLock
@@ -29,7 +34,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * created on 2020/11/17 19:09
  */
-public class Deadlock {
+public class Deadlock extends Demo {
 
     private static final Object A = new Object();
     private static final Object B = new Object();
@@ -41,31 +46,45 @@ public class Deadlock {
     private static void deadlock() {
         new Thread(() -> {
             synchronized (A) {
-                System.out.println("线程 t1 拿到 A 锁");
+                p("线程 t1 拿到 A 锁");
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 synchronized (B) {
-                    System.out.println("线程 t1 拿到 B 锁");
+                    p("线程 t1 拿到 B 锁");
                 }
             }
         }, "t1").start();
 
         new Thread(() -> {
             synchronized (B) {
-                System.out.println("线程 t2 拿到 B 锁");
+                p("线程 t2 拿到 B 锁");
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 synchronized (A) {
-                    System.out.println("线程 t2 拿到 A 锁");
+                    p("线程 t2 拿到 A 锁");
                 }
             }
         }, "t2").start();
+    }
+
+    @Test
+    public void tryLock() {
+        final Lock lock = new ReentrantLock();
+        try {
+            if (lock.tryLock(2, TimeUnit.SECONDS)) {
+                p("doSomething ...");
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
     }
 
 }

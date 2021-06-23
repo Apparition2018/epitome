@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * Thread
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Thread.html
- * https://blog.csdn.net/u012426327/article/details/77160416
  * <p>
  * 进程：具有一定独立功能的程序关于某个数据集合上的一次运行活动，是操作系统分配资源的最小单元。
  * 线程：指进程中一个单一顺序的控制流，是操作系统调度的最小单元，有自己程序计数器、一组寄存器和栈。
@@ -52,7 +51,7 @@ import java.util.concurrent.TimeUnit;
  * ClassLoader	                getContextClassLoader()             返回该线程的上下文 ClassLoader
  * void	                        checkAccess()                       判定当前运行的线程是否有权修改该线程
  * void	                        run()                               如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回
- * void	                        start()                             使该线程开始执行；Java 虚拟机调用该线程的 run 方法
+ * void	                        start()                             使该线程开始执行；Java 虚拟机调用该线程的 run 方法；多次启动一个线程是非法的
  * <p>
  * 如何使用 JUnit 测试异步代码：https://zhuanlan.zhihu.com/p/240281836
  *
@@ -72,6 +71,7 @@ public class ThreadDemo extends Demo {
         t.setName("test");
         p("name = " + t.getName());
         // 线程优先级 (1 ~ 10，default 5；还有一个级别为 0的，只属于 JVM)
+        // 建议只使用 MIN, NORMAL, MAX 三个级别：1.线程并不是严格按照优先级来执行；2.优先级差别越大，运行机会差别越明显
         t.setPriority(Thread.MAX_PRIORITY);
         p("priority = " + t.getPriority());
         // 线程状态

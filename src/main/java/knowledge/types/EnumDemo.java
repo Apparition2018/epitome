@@ -59,6 +59,7 @@ public class EnumDemo extends Demo {
         p(CompanyEnum.SF.compareTo(CompanyEnum.YTO));   // -1
 
         // 返回与此枚举常量的枚举类型相对应的 Class 对象
+        // 建议使用前先见检验枚举是否包含此项
         p(CompanyEnum.SF.getDeclaringClass());      // class l.demo.CompanyEnum
 
         // equals()

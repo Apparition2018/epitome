@@ -133,8 +133,7 @@ public class CustomAnnotation {
      * Documented   注解是否包含在 JavaDoc 中
      * Retention    生命周期 (SOURCE / CLASS / RUNTIME)，什么时候使用注解
      * Target       作用域，注解用于什么地方
-     * Inherited    是否允许子类继承该注解 (子类会继承父类的类注解，不会继承父类的方法注解)
-     * <p>
+     * Inherited    是否允许子类继承该注解 (子类会继承父类的类注解，不会继承父类的方法注解)；当类的继承层次较深时，不建议使用
      */
     @Target(ElementType.FIELD)
     @Retention(RetentionPolicy.RUNTIME)
@@ -181,7 +180,6 @@ public class CustomAnnotation {
 
     @Target({ElementType.METHOD, ElementType.TYPE})
     @Retention(RetentionPolicy.RUNTIME)
-    @Inherited
     @Documented
     public @interface Description {
 
