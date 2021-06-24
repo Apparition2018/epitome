@@ -10,12 +10,7 @@ import static l.demo.Demo.p;
 /**
  * Matcher
  * 通过解释 Pattern 对 character sequence 执行匹配操作的引擎。
- * 通过调用模式的 matcher 方法从模式创建匹配器。创建匹配器后，可以使用它执行三种不同的匹配操作：
- * 1.matches 方法尝试将整个输入序列与该模式匹配。
- * 2.lookingAt 尝试将输入序列从头开始与该模式匹配。
- * 3.find 方法扫描输入序列以查找与该模式匹配的下一个子序列。
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/regex/Matcher.html
- * https://blog.csdn.net/luyaran/article/details/80175651
  *
  * @author ljh
  * created on 2019/8/8 19:39
@@ -142,6 +137,33 @@ public class MatcherDemo {
             p(e.getMessage()); // Illegal group reference: group index is missing
         }
         p(mather3.replaceAll(Matcher.quoteReplacement("-$"))); // -$foo-$foo-$foo-$
+    }
+
+    /**
+     * 计算有多少个英文单词
+     */
+    @Test
+    public void countWord() {
+        String s1 = "This is a Cat";
+        String s2 = "This is  a Cat";
+        String s3 = "This is a Cat? No!";
+        String s4 = "I'm OK";
+
+        Pattern pattern = Pattern.compile("\\b\\w+\\b");
+
+        countWord(s1, pattern);
+        countWord(s2, pattern);
+        countWord(s3, pattern);
+        countWord(s4, pattern);
+    }
+    
+    private void countWord(String str, Pattern pattern) {
+        Matcher matcher = pattern.matcher(str);
+        int count = 0;
+        while(matcher.find()) {
+            ++count;
+        }
+        p(str + " 单词数：" + count);
     }
 
 }

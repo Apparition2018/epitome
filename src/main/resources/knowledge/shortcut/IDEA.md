@@ -18,8 +18,8 @@
 >>```
 >>#### Editor Tabs
 >>```
->>Alt + R                       Split Right (user)             垂直分屏
->>Alt + D                       Split Down`` (user)           水平分屏
+>>Alt + R                       Split Right (user)                  垂直分屏
+>>Alt + D                       Split Down`` (user)                 水平分屏
 >>Alt + ←                       Select Previous Tab                 上一个Tab
 >>Alt + →                       Select Next Tab                     下一个Tab
 >>Ctrl + F4 | Alt + A           Close (user)                        关闭

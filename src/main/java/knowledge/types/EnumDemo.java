@@ -19,7 +19,7 @@ import java.util.Map;
  * <p>
  * JAVA 常量类的实现方式_枚举类＿项目实践：https://www.cnblogs.com/lihaoyang/p/6913295.html
  * JAVA 枚举常用场景小结：https://blog.csdn.net/cndmss/article/details/51441617
- * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Enum.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Enum.html
  *
  * @author ljh
  * created on 2020/11/2 19:39

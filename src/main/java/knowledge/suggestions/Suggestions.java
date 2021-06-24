@@ -30,6 +30,7 @@ import java.util.stream.IntStream;
  * 编写高质量代码 改善java程序的151个建议
  * https://www.cnblogs.com/selene/category/876189.html
  * <p>
+ * 第一章：Java 开发中通用的方法和准则
  * 建议3： 三元操作符的类型务必一致
  * 建议6： 变长方法重写必须也是变长方法
  * 建议12：避免序列化类在构造函数中为不变量赋值
@@ -38,17 +39,22 @@ import java.util.stream.IntStream;
  * 建议16：使用脚本语言编写常常需要修改的业务
  * 建议17：慎用动态编译
  * 建议19：断言
+ * <p>
+ * 第二章：基本类型
  * 建议22：用 BigDecimal 或整数类型处理货币
  * 建议25：银行的四舍六入五考虑
  * 建议29：优先选择基本类型
  * 建议30：不要设置随机种子
+ * <p>
+ * 第三章：类、对象及方法
  * 建议36：使用构造代码块精简程序
  * 建议38：使用静态内部类提高封装性
  * 建议41：内部类实现多继承
  * 建议43：避免对象的浅拷贝
  * 建议44：使用序列化对象的拷贝
  * 建议50：package-info
- * 建议57：在复杂字符串操作中使用正则表达式
+ * <p>
+ * 第五章：数组和集合
  * 建议65：泛型不支持基本类型
  * 建议67：不同的列表选择不同的遍历算法
  * 建议69：列表相等只跟元素有关
@@ -56,10 +62,14 @@ import java.util.stream.IntStream;
  * 建议72：subList() 生成字列表后，不要操作原列表
  * 建议73：Comparable 可用做类的默认排序算法，Comparator 可用做扩展排序工具
  * 建议80：多线程使用 Vector 或 Hashtable
+ * <p>
+ * 第六章：枚举和注解
  * 建议83：使用枚举定义常量
  * 建议88：枚举实现工厂模式
  * 建议89：枚举项的数量限制在64个以内
  * 建议91：枚举和注解实现 ACL (Access Control List) 访问控制列表
+ * <p>
+ * 第七章：泛型和反射
  * 建议94：不能初始化泛型参数和数组
  * 建议96：泛型通配符
  * 建议97：泛型不支持协变和逆变
@@ -71,15 +81,23 @@ import java.util.stream.IntStream;
  * 建议106：动态代理
  * 建议107：动态代理结合装饰器模式
  * 建议108：反射结合模板方法模式
+ * <p>
+ * 第八章：异常
  * 建议110：一次捕获多个异常
  * 建议112：检测性异常尽可能转化为非检测性异常
  * 建议115：使用 Throwable 获得栈信息
+ * <p>
+ * 第九章：多线程和并发
  * 建议120：不要使用 stop() 终止线程
  * 建议122：使用线程异常处理器提升系统可靠性
  * 建议127：Lock 和 synchronized
+ * <p>
+ * 第十章：性能和效率
  * 建议132：提升 Java 性能的基本方法
  * 建议133：若非必要，不要 clone() 对象
  * 建议137：调优 JVM 参数
+ * <p>
+ * 其它
  * 建议139：大胆采用开源工具
  * 建议145：不要完全依靠单元测试来发现问题
  * 建议146：让注释正确、清晰、简洁
@@ -331,7 +349,7 @@ public class Suggestions extends Demo {
         // 1976922248
     }
 
-    /* 第三章：对象及方法 */
+    /* 第三章：类、对象及方法 */
 
     /**
      * 建议36：使用构造代码块精简程序
@@ -522,35 +540,6 @@ public class Suggestions extends Demo {
             sb.append("c");
         }
         p("StringBuilder：" + watch.getTime() + "ms");   // StringBuilder：0ms
-    }
-
-    /**
-     * 建议57：在复杂字符串操作中使用正则表达式
-     */
-    @Test
-    public void test057() {
-        // 判断有多少个单词
-
-        String s1 = "This is a Cat";
-        String s2 = "This is  a Cat";
-        String s3 = "This is a Cat? No!";
-        String s4 = "I'm OK";
-
-        Pattern p = Pattern.compile("\\b\\w+\\b");
-
-        countWord(s1, p);
-        countWord(s2, p);
-        countWord(s3, p);
-        countWord(s4, p);
-    }
-
-    private void countWord(String str, Pattern p) {
-        Matcher m = p.matcher(str);
-        int wordsCount = 0;
-        while (m.find()) {
-            wordsCount++;
-        }
-        p(str + "单词数：" + wordsCount);
     }
 
     /* 第五章：数组和集合 */
