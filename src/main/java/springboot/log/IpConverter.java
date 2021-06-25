@@ -7,8 +7,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * HostNameConverter
- * 
+ * IpConverter
+ * <p>
  * logback高级特性使用(二) <conversionRule/>：https://blog.csdn.net/zhuyucheng123/article/details/21524529
  *
  * @author ljh

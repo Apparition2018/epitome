@@ -27,13 +27,13 @@ import static l.demo.Demo.p;
  * created on 2020/11/25 11:45
  */
 @Controller
-@RequestMapping("/demo")
-public class DemoController {
+@RequestMapping("/accept-param")
+public class AcceptParamController {
 
     private final BmiService bmiService;
 
     @Autowired
-    public DemoController(BmiService bmiService) {
+    public AcceptParamController(BmiService bmiService) {
         this.bmiService = bmiService;
     }
 

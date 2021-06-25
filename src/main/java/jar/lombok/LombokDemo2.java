@@ -15,6 +15,14 @@ import static l.demo.Demo.p;
  */
 public class LombokDemo2 {
 
+    /**
+     * `@Accessors
+     * 主要用于控制生成的 getter / setter
+     * <p>
+     * fluent boolean 值，默认 false。控制生成的 getter / setter 方法前面是否带 get / set
+     * chain boolean 值，默认 false。如果为 true，setter 返回的是此对象，方便链式调用方法
+     * prefix 去除前缀
+     */
     @Test
     public void testAccessorsFluentAndChain() {
         User5 u = new User5();
@@ -31,14 +39,6 @@ public class LombokDemo2 {
         p(u.number());
     }
 
-    /**
-     * Accessors
-     * 主要用于控制生成的 getter / setter
-     * <p>
-     * fluent boolean 值，默认 false。控制生成的 getter / setter 方法前面是否带 get / set
-     * chain boolean 值，默认 false。如果为 true，setter 返回的是此对象，方便链式调用方法
-     * prefix 去除前缀
-     */
     @Getter
     @Setter
     @Accessors(fluent = true, chain = true)
@@ -50,16 +50,16 @@ public class LombokDemo2 {
         private String phoneNumber;
     }
 
+    /**
+     * `@FieldDefaults
+     * 主要用于给字段添加修饰符
+     */
     @Test
     public void testFieldDefaults() {
         User6 u = new User6(1, "Henry", "123");
         p(u);
     }
 
-    /**
-     * FieldDefaults
-     * 主要用于给字段添加修饰符
-     */
     @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
     @AllArgsConstructor
     @ToString
@@ -69,18 +69,17 @@ public class LombokDemo2 {
         private String password;
     }
 
+    /**
+     * `@Value
+     * 不可变对象
+     * 相当于 @Getter, @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE), @AllArgsConstructor, @ToString, @EqualsAndHashCode
+     */
     @Test
     public void testValue() {
         User7 u = new User7(1, "Henry", "123");
         // u.setId(2); // cannot resolve method 'setName()'
     }
 
-
-    /**
-     * Value
-     * 不可变对象
-     * 相当于 Getter, FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE), AllArgsConstructor, ToString, EqualsAndHashCode
-     */
     @Value
     private static class User7 {
         Integer id;
@@ -88,6 +87,12 @@ public class LombokDemo2 {
         String password;
     }
 
+    /**
+     * `@Builder
+     * <p>
+     * `@Singular
+     * 与 Builder 一起用于在集合的生成器中创建单个元素 add()
+     */
     @Test
     public void testBuilder() {
         User8 u = User8.builder()
@@ -102,20 +107,14 @@ public class LombokDemo2 {
 
     }
 
-    /**
-     * Builder
-     * <p>
-     * Singular
-     * 与 Builder 一起用于在集合的生成器中创建单个元素 add()
-     */
     @ToString
     @Builder(toBuilder = true)
     private static class User8 {
-        private Integer id;
-        private String name;
-        private String password;
+        private final Integer id;
+        private final String name;
+        private final String password;
         @Singular
-        private Set<String> interests;
+        private final Set<String> interests;
     }
 
 }

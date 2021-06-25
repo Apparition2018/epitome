@@ -7,7 +7,7 @@ import static l.demo.Demo.p;
 
 /**
  * Lombok
- * Stable：https://projectlombok.org/features/all
+ * Lombok features：https://projectlombok.org/features/all
  *
  * @author ljh
  * created on 2019/8/8 19:39
@@ -67,7 +67,7 @@ public class LombokDemo {
         private Integer id;
         private final String name;
         @NonNull
-        private String password;
+        private final String password;
 
     }
 
