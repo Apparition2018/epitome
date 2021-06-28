@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
  * 2.加密解密
  * 3.编码转换
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/16%E8%BF%9B%E5%88%B6%E5%B7%A5%E5%85%B7-HexUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/HexUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/HexUtil.html
  *
  * @author ljh
  * created on 2020/11/9 10:10

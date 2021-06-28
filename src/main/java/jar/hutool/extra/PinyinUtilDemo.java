@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  * PinyinUtil   拼音工具
  * 需要引入 io.github.biezhi:TinyPinYin
  * https://hutool.cn/docs/#/extra/%E6%8B%BC%E9%9F%B3/%E6%8B%BC%E9%9F%B3%E5%B7%A5%E5%85%B7-PinyinUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/pinyin/PinyinUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/pinyin/PinyinUtil.html
  *
  * @author ljh
  * created on 2020/11/5 16:10

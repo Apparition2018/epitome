@@ -29,7 +29,7 @@ import java.util.Map;
  * 6.自动识别并解压 Gzip 格式返回内容
  * <p>
  * https://hutool.cn/docs/#/http/Http%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%A5%E5%85%B7%E7%B1%BB-HttpUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/http/HttpUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/HttpUtil.html
  *
  * @author Arsenal
  * created on 2020/11/2 23:32
@@ -77,11 +77,11 @@ public class HttpUtilDemo extends Demo {
      * HttpUtil 中的 get 和 post 工具方法都是 HttpRequest 对象的封装，
      * 因此如果想更加灵活操作 Http 请求，可以使用 HttpRequest
      * https://hutool.cn/docs/#/http/Http%E8%AF%B7%E6%B1%82-HttpRequest
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/http/HttpRequest.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/HttpRequest.html
      * <p>
      * HttpResponse
      * https://hutool.cn/docs/#/http/Http%E5%93%8D%E5%BA%94-HttpResponse
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/http/HttpResponse.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/HttpResponse.html
      */
     @Test
     public void testHttp() {

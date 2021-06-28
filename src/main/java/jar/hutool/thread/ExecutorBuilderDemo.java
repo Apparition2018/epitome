@@ -9,7 +9,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * ExecutorBuilder      自定义线程池
  * https://hutool.cn/docs/#/core/%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%BF%E7%A8%8B%E6%B1%A0-ExecutorBuilder
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/thread/ExecutorBuilder.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/thread/ExecutorBuilder.html
  *
  * @author ljh
  * created on 2020/11/19 15:29

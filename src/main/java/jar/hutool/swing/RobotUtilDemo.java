@@ -9,7 +9,7 @@ import java.io.File;
 
 /**
  * RobotUtil    Robot 封装工具类
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/swing/RobotUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/swing/RobotUtil.html
  *
  * @author ljh
  * created on 2020/11/19 15:37

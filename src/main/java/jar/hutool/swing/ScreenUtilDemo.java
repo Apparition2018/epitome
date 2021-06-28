@@ -9,7 +9,7 @@ import java.io.File;
 
 /**
  * ScreenUtil   屏幕工具类
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/swing/ScreenUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/swing/ScreenUtil.html
  *
  * @author ljh
  * created on 2020/11/19 15:44

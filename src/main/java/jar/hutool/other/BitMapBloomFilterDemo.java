@@ -11,7 +11,7 @@ import java.util.Random;
  * 优点：空间效率和查询时间都远远超过一般的算法
  * 缺点：有一定的误识别率和删除困难
  * https://hutool.cn/docs/#/bloomFilter/%E6%A6%82%E8%BF%B0
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/bloomfilter/BitMapBloomFilter.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/bloomfilter/BitMapBloomFilter.html
  *
  * @author Arsenal
  * created on 2020/11/21 17:11

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * TimeIntervalAspect   执行时间切面对象
  * <p>
  * https://hutool.cn/docs/#/aop/%E5%88%87%E9%9D%A2%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7-ProxyUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/aop/ProxyUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/aop/ProxyUtil.html
  *
  * @author ljh
  * created on 2020/11/2 15:46

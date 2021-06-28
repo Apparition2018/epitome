@@ -10,7 +10,7 @@ import static l.demo.Demo.p;
 /**
  * AnnotationUtil   注解工具
  * https://hutool.cn/docs/#/core/%E6%B3%A8%E8%A7%A3/%E6%B3%A8%E8%A7%A3%E5%B7%A5%E5%85%B7-AnnotationUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/annotation/AnnotationUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/annotation/AnnotationUtil.html
  *
  * @author ljh
  * created on 2020/11/9 16:25

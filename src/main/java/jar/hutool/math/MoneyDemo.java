@@ -10,7 +10,7 @@ import java.util.Locale;
 
 /**
  * Money    货币
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/math/Money.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/math/Money.html
  *
  * @author Arsenal
  * created on 2020/11/22 2:43

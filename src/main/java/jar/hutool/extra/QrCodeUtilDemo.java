@@ -12,7 +12,7 @@ import java.io.File;
  * QrCodeUtil   二维码工具
  * 需要引入 com.google.zxing:core
  * https://hutool.cn/docs/#/extra/%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%B7%A5%E5%85%B7-QrCodeUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/qrcode/QrCodeUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/qrcode/QrCodeUtil.html
  *
  * @author ljh
  * created on 2020/11/5 14:53

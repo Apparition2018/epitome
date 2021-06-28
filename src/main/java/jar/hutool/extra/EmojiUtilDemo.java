@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
  * EmojiUtil
  * 需要引入 com.vdurmont:emoji-java
  * https://hutool.cn/docs/#/extra/emoji/Emoji%E5%B7%A5%E5%85%B7-EmojiUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/emoji/EmojiUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/emoji/EmojiUtil.html
  *
  * @author ljh
  * created on 2020/11/20 17:46

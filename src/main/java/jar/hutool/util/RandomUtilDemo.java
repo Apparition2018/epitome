@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  * RandomUtil   随机工具
  * 封装 java.lang.Random
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E9%9A%8F%E6%9C%BA%E5%B7%A5%E5%85%B7-RandomUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/RandomUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/RandomUtil.html
  *
  * @author ljh
  * created on 2020/11/19 16:18

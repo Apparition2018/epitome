@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  * CronUtil     全局定时任务
  * 同时兼容 Crontab 和 Quartz 表达式
  * https://hutool.cn/docs/#/cron/%E5%85%A8%E5%B1%80%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1-CronUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/cron/CronUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/cron/CronUtil.html
  * Linux crontab 命令：https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html
  *
  * @author ljh

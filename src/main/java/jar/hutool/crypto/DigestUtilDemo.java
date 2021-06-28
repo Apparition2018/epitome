@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
  * DigestUtil   消息摘要
  * https://hutool.cn/docs/#/crypto/%E6%91%98%E8%A6%81%E5%8A%A0%E5%AF%86-Digester
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/crypto/digest/DigestUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/DigestUtil.html
  *
  * @author Arsenal
  * created on 2020/11/9 2:07

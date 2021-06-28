@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 /**
  * ExcelUtil
  * https://hutool.cn/docs/#/poi/Excel%E5%B7%A5%E5%85%B7-ExcelUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/poi/excel/ExcelUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/poi/excel/ExcelUtil.html
  *
  * @author Arsenal
  * created on 2020/11/21 18:26
@@ -24,8 +24,8 @@ public class ExcelUtilDemo extends Demo {
     /**
      * https://hutool.cn/docs/#/poi/Excel%E7%94%9F%E6%88%90-ExcelWriter
      * https://hutool.cn/docs/#/poi/Excel%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90-BigExcelWriter
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/poi/excel/ExcelWriter.html
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/poi/excel/BigExcelWriter.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/poi/excel/ExcelWriter.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/poi/excel/BigExcelWriter.html
      */
     @Test
     public void writeExcel() {
@@ -67,8 +67,8 @@ public class ExcelUtilDemo extends Demo {
     /**
      * https://hutool.cn/docs/#/poi/Excel%E8%AF%BB%E5%8F%96-ExcelReader
      * https://hutool.cn/docs/#/poi/%E6%B5%81%E6%96%B9%E5%BC%8F%E8%AF%BB%E5%8F%96Excel2007-Excel07SaxReader
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/poi/excel/ExcelReader.html
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/poi/excel/sax/Excel07SaxReader.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/poi/excel/ExcelReader.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/poi/excel/sax/Excel07SaxReader.html
      */
     @Test
     public void readExcel() {

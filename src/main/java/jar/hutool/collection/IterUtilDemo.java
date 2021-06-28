@@ -21,7 +21,7 @@ import java.util.Vector;
  * static boolean	        isNotEmpty(Iterable/Iterator)           是否不为空 Iterable
  * <p>
  * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/Iterator%E5%B7%A5%E5%85%B7-IterUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/collection/IterUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/IterUtil.html
  *
  * @author Arsenal
  * created on 2020/10/29 2:22

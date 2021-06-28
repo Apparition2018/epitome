@@ -15,10 +15,10 @@ import static l.demo.Demo.p;
 /**
  * JSONUtil
  * https://hutool.cn/docs/#/json/JSONUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/json/JSONUtil.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/json/JSON.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/json/JSONObject.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/json/JSONArray.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSON.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONObject.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONArray.html
  *
  * @author ljh
  * created on 2020/11/20 8:43

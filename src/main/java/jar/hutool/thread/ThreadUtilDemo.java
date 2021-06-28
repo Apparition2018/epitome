@@ -31,7 +31,7 @@ import java.util.stream.IntStream;
  * static void                      sync(Object obj)                                        同步对象
  * <p>
  * https://hutool.cn/docs/#/core/%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/%E7%BA%BF%E7%A8%8B%E5%B7%A5%E5%85%B7-ThreadUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/thread/ThreadUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/thread/ThreadUtil.html
  *
  * @author ljh
  * created on 2020/10/26 9:30

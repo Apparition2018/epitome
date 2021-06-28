@@ -64,7 +64,7 @@ import java.nio.charset.StandardCharsets;
  * static T[]	        removeBlank(T[] array)                          去除 null 或者 "" 或 者空白字符串
  * <p>
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7-ArrayUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/ArrayUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ArrayUtil.html
  *
  * @author Arsenal
  * created on 2020/11/2 23:44
@@ -112,22 +112,14 @@ public class ArrayUtilDemo extends Demo {
      */
     @Test
     public void testFunctionInterface() {
-        // static <T> T[]       filter(T[] array, Editor<T> editor)     经过 Editor 处理返回
-        p(ArrayUtil.filter(arr, new Editor<Integer>() {
-            @Override
-            public Integer edit(Integer i) {
-                if (i % 2 == 1) return i;
-                return null;
-            }
+        // static <T> T[]       edit(T[] array, Editor<T> editor)       经过 Editor 处理返回
+        p(ArrayUtil.edit(arr, i -> {
+            if (i % 2 == 1) return i;
+            return null;
         })); // [1, 3, 5, 7, 9]
 
         // static <T> T[]       filter(T[] array, Filter<T> filter)     经过 filter 判断返回
-        p(ArrayUtil.filter(arr, new Filter<Integer>() {
-            @Override
-            public boolean accept(Integer i) {
-                return i % 2 == 1;
-            }
-        })); // [1, 3, 5, 7, 9]
+        p(ArrayUtil.filter(arr, i -> i % 2 == 1)); // [1, 3, 5, 7, 9]
 
         // static <T> void	    edit(T[] array, Editor<T> editor)       编辑数组
         Integer[] cloneArr = arr.clone();

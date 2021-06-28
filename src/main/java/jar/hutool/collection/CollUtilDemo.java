@@ -44,7 +44,7 @@ import java.util.*;
  * static void	                    clear(Collection<?>... collections)                             清除一个或多个集合内的元素，每个集合调用 clear()
  * <p>
  * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7-CollUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/collection/CollUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/CollUtil.html
  *
  * @author Arsenal
  * created on 2020/10/27 20:13

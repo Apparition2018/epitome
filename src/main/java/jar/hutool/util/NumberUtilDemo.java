@@ -21,7 +21,7 @@ import java.math.RoundingMode;
  * NumberUtil.toStr()           数字转字符串，自动并去除尾小数点儿后多余的 0
  * <p>
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%95%B0%E5%AD%97%E5%B7%A5%E5%85%B7-NumberUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/NumberUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/NumberUtil.html
  *
  * @author ljh
  * created on 2020/10/27 14:50

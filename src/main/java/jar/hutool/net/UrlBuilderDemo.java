@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * [scheme:][//host:port][path][?query][#fragment]
  * <p>
  * https://hutool.cn/docs/#/core/%E7%BD%91%E7%BB%9C/URL%E7%94%9F%E6%88%90%E5%99%A8-UrlBuilder
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/net/url/UrlBuilder.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/net/url/UrlBuilder.html
  *
  * @author ljh
  * created on 2020/11/2 9:46

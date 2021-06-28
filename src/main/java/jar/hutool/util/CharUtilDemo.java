@@ -7,7 +7,7 @@ import static l.demo.Demo.p;
 
 /**
  * CharUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/CharUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/CharUtil.html
  *
  * @author Arsenal
  * created on 2020/11/22 3:27

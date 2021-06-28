@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
  * 3.变量支持 ${key}
  * 4.分组支持
  * https://hutool.cn/docs/#/setting/%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6-Setting
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/setting/Setting.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/setting/Setting.html
  *
  * @author Arsenal
  * created on 2020/11/20 1:03

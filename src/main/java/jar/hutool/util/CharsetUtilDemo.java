@@ -8,7 +8,7 @@ import java.io.File;
 
 /**
  * CharsetUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/CharsetUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/CharsetUtil.html
  *
  * @author Arsenal
  * created on 2020/11/22 3:16

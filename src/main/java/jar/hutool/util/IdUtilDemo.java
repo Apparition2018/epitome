@@ -13,7 +13,7 @@ import static l.demo.Demo.p;
  * 2.ObjectId (MongoDB)
  * 3.Snowflake (Twitter)
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E5%94%AF%E4%B8%80ID%E5%B7%A5%E5%85%B7-IdUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/IdUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/IdUtil.html
  * 服务化框架－分布式Unique ID的生成方法一览：http://www.voidcn.com/article/p-akujgwvu-hx.html
  *
  * @author ljh

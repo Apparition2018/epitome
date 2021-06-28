@@ -14,7 +14,7 @@ import java.util.Random;
 /**
  * AsymmetricCrypto 非对称加密
  * https://hutool.cn/docs/#/crypto/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-AsymmetricCrypto
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/crypto/symmetric/AsymmetricCrypto.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/symmetric/AsymmetricCrypto.html
  *
  * @author ljh
  * created on 2020/11/9 9:43

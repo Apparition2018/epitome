@@ -28,7 +28,7 @@ import java.util.Map;
  * static boolean               hasGetter(Class<?> clazz)                               是否有 Getter 方法
  * <p>
  * https://hutool.cn/docs/#/core/JavaBean/Bean%E5%B7%A5%E5%85%B7-BeanUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/bean/BeanUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanUtil.html
  *
  * @author ljh
  * created on 2020/11/9 14:54

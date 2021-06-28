@@ -13,7 +13,7 @@ import static l.demo.Demo.p;
  * static Properties    props()                                 确定当前的系统属性
  * <p>
  * https://hutool.cn/docs/#/system/%E7%B3%BB%E7%BB%9F%E5%B1%9E%E6%80%A7%E8%B0%83%E7%94%A8-SystemUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/system/SystemUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/system/SystemUtil.html
  *
  * @author ljh
  * created on 2020/11/4 17:23

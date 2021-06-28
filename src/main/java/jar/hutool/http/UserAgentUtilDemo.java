@@ -10,7 +10,7 @@ import static l.demo.Demo.p;
  * UserAgentUtil    User Agent 工具类
  * User Agent 中文名为用户代理，简称 UA，它是一个特殊字符串头，使得服务器能够识别客户使用的操作系统及版本、浏览器及版本、浏览器渲染引擎等
  * https://hutool.cn/docs/#/http/UA%E5%B7%A5%E5%85%B7%E7%B1%BB-UserAgentUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/http/useragent/UserAgentUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/useragent/UserAgentUtil.html
  *
  * @author Arsenal
  * created on 2020/11/2 23:38

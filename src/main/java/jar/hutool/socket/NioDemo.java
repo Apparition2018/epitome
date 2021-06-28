@@ -17,8 +17,8 @@ import java.util.Scanner;
 /**
  * NIO
  * https://hutool.cn/docs/#/socket/NIO%E5%B0%81%E8%A3%85-NioServer%E5%92%8CNioClient
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/socket/nio/NioClient.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/socket/nio/NioServer.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/socket/nio/NioClient.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/socket/nio/NioServer.html
  *
  * @author ljh
  * created on 2020/11/2 13:55

@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
  * static OutputStreamWriter 	    getUtf8Writer(OutputStream out)                     获得 Writer，默认 UTF-8
  * <p>
  * https://hutool.cn/docs/#/core/IO/IO%E5%B7%A5%E5%85%B7%E7%B1%BB-IoUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/io/IoUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/IoUtil.html
  *
  * @author ljh
  * created on 2020/10/29 17:45

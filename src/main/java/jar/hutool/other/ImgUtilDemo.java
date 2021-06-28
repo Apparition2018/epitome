@@ -32,7 +32,7 @@ import java.io.IOException;
  * static void	            write[XXX](XXX ...)                                             写出图片
  * <p>
  * https://hutool.cn/docs/#/core/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%E5%B7%A5%E5%85%B7-ImgUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/img/ImgUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/img/ImgUtil.html
  *
  * @author Arsenal
  * created on 2020/11/19 23:55

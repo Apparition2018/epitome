@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  * Dict
  * Dict 继承 HashMap，key 为 String，value 为 Object，提供了更灵活多样的使用
  * https://hutool.cn/docs/#/core/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/HashMap%E6%89%A9%E5%B1%95-Dict
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/lang/Dict.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Dict.html
  * 
  * Dict	        filter(String... keys)                      过滤 Dict 保留指定键值对，如果键不存在跳过
  * <T> T	    getXXX(String attr)                         获得特定类型值

@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * ResourceUtil     资源工具
  * https://hutool.cn/docs/#/core/IO/%E8%B5%84%E6%BA%90/%E8%B5%84%E6%BA%90%E5%B7%A5%E5%85%B7-ResourceUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/io/resource/ResourceUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/resource/ResourceUtil.html
  *
  * @author ljh
  * created on 2020/10/30 16:45

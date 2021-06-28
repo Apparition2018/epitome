@@ -16,7 +16,7 @@ import java.util.List;
  * static <T> List<T>	    sortByProperty(List<T> list, String property)   根据 Bean 的属性排序
  * <p>
  * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E5%88%97%E8%A1%A8%E5%B7%A5%E5%85%B7-ListUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/collection/ListUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/ListUtil.html
  *
  * @author Arsenal
  * created on 2020/10/29 2:06
@@ -45,15 +45,11 @@ public class ListUtilDemo extends Demo {
         // split(List, size)                                    分组，按照指定长度
         p(ListUtil.split(list, 2));                             // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
 
-        // filter(List, Editor)                                 经过 Editor 处理返回
-        p(ListUtil.filter(list, i -> {
-            if (i % 2 == 1) return i;
-            return null;
-        })); // [1, 3, 5, 7, 9]
+        // lastIndexOf(List, Matcher)                           获取匹配规则定义中匹配到元素的最后位置
+        p(ListUtil.lastIndexOf(ListUtil.of(1, 2, 3, 2, 1), new Integer(2)::equals));    // 3
 
-        // indexOfAll(List, Matcher)                            获取满足指定规则所有的元素的位置
-        p(ListUtil.indexOfAll(ListUtil.of(1, 2, 3, 2, 1),
-                new Integer(2)::equals));                       // [1, 3] 
+        // indexOfAll(List, Matcher)                            获取匹配规则定义中匹配到元素的所有位置
+        p(ListUtil.indexOfAll(ListUtil.of(1, 2, 3, 2, 1), new Integer(2)::equals));     // [1, 3] 
 
         // setOrAppend(List, index, element)                    设置或增加元素。当 index 小于 List 的长度时，替换指定位置的值，否则在尾部追加
         p(ListUtil.setOrAppend(ListUtil.toList(list), 5, 0));   // [1, 2, 3, 4, 5, 0, 7, 8, 9]

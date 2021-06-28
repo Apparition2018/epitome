@@ -16,7 +16,7 @@ import java.util.Map;
  * XmlUtil  XML工具
  * XmlUtil 封装了 JDK 自带的 w3c dom 解析和构建工具，简化 XML 的创建、读和写的过程
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/XML%E5%B7%A5%E5%85%B7-XmlUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/XmlUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/XmlUtil.html
  *
  * @author ljh
  * created on 2020/11/9 10:32

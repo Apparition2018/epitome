@@ -12,7 +12,7 @@ import java.awt.datatransfer.Transferable;
 /**
  * ClipboardUtil    剪贴板工具
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E5%89%AA%E8%B4%B4%E6%9D%BF%E5%B7%A5%E5%85%B7-ClipboardUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/swing/clipboard/ClipboardUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/swing/clipboard/ClipboardUtil.html
  *
  * @author ljh
  * created on 2020/11/19 12:00

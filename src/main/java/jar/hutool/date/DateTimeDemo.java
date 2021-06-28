@@ -12,7 +12,7 @@ import static l.demo.Demo.p;
  * DateTime 继承 java.util.Date，使用 DateTime 可以完全替代开发中 Date 的使用
  * <p>
  * https://hutool.cn/docs/#/core/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%AF%B9%E8%B1%A1-DateTime
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/date/DateTime.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/DateTime.html
  *
  * @author Arsenal
  * created on 2020/10/27 2:31

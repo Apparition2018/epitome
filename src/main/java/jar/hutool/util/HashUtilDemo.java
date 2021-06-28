@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
  * HashUtil     Hash算法
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/Hash%E7%AE%97%E6%B3%95-HashUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/HashUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/HashUtil.html
  *
  * @author ljh
  * created on 2020/11/19 10:22

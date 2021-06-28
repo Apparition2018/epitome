@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  * MathUtil
  * NumberUtil 的一个补充，MathUtil 偏向复杂数学计算
  * https://hutool.cn/docs/#/core/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3-MathUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/math/MathUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/math/MathUtil.html
  * 
  * @author Arsenal
  * created on 2020/11/19 23:37

@@ -10,7 +10,7 @@ import static l.demo.Demo.p;
  * DynaBean
  * 使用反射机制动态操作 JavaBean 的一个封装类
  * https://hutool.cn/docs/#/core/JavaBean/DynaBean
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/bean/DynaBean.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/DynaBean.html
  *
  * @author ljh
  * created on 2020/11/9 15:55

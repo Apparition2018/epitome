@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  * HtmlUtil
  * 爬虫爬取 HTML 之后，需要对返回页面的 HTML 内容做一定处理，比如去掉指定标签（例如广告栏等）、去除 JS、去掉样式等等
  * https://hutool.cn/docs/#/http/HTML%E5%B7%A5%E5%85%B7%E7%B1%BB-HtmlUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/http/HtmlUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/HtmlUtil.html
  *
  * @author Arsenal
  * created on 2020/11/2 23:35

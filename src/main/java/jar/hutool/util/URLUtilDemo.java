@@ -11,7 +11,7 @@ import java.net.URL;
  * 1.网页地址，即互联网上的资源
  * 2.Classpath 中的资源地址
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/URL%E5%B7%A5%E5%85%B7-URLUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/URLUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/URLUtil.html
  *
  * @author ljh
  * created on 2020/11/19 10:32

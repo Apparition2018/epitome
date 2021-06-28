@@ -23,7 +23,7 @@ public class CodecDemo extends Demo {
      * 凯撒密码
      * 一种最简单且最广为人知的加密技术，它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。
      * 算法来自：https://github.com/zhaorenjie110/SymmetricEncryptionAndDecryption
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/codec/Caesar.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Caesar.html
      */
     @Test
     public void testCaesar() {
@@ -38,7 +38,7 @@ public class CodecDemo extends Demo {
      * ROT密码
      * 凯撒密码的一种变体。
      * 算法来自：https://github.com/orclight/jencrypt
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/codec/Rot.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Rot.html
      * rot位移密码详解：https://www.cnblogs.com/swordcreater/p/12562077.html
      */
     @Test
@@ -61,7 +61,7 @@ public class CodecDemo extends Demo {
      * 摩斯密码
      * 一种时通时断的信号代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。
      * 参考：https://github.com/TakWolf/Java-MorseCoder
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/codec/Morse.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Morse.html
      */
     @Test
     public void testMorse() {
@@ -81,7 +81,7 @@ public class CodecDemo extends Demo {
      * 这种编码技巧最常用于会计系统的设计里。
      * 关于 BCD 编码 BCD 与十进制转换：https://www.iteye.com/blog/cuisuqiang-1429956
      * https://hutool.cn/docs/#/core/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/%E4%BA%8C%E8%BF%9B%E7%A0%81%E5%8D%81%E8%BF%9B%E6%95%B0-BCD
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/codec/BCD.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/BCD.html
      */
     @Test
     public void testBCD() {

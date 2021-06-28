@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * PhoneUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/PhoneUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/PhoneUtil.html
  *
  * @author Arsenal
  * created on 2020/11/22 4:04

@@ -15,9 +15,9 @@ import java.io.OutputStream;
 /**
  * Captcha      验证码
  * https://hutool.cn/docs/#/captcha/%E6%A6%82%E8%BF%B0
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/captcha/ICaptcha.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/captcha/CaptchaUtil.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/captcha/generator/RandomGenerator.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/ICaptcha.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/CaptchaUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/generator/RandomGenerator.html
  *
  * @author Arsenal
  * created on 2020/11/21 17:37

@@ -13,7 +13,7 @@ import java.nio.ByteBuffer;
 /**
  * NetUtil  网络工具
  * https://hutool.cn/docs/#/core/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7-NetUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/net/NetUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/net/NetUtil.html
  *
  * @author ljh
  * created on 2020/10/30 17:16

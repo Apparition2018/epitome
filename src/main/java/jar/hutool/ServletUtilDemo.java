@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * ServletUtil
  * https://hutool.cn/docs/#/extra/Servlet%E5%B7%A5%E5%85%B7-ServletUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/servlet/ServletUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/servlet/ServletUtil.html
  *
  * @author ljh
  * created on 2020/11/20 14:03

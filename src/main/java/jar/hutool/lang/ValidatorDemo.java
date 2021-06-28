@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Validator        字段验证器
  * https://hutool.cn/docs/#/core/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/%E5%AD%97%E6%AE%B5%E9%AA%8C%E8%AF%81%E5%99%A8-Validator
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/lang/Validator.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Validator.html
  *
  * @author Arsenal
  * created on 2020/11/19 21:18

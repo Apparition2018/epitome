@@ -17,7 +17,7 @@ import java.nio.file.WatchEvent;
  * 3.简洁易懂的 API 方法，一个方法即可搞定监听，无需理解复杂的监听注册机制
  * 4.多观察者实现，可以根据业务实现多个 Watcher 来响应同一个事件（通过 WatcherChain）
  * https://hutool.cn/docs/#/core/IO/%E6%96%87%E4%BB%B6%E7%9B%91%E5%90%AC-WatchMonitor
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/io/watch/WatchMonitor.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/watch/WatchMonitor.html
  *
  * @author ljh
  * created on 2020/10/30 15:48

@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
  * TemplateUtil     模板引擎封装
  * 需要引入 org.freemarker:freemarker
  * https://hutool.cn/docs/#/extra/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E5%B0%81%E8%A3%85-TemplateUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/template/TemplateUtil.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/template/TemplateEngine.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/template/Template.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/template/TemplateUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/template/TemplateEngine.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/template/Template.html
  *
  * @author ljh
  * created on 2020/11/20 17:11

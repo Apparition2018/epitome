@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * static <K,V> WeakCache<K,V>	    newWeakCache(int capacity)                      弱引用缓存
  * <p>
  * https://hutool.cn/docs/#/cache/CacheUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/cache/CacheUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/cache/CacheUtil.html
  *
  * @author Arsenal
  * created on 2020/11/20 1:46
@@ -32,7 +32,7 @@ public class CacheUtilDemo extends Demo {
     }
 
     /**
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/cache/file/LFUFileCache.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/cache/file/LFUFileCache.html
      */
     @Test
     public void testFileCache() {

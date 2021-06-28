@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
  * TokenizerUtil    中文分词封装
  * 需要引入 org.apache.lucene:lucene-analyzers-smartcn
  * https://hutool.cn/docs/#/extra/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E5%B0%81%E8%A3%85-TokenizerUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/tokenizer/TokenizerUtil.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/extra/tokenizer/TokenizerEngine.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/tokenizer/TokenizerUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/tokenizer/TokenizerEngine.html
  *
  * @author Arsenal
  * created on 2020/11/21 14:54

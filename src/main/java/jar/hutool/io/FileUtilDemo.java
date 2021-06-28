@@ -43,7 +43,7 @@ import java.util.List;
  * static PrintWriter	        getPrintWriter(file/path, Charset/charset, isAppend)            获得一个打印写入对象，可以有 print
  * <p>
  * https://hutool.cn/docs/#/core/IO/%E6%96%87%E4%BB%B6%E5%B7%A5%E5%85%B7%E7%B1%BB-FileUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/io/FileUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/FileUtil.html
  *
  * @author ljh
  * created on 2020/10/29 17:46

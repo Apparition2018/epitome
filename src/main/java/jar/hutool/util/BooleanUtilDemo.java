@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  * static boolean	toBoolean(String valueStr)      转换字符串为 boolean 值
  * static XXX	    toXXX(boolean xxx)              boolean 值转为 XXX
  * <p>
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/BooleanUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/BooleanUtil.html
  *
  * @author Arsenal
  * created on 2020/11/22 3:08

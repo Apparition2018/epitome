@@ -9,7 +9,7 @@ import javax.script.ScriptException;
 /**
  * ScriptUtil
  * https://hutool.cn/docs/#/script/Script%E5%B7%A5%E5%85%B7-ScriptUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/script/ScriptUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/script/ScriptUtil.html
  *
  * @author Arsenal
  * created on 2020/11/21 17:22

@@ -8,7 +8,7 @@ import static l.demo.Demo.p;
 /**
  * PageUtil     分页工具
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7-PageUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/PageUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/PageUtil.html
  *
  * @author ljh
  * created on 2020/11/19 11:41

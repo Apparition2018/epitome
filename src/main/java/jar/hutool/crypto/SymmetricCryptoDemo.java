@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * SymmetricCrypto  对称加密
  * https://hutool.cn/docs/#/crypto/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-SymmetricCrypto
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/crypto/symmetric/SymmetricCrypto.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/symmetric/SymmetricCrypto.html
  *
  * @author ljh
  * created on 2020/11/9 9:30

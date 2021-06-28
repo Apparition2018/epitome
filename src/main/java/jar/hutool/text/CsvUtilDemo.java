@@ -16,10 +16,10 @@ import java.util.List;
  * CSV Comma-Separated Values，逗号分隔值，也称为字符分隔值，因为分隔字符也可以不是逗号，其文件以纯文本形式存储表格数据（数字和文本）。
  * <p>
  * https://hutool.cn/docs/#/core/%E6%96%87%E6%9C%AC%E6%93%8D%E4%BD%9C/CSV%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7-CsvUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/text/csv/CsvUtil.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/text/csv/CsvWriter.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/text/csv/CsvBaseReader.html
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/text/csv/CsvRow.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvWriter.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvBaseReader.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvRow.html
  *
  * @author ljh
  * created on 2020/11/5 9:08

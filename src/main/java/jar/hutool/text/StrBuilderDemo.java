@@ -10,7 +10,7 @@ import static l.demo.Demo.p;
 /**
  * StrBuilder       可复用字符串生成器
  * https://hutool.cn/docs/#/core/%E6%96%87%E6%9C%AC%E6%93%8D%E4%BD%9C/%E5%8F%AF%E5%A4%8D%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90%E5%99%A8-StrBuilder
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/text/StrBuilder.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/StrBuilder.html
  *
  * @author Arsenal
  * created on 2020/11/5 2:20

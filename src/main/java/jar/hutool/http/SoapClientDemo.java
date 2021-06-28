@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
  * 2.3.命名空间，前缀为 web，URI为 http://WebXml.com.cn/
  * <p>
  * https://hutool.cn/docs/#/http/WebService/Soap%E5%AE%A2%E6%88%B7%E7%AB%AF-SoapClient
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/http/webservice/SoapClient.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/webservice/SoapClient.html
  *
  * @author Arsenal
  * created on 2020/11/2 23:41

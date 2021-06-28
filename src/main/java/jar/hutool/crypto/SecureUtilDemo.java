@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * SecureUtil   加密解密工具
  * https://hutool.cn/docs/#/crypto/%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E5%B7%A5%E5%85%B7-SecureUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/crypto/SecureUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/SecureUtil.html
  *
  * @author Arsenal
  * created on 2020/11/9 2:16
@@ -24,7 +24,7 @@ public class SecureUtilDemo extends Demo {
     /**
      * HMac
      * https://hutool.cn/docs/#/crypto/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81%E7%AE%97%E6%B3%95-HMac
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/crypto/digest/HMac.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/HMac.html
      * HmacAlgorithm: HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384, HmacSHA512, HmacSM3
      */
     @Test
@@ -39,7 +39,7 @@ public class SecureUtilDemo extends Demo {
     /**
      * Sign 签名和验证
      * https://hutool.cn/docs/#/crypto/%E7%AD%BE%E5%90%8D%E5%92%8C%E9%AA%8C%E8%AF%81-Sign
-     * https://apidoc.gitee.com/loolly/hutool/cn/hutool/crypto/asymmetric/Sign.html
+     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/Sign.html
      * SignAlgorithm: MD5withRSA, SHA256withRSA, SHA1withDSA, SHA256withECDSA ......
      */
     @Test

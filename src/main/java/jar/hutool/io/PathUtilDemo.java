@@ -22,7 +22,7 @@ import java.nio.file.attribute.BasicFileAttributes;
  * static BufferedReader	    getReader(Path path, Charset charset)           获得一个文件读取器
  * static BufferedReader	    getUtf8Reader(Path path)                        获得一个文件读取器
  * <p>
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/io/file/PathUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/file/PathUtil.html
  *
  * @author ljh
  * created on 2020/10/30 9:25

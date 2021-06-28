@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
  * DFA (Deterministic Finite Automaton)     确定有穷自动机
  * https://hutool.cn/docs/#/dfa/%E6%A6%82%E8%BF%B0
  * https://hutool.cn/docs/#/dfa/DFA%E6%9F%A5%E6%89%BE
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/dfa/WordTree.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/dfa/WordTree.html
  * 基于DFA敏感词查询的算法简析：https://www.cnblogs.com/naaoveGIS/archive/2016/10/14/5960352.html
  *
  * @author ljh

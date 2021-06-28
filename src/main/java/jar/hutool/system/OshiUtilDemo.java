@@ -8,7 +8,7 @@ import static l.demo.Demo.p;
 /**
  * OshiUtil     获取系统和硬件信息工具
  * 需要引入 com.github.oshi:oshi-core
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/system/oshi/OshiUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/system/oshi/OshiUtil.html
  * 使用 oshi 获取主机信息：https://www.cnblogs.com/weechang/p/12493978.html
  *
  * @author ljh

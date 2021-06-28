@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * TypeUtil     泛型类型工具
  * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B%E5%B7%A5%E5%85%B7-TypeUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/util/TypeUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/TypeUtil.html
  *
  * @author ljh
  * created on 2020/10/29 12:48

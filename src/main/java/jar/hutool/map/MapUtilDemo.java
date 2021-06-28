@@ -37,7 +37,7 @@ import java.util.Map;
  * static <T extends Map<K,V>,K,V> T    defaultIfEmpty(T map, T defaultMap)                 如果为空则返回空默认 map
  * <p>
  * https://hutool.cn/docs/#/core/Map/Map%E5%B7%A5%E5%85%B7-MapUtil
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/map/MapUtil.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/map/MapUtil.html
  *
  * @author Arsenal
  * created on 2020/10/29 2:36
@@ -51,8 +51,8 @@ public class MapUtilDemo extends Demo {
         Map<Object, Object> buildMap = MapBuilder.create().put(1, "A").put(2, "B").put(3, "C").build();
         Map<Object, Object> empty = MapUtil.empty();
 
-        // filter(Map, Editor)                                  经过 Editor 处理返回
-        p(MapUtil.filter(map2, (Editor<Map.Entry<Integer, String>>) intStrEntry -> {
+        // edit(Map, Editor)                                    经过 Editor 处理返回
+        p(MapUtil.edit(map2, intStrEntry -> {
             if (intStrEntry.getKey() % 2 == 1) {
                 return intStrEntry;
             }

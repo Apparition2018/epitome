@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  * TableMap     可重复键 Map
  * TableMap 支持键值重复，且正反向查找
  * https://hutool.cn/docs/#/core/Map/%E5%8F%AF%E9%87%8D%E5%A4%8D%E9%94%AE%E5%80%BCMap-TableMap
- * https://apidoc.gitee.com/loolly/hutool/cn/hutool/core/map/TableMap.html
+ * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/map/TableMap.html
  *
  * @author ljh
  * created on 2020/11/2 11:49
