@@ -4,6 +4,9 @@
 ## 杂
 1. [版本号命名规则](https://mp.weixin.qq.com/s/ZoUG9h1TndW2QpnPyGeIQA)
 2. [Chrome 优化指南](https://blog.csdn.net/duanluan/article/details/111271536)
+3. [编程常用缩写](https://blog.csdn.net/zhaoguanghui2012/article/details/51144156)
+    `count      cnt`
+```
 ---
 ## 服务
 WIN+R 输入 services.msc

@@ -23,9 +23,9 @@ import java.util.stream.Stream;
  * Stream 应该只允许被中间或终端操作操作一次，若 Stream 被检测到重用，将抛出 IllegalStateException。
  * 如果实在要重复操作同一个 Stream，可以通过 Supplier 获取新的 Stream {@link FunctionDemo.SupplierDemo#testSupplier()}
  * <p>
- * https://blog.csdn.net/icarusliu/article/details/79495534
- * https://blog.csdn.net/icarusliu/article/details/79504602
- * https://blog.csdn.net/u011001723/article/details/52794455
+ * 函数式编程：https://blog.csdn.net/icarusliu/article/details/79495534
+ * Stream reduce() 和 Collect()：https://blog.csdn.net/icarusliu/article/details/79504602
+ * 深入浅出 parallelStream：https://blog.csdn.net/u011001723/article/details/52794455
  * http://www.runoob.com/java/java8-streams.html
  *
  * @author ljh
@@ -131,7 +131,7 @@ public class StreamDemo extends Demo {
         p();
 
         // isParallel       判断当前 Stream 是否并行
-        p(Stream.of(9, 7, 5, 3, 1).isParallel()); // false
+        p(Stream.of(9, 7, 5, 3, 1).isParallel()); // false  
 
         // toArray()        返回所有元素的数组
         p(Stream.of(9, 7, 5, 3, 1).toArray()); // [9, 7, 5, 3, 1]
