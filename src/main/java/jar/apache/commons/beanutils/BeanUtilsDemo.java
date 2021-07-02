@@ -71,7 +71,7 @@ public class BeanUtilsDemo extends Demo {
     /**
      * HttpServletRequest → JavaBean
      * <p>
-     * https://www.cnblogs.com/vmax-tam/p/4159985.html
+     * BeanUtils 工具：https://www.cnblogs.com/vmax-tam/p/4159985.html
      */
     @SuppressWarnings({"unchecked", "unused"})
     public static <T> T requestToBean(HttpServletRequest request, Class<T> clazz) {
