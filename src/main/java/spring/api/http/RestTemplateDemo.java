@@ -94,7 +94,6 @@ public class RestTemplateDemo extends Demo {
             default:
                 url = DEMO_URI + "get?id={id}&name={name}";
                 responseEntity = restTemplate.getForEntity(url, Student.class, map);
-                break;
         }
         printResponseEntity(responseEntity);
 
@@ -129,7 +128,6 @@ public class RestTemplateDemo extends Demo {
                 // http://localhost:3333/demo/post3
                 url = DEMO_URI + "post3";
                 responseEntity = restTemplate.postForEntity(url, person, Student.class);
-                break;
         }
         printResponseEntity(responseEntity);
 
@@ -156,7 +154,6 @@ public class RestTemplateDemo extends Demo {
             default:
                 url = DEMO_URI + "path/{id}/{name}";
                 responseEntity = restTemplate.getForEntity(url, Student.class, map);
-                break;
         }
         printResponseEntity(responseEntity);
 
@@ -176,7 +173,6 @@ public class RestTemplateDemo extends Demo {
             default:
                 url = DEMO_URI + "path/{id}/{name}";
                 responseEntity = restTemplate.postForEntity(url, null, Student.class, map);
-                break;
         }
         printResponseEntity(responseEntity);
 

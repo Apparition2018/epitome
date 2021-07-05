@@ -56,7 +56,6 @@ public class ExcelUtils<T> {
                                 break;
                             default:
                                 method.invoke(t, getValue(row.getCell(cellNum)));
-                                break;
                         }
                     }
                 }
