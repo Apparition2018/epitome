@@ -1,4 +1,4 @@
-package knowledge.codec.crypto;
+package knowledge.security.crypto;
 
 import org.apache.commons.codec.binary.Base64;
 

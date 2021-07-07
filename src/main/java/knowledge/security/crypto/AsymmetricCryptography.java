@@ -1,4 +1,4 @@
-package knowledge.codec.crypto;
+package knowledge.security.crypto;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -104,13 +104,13 @@ public class AsymmetricCryptography {
     /**
      * 用私钥对信息生成数字签名
      *
-     * @param data       已加密数据
-     * @param privateKey 私钥 (Base64)
+     * @param data              已加密数据
+     * @param privateKeyBase64  私钥 (Base64)
      * @return 数字签名
      */
-    public String sign(byte[] data, String privateKey) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, SignatureException {
+    public String sign(byte[] data, String privateKeyBase64) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, SignatureException {
         // String → byte[]
-        byte[] keyBytes = Base64.getDecoder().decode(privateKey);
+        byte[] keyBytes = Base64.getDecoder().decode(privateKeyBase64);
 
         // 此类表示按照 ASN.1 类型 PrivateKeyInfo 进行编码的专用密钥的 ASN.1 编码
         PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(keyBytes);
@@ -121,7 +121,7 @@ public class AsymmetricCryptography {
 
         // PrivateKey	generatePrivate(KeySpec keySpec)
         // 根据提供的密钥规范（密钥材料）生成私钥对象
-        PrivateKey privateK = keyFactory.generatePrivate(pkcs8KeySpec);
+        PrivateKey privateKey = keyFactory.generatePrivate(pkcs8KeySpec);
 
         // Signature 类用来为应用程序提供数字签名算法功能。
         // 数字签名用于确保数字数据的验证和完整性。
@@ -129,7 +129,7 @@ public class AsymmetricCryptography {
 
         // void	        initSign(PrivateKey privateKey)
         // 初始化这个用于签名的对象
-        signature.initSign(privateK);
+        signature.initSign(privateKey);
 
         // void	        update(byte[] data)
         // 使用指定的 byte 数组更新要签名或验证的数据
@@ -141,14 +141,14 @@ public class AsymmetricCryptography {
     /**
      * 校验数字签名
      *
-     * @param data      已加密数据
-     * @param publicKey 公钥 (Base64)
-     * @param sign      数字签名
+     * @param data              已加密数据
+     * @param publicKeyBase64   公钥 (Base64)
+     * @param sign              数字签名
      * @return 是否通过验证
      */
-    public static boolean verify(byte[] data, String publicKey, String sign) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, SignatureException {
+    public static boolean verify(byte[] data, String publicKeyBase64, String sign) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, SignatureException {
         // byte[] → String
-        byte[] keyBytes = Base64.getDecoder().decode(publicKey);
+        byte[] keyBytes = Base64.getDecoder().decode(publicKeyBase64);
 
         // 此类表示根据 ASN.1 类型 SubjectPublicKeyInfo 进行编码的公用密钥的 ASN.1 编码。
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
@@ -157,10 +157,10 @@ public class AsymmetricCryptography {
 
         // PublicKey	generatePublic(KeySpec keySpec)
         // 根据提供的密钥规范（密钥材料）生成公钥对象
-        PublicKey publicK = keyFactory.generatePublic(keySpec);
+        PublicKey publicKey = keyFactory.generatePublic(keySpec);
 
         Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
-        signature.initVerify(publicK);
+        signature.initVerify(publicKey);
         signature.update(data);
 
         return signature.verify(Base64.getDecoder().decode(sign));
@@ -171,16 +171,16 @@ public class AsymmetricCryptography {
      *
      * @param data    已加密数据/源数据
      * @param key     密钥 (Base64)
-     * @param enumKey 密钥枚举 (KEY.PRIVATE_KEY, KEY.PUBLIC_KEY)
+     * @param keyEnum 密钥枚举 (KEY.PRIVATE_KEY, KEY.PUBLIC_KEY)
      * @param crypto  加解密枚举 (Crypto.ENCRYPT, Crypto.DECRYPT)
      * @return 解密后数据/加密后数据
      */
-    public static byte[] decryptByKey(byte[] data, byte[] key, KEY enumKey, Crypto crypto) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, IOException, BadPaddingException, IllegalBlockSizeException {
+    public static byte[] decryptByKey(byte[] data, byte[] key, KEY keyEnum, Crypto crypto) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, IOException, BadPaddingException, IllegalBlockSizeException {
         Key k = null;
 
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
 
-        switch (enumKey) {
+        switch (keyEnum) {
             case PRIVATE_KEY:
                 PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(key);
                 k = keyFactory.generatePrivate(pkcs8KeySpec);

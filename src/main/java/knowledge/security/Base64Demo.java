@@ -1,4 +1,4 @@
-package knowledge.codec;
+package knowledge.security;
 
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;

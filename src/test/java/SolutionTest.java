@@ -9,7 +9,7 @@ import java.util.Set;
  * @author ljh
  * created on 2021/6/16 10:15
  */
-public class Solution {
+public class SolutionTest {
 
     public static class Easy {
 
