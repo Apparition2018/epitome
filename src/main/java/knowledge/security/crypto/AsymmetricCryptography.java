@@ -39,30 +39,29 @@ import java.util.Map;
  * created on 2020/11/18 19:37
  */
 public class AsymmetricCryptography {
-
-    // 非对称加密算法 RSA
+    /**
+     * 非对称加密算法
+     */
     private static final String KEY_ALGORITHM = "RSA";
-
+    /**
+     * 签名算法
+     */
+    private static final String SIGNATURE_ALGORITHM = "MD5withRSA";
+    /**
+     * RSA 最大加密明文大小
+     */
+    private static final int MAX_ENCRYPT_BLOCK = 117;
+    /**
+     * RSA 最大解密密文大小
+     */
+    private static final int MAX_DECRYPT_BLOCK = 128;
     /**
      * 密钥长度必须是 64 的倍数，在 512~65536 位之间
      * DH 算法的默认密钥长度是 1024
      */
     private static final int KEY_SIZE = 1024;
-
-    // 签名算法
-    private static final String SIGNATURE_ALGORITHM = "MD5withRSA";
-
-    // 获取公钥的 key
     private static final String PUBLIC_KEY = "RSAPublicKey";
-
-    // 获取私钥的 key
     private static final String PRIVATE_KEY = "RSAPrivateKey";
-
-    // RSA 最大加密明文大小
-    private static final int MAX_ENCRYPT_BLOCK = 117;
-
-    // RSA 最大解密密文大小
-    private static final int MAX_DECRYPT_BLOCK = 128;
 
     enum KEY {
         PUBLIC_KEY, PRIVATE_KEY
@@ -104,8 +103,8 @@ public class AsymmetricCryptography {
     /**
      * 用私钥对信息生成数字签名
      *
-     * @param data              已加密数据
-     * @param privateKeyBase64  私钥 (Base64)
+     * @param data             已加密数据
+     * @param privateKeyBase64 私钥 (Base64)
      * @return 数字签名
      */
     public String sign(byte[] data, String privateKeyBase64) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, SignatureException {
@@ -141,9 +140,9 @@ public class AsymmetricCryptography {
     /**
      * 校验数字签名
      *
-     * @param data              已加密数据
-     * @param publicKeyBase64   公钥 (Base64)
-     * @param sign              数字签名
+     * @param data            已加密数据
+     * @param publicKeyBase64 公钥 (Base64)
+     * @param sign            数字签名
      * @return 是否通过验证
      */
     public static boolean verify(byte[] data, String publicKeyBase64, String sign) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException, SignatureException {
@@ -175,7 +174,7 @@ public class AsymmetricCryptography {
      * @param crypto  加解密枚举 (Crypto.ENCRYPT, Crypto.DECRYPT)
      * @return 解密后数据/加密后数据
      */
-    public static byte[] decryptByKey(byte[] data, byte[] key, KEY keyEnum, Crypto crypto) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, IOException, BadPaddingException, IllegalBlockSizeException {
+    public static byte[] cryptoKey(byte[] data, byte[] key, KEY keyEnum, Crypto crypto) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, IOException, BadPaddingException, IllegalBlockSizeException {
         Key k = null;
 
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);

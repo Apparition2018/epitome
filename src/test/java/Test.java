@@ -21,6 +21,7 @@
 // Curator
 // Mysql慢查询日志
 // springboot中使用h2数据库（内存模式）:https://www.cnblogs.com/TheoryDance/p/11941180.html
+// spring-boot-dependencies 中的各个依赖
 
 // 记一次完整的java项目压力测试：https://www.cnblogs.com/jpfss/p/11645793.html
 // https://www.jianshu.com/u/8bbac962b31a
