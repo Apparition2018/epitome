@@ -11,11 +11,10 @@ import java.util.List;
  * <p>
  * static <E> LinkedList<E>             newLinkedList([Iterable<? extends E> elements])             创建 LinkedList
  * static <E> CopyOnWriteArrayList<E>   newCopyOnWriteArrayList([Iterable<? extends E> elements])   创建 CopyOnWriteArrayList
- * <p>
  * static <T> List<T>	                reverse(List<T> list)                                       返回指定列表的反向视图
  * <p>
- * http://www.ibloger.net/article/3312.html
- * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Lists.html
+ * 【集合工具】Lists 类：http://www.ibloger.net/article/3312.html
+ * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Lists.html
  *
  * @author ljh
  * created on 2019/8/8 19:39

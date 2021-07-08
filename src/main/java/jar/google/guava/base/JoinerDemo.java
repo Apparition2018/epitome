@@ -6,15 +6,14 @@ import com.google.common.collect.Lists;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * Joiner
- * http://www.ibloger.net/article/3334.html
- * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/base/Joiner.html
+ * 【字符串处理】Joiner 连接器：http://www.ibloger.net/article/3334.html
+ * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Joiner.html
  *
  * @author ljh
  * created on 2019/8/8 19:39
@@ -49,7 +48,7 @@ public class JoinerDemo extends Demo {
      */
     @Test
     public void appendTo() {
-        try (FileWriter writer = new FileWriter(new File(DEMO_PATH + "join.txt"))) {
+        try (FileWriter writer = new FileWriter(DEMO_PATH + "join.txt")) {
             // <A extendsAppendable> A	appendTo(A appendable, Iterable<?> parts)
             // 将parts通过连接器的连接符连接成字符串，并拼接到appendable后
             Joiner.on("-").appendTo(writer, list);

@@ -13,9 +13,9 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Map
- * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Maps.html
- * http://www.ibloger.net/article/3314.html
+ * Maps
+ * 【集合工具】Maps 类：http://www.ibloger.net/article/3314.html
+ * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Maps.html
  * <p>
  * static ConcurrentMap<K, V>   newConcurrentMap()                                  创建 ConcurrentMap
  * static TreeMap<K, V>         newTreeMap([SortedMap<K, ? extends V> map])         创建 TreeMap

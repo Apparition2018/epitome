@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
  * SetMultimap
  * 1个 key 可以映射多个 value
  * <p>
- * http://www.ibloger.net/article/3316.html
- * https://blog.csdn.net/yaomingyang/article/details/80955872
- * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Multimap.html
+ * 【集合工具】Multimaps 类：http://www.ibloger.net/article/3316.html
+ * Guava 中 Multimap、HashMultimap 使用详解：https://blog.csdn.net/yaomingyang/article/details/80955872
+ * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Multimap.html
  *
  * @author ljh
  * created on 2019/8/8 19:39

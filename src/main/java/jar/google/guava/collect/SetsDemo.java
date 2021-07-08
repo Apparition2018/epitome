@@ -11,8 +11,8 @@ import java.util.TreeSet;
 
 /**
  * Sets
- * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/collect/Sets.html
- * http://www.ibloger.net/article/3313.html
+ * 【集合工具】Sets 类：http://www.ibloger.net/article/3313.html
+ * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Sets.html
  * <p>
  * static Set<E>                    newConcurrentHashSet([Iterable<? extends E> elements])      创建 ConcurrentHashSet
  * static CopyOnWriteArraySet<E>    newCopyOnWriteArraySet(Iterable<? extends E> elements)      创建 CopyOnWriteArraySet

@@ -43,11 +43,11 @@ import java.util.Enumeration;
  */
 public class CertificateDemo extends Demo {
 
-    private static final String KEY_PATH = "C:\\Users\\Administrator\\Desktop\\ljh.pfx";
+    private static final String KEY_PATH = DESKTOP + "ljh.pfx";
     private static final String KEY_PASSWORD = "123456";
     private static final String KEY_TYPE_JKS = "JKS";
     private static final String KEY_TYPE_PKCS12 = "PKCS12";
-    private static final String CERT_PATH = "C:\\Users\\Administrator\\Desktop\\ljh.cer";
+    private static final String CERT_PATH = DESKTOP + "ljh.cer";
     private static final String CERT_TYPE_X509 = "X.509";
     private static final String SIGN_ALGO = "SHA1withRSA";
 

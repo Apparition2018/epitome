@@ -11,9 +11,7 @@ import org.junit.jupiter.api.Test;
  * Preconditions    先决条件
  * 静态便利方法，帮助方法或构造函数检查调用是否正确(即是否满足其先决条件)。
  * 如果不满足先决条件，Preconditions方法将抛出指定类型的未检查异常，这将帮助抛出异常的方法通知调用者犯了错误。
- * <p>
- * https://guava.dev/releases/snapshot-jre/api/docs/
- * https://guava.dev/releases/snapshot-jre/api/docs/index.html?com/google/common/base/Preconditions.html
+ * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Preconditions.html
  *
  * @author ljh
  * created on 2019/8/8 19:39
@@ -23,8 +21,8 @@ public class PreconditionsDemo {
     @ToString
     @AllArgsConstructor
     private static class User {
-        private String userName;
-        private String password;
+        private final String userName;
+        private final String password;
     }
 
     /**

@@ -25,11 +25,11 @@ import java.security.cert.Certificate;
  */
 public class SecureUtilDemo extends Demo {
 
-    private static final String KEY_PATH = "C:\\Users\\Administrator\\Desktop\\ljh.pfx";
+    private static final String KEY_PATH = DESKTOP + "ljh.pfx";
     private static final String KEY_PASSWORD = "123456";
     private static final String KEY_TYPE_PKCS12 = "PKCS12";
     private static final String KEY_ALIAS = "ljh";
-    private static final String CERT_PATH = "C:\\Users\\Administrator\\Desktop\\ljh.cer";
+    private static final String CERT_PATH = DESKTOP + "ljh.cer";
 
     @Test
     public void testCertificate() throws FileNotFoundException, KeyStoreException {
