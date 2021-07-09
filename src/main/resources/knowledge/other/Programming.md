@@ -4,8 +4,8 @@
 ## 收藏
 1. [程序员你为什么这么累？(编程规范)](https://zhuanlan.zhihu.com/p/28705206)
 2. [反向代理为何叫反向代理？](https://www.zhihu.com/question/24723688)
-3. [session与token的区别](https://www.cnblogs.com/shijianchuzhenzhi/p/12317439.html)
-4. [Kubernetes和Docker到底有啥关系？](https://zhuanlan.zhihu.com/p/87186261)
+3. [Kubernetes和Docker到底有啥关系？](https://zhuanlan.zhihu.com/p/87186261)
+4. [Java 内存分配全面浅析](https://www.cnblogs.com/lixiaolun/p/4311775.html)
 ---
 ## 开源镜像站
 1. [阿里巴巴开源镜像站](https://developer.aliyun.com/mirror/)
@@ -21,6 +21,7 @@
 >2. Debug 启动项目 (修改 Java 文件时可以立刻生效)
 ---
 ## RPC
+0. [EasyRPC](https://github.com/yeecode/EasyRPC)
 1. [谁能用通俗的语言解释一下什么是 RPC 框架？](https://www.zhihu.com/question/25536695)
 2. [RPC是什么，与WebService有什么异同？](https://zhuanlan.zhihu.com/p/97640202)
 3. [WebService是什么？他究竟和WebSocket有什么关系？](https://cloud.tencent.com/developer/article/1405501)
@@ -54,6 +55,24 @@
 3. tasklist|findstr 9776，根据指定 PID 字符串查找任务，记下任务名
 4. taskkill /f /t /im WXWork.exe，或 taskkill /f /t /pid 333412
 ---
+## Web
+1. [什么是跨域？为什么要禁止跨域？怎样跨域？](https://blog.csdn.net/qq_28773159/article/details/104834167)
+2. [浅谈CSRF攻击方式](https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html)
+---
+## SSO
+- 步骤：存储票据，查验票据
+1. [什么是单点登录(原理与实现简介) ](https://www.cnblogs.com/wcwnina/p/9946623.html)
+2. [java sso单点登录实战_哔哩哔哩](https://www.bilibili.com/video/BV1hT4y157QF?p=2&spm_id_from=pageDriver)
+---
+## JWT
+1. [五分钟带你了解啥是JWT](https://zhuanlan.zhihu.com/p/86937325)
+2. [JWT 超详细分析](https://learnku.com/articles/17883)
+3. [jwt与token+redis，哪种方案更好用？](https://www.zhihu.com/question/274566992)
+---
+## Token
+1. [RESTful登录设计（基于Spring及Redis的Token鉴权）](www.scienjus.com/restful-token-authorization/)
+2. [session与token的区别](https://www.cnblogs.com/shijianchuzhenzhi/p/12317439.html)
+---
 ## 注释
 ```
 阿里编程规约：
@@ -74,16 +93,4 @@
     9. 服务器返回信息必须被标记是否可以缓存，如果缓存，客户端可能会重用之前的请求结果；http 1.1 中，s-maxage 告诉服务器进行缓存，时间单位为秒，用法如下，response.setHeader("Cache-Control", "s-maxage=" + cacheSeconds)；
     10. 在接口路径中不要加入版本号，版本控制在 HTTP 头信息中体现，有利于向前兼容
 ```
----
-## JWT
-1. [五分钟带你了解啥是JWT](https://zhuanlan.zhihu.com/p/86937325)
-2. [JWT 超详细分析](https://learnku.com/articles/17883)
-3. [jwt与token+redis，哪种方案更好用？](https://www.zhihu.com/question/274566992)
----
-## Token 登录
-1. [RESTful登录设计（基于Spring及Redis的Token鉴权）](www.scienjus.com/restful-token-authorization/)
----
-## 微信小程序
->### 登录设计
->1. 
 ---

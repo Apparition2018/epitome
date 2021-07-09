@@ -1,6 +1,4 @@
-// SpringBoot——启动初始化数据：https://www.jianshu.com/p/01e08aef73c9
 // Spring @Cache                            *** *** ***
-// 最小 rpc：https://link.zhihu.com/?target=https%3A//github.com/yeecode/EasyRPC
 // springboot+redis+shiro+spring-session实现session共享：https://blog.csdn.net/qq_29281307/article/details/90041380
 // Mysql慢查询日志
 // springboot中使用h2数据库（内存模式）:https://www.cnblogs.com/TheoryDance/p/11941180.html

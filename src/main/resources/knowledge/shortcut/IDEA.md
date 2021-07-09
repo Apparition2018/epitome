@@ -359,6 +359,7 @@ todo                            // TODO: $date$ $todo$
 >thr                            throw new
 >psc                            private static class (User)
 >pvt                            public void test (user)
+>ps                             private String (user)
 >```
 >### other
 >```
