@@ -19,10 +19,9 @@
 >>#### Editor Tabs
 >>```
 >>Alt + R                       Split Right (user)                  垂直分屏
->>Alt + D                       Split Down`` (user)                 水平分屏
+>>Alt + D                       Split Down (user)                   水平分屏
 >>Alt + ←                       Select Previous Tab                 上一个Tab
 >>Alt + →                       Select Next Tab                     下一个Tab
->>Ctrl + F4 | Alt + A           Close (user)                        关闭
 >>```
 >### Code
 >```
@@ -171,8 +170,6 @@
 >```
 >### File
 >```
->Alt + Shift + O                Open Recent (user)
->Ctrl + Shift + O               Open... (user)
 >Ctrl + Alt + S                 Settings...
 >Ctrl + Shift + Alt + S         Project Structure...
 >Ctrl + Alt + Y                 Synchronize                         同步
