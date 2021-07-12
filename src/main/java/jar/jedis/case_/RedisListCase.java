@@ -25,13 +25,13 @@ public class RedisListCase {
         @Test
         public void testRecentlyViewedGoods() {
             Jedis jedis = JedisUtils.getResource();
-            String user1Key = String.format(RECENTLY_VIEWED_GOODS_KEY, "Jack");
+            String userKey = String.format(RECENTLY_VIEWED_GOODS_KEY, "Jack");
             // 模拟之前已浏览了id为1~10的商品
-            IntStream.rangeClosed(1, 10).forEach(i -> jedis.lpush(user1Key, String.valueOf(i)));     
+            IntStream.rangeClosed(1, 10).forEach(i -> jedis.lpush(userKey, String.valueOf(i)));
             // 浏览商品8
-            viewGoods(jedis, user1Key, 8);
+            viewGoods(jedis, userKey, 8);
             // Jack 最近浏览商品 id 为：[8, 10, 9, 7, 6, 5, 4, 3, 2, 1]
-            System.out.println("Jack 最近浏览商品 id 为：" + getRecentlyViewedGoods(jedis, user1Key));
+            System.out.println("Jack 最近浏览商品 id 为：" + getRecentlyViewedGoods(jedis, userKey));
         }
 
         /**
