@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_221" class="java.beans.XMLDecoder">
+<java version="1.8.0_291" class="java.beans.XMLDecoder">
  <object class="l.demo.Person$Student">
   <void property="age">
    <int>19</int>

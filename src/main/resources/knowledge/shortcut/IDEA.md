@@ -68,7 +68,7 @@
 >   F                           Maven
 >F2                             Next Highlighted Error              下一条错误
 >Shift + F2                     Previous Highlighted Error          上一条错误
->Ctrl + G                       Line/Column...                      定位到指定行
+>Ctrl + G                       Go to Line:Column...                定位到指定行
 >Ctrl + F12                     File Structure                      文件结构
 >Ctrl + Alt + ←                 Back                                上一个位置
 >Ctrl + Alt + →                 Forward                             下一个位置
@@ -78,10 +78,10 @@
 >Ctrl + N                       Class...                            按类名搜索
 >Ctrl + Shift + N               File...                             按文件搜索
 >Ctrl + Shift + Alt + N         Symbol...                           按Symbol搜索
->Ctrl + B / Cick | Click2       Declaration or Usages               定位到声明的位置或显示在哪里被调用
->Ctrl + Shift + B               Type Declaration                    定位到变量类型定义的位置
->Ctrl + Alt + B                 Implemention(s)                     定位到实现的位置            ***
->Ctrl + U                       Super Method                        定位到父类/父类方法          ***
+>Ctrl + B / Cick | Click2       Go to Declaration or Usages         定位到声明的位置或显示在哪里被调用
+>Ctrl + Shift + B               Go to Type Declaration              定位到变量类型定义的位置
+>Ctrl + Alt + B                 Go to Implemention(s)               定位到实现的位置            ***
+>Ctrl + U                       Go to Super Method                  定位到父类/父类方法          ***
 >Alt + ↑                        Previous Method                     定位到上一个方法            ***
 >Alt + ↓                        Next Method                         定位到下一个方法
 >Ctrl + Alt + F12               File Path                           资源管理器打开文件夹          ***
@@ -357,6 +357,7 @@ todo                            // TODO: $date$ $todo$
 >psc                            private static class (User)
 >pvt                            public void test (user)
 >ps                             private String (user)
+>pi                             private Integer (user)
 >```
 >### other
 >```
