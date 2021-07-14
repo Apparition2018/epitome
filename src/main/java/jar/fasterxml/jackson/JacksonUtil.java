@@ -15,9 +15,6 @@ import java.util.Date;
 
 /**
  * https://www.cnblogs.com/yuanmo396022993/p/9118308.html
- * <p>
- * spring-boot 中 spring.jackson.date-format 失效及解决办法：
- * https://my.oschina.net/u/3681868/blog/3075150
  *
  * @author ljh
  * created on 2019/8/8 19:39
@@ -53,7 +50,7 @@ public class JacksonUtil {
         String json = obj2String(student);
         log.info("Obj -> String:\n" + json + "\n");
         log.info("String -> Obj:\n" + string2Obj(json, new TypeReference<Student>() {
-        }).toString());
+        }));
     }
 
     public static <T> String obj2String(T src) {
@@ -64,7 +61,7 @@ public class JacksonUtil {
             return src instanceof String ? (String) src : OBJECT_MAPPER.writeValueAsString(src);
         } catch (Exception e) {
             log.warn("parse Object to String exception, error:{}", e.getMessage());
-            return null; // 暂时返回空，也可抛出异常
+            return null;
         }
     }
 
