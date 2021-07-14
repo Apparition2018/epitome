@@ -1,5 +1,3 @@
-// Spring @Cache                            *** *** ***
-// springboot+redis+shiro+spring-session实现session共享：https://blog.csdn.net/qq_29281307/article/details/90041380
 // Mysql慢查询日志
 // springboot中使用h2数据库（内存模式）:https://www.cnblogs.com/TheoryDance/p/11941180.html
 // Spring Boot 2.x基础教程  http://blog.didispace.com/spring-boot-learning-2x/

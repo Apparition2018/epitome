@@ -110,7 +110,7 @@ public class LombokDemo {
 
     /**
      * `@EqualsAndHashCode
-     * 生成 hashCode() 和 equals()，同行仓情况下，所有 non-static, non-transient 字段都用于标识
+     * 生成 hashCode() 和 equals()，默认情况下，所有 non-static, non-transient 字段都用于标识
      * exclude:     排除
      * callSuper:   是否使用超类字段用于标识
      */
