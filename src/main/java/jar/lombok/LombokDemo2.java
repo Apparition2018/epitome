@@ -19,7 +19,7 @@ public class LombokDemo2 {
      * `@Accessors
      * 主要用于控制生成的 getter / setter
      * <p>
-     * fluent boolean 值，默认 false。控制生成的 getter / setter 方法前面是否带 get / set
+     * fluent boolean 值，默认 false。如果为 true，生成的 getter / setter 方法前面不带 get / set
      * chain boolean 值，默认 false。如果为 true，setter 返回的是此对象，方便链式调用方法
      * prefix 去除前缀
      */

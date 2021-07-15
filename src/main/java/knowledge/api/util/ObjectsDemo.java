@@ -13,7 +13,6 @@ import static l.demo.Demo.p;
  * Objects 由一些静态方法组成，这些方法是空指针安全的 (null-safe)，容忍空指针的 (null-tolerant)
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html
- * https://www.cnblogs.com/quiet-snowy-day/p/6387321.html
  *
  * @author ljh
  * created on 2020/10/23 20:09
