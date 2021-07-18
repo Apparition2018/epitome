@@ -57,21 +57,17 @@ public class StringDemo extends Demo {
     }
 
     /**
-     * String.intern()发生了啥：https://zhuanlan.zhihu.com/p/55468381
      * intern()：https://zhuanlan.zhihu.com/p/357872204
+     * 如果字符串常量池中已经包含一个等于此 String 对象的字符串，则返回代表池中这个字符串的 String 对象的引用；
+     * 否则，会将此 String 对象包含的字符串添加到常量池中，并且返回此 String 对象的引用
+     * JDK8 JVM 内存模型：https://pic2.zhimg.com/80/v2-16be2d34799123632909e415d956e111_720w.jpg
      */
     @Test
     public void intern() {
-        String s1 = "aaa";
-        String s2 = new String("aaa");
-        String s3 = s1.intern();
-        String s4 = s2.intern();
-        p(s1 == s2); // false
-        p(s1 == s3); // true
-        p(s1 == s4); // true
-        p(s2 == s3); // false
-        p(s2 == s4); // false
-        p(s3 == s4); // true
+        String s1 = new StringBuilder("计算机").append("软件").toString();
+        p(s1.intern() == s1); // true
+        String s2 = new StringBuilder("ja").append("va").toString();
+        p(s2.intern() == s2); // false；Java 启动阶段会自动在常量池中创建 java
     }
 
     @Test
