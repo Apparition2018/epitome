@@ -134,11 +134,11 @@ public class Person implements Comparable<Person>, Serializable {
          */
         private static final long serialVersionUID = 527285523879940432L;
         private String no;
-        // 不返回该属性
+        // 不参与序列化和反序列化
         @JsonIgnore
         // 被 transient 修饰的属性，在进行对象序列化时该值会被忽略，已达到对象瘦身的目的
         private transient String password;
-        // 会覆盖配置文件的 jason 配置
+        // 格式化
         @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss a", locale = "zh", timezone = "GMT+8")
         private Date birth;
         // 当不为 null 时才返回该属性
