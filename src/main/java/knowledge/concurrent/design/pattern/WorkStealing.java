@@ -62,7 +62,7 @@ public class WorkStealing extends Demo {
 
     @Getter
     @Setter
-    private static class Work implements Runnable {
+    static class Work implements Runnable {
         private String assignName;
         private final int jobId;
 
@@ -80,7 +80,7 @@ public class WorkStealing extends Demo {
         }
     }
 
-    private static class Machine implements Runnable {
+    static class Machine implements Runnable {
         private static AtomicInteger jobId = new AtomicInteger();
         private final LinkedBlockingDeque<Work> deque1;
         private final LinkedBlockingDeque<Work> deque2;

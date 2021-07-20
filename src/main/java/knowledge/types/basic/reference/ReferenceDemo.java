@@ -29,7 +29,7 @@ public class ReferenceDemo extends Demo {
      * 软引用
      * 你不可不知的Java引用类型之——软引用：https://www.cnblogs.com/mfrank/p/9781216.html
      */
-    public static class SoftReferenceDemo {
+    static class SoftReferenceDemo {
 
         /**
          * VM options: -verbose:gc -Xms4m -Xmx4m -Xmn2m
@@ -47,7 +47,7 @@ public class ReferenceDemo extends Demo {
             p(softCache.size());
         }
 
-        private static class OOMClass {
+        static class OOMClass {
             private String name;
             private int[] oom = new int[1024 * 100];
 
@@ -56,7 +56,7 @@ public class ReferenceDemo extends Demo {
             }
         }
 
-        private static class SoftCache<T> {
+        static class SoftCache<T> {
             // 引用队列
             private ReferenceQueue<T> referenceQueue = new ReferenceQueue<>();
             // 保存软引用集合，在引用对象被回收后销毁
@@ -113,7 +113,7 @@ public class ReferenceDemo extends Demo {
      * 虚引用
      * 你不可不知的 Java 引用类型之——虚引用：https://www.cnblogs.com/mfrank/p/9837070.html
      */
-    public static class PhantomReferenceDemo {
+    static class PhantomReferenceDemo {
 
         private static final List<Object> TEST_DATA = new LinkedList<>();
         private static final ReferenceQueue<Person> QUEUE = new ReferenceQueue<>();

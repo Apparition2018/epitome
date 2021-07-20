@@ -62,7 +62,7 @@ public class LombokDemo {
     @RequiredArgsConstructor
     @AllArgsConstructor
     @ToString
-    private static class User2 {
+    static class User2 {
 
         private Integer id;
         private final String name;
@@ -83,7 +83,7 @@ public class LombokDemo {
 
     @Data
     @RequiredArgsConstructor(staticName = "of")
-    private static class User3 {
+    static class User3 {
 
         private Integer id;
         private final String name;
@@ -138,7 +138,7 @@ public class LombokDemo {
     @Setter
     @ToString(exclude = "id", callSuper = true)
     @EqualsAndHashCode(exclude = "id", callSuper = true)
-    private static class User4 extends User {
+    static class User4 extends User {
 
         private Integer id;
         // 将 getter 默认访问修饰符 public 改为 private
@@ -153,7 +153,7 @@ public class LombokDemo {
      * 相当于 @Getter, 非 final @Setter, @ToString, @EqualsAndHashCode, @RequiredArgsConstructor
      */
     @Data
-    private static class User {
+    static class User {
         private String phone;
     }
 }

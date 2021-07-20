@@ -20,7 +20,7 @@ public class FunctionDemo extends Demo {
      * Function<T, R>
      * 接收一个参数 T，返回一个值 R
      */
-    private static class FunctionDemo2 {
+    static class FunctionDemo2 {
 
         public static void main(String[] args) {
             Function<Integer, Integer> plusSelf = i -> i + i;
@@ -37,7 +37,7 @@ public class FunctionDemo extends Demo {
      * BiFunction<T, U, R>
      * 接收两个参数 T, U，返回一个值 R
      */
-    private static class BiFunctionDemo {
+    static class BiFunctionDemo {
 
         public static void main(String[] args) {
             BiFunction<Integer, Integer, Integer> plus = Integer::sum;
@@ -53,7 +53,7 @@ public class FunctionDemo extends Demo {
      * BinaryOperator<T>
      * BiFunction 的一个特例，接收和返回的参数都是同一个类型
      */
-    private static class BinaryOperatorDemo {
+    static class BinaryOperatorDemo {
 
         public static void main(String[] args) {
             BinaryOperator<Integer> plus = Integer::sum;
@@ -70,7 +70,7 @@ public class FunctionDemo extends Demo {
      * 该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。
      * https://blog.csdn.net/w605283073/article/details/89410918
      */
-    private static class PredicateDemo {
+    static class PredicateDemo {
 
         public static void main(String[] args) {
             p("\n输出所有数据:");
@@ -102,7 +102,7 @@ public class FunctionDemo extends Demo {
      * 接收一个参数 T，不返回结果，用来对参数进行任意(消费)处理
      * https://www.jianshu.com/p/63771441ba31
      */
-    private static class ConsumerDemo {
+    static class ConsumerDemo {
 
         public static void main(String[] args) {
             Consumer<String> consumer1 = o -> {
@@ -124,7 +124,7 @@ public class FunctionDemo extends Demo {
      * 不接受参数，返回一个新的对象 T
      * https://blog.csdn.net/m0_37779570/article/details/81871197
      */
-    private static class SupplierDemo {
+    static class SupplierDemo {
 
         /**
          * 一个 Stream 只允许被中间或终端操作操作一次，

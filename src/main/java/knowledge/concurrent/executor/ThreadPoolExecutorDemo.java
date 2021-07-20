@@ -48,7 +48,7 @@ public class ThreadPoolExecutorDemo extends Demo {
     /**
      * 创建线程或线程池时请指定有意义的线程名称，方便出错时回溯（阿里编程规约）
      */
-    private static class MyThreadFactory implements ThreadFactory {
+    static class MyThreadFactory implements ThreadFactory {
 
         private final String namePrefix;
         private final AtomicInteger nextId = new AtomicInteger(1);
@@ -66,7 +66,7 @@ public class ThreadPoolExecutorDemo extends Demo {
         }
     }
 
-    private static class MyRejectHandler implements RejectedExecutionHandler {
+    static class MyRejectHandler implements RejectedExecutionHandler {
 
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
@@ -83,7 +83,7 @@ public class ThreadPoolExecutorDemo extends Demo {
      * 创建一个定长线程池，支持定时及周期性任务执行
      * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ScheduledThreadPoolExecutor.html
      */
-    private static class ScheduledThreadPoolExecutorDemo extends Demo {
+    static class ScheduledThreadPoolExecutorDemo extends Demo {
 
         public static void main(String[] args) {
             // ScheduledThreadPoolExecutor(int corePoolSize)

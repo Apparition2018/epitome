@@ -24,7 +24,7 @@ public class HtmlUtilDemo extends Demo {
         html = HtmlUtil.filter(html);
 
         // removeHtml(html, tagName...)     去除指定标签及其内容
-        p(HtmlUtil.removeHtmlTag("a<img src='xxx/xxx/test.jpg'>", "img"));      // a
+        p(HtmlUtil.removeHtmlTag("a<div class='test_div'>b</div>", "div"));     // a
         // unwrapHtmlTag(html, tagName...)  去除指定标签保留内容
         p(HtmlUtil.unwrapHtmlTag("a<div class='test_div'>b</div>", "div"));     // ab
         // cleanHtmlTag(html)               去除所有标签保留内容

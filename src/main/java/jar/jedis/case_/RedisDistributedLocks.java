@@ -99,7 +99,7 @@ public class RedisDistributedLocks {
         boolean releaseLock(Jedis jedis, String key, String val);
     }
 
-    private static class LockInitial implements Lock {
+    static class LockInitial implements Lock {
 
         public static Random random = new Random();
 

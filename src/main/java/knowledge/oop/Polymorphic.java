@@ -39,7 +39,7 @@ public class Polymorphic {
     /**
      * 静态分派     重载
      */
-    private static class StaticDispatch {
+    static class StaticDispatch {
 
         public static void main(String[] args) {
             Human man = new Man();
@@ -51,10 +51,10 @@ public class Polymorphic {
         private static abstract class Human {
         }
 
-        private static class Man extends Human {
+        static class Man extends Human {
         }
 
-        private static class Woman extends Human {
+        static class Woman extends Human {
         }
 
         public static void sayHello(Human guy) {
@@ -73,7 +73,7 @@ public class Polymorphic {
     /**
      * 动态分派     重写
      */
-    private static class DynamicDispatch {
+    static class DynamicDispatch {
 
         public static void main(String[] args) {
             Human man = new Man();
@@ -88,14 +88,14 @@ public class Polymorphic {
             protected abstract void sayHello();
         }
 
-        private static class Man extends Human {
+        static class Man extends Human {
             @Override
             protected void sayHello() {
                 System.out.println("man say hello!");
             }
         }
 
-        private static class Woman extends Human {
+        static class Woman extends Human {
             @Override
             protected void sayHello() {
                 System.out.println("woman say hello!");

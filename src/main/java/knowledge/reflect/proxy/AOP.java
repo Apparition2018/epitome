@@ -45,7 +45,7 @@ public class AOP {
     @Order(1)
     @Aspect
     @Component
-    public static class StopWatchAspect {
+    static class StopWatchAspect {
 
         long start;
         long end;
@@ -93,7 +93,7 @@ public class AOP {
     @Order(2)
     @Aspect
     @Component
-    public static class ConnectionAspect {
+    static class ConnectionAspect {
 
         /**
          * 环绕通知
@@ -116,7 +116,7 @@ public class AOP {
     @Order(3)
     @Aspect
     @Component
-    public static class TransactionAspect {
+    static class TransactionAspect {
 
         @Pointcut("@annotation(knowledge.reflect.proxy.domain.Man.AOP)")
         public void pointcut1() {

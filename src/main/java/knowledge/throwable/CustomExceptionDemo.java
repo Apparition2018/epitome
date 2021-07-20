@@ -32,7 +32,7 @@ public class CustomExceptionDemo {
     /**
      * 自定义异常类
      */
-    private static class CustomException extends RuntimeException {
+    static class CustomException extends RuntimeException {
 
         private static final long serialVersionUID = 1612100152025079049L;
         private double amount;
@@ -52,7 +52,7 @@ public class CustomExceptionDemo {
     /**
      * 模拟银行账户
      */
-    private static class CheckingAccount {
+    static class CheckingAccount {
 
         /**
          * 余额

@@ -53,7 +53,7 @@ public class ServletUtilDemo extends HttpServlet {
                 .execute();
     }
 
-    private static class M extends Demo {
+    static class M extends Demo {
 
     }
 }

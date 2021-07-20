@@ -28,7 +28,7 @@ public class CloneableDemo {
     /**
      * 支持泛型的克隆接口
      */
-    private static class X implements Cloneable<X> {
+    static class X implements Cloneable<X> {
 
         @Override
         public X clone() {
@@ -44,7 +44,7 @@ public class CloneableDemo {
     /**
      * 支持泛型的克隆类
      */
-    private static class Y extends CloneSupport<Y> {
+    static class Y extends CloneSupport<Y> {
 
     }
 }

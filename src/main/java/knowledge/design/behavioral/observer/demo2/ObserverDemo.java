@@ -23,7 +23,7 @@ public class ObserverDemo {
         subject.setState(10);
     }
 
-    private static class Subject {
+    static class Subject {
 
         private List<Observer> observers = new ArrayList<>();
         private int state;
@@ -54,7 +54,7 @@ public class ObserverDemo {
         public abstract void update();
     }
 
-    private static class BinaryObserver extends Observer {
+    static class BinaryObserver extends Observer {
 
         BinaryObserver(Subject subject) {
             this.subject = subject;
@@ -67,7 +67,7 @@ public class ObserverDemo {
         }
     }
 
-    private static class OctalObserver extends Observer {
+    static class OctalObserver extends Observer {
 
         OctalObserver(Subject subject) {
             this.subject = subject;
@@ -80,7 +80,7 @@ public class ObserverDemo {
         }
     }
 
-    private static class HexObserver extends Observer {
+    static class HexObserver extends Observer {
 
         HexObserver(Subject subject) {
             this.subject = subject;

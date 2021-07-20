@@ -21,7 +21,7 @@ public class RedisZSetCase {
     /**
      * 热门书籍
      */
-    public static class HotBooks {
+    static class HotBooks {
 
         private static final String HOT_BOOKS_KEY = "hot_articles";
         private static final String HOT_BOOKS_20210501 = HOT_BOOKS_KEY.concat(":20210501");

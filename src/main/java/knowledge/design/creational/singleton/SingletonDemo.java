@@ -34,7 +34,7 @@ public class SingletonDemo {
     /**
      * 饿汉模式，线程安全
      */
-    private static class EagerSingleton {
+    static class EagerSingleton {
         // 1.创建类的唯一实例，使用 private static 修饰
         // 类加载就创建唯一实例，以空间换时间，故不存在线程安全问题，形象称为饿汉模式
         private static EagerSingleton instance = new EagerSingleton();
@@ -53,7 +53,7 @@ public class SingletonDemo {
     /**
      * 懒汉模式，线程不安全
      */
-    private static class LazySingleton {
+    static class LazySingleton {
         private static LazySingleton instance;
 
         private LazySingleton() {
@@ -83,7 +83,7 @@ public class SingletonDemo {
      * 这样的话，就会出现异常。这个就是著名的 DCL 失效问题。
      * JDK1.6 开始，volatile 确保 instance 每次均在主内存中读取，解决了 DCL 失效问题
      */
-    private static class DoubleCheckLockSingleton {
+    static class DoubleCheckLockSingleton {
         private volatile static DoubleCheckLockSingleton instance;
 
         private DoubleCheckLockSingleton() {
@@ -107,9 +107,9 @@ public class SingletonDemo {
      * 内部类属于被动引用，类加载时不会对其进行初始化，所以实现了延迟加载
      * 缺点：外部无法传递参数进去内部类里
      */
-    private static class StaticInnerClassSingleton {
+    static class StaticInnerClassSingleton {
 
-        private static class SingletonHolder {
+        static class SingletonHolder {
             private static StaticInnerClassSingleton instance = new StaticInnerClassSingleton();
         }
 
@@ -150,7 +150,7 @@ public class SingletonDemo {
      * 容器管理，线程不安全
      * 在程序初始化的时候，把多个单例放到 map 里边统一管理
      */
-    private static class SingletonManager {
+    static class SingletonManager {
         private static Map<String, Object> singletonMap = new HashMap<>();
 
         private SingletonManager() {

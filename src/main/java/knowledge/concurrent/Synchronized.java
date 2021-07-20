@@ -60,7 +60,7 @@ public class Synchronized extends Demo {
         countDownLatch.await();
     }
 
-    private static class Table {
+    static class Table {
 
         private final Object lock = new Object();
 

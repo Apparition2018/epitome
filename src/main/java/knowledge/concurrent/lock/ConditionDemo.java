@@ -63,7 +63,7 @@ public class ConditionDemo extends Demo {
         p("********** 消费者消费完毕 **********");
     }
 
-    private static class Producer implements Runnable {
+    static class Producer implements Runnable {
         private static AtomicInteger goodsId = new AtomicInteger();
         private LinkedList<Integer> list;
 
@@ -104,7 +104,7 @@ public class ConditionDemo extends Demo {
         }
     }
 
-    private static class Consumer implements Runnable {
+    static class Consumer implements Runnable {
         private LinkedList<Integer> list;
         private int consumerIndex;
 

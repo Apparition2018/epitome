@@ -50,7 +50,7 @@ public class ProducerAndConsumer extends Demo {
         p("********** 消费者消费完毕 **********");
     }
 
-    private static class Producer implements Runnable {
+    static class Producer implements Runnable {
         private static AtomicInteger goodsId = new AtomicInteger();
         private BlockingQueue<Integer> queue;
 
@@ -77,7 +77,7 @@ public class ProducerAndConsumer extends Demo {
         }
     }
 
-    private static class Consumer implements Runnable {
+    static class Consumer implements Runnable {
         private BlockingQueue<Integer> queue;
         private int consumerIndex;
 

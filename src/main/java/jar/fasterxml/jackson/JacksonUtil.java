@@ -44,6 +44,8 @@ public class JacksonUtil {
         OBJECT_MAPPER.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         // 允许出现特殊字符和转义符
         OBJECT_MAPPER.enable(JsonReadFeature.ALLOW_UNESCAPED_CONTROL_CHARS.mappedFeature());
+        // 同上
+        // OBJECT_MAPPER.enable(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS);
         // 允许出现单引号
         OBJECT_MAPPER.enable(JsonParser.Feature.ALLOW_SINGLE_QUOTES);
     }

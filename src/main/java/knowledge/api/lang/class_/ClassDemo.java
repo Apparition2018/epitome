@@ -41,7 +41,7 @@ import static l.demo.Demo.p;
  */
 public class ClassDemo {
 
-    private static class ClassInnerDemo {
+    static class ClassInnerDemo {
     }
 
     /**

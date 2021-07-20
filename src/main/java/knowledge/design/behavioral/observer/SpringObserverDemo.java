@@ -29,7 +29,7 @@ public class SpringObserverDemo {
     /**
      * Spring
      */
-    public static class SpringListener {
+    static class SpringListener {
 
         @Test
         public void testSpringListener() {
@@ -49,7 +49,7 @@ public class SpringObserverDemo {
          * 事件源
          * 事件状态对象
          */
-        private static class OrderEvent extends ApplicationEvent {
+        static class OrderEvent extends ApplicationEvent {
 
             private String message;
 
@@ -75,7 +75,7 @@ public class SpringObserverDemo {
         /**
          * 监听者
          */
-        private static class SmsListener implements ApplicationListener<OrderEvent> {
+        static class SmsListener implements ApplicationListener<OrderEvent> {
 
             @Async
             @Override
@@ -87,7 +87,7 @@ public class SpringObserverDemo {
         /**
          * 监听者
          */
-        private static class EmailListener implements ApplicationListener<OrderEvent> {
+        static class EmailListener implements ApplicationListener<OrderEvent> {
 
             @Async
             @Override

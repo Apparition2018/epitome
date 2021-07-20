@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
  */
 public class RestTemplateUtils {
 
-    private static class DefaultResponseErrorHandler implements ResponseErrorHandler {
+    static class DefaultResponseErrorHandler implements ResponseErrorHandler {
 
         @Override
         public boolean hasError(ClientHttpResponse response) throws IOException {

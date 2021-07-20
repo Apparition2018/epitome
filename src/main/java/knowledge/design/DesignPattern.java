@@ -37,7 +37,7 @@ public class DesignPattern {
      * 有且仅有一个原因引起类/方法的变更（一个类只负责一项职责）
      * https://www.cnblogs.com/liebrother/p/10182494.html
      */
-    private static class SRP {
+    static class SRP {
 
         interface Shopping {
             void shopping();
@@ -51,14 +51,14 @@ public class DesignPattern {
             void washing();
         }
 
-        private static class Jack implements Shopping {
+        static class Jack implements Shopping {
 
             @Override
             public void shopping() {
             }
         }
 
-        private static class Mary implements Cooking, Washing {
+        static class Mary implements Cooking, Washing {
 
             @Override
             public void cooking() {
@@ -74,24 +74,24 @@ public class DesignPattern {
      * 开闭原则
      * 对扩展开放，对修改关闭；尽量在不修改原有代码的情况下进行扩展
      */
-    private static class OCP {
+    static class OCP {
         private abstract static class Chart {
             public void display() {
 
             }
         }
 
-        private static class PieChart extends Chart {
+        static class PieChart extends Chart {
             public void display() {
             }
         }
 
-        private static class BarChart extends Chart {
+        static class BarChart extends Chart {
             public void display() {
             }
         }
 
-        private static class ChartDisplay {
+        static class ChartDisplay {
             private Chart chart;
 
             public void setChart(Chart chart) {
@@ -108,7 +108,7 @@ public class DesignPattern {
      * 里氏替换原则
      * 所有引用基类的地方必须能透明地使用其子类的对象
      */
-    private static class LSP {
+    static class LSP {
 
         interface EmailSender {
             void send(Customer c);
@@ -121,14 +121,14 @@ public class DesignPattern {
             protected String email;
         }
 
-        private static class VIPCustomer extends Customer {
+        static class VIPCustomer extends Customer {
 
             @Override
             public void send(Customer c) {
             }
         }
 
-        private static class CommonCustomer extends Customer {
+        static class CommonCustomer extends Customer {
 
             @Override
             public void send(Customer c) {
@@ -141,7 +141,7 @@ public class DesignPattern {
      * 面向接口编程，不要面向实现编程
      * https://blog.csdn.net/iteye_8149/article/details/82295068
      */
-    private static class DIP {
+    static class DIP {
         interface ICar {
             void run();
 
@@ -150,7 +150,7 @@ public class DesignPattern {
             void stop();
         }
 
-        private static class BMW implements ICar {
+        static class BMW implements ICar {
             public void run() {
             }
 
@@ -161,7 +161,7 @@ public class DesignPattern {
             }
         }
 
-        private static class Ford implements ICar {
+        static class Ford implements ICar {
             public void run() {
             }
 
@@ -172,7 +172,7 @@ public class DesignPattern {
             }
         }
 
-        private static class AutoSystem {
+        static class AutoSystem {
             private ICar icar;
 
             public AutoSystem(ICar icar) {
@@ -198,7 +198,7 @@ public class DesignPattern {
      * 使用多个专门的接口，而不使用单一的总接口
      * https://learnku.com/articles/39202
      */
-    private static class ISP {
+    static class ISP {
         interface Work {
             void work();
         }
@@ -211,7 +211,7 @@ public class DesignPattern {
             void beManaged();
         }
 
-        private static class Worker implements Work, Sleep, Managed {
+        static class Worker implements Work, Sleep, Managed {
 
             @Override
             public void work() {
@@ -226,7 +226,7 @@ public class DesignPattern {
             }
         }
 
-        private static class Robot implements Work, Managed {
+        static class Robot implements Work, Managed {
 
             @Override
             public void work() {
@@ -237,7 +237,7 @@ public class DesignPattern {
             }
         }
 
-        private static class Captain {
+        static class Captain {
             public void manage(Managed managed) {
                 managed.beManaged();
             }
@@ -249,9 +249,9 @@ public class DesignPattern {
      * 一个软件实体应当尽可能少地与其他实体发生相互作用
      * http://c.biancheng.net/view/1331.html
      */
-    private static class LoD {
+    static class LoD {
         @Data
-        private static class Broker {
+        static class Broker {
             private Star star;
             private Fan fan;
             private Company company;
@@ -266,17 +266,17 @@ public class DesignPattern {
         }
 
         @Data
-        private static class Star {
+        static class Star {
             private String name;
         }
 
         @Data
-        private static class Fan {
+        static class Fan {
             private String name;
         }
 
         @Data
-        private static class Company {
+        static class Company {
             private String name;
         }
     }

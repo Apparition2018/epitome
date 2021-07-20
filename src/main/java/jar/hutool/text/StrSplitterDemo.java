@@ -21,7 +21,7 @@ public class StrSplitterDemo {
     private static final String FIXED_STR = "abc123ABC";
 
     @Test
-    public void testStrSpliter() {
+    public void testStrSplitter() {
         // String →[任意]→ List
         // static List<String>  split(String str, separator/separatorPattern[int limit, isTrim, ignoreEmpty])
         p(StrSplitter.split(CSV_COMMA, StrUtil.COMMA, 4, true, true));           // [A, B, C]

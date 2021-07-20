@@ -40,7 +40,7 @@ public class DomDemo extends Demo {
      * 2.优点：解析过程中树结构在内存中是持久的，方便修改数据和结构。
      * 3.缺点：当 XML 文件较大时，对内存耗费比较大，容易影响解析性能并造成内存溢出。
      */
-    public static class OrgW3cDom {
+    static class OrgW3cDom {
 
         // 新建 Document 档建造器的工厂实例
         private DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -121,7 +121,7 @@ public class DomDemo extends Demo {
      * 2.优点：分析能够立即开始，而不是等待所有的数据被处理，速度快，没有内存压力；适用于只需要访问 XML 文档中的数据
      * 3.缺点：编码比较困难，而且很难同时访问同一个文档中的多处不同数据；一旦经过了某个元素，我们没有办法返回去再去访问它，缺乏灵活性。
      */
-    private static class OrgXmlSax {
+    static class OrgXmlSax {
 
         public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
             // 新建 SAXParser 的工厂实例
@@ -132,7 +132,7 @@ public class DomDemo extends Demo {
             saxParser.parse(new File(XML_PATH), new MyHandler());
         }
 
-        private static class MyHandler extends DefaultHandler {
+        static class MyHandler extends DefaultHandler {
             // 用来保存标签
             private Stack<String> stack = new Stack<>();
 

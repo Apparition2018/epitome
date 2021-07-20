@@ -23,7 +23,7 @@ public class Family {
         int kind();
     }
 
-    private static class FatherImpl implements Father {
+    static class FatherImpl implements Father {
         // 父亲的强壮指数为8
         @Override
         public int strong() {
@@ -31,7 +31,7 @@ public class Family {
         }
     }
 
-    private static class MotherImpl implements Mother {
+    static class MotherImpl implements Mother {
         // 母亲的温柔指数为8
         @Override
         public int kind() {
@@ -52,7 +52,7 @@ public class Family {
             return new MotherSpecial().kind();
         }
 
-        private static class MotherSpecial extends MotherImpl {
+        static class MotherSpecial extends MotherImpl {
             @Override
             public int kind() {
                 // 儿子的温柔指数降低了

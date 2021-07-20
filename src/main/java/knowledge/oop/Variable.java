@@ -65,7 +65,7 @@ public class Variable {
      * 1）编译时常量
      * 2）运行时常量
      */
-    private static class Constant {
+    static class Constant {
 
         @Test
         public void test() {
@@ -77,7 +77,7 @@ public class Variable {
             System.out.println(Constant.A.RUN_TIME_CONSTANT);
         }
 
-        private static class A {
+        static class A {
 
             static {
                 System.out.println("Class A Was Loaded !");

@@ -61,7 +61,7 @@ public class AbstractClass {
 
     }
 
-    private static class Salary extends Employee {
+    static class Salary extends Employee {
 
         private double salary;
 

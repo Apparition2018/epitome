@@ -143,7 +143,7 @@ public class MessageDigestDemo extends Demo {
      * <p>
      * Java 如何获取 MD5 值：https://blog.csdn.net/iblade/article/details/73288822
      */
-    private static class MD5Demo extends Demo {
+    static class MD5Demo extends Demo {
 
         public static void main(String[] args) throws NoSuchAlgorithmException {
             testMessageDigest("MD5");
@@ -170,7 +170,7 @@ public class MessageDigestDemo extends Demo {
      * 2.对密码分析的安全性：由于 MD5 的设计，易受密码分析的攻击，SHA-1 显得不易受这样的攻击
      * 3.速度：MD5 比 SHA-1 快
      */
-    public static class SHADemo {
+    static class SHADemo {
 
         public static void main(String[] args) throws NoSuchAlgorithmException {
             testMessageDigest("SHA-256");

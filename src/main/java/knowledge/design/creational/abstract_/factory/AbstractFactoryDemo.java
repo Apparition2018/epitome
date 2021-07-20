@@ -32,7 +32,7 @@ public class AbstractFactoryDemo {
         void click();
     }
 
-    private static class DellMouse implements Mouse {
+    static class DellMouse implements Mouse {
 
         @Override
         public void click() {
@@ -40,7 +40,7 @@ public class AbstractFactoryDemo {
         }
     }
 
-    private static class HpMouse implements Mouse {
+    static class HpMouse implements Mouse {
 
         @Override
         public void click() {
@@ -55,7 +55,7 @@ public class AbstractFactoryDemo {
         void press();
     }
 
-    private static class DellKeyboard implements Keyboard {
+    static class DellKeyboard implements Keyboard {
 
         @Override
         public void press() {
@@ -63,7 +63,7 @@ public class AbstractFactoryDemo {
         }
     }
 
-    private static class HpKeyboard implements Keyboard {
+    static class HpKeyboard implements Keyboard {
 
         @Override
         public void press() {
@@ -81,7 +81,7 @@ public class AbstractFactoryDemo {
         Keyboard createKeyboard();
     }
 
-    private static class DellFactory implements PcFactory {
+    static class DellFactory implements PcFactory {
 
         @Override
         public Mouse createMouse() {
@@ -94,7 +94,7 @@ public class AbstractFactoryDemo {
         }
     }
 
-    private static class HpFactory implements PcFactory {
+    static class HpFactory implements PcFactory {
 
         @Override
         public Mouse createMouse() {
@@ -110,7 +110,7 @@ public class AbstractFactoryDemo {
     /**
      * 工厂生成器
      */
-    private static class FactoryProducer {
+    static class FactoryProducer {
         static PcFactory getFactory(String factoryName) {
             if ("DELL".equalsIgnoreCase(factoryName)) {
                 return new DellFactory();

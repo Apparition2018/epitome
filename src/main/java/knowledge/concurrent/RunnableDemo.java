@@ -33,7 +33,7 @@ public class RunnableDemo extends Demo {
         countDownLatch.await();
     }
 
-    private static class TicketThread extends Thread {
+    static class TicketThread extends Thread {
 
         private int ticket = 5;
 
@@ -61,7 +61,7 @@ public class RunnableDemo extends Demo {
         countDownLatch.await();
     }
 
-    private static class TicketRunnable implements Runnable {
+    static class TicketRunnable implements Runnable {
 
         private int ticket = 5;
 

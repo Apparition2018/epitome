@@ -19,7 +19,7 @@ public class BranchAndBound {
      * https://www.cnblogs.com/zhanghongcan/p/8684465.html
      * https://blog.csdn.net/gloria0610/article/details/23742799
      */
-    private static class SingleSourceShortestPath {
+    static class SingleSourceShortestPath {
 
         private static int N;
         private static int M;

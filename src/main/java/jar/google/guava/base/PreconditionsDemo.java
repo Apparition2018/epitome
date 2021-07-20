@@ -20,7 +20,7 @@ public class PreconditionsDemo {
 
     @ToString
     @AllArgsConstructor
-    private static class User {
+    static class User {
         private final String userName;
         private final String password;
     }

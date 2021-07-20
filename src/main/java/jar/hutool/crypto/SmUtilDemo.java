@@ -52,7 +52,7 @@ public class SmUtilDemo extends Demo {
      * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/AbstractAsymmetricCrypto.html
      * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/SM2.html
      */
-    public static class SM2Demo {
+    static class SM2Demo {
 
         /**
          * 随机生成密钥对

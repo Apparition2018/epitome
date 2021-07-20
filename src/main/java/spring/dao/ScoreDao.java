@@ -59,7 +59,7 @@ public class ScoreDao {
     /**
      * 告诉 JdbcTemplate 如何处理 ResultSet
      */
-    private static class ScoreRowMapper implements RowMapper<Score> {
+    static class ScoreRowMapper implements RowMapper<Score> {
         public Score mapRow(ResultSet resultSet, int index) throws SQLException {
             Score score = new Score();
             score.setId(resultSet.getInt("id"));

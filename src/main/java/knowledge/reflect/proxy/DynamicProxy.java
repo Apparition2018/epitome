@@ -47,7 +47,7 @@ public class DynamicProxy extends Demo {
         peopleProxy.sleep();
     }
 
-    private static class StopWatchProxyHandler implements InvocationHandler {
+    static class StopWatchProxyHandler implements InvocationHandler {
 
         /**
          * 目标对象

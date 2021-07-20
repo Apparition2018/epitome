@@ -17,7 +17,7 @@ public class RedisSetCase {
     /**
      * 关注的人
      */
-    public static class Following {
+    static class Following {
         
         private static final String FOLLOWING_KEY = "following";
         private static final String JACK_FOLLOWING_KEY = FOLLOWING_KEY.concat(":Jack");

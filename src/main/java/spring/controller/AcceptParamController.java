@@ -172,7 +172,7 @@ public class AcceptParamController {
 
     @Getter
     @Setter
-    private static class BmiParam {
+    static class BmiParam {
         private double height;
         private double weight;
     }

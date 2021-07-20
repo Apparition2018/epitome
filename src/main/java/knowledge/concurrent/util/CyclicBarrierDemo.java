@@ -44,7 +44,7 @@ public class CyclicBarrierDemo extends Demo {
         new Thread(new Worker(cb), "工人2").start();
     }
 
-    private static class Worker implements Runnable {
+    static class Worker implements Runnable {
         // 关卡
         private CyclicBarrier cb;
 

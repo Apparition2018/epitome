@@ -54,7 +54,7 @@ public class AdapterDemo {
     /**
      * 目标角色
      */
-    private static class VlcPlayer implements AdvancedMediaPlayer {
+    static class VlcPlayer implements AdvancedMediaPlayer {
 
         @Override
         public void playVlc(String fileName) {
@@ -69,7 +69,7 @@ public class AdapterDemo {
     /**
      * 源角色
      */
-    private static class Mp4Player implements AdvancedMediaPlayer {
+    static class Mp4Player implements AdvancedMediaPlayer {
 
         @Override
         public void playVlc(String fileName) {
@@ -84,7 +84,7 @@ public class AdapterDemo {
     /**
      * 目标角色
      */
-    private static class AudioPlayer {
+    static class AudioPlayer {
 
         public void play(String fileName) {
             // 播放 mp3 音乐文件的内置支持
@@ -95,7 +95,7 @@ public class AdapterDemo {
     /**
      * 适配器角色
      */
-    private static class MediaAdapter extends AudioPlayer {
+    static class MediaAdapter extends AudioPlayer {
 
         /**
          * 接口适配器模式

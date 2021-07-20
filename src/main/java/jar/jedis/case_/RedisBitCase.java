@@ -16,7 +16,7 @@ public class RedisBitCase {
      * 活跃用户统计
      * 使用Redis bitmap统计活跃用户：http://www.321332211.com/thread?topicId=221
      */
-    public static class ActiveUserStats {
+    static class ActiveUserStats {
 
         private static final String USER_LOGIN_KEY = "user:login";
         private static final String USER_LOGIN_20210501 = USER_LOGIN_KEY.concat(":20210501");
@@ -48,7 +48,7 @@ public class RedisBitCase {
     /**
      * 在线用户统计
      */
-    public static class OnlineUserStats {
+    static class OnlineUserStats {
         
         private static final String USER_ONLINE_KEY = "user:online";
 

@@ -35,7 +35,7 @@ public class BuilderDemo {
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
-    private static class TaxReturn {
+    static class TaxReturn {
         private String ssn;
         private int year;
         private String lastName;

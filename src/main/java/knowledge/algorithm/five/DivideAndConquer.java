@@ -13,7 +13,7 @@ public class DivideAndConquer {
      * 汉诺塔
      * http://www.runoob.com/java/method-tower.html
      */
-    private static class TowerOfHanoi {
+    static class TowerOfHanoi {
 
         public static void main(String[] args) {
             int nDisks = 10;
@@ -39,7 +39,7 @@ public class DivideAndConquer {
      * 当数据量很大适宜采用该方法
      * 采用二分法查找时，数据需是有序不重复的
      */
-    private static class BinarySearch {
+    static class BinarySearch {
 
         private static int idx = 1;
 

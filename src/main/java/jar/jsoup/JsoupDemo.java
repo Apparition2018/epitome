@@ -16,7 +16,6 @@ import java.io.IOException;
  * jsoup 实现了 WHATWG HTML5 规范，并将 HTML 解析为与现代浏览器相同的 DOM。
  * <p>
  * https://jsoup.org/apidocs/
- * https://www.open-open.com/jsoup/
  *
  * @author ljh
  * created on 2020/11/12 10:43

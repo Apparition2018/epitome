@@ -41,7 +41,7 @@ public class ObserverDemo {
      * 拉模型观察者模型
      * http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html
      */
-    private static class PullObserver {
+    static class PullObserver {
         public static void main(String[] args) {
             // 创建主题对象
             ConcreteSubject subject = new ConcreteSubject();
@@ -91,7 +91,7 @@ public class ObserverDemo {
         /**
          * 具体主题角色类
          */
-        private static class ConcreteSubject extends Subject {
+        static class ConcreteSubject extends Subject {
             private String state;
 
             public String getState() {
@@ -119,7 +119,7 @@ public class ObserverDemo {
         /**
          * 推模型 具体观察者角色类
          */
-        private static class ConcreteObserver implements Observer {
+        static class ConcreteObserver implements Observer {
             /**
              * 观察者的状态
              */
@@ -138,7 +138,7 @@ public class ObserverDemo {
      * JAVA 对观察者模式的支持
      * Java 提供了一个接口 Observer 和 一个类 Observable 对观察者模式的支持
      */
-    private static class JdkObserver {
+    static class JdkObserver {
         public static void main(String[] args) {
             // 创建被观察者对象
             Watched watched = new Watched();
@@ -150,7 +150,7 @@ public class ObserverDemo {
             watched.setData("stop");
         }
 
-        public static class Watched extends Observable {
+        static class Watched extends Observable {
             private String data = "";
 
             public String getData() {
@@ -166,7 +166,7 @@ public class ObserverDemo {
             }
         }
 
-        public static class Watcher implements java.util.Observer {
+        static class Watcher implements java.util.Observer {
             public Watcher(Observable o) {
                 o.addObserver(this);
             }

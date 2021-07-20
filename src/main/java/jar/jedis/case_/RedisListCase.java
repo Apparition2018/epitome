@@ -18,7 +18,7 @@ public class RedisListCase {
     /**
      * 最近浏览商品
      */
-    public static class RecentlyViewedGoods {
+    static class RecentlyViewedGoods {
 
         private static final String RECENTLY_VIEWED_GOODS_KEY = "recently_viewed:goods:%s";
 

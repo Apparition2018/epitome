@@ -52,7 +52,7 @@ public class SettingDemo extends Demo {
     @ToString
     @Getter
     @Setter
-    private static class SettingBean {
+    static class SettingBean {
         private String driver;
         private String url;
         private String user;

@@ -56,7 +56,7 @@ public class DecoratorDemo {
     /**
      * 具体构建角色
      */
-    private static class Weapon implements Equip {
+    static class Weapon implements Equip {
         @Override
         public int calAttack() {
             return 50;
@@ -76,7 +76,7 @@ public class DecoratorDemo {
     /**
      * 具体构建角色
      */
-    private static class Armor implements Equip {
+    static class Armor implements Equip {
         @Override
         public int calAttack() {
             return 0;
@@ -96,7 +96,7 @@ public class DecoratorDemo {
     /**
      * 具体构建角色
      */
-    private static class Decoration implements Equip {
+    static class Decoration implements Equip {
         @Override
         public int calAttack() {
             return 25;
@@ -122,7 +122,7 @@ public class DecoratorDemo {
     /**
      * 具体装饰角色
      */
-    private static class RedGem implements GemDecorator {
+    static class RedGem implements GemDecorator {
         private Equip equip;
 
 
@@ -149,7 +149,7 @@ public class DecoratorDemo {
     /**
      * 具体装饰角色
      */
-    private static class BlueGem implements GemDecorator {
+    static class BlueGem implements GemDecorator {
         private Equip equip;
 
 
@@ -176,7 +176,7 @@ public class DecoratorDemo {
     /**
      * 具体装饰角色
      */
-    private static class YellowGem implements GemDecorator {
+    static class YellowGem implements GemDecorator {
         private Equip equip;
 
 

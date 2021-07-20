@@ -19,7 +19,7 @@ public class Extends {
         System.out.println(p.name);
     }
 
-    private static class Parent {
+    static class Parent {
 
         private int id;
 
@@ -43,7 +43,7 @@ public class Extends {
      * implements
      * Java 支持多实现
      */
-    private static class Son extends Parent implements Serializable, Comparable<Son> {
+    static class Son extends Parent implements Serializable, Comparable<Son> {
 
         private int sonId;
 

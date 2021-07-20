@@ -29,7 +29,7 @@ public class ObjectWaitAndNotifyDemo {
         t2.start();
     }
 
-    private static class Target {
+    static class Target {
         private int count;
 
         public synchronized void increase() {
@@ -63,7 +63,7 @@ public class ObjectWaitAndNotifyDemo {
         }
     }
 
-    private static class Increase extends Thread {
+    static class Increase extends Thread {
 
         private Target t;
 
@@ -87,7 +87,7 @@ public class ObjectWaitAndNotifyDemo {
         }
     }
 
-    private static class Decrease extends Thread {
+    static class Decrease extends Thread {
 
         private Target t;
 

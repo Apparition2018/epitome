@@ -73,8 +73,8 @@ public class CsvUtilDemo extends Demo {
     }
 
     @Data
-    private static class CsvBean {
-        // // 如果 CSV 中标题与字段不对应，可以使用 @Alias 设置别名
+    static class CsvBean {
+        // 如果 CSV 中标题与字段不对应，可以使用 @Alias 设置别名
         @Alias("Name")
         private String name;
         private String gender;

@@ -77,13 +77,13 @@ public class ClassLoad {
         // init Son
     }
 
-    private static class Grand {
+    static class Grand {
         static {
             p("Grand init");
         }
     }
 
-    private static class Father extends Grand {
+    static class Father extends Grand {
         static {
             p("Father init");
         }
@@ -95,7 +95,7 @@ public class ClassLoad {
         }
     }
 
-    private static class Son extends Father {
+    static class Son extends Father {
         static {
             p("Son init");
         }

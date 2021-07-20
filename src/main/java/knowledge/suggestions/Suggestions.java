@@ -958,7 +958,7 @@ public class Suggestions extends Demo {
         }
     }
 
-    private static class People implements Staff, Passenger {
+    static class People implements Staff, Passenger {
         @Override
         public int getSalary() {
             return 2000;

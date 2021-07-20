@@ -26,7 +26,7 @@ public class StaticProxy extends Demo {
      * 1.与被代理类实现相同的接口
      * 2.代理被代理对象实现功能的扩展
      */
-    private static class StopWatchProxy implements People {
+    static class StopWatchProxy implements People {
 
         private Man man;
 

@@ -25,7 +25,7 @@ public class ThreadExercise {
         }
     }
 
-    private static class Inc extends Thread {
+    static class Inc extends Thread {
 
         @SneakyThrows
         @Override
@@ -38,7 +38,7 @@ public class ThreadExercise {
         }
     }
 
-    private static class Dec extends Thread {
+    static class Dec extends Thread {
 
         @SneakyThrows
         @Override

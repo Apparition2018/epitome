@@ -55,7 +55,7 @@ public class StrategyDemo {
     /**
      * 具体策略角色
      */
-    private static class Add implements ArithmeticStrategy {
+    static class Add implements ArithmeticStrategy {
 
         @Override
         public int doOperation(int num1, int num2) {
@@ -63,21 +63,21 @@ public class StrategyDemo {
         }
     }
 
-    private static class Subtract implements ArithmeticStrategy {
+    static class Subtract implements ArithmeticStrategy {
         @Override
         public int doOperation(int num1, int num2) {
             return num1 - num2;
         }
     }
 
-    private static class Multiply implements ArithmeticStrategy {
+    static class Multiply implements ArithmeticStrategy {
         @Override
         public int doOperation(int num1, int num2) {
             return num1 * num2;
         }
     }
 
-    private static class Divide implements ArithmeticStrategy {
+    static class Divide implements ArithmeticStrategy {
         @Override
         public int doOperation(int num1, int num2) {
             return num1 / num2;
@@ -87,7 +87,7 @@ public class StrategyDemo {
     /**
      * 环境角色
      */
-    private static class Arithmetic {
+    static class Arithmetic {
         private ArithmeticStrategy strategy;
 
         public Arithmetic(ArithmeticStrategy strategy) {

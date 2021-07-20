@@ -48,7 +48,7 @@ public class FactoryMethodDemo {
     /**
      * 简单/静态工厂
      */
-    private static class AnimalSimpleFactory {
+    static class AnimalSimpleFactory {
         public static Dog createDog() {
             return new Dog();
         }
@@ -75,14 +75,14 @@ public class FactoryMethodDemo {
         Animal createAnimal();
     }
 
-    private static class CatFactory implements AnimalFactory {
+    static class CatFactory implements AnimalFactory {
         @Override
         public Animal createAnimal() {
             return new Cat();
         }
     }
 
-    private static class DogFactory implements AnimalFactory {
+    static class DogFactory implements AnimalFactory {
         @Override
         public Animal createAnimal() {
             return new Dog();
@@ -93,14 +93,14 @@ public class FactoryMethodDemo {
         public abstract void eat();
     }
 
-    private static class Cat extends Animal {
+    static class Cat extends Animal {
         @Override
         public void eat() {
             System.out.println("猫吃鱼");
         }
     }
 
-    private static class Dog extends Animal {
+    static class Dog extends Animal {
         @Override
         public void eat() {
             System.out.println("狗吃肉");

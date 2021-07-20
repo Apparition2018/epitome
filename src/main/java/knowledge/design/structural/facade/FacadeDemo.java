@@ -28,7 +28,7 @@ public class FacadeDemo {
     /**
      * 门面角色
      */
-    private static class Computer {
+    static class Computer {
         private CPU cpu;
         private Memory memory;
         private Disk disk;
@@ -59,7 +59,7 @@ public class FacadeDemo {
     /**
      * 子系统角色
      */
-    private static class CPU {
+    static class CPU {
         public void on() {
             p("CPU on!");
         }
@@ -69,7 +69,7 @@ public class FacadeDemo {
         }
     }
 
-    private static class Memory {
+    static class Memory {
         public void on() {
             p("Memory on!");
         }
@@ -79,7 +79,7 @@ public class FacadeDemo {
         }
     }
 
-    private static class Disk {
+    static class Disk {
         public void on() {
             p("Disk on!");
         }

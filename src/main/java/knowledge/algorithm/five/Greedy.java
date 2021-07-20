@@ -18,7 +18,7 @@ public class Greedy {
      * https://blog.csdn.net/xuefeng0707/article/details/7844834
      * https://blog.csdn.net/xuefeng0707/article/details/7841328
      */
-    private static class HuffmanCoding {
+    static class HuffmanCoding {
 
         /**
          * @param cs    : characters
@@ -100,7 +100,7 @@ public class Greedy {
          * https://blog.csdn.net/xuefeng0707/article/details/7841328
          */
         @SuppressWarnings(value = {"unchecked", "rawtypes"})
-        private static class MinHeap<T extends Comparable> {
+        static class MinHeap<T extends Comparable> {
             private Object[] data;
 
             public int size;
@@ -185,7 +185,7 @@ public class Greedy {
             }
         }
 
-        private static class TreeNode implements Comparable<TreeNode> {
+        static class TreeNode implements Comparable<TreeNode> {
 
             public char val;
 

@@ -82,7 +82,7 @@ public class JDKAnnotation extends Demo {
      * <p>
      * Java 经典面试题：伪共享问题及如何解决方案：https://www.zhihu.com/zvideo/1312762510748577792
      */
-    private static class ContendedDemo {
+    static class ContendedDemo {
         @Contended
         private volatile static long x;
         @Contended
