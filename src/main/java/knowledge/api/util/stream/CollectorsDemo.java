@@ -35,8 +35,8 @@ public class CollectorsDemo extends Demo {
         personList.add(new Person(3, "赵六"));
         Map<Integer, Object> map = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity(),
                 (duplicate1, duplicate2) -> duplicate2, // 合并函数
-                TreeMap::new                            // 自定义返回 Map 类型
-        ));
+                TreeMap::new)                           // 自定义返回 Map 类型
+        );
         p(map);     // {1=Person{id=1, name='张三'}, 2=Person{id=2, name='李四'}, 3=Person{id=3, name='赵六'}}
         // map = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity())); // Duplicate key Person{id=3, name='王五'}
         // 2.在使用 Collectors 类的 toMap()方法转为 Map 集合时，一定要注意当 value 为 null 时会抛 NPE 异常（阿里编程规约）
@@ -93,6 +93,8 @@ public class CollectorsDemo extends Demo {
     @Test
     public void reducing() {
         List<Person> personList = new ArrayList<Person>(3) {
+            private static final long serialVersionUID = -1481510473440954731L;
+
             {
                 add(new Person("张三", 20, "男", null));
                 add(new Person("李四", 21, "女", null));

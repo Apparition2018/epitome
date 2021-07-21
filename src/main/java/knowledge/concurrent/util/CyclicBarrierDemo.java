@@ -46,7 +46,7 @@ public class CyclicBarrierDemo extends Demo {
 
     static class Worker implements Runnable {
         // 关卡
-        private CyclicBarrier cb;
+        private final CyclicBarrier cb;
 
         private Worker(CyclicBarrier cb) {
             this.cb = cb;

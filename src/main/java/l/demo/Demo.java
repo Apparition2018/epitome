@@ -28,6 +28,8 @@ public class Demo {
     public static List<Integer> subList = new ArrayList<>(list.subList(1, 6));
     public static List<Integer> subList2 = list.subList(3, 8);
     public static List<Person> personList = new ArrayList<Person>(3) {
+        private static final long serialVersionUID = 17362850008309337L;
+
         {
             add(new Person(1, "张三"));
             add(new Person(2, "李四"));
@@ -36,6 +38,8 @@ public class Demo {
     };
 
     public static Map<Integer, String> map = new HashMap<Integer, String>(3) {
+        private static final long serialVersionUID = -6695635216046532571L;
+
         {
             put(1, "A");
             put(2, "B");
@@ -43,6 +47,8 @@ public class Demo {
         }
     };
     public static Map<Integer, String> map2 = new HashMap<Integer, String>(5) {
+        private static final long serialVersionUID = -2963536074355318510L;
+
         {
             put(1, "A");
             put(2, "B");
@@ -243,7 +249,6 @@ public class Demo {
      * 给线程池的线程命名
      */
     public static class MyThreadFactory implements ThreadFactory {
-
         private final AtomicInteger count = new AtomicInteger(1);
 
         @Override

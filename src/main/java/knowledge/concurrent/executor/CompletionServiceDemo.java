@@ -34,8 +34,12 @@ public class CompletionServiceDemo extends Demo {
         // 获取结果
         try {
             for (int i = 0; i < NUM_OF_TASK; i++) {
+                // Future<V>        take()
+                // 检索并删除代表下一个已完成任务的Future，如果还没有，则阻塞等待
                 Map<Integer, String> callMap = completionService.take().get();
-                //  Map<Integer, String> callMap = completionService.poll(300, TimeUnit.MILLISECONDS).get();
+                // Future<V>        poll(long timeout, TimeUnit unit)
+                // 检索并删除代表下一个已完成任务的Future，指定最大阻塞时间
+                // Map<Integer, String> callMap = completionService.poll(300, TimeUnit.MILLISECONDS).get();
                 for (Map.Entry<Integer, String> entry : callMap.entrySet()) {
                     p(entry.getValue() + "：运行任务 " + entry.getKey() + " 完毕！");
                 }

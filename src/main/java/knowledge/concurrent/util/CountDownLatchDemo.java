@@ -32,9 +32,9 @@ public class CountDownLatchDemo extends Demo {
         class Runner implements Callable<Integer> {
 
             // 开始信号
-            private CountDownLatch begin;
+            private final CountDownLatch begin;
             // 结束信号
-            private CountDownLatch end;
+            private final CountDownLatch end;
 
             private Runner(CountDownLatch begin, CountDownLatch end) {
                 this.begin = begin;
@@ -53,7 +53,7 @@ public class CountDownLatchDemo extends Demo {
                 try {
                     int r = randomInt(1, 9);
                     if (r == 1) {
-                        // 出现事故
+                        // 模拟事故
                         score = 1 / 0;
                     } else {
                         // 跑步的成绩
