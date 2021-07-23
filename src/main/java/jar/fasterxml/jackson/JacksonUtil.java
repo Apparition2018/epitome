@@ -14,6 +14,7 @@ import org.assertj.core.util.Lists;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.SimpleTimeZone;
 
 /**
  * https://www.cnblogs.com/yuanmo396022993/p/9118308.html
@@ -31,9 +32,12 @@ public class JacksonUtil {
         // ObjectMapper disable(SerializationFeature f)                     关闭
         // ObjectMapper configure(SerializationFeature f, boolean state)    开启/关闭
 
-        // 日期格式化
+        // 自动注册所有模块
+        OBJECT_MAPPER.findAndRegisterModules();
+        // 日期时间处理
         OBJECT_MAPPER.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         OBJECT_MAPPER.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+        OBJECT_MAPPER.setTimeZone(SimpleTimeZone.getTimeZone("GMT+8"));
         // 格式化输出
         OBJECT_MAPPER.enable(SerializationFeature.INDENT_OUTPUT);
         // 忽略无法转换的对象
