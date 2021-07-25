@@ -21,19 +21,19 @@ import javax.sql.DataSource;
  * created on 2019/8/8 19:39
  */
 @Configuration
-@MapperScan(basePackages = "springboot.dao.master", sqlSessionTemplateRef = "druidMasterSqlSessionTemplate")
-public class DruidMasterDataSourceConfig {
+@MapperScan(basePackages = "springboot.dao.master", sqlSessionTemplateRef = "masterSqlSessionTemplate")
+public class MasterDataSourceConfig {
 
     @Primary
-    @Bean(name = "druidMasterDataSource", destroyMethod = "close", initMethod = "init")
-    @ConfigurationProperties(prefix = "spring.datasource.druid.master")
-    public DruidDataSource druidMasterDataSource() {
+    @Bean(name = "masterDataSource", destroyMethod = "close", initMethod = "init")
+    @ConfigurationProperties(prefix = "spring.datasource.master")
+    public DruidDataSource masterDataSource() {
         return new DruidDataSource();
     }
 
     @Primary
-    @Bean(name = "druidMasterSqlSessionFactory")
-    public SqlSessionFactory druidMasterSqlSessionFactory(@Qualifier("druidMasterDataSource") DataSource dataSource) throws Exception {
+    @Bean(name = "masterSqlSessionFactory")
+    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(ResourceUtils.CLASSPATH_URL_PREFIX + "mapper/master/*.xml"));
@@ -42,14 +42,14 @@ public class DruidMasterDataSourceConfig {
     }
 
     @Primary
-    @Bean(name = "druidMasterTransactionManager")
-    public DataSourceTransactionManager druidMasterTransactionManager(@Qualifier("druidMasterDataSource") DataSource dataSource) {
+    @Bean(name = "masterTransactionManager")
+    public DataSourceTransactionManager masterTransactionManager(@Qualifier("masterDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
     @Primary
-    @Bean(name = "druidMasterSqlSessionTemplate")
-    public SqlSessionTemplate druidMasterSqlSessionTemplate(@Qualifier("druidMasterSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    @Bean(name = "masterSqlSessionTemplate")
+    public SqlSessionTemplate masterSqlSessionTemplate(@Qualifier("masterSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }

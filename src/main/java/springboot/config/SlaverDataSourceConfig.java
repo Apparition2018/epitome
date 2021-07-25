@@ -20,17 +20,17 @@ import javax.sql.DataSource;
  * created on 2019/8/8 19:39
  */
 @Configuration
-@MapperScan(basePackages = "springboot.dao.slaver", sqlSessionTemplateRef = "druidSlaverSqlSessionTemplate")
-public class DruidSlaverDataSourceConfig {
+@MapperScan(basePackages = "springboot.dao.slaver", sqlSessionTemplateRef = "slaverSqlSessionTemplate")
+public class SlaverDataSourceConfig {
 
-    @Bean(name = "druidSlaverDataSource", destroyMethod = "close", initMethod = "init")
-    @ConfigurationProperties(prefix = "spring.datasource.druid.slaver")
-    public DruidDataSource druidSlaverDataSource() {
+    @Bean(name = "slaverDataSource", destroyMethod = "close", initMethod = "init")
+    @ConfigurationProperties(prefix = "spring.datasource.slaver")
+    public DruidDataSource slaverDataSource() {
         return new DruidDataSource();
     }
 
-    @Bean(name = "druidSlaverSqlSessionFactory")
-    public SqlSessionFactory druidSlaverSqlSessionFactory(@Qualifier("druidSlaverDataSource") DataSource dataSource) throws Exception {
+    @Bean(name = "slaverSqlSessionFactory")
+    public SqlSessionFactory slaverSqlSessionFactory(@Qualifier("slaverDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(ResourceUtils.CLASSPATH_URL_PREFIX + "mapper/slaver/*.xml"));
@@ -38,13 +38,13 @@ public class DruidSlaverDataSourceConfig {
         return bean.getObject();
     }
 
-    @Bean(name = "druidSlaverTransactionManager")
-    public DataSourceTransactionManager druidSlaverTransactionManager(@Qualifier("druidSlaverDataSource") DataSource dataSource) {
+    @Bean(name = "slaverTransactionManager")
+    public DataSourceTransactionManager slaverTransactionManager(@Qualifier("slaverDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    @Bean(name = "druidSlaverSqlSessionTemplate")
-    public SqlSessionTemplate druidSlaverSqlSessionTemplate(@Qualifier("druidSlaverSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    @Bean(name = "slaverSqlSessionTemplate")
+    public SqlSessionTemplate slaverSqlSessionTemplate(@Qualifier("slaverSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }
