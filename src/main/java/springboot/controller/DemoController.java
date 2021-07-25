@@ -3,7 +3,11 @@ package springboot.controller;
 import l.demo.Person;
 import l.demo.Person.Student;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springboot.dao.slaver.DemoMapper;
+import springboot.domain.slaver.Demo;
 
 /**
  * DemoController

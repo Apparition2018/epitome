@@ -21,37 +21,35 @@ import javax.sql.DataSource;
  * created on 2019/8/8 19:39
  */
 @Configuration
-@MapperScan(basePackages = "springboot.dao.demo", sqlSessionTemplateRef = "demoSqlSessionTemplate")
-public class DemoDataSourceConfig {
+@MapperScan(basePackages = "springboot.dao.master", sqlSessionTemplateRef = "druidMasterSqlSessionTemplate")
+public class DruidMasterDataSourceConfig {
 
-    @Bean(name = "demoDataSource", destroyMethod = "close", initMethod = "init")
-    @ConfigurationProperties(prefix = "spring.datasource.demo")
     @Primary
-    public DruidDataSource druidDataSource() {
+    @Bean(name = "druidMasterDataSource", destroyMethod = "close", initMethod = "init")
+    @ConfigurationProperties(prefix = "spring.datasource.druid.master")
+    public DruidDataSource druidMasterDataSource() {
         return new DruidDataSource();
     }
 
-    @Bean(name = "demoSqlSessionFactory")
     @Primary
-    public SqlSessionFactory demoSqlSessionFactory(@Qualifier("demoDataSource") DataSource dataSource) throws Exception {
+    @Bean(name = "druidMasterSqlSessionFactory")
+    public SqlSessionFactory druidMasterSqlSessionFactory(@Qualifier("druidMasterDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(ResourceUtils.CLASSPATH_URL_PREFIX + "mapper/demo/*.xml"));
-        bean.setTypeAliasesPackage("springboot.domain.demo");
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(ResourceUtils.CLASSPATH_URL_PREFIX + "mapper/master/*.xml"));
+        bean.setTypeAliasesPackage("springboot.domain.master");
         return bean.getObject();
     }
 
-    @Bean(name = "demoTransactionManager")
     @Primary
-    public DataSourceTransactionManager demoTransactionManager(@Qualifier("demoDataSource") DataSource dataSource) {
+    @Bean(name = "druidMasterTransactionManager")
+    public DataSourceTransactionManager druidMasterTransactionManager(@Qualifier("druidMasterDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    @Bean(name = "demoSqlSessionTemplate")
     @Primary
-    public SqlSessionTemplate demoSqlSessionTemplate(@Qualifier("demoSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    @Bean(name = "druidMasterSqlSessionTemplate")
+    public SqlSessionTemplate druidMasterSqlSessionTemplate(@Qualifier("druidMasterSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
-
 }
-

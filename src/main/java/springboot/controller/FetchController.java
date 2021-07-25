@@ -3,7 +3,7 @@ package springboot.controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import springboot.domain.score.Score;
+import springboot.domain.master.Score;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

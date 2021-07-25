@@ -1,11 +1,17 @@
-package springboot.dao.demo;
+package springboot.dao.slaver;
 
-import springboot.domain.demo.Demo;
+import org.springframework.stereotype.Repository;
+import springboot.domain.slaver.Demo;
 
+import java.util.List;
+
+@Repository
 public interface DemoMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Demo record);
+
+    int insertBatch(List<Demo> list);
 
     int insertSelective(Demo record);
 

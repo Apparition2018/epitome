@@ -20,33 +20,31 @@ import javax.sql.DataSource;
  * created on 2019/8/8 19:39
  */
 @Configuration
-@MapperScan(basePackages = "springboot.dao.score", sqlSessionTemplateRef = "scoreSqlSessionTemplate")
-public class ScoreDataSourceConfig {
+@MapperScan(basePackages = "springboot.dao.slaver", sqlSessionTemplateRef = "druidSlaverSqlSessionTemplate")
+public class DruidSlaverDataSourceConfig {
 
-    @Bean(name = "scoreDataSource", destroyMethod = "close", initMethod = "init")
-    @ConfigurationProperties(prefix = "spring.datasource.score")
-    public DruidDataSource scoreDataSource() {
+    @Bean(name = "druidSlaverDataSource", destroyMethod = "close", initMethod = "init")
+    @ConfigurationProperties(prefix = "spring.datasource.druid.slaver")
+    public DruidDataSource druidSlaverDataSource() {
         return new DruidDataSource();
     }
 
-    @Bean(name = "scoreSqlSessionFactory")
-    public SqlSessionFactory scoreSqlSessionFactory(@Qualifier("scoreDataSource") DataSource dataSource) throws Exception {
+    @Bean(name = "druidSlaverSqlSessionFactory")
+    public SqlSessionFactory druidSlaverSqlSessionFactory(@Qualifier("druidSlaverDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(ResourceUtils.CLASSPATH_URL_PREFIX + "mapper/score/*.xml"));
-        bean.setTypeAliasesPackage("springboot.domain.score");
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(ResourceUtils.CLASSPATH_URL_PREFIX + "mapper/slaver/*.xml"));
+        bean.setTypeAliasesPackage("springboot.domain.slaver");
         return bean.getObject();
     }
 
-    @Bean(name = "scoreTransactionManager")
-    public DataSourceTransactionManager scoreTransactionManager(@Qualifier("scoreDataSource") DataSource dataSource) {
+    @Bean(name = "druidSlaverTransactionManager")
+    public DataSourceTransactionManager druidSlaverTransactionManager(@Qualifier("druidSlaverDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    @Bean(name = "scoreSqlSessionTemplate")
-    public SqlSessionTemplate scoreSqlSessionTemplate(@Qualifier("scoreSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    @Bean(name = "druidSlaverSqlSessionTemplate")
+    public SqlSessionTemplate druidSlaverSqlSessionTemplate(@Qualifier("druidSlaverSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
-
 }
-

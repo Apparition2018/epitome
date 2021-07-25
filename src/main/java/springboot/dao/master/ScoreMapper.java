@@ -1,7 +1,9 @@
-package springboot.dao.score;
+package springboot.dao.master;
 
-import springboot.domain.score.Score;
+import org.springframework.stereotype.Repository;
+import springboot.domain.master.Score;
 
+@Repository
 public interface ScoreMapper {
     int deleteByPrimaryKey(Integer id);
 
