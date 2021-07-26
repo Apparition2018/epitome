@@ -15,18 +15,19 @@ import org.junit.jupiter.api.Test;
  * 插入删除    效率高       效率低（会引起其他元素位置改变）
  * contains   效率高       效率低
  * <p>
- * boolean	            add(E e)                            确保此 collection 包含指定的元素（可选操作）
- * boolean	            addAll(Collection<? extends E> c)   将指定 collection 中的所有元素都添加到此 collection 中（可选操作）
- * boolean	            remove(Object o)                    从此 collection 中移除指定元素的单个实例，如果存在的话（可选操作）
- * boolean	            contains(Object o)                  如果此 collection 包含指定的元素，则返回 true
- * boolean	            containsAll(Collection<?> c)        如果此 collection 包含指定 collection 中的所有元素，则返回 true
- * boolean	            isEmpty()                           如果此 collection 不包含元素，则返回 true；判断所有集合内部的元素是否为空，使用 isEmpty()方法，而不是 size()==0 的方式（阿里编程规约）
- * int	                size()                              返回此 collection 中的元素数
- * Iterator<E>	        iterator()                          返回在此 collection 的元素上进行迭代的迭代器
- * Object[]	            toArray()                           返回包含此 collection 中所有元素的数组 {@link ListDemo#testList()}
+ * boolean	            add(E e)                                确保此 collection 包含指定的元素（可选操作）
+ * boolean	            addAll(Collection<? extends E> c)       将指定 collection 中的所有元素都添加到此 collection 中（可选操作）
+ * boolean	            remove(Object o)                        从此 collection 中移除指定元素的单个实例，如果存在的话（可选操作）
+ * boolean              removeIf(Predicate<? super E> filter)   从此 collection 中移除满足条件的所有元素
+ * boolean	            contains(Object o)                      如果此 collection 包含指定的元素，则返回 true
+ * boolean	            containsAll(Collection<?> c)            如果此 collection 包含指定 collection 中的所有元素，则返回 true
+ * boolean	            isEmpty()                               如果此 collection 不包含元素，则返回 true；判断所有集合内部的元素是否为空，使用 isEmpty()方法，而不是 size()==0 的方式（阿里编程规约）
+ * int	                size()                                  返回此 collection 中的元素数
+ * Iterator<E>	        iterator()                              返回在此 collection 的元素上进行迭代的迭代器
+ * Object[]	            toArray()                               返回包含此 collection 中所有元素的数组 {@link ListDemo#testList()}
  * <p>
- * default Stream<E>	stream()                            返回连续 Stream
- * default Stream<E>	parallelStream()                    返回并行 Stream
+ * default Stream<E>	stream()                                返回连续 Stream
+ * default Stream<E>	parallelStream()                        返回并行 Stream
  * ************************************************************
  * AbstractCollection
  * <p>

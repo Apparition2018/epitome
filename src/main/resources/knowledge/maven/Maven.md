@@ -1,13 +1,10 @@
 # Maven
 ---
 ## 参考网站
-1. [Maven安装与配置](https://www.cnblogs.com/eagle6688/p/7838224.html)
-2. [Maven 的仓库和 settings.xml 配置文件](https://blog.csdn.net/qq_25827845/article/details/83549846)
-3. [Maven 学习 - Profile 详解](https://www.cnblogs.com/wxgblogs/p/6696229.html)
----
-## 问题
-1. [IDEA 创建 maven 多模块项目](https://www.cnblogs.com/wangmingshun/p/6383576.html)
-2. [release 和 snapshot](https://www.cnblogs.com/huang0925/p/5169624.html)
+1. [Maven – POM Reference](https://maven.apache.org/pom.html)
+2. [Maven – Settings Reference](https://maven.apache.org/settings.html)
+3. [Maven 安装与配置](https://www.cnblogs.com/eagle6688/p/7838224.html)
+4. [Maven Profile 详解](https://www.cnblogs.com/wxgblogs/p/6696229.html)
 ---
 ## 环境变量
 ```
@@ -37,7 +34,7 @@
                             -Dpackage=代码所在包名
 ```
 ---              
-## 仓库
+## [仓库](https://blog.csdn.net/qq_25827845/article/details/83549846)
 #### 1. 本地仓库：
 1. 默认路径：${user.home}/.m2/repository
 2. 自定义路径：修改 settings.xml 中的 <localRepository>xxx</localRepository> 路径 
@@ -61,7 +58,7 @@
             <name>aliyun maven</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
-    </repositories> 
+    </repositories>
 ```
 - 其它远程仓库地址请查看 settings.xml
 ---

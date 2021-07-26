@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <!-- 数据库驱动路径 -->
     <classPathEntry
-            location="D:\apache-maven-3.6.3\repository\mysql\mysql-connector-java\8.0.22\mysql-connector-java-8.0.22.jar"/>
+            location="D:\dev\apache-maven-3.8.1\repository\mysql\mysql-connector-java\8.0.25\mysql-connector-java-8.0.25.jar"/>
 
     <context id="mysql" targetRuntime="MyBatis3">
         <!-- 使生成的bean实现Serializable接口 -->
@@ -22,7 +22,7 @@
 
         <!-- 指定数据库连接的属性 -->
         <jdbcConnection
-                connectionURL="jdbc:mysql://127.0.0.1:3306/epitome?useUnicode=true&amp;characterEncoding=utf-8"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/epitome?useUnicode=true&amp;characterEncoding=utf-8&amp;allowPublicKeyRetrieval=true"
                 driverClass="com.mysql.cj.jdbc.Driver" userId="root" password="root">
             <!-- MySQL 8.x 需要指定服务器的时区 -->
             <property name="serverTimezone" value="UTC"/>

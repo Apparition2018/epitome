@@ -1,5 +1,4 @@
-// Mysql慢查询日志
-// springboot中使用h2数据库（内存模式）:https://www.cnblogs.com/TheoryDance/p/11941180.html
+// springboot中使用h2数据库（内存模式）：https://www.cnblogs.com/TheoryDance/p/11941180.html
 // Spring Boot 2.x基础教程  http://blog.didispace.com/spring-boot-learning-2x/
 // spring-boot-dependencies 中的各个依赖
 // redis, rocketmq, mycat
@@ -29,11 +28,12 @@
 // 调度与监控-spring batch(7)结合xxl-job进行批处理：https://blog.csdn.net/masson32/article/details/91503723
 // 最新 Java 面试系列干货，都在这了！：https://mp.weixin.qq.com/s/kJpRgfI3zT77XqMeRfmmQQ
 
+import cn.hutool.core.thread.ThreadUtil;
 import l.demo.Demo;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletionService;
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
@@ -41,34 +41,65 @@ import java.util.Random;
 public class Test extends Demo {
 
     public static void main(String[] args) throws Exception {
-        bubbleSort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-
-    private static int[] arr = new int[10];
-
-    static {
-        Random random = new Random();
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(100);
+        CompletionService<Integer> cs = ThreadUtil.newCompletionService();
+        for (int i = 0; i < 10; i++) {
+            cs.submit(new Task1((i + 1) * 10));
+        }
+        for (int i = 0; i < 10; i++) {
+            System.out.println(cs.take().get());
         }
     }
 
-    private static void bubbleSort(int[] arr) {
-        int temp;
-        for (int i = 0, len = arr.length; i < len - 1; i++) {
-            boolean hasChange = false;
-            for (int j = 0; j < len - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                    hasChange = true;
+    static class Task1 implements Callable<Integer> {
+        private Integer millis;
+
+        Task1(Integer millis) {
+            this.millis = millis;
+        }
+
+        @Override
+        public Integer call() throws Exception {
+            Thread.sleep(millis);
+            for (int i = 0; i < 10; i++) {
+                CompletionService<Integer> cs = ThreadUtil.newCompletionService();
+                for (int j = 0; j < 10; j++) {
+                    cs.submit(new Task2());
+                }
+                for (int j = 0; j < 10; j++) {
+                    millis += cs.take().get();
                 }
             }
-            if (!hasChange) {
-                break;
+            return millis;
+        }
+    }
+
+    static class Task2 implements Callable<Integer> {
+
+        @Override
+        public Integer call() throws Exception {
+            int millis = 0;
+            CompletionService<Integer> cs = ThreadUtil.newCompletionService();
+            for (int k = 0; k < 3; k++) {
+                cs.submit(new Task3((k + 1) * 10));
             }
+            for (int k = 0; k < 3; k++) {
+                millis += cs.take().get();
+            }
+            return millis;
+        }
+    }
+
+    static class Task3 implements Callable<Integer> {
+        private final Integer millis;
+
+        Task3(Integer millis) {
+            this.millis = millis;
+        }
+
+        @Override
+        public Integer call() throws Exception {
+            Thread.sleep(millis);
+            return millis;
         }
     }
 }
