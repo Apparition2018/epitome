@@ -4,7 +4,8 @@
 1. [Maven – POM Reference](https://maven.apache.org/pom.html)
 2. [Maven – Settings Reference](https://maven.apache.org/settings.html)
 3. [Maven 安装与配置](https://www.cnblogs.com/eagle6688/p/7838224.html)
-4. [Maven Profile 详解](https://www.cnblogs.com/wxgblogs/p/6696229.html)
+4. [POM 文件详解](https://zhuanlan.zhihu.com/p/341619947)
+5. [Profile 详解](https://www.cnblogs.com/wxgblogs/p/6696229.html)
 ---
 ## 环境变量
 ```
