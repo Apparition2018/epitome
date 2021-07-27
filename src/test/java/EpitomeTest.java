@@ -1,34 +1,35 @@
-package springboot.controller;
-
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+import springboot.Application;
 import springboot.domain.Resource;
 import springboot.util.SpringContextUtils;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
  * @author ljh
- * created on 2021/6/23 10:08
+ * created on 2020/1/9 19:28
  */
-@Slf4j
-@RestController
-@RequestMapping("/test")
-public class TestController {
+@SpringBootTest(classes = Application.class)
+public class EpitomeTest {
+
+    @Autowired
+    private ServletContext servletContext;
 
     /**
      * Spring WebApplicationContextUtils 工具类：https://www.cnblogs.com/jpfss/p/9447915.html
      */
-    @GetMapping("webApplicationContextUtils")
-    public void testWebApplicationContextUtils(HttpServletRequest request) {
-        ServletContext servletContext = request.getServletContext();
+    @Test
+    public void testSpringContextUtils() {
+        System.out.println(SpringContextUtils.getApplicationContext());
+        System.out.println(Arrays.toString(SpringContextUtils.getActiveProfiles()));
+
         WebApplicationContext webApplicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(Objects.requireNonNull(servletContext));
         Assertions.assertSame(SpringContextUtils.getBean(Resource.class), webApplicationContext.getBean(Resource.class));
     }
