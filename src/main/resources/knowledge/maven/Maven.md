@@ -10,9 +10,10 @@
 ## 环境变量
 ```
 1. WIN+R 输入 sysdm.cpl → 高级 → 环境变量
-2. 在系统变量新建 M2_HOME：D:\tts9\apache-maven-3.3.9
-3. 在系统变量找到 Path，增加 %M2_HOME%\bin;
-4. 在 cmd 输入 mvn -v
+2. 在系统变量新建 JAVA_HOME：D:\Java\jdk1.8.0_291
+3. 在系统变量新建 M2_HOME：D:\dev\apache-maven-3.8.1
+4. 在系统变量找到 Path，增加 %JAVA_HOME%\bin; %M2_HOME%\bin;
+5. 在 cmd 输入 mvn -v
 ```
 ---
 ## 常用命令

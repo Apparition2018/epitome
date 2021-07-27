@@ -1,4 +1,4 @@
-package jar;
+package jar.minio;
 
 import io.minio.*;
 import l.demo.Demo;

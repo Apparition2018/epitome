@@ -153,6 +153,13 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
         <!-- Jedis -->
         <dependency>
             <groupId>redis.clients</groupId>
@@ -385,13 +392,17 @@
         <!-- pom 中的 resources：https://www.cnblogs.com/guiyl/p/11908164.html -->
         <resources>
             <resource>
+                <directory>src/main/resources</directory>
+                <!-- https://www.cnblogs.com/wangxuejian/p/13551292.html -->
+                <filtering>false</filtering>
+            </resource>
+            <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <include>**/*.json</include>
                     <include>**/*.md</include>
+                    <include>**/*.json</include>
                 </includes>
-                <!-- https://www.cnblogs.com/wangxuejian/p/13551292.html -->
-                <filtering>true</filtering>
+                <filtering>false</filtering>
             </resource>
         </resources>
 

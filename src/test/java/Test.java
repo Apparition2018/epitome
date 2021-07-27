@@ -1,4 +1,3 @@
-// springboot中使用h2数据库（内存模式）：https://www.cnblogs.com/TheoryDance/p/11941180.html
 // Spring Boot 2.x基础教程  http://blog.didispace.com/spring-boot-learning-2x/
 // spring-boot-dependencies 中的各个依赖
 // redis, rocketmq, mycat
