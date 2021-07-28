@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -49,20 +50,15 @@ public class Person implements Comparable<Person>, Serializable {
         this.name = name;
     }
 
-    public Person(String name) {
-        this.name = name;
-    }
-
     public Person(String name, Integer age) {
         this.name = name;
         this.age = age;
     }
 
-    public Person(String name, Integer age, String gender, List<String> otherInfo) {
+    public Person(String name, Integer age, String gender) {
         this.name = name;
         this.age = age;
         this.gender = gender;
-        this.otherInfo = otherInfo;
     }
 
     @Bean("person")
@@ -114,8 +110,8 @@ public class Person implements Comparable<Person>, Serializable {
      * POJO 类必须写 toString 方法。如果继承了另一个 POJO 类，注意在前面加一下 super.toString
      */
     @Data
+    @Accessors(chain = true)
     @NoArgsConstructor
-    @AllArgsConstructor
     public static class Student extends Person implements Serializable {
         /**
          * 当一个类实现了可序列化接口，就要定义一个常量：版本号 (serialVersionUID)

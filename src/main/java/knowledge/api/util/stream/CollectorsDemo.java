@@ -96,10 +96,10 @@ public class CollectorsDemo extends Demo {
             private static final long serialVersionUID = -1481510473440954731L;
 
             {
-                add(new Person("张三", 20, "男", null));
-                add(new Person("李四", 21, "女", null));
-                add(new Person("王五", 22, "男", null));
-                add(new Person("赵六", 23, "女", null));
+                add(new Person("张三", 20, "男"));
+                add(new Person("李四", 21, "女"));
+                add(new Person("王五", 22, "男"));
+                add(new Person("赵六", 23, "女"));
             }
         };
 

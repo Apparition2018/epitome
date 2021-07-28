@@ -1,4 +1,4 @@
-package springboot.config;
+package springboot.config.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;

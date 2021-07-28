@@ -1,4 +1,4 @@
-package springboot.config;
+package springboot.config.webmvc;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,11 +18,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
- * SpringBoot 1.0 addInterceptors 拦截器
- * public class WebMvcConfig extends WebMvcConfigurer {}
- * <p>
- * SpringBoot 1.0 addCorsMappings 跨域
+ * SpringBoot 1.0
+ * addInterceptors 拦截器：
+ * public class WebMvcConfig implements WebMvcConfigurer {}
+ * addCorsMappings 跨域：
  * public class WebMvcConfig extends WebMvcConfigurerAdapter {}
+ * <p>
+ * 继承 WebMvcConfigurationSupport 导致自动配置不生效：https://blog.csdn.net/qq_36850813/article/details/87859047
  *
  * @author ljh
  * created on 2019/8/8 19:39
@@ -32,6 +34,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     /**
      * 静态资源路径配置
+     * 默认静态资源路径：classpath:/META-INF/resources/， classpath:/resources/，classpath:/static/，classpath:/public/
      * addResourceHandler:  设置访问路径前缀
      * addResourceLocations:设置资源路径
      * http://localhost:3333/static/static/img/Event-Y.jpg
