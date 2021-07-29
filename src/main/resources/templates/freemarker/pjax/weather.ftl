@@ -1,6 +1,6 @@
-<html>
+<html lang="en">
 <head>
-    <meta name="description" content="jquery-pjax中文文档：http://bsify.admui.com/jquery-pjax/">
+    <meta name="description" content="https://github.com/defunkt/jquery-pjax/#pjax--pushstate--ajax">
     <title>${city!''}天气</title>
     <link href="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
@@ -89,7 +89,7 @@
 </header>
 <section>
     <div class="container" id="container">
-    ${weather!''}
+        ${weather!''}
     </div>
 </section>
 <footer class="footer">

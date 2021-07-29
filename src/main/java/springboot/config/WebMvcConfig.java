@@ -34,7 +34,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Value("${spring.mvc.static-path-pattern}")
     private String staticPathPatterns;
 
-    @Value("${spring.resources.static-locations}")
+    @Value("${spring.web.resources.static-locations}")
     private String staticLocations;
 
     @Override
@@ -58,8 +58,9 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // addResourceHandler       设置访问路径前缀
         // addResourceLocations     设置资源路径
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/META-INF/resources/webjars/");
         registry.addResourceHandler(staticPathPatterns).addResourceLocations(StringUtils.split(staticLocations, ","));
+        registry.addResourceHandler("/templates/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/templates/");
         // Swagger3：http://localhost:3333/swagger-ui/index.html
         registry.addResourceHandler("/swagger-ui/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/META-INF/resources/webjars/springfox-swagger-ui/");
         super.addResourceHandlers(registry);
