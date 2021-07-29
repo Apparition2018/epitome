@@ -1,15 +1,14 @@
-package springboot.config.webmvc;
+package springboot.config;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.*;
 import springboot.converter.IntegerToEnumConverterFactory;
 import springboot.converter.StringToEnumConverterFactory;
 import springboot.interceptor.HttpInterceptor;
@@ -32,17 +31,35 @@ import java.util.List;
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
+    @Value("${spring.mvc.static-path-pattern}")
+    private String staticPathPatterns;
+
+    @Value("${spring.resources.static-locations}")
+    private String staticLocations;
+
+    @Override
+    protected void addViewControllers(ViewControllerRegistry registry) {
+        super.addViewControllers(registry);
+    }
+
     /**
      * 静态资源路径配置
-     * 默认静态资源路径：classpath:/META-INF/resources/， classpath:/resources/，classpath:/static/，classpath:/public/
-     * addResourceHandler:  设置访问路径前缀
-     * addResourceLocations:设置资源路径
-     * http://localhost:3333/static/static/img/Event-Y.jpg
+     * http://localhost:3333/static/img/Event-Y.jpg
+     * <p>
+     * webjars 默认映射规则：/webjars/** ==> classpath:/META-INF/resources/webjars/
+     * 静态资源默认映射规则：/** ==> classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+     * <p>
+     * Springboot2 静态资源配置：https://www.cnblogs.com/xiaomaomao/p/14278402.html
+     * SpringBoot2 静态资源访问问题：https://blog.csdn.net/afgasdg/article/details/106474734
+     *
+     * @see org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#addResourceHandlers
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/static/");
-        registry.addResourceHandler("/templates/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/templates/");
+        // addResourceHandler       设置访问路径前缀
+        // addResourceLocations     设置资源路径
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler(staticPathPatterns).addResourceLocations(StringUtils.split(staticLocations, ","));
         // Swagger3：http://localhost:3333/swagger-ui/index.html
         registry.addResourceHandler("/swagger-ui/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/META-INF/resources/webjars/springfox-swagger-ui/");
         super.addResourceHandlers(registry);

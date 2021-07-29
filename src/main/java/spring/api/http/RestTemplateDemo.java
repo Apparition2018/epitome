@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  * Restful (HttpMethod): GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE
  * <p>
  * 详解 RestTemplate 操作：https://blog.csdn.net/itguangit/article/details/78825505
- * RestTemplate 深度解析：https://my.oschina.net/lifany/blog/688889
+ * RestTemplate 深度解析：https://blog.csdn.net/qq_27000425/article/details/72883910
  * Spring RestTemplate 中几种常见的请求方式：https://segmentfault.com/a/1190000011093597
  * 基于 springboot 的 RestTemplate, okhttp 和 HttpClient 对比：https://www.cnblogs.com/wzk-0000/p/10955406.html
  *
