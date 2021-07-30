@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- maven 多继承和继承链：https://blog.csdn.net/bingo_liu/article/details/73609381 -->
     <modelVersion>4.0.0</modelVersion>
+    <!-- maven 多继承和继承链：https://blog.csdn.net/bingo_liu/article/details/73609381 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -11,11 +11,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <!-- 定义 GAV 遵从以下规则，阿里编程规约：
-     1. GroupID 格式：com.{公司/BU}.业务线 [.子业务线]，最多 4 级
+     1. groupId：com.{公司/BU}.业务线 [.子业务线]，最多 4 级
         com.taobao.jstorm 或 com.alibaba.dubbo.register
-     2. ArtifactID 格式：产品线名-模块名。语义不重复不遗漏，先到中央仓库去查证一下
+     2. artifactId：产品线名-模块名。语义不重复不遗漏，先到中央仓库去查证一下
         dubbo-client / fastjson-api / jstorm-tool
-     3. Version：主版本号.次版本号.修订号 -->
+     3. version：主版本号.次版本号.修订号 -->
     <groupId>com.ljh</groupId>
     <artifactId>epitome</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -57,12 +57,6 @@
         <mybatis-generator>1.4.0</mybatis-generator>
     </properties>
 
-    <!--
-        没有写版本号的依赖在顶级模块 spring-boot-dependencies 已经定义了版本号，如：
-            <lombok.version>1.18.8</lombok.version>
-            <httpclient.version>4.5.9</httpclient.version>
-            ......
-    -->
     <dependencies>
         <!-- spring-boot-starter：https://www.cnblogs.com/yaowen/p/8623902.html
             spring-boot-starter-web 包含了 spring-boot-starter-json
@@ -434,28 +428,28 @@
 
             <!-- mybatis generator
                 http://www.mybatis.org/generator/index.html -->
-<!--            <plugin>-->
-<!--                <groupId>org.mybatis.generator</groupId>-->
-<!--                <artifactId>mybatis-generator-maven-plugin</artifactId>-->
-<!--                <version>${mybatis-generator}</version>-->
-<!--                <configuration>-->
-<!--                    <configurationFile>${basedir}/src/main/resources/generator-config.xml</configurationFile>-->
-<!--                    &lt;!&ndash; 是否重写文件-->
-<!--                        注意：XML 不会重写，总是将新生成的内容合并到旧文件之下 &ndash;&gt;-->
-<!--                    <overwrite>true</overwrite>-->
-<!--                    &lt;!&ndash; 是否在输出日志中打印进度信息 &ndash;&gt;-->
-<!--                    <verbose>true</verbose>-->
-<!--                </configuration>-->
-<!--                &lt;!&ndash; 编译代码时，自动执行 mybatis generator &ndash;&gt;-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>Generate MyBatis Artifacts</id>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.mybatis.generator</groupId>-->
+            <!--                <artifactId>mybatis-generator-maven-plugin</artifactId>-->
+            <!--                <version>${mybatis-generator}</version>-->
+            <!--                <configuration>-->
+            <!--                    <configurationFile>${basedir}/src/main/resources/generator-config.xml</configurationFile>-->
+            <!--                    &lt;!&ndash; 是否重写文件-->
+            <!--                        注意：XML 不会重写，总是将新生成的内容合并到旧文件之下 &ndash;&gt;-->
+            <!--                    <overwrite>true</overwrite>-->
+            <!--                    &lt;!&ndash; 是否在输出日志中打印进度信息 &ndash;&gt;-->
+            <!--                    <verbose>true</verbose>-->
+            <!--                </configuration>-->
+            <!--                &lt;!&ndash; 编译代码时，自动执行 mybatis generator &ndash;&gt;-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>Generate MyBatis Artifacts</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 </project>

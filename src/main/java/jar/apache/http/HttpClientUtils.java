@@ -3,6 +3,7 @@ package jar.apache.http;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -24,10 +25,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * HttpClient 容易忽视的细节——连接关闭：https://www.iteye.com/blog/seanhe-234759
+ * HttpClientUtils
+ * Apache HttpComponents：https://hc.apache.org/
  * HttpClientUtil 工具类：https://www.cnblogs.com/bignew/p/6715671.html
- * HttpComponents之httpclient基本使用方法：https://my.oschina.net/xinxingegeya/blog/282683
- * http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/
+ * HttpClient 设置 cookies：https://www.cnblogs.com/lixianshengfitting/p/13840123.html
  *
  * @author ljh
  * created on 2020/11/12 21:35
@@ -35,10 +36,19 @@ import java.util.Map;
 public abstract class HttpClientUtils {
 
     private static final RequestConfig REQUEST_CONFIG = RequestConfig.custom()
-            .setConnectTimeout(5000)    // 连接超时：指连接一个 url 的连接等待时间
-            .setSocketTimeout(5000)     // 读取数据超时：指连接上一个 url ，获取 response 的返回等待时间
+            // TimeOut：https://blog.csdn.net/btlas/article/details/53710854
+            // 连接请求超时：指从连接池获取连接的超时时间
             .setConnectionRequestTimeout(5000)
+            // 连接超时：三次握手完成时间
+            .setConnectTimeout(5000)
+            // 读取数据超时：数据传输过程中数据包之间间隔的最大时间
+            .setSocketTimeout(5000)
+            // cookie 策略
+            .setCookieSpec(CookieSpecs.DEFAULT)
             .build();
+
+    private static final CloseableHttpClient CLIENT = HttpClients.custom()
+            .setDefaultRequestConfig(REQUEST_CONFIG).build();
 
     public static void main(String[] args) throws IOException, URISyntaxException {
     }

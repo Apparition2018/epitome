@@ -80,7 +80,6 @@ public class FetchController {
 
     @RequestMapping("/cookie")
     public String cookie(@CookieValue(value = "cny", required = false) String cny, HttpServletRequest request) {
-
         String rtnString = "";
 
         Cookie[] cookies = request.getCookies();
@@ -94,10 +93,8 @@ public class FetchController {
                     rtnString = "cny: " + cookie.getValue();
                 }
             }
-
         }
 
         return rtnString;
-
     }
 }

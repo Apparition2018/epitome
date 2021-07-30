@@ -1,6 +1,8 @@
 package knowledge.suggestions;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -40,6 +42,7 @@ public class Family {
     }
 
     public static class Son extends FatherImpl implements Mother, Serializable {
+        private static final long serialVersionUID = 568586027964879053L;
 
         @Override
         public int strong() {
@@ -61,9 +64,7 @@ public class Family {
         }
     }
 
-    @Getter
-    @Setter
-    @ToString
+    @Data
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Daughter extends MotherImpl implements Father {

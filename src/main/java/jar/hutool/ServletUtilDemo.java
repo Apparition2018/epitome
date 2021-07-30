@@ -27,6 +27,7 @@ import java.util.Map;
 @Slf4j
 @WebServlet("/ServletUtil")
 public class ServletUtilDemo extends HttpServlet {
+    private static final long serialVersionUID = 770260830268343491L;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
@@ -49,7 +50,7 @@ public class ServletUtilDemo extends HttpServlet {
         HttpRequest.post("http://localhost:8080/ServletUtil")
                 .form(params)
                 .body(JSONUtil.toJsonStr(params))
-                .cookie(new HttpCookie("cookie", "oreo"))
+                .cookie(new HttpCookie("cookie", "zero"))
                 .execute();
     }
 

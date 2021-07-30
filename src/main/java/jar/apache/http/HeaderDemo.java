@@ -18,10 +18,10 @@ public class HeaderDemo {
          * 响应报文的第一行包含了协议版本，之后是数字状态码和相关联的文本段
          */
         HttpResponse response = new BasicHttpResponse(HttpVersion.HTTP_1_1, HttpStatus.SC_OK, "OK");
-        p(response.getProtocolVersion());                // HTTP/1.1
+        p(response.getProtocolVersion());               // HTTP/1.1
         p(response.getStatusLine());                    // 200
         p(response.getStatusLine().getStatusCode());    // OK
-        p(response.getStatusLine().getReasonPhrase());    // HTTP/1.1 200 OK
+        p(response.getStatusLine().getReasonPhrase());  // HTTP/1.1 200 OK
         p("----------------------------------------");
 
 
