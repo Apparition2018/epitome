@@ -1,5 +1,6 @@
 package springboot.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -18,6 +19,7 @@ import java.util.Map;
  * @author ljh
  * created on 2019/8/8 19:39
  */
+@Slf4j
 @RestController
 @RequestMapping("/fetch")
 public class FetchController {
@@ -58,7 +60,6 @@ public class FetchController {
     public String uploadPictures(HttpServletRequest request) {
         try {
             List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
-
             MultipartFile file;
             for (int i = 0; i < files.size(); i++) {
                 file = files.get(i);
@@ -74,27 +75,23 @@ public class FetchController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return "fail";
     }
 
     @RequestMapping("/cookie")
     public String cookie(@CookieValue(value = "cny", required = false) String cny, HttpServletRequest request) {
         String rtnString = "";
-
         Cookie[] cookies = request.getCookies();
         if (null == cookies) {
-            System.out.println("没有cookie=========");
+            log.info("没有 cookie");
         } else {
             for (Cookie cookie : cookies) {
-                System.out.println(cookie.getName());
-                System.out.println(cookie.getValue());
                 if ("cny".equals(cookie.getName()) && cny.equals(cookie.getValue())) {
-                    rtnString = "cny: " + cookie.getValue();
+                    log.info(cookie.getName() + ": " + cookie.getValue());
+                    rtnString = cookie.getName() + ": " + cookie.getValue();
                 }
             }
         }
-
         return rtnString;
     }
 }

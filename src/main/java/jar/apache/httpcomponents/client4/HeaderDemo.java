@@ -1,4 +1,4 @@
-package jar.apache.http;
+package jar.apache.httpcomponents.client4;
 
 import org.apache.http.*;
 import org.apache.http.message.BasicHeaderElementIterator;
@@ -7,6 +7,8 @@ import org.apache.http.message.BasicHttpResponse;
 import static l.demo.Demo.p;
 
 /**
+ * https://hc.apache.org/httpcomponents-client-4.5.x/current/tutorial/html/fundamentals.html#d5e80
+ *
  * @author ljh
  * created on 2020/11/12 21:35
  */
@@ -26,6 +28,8 @@ public class HeaderDemo {
 
 
         //********** Header **********
+        // HTTP 请求报文通过 Cookie 字段通知服务端当前页面的域生效中的 cookie；可包含多个键值
+        // HTTP 响应报文通过 Set-Cookie 字段通知客户端需要保存的 cookie；可以有多个 Set-Cookie
         response.addHeader("Set-Cookie", "c1=a; path=/; domain=localhost");
         response.addHeader("Set-Cookie", "c2=b; path=\"/\", c3=c; domain=\"localhost\"");
         Header h1 = response.getFirstHeader("Set-Cookie");
@@ -33,14 +37,14 @@ public class HeaderDemo {
         Header h2 = response.getLastHeader("Set-Cookie");
         p(h2); // Set-Cookie: c2=b; path="/", c3=c; domain="localhost"
         Header[] hs = response.getHeaders("Set-Cookie");
-        p(hs.length + "\n"); // 2
+        p("----------------------------------------");
 
         // 使用 HeaderIterator 接口获取所有头部信息
         HeaderIterator it = response.headerIterator("Set-Cookie");
         while (it.hasNext()) {
             p(it.next());
         }
-        p();
+        p("----------------------------------------");
 
         // BasicHeaderElementIterator 提供解析 HTTP 报文到独立头部信息元素的方法方法
         BasicHeaderElementIterator it2 = new BasicHeaderElementIterator(response.headerIterator("Set-Cookie"));

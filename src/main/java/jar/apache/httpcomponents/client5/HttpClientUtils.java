@@ -1,4 +1,4 @@
-package jar.apache.http;
+package jar.apache.httpcomponents.client5;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.hc.client5.http.ClientProtocolException;
@@ -10,11 +10,10 @@ import org.apache.hc.client5.http.cookie.BasicCookieStore;
 import org.apache.hc.client5.http.cookie.CookieStore;
 import org.apache.hc.client5.http.cookie.StandardCookieSpec;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
-import org.apache.hc.client5.http.fluent.Content;
-import org.apache.hc.client5.http.fluent.Request;
 import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
 import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
@@ -26,6 +25,7 @@ import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 import org.apache.hc.core5.http.io.SocketConfig;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.apache.hc.core5.http.message.BasicHeader;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.apache.hc.core5.net.URIBuilder;
 import org.apache.hc.core5.pool.PoolConcurrencyPolicy;
@@ -35,10 +35,7 @@ import org.apache.hc.core5.util.TimeValue;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -137,19 +134,24 @@ public abstract class HttpClientUtils {
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        System.out.println(Request.get("http://localhost:3333/fetch/cookie").execute().returnResponse());
+        Map<String, String> cookies = new HashMap<>();
+        cookies.put("cny", "1");
+        System.out.println(doPost("http://localhost:3333/fetch/cookie", null, cookies));
 
     }
 
-    public static String doPost(String url, Map<String, String> params) throws IOException {
+    public static String doPost(String url, Map<String, String> params, Map<String, String> cookies) throws IOException {
         String responseBody;
-        // 2.创建 HttpPost 请求
         HttpPost httpPost = new HttpPost(url);
         if (params != null) {
             List<BasicNameValuePair> nameValuePairList = params.entrySet().stream().map(
                     entry -> new BasicNameValuePair(entry.getKey(), entry.getValue())).collect(Collectors.toList());
             HttpEntity formEntity = new UrlEncodedFormEntity(nameValuePairList, StandardCharsets.UTF_8);
             httpPost.setEntity(formEntity);
+        }
+        if (cookies != null) {
+            Header header = new BasicHeader("Cookie", cookies.entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining("&")));
+            httpPost.addHeader(header);
         }
         responseBody = httpClient.execute(httpPost, responseHandler);
         return responseBody;
@@ -164,8 +166,12 @@ public abstract class HttpClientUtils {
         return responseBody;
     }
 
+    public static String doPost(String url, Map<String, String> params) throws IOException {
+        return doPost(url, params, null);
+    }
+
     public static String doPost(String url) throws IOException {
-        return doPost(url, (Map<String, String>) null);
+        return doPost(url, null, null);
     }
 
     public static String doGet(String url, Map<String, String> params) throws IOException, URISyntaxException {
