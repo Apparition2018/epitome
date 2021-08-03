@@ -13,7 +13,6 @@ import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
 import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
@@ -31,6 +30,7 @@ import org.apache.hc.core5.net.URIBuilder;
 import org.apache.hc.core5.pool.PoolConcurrencyPolicy;
 import org.apache.hc.core5.pool.PoolReusePolicy;
 import org.apache.hc.core5.util.TimeValue;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -44,12 +44,29 @@ import java.util.stream.Collectors;
  * HttpClient Overview：https://hc.apache.org/httpcomponents-client-5.1.x/index.html
  * HttpClient 工具详解：http://www.mydlq.club/article/68/
  * HttpClient 设置 cookies：https://www.cnblogs.com/lixianshengfitting/p/13840123.html
+ * 七大主流的 HttpClient 比较：https://blog.csdn.net/citywu123/article/details/109456035
  *
  * @author ljh
  * created on 2020/11/12 21:35
  */
 @Slf4j
-public abstract class HttpClientUtils {
+public class HttpClientUtils {
+
+    private static volatile HttpClientUtils instance;
+
+    private HttpClientUtils() {
+    }
+
+    public static HttpClientUtils getInstance() {
+        if (instance == null) {
+            synchronized (HttpClientUtils.class) {
+                if (instance == null) {
+                    instance = new HttpClientUtils();
+                }
+            }
+        }
+        return instance;
+    }
 
     private static CloseableHttpClient httpClient;
 
@@ -133,14 +150,14 @@ public abstract class HttpClientUtils {
         };
     }
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    @Test
+    public void test() throws IOException {
         Map<String, String> cookies = new HashMap<>();
         cookies.put("cny", "1");
-        System.out.println(doPost("http://localhost:3333/fetch/cookie", null, cookies));
-
+        System.out.println(HttpClientUtils.getInstance().doPost("http://localhost:3333/fetch/cookie", null, cookies));
     }
 
-    public static String doPost(String url, Map<String, String> params, Map<String, String> cookies) throws IOException {
+    public String doPost(String url, Map<String, String> params, Map<String, String> cookies) throws IOException {
         String responseBody;
         HttpPost httpPost = new HttpPost(url);
         if (params != null) {
@@ -157,7 +174,7 @@ public abstract class HttpClientUtils {
         return responseBody;
     }
 
-    public static String doPost(String url, String json) throws IOException {
+    public String doPost(String url, String json) throws IOException {
         String responseBody;
         StringEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
         HttpPost httpPost = new HttpPost(url);
@@ -166,15 +183,15 @@ public abstract class HttpClientUtils {
         return responseBody;
     }
 
-    public static String doPost(String url, Map<String, String> params) throws IOException {
+    public String doPost(String url, Map<String, String> params) throws IOException {
         return doPost(url, params, null);
     }
 
-    public static String doPost(String url) throws IOException {
+    public String doPost(String url) throws IOException {
         return doPost(url, null, null);
     }
 
-    public static String doGet(String url, Map<String, String> params) throws IOException, URISyntaxException {
+    public String doGet(String url, Map<String, String> params) throws IOException, URISyntaxException {
         String responseBody;
         URIBuilder builder = new URIBuilder(url);
         if (params != null) {
@@ -185,7 +202,7 @@ public abstract class HttpClientUtils {
         return responseBody;
     }
 
-    public static String doGet(String url) throws IOException, URISyntaxException {
+    public String doGet(String url) throws IOException, URISyntaxException {
         return doGet(url, null);
     }
 }

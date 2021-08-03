@@ -29,42 +29,38 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- dependency -->
-        <druid-spring-boot>1.2.6</druid-spring-boot>
         <pagehelper-spring-boot>1.3.1</pagehelper-spring-boot>
-        <swagger>3.0.0</swagger>
+        <druid-spring-boot>1.2.6</druid-spring-boot>
         <commons-email>1.5</commons-email>
         <commons-configuration2>2.7</commons-configuration2>
         <commons-beanutils>1.9.4</commons-beanutils>
         <commons-cli>1.4</commons-cli>
-        <smartcn>8.9.0</smartcn>
-        <tika>1.27</tika>
         <hutool>5.7.5</hutool>
-        <fastjson>1.2.76</fastjson>
+        <tika>1.27</tika>
+        <okhttps>3.1.3</okhttps>
+        <retrofit2>2.9.0</retrofit2>
         <minio>8.3.0</minio>
+        <fastjson>1.2.76</fastjson>
         <protostuff>1.7.4</protostuff>
-        <cglib>3.3.0</cglib>
         <dom4j>2.1.3</dom4j>
+        <swagger>3.0.0</swagger>
+        <cglib>3.3.0</cglib>
         <zxing>3.4.1</zxing>
         <easy-captcha>1.6.2</easy-captcha>
         <kaptcha>2.3.2</kaptcha>
         <TinyPinyin>2.0.3.RELEASE</TinyPinyin>
+        <lucene>8.9.0</lucene>
         <oshi>5.8.0</oshi>
         <jsch>0.1.55</jsch>
         <thumbnailator>0.4.14</thumbnailator>
-        <truelicense>1.33</truelicense>
         <emoji>5.1.1</emoji>
+        <truelicense>1.33</truelicense>
         <!-- plugin -->
         <mybatis-generator>1.4.0</mybatis-generator>
     </properties>
 
     <dependencies>
-        <!-- spring-boot-starter：https://www.cnblogs.com/yaowen/p/8623902.html
-            spring-boot-starter-web 包含了 spring-boot-starter-json
-                spring-boot-starter-json 包含了 jackson-databind
-                    jackson-databind 包含了 jackson-core, jackson-annotations
-            spring-boot-starter-web 包含了 spring-boot-starter-logging
-                spring-boot-starter-logging 包含了 logback-classic
-                    logback-classic 包含了 logback-core, slf4j-api -->
+        <!-- spring-boot-starter：https://www.cnblogs.com/yaowen/p/8623902.html -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -81,24 +77,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        <!-- spring boot 整合 redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-        <!-- spring boot 整合 quartz -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
-        <!-- spring boot 整合 freemarker
-            包含了 spring-context-support -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
-        <!-- spring boot 整合 热部署
-            https://www.jb51.net/article/140031.htm -->
+        <!-- 热部署：https://www.jb51.net/article/140031.htm -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -106,17 +97,10 @@
 				之后依赖此项目的项目如果想要使用, 需要重新引入 -->
             <optional>true</optional>
         </dependency>
-        <!-- spring boot 引入文件处理器：https://www.xttblog.com/?p=2834 -->
+        <!-- 配置处理器：https://www.xttblog.com/?p=2834 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
-        </dependency>
-
-        <!-- spring boot 整合 druid -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid-spring-boot}</version>
         </dependency>
 
         <!-- spring boot 整合 pagehelper
@@ -127,11 +111,11 @@
             <version>${pagehelper-spring-boot}</version>
         </dependency>
 
-        <!-- Swagger3 -->
+        <!-- spring boot 整合 druid -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>${swagger}</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid-spring-boot}</version>
         </dependency>
 
         <!-- mysql -->
@@ -148,7 +132,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Jedis -->
+        <!-- jedis -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
@@ -182,28 +166,28 @@
             <version>${commons-cli}</version>
         </dependency>
 
-        <!-- smartch：中文智能分析 -->
+        <!-- hutool：https://www.hutool.cn/docs/#/ -->
         <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers-smartcn</artifactId>
-            <version>${smartcn}</version>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool}</version>
+        </dependency>
+
+        <!-- netty -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
         </dependency>
 
         <!-- tika：内容抽取的工具集合
-            包含了 gson, guava, commons-compress, commons-math3, commons-collections4,
-            poi, poi-ooxml, poi-ooxmll-schemas, poi-scratchpad,
-            jsoup, httpmime, bcprov-jdk15on, juniversalchardet -->
+            包含了 gson, guava,
+                commons-io, commons-compress, commons-math3, commons-collections4,
+                poi, poi-ooxml, poi-ooxmll-schemas, poi-scratchpad,
+                jsoup, httpmime, bcprov-jdk15on, juniversalchardet -->
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parsers</artifactId>
             <version>${tika}</version>
-        </dependency>
-
-        <!-- Netty -->
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>${netty.version}</version>
         </dependency>
 
         <!-- httpclient5 -->
@@ -212,19 +196,30 @@
             <artifactId>httpclient5-fluent</artifactId>
         </dependency>
 
-
-        <!-- hutool：https://www.hutool.cn/docs/#/ -->
+        <!-- okhttps：对 OkHttp 轻量封装 -->
         <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool}</version>
+            <groupId>com.ejlchina</groupId>
+            <artifactId>okhttps</artifactId>
+            <version>${okhttps}</version>
         </dependency>
 
-        <!-- fastjson -->
+        <!-- retrofit2 -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson}</version>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>${retrofit2}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-moshi</artifactId>
+            <version>${retrofit2}</version>
+        </dependency>
+
+        <!-- htmlunit：用于测试基于 web 的应用程序的无头浏览器
+            包含了 commons-net, commons-text -->
+        <dependency>
+            <groupId>net.sourceforge.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
         </dependency>
 
         <!-- minio -->
@@ -232,6 +227,13 @@
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>${minio}</version>
+        </dependency>
+
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson}</version>
         </dependency>
 
         <!-- protostuff：基于 protobuf，序列化/反序列化 -->
@@ -244,28 +246,6 @@
             <groupId>io.protostuff</groupId>
             <artifactId>protostuff-runtime</artifactId>
             <version>${protostuff}</version>
-        </dependency>
-
-        <!-- cglib：Code生成，动态代理 -->
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib-nodep</artifactId>
-            <version>${cglib}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- htmlunit：用于测试基于 web 的应用程序的无头浏览器
-            包含了 commons-io, commons-net, commons-text -->
-        <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
         </dependency>
 
         <!-- dom4j：灵活的 Java XML 框架 -->
@@ -281,8 +261,29 @@
             <artifactId>jaxen</artifactId>
         </dependency>
 
-        <!-- zxing：生成二维码
-            包含了 core -->
+        <!-- swagger3 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>${swagger}</version>
+        </dependency>
+
+        <!-- cglib：Code 生成，动态代理 -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>${cglib}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- zxing：生成二维码 -->
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>javase</artifactId>
@@ -310,6 +311,13 @@
             <version>${TinyPinyin}</version>
         </dependency>
 
+        <!-- lucene：中文智能分析 -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-smartcn</artifactId>
+            <version>${lucene}</version>
+        </dependency>
+
         <!-- oshi：获取系统和硬件信息工具 -->
         <dependency>
             <groupId>com.github.oshi</groupId>
@@ -331,6 +339,13 @@
             <version>${thumbnailator}</version>
         </dependency>
 
+        <!-- emoji -->
+        <dependency>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>emoji-java</artifactId>
+            <version>${emoji}</version>
+        </dependency>
+
         <!-- truelicense：安全许可证管理
             https://www.cnblogs.com/xifengxiaoma/p/9377654.html -->
         <dependency>
@@ -339,12 +354,10 @@
             <version>${truelicense}</version>
             <scope>provided</scope>
         </dependency>
-
-        <!-- emoji -->
         <dependency>
-            <groupId>com.vdurmont</groupId>
-            <artifactId>emoji-java</artifactId>
-            <version>${emoji}</version>
+            <groupId>it.unimi.dsi</groupId>
+            <artifactId>fastutil</artifactId>
+            <version>8.3.1</version>
         </dependency>
     </dependencies>
 
