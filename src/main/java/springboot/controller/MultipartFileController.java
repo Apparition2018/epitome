@@ -50,7 +50,7 @@ public class MultipartFileController extends Demo {
             return "上传失败！";
         }
     }
-    
+
     @RequestMapping("/input2")
     public void fileInput(MultipartFile file) {
         try {
@@ -83,5 +83,4 @@ public class MultipartFileController extends Demo {
             e.printStackTrace();
         }
     }
-
 }

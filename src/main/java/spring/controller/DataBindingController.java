@@ -21,19 +21,17 @@ import java.util.Map;
 import static l.demo.Demo.p;
 
 /**
- * DemoController
- *
  * @author ljh
  * created on 2020/11/25 11:45
  */
 @Controller
-@RequestMapping("/accept-param")
-public class AcceptParamController {
+@RequestMapping("/data-binding")
+public class DataBindingController {
 
     private final BmiService bmiService;
 
     @Autowired
-    public AcceptParamController(BmiService bmiService) {
+    public DataBindingController(BmiService bmiService) {
         this.bmiService = bmiService;
     }
 

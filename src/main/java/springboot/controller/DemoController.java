@@ -54,8 +54,9 @@ public class DemoController {
 
     /**
      * http://localhost:3333/demo/path/{id}/{name}
+     * `@PathVariable：https://www.cnblogs.com/fangpengchengbupter/p/7823493.html
      */
-    @RequestMapping("/path/{id}/{name}")
+    @RequestMapping("/path/{id:[0-9]+}/{name}")
     public Student path(@PathVariable("id") Integer id, @PathVariable("name") String name) {
         log.info("path 参数：id-{}，name-{}", id, name);
         return new Student(id, name);

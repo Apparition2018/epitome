@@ -53,7 +53,6 @@ public class PjaxController {
      * 获取城市天气
      */
     private static String getCityWeather(String city) {
-
         String result;
         try {
             CloseableHttpClient client = HttpClients.createDefault();
@@ -73,8 +72,6 @@ public class PjaxController {
         } catch (IOException e) {
             result = ERROR_MSG;
         }
-
         return result;
     }
-
 }
