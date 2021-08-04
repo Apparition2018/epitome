@@ -18,9 +18,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * RestTemplate
- * <p>
- * Restful (HttpMethod): GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE
- * <p>
  * 详解 RestTemplate 操作：https://blog.csdn.net/itguangit/article/details/78825505
  * RestTemplate 深度解析：https://blog.csdn.net/qq_27000425/article/details/72883910
  * Spring RestTemplate 中几种常见的请求方式：https://segmentfault.com/a/1190000011093597
@@ -31,15 +28,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class RestTemplateDemo extends Demo {
 
-    private static RestTemplate restTemplate;
-    private static HttpHeaders requestHeaders = new HttpHeaders();
+    private static final RestTemplate restTemplate;
+    private static final HttpHeaders requestHeaders = new HttpHeaders();
+    private static final Map<String, Object> map;
+    private static final MultiValueMap<String, Object> multiValueMap;
+    private static final Person person = new Person(1, "John");
 
     private String url;
     private ResponseEntity<Student> responseEntity;
-
-    private static Map<String, Object> map;
-    private static MultiValueMap<String, Object> multiValueMap;
-    private static Person person = new Person(1, "John");
 
     static {
         HttpComponentsClientHttpRequestFactory requestFactory =
@@ -62,22 +58,27 @@ public class RestTemplateDemo extends Demo {
     }
 
     @Test
+    public void cookie() {
+        requestHeaders.add("Cookie", "cny=1");
+        HttpEntity<?> httpEntity = new HttpEntity<>(map, requestHeaders);
+        ResponseEntity<String> responseEntity = restTemplate.exchange("http://localhost:3333/fetch/cookie", HttpMethod.POST, httpEntity, String.class);
+        p(responseEntity.getBody());
+    }
+
+    @Test
     public void exchange() {
         // http://localhost:3333/demo/post3
         url = DEMO_URL + "post3";
-        HttpEntity<?> requestEntity;
+        HttpEntity<?> httpEntity;
         if (new Random().nextBoolean()) {
-            requestEntity = new HttpEntity<>(person, requestHeaders);
+            httpEntity = new HttpEntity<>(person, requestHeaders);
         } else {
-            requestEntity = new HttpEntity<>(map, requestHeaders);
+            httpEntity = new HttpEntity<>(map, requestHeaders);
         }
-        ResponseEntity<Student> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Student.class);
+        responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntity, Student.class);
         printResponseEntity(responseEntity);
     }
 
-    /**
-     * GET
-     */
     @Test
     public void get() {
         // http://localhost:3333/demo/get
@@ -101,9 +102,6 @@ public class RestTemplateDemo extends Demo {
         // 同 getForEntity()，只是返回值变为 T
     }
 
-    /**
-     * POST
-     */
     @Test
     public void post() {
         //********** 1.postForEntity() **********
@@ -181,8 +179,7 @@ public class RestTemplateDemo extends Demo {
     }
 
     private void printResponseEntity(ResponseEntity<?> responseEntity) {
-        p(responseEntity.getStatusCode());      // 200 OK
-        // p(responseEntity.getStatusCodeValue()); // 200
+        p(responseEntity.getStatusCode());
         p(responseEntity.getHeaders());
         p(responseEntity.getBody() + "\n");
     }

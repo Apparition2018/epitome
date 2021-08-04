@@ -31,7 +31,7 @@ public class RetrofitDemo extends Demo {
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build();
         RetrofitService service = retrofit.create(RetrofitService.class);
-        Response<Person.Student> response = service.get(1, "ljh").execute();
+        Response<Person.Student> response = service.get(1, MY_NAME).execute();
         p(response.body());
     }
 

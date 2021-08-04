@@ -41,11 +41,11 @@ public class ConvertDemo extends Demo {
         p(Convert.convertTime(444444, TimeUnit.SECONDS, TimeUnit.MINUTES));
 
         // Unicode
-        p(Convert.strToUnicode(MY_NAME));
-        p(Convert.unicodeToStr("\\u6881\\u6770\\u8f89"));
+        p(Convert.strToUnicode(MY_CY));
+        p(Convert.unicodeToStr("\\u4e2d\\u56fd"));
 
         // 编码转换
-        p(Convert.convertCharset(MY_NAME, UTF_8, StandardCharsets.ISO_8859_1.name()));
+        p(Convert.convertCharset(MY_CY, UTF_8, StandardCharsets.ISO_8859_1.name()));
 
         // 16进制
         p(Convert.toHex(HELLO_WORLD, StandardCharsets.UTF_8));

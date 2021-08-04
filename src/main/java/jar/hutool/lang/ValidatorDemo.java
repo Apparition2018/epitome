@@ -35,9 +35,9 @@ public class ValidatorDemo extends Demo {
         p(Validator.isMatchRegex("\\w+", "A1_"));
 
         // 包含汉子
-        p(Validator.hasChinese(MY_NAME));
+        p(Validator.hasChinese(MY_CY));
         // 都为汉子
-        p(Validator.isChinese(MY_NAME));
+        p(Validator.isChinese(MY_CY));
         // 英文字母、数字、下划线
         p(Validator.isGeneral("A1_"));
         // 字母、汉子

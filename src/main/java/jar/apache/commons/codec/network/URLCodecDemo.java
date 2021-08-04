@@ -19,9 +19,10 @@ public class URLCodecDemo extends Demo {
     @Test
     public void testURLCodec() throws UnsupportedEncodingException, DecoderException {
         URLCodec urlCodec = new URLCodec();
-        String encode = urlCodec.encode(MY_NAME, UTF_8);
-        p(encode); // %E6%A2%81%E6%9D%B0%E8%BE%89
 
-        p(urlCodec.decode(encode, UTF_8));
+        String encode = urlCodec.encode(MY_CY, UTF_8);
+        p(encode); // %E4%B8%AD%E5%9B%BD
+
+        p(urlCodec.decode(encode, UTF_8)); // 中国
     }
 }

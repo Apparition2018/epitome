@@ -42,6 +42,6 @@ public class HexUtilDemo extends Demo {
 
         // char/int → unicode 字符串
         // 常用于特殊字符（例如汉字）转 Unicode 形式，转换的字符串如果 u 后不足4位，则前面用0填充
-        String unicodeHex = HexUtil.toUnicodeHex(MY_NAME.toCharArray()[0]);
+        String unicodeHex = HexUtil.toUnicodeHex(MY_CY.toCharArray()[0]);
     }
 }

@@ -17,7 +17,7 @@ import l.demo.Demo;
 public class JschUtilDemo extends Demo {
 
     public static void main(String[] args) {
-        Session session = JschUtil.getSession(REMOTE_IP, 22, REMOTE_ACCT, REMOTE_PWD);
+        Session session = JschUtil.getSession("47.115.17.202", 22, "admin", "zx$due^403c");
         p(session.getClientVersion());  // SSH-2.0-JSCH-0.1.54
         p(session.getServerVersion());  // SSH-2.0-OpenSSH_5.3
     }

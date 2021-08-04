@@ -12,6 +12,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 import static l.demo.Demo.MY_EMAIL;
+import static l.demo.Demo.MY_NAME;
 
 /**
  * SwaggerConfig
@@ -40,7 +41,7 @@ public class Swagger3Config {
         return new ApiInfoBuilder()
                 .title("epitome")
                 .description("epitome")
-                .contact(new Contact("ljh", null, MY_EMAIL))
+                .contact(new Contact(MY_NAME, null, MY_EMAIL))
                 .version("1.0")
                 .build();
     }
