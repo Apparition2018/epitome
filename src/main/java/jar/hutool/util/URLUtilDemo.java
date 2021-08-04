@@ -23,7 +23,7 @@ public class URLUtilDemo extends Demo {
     public void testURLUtil() {
         // static String	normalize(String url[, boolean isEncodePath])
         // 标准化URL字符串
-        String urlStr = URLUtil.normalize(DEMO_URL);
+        String urlStr = URLUtil.normalize(MOZILLA_DEMO_URL);
 
         // static URL	    url(String url)
         //  通过一个字符串形式的URL地址创建URL对象

@@ -18,7 +18,7 @@ public class URIDemo extends Demo {
 
     public static void main(String[] args) throws URISyntaxException {
         // URI(String str)                  通过解析给定的字符串构造一个 URI
-        URI uri = new URI(DEMO_URL);
+        URI uri = new URI(MOZILLA_DEMO_URL);
         // static URI	create(String str)  通过解析给定的字符串创建 URI
         URI uri2 = URI.create(BAIDU_URL);
 
@@ -31,7 +31,5 @@ public class URIDemo extends Demo {
         p(uri.getPath());               // 路径部分：/en-US/search
         p(uri.getQuery());              // 查询部分：q=URL
         p(uri.getFragment());           // 锚点：search-results-close-container
-
     }
-
 }

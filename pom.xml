@@ -214,6 +214,11 @@
             <artifactId>converter-moshi</artifactId>
             <version>${retrofit2}</version>
         </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-jackson</artifactId>
+            <version>${retrofit2}</version>
+        </dependency>
 
         <!-- htmlunit：用于测试基于 web 的应用程序的无头浏览器
             包含了 commons-net, commons-text -->

@@ -22,7 +22,7 @@ public class URIBuilderDemo extends Demo {
     @Test
     public void get() throws URISyntaxException {
 
-        URIBuilder builder = new URIBuilder(DEMO_URL);
+        URIBuilder builder = new URIBuilder(MOZILLA_DEMO_URL);
 
         p(builder);                     // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
         p(builder.getScheme());         // https
@@ -64,5 +64,4 @@ public class URIBuilderDemo extends Demo {
 
         p(builder.build()); // https://www.baidu.com/?a=1&b=2&c=3
     }
-
 }

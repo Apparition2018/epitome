@@ -21,7 +21,7 @@ public class URLEncodedUtilsDemo extends Demo {
 
     @Test
     public void testURLEncodedUtils() throws URISyntaxException {
-        URI uri = new URIBuilder(DEMO_URL).build();
+        URI uri = new URIBuilder(MOZILLA_DEMO_URL).build();
 
         // 返回 URI 查询参数 NameValuePair 列表
         List<NameValuePair> nameValuePairs = URLEncodedUtils.parse(uri, StandardCharsets.UTF_8);
@@ -30,5 +30,4 @@ public class URLEncodedUtilsDemo extends Demo {
         // 返回作适合用作 HTTP PUT 或 HTTP POST 中的 application-x-www-form-urlencoded 参数列表字符串
         p(URLEncodedUtils.format(nameValuePairs, StandardCharsets.UTF_8)); // q=URL
     }
-
 }

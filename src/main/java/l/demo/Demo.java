@@ -73,7 +73,9 @@ public class Demo {
     public static final String UTF_8 = StandardCharsets.UTF_8.name();
     public static final String BAIDU_HOST = "www.baidu.com";
     public static final String BAIDU_URL = "https://" + BAIDU_HOST;
-    public static final String DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";
+    public static final String MOZILLA_DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";
+    public static final String BASE_URL = "http://localhost:3333/";
+    public static final String DEMO_URL = "http://localhost:3333/demo/";
     public static final String USER_DIR = System.getProperty("user.dir");
     public static final String DESKTOP = "C:/Users/Administrator/Desktop";
     public static final String JAVA_PATH = "src/main/java/";
@@ -85,7 +87,6 @@ public class Demo {
     public static final String HU_DEMO_ABSOLUTE_PATH = USER_DIR + File.separator + HU_DEMO_PATH;
     public static final String DEMO_FILE_PATH = DEMO_PATH + "demo";
     public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "demo";
-    public static final String DEMO_URI = "http://localhost:3333/demo/";
     public static final String ARSENAL_LOGO = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1113375911,3381445023&fm=26&gp=0.jpg";
     public static final String NOHARA_SINNOSUKE = RESOURCES_ABSOLUTE_PATH + "static/static/img/people/NoharaSinnosuke.png";
     public static final String JDBC_PROP_FILENAME = "jdbc.properties";

@@ -25,7 +25,7 @@ public class URLDemo extends Demo {
     @Test
     public void testURL() throws IOException {
         // URL(String spec)         根据 String 表示形式创建 URL 对象
-        URL url = new URL(DEMO_URL);
+        URL url = new URL(MOZILLA_DEMO_URL);
 
         p(url);                     // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
         p(url.getProtocol());       // 协议名称：https
