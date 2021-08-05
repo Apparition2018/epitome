@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
     <meta name="description" content="https://github.com/defunkt/jquery-pjax/#pjax--pushstate--ajax">
+    <meta name="description" content="https://blog.csdn.net/weixin_44776993/article/details/107502380">
     <title>${city!''}天气</title>
     <link href="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>

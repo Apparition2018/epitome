@@ -68,7 +68,7 @@
 >reset                                          将当前 HEAD 复位到指定状态
 >   --soft                                      复位 repository
 >   --mixed                                     复位 repository 和 index，默认
->   --hard                                      复位 repository 和 index 和 working tree
+>   --hard                                      复位 repository 和 index 和 working tree                                    git reset --hard HEAD^
 >rm [<pathspec>…]                               从 working tree 和 index 中删除文件
 >    --cached                                   从 index 中删除文件
 >mv                                             移动或重命名文件，目录或符号链接
@@ -99,7 +99,7 @@
 >fetch [<repository> [<refspec>…]]              从另一个 directory 下载 objects 和 refs
 >pull [<repository> [<refspec>…]]               从另一个 directory 或 local branch 获取并与之集成
 >push                                           使用 local refs 更新 remote refs，并发送相关 objects
->   <repository> <refname>                      更新到远程 ref
+>   <repository> <refname>                      更新到远程 ref                                                               git push origin HEAD --force
 >   <repository> :<expect>                      删除远程 ref
 >   -u | --set-upstream                         下次输入同样的命令，只需输入 git push，无需输入参数
 >remote                                         管理一组被跟踪的 repository
