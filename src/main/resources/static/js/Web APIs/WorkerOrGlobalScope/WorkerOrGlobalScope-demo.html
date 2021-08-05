@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>WorkerOrGlbalScope-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../../public/js/demo.js"></script>
+</head>
+
+<body>
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w100p">
+            <div class="caption">WorkerOrGlbalScope</div>
+            <div class="centered">
+                <table class="w1280">
+                    <tr>
+                        <th>属性/方法</th>
+                        <th>概述</th>
+                        <th>示例</th>
+                    </tr>
+                    <tr>
+                        <td>setInterval()</td>
+                        <td>按照指定的周期来调用一个函数或执行一段代码</td>
+                        <td>id1 = setInterval(func/code, delay)</td>
+                    </tr>
+                    <tr>
+                        <td>clearInterval()</td>
+                        <td>取消用 setInterval 设置的重复定时任务</td>
+                        <td>clearInterval(id1)</td>
+                    </tr>
+                    <tr>
+                        <td><a
+                                href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setTimeout">setTimeout()</a>
+                        </td>
+                        <td>在指定的毫秒数后调用一个函数或执行一段代码</td>
+                        <td>id2 = setTimeout(func/code, delay)</td>
+                    </tr>
+                    <tr>
+                        <td>clearTimeout()</td>
+                        <td>取消用 setTimeout 设置的定时器</td>
+                        <td>clearTimeout(id2)</td>
+                    </tr>
+                    <tr>
+                        <td><a
+                                href="https://developer.mozilla.org/zh-CN/docs/Web/API/WindowOrWorkerGlobalScope/fetch">fetch()</a>
+                        </td>
+                        <td>用于发起获取资源的请求。它返回一个 promise，这个 promise 会在请求响应后被 resolve，并传回 Response 对象。</td>
+                        <td><a href="../Fetch%20API/Fetch-API-demo.html#Fetch-API-fetch">fetch()</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">setTimeout() 第一个参数</div>
+            <div class="centered" onclick="sto()">
+                <div class="demo-click">setTimeout</div>
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            function sto() {
+                (function () {
+                    function global() {
+                        alert("这是局部变量！");
+                    }
+                    setTimeout("global()", 1000);   //"这是全局变量！"
+                    setTimeout(global, 1000);       //"这是局部变量！"
+                })();
+            }
+
+            function global() {
+                alert("这是全局变量！")
+            }
+        </script>
+    </section>
+</body>
+
+</html>

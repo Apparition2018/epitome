@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>Object-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap" style="height: 1300px">
+        <div class="css-live-wrap w100p">
+            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+            <div class="proto centered">
+                <table class="w1280">
+                    <tr>
+                        <th>属性/方法</th>
+                        <th>概述</th>
+                        <th> 备注/示例</th>
+                    </tr>
+                    <tr>
+                        <td>Object.prototype</td>
+                        <td>原型对象，定义所有对象实例所共享的属性和方法</td>
+                        <td>函数才有的属性</td>
+                    </tr>
+                    <tr>
+                        <td>Object.prototype.__proto__</td>
+                        <td>用来寻找原型链；指向创建此对象的构造函数的原型，
+                            <br/>或 Object.create() 设置的原型</td>
+                        <td>每个对象都有的属性</td>
+                    </tr>
+                    <tr>
+                        <td>Object.prototype.constructor</td>
+                        <td>返回创建实例对象的构造函数的引用</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Object.assign()</td>
+                        <td>用于将所有可枚举属性的值从一个或多个源对象复制到目标对象</td>
+                        <td>const obj = { a: 1 };
+                            <br/>const copy = Object.assign( {}, obj ); // { a: 1 }</td>
+                    </tr>
+                    <tr>
+                        <td>Object.create()</td>
+                        <td>创建一个新对象，使用现有的对象来提供新创建的对象的__proto__</td>
+                        <td>const o = Object.create(null); // 创建一个原型为null的空对象</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">Object.defineProperty()</a></td>
+                        <td>在指定对象上定义一个新的属性或修改一个现有属性，并返回该对象</td>
+                        <td>const p1 = {};
+                            <br/>Object.defineProperty(p1, 'name', {
+                            <br/>&nbsp;&nbsp;value: '张三',
+                            <br/>&nbsp;&nbsp;writable: true,
+                            <br/>&nbsp;&nbsp;enumberable: true,
+                            <br/>&nbsp;&nbsp;configurable: false
+                            <br/>}); // {name: "张三"}</td>
+                    </tr>
+                    <tr>
+                        <td>Object.defineProperties()</td>
+                        <td>在指定对象上定义新的属性或修改现有属性，并返回该对象</td>
+                        <td>const p2 = new Object();
+                            <br/>Object.defineProperties(p2, {
+                            <br/>&nbsp;&nbsp;name: {
+                            <br/>&nbsp;&nbsp;&nbsp;&nbsp;value: '张三',
+                            <br/>&nbsp;&nbsp;&nbsp;&nbsp;writable: true,
+                            <br/>&nbsp;&nbsp;&nbsp;&nbsp;enumberable: true,
+                            <br/>&nbsp;&nbsp;&nbsp;&nbsp;configurable: false
+                            <br/>&nbsp;&nbsp;},
+                            <br/>&nbsp;&nbsp;age: {
+                            <br/>&nbsp;&nbsp;&nbsp;&nbsp;value: 18,
+                            <br/>&nbsp;&nbsp;&nbsp;&nbsp;configurable: true
+                            <br/>&nbsp;&nbsp;}
+                            <br/>}); // {name: "张三", age: 18}</td>
+                    </tr>
+                    <tr>
+                    <td>Object.freeze()</td>
+                    <td>冻结一个对象，注意是浅冻结，只冻结第一层</td>
+                    <td></td>
+                </tr>
+                <tr>
+                        <td>Object.getOwnPropertyDescriptor()</td>
+                        <td>返回指定对象上一个自有属性对应的属性描述符</td>
+                        <td>
+                            <a href="javascript: alert(JSON.stringify(Object.getOwnPropertyDescriptor(p1, 'name')))">Object.getOwnPropertyDescriptor(p1, 'name')</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Object.getOwnPropertyDescriptors()</td>
+                        <td>返回指定对象的所有自身属性的描述符</td>
+                        <td>
+                            <a href="javascript: alert(JSON.stringify(Object.getOwnPropertyDescriptors(p2)))">Object.getOwnPropertyDescriptors(p2)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Object.getOwnPropertyNames()</td>
+                        <td>返回一个指定对象自身的所有属性的属性名组成的数组
+                            <br/>包括不可枚举属性但不包括Symbol值作为名称的属性
+                        </td>
+                        <td>const arr = [1, 2, 3];
+                            <br/>Object.getOwnPropertyNames(arr);
+                            <br/>// ["0", "1", "2", "length"]</td>
+                    </tr>
+                    <tr>
+                    <td>Object.getOwnPropertySymbols()</td>
+                    <td>返回一个指定对象自身的所有 Symbol 属性组成的数组</td>
+                    <td>const o = { a: 1, [Symbol('sym')]: 'sym' };
+                        <br/>Object.getOwnPropertySymbols(o); // [Symbol(sym)]</td>
+                </tr>
+                <tr>
+                        <td>Object.keys()</td>
+                        <td>返回一个指定对象自身的所有可枚举属性名组成的数组，
+                            <br/>数组中属性名排列顺序和使用 for...in 返回的顺序一致 </td>
+                        <td>const arr = [1, 2, 3];
+                            <br/>Object.keys(arr); // ["0", "1", "2"]
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Object.preventExtensions()</td>
+                        <td>让一个对象变的不可扩展，也就是永远不能再添加新的属性</td>
+                        <td>Object.preventExtensions(obj)</td>
+                    </tr>
+                    <tr>
+                        <td>Object.getPrototypeOf()</td>
+                        <td>返回指定对象的原型（内部[[Prototype]]属性的值）</td>
+                        <td>Object.getPrototypeOf([1, 2, 3]) === Array.prototype; // ture</td>
+                    </tr>
+                    <tr>
+                        <td>Object.is()</td>
+                        <td>判断两个值是否是相同的值</td>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is#描述">相等规则</a></td>
+                    </tr>
+                    <tr>
+                        <td>Object.prototype.hasOwnProperty()</td>
+                        <td>返回一个布尔值，表示对象自身属性中是否具有指定的属性</td>
+                        <td>const o = { prop: 'exists' };
+                            <br/>o.hasOwnProperty('prop'); // true
+                            <br/>delete o.prop
+                            <br/>o.hasOwnProperty('prop'); // false
+                            <br/>o.hasOwnProperty('toString'); // false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Object.prototype.isPrototypeOf()</td>
+                        <td>返回一个布尔值，表示对象是否存在于另一个对象的原型链上</td>
+                        <td>const arr = [1, 2, 3];
+                            <br/>Array.prototype.isPrototypeOf(arr); // true</td>
+                    </tr>
+                    <tr>
+                        <td>Object.prototype.propertyIsEnumerable()</td>
+                        <td>返回一个布尔值，表示指定的属性是否可枚举</td>
+                        <td>const arr = [1, 2, 3];
+                            <br/>arr.propertyIsEnumerable(2); // true</td>
+                    </tr>
+                    <tr>
+                        <td>Object.prototype.toString()</td>
+                        <td>返回一个表示该对象的字符串</td>
+                        <td>[].toString(); // ""</td>
+                    </tr>
+                    <tr>
+                        <td>Object.prototype.valueOf()</td>
+                        <td>返回指定对象的原始值</td>
+                        <td>[].valueOf(); // []</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script>
+            const p1 = {};
+            Object.defineProperty(p1, 'name', {
+                value: '张三',
+                writable: true,
+                enumberable: true,
+                configurable: false
+            });
+
+            const p2 = {};
+            Object.defineProperties(p2, {
+                name: {
+                    value: '张三',
+                    writable: true,
+                    enumberable: true,
+                    configurable: false
+                },
+                age: {
+                    value: 18,
+                    configurable: true
+                }
+            });
+        </script>
+    </section>
+
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w33p">
+            <div class="caption">Object.prototype.__proto__ 的指向</div>
+            <div class="caption">
+                <a href="https://www.cnblogs.com/shuiyi/p/5305435.html">三张图搞懂 JS 的原型对象与原型链</a>
+            </div>
+            <div class="caption">
+                <a href="https://www.zhihu.com/question/56770432">JS 中 __proto__ 和 prototype 存在的意义是什么？</a>
+            </div>
+            <div class="__proto__ centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            // 指向构造器的原型对象
+            const arr1 = [1, 2, 3];
+            arr1.__proto__ === Array.prototype; // true
+
+            // 指向 Object.create() 设置的原型
+            const obj = { length: 3, "0": 1, "1": 2, "2": 3 };
+            const arr2 = Object.create(obj);
+            arr2.__proto__ === obj;               // true
+        </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap w33p">
+            <div class="caption">Object.defineProperty()</div>
+            <div class="caption">
+                <a href="https://blog.csdn.net/kzj0916/article/details/108298865">实现 vue 数据响应式</a>
+            </div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            const o = {};
+
+            o.a = 1;
+            // 等同于：
+            Object.defineProperty(o, "a", {
+                value: 1,
+                writable: true,
+                enumerable: true,
+                configurable: true
+            });
+
+            Object.defineProperty(o, "b", { value: 2 });
+            // 等同于：
+            Object.defineProperty(o, "b", {
+                value: 2,
+                writable: false,
+                enumerable: false,
+                configurable: false
+            })
+        </script>
+    </section>
+
+</body>
+
+</html>

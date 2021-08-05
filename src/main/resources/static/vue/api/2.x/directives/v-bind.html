@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <link rel="icon" href="../../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../../public/css/demo.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/theme-chalk/index.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/index.min.js"></script>
+</head>
+<body>
+<section class="code-wrap h500">
+    <div class="css-live-wrap">
+        <div class="caption">绑定 class</div>
+        <div class="centered" id="app">
+            <!-- 对象语法 -->
+            <div class="static" :class="{ 'active': isActive, 'error': isError }">obj1</div>
+            <div :class="classes">obj2</div>
+            <!-- 数组语法 -->
+            <div :class="[{ 'active': isActive }, isError]">arr1</div>
+            <div :class="classes2">arr2</div>
+            <!-- 组件 -->
+            <my-component class="active"></my-component>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        Vue.component('my-component', {
+            template: '<div class="article">component</div>'
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                isError: false,
+                size: 'large',
+                disabled: true
+            },
+            computed: {
+                classes: () => {
+                    return {
+                        active: this.isActive && !this.isError,
+                        'text-fail': this.isError && this.isError.type === 'fail'
+                    }
+                },
+                classes2: () => {
+                    return [
+                        'btn',
+                        {
+                            ['btn-' + this.size]: this.size !== '',
+                            ['btn-disabled']: this.disabled
+                        }
+                    ]
+                }
+            }
+        })
+    </script>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap">
+        <div class="caption">绑定 内联样式</div>
+        <div class="caption">跟绑定 class 一样有对象语法和数组语法</div>
+        <div class="centered" id="app2">
+            <!-- 对象语法 -->
+            <div :style="{ 'color': color, 'fontSize': fontSize + 'px' }">文本</div>
+            <div :style="styles">文本</div>
+            <!-- 数组语法 -->
+            <div :style="[styleA, styleB]">文本</div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        new Vue({
+            el: '#app2',
+            data: {
+                color: 'red',
+                fontSize: 14,
+                styles: {
+                    color: 'red',
+                    fontSize: 14 + 'px'
+                },
+                styleA: {
+                    color: 'red',
+                },
+                styleB: {
+                    fontSize: 14 + 'px'
+                }
+            }
+        })
+    </script>
+</section>
+
+</body>
+</html>

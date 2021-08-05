@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instance Methods | 实例方法</title>
+    <link rel="icon" href="../../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../../public/css/demo.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/theme-chalk/index.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.1/index.min.js"></script>
+</head>
+<body>
+<section class="code-wrap h350">
+    <div class="css-live-wrap">
+        <div class="caption">使用 $set() 或 splice() 更新视图</div>
+        <div class="caption">
+            <a href="https://segmentfault.com/a/1190000014826146" target="_blank">Vue 不能检测数组和对象的变化</a>
+        </div>
+        <div class="centered" id="app">
+            <div>
+                <div v-for="(item, index) in items" :key="index" class="demo-circle" @click="plus(index)">{{ item }}</div>
+            </div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isClick: true,
+                items: [1, 2, 3]
+            },
+            methods: {
+                plus (i) {
+                    if (this.isClick) {
+                        this.isClick = false;
+                        setTimeout(() => {
+                            this.isClick = true
+                        }, 800);
+                        // 不更新视图
+                        // this.items[i] = this.items[i] + 1
+
+                        // 1.$set()
+                        this.$set(this.items, i, ++this.items[i])
+
+                        // 2.splice()
+                        // this.items.splice(i, 1, ++this.items[i])
+                    }
+                }
+            }
+        })
+    </script>
+</section>
+
+<section class="code-wrap h350">
+    <div class="css-live-wrap">
+        <div class="caption">$nextTick</div>
+        <div class="centered" id="app2">
+            <div class="demo-button" @click="updateMessage($event)">
+                {{ message }}
+            </div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        new Vue({
+            el: '#app2',
+            data: {
+                message: 'Click Me',
+            },
+            methods: {
+                updateMessage (e) {
+                    this.message = 'Clicked'
+                    this.$message.info(e.currentTarget.textContent)
+                    this.$nextTick(() => {
+                        this.$message.info(e.currentTarget.textContent)
+                    })
+                }
+            }
+        })
+    </script>
+</section>
+</body>
+</html>

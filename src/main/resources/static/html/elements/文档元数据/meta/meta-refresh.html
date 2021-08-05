@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta http-equiv="Refresh" content="99;url=http://www.baidu.com/#s_kw_wrap" />
+    <title>meta-demo</title>
+    <link rel="icon" href="../../../../../public/img/ico/NoharaSinnosuke.ico">
+    <style>
+        #eg1 {
+            width: 285px;
+            line-height: 130px;
+            text-align: center;
+        }
+
+        #eg1 span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #second {
+            display: inline-block;
+            width: 38px;
+            font-size: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="eg1">
+        <span>还有<b id="second">99</b>秒跳转到百度</span>
+    </div>
+    <script class="code" contenteditable="true">
+        // <meta http-equiv="Refresh" content="60;url=http://www.baidu.com/" />
+
+        let i = 99;
+        setInterval(function () {
+            const oSecond = document.getElementById('second');
+            oSecond.innerText = --i;
+        }, 1000);
+    </script>
+</body>
+
+</html>

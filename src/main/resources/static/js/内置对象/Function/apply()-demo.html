@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>apply()-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w33p">
+            <div class="caption">
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank">将一个数组添加到另一个数组</a>
+            </div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            const array = ['w', 'a', 't', 'e', 'r'];
+            const elements = ['m', 'e', 'l', 'o', 'n'];
+            array.push.apply(array, elements); // ["w", "a", "t", "e", "r", "m", "e", "l", "o", "n"]
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w33p">
+            <div class="caption">找出一个数组中的最大值</div>
+            <div class="caption">将参数数组切块后循环传入目标方法
+                <br/>（防止超出 JavaScript 引擎的参数长度限制）</div>
+            <div class="eg2 centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            function minOfArray(arr) {
+                let min = Infinity;
+                const QUANTUM = 32768;
+                for (let i = 0, len = arr.length; i < len; i += QUANTUM) {
+                    const submin = Math.min.apply(null, arr.slice(i, Math.min(i + QUANTUM, len)));
+                    min = Math.min(submin, min);
+                }
+
+                return min;
+            }
+
+            const min = minOfArray([2, 8, 3, 7, 4, 6]); // 2
+        </script>
+    </section>
+
+
+</body>
+
+</html>

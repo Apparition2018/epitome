@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>text-overflow</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">单行文本溢出</div>
+            <div class="caption">为了能让 text-overflow 能够生效, 必须添加 white-space，overflow 属性</div>
+            <div class="centered" id="eg1">
+                <p id="text">01234567891011121314151617181920</p>
+                <select title="">
+                    <option value="null">请选择</option>
+                    <option value="clip">clip</option>
+                    <option value="ellipsis">ellipsis</option>
+                </select>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg1 {
+                text-align: center;
+            }
+
+            #eg1 p {
+                text-align: left;
+            }
+
+            #eg1 p {
+                width: 200px;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        </style>
+    </section>
+    <script>
+        document.getElementsByTagName('select')[0].onchange = function () {
+            document.querySelector('#eg1 p').style.textOverflow = this.value;
+        }
+    </script>
+
+    <!-- https://www.cnblogs.com/penghuwan/p/6682303.html#_label1_0 -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">多行文本溢出</div>
+            <div class="centered" id="eg2">
+                <p>这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本</p>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            #eg2 p {
+                width: 200px;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+            }
+        </style>
+    </section>
+
+</body>
+
+</html>

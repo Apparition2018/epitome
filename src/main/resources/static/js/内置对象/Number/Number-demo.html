@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Number-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap w100p">
+            <div class="caption">属性</div>
+            <div class="centered">
+                <table class="w1280">
+                    <tr>
+                        <th>属性</th>
+                        <th>概述</th>
+                        <th>示例</th>
+                    </tr>
+                    <tr>
+                        <td>Number</td>
+                        <td>在非构造器上下文中 (如：没有 new 操作符)，能被用来执行类型转换</td>
+                        <td>Number([]); // 0</td>
+                    </tr>
+                    <tr>
+                        <td>Number.EPSILON</td>
+                        <td>表示 1 与 Number 可表示的大于 1 的最小的浮点数之间的差值</td>
+                        <td>2.2204460492503130808472633361816E-16 或 2^-52</td>
+                    </tr>
+                    <tr>
+                        <td>Number.MAX_SAFE_INTEGER</td>
+                        <td>表示在 JavaScript 中最大的安全整数(2^53 - 1)</td>
+                        <td>9007199254740991</td>
+                    </tr>
+                    <tr>
+                        <td>Number.MIN_SAFE_INTEGER</td>
+                        <td>表示在 JavaScript 中最小的安全整数(-(2^53 - 1))</td>
+                        <td>-9007199254740991</td>
+                    </tr>
+                    <tr>
+                        <td>Number.MAX_VALUE</td>
+                        <td>表示在 JavaScript 里所能表示的最大数值，
+                            <br/>大于 MAX_VALUE 的值代表 "Infinity"</td>
+                        <td>1.7976931348623157e+308</td>
+                    </tr>
+                    <tr>
+                        <td>Number.MIN_VALUE</td>
+                        <td>表示在 JavaScript 中所能表示的最小数值</td>
+                        <td>5e-324</td>
+                    </tr>
+                    <tr>
+                        <td>Number.NaN</td>
+                        <td>表示“非数字”（Not-A-Number）。和 NaN 相同</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Number.POSITIVE_INFINITY</td>
+                        <td>正无穷大</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Number.NEGATIVE_INFINITY</td>
+                        <td>负无穷大</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap h650">
+        <div class="css-live-wrap w100p">
+            <div class="caption">方法</div>
+            <div class="centered">
+                <table class="w1280">
+                    <tr>
+                        <th>方法</th>
+                        <th>概述</th>
+                        <th>示例</th>
+                    </tr>
+                    <tr>
+                        <td>Number.isFinite()</td>
+                        <td>用来检测传入的参数是否是一个有穷数</td>
+                        <td>Number.isFinite(NaN); // false
+                            <br/>Number.isFinite('0'); // false, 全局函数 isFinite('0') 会返回 true</td>
+                    </tr>
+                    <tr>
+                        <td>Number.isInteger()</td>
+                        <td>用来判断给定的参数是否为整数</td>
+                        <td>Number.isInteger(Infinity); // false
+                            <br/>Number.isInteger(true); // false
+                            <br/>Number.isInteger([1]); // false</td>
+                    </tr>
+                    <tr>
+                        <td>Number.isSafeInteger()</td>
+                        <td>判断传入的参数值是否是一个
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger"
+                                target="_blank">安全整数</a>
+                        </td>
+                        <td>Number.isSafeInteger(Math.pow(2, 53)); // false
+                            <br/>Number.isSafeInteger(Math.pow(2, 53) - 1); // true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Number.isNaN()</td>
+                        <td>确定传递的值是否为 NaN 和其类型是 Number</td>
+                        <td>
+                            <a href="#isNaN">Number.isNaN() &amp; isNaN()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>toExponential(fractionDigits)</td>
+                        <td>以指数表示法返回该数值的字符串表示形式</td>
+                        <td>77.2345.toExponential(4); // "7.7234e+1"
+                            <br/>77.3456.toExponential(3); // "7.735e+1"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>toFixed(digits)</td>
+                        <td>使用定点表示法来格式化一个数</td>
+                        <td>2.34.toFixed(1); // "2.3"
+                            <br/>-2.34.toFixed(1); // -2.3 （由于操作符优先级，负数不会返回字符串）
+                            <br/>(-2.34).toFixed(1); // "-2.3" （若用括号提高优先级，则返回字符串）</td>
+                    </tr>
+                    <tr>
+                        <td>toPrecision(precision)</td>
+                        <td>以指定的精度返回该数值的字符串表示形式</td>
+                        <td>123.456.toPrecision(4); // "123.5"
+                            <br/>123.456.toPrecision(8); // "123.45600"
+                            <br/>123.456.toPrecision(2); // "1.2e+2"</td>
+                    </tr>
+                    <tr>
+                        <td>toString([radix])</td>
+                        <td>回指定 Number 对象的字符串表示形式
+                            <br/>radix 指定要用于数字到字符串的转换的基数(从2到36)</td>
+                        <td>(15).toString(16); // "f"
+                            <br/>(2).toString(2); // "10"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>valueOf()</td>
+                        <td>返回一个被 Number 对象包装的原始值</td>
+                        <td>const numObj = new Number(10);
+                            <br/>typeof numObj; // object
+                            <br/>const num = numObj.valueOf(); // 10
+                            <br/>typeof num; // number</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap h550" id="isNaN">
+        <div class="css-live-wrap">
+            <div class="caption">Number.isNaN() &amp; isNaN()</div>
+            <div class="centered">
+                <table>
+                    <tr>
+                        <th>参数</th>
+                        <th>Number.isNaN()</th>
+                        <th>isNaN()</th>
+                    </tr>
+                    <tr>
+                        <td>NaN</td>
+                        <td>true</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>"NaN"</td>
+                        <td>false</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>"blabla"</td>
+                        <td>false</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>undefined</td>
+                        <td>false</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>0/0</td>
+                        <td>true</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>2/0</td>
+                        <td>false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>{}</td>
+                        <td>false</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>true</td>
+                        <td>false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>null</td>
+                        <td>false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>123ABC</td>
+                        <td>false</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>" "</td>
+                        <td>flase</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>isNaN(new Date())</td>
+                        <td>false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>isNaN(new Date().toString())</td>
+                        <td>false</td>
+                        <td>true</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script class="code" contenteditable="true">
+            // 和全局函数 isNaN() 相比，该方法不会强制将参数转换成数字
+
+            // 不能使用相等运算符（== 和 ===）来判断一个值是否是 NaN，
+            // NaN == NaN 和 NaN === NaN 都会返回 false
+            NaN == NaN;  // false
+            NaN === NaN; // false
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap">
+            <div class="caption">Number.EPSILON</div>
+            <div class="caption">解决 js 浮点数误差</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code" contenteditable="true">
+            function withinErrorMargin(num1, num2) {
+                return Math.abs(num1 - num2) < Number.EPSILON * Math.pow(2, 2);
+            }
+
+            withinErrorMargin(0.1 + 0.2, 0.3); // true
+        </script>
+    </section>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../../public/js/demo.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>Generator-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../../public/js/demo.js"></script>
+</head>
+
+<body>
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w100p">
+            <div class="caption">Generator</div>
+            <div class="centered">
+                <table class="w1280">
+                    <tr>
+                        <th>方法</th>
+                        <th>概述</th>
+                        <th>示例</th>
+                    </tr>
+                    <tr>
+                        <td><a
+                                href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Generator/next">next()</a>
+                        </td>
+                        <td>返回一个包含属性 done 和 value 的对象。该方法也可以通过接受一个参数用以向生成器传值。</td>
+                        <td><a href="#generator-next" target="_self">next()</a></td>
+                    </tr>
+                    <tr>
+                        <td><a
+                                href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Generator/throw">throw()</a>
+                        </td>
+                        <td>用来向生成器抛出异常，并恢复生成器的执行</td>
+                        <td rowspan="2"><a href="#generator-tr" target="_self">throw(), return()</a></td>
+                    </tr>
+                    <tr>
+                        <td><a
+                                href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Generator/return">return()</a>
+                        </td>
+                        <td>返回给定的值并结束生成器</td>
+                    </tr>
+                    <tr>
+                        <td>对比</td>
+                        <td colspan="2">next()、throw()、return() 这三个方法本质上是同一件事，可以放在一起理解。它们的作用都是让 Generator
+                            函数恢复执行，并且使用不同的语句替换yield表达式。<br>
+                            next() 是将 yield 表达式替换成一个值<br>
+                            throw() 是将 yield 表达式替换成一个 throw 语句<br>
+                            return() 是将 yield 表达式替换成一个 return 语句
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center"><a href="https://es6.ruanyifeng.com/#docs/generator#%E5%BA%94%E7%94%A8">应用</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w40p">
+            <div class="caption">yield 表达式</div>
+            <div class="centered demo-click">
+                <a href="../../表达式和运算符/主要表达式.html">yield 表达式</a>
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+        </script>
+    </section>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w40p">
+            <div class="caption">Symbol.iterator</div>
+            <div class="centered demo-click">
+                <a href="../Symbol/Symbol-demo.html">Symbol.iterator</a>
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+        </script>
+    </section>
+
+    <section class="code-wrap h300" id="generator-next">
+        <div class="css-live-wrap w40p">
+            <div class="caption"><a href="https://es6.ruanyifeng.com/#docs/generator#next-方法的参数">next(value) 向生成器传值</a>
+            </div>
+            <div class="caption">yield表达式本身没有返回值，或者说总是返回 undefined。<br>
+                next() 可以带一个参数，该参数就会被当作上一个 yield 表达式的返回值。</div>
+            <div class="centered box-next"></div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            function* gNext(x) {
+                const y = 2 * (yield (x + 1));
+                const z = yield (y / 3);
+                return (x + y + z);
+            }
+
+            const gN = gNext(5);
+
+            const boxNext = document.getElementsByClassName('box-next')[0];
+            boxNext.innerHTML = JSON.stringify(gN.next());      // 5 + 1 = 6
+            boxNext.innerHTML += JSON.stringify(gN.next(12));   // 2 * 12 / 3 = 8
+            boxNext.innerHTML += JSON.stringify(gN.next(13));   // 5 + 2 * 12 + 13 = 42
+        </script>
+    </section>
+
+    <section class="code-wrap h300" id="generator-tr">
+        <div class="css-live-wrap w40p">
+            <div class="caption">throw(), return()</div>
+            <div class="centered"></div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            function* gThrowReturn(x) {
+                try {
+                    yield 1; yield 2; yield 3; yield 4; yield 5;
+                } catch (e) {
+                    console.log("Error caught!");
+                }
+            }
+
+            const gTR = gThrowReturn();
+
+            gTR.next();
+            gTR.throw(new Error("Something went wrong"));
+            gTR.next();
+            gTR.return("foo");
+            gTR.next();
+        </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap w40p">
+            <div class="caption">for...of, ..., 解构赋值, Array.from()，<br>
+                内部调用都通过遍历器接口</div>
+            <div class="centered"></div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            function* numbers() {
+                yield 1; yield 2; return 3; yield 4;
+            }
+
+            // 扩展运算符
+            [...numbers()] // [1, 2]
+
+            // Array.from()
+            Array.from(numbers()); // [1, 2]
+
+            // 解构赋值
+            const [x, y] = numbers();
+            x; // 1
+            y; // 2
+
+            // for...of 循环
+            for (const n of numbers()) {
+                console.log(n);
+            }
+            // 1
+            // 2
+        </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap w40p">
+            <div class="caption"><a href="https://es6.ruanyifeng.com/#docs/generator#Generator-与状态机">Generator 与状态机</a></div>
+            <div class="centered"></div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            // 不使用 Generator 写法
+            let ticking = true;
+            const clock = function () {
+                ticking && console.log('Tick!') || console.log('Tock!');
+                ticking = !ticking;
+            }
+
+            // 使用 Generator 写法
+            const clock2 = function* () {
+                while (true) {
+                    console.log('Tick!');
+                    yield;
+                    console.log('Tock!');
+                    yield;
+                }
+            }
+        </script>
+    </section>
+</body>
+
+</html>

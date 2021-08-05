@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>isPrototypeOf() &amp; instanceof</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap w33p">
+            <div class="caption">isPrototypeOf() 与 instanceof 运算符</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p"  contenteditable="true">
+            // isPrototypeOf(): 用于测试一个对象是否存在于另一个对象的原型链上
+            function A() { }
+            function B() { }
+            function C() { }
+
+            B.prototype = Object.create(A.prototype);
+            C.prototype = Object.create(B.prototype);
+
+            let c = new C();
+
+            B.prototype.isPrototypeOf(c);      // true
+            C.prototype.isPrototypeOf(c);      // true
+            A.prototype.isPrototypeOf(c);      // true
+            Object.prototype.isPrototypeOf(c); // true
+
+
+            // instanceof: 用于测试构造函数的 prototype 属性是否出现在对象的原型链中的任何位置
+            function D() { }
+            c instanceof B; // true，B.prototype.isPrototypeOf(c) 返回 true
+            c instanceof C; // true，C.prototype.isPrototypeOf(c) 返回 true
+            c instanceof D; // false，因为D.prototype不在c的原型链上
+        </script>
+    </section>
+</body>
+
+</html>

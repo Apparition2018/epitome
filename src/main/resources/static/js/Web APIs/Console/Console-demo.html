@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Console-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap h450">
+    <div class="css-live-wrap w100p">
+        <div class="caption">属性</div>
+        <div class="console centered">
+            <table class="w1024">
+                <tr>
+                    <th>方法</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>log()</td>
+                    <td>向 Web 控制台输出一条消息</td>
+                    <td>
+                        <a href="javascript: console.log('this is a %c%s',
+                        'color: white; font-style: italic; background-color: blue;padding: 2px', 'log')">
+                            console.log('this is a %s', 'log.')
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>info()</td>
+                    <td>同 log()，Firefox 前面会有一个小图标</td>
+                    <td>
+                        <a href="javascript: console.info('this is a %c%s',
+                        'color: white; font-style: italic; background-color: green;padding: 2px', 'info')">
+                            console.info('this is a %s', 'info.')
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>warn()</td>
+                    <td>向 Web 控制台输出一条警告信息</td>
+                    <td>
+                        <a href="javascript: console.warn('this is a %c%s',
+                        'color: white; font-style: italic; background-color: yellow;padding: 2px', 'warn')">
+                            console.warn('this is a %s', 'warn.')
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>error()</td>
+                    <td>向 Web 控制台输出一条错误消息</td>
+                    <td>
+                        <a href="javascript: console.error('this is a %c%s',
+                        'color: white; font-style: italic; background-color: red;padding: 2px', 'error')">
+                            console.error('this is a %s', 'error.')
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>group()</td>
+                    <td>创建一个新的内联 group, 后续所有打印内容将会以子层级的形式展示</td>
+                    <td rowspan="3">
+                        <a href="javascript: console.group('This is the outer level');console.log('Level 2');console.groupEnd();">
+                            console.group("This is the outer level");<br/>
+                            console.log("Level 2");<br/>
+                            console.groupEnd();
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>groupCollapsed()</td>
+                    <td>同 group()，区别在于 groupCollapsed() 打印出来的内容默认是折叠的</td>
+                </tr>
+                <tr>
+                    <td>groupEnd()</td>
+                    <td>闭合当前内联 group</td>
+                </tr>
+                <tr>
+                    <td>time()</td>
+                    <td>启动一个以入参作为特定名称的计时器</td>
+                    <td rowspan="3">
+                        <a href="javascript: console.time('answer time');alert('Click to continue');console.timeLog('answer time');
+                        alert('Do a bunch of other stuff...');console.timeEnd('answer time');">
+                            console.time("answer time");<br/>
+                            alert("Click to continue");<br/>
+                            console.timeLog("answer time");<br/>
+                            alert("Do a bunch of other stuff...");<br/>
+                            console.timeEnd("answer time");
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>timeEnd()</td>
+                    <td>结束特定的 计时器 并以豪秒打印其从开始到结束所用的时间</td>
+                </tr>
+                <tr>
+                    <td>timeLog()</td>
+                    <td>打印特定 计时器 所运行的时间</td>
+                </tr>
+                <tr>
+                    <td>trace()</td>
+                    <td>输出一个 stack trace</td>
+                    <td>timeLog()</td>
+                </tr>
+            </table>
+        </div>
+        <style>
+            .console a {
+                text-decoration: none
+            }
+        </style>
+    </div>
+</section>
+</body>
+</html>

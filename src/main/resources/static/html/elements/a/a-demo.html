@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>a-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../../public/js/demo.js"></script>
+</head>
+
+<body>
+    <section class="code-wrap h300">
+        <div class="css-live-wrap">
+            <div class="caption">点击图片，在新窗口打开链接，并跳转到指定锚点</div>
+            <div class="caption">利用 target="_blank" 实现</div>
+            <div class="centered">
+                <a href="https://developer.mozilla.org/zh-CN/#home-q" target="_blank">
+                    <img src="https://mdn.mozillademos.org/files/6851/mdn_logo.png" alt="MDN logo" />
+                </a>
+            </div>
+        </div>
+        <code class="code" contenteditable="true">
+            &lt;a href="https://developer.mozilla.org/zh-CN/" target="_blank"&gt; 
+                &lt;img src="https://mdn.mozillademos.org/files/6851/mdn_logo.png" alt="MDN logo" /&gt;
+            &lt;/a&gt;
+        </code>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap">
+            <div class="caption">
+                <a href="https://www.cnblogs.com/bincoding/p/5741574.html">创建email，电话链接</a>
+            </div>
+            <div class="caption">利用 href="mailto:..."、href="tel:..." 实现 继续修改</div>
+            <div class="centered" id="eg2">
+                <p>
+                    <a href="mailto:88850180@163.com">Send email to nowhere</a>
+                </p>
+                <p>
+                    <a href="tel:+491570156">+49 157 0156</a>
+                </p>
+            </div>
+        </div>
+        <code class="code" contenteditable="true">
+            &lt;p&gt;
+            &lt;a href="mailto:88850180@163.com"&gt;Send email to nowhere&lt;/a&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+            &lt;a href="tel:+491570156"&gt;+49 157 0156&lt;/a&gt;
+            &lt;/p&gt;
+
+            // 伪类顺序: link → visited → hover → active
+        </code>
+        <style>
+            #eg2 a:link {
+                color: blue;
+            }
+
+            #eg2 a:visited {
+                color: purple;
+            }
+
+            #eg2 a:hover {
+                color: green;
+            }
+
+            #eg2 a:active {
+                color: red;
+            }
+        </style>
+    </section>
+    
+    <section class="code-wrap h300">
+        <div class="css-live-wrap">
+            <div class="caption">下载模板文件</div>
+            <div class="centered">
+                <p><a href="http://localhost:3333/multipart-file/download?filename=person" class="demo-click">Download</a></p>
+            </div>
+        </div>
+        <code class="code" contenteditable="true">
+            &lt;p&gt;&lt;a href="xxx"&gt;&lt;/a&gt;&lt;/p&gt;
+        </code>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">
+                <a href="https://jsfiddle.net/codepo8/V6ufG/2/">下载画布</a>
+            </div>
+            <div class="caption">利用 a标签、download属性、canvas 实现</div>
+            <div class="canvas centered">
+                <canvas></canvas>
+            </div>
+        </div>
+        <style>
+            .canvas canvas {
+                box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), -1px -1px 1px rgba(0, 0, 0, 0.1);
+                margin-top: 40px;
+                margin-right: 20px;
+            }
+
+            .canvas a {
+                position: relative;
+                top: -10px;
+            }
+        </style>
+        <script class="code" contenteditable="true">
+            let canvas = document.querySelector('canvas'),
+                c = canvas.getContext('2d'),
+                mouseX = 0,
+                mouseY = 0,
+                width = 250,
+                height = 250,
+                colour = 'hotpink',
+                mousedown = false;
+
+            canvas.width = width;
+            canvas.height = height;
+
+            function draw() {
+                if (mousedown) {
+                    c.fillStyle = colour;
+                    c.beginPath();
+                    c.arc(mouseX, mouseY, 5, 0, Math.PI * 2, true);
+                    c.closePath();
+                    c.fill();
+                }
+            }
+
+            canvas.addEventListener('mousemove', function (event) {
+                if (event.offsetX) {
+                    mouseX = event.offsetX;
+                    mouseY = event.offsetY;
+                } else {
+                    mouseX = event.pageX - event.target.offsetLeft;
+                    mouseY = event.pageY - event.target.offsetTop;
+                }
+                draw();
+            }, false);
+
+            canvas.addEventListener('mousedown', function () {
+                mousedown = true;
+            }, false);
+            canvas.addEventListener('mouseup', function () {
+                mousedown = false;
+            }, false);
+
+            const link = document.createElement('a');
+            link.classList.add('demo-button');
+            link.innerHTML = 'download';
+            link.addEventListener('click', function () {
+                link.href = canvas.toDataURL();
+                link.download = "mypainting.png";
+            }, false);
+            document.getElementsByClassName('canvas')[0].append(link);
+        </script>
+    </section>
+
+
+</body>
+
+</html>

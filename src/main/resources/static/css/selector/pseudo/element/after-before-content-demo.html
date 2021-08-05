@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- content一般和:before,:after一起使用，用来生成内容(img和input没有该属性)，
+     content的内容一般可以为以下四种：
+        none：   不生成任何值。
+        attr：   插入标签属性值
+        url：    使用指定的绝对或相对地址插入一个外部资源（图像，声频，视频或浏览器支持的其他任何资源）
+        string： 插入字符串 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome">
+    <title>after-before-content-demo</title>
+    <link rel="icon" href="../../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../../public/css/demo.css">
+</head>
+
+<body>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">分割线</div>
+            <div class="caption">利用::after、content: " | "实现</div>
+            <nav class="centered">
+                <ul class="verticalBar">
+                    <li>HTML 5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                </ul>
+            </nav>
+        </div>
+        <style class="code" contenteditable="true">
+            .verticalBar {
+                padding: 0;
+                font-weight: bold;
+            }
+
+            .verticalBar li {
+                display: inline-block;
+                font-size: 150%;
+            }
+
+            .verticalBar li:not(:last-child)::after {
+                content: " | ";
+            }
+        </style>
+        <script>
+            // document不能获取到::after和::before所对应的节点对象，但是可以通过querySelector获取其样式属性
+            console.log(getComputedStyle(document.querySelector('li'), '::after').content); // " |"
+        </script>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">字符图标</div>
+            <div class="caption">利用::befor、content: "☌"实现</div>
+            <div class="charIcon centered">
+                <input placeholder="请输入搜索词">
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .charIcon input {
+                display: block;
+                padding-left: 24px;
+                height: 30px;
+                box-sizing: border-box;
+            }
+
+            .charIcon::before {
+                content: "☌";
+                position: absolute;
+                left: 8px;
+                line-height: 30px;
+                transform: rotate(180deg);
+                font-size: 25px;
+            }
+        </style>
+    </section>
+
+    <!-- https://www.zhangxinxu.com/wordpress/2010/04/css-content内容生成技术以及应用/ -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">添加序号</div>
+            <div class="caption">利用 ::before、counter-increment 实现</div>
+            <div class="serial centered">
+                我的爱好：
+                <ul>
+                    <li>吃饭</li>
+                    <li>睡觉</li>
+                    <li>玩游戏</li>
+                </ul>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .serial {
+                font-size: 150%;
+            }
+
+            .serial ul {
+                margin: 0;
+                padding-left: 40px;
+                counter-reset: serial;
+            }
+
+            .serial li {
+                list-style: none;
+            }
+
+            .serial li::before {
+                /* 递增一个或多个计数器值 */
+                counter-increment: serial;
+                /* 除了cjk-ideographic，还可以使用其它 list-style-tpye 属性 */
+                content: counter(serial, cjk-ideographic) "、";
+            }
+        </style>
+    </section>
+
+    <!-- https://www.zhangxinxu.com/wordpress/2010/04/css-content内容生成技术以及应用/ -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">为不同语言指定引号</div>
+            <div class="caption">利用:before/:after ???</div>
+            <div class="quotes centered">
+                <p lang="en">
+                    <q>It’s only work if somebody makes you do it.</q>
+                </p>
+                <p lang="no">
+                    <q>Hvis du forteller meg nok en vits, så skal jeg slå deg til jorden.</q>
+                </p>
+                <p lang="ch">
+                    <q>欢迎来到上海，欢迎参观世博会！</q>
+                </p>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .quotes {
+                white-space: nowrap;
+            }
+            /* 为不同语言指定引号的表现 */
+            :lang(en)>q {
+                quotes: '"' '"';
+            }
+
+            :lang(no)>q {
+                quotes: "«" "»";
+            }
+
+            :lang(ch)>q {
+                quotes: "“" "”";
+            }
+
+            /* 在q标签的前后插入引号 */
+
+            q:before {
+                content: open-quote;
+            }
+
+            q.after {
+                content: close-quote;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

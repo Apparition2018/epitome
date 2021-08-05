@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>工具类 | jQuery</title>
+    <link rel="icon" href="../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h1100">
+        <div class="css-live-wrap w100p">
+            <div class="caption">工具类</div>
+            <div class="centered">
+                <table class="w1280">
+                    <tr>
+                        <th>API</th>
+                        <th>JS</th>
+                        <th>概述</th>
+                        <th>例子</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.contains/">$.contains()</a>
+                        </td>
+                        <td>
+                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/contains">Node.contains()</a>
+                        </td>
+                        <td>检查一个DOM元素是否为另一个DOM元素的后代</td>
+                        <td>
+                            <a href="javascript: alert($.contains(document.documentElement, document.body))">$.contains(document.documentElement, document.body)</a>
+                        </td>
+                    </tr>
+                    <tr id="utilities-unique">
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.unique/">$.uniqueSort()</a>
+                        </td>
+                        <td></td>
+                        <td>对DOM元素数组进行排序，并移除重复的元素</td>
+                        <td>???</td>
+                    </tr>
+                    <tr id="utilities-each">
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.each/">$.each()</a>
+                        </td>
+                        <td>Array.prototype.forEach()
+                            <br/>Array.prototype.map()</td>
+                        <td>为每个匹配元素规定要执行的函数</td>
+                        <td>
+                            <a href="javascript: $.each([1,2,3],function(i,v){alert(i+': '+v)})">$.each([1,2,3],function(i,v){alert(i+': '+v)})</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.map/">$.map()</a>
+                        </td>
+                        <td>Array.prototype.map()</td>
+                        <td>使用指定函数处理数组中的每个元素(或对象的每个属性)，
+                            <br/>并将处理结果封装为新的数组返回</td>
+                        <td>
+                            <a href="javascript: alert($.map([1,2,3], function(v,i){return v * 2}))">$.map([1,2,3], function(v,i){return v * 2})</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.grep/">$.grep()</a>
+                        </td>
+                        <td>Array.prototype.filter()</td>
+                        <td>查找满足过滤函数的数组元素</td>
+                        <td>
+                            <a href="javascript: alert($.grep([1,2,3],function(n,i){return(n%2!==0&amp;&amp;i&lt;2)}))">$.grep([1,2,3],function(n,i){return(n%2!==0&amp;&amp;i&lt;2)})</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.merge/">$.merge()</a>
+                        </td>
+                        <td>Array.prototype.concat()</td>
+                        <td>合并两个数组内容到第一个数组</td>
+                        <td>
+                            <a href="javascript: alert($.merge([[1,2],3],[[4,5],6]))">$.merge([[1,2],3],[[4,5],6]) // [[1,2],3,[4,5],6]</a>
+                        </td>
+                    </tr>
+                    <tr id="utilities-makeArray">
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.makeArray/">$.makeArray()</a>
+                        </td>
+                        <td>Array.from()
+                            <br/>[].slice.call()
+                        </td>
+                        <td>将一个类似数组的对象转换为真正的数组对象</td>
+                        <td>
+                            <a href="#util-makeArray" target="_self">$.makeArray()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.inArray/">$.inArray()</a>
+                        </td>
+                        <td>Array.prototype.indexOf()</td>
+                        <td>在数组中查找指定值并返回它的索引（没有找到返回-1）</td>
+                        <td>
+                            <a href="javascript: alert($.inArray(4,[5,4,3,2,1]))">$.inArray(4,[5,4,3,2,1])</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.type/">$.type()</a>
+                        </td>
+                        <td>
+                            <a href="../js/表达式和运算符/一元运算符.html">typeof operand</a>
+                        </td>
+                        <td>确定JavaScript内置对象的类型，并返回小写形式的类型名称</td>
+                        <td>
+                            <a href="javascript: alert($.type(/test/))">$.type(/test/)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>$.isArray()</td>
+                        <td>Array.isArray()</td>
+                        <td>判断指定参数是不是一个数组</td>
+                        <td>
+                            <a href="javascript: alert($.isArray('[]'))">$.isArray([])</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.isEmptyObject/">$.isEmptyObject()</a>
+                        </td>
+                        <td>Object.keys(obj).length === 0</td>
+                        <td>判断对象是否为空（不包含任何属性）</td>
+                        <td>
+                            <a href="javascript: alert($.isEmptyObject('[]'))">$.isEmptyObject([])</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>$.isFunction()</td>
+                        <td>typeof operand === 'function'</td>
+                        <td>判断指定参数是否为一个函数</td>
+                        <td>
+                            <a href="javascript: alert($.isFunction(alert))">$.isFunction(alert)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>$.isNumeric()</td>
+                        <td>typeof operand === 'number'</td>
+                        <td>判断指定参数是否为一个数字</td>
+                        <td>
+                            <a href="javascript: alert($.isNumeric(0))">$.isNumeric(0)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.isPlainObject/">$.isPlainObject()</a>
+                        </td>
+                        <td></td>
+                        <td>判断一个对象是否为纯粹的对象（"{}" 或者 "new Object"）</td>
+                        <td>
+                            <a href="javascript: alert($.isPlainObject({}))">$.isPlainObject({})</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>$.isWindow()</td>
+                        <td></td>
+                        <td>判断传入参数是否为 window 对象</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>$.isXMLDoc()</td>
+                        <td></td>
+                        <td>判断一个DOM节点是否位于XML文档中，或者其本身就是XML文档</td>
+                        <td>
+                            <a href="javascript: alert($.isXMLDoc(document))">$.isXMLDoc(document)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.hasData/">$.hasData()</a>
+                        </td>
+                        <td></td>
+                        <td>确定一个元素是否有相关的jQuery数据</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.proxy/">$.proxy()</a>
+                        </td>
+                        <td>apply(), call(), bind()</td>
+                        <td>接受一个函数，然后返回一个新函数，
+                            <br/>并且这个新函数始终保持了特定的上下文语境</td>
+                        <td>$(this).click($.proxy(obj, 'test')</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.now/">$.now()</a>
+                        </td>
+                        <td>Date.now()</td>
+                        <td>返回当前时间距1970年1月1日午夜所经过的毫秒数</td>
+                        <td>
+                            <a href="javascript: alert($.now())">$.now()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>$.trim()</td>
+                        <td>String.prototype.trim()</td>
+                        <td>去除字符串两端的空白字符</td>
+                        <td>
+                            <a href="javascript: alert($.trim('   abc   '))" target="_self">$.trim(' abc ')</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.extend/">$.extend()</a>
+                        </td>
+                        <td>
+                            <a href="../js/内置对象/Object/assign-demo.html">Object.assign()</a>
+                        </td>
+                        <td>将一个或多个对象的内容合并到目标对象</td>
+                        <td>
+                            <a href="#util-extend" target="_self">$.extend()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.fn.extend/">$.fn.extend()</a>
+                        </td>
+                        <td></td>
+                        <td>为jQuery扩展一个或多个实例属性和方法，$.fn是jQuery的原型对象</td>
+                        <td>
+                            <a href="#util-fn-extend" target="_self">$.fn.extend()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.globalEval/">$.globalEval()</a>
+                        </td>
+                        <td>
+                            <a href="https://www.cnblogs.com/yy-hh/p/4673975.html">源码分析</a>
+                        </td>
+                        <td>在全局上下文下执行一些JavaScript代码</td>
+                        <td>
+                            <a href="#util-globalEval" target="_self">$.globalEval()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.readyException/">$.readyException()</a>
+                        </td>
+                        <td></td>
+                        <td>处理包裹在jQuery()中函数同步抛出的错误</td>
+                        <td>$.readyException = function(error) {
+                            <br/>&nbsp;&nbsp;console.error(error);
+                            <br/>};
+                        </td>
+                    </tr>
+                    <tr id="utilities-noop">
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.noop/">$.noop()</a>
+                        </td>
+                        <td></td>
+                        <td>空函数</td>
+                        <td>
+                            <a href="javascript: alert($.map([1,2,3],$.noop))">$.map([1,2,3],$.noop)</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.parseHTML/">$.parseHTML()</a>
+                        </td>
+                        <td></td>
+                        <td>将HTML字符串解析为对应的DOM节点数组</td>
+                        <td>
+                            <a href="#util-parseHTML">$.parseHTML()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.parseJSON/">$.parseJSON()</a>
+                        </td>
+                        <td>JSON.parse()</td>
+                        <td>将符合标准格式的的JSON字符串转为与之对应的JavaScript对象</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.parseXML/">$.parseXML()</a>
+                        </td>
+                        <td></td>
+                        <td>将字符串解析为对应的XML文档</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../../public/js/tooltip.js"></script>
+        <script>
+            $('#utilities-each').tooltip([
+                [
+                    'forEach()返回值是undefined，不可以链式调用',
+                    'map()返回一个新数组，原数组不会改变',
+                    '没有办法终止或者跳出forEach()循环，除非抛出异常',
+                    '$.each()规定为每个匹配元素规定运行的函数，可以返回 false 可用于及早停止循环'
+                ]
+            ]);
+
+            $('#utilities-noop').tooltip([
+                '这对一些插件作者很有用，当插件提供了一个可选的回调函数接口，那么如果调用的时候没有传递这个回调函数，就用jQuery.noop来代替执行'
+            ]);
+
+            $('#utilities-unique').tooltip([
+                'jQuery 3.0 更名为 $.uniqueSort()'
+            ])
+        </script>
+    </section>
+
+    <section class="code-wrap h350" id="util-extend">
+        <div class="css-live-wrap w40p">
+            <div class="caption">$.extend()</div>
+            <!-- <div class="caption">将一个或多个对象的内容合并到目标对象</div> -->
+            <div class="centered box-extend">
+                <div class="demo-click">$.extend()</div>
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            $(function () {
+                const obj1 = {
+                    apple: 0,
+                    banana: { weight: 52, price: 100 },
+                    cherry: 97
+                };
+                const obj2 = {
+                    banana: { price: 200 },
+                    durian: 100
+                };
+
+                // $.extend( [deep ], target, object1 [, objectN ] )
+                $.extend(true, obj1, obj2);
+
+                $('.box-extend>div').on('click', function () {
+                    alert(JSON.stringify(obj1, null, 4))
+                });
+            })
+        </script>
+    </section>
+
+
+    <section class="code-wrap h300" id="util-fn-extend">
+        <div class="css-live-wrap w40p">
+            <div class="caption">$.fn.extend()</div>
+            <div class="caption">为jQuery扩展一个或多个实例属性和方法，$.fn是jQuery的原型对象</div>
+            <div class="centered box-fn-extend">
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            // jquery中的$.fn的用法：https://www.cnblogs.com/qicao/p/8568158.html
+
+            $(function () {
+                jQuery.fn.extend({
+                    printNodeName: function () {
+                        return this.each(function () {
+                            this.innerText = this.nodeName;
+                        })
+                    }
+                });
+
+                $('.box-fn-extend').printNodeName();
+            })
+        </script>
+    </section>
+
+    <section class="code-wrap h250" id="util-globalEval">
+        <div class="css-live-wrap w40p">
+            <div class="caption">$.globalEval()</div>
+            <div class="caption">在全局上下文下执行一些JavaScript代码</div>
+            <div class="centered box-globalEval">
+                <div class="demo-click">$.globalEval()</div>
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            const name = "全局变量";
+            $(function () {
+                const name = "局部变量";
+                $('.box-globalEval div').on('click', function () {
+                    alert(name);
+                    eval("alert('alert: ' + name)");
+                    $.globalEval("alert('globalEval: ' + name)");
+                })
+            })
+        </script>
+    </section>
+
+    <section class="code-wrap h300" id="util-makeArray">
+        <div class="css-live-wrap w40p">
+            <div class="caption">$.makeArray()</div>
+            <div class="caption">将一个类似数组的对象转换为真正的数组对象</div>
+            <div class="centered box-makeArray">
+                <ul>
+                    <li>one</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                </ul>
+                <div class="demo-button">$.makeArray()</div>
+            </div>
+        </div>
+        <style>
+            .box-makeArray {
+                text-align: center;
+            }
+
+            .box-makeArray ul {
+                margin-bottom: 20px;
+            }
+        </style>
+        <script class="code w60p" contenteditable="true">
+            $(function () {
+                $('.box-makeArray .demo-button').on('click', function () {
+                    const arr = $.makeArray(document.querySelectorAll('.box-makeArray li'));
+                    $(arr.reverse()).appendTo($('.box-makeArray ul'));
+                })
+            })
+        </script>
+    </section>
+
+    <section class="code-wrap h200" id="util-parseHTML">
+        <div class="css-live-wrap w40p">
+            <div class="caption">$.parseHTML()</div>
+            <div class="caption">将HTML字符串解析为对应的DOM节点数组</div>
+            <div class="centered box-parseHTML">
+
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            $(function () {
+                const str = "hello, <b>my name is</b> jQuery";
+                const dom = $.parseHTML(str);
+                const nodeNames = [];
+                $.each(dom, function (i, e) {
+                    nodeNames[i] = "<li>" + e.nodeName + "</li>";
+                });
+                $("<ol>").append(nodeNames.join("")).appendTo($('.box-parseHTML'));
+            })
+        </script>
+    </section>
+
+    <script src="../../public/js/demo.js"></script>
+</body>
+
+</html>

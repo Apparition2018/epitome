@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>解构赋值</title>
+    <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w33p">
+            <div class="caption">解构赋值</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            let a, b, c, rest;
+
+            // 解构数组
+            [a, b, ...rest] = [10, 20, 30, 40];
+
+            // 解构对象, 要加 ()
+            ({ a, b, ...rest } = { a: 10, b: 20, c: 30, d: 40 });
+
+            [a, b] = [10, 20, 30];
+
+            [a, b, c] = [10, 20];
+            c; // undefined
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">交换变量</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            let x = 1, y = 3;
+            [x, y] = [y, x];
+            x; // 3
+            y; // 1
+        </script>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w33p">
+            <div class="caption">For of 迭代和解构</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            let people = [
+                {
+                    name: 'Jack',
+                    interest: ['Math', 'Football']
+                },
+                {
+                    name: 'Rose',
+                    interest: ['English', 'Badminton']
+                }
+            ];
+
+            for (let { name: x, interest: [y, z] } of people) {
+                console.log("Name: " + x + ", interest: " + y + "-" + z);
+            }
+            // Name: Jack, interest: Math-Football
+            // Name: Rose, interest: English-Badminton
+        </script>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">函数参数和解耦</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            function whois({ displayName: displayName, fullName: { firstName: name } }) {
+                console.log(displayName + " is " + name);
+            }
+
+            let user = {
+                id: 41,
+                displayName: 'Henry',
+                fullName: {
+                    firstName: 'Thierry',
+                    lastName: 'Henry'
+                }
+            };
+
+            whois(user); // Henry is Thierry
+        </script>
+    </section>
+
+    
+</body>
+
+</html>

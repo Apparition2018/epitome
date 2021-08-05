@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Range-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap w40p">
+            <div class="caption">获取用户选中文本内容</div>
+            <div class="eg1 centered">
+                <p>Range对象代表页面上一段连续的区域，通过Range对象可以获取或者修改页面上任何区域的内容。也可以通过Range的方法进行复制和移动页面任何区域的元素。</p>
+                <button id="button">选中一些文字，然后点击此按钮</button>
+            </div>
+        </div>
+        <style>
+            .eg1 {
+                text-align: center;
+            }
+
+            .eg1 p {
+                width: 500px;
+                text-align-last: left;
+            }
+        </style>
+        <script class="code w60p" contenteditable="true">
+            onload = function () {
+                const oBtn = document.getElementById("button");
+                oBtn.onclick = function () {
+                    let userSelection, text;
+                    window.getSelection && (userSelection = window.getSelection()) || document.selection && (userSelection = document.selection.createRange())
+                    !(text = userSelection.text) && (text = userSelection)
+                    alert(text);
+                }
+            }
+        </script>
+    </section>
+
+</body>
+
+</html>

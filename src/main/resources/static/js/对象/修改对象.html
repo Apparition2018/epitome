@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>修改对象</title>
+    <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+</head>
+
+<body>
+    <!-- ECMAScript 修改对象：https://www.w3school.com.cn/js/pro_js_object_modifying.asp -->
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">通过已有的方法创建新方法</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            Number.prototype.toHexString = function () {
+                return this.toString(16);
+            };
+
+            (15).toHexString(); // "f"
+        </script>
+    </section>
+
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w33p">
+            <div class="caption">重命名已有方法</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            Array.prototype.enqueue = function (vItem) {
+                this.push(vItem);
+                return this;
+            };
+
+            Array.prototype.dequeue = function () {
+                return this.shift();
+            };
+
+            const aArr = [];
+            aArr.enqueue(1).enqueue(2).enqueue(3); // [1, 2, 3]
+            aArr.dequeue(); // 1
+
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w33p">
+            <div class="caption">添加与已有方法无关的方法</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            Array.prototype.indexOf = function (vItem) {
+                for (let i = 0, len = this.length; i < len; i++) {
+                    if (vItem === this[i]) {
+                        return i;
+                    }
+                }
+                return -1;
+            };
+
+            const aColors = ["red", "yellow", "blue", "green"];
+            aColors.indexOf("yellow"); // 1
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w33p">
+            <div class="caption">重定义已有方法</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            Function.prototype.originalToString = Function.prototype.toString; // 存储原方法，以便以后的使用
+
+            Function.prototype.toString = function () {
+                if (this.originalToString().length > 50) {
+                    return "Function too long to display.";
+                } else {
+                    return this.originalToString();
+                }
+            };
+
+            function letter() { console.log("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ") }
+            letter.toString(); // "Function too long to display."
+        </script>
+    </section>
+
+</body>
+
+</html>
