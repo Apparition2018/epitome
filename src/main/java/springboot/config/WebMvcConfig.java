@@ -17,19 +17,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
- * SpringBoot 1.0
- * addInterceptors 拦截器：
- * public class WebMvcConfig implements WebMvcConfigurer {}
- * addCorsMappings 跨域：
- * public class WebMvcConfig extends WebMvcConfigurerAdapter {}
- * <p>
- * 继承 WebMvcConfigurationSupport 导致自动配置不生效：https://blog.csdn.net/qq_36850813/article/details/87859047
+ * WebMvcConfigurer 与 WebMvcConfigurationSupport：https://blog.csdn.net/lvyuanj/article/details/108554170
  *
  * @author ljh
  * created on 2019/8/8 19:39
  */
 @Configuration
-public class MyWebMvcConfig extends WebMvcConfigurationSupport {
+public class WebMvcConfig implements WebMvcConfigurer {
 
     @Value("${spring.mvc.static-path-pattern}")
     private String staticPathPatterns;
@@ -37,14 +31,31 @@ public class MyWebMvcConfig extends WebMvcConfigurationSupport {
     @Value("${spring.web.resources.static-locations}")
     private String staticLocations;
 
+
+    /*
+     * 下面代码相当于：
+     * @Controller
+     * public class IndexController {
+     *      @GetMapping("index")
+     *      public String index() {
+     *          return "index";
+     *      }
+     * }
+     */
+    /**
+     * 无业务逻辑跳转
+     */
     @Override
-    protected void addViewControllers(ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/index").setViewName("index");
+        WebMvcConfigurer.super.addViewControllers(registry);
     }
 
     /**
      * 静态资源路径配置
-     * http://localhost:3333/static/img/Event-Y.jpg
+     * extends WebMvcConfigurationSupport 会使默认配置失效，需重写 addResourceHandlers
+     * implements WebMvcConfigurer 则不需要，在 application.yml 配置即可
+     * http://localhost:3333/img/Event-Y.jpg
      * <p>
      * webjars 默认映射规则：/webjars/** ==> classpath:/META-INF/resources/webjars/
      * 静态资源默认映射规则：/** ==> classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
@@ -60,10 +71,9 @@ public class MyWebMvcConfig extends WebMvcConfigurationSupport {
         // addResourceLocations     设置资源位置
         registry.addResourceHandler("/webjars/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/META-INF/resources/webjars/");
         registry.addResourceHandler(staticPathPatterns).addResourceLocations(StringUtils.split(staticLocations, ","));
-        registry.addResourceHandler("/templates/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/templates/");
         // Swagger3：http://localhost:3333/swagger-ui/index.html
         registry.addResourceHandler("/swagger-ui/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/META-INF/resources/webjars/springfox-swagger-ui/");
-        super.addResourceHandlers(registry);
+        WebMvcConfigurer.super.addResourceHandlers(registry);
     }
 
     /**
@@ -72,7 +82,7 @@ public class MyWebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/demo/**").excludePathPatterns("/demo/post");
-        super.addInterceptors(registry);
+        WebMvcConfigurer.super.addInterceptors(registry);
     }
 
     /**
@@ -106,7 +116,7 @@ public class MyWebMvcConfig extends WebMvcConfigurationSupport {
      * 解决中文乱码
      */
     @Override
-    protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(responseBodyStringConverter());
     }
 
@@ -114,7 +124,7 @@ public class MyWebMvcConfig extends WebMvcConfigurationSupport {
      * Spring Boot 使用枚举类型作为请求参数：https://xkcoding.com/2019/01/30/spring-boot-request-use-enums-params.html
      */
     @Override
-    protected void addFormatters(FormatterRegistry registry) {
+    public void addFormatters(FormatterRegistry registry) {
         registry.addConverterFactory(new IntegerToEnumConverterFactory());
         registry.addConverterFactory(new StringToEnumConverterFactory());
     }
