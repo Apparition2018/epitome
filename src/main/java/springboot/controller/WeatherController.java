@@ -8,17 +8,14 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Objects;
 
 /**
- * jquery-pjax
+ * jquery-pjax 和 freemarker 的使用
  *
  * @author ljh
  * created on 2019/8/8 19:39
