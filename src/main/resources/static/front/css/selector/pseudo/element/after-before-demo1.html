@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!--https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements
+    https://www.cnblogs.com/laden666666/p/6089880.html 6.做一些效果
+
+    before和::after匹配一个虚拟元素，主要被用于为当前元素增加装饰性内容的
+    他显示的内容是其自身的"content"属性，默认是内联元素
+    ::after和::before是虚拟节点，而不是正在的节点，不在documont里面找到对应Node对象 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>after-before-demo1</title>
+    <link rel="icon" href="../../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w40p">
+            <div class="caption">font-awesome图标</div>
+            <div class="centered">
+                <span class="font-awesome"></span>
+            </div>
+        </div>
+        <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <style class="code w60p" contenteditable="true">
+            .font-awesome::before {
+                content: "\f000";
+                font-family: FontAwesome,serif;
+                color: black;
+                font-size: 18px;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w40p">
+            <div class="caption">阿里 iconfont 图标</div>
+            <div class="centered">
+                <span class="iconfont">&#xe72a;</span>
+            </div>
+        </div>
+        <style class="code w60p" contenteditable="true">
+            /* http://iconfont.cn/help/detail?spm=a313x.7781069.1998910419.15&helptype=code */
+            @font-face {
+                font-family: 'iconfont';
+                src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+                url('iconfont/iconfont.woff') format('woff'),
+                url('iconfont/iconfont.ttf') format('truetype'),
+                url('iconfont/iconfont.svg#iconfont') format('svg');
+            }
+
+            .iconfont {
+                font-family: 'iconfont',serif;
+                font-size: 18px;
+                font-style: normal;
+                -webkit-font-smoothing: antialiased;
+                -webkit-text-stroke-width: 0.2px;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap w40p">
+            <div class="caption">大小不固定的图片居中</div>
+            <div class="caption">利用伪类、content: ""、height: 100%、vertical-align: middle实现</div>
+            <div class="middle centered">
+                <img src="../../../../../public/img/other/heart.png" />
+            </div>
+        </div>
+        <style class="code w60p" contenteditable="true">
+            .middle {
+                width: 260px;
+                height: 150px;
+                font-size: 0;
+                text-align: center;
+                background: var(--bub2);
+                border-radius: 2px;
+            }
+
+            .middle img {
+                vertical-align: middle;
+                width: 80px;
+            }
+
+            .middle::after {
+                content: "";
+                display: inline-block;
+                vertical-align: middle;
+                height: 100%;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h600">
+        <div class="css-live-wrap w40p">
+            <div class="caption">消除伪元素事件</div>
+            <div class="caption">使用pointer-events: none实现，</div>
+            <div class="canc centered">
+                <div></div>
+            </div>
+        </div>
+        <style class="code w60p" contenteditable="true">
+            .canc {
+                position: relative;
+                width: 180px;
+                height: 180px;
+                padding: 10px;
+                background: var(--bub4);
+                border-radius: 2px;
+                cursor: pointer;
+            }
+
+            .canc>div {
+                width: 180px;
+                height: 80px;
+                background-color: var(--bub2);
+                cursor: pointer;
+            }
+
+            .canc::after {
+                content: "伪元素";
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                width: 60px;
+                line-height: 60px;
+                color: white;
+                font-size: 14px;
+                font-weight: bold;
+                text-align: center;
+                background: hsla(209, 40%, 36%, 0.5);
+                border: 1px solid var(--bub5);
+                cursor: pointer;
+                pointer-events: none;
+            }
+        </style>
+        <script>
+            document.querySelectorAll(".canc").forEach(function (parent) {
+                parent.addEventListener("click", function () {
+                    alert("点击深蓝");
+                });
+            });
+
+            document.querySelectorAll(".canc>div").forEach(function (parent) {
+                parent.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    alert("点击浅蓝");
+                });
+            });
+        </script>
+    </section>
+
+    <section class="code-wrap h450">
+        <div class="css-live-wrap w40p">
+            <div class="caption">增大点击区域</div>
+            <div class="grow centered">
+                <p>Click</p>
+            </div>
+        </div>
+        <style class="code w60p" contenteditable="true">
+            .grow p {
+                position: relative;
+                padding: 30px 35px;
+                background: var(--bub4);
+                color: white;
+                font-size: 150%;
+                text-align: center;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+
+            .grow p:hover {
+                background: #2f506e;
+            }
+
+            .grow p::before {
+                content: "";
+                position: absolute;
+                top: -40px;
+                right: -40px;
+                bottom: -40px;
+                left: -40px;
+                background: #e1e5f980;
+                z-index: -1;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w40p">
+            <div class="caption">实现inline元素换行，替代&lt;br&gt;</div>
+            <div class="br centered">
+                <span>First Line</span>
+                <span>Second Line</span>
+            </div>
+        </div>
+        <style class="code w60p" contenteditable="true">
+            .br {
+                width: 200px;
+                line-height: 50px;
+                color: white;
+                text-align: center;
+                font-size: 150%;
+                background: var(--bub3);
+                border-radius: 2px;
+            }
+
+            .br>span::after {
+                /* Unicode 0x000A 代表换行符
+                在 CSS 中，这个字符可以写作 "\000A"， 或简化为 "\A"  */
+                content: "\A";
+                /* 指定元素内的空白怎样处理
+                空白会被浏览器保留。其行为方式类似 HTML 中的 <pre> 标签。 */
+                white-space: pre;
+            }
+        </style>
+    </section>
+
+</body>
+
+</html>

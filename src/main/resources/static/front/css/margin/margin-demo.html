@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>margin-demo</title>
+    <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">一侧定宽的自适应布局</div>
+            <div class="caption">margin改变可视尺寸（可视尺寸=border+padding+content）</div>
+            <!-- 适用于没有设定width/height的普通block水平元素
+            原理：父容器总宽 = margin + 可视尺寸；父容器总宽不变，margin宽大小改变，就会相应改变可视尺寸的宽 -->
+            <div class="dim1 centered">
+                <img src="../../../public/img/people/mm.png" />
+                <p>图片左浮动，跟随文字自然环绕效果。给&lt;p&gt;元素增加margin-left，可视尺寸减少，实现自适应效果</p>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .dim1 {
+                width: 300px;
+                padding: 15px;
+                color: white;
+                text-indent: 2em;
+                background: var(--pk2);
+                border-radius: 2px;
+            }
+
+            .dim1 img {
+                float: left;
+                width: 150px;
+            }
+
+            .dim1 p {
+                margin-left: 100px;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">滚动容器内上下留白</div>
+            <div class="caption">margin改变占据尺寸（占据尺寸，元素所占空间=margin+border+padding+content）</div>
+            <!-- 1.block/inline-block元素均适用
+            2.与有没有设定width/height值无关
+            3.适用于水平方向和垂直方向） -->
+            <div class="dim2 centered">
+                <img src="../../../public/img/people/mm.png" />
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .dim2 {
+                width: 300px;
+                height: 200px;
+                background: var(--pk2);
+                overflow: scroll;
+            }
+
+            .dim2 img {
+                float: left;
+                width: 250px;
+                margin: 25px 25px;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">百分比按包含元素的宽度计算</div>
+            <div class="caption">绝对定位元素的百分比margin是相对于第一个定位祖先元素的宽度计算的</div>
+            <div class="centered box-pct">
+                <div class="static">
+                    <div>static</div>
+                </div>
+                <div class="abs">
+                    <div>
+                        <div>absolute</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .box-pct {
+                display: flex;
+                align-items: center;
+            }
+
+            .box-pct .static {
+                width: 160px;
+                margin-right: 50px;
+                border: 1px solid var(--pk5);
+            }
+
+            .box-pct .static div {
+                width: 100px;
+                line-height: 100px;
+                margin: 20%;
+                color: white;
+                text-align: center;
+                background: var(--pk4);
+            }
+
+            .box-pct .abs {
+                position: relative;
+                width: 160px;
+                border: 1px solid var(--pk4);
+            }
+
+            .box-pct .abs>div {
+                width: 150px;
+            }
+
+            .box-pct .abs>div>div {
+                position: absolute;
+                width: 100px;
+                line-height: 100px;
+                margin: 20%;
+                color: white;
+                text-align: center;
+                background: var(--pk2);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">宽高2:1自适应矩形</div>
+            <div class="caption">overflow: hidden 防止margin穿透，上下margin重叠，所以宽高2:1</div>
+            <div class="rect centered">
+                <div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .rect {
+                width: 320px;
+                resize: both;
+                overflow: auto;
+            }
+
+            .rect>div {
+                background-color: var(--pk2);
+                border-radius: 2px;
+                overflow: hidden;
+            }
+
+            .rect>div>div {
+                margin: 50%;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">垂直居中(IE8+)</div>
+            <div class="caption">利用 position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto; 实现</div>
+            <div class="cv centered">
+                <div></div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .cv {
+                position: relative;
+                width: 200px;
+                height: 200px;
+                background: var(--pk2);
+            }
+
+            .cv div {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                /* 以上CSS会使div拉伸至父元素一样大小 */
+                width: 100px;
+                height: 100px;
+                /* margin:auto的作用机制
+                    如果一侧定值，一侧auto，auto为剩余空间大小
+                    如果两侧均是auto，则平分剩余空间 */
+                margin: auto;
+                background: var(--pk4);
+
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">两端对齐</div>
+            <div class="caption">利用margin改变元素尺寸实现</div>
+            <div class="layout centered">
+                <div class="ul">
+                    <div class="li">list 1</div>
+                    <div class="li">list 2</div>
+                    <div class="li">list 3</div>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .layout {
+                width: 600px;
+                padding: 3px;
+                border: 1px solid var(--pk5);
+                zoom: 1;
+            }
+
+            .layout:after {
+                content: ' ';
+                display: table;
+                clear: both;
+            }
+
+            .layout .ul {
+                overflow: hidden;
+                margin-right: -10px;
+            }
+
+            .layout .li {
+                float: left;
+                width: 183.33px;
+                line-height: 200px;
+                padding: 3px 5px;
+                margin-right: 10px;
+                color: white;
+                text-align: center;
+                background: var(--pk2);
+            }
+        </style>
+    </section>
+
+    <!-- margin负值下的等高布局(margin改变元素占据空间) -->
+    <section class="code-wrap h200">
+        <div class="css-live-wrap">
+            <div class="caption">等高布局</div>
+            <div class="caption">利用margin负值实现</div>
+            <div class="centered">
+                <a class="demo-click" href="../padding/padding-demo.html#layout1" target="_blank">
+                    等高布局
+                </a>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .demo-click {
+                color: var(--pk3);
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap">
+            <div class="caption">定位价格标签</div>
+            <div class="caption">使用margin实现</div>
+            <div class="bot centered">
+                <a href="##">
+                    <img width="130" height="130" src="https://img10.360buyimg.com/n3/834/11752677-6197-4ffa-b4c0-e66d02640bad.jpg" />
+                </a>
+                <div>
+                    <span>￥999.00</span>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .bot img {
+                border: 0 none;
+                vertical-align: middle;
+            }
+
+            .bot div {
+                margin: -28px 0 0 74px;
+            }
+
+            .bot.bot span {
+                display: inline-block;
+                padding: 2px 5px;
+                background-color: var(--pk3);
+                color: white;
+                font-size: 12px;
+                font-weight: bold;
+            }
+        </style>
+    </section>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../public/js/demo.js"></script>
+</body>
+
+</html>

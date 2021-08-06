@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="description" content="Less.js 中文文档：https://www.html.cn/doc/less/">
+    <meta name="description" content="estZ.less：http://www.aibusy.com/zless/">
+    <meta name="description" content="est：http://ecomfe.github.io/est/">
+    <title>less-demo</title>
+    <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+    <link rel="stylesheet" href="style/main.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="radius_test"></div>
+    <div></div>
+
+    <section class="code-wrap h100">
+        <div class="css-live-wrap w40p">
+            <div class="caption">Comments 注释</div>
+            <div class="centered"></div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            /* 被编译 */
+            // 不被编译
+        </code>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w40p">
+            <div class="caption">Variables 变量</div>
+            <div class="caption">@开头</div>
+            <div class="centered">
+                <div class="var"></div>
+            </div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            @test_width: 120px;
+
+            .var {
+                width: @test_width;
+                height: @test_width;
+                background-color: violet;
+            }
+        </code>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w40p">
+            <div class="caption">@arguments</div>
+            <div class="centered">
+                <div class="arguments"></div>
+            </div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            .box-shadow(@x: 0; @y: 0; @blur: 1px; @color: black) {
+                -webkit-box-shadow: @arguments;
+                    -moz-box-shadow: @arguments;
+                        box-shadow: @arguments;
+            }
+            .arguments {
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+                .box-shadow(2px; 5px);
+            }
+        </code>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w40p">
+            <div class="caption">Operations 运算</div>
+            <div class="centered">
+                <div class="oper"></div>
+            </div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            // less
+            .oper {
+                @length: 50px;
+                @base: 5%;
+                @base-color: #888;
+                width: @length + 50px;
+                height: 20px + @length;
+                background-color: @base-color - #765;
+                border: @base solid @base-color;
+            }
+        </code>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w40p">
+            <div class="caption">Mixins 混合</div>
+            <div class="caption">可不带参，可带参，可带参带默认值</div>
+            <div class="centered">
+                <div class="mixins"></div>
+            </div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            // 参数: @radius;  默认值: 5px
+            .border_radius(@radius:5px) {
+                -webkit-border-radius: @radius;
+                -moz-border-radius: @radius;
+                border-radius: @radius;
+            }
+            .mixins {
+                width: 100px;
+                height: 100px;
+                background-color: greenyellow;
+                .border_radius(10px);
+            }
+        </code>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w40p">
+            <div class="caption">Pattern-matching 匹配模式</div>
+            <div class="centered">
+                <div class="triangle"></div>
+            </div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            .triangle(top, @w:5px, @c:#ccc) {
+                border-width: @w;
+                border-color: transparent transparent @c transparent;
+                border-style: dashed dashed solid dashed;  // dashed 为了兼容 IE6
+            }
+            .triangle(bottom, @w:5px, @c:#ccc) {
+                border-width: @w;
+                border-color: @c transparent transparent transparent;
+                border-style: solid dashed dashed dashed;
+            }
+            ...
+            ...
+            .triangle(@_, @w:5px, @c:#ccc) { // 无论匹配到哪个，都会匹配到@_
+                width: 0;
+                height: 0;
+                overflow: hidden;
+            }
+            .triangle {
+                .triangle(top, 50px, crimson)
+            }
+        </code>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w40p">
+            <div class="caption">Nested rules 嵌套规则</div>
+            <div class="centered">
+                <ul class="list">
+                    <li><a href="#">开始日期</a><span>2014-10-01</span></li>
+                    <li><a href="#">当前日期</a><span>2014-10-22</span></li>
+                    <li><a href="#">截止日期</a><span>2014-10-31</span></li>
+                </ul>
+            </div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            .list {
+                width: 360px;
+                font-size: 14px;
+                list-style: none;
+                li {
+                    height: 30px;
+                    line-height: 30px;
+                    margin-bottom: 5px;
+                    padding: 0 10px;
+                    background-color: lightpink;
+                    &:hover { // & 代表上一层选择器
+                        background-color: lightcoral;
+                    }
+                }
+                a {
+                    float: left;
+                }
+                span {
+                    float: right;
+                }
+            }
+        </code>
+    </section>
+
+    <section class="code-wrap h200">
+        <div class="css-live-wrap w40p">
+            <div class="caption">e 预判函数</div>
+            <div class="caption">相当于 ~""</div>
+            <div class="centered"></div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            // less
+            .e {
+                width: ~"calc(300px -30px)"; // 避免编译
+            }
+        
+            // css
+            .e {
+                width: calc(300px -30px);
+            }
+        </code>
+    </section>
+</body>
+
+</html>

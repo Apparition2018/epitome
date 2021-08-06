@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>EventUtil</title>
+    <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+</head>
+
+<body>
+    <!-- https://www.cnblogs.com/hykun/p/EventUtil.html -->
+    <section class="code-wrap h100vh">
+        <div class="css-live-wrap w33p">
+            <div class="caption">EventUtil</div>
+            <div class="centered">
+                <div id="addHandler">addHandler</div>
+            </div>
+        </div>
+        <style>
+            .centered div {
+                width: 250px;
+                padding: 10px;
+                margin: 10px;
+                background: hotpink;
+                color: white;
+                font-size: 21px;
+                text-align: center;
+                border: 1px solid white;
+                box-shadow: 1px 1px 2px #f05aa5, inset 0 44px 0 -22px #ff78b9;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        </style>
+        <script class="code w67p" contenteditable="true">
+            const EventUtil = {
+
+                // 页面只能加载一次window.onload；这里使用该方法可以绑定多个方法，按顺序执行
+                // 参数：函数
+                readyEvent: function (fn) {
+                    if (fn == null) {
+                        fn = document;
+                    }
+                    const oldOnload = window.onload;            // 先把 onload 存下来
+                    // onload 可以是一个 object，可以是一个 function，如果是 function，onload 会在页面加载完成之后执行
+                    if (typeof window.onload !== 'function') {  // 如果 onload 不是一个 function, 把 fn 赋给 onload, 等页面加载后执行
+                        window.onload = fn;
+                    } else {
+                        window.onload = function () {           // 如果 onload 已经被赋值并且是一个 function, 则运行先前存下来的 oldOnload 方法(即 onlaod)，再执行 fn 方法
+                            oldOnload();
+                            fn();
+                        };
+                    }
+                },
+
+                // 添加事件
+                // 参数：操作的元素，事件名称，事件处理函数
+                addHandler: function (element, type, handler) {
+                    if (element.addEventListener) {     // DOM2级
+                        element.addEventListener(type, handler, false);
+                    } else if (element.attachEvent) {   // IE DOM2级
+                        element.attachEvent("on" + type, handler);
+                    } else {
+                        element["on" + type] = handler; // DOM0级
+                    }
+                },
+
+                // 移除事件
+                // 参数：操作的元素，事件名称，事件处理函数
+                removeHandler: function (element, type, handler) {
+                    if (element.removeEventListener) {
+                        element.removeEventListener(type, handler, false);
+                    } else if (element.detachEvent) {
+                        element.detachEvent("on" + type, handler);
+                    } else {
+                        element["on" + type] = null;
+                    }
+                },
+
+                // 获取事件对象的引用
+                getEvent: function (event) {
+                    return event ? event : window.event;
+                },
+
+                // 获取事件对象target
+                getTarget: function (event) {
+                    return event.target || event.srcElement;
+                },
+
+                // 阻止事件默认行为
+                preventDefault: function (event) {
+                    if (event.preventDefault) {
+                        event.preventDefault();
+                    } else {
+                        event.returnValue = false;  // IE
+                    }
+                },
+
+                // 阻止捕获和冒泡阶段中当前事件的进一步传播 (主要是事件冒泡，因为IE不支持事件捕获)
+                stopPropagation: function (event) {
+                    //避免触发注册在document.body上面的事件处理程序
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    } else {
+                        event.cancelBubble = true;  // IE
+                    }
+                },
+
+                // 获取mouseover和mouseout相关元素
+                getRelatedTarget: function (event) {
+                    if (event.relatedTarget) {
+                        return event.relatedTarget;
+                    } else if (event.toElement) {   //兼容IE8-
+                        return event.toElement;
+                    } else if (event.formElement) {
+                        return event.formElement;
+                    } else {
+                        return null;
+                    }
+                },
+
+                // 获取mousedown或mouseup按下或释放的按钮是鼠标中的哪一个
+                getButton: function (event) {
+                    if (document.implementation.hasFeature("MouseEvents", "2.0")) {
+                        return event.button;
+                    } else {
+                        switch (event.button) {   //将IE模型下的button属性映射为DOM模型下的button属性
+                            case 0:
+                            case 1:
+                            case 3:
+                            case 5:
+                            case 7:
+                                return 0;  //按下的是鼠标主按钮（一般是左键）
+                            case 2:
+                            case 6:
+                                return 2;  //按下的是中间的鼠标按钮
+                            case 4:
+                                return 1;  //鼠标次按钮（一般是右键）
+                        }
+                    }
+                },
+
+                // 获取表示鼠标滚轮滚动方向的数值
+                getWheelDelta: function (event) {
+                    if (event.wheelDelta) {
+                        return event.wheelDelta;
+                    } else {
+                        return -event.detail * 40;
+                    }
+                },
+
+                // 获取相同的字符编码，需在keypress事件中使用
+                getCharCode: function (event) {
+                    if (typeof event.charCode === "number") {
+                        return event.charCode;
+                    } else {
+                        return event.keyCode;
+                    }
+                }
+
+            };
+
+            const btn = document.getElementById("addHandler");
+            const handler = function (e) {
+                console.log(e);
+                alert(e);
+            };
+            EventUtil.addHandler(btn, 'click', handler);
+        </script>
+    </section>
+</body>
+
+</html>

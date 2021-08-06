@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>input-file-demo</title>
+    <link rel="icon" href="../../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../../public/css/demo.css">
+</head>
+
+<body>
+<section class="code-wrap h500">
+    <div class="css-live-wrap w40p">
+        <div class="caption">上产图片，并预览</div>
+        <div class="centered preview">
+            <form method="post" action="http://localhost/test" enctype="multipart/form-data">
+                <div id="image-preview"></div>
+                <p>
+                    <input type="file" id="image-file" name="test">
+                </p>
+                <p id="file-info">没有选择文件</p>
+            </form>
+        </div>
+    </div>
+    <style>
+        .preview {
+            margin-top: 25px;
+            font-size: 14px;
+        }
+
+        .preview #image-preview {
+            width: 100%;
+            height: 200px;
+            background: no-repeat center center;
+            background-size: contain;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <script class="code w60p" contenteditable="true">
+        const
+            fileInput = document.getElementById('image-file'),
+            info = document.getElementById('file-info'),
+            preview = document.getElementById('image-preview');
+
+        //监听change事件:
+        fileInput.addEventListener('change', function () {
+            // 清除背景图片:
+            preview.style.backgroundImage = '';
+            // 检查文件是否选择:
+            if (!fileInput.value) {
+                info.innerHTML = '没有选择文件';
+                return;
+            }
+            // 获取File引用:
+            const file = fileInput.files[0];
+            // 获取File信息:
+            info.innerHTML = '文件: ' + file.name + '<br>' + '大小: ' + file.size
+                + '<br>' + '修改: ' + file.lastModifiedDate;
+            if (file.type !== 'image/jpeg' && file.type !== 'image/png'
+                && file.type !== 'image/gif') {
+                alert('不是有效的图片文件!');
+                return;
+            }
+            // 读取文件:
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const data = e.target.result; // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+                preview.style.backgroundImage = 'url(' + data + ')';
+            };
+            // 以DataURL的形式读取文件:
+            reader.readAsDataURL(file);
+        });
+    </script>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">美化 input-file</div>
+        <div class="caption">隐藏 input，点击新样式时调用 input 的点击事件</div>
+        <div class="centered beautify">
+            <div id="text"></div>
+            <div id="select">选择文件</div>
+            <input id="input-file" type="file">
+        </div>
+    </div>
+    <style>
+        .beautify {
+            font-size: 0;
+            margin-top: 35px;
+        }
+        .beautify input[type="file"] {
+            display: none;
+        }
+
+        .beautify > * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #text {
+            width: 180px;
+            height: 30px;
+            border: 1px solid #111;
+            border-radius: 2px 0 0 2px;
+        }
+
+        #select {
+            padding: 0 10px;
+            margin-left: -1px;
+            line-height: 30px;
+            background-color: #d43f3a;
+            color: white;
+            font-size: 14px;
+            border: 1px solid #111;
+            border-radius: 0 2px 2px 0;
+        }
+    </style>
+    <script class="code w60p" contenteditable="true">
+        document.getElementById('select').onclick = function () {
+            document.getElementById('input-file').click();
+        }
+    </script>
+</section>
+</body>
+
+</html>

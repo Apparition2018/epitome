@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>onmouseXXX-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h500">
+        <div class="css-live-wrap">
+            <div class="caption">onmouseover &amp; onmouseout : 子元素也触发，比 onmouseenter 和 onmouseleave 先触发</div>
+            <div class="caption">onmouseenter &amp; onmouseleave : 子元素不触发</div>
+            <div class="onmouse centered">
+                <ul>
+                    <li>關羽</li>
+                    <li>張飛</li>
+                    <li>趙雲</li>
+                    <li>馬超</li>
+                    <li>黃忠</li>
+                </ul>
+                <p class="output"></p>
+            </div>
+        </div>
+        <style>
+            .onmouse {
+                color: var(--gyb5);
+                margin-top: 50px;
+            }
+
+            .onmouse ul {
+                padding: 20px;
+                border: 1px solid var(--gyb5);
+            }
+
+            .onmouse li {
+                display: inline-block;
+                padding: 5px 8px;
+                color: var(--gyb5);
+                background: white;
+                border: 1px solid var(--gyb5);
+                box-shadow: 1px 1px 2px var(--gyb5);
+            }
+
+            .onmouse .output {
+                max-width: 335px;
+                min-height: 19px;
+                margin-top: 20px;
+                padding-bottom: 4px;
+                text-align: center;
+                border-bottom: 1px solid var(--gyb5);
+            }
+        </style>
+        <script class="code" contenteditable="true">
+            const ul = document.querySelector('.onmouse ul');
+            const omOutput = document.querySelector('.onmouse .output');
+
+            ul.onmouseover = function (e) {
+                const node = e.target;
+                node.style.backgroundColor = 'var(--gyb5)';
+                (node.nodeName === 'LI') && (node.style.color = 'white');
+                omOutput.textContent += 'over ';
+            }
+
+            ul.mouseenter = function (e) {
+                const node = e.target;
+                node.style.backgroundColor = '';
+                (node.nodeName === 'LI') && (node.style.color = 'var(--gyb5)');
+                omOutput.textContent += 'out ';
+            }
+
+            ul.onmouseout = function () {
+                omOutput.textContent += 'enter ';
+            }
+
+            ul.onmouseleave = function () {
+                omOutput.textContent += 'leave ';
+            }
+        </script>
+    </section>
+</body>
+
+</html>

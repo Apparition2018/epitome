@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="description" content="响应式图片 srcset 和 sizes：https://www.cnblogs.com/stooges/p/7120135.html">
+    <title>img-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap">
+        <div class="css-live-wrap w50p">
+            <div class="caption">响应式图片</div>
+            <div class="responsive centered">
+                <img alt="穗波玉" src="../../../../public/img/people/穗波玉.jpg"
+                     srcset="../../../../public/img/people/穗波玉.jpg 480w, ../../../../public/img/people/穗波玉2.jpg 240w"
+                     sizes="(max-width: 1024px) 240w, 480px">
+            </div>
+        </div>
+        <style>
+            .responsive img {
+                width: 100%;
+                border-radius: 50%;
+            }
+        </style>
+        <code class="code w50p" contenteditable="true">
+            &lt;img alt="穗波玉" src="../../../../public/img/people/穗波玉.jpg"
+            srcset="../../../../public/img/people/穗波玉.jpg 480w, ../../../../public/img/people/穗波玉2.jpg 240w"
+            sizes="(max-width: 1024px) 240w, 480px"&gt;
+
+            1.当屏幕宽度≤1024px，图片显示穗波玉2
+            2.当屏幕宽度>1024px，图片显示穗波玉
+        </code>
+    </section>
+</body>
+
+</html>

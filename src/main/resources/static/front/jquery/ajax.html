@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>AJAX | jQuery</title>
+    <link rel="icon" href="../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap" style="height: 130vh;">
+        <div class="css-live-wrap w100p">
+            <div class="caption">AJAX</div>
+            <div class="centered">
+                <table class="w1280">
+                    <tr>
+                        <th>分类</th>
+                        <th>API</th>
+                        <th>概述</th>
+                        <th>例子/用法</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">底层接口</td>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.ajax/">$.ajax()</a>
+                        </td>
+                        <td>执行异步 AJAX 请求</td>
+                        <td>$.ajax({...})</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.ajaxSetup/">$.ajaxSetup()</a>
+                        </td>
+                        <td>为 AJAX 请求设置默认值</td>
+                        <td>$.ajaxSetup({...})</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.ajaxPrefilter/">$.ajaxPrefilter()</a>
+                        </td>
+                        <td>在每个请求发送之前且被 $.ajax() 处理之前，处理自定义 Ajax 选项或修改已存在选项</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.ajaxTransport/">$.ajaxTransport()</a>
+                        </td>
+                        <td>创建处理 Ajax 数据实际传送的对象</td>
+                        <td>???</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">快捷方法</td>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.get/">$.get()</a>
+                        </td>
+                        <td>使用 AJAX 的 HTTP GET 请求从服务器加载数据</td>
+                        <td>$.ajax({
+                            <br/>&nbsp;&nbsp;url:url,
+                            <br/>&nbsp;&nbsp;data:data,
+                            <br/>&nbsp;&nbsp;success:success,
+                            <br/>&nbsp;&nbsp;dataType:dataType
+                            <br/>});</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.getJSON/">$.getJSON()</a>
+                        </td>
+                        <td>使用 HTTP GET 请求从服务器加载 JSON 编码的数据</td>
+                        <td>$.ajax({
+                            <br/>&nbsp;&nbsp;url:url,
+                            <br/>&nbsp;&nbsp;data:data,
+                            <br/>&nbsp;&nbsp;success:success,
+                            <br/>&nbsp;&nbsp;dataType:"json"
+                            <br/>});</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.getScript/">$.getScript()</a>
+                        </td>
+                        <td>使用 AJAX 的 HTTP GET 请求从服务器加载并执行 JavaScript</td>
+                        <td>$.ajax({
+                            <br/>&nbsp;&nbsp;url:url,
+                            <br/>&nbsp;&nbsp;data:data,
+                            <br/>&nbsp;&nbsp;success:success,
+                            <br/>&nbsp;&nbsp;dataType:"script"
+                            <br/>});</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.post/">$.post()</a>
+                        </td>
+                        <td>使用 AJAX 的 HTTP POST 请求从服务器加载数据</td>
+                        <td>$.ajax({
+                            <br/>&nbsp;&nbsp;type:"POST",
+                            <br/>&nbsp;&nbsp;url:url,
+                            <br/>&nbsp;&nbsp;data:data,
+                            <br/>&nbsp;&nbsp;success:success,
+                            <br/>&nbsp;&nbsp;dataType:"dataType"
+                            <br/>});</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/load/">.load()</a>
+                        </td>
+                        <td>从服务器加载数据，并把返回的数据放置到指定的元素中</td>
+                        <td>$('#result').load('ajax/test.html');</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">全局 Ajax 事件处理器</td>
+                        <td>
+                            <a href="https://www.jquery123.com/ajaxStart/">.ajaxStart()</a>
+                        </td>
+                        <td>规定第一个 AJAX 请求开始时运行的函数</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/ajaxSend/">.ajaxSend()</a>
+                        </td>
+                        <td>规定 AJAX 请求发送之前运行的函数</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/ajaxSuccess/">.ajaxSuccess()</a>
+                        </td>
+                        <td>规定 AJAX 请求成功完成时运行的函数</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/ajaxError/">.ajaxError()</a>
+                        </td>
+                        <td>规定 AJAX 请求失败时运行的函数</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/ajaxComplete/">.ajaxComplete()</a>
+                        </td>
+                        <td>规定 AJAX 请求完成时运行的函数</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/ajaxStop/">.ajaxStop()</a>
+                        </td>
+                        <td>规定所有的 AJAX 请求完成时运行的函数</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">辅助函数</td>
+                        <td>
+                            <a href="https://www.jquery123.com/serialize/">.serialize()</a>
+                        </td>
+                        <td>通过序列化表单值创建 URL 编码文本字符串</td>
+                        <td rowspan="2">
+                            <a href="#ajax-serialize" target="_self">serialize()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/serializeArray/">.serializeArray()</a>
+                        </td>
+                        <td>通过序列化表单值来创建对象（name 和 value）的数组</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/jQuery.param/">$.param()</a>
+                        </td>
+                        <td>创建数组或对象的序列化表示形式</td>
+                        <td>
+                            <a href="#ajax-param" target="_selef">$.param()</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap h350" id="ajax-serialize">
+        <div class="css-live-wrap w40p">
+            <div class="caption">serialize()</div>
+            <div class="caption">通过序列化表单值创建 URL 编码文本字符串</div>
+            <div class="centered box1">
+                <form action="">
+                    <div>
+                        <label>邮&nbsp;&nbsp;箱</label>
+                        <input type="email" name="email" required title="email">
+                    </div>
+                    <div>
+                        <label>手机号</label>
+                        <input type="tel" name="tel" required title="tel">
+                    </div>
+                </form>
+                <div id="serialize">serialize(): </div>
+                <div id="serializeArray">serializeArray(): </div>
+            </div>
+        </div>
+        <style>
+            .box1 {
+                color: var(--gy4);
+                font-size: 14px;
+            }
+
+            .box1 form {
+                border: 1px solid #a9a9a9;
+            }
+
+            .box1 form>div {
+                display: flex;
+                align-items: center;
+                margin: 18px 22px 18px 18px;
+            }
+
+            .box1 label {
+                display: inline-block;
+                width: 60px;
+            }
+
+            .box1 input {
+                padding: 5px;
+                border: 1px solid #a9a9a9;
+            }
+
+            .box1>div {
+                min-height: 17px;
+                padding: 30px 0 4px;
+                text-align: left;
+                white-space: nowrap;
+                border-bottom: 1px solid #a9a9a9;
+            }
+        </style>
+
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script class="code w60p" contenteditable="true">
+            $('.box1 input').on('change', function () {
+                $('#serialize').text('serialize(): ' + $('.box1 form').serialize());
+            });
+            $('.box1 input').on('change', function () {
+                $('#serializeArray').text('serializeArray(): ' + JSON.stringify($('.box1 form').serializeArray()));
+            })
+        </script>
+    </section>
+
+    <section class="code-wrap h250" id="ajax-param">
+        <div class="css-live-wrap w40p">
+            <div class="caption">$.param()</div>
+            <div class="caption">创建数组或对象的序列化表示形式</div>
+            <div class="centered box2">
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            const obj = {
+                a: {
+                    one: 1,
+                    two: 2,
+                    three: 3
+                },
+                b: [1, 2, 3]
+            };
+
+            $('.box2').text(decodeURI($.param(obj)));
+        </script>
+    </section>
+
+    <script src="../../public/js/demo.js"></script>
+</body>
+
+</html>

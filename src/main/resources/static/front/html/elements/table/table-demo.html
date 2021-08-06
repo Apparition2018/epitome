@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>table-demo</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+
+<body>
+
+    <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Table -->
+    <section class="code-wrap h300">
+        <div class="css-live-wrap w40p">
+            <div class="caption">html属性 设置样式</div>
+            <div class="centered">
+                <table border="1" cellpadding="8" cellspacing="0" style="width: 300px; text-align: center;">
+                    <caption style="margin-bottom: 10px; font-size: 22px; font-weight: bold;">英超</caption>
+                    <tr>
+                        <th>球队</th>
+                        <th>积分</th>
+                    </tr>
+                    <tr>
+                        <td>阿森纳</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>曼联</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>利物浦</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>切尔西</td>
+                        <td>70</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            // cellpadding: 规定单元边沿与其内容之间的空白
+            // cellspacing: 规定单元格之间的空间
+            // &lt;caption&gt;: 表格标题
+
+            &lt;table border="1" cellpadding="8" cellspacing="0" style="width: 300px; text-align: center;"&gt;
+                &lt;caption  style="margin-bottom: 10px; font-size: 22px; font-weight: bold;"&gt;英超&lt;/caption&gt;
+                ...
+        </code>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap w40p">
+            <div class="caption">css样式 设置样式</div>
+            <div class="css centered">
+                <table>
+                    <caption>英超</caption>
+                    <tr>
+                        <th>球队</th>
+                        <th>积分</th>
+                    </tr>
+                    <tr>
+                        <td>阿森纳</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>曼联</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>利物浦</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <td>切尔西</td>
+                        <td>70</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <style class="code w60p" contenteditable="true">
+            .css table,
+            .css table tr th,
+            .css table tr td {
+                border: 1px solid black;
+            }
+
+            .css table {
+                width: 300px;
+                line-height: 35px;
+                padding: 2px;
+                text-align: center;
+                /* 规定是否合并表格边框 */
+                border-collapse: collapse;
+                /* 规定相邻单元格边框之间的距离 */
+                /* border-spacing: 20px 20px; */
+                /* 规定表格标题的位置 */
+                caption-side: bottom;
+            }
+
+            .css caption {
+                margin-top: 10px;
+                font-size: 22px;
+                font-weight: bold;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap h350">
+        <div class="css-live-wrap w40p">
+            <div class="caption">合并单元格</div>
+            <div class="swastika centered">
+                <table>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <code class="code w60p" contenteditable="true">
+            &lt;table&gt;
+                &lt;tr&gt;
+                    &lt;td colspan="2"&gt;&lt;/td&gt;
+                    &lt;td rowspan="2"&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td rowspan="2"&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td colspan="2"&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        </code>
+        <style>
+            .swastika table {
+                width: 240px;
+            }
+
+            .swastika td {
+                width: 80px;
+                height: 80px;
+                padding: 0;
+                border: 1px solid black;
+            }
+        </style>
+    </section>
+</body>
+
+</html>

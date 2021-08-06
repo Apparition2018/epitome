@@ -1,0 +1,368 @@
+.code-wrap {
+    height: 400px;
+    margin-bottom: 10px;
+    /*font-family: Consolas, Monaco, monospace;*/
+     font-family: Consolas, Monaco, '微软雅黑', monospace;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.css-live-wrap {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.css-live-wrap-r {
+    position: relative;
+    float: right;
+    width: 50%;
+    height: 100%;
+}
+
+.code {
+    display: block;
+    float: right;
+    width: 50%;
+    height: 100%;
+    background: #ffe;
+    color: var(--gy4);
+    font-size: 14px;
+    text-shadow: 0 1px 1px white;
+    white-space: pre;
+    overflow-y: scroll;
+}
+
+.caption {
+    position: absolute;
+    margin: 20px 0 0 20px;
+    padding: 0 10px;
+    background-size: 100% 1px;
+    background: linear-gradient(#FF9800, #FF9800) no-repeat -1920px bottom;
+    color: #999;
+    font-size: 14px;
+    line-height: 18px;
+    text-shadow: 0 0.2px hsl(0, 0%, 85%);
+    border-left: 2px solid #FF9800;
+    transition: 0.5s;
+}
+
+.caption:nth-child(2) {
+    margin-top: 60px;
+}
+
+.caption:nth-child(3) {
+    margin-top: 100px;
+}
+
+.caption:hover {
+    background-position: -0em bottom;
+}
+
+.inline-element::after {
+    content: "\A";
+    white-space: pre;
+}
+
+
+/* ljh */
+:root {
+    --gy1: #cbc9cf;
+    --gy2: #807f83;
+    --gy3: #67666a;
+    --gy4: #424143;
+    --gy5: #1e1e1f;
+    --gyb1: #dfe2ff;
+    --gyb2: #bdc7d6;
+    --gyb3: #8c94a1;
+    --gyb4: #5b6470;
+    --gyb5: #323640;
+    --gn1: #96ed89;
+    --gn2: #45bf55;
+    --gn3: #168039;
+    --gn4: #044d29;
+    --gn5: #00261c;
+    --bu1: #add5f7;
+    --bu2: #7fb2f0;
+    --bu3: #4e7ac7;
+    --bu4: #35478c;
+    --bu5: #16193b;
+    --bub1: #e1e6fa;
+    --bub2: #c4d7ed;
+    --bub3: #abc8e2;
+    --bub4: #375d81;
+    --bub5: #183152;
+    --buf1: #5979cd;
+    --buf2: #4e6ab3;
+    --buf3: #384c80;
+    --buf4: #263357;
+    --buf5: #1c2640;
+    --pl1: #9768d1;
+    --pl2: #7b52ab;
+    --pl3: #553285;
+    --pl4: #36175e;
+    --pl5: #25064d;
+    --pk1: #f6b1c3;
+    --pk2: #f0788c;
+    --pk3: #de264c;
+    --pk4: #bc0d35;
+    --pk5: #a20d1e;
+    --pkt1: #f5f0ba;
+    --pkt2: #ffb5ca;
+    --pkt3: #ff91a7;
+    --pkt4: #ff5e9f;
+    --pkt5: #ff0894;
+    --gga1: #ffffff;
+    --gga2: #109d59;
+    --gga3: #fcbe1f;
+    --gga4: #dc4437;
+    --gga5: #4385f5;
+    --ggb1: #ffffff;
+    --ggb2: #34b67a;
+    --ggb3: #fbcb43;
+    --ggb4: #e57368;
+    --ggb5: #77a7fb;
+    --sum1: #4fc5c7;
+    --sum2: #97ec71;
+    --sum3: #dbf977;
+    --sum4: #de9dd6;
+    --sum5: #fa6e86;
+    --fla1: #f15a5a;
+    --fla2: #f0c419;
+    --fla3: #4eba6f;
+    --fla4: #2d95bf;
+    --fla5: #955ba5;
+}
+
+.centered {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.demo-text {
+    color: var(--buf5);
+    font-size: 1.5em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.demo-click {
+    color: var(--buf5);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: underline;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.demo-button {
+    display: inline-block;
+    padding: 6px 20px;
+    background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    color: #666666;
+    font-size: 15px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 0 0 #ffffff;
+    cursor: pointer;
+}
+
+.demo-circle {
+    display: inline-block;
+    width: 50px;
+    line-height: 50px;
+    margin: 5px;
+    text-align: center;
+    color: var(--gy4);
+    background-image: linear-gradient(300deg, #dfe9f3 0%, #ffffff 100%);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.demo-button:hover {
+    background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    box-shadow: 1px 1px 1px #ccc;
+}
+
+.tooltip {
+    position: fixed;
+    padding: 8px;
+    background-color: var(--gy4);
+    color: var(--gga1);
+    font-size: 12px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+table {
+    width: 600px;
+    font-size: 14px;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 5px 15px 5px 6px;
+    color: var(--gga1);
+    text-align: left;
+    background-color: var(--gy5);
+    border: 1px solid var(--gy5);
+}
+
+td {
+    padding: 6px 15px 6px 6px;
+    color: var(--gy5);
+    border: 1px solid var(--gy5);
+}
+
+a {
+    color: inherit;
+}
+
+.w100p {
+    width: 100%;
+}
+
+.w67p {
+    width: 67%;
+}
+
+.w60p {
+    width: 60%;
+}
+
+.w50p {
+    width: 50%;
+}
+
+.w40p {
+    width: 40%;
+}
+
+.w33p {
+    width: 33%;
+}
+
+.w1280 {
+    width: 1280px;
+}
+
+.w1024 {
+    width: 1024px;
+}
+
+.w960 {
+    width: 960px;
+}
+
+.w800 {
+    width: 800px;
+}
+
+.w500 {
+    width: 500px;
+}
+
+.w0 {
+    width: 0;
+}
+
+.h100vh {
+    height: 100vh;
+}
+
+.h1100 {
+    height: 1100px;
+}
+
+.h1000 {
+    height: 1000px;
+}
+
+.h950 {
+    height: 950px;
+}
+
+.h900 {
+    height: 900px;
+}
+
+.h850 {
+    height: 850px;
+}
+
+.h800 {
+    height: 800px;
+}
+
+.h750 {
+    height: 750px;
+}
+
+.h700 {
+    height: 700px;
+}
+
+.h650 {
+    height: 650px;
+}
+
+.h600 {
+    height: 600px;
+}
+
+.h550 {
+    height: 550px;
+}
+
+.h500 {
+    height: 500px;
+}
+
+.h450 {
+    height: 450px;
+}
+
+.h350 {
+    height: 350px;
+}
+
+.h300 {
+    height: 300px;
+}
+
+.h250 {
+    height: 250px;
+}
+
+.h200 {
+    height: 200px;
+}
+
+.h150 {
+    height: 150px;
+}
+
+.h100 {
+    height: 100px;
+}
+
+/* CSS reset */
+ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+input, textarea, select, button {
+    outline: none;
+}

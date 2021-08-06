@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Delegated Events（事件委托）</title>
+    <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h100vh">
+        <div class="css-live-wrap w40p">
+            <div class="caption">
+                <a href="https://www.cnblogs.com/dfyg-xiaoxiao/articles/6213063.html" target="_blank">事件委托</a>
+            </div>
+            <div class="centered">
+                <div class="eg1">
+                    <div id="a">ID</div>
+                    <div class="b">CLASS</div>
+                    <p>TAG</p>
+                </div>
+            </div>
+        </div>
+        <style>
+            .eg1 div,
+            .eg1 p {
+                width: 250px;
+                padding: 8px;
+                margin: 10px;
+                background: #afd49f;
+                color: white;
+                font-size: 17px;
+                font-weight: bold;
+                text-align: center;
+                letter-spacing: 1px;
+                border: 1px solid white;
+                box-shadow: 1px 1px 2px #a8d097, inset 0 35px 0 -17px #b6d7a8;
+                border-radius: 5px;
+            }
+        </style>
+        <script class="code w60p" contenteditable="true">
+            onload = function () {
+                const eg1 = document.getElementsByClassName('eg1')[0];
+                delegateEvent(eg1, "#a", "click", function () {
+                    eg1.querySelector("#a").textContent = '#a';
+                });
+                delegateEvent(eg1, ".b", "click", function () {
+                    eg1.querySelector(".b").textContent = '.b';
+                });
+                delegateEvent(eg1, "p", "click", function () {
+                    eg1.querySelector(".eg1 p").textContent = '<p>';
+                })
+            };
+
+            function delegateEvent(interfaceEle, selector, type, fn) {
+                if (interfaceEle.addEventListener) {
+                    interfaceEle.addEventListener(type, eventfn);
+                } else {
+                    interfaceEle.attachEvent("on" + type, eventfn);
+                }
+
+                function eventfn(e) {
+                    e = e || window.event;
+                    const target = e.target || e.srcElement;
+                    if (matchSelector(target, selector)) {
+                        fn && fn.call(target, e);
+                    }
+                }
+            }
+
+            function matchSelector(ele, selector) {
+                // if use id
+                if (selector.charAt(0) === "#") {
+                    return ele.id === selector.slice(1);
+                }
+                // if use class
+                if (selector.charAt(0) === ".") {
+                    return (" " + ele.className + " ").indexOf(" " + selector.slice(1) + " ") !== -1;
+                }
+                // if use tageName
+                return ele.tagName.toLowerCase() === selector.toLowerCase();
+            }
+        </script>
+    </section>
+</body>
+
+</html>

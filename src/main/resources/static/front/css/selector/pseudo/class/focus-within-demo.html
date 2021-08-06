@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>focus-within-demo</title>
+    <link rel="icon" href="../../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../../public/css/demo.css">
+</head>
+
+<body>
+    <!-- https://www.zhangxinxu.com/wordpress/2018/01/css-focus-within-pseudo-class-selector/
+        https://developer.mozilla.org/zh-CN/docs/Web/CSS/:focus-within -->
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">表单输入勿扰模式</div>
+            <div class="caption">利用 :focus-within、outline、透明度 实现</div>
+            <div class="form centered">
+                <div>
+                    <label>邮&nbsp;&nbsp;箱<span>*</span></label>
+                    <input type="email" name="email" required title="email">
+                </div>
+                <div>
+                    <label>手机号<span>*</span></label>
+                    <input type="tel" name="tel" required title="tel">
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .form {
+                z-index: 1;
+                border: 1px solid #a9a9a9;
+                outline: 2000px solid hsla(0, 0%, 100%, 0);
+                transition: outline .2s;
+            }
+
+            .form:focus-within {
+                background: #ff8;
+                outline: 2000px solid hsla(0, 0%, 100%, 1);
+            }
+
+            .form div {
+                display: flex;
+                align-items: center;
+                margin: 18px;
+            }
+
+            .form label {
+                display: inline-block;
+                width: 60px;
+                font-size: 14px;
+            }
+
+            .form span {
+                color: red;
+            }
+
+            .form input {
+                padding: 5px;
+                border: 1px solid #a9a9a9;
+            }
+        </style>
+    </section>
+
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">带计数文本的多行输入框</div>
+            <div class="caption">利用 :focus-within、outline 实现</div>
+            <div class="wrap centered">
+                <textarea title=""></textarea>
+                <label class="textarea-count">0/250</label>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            /* 父级div元素模拟边框 */
+
+            .wrap {
+                padding: 5px;
+                background-color: white;
+                text-align: right;
+                border: 1px solid #a9a9a9;
+            }
+
+            /* 文本域原本的边框去除 */
+
+            .wrap>textarea {
+                width: 260px;
+                min-height: 150px;
+                background: none;
+                border: 0;
+                resize: none;
+            }
+
+            .wrap>label {
+                display: block;
+                line-height: 20px;
+                color: #aaa;
+                -webkit-text-size-adjust: none;
+                font-size: 12px;
+            }
+
+            .wrap:focus-within {
+                border-color: #4D90FE;
+            }
+        </style>
+    </section>
+    <section class="code-wrap">
+        <div class="css-live-wrap">
+            <div class="caption">消息下拉框</div>
+            <div class="caption">利用 :focus-within、display: none; 实现</div>
+            <div class="message centered">
+                <a href="javascript:" class="summary">我的消息</a>
+                <div class="box">
+                    <a href="javascript:">我的回答
+                        <sup>12</sup>
+                    </a>
+                    <a href="javascript:">我的私信</a>
+                    <a href="javascript:">我的关注</a>
+                </div>
+            </div>
+        </div>
+        <style class="code" contenteditable="true">
+            .message {
+                width: 100px;
+                line-height: 32px;
+                background: white;
+                color: #888;
+                text-align: center;
+                font-size: 14px;
+                border: 1px solid #ddd;
+            }
+
+            .message:focus-within .summary,
+            .message .summary:hover {
+                background: #f3f3f3;
+            }
+
+            .message .box {
+                display: none;
+                position: absolute;
+                left: -1px;
+                width: 100%;
+                border: 1px solid #ddd;
+                background-color: #f3f3f3;
+            }
+
+            .message:focus-within .box {
+                display: block;
+            }
+
+            .message a {
+                display: block;
+                text-decoration: none;
+                color: #555;
+            }
+
+            .message .box a:hover {
+                background: steelblue;
+                color: white;
+            }
+
+            .message sub {
+                font-size: 8px;
+            }
+        </style>
+    </section>
+
+
+</body>
+
+</html>

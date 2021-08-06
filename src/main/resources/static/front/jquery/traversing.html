@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>遍历 | jQuery</title>
+    <link rel="icon" href="../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <section class="code-wrap h1000">
+        <div class="css-live-wrap w100p">
+            <div class="caption">遍历</div>
+            <div class="centered">
+                <table class="w1280">
+                    <tr>
+                        <th>分类</th>
+                        <th>API</th>
+                        <th>概述</th>
+                        <th>例子/用法</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="14">树遍历</td>
+                        <td>
+                            <a href="https://www.jquery123.com/offsetParent/">.offsetParent()</a>
+                        </td>
+                        <td>返回第一个定位的父元素</td>
+                        <td rowspan="5">
+                            <a href="https://www.cnblogs.com/chiangchou/p/jquery-parents.html">closest(), parent(),
+                                <br/>parents(), parentsUntil()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/closest/">.closest()</a>
+                        </td>
+                        <td>返回被选元素的第一个祖先元素</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/parent/">.parent()</a>
+                        </td>
+                        <td>返回被选元素的直接父元素</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/parents/">.parents()</a>
+                        </td>
+                        <td>返回被选元素的所有祖先元素</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/parentsUntil/">.parentsUntil()</a>
+                        </td>
+                        <td>返回介于两个给定参数之间的所有祖先元素</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/siblings/">.siblings()</a>
+                        </td>
+                        <td>返回被选元素的所有同级元素</td>
+                        <td rowspan="7">
+                            <a href="https://www.cnblogs.com/angry-apple/p/8257459.html">同级元素</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/prev/">.prev()</a>
+                        </td>
+                        <td>返回被选元素的前一个同级元素</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/prevAll/">.prevAll()</a>
+                        </td>
+                        <td>返回被选元素之前的所有同级元素</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/prevUntil/">.prevUntil()</a>
+                        </td>
+                        <td>返回介于两个给定参数之间的每个元素之前的所有同级元素</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/next/">.next()</a>
+                        </td>
+                        <td>返回被选元素的后一个同级元素</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/nextAll/">.nextAll()</a>
+                        </td>
+                        <td>返回被选元素之后的所有同级元素</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/nextUntil/">.nextUntil()</a>
+                        </td>
+                        <td>返回介于两个给定参数之间的每个元素之后的所有同级元素</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/find/">.find()</a>
+                        </td>
+                        <td>返回被选元素的后代元素</td>
+                        <td>$('p').find('span')</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/children/">.children()</a>
+                        </td>
+                        <td>返回被选元素的所有直接子元素</td>
+                        <td>$(this).children('p')</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">其它遍历</td>
+                        <td>
+                            <a href="https://www.jquery123.com/contents/">.contents()</a>
+                        </td>
+                        <td>返回被选元素的所有直接子元素（包含文本和注释节点）</td>
+                        <td>$('div').contents().filter('em').wrap('&lt;b/&gt;')</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/add/">.add()</a>
+                        </td>
+                        <td>把元素添加到匹配元素的集合中</td>
+                        <td>$('p').add('div')</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/addBack/">.addBack()</a>
+                        </td>
+                        <td>把之前的元素集添加到当前集合中</td>
+                        <td>$('li.l2').nextAll().addBack()</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/end/">.end()</a>
+                        </td>
+                        <td>结束当前链中最近的一次筛选操作，并把匹配元素集合返回到前一次的状态</td>
+                        <td><a href="#jquery-end" target="_self">end()</a></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="9">过滤</td>
+                        <td><a href="https://www.jquery123.com/filter/">.filter()</a></td>
+                        <td>把匹配元素集合缩减为匹配选择器或匹配函数返回值的新元素</td>
+                        <td>$('li').filter(':even')</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.jquery123.com/not/">.not()</a>
+                        </td>
+                        <td>从匹配元素集合中移除元素</td>
+                        <td>$('li').not(':even')</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.jquery123.com/is/">.is()</a></td>
+                        <td>根据选择器/元素/jQuery 对象检查匹配元素集合，如果存在至少一个匹配元素，则返回 true</td>
+                        <td>$(e.target).is('li')</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.jquery123.com/has/">.has()</a></td>
+                        <td>返回拥有一个或多个元素在其内的所有元素</td>
+                        <td>$('li').has('ul')</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.jquery123.com/eq/">.eq()</a></td>
+                        <td>返回带有被选元素的指定索引号的元素</td>
+                        <td>$('li').eq(2)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.jquery123.com/first/">.first()</a></td>
+                        <td>返回被选元素的第一个元素</td>
+                        <td>$('li').first()</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.jquery123.com/last/">.last()</a></td>
+                        <td>返回被选元素的最后一个元素</td>
+                        <td>$('li').last()</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.jquery123.com/slice/">.slice()</a></td>
+                        <td>把匹配元素集合缩减为指定范围的子集</td>
+                        <td>$('li').slice(2, 4)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.jquery123.com/map/">.map()</a></td>
+                        <td>把当前匹配集合中的每个元素传递给函数，产生包含返回值的新 jQuery 对象</td>
+                        <td>$('li').map(function(return this.id;}).get().join()</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="code-wrap" id="jquery-end">
+        <div class="css-live-wrap w33p">
+            <div class="caption">end()</div>
+            <div class="div1 centered">
+                <div class="div2 centered">
+                    <div class="div3 centered">
+                        <div class="div4"></div>
+                        <div class="div4"></div>
+                        <div class="div4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .div1 {
+                width: 300px;
+                height: 300px;
+                border: 1px solid black;
+            }
+
+            .div2 {
+                width: 250px;
+                height: 250px;
+                border: 1px solid black;
+            }
+
+            .div3 {
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: center;
+                width: 200px;
+                height: 200px;
+                border: 1px solid black;
+            }
+
+            .div4 {
+                width: 150px;
+                height: 40px;
+                margin: 4px 0;
+                border: 1px solid black;
+            }
+        </style>
+        <script class="code w67p" contenteditable="true">
+            /*  https://www.cnblogs.com/MnCu8261/p/6046532.html
+                http://www.jb51.net/article/69466.htm
+                end() 方法能够回到最近的一个"破坏性"操作之前，即将匹配的元素列表变为前一次的状态，如果没有破坏性操作将返回一个空集。
+                破坏性操作:      指任何改变所匹配元素的操作
+                破坏性操作:      $("p").find("li");
+                非破坏性操作：     $("p").css("color", "black"); */
+            $(function () {
+                $(".div1")
+                    .find(".div2").css("background", "lightblue")
+                    .find(".div3").find(".div4").css("background", "lightpink")
+                    .end().css("background", "lightgreen")
+            })
+        </script>
+    </section>
+</body>
+
+</html>

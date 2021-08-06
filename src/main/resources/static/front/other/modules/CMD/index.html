@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>SeaJS</title>
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+
+<body>
+    <section class="code-wrap h500">
+        <div class="css-live-wrap w40p">
+            <div class="caption">SeaJS 实例</div>
+            <div class="caption"><a href="https://seajs.github.io/seajs/docs/">SeaJS docs</a></div>
+            <div class="centered sea"></div>
+        </div>
+        <script src="https://cdn.bootcss.com/seajs/3.0.3/sea.js"></script>
+        <script>
+            seajs.use("./page.js");
+        </script>
+        <code class="code w60p" contenteditable="true">
+            /***** index.html *****/
+            seajs.use("./page.js");
+
+            /***** page.js *****/
+            seajs.config({
+                alias: {
+                    "jquery": "https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"
+                }
+            });
+            
+            define(function(require, exports, module) {
+                require('jquery');
+                var math = require('./math');
+                var product = math.multiply(9, 9);
+                $(".sea").html("9 * 9 = " + product);
+            });
+
+            /***** math.js *****/
+            define(function (require, exports, module) {
+                var plus = function (a, b) { return a + b; };
+                var subtract = function (a, b) { return a - b; };
+                var multiply = function (a, b) { return a * b; };
+                var divide = function (a, b) { return a / b; };
+                module.exports = {
+                    plus: plus,
+                    subtract: subtract,
+                    multiply: multiply,
+                    divide: divide
+                };
+            });
+        </code> 
+    </section>
+</body>
+
+</html>
