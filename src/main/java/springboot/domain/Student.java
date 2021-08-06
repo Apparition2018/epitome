@@ -16,7 +16,7 @@ import org.springframework.util.ResourceUtils;
 @PropertySource(value = ResourceUtils.CLASSPATH_URL_PREFIX + "resource.properties")
 // 指定属性前缀：https://www.cnblogs.com/duanxz/p/4520571.html
 @ConfigurationProperties(prefix = "resource")
-public class Resource {
+public class Student {
 
     private String name;
     private int age;

@@ -31,6 +31,17 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Value("${spring.web.resources.static-locations}")
     private String staticLocations;
 
+    /**
+     * ContentNegotiation 内容协商机制(一)--- Spring MVC 内置支持的4种内容协商方式：https://blog.csdn.net/f641385712/article/details/100020664
+     * 1. HttpHeaders Accept
+     * 2. 扩展名
+     * 3. 请求参数
+     * 4. producers
+     */
+    @Override
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        WebMvcConfigurer.super.configureContentNegotiation(configurer);
+    }
 
     /*
      * 下面代码相当于：

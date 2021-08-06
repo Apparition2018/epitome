@@ -5,7 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import springboot.Application;
-import springboot.domain.Resource;
+import springboot.domain.Student;
 import springboot.util.SpringContextUtils;
 
 import javax.servlet.ServletContext;
@@ -31,6 +31,6 @@ public class EpitomeTest {
         System.out.println(Arrays.toString(SpringContextUtils.getActiveProfiles()));
 
         WebApplicationContext webApplicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(Objects.requireNonNull(servletContext));
-        Assertions.assertSame(SpringContextUtils.getBean(Resource.class), webApplicationContext.getBean(Resource.class));
+        Assertions.assertSame(SpringContextUtils.getBean(Student.class), webApplicationContext.getBean(Student.class));
     }
 }
