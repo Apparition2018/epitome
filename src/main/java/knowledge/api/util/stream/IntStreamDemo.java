@@ -35,9 +35,9 @@ public class IntStreamDemo {
         // ints()                               通过 Random 的 ints() 生成 IntStream                     
         intStream = new Random().ints(0, 10).limit(9);
         // IntStream.range(start, end)          范围内元素，不包括 end
-        intStream = IntStream.range(1, 10);
+        intStream = IntStream.range(1, 11);
         // IntStream.rangeClosed(start, end)    范围内元素，包括 end
-        intStream = IntStream.rangeClosed(1, 9);
+        intStream = IntStream.rangeClosed(1, 10);
 
         // average()                            平均数              
         p(intStream.average());

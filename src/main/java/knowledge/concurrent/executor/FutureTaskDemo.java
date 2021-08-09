@@ -19,21 +19,23 @@ import java.util.concurrent.*;
  */
 public class FutureTaskDemo extends Demo {
 
+    private final static int NUM_OF_TASK = 5;
+
     /**
      * Future 实现
      */
     @Test
     public void testFuture() {
 
-        ExecutorService pool = Executors.newFixedThreadPool(5);
+        ExecutorService pool = Executors.newFixedThreadPool(5, new MyThreadFactory());
 
         List<Future<Map<Integer, String>>> results = new ArrayList<>();
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= NUM_OF_TASK; i++) {
 
             // <T> Future<T>	submit(Callable<T> task)
             // 提交一个 Callable 任务用于执行，并返回一个表示该任务的 Future
             Future<Map<Integer, String>> future = pool.submit(new MyCallable(i));
-            p("指派了一个任务 " + i + " 给线程池！");
+            p(String.format("指派了一个任务 %s 给线程池！", i));
             results.add(future);
         }
 
@@ -51,7 +53,7 @@ public class FutureTaskDemo extends Demo {
                         // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用），会阻塞主线程
                         Map<Integer, String> callMap = future.get();
                         for (Map.Entry<Integer, String> entry : callMap.entrySet()) {
-                            p(entry.getValue() + "：运行任务 " + entry.getKey() + " 完毕！");
+                            p(String.format("%s：任务 %s 运行完毕！", entry.getValue(), entry.getKey()));
                         }
                         it.remove();
                     } catch (InterruptedException | ExecutionException e) {
@@ -65,7 +67,6 @@ public class FutureTaskDemo extends Demo {
         }
 
         pool.shutdownNow();
-
     }
 
     /**
@@ -74,14 +75,14 @@ public class FutureTaskDemo extends Demo {
     @Test
     public void testFutureTask() throws InterruptedException {
         setCountDownLatch(5);
-        ExecutorService pool = Executors.newFixedThreadPool(5);
+        ExecutorService pool = Executors.newFixedThreadPool(5, new MyThreadFactory());
 
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= NUM_OF_TASK; i++) {
             // FutureTask(Callable<V> callable)
             // 创建一个 FutureTask，一旦运行就执行给定的 Callable
             MyFutureTask ft = new MyFutureTask(new MyCallable(i));
             pool.submit(ft);
-            p("指派了一个任务 " + i + " 给线程池！");
+            p(String.format("指派了一个任务 %s 给线程池！", i));
         }
         countDownLatch.await();
         pool.shutdown();
@@ -100,7 +101,7 @@ public class FutureTaskDemo extends Demo {
                 // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用），会阻塞主线程
                 Map<Integer, String> callMap = get();
                 for (Map.Entry<Integer, String> entry : callMap.entrySet()) {
-                    p(entry.getValue() + "：运行任务 " + entry.getKey() + " 完毕！");
+                    p(String.format("%s：任务 %s 运行完毕！", entry.getValue(), entry.getKey()));
                 }
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();

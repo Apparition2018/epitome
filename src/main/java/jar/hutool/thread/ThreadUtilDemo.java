@@ -78,7 +78,7 @@ public class ThreadUtilDemo extends Demo {
         setCountDownLatch(NUM_OF_TASK);
         for (int i = 1; i <= NUM_OF_TASK; i++) {
             pool.execute(new MyTask(i));
-            p("指派了一个任务 " + i + " 给线程池！");
+            p(String.format("指派了一个任务 %s 给线程池！", i));
         }
         countDownLatch.await();
     }

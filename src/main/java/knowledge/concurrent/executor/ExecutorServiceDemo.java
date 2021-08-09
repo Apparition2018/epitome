@@ -85,7 +85,7 @@ public class ExecutorServiceDemo extends Demo {
                 // 将任务指派给线程池
                 pool.execute(new MyTask(i));
             }
-            p("指派了一个任务 " + i + " 给线程池！");
+            p(String.format("指派了一个任务 %s 给线程池！", i));
         }
         countDownLatch.await();
 

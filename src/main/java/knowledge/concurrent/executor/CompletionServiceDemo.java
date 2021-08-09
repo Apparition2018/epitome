@@ -21,14 +21,14 @@ public class CompletionServiceDemo extends Demo {
 
     public static void main(String[] args) {
 
-        ExecutorService pool = Executors.newFixedThreadPool(5);
+        ExecutorService pool = Executors.newFixedThreadPool(5, new MyThreadFactory());
 
         CompletionService<Map<Integer, String>> completionService = new ExecutorCompletionService<>(pool);
 
         // 添加任务
-        for (int i = 0; i < NUM_OF_TASK; i++) {
-            completionService.submit(new MyCallable(i + 1));
-            p("指派了一个任务 " + i + " 给线程池！");
+        for (int i = 1; i <= NUM_OF_TASK; i++) {
+            completionService.submit(new MyCallable(i));
+            p(String.format("指派了一个任务 %s 给线程池！", i));
         }
 
         // 获取结果
@@ -41,7 +41,7 @@ public class CompletionServiceDemo extends Demo {
                 // 检索并删除代表下一个已完成任务的Future，指定最大阻塞时间
                 // Map<Integer, String> callMap = completionService.poll(300, TimeUnit.MILLISECONDS).get();
                 for (Map.Entry<Integer, String> entry : callMap.entrySet()) {
-                    p(entry.getValue() + "：运行任务 " + entry.getKey() + " 完毕！");
+                    p(String.format("%s：任务 %s 运行完毕！", entry.getValue(), entry.getKey()));
                 }
             }
         } catch (InterruptedException | ExecutionException e) {

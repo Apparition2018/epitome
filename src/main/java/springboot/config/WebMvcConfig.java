@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.ResourceUtils;
@@ -32,15 +33,34 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private String staticLocations;
 
     /**
-     * ContentNegotiation 内容协商机制(一)--- Spring MVC 内置支持的4种内容协商方式：https://blog.csdn.net/f641385712/article/details/100020664
-     * 1. HttpHeaders Accept
-     * 2. 扩展名
-     * 3. 请求参数
-     * 4. producers
+     * 配置内容协议：一个请求放回多种数据格式
+     * <p>
+     * Path Matching and Content Negotiation：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-web-applications.spring-mvc.content-negotiation
+     * Spring MVC Content Negotiation：https://www.baeldung.com/spring-mvc-content-negotiation-json-xml
+     * ContentNegotiation 内容协商机制(一) --- Spring MVC 内置支持的4种内容协商方式：https://blog.csdn.net/f641385712/article/details/100020664
+     * ContentNegotiation 内容协商机制(二) --- Spring MVC 内容协商实现原理及自定义配置：https://blog.csdn.net/f641385712/article/details/100060445
+     * ContentNegotiation 内容协商机制(三) --- 在视图 View 上的应用：ContentNegotiatingViewResolver 深度解析：https://blog.csdn.net/f641385712/article/details/100079806
+     * 1. Producers
+     * 2. URL suffixes (eg .xml/.json) (5.2.4 弃用)
+     * 3. URL parameter (eg ?format=json)
+     * 4. Accept header
      */
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer.defaultContentType(MediaType.APPLICATION_JSON)
+                // 是否通过请求参数来决定返回数据，默认 false
+                .favorParameter(true)
+                .parameterName("mediaType")
+                .ignoreAcceptHeader(true);
         WebMvcConfigurer.super.configureContentNegotiation(configurer);
+    }
+
+    /**
+     * 配置异步
+     */
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
+        WebMvcConfigurer.super.configureAsyncSupport(configurer);
     }
 
     /*
@@ -53,6 +73,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
      *      }
      * }
      */
+
     /**
      * 无业务逻辑跳转
      */

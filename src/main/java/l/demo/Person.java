@@ -11,12 +11,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
-import org.springframework.util.ResourceUtils;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -116,6 +113,7 @@ public class Person implements Comparable<Person>, Serializable {
     @Data
     @Accessors(chain = true)
     @NoArgsConstructor
+    @XmlRootElement(name = "student")
     public static class Student extends Person implements Serializable {
         /**
          * 当一个类实现了可序列化接口，就要定义一个常量：版本号 (serialVersionUID)

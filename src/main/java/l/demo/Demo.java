@@ -211,12 +211,12 @@ public class Demo {
         public void run() {
             try {
                 Thread t = Thread.currentThread();
-                p(t.getName() + "：正在运行任务 " + taskId + " ...");
+                p(String.format("%s：任务 %s 正在运行 ...", t.getName(), taskId));
                 TimeUnit.MILLISECONDS.sleep(300);
                 if (null != countDownLatch) {
                     countDownLatch.countDown();
                 }
-                p(t.getName() + "：运行任务 " + taskId + " 完毕！");
+                p(String.format("%s：任务 %s 运行完毕！", t.getName(), taskId));
             } catch (InterruptedException e) {
                 p("线程被中断了！");
             }
@@ -233,7 +233,7 @@ public class Demo {
         @Override
         public Map<Integer, String> call() throws Exception {
             Thread t = Thread.currentThread();
-            p(t.getName() + "：正在运行任务 " + taskId + " ...");
+            p(String.format("%s：任务 %s 正在运行 ...", t.getName(), taskId));
             TimeUnit.MILLISECONDS.sleep(300);
             Map<Integer, String> map = new HashMap<>();
             map.put(taskId, Thread.currentThread().getName());
