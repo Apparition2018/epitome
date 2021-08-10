@@ -20,15 +20,13 @@ import java.util.concurrent.*;
 public class FutureTaskDemo extends Demo {
 
     private final static int NUM_OF_TASK = 5;
+    private final static ExecutorService pool = Executors.newFixedThreadPool(5, new MyThreadFactory());
 
     /**
      * Future 实现
      */
     @Test
     public void testFuture() {
-
-        ExecutorService pool = Executors.newFixedThreadPool(5, new MyThreadFactory());
-
         List<Future<Map<Integer, String>>> results = new ArrayList<>();
         for (int i = 1; i <= NUM_OF_TASK; i++) {
 
@@ -65,7 +63,6 @@ public class FutureTaskDemo extends Demo {
                 flag = false;
             }
         }
-
         pool.shutdownNow();
     }
 
@@ -75,7 +72,6 @@ public class FutureTaskDemo extends Demo {
     @Test
     public void testFutureTask() throws InterruptedException {
         setCountDownLatch(5);
-        ExecutorService pool = Executors.newFixedThreadPool(5, new MyThreadFactory());
 
         for (int i = 1; i <= NUM_OF_TASK; i++) {
             // FutureTask(Callable<V> callable)
@@ -89,7 +85,6 @@ public class FutureTaskDemo extends Demo {
     }
 
     static class MyFutureTask extends FutureTask<Map<Integer, String>> {
-
         MyFutureTask(Callable<Map<Integer, String>> callable) {
             super(callable);
         }
