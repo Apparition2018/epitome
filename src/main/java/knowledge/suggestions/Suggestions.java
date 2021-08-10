@@ -185,6 +185,7 @@ public class Suggestions extends Demo {
     @Test
     public void test016() throws FileNotFoundException, ScriptException, NoSuchMethodException {
         // 获得一个 JavaScript 执行引擎
+//        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("javascript");
         // 建立上下文变量
         Bindings bind = engine.createBindings();

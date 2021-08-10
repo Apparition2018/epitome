@@ -61,6 +61,8 @@ public class ExecutorServiceDemo extends Demo {
      * 创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行
      * <p>
      * 多线程并行处理定时任务时，Timer 运行多个 TimeTask 时，只要其中之一没有捕获抛出的异常，其它任务便会自动终止运行，使用 ScheduledExecutorService 则没有这个问题（阿里编程规约）
+     * <p>
+     * Java 定时任务的6种实现方式：https://mp.weixin.qq.com/s?__biz=MzI0NDAzMzIyNQ==&mid=2654072326&idx=1&sn=2b7418ef0d8d81c7d9158648ef91f566
      */
     @Test
     public void testScheduledThreadPool() throws InterruptedException {

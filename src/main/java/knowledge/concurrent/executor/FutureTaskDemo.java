@@ -23,23 +23,23 @@ public class FutureTaskDemo extends Demo {
     private final static ExecutorService pool = Executors.newFixedThreadPool(5, new MyThreadFactory());
 
     /**
-     * Future 实现
+     * Future 是一个抽象的概念，它表示一个值，在某一点会变得可用。
      */
     @Test
     public void testFuture() {
-        List<Future<Map<Integer, String>>> results = new ArrayList<>();
+        List<Future<Map<Integer, String>>> futureList = new ArrayList<>();
         for (int i = 1; i <= NUM_OF_TASK; i++) {
 
             // <T> Future<T>	submit(Callable<T> task)
             // 提交一个 Callable 任务用于执行，并返回一个表示该任务的 Future
             Future<Map<Integer, String>> future = pool.submit(new MyCallable(i));
             p(String.format("指派了一个任务 %s 给线程池！", i));
-            results.add(future);
+            futureList.add(future);
         }
 
         boolean flag = true;
         while (flag) {
-            for (Iterator<Future<Map<Integer, String>>> it = results.iterator(); it.hasNext(); ) {
+            for (Iterator<Future<Map<Integer, String>>> it = futureList.iterator(); it.hasNext(); ) {
                 Future<Map<Integer, String>> future = it.next();
 
                 // boolean	    isDone()
@@ -59,7 +59,7 @@ public class FutureTaskDemo extends Demo {
                     }
                 }
             }
-            if (results.size() == 0) {
+            if (futureList.size() == 0) {
                 flag = false;
             }
         }
@@ -67,7 +67,7 @@ public class FutureTaskDemo extends Demo {
     }
 
     /**
-     * 使用 FutureTask 实现上面例子，解决多任务结果，效果最优
+     * 使用 FutureTask 实现上面例子
      */
     @Test
     public void testFutureTask() throws InterruptedException {

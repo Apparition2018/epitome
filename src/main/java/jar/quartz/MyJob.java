@@ -1,20 +1,20 @@
 package jar.quartz;
 
+import l.demo.Demo;
+import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class MyJob implements Job {
-
-	@Override
-	public void execute(JobExecutionContext arg0) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
-		System.out.println(sdf.format(new Date()));
-	}
+@Slf4j
+public class MyJob extends Demo implements Job {
+    @Override
+    public void execute(JobExecutionContext jobExecutionContext) {
+        log.info(jobExecutionContext.getJobDetail().getKey() + ": " + DATE_TIME_SDF.format(new Date()));
+    }
 }

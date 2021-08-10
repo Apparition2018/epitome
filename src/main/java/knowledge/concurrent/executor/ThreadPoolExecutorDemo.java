@@ -1,6 +1,7 @@
 package knowledge.concurrent.executor;
 
 import l.demo.Demo;
+import lombok.NonNull;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.concurrent.*;
@@ -12,10 +13,10 @@ import java.util.stream.IntStream;
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ThreadPoolExecutor.html
  * <p>
  * 线程池对待线程的策略:
- * 1.如果池中任务数 < corePoolSize -> 放入立即执行
- * 2.如果池中任务数 > corePoolSize -> 放入队列等待
- * 3.队列满 -> 新建线程立即执行
- * 4.执行中的线程 > maxPoolSize -> 触发handler（RejectedExecutionHandler）异常
+ * 1.池中任务数 < corePoolSize -> 放入立即执行
+ * 2.池中任务数 = corePoolSize -> 放入队列等待
+ * 3.池中任务数 = corePoolSize && 队列满 -> 新建线程立即执行
+ * 4.池中任务数 > maxPoolSize -> 触发handler（RejectedExecutionHandler）异常
  * <p>
  * corePoolSize         池中所保存的线程数，包括空闲线程
  * maximumPoolSize      池中允许的最大线程数
@@ -33,7 +34,7 @@ import java.util.stream.IntStream;
 public class ThreadPoolExecutorDemo extends Demo {
 
     /**
-     * 不推荐使用Executors操作线程池类：https://www.jianshu.com/p/8f9ba86ddf13
+     * 不推荐使用 Executors 操作线程池类：https://www.jianshu.com/p/8f9ba86ddf13
      * 线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式，规避资源耗尽的风险，阿里编程规约：
      * 1.FixedThreadPool 和 SingleThreadPool：允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM
      * 2.CachedThreadPool：允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM
@@ -49,7 +50,6 @@ public class ThreadPoolExecutorDemo extends Demo {
      * 创建线程或线程池时请指定有意义的线程名称，方便出错时回溯（阿里编程规约）
      */
     static class MyThreadFactory implements ThreadFactory {
-
         private final String namePrefix;
         private final AtomicInteger nextId = new AtomicInteger(1);
 
@@ -58,7 +58,7 @@ public class ThreadPoolExecutorDemo extends Demo {
         }
 
         @Override
-        public Thread newThread(Runnable r) {
+        public Thread newThread(@NonNull Runnable r) {
             Thread thread = new Thread(r);
             thread.setName(namePrefix + nextId.getAndIncrement());
             p(thread.getName() + " is created");
@@ -66,15 +66,22 @@ public class ThreadPoolExecutorDemo extends Demo {
         }
     }
 
+    /**
+     * 线程池8大拒绝策略：http://kailing.pub/article/index/arcid/255.html
+     * ThreadPoolExecutor 内置4种拒绝策略：
+     * 1.AbortPolicy：丢弃任务，抛出 RejectedExecutionException
+     * 2.DiscardPolicy：丢弃任务，但是不抛出异常
+     * 3.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新提交被拒绝的任务
+     * 4.CallerRunsPolicy：由调用线程处理该任务
+     */
     static class MyRejectHandler implements RejectedExecutionHandler {
-
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             printLog(r, executor);
         }
 
         private void printLog(Runnable r, ThreadPoolExecutor executor) {
-            System.err.println(r.toString() + " is rejected, " + executor.toString());
+            System.err.println("Task " + r + " rejected from " + executor);
         }
     }
 
@@ -84,7 +91,6 @@ public class ThreadPoolExecutorDemo extends Demo {
      * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ScheduledThreadPoolExecutor.html
      */
     static class ScheduledThreadPoolExecutorDemo extends Demo {
-
         public static void main(String[] args) {
             // ScheduledThreadPoolExecutor(int corePoolSize)
             // 使用给定核心池大小创建一个新 ScheduledThreadPoolExecutor
@@ -99,6 +105,5 @@ public class ThreadPoolExecutorDemo extends Demo {
 
             exec.scheduleAtFixedRate(() -> p(System.nanoTime()), DateUtils.MILLIS_PER_SECOND, DateUtils.MILLIS_PER_SECOND * 2, TimeUnit.MILLISECONDS);
         }
-
     }
 }

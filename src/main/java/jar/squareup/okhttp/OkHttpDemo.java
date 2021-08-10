@@ -29,7 +29,7 @@ public class OkHttpDemo extends Demo {
     private static final MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse("text/x-markdown; charset=utf-8");
     private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
     private OkHttpClient client = new OkHttpClient();
-    private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+    private final ScheduledExecutorService scheduledExecutor = Executors.newScheduledThreadPool(1);
 
     /**
      * Synchronous Get：https://square.github.io/okhttp/recipes/#synchronous-get-kt-java
@@ -231,7 +231,7 @@ public class OkHttpDemo extends Demo {
         Request request = new Request.Builder().url(getDelayUrl(2)).build();
         final long startNanos = System.nanoTime();
         final Call call = client.newCall(request);
-        executor.schedule(() -> {
+        scheduledExecutor.schedule(() -> {
             System.out.printf("%.2f Canceling call.%n", (System.nanoTime() - startNanos) / 1e9f);
             call.cancel();
             System.out.printf("%.2f Canceled call.%n", (System.nanoTime() - startNanos) / 1e9f);

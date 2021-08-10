@@ -1,5 +1,6 @@
 package springboot.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +9,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.servlet.config.annotation.*;
 import springboot.converter.IntegerToEnumConverterFactory;
@@ -16,6 +18,7 @@ import springboot.interceptor.HttpInterceptor;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * WebMvcConfigurer 与 WebMvcConfigurationSupport：https://blog.csdn.net/lvyuanj/article/details/108554170
@@ -23,6 +26,7 @@ import java.util.List;
  * @author ljh
  * created on 2019/8/8 19:39
  */
+@Slf4j
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
@@ -56,10 +60,36 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
+     * 配置异步线程池
+     */
+    @Bean
+    public ThreadPoolTaskExecutor asyncTaskExecutor() {
+        ThreadPoolTaskExecutor asyncTaskExecutor = new ThreadPoolTaskExecutor();
+        asyncTaskExecutor.setCorePoolSize(10);
+        asyncTaskExecutor.setMaxPoolSize(100);
+        asyncTaskExecutor.setKeepAliveSeconds(60);
+        asyncTaskExecutor.setQueueCapacity(1000);
+        asyncTaskExecutor.setThreadNamePrefix("Async-Task-");
+        asyncTaskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
+        asyncTaskExecutor.initialize();
+        return asyncTaskExecutor;
+    }
+
+    /**
      * 配置异步
+     * <p>
+     * 异步请求和异步调用有区别：https://mp.weixin.qq.com/s/Vqj7L9hQL9b11LEdDWp-HQ
+     * SpringBoot 的四种异步处理：https://hello.blog.csdn.net/article/details/113924477
+     * 1.@Async
+     * 2.Runnable/Callable
+     * 3.WebAsyncTask
+     * 4.DeferredResult
      */
     @Override
     public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
+        configurer.setTaskExecutor(asyncTaskExecutor());
+        // Callable 超时时间
+        configurer.setDefaultTimeout(1000 * 30);
         WebMvcConfigurer.super.configureAsyncSupport(configurer);
     }
 

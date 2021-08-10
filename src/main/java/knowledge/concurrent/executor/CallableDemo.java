@@ -24,10 +24,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class CallableDemo {
 
-    /**
-     * Java 线程之 FutureTask 与 Future 浅析
-     * https://blog.csdn.net/zmx729618/article/details/51596414
-     */
     public static void main(String[] args) {
         Callable<String> callable = () -> {
             TimeUnit.SECONDS.sleep(1);
