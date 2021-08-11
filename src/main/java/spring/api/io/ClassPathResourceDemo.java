@@ -8,6 +8,7 @@ import java.io.IOException;
 
 /**
  * ClassPathResource
+ * Java/Springboot 读取 resources 下文件：https://www.cnblogs.com/whalesea/p/11677657.html
  *
  * @author ljh
  * created on 2020/10/29 17:38

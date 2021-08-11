@@ -36,7 +36,6 @@ import java.util.stream.IntStream;
  * 建议12：避免序列化类在构造函数中为不变量赋值
  * 建议13：避免序列化类为final变量复杂赋值
  * 建议14：使用序列化类的私有方法巧妙解决部分属性持久化问题
- * 建议16：使用脚本语言编写常常需要修改的业务
  * 建议17：慎用动态编译
  * 建议19：断言
  * <p>
@@ -173,39 +172,6 @@ public class Suggestions extends Demo {
      * 若有，则会委托该方法进行对象序列化，若没有，则由ObjectOutputStream按照默认规则继续序列化。
      * 同样，在从流数据恢复成实例对象时，也会检查是否有一个私有的readObject方法，如果有，则会通过该方法读取属性值。
      */
-
-    /**
-     * 建议16：使用脚本语言编写常常需要修改的业务
-     * <p>
-     * 脚本语言的三大特征，如下所示：
-     * 1.灵活：脚本语言一般都是动态类型，可以不用声明变量类型而直接使用，可以再运行期改变类型。
-     * 2.便捷：脚本语言是一种解释性语言，不需要编译成二进制代码，也不需要像Java一样生成字节码。它的执行时依靠解释器解释的，因此在运行期间变更代码很容易，而且不用停止应用；
-     * 3.简单：只能说部分脚本语言简单，比如Groovy，对于程序员来说，没有多大的门槛。
-     */
-    @Test
-    public void test016() throws FileNotFoundException, ScriptException, NoSuchMethodException {
-        // 获得一个 JavaScript 执行引擎
-//        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-        ScriptEngine engine = new ScriptEngineManager().getEngineByName("javascript");
-        // 建立上下文变量
-        Bindings bind = engine.createBindings();
-        bind.put("factor", 1);
-        // 绑定上下文，作用于当前引擎范围
-        engine.setBindings(bind, ScriptContext.ENGINE_SCOPE);
-
-        int first = 1;
-        int second = 99;
-
-        // 指定 Js 代码
-        engine.eval(new FileReader(JAVA_PATH + "knowledge/suggestions/model.js"));
-        // 是否可调用方法
-        if (engine instanceof Invocable) {
-            Invocable in = (Invocable) engine;
-            // 执行 Js 中的函数
-            Double result = (Double) in.invokeFunction("formula", first, second);
-            p("运算结果是：" + result.intValue());
-        }
-    }
 
     /* 建议17：慎用动态编译
      * <p>

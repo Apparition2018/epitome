@@ -13,11 +13,11 @@ import java.io.File;
  * created on 2021/4/25 17:38
  */
 public class MimetypesFileTypeMapDemo extends Demo {
-    
+
     @Test
     public void testMimetypesFileTypeMap() {
-        // 获取文件 contentType
-        p(new MimetypesFileTypeMap().getContentType(new File(ARSENAL_LOGO)));
+        p(new MimetypesFileTypeMap().getContentType(new File(XIAO_XIN)));           // image/png
+        p(new MimetypesFileTypeMap().getContentType(new File(JDBC_PROP_FILENAME))); // application/octet-stream
     }
-    
+
 }
