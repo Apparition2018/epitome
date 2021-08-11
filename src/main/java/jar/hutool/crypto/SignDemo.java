@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/Sign.html
  * SignAlgorithm: MD5withRSA, SHA256withRSA, SHA1withDSA, SHA256withECDSA ......
  *
- * @author Administrator
+ * @author ljh
  * created on 2021/7/5 10:51
  */
 public class SignDemo extends Demo {

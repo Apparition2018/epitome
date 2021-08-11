@@ -12,7 +12,7 @@ import java.time.*;
  * ZonedDateTime 和 OffsetDateTime 之间的区别：https://www.php.cn/java-article-415981.html
  * https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html
  *
- * @author Administrator
+ * @author ljh
  * created on 2021/1/16 9:51
  */
 public class OffsetDateTimeDemo {

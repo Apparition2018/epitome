@@ -2,6 +2,7 @@ package springboot.converter;
 
 import com.google.common.collect.Maps;
 import l.demo.BaseEnum;
+import lombok.NonNull;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.Map;
@@ -24,7 +25,7 @@ public class StringToEnumConverter<T extends BaseEnum> implements Converter<Stri
     }
 
     @Override
-    public T convert(String source) {
+    public T convert(@NonNull String source) {
         return ENUM_MAP.get(source);
     }
 }

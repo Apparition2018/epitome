@@ -1,14 +1,17 @@
 package springboot.controller;
 
+import l.demo.CompanyEnum;
 import l.demo.Person.Student;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springboot.formatter.BooleanFormat;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -20,7 +23,6 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @RestController
-@RequestMapping("mvc")
 public class WebMvcController {
 
     private final ApplicationContext applicationContext;
@@ -30,16 +32,21 @@ public class WebMvcController {
         this.applicationContext = applicationContext;
     }
 
-    @GetMapping("contentNegotiation")
-    public Student contentNegotiation() {
+    /**
+     * configureContentNegotiation
+     */
+    @GetMapping("configureContentNegotiation")
+    public Student configureContentNegotiation() {
         return new Student(1, "ljh");
     }
 
     /**
+     * configureAsyncSupport
+     *
      * @param resultType 1:asyncVoid 2:asyncResult
      */
-    @GetMapping("asyncSupport")
-    public String asyncSupport(int resultType) throws ExecutionException, InterruptedException {
+    @GetMapping("configureAsyncSupport")
+    public String configureAsyncSupport(int resultType) throws ExecutionException, InterruptedException {
         if (resultType == 1) {
             applicationContext.getBean(WebMvcController.class).asyncVoid();
         } else {
@@ -61,4 +68,22 @@ public class WebMvcController {
         log.info("{}: {}", Thread.currentThread().getName(), new Student(1, "ljh"));
         return new AsyncResult<>(new Student(1, "ljh"));
     }
+
+    /**
+     * addFormatters
+     */
+    @PostMapping("addFormatters")
+    public User addFormatters(User user) {
+        return user;
+    }
+
+    @Data
+    static class User {
+        private String name;
+        private CompanyEnum company;
+        @BooleanFormat
+        private String isAdult;
+    }
+
+
 }

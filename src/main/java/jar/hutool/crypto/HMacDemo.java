@@ -14,7 +14,7 @@ import javax.crypto.SecretKey;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/HMac.html
  * HmacAlgorithm: HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384, HmacSHA512, HmacSM3
  *
- * @author Administrator
+ * @author ljh
  * created on 2021/7/5 10:47
  */
 public class HMacDemo extends Demo {

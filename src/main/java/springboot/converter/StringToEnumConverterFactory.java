@@ -2,6 +2,7 @@ package springboot.converter;
 
 import com.google.common.collect.Maps;
 import l.demo.BaseEnum;
+import lombok.NonNull;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
 
@@ -15,10 +16,10 @@ import java.util.Map;
  */
 public class StringToEnumConverterFactory implements ConverterFactory<String, BaseEnum> {
     
-    private static final Map<Class, Converter> CONVERTER_MAP = Maps.newHashMap(); 
+    private static final Map<Class<?>, Converter> CONVERTER_MAP = Maps.newHashMap();
 
     @Override
-    public <T extends BaseEnum> Converter<String, T> getConverter(Class<T> targetType) {
+    public <T extends BaseEnum> @NonNull Converter<String, T> getConverter(@NonNull Class<T> targetType) {
         Converter<String, T> converter = CONVERTER_MAP.get(targetType);
         if (converter == null) {
             converter = new StringToEnumConverter<>(targetType);

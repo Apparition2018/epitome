@@ -12,9 +12,12 @@ import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.servlet.config.annotation.*;
+import springboot.controller.WebMvcController;
 import springboot.converter.IntegerToEnumConverterFactory;
 import springboot.converter.StringToEnumConverterFactory;
+import springboot.formatter.BooleanFormatAnnotationFormatterFactory;
 import springboot.interceptor.HttpInterceptor;
+import springboot.util.SpringContextUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -30,6 +33,16 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
+    /**
+     * 1.配置路径匹配
+     */
+    @Override
+    public void configurePathMatch(PathMatchConfigurer configurer) {
+        // 给匹配的 Controller 增加前缀
+        configurer.addPathPrefix("mvc", p -> p.isInstance(SpringContextUtils.getBean(WebMvcController.class)));
+        WebMvcConfigurer.super.configurePathMatch(configurer);
+    }
+
     @Value("${spring.mvc.static-path-pattern}")
     private String staticPathPatterns;
 
@@ -37,7 +50,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private String staticLocations;
 
     /**
-     * 配置内容协议：一个请求放回多种数据格式
+     * 2.配置内容协议：一个请求放回多种数据格式
      * <p>
      * Path Matching and Content Negotiation：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-web-applications.spring-mvc.content-negotiation
      * Spring MVC Content Negotiation：https://www.baeldung.com/spring-mvc-content-negotiation-json-xml
@@ -60,7 +73,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 配置异步线程池
+     * 异步线程池
      */
     @Bean
     public ThreadPoolTaskExecutor asyncTaskExecutor() {
@@ -76,7 +89,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 配置异步
+     * 3.配置异步
      * <p>
      * 异步请求和异步调用有区别：https://mp.weixin.qq.com/s/Vqj7L9hQL9b11LEdDWp-HQ
      * SpringBoot 的四种异步处理：https://hello.blog.csdn.net/article/details/113924477
@@ -91,6 +104,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // Callable 超时时间
         configurer.setDefaultTimeout(1000 * 30);
         WebMvcConfigurer.super.configureAsyncSupport(configurer);
+    }
+
+    /**
+     * 4.添加格式化器
+     * 枚举：https://xkcoding.com/2019/01/30/spring-boot-request-use-enums-params.html
+     * 注解：https://www.cnblogs.com/eclipse-/p/10998269.html
+     */
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverterFactory(new IntegerToEnumConverterFactory());
+        registry.addConverterFactory(new StringToEnumConverterFactory());
+        registry.addFormatterForFieldAnnotation(new BooleanFormatAnnotationFormatterFactory());
     }
 
     /*
@@ -124,6 +149,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * <p>
      * Springboot2 静态资源配置：https://www.cnblogs.com/xiaomaomao/p/14278402.html
      * SpringBoot2 静态资源访问问题：https://blog.csdn.net/afgasdg/article/details/106474734
+     * Spring MVC 配置静态资源：https://www.cnblogs.com/zhangcaihua/p/12829083.html
      *
      * @see org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#addResourceHandlers
      */
@@ -180,14 +206,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(responseBodyStringConverter());
-    }
-
-    /**
-     * Spring Boot 使用枚举类型作为请求参数：https://xkcoding.com/2019/01/30/spring-boot-request-use-enums-params.html
-     */
-    @Override
-    public void addFormatters(FormatterRegistry registry) {
-        registry.addConverterFactory(new IntegerToEnumConverterFactory());
-        registry.addConverterFactory(new StringToEnumConverterFactory());
     }
 }
