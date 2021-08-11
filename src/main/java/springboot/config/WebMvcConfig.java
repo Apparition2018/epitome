@@ -11,12 +11,16 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.ResourceUtils;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.config.annotation.*;
 import springboot.controller.WebMvcController;
 import springboot.converter.IntegerToEnumConverterFactory;
 import springboot.converter.StringToEnumConverterFactory;
 import springboot.formatter.BooleanFormatAnnotationFormatterFactory;
+import springboot.handler.MyHandlerMethodReturnValueHandler;
 import springboot.interceptor.HttpInterceptor;
+import springboot.resolver.argument.PersonArgumentResolver;
 import springboot.util.SpringContextUtils;
 
 import java.nio.charset.StandardCharsets;
@@ -116,30 +120,25 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addConverterFactory(new IntegerToEnumConverterFactory());
         registry.addConverterFactory(new StringToEnumConverterFactory());
         registry.addFormatterForFieldAnnotation(new BooleanFormatAnnotationFormatterFactory());
+        WebMvcConfigurer.super.addFormatters(registry);
     }
 
-    /*
-     * 下面代码相当于：
-     * @Controller
-     * public class IndexController {
-     *      @GetMapping("index")
-     *      public String index() {
-     *          return "index";
-     *      }
-     * }
-     */
+    @Bean
+    public HttpInterceptor httpInterceptor() {
+        return new HttpInterceptor();
+    }
 
     /**
-     * 无业务逻辑跳转
+     * 5.添加拦截器
      */
     @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/index").setViewName("index");
-        WebMvcConfigurer.super.addViewControllers(registry);
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(httpInterceptor()).addPathPatterns("/mvc/**").excludePathPatterns("");
+        WebMvcConfigurer.super.addInterceptors(registry);
     }
 
     /**
-     * 静态资源路径配置
+     * 6.添加静态处理
      * extends WebMvcConfigurationSupport 会使默认配置失效，需重写 addResourceHandlers
      * implements WebMvcConfigurer 则不需要，在 application.yml 配置即可
      * http://localhost:3333/img/Event-Y.jpg
@@ -165,21 +164,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 拦截器
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/demo/**").excludePathPatterns("/demo/post");
-        WebMvcConfigurer.super.addInterceptors(registry);
-    }
-
-    /**
-     * 解决跨域
+     * 7.添加跨域映射
      * https://www.cnblogs.com/520playboy/p/7306008.html
      * <p>
      * 以下实例是全局配置，也可以针对对应的 controller 添加 @CrossOrigin
-     * `@CrossOrigin(origins = "http://192.168.1.97:8080", maxAge = 3600)
-     * `@CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
+     * `@CrossOrigin(origins = "http://192.168.1.123:8080", originPatterns = "*",
+     * -    methods = {RequestMethod.GET, RequestMethod.POST}, allowCredentials = "false", maxAge = 3600)
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -187,12 +177,61 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 // 设置允许跨域请求的域名
                 .allowedOriginPatterns("*")
-                // 是否允许证书 不再默认开启
-                .allowCredentials(true)
                 // 设置允许的方法
                 .allowedMethods("*")
+                // 是否允许证书
+                .allowCredentials(false)
                 // 跨域允许时间
                 .maxAge(3600);
+        WebMvcConfigurer.super.addCorsMappings(registry);
+    }
+
+    /*
+     * 下面代码相当于：
+     * @Controller
+     * public class IndexController {
+     *      @GetMapping("index")
+     *      public String index() {
+     *          return "index";
+     *      }
+     * }
+     */
+
+    /**
+     * 8.添加视图控制器
+     */
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/index").setViewName("index");
+        WebMvcConfigurer.super.addViewControllers(registry);
+    }
+
+    @Bean
+    public PersonArgumentResolver personArgumentResolver() {
+        return new PersonArgumentResolver();
+    }
+
+    /**
+     * 9.添加参数解析器
+     */
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+        resolvers.add(personArgumentResolver());
+        WebMvcConfigurer.super.addArgumentResolvers(resolvers);
+    }
+
+    @Bean
+    public MyHandlerMethodReturnValueHandler myHandlerMethodReturnValueHandler() {
+        return new MyHandlerMethodReturnValueHandler();
+    }
+
+    /**
+     * 10.添加返回值处理器
+     */
+    @Override
+    public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> handlers) {
+        handlers.add(myHandlerMethodReturnValueHandler());
+        WebMvcConfigurer.super.addReturnValueHandlers(handlers);
     }
 
     @Bean
@@ -201,10 +240,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 解决中文乱码
+     * 配置消息转换器
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(responseBodyStringConverter());
+        WebMvcConfigurer.super.configureMessageConverters(converters);
     }
 }

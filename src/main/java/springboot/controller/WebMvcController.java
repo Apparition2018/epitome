@@ -1,9 +1,11 @@
 package springboot.controller;
 
 import l.demo.CompanyEnum;
+import l.demo.Person;
 import l.demo.Person.Student;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;
@@ -85,5 +87,12 @@ public class WebMvcController {
         private String isAdult;
     }
 
+    /**
+     * addArgumentResolvers
+     */
+    @PostMapping("addArgumentResolvers")
+    public Person addArgumentResolvers(Person person) {
+        return person;
+    }
 
 }

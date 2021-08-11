@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 /**
  * IpConverter
  * <p>
- * logback高级特性使用(二) <conversionRule/>：https://blog.csdn.net/zhuyucheng123/article/details/21524529
+ * logback 高级特性使用(二)：https://blog.csdn.net/chenjie2000/article/details/8892764
  *
  * @author ljh
  * created on 2021/4/7 11:08

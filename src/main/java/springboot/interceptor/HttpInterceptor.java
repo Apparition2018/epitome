@@ -1,5 +1,6 @@
 package springboot.interceptor;
 
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StopWatch;
 import org.springframework.web.method.HandlerMethod;
@@ -13,11 +14,10 @@ import javax.servlet.http.HttpServletResponse;
  * Interceptor  拦截器
  * 自定义拦截器步骤：
  * 1、创建我们自己的拦截器类并实现 HandlerInterceptor 接口
- * 2、创建一个 Java 类继承 WebMvcConfigurationSupport，并重写 addInterceptors 方法。
- * 3、实例化我们自定义的拦截器，然后将对象手动添加到拦截器链中（在addInterceptors方法中添加）。
+ * 2、创建一个 Java 类继承 WebMvcConfigurer/WebMvcConfigurationSupport，并重写 addInterceptors 方法
+ * 3、实例化自定义的拦截器，并添加到拦截器链中
  * <p>
  * SpringBoot 拦截器：https://blog.csdn.net/qq_35098526/article/details/88734991
- * StopWatch + Interceptor 的使用：https://www.jb51.net/article/178518.html
  * Spring Interceptor 与 Servlet Filter：https://blog.csdn.net/qq_41788977/article/details/103610068
  *
  * @author ljh
@@ -30,7 +30,7 @@ public class HttpInterceptor implements HandlerInterceptor {
 
     // 请求处理之前
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+    public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) {
         StopWatch stopWatch = new StopWatch();
         stopWatchThreadLocal.set(stopWatch);
         stopWatch.start();
@@ -39,14 +39,14 @@ public class HttpInterceptor implements HandlerInterceptor {
 
     // 请求正常处理完之后
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
+    public void postHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler, ModelAndView modelAndView) {
         stopWatchThreadLocal.get().stop();
         stopWatchThreadLocal.get().start();
     }
 
     // 请求处理完之后
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+    public void afterCompletion(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler, Exception ex) {
         StopWatch stopWatch = stopWatchThreadLocal.get();
         stopWatch.stop();
         String fullMethodName = "";
