@@ -5,7 +5,6 @@ import l.demo.Person;
 import l.demo.Person.Student;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springboot.formatter.BooleanFormat;
 
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -85,6 +85,7 @@ public class WebMvcController {
         private CompanyEnum company;
         @BooleanFormat
         private String isAdult;
+        private Date currentTime = new Date();
     }
 
     /**

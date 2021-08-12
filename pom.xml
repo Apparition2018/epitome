@@ -29,34 +29,35 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- dependency -->
-        <pagehelper-spring-boot>1.3.1</pagehelper-spring-boot>
-        <druid-spring-boot>1.2.6</druid-spring-boot>
-        <commons-email>1.5</commons-email>
-        <commons-configuration2>2.7</commons-configuration2>
-        <commons-beanutils>1.9.4</commons-beanutils>
-        <commons-cli>1.4</commons-cli>
-        <hutool>5.7.5</hutool>
-        <tika>1.27</tika>
-        <okhttps>3.1.3</okhttps>
-        <retrofit2>2.9.0</retrofit2>
-        <minio>8.3.0</minio>
-        <fastjson>1.2.76</fastjson>
-        <protostuff>1.7.4</protostuff>
-        <dom4j>2.1.3</dom4j>
-        <swagger>3.0.0</swagger>
-        <cglib>3.3.0</cglib>
-        <zxing>3.4.1</zxing>
-        <easy-captcha>1.6.2</easy-captcha>
-        <kaptcha>2.3.2</kaptcha>
-        <TinyPinyin>2.0.3.RELEASE</TinyPinyin>
-        <lucene>8.9.0</lucene>
-        <oshi>5.8.0</oshi>
-        <jsch>0.1.55</jsch>
-        <thumbnailator>0.4.14</thumbnailator>
-        <emoji>5.1.1</emoji>
-        <truelicense>1.33</truelicense>
+        <pagehelper-spring-boot-starter.version>1.3.1</pagehelper-spring-boot-starter.version>
+        <pagehelper-spring-boot-starter.version>1.3.1</pagehelper-spring-boot-starter.version>
+        <druid.version>1.2.6</druid.version>
+        <commons-email.version>1.5</commons-email.version>
+        <commons-configuration2.version>2.7</commons-configuration2.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
+        <commons-cli.version>1.4</commons-cli.version>
+        <hutool.version>5.7.7</hutool.version>
+        <tika.version>1.2.7</tika.version>
+        <okhttps.version>3.1.3</okhttps.version>
+        <retrofit2.version>2.9.0</retrofit2.version>
+        <minio.version>8.3.0</minio.version>
+        <fastjson.version>1.2.78</fastjson.version>
+        <protostuff.version>1.7.4</protostuff.version>
+        <dom4j.version>2.1.3</dom4j.version>
+        <swagger.version>3.0.0</swagger.version>
+        <cglib.version>3.3.0</cglib.version>
+        <zxing.version>3.4.1</zxing.version>
+        <easy-captcha.version>1.6.2</easy-captcha.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
+        <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
+        <lucene.version>8.9.0</lucene.version>
+        <oshi.version>5.8.0</oshi.version>
+        <jsch.version>0.1.55</jsch.version>
+        <thumbnailator.version>0.4.14</thumbnailator.version>
+        <emoji.version>5.1.1</emoji.version>
+        <truelicense.version>1.33</truelicense.version>
         <!-- plugin -->
-        <mybatis-generator>1.4.0</mybatis-generator>
+        <mybatis-generator-core.version>1.4.0</mybatis-generator-core.version>
     </properties>
 
     <dependencies>
@@ -112,14 +113,14 @@
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>${pagehelper-spring-boot}</version>
+            <version>${pagehelper-spring-boot-starter.version}</version>
         </dependency>
 
         <!-- spring boot 整合 druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid-spring-boot}</version>
+            <version>${druid.version}</version>
         </dependency>
 
         <!-- mysql -->
@@ -150,31 +151,31 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>
-            <version>${commons-email}</version>
+            <version>${commons-email.version}</version>
         </dependency>
         <!-- commons-configuration2：读取各种格式的 configuration/preferences 文件 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-configuration2</artifactId>
-            <version>${commons-configuration2}</version>
+            <version>${commons-configuration2.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>${commons-beanutils}</version>
+            <version>${commons-beanutils.version}</version>
         </dependency>
         <!-- commons-cli：用于显示、处理和验证命令行接口 -->
         <dependency>
             <groupId>commons-cli</groupId>
             <artifactId>commons-cli</artifactId>
-            <version>${commons-cli}</version>
+            <version>${commons-cli.version}</version>
         </dependency>
 
         <!-- hutool：https://www.hutool.cn/docs/#/ -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>${hutool}</version>
+            <version>${hutool.version}</version>
         </dependency>
 
         <!-- netty -->
@@ -191,7 +192,7 @@
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parsers</artifactId>
-            <version>${tika}</version>
+            <version>${tika.version}</version>
         </dependency>
 
         <!-- httpclient5 -->
@@ -204,24 +205,24 @@
         <dependency>
             <groupId>com.ejlchina</groupId>
             <artifactId>okhttps</artifactId>
-            <version>${okhttps}</version>
+            <version>${okhttps.version}</version>
         </dependency>
 
         <!-- retrofit2 -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
-            <version>${retrofit2}</version>
+            <version>${retrofit2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-moshi</artifactId>
-            <version>${retrofit2}</version>
+            <version>${retrofit2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-jackson</artifactId>
-            <version>${retrofit2}</version>
+            <version>${retrofit2.version}</version>
         </dependency>
 
         <!-- htmlunit：用于测试基于 web 的应用程序的无头浏览器
@@ -235,33 +236,33 @@
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
-            <version>${minio}</version>
+            <version>${minio.version}</version>
         </dependency>
 
         <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>${fastjson}</version>
+            <version>${fastjson.version}</version>
         </dependency>
 
         <!-- protostuff：基于 protobuf，序列化/反序列化 -->
         <dependency>
             <groupId>io.protostuff</groupId>
             <artifactId>protostuff-core</artifactId>
-            <version>${protostuff}</version>
+            <version>${protostuff.version}</version>
         </dependency>
         <dependency>
             <groupId>io.protostuff</groupId>
             <artifactId>protostuff-runtime</artifactId>
-            <version>${protostuff}</version>
+            <version>${protostuff.version}</version>
         </dependency>
 
         <!-- dom4j：灵活的 Java XML 框架 -->
         <dependency>
             <groupId>org.dom4j</groupId>
             <artifactId>dom4j</artifactId>
-            <version>${dom4j}</version>
+            <version>${dom4j.version}</version>
         </dependency>
 
         <!-- jaxen：通用的 Java XPath 引擎 -->
@@ -274,14 +275,14 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
-            <version>${swagger}</version>
+            <version>${swagger.version}</version>
         </dependency>
 
         <!-- cglib：Code 生成，动态代理 -->
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
-            <version>${cglib}</version>
+            <version>${cglib.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -296,63 +297,63 @@
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>javase</artifactId>
-            <version>${zxing}</version>
+            <version>${zxing.version}</version>
         </dependency>
 
         <!-- easy-captcha：生成验证码 -->
         <dependency>
             <groupId>com.github.whvcse</groupId>
             <artifactId>easy-captcha</artifactId>
-            <version>${easy-captcha}</version>
+            <version>${easy-captcha.version}</version>
         </dependency>
 
         <!-- kaptcha：生成验证码 -->
         <dependency>
             <groupId>com.github.penggle</groupId>
             <artifactId>kaptcha</artifactId>
-            <version>${kaptcha}</version>
+            <version>${kaptcha.version}</version>
         </dependency>
 
         <!-- TinyPinyin：汉字转拼音 -->
         <dependency>
             <groupId>io.github.biezhi</groupId>
             <artifactId>TinyPinyin</artifactId>
-            <version>${TinyPinyin}</version>
+            <version>${TinyPinyin.version}</version>
         </dependency>
 
         <!-- lucene：中文智能分析 -->
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-smartcn</artifactId>
-            <version>${lucene}</version>
+            <version>${lucene.version}</version>
         </dependency>
 
         <!-- oshi：获取系统和硬件信息工具 -->
         <dependency>
             <groupId>com.github.oshi</groupId>
             <artifactId>oshi-core</artifactId>
-            <version>${oshi}</version>
+            <version>${oshi.version}</version>
         </dependency>
 
         <!-- jsch：SSH2 的 Java 实现 -->
         <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
-            <version>${jsch}</version>
+            <version>${jsch.version}</version>
         </dependency>
 
         <!-- thumbnailator：一个 Java 的缩略图生成库 -->
         <dependency>
             <groupId>net.coobird</groupId>
             <artifactId>thumbnailator</artifactId>
-            <version>${thumbnailator}</version>
+            <version>${thumbnailator.version}</version>
         </dependency>
 
         <!-- emoji -->
         <dependency>
             <groupId>com.vdurmont</groupId>
             <artifactId>emoji-java</artifactId>
-            <version>${emoji}</version>
+            <version>${emoji.version}</version>
         </dependency>
 
         <!-- truelicense：安全许可证管理
@@ -360,7 +361,7 @@
         <dependency>
             <groupId>de.schlichtherle.truelicense</groupId>
             <artifactId>truelicense-core</artifactId>
-            <version>${truelicense}</version>
+            <version>${truelicense.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -454,7 +455,7 @@
             <!--            <plugin>-->
             <!--                <groupId>org.mybatis.generator</groupId>-->
             <!--                <artifactId>mybatis-generator-maven-plugin</artifactId>-->
-            <!--                <version>${mybatis-generator}</version>-->
+            <!--                <version>${mybatis-generator-core.version}</version>-->
             <!--                <configuration>-->
             <!--                    <configurationFile>${basedir}/src/main/resources/generator-config.xml</configurationFile>-->
             <!--                    &lt;!&ndash; 是否重写文件-->

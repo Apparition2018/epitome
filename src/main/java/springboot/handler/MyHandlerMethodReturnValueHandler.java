@@ -1,8 +1,9 @@
 package springboot.handler;
 
-import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NonNull;
 import org.apache.hc.core5.http.ContentType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.AsyncHandlerMethodReturnValueHandler;
@@ -20,6 +21,10 @@ import java.nio.charset.StandardCharsets;
  * created on 2021/8/11 16:07
  */
 public class MyHandlerMethodReturnValueHandler implements HandlerMethodReturnValueHandler, AsyncHandlerMethodReturnValueHandler {
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @Override
     public boolean isAsyncReturnValue(Object returnValue, @NonNull MethodParameter returnType) {
         return supportsReturnType(returnType);
@@ -38,7 +43,7 @@ public class MyHandlerMethodReturnValueHandler implements HandlerMethodReturnVal
             response.setContentType(ContentType.APPLICATION_JSON.toString());
             response.setCharacterEncoding(StandardCharsets.UTF_8.name());
             Result<?> result = Result.success(returnValue);
-            response.getWriter().write(JsonMapper.builder().build().writeValueAsString(result));
+            response.getWriter().write(objectMapper.writeValueAsString(result));
         }
     }
 }
