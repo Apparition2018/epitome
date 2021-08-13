@@ -8,11 +8,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.ResourceUtils;
+import org.springframework.validation.MessageCodesResolver;
+import org.springframework.validation.Validator;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import springboot.controller.WebMvcController;
 import springboot.converter.IntegerToEnumConverterFactory;
@@ -23,7 +25,6 @@ import springboot.interceptor.HttpInterceptor;
 import springboot.resolver.argument.PersonArgumentResolver;
 import springboot.util.SpringContextUtils;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -39,6 +40,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     /**
      * 1.配置路径匹配
+     * A Quick Guide to Spring MVC Matrix Variables：https://www.baeldung.com/spring-mvc-matrix-variables
      */
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
@@ -95,6 +97,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     /**
      * 3.配置异步
      * <p>
+     * Asynchronous Programming in Java：https://www.baeldung.com/java-asynchronous-programming
      * 异步请求和异步调用有区别：https://mp.weixin.qq.com/s/Vqj7L9hQL9b11LEdDWp-HQ
      * SpringBoot 的四种异步处理：https://hello.blog.csdn.net/article/details/113924477
      * 1.@Async
@@ -111,9 +114,21 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 4.添加格式化器
+     * 4.配置默认 Servlet 处理器
+     * 常见用于 DispatcherServlet 被映射到 "/"，从而覆盖 Servlet 容器对静态资源的默认处理
+     */
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        WebMvcConfigurer.super.configureDefaultServletHandling(configurer);
+    }
+
+    /**
+     * 5.添加格式化器
      * 枚举：https://xkcoding.com/2019/01/30/spring-boot-request-use-enums-params.html
      * 注解：https://www.cnblogs.com/eclipse-/p/10998269.html
+     * Binding Individual Objects to Request Parameters：https://www.baeldung.com/spring-mvc-custom-data-binder#binding-individual-objects-to-request-parameters
+     * Binding a Hierarchy of Objects：https://www.baeldung.com/spring-mvc-custom-data-binder#binding-a-hierarchy-of-objects
+     * Guide to Spring Type Conversions：https://www.baeldung.com/spring-type-conversions
      */
     @Override
     public void addFormatters(FormatterRegistry registry) {
@@ -129,7 +144,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 5.添加拦截器
+     * 6.添加拦截器
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -138,7 +153,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 6.添加静态处理
+     * 7.添加静态处理
      * extends WebMvcConfigurationSupport 会使默认配置失效，需重写 addResourceHandlers
      * implements WebMvcConfigurer 则不需要，在 application.yml 配置即可
      * http://localhost:3333/img/Event-Y.jpg
@@ -149,6 +164,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * Springboot2 静态资源配置：https://www.cnblogs.com/xiaomaomao/p/14278402.html
      * SpringBoot2 静态资源访问问题：https://blog.csdn.net/afgasdg/article/details/106474734
      * Spring MVC 配置静态资源：https://www.cnblogs.com/zhangcaihua/p/12829083.html
+     * Serve Static Resources with Spring：https://www.baeldung.com/spring-mvc-static-resources
      *
      * @see org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#addResourceHandlers
      */
@@ -164,10 +180,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 7.添加跨域映射
+     * 8.添加跨域映射
      * https://www.cnblogs.com/520playboy/p/7306008.html
+     * CORS with Spring：https://www.baeldung.com/spring-cors
      * <p>
-     * 以下实例是全局配置，也可以针对对应的 controller 添加 @CrossOrigin
+     * 也可以使用 @CrossOrigin 针对单独的 Controller
      * `@CrossOrigin(origins = "http://192.168.1.123:8080", originPatterns = "*",
      * -    methods = {RequestMethod.GET, RequestMethod.POST}, allowCredentials = "false", maxAge = 3600)
      */
@@ -198,12 +215,22 @@ public class WebMvcConfig implements WebMvcConfigurer {
      */
 
     /**
-     * 8.添加视图控制器
+     * 9.添加视图控制器
+     * 常用于无业务逻辑的页面跳转，如：主页、URL 重定向、404 页面等
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/index").setViewName("index");
         WebMvcConfigurer.super.addViewControllers(registry);
+    }
+
+    /**
+     * 10.配置视图解析器
+     * A Guide to the ViewResolver in Spring MVC：https://www.baeldung.com/spring-mvc-view-resolver-tutorial
+     */
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        WebMvcConfigurer.super.configureViewResolvers(registry);
     }
 
     @Bean
@@ -212,7 +239,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 9.添加参数解析器
+     * 11.添加参数解析器
+     * 要自定义参数解析的内置支持，请直接配置 RequestMappingHandlerAdapter
+     * Binding Domain Objects：https://www.baeldung.com/spring-mvc-custom-data-binder#binding-a-hierarchy-of-objects
      */
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
@@ -226,7 +255,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 10.添加返回值处理器
+     * 12.添加返回值处理器
+     * 要自定义处理返回值的内置支持，请直接配置 RequestMappingHandlerAdapter
      */
     @Override
     public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> handlers) {
@@ -234,17 +264,60 @@ public class WebMvcConfig implements WebMvcConfigurer {
         WebMvcConfigurer.super.addReturnValueHandlers(handlers);
     }
 
-    @Bean
-    public HttpMessageConverter<String> responseBodyStringConverter() {
-        return new StringHttpMessageConverter(StandardCharsets.UTF_8);
-    }
-
     /**
-     * 配置消息转换器
+     * 13.配置消息转换器
+     * SpringMVC HttpMessageConverter 匹配规则：https://segmentfault.com/a/1190000012659486
+     * Http Message Converters with the Spring Framework：https://www.baeldung.com/spring-httpmessageconverter-rest
+     * Binary Data Formats in a Spring REST API：https://www.baeldung.com/spring-rest-api-with-binary-data-formats
+     * Returning Image/Media Data with Spring MVC：https://www.baeldung.com/spring-mvc-image-media-data
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(responseBodyStringConverter());
         WebMvcConfigurer.super.configureMessageConverters(converters);
+    }
+
+    /**
+     * 14.继承消息转换器
+     * 扩展或修改默认配置的消息转换器列表
+     * configureMessageConverters 和 configureMessageConverters：https://www.cnblogs.com/woyujiezhen/p/12105852.html
+     */
+    @Override
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        WebMvcConfigurer.super.extendMessageConverters(converters);
+    }
+
+    /**
+     * 15.配置处理异常解析器
+     * 自定义异常处理 HandlerExceptionResolver：https://www.cnblogs.com/yihuihui/p/11673496.html
+     */
+    @Override
+    public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        WebMvcConfigurer.super.configureHandlerExceptionResolvers(resolvers);
+    }
+
+    /**
+     * 16.继承处理异常解析器
+     * 扩展或修改默认配置的异常解析器列表
+     */
+    @Override
+    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        WebMvcConfigurer.super.extendHandlerExceptionResolvers(resolvers);
+    }
+
+    /**
+     * 17.验证器
+     */
+    @Override
+    public Validator getValidator() {
+        return WebMvcConfigurer.super.getValidator();
+    }
+
+    /**
+     * 18.消息代码解析器
+     * 用于生成错误代码
+     */
+    @Override
+    public MessageCodesResolver getMessageCodesResolver() {
+        return WebMvcConfigurer.super.getMessageCodesResolver();
     }
 }

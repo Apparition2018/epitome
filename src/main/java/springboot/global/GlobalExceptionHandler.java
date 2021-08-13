@@ -46,9 +46,6 @@ import java.util.stream.Collectors;
  * -    2.@InitBinder       给 WebDataBinder 进行初始化
  * -    3.ModelAttribute    给 Model 绑定参数
  * `@RestControllerAdvice = @ControllerAdvice + @ResponseBody
- * <p>
- * `@RestControllerAdvice 作用及原理：https://www.cnblogs.com/UncleWang001/p/10949318.html
- * 利用 @ControllerAdvice 和 @ResponseBodyAdvice 接口统一处理返回值：https://diamondfsd.com/make-you-web-app-graceful-return-value-process/
  *
  * @author ljh
  * created on 2020/11/26 17:51

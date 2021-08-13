@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * Listener     @WebListener
  */
 @ServletComponentScan
+// Quick Guide to the Spring @Enable Annotations：https://www.baeldung.com/spring-enable-annotations
 @EnableTransactionManagement
 @EnableCaching
 @EnableAsync

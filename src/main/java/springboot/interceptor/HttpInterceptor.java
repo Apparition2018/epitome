@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * <p>
  * SpringBoot 拦截器：https://blog.csdn.net/qq_35098526/article/details/88734991
  * Spring Interceptor 与 Servlet Filter：https://blog.csdn.net/qq_41788977/article/details/103610068
+ * HandlerInterceptors vs. Filters in Spring MVC：https://www.baeldung.com/spring-mvc-handlerinterceptor-vs-filter
  *
  * @author ljh
  * created on 2019/8/8 19:39

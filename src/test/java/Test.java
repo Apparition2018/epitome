@@ -1,4 +1,5 @@
 // Spring Boot 2.x基础教程  http://blog.didispace.com/spring-boot-learning-2x/
+// WebFlux
 // spring-boot-dependencies 中的各个依赖
 // redis, rocketmq, mycat
 // spring cloud, dubbo
