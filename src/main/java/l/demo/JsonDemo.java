@@ -1,7 +1,6 @@
 package l.demo;
 
 import com.google.gson.annotations.SerializedName;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
@@ -22,7 +21,6 @@ public interface JsonDemo {
     String JSON_COMPLEX = "{\"teacherName\":\"crystal\",\"teacherAge\":27,\"course\":{\"courseName\":\"english\",\"code\":1270},\"students\":[{\"studentName\":\"lily\",\"studentAge\":12},{\"studentName\":\"lucy\",\"studentAge\":15}]}";
 
     @Data
-    @AllArgsConstructor
     class Teacher {
         private String teacherName;
         private Integer teacherAge;
@@ -31,14 +29,12 @@ public interface JsonDemo {
     }
 
     @Data
-    @AllArgsConstructor
     class Course {
         private String courseName;
         private Integer code;
     }
 
     @Data
-    @AllArgsConstructor
     class Student {
         @SerializedName(value = "studentName", alternate = {"name"})
         private String studentName;

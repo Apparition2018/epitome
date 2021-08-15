@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
@@ -24,9 +23,9 @@ public class JsonTypeInfoDemo {
 
     @Test
     public void testJsonTypeInfo() throws JsonProcessingException {
-        Circle circle = new Circle("12");
-        Rectangle rectangle = new Rectangle("12", "13");
-        View view = new View(Lists.newArrayList(circle, rectangle));
+        Circle circle = new Circle().setRadius("12");
+        Rectangle rectangle = new Rectangle().setLength("12").setWidth("13");
+        View view = new View().setSharps(Lists.newArrayList(circle, rectangle));
 
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -39,8 +38,7 @@ public class JsonTypeInfoDemo {
     }
 
     @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
+    @Accessors(chain = true)
     static class View {
         private List<Sharp> sharps;
     }
@@ -52,16 +50,14 @@ public class JsonTypeInfoDemo {
     }
 
     @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
+    @Accessors(chain = true)
     @JsonTypeName("circleType")
     static class Circle extends Sharp {
         private String radius;
     }
 
     @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
+    @Accessors(chain = true)
     @JsonTypeName("rectangleType")
     static class Rectangle extends Sharp {
         private String length;

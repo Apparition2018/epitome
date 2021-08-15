@@ -3,7 +3,6 @@ package l.demo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -26,8 +25,8 @@ import java.util.Objects;
  * created on 2020/9/18 15:45
  */
 @Data
+@Accessors(chain = true)
 @NoArgsConstructor
-@AllArgsConstructor
 public class Person implements Comparable<Person>, Serializable {
     private static final long serialVersionUID = -8205619618185839521L;
     private Integer id;
@@ -38,8 +37,6 @@ public class Person implements Comparable<Person>, Serializable {
     private Home home;
 
     @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
     public static class Home implements Serializable {
         private static final long serialVersionUID = 5624494519989168136L;
         private String address;

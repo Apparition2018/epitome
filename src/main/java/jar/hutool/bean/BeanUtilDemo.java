@@ -43,7 +43,7 @@ public class BeanUtilDemo extends Demo {
 
         Person person = personList.get(0);
         person.setOtherInfo(ListUtil.toList("医生", "爸爸"));
-        person.setHome(new Home("GD", "123"));
+        person.setHome(new Home().setAddress("北京").setTel("010"));
         p(person); // Person{id=1, name='张三', otherInfo=[医生, 爸爸], home=Home(address='GD', tel='123')}
 
         // static void	    setFieldValue(Object bean, fieldNameOrIndex, Object value)
