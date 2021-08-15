@@ -3,8 +3,8 @@ package jar.fasterxml.jackson.annotataion;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.experimental.Accessors;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -17,12 +17,12 @@ public class JsonValueDemo {
 
     @Test
     public void testJsonValue() throws JsonProcessingException {
-        Person person = new Person("ljh", 31);
+        Person person = new Person().setName("ljh").setAge(31);
         System.out.println(new ObjectMapper().writeValueAsString(person)); // "ljh"
     }
 
     @Data
-    @AllArgsConstructor
+    @Accessors(chain = true)
     static class Person {
         @JsonValue
         private String name;

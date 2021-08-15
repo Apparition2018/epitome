@@ -67,8 +67,8 @@
 >    -m <msg>                                   备注
 >    --amend                                    通过创建一个新的 commit 来替换当前分支尖端（最近）的 commit
 >reset                                          将当前 HEAD 复位到指定状态
->   --soft                                      复位 repository
->   --mixed                                     复位 repository 和 index，默认
+>   --soft                                      复位 repository                                                            git reset --soft HEAD^
+>   --mixed                                     复位 repository 和 index，默认                                              git reset --mixed HEAD^                    
 >   --hard                                      复位 repository 和 index 和 working tree                                    git reset --hard HEAD^
 >rm [<pathspec>…]                               从 working tree 和 index 中删除文件
 >    --cached                                   从 index 中删除文件

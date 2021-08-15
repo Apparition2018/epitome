@@ -1,8 +1,6 @@
 package knowledge.suggestions;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -65,8 +63,6 @@ public class Family {
     }
 
     @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
     public static class Daughter extends MotherImpl implements Father {
 
         private String name;

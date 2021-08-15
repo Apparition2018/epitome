@@ -20,7 +20,8 @@ public class ReflectExercise extends Demo {
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
         /* bean2Map */
-        Person person = new Person(1, "张三", 18, "男", Collections.singletonList("程序员"), new Home("广东中山", "123456"));
+        Person person = new Person().setId(1).setName("张三").setAge(18).setGender("男")
+                .setOtherInfo(Collections.singletonList("程序员")).setHome(new Home().setAddress("北京").setTel("010"));
         Map<String, Object> map = bean2Map(person);
         p(map); // {otherInfo=[程序员], serialVersionUID=1, gender=男, name=张三, id=1, age=18, home=Person.Home(address=广东中山, tel=123456)}
 

@@ -370,7 +370,7 @@ public class Suggestions extends Demo {
     @Test
     public void test038() {
         Person person = new Person();
-        person.setHome(new Person.Home("北京", "010"));
+        person.setHome(new Person.Home().setAddress("北京").setTel("010"));
     }
 
     /**
