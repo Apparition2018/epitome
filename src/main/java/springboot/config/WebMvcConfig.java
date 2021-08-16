@@ -227,6 +227,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     /**
      * 10.配置视图解析器
      * A Guide to the ViewResolver in Spring MVC：https://www.baeldung.com/spring-mvc-view-resolver-tutorial
+     * Customize ViewResolvers：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto.spring-mvc.customize-view-resolvers
      */
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {

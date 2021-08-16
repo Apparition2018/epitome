@@ -28,6 +28,8 @@
 // 调度与监控-spring batch(7)结合xxl-job进行批处理：https://blog.csdn.net/masson32/article/details/91503723
 // 最新 Java 面试系列干货，都在这了！：https://mp.weixin.qq.com/s/kJpRgfI3zT77XqMeRfmmQQ
 
+// https://quoters.apps.pcfone.io/api/random
+
 import cn.hutool.core.thread.ThreadUtil;
 import l.demo.Demo;
 import lombok.extern.slf4j.Slf4j;
