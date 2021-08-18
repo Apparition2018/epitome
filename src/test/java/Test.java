@@ -43,65 +43,8 @@ import java.util.concurrent.CompletionService;
 public class Test extends Demo {
 
     public static void main(String[] args) throws Exception {
-        CompletionService<Integer> cs = ThreadUtil.newCompletionService();
-        for (int i = 0; i < 10; i++) {
-            cs.submit(new Task1((i + 1) * 10));
-        }
-        for (int i = 0; i < 10; i++) {
-            System.out.println(cs.take().get());
-        }
+        String s = "a-c";
+        System.out.println(s.contains("-"));
     }
 
-    static class Task1 implements Callable<Integer> {
-        private Integer millis;
-
-        Task1(Integer millis) {
-            this.millis = millis;
-        }
-
-        @Override
-        public Integer call() throws Exception {
-            Thread.sleep(millis);
-            for (int i = 0; i < 10; i++) {
-                CompletionService<Integer> cs = ThreadUtil.newCompletionService();
-                for (int j = 0; j < 10; j++) {
-                    cs.submit(new Task2());
-                }
-                for (int j = 0; j < 10; j++) {
-                    millis += cs.take().get();
-                }
-            }
-            return millis;
-        }
-    }
-
-    static class Task2 implements Callable<Integer> {
-
-        @Override
-        public Integer call() throws Exception {
-            int millis = 0;
-            CompletionService<Integer> cs = ThreadUtil.newCompletionService();
-            for (int k = 0; k < 3; k++) {
-                cs.submit(new Task3((k + 1) * 10));
-            }
-            for (int k = 0; k < 3; k++) {
-                millis += cs.take().get();
-            }
-            return millis;
-        }
-    }
-
-    static class Task3 implements Callable<Integer> {
-        private final Integer millis;
-
-        Task3(Integer millis) {
-            this.millis = millis;
-        }
-
-        @Override
-        public Integer call() throws Exception {
-            Thread.sleep(millis);
-            return millis;
-        }
-    }
 }

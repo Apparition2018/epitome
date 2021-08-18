@@ -1,4 +1,4 @@
-package knowledge.api.util.zip;
+package knowledge.api.util;
 
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;

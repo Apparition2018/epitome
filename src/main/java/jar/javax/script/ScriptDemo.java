@@ -21,6 +21,8 @@ import java.util.Map;
  * 1.灵活：脚本语言一般都是动态类型，可以不用声明变量类型而直接使用，可以再运行期改变类型。
  * 2.便捷：脚本语言是一种解释性语言，不需要编译成二进制代码，也不需要像 Java 一样生成字节码。它的执行时依靠解释器解释的，因此在运行期间变更代码很容易，而且不用停止应用。
  * 3.简单：只能说部分脚本语言简单，比如 Groovy，对于程序员来说，没有多大的门槛。
+ * <p>
+ * Java 8 Nashorn 教程：https://blog.didispace.com/books/java8-tutorial/ch3.html
  *
  * @author ljh
  * created on 2021/8/10 15:52
