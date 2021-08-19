@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -14,15 +15,14 @@ import java.util.stream.Stream;
  * 该类包含操作文件、目录或其他类型文件的静态方法
  * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html
  * <p>
- * https://www.cnblogs.com/ixenos/p/5851976.html
- * https://www.cnblogs.com/digdeep/p/4478734.html
+ * Path 和 Files：https://www.cnblogs.com/ixenos/p/5851976.html
+ * Path 和 Files：https://www.cnblogs.com/digdeep/p/4478734.html
  *
  * @author ljh
  * created on 2020/9/26 2:51
  */
 public class FilesDemo extends Demo {
 
-    // 写
     @Test
     public void write() throws IOException {
         Path path = Paths.get(DEMO_FILE_PATH);
@@ -37,24 +37,30 @@ public class FilesDemo extends Demo {
         Files.write(path, lines, StandardOpenOption.CREATE);
     }
 
-    // 读
     @Test
     public void read() throws IOException {
         Path path = Paths.get(DEMO_FILE_PATH);
 
-        // 读取内容
-        p(Files.readAllLines(path));
+        // 1.
+        Files.readAllLines(path).forEach(Demo::p);
 
-        // 读取内容
+        // 2.
         Stream<String> lines = Files.lines(path);
-        lines.forEach(FilesDemo::p);
+        lines.forEach(Demo::p);
+
+        // 3.
+        try (BufferedReader br = Files.newBufferedReader(path)) {
+            String line;
+            while(null != (line = br.readLine())) {
+                p(line);
+            }
+        }
 
         // 读取文件属性，"*" 表示 读取所有属性
         p(Files.readAttributes(path, "*"));
         // {lastAccessTime=2020-09-22T06:16:01.487644Z, lastModifiedTime=2020-09-22T06:16:01.487644Z, size=91, creationTime=2020-09-14T06:22:45.436145Z, isSymbolicLink=false, isRegularFile=true, fileKey=null, isOther=false, isDirectory=false}
     }
 
-    // 创建
     @Test
     public void create() throws IOException {
         Path path = Paths.get(DEMO_PATH + "a/b/c");
@@ -70,7 +76,6 @@ public class FilesDemo extends Demo {
     }
 
 
-    // 删除
     @Test
     public void delete() throws IOException {
         Path path = Paths.get(DEMO_PATH + "a");
@@ -80,47 +85,26 @@ public class FilesDemo extends Demo {
         Files.deleteIfExists(path); // DirectoryNotEmptyException: src\main\resources\demo\a
     }
 
-
-    // 移动
     @Test
     public void move() throws IOException {
         Path path1 = Paths.get(DEMO_FILE_PATH);
         Path path2 = Paths.get(DEMO_PATH + "a/b/demo");
 
-        // ATOMIC_MOVE，原子性操作，要么移动成功完成，要么源文件保持在原位置
+        // ATOMIC_MOVE：原子性操作，要么移动成功完成，要么源文件保持在原位置
         Files.move(path1, path2, StandardCopyOption.ATOMIC_MOVE);
         Files.move(path2, path1, StandardCopyOption.ATOMIC_MOVE);
     }
 
-    // 复制
     @Test
     public void copy() throws IOException {
         Path path1 = Paths.get(DEMO_FILE_PATH);
         Path path2 = Paths.get(DEMO_PATH + "a/b/demo");
 
-        // REPLACE_EXISTING，覆盖
-        // COPY_ATTRIBUTES，复制文件属性
+        // REPLACE_EXISTING：覆盖
+        // COPY_ATTRIBUTES：复制文件属性
         Files.copy(path1, path2, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
     }
 
-    // 目录流
-    @Test
-    public void directoryStream() throws IOException {
-        Path path = Paths.get(DEMO_PATH);
-
-        // glob，其过滤作用
-        DirectoryStream<Path> entries = Files.newDirectoryStream(path, "demo*");
-        for (Path entry : entries) {
-            p(entry);
-            // src\main\resources\demo\demo
-            // src\main\resources\demo\demo_copy
-        }
-
-        // Files.newDirectoryStream() 不会遍历子孙目录
-        // 要遍历子孙目录需要使用 Files.walkFileTree()
-    }
-
-    // 获取信息
     @Test
     public void get() throws IOException {
         Path path = Paths.get(DEMO_PATH);
@@ -138,7 +122,6 @@ public class FilesDemo extends Demo {
         p(Files.getAttribute(path, "size")); // 4096
     }
 
-    // is
     @Test
     public void is() throws IOException {
         Path path = Paths.get(DEMO_PATH);
@@ -154,19 +137,47 @@ public class FilesDemo extends Demo {
         p(Files.isWritable(path));          // 可写，true
     }
 
-    // 其它
     @Test
     public void other() throws IOException {
         Path path = Paths.get(DEMO_FILE_PATH);
 
         // 探测文件类型
         p(Files.probeContentType(path));
+    }
 
-        // 新建流
-        InputStream is = Files.newInputStream(path);
-        OutputStream os = Files.newOutputStream(path);
-        BufferedReader br = Files.newBufferedReader(path);
-        BufferedWriter bw = Files.newBufferedWriter(path);
+    @Test
+    public void stream() throws IOException {
+        Path path = Paths.get(DEMO_PATH);
+
+        // 返回指定目录下的条目 Stream，不会递归遍历
+        Files.newDirectoryStream(path, "demo*").forEach(System.out::println);
+
+        // 返回指定目录下的条目 Stream，不会递归遍历
+        Files.list(path).filter(p -> String.valueOf(p).endsWith(".xml")).forEach(System.out::println);
+
+        // 返回指定目录下的条目 Stream，指定递归深度
+        Files.find(path, 5, (p, a) -> String.valueOf(p).endsWith(".png")).forEach(System.out::println);
+
+        // 返回指定目录下的条目 Stream，指定递归深度
+        Files.walk(path, 5).filter(p -> String.valueOf(p).endsWith(".obj")).forEach(System.out::println);
+    }
+
+    /**
+     * https://segmentfault.com/a/1190000020778836
+     */
+    @Test
+    public void walkFileTree() throws IOException {
+        PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**.obj");
+        Files.walkFileTree(Paths.get(DEMO_PATH), new SimpleFileVisitor<Path>() {
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                if (pathMatcher.matches(file)) {
+                    p(file);
+                    return FileVisitResult.TERMINATE;
+                }
+                return FileVisitResult.CONTINUE;
+            }
+        });
     }
 
 }

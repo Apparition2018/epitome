@@ -1,5 +1,6 @@
 package knowledge.datetime.time;
 
+import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
@@ -16,7 +17,7 @@ import java.time.ZoneId;
  * @author ljh
  * created on 2021/1/16 10:41
  */
-public class ClockDemo {
+public class ClockDemo extends Demo {
 
     private Clock clock;
 
@@ -29,15 +30,14 @@ public class ClockDemo {
         this.clock = Clock.system(ZoneId.systemDefault());                  // SystemClock[Asia/Shanghai]
         this.clock = Clock.offset(this.clock, Duration.ofHours(-1));        // OffsetClock[SystemClock[Asia/Shanghai],PT-1H]
         this.clock = Clock.fixed(Instant.parse("2008-08-08T12:08:08.00Z"), ZoneId.systemDefault());
-        System.out.println(clock);
-        // FixedClock[2008-08-08T12:08:08Z,Asia/Shanghai]
+        p(clock);                       // FixedClock[2008-08-08T12:08:08Z,Asia/Shanghai]
     }
 
     @Test
     public void testClock() {
-        System.out.println(clock.millis());             // 1218197288000
-        System.out.println(clock.getZone());            // Asia/Shanghai
-        System.out.println(clock.instant());            // 2008-08-08T12:08:08Z
-        System.out.println(Date.from(clock.instant())); // Fri Aug 08 20:08:08 CST 2008
+        p(clock.millis());              // 1218197288000
+        p(clock.getZone());             // Asia/Shanghai
+        p(clock.instant());             // 2008-08-08T12:08:08Z
+        p(Date.from(clock.instant()));  // Fri Aug 08 20:08:08 CST 2008
     }
 }

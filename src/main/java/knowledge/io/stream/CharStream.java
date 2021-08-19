@@ -37,6 +37,7 @@ public class CharStream extends Demo {
      * <p>
      * BufferedReader       缓冲字符输入流
      * 从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取。
+     * Stream<String>       lines()     BufferedReader → Stream
      * https://www.runoob.com/manual/jdk1.6/java.base/java/io/BufferedReader.html
      */
     @Test

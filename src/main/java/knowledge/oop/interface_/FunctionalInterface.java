@@ -19,9 +19,9 @@ import org.junit.jupiter.api.Test;
  * javax.swing.event.ChangeListener
  * <p>
  * JDK8 新增的函数式接口：
- * java.util.function
+ * java.util.function.*
  * <p>
- * https://blog.csdn.net/icarusliu/article/details/79495534
+ * 函数式编程：https://blog.csdn.net/icarusliu/article/details/79495534
  *
  * @author ljh
  * created on 2020/11/10 19:19
@@ -37,8 +37,8 @@ public class FunctionalInterface {
         greetingService.sayMessage("World!");
     }
 
+    // 用于编译级错误检查，当你写的接口不符合函数式接口定义的时候，编译器会报错
     @java.lang.FunctionalInterface
-            // 用于编译级错误检查，当你写的接口不符合函数式接口定义的时候，编译器会报错
     interface GreetingService {
         void sayMessage(String message);
     }

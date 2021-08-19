@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.Map;
 
 /**
  * Enum
@@ -83,9 +82,9 @@ public class EnumDemo extends Demo {
         EnumMap<CompanyEnum, String> companyMap = new EnumMap<>(CompanyEnum.class);
         companyMap.put(CompanyEnum.SF, "顺丰map");
         companyMap.put(CompanyEnum.YTO, "圆通map");
-        for (Map.Entry<CompanyEnum, String> entry : companyMap.entrySet()) {
-            p(entry.getKey().name() + ":" + entry.getValue() + ":" + entry.getKey());
-        }
+        companyMap.forEach((k, v) -> {
+            p(k.name() + ":" + v + ":" + k);
+        });
     }
 
 }

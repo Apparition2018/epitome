@@ -66,6 +66,7 @@ public class ForkJoinPoolDemo {
 
         // 执行任务 (RecursiveTask 有返回值，RecursiveAction 无返回值)
         static class SumTask extends RecursiveTask<Long> {
+            private static final long serialVersionUID = -5848348290388247808L;
             private long[] numbers;
             private int from;
             private int to;

@@ -1,5 +1,6 @@
 package jar.apache.poi;
 
+import org.apache.poi.hssf.record.cf.FontFormatting;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
@@ -34,13 +35,13 @@ public class WritePOI {
 
         // 设置表头字体
         HSSFFont headingFont = wb.createFont();
-        headingFont.setFontName("微软雅黑");            // 字体
-        headingFont.setFontHeightInPoints((short) 14);    // 字号
-        headingFont.setColor(IndexedColors.BLACK.getIndex()); // 字体颜色
-        headingFont.setBold(true);                        // 加粗
-        // font.setItalic(true); 						// 斜体
-        // font.setUnderline(FontFormatting.U_SINGLE); 	// 下划线
-        // font.setStrikeout(true); 					// 删除线
+        headingFont.setFontName("微软雅黑");                    // 字体
+        headingFont.setFontHeightInPoints((short) 14);          // 字号
+        headingFont.setColor(IndexedColors.BLACK.getIndex());   // 字体颜色
+        headingFont.setBold(true);                              // 加粗
+//        headingFont.setItalic(true); 						    // 斜体
+//        headingFont.setUnderline(FontFormatting.U_SINGLE); 	    // 下划线
+//        headingFont.setStrikeout(true); 					    // 删除线
 
         // 设置数据字体
         HSSFFont dataFont = wb.createFont();
@@ -49,15 +50,15 @@ public class WritePOI {
 
         // 设置表头单元格样式
         HSSFCellStyle headingStyle = wb.createCellStyle();
-        headingStyle.setFont(headingFont);                            // 设置字体样式
-        headingStyle.setFillForegroundColor(IndexedColors.LIGHT_TURQUOISE.getIndex()); // 前景色
-        headingStyle.setFillBackgroundColor(IndexedColors.PALE_BLUE.getIndex()); // 背景色
-        headingStyle.setFillPattern(FillPatternType.SPARSE_DOTS);    // 图案样式
-        headingStyle.setAlignment(HorizontalAlignment.CENTER);        // 水平居中
-        headingStyle.setBorderTop(BorderStyle.THIN);                // 上边框
-        headingStyle.setBorderBottom(BorderStyle.THIN);            // 下边框
-        headingStyle.setBorderLeft(BorderStyle.THIN);                // 左边框
-        headingStyle.setBorderRight(BorderStyle.THIN);                // 右边框
+        headingStyle.setFont(headingFont);                                              // 设置字体样式
+        headingStyle.setFillForegroundColor(IndexedColors.LIGHT_TURQUOISE.getIndex());  // 前景色
+        headingStyle.setFillBackgroundColor(IndexedColors.PALE_BLUE.getIndex());        // 背景色
+        headingStyle.setFillPattern(FillPatternType.SPARSE_DOTS);                       // 图案样式
+        headingStyle.setAlignment(HorizontalAlignment.CENTER);                          // 水平居中
+        headingStyle.setBorderTop(BorderStyle.THIN);                                    // 上边框
+        headingStyle.setBorderBottom(BorderStyle.THIN);                                 // 下边框
+        headingStyle.setBorderLeft(BorderStyle.THIN);                                   // 左边框
+        headingStyle.setBorderRight(BorderStyle.THIN);                                  // 右边框
 
         // 设置数据单元格样式
         HSSFCellStyle dataStyle = wb.createCellStyle();
@@ -81,9 +82,9 @@ public class WritePOI {
 
         // 写入表头数据
         for (int i = 0; i < heading.length; i++) {
-            cell = row.createCell(i);        // 创建单元格
+            cell = row.createCell(i);       // 创建单元格
             cell.setCellStyle(headingStyle);// 设置单元格样式
-            cell.setCellValue(heading[i]);    // 单元格内容
+            cell.setCellValue(heading[i]);  // 单元格内容
         }
 
         // 写入表体数据

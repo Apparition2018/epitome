@@ -87,21 +87,30 @@ public class NumberDemo {
      */
     @Test
     public void testSomeSubClassMethods() {
-        // Byte/Integer/Long/Short 共有：
+        p("=== Byte/Integer/Long/Short  ===");
         // static XXX           decode(String nm)
         // 将 String 解码为 XXX
         p(Integer.decode("0x11"));      // 17
         // p(Integer.valueOf("0x11"));  // NumberFormatException: For input string: "0x11"
 
-        // Integer/Long 共有：
+
+        p("\n=== Integer/Long ===");
         // static String	    toBinaryString(int/long i)
         // 以二进制（基数 2）无符号整数形式返回一个整数参数的字符串表示形式
+        p(Integer.toBinaryString(11));  // 1011
         // static String	    toHexString(int/long i)
         // 以十六进制（基数 16）无符号整数形式返回一个整数参数的字符串表示形式
-        p(Integer.toBinaryString(11));  // 1011
         p(Integer.toHexString(11));     // b
+        // JDK8 支持无符号整数
+        String unsignedString = String.valueOf((1L << 32) - 1);
+        p(unsignedString);  // 4294967295
+        int unsignedInt = Integer.parseUnsignedInt(unsignedString, 10);
+        p(unsignedInt);     // -1
+        unsignedString = Integer.toUnsignedString(unsignedInt, 10);
+        p(unsignedString);  // 4294967295
 
-        // Double/Float 共有：
+
+        p("\n=== Double/Float ===");
         p(Double.isFinite(Float.POSITIVE_INFINITY));    // false
         p(Float.isInfinite(Float.POSITIVE_INFINITY));   // true
         p(Double.isNaN(Float.NaN));                     // true

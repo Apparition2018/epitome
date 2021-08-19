@@ -62,36 +62,45 @@ public class MathDemo {
         p(Math.round(4.5)); // 5
     }
 
-    /**
-     * 符号
-     */
     @Test
     public void sign() {
-        // static double    copySign(double/float magnitude, double/float sign)
+        // static double            copySign(double/float magnitude, double/float sign)
         // 返回带有第二个浮点参数符号的第一个浮点参数
-        p(Math.copySign(1.5, -2)); // -1.5
+        p(Math.copySign(1.5, -2));  // -1.5
 
-        // static double	signum(double d)
+        // static double	        signum(double d)
         // 返回参数的符号函数；如果参数为 0，则返回 0；如果参数大于 0，则返回 1.0；如果参数小于 0，则返回 -1.0
-        p(Math.signum(99)); // 1.0
-        p(Math.signum(0));  // 0.0
-        p(Math.signum(-99));// -1.0
+        p(Math.signum(99));         // 1.0
+        p(Math.signum(0));          // 0.0
+        p(Math.signum(-99));        // -1.0
     }
 
-    /**
-     * static double/float	nextAfter(double/float start, double direction)
-     * 返回第一个参数和第二个参数之间与第一个参数相邻的浮点数
-     * <p>
-     * static double/float	nextUp(double/float d)
-     * 返回参数和正无穷大之间与 d 相邻的浮点值
-     * <p>
-     * static double/float	nextDown(double/float d)
-     * 返回参数和负无穷大之间与 d 相邻的浮点值
-     */
     @Test
     public void nextXXX() {
+        // static double/float      nextAfter(double/float start, double direction)
+        // 返回第一个参数和第二个参数之间与第一个参数相邻的浮点数
         p(Math.nextAfter(1.0, 2.5));// 1.0000000000000002
+        // static double/float	    nextUp(double/float d)
+        // 返回参数和正无穷大之间与 d 相邻的浮点值
         p(Math.nextUp(1.0));        // 1.0000000000000002
+        // static double/float	    nextDown(double/float d)
+        // 返回参数和负无穷大之间与 d 相邻的浮点值
         p(Math.nextDown(1.0));      // 0.9999999999999999
+    }
+
+    @Test
+    public void testExact() {
+        try {
+            // 严格运算，溢出则抛出异常
+            int i = Math.multiplyExact(Integer.MAX_VALUE, 2);
+        } catch (ArithmeticException e) {
+            p(e.getMessage()); // integer overflow
+        }
+        try {
+            // 严格转换，溢出则抛出异常
+            int i = Math.toIntExact(Long.MAX_VALUE);
+        } catch (ArithmeticException e) {
+            p(e.getMessage()); // integer overflow
+        }
     }
 }

@@ -3,6 +3,8 @@ package knowledge.concurrent.executor;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.*;
 
 /**
@@ -29,8 +31,8 @@ public class ExecutorServiceDemo extends Demo {
      */
     @Test
     public void testFixedThreadPool() throws InterruptedException {
-        ExecutorService pool = Executors.newFixedThreadPool(2);
-        executeTask(pool);
+        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(2, new MyThreadFactory());
+        executeTask(fixedThreadPool);
     }
 
     /**
@@ -39,8 +41,8 @@ public class ExecutorServiceDemo extends Demo {
      */
     @Test
     public void testCachedThreadPool() throws InterruptedException {
-        ExecutorService pool = Executors.newCachedThreadPool();
-        executeTask(pool);
+        ExecutorService cachedThreadPool = Executors.newCachedThreadPool(new MyThreadFactory());
+        executeTask(cachedThreadPool);
     }
 
     /**
@@ -52,8 +54,8 @@ public class ExecutorServiceDemo extends Demo {
      */
     @Test
     public void testSingleThreadExecutor() throws InterruptedException {
-        ExecutorService pool = Executors.newSingleThreadExecutor();
-        executeTask(pool);
+        ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor(new MyThreadFactory());
+        executeTask(singleThreadExecutor);
     }
 
     /**
@@ -66,8 +68,18 @@ public class ExecutorServiceDemo extends Demo {
      */
     @Test
     public void testScheduledThreadPool() throws InterruptedException {
-        ScheduledExecutorService scheduledPool = Executors.newScheduledThreadPool(2);
-        executeTask(scheduledPool);
+        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(2, new MyThreadFactory());
+        executeTask(scheduledThreadPool);
+    }
+
+    /**
+     * static ExecutorService           newWorkStealingPool([int parallelism])
+     * 创建工作窃取线程池
+     */
+    @Test
+    public void test() throws InterruptedException {
+        ExecutorService workStealingPool = Executors.newWorkStealingPool();
+        executeTask(workStealingPool);
     }
 
     private final static int NUM_OF_TASK = 5;
@@ -121,6 +133,38 @@ public class ExecutorServiceDemo extends Demo {
         // static <T> Callable<T>	    callable(Runnable task[, T result])
         // 返回 Callable 对象，调用它时可运行给定的任务并返回给定的结果
         Callable<Object> callable = Executors.callable(runnable);
+    }
+
+    @Test
+    public void invoke() throws InterruptedException, ExecutionException {
+        ExecutorService pool = Executors.newWorkStealingPool();
+        List<Callable<String>> callableList = Arrays.asList(
+                callable("task1", 1),
+                callable("task2", 2),
+                callable("task3", 3)
+        );
+        p("--- invokeAll ---");
+        // <T> List<Future<T>>  invokeAll(Collection<? extends Callable<T>> tasks[, long timeout, TimeUnit unit])
+        // 执行给定任务，当所有任务完成时返回一个包含它们状态和结果的 Future 列表
+        pool.invokeAll(callableList).stream().map(future -> {
+            try {
+                return future.get();
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }).forEach(System.out::println);
+        p("--- invokeAny ---");
+        // <T> T                invokeAny(Collection<? extends Callable<T>> tasks[, long timeout, TimeUnit unit])
+        // 执行给定任务，当有一个任务完成时返回其结果
+        p(pool.invokeAny(callableList));
+    }
+
+    private Callable<String> callable(String result, long seconds) {
+        return () -> {
+            sleep(seconds, TimeUnit.SECONDS);
+            return result;
+        };
     }
 
 }

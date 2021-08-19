@@ -50,9 +50,9 @@ public class FutureTaskDemo extends Demo {
                         // V	get([long timeout, TimeUnit unit])
                         // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用），会阻塞主线程
                         Map<Integer, String> callMap = future.get();
-                        for (Map.Entry<Integer, String> entry : callMap.entrySet()) {
-                            p(String.format("%s：任务 %s 运行完毕！", entry.getValue(), entry.getKey()));
-                        }
+                        callMap.forEach((k, v) -> {
+                            p(String.format("%s：任务 %s 运行完毕！", k, v));
+                        });
                         it.remove();
                     } catch (InterruptedException | ExecutionException e) {
                         e.printStackTrace();
@@ -95,9 +95,9 @@ public class FutureTaskDemo extends Demo {
                 // V	get([long timeout, TimeUnit unit])
                 // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用），会阻塞主线程
                 Map<Integer, String> callMap = get();
-                for (Map.Entry<Integer, String> entry : callMap.entrySet()) {
-                    p(String.format("%s：任务 %s 运行完毕！", entry.getValue(), entry.getKey()));
-                }
+                callMap.forEach((k, v) -> {
+                    p(String.format("%s：任务 %s 运行完毕！", k, v));
+                });
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }

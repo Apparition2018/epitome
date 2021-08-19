@@ -1,9 +1,7 @@
 package knowledge.suggestions;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 
 import java.util.Comparator;
@@ -14,19 +12,12 @@ import java.util.Comparator;
  * @author ljh
  * created on 2020/10/10 19:23
  */
-@Getter
-@Setter
-@AllArgsConstructor
-@ToString
+@Data
+@Accessors(chain = true)
 class Employee implements Comparable<Employee> {
 
-    // id 是根据进入公司的先后顺序编码的
     private int id;
-
-    // 姓名
     private String name;
-
-    // 职位
     private Position position;
 
     @Override
@@ -51,7 +42,6 @@ class PositionComparator implements Comparator<Employee> {
 
     @Override
     public int compare(Employee o1, Employee o2) {
-        // 按照职位降序排序
         return o1.getName().compareTo(o2.getName());
     }
 }

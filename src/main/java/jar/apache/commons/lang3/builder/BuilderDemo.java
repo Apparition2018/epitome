@@ -1,18 +1,13 @@
 package jar.apache.commons.lang3.builder;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.apache.commons.lang3.builder.*;
 
 import java.math.BigDecimal;
 
 /**
- * XXXBuilder
- * https://www.jianshu.com/p/23c36b6fc8af
- * https://www.cnblogs.com/E-star/p/3725916.html
- * http://commons.apache.org/proper/commons-lang/apidocs/allclasses-noframe.html
+ * XxxBuilder
  *
  * @author ljh
  * created on 2019/8/8 19:39
@@ -20,21 +15,20 @@ import java.math.BigDecimal;
 public class BuilderDemo {
 
     public static void main(String[] args) {
-        TaxReturn tr = new TaxReturn("012-68-3242", 1998, "O'Brien", new BigDecimal("43000.00"));
-        System.out.println(tr.toString());  // jar.apache.commons.lang.builder.TaxReturn@763d9750[ssn=012-68-3242,year=1998,lastName=O'Brien]
-        System.out.println(tr.toString2()); // jar.apache.commons.lang.builder.TaxReturn@763d9750[
-                                            //   ssn=012-68-3242
-                                            //  year=1998
-                                            //  lastName=O'Brien
-                                            //  taxableIncome=43000
-                                            // ]
+        TaxReturn taxReturn = new TaxReturn().setSsn("012-68-3242").setYear(1998)
+                .setLastName("O'Brien").setTaxableIncome(new BigDecimal("43000.00"));
+        System.out.println(taxReturn.toString());   // jar.apache.commons.lang.builder.TaxReturn@763d9750[ssn=012-68-3242,year=1998,lastName=O'Brien]
+        System.out.println(taxReturn.toString2());  // jar.apache.commons.lang.builder.TaxReturn@763d9750[
+        //   ssn=012-68-3242
+        //  year=1998
+        //  lastName=O'Brien
+        //  taxableIncome=43000
+        // ]
 
     }
 
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
+    @Data
+    @Accessors(chain = true)
     static class TaxReturn {
         private String ssn;
         private int year;
@@ -43,6 +37,8 @@ public class BuilderDemo {
 
         /**
          * ToStringBuilder
+         * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/ToStringBuilder.html
+         * ToStringBuilder 和 ToStringStyle：https://www.cnblogs.com/E-star/p/3725916.html
          */
         public String toString() {
             return new ToStringBuilder(this)
@@ -58,6 +54,7 @@ public class BuilderDemo {
 
         /**
          * HashCodeBuilder
+         * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html
          */
         public int hashCode() {
             return new HashCodeBuilder(3, 7)
@@ -72,6 +69,7 @@ public class BuilderDemo {
 
         /**
          * EqualsBuilder
+         * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html
          */
         public boolean equals(Object obj) {
             if (this == obj) {
@@ -90,6 +88,7 @@ public class BuilderDemo {
 
         /**
          * CompareToBuilder
+         * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/CompareToBuilder.html
          */
         public int compareTo(TaxReturn obj) {
             return new CompareToBuilder()

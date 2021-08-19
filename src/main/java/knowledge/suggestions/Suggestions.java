@@ -4,14 +4,13 @@ import knowledge.suggestions.Family.Daughter;
 import knowledge.suggestions.Family.Son;
 import l.demo.Demo;
 import l.demo.Person;
-import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import javax.script.*;
 import java.io.*;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
@@ -22,8 +21,6 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 /**
@@ -619,28 +616,23 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test073() {
-        p("----- Comparable -----");
         List<Employee> list = new ArrayList<>(5);
         // 一个老板
-        list.add(new Employee(1001, "张三", Position.BOSS));
+        list.add(new Employee().setId(1001).setName("张三").setPosition(Position.BOSS));
         // 两个经理
-        list.add(new Employee(1006, "赵七", Position.MANAGER));
-        list.add(new Employee(1003, "王五", Position.MANAGER));
+        list.add(new Employee().setId(1006).setName("赵七").setPosition(Position.MANAGER));
+        list.add(new Employee().setId(1003).setName("王五").setPosition(Position.MANAGER));
         // 两个职员
-        list.add(new Employee(1002, "李四", Position.STAFF));
-        list.add(new Employee(1005, "马六", Position.STAFF));
+        list.add(new Employee().setId(1002).setName("李四").setPosition(Position.STAFF));
+        list.add(new Employee().setId(1005).setName("马六").setPosition(Position.STAFF));
 
-        // 按职位排序，再按工号排序
+        p("----- Comparable -----");
         Collections.sort(list);
-        for (Employee e : list) {
-            p(e);
-        }
+        list.forEach(System.out::println);
 
         p("----- Comparator -----");
         list.sort(new PositionComparator());
-        for (Employee e : list) {
-            p(e);
-        }
+        list.forEach(System.out::println);
     }
 
     /**
@@ -1342,6 +1334,8 @@ public class Suggestions extends Demo {
         // 6.覆写 Exception 的 fillInStackTrace()
         // 性能提升10倍以上
         class MyException extends Exception {
+            private static final long serialVersionUID = 4982421851007758674L;
+
             public Throwable fillInStackTrace() {
                 return this;
             }
@@ -1354,12 +1348,11 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test133() {
-        @Getter
-        @Setter
-        @AllArgsConstructor
+        @Data
+        @Accessors(chain = true)
         class Apple implements Cloneable {
             private String name;
-            private String weight;
+            private Double weight;
 
             public Object clone() {
                 try {
@@ -1373,17 +1366,17 @@ public class Suggestions extends Demo {
         final int maxLoops = 10 * 10000;
         int loops = 0;
         long start = System.nanoTime();
-        Apple apple = new Apple("苹果", "1.5");
+        Apple apple = new Apple().setName("苹果").setWeight(1.5);
         while (++loops < maxLoops) {
             apple.clone();
         }
         long mid = System.nanoTime();
-        p("clone() 生成对象耗时：" + (mid - start) + " ms");
+        p(String.format("clone() 生成对象耗时：%s ms", mid - start));
         while (--loops > 0) {
-            new Apple("苹果", "1.5");
+            new Apple().setName("苹果").setWeight(1.5);
         }
         long end = System.nanoTime();
-        p("new 生成对象耗时：" + (end - mid) + " ms");
+        p(String.format("new 生成对象耗时：%s ms", end - mid));
     }
 
     /* 建议137：调优 JVM 参数

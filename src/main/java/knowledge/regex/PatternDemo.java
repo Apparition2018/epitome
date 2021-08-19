@@ -1,11 +1,11 @@
 package knowledge.regex;
 
+import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static l.demo.Demo.p;
+import java.util.stream.Stream;
 
 /**
  * Pattern
@@ -68,7 +68,7 @@ import static l.demo.Demo.p;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class PatternDemo {
+public class PatternDemo extends Demo {
 
     /**
      * 用法一 Pattern.compile()
@@ -87,7 +87,7 @@ public class PatternDemo {
      * 用法二 Pattern.matches()
      */
     @Test
-    public void matcher() {
+    public void matches() {
         // static boolean    matches(String regex, CharSequence input)
         // 编译给定正则表达式并尝试将给定输入与其匹配
         p(Pattern.matches("a*b", "aab")); // true
@@ -105,12 +105,25 @@ public class PatternDemo {
     }
 
     /**
-     * String[]	            split(CharSequence input, int limit)
      * 围绕此模式的匹配拆分给定输入序列
      */
     @Test
     public void split() {
-        Pattern pattern = Pattern.compile(":");
-        p(pattern.split("boo:and:foo", 2)); // [boo, and:foo]
+        Pattern pattern = Pattern.compile("@");
+
+        // 一般写法
+        // String[]         split(CharSequence input[, int limit])
+        p(pattern.split(MY_EMAIL));                     // [88850180, 163.com]
+
+        // 流写法
+        // Stream<String>   splitAsStream(final CharSequence input)
+        p(pattern.splitAsStream(MY_EMAIL).toArray());   // [88850180, 163.com]
+    }
+
+    @Test
+    public void asPredicate() {
+        Pattern pattern = Pattern.compile(".*@163.com");
+        // Pattern → Predicate
+        Stream.of(MY_EMAIL, "123456@qq.com").filter(pattern.asPredicate()).forEach(System.out::println);
     }
 }

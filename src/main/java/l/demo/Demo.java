@@ -46,7 +46,7 @@ public class Demo {
             put(3, "C");
         }
     };
-    public static Map<Integer, String> map2 = new HashMap<Integer, String>(5) {
+    public static Map<Integer, String> map2 = new HashMap<Integer, String>(9) {
         private static final long serialVersionUID = -2963536074355318510L;
 
         {
@@ -161,9 +161,9 @@ public class Demo {
     /**
      * 模拟 Thread.sleep()，为了避免 Thread.sleep() 而需要捕获 InterruptedException 而带来的理解上的困惑
      */
-    public static void sleep(long millis, TimeUnit timeUnit) {
+    public static void sleep(long timeout, TimeUnit timeUnit) {
         long now = System.currentTimeMillis();
-        while (System.currentTimeMillis() - now < timeUnit.toMillis(millis)) {
+        while (System.currentTimeMillis() - now < timeUnit.toMillis(timeout)) {
             // Thread.onSpinWait(); // 需要升级到 JDK9
         }
     }
@@ -253,7 +253,7 @@ public class Demo {
         @Override
         public Thread newThread(@NonNull Runnable r) {
             Thread thread = new Thread(r);
-            thread.setName(map2.get(count.getAndIncrement()));
+            thread.setName("MyPool-" + map2.get(count.getAndIncrement()));
             return thread;
         }
     }

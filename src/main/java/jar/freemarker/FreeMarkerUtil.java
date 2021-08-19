@@ -65,7 +65,7 @@ public class FreeMarkerUtil {
      * @param params 数据对象
      * @param fName  模板文件
      */
-    public void sprint(Map<String, Object> params, String fName) {
+    public void sPrint(Map<String, Object> params, String fName) {
         try {
             Objects.requireNonNull(getTemplate(fName)).process(params, new PrintWriter(System.out));
         } catch (TemplateException | IOException e) {
@@ -79,7 +79,7 @@ public class FreeMarkerUtil {
      * @param params 数据对象
      * @param fName  模板文件
      */
-    public void fprint(Map<String, Object> params, String fName, String outPath) {
+    public void fPrint(Map<String, Object> params, String fName, String outPath) {
         try {
             Objects.requireNonNull(getTemplate(fName)).process(params, new FileWriter(outPath));
         } catch (TemplateException | IOException e) {

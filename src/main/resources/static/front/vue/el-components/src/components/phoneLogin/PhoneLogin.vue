@@ -38,7 +38,7 @@ export default {
       default: 60
     }
   },
-  data() {
+  data () {
     let checkPhone = (rule, value, callback) => {
       if (!value) {
         return callback(new Error('手机号不能为空'))
@@ -66,7 +66,7 @@ export default {
     }
   },
   methods: {
-    sendCode() {
+    sendCode () {
       // 1.手机号必须输入正确，如果输入不正确就提示
       this.$refs.ruleForm.validateField('phone', errorMessage => {
         if (errorMessage) {
@@ -77,7 +77,7 @@ export default {
           // 3.如果倒计时结束，按钮恢复可用状态，按钮文字变为重新发送，把倒数时间重置
           // 4.倒计时的过程中，按钮文字为多少s后重新发送
           let timer = setInterval(() => {
-            this.time --
+            this.time--
             this.btnText = `${this.time}s后重新发送`
             this.disabled = true
             if (this.time === 0) {
@@ -91,7 +91,7 @@ export default {
         }
       })
     },
-    phoneLogin() {
+    phoneLogin () {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
           this.$emit('submit')
@@ -101,7 +101,7 @@ export default {
       })
     }
   },
-  mounted() {
+  mounted () {
     this.time = this.countDown
   }
 }

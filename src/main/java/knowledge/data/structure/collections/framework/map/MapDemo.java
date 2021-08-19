@@ -1,6 +1,9 @@
 package knowledge.data.structure.collections.framework.map;
 
+import io.swagger.models.auth.In;
 import l.demo.Demo;
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -59,6 +62,60 @@ import java.util.*;
  * created on 2019/8/8 19:39
  */
 public class MapDemo extends Demo {
+
+    @Test
+    public void putIfAbsent() {
+        map.put(4, null);
+        p(map); // {1=A, 2=B, 3=C, 4=null}
+
+        // V    putIfAbsent(K key, V value)         k 不存在，或指定 k 的 v 为 null，才设置值
+        map.putIfAbsent(3, "c");
+        map.putIfAbsent(4, "d");
+        map.putIfAbsent(5, "e");
+        p(map); // {1=A, 2=B, 3=C, 4=d, 5=e}
+    }
+
+    /**
+     * put      设置指定值，并返回插入之前的值
+     * compute  设置并返回执行 BiFunction 之后的值
+     * <p>
+     * https://blog.csdn.net/qq_43679056/article/details/104976819
+     */
+    @Test
+    public void compute() {
+        p(map.put(1, "a")); // A
+        // k 存在时，BiFunction 返回值不为 null，则进行更新，否者删除
+        p(map.compute(2, (k, v) -> k + v)); // 2B
+        // k 不存在时，BiFunction 返回值不为 null，进行新增
+        p(map.compute(4, (k, v) -> null));  // null
+        // k 不存在时，不会进行新增
+        p(map.computeIfPresent(4, (k, v) -> k + v)); // null
+        // k 不存在或 v 为 null，BiFunction 才起作用
+        p(map.computeIfAbsent(4, (k) -> "D")); // D
+        p(map); // {4=D, 1=a, 2=2B, 3=C}
+    }
+
+    @Test
+    public void merge() {
+        @Data
+        @Accessors(chain = true)
+        class Student {
+            private int id;
+            private String subject;
+            private int score;
+        }
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(new Student().setId(1).setSubject("chinese").setScore(99));
+        studentList.add(new Student().setId(1).setSubject("math").setScore(100));
+        studentList.add(new Student().setId(1).setSubject("english").setScore(98));
+        studentList.add(new Student().setId(2).setSubject("chinese").setScore(85));
+        studentList.add(new Student().setId(2).setSubject("math").setScore(60));
+        studentList.add(new Student().setId(2).setSubject("english").setScore(100));
+
+        Map<Integer, Integer> studentMap = new HashMap<>();
+        studentList.forEach(student -> studentMap.merge(student.getId(), student.getScore(), Integer::sum));
+        System.out.println(studentMap); // {1=297, 2=245}
+    }
 
     /**
      * 阿里编程规约：

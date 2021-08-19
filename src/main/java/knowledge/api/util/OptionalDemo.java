@@ -14,8 +14,7 @@ import java.util.Optional;
  * 2.防止 NPE 是调用者的责任。即使被调用方法返回空集合或者空对象，对调用者来说，也并非高枕无忧，必须考虑到远程调用失败、序列化失败、运行时异常等场景返回 null 的情况；
  * <p>
  * https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html
- * https://www.cnblogs.com/xingzc/p/5778090.html
- * https://www.oschina.net/translate/understanding-accepting-and-leveraging-optional-in
+ * Optional 类深度解析：https://www.cnblogs.com/xingzc/p/5778090.html
  *
  * @author ljh
  * created on 2020/11/17 19:09

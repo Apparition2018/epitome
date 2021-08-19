@@ -181,9 +181,9 @@ public class OkHttpDemo extends Demo {
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
             Gist gist = gistJsonAdapter.fromJson(Objects.requireNonNull(response.body()).source());
-            for (Map.Entry<String, GistFile> entry : Objects.requireNonNull(gist).files.entrySet()) {
-                p(entry.getKey() + ": " + entry.getValue().content);
-            }
+            Objects.requireNonNull(gist).files.forEach((k, v) -> {
+                p(k + ": " + v.content);
+            });
         }
     }
 

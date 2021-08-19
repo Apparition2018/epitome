@@ -3,13 +3,20 @@ package knowledge.api.util.stream;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 import static l.demo.Demo.p;
 
 /**
  * IntStream
  * IntStream 支持顺序和并行聚合操作的 int 序列，类似的还有 LongStream, DoubleStream
+ * <p>
+ * 大部分 API 跟 Stream 一样 {@link StreamDemo}
+ * PrimitiveIterator.OfInt      iterator()
+ * Spliterator.OfInt            spliterator()
  * <p>
  * IntStream 用法全解：https://blog.csdn.net/qq_31865983/article/details/106443244
  * https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html
@@ -19,15 +26,6 @@ import static l.demo.Demo.p;
  */
 public class IntStreamDemo {
 
-    /**
-     * 大部分 API 跟 Stream 一样 {@link StreamDemo}
-     * <p>
-     * DoubleStream                 asDoubleStream()
-     * LongStream                   asLongStream()
-     * Stream<Integer>              boxed()
-     * PrimitiveIterator.OfInt      iterator()
-     * Spliterator.OfInt            spliterator()
-     */
     @Test
     public void testIntStream() {
         IntStream intStream;
@@ -43,5 +41,22 @@ public class IntStreamDemo {
         p(intStream.average());
         // sum()                                总和
         p(intStream.sum());
+    }
+
+    @Test
+    public void testToStream() {
+        IntStream intStream = IntStream.rangeClosed(1, 10);
+
+        // IntStream → Stream
+        Stream<String> stream1 = intStream.mapToObj(String::valueOf);
+        Stream<Integer> stream2 = intStream.boxed();
+
+        // IntStream → LongStream
+        LongStream longStream1 = intStream.asLongStream();
+        LongStream longStream2 = intStream.mapToLong(i -> (long) i);
+
+        // IntStream → DoubleStream
+        DoubleStream doubleStream1 = intStream.asDoubleStream();
+        DoubleStream doubleStream2 = intStream.mapToDouble(i -> (double) i);
     }
 }

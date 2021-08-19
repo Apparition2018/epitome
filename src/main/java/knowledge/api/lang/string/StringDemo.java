@@ -49,6 +49,7 @@ public class StringDemo extends Demo {
         String s = new String(bytes, 0, bytes.length, StandardCharsets.UTF_8);  // 解码
         p(s); // Hello World
 
+        s.chars().forEach(System.out::println);
 
         // static String	format([Locale l, ]String format, Object... args)
         // 使用指定的语言环境、格式字符串和参数返回一个格式化字符串
@@ -99,10 +100,6 @@ public class StringDemo extends Demo {
 
     }
 
-
-    /**
-     * 测试比较相关 API
-     */
     @Test
     public void compare() {
         // boolean	        contentEquals([CharSequence / StringBuffer cs])

@@ -28,8 +28,8 @@ import java.util.concurrent.locks.StampedLock;
  */
 public class StampedLockDemo {
 
-    private static StampedLock lock = new StampedLock();
-    private static Map<Integer, String> idMap = new HashMap<>();
+    private final StampedLock lock = new StampedLock();
+    private final Map<Integer, String> idMap = new HashMap<>();
 
     /**
      * 独占写

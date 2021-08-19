@@ -42,15 +42,15 @@ export default {
     }
   },
   methods: {
-   login() {
-     this.$refs.ruleForm.validate((valid) => {
-       if (valid) {
-         this.$emit('submit')
-       } else {
-         this.$emit('errHandle')
-       }
-     })
-   } 
+    login () {
+      this.$refs.ruleForm.validate((valid) => {
+        if (valid) {
+          this.$emit('submit')
+        } else {
+          this.$emit('errHandle')
+        }
+      })
+    }
   }
 }
 </script>
