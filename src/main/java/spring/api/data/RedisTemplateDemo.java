@@ -7,7 +7,7 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
-import springboot.Application;
+import springboot.EpitomeApplication;
 
 import javax.annotation.Resource;
 import java.lang.reflect.InvocationTargetException;
@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * created on 2021/5/26 15:05
  */
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = EpitomeApplication.class)
 public class RedisTemplateDemo extends Demo {
 
     private static final String KEY = "Person:1";

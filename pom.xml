@@ -443,7 +443,7 @@
                             <addClasspath>true</addClasspath>
                             <useUniqueVersions>false</useUniqueVersions>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>springboot.Application</mainClass>
+                            <mainClass>springboot.EpitomeApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

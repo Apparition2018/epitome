@@ -1,3 +1,5 @@
+package spring;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import springboot.Application;
+import springboot.EpitomeApplication;
 import springboot.controller.DemoController;
 
 /**
@@ -20,7 +22,7 @@ import springboot.controller.DemoController;
  * @author ljh
  * created on 2021/7/27 22:55
  */
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = EpitomeApplication.class)
 public class MockMvcTest {
 
     private MockMvc mockMvc;

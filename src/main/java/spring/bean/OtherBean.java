@@ -36,12 +36,14 @@ public class OtherBean {
     @Value("x,y,z.split(',')")
     private List<String> str;
 
-    @Value("#{BEAN.score}")     // 'BEAN' 为注册 Bean 的 id
+    // 'BEAN' 为注册 Bean 的 id
+    @Value("#{BEAN.score}")
     private String score;
 
-    @Value("${jdbc.password}")  // 要配置 <context:property-placeholder/>
+    // 要配置 <context:property-placeholder/>
+    @Value("${jdbc.password}")
     private String password;
-    
+
     @NumberFormat(pattern = "#,###")
     private double salary;
 

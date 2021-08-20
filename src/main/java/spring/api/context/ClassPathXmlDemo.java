@@ -72,7 +72,7 @@ public class ClassPathXmlDemo {
     @Test
     public void testDependencyInjection() {
         // set 注入
-        Student student = applicationContext.getBean("student", Student.class);
+        Student student = applicationContext.getBean("school", Student.class);
         p(student.getBirth()); // 2020-11-24 01:53:36
 
         // 构造器注入
@@ -105,7 +105,7 @@ public class ClassPathXmlDemo {
      */
     @Test
     public void testScope() {
-        p(applicationContext.getBean("student") == applicationContext.getBean("student"));  // false
+        p(applicationContext.getBean("school") == applicationContext.getBean("school"));  // false
         p(applicationContext.getBean("person") == applicationContext.getBean("person"));    // true
     }
 

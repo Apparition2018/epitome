@@ -22,10 +22,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableCaching
 @EnableAsync
-public class Application {
+public class EpitomeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(EpitomeApplication.class, args);
     }
 
 }
