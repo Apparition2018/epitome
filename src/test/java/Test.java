@@ -1,4 +1,3 @@
-// Spring Boot 2.x基础教程  http://blog.didispace.com/spring-boot-learning-2x/
 // WebFlux
 // spring-boot-dependencies 中的各个依赖
 // redis, rocketmq, mycat
@@ -7,6 +6,7 @@
 // 注册中心，配置中心 nacos
 // docker, k8s
 // uni-app
+// https://github.com/xkcoding/spring-boot-demo
 
 // 记一次完整的java项目压力测试：https://www.cnblogs.com/jpfss/p/11645793.html
 // https://www.jianshu.com/u/8bbac962b31a
@@ -30,8 +30,11 @@
 
 // https://quoters.apps.pcfone.io/api/random
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.thread.ThreadUtil;
 import l.demo.Demo;
+import l.demo.Person;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.Callable;

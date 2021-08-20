@@ -46,7 +46,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void configurePathMatch(PathMatchConfigurer configurer) {
         // 给匹配的 Controller 增加前缀
         configurer.addPathPrefix("mvc", p -> p.isInstance(SpringContextUtils.getBean(WebMvcController.class)));
-        WebMvcConfigurer.super.configurePathMatch(configurer);
+        configurer.setUseTrailingSlashMatch(true);
+        WebMvcConfigurer.super.configurePathMatch   (configurer);
     }
 
     @Value("${spring.mvc.static-path-pattern}")

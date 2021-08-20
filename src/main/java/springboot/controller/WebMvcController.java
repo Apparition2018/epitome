@@ -73,6 +73,7 @@ public class WebMvcController {
 
     /**
      * addFormatters
+     * 这里如果使用 @RequestBody 接收参数会使用 Jackson，不会使用配置的 Converter
      */
     @PostMapping("addFormatters")
     public User addFormatters(User user) {

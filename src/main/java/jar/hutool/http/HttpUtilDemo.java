@@ -85,7 +85,6 @@ public class HttpUtilDemo extends Demo {
      */
     @Test
     public void testHttp() {
-        // Restful
         HttpResponse response = HttpRequest.post(BAIDU_URL)
                 .form(BeanUtil.beanToMap(personList.get(0)))
                 .body(HELLO_WORLD)

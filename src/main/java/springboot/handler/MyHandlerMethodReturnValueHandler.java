@@ -4,11 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NonNull;
 import org.apache.hc.core5.http.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.AsyncHandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
+import springboot.controller.WebMvcController;
 import springboot.result.Result;
 
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +34,9 @@ public class MyHandlerMethodReturnValueHandler implements HandlerMethodReturnVal
 
     @Override
     public boolean supportsReturnType(MethodParameter returnType) {
-        return !returnType.getParameterType().equals(Result.class);
+        return returnType.getDeclaringClass().equals(WebMvcController.class) &&
+                !returnType.getDeclaringClass().equals(BasicErrorController.class) &&
+                !returnType.getParameterType().equals(Result.class);
     }
 
     @Override
