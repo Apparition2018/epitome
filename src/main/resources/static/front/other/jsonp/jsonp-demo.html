@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <base target="_blank">
+    <title>jsonp-demo</title>
+    <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body>
+<section class="code-wrap h450">
+    <div class="css-live-wrap w40p">
+        <div class="caption"><a href="https://www.runoob.com/json/json-jsonp.html">jsonp</a></div>
+        <div class="caption"><a href="https://www.cnblogs.com/dream0530/p/6179819.html">jsonp</a></div>
+        <div class="centered">
+            <div id="content"></div>
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        $(function () {
+            /*
+                简写形式，效果相同
+                $.getJSON("http://localhost:3333/jsonp/json?sid=1494&busiId=101&jsonpCallback=?", function (data) {
+                    $("#content").text("Result:" + data.result)
+                });
+            */
+
+            $.ajax({
+                type: "get",
+                url: "http://localhost:3333/jsonp/json",
+                // 数据类型为 jsonp
+                dataType: "jsonp",
+                // 服务端用于接收 callback 调用的 function 名的参数
+                jsonp: "jsonpCallback",
+                success: function (data) {
+                    $("#content").text("Result: " + data.result)
+                },
+                error: function () {
+                    alert('fail');
+                }
+            });
+        });
+    </script>
+</section>
+
+<section class="code-wrap h1000">
+    <div class="css-live-wrap w40p">
+        <div class="caption"><a href="https://www.cnblogs.com/xiaohuochai/p/6568039.html">搜索框</a></div>
+        <div class="centered">
+            <div class="box" id="box">
+                <div class="con">
+                    <input class="input" id="input" title="">
+                    <a target="_blank" id="btn" href="javascript:" class="btn"></a>
+                </div>
+                <ul class="list" id="list"></ul>
+            </div>
+        </div>
+    </div>
+    <style>
+        .box {
+            width: 336px;
+            height: 36px;
+            border: 2px solid black;
+        }
+
+        .con {
+            overflow: hidden;
+        }
+
+        .input {
+            float: left;
+            padding: 0 0 0 10px;
+            border: 0;
+            width: 290px;
+            height: 36px;
+            background-color: white !important;
+        }
+
+        .btn {
+            float: right;
+            width: 36px;
+            height: 36px;
+            background: url(https://secure.webtoolhub.com/static/resources/icons/set73/7ad35c4c.png) 0 -46px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .list {
+            position: absolute;
+            width: 336px;
+            border: 1px solid #e6e8e9;
+            overflow: hidden;
+            display: none;
+        }
+
+        .in {
+            line-height: 30px;
+            border-bottom: 1px solid white;
+            cursor: pointer;
+            text-indent: 1em;
+        }
+
+        .list .in:last-child {
+            margin-bottom: -1px;
+        }
+
+        .in:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script class="code w60p" contenteditable="true">
+        // 动态添加<script>元素
+        function loadScript (url) {
+            loadScript.mark = 'load';
+            const script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = url;
+            document.body.appendChild(script);
+        }
+
+        // 回调函数
+        function callback (data) {
+            if (data) {
+                const arr = data.s;
+                let html = '';
+                for (let i = 0, len = arr.length; i < len; i++) {
+                    html += "<li class='in'><a href='https://www.baidu.com/s?wd="
+                        + arr[i]
+                        + "' target='_blank' style='display:block'>"
+                        + arr[i] + "</a></li>"
+                }
+                list.innerHTML = html;
+            }
+        }
+
+        let input = document.getElementById('input');
+
+        // 搜索框键盘按键被松开时
+        input.onkeyup = function () {
+            if (this.value) {
+                if (input.data !== this.value) {
+                    btn.setAttribute('href', 'https://www.baidu.com/s?wd=' + this.value);
+                    const that = this;
+                    loadScript("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + that.value + "&&cb=callback");
+                }
+            } else {
+                list.innerHTML = '';
+            }
+            input.data = this.value;
+        };
+
+        // input，显示list
+        input.onclick = function (e) {
+            list.style.display = 'block';
+            // 取消冒泡的冒泡
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else {
+                e.cancelBubble = true;
+            }
+        };
+
+        // 点击文档任意区域，隐藏list
+        document.onclick = function () {
+            list.style.display = 'none';
+        }
+    </script>
+</section>
+</body>
+
+</html>

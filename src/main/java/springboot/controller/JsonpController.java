@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Jsonp：https://www.cnblogs.com/dream0530/p/6179819.html
+ * JSONP 跨域问题的解决方法：http://code-ken.github.io/2016/07/13/jsonp-json-ajax/
  * http://localhost:3333/front/other/jsonp/jsonp-demo3.html
  *
  * @author ljh
@@ -26,7 +26,8 @@ import java.util.Map;
 @Api("Jsonp")
 public class JsonpController {
 
-    @GetMapping("/base/json.do")
+    @GetMapping("/json")
+    @ApiOperation("返回 json")
     public void exchangeJson(HttpServletRequest request, HttpServletResponse response) {
         try {
             response.setContentType("text/plain");
