@@ -1,5 +1,7 @@
 package springboot.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,30 +18,37 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * http://localhost:3333/front/js/Web%20APIs/Fetch%20API/Fetch-API-demo.html
+ *
  * @author ljh
  * created on 2019/8/8 19:39
  */
 @Slf4j
 @RestController
 @RequestMapping("/fetch")
+@Api(tags = "Fetch-API")
 public class FetchController {
 
-    @RequestMapping("/string")
+    @PostMapping("/string")
+    @ApiOperation("传递普通类型的数据，如 String")
     public String string(@RequestParam String data) {
         return data;
     }
 
-    @RequestMapping("/json-clazz")
+    @PostMapping("/json-clazz")
+    @ApiOperation("传递 Json 类型的数据，接收方为 Bean")
     public Score jsonClazz(@RequestBody Score score) {
         return score;
     }
 
-    @RequestMapping("/json-map")
+    @PostMapping("/json-map")
+    @ApiOperation("传递 Json 类型的数据，接收方为 Map")
     public Map<String, String> jsonMap(@RequestBody Map<String, String> map) {
         return map;
     }
 
-    @RequestMapping("/upload-picture")
+    @PostMapping("/upload-picture")
+    @ApiOperation("上传单个文件")
     public String uploadPicture(@RequestParam("file") MultipartFile file) {
         try {
             if (!file.isEmpty()) {
@@ -56,7 +65,8 @@ public class FetchController {
         return "fail";
     }
 
-    @RequestMapping("/upload-pictures")
+    @PostMapping("/upload-pictures")
+    @ApiOperation("上传多个文件")
     public String uploadPictures(HttpServletRequest request) {
         try {
             List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
@@ -78,7 +88,8 @@ public class FetchController {
         return "fail";
     }
 
-    @RequestMapping("/cookie")
+    @PostMapping("/cookie")
+    @ApiOperation("发送 Cookie")
     public String cookie(@CookieValue(value = "cny", required = false) String cny, HttpServletRequest request) {
         String rtnString = "";
         Cookie[] cookies = request.getCookies();
@@ -86,7 +97,7 @@ public class FetchController {
             log.info("没有 cookie");
         } else {
             for (Cookie cookie : cookies) {
-                if ("cny".equals(cookie.getName()) && cny.equals(cookie.getValue())) {
+                if ("cny" .equals(cookie.getName()) && cny.equals(cookie.getValue())) {
                     log.info(cookie.getName() + ": " + cookie.getValue());
                     rtnString = cookie.getName() + ": " + cookie.getValue();
                 }

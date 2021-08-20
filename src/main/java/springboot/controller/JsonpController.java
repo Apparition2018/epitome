@@ -1,6 +1,9 @@
 package springboot.controller;
 
 import com.google.gson.Gson;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,17 +15,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * https://www.cnblogs.com/dream0530/p/6179819.html
- * @see static/other/jsonp/jsonp-demo3.html
+ * Jsonp：https://www.cnblogs.com/dream0530/p/6179819.html
+ * http://localhost:3333/front/other/jsonp/jsonp-demo3.html
  *
  * @author ljh
  * created on 2019/8/8 19:39
  */
-@RequestMapping("/jsonp")
 @RestController
+@RequestMapping("/jsonp")
+@Api("Jsonp")
 public class JsonpController {
 
-    @RequestMapping("/base/json.do")
+    @GetMapping("/base/json.do")
     public void exchangeJson(HttpServletRequest request, HttpServletResponse response) {
         try {
             response.setContentType("text/plain");
@@ -32,10 +36,10 @@ public class JsonpController {
 
             Map<String, String> map = new HashMap<>();
             map.put("result", "content");
-            String jsonStr = new Gson().toJson(map);
+            String json = new Gson().toJson(map);
             String jsonpCallback = request.getParameter("jsonpCallback");
             PrintWriter pw = response.getWriter();
-            pw.println(jsonpCallback + "(" + jsonStr + ")");
+            pw.println(jsonpCallback + "(" + json + ")");
             pw.flush();
             pw.close();
 

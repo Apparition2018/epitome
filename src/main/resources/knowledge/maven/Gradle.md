@@ -8,7 +8,7 @@
 3. [被误导的gradle使用本地maven仓库](https://blog.csdn.net/a386139471/article/details/107738615)
 4. [gradle配置全局镜像](https://www.jianshu.com/p/e1be573e3884)
 5. [idea每次打开gradle项目都要下载 gradle-xx-bin.zip](https://blog.csdn.net/weixin_50045980/article/details/108431388)
-6. [Gradle 关于Daemon的配置提高程序的编译速度](https://blog.csdn.net/changsimeng/article/details/62421202?utm_source=blogxgwz7)
+6. [Gradle 关于Daemon的配置提高程序的编译速度](https://blog.csdn.net/changsimeng/article/details/62421202)
 7. [Gradle依赖那些事](https://www.jianshu.com/p/a38904a10988)
 ---
 ## Groovy

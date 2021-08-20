@@ -14,7 +14,7 @@ public class RedisBitCase {
 
     /**
      * 活跃用户统计
-     * 使用Redis bitmap统计活跃用户：http://www.321332211.com/thread?topicId=221
+     * 使用 Redis bitmap 统计活跃用户：http://www.321332211.com/thread?topicId=221
      */
     static class ActiveUserStats {
 

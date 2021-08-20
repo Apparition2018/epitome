@@ -175,7 +175,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // addResourceLocations     设置资源位置
         registry.addResourceHandler("/webjars/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/META-INF/resources/webjars/");
         registry.addResourceHandler(staticPathPatterns).addResourceLocations(StringUtils.split(staticLocations, ","));
-        // Swagger3：http://localhost:3333/swagger-ui/index.html
         registry.addResourceHandler("/swagger-ui/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/META-INF/resources/webjars/springfox-swagger-ui/");
         WebMvcConfigurer.super.addResourceHandlers(registry);
     }
@@ -198,7 +197,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 // 设置允许的方法
                 .allowedMethods("*")
                 // 是否允许证书
-                .allowCredentials(false)
+                .allowCredentials(true)
                 // 跨域允许时间
                 .maxAge(3600);
         WebMvcConfigurer.super.addCorsMappings(registry);

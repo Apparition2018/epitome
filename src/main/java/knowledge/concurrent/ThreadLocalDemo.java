@@ -14,9 +14,9 @@ import java.util.List;
  * 3.进行事务操作，用于存储线程事务信息
  * 4.数据库连接，Session 会话管理
  * <p>
- * 知道ThreadLocal嘛？谈谈你对它的理解？：https://baijiahao.baidu.com/s?id=1653790035315010634
- * ThreadLocal作用、场景、原理 - 简书：https://www.jianshu.com/p/6fc3bba12f38
- * 说说线程封闭与ThreadLocal的关系：https://blog.csdn.net/qq_33589510/article/details/105071141
+ * 知道 ThreadLocal 嘛？谈谈你对它的理解？：https://baijiahao.baidu.com/s?id=1653790035315010634
+ * ThreadLocal 作用、场景、原理 - 简书：https://www.jianshu.com/p/6fc3bba12f38
+ * 说说线程封闭与 ThreadLocal 的关系：https://blog.csdn.net/qq_33589510/article/details/105071141
  *
  * @author ljh
  * created on 2020/11/6 12:55

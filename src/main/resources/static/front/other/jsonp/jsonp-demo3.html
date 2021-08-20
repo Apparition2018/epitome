@@ -8,19 +8,23 @@
 </head>
 <script type="text/javascript">
 	$(function () {
-		/*  	// 简写形式，效果相同  
-				$.getJSON("http://localhost:8088/jsonp/base/json.do?sid=1494&busiId=101&jsonpCallback=?",
-					function(data){  
-						$("#showcontent").text("Result:" + data.result)  
-				});   */
+		/*
+			简写形式，效果相同
+			$.getJSON("http://localhost:3333/jsonp/base/json.do?sid=1494&busiId=101&jsonpCallback=?",
+				function(data){
+					$("#content").text("Result:" + data.result)
+			});
+		*/
 
 		$.ajax({
 			type: "get",
-			url: "http://localhost:8088/jsonp/base/json.do?sid=1494&busiId=101",
-			dataType: "jsonp", // 数据类型为jsonp  
-			jsonp: "jsonpCallback", // 服务端用于接收callback调用的function名的参数  
+			url: "http://localhost:3333/jsonp/base/json.do?sid=1494&busiId=101",
+			// 数据类型为 jsonp
+			dataType: "jsonp",
+			// 服务端用于接收 callback 调用的 function 名的参数
+			jsonp: "jsonpCallback",
 			success: function (data) {
-				$("#showcontent").text("Result:" + data.result)
+				$("#content").text("Result: " + data.result)
 			},
 			error: function () {
 				alert('fail');
@@ -30,7 +34,7 @@
 </script>
 
 <body>
-	<div id="showcontent">Result:</div>
+	<div id="content">Result:</div>
 </body>
 
 </html>

@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 /**
- * Spring Boot 2.x基础教程：构建RESTful API与单元测试：https://blog.didispace.com/spring-boot-learning-21-2-1/
+ * 构建 RESTful API 与单元测试：https://blog.didispace.com/spring-boot-learning-21-2-1/
  *
  * @author ljh
  * created on 2021/8/20 10:19
