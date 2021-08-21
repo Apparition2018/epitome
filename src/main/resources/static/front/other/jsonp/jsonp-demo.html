@@ -13,28 +13,21 @@
 <body>
 <section class="code-wrap h450">
     <div class="css-live-wrap w40p">
-        <div class="caption"><a href="https://www.runoob.com/json/json-jsonp.html">jsonp</a></div>
-        <div class="caption"><a href="https://www.cnblogs.com/dream0530/p/6179819.html">jsonp</a></div>
+        <div class="caption"><a href="https://zhuanlan.zhihu.com/p/146909895">$.ajax() 发送 jsonp 请求</a></div>
+        <div class="caption"><a href="https://www.jquery123.com/jQuery.ajax/">$.ajax() 的参数 jsonp 和 jsonpCallback</a></div>
         <div class="centered">
-            <div id="content"></div>
+            <div id="content">Result:</div>
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
         $(function () {
-            /*
-                简写形式，效果相同
-                $.getJSON("http://localhost:3333/jsonp/json?sid=1494&busiId=101&jsonpCallback=?", function (data) {
-                    $("#content").text("Result:" + data.result)
-                });
-            */
-
             $.ajax({
                 type: "get",
                 url: "http://localhost:3333/jsonp/json",
-                // 数据类型为 jsonp
+                // 以 JSONP 的方式载入 JSON 数据块
                 dataType: "jsonp",
-                // 服务端用于接收 callback 调用的 function 名的参数
-                jsonp: "jsonpCallback",
+                // 在一个 jsonp 请求中重写回调函数的名字，默认 callback
+                jsonp: "callback",
                 success: function (data) {
                     $("#content").text("Result: " + data.result)
                 },
@@ -42,6 +35,11 @@
                     alert('fail');
                 }
             });
+
+            // 简写形式
+            // $.getJSON("http://localhost:3333/jsonp/json?callback=?", function (data) {
+            //     $("#content").text("Result: " + data.result)
+            // });
         });
     </script>
 </section>
@@ -55,8 +53,8 @@
                     <input class="input" id="input" title="">
                     <a target="_blank" id="btn" href="javascript:" class="btn"></a>
                 </div>
-                <ul class="list" id="list"></ul>
             </div>
+            <ul class="list" id="list"></ul>
         </div>
     </div>
     <style>
@@ -72,9 +70,9 @@
 
         .input {
             float: left;
-            padding: 0 0 0 10px;
+            padding: 0 0 0 12px;
             border: 0;
-            width: 290px;
+            width: 288px;
             height: 36px;
             background-color: white !important;
         }
@@ -86,33 +84,32 @@
             background: url(https://secure.webtoolhub.com/static/resources/icons/set73/7ad35c4c.png) 0 -46px;
         }
 
-        a {
+        .list {
+            position: absolute;
+            display: none;
+            margin: 0;
+            padding: 0;
+            width: 336px;
+            font-size: 13px;
+            border: 2px solid black;
+            border-top: 0;
+            list-style: none;
+            overflow: hidden;
+        }
+
+        .list a {
             color: inherit;
             text-decoration: none;
         }
 
-        ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .list {
-            position: absolute;
-            width: 336px;
-            border: 1px solid #e6e8e9;
-            overflow: hidden;
-            display: none;
-        }
-
         .in {
-            line-height: 30px;
+            line-height: 33px;
             border-bottom: 1px solid white;
             cursor: pointer;
             text-indent: 1em;
         }
 
-        .list .in:last-child {
+        .in:last-child {
             margin-bottom: -1px;
         }
 

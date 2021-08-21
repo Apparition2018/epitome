@@ -1,11 +1,13 @@
 package springboot.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import springboot.listener.OnlineNumberListener;
+import springboot.listener.OnlineNumberListener.HostInfo;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -16,12 +18,14 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/online")
+@Api(tags = "Online")
 public class OnlineController {
 
     @SuppressWarnings("unchecked")
-    @RequestMapping("/number")
-    public String online(HttpServletRequest request) {
-        List<OnlineNumberListener.HostInfo> hostInfoList = (List<OnlineNumberListener.HostInfo>) request.getSession().getServletContext().getAttribute("hostInfoList");
+    @GetMapping("")
+    @ApiOperation("获取在线人数")
+    public String count(HttpServletRequest request) {
+        List<HostInfo> hostInfoList = (List<HostInfo>) request.getSession().getServletContext().getAttribute("hostInfoList");
         return "count : " + hostInfoList.size();
     }
 }

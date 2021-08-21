@@ -9,43 +9,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * JSONP 跨域问题的解决方法：http://code-ken.github.io/2016/07/13/jsonp-json-ajax/
- * http://localhost:3333/front/other/jsonp/jsonp-demo3.html
+ * Jsonp 的两个参数 jsonp 和 jsonpCallback：https://www.cnblogs.com/yeminglong/archive/2013/06/24/3152976.html
+ * @link {http://localhost:3333/front/other/jsonp/jsonp-demo.html}
  *
  * @author ljh
  * created on 2019/8/8 19:39
  */
 @RestController
 @RequestMapping("/jsonp")
-@Api("Jsonp")
+@Api(tags = "Jsonp")
 public class JsonpController {
 
     @GetMapping("/json")
-    @ApiOperation("返回 json")
-    public void exchangeJson(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            response.setContentType("text/plain");
-            response.setHeader("Pragma", "No-cache");
-            response.setHeader("Cache-Control", "no-cache");
-            response.setDateHeader("Expires", 0);
-
-            Map<String, String> map = new HashMap<>();
-            map.put("result", "content");
-            String json = new Gson().toJson(map);
-            String jsonpCallback = request.getParameter("jsonpCallback");
-            PrintWriter pw = response.getWriter();
-            pw.println(jsonpCallback + "(" + json + ")");
-            pw.flush();
-            pw.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @ApiOperation("获取回调函数")
+    public String callbackJson(HttpServletRequest request) {
+        Map<String, String> map = new HashMap<>();
+        map.put("result", "Arsenal");
+        String json = new Gson().toJson(map);
+        String callback = request.getParameter("callback");
+        return String.format("%s(%s)", callback, json);
     }
 }

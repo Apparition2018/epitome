@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!-- iframe 的缺点：
+		1.iframe 会阻塞主页面的 onload 事件；
+		2.搜索引擎的检索程序无法解读这种页面，不利于 SEO；
+		3.iframe 和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。
+
+	如果需要使用 iframe，最好是通过 javascript 动态给 iframe 添加 src 属性值，这样可以绕开以上两个问题。 -->
 <html lang="en">
 
 <head>
@@ -6,8 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>iframe-demo</title>
-1    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
+    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 
 <body>
@@ -56,6 +64,43 @@
             font-style: normal;
         }
     </style>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">使用 Javascript 演示父页面和 iframe 主页面元素获取</div>
+        <div class="centered">
+            <label id='parent'>父页面：</label>
+            <input id='input' type="text" value="1" title=""/>
+            <button onclick="childPlus();">子页+1</button>
+            <iframe id="child" src="child.html"></iframe>
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        function childPlus() {
+            let child = document.getElementById('child').contentWindow;
+            const value = child.document.querySelector('input').value;
+            child.document.querySelector('input').value = parseInt(value) + 1 + "";
+        }
+    </script>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">使用 jQuery 演示父页面和 iframe 主页面元素获取</div>
+        <div class="centered">
+            <label id='parent2'>父页面：</label>
+            <input id='input2' type="text" value="1" title=""/>
+            <button onclick="child2Plus();">子页+1</button>
+            <iframe id="child2" src="child2.html"></iframe>
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        function child2Plus() {
+            const value = $('#child2').contents().find('input')[0].value;
+            $('#child2').contents().find('input')[0].value = parseInt(value) + 1;
+        }
+    </script>
 </section>
 </body>
 

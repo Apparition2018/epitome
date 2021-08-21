@@ -157,7 +157,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * 7.添加静态处理
      * extends WebMvcConfigurationSupport 会使默认配置失效，需重写 addResourceHandlers
      * implements WebMvcConfigurer 则不需要，在 application.yml 配置即可
-     * http://localhost:3333/img/Event-Y.jpg
+     * @link {http://localhost:3333/img/Event-Y.jpg}
      * <p>
      * webjars 默认映射规则：/webjars/** ==> classpath:/META-INF/resources/webjars/
      * 静态资源默认映射规则：/** ==> classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/

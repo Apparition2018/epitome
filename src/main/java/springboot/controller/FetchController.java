@@ -18,10 +18,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * http://localhost:3333/front/js/Web%20APIs/Fetch%20API/Fetch-API-demo.html
- *
  * @author ljh
  * created on 2019/8/8 19:39
+ * @link {http://localhost:3333/front/js/Web%20APIs/Fetch%20API/Fetch-API-demo.html}
  */
 @Slf4j
 @RestController
@@ -97,7 +96,7 @@ public class FetchController {
             log.info("没有 cookie");
         } else {
             for (Cookie cookie : cookies) {
-                if ("cny" .equals(cookie.getName()) && cny.equals(cookie.getValue())) {
+                if ("cny".equals(cookie.getName()) && cny.equals(cookie.getValue())) {
                     log.info(cookie.getName() + ": " + cookie.getValue());
                     rtnString = cookie.getName() + ": " + cookie.getValue();
                 }

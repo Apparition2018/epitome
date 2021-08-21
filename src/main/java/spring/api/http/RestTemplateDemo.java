@@ -117,7 +117,6 @@ public class RestTemplateDemo extends Demo {
                 responseEntity = restTemplate.postForEntity(url, multiValueMap, Student.class);
                 break;
             case 3:
-
                 // http://localhost:3333/demo/post3
                 url = DEMO_URL + "post3";
                 responseEntity = restTemplate.postForEntity(url, map, Student.class);

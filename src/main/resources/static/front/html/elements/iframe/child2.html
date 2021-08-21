@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<!-- 使用jQuery获取iframe的元素 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Child</title>
+<title>iframe-child2</title>
 </head>
 <body>
 	<label id='child'>子页面：</label>
@@ -13,8 +12,8 @@
 	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript">
 		function parentPlus() {
-			const value = $('input', parent.document)[0].value;
-			$('input', parent.document)[0].value = parseInt(value) +1;
+			const value = $('#input2', parent.document)[0].value;
+			$('#input2', parent.document)[0].value = parseInt(value) +1;
 		}
 	</script>
 </body>

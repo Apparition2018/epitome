@@ -7,13 +7,9 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.ApiKey;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static l.demo.Demo.MY_EMAIL;
 import static l.demo.Demo.MY_NAME;
@@ -21,14 +17,15 @@ import static l.demo.Demo.MY_NAME;
 /**
  * SwaggerConfig
  * 使用 Swagger2 构建强大的 API 文档：https://blog.didispace.com/spring-boot-learning-21-2-2/
- * Swagger2 与 Swagger3 的区别：https://blog.csdn.net/qq_42375133/article/details/115692716
+ * springfox2 与 springfox3 的区别：https://blog.csdn.net/qq_42375133/article/details/115692716
+ * Swagger3 (Open API 3)：https://blog.csdn.net/qq_35425070/article/details/105347336
  *
  * @author ljh
  * created on 2019/8/21 16:19
  */
 @EnableOpenApi
 @Configuration
-public class Swagger3Config {
+public class Swagger2Config {
 
     @Bean
     public Docket createRestApi() {
