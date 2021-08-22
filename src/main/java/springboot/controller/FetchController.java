@@ -25,7 +25,7 @@ import java.util.Map;
 @Slf4j
 @RestController
 @RequestMapping("/fetch")
-@Api(tags = "Fetch-API")
+@Api(tags = "Fetch")
 public class FetchController {
 
     @PostMapping("/string")

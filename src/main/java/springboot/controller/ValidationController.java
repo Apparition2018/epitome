@@ -1,5 +1,7 @@
 package springboot.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import l.demo.CompanyEnum;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,6 +38,7 @@ import java.util.Locale;
 @Validated
 @RestController
 @RequestMapping("/validation")
+@Api(tags = "Validation")
 public class ValidationController {
 
     private final MessageSource messageSource;

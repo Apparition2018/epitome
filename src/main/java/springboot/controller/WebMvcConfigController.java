@@ -1,5 +1,7 @@
 package springboot.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import l.demo.CompanyEnum;
 import l.demo.Person;
 import l.demo.Person.Student;
@@ -25,12 +27,13 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @RestController
-public class WebMvcController {
+@Api(tags = "WebMvcConfig")
+public class WebMvcConfigController {
 
     private final ApplicationContext applicationContext;
 
     @Autowired
-    public WebMvcController(ApplicationContext applicationContext) {
+    public WebMvcConfigController(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
@@ -38,6 +41,7 @@ public class WebMvcController {
      * configureContentNegotiation
      */
     @GetMapping("configureContentNegotiation")
+    @ApiOperation("配置内容协议")
     public Student configureContentNegotiation() {
         return new Student(1, "ljh");
     }
@@ -48,11 +52,12 @@ public class WebMvcController {
      * @param resultType 1:asyncVoid 2:asyncResult
      */
     @GetMapping("configureAsyncSupport")
+    @ApiOperation("配置异步")
     public String configureAsyncSupport(int resultType) throws ExecutionException, InterruptedException {
         if (resultType == 1) {
-            applicationContext.getBean(WebMvcController.class).asyncVoid();
+            applicationContext.getBean(WebMvcConfigController.class).asyncVoid();
         } else {
-            Future<Student> asyncResult = applicationContext.getBean(WebMvcController.class).asyncResult();
+            Future<Student> asyncResult = applicationContext.getBean(WebMvcConfigController.class).asyncResult();
             log.info("{}: {}", Thread.currentThread().getName(), asyncResult.get());
         }
         return "OK";
@@ -76,6 +81,7 @@ public class WebMvcController {
      * 这里如果使用 @RequestBody 接收参数会使用 Jackson，不会使用配置的 Converter
      */
     @PostMapping("addFormatters")
+    @ApiOperation("添加格式化器")
     public User addFormatters(User user) {
         return user;
     }
@@ -93,6 +99,7 @@ public class WebMvcController {
      * addArgumentResolvers
      */
     @PostMapping("addArgumentResolvers")
+    @ApiOperation("添加参数解析器")
     public Person addArgumentResolvers(Person person) {
         return person;
     }

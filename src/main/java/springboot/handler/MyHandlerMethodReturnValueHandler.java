@@ -10,7 +10,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.AsyncHandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
-import springboot.controller.WebMvcController;
+import springboot.controller.WebMvcConfigController;
 import springboot.result.Result;
 
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +34,7 @@ public class MyHandlerMethodReturnValueHandler implements HandlerMethodReturnVal
 
     @Override
     public boolean supportsReturnType(MethodParameter returnType) {
-        return returnType.getDeclaringClass().equals(WebMvcController.class) &&
+        return returnType.getDeclaringClass().equals(WebMvcConfigController.class) &&
                 !returnType.getDeclaringClass().equals(BasicErrorController.class) &&
                 !returnType.getParameterType().equals(Result.class);
     }

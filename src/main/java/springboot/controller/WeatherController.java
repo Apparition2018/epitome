@@ -2,13 +2,18 @@ package springboot.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -23,9 +28,11 @@ import java.util.Objects;
 @Slf4j
 @Controller
 @RequestMapping("/weather")
+@Api(tags = "jQuery-pjax")
 public class WeatherController {
 
-    @RequestMapping(value = "/{city}", method = RequestMethod.GET)
+    @GetMapping(value = "/{city}")
+    @ApiOperation("获取城市天气")
     public String index(@PathVariable String city, HttpServletRequest req, Model model) {
         // pjax 请求
         if (req.getHeader("X-PJAX") != null) {
@@ -39,8 +46,9 @@ public class WeatherController {
         return "weather";
     }
 
-    @RequestMapping(value = "/pjax/{city}", method = RequestMethod.GET)
+    @GetMapping(value = "/pjax/{city}")
     @ResponseBody
+    @ApiOperation("获取城市天气(pjax)")
     public String testPjax(@PathVariable String city) {
         return getCityWeather(city);
     }

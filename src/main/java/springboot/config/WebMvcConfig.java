@@ -16,7 +16,7 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.*;
-import springboot.controller.WebMvcController;
+import springboot.controller.WebMvcConfigController;
 import springboot.converter.IntegerToEnumConverterFactory;
 import springboot.converter.StringToEnumConverterFactory;
 import springboot.formatter.BooleanFormatAnnotationFormatterFactory;
@@ -45,7 +45,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
         // 给匹配的 Controller 增加前缀
-        configurer.addPathPrefix("mvc", p -> p.isInstance(SpringContextUtils.getBean(WebMvcController.class)));
+        configurer.addPathPrefix("mvc", p -> p.isInstance(SpringContextUtils.getBean(WebMvcConfigController.class)));
         configurer.setUseTrailingSlashMatch(true);
         WebMvcConfigurer.super.configurePathMatch   (configurer);
     }
