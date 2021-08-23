@@ -49,6 +49,7 @@ public class ValidationController {
     }
 
     @GetMapping("/bindingResult")
+    @ApiOperation("BindingResult")
     public String bindingResult(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             StringBuilder msg = new StringBuilder();
@@ -69,28 +70,33 @@ public class ValidationController {
     }
 
     @GetMapping(value = "/bindException")
+    @ApiOperation("BindException")
     public Result<User> bindException(@Valid User user) {
         return Result.success(user);
     }
 
     @PostMapping("/methodArgumentNotValidException")
+    @ApiOperation("MethodArgumentNotValidException")
     public Result<User> methodArgumentNotValidException(@Valid @RequestBody User user) {
         return Result.success(user);
     }
 
     @GetMapping("/constraintViolationException")
+    @ApiOperation("ConstraintViolationException")
     public Result<String> constraintViolationException(@NotBlank(message = "用户名不能为空") String name,
                                                        @NotEmpty(message = "密码不能为空") String pwd) {
         return Result.success(name + ":" + pwd);
     }
 
     @GetMapping("/missingServletRequestParameterException")
+    @ApiOperation("MissingServletRequestParameterException")
     public Result<String> missingServletRequestParameterException(@RequestParam String name,
                                                                   @RequestParam String pwd) {
         return Result.success(name + ":" + pwd);
     }
 
     @GetMapping("/methodArgumentTypeMismatchException")
+    @ApiOperation("MethodArgumentTypeMismatchException")
     public Result<Date> methodArgumentTypeMismatchException(Date date) {
         return Result.success(date);
     }

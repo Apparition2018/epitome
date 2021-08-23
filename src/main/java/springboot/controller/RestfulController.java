@@ -28,14 +28,14 @@ public class RestfulController {
 
     private final Map<Integer, Person> personMap = new ConcurrentHashMap<>();
 
-    @PostMapping("")
+    @PostMapping
     @ApiOperation("新增人员")
     public String postPerson(@RequestBody Person person) {
         personMap.put(person.getId(), person);
         return "success";
     }
 
-    @GetMapping("")
+    @GetMapping
     @ApiOperation("获取人员列表")
     public List<Person> getPersonList(@RequestParam(required = false) String keyword) {
         if (StringUtils.isNotEmpty(keyword)) {

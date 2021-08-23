@@ -22,7 +22,7 @@ import java.util.List;
 public class OnlineController {
 
     @SuppressWarnings("unchecked")
-    @GetMapping("")
+    @GetMapping
     @ApiOperation("获取在线人数")
     public String count(HttpServletRequest request) {
         List<HostInfo> hostInfoList = (List<HostInfo>) request.getSession().getServletContext().getAttribute("hostInfoList");
