@@ -36,6 +36,7 @@ import cn.hutool.core.thread.ThreadUtil;
 import l.demo.Demo;
 import l.demo.Person;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletionService;
@@ -46,8 +47,10 @@ import java.util.concurrent.CompletionService;
 public class Test extends Demo {
 
     public static void main(String[] args) throws Exception {
-        String s = "a-c";
-        System.out.println(s.contains("-"));
+        Person person = new Person().setId(1).setName("A");
+        Person person2 = new Person().setName("B");
+        BeanUtil.copyProperties(person2, person, CopyOptions.create(Person.class, true));
+        System.err.println(person);
     }
 
 }

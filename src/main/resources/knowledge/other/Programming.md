@@ -34,7 +34,7 @@
 ## API 设计
 >### RESTful API
 >1. [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
->2. [RESTful API 最佳实践](https://www.ruanyi**feng.com/blog/2018/10/restful-api-best-practices.html)
+>2. [RESTful API 最佳实践](https://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
 >3. [RESTful API 登录设计](https://www.v2ex.com/t/118049)
 >4. [RESTful API 设计最佳实践](https://www.oschina.net/translate/best-practices-for-a-pragmatic-restful-api)
 >5. [RESTful API 的十个最佳实践](https://www.cnblogs.com/xiaoyaojian/p/4612503.html)
