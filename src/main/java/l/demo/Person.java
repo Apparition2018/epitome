@@ -1,5 +1,6 @@
 package l.demo;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -24,6 +25,7 @@ import java.util.Objects;
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
+@ApiModel(description = "人员")
 public class Person implements Comparable<Person>, Serializable {
     private static final long serialVersionUID = -8205619618185839521L;
     private Integer id;

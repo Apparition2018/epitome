@@ -2,6 +2,7 @@ package springboot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -23,12 +24,13 @@ import static l.demo.Demo.MY_NAME;
  * @author ljh
  * created on 2019/8/21 16:19
  */
+@Profile("druid")
 @EnableOpenApi
 @Configuration
 public class Swagger2Config {
 
     @Bean
-    public Docket createRestApi() {
+    public Docket createDocket() {
         return new Docket(DocumentationType.OAS_30)
                 .apiInfo(apiInfo())
                 .select()
@@ -37,7 +39,6 @@ public class Swagger2Config {
                 .build();
     }
 
-    // 构建 api 文档的详细信息函数
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("epitome")
