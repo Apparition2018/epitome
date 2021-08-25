@@ -18,6 +18,7 @@ import static l.demo.Demo.MY_NAME;
 /**
  * SwaggerConfig
  * 使用 Swagger2 构建强大的 API 文档：https://blog.didispace.com/spring-boot-learning-21-2-2/
+ * Swagger 接口分类与各元素排序问题详解：https://blog.didispace.com/spring-boot-learning-21-2-4/
  * springfox2 与 springfox3 的区别：https://blog.csdn.net/qq_42375133/article/details/115692716
  * Swagger3 (Open API 3)：https://blog.csdn.net/qq_35425070/article/details/105347336
  *

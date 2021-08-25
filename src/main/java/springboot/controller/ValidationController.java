@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
+ * JSR-303 实现请求参数校验：https://blog.didispace.com/spring-boot-learning-21-2-3/
  * springboot 使用 hibernate validator 校验：https://www.cnblogs.com/mr-yang-localhost/p/7812038.html
  * Spring Boot 参数校验：https://www.cnblogs.com/cjsblog/p/8946768.html
  * Hibernate Validator：https://docs.jboss.org/hibernate/validator/4.2/reference/zh-CN/html_single
