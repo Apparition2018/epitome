@@ -24,16 +24,16 @@ public class QuartzDemo extends Demo {
         // jobs 可以在 Scheduler 的 start() 方法前被调用
 
         // job1 每隔3秒执行一次
-        JobDetail jobdetail = JobBuilder.newJob(MyJob.class).withIdentity("job1", "group1").build();
+        JobDetail jobDetail = JobBuilder.newJob(MyJob.class).withIdentity("job1", "group1").build();
         CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "group1").withSchedule(CronScheduleBuilder.cronSchedule("0/3 * * * * ?")).build();
-        Date date = scheduler.scheduleJob(jobdetail, trigger);
-        log.info(jobdetail.getKey() + " 已被安排执行于: " + DATE_TIME_SDF.format(date) + "，并且以如下重复规则重复执行: " + trigger.getCronExpression());
+        Date date = scheduler.scheduleJob(jobDetail, trigger);
+        log.info(jobDetail.getKey() + " 已被安排执行于: " + DATE_TIME_SDF.format(date) + "，并且以如下重复规则重复执行: " + trigger.getCronExpression());
 
         // job2 每隔5秒执行一次
-        jobdetail = JobBuilder.newJob(MyJob.class).withIdentity("job2", "group1").build();
+        jobDetail = JobBuilder.newJob(MyJob.class).withIdentity("job2", "group1").build();
         trigger = TriggerBuilder.newTrigger().withIdentity("trigger2", "group1").withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?")).build();
-        date = scheduler.scheduleJob(jobdetail, trigger);
-        log.info(jobdetail.getKey() + " 已被安排执行于: " + DATE_TIME_SDF.format(date) + "，并且以如下重复规则重复执行: " + trigger.getCronExpression());
+        date = scheduler.scheduleJob(jobDetail, trigger);
+        log.info(jobDetail.getKey() + " 已被安排执行于: " + DATE_TIME_SDF.format(date) + "，并且以如下重复规则重复执行: " + trigger.getCronExpression());
 
         // 开始执行，start() 被调用后，计时器就开始工作，计时调度中允许放入多个 job
         scheduler.start();

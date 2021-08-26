@@ -72,7 +72,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.defaultContentType(MediaType.APPLICATION_JSON)
-                // 是否通过请求参数来决定返回数据，默认 false
+                // 是否通过请求参数来决定返回数据，默认 false；和 addReturnValueHandlers 冲突
                 .favorParameter(true)
                 .parameterName("mediaType")
                 .ignoreAcceptHeader(true);
@@ -268,6 +268,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     /**
      * 13.配置消息转换器
      * SpringMVC HttpMessageConverter 匹配规则：https://segmentfault.com/a/1190000012659486
+     * 如何扩展 XML 格式的请求和响应：https://blog.didispace.com/spring-boot-learning-21-2-8/
      * Http Message Converters with the Spring Framework：https://www.baeldung.com/spring-httpmessageconverter-rest
      * Binary Data Formats in a Spring REST API：https://www.baeldung.com/spring-rest-api-with-binary-data-formats
      * Returning Image/Media Data with Spring MVC：https://www.baeldung.com/spring-mvc-image-media-data

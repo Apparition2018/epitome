@@ -23,8 +23,9 @@ public class BooleanFormatter implements Formatter<Boolean> {
             return Arrays.asList(values).contains(s);
         } else {
             switch (s.toLowerCase()) {
-                case "true":
                 case "1":
+                case "true":
+                case "yes":
                 case "是":
                 case "有":
                     return true;

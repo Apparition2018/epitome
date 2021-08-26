@@ -19,7 +19,7 @@ import springboot.controller.DemoController;
 /**
  * MockMvc
  * MockMvc 详解：https://www.cnblogs.com/jpfss/p/10950904.html
- * SpringBoot2 + Junit5测试案例：https://www.cnblogs.com/xumBlog/p/12679134.html
+ * SpringBoot2 + Junit5 测试案例：https://www.cnblogs.com/xumBlog/p/12679134.html
  *
  * @author ljh
  * created on 2021/7/27 22:55
@@ -50,7 +50,7 @@ public class MockMvcTest {
                 .content("{\"id\":1,\"name\":\"张三\"}");
         mockMvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("success"));
+                .andDo(MockMvcResultHandlers.print());
 
         // getPersonList
         requestBuilder = MockMvcRequestBuilders.get("/persons")
@@ -65,7 +65,7 @@ public class MockMvcTest {
                 .content("{\"name\":\"张山\"}");
         mockMvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("success"));
+                .andDo(MockMvcResultHandlers.print());
 
         // getPerson
         requestBuilder = MockMvcRequestBuilders.get("/persons/1");
@@ -77,7 +77,7 @@ public class MockMvcTest {
         requestBuilder = MockMvcRequestBuilders.delete("/persons/1");
         mockMvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("success"));
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("")));
 
         requestBuilder = MockMvcRequestBuilders.get("/persons");
         mockMvc.perform(requestBuilder)

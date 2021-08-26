@@ -44,7 +44,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("epitome")
                 .description("epitome")
-                .contact(new Contact(MY_NAME, "localhost:3333/swagger-ui/index.html", MY_EMAIL))
+                .contact(new Contact(MY_NAME, "http://localhost:3333/swagger-ui/", MY_EMAIL))
                 .version("1.0.0")
                 .build();
     }

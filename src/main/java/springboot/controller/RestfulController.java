@@ -7,8 +7,8 @@ import io.swagger.annotations.ApiOperation;
 import l.demo.Person;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import springboot.exception.ServiceException;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,9 +30,9 @@ public class RestfulController {
 
     @PostMapping
     @ApiOperation("新增人员")
-    public String postPerson(@RequestBody Person person) {
+    public Person postPerson(@RequestBody Person person) {
         personMap.put(person.getId(), person);
-        return "success";
+        return person;
     }
 
     @GetMapping
@@ -52,18 +52,18 @@ public class RestfulController {
 
     @PutMapping("/{id}")
     @ApiOperation("修改人员")
-    public String putPerson(@PathVariable Integer id, @RequestBody Person newPerson) throws InvocationTargetException, IllegalAccessException {
+    public Person putPerson(@PathVariable Integer id, @RequestBody Person newPerson) {
         Person person = personMap.get(id);
-        if (person == null) return "id not exist";
+        if (person == null) throw new ServiceException("id not exist");
         BeanUtil.copyProperties(newPerson, person, CopyOptions.create(Person.class, true));
         personMap.put(id, person);
-        return "success";
+        return person;
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("删除人员")
-    public String deletePerson(@PathVariable Integer id) {
+    public Person deletePerson(@PathVariable Integer id) {
         personMap.remove(id);
-        return "success";
+        return personMap.get(id);
     }
 }
