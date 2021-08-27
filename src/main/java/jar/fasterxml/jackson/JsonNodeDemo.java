@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.*;
 import jar.fasterxml.jackson.entity.Person;
+import l.demo.Demo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +31,7 @@ import java.io.IOException;
  * created on 2021/7/18 16:55
  */
 @Slf4j
-public class JsonNodeDemo {
+public class JsonNodeDemo extends Demo {
     public static final String PERSON_JSON_FILE = System.getProperty("user.dir") + "/src/main/java/jar/fasterxml/jackson/person.json";
 
     @Test
@@ -87,16 +87,15 @@ public class JsonNodeDemo {
         Person person = new Person("ljh", 31);
         person.setDog(new Person.Dog().setName("旺财").setColor(Person.Color.WHITE));
 
-        ObjectMapper objectMapper = new ObjectMapper();
         // <T extends JsonNode> T   valueToTree(Object fromValue)
-        JsonNode jsonNode = objectMapper.valueToTree(person);
+        JsonNode jsonNode = jsonMapper.valueToTree(person);
         log.info(jsonNode.toPrettyString());
 
         // JsonNode                 readTree(File file)
-        jsonNode = objectMapper.readTree(new File(PERSON_JSON_FILE));
+        jsonNode = jsonMapper.readTree(new File(PERSON_JSON_FILE));
         log.info(jsonNode.toPrettyString());
 
-        jsonNode = objectMapper.readValue(new File(PERSON_JSON_FILE), JsonNode.class);
+        jsonNode = jsonMapper.readValue(new File(PERSON_JSON_FILE), JsonNode.class);
         log.info(jsonNode.toPrettyString());
 
         for (JsonNode nextJsonNode : jsonNode) {
@@ -112,7 +111,7 @@ public class JsonNodeDemo {
         JsonFactory jsonFactory = new JsonFactory();
         try (JsonGenerator jsonGenerator = jsonFactory.createGenerator(System.out, JsonEncoding.UTF8)) {
             // void                 writeTree(JsonGenerator g, JsonNode rootNode)
-            objectMapper.writeTree(jsonGenerator, jsonNode);
+            jsonMapper.writeTree(jsonGenerator, jsonNode);
         }
     }
 }

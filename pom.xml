@@ -194,6 +194,12 @@
             <version>${tika.version}</version>
         </dependency>
 
+        <!-- nimbus-jose-jwt -->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+        </dependency>
+
         <!-- httpclient5 -->
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>

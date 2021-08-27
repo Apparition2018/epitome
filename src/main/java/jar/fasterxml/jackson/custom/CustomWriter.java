@@ -22,6 +22,7 @@ import java.util.Objects;
  */
 @NoArgsConstructor
 public class CustomWriter extends VirtualBeanPropertyWriter {
+    private static final long serialVersionUID = 741672197096109788L;
 
     public CustomWriter(BeanPropertyDefinition propDef, Annotations contextAnnotations, JavaType declaredType) {
         super(propDef, contextAnnotations, declaredType);

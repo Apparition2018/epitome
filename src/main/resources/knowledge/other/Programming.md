@@ -63,11 +63,6 @@
 1. [什么是单点登录(原理与实现简介) ](https://www.cnblogs.com/wcwnina/p/9946623.html)
 2. [java sso单点登录实战_哔哩哔哩](https://www.bilibili.com/video/BV1hT4y157QF)
 ---
-## JWT
-1. [五分钟带你了解啥是JWT](https://zhuanlan.zhihu.com/p/86937325)
-2. [JWT 超详细分析](https://learnku.com/articles/17883)
-3. [jwt与token+redis，哪种方案更好用？](https://www.zhihu.com/question/274566992)
----
 ## Token
 1. [RESTful登录设计（基于Spring及Redis的Token鉴权）](www.scienjus.com/restful-token-authorization/)
 2. [session与token的区别](https://www.cnblogs.com/shijianchuzhenzhi/p/12317439.html)

@@ -42,7 +42,7 @@ import java.util.Map;
 @JsonAppend(attrs = {@JsonAppend.Attr(value = "height")},
         props = {@JsonAppend.Prop(value = CustomWriter.class, type = String.class, name = "version")})
 // 动态过滤
-@JsonFilter("myFilter")
+// @JsonFilter("customFilter")
 // 定义序列化跟属性名，需开启 mapper.enable(SerializationFeature.WRAP_ROOT_VALUE)
 @JsonRootName("P")
 // 属性名策略

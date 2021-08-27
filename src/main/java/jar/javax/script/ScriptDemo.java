@@ -2,7 +2,6 @@ package jar.javax.script;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import l.demo.Demo;
 import l.demo.Person;
 import org.junit.jupiter.api.Test;
@@ -81,7 +80,6 @@ public class ScriptDemo extends Demo {
         engine.eval(new FileReader(DEMO_PATH + "person.js"));
         if (engine instanceof Invocable) {
             Invocable invocable = (Invocable) engine;
-            JsonMapper jsonMapper = JsonMapper.builder().build();
             String json = jsonMapper.writeValueAsString(invocable.invokeFunction("listPerson"));
             List<Person> personList = new ArrayList<>(jsonMapper.readValue(json, new TypeReference<Map<Integer, Person>>() {
             }).values());

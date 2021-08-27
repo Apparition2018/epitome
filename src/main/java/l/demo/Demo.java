@@ -1,5 +1,6 @@
 package l.demo;
 
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.springframework.lang.NonNull;
 
 import java.io.File;
@@ -61,6 +62,7 @@ public class Demo {
             put(9, "I");
         }
     };
+    public static JsonMapper jsonMapper = JsonMapper.builder().build();
     public static CountDownLatch countDownLatch;
     public static final String HELLO_WORLD = "Hello World!";
     public static final String MY_NAME = "ljh";

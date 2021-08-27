@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import l.demo.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.assertj.core.util.Lists;
@@ -19,7 +19,7 @@ import java.util.List;
  * @author ljh
  * created on 2021/7/24 17:09
  */
-public class JsonTypeInfoDemo {
+public class JsonTypeInfoDemo extends Demo {
 
     @Test
     public void testJsonTypeInfo() throws JsonProcessingException {
@@ -27,14 +27,12 @@ public class JsonTypeInfoDemo {
         Rectangle rectangle = new Rectangle().setLength("12").setWidth("13");
         View view = new View().setSharps(Lists.newArrayList(circle, rectangle));
 
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        String json = objectMapper.writeValueAsString(view);
-        System.out.println(json);
+        String json = jsonMapper.writeValueAsString(view);
+        p(json);
         // {"sharps":[{"radius":"12"},{"length":"12","width":"13"}]}
 
-        view = objectMapper.readValue(json, View.class);
-        System.out.println(view);
+        view = jsonMapper.readValue(json, View.class);
+        p(view);
     }
 
     @Data
