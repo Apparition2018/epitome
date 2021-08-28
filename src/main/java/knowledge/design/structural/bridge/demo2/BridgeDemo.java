@@ -17,51 +17,52 @@ public class BridgeDemo {
         image.parseFile("demo.gif");
     }
 
-}
-
-class Matrix { // 各种格式的文件最终都被转化为像素矩阵
-    // 此处代码省略
-}
-
-abstract class Implementor {
-    // 显示像素矩阵 m
-    public void doPaint(Matrix m) {}
-}
-
-class WinImp extends Implementor {
-    // 调用 Windows 系统的绘制函数绘制像素矩阵
-    public void doPaint(Matrix m) {
-
-    }
-}
-
-class LinuxImp extends Implementor {
-    // 调用 Linux 系统的绘制函数绘制像素矩阵
-    public void doPaint(Matrix m) {
-    }
-}
-
-abstract class Image {
-    protected Implementor imp;
-
-    public void setImp(Implementor imp) {
-        this.imp = imp;
-    }
-
-    public abstract void parseFile(String fileName);
-}
-
-class BMPImage extends Image {
-    @Override
-    public void parseFile(String fileName) {
+    static class Matrix { // 各种格式的文件最终都被转化为像素矩阵
         // 此处代码省略
     }
-}
 
-class GIFImage extends Image {
-    @Override
-    public void parseFile(String fileName) {
-        Matrix m = new Matrix(); // 解析 BMP 文件并获得一个像素矩阵对象 （此处用 new Matrix() 模拟）
-        imp.doPaint(m);
+    static abstract class Implementor {
+        // 显示像素矩阵 m
+        public void doPaint(Matrix m) {
+        }
     }
+
+    static class WinImp extends Implementor {
+        // 调用 Windows 系统的绘制函数绘制像素矩阵
+        public void doPaint(Matrix m) {
+
+        }
+    }
+
+    static class LinuxImp extends Implementor {
+        // 调用 Linux 系统的绘制函数绘制像素矩阵
+        public void doPaint(Matrix m) {
+        }
+    }
+
+    static abstract class Image {
+        protected Implementor imp;
+
+        public void setImp(Implementor imp) {
+            this.imp = imp;
+        }
+
+        public abstract void parseFile(String fileName);
+    }
+
+    static class BMPImage extends Image {
+        @Override
+        public void parseFile(String fileName) {
+            // 此处代码省略
+        }
+    }
+
+    static class GIFImage extends Image {
+        @Override
+        public void parseFile(String fileName) {
+            Matrix m = new Matrix(); // 解析 BMP 文件并获得一个像素矩阵对象 （此处用 new Matrix() 模拟）
+            imp.doPaint(m);
+        }
+    }
+
 }

@@ -22,95 +22,95 @@ public class BuilderDemo {
         System.out.println(product.getPart2());
     }
 
-}
+    // 产品类
+    static class Product {
+        /**
+         * 定义一些关于产品的操作
+         */
+        private String part1;
+        private String part2;
 
-// 产品类
-class Product {
-    /**
-     * 定义一些关于产品的操作
-     */
-    private String part1;
-    private String part2;
+        public String getPart1() {
+            return part1;
+        }
 
-    public String getPart1() {
-        return part1;
+        public void setPart1(String part1) {
+            this.part1 = part1;
+        }
+
+        public String getPart2() {
+            return part2;
+        }
+
+        public void setPart2(String part2) {
+            this.part2 = part2;
+        }
     }
 
-    public void setPart1(String part1) {
-        this.part1 = part1;
+    // 抽象建造者类
+    interface Builder {
+        void buildPart1();
+
+        void buildPart2();
+
+        Product getResult();
     }
 
-    public String getPart2() {
-        return part2;
+    // 具体建造者类
+    static class ConcreteBuilder implements Builder {
+
+        private Product product = new Product();
+
+        /**
+         * 产品零件建造方法一
+         */
+        @Override
+        public void buildPart1() {
+            // 构建产品的第一个零件
+            product.setPart1("编号：9527");
+        }
+
+        /**
+         * 产品零件建造方法二
+         */
+        @Override
+        public void buildPart2() {
+            // 构建产品的第二个零件
+            product.setPart2("名称：XXX");
+        }
+
+        /**
+         * 产品返还方法
+         */
+        @Override
+        public Product getResult() {
+            return product;
+        }
     }
 
-    public void setPart2(String part2) {
-        this.part2 = part2;
-    }
-}
+    // 导演类
+    static class Director {
+        /**
+         * 持有当前需要使用的建造器对象
+         */
+        private Builder builder;
 
-// 抽象建造者类
-interface Builder {
-    void buildPart1();
+        /**
+         * 构造方法，传入建造器对象
+         *
+         * @param builder 建造器对象
+         */
+        Director(Builder builder) {
+            this.builder = builder;
+        }
 
-    void buildPart2();
-
-    Product getResult();
-}
-
-// 具体建造者类
-class ConcreteBuilder implements Builder {
-
-    private Product product = new Product();
-
-    /**
-     * 产品零件建造方法一
-     */
-    @Override
-    public void buildPart1() {
-        // 构建产品的第一个零件
-        product.setPart1("编号：9527");
+        /**
+         * 产品构造方法，负责调用各个零件建造方法
+         */
+        public void construct() {
+            builder.buildPart1();
+            builder.buildPart2();
+        }
     }
 
-    /**
-     * 产品零件建造方法二
-     */
-    @Override
-    public void buildPart2() {
-        // 构建产品的第二个零件
-        product.setPart2("名称：XXX");
-    }
-
-    /**
-     * 产品返还方法
-     */
-    @Override
-    public Product getResult() {
-        return product;
-    }
-}
-
-// 导演类
-class Director {
-    /**
-     * 持有当前需要使用的建造器对象
-     */
-    private Builder builder;
-
-    /**
-     * 构造方法，传入建造器对象
-     *
-     * @param builder 建造器对象
-     */
-    Director(Builder builder) {
-        this.builder = builder;
-    }
-
-    /**
-     * 产品构造方法，负责调用各个零件建造方法
-     */
-    public void construct() {
-        builder.buildPart1();
-        builder.buildPart2();
-    }
 }

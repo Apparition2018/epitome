@@ -21,54 +21,54 @@ public class BridgeDemo {
         redCircle.draw();
         greenCircle.draw();
     }
-}
 
-// 实现化角色
-interface DrawAPI {
-    void drawCircle(int radius, int x, int y);
-}
-
-// 具体实现化角色
-class RedCircle implements DrawAPI {
-
-    @Override
-    public void drawCircle(int radius, int x, int y) {
-        System.out.println("Drawing Circle[ color: red, radius: " + radius + ", x " + x + ", " + y + "]");
-    }
-}
-
-class GreenCircle implements DrawAPI {
-
-    @Override
-    public void drawCircle(int radius, int x, int y) {
-        System.out.println("Drawing Circle[ color: green, radius: " + radius + ", x " + x + ", " + y + "]");
-    }
-}
-
-// 抽象化角色
-abstract class Shape {
-    protected DrawAPI drawAPI;
-
-    protected Shape(DrawAPI drawAPI) {
-        this.drawAPI = drawAPI;
+    // 实现化角色
+    interface DrawAPI {
+        void drawCircle(int radius, int x, int y);
     }
 
-    public abstract void draw();
-}
+    // 具体实现化角色
+    static class RedCircle implements DrawAPI {
 
-// 修正抽象化角色
-class Circle extends Shape {
-
-    private int x, y, radius;
-
-    public Circle(int x, int y, int radius, DrawAPI drawAPI) {
-        super(drawAPI);
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
+        @Override
+        public void drawCircle(int radius, int x, int y) {
+            System.out.println("Drawing Circle[ color: red, radius: " + radius + ", x " + x + ", " + y + "]");
+        }
     }
 
-    public void draw() {
-        drawAPI.drawCircle(radius, x, y);
+    static class GreenCircle implements DrawAPI {
+
+        @Override
+        public void drawCircle(int radius, int x, int y) {
+            System.out.println("Drawing Circle[ color: green, radius: " + radius + ", x " + x + ", " + y + "]");
+        }
+    }
+
+    // 抽象化角色
+    static abstract class Shape {
+        protected DrawAPI drawAPI;
+
+        protected Shape(DrawAPI drawAPI) {
+            this.drawAPI = drawAPI;
+        }
+
+        public abstract void draw();
+    }
+
+    // 修正抽象化角色
+    static class Circle extends Shape {
+
+        private final int x, y, radius;
+
+        public Circle(int x, int y, int radius, DrawAPI drawAPI) {
+            super(drawAPI);
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+        }
+
+        public void draw() {
+            drawAPI.drawCircle(radius, x, y);
+        }
     }
 }

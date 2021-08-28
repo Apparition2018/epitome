@@ -18,58 +18,61 @@ public class BuilderDemo {
         waiter.construct();
         System.out.println("pizza: " + waiter.getPizza());
     }
-}
 
-class Pizza {
-    private String parts;
+    static class Pizza {
+        private String parts;
 
-    public void setParts(String parts) {
-        this.parts = parts;
+        public void setParts(String parts) {
+            this.parts = parts;
+        }
+
+        public String toString() {
+            return this.parts;
+        }
     }
 
-    public String toString() {
-        return this.parts;
-    }
-}
+    static abstract class PizzaBuilder {
+        protected Pizza pizza;
 
-abstract class PizzaBuilder {
-    protected Pizza pizza;
+        public Pizza getPizza() {
+            return pizza;
+        }
 
-    public Pizza getPizza() {
-        return pizza;
-    }
+        public void createNewPizza() {
+            pizza = new Pizza();
+        }
 
-    public void createNewPizza() {
-        pizza = new Pizza();
+        public abstract void buildParts();
     }
 
-    public abstract void buildParts();
-}
+    static class HawaiianPizzaBuilder extends PizzaBuilder {
+        @Override
+        public void buildParts() {
+            pizza.setParts("cross + mild + ham&pineapple");
+        }
+    }
 
-class HawaiianPizzaBuilder extends PizzaBuilder {
-    @Override
-    public void buildParts() {
-        pizza.setParts("cross + mild + ham&pineapple");
+    static class SpicyPizzaBuilder extends PizzaBuilder {
+        @Override
+        public void buildParts() {
+            pizza.setParts("pan baked + hot + pepperoni&salami");
+        }
     }
-}
 
-class SpicyPizzaBuilder extends PizzaBuilder {
-    @Override
-    public void buildParts() {
-        pizza.setParts("pan baked + hot + pepperoni&salami");
-    }
-}
+    static class Waiter {
+        private PizzaBuilder pizzaBuilder;
 
-class Waiter {
-    private PizzaBuilder pizzaBuilder;
-    public void setPizzaBuilder(PizzaBuilder pizzaBuilder) {
-        this.pizzaBuilder = pizzaBuilder;
-    }
-    public Pizza getPizza() {
-        return pizzaBuilder.getPizza();
-    }
-    public void construct() {
-        pizzaBuilder.createNewPizza();
-        pizzaBuilder.buildParts();
+        public void setPizzaBuilder(PizzaBuilder pizzaBuilder) {
+            this.pizzaBuilder = pizzaBuilder;
+        }
+
+        public Pizza getPizza() {
+            return pizzaBuilder.getPizza();
+        }
+
+        public void construct() {
+            pizzaBuilder.createNewPizza();
+            pizzaBuilder.buildParts();
+        }
     }
 }
