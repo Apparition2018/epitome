@@ -26,7 +26,7 @@ spring-boot-common  SpringBoot开发常用技术整合
 weixin-miniprogram  SpringBoot+MyBatis搭建迷你小程序
                     SpringBoot + Mybatis + mysql + c3p0 + 微信小程序 + 异常处理 + 单元测试(断言)
 
-mybatis-basic       通过自动回复机器人学Mybatis---基础版|加强版
+mybatis-servlet     通过自动回复机器人学Mybatis---基础版|加强版
                     servlet + jdbc/mybatis + mysql + jsp + log4j +
                     接口式编程 + 代理模式 + mybatis拦截器实现分页 + 数组参数(看源码的思路)
 

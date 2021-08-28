@@ -326,12 +326,11 @@ Spring SpringMVC Mybatis
 >- SqlSession 提供了在数据库执行 SQL 命令所需的所有方法
 >1. 获取 SqlSession
 >       ```
->           1. SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
->           2. Reader is = Resources.getResourceAsReader("mybatis.xml");
+>           1. Reader is = Resources.getResourceAsReader("mybatis.xml");
 >                       Or
 >              InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis.xml");
->           3. SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
->           4. try (SqlSession session = sqlSessionFactory.openSession()) {}
+>           2. SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+>           3. try (SqlSession session = sqlSessionFactory.openSession()) {}
 >       ```
 >2. SqlSession 常用 API：
 >       ```
@@ -373,7 +372,7 @@ Spring SpringMVC Mybatis
 >- 动态 SQL：if，choose(when, otherwise)，trim(where, set)，foreach
 >- ["#" 与 "$" 的区别](https://mybatis.org/mybatis-3/zh/sqlmap-xml.html#Parameters)
 >   - \#：使用 #{} 参数语法时，MyBatis 会创建 PreparedStatement 参数占位符，并通过占位符安全地设置参数（就像使用 ? 一样，可防止 SQL 注入）。 这样做更安全，更迅速，通常也是首选做法
->   - $：在 SQL 语句中直接插入一个不转义的字符串，一般用于传入数据库对象或 order by
+>   - $：在 SQL 语句中直接插入一个不转义的字符串，一般用于传入数据库对象
 >       - 使用场景一：ORDER BY 子句
 >           ```
 >               ORDER BY ${columnName}
