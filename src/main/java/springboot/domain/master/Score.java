@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Data
 @Accessors(chain = true)
 public class Score implements Serializable {
-    private static final long serialVersionUID = -2370593631437965516L;
+    private static final long serialVersionUID = -5129497473222426950L;
     private Integer id;
     private String name;
     private String course;

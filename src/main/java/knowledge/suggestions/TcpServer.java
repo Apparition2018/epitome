@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * created on 2020/10/10 19:23
  */
-public class TcpServer implements Runnable {
+class TcpServer implements Runnable {
 
     TcpServer() {
         Thread t = new Thread(this);

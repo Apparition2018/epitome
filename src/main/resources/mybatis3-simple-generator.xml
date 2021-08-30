@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- MyBatis Generator Core：https://mybatis.org/generator/ -->
 <!-- Mybatis Generator 最完整配置详解：https://www.cnblogs.com/maanshancss/p/6027999.html -->
 <generatorConfiguration>
     <!-- 数据库驱动路径 -->
     <classPathEntry
             location="D:\dev\apache-maven-3.8.1\repository\mysql\mysql-connector-java\8.0.26\mysql-connector-java-8.0.26.jar"/>
 
-    <context id="mysql" targetRuntime="MyBatis3">
+    <context id="mysql" targetRuntime="Mybatis3Simple" defaultModelType="flat">
         <!-- 使生成的bean实现Serializable接口 -->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
 
@@ -31,7 +32,6 @@
             <!-- MySQL 不支持 schema 或者 catalog 所以需要添加这个
                 : http://www.mybatis.org/generator/usage/mysql.html -->
             <property name="nullCatalogMeansCurrent" value="true"/>
-
         </jdbcConnection>
 
         <!-- 指定JDBC类型和Java类型如何转换 -->
@@ -41,7 +41,7 @@
         </javaTypeResolver>
 
         <!-- 定义生成的model -->
-        <javaModelGenerator targetPackage="springboot.domain" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="springboot.domain.master" targetProject="src/main/java">
             <!-- 是否根据数据库的catalog和schema生成子包 -->
             <property name="enableSubPackages" value="true"/>
             <!-- 是否进行trim() -->
@@ -49,20 +49,16 @@
         </javaModelGenerator>
 
         <!-- 定义生成的sql xml文件 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapper.master" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 定义生成的dao -->
-        <javaClientGenerator targetPackage="springboot.dao" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="springboot.dao.master" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
         <table tableName="score" domainObjectName="Score"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-        <table tableName="demo" domainObjectName="Demo"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
         </table>

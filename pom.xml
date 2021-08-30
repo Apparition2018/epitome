@@ -31,6 +31,7 @@
         <!-- dependency -->
         <pagehelper-spring-boot-starter.version>1.3.1</pagehelper-spring-boot-starter.version>
         <druid.version>1.2.6</druid.version>
+        <mybatis-dynamic-sql.version>1.3.0</mybatis-dynamic-sql.version>
         <commons-email.version>1.5</commons-email.version>
         <commons-configuration2.version>2.7</commons-configuration2.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
@@ -134,6 +135,13 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- mybatis-dynamic-sql -->
+        <dependency>
+            <groupId>org.mybatis.dynamic-sql</groupId>
+            <artifactId>mybatis-dynamic-sql</artifactId>
+            <version>${mybatis-dynamic-sql.version}</version>
         </dependency>
 
         <!-- jedis -->
@@ -460,28 +468,29 @@
 
             <!-- mybatis generator
                 http://www.mybatis.org/generator/index.html -->
-            <!--            <plugin>-->
-            <!--                <groupId>org.mybatis.generator</groupId>-->
-            <!--                <artifactId>mybatis-generator-maven-plugin</artifactId>-->
-            <!--                <version>${mybatis-generator-core.version}</version>-->
-            <!--                <configuration>-->
-            <!--                    <configurationFile>${basedir}/src/main/resources/generator-config.xml</configurationFile>-->
-            <!--                    &lt;!&ndash; 是否重写文件-->
-            <!--                        注意：XML 不会重写，总是将新生成的内容合并到旧文件之下 &ndash;&gt;-->
-            <!--                    <overwrite>true</overwrite>-->
-            <!--                    &lt;!&ndash; 是否在输出日志中打印进度信息 &ndash;&gt;-->
-            <!--                    <verbose>true</verbose>-->
-            <!--                </configuration>-->
-            <!--                &lt;!&ndash; 编译代码时，自动执行 mybatis generator &ndash;&gt;-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>Generate MyBatis Artifacts</id>-->
-            <!--                        <goals>-->
-            <!--                            <goal>generate</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${mybatis-generator-core.version}</version>
+                <configuration>
+                    <configurationFile>${basedir}/src/main/resources/mybatis3-simple-generator.xml</configurationFile>
+<!--                    <configurationFile>${basedir}/src/main/resources/mybatis3-dynamic-sql-generator.xml</configurationFile>-->
+                    <!-- 是否重写文件
+                        注意：XML 不会重写，总是将新生成的内容合并到旧文件之下 -->
+                    <overwrite>true</overwrite>
+                    <!-- 是否在输出日志中打印进度信息 -->
+                    <verbose>true</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- 编译代码时，自动执行 mybatis generator -->
+                        <id>Generate MyBatis Artifacts</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>

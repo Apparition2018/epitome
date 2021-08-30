@@ -1,0 +1,42 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- MyBatis Dynamic SQL：https://mybatis.org/mybatis-dynamic-sql/docs/introduction.html -->
+<!-- Mybatis Generator 和全注解风格的 MyBatis3DynamicSql：https://www.cnblogs.com/ZhangZiSheng001/p/12820344.html -->
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\dev\apache-maven-3.8.1\repository\mysql\mysql-connector-java\8.0.26\mysql-connector-java-8.0.26.jar"/>
+
+    <context id="mysql" targetRuntime="MyBatis3DynamicSql" defaultModelType="flat">
+        <!-- 自动检查关键字，为关键字增加反引号 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 生成的实体类添加toString()方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 不生成注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/epitome2?useUnicode=true&amp;characterEncoding=utf-8&amp;allowPublicKeyRetrieval=true"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!-- model类的位置 -->
+        <javaModelGenerator targetProject="src\main\java"
+                            targetPackage="springboot.domain.slaver"/>
+
+        <!-- mapper类的位置 -->
+        <javaClientGenerator targetProject="src\main\java"
+                             targetPackage="springboot.dao.slaver"
+                             type="XMLMAPPER"/>
+
+        <table tableName="sys_dept"/>
+    </context>
+</generatorConfiguration>

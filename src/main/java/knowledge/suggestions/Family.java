@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author ljh
  * created on 2020/10/10 19:23
  */
-public class Family {
+class Family {
 
 
     interface Father {

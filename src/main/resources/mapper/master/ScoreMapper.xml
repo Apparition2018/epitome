@@ -7,15 +7,6 @@
     <result column="course" jdbcType="VARCHAR" property="course" />
     <result column="score" jdbcType="INTEGER" property="score" />
   </resultMap>
-  <sql id="Base_Column_List">
-    id, name, course, score
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from score
-    where id = #{id,jdbcType=INTEGER}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from score
     where id = #{id,jdbcType=INTEGER}
@@ -26,52 +17,6 @@
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{course,jdbcType=VARCHAR}, 
       #{score,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="springboot.domain.master.Score">
-    insert into score
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="course != null">
-        course,
-      </if>
-      <if test="score != null">
-        score,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="course != null">
-        #{course,jdbcType=VARCHAR},
-      </if>
-      <if test="score != null">
-        #{score,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="springboot.domain.master.Score">
-    update score
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="course != null">
-        course = #{course,jdbcType=VARCHAR},
-      </if>
-      <if test="score != null">
-        score = #{score,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
   <update id="updateByPrimaryKey" parameterType="springboot.domain.master.Score">
     update score
     set name = #{name,jdbcType=VARCHAR},
@@ -79,4 +24,13 @@
       score = #{score,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, course, score
+    from score
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, course, score
+    from score
+  </select>
 </mapper>

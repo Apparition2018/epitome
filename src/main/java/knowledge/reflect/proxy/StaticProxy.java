@@ -28,7 +28,7 @@ public class StaticProxy extends Demo {
      */
     static class StopWatchProxy implements People {
 
-        private Man man;
+        private final Man man;
 
         public StopWatchProxy(Man man) {
             this.man = man;

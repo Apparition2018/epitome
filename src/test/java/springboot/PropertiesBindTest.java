@@ -16,7 +16,7 @@ import java.util.List;
  * @author ljh
  * created on 2021/8/6 17:49
  */
-@SpringBootTest(classes = EpitomeApplication.class)
+@SpringBootTest
 public class PropertiesBindTest {
 
     @Autowired
