@@ -35,9 +35,22 @@ public class RestfulController {
         return person;
     }
 
+    /**
+     * 获取人员列表
+     *
+     * @param keyword    关键字
+     * @param sort       排序          +id, -create_time
+     * @param fields     返回字段      id, name, age
+     * @param pageNumber 页面号码
+     * @param pageSize   页面条数
+     */
     @GetMapping
     @ApiOperation("获取人员列表")
-    public List<Person> getPersonList(@RequestParam(required = false) String keyword) {
+    public List<Person> getPersonList(@RequestParam(required = false) String keyword,
+                                      @RequestParam(required = false) List<String> sort,
+                                      @RequestParam(required = false) List<String> fields,
+                                      @RequestParam(required = false) Integer pageNumber,
+                                      @RequestParam(required = false) Integer pageSize) {
         if (StringUtils.isNotEmpty(keyword)) {
             return personMap.values().stream().filter(p -> p.getName().contains(keyword)).collect(Collectors.toList());
         }

@@ -478,17 +478,9 @@ Spring SpringMVC Mybatis
 >   - timeout：设置事务的超时秒数，默认值为-1，表示永不超时
 >   - rollbackFo：设置需要进行事务回滚的异常类数组
 >   - noRollbackFor：设置不需要进行事务回滚的异常类数组
->>#### 事务传播机制 Propagation 
->>  ```
->>    REQUIRED        支持当前事务，如果当前没有事务，就新建一个事务，默认
->>    SUPPORTS        支持当前事务，如果当前没有事务，就以非事务方式执行
->>    MANDATORY       支持当前事务，如果当前没有事务，就抛出异常
->>    REQUIRES_NEW    新建事务，如果当前存在事务，把当前事务挂起
->>    NOT_SUPPORTED   以非事务方式执行，如果当前存在事务，就把当前事务挂起
->>    NEVER           以非事务方式执行，如果当前存在事务，则抛出异常
->>    NESTED          如果当前存在事务，则在嵌套事务内执行。如外层事务回滚，那么内层必须回滚；反之，内层事务不影响外层事务
->>  ```
 >>#### 事务隔离级别 Isolation
+>>- [区分不可重复读和幻读](https://www.cnblogs.com/itcomputer/articles/5133254.html)
+>>- [区分不可重复读和幻读](https://www.zhihu.com/question/392569386/answer/1922737425)
 >><table>
 >>  <tr>
 >>      <th>Isolation</th>
@@ -530,5 +522,15 @@ Spring SpringMVC Mybatis
 >>      <td colspan="4">默认的隔离级别，使用数据库默认的事务隔离级别</td>
 >>  </tr>
 >></table>
+>>
+>>#### 事务传播机制 Propagation 
+>>  ```
+>>    REQUIRED        支持当前事务，如果当前没有事务，就新建一个事务，默认
+>>    SUPPORTS        支持当前事务，如果当前没有事务，就以非事务方式执行
+>>    MANDATORY       支持当前事务，如果当前没有事务，就抛出异常
+>>    REQUIRES_NEW    新建事务，如果当前存在事务，把当前事务挂起
+>>    NOT_SUPPORTED   以非事务方式执行，如果当前存在事务，就把当前事务挂起
+>>    NEVER           以非事务方式执行，如果当前存在事务，则抛出异常
+>>    NESTED          如果当前存在事务，则在嵌套事务内执行。如外层事务回滚，那么内层必须回滚；反之，内层事务不影响外层事务
+>>  ```
 ---
-

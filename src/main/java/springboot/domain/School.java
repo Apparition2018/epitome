@@ -32,5 +32,4 @@ public class School {
         private int score;
     }
 
-
 }

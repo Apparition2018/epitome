@@ -69,6 +69,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -192,10 +199,10 @@
         </dependency>
 
         <!-- tika：内容抽取的工具集合
-            包含了 gson, guava,
+            包含了 gson, guava, ehcache, jsoup, httpmime,
                 commons-io, commons-compress, commons-math3, commons-collections4,
                 poi, poi-ooxml, poi-ooxmll-schemas, poi-scratchpad,
-                jsoup, httpmime, bcprov-jdk15on, juniversalchardet -->
+                bcprov-jdk15on, juniversalchardet -->
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parsers</artifactId>
@@ -257,6 +264,12 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
+        </dependency>
+
+        <!-- json-path -->
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
         </dependency>
 
         <!-- protostuff：基于 protobuf，序列化/反序列化 -->
@@ -384,6 +397,11 @@
             <groupId>it.unimi.dsi</groupId>
             <artifactId>fastutil</artifactId>
             <version>8.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -8,7 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.springframework.context.annotation.Bean;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -58,11 +57,6 @@ public class Person implements Comparable<Person>, Serializable {
         this.gender = gender;
     }
 
-    @Bean("person")
-    public Person getInstance(Integer id, String name) {
-        return new Person(id, name);
-    }
-
     @Override
     public int compareTo(Person o) {
         return new CompareToBuilder().append(age, o.age).toComparison();
@@ -89,7 +83,6 @@ public class Person implements Comparable<Person>, Serializable {
                 (null != getHome() ? ", home=Home(" + (null != getHome().getAddress() ? "address='" + getHome().getAddress() + '\'' : "") + (null != getHome().getTel() ? ", tel='" + getHome().getTel() + '\'' : "") + ")" : "");
         return "Person{" + (result.startsWith(",") ? result.substring(2) : result) + "}";
     }
-
 
     /**
      * JavaBean
