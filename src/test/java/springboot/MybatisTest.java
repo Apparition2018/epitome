@@ -6,8 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import springboot.dao.master.ScoreMapper;
 
 /**
- * MybatisTest
- *
  * @author ljh
  * created on 2021/8/30 17:14
  */
