@@ -51,6 +51,7 @@ public class SpringObserverDemo {
          */
         static class OrderEvent extends ApplicationEvent {
 
+            private static final long serialVersionUID = 6763968214834834166L;
             private String message;
 
             public OrderEvent(Object source, String message) {

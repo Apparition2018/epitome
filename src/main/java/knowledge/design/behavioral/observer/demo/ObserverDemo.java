@@ -26,7 +26,7 @@ import java.util.Observable;
  * <p>
  * 观察者模式 & 发布订阅模式 的区别：
  * 观察者模式：主题，观察者；松耦合的关系
- * 发布订阅模式：发布者，订阅者，经纪人 Broker；不存在耦合
+ * 发布订阅模式：发布者，订阅者，经纪人 Broker；不存在耦合；本质上是 生产者-消费者 模式
  * <p>
  * 《JAVA与模式》之观察者模式：http://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html
  * 观察者模式 | 菜鸟教程：https://www.runoob.com/design-pattern/observer-pattern.html
@@ -60,7 +60,7 @@ public class ObserverDemo {
             /**
              * 用来保存注册的观察者对象
              */
-            private List<Observer> list = new ArrayList<>();
+            private final List<Observer> list = new ArrayList<>();
 
             /**
              * 注册观察者对象
