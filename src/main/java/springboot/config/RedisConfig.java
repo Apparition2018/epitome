@@ -14,10 +14,11 @@ import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import springboot.listener.redis.RedisReceiver;
-import springboot.listener.redis.RedisTopicEnum;
-import springboot.listener.redis.Subscriber;
+import springboot.messaging.redis.CnMessageSubscriber;
+import springboot.messaging.redis.RedisTopicEnum;
+import springboot.messaging.redis.Subscriber;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
 
     @Bean
-    public Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer() {
+    Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         objectMapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
@@ -48,7 +49,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+    RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
 
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
@@ -66,24 +67,34 @@ public class RedisConfig extends CachingConfigurerSupport {
      * Redis 消息监听器容器
      */
     @Bean
-    public RedisMessageListenerContainer container(RedisConnectionFactory redisConnectionFactory) {
+    RedisMessageListenerContainer container(RedisConnectionFactory redisConnectionFactory) {
         RedisMessageListenerContainer redisMessageListenerContainer = new RedisMessageListenerContainer();
         redisMessageListenerContainer.setConnectionFactory(redisConnectionFactory);
+        redisMessageListenerContainer.setTopicSerializer(RedisSerializer.string());
         if (subscriberList != null) {
             subscriberList.forEach(subscriber -> {
+                // 第一种：MessageListenerAdapter(Object delegate)
                 MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(subscriber);
+                messageListenerAdapter.afterPropertiesSet();
                 messageListenerAdapter.setSerializer(jackson2JsonRedisSerializer());
-                redisMessageListenerContainer.addMessageListener(messageListenerAdapter, new PatternTopic(subscriber.getTopic()));
+                redisMessageListenerContainer.addMessageListener(cnMessageListenerAdapter(), new PatternTopic(subscriber.getTopic()));
             });
         }
-        redisMessageListenerContainer.addMessageListener(redisReceiver(), new PatternTopic(RedisTopicEnum.TOPIC_MIME.getTopic()));
-        redisMessageListenerContainer.setTopicSerializer(new StringRedisSerializer());
+        redisMessageListenerContainer.addMessageListener(cnMessageListenerAdapter(), new PatternTopic(RedisTopicEnum.TOPIC_CN_MESSAGE.getTopic()));
         return redisMessageListenerContainer;
     }
 
     @Bean
-    public MessageListenerAdapter redisReceiver() {
-        return new MessageListenerAdapter(new RedisReceiver(), "receiveMessage");
+    public MessageListenerAdapter cnMessageListenerAdapter() {
+        // 第二种：MessageListenerAdapter(Object delegate, String defaultListenerMethod)
+        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(cnMessageSubscriber(), "onMessage");
+        messageListenerAdapter.setSerializer(RedisSerializer.string()); // 为什么不能设置 Jackson2JsonRedisSerializer ?
+        return messageListenerAdapter;
+    }
+
+    @Bean
+    CnMessageSubscriber cnMessageSubscriber() {
+        return new CnMessageSubscriber();
     }
 
 }

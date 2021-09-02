@@ -1,4 +1,4 @@
-package springboot.listener.redis;
+package springboot.messaging.redis;
 
 import lombok.Getter;
 
@@ -11,8 +11,8 @@ import lombok.Getter;
 @Getter
 public enum RedisTopicEnum {
 
-    TOPIC_MESSAGE("topic:message", "消息 Topic"),
-    TOPIC_MIME("topic:mine", "我的 Topic");
+    TOPIC_EN_MESSAGE("topic:en_message", "英文消息 Topic"),
+    TOPIC_CN_MESSAGE("topic:cn_message", "中文消息 Topic");
 
     private final String topic;
     private final String desc;

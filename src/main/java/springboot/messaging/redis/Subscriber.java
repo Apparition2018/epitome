@@ -1,4 +1,4 @@
-package springboot.listener.redis;
+package springboot.messaging.redis;
 
 import org.springframework.data.redis.connection.MessageListener;
 
