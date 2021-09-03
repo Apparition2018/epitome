@@ -122,41 +122,41 @@
             <version>${pagehelper-spring-boot-starter.version}</version>
         </dependency>
 
-        <!-- spring boot 整合 druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid.version}</version>
         </dependency>
 
-        <!-- mysql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- h2 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- mybatis-dynamic-sql -->
+        <!-- influxdb：时序数据库 -->
+        <dependency>
+            <groupId>org.influxdb</groupId>
+            <artifactId>influxdb-java</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.mybatis.dynamic-sql</groupId>
             <artifactId>mybatis-dynamic-sql</artifactId>
             <version>${mybatis-dynamic-sql.version}</version>
         </dependency>
 
-        <!-- jedis -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
         </dependency>
 
-        <!-- commons -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
@@ -191,7 +191,6 @@
             <version>${hutool.version}</version>
         </dependency>
 
-        <!-- netty -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
@@ -208,13 +207,11 @@
             <version>${tika.version}</version>
         </dependency>
 
-        <!-- nimbus-jose-jwt -->
         <dependency>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
         </dependency>
 
-        <!-- httpclient5 -->
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5-fluent</artifactId>
@@ -227,7 +224,7 @@
             <version>${okhttps.version}</version>
         </dependency>
 
-        <!-- retrofit2 -->
+        <!-- retrofit：适用于 Android 和 Java 的类型安全 HTTP 客户端 -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
@@ -251,21 +248,18 @@
             <artifactId>htmlunit</artifactId>
         </dependency>
 
-        <!-- minio -->
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>${minio.version}</version>
         </dependency>
 
-        <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
 
-        <!-- json-path -->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
@@ -314,35 +308,30 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- zxing：生成二维码 -->
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>javase</artifactId>
             <version>${zxing.version}</version>
         </dependency>
 
-        <!-- easy-captcha：生成验证码 -->
         <dependency>
             <groupId>com.github.whvcse</groupId>
             <artifactId>easy-captcha</artifactId>
             <version>${easy-captcha.version}</version>
         </dependency>
 
-        <!-- kaptcha：生成验证码 -->
         <dependency>
             <groupId>com.github.penggle</groupId>
             <artifactId>kaptcha</artifactId>
             <version>${kaptcha.version}</version>
         </dependency>
 
-        <!-- TinyPinyin：汉字转拼音 -->
         <dependency>
             <groupId>io.github.biezhi</groupId>
             <artifactId>TinyPinyin</artifactId>
@@ -377,7 +366,6 @@
             <version>${thumbnailator.version}</version>
         </dependency>
 
-        <!-- emoji -->
         <dependency>
             <groupId>com.vdurmont</groupId>
             <artifactId>emoji-java</artifactId>
@@ -391,16 +379,6 @@
             <artifactId>truelicense-core</artifactId>
             <version>${truelicense.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>it.unimi.dsi</groupId>
-            <artifactId>fastutil</artifactId>
-            <version>8.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -491,7 +469,7 @@
                 <version>${mybatis-generator-core.version}</version>
                 <configuration>
                     <configurationFile>${basedir}/src/main/resources/mybatis3-simple-generator.xml</configurationFile>
-<!--                    <configurationFile>${basedir}/src/main/resources/mybatis3-dynamic-sql-generator.xml</configurationFile>-->
+                    <!-- <configurationFile>${basedir}/src/main/resources/mybatis3-dynamic-sql-generator.xml</configurationFile>-->
                     <!-- 是否重写文件
                         注意：XML 不会重写，总是将新生成的内容合并到旧文件之下 -->
                     <overwrite>true</overwrite>

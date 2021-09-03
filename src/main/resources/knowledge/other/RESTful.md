@@ -11,26 +11,31 @@
 7. [WEB开发中，使用JSON-RPC好，还是RESTful API好？](https://www.zhihu.com/question/28570307/answer/541465581)
 8. [为什么很多后端写接口都不按照restful规范？](https://www.zhihu.com/question/438825740/answer/1692268189)
 ---
-## Resource (资源)
-    1. 文本
-    2. 图片
-    3. 服务
-    4. 音频
-    5. ......
+## 字面分解
+>1. Resource (资源）：文本，图片，音频，服务 ...
+>2. Representational (表现层)
+>- HTTP 协议的 content-type 和 accept
+>   ```
+>   文本          txt、html、xml、json、二进制
+>   图片          jpg、png
+>   ```
+>3. State Transfer (状态转化)
+>- 幂等性：每次 HTTP 请求相同的参数，相同的 URI，产生的结果是相同的
+>   ```
+>   GET         获取资源                    http://wwww.book.com/book/001
+>   POST        创建资源-不具有幂等性        http://wwww.book.com/book
+>   PUT         创建/更新资源               http://wwww.book.com/book/001
+>   DELETE                                 http://wwww.book.com/book/001
+>   ``` 
 ---
-## Representational (表现层)
-#### HTTP 协议的 content-type 和 accept
-    文本：txt、html、xml、json、二进制
-    图片：jpg、png
+## [成熟度模型](https://www.cnblogs.com/fengyc/p/12035660.html)
+![REST Maturity](https://sinnema313.files.wordpress.com/2014/05/rest-maturity21.png)
+1. 使用 HTTP 传输方式
+2. 面向资源
+3. HTTP METHOD
+4. HATEOAS
 ---
-## State Transfer (状态转化)
-#### 幂等性：每次 HTTP 请求相同的参数，相同的 URI，产生的结果是相同的
-    1. GET     获取资源                    http://wwww.book.com/book/001
-    2. POST    创建资源-不具有幂等性        http://wwww.book.com/book
-    3. PUT     创建(更新)资源              http://wwww.book.com/book/001
-    4. DELETE                             http://wwww.book.com/book/001
----
-## RESTful 示例
+## 示例
     movie.douban.com/show/subject/11620560/             避免动词
     movie.douban.com/subject/11620560/
     
@@ -42,7 +47,7 @@
     www.example.com/app/
         HEADER verson=1.0    
 ---
-## RESTful 总结
+## 总结
     1. 每一个 URI 代表一种资源
     2. 客户端和服务器之间，传递这种资源的某种表现层
     3. 客户端通过 HTTP 动词，对服务器端资源进行操作，实现"表现层状态转化"

@@ -9,10 +9,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import springboot.exception.ServiceException;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 /**
@@ -26,7 +26,8 @@ import java.util.stream.Collectors;
 @Api(tags = "Restful")
 public class RestfulController {
 
-    private final Map<Integer, Person> personMap = new ConcurrentHashMap<>();
+    @Resource(name = "personMap")
+    private Map<Integer, Person> personMap;
 
     @PostMapping
     @ApiOperation("新增人员")
