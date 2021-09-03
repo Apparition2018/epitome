@@ -61,15 +61,19 @@ public class MultipartFileController extends Demo {
      */
     @PostMapping("/excel")
     @ApiOperation("上传 excel")
-    public void uploadExcel(MultipartFile file) {
+    public void uploadExcel(@RequestPart MultipartFile[] files) {
         try {
-            ExcelUtils<Person> excelUtils = new ExcelUtils<>(Person.class);
-            Map<Integer, String> colNumAndFieldNameMap = new HashMap<>();
-            colNumAndFieldNameMap.put(0, "id");
-            colNumAndFieldNameMap.put(1, "name");
-            colNumAndFieldNameMap.put(2, "age");
-            List<Person> personList = excelUtils.excel2BeanList(file.getInputStream(), colNumAndFieldNameMap);
-            System.out.println(personList);
+            for (MultipartFile file : files) {
+                ExcelUtils<Person> excelUtils = new ExcelUtils<>(Person.class);
+                Map<Integer, String> colNumAndFieldNameMap = new HashMap<>();
+                colNumAndFieldNameMap.put(0, "id");
+                colNumAndFieldNameMap.put(1, "name");
+                colNumAndFieldNameMap.put(2, "age");
+                if (!file.isEmpty()) {
+                    List<Person> personList = excelUtils.excel2BeanList(file.getInputStream(), colNumAndFieldNameMap);
+                    System.out.println(personList);
+                }
+            }
         } catch (IllegalAccessException | InstantiationException | IOException | NoSuchMethodException | NoSuchFieldException | InvocationTargetException | ParseException e) {
             e.printStackTrace();
         }

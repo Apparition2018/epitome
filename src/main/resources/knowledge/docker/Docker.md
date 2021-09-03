@@ -257,4 +257,10 @@ jenkins
 ```bash
 docker run -itd --name ubuntu --privileged ubuntu
 ```
+11. [InfluxDB](https://registry.hub.docker.com/_/influxdb)
+```bash
+docker run -d --name influxdb -p 8086:8086 influxdb
+
+docker exec -it influxdb bash
+```
 --- 

@@ -19,7 +19,6 @@ import org.springframework.util.ResourceUtils;
  */
 @Configuration
 @MapperScan(basePackages = "springboot.dao.master",
-        sqlSessionFactoryRef = "masterSqlSessionFactory",
         sqlSessionTemplateRef = "masterSqlSessionTemplate")
 public class MasterDataSourceConfig {
 
