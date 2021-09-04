@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
-import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -29,7 +28,7 @@ import java.util.List;
  * created on 2021/9/1 10:56R
  */
 @Configuration
-public class RedisConfig extends CachingConfigurerSupport {
+public class RedisConfig {
 
     private final transient List<Subscriber> subscriberList;
 
@@ -85,7 +84,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
 
     @Bean
-    public MessageListenerAdapter cnMessageListenerAdapter() {
+    MessageListenerAdapter cnMessageListenerAdapter() {
         // 第二种：MessageListenerAdapter(Object delegate, String defaultListenerMethod)
         MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(cnMessageSubscriber(), "onMessage");
         messageListenerAdapter.setSerializer(RedisSerializer.string()); // 为什么不能设置 Jackson2JsonRedisSerializer ?

@@ -140,7 +140,8 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- influxdb：时序数据库 -->
+        <!-- influxdb：时序数据库
+            包含了 converter-moshi -->
         <dependency>
             <groupId>org.influxdb</groupId>
             <artifactId>influxdb-java</artifactId>
@@ -227,16 +228,6 @@
         <!-- retrofit：适用于 Android 和 Java 的类型安全 HTTP 客户端 -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>retrofit</artifactId>
-            <version>${retrofit2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>converter-moshi</artifactId>
-            <version>${retrofit2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-jackson</artifactId>
             <version>${retrofit2.version}</version>
         </dependency>
@@ -258,11 +249,6 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.jayway.jsonpath</groupId>
-            <artifactId>json-path</artifactId>
         </dependency>
 
         <!-- protostuff：基于 protobuf，序列化/反序列化 -->
