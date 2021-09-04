@@ -54,6 +54,8 @@ apt-get update                                  更新软件源中的所有软�
 apt-get upgrade                                 更新软件
 apt-get dist-upgrade                            更新系统版本
 
+apt-get install -y procps
+    ps
 apt-get install -y tzdata                       Time Zone Database
     tzselect                                    修改时区
 apt-get isntall -y build-essential              c/c++

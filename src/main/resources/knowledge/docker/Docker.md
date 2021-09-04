@@ -258,9 +258,21 @@ jenkins
 docker run -itd --name ubuntu --privileged ubuntu
 ```
 11. [InfluxDB](https://registry.hub.docker.com/_/influxdb)
+- InfluxDBException：https://community.influxdata.com/t/getting-started-with-influxdb-docker-401-unauthorized/16989/3
+- influx v1 auth create：https://docs.influxdata.com/influxdb/v2.0/reference/cli/influx/v1/auth/create/
 ```bash
-docker run -d --name influxdb -p 8086:8086 influxdb
+docker run -d --name influxdb -p 8086:8086 --restart=always \
+-e DOCKER_INFLUXDB_INIT_USERNAME=admin \
+-e DOCKER_INFLUXDB_INIT_PASSWORD=12345678 \
+-e DOCKER_INFLUXDB_INIT_ORG=my-org \
+-e DOCKER_INFLUXDB_INIT_BUCKET=my-bucket \
+influxdb
 
 docker exec -it influxdb bash
+cd /usr/local/bin
+influx setup
+influx bucket list                                    # 记下 ID
+influx v1 auth create --read-bucket 303f1c88eaa4473a --write-bucket 303f1c88eaa4473a --username admin
+influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --default
 ```
 --- 
