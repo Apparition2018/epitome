@@ -162,54 +162,85 @@ docker build [OPTIONS] PATH | URL | -                           从 Dockerfile �
     ```
 ---
 ## 安装软件
-1. [MySQL](https://blog.csdn.net/pall_scall/article/details/112154454)
+1. [MySQL](https://registry.hub.docker.com/_/mysql)
+- [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
-docker run -d --name mysql -p 3306:3306 --privileged --restart=always
-[-v D:/Docker/MySQL/my.cnf:/etc/mysql/my.cnf -v D:/Docker/MySQL/data:/var/lib/mysql]
--e MYSQL_ROOT_PASSWORD=root mysql
+docker run -d --name mysql -p 3306:3306 --privileged --restart=always \
+-v D:/Docker/MySQL/my.cnf:/etc/mysql/my.cnf \
+-v D:/Docker/MySQL/data:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=root \
+mysql
 
 docker exec -it mysql mysql -uroot -proot
      create user ljh@172.17.0.1 identified by '123456';
      grant all privileges on `ry-vue`.* to ljh@172.17.0.1 with grant option;
      flush privileges;
 ```
-2. [Redis](https://blog.csdn.net/qq_34670974/article/details/94051251)
+2. [InfluxDB](https://registry.hub.docker.com/_/influxdb)
+- [InfluxDBException](https://community.influxdata.com/t/getting-started-with-influxdb-docker-401-unauthorized/16989/3)
+- [influx v1 auth](https://docs.influxdata.com/influxdb/v2.0/reference/cli/influx/v1/auth/)
 ```bash
-docker run -d --name redis -p 6379:6379 --restart=always
-[-v D:/Docker/Redis/data:/data:rw]
-[-v D:/Docker/Redis/conf/redis.conf:/etc/redis/redis.conf:ro]
-redis [redis-server /etc/redis/redis.conf]
+docker run -d --name influxdb -p 8086:8086 --restart=always \
+-e DOCKER_INFLUXDB_INIT_USERNAME=admin \
+-e DOCKER_INFLUXDB_INIT_PASSWORD=12345678 \
+-e DOCKER_INFLUXDB_INIT_ORG=my-org \
+-e DOCKER_INFLUXDB_INIT_BUCKET=my-bucket \
+influxdb
+
+docker exec -it influxdb bash
+cd /usr/local/bin
+influx setup
+influx bucket list                                    # 记下 ID
+influx v1 auth create --read-bucket 303f1c88eaa4473a --write-bucket 303f1c88eaa4473a --username admin
+influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --default
+```
+3. [Redis](https://registry.hub.docker.com/_/redis)
+```bash
+docker run -d --name redis -p 6379:6379 --restart=always \
+-v D:/Docker/Redis/data:/data:rw \
+-v D:/Docker/Redis/conf/redis.conf:/etc/redis/redis.conf:ro \
+redis redis-server [/etc/redis/redis.conf]
 
 docker exec -it redis redis-cli
 ```
-3. [MongoDB](https://www.cnblogs.com/yunquan/p/11174265.html)
+4. [MongoDB](https://registry.hub.docker.com/_/mongo)
+- [MongoDB 用户角色配置](https://www.cnblogs.com/out-of-memory/p/6810411.html)
 ```bash
-docker run -itd --name mongo -p 27017:27017 mongo [--auth]
+docker run -d --name mongo -p 27017:27017 mongo --auth
 
+# 进入 admin 数据库
 docker exec -it mongo mongo admin
-# 创建用户和密码
-db.createUser({user: 'admin', pwd:'123', roles: [{role: "userAdminAnyDatabase", db: "admin"}]})
-# 验证
-db.auth("admin", "123") 
+    # 上面一句等同于下面三句
+    docker exec -it mongo bash
+    mongo
+    use admin
+# 创建 root 账号密码，角色 root
+db.createUser({user: "root", pwd: "root", roles: ["root"]})
+# 验证 账号密码
+db.auth("root", "root")
+# 创建 admin 账号密码，角色 userAdminAnyDatabase，用户管理者
+db.createUser({user: "admin", pwd: "admin", roles: [{role: "userAdminAnyDatabase", db: "admin"}]})
+# 创建 ljh 账号密码，角色 readWrite
+db.createUser({user: "ljh", pwd: "123456", roles: [{role: "readWrite", db: "spring_data"}]})
 ```
-4. [Tomcat](https://www.cnblogs.com/liyiran/p/12544715.html)
+5. [Tomcat](https://registry.hub.docker.com/_/tomcat)
+- [Docker 安装 tomcat 并挂载目录](https://www.cnblogs.com/liyiran/p/12544715.html)
 ```bash
-docker run -d --name tomcat -p 8080:8080 
-[-v D:\Docker\Tomcat\webapps:/usr/local/tomcat/webapps]
-tomcat:9.0.45
-
-docker run -d --name tomcat -p 8080:8080 -v D:\Docker\Tomcat\webapps:/usr/local/tomcat/webapps tomcat:9.0.45
+docker run -d --name tomcat -p 8080:8080 \
+-v D:/Docker/Tomcat/webapps:/usr/local/tomcat/webapps \
+tomcat:9.0.52
 ```
-5. [Nginx](https://blog.csdn.net/goodboy31985/articleb/details/106676475/)
+6. [Nginx](https://registry.hub.docker.com/_/nginx)
 ```bash
-docker run -d --name nginx -p 80:80 --restart=always
-[-v D:\Docker\Nginx\conf\nginx.conf:/etc/nginx/nginx.conf]
-[-v D:\Docker\nginx\conf\conf.d:/etc/nginx/conf.d]
-[-v D:\Docker\Nginx\log:/var/log/nginx]
-[-v D:\Docker\Nginx\html:/usr/share/nginx/html]
+docker run -d --name nginx -p 80:80 --restart=always \
+-v D:/Docker/Nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
+-v D:/Docker/Nginx/conf/conf.d:/etc/nginx/conf.d \
+-v D:/Docker/Nginx/log:/var/log/nginx \
+-v D:/Docker/Nginx/html:/usr/share/nginx/html \
 nginx
 ```
-6. [Zookeeper](https://www.cnblogs.com/idea360/p/12405113.html)
+7. [Zookeeper](https://registry.hub.docker.com/_/zookeeper)
+- [Docker 实战之 Zookeeper 集群](https://www.cnblogs.com/idea360/p/12405113.html)
 - @see docker/compose/zookeeper/docker-compose-zookeeper-cluster.yml
 ```bash
 docker network create docker_net
@@ -227,9 +258,12 @@ echo srvr | nc localhost 2181
 
 docker run -it --rm --name ZookeeperCluster --link zoo1 --link zoo2 --link zoo3 --net docker_net zookeeper zkCli.sh -server zoo1:2181,zoo2:2181,zoo3:2181
 ```
-7. [RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
+8. [RabbitMQ](https://registry.hub.docker.com/_/rabbitmq)
+- [Win10 Docker 安装 RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash
-docker run -d --name rabbitmq -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 8883:8883 rabbitmq:management-alpine
+docker run -d --name rabbitmq \
+-p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 8883:8883 \
+rabbitmq:management-alpine
 
 docker exec -it rabbitmq bash
     rabbitmq-plugins list
@@ -237,42 +271,26 @@ docker exec -it rabbitmq bash
         http://localhost:15672       Username:guest      Password:guest
     rabbitmq-plugins enable rabbitmq_mqtt
 ```
-8. [MinIO](https://www.jianshu.com/p/52dbc679094a)
+9. [MinIO](https://registry.hub.docker.com/_/minio)
+- [Docker 安装 Minio](https://www.jianshu.com/p/52dbc679094a)
 ```bash
-docker run -d --name minio -p 9000:9000 --restart=always
-[-v D:\Docker\MinIO:/data]
-[-v D:\Docker\MinIO\config:/root/.minio]
--e MINIO_ACCESS_KEY=minio
--e MINIO_SECRET_KEY=minio123
-minio server /data
+docker run -d --name minio -p 9000:9000 \
+-v D:/Docker/MinIO:/data \
+-v D:/Docker/MinIO/config:/root/.minio \
+-e MINIO_ACCESS_KEY=minio \
+-e MINIO_SECRET_KEY=minio123 \
+minio/minio server /data
 ```
-9. [Jenkins](https://www.cnblogs.com/fuzongle/p/12834080.html)
+10. [Jenkins](https://registry.hub.docker.com/_/jenkins)
+- [Docker 快速安装 Jenkins 完美教程](https://www.cnblogs.com/fuzongle/p/12834080.html)
 ```bash
 docker run -d --name jenkins -p 8080:8080 -p 50000:50000 
 [-v D:\Docker\Jenkins:/var/jenkins_home]
 [-v /etc/localtime:/ect/localtime]
 jenkins
 ```
-10. Ubuntu
+11. Ubuntu
 ```bash
 docker run -itd --name ubuntu --privileged ubuntu
-```
-11. [InfluxDB](https://registry.hub.docker.com/_/influxdb)
-- InfluxDBException：https://community.influxdata.com/t/getting-started-with-influxdb-docker-401-unauthorized/16989/3
-- influx v1 auth create：https://docs.influxdata.com/influxdb/v2.0/reference/cli/influx/v1/auth/create/
-```bash
-docker run -d --name influxdb -p 8086:8086 --restart=always \
--e DOCKER_INFLUXDB_INIT_USERNAME=admin \
--e DOCKER_INFLUXDB_INIT_PASSWORD=12345678 \
--e DOCKER_INFLUXDB_INIT_ORG=my-org \
--e DOCKER_INFLUXDB_INIT_BUCKET=my-bucket \
-influxdb
-
-docker exec -it influxdb bash
-cd /usr/local/bin
-influx setup
-influx bucket list                                    # 记下 ID
-influx v1 auth create --read-bucket 303f1c88eaa4473a --write-bucket 303f1c88eaa4473a --username admin
-influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --default
 ```
 --- 

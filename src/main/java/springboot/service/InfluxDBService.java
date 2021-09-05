@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
  * -    tags            有索引的属性
  * -    fields          没有索引的属性
  * <p>
+ * 时间序列数据的存储和计算 - 概述：https://developer.aliyun.com/article/104243
  * Influxdb 详解：https://www.cnblogs.com/gaoguangjun/p/8513054.html
  * 使用时序数据库 InfluxDB：https://blog.didispace.com/spring-boot-learning-2-6-3/
  *
