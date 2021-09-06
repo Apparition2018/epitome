@@ -6,7 +6,7 @@
 1. 文件系统  
     ![Zookeeper 文件系统](http://img2.mukewang.com/60c24f0d000148fb03860338.jpg)
     - 每个目录都是一个 znode 节点
-    - znode 节点可直接存储数据:
+    - znode 节点可直接存储数据
     - 类型：持久化、持久化顺序、临时、临时顺序
 2. 通知机制
     - 客户端监听关心的 znode 节点

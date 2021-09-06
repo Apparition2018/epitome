@@ -40,9 +40,7 @@ public class CompletionServiceDemo extends Demo {
                 // Future<V>        poll(long timeout, TimeUnit unit)
                 // 检索并删除代表下一个已完成任务的Future，指定最大阻塞时间
                 // Map<Integer, String> callMap = completionService.poll(300, TimeUnit.MILLISECONDS).get();
-                callMap.forEach((k, v) -> {
-                    p(String.format("%s：任务 %s 运行完毕！", k, v));
-                });
+                callMap.forEach((k, v) -> p(String.format("%s：任务 %s 运行完毕！", k, v)));
             }
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();

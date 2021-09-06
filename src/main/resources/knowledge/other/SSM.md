@@ -140,6 +140,7 @@ Spring SpringMVC Mybatis
 >   - @PostConstruct @PreDestroy：指定初始化方法和销毁方法
 >   - @Value("#{config.max-wait}")：config 是 Spring 管理 Bean 的 id
 >   - @Value("${jdbc.password:root"}})，若找不到 jdbc.password 属性值，则默认值 root
+>- [循环依赖](https://www.zhihu.com/question/438247718)
 >### Spring MVC
 >- 用来简化基于 MVC 架构的 WEB 应用程序开发的框架，是 Spring 框架的一部分
 >
