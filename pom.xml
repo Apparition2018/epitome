@@ -36,9 +36,9 @@
         <commons-configuration2.version>2.7</commons-configuration2.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <commons-cli.version>1.4</commons-cli.version>
-        <hutool.version>5.7.9</hutool.version>
+        <hutool.version>5.7.11</hutool.version>
         <tika.version>1.27</tika.version>
-        <okhttps.version>3.1.4</okhttps.version>
+        <okhttps.version>3.1.5</okhttps.version>
         <retrofit2.version>2.9.0</retrofit2.version>
         <minio.version>8.3.0</minio.version>
         <fastjson.version>1.2.78</fastjson.version>
@@ -51,7 +51,7 @@
         <kaptcha.version>2.3.2</kaptcha.version>
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
         <lucene.version>8.9.0</lucene.version>
-        <oshi.version>5.8.1</oshi.version>
+        <oshi.version>5.8.2</oshi.version>
         <jsch.version>0.1.55</jsch.version>
         <thumbnailator.version>0.4.14</thumbnailator.version>
         <emoji.version>5.1.1</emoji.version>

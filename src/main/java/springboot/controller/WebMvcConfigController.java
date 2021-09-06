@@ -53,28 +53,32 @@ public class WebMvcConfigController {
      */
     @GetMapping("configureAsyncSupport")
     @ApiOperation("配置异步")
-    @ApiImplicitParam(name = "isAsyncReturnValue", value = "是否异步返回值", required = true, paramType = "query", dataType = "Integer", dataTypeClass = Integer.class, defaultValue = "1")
-    public String configureAsyncSupport(int isAsyncReturnValue) throws ExecutionException, InterruptedException {
-        if (isAsyncReturnValue == 0) {
+    @ApiImplicitParam(name = "isAsyncReturnValue", value = "异步是否返回值", required = true, paramType = "query", dataType = "Integer", dataTypeClass = Integer.class, defaultValue = "0")
+    public String configureAsyncSupport(Integer asyncIsReturnValue) throws ExecutionException, InterruptedException {
+        if (asyncIsReturnValue == 0) {
             applicationContext.getBean(WebMvcConfigController.class).asyncVoid();
         } else {
-            Future<Student> asyncResult = applicationContext.getBean(WebMvcConfigController.class).asyncResult();
-            log.info("{}: {}", Thread.currentThread().getName(), asyncResult.get());
+            log.info("async1 start");
+            Future<Integer> asyncResult1 = applicationContext.getBean(WebMvcConfigController.class).asyncResult(1);
+            log.info("async2 start");
+            Future<Integer> asyncResult2 = applicationContext.getBean(WebMvcConfigController.class).asyncResult(2);
+            log.info("{}: {}", Thread.currentThread().getName(), asyncResult1.get());
+            log.info("{}: {}", Thread.currentThread().getName(), asyncResult2.get());
         }
         return "OK";
     }
 
     @Async
     public void asyncVoid() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(1);
-        log.info("{}: {}", Thread.currentThread().getName(), new Student(1, "ljh"));
+        TimeUnit.SECONDS.sleep(2);
+        log.info("{}: {}", Thread.currentThread().getName(), 1);
     }
 
     @Async
-    public Future<Student> asyncResult() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(1);
-        log.info("{}: {}", Thread.currentThread().getName(), new Student(1, "ljh"));
-        return new AsyncResult<>(new Student(1, "ljh"));
+    public Future<Integer> asyncResult(Integer i) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(i);
+        log.info("{}: {}", Thread.currentThread().getName(), i);
+        return new AsyncResult<>(i + 2);
     }
 
     /**

@@ -102,6 +102,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * 异步请求和异步调用有区别：https://mp.weixin.qq.com/s/Vqj7L9hQL9b11LEdDWp-HQ
      * SpringBoot 的四种异步处理：https://hello.blog.csdn.net/article/details/113924477
      * 1.@Async
+     * -    @Async 无效原因：https://blog.csdn.net/weixin_42054155/article/details/106579769
      * 2.Runnable/Callable
      * 3.WebAsyncTask
      * 4.DeferredResult
