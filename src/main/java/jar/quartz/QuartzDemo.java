@@ -10,6 +10,15 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Quartz
+ * cron 表达式：秒 分 时 日 月 周 年
+ * *：可用在所有字段，表示每
+ * ?：只能用在日或周，日或周只能有一个字段为特定值（*或数字），另一个字段为 ?
+ * -：范围
+ * ,：列表
+ * /：等步长，如 0/3 表示从0开始每3秒执行
+ * <p>
+ * Quartz的cron表达式：https://www.cnblogs.com/opaljc/archive/2012/05/24/2516392.html
+ * 在线Cron表达式生成器：https://cron.qqe2.com/
  *
  * @author ljh
  * created on 2019/8/8 19:39
