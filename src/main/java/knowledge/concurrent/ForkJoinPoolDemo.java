@@ -26,35 +26,35 @@ import java.util.stream.LongStream;
  */
 public class ForkJoinPoolDemo {
 
+    private static final StopWatch stopWatch = new StopWatch();
+
     public static void main(String[] args) {
-        long[] numbers = LongStream.rangeClosed(1, 100000000).toArray();
+        long[] numbers = LongStream.rangeClosed(1, 1_0000_0000L).toArray();
         Calculator calculator;
         long result;
 
         stopWatch.start();
         calculator = new ForkJoinCalculator();
         result = calculator.sumUp(numbers);
-        System.out.println("结果为：" + result + "，Fork/Join 耗时：" + stopWatch.getTime() + "ms\n");
+        System.out.printf("结果为：%s，Fork/Join 耗时：%sms%n%n", result, stopWatch.getTime());
 
         stopWatch.reset();
         stopWatch.start();
         calculator = new ForLoopCalculator();
         result = calculator.sumUp(numbers);
-        System.out.println("结果为：" + result + "，For Loop 耗时：" + stopWatch.getTime() + "ms\n");
+        System.out.printf("结果为：%s，For Loop 耗时：%sms%n%n", result, stopWatch.getTime());
 
         stopWatch.reset();
         stopWatch.start();
         calculator = new ExecutorServiceCalculator();
         result = calculator.sumUp(numbers);
-        System.out.println("结果为：" + result + "，ExecutorService 耗时：" + stopWatch.getTime() + "ms\n");
+        System.out.printf("结果为：%s，ExecutorService 耗时：%sms%n%n", result, stopWatch.getTime());
 
         stopWatch.reset();
         stopWatch.start();
         result = LongStream.rangeClosed(0, numbers.length).parallel().reduce(0, Long::sum);
-        System.out.println("结果为：" + result + "，Stream 耗时：" + stopWatch.getTime() + "ms\n");
+        System.out.printf("结果为：%s，Stream 耗时：%sms", result, stopWatch.getTime());
     }
-
-    private static StopWatch stopWatch = new StopWatch();
 
     interface Calculator {
         long sumUp(long[] numbers);
@@ -62,14 +62,14 @@ public class ForkJoinPoolDemo {
 
     static class ForkJoinCalculator implements Calculator {
 
-        private ForkJoinPool pool;
+        private final ForkJoinPool pool;
 
         // 执行任务 (RecursiveTask 有返回值，RecursiveAction 无返回值)
         static class SumTask extends RecursiveTask<Long> {
             private static final long serialVersionUID = -5848348290388247808L;
-            private long[] numbers;
-            private int from;
-            private int to;
+            private final long[] numbers;
+            private final int from;
+            private final int to;
 
             public SumTask(long[] numbers, int from, int to) {
                 this.numbers = numbers;
@@ -126,8 +126,8 @@ public class ForkJoinPoolDemo {
 
     static class ExecutorServiceCalculator implements Calculator {
 
-        private int parallelism;
-        private ExecutorService pool;
+        private final int parallelism;
+        private final ExecutorService pool;
 
         public ExecutorServiceCalculator() {
             parallelism = Runtime.getRuntime().availableProcessors();
@@ -135,9 +135,9 @@ public class ForkJoinPoolDemo {
         }
 
         static class SumTask implements Callable<Long> {
-            private long[] numbers;
-            private int from;
-            private int to;
+            private final long[] numbers;
+            private final int from;
+            private final int to;
 
             public SumTask(long[] numbers, int from, int to) {
                 this.numbers = numbers;
