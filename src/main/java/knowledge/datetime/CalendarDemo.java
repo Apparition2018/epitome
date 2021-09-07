@@ -44,7 +44,8 @@ public class CalendarDemo extends Demo {
         p(CAL.getTimeZone());                               // sun.util.calendar.ZoneInfo[id="Asia/Shanghai",offset=28800000,dstSavings=0,useDaylight=false,transitions=31,lastRule=null]
 
         // int	            get(int field)                  返回给定日历字段的值
-        p(CAL.get(Calendar.MONTH));                         // 1
+        p(CAL.get(Calendar.YEAR));                          // 2018
+        p(CAL.get(Calendar.MONTH));                         // 1，从 0 开始
         p(CAL.get(Calendar.DAY_OF_MONTH));                  // 25
 
         // int	            getActualMaximum(int field)     给定此 Calendar 的时间值，返回指定日历字段可能拥有的最大值
