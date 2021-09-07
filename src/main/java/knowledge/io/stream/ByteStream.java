@@ -7,11 +7,9 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 /**
- * ByteStream
- * 字节流
- * <p>
- * Java IO包装流如何关闭？:https://blog.csdn.net/q13315149158/article/details/79277403
- * https://blog.csdn.net/u012426327/article/details/77160400
+ * ByteStream 字节流
+ * Java IO 包装流如何关闭：https://blog.csdn.net/q13315149158/article/details/79277403
+ * IO 流详解：https://blog.csdn.net/u012426327/article/details/77160400
  *
  * @author ljh
  * created on 2020/9/14 11:02

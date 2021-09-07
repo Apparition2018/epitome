@@ -77,7 +77,7 @@ public class Demo {
     public static final String BASE_URL = "http://localhost:3333/";
     public static final String DEMO_URL = "http://localhost:3333/demo/";
     public static final String USER_DIR = System.getProperty("user.dir");
-    public static final String DESKTOP = "C:/Users/Administrator/Desktop";
+    public static final String DESKTOP = "C:/Users/Administrator/Desktop/";
     public static final String JAVA_PATH = "src/main/java/";
     public static final String RESOURCES_PATH = "src/main/resources/";
     public static final String RESOURCES_ABSOLUTE_PATH = USER_DIR + File.separator + RESOURCES_PATH;

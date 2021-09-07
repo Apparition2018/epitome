@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
  * 弱引用：无论内存是否充足，都会回收
  * 虚引用：跟没有引用与之关联一样，任何时候都可能被回收
  * <p>
- * Java 如何有效地避免OOM：善于利用软引用和弱引用：https://www.cnblogs.com/dolphin0520/p/3784171.html
+ * Java 如何有效地避免 OOM：善于利用软引用和弱引用：https://www.cnblogs.com/dolphin0520/p/3784171.html
  *
  * @author Arsenal
  * created on 2020/11/7 23:00
@@ -27,7 +27,7 @@ public class ReferenceDemo extends Demo {
 
     /**
      * 软引用
-     * 你不可不知的Java引用类型之——软引用：https://www.cnblogs.com/mfrank/p/9781216.html
+     * 你不可不知的 Java 引用类型之——软引用：https://www.cnblogs.com/mfrank/p/9781216.html
      */
     static class SoftReferenceDemo {
 
@@ -48,8 +48,8 @@ public class ReferenceDemo extends Demo {
         }
 
         static class OOMClass {
-            private String name;
-            private int[] oom = new int[1024 * 100];
+            private final String name;
+            private final int[] oom = new int[1024 * 100];
 
             public OOMClass(String name) {
                 this.name = name;
@@ -58,9 +58,9 @@ public class ReferenceDemo extends Demo {
 
         static class SoftCache<T> {
             // 引用队列
-            private ReferenceQueue<T> referenceQueue = new ReferenceQueue<>();
+            private final ReferenceQueue<T> referenceQueue = new ReferenceQueue<>();
             // 保存软引用集合，在引用对象被回收后销毁
-            private List<Reference<T>> list = new ArrayList<>();
+            private final List<Reference<T>> list = new ArrayList<>();
 
             // 添加缓存对象
             public synchronized void add(T obj) {
@@ -98,7 +98,7 @@ public class ReferenceDemo extends Demo {
 
     /**
      * 弱引用
-     * 你不可不知的Java引用类型之——弱引用：https://www.cnblogs.com/mfrank/p/9829993.html
+     * 你不可不知的 Java 引用类型之——弱引用：https://www.cnblogs.com/mfrank/p/9829993.html
      */
     @Test
     public void testWeakReference() {
