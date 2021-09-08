@@ -17,14 +17,14 @@ import java.util.Objects;
  */
 public class SerializationUtilsDemo extends Demo {
 
-    private static Date date = new Date();
+    private static final Date DATE = new Date();
 
     @Test
     public void test1() {
         // static <T extends Serializable> T	clone(T object)
         // 深克隆
-        Date cDate = SerializationUtils.clone(date);
-        p(Objects.equals(date, cDate));     // true
+        Date cDate = SerializationUtils.clone(DATE);
+        p(Objects.equals(DATE, cDate));     // true
 
         // static byte[]	    serialize(Serializable obj)
         // 序列化，Object → byte[]
@@ -43,13 +43,13 @@ public class SerializationUtilsDemo extends Demo {
              InputStream is = new FileInputStream(DEMO_PATH + "Serialization.obj")) {
             // static void	    serialize(Serializable obj, OutputStream outputStream)
             // 序列持久化，Object → bytes[] → File
-            SerializationUtils.serialize(date, os);
+            SerializationUtils.serialize(DATE, os);
 
             // static <T> T	    deserialize(InputStream inputStream)
             // 反序列持久化，File → bytes[] → T
             Date deDate = SerializationUtils.deserialize(is);
 
-            p(date.equals(deDate)); // true
+            p(DATE.equals(deDate)); // true
         } catch (IOException e) {
             e.printStackTrace();
         }

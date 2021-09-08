@@ -49,38 +49,24 @@ public class MapUtilsDemo extends Demo {
      * static <K> XXX	getXXX(Map<? super K,?> map, K key[, Boolean defaultValue])
      */
     @Test
-    public void getXXX() {
-        p(MapUtils.getString(map, 4, "D")); // 4
-        p(MapUtils.getIntValue(map, 1));    // 1
-    }
+    public void testMapUtils() {
+        // static <K> Xxx           getXxx(Map<? super K, ?> map, K key[, Boolean defaultValue])
+        p(MapUtils.getString(map, 4, "D")); // D
+        p(MapUtils.getString(map, 1));      // A
+        p(MapUtils.getIntValue(map, 1));    // 0
 
-    /**
-     * static <K,V> Map<V,K>	invertMap(Map<K,V> map)
-     * 键值倒置
-     */
-    @Test
-    public void invertMap() {
-        p(MapUtils.invertMap(map)); // {A=1, B=2, C=3}
-    }
+        // static <K, V> Map<V, K>  invertMap(Map<K, V> map)
+        p(MapUtils.invertMap(map));         // {A=1, B=2, C=3}
 
-    /**
-     * static <K,V> Map<K,V>	putAll(Map<K,V> map, Object[] array)
-     * Puts all the keys and values from the specified array into the map.
-     */
-    @Test
-    public void putAll() {
-        p(MapUtils.putAll(map, new Object[]{4, "D", 5, "E", 6, "F"}));
-        // {1=A, 2=B, 3=C, 4=D, 5=E, 6=F}
-    }
+        // static <K, V> Map<K, V>  putAll(Map<K, V> map, Object[] array)
+        p(MapUtils.putAll(map, new Object[]{4, "D", 5, "E"}));
+        // {1=A, 2=B, 3=C, 4=D, 5=E}
 
-    /**
-     * static <K> void	safeAddToMap(Map<? super K,Object> map, K key, Object value)
-     * 如果 value 是 null，则用 "" 代替
-     */
-    @Test
-    public void safeAddToMap() {
-        MapUtils.safeAddToMap(map, 4, "D");
-        p(Demo.map); // {1=A, 2=B, 3=C}
+        // static <K> void          safeAddToMap(Map<? super K, Object> map, K key, Object value)
+        // 如果 value 是 null，用 "" 代替
+        MapUtils.safeAddToMap(map, 4, null);
+        map.put(5, null);
+        p(map); // {1=A, 2=B, 3=C, 4=, 5=null}
     }
 
 }

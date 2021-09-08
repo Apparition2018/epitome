@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * RedisTopicEnums
  *
- * @author Administrator
+ * @author ljh
  * created on 2021/9/1 20:35
  */
 @Getter

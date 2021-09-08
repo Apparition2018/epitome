@@ -44,9 +44,9 @@ public class MultimapDemo extends Demo {
         // 把 multimap 映射成 Map<K,Collection<V>>，支持 remove 和修改操作，但是不支持 put 和 putAll
         p(map.asMap());                 // {1=[2, 2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3]}
 
-        // boolean	                    containsEntry(@Nullable Object key, @Nullable Object value)
-        // boolean	                    containsKey(@Nullable Object key)
-        // boolean	                    containsValue(@Nullable Object value)
+        // boolean	                    containsEntry(Object key, Object value)
+        // boolean	                    containsKey(Object key)
+        // boolean	                    containsValue(Object value)
         p(map.containsEntry(3, 3));     // true
         p(map.containsKey(3));          // true
         p(map.containsValue(3));        // true
@@ -60,8 +60,8 @@ public class MultimapDemo extends Demo {
         map.putAll(map2);
         p(map);                         // {1=[2, 2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3], 6=[4, 5], 7=[1, 7]}
 
-        // boolean	                    remove(@Nullable Object key, @Nullable Object value)
-        // Collection<V>                removeAll(@Nullable Object key)
+        // boolean	                    remove(Object key, Object value)
+        // Collection<V>                removeAll(Object key)
         map.remove(6, 4);
         map.remove(6, 5);
         map.removeAll(7);

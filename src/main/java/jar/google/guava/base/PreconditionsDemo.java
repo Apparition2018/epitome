@@ -27,15 +27,15 @@ public class PreconditionsDemo {
 
     /**
      * checkArgument:
-     * static void	checkArgument(boolean expression[, @Nullable Object errorMessage])
+     * static void	checkArgument(boolean expression[, Object errorMessage])
      * 检查 expression 是否为真，用于检查方法中参数，抛 IllegalArgumentException 异常
      * <p>
      * checkNotNull:
-     * static <T> T	checkNotNull(T reference[, @Nullable Object errorMessage])
+     * static <T> T	checkNotNull(T reference[, Object errorMessage])
      * 检查 reference 是否为 null，抛 NullPointerException 异常
      * <p>
      * checkState:
-     * static void	checkState(boolean expression[, @Nullable Object errorMessage])
+     * static void	checkState(boolean expression[, Object errorMessage])
      * 检查 expression 是否为真，但不涉及方法中的任何参数，抛 IllegalStateException 异常
      */
     @Test
@@ -55,10 +55,10 @@ public class PreconditionsDemo {
     }
 
     /**
-     * static int	checkElementIndex(int index, int size[, @Nullable Object errorMessage])
+     * static int	checkElementIndex(int index, int size[, Object errorMessage])
      * 检查 index 作为索引值对某个列表、字符串或数组是否有效
      * <p>
-     * static int	checkPositionIndex(int index, int size[, @Nullable Object errorMessage])
+     * static int	checkPositionIndex(int index, int size[, Object errorMessage])
      * 检查 index 作为位置值对某个列表、字符串或数组是否有效
      * <p>
      * static int	checkPositionIndexes(int start, int end, int size)

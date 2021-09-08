@@ -1,7 +1,6 @@
 package jar.apache.commons.collections4;
 
 import l.demo.Demo;
-import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.map.*;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
@@ -11,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Map
+ * Apache Map
  * <p>
  * FixedSizeMap             修饰另一个 Map，使其大小固定
  * FixedSizeSortedMap       修饰另一个 SortedMap，使其大小固定
@@ -36,62 +35,75 @@ import java.util.concurrent.TimeUnit;
  * @author Arsenal
  * created on 2020/11/14 14:19
  */
-public class MapDemo extends Demo {
+public class ApacheMap extends Demo {
 
     /**
-     * CaseInsensitiveMap
-     * 键的大小写不敏感
+     * CaseInsensitiveMap           键大小写不敏感
      */
     @Test
     public void testCaseInsensitiveMap() {
-        Map<String, Integer> invertMap = MapUtils.invertMap(map);
-        CaseInsensitiveMap<Object, Object> caseInsensitiveMap = new CaseInsensitiveMap<>(invertMap);
-        p(caseInsensitiveMap); // {a=1, b=2, c=3}
-        caseInsensitiveMap.put("A", 2);
-        p(caseInsensitiveMap); // {a=2, b=2, c=3}
+        Map<String, Integer> caseInsensitiveMap = new CaseInsensitiveMap<>();
+        caseInsensitiveMap.put("a", 1);
+        p(caseInsensitiveMap.get("A")); // 1
     }
 
     /**
-     * CompositeMap
-     */
-    @Test
-    public void testCompositeMap() {
-    }
-
-    /**
-     * DefaultedMap
+     * DefaultedMap                 修饰 Map，使其取值为 null 时返回默认值
      */
     @Test
     public void testDefaultedMap() {
+        DefaultedMap<Integer, String> defaultedMap = DefaultedMap.defaultedMap(map, "-");
+        p(defaultedMap.get(4)); // -
     }
 
     /**
-     * OrderedMap       定义一个 Map，维持进入顺序，并允许向前和向后迭代
-     * LinkedMap        一个维持顺序的 Map 实现，顺序为原始插入顺序
-     * ListOrderedMap   修饰另一个 Map，使其顺序保持为添加顺序
+     * OrderedMap                   维持顺序 Map，允许向前向后迭代
+     * LinkedMap                    维持插入顺序 Map
+     * ListOrderedMap               修饰 Map，使其保持插入顺序
      */
     @Test
-    public void testOrderedMap() {
+    public void testListOrderedMap() {
         LinkedMap<Integer, String> linkedMap = new LinkedMap<>();
         linkedMap.put(3, "C");
         linkedMap.put(2, "B");
         linkedMap.put(1, "A");
-        p(linkedMap);       // {3=C, 2=B, 1=A}
+        p(linkedMap);                   // {3=C, 2=B, 1=A}
+        p(linkedMap.firstKey());        // 3
+        p(linkedMap.previousKey(1));    // 2
 
         ListOrderedMap<Integer, String> listOrderedMap = ListOrderedMap.listOrderedMap(map);
         listOrderedMap.put(5, "F");
         listOrderedMap.put(4, "E");
-        p(listOrderedMap);  // {1=A, 2=B, 3=C, 5=F, 4=E}
-        
-        p(linkedMap.firstKey());        // 3
+        p(listOrderedMap);              // {1=A, 2=B, 3=C, 5=F, 4=E}
         p(listOrderedMap.lastKey());    // 4
-        p(listOrderedMap.nextKey(1));   // 2 
-        p(linkedMap.previousKey(1));    // 2
+        p(listOrderedMap.nextKey(1));   // 2
     }
 
     /**
-     * LRUMap
-     * 一个 Map 的实现，大小固定，当 Map 已装满时，会删除最近最少使用的 entry
+     * MultiKeyMap                  多键-1值 Map
+     */
+    @Test
+    public void testMultiKeyMap() {
+        MultiKeyMap<Integer, String> multiKeyMap = new MultiKeyMap<>();
+        multiKeyMap.put(1, 2, 3, "abc");
+        multiKeyMap.put(2, 3, 4, "bcd");
+        p(multiKeyMap);             // {MultiKey[2, 3, 4]=bcd, MultiKey[1, 2, 3]=abc}
+        p(multiKeyMap.get(2, 3));   // null
+        p(multiKeyMap.get(2, 3, 4));// bcd
+    }
+
+    /**
+     * MultiValuedMap               1键-多值 Map
+     */
+    @Test
+    public void testMultiValuedMap() {
+        MultiValuedMap<Integer, String> multiValuedMap = new ArrayListValuedHashMap<>(map);
+        multiValuedMap.put(3, "C");
+        p(multiValuedMap); // {1=[A], 2=[B], 3=[C, C]}
+    }
+
+    /**
+     * LRUMap                       最少使用 Map，大小固定
      */
     @Test
     public void testLRUMap() {
@@ -105,33 +117,7 @@ public class MapDemo extends Demo {
     }
 
     /**
-     * MultiKeyMap
-     * 一个 Map 的实现，允许多个键关联到一个值上
-     */
-    @Test
-    public void testMultiKeyMap() {
-        MultiKeyMap<Integer, String> multiKeyMap = new MultiKeyMap<>();
-        multiKeyMap.put(1, 2, 3, "abc");
-        multiKeyMap.put(2, 3, 4, "bcd");
-        p(multiKeyMap);             // {MultiKey[2, 3, 4]=bcd, MultiKey[1, 2, 3]=abc}
-        p(multiKeyMap.get(2, 3));   // null
-        p(multiKeyMap.get(2, 3, 4));// bcd
-    }
-
-    /**
-     * MultiValuedMap
-     * 定义一个 Map，允许每个键映衬一个集合的值
-     */
-    @Test
-    public void testMultiValuedMap() {
-        MultiValuedMap<Integer, String> multiValuedMap = new ArrayListValuedHashMap<>(map);
-        multiValuedMap.put(1, "A");
-        p(multiValuedMap); // {1=[A, A], 2=[B], 3=[C]}
-    }
-
-    /**
-     * PassiveExpiringMap
-     * 修饰另一个 Map，一旦达到 expired entries 的到期时间，就将其逐出
+     * PassiveExpiringMap           到期驱除 Map
      */
     @Test
     public void testPassiveExpiringMap() {
@@ -139,11 +125,16 @@ public class MapDemo extends Demo {
         passiveExpiringMap.put(1, "A");
         passiveExpiringMap.put(2, "B");
         passiveExpiringMap.put(3, "C");
-        p(passiveExpiringMap);          // {1=A, 2=B, 3=C}
         p(passiveExpiringMap.get(1));   // A
         sleep(2, TimeUnit.SECONDS);
-        p(passiveExpiringMap);          // {1=A, 2=B, 3=C}
         p(passiveExpiringMap.get(1));   // null
+    }
+
+    /**
+     * CompositeMap
+     */
+    @Test
+    public void testCompositeMap() {
     }
 
     /**
@@ -151,6 +142,5 @@ public class MapDemo extends Demo {
      */
     @Test
     public void testStaticBucketMap() {
-        
     }
 }

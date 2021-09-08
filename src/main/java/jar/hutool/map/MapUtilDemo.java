@@ -1,8 +1,6 @@
 package jar.hutool.map;
 
 import cn.hutool.core.collection.ListUtil;
-import cn.hutool.core.lang.Editor;
-import cn.hutool.core.lang.Filter;
 import cn.hutool.core.map.MapBuilder;
 import cn.hutool.core.map.MapUtil;
 import l.demo.Demo;
@@ -63,7 +61,7 @@ public class MapUtilDemo extends Demo {
         p(MapUtil.getAny(map2, 1, 3, 5));       // {1=A, 3=C, 5=E}
 
         // filter(Map, Filter)                                  经过 Filter 判断返回
-        p(MapUtil.filter(map2, (Filter<Map.Entry<Integer, String>>) entry -> entry.getKey() % 2 == 1));
+        p(MapUtil.filter(map2, entry -> entry.getKey() % 2 == 1));
         // {1=A, 3=C, 5=E, 7=G, 9=I}
 
         // toListMap(Iterable<? extends Map<K, V>> mapList)     合并相同的键，键的值合并为列表

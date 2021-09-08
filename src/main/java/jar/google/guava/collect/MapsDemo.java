@@ -19,14 +19,14 @@ import java.util.Objects;
  * <p>
  * static ConcurrentMap<K, V>   newConcurrentMap()                                  创建 ConcurrentMap
  * static TreeMap<K, V>         newTreeMap([SortedMap<K, ? extends V> map])         创建 TreeMap
- * static TreeMap<K, V>         newTreeMap(@Nullable Comparator<C> comparator)      创建 TreeMap，根据 Comparator
+ * static TreeMap<K, V>         newTreeMap(Comparator<C> comparator)      创建 TreeMap，根据 Comparator
  * static EnumMap<K, V>         newEnumMap(Map<K, ? extends V>/Class<K>)            创建 EnumMap
  * static IdentityHashMap<K, V> newIdentityHashMap()                                创建 IdentityHashMap
  * <p>
  * static ImmutableMap<K, V>    immutableEnumMap(Map<K, ? extends V> map)           Map → immutableEnumMap
  * static XXXMap<K, V>          unmodifiableXXXMap(XXXMap<K, ? extends V> map)      XXXMap → unmodifiableXXXMap
  * static XXXMap<K, V>          synchronizedXXXMap(XXXMap<K, V> map)                XXXMap → synchronizedXXXMap
- * static Entry<K, V>           immutableEntry(@Nullable K key, @Nullable V value)  key + value → Entry
+ * static Entry<K, V>           immutableEntry(K key, V value)  key + value → Entry
  * static Converter<A, B>       asConverter(BiMap<A, B> bimap)                      BiMap → Converter
  *
  * @author ljh
