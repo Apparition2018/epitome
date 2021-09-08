@@ -37,13 +37,22 @@ public class WordUtilsDemo {
      */
     @Test
     public void capitalize() {
-        p(WordUtils.capitalize("i am fine")); // I Am Fine
-        p(WordUtils.capitalize("i aM.fine", '.')); // I aM.Fine
+        p(WordUtils.capitalize("i am fine"));               // I Am Fine
+        p(WordUtils.capitalize("i aM.fine", '.'));          // I aM.Fine
         p(WordUtils.capitalize("i am fine", new char[]{})); // I am fine
 
-        p(WordUtils.capitalizeFully("i aM.fine", '.')); // I am.Fine
+        p(WordUtils.capitalizeFully("i aM.fine", '.'));     // I am.Fine
 
-        p(WordUtils.uncapitalize("I am fine")); // i am fine
+        p(WordUtils.uncapitalize("I am fine"));             // i am fine
+    }
+
+    /**
+     * static String	swapCase(String str)
+     * 转换大小写
+     */
+    @Test
+    public void swapCase() {
+        p(WordUtils.swapCase("The dog has a BONE")); // tHE DOG HAS A bone
     }
 
     /**
@@ -63,15 +72,6 @@ public class WordUtilsDemo {
     @Test
     public void initials() {
         p(WordUtils.initials("People's Republic of China")); // PRoC
-    }
-
-    /**
-     * static String	swapCase(String str)
-     * 转换大小写
-     */
-    @Test
-    public void swapCase() {
-        p(WordUtils.swapCase("The dog has a BONE")); // tHE DOG HAS A bone
     }
 
     /**
