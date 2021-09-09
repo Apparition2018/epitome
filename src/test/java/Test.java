@@ -18,7 +18,6 @@
 // LuckyFrameWeb
 // uni-app, Flutter, avue, Ant Design
 
-// 【小家Spring】Spring Framework提供的实用纯Java工具类大合集（一）：https://blog.csdn.net/f641385712/article/details/86749481
 // To Be Top Javaer - Java工程师成神之路：https://github.com/hollischuang/toBeTopJavaer
 // Java程序员从笨鸟到菜鸟全部博客目录：https://blog.csdn.net/u012426327/article/details/77765651
 // 史上最全设计模式导学目录（完整版）：https://blog.csdn.net/u012426327/article/details/77766203

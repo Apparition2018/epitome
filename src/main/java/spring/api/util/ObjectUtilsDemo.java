@@ -4,6 +4,8 @@ import org.springframework.util.ObjectUtils;
 
 /**
  * ObjectUtils
+ * <p>
+ * static boolean   isArray(Object obj)       判断是否为数组
  *
  * @author ljh
  * created on 2021/6/18 17:07
@@ -11,13 +13,10 @@ import org.springframework.util.ObjectUtils;
 public class ObjectUtilsDemo {
 
     public static void main(String[] args) {
-        
-        String x = "a";
-        String y = "a";
-        String z = null;
 
-        System.out.println(ObjectUtils.nullSafeEquals(x, y)); // true
-        System.out.println(ObjectUtils.nullSafeEquals(x, z)); // false
-        System.out.println(ObjectUtils.nullSafeEquals(z, x)); // false
+        // 判断相等，null 安全
+        System.out.println(ObjectUtils.nullSafeEquals("a", "a"));   // true
+        System.out.println(ObjectUtils.nullSafeEquals("a", null));  // false
+        System.out.println(ObjectUtils.nullSafeEquals(null, "a"));  // false
     }
 }

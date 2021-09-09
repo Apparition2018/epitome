@@ -48,7 +48,7 @@ public class ClassDemo {
      * static Class<?>	forName(String name[, boolean initialize, ClassLoader loader])
      * 使用给定的类加载器，返回与带有给定字符串名的类或接口相关联的 Class 对象
      * <p>
-     * forName 只是把一个类加载到内存中，之所以会初始化 static 代码，那是由类加载机制所决定的
+     * forName() 只是把一个类加载到内存中，之所以会初始化 static 代码，那是由类加载机制所决定的
      */
     @Test
     public void forName() throws ClassNotFoundException {
@@ -84,8 +84,6 @@ public class ClassDemo {
      * String	getName()           返回此 Class 对象所表示的实体（类、接口、数组类、基本类型或 void）名称
      * String	getCanonicalName()  返回 JLS (Java Language Specification) 中所定义的底层类的规范化名称
      * String	getSimpleName()     返回源代码中给出的底层类的简称
-     * <p>
-     * https://blog.csdn.net/moakun/article/details/80402562
      */
     @Test
     public void getName() {
@@ -129,11 +127,10 @@ public class ClassDemo {
 
 
     /**
-     * boolean	isAssignableFrom(Class<?> cls)  判定此 Class 对象所表示的类或接口与指定的 Class 参数所表示的类或接口是否相同，或是否是其超类或超接口
+     * boolean	isAssignableFrom(Class<?> cls)  判定此 Class 对象所表示的类或接口与指定的 Class 参数所表示的类或接口是否相同，或是其超类或超接口
      * boolean	isInstance(Object obj)          判定指定的 Object 是否与此 Class 所表示的对象赋值兼容
      * <p>
-     * instanceof, isInstance, isAssignableFrom 的区别：
-     * https://www.cnblogs.com/exmyth/p/3164492.html
+     * instanceof, isInstance, isAssignableFrom 的区别：https://www.cnblogs.com/exmyth/p/3164492.html
      */
     @Test
     public void is() {

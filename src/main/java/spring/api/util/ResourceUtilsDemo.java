@@ -21,6 +21,5 @@ public class ResourceUtilsDemo {
         System.out.println(file); // D:\Liang\git\epitome\target\classes\application.properties
         URL url = ResourceUtils.getURL(ResourceUtils.CLASSPATH_URL_PREFIX + "application.properties");
         System.out.println(url); // file:/D:/Liang/git/epitome/target/classes/application.properties
-
     }
 }

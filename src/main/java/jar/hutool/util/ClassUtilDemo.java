@@ -49,5 +49,4 @@ public class ClassUtilDemo {
         // static boolean       equals(Class<?>, className, ignoreCase) 类与类名是否相等
         p(ClassUtil.equals(Person.class, "Person", true));              // true
     }
-
 }
