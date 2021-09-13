@@ -164,9 +164,9 @@
    - 经常一起使用的字段
 9. 水平分表：mod(id, 5)；查询用分表，统计用总表
 10. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
+11. 反范式
+12. 汇总表/缓存表，定时生成数据，用于用户数据耗时操作
 >#### 参考
->1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
->2. [SQL 语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html) 39~
 >3. [SQL 语句性能优化](https://www.cnblogs.com/zhangtan/p/7440960.html)
 >4. [mysql建立索引的几大原则](https://zhuanlan.zhihu.com/p/88963084)
 >5. [MySQL 之覆盖索引](https://zhuanlan.zhihu.com/p/145119015)

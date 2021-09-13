@@ -71,6 +71,8 @@
 >```
 ---
 ## 优化
+1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
+2. [SQL 语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html) 39~
 >### 慢查询
 >1. 开启慢查询
 >```sql
