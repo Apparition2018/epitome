@@ -8,6 +8,10 @@
 4. [SQL 语法速成手册](https://mp.weixin.qq.com/s?__biz=MzU2MTI4MjI0MQ==&mid=2247491550&idx=2&sn=cfe8ed6eea2e61646e5cc3d0b5e96b68)
 ## 课程
 1. [数据库设计那些事](https://www.imooc.com/learn/117)
+2. [性能优化之MySQL优化](https://www.imooc.com/learn/194)
+3. [MySQL开发技巧（一）](https://www.imooc.com/learn/398)
+4. [MySQL开发技巧（二）](https://www.imooc.com/learn/427)
+5. [MySQL开发技巧（三）](https://www.imooc.com/learn/449)
 ---
 ## 问题
 1. [MySQL, SQL Server, Oracle 的区别](https://www.cnblogs.com/cherxu/p/6856262.html)
@@ -136,13 +140,13 @@
    8. 谨慎使用 in 和 not in，考虑是否能用 between，exists，not exists 代替
    9. 复合索引，必须使用该索引中的第一个字段作为条件
 2. 索引相关
-   - [选择性高的列放在索引的前面](https://www.cnblogs.com/lty-fly/p/10693849.html)
+   - 索引越小越好
+   - [选择性高的列放在索引的前面](https://blog.csdn.net/li_canhui/article/details/86487693)
    - 索引不要包含太长的字段，可考虑前缀索引：ALTER TABLE <table_name> ADD INDEX idx_content(content(6))
    - 索引不是越多越好
       - 索引也占用空间，还需要定期维护索引
-      - DML 操作都需要重建索引，消耗资源
-      - 执行计划的制定要消耗更多的资源
-   - MYSQL 不要使用强制索引关键字
+      - DML 操作需要重建索引
+      - DQL 操作优化器选择使用哪一个索引需要时间
 3. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
    1. 增加网络开销
    2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
@@ -151,11 +155,15 @@
    - JOIN 小表连大表
    - IN 小表内大表外
    - EXISTS 小表外大表内
-5. 避免使用子查询
+5. [避免使用子查询和 join](https://blog.csdn.net/weixin_38676357/article/details/81510079)
 6. [使用 explain 查看执行计划](https://tonydong.blog.csdn.net/article/details/103579177)
 7. 不要使用 OFFSET 实现分页
-8. 垂直分表：把不常读取的字段分割到另外一张表中
-9. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
+8. 垂直分表
+   - 不常用的字段
+   - 大字段
+   - 经常一起使用的字段
+9. 水平分表：mod(id, 5)；查询用分表，统计用总表
+10. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
 >#### 参考
 >1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
 >2. [SQL 语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html) 39~

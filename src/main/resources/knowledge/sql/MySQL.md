@@ -70,3 +70,99 @@
 >DROP procedure [IF EXISTS] procedure_name;
 >```
 ---
+## 优化
+>### 慢查询
+>1. 开启慢查询
+>```sql
+>1. show variables like '%slow%';                           -- 查看慢查询日志文件位置
+>2. set global log_queries_not_using_indexes = on;
+>3. set global long_query_time = 1;
+>4. set global slow_query_log = on;
+>```
+>2. 慢查询日志存储格式
+>```
+># Time: 2021-09-13T04:00:44.885048Z
+># User@Host: root[root] @  [172.17.0.1]  Id:    12
+># Query_time: 0.000205  Lock_time: 0.000099 Rows_sent: 2  Rows_examined: 2
+>SET timestamp=1631505644;
+>select * from store limit 10;
+>```
+>3. 慢查询日志分析工具
+>   1. mysqldumpslow
+>   ```
+>       # 查看帮助
+>       mysqldumpslow -h
+>       mysqldumpslow mysqldumpslow [ OPTS... ] [ LOGS... ]
+>   ```
+>   2. pt-query-digest
+>   ```
+>       # 查看帮助
+>       pt-query-digest -h
+>       # 输出到文件
+>       pt-query-digest slow.log > slow_log.report
+>       # 输出到数据库表
+>       pt-query-digest slow.log -review h=127.0.0.1,D=test,p=root,P=3306,u=root,t=query_view \
+>       --create-reviewtable --review-history t=hostname_slow
+>   ```
+>   3. 关注哪些慢查询？
+>   ```
+>       1. 次数多且占用时间长的 SQL
+>       2. IO 大的 SQL                    pt-query-digest 的 Rows examine
+>       3. 未命中索引的 SQL                pt-query-digest 的 Rows examine 和 Rows Send 的对比
+>   ```
+>### [explain](https://tonydong.blog.csdn.net/article/details/103579177)
+>```
+>type                   const → eq_reg → ref → range → index → ALL
+>possible_keys          可能用到的索引
+>key                    实际使用的索引
+>ken_len                使用索引的长度，越短越好
+>ref                    显示索引的哪一列被使用
+>rows                   返回结果需要查询的行数
+>extra                  额外操作：Using temporary 创建了临时表；Using filesort 额外的排序操作
+>```
+>### 索引
+>1. 查找重复索引及冗余索引
+>   1. 语句查询
+>   ```sql
+>       user information_schema;
+>       
+>       select s1.table_schema, s1.table_name, s1.index_name as index1, s2.index_name as index2, s1.column_name as dup_col 
+>       from statistics s1
+>       join statistics s2 on s1.table_schema = s2.table_schema and s1.table_name = s2.table_name and s1.seq_in_index = s2.seq_in_index and s1.column_name = s2.column_name
+>       where s1.seq_in_index = 1 and s1.index_name <> s2.index_name;
+>   ```
+>   2. pt-duplicate-key-checker
+>2. 删除不用的索引
+>- pt-index-usage
+>### 配置
+>1. 系统配置
+>   - 网络方面，修改 /etc/sysctl.conf
+>   ```
+>       # 增加 tcp 支持的队列数
+>       net.ipv4.tcp_max_syn_backlog = 65535
+>       # 减少断开连接时，资源回收
+>       net.ipv4.tcp_max_tw_buckets = 8000
+>       net.ipv4.tcp_tw_reuse = 1
+>       net.ipv4.tcp_tw_recycle = 1
+>       net.ipv4.tcp_fin_timeout = 10
+>   ```
+>   - 打开文件数限制：ulimit -a 查看目录的各位限制，可以修改 /etc/security/limits.conf
+>   ```
+>       soft nofile 65535
+>       hard nofile 65535
+>   ```
+>   - 关闭防火墙 iptables, selinux
+>2. MySQL 配置
+>- 查找配置文件的顺序：/usr/sbin/mysqld --verbose --help | grep -A 1 'Default options'
+>```
+>innodb_buffer_pool_size            # 缓冲池大小；如果只有 innodb 表，推荐配置为总内存的75%
+>innodb_buffer_pool_instances       # 缓冲池的个数，默认1个
+>innodb_flush_log_at_trx_commit     # 0：每秒 flush | 1：每次 flush | 2：每次刷到缓冲区每秒 flush；默认1，推荐2
+>innodb_log_buffer_size             # 能存在一秒日志即可
+>innodb_read_io_threads             # 推荐 CPU 核心数和读写情况决定
+>innodb_write_io_threads
+>innodb_file_per_table              # 每个表使用独立的表空间，默认 OFF，推荐 ON
+>innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计信息
+>```
+>3. 第三方配置工具：[Percona Configuration Wizard](https://tools.percona.com/wizard)
+---
