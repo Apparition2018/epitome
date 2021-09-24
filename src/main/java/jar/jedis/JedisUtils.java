@@ -16,8 +16,12 @@ public class JedisUtils {
 
     static {
         JedisPoolConfig poolConfig = new JedisPoolConfig();
-        poolConfig.setMaxTotal(30);
+        poolConfig.setMaxTotal(20);
         poolConfig.setMaxIdle(10);
+        poolConfig.setMinIdle(2);
+        poolConfig.setTestOnBorrow(true);
+        poolConfig.setTestOnReturn(false);
+        poolConfig.setBlockWhenExhausted(true);
         jedisPool = new JedisPool(poolConfig, "127.0.0.1", 6379);
     }
 

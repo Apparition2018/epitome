@@ -168,3 +168,45 @@
 >```
 >3. 第三方配置工具：[Percona Configuration Wizard](https://tools.percona.com/wizard)
 ---
+## 锁
+- [MySQL 8.0 Reference Manual :: InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
+- [MySQL 锁机制详解](https://www.cnblogs.com/volcano-liu/p/9890832.html)
+- [MySQL 加锁分析](https://www.cnblogs.com/rjzheng/p/9950951.html)
+>### 锁的类型
+>1. 意向锁 (Intention Locks)：表锁，表事务稍后需要对表中的行使用哪种类型的锁（共享/排它）
+>    1. 意向共享锁 (Intention Shared Locks, IS)：`SELECT ... FOR SHARE`
+>    2. 意向排它锁 (Intention Exclusive Locks, IX)：[SELECT ... FOR UPDATE](https://www.cnblogs.com/xiao-lei/p/12598552.html)
+>
+>        | |X|IX|S|IS|
+>        |:---|:---|:---|:---|:---|
+>        |X|冲突|冲突|冲突|冲突|
+>        |IX|冲突|兼容|冲突|兼容|
+>        |S|冲突|冲突|兼容|兼容|
+>        |IS|冲突|兼容|兼容|兼容|
+>2. 共享/排它锁 (Shared and Exclusive Locks)
+>    1. 共享锁 (Shared Locks, S)：
+>        - 对符合条件的行加S锁，其它事务可以对这些记录添加IS锁和S锁，即其它事务可以读取这些数据但无法修改
+>    2. 排它锁 (Exclusive Locks, X)：
+>        - 对符合条件的行加X锁，其它事务无法对这些记录加任何IS锁和IX锁，即其它事务无法对这些记录进行读取和修改 
+>        - 不会阻止非锁定读（快照读）
+>3. 记录锁 (Record Locks)：`SELECT c1 FROM t WHERE c1 = 10 FOR UPDATE`
+>    - 总是锁定索引记录，阻止其它事务插入、更新或删除  
+>4. [间隙锁](https://www.jianshu.com/p/32904ee07e56) (Gap Locks)：`SELECT c1 FROM t WHERE c1 BETWEEN 10 and 20 FOR UPDATE`  
+>    - 对索引记录之间的间隙的锁，或是对第一个索引之前或最后一个索引记录之后的间隙的锁，防止其他事物插入数据
+>    - 不同事务允许持有冲突的间隙锁，容易导致死锁
+>    - 隔离级别为 REPEATABLE READ 或 SERIALIZABLE，间隙锁生效
+>5. 临键锁 (Next-key Locks)
+>    - 记录锁 + 索引记录之前的间隙锁，左开右闭
+>    - 隔离级别为 REPEATABLE READ 或 SERIALIZABLE，临键锁生效
+>6. 插入意向锁 (Insert Intention Locks)
+>7. 自增锁 (AUTO-INC Locks)
+>### REPEATABLE READ 下的加锁规则
+>1. 原则：
+>   - 加锁基本单位 Next-key Locks
+>   - 查找过程中访问到的对象会加锁
+>2. 索引上等值查询优化：
+>   - 给唯一索引加锁时，Next-key Locks → Record Locks
+>   - 向右遍历且最后一个值不满足等值条件时，Next-key Locks → Gap Locks
+>   - 对于覆盖索引查询，不对聚簇索引加锁 ?
+>3. 唯一索引上的范围查询会访问到不满足条件的第一个值为止
+---

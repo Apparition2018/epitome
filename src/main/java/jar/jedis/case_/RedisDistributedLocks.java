@@ -1,11 +1,11 @@
 package jar.jedis.case_;
 
+import jar.jedis.JedisUtils;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.params.SetParams;
 
+import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -19,28 +19,17 @@ import java.util.concurrent.TimeUnit;
  */
 public class RedisDistributedLocks {
 
-    public static final String MONEY = "MONEY";
-    public static final String MONEY_LOCK = "MONEY_LOCK";
-    public static final JedisPool JEDIS_POOL;
-
-    static {
-        JedisPoolConfig config = new JedisPoolConfig();
-        config.setMaxTotal(20);
-        config.setMaxIdle(10);
-        config.setMinIdle(5);
-        config.setTestOnBorrow(true);
-        config.setTestOnReturn(false);
-        config.setBlockWhenExhausted(true);
-        JEDIS_POOL = new JedisPool(config, "127.0.0.1", 6379);
-    }
+    private static final String MONEY = "MONEY";
+    private static final String MONEY_LOCK = "MONEY_LOCK";
+    private static final String LOCK_SUCCESS = "OK";
 
     /**
      * 没有锁的时候的情况
      */
     private Runnable notLock() {
         return () -> {
-            try (Jedis jedis = JEDIS_POOL.getResource()) {
-                calImpl(jedis);
+            try (Jedis jedis = JedisUtils.getResource()) {
+                cal(jedis);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -53,42 +42,42 @@ public class RedisDistributedLocks {
     private Runnable lock() {
         LockInitial lockInitial = new LockInitial();
         return () -> {
-            try (Jedis jedis = JEDIS_POOL.getResource()) {
-                cal(lockInitial, jedis);
+            try (Jedis jedis = JedisUtils.getResource()) {
+                calWithLock(lockInitial, jedis);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         };
     }
 
-    private void cal(LockInitial lockInitial, Jedis jedis) {
-        String lockValue = String.valueOf(lockInitial.getRandom().nextInt());
-        if (lockInitial.tryLock(jedis, MONEY_LOCK, lockValue, 1000L)) {
-            calImpl(jedis);
-            lockInitial.releaseLock(jedis, MONEY_LOCK, lockValue);
-        } else {
-            cal(lockInitial, jedis);
-        }
-    }
-
-    private void calImpl(Jedis jedis) {
+    private void cal(Jedis jedis) {
         int money = Integer.parseInt(jedis.get(MONEY));
         jedis.set(MONEY, String.valueOf(money - 100));
         System.out.println("计算" + Thread.currentThread().getName());
     }
 
+    private void calWithLock(LockInitial lockInitial, Jedis jedis) {
+        String lockValue = String.valueOf(lockInitial.getRandom().nextInt());
+        if (lockInitial.tryLock(jedis, MONEY_LOCK, lockValue, 1000L)) {
+            cal(jedis);
+            lockInitial.releaseLock(jedis, MONEY_LOCK, lockValue);
+        } else {
+            calWithLock(lockInitial, jedis);
+        }
+    }
+
     @Test
     public void test() throws InterruptedException {
-        try (Jedis jedis = JEDIS_POOL.getResource()) {
+        try (Jedis jedis = JedisUtils.getResource()) {
             jedis.set(MONEY, "1000");
         }
-        Runnable runnable = lock();
+        Runnable runnable = this.lock();
         for (int i = 0; i < 10; i++) {
             Thread thread = new Thread(runnable, String.valueOf(i));
             thread.start();
         }
-        TimeUnit.SECONDS.sleep(3);
-        try (Jedis jedis = JEDIS_POOL.getResource()) {
+        TimeUnit.SECONDS.sleep(1);
+        try (Jedis jedis = JedisUtils.getResource()) {
             System.out.println(Integer.parseInt(jedis.get(MONEY)));
         }
     }
@@ -106,18 +95,17 @@ public class RedisDistributedLocks {
         @Override
         public boolean tryLock(Jedis jedis, String key, String val, Long ttl) {
             SetParams setParams = new SetParams();
-            setParams.ex(ttl);
             setParams.nx();
+            setParams.ex(ttl);
             String result = jedis.set(key, val, setParams);
-            return "OK".equals(result);
+            return LOCK_SUCCESS.equals(result);
         }
 
         @Override
         public boolean releaseLock(Jedis jedis, String key, String val) {
-            if (val.equals(jedis.get(key))) {
-                return jedis.del(key) > 0;
-            }
-            return false;
+            String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
+            Object result = jedis.eval(script, Collections.singletonList(key), Collections.singletonList(val));
+            return val.equals(result);
         }
 
         public Random getRandom() {
