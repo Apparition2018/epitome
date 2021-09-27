@@ -51,7 +51,7 @@ public class StampedLockDemo {
         long stamp = lock.tryOptimisticRead();
         // 2. 读取数据到当前线程栈
         String currentValue = idMap.get(key);
-        // 3. 校验是否被其他线程修改过,true 表示未修改，否则需要加悲观读锁
+        // 3. 校验是否被其他线程修改过，true 表示未修改，否则需要加悲观读锁
         if (!lock.validate(stamp)) {
             // 4. 上悲观读锁，并重新读取数据到当前线程局部变量
             stamp = lock.readLock();
@@ -93,7 +93,7 @@ public class StampedLockDemo {
                 long wl = lock.tryConvertToWriteLock(stamp);
                 // 不为 0 升级写锁成功
                 if (wl != 0L) {
-                    // 模拟从数据库读取数据, 写入缓存中
+                    // 模拟从数据库读取数据，写入缓存中
                     stamp = wl;
                     currentValue = value;
                     idMap.put(key, currentValue);

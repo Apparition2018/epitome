@@ -5,11 +5,10 @@ import org.apache.curator.framework.recipes.cache.CuratorCache;
 import org.apache.curator.framework.recipes.cache.CuratorCacheListener;
 
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Curator Cache
+ * Curator Cache：https://curator.apache.org/curator-recipes/curator-cache.html
  *
  * @author ljh
  * created on 2021/9/27 9:16
