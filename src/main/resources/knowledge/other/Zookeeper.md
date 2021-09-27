@@ -4,7 +4,7 @@
 ---
 ## Zookeeper 核心功能
 1. 文件系统  
-    ![Zookeeper 文件系统](http://img2.mukewang.com/60c24f0d000148fb03860338.jpg)
+    ![Zookeeper 文件系统](https://img2.mukewang.com/60c24f0d000148fb03860338.jpg)
     - 每个目录都是一个 znode 节点
     - znode 节点可直接存储数据
     - 类型：持久化、持久化顺序、临时、临时顺序
@@ -24,7 +24,7 @@ initLimit=5
 # 集群中的 follower 服务器(F) 与 leader 服务器(L) 之间请求和应答时能容忍的最多心跳数
 syncLimit=2
 # 客户端端口
-clientPort=2181``
+clientPort=2181
 # 自动清理历史快照，保留 n 个
 autopurge.snapRetainCount
 # 自动清理历史快照时间间隔（小时）
@@ -32,11 +32,10 @@ autopurge.purgeInterval
 #
 server.1=localhost:2888:3888;2181
 ```
-## 命令
+## [命令](https://www.cnblogs.com/senlinyang/p/7833669.html)
 ```
 %ZOOKEEPER_HOME%/bin/zkServer.sh [--config <conf-dir>] {start|start-foreground|stop|version|restart|status|print-cmd}
 
-# 客户端命令详解：https://www.cnblogs.com/senlinyang/p/7833669.html
 %ZOOKEEPER_HOME%/bin/zkCli.sh [-server localhost:2181]
 help
 ls [-s] [-w] [-R] path

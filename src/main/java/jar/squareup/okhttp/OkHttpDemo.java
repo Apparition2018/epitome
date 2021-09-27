@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -29,7 +28,6 @@ public class OkHttpDemo extends Demo {
     private static final MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse("text/x-markdown; charset=utf-8");
     private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
     private OkHttpClient client = new OkHttpClient();
-    private final ScheduledExecutorService scheduledExecutor = Executors.newScheduledThreadPool(1);
 
     /**
      * Synchronous Get：https://square.github.io/okhttp/recipes/#synchronous-get-kt-java
@@ -181,9 +179,7 @@ public class OkHttpDemo extends Demo {
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
             Gist gist = gistJsonAdapter.fromJson(Objects.requireNonNull(response.body()).source());
-            Objects.requireNonNull(gist).files.forEach((k, v) -> {
-                p(k + ": " + v.content);
-            });
+            Objects.requireNonNull(gist).files.forEach((k, v) -> p(k + ": " + v.content));
         }
     }
 
@@ -231,7 +227,7 @@ public class OkHttpDemo extends Demo {
         Request request = new Request.Builder().url(getDelayUrl(2)).build();
         final long startNanos = System.nanoTime();
         final Call call = client.newCall(request);
-        scheduledExecutor.schedule(() -> {
+        Executors.newScheduledThreadPool(1).schedule(() -> {
             System.out.printf("%.2f Canceling call.%n", (System.nanoTime() - startNanos) / 1e9f);
             call.cancel();
             System.out.printf("%.2f Canceled call.%n", (System.nanoTime() - startNanos) / 1e9f);

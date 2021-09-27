@@ -76,7 +76,7 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                   创建新的 con
     --net                                                       将容器连接到网络
 docker ps [OPTIONS]                                             列出 containers
 docker exec [OPTIONS] CONTAINER COMMAND [ARG...]                在 container 中运行 command
-    -it IMAGE /bin/bash
+    -it CONTAINER bash
 docker start|stop|restart [OPTIONS] CONTAINER [CONTAINER...]    启动|停止|重启 containers
 docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                创建 container
 docker container                                                管理 containers
