@@ -24,7 +24,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ConditionDemo extends Demo {
 
     private static volatile boolean isProducing = true;
-    private static volatile boolean[] isAllConsumerStop = new boolean[]{false, false};
+    private static final boolean[] isAllConsumerStop = new boolean[]{false, false};
     private static final long SLEEP_TIME = TimeUnit.SECONDS.toMillis(1);
     private static final int MAX = 10;
 
@@ -46,11 +46,11 @@ public class ConditionDemo extends Demo {
         Consumer c1 = new Consumer(list, 0);
         Consumer c2 = new Consumer(list, 1);
 
-        ExecutorService pool = Executors.newCachedThreadPool(new MyThreadFactory());
-        pool.execute(p1);
-        pool.execute(p2);
-        pool.execute(c1);
-        pool.execute(c2);
+        ExecutorService threadPool = Executors.newCachedThreadPool(new MyThreadFactory());
+        threadPool.execute(p1);
+        threadPool.execute(p2);
+        threadPool.execute(c1);
+        threadPool.execute(c2);
 
         TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         isProducing = false;
@@ -59,13 +59,13 @@ public class ConditionDemo extends Demo {
         while (!BooleanUtils.and(isAllConsumerStop)) {
             TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         }
-        pool.shutdown();
+        threadPool.shutdown();
         p("********** 消费者消费完毕 **********");
     }
 
     static class Producer implements Runnable {
-        private static AtomicInteger goodsId = new AtomicInteger();
-        private LinkedList<Integer> list;
+        private static final AtomicInteger goodsId = new AtomicInteger();
+        private final LinkedList<Integer> list;
 
         public Producer(LinkedList<Integer> list) {
             this.list = list;
@@ -105,8 +105,8 @@ public class ConditionDemo extends Demo {
     }
 
     static class Consumer implements Runnable {
-        private LinkedList<Integer> list;
-        private int consumerIndex;
+        private final LinkedList<Integer> list;
+        private final int consumerIndex;
 
         public Consumer(LinkedList<Integer> list, int consumerIndex) {
             this.list = list;

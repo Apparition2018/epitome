@@ -137,7 +137,7 @@ public class ExecutorServiceDemo extends Demo {
 
     @Test
     public void invoke() throws InterruptedException, ExecutionException {
-        ExecutorService pool = Executors.newWorkStealingPool();
+        ExecutorService threadPool = Executors.newWorkStealingPool();
         List<Callable<String>> callableList = Arrays.asList(
                 callable("task1", 1),
                 callable("task2", 2),
@@ -146,7 +146,7 @@ public class ExecutorServiceDemo extends Demo {
         p("--- invokeAll ---");
         // <T> List<Future<T>>  invokeAll(Collection<? extends Callable<T>> tasks[, long timeout, TimeUnit unit])
         // 执行给定任务，当所有任务完成时返回一个包含它们状态和结果的 Future 列表
-        pool.invokeAll(callableList).stream().map(future -> {
+        threadPool.invokeAll(callableList).stream().map(future -> {
             try {
                 return future.get();
             } catch (InterruptedException | ExecutionException e) {
@@ -157,7 +157,7 @@ public class ExecutorServiceDemo extends Demo {
         p("--- invokeAny ---");
         // <T> T                invokeAny(Collection<? extends Callable<T>> tasks[, long timeout, TimeUnit unit])
         // 执行给定任务，当有一个任务完成时返回其结果
-        p(pool.invokeAny(callableList));
+        p(threadPool.invokeAny(callableList));
     }
 
     private Callable<String> callable(String result, long seconds) {

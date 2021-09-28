@@ -1,6 +1,5 @@
 package jar.apache.curator;
 
-import l.demo.Demo;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.api.BackgroundCallback;
 import org.apache.curator.framework.api.CuratorEvent;
@@ -12,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -20,21 +18,32 @@ import java.util.concurrent.TimeUnit;
  * Curator
  * Apache Curator 是分布式协调服务 Apache Zookeeper 的 Java 客户端库
  * <p>
+ * 应用：
+ * 1.选举 {@link CuratorElection}
+ * 2.缓存 {@link CuratorCacheDemo}
+ * 3.锁 {@link CuratorDistributedLock}
+ * 4.服务发现：https://github.com/apache/curator/tree/master/curator-examples/src/main/java/discovery
+ * 5.发布和订阅：https://github.com/apache/curator/tree/master/curator-examples/src/main/java/pubsub
+ * 6.异步：https://github.com/apache/curator/blob/master/curator-examples/src/main/java/async/AsyncExamples.java
+ * 7.modeled：https://github.com/apache/curator/tree/master/curator-examples/src/main/java/modeled
+ * <p>
  * Apache Curator：http://curator.apache.org/
  *
  * @author ljh
  * created on 2021/9/26 11:06
  */
-public class CuratorDemo extends Demo {
+public class CuratorDemo {
 
     private static final String PATH = "/test";
-    private static final ExecutorService POOL = Executors.newCachedThreadPool(new MyThreadFactory());
 
+    /**
+     * framework：https://github.com/apache/curator/tree/master/curator-examples/src/main/java/framework
+     */
     @Test
     public void testCurator() throws Exception {
-        try (CuratorFramework curatorFramework = CuratorUtils.getCuratorFramework()) {
+        try (CuratorFramework client = CuratorUtils.getCuratorFramework()) {
             // 创建节点
-            String path = curatorFramework.create()
+            String path = client.create()
                     // 创建不存在的父节点
                     .creatingParentsIfNeeded()
                     // 创建模式，默认持久
@@ -43,26 +52,26 @@ public class CuratorDemo extends Demo {
                     .forPath(PATH, "data1".getBytes(StandardCharsets.UTF_8));
 
             // 判断节点是否存在
-            Stat stat = curatorFramework.checkExists().forPath(path);
+            Stat stat = client.checkExists().forPath(path);
 
             // 设置数据
-            curatorFramework.setData()
+            client.setData()
                     .withVersion(stat.getVersion())
                     .forPath(path, "data2".getBytes(StandardCharsets.UTF_8));
 
             // 获取数据
-            p(new String(curatorFramework.getData().forPath(path)));
+            System.out.println(new String(client.getData().forPath(path)));
 
             // 获取子节点
-            List<String> children = curatorFramework.getChildren().forPath("/");
+            List<String> children = client.getChildren().forPath("/");
 
             // 删除节点
             for (String child : children) {
-                curatorFramework.delete()
+                client.delete()
                         // 删除子节点
                         .deletingChildrenIfNeeded()
                         // 异步后台操作完成时执行
-                        .inBackground(new Background(), POOL)
+                        .inBackground(new Background(), Executors.newFixedThreadPool(2))
                         .forPath("/" + child);
             }
             TimeUnit.SECONDS.sleep(6);
@@ -81,18 +90,13 @@ public class CuratorDemo extends Demo {
      */
     @Test
     public void testTransaction() throws Exception {
-        try (CuratorFramework curatorFramework = CuratorUtils.getCuratorFramework()) {
-            CuratorOp createOp = curatorFramework.transactionOp().create()
-                    .forPath(PATH, "data".getBytes(StandardCharsets.UTF_8));
+        try (CuratorFramework client = CuratorUtils.getCuratorFramework()) {
+            CuratorOp createOp = client.transactionOp().create().forPath(PATH, "some data".getBytes(StandardCharsets.UTF_8));
+            CuratorOp setDataOp = client.transactionOp().setData().forPath(createOp.getTypeAndPath().getForPath(), "other data".getBytes(StandardCharsets.UTF_8));
+            CuratorOp deleteOp = client.transactionOp().delete().forPath(createOp.getTypeAndPath().getForPath());
 
-            CuratorOp setDataOp = curatorFramework.transactionOp().setData()
-                    .forPath(createOp.getTypeAndPath().getForPath(), "data".getBytes(StandardCharsets.UTF_8));
-
-            CuratorOp deleteOp = curatorFramework.transactionOp().delete()
-                    .forPath(createOp.getTypeAndPath().getForPath());
-
-            List<CuratorTransactionResult> resultList = curatorFramework.transaction().forOperations(createOp, setDataOp, deleteOp);
-            resultList.forEach(result -> System.out.printf("%s-%s%n", result.getForPath(), result.getType()));
+            List<CuratorTransactionResult> resultList = client.transaction().forOperations(createOp, setDataOp, deleteOp);
+            resultList.forEach(result -> System.err.printf("%s - %s%n", result.getForPath(), result.getType()));
         }
     }
 

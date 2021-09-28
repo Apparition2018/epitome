@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class WorkStealing extends Demo {
 
     public static volatile boolean isProducing = true;
-    private static volatile boolean[] isAllStop = new boolean[]{false, false, false, false};
+    private static final boolean[] isAllStop = new boolean[]{false, false, false, false};
     private static final long SLEEP_TIME = TimeUnit.SECONDS.toMillis(1);
 
     /**
@@ -43,11 +43,11 @@ public class WorkStealing extends Demo {
         Machine m3 = new Machine(deque2, deque1, 2);
         Machine m4 = new Machine(deque2, deque1, 3);
 
-        ExecutorService pool = Executors.newCachedThreadPool(new MyThreadFactory());
-        pool.execute(m1);
-        pool.execute(m2);
-        pool.execute(m3);
-        pool.execute(m4);
+        ExecutorService threadPool = Executors.newCachedThreadPool(new MyThreadFactory());
+        threadPool.execute(m1);
+        threadPool.execute(m2);
+        threadPool.execute(m3);
+        threadPool.execute(m4);
 
         TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         isProducing = false;
@@ -56,7 +56,7 @@ public class WorkStealing extends Demo {
         while (!BooleanUtils.and(isAllStop)) {
             TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         }
-        pool.shutdown();
+        threadPool.shutdown();
         p("********** 消费者消费完毕 **********");
     }
 
@@ -81,10 +81,10 @@ public class WorkStealing extends Demo {
     }
 
     static class Machine implements Runnable {
-        private static AtomicInteger jobId = new AtomicInteger();
+        private static final AtomicInteger jobId = new AtomicInteger();
         private final LinkedBlockingDeque<Work> deque1;
         private final LinkedBlockingDeque<Work> deque2;
-        private int machineIndex;
+        private final int machineIndex;
 
         public Machine(LinkedBlockingDeque<Work> deque1, LinkedBlockingDeque<Work> deque2, int machineIndex) {
             this.deque1 = deque1;

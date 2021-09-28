@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ProducerAndConsumer extends Demo {
     private static volatile boolean isProducing = true;
-    private static volatile boolean[] isAllConsumerStop = new boolean[]{false, false};
+    private static final boolean[] isAllConsumerStop = new boolean[]{false, false};
     private static final long SLEEP_TIME = TimeUnit.SECONDS.toMillis(1);
 
     /**
@@ -33,11 +33,11 @@ public class ProducerAndConsumer extends Demo {
         Consumer c1 = new Consumer(queue, 0);
         Consumer c2 = new Consumer(queue, 1);
 
-        ExecutorService pool = Executors.newCachedThreadPool(new MyThreadFactory());
-        pool.execute(p1);
-        pool.execute(p2);
-        pool.execute(c1);
-        pool.execute(c2);
+        ExecutorService threadPool = Executors.newCachedThreadPool(new MyThreadFactory());
+        threadPool.execute(p1);
+        threadPool.execute(p2);
+        threadPool.execute(c1);
+        threadPool.execute(c2);
 
         TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         isProducing = false;
@@ -46,13 +46,13 @@ public class ProducerAndConsumer extends Demo {
         while (!BooleanUtils.and(isAllConsumerStop)) {
             TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
         }
-        pool.shutdown();
+        threadPool.shutdown();
         p("********** 消费者消费完毕 **********");
     }
 
     static class Producer implements Runnable {
-        private static AtomicInteger goodsId = new AtomicInteger();
-        private BlockingQueue<Integer> queue;
+        private static final AtomicInteger goodsId = new AtomicInteger();
+        private final BlockingQueue<Integer> queue;
 
         public Producer(BlockingQueue<Integer> queue) {
             this.queue = queue;
@@ -78,8 +78,8 @@ public class ProducerAndConsumer extends Demo {
     }
 
     static class Consumer implements Runnable {
-        private BlockingQueue<Integer> queue;
-        private int consumerIndex;
+        private final BlockingQueue<Integer> queue;
+        private final int consumerIndex;
 
         public Consumer(BlockingQueue<Integer> queue, int consumerIndex) {
             this.queue = queue;

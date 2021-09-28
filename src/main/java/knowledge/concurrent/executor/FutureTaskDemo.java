@@ -20,7 +20,7 @@ import java.util.concurrent.*;
 public class FutureTaskDemo extends Demo {
 
     private final static int NUM_OF_TASK = 5;
-    private final static ExecutorService pool = Executors.newFixedThreadPool(5, new MyThreadFactory());
+    private final static ExecutorService threadPool = Executors.newFixedThreadPool(5, new MyThreadFactory());
 
     /**
      * Future 是一个抽象的概念，它表示一个值，在某一点会变得可用。
@@ -32,7 +32,7 @@ public class FutureTaskDemo extends Demo {
 
             // <T> Future<T>	submit(Callable<T> task)
             // 提交一个 Callable 任务用于执行，并返回一个表示该任务的 Future
-            Future<Map<Integer, String>> future = pool.submit(new MyCallable(i));
+            Future<Map<Integer, String>> future = threadPool.submit(new MyCallable(i));
             p(String.format("指派了一个任务 %s 给线程池！", i));
             futureList.add(future);
         }
@@ -63,7 +63,7 @@ public class FutureTaskDemo extends Demo {
                 flag = false;
             }
         }
-        pool.shutdownNow();
+        threadPool.shutdownNow();
     }
 
     /**
@@ -77,11 +77,11 @@ public class FutureTaskDemo extends Demo {
             // FutureTask(Callable<V> callable)
             // 创建一个 FutureTask，一旦运行就执行给定的 Callable
             MyFutureTask ft = new MyFutureTask(new MyCallable(i));
-            pool.submit(ft);
+            threadPool.submit(ft);
             p(String.format("指派了一个任务 %s 给线程池！", i));
         }
         countDownLatch.await();
-        pool.shutdown();
+        threadPool.shutdown();
     }
 
     static class MyFutureTask extends FutureTask<Map<Integer, String>> {

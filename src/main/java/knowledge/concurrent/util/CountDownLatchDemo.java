@@ -79,11 +79,11 @@ public class CountDownLatchDemo extends Demo {
         // 参与跑步有多个
         CountDownLatch end = new CountDownLatch(num);
         // 每个跑步者一个跑道
-        ExecutorService pool = Executors.newFixedThreadPool(num);
+        ExecutorService threadPool = Executors.newFixedThreadPool(num);
         // 记录比赛成绩
         List<Future<Integer>> futures = new ArrayList<>();
         // 跑步者就位，所有线程处于等待状态
-        IntStream.rangeClosed(1, 10).forEach((i) -> futures.add(pool.submit(new Runner(begin, end))));
+        IntStream.rangeClosed(1, 10).forEach((i) -> futures.add(threadPool.submit(new Runner(begin, end))));
         // 模拟热身时间
         TimeUnit.SECONDS.sleep(1);
         // 发令枪响，跑步者开始跑步

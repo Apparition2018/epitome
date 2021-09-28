@@ -1247,10 +1247,10 @@ public class Suggestions extends Demo {
         }
 
         // 生成一个单线程的异步执行器
-        ExecutorService pool = Executors.newSingleThreadExecutor();
+        ExecutorService threadPool = Executors.newSingleThreadExecutor();
         setCountDownLatch(1);
         // 线程执行后的期望值
-        Future<Integer> future = pool.submit(new TaxCalculator(100));
+        Future<Integer> future = threadPool.submit(new TaxCalculator(100));
         while (!future.isDone()) {
             // 还没有运算完成，等待200毫秒
             TimeUnit.MILLISECONDS.sleep(20);
@@ -1259,7 +1259,7 @@ public class Suggestions extends Demo {
         }
         p("\n计算完成，税金是：" + future.get() + " 元");
         countDownLatch.await();
-        pool.shutdown();
+        threadPool.shutdown();
     }
 
     /**
@@ -1302,17 +1302,17 @@ public class Suggestions extends Demo {
     }
 
     private void runTasks(Class<? extends Runnable> clz) throws IllegalAccessException, InstantiationException, InterruptedException {
-        ExecutorService pool = Executors.newCachedThreadPool();
+        ExecutorService threadPool = Executors.newCachedThreadPool();
         p("***开始执行 " + clz.getSimpleName() + " 任务***");
         // 启动3个线程
         for (int i = 0; i < 3; i++) {
-            pool.submit(clz.newInstance());
+            threadPool.submit(clz.newInstance());
         }
         // 等待足够长的时间，然后关闭执行器
         TimeUnit.SECONDS.sleep(10);
         p("---" + clz.getSimpleName() + " 任务执行完毕---\n");
         // 关闭执行器
-        pool.shutdown();
+        threadPool.shutdown();
     }
 
     /* 第十章：性能和效率 */

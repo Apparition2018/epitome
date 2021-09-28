@@ -16,11 +16,12 @@ import org.apache.curator.retry.RetryNTimes;
  */
 public class CuratorDistributedCounter extends Demo {
 
-    public static void main(String[] args) throws InterruptedException {
-        try (CuratorFramework curatorFramework = CuratorUtils.getCuratorFramework()) {
+    private static final String COUNTER_PATH = "/counter";
 
-            final String counterPath = "/counter";
-            DistributedAtomicLong distributedAtomicLong = new DistributedAtomicLong(curatorFramework, counterPath, new RetryNTimes(10, 10));
+    public static void main(String[] args) throws InterruptedException {
+        try (CuratorFramework client = CuratorUtils.getCuratorFramework()) {
+
+            DistributedAtomicLong distributedAtomicLong = new DistributedAtomicLong(client, COUNTER_PATH, new RetryNTimes(10, 10));
             setCountDownLatch(2);
 
             increment(distributedAtomicLong);

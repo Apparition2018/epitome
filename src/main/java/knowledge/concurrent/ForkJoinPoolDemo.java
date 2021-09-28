@@ -62,7 +62,7 @@ public class ForkJoinPoolDemo {
 
     static class ForkJoinCalculator implements Calculator {
 
-        private final ForkJoinPool pool;
+        private final ForkJoinPool threadPool;
 
         // 执行任务 (RecursiveTask 有返回值，RecursiveAction 无返回值)
         static class SumTask extends RecursiveTask<Long> {
@@ -102,13 +102,13 @@ public class ForkJoinPoolDemo {
         }
 
         public ForkJoinCalculator() {
-            pool = ForkJoinPool.commonPool();
+            threadPool = ForkJoinPool.commonPool();
         }
 
         @Override
         public long sumUp(long[] numbers) {
-            Long result = pool.invoke(new SumTask(numbers, 0, numbers.length - 1));
-            pool.shutdown();
+            Long result = threadPool.invoke(new SumTask(numbers, 0, numbers.length - 1));
+            threadPool.shutdown();
             return result;
         }
     }
@@ -127,11 +127,11 @@ public class ForkJoinPoolDemo {
     static class ExecutorServiceCalculator implements Calculator {
 
         private final int parallelism;
-        private final ExecutorService pool;
+        private final ExecutorService threadPool;
 
         public ExecutorServiceCalculator() {
             parallelism = Runtime.getRuntime().availableProcessors();
-            pool = Executors.newFixedThreadPool(parallelism);
+            threadPool = Executors.newFixedThreadPool(parallelism);
         }
 
         static class SumTask implements Callable<Long> {
@@ -166,7 +166,7 @@ public class ForkJoinPoolDemo {
             for (int i = 0; i < parallelism; i++) {
                 int from = i * part;
                 int to = (i == parallelism - 1) ? numbers.length - 1 : (i + 1) * part - 1;
-                results.add(pool.submit(new SumTask(numbers, from, to)));
+                results.add(threadPool.submit(new SumTask(numbers, from, to)));
             }
 
             // 把每个线程的结果相加，得到最终结果 get()方法 是阻塞的
@@ -178,7 +178,7 @@ public class ForkJoinPoolDemo {
                 } catch (Exception ignore) {
                 }
             }
-            pool.shutdown();
+            threadPool.shutdown();
             return total;
         }
     }

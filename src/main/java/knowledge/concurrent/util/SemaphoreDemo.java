@@ -29,14 +29,14 @@ public class SemaphoreDemo extends Demo {
      */
     public static void main(String[] args) {
         final int THREAD_COUNT = 30;
-        ExecutorService pool = Executors.newFixedThreadPool(THREAD_COUNT);
+        ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_COUNT);
         // Semaphore(int permits[, boolean fair])
         // 创建具有给定的许可数和给定的公平设置的 Semaphore
         Semaphore semaphore = new Semaphore(10, true);
 
         for (int i = 0; i < THREAD_COUNT; i++) {
             final int num = i + 1;
-            pool.submit(() -> {
+            threadPool.submit(() -> {
                 try {
                     // void	    acquire([int permits])
                     // 从此信号量获取给定数目的许可，在提供这些许可前一直将线程阻塞，或者线程已被中断
@@ -56,7 +56,7 @@ public class SemaphoreDemo extends Demo {
             });
         }
 
-        pool.shutdown();
+        threadPool.shutdown();
     }
 
 }

@@ -16,18 +16,18 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 public class CuratorUtils {
 
     public static CuratorFramework getCuratorFramework() {
-        CuratorFramework curatorFramework = CuratorFrameworkFactory.builder()
+        CuratorFramework client = CuratorFrameworkFactory.builder()
                 .connectString("localhost:2182,localhost:2183,localhost:2184")
-                .sessionTimeoutMs(5000)
                 .connectionTimeoutMs(5000)
+                .sessionTimeoutMs(5000)
                 .retryPolicy(new ExponentialBackoffRetry(1000, 5))
                 .namespace("test")
                 .build();
-        curatorFramework.getConnectionStateListenable().addListener((client, newState) -> {
+        client.getConnectionStateListenable().addListener((curatorFramework, newState) -> {
             if (newState == ConnectionState.CONNECTED) log.info("连接成功");
         });
         log.info("连接中...");
-        curatorFramework.start();
-        return curatorFramework;
+        client.start();
+        return client;
     }
 }

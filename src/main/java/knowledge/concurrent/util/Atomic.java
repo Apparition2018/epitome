@@ -153,9 +153,9 @@ public class Atomic extends Demo {
     @Test
     public void testAccumulator() throws InterruptedException {
         LongAccumulator longAccumulator = new LongAccumulator(Long::sum, 0);
-        ExecutorService pool = Executors.newFixedThreadPool(100);
+        ExecutorService threadPool = Executors.newFixedThreadPool(100);
         setCountDownLatch(1000000);
-        IntStream.rangeClosed(1, 1000000).forEach(i -> pool.submit(() -> {
+        IntStream.rangeClosed(1, 1000000).forEach(i -> threadPool.submit(() -> {
             longAccumulator.accumulate(i);
             countDownLatch.countDown();
         }));

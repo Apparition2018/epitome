@@ -28,13 +28,13 @@ import java.util.stream.Collectors;
 public class CompletableFutureDemo extends Demo {
 
     private final static int NUM_OF_TASK = 5;
-    private final static ExecutorService pool = Executors.newFixedThreadPool(5, new MyThreadFactory());
+    private final static ExecutorService threadPool = Executors.newFixedThreadPool(5, new MyThreadFactory());
 
     @Test
     public void testCompletableFuture() {
         List<CompletableFuture<Void>> completableFutureList = new ArrayList<>();
         for (int i = 1; i <= NUM_OF_TASK; i++) {
-            completableFutureList.add(CompletableFuture.runAsync(new MyTask(i), pool));
+            completableFutureList.add(CompletableFuture.runAsync(new MyTask(i), threadPool));
             p(String.format("指派了一个任务 %s 给线程池！", i));
         }
 
@@ -45,7 +45,7 @@ public class CompletableFutureDemo extends Demo {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } finally {
-            pool.shutdown();
+            threadPool.shutdown();
         }
     }
 
@@ -53,7 +53,7 @@ public class CompletableFutureDemo extends Demo {
     public void testCompletableFuture2() {
         CompletableFuture<?>[] completableFutures = Lists.list(1, 2, 3, 4, 5).stream().map(i -> {
             p(String.format("指派了一个任务 %s 给线程池！", i));
-            return CompletableFuture.runAsync(new MyTask(i), pool);
+            return CompletableFuture.runAsync(new MyTask(i), threadPool);
         }).toArray(CompletableFuture[]::new);
 
         try {
@@ -62,7 +62,7 @@ public class CompletableFutureDemo extends Demo {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } finally {
-            pool.shutdown();
+            threadPool.shutdown();
         }
     }
 }

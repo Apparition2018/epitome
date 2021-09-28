@@ -21,9 +21,9 @@ public class CompletionServiceDemo extends Demo {
 
     public static void main(String[] args) {
 
-        ExecutorService pool = Executors.newFixedThreadPool(5, new MyThreadFactory());
+        ExecutorService threadPool = Executors.newFixedThreadPool(5, new MyThreadFactory());
 
-        CompletionService<Map<Integer, String>> completionService = new ExecutorCompletionService<>(pool);
+        CompletionService<Map<Integer, String>> completionService = new ExecutorCompletionService<>(threadPool);
 
         // 添加任务
         for (int i = 1; i <= NUM_OF_TASK; i++) {
@@ -45,7 +45,7 @@ public class CompletionServiceDemo extends Demo {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } finally {
-            pool.shutdown();
+            threadPool.shutdown();
         }
 
     }

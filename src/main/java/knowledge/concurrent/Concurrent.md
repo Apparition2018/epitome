@@ -47,5 +47,9 @@
     解铃还须系铃人      获取锁和释放锁必须是同一个客户端                                           获取锁和释放锁时传一个相同的唯一标识值
     容错性             大部分 Redis 节点正常运行，客户端即可获取锁和释放锁
     ```
-3. Zookeeper
+3. Zookeeper：@see CuratorDistributedLock
+    ```
+    lock.acquire(time, timeUnit)
+    lock.release()
+    ```
 ---
