@@ -2,7 +2,7 @@
 
 ---
 ## 参考网站
-
+1. [MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)
 ---
 ## 问题
 1. [使用 mysql 应该注意的细节](https://www.cnblogs.com/zhangyiqinga/p/9753484.html)
@@ -10,7 +10,7 @@
 3. [MySQL 中实现 rank 排名查询](https://blog.csdn.net/justry_deng/article/details/80597916)
 4. [Mysql 为什么默认定义varchar(255) 而不是varchar(256)](https://juejin.cn/post/6844903894703685646)
 5. [Mysql 8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
-6. [MySQL优化：如何避免回表查询？什么是索引覆盖？](https://www.cnblogs.com/myseries/p/11265849.html)
+6. [MySQL优化：如何避免回表查询？什么是覆盖索引？](https://www.cnblogs.com/myseries/p/11265849.html)
 ---
 ## 安装
 1. [mysql完全卸载教程](https://blog.csdn.net/qq_41140741/article/details/81489531)
@@ -112,16 +112,20 @@
 >       2. IO 大的 SQL                    pt-query-digest 的 Rows examine
 >       3. 未命中索引的 SQL                pt-query-digest 的 Rows examine 和 Rows Send 的对比
 >   ```
->### [explain](https://tonydong.blog.csdn.net/article/details/103579177)
->```
->type                   const → eq_reg → ref → range → index → ALL
->possible_keys          可能用到的索引
->key                    实际使用的索引
->ken_len                使用索引的长度，越短越好
->ref                    显示索引的哪一列被使用
->rows                   返回结果需要查询的行数
->extra                  额外操作：Using temporary 创建了临时表；Using filesort 额外的排序操作
->```
+>### [explain](https://dev.mysql.com/doc/refman/8.0/en/execution-plan-information.html)
+>- [type](https://blog.csdn.net/lilongsy/article/details/95184594)
+>   - const：命中主键或唯一索引；被连接的部分是一个 const
+>   - eq_reg：
+>   - ref：
+>   - range：
+>   - index：
+>   - ALL：
+>- possible_keys：可能用到的索引
+>- key：实际使用的索引
+>- [key_len](https://www.cnblogs.com/lukexwang/articles/7060950.html) ：使用索引的长度
+>- ref：显示索引的哪一列被使用
+>- rows：返回结果需要查询的行数
+>- extra： 额外操作：Using temporary 创建了临时表；Using filesort 额外的排序操作
 >### 索引
 >1. 查找重复索引及冗余索引
 >   1. 语句查询
