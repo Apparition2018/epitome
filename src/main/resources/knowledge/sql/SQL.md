@@ -81,14 +81,6 @@
 2. 更新异常：如果更新表所对应的某个实体实例的单独属性时，需要将多行更新，那么就说这个表存在更新异常
 3. 删除异常：如果删除表的某一行来反映某实体实例失效时导致另一个不同实体实例信息丢失，那么这个表中就存在删除异常
 ---
-## 索引维护
-1. 出现在 WHERE，GROUP BY，ORDER BY 中的列
-2. 可选择性高的列要放到索引的前面
-3. 索引中不要包括太长的数据类型
-4. 索引并不是越多越好，过多的索引不但会降低写效率而且会降低读的效率
-5. 定期维护索引碎片
-6. SQL 语句中不要使用强制索引关键字
----
 ## 设计范式
 - 数据库范式分为 1NF，2NF，3NF，BCNF，4NF，5NF，一般考虑到 BCNF 就可以了。符合高一级范式的设计，必定符合低一级范式。
 - 解决了数据冗余过大，插入异常，修改异常，删除异常问题
@@ -127,6 +119,70 @@
 |string (fixed)|char|char|char|
 |string (variable)|varchar / nvarchar|varchar / nvarchar|varchar2 / nvarchar2|
 |binary object|blob / text|binary (fixed up to 8k) <br> varbinary (<8k) <br> image (<2GB)|long / raw|
+---
+## 事务
+>### [事务的特性 (ACID)](https://en.wikipedia.org/wiki/ACID)
+>1. 原子性 - Atomicity，事务通常由多个语句组成。原子性保证每个事务都被视为一个单独的'单元'，要么完全成功，要么完全失败。
+>2. [一致性](https://www.zhihu.com/question/31346392) - Consistency，一致性确保事务只能将数据库从一种有效状态带到另一种有效状态，写入数据库的任何数据必须根据所有定义的规则有效，包括约束、级联、触发器及其任意组合。
+>3. 隔离性 - Isolation，事务通常是并发执行的。隔离性确保事务的并发执行使数据库处于与顺序执行事务时获得的相同状态。
+>4. 持久性 - Durability，持久性保证一旦事务被提交，即使在系统故障的情况下，它也将保持提交后的修改。
+>### 并发事务带来的问题
+>1. 脏读 - Dirty Read，
+>2. 丢失修改 - Lost to Modify，
+>3. 不可重复读 - Unrepeatable Read，
+>4. 幻读 - Phantom Read，
+>  - [区分不可重复读和幻读](https://www.cnblogs.com/itcomputer/articles/5133254.html)
+>  - [区分不可重复读和幻读](https://www.zhihu.com/question/392569386/answer/1922737425)
+>### 事务隔离级别
+><table>
+>  <tr>
+>      <th>Isolation</th>
+>      <th>数据库默认</th>
+>      <th>脏读</th>
+>      <th>不可重复读</th>
+>      <th>幻读</th>
+>  </tr>
+>  <tr>
+>      <td>READ_UNCOMMITTED</td>
+>      <td></td>
+>      <td>可能</td>
+>      <td>可能</td>
+>      <td>可能</td>
+>  </tr>
+>  <tr>
+>      <td>READ_COMMITTED</td>
+>      <td>Oracle, SQL Server</td>
+>      <td>不可能</td>
+>      <td>可能</td>
+>      <td>可能</td>
+>  </tr>
+>  <tr>
+>      <td>REPEATABLE_READ</td>
+>      <td>MySQL</td>
+>      <td>不可能</td>
+>      <td>不可能</td>
+>      <td>可能</td>
+>  </tr>
+>  <tr>
+>      <td>SERIALIZABLE</td>
+>      <td></td>
+>      <td>不可能</td>
+>      <td>不可能</td>
+>      <td>不可能</td>
+>  </tr>
+>  <tr>
+>      <td>DEFAULT</td>
+>      <td colspan="4">默认的隔离级别，使用数据库默认的事务隔离级别</td>
+>  </tr>
+></table>
+---
+## 索引维护
+1. 出现在 WHERE，GROUP BY，ORDER BY 中的列
+2. 可选择性高的列要放到索引的前面
+3. 索引中不要包括太长的数据类型
+4. 索引并不是越多越好，过多的索引不但会降低写效率而且会降低读的效率
+5. 定期维护索引碎片
+6. SQL 语句中不要使用强制索引关键字
 ---
 ## SQL 优化
 1. 避免全表扫描：对 无索引的表进行的查询 或 放弃索引进行的查询 称为全表扫描

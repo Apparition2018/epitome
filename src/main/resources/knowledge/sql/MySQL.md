@@ -3,6 +3,8 @@
 ---
 ## 参考网站
 1. [MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)
+2. [MySQL 的 MVCC(多版本并发控制)](https://www.cnblogs.com/myseries/p/10930910.html)
+3. [MySQL 多版本并发控制与锁机制](https://blog.csdn.net/litianxiang_kaola/article/details/83003190)
 ---
 ## 问题
 1. [使用 mysql 应该注意的细节](https://www.cnblogs.com/zhangyiqinga/p/9753484.html)
@@ -177,7 +179,7 @@
 - [MySQL 锁机制详解](https://www.cnblogs.com/volcano-liu/p/9890832.html)
 - [MySQL 加锁分析](https://www.cnblogs.com/rjzheng/p/9950951.html)
 >### 锁的类型
->1. 意向锁 (Intention Locks)：表锁，表事务稍后需要对表中的行使用哪种类型的锁（共享/排它）
+>1. 意向锁 (Intention Locks)：表级锁，指示事务稍后需要对表中的行使用哪种类型的锁（共享/排它）
 >    1. 意向共享锁 (Intention Shared Locks, IS)：`SELECT ... FOR SHARE`
 >    2. 意向排它锁 (Intention Exclusive Locks, IX)：[SELECT ... FOR UPDATE](https://www.cnblogs.com/xiao-lei/p/12598552.html)
 >

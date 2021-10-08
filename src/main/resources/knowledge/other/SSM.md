@@ -479,51 +479,6 @@ Spring SpringMVC Mybatis
 >   - timeout：设置事务的超时秒数，默认值为-1，表示永不超时
 >   - rollbackFo：设置需要进行事务回滚的异常类数组
 >   - noRollbackFor：设置不需要进行事务回滚的异常类数组
->>#### 事务隔离级别 Isolation
->>- [区分不可重复读和幻读](https://www.cnblogs.com/itcomputer/articles/5133254.html)
->>- [区分不可重复读和幻读](https://www.zhihu.com/question/392569386/answer/1922737425)
->><table>
->>  <tr>
->>      <th>Isolation</th>
->>      <th>数据库默认</th>
->>      <th>脏读</th>
->>      <th>不可重复读</th>
->>      <th>幻读</th>
->>  </tr>
->>  <tr>
->>      <td>READ_UNCOMMITTED</td>
->>      <td></td>
->>      <td>可能</td>
->>      <td>可能</td>
->>      <td>可能</td>
->>  </tr>
->>  <tr>
->>      <td>READ_COMMITTED</td>
->>      <td>Oracle, SQL Server</td>
->>      <td>不可能</td>
->>      <td>可能</td>
->>      <td>可能</td>
->>  </tr>
->>  <tr>
->>      <td>REPEATABLE_READ</td>
->>      <td>MySQL</td>
->>      <td>不可能</td>
->>      <td>不可能</td>
->>      <td>可能</td>
->>  </tr>
->>  <tr>
->>      <td>SERIALIZABLE</td>
->>      <td></td>
->>      <td>不可能</td>
->>      <td>不可能</td>
->>      <td>不可能</td>
->>  </tr>
->>  <tr>
->>      <td>DEFAULT</td>
->>      <td colspan="4">默认的隔离级别，使用数据库默认的事务隔离级别</td>
->>  </tr>
->></table>
->>
 >>#### 事务传播机制 Propagation 
 >>  ```
 >>    REQUIRED        支持当前事务，如果当前没有事务，就新建一个事务，默认
