@@ -56,25 +56,14 @@
 >default-character-set=utf8mb4
 >```
 ---
-## Procedure
-1. [MySQL: Procedures](https://www.techonthenet.com/mysql/procedures.php)
-2. [MySQL中的IN、OUT、INOUT类型](https://www.cnblogs.com/super-yu/p/9018512.html)
->### Create Procedure
->```sql
->CREATE PROCEDURE procedure_name [(parameter datetype [, parameter datatype])]
->BEGIN
->    declaration_section
->    executable_section
->END;
->```
->### Drop procedure
->```sql
->DROP procedure [IF EXISTS] procedure_name;
->```
----
 ## 优化
 1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
 2. [SQL 语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html) 39~
+>## 数据类型选择
+>1. 数字类型 > 日期类型|二进制类型 > 字符类型
+>2. char > varchar，小于 50byte 建议使用 char
+>3. 精确数据使用 decimal，非精确数据使用 float
+>4. 整型保存 IP，INET_ATON('192.168.0.1')
 >### 慢查询
 >1. 开启慢查询
 >```sql
@@ -141,7 +130,7 @@
 >   ```
 >   2. pt-duplicate-key-checker
 >2. 删除不用的索引
->- pt-index-usage
+>   - pt-index-usage
 >### 配置
 >1. 系统配置
 >   - 网络方面，修改 /etc/sysctl.conf

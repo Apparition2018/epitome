@@ -7,7 +7,7 @@
     gender CHAR(1) DEFAULT 'm',   -- DEFAULT
   
   修改表
-    RENAME old_name TO new_name;
+    RENAME TABLE old_name TO new_name;
     ALTER TABLE table_name ADD(column datatype [DEFAULT expr] [, column datatype…]);    -- 增加列
     ALTER TABLE table_name DROP(column);                                                -- 删除列
     ALTER TABLE table_name MODIFY(column datatype [DEFAULT expr] [, column datatype…]); -- 修改列

@@ -105,10 +105,6 @@
 >1. [什么是第一，第二，第三范式](https://blog.csdn.net/xidianliuy/article/details/51566576)
 >2. [如何理解关系型数据库的常见设计范式？](https://www.zhihu.com/question/24696366/answer/29189700)
 ---
-## 数据类型选择
-1. 数字类型 > 日期类型|二进制类型 > 字符类型
-2. char > varchar，小于 50byte 建议使用 char
-3. 精确数据使用 decimal，非精确数据使用 float
 ## 数据类型速查表
 |数据类型|MySQL|SQL Server|Oracle|
 |:------|:---:|:--------:|:----:|
@@ -126,11 +122,10 @@
 >2. [一致性](https://www.zhihu.com/question/31346392) - Consistency，一致性确保事务只能将数据库从一种有效状态带到另一种有效状态，写入数据库的任何数据必须根据所有定义的规则有效，包括约束、级联、触发器及其任意组合。
 >3. 隔离性 - Isolation，事务通常是并发执行的。隔离性确保事务的并发执行使数据库处于与顺序执行事务时获得的相同状态。
 >4. 持久性 - Durability，持久性保证一旦事务被提交，即使在系统故障的情况下，它也将保持提交后的修改。
->### 并发事务带来的问题
->1. 脏读 - Dirty Read，
->2. 丢失修改 - Lost to Modify，
->3. 不可重复读 - Unrepeatable Read，
->4. 幻读 - Phantom Read，
+>### 并发事务读取现象
+>1. 脏读 - Dirty Read，一个事务读到另一个事务尚未提交的修改
+>2. 不可重复读 - Unrepeatable Read，一个事务两次读取的结果不一致，数据被 update 或 delete
+>3. 幻读 - Phantom Read，一个事务两次读取的结果不一致，有新的数据 insert
 >  - [区分不可重复读和幻读](https://www.cnblogs.com/itcomputer/articles/5133254.html)
 >  - [区分不可重复读和幻读](https://www.zhihu.com/question/392569386/answer/1922737425)
 >### 事务隔离级别

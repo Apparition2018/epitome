@@ -34,8 +34,8 @@ NOT NULL 约束
 
 修改表
 1：修改表名
-  RENAME old_name TO new_name
-  RENAME employee TO myemp
+  RENAME TABLE old_name TO new_name
+  RENAME TABLE employee TO myemp
 2：修改表结构
   2.1：添加新字段
     向myemp表中添加入职时间字段
