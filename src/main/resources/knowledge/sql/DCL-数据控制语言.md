@@ -1,8 +1,11 @@
 # 数据控制语言 Data Control Language
 
 ---
-## GRANT
-```
+## 参考网站
+1. [Database Administration Statements](https://dev.mysql.com/doc/refman/8.0/en/sql-server-administration-statements.html)
+---
+## [GRANT](https://dev.mysql.com/doc/refman/8.0/en/grant.html)
+```sql
 GRANT 
     SELECT, 
     INSERT, 
@@ -17,8 +20,8 @@ TO
     smithj;
 ```
 ---
-## REVOKE
-```
+## [REVOKE](https://dev.mysql.com/doc/refman/8.0/en/revoke.html)
+```sql
 REVOKE
     SELECT, 
     INSERT, 
