@@ -68,49 +68,67 @@
 9. [MySql千万级limit优化方案](https://www.jianshu.com/p/f46b0f3d296b)
 10. [索引失效分析、in与exists使用场合](https://www.cnblogs.com/zjxiang/p/9160810.html)
 11. [复合索引的优点和注意事项](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
-## 优化建议
-1. 避免全表扫描：对 无索引的表进行的查询 或 放弃索引进行的查询 称为全表扫描
-    1. 在 where，order by，group by，多表关联涉及的列上建立索引
-    2. 避免使用 is null 和 is not null，建表时尽量所有字段设置 NOT NULL
-    3. 避免使用 != 和 <>
-    4. 避免使用 or 来连接条件，可以使用 union 或 union all 代替
-    5. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"；可使用 locate('x', 'field') > 0 代替，或数据库提供的全文检索功能和专门的全文搜索引擎
-    6. 避免使用 参数，如 where num=@num
-    7. 避免对字段进行表达式和函数操作，num/2=100 可以改为 num=100*2，包括数据类型不匹配，如字符串和整数进行比较
-    8. 谨慎使用 in 和 not in，考虑是否能用 between，exists，not exists 代替
-    9. 复合索引，必须使用该索引中的第一个字段作为条件
-2. 索引相关
-    - 索引越小越好
-    - [选择性高的列放在索引的前面](https://blog.csdn.net/li_canhui/article/details/86487693)
-    - 索引不要包含太长的字段，可考虑前缀索引：ALTER TABLE <table_name> ADD INDEX idx_content(content(6))
-    - 索引不是越多越好
-        - 索引也占用空间，还需要定期维护索引
-        - DML 操作需要重建索引
-        - DQL 操作优化器选择使用哪一个索引需要时间
-3. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
-    1. 增加网络开销
-    2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
-    3. 失去了覆盖索引的可能性
-4. 小表驱动大表
-    - JOIN 小表连大表
-    - IN 小表内大表外
-    - EXISTS 小表外大表内
-5. [避免使用子查询和 join](https://blog.csdn.net/weixin_38676357/article/details/81510079)
-6. [使用 explain 查看执行计划](https://tonydong.blog.csdn.net/article/details/103579177)
-7. 不要使用 OFFSET 实现分页
-8. 垂直分表
-    - 不常用的字段
-    - 大字段
-    - 经常一起使用的字段
-9. 水平分表：mod(id, 5)；查询用分表，统计用总表
-10. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
-11. 反范式
-12. 汇总表/缓存表，定时生成数据，用于用户数据耗时操作
-    ---句中不要使用强制索引关键字
----
 >## 优化建议
->1.
->2.
+>1. 索引相关
+>   - 分类方法
+>       1. BTREE
+>           - 适用于：全键值，范围查找，前缀索引，排序
+>           - 限制：最左前缀匹配原则
+>       2. HASH
+>           - 限制：匹配索引所有列；不适用于排序；不支持部分匹配；只支持等值，如：=，in
+>   - 索引越小越好
+>   - [选择性高的列放在索引的前面](https://blog.csdn.net/li_canhui/article/details/86487693)
+>   - 索引不要包含太长的字段，可考虑前缀索引：ALTER TABLE <table_name> ADD INDEX idx_content(content(6))
+>   - 索引不是越多越好
+>       - 索引也占用空间，还需要定期维护索引
+>       - DML 操作需要重建索引
+>       - DQL 操作优化器选择使用哪一个索引需要时间
+>   - 可选择性高的列要放到索引的前面
+>   - 索引中不要包括太长的数据类型****
+>   - 索引并不是越多越好，过多的索引不但会降低写效率而且会降低读的效率
+>   - 定期维护索引碎片
+>   - SQL 语句中不要使用强制索引关键字
+>   - 查找重复索引及冗余索引
+>      1. 语句查询
+>      ```sql
+>          use information_schema;
+>          
+>          select s1.table_schema, s1.table_name, s1.index_name as index1, s2.index_name as index2, s1.column_name as dup_col 
+>          from statistics s1
+>          join statistics s2 on s1.table_schema = s2.table_schema and s1.table_name = s2.table_name and s1.seq_in_index = s2.seq_in_index and s1.column_name = s2.column_name
+>          where s1.seq_in_index = 1 and s1.index_name <> s2.index_name;
+>      ```
+>      2. pt-duplicate-key-checker
+>   - 删除不用的索引
+>      - pt-index-usage
+>2. 避免全表扫描：对 无索引的表进行的查询 或 放弃索引进行的查询 称为全表扫描
+>    1. 在 where/order by/group by/多表关联涉及的列 上建立索引
+>    2. 避免使用 is null 和 is not null，建表时尽量所有字段设置 NOT NULL
+>    3. 避免使用 != 和 <>
+>    4. 避免使用 or 来连接条件，可以使用 union 或 union all 代替
+>    5. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"；可使用 locate('x', 'field') > 0 代替，或数据库提供的全文检索功能和专门的全文搜索引擎
+>    6. 避免使用 参数，如 where num=@num
+>    7. 避免对字段进行表达式和函数操作，num/2=100 可以改为 num=100*2，包括数据类型不匹配，如字符串和整数进行比较
+>    8. 谨慎使用 in 和 not in，考虑是否能用 between/exists/not exists 代替
+>3. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
+>    1. 增加网络开销
+>    2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
+>    3. 失去了覆盖索引的可能性
+>4. 小表驱动大表
+>    - JOIN 小表连大表
+>    - IN 小表内大表外
+>    - EXISTS 小表外大表内
+>5. [避免使用子查询和 join](https://blog.csdn.net/weixin_38676357/article/details/81510079)
+>6. [使用 explain 查看执行计划](https://tonydong.blog.csdn.net/article/details/103579177)
+>7. 不要使用 OFFSET 实现分页
+>8. 垂直分表
+>    - 不常用的字段
+>    - 大字段
+>    - 经常一起使用的字段
+>9. 水平分表：mod(id, 5)；查询用分表，统计用总表
+>10. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
+>11. 反范式
+>12. 汇总表/缓存表，定时生成数据，用于用户数据耗时操作
 >## 数据类型选择
 >1. 数字类型 > 日期类型|二进制类型 > 字符类型
 >2. char > varchar，小于 50byte 建议使用 char
@@ -169,26 +187,6 @@
 >- ref：显示索引的哪一列被使用
 >- rows：返回结果需要查询的行数
 >- extra： 额外操作：Using temporary 创建了临时表；Using filesort 额外的排序操作
->### 索引
->1. 出现在 WHERE，GROUP BY，ORDER BY 中的列
->2. 可选择性高的列要放到索引的前面
->3. 索引中不要包括太长的数据类型
->4. 索引并不是越多越好，过多的索引不但会降低写效率而且会降低读的效率
->5. 定期维护索引碎片
->6. SQL 语
->1. 查找重复索引及冗余索引
->   1. 语句查询
->   ```sql
->       use information_schema;
->       
->       select s1.table_schema, s1.table_name, s1.index_name as index1, s2.index_name as index2, s1.column_name as dup_col 
->       from statistics s1
->       join statistics s2 on s1.table_schema = s2.table_schema and s1.table_name = s2.table_name and s1.seq_in_index = s2.seq_in_index and s1.column_name = s2.column_name
->       where s1.seq_in_index = 1 and s1.index_name <> s2.index_name;
->   ```
->   2. pt-duplicate-key-checker
->2. 删除不用的索引
->   - pt-index-usage
 >### 配置
 >1. 系统配置
 >   - 网络方面，修改 /etc/sysctl.conf
