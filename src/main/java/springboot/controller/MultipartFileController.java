@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import springboot.result.Result;
+import springboot.result.ResultCode;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -99,7 +100,7 @@ public class MultipartFileController extends Demo {
             file.transferTo(new File(DEMO_ABSOLUTE_PATH + file.getOriginalFilename()));
             return Result.success("success");
         } else {
-            return Result.failure(500, "failure");
+            return Result.failure(ResultCode.PARAM_MISS, "上传文件不能为空");
         }
     }
 }
