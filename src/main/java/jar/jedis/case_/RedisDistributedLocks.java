@@ -1,6 +1,7 @@
 package jar.jedis.case_;
 
 import jar.jedis.JedisUtils;
+import l.utils.DateUtils;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;
@@ -58,7 +59,7 @@ public class RedisDistributedLocks {
 
     private void calWithLock(LockInitial lockInitial, Jedis jedis) {
         String lockValue = String.valueOf(lockInitial.getRandom().nextInt());
-        if (lockInitial.tryLock(jedis, MONEY_LOCK, lockValue, 1000L)) {
+        if (lockInitial.tryLock(jedis, MONEY_LOCK, lockValue, DateUtils.MILLIS_PER_SECOND)) {
             cal(jedis);
             lockInitial.releaseLock(jedis, MONEY_LOCK, lockValue);
         } else {

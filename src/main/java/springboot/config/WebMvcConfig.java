@@ -1,5 +1,6 @@
 package springboot.config;
 
+import l.utils.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -111,7 +112,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
         configurer.setTaskExecutor(asyncTaskExecutor());
         // Callable 超时时间
-        configurer.setDefaultTimeout(1000 * 30);
+        configurer.setDefaultTimeout(DateUtils.MILLIS_PER_SECOND * 30);
         WebMvcConfigurer.super.configureAsyncSupport(configurer);
     }
 

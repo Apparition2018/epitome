@@ -39,7 +39,7 @@ class Family {
         }
     }
 
-    public static class Son extends FatherImpl implements Mother, Serializable {
+    static class Son extends FatherImpl implements Mother, Serializable {
         private static final long serialVersionUID = 568586027964879053L;
 
         @Override
@@ -63,7 +63,7 @@ class Family {
     }
 
     @Data
-    public static class Daughter extends MotherImpl implements Father {
+    static class Daughter extends MotherImpl implements Father {
 
         private String name;
 
