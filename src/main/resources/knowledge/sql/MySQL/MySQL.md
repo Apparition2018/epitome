@@ -61,33 +61,29 @@
 2. [SQL 语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html) 39~
 3. [SQL 语句性能优化](https://www.cnblogs.com/zhangtan/p/7440960.html)
 4. [mysql建立索引的几大原则](https://zhuanlan.zhihu.com/p/88963084)
-5. [MySQL 之覆盖索引](https://zhuanlan.zhihu.com/p/145119015)
-6. [联合索引的最左前缀匹配原则](https://blog.csdn.net/i_silence/article/details/106499430)
-7. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
-8. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
-9. [MySql千万级limit优化方案](https://www.jianshu.com/p/f46b0f3d296b)
-10. [索引失效分析、in与exists使用场合](https://www.cnblogs.com/zjxiang/p/9160810.html)
-11. [复合索引的优点和注意事项](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
+5. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
+6. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
+7. [MySql千万级limit优化方案](https://www.jianshu.com/p/f46b0f3d296b)
+8. [索引失效分析、in与exists使用场合](https://www.cnblogs.com/zjxiang/p/9160810.html)
+9. [复合索引的优点和注意事项](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
+10. [MySQL8 索引](https://blog.csdn.net/g6U8W7p06dCO99fQ3/article/details/119582399?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-5.no_search_link&spm=1001.2101.3001.4242.5)
 >## 优化建议
 >1. 索引相关
->   - 分类方法
+>   - 索引方法
 >       1. BTREE
 >           - 适用于：全键值，范围查找，前缀索引，排序
->           - 限制：最左前缀匹配原则
+>           - 限制：[左前缀索引原则](https://www.cnblogs.com/-mrl/p/13230006.html)
 >       2. HASH
 >           - 限制：匹配索引所有列；不适用于排序；不支持部分匹配；只支持等值，如：=，in
->   - 索引越小越好
->   - [选择性高的列放在索引的前面](https://blog.csdn.net/li_canhui/article/details/86487693)
->   - 索引不要包含太长的字段，可考虑前缀索引：ALTER TABLE <table_name> ADD INDEX idx_content(content(6))
+>   - 表数据太少不需要添加索引
+>   - 索引的数据类型越小效率越高
+>   - 索引不要包括太长的数据类型，使用前缀索引代替：ALTER TABLE <table_name> ADD INDEX idx_content(content(6))
 >   - 索引不是越多越好
 >       - 索引也占用空间，还需要定期维护索引
 >       - DML 操作需要重建索引
 >       - DQL 操作优化器选择使用哪一个索引需要时间
->   - 可选择性高的列要放到索引的前面
->   - 索引中不要包括太长的数据类型****
->   - 索引并不是越多越好，过多的索引不但会降低写效率而且会降低读的效率
->   - 定期维护索引碎片
->   - SQL 语句中不要使用强制索引关键字
+>   - [索引选择性高的列放在索引的前面](https://www.cnblogs.com/liyasong/p/mysql_xuanzexing_index.html)
+>   - [覆盖索引](https://zhuanlan.zhihu.com/p/145119015) ：查询字段和条件字段都包含在一个联合索引中，不需要回表
 >   - 查找重复索引及冗余索引
 >      1. 语句查询
 >      ```sql
@@ -101,23 +97,22 @@
 >      2. pt-duplicate-key-checker
 >   - 删除不用的索引
 >      - pt-index-usage
->2. 避免全表扫描：对 无索引的表进行的查询 或 放弃索引进行的查询 称为全表扫描
->    1. 在 where/order by/group by/多表关联涉及的列 上建立索引
->    2. 避免使用 is null 和 is not null，建表时尽量所有字段设置 NOT NULL
+>2. 避免全表扫描：①对无索引的表进行的查询；②放弃索引进行的查询
+>    1. 在 ①where ②order by ③group by ④多表关联涉及的列 上建立索引
+>    2. 避免使用 is null 和 is not null，建表时尽量设置 not null
 >    3. 避免使用 != 和 <>
 >    4. 避免使用 or 来连接条件，可以使用 union 或 union all 代替
->    5. 避免使用 前置% like，如 like "%xyz" 和 like "%xyz%"；可使用 locate('x', 'field') > 0 代替，或数据库提供的全文检索功能和专门的全文搜索引擎
->    6. 避免使用 参数，如 where num=@num
->    7. 避免对字段进行表达式和函数操作，num/2=100 可以改为 num=100*2，包括数据类型不匹配，如字符串和整数进行比较
->    8. 谨慎使用 in 和 not in，考虑是否能用 between/exists/not exists 代替
+>    5. 避免使用 左% like，如 field like "%x" 和 field like "%x%"；代替：①locate('x', field) > 0，②FULLTEXT，③全文搜索引擎
+>    6. 避免使用[变量](https://www.cnblogs.com/Brambling/p/9259375.html)? ，如 where field = @num;
+>    7. 避免对字段进行操作，①表达式 ②函数 ③自动转换 ④手动转换
 >3. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
->    1. 增加网络开销
+>    1. 增加网络开销，
 >    2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
 >    3. 失去了覆盖索引的可能性
 >4. 小表驱动大表
->    - JOIN 小表连大表
->    - IN 小表内大表外
->    - EXISTS 小表外大表内
+>    - join 小表连大表
+>    - in 小表内大表外
+>    - exists 小表外大表内
 >5. [避免使用子查询和 join](https://blog.csdn.net/weixin_38676357/article/details/81510079)
 >6. [使用 explain 查看执行计划](https://tonydong.blog.csdn.net/article/details/103579177)
 >7. 不要使用 OFFSET 实现分页
@@ -134,6 +129,20 @@
 >2. char > varchar，小于 50byte 建议使用 char
 >3. 精确数据使用 decimal，非精确数据使用 float
 >4. 整型保存 IP，INET_ATON('192.168.0.1')
+>### [explain](https://dev.mysql.com/doc/refman/8.0/en/execution-plan-information.html)
+>- [type](https://blog.csdn.net/lilongsy/article/details/95184594)
+   >   - const：命中主键或唯一索引；被连接的部分是一个 const
+>   - eq_reg：
+>   - ref：
+>   - range：
+>   - index：
+>   - ALL：
+>- possible_keys：可能用到的索引
+>- key：实际使用的索引
+>- [key_len](https://www.cnblogs.com/lukexwang/articles/7060950.html) ：使用索引的长度
+>- ref：显示索引的哪一列被使用
+>- rows：返回结果需要查询的行数
+>- extra： 额外操作：Using temporary 创建了临时表；Using filesort 额外的排序操作
 >### 慢查询
 >1. 开启慢查询
 >```sql
@@ -173,20 +182,6 @@
 >       2. IO 大的 SQL                    pt-query-digest 的 Rows examine
 >       3. 未命中索引的 SQL                pt-query-digest 的 Rows examine 和 Rows Send 的对比
 >   ```
->### [explain](https://dev.mysql.com/doc/refman/8.0/en/execution-plan-information.html)
->- [type](https://blog.csdn.net/lilongsy/article/details/95184594)
->   - const：命中主键或唯一索引；被连接的部分是一个 const
->   - eq_reg：
->   - ref：
->   - range：
->   - index：
->   - ALL：
->- possible_keys：可能用到的索引
->- key：实际使用的索引
->- [key_len](https://www.cnblogs.com/lukexwang/articles/7060950.html) ：使用索引的长度
->- ref：显示索引的哪一列被使用
->- rows：返回结果需要查询的行数
->- extra： 额外操作：Using temporary 创建了临时表；Using filesort 额外的排序操作
 >### 配置
 >1. 系统配置
 >   - 网络方面，修改 /etc/sysctl.conf

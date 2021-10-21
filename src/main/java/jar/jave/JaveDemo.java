@@ -31,7 +31,7 @@ public class JaveDemo extends Demo {
     public void testConvertFormat() {
         try {
             File source = new File(VIDEO);
-            File target = new File(DEMO_ABSOLUTE_PATH + "movie.mp4");
+            File target = new File(RESOURCES_ABSOLUTE_PATH + "static/public/video/movie.mp4");
 
             MultimediaObject multimediaObject = new MultimediaObject(source);
             AudioInfo audioInfo = multimediaObject.getInfo().getAudio();
@@ -72,7 +72,7 @@ public class JaveDemo extends Demo {
     public void testCapture() {
         try {
             File source = new File(VIDEO);
-            File target = new File(DEMO_ABSOLUTE_PATH + "movie.png");
+            File target = new File(RESOURCES_ABSOLUTE_PATH + "static/public/img/movie.png");
 
             MultimediaObject multimediaObject = new MultimediaObject(source);
             VideoInfo videoInfo = multimediaObject.getInfo().getVideo();
