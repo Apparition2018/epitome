@@ -98,32 +98,29 @@
 >   - 删除不用的索引
 >      - pt-index-usage
 >2. 避免全表扫描：①对无索引的表进行的查询；②放弃索引进行的查询
->    1. 在 ①where ②order by ③group by ④多表关联涉及的列 上建立索引
->    2. 避免使用 is null 和 is not null，建表时尽量设置 not null
->    3. 避免使用 != 和 <>
->    4. 避免使用 or 来连接条件，可以使用 union 或 union all 代替
->    5. 避免使用 左% like，如 field like "%x" 和 field like "%x%"；代替：①locate('x', field) > 0，②FULLTEXT，③全文搜索引擎
->    6. 避免使用[变量](https://www.cnblogs.com/Brambling/p/9259375.html)? ，如 where field = @num;
->    7. 避免对字段进行操作，①表达式 ②函数 ③自动转换 ④手动转换
+>   1. 在 ①where ②order by ③group by ④多表关联涉及的列 上建立索引
+>   2. 避免使用 is null 和 is not null，建表时尽量设置 not null
+>   3. 避免使用 != 和 <>
+>   4. 避免使用 or 来连接条件，可以使用 union 或 union all 代替
+>   5. 避免使用 左% like，如 field like "%x" 和 field like "%x%"；代替：①locate('x', field) > 0，②FULLTEXT，③全文搜索引擎
+>   6. 避免对字段进行操作，①表达式 ②函数 ③自动转换 ④手动转换
+>   7. 避免使用[变量](https://www.cnblogs.com/Brambling/p/9259375.html)? ，如 where field = @num;
 >3. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
->    1. 增加网络开销，
->    2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
->    3. 失去了覆盖索引的可能性
->4. 小表驱动大表
->    - join 小表连大表
->    - in 小表内大表外
->    - exists 小表外大表内
->5. [避免使用子查询和 join](https://blog.csdn.net/weixin_38676357/article/details/81510079)
->6. [使用 explain 查看执行计划](https://tonydong.blog.csdn.net/article/details/103579177)
->7. 不要使用 OFFSET 实现分页
->8. 垂直分表
->    - 不常用的字段
->    - 大字段
->    - 经常一起使用的字段
->9. 水平分表：mod(id, 5)；查询用分表，统计用总表
->10. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
->11. 反范式
->12. 汇总表/缓存表，定时生成数据，用于用户数据耗时操作
+>   1. 增加网络开销，
+>   2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
+>   3. 失去了覆盖索引的可能性
+>4. [避免使用子查询和 join](https://blog.csdn.net/weixin_38676357/article/details/81510079)
+>   - [联表查询 和 单表查询+业务层处理 比较](https://www.zhihu.com/question/68258877)
+>5. 小表驱动大表
+>   - join 小表连大表
+>   - in 小表内大表外
+>   - exists 小表外大表内
+>6. 反范式：适当增加冗余数据
+>7. 汇总表/缓存表，定时生成数据，用于用户数据耗时操作
+>8. [不要使用 offset 和 limit 实现分页](https://juejin.cn/post/6844903939247177741)
+>9. 垂直分表：①不常用的字段 ②大字段 ③经常一起使用的字段
+>10. 水平分表：mod(id, 5)；查询用分表，统计用总表
+>11. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
 >## 数据类型选择
 >1. 数字类型 > 日期类型|二进制类型 > 字符类型
 >2. char > varchar，小于 50byte 建议使用 char
@@ -131,8 +128,9 @@
 >4. 整型保存 IP，INET_ATON('192.168.0.1')
 >### [explain](https://dev.mysql.com/doc/refman/8.0/en/execution-plan-information.html)
 >- [type](https://blog.csdn.net/lilongsy/article/details/95184594)
-   >   - const：命中主键或唯一索引；被连接的部分是一个 const
->   - eq_reg：
+>   - system：①表只有一行数据 ②引擎是 MyISAM
+>   - const：①条件列为 pk 或 unique ②条件值可被优化器视为常量
+>   - eq_ref：①等值关联 ②关联列为 pk 或 unique not null ③对于前表，后表总能关联一行数据
 >   - ref：
 >   - range：
 >   - index：
