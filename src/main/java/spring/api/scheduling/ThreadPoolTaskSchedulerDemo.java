@@ -1,11 +1,17 @@
 package spring.api.scheduling;
 
 import l.utils.DateUtils;
+import lombok.SneakyThrows;
+import org.springframework.scheduling.Trigger;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
+import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 /**
  * ThreadPoolTaskScheduler
@@ -18,7 +24,7 @@ import java.util.concurrent.ScheduledFuture;
 public class ThreadPoolTaskSchedulerDemo {
 
     public static void main(String[] args) {
-        ScheduleUtil.start(new MyScheduleTask("test"), DateUtils.MILLIS_PER_SECOND);
+        ScheduleUtil.startAtFixedRate(new MyScheduleTask("test"), Date.from(Instant.now().plusSeconds(3)), DateUtils.MILLIS_PER_SECOND);
     }
 
     static class ScheduleUtil {
@@ -29,15 +35,56 @@ public class ThreadPoolTaskSchedulerDemo {
             threadPoolTaskScheduler.initialize();
         }
 
-        public static void start(ScheduleTask scheduleTask, long period) {
+        public static void schedule(ScheduleTask scheduleTask, Trigger trigger) {
             if (scheduledFutureMap.containsKey(scheduleTask.getId())) {
                 return;
             }
-            ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.scheduleAtFixedRate(scheduleTask, period);
+            ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.schedule(scheduleTask, trigger);
             scheduledFutureMap.put(scheduleTask.getId(), scheduledFuture);
         }
 
-        public static void cancel(ScheduleTask scheduleTask) {
+        /**
+         * 执行一次
+         */
+        public static void schedule(ScheduleTask scheduleTask, Date startTime) {
+            if (scheduledFutureMap.containsKey(scheduleTask.getId())) {
+                return;
+            }
+            ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.schedule(scheduleTask, startTime);
+            scheduledFutureMap.put(scheduleTask.getId(), scheduledFuture);
+        }
+
+        /**
+         * 以上一次任务的开始时间为间隔，真正的间隔时间 = max(任务执行时间，间隔时间）
+         */
+        public static void startAtFixedRate(ScheduleTask scheduleTask, Date startTime, long period) {
+            if (scheduledFutureMap.containsKey(scheduleTask.getId())) {
+                return;
+            }
+            ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.scheduleAtFixedRate(scheduleTask, startTime, period);
+            scheduledFutureMap.put(scheduleTask.getId(), scheduledFuture);
+        }
+
+        public static void startAtFixedRate(ScheduleTask scheduleTask, long period) {
+            startAtFixedRate(scheduleTask, null, period);
+        }
+
+        /**
+         * 以上一次任务的结束时间为间隔
+         */
+        public static void startWithFixedDelay(ScheduleTask scheduleTask, Date startTime, long period) {
+            if (scheduledFutureMap.containsKey(scheduleTask.getId())) {
+                return;
+            }
+            ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.scheduleWithFixedDelay(scheduleTask, startTime, period);
+            scheduledFutureMap.put(scheduleTask.getId(), scheduledFuture);
+        }
+
+        public static void startWithFixedDelay(ScheduleTask scheduleTask, long period) {
+            startWithFixedDelay(scheduleTask, null, period);
+        }
+
+        public static void remove(ScheduleTask scheduleTask) {
             ScheduledFuture<?> scheduledFuture = scheduledFutureMap.get(scheduleTask.getId());
             if (scheduledFuture != null && !scheduledFuture.isCancelled()) {
                 scheduledFuture.cancel(true);
@@ -70,10 +117,12 @@ public class ThreadPoolTaskSchedulerDemo {
             super(id);
         }
 
+        @SneakyThrows
         @Override
         public void run() {
-            System.err.println(++count);
-            if (count == 5) ScheduleUtil.cancel(this);
+            System.err.println(Instant.now());
+            TimeUnit.SECONDS.sleep(3);
+            if (count == 10) ScheduleUtil.remove(this);
         }
     }
 

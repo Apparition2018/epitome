@@ -111,10 +111,9 @@
 >   3. 失去了覆盖索引的可能性
 >4. [避免使用子查询和 join](https://blog.csdn.net/weixin_38676357/article/details/81510079)
 >   - [联表查询 和 单表查询+业务层处理 比较](https://www.zhihu.com/question/68258877)
->5. 小表驱动大表
->   - join 小表连大表
->   - in 小表内大表外
->   - exists 小表外大表内
+>5. [小表驱动大表](https://blog.csdn.net/qq_20891495/article/details/93744495)
+>   - [根据驱动表优化查询](https://www.cnblogs.com/zhengyun_ustc/p/slowquery1.html)
+>   - [in 小表内大表外，exists 小表外大表内](https://www.cnblogs.com/zjxiang/p/9160810.html)
 >6. 反范式：适当增加冗余数据
 >7. 汇总表/缓存表，定时生成数据，用于用户数据耗时操作
 >8. [不要使用 offset 和 limit 实现分页](https://juejin.cn/post/6844903939247177741)
@@ -126,15 +125,15 @@
 >2. char > varchar，小于 50byte 建议使用 char
 >3. 精确数据使用 decimal，非精确数据使用 float
 >4. 整型保存 IP，INET_ATON('192.168.0.1')
->### [explain](https://dev.mysql.com/doc/refman/8.0/en/execution-plan-information.html)
+>### [explain](https://www.cnblogs.com/qlqwjy/p/7767479.html)
 >- [type](https://blog.csdn.net/lilongsy/article/details/95184594)
 >   - system：①表只有一行数据 ②引擎是 MyISAM
 >   - const：①条件列为 pk 或 unique ②条件值可被优化器视为常量
->   - eq_ref：①等值关联 ②关联列为 pk 或 unique not null ③对于前表，后表总能关联一行数据
->   - ref：
->   - range：
->   - index：
->   - ALL：
+>   - eq_ref：①等值关联 ②被驱动表的关联列为 pk 或 unique not null
+>   - ref：条件列只使用最左前缀，或不是 pk 或 unique
+>   - range：范围扫描
+>   - index：全索引扫描
+>   - ALL：全表扫描
 >- possible_keys：可能用到的索引
 >- key：实际使用的索引
 >- [key_len](https://www.cnblogs.com/lukexwang/articles/7060950.html) ：使用索引的长度

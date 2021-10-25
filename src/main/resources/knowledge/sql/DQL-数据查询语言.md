@@ -1,10 +1,7 @@
 # 数据查询语言 Data Query Language
 
 ---
-## 查询语句执行顺序
-- Oracle FROM 和 WHERE 执行顺序：右 → 左
-    - FROM 两个表：小表放后面
-    - FROM 多个表：交叉表（被其他表所引用的表）放后面
+## [查询语句执行顺序](https://www.cnblogs.com/wyq178/p/11576065.html)
 ```
 1   FROM
 2   ON
