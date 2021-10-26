@@ -111,7 +111,7 @@ SELECT e.ename, m.ename, e.sal, m.sal FROM emp e, emp m WHERE e.mgr = m.empno;  
 >```
 ---
 ## 排名查询
->### MySQL
+>### [MySQL](https://blog.csdn.net/justry_deng/article/details/80597916)
 >```sql
 >SELECT empno, sal, @rank := @rank + 1 AS 'rank'
 >FROM emp, (SELECT @rank := 0) t

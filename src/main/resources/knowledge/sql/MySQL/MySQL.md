@@ -3,16 +3,11 @@
 ---
 ## 参考网站
 1. [MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)
-2. [MySQL 的 MVCC(多版本并发控制)](https://www.cnblogs.com/myseries/p/10930910.html)
-3. [MySQL 多版本并发控制与锁机制](https://blog.csdn.net/litianxiang_kaola/article/details/83003190)
 ---
 ## 问题
-1. [使用 mysql 应该注意的细节](https://www.cnblogs.com/zhangyiqinga/p/9753484.html)
-2. [delimiter 的用法和作用](https://blog.csdn.net/langkeziju/article/details/14446671)
-3. [MySQL 中实现 rank 排名查询](https://blog.csdn.net/justry_deng/article/details/80597916)
-4. [Mysql 为什么默认定义varchar(255) 而不是varchar(256)](https://juejin.cn/post/6844903894703685646)
-5. [Mysql 8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
-6. [MySQL优化：如何避免回表查询？什么是覆盖索引？](https://www.cnblogs.com/myseries/p/11265849.html)
+1. [delimiter 的用法和作用](https://blog.csdn.net/langkeziju/article/details/14446671)
+2. [Mysql 为什么默认定义varchar(255) 而不是varchar(256)](https://juejin.cn/post/6844903894703685646)
+3. [Mysql 8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
 ---
 ## 安装
 1. [mysql完全卸载教程](https://blog.csdn.net/qq_41140741/article/details/81489531)
@@ -72,7 +67,7 @@
 >   - 索引方法
 >       1. BTREE
 >           - 适用于：全键值，范围查找，前缀索引，排序
->           - 限制：[左前缀索引原则](https://www.cnblogs.com/-mrl/p/13230006.html)
+>           - 限制：[最左前缀原则 (Leftmost Prefix Principle)](https://www.cnblogs.com/-mrl/p/13230006.html)
 >       2. HASH
 >           - 限制：匹配索引所有列；不适用于排序；不支持部分匹配；只支持等值，如：=，in
 >   - 表数据太少不需要添加索引
@@ -83,7 +78,7 @@
 >       - DML 操作需要重建索引
 >       - DQL 操作优化器选择使用哪一个索引需要时间
 >   - [索引选择性高的列放在索引的前面](https://www.cnblogs.com/liyasong/p/mysql_xuanzexing_index.html)
->   - [覆盖索引](https://zhuanlan.zhihu.com/p/145119015) ：查询字段和条件字段都包含在一个联合索引中，不需要回表
+>   - [覆盖索引 (Covering indexes)](https://www.cnblogs.com/myseries/p/11265849.html) ：查询字段和条件字段都包含在一个联合索引中，不需要回表
 >   - 查找重复索引及冗余索引
 >      1. 语句查询
 >      ```sql
@@ -116,7 +111,7 @@
 >   - [in 小表内大表外，exists 小表外大表内](https://www.cnblogs.com/zjxiang/p/9160810.html)
 >6. 反范式：适当增加冗余数据
 >7. 汇总表/缓存表，定时生成数据，用于用户数据耗时操作
->8. [不要使用 offset 和 limit 实现分页](https://juejin.cn/post/6844903939247177741)
+>8. [offset 和 limit 分页优化](https://juejin.cn/post/6844903939247177741)
 >9. 垂直分表：①不常用的字段 ②大字段 ③经常一起使用的字段
 >10. 水平分表：mod(id, 5)；查询用分表，统计用总表
 >11. [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
@@ -131,7 +126,7 @@
 >   - const：①条件列为 pk 或 unique ②条件值可被优化器视为常量
 >   - eq_ref：①等值关联 ②被驱动表的关联列为 pk 或 unique not null
 >   - ref：条件列只使用最左前缀，或不是 pk 或 unique
->   - range：范围扫描
+>   - range：范围扫描，<>, <, <=, >, >=, between, like, in, not in
 >   - index：全索引扫描
 >   - ALL：全表扫描
 >- possible_keys：可能用到的索引
@@ -215,6 +210,8 @@
 - [MySQL 8.0 Reference Manual :: InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
 - [MySQL 锁机制详解](https://www.cnblogs.com/volcano-liu/p/9890832.html)
 - [MySQL 加锁分析](https://www.cnblogs.com/rjzheng/p/9950951.html)
+- [MySQL 多版本并发控制与锁机制](https://blog.csdn.net/litianxiang_kaola/article/details/83003190)
+- [MySQL 的 MVCC(多版本并发控制)](https://www.cnblogs.com/myseries/p/10930910.html)
 >### 锁的类型
 >1. 意向锁 (Intention Locks)：表级锁，指示事务稍后需要对表中的行使用哪种类型的锁（共享/排它）
 >    1. 意向共享锁 (Intention Shared Locks, IS)：`SELECT ... FOR SHARE`
