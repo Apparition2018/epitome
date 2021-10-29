@@ -134,7 +134,7 @@
 >- [key_len](https://www.cnblogs.com/lukexwang/articles/7060950.html) ：使用索引的长度
 >- ref：显示索引的哪一列被使用
 >- rows：返回结果需要查询的行数
->- extra： 额外操作：Using temporary 创建了临时表；Using filesort 额外的排序操作
+>- extra：[注意 Using temporary 和 Using filesort](https://blog.csdn.net/sz85850597/article/details/91907988)
 >### 慢查询
 >1. 开启慢查询
 >```sql
