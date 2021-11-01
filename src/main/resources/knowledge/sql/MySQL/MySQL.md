@@ -53,15 +53,12 @@
 ---
 ## 优化
 1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
-2. [SQL 语句性能优化](https://www.cnblogs.com/SimpleWu/p/9929043.html) 39~
-3. [SQL 语句性能优化](https://www.cnblogs.com/zhangtan/p/7440960.html)
-4. [mysql建立索引的几大原则](https://zhuanlan.zhihu.com/p/88963084)
-5. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
-6. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
-7. [MySql千万级limit优化方案](https://www.jianshu.com/p/f46b0f3d296b)
-8. [索引失效分析、in与exists使用场合](https://www.cnblogs.com/zjxiang/p/9160810.html)
-9. [复合索引的优点和注意事项](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
-10. [MySQL8 索引](https://blog.csdn.net/g6U8W7p06dCO99fQ3/article/details/119582399?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-5.no_search_link&spm=1001.2101.3001.4242.5)
+2. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
+3. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
+4. [MySql千万级limit优化方案](https://www.jianshu.com/p/f46b0f3d296b)
+5. [索引失效分析、in与exists使用场合](https://www.cnblogs.com/zjxiang/p/9160810.html)
+6. [复合索引的优点和注意事项](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
+7. [MySQL8 索引](https://blog.csdn.net/g6U8W7p06dCO99fQ3/article/details/119582399?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-5.no_search_link&spm=1001.2101.3001.4242.5)
 >## 优化建议
 >1. 索引相关
 >   - 索引方法
@@ -134,7 +131,7 @@
 >- [key_len](https://www.cnblogs.com/lukexwang/articles/7060950.html) ：使用索引的长度
 >- ref：显示索引的哪一列被使用
 >- rows：返回结果需要查询的行数
->- extra：[注意 Using temporary 和 Using filesort](https://blog.csdn.net/sz85850597/article/details/91907988)
+>- extra：[优化 Using temporary 和 Using filesort](https://www.dazhuanlan.com/mrlonely1988/topics/1146538)
 >### 慢查询
 >1. 开启慢查询
 >```sql
