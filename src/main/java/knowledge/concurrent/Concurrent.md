@@ -24,21 +24,19 @@
             `version` int NOT NULL COMMENT '版本号',
             `created_at` datetime COMMENT '创建时间',
             `updated_at` datetime COMMENT '更新时间',
-            `deleted_at` datetime COMMENT '删除时间',
             PRIMARY KEY (`id`),
-            UNIQUE KEY `uiq_idx_resource` (`resource`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='数据库分布式锁表';
         ```
         1. 版本号 (version)
-        ```sql
-        SELECT quantity, version FROM optimistic_lock WHERE id = 1;
-        UPDATE optimistic_lock SET quantity = newQuantity, version = version + 1 WHERE id = 1 AND version = oldVersion;
-        ```         
+            ```sql
+            SELECT quantity, version FROM good WHERE id = 1;
+            UPDATE good SET quantity = newQuantity, version = version + 1 WHERE id = 1 AND version = oldVersion;
+            ```         
         2. 修改时间 (updated_at)
-        ```sql
-        SELECT quantity, updated_at FROM optimistic_lock WHERE id = 1;
-        UPDATE optimistic_lock SET quantity = newQuantity, updated_at = newUpdatedAt WHERE id = 1 AND updated_at = oldUpdatedAt;
-        ```         
+            ```sql
+            SELECT quantity, updated_at FROM good WHERE id = 1;
+            UPDATE good SET quantity = newQuantity, updated_at = newUpdatedAt WHERE id = 1 AND updated_at = oldUpdatedAt;
+            ```         
     3. 悲观锁：`SELECT ... FOR UPDATE`  
 2. Redis：@see RedisDistributedLocks
     ```
