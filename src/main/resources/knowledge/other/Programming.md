@@ -1,24 +1,67 @@
 # 编程
 
 ---
+## 
+1. [AobingJava/JavaFamily](https://github.com/AobingJava/JavaFamily)
+---
 ## 收藏
 1. [程序员你为什么这么累？(编程规范)](https://zhuanlan.zhihu.com/p/28705206)
 2. [反向代理为何叫反向代理？](https://www.zhihu.com/question/24723688)
 3. [Kubernetes和Docker到底有啥关系？](https://zhuanlan.zhihu.com/p/87186261)
 4. [Java 内存分配全面浅析](https://www.cnblogs.com/lixiaolun/p/4311775.html)
+5. [程序员网站](https://www.zhihu.com/question/494519458/answer/2191335701)
 ---
 ## 开源镜像站
 1. [阿里巴巴开源镜像站](https://developer.aliyun.com/mirror/)
 2. [腾讯软件源](https://mirrors.cloud.tencent.com)
 3. [网易开源镜像站](https://mirrors.163.com/)
 ---
-## Tomcat
->### Tomcat 启动中文乱码
->1. 打开 D:\tts9\apache-tomcat-9.0.40\conf\logging.properties
->2. 修改 java.util.logging.ConsoleHandler.encoding = GBK
->### [Tomcat 热部署](https://blog.csdn.net/w15321271041/article/details/80597962)
->1. On 'Update' action: Update classes and resources
->2. Debug 启动项目 (修改 Java 文件时可以立刻生效)
+## [端口被占用](https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html)
+1. 打开 cmd.exe
+2. netstat -ano|findstr 8080，根据指定端口字符串查找，记下 PID
+3. tasklist|findstr 9776，根据指定 PID 字符串查找任务，记下任务名
+4. taskkill /f /t /im WXWork.exe，或 taskkill /f /t /pid 333412
+---
+## 日志
+1. [一个著名的日志系统是怎么设计出来的？](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45)
+2. [Java日志体系居然这么复杂？——架构篇](https://zhuanlan.zhihu.com/p/101104008)
+3. [五年Java经验，面试还是说不出日志该怎么写更好？——日志规范与最佳实践篇](https://zhuanlan.zhihu.com/p/101597639)
+>1. 日志门面
+>    1. slf4j: Simple Logging Facade for Java
+>    2. jboss-logging
+>    3. commons-logging
+>2. 日志实现
+>    1. log4j: Log for Java
+>    2. JUL: java.util.logging
+>    3. log4j2
+>    4. logback
+>3. 阿里日志规约：
+>   1. 应用中不应直接使用日志系统 (Log4j, Logback) 中的 API，而应依赖使用日志框架 SLF4J 中的 API。因为使用过门面模式的日志框架，有利于维护各个类的日志处理方式统一
+>       ```
+>       import org.slf4j.Logger;
+>       import org.slf4j.LoggerFactory;
+>       
+>       Logger logger = LoggerFactory.getLogger(Test.class);
+>       logger.info("Hello World!")
+>       ```
+>   2. 当天日志，以“应用名.log”来保存，保存在/home/admin/应用名/logs/目录下，过往日志格式为: {logname}.log.{保存日期}，日期格式：yyyy-MM-dd
+>   3. 对于 trace/debug/info 级别的日志输出，必须进行日志级别的开关判断
+>       ```
+>       if (logger.isDebugEnabled()) {
+>          logger.debug("Current ID is: {} and name is: {}", id, getName());
+>       }
+>       ```
+>   4. 避免重复打印日志，浪费磁盘空间，务必在日志配置文件中设置 additivity=false
+>   5. 异常信息应该包括两类信息：案发现场信息和异常堆栈信息。如果不处理，那么通过关键字 throws 往上抛出
+>   6. 日志打印时禁止直接用 JSON 工具将对象转换成 String
+>   7. 谨慎地记录日志。生产环境禁止输出 debug 日志；有选择地输出 info 日志；如果使用 warn 来记录刚上线时的业务行为信息，一定要注意日志输出量的问题，并记得及时删除这些观察日志
+>   8. 可以使用 warn 日志级别来记录用户输入参数错误的情况，避免用户投诉时，无所适从。如非必要，请不要在此场景打出 error 级别，避免频繁报警
+---
+## 缓存
+1. [如何优雅的设计和使用缓存？](https://juejin.cn/post/6844903665845665805)
+2. [Spring Cache VS Caffeine](https://www.cnblogs.com/Sinte-Beuve/p/12009885.html)
+3. [高性能缓存 Caffeine](https://www.cnblogs.com/oopsguy/p/7731659.html)
+4. [Spring Cache 实现两级缓存 (Redis + Caffeine)](https://my.oschina.net/dengfuwei/blog/1616221)
 ---
 ## RPC
 0. [EasyRPC](https://github.com/yeecode/EasyRPC)
@@ -39,20 +82,14 @@
 >### Google API Design Guide
 >1. [Google API Design Guide](https://www.bookstack.cn/read/API-design-guide/API-design-guide-README.md)
 ---
-## [端口被占用](https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html)
-1. 打开 cmd.exe
-2. netstat -ano|findstr 8080，根据指定端口字符串查找，记下 PID
-3. tasklist|findstr 9776，根据指定 PID 字符串查找任务，记下任务名
-4. taskkill /f /t /im WXWork.exe，或 taskkill /f /t /pid 333412
----
 ## Web
 1. [什么是跨域？为什么要禁止跨域？怎样跨域？](https://blog.csdn.net/qq_28773159/article/details/104834167)
 2. [浅谈CSRF攻击方式](https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html)
 ---
 ## SSO
-- 步骤：存储票据，查验票据
 1. [什么是单点登录(原理与实现简介) ](https://www.cnblogs.com/wcwnina/p/9946623.html)
 2. [java sso单点登录实战_哔哩哔哩](https://www.bilibili.com/video/BV1hT4y157QF)
+- 步骤：存储票据，查验票据
 ---
 ## Token
 1. [RESTful登录设计（基于Spring及Redis的Token鉴权）](www.scienjus.com/restful-token-authorization/)

@@ -35,13 +35,13 @@
     - 从小到大
     - 实时排行榜、构建索引数据
 >### 参考网站
->1. [熟悉Redis？说说Redis的各种应用场景核心设计](https://zhuanlan.zhihu.com/p/100460843)
->2. [Redis中bitmap的妙用](https://segmentfault.com/a/1190000008188655)
->3. [Redis中Hash实现条件查询](https://www.jianshu.com/p/98b9a56cd036)
->4. [redis 存储list_Redis经典案例场景](https://blog.csdn.net/weixin_39530437/article/details/111616754)
->5. [Redis高并发场景设计，阿里Java架构师100分钟助你搞定大厂项目实战！](https://www.bilibili.com/video/av81324631)
->6. [跟我一起学Redis之五种基本类型及其应用场景举例](https://zhuanlan.zhihu.com/p/263390414)
->7. [Redis实战场景中相关问题](https://www.shuzhiduo.com/A/RnJWKG9BJq/) 
+>1. [熟悉 Redis？说说 Redis 的各种应用场景核心设计](https://zhuanlan.zhihu.com/p/100460843)
+>2. [Redis 中 bitmap 的妙用](https://segmentfault.com/a/1190000008188655)
+>3. [Redis 中 Hash 实现条件查询](https://www.jianshu.com/p/98b9a56cd036)
+>4. [Redis 存储 list](https://blog.csdn.net/weixin_39530437/article/details/111616754)
+>5. [Redis 高并发场景设计](https://www.bilibili.com/video/av81324631)
+>6. [Redis 五种基本类型及其应用场景举例](https://zhuanlan.zhihu.com/p/263390414)
+>7. [Redis 实战场景中相关问题](https://www.shuzhiduo.com/A/RnJWKG9BJq/) 
 >8. [Redis 数据类型及应用场景](https://segmentfault.com/a/1190000012212663)
 ---
 ## Redis 数量控制

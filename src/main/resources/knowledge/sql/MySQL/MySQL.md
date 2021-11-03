@@ -5,14 +5,14 @@
 1. [MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)
 ---
 ## 问题
-1. [delimiter 的用法和作用](https://blog.csdn.net/langkeziju/article/details/14446671)
-2. [Mysql 为什么默认定义varchar(255) 而不是varchar(256)](https://juejin.cn/post/6844903894703685646)
-3. [Mysql 8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
+1. [MySQL delimiter 的定义及作用](https://www.jb51.net/article/146693.htm)
+2. [MySQL 为什么默认定义varchar(255) 而不是varchar(256)](https://juejin.cn/post/6844903894703685646)
+3. [MySQL8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
 ---
 ## 安装
-1. [mysql完全卸载教程](https://blog.csdn.net/qq_41140741/article/details/81489531)
-2. [MySQL 8.0 压缩包版安装方法](https://www.cnblogs.com/xuqp/p/9172254.html)
-3. [同时安装MySQL5和MySQL8](https://blog.csdn.net/qq_32793985/article/details/105807328)
+1. [MySQL 完全卸载教程](https://blog.csdn.net/qq_41140741/article/details/81489531)
+2. [MySQL8 压缩包版安装方法](https://www.cnblogs.com/xuqp/p/9172254.html)
+3. [同时安装 MySQL5 和 MySQL8](https://blog.csdn.net/qq_32793985/article/details/105807328)
 - mysql 5.6 不需要执行 mysqld --initialize
 >### [my.ini](https://www.cnblogs.com/missmeng/p/13404228.html)
 >```
@@ -53,12 +53,6 @@
 ---
 ## 优化
 1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
-2. [MySQL 之全文索引](https://zhuanlan.zhihu.com/p/35675553)
-3. [记一次关于 Mysql 中 text 类型和索引问题引起的慢查询的定位及优化](https://blog.csdn.net/zdplife/article/details/94607896)
-4. [MySql千万级limit优化方案](https://www.jianshu.com/p/f46b0f3d296b)
-5. [索引失效分析、in与exists使用场合](https://www.cnblogs.com/zjxiang/p/9160810.html)
-6. [复合索引的优点和注意事项](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
-7. [MySQL8 索引](https://blog.csdn.net/g6U8W7p06dCO99fQ3/article/details/119582399?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-5.no_search_link&spm=1001.2101.3001.4242.5)
 >## 优化建议
 >1. 索引相关
 >   - 索引方法
@@ -75,7 +69,9 @@
 >       - DML 操作需要重建索引
 >       - DQL 操作优化器选择使用哪一个索引需要时间
 >   - [索引选择性高的列放在索引的前面](https://www.cnblogs.com/liyasong/p/mysql_xuanzexing_index.html)
+>   - [组合索引 (composite indexes)](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
 >   - [覆盖索引 (Covering indexes)](https://www.cnblogs.com/myseries/p/11265849.html) ：查询字段和条件字段都包含在一个联合索引中，不需要回表
+>   - [MySQL8 三大索引](https://www.mdnice.com/writing/ca72a1892384484aa67bc37398dea3b8) 
 >   - 查找重复索引及冗余索引
 >      1. 语句查询
 >      ```sql
@@ -94,7 +90,7 @@
 >   2. 避免使用 is null 和 is not null，建表时尽量设置 not null
 >   3. 避免使用 != 和 <>
 >   4. 避免使用 or 来连接条件，可以使用 union 或 union all 代替
->   5. 避免使用 左% like，如 field like "%x" 和 field like "%x%"；代替：①locate('x', field) > 0，②FULLTEXT，③全文搜索引擎
+>   5. 避免使用 左% like，如 field like "%x" 和 field like "%x%"；代替：①locate('x', field) > 0，②[FULLTEXT](https://juejin.cn/post/6969887148036063239) ，③全文搜索引擎
 >   6. 避免对字段进行操作，①表达式 ②函数 ③自动转换 ④手动转换
 >   7. 避免使用[变量](https://www.cnblogs.com/Brambling/p/9259375.html)? ，如 where field = @num;
 >3. [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
