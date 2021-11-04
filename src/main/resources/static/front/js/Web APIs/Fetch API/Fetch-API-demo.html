@@ -260,7 +260,7 @@
         </div>
         <script class="code w60p" contenteditable="true">
                 (function () {
-                    fetch('http://127.0.0.1:3333/public/img/people/穗波玉.jpg', {
+                    fetch('http://localhost:3333/public/img/people/穗波玉.jpg', {
                         mode: 'cors' // cors: 跨域 | same-origin: 同源 | no-cors: 禁止跨域
                     }).then(response => response.blob()).then(response => {
                         document.querySelector('.box-blob img').src = URL.createObjectURL(response);

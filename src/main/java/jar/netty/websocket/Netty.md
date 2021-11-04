@@ -5,10 +5,9 @@
 ---
 ## 参考网站
 1. [Netty.docs: Netty.docs: Home](https://netty.io/wiki/)
-1. [解锁网络编程之NIO的前世今生-慕课网](https://www.imooc.com/learn/1118)
 2. [Netty入门之WebSocket初体验-慕课网](https://www.imooc.com/learn/941)
-3. [通俗地讲，Netty 能做什么？](https://www.zhihu.com/question/24322387)
-4. [Netty知多少？](https://my.oschina.net/sunny0931/blog/4443529)
+3. [解锁网络编程之NIO的前世今生-慕课网](https://www.imooc.com/learn/1118)
+4. [通俗地讲，Netty 能做什么？](https://www.zhihu.com/question/24322387)
 ---
 ## 使用场景
 1. 高性能：游戏，大数据分布式计算
@@ -19,7 +18,7 @@
         3. 事件处理器
 3. 异步通信：Future-Listener 机制
 ---
-## IO
+## [IO](https://mp.weixin.qq.com/s?__biz=MzIyNjAzODEyMg==&mid=2247484746&idx=1&sn=5146ae815c4bf560b8df809c2f81c78b)
 |BIO|伪异步 IO|NIO|AIO|
 |:---|:---|:---|:---|
 |同步阻塞|异步阻塞?|同步非阻塞|异步非阻塞|
@@ -32,15 +31,10 @@
     - 连接注册读写事件和回调函数
     - 读写方法异步
     - 主动通知程序：和 NIO 区别的关键
->### 参考网站
->1. [8分钟深入浅出搞懂BIO、NIO、AIO](https://zhuanlan.zhihu.com/p/83597838)
 ---
-## Reactor 线程模型
-- Reactor 是一种为处理并发服务请求，并将请求提交到一个或者多个服务处理程序的事件驱动设计模式
+## [Reactor 线程模型](https://www.zhihu.com/question/26943938)
+- Reactor 是一种为处理并发服务请求，并将请求提交到一个或者多个服务处理程序的事件驱动设计模式  
 <img alt="Reactor" src="http://5b0988e595225.cdn.sohucs.com/images/20181102/10d4cec7f05c4a319084fd60e8644e50.jpeg" width="550"/>
->### 参考网站
->1. [Reactor模式](https://www.cnblogs.com/crazymakercircle/p/9833847.html)
->2. [如何深刻理解Reactor和Proactor？](https://www.zhihu.com/question/26943938)
 ---
 ## WebSocket
 - HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议
@@ -50,7 +44,6 @@
 1. 服务端
 2. 客户端
 >### 参考网站
->1. [WebSocket 教程](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
->2. [WebSocket 是什么原理？为什么可以实现持久连接？](https://www.zhihu.com/question/20215561)
->3. [HTML5 WebSocket | 菜鸟教程](https://www.runoob.com/html/html5-websocket.html)
+>1. [WebSocket 教程 - 阮一峰](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
+>2. [WebSocket 是什么原理？为什么可以实现持久连接？ - 知乎](https://www.zhihu.com/question/20215561)
 ---

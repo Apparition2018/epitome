@@ -35,9 +35,9 @@
     - 从小到大
     - 实时排行榜、构建索引数据
 >### 参考网站
->1. [熟悉 Redis？说说 Redis 的各种应用场景核心设计](https://zhuanlan.zhihu.com/p/100460843)
->2. [Redis 中 bitmap 的妙用](https://segmentfault.com/a/1190000008188655)
->3. [Redis 中 Hash 实现条件查询](https://www.jianshu.com/p/98b9a56cd036)
+>1. [Redis 各种应用场景](https://zhuanlan.zhihu.com/p/100460843)
+>2. [Redis bitmap 的妙用](https://segmentfault.com/a/1190000008188655)
+>3. [Redis Hash 实现条件查询](https://www.jianshu.com/p/98b9a56cd036)
 >4. [Redis 存储 list](https://blog.csdn.net/weixin_39530437/article/details/111616754)
 >5. [Redis 高并发场景设计](https://www.bilibili.com/video/av81324631)
 >6. [Redis 五种基本类型及其应用场景举例](https://zhuanlan.zhihu.com/p/263390414)

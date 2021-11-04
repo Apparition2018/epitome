@@ -3,10 +3,10 @@ package knowledge.throwable;
 /**
  * 自定义异常
  * 1.所有异常都必须是 Throwable 的子类
- * 2.写一个检查性异常类，需要继承 Exception 类
- * 3.写一个运行时异常类，需要继承 RuntimeException 类
+ * 2.检查性异常类，继承 Exception
+ * 3.运行时异常类，继承 RuntimeException
  * <p>
- * 自定义异常详解：https://zhuanlan.zhihu.com/p/66228306
+ * 自定义异常，应该继承 Exception 还是 Runtime Exception：https://www.zhihu.com/question/51970444
  *
  * @author ljh
  * created on 2020/9/4 14:10

@@ -1,6 +1,3 @@
-// 廖雪峰Node.js：https://www.liaoxuefeng.com/wiki/1022910821149312/1023025235359040
-// 阮一峰CommonJS规范：http://javascript.ruanyifeng.com/nodejs/module.html
-
 'use strict';
 console.log('Hello, world.');
 
