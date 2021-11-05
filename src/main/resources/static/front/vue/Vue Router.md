@@ -8,8 +8,7 @@
 ## [路由的两种模式](https://blog.csdn.net/chenjuan1993/article/details/82084698)
 1. Hash 模式：地址栏包含 # 符号，# 后的内容不被后台获取
     - 微信支付，分享 url 作为参数传递时，# 为特殊字符，需改成 History 模式
-2. [History 模式](https://router.vuejs.org/zh/guide/essentials/history-mode.html)
-   ：具有对 url 历史记录进行修改的功能
+2. [History 模式](https://router.vuejs.org/zh/guide/essentials/history-mode.html) ：具有对 url 历史记录进行修改的功能
     - 需要后台配合处理 404 的问题
     ```javascript
     export default new Router({
@@ -18,10 +17,7 @@
     })
    ```
 ---
-## 实例方法
-    router.push
----
-## 样例
+## [样例](https://router.vuejs.org/zh/guide/)
 > ### JS
 >```javascript
 >// main.js
@@ -62,15 +58,14 @@
 >// 然后传 `routes` 配置
 >const router = new VueRouter({
 >   mode: 'history', // History 模式
->   routes // 相当于 routes: routes
+>   routes // (缩写) 相当于 routes: routes
 >})
 >
 >// 4. 创建和挂载根实例。
->export default router
->// 或者通过 router 配置参数注入路由，从而让整个应用都有路由功能
->// const app = new Vue({
->//     router
->// }).$mount('#app')
+>// 通过 router 配置参数注入路由，从而让整个应用都有路由功能
+>const app = new Vue({
+>   router
+>}).$mount('#app')
 >```
 >### HTML
 >```html
@@ -88,4 +83,32 @@
 >  <router-view></router-view>
 ></div>
 >```
+---
+## [API](https://router.vuejs.org/zh/api/)
+>## [<router-link>](https://router.vuejs.org/zh/api/#router-link)
+>- 支持用户在具有路由功能的应用中 (点击) 导航，默认渲染成带有正确链接的 &lt;a&gt; 标签
+>```vue
+><!--
+>   to:       表示目标路由的链接，调用 router.push()
+>   replace:  表示目标路由的链接，调用 router.replace()
+>   tag:      渲染成其它标签
+>-->
+><router-link
+>   to="/foo" 
+>   tag="li">
+>   foo
+></router-link>
+>```
+>## [<router-view>](https://router.vuejs.org/zh/api/#router-view)
+>- 一个 functional 组件，渲染路径匹配到的视图组件
+>## [Router 实例方法](https://router.vuejs.org/zh/api/#router-%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95)
+>1. router.push
+>   ```
+>   router.push(location, onComplete?, onAbort?)
+>   router.push(location).then(onComplete).catch(onAbort)
+>   ```
+>2. router.place：同上，但不会向 history 添加新记录
+>3. router.go：`router.go(n)`
+>4. router.back()：`router.back()`
+>5. router.forward()：`router.forward()`
 ---

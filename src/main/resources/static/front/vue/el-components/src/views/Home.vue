@@ -19,12 +19,11 @@
 </template>
 
 <script>
-
 export default {
   name: 'Home',
   components: {},
   methods: {
-    goTo(path) {
+    goTo (path) {
       this.$router.push(path);
     }
   }

@@ -46,7 +46,7 @@ Command-Line Interface: 命令行界面或字符用户界面
 >### 手动
 >```
 >   1. npm install
->   2. npm init -f|--force|--yes，表示使用默认配置
+>   2. npm init -f|--force|--yes(使用默认配置)
 >   3. npm install -S|--save
 >      npm install -D|--save-dev
 >```

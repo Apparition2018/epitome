@@ -2,7 +2,7 @@
 
 ---
 ## 参考网站
-1. [Element - 网站快速成型工具](https://element.eleme.cn/#/zh-CN)
+1. [组件 | Element](https://element.eleme.cn/#/zh-CN/component/quickstart)
 ---
 ## Basic
 ### Layout 布局
