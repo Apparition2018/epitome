@@ -5,18 +5,6 @@
 1. [Vue Router](https://router.vuejs.org/zh/guide/)
 2. [Course: Vue Router For Everyone](https://vueschool.io/courses/vue-router-for-everyone)
 ---
-## [路由的两种模式](https://blog.csdn.net/chenjuan1993/article/details/82084698)
-1. Hash 模式：地址栏包含 # 符号，# 后的内容不被后台获取
-    - 微信支付，分享 url 作为参数传递时，# 为特殊字符，需改成 History 模式
-2. [History 模式](https://router.vuejs.org/zh/guide/essentials/history-mode.html) ：具有对 url 历史记录进行修改的功能
-    - 需要后台配合处理 404 的问题
-    ```javascript
-    export default new Router({
-        mode: 'history',
-        routes: []
-    })
-   ```
----
 ## [样例](https://router.vuejs.org/zh/guide/)
 > ### JS
 >```javascript
@@ -83,6 +71,18 @@
 >  <router-view></router-view>
 ></div>
 >```
+---
+## [mode](https://blog.csdn.net/chenjuan1993/article/details/82084698)
+1. Hash 模式：地址栏包含 # 符号，# 后的内容不被后台获取
+   - 微信支付，分享 url 作为参数传递时，# 为特殊字符，需改成 History 模式
+2. [History 模式](https://router.vuejs.org/zh/guide/essentials/history-mode.html) ：具有对 url 历史记录进行修改的功能
+   - 需要后台配合处理 404 的问题
+    ```javascript
+    export default new Router({
+        mode: 'history',
+        routes: []
+    })
+   ```
 ---
 ## [API](https://router.vuejs.org/zh/api/)
 >## [<router-link>](https://router.vuejs.org/zh/api/#router-link)
