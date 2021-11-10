@@ -1,5 +1,10 @@
 module.exports = {
+    productionSourceMap: false,
+    devServer: {
+        open: true
+    },
     configureWebpack: {
+        devtool: 'source-map',
         resolve: {
             alias: {
                 // 运行时 + 编译器 vs. 只包含运行时：

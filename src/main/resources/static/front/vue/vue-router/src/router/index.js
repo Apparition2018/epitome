@@ -21,6 +21,37 @@ const Dynamic = {
     }
 }
 
+const Nested = {
+    template: `
+        <div>
+            <h2>Nested</h2>
+            <router-view></router-view>
+        </div>
+        `
+}
+const NestedChildren0 = {template: '<div>0</div>'}
+const NestedChildren1 = {template: '<div>1</div>'}
+const NestedChildren2 = {template: '<div>2</div>'}
+
+const NamedView0 = {template: '<div>0</div>'}
+const NamedView1 = {template: '<div>1</div>'}
+const NamedView2 = {template: '<div>2</div>'}
+
+const Props = {
+    template: `
+        <div>
+            <h2>Props</h2>
+            <router-view></router-view>
+        </div>
+        `
+}
+function propsFn(route) {
+    const now = new Date()
+    return {
+        name: now.getFullYear() + ' ' + route.params.name
+    }
+}
+
 const routes = [
     {
         path: '/',
@@ -37,11 +68,50 @@ const routes = [
     },
     {
         path: '/dynamic/:id',
-        name: 'Dynamic',
         component: Dynamic
     },
-]
+    {
+        path: '/nested',
+        component: Nested,
+        children: [
+            {path: '', component: NestedChildren0},
+            {path: '1', component: NestedChildren1},
+            {path: '2', component: NestedChildren2},
+        ]
+    },
+    {
+        path: '/named-routes/:id',
+        name: 'NamedRoutes',
+        component: {template: '<div>NameRoutes {{ $route.params.id }}</div>'}
 
+    },
+    {
+        path: '/named-views',
+        components: {
+            default: NamedView0,
+            a: NamedView1,
+            b: NamedView2
+        }
+    },
+    {
+        path: '/redirect',
+        redirect: '/'
+    },
+    {
+        path: '/alias',
+        alias: '/a',
+        component: {template: '<div>alias</div>'}
+    },
+    {
+        path: '/props',
+        component: Props,
+        children: [
+            {path: 'boolean/:name', props: true, component: {props: ['name'], template: '<div>{{name}}</div>'}},
+            {path: 'object/static', props: {name: 'world'}, component: {template: '<div>{{$attrs.name}}</div>'}},
+            {path: 'function/:name', props: propsFn, component: {template: '<div>{{$attrs.name}}</div>'}},
+        ]
+    },
+]
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,

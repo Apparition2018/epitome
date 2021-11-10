@@ -56,10 +56,12 @@
 >>name                    
 >>```
 >### 实例属性
+>- [$attrs 和 inheritAttrs](https://zhuanlan.zhihu.com/p/195455758)
 >```
 >vm.$data                                    Vue 实例观察的数据对象
 >vm.$el                                      Vue 实例使用的根 DOM 元素
 >vm.$refs                                    一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例
+>vm.$attrs                                   包含了父作用域中不作为 props 被识别或获取 的 attribute bindings (class 和 style 除外)                 
 >```
 >### 实例方法|数据
 >```
