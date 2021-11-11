@@ -18,7 +18,7 @@
 ---
 ## 样例
 ```javascript
-// 'main.js'
+// main.js
 import Vue from 'vue'
 import App from './App.vue'
 import sotre from './store'
@@ -29,7 +29,7 @@ new Vue({
 }).$mount('#app')
 ```
 ```javascript
-// '@/store/index.js'
+// @/store/index.js
 import Vue from 'vue'
 import Vuex from 'vuex'
 import state from './state'
@@ -49,7 +49,7 @@ export default new Vuex.Store({
 })
 ```
 ```html
-<!-- '@/views/Login.vue' -->
+<!-- @/views/Login.vue -->
 <script>
 import store from "@/store";
 
