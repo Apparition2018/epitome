@@ -27,7 +27,7 @@ const Nested = {
             <h2>Nested</h2>
             <router-view></router-view>
         </div>
-        `
+    `
 }
 const NestedChildren0 = {template: '<div>0</div>'}
 const NestedChildren1 = {template: '<div>1</div>'}
@@ -43,13 +43,21 @@ const Props = {
             <h2>Props</h2>
             <router-view></router-view>
         </div>
-        `
+    `
 }
-function propsFn(route) {
+function propsFn (route) {
     const now = new Date()
     return {
         name: now.getFullYear() + ' ' + route.params.name
     }
+}
+
+const Meta = {
+    template: `
+        <div>
+            <span v-for="(item, index) in $route.meta" key="index">{{ '/' + item }}</span>
+        </div>
+    `
 }
 
 const routes = [
@@ -106,16 +114,28 @@ const routes = [
         path: '/props',
         component: Props,
         children: [
-            {path: 'boolean/:name', props: true, component: {props: ['name'], template: '<div>{{name}}</div>'}},
-            {path: 'object/static', props: {name: 'world'}, component: {template: '<div>{{$attrs.name}}</div>'}},
-            {path: 'function/:name', props: propsFn, component: {template: '<div>{{$attrs.name}}</div>'}},
+            {path: 'boolean/:name', props: true, component: {props: ['name'], template: '<div>{{ name }}</div>'}},
+            {path: 'object/static', props: {name: 'world'}, component: {template: '<div>{{ $attrs.name }}</div>'}},
+            {path: 'function/:name', props: propsFn, component: {template: '<div>{{ $attrs.name }}</div>'}},
         ]
+    },
+    {
+        path: '/meta',
+        component: Meta,
+        meta: ['a', 'b', 'c']
     },
 ]
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes
+    routes,
+    scrollBehavior (to, from, savedPosition) {
+        if (savedPosition) {
+            savedPosition.behavior = 'smooth'
+            return savedPosition
+        }
+        return { x: 0, y: 0 }
+    }
 })
 
 export default router

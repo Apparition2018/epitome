@@ -126,7 +126,7 @@ const Nested = {
             <h2>Nested</h2>
             <router-view></router-view>
         </div>
-        `
+    `
 }
 const NestedChildren0 = {template: '<div>0</div>'}
 const NestedChildren1 = {template: '<div>1</div>'}
@@ -228,7 +228,7 @@ const Props = {
             <h2>Props</h2>
             <router-view></router-view>
         </div>
-        `
+    `
 }
 function propsFn(route) {
     const now = new Date()
@@ -243,11 +243,11 @@ const router = new VueRouter({
             component: Props,
             children: [
                 // 布尔模式
-                {path: 'boolean/:name', props: true, component: {props: ['name'], template: '<div>{{name}}</div>'}},
+                {path: 'boolean/:name', props: true, component: {props: ['name'], template: '<div>{{ name }}</div>'}},
                 // 对象模式
-                {path: 'object/static', props: {name: 'world'}, component: {template: '<div>{{$attrs.name}}</div>'}},
+                {path: 'object/static', props: {name: 'world'}, component: {template: '<div>{{ $attrs.name }}</div>'}},
                 // 函数模式
-                {path: 'function/:name', props: propsFn, component: {template: '<div>{{$attrs.name}}</div>'}},
+                {path: 'function/:name', props: propsFn, component: {template: '<div>{{ $attrs.name }}</div>'}},
             ]
         },
     ]
@@ -281,7 +281,65 @@ const router = new VueRouter({
 ```
 ---
 ## [Route Meta](https://router.vuejs.org/zh/guide/advanced/meta.html#%E8%B7%AF%E7%94%B1%E5%85%83%E4%BF%A1%E6%81%AF)
-
+```vue
+<div class="nav">
+  <!-- 面包屑 -->
+  <span v-for="(item, index) in $route.meta" key="index">{{ '/' + item }}</span>
+</div>
+<router-view/>
+```
+```javascript
+const Meta = {
+   template: `
+        <div>
+            <span v-for="(item, index) in $route.meta" key="index">{{item}}</span>
+        </div>
+    `
+}
+const router = new VueRouter({
+    routes: [
+       {path: '/meta', component: Meta, meta: ['a', 'b', 'c']}
+    ]
+})
+```
+---
+## [滚动行为](https://router.vuejs.org/zh/guide/advanced/scroll-behavior.html)
+```javascript
+const router = new VueRouter({
+    routes,
+    scrollBehavior (to, from, savedPosition) {
+        if (savedPosition) {
+            // 平滑滚动
+            savedPosition.behavior = 'smooth'
+            return savedPosition
+        }
+         return { x: 0, y: 0 }
+    }
+})
+```
+---
+## [懒加载路由](https://router.vuejs.org/zh/guide/advanced/lazy-loading.html)
+```javascript
+const router = new VueRouter({
+    routes: [
+        // 指定了相同的 webpackChunkName，会合并打包在 1个 JS 文件 
+       {path: '/about', component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')}
+    ]
+})
+```
+---
+## [导航失败](https://router.vuejs.org/zh/guide/advanced/navigation-failures.html#%E6%A3%80%E6%B5%8B%E5%AF%BC%E8%88%AA%E6%95%85%E9%9A%9C)
+```javascript
+router.push('/admin').catch(failure => {
+   if (isNavigationFailure(failure, NavigationFailureType.redirected)) {
+      // NavigationFailureType：
+      // 1. redirected：在导航守卫中调用了 next(newLocation) 重定向到了其他地方
+      // 2. aborted：在导航守卫中调用了 next(false) 中断了本次导航
+      // 3. cancelled：在当前导航还没有完成之前又有了一个新的导航
+      // 4. duplicated：导航被阻止，因为我们已经在目标位置了
+   }
+})
+```
 ---
 ## [API](https://router.vuejs.org/zh/api/)
 >## [<router-link>](https://router.vuejs.org/zh/api/#router-link)

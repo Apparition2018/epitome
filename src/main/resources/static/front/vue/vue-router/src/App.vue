@@ -22,9 +22,14 @@
       <router-link to="/props/object/static">/props/object/static</router-link> |
       <router-link to="/props/function/Henry">/props/function/Henry</router-link>
     </div>
-    <router-view/>
-    <router-view name="a"></router-view>
-    <router-view name="b"></router-view>
+    <div class="nav">
+      <router-link to="/meta">/meta</router-link>
+    </div>
+    <transition name="slide-fade">
+      <router-view/>
+      <router-view name="a"></router-view>
+      <router-view name="b"></router-view>
+    </transition>
   </div>
 </template>
 
