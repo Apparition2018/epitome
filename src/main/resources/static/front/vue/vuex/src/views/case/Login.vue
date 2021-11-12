@@ -27,8 +27,6 @@
 </template>
 
 <script>
-import store from "../store";
-
 export default {
   name: "Login",
   data () {
@@ -50,11 +48,11 @@ export default {
       }
       const that = this
       setTimeout(() => {
-        store.commit('login', {
+        this.$store.commit('login', {
           account: that.form.account,
           password: that.form.password
         })
-        store.commit('setMemberInfo', {
+        this.$store.commit('setMemberInfo', {
           userStatus: 0,
           vipLevel: 0
         })

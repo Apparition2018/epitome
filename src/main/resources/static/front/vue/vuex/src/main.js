@@ -6,17 +6,17 @@ import store from './store'
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-  if (store.state.userInfo || to.path === '/login') {
-    next()
-  } else {
-    next({
-      path: '/login'
-    })
-  }
+    if (store.state.userInfo || to.path === '/login') {
+        next()
+    } else {
+        next({
+            path: '/login'
+        })
+    }
 })
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')

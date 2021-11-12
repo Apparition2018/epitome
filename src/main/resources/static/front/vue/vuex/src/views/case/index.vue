@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import card from "../components/Card";
+import Card from "@/components/Card";
 import {mapGetters, mapState} from "vuex";
 
 export default {
-  name: "Index",
+  name: "index",
   components: {
-    card
+    Card
   },
   data () {
     return {

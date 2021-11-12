@@ -20,11 +20,12 @@ export default {
   props: {
     course: {
       type: Object,
-      default: () => {}
+      default: () => {
+      }
     }
   },
   methods: {
-    goVideoList() {
+    goVideoList () {
       this.$emit("goVideoList", this.course)
     }
   }

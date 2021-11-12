@@ -313,7 +313,7 @@ const router = new VueRouter({
             savedPosition.behavior = 'smooth'
             return savedPosition
         }
-         return { x: 0, y: 0 }
+        return { x: 0, y: 0 }
     }
 })
 ```

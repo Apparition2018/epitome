@@ -16,14 +16,12 @@
 </template>
 
 <script>
-import store from "../store";
-
 export default {
   name: "Course",
   methods: {
     share () {
       if (confirm("课程分享，地址： http://www.muke.com")) {
-        store.dispatch('getFreeVip').then(res => {
+        this.$store.dispatch('getFreeVip').then(res => {
           alert(res)
         })
       } else {

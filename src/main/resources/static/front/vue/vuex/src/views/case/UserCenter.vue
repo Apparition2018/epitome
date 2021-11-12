@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import store from "../store";
 import {mapGetters, mapState} from "vuex";
 
 export default {
@@ -74,7 +73,7 @@ export default {
   },
   methods: {
     buy (e) {
-      store.dispatch('buyVip', e).then(res => {
+      this.$store.dispatch('buyVip', e).then(res => {
         alert(res);
       })
     }
