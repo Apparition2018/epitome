@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import store from '@/store/index.js'
-
 export default {
   name: 'Add',
   data () {
@@ -21,7 +19,7 @@ export default {
   },
   methods: {
     add () {
-      store.commit('addItem', {
+      this.$store.commit('addItem', {
         title: this.title,
         content: this.content
       })
