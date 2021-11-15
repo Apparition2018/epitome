@@ -6,7 +6,7 @@ import store from './store'
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-    if (store.state.userInfo || to.path === '/login') {
+    if (store.state.userInfo || to.path === '/login' || to.path === '/guide') {
         next()
     } else {
         next({
