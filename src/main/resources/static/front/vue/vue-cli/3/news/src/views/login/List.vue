@@ -10,14 +10,11 @@
 </template>
 
 <script>
-import store from '@/store/index.js'
-
 export default {
   name: 'List',
-  store,
   computed: {
     pageLists () {
-      return store.state.lists
+      return this.$store.state.lists
     }
   }
 }
