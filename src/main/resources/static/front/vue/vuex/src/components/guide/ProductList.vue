@@ -6,8 +6,8 @@
       {{ product.title }} - {{ product.price | currency }}
       <br>
       <button
-        :disabled="!product.inventory"
-        @click="addProductToCart(product)">
+          :disabled="!product.inventory"
+          @click="addProductToCart(product)">
         Add to cart
       </button>
     </li>

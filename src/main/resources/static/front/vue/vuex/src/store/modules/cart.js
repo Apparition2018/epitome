@@ -7,7 +7,7 @@ const state = () => ({
 
 const getters = {
     cartProducts: (state, getters, rootState) => {
-        return state.items.map(({ id, quantity }) => {
+        return state.items.map(({id, quantity}) => {
             const product = rootState.products.all.find(product => product.id === id)
             return {
                 id: product.id,
@@ -25,17 +25,17 @@ const getters = {
 }
 
 const mutations = {
-    pushProductToCart (state, { id }) {
+    pushProductToCart (state, {id}) {
         state.items.push({
             id,
             quantity: 1
         })
     },
-    incrementItemQuantity (state, { id }) {
+    incrementItemQuantity (state, {id}) {
         const cartItem = state.items.find(item => item.id === id)
         cartItem.quantity++
     },
-    setCartItems (state, { items }) {
+    setCartItems (state, {items}) {
         state.items = items
     },
     setCheckoutStatus (state, status) {
@@ -44,32 +44,32 @@ const mutations = {
 }
 
 const actions = {
-    checkout ({ commit, state }, products) {
+    checkout ({commit, state}, products) {
         const saveCartItems = [...state.items]
         commit('setCheckoutStatus', null)
         // empty cart
-        commit('setCartItems', { items: [] })
+        commit('setCartItems', {items: []})
         shop.buyProducts(
             products,
             () => commit('setCheckoutStatus', 'successful'),
             () => {
                 commit('setCheckoutStatus', 'failed')
-                commit('setCartItems', { items: saveCartItems })
+                commit('setCartItems', {items: saveCartItems})
             }
         )
     },
-    addProductToCart ({ state, commit }, product) {
+    addProductToCart ({state, commit}, product) {
         commit('setCheckoutStatus', null)
         if (product.inventory > 0) {
             const cartItem = state.items.find(item => item.id === product.id)
             if (!cartItem) {
-                commit('pushProductToCart', { id: product.id })
+                commit('pushProductToCart', {id: product.id})
             } else {
                 commit('incrementItemQuantity', cartItem)
             }
         }
         // remove 1 item from stock
-        commit('products/decrementProductInventory', { id: product.id }, { root: true })
+        commit('products/decrementProductInventory', {id: product.id}, {root: true})
     }
 }
 

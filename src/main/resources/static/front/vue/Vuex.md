@@ -260,5 +260,12 @@ export default new Vuex.Store({
 >}
 >```
 >## [Modules](https://vuex.vuejs.org/zh/guide/modules.html)
-
+>- `namespaced: true`：调用 getters, mutations, actions 时，需要加上命名空间
+>- createNamespacedHelpers：创建 namespaced component binding helpers
+>```javascript
+>import { createNamespacedHelpers } from 'vuex'
+>const { mapState, mapActions } = createNamespacedHelpers('fruits')
+>```
+>- 动态模块注册：`store.registerModule`，`store.unregisterModule`，`store.hasModule`
+>- @see [store](./vuex/src/store/index.js) 的 fruits 和 animals，[router](./vuex/src/router/index.js) 的 Modules1
 ---
