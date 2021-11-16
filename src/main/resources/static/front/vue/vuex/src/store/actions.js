@@ -1,4 +1,5 @@
 export default {
+    /* case */
     buyVip ({commit}, e) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -24,5 +25,15 @@ export default {
                 }
             }, 500)
         })
+    },
+
+    /* guide */
+    increment (context) {
+        context.commit('increment')
+    },
+    incrementBy ({commit}, payload) {
+        setTimeout(() => {
+            commit('incrementBy2', payload)
+        }, 500)
     }
 }

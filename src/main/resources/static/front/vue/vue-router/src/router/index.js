@@ -74,10 +74,12 @@ const routes = [
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
     },
+    // 动态路由匹配
     {
         path: '/dynamic/:id',
         component: Dynamic
     },
+    // 嵌套路由
     {
         path: '/nested',
         component: Nested,
@@ -87,12 +89,14 @@ const routes = [
             {path: '2', component: NestedChildren2},
         ]
     },
+    // 命名路由
     {
         path: '/named-routes/:id',
         name: 'NamedRoutes',
         component: {template: '<div>NameRoutes {{ $route.params.id }}</div>'}
 
     },
+    // 命名视图
     {
         path: '/named-views',
         components: {
@@ -101,15 +105,18 @@ const routes = [
             b: NamedView2
         }
     },
+    // 重定向
     {
         path: '/redirect',
         redirect: '/'
     },
+    // 别名
     {
         path: '/alias',
         alias: '/a',
         component: {template: '<div>alias</div>'}
     },
+    // 传递 Props 到路由组件
     {
         path: '/props',
         component: Props,
@@ -119,6 +126,7 @@ const routes = [
             {path: 'function/:name', props: propsFn, component: {template: '<div>{{ $attrs.name }}</div>'}},
         ]
     },
+    // Route Meta
     {
         path: '/meta',
         component: Meta,

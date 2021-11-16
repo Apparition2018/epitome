@@ -1,25 +1,26 @@
 <template>
   <div>
-    <div>Guide</div>
-    <div>{{ count }}</div>
-    <div>{{ count2 }}</div>
-    <div>{{ count3 }}</div>
+    <h2>Guide</h2>
+    <div class="nav">
+      <router-link to="/guide/state/1">/state/1</router-link> |
+      <router-link to="/guide/state/2">/state/2</router-link> |
+      <router-link to="/guide/state/3">/state/3</router-link> |
+      <router-link to="/guide/state/4">/state/4</router-link>
+    </div>
+    <div class="nav">
+      <router-link to="/guide/getters/1">/getters/1</router-link>
+    </div>
+    <div class="nav">
+      <router-link to="/guide/mutations/1">/mutations/1</router-link>
+    </div>
+    <div class="nav">
+      <router-link to="/guide/actions/1">/actions/1</router-link>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
-export default {
-  name: "index",
-  computed: mapState({
-    count: state => state.count,
-    count2: 'count',
-    count3 (state) {
-      return state.count
-    }
-  })
-}
 </script>
 
 <style lang="less">
