@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+    <button id="guide" @click="guide">Guide</button>
     <p class="login-title">
       <span class="login-title_left">Muke</span>
       <span class="login-title_right">Wang</span>
@@ -58,6 +59,9 @@ export default {
         })
         that.$router.push('./')
       }, 500)
+    },
+    guide () {
+      this.$router.push('/guide')
     }
   }
 }
@@ -139,5 +143,11 @@ export default {
 
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+#guide {
+  position: absolute;
+  right: 45px;
+  height: 45px;
 }
 </style>

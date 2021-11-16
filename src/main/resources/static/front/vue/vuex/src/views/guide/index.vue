@@ -16,6 +16,9 @@
     <div class="nav">
       <router-link to="/guide/actions/1">/actions/1</router-link>
     </div>
+    <div class="nav">
+      <router-link to="/guide/modules">/modules</router-link>
+    </div>
     <router-view></router-view>
   </div>
 </template>

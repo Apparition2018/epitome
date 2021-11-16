@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Card from "@/components/Card";
+import Card from "@/components/case/Card";
 import {mapGetters, mapState} from "vuex";
 
 export default {

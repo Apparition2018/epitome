@@ -7,6 +7,7 @@
 ## 参考网站
 1. [Vuex](https://vuex.vuejs.org/zh/)
 2. [Vuex Tutorial: Learn Vuex For Free | Scrimba](https://scrimba.com/learn/vuex)
+3. [vuex/examples at dev · vuejs/vuex](https://github.com/vuejs/vuex/tree/dev/examples)
 ---
 ## 开始
 ```javascript
@@ -259,5 +260,5 @@ export default new Vuex.Store({
 >}
 >```
 >## [Modules](https://vuex.vuejs.org/zh/guide/modules.html)
->- 
+
 ---

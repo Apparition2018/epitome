@@ -204,6 +204,11 @@ const routes = [
         children: [
             {path: '1', component: Actions1}
         ]
+    },
+    {
+        path: '/guide/modules',
+        name: 'Modules',
+        component: () => import('@/views/guide/ModulesExample')
     }
 ]
 
