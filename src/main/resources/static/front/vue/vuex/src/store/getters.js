@@ -1,4 +1,5 @@
 export default {
+    /* case */
     memberInfo (state) {
         switch (state.userStatus) {
             case 0:
@@ -10,5 +11,10 @@ export default {
             default:
                 return '普通会员'
         }
-    }
+    },
+
+    /* guide */
+    doneTodos: state => state.todos.filter(todo => todo.done),
+    doneTodosCount: (state, getters) => getters.doneTodos.length,
+    getTodoById: (state) => (id) => state.todos.find(todo => todo.id === id)
 }
