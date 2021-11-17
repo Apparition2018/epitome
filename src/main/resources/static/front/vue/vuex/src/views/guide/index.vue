@@ -16,11 +16,18 @@
     <div class="nav">
       <router-link to="/guide/actions/1">/actions/1</router-link>
     </div>
+    <div class="nav">
+      <router-link to="/guide/modules/1">/modules/1</router-link> |
+      <router-link to="/guide/modules/2">/Shopping Cart Example</router-link>
+    </div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+export default {
+  name: "index"
+}
 </script>
 
 <style lang="less">

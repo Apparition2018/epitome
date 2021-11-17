@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Case from '@/views/case'
+import Login from "@/views/case/Login";
 import UserCenter from '@/views/case/UserCenter'
 import Guide from '@/views/guide'
-import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
-import Login from "@/views/case/Login";
+import {mapActions, mapGetters, mapMutations, mapState} from 'vuex'
 
 Vue.use(VueRouter)
 
@@ -144,6 +144,43 @@ const Actions1 = {
     }
 }
 
+const Modules1 = {
+    template: `
+        <div>
+            <div>apple: {{ apple }}</div>
+            <div>cat: {{ cat }}</div>
+            <div>total: {{ total }}</div>
+            <button @click="buyApple(1)">buy one apple</button>
+            <button @click="buyApple2(2)">buy two apple</button>
+            <button @click="buy">buy one each</button>
+            <button @click="buyRoot">buy one each</button>
+        </div>
+    `,
+    computed: {
+        apple () {
+            // 无论模块是否添加 namespaced: true，调用 state 时，都需要加上命名空间
+            return this.$store.state.fruits.apple
+        },
+        cat () {
+            return this.$store.state.animals.cat
+        },
+        ...mapGetters(['total']),
+    },
+    methods: {
+        buyApple (n) {
+            this.$store.commit('fruits/buyApple', n)
+        },
+        // 可以将模块的命名空间作为第一个参数传递给 Component Binding Helpers
+        ...mapActions('fruits', ['buyApple2']),
+        buy () {
+            this.$store.dispatch('buy').then()
+        },
+        buyRoot () {
+            this.$store.dispatch('buyRoot').then()
+        },
+    }
+}
+
 const routes = [
     {
         path: '/',
@@ -153,7 +190,7 @@ const routes = [
     {
         path: '/login',
         name: 'Login',
-        component: () => import('@/views/case/Login')
+        component: Login
     },
     {
         path: '/user-center',
@@ -203,6 +240,15 @@ const routes = [
         component: Title('Actions'),
         children: [
             {path: '1', component: Actions1}
+        ]
+    },
+    {
+        path: '/guide/modules',
+        name: 'Modules',
+        component: Title('Modules'),
+        children: [
+            {path: '1', component: Modules1},
+            {path: '2', component: () => import('@/views/guide/ModulesExample')},
         ]
     }
 ]

@@ -24,6 +24,7 @@
 >```
 >Vue.nextTick([callback, context])           在下次 DOM 更新循环结束之后执行延迟回调      
 >Vue.set(target, propertyName/index, value)  向响应式对象中添加一个 property，并确保这个新 property 同样是响应式的，且处罚试图更新
+>Vue.filter(id, [definition])                注册或获取全局过滤器
 >Vue.component(id, [definition])             注册或获取全局组件
 >Vue.use(plugin)                             安装 Vue.js 插件，需在调用 new Vue() 之前被调用
 >```
