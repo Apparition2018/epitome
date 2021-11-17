@@ -344,7 +344,7 @@ router.push('/admin').catch(failure => {
 ---
 ## [API](https://router.vuejs.org/zh/api/)
 >## [<router-link>](https://router.vuejs.org/zh/api/#router-link)
->- 支持用户在具有路由功能的应用中 (点击) 导航，默认渲染成带有正确链接的 &lt;a&gt; 标签
+>- 支持用户在具有路由功能的应用中 (点击) 导航，默认渲染成带有正确链接的 `<a>` 标签
 >```vue
 ><!--
 >   to:       表示目标路由的链接，调用 router.push()
@@ -401,5 +401,5 @@ router.push('/admin').catch(failure => {
 >>3. $route.query：Object，URL 查询参数
 >>4. $route.hash：String，当前路由的 hash 值 (带 #)
 > 5. $route.fullPath：String，完成解析后的 URL，包含查询参数和 hash 的完整路径
-> 6. $route.matched：Array&lt;RouteRecord&gt;，当前路由匹配的所有路由记录
+> 6. $route.matched：`Array<RouteRecord>`，当前路由匹配的所有路由记录
 ---

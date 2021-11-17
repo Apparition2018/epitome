@@ -267,5 +267,59 @@ export default new Vuex.Store({
 >const { mapState, mapActions } = createNamespacedHelpers('fruits')
 >```
 >- 动态模块注册：`store.registerModule`，`store.unregisterModule`，`store.hasModule`
+>- 当需要创建一个模块的多个实例时：使用一个函数来声明模块的 state `state: () => ({})`
 >- @see [store](./vuex/src/store/index.js) 的 fruits 和 animals，[router](./vuex/src/router/index.js) 的 Modules1
+---
+## 进阶
+1. [测试](https://vuex.vuejs.org/zh/guide/testing.html)
+2. [热重载](https://vuex.vuejs.org/zh/guide/hot-reload.html)
+---
+## [API](https://vuex.vuejs.org/zh/api/)
+>### [Vuex.Store 构造器选项](https://vuex.vuejs.org/zh/api/#vuex-store-%E6%9E%84%E9%80%A0%E5%99%A8%E9%80%89%E9%A1%B9)
+>1. [plugins](https://vuex.vuejs.org/zh/guide/plugins.html) ：一个数组，这些插件直接接收 store 作为唯一参数，可以监听 mutation（用于外部地数据持久化、记录或调试）或者提交 mutation （用于内部数据，例如 websocket 或 某些观察者）
+>2. strict：使 Vuex store 进入严格模式，任何 mutation 以外修改 Vuex state 都会抛出错误
+>    - 不要在发布环境下启用严格模式
+>    - v-model 处理：`<input v-model="obj.message">`，v-model 会试图直接修改 obj.message，会抛出错误
+>        1. 给 `<input>` 中绑定 value，然后侦听 input 或者 change 事件
+>            ```vue
+>            <input :value="message" @input="updateMessage">
+>            ```
+>            ```javascript
+>            export default {
+>                computed: {
+>                    ...mapState({message: state => state.obj.message})    
+>                },
+>                methods: {
+>                    updateMessage (e) {
+>                        this.$store.commit('updateMessage', e.target.value)
+>                    }
+>                }
+>            }
+>            ```
+>            ```javascript
+>            // mutations.js
+>            export default {
+>                updateMessage (state, message) {
+>                    state.obj.message = message
+>                }
+>            }
+>            ```
+>        2. 使用带有 setter 的双向绑定 computed property
+>            ```vue
+>            <input v-model="message">
+>            ```
+>            ```javascript
+>            export default {
+>                computed: {
+>                    message: {
+>                        get () {
+>                            return this.$stroe.state.obj.message
+>                        },
+>                        set (value) {
+>                            this.$store.commit('updateMessage', value)
+>                        }
+>                    }
+>                }
+>            }
+>            ```
 ---

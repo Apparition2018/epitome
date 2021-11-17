@@ -123,9 +123,9 @@ const Actions1 = {
         <div>
             <div>{{ count }}</div>
             <p>
-              <span @click="increment" style="cursor: pointer">+1</span> |
-              <span @click="incrementBy(2)" style="cursor: pointer">+2</span> |
-              <span @click="add" style="cursor: pointer">+1</span>
+              <button @click="increment" style="cursor: pointer">+1</button>
+              <button @click="incrementBy(2)" style="cursor: pointer">+2</button>
+              <button @click="add" style="cursor: pointer">+1</button>
             </p>
         </div>
     `,

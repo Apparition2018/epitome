@@ -85,9 +85,9 @@ Spring SpringMVC Mybatis
 >           4. constructor：与 byType 类似，应用于构造函数
 >           5. autodetect：通过 bean 类来决定使用 byType 还是 constructor。如果发现默认的构造器，将使用 byType
 >### Spring 参数注入
->1. 基本类型：&lt;property name="age" value="18"/&gt;
+>1. 基本类型：`<property name="age" value="18"/>`
 >       - 字段属性为 org.springframework.core.io.Resource 时，value="classpath:mybatis-config.xml"
->2. 集合类型：&lt;list/&gt; &lt;set/&gt; &lt;map/&gt; &lt;props/&gt; 或 ref
+>2. 集合类型：`<list/>` `<set/>` `<map/>` `<props/>` 或 ref
 >       ```
 >           <bean id="person" class="l.demo.Person">
 >               <property name="otherInfo">
@@ -104,7 +104,7 @@ Spring SpringMVC Mybatis
 >           </bean>
 >       ```
 >3. Bean：ref
->4. null：&lt;property name="age"&gt; &lt;null/&gt; &lt;/property&gt;
+>4. null：`<property name="age">` `<null/>` `</property>`
 >5. SpEL 表达式：#{id.attribute}，读取其它对象/集合中的数据
 >### Spring 其它功能
 >- init-method：初始化方法
