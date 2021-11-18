@@ -16,9 +16,9 @@ import java.io.IOException;
  * -    InternalError, NoClassDefFoundError, IOError, StackOverflowError, outOfMemoryError,
  * <p>
  * Exception 分为检测性异常 (Check Exception)，和非检测性异常 (Uncheck Exception)
- * -    CheckedException：强制处理，捕获异常或向上抛
- * -        IOException, ClassNotFoundException, NoSuchMethod, NoFieldException, CloneNotSupportedException
- * -    RuntimeException：不强制
+ * -    检测性异常：强制处理，捕获异常或向上抛；继承 Exception
+ * -        IOException, ClassNotFoundException, NoSuchMethodException, NoFieldException, CloneNotSupportedException
+ * -    非检测性异常：不强制；继承 RuntimeException 或 Error
  * -        NullPointerException, ClassCastException, UnsupportedOperationException
  * -        ArithmeticException, ArrayStoreException, IllegalArgumentException, IndexOutOfBoundException, NumberFormatException, NegativeArraySizeException
  * <p>

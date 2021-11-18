@@ -11,7 +11,7 @@ import org.apache.curator.retry.RetryNTimes;
  * <p>
  * Distributed Atomic Long：https://curator.apache.org/curator-recipes/distributed-atomic-long.html
  *
- * @author Administrator
+ * @author ljh
  * created on 2021/9/28 1:46
  */
 public class CuratorDistributedCounter extends Demo {
