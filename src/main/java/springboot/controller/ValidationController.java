@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -114,7 +115,7 @@ public class ValidationController {
         @Range(max = 150, min = 1, message = "年龄区间[1,150]")
         private Integer age;
 
-        @NotEmpty(message = "密码不能为空")
+        @NotBlank(message = "密码不能为空")
         @Length(max = 8, min = 6, message = "密码长度[6,8]")
         @Pattern(regexp = "[a-zA-Z0-9_]*", message = "密码不合法")
         private String pwd;
@@ -125,7 +126,13 @@ public class ValidationController {
         @NotNull(message = "公司不能为空或无效")
         private CompanyEnum company;
 
-        private Date date;
+        @Past(message = "生日必须是过去的日期")
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        private Date birth;
+
+        @Size(min = 2, message = "至少有两项爱好")
+        @NotEmpty(message = "爱好不能为空")
+        private List<String> interests;
 
         /**
          * 自定义验证，值为1或2或3，其他均不可通过验证

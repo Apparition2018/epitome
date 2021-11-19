@@ -16,6 +16,7 @@ import static l.demo.Demo.p;
 /**
  * AOP
  * 详解请查看 spring-aop 项目
+ * 也可查看 RuoYi LogAspect.java
  *
  * @author ljh
  * created on 2020/11/10 15:43

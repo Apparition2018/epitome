@@ -113,29 +113,3 @@ ALTER TABLE score DROP COLUMN grade;                    -- 删除字段
 1. [MySQL: Procedures](https://www.techonthenet.com/mysql/procedures.php)
 2. [MySQL中的IN、OUT、INOUT类型](https://www.cnblogs.com/super-yu/p/9018512.html)
 ---
-## emp | dept
-```sql
-CREATE TABLE emp(
-  empno INT,
-  ename VARCHAR(10),
-  job VARCHAR(9),
-  mgr INT,
-  hiredate DATE,
-  sal DECIMAL(7, 2),
-  comm DECIMAL(7, 2),
-  deptno TINYINT
-);
-  
-CREATE TABLE dept(
-  deptno TINYINT,
-  dname VARCHAR(14),
-  loc VARCHAR(13)
-);
-
-CREATE TABLE sales(
-  year_id INT NOT NULL,
-  month_id INT NOT NULL,
-  day_id INT NOT NULL,
-  sales_value DECIMAL(10, 2) NOT NULL
-);
-```
