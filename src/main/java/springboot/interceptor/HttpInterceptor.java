@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * 2、创建一个 Java 类继承 WebMvcConfigurer/WebMvcConfigurationSupport，并重写 addInterceptors 方法
  * 3、实例化自定义的拦截器，并添加到拦截器链中
  * <p>
+ * RuoYi 防重复提交 (RepeatSubmitInterceptor.java)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E9%98%B2%E9%87%8D%E5%A4%8D%E6%8F%90%E4%BA%A4
  * SpringBoot 拦截器：https://blog.csdn.net/qq_35098526/article/details/88734991
  * Spring Interceptor 与 Servlet Filter：https://blog.csdn.net/qq_41788977/article/details/103610068
  * HandlerInterceptors vs. Filters in Spring MVC：https://www.baeldung.com/spring-mvc-handlerinterceptor-vs-filter

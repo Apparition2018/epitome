@@ -11,7 +11,7 @@ import java.util.Optional;
 
 /**
  * Result
- * 参考 SpringBlade 统一返回类 R.java
+ * SpringBlade (统一返回类 R.java)
  *
  * @author ljh
  * created on 2021/6/18 16:28

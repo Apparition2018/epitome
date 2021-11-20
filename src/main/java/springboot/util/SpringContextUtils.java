@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * SpringContextUtils
- * 参考 RuoYi SpringUtils.java
+ * RuoYi (SpringUtils.java)
  *
  * @author ljh
  * created on 2021/6/21 16:59

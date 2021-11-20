@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
+ * RuoYi 参数验证：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81
  * JSR-303 实现请求参数校验：https://blog.didispace.com/spring-boot-learning-21-2-3/
  * springboot 使用 hibernate validator 校验：https://www.cnblogs.com/mr-yang-localhost/p/7812038.html
  * Spring Boot 参数校验：https://www.cnblogs.com/cjsblog/p/8946768.html

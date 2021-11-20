@@ -14,10 +14,9 @@ import java.util.List;
  * JDK 自带注解
  * 1. @Override
  * 2. @Deprecation
- * 3. @SuppressWarnings 抑制编译器产生警告信息
+ * 3. @SuppressWarnings 抑制编译器产生警告信息：https://www.cnblogs.com/fsjohnhuang/p/4040785.html
  * 4. @SafeVarargs
  * 5. @Contended
- * https://www.cnblogs.com/fsjohnhuang/p/4040785.html
  *
  * @author ljh
  * created on 2020/9/18 10:13

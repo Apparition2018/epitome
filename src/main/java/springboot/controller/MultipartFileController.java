@@ -27,6 +27,8 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
+ * RuoYi 上传下载 (CommonController.java)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD
+ *
  * @author ljh
  * created on 2019/8/8 19:39
  */

@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  * ,：列表
  * /：等步长，如 0/3 表示从0开始每3秒执行
  * <p>
- * Quartz的cron表达式：https://www.cnblogs.com/opaljc/archive/2012/05/24/2516392.html
+ * RuoYi 定时任务 (ruoyi-quartz)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1
  * 在线Cron表达式生成器：https://cron.qqe2.com/
  *
  * @author ljh

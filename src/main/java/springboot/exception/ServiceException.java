@@ -5,7 +5,7 @@ import springboot.result.IResultCode;
 import springboot.result.ResultCode;
 
 /**
- * 参考 SpringBlade 自定义异常 ServiceException.java
+ * SpringBlade 自定义异常 (ServiceException.java)
  *
  * @author ljh
  * created on 2021/6/21 10:26
