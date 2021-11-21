@@ -118,3 +118,23 @@ VALUES (30, 'SALES', 'CHICAGO');
 INSERT INTO dept
     (deptno, dname, loc)
 VALUES (40, 'OPERATIONS', 'BOSTON');
+
+
+delimiter $$
+CREATE PROCEDURE init_sales()
+BEGIN
+  DECLARE n INT DEFAULT 1;
+  WHILE n <= 1000 DO
+		INSERT INTO sales
+SELECT TRUNCATE(RAND() * 12 + 2010, 0) AS year_id,
+       TRUNCATE(RAND() * 12 + 1, 0) AS month_id,
+       TRUNCATE(RAND() * 30 + 1, 0) AS day_id,
+       TRUNCATE(RAND() * 100 + 1, 2) AS sales_value;
+SET n = n + 1;
+END WHILE;
+END$$
+delimiter ;
+
+CALL init_sales();
+
+DROP PROCEDURE IF EXISTS init_sales;

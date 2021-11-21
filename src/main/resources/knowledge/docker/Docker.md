@@ -180,7 +180,7 @@ docker exec -it mysql mysql -uroot -proot
 - [InfluxDBException](https://community.influxdata.com/t/getting-started-with-influxdb-docker-401-unauthorized/16989/3)
 - [influx v1 auth](https://docs.influxdata.com/influxdb/v2.0/reference/cli/influx/v1/auth/)
 ```bash
-docker run -d --name influxdb -p 8086:8086 --restart=always \
+docker run -d --name influxdb -p 8086:8086 \
 -e DOCKER_INFLUXDB_INIT_USERNAME=admin \
 -e DOCKER_INFLUXDB_INIT_PASSWORD=12345678 \
 -e DOCKER_INFLUXDB_INIT_ORG=my-org \
