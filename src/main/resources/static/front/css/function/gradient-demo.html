@@ -5,16 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>gradient-demo</title>
     <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
 </head>
 
 <body>
-    <!-- https://www.zhangxinxu.com/wordpress/2010/04/css渐变之css3-gradient在firefox3-6下的使用/ -->
+    <!--
+        https://www.zhangxinxu.com/wordpress/2017/11/css3-radial-gradient-syntax-example/
+        https://www.zhangxinxu.com/wordpress/2018/03/background-gradient-transtion/
+        https://www.w3cplus.com/css3/why-do-we-have-repeating-linear-gradient-anyway.html
+    -->
+
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption">条纹</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/wordpress/2010/04/css渐变之css3-gradient在firefox3-6下的使用">条纹</a>
+            </div>
             <div class="caption">利用 repeating-radial/linear-gradient 实现</div>
             <div class="repeat centered">
             </div>
@@ -43,7 +53,7 @@
         </style>
     </section>
 
-    <section class="code-wrap">
+    <section class="code-wrap h300">
         <div class="css-live-wrap">
             <div class="caption">透明渐变</div>
             <div class="caption">利用 linear-gradient、透明度 实现</div>
@@ -59,11 +69,13 @@
         </style>
     </section>
 
-    <!-- https://www.zhangxinxu.com/wordpress/2010/04/css-gradient渐变之webkit核心浏览器下的使用/
-        已过时 -->
-    <section class="code-wrap">
+    <section class="code-wrap h350">
         <div class="css-live-wrap">
-            <div class="caption">渐变球</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/wordpress/2010/04/css-gradient渐变之webkit核心浏览器下的使用/">
+                    渐变球
+                </a>
+            </div>
             <div class="caption">利用 -webkit-gradient(radial) 实现</div>
             <div class="radial centered"></div>
         </div>
@@ -80,13 +92,13 @@
         </style>
     </section>
 
-
-    <!-- https://www.zhangxinxu.com/wordpress/2010/04/css实现兼容性的渐变背景gradient效果/
-        https://www.bestcssbuttongenerator.com/ -->
     <section class="code-wrap">
         <div class="css-live-wrap">
-            <div class="caption">兼容IE的渐变按钮</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/wordpress/2010/04/css实现兼容性的渐变背景gradient效果/">兼容IE的渐变按钮</a>
+            </div>
             <div class="caption">利用 IE filter 实现</div>
+            <div class="caption"><a href="https://www.bestcssbuttongenerator.com/">button generator</a></div>
             <div id="compatible" class="centered">
                 <a href="#compatible" class="compatible">compatible</a>
             </div>
@@ -179,23 +191,21 @@
             }
         </style>
         <script>
-            window.onload = function () {
+            const degs = document.querySelector("input[type='range']").value;
+            document.getElementsByClassName("deg")[0].textContent = degs + "°";
+            const style = document.getElementById("style");
+            const styleTextContent = style.textContent;
+            const browser = document.getElementsByName("browser");
+            const radio = document.getElementsByClassName("radio")[0];
+            radio.onclick = function () {
                 const degs = document.querySelector("input[type='range']").value;
                 document.getElementsByClassName("deg")[0].textContent = degs + "°";
-                const style = document.getElementById("style");
-                const styleTextContent = style.textContent;
-                const browser = document.getElementsByName("browser");
-                const radio = document.getElementsByClassName("radio")[0];
-                radio.onclick = function () {
-                    const degs = document.querySelector("input[type='range']").value;
-                    document.getElementsByClassName("deg")[0].textContent = degs + "°";
-                    for (let i = 0, len = browser.length; i < len; i++) {
-                        if (browser[i].checked) {
-                            if (browser[i].value === "std") {
-                                style.textContent = styleTextContent + ".deg { background-image: linear-gradient(" + degs + "deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }"
-                            } else {
-                                style.textContent = styleTextContent + ".deg { background-image: -webkit-linear-gradient(" + degs + "deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }"
-                            }
+                for (let i = 0, len = browser.length; i < len; i++) {
+                    if (browser[i].checked) {
+                        if (browser[i].value === "std") {
+                            style.textContent = styleTextContent + ".deg { background-image: linear-gradient(" + degs + "deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }"
+                        } else {
+                            style.textContent = styleTextContent + ".deg { background-image: -webkit-linear-gradient(" + degs + "deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }"
                         }
                     }
                 }
@@ -203,10 +213,11 @@
         </script>
     </section>
 
-    <!-- https://www.zhangxinxu.com/wordpress/2017/10/css3-linear-gradient-dashed-triangle-graph/ -->
-    <section class="code-wrap">
+    <section class="code-wrap h250">
         <div class="css-live-wrap">
-            <div class="caption">虚线</div>
+            <div class="caption">
+                <a href="https://www.zhangxinxu.com/wordpress/2017/10/css3-linear-gradient-dashed-triangle-graph/">虚线</a>
+            </div>
             <div class="caption">利用 linear-gradient、background-size 实现</div>
             <div class="dashed centered"></div>
         </div>
@@ -262,12 +273,6 @@
             }
         </style>
     </section>
-
-
-    <!-- https://www.zhangxinxu.com/wordpress/2017/11/css3-radial-gradient-syntax-example/
-    https://www.zhangxinxu.com/wordpress/2018/03/background-gradient-transtion/
-    https://www.w3cplus.com/css3/why-do-we-have-repeating-linear-gradient-anyway.html -->
-
 
 </body>
 

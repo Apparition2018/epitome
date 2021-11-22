@@ -17,7 +17,7 @@
 >2. 指令
 >3. 缩写
 >### Class 与 Style 绑定
->- v-bind 用于 class 和 style 时，Vue.js 做了专门的增强，表达式结果可以是 字符串，对象，数组
+>- v-bind 用于 class 和 style 时，Vue.js 做了专门的增强  ，表达式结果可以是 字符串，对象，数组
 ---
 ## API
 >### 全局 API
@@ -26,7 +26,7 @@
 >Vue.set(target, propertyName/index, value)  向响应式对象中添加一个 property，并确保这个新 property 同样是响应式的，且处罚试图更新
 >Vue.filter(id, [definition])                注册或获取全局过滤器
 >Vue.component(id, [definition])             注册或获取全局组件
->Vue.use(plugin)                             安装 Vue.js 插件，需在调用 new Vue() 之前被调用
+>Vue.use(plugin)                             安装 Vue.js 插件。如果插件是一个对象，必须提供 install 方法。需在调用 new Vue() 之前被调用
 >```
 >### 选项
 >>### Data

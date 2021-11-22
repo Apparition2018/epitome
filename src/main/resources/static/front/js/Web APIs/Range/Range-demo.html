@@ -30,14 +30,12 @@
             }
         </style>
         <script class="code w60p" contenteditable="true">
-            onload = function () {
-                const oBtn = document.getElementById("button");
-                oBtn.onclick = function () {
-                    let userSelection, text;
-                    window.getSelection && (userSelection = window.getSelection()) || document.selection && (userSelection = document.selection.createRange())
-                    !(text = userSelection.text) && (text = userSelection)
-                    alert(text);
-                }
+            const oBtn = document.getElementById("button");
+            oBtn.onclick = function () {
+                let userSelection, text;
+                window.getSelection && (userSelection = window.getSelection()) || document.selection && (userSelection = document.selection.createRange())
+                !(text = userSelection.text) && (text = userSelection)
+                alert(text);
             }
         </script>
     </section>

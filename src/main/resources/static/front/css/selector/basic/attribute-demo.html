@@ -60,20 +60,18 @@
             }
         </style>
         <script>
-            onload = function () {
-                document.getElementsByTagName('select')[0].onchange = function () {
-                    let selects = document.querySelectorAll(".regex div");
-                    selects.forEach(function (value, index, array) {
-                        value.style.borderColor = "#ccc";
-                        value.style.boxShadow = "1px 1px 2px #aaa";
-                    });
+            document.getElementsByTagName('select')[0].onchange = function () {
+                let selects = document.querySelectorAll(".regex div");
+                selects.forEach(function (value, index, array) {
+                    value.style.borderColor = "#ccc";
+                    value.style.boxShadow = "1px 1px 2px #aaa";
+                });
 
-                    selects = document.querySelectorAll("div[title" + this.value);
-                    selects.forEach(function (value, index, array) {
-                        value.style.borderColor = "#39f";
-                        value.style.boxShadow = "1px 1px 2px #36f";
-                    })
-                }
+                selects = document.querySelectorAll("div[title" + this.value);
+                selects.forEach(function (value, index, array) {
+                    value.style.borderColor = "#39f";
+                    value.style.boxShadow = "1px 1px 2px #36f";
+                })
             }
         </script>
     </section>

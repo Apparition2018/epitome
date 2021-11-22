@@ -34,7 +34,7 @@
     </style>
     <script>
         function changeCode() {
-            let imgCode = document.getElementById("imgCode");
+            const imgCode = document.getElementById("imgCode");
             imgCode.src = "captchaArithmetic.do?" + Math.random();
         }
     </script>
@@ -59,12 +59,12 @@
         let validCode;
 
         function changeCode2() {
-            let cvs = document.getElementById("cvs");
+            const cvs = document.getElementById("cvs");
             validCode = drawCode(cvs);
         }
 
         function valid() {
-            let code = document.getElementById("inCode2").value;
+            const code = document.getElementById("inCode2").value;
             if (code.toString() === validCode.toString()) {
                 return true;
             } else {
@@ -75,9 +75,9 @@
         }
 
         let w = 80;
-        let h = 24;
-        let fontSize = h - 6;
-        let operators = "+-";
+        const h = 24;
+        const fontSize = h - 6;
+        const operators = "+-";
 
         // 随机生成最大值不超过 max 的整数
         function ranInt(max) {
@@ -86,17 +86,17 @@
 
         // 生成随机算术表达式
         function ranCode() {
-            let one = ranInt(100);
-            let two = ranInt(100);
-            let operator = operators.charAt(ranInt(operators.length));
+            const one = ranInt(100);
+            const two = ranInt(100);
+            const operator = operators.charAt(ranInt(operators.length));
             return "" + one + operator + two + "=?";
         }
 
         // 生成随机颜色
         function ranColor() {
-            let r = ranInt(256);
-            let g = ranInt(256);
-            let b = ranInt(256);
+            const r = ranInt(256);
+            const g = ranInt(256);
+            const b = ranInt(256);
             return "rgb(" + r + "," + g + "," + b + ")";
         }
 
@@ -111,7 +111,7 @@
                 canvas.setAttribute("width", w);
                 canvas.setAttribute("height", h);
                 // 得到画笔
-                let pen = canvas.getContext("2d");
+                const pen = canvas.getContext("2d");
                 // 绘制背景
                 pen.fillStyle = "rgb(255, 255, 255)";
                 pen.fillRect(0, 0, w, h);

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="springboot.dao.master.SalesMapper">
+  <resultMap id="BaseResultMap" type="springboot.domain.master.Sales">
+    <result column="year_id" jdbcType="INTEGER" property="yearId" />
+    <result column="month_id" jdbcType="INTEGER" property="monthId" />
+    <result column="day_id" jdbcType="INTEGER" property="dayId" />
+    <result column="sales_value" jdbcType="DECIMAL" property="salesValue" />
+  </resultMap>
+  <insert id="insert" parameterType="springboot.domain.master.Sales">
+    insert into sales (year_id, month_id, day_id, 
+      sales_value)
+    values (#{yearId,jdbcType=INTEGER}, #{monthId,jdbcType=INTEGER}, #{dayId,jdbcType=INTEGER}, 
+      #{salesValue,jdbcType=DECIMAL})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select year_id, month_id, day_id, sales_value
+    from sales
+  </select>
+</mapper>

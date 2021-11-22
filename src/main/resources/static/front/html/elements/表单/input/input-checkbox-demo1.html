@@ -87,17 +87,17 @@
             }
         </style>
         <script>
-            window.onload = function () {
-                document.getElementById("subject").addEventListener('click', clickCheckBox);
-            };
+            document.getElementById("subject").addEventListener('click', clickCheckBox);
 
             // 点击多选框，在input框输出选中的元素
             function clickCheckBox() {
                 const subjects = document.getElementsByName("subject");
                 let text = "";
                 for (const i in subjects) {
-                    if (subjects[i].checked) {
-                        text += subjects[i].value + ", "
+                    if (subjects.hasOwnProperty(i)) {
+                        if (subjects[i].checked) {
+                            text += subjects[i].value + ", "
+                        }
                     }
                 }
                 document.getElementById("text").value = text.substring(0, text.length - 2);

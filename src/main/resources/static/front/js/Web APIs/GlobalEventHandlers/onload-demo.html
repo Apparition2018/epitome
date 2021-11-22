@@ -11,6 +11,19 @@
 </head>
 
 <body>
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w40p">
+            <div class="caption">页面加载完毕后执行函数</div>
+            <div class="caption">只能写一次，若写多次则后者覆盖前者</div>
+            <div class="cookie centered">
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            const cookie = document.getElementsByClassName('cookie')[0];
+            navigator.cookieEnabled && (cookie.innerHTML = 'Cookies are enabled') || (cookie.innerHTML = 'Cookies are not enabled')
+        </script>
+    </section>
+
     <section class="code-wrap h350">
         <div class="css-live-wrap w40p">
             <div class="caption">图片加载完成后执行函数</div>
@@ -24,20 +37,6 @@
         <script>
             function imgOnload(e) {
                 console.log(e.target.width + 'x' + e.target.height);
-            }
-        </script>
-    </section>
-
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w40p">
-            <div class="caption">页面加载完毕后执行函数</div>
-            <div class="cookie centered">
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-            onload = function () {
-                const cookie = document.getElementsByClassName('cookie')[0];
-                navigator.cookieEnabled && (cookie.innerHTML = 'Cookies are enabled') || (cookie.innerHTML = 'Cookies are not enabled')
             }
         </script>
     </section>

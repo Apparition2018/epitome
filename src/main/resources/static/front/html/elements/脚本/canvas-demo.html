@@ -21,7 +21,7 @@
 		<script class="code w60p" contenteditable="true">
 			// 绘制形状
 			const canvas = document.getElementById('canvas-1'),
-				ctx = canvas.getContext('2d');
+					ctx = canvas.getContext('2d');
 			ctx.clearRect(0, 0, 200, 200); // 擦除(0,0)位置大小为200x200的矩形，擦除的意思是把该区域变为透明
 			ctx.fillStyle = '#dddddd'; // 使用内部方式描述颜色和样式
 			ctx.fillRect(35, 35, 130, 130); // 把(35,35)位置大小为130x130的矩形涂色
@@ -48,16 +48,16 @@
 		</div>
 		<script class="code w60p" contenteditable="true">
 			// 绘制文本
-			const canvas = document.getElementById('canvas-2'),
-				ctx = canvas.getContext('2d');
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			ctx.shadowOffsetX = 2; // 阴影水平偏移距离
-			ctx.shadowOffsetY = 2; // 阴影垂直偏移距离
-			ctx.shadowBlur = 2; // 模糊效果程度
-			ctx.shadowColor = '#666666'; // 阴影颜色
-			ctx.font = '24px Arial'; // 字体样式
-			ctx.fillStyle = '#333333';
-			ctx.fillText('带阴影的文字', 20, 40); // 在(x, y)位置填充文本
+			const canvas2 = document.getElementById('canvas-2'),
+					ctx2 = canvas2.getContext('2d');
+			ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+			ctx2.shadowOffsetX = 2; // 阴影水平偏移距离
+			ctx2.shadowOffsetY = 2; // 阴影垂直偏移距离
+			ctx2.shadowBlur = 2; // 模糊效果程度
+			ctx2.shadowColor = '#666666'; // 阴影颜色
+			ctx2.font = '24px Arial'; // 字体样式
+			ctx2.fillStyle = '#333333';
+			ctx2.fillText('带阴影的文字', 20, 40); // 在(x, y)位置填充文本
 		</script>
 	</section>
 </body>
