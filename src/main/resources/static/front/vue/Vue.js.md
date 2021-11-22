@@ -22,7 +22,7 @@
 ## API
 >### 全局 API
 >```
->Vue.nextTick([callback, context])           在下次 DOM 更新循环结束之后执行延迟回调      
+>Vue.nextTick([callback, context])           在下次 DOM 更新循环结束之后执行延迟回调
 >Vue.set(target, propertyName/index, value)  向响应式对象中添加一个 property，并确保这个新 property 同样是响应式的，且处罚试图更新
 >Vue.filter(id, [definition])                注册或获取全局过滤器
 >Vue.component(id, [definition])             注册或获取全局组件
@@ -52,9 +52,9 @@
 >>```
 >>components                                 组件
 >>```
->>### 杂项
+>>### 其它
 >>```
->>name                    
+>>name
 >>```
 >### 实例属性
 >- [$attrs 和 inheritAttrs](https://zhuanlan.zhihu.com/p/195455758)
@@ -157,7 +157,7 @@
 >```
 >8. 在单文件组件和字符串模板中组件名应该总是 PascalCase 的，在 DOM 模板中总是 kebab-case 的
 >```
->   <MyComponent/>                  单文件组件、字符串模板  
+>   <MyComponent/>                  单文件组件、字符串模板
 >   <my-component></my-component>   DOM 模板
 >   <my-component></my-component>   所有地方
 >```
