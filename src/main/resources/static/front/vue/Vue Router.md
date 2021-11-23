@@ -386,6 +386,9 @@ router.push('/admin').catch(failure => {
 >>      - 相当于`<router-link :to="..." replace>`，替换当前的 history 记录
 >>3. router.go：`router.go(n)`
 >>      - 相当于`window.history.go(n)`，在 history 记录中向前或者后多少步
+>>4. router.addRout4e：
+>>      - `addRoute(route: RouteConfig): () => void`：添加一条新路由规则
+>>      - `addRoute(parentName: string, route: RouteConfig): () => void`：添加一条新的路由规则记录作为现有路由的子路由
 >## [Route](https://router.vuejs.org/api/#the-route-object)
 >- 表示当前激活的路由的状态信息，包含了当前 URL 解析得到的信息，还有 URL 匹配到的路由记录
 >- 出现的地方：
