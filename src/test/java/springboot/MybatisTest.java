@@ -32,4 +32,9 @@ public class MybatisTest {
         PageHelper.startPage(1, 10, null).setReasonable(true);
         salesMapper.selectAll().forEach(System.out::println);
     }
+
+    @Test
+    public void testMapKey() {
+        scoreMapper.selectAllMap().entrySet().forEach(System.out::println);
+    }
 }

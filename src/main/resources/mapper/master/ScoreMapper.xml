@@ -33,4 +33,8 @@
     select id, name, course, score
     from score
   </select>
+  <select id="selectAllMap" resultType="java.util.Map">
+    select id, name, course, score
+    from score
+  </select>
 </mapper>
