@@ -10,59 +10,59 @@
 >## 创建表
 >>### MySQL
 >>```sql
->>CREATE TABLE score (
->>  id INT AUTO_INCREMENT PRIMARY KEY,                  -- 自增：AUTO_INCREMENT
->>  name VARCHAR(20) COMMENT '姓名',
->>  course VARCHAR(10) COMMENT '课程',
->>  score INT COMMENT '成绩'
+>>CREATE TABLE `score` (
+>>  `id` INT AUTO_INCREMENT PRIMARY KEY,                  -- 自增：AUTO_INCREMENT
+>>  `name` VARCHAR(20) COMMENT '姓名',
+>>  `course` VARCHAR(10) COMMENT '课程',
+>>  `score` INT COMMENT '成绩'
 >>) COMMENT '成绩表';
 >>```
 >>### SQL Server
 >>```sql
->>CREATE TABLE score (
->>  id INT IDENTITY(1,1) PRIMARY KEY,                   -- 自增：IDENTITY(1,1)
->>  name VARCHAR(20),
->>  course VARCHAR(10),
->>  score INT
+>>CREATE TABLE `score` (
+>>  `id` INT IDENTITY(1,1) PRIMARY KEY,                   -- 自增：IDENTITY(1,1)
+>>  `name` VARCHAR(20),
+>>  `course` VARCHAR(10),
+>>  `score` INT
 >>);
 >>```
 >>### Oracle
 >>```sql
->>CREATE TABLE score (
->>  id NUMBER(10) PRIMARY KEY,                          -- 自增：使用 CREATE SEQUENCE 实现
->>  name VARCHAR2(20),
->>  course VARCHAR2(10),
->>  score NUMBER(3)
+>>CREATE TABLE `score` (
+>>  `id` NUMBER(10) PRIMARY KEY,                          -- 自增：使用 CREATE SEQUENCE 实现
+>>  `name` VARCHAR2(20),
+>>  `course` VARCHAR2(10),
+>>  `score` NUMBER(3)
 >>);
 >>```
 >## 删除表
 >```sql
->DROP TABLE score;
->TRUNCATE TABLE score;
+>DROP TABLE `score`;
+>TRUNCATE TABLE `score`;
 >```
 >## [创建临时表](https://www.iteye.com/blog/sosuny-891437)
 >>### MySQL
 >>```sql
->>CREATE TEMPORARY TABLE tmp (
->>    num INT PRIMARY KEY,
->>    pname VARCHAR(20)
+>>CREATE TEMPORARY TABLE `tmp` (
+>>    `num` INT PRIMARY KEY,
+>>    `pname` VARCHAR(20)
 >>)
 >>```
 >>### SQL Server  
 >>1. 局部临时表：(#开头) 仅当前连接可见，断开连接自动删除  
 >>2. 全局临时表：(##开头) 对其它连接可见，当前连接和其他访问过它的连接都断开时自动删除
 >>```sql
->>CREATE TABLE #temp(
->>  num INT PRIMARY KEY,
->>  pname VARCHAR(20)
+>>CREATE TABLE #temp (
+>>  `num` INT PRIMARY KEY,
+>>  `pname` VARCHAR(20)
 >>)
 >>```
 ---
 ## 备注
 >### MySQL
 >```sql
->ALTER TABLE score COMMENT '成绩表';           
->ALTER TABLE score MODIFY score INT COMMENT '成绩';
+>ALTER TABLE `score` COMMENT '成绩表';           
+>ALTER TABLE `score` MODIFY `score` INT COMMENT '成绩';
 >```
 >### SQL Server
 >```sql
@@ -72,41 +72,41 @@
 >```
 >### Oracle
 >```sql
->COMMENT ON TABLE score IS '成绩表';
->COMMENT ON COLUMN score.name IS '姓名';
+>COMMENT ON TABLE `score` IS '成绩表';
+>COMMENT ON COLUMN `score.name` IS '姓名';
 >```
 ---
 ## 索引
 >## 创建索引
 >```sql
->CREATE INDEX idx_course ON score(course);
+>CREATE INDEX `idx_course` ON `score`(course);
 >```
 >---
 >## 删除索引
 >>### MySQL
 >>```sql
->>ALTER TABLE score DROP INDEX idx_course;
->>DROP INDEX idx_course ON score;
+>>ALTER TABLE `score` DROP INDEX `idx_course`;
+>>DROP INDEX `idx_course` ON `score`;
 >>```
 >>### SQL Server
 >>```sql
->>DROP INDEX score.idx_course;
+>>DROP INDEX `score`.idx_course;
 >>```
 >>### Oracle
 >>```sql
->>DROP INDEX idx_course;
+>>DROP INDEX `idx_course`;
 >>```
 ---
 ## 字段
 ```sql
-ALTER TABLE score ADD grade VARCHAR(1);                 -- 增加字段
-ALTER TABLE score MODIFY grade VARCHAR(2);              -- 修改字段
-ALTER TABLE score DROP COLUMN grade;                    -- 删除字段
+ALTER TABLE `score` ADD `grade` VARCHAR(1) AFTER `name`;    -- 增加字段
+ALTER TABLE `score` MODIFY `grade` VARCHAR(2);              -- 修改字段
+ALTER TABLE `score` DROP COLUMN `grade`;                    -- 删除字段
 ```
 >### 修改字段名
 >>### MySQL
 >>```sql
->>ALTER TABLE score CHANGE course subject VARCHAR(10) COMMENT '课程';
+>>ALTER TABLE `score` CHANGE `course` subject VARCHAR(10) COMMENT '课程';
 >>```
 ---
 ## 存储过程

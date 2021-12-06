@@ -54,7 +54,8 @@ public class StringDemo extends Demo {
         // static String	format([Locale l, ]String format, Object... args)
         // 使用指定的语言环境、格式字符串和参数返回一个格式化字符串
         // format 转换符：https://www.cnblogs.com/Dhouse/p/7776780.html
-        p(String.format("%s来自%s", "我", "中国")); // 我来自中国
+        p(String.format("%s来自%s", "我", "中国"));  // 我来自中国
+        p(String.format("%.2f", 0.345));            // 0.35
     }
 
     /**

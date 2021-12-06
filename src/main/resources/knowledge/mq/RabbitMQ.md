@@ -8,8 +8,8 @@
 4. [理解 RabbitMQ Exchange](https://blog.csdn.net/y4x5M0nivSrJaY3X92c/article/details/80416996)
 ---
 ## AMQP
-- Advanced Message Queuing Protocol 高级消息队列协议  
-<img alt="AMQP 协议模型" src="https://img.mukewang.com/606f4d220001240219201080.jpg" width="500"/>  
+- Advanced Message Queuing Protocol 高级消息队列协议
+<img alt="AMQP 协议模型" src="https://img.mukewang.com/606f4d220001240219201080.jpg" width="500"/>
 ---
 ## 安装
 ```
@@ -36,9 +36,9 @@
 6. Exchange: 交换机，接收消息，根据路由键转发消息到绑定的队列
 7. Building: Exchange 和 Queue 之间的虚拟连接，Building 中可以包含 Routing Key
 8. Routing Key: 一个路由规则，虚拟机可用它来确定如何路由一个特定消息
-9. Queue: 也称为 Message Queue，消息队列，保存消息并将它们转发给消费者  
+9. Queue: 也称为 Message Queue，消息队列，保存消息并将它们转发给消费者
 ---
 ## 消息可靠性投递
-<img alt="消息100%投递成功方案" src="https://img3.mukewang.com/607a7e6800017ed319201080.jpg" width="500"/>  
+<img alt="消息100%投递成功方案" src="https://img3.mukewang.com/607a7e6800017ed319201080.jpg" width="500"/>
 
 ---

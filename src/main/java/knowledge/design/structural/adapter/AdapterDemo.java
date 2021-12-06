@@ -9,7 +9,7 @@ package knowledge.design.structural.adapter;
  * 使用场景：
  * 1.IO：Reader（目标角色），InputStream（源角色），InputStreamReader（适配器角色）
  * 2.JDBC
- * 3.Spring AOP @BeforeAdvice @AfterAdvice @ThrowsAdvice 借助 AdvisorAdapter 适配器实现功能
+ * 3.Spring AOP 的通知 BeforeAdvice AfterAdvice AfterReturningAdvice ThrowsAdvice 借助 AdvisorAdapter 适配器实现功能
  * 关键代码：适配器 继承或依赖源角色，继承或实现目标角色
  * 优点：提高了系统现有类的复用
  * 缺点：过多的使用适配器，会让系统非常零乱，不易整体进行把握，应优先考虑直接对功能进行重构
