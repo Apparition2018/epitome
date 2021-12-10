@@ -17,7 +17,10 @@
 >1. [Spring AOP 和 AspectJ 的区别？](https://segmentfault.com/a/1190000022019122)
 >- 解决的问题：共同非业务代码的抽取
 >- 使用场景：日志，事务，权限，缓存
->- 对比 AspectJ：Spring AOP 是运行时增强，AspectJ 是编译时增强；Spring AOP 用到了 AspectJ 的注解
+>- 对比 AspectJ：Spring AOP 是运行时织入，AspectJ 是编译时织入；Spring AOP 用到了 AspectJ 的注解
+>### 事务
+>1. 事务隔离级别：SQL.md
+>2. 事务传播：SSM.md
 >### 用到的设计模式
 >1. 简单工厂：BeanFactory，ApplicationContext
 >2. 工厂方法：FactoryBean

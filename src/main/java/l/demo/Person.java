@@ -90,6 +90,9 @@ public class Person implements Comparable<Person>, Serializable {
      * 2.属性是私有的 private，提供 getter 和 setter 方法
      * 3.提供无参构造器
      * 4.实现序列化接口 Serializable (分布式应用)
+     * ps：JavaBean 第二个字母不能大写：https://www.cnblogs.com/threecc/archive/2011/09/05/2167667.html
+     * -    产生问题：无法通过 getter/setter 获取和设置属性
+     * -    解决方法：使用 @JsonProperty
      * <p>
      * POJO
      * 1.有一些属性是私有的 private，每一个属性提供 getter 和 setter 方法

@@ -20,6 +20,7 @@ import org.springframework.scheduling.annotation.Async;
  * 3.事件订阅者：ApplicationListener，继承自 JDK 的 EventListener，所有监听器将继承它
  * <p>
  * Springboot学习（二）观察者模式：https://zhuanlan.zhihu.com/p/141069636
+ * Spring 内置事件：https://blog.csdn.net/qq_36306640/article/details/90047885
  *
  * @author ljh
  * created on 2020/12/3 14:54
