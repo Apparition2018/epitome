@@ -55,16 +55,16 @@ public class OtherBean {
     }
 
     @PostConstruct
-    public void init() {
-        p("Lazy.init()");
+    public void postConstruct() {
+        p("Lazy.postConstruct()");
     }
 
     public void service() {
-        p("LLazy.service()");
+        p("Lazy.service()");
     }
 
     @PreDestroy
-    public void destroy() {
-        p("Lazy.destroy()");
+    public void preDestroy() {
+        p("Lazy.preDestroy()");
     }
 }

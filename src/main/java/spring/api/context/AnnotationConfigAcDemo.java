@@ -13,27 +13,20 @@ import spring.config.DemoConfig;
  * @author Arsenal
  * created on 2020/11/29 16:45
  */
-public class AnnotationConfigDemo {
+public class AnnotationConfigAcDemo {
     AnnotationConfigApplicationContext applicationContext;
 
     @BeforeEach
     public void init() {
         applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(DemoConfig.class);
+        applicationContext.refresh();
     }
 
-    /**
-     * 生命周期
-     */
     @Test
     public void testLifecycle() {
         Bean bean = applicationContext.getBean("bean", Bean.class);
         bean.service();
-    }
-
-    @Test
-    public void testInterface() {
-        Bean game = applicationContext.getBean("game", Bean.class);
     }
 
     @AfterEach

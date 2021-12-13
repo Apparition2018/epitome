@@ -21,7 +21,7 @@ import static l.demo.Demo.p;
  * @author ljh
  * created on 2020/11/23 17:17
  */
-public class ClassPathXmlDemo {
+public class ClassPathXmlAcDemo {
 
     ClassPathXmlApplicationContext applicationContext;
     ClassPathXmlApplicationContext annApplicationContext;
@@ -50,7 +50,7 @@ public class ClassPathXmlDemo {
         // Bean.construct()
         // Bean.init()
         // Lazy.construct()
-        // LLazy.service()
+        // Lazy.service()
         // Bean.destroy()
     }
 
@@ -72,7 +72,7 @@ public class ClassPathXmlDemo {
     @Test
     public void testDependencyInjection() {
         // set 注入
-        Student student = applicationContext.getBean("school", Student.class);
+        Student student = applicationContext.getBean("student", Student.class);
         p(student.getBirth()); // 2020-11-24 01:53:36
 
         // 构造器注入
@@ -105,7 +105,7 @@ public class ClassPathXmlDemo {
      */
     @Test
     public void testScope() {
-        p(applicationContext.getBean("school") == applicationContext.getBean("school"));  // false
+        p(applicationContext.getBean("student") == applicationContext.getBean("student"));  // false
         p(applicationContext.getBean("person") == applicationContext.getBean("person"));    // true
     }
 
@@ -114,16 +114,17 @@ public class ClassPathXmlDemo {
      */
     @Test
     public void testAnn() {
+        System.err.println("=== testAnn ===");
         annApplicationContext = new ClassPathXmlApplicationContext("demo/spring/spring-ann.xml");
 
-        // @PostConstruct @PreDestroy @Lazy
+        System.err.println("=== @PostConstruct @PreDestroy @Lazy ===");
         OtherBean otherBean = annApplicationContext.getBean("otherBean", OtherBean.class);
         OtherBean otherBean2 = annApplicationContext.getBean("otherBean", OtherBean.class);
 
-        // @scope
+        System.err.println("=== @scope ===");
         p(otherBean == otherBean2); // false
 
-        // @Autowired @Qualifier @Value
+        System.err.println("=== @Autowired @Qualifier @Value ===");
         p(otherBean); // OtherBean(bean=Bean(score=100, properties=null), str=[x,y,z.split(',')], score=100, password=root)
 
         annApplicationContext.close();

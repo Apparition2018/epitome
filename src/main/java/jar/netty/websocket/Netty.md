@@ -43,7 +43,7 @@
 <img alt="WebSocket Connection Lifecycle" src="http://www.ruanyifeng.com/blogimg/asset/2017/bg2017051502.png" width="500"/>
 1. 服务端
 2. 客户端
->### 参考网站
+>#### 参考网站
 >1. [WebSocket 教程 - 阮一峰](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
 >2. [WebSocket 是什么原理？为什么可以实现持久连接？ - 知乎](https://www.zhihu.com/question/20215561)
 ---
