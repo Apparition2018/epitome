@@ -30,7 +30,7 @@ public class DemoConfig {
         this.environment = environment;
     }
 
-    @Bean(name = "bean", initMethod = "init", destroyMethod = "destroy")
+    @Bean(name = "bean", initMethod = "initMethod", destroyMethod = "destroyMethod")
     public spring.bean.Bean bean() {
         return new spring.bean.Bean();
     }

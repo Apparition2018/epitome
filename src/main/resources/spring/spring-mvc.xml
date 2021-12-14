@@ -9,7 +9,17 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-    <!-- <mvc:annotation-driven/> 和 <context:component-scan> 之间的关系：https://segmentfault.com/a/1190000012193685 -->
+
+    <!-- <mvc:annotation-driven/> 和 <context:component-scan> 之间的关系：https://segmentfault.com/a/1190000012193685
+        (1)<context:annotation-config>
+            ①AutowiredAnnotationBeanPostProcessor   @Autowired
+            ②CommonAnnotationBeanPostProcessor      @Resource, @PostConstruct, @PreDestroy
+            ③PersistenceAnnotationBeanPostProcessor @PersistenceContext
+            ④RequiredAnnotationBeanPostProcessor    @Required
+        (2)<context:component-scan>
+            ①<context:annotation-config>
+            ②@Component，@Repository，@Service，@Controller
+            ③注册扫描 Bean -->
 
     <!-- 扫描包 -->
     <context:component-scan base-package="spring.controller"/>

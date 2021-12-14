@@ -1,6 +1,12 @@
 package spring.bean;
 
 import lombok.Data;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -17,35 +23,50 @@ import static l.demo.Demo.p;
  */
 @Data
 @Component("BEAN")
-public class Bean {
-    
+public class Bean implements InitializingBean, DisposableBean, ApplicationContextAware {
+
     public Integer score = 100;
-    
+
     public Properties properties;
 
     public Bean() {
-        p("Bean.construct()");
+        p("Bean's construct()");
+    }
+
+    @Override
+    public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
+        p("XxxAware's setXxx()");
     }
 
     @PostConstruct
     public void postConstruct() {
-        p("Bean.postConstruct()");
+        p("@postConstruct()");
     }
 
-    public void init() {
-        p("Bean.init()");
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        p("InitializingBean()'s afterPropertiesSet()");
+    }
+
+    public void initMethod() {
+        p("init-method");
     }
 
     public void service() {
-        p("Bean.service()");
+        p("Bean's service()");
     }
 
     @PreDestroy
     public void preDestroy() {
-        p("Bean.preDestroy()");
+        p("@preDestroy()");
     }
 
-    public void destroy() {
-        p("Bean.destroy()");
+    @Override
+    public void destroy() throws Exception {
+        p("DisposableBean()'s destroy()");
+    }
+
+    public void destroyMethod() {
+        p("destroy-method");
     }
 }

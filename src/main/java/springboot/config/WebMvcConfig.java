@@ -24,7 +24,7 @@ import springboot.formatter.BooleanFormatAnnotationFormatterFactory;
 import springboot.handler.MyHandlerMethodReturnValueHandler;
 import springboot.interceptor.HttpInterceptor;
 import springboot.resolver.argument.PersonArgumentResolver;
-import springboot.util.SpringContextUtils;
+import springboot.util.SpringUtils;
 
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -46,7 +46,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
         // 给匹配的 Controller 增加前缀
-        configurer.addPathPrefix("mvc", p -> p.isInstance(SpringContextUtils.getBean(WebMvcConfigController.class)));
+        configurer.addPathPrefix("mvc", p -> p.isInstance(SpringUtils.getBean(WebMvcConfigController.class)));
         configurer.setUseTrailingSlashMatch(true);
         WebMvcConfigurer.super.configurePathMatch   (configurer);
     }

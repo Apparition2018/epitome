@@ -4,11 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import springboot.EpitomeApplication;
-import springboot.domain.School;
-import springboot.util.SpringContextUtils;
+import springboot.util.SpringUtils;
 
 import javax.servlet.ServletContext;
 import java.util.Arrays;
@@ -29,10 +27,8 @@ public class SpringTest {
      */
     @Test
     public void testSpringContextUtils() {
-        System.out.println(SpringContextUtils.getApplicationContext());
-        System.out.println(Arrays.toString(SpringContextUtils.getActiveProfiles()));
+        System.out.println(Arrays.toString(SpringUtils.getActiveProfiles()));
 
-        WebApplicationContext webApplicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(Objects.requireNonNull(servletContext));
-        Assertions.assertSame(SpringContextUtils.getBean(School.class), webApplicationContext.getBean(School.class));
+        Assertions.assertSame(SpringUtils.getApplicationContext(), WebApplicationContextUtils.getRequiredWebApplicationContext(Objects.requireNonNull(servletContext)));
     }
 }

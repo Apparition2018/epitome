@@ -8,20 +8,20 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 /**
- * SpringContextUtils
+ * SpringUtils
  * RuoYi (SpringUtils.java)
  *
  * @author ljh
  * created on 2021/6/21 16:59
  */
 @Component
-public class SpringContextUtils implements ApplicationContextAware {
+public class SpringUtils implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
-        SpringContextUtils.applicationContext = applicationContext;
+        SpringUtils.applicationContext = applicationContext;
     }
 
     public static ApplicationContext getApplicationContext() {

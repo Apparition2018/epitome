@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <context:annotation-config/>
 
     <!-- 无参构造创建 -->
     <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
@@ -40,9 +45,11 @@
 
     <!-- 注入 Properties -->
     <util:properties location="classpath:jdbc.properties" id="jdbc"/>
-    <bean id="bean" class="spring.bean.Bean" init-method="init" destroy-method="destroy">
+    <bean id="bean" class="spring.bean.Bean" init-method="initMethod" destroy-method="destroyMethod">
         <property name="properties" ref="jdbc"/>
     </bean>
+    <bean id="beanPostProcessor" class="spring.api.beans.MyBeanPostProcessor"/>
+    <bean id="beanFactoryPostProcessor" class="spring.api.beans.MyBeanFactoryPostProcessor"/>
 
     <!-- Lazy -->
     <bean id="otherBean" class="spring.bean.OtherBean" lazy-init="true">

@@ -33,6 +33,20 @@ public class ClassPathXmlAcDemo {
 
     /**
      * 生命周期
+     * -   BeanFactoryPostProcessor's construct()
+     * 1.  BeanFactoryPostProcessor's postProcessBeanFactory()
+     * -   BeanPostProcessor's construct()
+     * 2.  Bean's construct()
+     * 3.  XxxAware's setXxx()
+     * 4.  BeanPostProcessor's postProcessBeforeInitialization()
+     * 5.  @postConstruct()
+     * 6.  InitializingBean()'s afterPropertiesSet()
+     * 7.  init-method
+     * 8.  BeanPostProcessor's postProcessAfterInitialization()
+     * 9.  Bean's service()
+     * 10. @preDestroy()
+     * 11. DisposableBean()'s destroy()d
+     * 12. destroy-method
      */
     @Test
     public void testLifecycle() {

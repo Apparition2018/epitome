@@ -272,7 +272,6 @@ Spring SpringMVC Mybatis
 >               </mvc:interceptor>
 >           </mvc:interceptors>
 >       ```
->- Listener → Filter → Interceptor
 >### Spring 异常处理
 >1. XML 配置：
 >       - DefaultHandlerExceptionResolver

@@ -10,17 +10,16 @@ import java.io.IOException;
 /**
  * Filter   过滤器
  * <p>
- * SpringBoot 中 Filter 的使用详解及原理：https://blog.csdn.net/u014627099/article/details/84565603
- * Springboot 中 Filter、Listener的用法：https://blog.csdn.net/liu455042806/article/details/79875999
- * filter listener interceptor 的区别：https://www.cnblogs.com/heyanan/p/9591670.html
- * Filter使用@Autowired注解失败及解决办法：https://www.cnblogs.com/4king/p/11722235.html
+ * Listener → Filter → Interceptor → ControllerAdvice → Aspect → Controller
+ * <p>
+ * Listener, Servlet, Filter, Interceptor：https://juejin.cn/post/6844903624187854862
  *
  * @author ljh
  * created on 2019/8/8 19:39
  */
 // @Order 数字越小代表越先被该 Filter 过滤
 @Order(1)
-@WebFilter(filterName = "firstFilter", urlPatterns = {"/jackson/*", "/resource/*"})
+@WebFilter(filterName = "firstFilter", urlPatterns = {"/demo/*", "/restful/*"})
 @Slf4j
 public class FirstFilter implements Filter {
 

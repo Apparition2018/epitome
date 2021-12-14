@@ -14,9 +14,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 // 相当于 @Configuration, @EnableAutoConfiguration, @ComponentScan
 @SpringBootApplication
-/* Servlet      @WebServlet
+/* Listener     @WebListener
  * Filter       @WebFilter
- * Listener     @WebListener
+ * Servlet      @WebServlet
  */
 @ServletComponentScan
 // Quick Guide to the Spring @Enable Annotations：https://www.baeldung.com/spring-enable-annotations

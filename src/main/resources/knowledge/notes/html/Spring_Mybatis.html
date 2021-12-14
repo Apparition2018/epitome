@@ -126,7 +126,7 @@
 						<li><span class="att">autowire</span>=
 							<ul>
 								<li><span class="val">byName</span>:根据类的属性名查找，再调用set方法</li>
-								<li><span class="val">byType</span>:根据类的属性的类型查找，再调用set方法,如果找到多个，会出错</li>
+								<li><span class="val">byType</span>:根据类的属性的类型查找，再调用set方法，如果找到多个，会出错</li>
 								<li><span class="val">construction</span>:根据属性名（变量名）查找，调用构造器</li>
 							</ul>
 						</li>
@@ -222,7 +222,7 @@
 							<details><summary>@Autowired也可以写在属性上，</summary>
 							<span class="none">　@Qualifier("cp")<br>
 							　private String str;</span></details></li>
-						<li><span>@Resource</span>　//　Setter注入推荐使用,加到Setter方法前或属性前使用</li>
+						<li><span>@Resource</span>　//　Setter注入推荐使用，加到Setter方法前或属性前使用</li>
 						<li>@Inject/@Named　//　用法和@Atuowired一致
 					</ol>	
 				</li>
@@ -311,7 +311,7 @@
 										<li>&lt;<span class="tag">mvc:annotation-driven</span> /&gt;</li>
 									</ul>
 								</li>
-								<li>返回类可以是ModelAndView,也可以是String</li>
+								<li>返回类可以是ModelAndView，也可以是String</li>
 							</ol>
 						</li>
 					</ol>
@@ -419,7 +419,7 @@
 						<li><span>postHandle</span>(...)： 处理器执行后、视图处理前调用；<br>
 							　　　　　　　此时可通过modelAndView对象对模型数据进行处理或对视图进行处理</li>
 						<li><span>afterCompletion</span>(...): 整个请求处理完毕后调用；<br>
-							　　　　　　　可在此记录结束时间并输出消耗时间,资源清理等</li>
+							　　　　　　　可在此记录结束时间并输出消耗时间，资源清理等</li>
 					</ol>
 					<ul>
 						<li>ps: 如只需要某一个方法可以继承<span>HandlerInterceptorAdapter</span></li>
