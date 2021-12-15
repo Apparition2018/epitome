@@ -135,6 +135,9 @@ public class ValidationController {
         @NotEmpty(message = "爱好不能为空")
         private List<String> interests;
 
+        @Digits(integer = 10, fraction = 2, message = "薪水不合法(只允许在10位整数和2位小数范围内)")
+        private Double salary;
+
         /**
          * 自定义验证，值为1或2或3，其他均不可通过验证
          * <p>

@@ -1,4 +1,4 @@
-# Interview
+# Spring
 
 ---
 ## Spring
@@ -41,34 +41,65 @@
 >>#### 参考网站
 >>1. [SpringIOC 面试题](https://mp.weixin.qq.com/s/SH4laewpIsio66MUJFLTyg)
 >>2. [Spring Bean 的生命周期](https://www.cnblogs.com/zrtqsk/p/3735273.html)
->### [循环依赖](https://www.zhihu.com/question/438247718/answer/1730527725)
->- 场景
->   1. 
+>### 依赖注入
+>>### [依赖注入注解](https://www.zhihu.com/question/39356740/answer/1907479772)
+>>|注解|@Autowired|@Resource|
+>>|:---|:---|:---|
+>>|定义|Spring|JSR-250|
+>>|装配方式|默认按类型装配；<br/>配合使用 @Qualifier，可以按名称装配|指定 name 按名称装配；<br/>指定 type 按类型匹配|
+>>|使用范围|成员变量、构造器、方法、参数、注解|类、成员变量、方法|
+>>- 装配找到多个类型相同的类：
+>>  1. 使用按名称装配
+>>  2. 在某个相同类型上添加 @Primary 注解
+>>- 多个类型相同的类可以装配到集合中，如 List、Set、Map
+>>### [循环依赖](https://www.zhihu.com/question/438247718/answer/1730527725)
+>>- 场景
+>>
+>>  |场景|是否能解决|解决方法|
+>>  |:---|:---|:---|
+>>  |单例 setter 注入|能|singletonObjects<br/>earlySingletonObjects<br/>singletonFactories：保存 Bean 工厂，以便创建代理对象|
+>>  |多例 setter 注入|不能||
+>>  |构造器 注入|不能|@Lazy|
+>>  |DependsOn|不能||
+>>  |单例代理对象 setter 注入|有可能|1. @Lazy<br/>2. @DependsOn<br/>3. 修改文件名，从而改变循环依赖类的加载顺序|
+>>  |setter 和构造器注入|有可能|同上|
 >### AOP (Aspect-Oriented Programming)
->1. [Spring AOP 和 AspectJ 的区别？](https://segmentfault.com/a/1190000022019122)
 >- 解决的问题：共同非业务代码的抽取
 >- 优点：减少重复代码，可拓展性
->- 使用场景：日志，事务，权限，缓存
+>- 使用场景：日志，事务，缓存，权限(安全)
 >- 原理：基于动态代理
 >   1. JDK (代理对象实现了某个接口)
 >   2. Cglib
+>- 核心概念：
+>   1. 切面：Aspect，
+>   2. 连接点：Join Point，
+>   3. 切入点：Pointcut，
+>   4. 通知：Advice，
 >- 对比 AspectJ：Spring AOP 是运行时织入，AspectJ 是编译时织入；Spring AOP 用到了 AspectJ 的注解
+>>#### 参考网站
+>>1. [Spring AOP 和 AspectJ 的区别？](https://segmentfault.com/a/1190000022019122)
 >### 事务
 >1. 事务隔离级别：@See SQL.md#事务隔离级别
->2. 事务传播：@See SSM.md#事务传播机制
->### Spring MVC
->- MVC：Model(service, dao, entity), View, Controller
+>2. 事务传播机制：@See SSM.md#事务传播机制
+>### [Spring MVC](https://mp.weixin.qq.com/s/yGP_34nilJp3QKyM3RaO2w)
+>- MVC：
+>   - Model：封装应用程序的数据结构和业务逻辑 (service, dao, entity)
+>   - View：Model 的外在表现，提供界面
+>   - Controller：协调 Model 和 View
 >- @See SSM.md#Spring MVC
 >### 用到的设计模式
->1. 简单工厂：BeanFactory，ApplicationContext
->2. 工厂方法：FactoryBean
->3. 单例模式：Bean 默认单例
->4. 策略模式：实例化对象 (InstantiationStrategy)
->5. 代理模式：Spring AOP (JdkDynamicAopProxy，CglibAopProxy)
->6. 适配器：Spring AOP 的通知 (AdvisorAdapter)；Controller (HandlerAdapter)
->7. 装饰器：XxxDecorator，XxxWrapper
->8. 观察者：Spring 事件驱动 (ApplicationEvent，ApplicationListener)
->9. 模板方法：JdbcTemplate，RedisTemplate
+>|模式|用例|
+>|:---|:---|
+>|简单工厂|BeanFactory, ApplicationContext|
+>|工厂方法|FactoryBean|
+>|单例|Bean 创建默认单例|
+>|策略|实例化策略 (InstantiationStrategy)|
+>|代理|Spring AOP (JdkDynamicAopProxy, CglibAopProxy)|
+>|适配器|Spring AOP (AdvisorAdapter)<br/>Spring MVC (HandlerAdapter)|
+>|装饰器|XxxDecorator，XxxWrapper|
+>|观察者|Spring Event (ApplicationEventPublisher, ApplicationListener, ApplicationEvent)|
+>|模板方法|JdbcTemplate，RedisTemplate|
+>|责任链模式|Spring AOP (ExposeInvocationInterceptor) ???|
 >### 其它
 >1. 单例 Bean 线程安全问题：多个线程对同一对象的非静态成员变量进行写操作存时在线程安全问题
 >   - 解决：ThreadLocal
@@ -84,8 +115,10 @@
 >       private UserService userService; 
 >   }
 >   ```
-```
 ---
+
+
+Filter → Interceptor → Aspect
 
 1. spring 和 springboot 区别？Bean 加载
 2. 学习最多的项目

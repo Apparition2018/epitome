@@ -11,9 +11,9 @@ Spring SpringMVC Mybatis
 ## MVC
 <img alt="mvc" src="../notes/img/mvc.png" width="550px"><br/>
 - 软件开发过程中的设计思想，是表示层的一种架构模式
-1. Model：封装应用程序的数据结构和事务逻辑，集中体现应用程序的状态
-2. View：是 Model 的外在表现，负责提供界面 (JSP)
-3. Controller：负责协调模型和视图 (Servlet)
+1. Model：封装应用程序的数据结构和业务逻辑
+2. View：Model 的外在表现，提供界面 (JSP)
+3. Controller：协调 Model 和 View (Servlet)
 >### 好处
 >1. 方便测试，业务逻辑写在java可直接测试
 >2. 方便维护，修改视图、模型，互不影响
@@ -477,7 +477,7 @@ Spring SpringMVC Mybatis
 >   - timeout：设置事务的超时秒数，默认值为-1，表示永不超时
 >   - rollbackFo：设置需要进行事务回滚的异常类数组
 >   - noRollbackFor：设置不需要进行事务回滚的异常类数组
->>#### [事务传播机制](https://blog.csdn.net/wangen2010/article/details/100064580) 
+>>#### [事务传播机制](https://segmentfault.com/a/1190000013341344) 
 >>- 支持当前事务：外层事务回滚，内层事务回滚；内层事务回滚，外层事务回滚
 >>
 >>|事务传播|外层有事务|外层无事务|备注|
