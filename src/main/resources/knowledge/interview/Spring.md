@@ -42,6 +42,7 @@
 >>1. [SpringIOC 面试题](https://mp.weixin.qq.com/s/SH4laewpIsio66MUJFLTyg)
 >>2. [Spring Bean 的生命周期](https://www.cnblogs.com/zrtqsk/p/3735273.html)
 >### 依赖注入
+>- [推荐使用构造器注入](https://reflectoring.io/constructor-injection/) ：创建不可变对象，防止 NPE，线程安全，使代码更健壮
 >>### [依赖注入注解](https://www.zhihu.com/question/39356740/answer/1907479772)
 >>|注解|@Autowired|@Resource|
 >>|:---|:---|:---|
@@ -52,17 +53,21 @@
 >>  1. 使用按名称装配
 >>  2. 在某个相同类型上添加 @Primary 注解
 >>- 多个类型相同的类可以装配到集合中，如 List、Set、Map
->>### [循环依赖](https://www.zhihu.com/question/438247718/answer/1730527725)
+>>### 循环依赖
 >>- 场景
 >>
->>  |场景|是否能解决|解决方法|
+>>  |场景|是否报错|解决方法|
 >>  |:---|:---|:---|
->>  |单例 setter 注入|能|singletonObjects<br/>earlySingletonObjects<br/>singletonFactories：保存 Bean 工厂，以便创建代理对象|
->>  |多例 setter 注入|不能||
->>  |构造器 注入|不能|@Lazy|
->>  |DependsOn|不能||
->>  |单例代理对象 setter 注入|有可能|1. @Lazy<br/>2. @DependsOn<br/>3. 修改文件名，从而改变循环依赖类的加载顺序|
->>  |setter 和构造器注入|有可能|同上|
+>>  |单例 setter 注入|否 (Spring 解决了)|singletonObjects<br/>earlySingletonObjects<br/>singletonFactories：AOP 扩展|
+>>  |多例 setter 注入|被单例引用时报错||
+>>  |构造器注入|是||
+>>  |DependsOn|是||
+>>  |单例代理对象 setter 注入 (先)<br/>单例 setter 注入 (后)|是|1. @Lazy<br/>2. @DependsOn<br/>3. 修改文件名，从而调转循环依赖类的加载顺序|
+>>  |构造器注入 (先)<br/>单例 setter 注入 (后)|是|同上|
+>>- 注：非抽象、单例、非懒加载的类才会被提前初始化
+>>>#### 参考网站
+>>>1. [Spring 解决循环](https://www.zhihu.com/question/438247718/answer/1730527725)
+>>>2. [@Transactional、@Async 和循环依赖](https://www.cnblogs.com/liuzhihang/p/spring-trans-async.html)
 >### AOP (Aspect-Oriented Programming)
 >- 解决的问题：共同非业务代码的抽取
 >- 优点：减少重复代码，可拓展性

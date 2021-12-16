@@ -27,6 +27,7 @@ public class AnnotationConfigAcDemo {
     public void testLifecycle() {
         Bean bean = applicationContext.getBean("bean", Bean.class);
         bean.service();
+        System.err.println(bean);
     }
 
     @AfterEach

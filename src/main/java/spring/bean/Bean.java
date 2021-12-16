@@ -1,6 +1,7 @@
 package spring.bean;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -22,6 +23,7 @@ import static l.demo.Demo.p;
  * created on 2020/11/25 15:28
  */
 @Data
+@Accessors(chain = true)
 @Component("BEAN")
 public class Bean implements InitializingBean, DisposableBean, ApplicationContextAware {
 
