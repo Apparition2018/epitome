@@ -2,6 +2,7 @@ package jar.apache.commons.io;
 
 import l.demo.Demo;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -126,11 +127,16 @@ public class FileUtilsDemo extends Demo {
         p(FileUtils.sizeOf(file2));            // 100
         p(FileUtils.sizeOfDirectory(file1));   // 1484
 
-        // listFiles()
+        // listFiles(File directory, String[] extensions, boolean recursive)
         // 在给定目录(或其子目录)中查找与扩展名数组匹配的文件
         Collection<File> coll = FileUtils.listFiles(file1, null, true);
         p(coll);
-        // [src\main\resources\demo\a.zip, src\main\resources\demo\demo, src\main\resources\demo\demo.zip, src\main\resources\demo\Input, src\main\resources\demo\io.dat, src\main\resources\demo\key, src\main\resources\demo\Output, src\main\resources\demo\person.obj, src\main\resources\demo\QRCode.png]
+        // [src\main\resources\demo\a\b\demo, src\main\resources\demo\demo, src\main\resources\demo\demo.csv, src\main\resources\demo\demo.xml, src\main\resources\demo\EAN-13.png, src\main\resources\demo\hutool\captcha_circle.jpg, src\main\resources\demo\hutool\captcha_line.jpg, src\main\resources\demo\hutool\captcha_math.jpg, src\main\resources\demo\hutool\captcha_random.jpg, src\main\resources\demo\hutool\captcha_shear.jpg, src\main\resources\demo\hutool\capture.jpg, src\main\resources\demo\hutool\capture_compress.jpg, src\main\resources\demo\hutool\capture_convert.jpg, src\main\resources\demo\hutool\capture_createImage.jpg, src\main\resources\demo\hutool\capture_cut.jpg, src\main\resources\demo\hutool\capture_flip.jpg, src\main\resources\demo\hutool\capture_gray.jpg, src\main\resources\demo\hutool\capture_pressImage.jpg, src\main\resources\demo\hutool\capture_pressText.jpg, src\main\resources\demo\hutool\capture_rotate.jpg, src\main\resources\demo\hutool\capture_scale.jpg, src\main\resources\demo\hutool\demo.xlsx, src\main\resources\demo\hutool\example.setting, src\main\resources\demo\hutool\example_copy.setting, src\main\resources\demo\Input, src\main\resources\demo\io.dat, src\main\resources\demo\join.txt, src\main\resources\demo\key, src\main\resources\demo\Output, src\main\resources\demo\person.js, src\main\resources\demo\person.obj, src\main\resources\demo\person.xlsx, src\main\resources\demo\person.xml, src\main\resources\demo\QRCode.png, src\main\resources\demo\Serialization.obj, src\main\resources\demo\spring\spring-ann.xml, src\main\resources\demo\spring\spring-bean.xml, src\main\resources\demo\student.xml]
+
+        // listFiles(File directory, IOFileFilter fileFilter, IOFileFilter dirFilter)
+        coll = FileUtils.listFiles(file1, DirectoryFileFilter.INSTANCE, null);
+        p(coll);
+        // [src\main\resources\demo\a, src\main\resources\demo\hutool, src\main\resources\demo\spring]
     }
 
 }
