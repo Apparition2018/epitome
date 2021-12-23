@@ -78,6 +78,9 @@ public class BigDecimalDemo {
      */
     @Test
     public void compareTo() {
+        p(new BigDecimal("1.0").compareTo(new BigDecimal("0.9")));  // 1
+        p(new BigDecimal("0.9").compareTo(new BigDecimal("1.0")));  // -1
+
         // equals() 会比较精度
         p(new BigDecimal("1.0").equals(new BigDecimal("1.00")));    // false
         // compareTo() 会忽略精度

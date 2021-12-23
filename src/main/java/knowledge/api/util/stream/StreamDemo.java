@@ -99,9 +99,9 @@ public class StreamDemo extends Demo {
         // filter()         过滤
         // sorted()         排序
         // limit()          返回指定元素个数的流
-        Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9).limit(7)
+        Stream.of(9, 8, 7, 6, 5, 4, 3, 2, 1).limit(7)
                 .filter(n -> n % 2 == 0).sorted()
-                .forEach(n -> System.out.print(n + " ")); // 2 4 6
+                .forEach(n -> System.out.print(n + " ")); // 4 6 8
         p("\n");
 
         // sequential()     返回串行 Stream 对象
