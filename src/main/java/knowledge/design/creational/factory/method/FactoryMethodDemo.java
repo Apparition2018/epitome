@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * 工厂模式：定义一个创建对象的接口，让子类来决定哪些类需要被实例化，使一个类的实例化推迟到子类。工厂模式是抽象工厂的一种常见情况。
- * 适用场合：计划不同条件下创建不同实例；一个对象的创建过程比较复杂；对象的创建和使用解耦；
+ * 适用场合：计划不同条件下创建不同实例；一个对象的创建过程比较复杂；对象的创建和使用解耦
  * 使用场景：Spring IOC
  * 关键代码：具体创建过程在子类执行
  * 优点：
@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
  * 缺点：每次增加一个产品，就需要增加一个具体类和对象实现的工厂，使系统中类的个数成倍增加
  * <p>
  * 工厂模式 | 菜鸟教程：https://www.runoob.com/design-pattern/factory-pattern.html
- * 工厂模式-场景以及优缺点：https://www.cnblogs.com/aspirant/p/8980573.html
  * 简单工厂模式、工厂方法模式和抽象工厂模式有何区别？ - 知乎：https://www.zhihu.com/question/27125796
  * 模式的秘密——工厂模式：https://www.imooc.com/learn/261
  *

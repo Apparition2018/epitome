@@ -25,7 +25,7 @@ public class ObserverDemo {
 
     static class Subject {
 
-        private List<Observer> observers = new ArrayList<>();
+        private final List<Observer> observers = new ArrayList<>();
         private int state;
 
         public int getState() {

@@ -59,7 +59,7 @@ public class BuilderDemo {
     // 具体建造者类
     static class ConcreteBuilder implements Builder {
 
-        private Product product = new Product();
+        private final Product product = new Product();
 
         /**
          * 产品零件建造方法一
@@ -93,7 +93,7 @@ public class BuilderDemo {
         /**
          * 持有当前需要使用的建造器对象
          */
-        private Builder builder;
+        private final Builder builder;
 
         /**
          * 构造方法，传入建造器对象

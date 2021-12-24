@@ -70,22 +70,32 @@
 >>>2. [@Transactional、@Async 和循环依赖](https://www.cnblogs.com/liuzhihang/p/spring-trans-async.html)
 >### AOP (Aspect-Oriented Programming)
 >- 解决的问题：共同非业务代码的抽取
->- 优点：减少重复代码，可拓展性
+>- 优点：减少重复代码，提高系统可拓展性
 >- 使用场景：日志，事务，缓存，权限(安全)
->- 原理：基于动态代理
->   1. JDK (代理对象实现了某个接口)
->   2. Cglib
->- 核心概念：
->   1. 切面：Aspect，
->   2. 连接点：Join Point，
->   3. 切入点：Pointcut，
->   4. 通知：Advice，
->- 对比 AspectJ：Spring AOP 是运行时织入，AspectJ 是编译时织入；Spring AOP 用到了 AspectJ 的注解
+>- 实现原理：动态代理
+>   1. JDK：基于反射；目标对象实现了接口，则 spring 默认使用
+>   2. Cglib：基于 ASM 类库在运行时对字节码进行修改和生成
+>- [核心概念](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-introduction-defn) ：
+>   1. 切面：Aspect = Pointcut + Advice；Spring AOP 中 @Aspect 注释的类
+>   2. 连接点：Join Point，使用 Advice 的地方；Spring AOP 中连接点只能是方法
+>   3. 通知：Advice，切面的具体行动
+>   4. 切入点：Pointcut，匹配 Join Point
+>- 对比 AspectJ：
+>   1. Spring AOP 是运行时织入，AspectJ 是编译时织入
+>   2. Spring AOP 使用了 AspectJ 的注解 和 切入点表达式语言
 >>#### 参考网站
 >>1. [Spring AOP 和 AspectJ 的区别？](https://segmentfault.com/a/1190000022019122)
 >### 事务
 >1. 事务隔离级别：@See SQL.md#事务隔离级别
 >2. 事务传播机制：@See SSM.md#事务传播机制
+>3. @Transactional 失效场景：
+>   1. 未被 Spring 管理
+>   2. 数据库不支持
+>   3. 非 public 方法，final 修饰
+>   4. 自调用
+>   5. RuntimeException 和 Error 才生效
+>   6. 多线程，多数据源
+>   7. 主动：propagation 设置未非事务，try catch 处理了异常
 >### [Spring MVC](https://mp.weixin.qq.com/s/yGP_34nilJp3QKyM3RaO2w)
 >- MVC：
 >   - Model：封装应用程序的数据结构和业务逻辑 (service, dao, entity)
@@ -103,7 +113,7 @@
 >|适配器|Spring AOP (AdvisorAdapter)<br/>Spring MVC (HandlerAdapter)|
 >|装饰器|XxxDecorator，XxxWrapper|
 >|观察者|Spring Event (ApplicationEventPublisher, ApplicationListener, ApplicationEvent)|
->|模板方法|JdbcTemplate，RedisTemplate|
+>|模板方法|JdbcTemplate，RedisTemplate，TransactionTemplate|
 >|责任链模式|Spring AOP (ExposeInvocationInterceptor) ???|
 >### 其它
 >1. 单例 Bean 线程安全问题：多个线程对同一对象的非静态成员变量进行写操作存时在线程安全问题

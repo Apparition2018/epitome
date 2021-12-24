@@ -8,7 +8,7 @@ import java.util.Objects;
  * 关键代码：抽象工厂
  * <p>
  * 抽象工厂模式 | 菜鸟教程：https://www.runoob.com/design-pattern/abstract-factory-pattern.html
- * https://www.imooc.com/learn/261
+ * 模式的秘密——工厂模式：https://www.imooc.com/learn/261
  *
  * @author ljh
  * created on 2019/11/7 15:04
