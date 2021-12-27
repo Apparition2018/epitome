@@ -20,12 +20,14 @@ import lombok.Setter;
  * <p>
  * 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式（阿里编程规约）
  * <p>
- * 《Java与模式》：https://www.cnblogs.com/foryang/p/5849402.html
- * 设计模式 | 菜鸟教程：https://www.runoob.com/design-pattern/design-pattern-intro.html
- * Java 常用十种设计模式：https://www.jianshu.com/p/61b67ca754a3
- * <p>
+ * Design Patterns in Java：https://refactoring.guru/design-patterns/java
+ * Design Patterns：https://sourcemaking.com/design_patterns
  * design_patterns_online.pdf：http://campus.murraystate.edu/academic/faculty/wlyle/430/rc008-designpatterns_online.pdf
  * Design Pattern 摘录：http://blog.wuwenxiang.net/Design-Pattern
+ * <p>
+ * 《设计模式之美》：https://pan.baidu.com/disk/home?#/all?vmode=list&path=%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E
+ * 《Java与模式》：https://www.cnblogs.com/foryang/p/5849402.html
+ * 菜鸟教程：https://www.runoob.com/design-pattern/design-pattern-intro.html
  *
  * @author ljh
  * created on 2020/9/24 16:13

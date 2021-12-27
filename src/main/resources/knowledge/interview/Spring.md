@@ -94,7 +94,7 @@
 >   3. 非 public 方法，final 修饰
 >   4. 自调用
 >   5. RuntimeException 和 Error 才生效
->   6. 多线程，多数据源
+>   6. 多线程，多数据源，分布式
 >   7. 主动：propagation 设置未非事务，try catch 处理了异常
 >### [Spring MVC](https://mp.weixin.qq.com/s/yGP_34nilJp3QKyM3RaO2w)
 >- MVC：
