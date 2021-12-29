@@ -108,7 +108,7 @@
 >|简单工厂|BeanFactory, ApplicationContext|
 >|工厂方法|FactoryBean|
 >|单例|Bean 创建默认单例|
->|策略|实例化策略 (InstantiationStrategy)|
+>|策略|资源访问 (Resource, UrlResource, FileSystemResource ...)|
 >|代理|Spring AOP (JdkDynamicAopProxy, CglibAopProxy)|
 >|适配器|Spring AOP (AdvisorAdapter)<br/>Spring MVC (HandlerAdapter)|
 >|装饰器|XxxDecorator，XxxWrapper|
