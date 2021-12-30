@@ -1,8 +1,27 @@
 package knowledge.design.structural.decorator;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.junit.jupiter.api.Test;
+
+import java.io.*;
+import java.util.Base64;
+import java.util.Objects;
+import java.util.zip.Deflater;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.InflaterInputStream;
+
 /**
- * 装饰器模式：
- * 主要解决：扩展类功能一般使用继承方式，但随着扩展功能的增多，类继承结构将变得无比复杂，或无法通过继承实现功能
+ * 装饰器模式：动态地给对象添加一些新的功能
+ * 主要解决：
+ * 1.无需修改代码的情况下，添加额外的功能
+ * 2.使用继承来扩展对象行为的方案难以实现或者根本不可行
+ * 使用场景：
+ * 1.Java IO：
+ * -    抽象构建角色：InputStream
+ * -    具体构建角色：FileInputStream，ByteArrayInputStream，PipedInputStream，StringBufferInputStream
+ * -    抽象装饰角色：FilterInputStream
+ * -    具体装饰角色：BufferedInputStream，DataInputStream
  * <p>
  * 角色：
  * 抽象部件角色 Component
@@ -10,19 +29,15 @@ package knowledge.design.structural.decorator;
  * 抽象装饰角色 Decorator
  * 具体装饰角色 ConcreteDecorator
  * <p>
- * 使用场景：
- * 1.IO：
- * -    抽象构建角色：InputStream
- * -    具体构建角色：FileInputStream，ByteArrayInputStream，PipedInputStream，StringBufferInputStream
- * -    抽象装饰角色：FilterInputStream
- * -    具体装饰角色：BufferedInputStream，DataInputStream
- * 关键代码：装饰类继承和引用 Component，重写父类方法
- * 优点：符合开闭原则
- * 1.装饰类和被装饰类可以独立发展，不会相互耦合，装饰模式是继承的一个替代模式，装饰模式可以动态扩展或删除实现类的功能。
- * 2.通过对不同的装饰类排列组合，可以创造出很多不同的组合。
- * 缺点：多层装饰比较复杂；比继承产生更多的对象
+ * 关键代码：
+ * 1.ConcreteComponent 和 Decorator 共同实现 Component
+ * 2.Decorator 持有 Component 的引用，ConcreteDecorator 重写父类方法
+ * 优点：
+ * 1.符合开闭原则
+ * 2.通过使用不同组合的 ConcreteDecorator，实现不同的功能
+ * 3.扩展新功能只需继承 Decorator
  * <p>
- * Decorator：https://refactoring.guru/design-patterns/decorator
+ * Decorator：https://refactoringguru.cn/design-patterns/decorator
  * JAVA与模式：http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/decorator-pattern.html
  * Java3y：https://www.zhihu.com/question/32007641/answer/687582571
@@ -34,173 +49,183 @@ package knowledge.design.structural.decorator;
 public class DecoratorDemo {
 
     /**
-     * 案例：
-     * 1.武器（攻击力50），盔甲（防御力50），饰品（攻击力25，防御力25）
-     * 2.红宝石（攻击力30），蓝宝石（防御力30），黄宝石（攻击力20，防御力20）
-     * 计算镶嵌了宝石的装备的攻击力和防御力
+     * https://refactoringguru.cn/design-patterns/decorator/java/example
      */
-    public static void main(String[] args) {
-        Equip equip = new RedGem(new BlueGem(new YellowGem(new Weapon())));
-        System.out.println("攻击力：" + equip.calAttack());
-        System.out.println("防御力：" + equip.calDefence());
-        System.out.println("描述：" + equip.desc());
+    @Test
+    public void testWriterAndReadFile() {
+        String salaryRecords = "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
+        DataSourceDecorator encoded = new CompressionDecorator(
+                new EncryptionDecorator(
+                        new FileDataSource("OutputDemo.txt")));
+        encoded.writeData(salaryRecords);
+
+        DataSource plain = new FileDataSource("OutputDemo.txt");
+        System.out.println("\n- Input ----------------");
+        System.out.println(salaryRecords);
+        System.out.println("\n- Encoded --------------");
+        System.out.println(plain.readData());
+        System.out.println("\n- Decoded --------------");
+        System.out.println(encoded.readData());
     }
 
     /**
-     * 抽象构建角色
+     * Component
+     * 定义了读取和写入操作的通用数据接口
      */
-    interface Equip {
-        int calAttack();
+    interface DataSource {
+        void writeData(String data);
 
-        int calDefence();
-
-        String desc();
+        String readData();
     }
 
     /**
-     * 具体构建角色
+     * ConcreteComponent
+     * 简单数据读写器
      */
-    static class Weapon implements Equip {
-        @Override
-        public int calAttack() {
-            return 50;
+    static class FileDataSource implements DataSource {
+        private final String name;
+
+        public FileDataSource(String name) {
+            this.name = name;
         }
 
         @Override
-        public int calDefence() {
-            return 0;
+        public void writeData(String data) {
+            File file = new File(name);
+            try (OutputStream fos = new FileOutputStream(file)) {
+                fos.write(data.getBytes(), 0, data.length());
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
 
         @Override
-        public String desc() {
-            return "武器";
-        }
-    }
-
-    /**
-     * 具体构建角色
-     */
-    static class Armor implements Equip {
-        @Override
-        public int calAttack() {
-            return 0;
-        }
-
-        @Override
-        public int calDefence() {
-            return 50;
-        }
-
-        @Override
-        public String desc() {
-            return "盔甲";
-        }
-    }
-
-    /**
-     * 具体构建角色
-     */
-    static class Decoration implements Equip {
-        @Override
-        public int calAttack() {
-            return 25;
-        }
-
-        @Override
-        public int calDefence() {
-            return 25;
-        }
-
-        @Override
-        public String desc() {
-            return "饰品";
+        public String readData() {
+            char[] buffer = null;
+            File file = new File(name);
+            try (FileReader reader = new FileReader(file)) {
+                buffer = new char[(int) file.length()];
+                reader.read(buffer);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+            return new String(Objects.requireNonNull(buffer));
         }
     }
 
     /**
-     * 抽象装饰角色
+     * Decorator
+     * 抽象装饰
      */
-    interface GemDecorator extends Equip {
-    }
+    static class DataSourceDecorator implements DataSource {
+        private final DataSource wrapper;
 
-    /**
-     * 具体装饰角色
-     */
-    static class RedGem implements GemDecorator {
-        private Equip equip;
-
-
-        public RedGem(Equip equip) {
-            this.equip = equip;
+        DataSourceDecorator(DataSource source) {
+            this.wrapper = source;
         }
 
         @Override
-        public int calAttack() {
-            return equip.calAttack() + 30;
+        public void writeData(String data) {
+            wrapper.writeData(data);
         }
 
         @Override
-        public int calDefence() {
-            return equip.calDefence();
-        }
-
-        @Override
-        public String desc() {
-            return equip.desc() + " 红宝石";
+        public String readData() {
+            return wrapper.readData();
         }
     }
 
     /**
-     * 具体装饰角色
+     * ConcreteDecorator
+     * 加密装饰
      */
-    static class BlueGem implements GemDecorator {
-        private Equip equip;
+    static class EncryptionDecorator extends DataSourceDecorator {
 
-
-        public BlueGem(Equip equip) {
-            this.equip = equip;
+        public EncryptionDecorator(DataSource source) {
+            super(source);
         }
 
         @Override
-        public int calAttack() {
-            return equip.calAttack();
+        public void writeData(String data) {
+            super.writeData(encode(data));
         }
 
         @Override
-        public int calDefence() {
-            return equip.calDefence() + 30;
+        public String readData() {
+            return decode(super.readData());
         }
 
-        @Override
-        public String desc() {
-            return equip.desc() + " 蓝宝石";
+        private String encode(String data) {
+            byte[] result = data.getBytes();
+            for (int i = 0; i < result.length; i++) {
+                result[i] += (byte) 1;
+            }
+            return Base64.getEncoder().encodeToString(result);
+        }
+
+        private String decode(String data) {
+            byte[] result = Base64.getDecoder().decode(data);
+            for (int i = 0; i < result.length; i++) {
+                result[i] -= (byte) 1;
+            }
+            return new String(result);
         }
     }
 
     /**
-     * 具体装饰角色
+     * ConcreteDecorator
+     * 压缩装饰
      */
-    static class YellowGem implements GemDecorator {
-        private Equip equip;
+    @Getter
+    @Setter
+    static class CompressionDecorator extends DataSourceDecorator {
+        private int compLevel = 6;
 
-
-        public YellowGem(Equip equip) {
-            this.equip = equip;
+        public CompressionDecorator(DataSource source) {
+            super(source);
         }
 
         @Override
-        public int calAttack() {
-            return equip.calAttack() + 20;
+        public void writeData(String data) {
+            super.writeData(compress(data));
         }
 
         @Override
-        public int calDefence() {
-            return equip.calDefence() + 20;
+        public String readData() {
+            return decompress(super.readData());
         }
 
-        @Override
-        public String desc() {
-            return equip.desc() + " 黄宝石";
+        private String compress(String stringData) {
+            byte[] data = stringData.getBytes();
+            try {
+                ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
+                DeflaterOutputStream dos = new DeflaterOutputStream(bout, new Deflater(compLevel));
+                dos.write(data);
+                dos.close();
+                bout.close();
+                return Base64.getEncoder().encodeToString(bout.toByteArray());
+            } catch (IOException ex) {
+                return null;
+            }
+        }
+
+        private String decompress(String stringData) {
+            byte[] data = Base64.getDecoder().decode(stringData);
+            try {
+                InputStream in = new ByteArrayInputStream(data);
+                InflaterInputStream iin = new InflaterInputStream(in);
+                ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
+                int b;
+                while ((b = iin.read()) != -1) {
+                    bout.write(b);
+                }
+                in.close();
+                iin.close();
+                bout.close();
+                return bout.toString();
+            } catch (IOException ex) {
+                return null;
+            }
         }
     }
 
