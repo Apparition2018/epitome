@@ -12,36 +12,35 @@ import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 
 /**
- * 装饰器模式：动态地给对象添加一些新的功能
+ * 装饰器模式：通过将对象放入特殊的封装对象，动态地给对象添加一些新的功能
  * 主要解决：
  * 1.无需修改代码的情况下，添加额外的功能
  * 2.使用继承来扩展对象行为的方案难以实现或者根本不可行
- * 使用场景：
+ * 使用场景：功能组合
+ * 使用实例：
  * 1.Java IO：
  * -    抽象构建角色：InputStream
  * -    具体构建角色：FileInputStream，ByteArrayInputStream，PipedInputStream，StringBufferInputStream
  * -    抽象装饰角色：FilterInputStream
  * -    具体装饰角色：BufferedInputStream，DataInputStream
+ * 2.java.util.Collections 的 checkedXXX()、 synchronizedXXX() 和 unmodifiableXXX()
  * <p>
  * 角色：
  * 抽象部件角色 Component
- * 具体部件角色 ConcreteComponent
- * 抽象装饰角色 Decorator
- * 具体装饰角色 ConcreteDecorator
+ * 具体部件角色 ConcreteComponent：实现 Component，定义基础行为
+ * 抽象装饰角色 Decorator：实现 Component，持有 Component 的引用（构造器接收），???
+ * 具体装饰角色 ConcreteDecorator：定义添加的额外行为，在调用父类方法之前或之后执行自身的行为
  * <p>
- * 关键代码：
- * 1.ConcreteComponent 和 Decorator 共同实现 Component
- * 2.Decorator 持有 Component 的引用，ConcreteDecorator 重写父类方法
+ * 关键代码：Decorator 持有 Component 的引用（构造器接收）
  * 优点：
  * 1.符合开闭原则
- * 2.通过使用不同组合的 ConcreteDecorator，实现不同的功能
+ * 2.通过使用多个 ConcreteDecorator 的不同组合，实现不同的功能
  * 3.扩展新功能只需继承 Decorator
  * <p>
  * Decorator：https://refactoringguru.cn/design-patterns/decorator
  * JAVA与模式：http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html
- * 菜鸟教程：https://www.runoob.com/design-pattern/decorator-pattern.html
  * Java3y：https://www.zhihu.com/question/32007641/answer/687582571
- * 设计模式之美：通过剖析 Java IO 类库源码学习装饰器模式
+ * 菜鸟教程：https://www.runoob.com/design-pattern/decorator-pattern.html
  *
  * @author Arsenal
  * created on 2020/9/26 2:51
@@ -49,6 +48,9 @@ import java.util.zip.InflaterInputStream;
 public class DecoratorDemo {
 
     /**
+     * 案例：
+     * 1.FileDataSource 仅支持简单读写
+     * 2.增加加密解密，压缩解压功能
      * https://refactoringguru.cn/design-patterns/decorator/java/example
      */
     @Test
@@ -118,20 +120,20 @@ public class DecoratorDemo {
      * 抽象装饰
      */
     static class DataSourceDecorator implements DataSource {
-        private final DataSource wrapper;
+        private final DataSource wrappee;
 
         DataSourceDecorator(DataSource source) {
-            this.wrapper = source;
+            this.wrappee = source;
         }
 
         @Override
         public void writeData(String data) {
-            wrapper.writeData(data);
+            wrappee.writeData(data);
         }
 
         @Override
         public String readData() {
-            return wrapper.readData();
+            return wrappee.readData();
         }
     }
 
