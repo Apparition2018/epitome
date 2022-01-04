@@ -19,19 +19,18 @@ import java.util.zip.InflaterInputStream;
  * 使用场景：功能组合
  * 使用实例：
  * 1.Java IO：
- * -    抽象构建角色：InputStream
- * -    具体构建角色：FileInputStream，ByteArrayInputStream，PipedInputStream，StringBufferInputStream
- * -    抽象装饰角色：FilterInputStream
- * -    具体装饰角色：BufferedInputStream，DataInputStream
+ * -    Component:          InputStream
+ * -    ConcreteComponent:  FileInputStream，ByteArrayInputStream，PipedInputStream，StringBufferInputStream
+ * -    Decorator:          FilterInputStream
+ * -    ConcreteDecorator:  BufferedInputStream，DataInputStream
  * 2.java.util.Collections 的 checkedXXX()、 synchronizedXXX() 和 unmodifiableXXX()
  * <p>
  * 角色：
  * 抽象部件角色 Component
  * 具体部件角色 ConcreteComponent：实现 Component，定义基础行为
- * 抽象装饰角色 Decorator：实现 Component，持有 Component 的引用（构造器接收），???
+ * 抽象装饰角色 Decorator：实现 Component，持有 Component 的引用（构造器接收）
  * 具体装饰角色 ConcreteDecorator：定义添加的额外行为，在调用父类方法之前或之后执行自身的行为
  * <p>
- * 关键代码：Decorator 持有 Component 的引用（构造器接收）
  * 优点：
  * 1.符合开闭原则
  * 2.通过使用多个 ConcreteDecorator 的不同组合，实现不同的功能

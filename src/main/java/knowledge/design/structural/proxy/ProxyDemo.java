@@ -21,7 +21,6 @@ import java.util.Map;
  * 真实主题角色 RealSubject：实现 Subject
  * 代理角色 Proxy：实现 Subject，持有 RealSubject 的引用
  * <p>
- * 关键代码：Proxy 持有 RealSubject 的引用
  * 优点：符合开闭原则
  * <p>
  * Proxy：https://refactoringguru.cn/design-patterns/proxy

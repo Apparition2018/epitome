@@ -1,4 +1,4 @@
-package knowledge.design.structural.bridge.demo2;
+package knowledge.design.structural.bridge;
 
 /**
  * 某图像预览程序要求能够查看 BMP、JPEG 和GIF 三种格式的文件，而且能够在 Windows 和 Linux 两种操作系统上运行。
@@ -8,7 +8,7 @@ package knowledge.design.structural.bridge.demo2;
  * @author ljh
  * created on 2020/11/23 19:38
  */
-public class BridgeDemo {
+public class BridgeDemo2 {
 
     public static void main(String[] args) {
         Image image = new GIFImage();

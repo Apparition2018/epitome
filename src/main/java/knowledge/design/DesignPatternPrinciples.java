@@ -5,11 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 设计模式
- * 1.创建型：单例模式、抽象工厂模式、建造者模式、工厂模式、原型模式
- * 2.结构型：适配器模式、桥接模式、装饰模式、组合模式、外观模式、享元模式、代理模式
- * 3.行为型：模版方法模式、命令模式、迭代器模式、观察者模式、中介者模式、备忘录模式、解释器模式、状态模式、策略模式、职责链模式(责任链模式)、访问者模式
- * <p>
  * 六大原则：
  * 1.单一责任原则 (Single Responsibility Principle)
  * 2.开闭原则 (Open-Closed Principle)
@@ -17,30 +12,11 @@ import lombok.Setter;
  * 4.依赖倒置原则 (Dependence Inversion Principle)
  * 5.接口隔离原则 (Interface Segregation Principle)
  * 6.迪米特法则 (Law of Demeter)
- * <p>
- * 代理模式 vs 装饰器模式：
- * 1.代理模式通常由 Proxy 管理服务对象(RealSubject)的生命周期
- * 2.装饰器模式通常由服务端管理服务对象(Component)的生命周期
- * <p>
- * 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式（阿里编程规约）
- * <p>
- * Design Patterns in Java：https://refactoring.guru/design-patterns/java
- * Design Patterns：https://sourcemaking.com/design_patterns
- * design_patterns_online.pdf：http://campus.murraystate.edu/academic/faculty/wlyle/430/rc008-designpatterns_online.pdf
- * <p>
- * 《设计模式之美》：https://pan.baidu.com/disk/home?#/all?vmode=list&path=%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E
- * 《Java与模式》：https://www.cnblogs.com/foryang/p/5849402.html
- * 菜鸟教程：https://www.runoob.com/design-pattern/design-pattern-intro.html
- * <p>
- * 工作中用到的设计模式：
- * https://www.cnblogs.com/dubing/archive/2011/10/22/2221138.html
- * https://www.zhihu.com/question/340301316
- * https://juejin.cn/post/7023536216138055716
  *
  * @author ljh
  * created on 2020/9/24 16:13
  */
-public class DesignPattern {
+public class DesignPatternPrinciples {
 
     /**
      * 单一责任原则

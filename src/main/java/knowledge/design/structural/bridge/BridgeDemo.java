@@ -1,14 +1,18 @@
-package knowledge.design.structural.bridge.demo;
+package knowledge.design.structural.bridge;
 
 /**
- * 桥接模式：将抽象部分与它的实现部分分离，使他们都可以独立地变化
- * Implementor: 实现化角色
- * ConcreteImplementor: 具体实现化角色
- * Abstraction: 抽象化角色
- * RefinedAbstraction: 修正抽象化角色
+ * 桥接模式：将类拆分为抽象部分和实现部分，从而能在开发时分别使用
+ * 角色：
+ * 抽象部分 Abstraction
+ * 精确抽象 RefinedAbstraction
+ * 实现部分 Implementor
+ * 具体实现 ConcreteImplementor
  * <p>
- * https://www.cnblogs.com/java-my-life/archive/2012/05/07/2480938.html
- * https://www.runoob.com/design-pattern/bridge-pattern.html
+ * 优点：符合单一责任原则，开闭原则
+ * <p>
+ * Bridge：https://refactoringguru.cn/design-patterns/bridge
+ * JAVA与模式：https://www.cnblogs.com/java-my-life/archive/2012/05/07/2480938.html
+ * 菜鸟教程：https://www.runoob.com/design-pattern/bridge-pattern.html
  *
  * @author ljh
  * created on 2020/11/23 19:38
