@@ -24,9 +24,9 @@ import java.util.Map;
  * 优点：符合开闭原则
  * <p>
  * Proxy：https://refactoringguru.cn/design-patterns/proxy
+ * 菜鸟教程：https://www.runoob.com/design-pattern/proxy-pattern.html
  * JavaGuide：https://github.com/Snailclimb/JavaGuide/blob/main/docs/java/basis/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.md
  * 敖丙：https://mp.weixin.qq.com/s/lNw1yjn_xMOLpzbunaS10A
- * 菜鸟教程：https://www.runoob.com/design-pattern/proxy-pattern.html
  *
  * @author Arsenal
  * created on 2020/9/26 2:51
@@ -41,14 +41,14 @@ public class ProxyDemo {
         /**
          * Subject
          */
-        interface QueryDao {
+        interface Query {
             Object request();
         }
 
         /**
          * RealSubject
          */
-        static class QueryService implements QueryDao {
+        static class QueryService implements Query {
             @SneakyThrows
             public QueryService() {
                 Thread.sleep(1000);
@@ -63,7 +63,7 @@ public class ProxyDemo {
         /**
          * Proxy
          */
-        static class QueryProxyService implements QueryDao {
+        static class QueryProxyService implements Query {
             QueryService queryService = null;
 
             @Override

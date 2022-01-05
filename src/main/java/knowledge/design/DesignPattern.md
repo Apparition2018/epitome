@@ -9,11 +9,90 @@
 6. [菜鸟教程](https://www.runoob.com/design-pattern/design-pattern-intro.html)
 ---
 ## 分类
-|类型|模式|
-|:---|:---|
-|创建|单例、抽象工厂、工厂方法、建造者、原型|
-|结构|组合、适配器、桥接、代理、装饰器、外观、享元|
-|行为|模版方法、命令、迭代器、观察者、中介者、备忘录、解释器、状态、策略、责任链、访问者|
+<table>
+    <tr>
+        <td>类型</td>
+        <td>模式</td>
+        <td>流行度</td>
+        <td>类型</td>
+        <td>模式</td>
+        <td>流行度</td>
+    </tr>
+    <tr>
+        <td rowspan="5">创建</td>
+        <td>单例</td>
+        <td>2</td>
+        <td rowspan="11">行为</td>
+        <td>责任链</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>抽象工厂</td>
+        <td>3</td>
+        <td>命令</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>工厂方法</td>
+        <td>3</td>
+        <td>迭代器</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>建造者</td>
+        <td>3</td>
+        <td>中介者</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>原型</td>
+        <td>2</td>
+        <td>备忘录</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td rowspan="7">结构</td>
+        <td>适配器</td>
+        <td>3</td>
+        <td>观察者</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>桥接</td>
+        <td>1</td>
+        <td>状态</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>组合</td>
+        <td>2</td>
+        <td>策略</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>装饰器</td>
+        <td>2</td>
+        <td>模板方法</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>外观</td>
+        <td>2</td>
+        <td>访问者</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>享元</td>
+        <td>1</td>
+        <td>解析器</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>代理</td>
+        <td>1</td>
+    </tr>
+</table>
+
 ---
 ## 对比
 >### Proxy vs Decorator
@@ -30,11 +109,6 @@
 >Decorator          为对象提供增强接口   Decorator 和其持有的 服务对象(Component) 都实现 Component
 >Object Adapter     为对象提供不同接口   Adapter 实现 Target，其持有的 服务对象(Adaptee) 和 Target 没有关系
 >```
->### Adapter vs Bridge
->```
->Adapter            在已有程序中使用
->Bridge             用于开发前期的设计
->```
 ---
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式
@@ -43,3 +117,6 @@
 * https://www.cnblogs.com/dubing/archive/2011/10/22/2221138.html
 * https://www.zhihu.com/question/340301316
 * https://juejin.cn/post/7023536216138055716
+---
+混合模式：https://www.cnblogs.com/justuntil/p/5514076.html
+软件设计师-设计模式真题

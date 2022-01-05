@@ -1,24 +1,30 @@
 package knowledge.design.structural.adapter;
 
+import org.junit.jupiter.api.Test;
+
 /**
- * 适配器模式：使不兼容的接口可以一起工作
+ * 适配器模式：使现有不兼容的接口可以一起工作
+ * 使用场景：
+ * 1.现有接口不兼容
+ * 2.复用无法添加到超类的通用功能的多个现有子类 ???
+ * 3.只想使用接口中的某些方法 (Default Adapter，使用抽象类实现接口)
  * 使用实例：                    Adaptee             Adapter                     Target
  * Java IO                      InputStream         InputStreamReader           Reader
  * java.util.Arrays#asList()    E[]                 Arrays#ArrayList            AbstractList
  * java.util.Collections#list() Collection<T>       实现 Enumeration             Enumeration
  * Spring AOP                   MethodBeforeAdvice  MethodBeforeAdviceAdapter   AdvisorAdapter
  * <p>
+ * 角色：
+ * 目标角色 Target：描述了与客户端如何交互
+ * 被适配角色 Adaptee：现有的一些功能类，客户端与其不兼容
+ * 适配器角色 Adapter：实现或继承 Target，类适配器继承 Adaptee，对象适配器持有 Adaptee 的引用
+ * <p>
  * 分类：
  * 1.Object Adapter     class Adapter extends Adaptee implement Target {}               继承
  * 2.Class Adapter      class Adapter implement Target { private Adaptee adaptee}       委派
- * 3.Default Adapter
+ * 3.Default Adapter    abstract class Adapter implement Adaptee {}
  * <p>
- * 角色：
- * 抽象目标角色 Target
- * 适配器角色 Adapter
- * 被适配角色 Adaptee
- * <p>
- * 优点：符合单一责任原则，开闭原则
+ * 优点：符合单一责任原则、开闭原则
  * <p>
  * Adapter：https://refactoringguru.cn/design-patterns/adapter
  * JAVA与模式：https://www.cnblogs.com/java-my-life/archive/2012/04/13/2442795.html
@@ -31,12 +37,12 @@ package knowledge.design.structural.adapter;
 public class AdapterDemo {
 
     /**
-     * 案例：
      * 1.MediaPlayer 可以播放 MP3
      * 2.VideoPlayer 可以播放 VLC 或 MP4
      * 让 MediaPlayer 可以播放所有文件
      */
-    public static void main(String[] args) {
+    @Test
+    public void testAdapter() {
         MediaPlayer player = new MediaPlayerAdapter();
 
         player.play("beyond the horizon.mp3");

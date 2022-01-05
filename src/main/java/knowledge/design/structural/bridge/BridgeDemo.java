@@ -1,14 +1,21 @@
 package knowledge.design.structural.bridge;
 
+import org.junit.jupiter.api.Test;
+
 /**
- * 桥接模式：将类拆分为抽象部分和实现部分，从而能在开发时分别使用
+ * 桥接模式：将类拆分为抽象部分和实现部分，使得二者可以独立地变化
+ * 使用场景：在几个独立的维度上扩展类
+ * 使用实例：
+ * 1.跨平台应用：JDBC
  * 角色：
- * 抽象部分 Abstraction
- * 精确抽象 RefinedAbstraction
- * 实现部分 Implementor
- * 具体实现 ConcreteImplementor
+ * 抽象角色 Abstraction：定义与客户端交互的接口
+ * 精确抽象角色 RefinedAbstraction：接收 Implementor 的引用
+ * 实现角色 Implementor
+ * 具体实现角色 ConcreteImplementor
  * <p>
- * 优点：符合单一责任原则，开闭原则
+ * 优点：
+ * 1.符合单一责任原则、开闭原则
+ * 2.扩展维度只需增加 RefinedAbstraction 或 ConcreteImplementor
  * <p>
  * Bridge：https://refactoringguru.cn/design-patterns/bridge
  * JAVA与模式：https://www.cnblogs.com/java-my-life/archive/2012/05/07/2480938.html
@@ -18,61 +25,238 @@ package knowledge.design.structural.bridge;
  * created on 2020/11/23 19:38
  */
 public class BridgeDemo {
-    public static void main(String[] args) {
-        Shape redCircle = new Circle(100, 100, 10, new RedCircle());
-        Shape greenCircle = new Circle(100, 100, 10, new GreenCircle());
 
-        redCircle.draw();
-        greenCircle.draw();
+    /**
+     * 远程控制不同类型的设备，远程控制包括基础控制和高级控制，设备包括收音机和电视
+     * 1.抽象-远程控制
+     * 2.实现-设备
+     * https://refactoringguru.cn/design-patterns/bridge/java/example
+     */
+    @Test
+    public void testBridge() {
+        remoteDevice(new Tv());
+        remoteDevice(new Radio());
     }
 
-    // 实现化角色
-    interface DrawAPI {
-        void drawCircle(int radius, int x, int y);
+    private void remoteDevice(Device device) {
+        System.out.println("Tests with basic remote.");
+        BasicRemote basicRemote = new BasicRemote(device);
+        basicRemote.power();
+        device.printStatus();
+
+        System.out.println("Tests with advanced remote.");
+        AdvancedRemote advancedRemote = new AdvancedRemote(device);
+        advancedRemote.power();
+        advancedRemote.mute();
+        device.printStatus();
     }
 
-    // 具体实现化角色
-    static class RedCircle implements DrawAPI {
+    /**
+     * Implementor
+     */
+    interface Device {
+        boolean isEnabled();
+
+        void enable();
+
+        void disable();
+
+        int getVolume();
+
+        void setVolume(int percent);
+
+        int getChannel();
+
+        void setChannel(int channel);
+
+        void printStatus();
+    }
+
+    /**
+     * ConcreteImplementor
+     */
+    static class Radio implements Device {
+        private boolean on = false;
+        private int volume = 30;
+        private int channel = 1;
 
         @Override
-        public void drawCircle(int radius, int x, int y) {
-            System.out.println("Drawing Circle[ color: red, radius: " + radius + ", x " + x + ", " + y + "]");
+        public boolean isEnabled() {
+            return on;
         }
-    }
-
-    static class GreenCircle implements DrawAPI {
 
         @Override
-        public void drawCircle(int radius, int x, int y) {
-            System.out.println("Drawing Circle[ color: green, radius: " + radius + ", x " + x + ", " + y + "]");
+        public void enable() {
+            on = true;
+        }
+
+        @Override
+        public void disable() {
+            on = false;
+        }
+
+        @Override
+        public int getVolume() {
+            return volume;
+        }
+
+        @Override
+        public void setVolume(int volume) {
+            if (volume > 100) this.volume = 100;
+            else this.volume = Math.max(volume, 0);
+        }
+
+        @Override
+        public int getChannel() {
+            return channel;
+        }
+
+        @Override
+        public void setChannel(int channel) {
+            this.channel = channel;
+        }
+
+        @Override
+        public void printStatus() {
+            System.out.println("------------------------------------");
+            System.out.println("| I'm radio.");
+            System.out.println("| I'm " + (on ? "enabled" : "disabled"));
+            System.out.println("| Current volume is " + volume + "%");
+            System.out.println("| Current channel is " + channel);
+            System.out.println("------------------------------------\n");
         }
     }
 
-    // 抽象化角色
-    static abstract class Shape {
-        protected DrawAPI drawAPI;
+    /**
+     * ConcreteImplementor
+     */
+    static class Tv implements Device {
+        private boolean on = false;
+        private int volume = 30;
+        private int channel = 1;
 
-        protected Shape(DrawAPI drawAPI) {
-            this.drawAPI = drawAPI;
+        @Override
+        public boolean isEnabled() {
+            return on;
         }
 
-        public abstract void draw();
+        @Override
+        public void enable() {
+            on = true;
+        }
+
+        @Override
+        public void disable() {
+            on = false;
+        }
+
+        @Override
+        public int getVolume() {
+            return volume;
+        }
+
+        @Override
+        public void setVolume(int volume) {
+            if (volume > 100) this.volume = 100;
+            else this.volume = Math.max(volume, 0);
+        }
+
+        @Override
+        public int getChannel() {
+            return channel;
+        }
+
+        @Override
+        public void setChannel(int channel) {
+            this.channel = channel;
+        }
+
+        @Override
+        public void printStatus() {
+            System.out.println("------------------------------------");
+            System.out.println("| I'm TV set.");
+            System.out.println("| I'm " + (on ? "enabled" : "disabled"));
+            System.out.println("| Current volume is " + volume + "%");
+            System.out.println("| Current channel is " + channel);
+            System.out.println("------------------------------------\n");
+        }
     }
 
-    // 修正抽象化角色
-    static class Circle extends Shape {
+    /**
+     * Abstraction
+     */
+    interface Remote {
+        void power();
 
-        private final int x, y, radius;
+        void volumeDown();
 
-        public Circle(int x, int y, int radius, DrawAPI drawAPI) {
-            super(drawAPI);
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
+        void volumeUp();
+
+        void channelDown();
+
+        void channelUp();
+    }
+
+    /**
+     * RefinedAbstraction
+     */
+    static class BasicRemote implements Remote {
+        protected Device device;
+
+        public BasicRemote() {
         }
 
-        public void draw() {
-            drawAPI.drawCircle(radius, x, y);
+        public BasicRemote(Device device) {
+            this.device = device;
+        }
+
+        @Override
+        public void power() {
+            System.out.println("Remote: power toggle");
+            if (device.isEnabled()) {
+                device.disable();
+            } else {
+                device.enable();
+            }
+        }
+
+        @Override
+        public void volumeDown() {
+            System.out.println("Remote: volume down");
+            device.setVolume(device.getVolume() - 10);
+        }
+
+        @Override
+        public void volumeUp() {
+            System.out.println("Remote: volume up");
+            device.setVolume(device.getVolume() + 10);
+        }
+
+        @Override
+        public void channelDown() {
+            System.out.println("Remote: channel down");
+            device.setChannel(device.getChannel() - 1);
+        }
+
+        @Override
+        public void channelUp() {
+            System.out.println("Remote: channel up");
+            device.setChannel(device.getChannel() + 1);
+        }
+    }
+
+    /**
+     * RefinedAbstraction
+     */
+    static class AdvancedRemote extends BasicRemote {
+
+        public AdvancedRemote(Device device) {
+            super.device = device;
+        }
+
+        public void mute() {
+            System.out.println("Remote: mute");
+            device.setVolume(0);
         }
     }
 }
