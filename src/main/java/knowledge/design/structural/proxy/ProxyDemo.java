@@ -19,7 +19,7 @@ import java.util.Map;
  * 角色：
  * 抽象主题角色 Subject
  * 真实主题角色 RealSubject：实现 Subject
- * 代理角色 Proxy：实现 Subject，持有 RealSubject 的引用
+ * 代理角色 Proxy：实现 Subject，或直接继承 RealSubject，持有 RealSubject 的引用
  * <p>
  * 优点：符合开闭原则
  * <p>

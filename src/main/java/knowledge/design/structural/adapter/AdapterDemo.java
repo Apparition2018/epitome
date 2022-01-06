@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
  * Spring AOP                   MethodBeforeAdvice  MethodBeforeAdviceAdapter   AdvisorAdapter
  * <p>
  * 角色：
- * 目标角色 Target：描述了与客户端如何交互
+ * 目标角色 Target：定义与客户端交互的接口
  * 被适配角色 Adaptee：现有的一些功能类，客户端与其不兼容
  * 适配器角色 Adapter：实现或继承 Target，类适配器继承 Adaptee，对象适配器持有 Adaptee 的引用
  * <p>

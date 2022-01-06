@@ -14,7 +14,7 @@ import java.util.zip.InflaterInputStream;
 /**
  * 装饰器模式：通过将对象放入特殊的封装对象，动态地给对象添加一些新的功能
  * 使用场景：功能组合
- * 1.无需修改代码的情况下，添加额外的功能
+ * 1.业务逻辑可用一个基本组件及多个额外可选层表示
  * 2.使用继承来扩展对象行为的方案难以实现或者根本不可行
  * 使用实例：
  * 1.Java IO：
@@ -25,10 +25,10 @@ import java.util.zip.InflaterInputStream;
  * 2.java.util.Collections 的 checkedXXX()、 synchronizedXXX() 和 unmodifiableXXX()
  * <p>
  * 角色：
- * 抽象部件角色 Component：所有角色的顶级接口
+ * 抽象部件角色 Component：所有角色的顶级接口，定义通用方法
  * 具体部件角色 ConcreteComponent：实现 Component，定义基础行为
  * 抽象装饰角色 Decorator：实现 Component，接收 Component 的引用（构造器接收）
- * 具体装饰角色 ConcreteDecorator：定义添加的额外行为，在调用父类方法之前或之后执行自身的行为
+ * 具体装饰角色 ConcreteDecorator：实现 Decorator，定义添加到 Component 的额外行为，在调用父类方法之前或之后执行自身的行为
  * <p>
  * 优点：
  * 1.符合开闭原则

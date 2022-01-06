@@ -7,11 +7,14 @@ import org.junit.jupiter.api.Test;
  * 使用场景：在几个独立的维度上扩展类
  * 使用实例：
  * 1.跨平台应用：JDBC
+ * <p>
  * 角色：
- * 抽象角色 Abstraction：定义与客户端交互的接口
- * 精确抽象角色 RefinedAbstraction：接收 Implementor 的引用
- * 实现角色 Implementor
- * 具体实现角色 ConcreteImplementor
+ * 抽象部分：接收 Implementor 的引用
+ * 1.抽象角色 Abstraction：定义与客户端交互的高层操作
+ * 2.精确抽象角色 RefinedAbstraction：实现 Abstraction
+ * 实现部分：
+ * 1.实现角色 Implementor：定义底层操作
+ * 2.具体实现角色 ConcreteImplementor：实现 Implementor
  * <p>
  * 优点：
  * 1.符合单一责任原则、开闭原则

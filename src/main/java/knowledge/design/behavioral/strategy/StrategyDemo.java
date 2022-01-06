@@ -12,13 +12,13 @@ import java.util.Map;
  * 使用实例：
  * 1.java.util.Comparator#compare()，实现 Comparator 必须实现 compare()
  * 2.java.util.concurrent.ThreadPoolExecutor 的构造器参数 RejectedExecutionHandler 的四个实现：
- * - https://blog.csdn.net/yangsen159/article/details/103146038
+ * -    https://blog.csdn.net/yangsen159/article/details/103146038
  * 3.lambda 可作为一种替代策略模式的简单方式
  * <p>
  * 角色:
  * 上下文角色 Context：接收 Strategy 的引用
  * 抽象策略角色 Strategy：声明 Context 执行策略的方法
- * 具体策略角色 ConcreteStrategy
+ * 具体策略角色 ConcreteStrategy：实现 Strategy
  * <p>
  * 优点：
  * 1.符合开闭原则

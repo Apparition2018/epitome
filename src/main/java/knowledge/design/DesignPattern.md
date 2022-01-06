@@ -96,12 +96,15 @@
 ---
 ## 对比
 >### Proxy vs Decorator
+>1. 服务对象的生命周期
 >```
->Proxy              通常由 Proxy 控制 服务对象(RealSubject) 的生命周期，
->                   即在 Proxy 里 new RealSubject
->Decorator          必定由 Client 控制 服务对象(Component) 的生命周期，
->                   即通过 Decorator 构造器传入 Component，
->                   Decorator 是 Proxy 的一个特例
+>Proxy              通常由 Proxy 控制 服务对象(RealSubject) 的生命周期，即在 Proxy 里 new 服务对象
+>Decorator          必定由 Client 控制 服务对象(Component) 的生命周期，即通过 Decorator 构造器传入 服务对象
+>```
+>2. Decorator 是 Proxy 的一个特例
+>```
+>Proxy              Proxy 实现 Subject，其持有的 RealSubject 也实现 Subject
+>Decorator          Decorator 实现 Component，其持有的 Compoent 的类型就是 Component
 >```
 >### Proxy vs Decorator vs Object Adapter
 >```
@@ -109,6 +112,10 @@
 >Decorator          为对象提供增强接口   Decorator 和其持有的 服务对象(Component) 都实现 Component
 >Object Adapter     为对象提供不同接口   Adapter 实现 Target，其持有的 服务对象(Adaptee) 和 Target 没有关系
 >```
+>### Bridge vs Strategy
+>- Strategy 可以看成是 Bridge 的一个子集：
+>   - Abstraction → Context
+>   - Implementor → Strategy，ConcreteImplementor → ConcreteStrategy
 ---
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式
