@@ -268,7 +268,9 @@ Ctrl + Alt + A                  Add to VSC                          添加到VCS
 >```
 >Shift + F7                     Previous Difference                 上一个差异
 >F7                             Next Difference                     下一个差异
->Ctrl + N                       Go To Changed File...                                           ???
+>Ctrl + N                       Go To Changed File...
+>Alt + Shift + ←                Accept Left Side                    接收左边
+>Alt + Shift + →                Accept Right Side                   接收右边
 >```
 >### Shelve
 >```

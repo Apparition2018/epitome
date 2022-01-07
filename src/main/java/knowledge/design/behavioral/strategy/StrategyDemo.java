@@ -1,5 +1,7 @@
 package knowledge.design.behavioral.strategy;
 
+import lombok.Data;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,7 +15,6 @@ import java.util.Map;
  * 1.java.util.Comparator#compare()，实现 Comparator 必须实现 compare()
  * 2.java.util.concurrent.ThreadPoolExecutor 的构造器参数 RejectedExecutionHandler 的四个实现：
  * -    https://blog.csdn.net/yangsen159/article/details/103146038
- * 3.lambda 可作为一种替代策略模式的简单方式
  * <p>
  * 角色:
  * 上下文角色 Context：接收 Strategy 的引用
@@ -23,11 +24,11 @@ import java.util.Map;
  * 优点：
  * 1.符合开闭原则
  * 2.扩展算法只需增加 ConcreteStrategy
+ * 缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
  * <p>
  * Strategy：https://refactoringguru.cn/design-patterns/strategy
  * JAVA与模式：https://www.cnblogs.com/java-my-life/archive/2012/05/10/2491891.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/strategy-pattern.html
- * Java3y：https://zhuanlan.zhihu.com/p/53517416
  *
  * @author ljh
  * created on 2020/9/26 2:51
@@ -198,6 +199,7 @@ public class StrategyDemo {
         }
     }
 
+    @Data
     static class CreditCard {
         private int amount;
         private final String number;
@@ -209,14 +211,6 @@ public class StrategyDemo {
             this.number = number;
             this.date = date;
             this.cvv = cvv;
-        }
-
-        public void setAmount(int amount) {
-            this.amount = amount;
-        }
-
-        public int getAmount() {
-            return amount;
         }
     }
 

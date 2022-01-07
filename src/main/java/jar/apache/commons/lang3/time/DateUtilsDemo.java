@@ -16,7 +16,6 @@ import static l.demo.Demo.p;
 /**
  * DateUtils
  * DateFormatUtils
- * https://www.cnblogs.com/aston/p/9053201.html
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html
  *
