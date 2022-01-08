@@ -24,10 +24,9 @@ import org.junit.jupiter.api.Test;
  * 2.Class Adapter      class Adapter implement Target { private Adaptee adaptee}       委派
  * 3.Default Adapter    abstract class Adapter implement Adaptee {}
  * <p>
- * 优点：符合单一责任原则、开闭原则
+ * 优点：符合单一职责原则、开闭原则
  * <p>
  * Adapter：https://refactoringguru.cn/design-patterns/adapter
- * JAVA与模式：https://www.cnblogs.com/java-my-life/archive/2012/04/13/2442795.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/adapter-pattern.html
  * 设计模式之美：适配器模式：代理、适配器、桥接、装饰，这四个模式有何区别？
  *

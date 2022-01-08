@@ -8,8 +8,7 @@ import java.util.Map;
 
 /**
  * 代理模式：为原始对象提供一个代理以控制对这个对象的访问，在到达原始对象之前或之后执行某些操作
- * 主要解决：控制访问
- * 使用场景：
+ * 使用场景：控制访问
  * 1. 非业务需求：鉴权、缓存、事务、监控、统计、限流、幂等、日志，可使用 Spring AOP 实现
  * 2. 延迟初始化
  * 使用实例：
@@ -24,6 +23,7 @@ import java.util.Map;
  * 优点：符合开闭原则
  * <p>
  * Proxy：https://refactoringguru.cn/design-patterns/proxy
+ * Java设计模式：http://c.biancheng.net/view/1359.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/proxy-pattern.html
  * JavaGuide：https://github.com/Snailclimb/JavaGuide/blob/main/docs/java/basis/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3.md
  * 敖丙：https://mp.weixin.qq.com/s/lNw1yjn_xMOLpzbunaS10A

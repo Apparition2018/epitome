@@ -7,15 +7,16 @@ import java.util.List;
 
 /**
  * 状态模式：允许一个对象在其内部状态改变时行为也发行改变，使其看起来像是改变了对象所属的类
- * 使用场景：工作流、游戏、电商订单
+ * 使用场景：行为随状态的改变而改变
+ * 使用实例：工作流、游戏、电商订单
  * <p>
  * 上下文角色角色 Context：持有 State 的引用，并提供一个设置器用于接收新的 State
- * 状态部分：接收 Context 的引用，从而可以获取 Context 的信息，或触发 State 转移
+ * 状态部分：接收 Context 的引用，从而可以获取 Context 的信息，和触发 State 转移
  * 抽象状态角色 State：声明特定 State 的行为
  * 具体状态角色 ConcreteState：实现 State
  * <p>
- * 优点：
- * 1.符合单一责任原则、开闭原则
+ * 优点：符合单一职责原则
+ * 缺点：部分支持开闭原则，扩展新状态只需增加 ConcreteState，但其它 ConcreteState 转移到新状态需要修改代码
  * <p>
  * 有限状态机：Finite State Machine，
  * 1.状态 State
@@ -29,6 +30,7 @@ import java.util.List;
  * 3.状态模式：建议在 State 不多，Action 复杂的情况下使用
  * <p>
  * State：https://refactoringguru.cn/design-patterns/state
+ * Java设计模式：http://c.biancheng.net/view/1388.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/state-pattern.html
  * 设计模式之美：状态模式：游戏、工作流引擎中常用的状态机是如何实现的？
  *

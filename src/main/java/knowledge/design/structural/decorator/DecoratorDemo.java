@@ -36,7 +36,7 @@ import java.util.zip.InflaterInputStream;
  * 3.扩展新功能只需增加 ConcreteDecorator
  * <p>
  * Decorator：https://refactoringguru.cn/design-patterns/decorator
- * JAVA与模式：http://www.cnblogs.com/java-my-life/archive/2012/04/20/2455726.html
+ * Java设计模式：http://c.biancheng.net/view/1366.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/decorator-pattern.html
  * Java3y：https://www.zhihu.com/question/32007641/answer/687582571
  *

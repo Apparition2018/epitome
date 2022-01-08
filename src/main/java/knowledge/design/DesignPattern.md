@@ -3,10 +3,9 @@
 ## 参考网站
 1. [设计模式](https://refactoringguru.cn/design-patterns)
 2. [Design Patterns](https://sourcemaking.com/design_patterns)
-3. [design_patterns_online.pdf](http://campus.murraystate.edu/academic/faculty/wlyle/430/rc008-designpatterns_online.pdf)
+3. [Java 设计模式](http://c.biancheng.net/design_pattern/)
 4. [设计模式之美](https://pan.baidu.com/disk/home?#/all?vmode=list&path=%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E)
-5. [Java与模式](https://www.cnblogs.com/foryang/p/5849402.html)
-6. [菜鸟教程](https://www.runoob.com/design-pattern/design-pattern-intro.html)
+5. [菜鸟教程](https://www.runoob.com/design-pattern/design-pattern-intro.html)
 ---
 ## 分类
 <table>
@@ -117,9 +116,16 @@
 >   - Abstraction → Context
 >   - Implementor → Strategy，ConcreteImplementor → ConcreteStrategy
 >### State vs Strategy
->- State 可以视为 Strategy 的扩展：
->   - ConcreteStrategy 不能改变 Context 的 Strategy
->   - ConcreteState 可以改变 Context 的 State
+>1. 是否主动选择
+>```
+>State              Context 设置初始的 State
+>Strategy           Context 接收选择的 Strategy 
+>```
+>2. 是否能够改变
+>```
+>State              ConcreteState 可以通过其持有的 Context 引用，改变当前 State
+>Strategy           选择 Strategy 后不能改变 
+>```
 ---
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式

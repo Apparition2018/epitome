@@ -9,23 +9,35 @@ package knowledge.design.behavioral.state.demo2;
  * created on 2020/9/26 2:51
  */
 public class StateDemo {
-    public static void main(String[] args) {
-    }
 
+    /**
+     * State
+     */
     static abstract class CState {
-        public int flyMiles;    // 里程数
+        // 里程数
+        public int flyMiles;
 
-        abstract double travel(int miles, FrequentFlyer context); // 根据累积里程数调整会员等级
+        // 根据累积里程数调整会员等级
+        abstract double travel(int miles, FrequentFlyer context);
     }
 
-    static class CNoCustomer extends CState {  // 非会员
+    /**
+     * ConcreteState
+     * 非会员
+     */
+    static class CNoCustomer extends CState {
         public double travel(int miles, FrequentFlyer context) {
+            // 不累积里程数
             System.out.println("Your travel wil not account for points");
-            return miles;       // 不累积里程数
+            return miles;
         }
     }
 
-    static class CBasic extends CState {       // 普卡会员
+    /**
+     * ConcreteState
+     * 普卡会员
+     */
+    static class CBasic extends CState {
         public double travel(int miles, FrequentFlyer context) {
             if (context.flyMiles >= 25000 && context.flyMiles < 50000)
                 context.setState(new CSilver());
@@ -35,7 +47,11 @@ public class StateDemo {
         }
     }
 
-    static class CSilver extends CState {      // 银卡会员
+    /**
+     * ConcreteState
+     * 银卡会员
+     */
+    static class CSilver extends CState {
         public double travel(int miles, FrequentFlyer context) {
             if (context.flyMiles < 25000)
                 context.setState(new CBasic());
@@ -45,7 +61,11 @@ public class StateDemo {
         }
     }
 
-    static class CGold extends CState {        // 金卡会员
+    /**
+     * ConcreteState
+     * 金卡会员
+     */
+    static class CGold extends CState {
         public double travel(int miles, FrequentFlyer context) {
             if (context.flyMiles >= 25000 && context.flyMiles < 50000)
                 context.setState(new CSilver());
@@ -55,6 +75,9 @@ public class StateDemo {
         }
     }
 
+    /**
+     * Context
+     */
     static class FrequentFlyer {
         CState state;
         double flyMiles;

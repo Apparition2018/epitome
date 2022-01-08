@@ -17,11 +17,11 @@ import org.junit.jupiter.api.Test;
  * 2.具体实现角色 ConcreteImplementor：实现 Implementor
  * <p>
  * 优点：
- * 1.符合单一责任原则、开闭原则
+ * 1.符合单一职责原则、开闭原则、依赖倒置原则
  * 2.扩展维度只需增加 RefinedAbstraction 或 ConcreteImplementor
  * <p>
  * Bridge：https://refactoringguru.cn/design-patterns/bridge
- * JAVA与模式：https://www.cnblogs.com/java-my-life/archive/2012/05/07/2480938.html
+ * Java设计模式：http://c.biancheng.net/view/1364.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/bridge-pattern.html
  *
  * @author ljh

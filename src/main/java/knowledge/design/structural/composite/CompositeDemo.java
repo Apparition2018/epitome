@@ -9,7 +9,6 @@ package knowledge.design.structural.composite;
  * 组合角色 Composite
  * <p>
  * Composite：https://refactoringguru.cn/design-patterns/composite
- * JAVA与模式：https://www.cnblogs.com/java-my-life/archive/2012/04/17/2453861.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/composite-pattern.html
  *
  * @author Arsenal

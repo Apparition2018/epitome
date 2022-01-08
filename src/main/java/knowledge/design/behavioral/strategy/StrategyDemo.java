@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * 策略模式：定义一系列的算法，并将每一个算法封装到具有共同接口的类中，使得它们还可以互相替换
- * 使用场景：替代 if-else
+ * 使用场景：多行为、多算法、if-else、switch-case
  * 使用实例：
  * 1.java.util.Comparator#compare()，实现 Comparator 必须实现 compare()
  * 2.java.util.concurrent.ThreadPoolExecutor 的构造器参数 RejectedExecutionHandler 的四个实现：
@@ -23,11 +23,11 @@ import java.util.Map;
  * <p>
  * 优点：
  * 1.符合开闭原则
- * 2.扩展算法只需增加 ConcreteStrategy
+ * 2.扩展新算法只需增加 ConcreteStrategy
  * 缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
  * <p>
  * Strategy：https://refactoringguru.cn/design-patterns/strategy
- * JAVA与模式：https://www.cnblogs.com/java-my-life/archive/2012/05/10/2491891.html
+ * Java设计模式：http://c.biancheng.net/view/1378.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/strategy-pattern.html
  *
  * @author ljh
