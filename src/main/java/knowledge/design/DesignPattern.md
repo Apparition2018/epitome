@@ -116,6 +116,10 @@
 >- Strategy 可以看成是 Bridge 的一个子集：
 >   - Abstraction → Context
 >   - Implementor → Strategy，ConcreteImplementor → ConcreteStrategy
+>### State vs Strategy
+>- State 可以视为 Strategy 的扩展：
+>   - ConcreteStrategy 不能改变 Context 的 Strategy
+>   - ConcreteState 可以改变 Context 的 State
 ---
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式

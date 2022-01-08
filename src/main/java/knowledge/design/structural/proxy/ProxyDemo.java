@@ -34,7 +34,7 @@ import java.util.Map;
 public class ProxyDemo {
 
     /**
-     * 案例：延迟初始化
+     * 案例1：延迟初始化
      */
     static class ProxyLazyDemo {
 
@@ -76,7 +76,7 @@ public class ProxyDemo {
     }
 
     /**
-     * 案例：缓存
+     * 案例2：缓存
      */
     static class ProxyCacheDemo {
         @Test

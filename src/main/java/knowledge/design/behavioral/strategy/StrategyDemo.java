@@ -46,6 +46,9 @@ public class StrategyDemo {
         priceOnProducts.put(4, 890);
     }
 
+    /**
+     * 线上购物选择不同的支付方式
+     */
     public static void main(String[] args) throws IOException {
         while (!order.isClosed()) {
             int cost;
@@ -176,7 +179,7 @@ public class StrategyDemo {
                 String cvv = READER.readLine();
                 card = new CreditCard(number, date, cvv);
 
-                // Validate credit card number...
+                // 验证卡号...
 
             } catch (IOException ex) {
                 ex.printStackTrace();
