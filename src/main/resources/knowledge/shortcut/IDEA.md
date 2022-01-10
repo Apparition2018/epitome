@@ -15,6 +15,7 @@
 >>Ctrl + Shift + F12            Hide All Tool Windows               隐藏所有工具窗口
 >>Ctrl + Shift + F4             Close Active Tab                    关闭当前活动 Tab
 >>Alt + ↓                       Show List of Tabs
+>>Ctrl + Shift + ← | →          Stretch to Left | Right             向左右延伸
 >>```
 >>#### Editor Tabs
 >>```
@@ -160,9 +161,9 @@
 >Alt + F9                       Run to Cursor                       运行至光标
 >F9                             Resume Program                      恢复程序
 >Alt + F8                       Evaluate Expression...                                          ???
->Shift + F9                     Debug
+>Shift + F9                     Debug / Rebel Debug (user)
 >Alt + Shift + F9               Debug...
->Shift + F10                    Run
+>Shift + F10                    Run / Rebel Run (user)
 >Alt + Shift + F10              Run...
 >Ctrl + F2                      Stop
 >Ctrl + F8                      Toggle Line Breakpint               开/关断点
@@ -212,13 +213,14 @@ Alt + 0                         Commit
 Alt + 1                         Project
 Alt + 2                         Favorites
 Alt + 3                         Find
-Alt + 4                         Run
-Alt + 5                         Debug
+Alt + 4                         Run / Rebel Run
+Alt + 5                         Debug / Rebel Debug
 Alt + 6                         Problems
 Alt + 7                         Structure                                                       ***
 Alt + 8                         Services
 Alt + 9                         Git
 Alt + F12                       Terminal
+Alt + NumPad-1                  Endpoints
 ```
 ---
 ## Other

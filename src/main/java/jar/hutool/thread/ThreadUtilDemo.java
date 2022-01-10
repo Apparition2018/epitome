@@ -73,7 +73,7 @@ public class ThreadUtilDemo extends Demo {
     @Test
     public void newExecutor() throws InterruptedException {
         // 创建 核心线程数为2，最大线程数为5，等待工作队列容量为3 的线程池
-        ExecutorService threadPool = ThreadUtil.newExecutor(2, 7, 3);
+        ExecutorService threadPool = ThreadUtil.newExecutor(2, 5, 3);
 
         setCountDownLatch(NUM_OF_TASK);
         for (int i = 1; i <= NUM_OF_TASK; i++) {

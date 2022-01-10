@@ -2,6 +2,7 @@ package knowledge.datetime.time;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -34,7 +35,7 @@ public class InstantDemo {
      */
     public InstantDemo() {
         // static Instant	    now([Clock clock])
-        this.instant = Instant.now();
+        this.instant = Instant.now(Clock.systemDefaultZone());
         // static Instant	    ofEpochMilli(long epochMilli)                           从1970-01-01T00:00:00Z的纪元获取一个使用毫秒的Instant实例
         // static Instant	    ofEpochSecond(long epochMilli[, long nanoAdjustment])   从1970-01-01T00:00:00Z的纪元获取一个使用秒的Instant实例
         this.instant = Instant.ofEpochSecond(1218226088L);

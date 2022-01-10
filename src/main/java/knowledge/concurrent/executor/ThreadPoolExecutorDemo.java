@@ -12,10 +12,10 @@ import java.util.stream.IntStream;
  * ThreadPoolExecutor
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ThreadPoolExecutor.html
  * <p>
- * 线程池对待线程的策略:
- * 1.池中任务数 < corePoolSize -> 放入立即执行
- * 2.池中任务数 = corePoolSize -> 放入队列等待
- * 3.池中任务数 = corePoolSize && 队列满 -> 新建线程立即执行
+ * 线程池对待任务的策略:
+ * 1.池中任务数 <= corePoolSize -> 放入立即执行
+ * 2.池中任务数 > corePoolSize -> 放入队列等待
+ * 3.池中任务数 > (corePoolSize + workQueue.size()) -> 新建线程立即执行
  * 4.池中任务数 > maxPoolSize -> 触发handler（RejectedExecutionHandler）异常
  * <p>
  * corePoolSize         池中所保存的线程数，包括空闲线程
