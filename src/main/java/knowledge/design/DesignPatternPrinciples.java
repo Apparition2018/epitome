@@ -23,29 +23,47 @@ public class DesignPatternPrinciples {
      * 核心思想：抽象
      */
     static class OCP {
-        interface Chart {
-            public void display();
-        }
+        static class CounterExample {
+            static class PieChart {
+                void display() {
+                }
+            }
 
-        static class PieChart implements Chart {
-            public void display() {
+            static class LineChart {
+                void display() {
+                }
+            }
+
+            static class ChartDisplay {
+                void display(Object chart) {
+                    if (chart instanceof PieChart) {
+                        ((PieChart) chart).display();
+                    } else if (chart instanceof LineChart) {
+                        ((LineChart) chart).display();
+                    }
+                }
             }
         }
 
-        static class BarChart implements Chart {
-            public void display() {
-            }
-        }
-
-        static class ChartDisplay {
-            private Chart chart;
-
-            public void setChart(Chart chart) {
-                this.chart = chart;
+        static class PositiveExample {
+            interface Chart {
+                void display();
             }
 
-            public void display() {
-                chart.display();
+            static class PieChart implements Chart {
+                public void display() {
+                }
+            }
+
+            static class BarChart implements Chart {
+                public void display() {
+                }
+            }
+
+            static class ChartDisplay {
+                public void display(Chart chart) {
+                    chart.display();
+                }
             }
         }
     }
@@ -56,25 +74,48 @@ public class DesignPatternPrinciples {
      * 子类继承父类尽量不要重写父类方法
      */
     static class LSP {
-        interface Person {
-            void move();
-        }
+        static class CounterExample {
+            static class Person {
+                public void move() {
+                    System.out.println("移动");
+                }
+            }
 
-        static class Adult implements Person {
+            static class Man extends Person {
+                @Override
+                public void move() {
+                    System.out.println("步行");
+                }
+            }
 
-            @Override
-            public void move() {
-                System.out.println("步行");
+            static class Baby extends Person {
+                @Override
+                public void move() {
+                    System.out.println("爬行");
+                }
             }
         }
 
-        static class Man extends Adult {
-        }
+        static class PositiveExample {
+            interface Person {
+                void move();
+            }
 
-        static class Baby implements Person {
-            @Override
-            public void move() {
-                System.out.println("爬行");
+            static class Adult implements Person {
+                @Override
+                public void move() {
+                    System.out.println("步行");
+                }
+            }
+
+            static class Man extends Adult {
+            }
+
+            static class Baby implements Person {
+                @Override
+                public void move() {
+                    System.out.println("爬行");
+                }
             }
         }
     }
@@ -85,30 +126,42 @@ public class DesignPatternPrinciples {
      * 要面向接口编程，不要面向实现编程
      */
     static class DIP {
-        interface OnlineStore {
-            void sell();
-        }
+        static class CounterExample {
+            static class Math {
+                public void knowledge() {
+                }
+            }
 
-        static class BookStore implements OnlineStore {
-            @Override
-            public void sell() {
-                System.out.println("卖书");
+            static class Student {
+                public void learn(Math course) {
+                    course.knowledge();
+                }
             }
         }
 
-        static class ToyStore implements OnlineStore {
-            @Override
-            public void sell() {
-                System.out.println("卖玩具");
+        static class PositiveExample {
+            interface Course {
+                void knowledge();
+            }
+
+            static class Math implements Course {
+                @Override
+                public void knowledge() {
+                }
+            }
+
+            static class Chinese implements Course {
+                @Override
+                public void knowledge() {
+                }
+            }
+
+            static class Student {
+                public void learn(Course course) {
+                    course.knowledge();
+                }
             }
         }
-
-        static class Customer {
-            public void onlineShopping(OnlineStore store) {
-                store.sell();
-            }
-        }
-
     }
 
     /**
