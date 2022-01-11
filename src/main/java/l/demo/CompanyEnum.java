@@ -4,11 +4,6 @@ import lombok.Getter;
 
 /**
  * CompanyEnum
- * <p>
- * 往枚举中添加变量、构造函数、以达到灵活获取指定值的目的
- * 通常用于一些业务系统中定义一些固定值，如用于匹配db中的字段值等
- * <p>
- * Java 编译器会自动在 enum 中插入 一些方法，比如 values()：https://blog.csdn.net/u013469218/article/details/66476182
  *
  * @author ljh
  * created on 2020/11/2 14:04
@@ -23,7 +18,6 @@ public enum CompanyEnum implements BaseEnum {
     DHL("中外运敦豪", 1005);
 
     private final String company;
-
     private final Integer code;
 
     CompanyEnum(String company, Integer code) {
@@ -59,19 +53,10 @@ public enum CompanyEnum implements BaseEnum {
      * 遍历
      */
     public void traversal() {
-        CompanyEnum[] companies = CompanyEnum.values();
-        for (CompanyEnum companyEnum : companies) {
+        for (CompanyEnum companyEnum : CompanyEnum.values()) {
             System.out.println("name: " + companyEnum.name());
             System.out.println("ordinal: " + companyEnum.ordinal());
             System.out.println("company: " + companyEnum);
         }
-    }
-
-    @Override
-    public String toString() {
-        return "CompanyEnum{" +
-                "company='" + company + '\'' +
-                ", code=" + code +
-                '}';
     }
 }

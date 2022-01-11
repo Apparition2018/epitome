@@ -16,8 +16,8 @@ import java.util.EnumSet;
  * <p>
  * 枚举类名带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开（阿里编程规约）
  * <p>
- * JAVA 常量类的实现方式_枚举类＿项目实践：https://www.cnblogs.com/lihaoyang/p/6913295.html
- * JAVA 枚举常用场景小结：https://blog.csdn.net/cndmss/article/details/51441617
+ * JAVA 常量类的项目实践：https://www.cnblogs.com/lihaoyang/p/6913295.html
+ * values(), valueOf(String name) 的产生：https://blog.csdn.net/smd2575624555/article/details/113363688
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Enum.html
  *
  * @author ljh
