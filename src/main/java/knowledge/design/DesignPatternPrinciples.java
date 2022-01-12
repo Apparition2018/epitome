@@ -179,39 +179,68 @@ public class DesignPatternPrinciples {
      * ISP: 对接口的约束
      */
     static class ISP {
-        interface Work {
-            void work();
-        }
+        static class CounterExample {
+            interface IEmployee {
+                void work();
 
-        interface Sleep {
-            void sleep();
-        }
-
-        interface BeManaged {
-            void beManaged();
-        }
-
-        static class Worker implements Work, Sleep, BeManaged {
-            @Override
-            public void work() {
+                void sleep();
             }
 
-            @Override
-            public void sleep() {
+            static class Employee implements IEmployee {
+                @Override
+                public void work() {
+                }
+
+                @Override
+                public void sleep() {
+                }
             }
 
-            @Override
-            public void beManaged() {
+            static class Robot {
+                public void work() {
+                }
+            }
+
+            static class Manager {
+                public void manage(Object worker) {
+                    if (worker instanceof IEmployee) {
+                        ((IEmployee) worker).work();
+                    } else if (worker instanceof Robot) {
+                        ((Robot) worker).work();
+                    }
+                }
             }
         }
 
-        static class Robot implements Work, BeManaged {
-            @Override
-            public void work() {
+        static class PositiveExample {
+            interface Workable {
+                void work();
             }
 
-            @Override
-            public void beManaged() {
+            interface NeedFood {
+                void eat();
+            }
+
+            static class Employee implements Workable, NeedFood {
+                @Override
+                public void work() {
+                }
+
+                @Override
+                public void eat() {
+                }
+            }
+
+            static class Robot implements Workable {
+                @Override
+                public void work() {
+                }
+            }
+
+            static class Manager {
+                public void manage(Workable worker) {
+                    worker.work();
+                }
             }
         }
     }
@@ -222,34 +251,60 @@ public class DesignPatternPrinciples {
      * 一个软件实体应当尽可能少地与其他软件实体发生相互作用
      */
     static class LOD {
-        @Data
-        static class Broker {
-            private Star star;
-            private Fan fan;
-            private Company company;
+        static class CounterExample {
+            static class Phone {
+                // 打开 Phone 可以看到 App
+                App app = new App();
+                // 打开 Phone 不该看到 Book
+                Book book = new Book("Book");
 
-            public void meeting() {
-                System.out.println(star.getName() + "与粉丝" + fan.getName() + "见面");
+                public void readBook() {
+                    app.read(book);
+                }
             }
 
-            public void business() {
-                System.out.println(star.getName() + "与" + company.getName() + "洽谈业务");
+            static class App {
+                public void read(Book book) {
+                    System.out.println(book.getTitle());
+                }
+            }
+
+            @Data
+            static class Book {
+                String title;
+
+                public Book(String title) {
+                    this.title = title;
+                }
             }
         }
 
-        @Data
-        static class Star {
-            private String name;
-        }
+        static class PositiveExample {
+            static class Phone {
+                App app = new App();
 
-        @Data
-        static class Fan {
-            private String name;
-        }
+                public void readBook() {
+                    app.read();
+                }
+            }
 
-        @Data
-        static class Company {
-            private String name;
+            static class App {
+                // 打开 App 可以看到 Book
+                Book book = new Book("Book");
+
+                public void read() {
+                    System.out.println(book.getTitle());
+                }
+            }
+
+            @Data
+            static class Book {
+                private String title;
+
+                public Book(String title) {
+                    this.title = title;
+                }
+            }
         }
     }
 
@@ -259,7 +314,48 @@ public class DesignPatternPrinciples {
      * 如果要使用继承关系，则必须严格遵循里氏替换原则
      */
     static class CRP {
+        static class CounterExample {
+            static class Car {
+            }
 
+            static class GasolineCar extends Car {
+            }
+
+            static class ElectricCar extends Car {
+            }
+
+            static class WhiteGasolineCar extends GasolineCar {
+            }
+
+            static class BlackGasolineCar extends GasolineCar {
+            }
+
+            static class WhiteElectricCar extends ElectricCar {
+            }
+
+            static class BlackElectricCar extends ElectricCar {
+            }
+        }
+
+        static class PositiveExample {
+            static class Color {
+            }
+
+            static class White extends Color {
+            }
+
+            static class Black extends Color {
+            }
+
+            static class Car {
+                Color color;
+            }
+
+            static class GasolineCar extends Car {
+            }
+
+            static class ElectricCar extends Car {
+            }
+        }
     }
-
 }
