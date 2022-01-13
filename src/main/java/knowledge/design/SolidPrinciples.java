@@ -1,26 +1,105 @@
 package knowledge.design;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+
+import java.util.Arrays;
 
 /**
- * 七大原则：
- * 1.开闭原则 (Open Closed Principle)
- * 2.里氏替换原则 (Liskov Substitution Principle)
- * 3.依赖倒置原则 (Dependence Inversion Principle)
- * 4.单一职责原则 (Single Responsibility Principle)
- * 5.接口隔离原则 (Interface Segregation Principle)
+ * The SOLID Principles:
+ * 1.单一职责原则 (Single Responsibility Principle)
+ * 2.开闭原则 (Open Closed Principle)
+ * 3.里氏替换原则 (Liskov Substitution Principle)
+ * 4.接口隔离原则 (Interface Segregation Principle)
+ * 5.依赖倒置原则 (Dependence Inversion Principle)
  * 6.迪米特法则 (Law of Demeter) / 最少知识原则 (Least Knowledge Principle)
  * 7.合成复用原则 (Composite Reuse Principle)
+ * <p>
+ * A Solid Guide to SOLID Principles：https://www.baeldung.com/solid-principles
  *
  * @author ljh
  * created on 2020/9/24 16:13
  */
-public class DesignPatternPrinciples {
+public class SolidPrinciples {
+
+    /**
+     * 单一职责原则
+     * 一个类/方法应该有且仅有一个引起它变化的原因，否则类/方法应该被拆分
+     * https://www.baeldung.com/java-single-responsibility-principle
+     */
+    static class SRP {
+        static class CounterExample {
+            @Getter
+            @AllArgsConstructor
+            static class TextManipulator {
+                String text;
+
+                public void appendText(String newText) {
+                    text = text.concat(newText);
+                }
+
+                public String findWordAndReplace(String word, String replacementWord) {
+                    if (text.contains(word)) text = text.replace(word, replacementWord);
+                    return text;
+                }
+
+                public String findWordAndDelete(String word) {
+                    if (text.contains(word)) text = text.replace(word, "");
+                    return text;
+                }
+
+                public void printText() {
+                    System.out.println(getText());
+                }
+            }
+        }
+
+        static class PositiveExample {
+            @Getter
+            @AllArgsConstructor
+            static class TextManipulator {
+                String text;
+
+                public void appendText(String newText) {
+                    text = text.concat(newText);
+                }
+
+                public String findWordAndReplace(String word, String replacementWord) {
+                    if (text.contains(word)) text = text.replace(word, replacementWord);
+                    return text;
+                }
+
+                public String findWordAndDelete(String word) {
+                    if (text.contains(word)) text = text.replace(word, "");
+                    return text;
+                }
+            }
+
+            @AllArgsConstructor
+            static class TextPrinter {
+                TextManipulator textManipulator;
+
+                public void printText() {
+                    System.out.println(textManipulator.getText());
+                }
+
+                public void printOutEachWordOfText() {
+                    System.out.println(Arrays.toString(textManipulator.getText().split(" ")));
+                }
+
+                public void printRangeOfCharacters(int startingIndex, int endIndex) {
+                    System.out.println(textManipulator.getText().substring(startingIndex, endIndex));
+                }
+            }
+        }
+    }
 
     /**
      * 开闭原则
      * 对扩展开放，对修改关闭
      * 核心思想：抽象
+     * https://www.baeldung.com/java-open-closed-principle
      */
     static class OCP {
         static class CounterExample {
@@ -63,6 +142,81 @@ public class DesignPatternPrinciples {
             static class ChartDisplay {
                 public void display(Chart chart) {
                     chart.display();
+                }
+            }
+        }
+    }
+
+    /**
+     * 接口隔离原则
+     * 客户端不应该被迫依赖于它不使用的方法；一个类对另一个类的依赖应该建立在最小的接口上
+     * 使用多个专门的接口比使用单一的总接口要好
+     * SRP: 对类的约束
+     * ISP: 对接口的约束
+     * https://www.baeldung.com/java-liskov-substitution-principle
+     */
+    static class ISP {
+        static class CounterExample {
+            interface IEmployee {
+                void work();
+
+                void sleep();
+            }
+
+            static class Employee implements IEmployee {
+                @Override
+                public void work() {
+                }
+
+                @Override
+                public void sleep() {
+                }
+            }
+
+            static class Robot {
+                public void work() {
+                }
+            }
+
+            static class Manager {
+                public void manage(Object worker) {
+                    if (worker instanceof IEmployee) {
+                        ((IEmployee) worker).work();
+                    } else if (worker instanceof Robot) {
+                        ((Robot) worker).work();
+                    }
+                }
+            }
+        }
+
+        static class PositiveExample {
+            interface Workable {
+                void work();
+            }
+
+            interface NeedFood {
+                void eat();
+            }
+
+            static class Employee implements Workable, NeedFood {
+                @Override
+                public void work() {
+                }
+
+                @Override
+                public void eat() {
+                }
+            }
+
+            static class Robot implements Workable {
+                @Override
+                public void work() {
+                }
+            }
+
+            static class Manager {
+                public void manage(Workable worker) {
+                    worker.work();
                 }
             }
         }
@@ -159,87 +313,6 @@ public class DesignPatternPrinciples {
             static class Student {
                 public void learn(Course course) {
                     course.knowledge();
-                }
-            }
-        }
-    }
-
-    /**
-     * 单一职责原则
-     * 一个类/方法应该有且仅有一个引起它变化的原因，否则类/方法应该被拆分
-     */
-    static class SRP {
-    }
-
-    /**
-     * 接口隔离原则
-     * 客户端不应该被迫依赖于它不使用的方法；一个类对另一个类的依赖应该建立在最小的接口上
-     * 使用多个专门的接口比使用单一的总接口要好
-     * SRP: 对类的约束
-     * ISP: 对接口的约束
-     */
-    static class ISP {
-        static class CounterExample {
-            interface IEmployee {
-                void work();
-
-                void sleep();
-            }
-
-            static class Employee implements IEmployee {
-                @Override
-                public void work() {
-                }
-
-                @Override
-                public void sleep() {
-                }
-            }
-
-            static class Robot {
-                public void work() {
-                }
-            }
-
-            static class Manager {
-                public void manage(Object worker) {
-                    if (worker instanceof IEmployee) {
-                        ((IEmployee) worker).work();
-                    } else if (worker instanceof Robot) {
-                        ((Robot) worker).work();
-                    }
-                }
-            }
-        }
-
-        static class PositiveExample {
-            interface Workable {
-                void work();
-            }
-
-            interface NeedFood {
-                void eat();
-            }
-
-            static class Employee implements Workable, NeedFood {
-                @Override
-                public void work() {
-                }
-
-                @Override
-                public void eat() {
-                }
-            }
-
-            static class Robot implements Workable {
-                @Override
-                public void work() {
-                }
-            }
-
-            static class Manager {
-                public void manage(Workable worker) {
-                    worker.work();
                 }
             }
         }
