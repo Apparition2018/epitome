@@ -9,7 +9,7 @@ import java.util.Arrays;
 /**
  * The SOLID Principles:
  * 1.单一职责原则 (Single Responsibility Principle)
- * 2.开闭原则 (Open Closed Principle)
+ * 2.开闭原则 (Open-Closed Principle)
  * 3.里氏替换原则 (Liskov Substitution Principle)
  * 4.接口隔离原则 (Interface Segregation Principle)
  * 5.依赖倒置原则 (Dependence Inversion Principle)
@@ -21,7 +21,7 @@ import java.util.Arrays;
  * @author ljh
  * created on 2020/9/24 16:13
  */
-public class SolidPrinciples {
+public class TheSolidPrinciples {
 
     /**
      * 单一职责原则
@@ -30,10 +30,13 @@ public class SolidPrinciples {
      */
     static class SRP {
         static class CounterExample {
+            /**
+             * 此类有两个职责：操作文本、打印文本
+             */
             @Getter
             @AllArgsConstructor
             static class TextManipulator {
-                String text;
+                private String text;
 
                 public void appendText(String newText) {
                     text = text.concat(newText);
@@ -56,10 +59,13 @@ public class SolidPrinciples {
         }
 
         static class PositiveExample {
+            /**
+             * 此类只有一个职责：操作文本
+             */
             @Getter
             @AllArgsConstructor
             static class TextManipulator {
-                String text;
+                private String text;
 
                 public void appendText(String newText) {
                     text = text.concat(newText);
@@ -76,9 +82,12 @@ public class SolidPrinciples {
                 }
             }
 
+            /**
+             * 此类只有一个职责：打印文本
+             */
             @AllArgsConstructor
             static class TextPrinter {
-                TextManipulator textManipulator;
+                private final TextManipulator textManipulator;
 
                 public void printText() {
                     System.out.println(textManipulator.getText());
@@ -103,45 +112,155 @@ public class SolidPrinciples {
      */
     static class OCP {
         static class CounterExample {
-            static class PieChart {
-                void display() {
+            interface CalculatorOperation {
+            }
+
+            @Data
+            static class Addition implements CalculatorOperation {
+                private double left;
+                private double right;
+                private double result = 0.0;
+
+                public Addition(double left, double right) {
+                    this.left = left;
+                    this.right = right;
                 }
             }
 
-            static class LineChart {
-                void display() {
+            @Data
+            static class Subtraction implements CalculatorOperation {
+                private double left;
+                private double right;
+                private double result = 0.0;
+
+                public Subtraction(double left, double right) {
+                    this.left = left;
+                    this.right = right;
                 }
             }
 
-            static class ChartDisplay {
-                void display(Object chart) {
-                    if (chart instanceof PieChart) {
-                        ((PieChart) chart).display();
-                    } else if (chart instanceof LineChart) {
-                        ((LineChart) chart).display();
+            /**
+             * 添加乘法或除法功能时，需要修改 Calculator
+             */
+            static class Calculator {
+                public void calculate(CalculatorOperation operation) {
+                    if (operation instanceof Addition) {
+                        Addition addition = (Addition) operation;
+                        addition.setResult(addition.getLeft() + addition.getRight());
+                    } else if (operation instanceof Subtraction) {
+                        Subtraction subtraction = (Subtraction) operation;
+                        subtraction.setResult(subtraction.getLeft() - subtraction.getRight());
                     }
                 }
             }
         }
 
         static class PositiveExample {
-            interface Chart {
-                void display();
+            interface CalculatorOperation {
+                void perform();
             }
 
-            static class PieChart implements Chart {
-                public void display() {
+            @Data
+            static class Addition implements CalculatorOperation {
+                private double left;
+                private double right;
+                private double result;
+
+                public Addition(double left, double right) {
+                    this.left = left;
+                    this.right = right;
+                }
+
+                @Override
+                public void perform() {
+                    result = left + right;
                 }
             }
 
-            static class BarChart implements Chart {
-                public void display() {
+            @Data
+            static class Division implements CalculatorOperation {
+                private double left;
+                private double right;
+                private double result;
+
+                public Division(double left, double right) {
+                    this.left = left;
+                    this.right = right;
+                }
+
+                @Override
+                public void perform() {
+                    if (right != 0) {
+                        result = left / right;
+                    }
                 }
             }
 
-            static class ChartDisplay {
-                public void display(Chart chart) {
-                    chart.display();
+            static class Calculator {
+                public void calculate(CalculatorOperation operation) {
+                    operation.perform();
+                }
+            }
+        }
+    }
+
+    /**
+     * 里氏替换原则
+     * 继承必须确保超类所拥有的性质在子类中仍然成立
+     * 1.签名规则：
+     * ①重写的子类方法参数类型 >= 超类方法参数类型
+     * ②重写的子类方法返回类型 <= 超类方法的返回类型，如：子类 Integer < 超类 Number
+     * ③子类方法异常 < 超类方法异常
+     * 2.属性规则：
+     * ①类不变量：子类方法必须维护或加强超类型的类不变量 ???
+     * ②历史约束：子类方法状态的改变要符合基类
+     * 3.方法规则：
+     * ①先决条件：子类可以削弱重写方法的先决条件
+     * ②后置条件：子类可以增强重写方法的后置条件
+     * https://www.baeldung.com/java-liskov-substitution-principle
+     */
+    static class LSP {
+        static class CounterExample {
+            static class Person {
+                public void move() {
+                    System.out.println("移动");
+                }
+            }
+
+            static class Man extends Person {
+                @Override
+                public void move() {
+                    System.out.println("步行");
+                }
+            }
+
+            static class Baby extends Person {
+                @Override
+                public void move() {
+                    System.out.println("爬行");
+                }
+            }
+        }
+
+        static class PositiveExample {
+            interface Person {
+                void move();
+            }
+
+            static class Adult implements Person {
+                @Override
+                public void move() {
+                    System.out.println("步行");
+                }
+            }
+
+            static class Man extends Adult {
+            }
+
+            static class Baby implements Person {
+                @Override
+                public void move() {
+                    System.out.println("爬行");
                 }
             }
         }
@@ -217,58 +336,6 @@ public class SolidPrinciples {
             static class Manager {
                 public void manage(Workable worker) {
                     worker.work();
-                }
-            }
-        }
-    }
-
-    /**
-     * 里氏替换原则
-     * 继承必须确保超类所拥有的性质在子类中仍然成立
-     * 子类继承父类尽量不要重写父类方法
-     */
-    static class LSP {
-        static class CounterExample {
-            static class Person {
-                public void move() {
-                    System.out.println("移动");
-                }
-            }
-
-            static class Man extends Person {
-                @Override
-                public void move() {
-                    System.out.println("步行");
-                }
-            }
-
-            static class Baby extends Person {
-                @Override
-                public void move() {
-                    System.out.println("爬行");
-                }
-            }
-        }
-
-        static class PositiveExample {
-            interface Person {
-                void move();
-            }
-
-            static class Adult implements Person {
-                @Override
-                public void move() {
-                    System.out.println("步行");
-                }
-            }
-
-            static class Man extends Adult {
-            }
-
-            static class Baby implements Person {
-                @Override
-                public void move() {
-                    System.out.println("爬行");
                 }
             }
         }

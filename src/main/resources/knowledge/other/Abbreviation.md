@@ -36,10 +36,10 @@
 ||||
 |:---|:---|:---|
 |SRP|Single Responsibility Principle|单一职责原则|
-|OCP|Open Closed Principle|开闭原则（对扩展开放，对修改关闭）|
+|OCP|Open-Closed Principle|开闭原则（对扩展开放，对修改关闭）|
 |LSP|Liskov Substitution Principle|里氏替换原则|
-|DIP|Dependence Inversion Principle|依赖倒置原则|
 |ISP|Interface Segregation Principle|接口隔离原则|
+|DIP|Dependence Inversion Principle|依赖倒置原则|
 ---
 ## 字符集与编码方案
 ||||
