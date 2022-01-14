@@ -27,6 +27,7 @@ import org.junit.jupiter.api.Test;
  * 优点：符合单一职责原则、开闭原则
  * <p>
  * Adapter：https://refactoringguru.cn/design-patterns/adapter
+ * baeldung：https://www.baeldung.com/java-adapter-pattern
  * 菜鸟教程：https://www.runoob.com/design-pattern/adapter-pattern.html
  * 设计模式之美：适配器模式：代理、适配器、桥接、装饰，这四个模式有何区别？
  *

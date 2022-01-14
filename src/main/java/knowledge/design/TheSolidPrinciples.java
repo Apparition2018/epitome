@@ -276,66 +276,80 @@ public class TheSolidPrinciples {
      */
     static class ISP {
         static class CounterExample {
-            interface IEmployee {
-                void work();
+            interface Payment {
+                Object status();
 
-                void sleep();
+                void initiatePayments();
+
+                void initiateLoanSettlement();
             }
 
-            static class Employee implements IEmployee {
+            static class LoanPayment implements Payment {
                 @Override
-                public void work() {
+                public Object status() {
+                    return new Object();
                 }
 
                 @Override
-                public void sleep() {
+                public void initiatePayments() {
+                    throw new UnsupportedOperationException("This is not a bank payment");
+                }
+
+                @Override
+                public void initiateLoanSettlement() {
                 }
             }
 
-            static class Robot {
-                public void work() {
+            static class BankPayment implements Payment {
+                @Override
+                public Object status() {
+                    return null;
                 }
-            }
 
-            static class Manager {
-                public void manage(Object worker) {
-                    if (worker instanceof IEmployee) {
-                        ((IEmployee) worker).work();
-                    } else if (worker instanceof Robot) {
-                        ((Robot) worker).work();
-                    }
+                @Override
+                public void initiatePayments() {
+                }
+
+                @Override
+                public void initiateLoanSettlement() {
+                    throw new UnsupportedOperationException("This is not a loan payment");
+
                 }
             }
         }
 
         static class PositiveExample {
-            interface Workable {
-                void work();
+            interface Payment {
+                Object status();
             }
 
-            interface NeedFood {
-                void eat();
+            interface Bank extends Payment {
+                void initiatePayments();
             }
 
-            static class Employee implements Workable, NeedFood {
+            interface Loan extends Payment {
+                void initiateLoanSettlement();
+            }
+
+            static class BankPayment implements Bank {
                 @Override
-                public void work() {
+                public Object status() {
+                    return new Object();
                 }
 
                 @Override
-                public void eat() {
+                public void initiatePayments() {
                 }
             }
 
-            static class Robot implements Workable {
+            static class LoanPayment implements Loan {
                 @Override
-                public void work() {
+                public Object status() {
+                    return new Object();
                 }
-            }
 
-            static class Manager {
-                public void manage(Workable worker) {
-                    worker.work();
+                @Override
+                public void initiateLoanSettlement() {
                 }
             }
         }
@@ -345,6 +359,7 @@ public class TheSolidPrinciples {
      * 依赖倒置原则
      * 高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象
      * 要面向接口编程，不要面向实现编程
+     * https://www.baeldung.com/java-dependency-inversion-principle
      */
     static class DIP {
         static class CounterExample {
