@@ -1,16 +1,20 @@
 # IDEA Settings
 ---
 ## 同步设置
-    1. File
-    2. Sync Settings to JetBrains Account...
-    3. File
-    4. IDE Settings Sync
-    5. Sync Plugins Silently
+    1. File → Sync Settings to JetBrains Account...
+    2. File → Manage IDE Settings → IDE Settings Sync → Sync Plugins Silently
 ---
 ## 字体
     1. Settings → Editor → Font
-    2. Enable ligatures (启用字体连写) 勾选
-    3. Typography Settings → Fallback font: SimHei
+    2. Typography Settings → Fallback font: SimHei
+---
+## 去除尾行空格
+    1. Settings → Editor → General
+    2. Virtual Space
+        2.1 Allow caret placement: After the end of line 取消勾选
+    3. On Save
+        3.1 Remove trailing spaces on: Modified Lines 取消勾选
+        3.2 Keep trailing spaces on caret line 取消勾选
 ---
 ## 文件和代码模板
     1. Settings → Editor → File and Code Templates
@@ -23,13 +27,21 @@
          * created on ${DATE} ${TIME}
          */
 ---
-## 去除尾行空格s
-    1. Settings → Editor → General
-    2. Virtual Space
-        2.1 Allow caret placement: After the end of line 取消勾选
-    3. On Save
-        3.1 Remove trailing spaces on: Modified Lines 取消勾选
-        3.2 Keep trailing spaces on caret line 取消勾选
+## TODO
+    1. Settings → Editor → TODO
+    2. Patterns → +
+        2.1 Pattern: \btodo-ljh\b.*
+        2.2 Use color scheme TODO default colors 取消勾选
+        2.3 Bold 勾选
+        2.4 Foreground #CC0033
+    3. Settings → Editor → Live Templates
+    4. user  → +
+        4.1 Abbreviation: ljh
+        4.2 Description: TODO-LJH
+        4.2 Template text: // TODO-LJH: $date$ $todo$
+        4.3 Edit variables
+            4.3.1 date → Expression:date()
+        4.4 Change → Java → Statement 勾选
 ---
 ## serialVersionUID
     1. Settings → Editor → Inspections
@@ -50,6 +62,10 @@
 >   4. Detect compiler automatically 取消勾选
 >   ```
 ---
+## 启用注解处理
+    1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
+    2. Enable annotation processing 勾选
+---
 ## HTML 代码不换行
     1. Settings → Editor → Code Style → HTML
     2. Other
@@ -61,14 +77,6 @@
     2. Spaces
     3. Before parenthese
     4. Function declaration parentheses 勾选
----
-## 更换编译器
-    1. Settings → Build, Execution, Deployment → Compiler → Java Compiler
-    2. Use compiler: Eclipse
----
-## 启用注解处理
-    1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
-    2. Enable annotation processing 勾选
 ---
 ## JavaScript version
     1. Settings → Languages & Frameworks → JavaScript

@@ -171,6 +171,7 @@
 >```
 >### File
 >```
+>Alt + Shift + P                Manage Projects... (user)           管理项目
 >Ctrl + Alt + S                 Settings...
 >Ctrl + Shift + Alt + S         Project Structure...
 >Ctrl + Alt + Y                 Synchronize                         同步
@@ -324,57 +325,60 @@ Ctrl + Alt + Y                  Synchronize
 ```
 ---
 ## Live Templates
-```
-fixme                           // FIXME: $date$ $todo$
-todo                            // TODO: $date$ $todo$
-```
->### output
->```
->serr                           System.err.println($END$);
->souf                           System.out.printf("$END$");
->sout                           System.out.println($END$);
->soutm                          System.out.println("$CLASS_NAME$.$METHOD_NAME$");
->soutp                          System.out.println($FORMAT$);
->soutv                          System.out.println("$EXPR_COPY$ = " + $EXPR$);
->```
->### iterations
->```
->fori                           for (int $INDEX$ = 0; $INDEX$ < $LIMIT$; $INDEX$++) { $END$ }
->itar                           for (int $INDEX$ = 0; $INDEX$ < $ARRAY$.length; $INDEX$++) { ... }
->ritar                          for (int $INDEX$ = $ARRAY$.length - 1; $INDEX$ >= 0; $INDEX$--) { ... }
->iter                           for ($ELEMENT_TYPE$ $VAR$ : $ITERABLE_TYPE$) { $END$ }
->itli                           for (int $INDEX$ = 0; $INDEX$ < $LIST$.size(); $INDEX$++) { ... }
->itit                           while($ITER$.hasNext()){ $TYPE$ $VAR$ = $CAST$ $ITER$.next(); $END$ }
->```
->### html/xml
+>### Java
+>>### user
+>>```
+>>ljh                           // TODO-LJH (user)
+>>pf                            private final (user)
+>>pi                            private Integer (user)
+>>pl                            private Long (user)
+>>ps                            private String (user)
+>>pvt                           public void test (user)
+>>psc                           public static class (user)
+>>```
+>>### plain
+>>```
+>>prsf                          private static final
+>>psf                           public static final
+>>psfi                          public static final int
+>>psfs                          public static final String
+>>St                            String
+>>thr                           throw new
+>>```
+>>### print
+>>```
+>>serr                          System.err.println($END$);
+>>souf                          System.out.printf("$END$");
+>>sout                          System.out.println($END$);
+>>soutm                         System.out.println("$CLASS_NAME$.$METHOD_NAME$");
+>>soutp                         System.out.println($FORMAT$);
+>>soutv                         System.out.println("$EXPR_COPY$ = " + $EXPR$);
+>>```
+>>### iterations
+>>```
+>>fori                          for (int $INDEX$ = 0; $INDEX$ < $LIMIT$; $INDEX$++) { $END$ }
+>>itar                          for (int $INDEX$ = 0; $INDEX$ < $ARRAY$.length; $INDEX$++) { ... }
+>>ritar                         for (int $INDEX$ = $ARRAY$.length - 1; $INDEX$ >= 0; $INDEX$--) { ... }
+>>iter                          for ($ELEMENT_TYPE$ $VAR$ : $ITERABLE_TYPE$) { $END$ }
+>>itli                          for (int $INDEX$ = 0; $INDEX$ < $LIST$.size(); $INDEX$++) { ... }
+>>itit                          while($ITER$.hasNext()){ $TYPE$ $VAR$ = $CAST$ $ITER$.next(); $END$ }
+>>```
+>>### other
+>>```
+>>geti                          public static $CLASS_NAME$ getInstance() { return $VALUE$; }
+>>ifn                           if ($VAR$ == null) { $END$ }
+>>inn                           if ($VAR$ != null) { $END$ }
+>>lst                           $ARRAY$[$ARRAY$.length - 1]
+>>inst                          if ($EXPR$ instanceof $TYPE$) { $TYPE$ $VAR1$ = ($TYPE$)$EXPR$; $END$ }
+>>mn                            $VAR$ = Math.min($VAR$, $END$)
+>>mx                            $VAR$ = Math.max($VAR$, $END$)
+>>mian                          public static void main(String[] args){ $END$ }
+>>psvm                          public static void main(String[] args){ $END$ }
+>>toar                          $COLLECTION$.toArray(new $COMPONENT_TYPE$[$COLLECTION$.size()])$END$
+>>```
+>### Mybatis/SQL
 >```
 >CD                             <![CDATA[ $SELECTION$ ]]>
->```
->### plain
->```
->prsf                           private static final
->psf                            public static final
->psfi                           public static final int
->psfs                           public static final String
->St                             String
->thr                            throw new
->psc                            private static class (User)
->pvt                            public void test (user)
->ps                             private String (user)
->pi                             private Integer (user)
->```
->### other
->```
->geti                           public static $CLASS_NAME$ getInstance() { return $VALUE$; }
->ifn                            if ($VAR$ == null) { $END$ }
->inn                            if ($VAR$ != null) { $END$ }
->lst                            $ARRAY$[$ARRAY$.length - 1]
->inst                           if ($EXPR$ instanceof $TYPE$) { $TYPE$ $VAR1$ = ($TYPE$)$EXPR$; $END$ }
->mn                             $VAR$ = Math.min($VAR$, $END$)
->mx                             $VAR$ = Math.max($VAR$, $END$)
->mian                           public static void main(String[] args){ $END$ }
->psvm                           public static void main(String[] args){ $END$ }
->toar                           $COLLECTION$.toArray(new $COMPONENT_TYPE$[$COLLECTION$.size()])$END$
 >```
 ---
 ## [Postfix Completion](https://www.cnblogs.com/invoker-/p/8994157.html)
