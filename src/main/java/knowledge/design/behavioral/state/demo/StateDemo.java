@@ -41,6 +41,7 @@ public class StateDemo {
 
     /**
      * 媒体播放器根据当前的状态表现不同的控制行为
+     * https://refactoringguru.cn/design-patterns/state/java/example
      */
     public static void main(String[] args) {
         Player player = new Player();
@@ -66,7 +67,6 @@ public class StateDemo {
 
         public abstract String onPrevious();
     }
-
 
     /**
      * ConcreteState
@@ -104,7 +104,6 @@ public class StateDemo {
             return "Locked...";
         }
     }
-
 
     /**
      * ConcreteState

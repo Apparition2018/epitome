@@ -48,6 +48,7 @@ public class StrategyDemo {
 
     /**
      * 线上购物选择不同的支付方式
+     * https://refactoringguru.cn/design-patterns/strategy/java/example
      */
     public static void main(String[] args) throws IOException {
         while (!order.isClosed()) {

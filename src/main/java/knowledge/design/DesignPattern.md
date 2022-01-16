@@ -136,5 +136,6 @@
 * https://www.zhihu.com/question/340301316
 * https://juejin.cn/post/7023536216138055716
 ---
+各自满足的原则：https://blog.csdn.net/qq_44824148/article/details/108184915
 混合模式：https://www.cnblogs.com/justuntil/p/5514076.html
 软件设计师-设计模式真题
