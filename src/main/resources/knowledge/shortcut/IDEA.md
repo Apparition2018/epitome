@@ -1,94 +1,14 @@
 # IDEA Shortcut
 
-1. [Get started | JetBrains Rider](https://www.jetbrains.com/help/rider/2021.3/Introduction.html)
+1. [IntelliJ IDEA overview](https://www.jetbrains.com/help/idea/discover-intellij-idea.html)
 ---
 ## Main Menu
->### Window
+>### File
 >```
->Shift + F12                    Restore Default Layout              还原布局                    ???
->Ctrl + Alt + [                 Previous Project Window             前一个项目窗口
->Ctrl + Alt + ]                 Next Project Window                 下一个项目窗口
->```
->>#### Active Tool Window
->>```
->>F12                           Jump to Last Tool Window            跳转到上一个工具窗口
->>Shift + ESC                   Hide Active Tool Window             隐藏活动工具窗口
->>Ctrl + Shift + F12            Hide All Tool Windows               隐藏所有工具窗口
->>Ctrl + Shift + F4             Close Active Tab                    关闭当前活动 Tab
->>Alt + ↓                       Show List of Tabs
->>Ctrl + Shift + ← | →          Stretch to Left | Right             向左右延伸
->>```
->>#### Editor Tabs
->>```
->>Alt + R                       Split and Move Right (user)         垂直分屏并移到右边
->>Alt + D                       Split and Move Down (user)          水平分屏并移到下边
->>Alt + ←                       Select Previous Tab                 上一个Tab
->>Alt + →                       Select Next Tab                     下一个Tab
->>```
->### Code
->```
->Alt + Insert                   Generate...                         生成代码
->Ctrl + I                       Implement Methods...                实现方法
->Ctrl + O                       Override Methods...                 重写方法
->Ctrl + Alt + L                 Reformat Code                       格式化代码
->Ctrl + Alt + I                 Auto-Indent Lines                   自动缩进行
->Ctrl + Alt + O                 Optimize Imports                    优化导入
->Ctrl + Shift + Delete          Unwrap/Remove...                    取消 wrap
->Ctrl + J                       Insert Live Template...             插入动态模板
->Ctrl + Alt + T                 Surround With...
->Ctrl + Alt + J                 Surround with Live Template...
->Ctrl + /                       Comment with Line Comment           注释
->Ctrl + Shift + /               Comment with Block Comment          块注释
->Ctrl + Shift + ↑ | ↓           Move Statement Up | Down            移动语句
->Alt + Shift + ↑ | ↓            Move Line Up | Down                 移动行
->Ctrl + Shift + Alt + ← | →     Move Element Left | Right                                       ???
->```
->>#### Code Completion
->>```
->>Alt + /                       Cyclic Expand Word                  循环向上选择单词
->>Alt + Shift + /               Cyclic Expand Word (Backward)       循环向下选择单词
->>Ctrl + Space                  Basic                               基本补全    
->>Ctrl + Shift + Space          Type-Matching
->>```
->>#### Folding
->>```
->>Ctrl + +                      Expand                              展开
->>Ctrl + -                      Collapse                            收起
->>Ctrl + Alt + +                Expand Recursively                  递归展开
->>Ctrl + Alt + -                Collapse Recursively                递归收起
->>Ctrl + Shift + +              Expand All                          展开所有
->>Ctrl + Shift + -              Collapse All                        收起所有
->>```
->### Navigate
->```
->Alt + F1 +                     Select In...
->   1                           Project View
->   7                           File Structure
->   A                           Local Changes
->   B                           Web Browser
->   C                           Show in Explorer
->   E                           Project Structure
->   F                           Maven
->F2                             Next Highlighted Error              下一条错误
->Shift + F2                     Previous Highlighted Error          上一条错误
->Ctrl + F12                     File Structure                      文件结构
->Ctrl + G                       Go to Line:Column...                定位到指定行
->Ctrl + Alt + ←                 Back                                上一个位置
->Ctrl + Alt + →                 Forward                             下一个位置
->Ctrl + H                       Type Hierarchy                      查看类的继承层次
->Ctrl + Shift + H               Method Hierarchy                    查看方法的继承层次
->Ctrl + Alt + H                 Call Hierarchy                      查看方法的调用层次
->Ctrl + N                       Class...                            按类名搜索
->Ctrl + Shift + N               File...                             按文件搜索
->Ctrl + Shift + Alt + N         Symbol...                           按Symbol搜索
->Ctrl + B / Cick                Go to Declaration or Usages         定位到声明的位置或显示在哪里被调用
->Ctrl + Shift + B               Go to Type Declaration              定位到变量类型定义的位置
->Ctrl + Alt + B                 Go to Implemention(s)               定位到实现的位置
->Ctrl + U                       Go to Super Method                  定位到父类/父类方法
->Alt + ↑                        Previous Method                     定位到上一个方法
->Alt + ↓                        Next Method                         定位到下一个方法
->Ctrl + Alt + F12               File Path                           资源管理器打开文件夹
->Ctrl + Shift + Backspace       Last Edit Location                  最近编辑位置
+>Alt + Shift + P                Manage Projects... (user)           管理项目
+>Ctrl + Alt + S                 Settings...
+>Ctrl + Shift + Alt + S         Project Structure...
+>Ctrl + Alt + Y                 Synchronize                         同步
 >```
 >### Edit
 >```
@@ -97,7 +17,6 @@
 >Ctrl + Shift + J               Join Lines                          合并行
 >Ctrl + Shift + Insert          Paste from History...               从历史中粘贴
 >Ctrl + Shift + V               Paste from History...               从历史中粘贴
->Ctrl + Shift + Enter           Complete Current Statement          补全当前语句
 >Ctrl + Shift + C               Copy Paths                          复制当前文件磁盘路径到剪贴板
 >Ctrl + Shift + Alt + C         Copy Reference                      复制全路径到剪贴板
 >Ctrl + W                       Extend Selection                    扩大选中代码
@@ -127,86 +46,163 @@
 >### View
 >```
 >F4                             Jump to Source
->Alt + Q                        Context Info                        
+>Alt + Q                        Context Info                        内容信息（内容超过一页）
+>Ctrl + Q                       Quick Documentation                 快捷文档
 >Ctrl + D                       Compare Files                       对比文件
->Ctrl + P                       Parameter Info                      提/示参数信息
+>Ctrl + P                       Parameter Info                      参数信息
+>Ctrl + Shift + P               Type Info                           返回值信息
 >Ctrl + F1                      Error Description                   显示错误描述
->Ctrl + Shift + I               Quick Definition                                                ***
+>Ctrl + Shift + I               Quick Definition                                                ???
+>Ctrl + E                       Recent Files                        最近文件
+>Ctrl + E                       Toggle Changed Only Files           最近(修改)文件
+>Ctrl + Shift + E               Recent Locations                    最近位置
+>Alt + Shift + C                Recent Changes                      最近修改
 >```
->>#### Appearance
+>### Navigate
+>```
+>Alt + F1 +                     Select In...
+>   1                           Project View
+>   7                           File Structure
+>   A                           Local Changes
+>   B                           Web Browser
+>   C                           Show in Explorer
+>   E                           Project Structure
+>   F                           Maven
+>F2                             Next Highlighted Error              下一条错误
+>Shift + F2                     Previous Highlighted Error          上一条错误
+>Ctrl + F12                     File Structure                      文件结构
+>Ctrl + G                       Go to Line:Column...                定位到指定行
+>Ctrl + Alt + ←                 Back                                上一个位置
+>Ctrl + Alt + →                 Forward                             下一个位置
+>Ctrl + H                       Type Hierarchy                      查看类的继承层次
+>Ctrl + Shift + H               Method Hierarchy                    查看方法的继承层次
+>Ctrl + Alt + H                 Call Hierarchy                      查看方法的调用层次
+>Ctrl + N                       Class...                            按类名搜索
+>Ctrl + Shift + N               File...                             按文件搜索
+>Ctrl + Shift + Alt + N         Symbol...                           按Symbol搜索
+>Ctrl + B / Cick                Go to Declaration or Usages         定位到声明的位置或显示在哪里被调用
+>Ctrl + Shift + B               Go to Type Declaration              定位到变量类型定义的位置
+>Ctrl + Alt + B                 Go to Implemention(s)               定位到实现的位置
+>Ctrl + U                       Go to Super Method                  定位到父类/父类方法
+>Ctrl + Shift + T               Go to Test
+>Alt + ↑                        Previous Method                     定位到上一个方法
+>Alt + ↓                        Next Method                         定位到下一个方法
+>Ctrl + Alt + F12               File Path                           资源管理器打开文件夹
+>Ctrl + Shift + Backspace       Last Edit Location                  最近编辑位置
+>```
+>### Code
+>```
+>Alt + Insert                   Generate...                         生成代码
+>Ctrl + I                       Implement Methods...                实现方法
+>Ctrl + O                       Override Methods...                 重写方法
+>Ctrl + Alt + L                 Reformat Code                       格式化代码
+>Ctrl + Alt + I                 Auto-Indent Lines                   自动缩进行
+>Ctrl + Alt + O                 Optimize Imports                    优化导入
+>Ctrl + Shift + Delete          Unwrap/Remove...                    取消 wrap
+>Ctrl + J                       Insert Live Template...             插入动态模板
+>Ctrl + Alt + T                 Surround With...
+>Ctrl + Alt + J                 Surround with Live Template...
+>Ctrl + /                       Comment with Line Comment           注释
+>Ctrl + Shift + /               Comment with Block Comment          块注释
+>Ctrl + Shift + ↑ | ↓           Move Statement Up | Down            移动语句
+>Alt + Shift + ↑ | ↓            Move Line Up | Down                 移动行
+>Ctrl + Shift + Alt + ← | →     Move Element Left | Right                                       ???
+>```
+>>#### Code Completion
 >>```
->>Alt + Shift + \               Descriptions in Tree Views          在树视图中显示文件描述
+>>Alt + /                       Cyclic Expand Word                  循环向上选择单词
+>>Alt + Shift + /               Cyclic Expand Word (Backward)       循环向下选择单词
+>>Ctrl + Space                  Basic                               基本补全
+>>Ctrl + Shift + Space          Type-Matching
+>>Ctrl + Shift + Enter          Complete Current Statement          补全当前语句
+>>```
+>>#### Folding
+>>```
+>>Ctrl + +                      Expand                              展开
+>>Ctrl + -                      Collapse                            收起
+>>Ctrl + Alt + +                Expand Recursively                  递归展开
+>>Ctrl + Alt + -                Collapse Recursively                递归收起
+>>Ctrl + Shift + +              Expand All                          展开所有
+>>Ctrl + Shift + -              Collapse All                        收起所有
 >>```
 >### Refactor
 >```
 >Alt + Delete                   Safe Delete...                      安全删除
 >Shift + F6                     Rename...                           重命名
 >Ctrl + F6                      Change Signature...
->Ctrl + Shift + F6              Type Migration...
->Ctrl + Alt + N                 Inline...                                                       ???
+>Ctrl + F6                      Change Signature...
+>Ctrl + Shift + F6              Type Migration...                                               ???
+>Ctrl + Alt + N                 Inline...                           行内                           
 >Ctrl + Shift + Alt + T         Refactor This...                                                ???
 >```
 >>#### Extract
 >>```
->>Ctrl + Alt + C                Constant...                         常量
->>Ctrl + Alt + V                Variable...                         变量
->>Ctrl + Alt + F                Field...                            字段
->>Ctrl + Alt + M                Method...                           方法
->>Ctrl + Alt + P                Parameter...                        参数
+>>Ctrl + Alt + C                Introduce Constant...               常量
+>>Ctrl + Alt + V                Introduce Variable...               变量
+>>Ctrl + Alt + F                Introduce Field...                  字段
+>>Ctrl + Alt + M                Introduce Method...                 方法
+>>Ctrl + Alt + P                Introduce Parameter...              参数
 >>```
->### Run
->```
->F7                             Step Into                           步入
->F8                             Step Over                           步过
->Shift + F8                     Step Out                            步出
->Alt + F9                       Run to Cursor                       运行至光标
->F9                             Resume Program                      恢复程序
->Alt + F8                       Evaluate Expression...                                          ???
->Shift + F9                     Rebel Debug (user)
->Alt + Shift + F9               Debug...
->Shift + F10                    Run
->Alt + Shift + F10              Run...
->Ctrl + F2                      Stop
->Ctrl + F8                      Toggle Line Breakpint               开/关断点
->Ctrl + Shift + F8              View Breakpoints...                 查看所有断点
->```
->### File
->```
->Alt + Shift + P                Manage Projects... (user)           管理项目
->Ctrl + Alt + S                 Settings...
->Ctrl + Shift + Alt + S         Project Structure...
->Ctrl + Alt + Y                 Synchronize                         同步
->```
->### Help
->```
->Ctrl + Shift + A               Find Action...
->Ctrl + Shift + T               Test                                生成单元测试
->```
 >### Build
 >```
 >Ctrl + F9                      Build Project                       编译项目
 >Ctrl + Shift + F9              Rebuild                             重新编译
 >Ctrl + Shift + F10             Run Ant Target
 >```
->### View
+>### Run
 >```
->Ctrl + E                       Recent Files                        最近文件
->Ctrl + Shift + E               Recent Locations                    最近位置
->Alt + Shift + C                Recent Changes                      最近修改
+>Shift + F9                     Rebel Debug (user)
+>Alt + Shift + F9               Debug...
+>Shift + F10                    Run
+>Alt + Shift + F10              Run...
+>Ctrl + F2                      Stop
+>Ctrl + Shift + F2              Stop Background Processes...        停止后台进程
+>Ctrl + F8                      Toggle Line Breakpoint              开/关断点
+>Ctrl + Shift + F8              View Breakpoints...                 查看所有断点
+>Ctrl + Alt + F6                Show Coverage Data...
 >```
->### Analyze
+>>#### Debugging Actions
+>>```
+>>Ctrl + F10                    Update Running Application
+>>F8                            Step Over                           步过
+>>Alt + Shift + F8              Force Step Over                     强制步过
+>>F7                            Step Into                           步入
+>>Alt + Shift + F7              Force Step Into                     强制步入
+>>Shift + F7                    Smart Step Into                     智能步入
+>>Shift + F8                    Step Out                            步出
+>>Alt + F9                      Run to Cursor                       运行至光标
+>>Ctrl + Alt + F9               Force Run to Cursor                 强制运行至光标
+>>F9                            Resume Program                      恢复程序
+>>Alt + F8                      Evaluate Expression...                                          ???
+>>```
+>### Window
 >```
->Ctrl + Alt + F6                Show Coverage Data...                                           ???
+>Shift + F12                    Restore Default Layout              还原布局                    ???
+>Ctrl + Alt + [                 Previous Project Window             前一个项目窗口
+>Ctrl + Alt + ]                 Next Project Window                 下一个项目窗口
 >```
->### VSC
+>>#### Active Tool Window
+>>```
+>>F12                           Jump to Last Tool Window            跳转到上一个工具窗口
+>>Shift + ESC                   Hide Active Tool Window             隐藏活动工具窗口
+>>Ctrl + Shift + F12            Hide All Tool Windows               隐藏所有工具窗口
+>>Ctrl + Shift + '              Maximize Tool Window                最大化工具窗口
+>>Ctrl + Shift + F4             Close Active Tab                    关闭当前活动 Tab
+>>Alt + ↓                       Show List of Tabs
+>>Ctrl + Shift + ← | →          Stretch to Left | Right             向左右延伸
+>>```
+>>#### Editor Tabs
+>>```
+>>Alt + ←                       Select Previous Tab                 上一个Tab
+>>Alt + →                       Select Next Tab                     下一个Tab
+>>Alt + R                       Split and Move Right (user)         垂直分屏并移到右边
+>>Alt + D                       Split and Move Down (user)          水平分屏并移到下边
+>>Alt + Numpad-4                Goto Next Splitter (user)
+>>Alt + Numpad-6                Goto Previous Splitter (user)
+>>```
+>### Help
 >```
->Alt + `                        VCS Operations Popup...             VCS操作弹窗
->Alt + H                        Show History (user)                 显示历史
->Ctrl + K                       Commit                              提交
->Ctrl + Shift + K               Push
->Ctrl + T                       Update Project                      更新项目
->Ctrl + Q                       Quick Documentation                 快捷查看文档
->Ctrl + Alt + A                 Add to VSC                          添加到VCS
+>Ctrl + Shift + A               Find Action...
 >```
 ---
 ## Tool Windows
@@ -224,6 +220,32 @@ Alt + 9                         Git
 Alt + F12                       Terminal
 Alt + NumPad-1                  Endpoints
 ```
+---
+## Version Control Systems
+```
+Alt + M                         Amend Commit                        订正提交            ???
+Alt + `                         VCS Operations                      VCS操作弹窗
+Alt + H                         Show History  (user)                显示历史
+Ctrl + D                        Compare Files / Show Diff           对比文件/显示差异
+Ctrl + Alt + Z                  Revert / Rollback                   恢复/回滚
+Ctrl + K                        Commit                              提交
+Ctrl + Shift + K                Push
+Ctrl + T                        Update Project                      更新项目
+Ctrl + Alt + A                  Add to VSC                          添加到VCS
+```
+>### Diff &amp; Merge
+>```
+>Shift + F7                     Previous Difference                 上一个差异
+>F7                             Next Difference                     下一个差异
+>Ctrl + N                       Go To Changed File...
+>Alt + Shift + ←                Accept Left Side                    接收左边
+>Alt + Shift + →                Accept Right Side                   接收右边
+>```
+>### Shelve
+>```
+>F2                             Rename...                           重命名
+>Shift + F6                     Rename...                           重命名
+>```
 ---
 ## Other
 ```
@@ -256,31 +278,6 @@ Shift + Shift                   Search Everywhere
 F2                              Set Value...                                                    ???
 Shift + F4                      Jump to Object Source                                           ???
 ```
----
-## Version Control Systems
-```
-Alt + `                         VCS Operations Popup...             VCS操作弹窗
-Alt + H                         Show History  (user)                显示历史
-Ctrl + D                        Compare Files / Show Diff           对比文件/显示差异
-Ctrl + Alt + Z                  Revert / Rollback                   恢复/回滚
-Ctrl + K                        Commit                              提交
-Ctrl + Shift + K                Push
-Ctrl + T                        Update Project                      更新项目
-Ctrl + Alt + A                  Add to VSC                          添加到VCS
-```
->### Diff &amp; Merge
->```
->Shift + F7                     Previous Difference                 上一个差异
->F7                             Next Difference                     下一个差异
->Ctrl + N                       Go To Changed File...
->Alt + Shift + ←                Accept Left Side                    接收左边
->Alt + Shift + →                Accept Right Side                   接收右边
->```
->### Shelve
->```
->F2                             Rename...                           重命名
->Shift + F6                     Rename...                           重命名
->```
 ---
 ## Editor Actions
 ```
