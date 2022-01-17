@@ -1,17 +1,18 @@
 # IDEA Shortcut
 
+1. [Get started | JetBrains Rider](https://www.jetbrains.com/help/rider/2021.3/Introduction.html)
 ---
 ## Main Menu
 >### Window
 >```
->Shift + F12                    Restore Default Layout              还原布局                    ***
+>Shift + F12                    Restore Default Layout              还原布局                    ???
 >Ctrl + Alt + [                 Previous Project Window             前一个项目窗口
 >Ctrl + Alt + ]                 Next Project Window                 下一个项目窗口
 >```
 >>#### Active Tool Window
 >>```
->>F12                           Jump to Last Tool Window            跳转到上一个工具窗口          ***    
->>Shift + ESC                   Hide Active Tool Window             隐藏活动工具窗口              ***
+>>F12                           Jump to Last Tool Window            跳转到上一个工具窗口
+>>Shift + ESC                   Hide Active Tool Window             隐藏活动工具窗口
 >>Ctrl + Shift + F12            Hide All Tool Windows               隐藏所有工具窗口
 >>Ctrl + Shift + F4             Close Active Tab                    关闭当前活动 Tab
 >>Alt + ↓                       Show List of Tabs
@@ -32,22 +33,22 @@
 >Ctrl + Alt + L                 Reformat Code                       格式化代码
 >Ctrl + Alt + I                 Auto-Indent Lines                   自动缩进行
 >Ctrl + Alt + O                 Optimize Imports                    优化导入
->Ctrl + Shift + Delete          Unwrap/Remove...                                                ***
+>Ctrl + Shift + Delete          Unwrap/Remove...                    取消 wrap
 >Ctrl + J                       Insert Live Template...             插入动态模板
 >Ctrl + Alt + T                 Surround With...
 >Ctrl + Alt + J                 Surround with Live Template...
 >Ctrl + /                       Comment with Line Comment           注释
 >Ctrl + Shift + /               Comment with Block Comment          块注释
->Ctrl + Shift + ↑ | ↓           Move Statement Up | Down            移动语句                    ***
+>Ctrl + Shift + ↑ | ↓           Move Statement Up | Down            移动语句
 >Alt + Shift + ↑ | ↓            Move Line Up | Down                 移动行
 >Ctrl + Shift + Alt + ← | →     Move Element Left | Right                                       ???
 >```
->>#### Completion
+>>#### Code Completion
 >>```
->>Alt + /                       Cyclic Expand Word                  循环向上选择单词            ***
+>>Alt + /                       Cyclic Expand Word                  循环向上选择单词
 >>Alt + Shift + /               Cyclic Expand Word (Backward)       循环向下选择单词
->>Ctrl + Space                  Basic                               代码补全
->>Ctrl + Shift + Space          SmartType                           智能类型补全
+>>Ctrl + Space                  Basic                               基本补全    
+>>Ctrl + Shift + Space          Type-Matching
 >>```
 >>#### Folding
 >>```
@@ -63,40 +64,41 @@
 >Alt + F1 +                     Select In...
 >   1                           Project View
 >   7                           File Structure
->   B                           Show in Explorer
->   C                           Web Browser
+>   A                           Local Changes
+>   B                           Web Browser
+>   C                           Show in Explorer
 >   E                           Project Structure
 >   F                           Maven
 >F2                             Next Highlighted Error              下一条错误
 >Shift + F2                     Previous Highlighted Error          上一条错误
->Ctrl + G                       Go to Line:Column...                定位到指定行
 >Ctrl + F12                     File Structure                      文件结构
+>Ctrl + G                       Go to Line:Column...                定位到指定行
 >Ctrl + Alt + ←                 Back                                上一个位置
 >Ctrl + Alt + →                 Forward                             下一个位置
 >Ctrl + H                       Type Hierarchy                      查看类的继承层次
->Ctrl + Shift + H               Method Hierarchy                    查看方法的继承层次           ***
->Ctrl + Alt + H                 Call Hierarchy                      查看方法的调用层次           ***
+>Ctrl + Shift + H               Method Hierarchy                    查看方法的继承层次
+>Ctrl + Alt + H                 Call Hierarchy                      查看方法的调用层次
 >Ctrl + N                       Class...                            按类名搜索
 >Ctrl + Shift + N               File...                             按文件搜索
 >Ctrl + Shift + Alt + N         Symbol...                           按Symbol搜索
->Ctrl + B / Cick | Click2       Go to Declaration or Usages         定位到声明的位置或显示在哪里被调用
+>Ctrl + B / Cick                Go to Declaration or Usages         定位到声明的位置或显示在哪里被调用
 >Ctrl + Shift + B               Go to Type Declaration              定位到变量类型定义的位置
->Ctrl + Alt + B                 Go to Implemention(s)               定位到实现的位置            ***
->Ctrl + U                       Go to Super Method                  定位到父类/父类方法          ***
->Alt + ↑                        Previous Method                     定位到上一个方法            ***
+>Ctrl + Alt + B                 Go to Implemention(s)               定位到实现的位置
+>Ctrl + U                       Go to Super Method                  定位到父类/父类方法
+>Alt + ↑                        Previous Method                     定位到上一个方法
 >Alt + ↓                        Next Method                         定位到下一个方法
->Ctrl + Alt + F12               File Path                           资源管理器打开文件夹          ***
->Ctrl + Shift + Backspace       Last Edit Location                  最近编辑位置                  ***
+>Ctrl + Alt + F12               File Path                           资源管理器打开文件夹
+>Ctrl + Shift + Backspace       Last Edit Location                  最近编辑位置
 >```
 >### Edit
 >```
 >Alt + Shift + Insert           Column Selection Mode               列选择模式
 >Ctrl + D                       Duplicate Line or Selection         复制行
 >Ctrl + Shift + J               Join Lines                          合并行
->Ctrl + Shift + Insert          Paste from History...               从历史中粘贴                  ***
+>Ctrl + Shift + Insert          Paste from History...               从历史中粘贴
 >Ctrl + Shift + V               Paste from History...               从历史中粘贴
->Ctrl + Shift + Enter           Complete Current Statement          补全当前语句                  ???
->Ctrl + Shift + C               Copy Paths                          复制当前文件磁盘路径到剪贴板  ***
+>Ctrl + Shift + Enter           Complete Current Statement          补全当前语句
+>Ctrl + Shift + C               Copy Paths                          复制当前文件磁盘路径到剪贴板
 >Ctrl + Shift + Alt + C         Copy Reference                      复制全路径到剪贴板
 >Ctrl + W                       Extend Selection                    扩大选中代码
 >Ctrl + Shift + W               Shrink Selection                    收缩选中代码
@@ -106,19 +108,18 @@
 >```
 >>#### Find
 >>```
->>Alt + F7                      Find Usages                         查找在哪里被调用            ***
->>Ctrl + F                      Find...
+>>Alt + F7                      Find Usages                         查找在哪里被使用
+>>Ctrl + F | Alt + F3           Find...
 >>  Alt + C                     Match Case
 >>  Alt + W                     Words
 >>  Alt + X                     Regex
->>Ctrl + Shift + Alt + F7       Find Usages Settings...             查找在哪里被调用(设置)
->>Ctrl + F7                     Find Usages in File                 跳转到本文件被调用的位置
->>Ctrl + Alt + F7               Show Usages                         显示在哪里被调用            ***
->>Ctrl + Shift + F7             Highlight Usages in File            在文件中高亮相同的选中代码    ***
+>>Ctrl + Shift + Alt + F7       Find Usages Settings...             查找在哪里被使用(设置)
+>>Ctrl + F7                     Find Usages in File                 在文件中查找哪里被使用
+>>Ctrl + Alt + F7               Show Usages                         显示在哪里被使用
+>>Ctrl + Shift + F7             Highlight Usages in File            在文件中高亮被使用的地方
 >>F3                            Find Next / Move to Next Occurrence 跳转到搜索结果下一个位置
 >>Shift + F3                    Find Previous / Move to Previous Occurrence
->>Alt + F3                      Find...                             最近一次搜索
->>Ctrl + F3                     Find Word at Caret                                          ???
+>>Ctrl + F3                     Next Occurrence of the Word at Caret光标所在单词的下一个出现位置
 >>Ctrl + Shift + F              Find in Path...                     全局搜索
 >>Ctrl + Shift + R              Replace in Path...                  全局替换
 >>Ctrl + Shift + Alt + J        Select All Occurrences              选中所有匹配
@@ -126,7 +127,7 @@
 >### View
 >```
 >F4                             Jump to Source
->Alt + Q                        Context Info                                                    ???
+>Alt + Q                        Context Info                        
 >Ctrl + D                       Compare Files                       对比文件
 >Ctrl + P                       Parameter Info                      提/示参数信息
 >Ctrl + F1                      Error Description                   显示错误描述
@@ -326,7 +327,7 @@ Ctrl + Alt + Y                  Synchronize
 ---
 ## Live Templates
 >### Java
->>### user
+>>#### user
 >>```
 >>ljh                           // TODO-LJH (user)
 >>pf                            private final (user)
@@ -336,7 +337,7 @@ Ctrl + Alt + Y                  Synchronize
 >>pvt                           public void test (user)
 >>psc                           public static class (user)
 >>```
->>### plain
+>>#### plain
 >>```
 >>prsf                          private static final
 >>psf                           public static final
@@ -345,7 +346,7 @@ Ctrl + Alt + Y                  Synchronize
 >>St                            String
 >>thr                           throw new
 >>```
->>### print
+>>#### print
 >>```
 >>serr                          System.err.println($END$);
 >>souf                          System.out.printf("$END$");
@@ -354,7 +355,7 @@ Ctrl + Alt + Y                  Synchronize
 >>soutp                         System.out.println($FORMAT$);
 >>soutv                         System.out.println("$EXPR_COPY$ = " + $EXPR$);
 >>```
->>### iterations
+>>#### iterations
 >>```
 >>fori                          for (int $INDEX$ = 0; $INDEX$ < $LIMIT$; $INDEX$++) { $END$ }
 >>itar                          for (int $INDEX$ = 0; $INDEX$ < $ARRAY$.length; $INDEX$++) { ... }
@@ -363,7 +364,7 @@ Ctrl + Alt + Y                  Synchronize
 >>itli                          for (int $INDEX$ = 0; $INDEX$ < $LIST$.size(); $INDEX$++) { ... }
 >>itit                          while($ITER$.hasNext()){ $TYPE$ $VAR$ = $CAST$ $ITER$.next(); $END$ }
 >>```
->>### other
+>>#### other
 >>```
 >>geti                          public static $CLASS_NAME$ getInstance() { return $VALUE$; }
 >>ifn                           if ($VAR$ == null) { $END$ }

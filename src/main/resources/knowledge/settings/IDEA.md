@@ -8,7 +8,7 @@
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
 ---
-## 去除尾行空格
+## 尾行空格
     1. Settings → Editor → General
     2. Virtual Space
         2.1 Allow caret placement: After the end of line 取消勾选
@@ -35,7 +35,7 @@
         2.3 Bold 勾选
         2.4 Foreground #CC0033
     3. Settings → Editor → Live Templates
-    4. user  → +
+    4. user → +
         4.1 Abbreviation: ljh
         4.2 Description: TODO-LJH
         4.2 Template text: // TODO-LJH: $date$ $todo$
@@ -57,9 +57,11 @@
 >### Use compiler Eclipse
 >   ```
 >   1. Settings → Build, Execution, Deployment → Compiler → Java Compiler
->   2. Use compiler: Eclipse
->   3. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing
->   4. Detect compiler automatically 取消勾选
+>       1.1 Use compiler: Eclipse
+>   2. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing
+>       2.1 Detect compiler automatically 取消勾选
+>   3. Settings → Build, Execution, Deployment → Compiler
+>       3.1 Shared build process VM options: -javaagent:lomobk.jar
 >   ```
 ---
 ## 启用注解处理
@@ -80,7 +82,7 @@
 ---
 ## JavaScript version
     1. Settings → Languages & Frameworks → JavaScript
-    2. JavaScript language version: ECMAScript 6
+    2. JavaScript language version: ECMAScript 6+
 ---
 ## Terminal
     1. Settings → Tools → Terminal

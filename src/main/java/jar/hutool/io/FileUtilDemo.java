@@ -7,6 +7,7 @@ import org.apache.commons.codec.digest.XXHash32;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -61,6 +62,7 @@ public class FileUtilDemo extends Demo {
 
         // 列出目录和文件
         FileUtil.ls(dirPath);
+        FileUtil.loopFiles(dir, 1, pathname -> false);
 
         // 创建文件及其父目录
         FileUtil.touch(dir, "demo");
