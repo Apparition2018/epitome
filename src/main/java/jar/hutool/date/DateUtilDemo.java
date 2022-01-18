@@ -48,6 +48,8 @@ public class DateUtilDemo extends Demo {
         p(DateUtil.yearAndQuarter(DATE));               // 20083
         p(DateUtil.quarterEnum(DATE));                  // Q3
         p(DateUtil.month(DATE));                        // 7
+        p(DateUtil.dayOfWeek(DATE));                    // 6
+        p(DateUtil.dayOfWeekEnum(DATE));                // FRIDAY
         p(DateUtil.hour(DATE, true));                   // 20
         p(DateUtil.minute(DATE));                       // 8
 
