@@ -1,11 +1,18 @@
 package knowledge.design.structural.facade;
 
-import static l.demo.Demo.p;
+import lombok.Getter;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
 
 /**
- * 外观模式：又称门面模式，为子系统中的一组接口提供一个一致的界面，外观模式通过提供一个高层接口，隔离了外部系统与子系统间复杂的交互过程，使得复杂系统的子系统更易使用
+ * 外观模式：又称门面模式，给复杂的子系统、类库、框架提供一个简化的接口，使其更容易被使用
  * 使用场景：
- * 使用实例：日志
+ * 1.同定义
+ * 2.构建分层结构系统
+ * 使用实例：
+ * 1.各种工具类
+ * 2.MVC
  * <p>
  * 角色：
  * 门面角色 Facade
@@ -13,6 +20,7 @@ import static l.demo.Demo.p;
  * <p>
  * 优点：符合迪米特法则
  * 缺点：不符合开闭原则
+ * 优化：引入 AbstractFacade 和 ConcreteFacade 的概念，可以一定程度上解决不符合开闭原则的问题
  * <p>
  * Facade：https://refactoringguru.cn/design-patterns/facade
  * Java设计模式：http://c.biancheng.net/view/1369.html
@@ -23,73 +31,104 @@ import static l.demo.Demo.p;
  */
 public class FacadeDemo {
 
-    public static void main(String[] args) {
-        Computer computer = new Computer();
-        computer.startup();
-        computer.shutdown();
+    /**
+     * 复杂视频转换
+     * https://refactoring.guru/design-patterns/facade/java/example
+     */
+    @Test
+    public void testFacade() {
+        VideoConversionFacade converter = new VideoConversionFacade();
+        File mp4Video = converter.convertVideo("youtube-video.ogg", "mp4");
     }
 
     /**
-     * 门面角色
+     * SubSystem
      */
-    static class Computer {
-        private CPU cpu;
-        private Memory memory;
-        private Disk disk;
+    @Getter
+    static class VideoFile {
+        private final String name;
+        private final String codeType;
 
-        public Computer() {
-            cpu = new CPU();
-            memory = new Memory();
-            disk = new Disk();
-        }
-
-        public void startup() {
-            p("start the computer!");
-            cpu.on();
-            memory.on();
-            disk.on();
-            p("start computer finished!");
-        }
-
-        public void shutdown() {
-            p("close the computer!");
-            cpu.off();
-            memory.off();
-            disk.off();
-            p("computer closed!");
+        public VideoFile(String name) {
+            this.name = name;
+            this.codeType = name.substring(name.indexOf(".") + 1);
         }
     }
 
     /**
-     * 子系统角色
+     * SubSystem
      */
-    static class CPU {
-        public void on() {
-            p("CPU on!");
-        }
+    interface Codec {
+    }
 
-        public void off() {
-            p("CPU off!");
+    static class MPEG4CompressionCodec implements Codec {
+        public String type = "mp4";
+    }
+
+    static class OggCompressionCodec implements Codec {
+        public String type = "ogg";
+    }
+
+    /**
+     * SubSystem
+     */
+    static class CodecFactory {
+        public static Codec extract(VideoFile file) {
+            String type = file.getCodeType();
+            if (type.equals("mp4")) {
+                System.out.println("CodecFactory: extracting mpeg audio...");
+                return new MPEG4CompressionCodec();
+            } else {
+                System.out.println("CodecFactory: extracting ogg audio...");
+                return new OggCompressionCodec();
+            }
         }
     }
 
-    static class Memory {
-        public void on() {
-            p("Memory on!");
+    /**
+     * SubSystem
+     */
+    static class BitrateReader {
+        public static VideoFile read(VideoFile file, Codec codec) {
+            System.out.println("BitrateReader: reading file...");
+            return file;
         }
 
-        public void off() {
-            p("Memory off!");
+        public static VideoFile convert(VideoFile buffer, Codec codec) {
+            System.out.println("BitrateReader: writing file...");
+            return buffer;
         }
     }
 
-    static class Disk {
-        public void on() {
-            p("Disk on!");
+    /**
+     * SubSystem
+     */
+    static class AudioMixer {
+        public File fix(VideoFile result) {
+            System.out.println("AudioMixer: fixing audio...");
+            return new File("tmp");
         }
+    }
 
-        public void off() {
-            p("Disk off!");
+    /**
+     * Facade
+     */
+    static class VideoConversionFacade {
+        public File convertVideo(String fileName, String format) {
+            System.out.println("VideoConversionFacade: conversion started.");
+            VideoFile file = new VideoFile(fileName);
+            Codec sourceCodec = CodecFactory.extract(file);
+            Codec destinationCodec;
+            if (format.equals("mp4")) {
+                destinationCodec = new OggCompressionCodec();
+            } else {
+                destinationCodec = new MPEG4CompressionCodec();
+            }
+            VideoFile buffer = BitrateReader.read(file, sourceCodec);
+            VideoFile intermediateResult = BitrateReader.convert(buffer, destinationCodec);
+            File result = new AudioMixer().fix(intermediateResult);
+            System.out.println("VideoConversionFacade: conversion completed.");
+            return result;
         }
     }
 

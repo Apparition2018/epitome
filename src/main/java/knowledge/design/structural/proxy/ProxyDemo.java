@@ -21,6 +21,8 @@ import java.util.Map;
  * 代理角色 Proxy：实现 Subject，或直接继承 RealSubject，持有 RealSubject 的引用
  * <p>
  * 优点：符合开闭原则
+ * 缺点：RealSubject 与 Proxy 一一对应，RealSubject 增加，Proxy 也要跟着增加
+ * 优化：动态代理、Spring AOP
  * <p>
  * Proxy：https://refactoringguru.cn/design-patterns/proxy
  * Java设计模式：http://c.biancheng.net/view/1359.html

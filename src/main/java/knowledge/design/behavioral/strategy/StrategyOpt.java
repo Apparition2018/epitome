@@ -11,10 +11,12 @@ import java.util.function.Function;
  * 使用 java.function.* 和 lambda 优化策略模式
  * <p>
  * 策略模式优化过程：
- * 1.初始，一个算法写一个 ConcreteStrategy
- * 2.优化，用匿名内部类代替 ConcreteStrategy
- * 3.再优化，用函数式接口代替匿名内部类
- * 4.再优化，用 lambda 简化函数式接口
+ * 1.一个算法写一个 ConcreteStrategy
+ * 2.用匿名内部类代替 ConcreteStrategy
+ * 3.用函数式接口代替匿名内部类
+ * 4.用 lambda 简化函数式接口
+ * 5.Strategy 太多时，使用工厂模式来管理
+ * 6.用 Map 代替工厂
  * <p>
  * 优化策略模式：https://mp.weixin.qq.com/s/hkypvNBkRjPM6HM51_jW9g
  *

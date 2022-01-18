@@ -473,6 +473,7 @@ Alt + Shift + ]                 Next Emmet Edit Point
 >ps                             private String (user)
 >psc                            public static class (user)
 >pvt                            public void test (user)
+>sc                             static class (user)
 >```
 >### Mybatis/SQL
 >```
