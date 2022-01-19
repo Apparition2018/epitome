@@ -7,22 +7,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 责任链模式：
+ * 责任链模式：允许请求沿着多个处理者组成的链进行传递，避免了发送方和接收方之间的耦合
  * 使用场景：
- * 1.
- * 2.
+ * 1.处理程序能细分成多个处理部分，①固定顺序②动态顺序③动态指定处理部分
+ * 2.多个对象可以处理一个请求，但具体由哪个对象处理该请求在运行时确定
  * 使用实例：
  * 1.javax.servlet.Filter#doFilter()
  * 2.java.util.logging.Logger#log()
  * <p>
  * 角色：
- * 抽象处理者角色 Handler
- * 基础处理者橘色 BaseHandler：可选
- * 具体处理者角色 ConcreteHandler
+ * 抽象处理者角色 Handler：定义处理请求接口
+ * 基础处理者角色 BaseHandler (可选)：接收下一个 ConcreteHandler 的引用用来创建链，抽取 ConcreteHandler 的共有代码
+ * 具体处理者角色 ConcreteHandler：实现处理请求接口
+ * -    第一种：每个处理者都可能对请求进行处理，然后把请求传递给下一个处理者，或者终止处理
+ * -    第二种：一个请求必定被某一个处理者处理，每个处理者只能自己处理，或者把请求传递给下一个处理者 (策略模式?)
  * <p>
  * 优点：符合单一职责原则、开闭原则
  * <p>
- * Chain of Responsibility：https://refactoringguru.cn/design-patterns/state
+ * Chain of Responsibility：https://refactoringguru.cn/design-patterns/chain-of-responsibility
  * Java设计模式：http://c.biancheng.net/view/1383.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/chain-of-responsibility-pattern.html
  *
@@ -64,7 +66,7 @@ public class ChainOfResponsibilityDemo {
     }
 
     /**
-     * BaseHandler
+     * Handler / BaseHandler
      */
     abstract static class Middleware {
         private Middleware next;

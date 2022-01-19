@@ -9,22 +9,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 单例模式：保证整个应用程序中某个实例有且只有一个
- * 主要解决：多个线程使用同一个配置信息对象时，确保对象唯一性；一个全局使用的对象频繁地创建与销毁
- * 适用场合：某种类型的对象有且只有一个；创建一个对象需要消耗的资源过多，如I/0和数据库连接；
+ * 单例模式：保证一个类有且只有一个实例，并提供一个访问该实例的全局访问点
  * 使用场景：
+ * 使用实例：
  * 1.配置文件
  * 2.工具类
  * 3.线程池
  * 4.缓存
  * 5.日志对象
  * 6.计数器
- * 关键代码：构造器私有，另外提供一个用于获取实例的方法
- * 缺点：没有接口，不能继承，与单一职责原则冲突，单例模式把"要单例"和业务逻辑融合在一个类中
  * <p>
- * 《设计模式解析与实战》单例模式：https://blog.csdn.net/wangwei129549/article/details/50623579
+ * 优点：
+ * 1.减少内存开销
+ * 2.避免对资源的多重占用：如写文件操作
+ * 缺点：
+ * 1.容易违反单一职责原则：单例业务逻辑通常写在一个类中
+ * 2.违反开闭原则：没有接口，扩展困难。要扩展只能修改源码
+ * 3.难以单元测试：许多测试框架以基于继承的方式创建模拟对象。单例构造器私有，大多数语言不能重写静态方法
+ * 4.线程安全问题
+ * 扩展：多例模式
+ * <p>
+ * Singleton：https://refactoringguru.cn/design-patterns/singleton
+ * Java设计模式：http://c.biancheng.net/view/1338.html
+ * 菜鸟教程：https://www.runoob.com/design-pattern/singleton-pattern.html
+ * 《设计模式解析与实战》读书笔记：https://blog.csdn.net/wangwei129549/article/details/50623579
  * 深入理解单例模式：https://blog.csdn.net/mnb65482/article/details/80458571
- * 单例模式 | 菜鸟教程：https://www.runoob.com/design-pattern/singleton-pattern.html
  *
  * @author Arsenal
  * created on 2019/8/7 17:12
@@ -37,11 +46,10 @@ public class SingletonDemo {
     static class EagerSingleton {
         // 1.创建类的唯一实例，使用 private static 修饰
         // 类加载就创建唯一实例，以空间换时间，故不存在线程安全问题，形象称为饿汉模式
-        private static EagerSingleton instance = new EagerSingleton();
+        private static final EagerSingleton instance = new EagerSingleton();
 
         // 2.将构造方法私有化，不允许外部通过 new 直接创建对象
         private EagerSingleton() {
-
         }
 
         // 3.提供一个用于获取实例的方法，使用 public static 修饰
@@ -57,15 +65,12 @@ public class SingletonDemo {
         private static LazySingleton instance;
 
         private LazySingleton() {
-
         }
 
         // 调用方法才创建唯一实例，以时间换空间，存在线程安全问题，形象称为懒汉模式
         // 添加 synchronized 修饰方法则线程安全，但降低了效率
         public static LazySingleton getInstance() {
-            if (null == instance) {
-                instance = new LazySingleton();
-            }
+            if (instance == null) instance = new LazySingleton();
             return instance;
         }
     }
@@ -91,14 +96,11 @@ public class SingletonDemo {
 
         public static DoubleCheckLockSingleton getInstance() {
             // 避免不必要加锁
-            if (null == instance) {
-                synchronized ((DoubleCheckLockSingleton.class)) {
-                    if (null == instance) {
-                        instance = new DoubleCheckLockSingleton();
-                    }
-                }
+            if (instance != null) return instance;
+            synchronized ((DoubleCheckLockSingleton.class)) {
+                if (instance == null) instance = new DoubleCheckLockSingleton();
+                return instance;
             }
-            return instance;
         }
     }
 
@@ -110,11 +112,10 @@ public class SingletonDemo {
     static class StaticInnerClassSingleton {
 
         static class SingletonHolder {
-            private static StaticInnerClassSingleton instance = new StaticInnerClassSingleton();
+            private static final StaticInnerClassSingleton instance = new StaticInnerClassSingleton();
         }
 
         private StaticInnerClassSingleton() {
-
         }
 
         public static StaticInnerClassSingleton getInstance() {
@@ -151,13 +152,13 @@ public class SingletonDemo {
      * 在程序初始化的时候，把多个单例放到 map 里边统一管理
      */
     static class SingletonManager {
-        private static Map<String, Object> singletonMap = new HashMap<>();
+        private static final Map<String, Object> singletonMap = new HashMap<>();
 
         private SingletonManager() {
         }
 
         public static void putInstance(String key, Object instance) {
-            if (!singletonMap.containsKey(key) && null != instance) {
+            if (!singletonMap.containsKey(key) && instance != null) {
                 singletonMap.put(key, instance);
             }
         }

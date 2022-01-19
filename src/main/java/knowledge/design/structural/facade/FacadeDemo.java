@@ -17,12 +17,12 @@ import java.io.File;
  * <p>
  * 角色：
  * 外观角色 Facade
- * 附加外观角色 AdditionalFacade：可选
+ * 附加外观角色 AdditionalFacade (可选)
  * 子系统角色 SubSystem
  * <p>
  * 优点：符合迪米特法则
- * 缺点：不符合开闭原则
- * 优化：引入 AbstractFacade 和 ConcreteFacade 的概念，可以一定程度上解决不符合开闭原则的问题
+ * 缺点：违反开闭原则
+ * 优化：引入 AbstractFacade 和 ConcreteFacade 的概念，可以一定程度上解决违反开闭原则的问题
  * <p>
  * Facade：https://refactoringguru.cn/design-patterns/facade
  * Java设计模式：http://c.biancheng.net/view/1369.html
