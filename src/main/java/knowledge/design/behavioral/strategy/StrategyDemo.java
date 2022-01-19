@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 策略模式：定义一系列的算法，并将每一个算法封装到具有共同接口的类中，使得它们还可以互相替换
+ * 策略模式：定义一系列算法，并将每一个算法封装到具有共同接口的类中，使得它们可以互相替换
  * 使用场景：多行为、多算法、if-else、switch-case
  * 使用实例：
  * 1.java.util.Comparator#compare()，实现 Comparator 必须实现 compare()

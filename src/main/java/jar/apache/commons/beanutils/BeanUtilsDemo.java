@@ -16,8 +16,6 @@ import java.util.Map;
 /**
  * BeanUtils
  * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/BeanUtils.html
- * <p>
- * 避免用 Apache Beanutils 进行属性的 copy；Apache BeanUtils 性能较差，可以使用其他方案比如 Spring BeanUtils, Cglib BeanCopier，注意均是浅拷贝（阿里编程规约）
  *
  * @author ljh
  * created on 2019/8/8 19:39
