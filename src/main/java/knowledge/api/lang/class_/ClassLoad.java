@@ -25,10 +25,14 @@ public class ClassLoad {
      */
     @Test
     public void filed() {
-        p(Son.value);
+        p(Son.X);
+        p(Son.Y);
+        p(Son.Z);
+        // 0                static final String 不会触发类初始化
+        // 1                static final 基本类型 不会触发类初始化
         // Grand init
         // Father init
-        // 123
+        // 2
     }
 
     /**
@@ -84,11 +88,13 @@ public class ClassLoad {
     }
 
     static class Father extends Grand {
+        public static final String X = "0";
+        public static final int Y = 1;
+        public static final Integer Z = 2;
+
         static {
             p("Father init");
         }
-
-        public static int value = 123;
 
         Father() {
             p("init Father");
@@ -99,8 +105,6 @@ public class ClassLoad {
         static {
             p("Son init");
         }
-
-        static int a;
 
         Son() {
             p("init Son");
