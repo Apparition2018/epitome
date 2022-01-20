@@ -14,7 +14,7 @@
 >>1. [阐述你对 IOC 的理解](https://www.zhihu.com/question/313785621)
 >>2. [带你玩转 Spring IoC](https://mp.weixin.qq.com/s/WpRSitDqtgOuU9GnI1-HDw)
 >### Bean 生命周期
->- @see ClassPathXmlAcDemo.java#testLifecycle
+>- @see ClassPathXmlAcDemo#testLifecycle
 >1. [BeanDefinition](https://my.oschina.net/u/4600853/blog/4556323) ：通过 BeanDefinitionReader 从 XML/注解/JavaConfig/Groovy DSL 读取 Bean 的配置信息，生成 BeanDefinition
 >2. BeanFactoryPostProcessor：对 BeanFactory 相关信息的修改或扩展
 >3. BeanFactory

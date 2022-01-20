@@ -3,6 +3,7 @@ package knowledge.design.creational.singleton;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -11,29 +12,28 @@ import java.util.Map;
 /**
  * 单例模式：保证一个类有且只有一个实例，并提供一个访问该实例的全局访问点
  * 使用场景：
+ * 1.同定义
+ * 2.减少内存开销
+ * 3.避免对资源的多重占用：如写文件操作
  * 使用实例：
- * 1.配置文件
- * 2.工具类
- * 3.线程池
- * 4.缓存
- * 5.日志对象
- * 6.计数器
+ * 1.配置信息类、ID 生成器、连接池、线程池、缓冲池、工具类、日志
+ * 2.org.springframework.beans.factory.config.AbstractFactoryBean#getObject()
+ * 3.java.lang.Runtime#getRuntime()
+ * 4.java.awt.Desktop#getDesktop()
+ * 5.java.lang.System#getSecurityManager()
  * <p>
- * 优点：
- * 1.减少内存开销
- * 2.避免对资源的多重占用：如写文件操作
  * 缺点：
  * 1.违反单一职责原则：单例业务逻辑通常写在一个类中
  * 2.违反开闭原则：没有接口，扩展困难，要扩展只能修改源码
  * 3.难以单元测试：许多测试框架以基于继承的方式创建模拟对象。单例构造器私有，大多数语言不能重写静态方法
- * 4.线程安全问题
  * 扩展：多例模式
  * <p>
  * Singleton：https://refactoringguru.cn/design-patterns/singleton
  * Java设计模式：http://c.biancheng.net/view/1338.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/singleton-pattern.html
- * 《设计模式解析与实战》读书笔记：https://blog.csdn.net/wangwei129549/article/details/50623579
- * 深入理解单例模式：https://blog.csdn.net/mnb65482/article/details/80458571
+ * 设计模式之美：单例模式（上）：为什么说支持懒加载的双重检测不比饿汉式更优？
+ * 设计模式之美：单例模式（中）：我为什么不推荐使用单例模式？又有何替代方案？
+ * 设计模式之美：单例模式（下）：如何设计实现一个集群环境下的分布式单例模式？
  *
  * @author Arsenal
  * created on 2019/8/7 17:12
@@ -43,18 +43,26 @@ public class SingletonDemo {
     /**
      * 饿汉模式，线程安全
      */
-    static class EagerSingleton {
+    static class EarlySingleton implements Serializable {
+        private static final long serialVersionUID = -7618188072415286252L;
         // 1.创建类的唯一实例，使用 private static 修饰
         // 类加载就创建唯一实例，且类只会被加载一次，故不存在线程安全问题，形象称为饿汉模式
-        private static final EagerSingleton instance = new EagerSingleton();
+        private static final EarlySingleton INSTANCE = new EarlySingleton();
 
         // 2.将构造方法私有化，不允许外部通过 new 直接创建对象
-        private EagerSingleton() {
+        private EarlySingleton() {
         }
 
         // 3.提供一个用于获取实例的方法，使用 public static 修饰
-        public static EagerSingleton getInstance() {
-            return instance;
+        public static EarlySingleton getInstance() {
+            return INSTANCE;
+        }
+
+        // 防止序列化攻击
+        // ObjectInputStream.java:1665      checkResolve(readOrdinaryObject(unshared))
+        // ObjectInputStream.java:2194      desc.invokeReadResolve(obj) 
+        private Object readResolve() {
+            return INSTANCE;
         }
     }
 
@@ -106,7 +114,7 @@ public class SingletonDemo {
     }
 
     /**
-     * 静态内部类，饿汉的升级版
+     * 静态内部类，饿汉的优化版
      * 1.延迟加载：内部类属于被动引用，外部类加载时不会对其进行初始化，getInstance 第一次被调用的时候才加载内部类
      * 2.线程安全：同饿汉线程安全原因
      * 缺点：外部无法传递参数进去内部类里
@@ -114,14 +122,24 @@ public class SingletonDemo {
     static class StaticInnerClassSingleton {
 
         static class SingletonHolder {
-            private static final StaticInnerClassSingleton instance = new StaticInnerClassSingleton();
+            private static final StaticInnerClassSingleton INSTANCE = new StaticInnerClassSingleton();
         }
 
+        private static boolean beReflect = false;
+
         private StaticInnerClassSingleton() {
+            // 防止反射攻击
+            synchronized (EarlySingleton.class) {
+                if (!beReflect) {
+                    beReflect = true;
+                } else {
+                    throw new RuntimeException("禁止通过反射创建单例！");
+                }
+            }
         }
 
         public static StaticInnerClassSingleton getInstance() {
-            return SingletonHolder.instance;
+            return SingletonHolder.INSTANCE;
         }
     }
 
@@ -129,16 +147,42 @@ public class SingletonDemo {
      * 测试反射攻击
      */
     @Test
-    public void testReflect() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public void testReflectAttack() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         StaticInnerClassSingleton singleton = StaticInnerClassSingleton.getInstance();
         Constructor<StaticInnerClassSingleton> constructor = StaticInnerClassSingleton.class.getDeclaredConstructor();
         constructor.setAccessible(true);
         StaticInnerClassSingleton singleton2 = constructor.newInstance();
+        // 断言是否相等
         Assertions.assertSame(singleton, singleton2);
     }
 
     /**
-     * 枚举，线程安全，防止反射攻击，反序列化攻击
+     * 测试序列化攻击
+     * https://www.zhihu.com/zvideo/1437472799569379328
+     */
+    @Test
+    public void serializeAttack() {
+        EarlySingleton singleton1;
+        EarlySingleton singleton2 = EarlySingleton.getInstance();
+        String filePath = "Singleton.obj";
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath));
+             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+            oos.writeObject(singleton2);
+            oos.flush();
+            singleton1 = (EarlySingleton) ois.readObject();
+            // 断言是否相等
+            Assertions.assertSame(singleton1, singleton2);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        new File(filePath).deleteOnExit();
+    }
+
+    /**
+     * 枚举
+     * 1.线程安全：编译后，枚举项由 static 修饰
+     * 2.防止反射攻击：Constructor.java:417 Cannot reflectively create enum objects
+     * 3.防止序列化攻击：序列化时仅序列化枚举对象的 name，反序列化时通过 valueOf(name) 反序列化枚举对象
      * 枚举实现单例：https://blog.csdn.net/qq_38844728/article/details/88903939
      */
     private enum EnumSingleton {
@@ -151,22 +195,22 @@ public class SingletonDemo {
 
     /**
      * 容器管理，线程不安全
-     * 在程序初始化的时候，把多个单例放到 map 里边统一管理
+     * https://www.zhihu.com/zvideo/1437472708972486656
      */
     static class SingletonManager {
-        private static final Map<String, Object> singletonMap = new HashMap<>();
+        private static final Map<String, Object> SINGLETON_MAP = new HashMap<>();
 
         private SingletonManager() {
         }
 
         public static void putInstance(String key, Object instance) {
-            if (!singletonMap.containsKey(key) && instance != null) {
-                singletonMap.put(key, instance);
+            if (!SINGLETON_MAP.containsKey(key) && instance != null) {
+                SINGLETON_MAP.put(key, instance);
             }
         }
 
         public static Object getInstance(String key) {
-            return singletonMap.get(key);
+            return SINGLETON_MAP.get(key);
         }
     }
 }

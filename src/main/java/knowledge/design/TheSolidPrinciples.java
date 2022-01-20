@@ -14,7 +14,7 @@ import java.util.Arrays;
  * 4.接口隔离原则 (Interface Segregation Principle)
  * 5.依赖倒置原则 (Dependence Inversion Principle)
  * 6.迪米特法则 (Law of Demeter) / 最少知识原则 (Least Knowledge Principle)
- * 7.合成复用原则 (Composite Reuse Principle)
+ * 7.合成复用原则 (Composite/Aggregate Reuse Principle)
  * <p>
  * A Solid Guide to SOLID Principles：https://www.baeldung.com/solid-principles
  *
@@ -271,7 +271,7 @@ public class TheSolidPrinciples {
     /**
      * 接口隔离原则
      * 客户端不应该被迫依赖于它不使用的方法；一个类对另一个类的依赖应该建立在最小的接口上
-     * 使用多个专门的接口比使用单一的总接口要好
+     * 使用多个专门的接口，而不使用单一的总接口
      * SRP: 对类的约束
      * ISP: 对接口的约束
      * https://www.baeldung.com/java-liskov-substitution-principle
@@ -467,10 +467,9 @@ public class TheSolidPrinciples {
 
     /**
      * 合成复用原则（组合/聚合复用原则）
-     * 在软件复用时，要尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现
-     * 如果要使用继承关系，则必须严格遵循里氏替换原则
+     * 尽量使用组合(has-a)/聚合(contains-a)而不是继承关系达到软件复用的目的
      */
-    static class CRP {
+    static class CARP {
         static class CounterExample {
             static class Car {
             }
