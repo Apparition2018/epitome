@@ -12,8 +12,11 @@ import java.util.Map;
  * 1. 非业务需求：鉴权、缓存、事务、监控、统计、限流、幂等、日志，可使用 Spring AOP 实现
  * 2. 延迟初始化
  * 使用实例：
- * 1. @PreAuthorize，@Cacheable，@Transactional
- * 2. java.rmi.*
+ * 1.@PreAuthorize，@Cacheable，@Transactional
+ * 2.{@link java.rmi}
+ * 3.{@link java.lang.reflect.Proxy}
+ * 4.{@link org.springframework.aop.framework.AopProxy}
+ * 5.{@link org.springframework.aop.framework.CglibAopProxy}
  * <p>
  * 角色：
  * 抽象主题角色 Subject

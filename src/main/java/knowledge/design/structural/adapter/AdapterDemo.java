@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
  * java.util.Arrays#asList()    E[]                 Arrays#ArrayList            AbstractList
  * java.util.Collections#list() Collection<T>       实现 Enumeration             Enumeration
  * Spring AOP                   MethodBeforeAdvice  MethodBeforeAdviceAdapter   AdvisorAdapter
+ * Spring MVC                   HttpRequestHandler  HttpRequestHandlerAdapter   HandlerAdapter
  * <p>
  * 角色：
  * 目标角色 Target：定义与客户端交互的接口

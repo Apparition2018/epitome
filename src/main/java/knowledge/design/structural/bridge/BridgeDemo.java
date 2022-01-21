@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
  * 桥接模式：将类拆分为抽象部分和实现部分，使得二者可以独立地变化
  * 使用场景：在几个独立的维度上扩展类
  * 使用实例：
- * 1.跨平台应用：JDBC
+ * 1.JDBC：{@link java.sql.Driver}
  * <p>
  * 角色：
  * 抽象部分：接收 Implementor 的引用
@@ -16,9 +16,7 @@ import org.junit.jupiter.api.Test;
  * 1.实现角色 Implementor：定义底层操作
  * 2.具体实现角色 ConcreteImplementor：实现 Implementor
  * <p>
- * 优点：
- * 1.符合单一职责原则、开闭原则、依赖倒置原则
- * 2.扩展维度只需增加 RefinedAbstraction 或 ConcreteImplementor
+ * 优点：符合单一职责原则、开闭原则、依赖倒置原则
  * <p>
  * Bridge：https://refactoringguru.cn/design-patterns/bridge
  * Java设计模式：http://c.biancheng.net/view/1364.html

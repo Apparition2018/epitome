@@ -95,6 +95,9 @@
 
 ---
 ## 对比
+>### SimpleFactory vs FactoryMethod vs AbstractFactory
+>```
+>```
 >### Proxy vs Decorator
 >1. 服务对象的生命周期
 >```

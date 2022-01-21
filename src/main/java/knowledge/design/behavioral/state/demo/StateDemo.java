@@ -8,7 +8,9 @@ import java.util.List;
 /**
  * 状态模式：允许一个对象在其内部状态改变时行为也发行改变，使其看起来像是改变了对象所属的类
  * 使用场景：行为随状态的改变而改变
- * 使用实例：工作流、游戏、电商订单
+ * 使用实例：
+ * 1.工作流、游戏、电商订单
+ * 2.org.springframework.statemachine
  * <p>
  * 上下文角色角色 Context：持有 State 的引用，并提供一个设置器用于接收新的 State
  * 状态部分：接收 Context 的引用，从而可以获取 Context 的信息，和触发 State 转移
@@ -16,7 +18,7 @@ import java.util.List;
  * 具体状态角色 ConcreteState：实现 State
  * <p>
  * 优点：符合单一职责原则
- * 缺点：部分支持开闭原则，扩展新状态只需增加 ConcreteState，但其它 ConcreteState 转移到新状态需要修改代码
+ * 缺点：一定程度违反开闭原则，扩展新状态只需增加 ConcreteState，但其它 ConcreteState 转移到新状态需要修改代码
  * <p>
  * 有限状态机：Finite State Machine，
  * 1.状态 State

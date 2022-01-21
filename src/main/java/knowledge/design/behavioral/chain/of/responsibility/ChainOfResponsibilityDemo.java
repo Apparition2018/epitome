@@ -1,10 +1,14 @@
 package knowledge.design.behavioral.chain.of.responsibility;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * 责任链模式：允许请求沿着多个处理者组成的链进行传递，避免了发送方和接收方之间的耦合
@@ -12,8 +16,9 @@ import java.util.Map;
  * 1.处理程序能细分成多个处理部分，①固定顺序②动态顺序③动态指定处理部分
  * 2.多个对象可以处理一个请求，但具体由哪个对象处理该请求在运行时确定
  * 使用实例：
- * 1.javax.servlet.Filter#doFilter()
- * 2.java.util.logging.Logger#log()
+ * 1.{@link javax.servlet.Filter#doFilter(ServletRequest, ServletResponse, FilterChain)}
+ * 2.{@link java.util.logging.Logger#log(Level, String)}
+ * 3.{@link org.springframework.web.servlet.HandlerExecutionChain}
  * <p>
  * 角色：
  * 抽象处理者角色 Handler：定义处理请求接口
@@ -39,12 +44,10 @@ public class ChainOfResponsibilityDemo {
         server = new Server();
         server.register("admin@example.com", "admin_pass");
         server.register("user@example.com", "user_pass");
-
-        Middleware middleware = new ThrottlingMiddleware(2);
-        middleware.linkWith(new UserExistsMiddleware(server))
-                .linkWith(new RoleCheckMiddleware());
-
-        server.setMiddleware(middleware);
+        server.setMiddleware(new Middleware.Builder()
+                .setNext(new ThrottlingMiddleware(2))
+                .setNext(new UserExistsMiddleware(server))
+                .setNext(new RoleCheckMiddleware()).build());
     }
 
     /**
@@ -71,9 +74,8 @@ public class ChainOfResponsibilityDemo {
     abstract static class Middleware {
         private Middleware next;
 
-        public Middleware linkWith(Middleware next) {
+        public void setNext(Middleware next) {
             this.next = next;
-            return next;
         }
 
         public abstract boolean check(String email, String password);
@@ -81,6 +83,25 @@ public class ChainOfResponsibilityDemo {
         protected boolean checkNext(String email, String password) {
             if (next == null) return true;
             return next.check(email, password);
+        }
+
+        static class Builder {
+            private Middleware head;
+            private Middleware tail;
+
+            public Builder setNext(Middleware next) {
+                if (this.head == null) {
+                    this.head = this.tail = next;
+                    return this;
+                }
+                this.tail.setNext(next);
+                this.tail = next;
+                return this;
+            }
+
+            public Middleware build() {
+                return this.head;
+            }
         }
     }
 

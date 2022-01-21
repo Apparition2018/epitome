@@ -2,20 +2,28 @@ package knowledge.design.creational.factory.method;
 
 import org.junit.jupiter.api.Test;
 
+import java.text.NumberFormat;
+import java.util.Calendar;
+
 /**
  * 工厂模式：定义一个创建对象的接口，让子类来决定哪些类需要被实例化，使一个类的实例化推迟到子类。工厂模式是抽象工厂的一种常见情况。
- * 适用场合：计划不同条件下创建不同实例；一个对象的创建过程比较复杂；对象的创建和使用解耦
- * 使用场景：Spring IOC
- * 关键代码：具体创建过程在子类执行
- * 优点：
+ * 使用场景：计划不同条件下创建不同实例；一个对象的创建过程比较复杂；对象的创建和使用解耦
+ * 使用实例：
+ * 1.Spring IOC {@link org.springframework.context.ApplicationContext}
+ * 2.{@link java.util.ResourceBundle#getBundle(String)}
+ * 3.{@link java.net.URLStreamHandlerFactory#createURLStreamHandler(String)}
+ * <p>
+ * 角色：
+ * <p>
+ * 优点：符合单一职责原则、开闭原则、迪米特法则
  * 1.只要知道名称就可以创建一个对象
  * 2.扩展性高，想增加一个产品，只需扩展一个工厂类
  * 3.屏蔽产品的具体实现，调用者只关心产品的接口
- * 缺点：每次增加一个产品，就需要增加一个具体类和对象实现的工厂，使系统中类的个数成倍增加
  * <p>
- * 工厂模式 | 菜鸟教程：https://www.runoob.com/design-pattern/factory-pattern.html
- * 简单工厂模式、工厂方法模式和抽象工厂模式有何区别？ - 知乎：https://www.zhihu.com/question/27125796
- * 模式的秘密——工厂模式：https://www.imooc.com/learn/261
+ * Factory-Method：https://refactoringguru.cn/design-patterns/factory-method
+ * Java设计模式：http://c.biancheng.net/view/1348.html
+ * 菜鸟教程：https://www.runoob.com/design-pattern/factory-pattern.html
+ * 简单工厂 vs 工厂方法 vs 抽象工厂：https://www.zhihu.com/question/27125796
  *
  * @author ljh
  * created on 2019/11/1 9:36
@@ -23,20 +31,52 @@ import org.junit.jupiter.api.Test;
 public class FactoryMethodDemo {
 
     /**
-     * 简单/静态工厂模式
-     * 工厂方法模式的简化
-     * 增加一种动物，需要修改原来有工厂类的代码，不符合开闭原则
+     * 简单工厂/静态工厂方法
+     * 使用场景：需要创建产品的类型较少
+     * 使用实例：
+     * 1.{@link Calendar#getInstance()}
+     * 2.{@link NumberFormat#getInstance()}
+     * 3.{@link java.util.EnumSet#of(Enum)}
+     * 4.{@link java.nio.charset.Charset#forName(String)}
+     * 5.{@link org.springframework.beans.factory.BeanFactory}
+     * 角色：Factory、Product、ConcreteProduct
+     * 优点：符合迪米特法则
+     * 缺点：违反开闭原则
+     * Java设计模式：http://c.biancheng.net/view/8385.html
      */
-    @Test
-    public void testSimpleFactory() {
-        Animal animal = AnimalSimpleFactory.createAnimal("dog");
-        if (null != animal) animal.eat();
+    static class SimpleFactoryDemo {
+
+        @Test
+        public void testSimpleFactory() {
+            Animal animal = AnimalFactory.createAnimal("dog");
+            if (animal != null) animal.eat();
+        }
+
+        /**
+         * Factory
+         */
+        abstract static class AnimalFactory {
+            public static Animal createAnimal(String name) {
+                switch (name) {
+                    case "dog":
+                        return new Dog();
+                    case "cag":
+                        return new Cat();
+                    default:
+                        return null;
+                }
+            }
+
+            public static Dog createDog() {
+                return new Dog();
+            }
+
+            public static Cat createCat() {
+                return new Cat();
+            }
+        }
     }
 
-    /**
-     * 工厂方法模式
-     * 增加一种动物，只需增加一种动物的工厂类
-     */
     @Test
     public void testFactoryMethod() {
         AnimalFactory animalFactory = new DogFactory();
@@ -45,35 +85,15 @@ public class FactoryMethodDemo {
     }
 
     /**
-     * 简单/静态工厂
+     * AbstractFactory
      */
-    static class AnimalSimpleFactory {
-        public static Dog createDog() {
-            return new Dog();
-        }
-
-        public static Cat createCat() {
-            return new Cat();
-        }
-
-        public static Animal createAnimal(String name) {
-            if ("dog".equals(name)) {
-                return new Dog();
-            } else if ("cat".equals(name)) {
-                return new Cat();
-            } else {
-                return null;
-            }
-        }
-    }
-
-    /**
-     * 工厂方法工厂
-     */
-    private interface AnimalFactory {
+    interface AnimalFactory {
         Animal createAnimal();
     }
 
+    /**
+     * ConcreteFactory
+     */
     static class CatFactory implements AnimalFactory {
         @Override
         public Animal createAnimal() {
@@ -81,6 +101,9 @@ public class FactoryMethodDemo {
         }
     }
 
+    /**
+     * ConcreteFactory
+     */
     static class DogFactory implements AnimalFactory {
         @Override
         public Animal createAnimal() {
@@ -88,10 +111,16 @@ public class FactoryMethodDemo {
         }
     }
 
-    private abstract static class Animal {
+    /**
+     * Product
+     */
+    abstract static class Animal {
         public abstract void eat();
     }
 
+    /**
+     * ConcreteProduct
+     */
     static class Cat extends Animal {
         @Override
         public void eat() {
@@ -99,11 +128,13 @@ public class FactoryMethodDemo {
         }
     }
 
+    /**
+     * ConcreteProduct
+     */
     static class Dog extends Animal {
         @Override
         public void eat() {
             System.out.println("狗吃肉");
         }
     }
-
 }

@@ -257,6 +257,8 @@ public class DateUtilDemo extends Demo {
 
     /**
      * 计时器
+     *
+     * @see spring.api.util.StopWatchDemo
      * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/StopWatch.html
      */
     @Test
@@ -268,21 +270,6 @@ public class DateUtilDemo extends Demo {
         IntStream.rangeClosed(1, 100).forEach(i -> new Thread(new MyTask(i)).start());
         countDownLatch.await();
         stopWatch.stop();
-
-        // StopWatch 摘要
-        p(stopWatch.shortSummary());        // StopWatch 'StopWatch': running time = 308825716 ns
-        // 任务数
-        p(stopWatch.getTaskCount());        // 1
-        // 总耗时
-        p(stopWatch.getTotalTimeMillis());  // 308
-        // 当前任务名
-        p(stopWatch.currentTaskName());     // null，stop() 后为任务名为 null
-        // 所有任务信息
-        StopWatch.TaskInfo[] taskInfo = stopWatch.getTaskInfo();
-        // 最后一个任务名
-        p(stopWatch.getLastTaskName());     // 执行任务
-        // 最后一个任务信息
-        StopWatch.TaskInfo lastTaskInfo = stopWatch.getLastTaskInfo();
     }
 
 }

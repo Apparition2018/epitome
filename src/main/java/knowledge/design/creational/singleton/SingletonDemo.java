@@ -2,7 +2,9 @@ package knowledge.design.creational.singleton;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.config.AbstractFactoryBean;
 
+import java.awt.*;
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -17,10 +19,11 @@ import java.util.Map;
  * 3.避免对资源的多重占用：如写文件操作
  * 使用实例：
  * 1.配置信息类、ID 生成器、连接池、线程池、缓冲池、工具类、日志
- * 2.org.springframework.beans.factory.config.AbstractFactoryBean#getObject()
- * 3.java.lang.Runtime#getRuntime()
- * 4.java.awt.Desktop#getDesktop()
- * 5.java.lang.System#getSecurityManager()
+ * 2.{@link AbstractFactoryBean#getObject()}
+ * 3.{@link Runtime#getRuntime()}   
+ * 4.{@link Desktop#getDesktop()}
+ * 5.{@link System#getSecurityManager()}
+ * 6.{@link org.springframework.beans.factory.support.AbstractBeanFactory#getBean(String)} 单例注册表
  * <p>
  * 缺点：
  * 1.违反单一职责原则：单例业务逻辑通常写在一个类中

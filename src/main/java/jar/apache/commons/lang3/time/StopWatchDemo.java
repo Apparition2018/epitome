@@ -19,30 +19,41 @@ public class StopWatchDemo extends Demo {
         // 相当于 StopWatch stopWatch = StopWatch.create(); stopWatch.start();
         StopWatch stopWatch = StopWatch.createStarted();
 
-        TimeUnit.MILLISECONDS.sleep(100);
+        TimeUnit.MILLISECONDS.sleep(50);
+        // 切点
         stopWatch.split();
-        p("从开始到现在的运行时间：" + stopWatch.getTime() + "ms");                     // 从开始到现在的运行时间：100ms
-        p("从开始到现在的运行时间：" + stopWatch.getTime(TimeUnit.MILLISECONDS) + "ms");// 从开始到现在的运行时间：100ms
+        p("开始到现在：" + stopWatch.getTime());                      // 开始到现在：50
+        p("开始到现在：" + stopWatch.getTime(TimeUnit.MILLISECONDS)); // 开始到现在：50
+        p("开始到现在：" + stopWatch.getNanoTime());                  // 开始到现在：50000000
+        p("开始到现在：" + stopWatch.formatTime() + "\n");            // 开始到现在：00:00:00.50
 
         TimeUnit.MILLISECONDS.sleep(100);
-        p("从开始到现在的运行时间：" + stopWatch.getTime() + "ms");                     // 从开始到现在的运行时间：200ms
-        p("从开始到切点的运行时间：" + stopWatch.getSplitTime() + "ms");                // 从开始到切点的运行时间：100ms
+        p("开始到现在：" + stopWatch.getTime());                      // 开始到现在：150
+        p("开始到切点：" + stopWatch.getSplitTime());                 // 开始到切点：50
+        p("开始到切点：" + stopWatch.getSplitNanoTime());             // 开始到切点：50000000
+        p("开始到切点：" + stopWatch.formatSplitTime() + "\n");       // 开始到切点：00:00:00.50
+        // 取消切点
+        stopWatch.unsplit();
 
-        // 重置，之后必须 开始
         stopWatch.reset();
+        // 重置之后，开始
         stopWatch.start();
-        TimeUnit.MILLISECONDS.sleep(100);
-        p("从开始到现在的运行时间：" + stopWatch.getTime() + "ms");                     // 从开始到现在的运行时间：100ms
-
+        p("isStarted：" + stopWatch.isStarted());                    // isStarted：true
+        TimeUnit.MILLISECONDS.sleep(50);
+        p("重开到现在：" + stopWatch.getTime());                      // 重开到现在：50
         // 暂停
         stopWatch.suspend();
-        TimeUnit.MILLISECONDS.sleep(100);
+        p("isSuspended：" + stopWatch.isSuspended());                // isSuspended：true
+        TimeUnit.MILLISECONDS.sleep(50);
         // 恢复暂停
         stopWatch.resume();
-        p("从开始到现在的运行时间：" + stopWatch.getTime() + "ms");                     // 从开始到现在的运行时间：100ms
+        TimeUnit.MILLISECONDS.sleep(50);
+        p("重开到现在：" + stopWatch.getTime() + "\n");               // 重开到现在：100
 
         // 停止
         stopWatch.stop();
-
+        p("isStopped：" + stopWatch.isStopped());                    // isStopped：true
+        p("StartTime：" + stopWatch.getStartTime());                 // startTime：1642727303268
+        p("StopTime：" + stopWatch.getStopTime());                   // stopTime：1642727303456
     }
 }

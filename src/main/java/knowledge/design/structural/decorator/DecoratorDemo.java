@@ -18,11 +18,14 @@ import java.util.zip.InflaterInputStream;
  * 2.使用继承来扩展对象行为的方案难以实现或者根本不可行
  * 使用实例：
  * 1.Java IO：
- * -    Component:          InputStream
+ * -    Component:          {@link InputStream} {@link OutputStream} {@link Reader} {@link Writer}
  * -    ConcreteComponent:  FileInputStream，ByteArrayInputStream，PipedInputStream，StringBufferInputStream
  * -    Decorator:          FilterInputStream
  * -    ConcreteDecorator:  BufferedInputStream，DataInputStream
- * 2.java.util.Collections 的 checkedXXX()、 synchronizedXXX() 和 unmodifiableXXX()
+ * 2.{@link java.util.Collections} 的 checkedXXX()、 synchronizedXXX() 和 unmodifiableXXX()
+ * 3.{@link javax.servlet.http.HttpServletRequestWrapper} 和 {@link javax.servlet.http.HttpServletResponseWrapper}
+ * 4.{@link org.springframework.cache.transaction.TransactionAwareCacheDecorator}
+ * 5.{@link org.springframework.http.server.reactive.ServerHttpRequestDecorator} 和 {@link org.springframework.http.server.reactive.ServerHttpResponseDecorator}
  * <p>
  * 角色：
  * 抽象部件角色 Component：所有角色的顶级接口，定义通用方法
@@ -30,15 +33,11 @@ import java.util.zip.InflaterInputStream;
  * 抽象装饰角色 Decorator：实现 Component，接收 Component 的引用（构造器接收）
  * 具体装饰角色 ConcreteDecorator：实现 Decorator，定义添加到 Component 的额外行为，在调用父类方法之前或之后执行自身的行为
  * <p>
- * 优点：
- * 1.符合开闭原则
- * 2.通过使用多个 ConcreteDecorator 的不同组合，实现不同的功能
- * 3.扩展新功能只需增加 ConcreteDecorator
+ * 优点：符合开闭原则
  * <p>
  * Decorator：https://refactoringguru.cn/design-patterns/decorator
  * Java设计模式：http://c.biancheng.net/view/1366.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/decorator-pattern.html
- * Java3y：https://www.zhihu.com/question/32007641/answer/687582571
  *
  * @author Arsenal
  * created on 2020/9/26 2:51

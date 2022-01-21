@@ -20,5 +20,5 @@ public interface ScoreMapper {
     int updateByPrimaryKey(Score record);
 
     @MapKey("id")
-    Map<Integer, Map<String, Object>> selectAllMap();
+    Map<Integer, Map<Integer, Object>> selectAllMap();
 }
