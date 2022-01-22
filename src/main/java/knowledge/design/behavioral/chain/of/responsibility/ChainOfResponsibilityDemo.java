@@ -18,12 +18,12 @@ import java.util.logging.Level;
  * 使用实例：
  * 1.{@link javax.servlet.Filter#doFilter(ServletRequest, ServletResponse, FilterChain)}
  * 2.{@link java.util.logging.Logger#log(Level, String)}
- * 3.{@link org.springframework.web.servlet.HandlerExecutionChain}
+ * 3.{@link org.springframework.web.servlet.HandlerExecutionChain} 和 {@link org.springframework.web.servlet.HandlerInterceptor}
  * <p>
  * 角色：
- * 抽象处理者角色 Handler：定义处理请求接口
- * 基础处理者角色 BaseHandler (可选)：接收下一个 ConcreteHandler 的引用用来创建链，抽取 ConcreteHandler 的共有代码
- * 具体处理者角色 ConcreteHandler：实现处理请求接口
+ * 抽象处理者 Handler：定义处理请求接口
+ * 基础处理者 BaseHandler (可选)：接收下一个 ConcreteHandler 的引用用来创建链，抽取 ConcreteHandler 的共有代码
+ * 具体处理者 ConcreteHandler：实现处理请求接口
  * -    第一种：每个处理者都可能对请求进行处理，然后把请求传递给下一个处理者，或者终止处理
  * -    第二种：一个请求必定被某一个处理者处理，每个处理者只能自己处理，或者把请求传递给下一个处理者 (策略模式?)
  * <p>

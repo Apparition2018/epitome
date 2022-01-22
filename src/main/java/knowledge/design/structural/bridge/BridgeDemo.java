@@ -6,15 +6,16 @@ import org.junit.jupiter.api.Test;
  * 桥接模式：将类拆分为抽象部分和实现部分，使得二者可以独立地变化
  * 使用场景：在几个独立的维度上扩展类
  * 使用实例：
- * 1.JDBC：{@link java.sql.Driver}
+ * 1.sql：{@link java.sql.Driver}
+ * 2.logging: {@link java.util.logging.Handler} 和 {@link java.util.logging.Formatter}
  * <p>
  * 角色：
  * 抽象部分：接收 Implementor 的引用
- * 1.抽象角色 Abstraction：定义与客户端交互的高层操作
- * 2.精确抽象角色 RefinedAbstraction：实现 Abstraction
+ * 1.抽象 Abstraction：定义与客户端交互的高层操作
+ * 2.精确抽象 RefinedAbstraction：实现 Abstraction
  * 实现部分：
- * 1.实现角色 Implementor：定义底层操作
- * 2.具体实现角色 ConcreteImplementor：实现 Implementor
+ * 1.实现 Implementor：定义底层操作
+ * 2.具体实现 ConcreteImplementor：实现 Implementor
  * <p>
  * 优点：符合单一职责原则、开闭原则、依赖倒置原则
  * <p>

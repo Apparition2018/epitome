@@ -15,13 +15,13 @@ import java.util.Map;
  * 1.@PreAuthorize，@Cacheable，@Transactional
  * 2.{@link java.rmi}
  * 3.{@link java.lang.reflect.Proxy}
- * 4.{@link org.springframework.aop.framework.AopProxy}
+ * 4.{@link org.springframework.aop.framework.JdkDynamicAopProxy}
  * 5.{@link org.springframework.aop.framework.CglibAopProxy}
  * <p>
  * 角色：
- * 抽象主题角色 Subject
- * 真实主题角色 RealSubject：实现 Subject
- * 代理角色 Proxy：实现 Subject，或直接继承 RealSubject，持有 RealSubject 的引用
+ * 抽象主题 Subject
+ * 真实主题 RealSubject：实现 Subject
+ * 代理 Proxy：实现 Subject，或直接继承 RealSubject，持有 RealSubject 的引用
  * <p>
  * 优点：符合开闭原则
  * 缺点：RealSubject 与 Proxy 一一对应，RealSubject 增加，Proxy 也要跟着增加

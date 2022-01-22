@@ -19,19 +19,19 @@ import java.util.zip.InflaterInputStream;
  * 使用实例：
  * 1.Java IO：
  * -    Component:          {@link InputStream} {@link OutputStream} {@link Reader} {@link Writer}
- * -    ConcreteComponent:  FileInputStream，ByteArrayInputStream，PipedInputStream，StringBufferInputStream
- * -    Decorator:          FilterInputStream
- * -    ConcreteDecorator:  BufferedInputStream，DataInputStream
+ * -    ConcreteComponent:  {@link FileInputStream} {@link ByteArrayInputStream} {@link PipedInputStream}
+ * -    Decorator:          {@link FilterInputStream}
+ * -    ConcreteDecorator:  {@link BufferedInputStream} {@link DataInputStream}
  * 2.{@link java.util.Collections} 的 checkedXXX()、 synchronizedXXX() 和 unmodifiableXXX()
  * 3.{@link javax.servlet.http.HttpServletRequestWrapper} 和 {@link javax.servlet.http.HttpServletResponseWrapper}
  * 4.{@link org.springframework.cache.transaction.TransactionAwareCacheDecorator}
  * 5.{@link org.springframework.http.server.reactive.ServerHttpRequestDecorator} 和 {@link org.springframework.http.server.reactive.ServerHttpResponseDecorator}
  * <p>
  * 角色：
- * 抽象部件角色 Component：所有角色的顶级接口，定义通用方法
- * 具体部件角色 ConcreteComponent：实现 Component，定义基础行为
- * 抽象装饰角色 Decorator：实现 Component，接收 Component 的引用（构造器接收）
- * 具体装饰角色 ConcreteDecorator：实现 Decorator，定义添加到 Component 的额外行为，在调用父类方法之前或之后执行自身的行为
+ * 抽象部件 Component：所有角色的顶级接口，定义通用方法
+ * 具体部件 ConcreteComponent：实现 Component，定义基础行为
+ * 抽象装饰 Decorator：实现 Component，接收 Component 的引用（构造器接收）
+ * 具体装饰 ConcreteDecorator：实现 Decorator，定义添加到 Component 的额外行为，在调用父类方法之前或之后执行自身的行为
  * <p>
  * 优点：符合开闭原则
  * <p>

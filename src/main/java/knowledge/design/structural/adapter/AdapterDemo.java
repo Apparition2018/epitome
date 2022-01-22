@@ -2,23 +2,30 @@ package knowledge.design.structural.adapter;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Enumeration;
+
 /**
  * 适配器模式：使现有不兼容的接口可以一起工作
  * 使用场景：
  * 1.现有接口不兼容
  * 2.复用无法添加到超类的通用功能的多个现有子类 ???
  * 3.只想使用接口中的某些方法 (Default Adapter，使用抽象类实现接口)
- * 使用实例：                    Adaptee             Adapter                     Target
- * Java IO                      InputStream         InputStreamReader           Reader
- * java.util.Arrays#asList()    E[]                 Arrays#ArrayList            AbstractList
- * java.util.Collections#list() Collection<T>       实现 Enumeration             Enumeration
- * Spring AOP                   MethodBeforeAdvice  MethodBeforeAdviceAdapter   AdvisorAdapter
- * Spring MVC                   HttpRequestHandler  HttpRequestHandlerAdapter   HandlerAdapter
+ * 使用实例：                                    Adaptee             Adapter                     Target
+ * Java IO                                      InputStream         InputStreamReader           Reader
+ * Java IO                                      OutputStream        OutputStreamWriter          Writer
+ * {@link Arrays#asList(Object[])}              E[]                 Arrays#ArrayList            AbstractList
+ * {@link Collections#list(Enumeration)}        Enumeration<T>      ArrayList                   ArrayList
+ * {@link Collections#enumeration(Collection)}  Collection<T>       实现 Enumeration             Enumeration
+ * Spring AOP                                   MethodBeforeAdvice  MethodBeforeAdviceAdapter   AdvisorAdapter
+ * Spring MVC                                   HttpRequestHandler  HttpRequestHandlerAdapter   HandlerAdapter
  * <p>
  * 角色：
- * 目标角色 Target：定义与客户端交互的接口
- * 被适配角色 Adaptee：现有的一些功能类，客户端与其不兼容
- * 适配器角色 Adapter：实现或继承 Target，类适配器继承 Adaptee，对象适配器持有 Adaptee 的引用
+ * 目标 Target：定义与客户端交互的接口
+ * 被适配 Adaptee：现有的一些功能类，客户端与其不兼容
+ * 适配器 Adapter：实现或继承 Target，类适配器继承 Adaptee，对象适配器持有 Adaptee 的引用
  * <p>
  * 分类：
  * 1.Object Adapter     class Adapter extends Adaptee implement Target {}               继承

@@ -9,6 +9,7 @@ import java.util.Objects;
  * <p>
  * 抽象工厂模式 | 菜鸟教程：https://www.runoob.com/design-pattern/abstract-factory-pattern.html
  * 模式的秘密——工厂模式：https://www.imooc.com/learn/261
+ * 简单工厂 vs 工厂方法 vs 抽象工厂：https://www.zhihu.com/question/27125796
  *
  * @author ljh
  * created on 2019/11/7 15:04

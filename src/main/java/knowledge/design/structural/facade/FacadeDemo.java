@@ -11,14 +11,14 @@ import java.io.File;
  * 1.同定义
  * 2.构建分层结构系统
  * 使用实例：
- * 1.各种工具类
+ * 1.各种工具类 {@link org.springframework.jdbc.support.JdbcUtils}
  * 2.给第三方使用的接口
  * 3.MVC
  * <p>
  * 角色：
- * 外观角色 Facade
- * 附加外观角色 AdditionalFacade (可选)
- * 子系统角色 SubSystem
+ * 外观 Facade
+ * 附加外观 AdditionalFacade (可选)
+ * 子系统 SubSystem
  * <p>
  * 优点：符合迪米特法则
  * 缺点：违反开闭原则

@@ -1,12 +1,12 @@
 package knowledge.design.behavioral.strategy;
 
 import lombok.Data;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,17 +18,17 @@ import java.util.Map;
  * 使用场景：多行为、多算法、if-else、switch-case
  * 使用实例：
  * 1.{@link java.util.Comparator#compare(Object, Object)}
- * 2.{@link java.util.concurrent.ThreadPoolExecutor} 的构造器参数 RejectedExecutionHandler 的四个实现：
+ * 2.{@link javax.servlet.Filter#doFilter(ServletRequest, ServletResponse, FilterChain)}
+ * 3.{@link javax.servlet.http.HttpServlet#service(ServletRequest, ServletResponse)}
+ * 4.{@link javax.servlet.http.HttpServlet} 的 doXXX
+ * 5.{@link java.util.concurrent.ThreadPoolExecutor} 的构造器参数 RejectedExecutionHandler 的四个实现：
  * -    https://blog.csdn.net/yangsen159/article/details/103146038
- * 3.{@link javax.servlet.Filter#doFilter(ServletRequest, ServletResponse, FilterChain)}
- * 4.{@link javax.servlet.http.HttpServlet#service(ServletRequest, ServletResponse)}
- * 5.{@link javax.servlet.http.HttpServlet} 的 doXXX
- * 6.{@link org.springframework.core.io.Resource}
+ * 6.{@link ResourceLoader#getResource(String)} 和 {@link Resource}
  * <p>
  * 角色:
- * 上下文角色 Context：接收 Strategy 的引用
- * 抽象策略角色 Strategy：声明 Context 执行策略的方法
- * 具体策略角色 ConcreteStrategy：实现 Strategy
+ * 上下文 Context：接收 Strategy 的引用
+ * 抽象策略 Strategy：声明 Context 执行策略的方法
+ * 具体策略 ConcreteStrategy：实现 Strategy
  * <p>
  * 优点：符合开闭原则
  * 缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
