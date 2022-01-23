@@ -2,6 +2,7 @@ package knowledge.design.behavioral.observer.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Observable;
 
 /**
@@ -158,7 +159,7 @@ public class ObserverDemo {
             }
 
             public void setData(String data) {
-                if (!this.data.equals(data)) {
+                if (!Objects.equals(this.data, data)) {
                     this.data = data;
                     setChanged();
                 }

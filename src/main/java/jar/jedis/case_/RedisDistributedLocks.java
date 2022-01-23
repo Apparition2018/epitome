@@ -7,6 +7,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;
 
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -106,7 +107,7 @@ public class RedisDistributedLocks {
         public boolean releaseLock(Jedis jedis, String key, String val) {
             String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
             Object result = jedis.eval(script, Collections.singletonList(key), Collections.singletonList(val));
-            return val.equals(result);
+            return Objects.equals(val, result);
         }
 
         public Random getRandom() {

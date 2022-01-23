@@ -77,7 +77,7 @@ public class FacadeDemo {
     static class CodecFactory {
         public static Codec extract(VideoFile file) {
             String type = file.getCodeType();
-            if (type.equals("mp4")) {
+            if ("mp4".equals(type)) {
                 System.out.println("CodecFactory: extracting mpeg audio...");
                 return new MPEG4CompressionCodec();
             } else {
@@ -121,7 +121,7 @@ public class FacadeDemo {
             VideoFile file = new VideoFile(fileName);
             Codec sourceCodec = CodecFactory.extract(file);
             Codec destinationCodec;
-            if (format.equals("mp4")) {
+            if ("mp4".equals(format)) {
                 destinationCodec = new OggCompressionCodec();
             } else {
                 destinationCodec = new MPEG4CompressionCodec();

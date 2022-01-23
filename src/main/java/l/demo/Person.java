@@ -25,7 +25,7 @@ import java.util.Objects;
 @Accessors(chain = true)
 @NoArgsConstructor
 @ApiModel(description = "人员")
-public class Person implements Comparable<Person>, Serializable {
+public class Person implements Comparable<Person>, Cloneable, Serializable {
     private static final long serialVersionUID = -8205619618185839521L;
     private Integer id;
     private String name;
@@ -73,6 +73,16 @@ public class Person implements Comparable<Person>, Serializable {
     @Override
     public int hashCode() {
         return new HashCodeBuilder().append(id).toHashCode();
+    }
+
+    @Override
+    public Person clone() {
+        try {
+            return (Person) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override

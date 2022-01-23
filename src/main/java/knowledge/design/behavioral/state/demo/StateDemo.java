@@ -15,7 +15,7 @@ import java.util.List;
  * 上下文 Context：持有 State 的引用，并提供一个设置器用于接收新的 State
  * 状态部分：接收 Context 的引用，从而可以获取 Context 的信息，和触发 State 转移
  * 抽象状态 State：声明特定 State 的行为
- * 具体状态 ConcreteState：实现 State
+ * 具体状态 ConcreteState
  * <p>
  * 优点：符合单一职责原则
  * 缺点：一定程度违反开闭原则，扩展新状态只需增加 ConcreteState，但其它 ConcreteState 转移到新状态需要修改代码

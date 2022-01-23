@@ -5,6 +5,8 @@ import cn.hutool.core.lang.Singleton;
 import l.demo.Person;
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
+
 /**
  * Singleton    单例工具
  * 一般获取单例方式：
@@ -27,6 +29,6 @@ public class SingletonDemo {
     public void testSingleton() {
         Person person = Singleton.get(Person.class);
         Person person2 = Singleton.get(Person.class);
-        Assert.isTrue(person.equals(person2));
+        Assert.isTrue(Objects.equals(person, person2));
     }
 }

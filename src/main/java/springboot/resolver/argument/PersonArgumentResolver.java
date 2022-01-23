@@ -19,7 +19,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 public class PersonArgumentResolver extends Demo implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterType().equals(Person.class);
+        return Person.class.equals(parameter.getParameterType());
     }
 
     @Override

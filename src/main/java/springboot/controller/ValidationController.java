@@ -25,6 +25,7 @@ import java.lang.annotation.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * RuoYi 参数验证：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81
@@ -179,7 +180,7 @@ public class ValidationController {
             String[] valueArr = values.split(",");
             boolean isFlag = false;
             for (String v : valueArr) {
-                if (v.equals(value)) {
+                if (Objects.equals(v, value)) {
                     isFlag = true;
                     break;
                 }

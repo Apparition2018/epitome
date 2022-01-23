@@ -1,116 +1,138 @@
 package knowledge.design.creational.prototype;
 
+import l.demo.Demo;
+import lombok.NoArgsConstructor;
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
- * 原型模式：用原型实例指定创建对象的种类，并且通过拷贝这个原型来创建新的对象
- * https://www.runoob.com/design-pattern/prototype-pattern.html
+ * 原型模式：用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象
+ * 使用场景：
+ * 1。对象创建成本较大（如需复杂计算，从 RPC、网络、数据库、文件系统等读取），且需创建的对象与现有对象差别不大
+ * 使用实例：
+ * 1.浅拷贝：{@link Cloneable}
+ * 2.深拷贝：①递归 clone；②序列化
+ * <p>
+ * 角色：
+ * 抽象原型 Prototype：clone()
+ * 具体原型 ConcretePrototype：实现 clone()
+ * 原型注册表 PrototypeRegistry (可选)：注册表存储对象，以供复制使用
+ * <p>
+ * 缺点：违反开闭原则
+ * <p>
+ * Prototype：https://refactoringguru.cn/design-patterns/prototype
+ * Java设计模式：http://c.biancheng.net/view/1343.html
+ * 菜鸟教程：https://www.runoob.com/design-pattern/prototype-pattern.html
+ * 设计模式之美：原型模式：如何最快速地 clone 一个 HashMap 散列表？
  *
  * @author ljh
  * created on 2020/9/26 2:51
  */
-public class PrototypeDemo {
-    public static void main(String[] args) {
-        ShapeCache.loadCache();
+public class PrototypeDemo extends Demo {
 
-        Shape clonedShape = ShapeCache.getShape("1");
-        System.out.println("Shape : " + clonedShape.getType());
+    /**
+     * 复制图形（不使用 Cloneable）
+     * https://refactoringguru.cn/design-patterns/prototype/java/example
+     */
+    @Test
+    public void testPrototype() {
+        Rectangle rectangle = new Rectangle();
+        rectangle.width = 10;
+        rectangle.height = 20;
+        rectangle.color = "blue";
+        Shape clone = rectangle.clone();
+        p(rectangle == clone);                                          // false
+        p(Objects.equals(rectangle, clone));                            // true
+
+        BundledShapeCache cache = new BundledShapeCache();
+        Shape mediumBlueRectangle = cache.get("Medium blue rectangle");
+        Shape mediumBlueRectangle2 = cache.get("Medium blue rectangle");
+        p(mediumBlueRectangle == mediumBlueRectangle2);                 // false
+        p(Objects.equals(mediumBlueRectangle, mediumBlueRectangle2));   // true
     }
 
-    static abstract class Shape implements Cloneable {
+    /**
+     * Prototype
+     */
+    @NoArgsConstructor
+    abstract static class Shape {
+        public int x;
+        public int y;
+        public String color;
 
-        private String id;
-        protected String type;
-
-        abstract void draw();
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public Object clone() {
-            Object clone = null;
-            try {
-                clone = super.clone();
-            } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
+        public Shape(Shape target) {
+            if (target != null) {
+                this.x = target.x;
+                this.y = target.y;
+                this.color = target.color;
             }
-            return clone;
+        }
+
+        public abstract Shape clone();
+
+        @Override
+        public boolean equals(Object obj) {
+            if ((!(obj instanceof Shape))) return false;
+            Shape shape2 = (Shape) obj;
+            return shape2.x == x && shape2.y == y && Objects.equals(shape2.color, color);
         }
     }
 
+    /**
+     * ConcretePrototype
+     */
+    @NoArgsConstructor
     static class Rectangle extends Shape {
+        public int width;
+        public int height;
 
-        public Rectangle() {
-            type = "Rectangle";
+        public Rectangle(Rectangle target) {
+            super(target);
+            if (target != null) {
+                this.width = target.width;
+                this.height = target.height;
+            }
         }
 
         @Override
-        public void draw() {
-            System.out.println("Inside Rectangle::draw() method.");
-        }
-    }
-
-    static class Square extends Shape {
-
-        Square() {
-            type = "Square";
+        public Shape clone() {
+            return new Rectangle(this);
         }
 
         @Override
-        public void draw() {
-            System.out.println("Inside Square::draw() method.");
+        public boolean equals(Object obj) {
+            if (!(obj instanceof Rectangle) || !Objects.equals(this, obj)) return false;
+            Rectangle rectangle2 = (Rectangle) obj;
+            return rectangle2.width == width && rectangle2.height == height;
         }
     }
 
-    static class Circle extends Shape {
+    /**
+     * PrototypeRegistry
+     */
+    static class BundledShapeCache {
+        private final Map<String, Shape> CACHE = new HashMap<>();
 
-        public Circle() {
-            type = "Circle";
-        }
-
-        @Override
-        public void draw() {
-            System.out.println("Inside Circle::draw() method.");
-        }
-    }
-
-    // 创建一个类，从数据库获取实体类，并把它们存储在一个 HashMap 中
-    static class ShapeCache {
-        private static HashMap<String, Shape> shapeMap = new HashMap<>();
-
-        public static Shape getShape(String shapeId) {
-            Shape cachedShape = shapeMap.get(shapeId);
-            return (Shape) cachedShape.clone();
-        }
-
-        // 对每种形状都运行数据库查询，并创建该形状
-        // shapeMap.put(shapeKey, shape);
-        // 例如，我们要添加三种形状
-        public static void loadCache() {
-            Circle circle = new Circle();
-            circle.setId("1");
-            shapeMap.put(circle.getId(), circle);
-
-            Square square = new Square();
-            square.setId("2");
-            shapeMap.put(square.getId(), square);
-
+        public BundledShapeCache() {
             Rectangle rectangle = new Rectangle();
-            rectangle.setId("3");
-            shapeMap.put(rectangle.getId(), rectangle);
+            rectangle.x = 6;
+            rectangle.y = 9;
+            rectangle.width = 8;
+            rectangle.height = 10;
+            rectangle.color = "Blue";
+            CACHE.put("Medium blue rectangle", rectangle);
+        }
+
+        public Shape put(String key, Shape shape) {
+            CACHE.put(key, shape);
+            return shape;
+        }
+
+        public Shape get(String key) {
+            return CACHE.get(key).clone();
         }
     }
 }

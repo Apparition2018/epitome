@@ -3,6 +3,8 @@ package jar.lombok;
 import lombok.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
+
 import static l.demo.Demo.p;
 
 /**
@@ -118,7 +120,7 @@ public class LombokDemo {
     public void testEqualsAndHashCodeExclude() {
         User4 u1 = new User4(1, "Henry", "123");
         User4 u2 = new User4(2, "Henry", "123");
-        p(u1.equals(u2)); // true
+        p(Objects.equals(u1, u2)); // true
     }
 
     /**

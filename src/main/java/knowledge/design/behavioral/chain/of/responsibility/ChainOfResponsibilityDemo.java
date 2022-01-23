@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.logging.Level;
 
 /**
@@ -167,7 +168,7 @@ public class ChainOfResponsibilityDemo {
 
         @Override
         public boolean check(String email, String password) {
-            if (email.equals("admin@example.com")) {
+            if ("admin@example.com".equals(email)) {
                 System.out.println("Hello, admin!");
                 return true;
             }
@@ -204,7 +205,7 @@ public class ChainOfResponsibilityDemo {
         }
 
         public boolean isValidPassword(String email, String password) {
-            return users.get(email).equals(password);
+            return Objects.equals(users.get(email), password);
         }
     }
 

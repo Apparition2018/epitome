@@ -1,5 +1,7 @@
 package knowledge.suggestions;
 
+import java.util.Objects;
+
 /**
  * 建议40：匿名类的构造函数
  *
@@ -23,7 +25,7 @@ class Calculator {
 
     // 设置符号，是加法运算还是减法运算
     protected void setOperator(Ops _ops) {
-        result = _ops.equals(Ops.ADD) ? i + j : i - j;
+        result = Objects.equals(_ops, Ops.ADD) ? i + j : i - j;
     }
 
     // 取得运算结果

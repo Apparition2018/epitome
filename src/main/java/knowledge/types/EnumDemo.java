@@ -63,7 +63,7 @@ public class EnumDemo extends Demo {
 
         // equals()
         p(CompanyEnum.SF.name().equals("SF"));      // true
-        p(CompanyEnum.SF.equals(CompanyEnum.YTO));      // false
+        p(CompanyEnum.SF.equals(CompanyEnum.YTO));  // false
 
     }
 

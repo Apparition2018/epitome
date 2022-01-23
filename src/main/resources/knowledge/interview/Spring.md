@@ -106,7 +106,7 @@
 >|模式|用例|
 >|:---|:---|
 >|简单工厂|BeanFactory, ApplicationContext|
->|工厂方法|FactoryBean|
+>|工厂方法|FactoryBean, AbstractFactoryBean|
 >|单例|AbstractBeanFactory|
 >|代理|Spring AOP (JdkDynamicAopProxy, CglibAopProxy)|
 >|适配器|Spring AOP (AdvisorAdapter)<br/>Spring MVC (HandlerAdapter)|

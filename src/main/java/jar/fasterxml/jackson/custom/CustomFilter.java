@@ -27,7 +27,7 @@ public class CustomFilter extends SimpleBeanPropertyFilter {
     }
 
     protected boolean include(PropertyWriter writer, Object pojo) throws Exception {
-        if (writer.getFullName().getSimpleName().equals("age")) {
+        if ("age".equals(writer.getFullName().getSimpleName())) {
             return Integer.parseInt(Objects.requireNonNull(ReflectionUtils.findField(pojo.getClass(), "age")).get(pojo).toString()) < 18;
         }
         return super.include(writer);

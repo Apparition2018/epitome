@@ -34,9 +34,9 @@ public class MyHandlerMethodReturnValueHandler implements HandlerMethodReturnVal
 
     @Override
     public boolean supportsReturnType(MethodParameter returnType) {
-        return returnType.getDeclaringClass().equals(WebMvcConfigController.class) &&
-                !returnType.getDeclaringClass().equals(BasicErrorController.class) &&
-                !returnType.getParameterType().equals(Result.class);
+        return WebMvcConfigController.class.equals(returnType.getDeclaringClass()) &&
+                !BasicErrorController.class.equals(returnType.getDeclaringClass()) &&
+                !Result.class.equals(returnType.getParameterType());
     }
 
     @Override

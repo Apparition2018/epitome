@@ -46,8 +46,6 @@ import java.util.stream.IntStream;
  * 建议36：使用构造代码块精简程序
  * 建议38：使用静态内部类提高封装性
  * 建议41：内部类实现多继承
- * 建议43：避免对象的浅拷贝
- * 建议44：使用序列化对象的拷贝
  * 建议50：package-info
  * <p>
  * 第五章：数组和集合
@@ -423,54 +421,6 @@ public class Suggestions extends Demo {
         p(new Daughter().kind());   // 8
     }
 
-    /* 建议43：避免对象的浅拷贝
-     * <p>
-     * 浅克隆规则：
-     * 1.基本类型：如果变量是基本类型，则拷贝其值；
-     * 2.对象：如果变量是一个实例对象，则拷贝其地址引用，也就是说此时拷贝出的对象与原有对象共享该实例变量，不受访问权限的控制；
-     * 3.String：这个比较特殊，拷贝的也是一个地址，是个引用，但是在修改时，它会从字符串池(String pool)中重新生成新的字符串，原有的字符串对象保持不变，在此处我们可以认为String是一个基本类型；
-     */
-
-    /**
-     * 建议44：使用序列化对象的拷贝
-     * 1.被拷贝的对象需实现 Serializable 接口
-     * 2.SerializationUtils.clone(T object)
-     */
-    @Test
-    public void test044() {
-        // 原始对象
-        Son s = new Son();
-
-        // 克隆对象
-        Son cloneS = null;
-
-        try {
-            // 读取对象字节数据
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(s);
-            oos.close();
-
-            // 分配内存空间，写入原始对象，生成新对象
-            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-            ObjectInputStream ois = new ObjectInputStream(bais);
-
-            // 返回新对象，并做类型转换
-            cloneS = (Son) ois.readObject();
-            ois.close();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        p(Objects.requireNonNull(cloneS).strong());
-    }
-
-    /* 建议50：package-info
-     * 1.声明友好类和包内访问常量
-     * 2.为在包上提供注解提供便利
-     * 3.提供包的整体注释说明
-     */
-
     /* 第四章：字符串 */
 
     /**
@@ -573,7 +523,7 @@ public class Suggestions extends Demo {
         strs2.add("b");
         strs2.add("c");
 
-        p(strs1.equals(strs2)); // true
+        p(Objects.equals(strs1, strs2)); // true
     }
 
     /**
@@ -694,9 +644,7 @@ public class Suggestions extends Demo {
         public static boolean contains(String name) {
             Season[] seasons = values();
             for (Season season : seasons) {
-                if (season.name().equals(name)) {
-                    return true;
-                }
+                if (Objects.equals(season.name(), name)) return true;
             }
             return false;
         }
@@ -1142,9 +1090,7 @@ public class Suggestions extends Demo {
                 StackTraceElement[] stes = new Throwable().getStackTrace();
                 // 检查是否是 methodA() 调用
                 for (StackTraceElement ste : stes) {
-                    if (ste.getMethodName().equals("methodA")) {
-                        return true;
-                    }
+                    if ("methodA".equals(ste.getMethodName())) return true;
                 }
                 throw new RuntimeException("除了 methodA() 外，该方法不允许其它方法调用");
             }
@@ -1365,17 +1311,17 @@ public class Suggestions extends Demo {
 
         final int maxLoops = 10 * 10000;
         int loops = 0;
-        long start = System.nanoTime();
+        long start = System.currentTimeMillis();
         Apple apple = new Apple().setName("苹果").setWeight(1.5);
         while (++loops < maxLoops) {
             apple.clone();
         }
-        long mid = System.nanoTime();
+        long mid = System.currentTimeMillis();
         p(String.format("clone() 生成对象耗时：%s ms", mid - start));
         while (--loops > 0) {
             new Apple().setName("苹果").setWeight(1.5);
         }
-        long end = System.nanoTime();
+        long end = System.currentTimeMillis();
         p(String.format("new 生成对象耗时：%s ms", end - mid));
     }
 

@@ -4,6 +4,7 @@ import cn.hutool.core.date.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
+import java.util.Objects;
 
 import static l.demo.Demo.p;
 
@@ -137,11 +138,11 @@ public class DateTimeDemo {
     public void mutable() {
         DateTime offset;
         offset = DATETIME.offset(DateField.YEAR, 1);
-        p(offset.equals(DATETIME)); // true
+        p(Objects.equals(offset, DATETIME));// true
 
         // 修改为不可变对象
         DATETIME.setMutable(false);
         offset = DATETIME.offset(DateField.YEAR, 1);
-        p(offset.equals(DATETIME)); // false
+        p(Objects.equals(offset, DATETIME));// false
     }
 }

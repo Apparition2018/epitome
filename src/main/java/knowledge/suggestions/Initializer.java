@@ -28,7 +28,7 @@ abstract class Initializer {
     private boolean isInitDataMethod(Method m) {
         return m.getName().startsWith("init")
                 && Modifier.isPublic(m.getModifiers())
-                && m.getReturnType().equals(Void.TYPE)
+                && Void.TYPE.equals(m.getReturnType())
                 && !m.isVarArgs();
     }
 

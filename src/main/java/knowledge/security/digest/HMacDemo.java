@@ -17,6 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * MAC (Message Authentication Code)，消息认证码，基于密钥的认证协议 (密钥 + 算法 → digest)
@@ -45,7 +46,7 @@ public class HMacDemo extends Demo {
     @Test
     public void testHMAC() {
         String inputStr = HELLO_WORLD;
-        p(getResult1(inputStr).equals(getResult2(inputStr)));
+        p(Objects.equals(getResult1(inputStr), getResult2(inputStr)));
     }
 
     /**

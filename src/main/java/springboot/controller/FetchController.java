@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author ljh
@@ -96,7 +97,7 @@ public class FetchController {
             log.info("没有 cookie");
         } else {
             for (Cookie cookie : cookies) {
-                if ("cny".equals(cookie.getName()) && cny.equals(cookie.getValue())) {
+                if ("cny".equals(cookie.getName()) && Objects.equals(cny, cookie.getValue())) {
                     log.info(cookie.getName() + ": " + cookie.getValue());
                     rtnString = cookie.getName() + ": " + cookie.getValue();
                 }

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 策略模式：定义一系列算法，并将每一个算法封装到具有共同接口的类中，使得它们可以互相替换
@@ -28,7 +29,7 @@ import java.util.Map;
  * 角色:
  * 上下文 Context：接收 Strategy 的引用
  * 抽象策略 Strategy：声明 Context 执行策略的方法
- * 具体策略 ConcreteStrategy：实现 Strategy
+ * 具体策略 ConcreteStrategy
  * <p>
  * 优点：符合开闭原则
  * 缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
@@ -84,7 +85,7 @@ public class StrategyDemo {
                 String paymentMethod = reader.readLine();
 
                 // 客户端根据用户输入或应用配置等创建不同的策略
-                if (paymentMethod.equals("1")) {
+                if ("1".equals(paymentMethod)) {
                     strategy = new PayByPayPal();
                 } else {
                     strategy = new PayByCreditCard();
@@ -150,7 +151,7 @@ public class StrategyDemo {
         }
 
         private boolean verify() {
-            setSignedIn(email.equals(DATA_BASE.get(password)));
+            setSignedIn(Objects.equals(email, DATA_BASE.get(password)));
             return signedIn;
         }
 

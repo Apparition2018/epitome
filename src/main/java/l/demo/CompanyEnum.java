@@ -2,6 +2,8 @@ package l.demo;
 
 import lombok.Getter;
 
+import java.util.Objects;
+
 /**
  * CompanyEnum
  *
@@ -30,9 +32,7 @@ public enum CompanyEnum implements BaseEnum {
      */
     public static int getCodeByCompany(String company) {
         for (CompanyEnum c : CompanyEnum.values()) {
-            if (c.getCompany().equals(company.trim())) {
-                return c.code;
-            }
+            if (Objects.equals(c.getCompany(), company.trim())) return c.code;
         }
         return 0;
     }

@@ -2,12 +2,10 @@ package knowledge.suggestions;
 
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * 建议41：内部类实现多继承
- * 建议44：使用序列化对象的拷贝
  *
  * @author ljh
  * created on 2020/10/10 19:23
@@ -39,8 +37,7 @@ class Family {
         }
     }
 
-    static class Son extends FatherImpl implements Mother, Serializable {
-        private static final long serialVersionUID = 568586027964879053L;
+    static class Son extends FatherImpl implements Mother {
 
         @Override
         public int strong() {

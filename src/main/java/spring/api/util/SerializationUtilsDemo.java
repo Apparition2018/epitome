@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.util.SerializationUtils;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * SerializationUtils
@@ -21,6 +22,6 @@ public class SerializationUtilsDemo {
 
         Object o = SerializationUtils.deserialize(bytes);
 
-        System.out.println(date.equals(o)); // true
+        System.out.println(Objects.equals(date, o)); // true
     }
 }

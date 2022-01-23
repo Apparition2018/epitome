@@ -4,6 +4,7 @@ import l.demo.Demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Java 泛型（Generic）的引入加强了参数类型的安全性，减少了类型的转换.
@@ -27,7 +28,7 @@ public class TypeErasure extends Demo {
         List<String> ls = new ArrayList<>();
         List<Integer> li = new ArrayList<>();
         p(ls.getClass() == li.getClass());  // true
-        p(ls.equals(li));                   // true
+        p(Objects.equals(ls, li));          // ture
 
         // 2.泛型数组初始化时不能声明泛型类型
         // List<String>[] list = new List<String>[]; // 编译不通过

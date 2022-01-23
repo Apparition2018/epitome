@@ -208,7 +208,7 @@ public class OkHttpDemo extends Demo {
             p("Response 2 cache response: " + response2.cacheResponse());
             p("Response 2 network response: " + response2.networkResponse());
         }
-        p("Response 2 equals Response 1 ? " + response1Body.equals(response2Body));
+        p("Response 2 equals Response 1 ? " + Objects.equals(response1Body, response2Body));
     }
 
     static class Gist {
