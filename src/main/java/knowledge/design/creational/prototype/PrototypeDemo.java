@@ -11,15 +11,17 @@ import java.util.Objects;
 /**
  * 原型模式：用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象
  * 使用场景：
- * 1。对象创建成本较大（如需复杂计算，从 RPC、网络、数据库、文件系统等读取），且需创建的对象与现有对象差别不大
+ * 1.对象创建成本较大（如需复杂计算，从 RPC、网络、数据库、文件系统等读取）
+ * 2.需创建的对象与现有对象差别不大
+ * 3.原型注册表
  * 使用实例：
  * 1.浅拷贝：{@link Cloneable}
  * 2.深拷贝：①递归 clone；②序列化
  * <p>
  * 角色：
  * 抽象原型 Prototype：clone()
- * 具体原型 ConcretePrototype：实现 clone()
- * 原型注册表 PrototypeRegistry (可选)：注册表存储对象，以供复制使用
+ * 具体原型 ConcretePrototype：实现 clone()，复制原型数据到克隆体
+ * 原型注册表 PrototypeRegistry (可选)：注册表存储预生成对象，以供复制使用
  * <p>
  * 缺点：违反开闭原则
  * <p>
@@ -75,7 +77,7 @@ public class PrototypeDemo extends Demo {
 
         @Override
         public boolean equals(Object obj) {
-            if ((!(obj instanceof Shape))) return false;
+            if (!(obj instanceof Shape)) return false;
             Shape shape2 = (Shape) obj;
             return shape2.x == x && shape2.y == y && Objects.equals(shape2.color, color);
         }
@@ -104,7 +106,7 @@ public class PrototypeDemo extends Demo {
 
         @Override
         public boolean equals(Object obj) {
-            if (!(obj instanceof Rectangle) || !Objects.equals(this, obj)) return false;
+            if (!(obj instanceof Rectangle) || !super.equals(obj)) return false;
             Rectangle rectangle2 = (Rectangle) obj;
             return rectangle2.width == width && rectangle2.height == height;
         }
@@ -133,6 +135,10 @@ public class PrototypeDemo extends Demo {
 
         public Shape get(String key) {
             return CACHE.get(key).clone();
+        }
+
+        public void remove(String key) {
+            CACHE.remove(key);
         }
     }
 }

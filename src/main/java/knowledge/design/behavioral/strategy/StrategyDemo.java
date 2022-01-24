@@ -33,6 +33,7 @@ import java.util.Objects;
  * <p>
  * 优点：符合开闭原则
  * 缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
+ * 优化：{@link StrategyOpt}
  * <p>
  * Strategy：https://refactoringguru.cn/design-patterns/strategy
  * Java设计模式：http://c.biancheng.net/view/1378.html

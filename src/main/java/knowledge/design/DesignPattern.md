@@ -6,7 +6,8 @@
 3. [Java 设计模式](http://c.biancheng.net/design_pattern/)
 4. [设计模式之美](https://pan.baidu.com/disk/home?#/all?vmode=list&path=%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E)
 5. [设计模式 | 菜鸟教程](https://www.runoob.com/design-pattern/design-pattern-intro.html)
-6. [如何学习设计模式？|知乎](https://www.zhihu.com/question/308850392/answer/1324509357)
+6. [设计模式 | 刘伟](https://blog.csdn.net/lovelion/category_738450.html?spm=1001.2014.3001.5482)
+7. [如何学习设计模式？|知乎](https://www.zhihu.com/question/308850392/answer/1324509357)
 ---
 ## 分类
 <table>
@@ -142,5 +143,4 @@
 * https://juejin.cn/post/7023536216138055716
 ---
 各自满足的原则：https://blog.csdn.net/qq_44824148/article/details/108184915
-混合模式：https://www.cnblogs.com/justuntil/p/5514076.html
 软件设计师-设计模式真题

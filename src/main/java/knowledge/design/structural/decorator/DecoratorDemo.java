@@ -35,6 +35,10 @@ import java.util.zip.InflaterInputStream;
  * 具体装饰 ConcreteDecorator：定义添加到 Component 的额外行为，在调用父类方法之前或之后执行自身的行为
  * <p>
  * 优点：符合开闭原则
+ * 简化：如果只有一个 ConcreteComponent，可考虑去掉 Component；如果只有一个 ConcreteDecorator，可考虑去掉 Decorator
+ * 半透性：
+ * 1.透明装饰模式：Client 应该将对象全部声明为 Component，而不是 ConcreteComponent 或 ConcreteDecorator
+ * 2.半透明装饰模式：为了调用 ConcreteDecorator 新增的方法而不得不把对象声明为 ConcreteDecorator，缺点无法再次装饰
  * <p>
  * Decorator：https://refactoringguru.cn/design-patterns/decorator
  * Java设计模式：http://c.biancheng.net/view/1366.html
@@ -53,10 +57,10 @@ public class DecoratorDemo {
     @Test
     public void testDecorator() {
         String salaryRecords = "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
-        DataSourceDecorator encoded = new CompressionDecorator(
+        DataSource dataSource = new CompressionDecorator(
                 new EncryptionDecorator(
                         new FileDataSource("OutputDemo.txt")));
-        encoded.writeData(salaryRecords);
+        dataSource.writeData(salaryRecords);
 
         DataSource plain = new FileDataSource("OutputDemo.txt");
         System.out.println("\n- Input ----------------");
@@ -64,7 +68,7 @@ public class DecoratorDemo {
         System.out.println("\n- Encoded --------------");
         System.out.println(plain.readData());
         System.out.println("\n- Decoded --------------");
-        System.out.println(encoded.readData());
+        System.out.println(dataSource.readData());
     }
 
     /**

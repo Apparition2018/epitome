@@ -11,13 +11,14 @@ import org.junit.jupiter.api.Test;
  * <p>
  * 角色：
  * 抽象部分：接收 Implementor 的引用
- * 1.抽象 Abstraction：定义与客户端交互的高层操作
+ * 1.抽象 Abstraction：定义与 Client 交互的高层操作
  * 2.精确抽象 RefinedAbstraction
  * 实现部分：
  * 1.实现 Implementor：定义底层操作
  * 2.具体实现 ConcreteImplementor
  * <p>
  * 优点：符合单一职责原则、开闭原则、依赖倒置原则
+ * 扩展：与适配器模式结合使用，解决 Implementor 与现有类接口不一致问题
  * <p>
  * Bridge：https://refactoringguru.cn/design-patterns/bridge
  * Java设计模式：http://c.biancheng.net/view/1364.html
