@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
  * 抽象建造者 Builder (可选)：定义通用产品构造步骤
  * 具体建造者 ConcreteBuilder：实现各具体构造步骤，还包含一个返回 Product (一一对应) 的方法 build()
  * 产品 Product
- * 导演 Director (可选)：调用 ConcreteBuilder 创建 Product
+ * 导演 Director (可选)：定义构造步骤的调用顺序，创建特定 Product
  * <p>
  * 优点：符合单一职责原则、迪米特法则
  * <p>
@@ -210,12 +210,12 @@ public class BuilderDemo {
     }
 
     /**
-     * 静态内部类实现分步骤生产汽车
+     * 链式建造者模式
      */
-    static class InnerClassBuilderDemo {
+    static class ChainClassBuilderDemo {
 
         @Test
-        public void testInnerClassBuilder() {
+        public void testChainBuilder() {
             Car car = new Car.Builder()
                     .setCarType(CarType.CITY_CAR)
                     .setSeats(2)

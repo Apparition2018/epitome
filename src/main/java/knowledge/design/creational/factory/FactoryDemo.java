@@ -123,7 +123,10 @@ public class FactoryDemo {
      * 菜鸟教程：https://www.runoob.com/design-pattern/abstract-factory-pattern.html
      */
     static class AbstractFactoryDemo {
-
+        /**
+         * 跨平台 GUI 组件
+         * https://refactoringguru.cn/design-patterns/abstract-factory/java/example
+         */
         @Test
         public void testAbstractFactory() {
             GUIFactory guiFactory;
