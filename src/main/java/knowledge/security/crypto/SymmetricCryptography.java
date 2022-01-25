@@ -54,13 +54,13 @@ public class SymmetricCryptography {
             // 创建密码器
             Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
 
-            byte[] byteCotent = content.getBytes(StandardCharsets.UTF_8);
+            byte[] byteContent = content.getBytes(StandardCharsets.UTF_8);
 
             // 初始化为加密模式的密码器
             cipher.init(Cipher.ENCRYPT_MODE, getSecretKey(key));
 
             // 加密
-            byte[] result = cipher.doFinal(byteCotent);
+            byte[] result = cipher.doFinal(byteContent);
 
             // 通过 Base64 转码返回
             return Base64.encodeBase64String(result);

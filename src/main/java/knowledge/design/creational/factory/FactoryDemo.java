@@ -20,9 +20,9 @@ import java.util.TimeZone;
  * <p>
  * 优点：符合单一职责原则、迪米特法则
  * 开闭原则：
- * 1.简单工厂违反开闭原则
- * 2.工厂方法符合开闭原则
- * 3.
+ * 1.简单工厂：违反
+ * 2.工厂方法：符合
+ * 3.抽象工厂：只增加 ConcreteProduct 符合；增加 Product 违反
  * <p>
  * 简单工厂 vs 工厂方法 vs 抽象工厂：https://www.zhihu.com/question/27125796/answer/1615074467
  *
@@ -76,7 +76,7 @@ public class FactoryDemo {
      * 4.{@link org.springframework.beans.factory.FactoryBean#getObject()}
      * 5.{@link org.springframework.beans.factory.config.AbstractFactoryBean#getObject()}
      * <p>
-     * Factory-Method：https://refactoringguru.cn/design-patterns/factory-method
+     * Factory Method：https://refactoringguru.cn/design-patterns/factory-method
      * Java设计模式：http://c.biancheng.net/view/1348.html
      * 菜鸟教程：https://www.runoob.com/design-pattern/factory-pattern.html
      */

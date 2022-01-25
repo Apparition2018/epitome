@@ -23,7 +23,7 @@ import java.io.File;
  * 优点：符合迪米特法则
  * 缺点：违反开闭原则
  * 优化：
- * 1.引入 AbstractFacade 和 ConcreteFacade 的概念，可以一定程度上解决违反开闭原则的问题
+ * 1.引入 AbstractFacade 和 ConcreteFacade 的概念，可以一定程度上解决违反开闭原则的缺点
  * 2.由于 Facade 持有多个 SubSystem 的引用，可以把 Facade 设计为 Singleton，控制内存开销
  * <p>
  * Facade：https://refactoringguru.cn/design-patterns/facade

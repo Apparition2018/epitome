@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
  * 2.具体实现 ConcreteImplementor
  * <p>
  * 优点：符合单一职责原则、开闭原则、依赖倒置原则
- * 扩展：与适配器模式结合使用，解决 Implementor 与现有类接口不一致问题
+ * 扩展：与适配器模式结合使用，解决 Implementor 与现有类接口不兼容的问题
  * <p>
  * Bridge：https://refactoringguru.cn/design-patterns/bridge
  * Java设计模式：http://c.biancheng.net/view/1364.html

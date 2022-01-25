@@ -23,10 +23,11 @@ import java.util.Map;
  * 5.{@link org.springframework.beans.factory.support.AbstractBeanFactory#getBean(String)} 单例注册表
  * <p>
  * 缺点：
- * 1.违反单一职责原则：单例业务逻辑通常写在一个类中
- * 2.违反开闭原则：没有接口，扩展困难，要扩展只能修改源码
+ * 1.违反单一职责原则：除了充当工厂角色，一般还包含一些业务方法
+ * 2.违反开闭原则：没有抽象层，扩展困难，要扩展只能修改源码
  * 3.难以单元测试：许多测试框架以基于继承的方式创建模拟对象。单例构造器私有，大多数语言不能重写静态方法
- * 扩展：多例模式
+ * 4.实例化的共享对象长时间不利用会被 GC 回收，导致单例对象状态的丢失，再次利用时又重新实例化
+ * 扩展：①多例模式 ②TODO-LJH 分布式单例
  * <p>
  * Singleton：https://refactoringguru.cn/design-patterns/singleton
  * Java设计模式：http://c.biancheng.net/view/1338.html
@@ -34,6 +35,7 @@ import java.util.Map;
  * 设计模式之美：单例模式（上）：为什么说支持懒加载的双重检测不比饿汉式更优？
  * 设计模式之美：单例模式（中）：我为什么不推荐使用单例模式？又有何替代方案？
  * 设计模式之美：单例模式（下）：如何设计实现一个集群环境下的分布式单例模式？
+ * 单例 vs 静态类：https://www.baeldung.com/java-static-class-vs-singleton
  *
  * @author Arsenal
  * created on 2019/8/7 17:12
@@ -84,7 +86,7 @@ public class SingletonDemo {
     }
 
     /**
-     * 双重检查锁 (double-checked locking)，线程安全，懒汉模式的升级版
+     * 双重检查锁 (double-checked locking)：线程安全，懒汉模式的升级版
      * <p>
      * volatile 解决 DCL（在并发场景下）存在延迟初始化的优化问题隐患（阿里编程规约）
      * instance = new DoubleCheckLockSingleton(); 在 JVM 里面的执行分为三步：
@@ -114,20 +116,20 @@ public class SingletonDemo {
     }
 
     /**
-     * 静态内部类，饿汉的优化版
+     * 按需初始化 (Initialization on Demand Holder)：静态内部类，饿汉的优化版
      * 1.延迟加载：内部类属于被动引用，外部类加载时不会对其进行初始化，getInstance 第一次被调用的时候才加载内部类
      * 2.线程安全：同饿汉线程安全原因
      * 缺点：外部无法传递参数进去内部类里
      */
-    static class StaticInnerClassSingleton {
+    static class InitOnDemandSingleton {
 
-        static class SingletonHolder {
-            private static final StaticInnerClassSingleton INSTANCE = new StaticInnerClassSingleton();
+        static class InstanceHolder {
+            private static final InitOnDemandSingleton INSTANCE = new InitOnDemandSingleton();
         }
 
         private static boolean beReflect = false;
 
-        private StaticInnerClassSingleton() {
+        private InitOnDemandSingleton() {
             // 防止反射攻击
             synchronized (EarlySingleton.class) {
                 if (!beReflect) {
@@ -138,8 +140,8 @@ public class SingletonDemo {
             }
         }
 
-        public static StaticInnerClassSingleton getInstance() {
-            return SingletonHolder.INSTANCE;
+        public static InitOnDemandSingleton getInstance() {
+            return InstanceHolder.INSTANCE;
         }
     }
 
@@ -148,10 +150,10 @@ public class SingletonDemo {
      */
     @Test
     public void testReflectAttack() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        StaticInnerClassSingleton singleton = StaticInnerClassSingleton.getInstance();
-        Constructor<StaticInnerClassSingleton> constructor = StaticInnerClassSingleton.class.getDeclaredConstructor();
+        InitOnDemandSingleton singleton = InitOnDemandSingleton.getInstance();
+        Constructor<InitOnDemandSingleton> constructor = InitOnDemandSingleton.class.getDeclaredConstructor();
         constructor.setAccessible(true);
-        StaticInnerClassSingleton singleton2 = constructor.newInstance();
+        InitOnDemandSingleton singleton2 = constructor.newInstance();
         // 断言是否相等
         Assertions.assertSame(singleton, singleton2);
     }
