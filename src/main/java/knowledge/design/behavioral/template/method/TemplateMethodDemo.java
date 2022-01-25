@@ -1,5 +1,6 @@
 package knowledge.design.behavioral.template.method;
 
+import knowledge.design.other.CallbackDemo;
 import lombok.NoArgsConstructor;
 
 import java.io.*;
@@ -10,11 +11,12 @@ import java.util.AbstractSet;
 
 /**
  * 模板方法模式：定义一个操作中的算法骨架，而将算法的一些步骤延迟到子类中，使得子类可以不改变该算法结构的情况下重定义该算法的某些特定步骤
- * 使用场景：多个类可抽象出相同的算法步骤，算法步骤的实现可以相同，也可以有各自不同的实现
+ * 使用场景：多个类可抽象出相同的算法步骤，算法步骤的实现可以相同（复用），也可以有各自不同的实现（扩展)
  * 使用实例：
  * 1.{@link InputStream} {@link OutputStream} {@link Reader} {@link Writer} 所有非抽象方法
  * 2.{@link AbstractList} {@link AbstractSet} {@link AbstractMap} 所有非抽象方法
  * 3.{@link javax.servlet.http.HttpServlet} 所有默认发送 HTTP 405 错误相应的 doXXX()
+ * 基于同步回调：{@link CallbackDemo}
  * 4.{@link org.springframework.jdbc.core.JdbcTemplate}
  * 5.{@link org.springframework.data.redis.core.RedisTemplate}
  * 6.{@link org.springframework.transaction.support.TransactionTemplate}
@@ -131,20 +133,6 @@ public class TemplateMethodDemo {
         void loginOut() {
             System.out.println("User: '" + userName + "' was logged out from Facebook");
         }
-
-        private void simulateNetworkLatency() {
-            try {
-                int i = 0;
-                System.out.println();
-                while (i < 10) {
-                    System.out.print(".");
-                    Thread.sleep(500);
-                    i++;
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     /**
@@ -184,19 +172,19 @@ public class TemplateMethodDemo {
         void loginOut() {
             System.out.println("User: '" + userName + "' was logged out from Twitter");
         }
+    }
 
-        private void simulateNetworkLatency() {
-            try {
-                int i = 0;
-                System.out.println();
-                while (i < 10) {
-                    System.out.print(".");
-                    Thread.sleep(500);
-                    i++;
-                }
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
+    private static void simulateNetworkLatency() {
+        try {
+            int i = 0;
+            System.out.println();
+            while (i < 10) {
+                System.out.print(".");
+                Thread.sleep(500);
+                i++;
             }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

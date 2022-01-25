@@ -122,18 +122,23 @@
 >- Strategy 可以看成是 Bridge 的一个子集：
 >   - Abstraction → Context
 >   - Implementor → Strategy，ConcreteImplementor → ConcreteStrategy
->### State vs Strategy
+>### Strategy vs State
 >1. 是否主动选择
 >```
->State              Context 设置初始的 State
 >Strategy           Context 接收选择的 Strategy 
+>State              Context 设置初始的 State
 >```
 >2. 是否能够改变
 >```
->State              ConcreteState 可以通过其持有的 Context 引用，改变当前 State
 >Strategy           选择 Strategy 后不能改变 
+>State              ConcreteState 可以通过其持有的 Context 引用，改变当前 State
 >```
 ---
+### Strategy vs Template Method
+>```
+>Strategy           基于组合，动态的，context.setStrategy(strategy)
+>Template Method    基于继承，静态的，AbstractClass tempalte = new ConcreteClass()
+>```
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式
 ---
