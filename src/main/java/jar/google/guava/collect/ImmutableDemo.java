@@ -4,14 +4,10 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
 /**
- * 不可变集合
+ * ImmutableXXX 不可变集合
  * 效率高，占内存少
  * <p>
- * ImmutableList
- * ImmutableMap
- * ImmutableSet
- * ImmutableSortedMap
- * ImmutableSortedSet
+ * https://github.com/google/guava/wiki/ImmutableCollectionsExplained
  *
  * @author ljh
  * created on 2019/8/8 19:39

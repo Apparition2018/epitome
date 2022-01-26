@@ -14,8 +14,6 @@ import java.util.Objects;
 
 /**
  * Maps
- * 【集合工具】Maps 类：http://www.ibloger.net/article/3314.html
- * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Maps.html
  * <p>
  * static ConcurrentMap<K, V>   newConcurrentMap()                                  创建 ConcurrentMap
  * static TreeMap<K, V>         newTreeMap([SortedMap<K, ? extends V> map])         创建 TreeMap
@@ -28,6 +26,10 @@ import java.util.Objects;
  * static XXXMap<K, V>          synchronizedXXXMap(XXXMap<K, V> map)                XXXMap → synchronizedXXXMap
  * static Entry<K, V>           immutableEntry(K key, V value)  key + value → Entry
  * static Converter<A, B>       asConverter(BiMap<A, B> bimap)                      BiMap → Converter
+ * <p>
+ * http://www.ibloger.net/article/3314.html
+ * https://github.com/google/guava/wiki/CollectionUtilitiesExplained#maps
+ * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Maps.html
  *
  * @author ljh
  * created on 2019/8/8 19:39

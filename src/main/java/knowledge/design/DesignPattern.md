@@ -139,6 +139,11 @@
 >Strategy           基于组合，动态的，context.setStrategy(strategy)
 >Template Method    基于继承，静态的，AbstractClass tempalte = new ConcreteClass()
 >```
+### Observer vs Publish/Subscribe
+>```
+>Observer           Subject 与 Observer 可以直接交流
+>Publish/Subscribe  Pbulisher 和 Subscriber 不知道对方存在，都只和 Broker 交流
+>```
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式
 ---

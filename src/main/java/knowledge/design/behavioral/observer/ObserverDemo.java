@@ -1,46 +1,37 @@
 package knowledge.design.behavioral.observer;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.jupiter.api.Test;
-import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 观察者模式：定义了对象间的一种一对多依赖关系，使得每当一个对象改变时，所有依赖于它的对象都会得到通知并自动更新
- * 使用场景：
- * 1.事件多级触发场景
- * 2.跨系统的消息交换场景，如消息队列、事件总线的处理机制
+ * 使用场景：关联行为、消息队列、事件
  * 使用实例：
  * 1.{@link java.util.Observer} 和 {@link java.util.Observable}
  * 2.{@link java.util.EventListener} 的所有实现，广泛应用于 Swing 组件
  * 3.{@link javax.servlet.http.HttpSessionBindingListener} 和 {@link javax.servlet.http.HttpSessionAttributeListener}
  * <p>
  * 角色:
- * 抽象主题 Subject：定义了一个 Observer 集合，add()，remove()，notify()
- * 具体主题 ConcreteSubject：实现 notify() 通知 Observer
+ * 抽象主题 Subject：持有 Observer 集合的引用，定义了 registry()，remove()，notify()
+ * 具体主题 ConcreteSubject：实现 notify()
+ * -    推模型：observer.update(info...)，把 ConcreteObserver 需要的数据传给 ConcreteObserver
+ * -    拉模型：observer.update(subject)，把 Subject 传给 ConcreteObserver，让 ConcreteObserver 自己从 Subject 获取数据
  * 抽象观察者 Observer：定义 update()
  * 具体观察者 ConcreteObserver
  * <p>
  * 优点：符合开闭原则
- * 两种模型：TODO-LJH: 2022/1/26
- * 1.推模型：Subject 向 Observer 推送 Subject 的全部或部分信息，不管 Observer 是否需要
- * 2.拉模型：Subject 在通知 Observer 时，只传递少量信息；Observer 如需更具体的信息，主动到 Subject 中获取
- * <p>
- * ----------------------------------------
- * 发布订阅模式 (Publish Subscribe)
- * 角色：
- * 发布者 Publisher
- * 经纪人 Broker
- * 订阅者 Subscriber
  * <p>
  * Observer：https://refactoringguru.cn/design-patterns/observer
  * Java设计模式：http://c.biancheng.net/view/1390.html
  * 菜鸟教程：https://www.runoob.com/design-pattern/observer-pattern.html
- * JAVA与模式：https://www.cnblogs.com/java-my-life/archive/2012/05/16/2502279.html
+ * 设计模式之美：观察者模式（上）：详解各种应用场景下观察者模式的不同实现方式
+ * 设计模式之美：观察者模式（下）：如何实现一个异步非阻塞的EventBus框架？{@link jar.google.guava.EventBusDemo}
  *
  * @author ljh
  * created on 2020/9/26 2:51
@@ -79,12 +70,15 @@ public class ObserverDemo {
             players.remove(obs);
         }
 
-        abstract void notifyPlayer(String name);
+        abstract void beAttackNotifyByPush(String beAttackName);
+
+        abstract void beAttackedNotifyByPull(String beAttackName);
     }
 
     /**
      * ConcreteSubject
      */
+    @Data
     static class AllyControlCenter extends IAllyControlCenter {
 
         public AllyControlCenter(String allyName) {
@@ -93,11 +87,32 @@ public class ObserverDemo {
             this.allyName = allyName;
         }
 
+        /**
+         * 推模型
+         */
         @Override
-        void notifyPlayer(@NonNull String name) {
-            System.out.println(this.allyName + "战队紧急通知，盟友" + name + "遭受敌人攻击！");
+        void beAttackNotifyByPush(String beAttackName) {
+            System.out.println(this.allyName + "战队紧急通知，盟友" + beAttackName + "遭受敌人攻击！");
             for (IPlayer player : players) {
-                if (!name.equalsIgnoreCase(player.getName())) player.help();
+                if (!beAttackName.equalsIgnoreCase(player.getName())) {
+                    player.helpByPush(beAttackName);
+                }
+            }
+        }
+
+        private String beAttackName;
+
+        /**
+         * 拉模型
+         */
+        @Override
+        void beAttackedNotifyByPull(String beAttackName) {
+            System.out.println(this.allyName + "战队紧急通知，盟友" + beAttackName + "遭受敌人攻击！");
+            this.setBeAttackName(beAttackName);
+            for (IPlayer player : players) {
+                if (!beAttackName.equalsIgnoreCase(player.getName())) {
+                    player.helpByPull(this);
+                }
             }
         }
     }
@@ -110,7 +125,9 @@ public class ObserverDemo {
 
         void setName(String name);
 
-        void help();
+        void helpByPush(String beAttackName);
+
+        void helpByPull(AllyControlCenter acc);
 
         void beAttacked(AllyControlCenter acc);
     }
@@ -124,15 +141,31 @@ public class ObserverDemo {
     static class Player implements IPlayer {
         private String name;
 
+        /**
+         * 推模型
+         */
         @Override
-        public void help() {
-            System.out.println("坚持住，" + name + "来救你！");
+        public void helpByPush(String beAttackName) {
+            System.out.println(beAttackName + "坚持住，" + name + "来救你！");
+        }
+
+        /**
+         * 拉模型
+         */
+        @Override
+        public void helpByPull(AllyControlCenter acc) {
+            System.out.println(acc.getBeAttackName() + "坚持住，" + name + "来救你！");
         }
 
         @Override
         public void beAttacked(AllyControlCenter acc) {
             System.out.println(name + "被攻击！");
-            acc.notifyPlayer(name);
+
+            System.out.println("---------- Push 通知 ----------");
+            acc.beAttackNotifyByPush(name);
+
+            System.out.println("---------- Pull 通知 ----------");
+            acc.beAttackedNotifyByPull(name);
         }
     }
 }

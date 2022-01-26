@@ -10,7 +10,8 @@ import java.util.regex.Pattern;
 
 /**
  * Splitter
- * 【字符串处理】Spiltter 拆分器：http://www.ibloger.net/article/3335.html
+ * http://www.ibloger.net/article/3335.html
+ * https://github.com/google/guava/wiki/StringsExplained#splitter
  * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Splitter.html
  *
  * @author ljh

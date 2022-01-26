@@ -13,7 +13,8 @@ import java.util.List;
  * static <E> CopyOnWriteArrayList<E>   newCopyOnWriteArrayList([Iterable<? extends E> elements])   创建 CopyOnWriteArrayList
  * static <T> List<T>	                reverse(List<T> list)                                       返回指定列表的反向视图
  * <p>
- * 【集合工具】Lists 类：http://www.ibloger.net/article/3312.html
+ * http://www.ibloger.net/article/3312.html
+ * https://github.com/google/guava/wiki/CollectionUtilitiesExplained#lists
  * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Lists.html
  *
  * @author ljh

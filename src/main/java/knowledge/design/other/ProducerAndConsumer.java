@@ -1,4 +1,4 @@
-package knowledge.concurrent.design.pattern;
+package knowledge.design.other;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.BooleanUtils;

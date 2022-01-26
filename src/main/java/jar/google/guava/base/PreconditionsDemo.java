@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
  * Preconditions    先决条件
  * 静态便利方法，帮助方法或构造函数检查调用是否正确(即是否满足其先决条件)。
  * 如果不满足先决条件，Preconditions方法将抛出指定类型的未检查异常，这将帮助抛出异常的方法通知调用者犯了错误。
+ * <p>
+ * http://www.ibloger.net/article/3298.html
+ * https://github.com/google/guava/wiki/PreconditionsExplained
  * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Preconditions.html
  *
  * @author ljh
@@ -41,7 +44,7 @@ public class PreconditionsDemo {
     @Test
     public void check() {
         login("mary", "123");
-        login(null, "234");
+        // login(null, "234");
     }
 
     private void login(String userName, String password) {

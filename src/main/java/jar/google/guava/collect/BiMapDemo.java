@@ -7,7 +7,9 @@ import l.demo.Demo;
 /**
  * BiMap
  * BidMap 要求值和键都不能重复，即双向映射
- * 【新集合】Bimap 类：http://www.ibloger.net/article/3307.html
+ * <p>
+ * http://www.ibloger.net/article/3307.html
+ * https://github.com/google/guava/wiki/NewCollectionTypesExplained#bimap
  * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/BiMap.html
  *
  * @author ljh
@@ -21,7 +23,7 @@ public class BiMapDemo extends Demo {
 
         // BiMap<V,K>	inverse()       返回此 map 的逆视图
         p(biMap.inverse()); // {A=1, B=2, C=3}
-        
+
         // Set<V>       values()        返回 value 列表
         p(biMap.values());  // [A, B, C]
     }

@@ -12,7 +12,8 @@ import java.util.stream.Collectors;
 
 /**
  * Joiner
- * 【字符串处理】Joiner 连接器：http://www.ibloger.net/article/3334.html
+ * http://www.ibloger.net/article/3334.html
+ * https://github.com/google/guava/wiki/StringsExplained#joiner
  * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Joiner.html
  *
  * @author ljh
