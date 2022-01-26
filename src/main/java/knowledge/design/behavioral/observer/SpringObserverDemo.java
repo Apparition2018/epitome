@@ -9,10 +9,10 @@ import org.springframework.scheduling.annotation.Async;
 /**
  * SpringObserver
  * <p>
- * 事件机制的参与者有三种角色:
- * 1.Event Source：事件源，发起事件的主体。
- * 2.Event Object：事件状态对象，传递的信息载体，以是事件源本身，一般作为参数存在于 Listener 的方法之中。
- * 3.Event Listener：事件监听器，当它监听到 event object 产生的时候，它就调用相应的方法，进行处理。
+ * JDK 委派事件模型 (Delegation Event Model) 三个参与者：
+ * 1.Event Source：事件源，发起事件的主体
+ * 2.Event Object：事件状态对象，传递的信息载体，可以是事件源本身，一般作为参数存在于 Listener 的方法之中
+ * 3.Event Listener：事件监听器，当它监听到 event object 产生的时候，它就调用相应的方法，进行处理
  * <p>
  * Spring 的事件驱动模型由三部分组成：
  * 1.事件：ApplicationEvent，继承自 JDK 的 EventObject，所有事件将继承它，并通过 source 得到事件源。

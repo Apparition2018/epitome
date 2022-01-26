@@ -18,13 +18,13 @@ import java.io.File;
  * 角色：
  * 外观 Facade
  * 附加外观 AdditionalFacade (可选)
- * 子系统 SubSystem
+ * 子系统 Subsystem
  * <p>
  * 优点：符合迪米特法则
  * 缺点：违反开闭原则
  * 优化：
  * 1.引入 AbstractFacade 和 ConcreteFacade 的概念，可以一定程度上解决违反开闭原则的缺点
- * 2.由于 Facade 持有多个 SubSystem 的引用，可以把 Facade 设计为 Singleton，控制内存开销
+ * 2.由于 Facade 持有多个 Subsystem 的引用，可以把 Facade 设计为 Singleton，控制内存开销
  * <p>
  * Facade：https://refactoringguru.cn/design-patterns/facade
  * Java设计模式：http://c.biancheng.net/view/1369.html
@@ -46,7 +46,7 @@ public class FacadeDemo {
     }
 
     /**
-     * SubSystem
+     * Subsystem
      */
     @Getter
     static class VideoFile {
@@ -60,7 +60,7 @@ public class FacadeDemo {
     }
 
     /**
-     * SubSystem
+     * Subsystem
      */
     interface Codec {
     }
@@ -74,7 +74,7 @@ public class FacadeDemo {
     }
 
     /**
-     * SubSystem
+     * Subsystem
      */
     static class CodecFactory {
         public static Codec extract(VideoFile file) {
@@ -90,7 +90,7 @@ public class FacadeDemo {
     }
 
     /**
-     * SubSystem
+     * Subsystem
      */
     static class BitrateReader {
         public static VideoFile read(VideoFile file, Codec codec) {
@@ -105,7 +105,7 @@ public class FacadeDemo {
     }
 
     /**
-     * SubSystem
+     * Subsystem
      */
     static class AudioMixer {
         public File fix(VideoFile result) {

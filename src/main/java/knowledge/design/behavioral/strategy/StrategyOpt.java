@@ -1,6 +1,5 @@
 package knowledge.design.behavioral.strategy;
 
-import l.demo.CompanyEnum;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -12,7 +11,7 @@ import java.util.function.Function;
  * <p>
  * 策略模式优化过程：
  * 1.一个算法写一个 ConcreteStrategy
- * 2.使用'工厂'来管理 ConcreteStrategy 
+ * 2.使用工厂来管理 ConcreteStrategy
  * 3.用匿名内部类代替 ConcreteStrategy
  * 4.用函数式接口代替匿名内部类
  * 5.用 lambda 简化函数式接口
@@ -24,16 +23,31 @@ import java.util.function.Function;
  */
 public class StrategyOpt {
 
-    private final static Map<CompanyEnum, Function<Integer, Double>> CAL_MAP = new HashMap<>();
+    private final static Map<DiscountEnum, Function<Double, Double>> STRATEGY_MAP = new HashMap<>();
 
     static {
-        CAL_MAP.put(CompanyEnum.SF, weight -> 10 + weight * 1.2);
-        CAL_MAP.put(CompanyEnum.YTO, weight -> 8 + weight * 1.5);
-        CAL_MAP.put(CompanyEnum.STO, weight -> 12 + weight * 0.8);
+        STRATEGY_MAP.put(DiscountEnum.NORMAL, price -> {
+            System.out.println("普通票：");
+            return price;
+        });
+        STRATEGY_MAP.put(DiscountEnum.STUDENT, price -> {
+            System.out.println("学生票：");
+            return price * 0.8;
+        });
+        STRATEGY_MAP.put(DiscountEnum.CHILDREN, price -> {
+            System.out.println("儿童票：");
+            return price - 10 >= 0 ? price - 10 : 0;
+        });
     }
 
     @Test
     public void testStrategyLambda() {
-        System.out.println(CAL_MAP.get(CompanyEnum.SF).apply(10));
+        double price = 60.0;
+        System.out.println("折扣价格：" + STRATEGY_MAP.get(DiscountEnum.STUDENT).apply(price) + "\n");
+        System.out.println("折扣价格：" + STRATEGY_MAP.get(DiscountEnum.CHILDREN).apply(price));
+    }
+
+    enum DiscountEnum {
+        NORMAL, STUDENT, CHILDREN
     }
 }

@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 /**
  * 建造者模式：将一个复杂对象的构造与它的表示分离，使得同样的构建过程可以创建不同的表示
  * 使用场景：
- * 1.避免 telescopic constructor：构造器多，构造器参数多
- * 2.构造步骤基本相同 (顺序不一定相同)，创建不同的产品 (类型相同)
+ * 1.构造步骤基本相同 (顺序不一定相同)，创建不同的产品 (类型相同)
+ * 2.避免 telescopic constructor：构造器多，构造器参数多
  * 使用实例：
  * 1. {@link StringBuilder#append(String)} 和 {@link StringBuilder#append(String)}
  * 2. {@link java.nio.ByteBuffer#put(byte[])}, XXXBuffer
@@ -212,7 +212,7 @@ public class BuilderDemo {
     /**
      * 链式建造者模式
      */
-    static class ChainClassBuilderDemo {
+    static class ChainBuilderDemo {
 
         @Test
         public void testChainBuilder() {

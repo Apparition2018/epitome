@@ -96,11 +96,6 @@
 
 ---
 ## 对比
->### Factory vs Builder
->```
->Factory            产品角色分为抽象产品和具体产品
->Builder            产品角色只有具体产品
->```
 >### Proxy vs Decorator
 >1. 服务对象的生命周期
 >```

@@ -52,10 +52,11 @@ public class ObserverDemo {
     /**
      * Subject
      */
+    @Getter
+    @Setter
     abstract static class IAllyControlCenter {
-        @Getter
-        @Setter
         protected String allyName;
+        private String beAttackName;
         protected List<IPlayer> players = new ArrayList<>();
 
         void join(IPlayer... iPlayers) {
@@ -100,8 +101,6 @@ public class ObserverDemo {
             }
         }
 
-        private String beAttackName;
-
         /**
          * 拉模型
          */
@@ -127,9 +126,9 @@ public class ObserverDemo {
 
         void helpByPush(String beAttackName);
 
-        void helpByPull(AllyControlCenter acc);
+        void helpByPull(IAllyControlCenter acc);
 
-        void beAttacked(AllyControlCenter acc);
+        void beAttacked(IAllyControlCenter acc);
     }
 
     /**
@@ -153,12 +152,12 @@ public class ObserverDemo {
          * 拉模型
          */
         @Override
-        public void helpByPull(AllyControlCenter acc) {
+        public void helpByPull(IAllyControlCenter acc) {
             System.out.println(acc.getBeAttackName() + "坚持住，" + name + "来救你！");
         }
 
         @Override
-        public void beAttacked(AllyControlCenter acc) {
+        public void beAttacked(IAllyControlCenter acc) {
             System.out.println(name + "被攻击！");
 
             System.out.println("---------- Push 通知 ----------");

@@ -1,10 +1,12 @@
 package knowledge.design.behavioral.template.method;
 
 import knowledge.design.other.CallbackDemo;
-import lombok.NoArgsConstructor;
+import org.junit.jupiter.api.Test;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
 import java.util.AbstractList;
 import java.util.AbstractMap;
 import java.util.AbstractSet;
@@ -43,148 +45,70 @@ import java.util.AbstractSet;
  */
 public class TemplateMethodDemo {
 
-    /**
-     * 社交网络
-     * https://refactoringguru.cn/design-patterns/template-method/java/example
-     */
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Input user name: ");
-        String userName = reader.readLine();
-        System.out.print("Input password: ");
-        String password = reader.readLine();
-
-        System.out.print("Input message: ");
-        String message = reader.readLine();
-        System.out.println("\nChoose social network for posting message.\n" +
-                "1 - Facebook\n" +
-                "2 - Twitter");
-        int choice = Integer.parseInt(reader.readLine());
-        Network network = null;
-        if (choice == 1) {
-            network = new Facebook(userName, password);
-        } else if (choice == 2) {
-            network = new Twitter(userName, password);
-        }
-        network.post(message);
+    @Test
+    public void testTemplateMethod() {
+        Game football = new Football();
+        football.play();
     }
 
     /**
      * AbstractClass
      */
-    @NoArgsConstructor
-    abstract static class Network {
-        String userName;
-        String password;
+    abstract static class Game {
+        abstract void init();
+
+        abstract void begin();
+
+        abstract void finished();
 
         /**
-         * 模板方法：修饰为 final，防止子类重写
+         * 模板方法
          */
-        public final boolean post(String message) {
-            if (loginIn(this.userName, this.password)) {
-                boolean result = sendData(message.getBytes(StandardCharsets.UTF_8));
-                loginOut();
-                return result;
-            }
-            return false;
-        }
-
-        abstract boolean loginIn(String userName, String password);
-
-        abstract boolean sendData(byte[] data);
-
-        abstract void loginOut();
-    }
-
-    /**
-     * ConcreteClass
-     */
-    static class Facebook extends Network {
-        public Facebook(String userName, String password) {
-            this.userName = userName;
-            this.password = password;
-        }
-
-        @Override
-        boolean loginIn(String userName, String password) {
-            System.out.println("\nChecking user's parameters");
-            System.out.println("Name: " + this.userName);
-            System.out.print("Password: ");
-            for (int i = 0; i < password.length(); i++) {
-                System.out.print("*");
-            }
-            simulateNetworkLatency();
-            System.out.println("\n\nLoginIn success on Facebook");
-            return true;
-        }
-
-        @Override
-        boolean sendData(byte[] data) {
-            boolean messagePosted = true;
-            if (messagePosted) {
-                System.out.println("Message: '" + new String(data) + "' was posted on Facebook");
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        @Override
-        void loginOut() {
-            System.out.println("User: '" + userName + "' was logged out from Facebook");
+        public final void play() {
+            init();
+            begin();
+            finished();
         }
     }
 
     /**
      * ConcreteClass
      */
-    static class Twitter extends Network {
-        public Twitter(String userName, String password) {
-            this.userName = userName;
-            this.password = password;
+    static class Football extends Game {
+        @Override
+        void init() {
+            System.out.println("Football Game Init");
         }
 
         @Override
-        boolean loginIn(String userName, String password) {
-            System.out.println("\nChecking user's parameters");
-            System.out.println("Name: " + this.userName);
-            System.out.print("Password: ");
-            for (int i = 0; i < this.password.length(); i++) {
-                System.out.print("*");
-            }
-            simulateNetworkLatency();
-            System.out.println("\n\nLoginIn success on Twitter");
-            return true;
+        void begin() {
+            System.out.println("Football Game Begin");
         }
 
         @Override
-        boolean sendData(byte[] data) {
-            boolean messagePosted = true;
-            if (messagePosted) {
-                System.out.println("Message: '" + new String(data) + "' was posted on Twitter");
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        @Override
-        void loginOut() {
-            System.out.println("User: '" + userName + "' was logged out from Twitter");
+        void finished() {
+            System.out.println("Football Game Finished");
         }
     }
 
-    private static void simulateNetworkLatency() {
-        try {
-            int i = 0;
-            System.out.println();
-            while (i < 10) {
-                System.out.print(".");
-                Thread.sleep(500);
-                i++;
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    /**
+     * ConcreteClass
+     */
+    static class Basketball extends Game {
+        @Override
+        void init() {
+            System.out.println("Basketball Game Init");
+        }
+
+        @Override
+        void begin() {
+            System.out.println("Basketball Game Begin");
+        }
+
+        @Override
+        void finished() {
+            System.out.println("Basketball Game Finished");
         }
     }
+
 }
