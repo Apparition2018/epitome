@@ -12,6 +12,7 @@ import java.util.List;
  * 使用实例：
  * 1.{@link java.util.HashMap}
  * 2.{@link java.awt.Container#add(java.awt.Component)}
+ * 3.WebMvcConfigurerComposite 和 @{@link org.springframework.web.servlet.config.annotation.WebMvcConfigurer}
  * <p>
  * 角色：
  * 抽象组件 Component：定义通用方法

@@ -134,6 +134,11 @@
 >Strategy           基于组合，动态的，context.setStrategy(strategy)
 >Template Method    基于继承，静态的，AbstractClass tempalte = new ConcreteClass()
 >```
+### Strategy vs Command
+>1. 类似：Context 类似 Invoker，Strategy 类似 Command
+>2. 区别：
+>   1. Command 比 Strategy 多了个实际完成工作的角色 Receiver
+>   2. 某些情况下 Strategy 之间可以互相替换，Command 不可以
 ### Observer vs Publish/Subscribe
 >```
 >Observer           Subject 与 Observer 可以直接交流

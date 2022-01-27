@@ -111,13 +111,7 @@ SELECT e.ename, m.ename, e.sal, m.sal FROM emp e, emp m WHERE e.mgr = m.empno;  
 >```
 ---
 ## 排名查询
->### [MySQL](https://www.jb51.net/article/194925.htm)
->```sql
->SELECT empno, sal, @rank := @rank + 1 AS 'rank'
->FROM emp, (SELECT @rank := 0) t
->ORDER BY sal DESC
->```
->### Oracle
+>### [MySQL](https://www.jb51.net/article/194925.htm) / Oracle
 >1. ROW_NUMBER: 连续且唯一
 >```sql
 >SELECT ename, deptno, sal, ROW_NUMBER() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
@@ -129,6 +123,10 @@ SELECT e.ename, m.ename, e.sal, m.sal FROM emp e, emp m WHERE e.mgr = m.empno;  
 >3. DENSE_RANK: 连续不唯一
 >```sql
 >SELECT ename, deptno, sal, DENSE_RANK() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
+>```
+>4. null 值排最后
+>```
+>SELECT ename, sal, RANK() OVER(ORDER BY -sal ASC) sal_rank FROM emp;
 >```
 ---
 ## 集合查询

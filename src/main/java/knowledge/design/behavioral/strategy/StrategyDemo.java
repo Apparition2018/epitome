@@ -14,13 +14,12 @@ import javax.servlet.ServletResponse;
  * 策略模式：定义一系列算法，并将每一个算法封装到具有共同接口的类中，使得它们可以互相替换
  * 使用场景：多行为、多算法、if-else、switch-case
  * 使用实例：
- * 1.{@link java.util.Comparator#compare(Object, Object)}
+ * 1.Functional Interface {@link knowledge.oop.interface_.FunctionalInterface}
  * 2.{@link javax.servlet.Filter#doFilter(ServletRequest, ServletResponse, FilterChain)}
- * 3.{@link javax.servlet.http.HttpServlet#service(ServletRequest, ServletResponse)}
- * 4.{@link javax.servlet.http.HttpServlet} 的 doXXX
- * 5.{@link java.util.concurrent.ThreadPoolExecutor} 的构造器参数 RejectedExecutionHandler 的四个实现：
+ * 3.{@link javax.servlet.http.HttpServlet} 的 service(req, resp), doXXX(req, resp)
+ * 4.{@link java.util.concurrent.ThreadPoolExecutor} 的构造器参数 RejectedExecutionHandler 的四个实现：
  * -    https://blog.csdn.net/yangsen159/article/details/103146038
- * 6.{@link ResourceLoader#getResource(String)} 和 {@link Resource}
+ * 5.{@link ResourceLoader#getResource(String)} 和 {@link Resource}
  * <p>
  * 角色:
  * 上下文 Context：接收 Strategy 的引用
