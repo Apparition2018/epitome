@@ -7,7 +7,6 @@
 4. [设计模式之美](https://pan.baidu.com/disk/home?#/all?vmode=list&path=%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E)
 5. [设计模式 | 菜鸟教程](https://www.runoob.com/design-pattern/design-pattern-intro.html)
 6. [设计模式 | 刘伟](https://blog.csdn.net/lovelion/category_738450.html)
-7. [如何学习设计模式？|知乎](https://www.zhihu.com/question/308850392/answer/1324509357)
 ---
 ## 分类
 <table>

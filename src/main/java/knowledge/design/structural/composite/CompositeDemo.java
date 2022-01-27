@@ -66,8 +66,8 @@ public class CompositeDemo {
     /**
      * Component
      */
-    abstract static class File {
-        public abstract void show();
+    static abstract class File {
+        protected abstract void show();
     }
 
     /**
@@ -128,12 +128,6 @@ public class CompositeDemo {
 
         public File getChild(int i) {
             return filesList.get(i);
-        }
-
-        public void list() {
-            for (File file : filesList) {
-                System.out.println(file);
-            }
         }
 
         @Override

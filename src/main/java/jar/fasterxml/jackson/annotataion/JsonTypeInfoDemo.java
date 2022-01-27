@@ -43,8 +43,7 @@ public class JsonTypeInfoDemo extends Demo {
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "name")
     @JsonSubTypes(value = {@JsonSubTypes.Type(value = Circle.class), @JsonSubTypes.Type(value = Rectangle.class)})
-    abstract static class Sharp {
-
+    static abstract class Sharp {
     }
 
     @Data

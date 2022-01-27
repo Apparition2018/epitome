@@ -56,8 +56,8 @@ public class StateDemo3 {
         }
     }
 
-    abstract static class State {
-        public abstract void display();
+    static abstract class State {
+        protected abstract void display();
     }
 
     static class NormalState extends State {

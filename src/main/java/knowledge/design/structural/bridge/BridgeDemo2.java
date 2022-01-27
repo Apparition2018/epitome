@@ -35,7 +35,7 @@ public class BridgeDemo2 {
      */
     static abstract class OS {
         // 绘制像素矩阵
-        public void doPaint(Matrix m) {
+        private void doPaint(Matrix m) {
         }
     }
 
@@ -61,11 +61,11 @@ public class BridgeDemo2 {
     static abstract class Image {
         protected OS os;
 
-        public void setOs(OS os) {
+        private void setOs(OS os) {
             this.os = os;
         }
 
-        public abstract void parseFile(String fileName);
+        protected abstract void parseFile(String fileName);
     }
 
     /**

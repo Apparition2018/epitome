@@ -60,12 +60,12 @@ public class PrototypeDemo extends Demo {
      * Prototype
      */
     @NoArgsConstructor
-    abstract static class Shape {
-        public int x;
-        public int y;
-        public String color;
+    static abstract class Shape {
+        protected int x;
+        protected int y;
+        protected String color;
 
-        public Shape(Shape target) {
+        private Shape(Shape target) {
             if (target != null) {
                 this.x = target.x;
                 this.y = target.y;

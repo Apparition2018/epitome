@@ -15,10 +15,10 @@ public class StateDemo2 {
      */
     static abstract class CState {
         // 里程数
-        public int flyMiles;
+        private int flyMiles;
 
         // 根据累积里程数调整会员等级
-        abstract double travel(int miles, FrequentFlyer context);
+        protected abstract double travel(int miles, FrequentFlyer context);
     }
 
     /**

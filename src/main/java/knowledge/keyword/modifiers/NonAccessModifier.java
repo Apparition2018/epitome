@@ -74,14 +74,14 @@ public class NonAccessModifier {
      * -    3)任何继承抽象类的子类必须实现父类的所有抽象方法，除非该子类也是抽象类
      * -    4)如果一个类包含若干个抽象方法，那么该类必须声明为抽象类
      */
-    private abstract static class Caravan {
+    static abstract class Caravan {
         private double price;
         private String model;
         private String year;
 
-        public abstract void goFast();
+        protected abstract void goFast();
 
-        public abstract void changeColor();
+        protected abstract void changeColor();
     }
 
 }

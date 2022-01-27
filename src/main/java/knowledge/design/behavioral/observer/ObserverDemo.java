@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Observable;
 
 /**
  * 观察者模式：定义了对象间的一种一对多依赖关系，使得每当一个对象改变时，所有依赖于它的对象都会得到通知并自动更新
@@ -17,7 +19,7 @@ import java.util.List;
  * 2.{@link java.util.EventListener} 的所有实现，广泛应用于 Swing 组件
  * 3.{@link javax.servlet.http.HttpSessionBindingListener} 和 {@link javax.servlet.http.HttpSessionAttributeListener}
  * <p>
- * 角色:
+ * 角色：
  * 抽象主题 Subject：持有 Observer 集合的引用，定义了 registry()，remove()，notify()
  * 具体主题 ConcreteSubject：实现 notify()
  * -    推模型：observer.update(info...)，把 ConcreteObserver 需要的数据传给 ConcreteObserver
@@ -54,26 +56,26 @@ public class ObserverDemo {
      */
     @Getter
     @Setter
-    abstract static class IAllyControlCenter {
+    static abstract class IAllyControlCenter {
         protected String allyName;
         private String beAttackName;
         protected List<IPlayer> players = new ArrayList<>();
 
-        void join(IPlayer... iPlayers) {
+        protected void join(IPlayer... iPlayers) {
             for (IPlayer player : iPlayers) {
                 System.out.println(player.getName() + "加入" + this.allyName + "战队！");
                 players.add(player);
             }
         }
 
-        void quit(IPlayer obs) {
+        private void quit(IPlayer obs) {
             System.out.println(obs.getName() + "退出" + this.allyName + "战队！");
             players.remove(obs);
         }
 
-        abstract void beAttackNotifyByPush(String beAttackName);
+        protected abstract void beAttackNotifyByPush(String beAttackName);
 
-        abstract void beAttackedNotifyByPull(String beAttackName);
+        protected abstract void beAttackedNotifyByPull(String beAttackName);
     }
 
     /**
@@ -92,7 +94,7 @@ public class ObserverDemo {
          * 推模型
          */
         @Override
-        void beAttackNotifyByPush(String beAttackName) {
+        public void beAttackNotifyByPush(String beAttackName) {
             System.out.println(this.allyName + "战队紧急通知，盟友" + beAttackName + "遭受敌人攻击！");
             for (IPlayer player : players) {
                 if (!beAttackName.equalsIgnoreCase(player.getName())) {
@@ -105,7 +107,7 @@ public class ObserverDemo {
          * 拉模型
          */
         @Override
-        void beAttackedNotifyByPull(String beAttackName) {
+        public void beAttackedNotifyByPull(String beAttackName) {
             System.out.println(this.allyName + "战队紧急通知，盟友" + beAttackName + "遭受敌人攻击！");
             this.setBeAttackName(beAttackName);
             for (IPlayer player : players) {
@@ -165,6 +167,52 @@ public class ObserverDemo {
 
             System.out.println("---------- Pull 通知 ----------");
             acc.beAttackedNotifyByPull(name);
+        }
+    }
+
+    /**
+     * Java 提供了一个 Observer 接口和 一个 Observable 类对观察者模式的支持
+     */
+    static class JdkObserverDemo {
+
+        @Test
+        public void test() {
+            Watched watched = new Watched();
+            watched.addObserver(new Watcher());
+            watched.setData("start");
+            watched.setData("run");
+            watched.setData("stop");
+        }
+
+        /**
+         * ConcreteSubject
+         */
+        static class Watched extends Observable {
+            private String data;
+
+            public String getData() {
+                return data;
+            }
+
+            public void setData(String data) {
+                if (!Objects.equals(this.data, data)) {
+                    this.data = data;
+                    // 将 Observable 对象的 changed 标记为 true
+                    setChanged();
+                }
+                // 当 Observable 对象的 changed 标记为 true 才通知 Observer
+                notifyObservers();
+            }
+        }
+
+        /**
+         * ConcreteObserver
+         */
+        static class Watcher implements java.util.Observer {
+            @Override
+            public void update(Observable o, Object arg) {
+                System.out.println("observer state: " + ((Watched) o).getData());
+            }
         }
     }
 }

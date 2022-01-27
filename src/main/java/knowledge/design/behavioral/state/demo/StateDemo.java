@@ -58,20 +58,20 @@ public class StateDemo {
     /**
      * State
      */
-    abstract static class State {
-        Player player;
+    static abstract class State {
+        protected Player player;
 
-        State(Player player) {
+        private State(Player player) {
             this.player = player;
         }
 
-        public abstract String onLock();
+        protected abstract String onLock();
 
-        public abstract String onPlay();
+        protected abstract String onPlay();
 
-        public abstract String onNext();
+        protected abstract String onNext();
 
-        public abstract String onPrevious();
+        protected abstract String onPrevious();
     }
 
     /**

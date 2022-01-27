@@ -9,6 +9,9 @@ import org.springframework.core.io.ResourceLoader;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 
 /**
  * 策略模式：定义一系列算法，并将每一个算法封装到具有共同接口的类中，使得它们可以互相替换
@@ -28,7 +31,6 @@ import javax.servlet.ServletResponse;
  * <p>
  * 优点：符合开闭原则
  * 缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
- * 优化：{@link StrategyOpt}
  * <p>
  * Strategy：https://refactoringguru.cn/design-patterns/strategy
  * Java设计模式：http://c.biancheng.net/view/1378.html
@@ -105,6 +107,48 @@ public class StrategyDemo {
         public double calculate(double price) {
             System.out.println("儿童票：");
             return price - 10 >= 0 ? price - 10 : 0;
+        }
+    }
+
+    /**
+     * 使用 java.function.* 和 lambda 优化策略模式
+     * <p>
+     * 策略模式优化过程：
+     * 1.一个算法写一个 ConcreteStrategy
+     * 2.使用工厂来管理 ConcreteStrategy
+     * 3.用匿名内部类代替 ConcreteStrategy
+     * 4.用函数式接口代替匿名内部类
+     * 5.用 lambda 简化函数式接口
+     * <p>
+     * 优化策略模式：https://mp.weixin.qq.com/s/hkypvNBkRjPM6HM51_jW9g
+     */
+    static class FunctionInterfaceStrategyDemo {
+        private final static Map<DiscountEnum, Function<Double, Double>> STRATEGY_MAP = new HashMap<>();
+
+        static {
+            STRATEGY_MAP.put(DiscountEnum.NORMAL, price -> {
+                System.out.println("普通票：");
+                return price;
+            });
+            STRATEGY_MAP.put(DiscountEnum.STUDENT, price -> {
+                System.out.println("学生票：");
+                return price * 0.8;
+            });
+            STRATEGY_MAP.put(DiscountEnum.CHILDREN, price -> {
+                System.out.println("儿童票：");
+                return price - 10 >= 0 ? price - 10 : 0;
+            });
+        }
+
+        @Test
+        public void testStrategyLambda() {
+            double price = 60.0;
+            System.out.println("折扣价格：" + STRATEGY_MAP.get(DiscountEnum.STUDENT).apply(price) + "\n");
+            System.out.println("折扣价格：" + STRATEGY_MAP.get(DiscountEnum.CHILDREN).apply(price));
+        }
+
+        enum DiscountEnum {
+            NORMAL, STUDENT, CHILDREN
         }
     }
 }

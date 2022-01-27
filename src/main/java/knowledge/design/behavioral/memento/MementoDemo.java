@@ -13,16 +13,16 @@ import java.util.Stack;
  * {@link  java.io.Serializable} 模拟备忘录
  * <p>
  * 角色：
- * 原发器 Originator
- * 备忘录 Memento
- * 负责人 Caretaker
+ * 原发器 Originator：定义 createMemento(), restoreMemento()
+ * 备忘录 Memento：不能修改，可声明为 final
+ * 负责人 Caretaker：用列表、堆栈等集合存储 Memento
  * <p>
+ * 优点：符合单一职责原则
  * 缺点：资源消耗大
  * <p>
  * Command：https://refactoringguru.cn/design-patterns/memento
  * Java设计模式：http://c.biancheng.net/view/1400.html
  * 菜鸟模式：https://www.runoob.com/design-pattern/memento-pattern.html
- * 设计模式之美：备忘录模式：对于大对象的备份和恢复，如何优化内存和时间的消耗？
  *
  * @author ljh
  * created on 2020/9/26 2:51
@@ -34,21 +34,26 @@ public class MementoDemo {
      * 1.输入 :list，命令行输出内存文本的内容
      * 2.输入 :undo，撤销上一次输入到内存文本的内容
      * 3.输入 其它，追加到内存文本
+     * 4.输入 :stop，退出
+     * 设计模式之美：备忘录模式：对于大对象的备份和恢复，如何优化内存和时间的消耗？
      */
     public static void main(String[] args) {
-        SnapshotHolder snapshotHolder = new SnapshotHolder();
+        MementoHolder mementoHolder = new MementoHolder();
         InputText inputText = new InputText();
         System.out.println("请输入：");
         Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNext()) {
+        boolean exit = false;
+        while (!exit && scanner.hasNext()) {
             String input = scanner.next();
             if (":list".equals(input)) {
                 System.out.println(inputText.getText());
             } else if (":undo".equals(input)) {
-                Snapshot snapshot = snapshotHolder.popSnapshot();
-                inputText.restoreSnapshot(snapshot);
+                Memento memento = mementoHolder.popMemento();
+                inputText.restoreMemento(memento);
+            } else if (":exit".equals(input)) {
+                exit = true;
             } else {
-                snapshotHolder.pushSnapshot(inputText.createSnapshot());
+                mementoHolder.pushMemento(inputText.createMemento());
                 inputText.append(input);
             }
         }
@@ -57,23 +62,20 @@ public class MementoDemo {
     /**
      * Originator
      */
+    @Getter
     static class InputText {
-        private final StringBuilder text = new StringBuilder();
-
-        public String getText() {
-            return text.toString();
-        }
+        private String text = "";
 
         public void append(String input) {
-            text.append(input);
+            text = text + input;
         }
 
-        public Snapshot createSnapshot() {
-            return new Snapshot(text.toString());
+        public Memento createMemento() {
+            return new Memento(text);
         }
 
-        public void restoreSnapshot(Snapshot snapshot) {
-            this.text.replace(0, this.text.length(), snapshot.text);
+        public void restoreMemento(Memento memento) {
+            if (memento != null) this.text = memento.text;
         }
     }
 
@@ -82,22 +84,97 @@ public class MementoDemo {
      */
     @Getter
     @AllArgsConstructor
-    static class Snapshot {
+    static class Memento {
         private final String text;
     }
 
     /**
      * Caretaker
      */
-    static class SnapshotHolder {
-        private final Stack<Snapshot> snapshots = new Stack<>();
+    static class MementoHolder {
+        private final Stack<Memento> mementos = new Stack<>();
 
-        public Snapshot popSnapshot() {
-            return snapshots.pop();
+        public Memento popMemento() {
+            if (mementos.isEmpty()) return null;
+            return mementos.pop();
         }
 
-        public void pushSnapshot(Snapshot snapshot) {
-            snapshots.push(snapshot);
+        public void pushMemento(Memento memento) {
+            mementos.push(memento);
+        }
+    }
+
+    /**
+     * 原型备忘录 (不需要 Memento 角色了)
+     */
+    static class PrototypeMementoDemo {
+
+        public static void main(String[] args) {
+            MementoHolder mementoHolder = new MementoHolder();
+            InputText inputText = new InputText();
+            System.out.println("请输入：");
+            Scanner scanner = new Scanner(System.in);
+            boolean exit = false;
+            while (!exit && scanner.hasNext()) {
+                String input = scanner.next();
+                if (":list".equals(input)) {
+                    System.out.println(inputText.getText());
+                } else if (":undo".equals(input)) {
+                    InputText memento = mementoHolder.popMemento();
+                    inputText.restoreMemento(memento);
+                } else if (":exit".equals(input)) {
+                    exit = true;
+                } else {
+                    mementoHolder.pushMemento(inputText.createMemento());
+                    inputText.append(input);
+                }
+            }
+        }
+
+        /**
+         * Originator
+         */
+        @Getter
+        static class InputText implements Cloneable {
+            private String text = "";
+
+            public void append(String input) {
+                text = text + input;
+            }
+
+            @Override
+            public InputText clone() {
+                try {
+                    return (InputText) super.clone();
+                } catch (CloneNotSupportedException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+
+            public InputText createMemento() {
+                return this.clone();
+            }
+
+            public void restoreMemento(InputText memento) {
+                if (memento != null) this.text = memento.text;
+            }
+        }
+
+        /**
+         * Caretaker
+         */
+        static class MementoHolder {
+            private final Stack<InputText> mementos = new Stack<>();
+
+            public InputText popMemento() {
+                if (mementos.isEmpty()) return null;
+                return mementos.pop();
+            }
+
+            public void pushMemento(InputText memento) {
+                mementos.push(memento);
+            }
         }
     }
 }

@@ -48,7 +48,7 @@ public class Polymorphic {
             sayHello(woman);
         }
 
-        private static abstract class Human {
+        static abstract class Human {
         }
 
         static class Man extends Human {
@@ -84,7 +84,7 @@ public class Polymorphic {
             man.sayHello();
         }
 
-        private static abstract class Human {
+        static abstract class Human {
             protected abstract void sayHello();
         }
 

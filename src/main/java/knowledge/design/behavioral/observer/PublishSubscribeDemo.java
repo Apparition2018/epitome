@@ -93,16 +93,16 @@ public class PublishSubscribeDemo {
 
     @Getter
     @Setter
-    abstract static class ISubscriber {
+    static abstract class ISubscriber {
         private List<Message> subscriberMessages = new ArrayList<>();
 
-        public abstract void addSubscriber(String topic, Broker broker);
+        protected abstract void addSubscriber(String topic, Broker broker);
 
-        public abstract void unSubscribe(String topic, Broker broker);
+        protected abstract void unSubscribe(String topic, Broker broker);
 
-        public abstract void getMessagesForSubscriberOfTopic(String topic, Broker broker);
+        protected abstract void getMessagesForSubscriberOfTopic(String topic, Broker broker);
 
-        public void printMessages() {
+        protected void printMessages() {
             for (Message message : subscriberMessages) {
                 System.out.println("Message Topic → " + message.getTopic() + " : " + message.getPayload());
             }

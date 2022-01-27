@@ -54,17 +54,17 @@ public class TemplateMethodDemo {
     /**
      * AbstractClass
      */
-    abstract static class Game {
-        abstract void init();
+    static abstract class Game {
+        protected abstract void init();
 
-        abstract void begin();
+        protected abstract void begin();
 
-        abstract void finished();
+        protected abstract void finished();
 
         /**
          * 模板方法
          */
-        public final void play() {
+        private void play() {
             init();
             begin();
             finished();
@@ -76,17 +76,17 @@ public class TemplateMethodDemo {
      */
     static class Football extends Game {
         @Override
-        void init() {
+        public void init() {
             System.out.println("Football Game Init");
         }
 
         @Override
-        void begin() {
+        public void begin() {
             System.out.println("Football Game Begin");
         }
 
         @Override
-        void finished() {
+        public void finished() {
             System.out.println("Football Game Finished");
         }
     }
@@ -96,17 +96,17 @@ public class TemplateMethodDemo {
      */
     static class Basketball extends Game {
         @Override
-        void init() {
+        public void init() {
             System.out.println("Basketball Game Init");
         }
 
         @Override
-        void begin() {
+        public void begin() {
             System.out.println("Basketball Game Begin");
         }
 
         @Override
-        void finished() {
+        public void finished() {
             System.out.println("Basketball Game Finished");
         }
     }

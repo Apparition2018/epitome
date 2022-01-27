@@ -73,14 +73,14 @@ public class ChainOfResponsibilityDemo {
     /**
      * Handler / BaseHandler
      */
-    abstract static class Middleware {
+    static abstract class Middleware {
         private Middleware next;
 
-        public void setNext(Middleware next) {
+        private void setNext(Middleware next) {
             this.next = next;
         }
 
-        public abstract boolean check(String email, String password);
+        protected abstract boolean check(String email, String password);
 
         protected boolean checkNext(String email, String password) {
             if (next == null) return true;

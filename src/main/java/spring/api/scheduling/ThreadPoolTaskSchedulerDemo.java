@@ -95,15 +95,15 @@ public class ThreadPoolTaskSchedulerDemo {
     static abstract class ScheduleTask implements Runnable {
         private String id;
 
-        public ScheduleTask(String id) {
+        private ScheduleTask(String id) {
             this.id = id;
         }
 
-        public String getId() {
+        private String getId() {
             return id;
         }
 
-        public void setId(String id) {
+        private void setId(String id) {
             this.id = id;
         }
     }
