@@ -18,6 +18,7 @@
 // Jeecg-Boot, Jeecg-Boot
 // LuckyFrameWeb
 // uni-app, Flutter, avue, Ant Design
+// 高效使用 IntelliJ IDEA：https://fangshixiang.blog.csdn.net/article/details/119411518
 
 // 微信 Native 支付：https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_4_1.shtml
 // IJPay：https://gitee.com/javen205/IJPay/tree/master

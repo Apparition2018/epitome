@@ -20,7 +20,6 @@ import java.util.Stack;
  * 接收者 Receiver
  * <p>
  * 优点：符合单一职责原则、开闭原则
- * TODO-LJH: 2022/1/26 与组合模式联合使用，构成宏命令
  * <p>
  * Command：https://refactoringguru.cn/design-patterns/command
  * Java设计模式：http://c.biancheng.net/view/1380.html
@@ -172,6 +171,7 @@ public class CommandDemo {
 
     /**
      * 备忘录命令模式
+     * 实现撤销/历史记录，也可用原型命令模式实现
      */
     static class MementoCommandDemo {
         /**

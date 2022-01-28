@@ -4,10 +4,6 @@
     1. File → Sync Settings to JetBrains Account...
     2. File → Manage IDE Settings → IDE Settings Sync → Sync Plugins Silently
 ---
-## 字体
-    1. Settings → Editor → Font
-    2. Typography Settings → Fallback font: SimHei
----
 ## 尾行空格
     1. Settings → Editor → General
     2. Virtual Space
@@ -15,6 +11,15 @@
     3. On Save
         3.1 Remove trailing spaces on: Modified Lines 取消勾选
         3.2 Keep trailing spaces on caret line 取消勾选
+---
+## 代码折叠
+    1. Settings → Editor → Code Folding
+    2. Fold by default: → Genral
+    3. Imports 取消勾选
+---
+## 字体
+    1. Settings → Editor → Font
+    2. Typography Settings → Fallback font: SimHei
 ---
 ## 文件和代码模板
     1. Settings → Editor → File and Code Templates
@@ -26,6 +31,11 @@
          * @author ${USER}
          * created on ${DATE} ${TIME}
          */
+---
+## serialVersionUID
+    1. Settings → Editor → Inspections
+    2. 搜索并勾选 Serializable class without 'serialVersionUID'，Severity：Weaking Warning
+    3. 搜索并勾选 'serialVersionUID' field not declared 'private static final long'
 ---
 ## TODO
     1. Settings → Editor → TODO
@@ -42,11 +52,6 @@
         4.3 Edit variables
             4.3.1 date → Expression:date()
         4.4 Change → Java → Statement 勾选
----
-## serialVersionUID
-    1. Settings → Editor → Inspections
-    2. 搜索并勾选 Serializable class without 'serialVersionUID'，Severity：Weaking Warning
-    3. 搜索并勾选 'serialVersionUID' field not declared 'private static final long'
 ---
 ## 加快编译速度
 >### 调整 JVM 参数

@@ -20,7 +20,7 @@ import java.util.Observable;
  * 3.{@link javax.servlet.http.HttpSessionBindingListener} 和 {@link javax.servlet.http.HttpSessionAttributeListener}
  * <p>
  * 角色：
- * 抽象主题 Subject：持有 Observer 集合的引用，定义了 registry()，remove()，notify()
+ * 抽象主题 Subject：持有 Observer 集合的引用，定义 registry()，remove()，notify()
  * 具体主题 ConcreteSubject：实现 notify()
  * -    推模型：observer.update(info...)，把 ConcreteObserver 需要的数据传给 ConcreteObserver
  * -    拉模型：observer.update(subject)，把 Subject 传给 ConcreteObserver，让 ConcreteObserver 自己从 Subject 获取数据

@@ -13,82 +13,107 @@
     <tr>
         <td>类型</td>
         <td>模式</td>
+        <td>范围</td>
         <td>流行度</td>
         <td>类型</td>
         <td>模式</td>
+        <td>范围</td>
         <td>流行度</td>
     </tr>
     <tr>
         <td rowspan="5">创建</td>
-        <td>单例</td>
-        <td>2</td>
-        <td rowspan="11">行为</td>
-        <td>责任链</td>
-        <td>1</td>
-    </tr>
-    <tr>
         <td>抽象工厂</td>
+        <td>类</td>
         <td>3</td>
+        <td rowspan="11">行为</td>
         <td>命令</td>
+        <td>对象</td>
         <td>3</td>
     </tr>
     <tr>
         <td>工厂方法</td>
+        <td>类</td>
         <td>3</td>
         <td>迭代器</td>
+        <td>对象</td>
         <td>3</td>
     </tr>
     <tr>
         <td>建造者</td>
+        <td>对象</td>
         <td>3</td>
         <td>中介者</td>
+        <td>对象</td>
         <td>2</td>
     </tr>
     <tr>
         <td>原型</td>
+        <td>对象</td>
         <td>2</td>
         <td>备忘录</td>
+        <td>对象</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>单例</td>
+        <td>对象</td>
+        <td>2</td>
+        <td>责任链</td>
+        <td>对象</td>
         <td>1</td>
     </tr>
     <tr>
         <td rowspan="7">结构</td>
         <td>适配器</td>
+        <td>类/对象</td>
         <td>3</td>
         <td>观察者</td>
+        <td>对象</td>
         <td>3</td>
     </tr>
     <tr>
         <td>桥接</td>
+        <td>对象</td>
         <td>1</td>
         <td>状态</td>
+        <td>对象</td>
         <td>2</td>
     </tr>
     <tr>
         <td>组合</td>
+        <td>对象</td>
         <td>2</td>
         <td>策略</td>
+        <td>对象</td>
         <td>3</td>
     </tr>
     <tr>
         <td>装饰器</td>
+        <td>对象</td>
         <td>2</td>
         <td>模板方法</td>
+        <td>类</td>
         <td>2</td>
     </tr>
     <tr>
         <td>外观</td>
+        <td>对象</td>
         <td>2</td>
         <td>访问者</td>
+        <td>对象</td>
         <td>1</td>
     </tr>
     <tr>
         <td>享元</td>
+        <td>对象</td>
         <td>1</td>
         <td>解析器</td>
+        <td>类</td>
         <td></td>
     </tr>
     <tr>
         <td>代理</td>
+        <td>对象</td>
         <td>1</td>
     </tr>
 </table>
@@ -112,7 +137,18 @@
 >Decorator          为对象提供增强接口   Decorator 和其持有的 服务对象(Component) 都实现 Component
 >Object Adapter     为对象提供不同接口   Adapter 实现 Target，其持有的 服务对象(Adaptee) 和 Target 没有关系
 >```
->### Bridge vs Strategy
+>### Facade vs Mediator
+>```
+>Facade             Subsystem 之间可以直接交流
+>Mediator           Colleague 之间无法直接交流
+>```
+>### Observer vs Mediator vs Publish/Subscribe
+>```
+>Observer           Subject          ==>        Observer
+>Mediator           Colleage    <==Mediator==>  Colleage
+>Publish/Subscribe  Publish     ====Broker===>  Subscriber
+>```
+>### Strategy vs Bridge
 >- Strategy 可以看成是 Bridge 的一个子集：
 >   - Abstraction → Context
 >   - Implementor → Strategy，ConcreteImplementor → ConcreteStrategy
@@ -127,22 +163,17 @@
 >Strategy           选择 Strategy 后不能改变 
 >State              ConcreteState 可以通过其持有的 Context 引用，改变当前 State
 >```
----
-### Strategy vs Template Method
+>### Strategy vs Template Method
 >```
 >Strategy           基于组合，动态的，context.setStrategy(strategy)
 >Template Method    基于继承，静态的，AbstractClass tempalte = new ConcreteClass()
 >```
-### Strategy vs Command
+>### Strategy vs Command
 >1. 类似：Context 类似 Invoker，Strategy 类似 Command
 >2. 区别：
 >   1. Command 比 Strategy 多了个实际完成工作的角色 Receiver
 >   2. 某些情况下 Strategy 之间可以互相替换，Command 不可以
-### Observer vs Publish/Subscribe
->```
->Observer           Subject 与 Observer 可以直接交流
->Publish/Subscribe  Pbulisher 和 Subscriber 不知道对方存在，都只和 Broker 交流
->```
+---
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式
 ---

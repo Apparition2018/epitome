@@ -23,7 +23,7 @@ import java.util.Enumeration;
  * Spring MVC                                   HttpRequestHandler  HttpRequestHandlerAdapter   HandlerAdapter
  * <p>
  * 角色：
- * 目标 Target：定义与 Client 交互的接口
+ * 目标 Target：与 Client 交互的接口
  * 被适配 Adaptee：现有的一些功能类，Client 与其不兼容
  * 适配器 Adapter：实现或继承 Target，类适配器继承 Adaptee，对象适配器持有 Adaptee 的引用
  * <p>

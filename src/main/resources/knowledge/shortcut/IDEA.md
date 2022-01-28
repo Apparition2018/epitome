@@ -108,6 +108,8 @@ Alt + Shit + O                  Show Options Popup for In-place Refactoring     
 >Ctrl + N                       Go to Class...                      搜索类跳转
 >Ctrl + Shift + N               Go to File...                       搜索文件跳转
 >Ctrl + Alt + Shift + N         Go to Symbol...                     搜索 Symbol 跳转
+>   Alt + O                     Choose scope
+>   Alt + P                     Toggle scope
 >Ctrl + G                       Go to Line:Column...                搜索行跳转
 >Ctrl + Shift + \               Go to URL Mapping...                搜索 URL 跳转
 >F2                             Next Highlighted Error              下一条错误
