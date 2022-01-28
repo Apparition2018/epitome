@@ -163,16 +163,18 @@
 >Strategy           选择 Strategy 后不能改变 
 >State              ConcreteState 可以通过其持有的 Context 引用，改变当前 State
 >```
+>### Strategy vs Command
+>1. 类似：Context 类似 Invoker，Strategy 类似 Command
+>2. 区别：
+    >   1. Command 比 Strategy 多了个实际完成工作的角色 Receiver
+>   2. 某些情况下 Strategy 之间可以互相替换，Command 不可以
 >### Strategy vs Template Method
 >```
 >Strategy           基于组合，动态的，context.setStrategy(strategy)
 >Template Method    基于继承，静态的，AbstractClass tempalte = new ConcreteClass()
 >```
->### Strategy vs Command
->1. 类似：Context 类似 Invoker，Strategy 类似 Command
->2. 区别：
->   1. Command 比 Strategy 多了个实际完成工作的角色 Receiver
->   2. 某些情况下 Strategy 之间可以互相替换，Command 不可以
+>### Template Method vs Factory Method
+>- Factory Method 是 Template Method 的一个特例
 ---
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式

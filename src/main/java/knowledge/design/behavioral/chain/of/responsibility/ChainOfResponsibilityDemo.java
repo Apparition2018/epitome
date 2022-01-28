@@ -30,6 +30,7 @@ import java.util.logging.Level;
  * 客户端 Client：根据程序逻辑一次性或动态生成链
  * <p>
  * 优点：符合单一职责原则、开闭原则
+ * 扩展：使用 Builder 创建 Handler 链
  * TODO-LJH: 2022/1/28 责任链的管理者可使用命令模式实现? 
  * <p>
  * Chain of Responsibility：https://refactoringguru.cn/design-patterns/chain-of-responsibility

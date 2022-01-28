@@ -119,6 +119,7 @@
 >|状态|状态机 (statemachine)|
 >|观察者|Spring Event (ApplicationEventPublisher, ApplicationListener, ApplicationEvent)|
 >|责任链模式|Spring MVC (HandlerExecutionChain)|
+>|访问者|BeanDefinitionVisitor|
 >### 其它
 >1. 单例 Bean 线程安全问题：多个线程对同一对象的非静态成员变量进行写操作存时在线程安全问题
 >   - 解决：ThreadLocal

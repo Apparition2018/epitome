@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,6 +23,9 @@ import java.util.List;
  * 组合组件 Composite/Container：实现 Component，持有子节点集合的引用，循环调用子节点通用方法
  * <p>
  * 优点：符合开闭原则
+ * 扩展：
+ * 1.使用 Builder 创建复杂 Composite
+ * 2.使用 Iterator 遍历 Composite
  * <p>
  * Composite：https://refactoringguru.cn/design-patterns/composite
  * Java设计模式：http://c.biancheng.net/view/1373.html
@@ -50,14 +54,10 @@ public class CompositeDemo {
         File file4 = new ImageFile("Sasuke.jpg");
         File file5 = new VideoFile("Demon Slayer.mp4");
 
-        folder1.add(folder2);
-        folder1.add(folder3);
-        folder3.add(folder4);
-        folder3.add(folder5);
-        folder2.add(file1);
-        folder2.add(file2);
-        folder4.add(file3);
-        folder4.add(file4);
+        folder1.add(folder2, folder3);
+        folder3.add(folder4, folder5);
+        folder2.add(file1, file2);
+        folder4.add(file3, file4);
         folder5.add(file5);
 
         folder1.show();
@@ -118,8 +118,8 @@ public class CompositeDemo {
         private final String name;
         private final Integer level;
 
-        public void add(File file) {
-            filesList.add(file);
+        public void add(File... file) {
+            filesList.addAll(Arrays.asList(file));
         }
 
         public void remove(File file) {

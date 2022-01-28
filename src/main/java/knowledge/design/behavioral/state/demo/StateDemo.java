@@ -22,7 +22,6 @@ import java.util.List;
  * 状态转换方式：
  * 1.由 ConcreteState 负责状态之间的转换
  * 2.由 Context 负责状态之间的转换，此时相当于还充当了 StateManager 的角色 {@link knowledge.design.behavioral.state.demo3.StateDemo3}
- * TODO-LJH 共享状态 (享元?)
  * <p>
  * 有限状态机：Finite State Machine，
  * 1.状态 State
