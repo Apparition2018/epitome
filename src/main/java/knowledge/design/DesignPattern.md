@@ -175,6 +175,8 @@
 >```
 >### Template Method vs Factory Method
 >- Factory Method 是 Template Method 的一个特例
+>### Command vs Visitor
+>
 ---
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式
