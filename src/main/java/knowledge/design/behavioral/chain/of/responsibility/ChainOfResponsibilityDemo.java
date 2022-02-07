@@ -31,7 +31,6 @@ import java.util.logging.Level;
  * <p>
  * 优点：符合单一职责原则、开闭原则
  * 扩展：使用 Builder 创建 Handler 链
- * TODO-LJH: 2022/1/28 责任链的管理者可使用命令模式实现? 
  * <p>
  * Chain of Responsibility：https://refactoringguru.cn/design-patterns/chain-of-responsibility
  * Java设计模式：http://c.biancheng.net/view/1383.html

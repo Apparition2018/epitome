@@ -109,17 +109,22 @@
 >|工厂方法|FactoryBean, AbstractFactoryBean|
 >|建造者|BeanDefinitionBuilder, MockMvcWebClientBuilder|
 >|单例|AbstractBeanFactory|
+>|原型|AbstractBeanFactory|
 >|适配器|Spring AOP (AdvisorAdapter)<br/>Spring MVC (HandlerAdapter)|
 >|代理|Spring AOP (JdkDynamicAopProxy, CglibAopProxy)|
 >|装饰器|XxxDecorator，XxxWrapper|
 >|组合|WebMvcConfigurerComposite|
 >|外观|JdbcUtils|
 >|模板方法|JdbcTemplate，RedisTemplate，TransactionTemplate|
+>|命令|JdbcTemplate#execute(StatementCallback)|
 >|策略|资源访问 (Resource)|
 >|状态|状态机 (statemachine)|
 >|观察者|Spring Event (ApplicationEventPublisher, ApplicationListener, ApplicationEvent)|
+>|中介者|Spring MVC (DispatcherServlet)|
 >|责任链模式|Spring MVC (HandlerExecutionChain)|
 >|访问者|BeanDefinitionVisitor|
+>|备忘录|Spring Web Flow (StateManageableMessageContext)|
+>|解释器|SpEL (ExpressionParser)|
 >### 其它
 >1. 单例 Bean 线程安全问题：多个线程对同一对象的非静态成员变量进行写操作存时在线程安全问题
 >   - 解决：ThreadLocal

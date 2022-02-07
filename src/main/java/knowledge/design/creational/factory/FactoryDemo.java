@@ -7,8 +7,8 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * 工厂模式：
- * 使用场景：
+ * 工厂模式
+ * 使用场景：封装创建细节
  * 1.创建复杂对象
  * 2.复用现有对象
  * <p>

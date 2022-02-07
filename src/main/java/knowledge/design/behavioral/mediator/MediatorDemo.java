@@ -18,6 +18,7 @@ import java.util.Objects;
  * 3.{@link java.util.concurrent.ExecutorService} invokeXXX() 和 submit()
  * 4.{@link java.util.concurrent.ScheduledExecutorService} 所有 scheduleXXX()
  * 5.{@link java.lang.reflect.Method#invoke(Object, Object...)}
+ * 6.{@link org.springframework.web.servlet.DispatcherServlet}
  * <p>
  * 角色:
  * 抽象中介者 Mediator：定义与 Colleague 通用交流方法

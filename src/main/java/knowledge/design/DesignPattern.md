@@ -155,36 +155,35 @@
 >### Strategy vs State
 >1. 是否主动选择
 >```
->Strategy           Context 接收选择的 Strategy 
+>Strategy           Context 接收选择的 Strategy
 >State              Context 设置初始的 State
 >```
 >2. 是否能够改变
 >```
->Strategy           选择 Strategy 后不能改变 
+>Strategy           选择 Strategy 后不能改变
 >State              ConcreteState 可以通过其持有的 Context 引用，改变当前 State
 >```
->### Strategy vs Command
->1. 类似：Context 类似 Invoker，Strategy 类似 Command
->2. 区别：
-    >   1. Command 比 Strategy 多了个实际完成工作的角色 Receiver
->   2. 某些情况下 Strategy 之间可以互相替换，Command 不可以
 >### Strategy vs Template Method
 >```
 >Strategy           基于组合，动态的，context.setStrategy(strategy)
 >Template Method    基于继承，静态的，AbstractClass tempalte = new ConcreteClass()
 >```
+>### Strategy vs Command
+>1. 类似：
+>   - Context → Invoker
+>   - Strategy → Command，ConcreteStrategy → ConcreteCommand
+>2. 区别：
+>   1. Command 比 Strategy 多了个实际完成工作的角色 Receiver
+>   2. 某些情况下 Strategy 之间可以互相替换，Command 不可以
+>### Command vs Visitor
+>- Visitor 可视为 Command 的加强版：
+>   - Command → Element，ConcreteCommand → ConcreteElement
+>   - Receiver → Visitor
 >### Template Method vs Factory Method
 >- Factory Method 是 Template Method 的一个特例
->### Command vs Visitor
->
 ---
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式
 ---
-* 工作中用到的设计模式：
-* https://www.cnblogs.com/dubing/archive/2011/10/22/2221138.html
 * https://www.zhihu.com/question/340301316
 * https://juejin.cn/post/7023536216138055716
----
-各自满足的原则：https://blog.csdn.net/qq_44824148/article/details/108184915
-软件设计师-设计模式真题

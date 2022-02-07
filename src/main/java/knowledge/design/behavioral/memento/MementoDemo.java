@@ -10,7 +10,8 @@ import java.util.Stack;
  * 备忘录模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态
  * 使用场景：快照、撤销
  * 使用实例：
- * {@link  java.io.Serializable} 模拟备忘录
+ * 1.{@link  java.io.Serializable} 模拟备忘录
+ * 2.Spring Web Flow：StateManageableMessageContext#createMessagesMemento()
  * <p>
  * 角色：
  * 原发器 Originator：定义 createMemento(), restoreMemento()

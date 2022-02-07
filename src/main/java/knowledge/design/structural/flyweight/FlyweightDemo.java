@@ -14,8 +14,9 @@ import java.util.Map;
  * 享元模式：运用共享技术复用大量细粒度对象
  * 使用场景：大量相似的不可变的对象，且占用大量内存
  * 使用实例：
- * 1.{@link java.lang.Integer#valueOf(int)}，类似还有 Boolean, Byte, Character, Short, Long, BigDecimal
- * 2.{@link String}
+ * 1.线程池、连接池、常量池等
+ * 2.{@link java.lang.Integer#valueOf(int)}，类似还有 Boolean, Byte, Character, Short, Long, BigDecimal
+ * 3.{@link String}
  * <p>
  * 角色:
  * 享元 Flyweight：可共享状态

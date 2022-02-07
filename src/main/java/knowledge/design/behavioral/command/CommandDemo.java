@@ -1,6 +1,9 @@
 package knowledge.design.behavioral.command;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.StatementCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +15,10 @@ import java.util.Stack;
  * 使用实例：
  * 1.{@link Runnable} 的所有实现
  * 2.{@link javax.swing.Action} 的所有实现
+ * 3.{@link JdbcTemplate#query(String, ResultSetExtractor)}
+ * -    Invoker         {@link JdbcTemplate#execute(StatementCallback)}
+ * -    Command         {@link org.springframework.jdbc.core.StatementCallback}
+ * -    Receiver        {@link java.sql.Statement}
  * <p>
  * 角色:
  * 调用者 Invoker：接收 Command 的引用，请求时调用 command.execute()

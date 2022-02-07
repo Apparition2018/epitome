@@ -31,7 +31,7 @@ import java.util.List;
  * 1.开闭原则：只增加 ConcreteVisitor 符合；增加 ConcreteElement 违反
  * 2.违反依赖倒置原则
  * 3.可能破坏封装 ???
- * 扩展：与 Composite 联合使用，当 ConcreteElement 可能为 Composite/Container 时
+ * 扩展：当 ConcreteElement 为 LeafElement/CompositeElement 时，与 Composite 联合使用
  * <p>
  * Visitor：https://refactoringguru.cn/design-patterns/visitor
  * Java设计模式：http://c.biancheng.net/view/1397.html

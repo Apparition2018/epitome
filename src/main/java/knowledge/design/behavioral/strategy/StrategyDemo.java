@@ -47,11 +47,11 @@ public class StrategyDemo {
      */
     @Test
     public void testStrategy() {
-        MovieTicket ticker = new MovieTicket(60.0, new NormalDiscount());
-        System.out.println("原始价格：" + ticker.getPrice() + "\n");
+        MovieTicket ticket = new MovieTicket(60.0, new NormalDiscount());
+        System.out.println("原始价格：" + ticket.getPrice() + "\n");
 
-        ticker.setDiscount(new ChildrenDiscount());
-        System.out.println("折扣价格：" + ticker.getPrice());
+        ticket.setDiscount(new ChildrenDiscount());
+        System.out.println("折扣价格：" + ticket.getPrice());
     }
 
     /**

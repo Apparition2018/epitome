@@ -23,9 +23,7 @@ import java.util.List;
  * 组合组件 Composite/Container：实现 Component，持有子节点集合的引用，循环调用子节点通用方法
  * <p>
  * 优点：符合开闭原则
- * 扩展：
- * 1.使用 Builder 创建复杂 Composite
- * 2.使用 Iterator 遍历 Composite
+ * 扩展：使用 Builder 创建复杂 Composite
  * <p>
  * Composite：https://refactoringguru.cn/design-patterns/composite
  * Java设计模式：http://c.biancheng.net/view/1373.html
