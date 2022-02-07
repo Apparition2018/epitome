@@ -1,12 +1,13 @@
 # Design Pattern
 
 ## 参考网站
-1. [设计模式](https://refactoringguru.cn/design-patterns)
-2. [Design Patterns](https://sourcemaking.com/design_patterns)
-3. [Java 设计模式](http://c.biancheng.net/design_pattern/)
-4. [设计模式之美](https://pan.baidu.com/disk/home?#/all?vmode=list&path=%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E)
+1. [Design Patterns | refactoring.guru](https://refactoringguru.cn/design-patterns)
+2. [Design Patterns | sourcemaking](https://sourcemaking.com/design_patterns)
+3. [Java Design Patterns](https://java-design-patterns.com/patterns/)
+4. [Java 设计模式](http://c.biancheng.net/design_pattern/)
 5. [设计模式 | 菜鸟教程](https://www.runoob.com/design-pattern/design-pattern-intro.html)
 6. [设计模式 | 刘伟](https://blog.csdn.net/lovelion/category_738450.html)
+7. [设计模式之美](https://pan.baidu.com/disk/home?#/all?vmode=list&path=%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E)
 ---
 ## 分类
 <table>
@@ -185,5 +186,5 @@
 ## 阿里编程规约
 - 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式
 ---
-* https://www.zhihu.com/question/340301316
-* https://juejin.cn/post/7023536216138055716
+* https://www.zhihu.com/question/340301316/answer/1048896559
+* https://mp.weixin.qq.com/s/a1kVL71OlUwZJrsyCE0I-A

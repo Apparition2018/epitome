@@ -7,6 +7,8 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
  * SpringUtils
  * RuoYi (SpringUtils.java)
@@ -35,6 +37,10 @@ public class SpringUtils implements ApplicationContextAware {
 
     public static <T> T getBean(Class<T> clazz) throws BeansException {
         return applicationContext.getBean(clazz);
+    }
+
+    public static <T> Map<String, T> getBeansOfType(Class<T> clazz) throws BeansException {
+        return applicationContext.getBeansOfType(clazz);
     }
 
     public static boolean containsBean(String name) {

@@ -25,6 +25,7 @@ import java.util.TimeZone;
  * 3.抽象工厂：只增加 ConcreteProduct 符合；增加 Product 违反
  * <p>
  * 简单工厂 vs 工厂方法 vs 抽象工厂：https://www.zhihu.com/question/27125796/answer/1615074467
+ * 设计模式最佳套路5 —— 愉快地使用工厂方法模式：https://zhuanlan.zhihu.com/p/392524169
  *
  * @author ljh
  * created on 2022/1/23 0:49

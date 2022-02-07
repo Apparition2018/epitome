@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 单例模式：保证一个类有且只有一个实例，并提供一个访问该实例的全局访问点
+ * 单例模式：确保一个类只有一个实例，并提供一个全局访问点
  * 使用场景：
  * 1.同定义
  * 2.减少内存开销
@@ -27,7 +27,9 @@ import java.util.Map;
  * 2.违反开闭原则：没有抽象层，扩展困难，要扩展只能修改源码
  * 3.难以单元测试：许多测试框架以基于继承的方式创建模拟对象。单例构造器私有，大多数语言不能重写静态方法
  * 4.实例化的共享对象长时间不利用会被 GC 回收，导致单例对象状态的丢失，再次利用时又重新实例化
- * 扩展：①多例模式 ②TODO-LJH 分布式单例
+ * 扩展：
+ * 1.多例模式：{@link MultitonDemo}
+ * 2.TODO-LJH 分布式单例
  * <p>
  * Singleton：https://refactoringguru.cn/design-patterns/singleton
  * Java设计模式：http://c.biancheng.net/view/1338.html
