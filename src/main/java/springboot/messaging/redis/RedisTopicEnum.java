@@ -3,7 +3,7 @@ package springboot.messaging.redis;
 import lombok.Getter;
 
 /**
- * RedisTopicEnums
+ * RedisTopicEnum
  *
  * @author ljh
  * created on 2021/9/1 20:35

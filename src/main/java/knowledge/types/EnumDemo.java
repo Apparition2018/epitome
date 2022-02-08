@@ -68,10 +68,11 @@ public class EnumDemo extends Demo {
     }
 
     /**
-     * EnumSet, EnumMap 的使用
+     * EnumSet, EnumMap
+     * 比 HashSet、HashMap 性能要好
      */
     @Test
-    public void enumSetAndEnumMap() {
+    public void enumSetMapAndEnumMap() {
         // EnumSet
         EnumSet<CompanyEnum> companySet = EnumSet.allOf(CompanyEnum.class);
         for (CompanyEnum CompanyEnum : companySet) {

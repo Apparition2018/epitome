@@ -26,10 +26,10 @@ import static l.demo.Demo.p;
  */
 public class TemporalDemo {
 
-    private LocalDateTime ldt;
-    private LocalDate ld;
-    private LocalTime lt;
-    private Instant instant;
+    private final LocalDateTime ldt;
+    private final LocalDate ld;
+    private final LocalTime lt;
+    private final Instant instant;
 
     public TemporalDemo() {
         ldt = LocalDateTime.parse("2008-08-08T20:08:08");
