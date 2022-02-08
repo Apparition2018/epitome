@@ -1,5 +1,7 @@
 package knowledge.design.pattern.gof.behavioral.chain.of.responsibility;
 
+import knowledge.design.pattern.other.behavioral.PipelineDemo;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -32,7 +34,7 @@ import java.util.logging.Level;
  * 优点：符合单一职责原则、开闭原则
  * 扩展：
  * 1.使用 Builder 创建 Handler 链
- * 2.管道模式 {@link knowledge.design.pattern.other.behavioral.PipelineDemo}
+ * 2.管道模式 {@link PipelineDemo}
  * <p>
  * Chain of Responsibility：https://refactoringguru.cn/design-patterns/chain-of-responsibility
  * Java设计模式：http://c.biancheng.net/view/1383.html

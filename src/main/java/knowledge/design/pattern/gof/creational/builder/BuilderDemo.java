@@ -28,6 +28,7 @@ import org.junit.jupiter.api.Test;
  * <p>
  * Builder：https://refactoringguru.cn/design-patterns/builder
  * Java设计模式：http://c.biancheng.net/view/1354.html
+ * Tom|动态构建SQL语句：https://gupaoedu-tom.blog.csdn.net/article/details/121016859
  *
  * @author ljh
  * created on 2020/9/26 2:51
@@ -209,9 +210,9 @@ public class BuilderDemo {
     }
 
     /**
-     * 链式建造者模式
+     * 流式建造者模式
      */
-    static class ChainBuilderDemo {
+    static class FluentBuilderDemo {
 
         @Test
         public void testChainBuilder() {

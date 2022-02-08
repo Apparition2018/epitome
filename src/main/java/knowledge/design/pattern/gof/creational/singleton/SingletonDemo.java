@@ -1,5 +1,6 @@
 package knowledge.design.pattern.gof.creational.singleton;
 
+import knowledge.design.pattern.other.creational.MultitonDemo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 3.难以单元测试：许多测试框架以基于继承的方式创建模拟对象。单例构造器私有，大多数语言不能重写静态方法
  * 4.实例化的共享对象长时间不利用会被 GC 回收，导致单例对象状态的丢失，再次利用时又重新实例化
  * 扩展：
- * 1.多例模式：{@link knowledge.design.pattern.other.creational.MultitonDemo}
+ * 1.多例模式：{@link MultitonDemo}
  * 2.TODO-LJH 分布式单例
  * <p>
  * Singleton：https://refactoringguru.cn/design-patterns/singleton
@@ -36,6 +37,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 设计模式之美：单例模式（上）：为什么说支持懒加载的双重检测不比饿汉式更优？
  * 设计模式之美：单例模式（中）：我为什么不推荐使用单例模式？又有何替代方案？
  * 设计模式之美：单例模式（下）：如何设计实现一个集群环境下的分布式单例模式？
+ * Tom|多种单例写法和两种攻击：https://gupaoedu-tom.blog.csdn.net/article/details/120972136
  * 单例 vs 静态类：https://www.baeldung.com/java-static-class-vs-singleton
  *
  * @author Arsenal
@@ -198,7 +200,6 @@ public class SingletonDemo {
 
     /**
      * 容器式单例，线程不安全
-     * https://gupaoedu-tom.blog.csdn.net/article/details/120972136
      */
     static class ContainerSingleton {
         private static final Map<String, Object> SINGLETON_MAP = new ConcurrentHashMap<>();
@@ -206,14 +207,21 @@ public class SingletonDemo {
         private ContainerSingleton() {
         }
 
-        public static void putInstance(String key, Object instance) {
-            if (!SINGLETON_MAP.containsKey(key) && instance != null) {
-                SINGLETON_MAP.put(key, instance);
-            }
-        }
-
         public static Object getInstance(String key) {
-            return SINGLETON_MAP.get(key);
+            synchronized (SINGLETON_MAP) {
+                if (!SINGLETON_MAP.containsKey(key)) {
+                    Object obj = null;
+                    try {
+                        obj = Class.forName(key).newInstance();
+                        SINGLETON_MAP.put(key, obj);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return obj;
+                } else {
+                    return SINGLETON_MAP.get(key);
+                }
+            }
         }
     }
 }

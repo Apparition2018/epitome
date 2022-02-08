@@ -16,7 +16,7 @@ import java.util.Objects;
  * 3.原型注册表
  * 使用实例：
  * 1.浅拷贝：{@link Cloneable}
- * 2.深拷贝：①递归 clone；②序列化
+ * 2.深拷贝：①递归 clone；②序列化；③SerializationUtils
  * <p>
  * 角色：
  * 抽象原型 Prototype：clone()

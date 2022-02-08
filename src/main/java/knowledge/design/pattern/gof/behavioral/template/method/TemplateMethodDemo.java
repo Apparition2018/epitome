@@ -1,5 +1,6 @@
 package knowledge.design.pattern.gof.behavioral.template.method;
 
+import knowledge.design.pattern.other.Idiom.CallbackDemo;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
@@ -17,7 +18,6 @@ import java.util.AbstractSet;
  * 1.{@link InputStream} {@link OutputStream} {@link Reader} {@link Writer} 所有非抽象方法
  * 2.{@link AbstractList} {@link AbstractSet} {@link AbstractMap} 所有非抽象方法
  * 3.{@link javax.servlet.http.HttpServlet} 所有默认发送 HTTP 405 错误相应的 doXXX()
- * 基于同步回调：{@link knowledge.design.pattern.other.Idiom.CallbackDemo}
  * 4.{@link org.springframework.jdbc.core.JdbcTemplate}
  * 5.{@link org.springframework.data.redis.core.RedisTemplate}
  * 6.{@link org.springframework.transaction.support.TransactionTemplate}
@@ -34,6 +34,7 @@ import java.util.AbstractSet;
  * 实现类 ConcreteClass：重写步骤方法
  * <p>
  * 优点：符合单一职责原则、开闭原则
+ * 优化：函数式接口优化模板方法模式 {@link CallbackDemo}
  * <p>
  * Template Method：https://refactoringguru.cn/design-patterns/template-method
  * Java设计模式：http://c.biancheng.net/view/1376.html

@@ -30,8 +30,8 @@ import java.util.Map;
  * Proxy：https://refactoringguru.cn/design-patterns/proxy
  * Java设计模式：http://c.biancheng.net/view/1359.html
  * 设计模式最佳套路3 —— 愉快地使用代理模式：https://zhuanlan.zhihu.com/p/381795745
+ * Tom：https://gupaoedu-tom.blog.csdn.net/article/details/120984573
  * JavaGuide：https://github.com/Snailclimb/JavaGuide/blob/main/docs/java/basis/proxy.md
- * 敖丙：https://mp.weixin.qq.com/s/lNw1yjn_xMOLpzbunaS10A
  *
  * @author Arsenal
  * created on 2020/9/26 2:51
