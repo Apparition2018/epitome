@@ -12,7 +12,7 @@ import java.util.List;
  * 使用场景：行为随状态的改变而改变
  * 使用实例：
  * 1.工作流、游戏、电商订单
- * 2.org.springframework.statemachine
+ * 2.org.springframework.statemachine：https://gupaoedu-tom.blog.csdn.net/article/details/121354228
  * <p>
  * 上下文 Context：持有 State 的引用，并提供一个设置器用于接收新的 State
  * 状态部分：接收 Context 的引用，从而可以获取 Context 的信息，和触发 State 转移

@@ -41,8 +41,6 @@ public class FactoryDemo {
      * 3.{@link java.text.NumberFormat#getInstance(Locale)}
      * 4.{@link java.nio.charset.Charset#forName(String)}
      * 5.{@link java.util.EnumSet#of(Enum)}
-     * 6.{@link org.springframework.beans.factory.BeanFactory#getBean(String, Class)}
-     * 7.{@link org.springframework.context.ApplicationContext#getBean(String, Class)}
      * <p>
      * Java设计模式：http://c.biancheng.net/view/8385.html
      */
@@ -117,6 +115,7 @@ public class FactoryDemo {
      * 2.{@link javax.xml.parsers.DocumentBuilderFactory#newInstance()}
      * 3.{@link javax.xml.transform.TransformerFactory#newInstance()}
      * 4.{@link javax.xml.xpath.XPathFactory#newInstance()}
+     * 5.{@link org.springframework.beans.factory.BeanFactory#getBean(String, Class)}
      * <p>
      * Abstract Factory：https://refactoringguru.cn/design-patterns/abstract-factory
      * Java设计模式：http://c.biancheng.net/view/1351.html

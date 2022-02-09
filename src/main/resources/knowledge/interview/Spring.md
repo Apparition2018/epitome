@@ -105,8 +105,8 @@
 >### 用到的设计模式
 >|模式|用例|
 >|:---|:---|
->|简单工厂|BeanFactory, ApplicationContext|
 >|工厂方法|FactoryBean, AbstractFactoryBean|
+>|抽象工厂|BeanFactory|
 >|建造者|BeanDefinitionBuilder, MockMvcWebClientBuilder|
 >|单例|AbstractBeanFactory|
 >|原型|AbstractBeanFactory|

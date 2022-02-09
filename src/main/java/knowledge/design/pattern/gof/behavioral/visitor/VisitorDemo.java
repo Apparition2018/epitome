@@ -65,6 +65,7 @@ public class VisitorDemo {
      * 员工
      */
     interface Employee {
+        // 第一次动态单分派
         void accept(Department dept);
     }
 
@@ -81,6 +82,7 @@ public class VisitorDemo {
 
         @Override
         public void accept(Department dept) {
+            // 第二次动态单分派
             dept.visit(this);
         }
     }
