@@ -37,7 +37,6 @@ public class Demo {
             add(new Person(3, "王五"));
         }
     };
-
     public static Map<Integer, String> map = new HashMap<Integer, String>(3) {
         private static final long serialVersionUID = -6695635216046532571L;
 

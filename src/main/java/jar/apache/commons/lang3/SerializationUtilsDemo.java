@@ -27,29 +27,22 @@ public class SerializationUtilsDemo extends Demo {
     }
 
     /**
-     * 浅拷贝
+     * 浅克隆
      * 1.基本类型：如果变量是基本类型，则拷贝其值；
      * 2.对象：如果变量是一个实例对象，则拷贝其地址引用，也就是说此时拷贝出的对象与原有对象共享该实例变量，不受访问权限的控制；
      * 3.String：这个比较特殊，拷贝的也是一个地址，是个引用，但是在修改时，它会从字符串池(String pool)中重新生成新的字符串，原有的字符串对象保持不变，在此处我们可以认为String是一个基本类型；
      */
     @Test
-    public void testShallowClone() {
-        Person clone = person.clone();
-        p(Objects.equals(person, clone));               // true
-        p(Objects.deepEquals(person, clone));           // true，注意并不是用来判断深拷贝
-        p(person.getHome() == clone.getHome());         // true，引用相等，证明是浅拷贝
-    }
+    public void testShallowDeepClone() {
+        // 浅克隆
+        Person shallowClone = person.clone();
+        p(Objects.equals(person, shallowClone));            // true
+        p(person.getHome() == shallowClone.getHome());      // true，引用相等，证明是浅克隆
 
-    /**
-     * 深拷贝
-     */
-    @Test
-    public void testDeepCopy() {
-        // static <T extends Serializable> T	        clone(T object)
-        // 深拷贝
-        Person clone = SerializationUtils.clone(person);
-        p(Objects.equals(person, clone));               // true
-        p(person.getHome() == clone.getHome());         // false，引用不相等，证明是深拷贝
+        // 深克隆
+        Person deepClone = SerializationUtils.clone(person);
+        p(Objects.equals(person, deepClone));               // true
+        p(person.getHome() == deepClone.getHome());         // false，引用不相等，证明是深克隆
     }
 
     @Test

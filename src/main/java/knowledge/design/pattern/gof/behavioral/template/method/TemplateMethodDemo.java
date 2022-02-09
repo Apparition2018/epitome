@@ -38,6 +38,7 @@ import java.util.AbstractSet;
  * <p>
  * Template Method：https://refactoringguru.cn/design-patterns/template-method
  * Java设计模式：http://c.biancheng.net/view/1376.html
+ * Tom|搞懂钩子方法：https://gupaoedu-tom.blog.csdn.net/article/details/121194483
  *
  * @author ljh
  * created on 2020/9/26 2:51

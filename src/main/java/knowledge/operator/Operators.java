@@ -2,6 +2,9 @@ package knowledge.operator;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 import static l.demo.Demo.p;
 
 /**
@@ -46,6 +49,12 @@ public class Operators {
     /**
      * 三目运算符
      * <p>
+     * 转换规则:
+     * 1.若两个操作数不可转换，则不作转换，返回值是Object类型
+     * 2.若两个操作数是明确类型的表达式(比如变量)，则按照正常的二进制数字转换，int转为long，long转为float等
+     * 3.若两个操作数中有一个是数字S，另外一个是表达式，且其类型标志位T，那么，若数字S在T的范围内，则转换为T类型；若S超出了T的范围，则T转换为S
+     * 4.若两个操作数都是直接量数字，则返回值类型范围较大者
+     * <p>
      * 阿里编程规约：
      * 三目运算符 condition ? 表达式 1 : 表达式 2 中，高度注意表达式 1 和 2 在类型对齐时，可能抛出因自动拆箱导致的 NPE 异常
      * 1.表达式 1 或表达式 2 的值只要有一个是原始类型。
@@ -53,11 +62,17 @@ public class Operators {
      */
     @Test
     public void ternary() {
+        Serializable serializable = true ? "abc" : 1;
+        System.err.println(serializable);
+
+        String s1 = String.valueOf(true ? 90 : 100);
+        String s2 = String.valueOf(true ? 90 : 100.0);
+        p(Objects.equals(s1, s2));  // false
+        
         Integer a = 1;
         Integer b = 2;
         Integer c = null;
-        Integer result = false ? a * b : c; // NullPointerException
-        p(result);
+        p(false ? a * b : c);       // NullPointerException
     }
 
     /**

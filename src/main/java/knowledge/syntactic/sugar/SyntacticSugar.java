@@ -2,11 +2,23 @@ package knowledge.syntactic.sugar;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.stream.IntStream;
+import static l.demo.Demo.p;
 
 /**
  * 语法糖
- * Java 中常用的语法糖主要有泛型、变长参数、自动拆装箱、方法变长参数、枚举、内部类、条件编译、断言、for-each、try-with-resources、lambda 等
+ * 1.泛型
+ * 2.自动拆装箱
+ * 3.方法变长参数
+ * 4.枚举
+ * 5.内部类
+ * 6.条件编译
+ * 7.断言
+ * 8.数值字面量
+ * 9.增强 for 循环
+ * 10.try-with-resources
+ * 11.lambda 表达式
+ * 12.switch-case 对 String 和 枚举的支持
+ * 13.String 对 + 号的支持
  * Java 语法糖详解：https://www.cnblogs.com/helloworld2048/p/10916453.html
  *
  * @author ljh
@@ -21,19 +33,27 @@ public class SyntacticSugar {
      * 一个方法中只能指定一个可变参数，它必须是方法的最后一个参数
      * 可变参数的各个参数用 "," 隔开，也可以直接传入一个数组
      */
-    public int getMax(int... nums) {
-        IntStream.range(0, nums.length).forEach(i -> max = Math.max(nums[i], max));
-        return max;
-    }
+    static class VarargsDemo {
 
-    private static int max;
+        @Test
+        public void testVarargs() {
+            class Base {
+                void func(int price, int... discounts) {
+                    p("Base ... func");
+                }
+            }
+            class Sub extends Base {
+                @Override
+                void func(int price, int[] discounts) {
+                    p("Sub ... func");
+                }
+            }
 
-    @Test
-    public void testVarargs() {
-        System.out.println(getMax(3, 7, 1, 5, 9));  // 9
-
-        int[] arr = {3, 7, 1, 5, 9};
-        System.out.println(getMax(arr));            // 9
+            Base base = new Sub();
+            base.func(100, 50);     // Sub ... func
+            Sub sub = new Sub();
+            // sub.func(100, 50);   // 编译失败
+        }
     }
 
 }

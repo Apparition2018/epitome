@@ -1,7 +1,7 @@
 package jar.apache.commons.beanutils;
 
 import l.demo.Demo;
-import l.demo.Person;
+import l.demo.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
@@ -25,56 +25,33 @@ public class BeanUtilsDemo extends Demo {
     @Test
     public void testBeanUtils() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         // JavaBean → JavaBean
-        Person person = new Person();
-        BeanUtils.copyProperties(person, personList.get(0));
-        p(String.format("%s的 id 是 %s", person.getName(), person.getId())); // 张三的 id 是 1
+        User origin = new User("2000-01-01");
+        User user = new User();
+        // static void      copyProperties(Object dest, Object orig)
+        BeanUtils.copyProperties(user, origin);
 
         // JavaBean → Map
-        Map<String, String> map = BeanUtils.describe(person);
-        p(map); // {otherInfo=null, gender=null, name=张三, id=1, age=null, home=null}
+        Map<String, String> map = BeanUtils.describe(user);
+        p(map); // User{birthString='2000-01-01'}
 
-        // Map → JavaBean
-        BeanUtils.populate(person, map);
-        p(String.format("%s的 id 是 %s", person.getName(), person.getId())); // 张三的 id 是 1
-
-        BeanUtils.setProperty(person, "id", 2);
-        BeanUtils.setProperty(person, "name", "李四");
-        p(person); // Person{id=2, name='李四', age=0}
-    }
-
-    /**
-     * 设置 JavaBean 参数
-     */
-    @Test
-    public void setProperty() throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
-
-        // 1.得到 JavaBean 的一个字节码对象
-        Class<?> clazz = Class.forName("l.demo.Person$Student");
-
-        // 2.生成该字节码的一个对象
-        Object obj = clazz.newInstance();
-
-        // 4.注册一个日期格式转换器
+        // 注册本地日期转换器
         ConvertUtils.register(new DateLocaleConverter(), Date.class);
-
-        // 3.使用工具对该对象赋值
-        BeanUtils.setProperty(obj, "id", "1");
-        BeanUtils.setProperty(obj, "name", "John");
-        BeanUtils.setProperty(obj, "age", "18");
-        BeanUtils.setProperty(obj, "birth", "2000-01-01"); // String → Date 不能自动转换，需注册一个转换器
-
-        p(obj); // Student{id=1, name='John', age=18, birth=2000-01-01}
+        
+        // Map → JavaBean
+        BeanUtils.populate(user, map);
+        p(user); // User{birthString='2000-01-01'}
+        
+        // 设置属性值
+        BeanUtils.setProperty(user, "birth", "2001-01-01");
+        p(user); // User{birthString='2001-01-01'}
     }
 
     /**
      * HttpServletRequest → JavaBean
-     * <p>
-     * BeanUtils 工具：https://www.cnblogs.com/vmax-tam/p/4159985.html
+     * https://www.cnblogs.com/vmax-tam/p/4159985.html
      */
     @SuppressWarnings({"unchecked", "unused"})
     public static <T> T requestToBean(HttpServletRequest request, Class<T> clazz) {
-
-        // 创建 JavaBean 对象
         Object obj = null;
         try {
             obj = clazz.newInstance();
@@ -82,16 +59,10 @@ public class BeanUtilsDemo extends Demo {
             e.printStackTrace();
         }
 
-        // 得到请求中的每个参数
         Enumeration<String> e = request.getParameterNames();
         while (e.hasMoreElements()) {
-            // 获得参数名
             String name = e.nextElement();
-
-            // 获得参数值
             String value = request.getParameter(name);
-
-            // 把参数拷贝到 JavaBean 中
             try {
                 BeanUtils.setProperty(obj, name, value);
             } catch (IllegalAccessException | InvocationTargetException e1) {

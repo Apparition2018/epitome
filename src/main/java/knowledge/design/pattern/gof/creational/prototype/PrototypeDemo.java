@@ -1,6 +1,7 @@
 package knowledge.design.pattern.gof.creational.prototype;
 
 import l.demo.Demo;
+import l.demo.Person;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +16,9 @@ import java.util.Objects;
  * 2.需创建的对象与现有对象差别不大
  * 3.原型注册表
  * 使用实例：
- * 1.浅拷贝：{@link Cloneable}
- * 2.深拷贝：①递归 clone；②序列化；③SerializationUtils
+ * 1.浅克隆：{@link Cloneable}、{@link Person#clone()}
+ * -    clone() 效率分析：轻量级对象直接使用 new：https://www.cnblogs.com/stevenshen123/p/9081118.html
+ * 2.深克隆：①递归 clone；②序列化；③SerializationUtils
  * <p>
  * 角色：
  * 抽象原型 Prototype：clone()

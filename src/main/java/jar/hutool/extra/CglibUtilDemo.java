@@ -2,9 +2,11 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.cglib.CglibUtil;
 import l.demo.Demo;
-import l.demo.Person;
-import l.demo.Person.Student;
+import l.demo.User;
 import org.junit.jupiter.api.Test;
+
+import java.util.Date;
+import java.util.Objects;
 
 /**
  * CglibUtil
@@ -16,16 +18,18 @@ import org.junit.jupiter.api.Test;
  * created on 2020/11/21 17:04
  */
 public class CglibUtilDemo extends Demo {
-    
+
     @Test
     public void testCglibUtil() {
-        // Bean 拷贝方式一
-        Person person = new Person();
-        CglibUtil.copy(personList.get(0), person);
-        p(person);
-        
-        // Bean 拷贝方式二
-        Student student = CglibUtil.copy(personList.get(0), Student.class);
-        p(student);
+        User user = new User(new Date());
+
+        User copy1 = new User();
+        // static void	        copy(Object source, Object target)
+        CglibUtil.copy(user, copy1);
+
+        // static <T> T	        copy(Object source, Class<T> targetClass)
+        User copy2 = CglibUtil.copy(user, User.class);
+
+        System.out.println(Objects.equals(copy1, copy2));
     }
 }

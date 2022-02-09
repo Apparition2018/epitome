@@ -72,7 +72,7 @@ public class ObjectsDemo {
         // 如果两个参数完全相等，则返回 true，否则返回 false
         // 底层调用了 Arrays.deepEquals(a, b)
         p(Objects.equals(name1, name2));        // false
-        p(Objects.deepEquals(name1, name2));    // true
+        p(Objects.deepEquals(name1, name2));    // true，注意不能用来判断是否深克隆
     }
 
     @Test

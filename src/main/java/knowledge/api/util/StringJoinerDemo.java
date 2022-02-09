@@ -15,14 +15,8 @@ public class StringJoinerDemo extends Demo {
 
     @Test
     public void testStringJoiner() {
-        StringJoiner joiner = new StringJoiner(", ", "[", "]");
-        p(joiner); // []
-        
-        joiner.add("1");
-        joiner.add("2");
-        joiner.add("3");
-        joiner.add("4");
-        joiner.add("5");
-        p(joiner); // [1, 2, 3, 4, 5]
+        StringJoiner joiner = new StringJoiner(", ", "[", "]")
+                .add("a").add("b").add("c");
+        p(joiner); // [a, b, c]
     }
 }

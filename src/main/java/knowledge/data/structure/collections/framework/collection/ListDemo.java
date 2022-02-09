@@ -10,14 +10,15 @@ import java.util.*;
 /**
  * List
  * List 继承 Collection
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/List.html   
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/List.html
  * <p>
- * List             Vector              ArrayList                       LinkedList
- * 线程同步             是                   否                               否
- * 查找               效率高 (实现 RandomAccess)                           效率低
- * 实现               数组              数组                                  链表
- * 插入删除         效率低             效率低                                 效率高
- * 其它           自动扩容 100%       自动扩容 50%                实现 Deque，提供了更多的方法，包括 offer(), peek(), poll() 等，多与一些线程池一起使用
+ * List             Vector          ArrayList           LinkedList
+ * 实现               数组              数组          双端链表，实现 Deque
+ * 线程同步             是               否               否
+ * 查找               效率高 (实现 RandomAccess)           效率低
+ * 插入删除         效率低             效率低             效率高
+ * capacity         10                  10              无
+ * 扩容               100%                50%             无
  * <p>
  * void	            add(int index, E element)   在列表的指定位置插入指定元素（可选操作）
  * E	            get(int index)              返回列表中指定位置的元素
@@ -80,6 +81,24 @@ public class ListDemo extends Demo {
         p(list);        // [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
 
+    /**
+     * List equals 只跟元素有关
+     */
+    @Test
+    public void testEquals() {
+        List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+
+        Vector<String> vector = new Vector<>();
+        vector.add("a");
+        vector.add("b");
+        vector.add("c");
+
+        p(Objects.equals(list, vector)); // true
+    }
+
     @Test
     public void testSetOperations() {
         p(subList);                     // [2, 3, 4, 5, 6]
@@ -98,28 +117,6 @@ public class ListDemo extends Demo {
         list = new ArrayList<>(subList);
         list.removeAll(subList2);
         p(list);                        // [2, 3]
-    }
-
-    /**
-     * 遍历
-     */
-    @Test
-    public void traversal() {
-        // 方法一
-        for (Integer str : list) {
-            p(str);
-        }
-
-        // 方法二
-        Iterator<Integer> it = list.iterator();
-        while (it.hasNext()) {
-            p(it.next());
-        }
-
-        // 方法三
-        // JDK8 新增遍历方法 forEach
-        // Iterable 接口下方法
-        list.forEach(System.out::println);
     }
 
     /**

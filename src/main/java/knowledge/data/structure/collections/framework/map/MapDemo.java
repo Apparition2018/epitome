@@ -33,10 +33,10 @@ import java.util.*;
  * HashMap
  * 1.底层实现是链表数组，JDK8 加上了红黑树
  * 2.允许空键和空值（但空键只有一个，且放在第一位）
- * 3.两个关键因子：初始容量、加载因子
+ * 3.两个关键因子：初始容量16、加载因子0.75
  * - 3.1.扩容总是原来的2倍，即容量始终为2的幂次方
  * - 3.2.遍历整个 Map 需要的时间与 桶（数组） 的长度成正比
- * - 3.3.加载因子越大（默认0.75），发生冲突的可能性就越大，反之需要频繁 resize，性能降低
+ * - 3.3.加载因子越大，发生冲突的可能性就越大，反之需要频繁 resize，性能降低
  * - 3.4.建议在创建 HashMap 的时候指定初始化容量，可使用 guava 工具方法 {@link com.google.common.collect.Maps#newHashMapWithExpectedSize(int)}（阿里编程规约）
  * <p>
  * HashMap([int initialCapacity[, float loadFactor]])       构造一个带指定初始容量和加载因子的空 HashMap

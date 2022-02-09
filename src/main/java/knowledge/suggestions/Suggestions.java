@@ -4,14 +4,10 @@ import knowledge.suggestions.Family.Daughter;
 import knowledge.suggestions.Family.Son;
 import l.demo.Demo;
 import l.demo.Person;
-import lombok.Data;
 import lombok.Getter;
-import lombok.experimental.Accessors;
 import org.apache.commons.lang3.time.StopWatch;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,8 +24,6 @@ import java.util.stream.IntStream;
  * https://www.cnblogs.com/selene/category/876189.html
  * <p>
  * 第一章：Java 开发中通用的方法和准则
- * 建议3： 三元操作符的类型务必一致
- * 建议6： 变长方法重写必须也是变长方法
  * 建议12：避免序列化类在构造函数中为不变量赋值
  * 建议13：避免序列化类为final变量复杂赋值
  * 建议14：使用序列化类的私有方法巧妙解决部分属性持久化问题
@@ -51,14 +45,12 @@ import java.util.stream.IntStream;
  * 第五章：数组和集合
  * 建议65：泛型不支持基本类型
  * 建议67：不同的列表选择不同的遍历算法
- * 建议69：列表相等只跟元素有关
  * 建议71：使用 subList() 处理局部列表
  * 建议72：subList() 生成字列表后，不要操作原列表
  * 建议73：Comparable 可用做类的默认排序算法，Comparator 可用做扩展排序工具
  * 建议80：多线程使用 Vector 或 Hashtable
  * <p>
  * 第六章：枚举和注解
- * 建议83：使用枚举定义常量
  * 建议88：枚举实现工厂模式
  * 建议89：枚举项的数量限制在64个以内
  * 建议91：枚举和注解实现 ACL (Access Control List) 访问控制列表
@@ -88,16 +80,13 @@ import java.util.stream.IntStream;
  * <p>
  * 第十章：性能和效率
  * 建议132：提升 Java 性能的基本方法
- * 建议133：若非必要，不要 clone() 对象
  * 建议137：调优 JVM 参数
  * <p>
  * 其它
  * 建议139：大胆采用开源工具
  * 建议145：不要完全依靠单元测试来发现问题
  * 建议146：让注释正确、清晰、简洁
- * 建议147：单一职责原则 (Single Responsibility Principle)
  * 建议148：增强类的可替换性
- * 建议149：依赖抽象而不是实现
  *
  * @author ljh
  * created on 2020/10/10 19:23
@@ -106,48 +95,6 @@ import java.util.stream.IntStream;
 public class Suggestions extends Demo {
 
     /* 第一章：Java 开发中通用的方法和准则 */
-
-    /**
-     * 建议3：三元操作符的类型务必一致
-     * <p>
-     * 三元操作符类型的转换规则:
-     * 1.若两个操作数不可转换，则不作转换，返回值是Object类型；
-     * 2.若两个操作数是明确类型的表达式(比如变量)，则按照正常的二进制数字转换，int转为long，long转为float等;
-     * 3.若两个操作数中有一个是数字S，另外一个是表达式，且其类型标志位T，那么，若数字S在T的范围内，则转换为T类型；若S超出了T的范围，则T转换为S;
-     * 4.若两个操作数都是直接量数字，则返回值类型范围较大者。
-     */
-    @Test
-    public void test003() {
-        int i = 80;
-        String s1 = String.valueOf(i < 100 ? 90 : 100);
-        String s2 = String.valueOf(i < 100 ? 90 : 100.0);
-        Assertions.assertEquals(s1, s2);
-    }
-
-    /**
-     * 建议6：变长方法重写必须也是变长方法
-     */
-    @Test
-    public void test006() {
-        class Base1 {
-            void fun(int price, int... discounts) {
-                p("Base ... fun");
-            }
-        }
-
-        class Sub1 extends Base1 {
-            @Override
-            void fun(int price, int[] discounts) {
-                p("Sub ... fun");
-            }
-        }
-
-        Base1 base = new Sub1();
-        base.fun(100, 50);
-
-        Sub1 sub = new Sub1();
-        // sub.fun(100, 50);
-    }
 
     /* 建议12：避免序列化类在构造函数中为不变量赋值
      * 反序列化时构造函数不会执行
@@ -509,24 +456,6 @@ public class Suggestions extends Demo {
     }
 
     /**
-     * 建议69：列表相等只跟元素有关
-     */
-    @Test
-    public void test069() {
-        ArrayList<String> strs1 = new ArrayList<>();
-        strs1.add("a");
-        strs1.add("b");
-        strs1.add("c");
-
-        Vector<String> strs2 = new Vector<>();
-        strs2.add("a");
-        strs2.add("b");
-        strs2.add("c");
-
-        p(Objects.equals(strs1, strs2)); // true
-    }
-
-    /**
      * 建议71：使用 subList() 处理局部列表
      */
     @Test
@@ -608,79 +537,6 @@ public class Suggestions extends Demo {
     }
 
     /* 第六章：枚举和注解 */
-
-    /**
-     * 建议83：使用枚举定义常量
-     * <p>
-     * JLS (Java Language Specification) 提倡枚举项字母大写，单词间用下划线分割
-     * JLS: https://docs.oracle.com/javase/specs/jls/se8/html/index.html
-     * <p>
-     * 优点：
-     * 1.简单：只需定义枚举项名称，接口常量或类常量必须还要定义值
-     * 2.稳态型：无需关注值而直接调用，接口常量或类常量可能需要关注值
-     * 3.有内置方法
-     * 4.可自定义方法
-     * <p>
-     * 缺点：不能继承
-     * <p>
-     * 其它定义常量方式：
-     * 1.接口常量
-     * 2.类常量
-     */
-    @Getter
-    enum Season {
-        SPRING("春"), SUMMER("夏"), AUTUMN("秋"), WINTER("冬");
-
-        private final String desc;
-
-        Season(String _desc) {
-            desc = _desc;
-        }
-
-        public static Season getComfortableSeason() {
-            return SPRING;
-        }
-
-        public static boolean contains(String name) {
-            Season[] seasons = values();
-            for (Season season : seasons) {
-                if (Objects.equals(season.name(), name)) return true;
-            }
-            return false;
-        }
-    }
-
-    @Test
-    public void test083() {
-        /* 列出所有季节常量 */
-        // 接口常量或类常量需要通过反射来实现
-        // 枚举常量只需通过 values() 来获取所有枚举项即可
-        p(Season.values()); // [SPRING, SUMMER, AUTUMN, WINTER]
-
-        p("The most comfortable Season is " + Season.getComfortableSeason());
-
-        season(Season.WINTER);
-    }
-
-    private void season(Season s) {
-        // 稳态性
-        switch (s) {
-            case SPRING:
-                p("this is" + Season.SPRING);
-                break;
-            case SUMMER:
-                p("this is" + Season.SUMMER);
-                break;
-            case AUTUMN:
-                p("this is" + Season.AUTUMN);
-                break;
-            case WINTER:
-                p("this is" + Season.WINTER);
-                break;
-            default:
-                assert false : "Invalid Param";
-        }
-    }
 
     /**
      * 建议88：枚举实现工厂模式
@@ -919,7 +775,8 @@ public class Suggestions extends Demo {
         // 1.类属性方式
         Class<?> clazz1 = String.class;
         // 2.getClass()
-        Class<?> clazz2 = new String().getClass();
+        String str = "";
+        Class<?> clazz2 = str.getClass();
         // 3.forName()
         Class<?> clazz3 = Class.forName("java.lang.String");
     }
@@ -1288,43 +1145,6 @@ public class Suggestions extends Demo {
         }
     }
 
-    /**
-     * 建议133：若非必要，不要 clone() 对象
-     * JVM 对 new 做了大量的系能优化
-     */
-    @Test
-    public void test133() {
-        @Data
-        @Accessors(chain = true)
-        class Apple implements Cloneable {
-            private String name;
-            private Double weight;
-
-            public Object clone() {
-                try {
-                    return super.clone();
-                } catch (CloneNotSupportedException e) {
-                    throw new Error();
-                }
-            }
-        }
-
-        final int maxLoops = 10 * 10000;
-        int loops = 0;
-        long start = System.currentTimeMillis();
-        Apple apple = new Apple().setName("苹果").setWeight(1.5);
-        while (++loops < maxLoops) {
-            apple.clone();
-        }
-        long mid = System.currentTimeMillis();
-        p(String.format("clone() 生成对象耗时：%s ms", mid - start));
-        while (--loops > 0) {
-            new Apple().setName("苹果").setWeight(1.5);
-        }
-        long end = System.currentTimeMillis();
-        p(String.format("new 生成对象耗时：%s ms", end - mid));
-    }
-
     /* 建议137：调优 JVM 参数
      * 1.调整堆内存大小
      *      栈内存：空间小，速度快，用来存放对象的引用及程序中的基本类型
@@ -1386,40 +1206,6 @@ public class Suggestions extends Demo {
      * 4.TODO注释
      */
 
-    /* 建议147：单一职责原则 (Single Responsibility Principle)
-     *
-     * 优点：
-     * 1.类的复杂性降低
-     * 2.可读性和可维护性提高
-     * 3.降低变更风险
-     *
-     * 如何实施：
-     * 例子：电话通信
-     * 1.分析职责：
-     *      四个过程：拨号、通话、回应、挂机
-     *      两个职责：
-     *          1）拨号和挂机表示的是通信协议的链接和关闭
-     *          2）通话和回应表示的是数据交互
-     * 2.设计接口：
-     *      // 通信协议
-     *      interface Connection {
-     *          // 拨通电话
-     *          public void dial();
-     *          // 通话完毕，挂电话
-     *          public void hangup();
-     *      }
-     *      // 数据传输
-     *      interface Transfer {
-     *          // 通话
-     *          public void chat();
-     *      }
-     * 3.合并实现
-     *      // 电话
-     *      class Phone implements Connection, Transfer {
-     *          // 实现各个接口
-     *      }
-     */
-
     /* 建议148：增强类的可替换性
      * 1.子类型必须完全实现父类型的方法
      * 2.前置条件可以被放大：方法中的输入参数称为前置条件
@@ -1430,30 +1216,6 @@ public class Suggestions extends Demo {
      *          public void doStuff(Map map) {}
      *      }
      * 3.后置条件可以被缩小：方法的返回值称为后置条件
-     */
-
-    /* 建议149：依赖抽象而不是实现
-     *
-     * 依赖倒置原则 (Dependence Inversion Principle)：
-     * 1.高层模块不应该依赖底层模块，两者都应该依赖其抽象
-     * 2.抽象不应该依赖细节
-     * 3.细节应该依赖抽象
-     *
-     * 依赖倒置原则在 Java 中的表现 (面向接口编程)：
-     * 1.模块间的依赖是通过抽象发生的，实现类之间不发生直接的依赖关系，其依赖关系是通过接口或抽象类产生的
-     * 2.接口或抽象类不依赖于实现类
-     * 3.实现类依赖接口或抽象类
-     *
-     * 如何实施：
-     * 1.尽量抽象
-     * 2.表面类型必须是抽象的
-     *      List<String> list = new ArrayList<>();
-     * 3.任何类都不应该从具体类派生
-     * 4.尽量不要重写基类的方法
-     * 5.抽象不关注细节
-     *      接口：负责定义 public 属性和方法，并且声明与其他对象的依赖关系
-     *      抽象类：负责公共构造部分的实现
-     *      实现类：准确地实现了业务逻辑，同时在适当的时候对父类进行了细化
      */
 
 }

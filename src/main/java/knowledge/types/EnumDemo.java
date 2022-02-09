@@ -9,9 +9,12 @@ import java.util.EnumSet;
 
 /**
  * Enum
+ * JLS (Java Language Specification) 提倡枚举项字母大写，单词间用下划线分割
+ * JLS: https://docs.oracle.com/javase/specs/jls/se8/html/index.html
+ * <p>
  * 优点：
- * 1.枚举有更多灵活的用法
- * 2.有效的提高代码的整洁性、可读性
+ * 1.提高代码的整洁性、可读性
+ * 2.内置方法和可自定义方法
  * 3.限制非法值的传入
  * <p>
  * 枚举类名带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开（阿里编程规约）

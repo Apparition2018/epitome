@@ -29,7 +29,8 @@ public class SystemDemo extends Demo {
     /**
      * static void	        arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
      * 从指定源数组中复制一个数组，复制从指定的位置开始，到目标数组的指定位置结束
-     * 相对于数组来说是深拷贝，相对于数组元素来说：只有数组为一维数组，并且元素为基本类型、包装类或String类型时，才是深拷贝，其它都属于浅拷贝
+     * 相对于数组来说是深克隆
+     * 相对于数组元素来说：只有数组为一维数组，并且元素为基本类型、包装类或String类型时，才是深克隆，其它都属于浅克隆
      * native 接口，建议在复制大量数组元素时用该方法，以取得更高的效率
      */
     @Test
