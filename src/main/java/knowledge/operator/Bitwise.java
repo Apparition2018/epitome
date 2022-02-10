@@ -7,6 +7,7 @@ import static l.demo.Demo.p;
 /**
  * Bitwise  位运算
  * CPU 直接支持，效率最高
+ * <p>
  * 使用场景：
  * 1.加密算法
  * 2.图形算法
@@ -34,11 +35,13 @@ public class Bitwise {
     }
 
     /**
-     * 最有效率的方法算出 2 乘以 8 等于几？
+     * 最有效率的方法算出 n * 2？
      */
     @Test
     public void testRapidMultiply() {
-        p(2 << 3);
+        p(2 << 1);  // 4
+        p(2 << 2);  // 8
+        p(2 << 3);  // 16
     }
 
     /**

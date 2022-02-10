@@ -35,6 +35,7 @@ import java.util.logging.Level;
  * 扩展：
  * 1.使用 Builder 创建 Handler 链
  * 2.管道模式 {@link PipelineDemo}
+ * 3.与 Command 联合使用：https://www.kancloud.cn/sstd521/design/193638
  * <p>
  * Chain of Responsibility：https://refactoringguru.cn/design-patterns/chain-of-responsibility
  * Java设计模式：http://c.biancheng.net/view/1383.html

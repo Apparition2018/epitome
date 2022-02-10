@@ -20,7 +20,7 @@ import java.util.Objects;
  * 业务规格 BizSpecification
  * <p>
  * Specification：https://java-design-patterns.com/patterns/specification/
- * 新模式：https://blog.csdn.net/bihansheng2010/article/details/50536320
+ * Specification：https://www.kancloud.cn/sstd521/design/193648
  *
  * @author ljh
  * created on 2022/2/8 17:46

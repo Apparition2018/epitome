@@ -1,15 +1,10 @@
 package knowledge.design.pattern.gof.behavioral.observer;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Observable;
+import java.io.File;
+import java.util.*;
 
 /**
  * 观察者模式：定义了对象间的一种一对多依赖关系，使得每当一个对象改变时，所有依赖于它的对象都会得到通知并自动更新
@@ -40,79 +35,66 @@ import java.util.Observable;
 public class ObserverDemo {
 
     /**
-     * 多人联机对战游戏
+     * 事件订阅：https://refactoringguru.cn/design-patterns/observer/java/example
      */
     @Test
-    public void testObserver() {
-        AllyControlCenter acc = new AllyControlCenter("天龙八部");
-        Player qf = new Player("乔峰");
-        acc.join(qf, new Player("虚竹"), new Player("段誉"));
-        qf.beAttacked(acc);
+    public void testObserver() throws Exception {
+        Editor editor = new Editor();
+        editor.events.subscribe("open", new LogOpenListener("file.txt"));
+        editor.events.subscribe("save", new EmailNotificationListener("admin@example.com"));
+
+        editor.openFile("test.txt");
+        editor.saveFile();
     }
 
     /**
-     * Subject
+     * Subject/ConcreteSubject
      */
-    @Getter
-    @Setter
-    static abstract class IAllyControlCenter {
-        protected String allyName;
-        private String beAttackName;
-        protected List<IPlayer> players = new ArrayList<>();
+    static class EventManager {
+        Map<String, List<EventListener>> listeners = new HashMap<>();
 
-        protected void join(IPlayer... iPlayers) {
-            for (IPlayer player : iPlayers) {
-                System.out.println(player.getName() + "加入" + this.allyName + "战队！");
-                players.add(player);
+        public EventManager(String... operations) {
+            for (String operation : operations) {
+                this.listeners.put(operation, new ArrayList<>());
             }
         }
 
-        private void quit(IPlayer obs) {
-            System.out.println(obs.getName() + "退出" + this.allyName + "战队！");
-            players.remove(obs);
+        public void subscribe(String eventType, EventListener listener) {
+            List<EventListener> users = listeners.get(eventType);
+            users.add(listener);
         }
 
-        protected abstract void beAttackNotifyByPush(String beAttackName);
+        public void unsubscribe(String eventType, EventListener listener) {
+            List<EventListener> users = listeners.get(eventType);
+            users.remove(listener);
+        }
 
-        protected abstract void beAttackedNotifyByPull(String beAttackName);
+        public void notify(String eventType, File file) {
+            List<EventListener> users = listeners.get(eventType);
+            for (EventListener listener : users) {
+                listener.update(eventType, file);
+            }
+        }
     }
 
-    /**
-     * ConcreteSubject
-     */
-    @Data
-    static class AllyControlCenter extends IAllyControlCenter {
+    static class Editor {
+        public EventManager events;
+        private File file;
 
-        public AllyControlCenter(String allyName) {
-            System.out.println(allyName + "战队组件成功！");
-            System.out.println("------------------------------");
-            this.allyName = allyName;
+        public Editor() {
+            this.events = new EventManager("open", "save");
         }
 
-        /**
-         * 推模型
-         */
-        @Override
-        public void beAttackNotifyByPush(String beAttackName) {
-            System.out.println(this.allyName + "战队紧急通知，盟友" + beAttackName + "遭受敌人攻击！");
-            for (IPlayer player : players) {
-                if (!beAttackName.equalsIgnoreCase(player.getName())) {
-                    player.helpByPush(beAttackName);
-                }
-            }
+        public void openFile(String filePath) {
+            this.file = new File(filePath);
+            events.notify("open", file);
         }
 
-        /**
-         * 拉模型
-         */
-        @Override
-        public void beAttackedNotifyByPull(String beAttackName) {
-            System.out.println(this.allyName + "战队紧急通知，盟友" + beAttackName + "遭受敌人攻击！");
-            this.setBeAttackName(beAttackName);
-            for (IPlayer player : players) {
-                if (!beAttackName.equalsIgnoreCase(player.getName())) {
-                    player.helpByPull(this);
-                }
+        public void saveFile() throws Exception {
+            if (this.file != null) {
+                events.notify("save", file);
+            } else {
+                throw new Exception("Please open a file first.");
             }
         }
     }
@@ -120,52 +102,38 @@ public class ObserverDemo {
     /**
      * Observer
      */
-    interface IPlayer {
-        String getName();
-
-        void setName(String name);
-
-        void helpByPush(String beAttackName);
-
-        void helpByPull(IAllyControlCenter acc);
-
-        void beAttacked(IAllyControlCenter acc);
+    interface EventListener {
+        void update(String eventType, File file);
     }
 
     /**
      * ConcreteObserver
+     * 收到通知后发送邮件
      */
     @AllArgsConstructor
-    @Getter
-    @Setter
-    static class Player implements IPlayer {
-        private String name;
+    static class EmailNotificationListener implements EventListener {
+        private final String email;
 
-        /**
-         * 推模型
-         */
         @Override
-        public void helpByPush(String beAttackName) {
-            System.out.println(beAttackName + "坚持住，" + name + "来救你！");
+        public void update(String eventType, File file) {
+            System.out.println("Email to " + email + ": Someone has performed " + eventType + " operation with the following file: " + file.getName());
+        }
+    }
+
+    /**
+     * ConcreteObserver
+     * 收到通知后在日志中记录一条消息
+     */
+    static class LogOpenListener implements EventListener {
+        private final File log;
+
+        public LogOpenListener(String fileName) {
+            this.log = new File(fileName);
         }
 
-        /**
-         * 拉模型
-         */
         @Override
-        public void helpByPull(IAllyControlCenter acc) {
-            System.out.println(acc.getBeAttackName() + "坚持住，" + name + "来救你！");
-        }
-
-        @Override
-        public void beAttacked(IAllyControlCenter acc) {
-            System.out.println(name + "被攻击！");
-
-            System.out.println("---------- Push 通知 ----------");
-            acc.beAttackNotifyByPush(name);
-
-            System.out.println("---------- Pull 通知 ----------");
-            acc.beAttackedNotifyByPull(name);
+        public void update(String eventType, File file) {
+            System.out.println("Save to log " + log + ": Someone has performed " + eventType + " operation with the following file: " + file.getName());
         }
     }
 

@@ -5,7 +5,7 @@
 2. [Design Patterns | sourcemaking](https://sourcemaking.com/design_patterns)
 3. [Java Design Patterns](https://java-design-patterns.com/patterns/)
 4. [Java 设计模式](http://c.biancheng.net/design_pattern/)
-5. [设计模式 | 刘伟](https://blog.csdn.net/lovelion/category_738450.html)
+5. [设计模式 | 刘伟](https://www.bookstack.cn/read/design-pattern-java/README.md)
 6. [设计模式之美](https://pan.baidu.com/disk/home?#/all?vmode=list&path=%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E)
 ---
 ## 分类

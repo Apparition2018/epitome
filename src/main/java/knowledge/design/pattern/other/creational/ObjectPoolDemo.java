@@ -11,7 +11,7 @@ package knowledge.design.pattern.other.creational;
  * <p>
  * Object Pool：https://sourcemaking.com/design_patterns/object_pool
  * Object Pool：https://java-design-patterns.com/patterns/object-pool/
- * 新模式：https://blog.csdn.net/bihansheng2010/article/details/50536320
+ * Object Pool：https://www.kancloud.cn/sstd521/design/193649
  *
  * @author ljh
  * created on 2022/2/8 11:58

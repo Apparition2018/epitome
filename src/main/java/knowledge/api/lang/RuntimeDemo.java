@@ -21,7 +21,10 @@ public class RuntimeDemo {
         // 返回与当前 Java 应用程序相关的运行时对象
         Runtime runtime = Runtime.getRuntime();
 
-        // 向 Java 虚拟机返回可用处理器的数目
+        // 返回 Java 虚拟机可用处理器的数目
         System.out.println(runtime.availableProcessors());
+
+        // 返回 Java 虚拟机剩余内存
+        System.out.println(runtime.freeMemory());
     }
 }
