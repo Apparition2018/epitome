@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * SpringUtils
- * RuoYi (SpringUtils.java)
+ * RuoYi (SpringUtils)
  *
  * @author ljh
  * created on 2021/6/21 16:59

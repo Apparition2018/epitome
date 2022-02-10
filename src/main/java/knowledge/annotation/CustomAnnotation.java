@@ -20,7 +20,7 @@ import static l.demo.Demo.p;
  * Annotation 不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。
  * <p>
  * Annotation 实现原理与自定义注解例子：https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html
- * RuoYi 导入导出 (ExcelUtil.java)：http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA
+ * RuoYi 导入导出 (ExcelUtil)：http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA
  *
  * @author ljh
  * created on 2020/9/18 18:01

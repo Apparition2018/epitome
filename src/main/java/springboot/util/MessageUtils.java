@@ -5,7 +5,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 
 /**
  * MessageUtils
- * RuoYi (MessageUtils.java)
+ * RuoYi (MessageUtils)
  *
  * @author ljh
  * created on 2021/11/21 1:26

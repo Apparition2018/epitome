@@ -48,7 +48,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // 给匹配的 Controller 增加前缀
         configurer.addPathPrefix("mvc", p -> p.isInstance(SpringUtils.getBean(WebMvcConfigController.class)));
         configurer.setUseTrailingSlashMatch(true);
-        WebMvcConfigurer.super.configurePathMatch   (configurer);
+        WebMvcConfigurer.super.configurePathMatch(configurer);
     }
 
     @Value("${spring.mvc.static-path-pattern}")
@@ -159,6 +159,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * 7.添加静态处理
      * extends WebMvcConfigurationSupport 会使默认配置失效，需重写 addResourceHandlers
      * implements WebMvcConfigurer 则不需要，在 application.yml 配置即可
+     *
      * @link {http://localhost:3333/img/Event-Y.jpg}
      * <p>
      * webjars 默认映射规则：/webjars/** ==> classpath:/META-INF/resources/webjars/
@@ -168,7 +169,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * SpringBoot2 静态资源访问问题：https://blog.csdn.net/afgasdg/article/details/106474734
      * Spring MVC 配置静态资源：https://www.cnblogs.com/zhangcaihua/p/12829083.html
      * Serve Static Resources with Spring：https://www.baeldung.com/spring-mvc-static-resources
-     *
      * @see org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#addResourceHandlers
      */
     @Override

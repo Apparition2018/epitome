@@ -17,7 +17,7 @@ import static l.demo.Demo.MY_NAME;
 
 /**
  * SwaggerConfig
- * RuoYi 接口文档 (SwaggerConfig.java)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3
+ * RuoYi 接口文档 (SwaggerConfig)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3
  * 使用 Swagger2 构建强大的 API 文档：https://blog.didispace.com/spring-boot-learning-21-2-2/
  * Swagger 接口分类与各元素排序问题详解：https://blog.didispace.com/spring-boot-learning-21-2-4/
  * springfox2 与 springfox3 的区别：https://blog.csdn.net/qq_42375133/article/details/115692716
