@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
-import java.util.Random;
 
 /**
  * AsymmetricCrypto 非对称加密
@@ -32,7 +31,7 @@ public class AsymmetricCryptoDemo extends Demo {
     @Test
     public void testAsymmetricCrypto() {
         AsymmetricCrypto rsa;
-        
+
         // 自助生成密钥对
         KeyPair keyPair = SecureUtil.generateKeyPair(AsymmetricAlgorithm.RSA.getValue());
 

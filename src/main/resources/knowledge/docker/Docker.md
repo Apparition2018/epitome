@@ -228,7 +228,7 @@ db.createUser({user: "ljh", pwd: "123456", roles: [{role: "readWrite", db: "spri
 ```bash
 docker run -d --name tomcat -p 8080:8080 \
 -v D:/Docker/Tomcat/webapps:/usr/local/tomcat/webapps \
-tomcat:9.0.52
+tomcat
 ```
 6. [Nginx](https://hub.docker.com/_/nginx)
 ```bash
@@ -283,7 +283,12 @@ minio/minio server /data --console-address ":9001"
 
 http://localhost:9001/login
 ```
-10. [Jenkins](https://hub.docker.com/_/jenkins)
+10. [Nacos](https://hub.docker.com/r/nacos/nacos-server)
+- [Docker 部署 Nacos](https://www.cnblogs.com/serendipity-fzx/articles/15400618.html)
+```bash
+docker run -d --name nacos -p 8848:8848 -e MODE=standalone nacos/nacos-server
+```
+11. [Jenkins](https://hub.docker.com/_/jenkins)
 - [Docker 快速安装 Jenkins 完美教程](https://www.cnblogs.com/fuzongle/p/12834080.html)
 ```bash
 docker run -d --name jenkins -p 8080:8080 -p 50000:50000 \
@@ -293,7 +298,7 @@ jenkins
 
 http://localhost:8080
 ```
-11. [Ubuntu](https://hub.docker.com/_/ubuntu)
+12. [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash
 docker run -itd --name ubuntu --privileged ubuntu
 ```
