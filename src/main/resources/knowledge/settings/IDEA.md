@@ -105,3 +105,7 @@
 >   3. Output directory: xxx\target
 >   4. 把 Available Elements 中需要用到的 jar Put into /WEB-INF/lib，特别是 javax.servlet-api
 ---
+## Error running 'XxxApp': Command line is too long
+    1. .idea/workspace.xml
+    2. 在 <component name="PropertiesComponent"></component> 里添加
+        2.1 <property name="dynamic.classpath" value="true" />

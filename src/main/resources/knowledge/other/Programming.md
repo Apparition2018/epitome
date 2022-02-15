@@ -64,13 +64,12 @@
 4. [Spring Cache 实现两级缓存 (Redis + Caffeine)](https://my.oschina.net/dengfuwei/blog/1616221)
 ---
 ## RPC
-0. [EasyRPC](https://github.com/yeecode/EasyRPC)
-1. [谁能用通俗的语言解释一下什么是 RPC 框架？](https://www.zhihu.com/question/25536695)
-2. [RPC是什么，与WebService有什么异同？](https://zhuanlan.zhihu.com/p/97640202)
-3. [WebService是什么？他究竟和WebSocket有什么关系？](https://cloud.tencent.com/developer/article/1405501)
-4. [HTTP，TCP， socket，RPC 与gRPC都是啥？](https://www.jianshu.com/p/959030de7f1c)
-5. [阿里P8架构师谈：Restful、SOAP、RPC、SOA、微服务之间的区别](https://youzhixueyuan.com/the-difference-between-restful-soap-rpc-soa-and-micro-service.html)
-6. [既然有 HTTP 请求，为什么还要用 RPC 调用？](https://www.zhihu.com/question/41609070)
+1. [既然有 HTTP 请求，为什么还要用 RPC 调用？](https://www.zhihu.com/question/41609070/answer/1030913797)
+2. [谁能用通俗的语言解释一下什么是 RPC 框架？](https://www.zhihu.com/question/25536695)
+3. [RPC是什么，与WebService有什么异同？](https://zhuanlan.zhihu.com/p/97640202)
+4. [WebService是什么？他究竟和WebSocket有什么关系？](https://cloud.tencent.com/developer/article/1405501)
+5. [HTTP，TCP， socket，RPC 与gRPC都是啥？](https://www.jianshu.com/p/959030de7f1c)
+6. [阿里P8架构师谈：Restful、SOAP、RPC、SOA、微服务之间的区别](https://youzhixueyuan.com/the-difference-between-restful-soap-rpc-soa-and-micro-service.html)
 >### Web Services
 >1. [Web Services——重整山河待后生](https://zhuanlan.zhihu.com/p/26252433)
 ---
@@ -84,7 +83,6 @@
 ---
 ## Web
 1. [什么是跨域？为什么要禁止跨域？怎样跨域？](https://blog.csdn.net/qq_28773159/article/details/104834167)
-2. [浅谈CSRF攻击方式](https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html)
 ---
 ## SSO
 1. [什么是单点登录(原理与实现简介) ](https://www.cnblogs.com/wcwnina/p/9946623.html)
