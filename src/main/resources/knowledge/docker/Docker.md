@@ -263,7 +263,7 @@ docker run -it --rm --name ZookeeperCluster --link zoo1 --link zoo2 --link zoo3 
 ```bash
 docker run -d --name rabbitmq \
 -p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 8883:8883 \
-rabbitmq
+rabbitmq:management
 
 docker exec -it rabbitmq bash
     rabbitmq-plugins list

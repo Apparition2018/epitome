@@ -4,9 +4,9 @@
 - 不适合缓存大尺寸对象(>100kb)
 ---
 ## 参考网站
-1. [Redis入门](https://www.imooc.com/learn/839)
+1. [Redis入门视频教程-慕课网](https://www.imooc.com/learn/839)
 2. [Redis 教程 | 菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
-3. [Redis 教程](https://www.cnblogs.com/yiwangzhibujian/category/1020818.html)
+3. [Redis 教程 | 已往之不谏](https://www.cnblogs.com/yiwangzhibujian/category/1020818.html)
 4. [Redis 密码设置和登录](https://www.cnblogs.com/xiaozong/p/5652563.html)
 5. [Windows Redis](https://github.com/microsoftarchive/redis/releases)
 6. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)   

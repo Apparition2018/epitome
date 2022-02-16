@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
  * ThreadPoolTaskScheduler
  * <p>
  * 基于 Spring 的动态定时任务：https://blog.csdn.net/weixin_44248490/article/details/106900976
+ * 定时任务的使用|oKong：https://blog.lqdev.cn/2018/08/19/springboot/chapter-twenty-two/
  *
  * @author ljh
  * created on 2021/10/18 15:50

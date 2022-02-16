@@ -115,7 +115,7 @@
 >|装饰器|XxxDecorator，XxxWrapper|
 >|组合|WebMvcConfigurerComposite|
 >|外观|JdbcUtils|
->|模板方法|JdbcTemplate，RedisTemplate，TransactionTemplate|
+>|模板方法|JdbcTemplate，RedisTemplate，RabbitTemplate, TransactionTemplate|
 >|命令|JdbcTemplate#execute(StatementCallback)|
 >|策略|资源访问 (Resource)|
 >|状态|状态机 (statemachine)|
