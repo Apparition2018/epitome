@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Curator 分布式锁
  * <p>
- * InterProcessMutex            https://curator.apache.org/curator-recipes/shared-reentrant-lock.html           可重入排它锁
+ * InterProcessMutex            http://curator.apache.org/curator-recipes/shared-reentrant-lock.html            可重入排它锁
  * InterProcessSemaphoreMutex   http://curator.apache.org/curator-recipes/shared-lock.html                      不可重入排它锁
  * InterProcessReadWriteLock    http://curator.apache.org/curator-recipes/shared-reentrant-read-write-lock.html 可重入读写锁
  * InterProcessMultiLock        http://curator.apache.org/curator-recipes/multi-shared-lock.html                将多个锁作为一个实体管理的容器
