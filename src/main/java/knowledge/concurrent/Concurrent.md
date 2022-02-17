@@ -11,11 +11,11 @@
          CREATE TABLE `lock` (
              `id` BIGINT NOT NULL AUTO_INCREMENT,
              `resource` int NOT NULL COMMENT '锁定的资源',
-             `desc` varchar(255) NOT NULL DEFAULT "" COMMENT '描述',
+             `desc` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
              PRIMARY KEY (`id`),
              UNIQUE KEY `uiq_idx_resource` (`resource`)
          ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='数据库分布式锁表';
-        ``` 
+        ```
     2. 乐观锁：
         ```sql
         CREATE TABLE `good` (
@@ -24,19 +24,19 @@
             `version` int NOT NULL COMMENT '版本号',
             `created_at` datetime COMMENT '创建时间',
             `updated_at` datetime COMMENT '更新时间',
-            PRIMARY KEY (`id`),
+            PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='数据库分布式锁表';
         ```
         1. 版本号 (version)
             ```sql
             SELECT quantity, version FROM good WHERE id = 1;
             UPDATE good SET quantity = newQuantity, version = version + 1 WHERE id = 1 AND version = oldVersion;
-            ```         
+            ```
         2. 修改时间 (updated_at)
             ```sql
             SELECT quantity, updated_at FROM good WHERE id = 1;
             UPDATE good SET quantity = newQuantity, updated_at = newUpdatedAt WHERE id = 1 AND updated_at = oldUpdatedAt;
-            ```         
+            ```
     3. 悲观锁：`SELECT ... FOR UPDATE`  
 2. Redis：@see RedisDistributedLocks
     ```

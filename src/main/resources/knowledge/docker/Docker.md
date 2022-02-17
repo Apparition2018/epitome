@@ -287,8 +287,22 @@ http://localhost:9001/login
 - [Docker 部署 Nacos](https://www.cnblogs.com/serendipity-fzx/articles/15400618.html)
 ```bash
 docker run -d --name nacos -p 8848:8848 -e MODE=standalone nacos/nacos-server
+
+# RuoYi
+docker run -d --name nacos -p 8848:8848 -p 9848:9848 -p 9849:9849 \
+-e MODE=standalone \
+-e SPRING_DATASOURCE_PLATFORM=mysql \
+-e MYSQL_SERVICE_HOST=172.17.0.3 \
+-e MYSQL_SERVICE_USER=root \
+-e MYSQL_SERVICE_PASSWORD=root \
+-e MYSQL_SERVICE_DB_NAME=ry-config \
+nacos/nacos-server
 ```
-11. [Jenkins](https://hub.docker.com/_/jenkins)
+11. [Sentinel](https://hub.docker.com/r/bladex/sentinel-dashboard)
+```bash
+docker run -d --name sentinel -p 8858:8858 bladex/sentinel-dashboard
+```
+12. [Jenkins](https://hub.docker.com/_/jenkins)
 - [Docker 快速安装 Jenkins 完美教程](https://www.cnblogs.com/fuzongle/p/12834080.html)
 ```bash
 docker run -d --name jenkins -p 8080:8080 -p 50000:50000 \
@@ -298,7 +312,7 @@ jenkins
 
 http://localhost:8080
 ```
-12. [Ubuntu](https://hub.docker.com/_/ubuntu)
+13. [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash
 docker run -itd --name ubuntu --privileged ubuntu
 ```

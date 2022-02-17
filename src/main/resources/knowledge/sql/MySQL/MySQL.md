@@ -73,18 +73,18 @@
 >   - [覆盖索引 (Covering indexes)](https://www.cnblogs.com/myseries/p/11265849.html) ：查询字段和条件字段都包含在一个联合索引中，不需要回表
 >   - [MySQL8 三大索引](https://www.mdnice.com/writing/ca72a1892384484aa67bc37398dea3b8) 
 >   - 查找重复索引及冗余索引
->      1. 语句查询
->      ```sql
->          use information_schema;
->          
->          select s1.table_schema, s1.table_name, s1.index_name as index1, s2.index_name as index2, s1.column_name as dup_col 
->          from statistics s1
->          join statistics s2 on s1.table_schema = s2.table_schema and s1.table_name = s2.table_name and s1.seq_in_index = s2.seq_in_index and s1.column_name = s2.column_name
->          where s1.seq_in_index = 1 and s1.index_name <> s2.index_name;
->      ```
->      2. pt-duplicate-key-checker
+>       1. 语句查询
+>       ```sql
+>       use information_schema;
+>
+>       select s1.table_schema, s1.table_name, s1.index_name as index1, s2.index_name as index2, s1.column_name as dup_col 
+>       from statistics s1
+>       join statistics s2 on s1.table_schema = s2.table_schema and s1.table_name = s2.table_name and s1.seq_in_index = s2.seq_in_index and s1.column_name = s2.column_name
+>       where s1.seq_in_index = 1 and s1.index_name <> s2.index_name;
+>       ```
+>       2. pt-duplicate-key-checker
 >   - 删除不用的索引
->      - pt-index-usage
+>       - pt-index-usage
 >2. 避免全表扫描：①对无索引的表进行的查询；②放弃索引进行的查询
 >   1. 在 ①where ②order by ③group by ④多表关联涉及的列 上建立索引
 >   2. 避免使用 is null 和 is not null，建表时尽量设置 not null
@@ -204,7 +204,7 @@
 - [MySQL 锁机制详解](https://www.cnblogs.com/volcano-liu/p/9890832.html)
 - [MySQL 加锁分析](https://www.cnblogs.com/rjzheng/p/9950951.html)
 - [MySQL 多版本并发控制与锁机制](https://blog.csdn.net/litianxiang_kaola/article/details/83003190)
-- [MySQL 的 MVCC(多版本并发控制)](https://www.cnblogs.com/myseries/p/10930910.html)
+- [MySQL 的 MVCC(多版本并发控制)](https://blog.csdn.net/Waves___/article/details/105295060)
 >### 锁的类型
 >1. 意向锁 (Intention Locks)：表级锁，指示事务稍后需要对表中的行使用哪种类型的锁（共享/排它）
 >    1. 意向共享锁 (Intention Shared Locks, IS)：`SELECT ... FOR SHARE`
