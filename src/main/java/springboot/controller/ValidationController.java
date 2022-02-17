@@ -1,7 +1,7 @@
 package springboot.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import l.demo.CompanyEnum;
 import lombok.Getter;
 import lombok.Setter;
@@ -42,7 +42,7 @@ import java.util.Objects;
 @Validated
 @RestController
 @RequestMapping("/validation")
-@Api(tags = "Validation")
+@Tag(name = "Validation")
 public class ValidationController {
 
     private final MessageSource messageSource;
@@ -53,7 +53,7 @@ public class ValidationController {
     }
 
     @GetMapping("/bindingResult")
-    @ApiOperation("BindingResult")
+    @Operation(summary = "BindingResult")
     public String bindingResult(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             StringBuilder msg = new StringBuilder();
@@ -74,33 +74,33 @@ public class ValidationController {
     }
 
     @GetMapping(value = "/bindException")
-    @ApiOperation("BindException")
+    @Operation(summary = "BindException")
     public Result<User> bindException(@Valid User user) {
         return Result.success(user);
     }
 
     @PostMapping("/methodArgumentNotValidException")
-    @ApiOperation("MethodArgumentNotValidException")
+    @Operation(summary = "MethodArgumentNotValidException")
     public Result<User> methodArgumentNotValidException(@Valid @RequestBody User user) {
         return Result.success(user);
     }
 
     @GetMapping("/constraintViolationException")
-    @ApiOperation("ConstraintViolationException")
+    @Operation(summary = "ConstraintViolationException")
     public Result<String> constraintViolationException(@NotBlank(message = "用户名不能为空") String name,
                                                        @NotEmpty(message = "密码不能为空") String pwd) {
         return Result.success(name + ":" + pwd);
     }
 
     @GetMapping("/missingServletRequestParameterException")
-    @ApiOperation("MissingServletRequestParameterException")
+    @Operation(summary = "MissingServletRequestParameterException")
     public Result<String> missingServletRequestParameterException(@RequestParam String name,
                                                                   @RequestParam String pwd) {
         return Result.success(name + ":" + pwd);
     }
 
     @GetMapping("/methodArgumentTypeMismatchException")
-    @ApiOperation("MethodArgumentTypeMismatchException")
+    @Operation(summary = "MethodArgumentTypeMismatchException")
     public Result<Date> methodArgumentTypeMismatchException(Date date) {
         return Result.success(date);
     }

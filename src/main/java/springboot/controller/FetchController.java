@@ -1,7 +1,7 @@
 package springboot.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,29 +26,29 @@ import java.util.Objects;
 @Slf4j
 @RestController
 @RequestMapping("/fetch")
-@Api(tags = "Fetch")
+@Tag(name = "Fetch")
 public class FetchController {
 
     @PostMapping("/string")
-    @ApiOperation("传递普通类型的数据，如 String")
+    @Operation(summary = "传递普通类型的数据，如 String")
     public String string(@RequestParam String data) {
         return data;
     }
 
     @PostMapping("/json-clazz")
-    @ApiOperation("传递 Json 类型的数据，接收方为 Bean")
+    @Operation(summary = "传递 Json 类型的数据，接收方为 Bean")
     public Score jsonClazz(@RequestBody Score score) {
         return score;
     }
 
     @PostMapping("/json-map")
-    @ApiOperation("传递 Json 类型的数据，接收方为 Map")
+    @Operation(summary = "传递 Json 类型的数据，接收方为 Map")
     public Map<String, String> jsonMap(@RequestBody Map<String, String> map) {
         return map;
     }
 
     @PostMapping("/upload-picture")
-    @ApiOperation("上传单个文件")
+    @Operation(summary = "上传单个文件")
     public String uploadPicture(@RequestParam("file") MultipartFile file) {
         try {
             if (!file.isEmpty()) {
@@ -66,7 +66,7 @@ public class FetchController {
     }
 
     @PostMapping("/upload-pictures")
-    @ApiOperation("上传多个文件")
+    @Operation(summary = "上传多个文件")
     public String uploadPictures(HttpServletRequest request) {
         try {
             List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
@@ -89,7 +89,7 @@ public class FetchController {
     }
 
     @PostMapping("/cookie")
-    @ApiOperation("发送 Cookie")
+    @Operation(summary = "发送 Cookie")
     public String cookie(@CookieValue(value = "cny", required = false) String cny, HttpServletRequest request) {
         String rtnString = "";
         Cookie[] cookies = request.getCookies();

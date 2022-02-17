@@ -1,9 +1,10 @@
 package springboot.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import l.demo.CompanyEnum;
 import l.demo.Person;
 import l.demo.Person.Student;
@@ -29,7 +30,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @RestController
-@Api(tags = "WebMvcConfig")
+@Tag(name = "WebMvcConfig")
 public class WebMvcConfigController {
 
     private final ApplicationContext applicationContext;
@@ -43,7 +44,7 @@ public class WebMvcConfigController {
      * configureContentNegotiation
      */
     @GetMapping("configureContentNegotiation")
-    @ApiOperation(value = "配置内容协议", notes = "根据 mediaType 参数来觉得返回值格式(xml, json)")
+    @Operation(summary = "配置内容协议", description = "根据 mediaType 参数来觉得返回值格式(xml, json)")
     public Student configureContentNegotiation() {
         return new Student(1, "ljh");
     }
@@ -52,8 +53,8 @@ public class WebMvcConfigController {
      * configureAsyncSupport
      */
     @GetMapping("configureAsyncSupport")
-    @ApiOperation("配置异步")
-    @ApiImplicitParam(name = "isAsyncReturnValue", value = "异步是否返回值", required = true, paramType = "query", dataType = "Integer", dataTypeClass = Integer.class, defaultValue = "0")
+    @Operation(summary = "配置异步")
+    @Parameter(schema = @Schema(name = "isAsyncReturnValue", description = "异步是否返回值", required = true, type = "Integer", defaultValue = "0"))
     public String configureAsyncSupport(Integer asyncIsReturnValue) throws ExecutionException, InterruptedException {
         if (asyncIsReturnValue == 0) {
             applicationContext.getBean(WebMvcConfigController.class).asyncVoid();
@@ -86,11 +87,11 @@ public class WebMvcConfigController {
      * 这里如果使用 @RequestBody 接收参数会使用 Jackson，不会使用配置的 Converter
      */
     @PostMapping("addFormatters")
-    @ApiOperation(value = "添加格式化器", notes = "枚举格式化器和注解格式化器")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "name", value = "姓名", required = true, paramType = "query", dataTypeClass = String.class),
-            @ApiImplicitParam(name = "company", value = "公司代码", required = true, paramType = "query", dataTypeClass = Integer.class),
-            @ApiImplicitParam(name = "isAdult", value = "是否成年", required = true, paramType = "query", dataTypeClass = String.class)
+    @Operation(summary = "添加格式化器", description = "枚举格式化器和注解格式化器")
+    @Parameters({
+            @Parameter(schema = @Schema(name = "name", description = "姓名", required = true, paramType = "query", dataTypeClass = String.class)),
+            @Parameter(name = "company", description = "公司代码", required = true, paramType = "query", dataTypeClass = Integer.class),
+            @Parameter(name = "isAdult", description = "是否成年", required = true, paramType = "query", dataTypeClass = String.class)
     })
     public User addFormatters(User user) {
         return user;
@@ -109,8 +110,8 @@ public class WebMvcConfigController {
      * addArgumentResolvers
      */
     @PostMapping("addArgumentResolvers")
-    @ApiOperation(value = "添加参数解析器", notes = "通过在 Headers 中传 id 生成参数 person")
-    @ApiImplicitParam(name = "id", value = "id", allowableValues = "1,2,3", required = true, paramType = "header", dataTypeClass = Integer.class)
+    @Operation(summary = "添加参数解析器", description = "通过在 Headers 中传 id 生成参数 person")
+    @Parameter(name = "id", description = "id", allowableValues = "1,2,3", required = true, paramType = "header", dataTypeClass = Integer.class)
     public Person addArgumentResolvers(Person person) {
         return person;
     }

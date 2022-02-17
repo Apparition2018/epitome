@@ -2,8 +2,8 @@ package springboot.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import l.demo.Person;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -23,14 +23,14 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/persons")
-@Api(tags = "Restful")
+@Tag(name = "Restful")
 public class RestfulController {
 
     @Resource(name = "personMap")
     private Map<Integer, Person> personMap;
 
     @PostMapping
-    @ApiOperation("新增人员")
+    @Operation(summary = "新增人员")
     public Person postPerson(@RequestBody Person person) {
         personMap.put(person.getId(), person);
         return person;
@@ -46,7 +46,7 @@ public class RestfulController {
      * @param pageSize   页面条数
      */
     @GetMapping
-    @ApiOperation("获取人员列表")
+    @Operation(summary = "获取人员列表")
     public List<Person> getPersonList(@RequestParam(required = false) String keyword,
                                       @RequestParam(required = false) List<String> sort,
                                       @RequestParam(required = false) List<String> fields,
@@ -59,13 +59,13 @@ public class RestfulController {
     }
 
     @GetMapping("/{id}")
-    @ApiOperation("获取人员")
+    @Operation(summary = "获取人员")
     public Person getPerson(@PathVariable Integer id) {
         return personMap.get(id);
     }
 
     @PutMapping("/{id}")
-    @ApiOperation("修改人员")
+    @Operation(summary = "修改人员")
     public Person putPerson(@PathVariable Integer id, @RequestBody Person newPerson) {
         Person person = personMap.get(id);
         if (person == null) throw new ServiceException("id not exist");
@@ -75,7 +75,7 @@ public class RestfulController {
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation("删除人员")
+    @Operation(summary = "删除人员")
     public Person deletePerson(@PathVariable Integer id) {
         personMap.remove(id);
         return personMap.get(id);

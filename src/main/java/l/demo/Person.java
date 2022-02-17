@@ -1,6 +1,6 @@
 package l.demo;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -24,7 +24,7 @@ import java.util.Objects;
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
-@ApiModel(description = "人员")
+@Schema(description = "人员")
 public class Person implements Comparable<Person>, Cloneable, Serializable {
     private static final long serialVersionUID = -8205619618185839521L;
     private Integer id;
@@ -116,7 +116,7 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
     @Accessors(chain = true)
     @NoArgsConstructor
     @XmlRootElement(name = "student")
-    @ApiModel(description = "学生")
+    @Schema(description = "学生")
     public static class Student extends Person implements Serializable {
         /**
          * 当一个类实现了可序列化接口，就要定义一个常量：版本号 (serialVersionUID)

@@ -1,6 +1,6 @@
 package springboot.controller;
 
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.UrlResource;
 import org.springframework.core.io.support.ResourceRegion;
@@ -24,7 +24,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/video")
-@Api(tags = "Video")
+@Tag(name = "Video")
 public class VideoController {
 
     @GetMapping("play")

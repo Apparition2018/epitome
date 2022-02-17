@@ -2,8 +2,8 @@ package springboot.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,11 +28,11 @@ import java.util.Objects;
 @Slf4j
 @Controller
 @RequestMapping("/weather")
-@Api(tags = "jQuery-pjax")
+@Tag(name = "jQuery-pjax")
 public class WeatherController {
 
     @GetMapping(value = "/{city}")
-    @ApiOperation("获取城市天气")
+    @Operation(summary = "获取城市天气")
     public String index(@PathVariable String city, HttpServletRequest req, Model model) {
         // pjax 请求
         if (req.getHeader("X-PJAX") != null) {
@@ -48,7 +48,7 @@ public class WeatherController {
 
     @GetMapping(value = "/pjax/{city}")
     @ResponseBody
-    @ApiOperation("获取城市天气(pjax)")
+    @Operation(summary = "获取城市天气(pjax)")
     public String testPjax(@PathVariable String city) {
         return getCityWeather(city);
     }

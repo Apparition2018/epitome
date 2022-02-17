@@ -1,7 +1,7 @@
 package springboot.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jar.apache.poi.ExcelUtils;
 import l.demo.Demo;
 import l.demo.Person;
@@ -35,14 +35,14 @@ import java.util.Objects;
 @Slf4j
 @RestController
 @RequestMapping("/multipart-file")
-@Api(tags = "MultipartFile")
+@Tag(name = "MultipartFile")
 public class MultipartFileController extends Demo {
 
     /**
      * @link {http://localhost:3333/front/html/elements/a/a-demo.html}
      */
     @GetMapping("file")
-    @ApiOperation("下载文件")
+    @Operation(summary = "下载文件")
     public void downloadFile(@RequestParam("filename") String filename, HttpServletResponse response) {
         URL classesUrl = Thread.currentThread().getContextClassLoader().getResource("");
         String classesPath = StringUtils.substringAfter(Objects.requireNonNull(classesUrl).toString(), "file:/");
@@ -63,7 +63,7 @@ public class MultipartFileController extends Demo {
      * @link {http://localhost:3333/front/html/elements/%E8%A1%A8%E5%8D%95/form/form-demo.html}
      */
     @PostMapping("/excel")
-    @ApiOperation("上传 excel")
+    @Operation(summary = "上传 excel")
     public void uploadExcel(@RequestPart MultipartFile[] files) {
         try {
             for (MultipartFile file : files) {
@@ -88,7 +88,7 @@ public class MultipartFileController extends Demo {
      * @link {http://localhost:3333/front/bootstrap/fileinput/bootstrap-fileinput.html}
      */
     @PostMapping("/file")
-    @ApiOperation("上传文件")
+    @Operation(summary = "上传文件")
     public Result<String> uploadFile(HttpServletRequest request) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("file-input");

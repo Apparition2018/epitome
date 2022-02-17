@@ -1,7 +1,7 @@
 package springboot.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +18,12 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/online")
-@Api(tags = "Online")
+@Tag(name = "Online")
 public class OnlineController {
 
     @SuppressWarnings("unchecked")
     @GetMapping
-    @ApiOperation("获取在线人数")
+    @Operation(summary = "获取在线人数")
     public String count(HttpServletRequest request) {
         List<HostInfo> hostInfoList = (List<HostInfo>) request.getSession().getServletContext().getAttribute("hostInfoList");
         return "count : " + hostInfoList.size();
