@@ -321,17 +321,10 @@
             <artifactId>jaxen</artifactId>
         </dependency>
 
-        <!-- springfox：集成 swagger2/swagger3 到 spring，但停更很久了
-            如想使用最新 swagger3，请使用 org.springdoc:springdoc-openapi-ui
-            swagger2：io.swagger
-            swagger3: io.swagger.core.v3 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>${springfox.version}</version>
-        </dependency>
-
-        <!-- OpenAPI 3：https://springdoc.org/ -->
+        <!-- OpenAPI 3：
+            https://springdoc.org/
+            https://github.com/springdoc/springdoc-openapi
+             springfox：集成 swagger2/swagger3 到 spring，但停更很久了 -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>

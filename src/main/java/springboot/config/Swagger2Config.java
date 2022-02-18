@@ -3,14 +3,14 @@ package springboot.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.oas.annotations.EnableOpenApi;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
+//import springfox.documentation.builders.ApiInfoBuilder;
+//import springfox.documentation.builders.PathSelectors;
+//import springfox.documentation.builders.RequestHandlerSelectors;
+//import springfox.documentation.oas.annotations.EnableOpenApi;
+//import springfox.documentation.service.ApiInfo;
+//import springfox.documentation.service.Contact;
+//import springfox.documentation.spi.DocumentationType;
+//import springfox.documentation.spring.web.plugins.Docket;
 
 import static l.demo.Demo.MY_EMAIL;
 import static l.demo.Demo.MY_NAME;
@@ -26,28 +26,28 @@ import static l.demo.Demo.MY_NAME;
  * @author ljh
  * created on 2019/8/21 16:19
  */
-@Profile("druid")
-@EnableOpenApi
-@Configuration
+//@Profile("druid")
+//@EnableOpenApi
+//@Configuration
 public class Swagger2Config {
 
-    @Bean
-    public Docket createDocket() {
-        return new Docket(DocumentationType.OAS_30)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("springboot"))
-                .paths(PathSelectors.any())
-                .build();
-    }
-
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("epitome")
-                .description("epitome")
-                .contact(new Contact(MY_NAME, "http://localhost:3333/swagger-ui/", MY_EMAIL))
-                .version("1.0.0")
-                .build();
-    }
+//    @Bean
+//    public Docket createDocket() {
+//        return new Docket(DocumentationType.OAS_30)
+//                .apiInfo(apiInfo())
+//                .select()
+//                .apis(RequestHandlerSelectors.basePackage("springboot"))
+//                .paths(PathSelectors.any())
+//                .build();
+//    }
+//
+//    private ApiInfo apiInfo() {
+//        return new ApiInfoBuilder()
+//                .title("epitome")
+//                .description("epitome")
+//                .contact(new Contact(MY_NAME, "http://localhost:3333/swagger-ui/", MY_EMAIL))
+//                .version("1.0.0")
+//                .build();
+//    }
 
 }

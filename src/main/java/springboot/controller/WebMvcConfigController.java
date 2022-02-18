@@ -3,6 +3,7 @@ package springboot.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import l.demo.CompanyEnum;
@@ -54,7 +55,8 @@ public class WebMvcConfigController {
      */
     @GetMapping("configureAsyncSupport")
     @Operation(summary = "配置异步")
-    @Parameter(schema = @Schema(name = "isAsyncReturnValue", description = "异步是否返回值", required = true, type = "Integer", defaultValue = "0"))
+    @Parameter(name = "asyncIsReturnValue", description = "异步是否返回值", required = true, in = ParameterIn.QUERY,
+            schema = @Schema(type = "integer", defaultValue = "0"))
     public String configureAsyncSupport(Integer asyncIsReturnValue) throws ExecutionException, InterruptedException {
         if (asyncIsReturnValue == 0) {
             applicationContext.getBean(WebMvcConfigController.class).asyncVoid();
@@ -89,9 +91,9 @@ public class WebMvcConfigController {
     @PostMapping("addFormatters")
     @Operation(summary = "添加格式化器", description = "枚举格式化器和注解格式化器")
     @Parameters({
-            @Parameter(schema = @Schema(name = "name", description = "姓名", required = true, paramType = "query", dataTypeClass = String.class)),
-            @Parameter(name = "company", description = "公司代码", required = true, paramType = "query", dataTypeClass = Integer.class),
-            @Parameter(name = "isAdult", description = "是否成年", required = true, paramType = "query", dataTypeClass = String.class)
+            @Parameter(name = "name", description = "姓名", required = true, in = ParameterIn.QUERY, schema = @Schema(type = "string")),
+            @Parameter(name = "company", description = "公司代码", required = true, in = ParameterIn.QUERY, schema = @Schema(type = "integer")),
+            @Parameter(name = "isAdult", description = "是否成年", required = true, in = ParameterIn.QUERY, schema = @Schema(type = "string"))
     })
     public User addFormatters(User user) {
         return user;
@@ -111,7 +113,7 @@ public class WebMvcConfigController {
      */
     @PostMapping("addArgumentResolvers")
     @Operation(summary = "添加参数解析器", description = "通过在 Headers 中传 id 生成参数 person")
-    @Parameter(name = "id", description = "id", allowableValues = "1,2,3", required = true, paramType = "header", dataTypeClass = Integer.class)
+    @Parameter(name = "id", description = "id", required = true, in = ParameterIn.HEADER, schema = @Schema(type = "integer", allowableValues = {"1", "2", "3"}))
     public Person addArgumentResolvers(Person person) {
         return person;
     }
