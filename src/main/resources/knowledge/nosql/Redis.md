@@ -1,13 +1,12 @@
 # Redis
 ![Redis 思维导图](https://img2018.cnblogs.com/blog/967517/201904/967517-20190417162215588-320188667.png)
-- 单进程阻塞式
 - 不适合缓存大尺寸对象(>100kb)
 ---
 ## 参考网站
-1. [Redis入门视频教程-慕课网](https://www.imooc.com/learn/839)
-2. [Redis 教程 | 菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
-3. [Redis 教程 | 已往之不谏](https://www.cnblogs.com/yiwangzhibujian/category/1020818.html)
-4. [Redis 密码设置和登录](https://www.cnblogs.com/xiaozong/p/5652563.html)
+1. [Redis](https://redis.io/)
+2. [Redis入门视频教程-慕课网](https://www.imooc.com/learn/839)
+3. [Redis 教程 | 菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
+4. [Redis 教程 | 冯佳兴](https://blog.csdn.net/fjxcsdn/category_8935622.html)
 5. [Windows Redis](https://github.com/microsoftarchive/redis/releases)
 6. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)   
 7. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)

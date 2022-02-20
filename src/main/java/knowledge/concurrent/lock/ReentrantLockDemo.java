@@ -35,7 +35,7 @@ public class ReentrantLockDemo extends Demo {
 
     // ReentrantLock(boolean fair)
     // 根据给定的公平政策创建一个 ReentrantLock 的实例
-    private Lock lock = new ReentrantLock(true);
+    private final Lock lock = new ReentrantLock(true);
 
     public void insert(Thread thread) throws InterruptedException {
         if (lock.tryLock(2, TimeUnit.SECONDS)) {
@@ -52,7 +52,7 @@ public class ReentrantLockDemo extends Demo {
     }
 
     static class MyThread extends Thread {
-        private ReentrantLockDemo rlDemo;
+        private final ReentrantLockDemo rlDemo;
 
         MyThread(ReentrantLockDemo rlDemo, String name) {
             super(name);

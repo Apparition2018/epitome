@@ -108,6 +108,10 @@ public class RedisDistributedLocks {
             String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
             Object result = jedis.eval(script, Collections.singletonList(key), Collections.singletonList(val));
             return Objects.equals(val, result);
+//            if (val.equals(jedis.get(key))) {
+//                return jedis.del(key) > 0;
+//            }
+//            return false;
         }
 
         public Random getRandom() {
