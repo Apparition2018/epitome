@@ -1,6 +1,6 @@
 # Redis
 ![Redis 思维导图](https://img2018.cnblogs.com/blog/967517/201904/967517-20190417162215588-320188667.png)
-- 不适合缓存大尺寸对象(>100kb)
+- 基于内存的 key-value store 非关系型数据库
 ---
 ## 参考网站
 1. [Redis](https://redis.io/)
@@ -92,9 +92,8 @@
 - RDB 持久化
 - AOF 持久化
 ---
-## [客户端操作](https://www.cnblogs.com/javastack/p/9854489.html)
+## [客户端操作](http://doc.redisfans.com/)
 - 连接远程 redis：redis-cli -h host -p port -a password
-- [命令](https://www.runoob.com/redis/redis-commands.html)
   - Key
   ```
   KEYS pattern[?|*]                                 查看

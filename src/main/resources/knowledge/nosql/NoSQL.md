@@ -2,30 +2,19 @@
 - 非关系型数据库 Not Only SQL
 ---
 ## 参考网站
-1. [Redis和MongoDB的区别以及应用场景](https://www.cnblogs.com/ht22ht22/p/12567172.html)
-2. [mongodb,redis,hbase 三者都是nosql数据库，他们的最大区别和不同定位是什么？](https://www.zhihu.com/question/30219620)
-3. [MongoDB、ElasticSearch、Redis、HBase这四种热门数据库的优缺点及应用场景](https://zhuanlan.zhihu.com/p/37964096)
+1. [NoSQL - Wikipedia](https://en.wikipedia.org/wiki/NoSQL#Types_and_examples)
+2. [NoSQL 简介 | 菜鸟教程](https://www.runoob.com/mongodb/nosql.html)
+3. [Redis vs MongoDB](https://www.cnblogs.com/ht22ht22/p/12567172.html)
+4. [Redis vs MongoDB vs HBase](https://www.zhihu.com/question/30219620)
 ---
-## 简介
-- 为什么使用 NoSL
-    - High performance 高并发读写
-    - Huge Storage 海量数据的高效率存储和访问
-    - High Scalability && High Availability 高可扩展性和高可用性
-- 分类
-    - 键值(k-v)存储：Redis，Memcached
-    - 列存储：Cassandra，HBase，RiaK
-    - 文档数据库：MongoDB，CouchDB
-    - 图形数据库：Neo4J
-- 特点
-    - 易扩展
-    - 灵活的数据模型
-    - 大数据量，高性能
-    - 高可用
----
-## 各 NoSQL 应用场景
-1. Redis: 速度快，缓存
-2. HBase: 数据量大，大数据分析
-3. MongoDB: 复杂查询，高性能数据库
+## 对比
+|Data Model|Performance|Scalability|Flexibility|Complexity|Notable Examples|Use|
+|:---|:---|:---|:---|:---|:---|:---|
+|Key-Value Store|high|high|high|none|Memcached, Redis|缓存 (速度快)|
+|Document Store|high|variable/high|high|low|MongoDB，CouchDB|高性能数据库 (复杂查询)|
+|Wide Column Store|high|high|moderate|low|Cassandra，HBase|大数据 (数据量大)|
+|Graph Database|variable|variable|high|high|Neo4J，JanusGraph||
+|Relational Database|variable|variable|low|moderate|MySQL, SQL server||
 ---
 ## CAP 定理
 <img alt="CAP Theorem" src="https://www.runoob.com/wp-content/uploads/2013/10/cap-theoram-image.png" width="400"/>

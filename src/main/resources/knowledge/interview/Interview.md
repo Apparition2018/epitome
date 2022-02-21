@@ -3,16 +3,21 @@
 ---
 ## Redis
 - @see Redis.md
+>- [参考网站1](https://github.com/Snailclimb/JavaGuide/blob/main/docs/database/redis/redis-questions-01.md)
+>- [参考网站2](https://mp.weixin.qq.com/s/LkIcGS9kFTXNLFlxASPYUA)
+>- [参考网站3]()
   https://mp.weixin.qq.com/s/vXBFscXqDcXS_VaIERplMQ
   https://mp.weixin.qq.com/s/LkIcGS9kFTXNLFlxASPYUA
-### Redis 为什么快
-- 官方：QPS 10w
-1. 基于内存
-2. 数据结构经过专门设计
-3. 单线程
-4. 多路 I/O 复用模型，非阻塞 IO 
->- [参考网站1](https://blog.csdn.net/weixin_39852953/article/details/111114534)
->- [参考网站2](https://mp.weixin.qq.com/s/LkIcGS9kFTXNLFlxASPYUA)
+### Redis 多快，为什么快
+- Redis 的瓶颈通常是内存或网络，而不是 CPU；查询 QPS 达 10w/s
+1. 基于内存：省去 CPU 将数据从磁盘读到内存的时间
+2. 专门设计的数据结构：
+3. 单线程：
+    - 省去创建、切换、销毁线程上下文的时间
+    - 4.0
+4. 多路 IO 复用模型 
+>- [参考网站1](https://cloud.tencent.com/developer/article/1600940)
+>- [参考网站2](https://blog.csdn.net/weixin_39852953/article/details/111114534)
 >- [参考网站3]()
 ### 缓存雪崩、击穿、穿透
 1. 雪崩：
