@@ -103,7 +103,7 @@ public class ApacheMap extends Demo {
     }
 
     /**
-     * LRUMap                       最少使用 Map，大小固定
+     * LRUMap                       最近最少使用 Map，大小固定
      */
     @Test
     public void testLRUMap() {

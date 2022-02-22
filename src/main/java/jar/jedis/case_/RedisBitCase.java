@@ -6,6 +6,7 @@ import redis.clients.jedis.Jedis;
 
 /**
  * Redis Bit 类型用例
+ * https://segmentfault.com/a/1190000008188655
  *
  * @author ljh
  * created on 2021/5/27 9:51
@@ -14,7 +15,6 @@ public class RedisBitCase {
 
     /**
      * 活跃用户统计
-     * 使用 Redis bitmap 统计活跃用户：http://www.321332211.com/thread?topicId=221
      */
     static class ActiveUserStats {
 
@@ -49,7 +49,7 @@ public class RedisBitCase {
      * 在线用户统计
      */
     static class OnlineUserStats {
-        
+
         private static final String USER_ONLINE_KEY = "user:online";
 
         public static void main(String[] args) {

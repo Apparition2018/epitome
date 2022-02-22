@@ -11,38 +11,6 @@
 6. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)   
 7. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
 ---
-## Redis 支持类型及应用场景
-- 字符串 String
-    - 二进制安全的，存入和获取的数据相同
-    - 可存储 512M
-    - 缓存、限流、计数器、自增 id、时效信息存储、分布式 session、分布式锁
-      - 计数器应用场景：
-        - 频率控制：接口防刷，密码尝试次数限制
-        - 数量统计：请求量统计
-        - 数量控制：商品抢购，奖励额度控制
-- 散列 Hash
-    - 字符串键值的 Map
-    - 可存储 4294967295 个键值对
-    - 各种信息详情、用户访问量
-- 列表 List
-    - 简单队列、定时排行榜、最近浏览、最新新闻、省市区表、字典表
-    ![RPOPLPUSH](https://img3.mukewang.com/608c3a3e0001e0eb13660768-500-284.jpg)
-- 集合类型 Set
-    - 可存储 4294967295
-    - 赞、踩、标签、唯一性数据、抽奖、数据对象之间的关系
-- 有序集合 Sorted Set
-    - 从小到大
-    - 实时排行榜、构建索引数据
->#### 参考网站
->1. [Redis 各种应用场景](https://zhuanlan.zhihu.com/p/100460843)
->2. [Redis bitmap 的妙用](https://segmentfault.com/a/1190000008188655)
->3. [Redis Hash 实现条件查询](https://www.jianshu.com/p/98b9a56cd036)
->4. [Redis 存储 list](https://blog.csdn.net/weixin_39530437/article/details/111616754)
->5. [Redis 高并发场景设计](https://www.bilibili.com/video/av81324631)
->6. [Redis 五种基本类型及其应用场景举例](https://zhuanlan.zhihu.com/p/263390414)
->7. [Redis 实战场景中相关问题](https://www.shuzhiduo.com/A/RnJWKG9BJq/) 
->8. [Redis 数据类型及应用场景](https://segmentfault.com/a/1190000012212663)
----
 ## Redis 数量控制
 1. 并发问题  
 ![redis 数量控制并发问题](https://img1.mukewang.com/6092cf44000167a319201080-500-284.jpg)
@@ -88,23 +56,20 @@
 >appendfsync always | everysec | no
 >```
 ---
-## [Redis 持久化](https://segmentfault.com/a/1190000016021217)
-- RDB 持久化
-- AOF 持久化
----
-## [客户端操作](http://doc.redisfans.com/)
+## [客户端操作](https://www.redis.io/commands)
+- [Try Redis](https://try.redis.io/)
 - 连接远程 redis：redis-cli -h host -p port -a password
   - Key
   ```
   KEYS pattern[?|*]                                 查看
-  DEL key                                           删除
-  EXISTS key                                        判断是否存在
+  DEL key [key ...]                                 删除
+  EXISTS key [key ...]                              判断是否存在
   RENAME key newkey                                 重命名
   TYPE key                                          返回类型
-  EXPIRE key seconds                                设置过期时间，秒
-  EXPIREAT key timestamp                            设置过期时间点，时间戳
-  PEXPIRE key milliseconds                          设置过期时间，毫秒
-  PEXPIREAT key milliseconds-timestamp              设置过期时间点，时间戳
+  EEXPIRE key seconds [NX|XX|GT|LT]                 设置过期时间，秒
+  EXPIREAT key unix-time-seconds [NX|XX|GT|LT]      设置过期时间点，时间戳
+  PEXPIRE key milliseconds [NX|XX|GT|LT]            设置过期时间，毫秒
+  PEXPIREAT key unix-time-milliseconds [NX|XX|GT|LT]设置过期时间点，时间戳
   TTL key                                           返回生存时间，秒
   PERSIST key                                       持久保持
   MOVE key db                                       移动
@@ -116,11 +81,11 @@
   SETRANGE key offset value                         替换
   SETBIT key offset value                           设置 bit
   GETSET key value                                  设置，并获取旧值
-  MSET key value [key value...]                     批量设置
+  MSET key value [key value ...]                    批量设置
   GET key                                           获取
   GETRANGE key start end                            截取
   GETBIT key offset                                 获取 bit
-  MGET key [key...]                                 批量获取
+  MGET key [key ...]                                批量获取
   APPEND key value                                  追加
   INCR key                                          增一
   DECR key                                          减一
@@ -130,27 +95,27 @@
   ```
   - Hash
   ```
-  HSET key field value [field value...]             设置
-  HMSET key field value [field value...]            批量设置
+  HSET key field value [field value ...]            设置
+  HMSET key field value [field value ...]           批量设置
   HSETNX key field                                  不存在才设置
   HGET key field                                    获取
-  HMGET key field [field...]                        批量获取
+  HMGET key field [field ...]                       批量获取
   HGETALL key                                       获取所有键值
   HKEYS key                                         获取所有键
   HVALS key                                         获取所有值
-  HDEL key field [field...]                         删除
+  HDEL key field [field ...]                        删除
   HEXISTS key field                                 判断是否存在
   HINCRBY key field increment                       增加
   HLEN key                                          长度
   ```
   - List
   ```
-  RPUSH key ele [ele...]                            添加
-  LPUSH key ele [ele...]                            头部添加
-  RPUSHX key ele [ele...]                           存在才添加
-  LPUSHX key ele [ele...]                           存在才头部添加
-  LINSERT key before|after pivot ele                在元素前或后添加
-  LSET key index ele                                索引设置
+  RPUSH key element [element ...]                   添加
+  LPUSH key element [element ...]                   头部添加
+  RPUSHX key element [element ...]                  存在才添加
+  LPUSHX key element [element ...]                  存在才头部添加
+  LINSERT key BEFORE|AFTER pivot element            在元素前或后添加
+  LSET key index element                            索引设置
   RPOPLPUSH source destination                      移除最后并添加到另外最后
   LRANGE key start stop                             获取
     LRANGE key 0 -1                                 获取全部
@@ -165,31 +130,31 @@
   ```
   - Set
   ```
-  SADD key member [member...]                       添加
+  SADD key member [member ...]                      添加
   SMEMBERS key                                      获取
   SRANDMEMBER key [count]                           随机获取
   SPOP key [count]                                  随机移除
-  SREM key member [member...]                       删除
+  SREM key member [member ...]                      删除
   SISMEMBER key member                              判断是否存在
   SCARD key                                         长度
-  SUNION key [key...]                               并集
-  SUNIONSTORE destination key [key...]              并集并另外存储
-  SINTER key [key...]                               交集
-  SINTERSTORE destination key [key...]              交集并另外存储
-  SDIFF key [key...]                                差异
-  SDIFFSTORE destination key [key...]               差异并另外存储
+  SUNION key [key ...]                              并集
+  SUNIONSTORE destination key [key ...]             并集并另外存储
+  SINTER key [key ...]                              交集
+  SINTERSTORE destination key [key ...]             交集并另外存储
+  SDIFF key [key ...]                               差异
+  SDIFFSTORE destination key [key ...]              差异并另外存储
   ```
   - Sorted SET
   ```
-  ZADD key [command] score member [score member...] 添加
+  ZADD key [command] score member [score member ...]添加
   ZRANGE key min max [command]                      获取
     ZRANGE key 0 -1                                 获取全部
   ZRANGEBYSCORE key min max [command]               获取按分数排名
-  ZREVRANGE key start pop [WITHSCORES]              倒叙获取
+  ZREVRANGE key start stop [WITHSCORES]             倒叙获取
   ZSCORE key member                                 获取分数
   ZRANK key mebmer                                  获取排名
   ZUNIONSTORE destination numkeys key [key ...]     并集并另外存储
-  ZREM key member [member...]                       删除
+  ZREM key member [member ...]                      删除
   ZREMRANGEBYRANK key start stop                    删除排名区间成员
   ZREMRANGEBYSCORE key min max                      删除分数区间成员
   ZINCRBY key increment member                      增加分数

@@ -15,6 +15,11 @@
 |Wide Column Store|high|high|moderate|low|Cassandra，HBase|大数据 (数据量大)|
 |Graph Database|variable|variable|high|high|Neo4J，JanusGraph||
 |Relational Database|variable|variable|low|moderate|MySQL, SQL server||
+- [键值存储 vs 文档存储](https://www.likecs.com/show-204647694.html)
+```
+相同点：都是 k-v 结构
+不同点：键值存储只能通过 key 查找整个 value；文档存储可以通过 key 查找 value 中的内容
+```
 ---
 ## CAP 定理
 <img alt="CAP Theorem" src="https://www.runoob.com/wp-content/uploads/2013/10/cap-theoram-image.png" width="400"/>
