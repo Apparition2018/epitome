@@ -6,7 +6,7 @@
 2. [SQL Fiddle](http://sqlfiddle.com/)
 3. [建表规范](https://www.cnblogs.com/xphdbky/p/7154434.html)
 4. [SQL 语法速成手册](https://mp.weixin.qq.com/s?__biz=MzU2MTI4MjI0MQ==&mid=2247491550&idx=2&sn=cfe8ed6eea2e61646e5cc3d0b5e96b68)
-## 课程
+## 慕课
 1. [数据库设计那些事](https://www.imooc.com/learn/117)
 2. [性能优化之MySQL优化](https://www.imooc.com/learn/194)
 3. [MySQL开发技巧（一）](https://www.imooc.com/learn/398)
@@ -16,9 +16,105 @@
 ## 问题
 1. [MySQL, SQL Server, Oracle 的区别](https://www.cnblogs.com/cherxu/p/6856262.html)
 2. [distinct 和 group by 的去重逻辑浅析](https://www.cnblogs.com/dancesir/p/7505730.html)
-3. [select 和 in 的区别](https://www.cnblogs.com/emilyyoucan/p/7833769.html)
-4. [varchar 与 nvarchar](https://www.cnblogs.com/Jashinck/p/8384388.html)
-5. [当要给字符串创建前缀索引时，如何确定我应该使用多长的前缀呢？](https://blog.csdn.net/qq_38670588/article/details/108499966)
+---
+## [数据库名词](https://www.cnblogs.com/dmeck/p/10507936.html)
+|名词|英文|说明|
+|:---|:---|:---|
+|关系|Relation|基本表、查询表、视图表|
+|列/属性|Column/Attribute||
+|行/记录/元组|Row/Record/Tuple||
+|码/键|Key|某个属性或属性组，能唯一标识每个元组|
+|超码/超键|Super Key|关系中的一个码移去某个属性，仍然是这个关系的码|
+|候选码/候选键|Candidate Key|关系中的一个码移去某个属性后，就不是这个关系的码|
+|非主属性|NonPrimary Attribute|不是任何一个候选码中的属性|
+|主码/主键|Primary Key|关系中被指定用来唯一标识元组的候选码|
+|主属性|Primary Attribute|任何一个候选码中的属性|
+---
+## 关系的完整性约束
+|完整性|是否必选|说明|
+|:---|:---|:---|
+|实体完整性|必选|主属性不能为空|
+|参照完整性|必选|外键值要么为空，要么为被参照关系的某个主码值|
+|用户定义的完整性|可选|唯一性、是否不能为空等|
+---
+## [设计范式](https://www.zhihu.com/question/24696366/answer/29189700)
+- 数据库范式分为 1NF，2NF，3NF，BCNF，4NF，5NF，一般考虑到 BCNF 就可以了
+- 符合高一级范式的设计，必定符合低一级范式
+- 解决了数据冗余过大，插入异常，修改异常，删除异常问题
+
+|范式|说明|
+|:---|:---|
+|1NF|属性不可再分|
+|2NF|消除非主属性对候选码的部分函数依赖|
+|3NF|消除非主属性对候选码的传递函数依赖|
+|BCNF|消除主属性对候选码的部分函数依赖和传递函数依赖|
+---
+## 函数依赖
+|依赖|写作|说明|例子|
+|:---|:---|:---|:---|
+|函数依赖|X → Y|X 可以确定 Y (Y 函数依赖于 X)|学号 → 姓名|
+|完全函数依赖|X F→ Y|如 X → Y，且对于 X 的任何一个真子集 X'，X' → Y 不成立|（学号，课名）F→ 分数|
+|部分函数依赖|X P→ Y|如 X → Y，且存在 X 的一个真子集 X'，X' → Y 成立|（学号，课名）P→ 姓名 |
+|传递函数依赖|X T→ Z|如 X → Y，且 Y → Z，则 X → Z|学号 → 系名，系名 → 系主任，<br/>则 学号 T→ 系主任|
+---
+## 数据操作异常
+1. 插入异常：某实体根据另一个实体存在而存在，即缺少某个实体时无法表示这个实体
+2. 删除异常：如果删除表的某一行来反映某实体实例失效时导致另一个不同实体实例信息丢失
+3. 修改异常：如果更新表所对应的某个实体实例的单独属性时，需要将多行更新
+---
+## 数据类型速查表
+|数据类型|MySQL|SQL Server|Oracle|
+|:------|:---:|:--------:|:----:|
+|boolean| |bit||
+|integer|int|int|number|
+|float|decimal|decimal / numeric|number|
+|date|date / datetime|date / datetime|date / timestamp|
+|string (fixed)|char|char|char|
+|string (variable)|varchar / nvarchar|varchar / nvarchar|varchar2 / nvarchar2|
+|binary object|blob / text|binary (fixed up to 8k) <br> varbinary (<8k) <br> image (<2GB)|long / raw|
+---
+## [事务的特性 (ACID)](https://en.wikipedia.org/wiki/ACID)
+1. 原子性 - Atomicity，事务通常由多个语句组成。原子性保证每个事务都被视为一个单独的'单元'，要么完全成功，要么完全失败。
+2. [一致性](https://www.zhihu.com/question/31346392) - Consistency，一致性确保事务只能将数据库从一种有效状态带到另一种有效状态，写入数据库的任何数据必须根据所有定义的规则有效，包括约束、级联、触发器及其任意组合。
+3. 隔离性 - Isolation，事务通常是并发执行的。隔离性确保事务的并发执行使数据库处于与顺序执行事务时获得的相同状态。
+4. 持久性 - Durability，持久性保证一旦事务被提交，即使在系统故障的情况下，它也将保持提交后的修改。
+---
+## 并发事务读取现象
+|现象|中文|说明|
+|:---|:---|:---|
+|Dirty Read|脏读|一个事务读到另一个事务尚未提交的|
+|Unrepeatable Read|不可重复读|一个事务两次读取的结果不一致，数据被 update 或 delete|
+|Phantom Read|幻读|一个事务两次读取的结果不一致，有新的数据 insert|
+---
+## 事务隔离级别
+|隔离级别|默认|脏读|不可重复读|幻读|
+|:---|:---|:---|:---|:---|
+|Read Uncommitted| |有|有|有|
+|Read Committed|Oracle, SQL Server|无|有|有|
+|Repeatable Read|MySQL|无|无|有（MySQL 无）|
+|Serializable| |无|无|无|
+- [MySQL RR 无幻读现象](https://www.zhihu.com/question/372905832)
+---
+## 各层命名规约（阿里编程规约）
+1. Service/DAO 层方法命名规约
+   1. 获取单个对象的方法用 get 做前缀。
+   2. 获取多个对象的方法用 list 做前缀，复数结尾，如：listObjects。 
+   3. 获取统计值的方法用 count 做前缀。 
+   4. 插入的方法用 save/insert 做前缀。
+   5. 删除的方法用 remove/delete 做前缀。
+   6. 修改的方法用 update 做前缀。
+2. 领域模型命名规约
+   1. 数据对象：xxxDO，xxx 即为数据表名。
+   2. 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。
+   3. 展示对象：xxxVO，xxx 一般为网页名称。
+   4. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO。
+---
+## 分层领域模型规约（阿里编程规约）
+1. DO（Data Object）：此对象与数据库表结构一一对应，通过 DAO 层向上传输数据源对象。
+2. DTO（Data Transfer Object）：数据传输对象，Service 或 Manager 向外传输的对象。
+3. BO（Business Object）：业务对象，可以由 Service 层输出的封装业务逻辑的对象。
+4. Query：数据查询对象，各层接收上层的查询请求。注意超过 2 个参数的查询封装，禁止使用 Map 类来传输。
+5. VO（View Object）：显示层对象，通常是 Web 向模板渲染引擎层传输的对象。
 ---
 ## 阿里规约
 >### 建表规约
@@ -65,135 +161,4 @@
 >6. 不要写一个大而全的数据更新接口。传入为 POJO 类，不管是不是自己的目标更新字段，都进行 update table set c1=value1, c2=value2, c3=value3; 不要更新无改动的字段，一是易出错；二是效率低；三是增加 binlog 存储
 >7. 使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等
 >```
----
-## [数据库名词](https://www.cnblogs.com/dmeck/p/10507936.html)
-|名词|英文|说明|
-|:---|:---|:---|
-|关系|Relation|基本表、查询表、视图表|
-|列/属性|Column/Attribute||
-|行/记录/元组|Row/Record/Tuple||
-|码/键|Key|某个属性或属性组，能唯一标识每个元组|
-|超码/超键|Super Key|关系中的一个码移去某个属性，仍然是这个关系的码|
-|候选码/候选键|Candidate Key|关系中的一个码移去某个属性后，就不是这个关系的码|
-|非主属性|NonPrimary Attribute|不是任何一个候选码中的属性|
-|主码/主键|Primary Key|关系中被指定用来唯一标识元组的候选码|
-|主属性|Primary Attribute|任何一个候选码中的属性|
----
-## 关系的完整性约束
-|完整性|是否必选|说明|
-|:---|:---|:---|
-|实体完整性|必选|主属性不能为空|
-|参照完整性|必选|外键值要么为空，要么为被参照关系的某个主码值|
-|用户定义的完整性|可选|唯一性、是否不能为空等|
----
-## [设计范式](https://www.zhihu.com/question/24696366/answer/29189700)
-- 数据库范式分为 1NF，2NF，3NF，BCNF，4NF，5NF，一般考虑到 BCNF 就可以了
-- 符合高一级范式的设计，必定符合低一级范式
-- 解决了数据冗余过大，插入异常，修改异常，删除异常问题
-
-|范式|说明|
-|:---|:---|
-|1NF|属性不可再分|
-|2NF|消除非主属性对候选码的部分函数依赖|
-|3NF|消除非主属性对候选码的传递函数依赖|
-|BCNF|消除主属性对候选码的部分函数依赖和传递函数依赖|
-## 函数依赖
-|依赖|写作|说明|例子|
-|:---|:---|:---|:---|
-|函数依赖|X → Y|X 可以确定 Y (Y 函数依赖于 X)|学号 → 姓名|
-|完全函数依赖|X F→ Y|如 X → Y，且对于 X 的任何一个真子集 X'，X' → Y 不成立|（学号，课名）F→ 分数|
-|部分函数依赖|X P→ Y|如 X → Y，且存在 X 的一个真子集 X'，X' → Y 成立|（学号，课名）P→ 姓名 |
-|传递函数依赖|X T→ Z|如 X → Y，且 Y → Z，则 X → Z|学号 → 系名，系名 → 系主任，<br/>则 学号 T→ 系主任|
----
-## 数据操作异常
-1. 插入异常：某实体根据另一个实体存在而存在，即缺少某个实体时无法表示这个实体
-2. 删除异常：如果删除表的某一行来反映某实体实例失效时导致另一个不同实体实例信息丢失
-3. 修改异常：如果更新表所对应的某个实体实例的单独属性时，需要将多行更新
----
-## 数据类型速查表
-|数据类型|MySQL|SQL Server|Oracle|
-|:------|:---:|:--------:|:----:|
-|boolean| |bit||
-|integer|int|int|number|
-|float|decimal|decimal / numeric|number|
-|date|date / datetime|date / datetime|date / timestamp|
-|string (fixed)|char|char|char|
-|string (variable)|varchar / nvarchar|varchar / nvarchar|varchar2 / nvarchar2|
-|binary object|blob / text|binary (fixed up to 8k) <br> varbinary (<8k) <br> image (<2GB)|long / raw|
----
-## 事务
->### [事务的特性 (ACID)](https://en.wikipedia.org/wiki/ACID)
->1. 原子性 - Atomicity，事务通常由多个语句组成。原子性保证每个事务都被视为一个单独的'单元'，要么完全成功，要么完全失败。
->2. [一致性](https://www.zhihu.com/question/31346392) - Consistency，一致性确保事务只能将数据库从一种有效状态带到另一种有效状态，写入数据库的任何数据必须根据所有定义的规则有效，包括约束、级联、触发器及其任意组合。
->3. 隔离性 - Isolation，事务通常是并发执行的。隔离性确保事务的并发执行使数据库处于与顺序执行事务时获得的相同状态。
->4. 持久性 - Durability，持久性保证一旦事务被提交，即使在系统故障的情况下，它也将保持提交后的修改。
->### 并发事务读取现象
->1. 脏读 - Dirty Read，一个事务读到另一个事务尚未提交的修改
->2. 不可重复读 - Unrepeatable Read，一个事务两次读取的结果不一致，数据被 update 或 delete
->3. 幻读 - Phantom Read，一个事务两次读取的结果不一致，有新的数据 insert
->  - [区分不可重复读和幻读](https://www.cnblogs.com/itcomputer/articles/5133254.html)
->  - [区分不可重复读和幻读](https://www.zhihu.com/question/392569386/answer/1922737425)
->### 事务隔离级别
-><table>
->  <tr>
->      <th>Isolation</th>
->      <th>数据库默认</th>
->      <th>脏读</th>
->      <th>不可重复读</th>
->      <th>幻读</th>
->  </tr>
->  <tr>
->      <td>READ_UNCOMMITTED</td>
->      <td></td>
->      <td>可能</td>
->      <td>可能</td>
->      <td>可能</td>
->  </tr>
->  <tr>
->      <td>READ_COMMITTED</td>
->      <td>Oracle, SQL Server</td>
->      <td>不可能</td>
->      <td>可能</td>
->      <td>可能</td>
->  </tr>
->  <tr>
->      <td>REPEATABLE_READ</td>
->      <td>MySQL</td>
->      <td>不可能</td>
->      <td>不可能</td>
->      <td>可能</td>
->  </tr>
->  <tr>
->      <td>SERIALIZABLE</td>
->      <td></td>
->      <td>不可能</td>
->      <td>不可能</td>
->      <td>不可能</td>
->  </tr>
->  <tr>
->      <td>DEFAULT</td>
->      <td colspan="4">默认的隔离级别，使用数据库默认的事务隔离级别</td>
->  </tr>
-></table>
----
-## 各层命名规约（阿里编程规约）
-1. Service/DAO 层方法命名规约
-   1. 获取单个对象的方法用 get 做前缀。
-   2. 获取多个对象的方法用 list 做前缀，复数结尾，如：listObjects。 
-   3. 获取统计值的方法用 count 做前缀。 
-   4. 插入的方法用 save/insert 做前缀。
-   5. 删除的方法用 remove/delete 做前缀。
-   6. 修改的方法用 update 做前缀。
-2. 领域模型命名规约
-   1. 数据对象：xxxDO，xxx 即为数据表名。
-   2. 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。
-   3. 展示对象：xxxVO，xxx 一般为网页名称。
-   4. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO。
----
-## 分层领域模型规约【参考】
-1. DO（Data Object）：此对象与数据库表结构一一对应，通过 DAO 层向上传输数据源对象。
-2. DTO（Data Transfer Object）：数据传输对象，Service 或 Manager 向外传输的对象。
-3. BO（Business Object）：业务对象，可以由 Service 层输出的封装业务逻辑的对象。
-4. Query：数据查询对象，各层接收上层的查询请求。注意超过 2 个参数的查询封装，禁止使用 Map 类来传输。
-5. VO（View Object）：显示层对象，通常是 Web 向模板渲染引擎层传输的对象。
 ---

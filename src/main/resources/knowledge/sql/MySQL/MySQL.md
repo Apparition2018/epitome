@@ -53,6 +53,7 @@
 ---
 ## 优化
 1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
+2. [字符串索引前缀长度](https://blog.csdn.net/qq_38670588/article/details/108499966)
 >## 优化建议
 >1. 索引相关
 >   - 索引方法
@@ -221,7 +222,7 @@
 >        - 对符合条件的行加S锁，其它事务可以对这些记录添加IS锁和S锁，即其它事务可以读取这些数据但无法修改
 >    2. 排它锁 (Exclusive Locks, X)：
 >        - 对符合条件的行加X锁，其它事务无法对这些记录加任何IS锁和IX锁，即其它事务无法对这些记录进行读取和修改 
->        - 不会阻止非锁定读（快照读）
+>        - 不会阻止非锁定读（普通 select 就是非锁定读，即快照读）
 >3. 记录锁 (Record Locks)：`SELECT c1 FROM t WHERE c1 = 10 FOR UPDATE`
 >    - 总是锁定索引记录，阻止其它事务插入、更新或删除  
 >4. [间隙锁](https://www.jianshu.com/p/32904ee07e56) (Gap Locks)：`SELECT c1 FROM t WHERE c1 BETWEEN 10 and 20 FOR UPDATE`  
