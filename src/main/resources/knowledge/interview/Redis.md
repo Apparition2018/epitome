@@ -135,8 +135,6 @@ auto-aof-rewrite-min-size 64mb
 ![redis 数量控制并发问题](https://img1.mukewang.com/6092cf44000167a319201080-500-284.jpg)
 ![redis 数量控制并发优化](https://img4.mukewang.com/6092d0560001c11019201080-500-284.jpg)
 ---
-## 并发问题
----
 ## [配置](https://github.com/redis/redis/blob/unstable/redis.conf)
 ```
 # 设置客户端密码

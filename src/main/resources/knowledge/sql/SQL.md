@@ -74,10 +74,10 @@
 |binary object|blob / text|binary (fixed up to 8k) <br> varbinary (<8k) <br> image (<2GB)|long / raw|
 ---
 ## [事务的特性 (ACID)](https://en.wikipedia.org/wiki/ACID)
-1. 原子性 - Atomicity，事务通常由多个语句组成。原子性保证每个事务都被视为一个单独的'单元'，要么完全成功，要么完全失败。
-2. [一致性](https://www.zhihu.com/question/31346392) - Consistency，一致性确保事务只能将数据库从一种有效状态带到另一种有效状态，写入数据库的任何数据必须根据所有定义的规则有效，包括约束、级联、触发器及其任意组合。
-3. 隔离性 - Isolation，事务通常是并发执行的。隔离性确保事务的并发执行使数据库处于与顺序执行事务时获得的相同状态。
-4. 持久性 - Durability，持久性保证一旦事务被提交，即使在系统故障的情况下，它也将保持提交后的修改。
+1. Atomicity：原子性，事务通常由多个语句组成。原子性保证每个事务都被视为一个单独的'单元'，要么完全成功，要么完全失败。
+2. [Consistency](https://www.zhihu.com/question/31346392) ：一致性，一致性确保事务只能将数据库从一种有效状态带到另一种有效状态，写入数据库的任何数据必须根据所有定义的规则有效，包括约束、级联、触发器及其任意组合。
+3. Isolation：隔离性，事务通常是并发执行的。隔离性确保事务的并发执行使数据库处于与顺序执行事务时获得的相同状态。
+4. Durability：持久性，持久性保证一旦事务被提交，即使在系统故障的情况下，它也将保持提交后的修改。
 ---
 ## 并发事务读取现象
 |现象|中文|说明|
@@ -89,11 +89,11 @@
 ## 事务隔离级别
 |隔离级别|默认|脏读|不可重复读|幻读|
 |:---|:---|:---|:---|:---|
-|Read Uncommitted| |有|有|有|
-|Read Committed|Oracle, SQL Server|无|有|有|
-|Repeatable Read|MySQL|无|无|有（MySQL 无）|
-|Serializable| |无|无|无|
-- [MySQL RR 无幻读现象](https://www.zhihu.com/question/372905832)
+|Read Uncommitted| |可能|可能|可能|
+|Read Committed|Oracle, SQL Server|不可能|可能|可能|
+|Repeatable Read|MySQL|不可能|不可能|可能|
+|Serializable| |不可能|不可能|不可能|
+- [MySQL RR 如何解决幻读](https://www.zhihu.com/question/372905832)
 ---
 ## 各层命名规约（阿里编程规约）
 1. Service/DAO 层方法命名规约
