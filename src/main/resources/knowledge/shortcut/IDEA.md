@@ -469,7 +469,7 @@ Alt + Shift + ]                 Next Emmet Edit Point
 >```
 >- User
 >```
->ljh                            // TODO-LJH (user)
+>todoljh                        // TODO-LJH (user)
 >pf                             private final (user)
 >pi                             private Integer (user)
 >pl                             private Long (user)
