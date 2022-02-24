@@ -5,7 +5,7 @@
 1. [TechOnTheNet](https://www.techonthenet.com/)
 2. [SQL Fiddle](http://sqlfiddle.com/)
 3. [建表规范](https://www.cnblogs.com/xphdbky/p/7154434.html)
-4. [SQL 语法速成手册](https://mp.weixin.qq.com/s?__biz=MzU2MTI4MjI0MQ==&mid=2247491550&idx=2&sn=cfe8ed6eea2e61646e5cc3d0b5e96b68)
+4. [SQL 语法速成手册](https://juejin.cn/post/6844903790571700231)
 ## 慕课
 1. [数据库设计那些事](https://www.imooc.com/learn/117)
 2. [性能优化之MySQL优化](https://www.imooc.com/learn/194)

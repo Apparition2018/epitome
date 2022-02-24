@@ -42,7 +42,7 @@ public class Interface {
          * JDK 使用默认方法的实例：Collections.sort(list, comparator) 里调用的 list.sort(comparator) 就是 List 接口的默认方法
          * <p>
          * 默认方法是一个好的设计吗？-知乎：https://www.zhihu.com/question/54479642/answer/139588886
-         * Java 8 有多牛逼？打破一切你对接口的认知！：https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&mid=2247509821&idx=1&sn=51ab7b4c7da3673ce93ae390a4a0da8c&scene=21
+         * Java 8 有多牛逼？打破一切你对接口的认知！：https://mp.weixin.qq.com/s/Jy0zu5LcNM-EvZFJIY9Eeg
          */
         default String defaultMethod() {
             return "defaultMethod";

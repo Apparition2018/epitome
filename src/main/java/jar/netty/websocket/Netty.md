@@ -18,7 +18,7 @@
         3. 事件处理器
 3. 异步通信：Future-Listener 机制
 ---
-## [IO](https://mp.weixin.qq.com/s?__biz=MzIyNjAzODEyMg==&mid=2247484746&idx=1&sn=5146ae815c4bf560b8df809c2f81c78b)
+## [IO](https://mp.weixin.qq.com/s/5rhH4caRqHdHyGV6_jeP3g)
 |BIO|伪异步 IO|NIO|AIO|
 |:---|:---|:---|:---|
 |同步阻塞|异步阻塞?|同步非阻塞|异步非阻塞|

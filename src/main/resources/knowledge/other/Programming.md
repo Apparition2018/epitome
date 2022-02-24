@@ -23,7 +23,7 @@
 4. taskkill /f /t /im WXWork.exe，或 taskkill /f /t /pid 333412
 ---
 ## 日志
-1. [一个著名的日志系统是怎么设计出来的？](https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513967&idx=1&sn=5586ce841a7e8b39adc2569f0eb5bb45)
+1. [一个著名的日志系统是怎么设计出来的？](https://mp.weixin.qq.com/s/XiCky-Z8-n4vqItJVHjDIg)
 2. [Java日志体系居然这么复杂？——架构篇](https://zhuanlan.zhihu.com/p/101104008)
 3. [五年Java经验，面试还是说不出日志该怎么写更好？——日志规范与最佳实践篇](https://zhuanlan.zhihu.com/p/101597639)
 >1. 日志门面

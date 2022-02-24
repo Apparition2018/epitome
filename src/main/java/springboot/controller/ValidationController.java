@@ -33,7 +33,7 @@ import java.util.Objects;
  * springboot 使用 hibernate validator 校验：https://www.cnblogs.com/mr-yang-localhost/p/7812038.html
  * Spring Boot 参数校验：https://www.cnblogs.com/cjsblog/p/8946768.html
  * Hibernate Validator：https://docs.jboss.org/hibernate/validator/4.2/reference/zh-CN/html_single
- * 参数验证 @Validated 和 @Valid 的区别：https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&mid=2247488213&idx=1&sn=24fe329101274d54c0039f0c98008ef3
+ * 参数验证 @Validated 和 @Valid 的区别：https://mp.weixin.qq.com/s/cNcXN7EgGOjAPC7KVFuKig
  *
  * @author ljh
  * created on 2019/8/8 19:39

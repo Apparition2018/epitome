@@ -4,6 +4,7 @@
 ## 参考网站
 1. [MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)
 2. [MySQL 术语](https://dev.mysql.com/doc/refman/8.0/en/glossary.html)
+3. [MySQL 规范](https://blog.csdn.net/shenjian58/article/details/89850405)
 ---
 ## 问题
 1. [MySQL delimiter 的定义及作用](https://www.jb51.net/article/146693.htm)
@@ -50,11 +51,16 @@ default-character-set=utf8mb4
 ```
 ---
 ## 索引
-## [索引类型](https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html)
-1. 聚簇索引：Clustered Indexes；主键 → 第一个非空唯一索引 → 自动生成 GEN_CLUST_INDEX
-    - 聚簇索引直接指向包含行数据的页面，所以查询很快
-2. 二级索引：Secondary Indexes，聚簇索引以外的索引
-    - 二级索引的记录都包含主键（聚簇索引）列和其指定的列
+- [一文搞定索引](https://mp.weixin.qq.com/s/woz5lkQwyJZNmoiiJZy7NA)
+
+https://mp.weixin.qq.com/s/XRSPITgWWK-2Ee-cSIqw1w
+https://mp.weixin.qq.com/s/uenONvfT0ZcXl5-WIZtFHQ
+## [Innodb 索引类型](https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html)
+1. 聚簇索引：Clustered Indexes
+    - B+Tree 的叶子节点存储：①聚簇索引；②行记录
+    - 如何选择聚簇索引：①主键；②第一个 NOT NULL UNIQUE 列；③自动生成隐藏 GEN_CLUST_INDEX
+2. 二级索引：Secondary Indexes
+    - B+Tree 的叶子节点存储：①二级索引；②对应聚簇索引值
 ---
 ## 优化
 1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
@@ -72,8 +78,10 @@ default-character-set=utf8mb4
         - DML 操作需要重建索引
         - DQL 操作优化器选择使用哪一个索引需要时间
     - [索引选择性高的列放在索引的前面](https://www.cnblogs.com/liyasong/p/mysql_xuanzexing_index.html)
-    - [组合索引 (composite indexes)](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
-    - [覆盖索引 (Covering indexes)](https://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&mid=2651962609&idx=1&sn=46e59691257188d33a91648640bcffa5) ：查询字段和条件字段都包含在一个联合索引中，不需要回表
+    - [组合索引 (Composite Indexes)](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
+    - [覆盖索引 (Covering Indexes)](https://mp.weixin.qq.com/s/y0pjtNUZhOW2ZBOy4m-xsA) ：只在一棵索引树上就获取所需的所有列数据，无需回表
+        - 如何实现：将被查询的字段，建立到联合索引里去
+        - explain extra 显示 Using index
     - [MySQL8 三大索引](https://www.mdnice.com/writing/ca72a1892384484aa67bc37398dea3b8) 
     - 查找重复索引及冗余索引
         1. 语句查询
