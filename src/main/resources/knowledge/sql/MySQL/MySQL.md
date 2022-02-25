@@ -3,8 +3,8 @@
 ---
 ## 参考网站
 1. [MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)
-2. [MySQL 术语](https://dev.mysql.com/doc/refman/8.0/en/glossary.html)
 3. [MySQL 规范](https://blog.csdn.net/shenjian58/article/details/89850405)
+4. [MySQL 总结](https://mp.weixin.qq.com/s/pWHCieOwAdCrz8cauduWlQ)
 ---
 ## 问题
 1. [MySQL delimiter 的定义及作用](https://www.jb51.net/article/146693.htm)
@@ -49,6 +49,55 @@ default-character-set=utf8mb4
 port=3306
 default-character-set=utf8mb4
 ```
+---
+## [MySQL 术语](https://dev.mysql.com/doc/refman/8.0/en/glossary.html)
+- dirty page：脏页，Buffer Pool 中更改过，且未 written/flushed 到数据文件的页
+- extent：tablespace 的一组页，1页默认16KB，1 extent 包含64页
+- read-ahead：预读，预先读取一组页面到 Buffer Pool
+    1. linear read-ahead：线性预读
+    2. random read-ahead：随机预读
+---
+## InnoDB vs MyISAM
+|对比|InnoDB|MyISAM|
+|:---|:---|:---|
+|事务|支持|不支持|
+|锁|行锁、表锁|行锁|
+|缓存|数据和索引|索引|
+|主键|没有会自动生成(聚簇索引)|可以没有|
+|select count(*)|较慢，全表扫描|很快，有一个变量保存了表的行数|
+|hash 索引|不能主动创建|不支持|
+|记录存储顺序|按主键大小|按出入顺序|
+|外键|支持|不支持|
+---
+## [InnoDB Multi-Versioning](https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html)
+|字段|说明|
+|:---|:---|
+|DB_TRX_ID|记录插入或更新行得事务的事务ID|
+|DB_ROLL_PTR|回滚指针，指向 undo log 记录|
+|DB_ROW_ID|行ID|
+>- [MySQL MVCC](https://blog.csdn.net/Waves___/article/details/105295060)
+---
+## [InnoDB 内存结构](https://dev.mysql.com/doc/refman/8.0/en/innodb-in-memory-structures.html)
+1. [Buffer Pool](https://mp.weixin.qq.com/s/nA6UHBh87U774vu4VvGhyw) ：缓冲池
+    - 缓存数据和索引
+    - 变种 LRU 算法
+2. [Change Buffer](https://mp.weixin.qq.com/s/PF21mUtpM8-pcEhDN4dOIw) ：写缓冲
+    - 5.5 之前叫 Insert Buffer，只对 INSERT 做了优化，现在对 UPDATE 和 DELETE 也有效
+    - 缓存对二级索引页的更改，前提是这些页不在 Buffer Pool。
+      当这些页因为其它读操作加载到 Buffer Pool时，与之合并
+3. [Adaptive Hash Index](https://mp.weixin.qq.com/s/vQsilZmyMaaVkYGkn-WXew) ：自适应哈希索引
+    - InnoDB 无法主动创建 Hash Index
+    - InnoDB 自行判断是否创建 Hash Index
+4. [Log Buffer](https://mp.weixin.qq.com/s/-Hx2KKYMEQCcTC-ADEuwVA) ：日志缓冲
+    - 缓冲要写入磁盘日志文件的数据
+---
+## [InnoDB 磁盘结构](https://dev.mysql.com/doc/refman/8.0/en/innodb-on-disk-structures.html)
+1. Tablespaces：表空间，保存一个或多个 InnoDB 表和相关联索引的数据文件
+2. [Doublewrite Buffer](https://mp.weixin.qq.com/s/bkoQ9g4cIcFFZBnpVh8ERQ) ：双写缓冲
+    - 解决的问题：Dirty Page(16KB) 写入磁盘(1页4KB)失败，可从中找到副本恢复错误
+    - 两部分：①内存；②双写文件
+    - 步骤：Dirty Page → 内存双写缓冲 → ①双写文件双写缓冲；②InnoDB 数据文件
+3. Redo Log：重做日志
 ---
 ## 索引
 - [一文搞定索引](https://mp.weixin.qq.com/s/woz5lkQwyJZNmoiiJZy7NA)
@@ -193,6 +242,7 @@ select * from store limit 10;
     2. IO 大的 SQL                    pt-query-digest 的 Rows examine
     3. 未命中索引的 SQL                pt-query-digest 的 Rows examine 和 Rows Send 的对比
     ```
+- 慢查询优化：①正确加索引；②去除查询不需要的列；③数据量太大考虑分表
 ## 配置
 1. 系统配置
     - 网络方面，修改 /etc/sysctl.conf
@@ -225,20 +275,15 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
 ```
 3. 第三方配置工具：[Percona Configuration Wizard](https://tools.percona.com/wizard)
 ---
-## 锁
-- [MySQL 8.0 Reference Manual :: InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
-- [MySQL 锁机制详解](https://www.cnblogs.com/volcano-liu/p/9890832.html)
-- [MySQL 加锁分析](https://www.cnblogs.com/rjzheng/p/9950951.html)
-- [MySQL 多版本并发控制与锁机制](https://blog.csdn.net/litianxiang_kaola/article/details/83003190)
-- [MySQL 的 MVCC(多版本并发控制)](https://blog.csdn.net/Waves___/article/details/105295060)
-## 锁的类型
+## [InnoDB 锁和事务模型](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-transaction-model.html)
+## [InnoDB 锁](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
 1. 共享/排它锁 (Shared and Exclusive Locks)
     1. 共享锁 (Shared Locks, S)：
         - 对符合条件的行加S锁，其它事务可以对这些记录添加IS锁和S锁，即其它事务可以读取这些数据但无法修改
     2. 排它锁 (Exclusive Locks, X)：
         - 对符合条件的行加X锁，其它事务无法对这些记录加任何IS锁和IX锁，即其它事务无法对这些记录进行读取和修改
-        - 不会阻止非锁定读（普通 select 就是非锁定读，即快照读）
-2. 意向锁 (Intention Locks)：表级锁，指示事务稍后需要对表中的行使用哪种类型的锁（共享/排它）
+        - 不会阻止非锁定读
+2. 意向锁 (Intention Locks)：表级锁，指示事务稍后需要对表中的行使用哪种类型的锁(共享/排它)
     1. 意向共享锁 (Intention Shared Locks, IS)：`SELECT ... FOR SHARE`
     2. 意向排它锁 (Intention Exclusive Locks, IX)：[SELECT ... FOR UPDATE](https://www.cnblogs.com/xiao-lei/p/12598552.html)
 
@@ -259,7 +304,10 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
     - 隔离级别为 REPEATABLE READ 或 SERIALIZABLE，临键锁生效
 6. 插入意向锁 (Insert Intention Locks)
 7. 自增锁 (AUTO-INC Locks)
-## REPEATABLE READ 下的加锁规则
+>- [MySQL select 加锁分析](https://www.cnblogs.com/rjzheng/p/9950951.html)
+>- [InnoDB 的七种锁](https://mp.weixin.qq.com/s/f4_o-6-JEbIzPCH09mxHJg)
+>- [InnoDB 锁到底锁的是什么](https://mp.weixin.qq.com/s/fmSHG0SejfD0IdnpIYHT9w)
+## RR 下的加锁规则
 - 原则：
     - 加锁基本单位 Next-key Locks
     - 查找过程中访问到的对象会加锁
@@ -268,7 +316,9 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
     - 向右遍历且最后一个值不满足等值条件时，Next-key Locks → Gap Locks
     - 对于覆盖索引查询，不对聚簇索引加锁
 - 唯一索引上的范围查询会访问到不满足条件的第一个值为止
----
+## MySQL 如何实现悲观锁和乐观锁
+- 乐观锁：更新带上版本号或修改时间(CAS)
+- 悲观锁：Shared and Exclusive Locks
 ## [非锁定读 vs 锁定读](https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html)
 |Read|Consistent Nonlocking Reads|Locking Reads|
 |:---|:---|:---|
