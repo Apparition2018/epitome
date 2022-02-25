@@ -3,7 +3,6 @@ package knowledge.algorithm.sort;
 import l.demo.Demo;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * 排序
@@ -23,7 +22,7 @@ import java.util.Random;
  */
 public class Sort extends Demo {
 
-    private static int[] arr = new int[]{88, 23, 97, 19, 85, 35, 81, 54, 75, 50};
+    private static final int[] arr = new int[]{88, 23, 97, 19, 85, 35, 81, 54, 75, 50};
 
     /**
      * 交换排序

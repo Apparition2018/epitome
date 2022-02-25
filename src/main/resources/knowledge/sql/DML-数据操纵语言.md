@@ -18,7 +18,7 @@ INSERT INTO score (name, course, score) VALUES
 ```
 >### MySQL
 >`INSERT IGNORE INTO`：如果插入数据主键重复，则忽略插入数据  
->`INSERT INSERT ... ON DUPLICATE KEY UPDATE`：如果插入数据主键重复，则更新数据
+>`INSERT INTO ... ON DUPLICATE KEY UPDATE`：如果插入数据主键重复，则更新数据
 >   ```mysql
 >   insert into score (id, name, course, score) values (1, '王五', '语文', 81)
 >   on duplicate key update id = 1, name = '王五', course = '语文', score = 81;

@@ -52,19 +52,17 @@ default-character-set=utf8mb4
 ---
 ## 索引
 - [一文搞定索引](https://mp.weixin.qq.com/s/woz5lkQwyJZNmoiiJZy7NA)
-
-https://mp.weixin.qq.com/s/XRSPITgWWK-2Ee-cSIqw1w
-https://mp.weixin.qq.com/s/uenONvfT0ZcXl5-WIZtFHQ
 ## [Innodb 索引类型](https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html)
 1. 聚簇索引：Clustered Indexes
-    - B+Tree 的叶子节点存储：①聚簇索引；②行记录
+    - 索引树的叶子节点存储：①聚簇索引；②行记录
     - 如何选择聚簇索引：①主键；②第一个 NOT NULL UNIQUE 列；③自动生成隐藏 GEN_CLUST_INDEX
 2. 二级索引：Secondary Indexes
-    - B+Tree 的叶子节点存储：①二级索引；②对应聚簇索引值
+    - 索引树的叶子节点存储：①二级索引；②对应聚簇索引值
 ---
 ## 优化
-1. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
-2. [字符串索引前缀长度](https://blog.csdn.net/qq_38670588/article/details/108499966)
+1. [Optimization](https://dev.mysql.com/doc/refman/8.0/en/optimization.html)
+2. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
+3. [字符串索引前缀长度](https://blog.csdn.net/qq_38670588/article/details/108499966)
 ## 优化建议
 - 索引相关
     - [索引方法](https://dev.mysql.com/doc/refman/8.0/en/index-btree-hash.html)
@@ -79,9 +77,10 @@ https://mp.weixin.qq.com/s/uenONvfT0ZcXl5-WIZtFHQ
         - DQL 操作优化器选择使用哪一个索引需要时间
     - [索引选择性高的列放在索引的前面](https://www.cnblogs.com/liyasong/p/mysql_xuanzexing_index.html)
     - [组合索引 (Composite Indexes)](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
-    - [覆盖索引 (Covering Indexes)](https://mp.weixin.qq.com/s/y0pjtNUZhOW2ZBOy4m-xsA) ：只在一棵索引树上就获取所需的所有列数据，无需回表
-        - 如何实现：将被查询的字段，建立到联合索引里去
+    - [覆盖索引 (Covering Indexes)](https://mp.weixin.qq.com/s/y0pjtNUZhOW2ZBOy4m-xsA)
+        - 如何实现：将被查询的字段、条件字段、排序字段等，建立到联合索引里去
         - explain extra 显示 Using index
+    - [降序索引 (Descending Indexes)](https://dev.mysql.com/doc/refman/8.0/en/descending-indexes.html)
     - [MySQL8 三大索引](https://www.mdnice.com/writing/ca72a1892384484aa67bc37398dea3b8) 
     - 查找重复索引及冗余索引
         1. 语句查询
@@ -96,14 +95,15 @@ https://mp.weixin.qq.com/s/uenONvfT0ZcXl5-WIZtFHQ
         2. pt-duplicate-key-checker
     - 删除不用的索引
         - pt-index-usage
-- 避免全表扫描：①对无索引的表进行的查询；②放弃索引进行的查询
+- 避免全表扫描：①表无索引；②放弃使用索引：成本是否够小，比如数据量小的表，!= 和 is null 等也可能使用索引
     1. 在 ①where ②order by ③group by ④多表关联涉及的列 上建立索引
     2. 避免使用 is null 和 is not null，建表时尽量设置 not null
     3. 避免使用 != 和 <>
     4. 避免使用 or 来连接条件，可以使用 union 或 union all 代替
     5. 避免使用 左% like，如 field like "%x" 和 field like "%x%"；代替：①locate('x', field) > 0，②[FULLTEXT](https://juejin.cn/post/6969887148036063239) ，③全文搜索引擎
     6. 避免对字段进行操作，①表达式 ②函数 ③自动转换 ④手动转换
-    7. 避免使用[变量](https://www.cnblogs.com/Brambling/p/9259375.html)? ，如 where field = @num;
+    7. [避免 join 表字符编码不同](https://mp.weixin.qq.com/s/1Sowt2TcjMGDv55OQOe2rQ)
+    8. 避免使用[变量](https://www.cnblogs.com/Brambling/p/9259375.html)? ，如 where field = @num;
 - [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
     1. 增加网络开销，
     2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
@@ -124,21 +124,36 @@ https://mp.weixin.qq.com/s/uenONvfT0ZcXl5-WIZtFHQ
 - char > varchar，小于 50byte 建议使用 char
 - 精确数据使用 decimal，非精确数据使用 float
 - 整型保存 IP，INET_ATON('192.168.0.1')
-## [explain](https://www.cnblogs.com/qlqwjy/p/7767479.html)
-- [type](https://blog.csdn.net/lilongsy/article/details/95184594)
-    - system：①表只有一行数据 ②引擎是 MyISAM
-    - const：①条件列为 pk 或 unique ②条件值可被优化器视为常量
-    - eq_ref：①等值关联 ②被驱动表的关联列为 pk 或 unique not null
-    - ref：条件列只使用最左前缀，或不是 pk 或 unique
-    - range：范围扫描，<>, <, <=, >, >=, between, like, in, not in
-    - index：全索引扫描
-    - ALL：全表扫描
-- possible_keys：可能用到的索引
-- key：实际使用的索引
+## explain
+- [type](https://blog.csdn.net/lilongsy/article/details/95184594) ：join type
+
+    |type|说明|
+    |:---|:---|
+    |system|MyISAM 且只有一行记录|
+    |const|pk 或 unique not null 索引的等值查询，只有一行命中|
+    |eq_ref|pk 或 unique not null 索引的等值关联查询，对于前表的每一行，后表只有一行命中|
+    |ref|非 unique 索引的等值查询，多行命中|
+    |range|索引上的范围扫描；如：=, <>, >, >=, <, <=, IS NULL, <=>, BETWEEN, LIKE, IN()|
+    |index|索引上的全集扫描|
+    |ALL|全表扫描|
+- possible_keys：可选择使用的索引
+- key：实际选择使用的索引
 - [key_len](https://www.cnblogs.com/lukexwang/articles/7060950.html) ：使用索引的长度
-- ref：显示索引的哪一列被使用
-- rows：返回结果需要查询的行数
-- extra：[优化 Using temporary 和 Using filesort](https://www.dazhuanlan.com/mrlonely1988/topics/1146538)
+- ref：索引中的使用了的列
+- rows：估计需要查询的行数
+- extra：附加信息
+    
+    |extra|说明|优化|
+    |:---|:---|:---|
+    |Using index|在一棵索引树上获取所有所需数据，无需额外查询来读取实际行||
+    |Using index condition|在一棵索引树上获取不到所有所需数据，需要额外查询来读取实际行||
+    |Using where; Using index|同 Using index，但 where 条件不是索引的前导列||
+    |Using filesort|需对结果集进行额外文件排序操作<br/>原因：①order by 没有索引；②结果集大小超过 sort_buffer_size|order by 字段添加索引|
+    |Using temporary|需创建临时表暂存中间结果||
+    |Using join buffer|需创建连接缓冲区暂存中间结果|关联字段添加索引|
+>- [EXPLAIN Output Format](https://dev.mysql.com/doc/refman/8.0/en/explain-output.html)
+>- [EXPLAIN 百科](https://mp.weixin.qq.com/s/QCJq1o-CWbNNwnuzJmVEPg)
+>- [Using index vs Using where](https://www.cnblogs.com/wy123/p/7366486.html)
 ## 慢查询
 - 开启慢查询
 ```sql
