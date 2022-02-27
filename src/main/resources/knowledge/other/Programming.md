@@ -84,11 +84,6 @@
 ## Web
 1. [什么是跨域？为什么要禁止跨域？怎样跨域？](https://blog.csdn.net/qq_28773159/article/details/104834167)
 ---
-## SSO
-1. [什么是单点登录(原理与实现简介) ](https://www.cnblogs.com/wcwnina/p/9946623.html)
-2. [java sso单点登录实战_哔哩哔哩](https://www.bilibili.com/video/BV1hT4y157QF)
-- 步骤：存储票据，查验票据
----
 ## Token
 1. [RESTful登录设计（基于Spring及Redis的Token鉴权）](www.scienjus.com/restful-token-authorization/)
 2. [session与token的区别](https://www.cnblogs.com/shijianchuzhenzhi/p/12317439.html)

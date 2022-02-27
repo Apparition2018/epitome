@@ -174,16 +174,16 @@ default-character-set=utf8mb4
 - 精确数据使用 decimal，非精确数据使用 float
 - 整型保存 IP，INET_ATON('192.168.0.1')
 ## explain
-- [type](https://blog.csdn.net/lilongsy/article/details/95184594) ：join type
+- [type](https://blog.csdn.net/lilongsy/article/details/95184594) ：连接类型
 
     |type|说明|
     |:---|:---|
-    |system|MyISAM 且只有一行记录|
+    |system|MyISAM 且只有一行记录，const 的特例|
     |const|pk 或 unique not null 索引的等值查询，只有一行命中|
     |eq_ref|pk 或 unique not null 索引的等值关联查询，对于前表的每一行，后表只有一行命中|
     |ref|非 unique 索引的等值查询，多行命中|
     |range|索引上的范围扫描；如：=, <>, >, >=, <, <=, IS NULL, <=>, BETWEEN, LIKE, IN()|
-    |index|索引上的全集扫描|
+    |index|①覆盖索引，Using index；②索引树的全表扫描|
     |ALL|全表扫描|
 - possible_keys：可选择使用的索引
 - key：实际选择使用的索引
@@ -203,13 +203,19 @@ default-character-set=utf8mb4
 >- [EXPLAIN Output Format](https://dev.mysql.com/doc/refman/8.0/en/explain-output.html)
 >- [EXPLAIN 百科](https://mp.weixin.qq.com/s/QCJq1o-CWbNNwnuzJmVEPg)
 >- [Using index vs Using where](https://www.cnblogs.com/wy123/p/7366486.html)
-## 慢查询
-- 开启慢查询
+## [慢查询](https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html)
+- 开启慢查询日志
 ```sql
-show variables like '%slow%';                           -- 查看慢查询日志文件位置
-set global log_queries_not_using_indexes = on;
-set global long_query_time = 1;
+-- 是否开启慢查询
 set global slow_query_log = on;
+-- 记录查询时间超过多少秒的慢查询，最小0秒，默认10秒
+set global long_query_time = 1;
+-- 是否记录没使用索引或全索引扫描的查询
+set global log_queries_not_using_indexes = on;
+-- 最少检查行限制
+set global min_examined_row_limit = 0;
+-- 慢查询日志文件
+set global slow_query_log_file = '';
 ```
 - 慢查询日志存储格式
 ```
@@ -220,7 +226,7 @@ SET timestamp=1631505644;
 select * from store limit 10;
 ```
 - 慢查询日志分析工具
-    1. mysqldumpslow
+    1. [mysqldumpslow](https://dev.mysql.com/doc/refman/8.0/en/mysqldumpslow.html)
     ```
     # 查看帮助
     mysqldumpslow -h
