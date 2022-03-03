@@ -7,13 +7,9 @@ import java.math.BigDecimal;
 
 @Data
 public class Sales implements Serializable {
+    private static final long serialVersionUID = -4336095523865817282L;
     private Integer yearId;
-
     private Integer monthId;
-
     private Integer dayId;
-
     private BigDecimal salesValue;
-
-    private static final long serialVersionUID = 1L;
 }

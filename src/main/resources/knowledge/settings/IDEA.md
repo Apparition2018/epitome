@@ -1,11 +1,28 @@
 # IDEA Settings
-
-## 修改 .IntelliJIdea 位置
+- File → New Projects Setup
+---
+## 修改 IntelliJIdea 位置
     1. %IntelliJ_IDEA_HOME%\bin\idea.properties
-    2. idea.config.path=%IntelliJ_IDEA_HOME%/.IntelliJIdea/config
-    3. idea.system.path=%IntelliJ_IDEA_HOME%/.IntelliJIdea/system
-    4. idea.plugins.path=${idea.config.path}/plugins
-    5. idea.log.path=${idea.system.path}/log
+        idea.config.path=%IntelliJ_IDEA_HOME%/.IntelliJIdea/config
+        idea.system.path=%IntelliJ_IDEA_HOME%/.IntelliJIdea/system
+        idea.plugins.path=${idea.config.path}/plugins
+        idea.log.path=${idea.system.path}/log
+    2. 退出 IDEA 并删除原 IntelliJIdea 位置
+        2.1 删除 C:\Users\Administrator\AppData\Local\JetBrains\IntelliJIdea
+        2.2 删除 C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea
+---
+## 安装 IDE Eval Reset
+    1. Settings → Plguins → 设置图标 → Manage Plugin Repositories...
+        1.1 添加 https://plugins.zhile.io
+        1.2 Marketplace → 搜索并安装 IDE Eval Reset
+    2. Help → Eval Reset
+        2.1 Auto reset before per restart 勾选
+---
+## 自定义 VM Options
+    1. %IntelliJ_IDEA_HOME%\bin\idea64.exe.vmoptions
+        -Xms128m
+        -Xmx750m
+        -Drebel.base=%IntelliJ_IDEA_HOME%\.IntelliJIdea\config\plugins\.jrebel
 ---
 ## 同步设置
     1. File → Sync Settings to JetBrains Account...
@@ -20,7 +37,7 @@
         3.2 Keep trailing spaces on caret line 取消勾选
 ---
 ## 代码折叠
-    1. Settings → Editor → Code Folding
+    1. Settings → Editor → General → Code Folding
     2. Fold by default: → Genral
     3. Imports 取消勾选
 ---
@@ -41,8 +58,9 @@
 ---
 ## serialVersionUID
     1. Settings → Editor → Inspections
-    2. 搜索并勾选 Serializable class without 'serialVersionUID'，Severity：Weaking Warning
-    3. 搜索并勾选 'serialVersionUID' field not declared 'private static final long'
+    2. 搜索 serialVersionUID
+        2.1 Serializable class without 'serialVersionUID' 勾选
+        2.2 'serialVersionUID' field not declared 'private static final long' 勾选
 ---
 ## TODO
     1. Settings → Editor → TODO
@@ -53,28 +71,24 @@
         2.4 Foreground #CC0033
     3. Settings → Editor → Live Templates
     4. user → +
-        4.1 Abbreviation: ljh
+        4.1 Abbreviation: toduljh
         4.2 Description: TODO-LJH
         4.2 Template text: // TODO-LJH: $date$ $todo$
         4.3 Edit variables
             4.3.1 date → Expression:date()
         4.4 Change → Java → Statement 勾选
 ---
-## 加快编译速度
->### 调整 JVM 参数
->   ```
->   1. Help → Edit Custom VM Options... | idea64.exe.vmoptions
->   2. 设置 -Xms 和 -Xmx
->   ```
->### Use compiler Eclipse
->   ```
->   1. Settings → Build, Execution, Deployment → Compiler → Java Compiler
->       1.1 Use compiler: Eclipse
->   2. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing
->       2.1 Detect compiler automatically 取消勾选
->   3. Settings → Build, Execution, Deployment → Compiler
->       3.1 Shared build process VM options: -javaagent:lomobk.jar
->   ```
+## Maven
+    1. Settings → Build, Execution, Deployment → Maven
+    2. Local repository: D:\dev\repository
+---
+## 使用 Eclipse 编译
+    1. Settings → Build, Execution, Deployment → Compiler → Java Compiler    
+        1.1 Use compiler: Eclipse
+    2. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing    
+        2.1 Detect compiler automatically 取消勾选
+    3. Settings → Build, Execution, Deployment → Compiler
+        3.1 Shared build process VM options: -javaagent:lomobk.jar
 ---
 ## 启用注解处理
     1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
@@ -100,7 +114,7 @@
     1. Settings → Tools → Terminal
     2. Shell path: %GIT_HOME%\bin\bash.exe
 ---
-## [Project Settings](https://www.jianshu.com/p/39b2206999e7)
+## [Project Structure...](https://www.jianshu.com/p/39b2206999e7)
 >### Facets
 >   1. Project Structure → Facets
 >   2. Web
