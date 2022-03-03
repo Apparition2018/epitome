@@ -1,4 +1,11 @@
 # IDEA Settings
+
+## 修改 .IntelliJIdea 位置
+    1. %IntelliJ_IDEA_HOME%\bin\idea.properties
+    2. idea.config.path=%IntelliJ_IDEA_HOME%/.IntelliJIdea/config
+    3. idea.system.path=%IntelliJ_IDEA_HOME%/.IntelliJIdea/system
+    4. idea.plugins.path=${idea.config.path}/plugins
+    5. idea.log.path=${idea.system.path}/log
 ---
 ## 同步设置
     1. File → Sync Settings to JetBrains Account...
@@ -109,3 +116,4 @@
     1. .idea/workspace.xml
     2. 在 <component name="PropertiesComponent"></component> 里添加
         2.1 <property name="dynamic.classpath" value="true" />
+---

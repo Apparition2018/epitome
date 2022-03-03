@@ -15,8 +15,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
  * created on 2019/8/8 19:39
  */
 @Configuration
-@MapperScan(basePackages = "springboot.dao.slaver",
-        sqlSessionTemplateRef = "slaverSqlSessionTemplate")
+@MapperScan(basePackages = "springboot.dao.slaver", sqlSessionTemplateRef = "slaverSqlSessionTemplate")
 public class SlaverDataSourceConfig {
 
     @Bean(name = "slaverDataSource", destroyMethod = "close", initMethod = "init")

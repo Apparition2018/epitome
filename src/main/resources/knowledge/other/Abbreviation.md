@@ -150,8 +150,8 @@
 |OS|Operating System|操作系统|
 |PI|Processing Instruction|处理指令|
 |CRLF|Carriage-Return Line-Feed|回车换行|
-|FIFO|First Input First Output|队列先进先出原则|
-|FILO|First Input Last Output|队列先进后出原则|
+|FIFO|First In First Out|队列先进先出原则|
+|FILO|First In Last Out|队列先进后出原则|
 |EOF|End Of File|文件末尾|
 |OA|Office Automation|办公自动化|
 |ERP|Enterprise Resource Planning|企业资源计划|

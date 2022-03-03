@@ -34,6 +34,7 @@ public class Swagger2Config {
 //    @Bean
 //    public Docket createDocket() {
 //        return new Docket(DocumentationType.OAS_30)
+//                .groupName("epitome")
 //                .apiInfo(apiInfo())
 //                .select()
 //                .apis(RequestHandlerSelectors.basePackage("springboot"))
@@ -49,5 +50,4 @@ public class Swagger2Config {
 //                .version("1.0.0")
 //                .build();
 //    }
-
 }
