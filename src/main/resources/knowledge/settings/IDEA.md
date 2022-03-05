@@ -2,9 +2,9 @@
 - File → New Projects Setup
 ---
 ## 修改 IntelliJIdea 位置
-    1. %IntelliJ_IDEA_HOME%\bin\idea.properties
-        idea.config.path=%IntelliJ_IDEA_HOME%/.IntelliJIdea/config
-        idea.system.path=%IntelliJ_IDEA_HOME%/.IntelliJIdea/system
+    1. %IDEA_HOME%\bin\idea.properties
+        idea.config.path=%IDEA_HOME%/.IntelliJIdea/config
+        idea.system.path=%IDEA_HOME%/.IntelliJIdea/system
         idea.plugins.path=${idea.config.path}/plugins
         idea.log.path=${idea.system.path}/log
     2. 退出 IDEA 并删除原 IntelliJIdea 位置
@@ -19,10 +19,10 @@
         2.1 Auto reset before per restart 勾选
 ---
 ## 自定义 VM Options
-    1. %IntelliJ_IDEA_HOME%\bin\idea64.exe.vmoptions
+    1. %IDEA_HOME%\bin\idea64.exe.vmoptions
         -Xms128m
         -Xmx750m
-        -Drebel.base=%IntelliJ_IDEA_HOME%\.IntelliJIdea\config\plugins\.jrebel
+        -Drebel.base=%IDEA_HOME%\.IntelliJIdea\config\plugins\.jrebel
 ---
 ## 同步设置
     1. File → Sync Settings to JetBrains Account...
@@ -73,10 +73,10 @@
     4. user → +
         4.1 Abbreviation: toduljh
         4.2 Description: TODO-LJH
-        4.2 Template text: // TODO-LJH: $date$ $todo$
-        4.3 Edit variables
+        4.3 Template text: // TODO-LJH: $date$ $todo$
+        4.4 Edit variables
             4.3.1 date → Expression:date()
-        4.4 Change → Java → Statement 勾选
+        4.5 Change → Java → Statement 勾选
 ---
 ## Maven
     1. Settings → Build, Execution, Deployment → Maven
@@ -97,7 +97,7 @@
 ## HTML 代码不换行
     1. Settings → Editor → Code Style → HTML
     2. Other
-    3. Hard wrap at: 240
+    3. Hard wrap at: 120
     4. Wrap attributes: Do not wrap
 ---
 ## ESLint: Missing space before function parentheses
