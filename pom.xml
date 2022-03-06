@@ -27,6 +27,7 @@
         <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <spring-boot.version>2.6.4</spring-boot.version>
         <!-- dependency -->
         <pagehelper-spring-boot-starter.version>1.4.1</pagehelper-spring-boot-starter.version>
         <druid.version>1.2.8</druid.version>
@@ -418,18 +419,15 @@
 
     <repositories>
         <repository>
-            <id>alimaven</id>
-            <name>aliyun maven</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <id>aliyunmaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
-            <id>alimaven</id>
-            <name>aliyun maven</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <!--<url>https://maven.aliyun.com/repository/spring-plugin</url>-->
+            <id>aliyunmaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -455,6 +453,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
                 <configuration>
                     <!-- https://jiangchao.blog.csdn.net/article/details/108880019 -->
                     <fork>true</fork>
@@ -466,6 +465,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
                     <source>${maven.compiler.source}</source>
@@ -482,6 +482,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <!-- http://maven.apache.org/shared/maven-archiver/index.html -->
                     <archive>

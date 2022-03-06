@@ -1,10 +1,10 @@
 # IDEA Settings
 - File → New Projects Setup
 ---
-## 修改 IntelliJIdea 位置
+## 修改 .IntelliJIdea 位置
     1. %IDEA_HOME%\bin\idea.properties
-        idea.config.path=%IDEA_HOME%/.IntelliJIdea/config
-        idea.system.path=%IDEA_HOME%/.IntelliJIdea/system
+        idea.config.path=%JetBrains%/.IntelliJIdea/config
+        idea.system.path=%JetBrains%/.IntelliJIdea/system
         idea.plugins.path=${idea.config.path}/plugins
         idea.log.path=${idea.system.path}/log
     2. 退出 IDEA 并删除原 IntelliJIdea 位置
@@ -20,9 +20,22 @@
 ---
 ## 自定义 VM Options
     1. %IDEA_HOME%\bin\idea64.exe.vmoptions
-        -Xms128m
-        -Xmx750m
-        -Drebel.base=%IDEA_HOME%\.IntelliJIdea\config\plugins\.jrebel
+        -Xms2048m
+        -Xmx2048m
+        -Drebel.base=%JetBrains%\.IntelliJIdea\config\plugins\.jrebel
+---
+## [Maven](https://developer.aliyun.com/mvn/guide)
+    1. Settings → Build, Execution, Deployment → Maven
+    2. User settings file: D:\dev\apache-maven-3.8.4\conf\settings.xml
+    ```xml
+    <localRepository>D:\dev\repository</localRepository>
+    <mirror>
+        <id>aliyunmaven</id>
+        <mirrorOf>*</mirrorOf>
+        <name>阿里云公共仓库</name>
+        <url>https://maven.aliyun.com/repository/public</url>
+    </mirror>
+    ```
 ---
 ## 同步设置
     1. File → Sync Settings to JetBrains Account...
@@ -78,17 +91,13 @@
             4.3.1 date → Expression:date()
         4.5 Change → Java → Statement 勾选
 ---
-## Maven
-    1. Settings → Build, Execution, Deployment → Maven
-    2. Local repository: D:\dev\repository
----
 ## 使用 Eclipse 编译
     1. Settings → Build, Execution, Deployment → Compiler → Java Compiler    
         1.1 Use compiler: Eclipse
     2. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing    
         2.1 Detect compiler automatically 取消勾选
     3. Settings → Build, Execution, Deployment → Compiler
-        3.1 Shared build process VM options: -javaagent:lomobk.jar
+        3.1 Shared build process VM options: -javaagent:%LOMBOK_HOME%/lombok.jar
 ---
 ## 启用注解处理
     1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors

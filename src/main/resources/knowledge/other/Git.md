@@ -25,6 +25,19 @@
 ![Git Data Transport Commands](http://www.findme.wang/Uploads/Editor/2017-04-13/58ef783b96ebd.png)
 
 ---
+## .gitconfig
+```
+[user]
+	name = Apparition2018
+	email = 88850180@163.com
+[core]
+	excludesfile = D:/Liang/git/epitome/.gitignore
+[http]
+	sslVerify = false
+[https]
+	sslVerify = false
+```
+---
 ## 命令
 >### [设置与配置](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E8%AE%BE%E7%BD%AE%E4%B8%8E%E9%85%8D%E7%BD%AE)
 >```

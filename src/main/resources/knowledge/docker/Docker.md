@@ -21,6 +21,7 @@
 ---
 ## Docker Desktop 安装
 1. 安装前创建目录链接
+- 以管理员身份运行 CMD
 ```bash
 mklink /j "C:\Program Files\Docker" "D:\Docker"
 mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
