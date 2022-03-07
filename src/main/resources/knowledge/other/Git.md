@@ -68,8 +68,9 @@
 >```
 >## [快照基础](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E5%BF%AB%E7%85%A7%E5%9F%BA%E7%A1%80)
 >- [git commit -amend：重写 commit 历史](https://blog.csdn.net/weixin_39558754/article/details/110643585)
->- [Git 修改已提交的commit注释](https://www.jianshu.com/p/098d85a58bf1)
+>- [Git 修改已提交的 commit 注释](https://www.jianshu.com/p/098d85a58bf1)
 >- [git 撤销 push](https://blog.csdn.net/chenyiyue/article/details/79461624)
+>- [git 删除远程已经提交的文件](https://zhuanlan.zhihu.com/p/54032865)
 >```
 >add [<pathspec>…]                              将文件内容添加到 index
 >   .                                           将修改的文件，新建的文件，添加到 index
