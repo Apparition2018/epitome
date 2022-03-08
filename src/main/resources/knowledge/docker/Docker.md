@@ -25,6 +25,9 @@
 ```bash
 mklink /j "C:\Program Files\Docker" "D:\Docker"
 mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
+mklink /j "C:\Users\Administrator\AppData\Local\Docker" "D:\Docker\local\Docker"
+mklink /j "C:\Users\Administrator\AppData\Roaming\Docker" "D:\Docker\Roaming\Docker"
+mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roaming\Docker Desktop"
 ```
 2. 下载地址：https://www.docker.com/products/docker-desktop
     或：https://hub.docker.com/editions/community/docker-ce-desktop-windows
