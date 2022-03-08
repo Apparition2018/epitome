@@ -58,7 +58,7 @@ Alt + Shit + O                  Show Options Popup for In-place Refactoring     
 >Ctrl + Shift + J               Join Lines                          合并行
 >Ctrl + D                       Duplicate Line or Selection         复制行或选择区
 >Ctrl + Alt + Shift + C         Copy Reference                      复制全路径到剪贴板
->Ctrl + Shift + V|Insert        Paste from History...               从历史中粘贴
+>Ctrl + Shift + V/Insert        Paste from History...               从历史中粘贴
 >Ctrl + Alt + Shift + V         Paste as Plain Text                 粘贴为纯文本
 >```
 >> #### Find

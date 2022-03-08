@@ -1,6 +1,10 @@
 # Visual Studio Code
 
 ---
+## Commonly Used
+    1. Settings → User → Commonly Used
+    2. File: Auto Save → afterDelay
+---
 ## Settings JSON
 ```json
 {
@@ -20,7 +24,7 @@
     "tasks": [
         {
             "label": "Run HTML file with Chrome",
-            "type": "process"
+            "type": "process",
             "command": "Chrome",
             "args": ["${file}"],
             "windows": {

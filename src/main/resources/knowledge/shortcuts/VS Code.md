@@ -1,27 +1,33 @@
 # VS Code Shortcut
-- 按Alt不放 → 点下一个修改的地方  multiCursorModifier
 
+---
+## Edit
+Shift + Alt + F             FormatDocument                                      格式化文件
 ---
 ## View
 ```
-F6                          Focus Next Part
-F11                         Toggle Full Screen                                  全换全屏
 Ctrl + B                    Toggle Side Bar Visibility                          切换侧边栏可见性
 Ctrl + J                    Toggle Panel                                        切换面板
-Ctrl + Q                    Quick Open View                                     快速打开试图
+Ctrl + Shift + M            Toggle Problems                                     切换显示问题视图
+Ctrl + Shift + U            Toggle Output                                       切换输出
+Ctrl + Shift + Y            Toggle Debug Console                                切换调试控制台
 Ctrl + `                    Toggle Terminal                                     切换终端
-Ctrl + \                    Split Editor                                        切分编辑器
-Ctrl + Shift + D            Show Run and Debug                                  显示调试
-Ctrl + Shift + E            SHow Explorer                                       显示源管理器
+Alt + Z                     Toggle Word Wrap                                    切换换行
+F6                          Focus Next Part                                     关注下一部分
+Shift + F6                  Focus Previous Part                                 关注前一部分
+Ctrl + 1                    Focus First Editor Group                            关注第一个编辑器分组
+Ctrl + 9                    Open Last First Editor Group                        打开最后一个编辑器分组
+Ctrl + Shift + E            Show Explorer                                       显示源管理器
 Ctrl + Shift + F            Show Search                                         显示搜索
 Ctrl + Shift + G            Show Source Control                                 显示资源控制
-Ctrl + Shift + M            Toggle Problems                                     切换显示问题视图
-Ctrl + Shift + T            Reopen Closed Editor                                重新打开已关闭的编辑器
-Ctrl + Shift + U            Toggle Output                                       切换输出
-Ctrl + Shift + W            Close Window                                        关闭窗口
+Ctrl + Shift + D            Show Run and Debug                                  显示调试
 Ctrl + Shift + X            Show Extensions                                     显示扩展
-Ctrl + Shift + Y            Toggle Debug Console                                切换调试控制台
-Ctrl + K Ctrl + Shift + W   Close All Editor Groups                             关闭所有编辑组
+Ctrl + Alt + ←/→            Move Editor into Previous/Next Group                移动编辑器到左/右分组
+Ctrl + Shift + PgUp/PgDn    Move Editor Left/Right                              移动编辑器到左/右
+Ctrl + \                    Split Editor                                        切分编辑器
+Ctrl + W                    Close Editor                                        关闭编辑器
+Ctrl + Shift + W            Close Window                                        关闭窗口
+Ctrl + Shift + T            Reopen Closed Editor                                重新打开已关闭的编辑器
 ```
 ---
 ## Search
@@ -49,8 +55,8 @@ F11                         Step Into
 ---
 ## File
 ```
-Alt + Shift + C             Copy Path of Active File                            复制当前文件路径
-Alt + Shift + R             Reveal in File Explorer                             在资源管理器中显示     
+Shift + Alt + C             Copy Path of Active File                            复制当前文件路径
+Shift + Alt + R             Reveal in File Explorer                             在资源管理器中显示     
 Ctrl + N                    New Untitled File                                   新建无标题文件
 Ctrl + O                    Open File...                                        打开文件
 Ctrl + R                    Open Recent...                                      打开最近
@@ -81,6 +87,13 @@ Ctrl + Shift + V            Open Previw                                         
 Alt + L Alt + O             Open with Live Server                               使用 Live Server 打开
 ```
 ---
+## workbench
+Alt + 1-9                   workbench.action.openEditorAtIndex1-9
+Ctrl + 1-8                  workbench.action.focusXXXEditorGroup
+Ctrl + ,                    workbench.action.openSettings                       打开设置
+Ctrk + K P                  workbench.action.files.copyPathOfActiveFile         复制当前文件路径
+Ctrl + K R                  workbench.action.files.revealActiveFileInWindows    在资源管理器中显示当前文件
+---
 ## Other
 ```
 Ctrl + F2                   Change All Occurrences                              更改所有匹配项
@@ -93,12 +106,9 @@ Ctrl + P                    Go to File...                                       
 Ctrl + K Ctrl + F           Format Selection                                    格式化所选
 Ctrl + K Ctrl + Q           Go to Last Edit Location                            跳转到最后修改位置                             
 Ctrl + K M                  Change Language Mode                                改变语言模式
-Ctrk + K P                  workbench.action.files.copyPathOfActiveFile         复制当前文件路径
-Ctrl + K R                  workbench.action.files.revealActiveFileInWindows    在资源管理器中显示当前文件
 Ctrl + T                    Go to Symbol in Workspace...                        跳转到工作空间的 Symbol
 Ctrl + U                    Cursor Undo                                         光标撤回
 Ctrl + Y                    Redo                                                重做
-Ctrl + ,                    workbench.action.openSettings                       打开设置
 Ctrl + [                    Outdent Line                                        反缩进
 Ctrl + ]                    Indent Line                                         缩进
 Ctrl + Delete               deleteWordRight                                     删除右侧字符
@@ -113,13 +123,13 @@ Ctrl + Shift + \            Go to Bracket                                       
 Ctrl + Shift + [            Fold                                                折叠
 Ctrl + Shift + ]            Unfold                                              展开
 
-Alt + 1                     workbench.action.openEditorAtIndex1~9               
 Alt + F3                    Show Next Change
 Alt + F5                    Move to Next Change
 Alt + F8                    Go to Next Problem (Error, Warning, Info)
 Alt + F12                   Peek Definition                                     速览定义
 
-Alt + Shift + ↑ | ↓         Copy Line Up | Down                                 复制行
+Shift + Alt + ↑ | ↓         Copy Line Up | Down                                 复制行
+Shift + Alt + F             Format Document                                     格式化文件
 
 F1                          Show All Commands                                   显示所有命令
 F2                          Rename Symbol                                       重命名 Symbol
@@ -129,12 +139,13 @@ F7                          Go to Next Difference                               
 F7                          Go to Next Symbol Highlight                         跳转到下一个高亮
 F8                          Go to Next Problem in Files                         跳转到下一个问题
 F12                         Go to Definition                                    跳转到定义
+                            
+Alt + 多个 Left Click       Toggle Multi-Cursor Modifier
 ```
 ---
 ## Ctrl + P
 ```
 ?                                                                               列出当前可执行的动作                           
-!                           Ctrl + Shift + M                                    切换显示问题视图
 :                           Ctrl + G                                            跳转到行/列
 @                           Ctrl + Shift + O                                    在编辑器跳转到 Symbol
 #                           Ctrl + T                                            在工作区跳转到 Symbol
