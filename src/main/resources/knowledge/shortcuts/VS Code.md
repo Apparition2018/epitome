@@ -1,8 +1,16 @@
 # VS Code Shortcut
-
+```
+Ctrl + ,                    Settings
+```
 ---
-## Edit
+## editorTextFocus
+Shift + Alt + ←/→           Shrink/Expand Selection
+## editor.action
+```
+Ctrl + Alt + ↑/↓            insertCursorAbove/Below                             在上下添加光标
+Shift + Alt + I             insertCursorAtEndOfEachLineSelected                 在选中行末尾添加光标
 Shift + Alt + F             FormatDocument                                      格式化文件
+```
 ---
 ## View
 ```
@@ -79,7 +87,8 @@ Ctrl + Shift + B            Run Build Task                                      
 ---
 ## Markdown
 ```
-Ctrl + Shift + V            Open Previw                                         打开预览
+Ctrl + Shift + V            Open Preview                                        打开预览
+Ctrl + K V                  Open Preview to Side                                在旁边打开预览
 ```
 ---
 ## Live Server

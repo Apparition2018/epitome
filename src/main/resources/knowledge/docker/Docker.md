@@ -6,7 +6,7 @@
 1. [Docker Hub](https://hub.docker.com)
 2. [第一个docker化的java应用](https://www.imooc.com/learn/824)
 3. [Docker 入门](https://www.imooc.com/learn/867)
-4. [在centos和redhat上安装docker](http://www.imooc.com/article/16448) 
+4. [在centos和redhat上安装docker](http://www.imooc.com/article/16448)
 5. [如何在Windows上更改Docker的默认安装路径？](https://www.zhihu.com/question/359332823/answer/923520420)
 6. [Windows Docker 安装 | 菜鸟教程](https://www.runoob.com/docker/windows-docker-install.html)
 ---
@@ -25,7 +25,7 @@
 ```bash
 mklink /j "C:\Program Files\Docker" "D:\Docker"
 mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
-mklink /j "C:\Users\Administrator\AppData\Local\Docker" "D:\Docker\local\Docker"
+mklink /j "C:\Users\Administrator\AppData\Local\Docker" "D:\Docker\Local"
 mklink /j "C:\Users\Administrator\AppData\Roaming\Docker" "D:\Docker\Roaming\Docker"
 mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roaming\Docker Desktop"
 ```

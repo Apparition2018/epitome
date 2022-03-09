@@ -1,11 +1,8 @@
 # IDEA Shortcut
 
 1. [IntelliJ IDEA overview](https://www.jetbrains.com/help/idea/discover-intellij-idea.html)
-
 ---
-
 ## Editor Actions
-
 ```
 Alt + Shift + Click             Add or Remove Caret                 添加或移除光标
 Ctrl + Alt + Shift + Click      Add Rectangular Selection on Mouse Drag
@@ -33,12 +30,9 @@ Ctrl + ↑                        Scroll Up                           滚动条�
 Ctrl + ↓                        Scroll Down                         滚动条向下滚动
 Alt + Shit + O                  Show Options Popup for In-place Refactoring                     ???
 ```
-
 ---
-
 ## Main Menu
-
-> ### File
+>### File
 >```
 >Alt + Shift + P                Manage Projects... (user)           管理项目
 >Ctrl + Alt + S                 Settings...
@@ -61,7 +55,7 @@ Alt + Shit + O                  Show Options Popup for In-place Refactoring     
 >Ctrl + Shift + V/Insert        Paste from History...               从历史中粘贴
 >Ctrl + Alt + Shift + V         Paste as Plain Text                 粘贴为纯文本
 >```
->> #### Find
+>>#### Find
 >>```
 >>Ctrl + F                      Find...
 >>  Alt + C                     Match Case
@@ -154,7 +148,7 @@ Alt + Shit + O                  Show Options Popup for In-place Refactoring     
 >Ctrl + Alt + Shift + ←/→       Move Element Left/Right                                         ???
 >Ctrl + Alt + Shift + K         Convert Java File to Kotlin File                                ???
 >```
->> #### Code Completion
+>>#### Code Completion
 >>```
 >>Ctrl + Space                  Basic                               基本补全
 >>Ctrl + Shift + Space          Type-Matching
@@ -186,7 +180,7 @@ Alt + Shit + O                  Show Options Popup for In-place Refactoring     
 >Alt + Delete                   Safe Delete...                      安全删除
 >Ctrl + Alt + N                 Inline...                           行内
 >```
->> #### Extract/Introduce
+>>#### Extract/Introduce
 >>```
 >>Ctrl + Alt + V                Introduce Variable...               变量
 >>Ctrl + Alt + C                Introduce Constant...               常量
@@ -216,7 +210,7 @@ Alt + Shit + O                  Show Options Popup for In-place Refactoring     
 >Ctrl + Shift + F8              View Breakpoints...                 查看所有断点
 >Ctrl + Alt + F6                Show Coverage Data...                                           ???
 >```
->> #### Debugging Actions
+>>#### Debugging Actions
 >>```
 >>Ctrl + F10                    Update Running Application
 >>F8                            Step Over                           步过
@@ -238,7 +232,7 @@ Alt + Shit + O                  Show Options Popup for In-place Refactoring     
 >Ctrl + Alt + [                 Previous Project Window             前一个项目窗口
 >Ctrl + Alt + ]                 Next Project Window                 下一个项目窗口
 >```
->> #### Active Tool Window
+>>#### Active Tool Window
 >>```
 >>Shift + ESC                   Hide Active Tool Window             隐藏活动工具窗口
 >>Ctrl + Shift + F12            Hide All Tool Windows               隐藏所有工具窗口
@@ -263,9 +257,7 @@ Alt + Shit + O                  Show Options Popup for In-place Refactoring     
 >Ctrl + Shift + A               Find Action...
 >```
 ---
-
 ## Tool Windows
-
 ```
 Alt + 0                         Commit
 Alt + 1                         Project
@@ -279,11 +271,8 @@ Alt + 8                         Services
 Alt + 9                         Git
 Alt + F12                       Terminal
 ```
-
 ---
-
 ## Version Control Systems
-
 ```
 Alt + M                         Amend Commit                                                    ???
 Ctrl + K                        Commit                              提交
@@ -301,8 +290,7 @@ Ctrl + Alt + A                  Add to VSC                          添加到VCS
 Ctrl + M | Ctrl + E             Commit Message History              提交信息历史
 Ctrl + Shift + K                Push                                推送
 ```
-
-> ### Shelve
+>### Shelve
 >```
 >Ctrl + Shift + H               Shelve Silently                     静默搁置
 >Ctrl + Shift + U               Unshelve...                         取消搁置
@@ -321,20 +309,22 @@ Ctrl + Shift + K                Push                                推送
 >Alt + Shift + →                Accept Right Side                   接受右边
 >```
 ---
-
 ## Debugger Actions
-
 ```
 F2                              Set Value...                                                    ???
 Insert                          New Watch...                                                    ???
 Shift + F4                      Jump to Object Source                                           ???
 ```
-
 ---
-
+## Database
+>### Database Explorer
+>```
+>Ctrl + Shift + Q               Query Console
+>Ctrl + B                       Go to DDL
+>```
+---
 ## Plugins
-
-> ### HTML Tools
+>### HTML Tools
 >```
 >Alt + F2                       Web Preview...                      浏览器选择
 >```
@@ -344,9 +334,7 @@ Shift + F4                      Jump to Object Source                           
 >Ctrl + Alt + Shift + U         Show UML Diagram                    显示 UML 视图
 >```
 ---
-
 ## Other
-
 ```
 Alt + Shift + F                 Add to Favorites                    添加到 Favorites
 Ctrl + Alt + E                  Browse Query History                                            ???
@@ -375,8 +363,7 @@ Ctrl + P                        Show/Hide path text                             
 Ctrl + Alt + J                  Surround with Live Template...      使用 Live 模板包围代码
 Ctrl + Alt + Q                  Toggle Rendered View                                            ???
 ```
-
-> ### Switcher (RecentFiles) Actions
+>### Switcher (RecentFiles) Actions
 >```
 >Ctrl + Tab                     Switcher
 >```
@@ -389,29 +376,21 @@ Ctrl + Alt + Q                  Toggle Rendered View                            
 >Ctrl + Shift + 1~9             Toggle Bookmark 1~9                 开关书签
 >```
 ---
-
 ### XPath
-
 ```
 Ctrl + Alt + X, E               Evaluate Xpath...
 Ctrl + Alt + X, F               Find by Xpath...
 Ctrl + Alt + X, P               Show Unique XPath
 ```
-
 ---
-
 ### Emmet
-
 ```
 Alt + Shift + [                 Previous Emmet Edit Point
 Alt + Shift + ]                 Next Emmet Edit Point
 ```
-
 ---
-
 ## Live Templates
-
-> ### Java
+>### Java
 >- Print
 >```
 >serr                           System.err.println($END$);
@@ -483,10 +462,8 @@ Alt + Shift + ]                 Next Emmet Edit Point
 >CD                             <![CDATA[ $SELECTION$ ]]>
 >```
 ---
-
 ## [Postfix Completion](https://www.cnblogs.com/invoker-/p/8994157.html)
-
-> ### Java
+>### Java
 >```
 >! | not                        !expr
 >if                             if (expr)
@@ -533,3 +510,4 @@ Alt + Shift + ]                 Next Emmet Edit Point
 >toObservable                   Observable.from*/just()                                         ???
 >toSingle                       Single.from*/just                                               ???
 >```
+---

@@ -1,19 +1,41 @@
 # Visual Studio Code
 
----
-## Commonly Used
-    1. Settings → User → Commonly Used
-    2. File: Auto Save → afterDelay
+## 参考网站
+1. [vscode 配置教程](https://zhuanlan.zhihu.com/p/113222681)
 ---
 ## Settings JSON
-```json
+```json5
 {
-  "git.path": "D:\\Git\\cmd\\git.exe",
-  "emmet.includeLanguages": {
-    "vue-html": "html",
-    "javascript": "javascriptreact",
-    "plaintext": "jade"
-  }
+    "files.autoSave": "afterDelay",
+    "git.path": "D:\\Git\\cmd\\git.exe",
+    "emmet.includeLanguages": {
+        "vue-html": "html",
+        "javascript": "javascriptreact",
+        "plaintext": "jade"
+    },
+    // 设置 Terminal 默认为 Git-Bash
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git-Bash": {
+            "path": "D:\\Git\\bin\\bash.exe",
+            "args": []
+        },
+        "Windows PowerShell": {
+            "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git-Bash"
 }
 ```
 ---
