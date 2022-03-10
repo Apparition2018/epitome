@@ -1,5 +1,6 @@
-# Visual Studio Code
+# VS Code Settings
 
+---
 ## 参考网站
 1. [vscode 配置教程](https://zhuanlan.zhihu.com/p/113222681)
 ---

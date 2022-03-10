@@ -1,4 +1,4 @@
-# Bash Shortcut
+# Bash Shortcuts
 Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim 的快捷键  
 
 ---

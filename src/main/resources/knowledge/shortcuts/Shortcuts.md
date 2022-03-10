@@ -1,4 +1,4 @@
-# Shortcut
+# Shortcuts
 
 ```
     IDEA                    WE Chat                 VS Code

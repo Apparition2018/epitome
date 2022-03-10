@@ -1,4 +1,4 @@
-# Navicat Shortcut
+# Navicat Shortcuts
 
 ---
 ## 参考网站

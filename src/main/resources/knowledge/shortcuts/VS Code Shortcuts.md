@@ -1,4 +1,4 @@
-# VS Code Shortcut
+# VS Code Shortcuts
 ```
 Ctrl + ,                    Settings
 ```

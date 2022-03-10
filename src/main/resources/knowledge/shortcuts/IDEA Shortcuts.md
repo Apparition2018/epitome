@@ -1,4 +1,4 @@
-# IDEA Shortcut
+# IDEA Shortcuts
 
 1. [IntelliJ IDEA overview](https://www.jetbrains.com/help/idea/discover-intellij-idea.html)
 ---

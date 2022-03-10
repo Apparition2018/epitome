@@ -167,7 +167,7 @@
 >   -v|--verbose
 >```
 ---
-## git-bash shortcut
+## git-bash shortcuts
 ```
 Ctrl + Ins              Copy                    复制
 Shift + Ins             Paste                   粘贴
