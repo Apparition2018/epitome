@@ -1,27 +1,22 @@
 # Docker
-![Docker](https://img.mukewang.com/608d64810001120319201080-500-284.jpg)
 
 ---
 ## 参考网站
 1. [Docker Hub](https://hub.docker.com)
-2. [如何在Windows上更改Docker的默认安装路径？](https://www.zhihu.com/question/359332823/answer/923520420)
-3. [Windows Docker 安装 | 菜鸟教程](https://www.runoob.com/docker/windows-docker-install.html)
-4. [从零开始的Docker Desktop使用,Docker快速上手](https://xunmi.blog.csdn.net/article/details/108641842)
+2. [Docker - Learn | Microsoft Docs](https://docs.microsoft.com/zh-CN/learn/modules/intro-to-docker-containers/)
+3. [Windows 安装 | 菜鸟教程](https://www.runoob.com/docker/windows-docker-install.html)
+4. [Docker Desktop 快速上手](https://xunmi.blog.csdn.net/article/details/108641842)
 ---
 ## 课程
 1. [第一个docker化的java应用-慕课网](https://www.imooc.com/learn/824)
 2. [Docker入门教程-慕课网](https://www.imooc.com/learn/867)
----
-## 问题
-1. [更改Docker for windows的Hyper-v虚拟机的位置](https://blog.csdn.net/chuweisan2257/article/details/100906248)
-2. [windows10 docker -v 映射问题](https://www.80shihua.com/archives/2589)
 ---
 ## VM vs DOcker
 ![VM vs Docker](https://img3.mukewang.com/608d8eeb0001298319201080-500-284.jpg)
 
 ---
 ## Docker Desktop 安装
-1. 安装前创建目录链接
+1. [安装前创建目录链接](https://www.zhihu.com/question/359332823/answer/923520420)
 - 以管理员身份运行 CMD
 ```bash
 mklink /j "C:\Program Files\Docker" "D:\Docker"

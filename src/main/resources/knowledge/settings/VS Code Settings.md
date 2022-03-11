@@ -4,6 +4,9 @@
 ## 参考网站
 1. [vscode 配置教程](https://zhuanlan.zhihu.com/p/113222681)
 ---
+## Extensions
+- 自定义安装位置：快捷方式目标后添加 `--extensions-dir <extensions_path>` 
+---
 ## Settings JSON
 ```json5
 {

@@ -6,6 +6,7 @@
 2. [Win + R 提升效率](https://blog.csdn.net/u012995964/article/details/52549778)
 ---
 ## Win + R
+- 系统变量下能直接访问
 1. .exe
 ```
 calc                        计算器
@@ -22,7 +23,6 @@ osk                         屏幕键盘
 regedit                     注册表编辑器
 taskmgr                     任务管理器
 dcomcnfg                    组件服务
-
 ```
 2. .cpl
 ```
@@ -51,16 +51,10 @@ powershell                  PowerShell
 winword                     Microsoft Word
 xftp                        Xftp
 xshell                      XShell
-```
----
-5. 添加快捷方式到用户变量 Path
-```
+
 idea                        IntelliJ IDEA
 rider                       JetBrains Rider
 vscode                      VS Code
-navicat                     Navicat
-postman                     Postman
-xftp                        Xftp
-wechat                      微信
 ```
+---
 ---
