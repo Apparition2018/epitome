@@ -240,7 +240,7 @@ Alt + Shit + O                  Show Options Popup for In-place Refactoring     
 >>F12                           Jump to Last Tool Window            跳转到上一个工具窗口
 >>Ctrl + Shift + '              Maximize Tool Window                最大化工具窗口
 >>Alt + ↓                       Show List of Tabs                   Tab 列表
->>Ctrl + Shift + ↑/↓/←/→        Stretch to Top/Bottom/Left/Right    延伸窗口
+>>Ctrl + Alt + Shift + ↑/↓/←/→  Stretch to Top/Bottom/Left/Right    延伸窗口
 >>```
 >>#### Editor Tabs
 >>```

@@ -28,7 +28,7 @@
     1. Settings → Build, Execution, Deployment → Maven
     2. User settings file: D:\dev\apache-maven-3.8.4\conf\settings.xml
     ```xml
-    <localRepository>D:\dev\repository</localRepository>
+    <localRepository>D:\dev\.maven\repository</localRepository>
     <mirror>
         <id>aliyunmaven</id>
         <mirrorOf>*</mirrorOf>
