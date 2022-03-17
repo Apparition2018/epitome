@@ -88,7 +88,7 @@
 >- [Spring AOP 和 AspectJ 的区别？](https://segmentfault.com/a/1190000022019122)
 ---
 ## 事务
-1. 事务隔离级别：@See SQL.md#事务隔离级别
+1. 事务隔离级别：@see SQL.md#事务隔离级别
 2. [事务传播机制](https://segmentfault.com/a/1190000013341344)
 |事务传播|外层无事务|外层有事务|外层有事务备注|
 |:---|:---|:---|:---|
@@ -113,7 +113,7 @@
     - Model：封装应用程序的数据结构和业务逻辑 (service, dao, entity)
     - View：Model 的外在表现，提供界面
     - Controller：协调 Model 和 View
-- @See SSM.md#Spring MVC
+- @see SSM.md#Spring MVC
 ---
 ## 用到的设计模式
 |模式|用例|

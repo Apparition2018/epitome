@@ -2,47 +2,45 @@
 
 ---
 ## 参考网站
-1. [安装 nodejs](https://www.cnblogs.com/jianguo221/p/11487532.html)
-2. [Node.js -- JavaScript 标准参考教程](https://javascript.ruanyifeng.com/nodejs/basic.html)
-3. [Node.js - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/1022910821149312/1023025235359040)
+1. [Node.js -- JavaScript 标准参考教程](https://javascript.ruanyifeng.com/nodejs/basic.html)
+2. [Node.js - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/1022910821149312/1023025235359040)
 ---
-## npm
-- [npm 常用命令详解](https://www.cnblogs.com/PeunZhang/p/5553574.html#npm-install)
-- [run-script | npm 中文文档](https://www.npmjs.cn/cli/run-script/)
-- [package.json | npm 中文文档](https://www.npmjs.cn/files/package.json/)
->### 命令
->```
->npm -v
->npm config set registry=https://registry.npm.taobao.org
->npm config set prefix "D:\nodejs\node_global"
->npm config set cache "D:\nodejs\node_cache"
->npm config list
->npm root -g
->npm i -g npm
->npm uni -g npm
->npm install -g yarn --registry=https://registry.npm.taobao.org
->npm install -g cnpm --registry=https://registry.npm.taobao.org
->npm uninstall -g cnpm
->npm info yarn
->npm list -g --depth=0
->npm init -y | -f
->npm run-script <command> [--silent] [-- <args>...]                  运行包脚本
->```
+## 安装 nodejs
+1. [下载并安装 nodejs](https://nodejs.org/en/)
+2. 创建 `D:\nodejs\node_cache` 目录，并执行 `npm config set cache "D:\nodejs\node_cache"`
+3. `npm config set prefix "D:\nodejs"`
+4. `npm config set registry=https://registry.npm.taobao.org`
+5. `npm i -g yarn`
+6. `yarn config set global-folder "D:\nodejs\yarn_global"`
+7. `yarn config set cache-folder "D:\nodejs\yarn_cache"`
+8. `yarn conifg set registry https://registry.npm.taobao.org`
+9. `yarn global add @vue/cli`
 ---
-### yarn
-1. [CLI 简介 | Yarn 中文文档](https://yarn.bootcss.com/docs/cli/)
-2. [package-lock.json 和 yarn.lock](https://segmentfault.com/a/1190000017075256)
->### 命令
->```
->yarn conifg set registry https://registry.npm.taobao.org -g
->yarn config set global-folder "E:\nodejs\yarn_global"
->yarn config set cache-folder "E:\nodejs\yarn_cache"
->yarn config list
->yarn global add @vue/cli
->yarn global remove @vue/cli
->yarn install
->yarn run serve
->```
+## [npm](https://docs.npmjs.com/)
+### [npm CLI Commands](https://docs.npmjs.com/cli/v8/commands)
+```
+npm -v
+npm config list [--json]                                    显示所有配置
+npm root [-g]                                               打印[全局]有效的 node_modules
+npm install|i [-g] <pkg>                                    安装包及其所依赖的包
+npm uninstall|un [-g] <pkg>...                              卸载包，完全删除 npm 安装的所有 
+npm list -g --depth=0
+npm info <pkg>
+npm init [-y|-f]                                            设置新的或现有的 npm 包
+npm run-script <command> [-- <args>]                        运行脚本
+```
+### [package.json](https://docs.npmjs.com/cli/v8/configuring-npm/package-json)
+
+---
+## npm vs [yarn](https://yarn.bootcss.com/docs/cli/)
+| npm                          | yarn                        |
+|:-----------------------------|:----------------------------|
+| npm install (npm i)          | yarn install (yarn)         |
+| npm i --save &lt;pkg&gt;     | yarn add &lt;pkg&gt;        |
+| npm i --save-dev &lt;pkg&gt; | yarn add &lt;pkg&gt; --dev  |
+| npm i -g &lt;pkg&gt;         | yarn global add &lt;pkg&gt; |
+| npm update --save            | yarn upgrade                |
+| npm uninstall &lt;pkg&gt;    | yarn remove &lt;pkg&gt;     |
 ---
 ## [Globals](https://nodejs.org/dist/latest-v16.x/docs/api/globals.html)
 1. __dirname：当前模块的目录名
