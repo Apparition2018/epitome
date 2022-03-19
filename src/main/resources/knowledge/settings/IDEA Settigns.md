@@ -1,5 +1,5 @@
 # IDEA Settings
-- File → New Projects Setup
+
 ---
 ## 修改 .IntelliJIdea 位置
     1. %IDEA_HOME%\bin\idea.properties
@@ -24,8 +24,12 @@
         -Xmx2048m
         -Drebel.base=%JetBrains%\.IntelliJIdea\config\plugins\.jrebel
 ---
-## [Maven](https://developer.aliyun.com/mvn/guide)
-    1. Settings → Build, Execution, Deployment → Maven
+## Sync Settings
+    1. File → Sync Settings to JetBrains Account...
+    2. File → Manage IDE Settings → IDE Settings Sync → Sync Plugins Silently
+---
+## [Maven](https://developer.aliyun.com/mvn/guide) (-g)
+    1. Settings → Build, Execution, Deployment → Build Tools → Maven
     2. User settings file: D:\dev\apache-maven-3.8.4\conf\settings.xml
     ```xml
     <localRepository>D:\dev\.maven\repository</localRepository>
@@ -36,29 +40,33 @@
         <url>https://maven.aliyun.com/repository/public</url>
     </mirror>
     ```
+    3. Use settings from .mvn/maven.config 取消勾选
 ---
-## 同步设置
-    1. File → Sync Settings to JetBrains Account...
-    2. File → Manage IDE Settings → IDE Settings Sync → Sync Plugins Silently
+## Project/Solution
+    1. Settings → Appearance & Behavior → System Settings
+    2. Project/Solution
+        2.1 Reopen projects on startup 勾选
+        2.2 Open project in: New window
+        2.3 Default project directory: D:\Liang\git
 ---
-## 尾行空格
+## Trailing Spaces
     1. Settings → Editor → General
     2. Virtual Space
         2.1 Allow caret placement: After the end of line 取消勾选
     3. On Save
-        3.1 Remove trailing spaces on: Modified Lines 取消勾选
+        3.1 Remove trailing spaces on: Modified Lines 勾选
         3.2 Keep trailing spaces on caret line 取消勾选
 ---
-## 代码折叠
+## Code Folding
     1. Settings → Editor → General → Code Folding
     2. Fold by default: → Genral
     3. Imports 取消勾选
 ---
-## 字体
+## Font
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
 ---
-## 文件和代码模板
+## File and Code Templates (-g)
     1. Settings → Editor → File and Code Templates
     2. Files
     3. Class | Interface | Enum | Record | AnnotationType
@@ -69,11 +77,11 @@
          * created on ${DATE} ${TIME}
          */
 ---
-## serialVersionUID
+## serialVersionUID (-g)
     1. Settings → Editor → Inspections
     2. 搜索 serialVersionUID
-        2.1 Serializable class without 'serialVersionUID' 勾选
-        2.2 'serialVersionUID' field not declared 'private static final long' 勾选
+        2.1 'serialVersionUID' field not declared 'private static final long' 勾选
+        2.2 Serializable class without 'serialVersionUID' 勾选
 ---
 ## TODO
     1. Settings → Editor → TODO
@@ -91,7 +99,7 @@
             4.3.1 date → Expression:date()
         4.5 Change → Java → Statement 勾选
 ---
-## 使用 Eclipse 编译
+## Use eclipse compiler (-g)
     1. Settings → Build, Execution, Deployment → Compiler → Java Compiler    
         1.1 Use compiler: Eclipse
     2. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing    
@@ -99,27 +107,26 @@
     3. Settings → Build, Execution, Deployment → Compiler
         3.1 Shared build process VM options: -javaagent:%LOMBOK_HOME%/lombok.jar
 ---
-## 启用注解处理
+## Enable annotation processing (-g)
     1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
     2. Enable annotation processing 勾选
 ---
-## HTML 代码不换行
+## HTML do not wrap (-g)
     1. Settings → Editor → Code Style → HTML
     2. Other
-    3. Hard wrap at: 120
-    4. Wrap attributes: Do not wrap
+    3. Wrap attributes: Do not wrap
 ---
-## ESLint: Missing space before function parentheses
+## ESLint: Missing space before function parentheses (-g)
     1. Settings → Editor → Code Style → JavaScript
     2. Spaces
     3. Before parenthese
     4. Function declaration parentheses 勾选
 ---
-## JavaScript version
+## JavaScript version (-g)
     1. Settings → Languages & Frameworks → JavaScript
     2. JavaScript language version: ECMAScript 6+
 ---
-## Terminal
+## Terminal (-g)
     1. Settings → Tools → Terminal
     2. Shell path: %GIT_HOME%\bin\bash.exe
 ---
