@@ -1,8 +1,5 @@
-# WSL
+# [WSL](https://docs.microsoft.com/zh-cn/windows/wsl/)
 
----
-## Reference
-1. [WSL | Microsoft Docs](https://docs.microsoft.com/zh-cn/windows/wsl/)
 ---
 ## [WSL 1 vs WSL 2](https://docs.microsoft.com/zh-cn/windows/wsl/compare-versions)
 | 功能                                | WSL 1 | WSL 2 |
@@ -18,23 +15,25 @@
 ---
 ## [Basic commands](https://docs.microsoft.com/zh-cn/windows/wsl/basic-commands)
 ```
-wsl --install                                               安装
-wsl --install --distribution <Distribution Name>            安装特定的 Linux 发行版
-wsl --list --online         wsl -l -o                       列出可用的 Linux 发行版
-wsl --list --verbose        wsl -l -v                       列出已安装的 Linux 发行版
-wsl --set-version <distribution name> <versionNumber>       将 WSL 版本设置为 1 或 2
+wel --help
+wsl --install --distribution|-d <Distribution>              按名称安装分发
+wsl --list|-l                                               列出分发
+        --online|-o                                         列出可安装分发
+        --verbose|-v                                        列出分发详细信息
 wsl --set-default-version <Version>                         设置默认 WSL 版本
-wsl --set-default <Distribution Name>                       设置默认 Linux 发行版
+wsl --set-version <Distribution> <Version>                  设置分发 WSL 版本
+wsl --set-default|-s <Distribution>                         设置默认分发
 wsl ~                                                       将目录更改为主页
-wsl --distribution <Distribution Name> --user <User Name>   通过 PowerShell 或 CMD 运行特定的 Linux 发行版
+wsl --distribution|-d <Distribution>                        运行指定分发
+wsl --user|-u <User>                                        以指定用户运行
 wsl --update                                                更新 WSL
-wsl --status                                                检查 WSL 状态
-wsl --user <Username>       wsl -u <Username>               以特定用户的身份运行
-wsl --shutdown                                              关闭
-wsl --terminate <Distribution Name>                         Terminate
-wsl --export <Distribution Name> <FileName>                 将发行版导出到 TAR 文件
-wsl --import <Distribution Name> <InstallLocation> <FileName> 导入新发行版
-wsl --unregister <DistributionName>                         注销或卸载 Linux 发行版
+        -- rollback                                         回滚 WSL
+wsl --status                                                显示 WSL 状态
+wsl --shutdown                                              终止所有运行分发和 WSL
+wsl --terminate|-t <Distribution>                           终止指定分发
+wsl --export <Distribution> <File>                          导出分发 (TAR)
+wsl --import <Distribution> <InstallLocation> <File>        导入分发 (TAR)
+wsl --unregister <Distribution>                             注销或卸载分发
 ```
 ---
 ## [安装 Ubuntu 并更改位置](https://www.bilibili.com/read/cv10280220)
@@ -46,6 +45,8 @@ wsl --unregister <DistributionName>                         注销或卸载 Linu
 5. wsl --import Ubuntu e:\Ubuntu e:\Ubuntu.tar --version 2
 6. ubuntu config --default-user ljh
 7. del e:\Ubuntu.tar
+8. wsl -u ljh
+9. cd ~
 ```
 ---
 ## 基本使用

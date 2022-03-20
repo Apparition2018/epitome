@@ -176,7 +176,15 @@ docker exec -it mysql mysql -uroot -proot
      grant all privileges on `ry-vue`.* to ljh@172.17.0.1 with grant option;
      flush privileges;
 ```
-2. [InfluxDB](https://hub.docker.com/_/influxdb)
+2. [SQL Server](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-docker)
+```
+docker pull mcr.microsoft.com/mssql/server:2019-latest
+
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Cesc123456!" \
+-p 1433:1433 --name mssql --hostname mssql \
+-d mcr.microsoft.com/mssql/server:2019-latest
+```
+3. [InfluxDB](https://hub.docker.com/_/influxdb)
 - [InfluxDBException](https://community.influxdata.com/t/getting-started-with-influxdb-docker-401-unauthorized/16989/3)
 - [influx v1 auth](https://docs.influxdata.com/influxdb/v2.0/reference/cli/influx/v1/auth/)
 ```bash
@@ -194,7 +202,7 @@ influx bucket list                                    # 记下 ID
 influx v1 auth create --read-bucket 303f1c88eaa4473a --write-bucket 303f1c88eaa4473a --username admin
 influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --default
 ```
-3. [Redis](https://hub.docker.com/_/redis)
+4. [Redis](https://hub.docker.com/_/redis)
 ```bash
 docker run -d --name redis -p 6379:6379 --restart=always \
 -v D:/Docker/Redis/data:/data:rw \
@@ -203,7 +211,7 @@ redis redis-server [/etc/redis/redis.conf]
 
 docker exec -it redis redis-cli
 ```
-4. [MongoDB](https://hub.docker.com/_/mongo)
+5. [MongoDB](https://hub.docker.com/_/mongo)
 - [MongoDB 用户角色配置](https://www.cnblogs.com/out-of-memory/p/6810411.html)
 ```bash
 docker run -d --name mongo -p 27017:27017 mongo --auth
@@ -223,14 +231,14 @@ db.createUser({user: "admin", pwd: "admin", roles: [{role: "userAdminAnyDatabase
 # 创建 ljh 账号密码，角色 readWrite
 db.createUser({user: "ljh", pwd: "123456", roles: [{role: "readWrite", db: "spring_data"}]})
 ```
-5. [Tomcat](https://hub.docker.com/_/tomcat)
+6. [Tomcat](https://hub.docker.com/_/tomcat)
 - [Docker 安装 tomcat 并挂载目录](https://www.cnblogs.com/liyiran/p/12544715.html)
 ```bash
 docker run -d --name tomcat -p 8080:8080 \
 -v D:/Docker/Tomcat/webapps:/usr/local/tomcat/webapps \
 tomcat
 ```
-6. [Nginx](https://hub.docker.com/_/nginx)
+7. [Nginx](https://hub.docker.com/_/nginx)
 ```bash
 docker run -d --name nginx -p 80:80 --restart=always \
 -v D:/Docker/Nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
@@ -239,7 +247,7 @@ docker run -d --name nginx -p 80:80 --restart=always \
 -v D:/Docker/Nginx/html:/usr/share/nginx/html \
 nginx
 ```
-7. [Zookeeper](https://hub.docker.com/_/zookeeper)
+8. [Zookeeper](https://hub.docker.com/_/zookeeper)
 - [Docker 实战之 Zookeeper 集群](https://www.cnblogs.com/idea360/p/12405113.html)
 - @see docker/compose/zookeeper/docker-compose-zookeeper-cluster.yml
 ```bash
@@ -258,7 +266,7 @@ echo srvr | nc localhost 2181
 
 docker run -it --rm --name ZookeeperCluster --link zoo1 --link zoo2 --link zoo3 --net docker_net zookeeper zkCli.sh -server zoo1:2181,zoo2:2181,zoo3:2181
 ```
-8. [RabbitMQ](https://hub.docker.com/_/rabbitmq)
+9. [RabbitMQ](https://hub.docker.com/_/rabbitmq)
 - [Win10 Docker 安装 RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash
 docker run -d --name rabbitmq \
@@ -271,7 +279,7 @@ docker exec -it rabbitmq bash
         http://localhost:15672       Username:guest      Password:guest
     rabbitmq-plugins enable rabbitmq_mqtt
 ```
-9. [MinIO](https://hub.docker.com/r/minio/minio)
+10. [MinIO](https://hub.docker.com/r/minio/minio)
 - [MinIO's Docker Implementation](https://docs.min.io/docs/minio-docker-quickstart-guide.html)
 ```bash
 docker run -d --name minio -p 9000:9000 -p 9001:9001 \
@@ -283,7 +291,7 @@ minio/minio server /data --console-address ":9001"
 
 http://localhost:9001/login
 ```
-10. [Nacos](https://hub.docker.com/r/nacos/nacos-server)
+11. [Nacos](https://hub.docker.com/r/nacos/nacos-server)
 - [Docker 部署 Nacos](https://www.cnblogs.com/serendipity-fzx/articles/15400618.html)
 ```bash
 docker run -d --name nacos -p 8848:8848 -e MODE=standalone nacos/nacos-server
@@ -298,11 +306,11 @@ docker run -d --name nacos -p 8848:8848 -p 9848:9848 -p 9849:9849 \
 -e MYSQL_SERVICE_DB_NAME=ry-config \
 nacos/nacos-server
 ```
-11. [Sentinel](https://hub.docker.com/r/bladex/sentinel-dashboard)
+12. [Sentinel](https://hub.docker.com/r/bladex/sentinel-dashboard)
 ```bash
 docker run -d --name sentinel -p 8858:8858 bladex/sentinel-dashboard
 ```
-12. [Jenkins](https://hub.docker.com/_/jenkins)
+13. [Jenkins](https://hub.docker.com/_/jenkins)
 - [Docker 快速安装 Jenkins 完美教程](https://www.cnblogs.com/fuzongle/p/12834080.html)
 ```bash
 docker run -d --name jenkins -p 8080:8080 -p 50000:50000 \
@@ -312,7 +320,7 @@ jenkins
 
 http://localhost:8080
 ```
-13. [Ubuntu](https://hub.docker.com/_/ubuntu)
+14. [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash
 docker run -itd --name ubuntu --privileged ubuntu
 ```

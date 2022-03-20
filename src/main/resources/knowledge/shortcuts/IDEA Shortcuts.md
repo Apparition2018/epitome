@@ -321,6 +321,8 @@ Shift + F4                      Jump to Object Source                           
 ```
 Ctrl + Shift + Q                Query Console
 Ctrl + B                        Go to DDL
+
+Shift + Enter                   Data Source Properties
 ```
 ---
 ## Plugins
