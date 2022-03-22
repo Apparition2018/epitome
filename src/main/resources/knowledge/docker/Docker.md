@@ -180,9 +180,11 @@ docker exec -it mysql mysql -uroot -proot
 ```
 docker pull mcr.microsoft.com/mssql/server:2019-latest
 
-docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Cesc123456!" \
--p 1433:1433 --name mssql --hostname mssql \
--d mcr.microsoft.com/mssql/server:2019-latest
+docker run -d --name mssql \
+-e "ACCEPT_EULA=Y" \
+-e "SA_PASSWORD=Cesc123456!" \
+-p 1433:1433 \
+mcr.microsoft.com/mssql/server:2019-latest
 ```
 3. [InfluxDB](https://hub.docker.com/_/influxdb)
 - [InfluxDBException](https://community.influxdata.com/t/getting-started-with-influxdb-docker-401-unauthorized/16989/3)

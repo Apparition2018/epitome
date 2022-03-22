@@ -27,26 +27,36 @@ wsl ~                                                       将目录更改为�
 wsl --distribution|-d <Distribution>                        运行指定分发
 wsl --user|-u <User>                                        以指定用户运行
 wsl --update                                                更新 WSL
-        -- rollback                                         回滚 WSL
+        --rollback                                          回滚 WSL
 wsl --status                                                显示 WSL 状态
 wsl --shutdown                                              终止所有运行分发和 WSL
 wsl --terminate|-t <Distribution>                           终止指定分发
 wsl --export <Distribution> <File>                          导出分发 (TAR)
 wsl --import <Distribution> <InstallLocation> <File>        导入分发 (TAR)
+        --version                                           指定导入分发的 WSL 版本
 wsl --unregister <Distribution>                             注销或卸载分发
 ```
 ---
 ## [安装 Ubuntu 并更改位置](https://www.bilibili.com/read/cv10280220)
+- [最佳安装实践](https://docs.microsoft.com/zh-cn/windows/wsl/setup/environment)
 ```
-1. [最佳安装实践](https://docs.microsoft.com/zh-cn/windows/wsl/setup/environment)
-2. Microsoft Store 安装 Ubuntu
-3. wsl -l -v
-4. wsl --export Ubuntu e:\Ubuntu.tar
-5. wsl --import Ubuntu e:\Ubuntu e:\Ubuntu.tar --version 2
+1. Microsoft Store 安装 Ubuntu
+    安装位置：%LOCALAPPDATA%\Packages\CanonicalGroupLimited
+2. wsl -l -v
+3. wsl --export Ubuntu e:\ubuntu.tar
+4. wsl --unregister Ubuntu
+5. wsl --import ubuntu e:\ubuntu e:\ubuntu.tar --version 2
 6. ubuntu config --default-user ljh
-7. del e:\Ubuntu.tar
-8. wsl -u ljh
-9. cd ~
+7. del e:\ubuntu.tar
+8. 应用和功能 → 卸载Ubuntu
+9. wsl -u ljh 或 bash
+```
+---
+## [.wslconfig](https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config#wslconfig)
+```
+[wsl2]
+memory=2GB
+swap=0
 ```
 ---
 ## 基本使用

@@ -20,7 +20,7 @@
 ---
 ## 自定义 VM Options
     1. %IDEA_HOME%\bin\idea64.exe.vmoptions
-        -Xms2048m
+        -Xms1024m
         -Xmx2048m
         -Drebel.base=%JetBrains%\.IntelliJIdea\config\plugins\.jrebel
 ---
