@@ -1,7 +1,7 @@
 package jar.fasterxml.jackson.entity;
 
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import jar.fasterxml.jackson.custom.CustomWriter;
@@ -46,7 +46,7 @@ import java.util.Map;
 // 定义序列化跟属性名，需开启 mapper.enable(SerializationFeature.WRAP_ROOT_VALUE)
 @JsonRootName("P")
 // 属性名策略
-@JsonNaming(PropertyNamingStrategy.LowerCaseStrategy.class)
+@JsonNaming(PropertyNamingStrategies.LowerCaseStrategy.class)
 public class Person {
     // 格式化
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss a", locale = "en", timezone = "GMT+8",
@@ -112,7 +112,7 @@ public class Person {
         // 反序列化默认枚举，需开启 mapper.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE)
         @JsonEnumDefaultValue
         WHITE,
-        BLACK;
+        BLACK
     }
 
 }

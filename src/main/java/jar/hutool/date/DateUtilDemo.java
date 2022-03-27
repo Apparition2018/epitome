@@ -94,8 +94,6 @@ public class DateUtilDemo extends Demo {
         //********** 到当前时间的时间差 **********//
         // Year
         p(DateUtil.age(DATE, new Date()));              // 12
-        // Second
-        p(DateUtil.toIntSecond(DATE));                  // 808082008
         // Ms, Nt
         p(DateUtil.spendMs(DATE.getTime()));            // 385537083945
         p(DateUtil.spendNt(DATE.getTime()));            // 22041361515616
