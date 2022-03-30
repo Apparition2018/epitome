@@ -126,6 +126,11 @@
     1. Settings → Languages & Frameworks → JavaScript
     2. JavaScript language version: ECMAScript 6+
 ---
+## Actions on Save
+    1. Settings → Tools → Actions on Save
+    2. Reformat code 勾选
+    3. Optimize imports 勾选
+---
 ## Terminal (-g)
     1. Settings → Tools → Terminal
     2. Shell path: %GIT_HOME%\bin\bash.exe

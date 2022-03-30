@@ -1,22 +1,27 @@
-# Bash abbr
+# Bash Command
 
 ---
 ## 参考网站
 1. [Linux 命令大全 | 菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
-2. [Linux 命令教程 | 易百教程](https://www.yiibai.com/linux)
-3. [Linux 常见命令缩写](https://www.cnblogs.com/h2mm/p/6691309.html)
-4. [Linux 常用 bash 命令](https://www.cnblogs.com/shiyou00/p/10369321.html)
+2. [Linux/Basic commands](https://en.wikiversity.org/wiki/Linux/Basic_commands)
+3. [Linux man pages online](https://man7.org/linux/man-pages/)
 ---
 ## 问题
+2. [Linux 常见命令缩写](https://www.cnblogs.com/h2mm/p/6691309.html)
 1. [Linux 下如何查看系统和内核版本](https://www.cnblogs.com/lcword/p/5680731.html)
 2. [Linux 命令之 ssh 基本用法](https://blog.csdn.net/gaoxilong526/article/details/79757285)
 3. [Linux 下命令行 curl 的 10 种常见用法示例](https://www.cnblogs.com/zxqblogrecord/p/8900219.html)
-4. [linux 日志常用查看技巧](https://blog.csdn.net/zw235345721/article/details/70792195)
+4. [Linux 日志常用查看技巧](https://blog.csdn.net/zw235345721/article/details/70792195)
 ---
 ## 其它
     --help                                                                      显示帮助信息
     &                                                                           后台执行
     |                                                                           管道命令
+---
+## 进程管理 (Process Management)
+    top                                                                         实时显示正在运行的进程
+        -p                                                                      仅监视指定进程 ID 的进程
+        -p, H                                                                   线程模式，显示进程下的所有线程
 ---
 ## 文件管理
     cat                                     concatenate                         显示文件内容
@@ -151,7 +156,6 @@
     sudo                                    super user do                       以系统管理者的身份执行指令
     chsh                                    change shell                        更改使用者 shell 设定
     ulimit                                  user's limit                        控制 shell 程序的资源
-    top                                                                         显示进程的动态
     ps                                      process status                      显示进程状态
         -e                                                                      显示所有进程
         -f                                                                      显示 UID, PPID, C 与 STIME 栏位
