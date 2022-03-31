@@ -3,8 +3,8 @@
 ---
 ## 修改 .IntelliJIdea 位置
     1. %IDEA_HOME%\bin\idea.properties
-        idea.config.path=%JetBrains%/.IntelliJIdea/config
-        idea.system.path=%JetBrains%/.IntelliJIdea/system
+        idea.config.path=D:/JetBrains/.IntelliJIdea/config
+        idea.system.path=D:/JetBrains/.IntelliJIdea/system
         idea.plugins.path=${idea.config.path}/plugins
         idea.log.path=${idea.system.path}/log
     2. 退出 IDEA 并删除原 IntelliJIdea 位置
@@ -26,7 +26,7 @@
 ---
 ## Sync Settings
     1. File → Sync Settings to JetBrains Account...
-    2. File → Manage IDE Settings → IDE Settings Sync → Sync Plugins Silently
+    2. File → Manage IDE Settings → IDE Settings Sync → Sync Plugins Silently 勾选
 ---
 ## [Maven](https://developer.aliyun.com/mvn/guide) (-g)
     1. Settings → Build, Execution, Deployment → Build Tools → Maven
@@ -88,7 +88,7 @@
     2. Patterns → +
         2.1 Pattern: \btodo-ljh\b.*
         2.2 Use color scheme TODO default colors 取消勾选
-        2.3 Bold 勾选
+        2.3 Bold 勾选, Italic 取消勾选
         2.4 Foreground #CC0033
     3. Settings → Editor → Live Templates
     4. user → +
@@ -105,22 +105,17 @@
     2. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing    
         2.1 Detect compiler automatically 取消勾选
     3. Settings → Build, Execution, Deployment → Compiler
-        3.1 Shared build process VM options: -javaagent:%LOMBOK_HOME%/lombok.jar
+        3.1 Shared build process VM options: -javaagent:
+            D:\dev\.maven\repository\org\projectlombok\lombok\%version%\lombok-%version%.jar
 ---
 ## Enable annotation processing (-g)
     1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
     2. Enable annotation processing 勾选
 ---
-## HTML do not wrap (-g)
-    1. Settings → Editor → Code Style → HTML
-    2. Other
-    3. Wrap attributes: Do not wrap
----
-## ESLint: Missing space before function parentheses (-g)
-    1. Settings → Editor → Code Style → JavaScript
-    2. Spaces
-    3. Before parenthese
-    4. Function declaration parentheses 勾选
+## Code Style (-g)
+    1. Settings → Editor → Code Style
+    2. HTML → Other → Wrap attributes: Do not wrap
+    3. JavaScript → Spaces → Before parenthese → Function declaration parentheses 勾选
 ---
 ## JavaScript version (-g)
     1. Settings → Languages & Frameworks → JavaScript
@@ -133,7 +128,7 @@
 ---
 ## Terminal (-g)
     1. Settings → Tools → Terminal
-    2. Shell path: %GIT_HOME%\bin\bash.exe
+    2. Shell path: D:\Git\bin\bash.exe
 ---
 ## [Project Structure...](https://www.jianshu.com/p/39b2206999e7)
 >### Facets

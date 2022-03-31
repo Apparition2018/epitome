@@ -336,6 +336,11 @@ Ctrl + Alt + U                  Show UML Popup                      显示 UML �
 Ctrl + Alt + Shift + U          Show UML Diagram                    显示 UML 视图
 ```
 ---
+### Markdown
+```
+Ctrl + Shift + C                Code
+Ctrl + Shift + U                Create Link
+```
 ## Other
 ```
 Alt + Shift + F                 Add to Favorites                    添加到 Favorites
