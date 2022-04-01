@@ -11,36 +11,26 @@
         2.1 删除 C:\Users\Administrator\AppData\Local\JetBrains\IntelliJIdea
         2.2 删除 C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea
 ---
-## 安装 IDE Eval Reset
+## 自定义 VM Options
+    1. %IDEA_HOME%\bin\idea64.exe.vmoptions
+        -Xms1024m
+        -Xmx2048m
+        -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel
+---
+## Sync Settings
+    1. File → Manage IDE Settings → Sync Settings to JetBrains Account...
+    2. File → Manage IDE Settings → IDE Settings Sync → Sync Plugins Silently 勾选
+---
+## 安装 IDE Eval Reset (-e)
     1. Settings → Plguins → 设置图标 → Manage Plugin Repositories...
         1.1 添加 https://plugins.zhile.io
         1.2 Marketplace → 搜索并安装 IDE Eval Reset
     2. Help → Eval Reset
         2.1 Auto reset before per restart 勾选
 ---
-## 自定义 VM Options
-    1. %IDEA_HOME%\bin\idea64.exe.vmoptions
-        -Xms1024m
-        -Xmx2048m
-        -Drebel.base=%JetBrains%\.IntelliJIdea\config\plugins\.jrebel
----
-## Sync Settings
-    1. File → Sync Settings to JetBrains Account...
-    2. File → Manage IDE Settings → IDE Settings Sync → Sync Plugins Silently 勾选
----
-## [Maven](https://developer.aliyun.com/mvn/guide) (-g)
+## [Maven](https://developer.aliyun.com/mvn/guide) (-g|-e)
     1. Settings → Build, Execution, Deployment → Build Tools → Maven
-    2. User settings file: D:\dev\apache-maven-3.8.4\conf\settings.xml
-    ```xml
-    <localRepository>D:\dev\.maven\repository</localRepository>
-    <mirror>
-        <id>aliyunmaven</id>
-        <mirrorOf>*</mirrorOf>
-        <name>阿里云公共仓库</name>
-        <url>https://maven.aliyun.com/repository/public</url>
-    </mirror>
-    ```
-    3. Use settings from .mvn/maven.config 取消勾选
+    2. Local repository: D:\dev\.maven\repository
 ---
 ## Project/Solution
     1. Settings → Appearance & Behavior → System Settings
@@ -62,11 +52,11 @@
     2. Fold by default: → Genral
     3. Imports 取消勾选
 ---
-## Font
+## Font (-e)
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
 ---
-## File and Code Templates (-g)
+## File and Code Templates (-g|-e)
     1. Settings → Editor → File and Code Templates
     2. Files
     3. Class | Interface | Enum | Record | AnnotationType
@@ -77,7 +67,7 @@
          * created on ${DATE} ${TIME}
          */
 ---
-## serialVersionUID (-g)
+## serialVersionUID (-g|-e)
     1. Settings → Editor → Inspections
     2. 搜索 serialVersionUID
         2.1 'serialVersionUID' field not declared 'private static final long' 勾选
@@ -99,16 +89,16 @@
             4.3.1 date → Expression:date()
         4.5 Change → Java → Statement 勾选
 ---
-## Use eclipse compiler (-g)
+## Use eclipse compiler (-g|-e)
     1. Settings → Build, Execution, Deployment → Compiler → Java Compiler    
         1.1 Use compiler: Eclipse
     2. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing    
         2.1 Detect compiler automatically 取消勾选
     3. Settings → Build, Execution, Deployment → Compiler
-        3.1 Shared build process VM options: -javaagent:
-            D:\dev\.maven\repository\org\projectlombok\lombok\%version%\lombok-%version%.jar
+        3.1 Shared build process VM options: 
+            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\%version%\lombok-%version%.jar
 ---
-## Enable annotation processing (-g)
+## Enable annotation processing (-g|-e)
     1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
     2. Enable annotation processing 勾选
 ---
@@ -126,7 +116,7 @@
     2. Reformat code 勾选
     3. Optimize imports 勾选
 ---
-## Terminal (-g)
+## Terminal (-g|-e)
     1. Settings → Tools → Terminal
     2. Shell path: D:\Git\bin\bash.exe
 ---
