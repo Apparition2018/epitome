@@ -10,31 +10,36 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- <mvc:annotation-driven/> 和 <context:component-scan> 之间的关系：https://segmentfault.com/a/1190000012193685
-        (1)<context:annotation-config>
-            ①AutowiredAnnotationBeanPostProcessor   @Autowired
-            ②CommonAnnotationBeanPostProcessor      @Resource, @PostConstruct, @PreDestroy
-            ③PersistenceAnnotationBeanPostProcessor @PersistenceContext
-            ④RequiredAnnotationBeanPostProcessor    @Required
-        (2)<context:component-scan>
+    <!--
+        Ⅰ<context:annotation-config/>：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-annotation-config
+            ①ConfigurationClassPostProcessor        @Configuration
+            ②AutowiredAnnotationBeanPostProcessor   @Autowired，@Value
+            ③CommonAnnotationBeanPostProcessor      @Resource，@PostConstruct，@PreDestroy
+            ④PersistenceAnnotationBeanPostProcessor @PersistenceUnit，@PersistenceContext
+            ⑤EventListenerMethodProcessor           @EventListener
+            ⑥RequiredAnnotationBeanPostProcessor    @Required (Spring 5.1 弃用)
+        Ⅱ<context:component-scan/>：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-classpath-scanning
             ①<context:annotation-config>
-            ②@Component，@Repository，@Service，@Controller
-            ③注册扫描 Bean -->
-
-    <!-- 扫描包 -->
+            ②@Component，@Repository，@Service，@Controller，@RestController
+    -->
     <context:component-scan base-package="spring.controller"/>
 
-    <!-- 注解驱动
-        https://www.zhihu.com/question/362051844/answer/1286615054
-        (1)自动注册：
-            HandlerMapping: RequestMappingHandlerMapping, BeanNameUrlHandlerMapping
-            HandlerAdapter: RequestMappingHandlerAdapter, HttpRequestHandlerAdapter, SimpleControllerHandlerAdapter
-            HandlerExceptionResolver: ExceptionHandlerExceptionResolver, ResponseStatusExceptionResolver, DefaultHandlerExceptionResolver
-        (2)其它支持：@RequestMapping, @NumberFormat，@DateTimeFormat，@Valid，JAXB，Jackson
-            https://spring.io/blog/2009/12/21/mvc-simplifications-in-spring-3-0 -->
+    <!-- 注解驱动 MVC 配置：https://docs.spring.io/spring-framework/docs/4.3.x/spring-framework-reference/htmlsingle/#mvc-config-enable
+            ①HandlerMapping: RequestMappingHandlerMapping, BeanNameUrlHandlerMapping
+            ②HandlerAdapter: RequestMappingHandlerAdapter, HttpRequestHandlerAdapter, SimpleControllerHandlerAdapter
+            ③HandlerExceptionResolver: ExceptionHandlerExceptionResolver, ResponseStatusExceptionResolver, DefaultHandlerExceptionResolver
+            ④JavaBeans PropertyEditors：用于数据绑定
+            ⑤样式类型转换 (ConversionService)
+            ⑥@NumberFormat (ConversionService)
+            ⑦@DateTimeFormat
+            ⑧@Valid
+            ⑨@RequestBody，@ResponseBody (HttpMessageConverter)
+        <mvc:annotation-driven/>的作用：https://www.zhihu.com/question/362051844/answer/1286615054 -->
     <mvc:annotation-driven/>
 
-    <!-- ViewResolver，默认为转发 -->
+    <!-- mvc-view-jsp
+        https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-view-jsp
+        https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-viewresolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 需导入 jstl -->
         <!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
@@ -42,12 +47,14 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!-- 静态资源
-        https://www.cnblogs.com/caoyc/p/5639078.html
-        http://www.javacoder.cn/?p=178 -->
-    <mvc:resources location="classpath:static/" mapping="/**" cache-period="86400"/>
+    <!-- 静态资源：
+        ①<mvc:resources/>：https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-config-static-resources
+        ②<mvc:default-servlet-handler/>：https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-default-servlet-handler
+        SpringMVC 访问静态资源的3种方式：https://www.cnblogs.com/caoyc/p/5639078.html
+        <mvc:resources/> vs <mvc:default-servlet-handler/>：http://www.javacoder.cn/?p=178 -->
+    <mvc:resources location="classpath:static/public/" mapping="/**" cache-period="900"/>
 
-    <!-- 拦截器 -->
+    <!-- 拦截器：https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-config-interceptors -->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
