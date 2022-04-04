@@ -7,7 +7,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <icon>
-        <small-icon>../../resources/static/public/img/ico/NoharaSinnosuke.ico</small-icon>
+        <small-icon/>
     </icon>
 
     <display-name>Epitome</display-name>
@@ -17,27 +17,29 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-<!--    <error-page>-->
-<!--        <error-code>500</error-code>-->
-<!--        <location>/WEB-INF/jsp/error.jsp</location>-->
-<!--    </error-page>-->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
 
-    <!-- context-param → listener → filter → servlet -->
-    <!-- 声明应用范围内的初始化参数，用于向 ServletContext 提供键值对，Listener, Filter 等在初始化时会用到这些上下文中的信息 -->
+    <!-- web.xml 加载顺序：context-param → listener → filter → servlet -->
+
+    <!-- applicationContext.xml vs spring-servlet.xml：https://www.baeldung.com/spring-applicationcontext-vs-spring-servlet-xml -->
+    <!-- Context and Servlet 初始化参数：https://www.baeldung.com/context-servlet-initialization-param -->
+    <!-- Spring Web Contexts：https://www.baeldung.com/spring-web-contexts -->
+
+    <!-- <context-param/>：声明应用范围内的初始化参数，用于向 ServletContext 提供键值对，Listener, Filter 等在初始化时会用到这些上下文中的信息 -->
     <!-- 1.XmlWebApplicationContext: 基于 XML 配置 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/spring-*.xml</param-value>
+        <!-- 默认位置：/WEB-INF/applicationContext.xml -->
+        <param-value>classpath:spring/applicationContext.xml</param-value>
     </context-param>
-    <!-- 2.AnnotationConfigApplicationContext: 基于 Java 配置  -->
-<!--    <context-param>-->
-<!--        <param-name>contextInitializerClasses</param-name>-->
-<!--        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
-<!--    </context-param>-->
-    <context-param>
-        <param-name>myParam</param-name>
-        <param-value>xyz</param-value>
-    </context-param>
+    <!-- 2.AnnotationConfigWebApplicationContext: 基于 Java 配置  -->
+    <!-- <context-param>-->
+    <!--     <param-name>contextClass</param-name>-->
+    <!--     <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
+    <!-- </context-param>-->
 
     <!-- 监听器 -->
     <listener>
@@ -85,12 +87,9 @@
     <servlet>
         <servlet-name>spring-mvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <!-- 配置 springMVC 需要加载的配置文件
-            spring-dao.xml, spring-service.xml, spring-web.xml
-            Mybatis -> spring -> springMVC -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/spring-mvc.xml</param-value>
+            <param-value>classpath:spring/spring-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

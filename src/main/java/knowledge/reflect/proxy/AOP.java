@@ -28,7 +28,7 @@ public class AOP {
 
     @BeforeEach
     public void init() {
-        applicationContext = new ClassPathXmlApplicationContext("spring/spring-service.xml", "spring/spring-aop.xml");
+        applicationContext = new ClassPathXmlApplicationContext("spring/applicationContext.xml");
     }
 
     @Test

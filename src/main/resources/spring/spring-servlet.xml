@@ -22,7 +22,7 @@
             ①<context:annotation-config>
             ②@Component，@Repository，@Service，@Controller，@RestController
     -->
-    <context:component-scan base-package="spring.controller"/>
+    <context:component-scan base-package="spring"/>
 
     <!-- 注解驱动 MVC 配置：https://docs.spring.io/spring-framework/docs/4.3.x/spring-framework-reference/htmlsingle/#mvc-config-enable
             ①HandlerMapping: RequestMappingHandlerMapping, BeanNameUrlHandlerMapping

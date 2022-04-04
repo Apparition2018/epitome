@@ -24,7 +24,7 @@ public class ClassPathXmlAcDemo2 {
 
     @BeforeEach
     public void init() {
-        applicationContext = new ClassPathXmlApplicationContext("spring/spring-dao.xml", " spring/spring-service.xml");
+        applicationContext = new ClassPathXmlApplicationContext("spring/applicationContext.xml");
         scoreDao = applicationContext.getBean("scoreDao", ScoreDao.class);
     }
 

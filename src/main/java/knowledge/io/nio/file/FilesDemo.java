@@ -100,9 +100,11 @@ public class FilesDemo extends Demo {
         Path path1 = Paths.get(DEMO_FILE_PATH);
         Path path2 = Paths.get(DEMO_PATH + "a/b/demo");
 
-        // REPLACE_EXISTING：覆盖
-        // COPY_ATTRIBUTES：复制文件属性
+        // static Path      copy(Path source, Path target, CopyOption... options)
+        // StandardCopyOption：REPLACE_EXISTING（覆盖），COPY_ATTRIBUTES（复制文件属性）
         Files.copy(path1, path2, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+
+        // static long      copy(InputStream in, Path target, CopyOption... options)
     }
 
     @Test

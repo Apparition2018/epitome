@@ -45,7 +45,7 @@
         2.1 Allow caret placement: After the end of line 取消勾选
     3. On Save
         3.1 Remove trailing spaces on: Modified Lines 勾选
-        3.2 Keep trailing spaces on caret line 取消勾选
+        3.2 Keep trailing spaces on caret line 勾选
 ---
 ## Code Folding
     1. Settings → Editor → General → Code Folding

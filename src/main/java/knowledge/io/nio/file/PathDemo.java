@@ -93,18 +93,19 @@ public class PathDemo extends Demo {
     @Test
     public void resolve() {
         Path p5 = Paths.get(DEMO_FILE_PATH);
-        p(p1);                                          // src\main\resources\demo
-        p(p5);                                          // src\main\resources\demo\demo
-        p(p1.resolve("demo"));                          // src\main\resources\demo\demo
-        p(p1.resolve("/demo"));                         // \demo
-        p(p1.resolve(p5.toAbsolutePath()) + "\n");      // D:\L\git\epitome\src\main\resources\demo\demo
+        p(p1);                                              // src\main\resources\demo
+        p(p5);                                              // src\main\resources\demo\demo
+        p(p1.resolve("demo"));                              // src\main\resources\demo\demo
+        p(p1.resolve("/demo"));                             // \demo
+        p(p1.resolve(p5.toAbsolutePath()));                 // D:\L\git\epitome\src\main\resources\demo\demo
 
-        Path p6 = p2.resolve("spring-dao.xml");
-        p(p2);                                          // src\main\resources\spring
-        p(p6);                                          // src\main\resources\spring\spring-dao.xml
-        p(p1.resolveSibling("spring/spring-dao.xml"));  // src\main\resources\spring\spring-dao.xml
-        p(p1.resolveSibling("/spring/spring-dao.xml")); // \spring\spring-dao.xml
-        p(p1.resolveSibling(p6.toAbsolutePath()));      // D:\L\git\epitome\src\main\resources\spring\spring-dao.xml
+        System.out.println();
+        Path p6 = p2.resolve("spring-servlet.xml");
+        p(p2);                                              // src\main\resources\spring
+        p(p6);                                              // src\main\resources\spring\spring-servlet.xml
+        p(p1.resolveSibling("spring/spring-servlet.xml"));  // src\main\resources\spring\spring-servlet.xml
+        p(p1.resolveSibling("/spring/spring-servlet.xml")); // \spring\spring-servlet.xml
+        p(p1.resolveSibling(p6.toAbsolutePath()));          // D:\Liang\git\epitome\src\main\resources\spring\spring-servlet.xml
     }
 
     /**
