@@ -28,9 +28,9 @@
     2. Help → Eval Reset
         2.1 Auto reset before per restart 勾选
 ---
-## [Maven](https://developer.aliyun.com/mvn/guide) (-g|-e)
+## Maven (-g|-e)
     1. Settings → Build, Execution, Deployment → Build Tools → Maven
-    2. Local repository: D:\dev\.maven\repository
+    2. User settings file: D:\dev\.maven\settings.xml
 ---
 ## Project/Solution
     1. Settings → Appearance & Behavior → System Settings
@@ -56,6 +56,17 @@
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
 ---
+## Code Style (-g)
+    1. Settings → Editor → Code Style
+    2. HTML → Other → Wrap attributes: Do not wrap
+    3. JavaScript → Spaces → Before parenthese → Function declaration parentheses 勾选
+---
+## serialVersionUID (-g|-e)
+    1. Settings → Editor → Inspections
+    2. 搜索 serialVersionUID
+        2.1 'serialVersionUID' field not declared 'private static final long' 勾选
+        2.2 Serializable class without 'serialVersionUID' 勾选
+---
 ## File and Code Templates (-g|-e)
     1. Settings → Editor → File and Code Templates
     2. Files
@@ -66,12 +77,6 @@
          * @author ${USER}
          * created on ${DATE} ${TIME}
          */
----
-## serialVersionUID (-g|-e)
-    1. Settings → Editor → Inspections
-    2. 搜索 serialVersionUID
-        2.1 'serialVersionUID' field not declared 'private static final long' 勾选
-        2.2 Serializable class without 'serialVersionUID' 勾选
 ---
 ## TODO
     1. Settings → Editor → TODO
@@ -90,28 +95,21 @@
         4.5 Change → Java → Statement 勾选
 ---
 ## Use eclipse compiler (-g|-e)
-    1. Settings → Build, Execution, Deployment → Compiler → Java Compiler    
-        1.1 Use compiler: Eclipse
-    2. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing    
-        2.1 Detect compiler automatically 取消勾选
-    3. Settings → Build, Execution, Deployment → Compiler
-        3.1 Shared build process VM options: 
+    1. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing    
+        1.1 Detect compiler automatically 取消勾选
+    2. Settings → Build, Execution, Deployment → Compiler
+        2.1 Shared build process VM options: 
             -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\%version%\lombok-%version%.jar
----
-## Enable annotation processing (-g|-e)
-    1. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
-    2. Enable annotation processing 勾选
----
-## Code Style (-g)
-    1. Settings → Editor → Code Style
-    2. HTML → Other → Wrap attributes: Do not wrap
-    3. JavaScript → Spaces → Before parenthese → Function declaration parentheses 勾选
+    3. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
+        3.1 Enable annotation processing 勾选
+    4. Settings → Build, Execution, Deployment → Compiler → Java Compiler    
+        4.1 Use compiler: Eclipse
 ---
 ## JavaScript version (-g)
     1. Settings → Languages & Frameworks → JavaScript
     2. JavaScript language version: ECMAScript 6+
 ---
-## Actions on Save
+## Actions on Save (-e)
     1. Settings → Tools → Actions on Save
     2. Reformat code 勾选
     3. Optimize imports 勾选

@@ -81,9 +81,8 @@
     <!-- 远程仓库，如果已在setting.xml中配置了远程仓库，这里则不需要配置 -->
     <repositories>
         <repository>
-            <id>alimaven</id>
-            <name>aliyun maven</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <id>aliyunmaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -95,9 +94,8 @@
     <!-- 远程插件仓库 -->
     <pluginRepositories>
         <pluginRepository>
-            <id>alimaven</id>
-            <name>aliyun maven</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <id>aliyunmaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
         </pluginRepository>
     </pluginRepositories>
 

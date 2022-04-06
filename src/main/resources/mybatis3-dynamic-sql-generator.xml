@@ -5,7 +5,7 @@
 <!-- Mybatis Generator 和全注解风格的 MyBatis3DynamicSql：https://www.cnblogs.com/ZhangZiSheng001/p/12820344.html -->
 <generatorConfiguration>
     <classPathEntry
-            location="D:\dev\apache-maven-3.8.1\repository\mysql\mysql-connector-java\8.0.26\mysql-connector-java-8.0.26.jar"/>
+            location="D:\dev\.maven\repository\mysql\mysql-connector-java\8.0.28\mysql-connector-java-8.0.28.jar"/>
 
     <context id="mysql" targetRuntime="MyBatis3DynamicSql" defaultModelType="flat">
         <!-- 自动检查关键字，为关键字增加反引号 -->

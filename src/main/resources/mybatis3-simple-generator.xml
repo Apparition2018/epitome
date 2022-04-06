@@ -6,7 +6,7 @@
 <generatorConfiguration>
     <!-- 数据库驱动路径 -->
     <classPathEntry
-            location="D:\dev\apache-maven-3.8.1\repository\mysql\mysql-connector-java\8.0.26\mysql-connector-java-8.0.26.jar"/>
+            location="D:\dev\.maven\repository\mysql\mysql-connector-java\8.0.28\mysql-connector-java-8.0.28.jar"/>
 
     <context id="mysql" targetRuntime="Mybatis3Simple" defaultModelType="flat">
         <!-- 使生成的bean实现Serializable接口 -->
