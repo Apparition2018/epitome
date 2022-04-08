@@ -111,10 +111,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <!-- 热部署：https://www.jb51.net/article/140031.htm -->
+        <!-- 热部署：https://www.jb51.net/article/197958.htm -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
             <!-- optional=true, 依赖不会传递, 该项目依赖devtools;
 				之后依赖此项目的项目如果想要使用, 需要重新引入 -->
             <optional>true</optional>
