@@ -37,7 +37,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 @Slf4j
 @Configuration
-public class WebMvcConfig implements WebMvcConfigurer {
+public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 1.配置路径匹配
