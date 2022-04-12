@@ -4,6 +4,9 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+
 /**
  * JedisUtils
  *
@@ -19,6 +22,8 @@ public class JedisUtils {
         poolConfig.setMaxTotal(20);
         poolConfig.setMaxIdle(10);
         poolConfig.setMinIdle(2);
+        poolConfig.setTimeBetweenEvictionRuns(Duration.of(3, ChronoUnit.SECONDS));
+        poolConfig.setMinEvictableIdleTime(Duration.of(3, ChronoUnit.SECONDS));
         poolConfig.setTestOnBorrow(true);
         poolConfig.setTestOnReturn(false);
         poolConfig.setBlockWhenExhausted(true);

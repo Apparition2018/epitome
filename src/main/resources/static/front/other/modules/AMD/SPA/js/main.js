@@ -2,8 +2,9 @@
 require.config({
     // 各个模块的相对路径，js 文件省略后缀名
     paths: {
-        "jquery": "https://cdn.bootcss.com/jquery/1.12.4/jquery.min",
-        "text": "https://cdn.bootcss.com/require-text/2.0.12/text.min", // require-text
+        "jquery": "https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js",
+        // require-text
+        "text": "https://cdn.bootcdn.net/ajax/libs/require-text/2.0.5/text.min.js",
         "text1": "../template/test1.html",
         "text2": "../template/test2.html",
         "css1": "../style/test1.css",

@@ -1,6 +1,6 @@
 require.config({
     paths: {
-        'jquery': 'https://cdn.bootcss.com/jquery/1.12.4/jquery.min'
+        'jquery': 'https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js'
     }
 });
 
