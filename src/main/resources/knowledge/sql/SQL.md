@@ -1,11 +1,15 @@
 # SQL  
 
 ---
-## 参考网站
+## Reference
 1. [TechOnTheNet](https://www.techonthenet.com/)
-2. [SQL Fiddle](http://sqlfiddle.com/)
-3. [建表规范](https://www.cnblogs.com/xphdbky/p/7154434.html)
-4. [SQL 语法速成手册](https://juejin.cn/post/6844903790571700231)
+2. [建表规范](https://www.cnblogs.com/xphdbky/p/7154434.html)
+3. [SQL 语法速成手册](https://juejin.cn/post/6844903790571700231)
+## 在线 SQL
+1. [SQL Fiddle](http://sqlfiddle.com/)
+2. [db<>fiddle](https://dbfiddle.uk)
+3. [Oracle Live SQL](https://livesql.oracle.com/apex/f?p=590:1000)
+---
 ## 慕课
 1. [数据库设计那些事](https://www.imooc.com/learn/117)
 2. [性能优化之MySQL优化](https://www.imooc.com/learn/194)
