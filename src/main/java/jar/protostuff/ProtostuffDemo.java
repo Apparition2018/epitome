@@ -19,6 +19,5 @@ public class ProtostuffDemo {
         // 反序列化
         person = ProtostuffUtil.deserializer(personByteArray, Person.class);
         System.out.println(person);
-
     }
 }

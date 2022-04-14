@@ -100,10 +100,10 @@
     2. Settings → Build, Execution, Deployment → Compiler
         2.1 Shared build process VM options: 
             -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\%version%\lombok-%version%.jar
-    3. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
-        3.1 Enable annotation processing 勾选
-    4. Settings → Build, Execution, Deployment → Compiler → Java Compiler    
-        4.1 Use compiler: Eclipse
+    3. Settings → Build, Execution, Deployment → Compiler → Java Compiler    
+        3.1 Use compiler: Eclipse
+    4. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
+        4.1 Enable annotation processing 勾选
 ---
 ## JavaScript version (-g)
     1. Settings → Languages & Frameworks → JavaScript
