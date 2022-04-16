@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- <classPathEntry>：
+                ①可选的，如果使用 java 命令 -cp 参数运行则不需要
+                ②用于将类路径位置添加到 MyBatis Generator (MGB) 运行的类路径中
+                    1.为数据库加载 JDBC driver
+                    2.在 JavaModelGenerator 中加载 root classes 以检查重写方法
+            http://mybatis.org/generator/configreference/classPathEntry.html -->
+    <classPathEntry
+            location="D:\dev\.maven\repository\mysql\mysql-connector-java\8.0.28\mysql-connector-java-8.0.28.jar"/>
+
+    <!-- <context>：
+                ①用于指定生成一组对象的环境
+                ②子元素用于指定要连接的数据库、要生成的对象类型以及要自省的表
+                ③可以有多个 <context> 元素
+            targetRuntime：①MyBatis3DynamicSql ②MyBatis3 ③MyBatis3Simple
+            defaultModelType：当 targetRuntime="MyBatis3" 才有效
+                    ①conditional：默认，生成一个 domain class，主键字段大于1个会额外生成主键类
+                    ②flat：只生成一个 domain class
+                    ③hierarchical：生成三个 domain class，Ⅰ主键类；ⅡBLOB 类；Ⅲ剩余字段类
+            http://mybatis.org/generator/configreference/context.html -->
+    <context id="mysql" targetRuntime="MyBatis3" defaultModelType="hierarchical">
+        <!-- <plugin>：用于定义插件
+                http://mybatis.org/generator/configreference/plugin.html
+                http://mybatis.org/generator/reference/plugins.html -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <!-- <commentGenerator>：用于定义注解生成器的属性
+                http://mybatis.org/generator/configreference/commentGenerator.html -->
+        <commentGenerator>
+            <!-- 是否禁止生成注释 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 是否添加字段注释 -->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!-- <jdbcConnection>：
+                    ①每个 <context> 都需要一个 <connectionFactory> 或 <jdbcConnection>
+                    ②用于指定数据库连接的属性
+                http://mybatis.org/generator/configreference/jdbcConnection.html-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/epitome"
+                        userId="root" password="root">
+            <!-- MySQL 8.x 需要指定服务器的时区 -->
+            <property name="serverTimezone" value="UTC"/>
+            <!-- MySQL 8.x 默认启用 SSL，不关闭会有警告 -->
+            <property name="useSSL" value="false"/>
+            <!-- MySQL 不支持 catalogs 和 schema：
+                    http://mybatis.org/generator/usage/mysql.html#catalogs-and-schema -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!-- <javaTypeResolver>：用于定义 Java 类型解析器的属性
+                http://mybatis.org/generator/configreference/javaTypeResolver.html -->
+        <javaTypeResolver>
+            <!-- true: DECIMAL or NUMERIC           →   java.math.BigDecimal
+                 false: scale>0 or length>18        →   java.math.BigDecimal
+                        scale=0 and 10<=length<=18  →   java.lang.Long
+                        scale=0 and 5<=length<=9    →   java.lang.Integer
+                        scale=0 and length<5        →   java.lang.Short -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- <javaModelGenerator>：
+                    ①<context> 的必需子元素
+                    ②用于定义 Java Model 生成器的属性；
+                        即 GeneratorKey.java、Generator.java、GeneratorWithBLOBs.java 和 GeneratorExample.java
+                http://mybatis.org/generator/configreference/javaModelGenerator.html -->
+        <javaModelGenerator targetPackage="springboot.domain.master" targetProject="src/main/java">
+            <!-- 是否会根据自省表的 catalog and schema 为对象生成不同的 Java 包，默认 false
+                    MySQL 不支持 catalogs 和 schema -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否添加 trim() -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- <sqlMapGenerator>：
+                    ① javaClientGenerator 需要 XML 时，才是 <context> 的必需子元素
+                    ②用于定义 SQL 映射生成器的属性
+                http://mybatis.org/generator/configreference/sqlMapGenerator.html -->
+        <sqlMapGenerator targetPackage="mapper.master" targetProject="src/main/resources/mybatis"/>
+
+        <!-- <javaClientGenerator>：
+                    ①<context> 的可选子元素
+                    ②用于定义 Java 客户端生成器的属性，即 GeneratorMapper.java
+                type：用于选择预定义的、或用户提供的 Java 客户端生成器
+                    ①ANNOTATEDMAPPER：生成基于 注解 和 SqlProviders 的 Mapper
+                    ②MIXEDMAPPER：生成基于 注解 和 XML 混合的 Mapper
+                    ③XMLMAPPER：生成基于 XML 的 Mapper
+                http://mybatis.org/generator/configreference/javaClientGenerator.html -->
+        <javaClientGenerator targetPackage="springboot.dao.master" targetProject="src/main/java" type="XMLMAPPER"/>
+
+        <!-- <table>：
+                    ①<context> 至少需要一个 <table>
+                    ②用于在数据库中选择一个表进行自省
+                http://mybatis.org/generator/configreference/table.html -->
+        <table tableName="generator" domainObjectName="Generator"/>
+    </context>
+</generatorConfiguration>

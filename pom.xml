@@ -30,7 +30,7 @@
         <spring-boot.version>2.6.6</spring-boot.version>
         <!-- dependency -->
         <pagehelper-spring-boot-starter.version>1.4.1</pagehelper-spring-boot-starter.version>
-        <druid.version>1.2.8</druid.version>
+        <druid.version>1.2.9</druid.version>
         <mybatis-dynamic-sql.version>1.4.0</mybatis-dynamic-sql.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <commons-cli.version>1.5.0</commons-cli.version>
@@ -43,22 +43,22 @@
         <jsoup.version>1.14.3</jsoup.version>
         <poi.version>5.2.2</poi.version>
         <nimbus-jose-jwt.version>9.21</nimbus-jose-jwt.version>
-        <okhttps.version>3.4.4</okhttps.version>
+        <okhttps.version>3.5.0</okhttps.version>
         <retrofit2.version>2.9.0</retrofit2.version>
-        <minio.version>8.3.7</minio.version>
+        <minio.version>8.3.8</minio.version>
         <fastjson.version>1.2.80</fastjson.version>
         <protostuff.version>1.8.0</protostuff.version>
         <javacv.version>1.5.7</javacv.version>
-        <jave2.version>3.2.0</jave2.version>
+        <jave2.version>3.3.1</jave2.version>
         <dom4j.version>2.1.3</dom4j.version>
-        <springdoc.version>1.6.6</springdoc.version>
+        <springdoc.version>1.6.7</springdoc.version>
         <cglib.version>3.3.0</cglib.version>
         <zxing.version>3.4.1</zxing.version>
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <kaptcha.version>2.3.2</kaptcha.version>
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
         <lucene.version>8.11.1</lucene.version>
-        <oshi.version>6.1.5</oshi.version>
+        <oshi.version>6.1.6</oshi.version>
         <jsch.version>0.1.55</jsch.version>
         <thumbnailator.version>0.4.17</thumbnailator.version>
         <emoji.version>5.1.1</emoji.version>
@@ -491,7 +491,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
                     <source>${maven.compiler.source}</source>
@@ -508,7 +507,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <!-- http://maven.apache.org/shared/maven-archiver/index.html -->
                     <archive>
@@ -522,30 +520,24 @@
                 </configuration>
             </plugin>
 
-            <!-- mybatis generator
-                http://www.mybatis.org/generator/index.html -->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>${mybatis-generator-core.version}</version>
-                <configuration>
-                    <configurationFile>${basedir}/src/main/resources/mybatis3-simple-generator.xml</configurationFile>
-                    <!-- <configurationFile>${basedir}/src/main/resources/mybatis3-dynamic-sql-generator.xml</configurationFile>-->
-                    <!-- 是否重写文件
-                        注意：XML 不会重写，总是将新生成的内容合并到旧文件之下 -->
-                    <overwrite>true</overwrite>
-                    <!-- 是否在输出日志中打印进度信息 -->
-                    <verbose>true</verbose>
-                </configuration>
                 <executions>
                     <execution>
-                        <!-- 编译代码时，自动执行 mybatis generator -->
                         <id>Generate MyBatis Artifacts</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <configurationFile>src/main/resources/mybatis/MyBatis3SimpleGenerator.xml</configurationFile>
+                    <!-- <configurationFile>${basedir}/src/main/resources/mybatis/MyBatis3DynamicSqlGenerator.xml</configurationFile>-->
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost_3306
+ Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80025
+ Source Server Version : 80023
  Source Host           : localhost:3306
  Source Schema         : epitome
 
  Target Server Type    : MySQL
- Target Server Version : 80025
+ Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 18/02/2022 18:15:09
+ Date: 17/04/2022 01:43:50
 */
 
 SET NAMES utf8mb4;
@@ -81,6 +81,21 @@ INSERT INTO `emp` VALUES (7876, 'ADAMS', 'CLERK', 7788, '1987-05-23', 1100.00, N
 INSERT INTO `emp` VALUES (7900, 'JAMES', 'CLERK', 7698, '1981-12-03', 950.00, NULL, 30);
 INSERT INTO `emp` VALUES (7902, 'FORD', 'ANALYST', 7566, '1981-12-03', 3000.00, NULL, 20);
 INSERT INTO `emp` VALUES (7934, 'MILLER', 'CLERK', 7782, '1982-01-23', 1300.00, NULL, 10);
+
+-- ----------------------------
+-- Table structure for generator
+-- ----------------------------
+DROP TABLE IF EXISTS `generator`;
+CREATE TABLE `generator`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `context` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of generator
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sales
@@ -1107,7 +1122,7 @@ CREATE TABLE `score`  (
   `course` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '课程',
   `score` int(0) NULL DEFAULT NULL COMMENT '成绩',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '成绩表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '成绩表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of score
@@ -1121,22 +1136,5 @@ INSERT INTO `score` VALUES (6, '张三', '英语', NULL);
 INSERT INTO `score` VALUES (7, '李四', '语文', 76);
 INSERT INTO `score` VALUES (8, '李四', '数学', 90);
 INSERT INTO `score` VALUES (9, '赵六', '体育', 100);
-
--- ----------------------------
--- Procedure structure for imdata
--- ----------------------------
-DROP PROCEDURE IF EXISTS `imdata`;
-delimiter ;;
-CREATE PROCEDURE `imdata`()
-begin
-  declare i int;
-  set i=1;
-  while i<10000 do
-    insert into merge_test(`a`,`b`) values(i,i);
-    set i=i+1;
-  end while;
-end
-;;
-delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;
