@@ -113,7 +113,7 @@
    3. 展示对象：xxxVO，xxx 一般为网页名称。
    4. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO。
 ---
-## 分层领域模型规约（阿里编程规约）
+## [分层领域模型规约](https://zhuanlan.zhihu.com/p/350964880) （阿里编程规约）
 1. DO（Data Object）：此对象与数据库表结构一一对应，通过 DAO 层向上传输数据源对象。
 2. DTO（Data Transfer Object）：数据传输对象，Service 或 Manager 向外传输的对象。
 3. BO（Business Object）：业务对象，可以由 Service 层输出的封装业务逻辑的对象。

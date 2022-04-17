@@ -52,3 +52,29 @@
     ```
 ---
 ## 秒杀活动
+1. 商品表分为商品表(item)和库存表(item_stock)：加减库存锁库存表(item_stock)的时候不影响商品表(item)的使用
+    - 减库存方式：①下单成功减库存；②付款成功减库存
+    ```xml
+    <update>
+        UPDATE item_stock SET stock = stock - #{amount}
+        WHERE item_id = #{itemId} AND stock >= #{amount}
+    </update>
+    ```
+2. 订单号生成：订单号有16为
+     1. 前8位：时间信息，年月日
+     2. 中间8位：自增序列，从序列表(sequence_info)获取
+     3. 后2位：分库分表位，如：userId % 100
+     - 生成代码段事务传播机制设置为 `@Transactional(propagation = Propagation.REQUIRES_NEW)`
+3. 秒杀活动表 (promo)
+```sql
+CREATE TABLE `promo` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `promo_name` varchar(255) NOT NULL DEFAULT '' COMMENT '秒杀活动名称',
+  `start_date` datetime NOT NULL COMMENT '秒杀活动的开始时间',
+  `end_date` datetime NOT NULL COMMENT '秒杀活动的结束时间',
+  `item_id` int NOT NULL DEFAULT '0' COMMENT '秒杀活动的适用商品',
+  `promo_item_price` decimal(10,2) NOT NULL DEFAULT '0' COMMENT '秒杀活动的商品价格',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+```
+---

@@ -40,7 +40,8 @@ import java.util.stream.Collectors;
  * GlobalExceptionHandler
  * <p>
  * RuoYi 异常处理 (GlobalExceptionHandler)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86
- * SpringBlade 异常处理器 (BladeRestExceptionTranslator)
+ * SpringBlade 异常处理 (BladeRestExceptionTranslator)
+ * [seckill-2] 异常处理 (BaseController#handlerException)
  * <p>
  * `@ControllerAdvice 是在类上声明的注解，用来声明一些全局性的东西
  * -    1.@ExceptionHandler 处理异常

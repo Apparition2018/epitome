@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,7 @@ import springboot.result.Result;
 import javax.validation.*;
 import javax.validation.constraints.*;
 import java.lang.annotation.*;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * RuoYi 参数验证：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81
@@ -55,22 +53,24 @@ public class ValidationController {
     @GetMapping("/bindingResult")
     @Operation(summary = "BindingResult")
     public String bindingResult(@Valid User user, BindingResult result) {
-        if (result.hasErrors()) {
-            StringBuilder msg = new StringBuilder();
-            // 获取错误字段集合
-            List<FieldError> fieldErrors = result.getFieldErrors();
-            // 获取本地locale,zh_CN
-            Locale currentLocale = LocaleContextHolder.getLocale();
-            // 遍历错误字段获取错误消息
-            for (FieldError fieldError : fieldErrors) {
-                // 获取错误信息
-                String errorMessage = messageSource.getMessage(fieldError, currentLocale);
-                // 添加到错误消息集合内
-                msg.append(fieldError.getField()).append("：").append(errorMessage).append(", ");
-            }
-            return msg.substring(0, msg.lastIndexOf(","));
-        }
+        if (result.hasErrors()) return this.validate(result);
         return "验证通过，" + " 名称：" + user.getName() + " 年龄：" + user.getAge() + " 邮箱地址：" + user.getEmail();
+    }
+
+    /**
+     * [seckill-2] 方法参数校验 (ValidatorImpl)
+     */
+    private String validate(BindingResult result) {
+        Map<String, String> errorMsgMap = new HashMap<>();
+        // 获取字段错误集合
+        List<FieldError> fieldErrors = result.getFieldErrors();
+        // 获取 locale
+        Locale locale = LocaleContextHolder.getLocale();
+        for (FieldError fieldError : fieldErrors) {
+            String errorMsg = messageSource.getMessage(fieldError, locale);
+            errorMsgMap.put(fieldError.getField(), errorMsg);
+        }
+        return StringUtils.join(errorMsgMap.values().toArray(), ",");
     }
 
     @GetMapping(value = "/bindException")
