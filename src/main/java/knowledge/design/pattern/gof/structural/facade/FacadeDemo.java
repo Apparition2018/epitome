@@ -11,9 +11,10 @@ import java.io.File;
  * 1.同定义
  * 2.构建分层结构系统
  * 使用实例：
- * 1.各种工具类 {@link org.springframework.jdbc.support.JdbcUtils}
- * 2.给第三方使用的接口
- * 3.MVC
+ * 1.slf4j
+ * 2.各种工具类 {@link org.springframework.jdbc.support.JdbcUtils}
+ * 3.给第三方使用的接口
+ * 4.MVC
  * <p>
  * 角色：
  * 外观 Facade
