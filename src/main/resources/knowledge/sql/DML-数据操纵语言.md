@@ -8,7 +8,7 @@
 ```sql
 INSERT INTO score (name, course, score) VALUES ('王五', '语文', 81);
 INSERT INTO score (name, course, score) VALUES ('王五', '数学', 100);
-INSERT INTO score (name, course, score) VALUES 
+INSERT INTO score (name, course, score) VALUES
 ('王五', '英语', 90),
 ('张三', '语文', 81),
 ('张三', '数学', 75),
@@ -16,13 +16,13 @@ INSERT INTO score (name, course, score) VALUES
 ('李四', '语文', 76),
 ('李四', '数学', 90);
 ```
->### MySQL
->`INSERT IGNORE INTO`：如果插入数据主键重复，则忽略插入数据  
->`INSERT INTO ... ON DUPLICATE KEY UPDATE`：如果插入数据主键重复，则更新数据
->   ```mysql
->   insert into score (id, name, course, score) values (1, '王五', '语文', 81)
->   on duplicate key update id = 1, name = '王五', course = '语文', score = 81;
->   ```
+1. MySQL
+- `INSERT IGNORE INTO`：如果插入数据主键重复，则忽略插入数据
+- `INSERT INTO ... ON DUPLICATE KEY UPDATE`：如果插入数据主键重复，则更新数据
+```mysql
+INSERT INTO score (id, name, course, score) VALUES (1, '王五', '语文', 81)
+ON DUPLICATE KEY UPDATE id = 1, name = '王五', course = '语文', score = 81;
+```
 ---
 ## UPDATE
 ```sql

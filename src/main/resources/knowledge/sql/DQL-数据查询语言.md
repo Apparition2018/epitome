@@ -18,40 +18,36 @@
 ```
 ---
 ## 基础查询
->### DISTINCT
->```sql
->SELECT DISTINCT deptno, job FROM emp ORDER BY deptno, job DESC;
->```
->### LIKE，_ 一个字符，% 任意个字符
->```sql
->SELECT ename FROM emp WHERE ename LIKE '_A%';
->```
->### BETWEEN ... AND ...
->```sql
->SELECT ename, job, sal FROM emp WHERE sal BETWEEN 1500 AND 3000;
->```
->### IN / NOT IN
->```sql
->SELECT ename, job, deptno FROM emp WHERE deptno NOT IN(10, 20, 40);
->```
+- DISTINCT
+```sql
+SELECT DISTINCT deptno, job FROM emp ORDER BY deptno, job DESC;
+```
+- LIKE：_ 一个字符，% 任意个字符
+```sql
+SELECT ename FROM emp WHERE ename LIKE '_A%';
+```
+- BETWEEN ... AND ...
+```sql
+SELECT ename, job, sal FROM emp WHERE sal BETWEEN 1500 AND 3000;
+```
+- IN / NOT IN
+```sql
+SELECT ename, job, deptno FROM emp WHERE deptno NOT IN(10, 20, 40);
+```
 ---
 ## 分组查询 (GROUP BY / HAVING)
 ```sql
 SELECT deptno, MAX(sal) max_sal FROM emp GROUP BY deptno HAVING MAX(sal) > 2000;
 ```
->## 高级分组查询
->### MySQL
->- GROUP_CONCAT
->```sql
->SELECT d.loc, GROUP_CONCAT(e.ename ORDER BY e.ename)
->FROM emp e
->JOIN dept d ON e.deptno = d.deptno
->GROUP BY d.loc
->```
->### Oracle
->1. ROLLUP
->2. CUBE
->3. GROUPING SETS
+### 高级分组查询
+1. MySQL：`GROUP_CONCAT`
+```sql
+SELECT d.loc, GROUP_CONCAT(e.ename ORDER BY e.ename)
+FROM emp e
+JOIN dept d ON e.deptno = d.deptno
+GROUP BY d.loc
+```
+2. Oracle：`ROLLUP`，`CUBE`，`GROUPING SETS`
 ---
 ## 关联查询
 ```sql
@@ -65,69 +61,71 @@ SELECT e.ename, m.ename, e.sal, m.sal FROM emp e, emp m WHERE e.mgr = m.empno;  
 ```
 ---
 ## 子查询
+```
 1. 子查询必须写在括号内
 2. 子查询必须包括 SELECT 子句和 FROM 子句
 3. 子查询可以使用 WHERE，GROUP BY 和 HAVING 子句
 4. 子查询不能使用 COMPUTE 或 FOR BROWSE 子句
 5. 只有在使用了 TOP 子句时，才能使用 ORDER BY 子句  ???
 6. 可以嵌套最多 32 个级别的子查询
->### 多行比较操作符：IN / ANY / ALL
->```sql
->SELECT empno, ename FROM emp WHERE deptno IN(SELECT deptno FROM emp WHERE job = 'SALESMAN');
->
->SELECT ename, sal FROM emp WHERE sal > ALL(SELECT sal FROM emp WHERE job = 'CLERK');
->```
->### EXISTS
->```sql
->SELECT d.deptno, d.dname, d.loc FROM dept d WHERE EXISTS (SELECT 1 FROM emp e WHERE e.deptno = d.deptno);
->```
->### 行内视图 / 匿名视图
->```sql
->SELECT e.ename, e.deptno FROM emp e, (SELECT deptno, AVG(sal) avg_sal FROM emp GROUP BY deptno) t WHERE e.deptno = t.deptno AND sal > t.avg_sal;
->```
->### SELECT 子句 (可认为是外连接的另一种表现形式)
->```sql
->SELECT e.ename, e.deptno, (SELECT d.loc FROM dept d WHERE d.deptno = e.deptno) deptno FROM emp e;
->```
+```
+- 多行比较操作符：IN / ANY / ALL
+```sql
+SELECT empno, ename FROM emp WHERE deptno IN(SELECT deptno FROM emp WHERE job = 'SALESMAN');
+
+SELECT ename, sal FROM emp WHERE sal > ALL(SELECT sal FROM emp WHERE job = 'CLERK');
+```
+- EXISTS
+```sql
+SELECT d.deptno, d.dname, d.loc FROM dept d WHERE EXISTS (SELECT 1 FROM emp e WHERE e.deptno = d.deptno);
+```
+- 行内视图 / 匿名视图
+```sql
+SELECT e.ename, e.deptno FROM emp e, (SELECT deptno, AVG(sal) avg_sal FROM emp GROUP BY deptno) t WHERE e.deptno = t.deptno AND sal > t.avg_sal;
+```
+- SELECT 子句 (可认为是外连接的另一种表现形式)
+```sql
+SELECT e.ename, e.deptno, (SELECT d.loc FROM dept d WHERE d.deptno = e.deptno) deptno FROM emp e;
+```
 ---
 ## 分页查询 
->### MySQL
->```sql
->SELECT ename, sal, deptno 
->FROM emp ORDER BY sal DESC LIMIT 5, 5
->```
->- with rollup
->```sql
->select deptno, count(*) cnt
->from emp group by deptno with rollup
->```
->### Oracle
->```sql
->SELECT * FROM (
->   SELECT ROWNUM rn, t.* FROM (
->       SELECT ename, sal, deptno FROM emp ORDER BY sal DESC
->   ) t
->WHERE ROWNUM <= 10) WHERE rn > 5;
->```
+1. MySQL
+```sql
+SELECT ename, sal, deptno 
+FROM emp ORDER BY sal DESC LIMIT 5, 5
+```
+- WITH ROLLUP
+```sql
+SELECT deptno, count(*) cnt
+FROM emp GROUP BY deptno WITH ROLLUP
+```
+2. Oracle
+```sql
+SELECT * FROM (
+   SELECT ROWNUM rn, t.* FROM (
+       SELECT ename, sal, deptno FROM emp ORDER BY sal DESC
+   ) t
+WHERE ROWNUM <= 10) WHERE rn > 5;
+```
 ---
 ## 排名查询
->### [MySQL](https://www.jb51.net/article/194925.htm) / Oracle
->1. ROW_NUMBER: 连续且唯一
->```sql
->SELECT ename, deptno, sal, ROW_NUMBER() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
->```
->2. RANK: 不连续不唯一
->```sql
->SELECT ename, deptno, sal, RANK() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
->```
->3. DENSE_RANK: 连续不唯一
->```sql
->SELECT ename, deptno, sal, DENSE_RANK() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
->```
->4. null 值排最后
->```
->SELECT ename, sal, RANK() OVER(ORDER BY -sal ASC) sal_rank FROM emp;
->```
+1. [MySQL](https://www.jb51.net/article/194925.htm) / Oracle
+- ROW_NUMBER: 连续且唯一
+```sql
+SELECT ename, deptno, sal, ROW_NUMBER() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
+```
+- RANK: 不连续不唯一
+```sql
+SELECT ename, deptno, sal, RANK() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
+```
+- DENSE_RANK: 连续不唯一
+```sql
+SELECT ename, deptno, sal, DENSE_RANK() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
+```
+- null 值排最后
+```sql
+SELECT ename, sal, RANK() OVER(ORDER BY -sal ASC) sal_rank FROM emp;
+```
 ---
 ## 集合查询
 ```

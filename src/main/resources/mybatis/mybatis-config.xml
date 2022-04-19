@@ -3,23 +3,43 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- https://mybatis.org/mybatis-3/zh/configuration.html -->
 <configuration>
+    <properties resource="application.properties"/>
+
     <settings>
-        <!-- 是否允许在嵌套语句中使用分页(RowBounds)，如果允许使用则设置为 false -->
-        <setting name="safeRowBoundsEnabled" value="true"/>
         <!-- 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存 -->
         <setting name="cacheEnabled" value="false"/>
-        <!-- 允许 JDBC 支持自动生成主键，需要数据库驱动支持 -->
-        <setting name="useGeneratedKeys" value="true"/>
         <!-- 使用列标签代替列名 -->
         <setting name="useColumnLabel" value="true"/>
+        <!-- 允许 JDBC 支持自动生成主键，需要数据库驱动支持 -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!-- 是否允许在嵌套语句中使用分页（RowBounds）。如果允许使用则设置为 false -->
+        <setting name="safeRowBoundsEnabled" value="true"/>
         <!-- 是否开启驼峰命名自动映射 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
+
     <!-- 类型别名 -->
-    <!--<typeAliases></typeAliases>-->
+    <!--<typeAliases>-->
+    <!--    <package name="springboot.domain"/>-->
+    <!--</typeAliases>-->
+
+    <!-- 类型处理器
+        使用场景：类定义了枚举，无法使用映射时使用 -->
+    <!--<typeHandlers></typeHandlers>-->
+
     <!-- 插件 -->
     <!--<plugins></plugins>-->
-    <!-- 类型处理器
-        使用场景一：类定义了枚举，无法使用映射时使用 -->
-    <!--<typeHandlers></typeHandlers>-->
+
+    <!-- 环境配置：和 Spring 整合则无需配置 -->
+    <!--<environments default="development">-->
+    <!--    <environment id="development">-->
+    <!--        <transactionManager type="JDBC"/>-->
+    <!--        <dataSource type="POOLED">-->
+    <!--            <property name="driver" value="${spring.datasource.master.driver-class-name}"/>-->
+    <!--            <property name="url" value="${spring.datasource.master.url}"/>-->
+    <!--            <property name="username" value="${spring.datasource.master.username}"/>-->
+    <!--            <property name="password" value="${spring.datasource.master.password}"/>-->
+    <!--        </dataSource>-->
+    <!--    </environment>-->
+    <!--</environments>-->
 </configuration>

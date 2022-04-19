@@ -6,22 +6,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class SysDept implements Serializable {
-    private Long deptId;
+public class SysRole implements Serializable {
+    private Long roleId;
 
-    private Long parentId;
+    private String roleName;
 
-    private String ancestors;
+    private String roleKey;
 
-    private String deptName;
+    private Integer roleSort;
 
-    private Integer orderNum;
-
-    private String leader;
-
-    private String phone;
-
-    private String email;
+    private String dataScope;
 
     private String status;
 
@@ -34,6 +28,8 @@ public class SysDept implements Serializable {
     private String updateBy;
 
     private Date updateTime;
+
+    private String remark;
 
     private static final long serialVersionUID = 1L;
 }
