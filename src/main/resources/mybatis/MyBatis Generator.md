@@ -2,7 +2,7 @@
 
 ---
 ## Generator.xml
-- @see MyBatis3SimpleGenerator.xml
+- @see generator-config.xml
 ---
 ## mybatis-generator-maven-plugin
 - pom.xml
@@ -21,7 +21,7 @@
         </execution>
     </executions>
     <configuration>
-        <configurationFile>${basedir}/src/main/resources/mybatis/MyBatis3SimpleGenerator.xml</configurationFile>
+        <configurationFile>${basedir}/src/main/resources/mybatis/generator-config.xml</configurationFile>
         <!-- 是否重写文件
             注意：XML 不会重写，总是将新生成的内容合并到旧文件之下 -->
         <overwrite>false</overwrite>
@@ -38,7 +38,7 @@
 ```
 ---
 ## 运行 MyBatis Generator
-1. [命令提示符](http://mybatis.org/generator/running/runningFromCmdLine.html) ：`java -jar mybatis-generator-core-x.x.x.jar -configfile MyBatis3SimpleGenerator.xml`
+1. [命令提示符](http://mybatis.org/generator/running/runningFromCmdLine.html) ：`java -jar mybatis-generator-core-x.x.x.jar -configfile generator-config.xml`
 2. [mybatis-generator-maven-plugin](http://mybatis.org/generator/running/runningWithMaven.html)
     - Maven → <project_name> → Plugins → mybatis-generator → mybatis-generator:generate
 ---

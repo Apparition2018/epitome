@@ -533,8 +533,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <configurationFile>src/main/resources/mybatis/MyBatis3SimpleGenerator.xml</configurationFile>
-                    <!-- <configurationFile>${basedir}/src/main/resources/mybatis/MyBatis3DynamicSqlGenerator.xml</configurationFile>-->
+                    <configurationFile>src/main/resources/mybatis/generator-config.xml</configurationFile>
+                    <!-- <configurationFile>${basedir}/src/main/resources/mybatis/generator-config-dynamicSql.xml</configurationFile>-->
                     <overwrite>false</overwrite>
                     <verbose>true</verbose>
                 </configuration>

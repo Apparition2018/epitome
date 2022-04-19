@@ -32,8 +32,8 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- 注入数据库连接池 -->
         <property name="dataSource" ref="druidDataSource"/>
-        <!-- 配置MyBatis全局文件：MapperConfig.xml -->
-        <property name="configLocation" value="classpath:mybatis/MapperConfig.xml"/>
+        <!-- 配置 MyBatis 全局文件：mybatis-config.xml -->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
         <!-- 扫描entity包 使用别名 -->
         <property name="typeAliasesPackage" value="spring.bean"/>
         <!-- 扫描sql配置文件：mapper需要的xml文件 -->

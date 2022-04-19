@@ -26,15 +26,15 @@
         <td>类</td>
         <td>3</td>
         <td rowspan="11">行为</td>
-        <td>命令</td>
+        <td>责任链</td>
         <td>对象</td>
-        <td>3</td>
+        <td>1</td>
     </tr>
     <tr>
         <td>工厂方法</td>
         <td>类</td>
         <td>3</td>
-        <td>迭代器</td>
+        <td>命令</td>
         <td>对象</td>
         <td>3</td>
     </tr>
@@ -42,45 +42,53 @@
         <td>建造者</td>
         <td>对象</td>
         <td>3</td>
-        <td>中介者</td>
-        <td>对象</td>
-        <td>2</td>
+        <td>解析器</td>
+        <td>类</td>
+        <td>1</td>
     </tr>
     <tr>
         <td>原型</td>
         <td>对象</td>
         <td>2</td>
-        <td>备忘录</td>
+        <td>迭代器</td>
         <td>对象</td>
-        <td>1</td>
+        <td>3</td>
     </tr>
     <tr>
         <td>单例</td>
         <td>对象</td>
         <td>2</td>
-        <td>责任链</td>
+        <td>中介者</td>
         <td>对象</td>
-        <td>1</td>
+        <td>2</td>
     </tr>
     <tr>
         <td rowspan="7">结构</td>
         <td>适配器</td>
         <td>类/对象</td>
         <td>3</td>
-        <td>观察者</td>
+        <td>备忘录</td>
         <td>对象</td>
-        <td>3</td>
+        <td>1</td>
     </tr>
     <tr>
         <td>桥接</td>
         <td>对象</td>
         <td>1</td>
+        <td>观察者</td>
+        <td>对象</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>组合</td>
+        <td>对象</td>
+        <td>2</td>
         <td>状态</td>
         <td>对象</td>
         <td>2</td>
     </tr>
     <tr>
-        <td>组合</td>
+        <td>装饰器</td>
         <td>对象</td>
         <td>2</td>
         <td>策略</td>
@@ -88,7 +96,7 @@
         <td>3</td>
     </tr>
     <tr>
-        <td>装饰器</td>
+        <td>外观</td>
         <td>对象</td>
         <td>2</td>
         <td>模板方法</td>
@@ -96,20 +104,12 @@
         <td>2</td>
     </tr>
     <tr>
-        <td>外观</td>
-        <td>对象</td>
-        <td>2</td>
-        <td>访问者</td>
-        <td>对象</td>
-        <td>1</td>
-    </tr>
-    <tr>
         <td>享元</td>
         <td>对象</td>
         <td>1</td>
-        <td>解析器</td>
-        <td>类</td>
-        <td></td>
+        <td>访问者</td>
+        <td>对象</td>
+        <td>1</td>
     </tr>
     <tr>
         <td>代理</td>

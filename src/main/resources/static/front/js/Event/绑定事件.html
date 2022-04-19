@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>绑定事件</title>
     <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../public/css/demo.css">
@@ -38,8 +39,8 @@
 
     <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
-            <div class="caption">onclick 绑定 (DOM0级)</div>
-            <div class="caption">object.onclick=function(){SomeJavaScriptCode};</div>
+            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onclick">onclick 绑定 (DOM0级)</a></div>
+            <div class="caption">target.onclick = functionRef</div>
             <div class="demo-button eg2 centered">
                 方法二
             </div>
@@ -61,10 +62,11 @@
 
     <section class="code-wrap" id="eg3">
         <div class="css-live-wrap w40p">
-            <div class="caption">绑定事件监听函数 (DOM2级)</div>
-            <div class="caption">element.addEventListener(event, function, useCapture),
-                <br/>useCapture，指定事件在捕获或冒泡阶段执行；
-                <br/>默认false，事件句柄在冒泡阶段执行</div>
+            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener">绑定事件监听函数 (DOM2级)</a></div>
+            <div class="caption">target.addEventListener(type, listener, options/useCapture)；
+                <br/>options：一个指定有关 listener 属性的可选参数对象；
+                <br/>useCapture：true-事件捕获，false(默认)-事件冒泡；
+            </div>
             <div class="demo-button eg3 centered">
                 方法三
             </div>
@@ -93,8 +95,8 @@
 
     <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
-            <div class="caption">jQuery on 绑定</div>
-            <div class="caption">$(selector).on(event,childSelector,data,function)</div>
+            <div class="caption"><a href="https://www.jquery123.com/on/">jQuery on 绑定</a></div>
+            <div class="caption">.on(events[, selector][, data], handler(eventObject))</div>
             <div class="demo-button eg4 centered">
                 方法四
             </div>
@@ -108,15 +110,15 @@
 
     <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
-            <div class="caption">jQuery click 绑定</div>
-            <div class="caption">$(selector).on(event,childSelector,data,function)</div>
+            <div class="caption"><a href="https://www.jquery123.com/bind/">jQuery bind 绑定</a></div>
+            <div class="caption">.bind(eventType[, eventData], handler(eventObject))</div>
             <div class="demo-button eg5 centered">
-                方法五
+                方法六
             </div>
         </div>
         <script class="code w60p" contenteditable="true">
-            $('.eg5').click(function () {
-                $('.eg5').html('jQuery click 绑定');
+            $('.eg5').bind('click', function () {
+                $('.eg5').html('jQuery bind 绑定');
             });
             setTimeout(function () {
                 // jQuery 的 click 触发一次onclick事件
@@ -127,19 +129,38 @@
 
     <section class="code-wrap h250">
         <div class="css-live-wrap w40p">
-            <div class="caption">事件委托</div>
-            <div class="caption">利用冒泡的原理，把事件加到父元素或祖先元素上</div>
+            <div class="caption"><a href="https://www.jquery123.com/click/">jQuery click 绑定</a></div>
+            <div class="caption">.click(handler(eventObject))</div>
             <div class="demo-button eg6 centered">
-                方法六
+                方法五
             </div>
         </div>
         <script class="code w60p" contenteditable="true">
-            const eg6 = document.getElementsByClassName('eg6')[0];
+            $('.eg6').click(function () {
+                $('.eg6').html('jQuery click 绑定');
+            });
+            setTimeout(function () {
+                // jQuery 的 click 触发一次onclick事件
+                $('.eg6').click();
+            }, 1500)
+        </script>
+    </section>
+
+    <section class="code-wrap h250">
+        <div class="css-live-wrap w40p">
+            <div class="caption">事件委托</div>
+            <div class="caption">利用冒泡的原理，把事件加到父元素或祖先元素上</div>
+            <div class="demo-button eg7 centered">
+                方法七
+            </div>
+        </div>
+        <script class="code w60p" contenteditable="true">
+            const eg7 = document.getElementsByClassName('eg7')[0];
             document.onclick = function (event) {
                 event = event || window.event;
                 const target = event.target || event.srcElement;
-                if (target === eg6) {
-                    eg6.textContent = '事件委托';
+                if (target === eg7) {
+                    eg7.textContent = '事件委托';
                 }
             }
         </script>
