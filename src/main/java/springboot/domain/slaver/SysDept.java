@@ -5,6 +5,12 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * SysDept
+ *
+ * @author ljh
+ * created on 2022/4/20 10:08
+ */
 @Data
 public class SysDept implements Serializable {
     private Long deptId;

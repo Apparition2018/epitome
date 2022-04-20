@@ -5,6 +5,12 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * SysRole
+ *
+ * @author ljh
+ * created on 2022/4/20 10:09
+ */
 @Data
 public class SysRole implements Serializable {
     private Long roleId;
