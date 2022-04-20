@@ -68,4 +68,9 @@ public class MybatisTest {
     public void testAssociationAndCollection() throws JsonProcessingException {
         System.out.println(objectMapper.writeValueAsString(sysUserMapper.list(new SysUser())));
     }
+
+    @Test
+    public void testAssociation() throws JsonProcessingException {
+        System.out.println(objectMapper.writeValueAsString(sysUserMapper.list2(new SysUser())));
+    }
 }

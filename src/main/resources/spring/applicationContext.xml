@@ -9,10 +9,10 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!-- 扫描包 -->
+    <!-- 扫描指定包下使用了依赖注入注解的类型 -->
     <context:component-scan base-package="knowledge.reflect.proxy"/>
 
-    <!-- 配置文件 -->
+    <!-- 激活 ${...} 占位符的替换：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#xsd-schemas-context-pphc -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!-- Druid 数据源 -->
@@ -48,16 +48,19 @@
         <property name="basePackage" value="spring.dao"/>
     </bean>
 
-    <!-- 事务管理器 -->
+    <!-- 数据源事务管理器 -->
     <bean id="druidTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <!-- 注入数据库连接池 -->
+        <!-- 注入数据源 -->
         <property name="dataSource" ref="druidDataSource"/>
     </bean>
 
-    <!-- 基于注解的声明式事务 -->
+    <!-- 基于注解的声明式事务：https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative-annotations -->
     <tx:annotation-driven transaction-manager="druidTransactionManager"/>
 
-    <!-- jdbc -->
+    <!-- 启用 aspectj 注解：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-aspectj-support -->
+    <aop:aspectj-autoproxy/>
+
+    <!-- JDBC -->
     <bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>
@@ -71,7 +74,4 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dbcpDataSource"/>
     </bean>
-
-    <!-- 使 aspectj 注解生效，自动为目标对象生成代理对象 -->
-    <aop:aspectj-autoproxy/>
 </beans>

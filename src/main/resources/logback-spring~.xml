@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- logback 配置详解（一）：https://www.cnblogs.com/zhuawang/p/4002975.html
+<!-- Chapter 3: Configuration：https://logback.qos.ch/manual/configuration.html
+     logback 配置详解（一）：https://www.cnblogs.com/zhuawang/p/4002975.html
      logback 常用配置详解（二） <appender>：https://www.cnblogs.com/zhuawang/p/4002976.html
      logback 常用配置详解（三） <filter>：https://www.cnblogs.com/zhuawang/p/4002977.html
      logback 例子：https://www.cnblogs.com/zhuawang/p/4002979.html
