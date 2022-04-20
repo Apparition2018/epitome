@@ -1,9 +1,11 @@
 package springboot.dao.slaver;
 
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import springboot.domain.slaver.SysUser;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * SysUserMapper
@@ -14,4 +16,7 @@ import java.util.List;
 @Mapper
 public interface SysUserMapper {
     List<SysUser> list(SysUser sysUser);
+
+    @MapKey("user_id")
+    Map<Integer, Map<String, Object>> map(SysUser sysUser);
 }

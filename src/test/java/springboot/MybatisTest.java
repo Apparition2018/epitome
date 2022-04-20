@@ -2,18 +2,15 @@ package springboot;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import springboot.dao.master.SalesMapper;
-import springboot.dao.master.ScoreMapper;
+import springboot.dao.slaver.SysDeptMapper;
 import springboot.dao.slaver.SysUserMapper;
-import springboot.domain.master.Sales;
 import springboot.domain.slaver.SysUser;
-
-import java.util.List;
 
 /**
  * @author ljh
@@ -23,36 +20,50 @@ import java.util.List;
 public class MybatisTest {
 
     @Autowired
-    private ScoreMapper scoreMapper;
-    @Autowired
-    private SalesMapper salesMapper;
-    @Autowired
     private SysUserMapper sysUserMapper;
+    @Autowired
+    private SysDeptMapper sysDeptMapper;
     @Autowired
     private ObjectMapper objectMapper;
 
     /**
+     * PageHelper：https://pagehelper.github.io/docs/howtouse/
      * RuoYi 分页实现：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%88%86%E9%A1%B5%E5%AE%9E%E7%8E%B0
      */
     @Test
-    public void testPage() throws JsonProcessingException {
-        // 方法一
-        PageHelper.startPage(1, 5, null).setReasonable(true);
-        List<Sales> salesList = salesMapper.selectAll();
-        PageInfo<Sales> salesPageInfo = new PageInfo<>(salesList);
-        System.out.println(objectMapper.writeValueAsString(salesPageInfo));
+    public void testPageHelper() throws JsonProcessingException {
+        /* 返回 Page */
+        Page<SysDeptMapper> deptPage = PageHelper.startPage(1, 2).doSelectPage(() -> sysDeptMapper.list(null));
+        System.out.println(objectMapper.writeValueAsString(deptPage));
         System.out.println("====================");
 
-        // 方法二
-        PageInfo<Sales> salesPageInfo2 = PageHelper.startPage(1, 5, null).setReasonable(true).doSelectPageInfo(() -> salesMapper.selectAll());
-        System.out.println(objectMapper.writeValueAsString(salesPageInfo2));
+        /* 返回 PageInfo */
+        PageInfo<SysDeptMapper> deptPageInfo = PageHelper.startPage(1, 2).doSelectPageInfo(() -> sysDeptMapper.list(null));
+        System.out.println(objectMapper.writeValueAsString(deptPageInfo));
+        System.out.println("====================");
+
+        /* 返回 sql 返回数据条数 */
+        long count = PageHelper.count(() -> sysDeptMapper.list(null));
+        System.out.println(count);
     }
 
+    /**
+     * `@MapKey
+     */
     @Test
     public void testMapKey() {
-        scoreMapper.selectAllMap().entrySet().forEach(System.out::println);
+        sysUserMapper.map(null).entrySet().forEach(user -> {
+            try {
+                System.out.println(objectMapper.writeValueAsString(user));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
+    /**
+     * <association/> 和 <collection/>
+     */
     @Test
     public void testAssociationAndCollection() throws JsonProcessingException {
         System.out.println(objectMapper.writeValueAsString(sysUserMapper.list(new SysUser())));
