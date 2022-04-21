@@ -32,36 +32,36 @@
 ## [数据类型及其使用场景](https://redis.io/topics/data-types-intro)
 - 通用场景：缓存
 
-|数据类型|使用场景|
-|:---|:---|
-|String|计数器（数量统计、数量控制）、时效信息（验证码）、自增 ID、分布式锁|
-|List|简单队列、定时排行榜、最近/最新|
-|Set|不重复数据、交集/并集|
-|Sorted Set|实时排行榜|
-|Hash|对象缓存、条件查询（Lua）|
-|Bitmap|保存状态并需进一步分析（活跃用户，在线用户）|
-|HyperLogLog|基数统计|
-|Stream|消息队列|
-|Geo|地理位置|
+| 数据类型        | 使用场景                                |
+|:------------|:------------------------------------|
+| String      | 计数器（数量统计、数量控制）、时效信息（验证码）、自增 ID、分布式锁 |
+| List        | 简单队列、定时排行榜、最近/最新                    |
+| Set         | 不重复数据、交集/并集                         |
+| Sorted Set  | 实时排行榜                               |
+| Hash        | 对象缓存、条件查询（Lua）                      |
+| Bitmap      | 保存状态并需进一步分析（活跃用户，在线用户）              |
+| HyperLogLog | 基数统计                                |
+| Stream      | 消息队列                                |
+| Geo         | 地理位置                                |
 >- [参考网站1](https://zhuanlan.zhihu.com/p/100460843)
 >- [参考网站2](https://zhuanlan.zhihu.com/p/263390414)
 ---
 ## 文件事件处理器
 ![Redis 文件事件处理器过程](https://img2020.cnblogs.com/blog/1323607/202006/1323607-20200613165540238-1561612908.png)
 
-|部分|说明|
-|:---|:---|
-|套接字||
-|IO 多路复用程序||
-|文件事件分派器||
-|事件处理器||
+| 部分        | 说明  |
+|:----------|:----|
+| 套接字       ||
+| IO 多路复用程序 ||
+| 文件事件分派器   ||
+| 事件处理器     ||
 ---
 ## 删除过期 KEY 的策略
-|策略|说明|Redis 使用|
-|:---|:---|:---|
-|定期|每隔一段时间（默认100ms）删除到期 KEY<br/>检查多少数据库和删除多少 KEY，由算法决定|√|
-|惰性|查询 KEY 时，判断是否过期，过期则删除|√|
-|定时|设置过期时间的同时，创建一个定时器，当 KEY 到期时立即删除||
+| 策略  | 说明                                                 | Redis 使用 |
+|:----|:---------------------------------------------------|:---------|
+| 定期  | 每隔一段时间（默认100ms）删除到期 KEY<br/>检查多少数据库和删除多少 KEY，由算法决定 | √        |
+| 惰性  | 查询 KEY 时，判断是否过期，过期则删除                              | √        |
+| 定时  | 设置过期时间的同时，创建一个定时器，当 KEY 到期时立即删除                    ||
 ---
 ## [内存淘汰策略](https://redis.io/topics/lru-cache)
 - redis.conf：`maxmemory-policy noeviction`
@@ -69,24 +69,24 @@
 - lfu：Least Frequently Used
 - ttl：Time to Live
 
-|策略|说明|
-|:---|:---|
-|volatile-lru|在已设置过期时间的 KEY 中，删除最近最少使用的 KEY|
-|volatile-lfu|在已设置过期时间的 KEY 中，删除最不常用的 KEY|
-|volatile-random|在已设置过期时间的 KEY 中，随机删除 KEY|
-|volatitle-ttl|在已设置过期时间的 KEY 中，删除剩余过期时间最短 KEY|
-|allkeys-lru|在所有 KEY 中，删除最近最少使用的 KEY|
-|allkeys-lfu|在所有 KEY 中，删除最不常用的 KEY|
-|allkeys-random|在所有 KEY 中，随机删除 KEY|
-|noeviction|不删除任何 KEY，在写操作时返回错误|
+| 策略              | 说明                             |
+|:----------------|:-------------------------------|
+| volatile-lru    | 在已设置过期时间的 KEY 中，删除最近最少使用的 KEY  |
+| volatile-lfu    | 在已设置过期时间的 KEY 中，删除最不常用的 KEY    |
+| volatile-random | 在已设置过期时间的 KEY 中，随机删除 KEY       |
+| volatitle-ttl   | 在已设置过期时间的 KEY 中，删除剩余过期时间最短 KEY |
+| allkeys-lru     | 在所有 KEY 中，删除最近最少使用的 KEY        |
+| allkeys-lfu     | 在所有 KEY 中，删除最不常用的 KEY          |
+| allkeys-random  | 在所有 KEY 中，随机删除 KEY             |
+| noeviction      | 不删除任何 KEY，在写操作时返回错误            |
 ---
 ## [持久化机制](https://redis.io/topics/persistence)
 
-|机制|RDB|AOF|
-|:---|:---|:---|
-|全称|Redis Database|Append Only File|
-|说明|数据集快照|记录写操作|
-|优点|①文件小且只有一个，适合备份、灾难恢复<br/>②fork() 子进程进行保存工作<br/>③启动速度快|①更可靠，最多丢失一秒钟的数据<br/>②redis-check-aof</br>③能通过删除误操作命令恢复数据|
+| 机制  | RDB                                                  | AOF                                                      |
+|:----|:-----------------------------------------------------|:---------------------------------------------------------|
+| 全称  | Redis Database                                       | Append Only File                                         |
+| 说明  | 数据集快照                                                | 记录写操作                                                    |
+| 优点  | ①文件小且只有一个，适合备份、灾难恢复<br/>②fork() 子进程进行保存工作<br/>③启动速度快 | ①更可靠，最多丢失一秒钟的数据<br/>②redis-check-aof</br>③能通过删除误操作命令恢复数据 |
 - redis.conf：
 ```
 # RDB 持久化文件名
@@ -130,8 +130,7 @@ auto-aof-rewrite-min-size 64mb
 >- [参考网站2](https://mp.weixin.qq.com/s/_StOUX9Nu-Bo8UpX7ThZmg)
 >- [参考网站3](https://mp.weixin.qq.com/s/knz-j-m8bTg5GnKc7oeZLg)
 ---
-
-## 并发问题
+## [Redis 计数器并发精准数量控制](https://www.imooc.com/learn/1067)
 ![redis 数量控制并发问题](https://img1.mukewang.com/6092cf44000167a319201080-500-284.jpg)
 ![redis 数量控制并发优化](https://img4.mukewang.com/6092d0560001c11019201080-500-284.jpg)
 ---
