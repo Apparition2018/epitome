@@ -52,16 +52,11 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
 
     <!-- html5shiv：针对 IE 浏览器的 HTML5 JavaScript 补丁，目的是让 IE 识别并支持 HTML5 元素 -->
-    <!-- respond：针对 IE 浏览器的 polyfill，目的是让 IE 支持媒体查询（media queries）功能 -->
+    <!-- respond：针对 IE 浏览器的 polyfill，目的是让 IE 支持媒体查询（media queries）功能
+            警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 respond.js 不起作用 -->
     <!--[if lt IE 9]>
-    <script src="https://cdn.bootcdn.net/ajax/libs/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- 同上 -->
-    <!--[if lt IE 9]>
-    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- tooltip.js：提示 -->

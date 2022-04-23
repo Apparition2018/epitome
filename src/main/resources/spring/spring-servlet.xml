@@ -30,7 +30,10 @@
             ⑥@NumberFormat (ConversionService)
             ⑦@DateTimeFormat
             ⑧@Valid
-            ⑨@RequestBody，@ResponseBody (HttpMessageConverter)
+            ⑨HttpMessageConverter：
+                byte arrays, strings, Resource, org.springframework.core.io.Resource (all media types),
+                javax.xml.transform.Source, MultiValueMap<String, String>, XML, JSON,
+                Atom feeds, RSS feeds
         <mvc:annotation-driven/>的作用：https://www.zhihu.com/question/362051844/answer/1286615054 -->
     <mvc:annotation-driven/>
 

@@ -45,24 +45,24 @@
 ## 依赖注入
 - [推荐使用构造器注入](https://reflectoring.io/constructor-injection/) ：创建不可变对象，防止 NPE，线程安全，使代码更健壮
 ## [依赖注入注解](https://www.zhihu.com/question/39356740/answer/1907479772)
-|注解|@Autowired|@Resource|
-|:---|:---|:---|
-|定义|Spring|JSR-250|
-|装配方式|默认按类型装配；<br/>配合使用 @Qualifier，可以按名称装配|指定 name 按名称装配；<br/>指定 type 按类型匹配|
-|使用范围|成员变量、构造器、方法、参数、注解|类、成员变量、方法|
+| 注解   | @Autowired                           | @Resource                        |
+|:-----|:-------------------------------------|:---------------------------------|
+| 定义   | Spring                               | JSR-250                          |
+| 装配方式 | 默认按类型装配；<br/>配合使用 @Qualifier，可以按名称装配 | 指定 name 按名称装配；<br/>指定 type 按类型匹配 |
+| 使用范围 | 成员变量、构造器、方法、参数、注解                    | 类、成员变量、方法                        |
 - 装配找到多个类型相同的类：
     1. 使用按名称装配
     2. 在某个相同类型上添加 @Primary 注解
 - 多个类型相同的类可以装配到集合中，如 List、Set、Map
 ## 循环依赖
-|场景|是否报错|解决方法|
-|:---|:---|:---|
-|单例 setter 注入|否 (Spring 解决了)|singletonObjects<br/>earlySingletonObjects<br/>singletonFactories：AOP 扩展|
-|多例 setter 注入|被单例引用时报错||
-|构造器注入|是||
-|DependsOn|是||
-|单例代理对象 setter 注入 (先)<br/>单例 setter 注入 (后)|是|1. @Lazy<br/>2. @DependsOn<br/>3. 修改文件名，从而调转循环依赖类的加载顺序|
-|构造器注入 (先)<br/>单例 setter 注入 (后)|是|同上|
+| 场景                                        | 是否报错           | 解决方法                                                                     |
+|:------------------------------------------|:---------------|:-------------------------------------------------------------------------|
+| 单例 setter 注入                              | 否 (Spring 解决了) | singletonObjects<br/>earlySingletonObjects<br/>singletonFactories：AOP 扩展 |
+| 多例 setter 注入                              | 被单例引用时报错       ||
+| 构造器注入                                     | 是              ||
+| DependsOn                                 | 是              ||
+| 单例代理对象 setter 注入 (先)<br/>单例 setter 注入 (后) | 是              | 1. @Lazy<br/>2. @DependsOn<br/>3. 修改文件名，从而调转循环依赖类的加载顺序                   |
+| 构造器注入 (先)<br/>单例 setter 注入 (后)            | 是              | 同上                                                                       |
 - 注：非抽象、单例、非懒加载的类才会被提前初始化
 >1. [Spring 解决循环](https://www.zhihu.com/question/438247718/answer/1730527725)
 >2. [@Transactional、@Async 和循环依赖](https://www.cnblogs.com/liuzhihang/p/spring-trans-async.html)
@@ -76,12 +76,12 @@
     2. Cglib：基于 ASM 类库在运行时对字节码进行修改和生成
 - [核心概念](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-introduction-defn) ：
   
-|概念|中文|说明|
-|:---|:---|:---|
-|Aspect|切面|Pointcut + Advice；Spring AOP 中 @Aspect 注释的类|
-|Join Point|连接点|使用 Advice 的地方；Spring AOP 中连接点只能是方法|
-|Advice|通知|切面的具体行动|
-|Pointcut|切入点|匹配 Join Point|
+| 概念         | 中文  | 说明                                          |
+|:-----------|:----|:--------------------------------------------|
+| Aspect     | 切面  | Pointcut + Advice；Spring AOP 中 @Aspect 注释的类 |
+| Join Point | 连接点 | 使用 Advice 的地方；Spring AOP 中连接点只能是方法          |
+| Advice     | 通知  | 切面的具体行动                                     |
+| Pointcut   | 切入点 | 匹配 Join Point                               |
 - 对比 AspectJ：
     - Spring AOP 是运行时织入，AspectJ 是编译时织入
     - Spring AOP 使用了 AspectJ 的注解 和 切入点表达式语言
@@ -90,15 +90,16 @@
 ## 事务
 1. 事务隔离级别：@see SQL.md#事务隔离级别
 2. [事务传播机制](https://segmentfault.com/a/1190000013341344)
-|事务传播|外层无事务|外层有事务|外层有事务备注|
-|:---|:---|:---|:---|
-|REQUIRED|新建事务|加入事务|同一事务|
-|REQUIRES_NEW|新建事务|新建事务|不同事务|
-|NESTED|新建事务|嵌套事务|内不影响外|
-|SUPPORTS|无事务|加入事务|同一事务|
-|NOT_SUPPORTED|无事务|无事务||
-|NEVER|无事务|抛出异常||
-|MANDATORY|抛出异常|加入事务|同一事务|
+
+| 事务传播          | 外层无事务 | 外层有事务 | 外层有事务备注 |
+|:--------------|:------|:------|:--------|
+| REQUIRED      | 新建事务  | 加入事务  | 同一事务    |
+| REQUIRES_NEW  | 新建事务  | 新建事务  | 不同事务    |
+| NESTED        | 新建事务  | 嵌套事务  | 内不影响外   |
+| SUPPORTS      | 无事务   | 加入事务  | 同一事务    |
+| NOT_SUPPORTED | 无事务   | 无事务   ||
+| NEVER         | 无事务   | 抛出异常  ||
+| MANDATORY     | 抛出异常  | 加入事务  | 同一事务    |
 3. @Transactional 失效场景：
     1. 未被 Spring 管理
     2. 数据库不支持
@@ -116,28 +117,28 @@
 - @see SSM.md#Spring MVC
 ---
 ## 用到的设计模式
-|模式|用例|
-|:---|:---|
-|工厂方法|FactoryBean, AbstractFactoryBean|
-|抽象工厂|BeanFactory|
-|建造者|BeanDefinitionBuilder, MockMvcWebClientBuilder|
-|单例|AbstractBeanFactory|
-|原型|AbstractBeanFactory|
-|适配器|Spring AOP (AdvisorAdapter)<br/>Spring MVC (HandlerAdapter)|
-|代理|Spring AOP (JdkDynamicAopProxy, CglibAopProxy)|
-|装饰器|XxxDecorator，XxxWrapper|
-|组合|WebMvcConfigurerComposite|
-|外观|JdbcUtils|
-|模板方法|JdbcTemplate，RedisTemplate，RabbitTemplate, TransactionTemplate|
-|命令|JdbcTemplate#execute(StatementCallback)|
-|策略|资源访问 (Resource)|
-|状态|状态机 (statemachine)|
-|观察者|Spring Event (ApplicationEventPublisher, ApplicationListener, ApplicationEvent)|
-|中介者|Spring MVC (DispatcherServlet)|
-|责任链模式|Spring MVC (HandlerExecutionChain)|
-|访问者|BeanDefinitionVisitor|
-|备忘录|Spring Web Flow (StateManageableMessageContext)|
-|解释器|SpEL (ExpressionParser)|
+| 模式    | 用例                                                                              |
+|:------|:--------------------------------------------------------------------------------|
+| 工厂方法  | FactoryBean, AbstractFactoryBean                                                |
+| 抽象工厂  | BeanFactory                                                                     |
+| 建造者   | BeanDefinitionBuilder, MockMvcWebClientBuilder                                  |
+| 单例    | AbstractBeanFactory                                                             |
+| 原型    | AbstractBeanFactory                                                             |
+| 适配器   | Spring AOP (AdvisorAdapter)<br/>Spring MVC (HandlerAdapter)                     |
+| 代理    | Spring AOP (JdkDynamicAopProxy, CglibAopProxy)                                  |
+| 装饰器   | XxxDecorator，XxxWrapper                                                         |
+| 组合    | WebMvcConfigurerComposite                                                       |
+| 外观    | JdbcUtils                                                                       |
+| 模板方法  | JdbcTemplate，RedisTemplate，RabbitTemplate, TransactionTemplate                  |
+| 命令    | JdbcTemplate#execute(StatementCallback)                                         |
+| 策略    | 资源访问 (Resource)                                                                 |
+| 状态    | 状态机 (statemachine)                                                              |
+| 观察者   | Spring Event (ApplicationEventPublisher, ApplicationListener, ApplicationEvent) |
+| 中介者   | Spring MVC (DispatcherServlet)                                                  |
+| 责任链模式 | Spring MVC (HandlerExecutionChain)                                              |
+| 访问者   | BeanDefinitionVisitor                                                           |
+| 备忘录   | Spring Web Flow (StateManageableMessageContext)                                 |
+| 解释器   | SpEL (ExpressionParser)                                                         |
 ## 其它
 1. 单例 Bean 线程安全问题：多个线程对同一对象的非静态成员变量进行写操作时存在线程安全问题
     - 解决：ThreadLocal
