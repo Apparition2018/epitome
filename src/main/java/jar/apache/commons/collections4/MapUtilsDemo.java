@@ -38,6 +38,8 @@ import java.util.Map;
 public class MapUtilsDemo extends Demo {
 
     Map<Integer, Object> map = new HashMap<Integer, Object>(3) {
+        private static final long serialVersionUID = -3034565247298670375L;
+
         {
             put(1, "A");
             put(2, "B");
