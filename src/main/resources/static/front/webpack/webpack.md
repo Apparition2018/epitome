@@ -62,7 +62,7 @@
 
 3. npm install --save-dev webpack webpack-cli
 
-4. npm install --save lodash
+4. npm install lodash
 
 // 加载各类文件
 5. npm install --save-dev style-loader css-loader file-loader csv-loader xml-loader
