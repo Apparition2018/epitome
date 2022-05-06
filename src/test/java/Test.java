@@ -8,7 +8,6 @@
 // iText, FOP
 // YunGouOS
 // WebFlux：https://mp.weixin.qq.com/s?__biz=MzA5MzQ2NTY0OA==&mid=2650796733&idx=1&sn=b54cd0c3e18a6fcf04821047e22f3119
-// Activiti
 // Arthas
 // rabbitmq, kafka, rocketmq
 // mycat
