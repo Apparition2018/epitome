@@ -87,7 +87,7 @@
         2.4 Foreground #CC0033
     3. Settings → Editor → Live Templates
     4. user → +
-        4.1 Abbreviation: toduljh
+        4.1 Abbreviation: todoljh
         4.2 Description: TODO-LJH
         4.3 Template text: // TODO-LJH: $date$ $todo$
         4.4 Edit variables
