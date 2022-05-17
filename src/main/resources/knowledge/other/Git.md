@@ -1,7 +1,7 @@
-# [Git](https://git-scm.com/)
+# Git
 
 ---
-## 参考网站
+## Reference
 1. [Git](https://git-scm.com/)
 2. [Learn Git Branching](https://learngitbranching.js.org/?locale=zh_CN)
 3. [Git 教程 | 菜鸟教程](https://www.runoob.com/git/git-tutorial.html)
@@ -43,8 +43,9 @@
 ```
 help [COMMAND|GUIDE]                            帮助
 config                                          获取和设置 repository 或全局选项
-    -l | --list                                 列出所有变量及其值
     --global                                    全局配置
+    -l | --list                                 列出配置文件中设置的所有变量及其值
+    --unset                                     从配置文件中删除与密钥匹配的行
         user.name                               用户名称
         user.email                              用户邮件
         core.editor                             编辑器

@@ -13,7 +13,7 @@
 5. `npm install -g yarn`
 6. `yarn config set global-folder "D:\nodejs\yarn_global"`
 7. `yarn config set cache-folder "D:\nodejs\yarn_cache"`
-8. `yarn conifg set registry https://registry.npm.taobao.org`
+8. `yarn config set registry https://registry.npm.taobao.org`
 9. `yarn global add @vue/cli`
 ---
 ## [npm](https://docs.npmjs.com/)

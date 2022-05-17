@@ -59,7 +59,7 @@
 ## Code Style (-g)
     1. Settings → Editor → Code Style
     2. HTML → Other → Wrap attributes: Do not wrap
-    3. JavaScript → Spaces → Before parenthese → Function declaration parentheses 勾选
+    3. JavaScript → Spaces → Before parenthese → Function declaration parentheses 取消勾选
 ---
 ## serialVersionUID (-g|-e)
     1. Settings → Editor → Inspections
