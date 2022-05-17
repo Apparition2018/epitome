@@ -15,6 +15,9 @@
 1. [阿里巴巴开源镜像站](https://developer.aliyun.com/mirror/)
 2. [腾讯软件源](https://mirrors.cloud.tencent.com)
 3. [网易开源镜像站](https://mirrors.163.com/)
+4. [华为开源镜像站](https://mirrors.huaweicloud.com/home)
+5. [清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn)
+6. [JDK 下载 | 编程宝库](www.codebaoku.com/search?kw=JDK+下载)
 ---
 ## [端口被占用](https://jingyan.baidu.com/article/3c48dd34491d47e10be358b8.html)
 1. 打开 cmd.exe
