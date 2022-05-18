@@ -251,10 +251,10 @@ nginx
 ```
 8. [Zookeeper](https://hub.docker.com/_/zookeeper)
 - [Docker 实战之 Zookeeper 集群](https://www.cnblogs.com/idea360/p/12405113.html)
-- @see docker/compose/zookeeper/docker-compose-zookeeper-cluster.yml
+- @see docker/compose/zookeeper-cluster/docker-compose.yml
 ```bash
 docker network create docker_net
-docker-compose -f docker-compose-zookeeper-cluster.yml up -d
+docker-compose up -d
 
 docker exec -it zoo1 bash
 ./bin/zkServer.sh status                          Mode: follower
