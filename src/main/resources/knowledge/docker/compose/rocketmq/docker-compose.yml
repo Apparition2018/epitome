@@ -1,60 +1,59 @@
-# https://github.com/apache/rocketmq-docker
-# https://blog.csdn.net/oschina_41731918/article/details/123115102
-version: '3.8'
+version: '3.9'
+
 networks:
   rocketmq_net:
     name: rocketmq_net
     driver: bridge
+
 services:
-  #Service for nameserver
-  namesrv:
+  rmqnamesrv:
     image: apache/rocketmq
     container_name: rmqnamesrv
     ports:
       - 9876:9876
     volumes:
-      - ./namesrv/logs:/home/rocketmq/logs
-      - ./namesrv/store:/home/rocketmq/store
+      - D:/Docker/rocketmq/namesrv/logs:/home/rocketmq/logs
+      - D:/Docker/rocketmq/namesrv/store:/home/rocketmq/store
     environment:
       JAVA_OPT_EXT: "-Duser.home=/home/rocketmq -Xms512M -Xmx512M -Xmn128m"
     command: [ "sh","mqnamesrv" ]
     networks:
       rocketmq_net:
+        # 网络别名，可在其它容器中 ping rmqnamesrv
         aliases:
-          - namesrv
+          - rmqnamesrv
 
-  #Service for broker
-  broker:
+  rmqbroker:
     image: apache/rocketmq
     container_name: rmqbroker
     ports:
       - 10909:10909
       - 10911:10911
+      - 10912:10912
     volumes:
-      - ./broker/logs:/home/rocketmq/logs
-      - ./broker/store:/home/rocketmq/store
+      - D:/Docker/rocketmq/broker/logs:/home/rocketmq/logs
+      - D:/Docker/rocketmq/broker/store:/home/rocketmq/store
       - ./broker/broker.conf:/etc/rocketmq/broker.conf
     environment:
       JAVA_OPT_EXT: "-Duser.home=/home/rocketmq -Xms512M -Xmx512M -Xmn128m"
-    command: [ "sh","mqbroker","-c","/etc/rocketmq/broker.conf","-n","namesrv:9876","autoCreateTopicEnable=true" ]
+    command: [ "sh","mqbroker","-c","/etc/rocketmq/broker.conf","-n","rmqnamesrv:9876","autoCreateTopicEnable=true" ]
     depends_on:
-      - namesrv
+      - rmqnamesrv
     networks:
       rocketmq_net:
         aliases:
-          - broker
+          - rmqbroker
 
-  #Service for console
-  console:
+  rmqconsole:
     image: styletang/rocketmq-console-ng
     container_name: rmqconsole
     ports:
       - 8180:8080
     environment:
-      JAVA_OPTS: "-Drocketmq.namesrv.addr=namesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+      JAVA_OPTS: "-Drocketmq.namesrv.addr=rmqnamesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
     depends_on:
-      - namesrv
+      - rmqnamesrv
     networks:
       rocketmq_net:
         aliases:
-          - console
+          - rmqconsole

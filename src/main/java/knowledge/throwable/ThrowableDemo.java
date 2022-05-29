@@ -3,7 +3,6 @@ package knowledge.throwable;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -82,7 +81,7 @@ public class ThrowableDemo extends Demo {
      */
     @Test
     public void testTryWithResources() {
-        try (FileInputStream fis = new FileInputStream(new File(DEMO_FILE_PATH))) {
+        try (FileInputStream fis = new FileInputStream(DEMO_FILE_PATH)) {
             p(fis.read());
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);
@@ -98,7 +97,7 @@ public class ThrowableDemo extends Demo {
     @Test
     public void suppressed() {
         try {
-            FileInputStream fis = new FileInputStream(new File("src/main/resources/demo/demo"));
+            FileInputStream fis = new FileInputStream("src/main/resources/demo/demo");
             Throwable var2 = null;
 
             try {

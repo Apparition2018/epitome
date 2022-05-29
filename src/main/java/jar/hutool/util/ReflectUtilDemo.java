@@ -64,8 +64,8 @@ public class ReflectUtilDemo {
         //********** 3.Method **********//
         // 动态过滤获取类中声明的方法，包括父类
         ReflectUtil.getMethods(Cat.class, method -> Modifier.isPrivate(method.getModifiers()));
-        // 动态获取类中声明的方法，true 包括父类，false 不包括父类
-        Method[] methods = ReflectUtil.getMethodsDirectly(Cat.class, false);
+        // 动态获取类中声明的方法
+        Method[] methods = ReflectUtil.getMethodsDirectly(Cat.class, false, false);
         for (Method method : methods) {
             // 判断空参数方法
             if (ReflectUtil.isEmptyParam(method)) {
@@ -88,8 +88,8 @@ public class ReflectUtilDemo {
         ReflectUtil.getPublicMethods(Cat.class, method -> "setAge".equals(method.getName()));
         // 动态过滤获取类中声明的构造方法，包括父类
         ReflectUtil.getConstructors(Cat.class);
-        // 动态过滤获取类中声明的构造方法，true 包括父类，false 不包括父类
-        ReflectUtil.getMethodsDirectly(Cat.class, false);
+        // 动态过滤获取类中声明的构造方法
+        ReflectUtil.getMethodsDirectly(Cat.class, false, false);
         // 动态去重获取类中声明的方法名，包括父类
         ReflectUtil.getMethodNames(Cat.class);
         // 动态查找一个方法

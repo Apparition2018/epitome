@@ -2,7 +2,7 @@
 ![Redis 思维导图](https://img2018.cnblogs.com/blog/967517/201904/967517-20190417162215588-320188667.png)
 - 基于内存的 key-value store 非关系型数据库
 ---
-## 参考网站
+## Reference
 1. [Redis](https://redis.io/)
 2. [Redis | Github](https://github.com/redis/redis)
 3. [Redis入门视频教程-慕课网](https://www.imooc.com/learn/839)

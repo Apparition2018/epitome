@@ -1,8 +1,8 @@
 # Docker
 
 ---
-## 参考网站
-1. [Docker Hub](https://hub.docker.com)
+## Reference
+1. [Docker overview](https://docs.docker.com/get-started/overview/)
 2. [Docker - Learn | Microsoft Docs](https://docs.microsoft.com/zh-CN/learn/modules/intro-to-docker-containers/)
 3. [Windows 安装 | 菜鸟教程](https://www.runoob.com/docker/windows-docker-install.html)
 4. [Docker Desktop 快速上手](https://xunmi.blog.csdn.net/article/details/108641842)
@@ -19,7 +19,7 @@
 1. [安装前创建目录链接](https://www.zhihu.com/question/359332823/answer/923520420)
 - 以管理员身份运行 CMD
 ```bash
-mklink /j "C:\Program Files\Docker" "D:\Docker"
+mklink /j "C:\Program Files\Docker" "D:\Docker\Docker"
 mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
 mklink /j "C:\Users\Administrator\AppData\Local\Docker" "D:\Docker\Local"
 mklink /j "C:\Users\Administrator\AppData\Roaming\Docker" "D:\Docker\Roaming\Docker"
@@ -27,8 +27,7 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roa
 ```
 2. 下载地址：https://www.docker.com/products/docker-desktop
     或：https://hub.docker.com/editions/community/docker-ce-desktop-windows
-3. 设置可挂载目录：Settings → Resources → FILE SHARING
-4. 设置 Docker Engine：Settings → Docker Engine
+3. 设置 Docker Engine：Settings → Docker Engine
 ```
   "registry-mirrors": [
     "https://docker-cn.com",
@@ -36,6 +35,7 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roa
     "https://docker.mirrors.ustc.edu.cn"
   ],
 ```
+4. 配置 [.wslconfig](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
 ---
 ## Linux 安装 Docker
 ```bash
@@ -52,6 +52,8 @@ apt-get autoremove docker-ce-*
 rm -rf /etc/systemd/system/docker.service.d
 rm -rf /var/lib/docker
 ```
+4. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
+5. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
 ---
 ## [常用命令](https://docs.docker.com/engine/reference/commandline/docker/)
 ```
@@ -103,71 +105,87 @@ docker build [OPTIONS] PATH | URL | -                           从 Dockerfile �
 - 网络类型：1-Bridge 2-Host 3-None
 - 端口映射
 ---
-## [Dockerfile](https://www.runoob.com/docker/docker-dockerfile.html)
->### 语法
->```
->FROM                                               基于 image
->RUN                                                执行命令，docker build 时运行
->   shell 格式：RUN ./test.php dev offine
->   exec 格式：RUN ["./test.php", "dev", "offine"]
->CMD                                                执行命令，docker run 时运行
->ENTRYPOINT                                         执行命令，不会被 docker run 的参数指定的指令所覆盖，而且参数会传送给指定的程序
->ADD                                                添加文件，gzip 和 bzip2 会自动解压
->COPY                                               复制文件
->ENV                                                设置环境变量
->ARG                                                设置环境变量，仅在 Dockerfile 内有效
->   docker build --build-arg
->MAINTAINER                                         维护者
->USER                                               用户
->VOLUME                                             VOLUME
->WORKDIR                                            工作目录
->EXPOSE                                             端口
->```
->### 镜像分层
->![镜像分层](https://img2.mukewang.com/608d9d330001dd2819201080-500-284.jpg)
->### Demo
->1. 编写 Dockerfile 文件
->```
->FROM ubuntu:latest
->MAINTAINER ljh
->RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
->RUN apt-get update
->RUN apt-get install -y nginx
->COPY index.html /var/www/html
->ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
->EXPOSE 80
->```
->2. docker build -t hello_docker .
->3. docker run hello_docker
->4. localhost:80
+## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
+### Commands
+```
+FROM                                               初始化构建并为后续指令设置基本 image
+RUN                                                执行命令，docker build 时运行
+    shell 格式    RUN ./test.php dev offine
+    exec 格式     RUN ["./test.php", "dev", "offine"]
+CMD                                                执行命令，docker run 时运行
+ENTRYPOINT                                         执行命令，不会被 docker run 的参数指定的指令所覆盖，而且参数会传送给指定的程序
+ADD                                                添加文件，gzip 和 bzip2 会自动解压
+COPY                                               复制文件
+ENV                                                设置环境变量
+ARG                                                设置环境变量，仅在 Dockerfile 内有效
+    docker build --build-arg
+MAINTAINER                                         维护者
+USER                                               用户
+VOLUME                                             VOLUME
+WORKDIR                                            工作目录
+EXPOSE                                             端口
+```
+### 镜像分层
+- Dockerfile 中的每一行都产生一个新层
+![镜像分层](https://img2.mukewang.com/608d9d330001dd2819201080-500-284.jpg)
+### Dockerfile Demo
+1. 编写 Dockerfile 文件
+```
+FROM ubuntu:latest
+MAINTAINER ljh
+RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get install -y nginx
+COPY index.html /var/www/html
+ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
+EXPOSE 80
+```
+2. docker build -t hello_docker .
+3. docker run hello_docker
+4. localhost:80
 ---
-## [Docker Compose](https://docs.docker.com/compose/) 
-- [docker安装Ghost博客](https://www.cnblogs.com/xbblogs/p/9531069.html)
-1. Dockerfile 定义应用程序环境
-2. [docker-compose.yml](https://docs.docker.com/compose/compose-file/compose-file-v3/) 定义构成应用程序的服务
+
+## [Docker Compose](https://docs.docker.com/compose/)
+1. 基本步骤：
+    1. Dockerfile 定义应用程序环境
+    2. [docker-compose.yml](https://docs.docker.com/compose/compose-file/) 定义构成应用程序的服务
     ```
     build                           构建时的配置选项，可直接指定一个文件夹
     image                           指定镜像
     networks                        所属网路
     depends_on                      服务之间的依赖关系
     ```
-3. [docker-compose CLI](https://docs.docker.com/compose/reference/)
+    3. [docker-compose CLI](https://docs.docker.com/compose/reference/)
     ```
     build                           构建或重构 services
-    up -d                           创建并启动 containers
+    config                          验证并查看 Compose 文件
+    download                        停止和删除 containers, networks, images, and volumes
+    exec                            在正在运行的 container 中执行命令
+    logs                            查看 containers 输出
     ps                              列出 containers
-    logs                            查看 containers output
+    rm                              移除停止的 containers
     stop                            停止 services
-    rm                              删除已停止的 containers
+    up -d                           创建并启动 containers
     ```
+2. Docker Compose Demo
+    - [Get started with Docker Compose](https://docs.docker.com/compose/gettingstarted/)
+    - [Sample apps with Compose](https://docs.docker.com/compose/samples-for-compose/)
+    - [Docker 安装 Ghost 博客](https://www.cnblogs.com/xbblogs/p/9531069.html)
+3. [环境变量设置及其选择优先级](https://docs.docker.com/compose/environment-variables/)
+    1. Compose file
+    2. Shell environment variables
+    3. Environment file
+    4. Dockerfile
+    5. Variable is not defined
 ---
 ## 安装软件
 1. [MySQL](https://hub.docker.com/_/mysql)
 - [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
 docker run -d --name mysql -p 3306:3306 --privileged --restart=always \
--v D:/Docker/MySQL/my.cnf:/etc/mysql/my.cnf \
--v D:/Docker/MySQL/data:/var/lib/mysql \
+-v D:/Docker/Data/MySQL/my.cnf:/etc/mysql/my.cnf \
+-v D:/Docker/Data/MySQL/data:/var/lib/mysql \
+-v D:/Docker/Data/MySQL/files:/var/lib/mysql-files \
 -e MYSQL_ROOT_PASSWORD=root \
 mysql
 
@@ -207,8 +225,8 @@ influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --defa
 4. [Redis](https://hub.docker.com/_/redis)
 ```bash
 docker run -d --name redis -p 6379:6379 --restart=always \
--v D:/Docker/Redis/data:/data:rw \
--v D:/Docker/Redis/conf/redis.conf:/etc/redis/redis.conf:ro \
+-v D:/Docker/Data/Redis/data:/data:rw \
+-v D:/Docker/Data/Redis/conf/redis.conf:/etc/redis/redis.conf:ro \
 redis redis-server [/etc/redis/redis.conf]
 
 docker exec -it redis redis-cli
@@ -237,16 +255,16 @@ db.createUser({user: "ljh", pwd: "123456", roles: [{role: "readWrite", db: "spri
 - [Docker 安装 tomcat 并挂载目录](https://www.cnblogs.com/liyiran/p/12544715.html)
 ```bash
 docker run -d --name tomcat -p 8080:8080 \
--v D:/Docker/Tomcat/webapps:/usr/local/tomcat/webapps \
+-v D:/Docker/Data/Tomcat/webapps:/usr/local/tomcat/webapps \
 tomcat
 ```
 7. [Nginx](https://hub.docker.com/_/nginx)
 ```bash
 docker run -d --name nginx -p 80:80 --restart=always \
--v D:/Docker/Nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
--v D:/Docker/Nginx/conf/conf.d:/etc/nginx/conf.d \
--v D:/Docker/Nginx/log:/var/log/nginx \
--v D:/Docker/Nginx/html:/usr/share/nginx/html \
+-v D:/Docker/Data/Nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
+-v D:/Docker/Data/Nginx/conf/conf.d:/etc/nginx/conf.d \
+-v D:/Docker/Data/Nginx/log:/var/log/nginx \
+-v D:/Docker/Data/Nginx/html:/usr/share/nginx/html \
 nginx
 ```
 8. [Zookeeper](https://hub.docker.com/_/zookeeper)
@@ -268,6 +286,10 @@ echo srvr | nc localhost 2181
 
 docker run -it --rm --name ZookeeperCluster --link zoo1 --link zoo2 --link zoo3 --net docker_net zookeeper zkCli.sh -server zoo1:2181,zoo2:2181,zoo3:2181
 ```
+- [Windows 下 docker 安装 zookeeper](https://blog.csdn.net/m0_67401055/article/details/124777613)
+```bash
+docker run -d --name zookeeper -p 2181:2181 --restart=always zookeeper
+```
 9. [RabbitMQ](https://hub.docker.com/_/rabbitmq)
 - [Win10 Docker 安装 RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash
@@ -281,19 +303,27 @@ docker exec -it rabbitmq bash
         http://localhost:15672       Username:guest      Password:guest
     rabbitmq-plugins enable rabbitmq_mqtt
 ```
-10. [MinIO](https://hub.docker.com/r/minio/minio)
+10. [RocketMQ](https://hub.docker.com/r/rocketmqinc/rocketmq)
+- [docker-compose 部署 rocketmq](https://blog.csdn.net/oschina_41731918/article/details/123115102)
+- @see docker/compose/rocketmq/docker-compose.yml
+```bash
+docker compose up -d
+
+http://localhost:8180
+``` 
+11. [MinIO](https://hub.docker.com/r/minio/minio)
 - [MinIO's Docker Implementation](https://docs.min.io/docs/minio-docker-quickstart-guide.html)
 ```bash
 docker run -d --name minio -p 9000:9000 -p 9001:9001 \
--v D:/Docker/MinIO:/data \
--v D:/Docker/MinIO/config:/root/.minio \
+-v D:/Docker/Data/MinIO:/data \
+-v D:/Docker/Data/MinIO/config:/root/.minio \
 -e MINIO_ROOT_USER=minio \
 -e MINIO_ROOT_PASSWORD=minio123 \
 minio/minio server /data --console-address ":9001"
 
 http://localhost:9001/login
 ```
-11. [Nacos](https://hub.docker.com/r/nacos/nacos-server)
+12. [Nacos](https://hub.docker.com/r/nacos/nacos-server)
 - [Docker 部署 Nacos](https://www.cnblogs.com/serendipity-fzx/articles/15400618.html)
 ```bash
 docker run -d --name nacos -p 8848:8848 -e MODE=standalone nacos/nacos-server
@@ -308,21 +338,21 @@ docker run -d --name nacos -p 8848:8848 -p 9848:9848 -p 9849:9849 \
 -e MYSQL_SERVICE_DB_NAME=ry-config \
 nacos/nacos-server
 ```
-12. [Sentinel](https://hub.docker.com/r/bladex/sentinel-dashboard)
+13. [Sentinel](https://hub.docker.com/r/bladex/sentinel-dashboard)
 ```bash
 docker run -d --name sentinel -p 8858:8858 bladex/sentinel-dashboard
 ```
-13. [Jenkins](https://hub.docker.com/_/jenkins)
+14. [Jenkins](https://hub.docker.com/_/jenkins)
 - [Docker 快速安装 Jenkins 完美教程](https://www.cnblogs.com/fuzongle/p/12834080.html)
 ```bash
 docker run -d --name jenkins -p 8080:8080 -p 50000:50000 \
--v D:/Docker/Jenkins:/var/jenkins_home \
+-v D:/Docker/Data/Jenkins:/var/jenkins_home \
 [-v /etc/localtime:/etc/localtime \]
 jenkins
 
 http://localhost:8080
 ```
-14. [Ubuntu](https://hub.docker.com/_/ubuntu)
+15. [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash
 docker run -itd --name ubuntu --privileged ubuntu
 ```

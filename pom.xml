@@ -36,15 +36,16 @@
         <commons-configuration2.version>2.7</commons-configuration2.version>
         <commons-csv.version>1.9.0</commons-csv.version>
         <commons-email.version>1.5</commons-email.version>
-        <hutool.version>5.7.22</hutool.version>
+        <hutool.version>5.8.1</hutool.version>
         <curator.version>5.2.1</curator.version>
-        <tika.version>2.3.0</tika.version>
-        <jsoup.version>1.14.3</jsoup.version>
+        <tika.version>2.4.0</tika.version>
+        <jsoup.version>1.15.1</jsoup.version>
         <poi.version>5.2.2</poi.version>
         <nimbus-jose-jwt.version>9.22</nimbus-jose-jwt.version>
-        <okhttps.version>3.5.0</okhttps.version>
+        <okhttps.version>3.5.2</okhttps.version>
         <retrofit2.version>2.9.0</retrofit2.version>
-        <minio.version>8.3.9</minio.version>
+        <minio.version>8.4.1</minio.version>
+        <!-- fastjson 2.0.3 -->
         <fastjson.version>1.2.80</fastjson.version>
         <protostuff.version>1.8.0</protostuff.version>
         <javacv.version>1.5.7</javacv.version>

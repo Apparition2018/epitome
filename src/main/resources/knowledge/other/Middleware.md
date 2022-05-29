@@ -3,7 +3,7 @@
 ---
 ## Tomcat
 >### Tomcat 启动中文乱码
->1. 打开 D:\tts9\apache-tomcat-9.0.60\conf\logging.properties
+>1. 打开 D:\dev\apache-tomcat\conf\logging.properties
 >2. 修改 java.util.logging.ConsoleHandler.encoding = GBK
 >### [Tomcat 热部署](https://blog.csdn.net/w15321271041/article/details/80597962)
 >1. On 'Update' action: Update classes and resources

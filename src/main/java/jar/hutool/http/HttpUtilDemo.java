@@ -61,7 +61,7 @@ public class HttpUtilDemo extends Demo {
             }
 
             @Override
-            public void progress(long progressSize) {
+            public void progress(long total, long progressSize) {
                 p("已下载：" + FileUtil.readableFileSize(progressSize));
             }
 

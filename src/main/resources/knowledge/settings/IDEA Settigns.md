@@ -61,11 +61,13 @@
     2. HTML → Other → Wrap attributes: Do not wrap
     3. JavaScript → Spaces → Before parenthese → Function declaration parentheses 取消勾选
 ---
-## serialVersionUID (-g|-e)
+## Inspections (-g|-e)
     1. Settings → Editor → Inspections
     2. 搜索 serialVersionUID
         2.1 'serialVersionUID' field not declared 'private static final long' 勾选
         2.2 Serializable class without 'serialVersionUID' 勾选
+    3. Javadoc → Link specified as plain text 取消勾选
+    4. Naming conventions → Class → class naming convention 取消勾选 
 ---
 ## File and Code Templates (-g|-e)
     1. Settings → Editor → File and Code Templates

@@ -12,18 +12,13 @@
 ---
 ## 问题
 1. [Git 忽略提交 .gitignore](https://www.cnblogs.com/youyoui/p/8337147.html)
-2. [Git 和 GitHub 绑定 ssh key](https://blog.csdn.net/smiple9102/article/details/79254577)
-3. [解决 GitHub 打开、拉取、推送速度慢的问题](https://blog.csdn.net/natahew/article/details/81387885)
-4. [解决 GitHub 提交次数过多 .git 文件过大的问题？](https://www.zhihu.com/question/29769130)
-5. [解决 GitHub 网页上图片显示失败的问题](https://blog.csdn.net/qq_38232598/article/details/91346392)
+2. [解决 GitHub 提交次数过多 .git 文件过大的问题？](https://www.zhihu.com/question/29769130)
+3. [解决 GitHub 网页上图片显示失败的问题](https://blog.csdn.net/qq_38232598/article/details/91346392)
 ---
-## Git 常用命令速查表
-![Git 常用命令速查表](https://img-blog.csdn.net/20171126101742109)
-
----
-## Git Data Transport Commands
-![Git Data Transport Commands](http://www.findme.wang/Uploads/Editor/2017-04-13/58ef783b96ebd.png)
-
+## hosts
+1. [IPAddress.com](https://www.ipaddress.com)
+2. 查找 github.com 和 github.global.ssl.fastly.net 的 IP，并记录在 hosts 文件
+3. cmd → ipconfig /flushdns
 ---
 ## [配置多个 git 账号](https://blog.csdn.net/qq_33254766/article/details/122941664)
 1. 生成多个 SSH key
@@ -60,7 +55,7 @@ git config --global --unset user.email
 ```
 8. 设置局部用户名和邮箱
 ```
-git config user.name "one"; git config user.email "one@gmail.com" 
+git config user.name "one"; git config user.email "one@gmail.com"
 ```
 ---
 ## .gitconfig
@@ -77,6 +72,10 @@ git config user.name "one"; git config user.email "one@gmail.com"
 ```
 ---
 ## 命令
+- Git 常用命令速查表
+![Git 常用命令速查表](https://img-blog.csdn.net/20171126101742109)
+- Git Data Transport Commands
+![Git Data Transport Commands](http://www.findme.wang/Uploads/Editor/2017-04-13/58ef783b96ebd.png)
 ### [设置与配置](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E8%AE%BE%E7%BD%AE%E4%B8%8E%E9%85%8D%E7%BD%AE)
 ```
 help [COMMAND|GUIDE]                            帮助

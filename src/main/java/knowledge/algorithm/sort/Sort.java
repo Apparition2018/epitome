@@ -58,17 +58,18 @@ public class Sort extends Demo {
             long t1 = System.nanoTime();
             int temp;
             for (int i = 0, len = arr.length; i < len - 1; i++) {
-                // hasChange 表示本轮是否有进行交换，没有进行交换表示排序已完成
-                boolean hasChange = false;
+                // hasChanged 表示本轮是否有进行交换
+                boolean hasChanged = false;
                 for (int j = 0; j < len - 1 - i; j++) {
                     if (arr[j] > arr[j + 1]) {
                         temp = arr[j];
                         arr[j] = arr[j + 1];
                         arr[j + 1] = temp;
-                        hasChange = true;
+                        hasChanged = true;
                     }
                 }
-                if (!hasChange) {
+                // 没有进行交换表示排序已完成
+                if (!hasChanged) {
                     break;
                 }
             }
@@ -78,7 +79,7 @@ public class Sort extends Demo {
 
         /**
          * 挖坑法快速排序
-         * https://blog.c插入排序sdn.net/qq_36528114/article/details/78667034
+         * https://blog.csdn.net/qq_36528114/article/details/78667034
          */
         private static int[] quickSort(int[] arr, int l, int r) {
             if (l < r) {
