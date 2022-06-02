@@ -1,5 +1,7 @@
 # IDEA Settings
-
+- e: every time
+- g: global
+- o: optional
 ---
 ## 修改 .IntelliJIdea 位置
     1. %IDEA_HOME%\bin\idea.properties
@@ -11,17 +13,18 @@
         2.1 删除 C:\Users\Administrator\AppData\Local\JetBrains\IntelliJIdea
         2.2 删除 C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea
 ---
-## 自定义 VM Options
+## 自定义 VM Options (-o)
     1. %IDEA_HOME%\bin\idea64.exe.vmoptions
         -Xms1024m
         -Xmx2048m
         -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel
 ---
 ## Sync Settings
-    1. File → Manage IDE Settings → Sync Settings to JetBrains Account...
-    2. File → Manage IDE Settings → IDE Settings Sync → Sync Plugins Silently 勾选
+    1. File → Manage IDE Settings
+    2. Sync Settings to JetBrains Account...
+    3. IDE Settings Sync → Sync Plugins Silently 勾选
 ---
-## 安装 IDE Eval Reset (-e)
+## 安装 IDE Eval Reset (-o)
     1. Settings → Plguins → 设置图标 → Manage Plugin Repositories...
         1.1 添加 https://plugins.zhile.io
         1.2 Marketplace → 搜索并安装 IDE Eval Reset
@@ -49,8 +52,7 @@
 ---
 ## Code Folding
     1. Settings → Editor → General → Code Folding
-    2. Fold by default: → Genral
-    3. Imports 取消勾选
+    2. Fold by default: → Genral → Imports 取消勾选
 ---
 ## Font (-e)
     1. Settings → Editor → Font
@@ -59,15 +61,14 @@
 ## Code Style (-g)
     1. Settings → Editor → Code Style
     2. HTML → Other → Wrap attributes: Do not wrap
-    3. JavaScript → Spaces → Before parenthese → Function declaration parentheses 取消勾选
 ---
 ## Inspections (-g|-e)
     1. Settings → Editor → Inspections
     2. 搜索 serialVersionUID
         2.1 'serialVersionUID' field not declared 'private static final long' 勾选
         2.2 Serializable class without 'serialVersionUID' 勾选
-    3. Javadoc → Link specified as plain text 取消勾选
-    4. Naming conventions → Class → class naming convention 取消勾选 
+    3. Java → Javadoc → Link specified as plain text 取消勾选
+    4. Java → Naming conventions → Class → class naming convention 取消勾选 
 ---
 ## File and Code Templates (-g|-e)
     1. Settings → Editor → File and Code Templates
@@ -97,17 +98,18 @@
         4.5 Change → Java → Statement 勾选
 ---
 ## Use eclipse compiler (-g|-e)
-    1. Settings → Build, Execution, Deployment → Build Tools → Maven → Importing    
-        1.1 Detect compiler automatically 取消勾选
-    2. Settings → Build, Execution, Deployment → Compiler
-        2.1 Shared build process VM options: 
+    1. Settings → Build, Execution, Deployment
+    2. Build Tools → Maven → Importing
+        2.1 Detect compiler automatically 取消勾选
+    3. Compiler
+        3.1 Shared build process VM options: 
             -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\%version%\lombok-%version%.jar
-    3. Settings → Build, Execution, Deployment → Compiler → Java Compiler    
-        3.1 Use compiler: Eclipse
-    4. Settings → Build, Execution, Deployment → Compiler → Annotation Processors
-        4.1 Enable annotation processing 勾选
+        3.2 Java Compiler
+            3.2.1 Use compiler: Eclipse
+        3.3 Annotation Processors
+            3.3.1 Enable annotation processing 勾选
 ---
-## JavaScript version (-g)
+## JavaScript version
     1. Settings → Languages & Frameworks → JavaScript
     2. JavaScript language version: ECMAScript 6+
 ---
