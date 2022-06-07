@@ -82,20 +82,19 @@
          */
 ---
 ## TODO
-    1. Settings → Editor → TODO
-    2. Patterns → +
-        2.1 Pattern: \btodo-ljh\b.*
-        2.2 Use color scheme TODO default colors 取消勾选
-        2.3 Bold 勾选, Italic 取消勾选
-        2.4 Foreground #CC0033
-    3. Settings → Editor → Live Templates
-    4. user → +
-        4.1 Abbreviation: todoljh
-        4.2 Description: TODO-LJH
-        4.3 Template text: // TODO-LJH: $date$ $todo$
-        4.4 Edit variables
-            4.3.1 date → Expression:date()
-        4.5 Change → Java → Statement 勾选
+    1. Settings → Editor → TODO → Patterns
+        1.1 Patterns → +
+        1.2 Pattern: \btodo-ljh\b.*
+        1.3 Use color scheme TODO default colors 取消勾选
+        1.4 Bold 勾选, Italic 取消勾选
+        1.5 Foreground #CC0033
+    2. Settings → Editor → Live Templates
+        2.1 user → +
+        2.2 Abbreviation: todoljh
+        2.3 Description: TODO-LJH
+        2.4 Template text: // TODO-LJH: $date$ $todo$
+        2.5 Edit variables: Name:date → Expression:date()
+        2.6 Change → Java → Statement 勾选
 ---
 ## Use eclipse compiler (-g|-e)
     1. Settings → Build, Execution, Deployment
@@ -136,6 +135,6 @@
 ---
 ## Error running 'XxxApp': Command line is too long
     1. .idea/workspace.xml
-    2. 在 <component name="PropertiesComponent"></component> 里添加
-        2.1 <property name="dynamic.classpath" value="true" />
+    2. 在 <component name="PropertiesComponent" /> 里添加 
+        <property name="dynamic.classpath" value="true" /> 或 "dynamic.classpath": "true"
 ---

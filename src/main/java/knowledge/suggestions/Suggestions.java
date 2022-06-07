@@ -889,6 +889,7 @@ public class Suggestions extends Demo {
     }
 
     static class MyException extends Exception {
+        private static final long serialVersionUID = 4220795768762558938L;
         private List<Throwable> causes = new ArrayList<>();
 
         MyException(List<? extends Throwable> causes) {

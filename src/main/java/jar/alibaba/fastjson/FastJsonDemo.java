@@ -94,6 +94,3 @@ public class FastJsonDemo implements JsonDemo {
         p(jsonArray);
     }
 }
-
-
-

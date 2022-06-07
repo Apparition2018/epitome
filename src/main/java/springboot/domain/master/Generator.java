@@ -1,8 +1,6 @@
 package springboot.domain.master;
 
-import java.io.Serializable;
-
-public class Generator extends GeneratorKey implements Serializable {
+public class Generator extends GeneratorKey {
     private String name;
 
     private static final long serialVersionUID = 1L;

@@ -1,8 +1,6 @@
-// MarkDown CodeStyle
 // Prettier：https://www.prettier.cn/
-// NIO, AIO：https://coding.imooc.com/class/chapter/381.html
-// Mockito
-// xxl-job：https://blog.csdn.net/masson32/article/details/91503723
+// JavaIO三剑客之BIO/NIO/AIO：https://coding.imooc.com/class/chapter/381.html
+// xxl-job
 // Xerces, jaxb
 // asm, Cglib Nodep
 // iText, FOP
@@ -29,11 +27,9 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import l.demo.Demo;
 import l.demo.Person;
-import lombok.extern.slf4j.Slf4j;
 
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
-@Slf4j
 public class Test extends Demo {
 
     public static void main(String[] args) throws Exception {

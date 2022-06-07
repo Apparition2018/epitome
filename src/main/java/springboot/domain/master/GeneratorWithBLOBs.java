@@ -1,8 +1,6 @@
 package springboot.domain.master;
 
-import java.io.Serializable;
-
-public class GeneratorWithBLOBs extends Generator implements Serializable {
+public class GeneratorWithBLOBs extends Generator {
     private String context;
 
     private static final long serialVersionUID = 1L;

@@ -35,14 +35,15 @@ public class SpringObserverDemo {
         @Test
         public void testSpringListener() {
             // 获取 IOC 容器
-            AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-            // 注册监听者
-            applicationContext.register(SmsListener.class);
-            applicationContext.register(EmailListener.class);
-            // 刷新容器
-            applicationContext.refresh();
-            // 事件发布
-            applicationContext.publishEvent(new OrderEvent(this, "用户下单成功"));
+            try (AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext()) {
+                // 注册监听者
+                applicationContext.register(SmsListener.class);
+                applicationContext.register(EmailListener.class);
+                // 刷新容器
+                applicationContext.refresh();
+                // 事件发布
+                applicationContext.publishEvent(new OrderEvent(this, "用户下单成功"));
+            }
         }
 
 

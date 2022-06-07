@@ -117,7 +117,7 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
     @NoArgsConstructor
     @XmlRootElement(name = "student")
     @Schema(description = "学生")
-    public static class Student extends Person implements Serializable {
+    public static class Student extends Person {
         /**
          * 当一个类实现了可序列化接口，就要定义一个常量：版本号 (serialVersionUID)
          * <p>

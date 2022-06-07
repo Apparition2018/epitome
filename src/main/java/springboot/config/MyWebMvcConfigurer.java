@@ -1,7 +1,6 @@
 package springboot.config;
 
 import l.utils.DateUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -35,7 +34,6 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-@Slf4j
 @Configuration
 public class MyWebMvcConfigurer implements WebMvcConfigurer {
 

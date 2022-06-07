@@ -1,7 +1,5 @@
 package jar.hutool.util;
 
-import cn.hutool.core.lang.Editor;
-import cn.hutool.core.lang.Filter;
 import cn.hutool.core.util.ArrayUtil;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;

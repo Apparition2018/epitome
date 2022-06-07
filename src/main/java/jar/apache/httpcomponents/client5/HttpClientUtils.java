@@ -1,6 +1,5 @@
 package jar.apache.httpcomponents.client5;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.hc.client5.http.ClientProtocolException;
 import org.apache.hc.client5.http.auth.StandardAuthScheme;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
@@ -49,7 +48,6 @@ import java.util.stream.Collectors;
  * @author ljh
  * created on 2020/11/12 21:35
  */
-@Slf4j
 public class HttpClientUtils {
 
     private static volatile HttpClientUtils instance;

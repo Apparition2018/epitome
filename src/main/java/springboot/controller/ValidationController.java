@@ -6,7 +6,6 @@ import l.demo.CompanyEnum;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
@@ -36,7 +35,6 @@ import java.util.*;
  * @author ljh
  * created on 2019/8/8 19:39
  */
-@Slf4j
 @Validated
 @RestController
 @RequestMapping("/validation")

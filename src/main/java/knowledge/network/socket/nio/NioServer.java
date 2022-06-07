@@ -35,16 +35,17 @@ public class NioServer extends Demo {
      */
     public NioServer init(int port) throws IOException {
         // 获取一个 ServerSocket 通道
-        ServerSocketChannel serverChannel = ServerSocketChannel.open();
-        // 设置为非阻塞
-        serverChannel.configureBlocking(false);
-        // 绑定监听，配置 TCP 参数
-        serverChannel.socket().bind(new InetSocketAddress(port));
-        // 获取通道选择器
-        selector = Selector.open();
-        // 将通道选择器与通道绑定，并为该通道注册 SelectionKey.OP_ACCEPT 事件，
-        // 只有当该事件到达时，Selector.select() 会返回，否则一直阻塞。
-        serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+        try (ServerSocketChannel serverChannel = ServerSocketChannel.open()) {
+            // 设置为非阻塞
+            serverChannel.configureBlocking(false);
+            // 绑定监听，配置 TCP 参数
+            serverChannel.socket().bind(new InetSocketAddress(port));
+            // 获取通道选择器
+            selector = Selector.open();
+            // 将通道选择器与通道绑定，并为该通道注册 SelectionKey.OP_ACCEPT 事件，
+            // 只有当该事件到达时，Selector.select() 会返回，否则一直阻塞。
+            serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+        }
         return this;
     }
 
@@ -60,9 +61,11 @@ public class NioServer extends Demo {
                 // 删除已选的key，防止重复处理
                 ite.remove();
                 if (key.isAcceptable()) {
-                    ServerSocketChannel server = (ServerSocketChannel) key.channel();
-                    // 获得客户端连接通道
-                    SocketChannel channel = server.accept();
+                    SocketChannel channel;
+                    try (ServerSocketChannel server = (ServerSocketChannel) key.channel()) {
+                        // 获得客户端连接通道
+                        channel = server.accept();
+                    }
                     // 可以在任意位置调用这个方法，新的阻塞模式只会影响下面的 i/o 操作
                     channel.configureBlocking(false);
                     // 在与客户端连接成功后，为客户端通道注册 SelectionKey.OP_WRITE 事件。
@@ -72,8 +75,10 @@ public class NioServer extends Demo {
 
                 } else if (key.isWritable()) {
                     SocketChannel socketChannel = (SocketChannel) key.channel();
-                    FileInputStream fis = new FileInputStream(DEMO_FILE_PATH);
-                    FileChannel fileChannel = fis.getChannel();
+                    FileChannel fileChannel;
+                    try (FileInputStream fis = new FileInputStream(DEMO_FILE_PATH)) {
+                        fileChannel = fis.getChannel();
+                    }
                     // 500M 堆外内存
                     ByteBuffer byteBuffer = ByteBuffer.allocateDirect(524288000);
                     while (fileChannel.position() < fileChannel.size()) {

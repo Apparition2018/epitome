@@ -3,7 +3,8 @@ package knowledge.io.nio.file;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
@@ -45,13 +46,14 @@ public class FilesDemo extends Demo {
         Files.readAllLines(path).forEach(Demo::p);
 
         // 2.
-        Stream<String> lines = Files.lines(path);
-        lines.forEach(Demo::p);
+        try (Stream<String> lines = Files.lines(path)) {
+            lines.forEach(Demo::p);
+        }
 
         // 3.
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
-            while(null != (line = br.readLine())) {
+            while (null != (line = br.readLine())) {
                 p(line);
             }
         }

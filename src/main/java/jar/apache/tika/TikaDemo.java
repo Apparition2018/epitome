@@ -6,8 +6,9 @@ import org.apache.tika.detect.AutoDetectReader;
 import org.apache.tika.exception.TikaException;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * Tika
@@ -30,7 +31,7 @@ public class TikaDemo extends Demo {
         p(tika.parseToString(new File(DEMO_FILE_PATH)));
 
         // 文件字符编码方案 (character-encoding schema)
-        AutoDetectReader autoDetectReader = new AutoDetectReader(new FileInputStream(DEMO_FILE_PATH));
+        AutoDetectReader autoDetectReader = new AutoDetectReader(Files.newInputStream(Paths.get(DEMO_FILE_PATH)));
         p(autoDetectReader.getCharset().name()); // UTF-8
     }
 

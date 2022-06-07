@@ -4,6 +4,7 @@ import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -36,7 +37,7 @@ public class ZipUtils extends Demo {
      * 压缩
      */
     public void zip(String zipPath, String path, String... srcPaths) throws IOException {
-        ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(new File(zipPath)));
+        ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(new File(zipPath).toPath()));
         File[] srcFiles = new File[srcPaths.length];
         for (int i = 0; i < srcPaths.length; i++) {
             srcFiles[i] = new File(srcPaths[i]);
@@ -49,7 +50,7 @@ public class ZipUtils extends Demo {
      * 压缩
      */
     public void zip(File zipFile, String path, File... srcFiles) throws IOException {
-        ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipFile));
+        ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(zipFile.toPath()));
         zip(zos, path, srcFiles);
         zos.close();
     }
@@ -151,7 +152,7 @@ public class ZipUtils extends Demo {
                 continue;
             }
 
-            OutputStream os = new FileOutputStream(realFile);
+            OutputStream os = Files.newOutputStream(realFile.toPath());
             byte[] buf1 = new byte[1024];
             int len;
             while ((len = is.read(buf1)) > 0) {
