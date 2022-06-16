@@ -27,7 +27,7 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roa
 ```
 2. 下载地址：https://www.docker.com/products/docker-desktop
     或：https://hub.docker.com/editions/community/docker-ce-desktop-windows
-3. 设置 Docker Engine：Settings → Docker Engine
+3. Settings → Docker Engine
 ```
   "registry-mirrors": [
     "https://docker-cn.com",
@@ -35,7 +35,8 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roa
     "https://docker.mirrors.ustc.edu.cn"
   ],
 ```
-4. 配置 [.wslconfig](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
+4. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
+5. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
 ---
 ## Linux 安装 Docker
 ```bash
@@ -52,8 +53,6 @@ apt-get autoremove docker-ce-*
 rm -rf /etc/systemd/system/docker.service.d
 rm -rf /var/lib/docker
 ```
-4. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
-5. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
 ---
 ## [常用命令](https://docs.docker.com/engine/reference/commandline/docker/)
 ```

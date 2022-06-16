@@ -58,10 +58,6 @@
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
 ---
-## Code Style (-g)
-    1. Settings → Editor → Code Style
-    2. HTML → Other → Wrap attributes: Do not wrap
----
 ## Inspections (-g|-e)
     1. Settings → Editor → Inspections
     2. 搜索 serialVersionUID
@@ -102,7 +98,7 @@
         2.1 Detect compiler automatically 取消勾选
     3. Compiler
         3.1 Shared build process VM options: 
-            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\%version%\lombok-%version%.jar
+            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar
         3.2 Java Compiler
             3.2.1 Use compiler: Eclipse
         3.3 Annotation Processors
