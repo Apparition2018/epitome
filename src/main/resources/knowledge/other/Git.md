@@ -8,12 +8,10 @@
 4. [Git 教程 | 易百教程](https://www.yiibai.com/git)
 5. [Git 教程 - 廖雪峰](https://www.liaoxuefeng.com/wiki/896043488029600)
 6. [Git 术语及中英文对照](https://blog.csdn.net/xufive/article/details/84647423)
-7. [github/gitignore](https://github.com/github/gitignore)
 ---
 ## 问题
-1. [Git 忽略提交 .gitignore](https://www.cnblogs.com/youyoui/p/8337147.html)
-2. [解决 GitHub 提交次数过多 .git 文件过大的问题？](https://www.zhihu.com/question/29769130)
-3. [解决 GitHub 网页上图片显示失败的问题](https://blog.csdn.net/qq_38232598/article/details/91346392)
+1. [解决 GitHub 提交次数过多 .git 文件过大的问题？](https://www.zhihu.com/question/29769130)
+2[解决 GitHub 网页上图片显示失败的问题](https://blog.csdn.net/qq_38232598/article/details/91346392)
 ---
 ## hosts
 1. [IPAddress.com](https://www.ipaddress.com)
@@ -59,6 +57,9 @@ git config user.name "one"; git config user.email "one@gmail.com"
 ```
 ---
 ## .gitconfig
+- [gitignore Documentation](https://git-scm.com/docs/gitignore)
+- [github/gitignore](https://github.com/github/gitignore)
+- [Git 忽略提交 .gitignore](https://www.cnblogs.com/youyoui/p/8337147.html)
 ```
 [user]
 	name = Apparition2018

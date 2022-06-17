@@ -2,6 +2,7 @@
 - e: every time
 - g: global
 - o: optional
+- u: unknown
 ---
 ## 修改 .IntelliJIdea 位置
     1. %IDEA_HOME%\bin\idea.properties
@@ -107,6 +108,20 @@
 ## JavaScript version
     1. Settings → Languages & Frameworks → JavaScript
     2. JavaScript language version: ECMAScript 6+
+---
+## [ESLint](https://www.jetbrains.com/help/idea/eslint.html)
+    1. npm install --g eslint
+    2. npm install standard --global
+    3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
+        3.1 Manual ESLint configuration 勾选
+        3.2 ESLint package: ~\AppData\Roaming\npm\node_modules\standard
+        3.3 Run eslint --fix on save 勾选
+---
+## [Prettier](https://www.jetbrains.com/help/idea/prettier.html) (n)
+    1. npm install --global prettier
+    2. Settings → Languages & Frameworks → JavaScript → Prettier
+        2.1 Prettier package: ~\AppData\Roaming\npm\node_modules\prettier
+        2.1 On Save 勾选
 ---
 ## Actions on Save (-e)
     1. Settings → Tools → Actions on Save
