@@ -19,7 +19,7 @@ Ctrl + Shift + W        Alt + Shift + ←         Alt + Shift + ←             
 Ctrl + F5               Ctrl + R                                            刷新
 Ctrl + F9               Ctrl + B                                            编译
 
-                        Ctrl + P                                            跳转到文件
+Ctrl + Shift + N        Ctrl + P                Ctrl + P                    跳转到文件
                         
                         Ctrl + L                                            清除控制台
                         

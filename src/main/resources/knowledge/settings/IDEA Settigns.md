@@ -105,11 +105,11 @@
         3.3 Annotation Processors
             3.3.1 Enable annotation processing 勾选
 ---
-## JavaScript version
+## JavaScript version (-u)
     1. Settings → Languages & Frameworks → JavaScript
     2. JavaScript language version: ECMAScript 6+
 ---
-## [ESLint](https://www.jetbrains.com/help/idea/eslint.html)
+## [ESLint](https://www.jetbrains.com/help/idea/eslint.html) (-u)
     1. npm install --g eslint
     2. npm install standard --global
     3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
@@ -117,7 +117,7 @@
         3.2 ESLint package: ~\AppData\Roaming\npm\node_modules\standard
         3.3 Run eslint --fix on save 勾选
 ---
-## [Prettier](https://www.jetbrains.com/help/idea/prettier.html) (n)
+## [Prettier](https://www.jetbrains.com/help/idea/prettier.html) (-u)
     1. npm install --global prettier
     2. Settings → Languages & Frameworks → JavaScript → Prettier
         2.1 Prettier package: ~\AppData\Roaming\npm\node_modules\prettier
@@ -149,4 +149,3 @@
     2. 在 <component name="PropertiesComponent" /> 里添加 
         <property name="dynamic.classpath" value="true" /> 或 "dynamic.classpath": "true"
 ---
-

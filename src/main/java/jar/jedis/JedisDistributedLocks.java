@@ -1,6 +1,5 @@
-package jar.jedis.case_;
+package jar.jedis;
 
-import jar.jedis.JedisUtils;
 import l.utils.DateUtils;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
@@ -20,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * @author Arsenal
  * created on 2021/5/11 1:47
  */
-public class RedisDistributedLocks {
+public class JedisDistributedLocks {
 
     private static final String MONEY = "MONEY";
     private static final String MONEY_LOCK = "MONEY_LOCK";
@@ -74,7 +73,8 @@ public class RedisDistributedLocks {
         try (Jedis jedis = JedisUtils.getResource()) {
             jedis.set(MONEY, "1000");
         }
-        Runnable runnable = this.lock();
+        // Runnable runnable = this.lock();
+        Runnable runnable = this.notLock();
         for (int i = 0; i < 10; i++) {
             Thread thread = new Thread(runnable, String.valueOf(i));
             thread.start();

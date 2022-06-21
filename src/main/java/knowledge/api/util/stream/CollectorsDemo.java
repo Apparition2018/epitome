@@ -5,6 +5,7 @@ import l.demo.Person;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
@@ -114,7 +115,7 @@ public class CollectorsDemo extends Demo {
         Function<Person, Person> round = person -> {
             Integer age = person.getAge();
             BigDecimal decimal = new BigDecimal(age);
-            age = decimal.setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
+            age = decimal.setScale(0, RoundingMode.HALF_UP).intValue();
             person.setAge(age);
             return person;
         };
