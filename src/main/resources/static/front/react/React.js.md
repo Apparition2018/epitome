@@ -2,29 +2,46 @@
 
 ---
 ## 参考网站
-1. [React 官方中文文档](https://react.docschina.org)
+1. [React 官方中文文档](https://react.docschina.org/docs/getting-started.html)
 2. [Ant Design Mobile](https://mobile.ant.design/index-cn)
 ---
-## 特性
-1. 声明式
-2. 组件化
-3. 一次学习，随处编写
----
-## Create React App
-```bash
-npx create-react-app my-app
-cd my-app
-npm start
-```
+## [压缩 JavaScript 代码](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)
+1. `npm install terser`
+2. `npx terser -c -m -o button.min.js -- button.js`
 ---
 ## [JSX](https://www.runoob.com/react/react-jsx.html)
->### 简介
->1. JavaScript 的语法扩展
->2. 可以使用花括号 {} 内嵌任何 JavaScript Expressions
->3. JSX 属性：className，htmlFor ...
->### 编译后
->1. 一种语法糖 - React.createElement()
->2. ReactElement 对象
+1. 简介
+    1. JavaScript 的语法扩展
+    2. 可以使用花括号 {} 内嵌任何 JavaScript Expressions
+    3. JSX 属性：className，htmlFor ...
+2. 编译后
+    1. 一种语法糖 - React.createElement()
+    2. ReactElement 对象
+---
+## [Create React App](https://react.docschina.org/docs/create-a-new-react-app.html#create-react-app)
+- [facebook/create-react-app](https://github.com/facebook/create-react-app)
+- [User Guide](https://create-react-app.dev/docs/getting-started)
+```bash
+npx create-react-app my-app [--template typescript]
+# or
+npm init react-app my-app
+# or
+yarn create react-app my-app
+
+cd my-app
+
+npm start
+# or
+yarn start
+
+npm test
+# or
+yarn test
+
+npm run build
+# or
+yarn build
+```
 ---
 ## 基本概念
 1. Props（属性）- NameCard.js
