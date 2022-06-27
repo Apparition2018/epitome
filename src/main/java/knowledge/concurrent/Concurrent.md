@@ -38,7 +38,7 @@
             UPDATE good SET quantity = newQuantity, updated_at = newUpdatedAt WHERE id = 1 AND updated_at = oldUpdatedAt;
             ```
     3. 悲观锁：`SELECT ... FOR UPDATE`  
-2. Redis：@see RedisDistributedLocks
+2. Redis：@see JedisDistributedLocks
     ```
     互斥性             只有一个客户端持有锁                                                      SETNX
     不会死锁           即使一个客户端持有锁的期间由于崩溃而没有主动释放锁，其他客户端后续也能获取锁   获取锁时设置过期时间，EXPIRE

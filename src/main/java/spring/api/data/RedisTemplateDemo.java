@@ -29,6 +29,11 @@ public class RedisTemplateDemo extends Demo {
     private RedisTemplate<String, Person> redisTemplate;
 
     @Test
+    public void list() {
+
+    }
+
+    @Test
     public void hash() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         Map<String, Object> map = PropertyUtils.describe(personList.get(0));
         // 设置多个键值对
