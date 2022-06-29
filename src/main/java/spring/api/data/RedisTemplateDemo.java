@@ -2,10 +2,11 @@ package spring.api.data;
 
 import com.google.common.collect.Lists;
 import l.demo.Demo;
-import l.demo.Person;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import springboot.EpitomeApplication;
 
@@ -23,34 +24,53 @@ import java.util.concurrent.TimeUnit;
 @SpringBootTest(classes = EpitomeApplication.class)
 public class RedisTemplateDemo extends Demo {
 
-    private static final String KEY = "Person:1";
+    private static final String LIST_KEY = "List";
+    private static final String MAP_KEY = "Map:%s";
 
     @Resource
-    private RedisTemplate<String, Person> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Test
     public void list() {
-
+        // 删除指定键
+        redisTemplate.delete(LIST_KEY);
+        ListOperations<String, Object> listOperations = redisTemplate.opsForList();
+        // rightPushAll
+        listOperations.rightPushAll(LIST_KEY, 1, 2, 3, 4, 5);
+        // rightPush
+        listOperations.rightPush(LIST_KEY, 6);
+        // 设置指定索引的值
+        listOperations.set(LIST_KEY, 5, 7);
+        // 删除指定键指定个数的值
+        listOperations.remove(LIST_KEY, 2, 3);
+        // 设置过期时间
+        redisTemplate.expire(LIST_KEY, 1, TimeUnit.MINUTES);
+        System.err.println("长度：" + listOperations.size(LIST_KEY));
+        System.err.println("获取指定范围值：" + listOperations.range(LIST_KEY, 0, -1));
+        System.err.println("获取指定索引的值：" + listOperations.index(LIST_KEY, 2));
+        System.err.println("获取指定值在列表第一次出现的索引：" + listOperations.indexOf(LIST_KEY, 2));
     }
 
     @Test
     public void hash() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        HashOperations<String, Object, Object> hashOperations = redisTemplate.opsForHash();
         Map<String, Object> map = PropertyUtils.describe(personList.get(0));
+        String key = String.format(MAP_KEY, personList.get(0).getId());
         // 设置多个键值对
-        redisTemplate.opsForHash().putAll(KEY, map);
-        // 存在指定 key，才设置 value
-        redisTemplate.opsForHash().putIfAbsent(KEY, "id", 1);
+        hashOperations.putAll(key, map);
+        // 存在指定键，才设置值
+        hashOperations.putIfAbsent(key, "id", 1);
         // 设置过期时间
-        redisTemplate.expire(KEY, 1, TimeUnit.MINUTES);
+        redisTemplate.expire(key, 1, TimeUnit.MINUTES);
 
-        System.out.println("获取所有 keys：" + redisTemplate.opsForHash().keys(KEY));
-        System.out.println("是否存在 key：" + redisTemplate.opsForHash().hasKey(KEY, "id"));
-        System.out.println("获取所有键值对：" + redisTemplate.opsForHash().entries(KEY));
-        System.out.println("获取所有 values：" + redisTemplate.opsForHash().values(KEY));
-        System.out.println("获取指定 key 的 value：" + redisTemplate.opsForHash().multiGet(KEY, Lists.newArrayList("id", "name")));
+        System.out.println("获取所有键：" + hashOperations.keys(key));
+        System.out.println("是否存在键：" + hashOperations.hasKey(key, "id"));
+        System.out.println("获取所有键值对：" + hashOperations.entries(key));
+        System.out.println("获取所有值：" + hashOperations.values(key));
+        System.out.println("获取指定键的值：" + hashOperations.multiGet(key, Lists.newArrayList("id", "name")));
 
-        // 删除指定 key
-        redisTemplate.opsForHash().delete(KEY, "otherInfo");
+        // 删除指定键的指定hasKeys
+        hashOperations.delete(key, "otherInfo");
     }
 
 }
