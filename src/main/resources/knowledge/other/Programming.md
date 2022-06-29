@@ -1,9 +1,6 @@
 # 编程
 
 ---
-## 
-1. [AobingJava/JavaFamily](https://github.com/AobingJava/JavaFamily)
----
 ## 收藏
 1. [程序员你为什么这么累？(编程规范)](https://zhuanlan.zhihu.com/p/28705206)
 2. [反向代理为何叫反向代理？](https://www.zhihu.com/question/24723688)
@@ -29,36 +26,36 @@
 1. [一个著名的日志系统是怎么设计出来的？](https://mp.weixin.qq.com/s/XiCky-Z8-n4vqItJVHjDIg)
 2. [Java日志体系居然这么复杂？——架构篇](https://zhuanlan.zhihu.com/p/101104008)
 3. [五年Java经验，面试还是说不出日志该怎么写更好？——日志规范与最佳实践篇](https://zhuanlan.zhihu.com/p/101597639)
->1. 日志门面
->    1. slf4j: Simple Logging Facade for Java
->    2. jboss-logging
->    3. commons-logging
->2. 日志实现
->    1. log4j: Log for Java
->    2. JUL: java.util.logging
->    3. log4j2
->    4. logback
->3. 阿里日志规约：
->   1. 应用中不应直接使用日志系统 (Log4j, Logback) 中的 API，而应依赖使用日志框架 SLF4J 中的 API。因为使用过门面模式的日志框架，有利于维护各个类的日志处理方式统一
->       ```
->       import org.slf4j.Logger;
->       import org.slf4j.LoggerFactory;
->       
->       Logger logger = LoggerFactory.getLogger(Test.class);
->       logger.info("Hello World!")
->       ```
->   2. 当天日志，以“应用名.log”来保存，保存在/home/admin/应用名/logs/目录下，过往日志格式为: {logname}.log.{保存日期}，日期格式：yyyy-MM-dd
->   3. 对于 trace/debug/info 级别的日志输出，必须进行日志级别的开关判断
->       ```
->       if (logger.isDebugEnabled()) {
->          logger.debug("Current ID is: {} and name is: {}", id, getName());
->       }
->       ```
->   4. 避免重复打印日志，浪费磁盘空间，务必在日志配置文件中设置 additivity=false
->   5. 异常信息应该包括两类信息：案发现场信息和异常堆栈信息。如果不处理，那么通过关键字 throws 往上抛出
->   6. 日志打印时禁止直接用 JSON 工具将对象转换成 String
->   7. 谨慎地记录日志。生产环境禁止输出 debug 日志；有选择地输出 info 日志；如果使用 warn 来记录刚上线时的业务行为信息，一定要注意日志输出量的问题，并记得及时删除这些观察日志
->   8. 可以使用 warn 日志级别来记录用户输入参数错误的情况，避免用户投诉时，无所适从。如非必要，请不要在此场景打出 error 级别，避免频繁报警
+### 日志门面
+1. slf4j: Simple Logging Facade for Java
+2. jboss-logging
+3. commons-logging
+### 日志实现
+1. log4j: Log for Java
+2. JUL: java.util.logging
+3. log4j2
+4. logback
+### 阿里编程规约：
+1. 应用中不应直接使用日志系统 (Log4j, Logback) 中的 API，而应依赖使用日志框架 SLF4J 中的 API。因为使用过门面模式的日志框架，有利于维护各个类的日志处理方式统一
+```
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+Logger logger = LoggerFactory.getLogger(Test.class);
+logger.info("Hello World!")
+```
+2. 当天日志，以“应用名.log”来保存，保存在/home/admin/应用名/logs/目录下，过往日志格式为: {logname}.log.{保存日期}，日期格式：yyyy-MM-dd
+3. 对于 trace/debug/info 级别的日志输出，必须进行日志级别的开关判断
+```
+if (logger.isDebugEnabled()) {
+   logger.debug("Current ID is: {} and name is: {}", id, getName());
+}
+```
+4. 避免重复打印日志，浪费磁盘空间，务必在日志配置文件中设置 additivity=false
+5. 异常信息应该包括两类信息：案发现场信息和异常堆栈信息。如果不处理，那么通过关键字 throws 往上抛出
+6. 日志打印时禁止直接用 JSON 工具将对象转换成 String
+7. 谨慎地记录日志。生产环境禁止输出 debug 日志；有选择地输出 info 日志；如果使用 warn 来记录刚上线时的业务行为信息，一定要注意日志输出量的问题，并记得及时删除这些观察日志
+8. 可以使用 warn 日志级别来记录用户输入参数错误的情况，避免用户投诉时，无所适从。如非必要，请不要在此场景打出 error 级别，避免频繁报警
 ---
 ## 缓存
 1. [如何优雅的设计和使用缓存？](https://juejin.cn/post/6844903665845665805)
@@ -73,16 +70,16 @@
 4. [WebService是什么？他究竟和WebSocket有什么关系？](https://cloud.tencent.com/developer/article/1405501)
 5. [HTTP，TCP， socket，RPC 与gRPC都是啥？](https://www.jianshu.com/p/959030de7f1c)
 6. [阿里P8架构师谈：Restful、SOAP、RPC、SOA、微服务之间的区别](https://youzhixueyuan.com/the-difference-between-restful-soap-rpc-soa-and-micro-service.html)
->### Web Services
->1. [Web Services——重整山河待后生](https://zhuanlan.zhihu.com/p/26252433)
+### Web Services
+1. [Web Services——重整山河待后生](https://zhuanlan.zhihu.com/p/26252433)
 ---
 ## API 设计
->### GraphQL
->1. [GraphQL | 一种为你的 API 而生的查询语言](https://graphql.cn)
->2. [使用 GraphQL 的 6 个月](https://zhuanlan.zhihu.com/p/139226118)
->3. [GraphQL 为何没有火起来?](https://www.zhihu.com/question/38596306/answer/79714979)
->### Google API Design Guide
->1. [Google API Design Guide](https://www.bookstack.cn/read/API-design-guide/API-design-guide-README.md)
+### GraphQL
+1. [GraphQL | 一种为你的 API 而生的查询语言](https://graphql.cn)
+2. [使用 GraphQL 的 6 个月](https://zhuanlan.zhihu.com/p/139226118)
+3. [GraphQL 为何没有火起来?](https://www.zhihu.com/question/38596306/answer/79714979)
+### Google API Design Guide
+1. [Google API Design Guide](https://www.bookstack.cn/read/API-design-guide/API-design-guide-README.md)
 ---
 ## Web
 1. [什么是跨域？为什么要禁止跨域？怎样跨域？](https://blog.csdn.net/qq_28773159/article/details/104834167)
@@ -90,6 +87,12 @@
 ## Token
 1. [RESTful登录设计（基于Spring及Redis的Token鉴权）](www.scienjus.com/restful-token-authorization/)
 2. [session与token的区别](https://www.cnblogs.com/shijianchuzhenzhi/p/12317439.html)
+---
+## 测试
+### JMeter
+1. [JMeter 接口性能压测](https://blog.csdn.net/qq_30654043/article/details/124550052)
+2. [JMeter 多用户 token 使用](https://blog.csdn.net/lluozh2015/article/details/122552565)
+- 解决 HTTP 请求响应参数中文乱码：修改 jmeter.properties 文件，`sampleresult.default.encoding=UTF-8`
 ---
 ## 注释
 ```

@@ -105,12 +105,12 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
   // eslint
-  // "eslint.format.enable": true,
-  // "editor.codeActionsOnSave": {
-  //   "source.fixAll.eslint": true
-  // },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"]
 }
 ```
 ---
