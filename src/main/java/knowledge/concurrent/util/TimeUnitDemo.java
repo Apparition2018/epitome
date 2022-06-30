@@ -30,7 +30,7 @@ public class TimeUnitDemo {
 
     /**
      * void	    sleep(long timeout)
-     * 使用此单元执行 Thread.sleep.这是将时间参数转换为 Thread.sleep 方法所需格式的便捷方法
+     * 使用此时间单位执行Thread.sleep
      */
     @Test
     public void sleep() throws InterruptedException {

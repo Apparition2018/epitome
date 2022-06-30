@@ -1,6 +1,9 @@
 # VS Code Settings
 
 ---
+## Reference
+1. [VS Code + ESLint + Prettier + Git Hooks](https://zhuanlan.zhihu.com/p/444925446)
+---
 ## extensions-dir
     1. 找到 vscode 快捷方式位置
     2. 右键 → 属性 → 目标

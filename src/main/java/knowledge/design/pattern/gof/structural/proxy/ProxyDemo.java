@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 代理模式：为原始对象提供一个代理以控制对这个对象的访问，在到达原始对象之前或之后执行某些操作
@@ -56,7 +57,7 @@ public class ProxyDemo {
         static class QueryService implements Query {
             @SneakyThrows
             public QueryService() {
-                Thread.sleep(1000);
+                TimeUnit.SECONDS.sleep(1);
             }
 
             @Override
@@ -119,7 +120,7 @@ public class ProxyDemo {
             @SneakyThrows
             @Override
             public Video download(int id) {
-                Thread.sleep(100);
+                TimeUnit.MILLISECONDS.sleep(100);
                 return new Video(id);
             }
         }
