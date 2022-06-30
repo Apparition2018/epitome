@@ -44,18 +44,21 @@ yarn build
 ```
 ---
 ## 基本概念
-1. Props（属性）- NameCard.js
+1. [React.Component](https://zh-hans.reactjs.org/docs/react-component.html)
+    - 要定义 React 组件类，需要 extend React.Component
+    - 如：`class ShoppingList extends React.Component {}`
+2. Props（属性）- NameCard.js
     - 组件像一个函数一样，接受特定的不可变的输入(props)，产出特定的输出(React elements)，纯函数
     - V = f(props) 
-2. State（状态）- LikesButton.js
+3. State（状态）- LikesButton.js
     - 组件内部的数据，可以动态改变
     - this.setState() 是更新 state 的唯一途径
-3. 生命周期 - DigitalClock.js  
+4. 生命周期 - DigitalClock.js  
     <img alt="生命周期" src="https://img3.mukewang.com/60785824000118b219201080.jpg" width="500"/>
-4. Forms（表单）- CommentBox.js
+5. Forms（表单）- CommentBox.js
     - 表单元素和其它 DOM 元素的区别
     - Controlled Components - 受控组件
-5. Context - theme-context.js, ThemeBar.js
+6. Context - theme-context.js, ThemeBar.js
    - 共享全局数据
    - 不要仅仅为了避免在几个层级下的组件传递 props 而使用 context
 ---
