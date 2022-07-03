@@ -13,6 +13,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.util.ResourceUtils;
 
+import java.util.Objects;
+
 /**
  * @author ljh
  * created on 2019/8/8 19:39
@@ -35,6 +37,7 @@ public class MasterDataSourceConfig {
         bean.setDataSource(dataSource());
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(ResourceUtils.CLASSPATH_URL_PREFIX + "mybatis/mapper/master/*.xml"));
         bean.setTypeAliasesPackage("springboot.domain.master");
+        Objects.requireNonNull(bean.getObject()).getConfiguration().setMapUnderscoreToCamelCase(Boolean.TRUE);
         return bean.getObject();
     }
 
