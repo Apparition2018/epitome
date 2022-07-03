@@ -222,11 +222,12 @@ influx v1 auth create --read-bucket 303f1c88eaa4473a --write-bucket 303f1c88eaa4
 influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --default
 ```
 4. [Redis](https://hub.docker.com/_/redis)
+- [redis.conf](http://download.redis.io/redis-stable/redis.conf)
 ```bash
 docker run -d --name redis -p 6379:6379 --restart=always \
 -v D:/Docker/Data/Redis/data:/data:rw \
 -v D:/Docker/Data/Redis/conf/redis.conf:/etc/redis/redis.conf:ro \
-redis redis-server [/etc/redis/redis.conf]
+redis redis-server ../etc/redis/redis.conf
 
 docker exec -it redis redis-cli
 ```

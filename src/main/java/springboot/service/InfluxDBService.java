@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * created on 2021/9/3 22:44
  */
-@Service
+//@Service
 @Slf4j
 @AllArgsConstructor
 public class InfluxDBService {
