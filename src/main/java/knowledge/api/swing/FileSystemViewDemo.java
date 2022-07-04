@@ -3,7 +3,7 @@ package knowledge.api.swing;
 import javax.swing.filechooser.FileSystemView;
 
 /**
- * FileSystemViewDemo
+ * FileSystemView
  *
  * @author ljh
  * created on 2022/4/5 0:42

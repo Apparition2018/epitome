@@ -3,7 +3,6 @@ package knowledge.concurrent.util;
 import com.google.common.collect.Lists;
 import l.demo.Demo;
 import l.demo.Person;
-import l.demo.Person.Student;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
 
@@ -55,36 +54,61 @@ import java.util.stream.IntStream;
 public class Atomic extends Demo {
 
     /**
-     * Reference    引用类型
+     * AtomicReference      原子引用
      * J.U.C 之 Atomic 框架：AtomicReference：https://segmentfault.com/a/1190000015831791
      */
     @Test
-    public void testReference() {
-        // AtomicStampedReference 为了解决 CAS 操作可能存在的 ABA 问题
-        // oldValue = null, oldVersion = 0
-        AtomicStampedReference<Person> atomicStampedRef = new AtomicStampedReference<>(null, 0);
+    public void testAtomicReference() {
+        // 初始引用
+        Person initRef = personList.get(0);
+        // 期望引用（旧的引用）
+        Person expectedRef;
+        // 新的引用
+        Person newRef = personList.get(1);
+
+        /* 1 AtomicReference */
+        AtomicReference<Person> atomicRef = new AtomicReference<>(initRef);
+        expectedRef = atomicRef.get();
+        atomicRef.compareAndSet(expectedRef, newRef);
+        p(atomicRef.get());
+
+        /* 2 AtomicStampedReference */
+        // AtomicStampedReference 加入 stamp（可理解成版本号，可记录引用被更改了多少次），解决 CAS 操作可能存在的 ABA 问题
+        // 初始戳
+        int initialStamp = 0;
+        AtomicStampedReference<Person> atomicStampedRef = new AtomicStampedReference<>(initRef, initialStamp);
         int[] stampHolder = new int[1];
-        // 获取 oldValue，同时把 oldVersion 放入 stampHolder
-        Person oldPerson = atomicStampedRef.get(stampHolder);
-        int oldStampVersion = stampHolder[0];
-        atomicStampedRef.compareAndSet(oldPerson, new Person(1, "张三"), oldStampVersion, oldStampVersion + 1);
+        // 获取旧的引用，并把 initialStamp 放入 stampHolder[0]
+        expectedRef = atomicStampedRef.get(stampHolder);
+        // 期望戳
+        int expectedStamp = stampHolder[0];
+        // 新的戳
+        int newStamp = expectedStamp++;
+        atomicStampedRef.compareAndSet(expectedRef, newRef, expectedStamp, newStamp);
         p(atomicStampedRef.getReference());
 
-        // AtomicMarkableReference，使用 boolean 来检查引用是否被更改过，而不考虑中间更改了几次
-        AtomicMarkableReference<Student> atomicMarkableRef = new AtomicMarkableReference<>(null, false);
+        /* 3 AtomicMarkableReference */
+        // AtomicMarkableReference 使用 boolean 来检查引用是否被更改过，而不考虑引用被更改了多少次
+        // 初始标记
+        boolean initMark = false;
+        AtomicMarkableReference<Person> atomicMarkableRef = new AtomicMarkableReference<>(initRef, initMark);
         boolean[] markHolder = new boolean[1];
-        Student oldStudent = atomicMarkableRef.get(markHolder);
-        boolean oldMarkVersion = markHolder[0];
-        atomicMarkableRef.compareAndSet(oldStudent, new Student(1, "张三"), oldMarkVersion, !oldMarkVersion);
+        // 获取旧的引用，并把 initMark 放入 markHolder[0]
+        expectedRef = atomicMarkableRef.get(markHolder);
+        // 期望标记
+        boolean expectedMark = markHolder[0];
+        // 新的标记
+        boolean newMark = !expectedMark;
+        atomicMarkableRef.compareAndSet(expectedRef, newRef, expectedMark, newMark);
         p(atomicMarkableRef.getReference());
     }
 
     /**
-     * Addr     累加器
+     * Adder     累加器
      * <p>
      * AtomicLong 多线程下，存在 flush() 和 refresh()，让其它线程感知变化，耗费很多资源，而且高并发场景下 CAS 冲突概率大
      * <p>
-     * LongAddr 引入了分段累加的概念，内部两个参数参与计数：变量 base 和 数组 Cell[]
+     * LongAdder 引入了分段累加的概念，内部两个参数参与计数：变量 base 和 数组 Cell[]
      * 1.base：竞争不激烈的情况下，直接把累加结果改到 base 变量上
      * 2.Cell[]：竞争激烈的情况下，各个线程会分散累加到自己所对应的 Cell[] 数组的某一个对象中，而不会大家共用同一个，在最后才 sum() 求和，而不需要 flush() 和 refresh()
      * <p>
