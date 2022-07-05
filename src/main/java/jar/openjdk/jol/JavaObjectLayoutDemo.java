@@ -5,13 +5,17 @@ import org.openjdk.jol.info.ClassLayout;
 
 /**
  * JOL: Java Object Layout
- * 1.Object Header：对象头。① Mark Word，② Class Pointer
- * 2.Instance Data：实例数据
- * 3.Padding：对齐填充，填充至8字节的整数倍
  * <p>
- * Java 对象头内存模型：https://blog.csdn.net/weixin_44141495/article/details/108520566
+ * 在 JVM 中，Java 对象保存在堆中时，由以下三部分组成：
+ * 1.Object Header（对象头）
+ * <p>① Mark Word：8字节；hashCode、GC 分代年龄、锁偏向位、锁标记位等
+ * <p>② Class Pointer：8字节，开启指针压缩时4自己；对象类型指针
+ * <p>③ Length：4字节；是数组才有，记录数组长度
+ * 2.Instance Data（实例数据）：包含对象的所有成员变量
+ * 3.Padding（对齐填充）：对象大小填充至8字节的倍数
+ * <p>
+ * Object o = new Object()占多少个字节？：https://blog.csdn.net/zwx900102/article/details/108108555
  * Object o = new Object()占多少个字节？：http://t.zoukankan.com/dijia478-p-14677243.html
- * Object o = new Object()占多少个字节？：https://blog.51cto.com/u_15368284/5116350
  *
  * @author ljh
  * created on 2022/7/5 2:02
