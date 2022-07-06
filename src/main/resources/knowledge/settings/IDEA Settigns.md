@@ -55,6 +55,10 @@
     1. Settings → Editor → General → Code Folding
     2. Fold by default: → Genral → Imports 取消勾选
 ---
+## Editor Tabs (-u)
+    1. Settings → Editor → General → Editor Tabs
+    2. Hide tabs if ther is no space 取消勾选
+---
 ## Font (-e)
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
