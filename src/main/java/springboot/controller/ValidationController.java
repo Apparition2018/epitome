@@ -117,7 +117,7 @@ public class ValidationController {
 
         @NotBlank(message = "密码不能为空")
         @Length(max = 8, min = 6, message = "密码长度[6,8]")
-        @Pattern(regexp = "[a-zA-Z0-9_]*", message = "密码不合法")
+        @Pattern(regexp = "^[a-zA-Z0-9_]+$", message = "密码不合法")
         private String pwd;
 
         @Email(message = "邮箱格式错误")

@@ -181,8 +181,13 @@ EXPOSE 80
 1. [MySQL](https://hub.docker.com/_/mysql)
 - [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
+docker run -d --name mysql -p 3306:3306 mysql
+
+# 复制一份 my.cnf
+docker cp mysql:/etc/my.cnf my.cnf
+
 docker run -d --name mysql -p 3306:3306 --privileged --restart=always \
--v D:/Docker/Data/MySQL/my.cnf:/etc/mysql/my.cnf \
+[-v D:/Docker/Data/MySQL/my.cnf:/etc/mysql/my.cnf \]
 -v D:/Docker/Data/MySQL/data:/var/lib/mysql \
 -v D:/Docker/Data/MySQL/files:/var/lib/mysql-files \
 -e MYSQL_ROOT_PASSWORD=root \
@@ -222,7 +227,10 @@ influx v1 auth create --read-bucket 303f1c88eaa4473a --write-bucket 303f1c88eaa4
 influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --default
 ```
 4. [Redis](https://hub.docker.com/_/redis)
+- [Docker 部署 Redis](https://www.bbsmax.com/A/obzblW6M5E/)
 - [redis.conf](http://download.redis.io/redis-stable/redis.conf)
+    - `# bind 127.0.0.1 -::1`
+    - `protected-mode no`
 ```bash
 docker run -d --name redis -p 6379:6379 --restart=always \
 -v D:/Docker/Data/Redis/data:/data:rw \
