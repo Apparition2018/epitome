@@ -33,7 +33,7 @@
         <mybatis-dynamic-sql.version>1.4.0</mybatis-dynamic-sql.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <commons-cli.version>1.5.0</commons-cli.version>
-        <commons-configuration2.version>2.7</commons-configuration2.version>
+        <commons-configuration2.version>2.8.0</commons-configuration2.version>
         <commons-csv.version>1.9.0</commons-csv.version>
         <commons-email.version>1.5</commons-email.version>
         <hutool.version>5.8.4</hutool.version>
