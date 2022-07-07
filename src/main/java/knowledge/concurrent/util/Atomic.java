@@ -19,7 +19,9 @@ import java.util.stream.IntStream;
  * CAS：Compare And Swap
  * 1.三个基本操作数：内存地址 V，旧的预期值 A，修改后的新值 B
  * 2.定义：更新一个变量时，只有当变量的预期值 A 和内存地址 V 当中的实际值相同时，才会将内存地址 V 对应的值修改为 B
- * 3.在高并发场景下，CAS 的冲突概率大，会导致经常自旋，影响整体效率
+ * 3.Java CAS 的底层实现：lock cmpxchg
+ * 4.在高并发场景下，CAS 的冲突概率大，会导致经常自旋，影响整体效率
+ * 什么是 CAS 机制：https://www.sohu.com/a/314272265_120104204
  * <p>
  * 原子性：不会被线程调度机制打断的操作，要么全都操作成功，要么全都失败，不能只操作成功其中的一部分
  * <p>
@@ -46,7 +48,6 @@ import java.util.stream.IntStream;
  * 原子类（三）原子类和 volatile：volatile :https://www.jianshu.com/p/61fc48f84056
  * 原子类（四）AtomicInteger 和 synchronized：https://www.jianshu.com/p/85af7c8bc8a1
  * 原子类（五）Adder 和 Accumulator：https://www.jianshu.com/p/492f1f5f7763
- * 什么是 CAS 机制：https://www.sohu.com/a/314272265_120104204
  *
  * @author Arsenal
  * created on 2020/11/17 0:52

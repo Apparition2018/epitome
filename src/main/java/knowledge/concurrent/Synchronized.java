@@ -10,11 +10,17 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 同步监视器对象是同一个的时候，这些代码间就具有了互斥效果，可称之为互斥锁
  * <p>
- * 锁膨胀/锁升级：new → 偏向锁 → 轻量级锁（自旋锁） → 重量级锁
+ * 锁膨胀/锁升级：
+ * ①无锁
+ * ②偏向锁：Mark Word 记录的线程 ID
+ * ③轻量级锁（自旋锁）：CAS 将 Mark Word 指向自己线程栈的 Lock Record
+ * ④重量级锁：通过 monitor 实现，依赖操作系统的 mutex 指令，需要从用户态会切换到内核态
  * https://www.bilibili.com/video/BV1Xi4y1C7ed?p=5
+ * monitor 机制实现：https://www.cnblogs.com/qingshan-tang/p/12698705.html
+ * 用户态和内核态：https://www.csdn.net/tags/Ntjacg1sOTAwOTYtYmxvZwO0O0OO0O0O.html
  * <p>
  * 锁降级：发生在 GC 的 STW (stop the world) 阶段
- * https://www.zhihu.com/question/63859501/answer/214026841
+ * Hotspot JVM 锁降级：https://www.zhihu.com/question/63859501/answer/214026841
  * STW：https://blog.csdn.net/l2470334493/article/details/108168099
  * <p>
  * 锁消除：JIT 编译器在编译时进行逃逸分析，分析被锁对象是否不存被其它线程共享和竞争的可能性，如果是则可以消除该锁
@@ -25,11 +31,7 @@ import java.util.concurrent.TimeUnit;
  * 不可中断性：当锁被别的线程获得以后，如当前线程想获得，只能等待或堵塞，直到其他线程释放了这个锁
  * https://blog.csdn.net/x541211190/article/details/106397437
  * <p>
- * synchronized 介绍与用法：
- * https://www.cnblogs.com/jinggod/p/8490651.html
- * https://www.cnblogs.com/jinggod/p/8491029.html
- * https://www.cnblogs.com/jinggod/p/8491074.html
- * monitor 机制实现：https://www.cnblogs.com/qingshan-tang/p/12698705.html
+ * synchronized 原理是什么：https://www.zhihu.com/question/485107493
  *
  * @author ljh
  * created on 2020/11/17 19:09
@@ -148,6 +150,7 @@ public class Synchronized extends Demo {
         }
 
         private final StringBuffer sb = new StringBuffer();
+
         /**
          * 锁粗化
          */

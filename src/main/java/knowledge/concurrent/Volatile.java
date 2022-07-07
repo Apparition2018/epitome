@@ -12,19 +12,20 @@ import java.util.concurrent.TimeUnit;
  * 2.内存可见性：基于内存屏障禁止重排序实现
  * -    2.1：普通变量：读操作会优先读取工作内存的数据，如果工作内存中不存在，则从主内存（所有线程共享）中拷贝一份数据到工作内存中；写操作只会修改工作内存的副本数据，其它线程无法读取变量的最新值
  * -    2.2：volatile 变量：操作时 JMM(Java memory model) 把工作内存中对应的值设为无效，要求线程从主内存中读取数据；写操作时 JMM 把工作内存中对应的数据刷新到主内存中，其它线程可以读取变量的最新值
+ * 注：volatile 不具备原子性
  * <p>
  * 使用条件：
- * 1.对变量的写入操作不依赖变量的当前值，如多线程下 a++，无法通过 volatile 保证结果的准确。
- * 2.该变量没有包含在具有其他变量的不变式中。
+ * 1.对变量的写入操作不依赖变量的当前值，如多线程下 a++，a=a+1 等
+ * 2.该变量没有包含在具有其它变量的不变式中
  * <p>
  * 使用场景：
  * 1.状态标记 volatile boolean
  * 2.双重检查 double check，如双重检查锁单例
  * <p>
- * volatile 关键字解惑：https://www.jianshu.com/p/195ae7c77afe
  * 深入 Java 内存模型—happen-before 规则及其对 DCL 的分析：https://blog.csdn.net/dhfzhishi/article/details/74279091
  * 深入 Java 内存模型—内存操作规则总结：https://blog.csdn.net/ns_code/article/details/17377197
- * Java 关键字 volatile 的理解与正确使用：https://www.jb51.net/article/115374.htm
+ * volatile 关键字解惑：https://www.jianshu.com/p/195ae7c77afe
+ * volatile 的理解与正确使用：https://www.jb51.net/article/115374.htm
  * volatile 的适用场景：https://www.cnblogs.com/ouyxy/p/7242563.html
  *
  * @author ljh
@@ -35,23 +36,17 @@ public class Volatile {
     public static void main(String[] args) throws InterruptedException {
         Volatile v = new Volatile();
         new Thread(v::run).start();
-        TimeUnit.SECONDS.sleep(1);
-        v.createObj();
+        TimeUnit.SECONDS.sleep(2);
+        v.flag = false;
     }
 
-    // 如果不使用 volatile 修饰，run() 不会停止
-    private volatile Object o = null;
+    private volatile boolean flag = true;
 
     public void run() {
+        System.out.println("start");
         while (true) {
-            if (null != o) {
-                System.out.println("stop");
-                break;
-            }
+            if (!flag) break;
         }
-    }
-
-    private void createObj() {
-        o = new Object();
+        System.out.println("stop");
     }
 }
