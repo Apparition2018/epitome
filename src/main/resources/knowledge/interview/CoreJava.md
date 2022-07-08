@@ -1,17 +1,30 @@
 # Core Java  
 
 ---
+## [计算机组成](https://www.bilibili.com/video/BV1Xi4y1C7ed?p=10)
+1. CPU：Central Processing Unit
+
+| 英文                              | 中文     | 说明  |
+|:--------------------------------|:-------|:----|
+| Arithmetic And Logic Unit (ALU) | 算术逻辑单元 ||
+| Registers                       | 寄存器    |
+| Program Counter (PC)            | 程序计数器  ||
+| Cache                           | 缓存     ||
+| MMU                             | 指令计数器  ||
+| CU                              | 指令计数器  ||
+2. 内存
+---
 ## 环境变量
-1. 新建 MAV_HOME：D:\Java\jdk1.8.0_221
+1. 新建 JAVA_HOME：D:\Java\jdk1.8.0_221
 2. Path 增加 %JAVA_HOME%\bin; %JAVA_HOME%\jre\bin;
 ---
 ## [Java 命令](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/s1-create-build-tools.html)
-|命令|说明|
-|:---|:---|
-|javac|将 Java 源文件编译成 class 字节码文件|
-|java|启动 Java 应用程序|
-|jar|将 class 文件打成一个 jar 包|
-|javadoc|生成 API 文档|
+| 命令      | 说明                        |
+|:--------|:--------------------------|
+| javac   | 将 Java 源文件编译成 class 字节码文件 |
+| java    | 启动 Java 应用程序              |
+| jar     | 将 class 文件打成一个 jar 包      |
+| javadoc | 生成 API 文档                 |
 ---
 ## Java 编译和运行过程
 1. 编译：Java 源文件(*.java) 经过 Java 编译器(javac) 编译成 JVM 能够识别的 Java 二进制字节码文件 (*.class)
