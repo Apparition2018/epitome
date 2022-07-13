@@ -48,7 +48,7 @@ public class OtherBean {
     @NumberFormat(pattern = "#,###")
     private double salary;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date payDate;
 
     public OtherBean() {

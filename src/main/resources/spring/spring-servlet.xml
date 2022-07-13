@@ -28,7 +28,7 @@
             ④JavaBeans PropertyEditors：用于数据绑定
             ⑤样式类型转换 (ConversionService)
             ⑥@NumberFormat (ConversionService)
-            ⑦@DateTimeFormat
+            ⑦@DateTimeFormat：支持格式化 Date, Calendar、Long 和 Joda-Time 字段，@RequestBody 下无效
             ⑧@Valid
             ⑨HttpMessageConverter：
                 byte arrays, strings, Resource, org.springframework.core.io.Resource (all media types),

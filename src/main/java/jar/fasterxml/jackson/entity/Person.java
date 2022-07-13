@@ -49,6 +49,8 @@ import java.util.Map;
 @JsonNaming(PropertyNamingStrategies.LowerCaseStrategy.class)
 public class Person {
     // 格式化
+    // @JsonFormat：前端 ↔ 后端，
+    // @DateTimeFormat：前端 → 后端，@RequestBody 下无效
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss a", locale = "en", timezone = "GMT+8",
             with = {JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY})
     // 反序列化别名

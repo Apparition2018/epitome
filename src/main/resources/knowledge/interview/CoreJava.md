@@ -1,19 +1,6 @@
 # Core Java  
 
 ---
-## [计算机组成](https://www.bilibili.com/video/BV1Xi4y1C7ed?p=10)
-1. CPU：Central Processing Unit
-
-| 英文                              | 中文     | 说明  |
-|:--------------------------------|:-------|:----|
-| Arithmetic And Logic Unit (ALU) | 算术逻辑单元 ||
-| Registers                       | 寄存器    |
-| Program Counter (PC)            | 程序计数器  ||
-| Cache                           | 缓存     ||
-| MMU                             | 指令计数器  ||
-| CU                              | 指令计数器  ||
-2. 内存
----
 ## 环境变量
 1. 新建 JAVA_HOME：D:\Java\jdk1.8.0_221
 2. Path 增加 %JAVA_HOME%\bin; %JAVA_HOME%\jre\bin;

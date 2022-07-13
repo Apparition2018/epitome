@@ -127,7 +127,7 @@ public class ValidationController {
         private CompanyEnum company;
 
         @Past(message = "生日必须是过去的日期")
-        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
         private Date birth;
 
         @Size(min = 2, message = "至少有两项爱好")
