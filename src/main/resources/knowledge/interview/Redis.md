@@ -11,9 +11,9 @@
 6. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
 7. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
 ---
-## 面试题
-1. [Redis 面试题 | JavaGuide](https://github.com/Snailclimb/JavaGuide/blob/main/docs/database/redis/redis-questions-01.md)
-2. [Redis 面试题 | Aobing](https://mp.weixin.qq.com/s/vXBFscXqDcXS_VaIERplMQ)
+## Interview
+1. [JavaGuide](https://github.com/Snailclimb/JavaGuide/blob/main/docs/database/redis/redis-questions-01.md)
+2. [Aobing](https://mp.weixin.qq.com/s/vXBFscXqDcXS_VaIERplMQ)
 ---
 ## Redis 多快，为什么快
 - 官方：Redis 的瓶颈通常是内存或网络，而不是 CPU；查询 QPS 达 10w/s
@@ -129,6 +129,52 @@ auto-aof-rewrite-min-size 64mb
 >- [参考网站1](https://zhuanlan.zhihu.com/p/359118610)
 >- [参考网站2](https://mp.weixin.qq.com/s/_StOUX9Nu-Bo8UpX7ThZmg)
 >- [参考网站3](https://mp.weixin.qq.com/s/knz-j-m8bTg5GnKc7oeZLg)
+---
+## 数据库和缓存一致性问题
+1. 更新缓存 or 删除缓存？：推荐删除缓存
+    - 写写并发：无论是先更新缓存还是后更新缓存，都会出现数据不一致的问题，而删除缓存则不会
+    - 读写并发：更新缓存和删除缓存都存在数据不一致的问题
+2. 先删除缓存 or 后删除缓存？：推荐后删除缓存
+    - a写b读：
+        - 先删除缓存：
+            1. a删除x缓存
+            2. b读取x缓存不存在，读取x数据库值1
+            3. b更新x缓存值1
+            4. a更新x数据库值2
+            5. 无论3和4谁先执行，数据库都是新值，缓存都是旧值，b读到旧值
+            - 注：可以使用延迟双删解决
+        - 后删除缓存：
+            1. a更新x数据库值2
+            2. b读取x缓存值1
+            3. a删除x缓存
+            4. 数据库是新值，缓存无值，b读到旧值
+            - 注：加锁，保证a更新数据库和删除缓存串行执行
+    - a读b写：
+        1. a读取x缓存不存在，读取x数据库值1
+        2. b更新x数据库值2 (缓存不存在，所以不考虑先删除还是后删除缓存)
+        3. a更新x缓存值1
+        4. 数据库是新值，缓存是旧值，a读到旧值
+        - 注：出现概率不高，因为缓存操作+读数据库通常要快于写数据库
+3. 删除缓存失败怎么办？：①重试；②MySQL binlog
+4. [常用的缓存模式](https://blog.csdn.net/z69183787/article/details/112308815)
+    1. Cache Aside：旁路缓存模式
+        - 读：命中缓存则直接返回数据；未命中缓存则查询数据库数据，并将数据更新至缓存，然后返回数据
+        - 写：先更新数据库，再删除缓存
+        - ![Cache Aside](https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvaulG1WsztCXujT0qDxALxwEy8knbFcMB7NoiajEYjxo04ww5kmKIOyicbnpbMD0kz3N57EzT4H46xkQ/640) 
+    2. Read Through
+        - 读：访问控制层（同 Cache Aside）
+        - ![Read Through](https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvaulG1WsztCXujT0qDxALxwEMibwZEPeCZE1icibze89CLf9h8aPkgcJ0NUWlvJjd0IcMa6Yib4ziamibic1w/640) 
+    3. Write Through
+        - 写：访问控制层（先更新数据库，再更新缓存，加锁)
+        - ![Write Through](https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvaulG1WsztCXujT0qDxALxwEbcBG5HIc4pohTLg9sMgRNDlAR3xPmYHS2HlMbz3Gv57bTeRJsmicKAA/640) 
+    4. Write Behind
+        - 写：访问控制层（先更新缓存，后异步更新数据库）
+        - ![Write Behind](https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvaulG1WsztCXujT0qDxALxwEfl7FaXmIwmgNPoUOwib2tSWykFoZicIpiaxbHPIpLC51VKyFazLkKEaeQ/640) 
+>- [腾讯技术工程](https://mp.weixin.qq.com/s/Y9S89MT0uAobzRKgYVrI9Q)
+>- [苏三说技术](https://mp.weixin.qq.com/s/4hP-T0h8QPyjcpH8m0cbsA)
+>- [小林coding](https://mp.weixin.qq.com/s/sh-pEcDd9l5xFHIEN87sDA)
+>- [水滴与银弹](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
+>- [月伴飞鱼](https://mp.weixin.qq.com/s/esXWVZvgf74DPeDL7xbi1Q)
 ---
 ## [Redis 计数器并发精准数量控制](https://www.imooc.com/learn/1067)
 ![redis 数量控制并发问题](https://img1.mukewang.com/6092cf44000167a319201080-500-284.jpg)
