@@ -15,10 +15,15 @@
 1. [JavaGuide](https://github.com/Snailclimb/JavaGuide/blob/main/docs/database/redis/redis-questions-01.md)
 2. [Aobing](https://mp.weixin.qq.com/s/vXBFscXqDcXS_VaIERplMQ)
 ---
-## Redis 多快，为什么快
+## [Redis 多快，为什么快](https://mmbiz.qpic.cn/mmbiz_png/g6hBZ0jzZb0Zb0XiaaR6bGaN80wicXIIP735YhoW1fic47MuJOx0HheBX4ficULcmdHhdGQnqGcfCgvunMmxpb8LnA/640)
 - 官方：Redis 的瓶颈通常是内存或网络，而不是 CPU；查询 QPS 达 10w/s
-1. 完全基于内存：内存操作快，省去将数据从磁盘读到内存的时间
-2. 专门设计的数据结构：简单动态字符串
+1. 基于内存：①内存读写比磁盘快；②省去将数据从磁盘读到内存的时间
+2. 高效的数据结构
+    - 简单动态字符串(SDS)：String
+    - 双端链表：List
+    - 压缩链表：List, Hash, Sorted Set
+    - 字典：Hash, Set
+    - 跳跃表：Sorted Set
 3. 单线程：执行命令单线程
     - [多线程的问题](https://blog.csdn.net/dfsdwes/article/details/25159417) ：线程开销，上下文切换，锁问题等
     - 多核 CPU 可启动多个 Redis 发挥多核性能
@@ -26,8 +31,9 @@
         - 4.0：异步删除，如 `UNLINK key [key ...]`，`FLUSHDB ASYNC`，`FLUSHALL ASYNC` 等
         - 6.0：增强对 IO 读写的并发能力，默认禁用
 4. IO 多路复用：让单个线程高效处理多个请求，减少网络 IO 时间消耗（多路指多个 socket，复用指同一个线程）
->- [参考网站1](https://www.cnblogs.com/caohongchang/p/13285948.html)
->- [参考网站2](https://mp.weixin.qq.com/s/mscKInWNAuhCbg183Um9_g)
+>- [IT界农民工](https://mp.weixin.qq.com/s/b_yzbLeQh57oYjqlIgPiYQ)
+>- [捡田螺的小男孩](https://mp.weixin.qq.com/s/wf08G3PHpfbJKiU7ZVO9Lw)
+>- [Hollis](https://mp.weixin.qq.com/s/mscKInWNAuhCbg183Um9_g)
 ---
 ## [数据类型及其使用场景](https://redis.io/topics/data-types-intro)
 - 通用场景：缓存
@@ -155,7 +161,7 @@ auto-aof-rewrite-min-size 64mb
         3. a更新x缓存值1
         4. 数据库是新值，缓存是旧值，a读到旧值
         - 注：出现概率不高，因为缓存操作+读数据库通常要快于写数据库
-3. 删除缓存失败怎么办？：①重试；②MySQL binlog
+3. 删除缓存失败怎么办？：①异步重试；②MySQL binlog (阿里 canal)
 4. [常用的缓存模式](https://blog.csdn.net/z69183787/article/details/112308815)
     1. Cache Aside：旁路缓存模式
         - 读：命中缓存则直接返回数据；未命中缓存则查询数据库数据，并将数据更新至缓存，然后返回数据
@@ -172,9 +178,8 @@ auto-aof-rewrite-min-size 64mb
         - ![Write Behind](https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvaulG1WsztCXujT0qDxALxwEfl7FaXmIwmgNPoUOwib2tSWykFoZicIpiaxbHPIpLC51VKyFazLkKEaeQ/640) 
 >- [腾讯技术工程](https://mp.weixin.qq.com/s/Y9S89MT0uAobzRKgYVrI9Q)
 >- [苏三说技术](https://mp.weixin.qq.com/s/4hP-T0h8QPyjcpH8m0cbsA)
->- [小林coding](https://mp.weixin.qq.com/s/sh-pEcDd9l5xFHIEN87sDA)
 >- [水滴与银弹](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
->- [月伴飞鱼](https://mp.weixin.qq.com/s/esXWVZvgf74DPeDL7xbi1Q)
+>- [小林coding](https://mp.weixin.qq.com/s/sh-pEcDd9l5xFHIEN87sDA)
 ---
 ## [Redis 计数器并发精准数量控制](https://www.imooc.com/learn/1067)
 ![redis 数量控制并发问题](https://img1.mukewang.com/6092cf44000167a319201080-500-284.jpg)
@@ -184,12 +189,14 @@ auto-aof-rewrite-min-size 64mb
 ```
 # 设置客户端密码
 requirepass password
-# 绑定 IPv4 地址
-bind 127.0.0.1
+# 监听 loopback IPv4 和 IPv6
+# docker 下注释掉
+bind 127.0.0.1 -::1
 # 是否开启保护模式
+# docker 下设置为 no
 protected-mode yes
 # 是否守护线程运行
-# yes 会和 docker run -d 冲突
+# docker 下设置为 no，因为 docker run -d 已经是后台启动 
 daemonize no
 # 持久化文件存储目录
 dir ./

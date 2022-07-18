@@ -28,8 +28,8 @@ public class DateDemo2 {
         p(date1.compareTo(date2));  // -1
 
         // 方法二：getTime()
-        Long time1 = date1.getTime();
-        Long time2 = date2.getTime();
+        long time1 = date1.getTime();
+        long time2 = date2.getTime();
         p(time1 < time2);           // true
 
         // 方法三：before(), after(), equals()
@@ -86,7 +86,5 @@ public class DateDemo2 {
 
         // Calendar → Date
         p(calendar.getTime());
-
     }
-
 }

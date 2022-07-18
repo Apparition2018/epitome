@@ -2,12 +2,17 @@ package knowledge.data.structure.collections.framework.collection;
 
 import l.demo.Demo;
 import l.demo.Person;
+import lombok.Data;
+import lombok.experimental.Accessors;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
 import java.util.PriorityQueue;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
+import java.util.Queue;
+import java.util.concurrent.*;
 
 /**
  * Queue
@@ -80,6 +85,45 @@ public class QueueDemo extends Demo {
     }
 
     /**
+     * DelayQueue   延时队列
+     * DelayQueue 基础 AbstractQueue 实现 BlockingQueue
+     */
+    @Test
+    public void testDelayQueue() throws InterruptedException {
+        Date now = new Date();
+        p(DateFormatUtils.format(now, "HH:mm:ss")); // 15:04:15
+        DelayQueue<DelayTask> delayQueue = new DelayQueue<>();
+        delayQueue.put(new DelayTask().setTaskName("A").setStartTime(DateUtils.addSeconds(now, 1)));
+        delayQueue.put(new DelayTask().setTaskName("B").setStartTime(DateUtils.addSeconds(now, 3)));
+        delayQueue.put(new DelayTask().setTaskName("C").setStartTime(DateUtils.addSeconds(now, 6)));
+        while (delayQueue.size() > 0) {
+            DelayTask delayTask = delayQueue.take();
+            p("Task " + delayTask.taskName + " start at " + DateFormatUtils.format(new Date(), "HH:mm:ss"));
+            // Task A start at 15:04:16
+            // Task B start at 15:04:18
+            // Task C start at 15:04:21
+        }
+    }
+
+    @Data
+    @Accessors(chain = true)
+    public static class DelayTask implements Delayed {
+
+        private String taskName;
+        private Date startTime;
+
+        @Override
+        public long getDelay(@NotNull TimeUnit unit) {
+            return unit.convert(startTime.getTime() - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+        }
+
+        @Override
+        public int compareTo(@NotNull Delayed other) {
+            return Long.compare(this.getDelay(TimeUnit.MILLISECONDS), other.getDelay(TimeUnit.MILLISECONDS));
+        }
+    }
+
+    /**
      * PriorityQueue    优先级队列
      * PriorityQueue → AbstractQueue → Queue
      * 一个基于优先级堆的无界优先级队列。
@@ -92,7 +136,7 @@ public class QueueDemo extends Demo {
     public void testPriorityQueue() {
         p("----- 小顶堆 -----");
         PriorityQueue<Person> queue = new PriorityQueue<>();
-        addData(queue);
+        this.addData(queue);
         while (!queue.isEmpty()) {
             p(queue.poll());
             // Person{name='张三', age=18}
@@ -103,7 +147,8 @@ public class QueueDemo extends Demo {
 
         p("----- 大顶堆 -----");
         queue = new PriorityQueue<>((o1, o2) -> o2.getAge() - o1.getAge());
-        addData(queue);
+        queue.comparator();
+        this.addData(queue);
         while (!queue.isEmpty()) {
             p(queue.poll());
             // Person{name='赵六', age=30}
@@ -113,7 +158,7 @@ public class QueueDemo extends Demo {
         }
     }
 
-    public void addData(PriorityQueue<Person> queue) {
+    public void addData(Queue<Person> queue) {
         queue.add(new Person("张三", 18));
         queue.add(new Person("李四", 22));
         queue.add(new Person("王五", 25));

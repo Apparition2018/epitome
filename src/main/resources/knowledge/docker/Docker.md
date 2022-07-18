@@ -227,7 +227,7 @@ influx v1 auth create --read-bucket 303f1c88eaa4473a --write-bucket 303f1c88eaa4
 influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --default
 ```
 4. [Redis](https://hub.docker.com/_/redis)
-- [Docker 部署 Redis](https://www.bbsmax.com/A/obzblW6M5E/)
+- [Docker 部署 Redis](https://blog.csdn.net/qq_41316955/article/details/108381923)
 - [redis.conf](http://download.redis.io/redis-stable/redis.conf)
     - `# bind 127.0.0.1 -::1`
     - `protected-mode no`
