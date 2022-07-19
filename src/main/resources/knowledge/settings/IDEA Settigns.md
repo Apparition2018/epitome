@@ -4,7 +4,7 @@
 - o: optional
 - u: unknown
 ---
-## 修改 .IntelliJIdea 位置
+## 修改 .IntelliJIdea 位置 (-o)
     1. %IDEA_HOME%\bin\idea.properties
         idea.config.path=D:/JetBrains/.IntelliJIdea/config
         idea.system.path=D:/JetBrains/.IntelliJIdea/system
@@ -55,7 +55,7 @@
     1. Settings → Editor → General → Code Folding
     2. Fold by default: → Genral → Imports 取消勾选
 ---
-## Editor Tabs (-u)
+## Editor Tabs
     1. Settings → Editor → General → Editor Tabs
     2. Hide tabs if ther is no space 取消勾选
 ---
@@ -100,7 +100,7 @@
 ## Use eclipse compiler (-g|-e)
     1. Settings → Build, Execution, Deployment
     2. Build Tools → Maven → Importing
-        2.1 Detect compiler automatically 取消勾选
+        # 2.1 Detect compiler automatically 取消勾选
     3. Compiler
         3.1 Shared build process VM options: 
             -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar
@@ -109,7 +109,7 @@
         3.3 Annotation Processors
             3.3.1 Enable annotation processing 勾选
 ---
-## JavaScript version (-u)
+## JavaScript version
     1. Settings → Languages & Frameworks → JavaScript
     2. JavaScript language version: ECMAScript 6+
 ---

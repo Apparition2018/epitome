@@ -12,7 +12,7 @@ import static l.demo.Demo.p;
 /**
  * Deque 双端队列  (double ended queue)
  * Deque 继承 Queue
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Deque.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Deque.html
  * <p>
  * 操作位              第一个元素（头部）	                    最后一个元素（尾部）
  * 操作               抛出异常	    特殊值	                抛出异常	        特殊值
@@ -33,7 +33,7 @@ import static l.demo.Demo.p;
 public class DequeDemo {
 
     /**
-     * 用作队列时 (FIFO) :
+     * Deque 用作队列{@link QueueDemo}
      * 数据结构                     Queue                                   Deque
      * 操作               抛出异常	    返回特殊值（推荐使用）         抛出异常	    返回特殊值（推荐使用）
      * 插入	            add(e)	        offer(e)                addLast(e)      offerLast(e)
@@ -66,14 +66,7 @@ public class DequeDemo {
     }
 
     /**
-     * Stack
-     * Stack 继承 Vector
-     * Stack 类表示后进先出（LIFO）的对象堆栈。它通过五个操作对类 Vector 进行了扩展 ，允许将向量视为堆栈。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Stack.html
-     * <p>
-     * Deque 接口及其实现提供了 LIFO 堆栈操作的更完整和更一致的集合，应该优先使用 Deque，而非 stack。
-     * <p>
-     * 用作堆栈时 (LIFO) :
+     * Deque 用作堆栈{@link StackDemo}，应优先使用 Deque 而不是遗留类 Stack
      * 数据结构             Stack           Deque
      * 插入               push(e)         addFirst(e)
      * 移除               pop()           removeFirst()
@@ -105,7 +98,7 @@ public class DequeDemo {
 
     /**
      * BlockingDeque    阻塞双端队列
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/BlockingDeque.html
+     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/BlockingDeque.html
      * <p>
      * 操作位                          第一个元素（头部）
      * 操作       抛出异常            特殊值             阻塞          超时退出
@@ -120,6 +113,5 @@ public class DequeDemo {
      */
     @Test
     public void testBlockingDeque() {
-
     }
 }

@@ -20,17 +20,23 @@
 1. 基于内存：①内存读写比磁盘快；②省去将数据从磁盘读到内存的时间
 2. 高效的数据结构
     - 简单动态字符串(SDS)：String
-    - 双端链表：List
-    - 压缩链表：List, Hash, Sorted Set
-    - 字典：Hash, Set
-    - 跳跃表：Sorted Set
-3. 单线程：执行命令单线程
+    - 双端链表(LinkedList)：List
+    - 压缩链表(ZipList)：List, Hash, Sorted Set
+    - 字典(HashTable)：Hash, Set
+    - 跳跃表(SkipList)：Sorted Set
+3. 合理的数据编码
+    - String：数字用 Int 编码，<=39字节的字符串用 EmbStr 编码，>39字节用 Raw 编码
+    - List：元素小于512个，且每个元素小于64字节，用 ZipList 编码，否则用 LinkedList 编码
+    - Hash：元素小于512个，且每个元素小于64字节，用 ZipList 编码，否则用 HashTable 编码
+    - Set：元素小于512个，且都是整数，用 IntSet 编码，否则用 HashTable 编码
+    - Sorted Set：元素小于128个，且每个元素小于64字节，用 ZipList 编码，否则用 SkipList 编码
+4. 单线程：网络 IO 和键值对读写单线程完成，持久化、异步删除、集群数据同步等还是需要额外线程的
     - [多线程的问题](https://blog.csdn.net/dfsdwes/article/details/25159417) ：线程开销，上下文切换，锁问题等
     - 多核 CPU 可启动多个 Redis 发挥多核性能
     - 多线程：
         - 4.0：异步删除，如 `UNLINK key [key ...]`，`FLUSHDB ASYNC`，`FLUSHALL ASYNC` 等
         - 6.0：增强对 IO 读写的并发能力，默认禁用
-4. IO 多路复用：让单个线程高效处理多个请求，减少网络 IO 时间消耗（多路指多个 socket，复用指同一个线程）
+5. IO 多路复用：让单个线程高效处理多个请求，减少网络 IO 时间消耗（多路指多个 socket，复用指同一个线程）
 >- [IT界农民工](https://mp.weixin.qq.com/s/b_yzbLeQh57oYjqlIgPiYQ)
 >- [捡田螺的小男孩](https://mp.weixin.qq.com/s/wf08G3PHpfbJKiU7ZVO9Lw)
 >- [Hollis](https://mp.weixin.qq.com/s/mscKInWNAuhCbg183Um9_g)

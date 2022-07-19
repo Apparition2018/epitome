@@ -16,7 +16,6 @@ import java.util.concurrent.*;
 
 /**
  * Queue
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Queue.html
  * Java 常见队列：https://pic4.zhimg.com/v2-c1f2992fb01c501a5dada75d0b27b0b3_r.jpg
  *
  * @author ljh
@@ -29,7 +28,7 @@ public class QueueDemo extends Demo {
      * Queue 继承 Collection
      * Queue 实现了一个先进先出 (FIFO) 的数据结构
      * Queue 用来存放 等待处理元素 的集合，这种场景一般用于缓冲、并发访问。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Queue.html
+     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Queue.html
      * <p>
      * 操作       抛出异常	    返回特殊值（推荐使用）
      * 插入	    add(e)	        offer(e)

@@ -13,7 +13,7 @@ import java.util.*;
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/List.html
  * <p>
  * List             Vector          ArrayList           LinkedList
- * 实现               数组              数组          双端链表，实现 Deque
+ * 实现               动态数组        动态数组            双向链表，实现 Deque
  * 线程同步             是               否               否
  * 查找               效率高 (实现 RandomAccess)           效率低
  * 插入删除         效率低             效率低             效率高
