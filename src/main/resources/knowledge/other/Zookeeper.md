@@ -4,7 +4,7 @@
 ---
 ## 参考网站
 1. [Apache ZooKeeper](https://zookeeper.apache.org)
-2. [Apache ZooKeeper | Github](https://github.com/apache/zookeeper)
+2. [Apache ZooKeeper | GitHub](https://github.com/apache/zookeeper)
 3. [ZooKeeper DOC](https://zookeeper.apache.org/doc/current/index.html)
 4. [zookeeper简介-慕课网](https://www.imooc.com/video/17143)
 --- 

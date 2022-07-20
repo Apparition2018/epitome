@@ -24,8 +24,9 @@ public class TimeUnitDemo {
      */
     @Test
     public void convert() {
-        p(TimeUnit.MICROSECONDS.convert(1, TimeUnit.SECONDS)); // 1e6
-        p(TimeUnit.NANOSECONDS.convert(1, TimeUnit.SECONDS));  // 1e9
+        p(TimeUnit.MICROSECONDS.convert(1, TimeUnit.SECONDS));  // 1000000
+        p(TimeUnit.NANOSECONDS.convert(1, TimeUnit.SECONDS));   // 1000000000
+        p(TimeUnit.SECONDS.convert(1, TimeUnit.MILLISECONDS));  // 0
     }
 
     /**
@@ -44,8 +45,9 @@ public class TimeUnitDemo {
      */
     @Test
     public void toXXX() {
-        p(TimeUnit.SECONDS.toMicros(1));   // 1e6
-        p(TimeUnit.SECONDS.toNanos(1));    // 1e9
+        p(TimeUnit.SECONDS.toMicros(1));        // 1000000
+        p(TimeUnit.SECONDS.toNanos(1));         // 1000000000
+        p(TimeUnit.MILLISECONDS.toSeconds(1));  // 0
     }
 
     /**

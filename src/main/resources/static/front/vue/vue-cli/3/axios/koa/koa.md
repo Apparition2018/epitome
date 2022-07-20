@@ -2,7 +2,7 @@
 
 ---
 ## 参考网站
-1. [koa | Github](https://github.com/koajs/koa)
+1. [koa | GitHub](https://github.com/koajs/koa)
 2. [Koajs 中文文档](https://koa.bootcss.com/)
 ---
 ```

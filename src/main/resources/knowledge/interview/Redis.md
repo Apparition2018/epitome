@@ -4,125 +4,156 @@
 ---
 ## Reference
 1. [Redis](https://redis.io/)
-2. [Redis | Github](https://github.com/redis/redis)
-3. [Redis入门视频教程-慕课网](https://www.imooc.com/learn/839)
-4. [Redis 教程 | 菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
-5. [Redis 教程 | 冯佳兴](https://blog.csdn.net/fjxcsdn/category_8935622.html)
-6. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
-7. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
+2. [Redis | GitHub](https://github.com/redis/redis)
+3. [Redis 教程 | 菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
+4. [Redis 教程 | 冯佳兴](https://blog.csdn.net/fjxcsdn/category_8935622.html)
+5. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
+6. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
 ---
 ## Interview
-1. [JavaGuide](https://github.com/Snailclimb/JavaGuide/blob/main/docs/database/redis/redis-questions-01.md)
-2. [Aobing](https://mp.weixin.qq.com/s/vXBFscXqDcXS_VaIERplMQ)
+1. [JavaGuide](https://github.com/Snailclimb/JavaGuide/tree/main/docs/database/redis)
+2. [敖丙](https://mp.weixin.qq.com/s/vXBFscXqDcXS_VaIERplMQ)
 ---
 ## [Redis 多快，为什么快](https://mmbiz.qpic.cn/mmbiz_png/g6hBZ0jzZb0Zb0XiaaR6bGaN80wicXIIP735YhoW1fic47MuJOx0HheBX4ficULcmdHhdGQnqGcfCgvunMmxpb8LnA/640)
 - 官方：Redis 的瓶颈通常是内存或网络，而不是 CPU；查询 QPS 达 10w/s
 1. 基于内存：①内存读写比磁盘快；②省去将数据从磁盘读到内存的时间
 2. 高效的数据结构
-    - 简单动态字符串(SDS)：String
-    - 双端链表(LinkedList)：List
-    - 压缩链表(ZipList)：List, Hash, Sorted Set
-    - 字典(HashTable)：Hash, Set
-    - 跳跃表(SkipList)：Sorted Set
+
+| 中文      | 英文                     | 数据类型                   |
+|:--------|:-----------------------|:-----------------------|
+| 简单动态字符串 | Simple Dynamic Strings | String                 |
+| 双端链表    | LinkedList             | List                   |
+| 压缩链表    | ZipList                | List, Hash, Sorted Set |
+| 字典      | HashTable              | Hash, Set              |
+| 跳跃表     | SkipList               | Sorted Set             |
 3. 合理的数据编码
-    - String：数字用 Int 编码，<=39字节的字符串用 EmbStr 编码，>39字节用 Raw 编码
-    - List：元素小于512个，且每个元素小于64字节，用 ZipList 编码，否则用 LinkedList 编码
-    - Hash：元素小于512个，且每个元素小于64字节，用 ZipList 编码，否则用 HashTable 编码
-    - Set：元素小于512个，且都是整数，用 IntSet 编码，否则用 HashTable 编码
-    - Sorted Set：元素小于128个，且每个元素小于64字节，用 ZipList 编码，否则用 SkipList 编码
-4. 单线程：网络 IO 和键值对读写单线程完成，持久化、异步删除、集群数据同步等还是需要额外线程的
-    - [多线程的问题](https://blog.csdn.net/dfsdwes/article/details/25159417) ：线程开销，上下文切换，锁问题等
-    - 多核 CPU 可启动多个 Redis 发挥多核性能
-    - 多线程：
-        - 4.0：异步删除，如 `UNLINK key [key ...]`，`FLUSHDB ASYNC`，`FLUSHALL ASYNC` 等
-        - 6.0：增强对 IO 读写的并发能力，默认禁用
-5. IO 多路复用：让单个线程高效处理多个请求，减少网络 IO 时间消耗（多路指多个 socket，复用指同一个线程）
+
+| 数据类型       | 编码方式                                                |
+|:-----------|:----------------------------------------------------|
+| String     | 数字用 Int 编码，<=39字节的字符串用 EmbStr 编码，>39字节用 Raw 编码      |
+| List       | 元素小于512个，且每个元素小于64字节，用 ZipList 编码，否则用 LinkedList 编码 |
+| Hash       | 元素小于512个，且每个元素小于64字节，用 ZipList 编码，否则用 HashTable 编码  |
+| Set        | 元素小于512个，且都是整数，用 IntSet 编码，否则用 HashTable 编码         |
+| Sorted Set | 元素小于128个，且每个元素小于64字节，用 ZipList 编码，否则用 SkipList 编码   |
+4. 合理的线程模型
+    - 文件事件处理器：基于 Reactor 模式开发的一套事件处理机制，是单线程运行的
+    ![文件事件处理器](https://mp.weixin.qq.com/s/apScwfXHWlh8xUS1RhMSIA)
+        - IO 多路复用：让单个线程高效处理多个请求，减少网络 IO 时间消耗
+    - 为什么设计成单线程：因为 Redis 键值对读写是基于内存的，所以不需要多线程来提高 CPU 的利用率
+        - 多核 CPU 可启动多个 Redis 发挥多核性能
+    - [多线程带来的问题](https://blog.csdn.net/dfsdwes/article/details/2515941) ：线程开销，上下文切换，同步等问题
+    - 引入多线程
+        - 2.6：①BIO_CLOSE_FILE（关闭文件）；②BIO_AOF_FSYNC（AOF 刷盘）
+        - 4.0：BIO_LAZY_FREE（异步释放内存）
+            - `UNLINK key [key ...]`：`DEL key [key ...]` 的异步版本
+            - `FLUSHDB ASYNC`
+            - `FLUSHALL ASYNC`
+        - 6.0：多个 IO 线程，默认禁用
+            - redis.conf：`io-threads-do-reads yes`，`io-threads 8`
+5. [VM 机制](https://mp.weixin.qq.com/s/N1NR-LgiCvAOMxgbdICziQ)
 >- [IT界农民工](https://mp.weixin.qq.com/s/b_yzbLeQh57oYjqlIgPiYQ)
 >- [捡田螺的小男孩](https://mp.weixin.qq.com/s/wf08G3PHpfbJKiU7ZVO9Lw)
->- [Hollis](https://mp.weixin.qq.com/s/mscKInWNAuhCbg183Um9_g)
+>- [小林coding](https://mp.weixin.qq.com/s/apScwfXHWlh8xUS1RhMSIA)
 ---
-## [数据类型及其使用场景](https://redis.io/topics/data-types-intro)
-- 通用场景：缓存
+## [数据类型及其使用场景](https://redis.io/docs/manual/data-types/)
+| 数据类型        | 使用场景                                                        |
+|:------------|:------------------------------------------------------------|
+| String      | 缓存、计数器（数量统计（阅读量）、数量控制（限流））、时效信息（验证码）、全局 ID、分布式 session、分布式锁 |
+| List        | 简单队列、定时排行榜、最近/最新                                            |
+| Set         | 不重复数据（关注、点赞）、交集/并集 (共同关注、商品筛选)、抽奖（SPOP）                     |
+| Sorted Set  | 实时排行榜                                                       |
+| Hash        | 对象缓存（购物车）、条件查询（Lua）                                         |
+| Bitmap      | 保存状态并需进一步分析（活跃用户，在线用户）                                      |
+| HyperLogLog | 基数统计                                                        |
+| Stream      | 消息队列                                                        |
+| Geo         | 地理位置                                                        |
+>- [Java知音](https://mp.weixin.qq.com/s/W5T_a_EQhxHOI0lfgO3r0g)
+>- [java架构交流](https://zhuanlan.zhihu.com/p/100460843)
+---
+## [配置](https://redis.io/docs/manual/config/)
+```
+# 设置客户端密码
+requirepass password
+# 监听 loopback IPv4 和 IPv6
+# docker 下注释掉
+bind 127.0.0.1 -::1
+# 是否开启保护模式
+# docker 下设置为 no
+protected-mode yes
+# 是否守护线程运行
+# docker 下设置为 no，因为 docker run -d 已经是后台启动 
+daemonize no
+# 持久化文件存储目录
+dir ./
+# 包含其它配置文件
+include other.conf
+```
+---
+## [键驱逐](https://redis.io/docs/manual/eviction/)
+- 过期删除策略
 
-| 数据类型        | 使用场景                                |
-|:------------|:------------------------------------|
-| String      | 计数器（数量统计、数量控制）、时效信息（验证码）、自增 ID、分布式锁 |
-| List        | 简单队列、定时排行榜、最近/最新                    |
-| Set         | 不重复数据、交集/并集                         |
-| Sorted Set  | 实时排行榜                               |
-| Hash        | 对象缓存、条件查询（Lua）                      |
-| Bitmap      | 保存状态并需进一步分析（活跃用户，在线用户）              |
-| HyperLogLog | 基数统计                                |
-| Stream      | 消息队列                                |
-| Geo         | 地理位置                                |
->- [参考网站1](https://zhuanlan.zhihu.com/p/100460843)
->- [参考网站2](https://zhuanlan.zhihu.com/p/263390414)
----
-## 文件事件处理器
-![Redis 文件事件处理器过程](https://img2020.cnblogs.com/blog/1323607/202006/1323607-20200613165540238-1561612908.png)
-
-| 部分        | 说明  |
-|:----------|:----|
-| 套接字       ||
-| IO 多路复用程序 ||
-| 文件事件分派器   ||
-| 事件处理器     ||
----
-## 删除过期 KEY 的策略
-| 策略  | 说明                                                 | Redis 使用 |
-|:----|:---------------------------------------------------|:---------|
-| 定期  | 每隔一段时间（默认100ms）删除到期 KEY<br/>检查多少数据库和删除多少 KEY，由算法决定 | √        |
-| 惰性  | 查询 KEY 时，判断是否过期，过期则删除                              | √        |
-| 定时  | 设置过期时间的同时，创建一个定时器，当 KEY 到期时立即删除                    ||
----
-## [内存淘汰策略](https://redis.io/topics/lru-cache)
-- redis.conf：`maxmemory-policy noeviction`
-- lru：Least Recently Used
-- lfu：Least Frequently Used
-- ttl：Time to Live
+| 策略  | 说明                                                  | Redis 使用 |
+|:----|:----------------------------------------------------|:---------|
+| 定时  | 设置过期时间的同时，创建一个定时器，当 KEY 到期时立即删除                     ||
+| 惰性  | 查询 KEY 时，判断是否过期，过期则删除                               | √        |
+| 定期  | 每隔一段时间（默认100ms）删除到期 KEY<br/>检查多少个数据库和删除多少 KEY，由算法决定 | √        |
+- redis.conf：`maxmemory-policy <policy>`
+- 术语解析
+    - lru：Least Recently Used
+    - lfu：Least Frequently Used
+    - ttl：Time to Live
 
 | 策略              | 说明                             |
 |:----------------|:-------------------------------|
 | volatile-lru    | 在已设置过期时间的 KEY 中，删除最近最少使用的 KEY  |
 | volatile-lfu    | 在已设置过期时间的 KEY 中，删除最不常用的 KEY    |
 | volatile-random | 在已设置过期时间的 KEY 中，随机删除 KEY       |
-| volatitle-ttl   | 在已设置过期时间的 KEY 中，删除剩余过期时间最短 KEY |
+| volatile-ttl    | 在已设置过期时间的 KEY 中，删除剩余过期时间最短 KEY |
 | allkeys-lru     | 在所有 KEY 中，删除最近最少使用的 KEY        |
 | allkeys-lfu     | 在所有 KEY 中，删除最不常用的 KEY          |
 | allkeys-random  | 在所有 KEY 中，随机删除 KEY             |
 | noeviction      | 不删除任何 KEY，在写操作时返回错误            |
 ---
-## [持久化机制](https://redis.io/topics/persistence)
-
-| 机制  | RDB                                                  | AOF                                                      |
-|:----|:-----------------------------------------------------|:---------------------------------------------------------|
-| 全称  | Redis Database                                       | Append Only File                                         |
-| 说明  | 数据集快照                                                | 记录写操作                                                    |
-| 优点  | ①文件小且只有一个，适合备份、灾难恢复<br/>②fork() 子进程进行保存工作<br/>③启动速度快 | ①更可靠，最多丢失一秒钟的数据<br/>②redis-check-aof</br>③能通过删除误操作命令恢复数据 |
-- redis.conf：
-```
-# RDB 持久化文件名
-dbfilename dump.rdb
-# seconds 秒后至少有 changes 个键改变时，进行快照保存
-# save "" 表示完全禁用快照
-save <seconds> <changes>
-
-# 是否开启 AOF 持久化
-appendonly yes
-# AOF 持久化文件名
-appendfilename "appendonly.aof"
-# 同步策略
-appendfsync always | everysec | no
-# 自动重写 AOF 文件
-auto-aof-rewrite-percentage 100
-auto-aof-rewrite-min-size 64mb
-```
-- 混合持久化：RDB + AOF
-    - 配置：`aof-use-rdb-preamble yes`
-    - 只发生于 AOF rewrite，重写后 AOF 文件前面是 RDB 格式的全量数据，后面是 AOF 格式的增量数据
+## [持久化](https://redis.io/topics/persistence)
+1. RDB：Redis Database，指定时间间隔执行的数据集快照
+    - 优点
+        1. 紧凑的单文件，按时间点备份，适合灾难恢复
+        2. 父进程 fork() 一个子进程完成持久化工作
+        3. 对比 AOF 更快的大数据集重启速度
+        4. 在 Redis 复制，RDB 支持重启和故障转移后的部分重新同步
+    - redis.conf
+        ```
+        # RDB 持久化文件名
+        dbfilename dump.rdb
+        # seconds 秒后至少有 changes 个键改变时，进行快照保存
+        # save "" 表示完全禁用快照
+        save <seconds> <changes>
+        ```
+    - commands：`SAVE`, `BGSAVE [SCHEDULE]`
+2. AOF：Append Only File，记录每个写入操作
+    - 优点
+        1. fsync 策略：`everysec`（每秒）、`always`（每个命令），所以使用 AOF 最多丢失一秒的写入 
+        2. append-only 日志，即使由于某些原因（磁盘已满）日志以写一半的命令结束，可使用 redis-check-aof 工具修复
+        3. AOF 变得太大时，后台将自动重写 AOF
+        4. 能通过删除误操作命令恢复数据
+    - redis.conf：
+        ```
+        # 是否开启 AOF 持久化
+        appendonly yes
+        # AOF 持久化文件名
+        appendfilename "appendonly.aof"
+        # 同步策略
+        appendfsync always | everysec | no
+        # 自动重写 AOF 文件
+        auto-aof-rewrite-percentage 100
+        auto-aof-rewrite-min-size 64mb
+        ```
+3. RDB + AOF
+    - redis.conf：`aof-use-rdb-preamble yes`
+    - 发生于重写 AOF，重写后 AOF 文件前面是 RDB 格式的全量数据，后面是 AOF 格式的增量数据
 ---
 ## 缓存雪崩、击穿、穿透
-1. 雪崩：
+1. 雪崩
     1. 大量缓存同一时间过期
         - 打散过期时间：随机数
         - 加互斥锁：分布式锁、JVM 锁均可（Key 维度枷锁?）
@@ -138,9 +169,9 @@ auto-aof-rewrite-min-size 64mb
     - 接口校验：用户鉴权、参数校验
     - 缓存空值或默认值：设置较短过期时间
     - 布隆过滤器
->- [参考网站1](https://zhuanlan.zhihu.com/p/359118610)
->- [参考网站2](https://mp.weixin.qq.com/s/_StOUX9Nu-Bo8UpX7ThZmg)
->- [参考网站3](https://mp.weixin.qq.com/s/knz-j-m8bTg5GnKc7oeZLg)
+>- [程序员囧辉](https://mp.weixin.qq.com/s/QX8UviH7iaxXTz-Io_7uZg)
+>- [小林coding](https://mp.weixin.qq.com/s/_StOUX9Nu-Bo8UpX7ThZmg)
+>- [敖丙](https://mp.weixin.qq.com/s/knz-j-m8bTg5GnKc7oeZLg)
 ---
 ## 数据库和缓存一致性问题
 1. 更新缓存 or 删除缓存？：推荐删除缓存
@@ -190,25 +221,6 @@ auto-aof-rewrite-min-size 64mb
 ## [Redis 计数器并发精准数量控制](https://www.imooc.com/learn/1067)
 ![redis 数量控制并发问题](https://img1.mukewang.com/6092cf44000167a319201080-500-284.jpg)
 ![redis 数量控制并发优化](https://img4.mukewang.com/6092d0560001c11019201080-500-284.jpg)
----
-## [配置](https://github.com/redis/redis/blob/unstable/redis.conf)
-```
-# 设置客户端密码
-requirepass password
-# 监听 loopback IPv4 和 IPv6
-# docker 下注释掉
-bind 127.0.0.1 -::1
-# 是否开启保护模式
-# docker 下设置为 no
-protected-mode yes
-# 是否守护线程运行
-# docker 下设置为 no，因为 docker run -d 已经是后台启动 
-daemonize no
-# 持久化文件存储目录
-dir ./
-# 包含其它配置文件
-include other.conf
-```
 ---
 ## [命令](https://www.redis.io/commands)
 - [Try Redis](https://try.redis.io/)

@@ -20,7 +20,7 @@ import springboot.controller.DemoController;
  * MockMvc
  * <p>
  * Mockito framework site：https://site.mockito.org
- * Mockito | Github：https://github.com/mockito/mockito
+ * Mockito | GitHub：https://github.com/mockito/mockito
  * MockMvc 详解：https://www.cnblogs.com/jpfss/p/10950904.html
  * SpringBoot2 + Junit5 测试案例：https://www.cnblogs.com/xumBlog/p/12679134.html
  *

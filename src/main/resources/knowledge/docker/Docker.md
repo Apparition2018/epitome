@@ -27,7 +27,8 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roa
 ```
 2. 下载地址：https://www.docker.com/products/docker-desktop
     或：https://hub.docker.com/editions/community/docker-ce-desktop-windows
-3. Settings → Docker Engine
+3. 下载并安装 [WSL2](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
+4. Settings → Docker Engine
 ```
   "registry-mirrors": [
     "https://docker-cn.com",
@@ -36,7 +37,13 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roa
   ],
 ```
 4. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
-5. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
+5. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
+```
+[wsl2]
+memory=2GB
+swap=4GB
+localhostForwarding=true
+```
 ---
 ## Linux 安装 Docker
 ```bash
@@ -187,7 +194,7 @@ docker run -d --name mysql -p 3306:3306 mysql
 docker cp mysql:/etc/my.cnf my.cnf
 
 docker run -d --name mysql -p 3306:3306 --privileged --restart=always \
-[-v D:/Docker/Data/MySQL/my.cnf:/etc/mysql/my.cnf \]
+-v D:/Docker/Data/MySQL/my.cnf:/etc/mysql/my.cnf \
 -v D:/Docker/Data/MySQL/data:/var/lib/mysql \
 -v D:/Docker/Data/MySQL/files:/var/lib/mysql-files \
 -e MYSQL_ROOT_PASSWORD=root \
