@@ -144,7 +144,7 @@
     4. Web Resource Directories 配置 webapp
 ### Artifacts
     1. Project Structure → Artifacts
-    2. \+ Web Application: Exploded ▶ From Modules...
+    2. + Web Application: Exploded ▶ From Modules...
     3. Output directory: xxx\target
     4. 把 Available Elements 中需要用到的 jar Put into /WEB-INF/lib，特别是 javax.servlet-api
 ---

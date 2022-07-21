@@ -12,7 +12,7 @@
     2. `npm config set prefix "D:\nodejs\node_global"`，并添加到系统环境变量 Path
     3. `npm config set registry https://registry.npm.taobao.org`
 3. `npm install -g yarn`
-4. yarnrc
+4. .yarnrc
     1. `yarn config set cache-folder "D:\nodejs\yarn_cache"`
     2. `yarn config set global-folder "D:\nodejs\yarn_global"`
     3. `yarn config set registry https://registry.npm.taobao.org`
@@ -37,7 +37,7 @@
 | npm                                | yarn                        |
 |:-----------------------------------|:----------------------------|
 | npm init                           | yarn create ?               |
-| npm install                        | yarn install (yarn)         |
+| npm install                        | yarn [install]              |
 | npm install &lt;pkg&gt;            | yarn add &lt;pkg&gt;        |
 | npm install &lt;pkg&gt; --save-dev | yarn add &lt;pkg&gt; --dev  |
 | npm install &lt;pkg&gt; -g         | yarn global add &lt;pkg&gt; |

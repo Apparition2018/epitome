@@ -23,8 +23,11 @@ Ctrl + Shift + N        Ctrl + P                Ctrl + P                    跳�
                         
                         Ctrl + L                                            清除控制台
                         
+Ctrl + Alt + F12                                Alt + Shift + R             在 Explorer 显示文件                        
+                        
 Alt + 1                 Ctrl + Shift + M        Ctrl + Shift + E            Project/目录树/源管理器
                         Ctrl + Shift + I                                    调试器
                         Ctrl + Shift + D                                    模拟器
-                
+Alt + F12                                       Ctrl + `                    Terminal
+
 ```

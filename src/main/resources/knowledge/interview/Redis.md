@@ -4,11 +4,18 @@
 ---
 ## Reference
 1. [Redis](https://redis.io/)
-2. [Redis | GitHub](https://github.com/redis/redis)
-3. [Redis 教程 | 菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
-4. [Redis 教程 | 冯佳兴](https://blog.csdn.net/fjxcsdn/category_8935622.html)
-5. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
-6. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
+2. [GitHub](https://github.com/redis/redis)
+3. [菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
+4. [冯佳兴](https://blog.csdn.net/fjxcsdn/category_8935622.html)
+5. [Cedar_Guo](https://blog.csdn.net/weixin_43741711/category_11681591.html)
+6. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
+7. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
+---
+## 规范
+1. [Redis开发运维实战](https://mp.weixin.qq.com/s/BO3wrKjvO52XqyQIBT-n2g)
+2. [付磊](https://developer.aliyun.com/article/531067)
+3. [码哥字节](https://mp.weixin.qq.com/s/zI5jJapggUURWcpPVB8IVg)
+4. [掘金开发者社区](https://mp.weixin.qq.com/s/-nZ08zGTYNS1b1ep-dDwRQ)
 ---
 ## Interview
 1. [JavaGuide](https://github.com/Snailclimb/JavaGuide/tree/main/docs/database/redis)
@@ -55,7 +62,7 @@
 >- [捡田螺的小男孩](https://mp.weixin.qq.com/s/wf08G3PHpfbJKiU7ZVO9Lw)
 >- [小林coding](https://mp.weixin.qq.com/s/apScwfXHWlh8xUS1RhMSIA)
 ---
-## [数据类型及其使用场景](https://redis.io/docs/manual/data-types/)
+## [数据类型](https://redis.io/docs/manual/data-types/)
 | 数据类型        | 使用场景                                                        |
 |:------------|:------------------------------------------------------------|
 | String      | 缓存、计数器（数量统计（阅读量）、数量控制（限流））、时效信息（验证码）、全局 ID、分布式 session、分布式锁 |
@@ -117,7 +124,7 @@ include other.conf
 ## [持久化](https://redis.io/topics/persistence)
 1. RDB：Redis Database，指定时间间隔执行的数据集快照
     - 优点
-        1. 紧凑的单文件，按时间点备份，适合灾难恢复
+        1. 压缩的二进制单文件，按时间点备份，适合灾难恢复
         2. 父进程 fork() 一个子进程完成持久化工作
         3. 对比 AOF 更快的大数据集重启速度
         4. 在 Redis 复制，RDB 支持重启和故障转移后的部分重新同步
@@ -153,25 +160,23 @@ include other.conf
     - 发生于重写 AOF，重写后 AOF 文件前面是 RDB 格式的全量数据，后面是 AOF 格式的增量数据
 ---
 ## 缓存雪崩、击穿、穿透
-1. 雪崩
-    1. 大量缓存同一时间过期
-        - 打散过期时间：随机数
-        - 加互斥锁：分布式锁、JVM 锁均可（Key 维度枷锁?）
-        - 热点数据不过期
-    2. Redis 故障
-        - 服务熔断
-        - 请求限流
-        - 高可用
-2. 击穿：某个缓存在过期的瞬间有大量请求（热点数据）
-    - 加互斥锁
-    - 热点数据不过期
-3. 穿透：访问一个缓存和数据库都不存在的数据
+1. 穿透 (Penetration)：访问一个缓存和数据库都不存在的数据
     - 接口校验：用户鉴权、参数校验
     - 缓存空值或默认值：设置较短过期时间
-    - 布隆过滤器
+    - 布隆过滤器 @see BloomFilterDemo
+2. 击穿 (Breakdown)：某个缓存在过期的瞬间有大量请求
+    - 互斥锁或队列
+    - 不设置过期时间：定时更新，或更新操作时更新
+    - 多级缓存
+3. 雪崩 (Avalanche)
+    1. 多个缓存在同一时刻过期且有大量请求
+        - 同击穿
+        - 打散过期时间
+    2. Redis 故障宕机
+        - 熔断、降级、限流：Hystrix
+        - 高可用：主从，哨兵，集群
 >- [程序员囧辉](https://mp.weixin.qq.com/s/QX8UviH7iaxXTz-Io_7uZg)
 >- [小林coding](https://mp.weixin.qq.com/s/_StOUX9Nu-Bo8UpX7ThZmg)
->- [敖丙](https://mp.weixin.qq.com/s/knz-j-m8bTg5GnKc7oeZLg)
 ---
 ## 数据库和缓存一致性问题
 1. 更新缓存 or 删除缓存？：推荐删除缓存
@@ -218,13 +223,17 @@ include other.conf
 >- [水滴与银弹](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
 >- [小林coding](https://mp.weixin.qq.com/s/sh-pEcDd9l5xFHIEN87sDA)
 ---
-## [Redis 计数器并发精准数量控制](https://www.imooc.com/learn/1067)
-![redis 数量控制并发问题](https://img1.mukewang.com/6092cf44000167a319201080-500-284.jpg)
-![redis 数量控制并发优化](https://img4.mukewang.com/6092d0560001c11019201080-500-284.jpg)
+## Big Keys
+
+>- [BiggerBoy](https://mp.weixin.qq.com/s/ruMfDiloAm9qev4C49bGYg)
+>- [神州数码集团](https://mp.weixin.qq.com/s/v3zQphGM0mA8WEixQgQVPw)
+>- [小林coding](https://mp.weixin.qq.com/s/l3l9d9sLiWoUM381E9o-3Q)
+>- [悦专栏](https://mp.weixin.qq.com/s/UJm6fixui2NReSjfFZ5Emg)
 ---
-## [命令](https://www.redis.io/commands)
+## [CLI](https://redis.io/docs/manual/cli/#scanning-for-big-keys)
 - [Try Redis](https://try.redis.io/)
-- 连接远程 redis：redis-cli -h host -p port -a password
+- 连接服务：redis-cli -h host -p port -a password
+### [Commands](https://redis.io/commands/)
 - Key
 ```
 KEYS pattern[?|*]                                   查看
@@ -347,4 +356,8 @@ DBSIZE                                              当前库 key 数量
 FLUSHALL [ASYNC|SYNC]                               冲洗所有数据库 key
 FLUSHDB [ASYNC|SYNC]                                冲洗当前库所有 key
 ```
+---
+## [计数器并发精准数量控制](https://www.imooc.com/learn/1067)
+![redis 数量控制并发问题](https://img1.mukewang.com/6092cf44000167a319201080-500-284.jpg)
+![redis 数量控制并发优化](https://img4.mukewang.com/6092d0560001c11019201080-500-284.jpg)
 ---
