@@ -5,10 +5,11 @@
 1. [VS Code + ESLint + Prettier + Git Hooks](https://zhuanlan.zhihu.com/p/444925446)
 2. [Syntax Highlighting](https://babeljs.io/docs/en/editors/#visual-studio-code)
 ---
-## extensions-dir
+## [配置 user-data-dir 和 extensions-dir](https://stackoverflow.com/a/66281688/19598136)
     1. 找到 vscode 快捷方式位置
     2. 右键 → 属性 → 目标
-    3. "D:\Microsoft VS Code\Code.exe" --extensions-dir "D:\dev\.vscode\extensions"
+    3. "D:\Microsoft VS Code\Code.exe" --user-data-dir "D:\Microsoft VS Code\data" --extensions-dir "D:\Microsoft VS Code\extensions"
+    4. 删除 C:\Users\HP\AppData\Roaming\Code 和 C:\Users\HP\.vscode\extensions
 ---
 ## Settings Sync
     1. File → Preferences → Turn on Settings Sync...

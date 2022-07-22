@@ -225,6 +225,7 @@ include other.conf
 ---
 ## Big Keys
 
+>- [Redis开发运维实战](https://mp.weixin.qq.com/s/LqyjZ0ZinI_JmPlSt4oa6Q)
 >- [BiggerBoy](https://mp.weixin.qq.com/s/ruMfDiloAm9qev4C49bGYg)
 >- [神州数码集团](https://mp.weixin.qq.com/s/v3zQphGM0mA8WEixQgQVPw)
 >- [小林coding](https://mp.weixin.qq.com/s/l3l9d9sLiWoUM381E9o-3Q)
@@ -238,6 +239,7 @@ include other.conf
 ```
 KEYS pattern[?|*]                                   查看
 DEL key [key ...]                                   删除
+SCAN cursor [MATCH pattern] [COUNT count] [TYPE type]   迭代元素集合
 EXISTS key [key ...]                                判断是否存在
 RENAME key newkey                                   重命名
 TYPE key                                            返回类型
@@ -279,6 +281,7 @@ HGETALL key                                         获取所有键值
 HKEYS key                                           获取所有键
 HVALS key                                           获取所有值
 HDEL key field [field ...]                          删除
+HSCAN key cursor [MATCH pattern] [COUNT count]      迭代
 HEXISTS key field                                   判断是否存在
 HINCRBY key field increment                         增加
 HLEN key                                            长度
@@ -310,6 +313,7 @@ SMEMBERS key                                        获取
 SRANDMEMBER key [count]                             随机获取
 SPOP key [count]                                    随机移除
 SREM key member [member ...]                        删除
+SSCAN key cursor [MATCH pattern] [COUNT count]      迭代
 SISMEMBER key member                                判断是否存在
 SCARD key                                           长度
 SUNION key [key ...]                                并集
@@ -330,6 +334,7 @@ ZSCORE key member                                   获取分数
 ZRANK key mebmer                                    获取排名
 ZUNIONSTORE destination numkeys key [key ...]       并集并另外存储
 ZREM key member [member ...]                        删除
+ZSCAN key cursor [MATCH pattern] [COUNT count]      迭代
 ZREMRANGEBYRANK key start stop                      删除排名区间成员
 ZREMRANGEBYSCORE key min max                        删除分数区间成员
 ZINCRBY key increment member                        增加分数
