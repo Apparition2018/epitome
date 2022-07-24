@@ -283,7 +283,7 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
 3. 第三方配置工具：[Percona Configuration Wizard](https://tools.percona.com/wizard)
 ---
 ## [InnoDB 锁和事务模型](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-transaction-model.html)
-## [InnoDB 锁](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
+### [InnoDB 锁](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
 1. 共享/排它锁 (Shared and Exclusive Locks)
     1. 共享锁 (Shared Locks, S)：
         - 对符合条件的行加S锁，其它事务可以对这些记录添加IS锁和S锁，即其它事务可以读取这些数据但无法修改
@@ -314,7 +314,7 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
 >- [MySQL select 加锁分析](https://www.cnblogs.com/rjzheng/p/9950951.html)
 >- [InnoDB 的七种锁](https://mp.weixin.qq.com/s/f4_o-6-JEbIzPCH09mxHJg)
 >- [InnoDB 锁到底锁的是什么](https://mp.weixin.qq.com/s/fmSHG0SejfD0IdnpIYHT9w)
-## RR 下的加锁规则
+### RR 下的加锁规则
 - 原则：
     - 加锁基本单位 Next-key Locks
     - 查找过程中访问到的对象会加锁
@@ -323,10 +323,10 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
     - 向右遍历且最后一个值不满足等值条件时，Next-key Locks → Gap Locks
     - 对于覆盖索引查询，不对聚簇索引加锁
 - 唯一索引上的范围查询会访问到不满足条件的第一个值为止
-## MySQL 如何实现悲观锁和乐观锁
+### MySQL 如何实现悲观锁和乐观锁
 - 乐观锁：更新带上旧值或版本号或修改时间(CAS)
 - 悲观锁：Shared and Exclusive Locks
-## [非锁定读 vs 锁定读](https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html)
+### [非锁定读 vs 锁定读](https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html)
 | Read  | Consistent Nonlocking Reads | Locking Reads                                  |
 |:------|:----------------------------|:-----------------------------------------------|
 | 中文    | 一致性非锁定读，快照读                 | 锁定读                                            |

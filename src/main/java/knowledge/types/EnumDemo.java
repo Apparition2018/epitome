@@ -17,7 +17,9 @@ import java.util.EnumSet;
  * 2.内置方法和可自定义方法
  * 3.限制非法值的传入
  * <p>
- * 枚举类名带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开（阿里编程规约）
+ * 阿里编程规约：
+ * 1.枚举类名带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开
+ * 2.如果变量值仅在一个固定范围内变化用 enum 类型来定义
  * <p>
  * JAVA 常量类的项目实践：https://www.cnblogs.com/lihaoyang/p/6913295.html
  * values(), valueOf(String name) 的产生：https://blog.csdn.net/smd2575624555/article/details/113363688

@@ -235,7 +235,7 @@ influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --defa
 ```
 4. [Redis](https://hub.docker.com/_/redis)
 - [Docker 部署 Redis](https://blog.csdn.net/qq_41316955/article/details/108381923)
-- [redis.conf](http://download.redis.io/redis-stable/redis.conf)
+- [redis.conf](https://redis.io/docs/manual/config/) 要对应 Redis 版本
     - `# bind 127.0.0.1 -::1`
     - `protected-mode no`
 ```bash

@@ -33,7 +33,6 @@ import java.util.stream.Stream;
  */
 public class StreamDemo extends Demo {
 
-
     /**
      * 创建
      */
@@ -131,7 +130,7 @@ public class StreamDemo extends Demo {
         p();
 
         // isParallel       判断当前 Stream 是否并行
-        p(Stream.of(9, 7, 5, 3, 1).isParallel()); // false  
+        p(Stream.of(9, 7, 5, 3, 1).isParallel()); // false
 
         // toArray()        返回所有元素的数组
         p(Stream.of(9, 7, 5, 3, 1).toArray()); // [9, 7, 5, 3, 1]
@@ -175,5 +174,4 @@ public class StreamDemo extends Demo {
         // XxxStream        flatMapToInt(Function<? super T, ? extends IntStream>)  经过 Function Stream → XxxStream
         IntStream intStream2 = Stream.of(arr).flatMapToInt(IntStream::of);
     }
-
 }

@@ -23,7 +23,7 @@ public class IteratorDemo extends Demo {
             // E	    next()          返回迭代的下一个元素
             p(it.next());
             // void	    remove()        从迭代器指向的 collection 中移除迭代器返回的最后一个元素（可选操作）
-            // 不要在 foreach 循环里进行元素的 remove/add 操作。remove 元素请使用 Iterator 方式，如果并发操作，需要对 Iterator 对象加锁（阿里编程规约）
+            // 不要在 foreach 循环里进行元素的 remove / add 操作。remove 元素请使用 iterator 方式，如果并发操作，需要对 Iterator 对象加锁（阿里编程规约）
             it.remove();
         }
     }

@@ -51,7 +51,6 @@ public class CertificateDemo extends Demo {
     private static final String CERT_TYPE_X509 = "X.509";
     private static final String SIGN_ALGO = "SHA1withRSA";
 
-
     @Test
     public void test() throws CertificateException, KeyStoreException, IOException, NoSuchAlgorithmException, UnrecoverableKeyException, SignatureException, InvalidKeyException {
         KeyStore keyStore = getKeyStore(KEY_TYPE_PKCS12, KEY_PATH, KEY_PASSWORD);

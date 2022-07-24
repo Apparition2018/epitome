@@ -3,11 +3,11 @@ package knowledge.datetime.time;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Date;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
+import java.util.Date;
 
 /**
  * Clock

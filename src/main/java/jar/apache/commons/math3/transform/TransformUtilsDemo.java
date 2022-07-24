@@ -16,14 +16,10 @@ public class TransformUtilsDemo {
 
     @Test
     public void transform() {
-
         // static Complex[]	    scaleArray(Complex[] f, double d)
         // static double[]	    scaleArray(double[] f, double d)
         // 比例扩/缩数组
         double[] arr = TransformUtils.scaleArray(new double[]{1, 2, 3}, 2);
         System.out.println(Arrays.toString(arr)); // [2.0, 4.0, 6.0]
-
-
     }
-
 }

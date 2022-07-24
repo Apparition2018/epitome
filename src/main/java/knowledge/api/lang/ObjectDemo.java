@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
  * <p>
  * protected  Object	clone()             创建并返回此对象的一个副本
  * 为什么实现了 Cloneable 接口，就能调用 clone()？：https://www.zhihu.com/question/52490586
+ * 慎用 Object 的 clone 方法来拷贝对象，对象 clone 方法默认是浅拷贝（阿里编程规约）
  * <p>
  * protected  void	    finalize()          当垃圾回收器确定不存在对该对象的更多引用时，由对象的垃圾回收器调用此方法
  * 为什么不使用 finalize()：https://blog.csdn.net/maoyeqiu/article/details/49562093
@@ -19,7 +20,11 @@ import org.junit.jupiter.api.Test;
  * <p>
  * boolean	            equals(Object obj)  指示其他某个对象是否与此对象“相等”
  * 对于基本类型，比较的是基本类型的值；对于引用类型，比较的是对象的内存地址
- * Set 的元素，Map 的键必须覆写 hashCode 和 equals（阿里编程规约）
+ * <p>
+ * 阿里编程规约：
+ * 1）只要覆写 equals，就必须覆写 hashCode。
+ * 2）因为 Set 存储的是不重复的对象，依据 hashCode 和 equals 进行判断，所以 Set 存储的对象必须覆写这两种方法。
+ * 3）如果自定义对象作为 Map 的键，那么必须覆写 hashCode 和 equals。
  * <p>
  * void	                notify()            唤醒在此对象监视器上等待的单个线程
  * void	                notifyAll()         唤醒在此对象监视器上等待的所有线程

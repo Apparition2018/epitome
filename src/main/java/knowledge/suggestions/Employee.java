@@ -33,10 +33,10 @@ enum Position {
 
 /**
  * 阿里编程规约：
- * Comparator 实现类要满足如下三个条件，不然 Arrays.sort、Collections.sort 会抛 IllegalArgumentException 异常
- * 1.x，y 的比较结果和 y，x 的比较结果相反
- * 2.x>y，y>z，则 x>z
- * 3.x=y，则 x，z 比较结果和 y，z 比较结果相同
+ * 在 JDK7 版本及以上，Comparator 实现类要满足如下三个条件，不然 Arrays.sort，Collections.sort 会抛 IllegalArgumentException 异常
+ * 1）x，y 的比较结果和 y，x 的比较结果相反。
+ * 2）x > y，y > z，则 x > z。
+ * 3）x = y，则 x，z 比较结果和 y，z 比较结果相同。
  */
 class PositionComparator implements Comparator<Employee> {
 

@@ -24,10 +24,10 @@ public class Fail extends Demo {
      */
     @Test
     public void testFailSafe() {
-        for (Integer key : map.keySet()) {
-            p(map.get(key));
+        map.forEach((k, v) -> {
+            p(map.get(k));
             map.put(4, "D"); // ConcurrentModificationException
-        }
+        });
     }
 
     /**
@@ -39,14 +39,13 @@ public class Fail extends Demo {
     public void testFailFast() {
         map = new ConcurrentHashMap<>(map);
 
-        for (Integer key : map.keySet()) {
-            p(map.get(key));
+        map.forEach((k, v) -> {
+            p(map.get(k));
             map.put(4, "D");
             // A
             // B
             // C
             // D
-        }
+        });
     }
-
 }

@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
  * 1.在 if/else/for/while/do 语句中必须使用大括号，即使只有一行代码
  * 2.表达异常的分支时，少用 if-else 方式，这种方式可以改写成
  * -    if (condition) {
- * -        ...    
- * -        return obj;    
+ * -        ...
+ * -        return obj;
  * -    }
  * - 超过 3 层的 if-else 的逻辑判断代码可以使用卫语句(guard clauses)、策略模式、状态模式等来实现
  * 3.除常用方法（如 getXxx/isXxx）等外，不要在条件判断中执行其它复杂的语句，将复杂逻辑判断的结果赋值给一个有意义的布尔变量名，以提高可读性
@@ -37,8 +37,5 @@ public class ProcessControl {
      */
     @Test
     public void testSwitch() {
-
     }
-
-
 }

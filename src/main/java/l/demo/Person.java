@@ -109,8 +109,10 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
      * 2.没有继承任何类，没有实现任何接口
      * 3.没有被其它框架侵入
      * 阿里编程规约：
-     * 定义 DO/DTO/VO 等 POJO 类时，不要设定任何属性默认值
-     * POJO 类必须写 toString 方法。如果继承了另一个 POJO 类，注意在前面加一下 super.toString
+     * 1.所有的 POJO 类属性必须使用包装数据类型
+     * 2.定义 DO/DTO/VO 等 POJO 类时，不要设定任何属性默认值
+     * 3.POJO 类必须写 toString 方法。如果继承了另一个 POJO 类，注意在前面加一下 super.toString()
+     * 4.禁止在 POJO 类中，同时存在对应属性 xxx 的 isXxx() 和 getXxx() 方法
      */
     @Data
     @Accessors(chain = true)
@@ -129,7 +131,7 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
          * 1.反序列化的对象的版本号若与当前类版本号一致，反序列化成功。若反序列化对象的结构与当前类接口有变化，那么可以还原的属性就还原，没有的属性就忽略
          * 2.版本号若不一致，则反序列化直接失败
          * <p>
-         * 如果完全不兼容升级，避免反序列化混乱，那么请修改 serialVersionUID 值（阿里编程规约）
+         * 序列化类新增属性时，请不要修改 serialVersionUID 字段，避免反序列失败；如果完全不兼容升级，避免反序列化混乱，那么请修改 serialVersionUID 值（阿里编程规约）
          * <p>
          * serialVersionUID的作用：https://www.zhihu.com/question/24852886/answer/117314768
          */

@@ -58,9 +58,7 @@ public class URIBuilderDemo extends Demo {
 
         URIBuilder builder = new URIBuilder(BAIDU_URL);
 
-        for (String key : params.keySet()) {
-            builder.addParameter(key, params.get(key));
-        }
+        params.forEach((k, v) -> builder.addParameter(k, params.get(v)));
 
         p(builder.build()); // https://www.baidu.com/?a=1&b=2&c=3
     }

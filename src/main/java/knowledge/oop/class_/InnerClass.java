@@ -77,8 +77,10 @@ public class InnerClass {
             class BInner {
                 public void test() {
                     p(x);
-                    // JDK8 之前内部类中访问方法内变量，需要将变量声明为 final
-                    // JDK8 重构了 JVM 内存分配，解决了这个问题，就不再需要声明为 final
+                    /*
+                     * 在一个方法的局部内部类中想引用这个方法的其它局部变，需要将变量声明为 final
+                     * JDK8 重构了 JVM 内存分配，解决了这个问题，不再需要声明为 final
+                     */
                     p(y);
                 }
             }

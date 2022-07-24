@@ -138,10 +138,6 @@ public class ThreadDemo extends Demo {
              * 直到 download 线程将任务执行完毕 (download 线程结束) 时才会接触阻塞继续向下运行代码
              */
             try {
-                /*
-                 * 当一个方法的局部内部类中想引用这个方法的其它局部变量，那么该变量必须是 final 的，这源自 JVM 的内存分配问题。
-                 * JDK8 由于重构了 JVM 内存分配，解决了这个问题，就不再这样要求了
-                 */
                 download.join(); // void join(): 等待该线程终止
             } catch (InterruptedException e) {
                 e.printStackTrace();

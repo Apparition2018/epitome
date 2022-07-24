@@ -4,8 +4,8 @@ package knowledge.oop;
  * 方法
  * 修饰符 返回值类型 方法名 参数类型 方法体
  * 阿里编程规约：
- * 类内方法定义的顺序依次是：公有方法或保护方法 > 私有方法 > getter / setter方法
- * 在 getter/setter 方法中，不要增加业务逻辑，增加排查问题的难度
+ * 1.类内方法定义的顺序依次是：公有方法或保护方法 > 私有方法 > getter / setter 方法
+ * 2.在 getter / setter 方法中，不要增加业务逻辑，增加排查问题的难度
  *
  * @author ljh
  * created on 2019/8/8 19:39

@@ -14,13 +14,12 @@ import java.util.*;
  * Map          HashMap                 LinkedHashMap           TreeMap
  * 适用场景     快速访问                记录插入顺序              自动排序
  * <p>
- * 阿里编程规约：
- * 集合类          Hashtable       ConcurrentHashMap       TreeMap             HashMap
- * Key          不允许为 null       不允许为 null           不允许为 null       允许为 null
- * Value        不允许为 null       不允许为 null           允许为 null        允许为 null
- * Super        Dictionary      AbstractMap             AbstractMap         AbstractMap
- * ThreadSafety 线程安全        锁分段技术(JDK8:CAS)     线程不安全           Collections.synchronizedMap(map)
- * Hash     直接使用对象的 hashcode                                            重新结算 hash
+ * 阿里编程规约：高度注意 Map 类集合 K / V 能不能存储 null 值的情况
+ * 集合类                  key             value       Super           说明
+ * Hashtable            not null        not null    Dictionary      线程安全
+ * TreeMap              not null        null        AbstractMap     线程不安全
+ * ConcurrentHashMap    not null        not null    AbstractMap     锁分段技术（JDK8:CAS）
+ * HashMap              null            null        AbstractMap     线程不安全
  * <p>
  * void	        putAll(Map<? extends K,? extends V> m)      从指定映射中将所有映射关系复制到此映射中（可选操作）
  * void	        clear()                                     从此映射中移除所有映射关系（可选操作）
@@ -118,7 +117,8 @@ public class MapDemo extends Demo {
 
     /**
      * 阿里编程规约：
-     * 使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历
+     * 1.使用 Map 的方法 keySet() / values() / entrySet() 返回集合对象时，不可以对其进行添加元素操作，否则会抛出 UnsupportedOperationException 异常
+     * 2.使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历
      * keySet 其实是遍历了 2 次，一次是转为 Iterator 对象，另一次是从 hashMap 中取出 key 所对应的 value。
      * 而 entrySet 只是遍历了一次就把 key 和 value 都放到了 entry 中，效率更高。如果是 JDK8，使用 Map.forEach 方法
      */

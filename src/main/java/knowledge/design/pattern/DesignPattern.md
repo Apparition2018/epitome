@@ -1,5 +1,6 @@
 # Design Pattern
-
+- 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式（阿里编程规约）
+---
 ## 参考网站
 1. [Design Patterns | refactoring.guru](https://refactoringguru.cn/design-patterns)
 2. [Design Patterns | sourcemaking](https://sourcemaking.com/design_patterns)
@@ -187,7 +188,4 @@
 >   - Receiver → Visitor
 >### Template Method vs Factory Method
 >- Factory Method 是 Template Method 的一个特例
----
-## 阿里编程规约
-- 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式
 ---

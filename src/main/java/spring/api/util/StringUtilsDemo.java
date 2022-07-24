@@ -117,6 +117,4 @@ public class StringUtilsDemo extends Demo {
         // 分隔符 String     → Properties
         p(StringUtils.splitArrayElementsIntoProperties(arr, ":"));      // {2=B, 1=A}
     }
-
-
 }

@@ -57,7 +57,8 @@ public class ListDemo extends Demo {
     public void testList() {
         // Object[]	    toArray()
         // 返回按适当顺序包含列表中的所有元素的数组（从第一个元素到最后一个元素）
-        // 使用集合转数组的方法，必须使用集合的 toArray(T[] array)，传入的是类型完全一致、长度为 0 的空数组（阿里编程规约）
+        // 阿里编程规约：
+        // 使用集合转数组的方法，必须使用集合的 toArray(T[] array)，传入的是类型完全一致、长度为 0 的空数组
         // 数组长度等于 0，动态创建与 size 相同的数组，性能最好
         Integer[] integers = list.toArray(new Integer[0]);
         p(integers);    // [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -66,6 +67,10 @@ public class ListDemo extends Demo {
 
         // List<E>      subList(int fromIndex, int toIndex):
         // 返回列表中指定的 fromIndex（包括 ）和 toIndex（不包括）之间的部分视图；子列表与主列表共享同一个存储空间
+        // 阿里编程规约：
+        // 1.ArrayList 的 subList 结果不可强转成 ArrayList，否则会抛出 ClassCastException 异常
+        // subList() 返回的是 ArrayList 的内部类 SubList，并不是 ArrayList 本身，而是 ArrayList 的一个视图，对于 SubList 的所有操作最终会反映到原列表上
+        // 2.在 subList 场景中，高度注意对父集合元素的增加或删除，均会导致子列表的遍历、增加、删除产生 ConcurrentModificationException 异常
         List<Integer> subList = list.subList(2, 7);
         p(subList);     // [3, 4, 5, 6, 7]
 

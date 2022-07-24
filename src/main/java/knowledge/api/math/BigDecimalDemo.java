@@ -48,8 +48,11 @@ public class BigDecimalDemo {
     public void testBigDecimal() {
         // BigDecimal(BigInteger val)               BigInteger → BigDecimal
         // BigDecimal(double/int/long/String val)   XXX → BigDecimal
+        // 阿里编程规约：
+        // 禁止使用构造方法 BigDecimal(double) 的方式把 double 值转化为 BigDecimal 对象
+        // BigDecimal(double) 存在精度损失风险
+        // 优先推荐入参为 String 的构造方法，或使用 BigDecimal 的 valueOf 方法
         p(new BigDecimal(12.34));                       // 12.339999999999999857891452847979962825775146484375；unpredictable，
-                                                        // 禁止使用构造方法 BigDecimal(double)的方式把 double 值转化为 BigDecimal 对象（阿里编程规约）
         p(new BigDecimal("12.34"));                     // 12.34
         p(new BigDecimal("12.340"));                    // 12.340
         // BigDecimal	stripTrailingZeros()        返回数值上等于此小数，但从该表示形式移除所有尾部零的 BigDecimal
@@ -74,7 +77,7 @@ public class BigDecimalDemo {
     }
 
     /**
-     * BigDecimal 的等值比较应使用 compareTo()方法，而不是 equals()方法（阿里编程规约）
+     * BigDecimal 的等值比较应使用 compareTo() 方法，而不是 equals() 方法（阿里编程规约）
      */
     @Test
     public void compareTo() {

@@ -28,7 +28,7 @@ public class DateDemo {
 
 
     /**
-     * Object	    clone()                         返回此对象的副本
+     * Object	    clone()                 返回此对象的副本
      */
     @Test
     public void clone_() {
@@ -50,11 +50,10 @@ public class DateDemo {
     }
 
     /**
-     * long	        getTime()
-     * 返回自 1970 年 1 月 1 日 00:00:00 GMT 以来此 Date 对象表示的毫秒数
+     * long	        getTime()               返回自 1970 年 1 月 1 日 00:00:00 GMT 以来此 Date 对象表示的毫秒数
+     * 获取当前毫秒数：System.currentTimeMillis()；而不是 new Date().getTime()（阿里编程规约）
      * <p>
-     * void	        setTime(long time)
-     * 设置此 Date 对象，以表示 1970 年 1 月 1 日 00:00:00 GMT 以后 time 毫秒的时间点
+     * void	        setTime(long time)      设置此 Date 对象，以表示 1970 年 1 月 1 日 00:00:00 GMT 以后 time 毫秒的时间点
      */
     @Test
     public void time() {
@@ -66,8 +65,8 @@ public class DateDemo {
     }
 
     /**
-     * Instant	    toInstant()                 Date → Instant
-     * static Date	from(Instant instant)       Instant → Date
+     * Instant	    toInstant()             Date → Instant
+     * static Date	from(Instant instant)   Instant → Date
      */
     @Test
     public void instant() {

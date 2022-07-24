@@ -1,6 +1,5 @@
 package knowledge.concurrent.lock;
 
-
 import l.demo.Demo;
 import org.apache.commons.lang3.BooleanUtils;
 
@@ -88,7 +87,7 @@ public class ConditionDemo extends Demo {
                         }
                         list.addFirst(goodsId.incrementAndGet());
                         p(threadName + " + " + goodsId);
-                        if (list.size() + 1 < MAX) 
+                        if (list.size() + 1 < MAX)
                             // void	        signal()
                             // 唤醒所有等待线程
                             ADD_CON.signalAll();

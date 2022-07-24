@@ -18,6 +18,7 @@ control                             控制面板
 explorer                            资源管理器
 msconfig                            系统配置
 mstsc                               远程桌面
+netplwiz                            用户账户
 nslookup                            显示可用于诊断域名系统(DNS)基础结构的信息
 osk                                 屏幕键盘
 regedit                             注册表编辑器

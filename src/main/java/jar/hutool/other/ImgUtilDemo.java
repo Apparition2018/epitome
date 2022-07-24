@@ -41,7 +41,6 @@ public class ImgUtilDemo extends Demo {
 
     private static final File IMG = new File(HU_DEMO_PATH + "capture.jpg");
 
-
     @Test
     public void edit() {
         // 缩放
@@ -59,7 +58,7 @@ public class ImgUtilDemo extends Demo {
         // 切片
         // ImgUtil.slice(IMG, new File(HU_DEMO_PATH), 100, 100);
 
-        // 类型转换        
+        // 类型转换
         ImgUtil.convert(IMG, new File(HU_DEMO_PATH + "capture_convert.jpg"));
 
         // 黑白

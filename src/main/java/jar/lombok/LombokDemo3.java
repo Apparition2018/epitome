@@ -99,5 +99,3 @@ public class LombokDemo3 extends Demo {
     }
 
 }
-
-

@@ -21,13 +21,21 @@ import org.junit.jupiter.api.Test;
  * boolean              removeIf(Predicate<? super E> filter)   从此 collection 中移除满足条件的所有元素
  * boolean	            contains(Object o)                      如果此 collection 包含指定的元素，则返回 true
  * boolean	            containsAll(Collection<?> c)            如果此 collection 包含指定 collection 中的所有元素，则返回 true
- * boolean	            isEmpty()                               如果此 collection 不包含元素，则返回 true；判断所有集合内部的元素是否为空，使用 isEmpty()方法，而不是 size()==0 的方式（阿里编程规约）
+ * boolean	            isEmpty()                               如果此 collection 不包含元素，则返回 true
  * int	                size()                                  返回此 collection 中的元素数
  * Iterator<E>	        iterator()                              返回在此 collection 的元素上进行迭代的迭代器
  * Object[]	            toArray()                               返回包含此 collection 中所有元素的数组 {@link ListDemo#testList()}
  * <p>
  * default Stream<E>	stream()                                返回连续 Stream
  * default Stream<E>	parallelStream()                        返回并行 Stream
+ * <p>
+ * 阿里编程规约：
+ * 1.判断所有集合内部的元素是否为空，使用 isEmpty()方法，而不是 size()==0 的方式
+ * 在某些集合中，前者的时间复杂度为 O(1)，而且可读性更好
+ * 2.使用 Collection 接口任何实现类的 addAll() 方法时，要对输入的集合参数进行 NPE 判断
+ * 3.集合初始化时，指定集合初始值大小
+ * initialCapacity = (需要存储的元素个数 / 负载因子) + 1。注意负载因子（即 loaderfactor）默认为 0.75，如果暂时无法确定初始值大小，请设置为 16（即默认值）
+ * <p>
  * ************************************************************
  * AbstractCollection
  * <p>

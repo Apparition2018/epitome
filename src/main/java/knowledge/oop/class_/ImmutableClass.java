@@ -23,7 +23,6 @@ public final class ImmutableClass {
 
     private final int[] arr;
 
-
     ImmutableClass(int[] arr) {
         this.arr = arr.clone();
     }
@@ -37,5 +36,4 @@ public final class ImmutableClass {
     public int[] getArr() {
         return arr;
     }
-
 }

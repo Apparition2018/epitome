@@ -45,6 +45,8 @@ import java.util.stream.Collectors;
  * <p>
  * static <T extends Object & Comparable<? super T>> T	max(Collection<? extends T> coll[, Comparator<? super T> comp])   根据元素的自然顺序，返回给定 collection 的最大元素
  * static <T extends Object & Comparable<? super T>> T	min(Collection<? extends T> coll[, Comparator<? super T> comp])   根据元素的自然顺序 返回给定 collection 的最小元素
+ * <p>
+ * Collections 类返回的对象，如：emptyList() / singletonList() 等都是 immutable list，不可对其进行添加或者删除元素的操作（阿里编程规约）
  *
  * @author ljh
  * created on 2019/8/8 19:39

@@ -68,7 +68,7 @@ public class Operators {
         String s1 = String.valueOf(true ? 90 : 100);
         String s2 = String.valueOf(true ? 90 : 100.0);
         p(Objects.equals(s1, s2));  // false
-        
+
         Integer a = 1;
         Integer b = 2;
         Integer c = null;
@@ -110,6 +110,7 @@ public class Operators {
      * instanceof
      * 用于操作对象实例，如果被比较的对象兼容于右侧类型，该运算符仍然返回 true
      * (Object reference variable) instanceof (Class/Interface type)
+     * 在无泛型限制定义的集合赋值给泛型限制的集合时，在使用集合元素时，需要进行instanceof 判断，避免抛出 ClassCastException 异常（阿里编程规约）
      */
     @Test
     public void instanceof_() {
