@@ -21,12 +21,6 @@
 
 // 龙虾三少，益军
 
-// DrawController
-// 编程规约：
-//  命名风格：17 19
-//  代码格式：10
-//  其他：4
-
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import l.demo.Demo;

@@ -39,8 +39,6 @@ public class Variable {
      * 数值型变量默认值是 0，布尔型默认值是 false，引用型默认值是 null
      * 变量的值可以在声明时指定，也可以在构造方法中指定
      * 在静态方法以及其他类中，通过 ObjectReference.VariableName 访问
-     * <p>
-     * 避免在子父类的成员变量之间、或者不同代码块的局部变量之间采用完全相同的命名，使可理解性降低（阿里编程规约）
      */
     private String name = "ljh";
 

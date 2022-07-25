@@ -44,6 +44,7 @@ public class DrawController {
     @GetMapping("/test")
     @Transactional(rollbackFor = Exception.class)
     public Integer test(Form form) throws InterruptedException {
+        // TODO-LJH: 2022/7/25
         int drawId = 1;
 
         int effect = userMapper.deductScore(form.getUserId(), 1);
@@ -119,6 +120,4 @@ public class DrawController {
         private Integer id;
         List<Prize> prizeList;
     }
-
-
 }

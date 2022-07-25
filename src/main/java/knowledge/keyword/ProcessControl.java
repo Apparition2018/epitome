@@ -16,8 +16,6 @@ import org.junit.jupiter.api.Test;
  * -  6.1 极有可能被循环调用的方法。但在方法说明里必须注明外部参数检查。
  * -  6.2 底层调用频度比较高的方法。毕竟是像纯净水过滤的最后一道，参数错误不太可能到底层才会暴露问题。一般 DAO层与 Service 层都在同一个应用中，部署在同一台服务器中，所以 DAO 的参数校验，可以省略。
  * -  6.3 被声明成 private 只会被自己代码所调用的方法，如果能够确定调用方法的代码传入参数已经做过检查或者肯定不会有问题，此时可以不校验参数。
- * <p>
- * Java 关键字大全：http://www.mabiji.com/java/javaguanjianzi.html
  *
  * @author ljh
  * created on 2021/5/21 11:45

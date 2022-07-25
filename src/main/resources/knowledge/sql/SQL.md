@@ -99,70 +99,10 @@
 | Serializable     |                    | 不可能 | 不可能   | 不可能 |
 - [MySQL RR 如何解决幻读](https://www.zhihu.com/question/372905832)
 ---
-## 各层命名规约（阿里编程规约）
-1. Service/DAO 层方法命名规约
-   1. 获取单个对象的方法用 get 做前缀。
-   2. 获取多个对象的方法用 list 做前缀，复数结尾，如：listObjects。 
-   3. 获取统计值的方法用 count 做前缀。 
-   4. 插入的方法用 save / insert 做前缀。
-   5. 删除的方法用 remove / delete 做前缀。
-   6. 修改的方法用 update 做前缀。
-2. 领域模型命名规约
-   1. 数据对象：xxxDO，xxx 即为数据表名。
-   2. 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。
-   3. 展示对象：xxxVO，xxx 一般为网页名称。
-   4. POJO 是 DO / DTO / BO / VO 的统称，禁止命名成 xxxPOJO。
----
 ## [分层领域模型规约](https://zhuanlan.zhihu.com/p/350964880) （阿里编程规约）
 1. DO（Data Object）：此对象与数据库表结构一一对应，通过 DAO 层向上传输数据源对象。
 2. DTO（Data Transfer Object）：数据传输对象，Service 或 Manager 向外传输的对象。
 3. BO（Business Object）：业务对象，可以由 Service 层输出的封装业务逻辑的对象。
 4. Query：数据查询对象，各层接收上层的查询请求。注意超过 2 个参数的查询封装，禁止使用 Map 类来传输。
 5. VO（View Object）：显示层对象，通常是 Web 向模板渲染引擎层传输的对象。
----
-## 阿里编程规约
-### 建表规约
-```
-1. 表达是与否概念的字段，必须使用 is_xxx 的方式命名，数据类型是 unsigned tinyint（1 表示是，0 表示否）
-2. 表名不使用复数名词
-3. 主键索引名为 pk_字段名；唯一索引名为 uk_字段名；普通索引名则为 idx_字段名
-4. 小数类型为 decimal，禁止使用 float 和 double
-5. 如果存储的字符串长度几乎相等，使用 char 定长字符串类型
-6. varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索引效率
-7. 表的命名最好是遵循“业务名称_表的作用”；库名与应用名称尽量一致
-8. 单表行数超过 500 万行或者单表容量超过 2GB，才推荐进行分库分表
-```
-### 索引规约
-- [阿里为什么禁止超过三张表 join？](https://www.zhihu.com/question/56236190?sort=created)
-```
-1. 业务上具有唯一特性的字段，即使是组合字段，也必须建成唯一索引
-2. 超过三个表禁止 join。需要 join 的字段，数据类型保持绝对一致；多表关联查询时，保证被关联的字段需要有索引
-3. 在 varchar 字段上建立索引时，必须指定索引长度，没必要对全字段建立索引，根据实际文本区分度决定索引长度
-4. 页面搜索严禁左模糊或者全模糊，如果需要请走搜索引擎来解决
-5. 如果有 order by 的场景，请注意利用索引的有序性，如：where a=? and b=? order by c; 索引：a_b_c
-6. 利用覆盖索引来进行查询操作，避免回表：用 explain 的结果，extra 列会出现：using index
-7. 利用延迟关联或者子查询优化超多分页场景：SELECT t1.* FROM 表 1 as t1, (select id from 表 1 where 条件 LIMIT 100000,20 ) as t2 where t1.id=t2.id
-8. SQL 性能优化的目标：至少要达到 range 级别，要求是 ref 级别，如果可以是 consts 最好
-9. 建组合索引的时候，区分度最高的在最左边
-```
-### SQL 语句
-```
-1. 不要使用 count(列名) 或 count(常量) 来替代 count(*)，count(*) 是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关
-2. count(distinct col) 计算该列除 NULL 之外的不重复行数，注意 count(distinct col1, col2) 如果其中一列全为 NULL，那么即使另一列有不同的值，也返回为 0
-3. 当某一列的值全是 NULL 时，count(col) 的返回结果为 0，但 sum(col) 的返回结果为 NULL，因此使用 sum() 时需注意 NPE 问题，避免方法：SELECT IFNULL(SUM(column), 0) FROM table
-4. 不得使用外键与级联，一切外键概念必须在应用层解决
-5. 禁止使用存储过程，存储过程难以调试和扩展，更没有移植性
-6. 数据订正（特别是删除或修改记录操作）时，要先 select，避免出现误删除，确认无误才能执行更新语句
-7. in 操作能避免则避免，若实在避免不了，需要仔细评估 in 后边的集合元素数量，控制在 1000 个之内
-```
-### ORM 映射
-```
-1. POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行字段与属性之间的映射
-2. 不要用 resultClass 当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义<resultMap>；反过来，每一个表也必然有一个<resultMap>与之对应
-3. sql.xml 配置参数使用：#{}，#param# 不要使用 ${} 此种方式容易出现 SQL 注入
-4. iBATIS 自带的 queryForList(String statementName,int start,int size) 不推荐使用
-5. 不允许直接拿 HashMap 与 Hashtable 作为查询结果集的输出
-6. 不要写一个大而全的数据更新接口。传入为 POJO 类，不管是不是自己的目标更新字段，都进行 update table set c1=value1, c2=value2, c3=value3; 不要更新无改动的字段，一是易出错；二是效率低；三是增加 binlog 存储
-7. 使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等
->```
 ---
