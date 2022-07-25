@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3.time;
 
+import cn.hutool.core.date.DatePattern;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.api.Test;
@@ -102,7 +103,7 @@ public class DateUtilsDemo {
      */
     @Test
     public void format() {
-        p(DateFormatUtils.format(DATE1, "yyyy-MM-dd")); // 2018-11-19
+        p(DateFormatUtils.format(DATE1, DatePattern.NORM_DATE_PATTERN)); // 2018-11-19
     }
 
     /**
@@ -114,7 +115,7 @@ public class DateUtilsDemo {
      */
     @Test
     public void getFragmentInXXX() {
-        p(DateFormatUtils.format(DATE1, "yyyy-MM-dd HH:mm:ss"));    // 2018-11-19 10:41:10
+        p(DateFormatUtils.format(DATE1, DatePattern.NORM_DATETIME_PATTERN)); // 2018-11-19 10:41:10
         p("=============================\n");
 
         p("从 2018-01-01 00:00:00 到 当前时间");
@@ -193,10 +194,10 @@ public class DateUtilsDemo {
      */
     @Test
     public void parseDate() throws ParseException {
-        Date date = DateUtils.parseDate("2018-01-32", "yyyy-MM-dd");
+        Date date = DateUtils.parseDate("2018-01-32", DatePattern.NORM_DATE_PATTERN);
         p(date); // Thu Feb 01 00:00:00 CST 2018
 
-        date = DateUtils.parseDateStrictly("2018-01-32", "yyyy-MM-dd");
+        date = DateUtils.parseDateStrictly("2018-01-32", DatePattern.NORM_DATE_PATTERN);
         p(date); // Unable to parse the date: 2018-01-32
     }
 
@@ -229,5 +230,4 @@ public class DateUtilsDemo {
         p(DateUtils.truncatedEquals(DATE1, DATE2, Calendar.SECOND));            // true
         p(DateUtils.truncatedEquals(DATE1, DATE2, Calendar.MILLISECOND));       // false
     }
-
 }

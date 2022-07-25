@@ -1,15 +1,14 @@
 package knowledge.datetime;
 
+import cn.hutool.core.date.DatePattern;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * SimpleDateFormat
- * SimpleDateFormat的线程安全问题与解决方案：https://www.cnblogs.com/zemliu/p/3290585.html
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/SimpleDateFormat.html
  * <p>
  * 字母   日期或时间元素             表示          示例
@@ -41,20 +40,21 @@ public class SimpleDateFormatDemo extends Demo {
     @Test
     public void testSimpleDateFormat(String[] args) {
         // void	        applyPattern(String pattern)        将给定模式字符串应用于此日期格式
-        SDF.applyPattern("yyyy-MM-dd HH:mm:ss");
-        p(SDF.format(new Date()));  // 2020-09-03 11:29:36
+        DATE_TIME_FORMAT.get().applyPattern(DatePattern.NORM_DATETIME_PATTERN);
+        p(DATE_TIME_FORMAT.get().format(new Date()));  // 2020-09-03 11:29:36
 
         // String	    toPattern()                         返回描述此日期格式的模式字符串
-        p(SDF.toPattern());         // yyyy-MM-dd HH:mm:ss
+        p(DATE_TIME_FORMAT.get().toPattern());         // yyyy-MM-dd HH:mm:ss
 
         // String	    toLocalizedPattern()                返回描述此日期格式的本地化模式字符串
-        p(SDF.toLocalizedPattern());// aaaa-nn-jj HH:mm:ss
+        p(DATE_TIME_FORMAT.get().toLocalizedPattern());// aaaa-nn-jj HH:mm:ss
     }
 
     /**
      * 阿里编程规约：
-     * SimpleDateFormat 是线程不安全的类，可使用如下方式获取
+     * SimpleDateFormat 是线程不安全的类，一般不要定义为 static 变量，如果定义为 static，必须加锁，或者使用 DateUtils 工具类
      * JDK8 可以使用 Instant 代替 Date，LocalDateTime 代替 Calendar，DateTimeFormatter 代替 SimpleDateFormat
+     * SimpleDateFormat 的线程安全问题与解决方案：https://www.cnblogs.com/zemliu/p/3290585.html
      */
-    private static final ThreadLocal<DateFormat> DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd"));
+    private static final ThreadLocal<SimpleDateFormat> DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat(DatePattern.NORM_DATE_PATTERN));
 }

@@ -26,7 +26,7 @@ public class DateUtilDemo extends Demo {
     private static final String DATE_STR = "2008-08-08";
     private static final String TIME_STR = "20:08:08";
     private static final String DATE_TIME_STR = DATE_STR + " " + TIME_STR;
-    private final Date DATE = DATE_TIME_SDF.parse(DATE_TIME_STR);
+    private final Date DATE = DATE_TIME_FORMAT.get().parse(DATE_TIME_STR);
     private final LocalDateTime LDT = DateUtil.toLocalDateTime(DATE);
     private final Instant INSTANT = DateUtil.toInstant(DATE);
 
@@ -41,8 +41,8 @@ public class DateUtilDemo extends Demo {
         p(DateUtil.dateNew(DATE));                      // 2020-10-26 23:56:11
 
         //********** 获取一部分 **********//
-        // year, quarter, yearAndQuarter, quarterEnum, month, monthEnum, 
-        // weekOfYear, weekOfMonth, dayOfMonth, dayOfYear, dayOfWeek, dayOfWeekEnum, 
+        // year, quarter, yearAndQuarter, quarterEnum, month, monthEnum,
+        // weekOfYear, weekOfMonth, dayOfMonth, dayOfYear, dayOfWeek, dayOfWeekEnum,
         // hour, minute, second, millisecond
         p(DateUtil.year(DATE));                         // 2008
         p(DateUtil.yearAndQuarter(DATE));               // 20083
@@ -55,12 +55,12 @@ public class DateUtilDemo extends Demo {
 
         //********** 开始和结束 **********//
         // Year, Quarter, Month, Week, Day, Second
-        p(DateUtil.beginOfYear(DATE), true);            // 2008-01-01 00:00:00
-        p(DateUtil.beginOfQuarter(DATE), true);         // 2008-07-01 00:00:00
-        p(DateUtil.beginOfMonth(DATE), true);           // 2008-08-01 00:00:00
-        p(DateUtil.endOfWeek(DATE), true);              // 2008-08-10 23:59:59
-        p(DateUtil.endOfDay(DATE), true);               // 2008-08-08 23:59:59
-        p(DateUtil.endOfSecond(DATE), true);            // 2008-08-08 20:08:08
+        p(DateUtil.beginOfYear(DATE));                  // 2008-01-01 00:00:00
+        p(DateUtil.beginOfQuarter(DATE));               // 2008-07-01 00:00:00
+        p(DateUtil.beginOfMonth(DATE));                 // 2008-08-01 00:00:00
+        p(DateUtil.endOfWeek(DATE));                    // 2008-08-10 23:59:59
+        p(DateUtil.endOfDay(DATE));                     // 2008-08-08 23:59:59
+        p(DateUtil.endOfSecond(DATE));                  // 2008-08-08 20:08:08
 
         //********** 特定 **********//
         p(DateUtil.now());                              // 2020-10-27 01:28:19
@@ -80,7 +80,7 @@ public class DateUtilDemo extends Demo {
         //********** 偏移 **********//
         // DateField
         p(DateUtil.offset(DATE, DateField.AM_PM, 2));   // 2008-08-09 20:08:08
-        // Month, Week, Day, Hour, Minute, Second, Millisecond 
+        // Month, Week, Day, Hour, Minute, Second, Millisecond
         p(DateUtil.offsetHour(DATE, -2));               // 2008-08-08 18:08:08
 
         //********** 时间差 **********//
@@ -186,21 +186,21 @@ public class DateUtilDemo extends Demo {
     public void parse() {
         //********** String → DateTime **********//
         // static DateTime      parse(CharSequence dateStr[, String format[, Locale locale]])
-        p(DateUtil.parse(DATE_TIME_STR), true);         // 2008-08-08 20:08:08
-        p(DateUtil.parse(DATE_TIME_STR, "yyyy-MM-dd"),
-                true);                                  // 2008-08-08 00:00:00
+        p(DateUtil.parse(DATE_TIME_STR));               // 2008-08-08 20:08:08
+        p(DateUtil.parse(DATE_TIME_STR,
+                DatePattern.NORM_DATE_PATTERN));        // 2008-08-08 00:00:00
         // static DateTime      parseDateTime(CharSequence dateString)
-        p(DateUtil.parseDateTime(DATE_TIME_STR), true); // 2008-08-08 20:08:08
+        p(DateUtil.parseDateTime(DATE_TIME_STR));       // 2008-08-08 20:08:08
         // static DateTime      parseDate(CharSequence dateString)
-        p(DateUtil.parseDate(DATE_STR), true);          // 2008-08-08 00:00:00
+        p(DateUtil.parseDate(DATE_STR));                // 2008-08-08 00:00:00
         // static DateTime      parseTime(CharSequence timeString)
-        p(DateUtil.parseTime(TIME_STR), true);          // 1970-01-01 20:08:08
+        p(DateUtil.parseTime(TIME_STR));                // 1970-01-01 20:08:08
 
         //********** String → LocalDateTime **********//
         // static LocalDateTime parseLocalDateTime(CharSequence dateStr[, String format])
         p(DateUtil.parseLocalDateTime(DATE_TIME_STR));  // 2008-08-08T20:08:08
         p(DateUtil.parseLocalDateTime(DATE_TIME_STR,
-                "yyyy-MM-dd HH:mm:ss"));                // 2008-08-08T20:08:08
+                DatePattern.NORM_DATETIME_PATTERN));    // 2008-08-08T20:08:08
     }
 
     /**
@@ -209,23 +209,23 @@ public class DateUtilDemo extends Demo {
     @Test
     public void format() {
         // static String        format(Date date, String format)
-        p(DateUtil.format(DATE, "yyyy-MM-dd"));             // 2008-08-08
+        p(DateUtil.format(DATE, DatePattern.NORM_DATE_PATTERN));            // 2008-08-08
         // static String        formatDate(Date date)
-        p(DateUtil.formatDate(DATE));                       // 2008-08-08
+        p(DateUtil.formatDate(DATE));                                       // 2008-08-08
         // static String        formatTime(Date date)
-        p(DateUtil.formatTime(DATE));                       // 20:08:08
+        p(DateUtil.formatTime(DATE));                                       // 20:08:08
         // static String        formatDateTime(Date date)
-        p(DateUtil.formatDateTime(DATE));                   // 2008-08-08 20:08:08
+        p(DateUtil.formatDateTime(DATE));                                   // 2008-08-08 20:08:08
         // static String        formatHttpDate(Date date)
-        p(DateUtil.formatHttpDate(DATE));                   // Fri, 08 Aug 2008 12:08:08 GMT
+        p(DateUtil.formatHttpDate(DATE));                                   // Fri, 08 Aug 2008 12:08:08 GMT
         // static String        formatChineseDate(Date date, boolean isUppercase, boolean withTime)
-        p(DateUtil.formatChineseDate(DATE, false, true));   // 2008年08月08日20时08分08秒
+        p(DateUtil.formatChineseDate(DATE, false, true)); // 2008年08月08日20时08分08秒
 
         LocalDateTime localDateTime = LocalDateTime.now();
         // static String        format(LocalDateTime localDateTime, String format)
-        p(DateUtil.format(localDateTime, "yyyy-MM-dd"));    // 2020-10-26
+        p(DateUtil.format(localDateTime, DatePattern.NORM_DATE_PATTERN));   // 2020-10-26
         // static String        formatLocalDateTime(LocalDateTime localDateTime)
-        p(DateUtil.formatLocalDateTime(localDateTime));     // 2020-10-26 23:26:57
+        p(DateUtil.formatLocalDateTime(localDateTime));                     // 2020-10-26 23:26:57
     }
 
     /**
@@ -269,5 +269,4 @@ public class DateUtilDemo extends Demo {
         countDownLatch.await();
         stopWatch.stop();
     }
-
 }

@@ -37,12 +37,6 @@ import java.util.stream.IntStream;
  * 1.粒度细：原子变量可以把竞争范围缩小到变量级别
  * 2.效率高：原子类底层利用了 CAS 操作，不会阻塞线程
  * <p>
- * 阿里编程规约：
- * volatile 解决多线程内存不可见问题。对于一写多读，是可以解决变量同步问题，但是如果多写，同样无法解决线程安全问题
- * 如果是 count++操作，使用如下类实现：AtomicInteger count = new AtomicInteger(); count.addAndGet(1);
- * 如果是 JDK8，推荐使用 LongAdder 对象，比 AtomicLong 性能更好（减少乐观锁的重试次数）
- * Volatile 不能保证数据同步：https://mouselearnjava.iteye.com/blog/1920154
- * <p>
  * 原子类（一）如何保证线程安全？：https://www.jianshu.com/p/66758b960698
  * 原子类（二）高并发下的 AtomicInteger 和 LongAdder：https://www.jianshu.com/p/18aa29f72252
  * 原子类（三）原子类和 volatile：volatile :https://www.jianshu.com/p/61fc48f84056

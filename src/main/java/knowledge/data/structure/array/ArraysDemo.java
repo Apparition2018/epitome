@@ -93,8 +93,8 @@ public class ArraysDemo extends Demo {
         p(list);    // [0, 2, 3, 4, 5, 6, 7, 8, 9]
 
         // 阿里编程规约：
-        // asList 的返回对象是一个 Arrays 内部类，并没有实现集合的修改方法，它的 add/remove/clear 方法会抛出 UnsupportedOperationException 异常
-        // Arrays.asList 体现的是适配器模式，只是转换接口，后台的数据仍是数组
+        // 使用工具类 Arrays.asList() 把数组转换成集合时，不能使用其修改集合相关的方法，它的 add / remove / clear 方法会抛出 UnsupportedOperationException 异常
+        // asList 的返回对象是一个 Arrays 内部类，并没有实现集合的修改方法。Arrays.asList 体现的是适配器模式，只是转换接口，后台的数据仍是数组
         // list.add(10); // UnsupportedOperationException
 
         // 不能把基本数据类型转化为列表

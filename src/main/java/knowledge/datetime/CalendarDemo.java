@@ -57,17 +57,16 @@ public class CalendarDemo extends Demo {
 
         // abstract  void	add(int field, int amount)      根据日历的规则，将指定的时间量添加或减去给定的日历字段
         CAL.add(Calendar.DAY_OF_MONTH, 10);                 // + 10 天
-        p(SDF.format(CAL.getTime()));                       // 2018-03-07
+        p(DATE_FORMAT.get().format(CAL.getTime()));                       // 2018-03-07
         // void	            roll(int field, int amount)     将指定的（已签名）金额添加到指定的日历字段，而不更改更大的字段
         CAL.roll(Calendar.DAY_OF_MONTH, 10);                // + 10 天
-        p(SDF.format(CAL.getTime()));                       // 2018-03-17
+        p(DATE_FORMAT.get().format(CAL.getTime()));                       // 2018-03-17
         // abstract void	roll(int field, boolean up)     在给定时间字段上添加或减去（向上/向下）单个时间单位而不更改更大的字段
         CAL.roll(Calendar.DAY_OF_MONTH, true);              // + 1 月
-        p(SDF.format(CAL.getTime()));                       // 2018-03-18
+        p(DATE_FORMAT.get().format(CAL.getTime()));                       // 2018-03-18
 
         // void	clear([int field])                          // 设置此 Calendar未定义的所有日历字段值和时间值（距离 Epoch的毫秒偏移量）
         CAL.clear();
         System.out.println(CAL.getTime());                  // Thu Jan 01 00:00:00 CST 1970
     }
-
 }

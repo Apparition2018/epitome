@@ -16,9 +16,9 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import jar.fasterxml.jackson.custom.CustomDeserializer;
 import jar.fasterxml.jackson.custom.CustomSerializer;
 import jar.fasterxml.jackson.entity.Person;
+import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +40,7 @@ import java.util.SimpleTimeZone;
  * @author ljh
  * created on 2021/7/18 12:59
  */
-public class ObjectMapperDemo {
+public class ObjectMapperDemo extends Demo {
 
     /**
      * JsonMapper 为 ObjectMapper 的子类
@@ -95,7 +95,7 @@ public class ObjectMapperDemo {
                 // 同上，底层调用了 setDefaultPropertyInclusion(Include incl)
                 .setSerializationInclusion(JsonInclude.Include.NON_EMPTY)
                 // 设置 DateFormat
-                .setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"))
+                .setDateFormat(DATE_TIME_FORMAT.get())
                 // 设置 TimeZone
                 .setTimeZone(SimpleTimeZone.getTimeZone("GMT+8"))
                 // 设置可视化

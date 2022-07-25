@@ -16,8 +16,7 @@ import java.util.Date;
 
 /**
  * BeanUtils
- * 避免用性能较差的 Apache Beanutils 进行属性的 copy 
- * 可以使用其他方案比如 Spring BeanUtils, Cglib BeanCopier，注意均是浅克隆（阿里编程规约）
+ * Apache BeanUtils 性能较差，可以使用其他方案比如 Spring BeanUtils，Cglib BeanCopier，注意均是浅拷贝（阿里编程规约）
  *
  * @author ljh
  * created on 2022/1/19 11:17

@@ -20,7 +20,7 @@ import java.util.Date;
  */
 public class LocalDateTimeUtilDemo extends Demo {
 
-    private final Date DATE = DATE_TIME_SDF.parse("2008-08-08 20:08:08");
+    private final Date DATE = DATE_TIME_FORMAT.get().parse("2008-08-08 20:08:08");
     private final LocalDateTime NOW_LDT = LocalDateTime.now();
 
     public LocalDateTimeUtilDemo() throws ParseException {
@@ -56,7 +56,7 @@ public class LocalDateTimeUtilDemo extends Demo {
         ldtStr = LocalDateTimeUtil.format(localDateTime, "yyyy/MM/dd HH:mm:ss");
         p(ldtStr);                                                              // 2008/08/08 20:08:08
         // formatFormat(LocalDateTime/LocalDate)
-        ldtStr= LocalDateTimeUtil.formatNormal(localDateTime);
+        ldtStr = LocalDateTimeUtil.formatNormal(localDateTime);
         p(ldtStr);                                                              // 2008-08-08 20:08:08
 
         //********** 一天的开始和结束 **********//

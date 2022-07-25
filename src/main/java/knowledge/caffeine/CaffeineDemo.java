@@ -1,6 +1,7 @@
 package knowledge.caffeine;
 
 import com.github.benmanes.caffeine.cache.*;
+import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -133,7 +134,7 @@ public class CaffeineDemo {
                 .expireAfter(new Expiry<String, DataObject>() {
                     @Override
                     public long expireAfterCreate(String key, DataObject value, long currentTime) {
-                        return value.getData().length() * 1000L;
+                        return value.getData().length() * DateUtils.MILLIS_PER_SECOND;
                     }
 
                     @Override

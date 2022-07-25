@@ -72,11 +72,11 @@ public class Variable {
      * 阿里编程规约：
      * 1.不要使用一个常量类维护所有常量，要按常量功能进行归类，分开维护
      * 2.常量的复用层次有五层
-     * -    2.1 跨应用共享常量：放置在二方库中，通常是 client.jar 中的 constant 目录下
-     * -    2.2 应用内共享常量：放置在一方库中，通常是子模块中的 constant 目录下
-     * -    2.3 子工程内部共享常量：即在当前子工程的 constant 目录下
-     * -    2.4 包内共享常量：即在当前包下单独的 constant 目录下
-     * -    2.5 类内共享常量：直接在类内部 private static final 定义
+     * -  2.1 跨应用共享常量：放置在二方库中，通常是 client.jar 中的 constant 目录下
+     * -  2.2 应用内共享常量：放置在一方库中，通常是子模块中的 constant 目录下
+     * -  2.3 子工程内部共享常量：即在当前子工程的 constant 目录下
+     * -  2.4 包内共享常量：即在当前包下单独的 constant 目录下
+     * -  2.5 类内共享常量：直接在类内部 private static final 定义
      */
     static class Constant {
 

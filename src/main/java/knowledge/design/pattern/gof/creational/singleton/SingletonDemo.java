@@ -65,7 +65,7 @@ public class SingletonDemo {
 
         // 防止序列化攻击
         // ObjectInputStream.java:1665      checkResolve(readOrdinaryObject(unshared))
-        // ObjectInputStream.java:2194      desc.invokeReadResolve(obj) 
+        // ObjectInputStream.java:2194      desc.invokeReadResolve(obj)
         private Object readResolve() {
             return INSTANCE;
         }
@@ -91,7 +91,6 @@ public class SingletonDemo {
     /**
      * 双重检查锁 (double-checked locking)：线程安全，懒汉模式的升级版
      * <p>
-     * volatile 解决 DCL（在并发场景下）存在延迟初始化的优化问题隐患（阿里编程规约）
      * instance = new DoubleCheckLockSingleton(); 在 JVM 里面的执行分为三步：
      * 1.在堆内存开辟内存空间
      * 2.在堆内存中实例化 Singleton 里面的各个参数
@@ -99,7 +98,8 @@ public class SingletonDemo {
      * 由于 JVM 存在重排序（乱序执行），所以可能在 2 还没执行时就先执行了 3，
      * 如果此时再被切换到其它线程上，由于执行了 3，INSTANCE 已经非空了，会被直接拿出来用，
      * 这样的话，就会出现异常。这个就是著名的 DCL 失效问题。
-     * JDK1.6 开始，volatile 确保 instance 每次均在主内存中读取，解决了 DCL 失效问题
+     * <p>
+     * 通过双重检查锁（double-checked locking），实现延迟初始化需要将目标属性声明为 volatile 型（阿里编程规约）
      * <p>
      * https://www.cnblogs.com/xz816111/p/8470048.html
      */

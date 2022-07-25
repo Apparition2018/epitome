@@ -1,5 +1,8 @@
 package jar.apache.poi;
 
+import cn.hutool.core.date.DatePattern;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.apache.poi.ss.usermodel.*;
 
 import java.io.IOException;
@@ -7,7 +10,6 @@ import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,15 +22,13 @@ import java.util.Map;
  * created on 2021/1/8 0:39
  */
 public class ExcelUtils<T> {
-    
-    private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public Class<T> clazz;
 
     public ExcelUtils(Class<T> clazz) {
         this.clazz = clazz;
     }
-    
+
     public List<T> excel2BeanList(InputStream inputStream, Map<Integer, String> colNumAndFieldNameMap) throws IOException, IllegalAccessException, InstantiationException, NoSuchFieldException, NoSuchMethodException, InvocationTargetException, ParseException {
         List<T> list = new ArrayList<>();
         Workbook workbook = WorkbookFactory.create(inputStream);
@@ -52,7 +52,7 @@ public class ExcelUtils<T> {
                                 method.invoke(t, Integer.parseInt(getValue(row.getCell(cellNum))));
                                 break;
                             case "Date":
-                                method.invoke(t, SDF.parse(getValue(row.getCell(cellNum))));
+                                method.invoke(t, DateUtils.parseDate(getValue(row.getCell(cellNum)), DatePattern.NORM_DATETIME_PATTERN));
                                 break;
                             default:
                                 method.invoke(t, getValue(row.getCell(cellNum)));
@@ -62,7 +62,6 @@ public class ExcelUtils<T> {
                 list.add(t);
             }
         }
-        
         return list;
     }
 
@@ -75,7 +74,7 @@ public class ExcelUtils<T> {
                 if (DateUtil.isCellDateFormatted(cell)) {
                     double cellValue = cell.getNumericCellValue();
                     Date date = DateUtil.getJavaDate(cellValue);
-                    return SDF.format(date);
+                    return DateFormatUtils.format(date, DatePattern.NORM_DATETIME_PATTERN);
                 }
                 return String.valueOf((int) cell.getNumericCellValue());
             } else {

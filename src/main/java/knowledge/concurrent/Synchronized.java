@@ -163,5 +163,4 @@ public class Synchronized extends Demo {
             p(sb);
         }
     }
-
 }

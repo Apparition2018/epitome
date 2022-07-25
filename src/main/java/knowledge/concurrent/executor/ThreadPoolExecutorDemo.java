@@ -33,12 +33,6 @@ import java.util.stream.IntStream;
  */
 public class ThreadPoolExecutorDemo extends Demo {
 
-    /**
-     * 不推荐使用 Executors 操作线程池类：https://blog.csdn.net/u010994966/article/details/103123927
-     * 线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式，规避资源耗尽的风险，阿里编程规约：
-     * 1.FixedThreadPool 和 SingleThreadPool：允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM
-     * 2.CachedThreadPool：允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM
-     */
     public static void main(String[] args) {
         ThreadPoolExecutor threadPool = new ThreadPoolExecutor(2, 5, 10, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(3), new MyThreadFactory("test"), new MyRejectHandler());
@@ -46,9 +40,6 @@ public class ThreadPoolExecutorDemo extends Demo {
         IntStream.rangeClosed(1, 10).forEach(i -> threadPool.execute(new MyTask(i)));
     }
 
-    /**
-     * 创建线程或线程池时请指定有意义的线程名称，方便出错时回溯（阿里编程规约）
-     */
     static class MyThreadFactory implements ThreadFactory {
         private final String namePrefix;
         private final AtomicInteger nextId = new AtomicInteger(1);

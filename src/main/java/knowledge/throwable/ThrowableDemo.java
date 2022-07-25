@@ -21,15 +21,30 @@ import java.io.IOException;
  * -        NullPointerException, ClassCastException, UnsupportedOperationException
  * -        ArithmeticException, ArrayStoreException, IllegalArgumentException, IndexOutOfBoundException, NumberFormatException, NegativeArraySizeException
  * <p>
- * 阿里异常日志：
- * 1.错误码为字符串类型，共 5 位，分成两个部分：错误产生来源+四位数字编号；来源分为 A/B/C，A 来源于用户，B 来源于当前系统，C 来源于第三方服务
- * 2.Java 类库中定义的可以通过预检查方式规避的 RuntimeException 异常不应该通过 catch 的方式来处理，比如：NullPointerException，IndexOutOfBoundsException 等等
- * 3.对大段代码进行 try-catch，使程序无法根据不同的异常做出正确的应激反应，也不利于定位问题，这是一种不负责任的表现
- * 4.事务场景中，抛出异常被 catch 后，如果需要回滚，一定要注意手动回滚事务 ?
- * 5.不要在 finally 块中使用 return
- * 6.在调用 RPC、二方包、或动态生成类的相关方法时，捕捉异常必须使用 Throwable 类来进行拦截
- * 7.定义时区分 unchecked / checked 异常，避免直接抛出 new RuntimeException()，应使用有业务含义的自定义异常。推荐业界已定义过的自定义异常，如：DAOException / ServiceException 等
- * 8.对于公司外的 http/api 开放接口必须使用 errorCode；而应用内部推荐异常抛出；跨应用间 RPC 调用优先考虑使用 Result 方式，封装 isSuccess()方法、errorCode、errorMessage；而应用内部直接抛出异常即可
+ * 阿里异常处理：
+ * 1.Java 类库中定义的可以通过预检查方式规避的 RuntimeException 异常不应该通过 catch 的方式来处理，比如：NullPointerException，IndexOutOfBoundsException 等等
+ * 2.对大段代码进行 try-catch，使程序无法根据不同的异常做出正确的应激反应，也不利于定位问题，这是一种不负责任的表现
+ * 3.不要在 finally 块中使用 return
+ * 4.在调用 RPC、二方包、或动态生成类的相关方法时，捕捉异常使用 Throwable 类进行拦截 ???
+ * 5.方法的返回值可以为 null，不强制返回空集合，或者空对象等，必须添加注释充分说明什么情况下会返回 null 值
+ * 6.防止 NPE，是程序员的基本修养，注意 NPE 产生的场景
+ * -  6.1 返回类型为基本数据类型，return 包装数据类型的对象时，自动拆箱有可能产生 NPE
+ * -  6.2 数据库的查询结果可能为 null
+ * -  6.3 集合里的元素即使 isNotEmpty，取出的数据元素也可能为 null
+ * -  6.4 远程调用返回对象时，一律要求进行空指针判断，防止 NPE
+ * -  6.5 对于 Session 中获取的数据，建议进行 NPE 检查，避免空指针
+ * -  6.6 级联调用 obj.getA().getB().getC()；一连串调用，易产生 NPE
+ * 7.定义时区分 unchecked / checked 异常，避免直接抛出 new RuntimeException()，更不允许抛出 Exception 或者 Throwable，应使用有业务含义的自定义异常
+ * -  推荐业界已定义过的自定义异常，如：DAOException / ServiceException 等
+ * 8.对于公司外的 http / api 开放接口必须使用 errorCode，而应用内部推荐异常抛出；跨应用间 RPC 调用优先考虑使用 Result 方式，封装 isSuccess() 方法、errorCode、errorMessage， * 阿里异常日志：
+ * * 1.错误码为字符串类型，共 5 位，分成两个部分：错误产生来源+四位数字编号；来源分为 A/B/C，A 来源于用户，B 来源于当前系统，C 来源于第三方服务
+ * * 2.Java 类库中定义的可以通过预检查方式规避的 RuntimeException 异常不应该通过 catch 的方式来处理，比如：NullPointerException，IndexOutOfBoundsException 等等
+ * * 3.对大段代码进行 try-catch，使程序无法根据不同的异常做出正确的应激反应，也不利于定位问题，这是一种不负责任的表现
+ * * 4.事务场景中，抛出异常被 catch 后，如果需要回滚，一定要注意手动回滚事务 ?
+ * * 5.不要在 finally 块中使用 return
+ * * 6.在调用 RPC、二方包、或动态生成类的相关方法时，捕捉异常必须使用 Throwable 类来进行拦截
+ * * 7.定义时区分 unchecked / checked 异常，避免直接抛出 new RuntimeException()，应使用有业务含义的自定义异常。推荐业界已定义过的自定义异常，如：DAOException / ServiceException 等
+ * * 8.对于公司外的 http/api 开放接口必须使用 errorCode；而应用内部推荐异常抛出；跨应用间 RPC 调用优先考虑使用 Result 方式，封装 isSuccess()方法、errorCode、errorMessage，而应用内部直接抛出异常即可
  * <p>
  * 选择 Checked Exception 还是 Unchecked Exception：https://blog.csdn.net/kingzone_2008/article/details/8535287
  * Java生鲜电商平台-统一异常处理及架构实战：https://www.cnblogs.com/jurendage/p/11255197.html

@@ -1,5 +1,6 @@
 package knowledge.datetime.time;
 
+import cn.hutool.core.date.DatePattern;
 import org.junit.jupiter.api.Test;
 
 import java.time.OffsetDateTime;
@@ -109,12 +110,11 @@ public class DateTimeFormatterDemo {
                 DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.LONG),      // 2008年8月8日 星期五 下午08时08分08秒
                 DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT),   // 2008-8-8 下午8:08
                 // 指定模式
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")                              // 2008-08-08 20:08:08
+                DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME_PATTERN)                  // 2008-08-08 20:08:08
         };
         OffsetDateTime odt = OffsetDateTime.parse("2008-08-08T20:08:08+08:00");
         for (DateTimeFormatter formatter : formatters) {
             System.out.println(formatter.format(odt));
         }
     }
-
 }

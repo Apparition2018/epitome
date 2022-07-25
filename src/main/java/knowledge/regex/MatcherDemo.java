@@ -16,8 +16,8 @@ import static l.demo.Demo.p;
  * created on 2019/8/8 19:39
  */
 public class MatcherDemo {
-    
-    // 在使用正则表达式时，利用好其预编译功能，可以有效加快正则匹配速度（阿里编程规约）
+
+    // 在使用正则表达式时，利用好其预编译功能，可以有效加快正则匹配速度。不要在方法体内定义（阿里编程规约）
     private static final Pattern pattern = Pattern.compile("(a*b)(foo)");
 
     /**
@@ -156,11 +156,11 @@ public class MatcherDemo {
         countWord(s3, pattern);
         countWord(s4, pattern);
     }
-    
+
     private void countWord(String str, Pattern pattern) {
         Matcher matcher = pattern.matcher(str);
         int count = 0;
-        while(matcher.find()) {
+        while (matcher.find()) {
             ++count;
         }
         p(str + " 单词数：" + count);

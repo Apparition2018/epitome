@@ -1,5 +1,6 @@
 package l.demo;
 
+import cn.hutool.core.date.DatePattern;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -110,9 +111,11 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
      * 3.没有被其它框架侵入
      * 阿里编程规约：
      * 1.所有的 POJO 类属性必须使用包装数据类型
-     * 2.定义 DO/DTO/VO 等 POJO 类时，不要设定任何属性默认值
+     * 2.定义 DO / PO / DTO / VO 等 POJO 类时，不要设定任何属性默认值
      * 3.POJO 类必须写 toString 方法。如果继承了另一个 POJO 类，注意在前面加一下 super.toString()
      * 4.禁止在 POJO 类中，同时存在对应属性 xxx 的 isXxx() 和 getXxx() 方法
+     * 5.velocity 调用 POJO 类的属性时，直接使用属性名取值即可，模板引擎会自动按规范调用 POJO 的 getXxx()，
+     * 如果是 boolean 基本数据类型变量（boolean 命名不需要加 is 前缀），会自动调 isXxx() 方法
      */
     @Data
     @Accessors(chain = true)
@@ -161,7 +164,7 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
                     (null != super.otherInfo ? ", otherInfo=[" + StringUtils.join(super.otherInfo, ", ") + "]" : "") +
                     (null != super.getHome() ? ", home=Home(" + (null != super.getHome().getAddress() ? "address='" + super.getHome().getAddress() + '\'' : "") + (null != super.getHome().getTel() ? ", tel='" + super.getHome().getTel() + '\'' : "") + ")" : "") +
                     (null != no ? ", no='" + no + '\'' : "") +
-                    (null != birth ? ", birth=" + DateFormatUtils.format(birth, "yyyy-MM-dd") : "") + (null != score ? ", score=" + score : "");
+                    (null != birth ? ", birth=" + DateFormatUtils.format(birth, DatePattern.NORM_DATE_PATTERN) : "") + (null != score ? ", score=" + score : "");
             return "Student{" + (result.startsWith(",") ? result.substring(2) : result) + "}";
         }
     }

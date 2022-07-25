@@ -40,8 +40,8 @@ public class DateTimeDemo {
         p(dateTime);
 
         //********** 获取一部分 **********//
-        // year, quarter, yearAndQuarter, quarterEnum, month, monthBaseOne, monthStartFromOne, monthEnum, 
-        // weekOfYear, weekOfMonth, dayOfMonth, dayOfYear, dayOfWeek, dayOfWeekInMonth, dayOfWeekEnum, 
+        // year, quarter, yearAndQuarter, quarterEnum, month, monthBaseOne, monthStartFromOne, monthEnum,
+        // weekOfYear, weekOfMonth, dayOfMonth, dayOfYear, dayOfWeek, dayOfWeekInMonth, dayOfWeekEnum,
         // hour, minute, second, millisecond
         p(dateTime.quarterEnum());
         p(dateTime.monthStartFromOne());
@@ -72,7 +72,7 @@ public class DateTimeDemo {
         p(DATETIME.setField(DateField.YEAR, 2020));
         p(DATETIME.getField(DateField.YEAR));
 
-        // 设置一周的第一天 ? 
+        // 设置一周的第一天 ?
         p(DATETIME.setFirstDayOfWeek(Week.SUNDAY));     // 2020-08-08 20:08:08
         p(DATETIME.getFirstDayOfWeek());                // SUNDAY
 
@@ -88,7 +88,7 @@ public class DateTimeDemo {
         // toCalendar([[Locale][, TimeZone]])
         p(DATETIME.toCalendar());               // java.util.GregorianCalendar[...]
         // DateTime → Date
-        p(DATETIME.toJdkDate(), true);          // Fri Aug 08 20:08:08 CST 2008
+        p(DATETIME.toJdkDate());                // Fri Aug 08 20:08:08 CST 2008
         // DateTime → java.sql.Date
         p(DATETIME.toSqlDate());                // 2008-08-08 20:08:08
         // DateTime → String

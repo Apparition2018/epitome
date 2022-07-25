@@ -1,5 +1,6 @@
 package l.demo;
 
+import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.springframework.lang.NonNull;
 
@@ -91,9 +92,8 @@ public class Demo {
     public static final String XIAO_XIN = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
     public static final String VIDEO = RESOURCES_ABSOLUTE_PATH + "static/public/video/movie.ogg";
     public static final String JDBC_PROP_FILENAME = "jdbc.properties";
-    public static final SimpleDateFormat DATE_SDF = new SimpleDateFormat("yyyy-MM-dd");
-    public static final SimpleDateFormat DATE_TIME_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    public static final SimpleDateFormat SDF = DATE_SDF;
+    public static final ThreadLocal<SimpleDateFormat> DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat(DatePattern.NORM_DATE_PATTERN));
+    public static final ThreadLocal<SimpleDateFormat> DATE_TIME_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat(DatePattern.NORM_DATETIME_PATTERN));
 
     public static void setCountDownLatch(int n) {
         countDownLatch = new CountDownLatch(n);
@@ -107,10 +107,6 @@ public class Demo {
     }
 
     public static <T> void p(T obj) {
-        p(obj, false);
-    }
-
-    public static <T> void p(T obj, boolean original) {
         if (null == obj) return;
         // 数组
         if (obj.getClass().isArray()) {
@@ -147,15 +143,6 @@ public class Demo {
                 return;
             }
             System.out.println(Arrays.toString((Object[]) obj));
-            return;
-        }
-        // 日期时间
-        if (obj instanceof Date) {
-            if (original) {
-                System.out.println(obj);
-                return;
-            }
-            System.out.println(DATE_TIME_SDF.format(obj));
             return;
         }
         System.out.println(obj);

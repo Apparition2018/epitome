@@ -35,6 +35,7 @@ import org.junit.jupiter.api.Test;
  * 2.使用 Collection 接口任何实现类的 addAll() 方法时，要对输入的集合参数进行 NPE 判断
  * 3.集合初始化时，指定集合初始值大小
  * initialCapacity = (需要存储的元素个数 / 负载因子) + 1。注意负载因子（即 loaderfactor）默认为 0.75，如果暂时无法确定初始值大小，请设置为 16（即默认值）
+ * 4.HashMap 在容量不够进行 resize 时由于高并发可能出现死链，导致 CPU 飙升
  * <p>
  * ************************************************************
  * AbstractCollection

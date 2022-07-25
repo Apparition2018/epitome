@@ -12,7 +12,6 @@ import java.util.Objects;
  */
 @Getter
 public enum CompanyEnum implements BaseEnum {
-    // 利用构造函数传参
     SF("顺丰速运", 1001),
     YTO("圆通速递", 1002),
     STO("申通物流", 1003),

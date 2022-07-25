@@ -6,7 +6,7 @@ import lombok.Setter;
 /**
  * 抽象类
  * 1.不能实例化
- * 2.不一定包含抽象方法，但是有抽象方法的类必定是抽象类
+ * 2.不一定包含抽象方法，但是有抽象方法的类必定是抽象类N
  * 3.抽象类的子类必须重写父类的抽象方法，或者声明自身为抽象类
  * <p>
  * 抽象类命名使用 Abstract 或 Base 开头（阿里编程规约）
@@ -47,7 +47,6 @@ public class AbstractClass {
 
         /**
          * 抽象方法
-         * 所有的抽象方法（包括接口中的方法）必须要用 Javadoc 注释、除了返回值、参数、异常说明外，还必须指出该方法做什么事情，实现什么功能（阿里编程规约）
          */
         public abstract double computePay();
 
@@ -75,5 +74,4 @@ public class AbstractClass {
             return salary / 52;
         }
     }
-
 }

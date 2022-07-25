@@ -15,6 +15,6 @@ import java.util.Date;
 public class MyJob extends Demo implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) {
-        log.info(jobExecutionContext.getJobDetail().getKey() + ": " + DATE_TIME_SDF.format(new Date()));
+        log.info(jobExecutionContext.getJobDetail().getKey() + ": " + DATE_TIME_FORMAT.get().format(new Date()));
     }
 }

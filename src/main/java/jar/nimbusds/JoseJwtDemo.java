@@ -31,12 +31,12 @@ import java.util.List;
  * JWT 结构：
  * 1.Header：令牌类型（JWT），正使用的签名算法（HmacSHA256/RSA/...）
  * 2.Payload：
- * -    2.1 Registered claims：不强制而是建议使用
- * -        iss (issuer), sub(subject), aud(audience), exp (expiration time), nbf (Not Before), iat (Issued At), jti (JWT ID)
- * -        https://tools.ietf.org/html/rfc7519#section-4.1
- * -    2.2 Public claims：使用者自定义；为了 avoid collisions 应在以下中定义
- * -        IANA JSON Web Token Registry：https://www.iana.org/assignments/jwt/jwt.xhtml
- * -    2.3 Private claims：使用者自定义；不需要 avoid collisions
+ * -  2.1 Registered claims：不强制而是建议使用
+ * -    iss (issuer), sub(subject), aud(audience), exp (expiration time), nbf (Not Before), iat (Issued At), jti (JWT ID)
+ * -    https://tools.ietf.org/html/rfc7519#section-4.1
+ * -  2.2 Public claims：使用者自定义；为了 avoid collisions 应在以下中定义
+ * -    IANA JSON Web Token Registry：https://www.iana.org/assignments/jwt/jwt.xhtml
+ * -  2.3 Private claims：使用者自定义；不需要 avoid collisions
  * 3.Signature：HmacSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
  * <p>
  * JSON Web Token Introduction：https://jwt.io/introduction

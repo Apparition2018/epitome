@@ -1,5 +1,6 @@
 package knowledge.datetime.time;
 
+import cn.hutool.core.date.DatePattern;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -36,7 +37,7 @@ public class TimeDemo {
         p(ldt); // 2008-08-08T20:08:08
 
         /* LocalDateTime → String */
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME_PATTERN);
         String str = dtf.format(ldt);
         p(str); // 2008-08-08 20:08:08
     }
@@ -63,5 +64,4 @@ public class TimeDemo {
         ldt = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         p(ldt);     // 2008-08-08T20:08:08
     }
-
 }

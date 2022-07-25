@@ -38,12 +38,12 @@ public class RetrofitDemo extends Demo {
     static class CustomDateAdapter {
         @ToJson
         private String dateToJson(Date d) {
-            return DATE_TIME_SDF.format(d);
+            return DATE_TIME_FORMAT.get().format(d);
         }
 
         @FromJson
         private Date dateFromJson(String s) throws ParseException {
-            return DATE_TIME_SDF.parse(s);
+            return DATE_TIME_FORMAT.get().parse(s);
         }
     }
 }

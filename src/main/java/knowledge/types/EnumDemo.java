@@ -20,6 +20,8 @@ import java.util.EnumSet;
  * 阿里编程规约：
  * 1.枚举类名带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开
  * 2.如果变量值仅在一个固定范围内变化用 enum 类型来定义
+ * 3.所有的枚举类型字段必须要有注释，说明每个数据项的用途
+ * 4.枚举 enum（括号内）的属性字段必须是私有且不可变
  * <p>
  * JAVA 常量类的项目实践：https://www.cnblogs.com/lihaoyang/p/6913295.html
  * values(), valueOf(String name) 的产生：https://blog.csdn.net/smd2575624555/article/details/113363688
@@ -92,5 +94,4 @@ public class EnumDemo extends Demo {
             p(k.name() + ":" + v + ":" + k);
         });
     }
-
 }

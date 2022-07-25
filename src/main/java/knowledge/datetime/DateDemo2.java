@@ -1,20 +1,18 @@
 package knowledge.datetime;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-import static l.demo.Demo.p;
 
 /**
  * @author ljh
  * created on 2019/8/8 19:39
  */
-public class DateDemo2 {
+public class DateDemo2 extends Demo {
 
     private Date date = new Date();
 
@@ -39,7 +37,6 @@ public class DateDemo2 {
     // Date <=> Long
     @Test
     public void dateToLong() {
-
         // Date → long
         long time = date.getTime();
         p(time);
@@ -52,29 +49,23 @@ public class DateDemo2 {
 
         date = new Date(time);
         p(date);
-
     }
 
     // Date <=> String
     @Test
     public void dateToString() throws ParseException {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
         // Date → String
-        String dateStr = sdf.format(date);
+        String dateStr = DATE_TIME_FORMAT.get().format(date);
         p(dateStr);
 
         // String → Date
-        date = sdf.parse(dateStr);
+        date = DATE_TIME_FORMAT.get().parse(dateStr);
         p(date);
-
     }
 
     // Date <=> Calendar
     @Test
     public void dateToCalendar() {
-
         Calendar calendar = Calendar.getInstance();
 //        Calendar calendar = GregorianCalendar.getInstance();
 

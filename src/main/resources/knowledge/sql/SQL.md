@@ -104,14 +104,14 @@
    1. 获取单个对象的方法用 get 做前缀。
    2. 获取多个对象的方法用 list 做前缀，复数结尾，如：listObjects。 
    3. 获取统计值的方法用 count 做前缀。 
-   4. 插入的方法用 save/insert 做前缀。
-   5. 删除的方法用 remove/delete 做前缀。
+   4. 插入的方法用 save / insert 做前缀。
+   5. 删除的方法用 remove / delete 做前缀。
    6. 修改的方法用 update 做前缀。
 2. 领域模型命名规约
    1. 数据对象：xxxDO，xxx 即为数据表名。
    2. 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。
    3. 展示对象：xxxVO，xxx 一般为网页名称。
-   4. POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO。
+   4. POJO 是 DO / DTO / BO / VO 的统称，禁止命名成 xxxPOJO。
 ---
 ## [分层领域模型规约](https://zhuanlan.zhihu.com/p/350964880) （阿里编程规约）
 1. DO（Data Object）：此对象与数据库表结构一一对应，通过 DAO 层向上传输数据源对象。
