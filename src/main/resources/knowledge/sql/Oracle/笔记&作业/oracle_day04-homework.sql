@@ -46,5 +46,3 @@ SELECT e.ename,e.sal,e.deptno FROM emp e,(SELECT deptno,MAX(sal) max_sal FROM em
 16:查看有下属的员工信息
 SELECT m.ename,m.job,m.sal FROM emp m WHERE EXISTS(SELECT e.ename FROM emp e WHERE e.mgr=m.empno);
 SELECT * FROM emp;
-
-

@@ -63,8 +63,8 @@ SELECT * FROM user_tables;
 视图对应的子查询中含有函数，表达式，分组，去重，关联查询等操作时，该视图为复杂视图
 复杂视图不允许进行DML操作
 --创建一个部门工资情况的视图，包含信息：部门编号，部门名称，平均、最高、最低工资和工资总和
-CREATE VIEW v_emp_salinfo AS 
-SELECT d.deptno,d.dname,AVG(e.sal) avg_sal,MAX(e.sal) max_sal,MIN(e.sal) min_sal,SUM(e.sal) sum_sal 
+CREATE VIEW v_emp_salinfo AS
+SELECT d.deptno,d.dname,AVG(e.sal) avg_sal,MAX(e.sal) max_sal,MIN(e.sal) min_sal,SUM(e.sal) sum_sal
 FROM emp e,dept d WHERE e.deptno=d.deptno GROUP BY d.deptno,d.dname;
 
 --查看比自己所在部门平均工资高的员工？
@@ -75,7 +75,7 @@ SELECT e.ename,e.deptno,e.sal FROM emp e,v_emp_salinfo v WHERE e.deptno=v.deptno
 序列是用来根据指定的规律生成一系列数字使用的。
 通常使用序列为表的主键字段生成值。
 
-CREATE SEQUENCE seq_emp_id 
+CREATE SEQUENCE seq_emp_id
 START WITH 1000
 INCREMENT BY 1;
 
@@ -158,4 +158,3 @@ INSERT INTO employees2 (eid,name) VALUES (NULL,'JACK');
 
 检查约束
 ALTER TABLE employees2 ADD CONSTRAINT employess2_salary_check CHECK (salary > 2000);
-

@@ -7,8 +7,8 @@ SQL是与数据库沟通的语言,用于操作
 DDL语句
 数据定义语言,用于维护数据库对象
 数据库对象包含:表,视图,索引,序列
- 
-查看表的结构  
+
+查看表的结构
 DESC employee
 
 删除表
@@ -26,9 +26,9 @@ CREATE TABLE employee(
   birth DATE,
   salary NUMBER(6,2) DEFAULT 3000,
   job VARCHAR2(30),
-  deptno NUMBER(2)  
-) 
-  
+  deptno NUMBER(2)
+)
+
 NOT NULL 约束
 当一个字段使用NOT NULL约束后，该字段的值任何情况下不允许为空
 
@@ -51,7 +51,7 @@ NOT NULL 约束
   2.3：删除现有字段
   ALTER TABLE myemp
   DROP（hiredate）
-  
+
 DML：数据操作语言
 DML是用在增删改表中数据的。
 

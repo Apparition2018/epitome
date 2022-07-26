@@ -159,7 +159,7 @@ AND d.loc='NEW YORK';
 
 关联查询通常要加连接条件，不写连接条件会出现"笛卡尔"
 笛卡尔积通常是一个无意义的结果集
-笛卡尔积是将关联查询表中的数据意义连接一遍而产生的结果集，数据量为关联查询表数据量的乘积  
+笛卡尔积是将关联查询表中的数据意义连接一遍而产生的结果集，数据量为关联查询表数据量的乘积
 SELECT e.ename,e.deptno,d.dname,d.loc
 FROM emp e,dept d;
 
@@ -167,9 +167,9 @@ FROM emp e,dept d;
 内连接也是用来实现关联查询的
 SELECT e.ename,d.dname FROM emp e JOIN dept d ON e.deptno=d.deptno;
 
-SELECT e.ename,d.dname,d.dname,d.loc 
-FROM emp e JOIN dept d 
-ON e.deptno=d.deptno 
+SELECT e.ename,d.dname,d.dname,d.loc
+FROM emp e JOIN dept d
+ON e.deptno=d.deptno
 WHERE d.loc='NEW YORK';
 
 关联查询忽略不满足连接条件的记录

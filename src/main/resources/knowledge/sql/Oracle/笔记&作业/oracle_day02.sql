@@ -5,44 +5,44 @@ SELECT子句用来指定要查询的字段，FROM子句用来指定数据来源�
 SELECT中除了可以指定表中具体字段外，还可以指定一个函数或表达式。
 
 查看每个员工的年薪
-SELECT empno,ename,job,sal*12 
+SELECT empno,ename,job,sal*12
 FROM emp
 
 SELECT语句中添加WHERE子句
 查看工资高于2000的员工？
-SELECT ename，sal，deptno 
-FROM emp 
+SELECT ename，sal，deptno
+FROM emp
 WHERE sal > 2000
 
 查看10号部门员工？
-SELECT ename，sal，deptno 
-FROM emp 
+SELECT ename，sal，deptno
+FROM emp
 WHERE deptno = 10
 
 字符串函数
 1：CONCAT(char1,char2)
 连接字符串
 
-SELECT CONCAT(ename，sal) 
+SELECT CONCAT(ename，sal)
 FROM emp
 
-SELECT CONCAT(CONCAT(ename,':'),sal) 
+SELECT CONCAT(CONCAT(ename,':'),sal)
 FROM emp
 
 使用"||"可以方便的连接多个字符串
-SELECT ename || ':' || sal 
+SELECT ename || ':' || sal
 FROM emp
 
 SMITH的工资是800所在部门20
 SELECT ename||'的工资是'||sal||'所在部门'||deptno
-FROM emp 
+FROM emp
 WHERE ename = 'SMITH'
 
 2:LENGTH(char)
 获取指定字符串的长度
 
 查看每个员工名字的字符个数？
-SELECT ename,LENGTH(ename) 
+SELECT ename,LENGTH(ename)
 FROM emp
 
 3:LOWER,UPPER,INITCAP
@@ -63,7 +63,7 @@ SELECT
   TRIM('e' FROM 'eseeliteee')
 FROM
   dual
-  
+
 SELECT
   LTRIM('esfeaesfeesf','esf')
 From
@@ -84,7 +84,7 @@ SElECT
   SUBSTR('thinking in java' ,-7,2)
 FROM
   dual
-  
+
 7:INSTR(char1, char2[,n[,m]])
 查看char2在char1的位置
 n和m不指定默认都是1
@@ -94,7 +94,7 @@ SElECT
   INSTR('thinking in java' ,'in',4,3)
 FROM
   dual
-  
+
 数字函数
 1：ROUND(n,[,m])
 保留n小数点后m位
@@ -104,7 +104,7 @@ SELECT ROUND(45.678,2) FROM dual;
 SELECT ROUND(45.678,0) FROM dual;
 SELECT ROUND(45.678,-1) FROM dual;
 SELECT ROUND(45.678,-2) FROM dual
-  
+
 2：TRUNC(n,[,m])
 截取数字，参数意义与ROUND一致
 SELECT TRUNC(45.678,2) FROM dual;
@@ -145,13 +145,13 @@ SELECT
           'YYYY"年"MM"月"DD"日" HH24"时"MI"分"SS"秒"')
 FROM
   dual
-  
+
 2:TO_CHAR函数
 SELECT
   TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS')
 FROM
   dual
-  
+
 RR与YY都是两位数字表示年，但是当使用TO_DATE函数将两位数字解析为实际日期时，
 RR会自行判断实际，而YY不会。
 
@@ -161,7 +161,7 @@ SELECT
             'YYYY-MM-DD')
 FROM
   dual
-  
+
 日期可以进行计算
 1：对一个日期加减一个数字，等同于计算加减天数
 2：两个日期相减，差为相差的天数
@@ -196,7 +196,7 @@ FROM emp
 3:MONTHS_BETWEEN(date1,date2)
 计算两个日期之间相差多少个月，计算方式使用date1-date2得到的
 查看每个员工入职到今天为止共多少个月？
-SELECT 
+SELECT
   ename,MONTHS_BETWEEN(SYSDATE,hiredate)
 FROM emp
 
@@ -239,7 +239,7 @@ INSERT INTO student VALUES (1001, '林平子', NULL);
 INSERT INTO student (id, name) VALUES (1002, '张无忌');
 
 2：更新NULL值
-UPDATE student 
+UPDATE student
 SET gender=NULL
 WHERE id=1000
 
@@ -275,7 +275,3 @@ SELECT ename,sal,comm,sal+NVL2(comm,comm,0)
 FROM emp
 
 SELECT * FROM student
-
-
-
-

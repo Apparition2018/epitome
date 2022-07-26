@@ -10,7 +10,7 @@ SELECT seq_emp_no.NEXTVAL FROM dual;
 --4:编写SQL语句查看seq_emp_no序列的当前数字
 SELECT seq_emp_no.CURRVAL FROM dual;
 
---5:为emp表的ename字段添加索引:idx_emp_ename 
+--5:为emp表的ename字段添加索引:idx_emp_ename
 CREATE INDEX idx_emp_ename ON emp(ename);
 
 --6:为emp表的LOWER(ename)字段添加索引:idx_emp_lower_ename

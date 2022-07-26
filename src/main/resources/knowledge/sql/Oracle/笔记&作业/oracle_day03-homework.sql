@@ -51,7 +51,3 @@ SELECT COUNT(e.ename) FROM emp e,dept d WHERE e.deptno=d.deptno AND d.loc='NEW Y
 
 18:在DALLAS工作的员工的平均工资是多少
 SELECT AVG(e.sal),d.loc FROM emp e,dept d WHERE e.deptno=d.deptno GROUP BY d.loc HAVING d.loc='DALLAS';
-
-
-
-

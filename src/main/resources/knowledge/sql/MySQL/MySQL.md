@@ -7,11 +7,6 @@
 3. [MySQL 规范](https://blog.csdn.net/shenjian58/article/details/89850405)
 4. [MySQL 总结](https://mp.weixin.qq.com/s/pWHCieOwAdCrz8cauduWlQ)
 ---
-## 问题
-1. [MySQL delimiter 的定义及作用](https://www.jb51.net/article/146693.htm)
-2. [MySQL 为什么默认定义varchar(255) 而不是varchar(256)](https://www.jianshu.com/p/83bdcf9bd5a8)
-3. [MySQL8 新特性 window functions 的作用](https://www.jb51.net/article/129447.htm)
----
 ## [安装](https://blog.csdn.net/weixin_42109012/article/details/94443391)
 - mysql 5.6 不需要执行 mysqld --initialize
 - **[my.ini](https://www.cnblogs.com/missmeng/p/13404228.html)**
@@ -58,7 +53,11 @@ default-character-set=utf8mb4
     1. linear read-ahead：线性预读
     2. random read-ahead：随机预读
 ---
-## InnoDB vs MyISAM
+## MySQL8 新特性
+- [window functions](https://www.jb51.net/article/129447.htm)
+---
+## [InnoDB 存储引擎](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)
+### InnoDB vs MyISAM
 | 对比              | InnoDB        | MyISAM          |
 |:----------------|:--------------|:----------------|
 | 事务              | 支持            | 不支持             |
@@ -69,16 +68,14 @@ default-character-set=utf8mb4
 | hash 索引         | 不能主动创建        | 不支持             |
 | 记录存储顺序          | 按主键大小         | 按出入顺序           |
 | 外键              | 支持            | 不支持             |
----
-## [InnoDB Multi-Versioning](https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html)
+### [InnoDB 多版本](https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html)
 | 字段          | 说明                  |
 |:------------|:--------------------|
 | DB_TRX_ID   | 记录插入或更新行得事务的事务ID    |
 | DB_ROLL_PTR | 回滚指针，指向 undo log 记录 |
 | DB_ROW_ID   | 行ID                 |
 >- [MySQL MVCC](https://blog.csdn.net/Waves___/article/details/105295060)
----
-## [InnoDB 内存结构](https://dev.mysql.com/doc/refman/8.0/en/innodb-in-memory-structures.html)
+### [InnoDB 内存结构](https://dev.mysql.com/doc/refman/8.0/en/innodb-in-memory-structures.html)
 1. [Buffer Pool](https://mp.weixin.qq.com/s/nA6UHBh87U774vu4VvGhyw) ：缓冲池
     - 缓存数据和索引
     - 变种 LRU 算法
@@ -91,29 +88,26 @@ default-character-set=utf8mb4
     - InnoDB 自行判断是否创建 Hash Index
 4. [Log Buffer](https://mp.weixin.qq.com/s/-Hx2KKYMEQCcTC-ADEuwVA) ：日志缓冲
     - 缓冲要写入磁盘日志文件的数据
----
-## [InnoDB 磁盘结构](https://dev.mysql.com/doc/refman/8.0/en/innodb-on-disk-structures.html)
+### [InnoDB 磁盘结构](https://dev.mysql.com/doc/refman/8.0/en/innodb-on-disk-structures.html)
 1. Tablespaces：表空间，保存一个或多个 InnoDB 表和相关联索引的数据文件
 2. [Doublewrite Buffer](https://mp.weixin.qq.com/s/bkoQ9g4cIcFFZBnpVh8ERQ) ：双写缓冲
     - 解决的问题：Dirty Page(16KB) 写入磁盘(1页4KB)失败，可从中找到副本恢复错误
     - 两部分：①内存；②双写文件
     - 步骤：Dirty Page → 内存双写缓冲 → ①双写文件双写缓冲；②InnoDB 数据文件
 3. Redo Log：重做日志
----
-## 索引
-- [一文搞定索引](https://mp.weixin.qq.com/s/woz5lkQwyJZNmoiiJZy7NA)
-## [Innodb 索引类型]( https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html)
+### [Innodb 索引类型]( https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html)
 1. 聚簇索引：Clustered Indexes
     - 索引树的叶子节点存储：①聚簇索引；②行记录
     - 如何选择聚簇索引：①主键；②第一个 NOT NULL UNIQUE 列；③自动生成隐藏 GEN_CLUST_INDEX
 2. 二级索引：Secondary Indexes
     - 索引树的叶子节点存储：①二级索引；②对应聚簇索引值
+>- [一文搞定索引](https://mp.weixin.qq.com/s/woz5lkQwyJZNmoiiJZy7NA)
 ---
 ## 优化
 1. [Optimization](https://dev.mysql.com/doc/refman/8.0/en/optimization.html)
 2. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
 3. [字符串索引前缀长度](https://blog.csdn.net/qq_38670588/article/details/108499966)
-## 优化建议
+### 优化建议
 - 索引相关
     - [索引方法](https://dev.mysql.com/doc/refman/8.0/en/index-btree-hash.html)
         1. B+Tree：[最左前缀原则 (Leftmost Prefix Principle)](https://www.cnblogs.com/-mrl/p/13230006.html)
@@ -134,7 +128,7 @@ default-character-set=utf8mb4
     - [MySQL8 三大索引](https://www.mdnice.com/writing/ca72a1892384484aa67bc37398dea3b8) 
     - 查找重复索引及冗余索引
         1. 语句查询
-        ```sql
+        ```mysql
         use information_schema;
     
         select s1.table_schema, s1.table_name, s1.index_name as index1, s2.index_name as index2, s1.column_name as dup_col 
@@ -169,23 +163,23 @@ default-character-set=utf8mb4
 - 垂直分表：①不常用的字段 ②大字段 ③经常一起使用的字段
 - 水平分表：mod(id, 5)；查询用分表，统计用总表
 - [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
-## 数据类型选择
+### 数据类型选择
 - 数字类型 > 日期类型|二进制类型 > 字符类型
 - char > varchar，小于 50byte 建议使用 char
 - 精确数据使用 decimal，非精确数据使用 float
 - 整型保存 IP，INET_ATON('192.168.0.1')
-## explain
+### explain
 - [type](https://blog.csdn.net/lilongsy/article/details/95184594) ：连接类型
 
-    |type|说明|
-    |:---|:---|
-    |system|MyISAM 且只有一行记录，const 的特例|
-    |const|pk 或 unique not null 索引的等值查询，只有一行命中|
-    |eq_ref|pk 或 unique not null 索引的等值关联查询，对于前表的每一行，后表只有一行命中|
-    |ref|非 unique 索引的等值查询，多行命中|
-    |range|索引上的范围扫描；如：=, <>, >, >=, <, <=, IS NULL, <=>, BETWEEN, LIKE, IN()|
-    |index|①覆盖索引，Using index；②索引树的全表扫描|
-    |ALL|全表扫描|
+| type   | 说明                                                                |
+|:-------|:------------------------------------------------------------------|
+| system | MyISAM 且只有一行记录，const 的特例                                          |
+| const  | pk 或 unique not null 索引的等值查询，只有一行命中                               |
+| eq_ref | pk 或 unique not null 索引的等值关联查询，对于前表的每一行，后表只有一行命中                  |
+| ref    | 非 unique 索引的等值查询，多行命中                                             |
+| range  | 索引上的范围扫描；如：=, <>, >, >=, <, <=, IS NULL, <=>, BETWEEN, LIKE, IN() |
+| index  | ①覆盖索引，Using index；②索引树的全表扫描                                       |
+| ALL    | 全表扫描                                                              |
 - possible_keys：可选择使用的索引
 - key：实际选择使用的索引
 - [key_len](https://www.cnblogs.com/lukexwang/articles/7060950.html) ：使用索引的长度
@@ -193,20 +187,20 @@ default-character-set=utf8mb4
 - rows：估计需要查询的行数
 - extra：附加信息
     
-    |extra|说明|优化|
-    |:---|:---|:---|
-    |Using index|在一棵索引树上获取所有所需数据，无需额外查询来读取实际行||
-    |Using index condition|在一棵索引树上获取不到所有所需数据，需要额外查询来读取实际行||
-    |Using where; Using index|同 Using index，但 where 条件不是索引的前导列||
-    |Using filesort|需对结果集进行额外文件排序操作<br/>原因：①order by 没有索引；②结果集大小超过 sort_buffer_size|order by 字段添加索引|
-    |Using temporary|需创建临时表暂存中间结果||
-    |Using join buffer|需创建连接缓冲区暂存中间结果|关联字段添加索引|
+| extra                    | 说明                                                              | 优化              |
+|:-------------------------|:----------------------------------------------------------------|:----------------|
+| Using index              | 在一棵索引树上获取所有所需数据，无需额外查询来读取实际行                                    ||
+| Using index condition    | 在一棵索引树上获取不到所有所需数据，需要额外查询来读取实际行                                  ||
+| Using where; Using index | 同 Using index，但 where 条件不是索引的前导列                                ||
+| Using filesort           | 需对结果集进行额外文件排序操作<br/>原因：①order by 没有索引；②结果集大小超过 sort_buffer_size | order by 字段添加索引 |
+| Using temporary          | 需创建临时表暂存中间结果                                                    ||
+| Using join buffer        | 需创建连接缓冲区暂存中间结果                                                  | 关联字段添加索引        |
 >- [EXPLAIN Output Format](https://dev.mysql.com/doc/refman/8.0/en/explain-output.html)
 >- [EXPLAIN 百科](https://mp.weixin.qq.com/s/QCJq1o-CWbNNwnuzJmVEPg)
 >- [Using index vs Using where](https://www.cnblogs.com/wy123/p/7366486.html)
 ## [慢查询](https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html)
 - 开启慢查询日志
-```sql
+```mysql
 -- 是否开启慢查询
 set global slow_query_log = on;
 -- 记录查询时间超过多少秒的慢查询，最小0秒，默认10秒
@@ -250,7 +244,7 @@ select * from store limit 10;
     3. 未命中索引的 SQL                pt-query-digest 的 Rows examine 和 Rows Send 的对比
     ```
 - 慢查询优化：①正确加索引；②去除查询不需要的列；③数据量太大考虑分表
-## 配置
+### 配置
 1. 系统配置
     - 网络方面，修改 /etc/sysctl.conf
     ```
@@ -294,12 +288,12 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
     1. 意向共享锁 (Intention Shared Locks, IS)：`SELECT ... FOR SHARE`
     2. 意向排它锁 (Intention Exclusive Locks, IX)：[SELECT ... FOR UPDATE](https://www.cnblogs.com/xiao-lei/p/12598552.html)
         
-        |     | X   | IX  | S   | IS  |
-        |:----|:----|:----|:----|:----|
-        | X   | 冲突  | 冲突  | 冲突  | 冲突  |
-        | IX  | 冲突  | 兼容  | 冲突  | 兼容  |
-        | S   | 冲突  | 冲突  | 兼容  | 兼容  |
-        | IS  | 冲突  | 兼容  | 兼容  | 兼容  |
+    |     | X   | IX  | S   | IS  |
+    |:----|:----|:----|:----|:----|
+    | X   | 冲突  | 冲突  | 冲突  | 冲突  |
+    | IX  | 冲突  | 兼容  | 冲突  | 兼容  |
+    | S   | 冲突  | 冲突  | 兼容  | 兼容  |
+    | IS  | 冲突  | 兼容  | 兼容  | 兼容  |
 3. 记录锁 (Record Locks)：`SELECT c1 FROM t WHERE c1 = 10 FOR UPDATE`
     - 总是锁定索引记录，阻止其它事务插入、更新或删除  
 4. [间隙锁](https://www.jianshu.com/p/32904ee07e56) (Gap Locks)：`SELECT c1 FROM t WHERE c1 BETWEEN 10 and 20 FOR UPDATE`  
@@ -334,6 +328,13 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
 | 说明    | 只能读当前事务之前更改                 | 能读最新的更改                                        |
 | 是否会幻读 | 不可能                         | 可能                                             |
 | 隔离级别  | RC、RR                       ||
+---
+## 其它
+1. [delimiter](https://www.jb51.net/article/146693.htm)：分隔符
+2. [为什么 varchar 默认是 255](https://www.jianshu.com/p/83bdcf9bd5a8)
+    - varchar 有一个长度前缀表示字节数
+        1. varchar <= 255个字节时，长度前缀为1个字节
+        2. varchar >  255个字节时，长度前缀为2个字节
 ---
 ## 阿里 MySQL 数据库
 ### 建表规约

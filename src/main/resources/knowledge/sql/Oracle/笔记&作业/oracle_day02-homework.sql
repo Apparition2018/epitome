@@ -9,7 +9,7 @@ SELECT ename,job,LENGTH(job) FROM emp
 SELECT UPPER（ename),INITCAP(ename) FROM emp
 
 4:将字符串'aaaaaabaaaaa'中左右两边的a去除
-SELECT TRIM('a' FROM 'aaaaaabaaaaa') FROM dual 
+SELECT TRIM('a' FROM 'aaaaaabaaaaa') FROM dual
 
 5:显示每个员工的名字，要求显示10位，第一列左对齐效果，第二列右对齐效果
 SELECT RPAD(ename,10,' '),LPAD(ename,10,' ') FROM emp
@@ -51,7 +51,7 @@ SELECT ename,MONTHS_BETWEEN(SYSDATE,hiredate) FROM emp
 SELECT NEXT_DAY(SYSDATE,1) FROM dual;
 
 18:查看82年以后入职的员工的入职日期，82年以前的按照
-     1982年01月01号显示。格式都是DD-MON-RR(默认格式) 
+     1982年01月01号显示。格式都是DD-MON-RR(默认格式)
 SELECT ename,GREATEST(TO_CHAR(hiredate,'YYYY"年"MM"月"DD"号"'),'1982年01月01号') FROM emp;***
 
 19:查看每名员工的入职年份？

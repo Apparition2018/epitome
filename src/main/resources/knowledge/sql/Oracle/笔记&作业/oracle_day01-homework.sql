@@ -6,9 +6,9 @@ CREATE TABLE emp(
   hiredate DATE,
   sal NUMBER(7,2),
   comm NUMBER(7,2),
-  deptno NUMBER(2,0) 
+  deptno NUMBER(2,0)
 );
-  
+
 CREATE TABLE dept(
   deptno NUMBER(2,0),
   dname VARCHAR2(14 BYTE),
@@ -104,5 +104,3 @@ INSERT INTO dept
 (deptno,dname,loc)
 VALUES
 (40,'OPERATIONS','BOSTON');
-
-
