@@ -16,7 +16,7 @@ import java.util.stream.IntStream;
  * Atomic
  * Atomic 类是通过自旋 CAS 操作 volatile 变量实现的
  * <p>
- * CAS：Compare And Swap
+ * CAS：Compare And Swap，解决多线程并行情况下使用锁造成性能损耗的一种机制，这是硬件实现的原子操作
  * 1.三个基本操作数：内存地址 V，旧的预期值 A，修改后的新值 B
  * 2.定义：更新一个变量时，只有当变量的预期值 A 和内存地址 V 当中的实际值相同时，才会将内存地址 V 对应的值修改为 B
  * 3.Java CAS 的底层实现：lock cmpxchg

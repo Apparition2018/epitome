@@ -183,4 +183,42 @@ if (logger.isDebugEnabled()) {
     4. Query：数据查询对象，各层接收上层的查询请求。注意超过 2 个参数的查询封装，禁止使用 Map 类来传输
     5. VO（View Object）：显示层对象，通常是 Web 向模板渲染引擎层传输的对象
 ```
+2. 二方库依赖
+```
+1. 定义 GAV 遵从以下规则：
+    1. groupId：com.{公司/BU}.业务线.[子业务线]，最多 4 级
+        - com.taobao.jstorm 或 com.alibaba.dubbo.register
+    2. artifactId：产品线名-模块名。语义不重复不遗漏，先到中央仓库去查证一下
+        - dubbo-client / fastjson-api / jstorm-tool
+    3. version：主版本号.次版本号.修订号
+2. 二方库的新增或升级，保持除功能点之外的其它 jar 包仲裁结果不变。如果有改变，必须明确评估和验证
+    - 在升级时，进行 dependency:resolve 前后信息比对，如果仲裁结果完全不一致，那么通过 dependency:tree 命 令，找出差异点，进行<exclude>排除 jar 包
+    - https://www.cnblogs.com/light-train-union/p/12260467.html
+3. 二方库里可以定义枚举类型，参数可以使用枚举类型，但是接口返回值不允许使用枚举类型或者包含枚举类型的 POJO 对象
+    - https://www.modb.pro/db/141682
+4. 二方库定制包的命名方式，在规定的版本号之后加“-英文说明[序号]”，英文说明可以是部门简称、业务名称，序号直接紧跟在英文说明之后，表示此定制包的顺序号
+    - fastjson 给 SCM 定制的版本号：1.0.0-SCM1
+5. 禁止在子项目的 pom 依赖中出现相同的 GroupId，相同的 ArtifactId，但是不同的 Version ???
+    - 在本地调试时会使用各子项目指定的版本号，但是合并成一个 war，只能有一个版本号出现在最后的 lib 目录中
+6. 所有 pom 文件中的依赖声明放在<dependencies>语句块中，所有版本仲裁放在<dependencyManagement>语句块中
+7. 二方库不要有配置项，最低限度不要再增加配置项 ???
+```
+3. 服务器
+```
+1. 调用远程操作必须有超时设置
+2. 客户端设置远程接口方法的具体超时时间（单位 ms），超时设置生效顺序一般为：
+    2.1 客户端 Special Method
+    2.2 客户端接口级别
+    2.3 服务端 Special Method
+    2.4 服务端接口级别
+3. 高并发服务器建议调小 TCP 协议的 time_wait 超时时间
+    - 在 linux 服务器上请通过变更/etc/sysctl.conf 文件去修改该缺省值（秒）：net.ipv4.tcp_fin_timeout=30
+4. 调大服务器所支持的最大文件句柄数（File Descriptor，简写为 fd）
+5. 给 JVM 环境参数设置-XX：+HeapDumpOnOutOfMemoryError 参数，让 JVM 碰到 OOM 场景时输出 dump 信息
+6. 在线上生产环境，JVM 的 Xms 和 Xmx 设置一样大小的内存容量，避免在 GC 后调整堆大小带来的压力
+7. 了解每个服务大致的平均耗时，可以通过独立配置线程池，将较慢的服务与主线程池隔离开，免得不同服务的线程同归于尽
+8. 服务器内部重定向必须使用 forward；外部部重定向地址必须使用 URL Broker 生成，否则因线上采用 HTTPS 协议而导致浏览器提示“不安全”。此外，还会带来 URL 维护不一致的问题
+```
+### 设计规约
+
 ---
