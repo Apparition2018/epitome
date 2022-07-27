@@ -12,10 +12,10 @@
 7. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
 ---
 ## 规范
-1. [Redis开发运维实战](https://mp.weixin.qq.com/s/BO3wrKjvO52XqyQIBT-n2g)
+1. [Redis开发运维实战 | 付磊](https://mp.weixin.qq.com/s/BO3wrKjvO52XqyQIBT-n2g)
 2. [付磊](https://developer.aliyun.com/article/531067)
 3. [码哥字节](https://mp.weixin.qq.com/s/zI5jJapggUURWcpPVB8IVg)
-4. [掘金开发者社区](https://mp.weixin.qq.com/s/-nZ08zGTYNS1b1ep-dDwRQ)
+4. [掘金开发者社区 | 小姐姐味道](https://mp.weixin.qq.com/s/-nZ08zGTYNS1b1ep-dDwRQ)
 ---
 ## Interview
 1. [JavaGuide](https://github.com/Snailclimb/JavaGuide/tree/main/docs/database/redis)
@@ -58,7 +58,7 @@
         - 6.0：多个 IO 线程，默认禁用
             - redis.conf：`io-threads-do-reads yes`，`io-threads 8`
 5. [VM 机制](https://mp.weixin.qq.com/s/N1NR-LgiCvAOMxgbdICziQ)
->- [IT界农民工](https://mp.weixin.qq.com/s/b_yzbLeQh57oYjqlIgPiYQ)
+>- [IT界农民工 | 莱乌](https://mp.weixin.qq.com/s/b_yzbLeQh57oYjqlIgPiYQ)
 >- [捡田螺的小男孩](https://mp.weixin.qq.com/s/wf08G3PHpfbJKiU7ZVO9Lw)
 >- [小林coding](https://mp.weixin.qq.com/s/apScwfXHWlh8xUS1RhMSIA)
 ---
@@ -67,15 +67,15 @@
 |:------------|:------------------------------------------------------------|
 | String      | 缓存、计数器（数量统计（阅读量）、数量控制（限流））、时效信息（验证码）、全局 ID、分布式 session、分布式锁 |
 | List        | 简单队列、定时排行榜、最近/最新                                            |
-| Set         | 不重复数据（关注、点赞）、交集/并集 (共同关注、商品筛选)、抽奖（SPOP）                     |
+| Set         | 不重复数据（关注、点赞）、交集/并集（共同关注、商品筛选）、抽奖（SPOP）                      |
 | Sorted Set  | 实时排行榜                                                       |
 | Hash        | 对象缓存（购物车）、条件查询（Lua）                                         |
-| Bitmap      | 保存状态并需进一步分析（活跃用户，在线用户）                                      |
-| HyperLogLog | 基数统计                                                        |
+| Bitmap      | 二值状态统计（活跃用户，在线用户）                                           |
+| HyperLogLog | 基数统计（UV 统计，Unique Visitor，独立访客量）                            |
 | Stream      | 消息队列                                                        |
 | Geo         | 地理位置                                                        |
->- [Java知音](https://mp.weixin.qq.com/s/W5T_a_EQhxHOI0lfgO3r0g)
->- [java架构交流](https://zhuanlan.zhihu.com/p/100460843)
+>- [Redis 数据结构详解](https://zhuanlan.zhihu.com/p/100460843)
+>- [Redis 常见使用场景](https://mp.weixin.qq.com/s/W5T_a_EQhxHOI0lfgO3r0g)
 ---
 ## [配置](https://redis.io/docs/manual/config/)
 ```
@@ -220,16 +220,16 @@ include other.conf
         - ![Write Behind](https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvaulG1WsztCXujT0qDxALxwEfl7FaXmIwmgNPoUOwib2tSWykFoZicIpiaxbHPIpLC51VKyFazLkKEaeQ/640) 
 >- [腾讯技术工程](https://mp.weixin.qq.com/s/Y9S89MT0uAobzRKgYVrI9Q)
 >- [苏三说技术](https://mp.weixin.qq.com/s/4hP-T0h8QPyjcpH8m0cbsA)
->- [水滴与银弹](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
+>- [水滴与银弹 | Magic Kaito](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
 >- [小林coding](https://mp.weixin.qq.com/s/sh-pEcDd9l5xFHIEN87sDA)
 ---
 ## Big Keys
 
->- [Redis开发运维实战](https://mp.weixin.qq.com/s/LqyjZ0ZinI_JmPlSt4oa6Q)
->- [BiggerBoy](https://mp.weixin.qq.com/s/ruMfDiloAm9qev4C49bGYg)
+>- [Redis开发运维实战 | 付磊](https://mp.weixin.qq.com/s/LqyjZ0ZinI_JmPlSt4oa6Q)
+>- [BiggerBoy | ITwalking](https://mp.weixin.qq.com/s/ruMfDiloAm9qev4C49bGYg)
 >- [神州数码集团](https://mp.weixin.qq.com/s/v3zQphGM0mA8WEixQgQVPw)
 >- [小林coding](https://mp.weixin.qq.com/s/l3l9d9sLiWoUM381E9o-3Q)
->- [悦专栏](https://mp.weixin.qq.com/s/UJm6fixui2NReSjfFZ5Emg)
+>- [悦专栏 | 马听](https://mp.weixin.qq.com/s/UJm6fixui2NReSjfFZ5Emg)
 ---
 ## [CLI](https://redis.io/docs/manual/cli/#scanning-for-big-keys)
 - [Try Redis](https://try.redis.io/)
