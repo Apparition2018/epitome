@@ -7,9 +7,8 @@
 2. [GitHub](https://github.com/redis/redis)
 3. [菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
 4. [冯佳兴](https://blog.csdn.net/fjxcsdn/category_8935622.html)
-5. [Cedar_Guo](https://blog.csdn.net/weixin_43741711/category_11681591.html)
-6. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
-7. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
+5. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
+6. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
 ---
 ## 规范
 1. [Redis开发运维实战 | 付磊](https://mp.weixin.qq.com/s/BO3wrKjvO52XqyQIBT-n2g)
@@ -67,7 +66,7 @@
 |:------------|:------------------------------------------------------------|
 | String      | 缓存、计数器（数量统计（阅读量）、数量控制（限流））、时效信息（验证码）、全局 ID、分布式 session、分布式锁 |
 | List        | 简单队列、定时排行榜、最近/最新                                            |
-| Set         | 不重复数据（关注、点赞）、交集/并集（共同关注、商品筛选）、抽奖（SPOP）                      |
+| Set         | 不重复（关注、点赞）、交集/并集（共同关注、商品筛选）、抽奖（SPOP）                        |
 | Sorted Set  | 实时排行榜                                                       |
 | Hash        | 对象缓存（购物车）、条件查询（Lua）                                         |
 | Bitmap      | 二值状态统计（活跃用户，在线用户）                                           |
@@ -95,6 +94,8 @@ dir ./
 # 包含其它配置文件
 include other.conf
 ```
+- 通过命令行传递参数：使用 `--` 前缀，如：`./redis-server --port 6380 --replicaof 127.0.0.1 6379`
+- 运行时修改配置：`CONFIG SET`，`CONFIG REWRITE`
 ---
 ## [键驱逐](https://redis.io/docs/manual/eviction/)
 - 过期删除策略
@@ -104,8 +105,10 @@ include other.conf
 | 定时  | 设置过期时间的同时，创建一个定时器，当 KEY 到期时立即删除                     ||
 | 惰性  | 查询 KEY 时，判断是否过期，过期则删除                               | √        |
 | 定期  | 每隔一段时间（默认100ms）删除到期 KEY<br/>检查多少个数据库和删除多少 KEY，由算法决定 | √        |
-- redis.conf：`maxmemory-policy <policy>`
-- 术语解析
+- redis.conf
+    - `maxmemory <bytes>` 
+    - `maxmemory-policy <policy>`
+- [驱逐策略](https://redis.io/docs/manual/eviction/)
     - lru：Least Recently Used
     - lfu：Least Frequently Used
     - ttl：Time to Live
@@ -143,7 +146,7 @@ include other.conf
         2. append-only 日志，即使由于某些原因（磁盘已满）日志以写一半的命令结束，可使用 redis-check-aof 工具修复
         3. AOF 变得太大时，后台将自动重写 AOF
         4. 能通过删除误操作命令恢复数据
-    - redis.conf：
+    - redis.conf
         ```
         # 是否开启 AOF 持久化
         appendonly yes
@@ -158,6 +161,60 @@ include other.conf
 3. RDB + AOF
     - redis.conf：`aof-use-rdb-preamble yes`
     - 发生于重写 AOF，重写后 AOF 文件前面是 RDB 格式的全量数据，后面是 AOF 格式的增量数据
+---
+## [复制](https://redis.io/docs/manual/replication/)
+- redis.conf
+```
+replicaof <masterip> <masterport>
+# master 密码
+masterauth <master-password>
+# 是否使用 socket 策略
+# 两种复制同步策略：disk | socket
+# disk：master → RDB → disk → replicas
+# socket：maseter → RDB → replicas socket，慢磁盘高带宽推荐使用
+repl-diskless-sync yes
+# socket 同步延迟秒数
+repl-diskless-sync-delay <seconds>
+# 副本是否只读
+replica-read-only yes
+```
+- 三种主要机制
+    1. 连接良好时：master 向 replica 发送命令流
+    2. 连接中断时：replica 会重新连接并尝试进行部分重新同步，仅获取在断开连接期间错过的命令流
+    3. 无法进行部分重新同步时：将请求完全重新同步，master 创建所有数据的快照发送到 replica，然后继续发送命令流
+- 重要事实
+    - 异步复制：master 非阻塞；replica 加载新的初始数据集阻塞，4.0 之前删除旧数据集阻塞
+    - 一个 master 可以有多个 replica
+    - replica 可以接受来自其他副本的连接：4.0 开始，所有 sub-replias 将从 master 接受完全相同的复制流
+- [工作原理](https://redis.io/docs/manual/replication/#how-redis-replication-works)
+    - [replication ID](https://redis.io/docs/manual/replication/#replication-id-explained)：伪随机字符串，标记数据集的给定历史
+    - offset：随复制流的每个字节而增加，即使没有连接 replica，也会增加
+    - master 发送命令流：replicas 使用 `PSYNC` 命令向 master 发送旧 replication ID 和 offset
+    - 完全重新同步：master buffers 没有足够的 backlog，或 replica 引用旧的 replication ID
+        1. master 后台生成 RDB 文件，同时缓冲新的写命令
+        2. master 传输 RDB 文件到 replica，replica 将其保存在磁盘上，然后加载到内存
+        3. master 发送缓冲命令到 replica，
+- [keys 过期](https://redis.io/docs/manual/replication/#how-redis-replication-deals-with-expires-on-keys)
+    1. replicas key 不会过期，master key 过期或被驱逐时，会传输 `DEL` 到 replicas
+    2. 当 replicas 存在已经过期的 key 时，replica 会使用逻辑时钟来报告 key 不存在
+    3. Lua 脚本执行期间，不会执行 key 过期
+- 相关命令：`INFO [section [section ...]]`，`ROLE`
+---
+## [哨兵](https://redis.io/docs/manual/sentinel/)
+
+---
+## [集群](https://redis.io/docs/manual/scaling/)
+
+---
+## [事务](https://redis.io/docs/manual/transactions/)
+- 命令
+    - `MULTI` 开启事务，`EXEC` 执行所有事务块内的命令，`DISCARD` 取消事务
+    - `WATCH` 监视，`UNWATCH` 取消监视
+- Redis 不支持事务回滚，因为支持回滚会对 Redis 的简单性和性能产生重大影响
+---
+## [可编程性](https://redis.io/docs/manual/programmability/)
+1. &gt;= 7：使用 Redis Functions 来管理和运行脚本
+2. <= 6.2：使用 Lua 脚本和 EVAL 命令对服务器进行编程
 ---
 ## 缓存雪崩、击穿、穿透
 1. 穿透 (Penetration)：访问一个缓存和数据库都不存在的数据
@@ -223,15 +280,36 @@ include other.conf
 >- [水滴与银弹 | Magic Kaito](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
 >- [小林coding](https://mp.weixin.qq.com/s/sh-pEcDd9l5xFHIEN87sDA)
 ---
-## Big Keys
-
+## bigkey
+- 什么是 bigkey
+    1. String：size > 10KB
+    2. 集合：元素个数 > 5000
+- 危害
+    1. 内存空间不均匀：不利于集群对内存的统一管理，存在丢失数据的隐患
+    2. 请求倾斜：bigkey 使请求集中落在集群的某一个节点上
+    3. 超时阻塞：Redis 单线程，且 bigkey 的操作通常比较耗时，会引起阻塞。如：过期删除
+    4. 网络拥塞：每次获取 bigkey 产生的网络流量较大
+    5. 迁移困难
+- 发现：下列均建议在从节点本机执行
+    1. `SCAN` + `MEMORY USAGE key [SAMPLES count]`：可代替 `SCAN` + `DEBUG object key`
+    2. [`redis-cli --bigkeys`](https://redis.io/docs/manual/cli/#scanning-for-big-keys)：返回每种数据类型的 top 1 bigkey
+    3. `info clients`：观察客户端 输入缓冲区的字节数 和 输出缓冲区的队列长度
+    4. 修改客户端代码收集
+    5. [redis-rdb-tools](https://github.com/sripathikrishnan/redis-rdb-tools)
+    6. [阿里 Python 脚本扫描](https://developer.aliyun.com/article/117042)
+- 优化
+    1. 可删除
+        1. < 4.0：`SCAN`，渐进式删除，
+        2. &gt;= 4.0：`UNLINK`，惰性删除
+    2. 不可删除：
+        1. value 只存有用信息
+        2. 压缩：大 str 压缩
+        3. 拆分：大 str 拆分成小 str，`MGET` 获取；大集合拆分成小集合；大 hash 取模二次 hash；按日期拆分等
 >- [Redis开发运维实战 | 付磊](https://mp.weixin.qq.com/s/LqyjZ0ZinI_JmPlSt4oa6Q)
->- [BiggerBoy | ITwalking](https://mp.weixin.qq.com/s/ruMfDiloAm9qev4C49bGYg)
->- [神州数码集团](https://mp.weixin.qq.com/s/v3zQphGM0mA8WEixQgQVPw)
 >- [小林coding](https://mp.weixin.qq.com/s/l3l9d9sLiWoUM381E9o-3Q)
->- [悦专栏 | 马听](https://mp.weixin.qq.com/s/UJm6fixui2NReSjfFZ5Emg)
+>- [BiggerBoy | ITwalking](https://mp.weixin.qq.com/s/ruMfDiloAm9qev4C49bGYg)
 ---
-## [CLI](https://redis.io/docs/manual/cli/#scanning-for-big-keys)
+## [CLI](https://redis.io/docs/manual/cli/)
 - [Try Redis](https://try.redis.io/)
 - 连接服务：redis-cli -h host -p port -a password
 ### [Commands](https://redis.io/commands/)
@@ -348,9 +426,17 @@ SELECT index                                        切换数据库
 ```
 - 事务
 ```
-MULTI                                               开启事务                                             
+MULTI                                               开启事务
 EXEC                                                执行所有事务块内的命令
 DISCARD                                             取消事务
+WATCH key [key ...]                                 监视 key，在事务执行之前 key 被其他命令改动，则事务中断
+UNWATCH                                             取消监视
+```
+- 配置
+```
+CONFIG GET parameter [ parameter ...]               获取配置参数
+CONFIG SET parameter value [ parameter value ...]   运行时配置
+CONFIG REWRITE                                      重写 redis.conf
 ```
 - 服务器
 ```
