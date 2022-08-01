@@ -1,8 +1,9 @@
 # Navicat Shortcuts
 
 ---
-## 参考网站
-1. [快捷键 | Navicat 在线手册版本 12](https://www.navicat.com.cn/manual/online_manual/cn/navicat/win_manual/index.html#/hot_keys_0)
+## Reference
+1. [Navicat 在线手册 15](https://www.navicat.com.cn/manual/online_manual/cn/navicat/win_manual/index.html)
+1. [Navicat 在线手册 16](https://www.navicat.com.cn/manual/online_manual/cn/navicat_16/win_manual/)
 ---
 ## 文件
 ```

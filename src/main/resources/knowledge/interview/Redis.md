@@ -182,13 +182,9 @@ replica-read-only yes
     1. 连接良好时：master 向 replica 发送命令流
     2. 连接中断时：replica 会重新连接并尝试进行部分重新同步，仅获取在断开连接期间错过的命令流
     3. 无法进行部分重新同步时：将请求完全重新同步，master 创建所有数据的快照发送到 replica，然后继续发送命令流
-- 重要事实
-    - 异步复制：master 非阻塞；replica 加载新的初始数据集阻塞，4.0 之前删除旧数据集阻塞
-    - 一个 master 可以有多个 replica
-    - replica 可以接受来自其他副本的连接：4.0 开始，所有 sub-replias 将从 master 接受完全相同的复制流
 - [工作原理](https://redis.io/docs/manual/replication/#how-redis-replication-works)
     - [replication ID](https://redis.io/docs/manual/replication/#replication-id-explained)：伪随机字符串，标记数据集的给定历史
-    - offset：随复制流的每个字节而增加，即使没有连接 replica，也会增加
+    - replication offset：随复制流的每个字节而增加，即使没有连接 replica，也会增加
     - master 发送命令流：replicas 使用 `PSYNC` 命令向 master 发送旧 replication ID 和 offset
     - 完全重新同步：master buffers 没有足够的 backlog，或 replica 引用旧的 replication ID
         1. master 后台生成 RDB 文件，同时缓冲新的写命令
@@ -199,6 +195,8 @@ replica-read-only yes
     2. 当 replicas 存在已经过期的 key 时，replica 会使用逻辑时钟来报告 key 不存在
     3. Lua 脚本执行期间，不会执行 key 过期
 - 相关命令：`INFO [section [section ...]]`，`ROLE`
+>- [Java知音 | JingQ](https://mp.weixin.qq.com/s/9DzAv6jRtNyKi7Q8ShQBhA)
+>- [民工哥技术之路 | 二叉树](https://mp.weixin.qq.com/s/9DzAv6jRtNyKi7Q8ShQBhA)
 ---
 ## [哨兵](https://redis.io/docs/manual/sentinel/)
 

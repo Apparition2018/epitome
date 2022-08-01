@@ -28,8 +28,8 @@ DEFAULT TABLESPACE tablespace_name;
 ```
 4. 授权：`GRANT DBA TO user_name`
 ---
-## 导入数据
+## dmp 文件导入
 ```
-imp user_name/password@127.0.0.1:1521/siniorcl file=D:\xxx.dmp show=n buffer=20480 ignore=n commit=y grants=y full=y log=imp.log
+imp user_name/password@ip:port/service_name file=filename.dmp show=n buffer=20480 ignore=n commit=y grants=y full=y log=filename.log
 ```
 ---

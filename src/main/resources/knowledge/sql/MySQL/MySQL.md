@@ -118,6 +118,7 @@ default-character-set=utf8mb4
 - 索引相关
     - [索引方法](https://dev.mysql.com/doc/refman/8.0/en/index-btree-hash.html)
         1. B+Tree：[最左前缀原则 (Leftmost Prefix Principle)](https://www.cnblogs.com/-mrl/p/13230006.html)
+            1. 
         2. Hash：所有索引列；不支持排序；只支持等值查询：=，<=>
     - 表数据太少不需要添加索引
     - 索引的数据类型越小效率越高
