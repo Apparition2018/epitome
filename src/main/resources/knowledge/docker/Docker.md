@@ -235,16 +235,29 @@ influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --defa
 ```
 4. [Redis](https://hub.docker.com/_/redis)
 - [Docker 部署 Redis](https://blog.csdn.net/qq_41316955/article/details/108381923)
-- [redis.conf](https://redis.io/docs/manual/config/) 要对应 Redis 版本
+- [redis.conf](https://redis.io/docs/manual/config/) 选择对应版本
     - `# bind 127.0.0.1 -::1`
     - `protected-mode no`
 ```bash
-docker run -d --name redis -p 6379:6379 --restart=always \
+docker network create --subnet=172.10.0.0/16 redis_net
+
+docker run -d --name redis-master --restart=always \
+--net redis_net --ip 172.10.0.2 -p 6379:6379 \
 -v D:/Docker/Data/Redis/data:/data:rw \
--v D:/Docker/Data/Redis/conf/redis.conf:/etc/redis/redis.conf:ro \
+-v D:/Docker/Data/Redis/redis.conf:/etc/redis/redis.conf:ro \
 redis redis-server ../etc/redis/redis.conf
 
-docker exec -it redis redis-cli
+docker run -d --name redis-replica --restart=always \
+--net redis_net --ip 172.10.0.3 -p 6380:6379 \
+-v D:/Docker/Data/Redis/data-replica:/data:rw \
+-v D:/Docker/Data/Redis/redis-replica.conf:/etc/redis/redis.conf:ro \
+redis redis-server ../etc/redis/redis.conf
+
+docker exec -it redis-master redis-cli
+info replication
+
+docker exec -it redis-replica redis-cli
+info replication
 ```
 5. [MongoDB](https://hub.docker.com/_/mongo)
 - [MongoDB 用户角色配置](https://www.cnblogs.com/out-of-memory/p/6810411.html)
@@ -286,7 +299,7 @@ nginx
 - [Docker 实战之 Zookeeper 集群](https://www.cnblogs.com/idea360/p/12405113.html)
 - @see docker/compose/zookeeper-cluster/docker-compose.yml
 ```bash
-docker network create docker_net
+docker network create zoo_net
 docker-compose up -d
 
 docker exec -it zoo1 bash
@@ -299,7 +312,7 @@ docker exec -it zoo3 bash
 ./bin/zkServer.sh status                          Mode: leader
 echo srvr | nc localhost 2181
 
-docker run -it --rm --name ZookeeperCluster --link zoo1 --link zoo2 --link zoo3 --net docker_net zookeeper zkCli.sh -server zoo1:2181,zoo2:2181,zoo3:2181
+docker run -it --rm --name ZookeeperCluster --link zoo1 --link zoo2 --link zoo3 --net zoo_net zookeeper zkCli.sh -server zoo1:2181,zoo2:2181,zoo3:2181
 ```
 - [Windows 下 docker 安装 zookeeper](https://blog.csdn.net/m0_67401055/article/details/124777613)
 ```bash

@@ -46,11 +46,13 @@ public class DBCP {
             } else {
                 conn.commit();
             }
+            conn.setAutoCommit(true);
         } catch (SQLException e) {
             e.printStackTrace();
             if (null != conn) {
                 try {
                     conn.rollback();
+                    conn.setAutoCommit(true);
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }

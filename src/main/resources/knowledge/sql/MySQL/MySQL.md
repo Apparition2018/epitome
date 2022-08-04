@@ -107,6 +107,7 @@ default-character-set=utf8mb4
     - 如何选择聚簇索引：①主键；②第一个 NOT NULL UNIQUE 列；③自动生成隐藏 GEN_CLUST_INDEX
 2. 二级索引：Secondary Indexes
     - 索引树的叶子节点存储：①索引；②对应聚簇索引值
+>- [索引的数据结构模型及维护 | 妲个己吧](https://mp.weixin.qq.com/s/hmolnmi7WU0ZhQ9X5IR1JA)
 >- [小林coding](https://mp.weixin.qq.com/s/LTX67XxkWcAeYUyLh_5b4g)
 >- [架构师之路](https://mp.weixin.qq.com/s/woz5lkQwyJZNmoiiJZy7NA)
 ---
@@ -118,7 +119,8 @@ default-character-set=utf8mb4
 - 索引相关
     - [索引方法](https://dev.mysql.com/doc/refman/8.0/en/index-btree-hash.html)
         1. B+Tree：[最左前缀原则 (Leftmost Prefix Principle)](https://www.cnblogs.com/-mrl/p/13230006.html)
-            1. 
+            1. 从左到右匹配知道遇到范围查询 (>, <, between, like) 停止匹配，建议范围查询放最后
+            2. in 和 = 可以乱序
         2. Hash：所有索引列；不支持排序；只支持等值查询：=，<=>
     - 表数据太少不需要添加索引
     - 索引的数据类型越小效率越高
@@ -129,6 +131,8 @@ default-character-set=utf8mb4
         - DQL 操作优化器选择使用哪一个索引需要时间
     - [索引选择性高的列放在索引的前面](https://www.cnblogs.com/liyasong/p/mysql_xuanzexing_index.html)
     - [组合索引 (Composite Indexes)](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
+    - [索引下推 (Index Condition Pushdown)](https://dev.mysql.com/doc/refman/8.0/en/index-condition-pushdown-optimization.html)
+        - [索引下推](https://blog.csdn.net/LBWNB_Java/article/details/120348886)
     - [覆盖索引 (Covering Indexes)](https://mp.weixin.qq.com/s/y0pjtNUZhOW2ZBOy4m-xsA)
         - 如何实现：将被查询的字段、条件字段、排序字段等，建立到联合索引里去
         - explain extra 显示 Using index

@@ -165,6 +165,7 @@ include other.conf
 ## [复制](https://redis.io/docs/manual/replication/)
 - redis.conf
 ```
+# 5.0 弃用 slaveof
 replicaof <masterip> <masterport>
 # master 密码
 masterauth <master-password>
@@ -196,7 +197,7 @@ replica-read-only yes
     3. Lua 脚本执行期间，不会执行 key 过期
 - 相关命令：`INFO [section [section ...]]`，`ROLE`
 >- [Java知音 | JingQ](https://mp.weixin.qq.com/s/9DzAv6jRtNyKi7Q8ShQBhA)
->- [民工哥技术之路 | 二叉树](https://mp.weixin.qq.com/s/9DzAv6jRtNyKi7Q8ShQBhA)
+>- [民工哥技术之路 | 二叉树](https://mp.weixin.qq.com/s/IvrODQ2PYsNp-RQr6XkK8g)
 ---
 ## [哨兵](https://redis.io/docs/manual/sentinel/)
 
