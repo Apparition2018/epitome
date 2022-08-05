@@ -200,7 +200,11 @@ replica-read-only yes
 >- [民工哥技术之路 | 二叉树](https://mp.weixin.qq.com/s/IvrODQ2PYsNp-RQr6XkK8g)
 ---
 ## [哨兵](https://redis.io/docs/manual/sentinel/)
-
+- 功能
+    1. 监控：Monitoring
+    2. 通知：Notification
+    3. 自动故障转移：Automatic failover
+    4. 配置提供者：Configuration provider
 ---
 ## [集群](https://redis.io/docs/manual/scaling/)
 

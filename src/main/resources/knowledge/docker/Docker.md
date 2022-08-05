@@ -77,7 +77,7 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                   创建新的 con
     --volumes-from                                              从指定 container 挂载 volumes
     -p                                                          指定端口映射
     -P                                                          暴露容器所有端口到宿主随机端口
-    --restart=always                                            总是启动
+    --restart                                                  总是启动
     --privileged                                                扩展权限
     --rm                                                        当容器退出时自动删除
     --link                                                      连接其它容器
@@ -193,7 +193,7 @@ docker run -d --name mysql -p 3306:3306 mysql
 # 复制一份 my.cnf
 docker cp mysql:/etc/my.cnf my.cnf
 
-docker run -d --name mysql -p 3306:3306 --privileged --restart=always \
+docker run -d --name mysql -p 3306:3306 --privileged --restart=unless-stopped \
 -v D:/Docker/Data/MySQL/my.cnf:/etc/mysql/my.cnf \
 -v D:/Docker/Data/MySQL/data:/var/lib/mysql \
 -v D:/Docker/Data/MySQL/files:/var/lib/mysql-files \
@@ -236,20 +236,20 @@ influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --defa
 4. [Redis](https://hub.docker.com/_/redis)
 - [Docker 部署 Redis](https://blog.csdn.net/qq_41316955/article/details/108381923)
 - [redis.conf](https://redis.io/docs/manual/config/) 选择对应版本
-    - `# bind 127.0.0.1 -::1`
+    - `# bind 127.0.0.1 -::1` 或 `bind 0.0.0.0`x`x`
     - `protected-mode no`
 ```bash
 docker network create --subnet=172.10.0.0/16 redis_net
 
-docker run -d --name redis-master --restart=always \
+docker run -d --name redis-master --restart=unless-stopped \
 --net redis_net --ip 172.10.0.2 -p 6379:6379 \
 -v D:/Docker/Data/Redis/data:/data:rw \
 -v D:/Docker/Data/Redis/redis.conf:/etc/redis/redis.conf:ro \
 redis redis-server ../etc/redis/redis.conf
 
-docker run -d --name redis-replica --restart=always \
+# replica 不挂载 data 目录，否则 replica 不知该挂载数据还是从 master 复制数据
+docker run -d --name redis-replica \
 --net redis_net --ip 172.10.0.3 -p 6380:6379 \
--v D:/Docker/Data/Redis/data-replica:/data:rw \
 -v D:/Docker/Data/Redis/redis-replica.conf:/etc/redis/redis.conf:ro \
 redis redis-server ../etc/redis/redis.conf
 
@@ -288,7 +288,7 @@ tomcat
 ```
 7. [Nginx](https://hub.docker.com/_/nginx)
 ```bash
-docker run -d --name nginx -p 80:80 --restart=always \
+docker run -d --name nginx -p 80:80 --restart=unless-stopped \
 -v D:/Docker/Data/Nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
 -v D:/Docker/Data/Nginx/conf/conf.d:/etc/nginx/conf.d \
 -v D:/Docker/Data/Nginx/log:/var/log/nginx \
@@ -316,7 +316,7 @@ docker run -it --rm --name ZookeeperCluster --link zoo1 --link zoo2 --link zoo3 
 ```
 - [Windows 下 docker 安装 zookeeper](https://blog.csdn.net/m0_67401055/article/details/124777613)
 ```bash
-docker run -d --name zookeeper -p 2181:2181 --restart=always zookeeper
+docker run -d --name zookeeper -p 2181:2181 --restart=unless-stopped zookeeper
 ```
 9. [RabbitMQ](https://hub.docker.com/_/rabbitmq)
 - [Win10 Docker 安装 RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
