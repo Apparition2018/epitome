@@ -200,11 +200,21 @@ replica-read-only yes
 >- [民工哥技术之路 | 二叉树](https://mp.weixin.qq.com/s/IvrODQ2PYsNp-RQr6XkK8g)
 ---
 ## [哨兵](https://redis.io/docs/manual/sentinel/)
+- redis.conf
+```
+# sentinel monitor
+sentinel monitor <master-group-name> <ip> <port> <quorum>
+# 其它选项
+sentinel <option_name> <master_name> <option_value>
+```
 - 功能
     1. 监控：Monitoring
     2. 通知：Notification
     3. 自动故障转移：Automatic failover
     4. 配置提供者：Configuration provider
+- [运行时重新配置 Sentinel](https://redis.io/docs/manual/sentinel/#reconfiguring-sentinel-at-runtime)
+    - `SENTINEL SET`：修改 Master-specific 配置参数
+    - `SENTINEL CONFIG SET`：修改全局配置参数
 ---
 ## [集群](https://redis.io/docs/manual/scaling/)
 

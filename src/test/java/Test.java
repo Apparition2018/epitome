@@ -11,7 +11,7 @@
 // BladeX + Saber
 // k8s
 // Guns, RuoYi, SpringBlade, ShopXO
-// Jeecg-Boot, Jeecg-Boot
+// Jeecg-Boot
 // LuckyFrameWeb
 // uni-app, Flutter, avue, Ant Design
 // 高效使用 IntelliJ IDEA：https://fangshixiang.blog.csdn.net/article/details/119411518
@@ -19,17 +19,18 @@
 // 微信 Native 支付：https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_4_1.shtml
 // IJPay：https://gitee.com/javen205/IJPay/tree/master
 
-// 龙虾三少，
+// 龙虾三少
+// CSDN 阿_毅
+// 林祥纤 SpringBoot
 
-// TODO-LJH file-server
+// TODO-LJH springboot springmvc
+// TODO-LJH file-server，把文件上传到 gitee
+// TODO-LJH spring-boot-jdbc
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import l.demo.Demo;
 import l.demo.Person;
-
-// CSDN 阿_毅
-// 林祥纤 SpringBoot
 public class Test extends Demo {
 
     public static void main(String[] args) throws Exception {
