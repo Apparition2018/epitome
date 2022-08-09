@@ -178,6 +178,11 @@ repl-diskless-sync yes
 repl-diskless-sync-delay <seconds>
 # 副本是否只读
 replica-read-only yes
+# 延迟小于等于 M 秒的 replicas 小于 N 个，master 停止接受写操作
+min-replicas-to-write N
+min-replicas-max-lag M
+# 副本优先级，越小优先级越高，0表示永不会提升为master
+replica-priority 100
 ```
 - 三种主要机制
     1. 连接良好时：master 向 replica 发送命令流
@@ -200,21 +205,33 @@ replica-read-only yes
 >- [民工哥技术之路 | 二叉树](https://mp.weixin.qq.com/s/IvrODQ2PYsNp-RQr6XkK8g)
 ---
 ## [哨兵](https://redis.io/docs/manual/sentinel/)
-- redis.conf
+- sentinel.conf
 ```
 # sentinel monitor
+# 当<quorum>个 Sentinel 同时同意 master 不可访问时，其中一个会尝试启动故障转移 
 sentinel monitor <master-group-name> <ip> <port> <quorum>
-# 其它选项
-sentinel <option_name> <master_name> <option_value>
+# sentinel <option_name> <master_name> <option_value>
+sentinel down-after-milliseconds master 5000
+sentinel failover-timeout master 60000
+sentinel parallel-syncs master 1
+#
+sentinel announce-ip <ip>
+sentinel announce-port <port>
 ```
 - 功能
     1. 监控：Monitoring
     2. 通知：Notification
     3. 自动故障转移：Automatic failover
     4. 配置提供者：Configuration provider
-- [运行时重新配置 Sentinel](https://redis.io/docs/manual/sentinel/#reconfiguring-sentinel-at-runtime)
-    - `SENTINEL SET`：修改 Master-specific 配置参数
-    - `SENTINEL CONFIG SET`：修改全局配置参数
+- [命令](https://redis.io/docs/manual/sentinel/#sentinel-commands)
+    - [运行时重新配置 Sentinel](https://redis.io/docs/manual/sentinel/#reconfiguring-sentinel-at-runtime)
+        - `SENTINEL SET`：修改 Master-specific 配置参数
+        - `SENTINEL CONFIG SET`：修改全局配置参数
+    - 查询 master 状态
+        - `SENTINEL masters`：显示受监控的 masters 及其状态
+        - `SENTINEL master <master_name>`：显示指定 master 的状态和信息
+        - `SENTINEL replicas <master_name>`：显示指定 master 的 replicas 及其状态
+        - `SENTINEL sentinels <master_name>`：显示指定 master 的 sentinels 及其状态
 ---
 ## [集群](https://redis.io/docs/manual/scaling/)
 
