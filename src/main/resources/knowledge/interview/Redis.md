@@ -6,19 +6,20 @@
 1. [Redis](https://redis.io/)
 2. [GitHub](https://github.com/redis/redis)
 3. [菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
-4. [冯佳兴](https://blog.csdn.net/fjxcsdn/category_8935622.html)
-5. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
-6. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
+4. [Redis Desktop Manager](https://www.jianshu.com/p/ccc3ebe29f7b)
+5. [windows 下安装 redis 并设置自启动](https://www.cnblogs.com/yunqing/p/10605934.html)
+---
+## Author
+1. [JavaGuide](https://github.com/Snailclimb/JavaGuide/tree/main/docs/database/redis)
+2. [敖丙](https://mp.weixin.qq.com/s/vXBFscXqDcXS_VaIERplMQ)
+3. [小林coding](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzUxODAzNDg4NQ==&action=getalbum&album_id=1790401816640225283)
+4. [码哥字节](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkzMDI1NjcyOQ==&action=getalbum&album_id=1918295695426404359)
 ---
 ## 规范
 1. [Redis开发运维实战 | 付磊](https://mp.weixin.qq.com/s/BO3wrKjvO52XqyQIBT-n2g)
 2. [付磊](https://developer.aliyun.com/article/531067)
 3. [码哥字节](https://mp.weixin.qq.com/s/zI5jJapggUURWcpPVB8IVg)
 4. [掘金开发者社区 | 小姐姐味道](https://mp.weixin.qq.com/s/-nZ08zGTYNS1b1ep-dDwRQ)
----
-## Interview
-1. [JavaGuide](https://github.com/Snailclimb/JavaGuide/tree/main/docs/database/redis)
-2. [敖丙](https://mp.weixin.qq.com/s/vXBFscXqDcXS_VaIERplMQ)
 ---
 ## [Redis 多快，为什么快](https://mmbiz.qpic.cn/mmbiz_png/g6hBZ0jzZb0Zb0XiaaR6bGaN80wicXIIP735YhoW1fic47MuJOx0HheBX4ficULcmdHhdGQnqGcfCgvunMmxpb8LnA/640)
 - 官方：Redis 的瓶颈通常是内存或网络，而不是 CPU；查询 QPS 达 10w/s
@@ -223,6 +224,17 @@ sentinel announce-port <port>
     2. 通知：Notification
     3. 自动故障转移：Automatic failover
     4. 配置提供者：Configuration provider
+- 选主
+    1. 过滤掉已经离线的节点
+    2. 过滤掉历史网络连接状态不好的节点
+    3. 剩下的节点进行3轮考察
+        1. 优先级：`replica-priority` 哪个最小
+        2. 复制进度：slave_repl_offset 哪个最接近 master_repl_offset
+        3. ID：ID 哪个最小
+- 选举执行故障转移的 sentinel
+    - 注：哨兵数应该是奇数，quorum 值建议为 (哨兵数/2)+1
+    1. 得票数 > 哨兵数的一半
+    2. 得票数 >= quorum
 - [命令](https://redis.io/docs/manual/sentinel/#sentinel-commands)
     - [运行时重新配置 Sentinel](https://redis.io/docs/manual/sentinel/#reconfiguring-sentinel-at-runtime)
         - `SENTINEL SET`：修改 Master-specific 配置参数
@@ -232,6 +244,8 @@ sentinel announce-port <port>
         - `SENTINEL master <master_name>`：显示指定 master 的状态和信息
         - `SENTINEL replicas <master_name>`：显示指定 master 的 replicas 及其状态
         - `SENTINEL sentinels <master_name>`：显示指定 master 的 sentinels 及其状态
+>- [小林coding](https://mp.weixin.qq.com/s/HJHNq3MOSJD_C0cPAFz_Iw)
+>- [小林coding](https://mp.weixin.qq.com/s/DzVY4iA-_my0JUSqOOniOw)
 ---
 ## [集群](https://redis.io/docs/manual/scaling/)
 
@@ -245,6 +259,19 @@ sentinel announce-port <port>
 ## [可编程性](https://redis.io/docs/manual/programmability/)
 1. &gt;= 7：使用 Redis Functions 来管理和运行脚本
 2. <= 6.2：使用 Lua 脚本和 EVAL 命令对服务器进行编程
+---
+## 慢查询日志
+- redis.conf
+```
+# 命令执行时间超过多少毫秒时记录 slowlog
+slowlog-log slower-than <microseconds>
+# slowlog 记录最大条数
+slowlog-max-length <length>
+```
+- 命令：`SLOWLOG HELP`
+    - `SLOWLOG GET [count]`：返回指定条数的慢查询，默认返回所有
+    - `SLOWLOG LEN`：返回慢查询日志条数
+    - `SLOWLOG RESET`：清除慢查询日志
 ---
 ## 缓存雪崩、击穿、穿透
 1. 穿透 (Penetration)：访问一个缓存和数据库都不存在的数据
