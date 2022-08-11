@@ -86,16 +86,15 @@ public class LombokDemo3 extends Demo {
      */
     @Test
     public void testGetterLazy() {
-        p(getCached());
+        p(this.getCached());
     }
 
     @Getter(lazy = true)
     private final double[] cached = expensive();
 
     private double[] expensive() {
-        double[] result = new double[1000000];
-        IntStream.rangeClosed(0, result.length - 1).forEach(i -> result[i] = new Random().nextInt(100));
+        double[] result = new double[THOUSAND];
+        IntStream.range(0, result.length).forEach(i -> result[i] = new Random().nextInt(100));
         return result;
     }
-
 }

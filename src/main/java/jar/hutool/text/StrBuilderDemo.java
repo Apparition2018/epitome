@@ -1,11 +1,8 @@
 package jar.hutool.text;
 
-import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.date.TimeInterval;
 import cn.hutool.core.text.StrBuilder;
+import l.demo.Demo;
 import org.junit.jupiter.api.Test;
-
-import static l.demo.Demo.p;
 
 /**
  * StrBuilder       可复用字符串生成器
@@ -15,28 +12,33 @@ import static l.demo.Demo.p;
  * @author Arsenal
  * created on 2020/11/5 2:20
  */
-public class StrBuilderDemo {
+public class StrBuilderDemo extends Demo {
 
     @Test
     public void testStrBuilder() {
-        TimeInterval timer = DateUtil.timer();
-        // 1.JDK StringBuilder
+        stopWatch.start("JDK StringBuilder");
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < MILLION; i++) {
             sb.append("test");
             // 重新构建新的字符串，需要重新构建StringBuilder对象，造成性能损耗和内存浪费
             sb = new StringBuilder();
         }
-        p(timer.interval());
+        stopWatch.stop();
 
-        timer.restart();
-        // 2.HuTool StrBuilder
+        stopWatch.start("HuTool StrBuilder");
         StrBuilder sb2 = new StrBuilder();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < MILLION; i++) {
             sb2.append("test");
             // 重新构建新的字符串，不必开辟新内存
             sb2.reset();
         }
-        p(timer.interval());
+        stopWatch.stop();
+
+        p(stopWatch.prettyPrint());
+        // ---------------------------------------------
+        // ns         %     Task name
+        // ---------------------------------------------
+        // 024636000  076%  JDK StringBuilder
+        // 007733500  024%  HuTool StrBuilder
     }
 }

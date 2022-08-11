@@ -119,7 +119,7 @@ public class TheSolidPrinciples {
             static class Addition implements CalculatorOperation {
                 private double left;
                 private double right;
-                private double result = 0.0;
+                private double result = 0D;
 
                 public Addition(double left, double right) {
                     this.left = left;
@@ -131,7 +131,7 @@ public class TheSolidPrinciples {
             static class Subtraction implements CalculatorOperation {
                 private double left;
                 private double right;
-                private double result = 0.0;
+                private double result = 0D;
 
                 public Subtraction(double left, double right) {
                     this.left = left;

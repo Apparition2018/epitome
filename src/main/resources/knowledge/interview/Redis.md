@@ -67,15 +67,16 @@
 |:------------|:------------------------------------------------------------|
 | String      | 缓存、计数器（数量统计（阅读量）、数量控制（限流））、时效信息（验证码）、全局 ID、分布式 session、分布式锁 |
 | List        | 简单队列、定时排行榜、最近/最新                                            |
-| Set         | 不重复（关注、点赞）、交集/并集（共同关注、商品筛选）、抽奖（SPOP）                        |
+| Set         | 唯一数据（关注、点赞）、集合操作（共同关注、商品筛选）、抽奖（SPOP）                        |
 | Sorted Set  | 实时排行榜                                                       |
 | Hash        | 对象缓存（购物车）、条件查询（Lua）                                         |
 | Bitmap      | 二值状态统计（活跃用户，在线用户）                                           |
-| HyperLogLog | 基数统计（UV 统计，Unique Visitor，独立访客量）                            |
+| HyperLogLog | 基数统计（UV（Unique Visitor） 统计）                                 |
 | Stream      | 消息队列                                                        |
 | Geo         | 地理位置                                                        |
 >- [Redis 数据结构详解](https://zhuanlan.zhihu.com/p/100460843)
 >- [Redis 常见使用场景](https://mp.weixin.qq.com/s/W5T_a_EQhxHOI0lfgO3r0g)
+>- [HyperLogLog](https://mp.weixin.qq.com/s/NPT5ONV1soYy8oFh4sGLsg)
 ---
 ## [配置](https://redis.io/docs/manual/config/)
 ```
@@ -391,12 +392,10 @@ MOVE key db                                         移动
 SET key value [command]                             设置
 SETNX key value                                     不存在才设置
 SETRANGE key offset value                           替换
-SETBIT key offset value                             设置 bit
 GETSET key value                                    设置，并获取旧值
 MSET key value [key value ...]                      批量设置
 GET key                                             获取
 GETRANGE key start end                              截取
-GETBIT key offset                                   获取 bit
 MGET key [key ...]                                  批量获取
 APPEND key value                                    追加
 INCR key                                            增一
@@ -429,7 +428,6 @@ RPUSHX key element [element ...]                    存在才添加
 LPUSHX key element [element ...]                    存在才头部添加
 LINSERT key BEFORE|AFTER pivot element              在元素前或后添加
 LSET key index element                              索引设置
-RPOPLPUSH source destination                        移除最后并添加到另外最后
 LRANGE key start stop                               获取
   LRANGE key 0 -1                                   获取全部
 LINDEX key index                                    索引获取
@@ -437,6 +435,8 @@ RPOP key [count]                                    移除
 LPOP key [count]                                    头部移除
 BRPOP key [key ...] timeout                         阻塞移除
 BLPOP key [key ...] timeout                         阻塞头部移除
+RPOPLPUSH source destination                        移除最后并添加到另一列表开头
+LMOVE source destination LEFT | RIGHT LEFT | RIGHT  移除并添加到另一列表
 LREM key count element                              删除
 LTRIM key start stop                                范围删除
 LLEN key                                            长度
@@ -458,15 +458,16 @@ SINTERSTORE destination key [key ...]               交集并另外存储
 SDIFF key [key ...]                                 差异
 SDIFFSTORE destination key [key ...]                差异并另外存储
 ```
-- Sorted SET
+- Sorted Set
 ```
 ZADD key [command] score member [score member ...]  添加
 ZRANGE key min max [command]                        获取
   ZRANGE key 0 -1                                   获取全部
 ZRANGEBYSCORE key min max [command]                 获取按分数排名
-ZREVRANGE key start stop [WITHSCORES]               倒叙获取
+ZREVRANGE key start stop [WITHSCORES]               倒序获取
 ZSCORE key member                                   获取分数
 ZRANK key mebmer                                    获取排名
+ZREVRANK key member                                 获取倒序排名
 ZUNIONSTORE destination numkeys key [key ...]       并集并另外存储
 ZREM key member [member ...]                        删除
 ZSCAN key cursor [MATCH pattern] [COUNT count]      迭代
@@ -475,6 +476,26 @@ ZREMRANGEBYSCORE key min max                        删除分数区间成员
 ZINCRBY key increment member                        增加分数
 ZCARD key                                           长度
 ZCOUNT key min max                                  计算区间成员个数
+```
+- Stream
+```
+XADD                                                添加
+XREAD id                                            迭代               
+XRANGE key start end [COUNT count]                  迭代
+XLEN key                                            长度
+```
+- Bitmap
+```
+SETBIT key offset value                             设置
+GETBIT key offset                                   获取
+BITCOUNT key [ start end [ BYTE | BIT]]             计算 set bits 个数
+BITOP operation destkey key [key ...]               按位运算：AND、OR、XOR、NOT
+```
+- HyperLogLog
+```
+PFADD key [element [element ...]]                   添加
+PFCOUNT key [key ...]                               基数估计值
+PFMERGE destkey sourcekey [sourcekey ...]           合并
 ```
 - 连接
 ```

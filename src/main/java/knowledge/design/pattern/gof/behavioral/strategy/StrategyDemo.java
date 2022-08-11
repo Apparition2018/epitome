@@ -45,7 +45,7 @@ public class StrategyDemo {
      */
     @Test
     public void testStrategy() {
-        MovieTicket ticket = new MovieTicket(60.0, new NormalDiscount());
+        MovieTicket ticket = new MovieTicket(60D, new NormalDiscount());
         System.out.println("原始价格：" + ticket.getPrice() + "\n");
 
         ticket.setDiscount(new ChildrenDiscount());
@@ -140,7 +140,7 @@ public class StrategyDemo {
 
         @Test
         public void testStrategyLambda() {
-            double price = 60.0;
+            double price = 60D;
             System.out.println("折扣价格：" + STRATEGY_MAP.get(DiscountEnum.STUDENT).apply(price) + "\n");
             System.out.println("折扣价格：" + STRATEGY_MAP.get(DiscountEnum.CHILDREN).apply(price));
         }

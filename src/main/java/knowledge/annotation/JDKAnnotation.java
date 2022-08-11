@@ -2,12 +2,13 @@ package knowledge.annotation;
 
 import l.demo.Animal.Chicken;
 import l.demo.Demo;
-import org.apache.commons.lang3.time.StopWatch;
+import org.junit.jupiter.api.Test;
 import sun.misc.Contended;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * JDKAnnotation
@@ -81,29 +82,39 @@ public class JDKAnnotation extends Demo {
      * Java 经典面试题：伪共享问题及如何解决方案：https://www.zhihu.com/zvideo/1312762510748577792
      */
     static class ContendedDemo {
+        private volatile long x;
+        private volatile long y;
         @Contended
-        private volatile static long x;
+        private volatile long x2;
         @Contended
-        private volatile static long y;
-        private static final long TIMES = 100000000L;
+        private volatile long y2;
 
-        public static void main(String[] args) throws InterruptedException {
-            StopWatch stopWatch = StopWatch.createStarted();
-            Thread t1 = new Thread(() -> {
-                for (long i = 0; i < TIMES; i++) {
-                    x = i;
-                }
-            });
-            Thread t2 = new Thread(() -> {
-                for (long i = 0; i < TIMES; i++) {
-                    y = i;
-                }
-            });
+        @Test
+        public void testContented() throws InterruptedException {
+            Thread t1 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> x = i));
+            Thread t2 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> y = i));
+            stopWatch.start("contented not used");
             t1.start();
             t2.start();
             t1.join();
             t2.join();
-            p(stopWatch.getTime());
+            stopWatch.stop();
+
+            Thread t3 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> x2 = i));
+            Thread t4 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> y2 = i));
+            stopWatch.start("contented used");
+            t3.start();
+            t4.start();
+            t3.join();
+            t4.join();
+            stopWatch.stop();
+
+            p(stopWatch.prettyPrint());
+            // ---------------------------------------------
+            // ns         %     Task name
+            // ---------------------------------------------
+            // 197255399  066%  contented not used
+            // 102313399  034%  contented used
         }
     }
 }

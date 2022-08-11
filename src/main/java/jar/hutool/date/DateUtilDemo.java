@@ -174,9 +174,9 @@ public class DateUtilDemo extends Demo {
         p(DateUtil.secondToTime(72488));                // 20:08:08
 
         // nanos → Millis
-        p(DateUtil.nanosToMillis(1000000));             // 1
+        p(DateUtil.nanosToMillis(MILLION));             // 1
         // nanos → Seconds
-        p(DateUtil.nanosToSeconds(1000000));            // 0.001
+        p(DateUtil.nanosToSeconds(MILLION));            // 0.001
     }
 
     /**

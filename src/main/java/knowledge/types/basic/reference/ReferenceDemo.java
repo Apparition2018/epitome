@@ -40,10 +40,10 @@ public class ReferenceDemo extends Demo {
             IntStream.rangeClosed(1, 40).forEach(i -> softCache.add(new OOMClass("OOM Obj-" + i)));
             p(softCache.size());
 
-            IntStream.rangeClosed(1, softCache.size()).forEach(i -> {
+            for (int i = 0; i < softCache.size(); i++) {
                 OOMClass obj = softCache.get(i);
                 p(obj == null ? "null" : obj.name);
-            });
+            }
             p(softCache.size());
         }
 
@@ -160,5 +160,4 @@ public class ReferenceDemo extends Demo {
         }
 
     }
-
 }

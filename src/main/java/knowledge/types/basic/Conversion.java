@@ -21,12 +21,12 @@ public class Conversion {
         // char → int
         char a = 'a';
         System.out.println(a + 1); // 98
-        
+
         // int → long
         long l = 100 + 100L;
-        
+
         // long → double
-        double d = 100L + 100d;
+        double d = 100L + 100D;
     }
 
     /**

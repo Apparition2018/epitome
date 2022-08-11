@@ -1,23 +1,25 @@
-package jar.jedis.case_;
+package jar.jedis.data.type;
 
 import jar.jedis.JedisUtils;
 import redis.clients.jedis.BitOP;
 import redis.clients.jedis.Jedis;
 
 /**
- * Redis Bit 类型用例
+ * Redis Bitmap
+ * 1.二值状态统计；对象权限 ?
+ * 2.SETBIT 和 GETBIT O(1)；BITTOP O(n)
+ * https://redis.io/docs/data-types/bitmaps/
  * https://segmentfault.com/a/1190000008188655
  *
  * @author ljh
  * created on 2021/5/27 9:51
  */
-public class RedisBitCase {
+public class RedisBitmap {
 
     /**
      * 活跃用户统计
      */
     static class ActiveUserStats {
-
         private static final String USER_LOGIN_KEY = "user:login";
         private static final String USER_LOGIN_20210501 = USER_LOGIN_KEY.concat(":20210501");
         private static final String USER_LOGIN_20210502 = USER_LOGIN_KEY.concat(":20210502");
@@ -49,7 +51,6 @@ public class RedisBitCase {
      * 在线用户统计
      */
     static class OnlineUserStats {
-
         private static final String USER_ONLINE_KEY = "user:online";
 
         public static void main(String[] args) {

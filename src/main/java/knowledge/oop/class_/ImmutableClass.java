@@ -29,7 +29,7 @@ public final class ImmutableClass {
 
     public String toString() {
         StringBuilder sb = new StringBuilder("Numbers are: ");
-        IntStream.rangeClosed(1, arr.length).forEach(i -> sb.append(arr[i]).append(" "));
+        IntStream.range(0, arr.length).forEach(i -> sb.append(arr[i]).append(" "));
         return sb.toString();
     }
 

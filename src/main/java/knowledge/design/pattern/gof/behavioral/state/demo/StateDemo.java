@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * 状态模式：允许一个对象在其内部状态改变时行为也发行改变，使其看起来像是改变了对象所属的类
@@ -189,9 +190,7 @@ public class StateDemo {
         public Player() {
             this.state = new ReadyState(this);
             setPlaying(true);
-            for (int i = 1; i <= 12; i++) {
-                playlist.add("Track " + i);
-            }
+            IntStream.rangeClosed(1, 12).forEach(i -> playlist.add("Track " + i));
         }
 
         public void changeState(State state) {

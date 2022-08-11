@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 /**
  * ThreadLocalRandom
@@ -26,18 +27,10 @@ public class ThreadLocalRandomDemo {
         // 错误用法
         // static ThreadLocalRandom     current()       返回当前线程的 ThreadLocalRandom
         ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
-        new Thread(() -> {
-            for (int i = 0; i < 10; i++) {
-                System.out.print(threadLocalRandom.nextInt() + " ");
-            }
-        }).start();
+        new Thread(() -> IntStream.rangeClosed(1, 10).forEach(i -> System.out.print(threadLocalRandom.nextInt() + " "))).start();
         TimeUnit.SECONDS.sleep(1);
         System.out.println();
-        new Thread(() -> {
-            for (int i = 0; i < 10; i++) {
-                System.out.print(threadLocalRandom.nextInt() + " ");
-            }
-        }).start();
+        new Thread(() -> IntStream.rangeClosed(1, 10).forEach(i -> System.out.print(threadLocalRandom.nextInt() + " "))).start();
         TimeUnit.SECONDS.sleep(1);
         System.out.println();
 
@@ -52,9 +45,7 @@ public class ThreadLocalRandomDemo {
         System.out.println();
         new Thread(() -> {
             ThreadLocalRandom threadLocalRandom2 = ThreadLocalRandom.current();
-            for (int i = 0; i < 10; i++) {
-                System.out.print(threadLocalRandom2.nextInt() + " ");
-            }
+            IntStream.rangeClosed(1, 10).forEach(i -> System.out.print(threadLocalRandom2.nextInt() + " "));
         }).start();
     }
 }

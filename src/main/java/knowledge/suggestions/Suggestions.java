@@ -184,7 +184,7 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test022() {
-        double d = 10 - 9.6;
+        double d = 10 - 9.6D;
         p(d + "元"); // 0.40000000000000036元
 
         // 方法一：BigDecimal
@@ -192,7 +192,7 @@ public class Suggestions extends Demo {
         p(bd + "元"); // 0.4元
 
         // 方法二
-        double d2 = (10 * 100 - 9.6 * 100) / 100;
+        double d2 = (10 * 100 - 9.6D * 100) / 100;
         p(d2 + "元"); // 0.4元
     }
 
@@ -375,32 +375,35 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test056() {
-        StopWatch watch = StopWatch.createStarted();
-
-        // +
+        stopWatch.start("+");
         String str = "";
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < THOUSAND; i++) {
             str += "c";
         }
-        p("+：" + watch.getTime() + "ms");               // +：111ms
+        stopWatch.stop();
 
-        // concat
-        watch.reset();
-        watch.start();
+        stopWatch.start("concat");
         str = "";
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < THOUSAND; i++) {
             str = str.concat("c");
         }
-        p("concat：" + watch.getTime() + "ms");          // concat：23ms
+        stopWatch.stop();
 
         // StringBuilder
-        watch.reset();
-        watch.start();
+        stopWatch.start("StringBuilder");
         StringBuilder sb = new StringBuilder("");
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < THOUSAND; i++) {
             sb.append("c");
         }
-        p("StringBuilder：" + watch.getTime() + "ms");   // StringBuilder：0ms
+        stopWatch.stop();
+
+        p(stopWatch.prettyPrint());
+        // ---------------------------------------------
+        // ns         %     Task name
+        // ---------------------------------------------
+        // 000581200  071%  +
+        // 000188900  023%  concat
+        // 000051600  006%  StringBuilder
     }
 
     /* 第五章：数组和集合 */
@@ -428,14 +431,13 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test067() {
-        // 学生人数 100 万
-        int stuNum = 100 * 10000;
         // List 集合，记录所有学生的份数
         List<Integer> scores = new ArrayList<>(); // 10ms
 //          List<Integer> scores = new LinkedList<>(); // 15ms
-        IntStream.rangeClosed(1, stuNum).forEach(i -> scores.add(new Random().nextInt(150)));
+        // 学生人数 100 万
+        IntStream.rangeClosed(1, TEN_MILLION).forEach(i -> scores.add(new Random().nextInt(150)));
         StopWatch watch = StopWatch.createStarted();
-        p("平均分是：" + average(scores));
+        p("平均分是：" + this.average(scores));
         p("执行时间：" + watch.getTime() + "ms");
     }
 
@@ -520,15 +522,15 @@ public class Suggestions extends Demo {
     @Test
     public void test080() throws InterruptedException {
         // 火车票列表
-        Vector<String> tickets = new Vector<>(100000);
+        Vector<String> tickets = new Vector<>(THOUSAND);
         // 初始化票据池
-        IntStream.rangeClosed(1, 100000).forEach(i -> tickets.add("火车票" + i));
+        IntStream.rangeClosed(1, THOUSAND).forEach(i -> tickets.add("火车票 " + i));
         // 10个窗口售票
         setCountDownLatch(10);
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
                 do {
-                    p(Thread.currentThread().getId() + "----" + tickets.remove(0));
+                    System.out.printf("窗口 %s：卖出 %s%n", Thread.currentThread().getId(), tickets.remove(0));
                 } while (tickets.size() != 0);
                 countDownLatch.countDown();
             }).start();
@@ -1044,7 +1046,7 @@ public class Suggestions extends Demo {
             @Override
             public Integer call() throws Exception {
                 // 模拟复杂计算
-                TimeUnit.MILLISECONDS.sleep(2000);
+                TimeUnit.SECONDS.sleep(2);
                 countDownLatch.countDown();
                 return seedMoney / 10;
             }

@@ -1,4 +1,4 @@
-package jar.jedis.case_;
+package jar.jedis.data.type;
 
 import jar.jedis.JedisUtils;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,21 +9,24 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 /**
- * Redis List 类型用例
+ * Redis List
+ * 1.常用于实现 stack、queue，为后台工作系统构建队列管理
+ * 2.最大长度 2^32 - 1
+ * 3.访问头部和尾部 O(1)；操作命令 O(n)：如 LINDEX、LINSERT、LSET
+ * 4.需要存储和处理不确定的一些列时间时，可考虑使用 Stream
+ * https://redis.io/docs/data-types/lists/
  *
  * @author ljh
  * created on 2021/5/27 14:41
  */
-public class RedisListCase {
+public class RedisList {
 
     /**
      * 最近浏览商品
      */
     static class RecentlyViewedGoods {
-
-        private Jedis jedis;
-
         private static final String RECENTLY_VIEWED_GOODS_KEY = "recently_viewed:goods:%s";
+        private Jedis jedis;
 
         @BeforeEach
         public void init() {
@@ -32,7 +35,6 @@ public class RedisListCase {
 
         @Test
         public void testRecentlyViewedGoods() {
-            jedis = JedisUtils.getResource();
             String userKey = String.format(RECENTLY_VIEWED_GOODS_KEY, "Jack");
             // 模拟之前已浏览了 id 为 1~10 的商品
             IntStream.rangeClosed(1, 10).forEach(i -> jedis.lpush(userKey, String.valueOf(i)));

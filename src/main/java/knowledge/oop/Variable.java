@@ -26,7 +26,7 @@ public class Variable {
      * <p>
      * 避免通过一个类的对象引用访问此类的静态变量或静态方法，无谓增加编译器解析成本，直接用类名来访问即可（阿里编程规约）
      */
-    private static double salary = 10000.0;
+    private static double salary = 10000D;
     private static final String DEPARTMENT = "软件开发";
 
     /**

@@ -2,7 +2,6 @@ package spring.api.util;
 
 import l.demo.Demo;
 import l.demo.Person;
-import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.FastByteArrayOutputStream;
 
@@ -19,18 +18,22 @@ import java.util.stream.IntStream;
  */
 public class FastByteArrayOutputStreamDemo extends Demo {
 
-    private static final StopWatch WATCH = new StopWatch();
-
     @Test
     public void testFastByteArrayOutputStream() {
-        WATCH.start();
-        IntStream.rangeClosed(1, 500).forEach(i -> clone(personList.get(0)));
-        p(String.format("ByteArrayOutputStream 耗时：%sms", WATCH.getTime()));
+        stopWatch.start("ByteArrayOutputStream");
+        IntStream.rangeClosed(1, 500).forEach(i -> this.clone(personList.get(0)));
+        stopWatch.stop();
 
-        WATCH.reset();
-        WATCH.start();
-        IntStream.rangeClosed(1, 500).forEach(i -> fastClone(personList.get(0)));
-        p(String.format("FastByteArrayOutputStream 耗时：%sms", WATCH.getTime()));
+        stopWatch.start("FastByteArrayOutputStream");
+        IntStream.rangeClosed(1, 500).forEach(i -> this.fastClone(personList.get(0)));
+        stopWatch.stop();
+
+        p(stopWatch.prettyPrint());
+        // ---------------------------------------------
+        // ns         %     Task name
+        // ---------------------------------------------
+        // 058931200  074%  ByteArrayOutputStream
+        // 020224200  026%  FastByteArrayOutputStream
     }
 
     private void clone(Person person) {

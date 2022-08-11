@@ -1,7 +1,6 @@
 package knowledge.data.structure.collections.framework.collection;
 
 import l.demo.Demo;
-import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
@@ -137,35 +136,36 @@ public class ListDemo extends Demo {
      */
     @Test
     public void testArrayList() {
-        final int N = 10000000;
-        StopWatch watch = StopWatch.createStarted();
-
-        //********** 没有调用 ensureCapacity() **********//
+        stopWatch.start("没有调用 ensureCapacity()");
         ArrayList<Object> list = new ArrayList<>();
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < TEN_MILLION; i++) {
             list.add(new Object());
         }
-        p("没有调用 ensureCapacity() 所需时间：" + watch.getTime()); // 没有调用 ensureCapacity() 所需时间：2813
+        stopWatch.stop();
 
-        //********** 调用了 ensureCapacity() **********//
-        watch.reset();
-        watch.start();
+        stopWatch.start("调用了 ensureCapacity()");
         list = new ArrayList<>();
         // void	    ensureCapacity(int minCapacity)
         // 如有必要，增加此 ArrayList 实例的容量，以确保它至少能够容纳最小容量参数所指定的元素数。
-        list.ensureCapacity(N);
-        for (int i = 0; i < N; i++) {
+        list.ensureCapacity(TEN_MILLION * 2);
+        for (int i = 0; i < TEN_MILLION; i++) {
             list.add(new Object());
         }
-        p("调用了 ensureCapacity() 所需时间：" + watch.getTime());  // 调用了 ensureCapacity() 所需时间：766
-        watch.stop();
+        stopWatch.stop();
+
+        p(stopWatch.prettyPrint());
+        // ---------------------------------------------
+        // ns         %     Task name
+        // ---------------------------------------------
+        // 3536894900  090%  没有调用 ensureCapacity()
+        // 372551000  010%  调用了 ensureCapacity()
 
 
-        p(getArrayListCapacity(list)); // 15000000
+        p(getArrayListCapacity(list)); // 20000000
         // void	    trimToSize()
         // 将此 ArrayList 实例的容量调整为列表的当前大小，即把 capacity = size，减少内存消耗
         list.trimToSize();
-        p(getArrayListCapacity(list)); // 10000001
+        p(getArrayListCapacity(list)); // 10000000
     }
 
     /**
@@ -184,5 +184,4 @@ public class ListDemo extends Demo {
             return -1;
         }
     }
-
 }

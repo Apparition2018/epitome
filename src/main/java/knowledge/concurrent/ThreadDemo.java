@@ -114,7 +114,7 @@ public class ThreadDemo extends Demo {
         setCountDownLatch(1);
         Thread download = new Thread(() -> {
             p("down:开始下载图片...");
-            for (int i = 0; i < 100; i++) {
+            for (int i = 1; i <= 100; i++) {
                 p("down:" + i + "%");
                 try {
                     TimeUnit.MILLISECONDS.sleep(30);
@@ -238,7 +238,7 @@ public class ThreadDemo extends Demo {
     public void interrupt() {
         Thread thread = new Thread(() -> {
             try {
-                for (int i = 0; i < 1000; i++) {
+                for (int i = 0; i < THOUSAND; i++) {
                     TimeUnit.MILLISECONDS.sleep(3);
                     p(i);
                     if (Thread.currentThread().isInterrupted()) {

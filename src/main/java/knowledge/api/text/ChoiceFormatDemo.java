@@ -25,7 +25,7 @@ public class ChoiceFormatDemo {
         String[] dayOfWeekNames = {"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"};
         ChoiceFormat form = new ChoiceFormat(limits, dayOfWeekNames);
         ParsePosition status = new ParsePosition(0);
-        for (double i = 0.0; i <= 8.0; ++i) {
+        for (double i = 0D; i <= 8D; ++i) {
             status.setIndex(0);
             p(i + " -> " + form.format(i) + " -> " + form.parse(form.format(i), status));
             // 0.0 -> Sun -> 1.0
@@ -43,15 +43,15 @@ public class ChoiceFormatDemo {
     @Test
     public void testChoiceFormat2() {
         ChoiceFormat fmt = new ChoiceFormat("-1#is negative | 0#is zero or fraction | 1#is one | 1.0<is 1+ | 2#is two | 2<is more than 2.");
-        p(fmt.format(Double.NEGATIVE_INFINITY));    // is negative 
-        p(fmt.format(-1.0));                        // is negative 
-        p(fmt.format(0));                           // is zero or fraction 
-        p(fmt.format(0.9));                         // is zero or fraction 
-        p(fmt.format(1));                           // is one 
-        p(fmt.format(1.5));                         // is 1+ 
-        p(fmt.format(2));                           // is two 
+        p(fmt.format(Double.NEGATIVE_INFINITY));    // is negative
+        p(fmt.format(-1.0));                        // is negative
+        p(fmt.format(0));                           // is zero or fraction
+        p(fmt.format(0.9));                         // is zero or fraction
+        p(fmt.format(1));                           // is one
+        p(fmt.format(1.5));                         // is 1+
+        p(fmt.format(2));                           // is two
         p(fmt.format(2.1));                         // is more than 2.
-        p(fmt.format(Double.NaN));                  // is negative 
+        p(fmt.format(Double.NaN));                  // is negative
         p(fmt.format(Double.POSITIVE_INFINITY));    // is more than 2.
     }
 }

@@ -1,9 +1,11 @@
 package jar.jedis;
 
+import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Pipeline;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +16,7 @@ import java.util.Map;
  * @author Arsenal
  * created on 2021/4/30 22:49
  */
-public class JedisDemo {
+public class JedisDemo extends Demo {
 
     @Test
     public void singleton() {
@@ -24,7 +26,7 @@ public class JedisDemo {
         jedis.set("name", "ljh");
         // 3.获取数据
         String value = jedis.get("name");
-        System.out.println("value = " + value);
+        p("value = " + value);
         // 4.释放资源
         jedis.close();
     }
@@ -41,13 +43,10 @@ public class JedisDemo {
              Jedis jedis = jedisPool.getResource()) {
             jedis.set("name", "ljh");
             String value = jedis.get("name");
-            System.out.println("value = " + value);
+            p("value = " + value);
         }
     }
 
-    /**
-     * https://www.cnblogs.com/xinhuaxuan/p/9256763.html
-     */
     @Test
     public void hash() {
         Jedis jedis = JedisUtils.getResource();
@@ -61,8 +60,58 @@ public class JedisDemo {
         jedis.hmset("Hash:2", map);
 
         // hget
-        System.out.println("Hash:1 = [" + jedis.hget("Hash:1", "id") + ", " + jedis.hget("Hash:1", "name") + "]");
+        p("Hash:1 = [" + jedis.hget("Hash:1", "id") + ", " + jedis.hget("Hash:1", "name") + "]");
         // hmget
-        System.out.println("Hash:2 = " + jedis.hmget("Hash:2", "id", "name"));
+        p("Hash:2 = " + jedis.hmget("Hash:2", "id", "name"));
+
+        jedis.close();
+    }
+
+    /**
+     * pipeline 无原子性
+     * multi    有原子性
+     */
+    @Test
+    public void pipeline() {
+        Jedis jedis = JedisUtils.getResource();
+
+        final String TASK1 = "normal";
+        stopWatch.start(TASK1);
+        for (int i = 1; i <= THOUSAND; i++) {
+            jedis.set(TASK1 + i, "i");
+            jedis.del((TASK1 + i));
+        }
+        stopWatch.stop();
+
+        final String TASK2 = "multi";
+        stopWatch.start(TASK2);
+        String[] setArr = new String[THOUSAND * 2];
+        String[] delArr = new String[THOUSAND];
+        for (int i = 1; i <= THOUSAND; i++) {
+            setArr[i * 2 - 2] = TASK2 + i;
+            setArr[i * 2 - 1] = String.valueOf(i);
+            delArr[i - 1] = TASK2 + i;
+        }
+        jedis.mset(setArr);
+        jedis.del(delArr);
+        stopWatch.stop();
+
+        final String TASK3 = "pipeline";
+        stopWatch.start(TASK3);
+        Pipeline pipeline = jedis.pipelined();
+        for (int i = 1; i <= THOUSAND; i++) {
+            pipeline.set(TASK3 + i, String.valueOf(i));
+            pipeline.del((TASK3 + i));
+        }
+        pipeline.syncAndReturnAll();
+        stopWatch.stop();
+
+        p(stopWatch.prettyPrint());
+        // ---------------------------------------------
+        // ns         %     Task name
+        // ---------------------------------------------
+        // 433078700  097%  normal
+        // 002830100  001%  multi
+        // 012681600  003%  pipeline
     }
 }

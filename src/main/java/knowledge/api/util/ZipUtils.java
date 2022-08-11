@@ -7,6 +7,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
@@ -39,9 +40,7 @@ public class ZipUtils extends Demo {
     public void zip(String zipPath, String path, String... srcPaths) throws IOException {
         ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(new File(zipPath).toPath()));
         File[] srcFiles = new File[srcPaths.length];
-        for (int i = 0; i < srcPaths.length; i++) {
-            srcFiles[i] = new File(srcPaths[i]);
-        }
+        IntStream.range(0, srcPaths.length).forEach(i -> srcFiles[i] = new File(srcPaths[i]));
         zip(zos, path, srcFiles);
         zos.close();
     }

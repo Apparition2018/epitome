@@ -20,14 +20,10 @@ public class ReentrantReadWriteLockDemo {
     public static void main(String[] args) {
         final Data data = new Data();
         for (int i = 0; i < 2; i++) {
-            new Thread(() -> {
-                IntStream.rangeClosed(1, 3).forEach(j -> data.write(new Random().nextInt(30)));
-            }, "写" + i + "线程").start();
+            new Thread(() -> IntStream.rangeClosed(1, 3).forEach(j -> data.write(new Random().nextInt(30))), "写" + i + "线程").start();
         }
         for (int i = 0; i < 2; i++) {
-            new Thread(() -> {
-                IntStream.rangeClosed(1, 3).forEach(j -> data.read());
-            }, "读" + i + "线程").start();
+            new Thread(() -> IntStream.rangeClosed(1, 3).forEach(j -> data.read()), "读" + i + "线程").start();
         }
     }
 

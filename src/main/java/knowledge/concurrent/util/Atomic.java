@@ -111,9 +111,9 @@ public class Atomic extends Demo {
      */
     @Test
     public void testAtomicLongAdder() throws InterruptedException {
-        testEff(1, 10000000);
-        testEff(10, 10000000);
-        testEff(100, 10000000);
+        testEff(1, TEN_MILLION);
+        testEff(10, TEN_MILLION);
+        testEff(100, TEN_MILLION);
     }
 
     private void testEff(int threadCount, int times) throws InterruptedException {
@@ -128,11 +128,7 @@ public class Atomic extends Demo {
         List<Thread> threadList = Lists.newArrayList();
         StopWatch stopWatch = StopWatch.createStarted();
         for (int i = 0; i < threadCount; i++) {
-            threadList.add(new Thread(() -> {
-                for (int j = 0; j < times; j++) {
-                    longAdder.increment();
-                }
-            }));
+            threadList.add(new Thread(() -> IntStream.rangeClosed(1, times).forEach(j -> longAdder.increment())));
         }
         for (Thread thread : threadList) {
             thread.start();
@@ -173,8 +169,8 @@ public class Atomic extends Demo {
     public void testAccumulator() throws InterruptedException {
         LongAccumulator longAccumulator = new LongAccumulator(Long::sum, 0);
         ExecutorService threadPool = Executors.newFixedThreadPool(100);
-        setCountDownLatch(1000000);
-        IntStream.rangeClosed(1, 1000000).forEach(i -> threadPool.submit(() -> {
+        setCountDownLatch(MILLION);
+        IntStream.rangeClosed(1, MILLION).forEach(i -> threadPool.submit(() -> {
             longAccumulator.accumulate(i);
             countDownLatch.countDown();
         }));

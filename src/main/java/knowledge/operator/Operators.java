@@ -114,7 +114,7 @@ public class Operators {
      */
     @Test
     public void instanceof_() {
-        Double d = 3.3;
+        Double d = 3.3D;
         p(d instanceof Number); // true
     }
 

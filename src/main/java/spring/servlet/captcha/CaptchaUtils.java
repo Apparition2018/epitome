@@ -24,7 +24,7 @@ import java.util.stream.IntStream;
 public abstract class CaptchaUtils {
 
     private static Random random = new Random();
-    private static int width = 80;     // 宽度
+    private static int width = 80;      // 宽度
     private static int height = 30;     // 高度
     private static String[] fonts = {"Consolas", "Arial", "Algerian"};
     private static int fontSize = 18;   // 字体大小
@@ -32,7 +32,7 @@ public abstract class CaptchaUtils {
     private static String operators = "+-";
     private static int result = -1;     // 保存计算结果
     private static int line = 2;                // 干扰线数量
-    private static double noiseRate = 0.03f;    // 噪点率
+    private static double noiseRate = 0.03D;    // 噪点率
 
     /**
      * 前后分离获取验证码方式
@@ -90,7 +90,7 @@ public abstract class CaptchaUtils {
         sos.flush();
         sos.close();
     }
-    
+
     public static void valid(HttpServletRequest request, HttpServletResponse response, String captchaType) throws IOException {
         // 1.得到数据
         String validCode;

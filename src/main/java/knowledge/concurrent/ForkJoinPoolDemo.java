@@ -1,6 +1,6 @@
 package knowledge.concurrent;
 
-import org.apache.commons.lang3.time.StopWatch;
+import l.demo.Demo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,36 +24,39 @@ import java.util.stream.LongStream;
  * @author ljh
  * created on 2020/12/1 12:58
  */
-public class ForkJoinPoolDemo {
-
-    private static final StopWatch stopWatch = new StopWatch();
+public class ForkJoinPoolDemo extends Demo {
 
     public static void main(String[] args) {
         long[] numbers = LongStream.rangeClosed(1, 1_0000_0000L).toArray();
         Calculator calculator;
-        long result;
 
-        stopWatch.start();
+        stopWatch.start("Fork/Join");
         calculator = new ForkJoinCalculator();
-        result = calculator.sumUp(numbers);
-        System.out.printf("结果为：%s，Fork/Join 耗时：%sms%n%n", result, stopWatch.getTime());
+        calculator.sumUp(numbers);
+        stopWatch.stop();
 
-        stopWatch.reset();
-        stopWatch.start();
+        stopWatch.start("For Loop");
         calculator = new ForLoopCalculator();
-        result = calculator.sumUp(numbers);
-        System.out.printf("结果为：%s，For Loop 耗时：%sms%n%n", result, stopWatch.getTime());
+        calculator.sumUp(numbers);
+        stopWatch.stop();
 
-        stopWatch.reset();
-        stopWatch.start();
+        stopWatch.start("ExecutorService");
         calculator = new ExecutorServiceCalculator();
-        result = calculator.sumUp(numbers);
-        System.out.printf("结果为：%s，ExecutorService 耗时：%sms%n%n", result, stopWatch.getTime());
+        calculator.sumUp(numbers);
+        stopWatch.stop();
 
-        stopWatch.reset();
-        stopWatch.start();
-        result = LongStream.rangeClosed(0, numbers.length).parallel().reduce(0, Long::sum);
-        System.out.printf("结果为：%s，Stream 耗时：%sms", result, stopWatch.getTime());
+        stopWatch.start("Stream");
+        LongStream.rangeClosed(0, numbers.length).parallel().reduce(0, Long::sum);
+        stopWatch.stop();
+
+        p(stopWatch.prettyPrint());
+        // ---------------------------------------------
+        // ns         %     Task name
+        // ---------------------------------------------
+        // 374720700  072%  Fork/Join
+        // 047458000  009%  For Loop
+        // 043385600  008%  ExecutorService
+        // 055527800  011%  Stream
     }
 
     interface Calculator {
@@ -117,8 +120,8 @@ public class ForkJoinPoolDemo {
         @Override
         public long sumUp(long[] numbers) {
             long total = 0;
-            for (long i : numbers) {
-                total += i;
+            for (long number : numbers) {
+                total += number;
             }
             return total;
         }

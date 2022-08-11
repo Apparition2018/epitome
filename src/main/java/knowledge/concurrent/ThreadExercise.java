@@ -3,6 +3,7 @@ package knowledge.concurrent;
 import lombok.SneakyThrows;
 
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 /**
  * 设计4个线程，其中两个每次对j增加1，另外两个对j每次减少1。循环5次。
@@ -16,13 +17,8 @@ public class ThreadExercise {
     private static int j;
 
     public static void main(String[] args) {
-        for (int i = 0; i < 2; i++) {
-            new Inc().start();
-        }
-
-        for (int i = 0; i < 2; i++) {
-            new Dec().start();
-        }
+        IntStream.rangeClosed(1, 2).forEach(i -> new Inc().start());
+        IntStream.rangeClosed(1, 2).forEach(i -> new Dec().start());
     }
 
     static class Inc extends Thread {

@@ -1,5 +1,6 @@
 package knowledge.design.pattern.gof.structural.flyweight;
 
+import l.demo.Demo;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +35,7 @@ import java.util.Map;
  * @author Arsenal
  * created on 2020/9/26 2:51
  */
-public class FlyweightDemo {
+public class FlyweightDemo extends Demo {
 
     /**
      * String 使用了享元模式：http://c.biancheng.net/view/8471.html
@@ -50,16 +51,16 @@ public class FlyweightDemo {
         String s7 = "h";
         String s8 = "ello";
         String s9 = s7 + s8;
-        System.out.println(s1 == s2);   // true
-        System.out.println(s1 == s3);   // true
-        System.out.println(s1 == s4);   // false
-        System.out.println(s1 == s9);   // false
-        System.out.println(s4 == s5);   // false
-        System.out.println(s1 == s6);   // true
+        p(s1 == s2);    // true
+        p(s1 == s3);    // true
+        p(s1 == s4);    // false
+        p(s1 == s9);    // false
+        p(s4 == s5);    // false
+        p(s1 == s6);    // true
     }
 
     private static final int CANVAS_SIZE = 500;
-    private static final int TREES_TO_DRAW = 1000000;
+    private static final int TREES_TO_DRAW = MILLION;
     private static final int TREE_TYPES = 2;
 
     /**
@@ -77,13 +78,13 @@ public class FlyweightDemo {
         forest.setSize(CANVAS_SIZE, CANVAS_SIZE);
         forest.setVisible(true);
 
-        System.out.println(TREES_TO_DRAW + " trees drawn");
-        System.out.println("---------------------");
-        System.out.println("Memory usage:");
-        System.out.println("Tree size (8 bytes) * " + TREES_TO_DRAW);
-        System.out.println("+ TreeTypes size (~30 bytes) * " + TREE_TYPES + "");
-        System.out.println("---------------------");
-        System.out.println("Total: " + ((TREES_TO_DRAW * 8 + TREE_TYPES * 30) / 1024 / 1024) +
+        p(TREES_TO_DRAW + " trees drawn");
+        p("---------------------");
+        p("Memory usage:");
+        p("Tree size (8 bytes) * " + TREES_TO_DRAW);
+        p("+ TreeTypes size (~30 bytes) * " + TREE_TYPES + "");
+        p("---------------------");
+        p("Total: " + ((TREES_TO_DRAW * 8 + TREE_TYPES * 30) / 1024 / 1024) +
                 "MB (instead of " + ((TREES_TO_DRAW * 38) / 1024 / 1024) + "MB)");
     }
 
@@ -154,5 +155,4 @@ public class FlyweightDemo {
             }
         }
     }
-
 }

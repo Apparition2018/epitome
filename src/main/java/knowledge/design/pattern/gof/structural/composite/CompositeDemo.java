@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * 组合模式：又称整体-部分模式 (Part-Whole)，将对象组合成树状层次结构的模式，对单个对象和组合对象的使用具有一致性
@@ -132,7 +133,7 @@ public class CompositeDemo {
             System.out.println("+ 【" + name + "】");
             for (File file : filesList) {
                 if (this.level != null) {
-                    for (int i = 0; i < this.level; i++) System.out.print("  ");
+                    IntStream.rangeClosed(1, level).forEach(i -> System.out.println("  "));
                 }
                 file.show();
             }

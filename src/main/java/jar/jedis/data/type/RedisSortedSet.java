@@ -1,6 +1,7 @@
-package jar.jedis.case_;
+package jar.jedis.data.type;
 
 import jar.jedis.JedisUtils;
+import l.demo.Demo;
 import lombok.Getter;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
@@ -11,18 +12,21 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
- * Redis ZSet 类型用例
+ * Redis Sorted Set
+ * 1.排行榜；限流
+ * 2.大多数集合操作 O(log(n))；ZRANEG O(long(n) + m)
+ * 3.用于索引其它数据；当需要索引和查询数据，可考虑使用 RedisSearch 和 RedisJSON
+ * https://redis.io/docs/data-types/sorted-sets/
  *
  * @author ljh
  * created on 2021/5/28 16:30
  */
-public class RedisZSetCase {
+public class RedisSortedSet extends Demo {
 
     /**
      * 热门书籍
      */
     static class HotBooks {
-
         private static final String HOT_BOOKS_KEY = "hot_articles";
         private static final String HOT_BOOKS_20210501 = HOT_BOOKS_KEY.concat(":20210501");
         private static final String HOT_BOOKS_20210502 = HOT_BOOKS_KEY.concat(":20210502");
@@ -39,14 +43,14 @@ public class RedisZSetCase {
             jedis.zadd(HOT_BOOKS_20210501, bookMap);
             jedis.zadd(HOT_BOOKS_20210502, bookMap);
             jedis.zadd(HOT_BOOKS_20210503, bookMap);
-            IntStream.rangeClosed(1, 10000).forEach(i -> readBook(jedis, HOT_BOOKS_20210501));
-            IntStream.rangeClosed(1, 10000).forEach(i -> readBook(jedis, HOT_BOOKS_20210502));
-            IntStream.rangeClosed(1, 10000).forEach(i -> readBook(jedis, HOT_BOOKS_20210503));
-            // 20210521 四大名著排名：[[水浒传,2542.0], [红楼梦,2516.0], [西游记,2491.0], [三国演义,2451.0]]
+            IntStream.rangeClosed(1, THOUSAND).forEach(i -> this.readBook(jedis, HOT_BOOKS_20210501));
+            IntStream.rangeClosed(1, THOUSAND).forEach(i -> this.readBook(jedis, HOT_BOOKS_20210502));
+            IntStream.rangeClosed(1, THOUSAND).forEach(i -> this.readBook(jedis, HOT_BOOKS_20210503));
+            // 20210521 四大名著排名：[[红楼梦,271.0], [水浒传,257.0], [三国演义,240.0], [西游记,232.0]]
             System.out.println("20210521 四大名著排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_20210501, 0, 3));
             // 统计总排名
             jedis.zunionstore(HOT_BOOKS_KEY, HOT_BOOKS_20210501, HOT_BOOKS_20210502, HOT_BOOKS_20210503);
-            // 四大名著总排名：[[水浒传,7589.0], [西游记,7512.0], [三国演义,7489.0], [红楼梦,7410.0]]
+            // 四大名著总排名：[[红楼梦,761.0], [三国演义,755.0], [西游记,751.0], [水浒传,733.0]]
             System.out.println("四大名著总排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_KEY, 0, 3));
         }
 
@@ -57,14 +61,13 @@ public class RedisZSetCase {
 
     @Getter
     private enum BookEnum {
-
         SG("三国演义", 1),
         XY("西游记", 2),
         HL("红楼梦", 3),
         SH("水浒传", 4);
 
-        private String name;
-        private int code;
+        private final String name;
+        private final int code;
 
         BookEnum(String name, int code) {
             this.name = name;

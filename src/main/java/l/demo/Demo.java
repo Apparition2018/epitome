@@ -3,6 +3,7 @@ package l.demo;
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.springframework.lang.NonNull;
+import org.springframework.util.StopWatch;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -62,8 +63,13 @@ public class Demo {
             put(9, "I");
         }
     };
+    public static StopWatch stopWatch = new StopWatch("demo");
     public static JsonMapper jsonMapper = JsonMapper.builder().build();
     public static CountDownLatch countDownLatch;
+    public static final int THOUSAND = 1000;
+    public static final int MILLION = THOUSAND * 1000;
+    public static final int TEN_MILLION = MILLION * 10;
+    public static final int HUNDRED_MILLION = MILLION * 100;
     public static final String HELLO_WORLD = "Hello World!";
     public static final String MY_NAME = "ljh";
     public static final String MY_EMAIL = "88850180@163.com";

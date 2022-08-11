@@ -1,5 +1,6 @@
 package jar.jedis;
 
+import l.demo.Demo;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * @author Arsenal
  * created on 2021/5/11 1:47
  */
-public class JedisDistributedLocks {
+public class JedisDistributedLocks extends Demo {
 
     private static final String MONEY = "MONEY";
     private static final String MONEY_LOCK = "MONEY_LOCK";
@@ -55,7 +56,7 @@ public class JedisDistributedLocks {
     private void cal(Jedis jedis) {
         int money = Integer.parseInt(jedis.get(MONEY));
         jedis.set(MONEY, String.valueOf(money - 100));
-        System.out.println("计算" + Thread.currentThread().getName());
+        p("计算" + Thread.currentThread().getName());
     }
 
     private void calWithLock(LockInitial lockInitial, Jedis jedis) {
@@ -75,13 +76,13 @@ public class JedisDistributedLocks {
         }
         // Runnable runnable = this.lock();
         Runnable runnable = this.notLock();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             Thread thread = new Thread(runnable, String.valueOf(i));
             thread.start();
         }
         TimeUnit.SECONDS.sleep(1);
         try (Jedis jedis = JedisUtils.getResource()) {
-            System.out.println(Integer.parseInt(jedis.get(MONEY)));
+            p(Integer.parseInt(jedis.get(MONEY)));
         }
     }
 

@@ -44,7 +44,7 @@ public class DomDemo extends Demo {
 
         // 新建 Document 档建造器的工厂实例
         private DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        // 新建 Document 建造器 
+        // 新建 Document 建造器
         private DocumentBuilder builder = factory.newDocumentBuilder();
 
         public OrgW3cDom() throws ParserConfigurationException {
@@ -159,9 +159,7 @@ public class DomDemo extends Demo {
                 stack.push(qName);
 
                 // 输出属性
-                IntStream.range(0, attributes.getLength()).forEach(i -> {
-                    id = attributes.getValue(i);
-                });
+                IntStream.range(0, attributes.getLength()).forEach(i -> id = attributes.getValue(i));
             }
 
             @Override

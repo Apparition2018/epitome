@@ -58,7 +58,7 @@ public class Recursion {
     static class FibonacciSequence {
 
         public static void main(String[] args) {
-            IntStream.rangeClosed(0, 100).forEach(i -> System.out.print(fibonacci(i) + " "));
+            IntStream.range(0, 100).forEach(i -> System.out.print(fibonacci(i) + " "));
         }
 
         private static long fibonacci(long num) {

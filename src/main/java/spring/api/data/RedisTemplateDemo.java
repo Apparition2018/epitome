@@ -3,11 +3,11 @@ package spring.api.data;
 import com.google.common.collect.Lists;
 import l.demo.Demo;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.HashOperations;
-import org.springframework.data.redis.core.ListOperations;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.core.*;
 import springboot.EpitomeApplication;
 
 import javax.annotation.Resource;
@@ -73,4 +73,51 @@ public class RedisTemplateDemo extends Demo {
         hashOperations.delete(key, "otherInfo");
     }
 
+    @Test
+    public void pipeline() {
+        final String TASK1 = "normal";
+        stopWatch.start(TASK1);
+        for (int i = 1; i <= THOUSAND; i++) {
+            redisTemplate.opsForValue().set(TASK1 + i, "i");
+            redisTemplate.opsForValue().getAndDelete((TASK1 + i));
+        }
+        stopWatch.stop();
+
+        final String TASK2 = "pipeline RedisCallback";
+        stopWatch.start(TASK2);
+        redisTemplate.executePipelined(
+                (RedisCallback<Object>) connection -> {
+                    connection.openPipeline();
+                    for (int i = 1; i <= THOUSAND; i++) {
+                        connection.set((TASK2 + i).getBytes(), String.valueOf(i).getBytes());
+                        connection.del((TASK2 + i).getBytes());
+                    }
+                    connection.closePipeline();
+                    return null;
+                }
+        );
+        stopWatch.stop();
+
+        final String TASK3 = "pipeline SessionCallback";
+        stopWatch.start(TASK3);
+        redisTemplate.executePipelined(new SessionCallback<Object>() {
+            @Override
+            public Object execute(@NotNull RedisOperations operations) throws DataAccessException {
+                for (int i = 1; i <= THOUSAND; i++) {
+                    operations.opsForValue().set(TASK3 + i, i);
+                    operations.opsForValue().getAndDelete(TASK3 + i);
+                }
+                return null;
+            }
+        });
+        stopWatch.stop();
+
+        p(stopWatch.prettyPrint());
+        // ---------------------------------------------
+        // ns         %     Task name
+        // ---------------------------------------------
+        // 1270684900  082%  normal
+        // 161263800  010%  pipeline RedisCallback
+        // 108837100  007%  pipeline SessionCallback
+    }
 }

@@ -126,7 +126,7 @@ public class BuilderDemo {
         private final Transmission transmission;
         private final TripComputer tripComputer;
         private final GPSNavigator gpsNavigator;
-        private double fuel = 0;
+        private double fuel = 0D;
 
         public Car(CarType carType, int seats, Engine engine, Transmission transmission,
                    TripComputer tripComputer, GPSNavigator gpsNavigator) {
@@ -239,7 +239,7 @@ public class BuilderDemo {
             private Transmission transmission;
             private TripComputer tripComputer;
             private GPSNavigator gpsNavigator;
-            private double fuel = 0;
+            private double fuel = 0D;
 
             /**
              * Builder
