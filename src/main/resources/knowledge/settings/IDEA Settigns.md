@@ -147,6 +147,9 @@
     2. + Web Application: Exploded ▶ From Modules...
     3. Output directory: xxx\target
     4. 把 Available Elements 中需要用到的 jar Put into /WEB-INF/lib，特别是 javax.servlet-api
+### Modules
+    1. + → 2 Library...
+    2. Tomcat
 ---
 ## Error running 'XxxApp': Command line is too long
     1. .idea/workspace.xml

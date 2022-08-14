@@ -14,6 +14,7 @@
 2. [敖丙](https://mp.weixin.qq.com/s/vXBFscXqDcXS_VaIERplMQ)
 3. [小林coding](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzUxODAzNDg4NQ==&action=getalbum&album_id=1790401816640225283)
 4. [码哥字节](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkzMDI1NjcyOQ==&action=getalbum&album_id=1918295695426404359)
+5. [我没有三颗心脏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg5MzU2NDgyNw==&action=getalbum&album_id=1710550712134189060)
 ---
 ## 规范
 1. [Redis开发运维实战 | 付磊](https://mp.weixin.qq.com/s/BO3wrKjvO52XqyQIBT-n2g)
@@ -76,7 +77,7 @@
 | Geo         | 地理位置                                                        |
 >- [Redis 数据结构详解](https://zhuanlan.zhihu.com/p/100460843)
 >- [Redis 常见使用场景](https://mp.weixin.qq.com/s/W5T_a_EQhxHOI0lfgO3r0g)
->- [HyperLogLog](https://mp.weixin.qq.com/s/NPT5ONV1soYy8oFh4sGLsg)
+>- [HyperLogLog | 我没有三颗心脏](https://mp.weixin.qq.com/s/NPT5ONV1soYy8oFh4sGLsg)
 ---
 ## [配置](https://redis.io/docs/manual/config/)
 ```
@@ -269,7 +270,7 @@ slowlog-log slower-than <microseconds>
 # slowlog 记录最大条数
 slowlog-max-length <length>
 ```
-- 命令：`SLOWLOG HELP`
+- 命令
     - `SLOWLOG GET [count]`：返回指定条数的慢查询，默认返回所有
     - `SLOWLOG LEN`：返回慢查询日志条数
     - `SLOWLOG RESET`：清除慢查询日志
@@ -371,7 +372,7 @@ slowlog-max-length <length>
 - [Try Redis](https://try.redis.io/)
 - 连接服务：redis-cli -h host -p port -a password
 ### [Commands](https://redis.io/commands/)
-- Key
+- [Generic](https://redis.io/commands/?group=generic)
 ```
 KEYS pattern[?|*]                                   查看
 DEL key [key ...]                                   删除
@@ -379,7 +380,7 @@ SCAN cursor [MATCH pattern] [COUNT count] [TYPE type]   迭代元素集合
 EXISTS key [key ...]                                判断是否存在
 RENAME key newkey                                   重命名
 TYPE key                                            返回类型
-EEXPIRE key seconds [NX|XX|GT|LT]                   设置过期时间，秒
+EXPIRE key seconds [NX|XX|GT|LT]                    设置过期时间，秒
 EXPIREAT key unix-time-seconds [NX|XX|GT|LT]        设置过期时间点，时间戳
 PEXPIRE key milliseconds [NX|XX|GT|LT]              设置过期时间，毫秒
 PEXPIREAT key unix-time-milliseconds [NX|XX|GT|LT]  设置过期时间点，时间戳
@@ -387,7 +388,7 @@ TTL key                                             返回生存时间，秒
 PERSIST key                                         持久保持
 MOVE key db                                         移动
 ```
-- String
+- [String](https://redis.io/commands/?group=string)
 ```
 SET key value [command]                             设置
 SETNX key value                                     不存在才设置
@@ -404,7 +405,7 @@ INCRBY key increment                                增加
 DECRBY key increment                                减少
 STRLEN key                                          长度
 ```
-- Hash
+- [Hash](https://redis.io/commands/?group=hash)
 ```
 HSET key field value [field value ...]              设置
 HMSET key field value [field value ...]             批量设置
@@ -420,7 +421,7 @@ HEXISTS key field                                   判断是否存在
 HINCRBY key field increment                         增加
 HLEN key                                            长度
 ```
-- List
+- [List](https://redis.io/commands/?group=list)
 ```
 RPUSH key element [element ...]                     添加
 LPUSH key element [element ...]                     头部添加
@@ -441,7 +442,7 @@ LREM key count element                              删除
 LTRIM key start stop                                范围删除
 LLEN key                                            长度
 ```
-- Set
+- [Set](https://redis.io/commands/?group=set)
 ```
 SADD key member [member ...]                        添加
 SMEMBERS key                                        获取
@@ -458,7 +459,7 @@ SINTERSTORE destination key [key ...]               交集并另外存储
 SDIFF key [key ...]                                 差异
 SDIFFSTORE destination key [key ...]                差异并另外存储
 ```
-- Sorted Set
+- [Sorted Set](https://redis.io/commands/?group=sorted-set)
 ```
 ZADD key [command] score member [score member ...]  添加
 ZRANGE key min max [command]                        获取
@@ -477,53 +478,65 @@ ZINCRBY key increment member                        增加分数
 ZCARD key                                           长度
 ZCOUNT key min max                                  计算区间成员个数
 ```
-- Stream
+- [Stream](https://redis.io/commands/?group=stream)
 ```
 XADD                                                添加
-XREAD id                                            迭代               
-XRANGE key start end [COUNT count]                  迭代
+XREAD id                                            获取，大于指定 ID
+XRANGE key start end [COUNT count]                  获取，匹配指定 ID 范围
+XDEL key id [id ...]                                删除
 XLEN key                                            长度
+XGROUP CREATE key groupname id                      创建消费者组
+XREADGROUP GROUP group consumer STREAMS key [key ...] id [id ...]
 ```
-- Bitmap
+- [Bitmap](https://redis.io/commands/?group=bitmap)
 ```
 SETBIT key offset value                             设置
 GETBIT key offset                                   获取
 BITCOUNT key [ start end [ BYTE | BIT]]             计算 set bits 个数
 BITOP operation destkey key [key ...]               按位运算：AND、OR、XOR、NOT
 ```
-- HyperLogLog
+- [HyperLogLog](https://redis.io/commands/?group=hyperloglog)
 ```
 PFADD key [element [element ...]]                   添加
 PFCOUNT key [key ...]                               基数估计值
 PFMERGE destkey sourcekey [sourcekey ...]           合并
 ```
-- 连接
+- [Pub/Sub](https://redis.io/commands/?group=pubsub)
+```
+SUBSCRIBE channel [channel ...]                     订阅通道
+PSUBSCRIBE pattern [ pattern ...]                   订阅样式通道
+UNSUBSCRIBE [channel [channel ...]]                 取消订阅通道
+PUNSUBSCRIBE [pattern [pattern ...]]                取消订阅样式通道
+PUBLISH channel message                             向通道发布消息
+SPUBLISH shardchannel message                       向分片通道发布消息
+PUBSUB CHANNELS [pattern]                           列出当前活动的通道
+PUBSUB NUMPAT                                       unique patterns 数量
+PUBSUB NUMSUB [channel [channel ...]]               订阅通道的数量，不包括订阅样式通道
+```
+- [服务器管理](https://redis.io/commands/?group=server)
+```
+INFO [section [section ...]]                        返回服务器的信息和统计信息
+SAVE                                                同步保存到 .rdb 文件
+BGSAVE [SCHEDULE]                                   异步保存到 .rdb 文件
+DBSIZE                                              当前库 key 数量
+FLUSHALL [ASYNC|SYNC]                               冲洗所有数据库 key
+FLUSHDB [ASYNC|SYNC]                                冲洗当前库所有 key
+CONFIG SET parameter value [ parameter value ...]   运行时配置参数
+CONFIG GET parameter [ parameter ...]               获取配置参数
+CONFIG REWRITE                                      重写 redis.conf
+```
+- [连接管理](https://redis.io/commands/?group=connection)
 ```
 AUTH [usename] password                             验权
 SELECT index                                        切换数据库
 ```
-- 事务
+- [事务](https://redis.io/commands/?group=transactions)
 ```
 MULTI                                               开启事务
 EXEC                                                执行所有事务块内的命令
 DISCARD                                             取消事务
 WATCH key [key ...]                                 监视 key，在事务执行之前 key 被其他命令改动，则事务中断
 UNWATCH                                             取消监视
-```
-- 配置
-```
-CONFIG GET parameter [ parameter ...]               获取配置参数
-CONFIG SET parameter value [ parameter value ...]   运行时配置
-CONFIG REWRITE                                      重写 redis.conf
-```
-- 服务器
-```
-INFO [section]                                      返回关于 Redis 服务器的各种信息和统计数值
-SAVE                                                同步保存到 .rdb 文件
-BGSAVE [SCHEDULE]                                   异步保存到 .rdb 文件
-DBSIZE                                              当前库 key 数量
-FLUSHALL [ASYNC|SYNC]                               冲洗所有数据库 key
-FLUSHDB [ASYNC|SYNC]                                冲洗当前库所有 key
 ```
 ---
 ## [计数器并发精准数量控制](https://www.imooc.com/learn/1067)
