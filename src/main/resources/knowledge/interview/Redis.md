@@ -481,11 +481,12 @@ ZCOUNT key min max                                  计算区间成员个数
 - [Stream](https://redis.io/commands/?group=stream)
 ```
 XADD key field value [field value ...]              添加
-XREAD id                                            获取，大于指定 ID
+XREAD id                                            读取，大于指定 ID
 XRANGE key start end [COUNT count]                  获取，匹配指定 ID 范围
 XDEL key id [id ...]                                删除
 XLEN key                                            长度
-XGROUP CREATE key groupname id                      创建消费者组
+XGROUP CREATE key groupname <id | $>                创建消费者组
+XGROUP DESTROY key groupname                        销毁消费者组
 XREADGROUP GROUP group consumer STREAMS key [key ...] id [id ...]
 ```
 - [Geospatial](https://redis.io/commands/?group=geo)

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import lombok.extern.slf4j.Slf4j;
+import lombok.var;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
@@ -13,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.stream.MapRecord;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
@@ -21,10 +24,12 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.data.redis.stream.StreamMessageListenerContainer;
 import springboot.messaging.redis.CnMessageSubscriber;
 import springboot.messaging.redis.RedisTopicEnum;
 import springboot.messaging.redis.Subscriber;
 
+import java.time.Duration;
 import java.util.List;
 
 /**
@@ -35,6 +40,7 @@ import java.util.List;
  * @author ljh
  * created on 2021/9/1 10:56R
  */
+@Slf4j
 @Configuration
 public class RedisConfig extends CachingConfigurerSupport {
 
@@ -102,5 +108,20 @@ public class RedisConfig extends CachingConfigurerSupport {
         MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(new CnMessageSubscriber(), "onMessage");
         messageListenerAdapter.setSerializer(jackson2JsonRedisSerializer());
         return messageListenerAdapter;
+    }
+
+    @Bean
+    public StreamMessageListenerContainer<String, MapRecord<String, String, String>> streamMessageListenerContainer(RedisConnectionFactory redisConnectionFactory) {
+        var options = StreamMessageListenerContainer.StreamMessageListenerContainerOptions
+                .builder()
+                .batchSize(100)
+                // .executor(Executors.newCachedThreadPool())
+                // .errorHandler(e -> log.error("stream messaging error: {}", e.getMessage(), e))
+                .pollTimeout(Duration.ofSeconds(2))
+                .build();
+
+        var container = StreamMessageListenerContainer.create(redisConnectionFactory, options);
+//        container.receive(Consumer.from("group-a", "consumer-a"), )
+        return container;
     }
 }

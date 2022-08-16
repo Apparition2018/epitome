@@ -31,7 +31,7 @@ public class RedisTemplateDemo extends Demo {
     private RedisTemplate<String, Object> redisTemplate;
 
     @Test
-    public void list() {
+    public void testList() {
         // 删除指定键
         redisTemplate.delete(LIST_KEY);
         ListOperations<String, Object> listOperations = redisTemplate.opsForList();
@@ -52,7 +52,7 @@ public class RedisTemplateDemo extends Demo {
     }
 
     @Test
-    public void hash() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    public void testHash() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         HashOperations<String, Object, Object> hashOperations = redisTemplate.opsForHash();
         Map<String, Object> map = PropertyUtils.describe(personList.get(0));
         String key = String.format(MAP_KEY, personList.get(0).getId());
@@ -74,7 +74,7 @@ public class RedisTemplateDemo extends Demo {
     }
 
     @Test
-    public void pipeline() {
+    public void testPipeline() {
         final String TASK1 = "normal";
         stopWatch.start(TASK1);
         for (int i = 1; i <= THOUSAND; i++) {
@@ -119,5 +119,10 @@ public class RedisTemplateDemo extends Demo {
         // 1270684900  082%  normal
         // 161263800  010%  pipeline RedisCallback
         // 108837100  007%  pipeline SessionCallback
+    }
+
+    @Test
+    public void testStream() {
+        
     }
 }
