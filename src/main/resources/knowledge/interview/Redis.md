@@ -68,8 +68,8 @@
 |:------------|:------------------------------------------------------------|
 | String      | 缓存、计数器（数量统计（阅读量）、数量控制（限流））、时效信息（验证码）、全局 ID、分布式 session、分布式锁 |
 | List        | 简单队列、定时排行榜、最近/最新                                            |
-| Set         | 唯一数据（关注、点赞）、集合操作（共同关注、商品筛选）、抽奖（SPOP）                        |
-| Sorted Set  | 实时排行榜                                                       |
+| Set         | 唯一数据（标签、关注、点赞）、集合操作（共同好友、商品筛选）、抽奖（SPOP）                     |
+| Sorted Set  | 排序（实时排行榜）                                                   |
 | Hash        | 对象缓存（购物车）、条件查询（Lua）                                         |
 | Bitmap      | 二值状态统计（活跃用户，在线用户）                                           |
 | HyperLogLog | 基数统计（UV（Unique Visitor） 统计）                                 |
@@ -365,7 +365,7 @@ slowlog-max-length <length>
         2. 压缩：大 str 压缩
         3. 拆分：大 str 拆分成小 str，`MGET` 获取；大集合拆分成小集合；大 hash 取模二次 hash；按日期拆分等
 >- [Redis开发运维实战 | 付磊](https://mp.weixin.qq.com/s/LqyjZ0ZinI_JmPlSt4oa6Q)
->- [小林coding](https://mp.weixin.qq.com/s/l3l9d9sLiWoUM381E9o-3Q)
+>- [小林coding | 大白斯基](https://mp.weixin.qq.com/s/l3l9d9sLiWoUM381E9o-3Q)
 >- [BiggerBoy | ITwalking](https://mp.weixin.qq.com/s/ruMfDiloAm9qev4C49bGYg)
 ---
 ## [CLI](https://redis.io/docs/manual/cli/)
@@ -480,7 +480,7 @@ ZCOUNT key min max                                  计算区间成员个数
 ```
 - [Stream](https://redis.io/commands/?group=stream)
 ```
-XADD                                                添加
+XADD key field value [field value ...]              添加
 XREAD id                                            获取，大于指定 ID
 XRANGE key start end [COUNT count]                  获取，匹配指定 ID 范围
 XDEL key id [id ...]                                删除
@@ -488,18 +488,29 @@ XLEN key                                            长度
 XGROUP CREATE key groupname id                      创建消费者组
 XREADGROUP GROUP group consumer STREAMS key [key ...] id [id ...]
 ```
-- [Bitmap](https://redis.io/commands/?group=bitmap)
+- [Geospatial](https://redis.io/commands/?group=geo)
 ```
-SETBIT key offset value                             设置
-GETBIT key offset                                   获取
-BITCOUNT key [ start end [ BYTE | BIT]]             计算 set bits 个数
-BITOP operation destkey key [key ...]               按位运算：AND、OR、XOR、NOT
+GEOADD key longitude latitude member                添加
+GEOPOS key member [member ...]                      获取
+GEODIST key member1 member2 [M | KM | FT | MI]      距离
+GEOHASH key member [member ...]                     GeoHash 字符串
+GEORADIUS key longitude latitude radius             经纬度半径内
+GEORADIUSBYMEMBER key member radius                 成员半径内
+GEOSEARCH key                                       经纬度/成语 半径或边框内
+GEOSEARCHSTORE destination source                   同上并存储到目标键
 ```
 - [HyperLogLog](https://redis.io/commands/?group=hyperloglog)
 ```
 PFADD key [element [element ...]]                   添加
 PFCOUNT key [key ...]                               基数估计值
 PFMERGE destkey sourcekey [sourcekey ...]           合并
+```
+- [Bitmap](https://redis.io/commands/?group=bitmap)
+```
+SETBIT key offset value                             设置
+GETBIT key offset                                   获取
+BITCOUNT key [ start end [ BYTE | BIT]]             计算 set bits 个数
+BITOP operation destkey key [key ...]               按位运算：AND、OR、XOR、NOT
 ```
 - [Pub/Sub](https://redis.io/commands/?group=pubsub)
 ```

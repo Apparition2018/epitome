@@ -37,7 +37,7 @@ import java.util.Map;
  */
 public class MapUtilsDemo extends Demo {
 
-    Map<Integer, Object> map = new HashMap<Integer, Object>(3) {
+    Map<Integer, Object> map = new HashMap<Integer, Object>(16) {
         private static final long serialVersionUID = -3034565247298670375L;
 
         {

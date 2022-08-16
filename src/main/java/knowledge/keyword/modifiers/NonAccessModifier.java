@@ -52,7 +52,7 @@ public class NonAccessModifier {
      * transient
      * 序列化的对象包含被 transient 修饰的实例变量时，java 虚拟机 (JVM) 跳过该变量
      */
-    public transient int limit = 55; // 不会持久化
+    public transient int limit = 55;
 
     /**
      * synchronized
@@ -84,5 +84,4 @@ public class NonAccessModifier {
 
         protected abstract void changeColor();
     }
-
 }

@@ -9,7 +9,6 @@ import springboot.messaging.redis.RedisTopicEnum;
 /**
  * Redis 发布订阅
  * <p>
- * Messaging with Redis：https://spring.io/guides/gs/messaging-redis/
  * 使用 Redis 的发布订阅功能：https://blog.didispace.com/spring-boot-learning-25-5-5/
  * Springboot+Redis（发布订阅模式）跨多服务器实战：https://www.cnblogs.com/ywbmaster/p/13595837.html
  *

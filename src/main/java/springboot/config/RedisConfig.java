@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
@@ -87,30 +88,19 @@ public class RedisConfig extends CachingConfigurerSupport {
         RedisMessageListenerContainer redisMessageListenerContainer = new RedisMessageListenerContainer();
         redisMessageListenerContainer.setConnectionFactory(redisConnectionFactory);
         redisMessageListenerContainer.setTopicSerializer(RedisSerializer.string());
-        if (subscriberList != null) {
-            subscriberList.forEach(subscriber -> {
-                // 第一种：MessageListenerAdapter(Object delegate)
-                MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(subscriber);
-                messageListenerAdapter.afterPropertiesSet();
-                messageListenerAdapter.setSerializer(jackson2JsonRedisSerializer());
-                redisMessageListenerContainer.addMessageListener(cnMessageListenerAdapter(), new PatternTopic(subscriber.getTopic()));
-            });
+        // 第一种：通过依赖注入所有实现了 MessageListener 的类（建议使用）
+        if (CollectionUtils.isNotEmpty(subscriberList)) {
+            subscriberList.forEach(subscriber -> redisMessageListenerContainer.addMessageListener(subscriber, new PatternTopic(subscriber.getTopic())));
         }
+        // 第二种：通过 new MessageListenerAdapter() 生成 MessageListener
         redisMessageListenerContainer.addMessageListener(cnMessageListenerAdapter(), new PatternTopic(RedisTopicEnum.TOPIC_CN_MESSAGE.getTopic()));
         return redisMessageListenerContainer;
     }
 
     @Bean
     public MessageListenerAdapter cnMessageListenerAdapter() {
-        // 第二种：MessageListenerAdapter(Object delegate, String defaultListenerMethod)
-        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(cnMessageSubscriber(), "onMessage");
-        messageListenerAdapter.setSerializer(RedisSerializer.string()); // 为什么不能设置 Jackson2JsonRedisSerializer ?
+        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(new CnMessageSubscriber(), "onMessage");
+        messageListenerAdapter.setSerializer(jackson2JsonRedisSerializer());
         return messageListenerAdapter;
     }
-
-    @Bean
-    public CnMessageSubscriber cnMessageSubscriber() {
-        return new CnMessageSubscriber();
-    }
-
 }

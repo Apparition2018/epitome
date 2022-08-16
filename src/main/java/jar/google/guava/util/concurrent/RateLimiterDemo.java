@@ -23,9 +23,8 @@ public class RateLimiterDemo {
     public void testSmoothBursty() throws InterruptedException {
         RateLimiter rateLimiter = RateLimiter.create(5);
         for (int i = 0; i < 5; i++) {
-            // double               acquire()
-            // 从 RateLimiter 获得一个许可，阻断直到请求可以被批准。如果有的话，返回睡眠时间。
-            // acquire() 相当于 acquire(1)
+            // double           acquire()           从 RateLimiter 获得一个许可，阻断直到请求可以被批准。返回睡眠时间
+            // boolean          tryAcquire()        从 RateLimiter 立即获得一个许可。返回是否成功
             System.out.println("get 1 tokens: " + rateLimiter.acquire());
         }
         for (int i = 0; i < 5; i++) {
