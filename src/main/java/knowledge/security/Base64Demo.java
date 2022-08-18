@@ -26,7 +26,7 @@ import java.util.stream.IntStream;
 public class Base64Demo extends Demo {
 
     /**
-     * Base64 编码在 JDK8 已经成为 Java 类库的标准。
+     * Base64 编码在 JDK1.8 已经成为 Java 类库的标准。
      * 而且效率都比 apache-commons-codec, sun.misc, Bouncy Castle 都要快
      * Java8 Base64 | 菜鸟教程：http://www.runoob.com/java/java8-base64.html
      */

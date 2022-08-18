@@ -77,7 +77,7 @@ public class JDKAnnotation extends Demo {
 
     /**
      * Contended
-     * JDK8 新增的注解，减少伪共享(False Sharing)的发生
+     * JDK1.8 新增的注解，减少伪共享(False Sharing)的发生
      * <p>
      * Java 经典面试题：伪共享问题及如何解决方案：https://www.zhihu.com/zvideo/1312762510748577792
      */

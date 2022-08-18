@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 /**
  * CompletableFuture
- * CompletableFuture 是 JDK8 加入的一个实现类，实现了 Future, CompletionStage
+ * CompletableFuture 是 JDK1.8 加入的一个实现类，实现了 Future, CompletionStage
  * API 极其丰富，配合流式编程，速度飞快，推荐使用
  * <p>
  * Future、FutureTask、CompletionService、CompletableFuture 解决多线程并发中归集问题的效率对比：https://blog.csdn.net/f641385712/article/details/83580886

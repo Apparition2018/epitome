@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  * 阿里编程规约：
  * volatile 解决多线程内存不可见问题。对于一写多读，是可以解决变量同步问题，但是如果多写，同样无法解决线程安全问题
  * 如果是 count++操作，使用如下类实现：AtomicInteger count = new AtomicInteger(); count.addAndGet(1);
- * 如果是 JDK8，推荐使用 LongAdder 对象，比 AtomicLong 性能更好（减少乐观锁的重试次数）
+ * 如果是 JDK1.8，推荐使用 LongAdder 对象，比 AtomicLong 性能更好（减少乐观锁的重试次数）
  * Volatile 不能保证数据同步：https://mouselearnjava.iteye.com/blog/1920154
  * <p>
  * 使用条件：

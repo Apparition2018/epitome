@@ -82,7 +82,7 @@ public class ThrowableDemo extends Demo {
     }
 
     /**
-     * try-with-resources 是 JDK7 中一个新的异常处理机制
+     * try-with-resources 是 JDK1.7 中一个新的异常处理机制
      * 在 JDK9，如果你已经有一个资源是 final 或等效于 final 变量,您可以在 try-with-resources 语句中使用该变量，而无需在 try-with-resources 语句中声明一个新变量
      * https://www.runoob.com/java/java9-try-with-resources-improvement.html
      */

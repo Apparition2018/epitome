@@ -62,7 +62,7 @@ public class StringDemo extends Demo {
      * intern()：https://zhuanlan.zhihu.com/p/357872204
      * 如果字符串常量池中已经包含一个等于此 String 对象的字符串，则返回代表池中这个字符串的 String 对象的引用；
      * 否则，会将此 String 对象包含的字符串添加到常量池中，并且返回此 String 对象的引用
-     * JDK8 JVM 内存模型：https://pic2.zhimg.com/80/v2-16be2d34799123632909e415d956e111_720w.jpg
+     * JDK1.8 JVM 内存模型：https://pic2.zhimg.com/80/v2-16be2d34799123632909e415d956e111_720w.jpg
      */
     @Test
     public void intern() {

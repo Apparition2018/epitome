@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 
 /**
  * Stream
- * Stream 支持元素流功能性操作的类，是 JDK8 的新特性。
+ * Stream 支持元素流功能性操作的类，是 JDK1.8 的新特性。
  * https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
  * <p>
  * Stream 应该只允许被中间或终端操作操作一次，若 Stream 被检测到重用，将抛出 IllegalStateException。

@@ -79,7 +79,7 @@ public class InnerClass {
                     p(x);
                     /*
                      * 在一个方法的局部内部类中想引用这个方法的其它局部变，需要将变量声明为 final
-                     * JDK8 重构了 JVM 内存分配，解决了这个问题，不再需要声明为 final
+                     * JDK1.8 重构了 JVM 内存分配，解决了这个问题，不再需要声明为 final
                      */
                     p(y);
                 }

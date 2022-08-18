@@ -11,8 +11,8 @@ package knowledge.oop.interface_;
  * 2.变量隐式 public static final
  * 3.方法隐式 public，抽象方法隐式 abstract
  * <p>
- * JDK8 接口改变：静态方法与默认方法：https://mp.weixin.qq.com/s/LEbhb5H2AMQOqvK_wTIVnA
- * JDK8 接口中方法可以不是抽象的：https://zhuanlan.zhihu.com/p/108274393
+ * JDK1.8 接口改变：静态方法与默认方法：https://mp.weixin.qq.com/s/LEbhb5H2AMQOqvK_wTIVnA
+ * JDK1.8 接口中方法可以不是抽象的：https://zhuanlan.zhihu.com/p/108274393
  *
  * @author ljh
  * created on 2020/8/8 19:39
