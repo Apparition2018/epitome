@@ -32,55 +32,66 @@
 ## Install
 ### JDK
 1. [linux安装jdk1.8(rpm方式)](https://www.cnblogs.com/myibm/p/9232744.html)
-2. [Centos以RPM方式安装java](ibear.me/2018/11/08/445)
-3. [Centos7配置JAVA_HOME](https://www.cnblogs.com/baojun/p/10832624.html)
+2. [Centos7配置JAVA_HOME](https://www.cnblogs.com/baojun/p/10832624.html)
 ```
-1. rpm -qa|grep XXX            yum list installed|grep XXX             查看已安装软件
-2. rpm -e XXX                  yum remove XXX                          删除软件
-3. wget XXX.rpm                yum search java|grep -i --color XXX     查看可安装软件
-4. rpm -ivh XXX                yum install XXX                         安装软件
+1. rpm -qa|grep XXX         yum list installed|grep XXX             查看已安装软件
+2. rpm -e XXX               yum remove XXX                          删除软件
+3. wget XXX.rpm             yum search java|grep -i --color XXX     搜索软件
+4. rpm -ivh XXX             yum install XXX                         安装软件
 5. 添加环境变量
     5.1 which java
     5.2 ls -l /usr/bin/java
     5.3 ls -l /etc/alternatives/java
     5.4 vim /etc/profile
-        - export JAVA_HOME=/usr/java/jdk1.8.0_281-amd64
-        - export CLASSPATH=.:$JAVE_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-        - export PATH=$PATH:$JAVA_HOME/bin
+        export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_281-amd64
+        export PATH=$PATH:$JAVA_HOME/bin
+        注：JDK1.5 之后不再需要配置 CLASSPATH
     5.5 source /etc/profile
 ```
 ### Tomcat
-- [在虚拟机下的tomcat，通过本地的浏览器进行访问](https://jingyan.baidu.com/article/d169e18621a4a1436611d8d3.html)
+- [CentOS 搭建多个 Tomcat](https://blog.csdn.net/qq_40065776/article/details/105652328)
+- [Tomcat 启动慢警告：Creation of SecureRandom instance for ...](https://zhuanlan.zhihu.com/p/107078362)
 ```
-1. wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz
-    - https://archive.apache.org/dist/tomcat/
-2. tar -zxvf xxx.tar.gz
-3. 添加环境变量
-    3.1 vim /etc/profile
-        - export CATALINA_HOME=/home/ljh/software/apache-tomcat-9.0.41
-    3.2 source /etc/profile
-4. 配置 UTF-8 字符集
-    4.1 vim ${CATALINA_HOME}/conf/server.xml
-    4.2 在 <connector port="8080" 最后添加 URIEncoding="UTF-8"/>
-5. 防火墙配置
-    5.1 vim /etc/sysconfig/iptables
-        -A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
-    5.2 service iptables restart
-6. ${CATALINA_HOME}/bin/startup.sh
+1. https://archive.apache.org/dist/tomcat/
+    wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz 
+    tar -zxvf xxx.tar.gz
+2. 添加环境变量
+    2.1 vim /etc/profile
+        export CATALINA_HOME=/usr/local/apache-tomcat-9.0.41
+    2.2 source /etc/profile
+    2.3 配置多个 Tomcat
+        2.3.1 vim /etc/profile
+              exprot CATALINA_HOME2=/user/local/apache-tomcat2-9.0.41
+        2.3.2 vim ${CATALINA_HOME2}/bin/catalina.sh，在开头添加 
+              export CATALINA_HOME=$CATALINA_HOME2
+              export CATALINA_BASE=$CATALINA_HOME2
+3. 配置 UTF-8 字符集
+    3.1 vim ${CATALINA_HOME}/conf/server.xml
+    3.2 在 <connector port="8080" protocol="HTTTP/1.1" 添加 URIEncoding="UTF-8"
+4. 防火墙配置
+    4.1 CentOS 6
+        4.1.1 vim /etc/sysconfig/iptables
+            -A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+            注：不要加在 REJECT 之后
+        4.1.2 service iptables restart
+    4.2 CentOS 7
+        4.2.1 firewall-cmd --zone=public --add-port=8080/tcp --permanent
+        4.2.2 systemctl restart firewalld.service
+5. ${CATALINA_HOME}/bin/startup.sh
    ${CATALINA_HOME}/bin/shutdown.sh
 ```
 ### Maven
 ```
-1. wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
-    - https://maven.apache.org/download.cgi
-2. tar -zxvf xxx.tar.gz
-3. 添加环境变量
-    3.1 vim /etc/profile
-        - export M2_HOME=/home/ljh/software/apache-maven-3.6.3
-        - export PATH=$PATH:$M2_HOME/bin
-    3.2 source /etc/profile
-4. mvn -version
-5. 常用命令
+1. https://maven.apache.org/download.cgi
+    wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+    tar -zxvf xxx.tar.gz
+2. 添加环境变量
+    2.1 vim /etc/profile
+        export M2_HOME=/home/ljh/software/apache-maven-3.6.3
+        export PATH=$PATH:$M2_HOME/bin
+    2.2 source /etc/profile
+3. mvn -version
+4. 常用命令
     mvn clean                                       清除
     mvn compile                                     编译
     mvn package                                     打包
@@ -92,10 +103,10 @@
 1. yum -y install ftp
    yum -y install vsftpd
 2. 创建虚拟用户
-   mkdir /ftpfile                                      创建 ftp 文件夹
-   useradd ftpuser -d /ftpfile -s /sbin/nologin        添加匿名用户 ftpuser
-   chown -R ftpuser.ftpuser /ftpfile                   修改 ftp 文件夹权限
-   passwd ftpuser                                      重置 ftpuser 用户密码为 123456
+    mkdir /ftpfile                                      创建 ftp 文件夹
+    useradd ftpuser -d /ftpfile -s /sbin/nologin        添加匿名用户 ftpuser
+    chown -R ftpuser.ftpuser /ftpfile                   修改 ftp 文件夹权限
+    passwd ftpuser                                      重置 ftpuser 用户密码为 123456
 3. 配置
     3.1 vim /etc/vsftpd/chroot_list                     添加 ftpuser
     3.2 vim /etc/selinux/config                         修改 SELINUX=disabled
@@ -103,7 +114,8 @@
     3.3 550 拒绝访问
         setsebool -P ftp_home_dir 1
         重启 linux，执行 reboot 命令
-    3.4 vim /etc/vsftpd/vsftpd.conf                    http://learning.happymmall.com/vsftpdconfig/vsftpd.conf.readme.html
+    3.4 vim /etc/vsftpd/vsftpd.conf
+        http://learning.happymmall.com/vsftpdconfig/vsftpd.conf.readme.html
 4. 防火墙配置
     4.1 vim /etc/sysconfig/iptables
         -A INPUT -p tcp --dport 61001:62000 -j ACCEPT
@@ -123,29 +135,29 @@
 - Nginx 是一款轻量级 web 服务器，也是一款反向代理服务器；特点有高稳定，高性能，资源占用少，功能丰富，模块化结构，支持热部署
 ```
 1. yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
-2. wget http://nginx.org/download/nginx-1.18.0.tar.gz
-    - http://nginx.org/en/download.html
-3. tar -zxvf xxx.tar.gz
-4. 安装
-    4.1 ./configure
+2. https://nginx.org/en/download.html
+    wget https://nginx.org/download/nginx-1.18.0.tar.gz
+    tar -zxvf xxx.tar.gz
+3. 安装
+    3.1 ./configure
         ①可指定安装目录，--prefix=/home/ljh/nginx
         ②默认安装位置，/usr/local/nginx
-    4.2 make
-    4.3 make install
-5. 防火墙设置
-    5.1 vim /etc/sysconfig/iptables
+    3.2 make
+    3.3 make install
+4. 防火墙设置
+    4.1 vim /etc/sysconfig/iptables
         -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-    5.2 service iptables restart
-6. 虚拟域名配置及测试验证
-    6.1 vim /usr/local/nginx/conf/nginx.conf
+    4.2 service iptables restart
+5. 虚拟域名配置及测试验证
+    5.1 vim /usr/local/nginx/conf/nginx.conf
         # 加载 vhost/ 目录下的配置文件（方便维护），在 Server 节点前
         include vhost/*.conf;
-    6.2 mkdir /usr/local/nginx/conf/vhost
-    6.3 创建域名转发配置文件
+    5.2 mkdir /usr/local/nginx/conf/vhost
+    5.3 创建域名转发配置文件
         www.ljh.com.conf
         image.ljh.com.conf
         ...
-7. 常用命令
+6. 常用命令
     ./sbin/nginx -t                         测试配置文件
     ./sbin/nginx                            启动
     ./sbin/nginx -s stop                    停止
@@ -155,7 +167,7 @@
     ./sbin/nginx -v                         版本
     ./sbin/nginx -V                         版本和配置选项
     ./sbin/nginx -h                         帮助
-8. 修改 hosts 文件，配置域名转发
+7. 修改 hosts 文件，配置域名转发
     C:\Windows\System32\dirvers\etc\hosts   Windows
     /etc/hosts                              Linux
         192.168.58.129 www.ljh.com
@@ -163,7 +175,24 @@
         192.168.58.129 s.ljh.com
 ```
 ### MySQL
-- [Access denied for user 'root'@'192.168.1.xxx' (using password: YES)](https://blog.csdn.net/qq_34885405/article/details/93041509)
+- [安装 mysql-5.7](https://blog.csdn.net/qq_46416934/article/details/123969443)
+```
+1. yum list installed|grep mysql            查看是否安装 mysql
+   yum list installed|grep mariadb          查看是否安装 mariadb
+   yum remove XXX                           删除软件
+   rm /etc/my.cnf
+2. https://downloads.mysql.com/archives/community/
+    Product Version     5.7.38
+    Operating System    Linux - Generic
+    OS Version          Linux - Generic(glibc 2.12)(x86,64-bit)
+    wget https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.38-linux-glibc2.12-x86_64.tar.gz
+    tar -zxvf xxx.tar.gz
+3. cat /etc/group|grep mysql                查看 mysql 组是否存在
+   cat /etc/passwd|grep mysql               查看 mysql 用户是否存在
+   groupadd mysql                           创建 mysql 组
+   useradd -g mysql mysql                   创建 mysql 用户在 mysql 组下
+   passwd mysql                             
+```
 ```
 1. yum list installed|grep mysql       查看已安装 mysql
 2. yum remove mysql-libs.x86_64        删除 msyql
@@ -207,55 +236,56 @@
 ### Git
 ```
 1. yum -y install zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
-2. wget https://github.com/git/git/archive/refs/tags/v2.31.0.tar.gz
-    - https://github.com/git/git/releases
-3. tar -zxvf xxx.tar.gz
-4. 安装
-    4.1 cd git-2.31.0
-    4.2 make prefix=/usr/local all
-    4.3 make prefix=/usr/local install
-    4.4 git --version
-5. 基础配置
-    5.1 配置用户名
+2. https://github.com/git/git/releases
+    wget https://github.com/git/git/archive/refs/tags/v2.31.0.tar.gz
+    tar -zxvf xxx.tar.gz
+3. 安装
+    3.1 cd git-2.31.0
+    3.2 make prefix=/usr/local all
+    3.3 make prefix=/usr/local install
+    3.4 git --version
+4. 基础配置
+    4.1 配置用户名
         git config --global user.name 'Apparition2018'
-    5.2 配置邮箱
+    4.2 配置邮箱
         git config --global user.email '88850180@163.com'
-    5.3 忽略 Windows/Unix 换行符转换
+    4.3 忽略 Windows/Unix 换行符转换
         git config --global core.autocrlf false
-    5.4 编码相关配置
+    4.4 编码相关配置
         git config --global gui.encoding utf-8
         git config --global core.quotepath off
-    5.5 关闭忽略大小写
+    4.5 关闭忽略大小写
         git config --global core.ignorecase flase
-6. 配置 ssh key pair
-    6.1 ssh-keygen -t rsa -C '88850180@163.com'
-    6.2 一路回车，生成 ssh key pair
-    6.3 ssh-add ~/.ssh/id_rsa
+5. 配置 ssh key pair
+    5.1 ssh-keygen -t rsa -C '88850180@163.com'
+    5.2 一路回车，生成 ssh key pair
+    5.3 ssh-add ~/.ssh/id_rsa
         如果出现 Could not open a connection to your authentication agent，先执行 eval `ssh-agent`
-    6.4 cat ~/.ssh/id_rsa.pub
-    6.5 登录码云设置 SSH 公钥
+    5.4 cat ~/.ssh/id_rsa.pub
+    5.5 登录码云设置 SSH 公钥
 ```
 ### Redis
 ```
 1. yum install gcc-c++
-2. wget https://github.com/redis/redis/archive/refs/tags/6.2.2.tar.gz
-3. tar -zxvf xxx.tar.gz
-4. 安装
+2. https://redis.io/download/
+    wget https://github.com/redis/redis/archive/refs/tags/6.2.2.tar.gz
+    tar -zxvf xxx.tar.gz
+3. 安装
+    3.1 cd redis-6.2.2
+    3.2 make
+    3.4 make PREFIX=/usr/local/redis install
+4. 配置
     4.1 cd redis-6.2.2
-    4.2 make
-    4.4 make PREFIX=/usr/local/redis install
-5. 配置
-    5.1 cd redis-6.2.2
-    5.2 cp redis.conf /usr/local/redis
-6. 防火墙
-    6.1 vim /etc/sysconfig/iptables
+    4.2 cp redis.conf /usr/local/redis
+5. 防火墙
+    5.1 vim /etc/sysconfig/iptables
         -A INPUT -m state --state NEW -m tcp -p tcp --dport 6379 -j ACCEPT
-    6.2 service iptables restart
-7. 启动
-    7.1 cd /usr/local/redis
-    7.2 vim redis.conf，修改 daemonize no 改成 daemonize yes，保存退出
-    7.3 ./bin/redis-server ./redis.conf
-8. 客户端操作：./bin/redis-cli
-9. 停止：./bin/redis-cli shutdown
+    5.2 service iptables restart
+6. 启动
+    6.1 cd /usr/local/redis
+    6.2 vim redis.conf，修改 daemonize no 改成 daemonize yes，保存退出
+    6.3 ./bin/redis-server ./redis.conf
+7. 客户端操作：./bin/redis-cli
+8. 停止：./bin/redis-cli shutdown
 ```
 ---

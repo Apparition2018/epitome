@@ -26,7 +26,7 @@ Bash 默认使用 Emacs 的快捷键，可以通过 set -o vi 让它使用 vim �
     Ctrl + K                                       删除光标右侧所有字符，并复制到剪贴板
     Ctrl + Y                                       粘帖剪贴板内容
     Alt + Y                                        轮询到删除环，并复制新的顶端文本
-    Alt + R                                        撤销本t行所有操作，并恢复到初始状态
+    Alt + R                                        撤销本行所有操作，并恢复到初始状态
     Ctrl + Shift + C       Ctrl + Insert           复制 (鼠标左键拖拽)
     Ctrl + Shift + V       Shift + Insert          粘贴 (鼠标中键)
     Alt + <                                        粘贴历史纪录中的第一行

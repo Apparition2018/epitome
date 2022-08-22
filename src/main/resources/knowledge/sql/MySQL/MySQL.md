@@ -9,7 +9,7 @@
 ---
 ## [安装](https://blog.csdn.net/weixin_42109012/article/details/94443391)
 - mysql 5.6 不需要执行 mysqld --initialize
-- **[my.ini](https://www.cnblogs.com/missmeng/p/13404228.html)**
+- [my.ini](https://www.cnblogs.com/missmeng/p/13404228.html)
 ```
 [mysqld]
 # 设置3306端口
@@ -37,6 +37,8 @@ table_definition_cache=400
 table_open_cache=64
 innodb_buffer_pool_chunk_size=64M
 innodb_buffer_pool_size=64M
+lower_case_table_names=1
+max_allowed_packet=16M
 [mysql]
 # 设置mysql客户端默认字符集
 default-character-set=utf8mb4
