@@ -34,19 +34,19 @@
 1. [linux安装jdk1.8(rpm方式)](https://www.cnblogs.com/myibm/p/9232744.html)
 2. [Centos7配置JAVA_HOME](https://www.cnblogs.com/baojun/p/10832624.html)
 ```
-1. rpm -qa|grep XXX         yum list installed|grep XXX             查看已安装软件
-2. rpm -e XXX               yum remove XXX                          删除软件
-3. wget XXX.rpm             yum search java|grep -i --color XXX     搜索软件
-4. rpm -ivh XXX             yum install XXX                         安装软件
-5. 添加环境变量
-    5.1 which java
-    5.2 ls -l /usr/bin/java
-    5.3 ls -l /etc/alternatives/java
-    5.4 vim /etc/profile
+1. rpm -qa|grep XXX         yum list installed|grep XXX
+   rpm -e XXX               yum remove XXX
+   wget XXX.rpm             yum search java|grep -i --color XXX
+   rpm -ivh XXX             yum install XXX
+2. 添加环境变量
+    2.1 which java
+    2.2 ls -l /usr/bin/java
+    2.3 ls -l /etc/alternatives/java
+    2.4 vim /etc/profile
         export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_281-amd64
         export PATH=$PATH:$JAVA_HOME/bin
         注：JDK1.5 之后不再需要配置 CLASSPATH
-    5.5 source /etc/profile
+    2.5 source /etc/profile
 ```
 ### Tomcat
 - [CentOS 搭建多个 Tomcat](https://blog.csdn.net/qq_40065776/article/details/105652328)
@@ -68,15 +68,16 @@
 3. 配置 UTF-8 字符集
     3.1 vim ${CATALINA_HOME}/conf/server.xml
     3.2 在 <connector port="8080" protocol="HTTTP/1.1" 添加 URIEncoding="UTF-8"
-4. 防火墙配置
+4. 防火墙
     4.1 CentOS 6
         4.1.1 vim /etc/sysconfig/iptables
             -A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
             注：不要加在 REJECT 之后
         4.1.2 service iptables restart
     4.2 CentOS 7
-        4.2.1 firewall-cmd --zone=public --add-port=8080/tcp --permanent
-        4.2.2 systemctl restart firewalld.service
+        4.2.1 firewall-cmd --zone=public --list-ports
+        4.2.2 firewall-cmd --zone=public --add-port=8080/tcp --permanent
+        4.2.3 systemctl restart firewalld.service
 5. ${CATALINA_HOME}/bin/startup.sh
    ${CATALINA_HOME}/bin/shutdown.sh
 ```
@@ -116,7 +117,7 @@
         重启 linux，执行 reboot 命令
     3.4 vim /etc/vsftpd/vsftpd.conf
         http://learning.happymmall.com/vsftpdconfig/vsftpd.conf.readme.html
-4. 防火墙配置
+4. 防火墙
     4.1 vim /etc/sysconfig/iptables
         -A INPUT -p tcp --dport 61001:62000 -j ACCEPT
         -A OUTPUT -p tcp --sport 61001:62000 -j ACCEPT
@@ -131,43 +132,43 @@
 6. 登录服务器：ftp 192.168.58.129
 7. FTP 软件：FileZilla
 ```
-### Nginx
-- Nginx 是一款轻量级 web 服务器，也是一款反向代理服务器；特点有高稳定，高性能，资源占用少，功能丰富，模块化结构，支持热部署
+### [Nginx](https://cnblogs.com/bluestorm/p/4574688.html)
 ```
 1. yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
 2. https://nginx.org/en/download.html
-    wget https://nginx.org/download/nginx-1.18.0.tar.gz
+    wget https://nginx.org/download/nginx-1.22.0.tar.gz
     tar -zxvf xxx.tar.gz
-3. 安装
-    3.1 ./configure
-        ①可指定安装目录，--prefix=/home/ljh/nginx
-        ②默认安装位置，/usr/local/nginx
-    3.2 make
-    3.3 make install
-4. 防火墙设置
-    4.1 vim /etc/sysconfig/iptables
-        -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-    4.2 service iptables restart
-5. 虚拟域名配置及测试验证
-    5.1 vim /usr/local/nginx/conf/nginx.conf
+3. 创建用户组和用户
+    3.1 groupadd nginx
+    3.2 useradd -g nginx -s /sbin/nologin nginx
+    3.3 passwd nginx
+4. 编译和安装
+    4.1 ./configure --group=nginx --user=nginx --with-pcre \
+        --with-http_ssl_module --with-http_stub_status_module
+        3.1.1 --prefix=PATH，指定安装目录，默认 /usr/local/nginx
+    4.2 make
+    4.3 make install
+5. 防火墙：开放 80 端口
+6. 虚拟域名配置及测试验证
+    6.1 vim /usr/local/nginx/conf/nginx.conf
         # 加载 vhost/ 目录下的配置文件（方便维护），在 Server 节点前
         include vhost/*.conf;
-    5.2 mkdir /usr/local/nginx/conf/vhost
-    5.3 创建域名转发配置文件
+    6.2 mkdir /usr/local/nginx/conf/vhost
+    6.3 创建域名转发配置文件
         www.ljh.com.conf
         image.ljh.com.conf
         ...
-6. 常用命令
+7. 常用命令
     ./sbin/nginx -t                         测试配置文件
     ./sbin/nginx                            启动
     ./sbin/nginx -s stop                    停止
-    ./sbin/ngxin -s quit                    停止
+    ./sbin/ngxin -s quit                    退出
     ./sbin/ngxin -s reload                  重启
     kill -HUP PID                           平滑重启（进程号查询：ps -ef|grep nginx）
     ./sbin/nginx -v                         版本
     ./sbin/nginx -V                         版本和配置选项
     ./sbin/nginx -h                         帮助
-7. 修改 hosts 文件，配置域名转发
+8. 修改 hosts 文件，配置域名转发
     C:\Windows\System32\dirvers\etc\hosts   Windows
     /etc/hosts                              Linux
         192.168.58.129 www.ljh.com
@@ -175,63 +176,47 @@
         192.168.58.129 s.ljh.com
 ```
 ### MySQL
-- [安装 mysql-5.7](https://blog.csdn.net/qq_46416934/article/details/123969443)
+- [安装 mysql-5.7](https://cnblogs.com/qcq0703/p/11186055.html)
 ```
-1. yum list installed|grep mysql            查看是否安装 mysql
-   yum list installed|grep mariadb          查看是否安装 mariadb
-   yum remove XXX                           删除软件
-   rm /etc/my.cnf
+1. yum list installed|grep mysql
+   yum list installed|grep mariadb
+   yum remove XXX
 2. https://downloads.mysql.com/archives/community/
     Product Version     5.7.38
     Operating System    Linux - Generic
     OS Version          Linux - Generic(glibc 2.12)(x86,64-bit)
     wget https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.38-linux-glibc2.12-x86_64.tar.gz
     tar -zxvf xxx.tar.gz
-3. cat /etc/group|grep mysql                查看 mysql 组是否存在
-   cat /etc/passwd|grep mysql               查看 mysql 用户是否存在
-   groupadd mysql                           创建 mysql 组
-   useradd -g mysql mysql                   创建 mysql 用户在 mysql 组下
-   passwd mysql                             
-```
-```
-1. yum list installed|grep mysql       查看已安装 mysql
-2. yum remove mysql-libs.x86_64        删除 msyql
-3. yum -y install mysql-server         安装 mysql （yum 只能安装 mysql-5.1.73）
-4. 字符集配置
-    4.1 vim /etc/my.cnf
-    4.2 [mysqld] 节点下添加
-        default-character-set=utf8  [5.1]
-        character-set-server=utf8   [5.5+]
-5. 自启动配置
-    5.1 chkconfig mysqld on
-    5.2 chkconfig --list mysqld （如果2-5位启用on状态即为OK）
-6. 防火墙设置
-    6.1 vim /etc/sysconfig/iptables
-        -A INPUT -m tcp -p tcp --dport 3306 -j ACCEPT
-    6.2 service iptables restart
-7. MySQL 配置
-    7.0 mysql -u root
-    7.1 查看目前 mysql 用户
-        select user, host, password from mysql.user;
-    7.2 修改 root 密码
-        set password for root@localhost=password('yourpassword');
-    7.3 删除匿名用户
-        select user, host from mysql.user where user='';
-        delete from mysql.user where user='';
-        flush privileges;
-    7.4 新增 mysql 用户
-        insert into mysql.user(Host, User, Password) values("localhost", "yourusername", passowrd("yourpassword"));
-        flush privileges;
-    7.5 创建数据库
-        create database `mmall` default character set utf8 collate utf8_general_ci;
-    7.6 查看权限（\G 格式化查询）
-        select * from mysql.user \G;
-    7.7 授权
-        grant all privileges on mmall.* to yourusername@localhost identified by 'yourpassword' with grant option;
-        grant all privileges on mmall.* to yourusername@'%' identified by 'yourpassword';
-        show grants for yourusername@localhost;
-8. 常用命令
-    service mysqld start|stop|restart
+    mv mysql-5.7... /usr/local/                             移动
+    mv mysql-5.7 mysql-5.7                                  重命名
+3. 添加环境变量
+    3.1 vim /etc/profile
+        export MYSQL_HOME=/usr/local/mysql-5.7
+        export PATH=$PATH:$MYSQL_HOME/bin
+    3.2 source /etc/profile
+4. 创建用户组和用户
+    4.1 cat /etc/group|grep mysql                                       查看 mysql 组是否存在
+    4.2 cat /etc/passwd|grep mysql                                      查看 mysql 用户是否存在
+    4.3 groupadd mysql                                                  创建 mysql 组
+    4.4 useradd -g mysql -s /sbin/nologin mysql                         创建 mysql 用户在 mysql 组下
+    4.5 passwd mysql                                                    更改 mysql 用户密码
+5. 初始化
+    5.1 ${MYSQL_HOME}/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/
+    5.2 记住日志最后一行的密码
+    5.3 chown -R mysql:mysql ${MYSQL_HOME}/mysql-5.7/data/              更改 data 目录所属用户和用户组
+6. /etc/my.cnf
+7. 增加 mysql 服务
+    7.1 cp ${MYSQL_HOME}/support-files/mysql.server /etc/init.d/mysql   复制服务脚本到 /etc/init.d，使得可以使用 service mysql start | stop | restart | status 命令
+    7.2 chmod +x /etc/init.d/mysql                                      增加可执行权力
+    7.3 chkconfig --add mysql                                           增加 mysql 服务
+    7.4 chkconfig --list mysql                                          列出 mysql 服务情况
+    7.5 service mysql start
+8. 防火墙：开放 3306 端口
+9. MySQL 配置
+    9.1 mysql -uroot -p                                                 登录连接
+    9.2 alter user root@localhsot identified by 'root';                 修改密码
+    9.3 grant all privileges on *.* to root@'%' identified by 'root';
+    9.4 flush privileges;
 ```
 ### Git
 ```
@@ -277,10 +262,7 @@
 4. 配置
     4.1 cd redis-6.2.2
     4.2 cp redis.conf /usr/local/redis
-5. 防火墙
-    5.1 vim /etc/sysconfig/iptables
-        -A INPUT -m state --state NEW -m tcp -p tcp --dport 6379 -j ACCEPT
-    5.2 service iptables restart
+5. 防火墙：开放 6379 端口
 6. 启动
     6.1 cd /usr/local/redis
     6.2 vim redis.conf，修改 daemonize no 改成 daemonize yes，保存退出

@@ -42,10 +42,9 @@
 ---
 ## 文件系统 (Filesystem)
     chgrp                           change group                        更改文件组所有权
-        -R                          recursive                           递归处理
+    chown                           change ownership                    更改文件所有权
     chmod                           change modes                        更改文件模式/属性/权限
         -R                                                              递归处理
-        a+x                         all+execute                         所有人可执行
         u                           user                                文件所有者
         g                           group                               文件所有者所在组
         o                           others                              所有其他用户
@@ -53,9 +52,9 @@
         +                                                               增加权限
         -                                                               去除权限
         =
-        r                                                               可读
-        w                                                               可写
-        x                                                               可执行
+        r                           read                                可读
+        w                           write                               可写
+        x                           execute                             可执行
         0                           ---             000                 无
         1                           --x             001                 可执行
         2                           -w-             010                 可写
@@ -64,7 +63,6 @@
         5                           r-x             101                 可读+可执行
         6                           rw-             110                 可读+可写
         7                           rwx             110                 可读+可写+可执行
-    chown                           change ownership                    更改文件所有权
     pwd                             print work directory                打印工作目录
     cd                              change directory                    更改工作目录
     ls                              list                                列出目录内容
@@ -78,6 +76,7 @@
         /etc/group                                                      用户组
         /etc/hostname                                                   主机名
         /etc/hosts                                                      IP 和主机名映射
+        /etc/init.d/                                                    /etc/rc.d/init.d 软链接
         /etc/localtime                                                  本地时间
         /etc/passwd                                                     用户，https://www.linuxprobe.com/explain-etc-passwd.html
         /etc/profile                                                    环境变量
@@ -89,9 +88,9 @@
     cp                              copy                                复制文件
     cmp                             compare                             对比两个文件
     rm                              remove                              删除文件或目录
+        -r                          recursive                           递归删除
         -f                          force                               强制删除
         -i                          interactive                         交互式删除
-        -r                          recursive                           递归删除
     rmdir                           remove directory                    删除目录
     dd                              disk dump                           转换和复制文件
     df                              disk free                           显示可用磁盘空间
@@ -110,7 +109,8 @@
     date                            date '+%Y-%m-%d %H:%M:%S'           显示或设定系统的日期与时间
     crontab                                                             定时任务
     export                                                              设置或显示环境变量
-    fc                                                                  
+    fc
+    man                             manual                              显示文档                                                                  
 ---
 ## 文件管理
     nl                                                                  显示文件内容，添加行号
@@ -239,14 +239,18 @@
     uptime                                                              显示系统运行时间或系统的平均负载
     clear                                                               清除屏幕
     useradd                                                             添加用户
+        -d                                                              指定用户登录目录 HOME_DIR，默认 BASE_DIR + LOGIN name
+        -s                                                              指定用户使用的 shell
+        -g                                                              指定用户所属用户组
+        -M                                                              不创建 HOME_DIR
     usermod                                                             修改用户
     userdel                                                             删除用户
         -r                                                              删除用户登入目录以及目录中所有文件
         -f                                                              强制删除用户
-    passwd                          password                            更改密码
+    passwd                          password                            更改用户密码
     chkconfig                                                           检查和设置系统各种服务
-        --add                                                           增加指定的系统服务
-        --list                                                          列出服务的情况3
+        --add                                                           增加系统服务
+        --list                                                          列出服务的情况
         --level                                                         指定在哪一指定等级中开启或关闭
     eval                            evaluate                            读取一连串的参数，然后再依参数本身的特性来执行
     rpm                             redhat package manager              红帽子打包管理器
@@ -281,7 +285,6 @@
 ---
 ## 其它
     xargs                           extended arguments                  给命令传递参数的一个过滤器，也是组合多个命令的一个工具
-    man                             manual                              手册
     printf                          print formatted
     echo                                                                输出字符串
 ---

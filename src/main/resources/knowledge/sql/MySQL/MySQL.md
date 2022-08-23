@@ -29,15 +29,19 @@ collation-server = utf8mb4_bin
 init_connect='SET NAMES utf8mb4'
 # 创建新表时将使用的默认存储引擎
 default-storage-engine=INNODB
-# 默认使用“mysql_native_password”插件认证
+# 默认使用mysql_native_password插件认证
 default_authentication_plugin=mysql_native_password
+# 表名大小写是否敏感
+# 0：Unix 和 Linux 默认，大小写敏感
+# 1：Windows 默认，存储转为小写，大小写不敏感
+# 2：OS X 默认，大小写不敏感
+lower_case_table_names=1
 ##
 performance_schema=off
 table_definition_cache=400
 table_open_cache=64
 innodb_buffer_pool_chunk_size=64M
 innodb_buffer_pool_size=64M
-lower_case_table_names=1
 max_allowed_packet=16M
 [mysql]
 # 设置mysql客户端默认字符集
