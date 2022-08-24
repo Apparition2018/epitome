@@ -17,12 +17,21 @@ import java.util.List;
 @Mapper
 public interface PrizeMapper {
 
-    @Select({
-            "select * from prize",
-            "where draw_id = #{drawId} and total_qty - win_qty > 0"
-    })
-    List<Prize> listByDrawId(@Param("drawId") Integer drawId);
+    /**
+     * 根据 drawId 查找奖品概率列表
+     *
+     * @param drawId 抽奖活动ID
+     * @return 奖品概率列表
+     */
+    @Select({"select id, pr from prize where draw_id = #{drawId}"})
+    List<Prize> listIdAndPrByDrawId(@Param("drawId") Integer drawId);
 
+    /**
+     * 中将数+1
+     *
+     * @param id 奖品ID
+     * @return 影响条数
+     */
     @Update({
             "update prize set win_qty = win_qty + 1",
             "where id = #{id} and total_qty > win_qty"

@@ -26,7 +26,8 @@
 
 // TODO-LJH springboot springmvc
 // TODO-LJH file-server，把文件上传到 gitee
-// TODO-LJH spring-boot-jdbc
+// TODO-LJH spring-boot-jdbc：https://modb.pro/db/333834
+// TODO-LJH spring-boot-common
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;

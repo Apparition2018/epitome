@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 import springboot.domain.master.Demo;
 
 /**
- * User1Mapper
+ * DemoMapper
  *
  * @author ljh
  * created on 2022/2/18 11:37

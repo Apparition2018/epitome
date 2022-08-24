@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80023
+ Source Server Version : 80029
  Source Host           : localhost:3306
  Source Schema         : epitome
 
  Target Server Type    : MySQL
- Target Server Version : 80023
+ Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 17/04/2022 01:43:50
+ Date: 24/08/2022 13:51:30
 */
 
 SET NAMES utf8mb4;
@@ -96,6 +96,26 @@ CREATE TABLE `generator`  (
 -- ----------------------------
 -- Records of generator
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for prize
+-- ----------------------------
+DROP TABLE IF EXISTS `prize`;
+CREATE TABLE `prize`  (
+  `id` int(0) NOT NULL COMMENT '主键',
+  `drawId` int(0) NOT NULL COMMENT '抽奖活动ID',
+  `pr` int(0) NOT NULL COMMENT '概率（1表示万分之一）',
+  `totalQty` int(0) NOT NULL COMMENT '总数',
+  `winQty` int(0) NOT NULL COMMENT '中奖数',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '奖品表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of prize
+-- ----------------------------
+INSERT INTO `prize` VALUES (1, 1, 1, 1, 0);
+INSERT INTO `prize` VALUES (2, 1, 100, 10, 0);
+INSERT INTO `prize` VALUES (3, 1, 1000, 100, 0);
 
 -- ----------------------------
 -- Table structure for sales
@@ -1136,5 +1156,20 @@ INSERT INTO `score` VALUES (6, '张三', '英语', NULL);
 INSERT INTO `score` VALUES (7, '李四', '语文', 76);
 INSERT INTO `score` VALUES (8, '李四', '数学', 90);
 INSERT INTO `score` VALUES (9, '赵六', '体育', 100);
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `score` int(0) NOT NULL COMMENT '积分',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES (1, 10000);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -13,6 +13,13 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface UserMapper {
 
+    /**
+     * 扣减积分
+     *
+     * @param id    用户ID
+     * @param score 积分
+     * @return 影响条数
+     */
     @Update({
             "update user set score = score - #{score}",
             "where id = #{id} and score >= #{score}"

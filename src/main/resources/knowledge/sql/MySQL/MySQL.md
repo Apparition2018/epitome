@@ -15,9 +15,9 @@
 # 设置3306端口
 port=3306
 # 自定义设置mysql的安装目录，即解压mysql压缩包的目录
-basedir=F:\mysql-8.0.16-winx64
+basedir=/usr/local/mysql-5.7
 # 自定义设置mysql数据库的数据存放目录
-datadir=F:\mysql-8.0.16-winx64\data
+datadir=/usr/local/mysql-5.7/data
 # 允许最大连接数
 max_connections=200
 # 允许连接失败的次数，这是为了防止有人从该主机试图攻击数据库系统
@@ -43,9 +43,11 @@ table_open_cache=64
 innodb_buffer_pool_chunk_size=64M
 innodb_buffer_pool_size=64M
 max_allowed_packet=16M
+
 [mysql]
 # 设置mysql客户端默认字符集
 default-character-set=utf8mb4
+
 [client]
 # 设置mysql客户端连接服务端时默认使用的端口和默认字符集
 port=3306
@@ -366,6 +368,71 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
 | 说明    | 只能读当前事务之前更改                 | 能读最新的更改                                        |
 | 是否会幻读 | 不可能                         | 可能                                             |
 | 隔离级别  | RC、RR                       |                                                |
+---
+## [复制](https://dev.mysql.com/doc/refman/8.0/en/replication.html)
+1. master my.cnf
+```
+# https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html
+# 开启binlog，binlog文件名称
+log-bin=/usr/local/mysql-5.7/bin_log/log-bin
+# binlog记录格式：MIXED、STATEMENT、ROW
+binlog_format=ROW
+# format为ROW时生效，信息日志时间写入binlog
+binlog_rows_query_log_events=ON
+# binlon自动删除天数
+expire_logs_days=30
+# binlong单个日志文件最大大小，最大和默认为1G
+max_binlog_size=1024M
+
+# https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html
+server-id=1
+# relay log文件名称
+relay_log=/usr/local/mysql-5.7/relay_log/relay-bin
+# 忽略不需要同步的数据库
+replicate-ignore-db=information_schema
+replicate-ignore-db=mysql
+replicate-ignore-db=performance_schema
+replicate-ignore-db=sys
+
+# https://dev.mysql.com/doc/refman/8.0/en/replication-options-gtids.html
+# 开启gtid
+enforce_gtid_consistency=ON
+gtid_mode=ON
+```
+2. slave my.cnf
+```
+log-bin=/usr/local/mysql-5.7/bin_log/log-bin2
+service-id=2
+relay_log=/usr/local/mysql-5.7/relay_log/relay-bin2
+```
+3. 连接 master
+```mysql
+-- 创建 repl 账号，允许从 192.168.0.141 访问，密码为 repl
+grant replication slave on *.* to repl@192.168.0.141 identified by 'repl';
+flush privileges;
+# 重置 master，初次配置时可以使用
+reset master;
+# 查看 master 信息
+show master status;
+```
+4. 连接 slave
+```mysql
+# 停止 slave
+stop slave;
+# 将 192.168.0.141:3306 设为 master
+# master_user, master_password，使用 master 创建的 repl 账号
+# master_log_file, master_log_pos 是在 master 使用 show master status; 语句查看到的 File 和 Position
+change master to master_host='192.168.0.141', master_port=3306, master_user='repl',
+    master_password='repl', master_log_file='log-bin.000001', master_log_pos=154;
+# 开启 slave
+start slave;
+# 查看 slave 状态，Slave_IO_Running 和 Slave_SQL_Running 都为 Yes 时，表示成功
+# 如果不成功，可查看 data 目录下 *。err 日志文件
+show slave status;
+# 重置 slave，slave 异常时可以使用
+reset slave all;
+```
+>- [MySQL 双主配置](https://www.jb51.net/article/252651.htm)
 ---
 ## 其它
 1. [delimiter](https://www.jb51.net/article/146693.htm)：分隔符

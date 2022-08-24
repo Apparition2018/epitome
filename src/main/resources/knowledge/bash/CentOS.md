@@ -77,8 +77,9 @@
     4.2 CentOS 7
         4.2.1 firewall-cmd --zone=public --list-ports
         4.2.2 firewall-cmd --zone=public --add-port=8080/tcp --permanent
-        4.2.3 systemctl restart firewalld.service
-5. ${CATALINA_HOME}/bin/startup.sh
+        4.2.3 firewall-cmd --zone=public --remove-port=8080/tcp --permanent
+        4.2.4 systemctl restart firewalld
+5. ${CATALINA_HOME}/sbin/startup.sh
    ${CATALINA_HOME}/bin/shutdown.sh
 ```
 ### Maven
@@ -200,11 +201,11 @@
     4.3 groupadd mysql                                                  创建 mysql 组
     4.4 useradd -g mysql -s /sbin/nologin mysql                         创建 mysql 用户在 mysql 组下
     4.5 passwd mysql                                                    更改 mysql 用户密码
-5. 初始化
+5. /etc/my.cnf
+6. 初始化
     5.1 ${MYSQL_HOME}/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/
     5.2 记住日志最后一行的密码
     5.3 chown -R mysql:mysql ${MYSQL_HOME}/mysql-5.7/data/              更改 data 目录所属用户和用户组
-6. /etc/my.cnf
 7. 增加 mysql 服务
     7.1 cp ${MYSQL_HOME}/support-files/mysql.server /etc/init.d/mysql   复制服务脚本到 /etc/init.d，使得可以使用 service mysql start | stop | restart | status 命令
     7.2 chmod +x /etc/init.d/mysql                                      增加可执行权力
