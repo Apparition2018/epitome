@@ -7,15 +7,6 @@
 3. [A哥学 Jackson](https://blog.csdn.net/f641385712/category_10175312.html)
 4. [Jackson 使用教程](https://blog.csdn.net/weixin_44747933/article/details/108301626)
 ---
-## [核心模块](https://github.com/FasterXML/jackson#core-modules)
-1. jackson-core: low-level streaming API
-   - [JsonFactory](https://github.com/FasterXML/jackson-core/wiki/JsonFactory-Features): 配置和构建 JsonGenerator 和 JsonParser；线程安全的
-   - [JsonGenerator](https://github.com/FasterXML/jackson-core/wiki/JsonGenerator-Features): 生成 Json  
-     <img alt="" src="https://img-blog.csdnimg.cn/20200716143504786.png#pic_center" width="450">
-   - [JsonParser](https://github.com/FasterXML/jackson-core/wiki/JsonParser-Features): 读取 Json
-2. jackson-annotations: 包含标准 Jackson 注解
-3. jackson-databind: 实现数据绑定和对象序列化（high-level 所在模块，如：ObjectMapper，JsonNode）
----
 ## 基本概念
 1. Low-Level API: 细节需要自己处理，灵活性高，使用相对复制
 2. High-Level API: 屏蔽细节处理，使用相对简单
@@ -28,8 +19,17 @@
 1. 写：100%遵顼规范
 2. 读：最大程度兼容
 ---
+## [核心模块](https://github.com/FasterXML/jackson#core-modules)
+1. [jackson-core](https://github.com/FasterXML/jackson-core): 定义 low-level streaming API
+2. [jackson-annotations](https://github.com/FasterXML/jackson-annotations): 包含标准 Jackson 注释
+3. [jackson-databind](https://github.com/FasterXML/jackson-databind): 实现数据绑定和对象序列化（ObjectMapper, JsonNode ...）
+---
 ## 三种使用方法
 1. Streaming API
+    - [JsonFactory](https://github.com/FasterXML/jackson-core/wiki/JsonFactory-Features): 配置和构建 JsonGenerator 和 JsonParser；线程安全的
+    - [JsonGenerator](https://github.com/FasterXML/jackson-core/wiki/JsonGenerator-Features): 生成 Json  
+      <img alt="" src="https://img-blog.csdnimg.cn/20200716143504786.png#pic_center" width="450">
+    - [JsonParser](https://github.com/FasterXML/jackson-core/wiki/JsonParser-Features): 读取 Json
 2. [JsonMapper (ObjectMapper)](./ObjectMapperDemo.java)
 3. [Tree Model (JsonNode)](./JsonNodeDemo.java)
 ---

@@ -1,7 +1,7 @@
 package springboot.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
@@ -31,13 +31,19 @@ import java.util.Objects;
 @Tag(name = "jQuery-pjax")
 public class WeatherController {
 
+    private final ObjectMapper objectMapper;
+
+    public WeatherController(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
     @GetMapping(value = "/{city}")
     @Operation(summary = "获取城市天气")
-    public String index(@PathVariable String city, HttpServletRequest req, Model model) {
+    public String city(@PathVariable String city, HttpServletRequest request, Model model) {
         // pjax 请求
-        if (req.getHeader("X-PJAX") != null) {
+        if (request.getHeader("X-PJAX") != null) {
             log.info("pjax request");
-            return String.format("forward:/weather/pjax/%s", city);
+            return String.format("forward:/weather/json/%s", city);
         }
         // 普通请求
         log.info("normal request");
@@ -46,28 +52,26 @@ public class WeatherController {
         return "weather";
     }
 
-    @GetMapping(value = "/pjax/{city}")
+    @GetMapping(value = "/json/{city}")
     @ResponseBody
     @Operation(summary = "获取城市天气(pjax)")
-    public String testPjax(@PathVariable String city) {
-        return getCityWeather(city);
+    public String cityJson(@PathVariable String city) {
+        return this.getCityWeather(city);
     }
 
     private static final String WEATHER_API = "http://wthrcdn.etouch.cn/weather_mini?city=%s";
     private static final String TEXTAREA = "<textarea>%s</textarea>";
-    private static final String ERROR_MSG = "网络异常";
 
     /**
      * 获取城市天气
      */
-    private static String getCityWeather(String city) {
+    private String getCityWeather(String city) {
         Request request = new Request.Builder().url(String.format(WEATHER_API, city)).build();
         try (Response response = new OkHttpClient().newCall(request).execute()) {
-            JSONObject jsonObject = JSON.parseObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data");
-            return String.format(TEXTAREA, JSON.toJSONString(jsonObject, true));
+            JsonNode jsonNode = objectMapper.readTree(Objects.requireNonNull(response.body()).string()).get("data");
+            return String.format(TEXTAREA, jsonNode.toPrettyString());
         } catch (IOException e) {
-            log.error(e.getMessage());
-            return ERROR_MSG;
+            return e.getMessage();
         }
     }
 }

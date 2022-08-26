@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -19,8 +20,8 @@ import jar.fasterxml.jackson.entity.Person;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.SimpleTimeZone;
 
@@ -48,23 +49,31 @@ public class ObjectMapperDemo extends Demo {
     @Test
     public void testJsonMapper() throws JsonProcessingException {
         JsonMapper jsonMapper = JsonMapper.builder().build();
+        jsonMapper.setInjectableValues(new InjectableValues.Std().addValue("age", 0));
 
         // String   writeValueAsString(Object value)
         // 写成字符串形式（最常用）
         String json = jsonMapper.writeValueAsString(new Person("ljh", 31, new Date()));
-        System.out.println("========== Obj → String ==========\n" + json);
+        p("========== Obj → String ==========\n" + json);
         // T        readValue(String content, Class<T> valueType)
         // 读为指定 Class 类型的对象
         Person person = jsonMapper.readValue(json, Person.class);
         System.out.println("========== String → Obj ==========\n" + person + "\n");
 
-        json = jsonMapper.writeValueAsString(Arrays.asList(1, 2, 3));
-        System.out.println("========== List<Object> → String ==========\n" + json);
+        json = jsonMapper.writeValueAsString(list);
+        System.out.println("========== List → String ==========\n" + json);
         // T        readValue(String content, TypeReference<T> valueTypeRef)
         // 读为指定 TypeReference 类型的对象，一般用于泛型集合/Map的反序列化
         List<Long> list = jsonMapper.readValue(json, new TypeReference<List<Long>>() {
         });
-        System.out.println("========== String → List<Object> ==========\n" + list);
+        System.out.println("========== String → List ==========\n" + list);
+
+        json = jsonMapper.writeValueAsString(map);
+        System.out.println("========== Map → String ==========\n" + json);
+        // T        readValue(String content, JavaType valueType)
+        // 读为指定 JavaType 类型的对象，一般用于泛型集合/Map的反序列化
+        map = jsonMapper.readValue(json, jsonMapper.getTypeFactory().constructMapType(HashMap.class, Integer.class, String.class));
+        System.out.println("========== String → Map ==========\n" + map);
     }
 
     @Test

@@ -15,7 +15,7 @@
 ---
 ## [Basic commands](https://docs.microsoft.com/zh-cn/windows/wsl/basic-commands)
 ```
-wel --help
+wsl --help
 wsl --install --distribution|-d <Distribution>              按名称安装分发
 wsl --list|-l                                               列出分发
         --online|-o                                         列出可安装分发

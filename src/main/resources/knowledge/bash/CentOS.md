@@ -146,7 +146,7 @@
 4. 编译和安装
     4.1 ./configure --group=nginx --user=nginx --with-pcre \
         --with-http_ssl_module --with-http_stub_status_module
-        3.1.1 --prefix=PATH，指定安装目录，默认 /usr/local/nginx
+        4.1.1 --prefix=PATH，指定安装目录，默认 /usr/local/nginx
     4.2 make
     4.3 make install
 5. 防火墙：开放 80 端口
@@ -188,8 +188,8 @@
     OS Version          Linux - Generic(glibc 2.12)(x86,64-bit)
     wget https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.38-linux-glibc2.12-x86_64.tar.gz
     tar -zxvf xxx.tar.gz
-    mv mysql-5.7... /usr/local/                             移动
-    mv mysql-5.7 mysql-5.7                                  重命名
+    mv mysql-5.7... mysql-5.7                               重命名
+    mv mysql-5.7 /usr/local/                                移动
 3. 添加环境变量
     3.1 vim /etc/profile
         export MYSQL_HOME=/usr/local/mysql-5.7
@@ -200,24 +200,25 @@
     4.2 cat /etc/passwd|grep mysql                                      查看 mysql 用户是否存在
     4.3 groupadd mysql                                                  创建 mysql 组
     4.4 useradd -g mysql -s /sbin/nologin mysql                         创建 mysql 用户在 mysql 组下
-    4.5 passwd mysql                                                    更改 mysql 用户密码
+    4.5 passwd mysql                           `                        更改 mysql 用户密码
 5. /etc/my.cnf
 6. 初始化
     5.1 ${MYSQL_HOME}/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/
     5.2 记住日志最后一行的密码
-    5.3 chown -R mysql:mysql ${MYSQL_HOME}/mysql-5.7/data/              更改 data 目录所属用户和用户组
-7. 增加 mysql 服务
-    7.1 cp ${MYSQL_HOME}/support-files/mysql.server /etc/init.d/mysql   复制服务脚本到 /etc/init.d，使得可以使用 service mysql start | stop | restart | status 命令
-    7.2 chmod +x /etc/init.d/mysql                                      增加可执行权力
-    7.3 chkconfig --add mysql                                           增加 mysql 服务
+    5.3 chown -R mysql:mysql ${MYSQL_HOME}/mysql-5.7/data/              更改 data 目录所属用户组和用户
+7. 添加 mysql 服务
+    7.1 cp ${MYSQL_HOME}/support-files/mysql.server /etc/init.d/mysql   复制服务脚本到 /etc/init.d
+                                                                        使得 Centos 6 可以使用 service mysql start | stop | restart | status 命令
+                                                                        使得 Centos 7 可以使用 systemctl start | stop | restart | status | enable | disable mysql 命令
+    7.2 chmod +x /etc/init.d/mysql                                      增加可执行权限
+    7.3 chkconfig --add mysql                                           添加 mysql 服务
     7.4 chkconfig --list mysql                                          列出 mysql 服务情况
-    7.5 service mysql start
+    7.5 service mysql start | systemctl start mysql
 8. 防火墙：开放 3306 端口
-9. MySQL 配置
-    9.1 mysql -uroot -p                                                 登录连接
-    9.2 alter user root@localhsot identified by 'root';                 修改密码
-    9.3 grant all privileges on *.* to root@'%' identified by 'root';
-    9.4 flush privileges;
+9. 连接 mysql：mysql -uroot -p 
+    9.1 alter user root@localhsot identified by 'root';                 修改密码
+    9.2 grant all privileges on *.* to root@'%' identified by 'root';   授权
+    9.3 flush privileges;
 ```
 ### Git
 ```

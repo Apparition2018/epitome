@@ -32,11 +32,6 @@ import java.util.concurrent.TimeUnit;
 @Tag(name = "Draw")
 public class DrawController {
 
-    private final UserMapper userMapper;
-    private final PrizeMapper prizeMapper;
-    private final ObjectMapper objectMapper;
-    private final RedisTemplate<String, Object> redisTemplate;
-
     /**
      * 抽奖活动 KEY
      */
@@ -45,6 +40,11 @@ public class DrawController {
      * 抽奖奖品无库存 KEY
      */
     private static final String DRAW_PRIZE_NO_STOCK_KEY = "draw:prize:noStock:%d";
+
+    private final UserMapper userMapper;
+    private final PrizeMapper prizeMapper;
+    private final ObjectMapper objectMapper;
+    private final RedisTemplate<String, Object> redisTemplate;
 
     public DrawController(UserMapper userMapper, PrizeMapper prizeMapper, ObjectMapper objectMapper, RedisTemplate<String, Object> redisTemplate) {
         this.userMapper = userMapper;

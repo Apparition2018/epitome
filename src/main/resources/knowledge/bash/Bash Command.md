@@ -136,6 +136,7 @@
     grep PATTERN [FILE]             global regular expression print     查找文件里符合条件的字符串
         -i                                                              不区分大小写
         -n                                                              显示行号
+        -v                                                              不包含匹配文本的所有行
         --color                                                         红色字体
     egrep                           extended grep                       查找文件里符合条件的字符串 (grep -e)
     fgrep                           fixed grep                          查找文件里符合条件的字符串 (grep -f)

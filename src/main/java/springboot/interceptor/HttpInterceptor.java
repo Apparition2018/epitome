@@ -30,7 +30,10 @@ public class HttpInterceptor implements HandlerInterceptor {
 
     private static final ThreadLocal<StopWatch> stopWatchThreadLocal = new ThreadLocal<>();
 
-    // 请求处理之前
+    /**
+     * 调用时间：Controller 方法处理之前
+     * 执行顺序：按照 Interceptor 声明顺序执行
+     */
     @Override
     public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) {
         StopWatch stopWatch = new StopWatch();
@@ -39,14 +42,21 @@ public class HttpInterceptor implements HandlerInterceptor {
         return true;
     }
 
-    // 请求正常处理完之后
+    /**
+     * 调用前提：preHandle 返回 true
+     * 调用时间：Controller 方法处理完之后，DispatcherServlet 进行视图渲染之前
+     * 执行顺序：按照 Interceptor 声明倒序执行
+     */
     @Override
     public void postHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler, ModelAndView modelAndView) {
         stopWatchThreadLocal.get().stop();
         stopWatchThreadLocal.get().start();
     }
 
-    // 请求处理完之后
+    /**
+     * 调用前提：preHandle 返回 true
+     * 调用时间：DispatcherServlet 进行视图渲染之后
+     */
     @Override
     public void afterCompletion(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler, Exception ex) {
         StopWatch stopWatch = stopWatchThreadLocal.get();

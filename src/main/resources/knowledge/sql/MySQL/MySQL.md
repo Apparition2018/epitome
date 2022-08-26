@@ -370,7 +370,8 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
 | 隔离级别  | RC、RR                       |                                                |
 ---
 ## [复制](https://dev.mysql.com/doc/refman/8.0/en/replication.html)
-1. master my.cnf
+1. 创建 bin_log/ 和 relay_log/ 文件夹，并更改其所属用户组和用户为 mysql
+2. master my.cnf
 ```
 # https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html
 # 开启binlog，binlog文件名称
@@ -399,37 +400,37 @@ replicate-ignore-db=sys
 enforce_gtid_consistency=ON
 gtid_mode=ON
 ```
-2. slave my.cnf
+3. slave my.cnf
 ```
 log-bin=/usr/local/mysql-5.7/bin_log/log-bin2
 service-id=2
 relay_log=/usr/local/mysql-5.7/relay_log/relay-bin2
 ```
-3. 连接 master
+4. 连接 master
 ```mysql
 -- 创建 repl 账号，允许从 192.168.0.141 访问，密码为 repl
 grant replication slave on *.* to repl@192.168.0.141 identified by 'repl';
 flush privileges;
-# 重置 master，初次配置时可以使用
+-- 重置 master，初次配置时可以使用
 reset master;
-# 查看 master 信息
+-- 查看 master 信息
 show master status;
 ```
-4. 连接 slave
+5. 连接 slave
 ```mysql
-# 停止 slave
+-- 停止 slave
 stop slave;
-# 将 192.168.0.141:3306 设为 master
-# master_user, master_password，使用 master 创建的 repl 账号
-# master_log_file, master_log_pos 是在 master 使用 show master status; 语句查看到的 File 和 Position
+-- 将 192.168.0.141:3306 设为 master
+-- master_user, master_password，使用 master 创建的 repl 账号
+-- master_log_file, master_log_pos 是在 master 使用 show master status 语句查看到的 File 和 Position
 change master to master_host='192.168.0.141', master_port=3306, master_user='repl',
     master_password='repl', master_log_file='log-bin.000001', master_log_pos=154;
-# 开启 slave
+-- 开启 slave
 start slave;
-# 查看 slave 状态，Slave_IO_Running 和 Slave_SQL_Running 都为 Yes 时，表示成功
-# 如果不成功，可查看 data 目录下 *。err 日志文件
+-- 查看 slave 状态，Slave_IO_Running 和 Slave_SQL_Running 都为 Yes 时，表示成功
+-- 如果不成功，可查看 data 目录下 *。err 日志文件
 show slave status;
-# 重置 slave，slave 异常时可以使用
+-- 重置 slave，slave 异常时可以使用
 reset slave all;
 ```
 >- [MySQL 双主配置](https://www.jb51.net/article/252651.htm)
