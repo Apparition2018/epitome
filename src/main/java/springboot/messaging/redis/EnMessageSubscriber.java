@@ -16,7 +16,7 @@ public class EnMessageSubscriber implements Subscriber {
 
     @Override
     public String getTopic() {
-        return RedisTopicEnum.TOPIC_EN_MESSAGE.getTopic();
+        return RedisTopicEnum.EN_MESSAGE_TOPIC.getTopic();
     }
 
     @Override

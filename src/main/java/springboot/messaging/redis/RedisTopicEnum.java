@@ -11,8 +11,8 @@ import lombok.Getter;
 @Getter
 public enum RedisTopicEnum {
 
-    TOPIC_EN_MESSAGE("topic:en_message", "英文消息 Topic"),
-    TOPIC_CN_MESSAGE("topic:cn_message", "中文消息 Topic");
+    EN_MESSAGE_TOPIC("topic:en_message", "英文消息 Topic"),
+    CN_MESSAGE_TOPIC("topic:cn_message", "中文消息 Topic");
 
     private final String topic;
     private final String desc;
