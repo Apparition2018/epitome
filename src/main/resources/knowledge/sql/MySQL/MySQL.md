@@ -328,12 +328,12 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
     1. 意向共享锁 (Intention Shared Locks, IS)：`SELECT ... FOR SHARE`
     2. 意向排它锁 (Intention Exclusive Locks, IX)：[SELECT ... FOR UPDATE](https://www.cnblogs.com/xiao-lei/p/12598552.html)
         
-    |     | X   | IX  | S   | IS  |
-    |:----|:----|:----|:----|:----|
-    | X   | 冲突  | 冲突  | 冲突  | 冲突  |
-    | IX  | 冲突  | 兼容  | 冲突  | 兼容  |
-    | S   | 冲突  | 冲突  | 兼容  | 兼容  |
-    | IS  | 冲突  | 兼容  | 兼容  | 兼容  |
+|     | X   | IX  | S   | IS  |
+|:----|:----|:----|:----|:----|
+| X   | 冲突  | 冲突  | 冲突  | 冲突  |
+| IX  | 冲突  | 兼容  | 冲突  | 兼容  |
+| S   | 冲突  | 冲突  | 兼容  | 兼容  |
+| IS  | 冲突  | 兼容  | 兼容  | 兼容  |
 3. 记录锁 (Record Locks)：`SELECT c1 FROM t WHERE c1 = 10 FOR UPDATE`
     - 总是锁定索引记录，阻止其它事务插入、更新或删除  
 4. [间隙锁](https://www.jianshu.com/p/32904ee07e56) (Gap Locks)：`SELECT c1 FROM t WHERE c1 BETWEEN 10 and 20 FOR UPDATE`  

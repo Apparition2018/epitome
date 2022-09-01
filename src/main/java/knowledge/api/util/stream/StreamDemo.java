@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -148,6 +149,8 @@ public class StreamDemo extends Demo {
 
         // collect()
         List<Integer> list = Stream.of(9, 7, 5, 3, 1).collect(Collectors.toList());
+        // collect(Supplier<R> supplier, BiConsumer<R, ? super T> accumulator, BiConsumer<R, R> combiner)
+        p(Stream.of(1, 2, 3).map(i -> Arrays.asList(i, i * 2, i * 3)).collect(ArrayList::new, ArrayList::addAll, ArrayList::addAll));
     }
 
     /**

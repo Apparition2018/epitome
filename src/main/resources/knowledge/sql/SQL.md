@@ -91,11 +91,11 @@
 | Phantom Read      | 幻读    | 一个事务两次读取的结果不一致，有新的数据 insert        |
 ---
 ## 事务隔离级别
-| 隔离级别             | 默认                 | 脏读  | 不可重复读 | 幻读  |
-|:-----------------|:-------------------|:----|:------|:----|
-| Read Uncommitted |                    | 可能  | 可能    | 可能  |
-| Read Committed   | Oracle, SQL Server | 不可能 | 可能    | 可能  |
-| Repeatable Read  | MySQL              | 不可能 | 不可能   | 可能  |
-| Serializable     |                    | 不可能 | 不可能   | 不可能 |
+| 隔离级别             | 脏读  | 不可重复读 | 幻读  | Oracle | MySQL | SQL Server |
+|:-----------------|:---:|:-----:|:---:|:------:|:-----:|:----------:|
+| Read Uncommitted | 可能  |  可能   | 可能  |   ×    |   √   |     √      |
+| Read Committed   | 不可能 |  可能   | 可能  |   ⚪    |   √   |     ⚪      |
+| Repeatable Read  | 不可能 |  不可能  | 可能  |   ×    |   ⚪   |     √      |
+| Serializable     | 不可能 |  不可能  | 不可能 |   √    |   √   |     √      |
 - [MySQL RR 如何解决幻读](https://www.zhihu.com/question/372905832)
 ---
