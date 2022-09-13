@@ -43,9 +43,8 @@ public class FunctionDemo extends Demo {
             BiFunction<Integer, Integer, Integer> plus = Integer::sum;
             Function<Integer, Integer> plusSelf = i -> i + i;
             BiFunction<Integer, Integer, Integer> multi = (x, y) -> x * y;
-            p(multi.andThen(plusSelf).apply(1, 2));                 // (1 * 2) + (1 * 2) = 4 
-            p(plus.apply(multi.apply(1 ,2), multi.apply(1 ,2)));    // (1 * 2) + (1 * 2) = 4
-            
+            p(multi.andThen(plusSelf).apply(1, 2));                 // (1 * 2) + (1 * 2) = 4
+            p(plus.apply(multi.apply(1, 2), multi.apply(1, 2)));    // (1 * 2) + (1 * 2) = 4
         }
     }
 
@@ -59,8 +58,8 @@ public class FunctionDemo extends Demo {
             BinaryOperator<Integer> plus = Integer::sum;
             Function<Integer, Integer> plusSelf = i -> i + i;
             BinaryOperator<Integer> multi = (x, y) -> x * y;
-            p(multi.andThen(plusSelf).apply(1, 2));                 // (1 * 2) + (1 * 2) = 4 
-            p(plus.apply(multi.apply(1 ,2), multi.apply(1 ,2)));    // (1 * 2) + (1 * 2) = 4
+            p(multi.andThen(plusSelf).apply(1, 2));                 // (1 * 2) + (1 * 2) = 4
+            p(plus.apply(multi.apply(1, 2), multi.apply(1, 2)));    // (1 * 2) + (1 * 2) = 4
         }
     }
 
@@ -74,18 +73,18 @@ public class FunctionDemo extends Demo {
 
         public static void main(String[] args) {
             p("\n输出所有数据:");
-            eval(list, n -> true);          // 1 2 3 4 5 6 7 8 9 
+            eval(list, n -> true);          // 1 2 3 4 5 6 7 8 9
 
             p("\n输出所有偶数:");
-            eval(list, n -> n % 2 == 0);    // 2 4 6 8 
+            eval(list, n -> n % 2 == 0);    // 2 4 6 8
 
             p("\n输出大于 3 的数字:");
-            eval(list, n -> n > 3);         // 4 5 6 7 8 9 
+            eval(list, n -> n > 3);         // 4 5 6 7 8 9
 
             p("\n输出大于 3 且为偶数的数字:");
             Predicate<Integer> predicate1 = n -> n % 2 == 0;
             Predicate<Integer> predicate2 = n -> n > 3;
-            eval(list, predicate1.and(predicate2)); // 4 6 8 
+            eval(list, predicate1.and(predicate2)); // 4 6 8
         }
 
         private static void eval(List<Integer> list, Predicate<Integer> predicate) {
@@ -105,13 +104,9 @@ public class FunctionDemo extends Demo {
     static class ConsumerDemo {
 
         public static void main(String[] args) {
-            Consumer<String> consumer1 = o -> {
-                System.out.println("length: " + o.length());
-            };
+            Consumer<String> consumer1 = o -> System.out.println("length: " + o.length());
 
-            Consumer<String> consumer2 = o -> {
-                System.out.println("isStartsWithA: " + o.startsWith(o));
-            };
+            Consumer<String> consumer2 = o -> System.out.println("isStartsWithA: " + o.startsWith("A"));
 
             consumer1.andThen(consumer2).accept("ABC");
             // length: 3

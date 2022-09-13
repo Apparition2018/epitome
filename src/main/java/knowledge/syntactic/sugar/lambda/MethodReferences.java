@@ -1,4 +1,4 @@
-package knowledge.types.basic.reference;
+package knowledge.syntactic.sugar.lambda;
 
 import java.util.Collections;
 import java.util.List;
@@ -6,7 +6,9 @@ import java.util.function.Supplier;
 
 /**
  * 方法引用 (Method References)
- * JDK1.8 新特性，通过方法的名字来指向一个方法
+ * JDK1.8 新特性，一种特殊的 lambda 表达式，通过方法的名字来指向一个方法
+ * https://www.baeldung.com/java-method-references
+ * https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
  *
  * @author ljh
  * created on 2019/8/8 19:39
@@ -14,19 +16,18 @@ import java.util.function.Supplier;
 public class MethodReferences {
 
     public static void main(String[] args) {
-
         // 构造器引用：Class::new 或 Class<T>::new
-        final Bus car = Bus.create(Bus::new);
-        final List<Bus> cars = Collections.singletonList(car);
+        Bus car = Bus.create(Bus::new);
+        List<Bus> cars = Collections.singletonList(car);
 
         // 静态方法引用：Class::static_method
         cars.forEach(Bus::collide);
 
-        // 特定类的任意对象的方法引用：Class::method
+        // 类的任意对象的实例方法引用：Class::method
         cars.forEach(Bus::repair);
 
-        // 特定对象的方法引用：instance::method
-        final Bus police = Bus.create(Bus::new);
+        // 类的特定对象的实例方法引用：instance::method
+        Bus police = Bus.create(Bus::new);
         cars.forEach(police::follow);
     }
 
@@ -45,9 +46,7 @@ public class MethodReferences {
         }
 
         public void repair() {
-            System.out.println("Repaired " + this.toString());
+            System.out.println("Repaired " + this);
         }
-
     }
-
 }

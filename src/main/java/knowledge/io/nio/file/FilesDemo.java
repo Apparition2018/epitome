@@ -15,9 +15,6 @@ import java.util.stream.Stream;
  * Files
  * 该类包含操作文件、目录或其他类型文件的静态方法
  * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html
- * <p>
- * Path 和 Files：https://www.cnblogs.com/ixenos/p/5851976.html
- * Path 和 Files：https://www.cnblogs.com/digdeep/p/4478734.html
  *
  * @author ljh
  * created on 2020/9/26 2:51
@@ -183,5 +180,4 @@ public class FilesDemo extends Demo {
             }
         });
     }
-
 }

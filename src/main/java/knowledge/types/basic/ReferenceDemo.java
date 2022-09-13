@@ -1,4 +1,4 @@
-package knowledge.types.basic.reference;
+package knowledge.types.basic;
 
 import l.demo.Demo;
 import l.demo.Person;
@@ -65,7 +65,7 @@ public class ReferenceDemo extends Demo {
             // 添加缓存对象
             public synchronized void add(T obj) {
                 // 构建软引用
-                Reference<T> reference = new SoftReference<T>(obj, referenceQueue);
+                Reference<T> reference = new SoftReference<>(obj, referenceQueue);
                 // 加入列表中
                 list.add(reference);
             }
@@ -158,6 +158,5 @@ public class ReferenceDemo extends Demo {
                 System.exit(1);
             }
         }
-
     }
 }
