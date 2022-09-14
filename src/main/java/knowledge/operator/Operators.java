@@ -63,7 +63,7 @@ public class Operators {
     @Test
     public void ternary() {
         Serializable serializable = true ? "abc" : 1;
-        System.err.println(serializable);
+        p(serializable);            // abc
 
         String s1 = String.valueOf(true ? 90 : 100);
         String s2 = String.valueOf(true ? 90 : 100.0);

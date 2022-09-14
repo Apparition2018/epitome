@@ -6,6 +6,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.util.StopWatch;
 
 import java.io.File;
+import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -105,53 +106,58 @@ public class Demo {
         countDownLatch = new CountDownLatch(n);
     }
 
-    /**
-     * 简写 System.out.println()
-     */
     public static void p() {
         System.out.println();
     }
 
     public static <T> void p(T obj) {
+        p(System.out, obj);
+    }
+
+    public static <T> void pe(T obj) {
+        p(System.err, obj);
+    }
+
+    public static <T> void p(PrintStream printStream, T obj) {
         if (null == obj) return;
         // 数组
         if (obj.getClass().isArray()) {
             if (obj instanceof long[]) {
-                System.out.println(Arrays.toString((long[]) obj));
+                printStream.println(Arrays.toString((long[]) obj));
                 return;
             }
             if (obj instanceof int[]) {
-                System.out.println(Arrays.toString((int[]) obj));
+                printStream.println(Arrays.toString((int[]) obj));
                 return;
             }
             if (obj instanceof short[]) {
-                System.out.println(Arrays.toString((short[]) obj));
+                printStream.println(Arrays.toString((short[]) obj));
                 return;
             }
             if (obj instanceof char[]) {
-                System.out.println(Arrays.toString((char[]) obj));
+                printStream.println(Arrays.toString((char[]) obj));
                 return;
             }
             if (obj instanceof byte[]) {
-                System.out.println(Arrays.toString((byte[]) obj));
+                printStream.println(Arrays.toString((byte[]) obj));
                 return;
             }
             if (obj instanceof boolean[]) {
-                System.out.println(Arrays.toString((boolean[]) obj));
+                printStream.println(Arrays.toString((boolean[]) obj));
                 return;
             }
             if (obj instanceof float[]) {
-                System.out.println(Arrays.toString((float[]) obj));
+                printStream.println(Arrays.toString((float[]) obj));
                 return;
             }
             if (obj instanceof double[]) {
-                System.out.println(Arrays.toString((double[]) obj));
+                printStream.println(Arrays.toString((double[]) obj));
                 return;
             }
-            System.out.println(Arrays.toString((Object[]) obj));
+            printStream.println(Arrays.toString((Object[]) obj));
             return;
         }
-        System.out.println(obj);
+        printStream.println(obj);
     }
 
     /**

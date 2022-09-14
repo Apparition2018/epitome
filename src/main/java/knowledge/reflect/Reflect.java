@@ -62,6 +62,7 @@ public class Reflect {
         Class<?> clazz3 = cat.getClass();
 
         //********** 2.动态创建对象 **********//
+        // newInstance() 会调用无参构造器，没有无参构造器会抛出异常
         cat = (Cat) clazz.newInstance();
 
 
@@ -119,5 +120,4 @@ public class Reflect {
             p(parameter.getName());
         }
     }
-
 }

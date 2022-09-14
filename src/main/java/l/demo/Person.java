@@ -149,6 +149,11 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
             super(id, name);
         }
 
+        public Student(Integer id, String name, Date birth) {
+            super(id, name);
+            this.birth = birth;
+        }
+
         public Student(Integer id, String no, String name, Integer age, Float score) {
             super.id = id;
             this.no = no;

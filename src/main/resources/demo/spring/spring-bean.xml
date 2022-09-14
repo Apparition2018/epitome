@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:c="http://www.springframework.org/schema/c"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="
@@ -11,39 +12,63 @@
 
     <context:annotation-config/>
 
-    <!-- 无参构造创建 -->
+    <!-- 实例化 Bean -->
+    <!-- 1 无参构造方法 -->
     <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
-    <!-- 工厂静态方法 -->
+    <!-- 2 工厂方法 -->
+    <!-- 2.1 静态工厂方法 -->
     <bean id="calendar" class="java.util.Calendar" factory-method="getInstance"/>
-    <!-- 工厂实例方法 -->
+    <!-- 2.2 实例工厂方法 -->
     <bean id="time" factory-bean="gregorianCalendar" factory-method="getTime"/>
 
-    <!-- set 注入 -->
+    <!-- 依赖注入 -->
+    <!-- 1 构造器注入 -->
     <bean id="date" class="java.util.Date"/>
     <bean id="student" class="l.demo.Person.Student" scope="prototype">
-        <property name="birth" ref="date"/>
+        <!-- index, name, type 任意组合能表示哪一个参数即可 -->
+        <constructor-arg index="0" name="id" type="java.lang.Integer" value="1"/>
+        <constructor-arg index="1">
+            <value><![CDATA[<张三>]]></value>
+        </constructor-arg>
+        <!-- ref：注入引用 -->
+        <constructor-arg index="2" ref="date"/>
     </bean>
-
-    <!-- 构造器注入 -->
-    <bean id="student2" class="l.demo.Person.Student">
-        <constructor-arg index="0" value="1"/>
-        <constructor-arg index="1" value="张三"/>
-    </bean>
-
-    <!-- p 命名空间注入 -->
-    <bean id="student3" class="l.demo.Person.Student" p:id="1" p:name="张三"/>
-
-    <!-- 注入集合 -->
-    <bean id="person" class="l.demo.Person">
-        <property name="otherInfo">
-            <list>
-                <value>父亲</value>
-                <value>医生</value>
-            </list>
+    <!-- 1.1 c 命名空间注入：快捷的构造方法注入 -->
+    <bean id="student2" class="l.demo.Person.Student" c:id="1" c:name="张三" c:birth-ref="date"/>
+    <!-- 2 setter 注入 -->
+    <bean id="student3" class="l.demo.Person.Student">
+        <!-- value：注入值 -->
+        <property name="id" value="1"/>
+        <property name="name" value="张三"/>
+        <property name="birth">
+            <!-- 内部 Bean -->
+            <bean class="java.util.Date"/>
         </property>
     </bean>
+    <!-- 2.1 p 命名空间注入：快捷的 setter 注入 -->
+    <bean id="student4" class="l.demo.Person.Student" p:id="1" p:name="张三" p:birth-ref="date"/>
 
-    <!-- 注入 Properties -->
+    <!-- autowire: 自动装配 -->
+    <bean id="student5" class="l.demo.Person.Student" autowire="byName"/>
+
+    <!-- parent: 继承 Bean 定义，不会继承 autowire, abstract 等属性 -->
+    <!-- depends-on: 显式地强制一个或多个 Bean 在某个 Bean 初始化之前初始化 -->
+    <bean id="student6" parent="student4" p:id="2" p:name="李四" depends-on="student4"/>
+
+    <!-- 注入集合：<list/>, <set/>, <map/>, <props/> -->
+    <util:list id="otherInfo">
+        <value>父亲</value>
+        <value>医生</value>
+    </util:list>
+    <bean id="person" class="l.demo.Person">
+        <property name="otherInfo" ref="otherInfo"/>
+<!--        <property name="otherInfo">-->
+<!--            <list>-->
+<!--                <value>父亲</value>-->
+<!--                <value>医生</value>-->
+<!--            </list>-->
+<!--        </property>-->
+    </bean>
     <util:properties location="classpath:jdbc.properties" id="jdbc"/>
     <bean id="bean" class="spring.bean.Bean" init-method="initMethod" destroy-method="destroyMethod">
         <property name="properties" ref="jdbc"/>
@@ -51,8 +76,10 @@
     <bean id="beanPostProcessor" class="spring.api.beans.MyBeanPostProcessor"/>
     <bean id="beanFactoryPostProcessor" class="spring.api.beans.MyBeanFactoryPostProcessor"/>
 
+    <context:component-scan base-package="spring.bean"/>
     <!-- Lazy -->
     <bean id="otherBean" class="spring.bean.OtherBean" lazy-init="true">
+        <!-- SpEL -->
         <property name="score" value="#{bean.score}"/>
     </bean>
 </beans>

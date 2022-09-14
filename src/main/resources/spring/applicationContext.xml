@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!-- 扫描指定包下使用了依赖注入注解的类型 -->
+    <!-- 组件扫描 -->
     <context:component-scan base-package="knowledge.reflect.proxy"/>
 
     <!-- 激活 ${...} 占位符的替换：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#xsd-schemas-context-pphc -->

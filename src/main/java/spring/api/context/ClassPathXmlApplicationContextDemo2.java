@@ -17,7 +17,7 @@ import static l.demo.Demo.p;
  * @author Arsenal
  * created on 2020/11/27 1:43
  */
-public class ClassPathXmlAcDemo2 {
+public class ClassPathXmlApplicationContextDemo2 {
 
     ClassPathXmlApplicationContext applicationContext;
     ScoreDao scoreDao;
@@ -60,5 +60,4 @@ public class ClassPathXmlAcDemo2 {
     public void testDelete() {
         scoreDao.delete(9);
     }
-
 }

@@ -45,10 +45,10 @@ public class RedisTemplateDemo extends Demo {
         listOperations.remove(LIST_KEY, 2, 3);
         // 设置过期时间
         redisTemplate.expire(LIST_KEY, 1, TimeUnit.MINUTES);
-        System.err.println("长度：" + listOperations.size(LIST_KEY));
-        System.err.println("获取指定范围值：" + listOperations.range(LIST_KEY, 0, -1));
-        System.err.println("获取指定索引的值：" + listOperations.index(LIST_KEY, 2));
-        System.err.println("获取指定值在列表第一次出现的索引：" + listOperations.indexOf(LIST_KEY, 2));
+        pe("长度：" + listOperations.size(LIST_KEY));
+        pe("获取指定范围值：" + listOperations.range(LIST_KEY, 0, -1));
+        pe("获取指定索引的值：" + listOperations.index(LIST_KEY, 2));
+        pe("获取指定值在列表第一次出现的索引：" + listOperations.indexOf(LIST_KEY, 2));
     }
 
     @Test
@@ -63,11 +63,11 @@ public class RedisTemplateDemo extends Demo {
         // 设置过期时间
         redisTemplate.expire(key, 1, TimeUnit.MINUTES);
 
-        System.out.println("获取所有键：" + hashOperations.keys(key));
-        System.out.println("是否存在键：" + hashOperations.hasKey(key, "id"));
-        System.out.println("获取所有键值对：" + hashOperations.entries(key));
-        System.out.println("获取所有值：" + hashOperations.values(key));
-        System.out.println("获取指定键的值：" + hashOperations.multiGet(key, Lists.newArrayList("id", "name")));
+        pe("获取所有键：" + hashOperations.keys(key));
+        pe("是否存在键：" + hashOperations.hasKey(key, "id"));
+        pe("获取所有键值对：" + hashOperations.entries(key));
+        pe("获取所有值：" + hashOperations.values(key));
+        pe("获取指定键的值：" + hashOperations.multiGet(key, Lists.newArrayList("id", "name")));
 
         // 删除指定键的指定hasKeys
         hashOperations.delete(key, "otherInfo");
@@ -123,6 +123,6 @@ public class RedisTemplateDemo extends Demo {
 
     @Test
     public void testStream() {
-        
+
     }
 }
