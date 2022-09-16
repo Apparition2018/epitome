@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import static l.demo.Demo.p;
+
 /**
  * GregorianCalendar
  * https://www.runoob.com/manual/jdk1.6/java.base/java/util/GregorianCalendar.html
@@ -24,6 +26,8 @@ import java.util.GregorianCalendar;
  */
 public class GregorianCalendarDemo extends GregorianCalendar {
 
+    private static final long serialVersionUID = -1103808356456277735L;
+
     /**
      * GregorianCalendar([int year, int month, int dayOfMonth, int hourOfDay, int minute, int second])
      * 为具有默认语言环境的默认时区构造一个具有给定日期和时间设置的 GregorianCalendar
@@ -35,7 +39,7 @@ public class GregorianCalendarDemo extends GregorianCalendar {
     public void gregorianCalendar() {
         Calendar cal = new GregorianCalendar(2008, 8, 8);
 
-        System.out.println(cal.getTime()); // Mon Sep 08 00:00:00 CST 2008
+        p(cal.getTime());   // Mon Sep 08 00:00:00 CST 2008
     }
 
     /**
@@ -46,10 +50,10 @@ public class GregorianCalendarDemo extends GregorianCalendar {
     public void computeFields_() {
         GregorianCalendarDemo cal = new GregorianCalendarDemo();
         cal.clear();
-        System.out.println(cal.getTime()); // Thu Jan 01 00:00:00 CST 1970
+        p(cal.getTime());   // Thu Jan 01 00:00:00 CST 1970
 
         cal.computeFields();
-        System.out.println(cal.getTime()); // Fri Oct 26 10:09:49 CST 2018
+        p(cal.getTime());   // Fri Oct 26 10:09:49 CST 2018
     }
 
     /**
@@ -60,10 +64,10 @@ public class GregorianCalendarDemo extends GregorianCalendar {
     public void computeTime_() {
         GregorianCalendarDemo cal = new GregorianCalendarDemo();
         cal.clear();
-        System.out.println(cal.getTime()); // Thu Jan 01 00:00:00 CST 1970
+        p(cal.getTime());   // Thu Jan 01 00:00:00 CST 1970
 
         cal.computeTime();
-        System.out.println(cal.getTime()); // Thu Jan 01 00:00:00 CST 1970
+        p(cal.getTime());   // Thu Jan 01 00:00:00 CST 1970
     }
 
     /**
@@ -74,7 +78,6 @@ public class GregorianCalendarDemo extends GregorianCalendar {
     public void isLeapYear_() {
         GregorianCalendar cal = new GregorianCalendar();
 
-        System.out.println(cal.isLeapYear(cal.get(Calendar.YEAR))); // false
+        p(cal.isLeapYear(cal.get(Calendar.YEAR))); // false
     }
-
 }

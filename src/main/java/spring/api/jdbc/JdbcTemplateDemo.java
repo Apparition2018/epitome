@@ -1,4 +1,4 @@
-package spring.api.context;
+package spring.api.jdbc;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,12 +12,12 @@ import java.sql.SQLException;
 import static l.demo.Demo.p;
 
 /**
- * spring jdbc
+ * JdbcTemplate
  *
  * @author Arsenal
  * created on 2020/11/27 1:43
  */
-public class ClassPathXmlApplicationContextDemo2 {
+public class JdbcTemplateDemo {
 
     ClassPathXmlApplicationContext applicationContext;
     ScoreDao scoreDao;

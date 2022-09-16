@@ -11,5 +11,4 @@ public interface People {
     void work();
 
     void sleep();
-
 }

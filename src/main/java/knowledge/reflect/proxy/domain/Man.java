@@ -36,6 +36,5 @@ public class Man extends Demo implements People {
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.METHOD)
     public @interface AOP {
-
     }
 }

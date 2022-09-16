@@ -33,25 +33,25 @@ public class ClassPathXmlApplicationContextDemo {
 
     /**
      * 生命周期
-     * -   BeanFactoryPostProcessor's construct()
-     * 1.  BeanFactoryPostProcessor's postProcessBeanFactory()
-     * -   BeanPostProcessor's construct()
-     * 2.  Bean's construct()
-     * 3.  XxxAware's setXxx()
-     * 4.  BeanPostProcessor's postProcessBeforeInitialization()
-     * 5.  @postConstruct()
-     * 6.  InitializingBean()'s afterPropertiesSet()
-     * 7.  init-method
-     * 8.  BeanPostProcessor's postProcessAfterInitialization()
-     * 9.  Bean's service()
-     * 10. @preDestroy()
-     * 11. DisposableBean()'s destroy()d
-     * 12. destroy-method
      */
     @Test
     public void testLifecycle() {
         Bean bean = applicationContext.getBean("bean", Bean.class);
         bean.service();
+        // BeanFactoryPostProcessor's construct()
+        // BeanFactoryPostProcessor's postProcessBeanFactory()
+        // BeanPostProcessor's construct()
+        // Bean's construct()
+        // XxxAware's setXxx()
+        // BeanPostProcessor's postProcessBeforeInitialization()
+        // @postConstruct()
+        // InitializingBean()'s afterPropertiesSet()
+        // init-method
+        // BeanPostProcessor's postProcessAfterInitialization()
+        // Bean's service()
+        // @preDestroy()
+        // DisposableBean()'s destroy()
+        // destroy-method
     }
 
     /**
@@ -81,6 +81,9 @@ public class ClassPathXmlApplicationContextDemo {
         Calendar calendar = applicationContext.getBean("calendar", Calendar.class);
         // 2.2 实例工厂方法
         Date date = applicationContext.getBean("time", Date.class);
+
+        // 3 FactoryBean
+        GregorianCalendar myCal = applicationContext.getBean("myCal", GregorianCalendar.class);
     }
 
     /**

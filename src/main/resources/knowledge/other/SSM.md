@@ -21,40 +21,6 @@ Spring + SpringMVC + Mybatis
     3. 方便分工协作
 ---
 ## Spring
-### Spring 其它功能
-- init-method：初始化方法
-- destroy-method：销毁方法
-- scope：作用域
-    1. singleton：单例，缺省值
-    2. prototype：多实例，Spring 初始化时不会实例化
-    3. request：
-    4. session：
-- lazy-init：延迟初始化，如果值为 true，即使 scope="singleton" 也会延迟初始化
-### Spring 基于注解的组件扫描
-- 组件扫描：容器启动之后，会扫描指定的包及其子包下面的所有的类，如果该类前面有一些特定的注解（比如 @Component），则容器会将该类纳入容器进行管理（相当于在配置文件里面有一个 bean）
-- 步骤：
-    1. 配置文件：<context:component-scan base-package="com.*"/>
-    2. 类前面添加注解：
-        - @Component：通用注解，默认生成 id 为小写开头的类型，和 @Autowired 一起使用
-        - @Named：通用注解，默认生成 id 为小写开头的类型，和 @Inject 一起使用
-        - @Repository：持久化层组件注解
-        - @Service：业务层组件注解
-        - @Controller：控制层组件注解
-- 依赖注入注解：
-    1. @Autowired：写在构造器前面，声明需要为其注入 Bean
-    2. @Inject：写在构造器前面，声明需要为其注入 Bean
-    3. @Qualifier：写在参数前面，声明需要注入的 Bean 的 id 值
-        - 当创建相同类型的 Bean 时，和 @Autowired 配合使用
-        - 注入的对象为单例时，可省略 value，此时，Spring 按照类型匹配
-    4. @Resource：setter 注入推荐使用
-        - 可省略 value，此时，Spring 按照类型匹配
-    - 把注解写在成员变量前，会利用 Java 反射机制来对属性赋值
-- 其它注解：
-    - @Scope("prototype")：指定作用域，写在类前
-    - @Lazy(true)：延迟加载，写在类前
-    - @PostConstruct @PreDestroy：指定初始化方法和销毁方法
-    - @Value("#{config.max-wait}")：config 是 Spring 管理 Bean 的 id
-    - @Value("${jdbc.password:root"}})，若找不到 jdbc.password 属性值，则默认值 root
 ### Spring MVC
 - 用来简化基于 MVC 架构的 WEB 应用程序开发的框架，是 Spring 框架的一部分
 
@@ -341,33 +307,6 @@ void            close();
 </configuration>
 ```
 ---
-## AOP
-### Spring AOP
-1. 导包 aspectjweaver
-2. XML 配置 \<aop:aspectj-autoproxy/>，使 aspectj 注解生效，自动为目标对象生成代理对象
-3. 业务组件
-```
-@Service
-public class Man implements People { ... }
-```
-4. 定义切面
-```
-@Order(1)
-@Aspect
-@Component
-public static class XxxAspect { ... }
-```
-5. 定义切入点
-    - @Pointcut("execution(public * knowledge..Man.*(..))")
-    - @Around("bean(man)")
-    - @Pointcut("@annotation(knowledge.reflect.proxy.domain.Man.AOP)")
-    - @Pointcut("within(knowledge.reflect.proxy..*) && args()")
-    - ......
-6. 获取代理对象：`People people = ac.getBean("man", People.class);`
-### Spring 如何选择动态代理模式
-- 如果目标对象实现了接口，则采用 JDK 动态代理
-- 如果目标对象没有实现接口，则采用 Cglib 动态代理
-- 如果目标对象实现了接口，且强制使用 Cglib 代理，则使用 Cglib 代理
 ### 基于注解的 Spring 声明式事务管理
 - Spring 声明式事务管理是通过 Spring AOP 实现的。其本质是对方法前后进行拦截，然后在目标方法开始之前创建或者加入一个事务，在执行目标方法之后根据执行情况提交或回滚事务。
     1. 只有 public 方法起作用

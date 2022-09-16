@@ -33,7 +33,6 @@ public class ReflectExercise extends Demo {
      * JavaBean → Map
      */
     private static Map<String, Object> bean2Map(Object obj) throws IllegalAccessException {
-
         if (null == obj) {
             return null;
         }
@@ -47,14 +46,12 @@ public class ReflectExercise extends Demo {
         }
 
         return map;
-
     }
 
     /**
      * Map → JavaBean
      */
     private static Object map2Bean(Map<String, Object> map, Class<?> beanClass) throws IllegalAccessException, InstantiationException {
-
         if (null == map) {
             return null;
         }
@@ -73,7 +70,6 @@ public class ReflectExercise extends Demo {
         }
 
         return obj;
-
     }
 
 }

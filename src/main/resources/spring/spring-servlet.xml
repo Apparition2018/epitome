@@ -18,8 +18,10 @@
         Ⅱ<context:component-scan/>：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-classpath-scanning
             ①<context:annotation-config>
             ②@Component，@Repository，@Service，@Controller
+            使用过滤器自定义扫描：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-scanning-filters
+            JSR-330 标准注释：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-standard-annotations-limitations
     -->
-    <context:component-scan base-package="spring"/>
+    <context:component-scan base-package="spring" resource-pattern="**/*.class" use-default-filters="true"/>
 
     <!-- 注解驱动 MVC 配置：https://docs.spring.io/spring-framework/docs/4.3.x/spring-framework-reference/htmlsingle/#mvc-config-enable
             ①HandlerMapping: RequestMappingHandlerMapping, BeanNameUrlHandlerMapping

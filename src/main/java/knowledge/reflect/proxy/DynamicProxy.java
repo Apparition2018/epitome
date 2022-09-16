@@ -24,8 +24,8 @@ public class DynamicProxy extends Demo {
 
     @Test
     public void testDynamicProxy1() {
-        StopWatchProxyHandler timeIntervalHandler = new StopWatchProxyHandler();
-        People proxy = (People) timeIntervalHandler.newProxy(new Man());
+        StopWatchProxyHandler<People> timeIntervalHandler = new StopWatchProxyHandler<>();
+        People proxy = timeIntervalHandler.getProxy(new Man());
         proxy.work();
         proxy.sleep();
     }
@@ -34,11 +34,19 @@ public class DynamicProxy extends Demo {
     public void testDynamicProxy2() {
         Man man = new Man();
         People peopleProxy = (People) Proxy.newProxyInstance(
+                // 目标对象的加载器
                 man.getClass().getClassLoader(),
+                // 目标对象实现的接口
                 man.getClass().getInterfaces(),
+                // 代理对象
                 (proxy, method, args) -> {
                     long start = System.currentTimeMillis();
-                    Object result = method.invoke(man, args);
+                    Object result = null;
+                    try {
+                        result = method.invoke(man, args);
+                    } catch (Exception e) {
+                        p(e.getCause().getMessage());
+                    }
                     long end = System.currentTimeMillis();
                     p(method.getName() + " execute spend [" + (end - start) + "]ms.");
                     return result;
@@ -47,34 +55,35 @@ public class DynamicProxy extends Demo {
         peopleProxy.sleep();
     }
 
-    static class StopWatchProxyHandler implements InvocationHandler {
+    static class StopWatchProxyHandler<T> implements InvocationHandler {
 
         /**
          * 目标对象
          */
-        private Object target;
+        private T target;
 
         /**
-         * 动态地为目标对象创建代理对象，
-         * 代理对象也会与被代理对象实现相同的接口。
+         * 获取代理对象
+         * 代理对象会实现被代理对象相同的接口
          *
          * @param target 目标对象
          * @return 返回目标对象的代理对象
          */
-        public Object newProxy(Object target) {
+        public T getProxy(T target) {
             this.target = target;
-            return Proxy.newProxyInstance(
-                    target.getClass().getClassLoader(), // 目标对象的加载器
-                    target.getClass().getInterfaces(),  // 目标对象实现的接口
-                    this); // 代理对象
+            return (T) Proxy.newProxyInstance(
+                    // 目标对象的加载器
+                    target.getClass().getClassLoader(),
+                    // 目标对象实现的接口
+                    target.getClass().getInterfaces(),
+                    // 代理对象
+                    this);
         }
 
         /**
-         * 在执行目标对象方法时，会默认调用此方法
-         *
-         * @param proxy  代理对象
-         * @param method 代表方法对象
-         * @param args   用于接收目标方法中的实际参数的值
+         * @param proxy  代理对象，一般情况下，invoke() 中都不使用该对象
+         * @param method 正在被调用的方法
+         * @param args   调用方法时的参数
          */
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) {

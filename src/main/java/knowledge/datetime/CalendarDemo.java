@@ -67,6 +67,6 @@ public class CalendarDemo extends Demo {
 
         // void	clear([int field])                          // 设置此 Calendar未定义的所有日历字段值和时间值（距离 Epoch的毫秒偏移量）
         CAL.clear();
-        System.out.println(CAL.getTime());                  // Thu Jan 01 00:00:00 CST 1970
+        p(CAL.getTime());                                   // Thu Jan 01 00:00:00 CST 1970
     }
 }

@@ -19,43 +19,11 @@
 ## [Why Spring ?](https://spring.io/why-spring)
 
 ---
-## Bean 生命周期
-- @see ClassPathXmlApplicationContextDemo#testLifecycle
-1. [BeanDefinition](https://my.oschina.net/u/4600853/blog/4556323) ：通过 BeanDefinitionReader 从 XML/注解/JavaConfig/Groovy DSL 读取 Bean 的配置信息，生成 BeanDefinition
-2. BeanFactoryPostProcessor：对 BeanFactory 相关信息的修改或扩展
-3. BeanFactory
-    1. 实现了各种 XxxAware: 普通属性填充之后调用
-    ```
-    BeanNameAware's setBeanName
-    BeanClassLoaderAware's setBeanClassLoader
-    BeanFactoryAware's setBeanFactory
-    EnvironmentAware's setEnvironment
-    EmbeddedValueResolverAware's setEmbeddedValueResolver
-    ResourceLoaderAware's setResourceLoader
-    ApplicationEventPublisherAware's setApplicationEventPublisher
-    MessageSourceAware's setMessageSource
-    ApplicationContextAware's setApplicationContext
-    ServletContextAware's setServletContext
-    ```
-    2. BeanPostProcessor's postProcessBeforeInitialization：对 Bean 相关信息的修改或扩展
-    3. InitializingBean's afterPropertiesSet
-    4. RootBeanDefinition's getInitMethodName
-    5. BeanPostProcessor's postProcessAfterInitialization：对 Bean 相关信息的修改或扩展
-    6. DestructionAwareBeanPostProcessor's postProcessBeforeDestruction
-    7. DisposableBean's destroy
-    8. RootBeanDefinition's getDestroyMethodName
->- [Spring Bean 的生命周期](https://www.cnblogs.com/zrtqsk/p/3735273.html)
----
-## 实例化 Bean
-1. 无参构造方法：`<bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>`
-    - class 属性为 Bean 的全类名，通过反射创建 Bean，所以要求 Bean 必须有无参构造函数
+## [实例化 Bean](../../../resources/demo/spring/spring-bean.xml)
+1. 无参构造方法
 2. 工厂方法
-    1. 静态工厂方法：`<bean id="calendar" class="java.util.Calendar" factory-method="getInstance"/>`
+    1. 静态工厂方法
     2. 实例工厂方法
-    ```
-    <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
-    <bean id="time" factory-bean="gregorianCalendar" factory-method="getTime"/>
-    ```
 3. [FactoryBean](https://blog.csdn.net/m0_45406092/article/details/114805287)
 ---
 ## IOC & DI
@@ -88,12 +56,7 @@
 2. 内部 Bean：在 `<constructor-arg/>`/`<property/>` 使用 `<bean/>` 子元素 
 3. 集合：`<list/>`, `<set/>`, `<map/>`, `<props/>`
 4. null：`<property name="age">`, `<null/>`, `</property>`
-5. 复合属性名
-```xml
-<bean id="something" class="this.ThingOne">
-    <property name="fred.bob.sammy" value="123"/>
-</bean>
-```
+5. 复合属性名：`<property name="fred.bob.sammy" value="123"/>`
 ### [自动装配](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-autowire)
 1. no：默认值，禁用自动装配
 2. byName：属性名
@@ -108,21 +71,75 @@
     3. application：ServletContext 生命周期
     4. websocket：WebSocket 生命周期
 4. [自定义作用域](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-scopes-custom)
+### [自定义 Bean 性质](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-nature)
+1. 生命周期回调
+    - 初始化回调
+        1. @PostConstruct
+        2. implements InitializingBean
+        3. @Bean(initMethod = "")
+        4. `<bean init-method/>`
+    - 销毁回调
+        1. @PreDestroy
+        2. implements DisposableBean
+        3. @Bean(destroyMethod = "")
+        4. `<bean destroy-method/>`
+    - 默认的初始化和销毁方法：`<beans default-init-method="" default-destroy-method=""/>`
+    - [启动和关闭回调 ???](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-lifecycle-processor)：implements Lifecycle
+    - 在非 Web 应用程序优雅地关闭 Spring IOC 容器：
+    ```
+    ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
+    ctx.registerShutdownHook();
+    ```
+2. ApplicationContextAware：创建实现此接口的实例时，将提供 ApplicationContext 的引用
+3. [其它 Aware 接口](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aware-list)
+## Bean 生命周期
+- @see ClassPathXmlApplicationContextDemo#testLifecycle
+1. [BeanDefinition](https://my.oschina.net/u/4600853/blog/4556323) ：通过 BeanDefinitionReader 从 XML/注解/JavaConfig/Groovy DSL 读取 Bean 的配置信息，生成 BeanDefinition
+2. BeanFactoryPostProcessor：对 BeanFactory 相关信息的修改或扩展
+3. BeanFactory ???
+    1. 实现了各种 XxxAware: 普通属性填充之后调用
+    ```
+    BeanNameAware's setBeanName
+    BeanClassLoaderAware's setBeanClassLoader
+    BeanFactoryAware's setBeanFactory
+    EnvironmentAware's setEnvironment
+    EmbeddedValueResolverAware's setEmbeddedValueResolver
+    ResourceLoaderAware's setResourceLoader
+    ApplicationEventPublisherAware's setApplicationEventPublisher
+    MessageSourceAware's setMessageSource
+    ApplicationContextAware's setApplicationContext
+    ServletContextAware's setServletContext
+    ```
+    2. BeanPostProcessor's postProcessBeforeInitialization：对 Bean 相关信息的修改或扩展
+    3. InitializingBean's afterPropertiesSet
+    4. RootBeanDefinition's getInitMethodName
+    5. BeanPostProcessor's postProcessAfterInitialization：对 Bean 相关信息的修改或扩展
+    6. DestructionAwareBeanPostProcessor's postProcessBeforeDestruction
+    7. DisposableBean's destroy
+    8. RootBeanDefinition's getDestroyMethodName
+>- [Spring Bean 的生命周期](https://www.cnblogs.com/zrtqsk/p/3735273.html)
 ### [容器扩展点](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-extension)
-1. 使用 BeanPostProcessor 自定义 Beans
-2. 使用 BeanFactoryPostProcessor 自定义配置元数据：`<context:property-placeholder location/>`
+1. BeanPostProcessor：在 Spring 容器完成实例化、配置和初始化 Bean 之后实现一些自定义逻辑
+2. BeanFactoryPostProcessor：自定义配置元数据：`<context:property-placeholder location/>`
     - 可使用 `${property-name}` 占位符获取属性值
-3. 使用 FactoryBean 自定义实例化逻辑
-### [依赖注入注解](https://www.zhihu.com/question/39356740/answer/1907479772)
+3. FactoryBean：自定义实例化逻辑
+### 基于注解配置 Bean
+- 基于注解的容器配置：`<context:annotation-config />`，@see spring-servlet.xml
+    - 装配找到多个类型相同的 Bean
+        1. 使用按名称装配
+        2. 在某个 Bean 上添加 @Primary
+        3. 装配到数组或集合中，如 List、Set、Map
+    - [使用泛型作为装配限定符](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-generics-as-qualifiers)
+    - [@Autowired vs @Resource](https://www.zhihu.com/question/39356740/answer/1907479772)
+
 | 注解   | @Autowired                           | @Resource                        |
 |:-----|:-------------------------------------|:---------------------------------|
 | 定义   | Spring                               | JSR-250                          |
 | 装配方式 | 默认按类型装配；<br/>配合使用 @Qualifier，可以按名称装配 | 指定 name 按名称装配；<br/>指定 type 按类型匹配 |
 | 使用范围 | 成员变量、构造器、方法、参数、注解                    | 类、成员变量、方法                        |
-- 装配找到多个类型相同的类：
-    1. 使用按名称装配
-    2. 在某个相同类型上添加 @Primary 注解
-- 多个类型相同的类可以装配到集合中，如 List、Set、Map
+- 开启组件扫描
+    - XML：`<context:component-scan base-package/>`，@see spring-servlet.xml
+    - 注解：`@ComponentScan(basePackages)`
 ### 循环依赖
 | 场景                                        | 是否报错           | 解决方法                                                   |
 |:------------------------------------------|:---------------|:-------------------------------------------------------|
@@ -144,25 +161,51 @@
 >- [Spring 解决循环](https://www.zhihu.com/question/438247718/answer/1730527725)
 >- [@Transactional、@Async 和循环依赖](https://www.cnblogs.com/liuzhihang/p/spring-trans-async.html)
 ---
-## AOP (Aspect-Oriented Programming)
+## [Spring AOP](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop)
+- Aspect-oriented Programming：是 Object-oriented Programming (OOP) 的补充
 - 解决的问题：共同非业务代码的抽取
 - 优点：减少重复代码，提高系统可拓展性
 - 使用场景：日志，事务，缓存，权限(安全)
-- 实现原理：动态代理
-    1. JDK：基于反射；目标对象实现了接口，则 spring 默认使用
-    2. Cglib：基于 ASM 类库在运行时对字节码进行修改和生成
-- [核心概念](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-introduction-defn) ：
-  
-| 概念         | 中文  | 说明                                          |
-|:-----------|:----|:--------------------------------------------|
-| Aspect     | 切面  | Pointcut + Advice；Spring AOP 中 @Aspect 注释的类 |
-| Join Point | 连接点 | 使用 Advice 的地方；Spring AOP 中连接点只能是方法          |
-| Advice     | 通知  | 切面的具体行动                                     |
-| Pointcut   | 切入点 | 匹配 Join Point                               |
-- 对比 AspectJ：
+### [核心概念](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-introduction-defn)
+
+| 概念         | 中文  | 说明                                                                           |
+|:-----------|:----|:-----------------------------------------------------------------------------|
+| Aspect     | 切面  | 对横切关注点的抽象，连接点 + 通知；@Aspect 注释的类                                              |
+| Join Point | 连接点 | 程序执行过程中要拦截的点，可以是方法、字段和构造器；<br/>Spring AOP 连接点只能是方法                           |
+| Advice     | 通知  | 在连接点的具体行为 ①前置@Before ②后置@After ③异常@AfterThrowing ④最终@AfterReturing ⑤环绕Around |
+| Pointcut   | 切入点 | 匹配连接点 @Pointcut                                                              |
+- [Spring AOP 和 AspectJ](https://segmentfault.com/a/1190000022019122)
     - Spring AOP 是运行时织入，AspectJ 是编译时织入
     - Spring AOP 使用了 AspectJ 的注解 和 切入点表达式语言
->- [Spring AOP 和 AspectJ 的区别？](https://segmentfault.com/a/1190000022019122)
+### [代理机制](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-proxying)：动态代理
+1. JDK：目标对象实现了至少一个接口；基于反射
+2. CGLib：目标对象没有实现任何接口；基于 ASM 类库在运行时对字节码进行修改和生成
+    - 强制使用 CGLib 代理
+        1. XML：`<aop:aspectj-autoproxy proxy-target-class="true"/>`
+        2. 注解：`@EnableAspectAutoProxy(proxyTargetClass = true)`
+        3. 配置文件：`spring.aop.proxy-target-class=true`
+### 使用步骤
+1. 引入 spring-boot-starter-aop，其中包含了 aspectjweaver
+2. 启用 @AspectJ 支持
+    1. XML：`<aop:aspectj-autoproxy />`
+    2. 注解：`@EnableAspectAutoProxy`
+    3. 配置文件：`spring.aop.auto=true`，springboot 默认为 true
+3. 定义切面 @Aspect，切入点 @Pointcut，通知 @Advice
+4. 将切入加入到 Spring 容器中 @Component
+### [基于 aop Schema 配置 AOP](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-schema)
+```xml
+<beans  xmlns:aop="http://www.springframework.org/schema/aop"
+        xsi:schemaLocation="http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="a" class="..."/>
+    <aop:config>
+        <aop:aspect id="aspect" ref="a" order="1">
+            <!-- XML 配置中可以使用 and or not 分别代替 && || ! -->
+            <aop:pointcut id="businessService" expression="execution(* com.xyz.myapp.service.*.*(..)) and this(service)"/>
+            <aop:before pointcut-ref="businessService" method="monitor"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
+```
 ---
 ## 事务
 1. 事务隔离级别：@see SQL.md#事务隔离级别
@@ -200,7 +243,7 @@
     - 方法调用：`<property name="pwd" value="#{staff.getPwd()}"/>`
     - 各种运算符：`<property name="pwd" value="#{staff.pwd ?: 123456}"/>`
     - 正则表达式：`<property name="mobile" value="#{1[3456789]\d{9}}"/>`
-    - Types：`<property name="PI" value="#{T(java.lang.Math).PI}"/>`
+    - Types：`<property name="locale" value="#{T(java.util.Locale).CHINA}"/>`
     - bean 引用：`<property name="mobile" value="#{mobile}"/>`
     - ...
 ---
@@ -213,7 +256,7 @@
 | 单例    | AbstractBeanFactory                                                             |
 | 原型    | AbstractBeanFactory                                                             |
 | 适配器   | Spring AOP (AdvisorAdapter)<br/>Spring MVC (HandlerAdapter)                     |
-| 代理    | Spring AOP (JdkDynamicAopProxy, CglibAopProxy)                                  |
+| 代理    | Spring AOP (JdkDynamicAopProxy, CGLibAopProxy)                                  |
 | 装饰器   | XxxDecorator，XxxWrapper                                                         |
 | 组合    | WebMvcConfigurerComposite                                                       |
 | 外观    | JdbcUtils                                                                       |

@@ -13,7 +13,7 @@ import spring.config.DemoConfig;
  * @author Arsenal
  * created on 2020/11/29 16:45
  */
-public class AnnotationConfigAcDemo {
+public class AnnotationConfigApplicationContextDemo {
     AnnotationConfigApplicationContext applicationContext;
 
     @BeforeEach

@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.Properties;
 
-import static l.demo.Demo.p;
+import static l.demo.Demo.pe;
 
 /**
  * Bean
@@ -32,43 +32,43 @@ public class Bean implements InitializingBean, DisposableBean, ApplicationContex
     public Properties properties;
 
     public Bean() {
-        p("Bean's construct()");
+        pe("Bean's construct()");
     }
 
     @Override
     public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
-        p("XxxAware's setXxx()");
+        pe("XxxAware's setXxx()");
     }
 
     @PostConstruct
     public void postConstruct() {
-        p("@postConstruct()");
+        pe("@postConstruct()");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        p("InitializingBean()'s afterPropertiesSet()");
+        pe("InitializingBean()'s afterPropertiesSet()");
     }
 
     public void initMethod() {
-        p("init-method");
+        pe("init-method");
     }
 
     public void service() {
-        p("Bean's service()");
+        pe("Bean's service()");
     }
 
     @PreDestroy
     public void preDestroy() {
-        p("@preDestroy()");
+        pe("@preDestroy()");
     }
 
     @Override
     public void destroy() throws Exception {
-        p("DisposableBean()'s destroy()");
+        pe("DisposableBean()'s destroy()");
     }
 
     public void destroyMethod() {
-        p("destroy-method");
+        pe("destroy-method");
     }
 }

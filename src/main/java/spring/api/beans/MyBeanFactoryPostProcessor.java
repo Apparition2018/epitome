@@ -14,12 +14,11 @@ import org.springframework.lang.NonNull;
 public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
     public MyBeanFactoryPostProcessor() {
-        System.out.println("BeanFactoryPostProcessor's construct()");
+        System.err.println("BeanFactoryPostProcessor's construct()");
     }
 
     @Override
     public void postProcessBeanFactory(@NonNull ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        System.out.println("BeanFactoryPostProcessor's postProcessBeanFactory()");
-
+        System.err.println("BeanFactoryPostProcessor's postProcessBeanFactory()");
     }
 }

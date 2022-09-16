@@ -6,6 +6,7 @@ import org.springframework.lang.NonNull;
 
 /**
  * MyBeanPostProcessor
+ * 在 Spring 容器完成实例化、配置和初始化 Bean 之后实现一些自定义逻辑
  *
  * @author ljh
  * created on 2021/12/14 9:40
@@ -13,18 +14,18 @@ import org.springframework.lang.NonNull;
 public class MyBeanPostProcessor implements BeanPostProcessor {
 
     public MyBeanPostProcessor() {
-        System.out.println("BeanPostProcessor's construct()");
+        System.err.println("BeanPostProcessor's construct()");
     }
 
     @Override
     public Object postProcessBeforeInitialization(@NonNull Object bean, @NonNull String beanName) throws BeansException {
-        System.out.println("BeanPostProcessor's postProcessBeforeInitialization()");
+        System.err.println("BeanPostProcessor's postProcessBeforeInitialization(): " + beanName);
         return BeanPostProcessor.super.postProcessBeforeInitialization(bean, beanName);
     }
 
     @Override
     public Object postProcessAfterInitialization(@NonNull Object bean, @NonNull String beanName) throws BeansException {
-        System.out.println("BeanPostProcessor's postProcessAfterInitialization()");
+        System.err.println("BeanPostProcessor's postProcessAfterInitialization(): " + beanName);
         return BeanPostProcessor.super.postProcessAfterInitialization(bean, beanName);
     }
 }

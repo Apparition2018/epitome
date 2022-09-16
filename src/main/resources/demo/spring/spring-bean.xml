@@ -13,13 +13,18 @@
     <context:annotation-config/>
 
     <!-- 实例化 Bean -->
-    <!-- 1 无参构造方法 -->
+    <!-- 1 无参构造方法
+        class：Bean 的全类名，通过反射创建 Bean，所以要求 Bean 必须有无参构造函数 -->
     <bean id="gregorianCalendar" class="java.util.GregorianCalendar"/>
     <!-- 2 工厂方法 -->
     <!-- 2.1 静态工厂方法 -->
     <bean id="calendar" class="java.util.Calendar" factory-method="getInstance"/>
     <!-- 2.2 实例工厂方法 -->
     <bean id="time" factory-bean="gregorianCalendar" factory-method="getTime"/>
+    <!-- 3 FactoryBean -->
+    <bean id="myCal" class="spring.api.beans.MyCalFactoryBean">
+        <property name="locale" value="#{T(java.util.Locale).CHINA}"/>
+    </bean>
 
     <!-- 依赖注入 -->
     <!-- 1 构造器注入 -->
@@ -48,11 +53,11 @@
     <!-- 2.1 p 命名空间注入：快捷的 setter 注入 -->
     <bean id="student4" class="l.demo.Person.Student" p:id="1" p:name="张三" p:birth-ref="date"/>
 
-    <!-- autowire: 自动装配 -->
+    <!-- autowire：自动装配 -->
     <bean id="student5" class="l.demo.Person.Student" autowire="byName"/>
 
-    <!-- parent: 继承 Bean 定义，不会继承 autowire, abstract 等属性 -->
-    <!-- depends-on: 显式地强制一个或多个 Bean 在某个 Bean 初始化之前初始化 -->
+    <!-- parent：继承 Bean 定义，不会继承 autowire, abstract 等属性 -->
+    <!-- depends-on：显式地强制一个或多个 Bean 在某个 Bean 初始化之前初始化 -->
     <bean id="student6" parent="student4" p:id="2" p:name="李四" depends-on="student4"/>
 
     <!-- 注入集合：<list/>, <set/>, <map/>, <props/> -->
@@ -73,10 +78,11 @@
     <bean id="bean" class="spring.bean.Bean" init-method="initMethod" destroy-method="destroyMethod">
         <property name="properties" ref="jdbc"/>
     </bean>
+
     <bean id="beanPostProcessor" class="spring.api.beans.MyBeanPostProcessor"/>
     <bean id="beanFactoryPostProcessor" class="spring.api.beans.MyBeanFactoryPostProcessor"/>
 
-    <context:component-scan base-package="spring.bean"/>
+<!--    <context:component-scan base-package="spring.bean"/>-->
     <!-- Lazy -->
     <bean id="otherBean" class="spring.bean.OtherBean" lazy-init="true">
         <!-- SpEL -->
