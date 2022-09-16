@@ -1,4 +1,4 @@
-# My CentOS
+# CentOS
 
 ---
 ## 问题
@@ -37,6 +37,7 @@
 1. rpm -qa|grep XXX         yum list installed|grep XXX
    rpm -e XXX               yum remove XXX
    wget XXX.rpm             yum search java|grep -i --color XXX
+   https://www.oracle.com/java/technologies/downloads/archive/
    rpm -ivh XXX             yum install XXX
 2. 添加环境变量
     2.1 which java
@@ -55,13 +56,14 @@
 1. https://archive.apache.org/dist/tomcat/
     wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz 
     tar -zxvf xxx.tar.gz
+    mv apache-tomcat-9.0.44 /usr/local/
 2. 添加环境变量
     2.1 vim /etc/profile
-        export CATALINA_HOME=/usr/local/apache-tomcat-9.0.41
+        export CATALINA_HOME=/usr/local/apache-tomcat-9.0.44
     2.2 source /etc/profile
     2.3 配置多个 Tomcat
         2.3.1 vim /etc/profile
-              exprot CATALINA_HOME2=/user/local/apache-tomcat2-9.0.41
+              exprot CATALINA_HOME2=/user/local/apache-tomcat2-9.0.44
         2.3.2 vim ${CATALINA_HOME2}/bin/catalina.sh，在开头添加 
               export CATALINA_HOME=$CATALINA_HOME2
               export CATALINA_BASE=$CATALINA_HOME2
@@ -87,9 +89,10 @@
 1. https://maven.apache.org/download.cgi
     wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
     tar -zxvf xxx.tar.gz
+    mv apache-maven-3.6.3 /usr/local/
 2. 添加环境变量
     2.1 vim /etc/profile
-        export M2_HOME=/home/ljh/software/apache-maven-3.6.3
+        export M2_HOME=/usr/local/apache-maven-3.6.3
         export PATH=$PATH:$M2_HOME/bin
     2.2 source /etc/profile
 3. mvn -version
@@ -160,18 +163,18 @@
         image.ljh.com.conf
         ...
 7. 常用命令
-    ./sbin/nginx -t                         测试配置文件
-    ./sbin/nginx                            启动
-    ./sbin/nginx -s stop                    停止
-    ./sbin/ngxin -s quit                    退出
-    ./sbin/ngxin -s reload                  重启
-    kill -HUP PID                           平滑重启（进程号查询：ps -ef|grep nginx）
-    ./sbin/nginx -v                         版本
-    ./sbin/nginx -V                         版本和配置选项
-    ./sbin/nginx -h                         帮助
+    /usr/local/nginx//sbin/nginx -t             测试配置文件
+    /usr/local/nginx//sbin/nginx                启动
+    /usr/local/nginx//sbin/nginx -s stop        停止
+    /usr/local/nginx//sbin/ngxin -s quit        退出
+    /usr/local/nginx//sbin/ngxin -s reload      重启
+    kill -HUP PID                               平滑重启（进程号查询：ps -ef|grep nginx）
+    /usr/local/nginx//sbin/nginx -v             版本
+    /usr/local/nginx//sbin/nginx -V             版本和配置选项
+    /usr/local/nginx//sbin/nginx -h             帮助
 8. 修改 hosts 文件，配置域名转发
-    C:\Windows\System32\dirvers\etc\hosts   Windows
-    /etc/hosts                              Linux
+    C:\Windows\System32\dirvers\etc\hosts       Windows
+    /etc/hosts                                  Linux
         192.168.58.129 www.ljh.com
         192.168.58.129 image.ljh.com
         192.168.58.129 s.ljh.com
@@ -203,14 +206,15 @@
     4.5 passwd mysql                           `                        更改 mysql 用户密码
 5. /etc/my.cnf
 6. 初始化
-    5.1 ${MYSQL_HOME}/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/
+    5.1 /usr/local/mysql-5.7/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/
     5.2 记住日志最后一行的密码
-    5.3 chown -R mysql:mysql ${MYSQL_HOME}/mysql-5.7/data/              更改 data 目录所属用户组和用户
+    5.3 chown -R mysql:mysql /usr/local/mysql-5.7/data/                 更改 data 目录所属用户组和用户
 7. 添加 mysql 服务
-    7.1 cp ${MYSQL_HOME}/support-files/mysql.server /etc/init.d/mysql   复制服务脚本到 /etc/init.d
+    7.1 cp /usr/local/mysql-5.7/support-files/mysql.server /etc/init.d/mysql
+                                                                        复制服务脚本到 /etc/init.d/
                                                                         使得 Centos 6 可以使用 service mysql start | stop | restart | status 命令
                                                                         使得 Centos 7 可以使用 systemctl start | stop | restart | status | enable | disable mysql 命令
-    7.2 chmod +x /etc/init.d/mysql                                      增加可执行权限
+    7.2 chmod +x /etc/init.d/mysql                                      增加脚本可执行权限
     7.3 chkconfig --add mysql                                           添加 mysql 服务
     7.4 chkconfig --list mysql                                          列出 mysql 服务情况
     7.5 service mysql start | systemctl start mysql
@@ -219,6 +223,60 @@
     9.1 alter user root@localhsot identified by 'root';                 修改密码
     9.2 grant all privileges on *.* to root@'%' identified by 'root';   授权
     9.3 flush privileges;
+```
+### MySQL 双主
+```
+1. 主1：`vim /etc/my.cnf`
+    # 开启binlog，binlog文件名称
+    log-bin=log-bin
+    # binlog记录格式：MIXED、STATEMENT、ROW
+    binlog_format=ROW
+    # format为ROW时生效，信息日志时间写入binlog
+    binlog_rows_query_log_events=ON
+    # binlon自动删除天数
+    expire_logs_days=30
+    # binlong单个日志文件最大大小，最大和默认为1G
+    max_binlog_size=1024M
+    
+    server-id=1
+    # relay log文件名称
+    relay_log=relay-bin
+    # 忽略不需要同步的数据库
+    replicate-ignore-db=information_schema
+    replicate-ignore-db=mysql
+    replicate-ignore-db=performance_schema
+    replicate-ignore-db=sys
+    
+    # 开启gtid
+    enforce_gtid_consistency=ON
+    gtid_mode=ON
+2. 主2：`vim /etc/my.cnf`，只列出与 主1 不同的项
+    service-id=2
+3. 把主1设为主数据库，主2设为从数据库
+    3.1 连接主1
+        -- 创建 repl 账号，允许从 192.168.0.141 访问，密码为 repl
+        grant replication slave on *.* to repl@192.168.0.141 identified by 'repl';
+        flush privileges;
+        -- 重置 master，初次配置时可以使用
+        reset master;
+        -- 查看 master 信息（File 和 Position）
+        show master status;
+    3.2 连接主2        
+        -- 停止 slave
+        stop slave;
+        -- 将 192.168.0.141:3306 设为 master
+        -- master_user, master_password，使用 master 创建的 repl 账号
+        -- master_log_file, master_log_pos 是在 master 使用 show master status 语句查看到的 File 和 Position
+        change master to master_host='192.168.0.141', master_port=3306, master_user='repl',
+            master_password='repl', master_log_file='log-bin.000001', master_log_pos=154;
+        -- 开启 slave
+        start slave;
+        -- 查看 slave 状态，Slave_IO_Running 和 Slave_SQL_Running 都为 Yes 时，表示成功
+        -- 如果不成功，可查看 data 目录下 *。err 日志文件
+        show slave status;
+        -- 重置 slave，slave 异常时可以使用
+        reset slave all;
+4. 把主2设为主数据库，主1设为从数据库
 ```
 ### Git
 ```

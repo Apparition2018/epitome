@@ -184,25 +184,6 @@ public String bmi(BmiParam bp, ModelMap modelMap) {
     	}
     }
     ```
-### Spring JDBC
-- 导包：spring-jdbc，commons-dbcp2（数据库连接池）， mysql-connector-java（数据库）
-- XML 配置：
-```xml
-<beans>       
-    <context:property-placeholder location="classpath:jdbc.properties"/>
-    <bean id="dbcpDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="${jdbc.driver}"/>
-        <property name="url" value="${jdbc.url}"/>
-        <property name="username" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
-        ...
-    </bean>
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dbcpDataSource"/>
-    </bean>
-</beans>
-```
-- 写一个 Dao 注入 JdbcTemplate，调用 JdbcTemplate 提供的方法来访问数据库
 ---
 ## [Mybatis](https://mybatis.org/mybatis-3/zh/index.html)
 <img alt="Mybatis 工作原理" src="https://img-blog.csdn.net/20180624002302854" width="650px"><br/>
@@ -306,29 +287,4 @@ void            close();
     </settings>
 </configuration>
 ```
----
-### 基于注解的 Spring 声明式事务管理
-- Spring 声明式事务管理是通过 Spring AOP 实现的。其本质是对方法前后进行拦截，然后在目标方法开始之前创建或者加入一个事务，在执行目标方法之后根据执行情况提交或回滚事务。
-    1. 只有 public 方法起作用
-    2. 只有来自外部的方法调用才会被 AOP 代理捕获，类内部方法调用本类内部的其它方法不会引起事务行为
-- 步骤：
-    1. XML 配置  
-    ```xml
-    <beans>
-        <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-            <!-- 注入数据库连接池 -->
-            <property name="dataSource" ref="druidDataSource"/>
-        </bean>
-        <tx:annotation-driven transaction-manager="transactionManager"/>
-    </beans>
-    ```
-    2. 在类或方法前添加 @Transactional 注解
-- 注解属性：
-    - value：别名 transactionManager，当配置了多个 TransactionManager，可以用该属性指定选择哪个事务管理器
-    - propagation：事务传播机制
-    - isolation：事务隔离级别
-    - readOnly：设置当前事务是否为只读事务
-    - timeout：设置事务的超时秒数，默认值为-1，表示永不超时
-    - rollbackFo：设置需要进行事务回滚的异常类数组
-    - noRollbackFor：设置不需要进行事务回滚的异常类数组
 ---

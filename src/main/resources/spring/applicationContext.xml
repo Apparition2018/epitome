@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 组件扫描 -->
-    <context:component-scan base-package="knowledge.reflect.proxy"/>
+    <context:component-scan base-package="knowledge.reflect.proxy,spring.dao"/>
 
     <!-- 激活 ${...} 占位符的替换：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#xsd-schemas-context-pphc -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -49,13 +49,15 @@
     </bean>
 
     <!-- 数据源事务管理器 -->
-    <bean id="druidTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!-- 注入数据源 -->
         <property name="dataSource" ref="druidDataSource"/>
     </bean>
 
-    <!-- 基于注解的声明式事务：https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative-annotations -->
-    <tx:annotation-driven transaction-manager="druidTransactionManager"/>
+    <!-- 基于注解的声明式事务：https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative-annotations
+            JTA         JtaTransactionManager
+            Hibernate   HibernateTransactionManager -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!-- 启用 aspectj 注解：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-aspectj-support -->
     <aop:aspectj-autoproxy/>
@@ -73,5 +75,8 @@
     </bean>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dbcpDataSource"/>
+    </bean>
+    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="dbcpDataSource"/>
     </bean>
 </beans>

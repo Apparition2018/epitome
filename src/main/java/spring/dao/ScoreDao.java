@@ -1,14 +1,22 @@
 package spring.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.object.BatchSqlUpdate;
 import org.springframework.stereotype.Repository;
 import spring.model.Score;
 
+import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * ScoreDao
@@ -21,10 +29,12 @@ import java.util.List;
 public class ScoreDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Autowired
-    public ScoreDao(JdbcTemplate jdbcTemplate) {
+    public ScoreDao(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
     public void save(Score score) {
@@ -33,21 +43,70 @@ public class ScoreDao {
         jdbcTemplate.update(sql, args);
     }
 
+    /**
+     * 通过 BeanPropertyRowMapper 查询
+     */
     public Score findById(int id) {
         String sql = "SELECT id, name, course, score FROM score WHERE id=?";
         Object[] args = {id};
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Score.class), args);
+    }
+
+    /**
+     * 通过自定义 RowMapper 查询
+     */
+    public Score findById2(int id) {
+        String sql = "SELECT id, name, course, score FROM score WHERE id=?";
+        Object[] args = {id};
+        // 自定义 RowMapper
         return jdbcTemplate.queryForObject(sql, new ScoreRowMapper(), args);
+    }
+
+    /**
+     * 通过 NamedParameterJdbcTemplate 查询，传参是 Map
+     */
+    public Score findById3(int id) {
+        String sql = "SELECT id, name, course, score FROM score WHERE id=:id";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("id", id);
+        return namedParameterJdbcTemplate.queryForObject(sql, paramMap, new BeanPropertyRowMapper<>(Score.class));
+    }
+
+    /**
+     * 通过 NamedParameterJdbcTemplate 查询，传参是 BeanPropertySqlParameterSource
+     */
+    public Score findById4(int id) {
+        String sql = "SELECT id, name, course, score FROM score WHERE id=:id";
+        Score score = new Score().setId(id);
+        return namedParameterJdbcTemplate.queryForObject(sql, new BeanPropertySqlParameterSource(score), new BeanPropertyRowMapper<>(Score.class));
     }
 
     public List<Score> findAll() {
         String sql = "SELECT id, name, course, score FROM score";
-        return jdbcTemplate.query(sql, new ScoreRowMapper());
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Score.class));
     }
 
     public void update(Score score) {
         String sql = "UPDATE score SET name=?, course=?, score=? WHERE id=?";
         Object[] args = {score.getName(), score.getCourse(), score.getScore(), score.getId()};
         jdbcTemplate.update(sql, args);
+    }
+
+
+    /**
+     * https://blog.csdn.net/qq_38737586/article/details/110595655
+     */
+    public void batchUpdate(List<Score> scoreList) {
+        if (scoreList.isEmpty()) return;
+        DataSource dataSource = jdbcTemplate.getDataSource();
+        if (dataSource == null) return;
+        BatchSqlUpdate batchSqlUpdate = new BatchSqlUpdate(dataSource, "UPDATE score SET score = ? WHERE id = ?");
+        batchSqlUpdate.setBatchSize(1000);
+        batchSqlUpdate.setTypes(new int[]{Types.INTEGER, Types.INTEGER});
+        for (Score score : scoreList) {
+            batchSqlUpdate.update(new Object[]{score.getScore(), score.getId()});
+        }
+        batchSqlUpdate.flush();
     }
 
     public void delete(int id) {
@@ -59,7 +118,8 @@ public class ScoreDao {
     /**
      * 告诉 JdbcTemplate 如何处理 ResultSet
      */
-    static class ScoreRowMapper implements RowMapper<Score> {
+    private static class ScoreRowMapper implements RowMapper<Score> {
+        @Override
         public Score mapRow(ResultSet resultSet, int index) throws SQLException {
             Score score = new Score();
             score.setId(resultSet.getInt("id"));

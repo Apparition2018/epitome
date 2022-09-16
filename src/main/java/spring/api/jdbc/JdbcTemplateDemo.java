@@ -8,8 +8,10 @@ import spring.model.Score;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import static l.demo.Demo.p;
+import static l.demo.Demo.pe;
 
 /**
  * JdbcTemplate
@@ -19,8 +21,8 @@ import static l.demo.Demo.p;
  */
 public class JdbcTemplateDemo {
 
-    ClassPathXmlApplicationContext applicationContext;
-    ScoreDao scoreDao;
+    private ClassPathXmlApplicationContext applicationContext;
+    private ScoreDao scoreDao;
 
     @BeforeEach
     public void init() {
@@ -34,7 +36,7 @@ public class JdbcTemplateDemo {
     @Test
     public void testConnection() throws SQLException {
         DataSource dataSource = applicationContext.getBean("dbcpDataSource", DataSource.class);
-        p(dataSource.getConnection());
+        pe(dataSource.getConnection());
     }
 
     @Test
@@ -48,12 +50,23 @@ public class JdbcTemplateDemo {
 
     @Test
     public void testFindById() {
-        p(scoreDao.findById(9));
+        pe(scoreDao.findById(9));
+        pe(scoreDao.findById2(9));
+        pe(scoreDao.findById3(9));
+        pe(scoreDao.findById4(9));
     }
 
     @Test
     public void testFindAll() {
-        p(scoreDao.findAll());
+        pe(scoreDao.findAll());
+    }
+
+    @Test
+    public void testBatchUpdate() {
+        List<Score> scoreList = new ArrayList<>();
+        scoreList.add(new Score().setId(1).setScore(82));
+        scoreList.add(new Score().setId(2).setScore(99));
+        scoreDao.batchUpdate(scoreList);
     }
 
     @Test

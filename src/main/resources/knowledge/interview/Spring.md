@@ -181,15 +181,15 @@
 1. JDK：目标对象实现了至少一个接口；基于反射
 2. CGLib：目标对象没有实现任何接口；基于 ASM 类库在运行时对字节码进行修改和生成
     - 强制使用 CGLib 代理
-        1. XML：`<aop:aspectj-autoproxy proxy-target-class="true"/>`
-        2. 注解：`@EnableAspectAutoProxy(proxyTargetClass = true)`
-        3. 配置文件：`spring.aop.proxy-target-class=true`
+        - XML：`<aop:aspectj-autoproxy proxy-target-class="true"/>`
+        - 注解：`@EnableAspectAutoProxy(proxyTargetClass = true)`
+        - 配置文件：`spring.aop.proxy-target-class=true`
 ### 使用步骤
 1. 引入 spring-boot-starter-aop，其中包含了 aspectjweaver
 2. 启用 @AspectJ 支持
-    1. XML：`<aop:aspectj-autoproxy />`
-    2. 注解：`@EnableAspectAutoProxy`
-    3. 配置文件：`spring.aop.auto=true`，springboot 默认为 true
+    - XML：`<aop:aspectj-autoproxy />`
+    - 注解：`@EnableAspectAutoProxy`
+    - 配置文件：`spring.aop.auto=true`，springboot 默认为 true
 3. 定义切面 @Aspect，切入点 @Pointcut，通知 @Advice
 4. 将切入加入到 Spring 容器中 @Component
 ### [基于 aop Schema 配置 AOP](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-schema)
@@ -207,7 +207,7 @@
 </beans>
 ```
 ---
-## 事务
+## [事务管理](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction)
 1. 事务隔离级别：@see SQL.md#事务隔离级别
 2. [事务传播机制](https://segmentfault.com/a/1190000013341344)
 
@@ -217,17 +217,39 @@
 | REQUIRES_NEW  | 新建事务  | 新建事务  | 不同事务    |
 | NESTED        | 新建事务  | 嵌套事务  | 内不影响外   |
 | SUPPORTS      | 无事务   | 加入事务  | 同一事务    |
-| NOT_SUPPORTED | 无事务   | 无事务   ||
-| NEVER         | 无事务   | 抛出异常  ||
+| NOT_SUPPORTED | 无事务   | 无事务   |         |
+| NEVER         | 无事务   | 抛出异常  |         |
 | MANDATORY     | 抛出异常  | 加入事务  | 同一事务    |
-3. @Transactional 失效场景：
-    1. 未被 Spring 管理
-    2. 数据库不支持
-    3. 非 public 方法，final 修饰
-    4. 自调用
-    5. RuntimeException 和 Error 才生效
-    6. 多线程，多数据源，分布式
-    7. 主动：propagation 设置未非事务，try catch 处理了异常
+3. [编程式事务管理](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-programmatic)
+    1. TransactionTemplate
+    2. TransactionalOperator
+    3. TransactionManager
+4. [声明式事务管理](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative)
+    1. 基于 XML
+    2. 基于注解
+        - 开启事务管理
+            - XML：applicationContext.xml
+            - 注解：@EnableTransactionManagement
+         - @Transactional 失效场景
+            1. 未被 Spring 管理
+            2. 数据库不支持
+            3. ①非 public 方法 ②final 修饰
+            4. 自调用
+            5. RuntimeException 和 Error 才生效
+            6. try catch 处理了异常
+            7. propagation 设置为 NOT_SUPPORTED / NEVER
+            8. 多线程，多数据源，分布式
+---
+## [Spring JDBC](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#jdbc)
+- @see JdbcTemplateDemo
+    1. 查询实体：
+        1. `jdbcTemplate.queryForObject(String sql, RowMapper<T> rowMapper, Object... args)`
+        2. `jdbcTemplate.query(String sql, RowMapper<T> rowMapper, Object... args)`
+    2. 批量更新
+        1. `jdbcTemplate.batchUpdate(String sql, List<Object[]> batchArgs)`
+        2. `batchSqlUpdate.update(Object... params)`
+    3. 命名参数：使用 NamedParameterJdbcTemplate
+- springboot + JDK 1.6 + JDBC 多数据源 + JdbcTemplate：@see /xinling/zsgaqc-imp
 ---
 ## [SpringMVC](https://mp.weixin.qq.com/s/yGP_34nilJp3QKyM3RaO2w)
 - MVC：
