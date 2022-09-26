@@ -66,11 +66,11 @@ public class HttpClientUtils {
         return instance;
     }
 
-    private static CloseableHttpClient httpClient;
+    private static final CloseableHttpClient httpClient;
 
-    private static CookieStore cookieStore;
+    private static final CookieStore cookieStore;
 
-    private static BasicCredentialsProvider basicCredentialsProvider;
+    private static final BasicCredentialsProvider basicCredentialsProvider;
 
     private static final HttpClientResponseHandler<String> responseHandler;
 

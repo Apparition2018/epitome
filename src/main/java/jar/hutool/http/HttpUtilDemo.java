@@ -7,7 +7,7 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import l.demo.Demo;
-import org.apache.http.HttpStatus;
+import org.apache.hc.core5.http.HttpStatus;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -85,11 +85,13 @@ public class HttpUtilDemo extends Demo {
      */
     @Test
     public void testHttp() {
-        HttpResponse response = HttpRequest.post(BAIDU_URL)
+        HttpRequest request = HttpRequest.post(BAIDU_URL)
+                // 设置打开重定向（次数为2）
+                .setFollowRedirects(true)
                 .form(BeanUtil.beanToMap(personList.get(0)))
                 .body(HELLO_WORLD)
-                .cookie(new HttpCookie("cookie", "oreo"))
-                .execute();
+                .cookie(new HttpCookie("cookie", "oreo"));
+        HttpResponse response = request.execute();
         if (response.getStatus() == HttpStatus.SC_OK) {
             p("success");
         }
