@@ -25,15 +25,14 @@
 
     <!-- web.xml 加载顺序：context-param → listener → filter → servlet -->
 
-    <!-- applicationContext.xml vs spring-servlet.xml：https://www.baeldung.com/spring-applicationcontext-vs-spring-servlet-xml -->
-    <!-- Context and Servlet 初始化参数：https://www.baeldung.com/context-servlet-initialization-param -->
-    <!-- Spring Web Contexts：https://www.baeldung.com/spring-web-contexts -->
 
-    <!-- <context-param/>：声明应用范围内的初始化参数，用于向 ServletContext 提供键值对，Listener, Filter 等在初始化时会用到这些上下文中的信息 -->
-    <!-- 1.XmlWebApplicationContext: 基于 XML 配置 -->
+    <!-- Context and Servlet 初始化参数：https://www.baeldung.com/context-servlet-initialization-param -->
+    <!-- <context-param/>：声明应用范围内的初始化参数，用于向 ServletContext 提供键值对，Listener, Filter 等在初始化时会用到这些上下文中的信息
+        1.XmlWebApplicationContext: 基于 XML 配置 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <!-- 默认位置：/WEB-INF/applicationContext.xml -->
+        <!-- applicationContext.xml vs spring-servlet.xml：https://www.baeldung.com/spring-applicationcontext-vs-spring-servlet-xml -->
         <param-value>classpath:spring/applicationContext.xml</param-value>
     </context-param>
     <!-- 2.AnnotationConfigWebApplicationContext: 基于 Java 配置  -->
@@ -42,7 +41,8 @@
     <!--     <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
     <!-- </context-param>-->
 
-    <!-- 监听器 -->
+    <!-- Spring Web Contexts：https://www.baeldung.com/spring-web-contexts -->
+    <!-- ContextLoaderListener：管理 Spring 的根 WebApplicationContext  -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -50,9 +50,9 @@
         <listener-class>springboot.listener.OnlineNumberListener</listener-class>
     </listener>
 
-    <!-- 过滤器 -->
+    <!-- CharacterEncodingFilter：字符编码过滤器，放在所有过滤器的第一个 -->
     <filter>
-        <filter-name>encodingFilter</filter-name>
+        <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
@@ -64,7 +64,16 @@
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>encodingFilter</filter-name>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- HiddenHttpMethodFilter：使 form 表单支持 PUT/DELETE 请求 -->
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter>
@@ -84,7 +93,7 @@
         <url-pattern>/user/test</url-pattern>
     </filter-mapping>
 
-    <!-- spring mvc 配置 -->
+    <!-- SpringMVC DispatcherServlet -->
     <servlet>
         <servlet-name>spring-mvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

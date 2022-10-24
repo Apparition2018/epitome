@@ -15,13 +15,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Fluent
+ * httpclient5-fluent
  * https://hc.apache.org/httpcomponents-client-4.5.x/current/tutorial/html/fluent.html
  *
  * @author ljh
  * created on 2021/8/2 10:35
  */
-public class FluentDemo {
+public class HttpClientFluentDemo {
 
     private static final String URL = "http://localhost:3333/fetch/cookie";
 

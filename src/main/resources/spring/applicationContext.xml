@@ -10,9 +10,12 @@
         http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 组件扫描 -->
-    <context:component-scan base-package="knowledge.reflect.proxy,spring.dao"/>
+    <context:component-scan base-package="knowledge.reflect.proxy,spring.dao">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
 
-    <!-- 激活 ${...} 占位符的替换：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#xsd-schemas-context-pphc -->
+    <!-- 激活 ${…} 占位符的替换：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#xsd-schemas-context-pphc -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!-- Druid 数据源 -->

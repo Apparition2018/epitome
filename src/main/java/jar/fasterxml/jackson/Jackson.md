@@ -33,7 +33,7 @@
 2. [JsonMapper (ObjectMapper)](./ObjectMapperDemo.java)
 3. [Tree Model (JsonNode)](./JsonNodeDemo.java)
 ---
-## [配置](../../../../resources/application.properties)
+## [配置](src/main/resources/application.properties)
 
 ---
 ## [注解](./annotataion/AnnotationDemo.java)

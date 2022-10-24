@@ -38,6 +38,10 @@ public class URLDemo extends Demo {
         p(url.getQuery());          // 查询部分：q=URL
         p(url.getRef());            // 锚点：search-results-close-container
         p(url.getContent());        // 内容：sun.net.www.protocol.http.HttpURLConnection$HttpInputStream@704921a5
+
+        url = new URL("http://192.168.0.1:8080");
+        p(url.getAuthority());      // 192.168.0.1:8080
+        p(url.getHost());           // 192.168.0.1
     }
 
     /**
