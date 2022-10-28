@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 组件扫描 -->
-    <context:component-scan base-package="knowledge.reflect.proxy,spring.dao">
+    <context:component-scan base-package="knowledge.reflect.proxy,spring.dao,spring.service">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>

@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * IOUtil
@@ -54,7 +56,7 @@ public class IoUtilDemo extends Demo {
         IoUtil.closeIfPosible(bos);
         IoUtil.closeIfPosible(br);
         IoUtil.closeIfPosible(pw);
-        
+
         file2.deleteOnExit();
     }
 
@@ -62,11 +64,11 @@ public class IoUtilDemo extends Demo {
      * 转换
      */
     @Test
-    public void convert() throws FileNotFoundException {
+    public void convert() throws IOException {
         File file = new File(DEMO_PATH + "Input");
-        InputStream is = new FileInputStream(DEMO_PATH + "Input");
+        InputStream is = Files.newInputStream(Paths.get(DEMO_PATH + "Input"));
         byte[] bytes = FileUtil.readBytes(DEMO_PATH + "Input");
-        OutputStream os = new FileOutputStream(DEMO_PATH + "Output");
+        OutputStream os = Files.newOutputStream(Paths.get(DEMO_PATH + "Output"));
 
         // InputStream  → BufferedInputStream
         BufferedInputStream bis = IoUtil.toBuffered(is);

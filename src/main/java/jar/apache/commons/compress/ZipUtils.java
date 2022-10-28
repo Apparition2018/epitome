@@ -67,7 +67,7 @@ public class ZipUtils extends Demo {
                         File file = entry.getValue();
                         ZipArchiveEntry zae = new ZipArchiveEntry(file, entry.getKey());
                         zaos.putArchiveEntry(zae);
-                        try (InputStream is = new FileInputStream(file)) {
+                        try (InputStream is = Files.newInputStream(file.toPath())) {
                             if (file.isFile()) {
                                 IOUtils.copy(is, zaos);
                             }
@@ -106,7 +106,7 @@ public class ZipUtils extends Demo {
                 ArchiveEntry entry = zaos.createArchiveEntry(f, f.getCanonicalPath().substring(rootPath.length()));
                 zaos.putArchiveEntry(entry);
                 if (f.isFile()) {
-                    try (InputStream  is = Files.newInputStream(f.toPath())) {
+                    try (InputStream is = Files.newInputStream(f.toPath())) {
                         IOUtils.copy(is, zaos);
                     }
                 }
@@ -133,7 +133,7 @@ public class ZipUtils extends Demo {
             if (file.exists()) {
                 destDir = destDir.endsWith(File.separator) ? destDir : destDir + File.separator;
 
-                try (ZipArchiveInputStream zais = new ZipArchiveInputStream(new BufferedInputStream(new FileInputStream(file), 1024 * 5))) {
+                try (ZipArchiveInputStream zais = new ZipArchiveInputStream(new BufferedInputStream(Files.newInputStream(file.toPath()), 1024 * 5))) {
 
                     ArchiveEntry entry;
                     // 把 zip 包中的每个文件读取出来，然后把文件写到指定的文件夹
@@ -187,5 +187,4 @@ public class ZipUtils extends Demo {
         }
         return flag;
     }
-
 }

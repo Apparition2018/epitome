@@ -7,9 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +26,8 @@ public class XMLCodecDemo extends Demo {
      * Bean → XML
      */
     @Test
-    public void testXMLEncoder() throws FileNotFoundException {
-        XMLEncoder encoder = new XMLEncoder(new FileOutputStream(FILE));
+    public void testXMLEncoder() throws IOException {
+        XMLEncoder encoder = new XMLEncoder(Files.newOutputStream(FILE.toPath()));
         for (Person person : personList) {
             encoder.writeObject(person);
         }
@@ -40,9 +39,9 @@ public class XMLCodecDemo extends Demo {
      * XML → Bean
      */
     @Test
-    public void testXMLDecoder() throws FileNotFoundException {
+    public void testXMLDecoder() throws IOException {
         List<Person> personList = new ArrayList<>();
-        try (XMLDecoder decoder = new XMLDecoder(new FileInputStream(FILE))) {
+        try (XMLDecoder decoder = new XMLDecoder(Files.newInputStream(FILE.toPath()))) {
             Object obj;
             while (null != (obj = decoder.readObject())) {
                 personList.add((Person) obj);
@@ -52,5 +51,4 @@ public class XMLCodecDemo extends Demo {
         }
         p(personList);
     }
-
 }

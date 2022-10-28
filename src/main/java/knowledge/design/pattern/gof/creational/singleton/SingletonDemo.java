@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -170,8 +172,8 @@ public class SingletonDemo {
         EarlySingleton singleton1;
         EarlySingleton singleton2 = EarlySingleton.getInstance();
         String filePath = "Singleton.obj";
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath));
-             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(filePath)));
+             ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(filePath)))) {
             oos.writeObject(singleton2);
             oos.flush();
             singleton1 = (EarlySingleton) ois.readObject();

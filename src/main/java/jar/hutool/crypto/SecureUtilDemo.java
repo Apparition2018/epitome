@@ -6,9 +6,10 @@ import cn.hutool.crypto.asymmetric.SignAlgorithm;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.PrivateKey;
@@ -32,11 +33,11 @@ public class SecureUtilDemo extends Demo {
     private static final String CERT_PATH = DESKTOP + "ljh.cer";
 
     @Test
-    public void testCertificate() throws FileNotFoundException, KeyStoreException {
+    public void testCertificate() throws IOException, KeyStoreException {
         // 获取 KeyStore
-        KeyStore keyStore = SecureUtil.readKeyStore(KEY_TYPE_PKCS12, new FileInputStream(KEY_PATH), KEY_PASSWORD.toCharArray());
+        KeyStore keyStore = SecureUtil.readKeyStore(KEY_TYPE_PKCS12, Files.newInputStream(Paths.get(KEY_PATH)), KEY_PASSWORD.toCharArray());
         // 获取 Certificate
-        Certificate certificate = SecureUtil.readX509Certificate(new FileInputStream(CERT_PATH));
+        Certificate certificate = SecureUtil.readX509Certificate(Files.newInputStream(Paths.get(CERT_PATH)));
 
         // 获取私钥
         PrivateKey privateKey = SecureUtil.generatePrivateKey(keyStore, KEY_ALIAS, KEY_PASSWORD.toCharArray());
@@ -50,5 +51,4 @@ public class SecureUtilDemo extends Demo {
         // 验签
         p(sign.verify(HELLO_WORLD.getBytes(StandardCharsets.UTF_8), signBytes));
     }
-
 }

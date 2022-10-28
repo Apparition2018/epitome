@@ -8,9 +8,10 @@ import cn.hutool.captcha.generator.RandomGenerator;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * Captcha      验证码
@@ -45,7 +46,7 @@ public class CaptchaDemo extends Demo {
 
     private void CreateCaptcha(AbstractCaptcha captcha, String captchaPath, CodeGenerator generator) {
         if (null != generator) captcha.setGenerator(generator);
-        try (OutputStream os = new FileOutputStream(captchaPath)) {
+        try (OutputStream os = Files.newOutputStream(Paths.get(captchaPath))) {
             // 写到流，也可以写到文件
             captcha.write(os);
             p(captcha.verify(captcha.getCode()));

@@ -7,7 +7,12 @@ import org.apache.commons.lang3.SerializationUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 /**
@@ -61,8 +66,9 @@ public class SerializationUtilsDemo extends Demo {
 
     @Test
     public void testByteStreamSerialize() {
-        try (OutputStream os = new FileOutputStream(DEMO_PATH + "Serialization.obj");
-             InputStream is = new FileInputStream(DEMO_PATH + "Serialization.obj")) {
+        Path path = Paths.get(DEMO_PATH + "Serialization.obj");
+        try (OutputStream os = Files.newOutputStream(path);
+             InputStream is = Files.newInputStream(path)) {
             // static void	    serialize(Serializable obj, OutputStream outputStream)
             // 序列持久化，Object → bytes[] → File
             SerializationUtils.serialize(person, os);

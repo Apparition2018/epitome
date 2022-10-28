@@ -12,8 +12,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -54,7 +54,7 @@ public class FetchController {
             if (!file.isEmpty()) {
                 byte[] bytes = file.getBytes();
                 File picture = new File("temp.png");
-                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(picture));
+                BufferedOutputStream bos = new BufferedOutputStream(Files.newOutputStream(picture.toPath()));
                 bos.write(bytes);
                 bos.close();
                 return "success";
@@ -76,7 +76,7 @@ public class FetchController {
                 if (!file.isEmpty()) {
                     byte[] bytes = file.getBytes();
                     File picture = new File("temp" + i + ".png");
-                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(picture));
+                    BufferedOutputStream bos = new BufferedOutputStream(Files.newOutputStream(picture.toPath()));
                     bos.write(bytes);
                     bos.close();
                 }

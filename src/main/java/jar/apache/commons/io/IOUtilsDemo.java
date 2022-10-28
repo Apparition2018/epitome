@@ -5,8 +5,13 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +58,7 @@ public class IOUtilsDemo extends Demo {
      * closeQuietly(XXX xxx)    关闭某个流
      */
     @Test
-    public void closeQuietly() throws IOException {
+    public void closeQuietly() {
         contentEquals();
     }
 
@@ -66,7 +71,7 @@ public class IOUtilsDemo extends Demo {
     @Test
     public void contentEquals() {
         try (InputStream is = new URL(BAIDU_URL).openStream();
-             InputStream is2 = new URL(BAIDU_URL).openStream();) {
+             InputStream is2 = new URL(BAIDU_URL).openStream()) {
             p(IOUtils.contentEquals(is, is2)); // true
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,7 +120,7 @@ public class IOUtilsDemo extends Demo {
      */
     @Test
     public void write() throws IOException {
-        OutputStream os = new FileOutputStream(DEMO_FILE_PATH);
+        OutputStream os = Files.newOutputStream(Paths.get(DEMO_FILE_PATH));
         IOUtils.write("静夜思", os, UTF_8);
     }
 
@@ -132,7 +137,7 @@ public class IOUtilsDemo extends Demo {
         lines.add("疑是地上霜。");
         lines.add("举头望明月，");
         lines.add("低头思故乡。");
-        OutputStream os = new FileOutputStream(DEMO_FILE_PATH);
+        OutputStream os = Files.newOutputStream(Paths.get(DEMO_FILE_PATH));
         IOUtils.writeLines(lines, IOUtils.LINE_SEPARATOR_WINDOWS, os, UTF_8);
     }
 
@@ -164,11 +169,10 @@ public class IOUtilsDemo extends Demo {
      */
     @Test
     public void readLines() throws IOException {
-        InputStream is = new FileInputStream(DEMO_FILE_PATH);
+        InputStream is = Files.newInputStream(Paths.get(DEMO_FILE_PATH));
         List<String> lines = IOUtils.readLines(is, UTF_8);
         for (String line : lines) {
             p(line);
         }
     }
-
 }

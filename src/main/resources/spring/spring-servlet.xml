@@ -46,8 +46,8 @@
         https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-view-jsp
         https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-viewresolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <!-- 需导入 jstl -->
-        <!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
+        <!-- 需引用 JSTL -->
+<!--        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>

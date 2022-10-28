@@ -12,19 +12,20 @@ import org.springframework.http.MediaTypeFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import springboot.result.Result;
-import springboot.result.ResultCode;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.text.ParseException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * RuoYi 上传下载 (CommonController)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD
@@ -48,7 +49,7 @@ public class MultipartFileController extends Demo {
         String classesPath = StringUtils.substringAfter(Objects.requireNonNull(classesUrl).toString(), "file:/");
         File template = new File(classesPath + "demo" + File.separator + filename + ".xlsx");
 
-        try (InputStream inputStream = new FileInputStream(template);
+        try (InputStream inputStream = Files.newInputStream(template.toPath());
              OutputStream outputStream = response.getOutputStream()) {
             response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
             response.addHeader("Content-Disposition", "attachment;filename=download.xlsx");
@@ -77,7 +78,8 @@ public class MultipartFileController extends Demo {
                     System.out.println(personList);
                 }
             }
-        } catch (IllegalAccessException | InstantiationException | IOException | NoSuchMethodException | NoSuchFieldException | InvocationTargetException | ParseException e) {
+        } catch (IllegalAccessException | InstantiationException | IOException | NoSuchMethodException |
+                 NoSuchFieldException | InvocationTargetException | ParseException e) {
             e.printStackTrace();
         }
     }
@@ -90,19 +92,26 @@ public class MultipartFileController extends Demo {
     @PostMapping("/file")
     @Operation(summary = "上传文件")
     public Result<String> uploadFile(HttpServletRequest request) throws IOException {
-        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-        MultipartFile file = multipartRequest.getFile("file-input");
-        if (file != null && !file.isEmpty()) {
-            log.info("ContentType: {}", file.getContentType());             // application/vnd.ms-excel
-            log.info("Size: {}", file.getSize());                           // 18944
-            log.info("Name: {}", file.getName());                           // file
-            log.info("OriginalFilename: {}", file.getOriginalFilename());   // Yearly Plan.xls
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+        resolver.setResolveLazily(true);
+        if (resolver.isMultipart(request)) {
+            MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+            Iterator<String> fileNames = multipartRequest.getFileNames();
+            while (fileNames.hasNext()) {
+                MultipartFile file = multipartRequest.getFile(fileNames.next());
+                if (file != null) {
+                    log.info("ContentType: {}", file.getContentType());             // application/vnd.ms-excel
+                    log.info("Size: {}", file.getSize());                           // 18944
+                    log.info("Name: {}", file.getName());                           // file
+                    log.info("OriginalFilename: {}", file.getOriginalFilename());   // Yearly Plan.xls
 
-            // 将接收到的文件传输到给定的目标文件
-            file.transferTo(new File(DEMO_ABSOLUTE_PATH + file.getOriginalFilename()));
+                    // 将接收到的文件传输到给定的目标文件
+                    file.transferTo(new File(DEMO_ABSOLUTE_PATH + file.getOriginalFilename()));
+                }
+            }
             return Result.success("success");
         } else {
-            return Result.failure(ResultCode.PARAM_MISS, "上传文件不能为空");
+            return Result.failure();
         }
     }
 }

@@ -155,7 +155,7 @@ if (logger.isDebugEnabled()) {
 ### 安全规约
 ### 工程结构
 1. 应用分层
-- ![分层结构](https://gitee.com/Apparition2018/file-server/raw/master/image/%E5%BA%94%E7%94%A8%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84.png)
+- ![分层结构](https://i.postimg.cc/LXzZZjw9/image.png)
 ```
 1. 分层结构
     1. 开放 API 层：可直接封装 Service 接口暴露成 RPC 接口；通过 Web 封装成 http 接口；网关控制层等

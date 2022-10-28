@@ -72,7 +72,6 @@ public class ObjectUtilDemo extends Demo {
         // default
         p(ObjectUtil.defaultIfNull(1, Object::new, 1));     // java.lang.Object@68c4039c
         p(ObjectUtil.defaultIfNull(null, 1));               // 1
-        p(ObjectUtil.defaultIfEmpty("1", String::new, "1"));//
         p(ObjectUtil.defaultIfEmpty(null, "1"));            // 1
         p(ObjectUtil.defaultIfBlank(null, "1"));            // 1
     }

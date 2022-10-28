@@ -8,8 +8,9 @@ import org.dom4j.io.XMLWriter;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class Dom4jDemo extends Demo {
         addStudent(school, "2", "李四", "19");
 
         // 新建 XMLWriter
-        XMLWriter xmlWriter = new XMLWriter(new FileOutputStream(XML_PATH), OutputFormat.createPrettyPrint());
+        XMLWriter xmlWriter = new XMLWriter(Files.newOutputStream(Paths.get(XML_PATH)), OutputFormat.createPrettyPrint());
         xmlWriter.write(doc);
         xmlWriter.close();
     }

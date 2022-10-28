@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * CharStream   字符流
@@ -43,7 +45,7 @@ public class CharStream extends Demo {
     public void testReader() {
         // InputStreamReader(InputStream in[, Charset cs/CharsetDecoder dec/String charsetName])
         // 创建使用给定字符集/字符集解码器的 InputStreamReader
-        try (InputStreamReader isr = new InputStreamReader(new FileInputStream(DEMO_PATH + "Input"), StandardCharsets.UTF_8);
+        try (InputStreamReader isr = new InputStreamReader(Files.newInputStream(Paths.get(DEMO_PATH + "Input")), StandardCharsets.UTF_8);
              // FileReader(File file)                   在给定从中读取数据的 File 的情况下创建一个新 FileReader
              // FileReader(String fileName)             在给定从中读取数据的文件名的情况下创建一个新 FileReader
              // FileReader(FileDescriptor fd)           在给定从中读取数据的 FileDescriptor 的情况下创建一个新 FileReader
@@ -105,7 +107,7 @@ public class CharStream extends Demo {
     public void testWriter() {
         try (Writer writer = new FileWriter(DEMO_PATH + "Output");
              // PrintWriter(OutputStream out, boolean autoFlush)        通过现有的 OutputStream 创建新的 PrintWriter
-             PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream(DEMO_PATH + "Output")), true)) {
+             PrintWriter pw = new PrintWriter(new OutputStreamWriter(Files.newOutputStream(Paths.get(DEMO_PATH + "Output"))), true)) {
 
             /* FileWriter */
             // void	            write([char[] cbuf]/int c)              写入字符数组/单个字符

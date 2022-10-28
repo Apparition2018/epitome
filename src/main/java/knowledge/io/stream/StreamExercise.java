@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * 节点流
@@ -33,8 +35,8 @@ public class StreamExercise extends Demo {
      * 复制
      */
     public boolean copy(String src, String desc) {
-        try (InputStream is = new BufferedInputStream(new FileInputStream(src));
-             OutputStream os = new BufferedOutputStream(new FileOutputStream(desc))) {
+        try (InputStream is = new BufferedInputStream(Files.newInputStream(Paths.get(src)));
+             OutputStream os = new BufferedOutputStream(Files.newOutputStream(Paths.get(desc)))) {
             int len;
             byte[] buffer = new byte[1024];
             while ((len = is.read(buffer)) != -1) {
@@ -83,5 +85,4 @@ public class StreamExercise extends Demo {
         p("复制成功！");
         return true;
     }
-
 }

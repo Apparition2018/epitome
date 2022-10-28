@@ -1,7 +1,12 @@
 package knowledge.data.structure.collections.framework.map.properties;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 /**
@@ -19,7 +24,7 @@ public class PropertiesUtil {
             if (null != is) {
                 props.load(new InputStreamReader(is, StandardCharsets.UTF_8));
             } else {
-                reader = new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8);
+                reader = new InputStreamReader(Files.newInputStream(Paths.get(fileName)), StandardCharsets.UTF_8);
                 props.load(reader);
             }
         } catch (IOException e) {
@@ -45,5 +50,4 @@ public class PropertiesUtil {
         String server = PropertiesUtil.getProperty("application.properties", "server.port");
         System.out.println("server = " + server);
     }
-
 }

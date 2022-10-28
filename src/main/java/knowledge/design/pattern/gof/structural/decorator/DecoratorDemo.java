@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Base64;
 import java.util.Objects;
 import java.util.zip.Deflater;
@@ -94,7 +95,7 @@ public class DecoratorDemo {
         @Override
         public void writeData(String data) {
             File file = new File(name);
-            try (OutputStream fos = new FileOutputStream(file)) {
+            try (OutputStream fos = Files.newOutputStream(file.toPath())) {
                 fos.write(data.getBytes(), 0, data.length());
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
@@ -230,5 +231,4 @@ public class DecoratorDemo {
             }
         }
     }
-
 }

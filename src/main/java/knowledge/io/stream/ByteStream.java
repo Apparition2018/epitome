@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * ByteStream 字节流
@@ -76,7 +78,7 @@ public class ByteStream extends Demo {
         // FileOutputStream(File file[, boolean append])            创建一个向指定 File 对象表示的文件中写入数据的文件输出流
         // FileOutputStream(String name[, boolean append])          创建一个向具有指定 name 的文件中写入数据的输出文件流
         // FileOutputStream(FileDescriptor fdObj)                   创建一个向指定文件描述符处写入数据的输出文件流，该文件描述符表示一个到文件系统中的某个实际文件的现有连接
-        try (OutputStream os = new BufferedOutputStream(new FileOutputStream(DEMO_PATH + "Output"))) {
+        try (OutputStream os = new BufferedOutputStream(Files.newOutputStream(Paths.get(DEMO_PATH + "Output")))) {
             String outputString = "Output Output Output Output Output ";
             // abstract  void	write(int b)                        将指定的字节写入此输出流
             // void	            write(byte[] b[, int off, int len]) 将指定 byte 数组中从偏移量 off 开始的 len 个字节写入此输出流
@@ -132,8 +134,8 @@ public class ByteStream extends Demo {
      */
     @Test
     public void testDataXXXStream() {
-        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(DEMO_PATH + "io.dat"));
-             DataInputStream dis = new DataInputStream(new FileInputStream(DEMO_PATH + "io.dat"))) {
+        try (DataOutputStream dos = new DataOutputStream(Files.newOutputStream(Paths.get(DEMO_PATH + "io.dat")));
+             DataInputStream dis = new DataInputStream(Files.newInputStream(Paths.get(DEMO_PATH + "io.dat")))) {
             // void	    writeXXX(XXX v)     将一个 xxx 值以 xxx 值形式写入基础输出流
             dos.writeInt(10);
             dos.writeUTF("io");
@@ -157,8 +159,8 @@ public class ByteStream extends Demo {
      */
     @Test
     public void testObjectXXXStream() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DEMO_PATH + "person.obj"));
-             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(DEMO_PATH + "person.obj"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(DEMO_PATH + "person.obj")));
+             ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(DEMO_PATH + "person.obj")))) {
 
             /*
              * 将给定对象转换为一组字节后写出
@@ -183,5 +185,4 @@ public class ByteStream extends Demo {
             e.printStackTrace();
         }
     }
-
 }
