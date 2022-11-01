@@ -1,6 +1,7 @@
 package springboot.global;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.http.fileupload.impl.FileSizeLimitExceededException;
 import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -31,9 +32,7 @@ import springboot.result.ResultCode;
 import javax.servlet.Servlet;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -75,14 +74,21 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(MissingServletRequestParameterException e) {
         log.warn("缺少请求参数：{}", e.getMessage());
-        return Result.failure(ResultCode.PARAM_MISS, String.format("缺少必要的请求参数: %s", e.getParameterName()));
+        return Result.failure(ResultCode.PARAM_MISS, ResultCode.PARAM_MISS.getMsg() + "：" + e.getParameterName());
     }
 
     @ExceptionHandler({MethodArgumentTypeMismatchException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(MethodArgumentTypeMismatchException e) {
         log.warn("请求参数格式错误：{}", e.getMessage());
-        return Result.failure(ResultCode.PARAM_TYPE_ERROR, String.format("请求参数格式错误: %s", e.getName()));
+        return Result.failure(ResultCode.PARAM_TYPE_ERROR, ResultCode.PARAM_TYPE_ERROR.getMsg() + "：" + e.getName());
+    }
+
+    @ExceptionHandler({FileSizeLimitExceededException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Result<Object> handleException(FileSizeLimitExceededException e) {
+        log.warn("文件大小超出限制：{}", e.getMessage());
+        return Result.failure(ResultCode.FAILURE, e.getMessage());
     }
 
     /**
@@ -120,13 +126,14 @@ public class GlobalExceptionHandler {
     private Result<Object> handleException(BindingResult result) {
         List<FieldError> fieldErrors = result.getFieldErrors();
         Locale locale = LocaleContextHolder.getLocale();
-        String message = fieldErrors.stream().map(fieldError -> {
+        Map<String, Object> map = new HashMap<>();
+        fieldErrors.forEach(fieldError -> {
                     String field = fieldError.getField();
                     String errorMessage = messageSource.getMessage(fieldError, locale);
-                    return String.format("%s: %s", field, errorMessage);
+                    map.put(field, errorMessage);
                 }
-        ).collect(Collectors.joining("; "));
-        return Result.failure(ResultCode.PARAM_BIND_ERROR, message);
+        );
+        return Result.failure(ResultCode.PARAM_BIND_ERROR, map);
     }
 
     /**

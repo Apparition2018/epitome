@@ -97,8 +97,11 @@ public class Result<T> implements Serializable {
         return new Result<>(resultCode, msg);
     }
 
+    public static <T> Result<T> failure(IResultCode resultCode, T data) {
+        return new Result<>(resultCode, data);
+    }
+
     public static <T> Result<T> status(boolean flag) {
         return flag ? success() : failure();
     }
-
 }

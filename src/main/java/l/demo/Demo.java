@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.springframework.lang.NonNull;
 import org.springframework.util.StopWatch;
 
+import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
@@ -85,7 +86,7 @@ public class Demo {
     public static final String DEMO_URL = "http://localhost:3333/demo/";
     public static final String RANDOM_URL = " https://quoters.apps.pcfone.io/api/random";
     public static final String USER_DIR = System.getProperty("user.dir");
-    public static final String DESKTOP = "C:/Users/Administrator/Desktop/";
+    public static final String DESKTOP = FileSystemView.getFileSystemView().getHomeDirectory().getPath() + File.separator;
     public static final String JAVA_PATH = "src/main/java/";
     public static final String RESOURCES_PATH = "src/main/resources/";
     public static final String RESOURCES_ABSOLUTE_PATH = USER_DIR + File.separator + RESOURCES_PATH;

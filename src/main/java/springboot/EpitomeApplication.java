@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * @author ljh
@@ -24,10 +25,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableScheduling
 @EnableAsync
 @EnableTransactionManagement
+// TK Mybatis MapperScan
+@MapperScan(basePackages = "springboot.mapper.master")
 public class EpitomeApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EpitomeApplication.class, args);
     }
-
 }

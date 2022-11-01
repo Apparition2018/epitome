@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 24/08/2022 13:51:30
+ Date: 01/11/2022 23:16:02
 */
 
 SET NAMES utf8mb4;
@@ -1165,7 +1165,7 @@ CREATE TABLE `user`  (
   `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `score` int(0) NOT NULL COMMENT '积分',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
