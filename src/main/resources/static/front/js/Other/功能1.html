@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>功能1</title>
-    <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
 
@@ -100,17 +99,17 @@
         </div>
         <script class="code w67p" contenteditable="true">
             let arr = [[0, 1], [2, 3], [4, 5]];
-            
+
             // apply
             console.log([].concat.apply([], arr));
-            
+
             // reduce
             console.log(arr.reduce((l, r) => {return l.concat(r)}));
-            
-            // ... 
+
+            // ...
             function flatten(arr) { return [].concat(...arr.map(e => Array.isArray(e) ? flatten(e) : e ))}
             console.log(flatten(arr));
-            
+
             // flat
             console.log(arr.flat());
         </script>

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>逻辑运算符</title>
-    <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
 
@@ -50,14 +49,14 @@
             let obj1 = {};
             let addArr = [1, 2, 3];
             let arr;
-            
+
             // 正常
             if (obj1['arr']) {
                 arr = obj1['arr'].concat(addArr);
             } else {
                 arr = addArr;
             }
-            
+
             // 简化
             arr = obj1['arr'] && obj1['arr'].concat(addArr) || addArr;
         </script>

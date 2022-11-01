@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>Symbol-demo</title>
-    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../public/css/demo.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script defer src="../../../../public/js/demo.js"></script>
@@ -86,9 +85,9 @@
             // Array, TypedArray, String, Map, Set 有默认的迭代器行为
             const arr = [1, 2, 3];
             const symArr = arr[Symbol.iterator]();
-            symArr.next(); // {value: 1, done: false} 
-            symArr.next(); // {value: 2, done: false} 
-            symArr.next(); // {value: 3, done: false} 
+            symArr.next(); // {value: 1, done: false}
+            symArr.next(); // {value: 2, done: false}
+            symArr.next(); // {value: 3, done: false}
             symArr.next(); // {value: undefined, done: true}
         </script>
     </section>

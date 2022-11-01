@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>Date-demo</title>
-    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
 
@@ -126,13 +125,13 @@
             function addDateFormat() {
                 Date.prototype.format = function (format) {
                     const o = {
-                        "M+": this.getMonth() + 1,                  // 月份 
-                        "d+": this.getDate(), 			            // 日 
-                        "h+": this.getHours(), 		                // 小时 
-                        "m+": this.getMinutes(), 		            // 分 
-                        "s+": this.getSeconds(), 		            // 秒 
-                        "S": this.getMilliseconds(), 	            // 毫秒 
-                        "q+": Math.floor((this.getMonth() + 3) / 3) // 季度 
+                        "M+": this.getMonth() + 1,                  // 月份
+                        "d+": this.getDate(), 			            // 日
+                        "h+": this.getHours(), 		                // 小时
+                        "m+": this.getMinutes(), 		            // 分
+                        "s+": this.getSeconds(), 		            // 秒
+                        "S": this.getMilliseconds(), 	            // 毫秒
+                        "q+": Math.floor((this.getMonth() + 3) / 3) // 季度
                     };
                     if (/(y+)/.test(format)) {
                         format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));

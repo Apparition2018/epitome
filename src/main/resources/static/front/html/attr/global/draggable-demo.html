@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>draggable-demo</title>
-    <link rel="icon" href="../../../../public/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../../public/css/demo.css">
     <style>
         .code-wrap-2 {
@@ -46,9 +45,9 @@
                 let x = e.pageX;
                 let y = e.pageY;
                 console.log(x + '-' + y);
-                // drag事件最后一刻，无法读取鼠标的坐标，pageX和pageY都变为0  
+                // drag事件最后一刻，无法读取鼠标的坐标，pageX和pageY都变为0
                 if (x === 0 && y === 0) {
-                    return; // 不处理拖动最后一刻X和Y都为0的情形  
+                    return; // 不处理拖动最后一刻X和Y都为0的情形
                 }
                 x -= offsetX;
                 y -= offsetY;

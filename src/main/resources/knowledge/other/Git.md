@@ -11,12 +11,12 @@
 ---
 ## 问题
 1. [解决 GitHub 提交次数过多 .git 文件过大的问题？](https://www.zhihu.com/question/29769130)
-2[解决 GitHub 网页上图片显示失败的问题](https://blog.csdn.net/qq_38232598/article/details/91346392)
+2. [解决 GitHub 网页上图片显示失败的问题](https://blog.csdn.net/qq_38232598/article/details/91346392)
 ---
 ## hosts
 1. [IPAddress.com](https://www.ipaddress.com)
 2. 查找 github.com 和 github.global.ssl.fastly.net 的 IP，并记录在 hosts 文件
-3. cmd → ipconfig /flushdns
+3. cmd → `ipconfig /flushdns`
 ---
 ## [配置多个 git 账号](https://blog.csdn.net/qq_33254766/article/details/122941664)
 1. 生成多个 SSH key

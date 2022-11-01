@@ -112,8 +112,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
-            <!-- optional=true, 依赖不会传递, 该项目依赖devtools;
-				之后依赖此项目的项目如果想要使用, 需要重新引入 -->
+            <!-- optional=true，表示依赖不会传递；依赖此项目的项目使用 devtools，需要重新引入 -->
             <optional>true</optional>
         </dependency>
         <!-- 配置处理器：https://www.xttblog.com/?p=2834 -->
@@ -294,7 +293,7 @@
             <artifactId>htmlunit</artifactId>
         </dependency>
 
-        <!-- minio：包含了 bcprov-jdk15on, commons-compress -->
+        <!-- minio：包含了 bcprov-jdk15on，commons-compress -->
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>

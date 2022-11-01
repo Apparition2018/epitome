@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>展开语法</title>
-    <link rel="icon" href="../../../public/img/ico/NoharaSinnosuke.ico">
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
 
@@ -60,7 +59,7 @@
             const obj1 = { foo: 'bar', x: 42 };
             const obj2 = { foo: 'baz', y: 13 };
 
-            // 浅拷贝(Shallow-cloning, 不包含 prototype)和对象合并，可以使用更简短的展开语法，而不必再使用 Object.assign() 
+            // 浅拷贝(Shallow-cloning, 不包含 prototype)和对象合并，可以使用更简短的展开语法，而不必再使用 Object.assign()
             // 区别：Object.assign() 函数会触发 setters，而展开语法则不会
             const cloneObj = { ...obj1 };                   // 克隆后的对象: { foo: "bar", x: 42 }
             const mergedObj = { ...obj1, ...obj2 };         // 合并后的对象: { foo: "baz", x: 42, y: 13 }

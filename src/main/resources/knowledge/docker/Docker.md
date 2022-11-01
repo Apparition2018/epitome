@@ -265,10 +265,11 @@ info replication
 docker run -d --name mongo -p 27017:27017 mongo --auth
 
 # 进入 admin 数据库
-docker exec -it mongo mongo admin
+# mongo 4- 使用 mongo，mongo 5+ 使用 mongosh
+docker exec -it mongo mongo admin | docker exec -it mongo mongosh admin
     # 上面一句等同于下面三句
     docker exec -it mongo bash
-    mongo
+    mongo | mongosh
     use admin
 # 创建 root 账号密码，角色 root
 db.createUser({user: "root", pwd: "root", roles: ["root"]})
@@ -277,6 +278,7 @@ db.auth("root", "root")
 # 创建 admin 账号密码，角色 userAdminAnyDatabase，用户管理者
 db.createUser({user: "admin", pwd: "admin", roles: [{role: "userAdminAnyDatabase", db: "admin"}]})
 # 创建 ljh 账号密码，角色 readWrite
+use spring_data
 db.createUser({user: "ljh", pwd: "123456", roles: [{role: "readWrite", db: "spring_data"}]})
 ```
 6. [Tomcat](https://hub.docker.com/_/tomcat)

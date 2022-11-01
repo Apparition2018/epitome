@@ -35,7 +35,7 @@ import java.util.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("/multipart-file")
+@RequestMapping("/multipart-fileCon@")
 @Tag(name = "MultipartFile")
 public class MultipartFileController extends Demo {
 
