@@ -273,7 +273,7 @@ docker exec -it mongo mongo admin | docker exec -it mongo mongosh admin
     use admin
 # 创建 root 账号密码，角色 root
 db.createUser({user: "root", pwd: "root", roles: ["root"]})
-# 验证 账号密码
+# 登录
 db.auth("root", "root")
 # 创建 admin 账号密码，角色 userAdminAnyDatabase，用户管理者
 db.createUser({user: "admin", pwd: "admin", roles: [{role: "userAdminAnyDatabase", db: "admin"}]})

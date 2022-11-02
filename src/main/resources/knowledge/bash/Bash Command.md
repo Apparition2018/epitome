@@ -67,6 +67,7 @@
     cd                              change directory                    更改工作目录
     ls                              list                                列出目录内容
     mkdir                           make directory                      创建目录
+        -p                          --parents                           创建目录，如需要则创建上层目录
     touch                                                               创建文件和更改文件的访问和修改时间
     file                                                                确定文件类型
     find                                                                查找文件

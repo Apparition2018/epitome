@@ -23,14 +23,14 @@
 ## Sign in
     ssh ljh@192.168.58.129
     123456
+---
 ## Common Commands
     su
     ip addr
     vi /etc/sysconfig/network-scripts/ifcfg-eth0; ONBOOT=yes;
     vi ~/.ssh/known_hosts
 ---
-## Install
-### JDK
+## JDK
 1. [linux安装jdk1.8(rpm方式)](https://www.cnblogs.com/myibm/p/9232744.html)
 2. [Centos7配置JAVA_HOME](https://www.cnblogs.com/baojun/p/10832624.html)
 ```
@@ -49,7 +49,8 @@
         注：JDK1.5 之后不再需要配置 CLASSPATH
     2.5 source /etc/profile
 ```
-### Tomcat
+---
+## Tomcat
 - [CentOS 搭建多个 Tomcat](https://blog.csdn.net/qq_40065776/article/details/105652328)
 - [Tomcat 启动慢警告：Creation of SecureRandom instance for ...](https://zhuanlan.zhihu.com/p/107078362)
 ```
@@ -84,7 +85,8 @@
 5. ${CATALINA_HOME}/sbin/startup.sh
    ${CATALINA_HOME}/bin/shutdown.sh
 ```
-### Maven
+---
+## Maven
 ```
 1. https://maven.apache.org/download.cgi
     wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
@@ -102,7 +104,8 @@
     mvn package                                     打包
     mvn clean package -Dmaven.test.skip=true        跳过单元测试
 ```
-### vsftpd
+---
+## vsftpd
 - Very Secure FTP Daemon，一个完全免费的、开放源代码的 ftp 服务器软件
 ```
 1. yum -y install ftp
@@ -136,7 +139,8 @@
 6. 登录服务器：ftp 192.168.58.129
 7. FTP 软件：FileZilla
 ```
-### [Nginx](https://cnblogs.com/bluestorm/p/4574688.html)
+---
+## [Nginx](https://cnblogs.com/bluestorm/p/4574688.html)
 ```
 1. yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
 2. https://nginx.org/en/download.html
@@ -179,7 +183,8 @@
         192.168.58.129 image.ljh.com
         192.168.58.129 s.ljh.com
 ```
-### MySQL
+---
+## MySQL
 - [安装 mysql-5.7](https://cnblogs.com/qcq0703/p/11186055.html)
 ```
 1. yum list installed|grep mysql
@@ -278,7 +283,8 @@
         reset slave all;
 4. 把主2设为主数据库，主1设为从数据库
 ```
-### Git
+---
+## Git
 ```
 1. yum -y install zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 2. https://github.com/git/git/releases
@@ -309,7 +315,8 @@
     5.4 cat ~/.ssh/id_rsa.pub
     5.5 登录码云设置 SSH 公钥
 ```
-### Redis
+---
+## Redis
 ```
 1. yum install gcc-c++
 2. https://redis.io/download/
