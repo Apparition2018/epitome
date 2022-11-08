@@ -2,6 +2,7 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.ObjectUtil;
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -70,8 +71,8 @@ public class ObjectUtilDemo extends Demo {
         p(ObjectUtil.hasEmpty(1, "", "2", "", 3));          // true
 
         // default
-        p(ObjectUtil.defaultIfNull(1, Object::new, 1));     // java.lang.Object@68c4039c
-        p(ObjectUtil.defaultIfNull(null, 1));               // 1
+        p(ObjectUtil.defaultIfNull(null, (s) -> StringUtils.trim(String.valueOf(s)), "1")); // 1
+        p(ObjectUtil.defaultIfNull(null, "1"));             // 1
         p(ObjectUtil.defaultIfEmpty(null, "1"));            // 1
         p(ObjectUtil.defaultIfBlank(null, "1"));            // 1
     }

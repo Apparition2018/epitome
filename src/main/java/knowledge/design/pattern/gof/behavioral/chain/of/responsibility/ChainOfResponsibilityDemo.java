@@ -135,7 +135,7 @@ public class ChainOfResponsibilityDemo {
             request++;
             if (request > requestPerMinute) {
                 System.out.println("Request limit exceeded!");
-                Thread.currentThread().stop();
+                return false;
             }
             return checkNext(email, password);
         }
@@ -214,5 +214,4 @@ public class ChainOfResponsibilityDemo {
             return Objects.equals(users.get(email), password);
         }
     }
-
 }

@@ -42,7 +42,7 @@ public class OkHttpDemo extends Demo {
      * Asynchronous Get：https://square.github.io/okhttp/recipes/#asynchronous-get-kt-java
      */
     @Test
-    public void testAsynchronousGet() throws IOException {
+    public void testAsynchronousGet() {
         Request request = new Request.Builder().url(getPublicObjUrl("helloworld.txt")).build();
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -90,7 +90,7 @@ public class OkHttpDemo extends Demo {
                 + " * _1.0_ May 6, 2013\n"
                 + " * _1.1_ June 15, 2013\n"
                 + " * _1.2_ August 11, 2013\n";
-        RequestBody requestBody = RequestBody.create(MEDIA_TYPE_MARKDOWN, postBody);
+        RequestBody requestBody = RequestBody.create(postBody, MEDIA_TYPE_MARKDOWN);
         Request request = new Request.Builder().url(MARKDOWN_RAW_URL).post(requestBody).build();
         executePrintResult(request);
     }
@@ -134,7 +134,7 @@ public class OkHttpDemo extends Demo {
     @Test
     public void testPostFile() throws IOException {
         File file = new File(DEMO_FILE_PATH);
-        RequestBody requestBody = RequestBody.create(MEDIA_TYPE_MARKDOWN, file);
+        RequestBody requestBody = RequestBody.create(file, MEDIA_TYPE_MARKDOWN);
         Request request = new Request.Builder().url(MARKDOWN_RAW_URL).post(requestBody).build();
         executePrintResult(request);
     }
@@ -154,7 +154,7 @@ public class OkHttpDemo extends Demo {
      */
     @Test
     public void testMultipartRequest() throws IOException {
-        RequestBody logoRequestBody = RequestBody.create(MEDIA_TYPE_PNG, new File(ARSENAL_LOGO));
+        RequestBody logoRequestBody = RequestBody.create(new File(ARSENAL_LOGO), MEDIA_TYPE_PNG);
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("title", "Arsenal Logo")

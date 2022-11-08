@@ -14,13 +14,13 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
+        <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- http://maven.apache.org/general.html#encoding-warning -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- http://maven.apache.org/general.html#special-characters-site -->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
         <!-- 跳过 Test -->
         <skipTests>true</skipTests>
         <!-- dependency -->
@@ -63,7 +63,7 @@
         <emoji.version>5.1.1</emoji.version>
         <truelicense.version>1.33</truelicense.version>
         <!-- plugin -->
-        <mybatis-generator-core.version>1.4.1</mybatis-generator-core.version>
+        <mybatis-generator-maven-plugin.version>1.4.1</mybatis-generator-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -75,16 +75,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.vaadin.external.google</groupId>
-                    <artifactId>android-json</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -110,12 +100,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <!-- 热部署：https://www.jb51.net/article/197958.htm -->
+        <!-- 热部署：https://blog.csdn.net/Martin_chen2/article/details/116198924 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
-            <!-- optional=true，表示依赖不会传递；依赖此项目的项目使用 devtools，需要重新引入 -->
+            <!-- optional=true，表示依赖不会传递；依赖此项目的项想要使用 devtools，需要重新引入 -->
             <optional>true</optional>
         </dependency>
         <!-- 配置处理器：https://www.xttblog.com/?p=2834 -->
@@ -212,6 +202,12 @@
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>${commons-fileupload.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- hutool：https://www.hutool.cn/docs/#/ -->
@@ -478,30 +474,21 @@
     </pluginRepositories>
 
     <build>
-        <!-- pom 中的 resources：https://www.cnblogs.com/guiyl/p/11908164.html -->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <!-- https://www.cnblogs.com/wangxuejian/p/13551292.html -->
-                <filtering>false</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.md</include>
-                    <include>**/*.json</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
+        <!-- spring-boot-starter-parent 的 resources
+            https://stackoverflow.com/questions/60041457/spring-boot-starter-parent-resources-includes-excludes-explained -->
+        <!-- <resources/> -->
 
         <plugins>
             <plugin>
+                <!-- Creating an Executable Jar：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#getting-started.first-application.executable-jar
+                    Spring Boot Maven Plugin：https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/    -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <!-- https://jiangchao.blog.csdn.net/article/details/108880019 -->
                     <fork>true</fork>
+                    <!-- 资源热刷新 -->
+                    <addResources>true</addResources>
                 </configuration>
             </plugin>
 
@@ -522,7 +509,8 @@
             </plugin>
 
             <!-- maven-jar-plugin
-                http://maven.apache.org/plugins/maven-jar-plugin/ -->
+                http://maven.apache.org/plugins/maven-jar-plugin/
+                https://maven.apache.org/plugins/maven-assembly-plugin/ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -533,7 +521,7 @@
                             <addClasspath>true</addClasspath>
                             <useUniqueVersions>false</useUniqueVersions>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>springboot.EpitomeApplication</mainClass>
+                            <mainClass>${basedir}/springboot.EpitomeApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -542,7 +530,7 @@
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>${mybatis-generator-core.version}</version>
+                <version>${mybatis-generator-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>Generate MyBatis Artifacts</id>
@@ -552,15 +540,15 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <configurationFile>src/main/resources/mybatis/generator-config.xml</configurationFile>
+                    <configurationFile>${basedir}/src/main/resources/mybatis/generator-config.xml</configurationFile>
                     <!-- <configurationFile>${basedir}/src/main/resources/mybatis/generator-config-dynamicSql.xml</configurationFile>-->
                     <overwrite>false</overwrite>
                     <verbose>true</verbose>
                 </configuration>
                 <dependencies>
                     <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
+                        <groupId>com.mysql</groupId>
+                        <artifactId>mysql-connector-j</artifactId>
                         <version>${mysql.version}</version>
                     </dependency>
                 </dependencies>

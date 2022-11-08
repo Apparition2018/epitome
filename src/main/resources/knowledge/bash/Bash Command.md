@@ -261,6 +261,7 @@
         --nodeps                                                        不验证套件档的相互关联性
         -i                                                              安装指定的套件档
         -h                                                              套件安装时列出标记
+        -U                          --upgrade                           升级指定的套件档
         -v                                                              显示指令执行过程
         -q                                                              使用询问模式，当遇到任何问题时，会先询问用户
     yum                             yellow dog updater, modified        Shell 前端软件包管理器
