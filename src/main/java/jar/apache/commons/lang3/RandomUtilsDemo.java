@@ -1,7 +1,6 @@
 package jar.apache.commons.lang3;
 
 import org.apache.commons.lang3.RandomUtils;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -14,8 +13,7 @@ import static l.demo.Demo.p;
  */
 public class RandomUtilsDemo {
 
-    @Test
-    public void random() {
+    public static void main(String[] args) {
         p(RandomUtils.nextBoolean());   // false
 
         p(RandomUtils.nextBytes(5));    // [39, -56, 8, 97, -103]
@@ -32,5 +30,4 @@ public class RandomUtilsDemo {
         p(RandomUtils.nextDouble());
         p(RandomUtils.nextDouble(0, 5));
     }
-
 }

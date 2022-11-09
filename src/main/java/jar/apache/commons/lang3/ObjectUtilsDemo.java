@@ -74,5 +74,4 @@ public class ObjectUtilsDemo extends Demo {
         p(ObjectUtils.CONST_SHORT(32767));      // v >= -32768 && v <= 32767
         p(ObjectUtils.CONST(0));
     }
-
 }

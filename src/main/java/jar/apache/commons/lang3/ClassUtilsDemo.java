@@ -3,7 +3,6 @@ package jar.apache.commons.lang3;
 import l.demo.Demo;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
-import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
@@ -16,8 +15,7 @@ import java.util.Collections;
  */
 public class ClassUtilsDemo extends Demo {
 
-    @Test
-    public void class_() throws ClassNotFoundException {
+    public static void main(String[] args) throws ClassNotFoundException {
         // static List<String>	        convertClassesToClassNames(List<Class<?>> classes)
         // 类 → 类名
         p(ClassUtils.convertClassesToClassNames(Collections.singletonList(Integer.class)));        // [java.lang.Integer]
@@ -75,6 +73,6 @@ public class ClassUtilsDemo extends Demo {
 
         // static Class<?>[]	        toClass(Object... array)
         // 对象 → Class 对象
-        p(ClassUtils.toClass(ArrayUtils.toArray(1, "2", this))); // [class java.lang.Integer, class java.lang.String, class jar.apache.commons.lang.ClassUtilsDemo]
+        p(ClassUtils.toClass(ArrayUtils.toArray(1, "2", new ClassUtilsDemo()))); // [class java.lang.Integer, class java.lang.String, class jar.apache.commons.lang.ClassUtilsDemo]
     }
 }

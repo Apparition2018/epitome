@@ -105,5 +105,4 @@ public class CharUtilsDemo {
         p(CharUtils.unicodeEscaped('A'));   // \u0041
         p(CharUtils.unicodeEscaped(null));  // null
     }
-
 }

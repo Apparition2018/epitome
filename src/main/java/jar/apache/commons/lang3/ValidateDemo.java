@@ -1,7 +1,6 @@
 package jar.apache.commons.lang3;
 
 import org.apache.commons.lang3.Validate;
-import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,8 +16,7 @@ import java.util.Map;
  */
 public class ValidateDemo {
 
-    @Test
-    public void testValidate() {
+    public static void main(String[] args) {
         // 验证指定值是否在规定范围内，不包括边界值
         Validate.exclusiveBetween(1, 10, 9);
         Validate.exclusiveBetween(1, 10, 10); // IllegalArgumentException: The value 10 is not in the specified exclusive range of 1 to 10
@@ -56,5 +54,4 @@ public class ValidateDemo {
         Validate.validIndex("abc", 2);
         Validate.validIndex(Arrays.asList(1, 2, 3, 4), 4); // IndexOutOfBoundsException: The validated collection index is invalid: 4
     }
-
 }

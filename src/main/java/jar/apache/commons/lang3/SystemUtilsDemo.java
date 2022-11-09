@@ -2,7 +2,6 @@ package jar.apache.commons.lang3;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.SystemUtils;
-import org.junit.jupiter.api.Test;
 
 /**
  * SystemUtils
@@ -13,15 +12,14 @@ import org.junit.jupiter.api.Test;
  */
 public class SystemUtilsDemo extends Demo {
 
-    @Test
-    public void system() {
+    public static void main(String[] args) {
         p(SystemUtils.getUserName());       // NL-PC001
         p(SystemUtils.getUserHome());       // C:\Users\NL-PC001
         p(SystemUtils.getUserDir());        // D:\L\git\epitome
         p(SystemUtils.getHostName());       // JS3-LJH
         p(SystemUtils.getJavaHome());       // D:\Java\jdk1.8.0_221\jre
         p(SystemUtils.getJavaIoTmpDir());   // C:\Users\NL-PC001\AppData\Local\Temp
-        
+
         p(SystemUtils.USER_NAME);           // NL-PC001
         p(SystemUtils.USER_HOME);           // C:\Users\NL-PC001
         p(SystemUtils.USER_DIR);            // D:\L\git\epitome
@@ -42,5 +40,4 @@ public class SystemUtilsDemo extends Demo {
         p(SystemUtils.JAVA_CLASS_PATH);     // ...
         p(SystemUtils.FILE_ENCODING);       // UTF-8
     }
-
 }

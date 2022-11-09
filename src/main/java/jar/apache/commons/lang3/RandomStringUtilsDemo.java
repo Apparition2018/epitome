@@ -1,7 +1,6 @@
 package jar.apache.commons.lang3;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -14,8 +13,7 @@ import static l.demo.Demo.p;
  */
 public class RandomStringUtilsDemo {
 
-    @Test
-    public void random() {
+    public static void main(String[] args) {
 
         // random(int count)                随机字符串，中文环境下乱码
         p(RandomStringUtils.random(10));
@@ -60,7 +58,5 @@ public class RandomStringUtilsDemo {
         // randomPrint(int minLengthInclusive, int maxLengthExclusive)
         p(RandomStringUtils.randomPrint(10));
         p(RandomStringUtils.randomPrint(4, 11));        // 4-10 位
-
     }
-
 }

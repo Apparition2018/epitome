@@ -7,7 +7,7 @@
 3. [Redis vs MongoDB](https://www.cnblogs.com/ht22ht22/p/12567172.html)
 4. [Redis vs MongoDB vs HBase](https://www.zhihu.com/question/30219620)
 ---
-## 对比
+## 数据模型对比
 | Data Model          | Performance | Scalability   | Flexibility | Complexity | Notable Examples  | Use           |
 |:--------------------|:------------|:--------------|:------------|:-----------|:------------------|:--------------|
 | Key-Value Store     | high        | high          | high        | none       | Memcached, Redis  | 缓存 (速度快)      |

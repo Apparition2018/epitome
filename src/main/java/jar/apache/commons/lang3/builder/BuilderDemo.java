@@ -24,7 +24,6 @@ public class BuilderDemo {
         //  lastName=O'Brien
         //  taxableIncome=43000
         // ]
-
     }
 
     @Data

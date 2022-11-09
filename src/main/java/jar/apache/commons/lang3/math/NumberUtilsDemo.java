@@ -87,5 +87,4 @@ public class NumberUtilsDemo extends Demo {
         p(NumberUtils.max(1.111, 11.11, 111.1, 1111));  // 1111.0
         p(NumberUtils.min(1.111, 11.11, 111.1, 1111));  // 1.111
     }
-
 }

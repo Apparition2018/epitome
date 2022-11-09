@@ -27,12 +27,12 @@ public class BooleanUtilsDemo {
         p(BooleanUtils.and(b2));        // false
         p(BooleanUtils.and(b3));        // false
         p(BooleanUtils.and(b4));        // false
-        // or                           
+        // or
         p(BooleanUtils.or(b1));         // true
         p(BooleanUtils.or(b2));         // true
         p(BooleanUtils.or(b3));         // true
         p(BooleanUtils.or(b4));         // false
-        // xor                          
+        // xor
         p(BooleanUtils.xor(b1));        // false
         p(BooleanUtils.xor(b2));        // true
         p(BooleanUtils.xor(b3));        // true
@@ -126,5 +126,4 @@ public class BooleanUtilsDemo {
         p(BooleanUtils.toStringOnOff(true));            // on
         p(BooleanUtils.toStringTrueFalse(true));        // true
     }
-
 }

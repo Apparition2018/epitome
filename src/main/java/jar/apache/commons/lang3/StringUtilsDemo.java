@@ -396,5 +396,4 @@ public class StringUtilsDemo extends Demo {
         // 去音调符号
         p(StringUtils.stripAccents("àbcdé")); // abcde
     }
-
 }

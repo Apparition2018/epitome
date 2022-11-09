@@ -1,7 +1,6 @@
 package jar.apache.commons.lang3;
 
 import org.apache.commons.lang3.EnumUtils;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -14,8 +13,7 @@ import static l.demo.Demo.p;
  */
 public class EnumUtilsDemo {
 
-    @Test
-    public void enum_() {
+    public static void main(String[] args) {
         // static <E extends Enum<E>> E	            getEnum(Class<E> enumClass, String enumName)
         // static <E extends Enum<E>> E	            getEnumIgnoreCase(Class<E> enumClass, String enumName)
         p(EnumUtils.getEnum(ImagesTypeEnum.class, "JPG"));  // JPG
@@ -45,5 +43,4 @@ public class EnumUtilsDemo {
     private enum ImagesTypeEnum {
         JPG, JPEG, PNG, BPM, GIF
     }
-
 }

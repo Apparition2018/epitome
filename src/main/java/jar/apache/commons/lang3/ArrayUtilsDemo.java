@@ -67,7 +67,7 @@ public class ArrayUtilsDemo extends Demo {
 
         // 子数组
         p(ArrayUtils.subarray(arr, 0, 2));      // [1, 2]
-        
+
         // 如果数组为 null，转换成空数组
         String[] arr2 = null;
         p(ArrayUtils.nullToEmpty(arr2));        // []
@@ -85,5 +85,4 @@ public class ArrayUtilsDemo extends Demo {
         // 包装类型数组 → 字符串类型数组
         // p(ArrayUtils.toStringArray(new Integer[]{1, 2, 3, 4, 5}));
     }
-
 }
