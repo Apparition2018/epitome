@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,44 +7,40 @@
     <title>提升性能</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap h500">
-        <div class="css-live-wrap w33p">
-            <div class="caption">连接字符串</div>
-            <div class="caption">Array.prototype.join()</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h500">
+    <div class="css-live-wrap w33p">
+        <div class="caption">连接字符串</div>
+        <div class="caption">Array.prototype.join()</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            /*** 慢 ***/
-            let str = "I ";
-            str += "am ";
-            str += "hero";
+    </div>
+    <script class="code w67p" contenteditable="true">
+        /*** 慢 ***/
+        let str = "I ";
+        str += "am ";
+        str += "hero";
 
-            /*** 快 ***/
-            function StringBuffer() {
-                this._strings_ = [];
-            }
+        /*** 快 ***/
+        function StringBuffer() {
+            this._strings_ = [];
+        }
 
-            StringBuffer.prototype.append = function(str) {
-                this._strings_.push(str);
-            };
+        StringBuffer.prototype.append = function (str) {
+            this._strings_.push(str);
+        };
 
-            StringBuffer.prototype.toString = function() {
-                return this._strings_.join("");
-            };
+        StringBuffer.prototype.toString = function () {
+            return this._strings_.join("");
+        };
 
-            const buffer = new StringBuffer();
-            buffer.append("I ");
-            buffer.append("am ");
-            buffer.append("hero");
-            const result = buffer.toString(); // "I am hero"
-           console.log(result);
-
-
-        </script>
-    </section>
+        const buffer = new StringBuffer();
+        buffer.append("I ");
+        buffer.append("am ");
+        buffer.append("hero");
+        const result = buffer.toString(); // "I am hero"
+        console.log(result);
+    </script>
+</section>
 </body>
-
 </html>

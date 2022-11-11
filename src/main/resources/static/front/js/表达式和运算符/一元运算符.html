@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,208 +10,207 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script defer src="../../../public/js/demo.js"></script>
 </head>
-
 <body>
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w100p">
-            <div class="caption">一元运算符</div>
-            <div class="centered">
-                <table class="w1024">
-                    <tr>
-                        <th>运算符</th>
-                        <th>语法</th>
-                        <th>概述</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete">delete</a>
-                        </td>
-                        <td>delete expression</td>
-                        <td>用于删除对象的某个属性</td>
-                        <td><a href="#unary-delete" target="_self">delete</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/void">void</a>
-                        </td>
-                        <td>void expression</td>
-                        <td>对给定的表达式进行求值，然后返回 undefined</td>
-                        <td><a href="#unary-void" target="_self">void</a></td>
-                    </tr>
-                    <tr>
-                        <td>typeof</td>
-                        <td>typeof operand, typeof (operand)</td>
-                        <td>返回一个字符串，表示未经计算的操作数的类型</td>
-                        <td><a href="#unary-typeof" target="_self">typeof</a></td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h250">
+    <div class="css-live-wrap w100p">
+        <div class="caption">一元运算符</div>
+        <div class="centered">
+            <table class="w1024">
+                <tr>
+                    <th>运算符</th>
+                    <th>语法</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete">delete</a>
+                    </td>
+                    <td>delete expression</td>
+                    <td>用于删除对象的某个属性</td>
+                    <td><a href="#unary-delete" target="_self">delete</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/void">void</a>
+                    </td>
+                    <td>void expression</td>
+                    <td>对给定的表达式进行求值，然后返回 undefined</td>
+                    <td><a href="#unary-void" target="_self">void</a></td>
+                </tr>
+                <tr>
+                    <td>typeof</td>
+                    <td>typeof operand, typeof (operand)</td>
+                    <td>返回一个字符串，表示未经计算的操作数的类型</td>
+                    <td><a href="#unary-typeof" target="_self">typeof</a></td>
+                </tr>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="code-wrap h450" id="unary-delete">
-        <div class="css-live-wrap w33p">
-            <div class="caption">delete</div>
-            <div class="centered"></div>
-        </div>
-        <script class="code w67p" contenteditable="true">
-            d = "ddd";
+<section class="code-wrap h450" id="unary-delete">
+    <div class="css-live-wrap w33p">
+        <div class="caption">delete</div>
+        <div class="centered"></div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        d = "ddd";
 
-            var e = "eee";
+        var e = "eee";
 
-            f = {
-                name: 'xyz',
-                age: 5
-            };
+        f = {
+            name: 'xyz',
+            age: 5
+        };
 
-            delete d;       // true
+        delete d;       // true
 
-            delete e;       // false；使用 var, let, const 声明的变量是不可配置的 (Non-configurable)
+        delete e;       // false；使用 var, let, const 声明的变量是不可配置的 (Non-configurable)
 
-            delete f.age;   // true
+        delete f.age;   // true
 
-            delete f.salary;// true；属性不存在，也会返回 true
+        delete f.salary;// true；属性不存在，也会返回 true
 
-            delete Math.PI; // false；delete 对内建静态属性不起作用
+        delete Math.PI; // false；delete 对内建静态属性不起作用
 
-            function g() {
-                var h = 44;
-                delete h;   // false；delete 对局部变量名不起作用
-            }
-        </script>
-    </section>
+        function g() {
+            var h = 44;
+            delete h;   // false；delete 对局部变量名不起作用
+        }
+    </script>
+</section>
 
-    <section class="code-wrap h150">
-        <div class="css-live-wrap w33p">
-            <div class="caption">delete 数组元素</div>
-            <div class="caption">数组长度不变</div>
-            <div class="centered"></div>
-        </div>
-        <script class="code w67p" contenteditable="true">
-            const trees = ["redwood", "bay", "cedar", "oak", "maple"];
+<section class="code-wrap h150">
+    <div class="css-live-wrap w33p">
+        <div class="caption">delete 数组元素</div>
+        <div class="caption">数组长度不变</div>
+        <div class="centered"></div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        const trees = ["redwood", "bay", "cedar", "oak", "maple"];
 
-            delete trees[4]; // ["redwood", "bay", "cedar", "oak", empty]
-        </script>
-    </section>
+        delete trees[4]; // ["redwood", "bay", "cedar", "oak", empty]
+    </script>
+</section>
 
-    <section class="code-wrap h250" id="unary-void">
-        <div class="css-live-wrap w33p">
-            <div class="caption">void</div>
-            <div class="centered demo-click">
-                <div>
-                    <a href="javascript: document.body.style.backgroundColor='lightcyan';">
-                        Change Color1
-                    </a>
-                </div>
-                <br>
-                <div>
-
-                    <a href="javascript: void(document.body.style.backgroundColor='lightcyan');">
-                        Change Color2
-                    </a>
-                </div>
-            </div>
-        </div>
-        <code class="code w67p" contenteditable="true">
-                // 页面会显示 lightcyan，不是想要的效果
-                &lt;a href="javascript: document.body.style.backgroundColor='lightcyan'"&gt;
+<section class="code-wrap h250" id="unary-void">
+    <div class="css-live-wrap w33p">
+        <div class="caption">void</div>
+        <div class="centered demo-click">
+            <div>
+                <a href="javascript: document.body.style.backgroundColor='lightcyan';">
                     Change Color1
-                &lt;/a&gt;
+                </a>
+            </div>
+            <br>
+            <div>
 
-                // 改变了背景色
-                &lt;a href="javascript: void(document.body.style.backgroundColor='lightcyan')"&gt;
+                <a href="javascript: void(document.body.style.backgroundColor='lightcyan');">
                     Change Color2
-                &lt;/a&gt;
-            </code>
-    </section>
-
-    <section class="code-wrap h500" id="unary-typeof">
-        <div class="css-live-wrap w100p">
-            <div class="caption">typeof operand 或 typeof (operand)</div>
-            <div class="caption">typeof 总是返回字符串</div>
-            <div class="centered box-typeof">
-                <table class="w1024">
-                    <tr>
-                        <th style="width: 35%">类型</th>
-                        <th style="width: 15%">结果</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td>Undefined</td>
-                        <td>"undefined"</td>
-                        <td>typeof undefined</td>
-                    </tr>
-                    <tr>
-                        <td>Null</td>
-                        <td>"object"</td>
-                        <td>typeof null; // <a
-                                href="javascript: open('https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#null')">为什么是
-                                "object"</a></td>
-                    </tr>
-                    <tr>
-                        <td>Boolean</td>
-                        <td>"boolean"</td>
-                        <td>typeof false</td>
-                    </tr>
-                    <tr>
-                        <td>Number</td>
-                        <td>"number"</td>
-                        <td>typeof Math.LN2, typeof NaN</td>
-                    </tr>
-                    <tr>
-                        <td>String</td>
-                        <td>"string"</td>
-                        <td>typeof (typeof 1)</td>
-                    </tr>
-                    <tr>
-                        <td>Symbol（ECMAScript 6 新增）</td>
-                        <td>"symbol"</td>
-                        <td>typeof Symbol(), typeof Symbol.iterator</td>
-                    </tr>
-                    <tr>
-                        <td>宿主对象（由JS环境提供）</td>
-                        <td>Implementation-dependent</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>函数对象（[[Call]] 在ECMA-262条款中实现了）</td>
-                        <td>"function"</td>
-                        <td>typeof class C{}, typeof Math.sin, typeof new Function()</td>
-                    </tr>
-                    <tr>
-                        <td>任何其他对象</td>
-                        <td>"object"</td>
-                        <td>typeof [1, 2, 4], typeof new Date(), typeof new Number(1)</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <a href="../Other/数据类型和数据结构.html#DataTypes"
-                                target="_blank">点击查看数据类型</a>
-                        </td>
-                    </tr>
-                </table>
+                </a>
             </div>
         </div>
-        <style>
-            .box-typeof tr:last-child>td {
-                text-align: center;
-            }
-        </style>
-    </section>
+    </div>
+    <code class="code w67p" contenteditable="true">
+        // 页面会显示 lightcyan，不是想要的效果
+        &lt;a href="javascript: document.body.style.backgroundColor='lightcyan'"&gt;
+            Change Color1
+        &lt;/a&gt;
 
-    <section class="code-wrap h150">
-        <div class="css-live-wrap w33p">
-            <div class="caption">typeof 返回的 'undefined' != undefined</div>
-            <div class="centered"></div>
+        // 改变了背景色
+        &lt;a href="javascript: void(document.body.style.backgroundColor='lightcyan')"&gt;
+            Change Color2
+        &lt;/a&gt;
+    </code>
+</section>
+
+<section class="code-wrap h500" id="unary-typeof">
+    <div class="css-live-wrap w100p">
+        <div class="caption">typeof operand 或 typeof (operand)</div>
+        <div class="caption">typeof 总是返回字符串</div>
+        <div class="centered box-typeof">
+            <table class="w1024">
+                <tr>
+                    <th style="width: 35%">类型</th>
+                    <th style="width: 15%">结果</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>Undefined</td>
+                    <td>"undefined"</td>
+                    <td>typeof undefined</td>
+                </tr>
+                <tr>
+                    <td>Null</td>
+                    <td>"object"</td>
+                    <td>typeof null; //
+                        <a href="javascript: open('https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#null')">
+                            为什么是 "object"
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Boolean</td>
+                    <td>"boolean"</td>
+                    <td>typeof false</td>
+                </tr>
+                <tr>
+                    <td>Number</td>
+                    <td>"number"</td>
+                    <td>typeof Math.LN2, typeof NaN</td>
+                </tr>
+                <tr>
+                    <td>String</td>
+                    <td>"string"</td>
+                    <td>typeof (typeof 1)</td>
+                </tr>
+                <tr>
+                    <td>Symbol（ECMAScript 6 新增）</td>
+                    <td>"symbol"</td>
+                    <td>typeof Symbol(), typeof Symbol.iterator</td>
+                </tr>
+                <tr>
+                    <td>宿主对象（由JS环境提供）</td>
+                    <td>Implementation-dependent</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>函数对象（[[Call]] 在ECMA-262条款中实现了）</td>
+                    <td>"function"</td>
+                    <td>typeof class C{}, typeof Math.sin, typeof new Function()</td>
+                </tr>
+                <tr>
+                    <td>任何其他对象</td>
+                    <td>"object"</td>
+                    <td>typeof [1, 2, 4], typeof new Date(), typeof new Number(1)</td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <a href="../Other/数据类型和数据结构.html#DataTypes" target="_blank">点击查看数据类型</a>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <script class="code w67p" contenteditable="true">
-            let a;
-            console.log(a);             // undefined
-            console.log(typeof a);      // 'undefined'
-            console.log(typeof a === a); // false
-        </script>
-    </section>
+    </div>
+    <style>
+        .box-typeof tr:last-child > td {
+            text-align: center;
+        }
+    </style>
+</section>
 
+<section class="code-wrap h150">
+    <div class="css-live-wrap w33p">
+        <div class="caption">typeof 返回的 'undefined' != undefined</div>
+        <div class="centered"></div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        let a;
+        console.log(a);             // undefined
+        console.log(typeof a);      // 'undefined'
+        console.log(typeof a === a); // false
+    </script>
+</section>
 </body>
-
 </html>

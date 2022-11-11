@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,32 +7,29 @@
     <title>Chrome控制台选择器</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w33p">
-            <div class="caption">$</div>
-            <div class="caption">只在控制台有效</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h300">
+    <div class="css-live-wrap w33p">
+        <div class="caption">$</div>
+        <div class="caption">只在控制台有效</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            // $ 调用了 querySelector()
-            $('style') === document.querySelector('style'); // true
+    </div>
+    <script class="code w67p" contenteditable="true">
+        // $ 调用了 querySelector()
+        $('style') === document.querySelector('style'); // true
 
-            // $$
-            $$('style'); // [style, style]
+        // $$
+        $$('style'); // [style, style]
 
-            // $_ 返回上次表达式的结果
-            4 + 5;
-            $_; // 9
+        // $_ 返回上次表达式的结果
+        4 + 5;
+        $_; // 9
 
-            // $0-$4 返回上5此选取的DOM节点
+        // $0-$4 返回上5此选取的DOM节点
 
-            // $x 返回指定xpath的元素
-        </script>
-    </section>
-
+        // $x 返回指定xpath的元素
+    </script>
+</section>
 </body>
-
 </html>

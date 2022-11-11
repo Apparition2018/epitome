@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>global-attrs-draggable</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+    <style>
+        .code-wrap-2 {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<!-- https://www.w3school.com.cn/html/html5_draganddrop.asp -->
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">随着鼠标拖动而移动的小飞机</div>
+        <div class="centered" id="eg1">
+            <img id="ap" src="../../../public/img/other/airplane.png" alt="airplane" class="grab"/>
+        </div>
+    </div>
+    <style>
+        #eg1 {
+            width: 100%;
+            height: 100%;
+        }
+
+        #ap {
+            position: absolute;
+        }
+    </style>
+    <script class="code" contenteditable="true">
+        ap.ondragstart = function (e) {
+            console.log('事件源ap开始拖动');
+            // 记录刚一拖动时，鼠标在飞机上的偏移量
+            offsetX = e.offsetX + 8;
+            offsetY = e.offsetY + 8;
+        };
+        ap.ondrag = function (e) {
+            console.log('事件源ap拖动中');
+            let x = e.pageX;
+            let y = e.pageY;
+            console.log(x + '-' + y);
+            // drag事件最后一刻，无法读取鼠标的坐标，pageX和pageY都变为0
+            if (x === 0 && y === 0) {
+                return; // 不处理拖动最后一刻X和Y都为0的情形
+            }
+            x -= offsetX;
+            y -= offsetY;
+
+            ap.style.left = x + 'px';
+            ap.style.top = y + 'px';
+        };
+        ap.ondragend = function () {
+            console.log('源对象ap拖动结束');
+        }
+    </script>
+</section>
+
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">拖放（Drag 和 drop）</div>
+        <div class="centered" id="eg2">
+            <div id="left">
+                <label draggable="true">1</label>
+                <label draggable="true">2</label>
+                <label draggable="true">3</label>
+                <label draggable="true">4</label>
+                <label draggable="true">5</label>
+                <label draggable="true">6</label>
+            </div>
+            <div id="right"></div>
+        </div>
+    </div>
+    <style>
+        #left,
+        #right {
+            display: inline-block;
+            vertical-align: middle;
+            width: 120px;
+            height: 200px;
+            background-color: #dddddd;
+            border: 1px solid black;
+        }
+
+        #left {
+            margin-right: 40px;
+        }
+
+        #eg2 label {
+            display: block;
+            margin: 2px;
+            padding: 4px 0;
+            background-color: #1c425c;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+    <script class="code" contenteditable="true">
+        const moveItem = document.getElementsByTagName('label');
+
+        for (let i = 0; i < moveItem.length; i++) {
+            // 动态设置label元素id
+            moveItem[i].setAttribute('id', 'label' + i);
+            moveItem[i].ondragstart = function (ev) {
+                // dataTransfer.setData() 方法设置被拖数据的数据类型和值
+                ev.dataTransfer.setData("Text", this.id);
+            };
+        }
+
+        // 左－〉右
+        document.getElementById('right').ondragover = function (ev) {
+            ev.preventDefault(); // 默认地，数据/元素无法被放置到其他元素中，取消此默认动作
+        };
+        document.getElementById('right').ondrop = function (ev) {
+            ev.preventDefault(); // 阻止数据的浏览器默认处理方式（drop 事件的默认行为是以链接形式打开）
+            const id = ev.dataTransfer.getData('Text');
+            const elem = document.getElementById(id); // 当前拖动的元素
+            const toElem = ev.toElement.id; // 放置位置
+            if (toElem === 'right') {
+                // 如果为container，元素放置在末尾
+                this.appendChild(elem);
+            } else {
+                // 如果为container里的元素，则插入该元素之前
+                this.insertBefore(elem, document.getElementById(toElem));
+            }
+        };
+
+        // 右－〉左
+        document.getElementById('left').ondragover = function (ev) {
+            ev.preventDefault(); // 默认地，数据/元素无法被放置到其他元素中，取消此默认动作
+        };
+        document.getElementById('left').ondrop = function (ev) {
+            ev.preventDefault();
+            const id = ev.dataTransfer.getData('Text');
+            const elem = document.getElementById(id);
+            const toElem = ev.toElement.id;
+            if (toElem === 'left') {
+                // 如果为container，元素放置在末尾
+                this.appendChild(elem);
+            } else {
+                // 如果为container里的元素，则插入该元素之前
+                this.insertBefore(elem, document.getElementById(toElem));
+            }
+        }
+    </script>
+</section>
+
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">拖放删除</div>
+        <div class="centered" id="eg3">
+            <div>
+                <div class="list" draggable="true">这里是列表1的标题</div>
+                <div class="list" draggable="true">这里是列表2的标题</div>
+                <div class="list" draggable="true">这里是列表3的标题</div>
+                <div class="list" draggable="true">这里是列表4的标题</div>
+                <div class="list" draggable="true">这里是列表5的标题</div>
+                <div class="list" draggable="true">这里是列表6的标题</div>
+            </div>
+            <div id="recycle-bin">回收站</div>
+        </div>
+    </div>
+    <style>
+        #eg3 {
+            width: 280px;
+            height: 320px;
+        }
+
+        .list {
+            padding: 8px;
+            color: var(--gy4);
+            font-size: 16px;
+            text-align: center;
+            border-bottom: 1px solid #dfdfdf;
+        }
+
+        #recycle-bin {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            line-height: 45px;
+            background: #dfdfdf;
+            color: #555;
+            text-align: center;
+            border-radius: 3px;
+        }
+    </style>
+    <script class="code" contenteditable="true">
+        const iosDragDropShim = {enableEnterLeave: true}; 		        // 兼容移动端
+        let source = document.querySelectorAll('.list'),
+            recycleBin = document.getElementById('recycle-bin'),
+            dragElement = null, 											// 用于存放拖动元素
+            lock = true; 													// 最后元素拖放时会进入enter和leave的循环，用来锁住
+
+        for (let i = 0; i < source.length; i++) {
+            source[i].addEventListener('dragstart', function (ev) {			// 开始拖动元素时触发
+                dragElement = this; 										// 用于存放拖动元素
+                this.style.backgroundColor = '#eeeeee'; 					// 设置拖动元素的背景
+            }, false);
+
+            source[i].addEventListener('dragend', function (ev) {			// 完成元素的拖动时触发
+                ev.target.style.backgroundColor = 'white'; 					// 拖放结束还原拖动元素的背景
+                ev.preventDefault();
+            }, false);
+
+            source[i].addEventListener('dragenter', function (ev) {			// 拖动的元素进入放置目标时触发
+                if (dragElement !== this) {									// 拖动的元素不是进入的放置目标元素
+                    this.parentNode.insertBefore(dragElement, this); 		// 把拖动元素添加到当前元素的前面
+                }
+            }, false);
+
+            source[i].addEventListener('dragleave', function (ev) {			// 拖动元素离开放置目标时触发
+                if (dragElement !== this) {
+                    if (lock && (this === this.parentNode.lastElementChild || this === this.parentNode.lastChild)) { // 当前元素时最后一个元素
+                        this.parentNode.appendChild(dragElement); 			// 把拖动元素添加最后面
+                        lock = false;
+                    } else {
+                        lock = true;
+                    }
+                }
+            }, false)
+        }
+
+        recycleBin.addEventListener('drop', function (ev) { 			    // 拖动元素放置在目标区域时触发
+            dragElement.parentNode.removeChild(dragElement);				// 拖进回收站则删除该元素
+        }, false);
+
+        document.ondragover = function (e) {
+            e.preventDefault();
+        };			// 拖动元素在放置目标上时触发，必须设置dragover阻止默认事件
+        document.ondrop = function (e) {
+            e.preventDefault();
+        }
+    </script>
+</section>
+</body>
+</html>
