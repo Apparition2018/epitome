@@ -168,5 +168,4 @@ public class JsonGeneratorDemo {
             return null;
         }
     }
-
 }

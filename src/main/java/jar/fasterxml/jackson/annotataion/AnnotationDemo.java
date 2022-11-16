@@ -94,5 +94,4 @@ public class AnnotationDemo extends Demo {
         // Person(birth=Thu Jul 22 10:17:34 CST 2021, age=0, sex=1, password=null, hairStyle=null,
         //      dog=Person.Dog(name=旺财, color=WHITE), hobbies=null, name=ljh, json=null, other={country=cn, password=123})
     }
-
 }
