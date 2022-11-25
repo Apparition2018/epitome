@@ -40,7 +40,7 @@ import java.util.*;
 public class MultipartFileController extends Demo {
 
     /**
-     * @link {http://localhost:3333/front/html/elements/a/a-demo.html}
+     * @link {http://localhost:3333/front/html/elements/内联文本语义/a-demo.html}
      */
     @GetMapping("file")
     @Operation(summary = "下载文件")

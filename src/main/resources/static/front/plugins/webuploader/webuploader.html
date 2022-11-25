@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebUploader</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/webuploader/0.1.1/webuploader.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/webuploader/0.1.1/webuploader.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
+</head>
+<body>
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap w50p">
+        <div class="caption"><a href="http://fex.baidu.com/webuploader/getting-started.html"
+                                target="_blank">WebUploader</a></div>
+    </div>
+    <script class="code w50p" contenteditable="true">
+        let uploader = WebUploader.Uploader({
+            // 指定Drag And Drop拖拽的容器
+            dnd: '#dndArea',
+            // 是否禁掉整个页面的拖拽功能，如果不禁用，图片拖进来的时候会默认被浏览器打
+            disableGlobalDnd: true,
+            // 指定选择文件的按钮容器
+            pick: {
+                id: '#pickId',
+                multiple: false
+            },
+            // 指定接受哪些类型的文件
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            },
+            // 配置生成缩略图的选项
+            thumb: {
+                width: 100,
+                height: 100,
+                // 图片质量，只有type为 'image/jpeg' 的时候才有效
+                quality: 50,
+                // 是否允许放大
+                allowMagnify: true,
+                type: 'image/jpeg'
+            },
+            // 选择文件后是否自动上传
+            auto: true,
+            // 是否要分片处理大文件上传
+            chunked: true,
+            // 如果要分片，分多大一片？ 默认大小为5M
+            chunkSize: 5,
+            // 如果某个分片由于网络问题出错，允许自动重传多少次
+            chunkRetry: 2,
+            // 上传并发数
+            threads: 3,
+            // 验证单个文件大小是否超出限制
+            fileSingleSizeLimit: 10 * 1024 * 1024,
+            // 去重， 根据文件名字、文件大小和最后修改时间来生成hash Key
+            duplicate: true
+        });
+        WebUploader.Uploader.register({
+            'before-send-file': 'beforeSendFile',
+            'before-send': 'beforeSend'
+        }, {
+            beforeSendFile: function (file) {
+                let deferred = Base.Deferred();
+            }
+        })
+    </script>
+</section>
+</body>
+</html>

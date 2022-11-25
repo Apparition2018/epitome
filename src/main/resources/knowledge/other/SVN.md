@@ -4,7 +4,8 @@
 2. 全局 ignore
     1. TortoiseSVN → Settings → General → Subversion 
     2. Subversion configuration file: Edit
-    3. `global-ignores = *.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a *.pyc *.pyo __pycache__ .idea *.iml logs out target`
+    3. `global-ignores = *.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a *.pyc *.pyo __pycache__
+       *.rej *~ #*# .#* .*.swp .DS_Store [Tt]humbs.db .idea *.iml logs out target`
 3. JetBrains 配置
     1. Settings → Version Control → Subversion
     2. Path to Subversion executable: D:\TortoiseSVN\bin\svn.exe

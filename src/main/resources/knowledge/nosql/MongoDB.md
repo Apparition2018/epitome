@@ -54,6 +54,69 @@ setParameter:
     enableLocalhostAuthBypass: false
 ```
 ---
-## [BSON](https://www.mongodb.com/docs/v6.0/reference/bson-types/)
+## [BSON (Binary JSON)](https://www.mongodb.com/docs/v6.0/reference/bson-types/)
 
+---
+## mongo Shell
+### [mongo Shell Quick Reference](https://www.mongodb.com/docs/v4.4/reference/mongo-shell/) 
+```
+# Command Helpers
+help                                    显式帮助
+show dbs                                打印服务器上所有的数据库的列表
+show databases                          打印所有可用数据库的列表
+use <db>                                将当前数据库切换到 <db>
+show collections                        打印当前数据库的所有集合的列表
+
+# Basic Shell JavaScript Operations
+db.collection.drop()                    完全删除或删除集合
+
+# Administrative Command Helpers
+db.dropDatabase()                       删除当前数据库
+```
+### [MongoDB CRUD Operations](https://www.mongodb.com/docs/v4.4/crud/) 
+```
+db                                      引用当前数据库的变量
+
+# Insert
+db.collection.insert()                  将单个文档或多个文档插入集合中
+db.collection.insertOne()               向集合中插入一个新文档
+db.collection.insertMany()              向集合中插入多个新文档
+
+# Query
+db.collection.find(<query>)             在集合中查找匹配<query>条件的文档
+    { <field1>: { <operator1>: <value1> }, ... }
+db.collection.findOne(<query>)          查找并返回一个文档
+db.collection.find(<query>).count()     返回与查询匹配的文档的总数
+db.collection.find(<query>).sort(<sort order>)
+                                        在指定的<排序顺序>中返回匹配<查询>条件的文档
+db.collection.find( ... ).skip( <n> )   跳过<n>结果
+db.collection.find( ... ).limit( <n> )  将结果限制为<n>行
+
+# Update
+db.collection.update()                  更新或替换匹配指定筛选器的单个文档，或者更新匹配指定筛选器的所有文档
+    {
+      <update operator>: { <field1>: <value1>, ... },
+      <update operator>: { <field2>: <value2>, ... },
+      ...
+    }
+db.collection.updateOne()               更新集合中单个现有文档
+db.collection.updateMany()              更新集合中的多个现有文档
+db.collection.replaceOne()              即使可能有多个文档匹配指定的筛选器，也至多替换一个匹配指定筛选器的文档
+
+# Delete
+db.collection.remove()                  删除单个文档或匹配指定筛选器的所有文档
+db.collection.deleteOne()               即使多个文档可能与指定筛选器匹配，也只能删除一个与指定筛选器匹配的文档
+db.collection.deleteMany()              删除符合指定筛选器的所有文档
+```
+---
+## [Operators](https://www.mongodb.com/docs/v4.4/reference/operator/)
+- [Query and Projection Operators](https://www.mongodb.com/docs/v4.4/reference/operator/query/)
+- [Update Operators](https://www.mongodb.com/docs/v4.4/reference/operator/update/)
+```
+$set                                    设置文档中字段的值
+$unset                                  从文档中删除指定的字段
+$inc                                    将字段的值增加指定的数量
+$push                                   向数组中添加项
+$addToSet                               仅当元素在集合中不存在时，才向数组中添加元素
+```
 ---
