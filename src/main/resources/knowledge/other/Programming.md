@@ -94,6 +94,20 @@ if (logger.isDebugEnabled()) {
 1. [RESTful登录设计（基于Spring及Redis的Token鉴权）](www.scienjus.com/restful-token-authorization/)
 2. [session与token的区别](https://www.cnblogs.com/shijianchuzhenzhi/p/12317439.html)
 ---
+## [OLTP vs OLAP](https://blog.csdn.net/weixin_44087159/article/details/124477313)
+|      |             OLTP              |             OLAP             |
+|------|:-----------------------------:|:----------------------------:|
+| 全称   | Online Transaction Processing | Online Analytical Processing |
+| 操作对象 |              数据库              |             数据仓库             |
+| 数据量  |             数据量较小             |             数据量大             |
+| 数据模型 |             实体-关系             |            星型或雪花型            |
+| 数据时效 |             当前数据              |           当前及历史数据            |
+| 数据操作 |          支持 DML、DDL           |          一般不支持更新和删除          |
+| 操作粒度 |              记录级              |             涉及多表             |
+| 性能要求 |            高吞吐、低延迟            |           性能要求相对较低           |
+| 操作目的 |            查询或改变现状            |          分析规律、预测趋势           |
+| 业务类型 |           账户查询，转账等            |          统计报告，多维度分析          |
+---
 ## 测试
 ### JMeter
 1. [JMeter 接口性能压测](https://blog.csdn.net/qq_30654043/article/details/124550052)

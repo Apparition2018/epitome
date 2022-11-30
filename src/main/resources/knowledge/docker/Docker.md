@@ -26,7 +26,7 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Docker" "D:\Docker\Roaming\Doc
 mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roaming\Docker Desktop"
 ```
 2. 下载地址：https://www.docker.com/products/docker-desktop
-    或：https://hub.docker.com/editions/community/docker-ce-desktop-windows
+   或：https://hub.docker.com/editions/community/docker-ce-desktop-windows
 3. 下载并安装 [WSL2](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
 4. Settings → Docker Engine
 ```
@@ -66,44 +66,44 @@ rm -rf /var/lib/docker
 service docker start
 service docker status
 
-docker version [OPTIONS]                                        显示版本信息
-docker info [OPTIONS]                                           显示系统信息
-docker images [OPTIONS] [REPOSITORY[:TAG]]                      列出 iamges
-docker search [OPTIONS] TERM                                    在 Docker Hub 搜索 images
-docker pull [OPTIONS] NAME[:TAG|@DIGEST]                        拉取 image 或 repository
-docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                   创建新的 container 并运行 command
-    -d                                                          后台运行
-    -v                                                          绑定挂载 volume，$PWD 当前目录
-    --volumes-from                                              从指定 container 挂载 volumes
-    -p                                                          指定端口映射
-    -P                                                          暴露容器所有端口到宿主随机端口
-    --restart                                                  总是启动
-    --privileged                                                扩展权限
-    --rm                                                        当容器退出时自动删除
-    --link                                                      连接其它容器
-    --net                                                       将容器连接到网络
-docker ps [OPTIONS]                                             列出 containers
-docker exec [OPTIONS] CONTAINER COMMAND [ARG...]                在 container 中运行 command
+docker version [OPTIONS]                                          显示版本信息
+docker info [OPTIONS]                                             显示系统信息
+docker images [OPTIONS] [REPOSITORY[:TAG]]                        列出 iamges
+docker search [OPTIONS] TERM                                      在 Docker Hub 搜索 images
+docker pull [OPTIONS] NAME[:TAG|@DIGEST]                          拉取 image 或 repository
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                     创建新的 container 并运行 command
+    -d                                                            后台运行
+    -v                                                            绑定挂载 volume，$PWD 当前目录
+    --volumes-from                                                从指定 container 挂载 volumes
+    -p                                                            指定端口映射
+    -P                                                            暴露容器所有端口到宿主随机端口
+    --restart                                                     总是启动
+    --privileged                                                  扩展权限
+    --rm                                                          当容器退出时自动删除
+    --link                                                        连接其它容器
+    --net                                                         将容器连接到网络
+docker ps [OPTIONS]                                               列出 containers
+docker exec [OPTIONS] CONTAINER COMMAND [ARG...]                  在 container 中运行 command
     -it CONTAINER bash
-docker start|stop|restart [OPTIONS] CONTAINER [CONTAINER...]    启动|停止|重启 containers
-docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                创建 container
-docker container                                                管理 containers
-    update [OPTIONS] CONTAINER [CONTAINER...]                   修改一个或多个 containers 的配置
-docker rm [OPTIONS] CONTAINER [CONTAINER...]                    移除 containers
-docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
+docker start|stop|restart [OPTIONS] CONTAINER [CONTAINER...]      启动|停止|重启 containers
+docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                  创建 container
+docker container                                                  管理 containers
+    update [OPTIONS] CONTAINER [CONTAINER...]                     修改一个或多个 containers 的配置
+docker rm [OPTIONS] CONTAINER [CONTAINER...]                      移除 containers
+docker rmi [OPTIONS] IMAGE [IMAGE...]                             移除 images
     -a
-docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   返回 Docker 对象的 low-level 信息
-docker kill [OPTIONS] CONTAINER [CONTAINER...]                  杀掉 containers
-docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-              在 container 和本地文件系统之间 复制文件或文件夹
-docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]            根据 container 的更改创建 image
-    -m                                                          提交消息
-docker push [OPTIONS] NAME[:TAG]                                将 image 或 repository 推到 registry
-docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]                创建与 SOURCE_IMAGE 关联的 TARGET_IMAGE[:TAG]
-docker login [OPTIONS] [SERVER]                                 登录
-docker network                                                  管理网络
-    create                                                      创建网络
-docker build [OPTIONS] PATH | URL | -                           从 Dockerfile 构建 image
-    -t                                                          命名 'name:tag'
+docker inspect [OPTIONS] NAME|ID [NAME|ID...]                     返回 Docker 对象的 low-level 信息
+docker kill [OPTIONS] CONTAINER [CONTAINER...]                    杀掉 containers
+docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-                在 container 和本地文件系统之间 复制文件或文件夹
+docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]              根据 container 的更改创建 image
+    -m                                                            提交消息
+docker push [OPTIONS] NAME[:TAG]                                  将 image 或 repository 推到 registry
+docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]                  创建与 SOURCE_IMAGE 关联的 TARGET_IMAGE[:TAG]
+docker login [OPTIONS] [SERVER]                                   登录
+docker network                                                    管理网络
+    create                                                        创建网络
+docker build [OPTIONS] PATH | URL | -                             从 Dockerfile 构建 image
+    -t                                                            命名 'name:tag'
 ```
 ---
 ## Docker 网络
@@ -262,7 +262,18 @@ info replication
 5. [MongoDB](https://hub.docker.com/_/mongo)
 - [MongoDB 用户角色配置](https://www.cnblogs.com/out-of-memory/p/6810411.html)
 ```bash
-docker run -d --name mongo -p 27017:27017 mongo --auth
+docker run -d --name mongo mongo:4.4.18
+
+# 复制一份 mongod.conf，并修改配置
+docker cp mongo:/etc/mongod.conf.orig D:/Docker/Data/MongoDB/mongod.conf
+storage:
+  dbPath: /data/db
+net:
+  bindIp: 0.0.0.0
+
+docker run -d --name mongo -p 27017:27017 \
+-v D:/Docker/Data/MongoDB/mongod.conf:/etc/mongo/mongod.conf \
+mongo:4.4.18 -f ../etc/mongo/mongod.conf
 
 # 进入 admin 数据库
 # mongo 4- 使用 mongo，mongo 5+ 使用 mongosh
@@ -271,15 +282,16 @@ docker exec -it mongo mongo admin | docker exec -it mongo mongosh admin
     docker exec -it mongo bash
     mongo | mongosh
     use admin
+
 # 创建 root 账号密码，角色 root
 db.createUser({user: "root", pwd: "root", roles: ["root"]})
-# 登录
 db.auth("root", "root")
-# 创建 admin 账号密码，角色 userAdminAnyDatabase，用户管理者
-db.createUser({user: "admin", pwd: "admin", roles: [{role: "userAdminAnyDatabase", db: "admin"}]})
+
 # 创建 ljh 账号密码，角色 readWrite
 use spring_data
 db.createUser({user: "ljh", pwd: "123456", roles: [{role: "readWrite", db: "spring_data"}]})
+exit
+mongo -uljh -p123456 --authenticationDatabse=spring_data
 ```
 6. [Tomcat](https://hub.docker.com/_/tomcat)
 - [Docker 安装 tomcat 并挂载目录](https://www.cnblogs.com/liyiran/p/12544715.html)
