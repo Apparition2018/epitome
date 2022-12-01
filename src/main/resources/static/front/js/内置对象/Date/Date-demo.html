@@ -37,7 +37,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/UTC">Date.UTC()</a></td>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/UTC" target="_blank">Date.UTC()</a></td>
                         <td>接受的参数同日期构造函数接受最多参数时一样，返回从1970-1-1 00:00:00 UTC到指定日期的的毫秒数</td>
                         <td>
                             <a href="javascript: alert(Date.UTC(2021,1,18,0,47,30,0));">Date.UTC(2021,1,18,0,47,30,0)</a>
@@ -99,7 +99,7 @@
                         <td>Tue, 16 Oct 2018 14:44:47 GMT</td>
                     </tr>
                     <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString">toLocaleString()</a></td>
+                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString" target="_blank">toLocaleString()</a></td>
                         <td>返回该日期对象的字符串，该字符串格式因不同语言而不同</td>
                         <td>
                             <a href="javascript: alert(new Date().toLocaleString());">new Date().toLocaleString()</a>
@@ -126,11 +126,11 @@
                 Date.prototype.format = function (format) {
                     const o = {
                         "M+": this.getMonth() + 1,                  // 月份
-                        "d+": this.getDate(), 			            // 日
-                        "h+": this.getHours(), 		                // 小时
-                        "m+": this.getMinutes(), 		            // 分
-                        "s+": this.getSeconds(), 		            // 秒
-                        "S": this.getMilliseconds(), 	            // 毫秒
+                        "d+": this.getDate(),                       // 日
+                        "h+": this.getHours(),                      // 小时
+                        "m+": this.getMinutes(),                    // 分
+                        "s+": this.getSeconds(),                    // 秒
+                        "S": this.getMilliseconds(),                // 毫秒
                         "q+": Math.floor((this.getMonth() + 3) / 3) // 季度
                     };
                     if (/(y+)/.test(format)) {
@@ -138,7 +138,7 @@
                     }
                     for (const k in o) {
                         if (new RegExp("(" + k + ")").test(format))
-                            // RegExp是javascript中的一个内置对象，RegExp.$1是RegExp的一个属性，指匹配到的第一个字符串
+                            // RegExp 是 javascript 中的一个内置对象，RegExp.$1 是 RegExp的 一个属性，指匹配到的第一个字符串
                             format = format.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
                     }
                     return format;
@@ -148,7 +148,6 @@
             addDateFormat();
 
             (new Date).format('yyyy-MM-dd 第 q 季度 hh:mm:ss:S'); // 2018-10-19 第 4 季度 11:28:27:196
-
         </script>
     </section>
 </body>
