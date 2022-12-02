@@ -6,8 +6,9 @@
 1. [MongoDB Documentation](https://www.mongodb.com/docs/)
 2. [MongoDB Manual](https://www.mongodb.com/docs/manual/)
 3. [尚硅谷MongoDB入门基础教程](https://www.bilibili.com/video/BV18s411E78K/)
-4. [2022B站最新的MongoDB视频教程](https://www.bilibili.com/video/BV1CS4y1e7Pb/)
-5. [MongoDB 教程 | 菜鸟教程](https://www.runoob.com/mongodb/mongodb-tutorial.html)
+4. [黑马程序员MongoDB基础入门到高级进阶](https://www.bilibili.com/video/BV1bJ411x7mq/)
+5. [2022B站最新的MongoDB视频教程](https://www.bilibili.com/video/BV1CS4y1e7Pb/)
+6. [MongoDB 教程 | 菜鸟教程](https://www.runoob.com/mongodb/mongodb-tutorial.html)
 ---
 ## 数据库对比
 | 术语/概念 |    RDBMS    |     MongoDB     | ElasticSearch |
@@ -23,9 +24,15 @@
 | 扩容    |    分库分表     |       分片        |      分片       |
 ---
 ## MongoDB 优势
-1. 敏捷开发：基于灵活的 BSON 文档模型
-2. 高可用：单节点-Journal机制，集群-副本集
-3. 易扩展：支持集群分片
+1. 高性能
+    - 支持嵌入式文档，减少了数据库系统上的I/O活动
+    - 支持多种索引
+2. 高可用
+    - 单节点：Journal 机制
+    - 集群：副本集(replica set)，维护相同的数据集，提供冗余并增加数据可用性
+3. 高扩展性：分片
+4. BSON 文档模型：适合敏捷开发
+5. 丰富的查询支持：数据集合、文本搜索、地理空间查询等
 ---
 ## MongoDB 劣势
 1. 事务 ?
@@ -34,10 +41,11 @@
 4. 单机可靠性差
 5. 大数据量持续插入，写入性能有较大波动
 ---
-## MongoDB 应用场景
-1. 游戏：存储用户信息、用户装备、积分等
+## 应用场景
+- 高并发、高可用、高可扩展、海量数据、低事务要求
+1. 游戏：存储用户信息、用户装备、积分
 2. 物流：存储订单信息
-3. 社交：存储用户信息、用户发表的朋友圈信息、通过地理位置索引实现附近的人、地点等
+3. 社交：存储用户信息、用户发表的朋友圈信息、通过地理位置索引实现附近的人、地点
 4. 物联网：存储接入设备信息、设备汇报的日志信息
 5. 视频直播：存储用户信息、礼物信息
 6. 大数据
@@ -149,13 +157,23 @@ db.collection.findAndModify()           原子地修改并返回单个文档
 db.collection.findOneAndDelete()        找到一个文档并删除它
 db.collection.stats()                   关于集合状态的报告
 db.collection.drop()                    从数据库中删除指定的集合
-
-# 聚合
 db.collection.estimatedDocumentCount()  包装计数以返回集合或视图中文档的大约计数，忽略查询条件
+
+# Index
+db.collection.createIndex()             在集合上构建索引
+db.collection.createIndexes()           在集合上构建一个或多个索引
+db.collection.getIndexes()              返回描述集合上现有索引的文档数组
+db.collection.totalIndexSize()          报告集合上索引使用的总大小
+db.collection.hideIndex()               从查询计划器中隐藏索引
+db.collection.unhideIndex()             从查询计划器中取消索引
+db.collection.dropIndex()               移除集合上的指定索引
+db.collection.dropIndexes()             移除集合上的所有索引
 ```
 ### [Cursor Methods](https://www.mongodb.com/docs/v4.4/reference/method/js-cursor/)
 ```
-cursor.pretty()                        配置游标以易于阅读的格式显示结果
+cursor.pretty()                         配置游标以易于阅读的格式显示结果
+cursor.explain()                        报告游标的查询执行计划
+cursor.hint()                           强制MongoDB对查询使用特定的索引
 ```
 ### [Database Methods](https://www.mongodb.com/docs/v5.0/reference/method/js-database/)
 ```
@@ -276,15 +294,12 @@ db.book.insert([
     }
 ]);
 
-// customer
 db.customer.insert({ customerCode: 1, name: "customer1", phone: "13112345678", address: "address1" });
 db.customer.insert({ customerCode: 2, name: "customer2", phone: "13112345679", address: "address2" });
 
-// order
 db.order.insert({ orderId: 1, orderCode: "order001", customerCode: 1, price: 200 });
 db.order.insert({ orderId: 2, orderCode: "order002", customerCode: 2, price: 400 });
 
-// orderItem
 db.orderItem.insert({ itemId: 1, productName: "apples", qutity: 2, orderId: 1 });
 db.orderItem.insert({ itemId: 2, productName: "oranges", qutity: 2, orderId: 1 });
 db.orderItem.insert({ itemId: 3, productName: "mangoes", qutity: 2, orderId: 1 });
@@ -352,41 +367,118 @@ db.orderItem.insert({ itemId: 6, productName: "mangoes", qutity: 2, orderId: 2 }
 ### 聚合实战2
 1. [zips.json](https://media.mongodb.org/zips.json)
 2. [MongoDB Command Line Database Tools](https://www.mongodb.com/try/download/database-tools)
-3. `.\mongoimport.exe -h localhost -p 27017 -u fox -p fox --authenticationDatabase=admin -d test -c city --file C:/Users/HP/Desktop/zips.json`
+3. `.\mongoimport.exe -h localhost -p 27017 -u fox -p fox --authenticationDatabase=admin -d test -c zip --file C:/Users/HP/Desktop/zips.json`
 4. 聚合操作
     1. 返回人口超过1000万的州
     ```javascript
-    db.city.aggregate([
+    db.zip.aggregate([
         { $group: { _id: "$state", totalPop: { $sum: "$pop" } } },
         { $match: { totalPop: { $gt: 1000 * 10000 } } }
     ])
     ```
-    2. 返回各州平均人口
+    2. 返回各州平均城市人口
     ```javascript
-    db.city.aggregate([
-        { $group: { _id: { state: "$state", city: "$city" }, pop: { $sum: "$pop" } } },
-        { $group: { _id: "$_id.state", avgCityPop: { $avg: "$pop" } } }
+    db.zip.aggregate([
+        { $group: { _id: { state: "$state", city: "$city" }, cityPop: { $sum: "$pop" } } },
+        { $group: { _id: "$_id.state", avgCityPop: { $avg: "$cityPop" } } }
     ])
     ```
     3. 按州返回人口最大和最小的城市
     ```javascript
-    db.city.aggregate([
-        { $group: { _id: { state: "$state", city: "$city" }, pop: { $sum: "$pop" } } },
-        { $sort: { pop: 1 } },
+    db.zip.aggregate([
+        { $group: { _id: { state: "$state", city: "$city" }, cityPop: { $sum: "$pop" } } },
+        { $sort: { cityPop: 1 } },
         {
             $group: {
                 _id: "$_id.state",
                 biggestCity: { $last: "$_id.city" },
-                biggestPop: { $last: "$pop" },
+                biggestPop: { $last: "$cityPop" },
                 smallestCity: { $first: "$_id.city" },
-                smallestPop: { $first: "$pop" }
+                smallestPop: { $first: "$cityPop" }
             }
         },
-        { $project: { _id: 0, state: "$_id", biggestCity: { name: "$biggestCity", pop: "$biggestPop" }, smallestCity: { name: "$smallestCity", pop: "$smallestPop" } } }
+        {
+            $project: {
+                _id: 0,
+                state: "$_id",
+                biggestCity: { name: "$biggestCity", pop: "$biggestPop" },
+                smallestCity: { name: "$smallestCity", pop: "$smallestPop" }
+            }
+        }
     ])
     ```
 ---
-## 视图
+## [索引](https://www.mongodb.com/docs/manual/indexes/)
+- B+Tree 数据结构
+    1. 官网：MongoDB indexes use a B-tree data structure
+    2. [WiredTiger](https://source.wiredtiger.com/3.0.0/tune_page_size_and_comp.html)：WiredTiger maintains a table's data in memory using a data structure called a B-Tree ( B+ Tree to be specific), referring to the nodes of a B-Tree as pages
+    3. [数据结构可视化](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+- 索引类型
+
+| 类型     | 英文                   | 说明                                                    |
+|--------|----------------------|-------------------------------------------------------|
+| 单字段索引  | Single Field Indexes |                                                       |
+| 复合索引   | Compound Indexes     |                                                       |
+| 多键索引   | Multikey Indexes     | 对存储在数组中的内容进行索引                                        |
+| 地理空间索引 | Geospatial Indexes   | 2d Indexes：使用平面几何返回结果<br/>2dsphere Indexes：使用球面几何返回结果 |
+| 文本索引   | Text Indexes         | 支持在集合中搜索字符内容                                          |
+| 散列所有   | Hashed Indexes       | 对字段值的哈希值进行索引，支持基于哈希的分片                                |
+| 聚簇索引   | Clustered Indexes    |                                                       |
+| 通配符索引  | Wildcard Indexes     | 支持在一个或一组字段上创建索引来支持查询                                  |
+- 索引属性
+
+| 属性              | 说明                    |
+|-----------------|-----------------------|
+| Unique Indexes  | 拒绝索引字段的重复值            |
+| Partial Indexes | 只对集合中满足指定筛选表达式的文档进行索引 |
+| Sparse Indexes  | 确保索引只包含具有索引字段的文档的条目   |
+| TTL Indexes     | 在一定时间后自动从集合中删除文档      |
+| Hidden Indexes  | 对查询计划器是不可见的，不能用于支持查询  |
+### 索引实战
+1. data.js
+```javascript
+db.restaurant.insert({
+    restaurantId: 0,
+    restaurantName: "兰州牛肉面",
+    location: {
+        type: "Point",
+        coordinates: [-73.97, 40.77]
+    }
+})
+
+db.store.insert([
+    { _id: 1, name: "Java Hut", description: "Coffee and cakes" },
+    { _id: 2, name: "Burger Buns", description: "Gourmet hamburgers" },
+    { _id: 3, name: "Coffee Shop", description: "Just Coffee" },
+    { _id: 4, name: "Clothes Clothes Clothes", description: "Discount clothing" },
+    { _id: 5, name: "Java Shoping", description: "Indonesian goods" }
+])
+```
+2. 复制 data.js 到 mongodb：`docker cp C:/Users/HP/Desktop/data.js mongo:/data/db/js/`
+3. 地理空间索引
+    1. 创建 2dsphere 索引：`db.restaurant.createIndex({ location: "2dsphere" })`
+    2. 查询附件10000米商家信息
+    ```javascript
+    db.restaurant.find({
+        location: {
+            $near: {
+                $geometry: {
+                    type: "Point",
+                    coordinates: [-73.88, 40.78]
+                },
+                $maxDistance: 10000
+            }
+        }
+    })
+    ```
+4. 文本索引
+    1. 创建文本索引：`db.store.createIndex({ name: "text", description: "text" })`
+    2. 查找包含 coffee, shop, java 的商店：`db.store.find({ $text: { $search: "java coffee shop" } })` 
+---
+## [Explain Results](https://www.mongodb.com/docs/v6.0/reference/explain-results/)
+
+---
+## [视图](https://www.mongodb.com/docs/v6.0/core/views/)
 1. data.js
 ```javascript
 var orders = [];
