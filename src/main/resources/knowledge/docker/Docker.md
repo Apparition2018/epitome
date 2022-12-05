@@ -45,7 +45,7 @@ swap=4GB
 localhostForwarding=true
 ```
 ---
-## Linux 安装 Docker
+## [Linux 安装 Docker](https://docs.docker.com/desktop/install/linux-install/)
 ```bash
 # 安装 docker 三种方式
 apt-get install -y docker.io
@@ -106,13 +106,12 @@ docker build [OPTIONS] PATH | URL | -                             从 Dockerfile
     -t                                                            命名 'name:tag'
 ```
 ---
-## Docker 网络
+## [Docker 网络](https://docs.docker.com/network/)
 ![Docker 网络](https://img.mukewang.com/608d6a4c0001e15019201080-500-284.jpg)
-- 网络类型：1-Bridge 2-Host 3-None
-- 端口映射
+
 ---
 ## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
-### Commands
+1. Commands
 ```
 FROM                                               初始化构建并为后续指令设置基本 image
 RUN                                                执行命令，docker build 时运行
@@ -131,58 +130,49 @@ VOLUME                                             VOLUME
 WORKDIR                                            工作目录
 EXPOSE                                             端口
 ```
-### 镜像分层
-- Dockerfile 中的每一行都产生一个新层
+2. 镜像分层：Dockerfile 中的每一行都产生一个新层
 ![镜像分层](https://img2.mukewang.com/608d9d330001dd2819201080-500-284.jpg)
-### Dockerfile Demo
-1. 编写 Dockerfile 文件
-```
-FROM ubuntu:latest
-MAINTAINER ljh
-RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install -y nginx
-COPY index.html /var/www/html
-ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
-EXPOSE 80
-```
-2. docker build -t hello_docker .
-3. docker run hello_docker
-4. localhost:80
+3. Dockerfile Demo
+    1. 编写 Dockerfile 文件
+    ```
+    FROM ubuntu:latest
+    MAINTAINER ljh
+    RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+    RUN apt-get update
+    RUN apt-get install -y nginx
+    COPY index.html /var/www/html
+    ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
+    EXPOSE 80
+    ```
+    2. `docker build -t hello_docker`
+    3. `docker run hello_docker`
+    4. localhost:80
 ---
-
 ## [Docker Compose](https://docs.docker.com/compose/)
-1. 基本步骤：
-    1. Dockerfile 定义应用程序环境
-    2. [docker-compose.yml](https://docs.docker.com/compose/compose-file/) 定义构成应用程序的服务
+1. [基本步骤](https://docs.docker.com/compose/gettingstarted/)
+    1. 定义应用程序依赖项
+    2. 创建 Dockerfile
+    3. [在 Compose 文件中定义服务](https://docs.docker.com/compose/compose-file/)
     ```
     build                           构建时的配置选项，可直接指定一个文件夹
     image                           指定镜像
     networks                        所属网路
     depends_on                      服务之间的依赖关系
     ```
-    3. [docker-compose CLI](https://docs.docker.com/compose/reference/)
-    ```
-    build                           构建或重构 services
-    config                          验证并查看 Compose 文件
-    download                        停止和删除 containers, networks, images, and volumes
-    exec                            在正在运行的 container 中执行命令
-    logs                            查看 containers 输出
-    ps                              列出 containers
-    rm                              移除停止的 containers
-    stop                            停止 services
-    up -d                           创建并启动 containers
-    ```
-2. Docker Compose Demo
-    - [Get started with Docker Compose](https://docs.docker.com/compose/gettingstarted/)
-    - [Sample apps with Compose](https://docs.docker.com/compose/samples-for-compose/)
-    - [Docker 安装 Ghost 博客](https://www.cnblogs.com/xbblogs/p/9531069.html)
-3. [环境变量设置及其选择优先级](https://docs.docker.com/compose/environment-variables/)
-    1. Compose file
-    2. Shell environment variables
-    3. Environment file
-    4. Dockerfile
-    5. Variable is not defined
+2. [docker-compose CLI](https://docs.docker.com/compose/reference/)
+```
+build                               构建或重构 services
+config                              验证并查看 Compose 文件
+download                            停止和删除 containers, networks, images, and volumes
+exec                                在正在运行的 container 中执行命令
+logs                                查看 containers 输出
+ps                                  列出 containers
+rm                                  移除停止的 containers
+stop                                停止 services
+up -d                               创建并启动 containers
+```
+3. [Sample apps with Compose](https://docs.docker.com/compose/samples-for-compose/)
+4. [环境变量](https://docs.docker.com/compose/environment-variables/)
 ---
 ## 安装软件
 1. [MySQL](https://hub.docker.com/_/mysql)
@@ -347,7 +337,7 @@ docker exec -it rabbitmq bash
 ```
 10. [RocketMQ](https://hub.docker.com/r/rocketmqinc/rocketmq)
 - [docker-compose 部署 rocketmq](https://blog.csdn.net/oschina_41731918/article/details/123115102)
-- @see docker/compose/rocketmq/docker-compose.yml
+- @see docker/ /rocketmq/docker-compose.yml
 ```bash
 docker compose up -d
 

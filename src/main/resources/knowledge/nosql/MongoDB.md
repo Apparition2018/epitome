@@ -30,7 +30,7 @@
 2. 高可用
     - 单节点：Journal 机制
     - 集群：副本集(replica set)，维护相同的数据集，提供冗余并增加数据可用性
-3. 高扩展性：分片
+3. 高扩展性：分片集群
 4. BSON 文档模型：适合敏捷开发
 5. 丰富的查询支持：数据集合、文本搜索、地理空间查询等
 ---
@@ -534,4 +534,17 @@ db.runCommand({
 })
 ```
 6. 删除视图：`db.orderInfo.drop()`
+---
+## [副本集](https://www.mongodb.com/docs/v6.0/replication/)
+- 主从复制和副本集的区别：副本集没有固定的"主节点"
+- 成员
+
+| 成员          | 中   | 说明                             |
+|:------------|-----|--------------------------------|
+| Primary     | 主   | 接收写操作                          |
+| Secondaries | 次   | 从主节点复制操作以维护相同的数据集；可进行读操作，但需要配置 |
+| Arbiter     | 仲裁  | 不保存数据的副本集，只具投票作用               |
+---
+## [分片](https://www.mongodb.com/docs/v6.0/sharding/#std-label-sharding-introduction)
+
 ---
