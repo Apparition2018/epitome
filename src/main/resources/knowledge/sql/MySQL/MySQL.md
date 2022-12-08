@@ -65,6 +65,12 @@ default-character-set=utf8mb4
 - [window functions](https://www.jb51.net/article/129447.htm)
 ---
 ## [InnoDB 存储引擎](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)
+|                  |     |                                                               |
+|------------------|-----|---------------------------------------------------------------|
+| Row              | 行   | 由一组列定义的逻辑数据结构，每一页面可以包含一行或多行                                   |
+| Page             | 页   | 任意时刻在磁盘(数据文件)和内存(缓冲池)之间传输多少数据的单位；<br/>一页可以包含一行或多行；默认页面大小为16KB |
+| Extent           | 区   | 表空间内的一组页。对于默认页面大小为KB的页，一区包含64个页                               |
+| page compression | 页压缩 | 允许对位于表文件表空间中的InnoDB表进行页级压缩                                    |
 ### InnoDB vs MyISAM
 | 对比              | InnoDB             | MyISAM          |
 |:----------------|:-------------------|:----------------|
