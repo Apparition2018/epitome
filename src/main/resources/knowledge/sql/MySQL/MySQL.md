@@ -173,20 +173,23 @@ default-character-set=utf8mb4
     5. 避免对字段进行操作，①表达式 ②函数 ③隐式转换 ④手动转换
     6. [避免 join 表字符编码不同](https://mp.weixin.qq.com/s/1Sowt2TcjMGDv55OQOe2rQ)
     7. 避免使用[变量](https://www.cnblogs.com/Brambling/p/9259375.html) ，如 where field = @num;
-    8. 谨慎使用 or 来连接条件，按情况可以使用 in, union 或 union all 代替
-    9. 谨慎使用 in，按情况可以使用 between, union 或 union all 代替
+    8. 谨慎使用 in 和 or，使用 union/union all 代替
+        - 当返回数据过多导致应用堆内存溢出时，in 和 or 不走索引：@see SQL 语句-9
+        - [or vs in](https://www.cnblogs.com/chengho/p/16149979.html)：当字段没有索引，随着查询条件的增多，in 的性能明显优于 or
 - [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
     1. 增加网络开销，
     2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
     3. 失去了覆盖索引的可能性
 - [避免使用子查询和 join](https://blog.csdn.net/weixin_38676357/article/details/81510079)
+    - ①避免使用子查询，用 join 代替；②OLTP 场景也避免使用 join
     - [联表查询 和 单表查询+业务层处理 比较](https://www.zhihu.com/question/68258877)
+- 避免使用 having：查询语句执行顺序是 where → 聚合操作 → having，尽量在 where 过滤数据
 - [小表驱动大表](https://blog.csdn.net/qq_20891495/article/details/93744495)
     - [根据驱动表优化查询](https://www.cnblogs.com/zhengyun_ustc/p/slowquery1.html)
     - [in 小表内大表外，exists 小表外大表内](https://www.cnblogs.com/zjxiang/p/9160810.html)
 - 适当的反范式：适当增加冗余数据
 - 汇总表/缓存表：定时生成数据，用于用户耗时时间长的操作
-- [offset 和 limit 分页优化](https://juejin.cn/post/6844903939247177741)
+- [offset 和 limit 分页优化](https://juejin.cn/post/6844903939247177741)：@see 索引规约-7
 - 垂直分表：①不常用的字段 ②大字段 ③经常一起使用的字段
 - 水平分表：mod(id, 5)；查询用分表，统计用总表
 - [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)

@@ -10,6 +10,9 @@ import java.io.IOException;
 /**
  * Filter   过滤器
  * <p>
+ * Servlet2.4 的 Filter 默认情况下只过滤外部提交的请求，forward 和 include 这些内部转发不会被过滤，
+ * 因此建议继承 OncePreRequestFilter，而不是实现 Filter
+ * <p>
  * Listener → Filter → Interceptor → ControllerAdvice → Aspect → Controller
  * <p>
  * Listener, Servlet, Filter, Interceptor：https://juejin.cn/post/6844903624187854862

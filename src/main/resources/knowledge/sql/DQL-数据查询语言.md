@@ -3,18 +3,18 @@
 ---
 ## [查询语句执行顺序](https://www.cnblogs.com/wyq178/p/11576065.html)
 ```
-1   FROM
-2   ON
-3   JOIN
-4   WHERE                       不能使用别名，因为还没执行 SELECT
-5   GROUP BY                    只保留了分组字段和聚合函数的结果，因此 SELECT、ORDER BY 只能使用这些字段 
-6   AGGREGATE
-7   HAVING                      能用 WHERE 过滤就不要用 HAVING
-8   SELECT
-9   DISTINCT
-10  UNION|INTERSECT|EXCEPT
-11  ORDER BY
-12  LIMIT|TOP|OFFSET|FETCH
+FROM
+ON
+JOIN
+WHERE                       不能使用别名，因为还没执行 SELECT
+GROUP BY                    只保留了分组字段和聚合函数的结果，因此 SELECT、ORDER BY 只能使用这些字段 
+AGGREGATE
+HAVING                      能用 WHERE 过滤就不要用 HAVING
+SELECT
+DISTINCT
+UNION|INTERSECT|EXCEPT
+ORDER BY
+LIMIT|TOP|OFFSET|FETCH
 ```
 ---
 ## 基础查询

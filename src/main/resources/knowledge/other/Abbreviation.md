@@ -119,6 +119,7 @@
 | JSTL  | JSP Standard Tag Library             | Java 标准标签库           |
 | EL    | Expression Language                  | EL表达式                | 
 | OGNL  | Object-Graph Navigation Language     | 对象图导航语言              |
+| CDN   | Content Delivery Network             | 内容分发网络               |
 ---
 ## HTML
 |           |                        |               |
