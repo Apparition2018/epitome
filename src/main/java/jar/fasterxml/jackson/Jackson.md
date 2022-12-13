@@ -30,12 +30,12 @@
     - [JsonGenerator](https://github.com/FasterXML/jackson-core/wiki/JsonGenerator-Features): 生成 Json  
       <img alt="" src="https://img-blog.csdnimg.cn/20200716143504786.png#pic_center" width="450">
     - [JsonParser](https://github.com/FasterXML/jackson-core/wiki/JsonParser-Features): 读取 Json
-2. [JsonMapper (ObjectMapper)](./ObjectMapperDemo.java)
-3. [Tree Model (JsonNode)](./JsonNodeDemo.java)
+2. [JsonMapper (ObjectMapper)](ObjectMapperDemo.java)
+3. [Tree Model (JsonNode)](JsonNodeDemo.java)
 ---
-## [配置](src/main/resources/application.properties)
+## [配置](../../../../resources/application.properties)
 
 ---
-## [注解](./annotataion/AnnotationDemo.java)
+## [注解](annotataion/AnnotationDemo.java)
 
 ---

@@ -19,7 +19,7 @@
 ## [Why Spring ?](https://spring.io/why-spring)
 
 ---
-## [实例化 Bean](src/main/resources/demo/spring/spring-bean.xml)
+## [实例化 Bean](../../../resources/demo/spring/spring-bean.xml)
 1. 无参构造方法
 2. 工厂方法
     1. 静态工厂方法
