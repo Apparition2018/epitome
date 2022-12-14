@@ -5,7 +5,8 @@ import java.util.UUID;
 /**
  * UUID (universally unique identifier)
  * 表示通用唯一标识符 (UUID) 的类。 UUID 表示一个 128 位的值。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/UUID.html
+ * https://www.rfc-editor.org/rfc/rfc4122
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/UUID.html
  *
  * @author ljh
  * created on 2020/9/2 17:43

@@ -231,30 +231,9 @@
 ```
 ### MySQL 双主
 ```
-1. 主1：`vim /etc/my.cnf`
-    # 开启binlog，binlog文件名称
+1. 主1：`vim /etc/my.cnf`，@see MySQL.md#master my.cnf
     log-bin=log-bin
-    # binlog记录格式：MIXED、STATEMENT、ROW
-    binlog_format=ROW
-    # format为ROW时生效，信息日志时间写入binlog
-    binlog_rows_query_log_events=ON
-    # binlon自动删除天数
-    expire_logs_days=30
-    # binlong单个日志文件最大大小，最大和默认为1G
-    max_binlog_size=1024M
-    
-    server-id=1
-    # relay log文件名称
     relay_log=relay-bin
-    # 忽略不需要同步的数据库
-    replicate-ignore-db=information_schema
-    replicate-ignore-db=mysql
-    replicate-ignore-db=performance_schema
-    replicate-ignore-db=sys
-    
-    # 开启gtid
-    enforce_gtid_consistency=ON
-    gtid_mode=ON
 2. 主2：`vim /etc/my.cnf`，只列出与 主1 不同的项
     service-id=2
 3. 把主1设为主数据库，主2设为从数据库
