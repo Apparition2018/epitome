@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ObjectUtil.html
  *
  * @author ljh
- * created on 2020/10/27 12:51
+ * @since 2020/10/27 12:51
  */
 public class ObjectUtilDemo extends Demo {
 

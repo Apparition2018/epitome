@@ -19,7 +19,7 @@ import java.util.List;
  * 说说线程封闭与 ThreadLocal 的关系：https://blog.csdn.net/qq_33589510/article/details/105071141
  *
  * @author ljh
- * created on 2020/11/6 12:55
+ * @since 2020/11/6 12:55
  */
 public class ThreadLocalDemo {
 

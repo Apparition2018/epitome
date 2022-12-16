@@ -37,19 +37,21 @@ import java.util.stream.Collectors;
 
 /**
  * GlobalExceptionHandler
- * <p>
- * RuoYi 异常处理 (GlobalExceptionHandler)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86
- * SpringBlade 异常处理 (BladeRestExceptionTranslator)
- * [seckill-2] 异常处理 (BaseController#handlerException)
- * <p>
- * `@ControllerAdvice 是在类上声明的注解，用来声明一些全局性的东西
- * -    1.@ExceptionHandler 处理异常
- * -    2.@InitBinder       给 WebDataBinder 进行初始化
- * -    3.ModelAttribute    给 Model 绑定参数
- * `@RestControllerAdvice = @ControllerAdvice + @ResponseBody
+ * <ol>
+ *  <li><a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#异常处理">RuoYi 异常处理 (GlobalExceptionHandler)</a></li>
+ *  <li>SpringBlade 异常处理 (BladeRestExceptionTranslator)</li>
+ *  <li>[seckill-2] 异常处理 (BaseController#handlerException)</li>
+ * </ol>
+ * <p>&#064;ControllerAdvice 用来声明一些全局性的东西
+ * <ol>
+ *  <li>@ExceptionHandler 处理异常</li>
+ *  <li>@InitBinder       给 WebDataBinder 进行初始化</li>
+ *  <li>ModelAttribute    给 Model 绑定参数</li>
+ * </ol>
+ * <p>@RestControllerAdvice = @ControllerAdvice + @ResponseBody
  *
  * @author ljh
- * created on 2020/11/26 17:51
+ * @since 2020/11/26 17:51
  */
 // @Configuration 属性 proxyBeanMethods 详解：https://mingyang.blog.csdn.net/article/details/108238121
 @Configuration(proxyBeanMethods = false)
@@ -68,7 +70,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * `@RequestParam
+     * &#064;RequestParam
      */
     @ExceptionHandler({MissingServletRequestParameterException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -164,8 +166,10 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 1.GET 请求使用了 @RequestBody
-     * 2.@RequestBody request body is missing
+     * <ol>
+     *  <li>GET 请求使用了 @RequestBody</li>
+     *  <li>@RequestBody request body is missing</li>
+     * </ol>
      */
     @ExceptionHandler({HttpMessageNotReadableException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)

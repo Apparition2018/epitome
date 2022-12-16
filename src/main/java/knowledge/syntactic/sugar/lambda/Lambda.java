@@ -14,7 +14,7 @@ import static l.demo.Demo.p;
  * http://www.runoob.com/java/java8-lambda-expressions.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class Lambda {
 

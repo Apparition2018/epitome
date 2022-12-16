@@ -14,8 +14,8 @@ import java.util.Objects;
  * https://hutool.cn/docs/#/extra/cglib/Cglib%E5%B7%A5%E5%85%B7-CglibUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/cglib/CglibUtil.html
  *
- * @author Arsenal
- * created on 2020/11/21 17:04
+ * @author ljh
+ * @since 2020/11/21 17:04
  */
 public class CglibUtilDemo extends Demo {
 

@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
  * Null Object：https://java-design-patterns.com/patterns/null-object/
  *
  * @author ljh
- * created on 2022/2/8 16:29
+ * @since 2022/2/8 16:29
  */
 public class NullObjectDemo {
 

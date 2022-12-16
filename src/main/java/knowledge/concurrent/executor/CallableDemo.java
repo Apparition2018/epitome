@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * 4.Callable 接口支持返回执行结果，此时需要调用 FutureTask.get() 方法实现，此方法会阻塞主线程直到获取'将来'结果；当不调用此方法时，主线程不会阻塞！
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class CallableDemo {
 

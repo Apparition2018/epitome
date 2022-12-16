@@ -12,7 +12,7 @@ import java.util.List;
  * PrizeMapper
  *
  * @author ljh
- * created on 2022/7/4 0:45
+ * @since 2022/7/4 0:45
  */
 @Mapper
 public interface PrizeMapper {

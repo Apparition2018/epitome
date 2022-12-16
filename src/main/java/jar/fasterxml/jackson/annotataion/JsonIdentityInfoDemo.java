@@ -12,10 +12,10 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 /**
- * `@JsonIdentityInfo：解决循环依赖序列化和反序列化问题
+ * &#064;JsonIdentityInfo：解决循环依赖序列化和反序列化问题
  *
  * @author ljh
- * created on 2021/7/24 17:04
+ * @since 2021/7/24 17:04
  */
 public class JsonIdentityInfoDemo extends Demo {
 

@@ -11,7 +11,7 @@ import java.util.stream.LongStream;
  * IdGenerator
  *
  * @author ljh
- * created on 2020/10/16 12:46
+ * @since 2020/10/16 12:46
  */
 public class IdGeneratorDemo extends Demo {
 

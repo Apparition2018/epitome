@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * https://hc.apache.org/httpcomponents-client-4.5.x/current/tutorial/html/fluent.html
  *
  * @author ljh
- * created on 2021/8/2 10:35
+ * @since 2021/8/2 10:35
  */
 public class HttpClientFluentDemo {
 

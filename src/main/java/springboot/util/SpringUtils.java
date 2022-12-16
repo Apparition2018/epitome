@@ -14,7 +14,7 @@ import java.util.Map;
  * RuoYi (SpringUtils)
  *
  * @author ljh
- * created on 2021/6/21 16:59
+ * @since 2021/6/21 16:59
  */
 @Component
 public class SpringUtils implements ApplicationContextAware {

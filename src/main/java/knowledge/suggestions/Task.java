@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 建议127：Lock 和 synchronized
  *
  * @author ljh
- * created on 2020/10/10 19:23
+ * @since 2020/10/10 19:23
  */
 class Task {
     void doSomething() {

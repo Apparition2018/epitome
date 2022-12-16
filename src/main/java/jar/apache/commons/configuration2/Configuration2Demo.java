@@ -15,8 +15,8 @@ import java.io.File;
  * Configuration2
  * https://commons.apache.org/proper/commons-configuration/userguide/user_guide.html
  *
- * @author Arsenal
- * created on 2020/11/15 1:06
+ * @author ljh
+ * @since 2020/11/15 1:06
  */
 public class Configuration2Demo extends Demo {
 

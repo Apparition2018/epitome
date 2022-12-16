@@ -24,7 +24,7 @@ import java.util.Map;
  * Java 8 Nashorn 教程：https://blog.didispace.com/books/java8-tutorial/ch3.html
  *
  * @author ljh
- * created on 2021/8/10 15:52
+ * @since 2021/8/10 15:52
  */
 public class ScriptDemo extends Demo {
 

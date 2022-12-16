@@ -5,8 +5,8 @@ package jar.hutool.util;
  * SPI 机制中的服务加载工具类
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ServiceLoaderUtil.html
  *
- * @author Arsenal
- * created on 2020/11/22 4:13
+ * @author ljh
+ * @since 2020/11/22 4:13
  */
 public class ServiceLoaderUtilDemo {
 }

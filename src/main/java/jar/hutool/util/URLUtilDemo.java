@@ -14,7 +14,7 @@ import java.net.URL;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/URLUtil.html
  *
  * @author ljh
- * created on 2020/11/19 10:32
+ * @since 2020/11/19 10:32
  */
 public class URLUtilDemo extends Demo {
     

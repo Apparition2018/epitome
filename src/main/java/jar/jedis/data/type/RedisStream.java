@@ -9,7 +9,7 @@ package jar.jedis.data.type;
  * Redis消息队列发展历程：https://mp.weixin.qq.com/s/gCUT5TcCQRAxYkTJfTRjJw
  *
  * @author ljh
- * created on 2022/8/12 2:57
+ * @since 2022/8/12 2:57
  */
 public class RedisStream {
 

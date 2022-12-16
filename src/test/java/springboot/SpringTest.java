@@ -13,7 +13,7 @@ import java.util.Objects;
 
 /**
  * @author ljh
- * created on 2020/1/9 19:28
+ * @since 2020/1/9 19:28
  */
 @SpringBootTest(classes = EpitomeApplication.class)
 public class SpringTest {

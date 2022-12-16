@@ -11,7 +11,7 @@ import java.util.stream.StreamSupport;
  * StreamSupport
  *
  * @author ljh
- * created on 2021/8/31 14:09
+ * @since 2021/8/31 14:09
  */
 public class StreamSupportDemo extends Demo {
 

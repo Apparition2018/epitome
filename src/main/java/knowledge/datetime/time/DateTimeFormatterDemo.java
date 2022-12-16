@@ -77,7 +77,7 @@ import java.time.format.FormatStyle;
  * https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class DateTimeFormatterDemo {
 

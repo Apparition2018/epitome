@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
  * 第二种：自定义订阅者（自定义消息监听器）
  *
  * @author ljh
- * created on 2021/9/2 2:48
+ * @since 2021/9/2 2:48
  */
 @Slf4j
 public class CnMessageSubscriber {

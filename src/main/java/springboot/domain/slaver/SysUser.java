@@ -10,7 +10,7 @@ import java.util.List;
  * SysUser
  *
  * @author ljh
- * created on 2022/4/20 10:07
+ * @since 2022/4/20 10:07
  */
 @Data
 public class SysUser implements Serializable {

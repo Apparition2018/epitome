@@ -13,18 +13,18 @@ import java.util.Date;
  * DemoController
  *
  * @author ljh
- * created on 2020/11/13 8:52
+ * @since 2020/11/13 8:52
  */
 @Slf4j
 @RestController
-@RequestMapping("/demo")
+@RequestMapping("demo")
 @Tag(name = "Demo")
 public class DemoController {
 
     /**
-     * http://localhost:3333/demo/get
+     * <a href="http://localhost:3333/demo/get">demo/get</a>
      */
-    @GetMapping("/get")
+    @GetMapping("get")
     @Operation(summary = "GET 请求")
     public Student get(@RequestParam(value = "id", required = false) Integer id,
                        @RequestParam(value = "name", required = false) String name) {
@@ -32,9 +32,9 @@ public class DemoController {
     }
 
     /**
-     * http://localhost:3333/demo/post
+     * <a href="http://localhost:3333/demo/post">demo/post</a>
      */
-    @PostMapping("/post")
+    @PostMapping("post")
     @Operation(summary = "POST 请求，@RequestParam")
     public Student post(@RequestParam(value = "id", required = false) Integer id,
                         @RequestParam(value = "name", required = false) String name) {
@@ -42,32 +42,31 @@ public class DemoController {
     }
 
     /**
-     * http://localhost:3333/demo/post2
+     * <a href="http://localhost:3333/demo/post2">demo/post2</a>
      */
-    @PostMapping("/post2")
+    @PostMapping("post2")
     @Operation(summary = "POST 请求，JavaBean")
     public Student post2(Person person) {
         return new Student(person.getId(), person.getName());
     }
 
     /**
-     * http://localhost:3333/demo/post3
+     * <a href="http://localhost:3333/demo/post3">demo/post3</a>
      */
-    @PostMapping("/post3")
+    @PostMapping("post3")
     @Operation(summary = "POST 请求，@RequestBody")
     public Student post3(@RequestBody Person person) {
         return new Student(person.getId(), person.getName());
     }
 
     /**
-     * http://localhost:3333/demo/path/{id}/{name}
-     * `@PathVariable：https://www.cnblogs.com/fangpengchengbupter/p/7823493.html
+     * <a href="https://www.cnblogs.com/fangpengchengbupter/p/7823493.html">@PathVariable</a>
+     * <p><a href="http://localhost:3333/demo/path/1/John">demo/path/{id}/{name}</a>
      */
-    @GetMapping("/path/{id:[0-9]+}/{name}")
+    @GetMapping("path/{id:[0-9]+}/{name}")
     @Operation(summary = "@PathVariable")
     public Student path(@PathVariable("id") Integer id, @PathVariable("name") String name) {
         log.info("path 参数：id-{}，name-{}", id, name);
         return new Student(id, name);
     }
-
 }

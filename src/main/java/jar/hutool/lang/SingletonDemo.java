@@ -20,8 +20,8 @@ import java.util.Objects;
  * https://hutool.cn/docs/#/core/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/%E5%8D%95%E4%BE%8B%E5%B7%A5%E5%85%B7-Singleton
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Singleton.html
  *
- * @author Arsenal
- * created on 2020/11/19 20:46
+ * @author ljh
+ * @since 2020/11/19 20:46
  */
 public class SingletonDemo {
 

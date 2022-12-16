@@ -25,7 +25,7 @@ import java.util.Stack;
  * 菜鸟模式：https://www.runoob.com/design-pattern/interpreter-pattern.html
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class InterpreterDemo {
 

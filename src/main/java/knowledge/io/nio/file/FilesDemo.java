@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class FilesDemo extends Demo {
 

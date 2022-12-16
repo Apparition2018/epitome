@@ -13,7 +13,7 @@ import static l.demo.Demo.p;
  * 类似的还有 LongSummaryStatistics，DoubleSummaryStatistics
  *
  * @author ljh
- * created on 2021/1/14 15:41
+ * @since 2021/1/14 15:41
  */
 public class IntSummaryStatisticsDemo {
 

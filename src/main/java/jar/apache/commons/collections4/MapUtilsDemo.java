@@ -33,7 +33,7 @@ import java.util.Map;
  * static <K,V> Properties	        toProperties(Map<K,V> map)                          转换成 Properties
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class MapUtilsDemo extends Demo {
 

@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
  * https://hutool.cn/docs/#/core/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/%E6%96%AD%E8%A8%80-Assert
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Assert.html
  *
- * @author Arsenal
- * created on 2020/11/3 1:56
+ * @author ljh
+ * @since 2020/11/3 1:56
  */
 public class AssertDemo extends Demo {
 

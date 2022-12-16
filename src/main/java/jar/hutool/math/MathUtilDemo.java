@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
  * https://hutool.cn/docs/#/core/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3-MathUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/math/MathUtil.html
  * 
- * @author Arsenal
- * created on 2020/11/19 23:37
+ * @author ljh
+ * @since 2020/11/19 23:37
  */
 public class MathUtilDemo extends Demo {
 

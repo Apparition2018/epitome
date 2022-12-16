@@ -32,8 +32,8 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * http://commons.apache.org/proper/commons-collections/apidocs/allclasses-noframe.html
  *
- * @author Arsenal
- * created on 2020/11/14 14:19
+ * @author ljh
+ * @since 2020/11/14 14:19
  */
 public class ApacheMap extends Demo {
 

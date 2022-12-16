@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * Man
  *
  * @author ljh
- * created on 2020/11/10 16:01
+ * @since 2020/11/10 16:01
  */
 @Service
 public class Man extends Demo implements People {

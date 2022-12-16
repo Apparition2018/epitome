@@ -27,7 +27,7 @@ import org.junit.jupiter.api.Test;
  * Java设计模式：http://c.biancheng.net/view/1364.html
  *
  * @author ljh
- * created on 2020/11/23 19:38
+ * @since 2020/11/23 19:38
  */
 public class BridgeDemo {
 

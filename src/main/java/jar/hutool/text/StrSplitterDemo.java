@@ -12,7 +12,7 @@ import static l.demo.Demo.p;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/StrSplitter.html
  *
  * @author ljh
- * created on 2020/11/5 10:20
+ * @since 2020/11/5 10:20
  */
 public class StrSplitterDemo {
 

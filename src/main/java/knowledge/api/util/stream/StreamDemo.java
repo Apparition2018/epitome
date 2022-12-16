@@ -30,7 +30,7 @@ import java.util.stream.Stream;
  * http://www.runoob.com/java/java8-streams.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class StreamDemo extends Demo {
 

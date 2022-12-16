@@ -12,8 +12,8 @@ import java.util.Map;
  * PropertyUtils
  * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/PropertyUtils.html
  *
- * @author Arsenal
- * created on 2020/11/14 21:29
+ * @author ljh
+ * @since 2020/11/14 21:29
  */
 public class PropertyUtilsDemo extends Demo {
     

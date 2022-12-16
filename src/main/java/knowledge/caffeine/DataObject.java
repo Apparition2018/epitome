@@ -6,7 +6,7 @@ import lombok.Data;
  * DataObject
  *
  * @author ljh
- * created on 2021/11/2 17:11
+ * @since 2021/11/2 17:11
  */
 @Data
 public class DataObject {

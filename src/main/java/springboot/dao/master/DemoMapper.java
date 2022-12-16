@@ -7,7 +7,7 @@ import springboot.domain.master.Demo;
  * DemoMapper
  *
  * @author ljh
- * created on 2022/2/18 11:37
+ * @since 2022/2/18 11:37
  */
 @Repository
 public interface DemoMapper {

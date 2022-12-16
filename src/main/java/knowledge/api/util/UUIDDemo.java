@@ -9,7 +9,7 @@ import java.util.UUID;
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/UUID.html
  *
  * @author ljh
- * created on 2020/9/2 17:43
+ * @since 2020/9/2 17:43
  */
 public class UUIDDemo {
 

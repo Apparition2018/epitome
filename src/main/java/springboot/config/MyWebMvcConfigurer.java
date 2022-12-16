@@ -29,17 +29,24 @@ import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * WebMvcConfigurer 与 WebMvcConfigurationSupport：https://blog.csdn.net/lvyuanj/article/details/108554170
+ * <a href="https://blog.csdn.net/lvyuanj/article/details/108554170">WebMvcConfigurer vs WebMvcConfigurationSupport</a>
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 @Configuration
 public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
+    @Value("${spring.mvc.static-path-pattern}")
+    private String staticPathPatterns;
+
+    @Value("${spring.web.resources.static-locations}")
+    private String staticLocations;
+
     /**
-     * 1.配置路径匹配
-     * A Quick Guide to Spring MVC Matrix Variables：https://www.baeldung.com/spring-mvc-matrix-variables
+     * 1.配置 HandlerMapping 路径匹配
+     *
+     * @see <a href="https://www.baeldung.com/spring-mvc-matrix-variables">A Quick Guide to Spring MVC Matrix Variables</a>
      */
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
@@ -49,32 +56,30 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
         WebMvcConfigurer.super.configurePathMatch(configurer);
     }
 
-    @Value("${spring.mvc.static-path-pattern}")
-    private String staticPathPatterns;
-
-    @Value("${spring.web.resources.static-locations}")
-    private String staticLocations;
-
     /**
-     * 2.配置内容协议：一个请求放回多种数据格式
-     * <p>
-     * Path Matching and Content Negotiation：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-web-applications.spring-mvc.content-negotiation
-     * Spring MVC Content Negotiation：https://www.baeldung.com/spring-mvc-content-negotiation-json-xml
-     * ContentNegotiation 内容协商机制(一) --- Spring MVC 内置支持的4种内容协商方式：https://blog.csdn.net/f641385712/article/details/100020664
-     * ContentNegotiation 内容协商机制(二) --- Spring MVC 内容协商实现原理及自定义配置：https://blog.csdn.net/f641385712/article/details/100060445
-     * ContentNegotiation 内容协商机制(三) --- 在视图 View 上的应用：ContentNegotiatingViewResolver 深度解析：https://blog.csdn.net/f641385712/article/details/100079806
-     * 1. Producers
-     * 2. URL suffixes (eg .xml/.json) (5.2.4 弃用)
-     * 3. URL parameter (eg ?format=json)
-     * 4. Accept header
+     * 2.配置内容协议
+     * <ol>
+     *  <li>URL suffixes：根据 URL 后缀返回内容格式，5.2.4 弃用</li>
+     *  <li>URL parameter：根据 URL 请求参数返回内容格式</li>
+     *  <li>Accept header</li>
+     *  <li>produces：@RequestMapping(produces)</li>
+     * </ol>
+     *
+     * @see <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-web-applications.spring-mvc.content-negotiation">Path Matching and Content Negotiation</a>
+     * @see <a href="https://www.baeldung.com/spring-mvc-content-negotiation-json-xml">Spring MVC Content Negotiation</a>
+     * @see <a href="https://blog.csdn.net/f641385712/article/details/100020664">ContentNegotiation 内容协商机制(一) --- Spring MVC 内置支持的4种内容协商方式</a>
+     * @see <a href="https://blog.csdn.net/f641385712/article/details/100060445">ContentNegotiation 内容协商机制(二) --- Spring MVC 内容协商实现原理及自定义配置</a>
+     * @see <a href="https://blog.csdn.net/f641385712/article/details/100079806">ContentNegotiation 内容协商机制(三) --- 在视图 View 上的应用：ContentNegotiatingViewResolver 深度解析</a>
      */
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        // https://www.baeldung.com/spring-mvc-content-negotiation-json-xml#basics-4
         configurer.defaultContentType(MediaType.APPLICATION_JSON)
-                // 是否通过请求参数来决定返回数据，默认 false；和 addReturnValueHandlers 冲突
+                .ignoreAcceptHeader(true)
                 .favorParameter(true)
                 .parameterName("mediaType")
-                .ignoreAcceptHeader(true);
+                .mediaType("xml", MediaType.APPLICATION_XML)
+                .mediaType("json", MediaType.APPLICATION_JSON);
         WebMvcConfigurer.super.configureContentNegotiation(configurer);
     }
 
@@ -95,16 +100,17 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * 3.配置异步
-     * <p>
-     * Asynchronous Programming in Java：https://www.baeldung.com/java-asynchronous-programming
-     * 异步请求和异步调用有区别：https://mp.weixin.qq.com/s/Vqj7L9hQL9b11LEdDWp-HQ
-     * SpringBoot 的四种异步处理：https://hello.blog.csdn.net/article/details/113924477
-     * 1.@Async
-     * -    @Async 无效原因：https://blog.csdn.net/weixin_42054155/article/details/106579769
-     * 2.Runnable/Callable
-     * 3.WebAsyncTask
-     * 4.DeferredResult
+     * 3.配置异步请求
+     * <ol>
+     *  <li>@Async：<a href="https://blog.csdn.net/weixin_42054155/article/details/106579769">@Async 无效原因</a></li>
+     *  <li>Runnable/Callable</li>
+     *  <li>WebAsyncTask</li>
+     *  <li>DeferredResult</li>
+     * </ol>
+     *
+     * @see <a href="https://www.baeldung.com/java-asynchronous-programming">Asynchronous Programming in Java</a>
+     * @see <a href="https://mp.weixin.qq.com/s/Vqj7L9hQL9b11LEdDWp-HQ">异步请求和异步调用有区别</a>
+     * @see <a href="https://hello.blog.csdn.net/article/details/113924477">SpringBoot 的四种异步处理</a>
      */
     @Override
     public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
@@ -116,7 +122,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 4.配置默认 Servlet 处理器
-     * 常见用于 DispatcherServlet 被映射到 "/"，从而覆盖 Servlet 容器对静态资源的默认处理
+     * <p>常见用于 DispatcherServlet 被映射到 "/"，从而覆盖 Servlet 容器对静态资源的默认处理
      */
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -124,12 +130,12 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * 5.添加格式化器
-     * 枚举：https://xkcoding.com/2019/01/30/spring-boot-request-use-enums-params.html
-     * 注解：https://www.cnblogs.com/eclipse-/p/10998269.html
-     * Binding Individual Objects to Request Parameters：https://www.baeldung.com/spring-mvc-custom-data-binder#binding-individual-objects-to-request-parameters
-     * Binding a Hierarchy of Objects：https://www.baeldung.com/spring-mvc-custom-data-binder#binding-a-hierarchy-of-objects
-     * Guide to Spring Type Conversions：https://www.baeldung.com/spring-type-conversions
+     * 5.添加转换器和格式化器
+     *
+     * @see <a href="https://xkcoding.com/2019/01/30/spring-boot-request-use-enums-params.html">使用枚举作为请求参数</a>
+     * @see <a href="https://www.cnblogs.com/eclipse-/p/10998269.html">自定义注解转换请求参数</a>
+     * @see <a href="https://www.baeldung.com/spring-mvc-custom-data-binder">A Custom Data Binder in Spring MVC</a>
+     * @see <a href="https://www.baeldung.com/spring-type-conversions">Guide to Spring Type Conversions</a>
      */
     @Override
     public void addFormatters(FormatterRegistry registry) {
@@ -145,7 +151,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * 6.添加拦截器
+     * 6.添加 SpringMVC 生命周期拦截器
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -154,19 +160,21 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * 7.添加静态处理
-     * extends WebMvcConfigurationSupport 会使默认配置失效，需重写 addResourceHandlers
-     * implements WebMvcConfigurer 则不需要，在 application.yml 配置即可
+     * 7.添加静态资源处理器
+     * <ol>
+     *  <li>extends WebMvcConfigurationSupport 会使默认配置失效，需重写 addResourceHandlers</li>
+     *  <li>implements WebMvcConfigurer 则不需要，在 application.yml 配置即可</li>
+     * </ol>
+     * <p>配置后尝试访问：<a href="http://localhost:3333/public/img/Event-Y.jpg">Event-Y.jpg</a>
+     * <p>映射规则：
+     * <ol>
+     *  <li>webjars 默认映射规则：/webjars/** ==> classpath:/META-INF/resources/webjars/</li>
+     *  <li>静态资源默认映射规则：/** ==> classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/</li>
+     * </ol>
      *
-     * @link {http://localhost:3333/img/Event-Y.jpg}
-     * <p>
-     * webjars 默认映射规则：/webjars/** ==> classpath:/META-INF/resources/webjars/
-     * 静态资源默认映射规则：/** ==> classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
-     * <p>
-     * Springboot2 静态资源配置：https://www.cnblogs.com/xiaomaomao/p/14278402.html
-     * SpringBoot2 静态资源访问问题：https://blog.csdn.net/afgasdg/article/details/106474734
-     * Spring MVC 配置静态资源：https://www.cnblogs.com/zhangcaihua/p/12829083.html
-     * Serve Static Resources with Spring：https://www.baeldung.com/spring-mvc-static-resources
+     * @see <a href="https://www.baeldung.com/spring-mvc-static-resources">Serve Static Resources with Spring</a>
+     * @see <a href="https://blog.csdn.net/afgasdg/article/details/106474734">SpringBoot2 静态资源访问问题</a>
+     * @see <a href="https://www.cnblogs.com/zhangcaihua/p/12829083.html">Spring MVC 配置静态资源</a>
      * @see org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#addResourceHandlers
      */
     @Override
@@ -180,13 +188,17 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * 8.添加跨域映射
-     * https://www.cnblogs.com/520playboy/p/7306008.html
-     * CORS with Spring：https://www.baeldung.com/spring-cors
-     * <p>
-     * 也可以使用 @CrossOrigin 针对单独的 Controller
-     * `@CrossOrigin(origins = "http://192.168.1.123:8080", originPatterns = "*",
-     * -    methods = {RequestMethod.GET, RequestMethod.POST}, allowCredentials = "false", maxAge = 3600)
+     * 8.配置全局跨域请求处理
+     * <p>也可以使用 @CrossOrigin 针对单独的 Controller
+     * <pre>
+     * &#064;CrossOrigin(origins = "http://192.168.1.123:8080",
+     *      originPatterns = "*",
+     *      methods = {RequestMethod.GET, RequestMethod.POST},
+     *      allowCredentials = "false", maxAge = 3600)
+     * </pre>
+     *
+     * @see <a href="https://www.cnblogs.com/520playboy/p/7306008.html">SpringBoot 种通过 cors 协议解决跨域问题</a>
+     * @see <a href="https://www.baeldung.com/spring-cors">CORS with Spring</a>
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -203,20 +215,19 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
         WebMvcConfigurer.super.addCorsMappings(registry);
     }
 
-    /*
-     * 下面代码相当于：
-     * @Controller
+    /**
+     * 9.添加简单的自动控制器
+     * <p>常用于无业务逻辑的页面跳转，如：主页、URL 重定向、404 页面等
+     * <p>下面代码相当于
+     * <pre>
+     * &#064;Controller
      * public class IndexController {
-     *      @GetMapping("index")
+     *      &#064;GetMapping("index")
      *      public String index() {
      *          return "index";
      *      }
      * }
-     */
-
-    /**
-     * 9.添加视图控制器
-     * 常用于无业务逻辑的页面跳转，如：主页、URL 重定向、404 页面等
+     * </pre>
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -226,8 +237,9 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 10.配置视图解析器
-     * A Guide to the ViewResolver in Spring MVC：https://www.baeldung.com/spring-mvc-view-resolver-tutorial
-     * Customize ViewResolvers：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto.spring-mvc.customize-view-resolvers
+     *
+     * @see <a href="https://www.baeldung.com/spring-mvc-view-resolver-tutorial">A Guide to the ViewResolver in Spring MVC</a>
+     * @see <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto.spring-mvc.customize-view-resolvers">Customize ViewResolvers</a>
      */
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
@@ -241,8 +253,9 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 11.添加参数解析器
-     * 要自定义参数解析的内置支持，请直接配置 RequestMappingHandlerAdapter
-     * Binding Domain Objects：https://www.baeldung.com/spring-mvc-custom-data-binder#binding-a-hierarchy-of-objects
+     * <p>要自定义参数解析的内置支持，请直接配置 RequestMappingHandlerAdapter
+     *
+     * @see <a href="https://www.baeldung.com/spring-mvc-custom-data-binder#binding-a-hierarchy-of-objects">Binding Domain Objects</a>
      */
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
@@ -257,7 +270,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 12.添加返回值处理器
-     * 要自定义处理返回值的内置支持，请直接配置 RequestMappingHandlerAdapter
+     * <p>要自定义处理返回值的内置支持，请直接配置 RequestMappingHandlerAdapter
      */
     @Override
     public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> handlers) {
@@ -267,11 +280,12 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 13.配置消息转换器
-     * SpringMVC HttpMessageConverter 匹配规则：https://segmentfault.com/a/1190000012659486
-     * 如何扩展 XML 格式的请求和响应：https://blog.didispace.com/spring-boot-learning-21-2-8/
-     * Http Message Converters with the Spring Framework：https://www.baeldung.com/spring-httpmessageconverter-rest
-     * Binary Data Formats in a Spring REST API：https://www.baeldung.com/spring-rest-api-with-binary-data-formats
-     * Returning Image/Media Data with Spring MVC：https://www.baeldung.com/spring-mvc-image-media-data
+     *
+     * @see <a href="https://www.baeldung.com/spring-httpmessageconverter-rest">Http Message Converters with the Spring Framework</a>
+     * @see <a href="https://www.baeldung.com/spring-rest-api-with-binary-data-formats">Binary Data Formats in a Spring REST API</a>
+     * @see <a href="https://www.baeldung.com/spring-mvc-image-media-data">Returning Image/Media Data with Spring MVC</a>
+     * @see <a href="https://segmentfault.com/a/1190000012659486">SpringMVC HttpMessageConverter 匹配规则</a>
+     * @see <a href="https://blog.didispace.com/spring-boot-learning-21-2-8/">SpringBoot 如何扩展 XML 格式的请求和响应</a>
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -279,9 +293,9 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * 14.继承消息转换器
-     * 扩展或修改默认配置的消息转换器列表
-     * configureMessageConverters 和 configureMessageConverters：https://www.cnblogs.com/woyujiezhen/p/12105852.html
+     * 14.扩展或修改消息转换器
+     *
+     * @see <a href="https://www.cnblogs.com/woyujiezhen/p/12105852.html">configureMessageConverters vs extendMessageConverters</a>
      */
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -290,7 +304,8 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 15.配置处理异常解析器
-     * 自定义异常处理 HandlerExceptionResolver：https://www.cnblogs.com/yihuihui/p/11673496.html
+     *
+     * @see <a href="https://www.cnblogs.com/yihuihui/p/11673496.html">自定义异常处理 HandlerExceptionResolver</a>
      */
     @Override
     public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
@@ -298,8 +313,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * 16.继承处理异常解析器
-     * 扩展或修改默认配置的异常解析器列表
+     * 16.扩展或修改处理异常解析器
      */
     @Override
     public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
@@ -307,7 +321,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * 17.验证器
+     * 17.自定义 Validator
      */
     @Override
     public Validator getValidator() {
@@ -315,8 +329,8 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     }
 
     /**
-     * 18.消息代码解析器
-     * 用于生成错误代码
+     * 18.自定义 MessageCodesResolver
+     * <p>用于从数据绑定和验证错误代码构建消息代码
      */
     @Override
     public MessageCodesResolver getMessageCodesResolver() {

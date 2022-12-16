@@ -34,7 +34,7 @@ import java.util.stream.IntStream;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/thread/ThreadUtil.html
  *
  * @author ljh
- * created on 2020/10/26 9:30
+ * @since 2020/10/26 9:30
  */
 public class ThreadUtilDemo extends Demo {
 

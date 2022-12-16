@@ -29,7 +29,7 @@ import java.util.Comparator;
  * static <E> Collection<E>	transformingCollection(Collection<E> collection, Transformer<? super E,? extends E> transformer)o
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class CollectionUtilsDemo extends Demo {
 

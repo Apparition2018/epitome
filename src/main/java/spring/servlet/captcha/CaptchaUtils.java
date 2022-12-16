@@ -18,8 +18,8 @@ import java.util.stream.IntStream;
 /**
  * CaptchaUtils
  *
- * @author Arsenal
- * created on 2019/12/23 23:08
+ * @author ljh
+ * @since 2019/12/23 23:08
  */
 public abstract class CaptchaUtils {
 

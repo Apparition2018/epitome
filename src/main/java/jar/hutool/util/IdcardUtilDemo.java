@@ -13,7 +13,7 @@ import java.util.Date;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/IdcardUtil.html
  *
  * @author ljh
- * created on 2020/11/13 17:39
+ * @since 2020/11/13 17:39
  */
 public class IdcardUtilDemo extends Demo {
 

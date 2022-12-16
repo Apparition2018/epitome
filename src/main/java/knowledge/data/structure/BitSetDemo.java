@@ -23,7 +23,7 @@ import static l.demo.Demo.p;
  * int	        cardinality()                       返回此 BitSet 中设置为 true 的位数
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class BitSetDemo {
 

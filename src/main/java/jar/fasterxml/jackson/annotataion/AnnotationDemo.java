@@ -14,39 +14,41 @@ import java.util.Date;
 
 /**
  * Annotation
- * Jackson Annotations：https://github.com/FasterXML/jackson-docs/wiki/JacksonAnnotations
- * Jackson 全面解析--注解全讲解一：https://www.jianshu.com/p/83b0a3f4d0bf
- * Jackson 全面解析--注解全讲解二：https://www.jianshu.com/p/32c21a390e1d
- * Jackson 全面解析--注解全讲解三：https://www.jianshu.com/p/e85c3dfba052
- * Jackson 全面解析--注解全讲解四：https://www.jianshu.com/p/38e6f1f642b3
- * Jackson 全面解析--注解全讲解五：https://www.jianshu.com/p/2982116ee0ff
- * Jackson 全面解析--注解全讲解六：https://www.jianshu.com/p/a4e24b253c4d
- * Jackson 全面解析--注解全讲解七：https://www.jianshu.com/p/54cf66ff6e3f
- * Jackson 全面解析--注解全讲解八：https://www.jianshu.com/p/2b9ee52bd6ab
- * Jackson 全面解析--注解全讲解九：https://www.jianshu.com/p/3d98fa64473b
- * Jackson 全面解析--注解全讲解十：https://www.jianshu.com/p/4003b9756952
- * Jackson 全面解析--注解全讲解十一：https://www.jianshu.com/p/38202f12dd31
- * Jackson 全面解析--注解全讲解十二：https://www.jianshu.com/p/e7483a292605
+ * <p><a href="https://github.com/FasterXML/jackson-docs/wiki/JacksonAnnotations">Jackson Annotations</a>
+ * <p><a href="https://www.jianshu.com/p/83b0a3f4d0bf">Jackson 全面解析--注解全讲解一</a>
+ * <p><a href="https://www.jianshu.com/p/32c21a390e1d">Jackson 全面解析--注解全讲解二</a>
+ * <p><a href="https://www.jianshu.com/p/e85c3dfba052">Jackson 全面解析--注解全讲解三</a>
+ * <p><a href="https://www.jianshu.com/p/38e6f1f642b3">Jackson 全面解析--注解全讲解四</a>
+ * <p><a href="https://www.jianshu.com/p/2982116ee0ff">Jackson 全面解析--注解全讲解五</a>
+ * <p><a href="https://www.jianshu.com/p/a4e24b253c4d">Jackson 全面解析--注解全讲解六</a>
+ * <p><a href="https://www.jianshu.com/p/54cf66ff6e3f">Jackson 全面解析--注解全讲解七</a>
+ * <p><a href="https://www.jianshu.com/p/2b9ee52bd6ab">Jackson 全面解析--注解全讲解八</a>
+ * <p><a href="https://www.jianshu.com/p/3d98fa64473b">Jackson 全面解析--注解全讲解九</a>
+ * <p><a href="https://www.jianshu.com/p/4003b9756952">Jackson 全面解析--注解全讲解十</a>
+ * <p><a href="https://www.jianshu.com/p/38202f12dd31">Jackson 全面解析--注解全讲解十一</a>
+ * <p><a href="https://www.jianshu.com/p/e7483a292605">Jackson 全面解析--注解全讲解十二</a>
  *
  * @author ljh
- * created on 2021/7/19 23:44
+ * @since 2021/7/19 23:44
  */
 public class AnnotationDemo extends Demo {
 
     /**
-     * `@JsonInclude
-     * `@JsonIgnoreProperties
-     * `@JsonIgnore
-     * `@JsonIgnoreType
-     * `@JsonPropertyOrder
-     * `@JsonProperty
-     * `@JsonAppend
-     * `@JsonFilter
-     * `@JsonRootName
-     * `@JsonNaming
-     * `@JsonFormat
-     * `@JsonRawValue
-     * `@JsonAnyGetter
+     * <ul>
+     *  <li>@JsonInclude</li>
+     *  <li>@JsonIgnoreProperties</li>
+     *  <li>@JsonIgnore</li>
+     *  <li>@JsonIgnoreType</li>
+     *  <li>@JsonPropertyOrder</li>
+     *  <li>@JsonProperty</li>
+     *  <li>@JsonAppend</li>
+     *  <li>@JsonFilter</li>
+     *  <li>@JsonRootName</li>
+     *  <li>@JsonNaming</li>
+     *  <li>@JsonFormat</li>
+     *  <li>@JsonRawValue</li>
+     *  <li>@JsonAnyGetter</li>
+     * </ul>
      *
      * @see jar.fasterxml.jackson.entity.Person
      */
@@ -71,15 +73,17 @@ public class AnnotationDemo extends Demo {
     }
 
     /**
-     * `@JsonNaming
-     * `@JsonProperty
-     * `@JsonIgnoreProperties
-     * `@JsonIgnore
-     * `@JsonIgnoreType
-     * `@JsonAlias
-     * `@JacksonInject
-     * `@JsonAnySetter
-     * `@JsonEnumDefaultValue
+     * <ul>
+     *  <li>@JsonNaming</li>
+     *  <li>@JsonProperty</li>
+     *  <li>@JsonIgnoreProperties</li>
+     *  <li>@JsonIgnore</li>
+     *  <li>@JsonIgnoreType</li>
+     *  <li>@JsonAlias</li>
+     *  <li>@JacksonInject</li>
+     *  <li>@JsonAnySetter</li>
+     *  <li>@JsonEnumDefaultValue</li>
+     * </ul>
      *
      * @see jar.fasterxml.jackson.entity.Person
      */

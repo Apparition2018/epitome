@@ -9,7 +9,7 @@ package knowledge.algorithm;
  * 利用堆栈将中缀表达式转换成后缀表达式：http://www.runoob.com/java/data-intopost.html
  *
  * @author ljh
- * created on 2020/10/10 19:23
+ * @since 2020/10/10 19:23
  */
 public class Notation {
 }

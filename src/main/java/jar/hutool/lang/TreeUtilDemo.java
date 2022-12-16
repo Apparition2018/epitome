@@ -15,8 +15,8 @@ import java.util.List;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/tree/TreeUtil.html
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/tree/TreeNode.html
  *
- * @author Arsenal
- * created on 2020/11/19 22:31
+ * @author ljh
+ * @since 2020/11/19 22:31
  */
 public class TreeUtilDemo {
 

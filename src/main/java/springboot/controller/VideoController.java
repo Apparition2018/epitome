@@ -17,13 +17,13 @@ import java.io.IOException;
 import java.util.Optional;
 
 /**
- * Stream Video：https://www.techtudes.in/stream-video-using-spring-boot-chunk-by-chunk-over-http/
+ * <a href="https://www.techtudes.in/stream-video-using-spring-boot-chunk-by-chunk-over-http/">Stream Video</a>
  *
  * @author ljh
- * created on 2021/10/19 16:28
+ * @since 2021/10/19 16:28
  */
 @RestController
-@RequestMapping("/video")
+@RequestMapping("video")
 @Tag(name = "Video")
 public class VideoController {
 

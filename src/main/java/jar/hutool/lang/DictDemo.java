@@ -16,8 +16,8 @@ import org.junit.jupiter.api.Test;
  * void	        putAll(Map<? extends String,?> m)           添加所有
  * Dict	        setIgnoreNull(String attr, Object value)    设置列，当键或值为 null 时忽略
  *
- * @author Arsenal
- * created on 2020/11/19 19:29
+ * @author ljh
+ * @since 2020/11/19 19:29
  */
 public class DictDemo extends Demo {
 

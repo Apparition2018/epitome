@@ -8,7 +8,7 @@ import static l.demo.Demo.p;
  * PrintGraphs
  *
  * @author ljh
- * created on 2020/11/23 10:13
+ * @since 2020/11/23 10:13
  */
 public class PrintGraphs {
 

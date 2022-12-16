@@ -14,7 +14,7 @@ import java.net.URI;
  * https://www.runoob.com/manual/jdk1.6/java.desktop/java/awt/Desktop.Action.html
  *
  * @author ljh
- * created on 2020/9/25 17:42
+ * @since 2020/9/25 17:42
  */
 public class DesktopDemo extends Demo {
 

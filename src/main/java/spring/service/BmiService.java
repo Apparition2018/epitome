@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 /**
  * BmiService
  *
- * @author Arsenal
- * created on 2020/11/26 2:13
+ * @author ljh
+ * @since 2020/11/26 2:13
  */
 @Service
 public class BmiService {

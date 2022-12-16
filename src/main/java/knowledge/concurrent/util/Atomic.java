@@ -43,8 +43,8 @@ import java.util.stream.IntStream;
  * 原子类（四）AtomicInteger 和 synchronized：https://www.jianshu.com/p/85af7c8bc8a1
  * 原子类（五）Adder 和 Accumulator：https://www.jianshu.com/p/492f1f5f7763
  *
- * @author Arsenal
- * created on 2020/11/17 0:52
+ * @author ljh
+ * @since 2020/11/17 0:52
  */
 public class Atomic extends Demo {
 

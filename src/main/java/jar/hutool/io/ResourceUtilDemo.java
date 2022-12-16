@@ -13,7 +13,7 @@ import java.io.IOException;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/resource/ResourceUtil.html
  *
  * @author ljh
- * created on 2020/10/30 16:45
+ * @since 2020/10/30 16:45
  */
 public class ResourceUtilDemo extends Demo {
 

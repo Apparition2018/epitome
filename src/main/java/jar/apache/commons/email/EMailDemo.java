@@ -12,7 +12,7 @@ import java.net.URL;
  * http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/Email.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class EMailDemo extends Demo {
 

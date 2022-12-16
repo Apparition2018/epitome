@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * 第一种：订阅者继承 MessageListener（建议使用）
  *
  * @author ljh
- * created on 2021/9/1 21:30
+ * @since 2021/9/1 21:30
  */
 @Slf4j
 @Component

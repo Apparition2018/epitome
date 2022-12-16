@@ -12,8 +12,8 @@ import lombok.extern.slf4j.Slf4j;
  * <p>
  * netty(4)高级篇-Websocket协议开发：https://www.cnblogs.com/carl10086/p/6188808.html
  *
- * @author Arsenal
- * created on 2021/3/5 2:34
+ * @author ljh
+ * @since 2021/3/5 2:34
  */
 @Slf4j
 public class WebSocketServer {

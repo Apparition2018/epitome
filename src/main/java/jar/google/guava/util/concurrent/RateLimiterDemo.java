@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * Guava RateLimiter 限流器入门到精通：https://blog.51cto.com/alex4dream/3944594
  *
  * @author ljh
- * created on 2022/6/30 8:25
+ * @since 2022/6/30 8:25
  */
 public class RateLimiterDemo {
 

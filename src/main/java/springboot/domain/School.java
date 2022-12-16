@@ -8,7 +8,7 @@ import org.springframework.util.ResourceUtils;
 
 /**
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class School {
 

@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  * https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class MethodReferences {
 

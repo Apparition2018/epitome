@@ -15,7 +15,7 @@ import static l.demo.Demo.p;
  * https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html
  *
  * @author ljh
- * created on 2020/10/23 20:09
+ * @since 2020/10/23 20:09
  */
 public class ObjectsDemo {
 

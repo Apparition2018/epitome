@@ -20,8 +20,8 @@ import java.util.Random;
  * https://hutool.cn/docs/#/crypto/%E5%9B%BD%E5%AF%86%E7%AE%97%E6%B3%95%E5%B7%A5%E5%85%B7-SmUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/SmUtil.html
  *
- * @author Arsenal
- * created on 2020/11/9 3:06
+ * @author ljh
+ * @since 2020/11/9 3:06
  */
 public class SmUtilDemo extends Demo {
 

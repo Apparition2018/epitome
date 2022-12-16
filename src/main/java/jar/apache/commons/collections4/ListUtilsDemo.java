@@ -17,7 +17,7 @@ import java.util.List;
  * static boolean	    isEqualList(Collection<?> list1, Collection<?> list2)           判断两个集合是否相等
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class ListUtilsDemo extends Demo {
 

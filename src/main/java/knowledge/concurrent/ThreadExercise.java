@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
  * https://blog.csdn.net/never_cxb/article/details/50379047
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class ThreadExercise {
 

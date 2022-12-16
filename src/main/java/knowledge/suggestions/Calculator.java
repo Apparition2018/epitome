@@ -6,7 +6,7 @@ import java.util.Objects;
  * 建议40：匿名类的构造函数
  *
  * @author ljh
- * created on 2020/10/10 19:23
+ * @since 2020/10/10 19:23
  */
 class Calculator {
     enum Ops {

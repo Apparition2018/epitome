@@ -18,7 +18,7 @@ import java.nio.charset.StandardCharsets;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/HexUtil.html
  *
  * @author ljh
- * created on 2020/11/9 10:10
+ * @since 2020/11/9 10:10
  */
 public class HexUtilDemo extends Demo {
 

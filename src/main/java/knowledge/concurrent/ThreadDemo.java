@@ -52,7 +52,7 @@ import java.util.concurrent.TimeUnit;
  * 如何使用 JUnit 测试异步代码：https://zhuanlan.zhihu.com/p/240281836
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class ThreadDemo extends Demo {
 

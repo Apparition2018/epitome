@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  * 使用时序数据库 InfluxDB：https://blog.didispace.com/spring-boot-learning-2-6-3/
  *
  * @author ljh
- * created on 2021/9/3 22:44
+ * @since 2021/9/3 22:44
  */
 //@Service
 @Slf4j

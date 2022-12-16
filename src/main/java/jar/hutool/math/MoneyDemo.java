@@ -12,8 +12,8 @@ import java.util.Locale;
  * Money    货币
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/math/Money.html
  *
- * @author Arsenal
- * created on 2020/11/22 2:43
+ * @author ljh
+ * @since 2020/11/22 2:43
  */
 public class MoneyDemo {
 

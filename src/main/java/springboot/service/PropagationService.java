@@ -10,7 +10,7 @@ import springboot.domain.master.Demo;
  * PropagationService
  *
  * @author ljh
- * created on 2022/2/18 11:44
+ * @since 2022/2/18 11:44
  */
 @Service
 public class PropagationService {

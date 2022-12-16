@@ -12,8 +12,8 @@ import static l.demo.Demo.p;
  * https://hutool.cn/docs/#/http/UA%E5%B7%A5%E5%85%B7%E7%B1%BB-UserAgentUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/useragent/UserAgentUtil.html
  *
- * @author Arsenal
- * created on 2020/11/2 23:38
+ * @author ljh
+ * @since 2020/11/2 23:38
  */
 public class UserAgentUtilDemo {
     @Test

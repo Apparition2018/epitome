@@ -13,7 +13,7 @@ import java.util.Properties;
  * PropertiesUtil
  *
  * @author ljh
- * created on 2019/8/20 10:24
+ * @since 2019/8/20 10:24
  */
 public class PropertiesUtil {
 

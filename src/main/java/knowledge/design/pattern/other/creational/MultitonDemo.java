@@ -11,7 +11,7 @@ import java.util.EnumMap;
  * https://java-design-patterns.com/patterns/multiton/
  *
  * @author ljh
- * created on 2022/2/8 1:13
+ * @since 2022/2/8 1:13
  */
 public class MultitonDemo {
 

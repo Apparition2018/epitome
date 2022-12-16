@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
  * -  6.3 被声明成 private 只会被自己代码所调用的方法，如果能够确定调用方法的代码传入参数已经做过检查或者肯定不会有问题，此时可以不校验参数。
  *
  * @author ljh
- * created on 2021/5/21 11:45
+ * @since 2021/5/21 11:45
  */
 public class ProcessControl {
 

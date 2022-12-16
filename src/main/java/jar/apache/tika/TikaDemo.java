@@ -16,8 +16,8 @@ import java.nio.file.Paths;
  * Apache Tika容抽取工具集合：https://www.oschina.net/p/tika
  * apache Tika介绍及使用：https://blog.csdn.net/weixin_42184707/article/details/91045592
  *
- * @author Arsenal
- * created on 2020/10/25 1:06
+ * @author ljh
+ * @since 2020/10/25 1:06
  */
 public class TikaDemo extends Demo {
 

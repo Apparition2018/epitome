@@ -16,7 +16,7 @@ import java.util.Vector;
  * void	        trimToSize()                    对此向量的容量进行微调，使其等于向量的当前大小 {@link ListDemo#testArrayList()}
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class VectorDemo extends Demo {
 

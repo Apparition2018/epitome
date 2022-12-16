@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/net/url/UrlBuilder.html
  *
  * @author ljh
- * created on 2020/11/2 9:46
+ * @since 2020/11/2 9:46
  */
 public class UrlBuilderDemo {
 

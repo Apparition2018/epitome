@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Joiner.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class JoinerDemo extends Demo {
 

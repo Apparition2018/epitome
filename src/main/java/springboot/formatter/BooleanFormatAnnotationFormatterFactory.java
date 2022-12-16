@@ -13,7 +13,7 @@ import java.util.Set;
  * BooleanFormatAnnotationFormatterFactory
  *
  * @author ljh
- * created on 2021/8/11 11:14
+ * @since 2021/8/11 11:14
  */
 public class BooleanFormatAnnotationFormatterFactory extends EmbeddedValueResolutionSupport implements AnnotationFormatterFactory<BooleanFormat> {
     @Override

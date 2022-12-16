@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
  * 为什么要使用 ThreadLocalRandom 代替 Random 生成随机数：https://www.cnblogs.com/shamo89/p/8052161.html
  *
  * @author ljh
- * created on 2020/11/6 9:52
+ * @since 2020/11/6 9:52
  */
 public class ThreadLocalRandomDemo {
 

@@ -30,8 +30,8 @@ import java.lang.management.ThreadMXBean;
  * MonitorInfo	            关于对象监视器锁的信息。
  * ThreadInfo	            线程信息。
  *
- * @author Arsenal
- * created on 2020/10/22 22:54
+ * @author ljh
+ * @since 2020/10/22 22:54
  */
 public class Management {
 

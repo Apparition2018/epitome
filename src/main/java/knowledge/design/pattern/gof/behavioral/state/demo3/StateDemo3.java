@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  * 3.第三次点击'放大镜'，屏幕还原到默认大小
  *
  * @author ljh
- * created on 2022/1/25 1:38
+ * @since 2022/1/25 1:38
  */
 public class StateDemo3 {
     

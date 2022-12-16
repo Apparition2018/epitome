@@ -21,7 +21,7 @@ package knowledge.data.structure;
  * https://blog.csdn.net/u012426327/article/details/77504188
  *
  * @author ljh
- * created on 2020/10/19 17:28
+ * @since 2020/10/19 17:28
  */
 public class Hash {
 }

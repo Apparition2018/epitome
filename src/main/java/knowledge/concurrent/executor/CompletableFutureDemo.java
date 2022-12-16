@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html
  *
  * @author ljh
- * created on 2020/12/1 14:08
+ * @since 2020/12/1 14:08
  */
 public class CompletableFutureDemo extends Demo {
 

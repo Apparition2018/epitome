@@ -24,7 +24,7 @@ import springboot.controller.DemoController;
  * SpringBoot2 + Junit5 测试案例：https://www.cnblogs.com/xumBlog/p/12679134.html
  *
  * @author ljh
- * created on 2021/7/27 22:55
+ * @since 2021/7/27 22:55
  */
 @SpringBootTest(classes = EpitomeApplication.class)
 public class MockMvcTest {

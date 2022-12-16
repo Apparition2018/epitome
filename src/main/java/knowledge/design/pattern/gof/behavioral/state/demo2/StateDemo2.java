@@ -6,7 +6,7 @@ package knowledge.design.pattern.gof.behavioral.state.demo2;
  * 描述会员等级调整的状态图如图6-1所示。现在采用状态（State）模式实现上述场景，得到如图6-2所示的类图。
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class StateDemo2 {
 

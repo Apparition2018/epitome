@@ -46,7 +46,7 @@ import java.util.List;
  * nimbus-jose-jwt 使用介绍：https://mp.weixin.qq.com/s/Jo3PZoa7nL99c8UCxPiTTA
  *
  * @author ljh
- * created on 2021/8/27 8:59
+ * @since 2021/8/27 8:59
  */
 public class JoseJwtDemo extends Demo {
 

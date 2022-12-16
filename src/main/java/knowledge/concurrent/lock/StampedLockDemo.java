@@ -24,7 +24,7 @@ import java.util.concurrent.locks.StampedLock;
  * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/locks/StampedLock.html
  *
  * @author ljh
- * created on 2020/12/1 10:37
+ * @since 2020/12/1 10:37
  */
 public class StampedLockDemo {
 

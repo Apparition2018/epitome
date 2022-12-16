@@ -31,7 +31,7 @@ import java.util.Map;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanUtil.html
  *
  * @author ljh
- * created on 2020/11/9 14:54
+ * @since 2020/11/9 14:54
  */
 public class BeanUtilDemo extends Demo {
 

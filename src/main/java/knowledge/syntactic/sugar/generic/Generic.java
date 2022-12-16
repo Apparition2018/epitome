@@ -24,7 +24,7 @@ import java.util.List;
  * 泛型类、泛型方法、类型通配符的使用：https://www.cnblogs.com/songhuiqiang/p/10631268.html
  *
  * @author ljh
- * created on 2019/9/9 00:51
+ * @since 2019/9/9 00:51
  */
 public class Generic<T> extends Demo {
 

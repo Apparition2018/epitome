@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
  * -                        线程不同步
  * http://commons.apache.org/proper/commons-collections/apidocs/allclasses-noframe.html
  *
- * @author Arsenal
- * created on 2020/11/14 11:55
+ * @author ljh
+ * @since 2020/11/14 11:55
  */
 public class ListDemo extends Demo {
 

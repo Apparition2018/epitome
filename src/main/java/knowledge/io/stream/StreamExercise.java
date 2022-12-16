@@ -22,7 +22,7 @@ import java.nio.file.Paths;
  * 3.数据流：   DataInputStream DataOutputStream
  *
  * @author ljh
- * created on 2020/9/7 1:28
+ * @since 2020/9/7 1:28
  */
 public class StreamExercise extends Demo {
 

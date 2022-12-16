@@ -40,8 +40,8 @@ import java.util.logging.Level;
  * Chain of Responsibility：https://refactoringguru.cn/design-patterns/chain-of-responsibility
  * Java设计模式：http://c.biancheng.net/view/1383.html
  *
- * @author Arsenal
- * created on 2020/9/26 2:51
+ * @author ljh
+ * @since 2020/9/26 2:51
  */
 public class ChainOfResponsibilityDemo {
     private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

@@ -15,7 +15,7 @@ import static l.demo.Demo.p;
  * https://www.runoob.com/manual/jdk1.6/java.base/java/text/ChoiceFormat.html
  *
  * @author ljh
- * created on 2020/9/3 16:22
+ * @since 2020/9/3 16:22
  */
 public class ChoiceFormatDemo {
 

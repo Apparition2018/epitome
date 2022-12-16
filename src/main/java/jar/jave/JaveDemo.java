@@ -20,7 +20,7 @@ import java.io.File;
  * Jave 的简单使用：https://www.cnblogs.com/rchao/p/10282144.html
  *
  * @author ljh
- * created on 2021/10/20 9:30
+ * @since 2021/10/20 9:30
  */
 public class JaveDemo extends Demo {
 

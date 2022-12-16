@@ -12,7 +12,7 @@ import java.io.*;
  * http://snowolf.iteye.com/blog/644591
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class BZip2Utils extends Demo {
 

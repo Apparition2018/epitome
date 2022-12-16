@@ -5,7 +5,7 @@ package knowledge.algorithm.five;
  * 贪婪
  *
  * @author ljh
- * created on 2020/9/29 10:46
+ * @since 2020/9/29 10:46
  */
 public class Greedy {
 

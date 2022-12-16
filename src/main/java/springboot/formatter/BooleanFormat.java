@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * BooleanFormat
  *
  * @author ljh
- * created on 2021/8/11 10:53
+ * @since 2021/8/11 10:53
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})

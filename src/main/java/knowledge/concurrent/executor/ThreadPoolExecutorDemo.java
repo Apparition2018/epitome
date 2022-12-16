@@ -29,7 +29,7 @@ import java.util.stream.IntStream;
  * 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程（阿里编程规约）
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class ThreadPoolExecutorDemo extends Demo {
 

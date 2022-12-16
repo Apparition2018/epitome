@@ -19,7 +19,7 @@ import java.util.Map;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/XmlUtil.html
  *
  * @author ljh
- * created on 2020/11/9 10:32
+ * @since 2020/11/9 10:32
  */
 public class XmlUtilDemo extends Demo {
 

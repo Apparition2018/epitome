@@ -8,11 +8,12 @@ import lombok.Data;
 import org.junit.jupiter.api.Test;
 
 /**
- * `@JsonCreator：Jackson 反序列化时，会默认使用无参构造函数实例化对象；
- * -    当没有无参构造函数时可使用 @JsonCreator 来指定反序列化时候的构造函数，需要配合 @JsonProperty 使用
+ * &#064;JsonCreator
+ * <p>Jackson 反序列化时，会默认使用无参构造函数实例化对象；
+ * <p>当没有无参构造函数时可使用 @JsonCreator 来指定反序列化时候的构造函数，需要配合 @JsonProperty 使用
  *
  * @author ljh
- * created on 2021/7/24 17:00
+ * @since 2021/7/24 17:00
  */
 public class JsonCreatorDemo extends Demo {
 

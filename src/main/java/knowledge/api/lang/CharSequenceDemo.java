@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  * CharSequence
  *
  * @author ljh
- * created on 2021/8/19 15:35
+ * @since 2021/8/19 15:35
  */
 public class CharSequenceDemo extends Demo {
 

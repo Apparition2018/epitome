@@ -11,7 +11,7 @@ import java.io.IOException;
  * Java/Springboot 读取 resources 下文件：https://www.cnblogs.com/whalesea/p/11677657.html
  *
  * @author ljh
- * created on 2020/10/29 17:38
+ * @since 2020/10/29 17:38
  */
 public class ClassPathResourceDemo {
 

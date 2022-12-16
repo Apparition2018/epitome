@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  * HandlerInterceptors vs. Filters in Spring MVC：https://www.baeldung.com/spring-mvc-handlerinterceptor-vs-filter
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 @Slf4j
 public class HttpInterceptor implements HandlerInterceptor {

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
  * 桥接模式
  *
  * @author ljh
- * created on 2020/11/23 19:38
+ * @since 2020/11/23 19:38
  */
 public class BridgeDemo2 {
 

@@ -30,8 +30,8 @@ import java.io.File;
  * Facade：https://refactoringguru.cn/design-patterns/facade
  * Java设计模式：http://c.biancheng.net/view/1369.html
  *
- * @author Arsenal
- * created on 2020/9/26 2:51
+ * @author ljh
+ * @since 2020/9/26 2:51
  */
 public class FacadeDemo {
 

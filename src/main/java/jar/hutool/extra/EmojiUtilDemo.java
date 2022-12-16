@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/emoji/EmojiUtil.html
  *
  * @author ljh
- * created on 2020/11/20 17:46
+ * @since 2020/11/20 17:46
  */
 public class EmojiUtilDemo {
 

@@ -25,8 +25,8 @@ import org.junit.jupiter.api.Test;
  * https://hutool.cn/docs/#/http/WebService/Soap%E5%AE%A2%E6%88%B7%E7%AB%AF-SoapClient
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/webservice/SoapClient.html
  *
- * @author Arsenal
- * created on 2020/11/2 23:41
+ * @author ljh
+ * @since 2020/11/2 23:41
  */
 public class SoapClientDemo {
 

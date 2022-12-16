@@ -15,7 +15,7 @@ import javax.crypto.SecretKey;
  * HmacAlgorithm: HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384, HmacSHA512, HmacSM3
  *
  * @author ljh
- * created on 2021/7/5 10:47
+ * @since 2021/7/5 10:47
  */
 public class HMacDemo extends Demo {
 

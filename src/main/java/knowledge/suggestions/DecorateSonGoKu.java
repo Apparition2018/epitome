@@ -8,7 +8,7 @@ import java.lang.reflect.Proxy;
  * 建议107：动态代理结合装饰器模式
  *
  * @author ljh
- * created on 2020/10/10 19:23
+ * @since 2020/10/10 19:23
  */
 class DecorateSonGoKu implements SonGoKu {
     private SonGoKu sgk;

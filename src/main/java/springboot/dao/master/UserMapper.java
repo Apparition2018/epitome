@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Update;
  * UserMapper
  *
  * @author ljh
- * created on 2022/7/4 0:24
+ * @since 2022/7/4 0:24
  */
 @Mapper
 public interface UserMapper {

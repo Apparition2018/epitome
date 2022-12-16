@@ -13,7 +13,7 @@ import java.util.concurrent.*;
  * CompletionService 使用与原理：https://www.cnblogs.com/shijiaqi1066/p/10454237.html
  *
  * @author ljh
- * created on 2020/10/26 10:44
+ * @since 2020/10/26 10:44
  */
 public class CompletionServiceDemo extends Demo {
 

@@ -20,7 +20,7 @@ import static l.demo.Demo.p;
  * https://redis.io/docs/data-types/geospatial/
  *
  * @author ljh
- * created on 2022/8/16 2:32
+ * @since 2022/8/16 2:32
  */
 public class RedisGeospatial {
 

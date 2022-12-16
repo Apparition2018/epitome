@@ -27,7 +27,7 @@ import java.util.EnumSet;
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Enum.html
  *
  * @author ljh
- * created on 2020/11/2 19:39
+ * @since 2020/11/2 19:39
  */
 public class EnumDemo extends Demo {
 

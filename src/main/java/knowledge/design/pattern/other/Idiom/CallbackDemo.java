@@ -14,7 +14,7 @@ import knowledge.design.pattern.gof.behavioral.template.method.TemplateMethodDem
  * Callback：https://java-design-patterns.com/patterns/callback/
  *
  * @author ljh
- * created on 2022/1/25 22:30
+ * @since 2022/1/25 22:30
  */
 public class CallbackDemo {
 

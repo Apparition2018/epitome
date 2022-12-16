@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
  * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/eventbus/EventBus.html
  *
  * @author ljh
- * created on 2022/1/26 10:21
+ * @since 2022/1/26 10:21
  */
 public class EventBusDemo {
 

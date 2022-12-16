@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * 等待池 : WaitSet，线程调用了对象的 wait()，那么线程就处于该对象的等待池中，等待池中的线程不会去争夺锁的拥有权
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class ObjectWaitAndNotifyDemo {
     public static void main(String[] args) {

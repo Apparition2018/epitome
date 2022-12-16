@@ -26,7 +26,7 @@ import java.util.Stack;
  * 菜鸟模式：https://www.runoob.com/design-pattern/memento-pattern.html
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class MementoDemo {
 

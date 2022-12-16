@@ -14,8 +14,8 @@ import static l.demo.Demo.p;
  * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/Soundex.html
  * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/RefinedSoundex.html
  *
- * @author Arsenal
- * created on 2020/11/15 0:28
+ * @author ljh
+ * @since 2020/11/15 0:28
  */
 public class LanguageDemo {
 

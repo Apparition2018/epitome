@@ -8,7 +8,7 @@ import springboot.result.ResultCode;
  * SpringBlade 自定义异常 (ServiceException)
  *
  * @author ljh
- * created on 2021/6/21 10:26
+ * @since 2021/6/21 10:26
  */
 @Getter
 public class ServiceException extends RuntimeException {

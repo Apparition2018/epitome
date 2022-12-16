@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
  * https://redis.io/docs/data-types/lists/
  *
  * @author ljh
- * created on 2021/5/27 14:41
+ * @since 2021/5/27 14:41
  */
 public class RedisList {
 

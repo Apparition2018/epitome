@@ -25,7 +25,7 @@ import java.nio.file.attribute.BasicFileAttributes;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/file/PathUtil.html
  *
  * @author ljh
- * created on 2020/10/30 9:25
+ * @since 2020/10/30 9:25
  */
 public class PathUtilDemo extends Demo {
 

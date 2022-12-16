@@ -7,7 +7,7 @@ import java.util.Set;
  * Solution
  *
  * @author ljh
- * created on 2021/6/16 10:15
+ * @since 2021/6/16 10:15
  */
 public class SolutionTest {
 
@@ -84,5 +84,4 @@ public class SolutionTest {
             return takeStone(map);
         }
     }
-
 }

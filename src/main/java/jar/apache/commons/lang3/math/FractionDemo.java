@@ -7,7 +7,7 @@ import org.apache.commons.lang3.math.Fraction;
  * https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/Fraction.html
  *
  * @author ljh
- * created on 2022/11/9 10:19
+ * @since 2022/11/9 10:19
  */
 public class FractionDemo {
 

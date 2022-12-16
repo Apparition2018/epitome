@@ -11,7 +11,7 @@ import java.util.Locale;
  * BooleanFormatter
  *
  * @author ljh
- * created on 2021/8/11 11:06
+ * @since 2021/8/11 11:06
  */
 public class BooleanFormatter implements Formatter<Boolean> {
 

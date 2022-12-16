@@ -16,15 +16,15 @@ import java.util.stream.IntStream;
 
 /**
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 @Slf4j
 public class LombokDemo3 extends Demo {
 
     /**
      * var （已过时）
-     * 从初始化表达式中推断出变量的类型
-     * 使用前需要在配置文件 lombok.config 配置 lombok.var.flagUsage = ALLOW
+     * <p>从初始化表达式中推断出变量的类型
+     * <p>使用前需要在配置文件 lombok.config 配置 lombok.var.flagUsage = ALLOW
      */
     @Test
     public void var() {
@@ -37,8 +37,8 @@ public class LombokDemo3 extends Demo {
     }
 
     /**
-     * `@cleanup
-     * 自动资源管理，不用再使用 close() 释放资源
+     * &#064;cleanup
+     * <p>自动资源管理，不用再使用 close() 释放资源
      */
     @Test
     public void testCleanup() {
@@ -59,8 +59,8 @@ public class LombokDemo3 extends Demo {
     }
 
     /**
-     * `@SneakyThrows
-     * 不用捕捉或抛出异常了，谨慎使用
+     * &#064;SneakyThrows
+     * <p>不用捕捉或抛出异常了，谨慎使用
      */
     @Test
     @SneakyThrows
@@ -71,8 +71,8 @@ public class LombokDemo3 extends Demo {
     }
 
     /**
-     * `@synchronized
-     * 几乎相当于 synchronized method
+     * &#064;synchronized
+     * <p>几乎相当于 synchronized method
      */
     @Test
     @Synchronized
@@ -80,9 +80,9 @@ public class LombokDemo3 extends Demo {
     }
 
     /**
-     * `@Getter(lazy = true)
-     * 实际使用到的时候才生成
-     * 提高代码效率，同时由 lombok 管理线程安全问题
+     * &#064;Getter(lazy = true)
+     * <p>实际使用到的时候才生成
+     * <p>高代码效率，同时由 lombok 管理线程安全问题
      */
     @Test
     public void testGetterLazy() {

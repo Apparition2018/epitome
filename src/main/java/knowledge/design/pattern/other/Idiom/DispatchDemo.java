@@ -11,7 +11,7 @@ import java.util.List;
  * 伪动态双分派：http://c.biancheng.net/view/8499.html
  *
  * @author ljh
- * created on 2022/2/2 2:12
+ * @since 2022/2/2 2:12
  */
 public class DispatchDemo {
 

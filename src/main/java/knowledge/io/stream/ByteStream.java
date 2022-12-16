@@ -14,7 +14,7 @@ import java.nio.file.Paths;
  * IO 流详解：https://blog.csdn.net/u012426327/article/details/77160400
  *
  * @author ljh
- * created on 2020/9/14 11:02
+ * @since 2020/9/14 11:02
  */
 public class ByteStream extends Demo {
 

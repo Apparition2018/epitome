@@ -28,7 +28,7 @@ import java.util.TimeZone;
  * 设计模式最佳套路5 —— 愉快地使用工厂方法模式：https://zhuanlan.zhihu.com/p/392524169
  *
  * @author ljh
- * created on 2022/1/23 0:49
+ * @since 2022/1/23 0:49
  */
 public class FactoryDemo {
 

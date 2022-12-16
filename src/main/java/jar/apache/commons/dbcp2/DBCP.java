@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * DBCP: 依赖 Jakarta commons-pool2 对象池机制的数据库连接池
  *
  * @author ljh
- * created on 2020/10/10 15:55
+ * @since 2020/10/10 15:55
  */
 public class DBCP {
 

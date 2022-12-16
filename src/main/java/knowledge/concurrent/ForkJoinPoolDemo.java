@@ -22,7 +22,7 @@ import java.util.stream.LongStream;
  * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveAction.html
  *
  * @author ljh
- * created on 2020/12/1 12:58
+ * @since 2020/12/1 12:58
  */
 public class ForkJoinPoolDemo extends Demo {
 

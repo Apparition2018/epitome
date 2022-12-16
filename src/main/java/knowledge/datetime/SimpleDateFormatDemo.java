@@ -33,7 +33,7 @@ import java.util.Date;
  * Z        时区             RFC 822 time zone  -0800
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class SimpleDateFormatDemo extends Demo {
 

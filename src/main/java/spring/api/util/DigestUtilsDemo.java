@@ -9,8 +9,8 @@ import java.nio.charset.StandardCharsets;
 /**
  * DigestUtils
  *
- * @author Arsenal
- * created on 2020/11/8 18:01
+ * @author ljh
+ * @since 2020/11/8 18:01
  */
 public class DigestUtilsDemo extends Demo {
     

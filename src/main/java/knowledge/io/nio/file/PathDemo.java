@@ -26,7 +26,7 @@ import java.nio.file.Paths;
  * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class PathDemo extends Demo {
 

@@ -27,7 +27,7 @@ import java.util.concurrent.*;
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ExecutorService.html
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class ExecutorServiceDemo extends Demo {
 

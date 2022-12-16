@@ -35,7 +35,7 @@ import java.util.regex.Pattern;
  * 字符编字符编码笔记 ASCII，Unicode 和 UTF-8：http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class StringDemo extends Demo {
 

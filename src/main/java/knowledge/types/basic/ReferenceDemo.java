@@ -20,8 +20,8 @@ import java.util.stream.IntStream;
  * <p>
  * Java 如何有效地避免 OOM：善于利用软引用和弱引用：https://www.cnblogs.com/dolphin0520/p/3784171.html
  *
- * @author Arsenal
- * created on 2020/11/7 23:00
+ * @author ljh
+ * @since 2020/11/7 23:00
  */
 public class ReferenceDemo extends Demo {
 

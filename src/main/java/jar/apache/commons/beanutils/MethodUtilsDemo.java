@@ -11,8 +11,8 @@ import java.lang.reflect.Method;
  * MethodUtils
  * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/MethodUtils.html
  *
- * @author Arsenal
- * created on 2020/11/14 20:08
+ * @author ljh
+ * @since 2020/11/14 20:08
  */
 public class MethodUtilsDemo {
 

@@ -5,7 +5,7 @@ package knowledge.algorithm.five;
  * 分治法
  *
  * @author ljh
- * created on 2020/9/29 10:42
+ * @since 2020/9/29 10:42
  */
 public class DivideAndConquer {
 

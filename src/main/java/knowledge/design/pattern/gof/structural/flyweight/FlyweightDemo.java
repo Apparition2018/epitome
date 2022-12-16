@@ -32,8 +32,8 @@ import java.util.Map;
  * Java设计模式：http://c.biancheng.net/view/1371.html
  * 设计模式之美：享元模式（下）：剖析享元模式在JavaInteger、String中的应用
  *
- * @author Arsenal
- * created on 2020/9/26 2:51
+ * @author ljh
+ * @since 2020/9/26 2:51
  */
 public class FlyweightDemo extends Demo {
 

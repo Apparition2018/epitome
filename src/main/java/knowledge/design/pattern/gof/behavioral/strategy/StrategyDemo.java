@@ -35,7 +35,7 @@ import java.util.function.Function;
  * Java设计模式：http://c.biancheng.net/view/1378.html
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class StrategyDemo {
 

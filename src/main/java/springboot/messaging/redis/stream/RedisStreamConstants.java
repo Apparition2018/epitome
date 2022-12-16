@@ -4,7 +4,7 @@ package springboot.messaging.redis.stream;
  * RedisStreamConstants
  *
  * @author ljh
- * created on 2022/8/29 10:39
+ * @since 2022/8/29 10:39
  */
 public class RedisStreamConstants {
 

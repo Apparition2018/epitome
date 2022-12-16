@@ -10,7 +10,7 @@ import java.io.File;
  * MimetypesFileTypeMap
  *
  * @author ljh
- * created on 2021/4/25 17:38
+ * @since 2021/4/25 17:38
  */
 public class MimetypesFileTypeMapDemo extends Demo {
 

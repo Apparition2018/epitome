@@ -25,7 +25,7 @@ import static l.demo.Demo.p;
  * String	    toPlainString()                     返回不带指数字段的此 BigDecimal 的字符串表示形式
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class BigDecimalDemo {
 

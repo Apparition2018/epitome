@@ -20,7 +20,7 @@ import java.util.stream.IntStream;
  * 5. @Contended
  *
  * @author ljh
- * created on 2020/9/18 10:13
+ * @since 2020/9/18 10:13
  */
 public class JDKAnnotation extends Demo {
 

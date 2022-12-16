@@ -12,7 +12,7 @@ import java.util.Properties;
  * DBUtil
  *
  * @author ljh
- * created on 2020/10/10 17:00
+ * @since 2020/10/10 17:00
  */
 public class DBUtil extends Demo {
 

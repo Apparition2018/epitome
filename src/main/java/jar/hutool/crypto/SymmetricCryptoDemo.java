@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/symmetric/SymmetricCrypto.html
  *
  * @author ljh
- * created on 2020/11/9 9:30
+ * @since 2020/11/9 9:30
  */
 public class SymmetricCryptoDemo extends Demo {
 

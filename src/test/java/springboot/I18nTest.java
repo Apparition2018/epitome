@@ -9,7 +9,7 @@ import springboot.util.MessageUtils;
  * RuoYi 国际化支持：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%9B%BD%E9%99%85%E5%8C%96%E6%94%AF%E6%8C%81
  *
  * @author ljh
- * created on 2021/11/21 1:59
+ * @since 2021/11/21 1:59
  */
 @SpringBootTest
 public class I18nTest {

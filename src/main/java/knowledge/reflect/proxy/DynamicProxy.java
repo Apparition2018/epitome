@@ -18,7 +18,7 @@ import java.lang.reflect.Proxy;
  * Java 动态代理作用是什么？：https://www.zhihu.com/question/20794107
  *
  * @author ljh
- * created on 2020/11/9 17:51
+ * @since 2020/11/9 17:51
  */
 public class DynamicProxy extends Demo {
 

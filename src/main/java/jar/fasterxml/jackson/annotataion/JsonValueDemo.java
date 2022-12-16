@@ -8,10 +8,10 @@ import lombok.experimental.Accessors;
 import org.junit.jupiter.api.Test;
 
 /**
- * `@JsonValue：序列化只返回这个字段的值
+ * &#064;JsonValue  序列化只返回这个字段的值
  *
  * @author ljh
- * created on 2021/7/24 17:02
+ * @since 2021/7/24 17:02
  */
 public class JsonValueDemo extends Demo {
 

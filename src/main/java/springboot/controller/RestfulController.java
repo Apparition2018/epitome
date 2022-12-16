@@ -16,13 +16,13 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * 构建 RESTful API 与单元测试：https://blog.didispace.com/spring-boot-learning-21-2-1/
+ * <a href="https://blog.didispace.com/spring-boot-learning-21-2-1/">构建 RESTful API 与单元测试</a>
  *
  * @author ljh
- * created on 2021/8/20 10:19
+ * @since 2021/8/20 10:19
  */
 @RestController
-@RequestMapping("/persons")
+@RequestMapping("persons")
 @Tag(name = "Restful")
 public class RestfulController {
 
@@ -58,13 +58,13 @@ public class RestfulController {
         return new ArrayList<>(personMap.values());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     @Operation(summary = "获取人员")
     public Person getPerson(@PathVariable Integer id) {
         return personMap.get(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     @Operation(summary = "修改人员")
     public Person putPerson(@PathVariable Integer id, @RequestBody Person newPerson) {
         Person person = personMap.get(id);
@@ -74,7 +74,7 @@ public class RestfulController {
         return person;
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     @Operation(summary = "删除人员")
     public Person deletePerson(@PathVariable Integer id) {
         personMap.remove(id);

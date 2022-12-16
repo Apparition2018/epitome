@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
  * Json-Path 使用（二）：https://lux-sun.blog.csdn.net/article/details/106421388
  *
  * @author ljh
- * created on 2021/8/31 15:42
+ * @since 2021/8/31 15:42
  */
 public class JsonPathDemo extends Demo implements JsonDemo {
 

@@ -42,8 +42,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * Tom|多种单例写法和两种攻击：https://gupaoedu-tom.blog.csdn.net/article/details/120972136
  * 单例 vs 静态类：https://www.baeldung.com/java-static-class-vs-singleton
  *
- * @author Arsenal
- * created on 2019/8/7 17:12
+ * @author ljh
+ * @since 2019/8/7 17:12
  */
 public class SingletonDemo {
 

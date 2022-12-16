@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * 定时任务的使用|oKong：https://blog.lqdev.cn/2018/08/19/springboot/chapter-twenty-two/
  *
  * @author ljh
- * created on 2021/10/18 15:50
+ * @since 2021/10/18 15:50
  */
 public class ThreadPoolTaskSchedulerDemo {
 

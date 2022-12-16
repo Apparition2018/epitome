@@ -66,7 +66,7 @@ import java.util.stream.Stream;
  * (X)	            X，作为捕获组
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class PatternDemo extends Demo {
 

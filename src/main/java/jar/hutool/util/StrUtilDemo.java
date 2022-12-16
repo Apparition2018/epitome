@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/StrUtil.html
  *
  * @author ljh
- * created on 2020/10/27 14:25
+ * @since 2020/10/27 14:25
  */
 public class StrUtilDemo extends Demo {
 

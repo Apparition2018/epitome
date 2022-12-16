@@ -15,7 +15,7 @@ import java.util.Date;
  * https://docs.oracle.com/javase/8/docs/api/java/time/Clock.html
  *
  * @author ljh
- * created on 2021/1/16 10:41
+ * @since 2021/1/16 10:41
  */
 public class ClockDemo extends Demo {
 

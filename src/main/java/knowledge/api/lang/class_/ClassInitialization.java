@@ -17,7 +17,7 @@ import static l.demo.Demo.p;
  * https://blog.csdn.net/mmd0308/article/details/75453720
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class ClassInitialization {
 

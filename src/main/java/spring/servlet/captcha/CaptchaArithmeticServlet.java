@@ -9,8 +9,8 @@ import java.io.IOException;
  * CaptchaArithmeticServlet
  * 算术验证码
  *
- * @author Arsenal
- * created on 2019/12/23 22:52
+ * @author ljh
+ * @since 2019/12/23 22:52
  */
 public class CaptchaArithmeticServlet extends HttpServlet {
 

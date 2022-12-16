@@ -20,7 +20,7 @@ import java.util.Objects;
  * 2.版本兼容：在编译期擦除可以更好地支持原生类型 (Raw Type)
  *
  * @author ljh
- * created on 2019/9/9 00:51
+ * @since 2019/9/9 00:51
  */
 public class TypeErasure extends Demo {
     public static void main(String[] args) {

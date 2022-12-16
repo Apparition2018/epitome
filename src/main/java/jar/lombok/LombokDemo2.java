@@ -11,17 +11,16 @@ import static l.demo.Demo.p;
 
 /**
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class LombokDemo2 {
 
     /**
-     * `@Accessors
-     * 主要用于控制生成的 getter / setter
-     * <p>
-     * fluent boolean 值，默认 false。如果为 true，生成的 getter / setter 方法前面不带 get / set
-     * chain boolean 值，默认 false。如果为 true，setter 返回的是此对象，方便链式调用方法
-     * prefix 去除前缀
+     * &#064;Accessors
+     * <p>主要用于控制生成的 getter / setter
+     * <p>fluent boolean 值，默认 false。如果为 true，生成的 getter / setter 方法前面不带 get / set
+     * <p>chain boolean 值，默认 false。如果为 true，setter 返回的是此对象，方便链式调用方法
+     * <p>prefix 去除前缀
      */
     @Test
     public void testAccessorsFluentAndChain() {
@@ -51,8 +50,8 @@ public class LombokDemo2 {
     }
 
     /**
-     * `@FieldDefaults
-     * 主要用于给字段添加修饰符
+     * &#064;FieldDefaults
+     * <p>主要用于给字段添加修饰符
      */
     @Test
     public void testFieldDefaults() {
@@ -70,9 +69,9 @@ public class LombokDemo2 {
     }
 
     /**
-     * `@Value
-     * 不可变对象
-     * 相当于 @Getter, @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE), @AllArgsConstructor, @ToString, @EqualsAndHashCode
+     * &#064;Value
+     * <p>不可变对象
+     * <p>相当于 @Getter, @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE), @AllArgsConstructor, @ToString, @EqualsAndHashCode
      */
     @Test
     public void testValue() {
@@ -88,10 +87,8 @@ public class LombokDemo2 {
     }
 
     /**
-     * `@Builder
-     * <p>
-     * `@Singular
-     * 与 Builder 一起用于在集合的生成器中创建单个元素 add()
+     * &#064;Builder & &#064;Singular
+     * <p>与 Builder 一起用于在集合的生成器中创建单个元素 add()
      */
     @Test
     public void testBuilder() {
@@ -116,6 +113,4 @@ public class LombokDemo2 {
         @Singular
         private final Set<String> interests;
     }
-
 }
-

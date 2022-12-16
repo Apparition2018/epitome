@@ -11,8 +11,8 @@ import java.util.Comparator;
  * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E6%9C%89%E7%95%8C%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97-BoundedPriorityQueue
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/BoundedPriorityQueue.html
  *
- * @author Arsenal
- * created on 2020/11/1 23:23
+ * @author ljh
+ * @since 2020/11/1 23:23
  */
 public class BoundedPriorityQueueDemo {
 

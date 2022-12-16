@@ -18,8 +18,8 @@ import java.util.List;
  * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E5%88%97%E8%A1%A8%E5%B7%A5%E5%85%B7-ListUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/ListUtil.html
  *
- * @author Arsenal
- * created on 2020/10/29 2:06
+ * @author ljh
+ * @since 2020/10/29 2:06
  */
 public class ListUtilDemo extends Demo {
 

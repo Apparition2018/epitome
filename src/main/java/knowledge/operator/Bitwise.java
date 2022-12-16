@@ -21,7 +21,7 @@ import static l.demo.Demo.p;
  * Java中对于位运算的优化以及运用与思考：https://zhuanlan.zhihu.com/p/101723848
  *
  * @author ljh
- * created on 2020/11/23 17:57
+ * @since 2020/11/23 17:57
  */
 public class Bitwise {
 

@@ -15,7 +15,7 @@ import java.sql.*;
  * JDBC的基本使用：https://www.cnblogs.com/progor/p/9096463.html
  *
  * @author ljh
- * created on 2020/10/10 15:25
+ * @since 2020/10/10 15:25
  */
 public class JDBC {
 

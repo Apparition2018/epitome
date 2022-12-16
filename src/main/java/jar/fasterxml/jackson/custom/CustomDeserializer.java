@@ -12,7 +12,7 @@ import java.io.IOException;
  * CustomDeserializer
  *
  * @author ljh
- * created on 2021/7/22 11:15
+ * @since 2021/7/22 11:15
  */
 public class CustomDeserializer extends StdDeserializer<Person> {
     private static final long serialVersionUID = 8522054763648986402L;

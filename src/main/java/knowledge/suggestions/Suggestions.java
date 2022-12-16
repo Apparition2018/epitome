@@ -89,7 +89,7 @@ import java.util.stream.IntStream;
  * 建议148：增强类的可替换性
  *
  * @author ljh
- * created on 2020/10/10 19:23
+ * @since 2020/10/10 19:23
  */
 @SuppressWarnings("unchecked")
 public class Suggestions extends Demo {

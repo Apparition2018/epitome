@@ -13,10 +13,10 @@ import springboot.service.PropagationService;
  * PropagationController
  *
  * @author ljh
- * created on 2022/2/19 23:36
+ * @since 2022/2/19 23:36
  */
 @RestController
-@RequestMapping("/propagation")
+@RequestMapping("propagation")
 @Tag(name = "Propagation")
 public class PropagationController {
 
@@ -32,7 +32,7 @@ public class PropagationController {
 
     /**
      * required：加入事务（同一事务）一方回滚，另一方也回滚
-     * supports 和 mandatory 也是加入事务
+     * <p>supports 和 mandatory 也是加入事务
      */
     @GetMapping("required")
     @Transactional(propagation = Propagation.REQUIRED)

@@ -14,7 +14,7 @@ package jar.jedis.data.type;
  * https://redis.io/docs/data-types/hashes/
  *
  * @author ljh
- * created on 2022/8/12 2:51
+ * @since 2022/8/12 2:51
  */
 public class RedisDataType {
 }

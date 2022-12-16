@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/thread/ConcurrencyTester.html
  *
  * @author ljh
- * created on 2020/11/19 15:30
+ * @since 2020/11/19 15:30
  */
 public class ConcurrencyTesterDemo {
 

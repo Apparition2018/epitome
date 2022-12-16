@@ -25,7 +25,7 @@ import java.util.stream.IntStream;
  * 注意，子线程抛出异常堆栈，不能在主线程 try-catch 到
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class CountDownLatchDemo extends Demo {
 

@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * @author ljh
- * created on 2021/8/6 17:49
+ * @since 2021/8/6 17:49
  */
 @SpringBootTest
 public class PropertiesBindTest {

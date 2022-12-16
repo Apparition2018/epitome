@@ -13,7 +13,7 @@ import static l.demo.Demo.p;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ClassUtil.html
  *
  * @author ljh
- * created on 2020/11/2 14:43
+ * @since 2020/11/2 14:43
  */
 public class ClassUtilDemo {
 

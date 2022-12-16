@@ -27,7 +27,7 @@ package knowledge.design.pattern.gof.behavioral.iterator;
  * 设计模式之美：迭代器模式（下）：如何设计实现一个支持“快照”功能的iterator？
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class IteratorDemo {
 }

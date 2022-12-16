@@ -20,7 +20,7 @@ import javax.annotation.PostConstruct;
  * SpringBoot 启动初始化数据：https://www.jianshu.com/p/01e08aef73c9
  *
  * @author ljh
- * created on 2021/12/10 15:33
+ * @since 2021/12/10 15:33
  */
 @Slf4j
 @Component

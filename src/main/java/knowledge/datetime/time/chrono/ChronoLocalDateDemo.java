@@ -11,7 +11,7 @@ import java.util.Locale;
  * 子类：LocalDate, HijrahDate(伊斯兰历), MinguoDate(中华民国历), JapanseDate(日本历), ThaiBuddhistDate(泰国佛教历)
  *
  * @author ljh
- * created on 2021/1/16 13:30
+ * @since 2021/1/16 13:30
  */
 public class ChronoLocalDateDemo {
 

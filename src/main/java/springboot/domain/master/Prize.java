@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
  * Prize
  *
  * @author ljh
- * created on 2022/7/4 0:23
+ * @since 2022/7/4 0:23
  */
 @Data
 @Accessors(chain = true)

@@ -22,7 +22,7 @@ import lombok.Getter;
  * -  调用第三方服务出错是一级，中间件错误是二级，消息服务出错是三级
  *
  * @author ljh
- * created on 2021/6/18 16:39
+ * @since 2021/6/18 16:39
  */
 @Getter
 @AllArgsConstructor

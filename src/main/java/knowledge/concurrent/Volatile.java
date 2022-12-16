@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
  * volatile 的适用场景：https://www.cnblogs.com/ouyxy/p/7242563.html
  *
  * @author ljh
- * created on 2020/11/18 19:37
+ * @since 2020/11/18 19:37
  */
 public class Volatile {
 

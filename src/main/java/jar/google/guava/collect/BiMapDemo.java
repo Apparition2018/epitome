@@ -13,7 +13,7 @@ import l.demo.Demo;
  * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/BiMap.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class BiMapDemo extends Demo {
 

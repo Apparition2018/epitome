@@ -46,8 +46,8 @@ import java.util.*;
  * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7-CollUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/CollUtil.html
  *
- * @author Arsenal
- * created on 2020/10/27 20:13
+ * @author ljh
+ * @since 2020/10/27 20:13
  */
 public class CollUtilDemo extends Demo {
 

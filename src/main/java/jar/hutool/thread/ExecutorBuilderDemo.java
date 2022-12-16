@@ -12,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/thread/ExecutorBuilder.html
  *
  * @author ljh
- * created on 2020/11/19 15:29
+ * @since 2020/11/19 15:29
  */
 public class ExecutorBuilderDemo {
 

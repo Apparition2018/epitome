@@ -10,7 +10,7 @@ import java.util.Locale;
  * Collator
  *
  * @author ljh
- * created on 2021/6/23 16:42
+ * @since 2021/6/23 16:42
  */
 public class CollatorDemo {
     

@@ -28,19 +28,19 @@ import java.text.ParseException;
 import java.util.*;
 
 /**
- * RuoYi 上传下载 (CommonController)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD
+ * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD">RuoYi 上传下载 (CommonController)</a>
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 @Slf4j
 @RestController
-@RequestMapping("/multipart-file")
+@RequestMapping("multipart-file")
 @Tag(name = "MultipartFile")
 public class MultipartFileController extends Demo {
 
     /**
-     * @link {http://localhost:3333/front/html/elements/内联文本语义/a-demo.html}
+     * <a href="http://localhost:3333/front/html/elements/内联文本语义/a-demo.html">a-demo.html</a>
      */
     @GetMapping("file")
     @Operation(summary = "下载文件")
@@ -61,9 +61,9 @@ public class MultipartFileController extends Demo {
     }
 
     /**
-     * @link {http://localhost:3333/front/html/elements/%E8%A1%A8%E5%8D%95/form/form-demo.html}
+     * <a href="http://localhost:3333/front/html/elements/表单/form/form-demo.html">form-demo.html</a>
      */
-    @PostMapping("/excel")
+    @PostMapping("excel")
     @Operation(summary = "上传 excel")
     public void uploadExcel(@RequestPart MultipartFile[] files) {
         try {
@@ -85,11 +85,10 @@ public class MultipartFileController extends Demo {
     }
 
     /**
-     * Java + bootstrap-fileInput 示例：https://www.cnblogs.com/zgghb/p/6020581.html
-     *
-     * @link {http://localhost:3333/front/bootstrap/fileinput/bootstrap-fileinput.html}
+     * <a href="https://www.cnblogs.com/zgghb/p/6020581.html">bootstrap-fileInput 示例</a>
+     * <p><a href="http://localhost:3333/front/bootstrap/fileinput/bootstrap-fileinput.html">bootstrap-fileinput.html</a>
      */
-    @PostMapping("/file")
+    @PostMapping("file")
     @Operation(summary = "上传文件")
     public Result<String> uploadFile(HttpServletRequest request) throws IOException {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver(request.getSession().getServletContext());

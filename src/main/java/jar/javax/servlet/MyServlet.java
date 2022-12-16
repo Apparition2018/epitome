@@ -18,7 +18,7 @@ import java.util.Enumeration;
  * http://blog.csdn.net/mytt_10566/article/details/70173007
  *
  * @author ljh
- * created on 2020/11/23 19:39
+ * @since 2020/11/23 19:39
  */
 @WebServlet(name = "myUserServlet", urlPatterns = "/user/test", loadOnStartup = 1, initParams = {
         @WebInitParam(name = "name", value = "小明"), @WebInitParam(name = "pwd", value = "123456")})

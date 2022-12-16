@@ -25,7 +25,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Election     http://curator.apache.org/curator-recipes/leader-election.html      轮流做 Leader
  *
  * @author ljh
- * created on 2021/9/28 2:26
+ * @since 2021/9/28 2:26
  */
 public class CuratorElection {
 

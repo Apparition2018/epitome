@@ -39,7 +39,7 @@ import java.util.Objects;
  * HMAC 的 JAVA 实现和应用：https://www.cnblogs.com/fishou/p/4159092.html
  *
  * @author ljh
- * created on 2020/11/18 19:37
+ * @since 2020/11/18 19:37
  */
 public class HMacDemo extends Demo {
 

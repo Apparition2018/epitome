@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  * Java 定时任务的6种实现方式：https://mp.weixin.qq.com/s/CtpcHJLkbkub06SBf6Ajbg
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 @Slf4j
 public class QuartzDemo extends Demo {

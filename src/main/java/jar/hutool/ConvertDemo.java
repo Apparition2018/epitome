@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/convert/Convert.html
  *
  * @author ljh
- * created on 2020/11/18 16:42
+ * @since 2020/11/18 16:42
  */
 public class ConvertDemo extends Demo {
 

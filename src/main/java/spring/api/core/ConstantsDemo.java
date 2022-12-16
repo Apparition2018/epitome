@@ -8,7 +8,7 @@ import org.springframework.core.Constants;
  * 解析指定类的 public static final 属性
  *
  * @author ljh
- * created on 2021/9/9 11:48
+ * @since 2021/9/9 11:48
  */
 public class ConstantsDemo {
 

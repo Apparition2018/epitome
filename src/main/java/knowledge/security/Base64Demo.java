@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
  * https://docs.oracle.com/javase/8/docs/api/java/util/Base64.Decoder.html
  *
  * @author ljh
- * created on 2020/11/18 19:37
+ * @since 2020/11/18 19:37
  */
 public class Base64Demo extends Demo {
 

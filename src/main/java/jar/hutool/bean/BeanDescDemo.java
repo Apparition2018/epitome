@@ -18,7 +18,7 @@ import java.util.Map;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanDesc.html
  *
  * @author ljh
- * created on 2022/1/19 9:07
+ * @since 2022/1/19 9:07
  */
 public class BeanDescDemo extends Demo {
 

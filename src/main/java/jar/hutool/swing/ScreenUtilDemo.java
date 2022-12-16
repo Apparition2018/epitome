@@ -12,7 +12,7 @@ import java.io.File;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/swing/ScreenUtil.html
  *
  * @author ljh
- * created on 2020/11/19 15:44
+ * @since 2020/11/19 15:44
  */
 public class ScreenUtilDemo extends Demo {
     

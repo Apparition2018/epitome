@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * Redis 分布式锁的正确实现方式：https://www.cnblogs.com/moxiaotao/p/10829799.html
  *
- * @author Arsenal
- * created on 2021/5/11 1:47
+ * @author ljh
+ * @since 2021/5/11 1:47
  */
 public class JedisDistributedLocks extends Demo {
 

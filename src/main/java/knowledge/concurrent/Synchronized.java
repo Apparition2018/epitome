@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
  * synchronized 原理是什么：https://www.zhihu.com/question/485107493
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class Synchronized extends Demo {
 

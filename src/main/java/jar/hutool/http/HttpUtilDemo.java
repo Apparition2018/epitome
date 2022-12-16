@@ -31,8 +31,8 @@ import java.util.Map;
  * https://hutool.cn/docs/#/http/Http%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%A5%E5%85%B7%E7%B1%BB-HttpUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/HttpUtil.html
  *
- * @author Arsenal
- * created on 2020/11/2 23:32
+ * @author ljh
+ * @since 2020/11/2 23:32
  */
 public class HttpUtilDemo extends Demo {
 

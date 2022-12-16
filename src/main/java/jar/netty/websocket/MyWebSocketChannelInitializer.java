@@ -10,8 +10,8 @@ import io.netty.handler.stream.ChunkedWriteHandler;
 /**
  * 初始化连接时候的各个组件
  *
- * @author Arsenal
- * created on 2021/3/5 2:30
+ * @author ljh
+ * @since 2021/3/5 2:30
  */
 public class MyWebSocketChannelInitializer extends ChannelInitializer<SocketChannel> {
 

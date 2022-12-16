@@ -8,7 +8,7 @@ import org.springframework.util.ObjectUtils;
  * static boolean   isArray(Object obj)       判断是否为数组
  *
  * @author ljh
- * created on 2021/6/18 17:07
+ * @since 2021/6/18 17:07
  */
 public class ObjectUtilsDemo {
 

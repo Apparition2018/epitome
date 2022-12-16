@@ -43,7 +43,7 @@ import static l.demo.Demo.p;
  * static String	toString(int mod)                       返回描述指定修饰符中的访问修饰符标志的字符串
  *
  * @author ljh
- * created on 2020/11/11 19:18
+ * @since 2020/11/11 19:18
  */
 public class Reflect {
 

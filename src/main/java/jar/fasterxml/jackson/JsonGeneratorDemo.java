@@ -15,7 +15,7 @@ import java.util.Iterator;
  * JsonGenerator
  *
  * @author ljh
- * created on 2021/7/15 17:58
+ * @since 2021/7/15 17:58
  */
 public class JsonGeneratorDemo {
     public static final String PERSON_JSON_FILE = System.getProperty("user.dir") + "/src/main/java/jar/fasterxml/jackson/person.json";

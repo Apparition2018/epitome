@@ -9,7 +9,7 @@ import java.util.Date;
  * SysDept
  *
  * @author ljh
- * created on 2022/4/20 10:08
+ * @since 2022/4/20 10:08
  */
 @Data
 public class SysDept implements Serializable {

@@ -20,7 +20,7 @@ import java.time.Duration;
  * RedisStreamListenerConfig
  *
  * @author ljh
- * created on 2022/8/29 11:07
+ * @since 2022/8/29 11:07
  */
 @Slf4j
 @Configuration

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/pinyin/PinyinUtil.html
  *
  * @author ljh
- * created on 2020/11/5 16:10
+ * @since 2020/11/5 16:10
  */
 public class PinyinUtilDemo extends Demo {
 

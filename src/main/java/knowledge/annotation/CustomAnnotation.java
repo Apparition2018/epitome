@@ -12,18 +12,18 @@ import static l.demo.Demo.p;
 
 /**
  * 用户自定义注解
- * Annotation 是 Java5 引入的新特征。
- * 它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。
- * 为程序的元素（类、方法、成员变量）加上更直观更明了的说明，这些说明信息是与程序的业务逻辑无关，并且供指定的工具或框架使用。
- * Annotation 像一种修饰符一样，应用于包、类型、构造方法、方法、成员变量、参数及本地变量的声明语句中。
- * Annotation 是附加在代码中的一些元信息，用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。
- * Annotation 不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。
+ * <p>Annotation 是 Java5 引入的新特征。
+ * <p>它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。
+ * <p>为程序的元素（类、方法、成员变量）加上更直观更明了的说明，这些说明信息是与程序的业务逻辑无关，并且供指定的工具或框架使用。
+ * <p>Annotation 像一种修饰符一样，应用于包、类型、构造方法、方法、成员变量、参数及本地变量的声明语句中。
+ * <p>Annotation 是附加在代码中的一些元信息，用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。
+ * <p>Annotation 不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。
  * <p>
- * Annotation 实现原理与自定义注解例子：https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html
- * RuoYi 导入导出 (ExcelUtil)：http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA
  *
  * @author ljh
- * created on 2020/9/18 18:01
+ * @since 2020/9/18 18:01
+ * @see <a href="https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html">Annotation 实现原理与自定义注解例子</a>
+ * @see <a href="http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#导入导出">RuoYi 导入导出 (ExcelUtil)</a>
  */
 public class CustomAnnotation {
 
@@ -126,15 +126,16 @@ public class CustomAnnotation {
 
     /**
      * 水果名称注解
+     * <p>使用 @interface 关键字定义注解
+     * <p>注解类可以没有成员，没有成员的注解成为标识注解
      * <p>
-     * 使用 @interface 关键字定义注解
-     * 注解类可以没有成员，没有成员的注解成为标识注解
-     * <p>
-     * 4种元注解：
-     * `@Documented 注解是否包含在 JavaDoc 中
-     * `@Retention  生命周期 (SOURCE / CLASS / RUNTIME)，什么时候使用注解
-     * `@Target     作用域，注解用于什么地方
-     * `@Inherited  是否允许子类继承该注解 (子类会继承父类的类注解，不会继承父类的方法注解)；当类的继承层次较深时，不建议使用
+     * <p>4种元注解：
+     * <ul>
+     *  <li>@Documented 注解是否包含在 JavaDoc 中</li>
+     *  <li>@Retention  生命周期 (SOURCE / CLASS / RUNTIME)，什么时候使用注解</li>
+     *  <li>@Target     作用域，注解用于什么地方</li>
+     *  <li>@Inherited  是否允许子类继承该注解 (子类会继承父类的类注解，不会继承父类的方法注解)；当类的继承层次较深时，不建议使用</li>
+     * </ul>
      */
     @Target(ElementType.FIELD)
     @Retention(RetentionPolicy.RUNTIME)

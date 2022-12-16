@@ -28,7 +28,7 @@ import java.io.IOException;
  * -  2.2 ArrayNode: 类比 Collection、数组
  *
  * @author ljh
- * created on 2021/7/18 16:55
+ * @since 2021/7/18 16:55
  */
 @Slf4j
 public class JsonNodeDemo extends Demo {

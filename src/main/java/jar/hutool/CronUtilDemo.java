@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
  * Linux crontab 命令：https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html
  *
  * @author ljh
- * created on 2020/11/20 13:34
+ * @since 2020/11/20 13:34
  */
 public class CronUtilDemo extends Demo {
 

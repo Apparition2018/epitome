@@ -11,7 +11,7 @@ import java.net.URL;
  * ResourceUtils
  *
  * @author ljh
- * created on 2021/9/8 16:24
+ * @since 2021/9/8 16:24
  */
 public class ResourceUtilsDemo {
 

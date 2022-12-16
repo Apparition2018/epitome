@@ -6,7 +6,7 @@ import com.mchange.util.AssertException;
  * 建议88：枚举实现工厂模式
  *
  * @author ljh
- * created on 2020/10/10 19:23
+ * @since 2020/10/10 19:23
  */
 
 // 一般工厂模式

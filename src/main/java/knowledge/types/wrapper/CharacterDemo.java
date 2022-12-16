@@ -25,8 +25,8 @@ import static l.demo.Demo.p;
  * <p>
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Character.html
  *
- * @author Arsenal
- * created on 2020/9/7 01:28
+ * @author ljh
+ * @since 2020/9/7 01:28
  */
 public class CharacterDemo {
 

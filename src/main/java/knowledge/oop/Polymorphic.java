@@ -5,25 +5,33 @@ import l.demo.Animal.Cat;
 
 /**
  * 多态
+ * <pre>
  * 多态是同一个行为具有不同表现形式或形态的能力
  * java 语言是一门静态多分派，动态单分派的语言
+ * </pre>
  * 优点：
- * 1.消除类型之间的耦合关系
- * 2.可替换性
- * 3.可扩充性
- * 4.接口性
- * 5.灵活性
- * 6.简化性
+ * <pre>
+ * 1 消除类型之间的耦合关系
+ * 2 可替换性
+ * 3 可扩充性
+ * 4 接口性
+ * 5 灵活性
+ * 6 简化性
+ * </pre>
  * 三个必要条件：
- * 1.继承
- * 2.重写
- * 3.父类引用指向子类对象
- * <p>
- * 静态分派与动态分派：https://www.cnblogs.com/mengchunchen/p/7860397.html
- * JAVA 的多态用几句话能直观的解释一下吗？ - 知乎：https://www.zhihu.com/question/30082151
+ * <pre>
+ * 1 继承
+ * 2 重写
+ * 3 父类引用指向子类对象
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://www.cnblogs.com/mengchunchen/p/7860397.html">静态分派 vs 动态分派</a>
+ * <a href="https://www.zhihu.com/question/30082151">几句话解析 Java 多态</a>
+ * </pre>
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class Polymorphic {
 
@@ -102,5 +110,4 @@ public class Polymorphic {
             }
         }
     }
-
 }

@@ -11,7 +11,7 @@ import org.springframework.util.PathMatcher;
  * Spring 路径匹配：https://www.cnblogs.com/leftthen/p/5212221.html
  *
  * @author ljh
- * created on 2021/9/7 18:35
+ * @since 2021/9/7 18:35
  */
 public class PathMatcherDemo extends Demo {
 

@@ -11,7 +11,7 @@ import java.io.IOException;
  * CustomSerializer
  *
  * @author ljh
- * created on 2021/7/22 11:11
+ * @since 2021/7/22 11:11
  */
 public class CustomSerializer extends StdSerializer<Person> {
     private static final long serialVersionUID = 5013605440045804306L;

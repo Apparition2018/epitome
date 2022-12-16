@@ -9,16 +9,16 @@ import static l.demo.Demo.p;
 
 /**
  * Lombok
- * Lombok features：https://projectlombok.org/features/all
+ * <p><a href="https://projectlombok.org/features/all">Lombok features</a>
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class LombokDemo {
 
     /**
-     * `@NonNull
-     * null 检测
+     * &#064;NonNull
+     * <p>null 检测
      */
     @Test
     public void testNonNull() {
@@ -43,16 +43,16 @@ public class LombokDemo {
     }
 
     /**
-     * `@NoArgsConstructor
-     * 无参构造函数
-     * 当类中有 final 字段没有被初始化时，编译会报错，此时使用 force = true，就会为没有初始化的 final 字段设置默认值为 0 / false / null
-     * 对于具有约束的字段（如 @NonNull 字段），不会生成检查或分配，因此请注意，正确初始化这些字段之前，这些约束无效
+     * &#064;NoArgsConstructor
+     * <p>无参构造函数
+     * <p>当类中有 final 字段没有被初始化时，编译会报错，此时使用 force = true，就会为没有初始化的 final 字段设置默认值为 0 / false / null
+     * <p>对于具有约束的字段（如 @NonNull 字段），不会生成检查或分配，因此请注意，正确初始化这些字段之前，这些约束无效
      * <p>
-     * `@RequiredArgsConstructor
-     * 如果带有参数，则参数必须是 final 修饰的未经初始化的字段，或 @NonNull 注解的未经初始化的字段
+     * <p>&#064;RequiredArgsConstructor
+     * <p>如果带有参数，则参数必须是 final 修饰的未经初始化的字段，或 @NonNull 注解的未经初始化的字段
      * <p>
-     * `@AllArgsConstructor
-     * 全参构造函数
+     * <p>&#064;AllArgsConstructor
+     * <p>全参构造函数
      */
     @Test
     public void testRequiredArgsConstructor() {
@@ -74,8 +74,8 @@ public class LombokDemo {
     }
 
     /**
-     * `@RequiredArgsConstructor
-     * staticName = "of"，生成一个 of() 静态方法，并把构造方法设置为 private
+     * &#064;RequiredArgsConstructor
+     * <p>staticName = "of"，生成一个 of() 静态方法，并把构造方法设置为 private
      */
     @Test
     public void testRequiredArgsConstructorStaticName() {
@@ -95,10 +95,10 @@ public class LombokDemo {
     }
 
     /**
-     * `@ToString
-     * 生成 toString()
-     * exclude:     忽略打印字段
-     * callSuper:   是否打印超类
+     * &#064;ToString
+     * <p>生成 toString()
+     * <p>exclude   忽略打印字段
+     * <p>callSuper 是否打印超类
      */
     @Test
     public void testToStringExcludeAndCallSuper() {
@@ -111,10 +111,10 @@ public class LombokDemo {
     }
 
     /**
-     * `@EqualsAndHashCode
-     * 生成 hashCode() 和 equals()，默认情况下，所有 non-static, non-transient 字段都用于标识
-     * exclude:     排除
-     * callSuper:   是否使用超类字段用于标识
+     * &#064;EqualsAndHashCode
+     * <p>生成 hashCode() 和 equals()，默认情况下，所有 non-static, non-transient 字段都用于标识
+     * <p>exclude   排除
+     * <p>callSuper 是否使用超类字段用于标识
      */
     @Test
     public void testEqualsAndHashCodeExclude() {
@@ -124,8 +124,8 @@ public class LombokDemo {
     }
 
     /**
-     * `@Getter / @Setter
-     * 生成 getter / setter
+     * &#064;Getter / @Setter
+     * <p>生成 getter / setter
      */
     @Test
     public void testGetterAccessLevel() {
@@ -151,8 +151,8 @@ public class LombokDemo {
     }
 
     /**
-     * `@Data
-     * 相当于 @Getter, 非 final @Setter, @ToString, @EqualsAndHashCode, @RequiredArgsConstructor
+     * &#064;Data
+     * <p>相当于 @Getter, 非 final @Setter, @ToString, @EqualsAndHashCode, @RequiredArgsConstructor
      */
     @Data
     static class User {

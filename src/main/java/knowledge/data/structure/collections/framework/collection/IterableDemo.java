@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
  * <p>
  * Iterable 和 Iterator 区别与联系：https://blog.csdn.net/u011523796/article/details/79018718
  *
- * @author Arsenal
- * created on 2020/10/31 1:01
+ * @author ljh
+ * @since 2020/10/31 1:01
  */
 public class IterableDemo {
 

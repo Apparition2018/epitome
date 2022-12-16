@@ -8,7 +8,7 @@ import java.util.Objects;
  * 建议41：内部类实现多继承
  *
  * @author ljh
- * created on 2020/10/10 19:23
+ * @since 2020/10/10 19:23
  */
 class Family {
 

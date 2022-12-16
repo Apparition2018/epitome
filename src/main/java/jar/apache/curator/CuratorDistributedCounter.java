@@ -12,7 +12,7 @@ import org.apache.curator.retry.RetryNTimes;
  * Distributed Atomic Long：https://curator.apache.org/curator-recipes/distributed-atomic-long.html
  *
  * @author ljh
- * created on 2021/9/28 1:46
+ * @since 2021/9/28 1:46
  */
 public class CuratorDistributedCounter extends Demo {
 

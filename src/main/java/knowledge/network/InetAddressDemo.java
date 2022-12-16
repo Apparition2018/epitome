@@ -9,10 +9,10 @@ import java.net.UnknownHostException;
  * InetAddress
  * 表示互联网协议 (IP) 地址
  * IP 地址是 IP 使用的 32 位或 128 位无符号数字，它是一种低级协议，UDP 和 TCP 协议都是在它的基础上构建的。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/net/InetAddress.html
+ * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/InetAddress.html
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class InetAddressDemo extends Demo {
 
@@ -32,5 +32,4 @@ public class InetAddressDemo extends Demo {
         // byte[]	            getAddress()            获取此 InetAddress 对象的原始 IP 地址
         p(inetAddress.getAddress());                    // [14, -41, -79, 38]
     }
-
 }

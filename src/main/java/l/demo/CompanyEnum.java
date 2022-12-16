@@ -8,7 +8,7 @@ import java.util.Objects;
  * CompanyEnum
  *
  * @author ljh
- * created on 2020/11/2 14:04
+ * @since 2020/11/2 14:04
  */
 @Getter
 public enum CompanyEnum implements BaseEnum {

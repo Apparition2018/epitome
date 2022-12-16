@@ -16,7 +16,7 @@ import static l.demo.Demo.p;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/system/SystemUtil.html
  *
  * @author ljh
- * created on 2020/11/4 17:23
+ * @since 2020/11/4 17:23
  */
 public class SystemUtilDemo {
 

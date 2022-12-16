@@ -68,8 +68,7 @@
     2. 搜索 serialVersionUID
         2.1 'serialVersionUID' field not declared 'private static final long' 勾选
         2.2 Serializable class without 'serialVersionUID' 勾选
-    3. Java → Javadoc → Link specified as plain text 取消勾选
-    4. Java → Naming conventions → Class → class naming convention 取消勾选 
+    3. Java → Naming conventions → Class → class naming convention 取消勾选 
 ---
 ## File and Code Templates (-g|-e)
     1. Settings → Editor → File and Code Templates
@@ -79,7 +78,7 @@
          * ${NAME}
          *
          * @author ${USER}
-         * created on ${DATE} ${TIME}
+         * @since ${DATE} ${TIME}
          */
 ---
 ## TODO

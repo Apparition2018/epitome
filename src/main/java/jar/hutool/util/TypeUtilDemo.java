@@ -15,7 +15,7 @@ import java.util.List;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/TypeUtil.html
  *
  * @author ljh
- * created on 2020/10/29 12:48
+ * @since 2020/10/29 12:48
  */
 public class TypeUtilDemo {
 

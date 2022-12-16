@@ -34,7 +34,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 对多个资源、数据库表、对象同时加锁时，需要保持一致的加锁顺序，否则可能会造成死锁（阿里编程规约）
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class Deadlock extends Demo {
 

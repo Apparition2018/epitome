@@ -10,7 +10,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
  * CuratorUtils
  *
  * @author ljh
- * created on 2021/9/27 9:30
+ * @since 2021/9/27 9:30
  */
 @Slf4j
 public class CuratorUtils {

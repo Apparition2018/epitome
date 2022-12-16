@@ -12,10 +12,10 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 /**
- * `@JsonManagedReference 和 @JsonBackReference：解决循环依赖序列化和反序列化问题（父/子）
+ * &#064;JsonManagedReference 和 @JsonBackReference：解决循环依赖序列化和反序列化问题（父/子）
  *
  * @author ljh
- * created on 2021/7/24 17:03
+ * @since 2021/7/24 17:03
  */
 public class JsonReferenceDemo extends Demo {
 

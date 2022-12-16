@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * https://docs.oracle.com/javase/8/docs/api/index.html?java/nio/file/WatchEvent.html
  *
  * @author ljh
- * created on 2020/11/6 10:32
+ * @since 2020/11/6 10:32
  */
 public class WatchServiceDemo extends Demo {
 

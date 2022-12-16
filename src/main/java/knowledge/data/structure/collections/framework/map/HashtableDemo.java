@@ -11,7 +11,7 @@ import java.util.Hashtable;
  * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Hashtable.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class HashtableDemo extends Demo {
 

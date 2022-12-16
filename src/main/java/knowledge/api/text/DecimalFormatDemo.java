@@ -35,7 +35,7 @@ import static l.demo.Demo.p;
  * String	    toPattern()                                     合成一个表示此 Format 对象当前状态的模式字符串
  *
  * @author ljh
- * created on 2020/11/23 0:45
+ * @since 2020/11/23 0:45
  */
 public class DecimalFormatDemo {
 

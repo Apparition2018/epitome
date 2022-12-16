@@ -22,7 +22,7 @@ import static l.demo.Demo.p;
  * LazyBean
  *
  * @author ljh
- * created on 2020/11/25 15:29
+ * @since 2020/11/25 15:29
  */
 @Data
 @Component

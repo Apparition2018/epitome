@@ -19,7 +19,7 @@ import java.util.Date;
  * Apache BeanUtils 性能较差，可以使用其他方案比如 Spring BeanUtils，Cglib BeanCopier，注意均是浅拷贝（阿里编程规约）
  *
  * @author ljh
- * created on 2022/1/19 11:17
+ * @since 2022/1/19 11:17
  */
 public class BeanUtilsDemo extends Demo {
 

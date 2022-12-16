@@ -9,8 +9,8 @@ import java.io.IOException;
  * CaptchaRandomServlet
  * 随机字符串验证码
  *
- * @author Arsenal
- * created on 2019/12/23 10:20
+ * @author ljh
+ * @since 2019/12/23 10:20
  */
 public class CaptchaRandomServlet extends HttpServlet {
 

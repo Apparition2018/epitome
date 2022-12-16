@@ -23,7 +23,7 @@ import org.springframework.scheduling.annotation.Async;
  * Spring 内置事件：https://blog.csdn.net/qq_36306640/article/details/90047885
  *
  * @author ljh
- * created on 2020/12/3 14:54
+ * @since 2020/12/3 14:54
  */
 public class SpringObserverDemo {
 

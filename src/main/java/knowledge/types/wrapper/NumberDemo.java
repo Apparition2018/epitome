@@ -19,7 +19,7 @@ import static l.demo.Demo.p;
  * 5.所有的局部变量使用基本数据类型
  *
  * @author ljh
- * created on 2020/9/7 1:28
+ * @since 2020/9/7 1:28
  */
 public class NumberDemo {
 

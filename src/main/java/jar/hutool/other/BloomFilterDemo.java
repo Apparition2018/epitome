@@ -18,8 +18,8 @@ import java.util.stream.IntStream;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/bloomfilter/BitSetBloomFilter.html
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/bloomfilter/BitMapBloomFilter.html
  *
- * @author Arsenal
- * created on 2020/11/21 17:11
+ * @author ljh
+ * @since 2020/11/21 17:11
  */
 public class BloomFilterDemo extends Demo {
 

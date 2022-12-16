@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * Collectors reducing()：https://blog.csdn.net/zebe1989/article/details/82855511
  *
  * @author ljh
- * created on 2021/1/14 14:51
+ * @since 2021/1/14 14:51
  */
 public class CollectorsDemo extends Demo {
 

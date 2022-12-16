@@ -16,7 +16,7 @@ import java.util.Date;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/LocalDateTimeUtil.html
  *
  * @author ljh
- * created on 2020/10/27 11:45
+ * @since 2020/10/27 11:45
  */
 public class LocalDateTimeUtilDemo extends Demo {
 

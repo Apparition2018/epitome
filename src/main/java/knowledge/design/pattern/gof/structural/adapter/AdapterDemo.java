@@ -38,8 +38,8 @@ import java.util.Enumeration;
  * Adapter：https://refactoringguru.cn/design-patterns/adapter
  * 设计模式之美：适配器模式：代理、适配器、桥接、装饰，这四个模式有何区别？
  *
- * @author Arsenal
- * created on 2020/9/26 2:51
+ * @author ljh
+ * @since 2020/9/26 2:51
  */
 public class AdapterDemo {
 
@@ -94,7 +94,7 @@ public class AdapterDemo {
 
     /**
      * Adapter
-     * 对象适配器模式
+     * <p>对象适配器模式
      */
     static class MediaPlayerAdapter extends MediaPlayer {
         private VideoPlayer videoPlayer;
@@ -114,5 +114,4 @@ public class AdapterDemo {
             }
         }
     }
-
 }

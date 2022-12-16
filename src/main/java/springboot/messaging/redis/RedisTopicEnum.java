@@ -6,7 +6,7 @@ import lombok.Getter;
  * RedisTopicEnum
  *
  * @author ljh
- * created on 2021/9/1 20:35
+ * @since 2021/9/1 20:35
  */
 @Getter
 public enum RedisTopicEnum {

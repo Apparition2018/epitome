@@ -15,7 +15,7 @@ import java.util.Scanner;
  * https://www.runoob.com/manual/jdk1.6/java.base/java/util/Scanner.html
  *
  * @author ljh
- * created on 2020/10/23 20:09
+ * @since 2020/10/23 20:09
  */
 public class ScannerDemo extends Demo {
 

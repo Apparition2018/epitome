@@ -20,7 +20,7 @@ import static l.demo.Demo.p;
  * 3.使用方式要足够简单，见代码实例
  *
  * @author ljh
- * created on 2020/9/18 18:01
+ * @since 2020/9/18 18:01
  */
 public class CustomAnnotationExercise {
 

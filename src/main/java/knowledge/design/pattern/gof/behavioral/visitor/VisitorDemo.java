@@ -40,7 +40,7 @@ import java.util.List;
  * 设计模式之美：访问者模式（下）：为什么支持双分派的语言不需要访问者模式？
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class VisitorDemo {
 

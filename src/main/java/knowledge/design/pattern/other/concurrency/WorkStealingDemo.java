@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * LinkedBlockingDeque工作密取：https://blog.csdn.net/hxpjava1/article/details/44245593
  *
  * @author ljh
- * created on 2020/10/19 16:17
+ * @since 2020/10/19 16:17
  */
 public class WorkStealingDemo extends Demo {
 

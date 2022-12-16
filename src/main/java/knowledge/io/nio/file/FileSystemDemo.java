@@ -24,7 +24,7 @@ import java.nio.file.attribute.UserPrincipalLookupService;
  * https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystems.html
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class FileSystemDemo extends Demo {
 

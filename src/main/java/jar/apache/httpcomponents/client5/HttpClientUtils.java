@@ -46,7 +46,7 @@ import java.util.stream.Collectors;
  * 七大主流的 HttpClient 比较：https://blog.csdn.net/citywu123/article/details/109456035
  *
  * @author ljh
- * created on 2020/11/12 21:35
+ * @since 2020/11/12 21:35
  */
 public class HttpClientUtils {
 

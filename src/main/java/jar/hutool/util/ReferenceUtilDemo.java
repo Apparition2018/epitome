@@ -16,7 +16,7 @@ import java.lang.ref.Reference;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ReferenceUtil.html
  *
  * @author ljh
- * created on 2020/11/19 16:50
+ * @since 2020/11/19 16:50
  */
 public class ReferenceUtilDemo {
 

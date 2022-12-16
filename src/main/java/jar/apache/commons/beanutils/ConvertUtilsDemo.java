@@ -17,8 +17,8 @@ import static l.demo.Demo.p;
  * String[] →   T[]
  * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/ConvertUtils.html
  *
- * @author Arsenal
- * created on 2020/11/14 21:54
+ * @author ljh
+ * @since 2020/11/14 21:54
  */
 public class ConvertUtilsDemo {
 

@@ -15,10 +15,10 @@ import java.util.Objects;
  * ContextController
  *
  * @author ljh
- * created on 2022/4/5 15:03
+ * @since 2022/4/5 15:03
  */
 @RestController
-@RequestMapping("/context")
+@RequestMapping("context")
 public class ContextController {
 
     @GetMapping

@@ -7,8 +7,8 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 /**
  * NettyConfig
  *
- * @author Arsenal
- * created on 2021/3/5 1:14
+ * @author ljh
+ * @since 2021/3/5 1:14
  */
 public class NettyConfig {
 

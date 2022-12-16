@@ -48,7 +48,7 @@ import java.util.*;
  * 4.读写分离，写时复制出一个新的数组，完成插入、修改或者移除操作后将新数组赋值给 array
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class ListDemo extends Demo {
 

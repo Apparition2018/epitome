@@ -26,8 +26,8 @@ import java.util.List;
  * -    2.HttpSessionAttributeListener
  * -    3.ServletContextAttributeListener
  *
- * @author Arsenal
- * created on 2019/7/22 11:44
+ * @author ljh
+ * @since 2019/7/22 11:44
  */
 @WebListener
 public class OnlineNumberListener implements HttpSessionListener, ServletRequestListener {

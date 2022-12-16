@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/locks/ReentrantLock.html
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class ReentrantLockDemo extends Demo {
 

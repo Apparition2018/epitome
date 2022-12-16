@@ -17,8 +17,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * Java 并发之 Condition：https://www.cnblogs.com/gemine/p/9039012.html
  * Condition 实现生产者-消费者模式：https://blog.csdn.net/a718515028/article/details/108224749
  *
- * @author Arsenal
- * created on 2020/11/15 11:30
+ * @author ljh
+ * @since 2020/11/15 11:30
  */
 public class ConditionDemo extends Demo {
 

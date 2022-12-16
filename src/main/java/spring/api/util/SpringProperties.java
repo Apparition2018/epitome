@@ -17,7 +17,7 @@ import java.util.Properties;
  * SpringProperties
  *
  * @author ljh
- * created on 2021/9/9 9:01
+ * @since 2021/9/9 9:01
  */
 public class SpringProperties {
 

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/HashUtil.html
  *
  * @author ljh
- * created on 2020/11/19 10:22
+ * @since 2020/11/19 10:22
  */
 public class HashUtilDemo extends Demo {
     

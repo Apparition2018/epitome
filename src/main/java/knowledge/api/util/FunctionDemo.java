@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  * Function
  *
  * @author ljh
- * created on 2020/9/9 15:13
+ * @since 2020/9/9 15:13
  */
 public class FunctionDemo extends Demo {
 

@@ -16,8 +16,8 @@ import static l.demo.Demo.pe;
 /**
  * JdbcTemplate
  *
- * @author Arsenal
- * created on 2020/11/27 1:43
+ * @author ljh
+ * @since 2020/11/27 1:43
  */
 public class JdbcTemplateDemo {
 

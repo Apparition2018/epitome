@@ -11,8 +11,8 @@ import javax.script.ScriptException;
  * https://hutool.cn/docs/#/script/Script%E5%B7%A5%E5%85%B7-ScriptUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/script/ScriptUtil.html
  *
- * @author Arsenal
- * created on 2020/11/21 17:22
+ * @author ljh
+ * @since 2020/11/21 17:22
  */
 public class ScriptUtilDemo {
 

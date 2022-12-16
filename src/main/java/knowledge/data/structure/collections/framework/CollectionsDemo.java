@@ -49,7 +49,7 @@ import java.util.stream.Collectors;
  * Collections 类返回的对象，如：emptyList() / singletonList() 等都是 immutable list，不可对其进行添加或者删除元素的操作（阿里编程规约）
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class CollectionsDemo extends Demo {
 

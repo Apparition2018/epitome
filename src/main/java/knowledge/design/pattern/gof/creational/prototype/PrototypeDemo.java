@@ -32,7 +32,7 @@ import java.util.Objects;
  * 设计模式之美：原型模式：如何最快速地 clone 一个 HashMap 散列表？
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class PrototypeDemo extends Demo {
 

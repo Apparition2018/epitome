@@ -20,7 +20,7 @@ import java.nio.file.WatchEvent;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/watch/WatchMonitor.html
  *
  * @author ljh
- * created on 2020/10/30 15:48
+ * @since 2020/10/30 15:48
  */
 public class WatchMonitorDemo extends Demo {
 

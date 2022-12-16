@@ -11,7 +11,7 @@ import static l.demo.Demo.p;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/ChineseDate.html
  *
  * @author ljh
- * created on 2020/10/27 11:29
+ * @since 2020/10/27 11:29
  */
 public class ChineseDateDemo {
 

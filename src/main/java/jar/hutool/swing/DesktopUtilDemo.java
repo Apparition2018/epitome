@@ -10,7 +10,7 @@ import java.io.File;
  * DesktopUtil  桌面工具类
  *
  * @author ljh
- * created on 2020/11/19 15:46
+ * @since 2020/11/19 15:46
  */
 public class DesktopUtilDemo extends Demo {
     

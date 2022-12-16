@@ -6,7 +6,7 @@ import lombok.Data;
  * User
  *
  * @author ljh
- * created on 2022/7/4 0:23
+ * @since 2022/7/4 0:23
  */
 @Data
 public class User {

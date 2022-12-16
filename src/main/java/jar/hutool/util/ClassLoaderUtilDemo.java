@@ -11,7 +11,7 @@ import static l.demo.Demo.p;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ClassLoaderUtil.html
  *
  * @author ljh
- * created on 2020/11/2 14:49
+ * @since 2020/11/2 14:49
  */
 public class ClassLoaderUtilDemo {
 

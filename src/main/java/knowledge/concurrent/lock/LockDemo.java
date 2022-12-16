@@ -32,7 +32,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Lock 锁和条件变量：https://blog.csdn.net/ns_code/article/details/17487337
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class LockDemo {
 

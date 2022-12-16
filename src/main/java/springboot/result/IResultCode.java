@@ -6,7 +6,7 @@ import java.io.Serializable;
  * IResultCode
  *
  * @author ljh
- * created on 2021/6/18 16:55
+ * @since 2021/6/18 16:55
  */
 public interface IResultCode extends Serializable {
 

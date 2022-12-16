@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * 线程安全的
  *
  * @author ljh
- * created on 2021/7/18 0:20
+ * @since 2021/7/18 0:20
  */
 public class JsonFactoryDemo {
 

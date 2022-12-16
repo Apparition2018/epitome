@@ -10,7 +10,7 @@ import static l.demo.Demo.p;
  * 分支定界
  *
  * @author ljh
- * created on 2020/9/29 10:28
+ * @since 2020/9/29 10:28
  */
 public class BranchAndBound {
 

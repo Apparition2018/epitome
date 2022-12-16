@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
  * https://redis.io/docs/data-types/hyperloglogs/
  *
  * @author ljh
- * created on 2022/8/12 0:12
+ * @since 2022/8/12 0:12
  */
 public class RedisHyperLogLog extends Demo {
 

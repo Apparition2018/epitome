@@ -23,8 +23,8 @@ import java.util.Vector;
  * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/Iterator%E5%B7%A5%E5%85%B7-IterUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/IterUtil.html
  *
- * @author Arsenal
- * created on 2020/10/29 2:22
+ * @author ljh
+ * @since 2020/10/29 2:22
  */
 public class IterUtilDemo extends Demo {
 

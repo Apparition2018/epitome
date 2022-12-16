@@ -8,8 +8,8 @@ import java.io.IOException;
 /**
  * ValidKaptchaServlet
  *
- * @author Arsenal
- * created on 2019/12/24 0:09
+ * @author ljh
+ * @since 2019/12/24 0:09
  */
 public class ValidKaptchaServlet extends HttpServlet {
 

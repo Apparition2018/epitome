@@ -24,8 +24,8 @@ import java.util.Random;
  * https://www.runoob.com/manual/jdk1.6/java.base/java/security/MessageDigest.html
  * https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#MessageDigest
  *
- * @author Arsenal
- * created on 2020/11/8 19:04
+ * @author ljh
+ * @since 2020/11/8 19:04
  */
 public class MessageDigestDemo extends Demo {
 

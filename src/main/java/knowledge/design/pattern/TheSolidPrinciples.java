@@ -19,7 +19,7 @@ import java.util.Arrays;
  * A Solid Guide to SOLID Principles：https://www.baeldung.com/solid-principles
  *
  * @author ljh
- * created on 2020/9/24 16:13
+ * @since 2020/9/24 16:13
  */
 public class TheSolidPrinciples {
 

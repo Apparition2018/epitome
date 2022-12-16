@@ -28,7 +28,7 @@ import static l.demo.Demo.p;
  * 算法刻意练习之栈、队列、双端队列、优先队列：https://www.pianshen.com/article/27711847617/
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class DequeDemo {
 

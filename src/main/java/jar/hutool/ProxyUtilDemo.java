@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/aop/ProxyUtil.html
  *
  * @author ljh
- * created on 2020/11/2 15:46
+ * @since 2020/11/2 15:46
  */
 public class ProxyUtilDemo {
 

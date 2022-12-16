@@ -10,7 +10,7 @@ import com.google.common.collect.ImmutableMap;
  * https://github.com/google/guava/wiki/ImmutableCollectionsExplained
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class ImmutableDemo {
 

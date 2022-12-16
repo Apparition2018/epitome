@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
  * DigestUtil   摘要加密工具类
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/DigestUtil.html
  *
- * @author Arsenal
- * created on 2020/11/9 2:07
+ * @author ljh
+ * @since 2020/11/9 2:07
  */
 public class DigesterDemo extends Demo {
     

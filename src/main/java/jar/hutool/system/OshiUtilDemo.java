@@ -12,7 +12,7 @@ import static l.demo.Demo.p;
  * 使用 oshi 获取主机信息：https://www.cnblogs.com/weechang/p/12493978.html
  *
  * @author ljh
- * created on 2020/11/19 14:39
+ * @since 2020/11/19 14:39
  */
 public class OshiUtilDemo {
 

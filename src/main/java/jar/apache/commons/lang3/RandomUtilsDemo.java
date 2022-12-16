@@ -9,7 +9,7 @@ import static l.demo.Demo.p;
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/RandomUtils.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class RandomUtilsDemo {
 

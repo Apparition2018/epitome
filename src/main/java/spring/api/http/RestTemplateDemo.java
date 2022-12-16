@@ -23,8 +23,8 @@ import java.util.concurrent.TimeUnit;
  * Spring RestTemplate 中几种常见的请求方式：https://segmentfault.com/a/1190000011093597
  * 基于 springboot 的 RestTemplate, okhttp 和 HttpClient 对比：https://www.cnblogs.com/wzk-0000/p/10955406.html
  *
- * @author Arsenal
- * created on 2020/11/13 1:35
+ * @author ljh
+ * @since 2020/11/13 1:35
  */
 public class RestTemplateDemo extends Demo {
 

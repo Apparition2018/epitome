@@ -10,7 +10,7 @@ import java.util.Comparator;
  * 建议73：Comparable 可用做类的默认排序算法，Comparator 可用做扩展排序工具
  *
  * @author ljh
- * created on 2020/10/10 19:23
+ * @since 2020/10/10 19:23
  */
 @Data
 @Accessors(chain = true)

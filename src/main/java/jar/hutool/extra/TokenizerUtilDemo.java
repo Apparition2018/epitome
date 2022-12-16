@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/tokenizer/TokenizerUtil.html
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/tokenizer/TokenizerEngine.html
  *
- * @author Arsenal
- * created on 2020/11/21 14:54
+ * @author ljh
+ * @since 2020/11/21 14:54
  */
 public class TokenizerUtilDemo {
 

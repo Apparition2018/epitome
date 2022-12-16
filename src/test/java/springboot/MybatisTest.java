@@ -14,7 +14,7 @@ import springboot.domain.slaver.SysUser;
 
 /**
  * @author ljh
- * created on 2021/8/30 17:14
+ * @since 2021/8/30 17:14
  */
 @SpringBootTest
 public class MybatisTest {

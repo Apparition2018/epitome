@@ -28,7 +28,7 @@ import static l.demo.Demo.p;
  * 单工，半双工，全双工：https://blog.csdn.net/u012426327/article/details/77160503
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class TCPServer implements Runnable {
 

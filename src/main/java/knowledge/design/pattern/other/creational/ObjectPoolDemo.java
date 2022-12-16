@@ -14,7 +14,7 @@ package knowledge.design.pattern.other.creational;
  * Object Pool：https://www.kancloud.cn/sstd521/design/193649
  *
  * @author ljh
- * created on 2022/2/8 11:58
+ * @since 2022/2/8 11:58
  */
 public class ObjectPoolDemo {
 }

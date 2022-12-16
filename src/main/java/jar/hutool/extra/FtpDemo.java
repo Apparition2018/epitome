@@ -12,7 +12,7 @@ import java.io.IOException;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/ftp/Ftp.html
  *
  * @author ljh
- * created on 2020/11/9 16:11
+ * @since 2020/11/9 16:11
  */
 public class FtpDemo {
     

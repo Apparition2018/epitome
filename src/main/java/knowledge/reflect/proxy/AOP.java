@@ -20,7 +20,7 @@ import static l.demo.Demo.p;
  * RuoYi 数据权限 (DataScopeAspect)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90
  *
  * @author ljh
- * created on 2020/11/10 15:43
+ * @since 2020/11/10 15:43
  */
 public class AOP {
 

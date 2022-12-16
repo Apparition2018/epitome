@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/map/BiMap.html
  *
  * @author ljh
- * created on 2020/11/2 11:40
+ * @since 2020/11/2 11:40
  */
 public class BiMapDemo extends Demo {
     

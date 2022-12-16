@@ -32,7 +32,7 @@ import java.security.SecureRandom;
  * 加解密（Encryption）& 哈希（Hash）算法----入门指引 - 知乎：https://zhuanlan.zhihu.com/p/20064358
  *
  * @author ljh
- * created on 2020/11/18 19:37
+ * @since 2020/11/18 19:37
  */
 public class SymmetricCryptography {
 

@@ -57,7 +57,7 @@ import java.util.*;
  * 而这里的每个 segment 都相当于一个小的 Hashtable，性能高于 Hashtable
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class MapDemo extends Demo {
 

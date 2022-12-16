@@ -9,7 +9,7 @@ package knowledge.throwable;
  * 自定义异常，应该继承 Exception 还是 Runtime Exception：https://www.zhihu.com/question/51970444
  *
  * @author ljh
- * created on 2020/9/4 14:10
+ * @since 2020/9/4 14:10
  */
 public class CustomExceptionDemo {
 

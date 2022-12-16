@@ -38,7 +38,7 @@ import java.util.List;
  * choice	    SubFormatPattern	    new ChoiceFormat(subFormatPattern)
  *
  * @author ljh
- * created on 2020/9/3 14:54
+ * @since 2020/9/3 14:54
  */
 public class MessageFormatDemo extends Demo {
 

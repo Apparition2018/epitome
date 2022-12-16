@@ -17,7 +17,7 @@ import java.awt.*;
  * Private Class Data：https://java-design-patterns.com/patterns/private-class-data/
  *
  * @author ljh
- * created on 2022/2/8 15:59
+ * @since 2022/2/8 15:59
  */
 public class PrivateClassDataDemo {
 

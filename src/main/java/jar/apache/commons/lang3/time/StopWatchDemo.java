@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/StopWatch.html
  *
  * @author ljh
- * created on 2020/10/16 11:04
+ * @since 2020/10/16 11:04
  */
 public class StopWatchDemo extends Demo {
 

@@ -12,7 +12,7 @@ import static l.demo.Demo.p;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/EnumUtil.html
  *
  * @author ljh
- * created on 2020/11/2 13:58
+ * @since 2020/11/2 13:58
  */
 public class EnumUtilDemo {
 

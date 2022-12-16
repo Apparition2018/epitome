@@ -42,7 +42,7 @@ import java.io.IOException;
  * Java生鲜电商平台-统一异常处理及架构实战：https://www.cnblogs.com/jurendage/p/11255197.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class ThrowableDemo extends Demo {
 

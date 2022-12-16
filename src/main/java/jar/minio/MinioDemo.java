@@ -19,7 +19,7 @@ import java.util.Date;
  * MinIO 工具类：https://blog.csdn.net/weixin_42170236/article/details/109356921
  *
  * @author ljh
- * created on 2021/4/25 16:28
+ * @since 2021/4/25 16:28
  */
 public class MinioDemo extends Demo {
 

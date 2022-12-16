@@ -11,8 +11,8 @@ import java.lang.reflect.InvocationTargetException;
  * ConstructorUtils
  * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/ConstructorUtils.html
  *
- * @author Arsenal
- * created on 2020/11/14 21:20
+ * @author ljh
+ * @since 2020/11/14 21:20
  */
 public class ConstructorUtilsDemo {
 

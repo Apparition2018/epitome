@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanPath.html
  *
  * @author ljh
- * created on 2022/1/19 8:49
+ * @since 2022/1/19 8:49
  */
 public class BeanPathDemo extends Demo {
 

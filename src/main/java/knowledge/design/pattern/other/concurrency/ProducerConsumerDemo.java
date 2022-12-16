@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 生产者消费者模式-Java实现：https://www.cnblogs.com/chentingk/p/6497107.html
  *
  * @author ljh
- * created on 2020/10/9 13:53
+ * @since 2020/10/9 13:53
  */
 public class ProducerConsumerDemo extends Demo {
     private static volatile boolean isProducing = true;

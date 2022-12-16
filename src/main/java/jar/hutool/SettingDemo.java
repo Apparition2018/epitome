@@ -19,8 +19,8 @@ import java.nio.charset.StandardCharsets;
  * https://hutool.cn/docs/#/setting/%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6-Setting
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/setting/Setting.html
  *
- * @author Arsenal
- * created on 2020/11/20 1:03
+ * @author ljh
+ * @since 2020/11/20 1:03
  */
 public class SettingDemo extends Demo {
 

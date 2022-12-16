@@ -42,7 +42,7 @@ import java.util.stream.IntStream;
  * 设计模式之美：状态模式：游戏、工作流引擎中常用的状态机是如何实现的？
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class StateDemo {
 

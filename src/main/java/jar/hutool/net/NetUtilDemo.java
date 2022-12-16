@@ -16,7 +16,7 @@ import java.nio.ByteBuffer;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/net/NetUtil.html
  *
  * @author ljh
- * created on 2020/10/30 17:16
+ * @since 2020/10/30 17:16
  */
 public class NetUtilDemo extends Demo {
 

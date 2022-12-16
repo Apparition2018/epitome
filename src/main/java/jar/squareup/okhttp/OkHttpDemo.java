@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
  * https://square.github.io/okhttp/recipes/
  *
  * @author ljh
- * created on 2021/8/3 9:10
+ * @since 2021/8/3 9:10
  */
 public class OkHttpDemo extends Demo {
     private static final String MARKDOWN_RAW_URL = "https://api.github.com/markdown/raw";

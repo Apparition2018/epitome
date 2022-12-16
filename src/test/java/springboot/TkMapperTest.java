@@ -11,7 +11,7 @@ import tk.mybatis.mapper.entity.Example;
  * TkMapperTest
  *
  * @author HP
- * created on 2022/11/1 17:17
+ * @since 2022/11/1 17:17
  */
 @SpringBootTest
 public class TkMapperTest {

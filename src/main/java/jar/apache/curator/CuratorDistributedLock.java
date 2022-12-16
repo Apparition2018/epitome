@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * InterProcessSemaphoreV2      http://curator.apache.org/curator-recipes/shared-semaphore.html                 信号灯
  *
  * @author ljh
- * created on 2021/9/28 1:10
+ * @since 2021/9/28 1:10
  */
 public class CuratorDistributedLock extends Demo {
 

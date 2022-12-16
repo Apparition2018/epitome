@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
  * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Multimaps.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class MultimapDemo extends Demo {
 

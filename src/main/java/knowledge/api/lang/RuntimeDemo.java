@@ -3,16 +3,13 @@ package knowledge.api.lang;
 import org.junit.jupiter.api.Test;
 
 /**
- * Runtime
- * <p>
- * Process	exec(String/String[] command)                               在单独的进程中执行指定的命令
- * Process	exec(String/String[] command, String[] envp[, File dir])    在指定环境和工作目录的独立进程中执行指定的命令
- * <p>
- * Runtime.getRuntime().exec() 需要注意的地方：https://www.cnblogs.com/fclbky/p/6112180.html
- * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Runtime.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Runtime.html">Runtime</a>
+ * <p>Process	exec(String/String[] command)   在单独的进程中执行指定的命令
+ * <p>Process	exec(String/String[] command, String[] envp[, File dir])    在指定环境和工作目录的独立进程中执行指定的命令
+ * <p><a href="https://www.cnblogs.com/fclbky/p/6112180.html">使用 Runtime.getRuntime().exec() 需要注意的地方</a>
  *
  * @author ljh
- * created on 2020/12/1 13:08
+ * @since 2020/12/1 13:08
  */
 public class RuntimeDemo {
 

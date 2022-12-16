@@ -13,11 +13,11 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 /**
- * `@JsonTypeInfo：处理多态的序列化和反序列化
- * https://www.jianshu.com/p/4003b9756952
+ * <a href="https://www.jianshu.com/p/4003b9756952">@JsonTypeInfo</a>
+ * <p>处理多态的序列化和反序列化
  *
  * @author ljh
- * created on 2021/7/24 17:09
+ * @since 2021/7/24 17:09
  */
 public class JsonTypeInfoDemo extends Demo {
 

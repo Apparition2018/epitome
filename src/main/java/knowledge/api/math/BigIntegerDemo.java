@@ -47,7 +47,7 @@ import java.nio.charset.StandardCharsets;
  * int	        signum()                        返回此 BigInteger 的正负号函数
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class BigIntegerDemo extends Demo {
 

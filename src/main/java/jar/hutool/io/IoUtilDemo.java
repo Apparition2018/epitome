@@ -26,7 +26,7 @@ import java.nio.file.Paths;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/IoUtil.html
  *
  * @author ljh
- * created on 2020/10/29 17:45
+ * @since 2020/10/29 17:45
  */
 public class IoUtilDemo extends Demo {
 

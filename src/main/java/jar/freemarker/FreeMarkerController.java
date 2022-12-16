@@ -8,28 +8,27 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Freemarker 整合 SpringMVC
- * http://blog.csdn.net/u012759397/article/details/54091895
+ * <a href="http://blog.csdn.net/u012759397/article/details/54091895">SpringMVC 整合 Freemarker</a>
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 @Controller
 public class FreeMarkerController {
 
-    @RequestMapping("/helloFtl")
+    @RequestMapping("helloFtl")
     public String HelloFtl(Model model) {
         model.addAttribute("username", "nishuibaichuan");
         return "helloFtl";
     }
 
-    @RequestMapping("/helloJsp")
+    @RequestMapping("helloJsp")
     public String HelloJsp(Model model) {
         model.addAttribute("username", "nishuibaichuan");
         return "helloJsp";
     }
 
-    @RequestMapping("/helloTestFtl")
+    @RequestMapping("helloTestFtl")
     public String helloTestFtl(Model model) {
         List<Employer> emps = Arrays.asList(new Employer(1, "小李", 22), new Employer(2, "八戒", 444),
                 new Employer(3, "刘德华", 54));

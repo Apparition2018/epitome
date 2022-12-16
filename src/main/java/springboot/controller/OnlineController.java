@@ -14,10 +14,10 @@ import java.util.List;
  * 使用 HttpSessionListener 实现统计在线人数
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 @RestController
-@RequestMapping("/online")
+@RequestMapping("online")
 @Tag(name = "Online")
 public class OnlineController {
 

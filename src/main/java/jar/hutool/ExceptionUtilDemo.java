@@ -10,8 +10,8 @@ import static l.demo.Demo.p;
  * https://hutool.cn/docs/#/core/%E5%BC%82%E5%B8%B8/%E5%BC%82%E5%B8%B8%E5%B7%A5%E5%85%B7-ExceptionUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/exceptions/ExceptionUtil.html
  *
- * @author Arsenal
- * created on 2020/11/19 23:31
+ * @author ljh
+ * @since 2020/11/19 23:31
  */
 public class ExceptionUtilDemo {
 

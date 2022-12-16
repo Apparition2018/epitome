@@ -23,7 +23,7 @@ import java.util.Objects;
  * Specification：https://www.kancloud.cn/sstd521/design/193648
  *
  * @author ljh
- * created on 2022/2/8 17:46
+ * @since 2022/2/8 17:46
  */
 public class SpecificationDemo {
 

@@ -19,35 +19,36 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
+ * <a href="http://localhost:3333/front/js/Web%20APIs/Fetch%20API/Fetch-API-demo.html">Fetch-API-demo.html</a>
+ *
  * @author ljh
- * created on 2019/8/8 19:39
- * @link {http://localhost:3333/front/js/Web%20APIs/Fetch%20API/Fetch-API-demo.html}
+ * @since 2019/8/8 19:39
  */
 @Slf4j
 @RestController
-@RequestMapping("/fetch")
+@RequestMapping("fetch")
 @Tag(name = "Fetch")
 public class FetchController {
 
-    @PostMapping("/string")
+    @PostMapping("string")
     @Operation(summary = "传递普通类型的数据，如 String")
     public String string(@RequestParam String data) {
         return data;
     }
 
-    @PostMapping("/json-clazz")
+    @PostMapping("json-clazz")
     @Operation(summary = "传递 Json 类型的数据，接收方为 Bean")
     public Score jsonClazz(@RequestBody Score score) {
         return score;
     }
 
-    @PostMapping("/json-map")
+    @PostMapping("json-map")
     @Operation(summary = "传递 Json 类型的数据，接收方为 Map")
     public Map<String, String> jsonMap(@RequestBody Map<String, String> map) {
         return map;
     }
 
-    @PostMapping("/upload-picture")
+    @PostMapping("upload-picture")
     @Operation(summary = "上传单个文件")
     public String uploadPicture(@RequestParam("file") MultipartFile file) {
         try {
@@ -65,7 +66,7 @@ public class FetchController {
         return "fail";
     }
 
-    @PostMapping("/upload-pictures")
+    @PostMapping("upload-pictures")
     @Operation(summary = "上传多个文件")
     public String uploadPictures(HttpServletRequest request) {
         try {
@@ -88,7 +89,7 @@ public class FetchController {
         return "fail";
     }
 
-    @PostMapping("/cookie")
+    @PostMapping("cookie")
     @Operation(summary = "发送 Cookie")
     public String cookie(@CookieValue(value = "cny", required = false) String cny, HttpServletRequest request) {
         String rtnString = "";

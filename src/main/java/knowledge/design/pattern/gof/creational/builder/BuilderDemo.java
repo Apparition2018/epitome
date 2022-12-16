@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
  * Tom|动态构建SQL语句：https://gupaoedu-tom.blog.csdn.net/article/details/121016859
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class BuilderDemo {
 

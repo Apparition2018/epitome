@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
  * 内省(二)之 BeanUtils 工具类：https://www.cnblogs.com/fjdingsd/p/5272165.html
  *
  * @author ljh
- * created on 2021/9/9 11:39
+ * @since 2021/9/9 11:39
  */
 public class IntrospectorDemo {
 

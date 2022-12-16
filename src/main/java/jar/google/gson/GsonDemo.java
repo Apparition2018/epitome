@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Map.Entry;
 
 /**
- * Gson 使用指南：https://www.jianshu.com/p/e740196225a4
+ * <a href="https://www.jianshu.com/p/e740196225a4">Gson 使用指南</a>
  *
- * @author Arsenal
- * created on 2020/10/25 2:16
+ * @author ljh
+ * @since 2020/10/25 2:16
  */
 public class GsonDemo extends Demo implements JsonDemo {
 
@@ -89,7 +89,7 @@ public class GsonDemo extends Demo implements JsonDemo {
     }
 
     /**
-     * `@SerializedName 字段别名
+     * &#064;SerializedName 字段别名
      */
     @Test
     public void testSerializedName() {

@@ -18,7 +18,7 @@ import org.openjdk.jol.info.ClassLayout;
  * Object o = new Object()占多少个字节？：http://t.zoukankan.com/dijia478-p-14677243.html
  *
  * @author ljh
- * created on 2022/7/5 2:02
+ * @since 2022/7/5 2:02
  */
 public class JavaObjectLayoutDemo extends Demo {
 

@@ -39,7 +39,7 @@ import org.junit.jupiter.api.Test;
  * wait 和 notify 的理解与使用：https://blog.csdn.net/jianiuqi/article/details/53448849
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class ObjectDemo {
 

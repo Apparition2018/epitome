@@ -29,8 +29,8 @@ import java.util.stream.IntStream;
  * Composite：https://refactoringguru.cn/design-patterns/composite
  * Java设计模式：http://c.biancheng.net/view/1373.html
  *
- * @author Arsenal
- * created on 2020/9/26 2:51
+ * @author ljh
+ * @since 2020/9/26 2:51
  */
 public class CompositeDemo {
 

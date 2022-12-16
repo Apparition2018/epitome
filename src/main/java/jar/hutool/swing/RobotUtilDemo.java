@@ -12,7 +12,7 @@ import java.io.File;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/swing/RobotUtil.html
  *
  * @author ljh
- * created on 2020/11/19 15:37
+ * @since 2020/11/19 15:37
  */
 public class RobotUtilDemo extends Demo {
 

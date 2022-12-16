@@ -19,7 +19,7 @@ import java.util.*;
  * http://www.code2succeed.com/pub-sub/
  *
  * @author ljh
- * created on 2022/1/26 14:25
+ * @since 2022/1/26 14:25
  */
 public class PublishSubscribeDemo {
 

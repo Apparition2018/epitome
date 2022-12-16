@@ -17,8 +17,8 @@ import java.util.Properties;
  * Spring 4.0 @PropertySource：https://www.cnblogs.com/duanxz/archive/2012/11/06/2756362.html
  * 获取 properties 属性的几种方式：https://blog.csdn.net/lettuce_/article/details/101518075
  *
- * @author Arsenal
- * created on 2020/11/29 15:55
+ * @author ljh
+ * @since 2020/11/29 15:55
  */
 // @Configuration 相当于 xml 配置文件中的 <beans>
 @Configuration

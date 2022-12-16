@@ -6,7 +6,7 @@ import org.springframework.data.redis.connection.MessageListener;
  * 订阅者基类
  *
  * @author ljh
- * created on 2021/9/1 17:59
+ * @since 2021/9/1 17:59
  */
 public interface Subscriber extends MessageListener {
 

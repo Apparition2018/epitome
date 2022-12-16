@@ -16,7 +16,7 @@ import java.util.stream.IntStream;
  * 3.Array 效率更高
  *
  * @author ljh
- * created on 2020/10/16 16:23
+ * @since 2020/10/16 16:23
  */
 public class ArrayDemo extends Demo {
 

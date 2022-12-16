@@ -19,7 +19,7 @@ import java.util.concurrent.*;
  * Java 常见队列：https://pic4.zhimg.com/v2-c1f2992fb01c501a5dada75d0b27b0b3_r.jpg
  *
  * @author ljh
- * created on 2020/10/9 14:38
+ * @since 2020/10/9 14:38
  */
 public class QueueDemo extends Demo {
 

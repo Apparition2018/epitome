@@ -9,7 +9,7 @@ import retrofit2.http.Query;
  * RetrofitService
  *
  * @author ljh
- * created on 2021/8/3 17:57
+ * @since 2021/8/3 17:57
  */
 public interface RetrofitService {
     @GET("demo/get")

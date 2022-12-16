@@ -10,8 +10,8 @@ import java.io.File;
  * CharsetUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/CharsetUtil.html
  *
- * @author Arsenal
- * created on 2020/11/22 3:16
+ * @author ljh
+ * @since 2020/11/22 3:16
  */
 public class CharsetUtilDemo extends Demo {
 

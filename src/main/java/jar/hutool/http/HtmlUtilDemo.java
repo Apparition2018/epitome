@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
  * https://hutool.cn/docs/#/http/HTML%E5%B7%A5%E5%85%B7%E7%B1%BB-HtmlUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/HtmlUtil.html
  *
- * @author Arsenal
- * created on 2020/11/2 23:35
+ * @author ljh
+ * @since 2020/11/2 23:35
  */
 public class HtmlUtilDemo extends Demo {
 

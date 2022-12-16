@@ -13,7 +13,7 @@ import static l.demo.Demo.p;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/DynaBean.html
  *
  * @author ljh
- * created on 2020/11/9 15:55
+ * @since 2020/11/9 15:55
  */
 public class DynaBeanDemo {
 

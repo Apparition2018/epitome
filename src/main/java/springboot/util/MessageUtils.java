@@ -8,7 +8,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
  * RuoYi (MessageUtils)
  *
  * @author ljh
- * created on 2021/11/21 1:26
+ * @since 2021/11/21 1:26
  */
 public class MessageUtils {
 

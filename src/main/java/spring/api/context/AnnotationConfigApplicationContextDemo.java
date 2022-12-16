@@ -10,8 +10,8 @@ import spring.config.DemoConfig;
 /**
  * spring @Configuration
  *
- * @author Arsenal
- * created on 2020/11/29 16:45
+ * @author ljh
+ * @since 2020/11/29 16:45
  */
 public class AnnotationConfigApplicationContextDemo {
     AnnotationConfigApplicationContext applicationContext;

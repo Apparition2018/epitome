@@ -13,8 +13,8 @@ import java.util.Map;
 /**
  * Jedis
  *
- * @author Arsenal
- * created on 2021/4/30 22:49
+ * @author ljh
+ * @since 2021/4/30 22:49
  */
 public class JedisDemo extends Demo {
 

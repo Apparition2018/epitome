@@ -20,8 +20,8 @@ import java.util.Date;
 /**
  * 接收/处理/响应客户端 websocket 请求的核心业务处理类
  *
- * @author Arsenal
- * created on 2021/3/5 1:16
+ * @author ljh
+ * @since 2021/3/5 1:16
  */
 @Slf4j
 public class MyWebSocketHandler extends SimpleChannelInboundHandler<Object> {

@@ -11,7 +11,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 // 相当于 @Configuration, @EnableAutoConfiguration, @ComponentScan
 @SpringBootApplication

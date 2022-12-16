@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * 基于DFA敏感词查询的算法简析：https://www.cnblogs.com/naaoveGIS/archive/2016/10/14/5960352.html
  *
  * @author ljh
- * created on 2020/11/20 12:01
+ * @since 2020/11/20 12:01
  */
 public class DFADemo {
 

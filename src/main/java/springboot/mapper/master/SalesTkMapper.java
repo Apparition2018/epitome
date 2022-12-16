@@ -8,7 +8,7 @@ import springboot.mapper.MyMapper;
  * SalesTkMapper
  *
  * @author ljh
- * created on 2022/11/1 17:16
+ * @since 2022/11/1 17:16
  */
 @Component
 public interface SalesTkMapper extends MyMapper<Sales> {

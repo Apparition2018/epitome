@@ -20,7 +20,7 @@ import static l.demo.Demo.p;
  * ConcurrentSkipListSet 是线程安全的有序的集合，适用于高并发的场景
  *
  * @author ljh
- * created on 2020/9/4 17:14
+ * @since 2020/9/4 17:14
  */
 public class SetDemo {
 

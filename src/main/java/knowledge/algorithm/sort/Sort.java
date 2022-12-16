@@ -18,7 +18,7 @@ import java.util.Arrays;
  * https://www.cnblogs.com/end/archive/2011/10/22/2220995.html
  *
  * @author ljh
- * created on 2020/10/10 19:23
+ * @since 2020/10/10 19:23
  */
 public class Sort extends Demo {
 

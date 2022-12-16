@@ -15,7 +15,7 @@ import java.io.File;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/qrcode/QrCodeUtil.html
  *
  * @author ljh
- * created on 2020/11/5 14:53
+ * @since 2020/11/5 14:53
  */
 public class QrCodeUtilDemo extends Demo {
 

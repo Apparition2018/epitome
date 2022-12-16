@@ -8,7 +8,7 @@ import spring.service.GameService;
  * GameServiceConfig
  *
  * @author ljh
- * created on 2020/12/11 9:53
+ * @since 2020/12/11 9:53
  */
 @Configuration
 public class GameServiceConfig {

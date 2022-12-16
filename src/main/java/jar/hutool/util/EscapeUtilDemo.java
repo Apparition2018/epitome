@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/EscapeUtil.html
  *
  * @author ljh
- * created on 2020/11/19 9:31
+ * @since 2020/11/19 9:31
  */
 public class EscapeUtilDemo extends Demo {
     

@@ -11,7 +11,7 @@ import l.demo.Demo;
  * 缺点：如果有很多接口的实现类都需要这样的功能扩展，那就需要创建很多个代理类
  *
  * @author ljh
- * created on 2020/11/10 13:53
+ * @since 2020/11/10 13:53
  */
 public class StaticProxy extends Demo {
 

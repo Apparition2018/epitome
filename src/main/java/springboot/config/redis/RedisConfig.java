@@ -33,7 +33,7 @@ import java.util.List;
  * Spring Boot 缓存应用实践：https://mp.weixin.qq.com/s/45S-_XIWgkR6qYbFKll5RQ
  *
  * @author ljh
- * created on 2021/9/1 10:56R
+ * @since 2021/9/1 10:56R
  */
 @Configuration
 public class RedisConfig extends CachingConfigurerSupport {

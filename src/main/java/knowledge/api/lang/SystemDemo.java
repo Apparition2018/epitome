@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
  * static long	                nanoTime()                              返回最准确的可用系统计时器的当前值，以毫微秒为单位
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class SystemDemo extends Demo {
 

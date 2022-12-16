@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
  * Apache Curator：http://curator.apache.org/
  *
  * @author ljh
- * created on 2021/9/26 11:06
+ * @since 2021/9/26 11:06
  */
 public class CuratorDemo {
 

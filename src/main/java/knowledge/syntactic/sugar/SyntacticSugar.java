@@ -22,7 +22,7 @@ import static l.demo.Demo.p;
  * Java 语法糖详解：https://www.cnblogs.com/helloworld2048/p/10916453.html
  *
  * @author ljh
- * created on 2020/9/24 11:57
+ * @since 2020/9/24 11:57
  */
 public class SyntacticSugar {
 

@@ -12,18 +12,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Jsonp 的两个参数 jsonp 和 jsonpCallback：https://www.cnblogs.com/yeminglong/archive/2013/06/24/3152976.html
+ * <a href="https://www.cnblogs.com/yeminglong/archive/2013/06/24/3152976.html">Jsonp 的两个参数 jsonp 和 jsonpCallback</a>
+ * <p><a href="http://localhost:3333/front/other/jsonp/jsonp-demo.html">jsonp-demo.html</a>
  *
  * @author ljh
- * created on 2019/8/8 19:39
- * @link {http://localhost:3333/front/other/jsonp/jsonp-demo.html}
+ * @since 2019/8/8 19:39
  */
 @RestController
-@RequestMapping("/jsonp")
+@RequestMapping("jsonp")
 @Tag(name = "Jsonp")
 public class JsonpController {
 
-    @GetMapping("/json")
+    @GetMapping("json")
     @Operation(summary = "获取回调函数")
     public String callbackJson(HttpServletRequest request) {
         Map<String, String> map = new HashMap<>();

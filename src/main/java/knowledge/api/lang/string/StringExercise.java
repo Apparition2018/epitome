@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * @author ljh
- * created on 2020/9/7 1:28
+ * @since 2020/9/7 1:28
  */
 public class StringExercise {
 

@@ -19,8 +19,8 @@ import java.util.zip.ZipOutputStream;
  * https://docs.oracle.com/javase/8/docs/api/java/util/zip/ZipFile.html
  * https://docs.oracle.com/javase/8/docs/api/java/util/zip/ZipEntry.html
  *
- * @author Arsenal
- * created on 2020/11/8 16:44
+ * @author ljh
+ * @since 2020/11/8 16:44
  */
 public class ZipUtils extends Demo {
 

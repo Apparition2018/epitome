@@ -4,11 +4,13 @@ import java.io.Serializable;
 
 /**
  * 继承
+ * <pre>
  * 继承提供高代码的复用性
  * 子类拥有父类非 private 属性，方法
+ * </pre>
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class Extends {
 
@@ -34,10 +36,10 @@ public class Extends {
 
     /**
      * extends
-     * Java 不支持多继承，但支持多重继承
+     * <p>Java 不支持多继承，但支持多重继承
      * <p>
      * implements
-     * Java 支持多实现
+     * <p>Java 支持多实现
      */
     static class Son extends Parent implements Serializable, Comparable<Son> {
         private static final long serialVersionUID = -7624170257458741051L;
@@ -45,8 +47,7 @@ public class Extends {
 
         /**
          * 子类构造器
-         * <p>
-         * 如果父类的构造器带有参数，则必须在子类的构造器中显式地通过 super 关键字调用父类的构造器并配以适当的参数列表
+         * <p>如果父类的构造器带有参数，则必须在子类的构造器中显式地通过 super 关键字调用父类的构造器并配以适当的参数列表
          */
         Son(int i, String s) {
             // super: 指向当前对象的父类
@@ -58,5 +59,4 @@ public class Extends {
             return 0;
         }
     }
-
 }

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/RandomUtil.html
  *
  * @author ljh
- * created on 2020/11/19 16:18
+ * @since 2020/11/19 16:18
  */
 public class RandomUtilDemo extends Demo {
 

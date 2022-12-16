@@ -15,7 +15,7 @@ import java.awt.datatransfer.Transferable;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/swing/clipboard/ClipboardUtil.html
  *
  * @author ljh
- * created on 2020/11/19 12:00
+ * @since 2020/11/19 12:00
  */
 public class ClipboardUtilDemo extends Demo {
     

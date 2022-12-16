@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
  * 这样每次扩容的时候，分配一个数组空间并直接放到 List 中；而 ByteArrayOutputStream 需要重新分配空间并将数据复制到新数组中
  *
  * @author ljh
- * created on 2021/9/8 0:56
+ * @since 2021/9/8 0:56
  */
 public class FastByteArrayOutputStreamDemo extends Demo {
 

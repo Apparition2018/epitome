@@ -4,7 +4,7 @@ package knowledge.keyword.modifiers;
  * 非访问修饰符：static, final, abstract, synchronized, transient, volatile
  *
  * @author ljh
- * created on 2020/11/18 19:37
+ * @since 2020/11/18 19:37
  */
 public class NonAccessModifier {
 

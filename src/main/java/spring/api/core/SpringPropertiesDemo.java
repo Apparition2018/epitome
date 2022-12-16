@@ -8,7 +8,7 @@ import org.springframework.core.SpringProperties;
  * 获取 spring.properties 文件的属性值
  *
  * @author ljh
- * created on 2021/9/9 11:45
+ * @since 2021/9/9 11:45
  */
 public class SpringPropertiesDemo {
 

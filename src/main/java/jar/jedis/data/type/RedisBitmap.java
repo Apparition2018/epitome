@@ -12,7 +12,7 @@ import redis.clients.jedis.Jedis;
  * https://segmentfault.com/a/1190000008188655
  *
  * @author ljh
- * created on 2021/5/27 9:51
+ * @since 2021/5/27 9:51
  */
 public class RedisBitmap {
 

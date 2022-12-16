@@ -42,7 +42,7 @@ import java.io.File;
  * static String[]      removeDuplicateStrings(String[] array)                      数组去重
  *
  * @author ljh
- * created on 2020/12/9 14:26
+ * @since 2020/12/9 14:26
  */
 public class StringUtilsDemo extends Demo {
 

@@ -30,7 +30,7 @@ import java.util.*;
  * 设计模式之美：观察者模式（下）：如何实现一个异步非阻塞的EventBus框架？{@link jar.google.guava.EventBusDemo}
  *
  * @author ljh
- * created on 2020/9/26 2:51
+ * @since 2020/9/26 2:51
  */
 public class ObserverDemo {
 

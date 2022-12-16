@@ -22,7 +22,7 @@ import static l.demo.Demo.p;
  * https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html
  *
  * @author ljh
- * created on 2020/11/6 14:43
+ * @since 2020/11/6 14:43
  */
 public class IntStreamDemo {
 

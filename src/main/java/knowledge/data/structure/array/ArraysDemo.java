@@ -21,7 +21,7 @@ import java.util.List;
  * static Spliterator[.OfXXX]	spliterator(XXX[] array)                            返回 Spliterator
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class ArraysDemo extends Demo {
 

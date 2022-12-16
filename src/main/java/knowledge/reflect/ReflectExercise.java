@@ -14,7 +14,7 @@ import java.util.Map;
  * 通过反射实现 JavaBean 与 Map 对象互相转化：https://www.cnblogs.com/dreammyle/p/5610906.html
  *
  * @author ljh
- * created on 2020/11/11 19:18
+ * @since 2020/11/11 19:18
  */
 public class ReflectExercise extends Demo {
 

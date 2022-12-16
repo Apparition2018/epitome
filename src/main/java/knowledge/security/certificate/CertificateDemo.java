@@ -39,7 +39,7 @@ import java.util.Enumeration;
  * keytool -list -keystore C:\Users\Administrator\Desktop\ljh.pfx -rfc
  *
  * @author ljh
- * created on 2021/7/7 17:09
+ * @since 2021/7/7 17:09
  */
 public class CertificateDemo extends Demo {
 

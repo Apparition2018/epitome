@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
  * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/locks/ReentrantReadWriteLock.html
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class ReentrantReadWriteLockDemo {
     public static void main(String[] args) {

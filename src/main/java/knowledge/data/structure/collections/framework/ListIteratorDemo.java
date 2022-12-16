@@ -14,7 +14,7 @@ import java.util.ListIterator;
  * void	    remove()            从列表中移除由 next 或 previous 返回的最后一个元素（可选操作）
  *
  * @author ljh
- * created on 2020/10/16 15:22
+ * @since 2020/10/16 15:22
  */
 public class ListIteratorDemo extends Demo {
 

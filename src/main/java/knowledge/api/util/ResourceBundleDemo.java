@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
  * https://www.cnblogs.com/tonghun/p/7124245.html
  *
  * @author ljh
- * created on 2020/10/23 20:09
+ * @since 2020/10/23 20:09
  */
 public class ResourceBundleDemo {
 

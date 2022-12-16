@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
  * <p>
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/BooleanUtil.html
  *
- * @author Arsenal
- * created on 2020/11/22 3:08
+ * @author ljh
+ * @since 2020/11/22 3:08
  */
 public class BooleanUtilDemo {
 

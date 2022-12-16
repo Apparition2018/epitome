@@ -25,19 +25,19 @@ import java.lang.annotation.*;
 import java.util.*;
 
 /**
- * RuoYi 参数验证：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81
- * JSR-303 实现请求参数校验：https://blog.didispace.com/spring-boot-learning-21-2-3/
- * springboot 使用 hibernate validator 校验：https://www.cnblogs.com/mr-yang-localhost/p/7812038.html
- * Spring Boot 参数校验：https://www.cnblogs.com/cjsblog/p/8946768.html
- * Hibernate Validator：https://docs.jboss.org/hibernate/validator/4.2/reference/zh-CN/html_single
- * 参数验证 @Validated 和 @Valid 的区别：https://mp.weixin.qq.com/s/cNcXN7EgGOjAPC7KVFuKig
+ * <p><a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81">RuoYi 参数验证</a>
+ * <p><a href="https://blog.didispace.com/spring-boot-learning-21-2-3/">JSR-303 实现请求参数校验</a>
+ * <p><a href="https://www.cnblogs.com/mr-yang-localhost/p/7812038.html">springboot 使用 hibernate validator 校验</a>
+ * <p><a href="https://www.cnblogs.com/cjsblog/p/8946768.html">Spring Boot 参数校验</a>
+ * <p><a href="https://docs.jboss.org/hibernate/validator/4.2/reference/zh-CN/html_single">Hibernate Validator</a>
+ * <p><a href="https://mp.weixin.qq.com/s/cNcXN7EgGOjAPC7KVFuKig">参数验证 @Validated 和 @Valid 的区别</a>
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 @Validated
 @RestController
-@RequestMapping("/validation")
+@RequestMapping("validation")
 @Tag(name = "Validation")
 public class ValidationController {
 
@@ -48,7 +48,7 @@ public class ValidationController {
         this.messageSource = messageSource;
     }
 
-    @GetMapping("/bindingResult")
+    @GetMapping("bindingResult")
     @Operation(summary = "BindingResult")
     public String bindingResult(@Valid User user, BindingResult result) {
         if (result.hasErrors()) return this.validate(result);
@@ -71,33 +71,33 @@ public class ValidationController {
         return StringUtils.join(errorMsgMap.values().toArray(), ",");
     }
 
-    @GetMapping(value = "/bindException")
+    @GetMapping("bindException")
     @Operation(summary = "BindException")
     public Result<User> bindException(@Valid User user) {
         return Result.success(user);
     }
 
-    @PostMapping("/methodArgumentNotValidException")
+    @PostMapping("methodArgumentNotValidException")
     @Operation(summary = "MethodArgumentNotValidException")
     public Result<User> methodArgumentNotValidException(@Valid @RequestBody User user) {
         return Result.success(user);
     }
 
-    @GetMapping("/constraintViolationException")
+    @GetMapping("constraintViolationException")
     @Operation(summary = "ConstraintViolationException")
     public Result<String> constraintViolationException(@NotBlank(message = "用户名不能为空") String name,
                                                        @NotEmpty(message = "密码不能为空") String pwd) {
         return Result.success(name + ":" + pwd);
     }
 
-    @GetMapping("/missingServletRequestParameterException")
+    @GetMapping("missingServletRequestParameterException")
     @Operation(summary = "MissingServletRequestParameterException")
     public Result<String> missingServletRequestParameterException(@RequestParam String name,
                                                                   @RequestParam String pwd) {
         return Result.success(name + ":" + pwd);
     }
 
-    @GetMapping("/methodArgumentTypeMismatchException")
+    @GetMapping("methodArgumentTypeMismatchException")
     @Operation(summary = "MethodArgumentTypeMismatchException")
     public Result<Date> methodArgumentTypeMismatchException(Date date) {
         return Result.success(date);

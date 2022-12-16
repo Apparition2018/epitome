@@ -20,8 +20,8 @@ import java.nio.file.Paths;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/CaptchaUtil.html
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/generator/RandomGenerator.html
  *
- * @author Arsenal
- * created on 2020/11/21 17:37
+ * @author ljh
+ * @since 2020/11/21 17:37
  */
 public class CaptchaDemo extends Demo {
 

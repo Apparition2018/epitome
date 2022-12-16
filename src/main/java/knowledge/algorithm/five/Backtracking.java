@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
  * 回溯法
  *
  * @author ljh
- * created on 2020/9/29 10:32
+ * @since 2020/9/29 10:32
  */
 public class Backtracking {
     private static int N = 6;

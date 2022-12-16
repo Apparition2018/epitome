@@ -20,7 +20,7 @@ import static l.demo.Demo.pe;
  * Bean
  *
  * @author ljh
- * created on 2020/11/25 15:28
+ * @since 2020/11/25 15:28
  */
 @Data
 @Accessors(chain = true)

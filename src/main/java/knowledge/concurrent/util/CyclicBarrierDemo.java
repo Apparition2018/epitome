@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * void	        reset()                             将屏障重置为其初始状态
  *
  * @author ljh
- * created on 2020/11/17 19:09
+ * @since 2020/11/17 19:09
  */
 public class CyclicBarrierDemo extends Demo {
 

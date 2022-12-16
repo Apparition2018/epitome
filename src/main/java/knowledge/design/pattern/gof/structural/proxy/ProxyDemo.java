@@ -34,8 +34,8 @@ import java.util.concurrent.TimeUnit;
  * Tom：https://gupaoedu-tom.blog.csdn.net/article/details/120984573
  * JavaGuide：https://github.com/Snailclimb/JavaGuide/blob/main/docs/java/basis/proxy.md
  *
- * @author Arsenal
- * created on 2020/9/26 2:51
+ * @author ljh
+ * @since 2020/9/26 2:51
  */
 public class ProxyDemo {
 

@@ -20,7 +20,7 @@ import java.util.stream.IntStream;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/DateUtil.html
  *
  * @author ljh
- * created on 2020/10/26 22:16
+ * @since 2020/10/26 22:16
  */
 public class DateUtilDemo extends Demo {
     private static final String DATE_STR = "2008-08-08";

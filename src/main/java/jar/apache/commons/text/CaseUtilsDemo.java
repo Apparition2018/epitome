@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
  * https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/CaseUtils.html
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class CaseUtilsDemo {
 

@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * RedisTemplate
  *
  * @author ljh
- * created on 2021/5/26 15:05
+ * @since 2021/5/26 15:05
  */
 @SpringBootTest(classes = EpitomeApplication.class)
 public class RedisTemplateDemo extends Demo {

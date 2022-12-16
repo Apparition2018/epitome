@@ -24,11 +24,11 @@ import java.util.concurrent.TimeUnit;
  * DrawController
  *
  * @author ljh
- * created on 2022/7/4 0:28
+ * @since 2022/7/4 0:28
  */
 @Slf4j
 @RestController
-@RequestMapping("/draw")
+@RequestMapping("draw")
 @Tag(name = "Draw")
 public class DrawController {
 
@@ -54,13 +54,12 @@ public class DrawController {
     }
 
     /**
-     * 抽奖测试
-     * http://localhost:3333/draw/test?userId=1
+     * <a href="http://localhost:3333/draw/test?userId=1">抽奖测试</a>
      *
      * @param userId 用户ID
      * @return 奖品ID，0表示不中奖
      */
-    @GetMapping("/test")
+    @GetMapping("test")
     @Transactional(rollbackFor = Exception.class)
     public Integer test(int userId) throws InterruptedException, JsonProcessingException {
         // 抽奖活动缓存

@@ -25,7 +25,7 @@ import java.util.Locale;
  * void         setTimeZone(TimeZone zone)          为此 DateFormat 对象的日历设置时区
  *
  * @author ljh
- * created on 2020/9/3 10:39
+ * @since 2020/9/3 10:39
  */
 public class DateFormatDemo extends Demo {
 

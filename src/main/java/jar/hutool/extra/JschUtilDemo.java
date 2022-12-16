@@ -12,7 +12,7 @@ import l.demo.Demo;
  * JSch-用java实现服务器远程操作：https://segmentfault.com/a/1190000019967309
  *
  * @author ljh
- * created on 2020/11/20 17:28
+ * @since 2020/11/20 17:28
  */
 public class JschUtilDemo extends Demo {
 

@@ -46,7 +46,7 @@ import java.util.List;
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/FileUtil.html
  *
  * @author ljh
- * created on 2020/10/29 17:46
+ * @since 2020/10/29 17:46
  */
 public class FileUtilDemo extends Demo {
 

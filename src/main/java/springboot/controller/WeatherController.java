@@ -23,11 +23,11 @@ import java.util.Objects;
  * jquery-pjax 和 freemarker 的使用
  *
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 @Slf4j
 @Controller
-@RequestMapping("/weather")
+@RequestMapping("weather")
 @Tag(name = "jQuery-pjax")
 public class WeatherController {
 
@@ -37,7 +37,7 @@ public class WeatherController {
         this.objectMapper = objectMapper;
     }
 
-    @GetMapping(value = "/{city}")
+    @GetMapping("{city}")
     @Operation(summary = "获取城市天气")
     public String city(@PathVariable String city, HttpServletRequest request, Model model) {
         // pjax 请求
@@ -52,7 +52,7 @@ public class WeatherController {
         return "weather";
     }
 
-    @GetMapping(value = "/json/{city}")
+    @GetMapping("json/{city}")
     @ResponseBody
     @Operation(summary = "获取城市天气(pjax)")
     public String cityJson(@PathVariable String city) {

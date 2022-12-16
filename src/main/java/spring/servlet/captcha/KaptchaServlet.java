@@ -16,8 +16,8 @@ import java.util.Properties;
 /**
  * KaptchaServlet
  *
- * @author Arsenal
- * created on 2019/12/24 0:23
+ * @author ljh
+ * @since 2019/12/24 0:23
  */
 public class KaptchaServlet extends HttpServlet {
 

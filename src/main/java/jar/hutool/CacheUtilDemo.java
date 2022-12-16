@@ -21,8 +21,8 @@ import java.util.concurrent.TimeUnit;
  * https://hutool.cn/docs/#/cache/CacheUtil
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/cache/CacheUtil.html
  *
- * @author Arsenal
- * created on 2020/11/20 1:46
+ * @author ljh
+ * @since 2020/11/20 1:46
  */
 public class CacheUtilDemo extends Demo {
 

@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
  * SignAlgorithm: MD5withRSA, SHA256withRSA, SHA1withDSA, SHA256withECDSA ......
  *
  * @author ljh
- * created on 2021/7/5 10:51
+ * @since 2021/7/5 10:51
  */
 public class SignDemo extends Demo {
 

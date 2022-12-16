@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  * @author ljh
- * created on 2019/8/8 19:39
+ * @since 2019/8/8 19:39
  */
 public class DateDemo2 extends Demo {
 
