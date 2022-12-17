@@ -12,8 +12,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 /**
- * Configuration2
- * https://commons.apache.org/proper/commons-configuration/userguide/user_guide.html
+ * <a href="https://commons.apache.org/proper/commons-configuration/userguide/user_guide.html">Configuration2</a>
  *
  * @author ljh
  * @since 2020/11/15 1:06
@@ -26,7 +25,7 @@ public class Configuration2Demo extends Demo {
 
         // .properties
         // https://blog.csdn.net/wanghantong/article/details/79072474
-        PropertiesConfiguration propertiesConfiguration = configs.properties(new File(JDBC_PROP_FILENAME));
+        PropertiesConfiguration propertiesConfiguration = configs.properties(new File(JDBC_PROPS_FILENAME));
         p(propertiesConfiguration.getString("jdbc.driver"));
 
         // .xml

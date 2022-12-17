@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * DynaBean
  * LazyDynaBean
  * <p>
- * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/package-summary.html
+ * <a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/package-summary.html">beanutils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

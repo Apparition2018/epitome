@@ -14,8 +14,7 @@ import java.util.Enumeration;
 import java.util.Map;
 
 /**
- * BeanUtils
- * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/BeanUtils.html
+ * <a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/BeanUtils.html">BeanUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -36,11 +35,11 @@ public class BeanUtilsDemo extends Demo {
 
         // 注册本地日期转换器
         ConvertUtils.register(new DateLocaleConverter(), Date.class);
-        
+
         // Map → JavaBean
         BeanUtils.populate(user, map);
         p(user); // User{birthString='2000-01-01'}
-        
+
         // 设置属性值
         BeanUtils.setProperty(user, "birth", "2001-01-01");
         p(user); // User{birthString='2001-01-01'}
@@ -72,5 +71,4 @@ public class BeanUtilsDemo extends Demo {
 
         return (T) obj;
     }
-
 }

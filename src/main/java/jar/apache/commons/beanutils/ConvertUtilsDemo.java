@@ -12,10 +12,11 @@ import java.util.Date;
 import static l.demo.Demo.p;
 
 /**
- * ConvertUtils
+ * <a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/ConvertUtils.html">ConvertUtils</a>
+ * <pre>
  * String   →   T
  * String[] →   T[]
- * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/ConvertUtils.html
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/14 21:54

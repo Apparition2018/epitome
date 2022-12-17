@@ -7,13 +7,16 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 /**
- * Properties
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Properties.html">Properties</a>
+ * <pre>
  * Properties 继承 Hashtable。
  * Properties 类表示了一个持久的属性集。Properties 可保存在流中或从流中加载。属性列表中每个键及其对应值都是一个字符串。
- * http://www.runoob.com/java/java-properties-class.html
- * https://www.cnblogs.com/tonghun/p/7124245.html
- * <p>
+ * </pre>
+ * Method：
+ * <pre>
  * void	    list(PrintStream out/PrintStream out)       将属性列表输出到指定的输出流
+ * </pre>
+ * 参考：<a href="https://www.cnblogs.com/tonghun/p/7124245.html">Properties vs ResourceBundle</a>
  *
  * @author ljh
  * @since 2020/9/7 19:43
@@ -26,7 +29,7 @@ public class PropertiesDemo extends Demo {
 
         // void	            load(InputStream inStream)      从输入流中读取属性列表（键和元素对）
         // void	            load(Reader reader)             按简单的面向行的格式从输入字符流中读取属性列表（键和元素对）
-        props.load(ClassLoader.getSystemResourceAsStream(JDBC_PROP_FILENAME));
+        props.load(ClassLoader.getSystemResourceAsStream(JDBC_PROPS_FILENAME));
 
         // Enumeration<?>	propertyNames()                 返回属性列表中所有键的枚举，如果在主属性列表中未找到同名的键，则包括默认属性列表中不同的键
         // Set<String>	    stringPropertyNames()           返回此属性列表中的键集，其中该键及其对应值是字符串，如果在主属性列表中未找到同名的键，则还包括默认属性列表中不同的键
@@ -46,5 +49,4 @@ public class PropertiesDemo extends Demo {
         // 以适合使用 load(Reader) 方法的格式，将此 Properties 表中的属性列表（键和元素对）写入输出字符
         // props.store(new FileOutputStream(JDBC_PROP_FILENAME), "testProperties");
     }
-
 }

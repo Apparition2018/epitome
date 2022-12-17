@@ -20,7 +20,7 @@ public class DBUtil extends Demo {
 
     static {
         try {
-            Properties props = PropertiesUtil.loadProps(JDBC_PROP_FILENAME);
+            Properties props = PropertiesUtil.loadProps(JDBC_PROPS_FILENAME);
             dataSource = new BasicDataSource();
             // Class.forName()
             dataSource.setDriverClassName(props.getProperty("jdbc.driver"));

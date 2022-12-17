@@ -8,8 +8,7 @@ import org.apache.commons.beanutils.Converter;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * ConvertUtilsBean
- * http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/ConvertUtilsBean.html
+ * <a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/ConvertUtilsBean.html">ConvertUtilsBean</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -38,6 +37,5 @@ public class ConvertUtilsBeanDemo {
         // 输出结果
         System.out.println(beanUtils.getProperty(person, "name")); // prefix-张三
     }
-
 }
 

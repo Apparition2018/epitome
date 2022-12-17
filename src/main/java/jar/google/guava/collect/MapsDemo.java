@@ -14,10 +14,11 @@ import java.util.Objects;
 
 /**
  * Maps
- * <p>
+ * <p>Method：
+ * <pre>
  * static ConcurrentMap<K, V>   newConcurrentMap()                                  创建 ConcurrentMap
  * static TreeMap<K, V>         newTreeMap([SortedMap<K, ? extends V> map])         创建 TreeMap
- * static TreeMap<K, V>         newTreeMap(Comparator<C> comparator)      创建 TreeMap，根据 Comparator
+ * static TreeMap<K, V>         newTreeMap(Comparator<C> comparator)                创建 TreeMap，根据 Comparator
  * static EnumMap<K, V>         newEnumMap(Map<K, ? extends V>/Class<K>)            创建 EnumMap
  * static IdentityHashMap<K, V> newIdentityHashMap()                                创建 IdentityHashMap
  * <p>
@@ -26,10 +27,13 @@ import java.util.Objects;
  * static XXXMap<K, V>          synchronizedXXXMap(XXXMap<K, V> map)                XXXMap → synchronizedXXXMap
  * static Entry<K, V>           immutableEntry(K key, V value)  key + value → Entry
  * static Converter<A, B>       asConverter(BiMap<A, B> bimap)                      BiMap → Converter
- * <p>
- * http://www.ibloger.net/article/3314.html
- * https://github.com/google/guava/wiki/CollectionUtilitiesExplained#maps
- * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Maps.html
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="http://www.ibloger.net/article/3314.html">Guava Maps</a>
+ * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#maps">Guava Wiki - Maps</a>
+ * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Maps.html">Guava Maps API</a>
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -52,8 +56,9 @@ public class MapsDemo extends Demo {
 
     /**
      * 函数式接口相关
-     * <p>
-     * static <K, V1, V2> Map<K, V2>    transformEntries(Map<K, V1> fromMap, Maps.EntryTransformer<? s K, ? s V1, V2> transformer)  ???
+     * <pre>
+     * static <K, V1, V2> Map<K, V2>    transformEntries(Map<K, V1> fromMap, Maps.EntryTransformer<? s K, ? s V1, V2> transformer)
+     * </pre>
      */
     @Test
     public void testFunctionalInterface() {
@@ -82,7 +87,6 @@ public class MapsDemo extends Demo {
 
         // static ImmutableMap<String,String>	fromProperties(Properties properties)
         // Properties  →  ImmutableMap
-        p(Maps.fromProperties(PropertiesUtil.loadProps(JDBC_PROP_FILENAME)));
+        p(Maps.fromProperties(PropertiesUtil.loadProps(JDBC_PROPS_FILENAME)));
     }
-
 }

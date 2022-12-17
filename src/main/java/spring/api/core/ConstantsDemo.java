@@ -5,7 +5,7 @@ import org.springframework.core.Constants;
 
 /**
  * Constants
- * 解析指定类的 public static final 属性
+ * <p>解析指定类的 public static final 属性
  *
  * @author ljh
  * @since 2021/9/9 11:48
