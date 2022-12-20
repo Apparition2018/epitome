@@ -5,8 +5,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
 
 /**
- * NumberUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/NumberUtils.html
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/NumberUtils.html">NumberUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -51,7 +50,7 @@ public class NumberUtilsDemo extends Demo {
 
     /**
      * static boolean	isCreatable(String str)m
-     * 判断字符串是否为有效的 Java Number
+     * <p>判断字符串是否为有效的 Java Number
      */
     @Test
     public void isCreatable() {
@@ -60,7 +59,7 @@ public class NumberUtilsDemo extends Demo {
 
     /**
      * static boolean	isDigits(String str)
-     * 判断字符串是否只包含数字字符
+     * <p>判断字符串是否只包含数字字符
      */
     @Test
     public void isDigits() {
@@ -71,7 +70,7 @@ public class NumberUtilsDemo extends Demo {
 
     /**
      * static boolean	isParsable(String str)
-     * 判断字符串是否可以转换成数字
+     * <p>判断字符串是否可以转换成数字
      */
     @Test
     public void isParsable() {
@@ -80,6 +79,7 @@ public class NumberUtilsDemo extends Demo {
 
     /**
      * static XXX	max(XXX... array)
+     * <p>
      * static XXX	min(XXX... array)
      */
     @Test

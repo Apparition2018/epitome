@@ -16,8 +16,7 @@ import java.nio.file.Paths;
 import java.util.Objects;
 
 /**
- * SerializationUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/SerializationUtils.html
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/SerializationUtils.html">SerializationUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -33,9 +32,11 @@ public class SerializationUtilsDemo extends Demo {
 
     /**
      * 浅克隆
-     * 1.基本类型：如果变量是基本类型，则拷贝其值；
-     * 2.对象：如果变量是一个实例对象，则拷贝其地址引用，也就是说此时拷贝出的对象与原有对象共享该实例变量，不受访问权限的控制；
-     * 3.String：这个比较特殊，拷贝的也是一个地址，是个引用，但是在修改时，它会从字符串池(String pool)中重新生成新的字符串，原有的字符串对象保持不变，在此处我们可以认为String是一个基本类型；
+     * <pre>
+     * 1 基本类型：如果变量是基本类型，则拷贝其值；
+     * 2 对象：如果变量是一个实例对象，则拷贝其地址引用，也就是说此时拷贝出的对象与原有对象共享该实例变量，不受访问权限的控制；
+     * 3 String：这个比较特殊，拷贝的也是一个地址，是个引用，但是在修改时，它会从字符串池(String pool)中重新生成新的字符串，原有的字符串对象保持不变，在此处我们可以认为String是一个基本类型；
+     * </pre>
      */
     @Test
     public void testShallowDeepClone() {

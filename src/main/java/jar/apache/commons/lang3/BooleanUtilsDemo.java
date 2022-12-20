@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * BooleanUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/BooleanUtils.html
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/BooleanUtils.html">BooleanUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

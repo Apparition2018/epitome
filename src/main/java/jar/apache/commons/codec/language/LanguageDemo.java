@@ -9,10 +9,11 @@ import static l.demo.Demo.p;
 
 /**
  * Language
- * <p>
- * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/Metaphone.html
- * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/Soundex.html
- * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/RefinedSoundex.html
+ * <pre>
+ * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/Metaphone.html">Metaphone</a>
+ * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/Soundex.html">Soundex</a>
+ * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/RefinedSoundex.html">RefinedSoundex</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/15 0:28

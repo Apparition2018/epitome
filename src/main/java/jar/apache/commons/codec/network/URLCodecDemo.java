@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.UnsupportedEncodingException;
 
 /**
- * URLCodec
- * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/net/URLCodec.html
+ * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/net/URLCodec.html">URLCodec</a>
  *
  * @author ljh
  * @since 2020/11/15 0:18

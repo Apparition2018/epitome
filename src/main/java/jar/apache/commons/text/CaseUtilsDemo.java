@@ -4,8 +4,7 @@ import org.apache.commons.text.CaseUtils;
 import org.junit.jupiter.api.Test;
 
 /**
- * CaseUtils
- * https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/CaseUtils.html
+ * <a href="https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/CaseUtils.html">CaseUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

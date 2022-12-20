@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * WordUtils
- * https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/WordUtils.html
+ * <a href="https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/WordUtils.html">WordUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -16,7 +15,7 @@ public class WordUtilsDemo {
 
     /**
      * static String	abbreviate(String str, int lower, int upper, String appendToEnd)
-     * 缩写
+     * <p>缩写
      */
     @Test
     public void abbreviate() {
@@ -28,12 +27,10 @@ public class WordUtilsDemo {
     }
 
     /**
-     * static String	capitalize(String str[, char... delimiters])
-     * static String	capitalizeFully(String str[, char... delimiters])
-     * 首字母大写
-     * <p>
-     * static String	uncapitalize(String str, char... delimiters)
-     * 取消首字母大写
+     * static String	capitalize|capitalizeFully(String str[, char... delimiters])
+     * <p>首字母大写
+     * <p>static String	uncapitalize(String str, char... delimiters)
+     * <p>取消首字母大写
      */
     @Test
     public void capitalize() {
@@ -48,7 +45,7 @@ public class WordUtilsDemo {
 
     /**
      * static String	swapCase(String str)
-     * 转换大小写
+     * <p>转换大小写
      */
     @Test
     public void swapCase() {
@@ -57,7 +54,7 @@ public class WordUtilsDemo {
 
     /**
      * static boolean	containsAllWords(CharSequence word, CharSequence... words)
-     * 判断是否包含单词
+     * <p>判断是否包含单词
      */
     @Test
     public void containsAllWords() {
@@ -67,7 +64,7 @@ public class WordUtilsDemo {
 
     /**
      * static String	initials(String str[, char... delimiters])
-     * 提取首字母
+     * <p>提取首字母
      */
     @Test
     public void initials() {
@@ -76,7 +73,7 @@ public class WordUtilsDemo {
 
     /**
      * static String	wrap(String str, int wrapLength[, String newLineStr, boolean wrapLongWords, String wrapOn])
-     * 换行
+     * <p>换行
      */
     @Test
     public void wrap() {
@@ -87,5 +84,4 @@ public class WordUtilsDemo {
         p(WordUtils.wrap(str, 20, " <br /> ", true));
         // Click here to jump <br /> to the commons <br /> website - <br /> http://commons.apach <br /> e.org
     }
-
 }

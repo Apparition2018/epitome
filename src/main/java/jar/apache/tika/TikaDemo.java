@@ -12,9 +12,11 @@ import java.nio.file.Paths;
 
 /**
  * Tika
- * <p>
- * Apache Tika容抽取工具集合：https://www.oschina.net/p/tika
- * apache Tika介绍及使用：https://blog.csdn.net/weixin_42184707/article/details/91045592
+ * <p>参考：
+ * <pre>
+ * <a href="https://www.oschina.net/p/tika">Apache Tika 内容抽取工具集合</a>
+ * <a href="https://blog.csdn.net/weixin_42184707/article/details/91045592">Apache Tika 介绍及使用</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/10/25 1:06
@@ -34,5 +36,4 @@ public class TikaDemo extends Demo {
         AutoDetectReader autoDetectReader = new AutoDetectReader(Files.newInputStream(Paths.get(DEMO_FILE_PATH)));
         p(autoDetectReader.getCharset().name()); // UTF-8
     }
-
 }

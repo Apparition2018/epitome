@@ -16,29 +16,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * IOUtils
- * <p>
- * static InputStream	    toInputStream(CharSequence/String input, Charset/String encoding)
+ * <a href="http://commons.apache.org/proper/commons-io/javadocs/api-release/org/apache/commons/io/IOUtils.html">IOUtils</a>
+ * <pre>
+ * static InputStream       toInputStream(CharSequence/String input, Charset/String encoding)
  * static InputStream       toBufferedInputStream(InputStream input[, int size])
- * static BufferedReader	toBufferedReader(Reader reader[, int size])
- * static byte[]	        toByteArray(InputStream input[, int/long size])
- * static byte[]	        toByteArray(Reader input, Charset/String encoding)
- * static byte[]	        toByteArray(String input)
- * static byte[]	        toByteArray(URI uri)
- * static byte[]	        toByteArray(URL url)
- * static byte[]	        toByteArray(URLConnection urlConn)
- * static char[]	        toCharArray(InputStream is, Charset/String encoding)
- * static String	        toString(byte[] input, String encoding)
- * static String	        toString(InputStream input, Charset encoding)
- * static String	        toString(Reader input)
- * static String	        toString(URI uri, Charset/String encoding)
- * static String	        toString(URL url, Charset/String encoding)
- * <p>
- * static long	            skip(XXX input, long toSkip)                跳过指定长度的流
- * static void	            skipFully(XXX input, long toSkip)           跳过指定长度的流，如果不够跳会抛出异常
- * <p>
- * https://www.cnblogs.com/xing901022/p/5978989.html
- * http://commons.apache.org/proper/commons-io/javadocs/api-release/org/apache/commons/io/IOUtils.html
+ * static BufferedReader    toBufferedReader(Reader reader[, int size])
+ * static byte[]            toByteArray(InputStream input[, int/long size])
+ * static byte[]            toByteArray(Reader input, Charset/String encoding)
+ * static byte[]            toByteArray(String input)
+ * static byte[]            toByteArray(URI uri)
+ * static byte[]            toByteArray(URL url)
+ * static byte[]            toByteArray(URLConnection urlConn)
+ * static char[]            toCharArray(InputStream is, Charset/String encoding)
+ * static String            toString(byte[] input, String encoding)
+ * static String            toString(InputStream input, Charset encoding)
+ * static String            toString(Reader input)
+ * static String            toString(URI uri, Charset/String encoding)
+ * static String            toString(URL url, Charset/String encoding)
+ *
+ * static long              skip(XXX input, long toSkip)                跳过指定长度的流
+ * static void              skipFully(XXX input, long toSkip)           跳过指定长度的流，如果不够跳会抛出异常
+ * </pre>
+ * 参考：<a href=" * https://www.cnblogs.com/xing901022/p/5978989.html">IOUtils 总结</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -63,9 +62,11 @@ public class IOUtilsDemo extends Demo {
     }
 
     /**
-     * static boolean	        contentEquals(InputStream input1, InputStream input2)
-     * static boolean	        contentEquals(Reader input1, Reader input2)
-     * static boolean	        contentEqualsIgnoreEOL(Reader input1, Reader input2)
+     * <pre>
+     * static boolean   contentEquals(InputStream input1, InputStream input2)
+     * static boolean   contentEquals(Reader input1, Reader input2)
+     * static boolean   contentEqualsIgnoreEOL(Reader input1, Reader input2)
+     * </pre>
      * 对比两个流是否相等[，忽略换行符]
      */
     @Test
@@ -79,14 +80,15 @@ public class IOUtilsDemo extends Demo {
     }
 
     /**
-     * static long/int          copy(InputStream input, OutputStream output[, int bufferSize])
-     * static void              copy(InputStream input, Writer output[, Charset/String inputEncoding])
-     * static int               copy(Reader input, Writer output)
-     * static void              copy(Reader input, OutputStream output[, Charset/String inputEncoding])
-     * <p>
-     * static long              copyLarge(InputStream input, OutputStream output[, long inputOffset, long length, byte[] buffer])
-     * static long              copyLarge(Reader input, Writer output[, long inputOffset, long length, char[] buffer])
-     * <p>
+     * <pre>
+     * static long/int      copy(InputStream input, OutputStream output[, int bufferSize])
+     * static void          copy(InputStream input, Writer output[, Charset/String inputEncoding])
+     * static int           copy(Reader input, Writer output)
+     * static void          copy(Reader input, OutputStream output[, Charset/String inputEncoding])
+     *
+     * static long          copyLarge(InputStream input, OutputStream output[, long inputOffset, long length, byte[] buffer])
+     * static long          copyLarge(Reader input, Writer output[, long inputOffset, long length, char[] buffer])
+     * </pre>
      * 将字节从输入流，复制到输出流
      */
     @Test
@@ -98,8 +100,10 @@ public class IOUtilsDemo extends Demo {
     }
 
     /**
+     * <pre>
      * static LineIterator	    lineIterator(InputStream input, Charset/String encoding)
      * static LineIterator	    lineIterator(Reader reader)
+     * </pre>
      * 读取流返回迭代器
      */
     @Test
@@ -113,10 +117,11 @@ public class IOUtilsDemo extends Demo {
     }
 
     /**
-     * static void              write(byte[]/char[] char, XXX output, Charset/String encoding)
-     * static void              write(CharSequence/String data, XXX output, Charset/String encoding)
+     * <pre>
+     * static void      write(byte[]/char[] char, XXX output, Charset/String encoding)
+     * static void      write(CharSequence/String data, XXX output, Charset/String encoding)
+     * </pre>
      * 把数据写入到输出流
-     * <p>
      */
     @Test
     public void write() throws IOException {
@@ -125,8 +130,10 @@ public class IOUtilsDemo extends Demo {
     }
 
     /**
-     * static void              writeLines(Collection<?> lines, String lineEnding, OutputStream output, Charset/String encoding)
-     * static void              writeLines(Collection<?> lines, String lineEnding, Writer writer)
+     * <pre>
+     * static void      writeLines(Collection<?> lines, String lineEnding, OutputStream output, Charset/String encoding)
+     * static void      writeLines(Collection<?> lines, String lineEnding, Writer writer)
+     * </pre>
      * 把 List<String> 数据写入到输出流
      */
     @Test
@@ -142,15 +149,18 @@ public class IOUtilsDemo extends Demo {
     }
 
     /**
-     * static int               read(InputStream input, byte[] buffer[, int offset, int length])
-     * static int               read(ReadableByteChannel input, ByteBuffer buffer)
-     * static int               read(Reader input, char[] buffer[, int offset, int length])
+     * <pre>
+     * static int       read(InputStream input, byte[] buffer[, int offset, int length])
+     * static int       read(ReadableByteChannel input, ByteBuffer buffer)
+     * static int       read(Reader input, char[] buffer[, int offset, int length])
+     * </pre>
      * 从输入流中读取字节 （通常返回输入流的字节数组长度）
-     * <p>
+     * <pre>
      * static void      readFully(InputStream input, byte[] buffer[, int offset, int length])
      * static byte[]    readFully(InputStream input, int length)
      * static void      readFully(ReadableByteChannel input, ByteBuffer buffer)
      * static void      readFully(Reader input, char[] buffer[, int offset, int length])
+     * </pre>
      * 同上，如果不够读会抛出异常
      */
     @Test
@@ -163,8 +173,10 @@ public class IOUtilsDemo extends Demo {
     }
 
     /**
+     * <pre>
      * static List<String>      readLines(InputStream input, Charset/String encoding)
      * static List<String>      readLines(Reader input)
+     * </pre>
      * 获得输入流的内容放入一个 List<String> 类型的容器，每一行为这个容器的一个入口
      */
     @Test

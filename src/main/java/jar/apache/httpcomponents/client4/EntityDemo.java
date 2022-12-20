@@ -18,13 +18,13 @@ import static l.demo.Demo.p;
 
 /**
  * 实体可以在一些请求和响应中找到，使用了实体的请求被称为封闭实体请求。HTTP 规范定义了两种封闭实体的方法：POST 和 PUT。
- * 响应通常期望包含一个内容实体。这个规则也有特例，比如 HEAD 方法的响应和 204 No Content，304 Not Modified 和 205 Reset Content 响应。
- * <p>
- * HttpClient 根据其内容出自何处区分三种类型的实体：
- * 1.streamed 流式：内容从流中获得，或者在运行中产生。特别是这种分类包含从 HTTP 响应中获取的实体。流式实体是不可重复生成的。
- * 2.self-contained 自我包含式：内容在内存中或通过独立的连接或其它实体中获得。自我包含式的实体是可以重复生成的。这种类型的实体会经常用于封闭 HTTP 请求的实体。
- * 3.wrapping 包装式：内容从另外一个实体中获得。
- * <p>
+ * <p>响应通常期望包含一个内容实体。这个规则也有特例，比如 HEAD 方法的响应和 204 No Content，304 Not Modified 和 205 Reset Content 响应。
+ * <p>HttpClient 根据其内容出自何处区分三种类型的实体：
+ * <pre>
+ * 1 streamed 流式：内容从流中获得，或者在运行中产生。特别是这种分类包含从 HTTP 响应中获取的实体。流式实体是不可重复生成的。
+ * 2 self-contained 自我包含式：内容在内存中或通过独立的连接或其它实体中获得。自我包含式的实体是可以重复生成的。这种类型的实体会经常用于封闭 HTTP 请求的实体。
+ * 3 wrapping 包装式：内容从另外一个实体中获得。
+ * </pre>
  * https://hc.apache.org/httpcomponents-client-4.5.x/current/tutorial/html/fundamentals.html#d5e95
  *
  * @author ljh
@@ -54,5 +54,4 @@ public class EntityDemo {
             entity = new BufferedHttpEntity(entity);
         }
     }
-
 }

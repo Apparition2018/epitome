@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Curator Cache：https://curator.apache.org/curator-recipes/curator-cache.html
+ * <a href="https://curator.apache.org/curator-recipes/curator-cache.html">Curator Cache</a>
  *
  * @author ljh
  * @since 2021/9/27 9:16
@@ -21,7 +21,7 @@ public class CuratorCacheDemo {
     private static final String PATH = "/cache";
 
     /**
-     * CuratorCache Example：https://github.com/apache/curator/blob/master/curator-examples/src/main/java/cache/CuratorCacheExample.java
+     * <a href="https://github.com/apache/curator/blob/master/curator-examples/src/main/java/cache/CuratorCacheExample.java">CuratorCache Example</a>
      */
     public static void main(String[] args) throws Exception {
         ThreadLocalRandom random = ThreadLocalRandom.current();

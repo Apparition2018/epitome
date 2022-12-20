@@ -7,8 +7,7 @@ import org.apache.commons.lang3.ClassUtils;
 import java.util.Collections;
 
 /**
- * ClassUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ClassUtils.html
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ClassUtils.html">ClassUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

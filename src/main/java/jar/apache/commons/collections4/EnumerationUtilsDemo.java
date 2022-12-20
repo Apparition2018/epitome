@@ -10,8 +10,7 @@ import java.util.Vector;
 import static l.demo.Demo.p;
 
 /**
- * EnumerationUtils
- * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/EnumerationUtils.html
+ * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/EnumerationUtils.html">EnumerationUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -49,7 +48,5 @@ public class EnumerationUtilsDemo {
         p(EnumerationUtils.get(e, 0)); // Friday
         p(EnumerationUtils.get(e, 0)); // Saturday
         p(EnumerationUtils.get(e, 0)); // IndexOutOfBoundsException: Entry does not exist: 0
-
     }
-
 }

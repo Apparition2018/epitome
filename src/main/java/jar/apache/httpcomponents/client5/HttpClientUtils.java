@@ -40,10 +40,12 @@ import java.util.stream.Collectors;
 
 /**
  * HttpClientUtils
- * HttpClient Overview：https://hc.apache.org/httpcomponents-client-5.1.x/index.html
- * HttpClient 工具详解：http://www.mydlq.club/article/68/
- * HttpClient 设置 cookies：https://www.cnblogs.com/lixianshengfitting/p/13840123.html
- * 七大主流的 HttpClient 比较：https://blog.csdn.net/citywu123/article/details/109456035
+ * <pre>
+ * <a href="https://hc.apache.org/httpcomponents-client-5.1.x/index.html">HttpClient</a>
+ * <a href="http://www.mydlq.club/article/68/">HttpClient 工具详解</a>
+ * <a href="https://www.cnblogs.com/lixianshengfitting/p/13840123.html">HttpClient 设置 cookies</a>
+ * <a href="https://blog.csdn.net/citywu123/article/details/109456035">七大 Http 客户端比较</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/12 21:35

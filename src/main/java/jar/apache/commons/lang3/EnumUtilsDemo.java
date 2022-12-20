@@ -5,8 +5,7 @@ import org.apache.commons.lang3.EnumUtils;
 import static l.demo.Demo.p;
 
 /**
- * EnumUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/EnumUtils.html
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/EnumUtils.html">EnumUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

@@ -16,12 +16,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Curator 分布式锁
- * <p>
- * InterProcessMutex            http://curator.apache.org/curator-recipes/shared-reentrant-lock.html            可重入排它锁
- * InterProcessSemaphoreMutex   http://curator.apache.org/curator-recipes/shared-lock.html                      不可重入排它锁
- * InterProcessReadWriteLock    http://curator.apache.org/curator-recipes/shared-reentrant-read-write-lock.html 可重入读写锁
- * InterProcessMultiLock        http://curator.apache.org/curator-recipes/multi-shared-lock.html                将多个锁作为一个实体管理的容器
- * InterProcessSemaphoreV2      http://curator.apache.org/curator-recipes/shared-semaphore.html                 信号灯
+ * <pre>
+ * <a href="http://curator.apache.org/curator-recipes/shared-reentrant-lock.html">InterProcessMutex</a> 可重入排它锁
+ * <a href="http://curator.apache.org/curator-recipes/shared-lock.html">InterProcessSemaphoreMutex</a>  不可重入排它锁
+ * <a href="http://curator.apache.org/curator-recipes/shared-reentrant-read-write-lock.html">InterProcessReadWriteLock</a>  可重入读写锁
+ * <a href="http://curator.apache.org/curator-recipes/multi-shared-lock.html">InterProcessMultiLock</a> 将多个锁作为一个实体管理的容器
+ * <a href="http://curator.apache.org/curator-recipes/shared-semaphore.html">InterProcessSemaphoreV2</a>信号灯
+ * </pre>
  *
  * @author ljh
  * @since 2021/9/28 1:10
@@ -33,7 +34,7 @@ public class CuratorDistributedLock extends Demo {
     private static final String LOCK_PATH = "/lock";
 
     /**
-     * Locking Example：https://github.com/apache/curator/tree/master/curator-examples/src/main/java/locking
+     * <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/locking">Locking Example</a>
      */
     public static void main(String[] args) throws Exception {
         FakeLimitedResource resource = new FakeLimitedResource();

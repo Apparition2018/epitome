@@ -5,8 +5,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.junit.jupiter.api.Test;
 
 /**
- * Base64
- * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/binary/Base64.html
+ * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/binary/Base64.html">Base46</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

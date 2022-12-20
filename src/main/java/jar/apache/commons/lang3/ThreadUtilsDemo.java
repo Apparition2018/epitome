@@ -3,8 +3,7 @@ package jar.apache.commons.lang3;
 import org.apache.commons.lang3.ThreadUtils;
 
 /**
- * ThreadUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ThreadUtils.html
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ThreadUtils.html">ThreadUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

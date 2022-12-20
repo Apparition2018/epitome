@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Apache Map
- * <p>
+ * <a href="https://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/package-summary.html">Apache Map</a>
+ * <pre>
  * FixedSizeMap             修饰另一个 Map，使其大小固定
  * FixedSizeSortedMap       修饰另一个 SortedMap，使其大小固定
  * LazyMap                  修饰另一个 Map，使其根据需要在 Map 中创建对象
@@ -28,9 +28,7 @@ import java.util.concurrent.TimeUnit;
  * ReferenceIdentityMap     一个 Map 的实现，允许垃圾收集器删除映射，基于 == 而不是 equals() 匹配键和值
  * SingletonMap             一个 Map 的实现，保存单个项且大小固定
  * StaticBucketMap          一个 Map 的高效、线程安全的实现
- * 除了 UnmodifiableXXXMap，SingletonMap，StaticBucketMap 都不是线程同步的，且线程不安全的
- * <p>
- * http://commons.apache.org/proper/commons-collections/apidocs/allclasses-noframe.html
+ * </pre>除了 UnmodifiableXXXMap，SingletonMap，StaticBucketMap 都不是线程同步的，且线程不安全的
  *
  * @author ljh
  * @since 2020/11/14 14:19
@@ -58,8 +56,8 @@ public class ApacheMap extends Demo {
 
     /**
      * OrderedMap                   维持顺序 Map，允许向前向后迭代
-     * LinkedMap                    维持插入顺序 Map
-     * ListOrderedMap               修饰 Map，使其保持插入顺序
+     * <p>LinkedMap                    维持插入顺序 Map
+     * <p>ListOrderedMap               修饰 Map，使其保持插入顺序
      */
     @Test
     public void testListOrderedMap() {

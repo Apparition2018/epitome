@@ -35,9 +35,8 @@ public class BuilderDemo {
         private BigDecimal taxableIncome;
 
         /**
-         * ToStringBuilder
-         * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/ToStringBuilder.html
-         * ToStringBuilder 和 ToStringStyle：https://www.cnblogs.com/E-star/p/3725916.html
+         * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/ToStringBuilder.html">ToStringBuilder</a>
+         * <p><a href="https://www.cnblogs.com/E-star/p/3725916.html">ToStringBuilder vs ToStringStyle</a>
          */
         public String toString() {
             return new ToStringBuilder(this)
@@ -52,8 +51,7 @@ public class BuilderDemo {
         }
 
         /**
-         * HashCodeBuilder
-         * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html
+         * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/HashCodeBuilder.html">HashCodeBuilder</a>
          */
         public int hashCode() {
             return new HashCodeBuilder(3, 7)
@@ -67,8 +65,7 @@ public class BuilderDemo {
         }
 
         /**
-         * EqualsBuilder
-         * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html
+         * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html">EqualsBuilder</a>
          */
         public boolean equals(Object obj) {
             if (this == obj) {
@@ -86,8 +83,7 @@ public class BuilderDemo {
         }
 
         /**
-         * CompareToBuilder
-         * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/CompareToBuilder.html
+         * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/CompareToBuilder.html">CompareToBuilder</a>
          */
         public int compareTo(TaxReturn obj) {
             return new CompareToBuilder()

@@ -20,9 +20,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Curator 选举
- * <p>
- * Latch        http://curator.apache.org/curator-recipes/leader-latch.html         一直做 Leader，直到崩溃
- * Election     http://curator.apache.org/curator-recipes/leader-election.html      轮流做 Leader
+ * <pre>
+ * <a href="http://curator.apache.org/curator-recipes/leader-latch.html">Latch</a>      一直做 Leader，直到崩溃
+ * <a href="http://curator.apache.org/curator-recipes/leader-election.html">Election</a>    轮流做 Leader
+ * </pre>
  *
  * @author ljh
  * @since 2021/9/28 2:26
@@ -33,7 +34,7 @@ public class CuratorElection {
     private static final String LEADER_PATH = "/leader";
 
     /**
-     * LeaderSelector Example：https://github.com/apache/curator/tree/master/curator-examples/src/main/java/leader
+     * <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/leader">LeaderSelector Example</a>
      */
     public static void main(String[] args) throws Exception {
         List<CuratorFramework> clients = Lists.newArrayList();

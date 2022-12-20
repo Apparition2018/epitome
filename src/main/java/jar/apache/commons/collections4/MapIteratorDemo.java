@@ -6,8 +6,7 @@ import org.apache.commons.collections4.map.HashedMap;
 import org.junit.jupiter.api.Test;
 
 /**
- * MapIterator
- * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapIterator.html
+ * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapIterator.html">MapIterator</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -43,5 +42,4 @@ public class MapIteratorDemo {
 
         System.out.println(map); // {3=Three_, 5=Five_, 2=Two_, 1=One_}
     }
-
 }

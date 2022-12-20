@@ -6,13 +6,13 @@ import org.apache.commons.collections4.list.*;
 import org.junit.jupiter.api.Test;
 
 /**
- * List
+ * <a href="https://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/list/package-summary.html">List</a>
+ * <pre>
  * UnmodifiableList         修饰另一个 List，使 List 不允许被修改
  * TreeList                 一个 List 实现，优化任意索引的快速插入和删除
- * NodeCachingLinkedList    一个 List 实现，存储内部节点对象的缓存，以减少浪费的对象创建；
- * -                        适用于 add 和 remove 操作的 long-lived List，不适用于 short-lived List 和只增长的 List；
- * -                        线程不同步
- * http://commons.apache.org/proper/commons-collections/apidocs/allclasses-noframe.html
+ * NodeCachingLinkedList    一个 List 实现，存储内部节点对象的缓存，以减少浪费的对象创建
+ *                          适用于 add 和 remove 操作的 long-lived List，不适用于 short-lived List 和只增长的 List
+ *                          线程不同步
  *
  * @author ljh
  * @since 2020/11/14 11:55
@@ -21,7 +21,7 @@ public class ListDemo extends Demo {
 
     /**
      * CursorableLinkedList
-     * 一个 List 实现，能够在同一时间修改 List 和迭代 List；线程不同步
+     * <p>一个 List 实现，能够在同一时间修改 List 和迭代 List；线程不同步
      */
     @Test
     public void testCursorableLinkedList() {
@@ -36,6 +36,7 @@ public class ListDemo extends Demo {
 
     /**
      * FixedSizeList
+     * <pre>
      * 修饰另一个 List，使其大小固定
      * 不支持 add(), remove(), clear(), retain() 操作，支持 set() 操作
      */
@@ -49,7 +50,7 @@ public class ListDemo extends Demo {
 
     /**
      * GrowthList
-     * 修饰另一个 List，以使它在 add() 和 set() 时使用的索引大于 List 大小时无缝增长，避免大多数 IndexOutOfBoundsException
+     * <p>修饰另一个 List，以使它在 add() 和 set() 时使用的索引大于 List 大小时无缝增长，避免大多数 IndexOutOfBoundsException
      */
     @Test
     public void testGrowthList() {
@@ -60,6 +61,7 @@ public class ListDemo extends Demo {
 
     /**
      * LazyList
+     * <pre>
      * 修饰另一个 List，使其根据需要在 List 中创建对象
      * LazyList 和 GrowthList 修饰的 List 都可以自动增长，LazyList 发生在 get()，GrowthList 发生在 set() 和 add()
      */
@@ -71,7 +73,7 @@ public class ListDemo extends Demo {
 
     /**
      * PredicatedList
-     * 修饰另一个 List，验证所有添加项是否与指定谓词匹配
+     * <p>修饰另一个 List，验证所有添加项是否与指定谓词匹配
      */
     @Test
     public void testPredicatedList() {
@@ -82,7 +84,7 @@ public class ListDemo extends Demo {
 
     /**
      * SetUniqueList
-     * 修饰另一个 List，使其不存在重复项
+     * <p>修饰另一个 List，使其不存在重复项
      */
     @Test
     public void testSetUniqueList() {
@@ -94,7 +96,7 @@ public class ListDemo extends Demo {
 
     /**
      * TransformedList
-     * 修饰另一个 List，在 add() 和 set() 的时候对元素进行转换
+     * <p>修饰另一个 List，在 add() 和 set() 的时候对元素进行转换
      */
     @Test
     public void testTransformedList() {

@@ -15,19 +15,18 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Curator
- * Apache Curator 是分布式协调服务 Apache Zookeeper 的 Java 客户端库
- * <p>
- * 应用：
- * 1.选举 {@link CuratorElection}
- * 2.缓存 {@link CuratorCacheDemo}
- * 3.锁 {@link CuratorDistributedLock}
- * 4.服务发现：https://github.com/apache/curator/tree/master/curator-examples/src/main/java/discovery
- * 5.发布和订阅：https://github.com/apache/curator/tree/master/curator-examples/src/main/java/pubsub
- * 6.异步：https://github.com/apache/curator/blob/master/curator-examples/src/main/java/async/AsyncExamples.java
- * 7.modeled：https://github.com/apache/curator/tree/master/curator-examples/src/main/java/modeled
- * <p>
- * Apache Curator：http://curator.apache.org/
+ * <a href="http://curator.apache.org/">Curator</a>
+ * <p>Apache Curator 是分布式协调服务 Apache Zookeeper 的 Java 客户端库
+ * <p>应用：
+ * <pre>
+ * 1 选举 {@link CuratorElection}
+ * 2 缓存 {@link CuratorCacheDemo}
+ * 3 锁 {@link CuratorDistributedLock}
+ * 4 <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/discovery">服务发现</a>
+ * 5 <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/pubsub">发布和订阅</a>
+ * 6 <a href="https://github.com/apache/curator/blob/master/curator-examples/src/main/java/async/AsyncExamples.java">异步</a>
+ * 7 <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/modeled">modeled</a>
+ * </pre>
  *
  * @author ljh
  * @since 2021/9/26 11:06
@@ -37,7 +36,7 @@ public class CuratorDemo {
     private static final String PATH = "/test";
 
     /**
-     * framework：https://github.com/apache/curator/tree/master/curator-examples/src/main/java/framework
+     * <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/framework">framework</a>
      */
     @Test
     public void testCurator() throws Exception {
@@ -99,5 +98,4 @@ public class CuratorDemo {
             resultList.forEach(result -> System.err.printf("%s - %s%n", result.getForPath(), result.getType()));
         }
     }
-
 }

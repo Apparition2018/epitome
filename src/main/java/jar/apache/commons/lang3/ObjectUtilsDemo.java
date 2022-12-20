@@ -7,9 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 /**
- * ObjectUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ObjectUtils.html
- * <p>
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ObjectUtils.html">ObjectUtils</a>
+ * <pre>
  * static boolean   notEqual(Object object1, Object object2)            是否不相等
  * static boolean   isEmpty(Object object)                              是否为空
  * static boolean   isNotEmpty(Object object)                           是否不为空
@@ -17,15 +16,15 @@ import java.util.List;
  * static boolean	anyNotNull(Object... values)                        检查给定数组中的任何值是否不为空
  * static <T> T     defaultIfNull(T object, T defaultValue)             如果为空返回默认值
  * static <T> T     getIfNull(T object, Supplier<T> defaultSupplier)    如果为空返回 Supplier
- * <p>
+ *
  * static int	    compare(T c1, T c2[, boolean nullGreater])          比较大小，null-safe
  * static T         max(T... values)                                    最大值，null-safe
  * static T         min(T... values)                                    最小值，null-safe
- * <p>
+ *
  * static <T> T	    getFirstNonNull(Supplier<T>... suppliers)           ???
  * static String	identityToString(Object object)                     ???
- * static void	    identityToString(Appendable/StringBuffer/StringBuilder,
- * -                    Object object)                                  ???
+ * static void	    identityToString(Appendable/StringBuffer/StringBuilder, Object object) ???
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -34,6 +33,7 @@ public class ObjectUtilsDemo extends Demo {
 
     /**
      * getFirstNonNull
+     * <p>
      * identityToString
      */
     @Test
@@ -50,6 +50,7 @@ public class ObjectUtilsDemo extends Demo {
 
     /**
      * static <T> T	    clone(T obj)                    克隆一个对象，如果对象不可克隆，则返回 null
+     * <p>
      * static <T> T	    cloneIfPossible(T obj)          克隆一个对象，如果对象不可克隆，则返回该对象
      */
     @Test
@@ -64,9 +65,9 @@ public class ObjectUtilsDemo extends Demo {
     }
 
     /**
-     * static byte	    CONST_BYTE(int v)           Supplied value must be a valid byte literal between -128 and 127
-     * static short	    CONST_SHORT(int v)          Supplied value must be a valid byte literal between -32768 and 32767
-     * static XXX	    CONST(XXX v)
+     * <p>static byte   CONST_BYTE(int v)       Supplied value must be a valid byte literal between -128 and 127
+     * <p>static short  CONST_SHORT(int v)      Supplied value must be a valid byte literal between -32768 and 32767
+     * <p>static XXX    CONST(XXX v)
      */
     @Test
     public void CONST() {

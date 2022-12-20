@@ -5,7 +5,8 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.junit.jupiter.api.Test;
 
 /**
- * ArrayUtils
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ArrayUtils.html">ArrayUtils</a>
+ * <pre>
  * static void	    shift(XXX[] array[, int startIndexInclusive, int endIndexExclusive], int offset)    移动 ???
  * static void	    swap(XXX[] array, int offset1, int offset2[, int len])  交换位置
  * static void	    reverse(XXX[] array)                                    反转
@@ -20,9 +21,7 @@ import org.junit.jupiter.api.Test;
  * static boolean   isEmpty(XXX[] array)                                    判断是否为空
  * static boolean   isNotEmpty(XXX[] array)                                 判断是否不为空
  * static boolean   isSorted(XXX[] array)                                   判断是否已排序
- * <p>
- * https://blog.csdn.net/u010046887/article/details/47398213
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ArrayUtils.html
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39

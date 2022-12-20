@@ -13,10 +13,12 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * FileUtils
- * https://www.cnblogs.com/my-blogs-for-everone/p/8029846.html
- * https://www.cnblogs.com/xiaozu/p/4555942.html
- * http://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FileUtils.html
+ * <a href="http://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FileUtils.html">FileUtils</a>
+ * <p>参考：
+ * <pre>
+ * <a href="https://www.cnblogs.com/my-blogs-for-everone/p/8029846.html">FileUtils 文件操作神器</a>
+ * <a href="https://www.cnblogs.com/xiaozu/p/4555942.html">Commons IO FileUtils</a>
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -138,5 +140,4 @@ public class FileUtilsDemo extends Demo {
         p(coll);
         // [src\main\resources\demo\a, src\main\resources\demo\hutool, src\main\resources\demo\spring]
     }
-
 }

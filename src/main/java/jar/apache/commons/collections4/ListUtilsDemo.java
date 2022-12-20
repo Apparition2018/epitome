@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 /**
- * ListUtils
- * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/ListUtils.html
- * <p>
- * static <T> List<T>	defaultIfNull(List<T> list, List<T> defaultList)                如果为 null，返回给定默认 List
- * static <T> List<T>	emptyIfNull(List<T> list)                                       如果为 null，返回空 List
- * static int	        hashCodeForList(Collection<?> list)                             生成 HashCode
- * static boolean	    isEqualList(Collection<?> list1, Collection<?> list2)           判断两个集合是否相等
+ * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/ListUtils.html">ListUtils</a>
+ * <pre>
+ * static <T> List<T>   defaultIfNull(List<T> list, List<T> defaultList)        如果为 null，返回给定默认 List
+ * static <T> List<T>   emptyIfNull(List<T> list)                               如果为 null，返回空 List
+ * static int           hashCodeForList(Collection<?> list)                     生成 HashCode
+ * static boolean       isEqualList(Collection<?> list1, Collection<?> list2)   判断两个集合是否相等
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -50,11 +50,12 @@ public class ListUtilsDemo extends Demo {
     }
 
     /**
-     * static <E> List<E>	fixedSizeList(List<E> list)                                                     固定长度
-     * static <E> List<E>	lazyList(List<E> list, Factory<? extends E> factory)                            延迟创建
-     * static <E> List<E>	predicatedList(List<E> list, Predicate<E> predicate)                            追加限制
-     * static <E> List<E>	synchronizedList(List<E> list)                                                  同步
-     * static <E> List<E>	unmodifiableList(List<? extends E> list)                                        不可修改
+     * <pre>
+     * static <E> List<E>	fixedSizeList(List<E> list)                             固定长度
+     * static <E> List<E>   lazyList(List<E> list, Factory<? extends E> factory)    延迟创建
+     * static <E> List<E>   predicatedList(List<E> list, Predicate<E> predicate)    追加限制
+     * static <E> List<E>	synchronizedList(List<E> list)                          同步
+     * static <E> List<E>	unmodifiableList(List<? extends E> list)                不可修改
      * static <E> List<E>	transformedList(List<E> list, Transformer<? super E,? extends E> transformer)   追加转换
      */
     @Test
@@ -75,24 +76,21 @@ public class ListUtilsDemo extends Demo {
         predicatedList.add(10);// IllegalArgumentException: Cannot add Object '11' - Predicate '...ListUtilsDemo$$Lambda$3/33553623@1341870' rejected it
     }
 
-    /**
-     * static <E> List<E>	sum(List<? extends E> list1, List<? extends E> list2)           并集
-     * static <E> List<E>	union(List<? extends E> list1, List<? extends E> list2)         合并
-     * static <E> List<E>	subtract(List<E> list1, List<? extends E> list2)                差集
-     * static <E> List<E>	removeAll(Collection<E> collection, Collection<?> remove)       差集
-     * static <E> List<E>	intersection(List<? extends E> list1, List<? extends E> list2)  交集
-     * static <E> List<E>	retainAll(Collection<E> collection, Collection<?> retain)       交集
-     */
     @Test
     public void testListUtils3() {
         p(subList);                                     // [2, 3, 4, 5, 6]
         p(subList2);                                    // [4, 5, 6, 7, 8]
+        // static <E> List<E>	sum(List<? extends E> list1, List<? extends E> list2)           并集
         p(ListUtils.sum(subList, subList2));            // [2, 3, 4, 5, 6, 7, 8]，相当于 CollectionUtils.union(subList, subList2)
+        // static <E> List<E>	union(List<? extends E> list1, List<? extends E> list2)         合并
         p(ListUtils.union(subList, subList2));          // [2, 3, 4, 5, 6, 4, 5, 6, 7, 8]
+        // static <E> List<E>	subtract(List<E> list1, List<? extends E> list2)                差集
         p(ListUtils.subtract(subList, subList2));       // [2, 3]
+        // static <E> List<E>	removeAll(Collection<E> collection, Collection<?> remove)       差集
         p(ListUtils.removeAll(subList, subList2));      // [2, 3]
+        // static <E> List<E>	intersection(List<? extends E> list1, List<? extends E> list2)  交集
         p(ListUtils.intersection(subList, subList2));   // [4, 5, 6]
+        // static <E> List<E>	retainAll(Collection<E> collection, Collection<?> retain)       交集
         p(ListUtils.retainAll(subList, subList2));      // [4, 5, 6]
     }
-
 }

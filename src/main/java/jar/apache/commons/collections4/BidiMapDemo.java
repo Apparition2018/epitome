@@ -7,9 +7,8 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * BidiMap
- * BidMap 是一个接口，该接口要求值和键都不能重复，并允许键值双向查找
- * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/BidiMap.html
+ * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/BidiMap.html">BidiMap</a>
+ * <p>BidMap 是一个接口，该接口要求值和键都不能重复，并允许键值双向查找
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -41,7 +40,5 @@ public class BidiMapDemo {
         // K	        removeValue(Object value)
         // 删除当前映射到指定值的键值对
         bidi.removeValue("2");
-
     }
-
 }

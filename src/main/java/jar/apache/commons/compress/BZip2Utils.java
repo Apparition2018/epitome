@@ -9,7 +9,7 @@ import java.io.*;
 
 /**
  * BZip2 文件压缩/解压工具
- * http://snowolf.iteye.com/blog/644591
+ * <p>参考：<a href="http://snowolf.iteye.com/blog/644591">Bzip2 Commons 实现</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -108,7 +108,7 @@ public class BZip2Utils extends Demo {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
         decompress(bais, baos);
-        
+
         data = baos.toByteArray();
         return data;
     }
@@ -164,5 +164,4 @@ public class BZip2Utils extends Demo {
         File file = new File(path);
         decompress(file, delete);
     }
-
 }

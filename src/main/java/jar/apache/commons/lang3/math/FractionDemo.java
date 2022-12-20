@@ -3,8 +3,7 @@ package jar.apache.commons.lang3.math;
 import org.apache.commons.lang3.math.Fraction;
 
 /**
- * Fraction     分数
- * https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/Fraction.html
+ * <a href="https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/Fraction.html">Fraction</a> 分数
  *
  * @author ljh
  * @since 2022/11/9 10:19

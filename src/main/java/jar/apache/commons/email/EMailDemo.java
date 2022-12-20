@@ -8,8 +8,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * 使用 Apache Commons Email 发生邮件：https://www.cnblogs.com/jimboi/p/6406237.html
- * http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/Email.html
+ * <a href="https://commons.apache.org/proper/commons-email/index.html">Commons Email</a>
+ * <p>参考：<a href="https://www.cnblogs.com/jimboi/p/6406237.html">Commons Email 发送邮件</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -17,9 +17,8 @@ import java.net.URL;
 public class EMailDemo extends Demo {
 
     /**
-     * SimpleEmail
-     * 没有附件的 simple internet 电子邮件
-     * http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/SimpleEmail.html
+     * <a href="http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/SimpleEmail.html">SimpleEmail</a>
+     * <p>发送没有附件的简单 Internet 电子邮件消息
      */
     @Test
     public void sendSimpleEmail() throws EmailException {
@@ -34,9 +33,8 @@ public class EMailDemo extends Demo {
     }
 
     /**
-     * MultiPartEmail
-     * 带有附件的 multi-part internet 电子邮件
-     * http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/MultiPartEmail.html
+     * <a href="http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/MultiPartEmail.html">MultiPartEmail</a>
+     * <p>发送 Multi-Part Internet 电子邮件，如带有附件的消息
      */
     @Test
     public void sendMultiPartEmail() throws EmailException, MalformedURLException {
@@ -69,9 +67,8 @@ public class EMailDemo extends Demo {
     }
 
     /**
-     * HtmlEmail
-     * HTML 格式电子邮件
-     * http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/HtmlEmail.html
+     * <a href="http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/HtmlEmail.html">HtmlEmail</a>
+     * <p>发送 HTML 格式的电子邮件
      */
     @Test
     public void sendHtmlEmail() throws EmailException, MalformedURLException {
@@ -92,8 +89,7 @@ public class EMailDemo extends Demo {
     }
 
     /**
-     * ImageHtmlEmail
-     * http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/ImageHtmlEmail.html
+     * <a href="http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/ImageHtmlEmail.html">ImageHtmlEmail</a>
      */
     @Test
     public void sendImageEmail() throws EmailException {
@@ -142,5 +138,4 @@ public class EMailDemo extends Demo {
         // 密送人
         email.addBcc("234607@dayang.com");
     }
-
 }

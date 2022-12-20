@@ -8,9 +8,10 @@ import java.sql.SQLException;
 
 /**
  * DBCP (Database Connection Pool)
- * <p>
+ * <pre>
  * JDBC: JAVA 连接数据库和执行 SQL 语句的 API
  * DBCP: 依赖 Jakarta commons-pool2 对象池机制的数据库连接池
+ * </pre>
  *
  * @author ljh
  * @since 2020/10/10 15:55

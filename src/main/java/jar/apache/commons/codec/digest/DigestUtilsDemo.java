@@ -8,8 +8,7 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 
 /**
- * DigestUtils
- * http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/digest/DigestUtils.html
+ * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/digest/DigestUtils.html">DigestUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -32,5 +31,4 @@ public class DigestUtilsDemo extends Demo {
         // 2.
         p(DigestUtils.sha256Hex(HELLO_WORLD));  // 7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069
     }
-
 }

@@ -3,8 +3,7 @@ package jar.apache.commons.lang3;
 import org.apache.commons.lang3.ClassPathUtils;
 
 /**
- * ClassPathUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ClassPathUtils.html
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ClassPathUtils.html">ClassPathUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

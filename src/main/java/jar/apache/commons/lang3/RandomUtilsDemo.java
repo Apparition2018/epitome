@@ -5,8 +5,7 @@ import org.apache.commons.lang3.RandomUtils;
 import static l.demo.Demo.p;
 
 /**
- * RandomUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/RandomUtils.html
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/RandomUtils.html">RandomUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

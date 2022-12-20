@@ -15,10 +15,9 @@ import java.util.concurrent.TimeUnit;
 import static l.demo.Demo.p;
 
 /**
- * DateUtils
- * DateFormatUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html">DateUtils</a>
+ * <p>
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html">DateFormatUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -38,8 +37,6 @@ public class DateUtilsDemo {
 
     /**
      * addXXX(Date date, int amount)
-     * <p>
-     * Milliseconds, Seconds, Minutes, Hours, Days, Weeks, Months, Years
      */
     @Test
     public void addXXX() {
@@ -51,8 +48,6 @@ public class DateUtilsDemo {
 
     /**
      * static Date  setXXX(Date date, int amount)
-     * <p>
-     * Milliseconds, Seconds, Minutes, Hours, Days, Months, Years
      */
     @Test
     public void setXXX() {
@@ -66,9 +61,9 @@ public class DateUtilsDemo {
     }
 
     /**
-     * static Calendar / Date	ceiling(Calendar / Date / Object date, int field)    向上取整
-     * static Calendar / Date	round(Calendar / Date / Object date, int field)      四舍五入
-     * static Calendar / Date	truncate(Calendar / Date / Object date, int field)   向下取整
+     * <p>static Calendar / Date	ceiling(Calendar / Date / Object date, int field)    向上取整
+     * <p>static Calendar / Date	round(Calendar / Date / Object date, int field)      四舍五入
+     * <p>static Calendar / Date	truncate(Calendar / Date / Object date, int field)   向下取整
      */
     @Test
     public void ceilRoundTruncate() {
@@ -98,8 +93,6 @@ public class DateUtilsDemo {
 
     /**
      * static string        format(...)
-     * <p>
-     * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html
      */
     @Test
     public void format() {
@@ -108,10 +101,8 @@ public class DateUtilsDemo {
 
     /**
      * static long          getFragmentInXXX(Calendar calendar, int fragment)
-     * static long          getFragmentInXXX(Date date, int fragment)
-     * fragment     -- 一般使用 Calendar.YEAR, Calendar.MONTH
      * <p>
-     * Milliseconds, Seconds, Minutes, Hours, Days
+     * static long          getFragmentInXXX(Date date, int fragment)
      */
     @Test
     public void getFragmentInXXX() {
@@ -141,9 +132,9 @@ public class DateUtilsDemo {
     }
 
     /**
-     * static Iterator<Calendar>	iterator(Calendar focus, int rangeStyle)
-     * static Iterator<Calendar>	iterator(Date focus, int rangeStyle)
-     * static Iterator<?>	        iterator(Object focus, int rangeStyle)
+     * <p>static Iterator<Calendar>	iterator(Calendar focus, int rangeStyle)
+     * <p>static Iterator<Calendar>	iterator(Date focus, int rangeStyle)
+     * <p>static Iterator<?>        iterator(Object focus, int rangeStyle)
      */
     @Test
     public void iterator() {
@@ -161,15 +152,21 @@ public class DateUtilsDemo {
     }
 
     /**
+     * <pre>
      * static boolean	    isSameDay(Calendar cal1, Calendar cal2)
      * static boolean	    isSameDay(Date DATE1, Date DATE2)
+     * </pre>
      * 判断 Date 或 Calendar 是否是同一天
      * <p>
+     * <pre>
      * static boolean	    isSameInstant(Calendar cal1, Calendar cal2)
      * static boolean	    isSameInstant(Date DATE1, Date DATE2)
+     * </pre>
      * 判断 Date 或 Calendar 是否是同一毫秒
      * <p>
+     * <pre>
      * static boolean	    isSameLocalTime(Calendar cal1, Calendar cal2)
+     * </pre>
      * 判断 Calendar 是否是同一个本地时间
      */
     @Test
@@ -184,13 +181,17 @@ public class DateUtilsDemo {
 
     /**
      * parseDate(String str[, Locale locale], String... parsePatterns)
+     * <pre>
      * String → Date
      * 该方法对日期和时间的解释是宽松的
      * 如 2018-01-32 将被视为等同于 2018-01-01 后 31 天
+     * </pre>
      * <p>
      * parseDateStrictly(String str[, Locale locale], String... parsePatterns)
+     * <pre>
      * String → Date
      * 该方法对日期和时间的解释是严格的
+     * </pre>
      */
     @Test
     public void parseDate() throws ParseException {
@@ -203,6 +204,7 @@ public class DateUtilsDemo {
 
     /**
      * static Calendar	    toCalendar(Date date[, TimeZone tz])
+     * <p>
      * Date → Calendar
      */
     @Test
@@ -214,12 +216,16 @@ public class DateUtilsDemo {
     }
 
     /**
+     * <pre>
      * static int	        truncatedCompareTo(Calendar cal1, Calendar cal2, int field)
      * static int	        truncatedCompareTo(Date DATE1, Date DATE2, int field)
+     * </pre>
      * 比较两个 Date 或 Calendar 在指定字段上大小
      * <p>
+     * <pre>
      * static boolean	    truncatedEquals(Calendar cal1, Calendar cal2, int field)
      * static boolean	    truncatedEquals(Date DATE1, Date DATE2, int field)
+     * </pre>
      * 比较两个 Date 或 Calendar 在指定字段上 的是否相等
      */
     @Test

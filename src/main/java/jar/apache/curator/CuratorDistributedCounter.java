@@ -8,8 +8,7 @@ import org.apache.curator.retry.RetryNTimes;
 
 /**
  * Curator 分布式计数器
- * <p>
- * Distributed Atomic Long：https://curator.apache.org/curator-recipes/distributed-atomic-long.html
+ * <p><a href="https://curator.apache.org/curator-recipes/distributed-atomic-long.html">Distributed Atomic Long</a>
  *
  * @author ljh
  * @since 2021/9/28 1:46

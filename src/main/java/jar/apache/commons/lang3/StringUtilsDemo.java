@@ -5,8 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 /**
- * StringUtils
- * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/StringUtils.html
+ * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/StringUtils.html">StringUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -50,7 +49,7 @@ public class StringUtilsDemo extends Demo {
 
     /**
      * UpperCase / LowerCase / SwapCase / Capitalize / UnCapitalize
-     * 大小写相关
+     * <p>大小写相关
      */
     @Test
     public void case_() {
@@ -63,7 +62,7 @@ public class StringUtilsDemo extends Demo {
 
     /**
      * Chomp / Chop
-     * 删除最后一位
+     * <p>删除最后一位
      */
     @Test
     public void chompAndChop() {

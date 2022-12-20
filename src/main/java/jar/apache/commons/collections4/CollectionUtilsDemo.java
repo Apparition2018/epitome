@@ -10,23 +10,23 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * CollectionsUtils
- * http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/CollectionUtils.html
- * <p>
+ * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/CollectionUtils.html">CollectionsUtils</a>
+ * <pre>
  * static Object                get(Object object, int index)
  * static <K, V> Entry<K, V>    get(Map<K, V> map, int index)
- * static <T> Collection<T>	    emptyCollection()                                               返回空集合，不可修改 ?
- * static <T> Collection<T>	    emptyIfNull(Collection<T> collection)                           如果集合为 null，返回空集合
- * static <C> boolean	        addAll(Collection<C> collection, ...)                           合并
- * static <T> boolean	        addIgnoreNull(Collection<T> collection, T object)               添加元素，忽略 null
- * static boolean	            containsAll(Collection<?> coll1, Collection<?> coll2)           包含所有
- * static boolean	            containsAny(Collection<?> coll1, Collection<?> coll2)           包含任意
- * static boolean	            isEmpty(Collection<?> coll)                                     判断为空
- * static boolean	            isNotEmpty(Collection<?> coll)                                  判断非空
- * static boolean	            sizeIsEmpty(Object object)                                      判断为空
- * <p>
+ * static <T> Collection<T>     emptyCollection()                                       返回空集合，不可修改 ?
+ * static <T> Collection<T>     emptyIfNull(Collection<T> collection)                   如果集合为 null，返回空集合
+ * static <C> boolean           addAll(Collection<C> collection, ...)                   合并
+ * static <T> boolean           addIgnoreNull(Collection<T> collection, T object)       添加元素，忽略 null
+ * static boolean               containsAll(Collection<?> coll1, Collection<?> coll2)   包含所有
+ * static boolean               containsAny(Collection<?> coll1, Collection<?> coll2)   包含任意
+ * static boolean               isEmpty(Collection<?> coll)                             判断为空
+ * static boolean               isNotEmpty(Collection<?> coll)                          判断非空
+ * static boolean               sizeIsEmpty(Object object)                              判断为空
+ *
  * static <C> Collection<C>	predicatedCollection(Collection<C> collection, Predicate<? super C> predicate)
  * static <E> Collection<E>	transformingCollection(Collection<E> collection, Transformer<? super E,? extends E> transformer)o
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -53,23 +53,22 @@ public class CollectionUtilsDemo extends Demo {
         // [[1, 2, 3], [1, 3, 2], [3, 1, 2], [3, 2, 1], [2, 3, 1], [2, 1, 3]]
     }
 
-    /**
-     * static <O> Collection<O>	union(Iterable<? extends O> a, Iterable<? extends O> b)         并集
-     * static <O> Collection<O>	subtract(Iterable<? extends O> a, Iterable<? extends O> b)      差集
-     * static <E> Collection<E>	removeAll(Collection<E>/Iterable<E> ...)                        差集
-     * static <O> Collection<O>	intersection(Iterable<? extends O> a, Iterable<? extends O> b)  交集
-     * static <E> Collection<E>	retainAll(Collection<E>/Iterable<E> ...)                        交集
-     * static <O> Collection<O>	disjunction(Iterable<? extends O> a, Iterable<? extends O> b)   交集的补集
-     */
     @Test
     public void testCollectionUtils2() {
         p(subList);                                             // [2, 3, 4, 5, 6]        
         p(subList2);                                            // [4, 5, 6, 7, 8]
+        // static <O> Collection<O>	union(Iterable<? extends O> a, Iterable<? extends O> b)         并集
+        // 并集
         p(CollectionUtils.union(subList, subList2));            // [2, 3, 4, 5, 6, 7, 8]
+        // static <O> Collection<O>	subtract(Iterable<? extends O> a, Iterable<? extends O> b)      差集
         p(CollectionUtils.subtract(subList, subList2));         // [2, 3]
+        // static <E> Collection<E>	removeAll(Collection<E>/Iterable<E> ...)                        差集
         p(CollectionUtils.removeAll(subList, subList2));        // [2, 3]
+        // static <O> Collection<O>	intersection(Iterable<? extends O> a, Iterable<? extends O> b)  交集
         p(CollectionUtils.intersection(subList, subList2));     // [4, 5, 6]
+        // static <E> Collection<E>	retainAll(Collection<E>/Iterable<E> ...)                        交集
         p(CollectionUtils.retainAll(subList, subList2));        // [4, 5, 6]
+        // static <O> Collection<O>	disjunction(Iterable<? extends O> a, Iterable<? extends O> b)   交集的补集
         p(CollectionUtils.disjunction(subList, subList2));      // [2, 3, 7, 8]
     }
 
@@ -100,24 +99,20 @@ public class CollectionUtilsDemo extends Demo {
         p(list); // [2, 4, 6, 8]
     }
 
-    /**
-     * static boolean	isSubCollection(Collection<?> a, Collection<?> b)
-     * 判断前一个集合是否为后一个集合的子集合，包括相等的情况
-     * <p>
-     * static boolean	isProperSubCollection(Collection<?> a, Collection<?> b)
-     * 判断前一个集合是否为后一个集合的子集合，不包括相等的情况
-     * <p>
-     * static boolean   isEqualCollection(Collection<?> a, Collection<?> b)
-     * 判断前一个集合与后一个集合是否相等
-     */
     @Test
     public void isSubCollection() {
         p(list);                                                    // [1, 2, 3, 4, 5, 6, 7, 8, 9]
         p(subList);                                                 // [2, 3, 4, 5, 6]
         p(descList);                                                // [9, 8, 7, 6, 5, 4, 3, 2, 1]
+        // static boolean	isSubCollection(Collection<?> a, Collection<?> b)`
+        // 判断前一个集合是否为后一个集合的子集合，包括相等的情况
         p(CollectionUtils.isSubCollection(subList, list));          // true
         p(CollectionUtils.isSubCollection(descList, list));         // true
+        // static boolean   isEqualCollection(Collection<?> a, Collection<?> b)
+        // 判断前一个集合与后一个集合是否相等
         p(CollectionUtils.isEqualCollection(descList, list));       // true
+        // static boolean	isProperSubCollection(Collection<?> a, Collection<?> b)
+        // 判断前一个集合是否为后一个集合的子集合，不包括相等的情况
         p(CollectionUtils.isProperSubCollection(subList, list));    // true
         p(CollectionUtils.isProperSubCollection(descList, list));   // false
     }
@@ -154,5 +149,4 @@ public class CollectionUtilsDemo extends Demo {
         p(CollectionUtils.maxSize(circularFifoQueue));  // 9
         p(CollectionUtils.maxSize(fixedSizeList));      // 9
     }
-
 }

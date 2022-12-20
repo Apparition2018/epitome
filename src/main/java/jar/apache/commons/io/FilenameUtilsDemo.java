@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * FilenameUtils
- * http://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html
+ * <a href="http://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html">FilenameUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -52,7 +51,5 @@ public class FilenameUtilsDemo {
         p(FilenameUtils.getPrefix("a/b/c/"));               //
         // 获取前缀长度
         p(FilenameUtils.getPrefixLength("C:/a/b/c.txt"));   // 3
-
     }
-
 }
