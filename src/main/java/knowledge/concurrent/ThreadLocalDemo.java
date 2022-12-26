@@ -6,17 +6,22 @@ import java.util.List;
 
 /**
  * ThreadLocal
+ * <pre>
  * ThreadLocal 中填充的变量属于当前线程，该变量对其他线程而言是隔离的
  * ThreadLocal 对象使用 static 修饰，ThreadLocal 无法解决共享对象的更新问题（阿里编程规约）
- * <p>
+ * </pre>
  * 使用场景：
- * 1.在进行对象跨层传递的时候，使用 ThreadLocal 可以避免多次传递，打破层次间的约束
- * 2.线程间数据隔离
- * 3.进行事务操作，用于存储线程事务信息
- * 4.数据库连接，Session 会话管理
- * <p>
- * 知道 ThreadLocal 嘛？谈谈你对它的理解？：https://baijiahao.baidu.com/s?id=1653790035315010634
- * 说说线程封闭与 ThreadLocal 的关系：https://blog.csdn.net/qq_33589510/article/details/105071141
+ * <pre>
+ * 1 在进行对象跨层传递的时候，使用 ThreadLocal 可以避免多次传递，打破层次间的约束
+ * 2 线程间数据隔离
+ * 3 进行事务操作，用于存储线程事务信息
+ * 4 数据库连接，Session 会话管理
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://baijiahao.baidu.com/s?id=1653790035315010634">知道 ThreadLocal 嘛？谈谈你对它的理解？</a>
+ * <a href="https://blog.csdn.net/qq_33589510/article/details/105071141">说说线程封闭与 ThreadLocal 的关系</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/6 12:55

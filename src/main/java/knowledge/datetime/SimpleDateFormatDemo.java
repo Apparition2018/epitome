@@ -8,9 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * SimpleDateFormat
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/SimpleDateFormat.html
- * <p>
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/SimpleDateFormat.html">SimpleDateFormat</a>
+ * <pre>
  * 字母   日期或时间元素             表示          示例
  * G        Era 标志符             Text          AD
  * y        年                    Year          1996; 96
@@ -31,6 +30,7 @@ import java.util.Date;
  * S        毫秒数                 Number        978
  * z        时区             General time zone  Pacific Standard Time; PST; GMT-08:00
  * Z        时区             RFC 822 time zone  -0800
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -52,9 +52,11 @@ public class SimpleDateFormatDemo extends Demo {
 
     /**
      * 阿里编程规约：
+     * <pre>
      * SimpleDateFormat 是线程不安全的类，一般不要定义为 static 变量，如果定义为 static，必须加锁，或者使用 DateUtils 工具类
      * JDK1.8 可以使用 Instant 代替 Date，LocalDateTime 代替 Calendar，DateTimeFormatter 代替 SimpleDateFormat
-     * SimpleDateFormat 的线程安全问题与解决方案：https://www.cnblogs.com/zemliu/p/3290585.html
+     * </pre>
+     * <a href="https://www.cnblogs.com/zemliu/p/3290585.html">SimpleDateFormat 的线程安全问题与解决方案</a>
      */
     private static final ThreadLocal<SimpleDateFormat> DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat(DatePattern.NORM_DATE_PATTERN));
 }

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>lucky-canvas</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://github.com/buuing/lucky-canvas">lucky-canvas</a></div>
+        <div class="caption"><a href="https://100px.net/docs/wheel.html">lucky-canvas</a></div>
+        <div class="centered">
+            <div id="my-lucky"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/lucky-canvas@1.7.25"></script>
+    <script class="code" contenteditable="true">
+        const myLucky = new LuckyCanvas.LuckyWheel('#my-lucky', {
+            width: '300px',
+            height: '300px',
+            blocks: [{ padding: '10px', background: '#617df2' }],
+            prizes: [
+                { background: '#e9e8fe', fonts: [{ text: '0' }] },
+                { background: '#b8c5f2', fonts: [{ text: '1' }] },
+                { background: '#e9e8fe', fonts: [{ text: '2' }] },
+                { background: '#b8c5f2', fonts: [{ text: '3' }] },
+                { background: '#e9e8fe', fonts: [{ text: '4' }] },
+                { background: '#b8c5f2', fonts: [{ text: '5' }] },
+            ],
+            buttons: [{
+                radius: '35%',
+                background: '#8a9bf3',
+                pointer: true,
+                fonts: [{ text: '开始', top: '-10px' }]
+            }],
+            start: function () {
+                // 开始
+                myLucky.play()
+                // 使用定时器模拟接口
+                setTimeout(() => {
+                    // 结束游戏
+                    myLucky.stop(0)
+                }, 3000)
+            }
+        })
+    </script>
+</section>
+
+<script src="../../../public/js/demo.js"></script>
+</body>
+</html>

@@ -8,10 +8,9 @@ import java.text.ParseException;
 import static l.demo.Demo.p;
 
 /**
- * DecimalFormat
- * DecimalFormat 是 NumberFormat 的一个具体子类，用于格式化十进制数字。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/text/DecimalFormat.html
- * <p>
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/DecimalFormat.html">DecimalFormat</a>
+ * <p>DecimalFormat 是 NumberFormat 的一个具体子类，用于格式化十进制数字。
+ * <pre>
  * 特殊模式字符：
  * 符号	        位置	        本地化？	    含义
  * 0	        数字          是       阿拉伯数字
@@ -25,14 +24,14 @@ import static l.demo.Demo.p;
  * \u2030	    前缀或后缀     是	       乘以 1000 并显示为千分数
  * ¤ (\u00A4)	前缀或后缀     否	       货币记号，由货币符号替换。如果两个同时出现，则用国际货币符号替换。如果出现在某个模式中，则使用货币小数分隔符，而不使用小数分隔符。
  * '	        前缀或后缀     否	       用于在前缀或或后缀中为特殊字符加引号，例如 "'#'#" 将 123 格式化为 "#123"。要创建单引号本身，请连续使用两个单引号："# o''clock"。
- * <p>
- * void	        setRoundingMode(RoundingMode roundingMode)      设置在此 DecimalFormat 中使用的 RoundingMode
- * <p>
- * boolean	    isParseBigDecimal()                             返回 parse(java.lang.String, java.text.ParsePosition) 方法是否返回 BigDecimal
- * void	        setParseBigDecimal(boolean newValue)            设置 parse(java.lang.String, java.text.ParsePosition) 方法是否返回 BigDecimal
- * <p>
- * String	    toLocalizedPattern()                            合成一个表示此 Format 对象当前状态的、已本地化的模式字符串
- * String	    toPattern()                                     合成一个表示此 Format 对象当前状态的模式字符串
+ * </pre>
+ * <pre>
+ * void	        setRoundingMode(RoundingMode)   设置在此 DecimalFormat 中使用的 RoundingMode
+ * boolean	    isParseBigDecimal()             返回 parse(java.lang.String, java.text.ParsePosition) 方法是否返回 BigDecimal
+ * void	        setParseBigDecimal(boolean)     设置 parse(java.lang.String, java.text.ParsePosition) 方法是否返回 BigDecimal
+ * String	    toLocalizedPattern()            合成一个表示此 Format 对象当前状态的、已本地化的模式字符串
+ * String	    toPattern()                     合成一个表示此 Format 对象当前状态的模式字符串
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/23 0:45
@@ -73,8 +72,9 @@ public class DecimalFormatDemo {
     }
 
     /**
-     * int	            getMaximumFractionDigits()          返回数的小数部分所允许的最大位数
-     * int	            getMinimumFractionDigits()          返回数的小数部分所允许的最小位数
+     * int          getMaximumFractionDigits()          返回数的小数部分所允许的最大位数
+     * <p>
+     * int          getMinimumFractionDigits()          返回数的小数部分所允许的最小位数
      */
     @Test
     public void getFractionDigits() {
@@ -87,5 +87,4 @@ public class DecimalFormatDemo {
         p(FORMAT3.getMaximumFractionDigits()); // 3
         p(FORMAT3.getMinimumFractionDigits()); // 0
     }
-
 }
