@@ -58,7 +58,6 @@ public class IOUtilsDemo extends Demo {
      */
     @Test
     public void closeQuietly() {
-        contentEquals();
     }
 
     /**

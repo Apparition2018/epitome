@@ -13,7 +13,7 @@
     3. 能用对象锁，就不要用类锁
     - 注：避免在锁代码块中调用 RPC 方法
 3. 并发修改同一记录时，避免更新丢失，需要加锁。要么在应用层加锁，要么在缓存加锁，要么在数据库层使用乐观锁，使用 version 作为更新依据
-    - 如果每次访问冲突概率小于 20%，推荐使用乐观锁，否则使用悲观锁。乐观锁的重试次数不得小于 3 次
+    - 如果每次访问冲突概率小于 20%，推荐使用乐观锁，否则使用悲观锁。乐观锁的重试次数不得小于 3 次，可以使用 spring-retry
     - [乐观锁和悲观锁](https://www.jianshu.com/p/d2ac26ca6525)
 4. 资金相关的金融敏感信息，使用悲观锁策略；悲观锁遵循一锁、二判、三更新、四释放的原则
 5. 在高并发场景中，避免使用“等于”判断作为中断或退出的条件
@@ -52,7 +52,7 @@
             SELECT quantity, updated_at FROM good WHERE id = 1;
             UPDATE good SET quantity = newQuantity, updated_at = newUpdatedAt WHERE id = 1 AND updated_at = oldUpdatedAt;
             ```
-    3. 悲观锁：`SELECT ... FOR UPDATE`  
+    3. 悲观锁：`SELECT … FOR UPDATE`  
 2. Redis：@see JedisDistributedLocks
     ```
     互斥性             只有一个客户端持有锁                                                      SETNX

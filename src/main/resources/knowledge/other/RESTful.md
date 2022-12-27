@@ -12,21 +12,21 @@
 8. [为什么很多后端写接口都不按照restful规范？](https://www.zhihu.com/question/438825740/answer/1692268189)
 ---
 ## 字面分解
->1. Resource (资源）：文本，图片，音频，服务 ...
->2. Representational (表现层)
->- HTTP 协议的 content-type 和 accept
->   ```
->   文本          txt、html、xml、json、二进制
->   图片          jpg、png
->   ```
->3. State Transfer (状态转化)
->- 幂等性：每次 HTTP 请求相同的参数，相同的 URI，产生的结果是相同的
->   ```
->   GET         获取资源                    http://wwww.book.com/book/001
->   POST        创建资源-不具有幂等性        http://wwww.book.com/book
->   PUT         创建/更新资源               http://wwww.book.com/book/001
->   DELETE                                 http://wwww.book.com/book/001
->   ``` 
+1. Resource (资源）：文本，图片，音频，服务 ...
+2. Representational (表现层)
+    - HTTP 协议的 content-type 和 accept
+    ```
+    文本          txt、html、xml、json、二进制
+    图片          jpg、png
+    ```
+3. State Transfer (状态转化)
+    - 幂等性：每次 HTTP 请求相同的参数，相同的 URI，产生的结果是相同的
+    ```
+    GET             http://wwww.book.com/book/001       获取资源
+    POST            http://wwww.book.com/book           创建资源-不具有幂等性
+    PUT             http://wwww.book.com/book/001       创建/更新资源
+    DELETE          http://wwww.book.com/book/001
+    ``` 
 ---
 ## [成熟度模型](https://www.cnblogs.com/fengyc/p/12035660.html)
 ![REST Maturity](https://sinnema313.files.wordpress.com/2014/05/rest-maturity21.png)

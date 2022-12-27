@@ -274,7 +274,7 @@ select * from store limit 10;
     ```
     # 查看帮助
     mysqldumpslow -h
-    mysqldumpslow mysqldumpslow [ OPTS... ] [ LOGS... ]
+    mysqldumpslow [options] [log_file ...]
     ```
     2. pt-query-digest
     ```
@@ -334,8 +334,8 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
         - 对符合条件的行加X锁，其它事务无法对这些记录加任何IS锁和IX锁，即其它事务无法对这些记录进行读取和修改
         - 不会阻止非锁定读
 2. 意向锁 (Intention Locks)：表级锁，指示事务稍后需要对表中的行使用哪种类型的锁(共享/排它)
-    1. 意向共享锁 (Intention Shared Locks, IS)：`SELECT ... FOR SHARE`
-    2. 意向排它锁 (Intention Exclusive Locks, IX)：[SELECT ... FOR UPDATE](https://www.cnblogs.com/xiao-lei/p/12598552.html)
+    1. 意向共享锁 (Intention Shared Locks, IS)：`SELECT … FOR SHARE`
+    2. 意向排它锁 (Intention Exclusive Locks, IX)：[`SELECT … FOR UPDATE`](https://www.cnblogs.com/xiao-lei/p/12598552.html)
         
 |     | X   | IX  | S   | IS  |
 |:----|:----|:----|:----|:----|
@@ -366,17 +366,14 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
     - 向右遍历且最后一个值不满足等值条件时，Next-key Locks → Gap Locks
     - 对于覆盖索引查询，不对聚簇索引加锁
 - 唯一索引上的范围查询会访问到不满足条件的第一个值为止
-### MySQL 如何实现悲观锁和乐观锁
-- 乐观锁：更新带上旧值或版本号或修改时间(CAS)
-- 悲观锁：Shared and Exclusive Locks
-### [非锁定读 vs 锁定读](https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html)
-| Read  | Consistent Nonlocking Reads | Locking Reads                                  |
-|:------|:----------------------------|:-----------------------------------------------|
-| 中文    | 一致性非锁定读，快照读                 | 锁定读                                            |
-| 语句    | select                      | select ... for share<br/>select ... for update |
-| 说明    | 只能读当前事务之前更改                 | 能读最新的更改                                        |
-| 是否会幻读 | 不可能                         | 可能                                             |
-| 隔离级别  | RC、RR                       |                                                |
+### 非锁定读 vs 锁定读
+| Read  | [Consistent Nonlocking Reads](https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html) | [Locking Reads](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-reads.html) |
+|:------|:---------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------|
+| 中文    | 一致性非锁定读，快照读                                                                                        | 锁定读                                                                                |
+| 语句    | select                                                                                             | select … for share<br/>select … for update                                         |
+| 说明    | 只能读当前事务之前更改                                                                                        | 能读最新的更改                                                                            |
+| 是否会幻读 | 不可能                                                                                                | 可能                                                                                 |
+| 隔离级别  | RC、RR                                                                                              |                                                                                    |
 ---
 ## [复制](https://dev.mysql.com/doc/refman/8.0/en/replication.html)
 1. 创建 bin_log/ 和 relay_log/ 文件夹，并更改其所属用户组和用户为 mysql
@@ -493,7 +490,7 @@ reset slave all;
 ```
 1. 业务上具有唯一特性的字段，即使是组合字段，也必须建成唯一索引
 2. 超过三个表禁止 join。需要 join 的字段，数据类型保持绝对一致；多表关联查询时，保证被关联的字段需要有索引
-    - https://www.zhihu.com/question/56236190?sort=created
+    - https://www.zhihu.com/question/56236190
 3. 在 varchar 字段上建立索引时，必须指定索引长度，没必要对全字段建立索引，根据实际文本区分度决定索引长度
     - 可以使用 count(distinct left(列名，索引长度)) / count(*) 的区分度来确定
 4. 页面搜索严禁左模糊或者全模糊，如果需要请走搜索引擎来解决
