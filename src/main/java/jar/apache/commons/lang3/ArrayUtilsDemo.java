@@ -54,8 +54,8 @@ public class ArrayUtilsDemo extends Demo {
         p(ArrayUtils.insert(0, arr, "0"));      // [0, 1, 2, 3]
 
         // 查找位置
-        p(ArrayUtils.indexOf(arr, "0"));        // -1
-        p(ArrayUtils.lastIndexOf(arr, "2"));    // 1
+        p(ArrayUtils.indexOf(arr, '0'));        // -1
+        p(ArrayUtils.lastIndexOf(arr, '2'));    // 1
 
         // 移除元素
         p(ArrayUtils.remove(arr, 2));           // [1, 2]

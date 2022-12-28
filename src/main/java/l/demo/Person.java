@@ -97,25 +97,30 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
 
     /**
      * JavaBean
-     * 1.类是公有的 public
-     * 2.属性是私有的 private，提供 getter 和 setter 方法
-     * 3.提供无参构造器
-     * 4.实现序列化接口 Serializable (分布式应用)
-     * ps：JavaBean 第二个字母不能大写：https://www.cnblogs.com/threecc/archive/2011/09/05/2167667.html
-     * -    产生问题：无法通过 getter/setter 获取和设置属性
-     * -    解决方法：使用 @JsonProperty
-     * <p>
+     * <pre>
+     * 1 类是公有的 public
+     * 2 属性是私有的 private，提供 getter 和 setter 方法
+     * 3 提供无参构造器
+     * 4 实现序列化接口 Serializable (分布式应用)
+     * ps：<a href="https://www.cnblogs.com/threecc/archive/2011/09/05/2167667.html">JavaBean 第二个字母不能大写</a>
+     *    产生问题：无法通过 getter/setter 获取和设置属性
+     *    解决方法：使用 @JsonProperty
+     * </pre>
      * POJO
-     * 1.有一些属性是私有的 private，每一个属性提供 getter 和 setter 方法
-     * 2.没有继承任何类，没有实现任何接口
-     * 3.没有被其它框架侵入
+     * <pre>
+     * 1 有一些属性是私有的 private，每一个属性提供 getter 和 setter 方法
+     * 2 没有继承任何类，没有实现任何接口
+     * 3 没有被其它框架侵入
+     * </pre>
      * 阿里编程规约：
-     * 1.所有的 POJO 类属性必须使用包装数据类型
-     * 2.定义 DO / PO / DTO / VO 等 POJO 类时，不要设定任何属性默认值
-     * 3.POJO 类必须写 toString 方法。如果继承了另一个 POJO 类，注意在前面加一下 super.toString()
-     * 4.禁止在 POJO 类中，同时存在对应属性 xxx 的 isXxx() 和 getXxx() 方法
-     * 5.velocity 调用 POJO 类的属性时，直接使用属性名取值即可，模板引擎会自动按规范调用 POJO 的 getXxx()，
-     * 如果是 boolean 基本数据类型变量（boolean 命名不需要加 is 前缀），会自动调 isXxx() 方法
+     * <pre>
+     * 1 所有的 POJO 类属性必须使用包装数据类型
+     * 2 定义 DO / PO / DTO / VO 等 POJO 类时，不要设定任何属性默认值
+     * 3 POJO 类必须写 toString 方法。如果继承了另一个 POJO 类，注意在前面加一下 super.toString()
+     * 4 禁止在 POJO 类中，同时存在对应属性 xxx 的 isXxx() 和 getXxx() 方法
+     * 5 velocity 调用 POJO 类的属性时，直接使用属性名取值即可，模板引擎会自动按规范调用 POJO 的 getXxx()，
+     *   如果是 boolean 基本数据类型变量（boolean 命名不需要加 is 前缀），会自动调 isXxx() 方法
+     * </pre>
      */
     @Data
     @Accessors(chain = true)
@@ -127,16 +132,19 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
          * 当一个类实现了可序列化接口，就要定义一个常量：版本号 (serialVersionUID)
          * <p>
          * 生成方式：
-         * 1.1L
-         * 2.根据类名、接口名、成员方法及属性等来生成
-         * <p>
+         * <pre>
+         * 1 1L
+         * 2 根据类名、接口名、成员方法及属性等来生成
+         * </pre>
          * 版本号决定着对象反序列化是否成功：
-         * 1.反序列化的对象的版本号若与当前类版本号一致，反序列化成功。若反序列化对象的结构与当前类接口有变化，那么可以还原的属性就还原，没有的属性就忽略
-         * 2.版本号若不一致，则反序列化直接失败
-         * <p>
+         * <pre>
+         * 1 反序列化的对象的版本号若与当前类版本号一致，反序列化成功。若反序列化对象的结构与当前类接口有变化，那么可以还原的属性就还原，没有的属性就忽略
+         * 2 版本号若不一致，则反序列化直接失败
+         * </pre>
          * 序列化类新增属性时，请不要修改 serialVersionUID 字段，避免反序列失败；如果完全不兼容升级，避免反序列化混乱，那么请修改 serialVersionUID 值（阿里编程规约）
          * <p>
-         * serialVersionUID的作用：https://www.zhihu.com/question/24852886/answer/117314768
+         *
+         * @see <a href="https://www.zhihu.com/question/24852886/answer/117314768">serialVersionUID 的作用</a>
          */
         private static final long serialVersionUID = 527285523879940432L;
         private String no;

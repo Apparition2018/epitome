@@ -44,10 +44,11 @@ public class LombokDemo {
 
     /**
      * &#064;NoArgsConstructor
-     * <p>无参构造函数
-     * <p>当类中有 final 字段没有被初始化时，编译会报错，此时使用 force = true，就会为没有初始化的 final 字段设置默认值为 0 / false / null
-     * <p>对于具有约束的字段（如 @NonNull 字段），不会生成检查或分配，因此请注意，正确初始化这些字段之前，这些约束无效
-     * <p>
+     * <pre>
+     * 无参构造函数
+     * 当类中有 final 字段没有被初始化时，编译会报错，此时使用 force = true，就会为没有初始化的 final 字段设置默认值为 0 / false / null
+     * 对于具有约束的字段（如 @NonNull 字段），不会生成检查或分配，因此请注意，正确初始化这些字段之前，这些约束无效
+     * </pre>
      * <p>&#064;RequiredArgsConstructor
      * <p>如果带有参数，则参数必须是 final 修饰的未经初始化的字段，或 @NonNull 注解的未经初始化的字段
      * <p>

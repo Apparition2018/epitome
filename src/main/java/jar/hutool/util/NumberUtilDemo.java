@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import java.math.RoundingMode;
 
 /**
- * NumberUtil
- * 针对数学运算做工具性封装
- * <p>
+ * <a href="https://hutool.cn/docs/#/core/工具类/数字工具-NumberUtil">NumberUtil</a>
+ * <p>针对数学运算做工具性封装
+ * <pre>
  * NumberUtil.factorial()       阶乘
  * NumberUtil.sqrt()            平方根
  * NumberUtil.divisor()         最大公约数
@@ -19,9 +19,8 @@ import java.math.RoundingMode;
  * NumberUtil.binaryToLong()    二进制转 long
  * NumberUtil.compare()         比较两个值的大小
  * NumberUtil.toStr()           数字转字符串，自动并去除尾小数点儿后多余的 0
- * <p>
- * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%95%B0%E5%AD%97%E5%B7%A5%E5%85%B7-NumberUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/NumberUtil.html
+ * </pre>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/NumberUtil.html">NumberUtil api</a>
  *
  * @author ljh
  * @since 2020/10/27 14:50
@@ -32,7 +31,7 @@ public class NumberUtilDemo extends Demo {
     public void testNumberUtil() {
         // 加减乘除
         // 都会将 double 转为 BigDecimal 后计算，解决 float 和 double 类型无法进行精确计算的问题，常用于商业计算。
-        p(NumberUtil.div(10, 6, 2, RoundingMode.HALF_EVEN));    // 3.33
+        p(NumberUtil.div(10, 6, 2, RoundingMode.HALF_EVEN));    // 1.67
 
         // 舍入
         p(NumberUtil.round(2.25, 1, RoundingMode.HALF_EVEN));   // 2.2  
@@ -52,6 +51,7 @@ public class NumberUtilDemo extends Demo {
     }
 
     /**
+     * <pre>
      * 0                    取一位整数
      * 0.00                 取一位整数和两位小数
      * 00.000               取两位整数和三位小数
@@ -59,7 +59,8 @@ public class NumberUtilDemo extends Demo {
      * #.##%                以百分比方式计数，并取两位小数
      * #.#####E0            显示为科学计数法，并取五位小数
      * ,###                 每三位以逗号进行分隔，例如：299,792,458
-     * 光速大小为每秒,###米   将格式嵌入文本
+     * 光速大小为每秒,###米    将格式嵌入文本
+     * </pre>
      */
     @Test
     public void testDecimalFormat() {
@@ -86,5 +87,4 @@ public class NumberUtilDemo extends Demo {
         // 2 的 n 次幂
         p(NumberUtil.isPowerOfTwo(8));          // true
     }
-
 }

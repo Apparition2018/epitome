@@ -7,22 +7,24 @@ import java.math.BigDecimal;
 import static l.demo.Demo.p;
 
 /**
- * BigDecimal
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/math/BigDecimal.html">BigDecimal</a>
+ * <pre>
  * BigDecimal 不可变的、任意精度的有符号十进制数。
  * BigDecimal 由任意精度的整数非标度值 和 32 位的整数标度 (scale) 组成。
  * 如果为零或正数，则标度是小数点后的位数。
  * 如果为负数，则将该数的非标度值乘以 10 的负 scale 次幂。
  * 因此，BigDecimal 表示的数值是 (unscaledValue × 10-scale)。
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/math/BigDecimal.html
- * <p>
- * BigDecimal	add(BigDecimal augend)              this + augend
- * BigDecimal	subtract(BigDecimal subtrahend)     this - subtrahend
- * BigDecimal	multiply(BigDecimal multiplicand)   this × multiplicand
- * BigDecimal	divide(BigDecimal divisor, ...)     this / divisor
- * <p>
- * BigInteger	toBigInteger()                      BigDecimal → BigInteger
- * String	    toEngineeringString()               返回此 BigDecimal 的字符串表示形式，需要指数时，则使用工程计数法
- * String	    toPlainString()                     返回不带指数字段的此 BigDecimal 的字符串表示形式
+ * </pre>
+ * <pre>
+ * BigDecimal   add(BigDecimal augend)              this + augend
+ * BigDecimal   subtract(BigDecimal subtrahend)     this - subtrahend
+ * BigDecimal   multiply(BigDecimal multiplicand)   this × multiplicand
+ * BigDecimal   divide(BigDecimal divisor, ...)     this / divisor
+ *
+ * BigInteger   toBigInteger()                      BigDecimal → BigInteger
+ * String       toEngineeringString()               返回此 BigDecimal 的字符串表示形式，需要指数时，则使用工程计数法
+ * String       toPlainString()                     返回不带指数字段的此 BigDecimal 的字符串表示形式
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -89,5 +91,4 @@ public class BigDecimalDemo {
         // compareTo() 会忽略精度
         p(new BigDecimal("1.0").compareTo(new BigDecimal("1.00"))); // 0
     }
-
 }

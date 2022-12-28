@@ -174,11 +174,11 @@ public class StringUtilsDemo extends Demo {
     // IndexOf / LastIndexOf / Contains
     @Test
     public void indexOf() {
-        p(StringUtils.indexOf("abcdabcd", "b"));            // 1
-        p(StringUtils.indexOf("abcdabcd", "b", 3));         // 5
+        p(StringUtils.indexOf("abcdabcd", 'b'));            // 1
+        p(StringUtils.indexOf("abcdabcd", 'b', 3));         // 5
         p(StringUtils.indexOfIgnoreCase("abcdabcd", "BC")); // 1
 
-        p(StringUtils.indexOfAny("abcdabcd", "b", "c"));    // 1
+        p(StringUtils.indexOfAny("abcdabcd", 'b', 'c'));    // 1
         p(StringUtils.indexOfAny("abcdabcd", "bc"));        // 1
 
         p(StringUtils.indexOfAnyBut("abcdabcd", 'b', 'c')); // 0

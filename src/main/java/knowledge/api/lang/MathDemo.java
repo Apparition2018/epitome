@@ -5,25 +5,27 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * Math
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Math.html
- * <p>
- * static XXX	    abs(XXX a)              返回 XXX 值的绝对值
- * <p>
- * static double	random()                返回带正号的 double 值，该值 ≥ 0.0 且 ＜ 1.0
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Math.html">Math</a>
+ * <pre>
+ * static XXX       abs(XXX a)              返回 XXX 值的绝对值
+ *
+ * static double    random()                返回带正号的 double 值，该值 ≥ 0.0 且 ＜ 1.0
+ *
+ * static XXX       max(XXX a, XXX b)       返回两个 XXX 值中较大的一个
+ * static XXX       min(XXX a, XXX b)       返回两个 XXX 值中较小的一个
+ *
+ * static double    acos(double a)          返回一个值的反余弦；返回的角度范围在 0.0 到 pi 之间
+ * static double    asin(double a)          返回一个值的反正弦；返回的角度范围在 -pi/2 到 pi/2 之间
+ * static double    atan(double a)          返回一个值的反正切；返回的角度范围在 -pi/2 到 pi/2 之间
+ * static double    cos(double a)           返回角的三角余弦
+ * static double    sin(double a)           返回角的三角正弦
+ * static double    tan(double a)           返回角的三角正切
+ * </pre>
  * 阿里编程规约：
+ * <pre>
  * 注意 Math.random() 这个方法返回是 double 类型，注意取值的范围 0 ≤ x < 1（能够取到零值，注意除零异常），
  * 如果想获取整数类型的随机数，不要将 x 放大 10 的若干倍然后取整，直接使用 Random 对象的 nextInt 或者 nextLong 方法
- * <p>
- * static XXX	    max(XXX a, XXX b)	    返回两个 XXX 值中较大的一个
- * static XXX	    min(XXX a, XXX b)       返回两个 XXX 值中较小的一个
- * <p>
- * static double	acos(double a)          返回一个值的反余弦；返回的角度范围在 0.0 到 pi 之间
- * static double	asin(double a)          返回一个值的反正弦；返回的角度范围在 -pi/2 到 pi/2 之间
- * static double	atan(double a)          返回一个值的反正切；返回的角度范围在 -pi/2 到 pi/2 之间
- * static double	cos(double a)           返回角的三角余弦
- * static double	sin(double a)           返回角的三角正弦
- * static double	tan(double a)           返回角的三角正切
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
