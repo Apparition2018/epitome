@@ -10,6 +10,7 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -183,8 +184,8 @@ public class ZipUtils extends Demo {
 
     public static boolean isEndsWithZip(String fileName) {
         boolean flag = false;
-        if (null != fileName && !"".equals(fileName.trim())) {
-            if (fileName.toLowerCase().endsWith(".zip")) {
+        if (null != fileName && StringUtils.isNotEmpty(fileName.trim())) {
+            if (fileName.toLowerCase(Locale.ENGLISH).endsWith(".zip")) {
                 flag = true;
             }
         }

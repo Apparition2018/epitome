@@ -5,18 +5,18 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * Number
- * Number 是 AtomicInteger, AtomicLong, BigDecimal, BigInteger, Byte, Double, Float, Integer, Long 和 Short 类的超类。
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Number.html
- * <p>
- * 阿里编程规约：
- * 1.任何货币金额，均以最小货币单位且整型类型来进行存储
- * 2.浮点数之间的等值判断，基本数据类型不能用==来比较，包装数据类型不能用 equals 来判断
- * -  2.1 指定一个误差范围，两个浮点数的差值在此范围之内，则认为是相等的
- * -  2.2 使用 BigDecimal 来定义值，再进行浮点数的运算操作
- * 3.所有的 POJO 类属性必须使用包装数据类型
- * 4.RPC 方法的返回值和参数必须使用包装数据类型
- * 5.所有的局部变量使用基本数据类型
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Number.html">Number</a>
+ * <p>Number 是 AtomicInteger, AtomicLong, BigDecimal, BigInteger, Byte, Double, Float, Integer, Long 和 Short 类的超类。
+ * <p>阿里编程规约：
+ * <pre>
+ * 1 任何货币金额，均以最小货币单位且整型类型来进行存储
+ * 2 浮点数之间的等值判断，基本数据类型不能用==来比较，包装数据类型不能用 equals 来判断
+ *   2.1 指定一个误差范围，两个浮点数的差值在此范围之内，则认为是相等的
+ *   2.2 使用 BigDecimal 来定义值，再进行浮点数的运算操作
+ * 3 所有的 POJO 类属性必须使用包装数据类型
+ * 4 RPC 方法的返回值和参数必须使用包装数据类型
+ * 5 所有的局部变量使用基本数据类型
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/7 1:28

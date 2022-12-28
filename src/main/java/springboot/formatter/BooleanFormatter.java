@@ -22,7 +22,7 @@ public class BooleanFormatter implements Formatter<Boolean> {
         if (values != null && values.length > 0) {
             return Arrays.asList(values).contains(s);
         } else {
-            switch (s.toLowerCase()) {
+            switch (s.toLowerCase(Locale.CHINESE)) {
                 case "1":
                 case "true":
                 case "yes":
@@ -46,5 +46,4 @@ public class BooleanFormatter implements Formatter<Boolean> {
     public void setValues(String[] values) {
         this.values = values;
     }
-
 }

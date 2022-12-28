@@ -8,7 +8,6 @@ import org.springframework.util.StopWatch;
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.Callable;
@@ -78,7 +77,6 @@ public class Demo {
     public static final String MY_CY = "中国";
     public static final String MOBILE = "13800589230";
     public static final String ID_CARD = "110101199003077950";
-    public static final String UTF_8 = StandardCharsets.UTF_8.name();
     public static final String BAIDU_HOST = "www.baidu.com";
     public static final String BAIDU_URL = "https://" + BAIDU_HOST;
     public static final String MOZILLA_DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";

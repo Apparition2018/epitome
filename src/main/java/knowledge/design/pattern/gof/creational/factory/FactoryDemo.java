@@ -129,7 +129,7 @@ public class FactoryDemo {
         @Test
         public void testAbstractFactory() {
             GUIFactory guiFactory;
-            if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+            if (System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("mac")) {
                 guiFactory = new MacFactory();
             } else {
                 guiFactory = new WindowsFactory();

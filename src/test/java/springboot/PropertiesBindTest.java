@@ -39,5 +39,4 @@ public class PropertiesBindTest {
         List<Student> studentList = binder.bind("school.student", Bindable.listOf(Student.class)).get();
         studentList.forEach(System.out::println);
     }
-
 }

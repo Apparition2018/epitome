@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -108,7 +109,7 @@ public class IOUtilsDemo extends Demo {
     @Test
     public void lineIterator() throws IOException {
         InputStream is = new URL(BAIDU_URL).openStream();
-        LineIterator lt = IOUtils.lineIterator(is, UTF_8);
+        LineIterator lt = IOUtils.lineIterator(is, StandardCharsets.UTF_8.name());
         while (lt.hasNext()) {
             String line = lt.nextLine();
             p(line);
@@ -125,7 +126,7 @@ public class IOUtilsDemo extends Demo {
     @Test
     public void write() throws IOException {
         OutputStream os = Files.newOutputStream(Paths.get(DEMO_FILE_PATH));
-        IOUtils.write("静夜思", os, UTF_8);
+        IOUtils.write("静夜思", os, StandardCharsets.UTF_8.name());
     }
 
     /**
@@ -144,7 +145,7 @@ public class IOUtilsDemo extends Demo {
         lines.add("举头望明月，");
         lines.add("低头思故乡。");
         OutputStream os = Files.newOutputStream(Paths.get(DEMO_FILE_PATH));
-        IOUtils.writeLines(lines, IOUtils.LINE_SEPARATOR_WINDOWS, os, UTF_8);
+        IOUtils.writeLines(lines, IOUtils.LINE_SEPARATOR_WINDOWS, os, StandardCharsets.UTF_8.name());
     }
 
     /**
@@ -164,11 +165,11 @@ public class IOUtilsDemo extends Demo {
      */
     @Test
     public void read() throws IOException {
-        InputStream is = IOUtils.toInputStream(HELLO_WORLD, UTF_8);
+        InputStream is = IOUtils.toInputStream(HELLO_WORLD, StandardCharsets.UTF_8.name());
         byte[] bytes = new byte[16];
         IOUtils.read(is, bytes);
-        // IOUtils.readFully(is, bytes); // EOFException: Length to read: 16 actual: 11
-        p(new String(bytes)); // Hello World!
+        // IOUtils.readFully(is, bytes); // EOFException: Length to read: 16 actual: 12
+        p(new String(bytes, StandardCharsets.UTF_8)); // Hello World!
     }
 
     /**
@@ -181,7 +182,7 @@ public class IOUtilsDemo extends Demo {
     @Test
     public void readLines() throws IOException {
         InputStream is = Files.newInputStream(Paths.get(DEMO_FILE_PATH));
-        List<String> lines = IOUtils.readLines(is, UTF_8);
+        List<String> lines = IOUtils.readLines(is, StandardCharsets.UTF_8.name());
         for (String line : lines) {
             p(line);
         }

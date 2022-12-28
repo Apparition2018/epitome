@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -31,7 +32,7 @@ public class FileUtilsDemo extends Demo {
         File file = new File(DEMO_FILE_PATH);
 
         // write()
-        FileUtils.write(file, "静夜思\n", UTF_8, false);
+        FileUtils.write(file, "静夜思\n", StandardCharsets.UTF_8.name(), false);
 
         List<String> lines = new ArrayList<>();
         lines.add("床前明月光，");
@@ -40,7 +41,7 @@ public class FileUtilsDemo extends Demo {
         FileUtils.writeLines(file, lines, true);
 
         // writeStringToFile()
-        FileUtils.writeStringToFile(file, "举头望明月，\n低头思故乡。", UTF_8, true);
+        FileUtils.writeStringToFile(file, "举头望明月，\n低头思故乡。", StandardCharsets.UTF_8.name(), true);
     }
 
     // 读
@@ -49,10 +50,10 @@ public class FileUtilsDemo extends Demo {
         File file = new File(DEMO_FILE_PATH);
 
         // readFileToString()
-        p(FileUtils.readFileToString(file, UTF_8));
+        p(FileUtils.readFileToString(file, StandardCharsets.UTF_8.name()));
 
         // readLines()
-        p(FileUtils.readLines(file, UTF_8));
+        p(FileUtils.readLines(file, StandardCharsets.UTF_8.name()));
     }
 
     // 删除

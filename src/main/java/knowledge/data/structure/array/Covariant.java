@@ -25,8 +25,6 @@ public class Covariant {
         // 但数组的协变性存下如下隐患
 
         Object[] oArr = new Integer[10];
-        oArr[0] = "String"; // 编译正常，但报异常：ArrayStoreException
-
+        oArr[0] = "String"; // 编译正常，但报异常：java.lang.ArrayStoreException: java.lang.String
     }
-
 }

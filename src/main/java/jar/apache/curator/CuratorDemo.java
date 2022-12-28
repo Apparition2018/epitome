@@ -59,7 +59,7 @@ public class CuratorDemo {
                     .forPath(path, "data2".getBytes(StandardCharsets.UTF_8));
 
             // 获取数据
-            System.out.println(new String(client.getData().forPath(path)));
+            System.out.println(new String(client.getData().forPath(path), StandardCharsets.UTF_8));
 
             // 获取子节点
             List<String> children = client.getChildren().forPath("/");

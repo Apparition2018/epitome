@@ -20,12 +20,7 @@ class Task {
             e.printStackTrace();
         }
 
-        StringBuffer sb = new StringBuffer();
-        // 线程名称
-        sb.append("线程名称：").append(Thread.currentThread().getName());
-        // 运行时间戳
-        sb.append("，执行事件：").append(Calendar.getInstance().get(Calendar.SECOND)).append("s");
-        System.out.println(sb);
+        System.out.printf("线程名称：%s，执行时间：%ss%n", Thread.currentThread().getName(), Calendar.getInstance().get(Calendar.SECOND));
     }
 }
 

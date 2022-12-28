@@ -85,7 +85,7 @@ public class ZXingDemo extends Demo {
                 filePath = DEMO_PATH + "QRCode.png";
                 hints = new HashMap<EncodeHintType, Serializable>() {
                     {
-                        put(EncodeHintType.CHARACTER_SET, UTF_8);
+                        put(EncodeHintType.CHARACTER_SET, StandardCharsets.UTF_8.name());
                         put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M); // 纠错等级
                         put(EncodeHintType.MARGIN, 2);
                     }
@@ -145,5 +145,4 @@ public class ZXingDemo extends Demo {
             return null;
         }
     }
-
 }

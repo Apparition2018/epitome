@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Base64;
 import java.util.Objects;
@@ -171,7 +172,7 @@ public class DecoratorDemo {
             for (int i = 0; i < result.length; i++) {
                 result[i] -= (byte) 1;
             }
-            return new String(result);
+            return new String(result, StandardCharsets.UTF_8);
         }
     }
 

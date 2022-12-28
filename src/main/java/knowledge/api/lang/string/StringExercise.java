@@ -15,7 +15,7 @@ public class StringExercise {
     @Test
     public void test1() {
         String str = "46sal452d4a5";
-        StringBuffer newStr = new StringBuffer();
+        StringBuilder newStr = new StringBuilder();
 
         char c1 = 's';
         char c2 = 'a';

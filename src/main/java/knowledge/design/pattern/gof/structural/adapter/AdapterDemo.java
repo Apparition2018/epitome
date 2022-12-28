@@ -2,10 +2,7 @@ package knowledge.design.pattern.gof.structural.adapter;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Enumeration;
+import java.util.*;
 
 /**
  * 适配器模式：使现有不兼容的接口可以一起工作
@@ -101,6 +98,7 @@ public class AdapterDemo {
 
         @Override
         public void play(String fileName) {
+            Locale.setDefault(Locale.ENGLISH);
             if (fileName.toLowerCase().endsWith("vlc")) {
                 videoPlayer = new VlcPlayer();
                 videoPlayer.playVlc(fileName);

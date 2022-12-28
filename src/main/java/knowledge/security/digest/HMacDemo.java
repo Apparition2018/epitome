@@ -8,6 +8,7 @@ import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -91,7 +92,7 @@ public class HMacDemo extends Demo {
         mac.init(secretKey);
 
         // 完成 Mac 操作
-        return new String(mac.doFinal(data));
+        return new String(mac.doFinal(data), StandardCharsets.UTF_8);
     }
 
     private String getResult1(String inputStr) {

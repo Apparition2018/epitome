@@ -1094,7 +1094,7 @@ public class Suggestions extends Demo {
                 } finally {
                     lock.unlock();
                 }
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 // 线程名称
                 sb.append("线程名称：").append(Thread.currentThread().getName());
                 // 运行时间戳

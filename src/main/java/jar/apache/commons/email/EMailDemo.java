@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-email/index.html">Commons Email</a>
@@ -121,13 +122,13 @@ public class EMailDemo extends Demo {
         // email.setSSLOnConnect(true);
 
         // 消息字符集，在添加 message content 前添加
-        email.setCharset(UTF_8);
+        email.setCharset(StandardCharsets.UTF_8.name());
 
         // 主题
         email.setSubject("Simple Email");
 
         // 发件人邮件地址，名称
-        email.setFrom("mail_assistanter@dayang.com", "邮件助手", UTF_8);
+        email.setFrom("mail_assistanter@dayang.com", "邮件助手", StandardCharsets.UTF_8.name());
 
         // 收件人
         email.addTo("234607@dayang.com");

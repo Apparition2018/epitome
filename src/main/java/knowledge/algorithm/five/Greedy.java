@@ -51,10 +51,10 @@ public class Greedy {
             }
             heap.removeMin(); // 二叉树根节点
 
-            StringBuffer sb;
+            StringBuilder sb;
             for (int i = 0; i < n; i++) {
                 node = nodes[i]; // 从每个叶子节点，向上追溯，直到根节点，确定每个字符的编码
-                sb = new StringBuffer();
+                sb = new StringBuilder();
                 while (null != node) {
                     if (null != node.parent) {
                         if (node == node.parent.left) {
@@ -65,7 +65,7 @@ public class Greedy {
                     }
                     node = node.parent;
                 }
-                System.out.println(nodes[i].val + " : " + sb.toString());
+                System.out.println(nodes[i].val + " : " + sb);
             }
         }
 

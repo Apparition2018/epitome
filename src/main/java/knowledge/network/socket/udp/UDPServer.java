@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 服务器端
- * https://blog.csdn.net/u012426327/article/details/77160517
- * https://blog.csdn.net/u012426327/article/details/77162296
+ * <pre>
+ * <a href="https://blog.csdn.net/u012426327/article/details/77160517">JAVA 网络编程之 UDP</a>
+ * <a href="https://blog.csdn.net/u012426327/article/details/77162296">JAVA 网络编程之 UDP Socket</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -28,7 +31,7 @@ public class UDPServer {
         System.out.println("***服务器端已经启动，等待客户端发送数据");
         socket.receive(packet); // 此方法在接收到数据之前会一直阻塞
         // 4.读取数据
-        String info = new String(data, 0, packet.getLength());
+        String info = new String(data, 0, packet.getLength(), StandardCharsets.UTF_8);
         System.out.println("我是服务器，客户端说：" + info);
 
         /*

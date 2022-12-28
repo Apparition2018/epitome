@@ -105,8 +105,8 @@ public class StringDemo extends Demo {
     public void compare() {
         // boolean	        contentEquals([CharSequence / StringBuffer cs])
         // 将此字符串与指定的 CharSequence / StringBuffer 比较内容是否相等
-        p("abc".equals(new StringBuffer("abc")));               // false
-        p("abc".contentEquals(new StringBuffer("abc")));        // true
+        p("abc".equals(new StringBuilder("abc")));              // false
+        p("abc".contentEquals(new StringBuilder("abc")));       // true
 
         // boolean	        regionMatches([boolean ignoreCase, ]int toffset, String other, int ooffset, int len)
         // 测试两个字符串区域是否相等

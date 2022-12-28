@@ -9,42 +9,41 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 /**
- * CollUtil
- * <p>
- * static <E,T extends Coll<E>> T	empty(Class<?> collectionClass)                                 根据给定的集合类型，返回对应的空集合，支持类型包括： *
- * static <T> Collection<T>	        create(Class<?> collectionType)                                 创建新的集合对象
- * static <T> HashSet<T>	        newHashSet([boolean isSorted, ]
- * -                                    T.../Enumeration/Collection/Iterator)                       新建 HashSet
- * static <T> LinkedHashSet<T>	    newLinkedHashSet(T... ts)                                       新建 LinkedHashSet
- * static <T> BlockingQueue<T>	    newBlockingQueue(int capacity, boolean isLinked)                新建 BlockingQueue
- * static <T> HashSet<T>	        set(boolean isSorted, T... ts)                                  新建 HashSet
- * <p>
+ * <a href="https://hutool.cn/docs/#/core/集合类/集合工具-CollUtil">CollUtil</a>
+ * <pre>
+ * static <E,T extends Coll<E>> T   empty(Class<?> collectionClass)                                 根据给定的集合类型，返回对应的空集合，支持类型包括： *
+ * static <T> Collection<T>         create(Class<?> collectionType)                                 创建新的集合对象
+ * static <T> HashSet<T>            newHashSet([boolean isSorted, ]
+ *                                      T.../Enumeration/Collection/Iterator)                       新建 HashSet
+ * static <T> LinkedHashSet<T>      newLinkedHashSet(T... ts)                                       新建 LinkedHashSet
+ * static <T> BlockingQueue<T>      newBlockingQueue(int capacity, boolean isLinked)                新建 BlockingQueue
+ * static <T> HashSet<T>            set(boolean isSorted, T... ts)                                  新建 HashSet
+ *
  * static <T> Collection<T>         addAll(Collection<T> coll, Object value[, Type elementType])    加入全部
- * static <T> List<T>	            addAllIfNotContains(List<T> list, List<T> otherList)            加入全部，除非元素已经存在
- * <p>
- * static <T> T	                    get(Collection<T> collection, int index)                        获取集合中指定下标的元素值，支持负数
+ * static <T> List<T>               addAllIfNotContains(List<T> list, List<T> otherList)            加入全部，除非元素已经存在
+ *
+ * static <T> T                     get(Collection<T> collection, int index)                        获取集合中指定下标的元素值，支持负数
  * static <T> List<T>               getAny(Collection<T> collection, int... indexes)                获取集合中指定多个下标的元素，支持负数
- * static <T> T	                    getLast(Collection<T> collection)                               获取集合的最后一个元素
- * <p>
- * static <T extends Comparable> T	max(Collection<T> coll)                                         最大值
- * static <T extends Comparable> T	min(Collection<T> coll)                                         最小值
- * <p>
+ * static <T> T                     getLast(Collection<T> collection)                               获取集合的最后一个元素
+ *
+ * static <T extends Comparable> T  max(Collection<T> coll)                                         最大值
+ * static <T extends Comparable> T  min(Collection<T> coll)                                         最小值
+ *
  * static <T> Set<T>                emptyIfNull(Set<T> set)                                         如果为空则返回空 set
  * static <T> List<T>               emptyIfNull(List<T> set)                                        如果为空则返回空 list
  * static <T extends Coll<E>,E> T   defaultIfEmpty(T collection, T defaultCollection)               如果为空则返回默认 collection
- * <p>
- * static boolean	                isEmpty(Enumeration/Iterable/Iterator/Map)                      是否为空
- * static boolean	                isNotEmpty(Enumeration/Iterable/Iterator/Map)                   是否不为空
- * <p>
+ *
+ * static boolean                   isEmpty(Enumeration/Iterable/Iterator/Map)                      是否为空
+ * static boolean                   isNotEmpty(Enumeration/Iterable/Iterator/Map)                   是否不为空
+ *
  * static <T> boolean               contains(Collection<T> coll, Predicate<? super T> containFunc)  包含
  * static boolean                   contains(Collection<?> coll, Object value)                      包含
  * static boolean                   containsAll(Collection<?> coll1, Collection<?> coll2)           包含所有
  * static boolean                   containsAny(Collection<?> coll1, Collection<?> coll2)           包含任意
  * <p>
- * static void	                    clear(Collection<?>... collections)                             清除一个或多个集合内的元素，每个集合调用 clear()
- * <p>
- * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7-CollUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/CollUtil.html
+ * static void                      clear(Collection<?>... collections)                             清除一个或多个集合内的元素，每个集合调用 clear()
+ * </pre>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/CollUtil.html">CollUtil api</a>
  *
  * @author ljh
  * @since 2020/10/27 20:13
@@ -65,7 +64,7 @@ public class CollUtilDemo extends Demo {
 
         // indexOfAll(Collection, Matcher)                              获取满足指定规则所有的元素的位置
         p(CollUtil.indexOfAll(ListUtil.of(1, 2, 3, 2, 1),
-                new Integer(2)::equals));                               // [1, 3]
+                Integer.valueOf(2)::equals));                           // [1, 3]
 
         // count(Iterable, Matcher)                                     集合中匹配 Matcher 的数量
         p(CollUtil.count(list, i -> i % 2 == 0));                       // 4
@@ -103,11 +102,13 @@ public class CollUtilDemo extends Demo {
 
     /**
      * 涉及 Map 的相关方法
-     * static <K> Set<K>	            keySet(Collection<Map<K,?>> mapCollection)                          获取指定 Map 列表中所有的 Key
-     * static <K,V> TreeMap<K,V>	    sort(Map<K,V> map, Comparator<? super K> comparator)                Map 排序
-     * static <K,V> LinkedHashMap<K,V>	sortToMap(Collection<Map.Entry<K,V>>, Comparator<Map.Entry<K,V>>)   通过 Comparator<Map.Entry<K,V>> 对 Map 排序
-     * static <K,V> LinkedHashMap<K,V>	sortByEntry(Map<K,V> map, Comparator<Map.Entry<K,V>> comparator)    通过 Comparator<Map.Entry<K,V>> 对 Map 排序
+     * <pre>
+     * static <K> Set<K>                keySet(Collection<Map<K,?>> mapCollection)                          获取指定 Map 列表中所有的 Key
+     * static <K,V> TreeMap<K,V>        sort(Map<K,V> map, Comparator<? super K> comparator)                Map 排序
+     * static <K,V> LinkedHashMap<K,V>  sortToMap(Collection<Map.Entry<K,V>>, Comparator<Map.Entry<K,V>>)   通过 Comparator<Map.Entry<K,V>> 对 Map 排序
+     * static <K,V> LinkedHashMap<K,V>  sortByEntry(Map<K,V> map, Comparator<Map.Entry<K,V>> comparator)    通过 Comparator<Map.Entry<K,V>> 对 Map 排序
      * static <K,V> List<Map.Entry<K,V>>sortEntryToList(Collection<Map.Entry<K,V>> collection)              按照 Value 的值对 Entry<K, V> 做排序
+     * </pre>
      */
     @Test
     public void testMap() {
@@ -126,10 +127,12 @@ public class CollUtilDemo extends Demo {
 
     /**
      * 修改原集合相关方法
-     * static T	        removeAny(T collection, E... elesRemoved)       去除集合中的多个元素，修改原集合
-     * static T	        removeBlank(T collection)                       去除 null 或 "" 或 空白字符串 元素，修改原集合
-     * static T	        removeEmpty(T collection)                       去除 null 或 "" 元素，修改原集合
-     * static T	        removeNull(T collection)                        去除 null 元素，修改原集合
+     * <pre>
+     * static T         removeAny(T collection, E... elesRemoved)       去除集合中的多个元素，修改原集合
+     * static T         removeBlank(T collection)                       去除 null 或 "" 或 空白字符串 元素，修改原集合
+     * static T         removeEmpty(T collection)                       去除 null 或 "" 元素，修改原集合
+     * static T         removeNull(T collection)                        去除 null 元素，修改原集合
+     * </pre>
      */
     @Test
     public void modifyOriginal() {
@@ -200,5 +203,4 @@ public class CollUtilDemo extends Demo {
         p(CollUtil.popPart(queue, 2));  // [1, 2]
         p(queue);                       // [3]
     }
-
 }

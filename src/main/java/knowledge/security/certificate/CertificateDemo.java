@@ -67,7 +67,7 @@ public class CertificateDemo extends Demo {
         // 私钥加密
         byte[] encryptData = encryptPrivateKey(HELLO_WORLD.getBytes(StandardCharsets.UTF_8), getPrivateKey(keyStore, null, KEY_PASSWORD));
         // 公钥解密
-        p(new String(decryptPublicKey(encryptData, getPublicKey(getCertificate(keyStore, null)))));
+        p(new String(decryptPublicKey(encryptData, getPublicKey(getCertificate(keyStore, null))), StandardCharsets.UTF_8));
     }
 
     /**
