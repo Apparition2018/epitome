@@ -12,9 +12,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
 
 /**
- * AsymmetricCrypto 非对称加密
- * https://hutool.cn/docs/#/crypto/%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-AsymmetricCrypto
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/AsymmetricCrypto.html
+ * <a href="https://hutool.cn/docs/#/crypto/非对称加密-AsymmetricCrypto">AsymmetricCrypto</a> 非对称加密
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/AsymmetricCrypto.html">AsymmetricCrypto api</a>
  *
  * @author ljh
  * @since 2020/11/9 9:43

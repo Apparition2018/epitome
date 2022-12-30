@@ -19,24 +19,30 @@ import java.util.Enumeration;
 
 /**
  * 数字证书
- * <p>
- * Java 加密技术（八）——数字证书：https://www.iteye.com/blog/snowolf-391931
- * 数字证书基本知识总结：https://blog.csdn.net/meng564764406/article/details/79156559
- * Keytool 或 Keystore 使用及证书转换：https://blog.csdn.net/meng564764406/article/details/79427687
- * <p>
+ * <p>参考：
+ * <pre>
+ * <a href="https://www.iteye.com/blog/snowolf-391931">Java 加密技术（八）——数字证书</a>
+ * <a href="https://blog.csdn.net/meng564764406/article/details/79156559">数字证书基本知识总结</a>
+ * <a href="https://blog.csdn.net/meng564764406/article/details/79427687">Keytool 或 Keystore 使用及证书转换</a>
+ * </pre>
  * 证书生成：
+ * <pre>
  * keytool -genkey -validity 1 -alias ljh -keyalg RSA -keystore C:\Users\Administrator\Desktop\ljh.keystore
  * 口令：123456
  * CN=ljh, OU=ljh, O=ljh, L=zs, ST=gd, C=cn
- * <p>
+ * </pre>
  * 公钥证书导出：
+ * <pre>
  * keytool -export -keystore C:\Users\Administrator\Desktop\ljh.keystore -alias ljh -file C:\Users\Administrator\Desktop\ljh.cer -rfc
- * <p>
+ * </pre>
  * 证书转换，jks → PKCS12
+ * <pre>
  * keytool -importkeystore -srckeystore C:\Users\Administrator\Desktop\ljh.keystore -destkeystore C:\Users\Administrator\Desktop\ljh.pfx -deststoretype pkcs12
- * <p>
+ * </pre>
  * 证书查看：
+ * <pre>
  * keytool -list -keystore C:\Users\Administrator\Desktop\ljh.pfx -rfc
+ * </pre>
  *
  * @author ljh
  * @since 2021/7/7 17:09

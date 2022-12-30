@@ -9,9 +9,8 @@ import org.junit.jupiter.api.Test;
 import java.nio.charset.StandardCharsets;
 
 /**
- * SymmetricCrypto  对称加密
- * https://hutool.cn/docs/#/crypto/%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86-SymmetricCrypto
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/symmetric/SymmetricCrypto.html
+ * <a href="https://hutool.cn/docs/#/crypto/对称加密-SymmetricCrypto">SymmetricCrypto</a>  对称加密
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/symmetric/SymmetricCrypto.html">SymmetricCrypto api</a>
  *
  * @author ljh
  * @since 2020/11/9 9:30
@@ -20,6 +19,7 @@ public class SymmetricCryptoDemo extends Demo {
 
     /**
      * SymmetricAlgorithm:
+     * <pre>
      * AES (默认AES/ECB/PKCS5Padding)
      * ARCFOUR
      * Blowfish
@@ -29,6 +29,7 @@ public class SymmetricCryptoDemo extends Demo {
      * PBEWithMD5AndDES
      * PBEWithSHA1AndDESede
      * PBEWithSHA1AndRC2_40
+     * </pre>
      */
     @Test
     public void testSymmetricCrypto() {

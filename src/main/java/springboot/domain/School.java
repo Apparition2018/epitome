@@ -16,9 +16,9 @@ public class School {
 
     @Data
     @Component
-    // 加载指定的属性文件：https://blog.csdn.net/swpu_ocean/article/details/79243591
+    // Using @PropertySource：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-using-propertysource
+    // @PropertySource with YAML Files in Spring Boot：https://www.baeldung.com/spring-yaml-propertysource
     @PropertySource(value = ResourceUtils.CLASSPATH_URL_PREFIX + "school.properties")
-    // 指定属性前缀：https://www.cnblogs.com/duanxz/p/4520571.html
     @ConfigurationProperties(prefix = "school.principal")
     public static class Principal {
         private String name;
@@ -31,5 +31,4 @@ public class School {
         private int age;
         private int score;
     }
-
 }

@@ -15,10 +15,9 @@ import java.security.KeyPair;
 import java.util.Random;
 
 /**
- * SmUtil   国密算法工具
- * 需要 Bouncy Castle
- * https://hutool.cn/docs/#/crypto/%E5%9B%BD%E5%AF%86%E7%AE%97%E6%B3%95%E5%B7%A5%E5%85%B7-SmUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/SmUtil.html
+ * <a href="https://hutool.cn/docs/#/crypto/国密算法工具-SmUtil">SmUtil</a>   国密算法工具
+ * <p>需要 Bouncy Castle
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/SmUtil.html">SmUtil api</a>
  *
  * @author ljh
  * @since 2020/11/9 3:06
@@ -35,7 +34,8 @@ public class SmUtilDemo extends Demo {
 
     /**
      * SM4: 对称加密
-     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/symmetric/SM4.html
+     *
+     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/symmetric/SM4.html">SM4 api</a>
      */
     @Test
     public void testSM4() {
@@ -49,8 +49,9 @@ public class SmUtilDemo extends Demo {
 
     /**
      * SM2: 非对称加密和签名
-     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/AbstractAsymmetricCrypto.html
-     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/SM2.html
+     *
+     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/AbstractAsymmetricCrypto.html">AbstractAsymmetricCrypto api</a>
+     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/SM2.html">SM2 api</a>
      */
     static class SM2Demo {
 

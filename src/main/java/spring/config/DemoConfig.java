@@ -11,16 +11,15 @@ import java.util.Properties;
 
 /**
  * DemoConfig
- * <p>
- * Spring 3.1 @EnableXXX：https://www.cnblogs.com/duanxz/p/4875156.html
- * Spring 4.0 @Configuration：https://www.cnblogs.com/duanxz/p/7493276.html
- * Spring 4.0 @PropertySource：https://www.cnblogs.com/duanxz/archive/2012/11/06/2756362.html
- * 获取 properties 属性的几种方式：https://blog.csdn.net/lettuce_/article/details/101518075
+ * <pre>
+ * <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-java">Java-based Container Configuration</a>
+ * <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.configuration-classes">Configuration Classes</a>
+ * <a href="https://www.cnblogs.com/duanxz/p/7493276.html">@Configuration 的使用</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/29 15:55
  */
-// @Configuration 相当于 xml 配置文件中的 <beans>
 @Configuration
 @PropertySource(ResourceUtils.CLASSPATH_URL_PREFIX + "jdbc.properties")
 public class DemoConfig {

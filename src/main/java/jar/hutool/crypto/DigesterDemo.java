@@ -7,18 +7,17 @@ import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 /**
- * Digester     摘要加密
- * https://hutool.cn/docs/#/crypto/%E6%91%98%E8%A6%81%E5%8A%A0%E5%AF%86-Digester
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/Digester.html
+ * <a href="https://hutool.cn/docs/#/crypto/摘要加密-Digester">Digester</a>     摘要加密
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/Digester.html">Digester api</a>
  * <p>
  * DigestUtil   摘要加密工具类
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/DigestUtil.html
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/DigestUtil.html">DigestUtil api</a>
  *
  * @author ljh
  * @since 2020/11/9 2:07
  */
 public class DigesterDemo extends Demo {
-    
+
     @Test
     public void testDigester() {
         Digester md5 = new Digester(DigestAlgorithm.MD5);

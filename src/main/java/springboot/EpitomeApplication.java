@@ -21,6 +21,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @ServletComponentScan
 // Quick Guide to the Spring @Enable Annotations：https://www.baeldung.com/spring-enable-annotations
+// @Enable 源码分析：https://www.cnblogs.com/duanxz/p/4875156.html
 @EnableCaching
 @EnableScheduling
 @EnableAsync

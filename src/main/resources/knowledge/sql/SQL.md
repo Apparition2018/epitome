@@ -97,5 +97,4 @@
 | Read Committed   | 不可能 |  可能   | 可能  |   ⚪    |   √   |     ⚪      |
 | Repeatable Read  | 不可能 |  不可能  | 可能  |   ×    |   ⚪   |     √      |
 | Serializable     | 不可能 |  不可能  | 不可能 |   √    |   √   |     √      |
-- [MySQL RR 如何解决幻读](https://www.zhihu.com/question/372905832)
 ---

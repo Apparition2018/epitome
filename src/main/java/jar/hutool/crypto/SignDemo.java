@@ -9,10 +9,9 @@ import org.junit.jupiter.api.Test;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Sign 签名和验证
- * https://hutool.cn/docs/#/crypto/%E7%AD%BE%E5%90%8D%E5%92%8C%E9%AA%8C%E8%AF%81-Sign
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/Sign.html
- * SignAlgorithm: MD5withRSA, SHA256withRSA, SHA1withDSA, SHA256withECDSA ......
+ * <a href="https://hutool.cn/docs/#/crypto/签名和验证-Sign">Sign</a> 签名和验证
+ * <p>SignAlgorithm: MD5withRSA, SHA256withRSA, SHA1withDSA, SHA256withECDSA ......
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/Sign.html">Sign api</a>
  *
  * @author ljh
  * @since 2021/7/5 10:51
