@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.scheduling.annotation.Async;
 
 /**
@@ -20,7 +21,9 @@ import org.springframework.scheduling.annotation.Async;
  * 2 事件发布者：ApplicationEventPublisher 及 ApplicationEventMulticaster 接口，使用这个接口，我们的 Service 就拥有了发布事件的能力。
  * 3 事件订阅者：ApplicationListener，继承自 JDK 的 EventListener，所有监听器将继承它
  * </pre>
- * Spring 内置事件：
+ * <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#context-functionality-events-annotation">@EventListener 注解使用</a>
+ * {@link springboot.init.SpringStartupRunningLogic.ExampleBean#contextStarted(ContextRefreshedEvent)}
+ * <p>Spring 内置事件：
  * <pre>
  * ContextRefreshedEvent        ApplicationContext 初始化或刷新时引发的事件
  * ContextStartedEvent          ApplicationContext 启动时引发的事件
