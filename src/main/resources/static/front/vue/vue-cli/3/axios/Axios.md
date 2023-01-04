@@ -125,7 +125,7 @@ axios.interceptors.request.eject(myInterceptor)
 ---
 ## 封装 axios
 1. @see ruoyi-ui#@/utils/request
-2. @see axios#@/service
+2. @see [axios#@/service](src/service)
 ---
 ## 其它
 1. [错误处理](https://www.npmjs.com/package/axios#handling-errors)

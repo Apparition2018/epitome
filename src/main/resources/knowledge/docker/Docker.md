@@ -301,7 +301,7 @@ nginx
 ```
 8. [Zookeeper](https://hub.docker.com/_/zookeeper)
 - [Docker 实战之 Zookeeper 集群](https://www.cnblogs.com/idea360/p/12405113.html)
-- @see docker/compose/zookeeper-cluster/docker-compose.yml
+- @see [docker-compose.yml](compose/zookeeper-cluster/docker-compose.yml)
 ```bash
 docker network create zoo_net
 docker-compose up -d
@@ -337,7 +337,7 @@ docker exec -it rabbitmq bash
 ```
 10. [RocketMQ](https://hub.docker.com/r/rocketmqinc/rocketmq)
 - [docker-compose 部署 rocketmq](https://blog.csdn.net/oschina_41731918/article/details/123115102)
-- @see docker/ /rocketmq/docker-compose.yml
+- @see [docker-compose.yml](compose/rocketmq/docker-compose.yml)
 ```bash
 docker compose up -d
 

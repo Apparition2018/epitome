@@ -93,7 +93,7 @@
 2. ApplicationContextAware：创建实现此接口的实例时，将提供 ApplicationContext 的引用
 3. [其它 Aware 接口](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aware-list)
 ## Bean 生命周期
-- @see ClassPathXmlApplicationContextDemo#testLifecycle
+- @see [ClassPathXmlApplicationContextDemo#testLifecycle](../../../java/spring/api/context/ClassPathXmlApplicationContextDemo.java)
 1. [BeanDefinition](https://my.oschina.net/u/4600853/blog/4556323) ：通过 BeanDefinitionReader 从 XML/注解/JavaConfig/Groovy DSL 读取 Bean 的配置信息，生成 BeanDefinition
 2. BeanFactoryPostProcessor：对 BeanFactory 相关信息的修改或扩展
 3. BeanFactory ???
@@ -124,7 +124,7 @@
     - 可使用 `${property-name}` 占位符获取属性值
 3. FactoryBean：自定义实例化逻辑
 ### 基于注解配置 Bean
-- 基于注解的容器配置：`<context:annotation-config />`，@see spring-servlet.xml
+- 基于注解的容器配置：`<context:annotation-config />`，@see [spring-servlet.xml](../../spring/spring-servlet.xml)
     - 装配找到多个类型相同的 Bean
         1. 使用按名称装配
         2. 在某个 Bean 上添加 @Primary
@@ -138,7 +138,7 @@
 | 装配方式 | 默认按类型装配；<br/>配合使用 @Qualifier，可以按名称装配 | 指定 name 按名称装配；<br/>指定 type 按类型匹配 |
 | 使用范围 | 成员变量、构造器、方法、参数、注解                    | 类、成员变量、方法                        |
 - 开启组件扫描
-    - XML：`<context:component-scan base-package/>`，@see spring-servlet.xml
+    - XML：`<context:component-scan base-package/>`，@see [spring-servlet.xml](../../spring/spring-servlet.xml)
     - 注解：`@ComponentScan(basePackages)`
 ### 循环依赖
 | 场景                                        | 是否报错           | 解决方法                                                   |
@@ -208,7 +208,7 @@
 ```
 ---
 ## [事务管理](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction)
-1. 事务隔离级别：@see SQL.md#事务隔离级别
+1. 事务隔离级别：@see [SQL.md#事务隔离级别](../sql/SQL.md)
 2. [事务传播机制](https://segmentfault.com/a/1190000013341344)
 
 | 事务传播          | 外层无事务 | 外层有事务 | 外层有事务备注 |
@@ -241,7 +241,7 @@
             8. 多线程，多数据源，分布式
 ---
 ## [Spring JDBC](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#jdbc)
-- @see JdbcTemplateDemo
+- @see [JdbcTemplateDemo](../../../java/spring/api/jdbc/JdbcTemplateDemo.java)
     1. 查询实体：
         1. `jdbcTemplate.queryForObject(String sql, RowMapper<T> rowMapper, Object... args)`
         2. `jdbcTemplate.query(String sql, RowMapper<T> rowMapper, Object... args)`
@@ -249,14 +249,14 @@
         1. `jdbcTemplate.batchUpdate(String sql, List<Object[]> batchArgs)`
         2. `batchSqlUpdate.update(Object... params)`
     3. 命名参数：使用 NamedParameterJdbcTemplate
-- springboot + JDK 1.6 + JDBC 多数据源 + JdbcTemplate：@see /xinling/zsgaqc-imp
+- springboot + JDK 1.6 + JDBC 多数据源 + JdbcTemplate：@see xinling/zsgaqc-imp
 ---
 ## [SpringMVC](https://mp.weixin.qq.com/s/yGP_34nilJp3QKyM3RaO2w)
 - MVC：
     - Model：封装应用程序的数据结构和业务逻辑 (service, dao, entity)
     - View：Model 的外在表现，提供界面
     - Controller：协调 Model 和 View
-- @see SSM.md#Spring MVC
+- @see [SSM.md#Spring MVC](../other/SSM.md)
 ---
 ## [SpEL](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#expressions)
 - 一种强大的表达式语言，支持在运行时查询和操作对象图

@@ -8,14 +8,18 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * IdUtil   唯一ID工具
- * 1.UUID
- * 2.ObjectId (MongoDB)
- * 3.Snowflake (Twitter)
- * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E5%94%AF%E4%B8%80ID%E5%B7%A5%E5%85%B7-IdUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/IdUtil.html
- * 分布式 Unique ID 的生成方法一览：https://mp.weixin.qq.com/s/a5kT_XBGkkvP9xsMlhWBYw
- * Leaf——美团点评分布式ID生成系统：https://tech.meituan.com/2017/04/21/mt-leaf.html
+ * <a href="https://hutool.cn/docs/#/core/工具类/唯一ID工具-IdUtil">IdUtil</a>   唯一ID工具
+ * <pre>
+ * 1 UUID
+ * 2 ObjectId (MongoDB)
+ * 3 Snowflake (Twitter)
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/IdUtil.html">IdUtil api</a>
+ * <a href="https://mp.weixin.qq.com/s/a5kT_XBGkkvP9xsMlhWBYw">分布式 Unique ID 的生成方法一览</a>
+ * <a href="https://tech.meituan.com/2017/04/21/mt-leaf.html">Leaf——美团点评分布式ID生成系统</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/19 16:40

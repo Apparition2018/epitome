@@ -13,9 +13,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Redis 实现分布式锁
- * SETNX + Lua 脚本
- * <p>
- * Redis 分布式锁的正确实现方式：https://www.cnblogs.com/moxiaotao/p/10829799.html
+ * <p>SETNX + Lua 脚本
+ * <p><a href="https://www.cnblogs.com/moxiaotao/p/10829799.html">Redis 分布式锁的正确实现方式</a>
  *
  * @author ljh
  * @since 2021/5/11 1:47

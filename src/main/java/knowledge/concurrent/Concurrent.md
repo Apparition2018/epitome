@@ -53,14 +53,14 @@
             UPDATE good SET quantity = newQuantity, updated_at = newUpdatedAt WHERE id = 1 AND updated_at = oldUpdatedAt;
             ```
     3. 悲观锁：`SELECT … FOR UPDATE`  
-2. Redis：@see JedisDistributedLocks
+2. Redis：@see [JedisDistributedLocks](../../jar/jedis/JedisDistributedLocks.java)
     ```
     互斥性             只有一个客户端持有锁                                                      SETNX
     不会死锁           即使一个客户端持有锁的期间由于崩溃而没有主动释放锁，其他客户端后续也能获取锁   获取锁时设置过期时间，EXPIRE
     解铃还须系铃人      获取锁和释放锁必须是同一个客户端                                           获取锁和释放锁时传一个相同的唯一标识值
     容错性             大部分 Redis 节点正常运行，客户端即可获取锁和释放锁
     ```
-3. Zookeeper：@see CuratorDistributedLock
+3. Zookeeper：@see [CuratorDistributedLock](../../jar/apache/curator/CuratorDistributedLock.java)
     ```
     lock.acquire(time, timeUnit)
     lock.release()

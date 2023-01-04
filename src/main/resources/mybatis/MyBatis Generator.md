@@ -2,7 +2,7 @@
 
 ---
 ## Generator.xml
-- @see generator-config.xml
+- @see [generator-config.xml](../mybatis/generator-config.xml)
 ---
 ## mybatis-generator-maven-plugin
 - pom.xml

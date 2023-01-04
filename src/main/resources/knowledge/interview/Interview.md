@@ -6,5 +6,5 @@
 4. https://dev.mysql.com/doc/refman/8.0/en/optimization.html
 ---
 ## [Zookeeper](https://www.cnblogs.com/ultranms/p/9602474.html)
-- @see Zookeeper.md
+- @see [Zookeeper.md](../other/Zookeeper.md)
 ---
