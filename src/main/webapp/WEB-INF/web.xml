@@ -52,7 +52,7 @@
 
     <!-- CharacterEncodingFilter：字符编码过滤器，放在所有过滤器的第一个 -->
     <filter>
-        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
@@ -64,47 +64,48 @@
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <!-- HiddenHttpMethodFilter：使 form 表单提交的 POST 请求转化为其它请求 (GET, POST, HEAD, OPTIONS, PUT, DELETE, TRACE) -->
     <filter>
-        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-name>hiddenHttpMethodFilter</filter-name>
         <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-name>hiddenHttpMethodFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter>
-        <filter-name>FirstFilter</filter-name>
+        <filter-name>firstFilter</filter-name>
         <filter-class>springboot.filter.FirstFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>FirstFilter</filter-name>
+        <filter-name>firstFilter</filter-name>
         <url-pattern>/user/test</url-pattern>
     </filter-mapping>
     <filter>
-        <filter-name>SecondFilter</filter-name>
+        <filter-name>secondFilter</filter-name>
         <filter-class>springboot.filter.SecondFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>SecondFilter</filter-name>
+        <filter-name>secondFilter</filter-name>
         <url-pattern>/user/test</url-pattern>
     </filter-mapping>
 
     <!-- SpringMVC DispatcherServlet -->
     <servlet>
-        <servlet-name>spring-mvc</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
+            <!-- 默认位置：/WEB-INF/[servlet-name]-servlet.xml -->
             <param-value>classpath:spring/spring-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>spring-mvc</servlet-name>
+        <servlet-name>dispatcher</servlet-name>
         <!-- 匹配所有请求 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
@@ -113,44 +114,44 @@
          ********* 验证码 *********
          ************************* -->
     <servlet>
-        <servlet-name>CaptchaRandomServlet</servlet-name>
+        <servlet-name>captchaRandom</servlet-name>
         <servlet-class>spring.servlet.captcha.CaptchaRandomServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CaptchaRandomServlet</servlet-name>
+        <servlet-name>captchaRandom</servlet-name>
         <url-pattern>/captchaRandom.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>CaptchaArithmeticServlet</servlet-name>
+        <servlet-name>captchaArithmetic</servlet-name>
         <servlet-class>spring.servlet.captcha.CaptchaArithmeticServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CaptchaArithmeticServlet</servlet-name>
+        <servlet-name>captchaArithmetic</servlet-name>
         <url-pattern>/captchaArithmetic.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ValidServlet</servlet-name>
+        <servlet-name>valid</servlet-name>
         <servlet-class>spring.servlet.captcha.ValidServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ValidServlet</servlet-name>
+        <servlet-name>valid</servlet-name>
         <url-pattern>/valid.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-name>kaptcha</servlet-name>
         <servlet-class>spring.servlet.captcha.KaptchaServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-name>kaptcha</servlet-name>
         <url-pattern>/kaptcha.do</url-pattern>
     </servlet-mapping>
 
     <!-- 配置 Kaptcha 验证码 Servlet -->
     <servlet>
-        <servlet-name>Kaptcha2Servlet</servlet-name>
+        <servlet-name>kaptcha2</servlet-name>
         <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
         <!-- Kaptcha 属性配置：https://blog.csdn.net/elephantboy/article/details/52795309 -->
         <init-param>
@@ -195,25 +196,25 @@
         </init-param>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Kaptcha2Servlet</servlet-name>
+        <servlet-name>kaptcha2</servlet-name>
         <url-pattern>/kaptcha2.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ValidKaptchaServlet</servlet-name>
+        <servlet-name>validKaptcha</servlet-name>
         <servlet-class>spring.servlet.captcha.ValidKaptchaServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ValidKaptchaServlet</servlet-name>
+        <servlet-name>validKaptcha</servlet-name>
         <url-pattern>/validKaptcha.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ValidKaptcha2Servlet</servlet-name>
+        <servlet-name>validKaptcha2</servlet-name>
         <servlet-class>spring.servlet.captcha.ValidKaptcha2Servlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ValidKaptcha2Servlet</servlet-name>
+        <servlet-name>validKaptcha2</servlet-name>
         <url-pattern>/validKaptcha2.do</url-pattern>
     </servlet-mapping>
 

@@ -12,18 +12,19 @@ import static l.demo.Demo.p;
 
 /**
  * 用户自定义注解
- * <p>Annotation 是 Java5 引入的新特征。
- * <p>它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。
- * <p>为程序的元素（类、方法、成员变量）加上更直观更明了的说明，这些说明信息是与程序的业务逻辑无关，并且供指定的工具或框架使用。
- * <p>Annotation 像一种修饰符一样，应用于包、类型、构造方法、方法、成员变量、参数及本地变量的声明语句中。
- * <p>Annotation 是附加在代码中的一些元信息，用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。
- * <p>Annotation 不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。
- * <p>
+ * <pre>
+ * Annotation 是 Java5 引入的新特征。
+ * 它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。
+ * 为程序的元素（类、方法、成员变量）加上更直观更明了的说明，这些说明信息是与程序的业务逻辑无关，并且供指定的工具或框架使用。
+ * Annotation 像一种修饰符一样，应用于包、类型、构造方法、方法、成员变量、参数及本地变量的声明语句中。
+ * Annotation 是附加在代码中的一些元信息，用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。
+ * Annotation 不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。
+ * </pre>
  *
  * @author ljh
- * @since 2020/9/18 18:01
  * @see <a href="https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html">Annotation 实现原理与自定义注解例子</a>
  * @see <a href="http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#导入导出">RuoYi 导入导出 (ExcelUtil)</a>
+ * @since 2020/9/18 18:01
  */
 public class CustomAnnotation {
 
@@ -126,25 +127,26 @@ public class CustomAnnotation {
 
     /**
      * 水果名称注解
-     * <p>使用 @interface 关键字定义注解
-     * <p>注解类可以没有成员，没有成员的注解成为标识注解
-     * <p>
-     * <p>4种元注解：
-     * <ul>
-     *  <li>@Documented 注解是否包含在 JavaDoc 中</li>
-     *  <li>@Retention  生命周期 (SOURCE / CLASS / RUNTIME)，什么时候使用注解</li>
-     *  <li>@Target     作用域，注解用于什么地方</li>
-     *  <li>@Inherited  是否允许子类继承该注解 (子类会继承父类的类注解，不会继承父类的方法注解)；当类的继承层次较深时，不建议使用</li>
-     * </ul>
+     * <pre>
+     * 使用 @interface 关键字定义注解
+     * 注解类可以没有成员，没有成员的注解成为标识注解
+     * </pre>
+     * 4种元注解：
+     * <pre>
+     * 1 @Documented 注解是否包含在 JavaDoc 中
+     * 2 @Retention 生命周期 (SOURCE / CLASS / RUNTIME)，什么时候使用注解
+     * 3 @Target 作用域，注解用于什么地方
+     * 4 @Inherited 是否允许子类继承该注解 (子类会继承父类的类注解，不会继承父类的方法注解)；当类的继承层次较深时，不建议使用
+     * </pre>
      */
     @Target(ElementType.FIELD)
     @Retention(RetentionPolicy.RUNTIME)
     @interface FruitName {
         /**
          * 成员以无参无异常方式声明
-         * 合法的成员类型包括 String，Class，Annotation，Enumeration，原始类型
-         * 如果注解只有一个成员，则成员名必须取名为value()，在使用时可以忽略成员名和赋值号(=)
-         * 可以使用 default 为成员指定一个默认值
+         * <p>合法的成员类型包括 String，Class，Annotation，Enumeration，原始类型
+         * <p>如果注解只有一个成员，则成员名必须取名为value()，在使用时可以忽略成员名和赋值号(=)
+         * <p>可以使用 default 为成员指定一个默认值
          */
         String value() default "";
     }

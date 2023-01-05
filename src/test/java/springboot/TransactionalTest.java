@@ -9,15 +9,15 @@ import java.sql.SQLException;
 
 /**
  * &#064;Transactional
- * <ol>
- *  <li>A 方法无 @Transactional 标签，B 方法有 @Transactional 标签，A 调用 B，事务不生效</li>
- *  <li>@Transactional 默认仅对 Uncheck Exception 和 Error 生效；如需对其它异常生效，可设置 rollbackFor</li>
- *  <li>多线程下，@Transactional 不生效</li>
- * </ol>
+ * <pre>
+ * 1 A 方法无 @Transactional 标签，B 方法有 @Transactional 标签，A 调用 B，事务不生效
+ * 2 @Transactional 默认仅对 Uncheck Exception 和 Error 生效；如需对其它异常生效，可设置 rollbackFor
+ * 3 多线程下，@Transactional 不生效
+ * </pre>
+ * 参考：<a href="https://doc.ruoyi.vip/ruoyi/document/htsc.html#事务管理">RuoYi 事务管理</a>
  *
  * @author ljh
  * @since 2021/11/18 11:58
- * @see <a href="https://doc.ruoyi.vip/ruoyi/document/htsc.html#事务管理">RuoYi 事务管理</a>
  */
 @SpringBootTest
 public class TransactionalTest {

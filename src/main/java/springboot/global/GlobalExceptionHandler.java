@@ -37,18 +37,21 @@ import java.util.stream.Collectors;
 
 /**
  * GlobalExceptionHandler
- * <ol>
- *  <li><a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#异常处理">RuoYi 异常处理 (GlobalExceptionHandler)</a></li>
- *  <li>SpringBlade 异常处理 (BladeRestExceptionTranslator)</li>
- *  <li>[seckill-2] 异常处理 (BaseController#handlerException)</li>
- * </ol>
- * <p>&#064;ControllerAdvice 用来声明一些全局性的东西
- * <ol>
- *  <li>@ExceptionHandler 处理异常</li>
- *  <li>@InitBinder       给 WebDataBinder 进行初始化</li>
- *  <li>ModelAttribute    给 Model 绑定参数</li>
- * </ol>
- * <p>@RestControllerAdvice = @ControllerAdvice + @ResponseBody
+ * <pre>
+ * 1 <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#异常处理">RuoYi 异常处理 (GlobalExceptionHandler)</a>
+ * 2 SpringBlade 异常处理 (BladeRestExceptionTranslator)
+ * 3 [seckill-2] 异常处理 (BaseController#handlerException)
+ * </pre>
+ * <a href="https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc#using-controlleradvice-classes">@ControllerAdvice</a>
+ * <pre>
+ * 1 @ExceptionHandler  异常处理
+ * 2 @ModelAttribute    在 @RequestMapping 调用之前初始化 Model
+ * 3 <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-ann-initbinder">@InitBinder</a>      初始化 WebDataBinder
+ *   3.1 将请求参数(即表单或查询数据)绑定到模型对象
+ *   3.2 将基于 string 的请求值(如请求参数、路径变量、报头、cookie 等)转换为控制器方法参数的目标类型
+ *   3.3 在呈现 HTML 表单时，将模型对象值格式化为 String 值
+ * </pre>
+ * &#064;RestControllerAdvice = @ResponseBody + @ControllerAdvice
  *
  * @author ljh
  * @since 2020/11/26 17:51
@@ -166,10 +169,10 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * <ol>
-     *  <li>GET 请求使用了 @RequestBody</li>
-     *  <li>@RequestBody request body is missing</li>
-     * </ol>
+     * <pre>
+     * 1 GET 请求使用了 @RequestBody
+     * 2 @RequestBody request body is missing
+     * </pre>
      */
     @ExceptionHandler({HttpMessageNotReadableException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)

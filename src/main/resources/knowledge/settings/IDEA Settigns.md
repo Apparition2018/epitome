@@ -135,6 +135,10 @@
     1. Settings → Tools → Terminal
     2. Shell path: D:\Git\bin\bash.exe
 ---
+## [Jrebel & XRebel](https://javajgs.com/archives/218383)
+    1. 下载 ReverseProxy：https://github.com/ilanyu/ReverseProxy/releases/tag/v1.4
+    2. Generate GUIDs online：https://www.guidgen.com/
+---
 ## [Project Structure...](https://www.jianshu.com/p/39b2206999e7)
 ### Facets
     1. Web
@@ -152,4 +156,7 @@
     1. .idea/workspace.xml
     2. 在 <component name="PropertiesComponent" /> 里添加 
         <property name="dynamic.classpath" value="true" /> 或 "dynamic.classpath": "true"
+---
+## 一个窗口同时打开两个项目
+    1. Project Structure → Modules → + → Import Module
 ---

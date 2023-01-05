@@ -58,12 +58,12 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 2.配置内容协议
-     * <ol>
-     *  <li>URL suffixes：根据 URL 后缀返回内容格式，5.2.4 弃用</li>
-     *  <li>URL parameter：根据 URL 请求参数返回内容格式</li>
-     *  <li>Accept header</li>
-     *  <li>produces：@RequestMapping(produces)</li>
-     * </ol>
+     * <pre>
+     * 1 URL suffixes：根据 URL 后缀返回内容格式，5.2.4 弃用
+     * 2 URL parameter：根据 URL 请求参数返回内容格式
+     * 3 Accept header
+     * 4 produces：@RequestMapping(produces)
+     * </pre>
      *
      * @see <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.developing-web-applications.spring-mvc.content-negotiation">Path Matching and Content Negotiation</a>
      * @see <a href="https://www.baeldung.com/spring-mvc-content-negotiation-json-xml">Spring MVC Content Negotiation</a>
@@ -101,12 +101,12 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 3.配置异步请求
-     * <ol>
-     *  <li>@Async：<a href="https://blog.csdn.net/weixin_42054155/article/details/106579769">@Async 无效原因</a></li>
-     *  <li>Runnable/Callable</li>
-     *  <li>WebAsyncTask</li>
-     *  <li>DeferredResult</li>
-     * </ol>
+     * <pre>
+     * 1 @Async：<a href="https://blog.csdn.net/weixin_42054155/article/details/106579769">@Async 无效原因</a>
+     * 2 Runnable/Callable
+     * 3 WebAsyncTask
+     * 4 DeferredResult
+     * </pre>
      *
      * @see <a href="https://www.baeldung.com/java-asynchronous-programming">Asynchronous Programming in Java</a>
      * @see <a href="https://mp.weixin.qq.com/s/Vqj7L9hQL9b11LEdDWp-HQ">异步请求和异步调用有区别</a>
@@ -161,16 +161,16 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     /**
      * 7.添加静态资源处理器
-     * <ol>
-     *  <li>extends WebMvcConfigurationSupport 会使默认配置失效，需重写 addResourceHandlers</li>
-     *  <li>implements WebMvcConfigurer 则不需要，在 application.yml 配置即可</li>
-     * </ol>
-     * <p>配置后尝试访问：<a href="http://localhost:3333/public/img/Event-Y.jpg">Event-Y.jpg</a>
+     * <pre>
+     * 1 extends WebMvcConfigurationSupport 会使默认配置失效，需重写 addResourceHandlers
+     * 2 implements WebMvcConfigurer 则不需要，在 application.yml 配置即可
+     * </pre>
+     * 配置后尝试访问：<a href="http://localhost:3333/public/img/Event-Y.jpg">Event-Y.jpg</a>
      * <p>映射规则：
-     * <ol>
-     *  <li>webjars 默认映射规则：/webjars/** ==> classpath:/META-INF/resources/webjars/</li>
-     *  <li>静态资源默认映射规则：/** ==> classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/</li>
-     * </ol>
+     * <pre>
+     * 1 webjars 默认映射规则：/webjars/** ==> classpath:/META-INF/resources/webjars/
+     * 2 静态资源默认映射规则：/** ==> classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+     * </pre>
      *
      * @see <a href="https://www.baeldung.com/spring-mvc-static-resources">Serve Static Resources with Spring</a>
      * @see <a href="https://blog.csdn.net/afgasdg/article/details/106474734">SpringBoot2 静态资源访问问题</a>
@@ -218,7 +218,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     /**
      * 9.添加简单的自动控制器
      * <p>常用于无业务逻辑的页面跳转，如：主页、URL 重定向、404 页面等
-     * <p>下面代码相当于
+     * <p>下面代码相当于：
      * <pre>
      * &#064;Controller
      * public class IndexController {
