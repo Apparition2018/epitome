@@ -7,12 +7,14 @@ import java.io.IOException;
 
 /**
  * CaptchaRandomServlet
- * 随机字符串验证码
+ * <p>随机字符串验证码
  *
  * @author ljh
  * @since 2019/12/23 10:20
  */
 public class CaptchaRandomServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 3291499956991044738L;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {

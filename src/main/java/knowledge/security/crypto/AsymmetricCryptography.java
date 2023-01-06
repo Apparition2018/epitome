@@ -5,7 +5,6 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -97,7 +96,7 @@ public class AsymmetricCryptography {
         // 返回对此密钥对的私钥组件的引用
         RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
 
-        Map<String, Object> keyMap = new HashMap<>(2);
+        Map<String, Object> keyMap = new HashMap<>();
         keyMap.put(PUBLIC_KEY, publicKey);
         keyMap.put(PRIVATE_KEY, privateKey);
         return keyMap;
@@ -177,7 +176,7 @@ public class AsymmetricCryptography {
      * @param crypto  加解密枚举 (Crypto.ENCRYPT, Crypto.DECRYPT)
      * @return 解密后数据/加密后数据
      */
-    public static byte[] cryptoKey(byte[] data, byte[] key, KEY keyEnum, Crypto crypto) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, IOException, BadPaddingException, IllegalBlockSizeException {
+    public static byte[] cryptoKey(byte[] data, byte[] key, KEY keyEnum, Crypto crypto) throws NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         Key k = null;
 
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);

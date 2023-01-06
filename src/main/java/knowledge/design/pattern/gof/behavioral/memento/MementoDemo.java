@@ -8,22 +8,26 @@ import java.util.Stack;
 
 /**
  * 备忘录模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态
- * 使用场景：快照、撤销
+ * <p>使用场景：快照、撤销
  * 使用实例：
- * 1.{@link  java.io.Serializable} 模拟备忘录
- * 2.Spring Web Flow：StateManageableMessageContext#createMessagesMemento()
- * <p>
+ * <pre>
+ * 1 {@link  java.io.Serializable} 模拟备忘录
+ * 2 Spring Web Flow：StateManageableMessageContext#createMessagesMemento()
+ * </pre>
  * 角色：
- * 原发器 Originator：定义 createMemento(), restoreMemento()
- * 备忘录 Memento：不能修改，可声明为 final
- * 负责人 Caretaker：用列表、堆栈等集合存储并管理 Memento
+ * <pre>
+ * 原发器 Originator   定义 createMemento(), restoreMemento()
+ * 备忘录 Memento      不能修改，可声明为 final
+ * 负责人 Caretaker    用列表、堆栈等集合存储并管理 Memento
+ * </pre>优点：符合单一职责原则
+ * <p>缺点：资源消耗大
  * <p>
- * 优点：符合单一职责原则
- * 缺点：资源消耗大
- * <p>
- * Command：https://refactoringguru.cn/design-patterns/memento
- * Java设计模式：http://c.biancheng.net/view/1400.html
- * 菜鸟模式：https://www.runoob.com/design-pattern/memento-pattern.html
+ * 参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/memento">Command</a>
+ * <a href="http://c.biancheng.net/view/1400.html">Java设计模式</a>
+ * <a href="https://www.runoob.com/design-pattern/memento-pattern.html">菜鸟模式</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -32,10 +36,12 @@ public class MementoDemo {
 
     /**
      * 编写一个小程序，可以接收命令行的输入
-     * 1.输入 :list，命令行输出内存文本的内容
-     * 2.输入 :undo，撤销上一次输入到内存文本的内容
-     * 3.输入 其它，追加到内存文本
-     * 4.输入 :stop，退出
+     * <pre>
+     * 1 输入 :list，命令行输出内存文本的内容
+     * 2 输入 :undo，撤销上一次输入到内存文本的内容
+     * 3 输入 其它，追加到内存文本
+     * 4 输入 :stop，退出
+     * </pre>
      * 设计模式之美：备忘录模式：对于大对象的备份和恢复，如何优化内存和时间的消耗？
      */
     public static void main(String[] args) {

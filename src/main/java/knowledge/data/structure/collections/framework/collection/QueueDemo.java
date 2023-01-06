@@ -16,7 +16,7 @@ import java.util.concurrent.*;
 
 /**
  * Queue
- * Java 常见队列：https://pic4.zhimg.com/v2-c1f2992fb01c501a5dada75d0b27b0b3_r.jpg
+ * <p>参考：<a href="https://pic4.zhimg.com/v2-c1f2992fb01c501a5dada75d0b27b0b3_r.jpg">Java 常见队列</a>
  *
  * @author ljh
  * @since 2020/10/9 14:38
@@ -24,16 +24,17 @@ import java.util.concurrent.*;
 public class QueueDemo extends Demo {
 
     /**
-     * Queue 队列
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Queue.html">Queue</a> 队列
+     * <pre>
      * Queue 继承 Collection
      * Queue 实现了一个先进先出 (FIFO) 的数据结构
      * Queue 用来存放 等待处理元素 的集合，这种场景一般用于缓冲、并发访问。
-     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Queue.html
-     * <p>
-     * 操作       抛出异常	    返回特殊值（推荐使用）
-     * 插入	    add(e)	        offer(e)
-     * 移除	    remove()	    poll()
-     * 检查	    element()	    peek()
+     *
+     * 操作       抛出异常        返回特殊值（推荐使用）
+     * 插入       add(e)          offer(e)
+     * 移除       remove()        poll()
+     * 检查       element()       peek()
+     * </pre>
      */
     @Test
     public void testQueue() {
@@ -42,23 +43,23 @@ public class QueueDemo extends Demo {
     }
 
     /**
-     * BlockingQueue    阻塞队列
-     * BlockingQueue 继承 Queue
-     * <p>
-     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/BlockingQueue.html
-     * Java 中的 BlockingQueue：https://www.imooc.com/article/257739
-     * <p>
-     * 操作       抛出异常	    返回特殊值       阻塞          超时退出
-     * 插入	    add(e)	        offer(e)        put(e)      offer(e, time, unit)
-     * 移除	    remove()	    poll()          take()      poll(time, unit)
-     * 检查	    element()	    peek()
-     * <p>
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/BlockingQueue.html">BlockingQueue</a>    阻塞队列
+     * <p>BlockingQueue 继承 Queue
+     * <p>参考：<a href="https://www.imooc.com/article/257739">Java 中的 BlockingQueue</a>
+     * <pre>
+     * 操作       抛出异常        返回特殊值       阻塞          超时退出
+     * 插入       add(e)          offer(e)    put(e)      offer(e, time, unit)
+     * 移除       remove()        poll()      take()      poll(time, unit)
+     * 检查       element()       peek()
+     * </pre>
+     * <pre>
      * ArrayBlockingQueue       有界，数组结构
      * LinkedBlockingQueue      可选有界或无界，链表结构
      * PriorityBlockingQueue    无界，数组结构，优先级
      * DelayQueue               无界，延迟获取元素
      * LinkedTransferQueue      无界，链表结构，CPU 自旋等待消费者取走元素，自旋一定次数后结束
      * SynchronousQueue         无空间，一个添加操作后必须等待一个获取操作才可以继续添加
+     * </pre>
      */
     @Test
     public void testBlockingQueue() throws InterruptedException {
@@ -85,7 +86,7 @@ public class QueueDemo extends Demo {
 
     /**
      * DelayQueue   延时队列
-     * DelayQueue 基础 AbstractQueue 实现 BlockingQueue
+     * <p>DelayQueue 继承 AbstractQueue 实现 BlockingQueue
      */
     @Test
     public void testDelayQueue() throws InterruptedException {
@@ -123,13 +124,14 @@ public class QueueDemo extends Demo {
     }
 
     /**
-     * PriorityQueue    优先级队列
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/PriorityQueue.html">PriorityQueue</a>    优先级队列
+     * <pre>
      * PriorityQueue → AbstractQueue → Queue
      * 一个基于优先级堆的无界优先级队列。
      * 优先级队列的元素按照其自然顺序进行排序，或者根据构造队列时提供的 Comparator 进行排序。
      * 优先级队列不允许使用 null 元素。
      * 依靠自然顺序的优先级队列还不允许插入不可比较的对象（这样做可能导致 ClassCastException）。
-     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/PriorityQueue.html
+     * </pre>
      */
     @Test
     public void testPriorityQueue() {

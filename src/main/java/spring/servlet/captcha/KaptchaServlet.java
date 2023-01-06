@@ -21,6 +21,8 @@ import java.util.Properties;
  */
 public class KaptchaServlet extends HttpServlet {
 
+    private static final long serialVersionUID = -2566109140238951865L;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 设置属性集

@@ -23,8 +23,10 @@ public class LombokDemo3 extends Demo {
 
     /**
      * var （已过时）
-     * <p>从初始化表达式中推断出变量的类型
-     * <p>使用前需要在配置文件 lombok.config 配置 lombok.var.flagUsage = ALLOW
+     * <pre>
+     * 从初始化表达式中推断出变量的类型
+     * 使用前需要在配置文件 lombok.config 配置 lombok.var.flagUsage = ALLOW
+     * </pre>
      */
     @Test
     public void var() {
@@ -81,8 +83,10 @@ public class LombokDemo3 extends Demo {
 
     /**
      * &#064;Getter(lazy = true)
-     * <p>实际使用到的时候才生成
-     * <p>高代码效率，同时由 lombok 管理线程安全问题
+     * <pre>
+     * 实际使用到的时候才生成
+     * 高代码效率，同时由 lombok 管理线程安全问题
+     * </pre>
      */
     @Test
     public void testGetterLazy() {

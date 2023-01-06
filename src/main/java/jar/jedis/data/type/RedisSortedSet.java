@@ -12,11 +12,12 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 /**
- * Redis Sorted Set
- * 1.排行榜；限流
- * 2.大多数集合操作 O(log(n))；ZRANEG O(long(n) + m)
- * 3.用于索引其它数据；当需要索引和查询数据，可考虑使用 RedisSearch 和 RedisJSON
- * https://redis.io/docs/data-types/sorted-sets/
+ * <a href="https://redis.io/docs/data-types/sorted-sets/">Redis Sorted Set</a>
+ * <pre>
+ * 1 排行榜；限流
+ * 2 大多数集合操作 O(log(n))；ZRANEG O(long(n) + m)
+ * 3 用于索引其它数据；当需要索引和查询数据，可考虑使用 RedisSearch 和 RedisJSON
+ * </pre>
  *
  * @author ljh
  * @since 2021/5/28 16:30

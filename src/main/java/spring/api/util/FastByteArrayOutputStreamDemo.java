@@ -10,8 +10,10 @@ import java.util.stream.IntStream;
 
 /**
  * FastByteArrayOutputStream
+ * <pre>
  * Spring 实现的加强版的 ByteArrayOutputStream，采用一个 LinkedList<byte[]> 作为缓冲区，替代字节数组 byte buf[]；
  * 这样每次扩容的时候，分配一个数组空间并直接放到 List 中；而 ByteArrayOutputStream 需要重新分配空间并将数据复制到新数组中
+ * </pre>
  *
  * @author ljh
  * @since 2021/9/8 0:56

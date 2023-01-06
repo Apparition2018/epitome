@@ -9,12 +9,13 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 /**
- * Redis List
- * 1.常用于实现 stack、queue，为后台工作系统构建队列管理
- * 2.最大长度 2^32 - 1
- * 3.访问头部和尾部 O(1)；操作命令 O(n)：如 LINDEX、LINSERT、LSET
- * 4.需要存储和处理不确定的一些列时间时，可考虑使用 Stream
- * https://redis.io/docs/data-types/lists/
+ * <a href="https://redis.io/docs/data-types/lists/">Redis List</a>
+ * <pre>
+ * 1 常用于实现 stack、queue，为后台工作系统构建队列管理
+ * 2 最大长度 2^32 - 1
+ * 3 访问头部和尾部 O(1)；操作命令 O(n)：如 LINDEX、LINSERT、LSET
+ * 4 需要存储和处理不确定的一些列时间时，可考虑使用 Stream
+ * </pre>
  *
  * @author ljh
  * @since 2021/5/27 14:41

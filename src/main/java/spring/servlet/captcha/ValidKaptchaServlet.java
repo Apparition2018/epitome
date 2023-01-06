@@ -13,6 +13,8 @@ import java.io.IOException;
  */
 public class ValidKaptchaServlet extends HttpServlet {
 
+    private static final long serialVersionUID = 4406801410512145989L;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         CaptchaUtils.valid(request, response, "kaptcha");

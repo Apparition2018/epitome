@@ -12,7 +12,8 @@ import static l.demo.Demo.p;
  * <pre>
  * Iterator<E>	iterator()
  * int	        size()
- * </pre>参考：<a href="https://blog.csdn.net/sinat_34093604/article/details/79551924">Commons Collections4 简单使用</a>
+ * </pre>
+ * <a href="https://blog.csdn.net/sinat_34093604/article/details/79551924">Commons Collections4 简单使用</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

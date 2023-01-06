@@ -2,32 +2,34 @@ package knowledge.api.util.stream;
 
 import knowledge.api.util.FunctionDemo;
 import l.demo.Demo;
+import l.demo.Person;
+import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * Stream
- * Stream 支持元素流功能性操作的类，是 JDK1.8 的新特性。
- * https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
- * <p>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html">Stream</a>
+ * <pre>
+ * Stream 支持元素流功能性操作的类，是 JDK1.8 的新特性
  * Stream 应该只允许被中间或终端操作操作一次，若 Stream 被检测到重用，将抛出 IllegalStateException。
  * 如果实在要重复操作同一个 Stream，可以通过 Supplier 获取新的 Stream {@link FunctionDemo.SupplierDemo#testSupplier()}
- * <p>
- * 函数式编程：https://blog.csdn.net/icarusliu/article/details/79495534
- * Stream reduce() 和 Collect()：https://blog.csdn.net/icarusliu/article/details/79504602
- * 深入浅出 parallelStream：https://blog.csdn.net/u011001723/article/details/52794455
- * http://www.runoob.com/java/java8-streams.html
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://blog.csdn.net/icarusliu/article/details/79495534">函数式编程</a>
+ * <a href="https://blog.csdn.net/u011001723/article/details/52794455">parallelStream</a>
+ * <a href="http://www.runoob.com/java/java8-streams.html">Java 8 Stream</a>
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -77,10 +79,7 @@ public class StreamDemo extends Demo {
 
     /**
      * intermediate operation
-     * 中间操作
-     * <p>
-     * 返回值为 Stream 的操作都是惰性求值
-     * https://blog.csdn.net/zebe1989/article/details/82692508st
+     * <p>中间操作
      */
     @Test
     public void intermediate() {
@@ -115,7 +114,7 @@ public class StreamDemo extends Demo {
 
     /**
      * terminal operation
-     * 终端操作
+     * <p>终端操作
      */
     @Test
     public void terminal() {
@@ -155,7 +154,7 @@ public class StreamDemo extends Demo {
 
     /**
      * other operation
-     * 其它操作
+     * <p>其它操作
      */
     @Test
     public void other() {
@@ -176,5 +175,47 @@ public class StreamDemo extends Demo {
         IntStream intStream = Stream.of(arr).mapToInt(value -> value);
         // XxxStream        flatMapToInt(Function<? super T, ? extends IntStream>)  经过 Function Stream → XxxStream
         IntStream intStream2 = Stream.of(arr).flatMapToInt(IntStream::of);
+    }
+
+    private final List<Person> personList = new ArrayList<Person>() {
+        private static final long serialVersionUID = -1481510473440954731L;
+
+        {
+            add(new Person("王五", 22, "男"));
+            add(new Person("李四", 21, "女"));
+            add(new Person("张三", 20, "男"));
+            add(new Person("张三", 23, "男"));
+        }
+    };
+
+    /**
+     * 对象集合按属性去重
+     */
+    @Test
+    public void testDistinct() {
+        // 使用 collectingAndThen 先执行归约操作（List → Set 实现去重），再执行 Function 操作（Set → List）
+        p(personList.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>((p1, p2) -> new CompareToBuilder().append(p1.getName(), p2.getName()).toComparison())), ArrayList::new)));
+
+        // 如果不需要转成 List，可以不使用 collectingAndThen
+        p(personList.stream().collect(Collectors.toCollection(() -> new TreeSet<>((p1, p2) -> new CompareToBuilder().append(p1.getName(), p2.getName()).toComparison()))));
+
+        // 当 name 为 null，这种方法会报 NullPointerException
+        p(personList.stream().collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Person::getName)))));
+    }
+
+    /**
+     * 对象集合按属性去重2 ???
+     */
+    @Test
+    public void testDistinct2() {
+        // 单属性去重
+        p(personList.stream().filter(this.distinctByKey(Person::getName)).collect(Collectors.toList()));
+        // 多属性去重
+        p(personList.stream().filter(this.distinctByKey(p -> Stream.of(p.getName(), p.getGender()))).collect(Collectors.toList()));
+    }
+
+    private <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
+        Map<Object, Boolean> seen = new ConcurrentHashMap<>();
+        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
 }

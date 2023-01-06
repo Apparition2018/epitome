@@ -12,10 +12,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * Collectors
- * Collectors 类实现了很多归约操作
- * Collectors 操作：https://www.cnblogs.com/felordcn/p/collectors.html
- * Collectors reducing()：https://blog.csdn.net/zebe1989/article/details/82855511
+ * <a href="https://www.cnblogs.com/felordcn/p/collectors.html">Collectors</a>
+ * <p>实现了各种归约操作
  *
  * @author ljh
  * @since 2021/1/14 14:51
@@ -24,7 +22,6 @@ public class CollectorsDemo extends Demo {
 
     @Test
     public void toXXX() {
-
         // List<Object> -> List<String>
         List<String> idList = personList.stream().map(Person::getName).collect(Collectors.toList());
         p(idList);  // [张三, 李四, 王五]
@@ -61,11 +58,11 @@ public class CollectorsDemo extends Demo {
         p(names.stream().collect(Collectors.joining(", ")));            // Luna, Olivia, Cora, Leo, Henry
         p(names.stream().collect(Collectors.joining(", ", "[", "]")));  // [Luna, Olivia, Cora, Leo, Henry]
 
-        // collectingAndThen()                      进行收集操作再执行额外执行 Function
+        // collectingAndThen()                      先执行归约操作，再执行 Function 操作
         p(names.stream().collect(Collectors.collectingAndThen(Collectors.joining(", "), String::toUpperCase)));
         // LUNA, OLIVIA, CORA, LEO, HENRY
 
-        // mapping()                                先通过 Function 操作，再进行收集操作
+        // mapping()                                先执行 Function 操作，再进行归约操作
         p(names.stream().collect(Collectors.mapping(String::toUpperCase, Collectors.toList())));
         // [LUNA, OLIVIA, CORA, LEO, HENRY]
 
@@ -95,8 +92,8 @@ public class CollectorsDemo extends Demo {
      * Java 官方例子：统计每个城市个子最高的人
      */
     @Test
-    public void reducing() {
-        List<Person> personList = new ArrayList<Person>(3) {
+    public void testReducing() {
+        List<Person> personList = new ArrayList<Person>() {
             private static final long serialVersionUID = -1481510473440954731L;
 
             {

@@ -8,19 +8,21 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 /**
- * Map
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Map.html
- * <p>
- * Map          HashMap                 LinkedHashMap           TreeMap
- * 适用场景     快速访问                记录插入顺序              自动排序
- * <p>
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Map.html">Map</a>
+ * <pre>
+ * HashMap          快速访问
+ * LinkedHashMap    记录插入顺序
+ * TreeMap          自动排序
+ * </pre>
  * 阿里编程规约：高度注意 Map 类集合 K / V 能不能存储 null 值的情况
+ * <pre>
  * 集合类                  key             value       Super           说明
  * Hashtable            not null        not null    Dictionary      线程安全
  * TreeMap              not null        null        AbstractMap     线程不安全
  * ConcurrentHashMap    not null        not null    AbstractMap     锁分段技术（JDK1.8:CAS）
  * HashMap              null            null        AbstractMap     线程不安全
- * <p>
+ * </pre>
+ * <pre>
  * void	        putAll(Map<? extends K,? extends V> m)      从指定映射中将所有映射关系复制到此映射中（可选操作）
  * void	        clear()                                     从此映射中移除所有映射关系（可选操作）
  * default V	getOrDefault(Object key, V defaultValue)    返回指定键映射到的值，如果该映射不包含该键的映射，则返回 defaultValue。
@@ -28,33 +30,43 @@ import java.util.*;
  * boolean      containsKey(Object key)                     如果此映射包含指定键的映射关系，则返回 true
  * boolean      containsValue(Object value)                 如果此映射将一个或多个键映射到指定值，则返回 true
  * boolean      isEmpty()                                   如果此映射未包含键-值映射关系，则返回 true
- * ************************************************************
- * HashMap
- * 1.底层实现是链表数组，JDK1.8 加上了红黑树
- * 2.允许空键和空值（但空键只有一个，且放在第一位）
- * 3.两个关键因子：初始容量16、加载因子0.75
- * - 3.1.扩容总是原来的2倍，即容量始终为2的幂次方
- * - 3.2.遍历整个 Map 需要的时间与 桶（数组） 的长度成正比
- * - 3.3.加载因子越大，发生冲突的可能性就越大，反之需要频繁 resize，性能降低
- * - 3.4.建议在创建 HashMap 的时候指定初始化容量，可使用 guava 工具方法 {@link com.google.common.collect.Maps#newHashMapWithExpectedSize(int)}（阿里编程规约）
- * <p>
+ * </pre>
+ * <p>************************************************************
+ * <p>HashMap
+ * <pre>
+ * 1 底层实现是链表数组，JDK1.8 加上了红黑树
+ * 2 允许空键和空值（但空键只有一个，且放在第一位）
+ * 3 两个关键因子：初始容量16、加载因子0.75
+ *   3.1.扩容总是原来的2倍，即容量始终为2的幂次方
+ *   3.2.遍历整个 Map 需要的时间与 桶（数组） 的长度成正比
+ *   3.3.加载因子越大，发生冲突的可能性就越大，反之需要频繁 resize，性能降低
+ *   3.4.建议在创建 HashMap 的时候指定初始化容量，可使用 guava 工具方法 {@link com.google.common.collect.Maps#newHashMapWithExpectedSize(int)}（阿里编程规约）
+ * </pre>
+ * <pre>
  * HashMap([int initialCapacity[, float loadFactor]])       构造一个带指定初始容量和加载因子的空 HashMap
  * HashMap(Map<? extends K,? extends V> m)                  构造一个映射关系与指定 Map 相同的新 HashMap
- * <p>
- * HashMap 主要特点和关键方法源码解读：https://blog.csdn.net/u012426327/article/details/77504839
- * HashMap初始化容量带大小设置成多少合适：https://blog.csdn.net/mcsdnuser/article/details/106698237
- * ************************************************************
- * AbstractMap
- * 1.实现 Map，专为继承而设计的类
- * 2.有抽象方法：entrySet()
- * 3.如果想要通过 AbstractMap 派生出 Map。需要实现 entrySet() 和重写 put(K, V)，
- * 因为 put(K, V) 会抛出 UnsupportedOperationException。
- * 4.有内部类 SimpleImmutableEntry（不可变的键值对）, SimpleEntry（可变的键值对）
- * ************************************************************
- * ConcurrentHashMap
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://blog.csdn.net/u012426327/article/details/77504839">HashMap 主要特点和关键方法源码解读</a>
+ * <a href="https://blog.csdn.net/mcsdnuser/article/details/106698237">HashMap 初始化容量带大小设置成多少合适</a>
+ * </pre>
+ * <p>************************************************************
+ * <p>AbstractMap
+ * <pre>
+ * 1 实现 Map，专为继承而设计的类
+ * 2 有抽象方法：entrySet()
+ * 3 如果想要通过 AbstractMap 派生出 Map。需要实现 entrySet() 和重写 put(K, V)，
+ *   因为 put(K, V) 会抛出 UnsupportedOperationException。
+ * 4 有内部类 SimpleImmutableEntry（不可变的键值对）, SimpleEntry（可变的键值对）
+ * </pre>
+ * <p>************************************************************
+ * <p>ConcurrentHashMap
+ * <pre>
  * HashMap 线程安全的实现。使用局部锁技术，实际上就是把 Map 分成了分成了 N 个 Segment，
  * put 和 get 的时候，都是现根据 key.hashCode() 算出放到哪个 Segment 中，
  * 而这里的每个 segment 都相当于一个小的 Hashtable，性能高于 Hashtable
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -64,20 +76,21 @@ public class MapDemo extends Demo {
     @Test
     public void putIfAbsent() {
         map.put(4, null);
-        p(map); // {1=A, 2=B, 3=C, 4=null}
+        p(map);                     // {1=A, 2=B, 3=C, 4=null}
 
         // V    putIfAbsent(K key, V value)         k 不存在，或指定 k 的 v 为 null，才设置值
-        map.putIfAbsent(3, "c");
-        map.putIfAbsent(4, "d");
-        map.putIfAbsent(5, "e");
-        p(map); // {1=A, 2=B, 3=C, 4=d, 5=e}
+        p(map.putIfAbsent(3, "c")); // C
+        p(map.putIfAbsent(4, "d")); // null
+        p(map.putIfAbsent(5, "e")); // null
+        p(map);                     // {1=A, 2=B, 3=C, 4=d, 5=e}
     }
 
     /**
      * put      设置指定值，并返回插入之前的值
-     * compute  设置并返回执行 BiFunction 之后的值
      * <p>
-     * https://blog.csdn.net/qq_43679056/article/details/104976819
+     * compute  设置并返回执行 BiFunction 之后的值
+     *
+     * @see <a href="https://blog.csdn.net/qq_43679056/article/details/104976819">compute</a>
      */
     @Test
     public void compute() {
@@ -117,10 +130,12 @@ public class MapDemo extends Demo {
 
     /**
      * 阿里编程规约：
-     * 1.使用 Map 的方法 keySet() / values() / entrySet() 返回集合对象时，不可以对其进行添加元素操作，否则会抛出 UnsupportedOperationException 异常
-     * 2.使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历
-     * keySet 其实是遍历了 2 次，一次是转为 Iterator 对象，另一次是从 hashMap 中取出 key 所对应的 value。
-     * 而 entrySet 只是遍历了一次就把 key 和 value 都放到了 entry 中，效率更高。如果是 JDK1.8，使用 Map.forEach 方法
+     * <pre>
+     * 1 使用 Map 的方法 keySet() / values() / entrySet() 返回集合对象时，不可以对其进行添加元素操作，否则会抛出 UnsupportedOperationException 异常
+     * 2 使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历
+     *   keySet 其实是遍历了 2 次，一次是转为 Iterator 对象，另一次是从 hashMap 中取出 key 所对应的 value。
+     *   而 entrySet 只是遍历了一次就把 key 和 value 都放到了 entry 中，效率更高。如果是 JDK1.8，使用 Map.forEach 方法
+     * </pre>
      */
     @Test
     public void traversal() {
@@ -147,12 +162,12 @@ public class MapDemo extends Demo {
     }
 
     /**
-     * TreeMap
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/TreeMap.html">TreeMap</a>
+     * <pre>
      * TreeMap → NavigableMap → SortedMap → Map
      * 基于红黑树（Red-Black tree）的 NavigableMap 实现。该映射根据其键的自然顺序进行排序，或者根据创建映射时提供的 Comparator 进行排序。
-     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/TreeMap.html
-     * <p>
      * 大部分 API 类似 TreeSet {@link knowledge.data.structure.collections.framework.collection.SetDemo#testTreeSet}
+     * </pre>
      */
     @Test
     public void testTreeMap() {
@@ -173,9 +188,9 @@ public class MapDemo extends Demo {
 
     /**
      * LRU
-     * LRU 是 Least Recently Used 的缩写，即最近最少使用算法。
-     * 以下例子为使用 LinkedHashMap 实现一个简易的 LRU 缓存
-     * https://blog.csdn.net/Apeopl/article/details/90137398
+     * <p>LRU 是 Least Recently Used 的缩写，即最近最少使用算法。
+     *
+     * @see <a href="https://blog.csdn.net/Apeopl/article/details/90137398">使用 LinkedHashMap 实现一个简易的 LRU 缓存</a>
      */
     @Test
     public void lruByLinkedHashMap() {
@@ -238,5 +253,4 @@ public class MapDemo extends Demo {
             return sb.toString();
         }
     }
-
 }

@@ -18,7 +18,7 @@ public class FunctionDemo extends Demo {
 
     /**
      * Function<T, R>
-     * 接收一个参数 T，返回一个值 R
+     * <p>接收一个参数 T，返回一个值 R
      */
     static class FunctionDemo2 {
 
@@ -35,7 +35,7 @@ public class FunctionDemo extends Demo {
 
     /**
      * BiFunction<T, U, R>
-     * 接收两个参数 T, U，返回一个值 R
+     * <p>接收两个参数 T, U，返回一个值 R
      */
     static class BiFunctionDemo {
 
@@ -50,7 +50,7 @@ public class FunctionDemo extends Demo {
 
     /**
      * BinaryOperator<T>
-     * BiFunction 的一个特例，接收和返回的参数都是同一个类型
+     * <p>BiFunction 的一个特例，接收和返回的参数都是同一个类型
      */
     static class BinaryOperatorDemo {
 
@@ -64,10 +64,11 @@ public class FunctionDemo extends Demo {
     }
 
     /**
-     * Predicate<T>
+     * <a href="https://blog.csdn.net/w605283073/article/details/89410918">Predicate<T></a>
+     * <pre>
      * 接受一个参数 T，返回一个 Boolean，用来进行判断是否符合条件
      * 该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。
-     * https://blog.csdn.net/w605283073/article/details/89410918
+     * </pre>
      */
     static class PredicateDemo {
 
@@ -97,9 +98,8 @@ public class FunctionDemo extends Demo {
     }
 
     /**
-     * Consumer<T>
-     * 接收一个参数 T，不返回结果，用来对参数进行任意(消费)处理
-     * https://www.jianshu.com/p/63771441ba31
+     * <a href="https://www.jianshu.com/p/63771441ba31">Consumer<T></a>
+     * <p>接收一个参数 T，不返回结果，用来对参数进行任意(消费)处理
      */
     static class ConsumerDemo {
 
@@ -115,15 +115,13 @@ public class FunctionDemo extends Demo {
     }
 
     /**
-     * Supplier<T>
-     * 不接受参数，返回一个新的对象 T
-     * https://blog.csdn.net/m0_37779570/article/details/81871197
+     * <a href="https://blog.csdn.net/m0_37779570/article/details/81871197">Supplier<T></a>
+     * <p>不接受参数，返回一个新的对象 T
      */
     static class SupplierDemo {
 
         /**
-         * 一个 Stream 只允许被中间或终端操作操作一次，
-         * 可通过 Supplier 的 get() 来获取新的 Stream，再对其进行操作
+         * 一个 Stream 只允许被中间或终端操作操作一次，可通过 Supplier 的 get() 来获取新的 Stream，再对其进行操作
          */
         @Test
         public void testSupplier() {
@@ -143,8 +141,7 @@ public class FunctionDemo extends Demo {
         }
 
         /**
-         * 实现不用传参的工厂模式
-         * https://www.cnblogs.com/webor2006/p/8243874.html
+         * <a href="https://www.cnblogs.com/webor2006/p/8243874.html">实现不用传参的工厂模式</a>
          */
         @Test
         public void testFactoryPattern() {
