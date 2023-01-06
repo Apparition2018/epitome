@@ -14,33 +14,42 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 单例模式：确保一个类只有一个实例，并提供一个全局访问点
- * 使用场景：
- * 1.同定义
- * 2.减少内存开销
- * 3.避免对资源的多重占用：如写文件操作
+ * <p>使用场景：
+ * <pre>
+ * 1 同定义
+ * 2 减少内存开销
+ * 3 避免对资源的多重占用：如写文件操作
+ * </pre>
  * 使用实例：
- * 1.配置信息类、ID 生成器、连接池、线程池、缓冲池、工具类、日志
- * 2.{@link Runtime#getRuntime()}
- * 3.{@link java.awt.Desktop#getDesktop()}
- * 4.{@link System#getSecurityManager()}
- * 5.{@link org.springframework.beans.factory.support.AbstractBeanFactory#getBean(String)} 单例注册表
- * <p>
+ * <pre>
+ * 1 配置信息类、ID 生成器、连接池、线程池、缓冲池、工具类、日志
+ * 2 {@link Runtime#getRuntime()}
+ * 3 {@link java.awt.Desktop#getDesktop()}
+ * 4 {@link System#getSecurityManager()}
+ * 5 {@link org.springframework.beans.factory.support.AbstractBeanFactory#getBean(String)} 单例注册表
+ * </pre>
  * 缺点：
- * 1.违反单一职责原则：除了充当工厂角色，一般还包含一些业务方法
- * 2.违反开闭原则：没有抽象层，扩展困难，要扩展只能修改源码
- * 3.难以单元测试：许多测试框架以基于继承的方式创建模拟对象。单例构造器私有，大多数语言不能重写静态方法
- * 4.实例化的共享对象长时间不利用会被 GC 回收，导致单例对象状态的丢失，再次利用时又重新实例化
+ * <pre>
+ * 1 违反单一职责原则：除了充当工厂角色，一般还包含一些业务方法
+ * 2 违反开闭原则：没有抽象层，扩展困难，要扩展只能修改源码
+ * 3 难以单元测试：许多测试框架以基于继承的方式创建模拟对象。单例构造器私有，大多数语言不能重写静态方法
+ * 4 实例化的共享对象长时间不利用会被 GC 回收，导致单例对象状态的丢失，再次利用时又重新实例化
+ * </pre>
  * 扩展：
- * 1.多例模式：{@link MultitonDemo}
- * 2.TODO-LJH 分布式单例
- * <p>
- * Singleton：https://refactoringguru.cn/design-patterns/singleton
- * Java设计模式：http://c.biancheng.net/view/1338.html
+ * <pre>
+ * 1 多例模式：{@link MultitonDemo}
+ * 2 TODO-LJH 分布式单例
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/singleton">Singleton</a>
+ * <a href="http://c.biancheng.net/view/1338.html">Java设计模式</a>
  * 设计模式之美：单例模式（上）：为什么说支持懒加载的双重检测不比饿汉式更优？
  * 设计模式之美：单例模式（中）：我为什么不推荐使用单例模式？又有何替代方案？
  * 设计模式之美：单例模式（下）：如何设计实现一个集群环境下的分布式单例模式？
- * Tom|多种单例写法和两种攻击：https://gupaoedu-tom.blog.csdn.net/article/details/120972136
- * 单例 vs 静态类：https://www.baeldung.com/java-static-class-vs-singleton
+ * <a href="https://gupaoedu-tom.blog.csdn.net/article/details/120972136">Tom|多种单例写法和两种攻击</a>
+ * <a href="https://www.baeldung.com/java-static-class-vs-singleton">单例 vs 静态类</a>
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/7 17:12
@@ -91,19 +100,18 @@ public class SingletonDemo {
     }
 
     /**
-     * 双重检查锁 (double-checked locking)：线程安全，懒汉模式的升级版
-     * <p>
-     * instance = new DoubleCheckLockSingleton(); 在 JVM 里面的执行分为三步：
-     * 1.在堆内存开辟内存空间
-     * 2.在堆内存中实例化 Singleton 里面的各个参数
-     * 3.把对象指向堆内存空间
+     * <a href="https://www.cnblogs.com/xz816111/p/8470048.html">双重检查锁</a> (double-checked locking)：线程安全，懒汉模式的升级版
+     * <p>instance = new DoubleCheckLockSingleton(); 在 JVM 里面的执行分为三步：
+     * <pre>
+     * 1 在堆内存开辟内存空间
+     * 2 在堆内存中实例化 Singleton 里面的各个参数
+     * 3 把对象指向堆内存空间
+     *
      * 由于 JVM 存在重排序（乱序执行），所以可能在 2 还没执行时就先执行了 3，
      * 如果此时再被切换到其它线程上，由于执行了 3，INSTANCE 已经非空了，会被直接拿出来用，
      * 这样的话，就会出现异常。这个就是著名的 DCL 失效问题。
-     * <p>
+     * </pre>
      * 通过双重检查锁（double-checked locking），实现延迟初始化需要将目标属性声明为 volatile 型（阿里编程规约）
-     * <p>
-     * https://www.cnblogs.com/xz816111/p/8470048.html
      */
     static class DoubleCheckLockSingleton {
         private volatile static DoubleCheckLockSingleton instance;
@@ -122,8 +130,10 @@ public class SingletonDemo {
 
     /**
      * 按需初始化 (Initialization on Demand Holder)：静态内部类，饿汉的优化版
-     * 1.延迟加载：内部类属于被动引用，外部类加载时不会对其进行初始化，getInstance 第一次被调用的时候才加载内部类
-     * 2.线程安全：同饿汉线程安全原因
+     * <pre>
+     * 1 延迟加载：内部类属于被动引用，外部类加载时不会对其进行初始化，getInstance 第一次被调用的时候才加载内部类
+     * 2 线程安全：同饿汉线程安全原因
+     * </pre>
      * 缺点：外部无法传递参数进去内部类里
      */
     static class InitOnDemandSingleton {
@@ -164,8 +174,7 @@ public class SingletonDemo {
     }
 
     /**
-     * 测试序列化攻击
-     * https://www.zhihu.com/zvideo/1437472799569379328
+     * <a href="https://www.zhihu.com/zvideo/1437472799569379328">测试序列化攻击</a>
      */
     @Test
     public void serializeAttack() {
@@ -187,10 +196,13 @@ public class SingletonDemo {
 
     /**
      * 枚举
-     * 1.线程安全：编译后，枚举项由 static 修饰
-     * 2.防止反射攻击：Constructor.java:417 Cannot reflectively create enum objects
-     * 3.防止序列化攻击：序列化时仅序列化枚举对象的 name，反序列化时通过 valueOf(name) 反序列化枚举对象
-     * 枚举实现单例：https://blog.csdn.net/qq_38844728/article/details/88903939
+     * <pre>
+     * 1 线程安全：编译后，枚举项由 static 修饰
+     * 2 防止反射攻击：Constructor.java:417 Cannot reflectively create enum objects
+     * 3 防止序列化攻击：序列化时仅序列化枚举对象的 name，反序列化时通过 valueOf(name) 反序列化枚举对象
+     * </pre>
+     *
+     * @see <a href="https://blog.csdn.net/qq_38844728/article/details/88903939">枚举实现单例</a>
      */
     private enum EnumSingleton {
         INSTANCE;

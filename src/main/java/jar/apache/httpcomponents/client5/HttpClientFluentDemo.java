@@ -15,8 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 /**
- * httpclient5-fluent
- * https://hc.apache.org/httpcomponents-client-4.5.x/current/tutorial/html/fluent.html
+ * fluent API
  *
  * @author ljh
  * @since 2021/8/2 10:35
@@ -35,11 +34,11 @@ public class HttpClientFluentDemo {
                     if (response.getCode() >= HttpStatus.SC_REDIRECTION) {
                         throw new HttpResponseException(response.getCode(), response.getReasonPhrase());
                     }
-                    HttpEntity entity = response.getEntity();
-                    if (entity == null) {
+                    HttpEntity httpEntity = response.getEntity();
+                    if (httpEntity == null) {
                         throw new ClientProtocolException("Response contains no content");
                     }
-                    return EntityUtils.toString(entity, StandardCharsets.UTF_8);
+                    return EntityUtils.toString(httpEntity, StandardCharsets.UTF_8);
                 });
         System.out.println(result);
     }

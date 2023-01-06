@@ -2,10 +2,10 @@
 
 ---
 ## Tomcat
-### 启动中文乱码
-1. 打开 D:\dev\apache-tomcat\conf\logging.properties
-2. 修改 java.util.logging.ConsoleHandler.encoding = GBK
-### [热部署](https://blog.csdn.net/w15321271041/article/details/80597962)
+### 中文乱码
+1. 打开 D:\dev\apache-tomcat\conf\logging.properties：修改 GBK 为 UTF-8
+2. VM options：-Dfile.encoding=UTF-8
+### 热部署
 1. On 'Update' action: Update classes and resources
 2. Debug 启动项目 (修改 Java 文件时可以立刻生效)
 ---

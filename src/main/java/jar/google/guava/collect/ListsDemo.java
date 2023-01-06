@@ -7,15 +7,17 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 /**
- * Lists
- * <p>
+ * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#lists">Lists</a>
+ * <pre>
  * static <E> LinkedList<E>             newLinkedList([Iterable<? extends E> elements])             创建 LinkedList
  * static <E> CopyOnWriteArrayList<E>   newCopyOnWriteArrayList([Iterable<? extends E> elements])   创建 CopyOnWriteArrayList
- * static <T> List<T>	                reverse(List<T> list)                                       返回指定列表的反向视图
- * <p>
- * http://www.ibloger.net/article/3312.html
- * https://github.com/google/guava/wiki/CollectionUtilitiesExplained#lists
- * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Lists.html
+ * static <T> List<T>                   reverse(List<T> list)                                       返回指定列表的反向视图
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="http://www.ibloger.net/article/3312.html">Google Guava - Lists</a>
+ * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Lists.html">Lists api</a>
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -48,5 +50,4 @@ public class ListsDemo extends Demo {
         // 将 CharSequence 分割为单个字符
         p(Lists.charactersOf(HELLO_WORLD)); // [H, e, l, l, o,  , W, o, r, l, d, !]
     }
-
 }

@@ -1,5 +1,8 @@
 package jar.apache.httpcomponents.client5;
 
+import l.demo.Demo;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.ClientProtocolException;
 import org.apache.hc.client5.http.auth.StandardAuthScheme;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
@@ -11,6 +14,8 @@ import org.apache.hc.client5.http.cookie.StandardCookieSpec;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
@@ -21,6 +26,7 @@ import org.apache.hc.core5.http.config.Registry;
 import org.apache.hc.core5.http.config.RegistryBuilder;
 import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 import org.apache.hc.core5.http.io.SocketConfig;
+import org.apache.hc.core5.http.io.entity.BufferedHttpEntity;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.http.message.BasicHeader;
@@ -29,28 +35,35 @@ import org.apache.hc.core5.net.URIBuilder;
 import org.apache.hc.core5.pool.PoolConcurrencyPolicy;
 import org.apache.hc.core5.pool.PoolReusePolicy;
 import org.apache.hc.core5.util.TimeValue;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
  * HttpClientUtils
  * <pre>
- * <a href="https://hc.apache.org/httpcomponents-client-5.1.x/index.html">HttpClient</a>
- * <a href="http://www.mydlq.club/article/68/">HttpClient 工具详解</a>
- * <a href="https://www.cnblogs.com/lixianshengfitting/p/13840123.html">HttpClient 设置 cookies</a>
+ * <a href="https://hc.apache.org/httpcomponents-client-5.2.x/index.html">HttpClient</a>
+ * <a href="https://www.baeldung.com/httpclient-guide">Apache HttpClient Tutorial | Baeldung</a>
  * <a href="https://blog.csdn.net/citywu123/article/details/109456035">七大 Http 客户端比较</a>
  * </pre>
  *
  * @author ljh
  * @since 2020/11/12 21:35
  */
-public class HttpClientUtils {
+public class HttpClientUtils extends Demo {
 
     private static volatile HttpClientUtils instance;
 
@@ -135,10 +148,10 @@ public class HttpClientUtils {
 
         // 响应处理
         // https://github.com/apache/httpcomponents-client/blob/5.1.x/httpclient5/src/test/java/org/apache/hc/client5/http/examples/ClientWithResponseHandler.java
-        responseHandler = response -> {
-            int statusCode = response.getCode();
+        responseHandler = httpResponse -> {
+            int statusCode = httpResponse.getCode();
             if (statusCode >= HttpStatus.SC_SUCCESS && statusCode < HttpStatus.SC_REDIRECTION) {
-                HttpEntity httpEntity = response.getEntity();
+                HttpEntity httpEntity = httpResponse.getEntity();
                 try {
                     return httpEntity != null ? EntityUtils.toString(httpEntity, StandardCharsets.UTF_8) : null;
                 } catch (ParseException e) {
@@ -151,14 +164,34 @@ public class HttpClientUtils {
     }
 
     @Test
-    public void test() throws IOException {
-        Map<String, String> cookies = new HashMap<>();
-        cookies.put("cny", "1");
-        System.out.println(HttpClientUtils.getInstance().doPost("http://localhost:3333/fetch/cookie", null, cookies));
+    public void test() throws IOException, URISyntaxException {
+        try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
+            // HttpGet
+            HttpGet httpGet = new HttpGet("https://credit.gd.gov.cn/creditquery!queryLegalEntityOrgList.do?conditions=914403001922038216");
+            httpGet.setHeader("User-Agent", "PostmanRuntime/  7.29.2");
+            CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
+            // Document
+            Document document = Jsoup.parse(EntityUtils.toString(httpResponse.getEntity(), StandardCharsets.UTF_8));
+            Elements creditReportInput = document.select("#creditReportForm input");
+            String paramName = creditReportInput.attr("name");
+            String paramValue = creditReportInput.attr("value");
+
+            // HttpPost
+            HttpPost httpPost = new HttpPost("https://credit.gd.gov.cn/creditreportAction!exportCreditReport.do");
+            httpPost.setHeader("User-Agent", "PostmanRuntime/7.29.2");
+            List<BasicNameValuePair> nameValuePairList = Collections.singletonList(new BasicNameValuePair(paramName, paramValue));
+            HttpEntity formEntity = new UrlEncodedFormEntity(nameValuePairList, StandardCharsets.UTF_8);
+            httpPost.setEntity(formEntity);
+            CloseableHttpResponse httpResponse2 = httpClient.execute(httpPost);
+            HttpEntity httpEntity = new BufferedHttpEntity(httpResponse2.getEntity());
+            String fileMd5 = DigestUtils.md5Hex(httpEntity.getContent());
+            Files.copy(httpEntity.getContent(), new File(String.format("%s%s.pdf", DESKTOP, fileMd5)).toPath());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public String doPost(String url, Map<String, String> params, Map<String, String> cookies) throws IOException {
-        String responseBody;
+    private String doPost(String url, Map<String, String> params, String json, Map<String, String> cookies) throws IOException {
         HttpPost httpPost = new HttpPost(url);
         if (params != null) {
             List<BasicNameValuePair> nameValuePairList = params.entrySet().stream().map(
@@ -166,40 +199,42 @@ public class HttpClientUtils {
             HttpEntity formEntity = new UrlEncodedFormEntity(nameValuePairList, StandardCharsets.UTF_8);
             httpPost.setEntity(formEntity);
         }
+        if (StringUtils.isNotBlank(json)) {
+            StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
+            httpPost.setEntity(stringEntity);
+        }
         if (cookies != null) {
             Header header = new BasicHeader("Cookie", cookies.entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue()).collect(Collectors.joining("&")));
             httpPost.addHeader(header);
         }
-        responseBody = httpClient.execute(httpPost, responseHandler);
-        return responseBody;
-    }
-
-    public String doPost(String url, String json) throws IOException {
-        String responseBody;
-        StringEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
-        HttpPost httpPost = new HttpPost(url);
-        httpPost.setEntity(entity);
-        responseBody = httpClient.execute(httpPost, responseHandler);
-        return responseBody;
-    }
-
-    public String doPost(String url, Map<String, String> params) throws IOException {
-        return doPost(url, params, null);
+        return httpClient.execute(httpPost, responseHandler);
     }
 
     public String doPost(String url) throws IOException {
         return doPost(url, null, null);
     }
 
+    public String doPost(String url, Map<String, String> params) throws IOException {
+        return doPost(url, params, null);
+    }
+
+    public String doPost(String url, Map<String, String> params, Map<String, String> cookies) throws IOException {
+        return doPost(url, params, null, cookies);
+    }
+
+    public String doPost(String url, String json) throws IOException {
+        return doPost(url, null, json, null);
+    }
+
     public String doGet(String url, Map<String, String> params) throws IOException, URISyntaxException {
-        String responseBody;
         URIBuilder builder = new URIBuilder(url);
         if (params != null) {
             params.forEach(builder::addParameter);
         }
         HttpGet httpGet = new HttpGet(builder.build());
-        responseBody = httpClient.execute(httpGet, responseHandler);
-        return responseBody;
+        // 模拟 Postman 访问，防止网页拦截
+        httpGet.setHeader("User-Agent", "PostmanRuntime/7.29.2");
+        return httpClient.execute(httpGet, responseHandler);
     }
 
     public String doGet(String url) throws IOException, URISyntaxException {
