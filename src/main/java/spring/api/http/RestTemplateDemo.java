@@ -13,15 +13,11 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
  * RestTemplate
- * 详解 RestTemplate 操作：https://blog.csdn.net/itguangit/article/details/78825505
- * RestTemplate 深度解析：https://blog.csdn.net/qq_27000425/article/details/72883910
- * Spring RestTemplate 中几种常见的请求方式：https://segmentfault.com/a/1190000011093597
- * 基于 springboot 的 RestTemplate, okhttp 和 HttpClient 对比：https://www.cnblogs.com/wzk-0000/p/10955406.html
+ * <p><a href="https://www.baeldung.com/rest-template">A Guide to the RestTemplate</a>
  *
  * @author ljh
  * @since 2020/11/13 1:35
@@ -70,7 +66,7 @@ public class RestTemplateDemo extends Demo {
         // http://localhost:3333/demo/post3
         url = DEMO_URL + "post3";
         HttpEntity<?> httpEntity;
-        if (new Random().nextBoolean()) {
+        if (randomBoolean()) {
             httpEntity = new HttpEntity<>(person, requestHeaders);
         } else {
             httpEntity = new HttpEntity<>(map, requestHeaders);

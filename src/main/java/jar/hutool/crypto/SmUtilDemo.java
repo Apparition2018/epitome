@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
-import java.util.Random;
 
 /**
  * <a href="https://hutool.cn/docs/#/crypto/国密算法工具-SmUtil">SmUtil</a>   国密算法工具
@@ -88,7 +87,7 @@ public class SmUtilDemo extends Demo {
          */
         @Test
         public void testSign() {
-            if (new Random().nextBoolean()) {
+            if (randomBoolean()) {
                 // 随机生成密钥对
                 SM2 sm2 = SmUtil.sm2();
                 byte[] bytes = sm2.sign(HELLO_WORLD.getBytes(StandardCharsets.UTF_8));

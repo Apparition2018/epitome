@@ -40,5 +40,4 @@ public class Test extends Demo {
         BeanUtil.copyProperties(person2, person, CopyOptions.create(Person.class, true));
         System.err.println(person);
     }
-
 }

@@ -56,7 +56,9 @@ public class SimpleDateFormatDemo extends Demo {
      * SimpleDateFormat 是线程不安全的类，一般不要定义为 static 变量，如果定义为 static，必须加锁，或者使用 DateUtils 工具类
      * JDK1.8 可以使用 Instant 代替 Date，LocalDateTime 代替 Calendar，DateTimeFormatter 代替 SimpleDateFormat
      * </pre>
-     * <a href="https://www.cnblogs.com/zemliu/p/3290585.html">SimpleDateFormat 的线程安全问题与解决方案</a>
+     *
+     * @see l.utils.DateFormatUtils
+     * @see org.apache.commons.lang3.time.DateFormatUtils
      */
     private static final ThreadLocal<SimpleDateFormat> DATE_FORMAT = ThreadLocal.withInitial(() -> new SimpleDateFormat(DatePattern.NORM_DATE_PATTERN));
 }

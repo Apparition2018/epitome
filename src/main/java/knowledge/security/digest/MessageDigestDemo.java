@@ -10,19 +10,24 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Random;
 
 /**
- * MessageDigest    消息摘要
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/security/MessageDigest.html">MessageDigest</a>    消息摘要
+ * <pre>
  * MessageDigest 为应用程序提供信息摘要算法的功能。
  * 消息摘要是安全的单向哈希函数，它接收任意大小的数据，并输出固定长度的哈希值。
  * 消息摘要算法是不可逆的，理论上无法通过反向运算取得原数据内容，因此它通常只能被用来做数据完整性验证。
+ * </pre>
  * 常见消息摘要有：
+ * <pre>
  * MD2, MD4, MD5, SHA, SHA-1, SHA-256, SHA-384, SHA-512,
  * HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384, HmacSHA512, HAVAL
- * Base64 和消息摘要：https://www.cnblogs.com/oumyye/p/4593592.html
- * https://www.runoob.com/manual/jdk1.6/java.base/java/security/MessageDigest.html
- * https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#MessageDigest
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#MessageDigest">MessageDigest Algorithms</a>
+ * <a href="https://www.cnblogs.com/oumyye/p/4593592.html">Java Base64 和消息摘要</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/8 19:04
@@ -48,7 +53,7 @@ public class MessageDigestDemo extends Demo {
         MessageDigest messageDigest = MessageDigest.getInstance(MESSAGE_DIGEST);
 
         byte[] bytes;
-        if (new Random().nextBoolean()) {
+        if (randomBoolean()) {
             // void	                update(byte[] input[, int offset, int len])
             // 使用指定的 byte 数组，从指定的偏移量开始更新摘要；类似 StringBuilder 的 append()，追加模式
             messageDigest.update(HELLO_WORLD.getBytes(StandardCharsets.UTF_8));
@@ -92,9 +97,8 @@ public class MessageDigestDemo extends Demo {
 
     /**
      * 加盐消息摘要
-     * Salt + SRC
-     * 
-     * 加盐密码保存？ - 知乎：https://www.zhihu.com/question/20299384
+     *
+     * @see <a href="https://www.zhihu.com/question/20299384">加盐密码</a>
      */
     @Test
     public void testSaltMessageDigest() {
@@ -119,29 +123,29 @@ public class MessageDigestDemo extends Demo {
     }
 
     /**
+     * MD5
+     * <pre>
      * MD5 即 Message-Digest Algorithm 5（信息-摘要算法5），用于确保信息传输完整一致。
      * MD5 是输入不定长度信息，输出固定长度 128-bits 的算法。
-     * 严格意义上来讲，MD5 以及 SHA1 并不属于加密算法，也不属于签名算法，而是一种摘要算法，用于数据完整性校验等
-     * <p>
+     * MD5 是一种不可逆的算法，你无法通过得到的 MD5 值逆向算出原数据内容。
+     * 严格意义上来讲，MD5 以及 SHA1 并不属于加密算法，也不属于签名算法，而是一种摘要算法，用于数据完整性校验等。
+     * </pre>
      * 特点：
-     * 1.压缩性：任意长度的数据，算出的MD5值长度都是固定的，即 128 位。
-     * 2.容易计算：从原数据计算出 MD5 值很容易。
-     * 3.抗修改性：对原数据进行任何改动，哪怕只修改1个字节，所得到的 MD5 值都有很大区别。
-     * 4.弱抗碰撞：已知原数据和其 MD5 值，想找到一个具有相同MD5值的数据（即伪造数据）是非常困难的。
-     * 5.强抗碰撞：想找到两个不同的数据，使它们具有相同的MD5值，是非常困难的。
-     * 4 和 5要特别介绍一下。MD5 使用的是散列函数（也称哈希函数），一定概率上也存在哈希冲突（也称哈希碰撞），即多个不同的原数据对应一个相同的 MD5 值。
-     * 不过，经过 MD4、MD3 等几代算法的优化，MD5 已经充分利用散列的分散性高度避免碰撞的发生。
-     * 可以看出，MD5 是一种不可逆的算法，也就说，你无法通过得到的 MD5 值逆向算出原数据内容。正是凭借这些特点，MD5 被广泛使用。
-     * <p>
+     * <pre>
+     * 1 压缩性：任意长度的数据，算出的MD5值长度都是固定的，即 128 位。
+     * 2 容易计算：从原数据计算出 MD5 值很容易。
+     * 3 抗修改性：对原数据进行任何改动，哪怕只修改1个字节，所得到的 MD5 值都有很大区别。
+     * 4 弱抗碰撞：已知原数据和其 MD5 值，想找到一个具有相同MD5值的数据（即伪造数据）是非常困难的。
+     * 5 强抗碰撞：想找到两个不同的数据，使它们具有相同的MD5值，是非常困难的。
+     * </pre>
      * 应用场景：
-     * 1.密码保存和验证。
-     * 2.客户端与服务器的 HTTP 通信。通信双方可以将报文内容做一个 MD5 计算，并将计算所得 MD5 值一并传递给彼此，
-     * - 这样，接收方可以通过对报文内容再次做 MD5 计算得到一个 MD5 值，与传递报文中的 MD5 值做比较，验证数据是否完整，或者是否中途被拦截篡改过。
-     * 3.网络云盘文件秒传功能。服务器存储文件的时候，同时记录每一个文件的 MD5 值，不同文件对应着不同的 MD5 值。
-     * - 这样，遇到用户上传文件时，将上传文件的 MD5 值与服务器上所有存储的 MD5 值做比较，如果相同，则说明用户上传的文件已经在服务器存有。
-     * - 这样，只需要在数据库表中添加一个记录，映射到对应的文件，而不用重复上传，实现所谓秒传的功能。
-     * <p>
-     * Java 如何获取 MD5 值：https://blog.csdn.net/iblade/article/details/73288822
+     * <pre>
+     * 1 密码保存和验证
+     * 2 客户端与服务器的 HTTP 通信
+     * 3 网络云盘文件秒传功能
+     * </pre>
+     *
+     * @see <a href="https://blog.csdn.net/iblade/article/details/73288822">Java MD5</a>
      */
     static class MD5Demo extends Demo {
 
@@ -155,20 +159,20 @@ public class MessageDigestDemo extends Demo {
 
     /**
      * SHA (Secure Hash Algorithm，安全散列算法）
-     * <p>
-     * SHA 家族的五个算法，分别是 SHA-1、SHA-224、SHA-256、SHA-384，和 SHA-512。后四者有时并称为 SHA-2。由美国国家安全局 (NSA) 所设计。
-     * <p>
-     * 算法           输出位数    状态位     状态数     一个word长度(bits) 循环次数       碰撞攻击
-     * SHA-0 			160     160         2^64 − 1        32			80		    是
-     * SHA-1			160     160         2^64 − 1        32			80	    存在263的攻击
-     * SHA-256/224  256/224     256         2^64 − 1        32			64	      尚未出现
-     * SHA-512/384	512/384     512         2^128 − 1	    64			80	      尚未出现
-     * <p>
+     * <p>SHA 家族的五个算法，分别是 SHA-1、SHA-224、SHA-256、SHA-384，和 SHA-512。后四者有时并称为 SHA-2。由美国国家安全局 (NSA) 所设计。
+     * <pre>
+     * 算法           输出位数    状态位     状态数     一个word长度(bits)  循环次数    碰撞攻击
+     * SHA-0            160     160     2^64 − 1        32              80          是
+     * SHA-1            160     160     2^64 − 1        32              80      存在263的攻击
+     * SHA-256/224  256/224     256     2^64 − 1        32              64          尚未出现
+     * SHA-512/384  512/384     512     2^128 − 1       64              80          尚未出现
+     * </pre>
      * SHA-1 和 MD5 不同点：
-     * 1.对强行攻击的安全性：SHA-1 摘要比 MD5 摘要长 32 位。使用强行技术，产生任何一个报文使其摘要等于给定报摘要的难度对 MD5 是 2^128 数量级的操作，
-     * - 而对 SHA-1 则是 2^160 数量级的操作。这样，SHA-1 对强行攻击有更大的强度。
-     * 2.对密码分析的安全性：由于 MD5 的设计，易受密码分析的攻击，SHA-1 显得不易受这样的攻击
-     * 3.速度：MD5 比 SHA-1 快
+     * <pre>
+     * 1 对强行攻击的安全性：SHA-1 摘要比 MD5 摘要长 32 位。使用强行技术，产生任何一个报文使其摘要等于给定报摘要的难度对 MD5 是 2^128 数量级的操作，而对 SHA-1 则是 2^160 数量级的操作。这样，SHA-1 对强行攻击有更大的强度。
+     * 2 对密码分析的安全性：由于 MD5 的设计，易受密码分析的攻击，SHA-1 显得不易受这样的攻击
+     * 3 速度：MD5 比 SHA-1 快
+     * </pre>
      */
     static class SHADemo {
 
