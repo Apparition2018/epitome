@@ -13,15 +13,14 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Maps
- * <p>Method：
+ * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#maps">Maps</a>
  * <pre>
  * static ConcurrentMap<K, V>   newConcurrentMap()                                  创建 ConcurrentMap
  * static TreeMap<K, V>         newTreeMap([SortedMap<K, ? extends V> map])         创建 TreeMap
  * static TreeMap<K, V>         newTreeMap(Comparator<C> comparator)                创建 TreeMap，根据 Comparator
  * static EnumMap<K, V>         newEnumMap(Map<K, ? extends V>/Class<K>)            创建 EnumMap
  * static IdentityHashMap<K, V> newIdentityHashMap()                                创建 IdentityHashMap
- * <p>
+ *
  * static ImmutableMap<K, V>    immutableEnumMap(Map<K, ? extends V> map)           Map → immutableEnumMap
  * static XXXMap<K, V>          unmodifiableXXXMap(XXXMap<K, ? extends V> map)      XXXMap → unmodifiableXXXMap
  * static XXXMap<K, V>          synchronizedXXXMap(XXXMap<K, V> map)                XXXMap → synchronizedXXXMap
@@ -31,8 +30,7 @@ import java.util.Objects;
  * 参考：
  * <pre>
  * <a href="http://www.ibloger.net/article/3314.html">Guava Maps</a>
- * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#maps">Guava Wiki - Maps</a>
- * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Maps.html">Guava Maps API</a>
+ * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Maps.html">Maps api</a>
  * </pre>
  *
  * @author ljh
@@ -41,7 +39,7 @@ import java.util.Objects;
 public class MapsDemo extends Demo {
 
     @Test
-    public void testMaps() {
+    public void maps() {
         // static <K, V> HashMap<K, V>          newHashMapWithExpectedSize(int expectedSize)
         // static <K, V> HashMap<K, V>          newLinkedHashMapWithExpectedSize(int expectedSize)
         // 创建 HashMap/LinkedHashMap，有足够的初始容量来容纳元素，而不需要 growth
@@ -56,12 +54,10 @@ public class MapsDemo extends Demo {
 
     /**
      * 函数式接口相关
-     * <pre>
-     * static <K, V1, V2> Map<K, V2>    transformEntries(Map<K, V1> fromMap, Maps.EntryTransformer<? s K, ? s V1, V2> transformer)
-     * </pre>
+     * <p>static <K, V1, V2> Map<K, V2>    transformEntries(Map<K, V1> fromMap, Maps.EntryTransformer<? s K, ? s V1, V2> transformer)
      */
     @Test
-    public void testFunctionalInterface() {
+    public void functionalInterface() {
         // static <K,V> ImmutableMap<K,V>       uniqueIndex(Iterable<V>/Iterator<V>, Function<? super V,K> keyFunction)
         // List<Bean> → Map<field, Bean>
         ImmutableMap<Integer, Person> intPersonMap = Maps.uniqueIndex(personList.iterator(), Person::getId);

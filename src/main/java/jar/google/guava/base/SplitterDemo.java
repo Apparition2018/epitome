@@ -9,10 +9,11 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
- * Splitter
- * http://www.ibloger.net/article/3335.html
- * https://github.com/google/guava/wiki/StringsExplained#splitter
- * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Splitter.html
+ * <a href="https://github.com/google/guava/wiki/StringsExplained#splitter">Splitter</a>
+ * <pre>
+ * <a href="http://www.ibloger.net/article/3335.html">Guava Splitter</a>
+ * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Splitter.html">Splitter api</a>
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -62,5 +63,4 @@ public class SplitterDemo {
                 .split("hello=HELLO| world=WORLD|||");
         System.out.println(map); // {hello=HELLO, world=WORLD}
     }
-
 }

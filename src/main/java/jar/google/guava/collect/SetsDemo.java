@@ -10,20 +10,22 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Sets
- * <p>
+ * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#sets">Sets</a>
+ * <pre>
  * static Set<E>                    newConcurrentHashSet([Iterable<? extends E> elements])      创建 ConcurrentHashSet
  * static CopyOnWriteArraySet<E>    newCopyOnWriteArraySet(Iterable<? extends E> elements)      创建 CopyOnWriteArraySet
  * static TreeSet<E>                newTreeSet(Iterable<? extends E> elements)                  创建 TreeSet
  * static EnumSet<E>                newEnumSet(Iterable<E> iterable, Class<E> elementType)      创建 EnumSet
  * static Set<E>                    newIdentityHashSet()                                        创建 IdentityHashSet
- * <p>
+ *
  * static <E> NavigableSet<E>       unmodifiableNavigableSet(NavigableSet<E> set)
  * static <E> NavigableSet<E>       synchronizedNavigableSet(NavigableSet<E> navigableSet)
- * <p>
- * http://www.ibloger.net/article/3313.html
- * https://github.com/google/guava/wiki/CollectionUtilitiesExplained#sets
- * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Sets.html
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="http://www.ibloger.net/article/3313.html">Guava Sets</a>
+ * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Sets.html">Sets api</a>
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -31,7 +33,7 @@ import java.util.TreeSet;
 public class SetsDemo extends Demo {
 
     @Test
-    public void testSets() {
+    public void test() {
         // static <E> HashSet<E>        newHashSetWithExpectedSize(int expectedSize)
         // static <E> LinkedHashSet<E>  newLinkedHashSetWithExpectedSize
         // 创建 set，有足够的初始容量来容纳元素，而不需要扩容
@@ -65,13 +67,13 @@ public class SetsDemo extends Demo {
     }
 
     /**
-     * static <E> Sets.SetView<E>	union(Set<? extends E> set1, Set<? extends E> set2)                 并集
-     * static <E> Sets.SetView<E>	intersection(Set<E> set1, Set<?> set2)                              交集
-     * static <E> Sets.SetView<E>	difference(Set<E> set1, Set<?> set2)                                差集，属于 set1 且不属于 set2
-     * static <E> Sets.SetView<E>	symmetricDifference(Set<? extends E> set1, Set<? extends E> set2)   对称差，只属于其中一个集合，而不属于另一个集合的元素组成的集合
+     * <p>static <E> Sets.SetView<E>   union(Set<? extends E> set1, Set<? extends E> set2)                 并集
+     * <p>static <E> Sets.SetView<E>   intersection(Set<E> set1, Set<?> set2)                              交集
+     * <p>static <E> Sets.SetView<E>   difference(Set<E> set1, Set<?> set2)                                差集，属于 set1 且不属于 set2
+     * <p>static <E> Sets.SetView<E>   symmetricDifference(Set<? extends E> set1, Set<? extends E> set2)   对称差，只属于其中一个集合，而不属于另一个集合的元素组成的集合
      */
     @Test
-    public void testSets2() {
+    public void test2() {
         Set<Integer> set1 = Sets.newHashSet(1, 2, 3);
         Set<Integer> set2 = Sets.newHashSet(5, 4, 3);
 
@@ -80,5 +82,4 @@ public class SetsDemo extends Demo {
         p(Sets.difference(set1, set2));            // [1, 2]
         p(Sets.symmetricDifference(set1, set2));   // [1, 2, 4, 5]
     }
-
 }

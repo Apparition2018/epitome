@@ -1,25 +1,21 @@
-package jar.google.guava;
+package jar.google.guava.evenbus;
 
 import com.google.common.eventbus.AsyncEventBus;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
-import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.Executors;
 
 /**
- * EventBus
- * <p>
- * https://github.com/google/guava/wiki/EventBusExplained
- * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/eventbus/EventBus.html
+ * <a href="https://github.com/google/guava/wiki/EventBusExplained">EventBus</a>
+ * <p><a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/eventbus/EventBus.html">EventBus api</a>
  *
  * @author ljh
  * @since 2022/1/26 10:21
  */
 public class EventBusDemo {
 
-    @Test
-    public void testEventBus() {
+    public static void main(String[] args) {
         // 同步阻塞
         // EventBus eventBus = new EventBus();
         // 异步非阻塞

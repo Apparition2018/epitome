@@ -2,7 +2,6 @@ package jar.google.guava.collect;
 
 import com.google.common.collect.Lists;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
  * </pre>
  * 参考：
  * <pre>
- * <a href="http://www.ibloger.net/article/3312.html">Google Guava - Lists</a>
+ * <a href="http://www.ibloger.net/article/3312.html">Guava Lists</a>
  * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Lists.html">Lists api</a>
  * </pre>
  *
@@ -24,8 +23,7 @@ import java.util.List;
  */
 public class ListsDemo extends Demo {
 
-    @Test
-    public void testLists() {
+    public static void main(String[] args) {
         List<Integer> guavaList;
 
         // static <E> ArrayList<E>	        newArrayListWithExpectedSize(int estimatedSize)

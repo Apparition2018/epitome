@@ -11,10 +11,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Joiner
- * http://www.ibloger.net/article/3334.html
- * https://github.com/google/guava/wiki/StringsExplained#joiner
- * https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Joiner.html
+ * <a href="https://github.com/google/guava/wiki/StringsExplained#joiner">Joiner</a>
+ * <pre>
+ * <a href="http://www.ibloger.net/article/3334.html">Guava Joiner</a>
+ * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Joiner.html">Joiner api</a>
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -85,5 +86,4 @@ public class JoinerDemo extends Demo {
                 .collect(Collectors.joining("-"));
         p(collect); // A-B-C
     }
-
 }

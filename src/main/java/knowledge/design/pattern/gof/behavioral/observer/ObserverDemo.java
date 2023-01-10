@@ -1,5 +1,6 @@
 package knowledge.design.pattern.gof.behavioral.observer;
 
+import jar.google.guava.evenbus.EventBusDemo;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +28,7 @@ import java.util.*;
  * Observer：https://refactoringguru.cn/design-patterns/observer
  * Java设计模式：http://c.biancheng.net/view/1390.html
  * 设计模式之美：观察者模式（上）：详解各种应用场景下观察者模式的不同实现方式
- * 设计模式之美：观察者模式（下）：如何实现一个异步非阻塞的EventBus框架？{@link jar.google.guava.EventBusDemo}
+ * 设计模式之美：观察者模式（下）：如何实现一个异步非阻塞的EventBus框架？{@link EventBusDemo}
  *
  * @author ljh
  * @since 2020/9/26 2:51
