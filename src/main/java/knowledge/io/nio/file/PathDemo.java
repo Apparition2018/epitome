@@ -10,20 +10,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Path
- * 可用于在文件系统中定位文件的对象。它通常表示与系统相关的文件路径。
- * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html
- * <p>
- * int	        compareTo(Path other)           比较两个抽象路径的词法，如果返回值为 0 则相等
- * boolean	    equals(Object other)            判断此路径是否与给定对象相等
- * boolean	    endsWith(Path/String other)     判断此路径是否以给定路径结束
- * boolean	    startsWith(Path/String other)   判断此路径是否以给定路径开始
- * boolean	    isAbsolute()                    判断是否为绝对路径
- * FileSystem	getFileSystem()                 返回此对象的 FileSystem
- * <p>
- * Paths
- * 该类只包含通过转换路径字符串或 URI 返回路径的静态方法。
- * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html">Path</a>
+ * <p>可用于在文件系统中定位文件的对象。它通常表示与系统相关的文件路径。
+ * <pre>
+ * int          compareTo(Path other)           比较两个抽象路径的词法，如果返回值为 0 则相等
+ * boolean      equals(Object other)            判断此路径是否与给定对象相等
+ * boolean      endsWith(Path/String other)     判断此路径是否以给定路径结束
+ * boolean      startsWith(Path/String other)   判断此路径是否以给定路径开始
+ * boolean      isAbsolute()                    判断是否为绝对路径
+ * FileSystem   getFileSystem()                 返回此对象的 FileSystem
+ * </pre>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html">Paths</a>
+ * <p>该类只包含通过转换路径字符串或 URI 返回路径的静态方法。
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -31,12 +29,12 @@ import java.nio.file.Paths;
 public class PathDemo extends Demo {
 
     // 使用 FileSystem.getDefault().getPath(...) 创建 Path
-    private Path p1 = FileSystems.getDefault().getPath(DEMO_PATH);
+    private final Path p1 = FileSystems.getDefault().getPath(DEMO_PATH);
     // 使用 Paths.get(String first[, String... more]) 创建 Path
-    private Path p2 = Paths.get(RESOURCES_PATH, "spring");
+    private final Path p2 = Paths.get(RESOURCES_PATH, "spring");
 
-    private Path p3 = Paths.get(DEMO_ABSOLUTE_PATH);
-    private Path p4 = Paths.get(RESOURCES_ABSOLUTE_PATH + "spring");
+    private final Path p3 = Paths.get(DEMO_ABSOLUTE_PATH);
+    private final Path p4 = Paths.get(RESOURCES_ABSOLUTE_PATH + "spring");
 
     @Test
     public void get() {
@@ -62,16 +60,16 @@ public class PathDemo extends Demo {
     }
 
     /**
-     * Path	        normalize()             返回一个路径，该路径消除了冗余的名称元素；冗余名称元素一般指 ".", ".."
+     * Path         normalize()             返回一个路径，该路径消除了冗余的名称元素；冗余名称元素一般指 ".", ".."
      */
     @Test
     public void normalize() {
-        Path path = Paths.get(DEMO_PATH+ "a/../demo/");
+        Path path = Paths.get(DEMO_PATH + "a/../demo/");
         p(path.normalize()); // src\main\resources\demo\demo
     }
 
     /**
-     * Path	        relativize(Path other)  构造此路径与给定路径之间的相对路径
+     * Path         relativize(Path other)  构造此路径与给定路径之间的相对路径
      */
     @Test
     public void relativize() {
@@ -87,8 +85,10 @@ public class PathDemo extends Demo {
     }
 
     /**
-     * Path	        resolve(Path/String other)          当 other 是绝对路径，则返回 other；否则追加 other 至结尾
-     * Path	        resolveSibling(Path/String other)   类似上面方法，不过是生成兄弟路径
+     * <pre>
+     * Path         resolve(Path/String other)          当 other 是绝对路径，则返回 other；否则追加 other 至结尾
+     * Path         resolveSibling(Path/String other)   类似上面方法，不过是生成兄弟路径
+     * </pre>
      */
     @Test
     public void resolve() {
@@ -109,10 +109,12 @@ public class PathDemo extends Demo {
     }
 
     /**
-     * Path	        toAbsolutePath()        返回绝对路径
-     * Path	        toRealPath(LinkOption... options)   返回实际路径，如果找不到实际路径，会抛出异常
+     * <pre>
+     * Path         toAbsolutePath()        返回绝对路径
+     * Path         toRealPath(LinkOption... options)   返回实际路径，如果找不到实际路径，会抛出异常
      * URI          toFile()                Path → File
-     * URI	        toUri()                 Path → URI
+     * URI          toUri()                 Path → URI
+     * </pre>
      */
     @Test
     public void toXXX() throws IOException {
@@ -121,5 +123,4 @@ public class PathDemo extends Demo {
         p(p1.toFile());                             // src\main\resources\demo
         p(p1.toUri());                              // file:///D:/L/git/epitome/src/main/resources/demo/
     }
-
 }

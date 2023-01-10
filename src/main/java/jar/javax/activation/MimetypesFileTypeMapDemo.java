@@ -16,7 +16,7 @@ public class MimetypesFileTypeMapDemo extends Demo {
 
     @Test
     public void testMimetypesFileTypeMap() {
-        p(new MimetypesFileTypeMap().getContentType(new File(XIAO_XIN)));           // image/png
+        p(new MimetypesFileTypeMap().getContentType(new File(XIAO_XIN_PNG)));           // image/png
         p(new MimetypesFileTypeMap().getContentType(new File(JDBC_PROPS_FILENAME))); // application/octet-stream
     }
 }

@@ -1,4 +1,4 @@
-package jar.hutool.other;
+package jar.hutool;
 
 import cn.hutool.core.img.ImgUtil;
 import l.demo.Demo;
@@ -13,26 +13,26 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * ImgUtil
- * static ImageInputStream	getImageInputStream(InputStream in)                             获取 ImageInputStream
- * static ImageOutputStream	getImageOutputStream(File outFile / OutputStream out)           获取 ImageOutputStream
- * static ImageReader	    getReader(String type)                                          获得 ImageReader
- * static ImageWriter	    getWriter([Image img, ]String formatName)                       获取 ImageWriter
- * <p>
- * static Graphics2D	    createGraphics(BufferedImage image, Color color)                创建 Graphics2D
- * static Rectangle2D	    getRectangle(String str, Font font)                             获取 Rectangle2D
- * static Font	            createFont(InputStream fontStream / File fontFile)              根据文件创建字体
- * static Color	            getColor(int rgb / String colorName)                            获取颜色
- * static Color	            randomColor(Random random)                                      生成随机颜色
- * static Color	            hexToColor(String hex)                                          16进制的颜色值转换为 Color 对象
- * static String	        toHex(Color color)                                              Color 对象转16进制表示
- * <p>
- * static BufferedImage	    copyImage(Image img, int imageType, Color backgroundColor)      将已有 Image 复制新的一份出来
- * static BufferedImage	    read(XXX)                                                       读取图片
- * static void	            write[XXX](XXX ...)                                             写出图片
- * <p>
- * https://hutool.cn/docs/#/core/%E5%9B%BE%E7%89%87/%E5%9B%BE%E7%89%87%E5%B7%A5%E5%85%B7-ImgUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/img/ImgUtil.html
+ * <a href="https://hutool.cn/docs/#/core//图片/图片工具-ImgUtil">ImgUtil</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/img/ImgUtil.html">ImgUtil api</a>
+ * <pre>
+ * static ImageInputStream  getImageInputStream(InputStream in)                         获取 ImageInputStream
+ * static ImageOutputStream getImageOutputStream(File outFile / OutputStream out)       获取 ImageOutputStream
+ * static ImageReader       getReader(String type)                                      获得 ImageReader
+ * static ImageWriter       getWriter([Image img, ]String formatName)                   获取 ImageWriter
+ *
+ * static Graphics2D        createGraphics(BufferedImage image, Color color)            创建 Graphics2D
+ * static Rectangle2D       getRectangle(String str, Font font)                         获取 Rectangle2D
+ * static Font              createFont(InputStream fontStream / File fontFile)          根据文件创建字体
+ * static Color             getColor(int rgb / String colorName)                        获取颜色
+ * static Color             randomColor(Random random)                                  生成随机颜色
+ * static Color             hexToColor(String hex)                                      16进制的颜色值转换为 Color 对象
+ * static String            toHex(Color color)                                          Color 对象转16进制表示
+ *
+ * static BufferedImage     copyImage(Image img, int imageType, Color backgroundColor)  将已有 Image 复制新的一份出来
+ * static BufferedImage     read(XXX)                                                   读取图片
+ * static void              write[XXX](XXX ...)                                         写出图片
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/19 23:55
@@ -78,7 +78,7 @@ public class ImgUtilDemo extends Demo {
 
         // 图片水印
         ImgUtil.pressImage(IMG, new File(HU_DEMO_PATH + "capture_pressImage.jpg"),
-                ImgUtil.read(new File(XIAO_XIN)), // 水印图片
+                ImgUtil.read(new File(XIAO_XIN_PNG)), // 水印图片
                 0,      // x 坐标修正值。 默认在中间，偏移量相对于中间偏移
                 0,      // y 坐标修正值。 默认在中间，偏移量相对于中间偏移
                 0.1f

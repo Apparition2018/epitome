@@ -1,4 +1,4 @@
-package jar.hutool.other;
+package jar.hutool.script;
 
 import cn.hutool.script.ScriptUtil;
 import org.junit.jupiter.api.Test;
@@ -7,9 +7,8 @@ import javax.script.CompiledScript;
 import javax.script.ScriptException;
 
 /**
- * ScriptUtil
- * https://hutool.cn/docs/#/script/Script%E5%B7%A5%E5%85%B7-ScriptUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/script/ScriptUtil.html
+ * <a href="https://hutool.cn/docs/#/script/Script工具-ScriptUtil">ScriptUtil</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/script/ScriptUtil.html">ScriptUtil api</a>
  *
  * @author ljh
  * @since 2020/11/21 17:22
@@ -24,7 +23,7 @@ public class ScriptUtilDemo {
                 "print(b);";
         // 方法一
         ScriptUtil.eval(script);
-        
+
         // 方法二
         CompiledScript compiledScript = ScriptUtil.compile(script);
         compiledScript.eval();

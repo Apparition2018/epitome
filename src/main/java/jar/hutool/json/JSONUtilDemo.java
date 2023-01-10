@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.json;
 
 import cn.hutool.core.lang.TypeReference;
 import cn.hutool.json.JSONArray;
@@ -13,12 +13,13 @@ import java.util.List;
 import static l.demo.Demo.p;
 
 /**
- * JSONUtil
- * https://hutool.cn/docs/#/json/JSONUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONUtil.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSON.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONObject.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONArray.html
+ * <a href="https://hutool.cn/docs/#/json/JSONUtil">JSONUtil</a>
+ * <pre>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONUtil.html">JSONUtil api</a>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSON.html">JSON api</a>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONObject.html">JSONObject api</a>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONArray.html">JSONArray api</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/20 8:43

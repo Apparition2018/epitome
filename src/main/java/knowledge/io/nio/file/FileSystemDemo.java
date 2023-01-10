@@ -10,18 +10,17 @@ import java.nio.file.attribute.UserPrincipal;
 import java.nio.file.attribute.UserPrincipalLookupService;
 
 /**
- * FileSystem
- * 两个实现类：WindowsFileSystem，ZipFileSystem
- * String	            getSeparator()          返回分隔符
- * WatchService	        newWatchService()       新建 WatchService
- * FileSystemProvider	provider()              返回 FileSystemProvider
- * boolean	            isOpen()                是否打开
- * boolean	            isReadOnly()            是否只读
- * https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html
- * <p>
- * FileSystems
- * 文件系统的工厂方法。 该类定义了 getDefault() 来获取默认文件系统和工厂方法来构建其他类型的文件系统。
- * https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystems.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html">FileSystem</a>
+ * <p>两个实现类：WindowsFileSystem，ZipFileSystem
+ * <pre>
+ * String               getSeparator()          返回分隔符
+ * WatchService         newWatchService()       新建 WatchService
+ * FileSystemProvider   provider()              返回 FileSystemProvider
+ * boolean              isOpen()                是否打开
+ * boolean              isReadOnly()            是否只读
+ * </pre>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystems.html">FileSystems</a>
+ * <p>文件系统的工厂方法。 该类定义了 getDefault() 来获取默认文件系统和工厂方法来构建其他类型的文件系统。
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -29,16 +28,14 @@ import java.nio.file.attribute.UserPrincipalLookupService;
 public class FileSystemDemo extends Demo {
 
     /**
-     * FileStore
-     * 表示存储池、设备、分区、卷、具体文件系统或其他实现文件存储的具体方式
-     * https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileStore.html
-     * PathMatcher
-     * 用于路径匹配
-     * https://docs.oracle.com/javase/8/docs/api/java/nio/file/PathMatcher.html
+     * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileStore.html">FileStore</a>
+     * <p>表示存储池、设备、分区、卷、具体文件系统或其他实现文件存储的具体方式
      * <p>
-     * UserPrincipalLookupService
-     * 按名称查找用户和组主体的对象
-     * https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/UserPrincipalLookupService.html
+     * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/PathMatcher.html">PathMatcher</a>
+     * <p>用于路径匹配
+     * <p>
+     * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/attribute/UserPrincipalLookupService.html">UserPrincipalLookupService</a>
+     * <p>按名称查找用户和组主体的对象
      */
     @Test
     public void testFileSystem() throws IOException {
@@ -77,8 +74,7 @@ public class FileSystemDemo extends Demo {
     }
 
     /**
-     * 解压 Zip 文件
-     * https://www.cnblogs.com/lyndon-chen/p/3575393.html
+     * <a href="https://www.cnblogs.com/lyndon-chen/p/3575393.html">解压 Zip 文件</a>
      */
     @Test
     public void unzip() throws IOException {
@@ -96,5 +92,4 @@ public class FileSystemDemo extends Demo {
 
         fileSystem.close();
     }
-
 }

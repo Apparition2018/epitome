@@ -4,9 +4,8 @@ import cn.hutool.core.comparator.CompareUtil;
 import org.junit.jupiter.api.Test;
 
 /**
- * CompareUtil      比较工具
- * https://hutool.cn/docs/#/core/%E6%AF%94%E8%BE%83%E5%99%A8/%E6%AF%94%E8%BE%83%E5%B7%A5%E5%85%B7-CompareUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/comparator/CompareUtil.html
+ * <a href="https://hutool.cn/docs/#/core//比较器/比较工具-CompareUtil">CompareUtil</a>    比较工具
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/comparator/CompareUtil.html">CompareUtil api</a>
  *
  * @author ljh
  * @since 2020/11/19 23:26

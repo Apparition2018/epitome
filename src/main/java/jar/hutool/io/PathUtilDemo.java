@@ -11,18 +11,18 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 /**
  * PathUtil
- * <p>
- * static boolean	            isDirectory(Path path, boolean isFollowLinks)   判断是否为目录，如果 file 为 null，则返回 false
- * static boolean	            isDirEmpty(Path dirPath)                        目录是否为空
- * static boolean	            isFile(Path path, boolean isFollowLinks)        判断是否为文件，如果 file 为 null，则返回 false
- * static boolean	            isSymlink(Path path)                            判断是否为符号链接文件
- * static boolean	            equals(Path file1, Path file2)                  检查两个文件是否是同一个文件，指 Path 是否指向同一个文件或文件夹
- * static BufferedInputStream	getInputStream(Path path)                       获得输入流
- * static BufferedOutputStream	getOutputStream(Path path)                      获得输出流
- * static BufferedReader	    getReader(Path path, Charset charset)           获得一个文件读取器
- * static BufferedReader	    getUtf8Reader(Path path)                        获得一个文件读取器
- * <p>
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/file/PathUtil.html
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/file/PathUtil.html">PathUtil api</a>
+ * <pre>
+ * static boolean               isDirectory(Path path, boolean isFollowLinks)   判断是否为目录，如果 file 为 null，则返回 false
+ * static boolean               isDirEmpty(Path dirPath)                        目录是否为空
+ * static boolean               isFile(Path path, boolean isFollowLinks)        判断是否为文件，如果 file 为 null，则返回 false
+ * static boolean               isSymlink(Path path)                            判断是否为符号链接文件
+ * static boolean               equals(Path file1, Path file2)                  检查两个文件是否是同一个文件，指 Path 是否指向同一个文件或文件夹
+ * static BufferedInputStream   getInputStream(Path path)                       获得输入流
+ * static BufferedOutputStream  getOutputStream(Path path)                      获得输出流
+ * static BufferedReader        getReader(Path path, Charset charset)           获得一个文件读取器
+ * static BufferedReader        getUtf8Reader(Path path)                        获得一个文件读取器
+ * </pre>
  *
  * @author ljh
  * @since 2020/10/30 9:25

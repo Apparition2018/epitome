@@ -12,9 +12,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * Files
- * 该类包含操作文件、目录或其他类型文件的静态方法
- * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html">Files</a>
+ * <p>该类包含操作文件、目录或其他类型文件的静态方法
  *
  * @author ljh
  * @since 2020/9/26 2:51

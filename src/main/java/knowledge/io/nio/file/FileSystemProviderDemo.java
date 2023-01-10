@@ -13,14 +13,14 @@ import java.nio.file.spi.FileSystemProvider;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * FileSystemProvider
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/spi/FileSystemProvider.html">FileSystemProvider</a>
+ * <pre>
  * 文件系统的服务提供者类
  * 文件的相关操作最终通过 FileSystemProvider 来提供，其不同的底层系统又不同的实现。
  * 此类主要定义了如何在其对应的文件系统定位和加载文件，以及文件中常见的删除、拷贝等操作。
  * 四个子类：AbstractFileSystemProvider, JarFileSystemProvider, WindowFilesSystemProvider, ZipFilesSystemProvider
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/nio/file/spi/FileSystemProvider.html
- * https://blog.csdn.net/huitoukest/article/details/106983050
+ * </pre>
+ * 参考：<a href="https://blog.csdn.net/huitoukest/article/details/106983050">Java FileSystemProvider</a>
  *
  * @author ljh
  * @since 2020/11/6 9:43

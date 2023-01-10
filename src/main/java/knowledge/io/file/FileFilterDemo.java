@@ -8,9 +8,8 @@ import java.io.FileFilter;
 import java.util.Objects;
 
 /**
- * FileFilter
- * 用于抽象路径名的过滤器
- * https://www.runoob.com/manual/jdk1.6/java.base/java/io/FileFilter.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/FileFilter.html">FileFilter</a>
+ * <p>用于抽象路径名的过滤器
  *
  * @author ljh
  * @since 2020/9/14 10:40

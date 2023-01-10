@@ -95,7 +95,7 @@ public class Demo {
     public static final String DEMO_FILE_PATH = DEMO_PATH + "demo";
     public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "demo";
     public static final String ARSENAL_LOGO = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1113375911,3381445023&fm=26&gp=0.jpg";
-    public static final String XIAO_XIN = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
+    public static final String XIAO_XIN_PNG = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
     public static final String VIDEO = RESOURCES_ABSOLUTE_PATH + "static/public/video/movie.ogg";
     public static final String JDBC_PROPS_FILENAME = "jdbc.properties";
 

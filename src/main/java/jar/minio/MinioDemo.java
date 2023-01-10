@@ -14,9 +14,11 @@ import java.util.Date;
 
 /**
  * Minio
- * Java Client 快速入门指南：http://docs.minio.org.cn/docs/master/java-client-quickstart-guide
- * Java Client API 参考文档：http://docs.minio.org.cn/docs/master/java-client-api-reference
- * MinIO 工具类：https://blog.csdn.net/weixin_42170236/article/details/109356921
+ * <pre>
+ * <a href="http://docs.minio.org.cn/docs/master/java-client-quickstart-guide">Java Client 快速入门指南</a>
+ * <a href="http://docs.minio.org.cn/docs/master/java-client-api-reference">Java Client API 参考文档</a>
+ * <a href="https://blog.csdn.net/weixin_42170236/article/details/109356921">MinIO 工具类</a>
+ * </pre>
  *
  * @author ljh
  * @since 2021/4/25 16:28
@@ -40,8 +42,8 @@ public class MinioDemo extends Demo {
     }
 
     @Test
-    public void upload() throws Exception {
-        File file = new File(XIAO_XIN);
+    public void upload() {
+        File file = new File(XIAO_XIN_PNG);
         // 这里不能使用 File.separator，否则 window 系统不能创建文件夹
         String date = DateFormatUtils.format(new Date(), "yyyy/MMdd");
         String fileName = "images/" + date + "/蜡笔小新." + FilenameUtils.getExtension(file.getName());
@@ -67,6 +69,5 @@ public class MinioDemo extends Demo {
         } catch (Exception e) {
             p(e.getMessage());
         }
-
     }
 }

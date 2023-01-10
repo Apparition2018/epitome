@@ -9,8 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Paths
- * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Paths.html">Paths</a>
  *
  * @author ljh
  * @since 2020/11/5 10:06

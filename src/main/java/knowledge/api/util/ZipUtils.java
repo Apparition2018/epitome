@@ -14,10 +14,11 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * ZipUtils
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/util/zip/ZipOutputStream.html
- * https://docs.oracle.com/javase/8/docs/api/java/util/zip/ZipFile.html
- * https://docs.oracle.com/javase/8/docs/api/java/util/zip/ZipEntry.html
+ * <pre>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/zip/ZipOutputStream.html">ZipOutputStream api</a>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/zip/ZipFile.html">ZipFile api</a>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/zip/ZipEntry.html">ZipEntry api</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/8 16:44
@@ -152,10 +153,10 @@ public class ZipUtils extends Demo {
             }
 
             OutputStream os = Files.newOutputStream(realFile.toPath());
-            byte[] buf1 = new byte[1024];
+            byte[] buf = new byte[1024];
             int len;
-            while ((len = is.read(buf1)) > 0) {
-                os.write(buf1, 0, len);
+            while ((len = is.read(buf)) > 0) {
+                os.write(buf, 0, len);
             }
             is.close();
             os.close();

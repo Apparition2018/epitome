@@ -6,9 +6,8 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * ExceptionUtil    异常工具
- * https://hutool.cn/docs/#/core/%E5%BC%82%E5%B8%B8/%E5%BC%82%E5%B8%B8%E5%B7%A5%E5%85%B7-ExceptionUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/exceptions/ExceptionUtil.html
+ * <a href="https://hutool.cn/docs/#/core/异常/异常工具-ExceptionUtil">ExceptionUtil</a>  异常工具
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/exceptions/ExceptionUtil.html">ExceptionUtil api</a>
  *
  * @author ljh
  * @since 2020/11/19 23:31

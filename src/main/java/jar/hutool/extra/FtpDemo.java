@@ -6,16 +6,15 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 /**
- * Ftp      FTP 封装
- * 需要引入 commons-net:commons-net
- * https://hutool.cn/docs/#/extra/CommonsNet%E5%B0%81%E8%A3%85/FTP%E5%B0%81%E8%A3%85-Ftp
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/ftp/Ftp.html
+ * <a href="https://hutool.cn/docs/#/extra/CommonsNet封装/FTP封装-Ftp">Ftp</a>  FTP 封装
+ * <p>需要引入 commons-net:commons-net
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/ftp/Ftp.html">Ftp api</a>
  *
  * @author ljh
  * @since 2020/11/9 16:11
  */
 public class FtpDemo {
-    
+
     @Test
     public void testFtp() throws IOException {
         Ftp ftp = new Ftp("");

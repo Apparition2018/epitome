@@ -11,39 +11,40 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
- * FileUtil
+ * <a href="https://hutool.cn/docs/#/core/IO/文件工具类-FileUtil-FileUtil">FileUtil</a>
+ * <pre>
  * FileUtil 继承 PathUtil
  * FileUtil 方法名与 Linux 相一致
- * <p>
- * static boolean	            isAbsolutePath(String path)                                     判断是否位绝对路径
- * static boolean	            isEmpty(File file)                                              文件是否为空
- * static boolean	            isNotEmpty(File file)                                           文件是否不为空
- * static boolean	            isModifed(File file, long lastModifyTime)                       判断文件是否被改动
- * static boolean	            isSub(File parent, File sub)                                    判断给定的目录是否为给定文件或文件夹的子目录
- * static boolean	            isWindows()                                                     是否为 Windows 环境
- * static boolean	            newerThan(File file, long timeMillis/File reference)            给定文件或目录的最后修改时间是否晚于给定时间
- * static boolean	            pathEndsWith(File file, String suffix)                          判断文件路径是否有指定后缀，忽略大小写
- * static boolean	            pathEquals(File file1, File file2)                              文件路径是否相同，Windows 下忽略大小写，Linux 不忽略
- * <p>
- * static File	                createTempFile([String prefix, String suffix, ]
+ * </pre>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/FileUtil.html">FileUtil api</a>
+ * <pre>
+ * static boolean               isAbsolutePath(String path)                                     判断是否位绝对路径
+ * static boolean               isEmpty(File file)                                              文件是否为空
+ * static boolean               isNotEmpty(File file)                                           文件是否不为空
+ * static boolean               isModifed(File file, long lastModifyTime)                       判断文件是否被改动
+ * static boolean               isSub(File parent, File sub)                                    判断给定的目录是否为给定文件或文件夹的子目录
+ * static boolean               isWindows()                                                     是否为 Windows 环境
+ * static boolean               newerThan(File file, long timeMillis/File reference)            给定文件或目录的最后修改时间是否晚于给定时间
+ * static boolean               pathEndsWith(File file, String suffix)                          判断文件路径是否有指定后缀，忽略大小写
+ * static boolean               pathEquals(File file1, File file2)                              文件路径是否相同，Windows 下忽略大小写，Linux 不忽略
+ *
+ * static File                  createTempFile([String prefix, String suffix, ]
  * -                                File dir[, boolean isReCreat])                              创建临时文件，名为 prefix[Randon].suffix From com.jodd.io.FileUtil
- * <p>
- * static File	                convertCharset(File file, Charset charset, Charset destCharset) 转换文件编码
- * static File	                convertLineSeparator(File file, Charset charset,
+ *
+ * static File                  convertCharset(File file, Charset charset, Charset destCharset) 转换文件编码
+ * static File                  convertLineSeparator(File file, Charset charset,
  * -                                LineSeparator lineSeparator)                                转换换行符
- * <p>
- * static <T> File	            appendLines(Collection<T>/String, path/file, String charset)    将 XXX 写入文件，追加模式
- * static <T> File	            appendUtf8Lines(Collection<T>/String, path/file)                将 XXX 写入文件，追加模式
- * <p>
- * static boolean	            containsInvalid(String fileName)                                文件名中是否包含在 Windows 下不支持的非法字符，包括： \ / : * ? " < > |
- * static String	            cleanInvalid(String fileName)                                   清除文件名中的在 Windows 下不支持的非法字符，包括： \ / : * ? " < > |
- * <p>
- * static BOMInputStream	    getBOMInputStream(File file)                                    获得 BOM 输入流，用于处理带 BOM 头的文件
- * static BufferedWriter	    getWriter(file/path, Charset/charset, isAppend)                 获得一个带缓存的写入对象
- * static PrintWriter	        getPrintWriter(file/path, Charset/charset, isAppend)            获得一个打印写入对象，可以有 print
- * <p>
- * https://hutool.cn/docs/#/core/IO/%E6%96%87%E4%BB%B6%E5%B7%A5%E5%85%B7%E7%B1%BB-FileUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/FileUtil.html
+ *
+ * static <T> File              appendLines(Collection<T>/String, path/file, String charset)    将 XXX 写入文件，追加模式
+ * static <T> File              appendUtf8Lines(Collection<T>/String, path/file)                将 XXX 写入文件，追加模式
+ *
+ * static boolean               containsInvalid(String fileName)                                文件名中是否包含在 Windows 下不支持的非法字符，包括： \ / : * ? " < > |
+ * static String                cleanInvalid(String fileName)                                   清除文件名中的在 Windows 下不支持的非法字符，包括： \ / : * ? " < > |
+ *
+ * static BOMInputStream        getBOMInputStream(File file)                                    获得 BOM 输入流，用于处理带 BOM 头的文件
+ * static BufferedWriter        getWriter(file/path, Charset/charset, isAppend)                 获得一个带缓存的写入对象
+ * static PrintWriter           getPrintWriter(file/path, Charset/charset, isAppend)            获得一个打印写入对象，可以有 print
+ * </pre>
  *
  * @author ljh
  * @since 2020/10/29 17:46
@@ -115,9 +116,10 @@ public class FileUtilDemo extends Demo {
 
     /**
      * 获取相关
-     * <p>
-     * static String	getLineSeparator()                  获取当前系统的换行分隔符
-     * static Date	    lastModifiedTime(file/path)         指定文件最后修改时间
+     * <pre>
+     * static String    getLineSeparator()                  获取当前系统的换行分隔符
+     * static Date      lastModifiedTime(file/path)         指定文件最后修改时间
+     * </pre>
      */
     @Test
     public void testFileUtil2() {
@@ -170,7 +172,7 @@ public class FileUtilDemo extends Demo {
 
     /**
      * static void	    tail(File file, Charset charset)
-     * 文件内容跟随器，实现类似 Linux 下 tail -f 命令功能，此方法会阻塞当前线程
+     * <p>文件内容跟随器，实现类似 Linux 下 tail -f 命令功能，此方法会阻塞当前线程
      */
     @Test
     public void tail() {

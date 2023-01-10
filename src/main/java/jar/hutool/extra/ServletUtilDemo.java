@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.extra;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.extra.servlet.ServletUtil;
@@ -17,9 +17,8 @@ import java.net.HttpCookie;
 import java.util.Map;
 
 /**
- * ServletUtil
- * https://hutool.cn/docs/#/extra/Servlet%E5%B7%A5%E5%85%B7-ServletUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/servlet/ServletUtil.html
+ * <a href="https://hutool.cn/docs/#/extra/Servlet工具-ServletUtil">ServletUtil</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/servlet/ServletUtil.html">ServletUtil api</a>
  *
  * @author ljh
  * @since 2020/11/20 14:03
@@ -55,6 +54,5 @@ public class ServletUtilDemo extends HttpServlet {
     }
 
     static class M extends Demo {
-
     }
 }

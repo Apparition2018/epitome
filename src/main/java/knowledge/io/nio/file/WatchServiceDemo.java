@@ -9,18 +9,17 @@ import java.nio.file.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * WatchService
+ * <a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/nio/file/WatchService.html">WatchService</a>
+ * <pre>
  * 监视已注册对象的更改和事件的监视服务。
  * 例如，文件管理器可以使用监视服务来监视目录的更改，以便在创建或删除文件时更新其显示的文件列表。
- * https://docs.oracle.com/javase/8/docs/api/index.html?java/nio/file/WatchService.html
+ * </pre>
  * <p>
- * WatchKey
- * 监视对象的令牌
- * https://docs.oracle.com/javase/8/docs/api/index.html?java/nio/file/WatchKey.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/nio/file/WatchKey.html">WatchKey</a>
+ * <p>监视对象的令牌
  * <p>
- * WatchEvent
- * 注册到 WatchService 的对象的事件或重复事件
- * https://docs.oracle.com/javase/8/docs/api/index.html?java/nio/file/WatchEvent.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/nio/file/WatchEvent.html">WatchEvent</a>
+ * <p>注册到 WatchService 的对象的事件或重复事件
  *
  * @author ljh
  * @since 2020/11/6 10:32
@@ -28,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class WatchServiceDemo extends Demo {
 
     /**
-     * WatchService，重复触发 Modify 事件：https://www.zhihu.com/question/264700166
+     * <a href="https://www.zhihu.com/question/264700166">WatchService，重复触发 Modify 事件</a>
      */
     @Test
     public void testWatchService() throws IOException, InterruptedException {

@@ -4,7 +4,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 /**
- * TupleDemo
+ * Tuple
  *
  * @author ljh
  * @since 2022/11/9 9:52

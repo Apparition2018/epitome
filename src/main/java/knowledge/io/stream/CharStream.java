@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 
 /**
  * CharStream   字符流
- * IO 流详解：https://blog.csdn.net/u012426327/article/details/77160400
+ * <p><a href="https://blog.csdn.net/u012426327/article/details/77160400">IO 流详解</a>
  *
  * @author ljh
  * @since 2020/9/14 14:15
@@ -18,28 +18,28 @@ import java.nio.file.Paths;
 public class CharStream extends Demo {
 
     /**
-     * Reader
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/Reader.html
-     * abstract  void	close()                     关闭该流并释放与之关联的所有资源
-     * void	            mark(int readAheadLimit)    标记流中的当前位置
-     * void	            reset()                     重置该流
-     * boolean	        markSupported()             判断此流是否支持 mark() 操作
-     * boolean	        ready()                     判断是否准备读取此流
-     * long	            skip(long n)                跳过字符
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/Reader.html">Reader</a>
+     * <pre>
+     * abstract  void   close()                     关闭该流并释放与之关联的所有资源
+     * void             mark(int readAheadLimit)    标记流中的当前位置
+     * void             reset()                     重置该流
+     * boolean          markSupported()             判断此流是否支持 mark() 操作
+     * boolean          ready()                     判断是否准备读取此流
+     * long             skip(long n)                跳过字符
+     * </pre>
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/InputStreamReader.html">InputStreamReader</a>
+     * <p>字节流通向字符流的桥梁：它使用指定的 charset 读取字节并将其解码为字符。
      * <p>
-     * InputStreamReader
-     * 字节流通向字符流的桥梁：它使用指定的 charset 读取字节并将其解码为字符。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/InputStreamReader.html
-     * <p>
-     * FileReader
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/FileReader.html">FileReader</a>
+     * <pre>
      * 用来读取字符文件的便捷类。此类的构造方法假定默认字符编码和默认字节缓冲区大小都是适当的。
      * 要自己指定这些值，可以先在 FileInputStream 上构造一个 InputStreamReader。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/FileReader.html
-     * <p>
-     * BufferedReader       缓冲字符输入流
+     * </pre>
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/BufferedReader.html">BufferedReader</a>     缓冲字符输入流
+     * <pre>
      * 从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取。
      * Stream<String>       lines()     BufferedReader → Stream
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/BufferedReader.html
+     * </pre>
      */
     @Test
     public void testReader() {
@@ -85,23 +85,21 @@ public class CharStream extends Demo {
     }
 
     /**
-     * Writer
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/Writer.html
-     * Writer	        append(CharSequence csq[, int start, int end])  将指定字符序列的子序列添加到此 writer.Appendable
-     * abstract  void	close()                         关闭此流，但要先刷新它
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/Writer.html">Writer</a>
+     * <pre>
+     * Writer           append(CharSequence csq[, int start, int end])  将指定字符序列的子序列添加到此 writer.Appendable
+     * abstract  void   close()                     关闭此流，但要先刷新它
+     * </pre>
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/OutputStreamWriter.html">OutputStreamWriter</a>
+     * <p>字符流通向字节流的桥梁：可使用指定的 charset 将要写入流中的字符编码成字节。
      * <p>
-     * OutputStreamWriter
-     * 字符流通向字节流的桥梁：可使用指定的 charset 将要写入流中的字符编码成字节。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/OutputStreamWriter.html
-     * <p>
-     * FileWriter
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/FileWriter.html">FileWriter</a>
+     * <pre>
      * 用来写入字符文件的便捷类。此类的构造方法假定默认字符编码和默认字节缓冲区大小都是可接受的。
      * 要自己指定这些值，可以先在 FileOutputStream 上构造一个 OutputStreamWriter。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/FileWriter.html
-     * <p>
-     * PrintWriter      缓冲字符输出流
-     * 可以按行写出字符串，并且具有自动行刷新功能
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/PrintWriter.html
+     * </pre>
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/PrintWriter.html">PrintWriter</a>   缓冲字符输出流
+     * <p>可以按行写出字符串，并且具有自动行刷新功能
      */
     @Test
     public void testWriter() {
@@ -128,15 +126,15 @@ public class CharStream extends Demo {
     }
 
     /**
-     * CharArrayReader
-     * 用作字符输入流的字符缓冲区
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/CharArrayReader.html
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/CharArrayReader.html">CharArrayReader</a>
+     * <p>用作字符输入流的字符缓冲区
      * <p>
-     * CharArrayWriter
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/CharArrayWriter.html">CharArrayWriter</a>
+     * <pre>
      * 用作 Writer 的字符缓冲区。缓冲区会随向流中写入数据而自动增长。
      * 可使用 toCharArray() 和 toString() 获取数据。
      * 不需要关闭。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/CharArrayWriter.html
+     * </pre>
      */
     @Test
     public void testCharArray() {

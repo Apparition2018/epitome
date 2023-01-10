@@ -5,9 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
 /**
- * SpringUtil
- * https://hutool.cn/docs/#/extra/Spring/Spring%E5%B7%A5%E5%85%B7-SpringUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/spring/SpringUtil.html
+ * <a href="https://hutool.cn/docs/#/extra/Spring/Spring工具-SpringUtil">SpringUtil</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/spring/SpringUtil.html">SpringUtil api</a>
  *
  * @author ljh
  * @since 2020/11/21 15:03

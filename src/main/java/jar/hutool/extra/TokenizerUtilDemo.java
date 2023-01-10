@@ -7,11 +7,12 @@ import cn.hutool.extra.tokenizer.Word;
 import org.junit.jupiter.api.Test;
 
 /**
- * TokenizerUtil    中文分词封装
- * 需要引入 org.apache.lucene:lucene-analyzers-smartcn
- * https://hutool.cn/docs/#/extra/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D/%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%E5%B0%81%E8%A3%85-TokenizerUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/tokenizer/TokenizerUtil.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/tokenizer/TokenizerEngine.html
+ * <a href="https://hutool.cn/docs/#/extra/中文分词/中文分词封装-TokenizerUtil">TokenizerUtil</a>     中文分词封装
+ * <p>需要引入 org.apache.lucene:lucene-analyzers-smartcn
+ * <pre>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/tokenizer/TokenizerUtil.html">TokenizerUtil api</a>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/tokenizer/TokenizerEngine.html">TokenizerEngine api</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/21 14:54

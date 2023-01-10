@@ -1,4 +1,4 @@
-package jar.hutool.other;
+package jar.hutool.bloomfilter;
 
 import cn.hutool.bloomfilter.BitSetBloomFilter;
 import l.demo.Demo;
@@ -7,16 +7,14 @@ import org.junit.jupiter.api.Test;
 import java.util.stream.IntStream;
 
 /**
- * BloomFilter      布隆过滤器
+ * <a href="https://hutool.cn/docs/#/bloomFilter/概述">BloomFilter</a>     布隆过滤器
+ * <pre>
  * 一个很长的二进制向量和一系列随机映射函数，用于检索一个元素是否在一个集合中
  * 判断为不存在，则肯定不存在；判断为存在，有概率不存在
- * <p>
- * 优点：空间效率和查询时间都远远超过一般的算法
- * 缺点：有一定的误识别率和删除困难
- * <p>
- * https://hutool.cn/docs/#/bloomFilter/%E6%A6%82%E8%BF%B0
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/bloomfilter/BitSetBloomFilter.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/bloomfilter/BitMapBloomFilter.html
+ * </pre>优点：空间效率和查询时间都远远超过一般的算法
+ * <p>缺点：有一定的误识别率和删除困难
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/bloomfilter/BitSetBloomFilter.html">BitSetBloomFilter api</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/bloomfilter/BitMapBloomFilter.html">BitMapBloomFilter api</a>
  *
  * @author ljh
  * @since 2020/11/21 17:11

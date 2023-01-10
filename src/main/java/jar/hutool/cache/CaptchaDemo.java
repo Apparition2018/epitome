@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.cache;
 
 import cn.hutool.captcha.AbstractCaptcha;
 import cn.hutool.captcha.CaptchaUtil;
@@ -14,11 +14,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * Captcha      验证码
- * https://hutool.cn/docs/#/captcha/%E6%A6%82%E8%BF%B0
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/ICaptcha.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/CaptchaUtil.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/generator/RandomGenerator.html
+ * <a href="https://hutool.cn/docs/#/captcha/概述">Captcha</a>    验证码
+ * <pre>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/ICaptcha.html">ICaptcha api</a>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/CaptchaUtil.html">CaptchaUtil api</a>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/generator/RandomGenerator.html">RandomGenerator api</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/21 17:37

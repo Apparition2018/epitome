@@ -8,9 +8,8 @@ import java.io.FilenameFilter;
 import java.util.Objects;
 
 /**
- * FilenameFilter
- * 实现此接口的类实例可用于过滤器文件名。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/io/FilenameFilter.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/FilenameFilter.html">FilenameFilter</a>
+ * <p>实现此接口的类实例可用于过滤器文件名。
  *
  * @author ljh
  * @since 2020/9/14 10:51

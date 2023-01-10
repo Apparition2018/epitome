@@ -1,4 +1,4 @@
-package jar.hutool;
+package jar.hutool.setting;
 
 import cn.hutool.setting.Setting;
 import l.demo.Demo;
@@ -11,13 +11,14 @@ import java.io.File;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Setting      设置文件
- * 1.兼容 .properties
- * 2.编码支持
- * 3.变量支持 ${key}
- * 4.分组支持
- * https://hutool.cn/docs/#/setting/%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6-Setting
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/setting/Setting.html
+ * <a href="https://hutool.cn/docs/#/setting/设置文件-Setting">Setting</a>  设置文件
+ * <pre>
+ * 1 兼容 .properties
+ * 2 编码支持
+ * 3 变量支持 ${key}
+ * 4 分组支持
+ * </pre>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/setting/Setting.html">Setting api</a>
  *
  * @author ljh
  * @since 2020/11/20 1:03

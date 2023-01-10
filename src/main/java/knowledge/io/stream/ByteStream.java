@@ -10,8 +10,13 @@ import java.nio.file.Paths;
 
 /**
  * ByteStream 字节流
- * Java IO 包装流如何关闭：https://blog.csdn.net/q13315149158/article/details/79277403
- * IO 流详解：https://blog.csdn.net/u012426327/article/details/77160400
+ * <p>关闭流：
+ * <pre>
+ * <a href="https://mp.weixin.qq.com/s/MR270MtIIb7B9IkLUbgJAw">IO 操作为什么必须关闭流？</a>
+ * <a href="https://mp.weixin.qq.com/s/aEgNbN-Ix83NvcE3rQ8TgA">为什么需要主动关闭文件流？</a>
+ * <a href="https://blog.csdn.net/q13315149158/article/details/79277403">Java IO 包装流如何关闭</a>
+ * <a href="https://blog.csdn.net/u012426327/article/details/77160400">IO 流详解</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/14 11:02
@@ -19,25 +24,25 @@ import java.nio.file.Paths;
 public class ByteStream extends Demo {
 
     /**
-     * InputStream
-     * 字节输入流的所有类的超类
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/InputStream.html
-     * void	            close()                 关闭此输入流并释放与该流关联的所有系统资源
-     * void	            mark(int readlimit)     在此输入流中标记当前的位置
-     * void	            reset()                 将此流重新定位到最后一次对此输入流调用 mark 方法时的位置
-     * boolean	        markSupported()         测试此输入流是否支持 mark 和 reset 方法
-     * long	            skip(long n)            跳过和丢弃此输入流中数据的 n 个字节
-     * int	            available()             返回此输入流下一个方法调用可以不受阻塞地从此输入流读取（或跳过）的估计字节数
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/InputStream.html">InputStream</a>
+     * <p>字节输入流的所有类的超类
+     * <pre>
+     * void             close()                 关闭此输入流并释放与该流关联的所有系统资源
+     * void             mark(int readlimit)     在此输入流中标记当前的位置
+     * void             reset()                 将此流重新定位到最后一次对此输入流调用 mark 方法时的位置
+     * boolean          markSupported()         测试此输入流是否支持 mark 和 reset 方法
+     * long             skip(long n)            跳过和丢弃此输入流中数据的 n 个字节
+     * int              available()             返回此输入流下一个方法调用可以不受阻塞地从此输入流读取（或跳过）的估计字节数
+     * </pre>
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/FileInputStream.html">FileInputStream</a>   文件输入流
+     * <p>从文件系统中的某个文件中获得输入字节。哪些文件可用取决于主机环境。
+     * <pre>
+     * FileChannel      getChannel()            返回与此文件输入流有关的唯一 FileChannel 对象
+     * FileDescriptor   getFD()                 返回表示到文件系统中实际文件的连接的 FileDescriptor 对象，该文件系统正被此 FileInputStream 使用<p>
+     * </pre>
+     * 乱码解决方法：使用转换流 InputStreamReader
      * <p>
-     * FileInputStream          文件输入流
-     * 从文件系统中的某个文件中获得输入字节。哪些文件可用取决于主机环境。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/FileInputStream.html
-     * FileChannel	    getChannel()            返回与此文件输入流有关的唯一 FileChannel 对象
-     * FileDescriptor	getFD()                 返回表示到文件系统中实际文件的连接的 FileDescriptor 对象，该文件系统正被此 FileInputStream 使用<p>
-     * <p>
-     * 乱码解决方法：
-     * 1.使用转换率 InputStreamReader
-     * 2.扩大缓冲区容量，一次性存储完整个内容 byte[] data = new byte[1024]
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/BufferedInputStream.html">BufferedInputStream</a>    缓冲输入流
      */
     @Test
     public void testInputStream() {
@@ -61,17 +66,15 @@ public class ByteStream extends Demo {
     }
 
     /**
-     * OutputStream
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/OutputStream.html">OutputStream</a>
+     * <pre>
      * 输出字节流的所有类的超类
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/OutputStream.html
      * void	    close()     关闭此输出流并释放与此流有关的所有系统资源
+     * </pre>
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/FileOutputStream.html">FileOutputStream</a> 文件输出流
+     * <p>用于将数据写入 File 或 FileDescriptor 的输出流
      * <p>
-     * FileOutputStream         文件输出流
-     * 用于将数据写入 File 或 FileDescriptor 的输出流
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/FileOutputStream.html
-     * <p>
-     * BufferedOutputStream     缓冲输出流
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/BufferedOutputStream.html
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/BufferedOutputStream.html">BufferedOutputStream</a> 缓冲输出流
      */
     @Test
     public void testOutputStream() {
@@ -91,20 +94,18 @@ public class ByteStream extends Demo {
     }
 
     /**
-     * ByteArrayInputStream     字节数组输入流
-     * 包含一个内部缓冲区，该缓冲区包含从流中读取的字节
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/ByteArrayInputStream.html
-     * https://www.cnblogs.com/zhangj-ymm/p/9842657.html
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/ByteArrayInputStream.html">ByteArrayInputStream</a> 字节数组输入流
+     * <p>包含一个内部缓冲区，该缓冲区包含从流中读取的字节
      * <p>
-     * ByteArrayOutputStream    字节数组输出流
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/ByteArrayOutputStream.html">ByteArrayOutputStream</a>   字节数组输出流
+     * <pre>
      * 实现了一个输出流，其中的数据被写入一个 byte 数组。缓冲区会随着数据的不断写入而自动增长。
      * 可使用 toByteArray() 和 toString() 获取数据。
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/ByteArrayOutputStream.html
-     * <p>
-     * 字节数组流不需要关闭
+     * </pre>
+     * <p>主动 close 不再是必须的：因为字节数组流是基于内存的，并没有占用硬盘、网络等资源，GC 可以对其进行回收
      */
     @Test
-    public void testByteArrayXXXStream() {
+    public void testByteArrayStream() {
         // ByteArrayInputStream(byte[] buf[, int offset, int length])
         // 创建 ByteArrayInputStream，使用 buf 作为其缓冲区数组
         ByteArrayInputStream bais = new ByteArrayInputStream("Input Input Input Input Input ".getBytes());
@@ -124,16 +125,14 @@ public class ByteStream extends Demo {
     }
 
     /**
-     * DataInputStream          数据输入流
-     * 以与机器无关方式从底层输入流中读取基本 Java 数据类型
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/DataInputStream.html
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/DataInputStream.html">DataInputStream</a>   数据输入流
+     * <p>以与机器无关方式从底层输入流中读取基本 Java 数据类型
      * <p>
-     * DataOutputStream
-     * 以适当方式将基本 Java 数据类型写入输出流中
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/DataOutputStream.html
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/DataOutputStream.html">DataOutputStream</a>
+     * <p>以适当方式将基本 Java 数据类型写入输出流中
      */
     @Test
-    public void testDataXXXStream() {
+    public void testDataStream() {
         try (DataOutputStream dos = new DataOutputStream(Files.newOutputStream(Paths.get(DEMO_PATH + "io.dat")));
              DataInputStream dis = new DataInputStream(Files.newInputStream(Paths.get(DEMO_PATH + "io.dat")))) {
             // void	    writeXXX(XXX v)     将一个 xxx 值以 xxx 值形式写入基础输出流
@@ -150,15 +149,13 @@ public class ByteStream extends Demo {
     }
 
     /**
-     * ObjectInputStream        对象输入流
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/ObjectInputStream.html
-     * 对象输入流读取的内容必须是通过 ObjectOutputStream 序列化的对象
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/ObjectInputStream.html">ObjectInputStream</a>   对象输入流
+     * <p>对象输入流读取的内容必须是通过 ObjectOutputStream 序列化的对象
      * <p>
-     * ObjectOutputStream       对象输出流
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/io/ObjectOutputStream.html
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/ObjectOutputStream.html">ObjectOutputStream</a> 对象输出流
      */
     @Test
-    public void testObjectXXXStream() {
+    public void testObjectStream() {
         try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(DEMO_PATH + "person.obj")));
              ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(DEMO_PATH + "person.obj")))) {
 

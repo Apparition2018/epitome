@@ -11,19 +11,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * IOUtil
- * <p>
- * static Checksum	                checksum(InputStream in, Checksum checksum)         计算流的校验码，计算后关闭流
- * static long	                    checksumCRC32(InputStream in)                       计算流 CRC32 校验码，计算后关闭流
- * static void	                    flush(Flushable flushable)                          从缓存中刷出数据
- * <p>
- * static BufferedReader	        getReader(Reader reader)                            获得 BufferedReader
- * static BufferedReader	        getUtf8Reader(InputStream in)                       获得 BufferedReader，默认 UTF-8
+ * <a href="https://hutool.cn/docs/#/core/IO/IO工具类-IoUtil-IoUtil">IOUtil</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/IoUtil.html">IOUtil api</a>
+ * <pre>
+ * static Checksum                  checksum(InputStream in, Checksum checksum)         计算流的校验码，计算后关闭流
+ * static long                      checksumCRC32(InputStream in)                       计算流 CRC32 校验码，计算后关闭流
+ * static void                      flush(Flushable flushable)                          从缓存中刷出数据
+ *
+ * static BufferedReader            getReader(Reader reader)                            获得 BufferedReader
+ * static BufferedReader            getUtf8Reader(InputStream in)                       获得 BufferedReader，默认 UTF-8
  * static PushbackReader            getPushBackReader(Reader reader, int pushBackSize)  获得 PushbackReader
- * static OutputStreamWriter 	    getUtf8Writer(OutputStream out)                     获得 Writer，默认 UTF-8
- * <p>
- * https://hutool.cn/docs/#/core/IO/IO%E5%B7%A5%E5%85%B7%E7%B1%BB-IoUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/IoUtil.html
+ * static OutputStreamWriter        getUtf8Writer(OutputStream out)                     获得 Writer，默认 UTF-8
+ * </pre>
  *
  * @author ljh
  * @since 2020/10/29 17:45

@@ -8,31 +8,31 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * File
- * https://www.runoob.com/manual/jdk1.6/java.base/java/io/File.html
- * <p>
- * boolean	    setExecutable(boolean executable[, boolean ownerOnly])  设置此抽象路径名的所有者或所有用户的执行权限
- * boolean	    setReadable(boolean readable[, boolean ownerOnly])      设置此抽象路径名的所有者或所有用户的读权限
- * boolean	    setWritable(boolean writable[, boolean ownerOnly])      设置此抽象路径名的所有者或所有用户的写权限
- * boolean	    setReadOnly()               标记此抽象路径名指定的文件或目录，从而只能对其进行读操作
- * boolean	    setLastModified(long time)  设置此抽象路径名指定的文件或目录的最后一次修改时间
- * boolean	    canExecute()                测试应用程序是否可以执行此抽象路径名表示的文件
- * boolean	    canRead()                   测试应用程序是否可以读取此抽象路径名表示的文件
- * boolean	    canWrite(                   测试应用程序是否可以修改此抽象路径名表示的文
- * boolean	    exists()                    测试此抽象路径名表示的文件或目录是否存在件
- * boolean	    isHidden()                  测试此抽象路径名指定的文件是否是一个隐藏文件
- * boolean	    isFile()                    测试此抽象路径名表示的文件是否是一个标准文件
- * boolean	    isDirectory()               测试此抽象路径名表示的文件是否是一个目录
- * boolean	    isAbsolute()                测试此抽象路径名是否为绝对路径名
- * int	        compareTo(File pathname)    按字母顺序比较两个抽象路径名
- * long	        lastModified()              返回此抽象路径名表示的文件最后一次被修改的时间
- * long	        length()                    返回由此抽象路径名表示的文件的长度
- * long	        getTotalSpace()             返回此抽象路径名指定的分区大小
- * long	        getFreeSpace()              返回此抽象路径名指定的分区中未分配的字节数
- * long	        getUsableSpace()            返回此抽象路径名指定的分区上可用于此虚拟机的字节数
- * String	    getName()                   返回由此抽象路径名表示的文件或目录的名称
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/File.html">File</a>
+ * <pre>
+ * boolean      setExecutable(boolean executable[, boolean ownerOnly])  设置此抽象路径名的所有者或所有用户的执行权限
+ * boolean      setReadable(boolean readable[, boolean ownerOnly])      设置此抽象路径名的所有者或所有用户的读权限
+ * boolean      setWritable(boolean writable[, boolean ownerOnly])      设置此抽象路径名的所有者或所有用户的写权限
+ * boolean      setReadOnly()               标记此抽象路径名指定的文件或目录，从而只能对其进行读操作
+ * boolean      setLastModified(long time)  设置此抽象路径名指定的文件或目录的最后一次修改时间
+ * boolean      canExecute()                测试应用程序是否可以执行此抽象路径名表示的文件
+ * boolean      canRead()                   测试应用程序是否可以读取此抽象路径名表示的文件
+ * boolean      canWrite(                   测试应用程序是否可以修改此抽象路径名表示的文
+ * boolean      exists()                    测试此抽象路径名表示的文件或目录是否存在件
+ * boolean      isHidden()                  测试此抽象路径名指定的文件是否是一个隐藏文件
+ * boolean      isFile()                    测试此抽象路径名表示的文件是否是一个标准文件
+ * boolean      isDirectory()               测试此抽象路径名表示的文件是否是一个目录
+ * boolean      isAbsolute()                测试此抽象路径名是否为绝对路径名
+ * int          compareTo(File pathname)    按字母顺序比较两个抽象路径名
+ * long         lastModified()              返回此抽象路径名表示的文件最后一次被修改的时间
+ * long         length()                    返回由此抽象路径名表示的文件的长度
+ * long         getTotalSpace()             返回此抽象路径名指定的分区大小
+ * long         getFreeSpace()              返回此抽象路径名指定的分区中未分配的字节数
+ * long         getUsableSpace()            返回此抽象路径名指定的分区上可用于此虚拟机的字节数
+ * String       getName()                   返回由此抽象路径名表示的文件或目录的名称
  * Path         toPath()                    返回从此抽象路径构造的java.nio.file.Path对象
- * URI	        toURI()                     构造一个表示此抽象路径名的 file: URI
+ * URI          toURI()                     构造一个表示此抽象路径名的 file: URI
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -108,9 +108,9 @@ public class FileDemo extends Demo {
     }
 
     /**
-     * String	            getPath()               将此抽象路径名转换为一个路径名字符串
-     * String	            getAbsolutePath()       返回此抽象路径名的绝对路径名字符串
-     * String	            getCanonicalPath()      返回此抽象路径名的规范路径名字符串
+     * <p>String                getPath()               将此抽象路径名转换为一个路径名字符串
+     * <p>String                getAbsolutePath()       返回此抽象路径名的绝对路径名字符串
+     * <p>String                getCanonicalPath()      返回此抽象路径名的规范路径名字符串
      */
     @Test
     public void getPath() throws IOException {
@@ -134,9 +134,10 @@ public class FileDemo extends Demo {
 
     /**
      * String[]	            list([FilenameFilter filter])
-     * 返回一个字符串数组，这些字符串指定此抽象路径名表示的目录中满足指定过滤器的文件和目录
+     * <p>返回一个字符串数组，这些字符串指定此抽象路径名表示的目录中满足指定过滤器的文件和目录
+     * <p>
      * File[]	            listFiles([FileFilter filter/FilenameFilter filter])
-     * 返回抽象路径名数组，这些路径名表示此抽象路径名表示的目录中满足指定过滤器的文件和目录
+     * <p>返回抽象路径名数组，这些路径名表示此抽象路径名表示的目录中满足指定过滤器的文件和目录
      */
     @Test
     public void list() {
@@ -160,5 +161,4 @@ public class FileDemo extends Demo {
             // H:\
         }
     }
-
 }
