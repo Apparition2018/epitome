@@ -39,5 +39,9 @@ public class Test extends Demo {
         Person person2 = new Person().setName("B");
         BeanUtil.copyProperties(person2, person, CopyOptions.create(Person.class, true));
         System.err.println(person);
+
+        System.err.println("-----");
+        String s = "&amp;&";
+        System.err.println(s.replaceAll("(&amp;)|(&)", ""));
     }
 }

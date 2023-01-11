@@ -17,11 +17,12 @@ import springboot.controller.DemoController;
 
 /**
  * MockMvc
- * <p>
- * Mockito framework site：https://site.mockito.org
- * Mockito | GitHub：https://github.com/mockito/mockito
- * MockMvc 详解：https://www.cnblogs.com/jpfss/p/10950904.html
- * SpringBoot2 + Junit5 测试案例：https://www.cnblogs.com/xumBlog/p/12679134.html
+ * <pre>
+ * <a href="https://site.mockito.org">Mockito framework site</a>
+ * <a href="https://github.com/mockito/mockito">Mockito | GitHub</a>
+ * <a href="https://www.cnblogs.com/jpfss/p/10950904.html">MockMvc 详解</a>
+ * <a href="https://www.cnblogs.com/xumBlog/p/12679134.html">SpringBoot2 + Junit5 测试案例</a>
+ * </pre>
  *
  * @author ljh
  * @since 2021/7/27 22:55

@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * RedisListenerTest
+ * RedisListener
  *
  * @author ljh
  * @since 2021/9/2 2:17
@@ -27,9 +27,9 @@ public class RedisListenerTest {
 
     /**
      * Redis 发布订阅
-     * <p>
-     * 使用 Redis 的发布订阅功能：https://blog.didispace.com/spring-boot-learning-25-5-5/
-     * Springboot+Redis（发布订阅模式）跨多服务器实战：https://www.cnblogs.com/ywbmaster/p/13595837.html
+     *
+     * @see <a href="https://blog.didispace.com/spring-boot-learning-25-5-5/">使用 Redis 的发布订阅功能</a>
+     * @see <a href="https://www.cnblogs.com/ywbmaster/p/13595837.html">Springboot+Redis（发布订阅模式）跨多服务器实战</a>
      */
     @Test
     public void testPubSub() {

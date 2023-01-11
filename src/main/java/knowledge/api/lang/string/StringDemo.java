@@ -7,32 +7,32 @@ import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 
 /**
- * String
- * <p>
- * int	        length()                                    返回此字符序列的长度
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/String.html">String</a>
+ * <pre>
+ * int          length()                                    返回此字符序列的长度
  * char         charAt(int index)                           返回指定索引处的 char 值
  * String       concat(String str)                          将指定字符串连接到此字符串的结尾
  * boolean      contains(CharSequence s)                    当且仅当此字符串包含指定的 char 值序列时，返回 true
- * boolean	    endsWith(String suffix)
- * boolean	    startsWith(String prefix[, int toffset])
- * boolean	    equals(Object anObject)                     将此字符串与指定的对象比较
+ * boolean      endsWith(String suffix)
+ * boolean      startsWith(String prefix[, int toffset])
+ * boolean      equals(Object anObject)                     将此字符串与指定的对象比较
  * boolean      equalsIgnoreCase(String str)                与另一个 String 比较，不考虑大小写
- * int	        indexOf(int ch, int fromIndex)              返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索
- * int	        indexOf(String str[, int fromIndex])        返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始
- * int	        lastIndexOf(int ch, int fromIndex)
- * int	        lastIndexOf(String str[, int fromIndex])
- * String	    toLowerCase()
- * String	    toUpperCase()
- * String	    trim()
- * <p>
- * 字符集合（形状）         编码字符集（数字）           字符编码方案（字节）              字符集 (编码字符集+字符编码方案)
- * character set        coded character set         character-encoding schema           charset
- * -                        Unicode                  UTF-8:  变长                     GBK: 1个汉字2字节，1个英文或数字1字节
- * -                        USC-2: 1个字符2字节       UTF-16: 变长                     GB18030: 兼容 GBK
- * -                        USC-4: 1个字符4字节       UTF-32: 1个字符4字节            iso-88591-1: 兼容ASCII
- * <p>
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/String.html
- * 字符编字符编码笔记 ASCII，Unicode 和 UTF-8：http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html
+ * int          indexOf(int ch, int fromIndex)              返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索
+ * int          indexOf(String str[, int fromIndex])        返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始
+ * int          lastIndexOf(int ch, int fromIndex)
+ * int          lastIndexOf(String str[, int fromIndex])
+ * String       toLowerCase()
+ * String       toUpperCase()
+ * String       trim()
+ * </pre>
+ * <pre>
+ * 字符集合（形状）     编码字符集（数字）           字符编码方案（字节）          字符集 (编码字符集+字符编码方案)
+ * character set    coded character set     character-encoding schema           charset
+ *                      Unicode                     UTF-8: 变长       GBK: 1个汉字2字节，1个英文或数字1字节
+ *                  USC-2: 1个字符2字节              UTF-16: 变长              GB18030: 兼容 GBK
+ *                  USC-4: 1个字符4字节          UTF-32: 1个字符4字节         iso-88591-1: 兼容ASCII
+ * </pre>
+ * <a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编字符编码笔记 ASCII，Unicode 和 UTF-8</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -59,10 +59,13 @@ public class StringDemo extends Demo {
     }
 
     /**
-     * intern()：https://zhuanlan.zhihu.com/p/357872204
+     * <a href="https://zhuanlan.zhihu.com/p/357872204">intern()</a>
+     * <pre>
      * 如果字符串常量池中已经包含一个等于此 String 对象的字符串，则返回代表池中这个字符串的 String 对象的引用；
      * 否则，会将此 String 对象包含的字符串添加到常量池中，并且返回此 String 对象的引用
-     * JDK1.8 JVM 内存模型：https://pic2.zhimg.com/80/v2-16be2d34799123632909e415d956e111_720w.jpg
+     * </pre>
+     *
+     * @see <a href="https://pic2.zhimg.com/80/v2-16be2d34799123632909e415d956e111_720w.jpg">JDK1.8 JVM 内存模型</a>
      */
     @Test
     public void intern() {
@@ -150,19 +153,22 @@ public class StringDemo extends Demo {
     }
 
     /**
-     * String	    replace(char oldChar, char newChar)
+     * <pre>
+     * String       replace(char oldChar, char newChar)
      * 返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所有 oldChar 得到的
-     * String	    replace(CharSequence target, CharSequence replacement)
+     * String       replace(CharSequence target, CharSequence replacement)
      * 使用指定的字面值替换序列替换此字符串所有匹配字面值目标序列的子字符串
-     * String	    replaceAll(String regex, String replacement)
+     * String       replaceAll(String regex, String replacement)
      * 使用给定的 replacement 替换此字符串所有匹配给定的正则表达式的子字符串
-     * String	    replaceFirst(String regex, String replacement)
+     * String       replaceFirst(String regex, String replacement)
      * 使用给定的 replacement 替换此字符串匹配给定的正则表达式的第一个子字符串
+     * </pre>
      */
     @Test
     public void replace() {
         p("abc123cba".replace('b', 'B'));               // aBc123cBa
         p("abc123cba".replace("b", "B"));               // aBc123cBa
+        p("abc123cba".replaceAll("[a-z]+", "ABC"));     // ABC123ABC
         p("abc123cba".replaceAll("[a-z]*", "ABC"));     // ABCABC1ABC2ABC3ABCABC
         p("abc123cba".replaceFirst("[a-z]*", "ABC"));   // ABC123cba
 

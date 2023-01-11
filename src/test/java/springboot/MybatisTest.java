@@ -13,6 +13,8 @@ import springboot.dao.slaver.SysUserMapper;
 import springboot.domain.slaver.SysUser;
 
 /**
+ * Mybatis
+ *
  * @author ljh
  * @since 2021/8/30 17:14
  */
@@ -27,8 +29,9 @@ public class MybatisTest {
     private ObjectMapper objectMapper;
 
     /**
-     * PageHelper：https://pagehelper.github.io/docs/howtouse/
-     * RuoYi 分页实现：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%88%86%E9%A1%B5%E5%AE%9E%E7%8E%B0
+     * <a href="https://pagehelper.github.io/docs/howtouse/">PageHelper</a>
+     *
+     * @see <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#分页实现">RuoYi 分页实现</a>
      */
     @Test
     public void testPageHelper() throws JsonProcessingException {

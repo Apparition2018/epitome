@@ -14,7 +14,7 @@ import java.io.IOException;
  * Error 指示运行时环境发生的错误，一般发生在严重的故障时，java 程序通常不捕获此类错误，它们在 java 程序处理范畴之外
  * -    InternalError, NoClassDefFoundError, IOError, StackOverflowError, outOfMemoryError,
  * <p>
- * Exception 分为检测性异常 (Check Exception)，和非检测性异常 (Uncheck Exception)
+ * Exception 分为检测性异常 (Checked Exception)，和非检测性异常 (Unchecked Exception)
  * -    检测性异常：强制处理，捕获异常或向上抛；继承 Exception
  * -        IOException, ClassNotFoundException, NoSuchMethodException, NoFieldException, CloneNotSupportedException
  * -    非检测性异常：不强制；继承 RuntimeException 或 Error

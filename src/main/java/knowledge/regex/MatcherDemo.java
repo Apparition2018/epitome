@@ -8,9 +8,8 @@ import java.util.regex.Pattern;
 import static l.demo.Demo.p;
 
 /**
- * Matcher
- * 通过解释 Pattern 对 character sequence 执行匹配操作的引擎。
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/regex/Matcher.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/regex/Matcher.html">Matcher</a>
+ * <p>通过解释 Pattern 对 character sequence 执行匹配操作的引擎。
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -22,10 +21,11 @@ public class MatcherDemo {
 
     /**
      * 索引方法
-     * 索引方法提供了有用的索引值，精确表明输入字符串中在哪能找到匹配
-     * <p>
-     * int	    start([int group])      返回在以前的匹配操作期间，由给定组所捕获的子序列的初始索引
-     * int	    end([int group])        返回在以前的匹配操作期间，由给定组所捕获子序列的最后字符之后的偏移量
+     * <p>索引方法提供了有用的索引值，精确表明输入字符串中在哪能找到匹配
+     * <pre>
+     * int      start([int group])      返回在以前的匹配操作期间，由给定组所捕获的子序列的初始索引
+     * int      end([int group])        返回在以前的匹配操作期间，由给定组所捕获子序列的最后字符之后的偏移量
+     * </pre>
      */
     @Test
     public void index() {
@@ -54,11 +54,12 @@ public class MatcherDemo {
 
     /**
      * 研究方法
-     * 研究方法用来检查输入字符串并返回一个布尔值，表示是否找到该模式
-     * <p>
+     * <p>研究方法用来检查输入字符串并返回一个布尔值，表示是否找到该模式
+     * <pre>
      * boolean  find([int start])       重置此匹配器，然后尝试查找匹配该模式、从指定索引开始的输入序列的下一个子序列
-     * boolean	lookingAt()             尝试将从区域开头开始的输入序列与该模式匹配
-     * boolean	matches()               尝试将整个区域与模式匹配
+     * boolean  lookingAt()             尝试将从区域开头开始的输入序列与该模式匹配
+     * boolean  matches()               尝试将整个区域与模式匹配
+     * </pre>
      */
     @Test
     public void research() {
@@ -94,14 +95,15 @@ public class MatcherDemo {
 
     /**
      * 替换方法
-     * 替换方法是替换输入字符串里文本的方法
-     * <p>
-     * String	        replaceFirst(String replacement)    替换模式与给定替换字符串匹配的输入序列的第一个子序列
-     * String	        replaceAll(String replacement)      替换模式与给定替换字符串相匹配的输入序列的每个子序列
-     * Matcher	        appendReplacement(StringBuffer sb, String replacement)  实现非终端添加和替换步骤
-     * StringBuffer	    appendTail(StringBuffer sb)         实现终端添加和替换步骤
-     * static String	quoteReplacement(String s)          返回指定 String 的字面值替换 String
-     * static String	quoteReplacement(String s)          返回指定 String 的字面值替换 String
+     * <p>替换方法是替换输入字符串里文本的方法
+     * <pre>
+     * String           replaceFirst(String replacement)    替换模式与给定替换字符串匹配的输入序列的第一个子序列
+     * String           replaceAll(String replacement)      替换模式与给定替换字符串相匹配的输入序列的每个子序列
+     * Matcher          appendReplacement(StringBuffer sb, String replacement)  实现非终端添加和替换步骤
+     * StringBuffer     appendTail(StringBuffer sb)         实现终端添加和替换步骤
+     * static String    quoteReplacement(String s)          返回指定 String 的字面值替换 String
+     * static String    quoteReplacement(String s)          返回指定 String 的字面值替换 String
+     * </pre>
      */
     @Test
     public void replace() {
@@ -165,5 +167,4 @@ public class MatcherDemo {
         }
         p(str + " 单词数：" + count);
     }
-
 }

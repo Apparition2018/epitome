@@ -3,12 +3,16 @@ package springboot.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import springboot.dao.master.ScoreMapper;
-import springboot.domain.master.Score;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
+import springboot.dao.master.DemoMapper;
+import springboot.domain.master.Demo;
 
 import java.sql.SQLException;
 
 /**
+ * TransactionalService
+ *
  * @author ljh
  * @since 2021/11/18 9:10
  */
@@ -16,16 +20,56 @@ import java.sql.SQLException;
 @AllArgsConstructor
 public class TransactionalService {
 
-    private final ScoreMapper scoreMapper;
+    private final DemoMapper demoMapper;
 
     /**
-     * SQLException 属于 Check Exception
+     * rollbackFor
+     * <pre>
+     * SQLException 属于 Checked Exception，
      * 如需对其生效，设置 rollbackFor = Exception.class 或 rollbackFor = SQLException.class
+     * </pre>
      */
     @Transactional(rollbackFor = SQLException.class)
-    public void checkException() throws SQLException {
-        Score score = new Score().setName("b").setCourse("chinese").setScore(100);
-        scoreMapper.insert(score);
-        throw new SQLException("发生 Check Exception");
+    public void checkedException() throws SQLException {
+        demoMapper.insert(new Demo().setName("a"));
+        throw new SQLException("模拟 SQLException");
+    }
+
+    /**
+     * TransactionSynchronizationManager
+     * <pre>
+     * beforeCommit         事务提交之前调用。例如：刷新事务会话或将会话映射到数据库
+     * beforeCompletion     事务提交/回滚之前调用。可以在事务完成之前执行资源清理
+     * afterCommit          事务提交之后调用。可以在主事务成功提交后立即执行进一步的操作。例如：确认消息或电子邮件。
+     * afterCompletion      事务提交/回滚之后调用。可以在事务完成后执行资源清理
+     * </pre>
+     */
+    @Transactional
+    public void transactionSynchronizationManager() {
+        if (TransactionSynchronizationManager.isActualTransactionActive()) {
+            TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
+                @Override
+                public void beforeCommit(boolean readOnly) {
+                    System.err.println("beforeCommit: " + readOnly);
+                }
+
+                @Override
+                public void beforeCompletion() {
+                    System.err.println("beforeCompletion");
+                }
+
+                @Override
+                public void afterCommit() {
+                    System.err.println("afterCommit");
+                }
+
+                @Override
+                public void afterCompletion(int status) {
+                    System.err.println("afterCompletion: " + status);
+                }
+            });
+        }
+        demoMapper.insert(new Demo().setName("a"));
+        throw new RuntimeException("模拟 RuntimeException");
     }
 }

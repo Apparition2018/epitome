@@ -31,5 +31,4 @@ public class User {
                 (birth != null ? "birthString='" + birth : "") + '\'';
         return "User{" + (result.startsWith(",") ? result.substring(2) : result) + "}";
     }
-
 }

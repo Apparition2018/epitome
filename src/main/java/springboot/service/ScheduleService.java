@@ -19,7 +19,7 @@ public class ScheduleService {
     /**
      * &#064;Scheduled
      * <pre>
-     * cron     通过 cron 表达式来配置执行规则 (second minute hour day-of-month month day-fo-week)
+     * cron         通过 cron 表达式来配置执行规则 (second minute hour day-of-month month day-fo-week)
      * fixedDelay   上一次任务执行结束到下一次任务执行开始的间隔时间 (ms)
      * fixedRate    上一次任务执行开始到下一次任务执行开始的间隔时间 (ms)
      * </pre>

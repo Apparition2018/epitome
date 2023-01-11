@@ -9,8 +9,7 @@ import org.junit.jupiter.api.Test;
 public class StringExercise {
 
     /**
-     * 假如有字符串"46sal452d4a5"，用最快速的方法去掉字符"sal"，
-     * 不能用java内置字符串方法。
+     * 假如有字符串"46sal452d4a5"，用最快速的方法去掉字符"sal"，不能用java内置字符串方法。
      */
     @Test
     public void test1() {
@@ -50,5 +49,4 @@ public class StringExercise {
         s4 = s1 + "b";
         System.out.println(s3 == s4); // false
     }
-
 }

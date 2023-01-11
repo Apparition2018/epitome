@@ -8,7 +8,7 @@ import springboot.mapper.master.SalesTkMapper;
 import tk.mybatis.mapper.entity.Example;
 
 /**
- * TkMapperTest
+ * TkMapper
  *
  * @author ljh
  * @since 2022/11/1 17:17

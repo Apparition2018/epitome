@@ -225,8 +225,8 @@
     2. TransactionalOperator
     3. TransactionManager
 4. [声明式事务管理](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative)
-    1. 基于 XML
-    2. 基于注解
+    1. [基于 XML - \<tx:advice/>](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative-txadvice-settings)
+    2. [基于注解 - @Transactional](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative-annotations)
         - 开启事务管理
             - XML：applicationContext.xml
             - 注解：@EnableTransactionManagement
@@ -235,7 +235,7 @@
             2. 数据库不支持
             3. ①非 public 方法 ②final 修饰
             4. 自调用
-            5. RuntimeException 和 Error 才生效
+            5. RuntimeException(Unchecked Exception) 和 Error 才生效（可以设置 rollbackFor）
             6. try catch 处理了异常
             7. propagation 设置为 NOT_SUPPORTED / NEVER
             8. 多线程，多数据源，分布式

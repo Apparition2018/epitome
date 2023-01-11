@@ -21,22 +21,24 @@ import org.springframework.scheduling.annotation.Async;
  * 2 事件发布者：ApplicationEventPublisher 及 ApplicationEventMulticaster 接口，使用这个接口，我们的 Service 就拥有了发布事件的能力。
  * 3 事件订阅者：ApplicationListener，继承自 JDK 的 EventListener，所有监听器将继承它
  * </pre>
- * <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#context-functionality-events-annotation">@EventListener 注解使用</a>
+ * <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#context-functionality-events-annotation">@EventListener</a> 注解使用
  * {@link springboot.init.SpringStartupRunningLogic.ExampleBean#contextStarted(ContextRefreshedEvent)}
- * <p>Spring 内置事件：
+ * <p><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html">Spring 内置事件</a>：
  * <pre>
- * ContextRefreshedEvent        ApplicationContext 初始化或刷新时引发的事件
- * ContextStartedEvent          ApplicationContext 启动时引发的事件
- * ContextStoppedEvent          ApplicationContext 停止时引发的事件
- * ContextClosedEvent           ApplicationContext 关闭时引发的事件
- * RequestHandledEvent          ApplicationContext 中处理请求时引发的事件。仅适用于使用 Spring 的 DispatcherServlet 的 web 应用程序
- * ServletRequestHandledEvent   RequestHandledEvent 的子类，用于添加特定于 servlet 的上下文信息
+ * ApplicationContextEvent 子类：
+ * ContextRefreshedEvent            ApplicationContext 初始化或刷新时引发的事件
+ * ContextStartedEvent              ApplicationContext 启动时引发的事件
+ * ContextStoppedEvent              ApplicationContext 停止时引发的事件
+ * ContextClosedEvent               ApplicationContext 关闭时引发的事件
+ *
+ * RequestHandledEvent              ApplicationContext 中处理请求时引发的事件。仅适用于使用 Spring 的 DispatcherServlet 的 web 应用程序
+ * ServletRequestHandledEvent       RequestHandledEvent 的子类，用于添加特定于 servlet 的上下文信息
  * </pre>
  * 参考：
  * <pre>
+ * <a href="https://www.baeldung.com/spring-events">Spring Events</a>
  * <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#context-functionality-events">Standard and Custom Events</a>
  * <a href="https://zhuanlan.zhihu.com/p/141069636">Springboot学习（二）观察者模式</a>
- * <a href="https://blog.csdn.net/qq_36306640/article/details/90047885">Spring 内置事件</a>
  * </pre>
  *
  * @author ljh

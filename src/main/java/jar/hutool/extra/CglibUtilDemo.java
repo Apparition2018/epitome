@@ -1,7 +1,6 @@
 package jar.hutool.extra;
 
 import cn.hutool.extra.cglib.CglibUtil;
-import l.demo.Demo;
 import l.demo.User;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +15,7 @@ import java.util.Objects;
  * @author ljh
  * @since 2020/11/21 17:04
  */
-public class CglibUtilDemo extends Demo {
+public class CglibUtilDemo {
 
     @Test
     public void testCglibUtil() {

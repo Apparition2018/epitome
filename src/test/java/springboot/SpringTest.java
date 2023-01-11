@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
+ * Spring
+ *
  * @author ljh
  * @since 2020/1/9 19:28
  */
@@ -22,7 +24,7 @@ public class SpringTest {
     private ServletContext servletContext;
 
     /**
-     * Spring WebApplicationContextUtils 工具类：https://www.cnblogs.com/jpfss/p/9447915.html
+     * @see <a href="https://www.cnblogs.com/jpfss/p/9447915.html">Spring WebApplicationContextUtils 工具类</a>
      */
     @Test
     public void testSpringContextUtils() {

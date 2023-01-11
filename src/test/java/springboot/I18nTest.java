@@ -6,7 +6,7 @@ import springboot.util.MessageUtils;
 
 /**
  * I18n
- * RuoYi 国际化支持：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%9B%BD%E9%99%85%E5%8C%96%E6%94%AF%E6%8C%81
+ * <p><a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#国际化支持">RuoYi 国际化支持</a>
  *
  * @author ljh
  * @since 2021/11/21 1:59

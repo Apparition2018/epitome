@@ -47,10 +47,12 @@ public class StringBufferBuilderDemo {
     }
 
     /**
+     * <pre>
      * StringBuffer/StringBuilder	delete(int start, int end)
-     * <p>移除此序列的子字符串中的字符
-     * <p>StringBuilder/StringBuilder	deleteCharAt(int index)
-     * <p>移除此序列指定位置上的 char
+     * 移除此序列的子字符串中的字符
+     * StringBuilder/StringBuilder	deleteCharAt(int index)
+     * 移除此序列指定位置上的 char
+     * </pre>
      */
     @Test
     public void delete() {
