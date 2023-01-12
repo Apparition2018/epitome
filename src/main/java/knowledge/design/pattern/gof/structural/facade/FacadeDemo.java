@@ -2,6 +2,7 @@ package knowledge.design.pattern.gof.structural.facade;
 
 import lombok.Getter;
 import org.junit.jupiter.api.Test;
+import org.springframework.jdbc.support.JdbcUtils;
 
 import java.io.File;
 
@@ -15,7 +16,7 @@ import java.io.File;
  * 使用实例：
  * <pre>
  * 1 slf4j
- * 2 各种工具类 {@link org.springframework.jdbc.support.JdbcUtils}
+ * 2 各种工具类 {@link JdbcUtils}
  * 3 给第三方使用的接口
  * 4 MVC
  * </pre>

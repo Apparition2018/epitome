@@ -84,6 +84,8 @@ public class ZXingDemo extends Demo {
                 height = 300;
                 filePath = DEMO_PATH + "QRCode.png";
                 hints = new HashMap<EncodeHintType, Serializable>() {
+                    private static final long serialVersionUID = 1955194072729986747L;
+
                     {
                         put(EncodeHintType.CHARACTER_SET, StandardCharsets.UTF_8.name());
                         put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M); // 纠错等级
@@ -122,6 +124,8 @@ public class ZXingDemo extends Demo {
             case QR_CODE:
                 filePath = DEMO_PATH + "QRCode.png";
                 hints = new HashMap<DecodeHintType, Charset>() {
+                    private static final long serialVersionUID = 1025915748647624149L;
+
                     {
                         put(DecodeHintType.CHARACTER_SET, StandardCharsets.UTF_8);
                     }

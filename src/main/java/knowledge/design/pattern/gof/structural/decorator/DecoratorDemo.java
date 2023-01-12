@@ -3,11 +3,18 @@ package knowledge.design.pattern.gof.structural.decorator;
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.xml.BeanDefinitionDecorator;
+import org.springframework.cache.transaction.TransactionAwareCacheDecorator;
+import org.springframework.http.server.reactive.ServerHttpRequestDecorator;
+import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 
+import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponseWrapper;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Base64;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.zip.Deflater;
 import java.util.zip.DeflaterOutputStream;
@@ -15,35 +22,44 @@ import java.util.zip.InflaterInputStream;
 
 /**
  * 装饰器模式：通过将对象放入特殊的封装对象，动态地给对象添加一些新的功能
- * 使用场景：功能组合
- * 1.业务逻辑可用一个基本组件及多个额外可选层表示
- * 2.使用继承来扩展对象行为的方案难以实现或者根本不可行
+ * <p>使用场景：功能组合
+ * <pre>
+ * 1 业务逻辑可用一个基本组件及多个额外可选层表示
+ * 2 使用继承来扩展对象行为的方案难以实现或者根本不可行
+ * </pre>
  * 使用实例：
- * 1.Java IO：
- * -    Component:          {@link InputStream} {@link OutputStream} {@link Reader} {@link Writer}
- * -    ConcreteComponent:  {@link FileInputStream} {@link ByteArrayInputStream} {@link PipedInputStream}
- * -    Decorator:          {@link FilterInputStream}
- * -    ConcreteDecorator:  {@link BufferedInputStream} {@link DataInputStream}
- * 2.{@link java.util.Collections} 的 checkedXXX()、 synchronizedXXX() 和 unmodifiableXXX()
- * 3.{@link javax.servlet.http.HttpServletRequestWrapper} 和 {@link javax.servlet.http.HttpServletResponseWrapper}
- * 4.{@link org.springframework.beans.factory.xml.BeanDefinitionDecorator}
- * 5.{@link org.springframework.http.server.reactive.ServerHttpRequestDecorator} 和 {@link org.springframework.http.server.reactive.ServerHttpResponseDecorator}
- * 6.{@link org.springframework.cache.transaction.TransactionAwareCacheDecorator}
- * <p>
+ * <pre>
+ * 1 Java IO：
+ *      Component:          {@link InputStream} {@link OutputStream} {@link Reader} {@link Writer}
+ *      ConcreteComponent:  {@link FileInputStream} {@link ByteArrayInputStream} {@link PipedInputStream}
+ *      Decorator:          {@link FilterInputStream}
+ *      ConcreteDecorator:  {@link BufferedInputStream} {@link DataInputStream}
+ * 2 {@link Collections} 的 checkedXXX()、 synchronizedXXX() 和 unmodifiableXXX()
+ * 3 {@link HttpServletRequestWrapper} 和 {@link HttpServletResponseWrapper}
+ * 4 {@link BeanDefinitionDecorator}
+ * 5 {@link ServerHttpRequestDecorator} 和 {@link ServerHttpResponseDecorator}
+ * 6 {@link TransactionAwareCacheDecorator}
+ * </pre>
  * 角色：
+ * <pre>
  * 抽象部件 Component：所有角色的顶级接口，定义通用方法
  * 具体部件 ConcreteComponent：定义基础行为
  * 抽象装饰 Decorator：实现 Component，接收 Component 的引用（构造器接收）
  * 具体装饰 ConcreteDecorator：定义添加到 Component 的额外行为，在调用父类方法之前或之后执行自身的行为
+ * </pre>
  * <p>
  * 优点：符合开闭原则
- * 简化：如果只有一个 ConcreteComponent，可考虑去掉 Component；如果只有一个 ConcreteDecorator，可考虑去掉 Decorator
+ * <p>简化：如果只有一个 ConcreteComponent，可考虑去掉 Component；如果只有一个 ConcreteDecorator，可考虑去掉 Decorator
  * 半透性：
- * 1.透明装饰模式：Client 应该将对象全部声明为 Component，而不是 ConcreteComponent 或 ConcreteDecorator
- * 2.半透明装饰模式：为了调用 ConcreteDecorator 新增的方法而不得不把对象声明为 ConcreteDecorator，缺点无法再次装饰
- * <p>
- * Decorator：https://refactoringguru.cn/design-patterns/decorator
- * Java设计模式：http://c.biancheng.net/view/1366.html
+ * <pre>
+ * 1 透明装饰模式：Client 应该将对象全部声明为 Component，而不是 ConcreteComponent 或 ConcreteDecorator
+ * 2 半透明装饰模式：为了调用 ConcreteDecorator 新增的方法而不得不把对象声明为 ConcreteDecorator，缺点无法再次装饰
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/decorator">Decorator</a>
+ * <a href="http://c.biancheng.net/view/1366.html">Java设计模式</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -51,9 +67,11 @@ import java.util.zip.InflaterInputStream;
 public class DecoratorDemo {
 
     /**
-     * 1.FileDataSource 仅支持简单读写
-     * 2.增加加密解密，压缩解压功能
-     * https://refactoringguru.cn/design-patterns/decorator/java/example
+     * <a href="https://refactoringguru.cn/design-patterns/decorator/java/example">编码和压缩装饰</a>
+     * <pre>
+     * 1 FileDataSource 仅支持简单读写
+     * 2 增加加密解密，压缩解压功能
+     * </pre>
      */
     @Test
     public void testDecorator() {

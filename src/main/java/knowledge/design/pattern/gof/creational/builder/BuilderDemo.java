@@ -4,31 +4,42 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.nio.ByteBuffer;
 
 /**
  * 建造者模式：将一个复杂对象的构造与它的表示分离，使得同样的构建过程可以创建不同的表示
- * 使用场景：
- * 1.构造步骤基本相同 (顺序不一定相同)，创建不同的产品 (类型相同)
- * 2.避免 telescopic constructor (构造器多，构造器参数多)
+ * <p>使用场景：
+ * <pre>
+ * 1 构造步骤基本相同 (顺序不一定相同)，创建不同的产品 (类型相同)
+ * 2 避免 telescopic constructor (构造器多，构造器参数多)
+ * </pre>
  * 使用实例：
- * 1. {@link StringBuilder#append(String)} 和 {@link StringBuilder#append(String)}
- * 2. {@link java.nio.ByteBuffer#put(byte[])}, XXXBuffer
- * 3. {@link java.lang.Appendable#append(CharSequence)} 的所有实现
- * 4. {@link org.springframework.beans.factory.support.BeanDefinitionBuilder}
- * 5. {@link org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder}
- * 6. {@link org.springframework.web.util.UriComponentsBuilder}
- * <p>
+ * <pre>
+ * 1 {@link StringBuilder#append(String)} 和 {@link StringBuilder#append(String)}
+ * 2 {@link ByteBuffer#put(byte[])}, XXXBuffer
+ * 3 {@link Appendable#append(CharSequence)} 的所有实现
+ * 4 {@link BeanDefinitionBuilder}
+ * 5 {@link MockMvcWebClientBuilder}
+ * 6 {@link UriComponentsBuilder}
+ * </pre>
  * 角色：
+ * <pre>
  * 抽象建造者 Builder (可选)：定义通用产品构造步骤
  * 具体建造者 ConcreteBuilder：实现各具体构造步骤，还包含一个返回 Product (一一对应) 的方法 build()
  * 产品 Product
  * 导演 Director (可选)：定义构造步骤的调用顺序，创建特定 Product
- * <p>
+ * </pre>
  * 优点：符合单一职责原则、迪米特法则
- * <p>
- * Builder：https://refactoringguru.cn/design-patterns/builder
- * Java设计模式：http://c.biancheng.net/view/1354.html
- * Tom|动态构建SQL语句：https://gupaoedu-tom.blog.csdn.net/article/details/121016859
+ * <p>参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/builder">Builder</a>
+ * <a href="http://c.biancheng.net/view/1354.html">Java设计模式</a>
+ * <a href="https://gupaoedu-tom.blog.csdn.net/article/details/121016859">Tom|动态构建SQL语句</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -36,8 +47,7 @@ import org.junit.jupiter.api.Test;
 public class BuilderDemo {
 
     /**
-     * 分步骤生产汽车
-     * https://refactoringguru.cn/design-patterns/builder/java/example
+     * <a href="https://refactoringguru.cn/design-patterns/builder/java/example">分步骤生产汽车</a>
      */
     @Test
     public void testBuilder() {

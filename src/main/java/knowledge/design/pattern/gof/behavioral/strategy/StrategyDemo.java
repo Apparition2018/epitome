@@ -1,38 +1,47 @@
 package knowledge.design.pattern.gof.behavioral.strategy;
 
+import knowledge.oop.interface_.FunctionalInterface;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
+import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
 import java.util.EnumMap;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.function.Function;
 
 /**
  * 策略模式：定义一系列算法，并将每一个算法封装到具有共同接口的类中，使得它们可以互相替换
- * 使用场景：多行为、多算法、if-else、switch-case
- * 使用实例：
- * 1.Functional Interface {@link knowledge.oop.interface_.FunctionalInterface}
- * 2.{@link javax.servlet.Filter#doFilter(ServletRequest, ServletResponse, FilterChain)}
- * 3.{@link javax.servlet.http.HttpServlet} 的 service(req, resp), doXXX(req, resp)
- * 4.{@link java.util.concurrent.ThreadPoolExecutor} 的构造器参数 RejectedExecutionHandler 的四个实现：
- * -    https://blog.csdn.net/yangsen159/article/details/103146038
- * 5.{@link ResourceLoader#getResource(String)} 和 {@link Resource}
- * <p>
+ * <p>使用场景：多行为、多算法、if-else、switch-case
+ * <p>使用实例：
+ * <pre>
+ * 1 Functional Interface {@link FunctionalInterface}
+ * 2 {@link Filter#doFilter(ServletRequest, ServletResponse, FilterChain)}
+ * 3 {@link HttpServlet} 的 service(req, resp), doXXX(req, resp)
+ * 4 {@link ThreadPoolExecutor} 的构造器参数 RejectedExecutionHandler 的四个实现：
+ *      <a href="https://blog.csdn.net/yangsen159/article/details/103146038">策略模式在JDK中的应用</a>
+ * 5 {@link ResourceLoader#getResource(String)} 和 {@link Resource}
+ * </pre>
  * 角色:
+ * <pre>
  * 上下文 Context：接收 Strategy 的引用
  * 抽象策略 Strategy：声明 Context 执行策略的方法
  * 具体策略 ConcreteStrategy
- * <p>
+ * </pre>
  * 优点：符合开闭原则
- * 缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
+ * <p>缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
  * <p>
- * Strategy：https://refactoringguru.cn/design-patterns/strategy
- * Java设计模式：http://c.biancheng.net/view/1378.html
+ * 参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/strategy">Strategy</a>
+ * <a href="http://c.biancheng.net/view/1378.html">Java设计模式</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -40,8 +49,7 @@ import java.util.function.Function;
 public class StrategyDemo {
 
     /**
-     * 电影票折扣
-     * https://blog.csdn.net/LoveLion/article/details/7819216
+     * <a href="https://blog.csdn.net/LoveLion/article/details/7819216">电影票折扣</a>
      */
     @Test
     public void testStrategy() {
@@ -110,15 +118,16 @@ public class StrategyDemo {
 
     /**
      * 使用 java.function.* 和 lambda 优化策略模式
-     * <p>
-     * 策略模式优化过程：
-     * 1.一个算法写一个 ConcreteStrategy
-     * 2.使用工厂来管理 ConcreteStrategy
-     * 3.用匿名内部类代替 ConcreteStrategy
-     * 4.用函数式接口代替匿名内部类
-     * 5.用 lambda 简化函数式接口
-     * <p>
-     * 优化策略模式：https://mp.weixin.qq.com/s/hkypvNBkRjPM6HM51_jW9g
+     * <p>策略模式优化过程：
+     * <pre>
+     * 1 一个算法写一个 ConcreteStrategy
+     * 2 使用工厂来管理 ConcreteStrategy
+     * 3 用匿名内部类代替 ConcreteStrategy
+     * 4 用函数式接口代替匿名内部类
+     * 5 用 lambda 简化函数式接口
+     * </pre>
+     *
+     * @see <a href="https://mp.weixin.qq.com/s/hkypvNBkRjPM6HM51_jW9g">优化策略模式</a>
      */
     static class FunctionInterfaceStrategyDemo {
         private final static EnumMap<DiscountEnum, Function<Double, Double>> STRATEGY_MAP = new EnumMap<>(DiscountEnum.class);

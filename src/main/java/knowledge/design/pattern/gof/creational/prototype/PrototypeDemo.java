@@ -11,25 +11,31 @@ import java.util.Objects;
 
 /**
  * 原型模式：用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象
- * 使用场景：
- * 1.对象创建成本较大（如需复杂计算，从 RPC、网络、数据库、文件系统等读取）
- * 2.需创建的对象与现有对象差别不大
- * 3.原型注册表
+ * <p>使用场景：
+ * <pre>
+ * 1 对象创建成本较大（如需复杂计算，从 RPC、网络、数据库、文件系统等读取）
+ * 2 需创建的对象与现有对象差别不大
+ * 3 原型注册表
+ * </pre>
  * 使用实例：
- * 1.浅克隆：{@link Cloneable}、{@link Person#clone()}
- * -    clone() 效率分析：轻量级对象直接使用 new：https://www.cnblogs.com/stevenshen123/p/9081118.html
- * 2.深克隆：①递归 clone；②序列化；③SerializationUtils
- * <p>
+ * <pre>
+ * 1 浅克隆：{@link Cloneable}、{@link Person#clone()}
+ *     <a href="https://www.cnblogs.com/stevenshen123/p/9081118.html">clone() 效率分析：轻量级对象直接使用 new</a>
+ * 2 深克隆：①递归 clone；②序列化；③SerializationUtils
+ * </pre>
  * 角色：
+ * <pre>
  * 抽象原型 Prototype：clone()
  * 具体原型 ConcretePrototype：实现 clone()，复制原型数据到克隆体
  * 原型注册表 PrototypeRegistry (可选)：注册表存储预生成对象，以供复制使用
- * <p>
+ * </pre>
  * 缺点：违反开闭原则
- * <p>
- * Prototype：https://refactoringguru.cn/design-patterns/prototype
- * Java设计模式：http://c.biancheng.net/view/1343.html
+ * <p>参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/prototype">Prototype</a>
+ * <a href="http://c.biancheng.net/view/1343.html">Java设计模式</a>
  * 设计模式之美：原型模式：如何最快速地 clone 一个 HashMap 散列表？
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -37,8 +43,7 @@ import java.util.Objects;
 public class PrototypeDemo extends Demo {
 
     /**
-     * 复制图形（不使用 Cloneable）
-     * https://refactoringguru.cn/design-patterns/prototype/java/example
+     * <a href="https://refactoringguru.cn/design-patterns/prototype/java/example">复制图形（不使用 Cloneable）</a>
      */
     @Test
     public void testPrototype() {

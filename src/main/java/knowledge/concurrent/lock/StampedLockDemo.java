@@ -6,22 +6,24 @@ import java.util.Objects;
 import java.util.concurrent.locks.StampedLock;
 
 /**
- * StampedLock
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/locks/StampedLock.html">StampedLock</a>
+ * <pre>
  * StampedLock 为了解决读操作很多，写操作很少的情况下，可能长时间存在读锁而无法获取写锁的线程饥饿问题
  * StampedLock 支持读写锁互相转换；ReentrantReadWriteLock 写锁可以降级成读锁，但反过来则不行
- * <p>
+ * </pre>
  * StampedLock 有三种模式：
- * 1.writing：独占写锁
- * 2.reading：悲观读锁，与独占写互斥，与乐观读共享
- * 3.optimistic reading：乐观读，没有加锁
- * <p>
+ * <pre>
+ * 1 writing：独占写锁
+ * 2 reading：悲观读锁，与独占写互斥，与乐观读共享
+ * 3 optimistic reading：乐观读，没有加锁
+ * </pre>
  * 注意事项：
- * 1.是不可重入锁，如果当前线程已经获取了写锁，再次重复获取的话就会死锁
- * 2.不支持 Condition 条件将线程等待
- * 3.写锁和悲观读锁加锁成功之后，都会返回一个 stamp；然后解锁的时候，需要传入这个 stamp
- * <p>
- * 高性能解决线程饥饿的利器 StampedLock：https://zhuanlan.zhihu.com/p/257118211
- * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/locks/StampedLock.html
+ * <pre>
+ * 1 是不可重入锁，如果当前线程已经获取了写锁，再次重复获取的话就会死锁
+ * 2 不支持 Condition 条件将线程等待
+ * 3 写锁和悲观读锁加锁成功之后，都会返回一个 stamp；然后解锁的时候，需要传入这个 stamp
+ * </pre>
+ * 参考：<a href="https://zhuanlan.zhihu.com/p/257118211">高性能解决线程饥饿的利器 StampedLock</a>
  *
  * @author ljh
  * @since 2020/12/1 10:37

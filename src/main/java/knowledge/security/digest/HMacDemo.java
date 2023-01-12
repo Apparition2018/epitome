@@ -21,23 +21,24 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * MAC (Message Authentication Code)，消息认证码，基于密钥的认证协议 (密钥 + 算法 → digest)
- * HMAC (keyed-Hash Message Authentication Code)，散列消息鉴别码，基于密钥的 Hash 算法的认证协议 (密钥 + Hash算法 → digest)
- * <p>
- * MAC 算法结合了 MD5 和 SHA 算法的优势，并加入密钥的支持，是一种更为安全的消息摘要算法。
- * <p>
- * 原理：
+ * <p>MAC (Message Authentication Code)，消息认证码，基于密钥的认证协议 (密钥 + 算法 → digest)
+ * <p>HMAC (keyed-Hash Message Authentication Code)，散列消息鉴别码，基于密钥的 Hash 算法的认证协议 (密钥 + Hash算法 → digest)
+ * <p>MAC 算法结合了 MD5 和 SHA 算法的优势，并加入密钥的支持，是一种更为安全的消息摘要算法。
+ * <p>原理：
+ * <pre>
  * 用公开函数和密钥产生一个固定长度的值作为认证标识，用这个标识鉴别消息的完整性。
  * 使用一个密钥生成一个固定大小的小数据块，即 MAC，并将其加入到消息中，然后传输。
  * 接收方利用与发送方共享的密钥进行鉴别认证等。
- * <p>
+ * </pre>
  * 应用场景一：
- * 1.客户端向服务器发起请求，访问登录页面，这时服务器生成一个密钥，把这个密钥存储在 session 之中，然后将密码返回给客户端
- * 2.客户端填写登录表单，点击提交后，运行 HMAC 算法，根据密钥将用户信息加密后 post 到服务器
- * 3.服务器读取数据库中的密钥，用 HMAC 将密码和 session 中的密钥进行加密产生密码的密文，将密文与用户提交的进行比较
- * 应用场景二：HMAC 结合"挑战/响应"保障数据传输安全：https://www.cnblogs.com/fishou/p/4206980.html
+ * <pre>
+ * 1 客户端向服务器发起请求，访问登录页面，这时服务器生成一个密钥，把这个密钥存储在 session 之中，然后将密码返回给客户端
+ * 2 客户端填写登录表单，点击提交后，运行 HMAC 算法，根据密钥将用户信息加密后 post 到服务器
+ * 3 服务器读取数据库中的密钥，用 HMAC 将密码和 session 中的密钥进行加密产生密码的密文，将密文与用户提交的进行比较
+ * </pre>
+ * 应用场景二：<a href="https://www.cnblogs.com/fishou/p/4206980.html">HMAC 结合"挑战/响应"保障数据传输安全</a>
  * <p>
- * HMAC 的 JAVA 实现和应用：https://www.cnblogs.com/fishou/p/4159092.html
+ * 参考：<a href="https://www.cnblogs.com/fishou/p/4159092.html">HMAC 的 JAVA 实现和应用</a>
  *
  * @author ljh
  * @since 2020/11/18 19:37
@@ -51,8 +52,8 @@ public class HMacDemo extends Demo {
     }
 
     /**
-     * MAC 有多种算法：
-     * <p>
+     * MAC 算法：
+     * <pre>
      * HmacMD2
      * HmacMD4
      * HmacMD5
@@ -61,6 +62,7 @@ public class HMacDemo extends Demo {
      * HmacSHA256
      * HmacSHA384
      * HmacSHA512
+     * </pre>
      */
     private static final String KEY_MAC = "HmacMD5";
 

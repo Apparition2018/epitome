@@ -1,5 +1,7 @@
 package knowledge.data.structure.collections.framework.map;
 
+import com.google.common.collect.Maps;
+import knowledge.data.structure.collections.framework.collection.SetDemo;
 import l.demo.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -40,7 +42,7 @@ import java.util.*;
  *   3.1.扩容总是原来的2倍，即容量始终为2的幂次方
  *   3.2.遍历整个 Map 需要的时间与 桶（数组） 的长度成正比
  *   3.3.加载因子越大，发生冲突的可能性就越大，反之需要频繁 resize，性能降低
- *   3.4.建议在创建 HashMap 的时候指定初始化容量，可使用 guava 工具方法 {@link com.google.common.collect.Maps#newHashMapWithExpectedSize(int)}（阿里编程规约）
+ *   3.4.建议在创建 HashMap 的时候指定初始化容量，可使用 guava 工具方法 {@link Maps#newHashMapWithExpectedSize(int)}（阿里编程规约）
  * </pre>
  * <pre>
  * HashMap([int initialCapacity[, float loadFactor]])       构造一个带指定初始容量和加载因子的空 HashMap
@@ -166,7 +168,7 @@ public class MapDemo extends Demo {
      * <pre>
      * TreeMap → NavigableMap → SortedMap → Map
      * 基于红黑树（Red-Black tree）的 NavigableMap 实现。该映射根据其键的自然顺序进行排序，或者根据创建映射时提供的 Comparator 进行排序。
-     * 大部分 API 类似 TreeSet {@link knowledge.data.structure.collections.framework.collection.SetDemo#testTreeSet}
+     * 大部分 API 类似 TreeSet {@link SetDemo#testTreeSet}
      * </pre>
      */
     @Test

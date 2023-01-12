@@ -2,29 +2,39 @@ package knowledge.design.pattern.gof.structural.bridge;
 
 import org.junit.jupiter.api.Test;
 
+import java.sql.Driver;
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+
 /**
  * 桥接模式：将类拆分为抽象部分和实现部分，使得二者可以独立地变化
- * 使用场景：在几个独立的维度上扩展类
- * 使用实例：
- * 1.sql：{@link java.sql.Driver}
- * 2.logging: {@link java.util.logging.Handler} 和 {@link java.util.logging.Formatter}
- * <p>
+ * <p>使用场景：在几个独立的维度上扩展类
+ * <p>使用实例：
+ * <pre>
+ * 1 sql：{@link Driver}
+ * 2 logging: {@link Handler} 和 {@link Formatter}
+ * </pre>
  * 角色：
+ * <pre>
  * 抽象部分：接收 Implementor 的引用
- * 1.抽象 Abstraction：定义与 Client 交互的高层操作
- * 2.精确抽象 RefinedAbstraction
+ *  1 抽象 Abstraction：定义与 Client 交互的高层操作
+ *  2 精确抽象 RefinedAbstraction
  * 实现部分：
- * 1.实现 Implementor：定义底层操作
- * 2.具体实现 ConcreteImplementor
- * <p>
+ *  1 实现 Implementor：定义底层操作
+ *  2 具体实现 ConcreteImplementor
+ * </pre>
  * 优点：符合单一职责原则、开闭原则、依赖倒置原则
- * 扩展：
- * 1.与 Adapter 联合使用，解决 Implementor 与现有类接口不兼容的问题
- * 2.与 Abstract Factory 联合使用，使用 Factory 创建 Implementor 需要的不同 Abstraction
- * 3.与 Builder 联合使用，Director 充当 Abstraction，Builder 充当 Implementor
- * <p>
- * Bridge：https://refactoringguru.cn/design-patterns/bridge
- * Java设计模式：http://c.biancheng.net/view/1364.html
+ * <p>扩展：
+ * <pre>
+ * 1 与 Adapter 联合使用，解决 Implementor 与现有类接口不兼容的问题
+ * 2 与 Abstract Factory 联合使用，使用 Factory 创建 Implementor 需要的不同 Abstraction
+ * 3 与 Builder 联合使用，Director 充当 Abstraction，Builder 充当 Implementor
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/bridge">Bridge</a>
+ * <a href="http://c.biancheng.net/view/1364.html">Java设计模式</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/23 19:38
@@ -32,10 +42,12 @@ import org.junit.jupiter.api.Test;
 public class BridgeDemo {
 
     /**
-     * 远程控制不同类型的设备，远程控制包括基础控制和高级控制，设备包括收音机和电视
-     * 1.抽象-远程控制
-     * 2.实现-设备
-     * https://refactoringguru.cn/design-patterns/bridge/java/example
+     * <a href="https://refactoringguru.cn/design-patterns/bridge/java/example">设备和远程控制之间的桥接</a>
+     * <p>远程控制不同类型的设备，远程控制包括基础控制和高级控制，设备包括收音机和电视
+     * <pre>
+     * 1 抽象-远程控制
+     * 2 实现-设备
+     * </pre>
      */
     @Test
     public void testBridge() {

@@ -5,32 +5,38 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.StatementCallback;
 
+import javax.swing.*;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 /**
  * 命令模式：将请求封装为对象，使请求的发送者和接收者解耦，从而增强请求的能力
- * 使用场景：控制请求的执行，如异步、延迟、排队执行、撤销/重做、记录日志等
- * 使用实例：
- * 1.{@link Runnable} 的所有实现
- * 2.{@link javax.swing.Action} 的所有实现
- * 3.{@link JdbcTemplate#query(String, ResultSetExtractor)}
- * -    Invoker         {@link JdbcTemplate#execute(StatementCallback)}
- * -    Command         {@link org.springframework.jdbc.core.StatementCallback}
- * -    Receiver        {@link java.sql.Statement}
- * <p>
+ * <p>使用场景：控制请求的执行，如异步、延迟、排队执行、撤销/重做、记录日志等
+ * <p>使用实例：
+ * <pre>
+ * 1 {@link Runnable} 的所有实现
+ * 2 {@link Action} 的所有实现
+ * 3 {@link JdbcTemplate#query(String, ResultSetExtractor)}
+ *      Invoker         {@link JdbcTemplate#execute(StatementCallback)}
+ *      Command         {@link StatementCallback}
+ *      Receiver        {@link Statement}
+ * </pre>
  * 角色:
+ * <pre>
  * 调用者 Invoker：接收 Command 的引用，请求时调用 command.execute()
  * 抽象命令 Command：通常仅声明一个 execute()
  * 具体命令 ConcreteCommand：实现 execute()，把工作委派给 Receiver
  * 接收者 Receiver
- * <p>
+ * </pre>
  * 优点：符合单一职责原则、开闭原则
- * <p>
- * Command：https://refactoringguru.cn/design-patterns/command
- * Java设计模式：http://c.biancheng.net/view/1380.html
- * 菜鸟模式：https://www.runoob.com/design-pattern/command-pattern.html
+ * <p>参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/command">Command</a>
+ * <a href="http://c.biancheng.net/view/1380.html">Java设计模式</a>
+ * <a href="https://www.runoob.com/design-pattern/command-pattern.html">菜鸟模式</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -178,12 +184,11 @@ public class CommandDemo {
 
     /**
      * 备忘录命令模式
-     * 实现撤销/历史记录，也可用原型命令模式实现
+     * <p>实现撤销/历史记录，也可用原型命令模式实现
      */
     static class MementoCommandDemo {
         /**
-         * 计算器：加法、撤销
-         * https://blog.csdn.net/LoveLion/article/details/8806509
+         * <a href="https://blog.csdn.net/LoveLion/article/details/8806509">计算器：加法、撤销</a>
          */
         @Test
         public void testMementoCommand() {
@@ -271,5 +276,4 @@ public class CommandDemo {
             }
         }
     }
-
 }

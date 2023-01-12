@@ -8,10 +8,11 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.stream.IntStream;
 
 /**
- * ReentrantReadWriteLock
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/locks/ReentrantReadWriteLock.html">ReentrantReadWriteLock</a>
+ * <pre>
  * 实现与 ReentrantLock 类似语义的 ReadWriteLock
  * 读和写互斥，写和写互斥，读和读不需要互斥
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/locks/ReentrantReadWriteLock.html
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -68,5 +69,4 @@ public class ReentrantReadWriteLockDemo {
             }
         }
     }
-
 }

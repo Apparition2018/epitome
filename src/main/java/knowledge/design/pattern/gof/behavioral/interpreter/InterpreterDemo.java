@@ -2,27 +2,34 @@ package knowledge.design.pattern.gof.behavioral.interpreter;
 
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
+import org.springframework.expression.ExpressionParser;
 
 import java.util.Stack;
+import java.util.regex.Pattern;
 
 /**
  * 解释器模式：给分析对象定义一个语言，并定义该语言的文法表示，再设计一个解析器来解释语言中的句子
- * 使用场景：解析特定文法句子
- * 使用实例：
- * 1.{@link java.util.regex.Pattern}
- * 2.expression4J、MESP (Math Expression String Parser)、Jep
- * 3.SpEL：{@link org.springframework.expression.ExpressionParser}
- * <p>
+ * <p>使用场景：解析特定文法句子
+ * <p>使用实例：
+ * <pre>
+ * 1 {@link Pattern}
+ * 2 expression4J、MESP (Math Expression String Parser)、Jep
+ * 3 SpEL：{@link ExpressionParser}
+ * </pre>
  * 角色：
+ * <pre>
  * 抽象表达式 Expression：定义解释操作 interpret()
  * 终结符表达式 TerminalExpression
  * 非终结符表达式 NonTerminalExpression
  * 环境 Context：存储全局信息，公共功能
- * <p>
+ * </pre>
  * 优点：符合开闭原则
  * <p>
- * Java设计模式：http://c.biancheng.net/view/1402.html
- * 菜鸟模式：https://www.runoob.com/design-pattern/interpreter-pattern.html
+ * 参考：
+ * <pre>
+ * <a href="http://c.biancheng.net/view/1402.html">Java设计模式</a>
+ * <a href="https://www.runoob.com/design-pattern/interpreter-pattern.html">菜鸟模式</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -31,8 +38,10 @@ public class InterpreterDemo {
 
     /**
      * 机器人控制
-     * https://blog.csdn.net/LoveLion/article/details/7713593
-     * https://blog.csdn.net/LoveLion/article/details/7713602
+     * <pre>
+     * <a href="https://blog.csdn.net/LoveLion/article/details/7713593">自定义语言的实现——解释器模式（四）</a>
+     * <a href="https://blog.csdn.net/LoveLion/article/details/7713602">自定义语言的实现——解释器模式（五）</a>
+     * </pre>
      */
     @Test
     public void testInterpreter() {

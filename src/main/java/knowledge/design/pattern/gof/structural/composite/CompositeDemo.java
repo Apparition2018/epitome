@@ -2,32 +2,39 @@ package knowledge.design.pattern.gof.structural.composite;
 
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.IntStream;
 
 /**
  * 组合模式：又称整体-部分模式 (Part-Whole)，将对象组合成树状层次结构的模式，对单个对象和组合对象的使用具有一致性
- * 使用场景：树结构、整体-部分
- * 使用实例：
- * 1.{@link java.util.HashMap}
- * 2.{@link java.awt.Container#add(java.awt.Component)}
- * 3.WebMvcConfigurerComposite 和 @{@link org.springframework.web.servlet.config.annotation.WebMvcConfigurer}
- * <p>
+ * <p>使用场景：树结构、整体-部分
+ * <p>使用实例：
+ * <pre>
+ * 1 {@link HashMap}
+ * 2 {@link Container#add(Component)}
+ * 3 WebMvcConfigurerComposite 和 @{@link WebMvcConfigurer}
+ * </pre>
  * 角色：
+ * <pre>
  * 抽象组件 Component：定义通用方法
- * -    透明模式：声明访问和管理子类的接口，如 add(), remove()，getChild() 等
- * -    安全模式：不声明访问和管理子类的接口，管理工作由 Composite 完成
+ *    透明模式：声明访问和管理子类的接口，如 add(), remove()，getChild() 等
+ *    安全模式：不声明访问和管理子类的接口，管理工作由 Composite 完成
  * 树叶组件 Leaf：实现 Component，没有子节点
  * 组合组件 Composite/Container：实现 Component，持有子节点集合的引用，循环调用子节点通用方法
- * <p>
+ * </pre>
  * 优点：符合开闭原则
- * 扩展：使用 Builder 创建复杂 Composite
- * <p>
- * Composite：https://refactoringguru.cn/design-patterns/composite
- * Java设计模式：http://c.biancheng.net/view/1373.html
+ * <p>扩展：使用 Builder 创建复杂 Composite
+ * <p>参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/composite">Composite</a>
+ * <a href="http://c.biancheng.net/view/1373.html">Java设计模式</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -35,8 +42,7 @@ import java.util.stream.IntStream;
 public class CompositeDemo {
 
     /**
-     * 文件系统 (安全模式)
-     * http://c.biancheng.net/view/8474.html
+     * <a href="http://c.biancheng.net/view/8474.html">文件系统 (安全模式)</a>
      */
     @Test
     public void testComposite() {

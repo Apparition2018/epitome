@@ -59,7 +59,7 @@ public class AsymmetricCryptography {
     private static final int MAX_DECRYPT_BLOCK = 128;
     /**
      * 密钥长度必须是 64 的倍数，在 512~65536 位之间
-     * DH 算法的默认密钥长度是 1024
+     * <p>DH 算法的默认密钥长度是 1024
      */
     private static final int KEY_SIZE = 1024;
     private static final String PUBLIC_KEY = "RSAPublicKey";

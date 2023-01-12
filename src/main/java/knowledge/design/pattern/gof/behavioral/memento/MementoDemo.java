@@ -3,6 +3,7 @@ package knowledge.design.pattern.gof.behavioral.memento;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -11,7 +12,7 @@ import java.util.Stack;
  * <p>使用场景：快照、撤销
  * 使用实例：
  * <pre>
- * 1 {@link  java.io.Serializable} 模拟备忘录
+ * 1 {@link  Serializable} 模拟备忘录
  * 2 Spring Web Flow：StateManageableMessageContext#createMessagesMemento()
  * </pre>
  * 角色：

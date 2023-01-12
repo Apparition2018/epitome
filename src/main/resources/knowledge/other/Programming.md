@@ -63,6 +63,9 @@ if (logger.isDebugEnabled()) {
 10. 谨慎地记录日志。生产环境禁止输出 debug 日志；有选择地输出 info 日志；如果使用 warn 来记录刚上线时的业务行为信息，一定要注意日志输出量的问题，并记得及时删除这些观察日志
 11. 可以使用 warn 日志级别来记录用户输入参数错误的情况，避免用户投诉时，无所适从。如非必要，请不要在此场景打出 error 级别，避免频繁报警
 ---
+## 领域驱动设计 (Domain Drive Design)
+- [DDD](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2MTY3OTg2Ng==&action=getalbum&album_id=2044483473867931649)
+---
 ## 缓存
 1. [如何优雅的设计和使用缓存？](https://juejin.cn/post/6844903665845665805)
 2. [Spring Cache VS Caffeine](https://www.cnblogs.com/Sinte-Beuve/p/12009885.html)

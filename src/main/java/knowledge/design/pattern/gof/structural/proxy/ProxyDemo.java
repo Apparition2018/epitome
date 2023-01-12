@@ -3,36 +3,43 @@ package knowledge.design.pattern.gof.structural.proxy;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
  * 代理模式：为原始对象提供一个代理以控制对这个对象的访问，在到达原始对象之前或之后执行某些操作
- * 使用场景：控制访问
- * 1. 非业务需求：鉴权、缓存、事务、监控、统计、限流、幂等、日志，可使用 Spring AOP 实现
- * 2. 延迟初始化
+ * <p>使用场景：控制访问
+ * <pre>
+ * 1 非业务需求：鉴权、缓存、事务、监控、统计、限流、幂等、日志，可使用 Spring AOP 实现
+ * 2 延迟初始化
+ * </pre>
  * 使用实例：
- * 1.@PreAuthorize，@Cacheable，@Transactional
- * 2.{@link java.rmi}
- * 3.{@link java.lang.reflect.Proxy}
- * 4.{@link org.springframework.aop.framework.JdkDynamicAopProxy}
- * 5.{@link org.springframework.aop.framework.CglibAopProxy}
- * <p>
+ * <pre>x
+ * 1 @PreAuthorize，@Cacheable，@Transactional
+ * 2 {@link java.rmi}
+ * 3 {@link Proxy}
+ * 4 {@link org.springframework.aop.framework.JdkDynamicAopProxyJdkDynamicAopProxy}
+ * 5 {@link org.springframework.aop.framework.CglibAopProxyCglibAopProxy}
+ * </pre>
  * 角色：
+ * <pre>
  * 抽象主题 Subject
  * 真实主题 RealSubject
  * 代理 Proxy：实现 Subject，或直接继承 RealSubject，持有 RealSubject 的引用
- * <p>
+ * </pre>
  * 优点：符合开闭原则
- * 缺点：RealSubject 与 Proxy 一一对应，RealSubject 增加，Proxy 也要跟着增加
- * 优化：动态代理、Spring AOP
- * <p>
- * Proxy：https://refactoringguru.cn/design-patterns/proxy
- * Java设计模式：http://c.biancheng.net/view/1359.html
- * 设计模式最佳套路3 —— 愉快地使用代理模式：https://zhuanlan.zhihu.com/p/381795745
- * Tom：https://gupaoedu-tom.blog.csdn.net/article/details/120984573
- * JavaGuide：https://github.com/Snailclimb/JavaGuide/blob/main/docs/java/basis/proxy.md
+ * <p>缺点：RealSubject 与 Proxy 一一对应，RealSubject 增加，Proxy 也要跟着增加
+ * <p>优化：动态代理、Spring AOP
+ * <p>参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/proxy">Proxy</a>
+ * <a href="http://c.biancheng.net/view/1359.html">Java设计模式</a>
+ * <a href="https://zhuanlan.zhihu.com/p/381795745">设计模式最佳套路3 —— 愉快地使用代理模式</a>
+ * <a href="https://gupaoedu-tom.blog.csdn.net/article/details/120984573">Tom</a>
+ * <a href="https://github.com/Snailclimb/JavaGuide/blob/main/docs/java/basis/proxy.md">JavaGuide</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51

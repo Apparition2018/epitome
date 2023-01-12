@@ -10,17 +10,20 @@ import java.util.Objects;
 
 /**
  * 规格模式
- * <p>
- * 角色：
+ * <p>角色：
+ * <pre>
  * 抽象规格 Specification
  * 组合规格 CompositeSpecification
  * 与规格 AndSpecification
  * 或规格 OrSpecification
  * 非规格 NotSpecification
  * 业务规格 BizSpecification
- * <p>
- * Specification：https://java-design-patterns.com/patterns/specification/
- * Specification：https://www.kancloud.cn/sstd521/design/193648
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://java-design-patterns.com/patterns/specification/">Specification</a>
+ * <a href="https://www.kancloud.cn/sstd521/design/193648">Specification</a>
+ * </pre>
  *
  * @author ljh
  * @since 2022/2/8 17:46

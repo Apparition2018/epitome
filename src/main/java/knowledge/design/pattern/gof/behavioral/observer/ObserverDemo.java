@@ -4,31 +4,37 @@ import jar.google.guava.evenbus.EventBusDemo;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 
+import javax.servlet.http.HttpSessionAttributeListener;
+import javax.servlet.http.HttpSessionBindingListener;
 import java.io.File;
 import java.util.*;
 
 /**
  * 观察者模式：定义了对象间的一种一对多依赖关系，使得每当一个对象改变时，所有依赖于它的对象都会得到通知并自动更新
- * 使用场景：关联行为、消息队列、事件
- * 使用实例：
- * 1.{@link java.util.Observer} 和 {@link java.util.Observable}
- * 2.{@link java.util.EventListener} 的所有实现，广泛应用于 Swing 组件
- * 3.{@link javax.servlet.http.HttpSessionBindingListener} 和 {@link javax.servlet.http.HttpSessionAttributeListener}
- * <p>
+ * <p>使用场景：关联行为、消息队列、事件
+ * <p>使用实例：
+ * <pre>
+ * 1 {@link Observer} 和 {@link Observable}
+ * 2 {@link EventListener} 的所有实现，广泛应用于 Swing 组件
+ * 3 {@link HttpSessionBindingListener} 和 {@link HttpSessionAttributeListener}
+ * </pre>
  * 角色：
+ * <pre>
  * 抽象主题 Subject：持有 Observer 集合的引用，定义 registry()，remove()，notify()
  * 具体主题 ConcreteSubject：实现 notify()
- * -    推模型：observer.update(info...)，把 ConcreteObserver 需要的数据传给 ConcreteObserver
- * -    拉模型：observer.update(subject)，把 Subject 传给 ConcreteObserver，让 ConcreteObserver 自己从 Subject 获取数据
+ *      推模型：observer.update(info...)，把 ConcreteObserver 需要的数据传给 ConcreteObserver
+ *      拉模型：observer.update(subject)，把 Subject 传给 ConcreteObserver，让 ConcreteObserver 自己从 Subject 获取数据
  * 抽象观察者 Observer：定义 update()
  * 具体观察者 ConcreteObserver
- * <p>
+ * </pre>
  * 优点：符合开闭原则
- * <p>
- * Observer：https://refactoringguru.cn/design-patterns/observer
- * Java设计模式：http://c.biancheng.net/view/1390.html
+ * <p>参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/observer">Observer</a>
+ * <a href="http://c.biancheng.net/view/1390.html">Java设计模式</a>
  * 设计模式之美：观察者模式（上）：详解各种应用场景下观察者模式的不同实现方式
  * 设计模式之美：观察者模式（下）：如何实现一个异步非阻塞的EventBus框架？{@link EventBusDemo}
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51

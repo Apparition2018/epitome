@@ -34,18 +34,19 @@ public class DomDemo extends Demo {
 
     /**
      * org.w3c.dom
-     * <p>
-     * 1.定义：org.w3c.dom 的 XML 分析器将一个 XML 文档转换成一个对象模型的集合，又称 DOM 树。
-     * 应用程序通过对这个对象模型的操作，来实现对 XML 文档数据的操作。
-     * 2.优点：解析过程中树结构在内存中是持久的，方便修改数据和结构。
-     * 3.缺点：当 XML 文件较大时，对内存耗费比较大，容易影响解析性能并造成内存溢出。
+     * <pre>
+     * 定义：org.w3c.dom 的 XML 分析器将一个 XML 文档转换成一个对象模型的集合，又称 DOM 树。
+     *      应用程序通过对这个对象模型的操作，来实现对 XML 文档数据的操作。
+     * 优点：解析过程中树结构在内存中是持久的，方便修改数据和结构。
+     * 缺点：当 XML 文件较大时，对内存耗费比较大，容易影响解析性能并造成内存溢出。
+     * </pre>
      */
     static class OrgW3cDom {
 
         // 新建 Document 档建造器的工厂实例
-        private DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        private final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         // 新建 Document 建造器
-        private DocumentBuilder builder = factory.newDocumentBuilder();
+        private final DocumentBuilder builder = factory.newDocumentBuilder();
 
         public OrgW3cDom() throws ParserConfigurationException {
         }
@@ -114,12 +115,13 @@ public class DomDemo extends Demo {
 
     /**
      * org.xml.sax
-     * <p>
-     * 1.定义：org.xml.sax 提供的访问模式是一种顺序模式，这是一种快速读写 XML 数据的方式。
-     * 当使用 SAX 分析器对 XML 文档进行分析时，会触发一系列事件，并激活相应的事件处理函数，
-     * 应用程序通过这些事件处理函数实现对 XML 文档的访问，因而 SAX 接口也被称作事件驱动接口。
-     * 2.优点：分析能够立即开始，而不是等待所有的数据被处理，速度快，没有内存压力；适用于只需要访问 XML 文档中的数据
-     * 3.缺点：编码比较困难，而且很难同时访问同一个文档中的多处不同数据；一旦经过了某个元素，我们没有办法返回去再去访问它，缺乏灵活性。
+     * <pre>
+     * 定义：org.xml.sax 提供的访问模式是一种顺序模式，这是一种快速读写 XML 数据的方式。
+     *      当使用 SAX 分析器对 XML 文档进行分析时，会触发一系列事件，并激活相应的事件处理函数，
+     *      应用程序通过这些事件处理函数实现对 XML 文档的访问，因而 SAX 接口也被称作事件驱动接口。
+     * 优点：分析能够立即开始，而不是等待所有的数据被处理，速度快，没有内存压力；适用于只需要访问 XML 文档中的数据
+     * 缺点：编码比较困难，而且很难同时访问同一个文档中的多处不同数据；一旦经过了某个元素，我们没有办法返回去再去访问它，缺乏灵活性。
+     * </pre>
      */
     static class OrgXmlSax {
 
@@ -134,7 +136,7 @@ public class DomDemo extends Demo {
 
         static class MyHandler extends DefaultHandler {
             // 用来保存标签
-            private Stack<String> stack = new Stack<>();
+            private final Stack<String> stack = new Stack<>();
 
             // 数据字段
             private String name;

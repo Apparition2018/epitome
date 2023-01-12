@@ -8,12 +8,16 @@ import org.junit.jupiter.api.Test;
  * 空对象模式：空值默认行为代替空值判断
  * <p>
  * 角色：
+ * <pre>
  * 抽象对象 AbstractObject：定义默认行为，和 Client 交互的对象
  * 真实对象 RealObject：实现预期行为
  * 空对象 NullObject：实现 null 值下的行为
- * <p>
- * Null Object：https://sourcemaking.com/design_patterns/null_object
- * Null Object：https://java-design-patterns.com/patterns/null-object/
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://sourcemaking.com/design_patterns/null_object">Null Object</a>
+ * <a href="https://java-design-patterns.com/patterns/null-object/">Null Object</a>
+ * </pre>
  *
  * @author ljh
  * @since 2022/2/8 16:29

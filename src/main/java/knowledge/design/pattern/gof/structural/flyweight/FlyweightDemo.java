@@ -13,24 +13,30 @@ import java.util.Map;
 
 /**
  * 享元模式：运用共享技术复用大量细粒度对象
- * 使用场景：大量相似的不可变的对象，且占用大量内存
- * 使用实例：
- * 1.{@link java.lang.Integer#valueOf(int)}，类似还有 Boolean, Byte, Character, Short, Long, BigDecimal
- * 2.{@link String}
- * <p>
+ * <p>使用场景：大量相似的不可变的对象，且占用大量内存
+ * <p>使用实例：
+ * <pre>
+ * 1 {@link Integer#valueOf(int)}，类似还有 Boolean, Byte, Character, Short, Long, BigDecimal
+ * 2 {@link String}
+ * </pre>
  * 角色:
+ * <pre>
  * 享元 Flyweight：可共享状态
  * 情景 Context：不可共享的状态
  * 享元工厂 FlyweightFactory
- * <p>
+ * </pre>
  * 缺点：时间换空间
- * 扩展：
- * 1.单纯享元模式：不存在 UnsharedConcreteFlyweight
- * 2.复合享元模式：单纯享元对象使用组合模式，组合成复合享元对象 CompositeConcreteFlyweight
- * <p>
- * Flyweight：https://refactoringguru.cn/design-patterns/flyweight
- * Java设计模式：http://c.biancheng.net/view/1371.html
+ * <p>扩展：
+ * <pre>
+ * 1 单纯享元模式：不存在 UnsharedConcreteFlyweight
+ * 2 复合享元模式：单纯享元对象使用组合模式，组合成复合享元对象 CompositeConcreteFlyweight
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/flyweight">Flyweight</a>
+ * <a href="http://c.biancheng.net/view">Java设计模式</a>/1371.html
  * 设计模式之美：享元模式（下）：剖析享元模式在JavaInteger、String中的应用
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -38,7 +44,7 @@ import java.util.Map;
 public class FlyweightDemo extends Demo {
 
     /**
-     * String 使用了享元模式：http://c.biancheng.net/view/8471.html
+     * <a href="http://c.biancheng.net/view/8471.html">String 使用了享元模式</a>
      */
     @Test
     public void testString() {
@@ -64,8 +70,7 @@ public class FlyweightDemo extends Demo {
     private static final int TREE_TYPES = 2;
 
     /**
-     * 渲染一片森林
-     * https://refactoringguru.cn/design-patterns/flyweight/java/example
+     * <a href="https://refactoringguru.cn/design-patterns/flyweight/java/example">渲染一片森林</a>
      */
     public static void main(String[] args) {
         Forest forest = new Forest();

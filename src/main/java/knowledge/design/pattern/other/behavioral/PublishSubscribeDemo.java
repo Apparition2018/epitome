@@ -9,14 +9,13 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 /**
- * 发布订阅模式
- * <p>
- * 角色：
+ * <a href="http://www.code2succeed.com/pub-sub/">发布订阅模式</a>
+ * <p>角色：
+ * <pre>
  * 发布者 Publisher
  * 经纪人 Broker
  * 订阅者 Subscriber
- * <p>
- * http://www.code2succeed.com/pub-sub/
+ * </pre>
  *
  * @author ljh
  * @since 2022/1/26 14:25
@@ -34,7 +33,7 @@ public class PublishSubscribeDemo {
         Subscriber allLanguagesSubscriber = new Subscriber();
 
         Broker broker = new Broker();
-        
+
         /* 声明 messages，然后发布到 Broker */
         Message javaMsg1 = new Message("Java", "Core Java Concepts");
         Message javaMsg2 = new Message("Java", "Spring MVC: Dependency Inject and AOP");
@@ -47,16 +46,16 @@ public class PublishSubscribeDemo {
         Message pythonMsg2 = new Message("Python", "Advanced Python message");
         pythonPublisher.publish(pythonMsg1, broker);
         pythonPublisher.publish(pythonMsg2, broker);
-        
+
         /* addSubscriber */
         javaSubscriber.addSubscriber("Java", broker);
         pythonSubscriber.addSubscriber("Python", broker);
         allLanguagesSubscriber.addSubscriber("Java", broker);
         allLanguagesSubscriber.addSubscriber("Python", broker);
-        
+
         /* unSubscribe */
         pythonSubscriber.unSubscribe("Python", broker);
-        
+
         /* 向 subscribers 广播 messages */
         broker.broadcast();
 
@@ -67,7 +66,7 @@ public class PublishSubscribeDemo {
         pythonSubscriber.printMessages();
         System.out.println("\nMessages of All Languages Subscriber are: ");
         allLanguagesSubscriber.printMessages();
-        
+
         /* 发布新 messages */
         Message javaMsg4 = new Message("Java", "JSP and Servlets");
         Message javaMsg5 = new Message("Java", "Struts framework");

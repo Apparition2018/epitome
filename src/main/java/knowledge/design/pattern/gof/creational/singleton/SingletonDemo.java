@@ -3,7 +3,9 @@ package knowledge.design.pattern.gof.creational.singleton;
 import knowledge.design.pattern.other.creational.MultitonDemo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.support.AbstractBeanFactory;
 
+import java.awt.*;
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -24,9 +26,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * <pre>
  * 1 配置信息类、ID 生成器、连接池、线程池、缓冲池、工具类、日志
  * 2 {@link Runtime#getRuntime()}
- * 3 {@link java.awt.Desktop#getDesktop()}
+ * 3 {@link Desktop#getDesktop()}
  * 4 {@link System#getSecurityManager()}
- * 5 {@link org.springframework.beans.factory.support.AbstractBeanFactory#getBean(String)} 单例注册表
+ * 5 {@link AbstractBeanFactory#getBean(String)} 单例注册表
  * </pre>
  * 缺点：
  * <pre>

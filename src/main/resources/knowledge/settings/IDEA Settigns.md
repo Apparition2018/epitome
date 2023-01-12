@@ -140,6 +140,9 @@
     2. Generate GUIDs online：https://www.guidgen.com/
 ---
 ## [Project Structure...](https://www.jianshu.com/p/39b2206999e7)
+### Modules
+    1. Dependencies → + → 2 Library...
+    2. Tomcat
 ### Facets
     1. Web
     2. Deployment Descriptors 配置 web.xml
@@ -148,9 +151,6 @@
     1. + Web Application: Exploded ▶ From Modules...
     2. Output directory
     3. 把 Available Elements 中需要用到的 jar Put into /WEB-INF/lib，特别是 javax.servlet-api
-### Modules
-    1. Dependencies → + → 2 Library...
-    2. Tomcat
 ---
 ## Error running 'XxxApp': Command line is too long
     1. .idea/workspace.xml

@@ -3,16 +3,17 @@ package knowledge.design.pattern.other.behavioral;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.xml.BeanDefinitionParserDelegate;
 
 import java.util.EnumMap;
 
 /**
- * 委派模式
- * 使用实例：
- * 1.双亲委派
- * 2.{@link org.springframework.beans.factory.xml.BeanDefinitionParserDelegate}
- * <p>
- * Tom：https://gupaoedu-tom.blog.csdn.net/article/details/121225325
+ * <a href="https://gupaoedu-tom.blog.csdn.net/article/details/121225325">委派模式</a>
+ * <p>使用实例：
+ * <pre>
+ * 1 双亲委派
+ * 2 {@link BeanDefinitionParserDelegate}
+ * </pre>
  *
  * @author ljh
  * @since 2022/2/9 18:04

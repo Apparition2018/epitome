@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.scheduling.annotation.Async;
+import springboot.init.SpringStartupRunningLogic;
 
 /**
  * SpringObserver
@@ -24,7 +25,7 @@ import org.springframework.scheduling.annotation.Async;
  * 3 事件订阅者：ApplicationListener，继承自 JDK 的 EventListener，所有监听器将继承它
  * </pre>
  * <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#context-functionality-events-annotation">@EventListener</a> 注解使用
- * {@link springboot.init.SpringStartupRunningLogic.ExampleBean#contextStarted(ContextRefreshedEvent)}
+ * {@link SpringStartupRunningLogic.ExampleBean#contextStarted(ContextRefreshedEvent)}
  * <p><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html">Spring 内置事件</a>：
  * <pre>
  * ApplicationContextEvent 子类：

@@ -4,18 +4,17 @@ import l.demo.Demo;
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.LinkedList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Condition
- * Java 并发之 Condition：https://www.cnblogs.com/gemine/p/9039012.html
- * Condition 实现生产者-消费者模式：https://blog.csdn.net/a718515028/article/details/108224749
+ * <pre>
+ * <a href="https://www.cnblogs.com/gemine/p/9039012.html">Java 并发之 Condition</a>
+ * <a href="https://blog.csdn.net/a718515028/article/details/108224749">Condition 实现生产者-消费者模式</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/15 11:30
@@ -35,7 +34,7 @@ public class ConditionDemo extends Demo {
     private static final Condition POLL_CON = POLL_LOCK.newCondition();
 
     /**
-     * 参考 {@link java.util.concurrent.LinkedBlockingQueue} 源码实现 生产者-消费者 模式
+     * 参考 {@link LinkedBlockingQueue} 源码实现 生产者-消费者 模式
      */
     public static void main(String[] args) throws InterruptedException {
         LinkedList<Integer> list = new LinkedList<>();
@@ -141,5 +140,4 @@ public class ConditionDemo extends Demo {
             }
         }
     }
-
 }

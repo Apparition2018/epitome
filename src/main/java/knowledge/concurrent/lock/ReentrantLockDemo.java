@@ -7,9 +7,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * ReentrantLock
- * 一个可重入互斥 Lock 具有与使用 synchronized 方法和语句访问的隐式监视锁相同的基本行为和语义，但具有扩展功能。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/locks/ReentrantLock.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/locks/ReentrantLock.html">ReentrantLock</a>
+ * <p>一个可重入互斥 Lock 具有与使用 synchronized 方法和语句访问的隐式监视锁相同的基本行为和语义，但具有扩展功能。
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -67,5 +66,4 @@ public class ReentrantLockDemo extends Demo {
             }
         }
     }
-
 }

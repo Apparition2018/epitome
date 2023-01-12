@@ -20,8 +20,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
 /**
- * 编写高质量代码 改善java程序的151个建议
- * https://www.cnblogs.com/selene/category/876189.html
+ * <a href="https://www.cnblogs.com/selene/category/876189.html">编写高质量代码 改善java程序的151个建议</a>
  * <p>
  * 第一章：Java 开发中通用的方法和准则
  * 建议12：避免序列化类在构造函数中为不变量赋值
@@ -542,14 +541,17 @@ public class Suggestions extends Demo {
 
     /**
      * 建议88：枚举实现工厂模式
-     * 1.通过非静态方法实现工厂模式，{@link knowledge.suggestions.CarEnumFactory1}
-     * 2.通过抽象方法实现工厂模式，{@link knowledge.suggestions.CarEnumFactory2}
-     * <p>
+     * <pre>
+     * 1 通过非静态方法实现工厂模式，{@link CarEnumFactory1}
+     * 2 通过抽象方法实现工厂模式，{@link CarEnumFactory2}
+     * </pre>
      * 枚举实现工厂模式的优点：
-     * 1.一般工厂模式可接受3种类型参数：类型参数、String、int
-     * 这三种参数是宽泛的数据类型，很容易发生错误，且这类错误编译器不会警报
-     * 2.性能好，使用简洁
-     * 3.降低耦合，不需接受参数
+     * <pre>
+     * 1 一般工厂模式可接受3种类型参数：类型参数、String、int
+     *   这三种参数是宽泛的数据类型，很容易发生错误，且这类错误编译器不会警报
+     * 2 性能好，使用简洁
+     * 3 降低耦合，不需接受参数
+     * </pre>
      */
     @Test
     public void test088() {
@@ -558,7 +560,7 @@ public class Suggestions extends Demo {
         // 抽象方法实现
         p(CarEnumFactory2.BUICK_CAR.create());
         // 一般工厂模式
-        p(CarFactory.createCar(Car.class)); // InstantiationException
+        p(CarFactory.createCar(BuickCar.class));
     }
 
     /* 建议89：枚举项的数量限制在64个以内
