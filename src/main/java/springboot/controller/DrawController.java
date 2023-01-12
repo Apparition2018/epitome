@@ -155,7 +155,7 @@ public class DrawController {
 
     @Data
     @Accessors(chain = true)
-    public static class Draw {
+    static class Draw {
         private int id;
         /**
          * 扣分积分

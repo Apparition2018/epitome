@@ -63,5 +63,4 @@ public class CalendarDemo2 {
         max = CALENDAR.getActualMaximum(Calendar.DAY_OF_YEAR);
         p("当年共" + max + "天");           // 当年共366天
     }
-
 }

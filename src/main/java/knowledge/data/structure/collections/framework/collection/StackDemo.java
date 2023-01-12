@@ -11,10 +11,11 @@ import org.junit.jupiter.api.Test;
 public class StackDemo {
 
     /**
-     * Stack
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Stack.html">Stack</a>
+     * <pre>
      * Stack 继承 Vector
      * Stack 类表示后进先出（LIFO）的对象堆栈。它通过五个操作对类 Vector 进行了扩展 ，允许将向量视为堆栈。
-     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Stack.html
+     * </pre>
      */
     @Test
     public void testStack() {

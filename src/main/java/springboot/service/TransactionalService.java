@@ -1,8 +1,13 @@
 package springboot.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import springboot.dao.master.DemoMapper;
@@ -21,18 +26,29 @@ import java.sql.SQLException;
 public class TransactionalService {
 
     private final DemoMapper demoMapper;
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     /**
-     * rollbackFor
+     * 回滚 Checked Exception
      * <pre>
      * SQLException 属于 Checked Exception，
      * 如需对其生效，设置 rollbackFor = Exception.class 或 rollbackFor = SQLException.class
      * </pre>
      */
     @Transactional(rollbackFor = SQLException.class)
-    public void checkedException() throws SQLException {
+    public void rollbackCheckedException() throws SQLException {
         demoMapper.insert(new Demo().setName("a"));
-        throw new SQLException("模拟 SQLException");
+        throw new SQLException("Mock SQLException");
+    }
+
+    /**
+     * <a href="https://mp.weixin.qq.com/s/vp7EOwmuK_o9CxSg5r-wBg">@TransactionalEventListener</a>
+     */
+    @Transactional
+    public void transactionalEventListener() {
+        applicationEventPublisher.publishEvent(new MyEvent(this));
+        demoMapper.insert(new Demo().setName("a"));
+        throw new RuntimeException("Mock RuntimeException");
     }
 
     /**
@@ -70,6 +86,26 @@ public class TransactionalService {
             });
         }
         demoMapper.insert(new Demo().setName("a"));
-        throw new RuntimeException("模拟 RuntimeException");
+        throw new RuntimeException("Mock RuntimeException");
+    }
+
+    @Async
+    @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
+    public void beforeCommit(MyEvent event) {
+        System.err.println("before commit: " + event.getSource());
+    }
+
+    @Async
+    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMPLETION)
+    public void afterCompletion(MyEvent event) {
+        System.err.println("after completion: " + event.getSource());
+    }
+
+    static class MyEvent extends ApplicationEvent {
+        private static final long serialVersionUID = 4600119726191005175L;
+
+        public MyEvent(Object source) {
+            super(source);
+        }
     }
 }

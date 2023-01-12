@@ -11,7 +11,7 @@ import java.util.Optional;
 
 /**
  * Result
- * SpringBlade 统一返回类 (R)
+ * <p>SpringBlade 统一返回类 (R)
  *
  * @author ljh
  * @since 2021/6/18 16:28
@@ -20,7 +20,6 @@ import java.util.Optional;
 @ToString
 @NoArgsConstructor
 public class Result<T> implements Serializable {
-
     private static final long serialVersionUID = 2911133065149289466L;
     private int code;
     private boolean success;

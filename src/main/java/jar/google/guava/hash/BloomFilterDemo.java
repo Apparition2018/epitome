@@ -7,7 +7,6 @@ import java.nio.charset.Charset;
 
 /**
  * <a href="https://github.com/google/guava/wiki/HashingExplained#bloomfilter">BloomFilter</a>  布隆过滤器
- * <p>参考：
  * <pre>
  * <a href="http://www.ibloger.net/article/3343.html">Guava hashing</a>
  * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/hash/BloomFilter.html">BloomFilter api</a>

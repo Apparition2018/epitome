@@ -4,14 +4,16 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * <pre>
  * void	    wait(long timeout, int nanos)   在其他线程调用此对象的 notify() 方法或 notifyAll() 方法，或者其他某个线程中断当前线程，或者已超过某个实际时间量前，导致当前线程等待
  * void	    notify()                        唤醒在此对象监视器上等待的单个线程
  * void	    notifyAll()                     唤醒在此对象监视器上等待的所有线程
- * <p>
- * https://blog.csdn.net/u012426327/article/details/77160444
- * <p>
- * 锁池   : Monitor，多个线程争夺某个对象的锁的拥有权，没有争夺成功的线程就处于对象的锁池中，锁池中的线程会去争夺锁的拥有权
- * 等待池 : WaitSet，线程调用了对象的 wait()，那么线程就处于该对象的等待池中，等待池中的线程不会去争夺锁的拥有权
+ * </pre>
+ * <pre>
+ * 锁池       Monitor，多个线程争夺某个对象的锁的拥有权，没有争夺成功的线程就处于对象的锁池中，锁池中的线程会去争夺锁的拥有权
+ * 等待池     WaitSet，线程调用了对象的 wait()，那么线程就处于该对象的等待池中，等待池中的线程不会去争夺锁的拥有权
+ * </pre>
+ * 参考：<a href="https://blog.csdn.net/u012426327/article/details/77160444">wait & notify</a>
  *
  * @author ljh
  * @since 2020/11/17 19:09

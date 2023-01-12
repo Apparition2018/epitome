@@ -8,12 +8,13 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 /**
- * Vector 向量
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Vector.html">Vector</a>   向量
+ * <pre>
  * Vector 实现 List
  * Vector 是同步的。可以实现可增长的对象数组。
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Vector.html
- * <p>
+ *
  * void	        trimToSize()                    对此向量的容量进行微调，使其等于向量的当前大小 {@link ListDemo#testArrayList()}
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -101,8 +102,7 @@ public class VectorDemo extends Demo {
 
     /**
      * Enumeration<E>	    elements()                      返回此向量的组件的枚举
-     * <p>
-     * PS：Enumeration 接口的功能与 Iterator 接口的功能重复。新的实现应该优先考虑使用 Iterator 而不是 Enumeration。
+     * <p>Enumeration 接口的功能与 Iterator 接口的功能重复。新的实现应该优先考虑使用 Iterator 而不是 Enumeration。
      */
     @Test
     public void elements() {

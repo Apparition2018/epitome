@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * RateLimiter
- * <p>参考：
  * <pre>
  * <a href="https://zhuanlan.zhihu.com/p/60979444">Guava RateLimiter 限流原理解析</a>
  * <a href="https://blog.51cto.com/alex4dream/3944594">Guava RateLimiter 限流器入门到精通</a>

@@ -20,7 +20,6 @@ import java.util.Properties;
  * @since 2019/12/24 0:23
  */
 public class KaptchaServlet extends HttpServlet {
-
     private static final long serialVersionUID = -2566109140238951865L;
 
     @Override

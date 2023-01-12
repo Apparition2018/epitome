@@ -9,7 +9,6 @@ import java.sql.SQLException;
 
 /**
  * &#064;Transactional
- * <p>参考：
  * <pre>
  * <a href="https://mp.weixin.qq.com/s/puPGJKHQNk4Dvs6rqB6Abg">自定义Spring事务回调</a>
  * <a href="https://doc.ruoyi.vip/ruoyi/document/htsc.html#事务管理">RuoYi 事务管理</a>
@@ -25,12 +24,17 @@ public class TransactionalTest {
     private TransactionalService transactionalService;
 
     @Test
-    public void testCheckedException() throws SQLException {
-        transactionalService.checkedException();
+    public void rollbackCheckedException() throws SQLException {
+        transactionalService.rollbackCheckedException();
     }
 
     @Test
-    public void testTransactionSynchronizationManager() {
+    public void transactionalEventListener() {
+        transactionalService.transactionalEventListener();
+    }
+
+    @Test
+    public void transactionSynchronizationManager() {
         transactionalService.transactionSynchronizationManager();
     }
 }

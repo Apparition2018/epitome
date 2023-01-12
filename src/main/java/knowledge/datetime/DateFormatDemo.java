@@ -9,20 +9,22 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * DateFormat
- * https://www.runoob.com/manual/jdk1.6/java.base/java/text/DateFormat.html
- * <p>
- * DateFormat <-> Calendar
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/DateFormat.html">DateFormat</a>
+ * <p>DateFormat <-> Calendar
+ * <pre>
  * Calendar     getCalendar()                       获取与此日期/时间格式器关联的日历
  * void         setCalendar(Calendar newCalendar)   设置此日期格式所使用的日历
- * <p>
+ * </pre>
  * DateFormat <-> NumberFormat
+ * <pre>
  * NumberFormat getNumberFormat()                   获取此日期/时间格式器用于格式化和解析时间的数字格式器
  * void         setNumberFormat(NumberFormat newNumberFormat) 允许用户设置数字格式器
- * <p>
+ * </pre>
  * DateFormat <-> TimeZone
+ * <pre>
  * TimeZone     getTimeZone()                       获取时区
  * void         setTimeZone(TimeZone zone)          为此 DateFormat 对象的日历设置时区
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/3 10:39

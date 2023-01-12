@@ -35,20 +35,20 @@ import java.util.concurrent.TimeUnit;
  * </pre>
  * <pre>
  * static void	                setDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler eh)  设置该线程由于未捕获到异常而突然终止时调用的处理程序
- * Thread.UncaughtExceptionHandler	        getUncaughtExceptionHandler()           返回该线程由于未捕获到异常而突然终止时调用的处理程序
- * static Thread.UncaughtExceptionHandler	getDefaultUncaughtExceptionHandler()    返回线程由于未捕获到异常而突然终止时调用的默认处理程序
- * static Map<Thread,StackTraceElement[]>	getAllStackTraces()                     返回所有活动线程的堆栈跟踪的一个映射
- * static int	                enumerate(Thread[] tarray)          将当前线程的线程组及其子组中的每一个活动线程复制到指定的数组中
- * static int	                activeCount()                       返回当前线程的线程组中活动线程的数目
- * static boolean	            holdsLock(Object obj)               当且仅当当前线程在指定的对象上保持监视器锁时，才返回 true
- * static void	                sleep(long millis[, int nanos])     在指定的毫秒数加指定的纳秒数内让当前正在执行的线程休眠（暂停执行），此操作受到系统计时器和调度程序精度和准确性的影响
- * static void	                dumpStack()                         将当前线程的堆栈跟踪打印至标准错误流
- * StackTraceElement[]	        getStackTrace()                     返回一个表示该线程堆栈转储的堆栈跟踪元素数组
- * ThreadGroup	                getThreadGroup()                    返回该线程所属的线程组
- * ClassLoader	                getContextClassLoader()             返回该线程的上下文 ClassLoader
- * void	                        checkAccess()                       判定当前运行的线程是否有权修改该线程
- * void	                        run()                               如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回
- * void	                        start()                             使该线程开始执行；Java 虚拟机调用该线程的 run 方法；多次启动一个线程是非法的
+ * Thread.UncaughtExceptionHandler          getUncaughtExceptionHandler()           返回该线程由于未捕获到异常而突然终止时调用的处理程序
+ * static Thread.UncaughtExceptionHandler   getDefaultUncaughtExceptionHandler()    返回线程由于未捕获到异常而突然终止时调用的默认处理程序
+ * static Map<Thread,StackTraceElement[]>   getAllStackTraces()                     返回所有活动线程的堆栈跟踪的一个映射
+ * static int                   enumerate(Thread[] tarray)          将当前线程的线程组及其子组中的每一个活动线程复制到指定的数组中
+ * static int                   activeCount()                       返回当前线程的线程组中活动线程的数目
+ * static boolean               holdsLock(Object obj)               当且仅当当前线程在指定的对象上保持监视器锁时，才返回 true
+ * static void                  sleep(long millis[, int nanos])     在指定的毫秒数加指定的纳秒数内让当前正在执行的线程休眠（暂停执行），此操作受到系统计时器和调度程序精度和准确性的影响
+ * static void                  dumpStack()                         将当前线程的堆栈跟踪打印至标准错误流
+ * StackTraceElement[]          getStackTrace()                     返回一个表示该线程堆栈转储的堆栈跟踪元素数组
+ * ThreadGroup                  getThreadGroup()                    返回该线程所属的线程组
+ * ClassLoader                  getContextClassLoader()             返回该线程的上下文 ClassLoader
+ * void                         checkAccess()                       判定当前运行的线程是否有权修改该线程
+ * void                         run()                               如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回
+ * void                         start()                             使该线程开始执行；Java 虚拟机调用该线程的 run 方法；多次启动一个线程是非法的
  * </pre>
  * 参考：<a href="https://zhuanlan.zhihu.com/p/240281836">如何使用 JUnit 测试异步代码</a>
  *

@@ -19,13 +19,7 @@ import java.util.Enumeration;
 
 /**
  * 数字证书
- * <p>参考：
- * <pre>
- * <a href="https://www.iteye.com/blog/snowolf-391931">Java 加密技术（八）——数字证书</a>
- * <a href="https://blog.csdn.net/meng564764406/article/details/79156559">数字证书基本知识总结</a>
- * <a href="https://blog.csdn.net/meng564764406/article/details/79427687">Keytool 或 Keystore 使用及证书转换</a>
- * </pre>
- * 证书生成：
+ * <p>证书生成：
  * <pre>
  * keytool -genkey -validity 1 -alias ljh -keyalg RSA -keystore C:\Users\Administrator\Desktop\ljh.keystore
  * 口令：123456
@@ -42,6 +36,12 @@ import java.util.Enumeration;
  * 证书查看：
  * <pre>
  * keytool -list -keystore C:\Users\Administrator\Desktop\ljh.pfx -rfc
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://www.iteye.com/blog/snowolf-391931">Java 加密技术（八）——数字证书</a>
+ * <a href="https://blog.csdn.net/meng564764406/article/details/79156559">数字证书基本知识总结</a>
+ * <a href="https://blog.csdn.net/meng564764406/article/details/79427687">Keytool 或 Keystore 使用及证书转换</a>
  * </pre>
  *
  * @author ljh

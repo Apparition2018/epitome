@@ -8,9 +8,8 @@ import java.util.GregorianCalendar;
 import static l.demo.Demo.p;
 
 /**
- * GregorianCalendar
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/GregorianCalendar.html
- * <p>
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/GregorianCalendar.html">GregorianCalendar</a>
+ * <pre>
  * 字段                                               默认值
  * ERA                                                  AD
  * YEAR                                                 1970
@@ -20,20 +19,22 @@ import static l.demo.Demo.p;
  * WEEK_OF_MONTH                                        0
  * AM_PM                                                1
  * HOUR, HOUR_OF_DAY, MINUTE, SECOND, MILLISECOND       0
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
 public class GregorianCalendarDemo extends GregorianCalendar {
-
     private static final long serialVersionUID = -1103808356456277735L;
 
     /**
+     * <pre>
      * GregorianCalendar([int year, int month, int dayOfMonth, int hourOfDay, int minute, int second])
      * 为具有默认语言环境的默认时区构造一个具有给定日期和时间设置的 GregorianCalendar
-     * <p>
+     *
      * GregorianCalendar([TimeZone zone, Locale aLocale])
      * 在具有给定语言环境的给定时区内构造一个基于当前时间的 GregorianCalendar
+     * </pre>
      */
     @Test
     public void gregorianCalendar() {
@@ -44,7 +45,7 @@ public class GregorianCalendarDemo extends GregorianCalendar {
 
     /**
      * protected  void	computeFields() ???
-     * 将时间值（从 Epoch 至现在的毫秒偏移量）转换为日历字段值
+     * <p>将时间值（从 Epoch 至现在的毫秒偏移量）转换为日历字段值
      */
     @Test
     public void computeFields_() {
@@ -58,7 +59,7 @@ public class GregorianCalendarDemo extends GregorianCalendar {
 
     /**
      * protected  void	computeTime()   ???
-     * 将日历字段值转换为时间值（从 Epoch 至现在的毫秒偏移量）
+     * <p>将日历字段值转换为时间值（从 Epoch 至现在的毫秒偏移量）
      */
     @Test
     public void computeTime_() {
@@ -72,7 +73,7 @@ public class GregorianCalendarDemo extends GregorianCalendar {
 
     /**
      * boolean	isLeapYear(int year)
-     * 确定给定的年份是否为闰年
+     * <p>确定给定的年份是否为闰年
      */
     @Test
     public void isLeapYear_() {

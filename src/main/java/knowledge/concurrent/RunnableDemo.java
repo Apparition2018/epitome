@@ -6,13 +6,15 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Runnable
- * https://www.runoob.com/manual/jdk1.6/java.base/java/lang/Runnable.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Runnable.html">Runnable</a>
+ * <pre>
  * void	    run()       使用实现接口 Runnable 的对象创建一个线程时，启动该线程将导致在独立执行的线程中调用对象的 run 方法。
- * <p>
- * implements Runnable vs extends Thread：https://www.jianshu.com/p/333ce4b3d5b8
- * 1. 通过 implements Runnable 创建线程，可以避免单继承的局限性
- * 2. 通过 new Thread(Runnable) 实现资源共享，由于 Thread 本身也 implements Runnable，所以两者均可实现资源共享
+ * </pre>
+ * <a href="https://www.jianshu.com/p/333ce4b3d5b8">implements Runnable vs extends Thread</a>
+ * <pre>
+ * 1 通过 implements Runnable 创建线程，可以避免单继承的局限性
+ * 2 通过 new Thread(Runnable) 实现资源共享，由于 Thread 本身也 implements Runnable，所以两者均可实现资源共享
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -45,5 +47,4 @@ public class RunnableDemo extends Demo {
             countDownLatch.countDown();
         }
     }
-
 }

@@ -27,7 +27,7 @@ public class SetDemo extends Demo {
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/TreeSet.html">TreeSet</a>
      * <pre>
      * TreeSet → NavigableSet → SortedSet → Set
-     * 基于 TreeMap 的 NavigableSet 实现。使用元素的自然顺序对元素进行排序，或者根据创建 set 时提供的 Comparator 进行排序。
+     * 基于 TreeMap 的 NavigableSet 实现。使用元素的自然顺序对元素进行排序，或者根据创建 set 时提供的 Comparator 进行排序
      * SortedSet 只在元素加入集合时进行排序，修改元素不重新排序
      * </pre>
      */

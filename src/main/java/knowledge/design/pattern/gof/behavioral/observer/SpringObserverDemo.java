@@ -1,5 +1,7 @@
 package knowledge.design.pattern.gof.behavioral.observer;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
@@ -70,8 +72,9 @@ public class SpringObserverDemo {
          * 事件源
          * <p>事件状态对象
          */
+        @Getter
+        @Setter
         static class OrderEvent extends ApplicationEvent {
-
             private static final long serialVersionUID = 6763968214834834166L;
             private String message;
 
@@ -83,14 +86,6 @@ public class SpringObserverDemo {
             @Override
             public Object getSource() {
                 return super.getSource();
-            }
-
-            public String getMessage() {
-                return message;
-            }
-
-            public void setMessage(String message) {
-                this.message = message;
             }
         }
 

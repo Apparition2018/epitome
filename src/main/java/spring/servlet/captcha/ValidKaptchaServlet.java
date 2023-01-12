@@ -12,7 +12,6 @@ import java.io.IOException;
  * @since 2019/12/24 0:09
  */
 public class ValidKaptchaServlet extends HttpServlet {
-
     private static final long serialVersionUID = 4406801410512145989L;
 
     @Override

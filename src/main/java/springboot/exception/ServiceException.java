@@ -12,7 +12,6 @@ import springboot.result.ResultCode;
  */
 @Getter
 public class ServiceException extends RuntimeException {
-
     private static final long serialVersionUID = -1069434601087045461L;
     private final IResultCode resultCode;
 

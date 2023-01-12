@@ -7,10 +7,9 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 /**
- * List
- * List 继承 Collection
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/List.html
- * <p>
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/List.html">List</a>
+ * <p>List 继承 Collection
+ * <pre>
  * List             Vector          ArrayList           LinkedList
  * 实现               动态数组        动态数组            双向链表，实现 Deque
  * 线程同步             是               否               否
@@ -18,34 +17,42 @@ import java.util.*;
  * 插入删除         效率低             效率低             效率高
  * capacity         10                  10              无
  * 扩容               100%                50%             无
- * <p>
- * void	            add(int index, E element)   在列表的指定位置插入指定元素（可选操作）
- * E	            get(int index)              返回列表中指定位置的元素
- * E	            remove(int index)           移除列表中指定位置的元素（可选操作）
- * int	            indexOf(Object o)           返回此列表中首次出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1
- * int	            lastIndexOf(Object o)       返回此列表中最后出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1
+ * </pre>
+ * <pre>
+ * void             add(int index, E element)   在列表的指定位置插入指定元素（可选操作）
+ * E                get(int index)              返回列表中指定位置的元素
+ * E                remove(int index)           移除列表中指定位置的元素（可选操作）
+ * int              indexOf(Object o)           返回此列表中首次出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1
+ * int              lastIndexOf(Object o)       返回此列表中最后出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1
  * ListIterator<E>	listIterator([int index])   返回列表中元素的列表迭代器（按适当顺序），从列表的指定位置开始
- * ************************************************************
- * AbstractList
- * 1.实现 List，专为继承而设计的类
- * 2.有抽象方法：get(), size()
- * 3.如果想要通过 AbstractList 派生出 List。需要实现 get(), size() 和重写 set(int, E) / add(int, E) / remove(int)，
- * 因为 set(int, E) / add(int, E) / remove(int) 会抛出 UnsupportedOperationException。
- * 4.有内部迭代器 Itr, ListItr
- * 5.有内部类 SubList, RandomAccessSublist
- * 6.get() 效率快于 iterator()
- * ************************************************************
- * AbstractSequentialList
- * 1.继承 AbstractList，LinkedList 的父类，专为继承而设计的类 (只能按次序访问)
- * 2.有抽象方法：listIterator(), size()
- * 3.get() 效率慢于 iterator()
- * 4....
- * ************************************************************
- * CopyOnWriteArrayList
- * 1.实现了List接口
- * 2.内部持有一个ReentrantLock lock = new ReentrantLock();
- * 3.底层是用 volatile transient 声明的数组 array
- * 4.读写分离，写时复制出一个新的数组，完成插入、修改或者移除操作后将新数组赋值给 array
+ * </pre>
+ * <p>************************************************************
+ * <p>AbstractList
+ * <pre>
+ * 1 实现 List，专为继承而设计的类
+ * 2 有抽象方法：get(), size()
+ * 3 如果想要通过 AbstractList 派生出 List。需要实现 get(), size() 和重写 set(int, E) / add(int, E) / remove(int)，
+ *   因为 set(int, E) / add(int, E) / remove(int) 会抛出 UnsupportedOperationException。
+ * 4 有内部迭代器 Itr, ListItr
+ * 5 有内部类 SubList, RandomAccessSublist
+ * 6 get() 效率快于 iterator()
+ * </pre>
+ * <p>************************************************************
+ * <p>AbstractSequentialList
+ * <pre>
+ * 1 继承 AbstractList，LinkedList 的父类，专为继承而设计的类 (只能按次序访问)
+ * 2 有抽象方法：listIterator(), size()
+ * 3 get() 效率慢于 iterator()
+ * 4 ...
+ * </pre>
+ * <p>************************************************************
+ * <p>CopyOnWriteArrayList
+ * <pre>
+ * 1 实现了List接口
+ * 2 内部持有一个ReentrantLock lock = new ReentrantLock();
+ * 3 底层是用 volatile transient 声明的数组 array
+ * 4 读写分离，写时复制出一个新的数组，完成插入、修改或者移除操作后将新数组赋值给 array
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -124,15 +131,18 @@ public class ListDemo extends Demo {
     }
 
     /**
-     * ArrayList
-     * 作为一个动态数组，它有 capacity 和 size 两个概念。0 <= size <= capacity，可以访问的下标则是 0 <= index < size
-     * 原理：引用着一个数组作为实际的存储容器。该数组的 length 就是 capacity
+     * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/ArrayList.html">ArrayList</a>
+     * <p>动态数组，有 capacity 和 size 两个概念：
+     * <pre>
      * capacity 总共可以装多少个元素，初始 10
      * size     已经装了多少个元素
-     * <p>
-     * 多线程环境下可以考虑用 Collections.synchronizedList(List l) 返回一个线程安全的 ArrayList 类，
-     * 也可以使用 concurrent 并发包下的 CopyOnWriteArrayList。
-     * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/ArrayList.html
+     * </pre>
+     * 原理：引用着一个数组作为实际的存储容器。该数组的 length 就是 capacity
+     * <p>多线程环境：
+     * <pre>
+     * 1 Collections.synchronizedList(List l) 返回一个线程安全的 ArrayList 类
+     * 2 使用 concurrent 并发包下的 CopyOnWriteArrayList
+     * </pre>
      */
     @Test
     public void testArrayList() {

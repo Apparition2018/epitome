@@ -12,7 +12,6 @@ import java.io.IOException;
  * @since 2019/12/23 16:25
  */
 public class ValidServlet extends HttpServlet {
-
     private static final long serialVersionUID = -5740434607883686032L;
 
     @Override

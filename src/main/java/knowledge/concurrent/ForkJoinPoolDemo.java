@@ -9,17 +9,21 @@ import java.util.stream.LongStream;
 
 /**
  * ForkJoinPool
+ * <pre>
  * JDK1.7 引入了一种新的并发框架 Fork/Join Framework，同时引入了一种新的线程池 ForkJoinPool。
  * ForkJoinPool 实现了 ExecutorService 和工作窃取算法，是 ExecutorService 的补充。
  * ForkJoinPool 主要用于实现"分而治之"的算法，特别是分治之后递归调用的函数，例如 quick sort 等。
  * ForkJoinPool 最适合的是计算密集型的任务，如果存在 I/O，线程间同步，sleep() 等会造成线程长时间阻塞的情况时，最好配合使用 ManagedBlocker。
  * 不是 CPU 密集型的任务，不建议使用 ForkJoinPool 进行处理
- * <p>
- * ForkJoinPool 线程池的使用以及原理：https://blog.csdn.net/f641385712/article/details/83749798
- * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinPool.html
- * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinTask.html
- * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveTask.html
- * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveAction.html
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://blog.csdn.net/f641385712/article/details/83749798">ForkJoinPool 线程池的使用以及原理</a>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinPool.html">ForkJoinPool api</a>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinTask.html">ForkJoinTask api</a>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveTask.html">RecursiveTask api</a>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveAction.html">RecursiveAction api</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/12/1 12:58

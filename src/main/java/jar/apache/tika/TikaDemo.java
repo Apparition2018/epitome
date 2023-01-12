@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 
 /**
  * Tika
- * <p>参考：
  * <pre>
  * <a href="https://www.oschina.net/p/tika">Apache Tika 内容抽取工具集合</a>
  * <a href="https://blog.csdn.net/weixin_42184707/article/details/91045592">Apache Tika 介绍及使用</a>

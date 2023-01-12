@@ -33,7 +33,6 @@ public class CustomExceptionDemo {
      * 自定义异常类
      */
     static class CustomException extends RuntimeException {
-
         private static final long serialVersionUID = 1612100152025079049L;
         private double amount;
 

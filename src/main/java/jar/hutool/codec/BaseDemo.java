@@ -14,15 +14,15 @@ import org.junit.jupiter.api.Test;
  * @since 2020/11/5 14:11
  */
 public class BaseDemo extends Demo {
-    
+
     private String encode;
     private String decode;
 
     /**
-     * Base64
-     * BASE64 使用了 64 个字符，包括 A-Za-z0-9+/
-     * https://hutool.cn/docs/#/core/Codec%E7%BC%96%E7%A0%81/Base64%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81-Base64
-     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Base64.html
+     * <a href="https://hutool.cn/docs/#/core/Codec编码/Base64编码解码-Base64">Base64</a>
+     * <p>BASE64 使用了 64 个字符，包括 A-Za-z0-9+/
+     *
+     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Base64.html">Base64 api</a>
      */
     @Test
     public void testBase64() {
@@ -33,11 +33,13 @@ public class BaseDemo extends Demo {
     }
 
     /**
-     * Base62
+     * <a href="https://hutool.cn/docs/#/core/Codec编码/Base62编码解码-Base62">Base62</a>
+     * <pre>
      * BASE62 使用了 62 个字符，包括 A-Za-z0-9，因为 +/ 在一些场景下代表着特殊含义
      * 多用于安全领域和短 URL 生成
-     * https://hutool.cn/docs/#/core/Codec%E7%BC%96%E7%A0%81/Base62%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81-Base62
-     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Base62.html
+     * </pre>
+     *
+     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Base62.html">Base62 api</a>
      */
     @Test
     public void testBase62() {
@@ -48,10 +50,10 @@ public class BaseDemo extends Demo {
     }
 
     /**
-     * Base32
-     * BASE32 使用了 32 个字符，包括 A-Z2-7
-     * https://hutool.cn/docs/#/core/Codec%E7%BC%96%E7%A0%81/Base32%E7%BC%96%E7%A0%81%E8%A7%A3%E7%A0%81-Base32
-     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Base32.html
+     * <a href="https://hutool.cn/docs/#/core/Codec编码/Base32编码解码-Base32">Base32</a>
+     * <p>BASE32 使用了 32 个字符，包括 A-Z2-7
+     *
+     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Base32.html">Base32 api</a>
      */
     @Test
     public void testBase32() {
@@ -60,5 +62,4 @@ public class BaseDemo extends Demo {
         Console.log("decode: {}, encode: {}", decode, encode);
         // decode: https://www.baidu.com, encode: NB2HI4DTHIXS653XO4XGEYLJMR2S4Y3PNU
     }
-    
 }

@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FileUtils.html">FileUtils</a>
- * <p>参考：
  * <pre>
  * <a href="https://www.cnblogs.com/my-blogs-for-everone/p/8029846.html">FileUtils 文件操作神器</a>
  * <a href="https://www.cnblogs.com/xiaozu/p/4555942.html">Commons IO FileUtils</a>

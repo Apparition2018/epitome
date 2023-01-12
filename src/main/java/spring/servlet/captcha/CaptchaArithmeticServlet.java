@@ -13,7 +13,6 @@ import java.io.IOException;
  * @since 2019/12/23 22:52
  */
 public class CaptchaArithmeticServlet extends HttpServlet {
-
     private static final long serialVersionUID = 1857020615347822774L;
 
     @Override

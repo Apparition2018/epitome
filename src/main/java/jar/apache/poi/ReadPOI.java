@@ -1,7 +1,6 @@
 package jar.apache.poi;
 
 /**
- * 参考：
  * <pre>
  * <a href="http://www.cnblogs.com/hongten/p/java_poi_excel_xls_xlsx.html">POI 读取 Excel</a>
  * <a href="https://www.cnblogs.com/stono/p/6713158.html">POI 日期格式</a>
@@ -14,6 +13,5 @@ package jar.apache.poi;
 public class ReadPOI {
 
     public static void main(String[] args) {
-
     }
 }

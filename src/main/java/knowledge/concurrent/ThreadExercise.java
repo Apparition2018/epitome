@@ -6,8 +6,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 /**
- * 设计4个线程，其中两个每次对j增加1，另外两个对j每次减少1。循环5次。
- * https://blog.csdn.net/never_cxb/article/details/50379047
+ * <a href="https://blog.csdn.net/never_cxb/article/details/50379047">设计4个线程，其中两个每次对j增加1，另外两个对j每次减少1。循环5次</a>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -56,5 +55,4 @@ public class ThreadExercise {
         j--;
         System.out.println(Thread.currentThread().getName() + "--dec--" + j);
     }
-
 }
