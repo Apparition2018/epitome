@@ -5,6 +5,7 @@ import knowledge.suggestions.Family.Son;
 import l.demo.Demo;
 import l.demo.Person;
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
 
@@ -21,40 +22,44 @@ import java.util.stream.IntStream;
 
 /**
  * <a href="https://www.cnblogs.com/selene/category/876189.html">编写高质量代码 改善java程序的151个建议</a>
- * <p>
- * 第一章：Java 开发中通用的方法和准则
+ * <p>第一章：Java 开发中通用的方法和准则
+ * <pre>
  * 建议12：避免序列化类在构造函数中为不变量赋值
  * 建议13：避免序列化类为final变量复杂赋值
  * 建议14：使用序列化类的私有方法巧妙解决部分属性持久化问题
  * 建议17：慎用动态编译
  * 建议19：断言
- * <p>
+ * </pre>
  * 第二章：基本类型
+ * <pre>
  * 建议22：用 BigDecimal 或整数类型处理货币
  * 建议25：银行的四舍六入五考虑
  * 建议29：优先选择基本类型
  * 建议30：不要设置随机种子
- * <p>
+ * </pre>
  * 第三章：类、对象及方法
+ * <pre>
  * 建议36：使用构造代码块精简程序
  * 建议38：使用静态内部类提高封装性
  * 建议41：内部类实现多继承
  * 建议50：package-info
- * <p>
+ * </pre>
  * 第五章：数组和集合
+ * <pre>
  * 建议65：泛型不支持基本类型
  * 建议67：不同的列表选择不同的遍历算法
  * 建议71：使用 subList() 处理局部列表
  * 建议72：subList() 生成字列表后，不要操作原列表
  * 建议73：Comparable 可用做类的默认排序算法，Comparator 可用做扩展排序工具
  * 建议80：多线程使用 Vector 或 Hashtable
- * <p>
  * 第六章：枚举和注解
+ * <pre>
  * 建议88：枚举实现工厂模式
  * 建议89：枚举项的数量限制在64个以内
  * 建议91：枚举和注解实现 ACL (Access Control List) 访问控制列表
- * <p>
+ * </pre>
  * 第七章：泛型和反射
+ * <pre>
  * 建议94：不能初始化泛型参数和数组
  * 建议96：泛型通配符
  * 建议97：泛型不支持协变和逆变
@@ -66,26 +71,31 @@ import java.util.stream.IntStream;
  * 建议106：动态代理
  * 建议107：动态代理结合装饰器模式
  * 建议108：反射结合模板方法模式
- * <p>
+ * </pre>
  * 第八章：异常
+ * <pre>
  * 建议110：一次捕获多个异常
  * 建议112：检测性异常尽可能转化为非检测性异常
  * 建议115：使用 Throwable 获得栈信息
- * <p>
+ * </pre>
  * 第九章：多线程和并发
+ * <pre>
  * 建议120：不要使用 stop() 终止线程
  * 建议122：使用线程异常处理器提升系统可靠性
  * 建议127：Lock 和 synchronized
- * <p>
+ * </pre>
  * 第十章：性能和效率
+ * <pre>
  * 建议132：提升 Java 性能的基本方法
  * 建议137：调优 JVM 参数
- * <p>
+ * </pre>
  * 其它
+ * <pre>
  * 建议139：大胆采用开源工具
  * 建议145：不要完全依靠单元测试来发现问题
  * 建议146：让注释正确、清晰、简洁
  * 建议148：增强类的可替换性
+ * </pre>
  *
  * @author ljh
  * @since 2020/10/10 19:23
@@ -139,7 +149,7 @@ public class Suggestions extends Demo {
         p(new GenericClass<String>().isDateInstance(""));
     }
 
-    class GenericClass<T> {
+    static class GenericClass<T> {
         // 判断是否是Date类型
         boolean isDateInstance(T t) {
             return t instanceof Date;
@@ -148,23 +158,26 @@ public class Suggestions extends Demo {
 
     /**
      * 建议19：断言
-     * assertion 检查通常在开发和测试时开启。为了提高性能，在软件发布后，assertion 检查通常是关闭的。
-     * <p>
+     * <p>assertion 检查通常在开发和测试时开启。为了提高性能，在软件发布后，assertion 检查通常是关闭的。
      * 用法：
-     * 1. assert <boolean expression>
-     * 2. assert <boolean expression> : <error message>
-     * <p>
+     * <pre>
+     * 1 assert <boolean expression>
+     * 2 assert <boolean expression> : <error message>
+     * </pre>
      * 可以是用断言的地方：
-     * 1.程序不应到达的地方，可以放置断言：assert false
-     * 2.private 方法的参数检查
-     * 3.类的不变状态（如 age >= 0）
-     * <p>
+     * <pre>
+     * 1 程序不应到达的地方，可以放置断言：assert false
+     * 2 private 方法的参数检查
+     * 3 类的不变状态（如 age >= 0）
+     * </pre>
      * 不要使用断言的地方：
-     * 1.public 方法的参数检查
-     * 2.断言语句不可以有任何边界效应，不要使用断言语句去修改变量和改变方法的返回值
-     * <p>
-     * Java 断言使用：http://www.blogjava.net/liulu/archive/2006/10/24/77005.html
-     * 浅谈契约式编程：http://www.nowamagic.net/internet/internet_ContractProgramming.php
+     * <pre>
+     * 1 public 方法的参数检查
+     * 2 断言语句不可以有任何边界效应，不要使用断言语句去修改变量和改变方法的返回值
+     * </pre>
+     *
+     * @see <a href="http://www.blogjava.net/liulu/archive/2006/10/24/77005.html">Java 断言使用</a>
+     * @see <a href="http://www.nowamagic.net/internet/internet_ContractProgramming.php">浅谈契约式编程</a>
      */
     @Test
     public void test019() {
@@ -197,13 +210,13 @@ public class Suggestions extends Demo {
 
     /**
      * 建议25：银行的四舍六入五考虑
-     * <p>
-     * 四舍五入：
-     * 0.000, 0.001, 0.002, 0.003, 0.004 舍弃
-     * 0.005, 0.006, 0.007, 0.008, 0.009 进位
-     * 0.000 + 0.001 + 0.002 + 0.003 + 0.004 - 0.005 - 0.004 - 0.003 - 0.002 - 0.001 = 0.005
+     * <p>四舍五入：
+     * <pre>
+     * 舍弃   0.000, 0.001, 0.002, 0.003, 0.004
+     * 进位   0.005, 0.006, 0.007, 0.008, 0.009
+     * 计算   0.000 + 0.001 + 0.002 + 0.003 + 0.004 - 0.005 - 0.004 - 0.003 - 0.002 - 0.001 = 0.005
      * 等于银行要亏 0.005 元
-     * <p>
+     * </pre>
      * 四舍六入五考虑，五后非零就进一，五后为零看奇偶，五前为偶应舍去，五前为奇要进一
      */
     @Test
@@ -213,8 +226,10 @@ public class Suggestions extends Demo {
         // 月利率
         BigDecimal r = new BigDecimal(String.valueOf(0.001875));
         // 计算利息
-        BigDecimal i = d.multiply(r).setScale(2, RoundingMode.HALF_EVEN); // 四舍六入五考虑
-        p("月利息是：" + i); // 23148.15
+        BigDecimal i = d.multiply(r).setScale(2,
+                // 银行家舍入法：四舍六入五考虑
+                RoundingMode.HALF_EVEN);
+        p("月利息是：" + i);
     }
 
     /**
@@ -240,10 +255,11 @@ public class Suggestions extends Demo {
 
     /**
      * 建议30：不要设置随机种子
-     * <p>
-     * 随机数和种子之间的关系：
-     * 1.种子不同，产生不同的随机数
-     * 2.种子相同，即使实例不同也产生相同的随机数
+     * <p>随机数和种子之间的关系：
+     * <pre>
+     * 1 种子不同，产生不同的随机数
+     * 2 种子相同，即使实例不同也产生相同的随机数
+     * </pre>
      */
     @Test
     public void test030() {
@@ -261,16 +277,17 @@ public class Suggestions extends Demo {
 
     /**
      * 建议36：使用构造代码块精简程序
-     * <p>
-     * Java 中四种类型的代码块：
-     * 1.普通代码块：就是在方法后面使用"{}"括起来的代码片段，它不能单独运行，必须通过方法名调用执行；
-     * 2.静态代码块：在类中使用 static 修饰，并用"{}"括起来的代码片段，用于静态变量初始化或对象创建前的环境初始化；
-     * 3.同步代码块：使用 synchronized 关键字修饰，并使用"{}"括起来的代码片段，它表示同一时间只能有一个线程进入到该方法块中，是一种多线程保护机制；
-     * 4.构造代码块：在类中没有任何前缀和后缀,并使用"{}"括起来的代码片段；
-     * -  4.1 构造代码块会插入到每个构造函数的最前端
-     * -  4.2 构造代码块不会插入到添加了 this() 的构造器中
-     * <p>
-     * Java 中静态代码块、构造代码块、构造函数、普通代码块：https://www.cnblogs.com/ysocean/p/8194428.html
+     * <p>Java 中四种类型的代码块：
+     * <pre>
+     * 1 普通代码块：就是在方法后面使用"{}"括起来的代码片段，它不能单独运行，必须通过方法名调用执行；
+     * 2 静态代码块：在类中使用 static 修饰，并用"{}"括起来的代码片段，用于静态变量初始化或对象创建前的环境初始化；
+     * 3 同步代码块：使用 synchronized 关键字修饰，并使用"{}"括起来的代码片段，它表示同一时间只能有一个线程进入到该方法块中，是一种多线程保护机制；
+     * 4 构造代码块：在类中没有任何前缀和后缀,并使用"{}"括起来的代码片段；
+     *   4.1 构造代码块会插入到每个构造函数的最前端
+     *   4.2 构造代码块不会插入到添加了 this() 的构造器中
+     * </pre>
+     *
+     * @see <a href="https://www.cnblogs.com/ysocean/p/8194428.html">Java 中静态代码块、构造代码块、构造函数、普通代码块</a>
      */
     @Test
     public void test036() {
@@ -297,16 +314,18 @@ public class Suggestions extends Demo {
 
     /**
      * 建议38：使用静态内部类提高封装性
-     * <p>
-     * 静态内部类优点：
-     * 1.加强了类的封装
-     * 2.提高了代码的可读性
-     * 3.形似内部，神似外部，可以通过 new 创建
-     * <p>
+     * <p>静态内部类优点：
+     * <pre>
+     * 1 加强了类的封装
+     * 2 提高了代码的可读性
+     * 3 形似内部，神似外部，可以通过 new 创建
+     * </pre>
      * 静态内部类和普通内部类的区别：
-     * 1.静态内部类只能访问外部类的静态方法和静态属性
-     * 2.静态内部类不依赖外部类
-     * 3.普通内部类不能声明静态方法和静态变量
+     * <pre>
+     * 1 静态内部类只能访问外部类的静态方法和静态属性
+     * 2 静态内部类不依赖外部类
+     * 3 普通内部类不能声明静态方法和静态变量
+     * </pre>
      */
     @Test
     public void test038() {
@@ -321,6 +340,8 @@ public class Suggestions extends Demo {
     public void test039() {
         // 匿名类
         List<String> list = new ArrayList<String>() {
+            private static final long serialVersionUID = 2343608519616911909L;
+
             // 匿名类的构造函数
             {
                 add("A");
@@ -390,7 +411,7 @@ public class Suggestions extends Demo {
 
         // StringBuilder
         stopWatch.start("StringBuilder");
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < THOUSAND; i++) {
             sb.append("c");
         }
@@ -425,8 +446,10 @@ public class Suggestions extends Demo {
 
     /**
      * 建议67：不同的列表选择不同的遍历算法
-     * 1. instanceof RandomAccess 的列表：使用下表遍历 x.get(i)
-     * 2. 其它：foreach 遍历
+     * <pre>
+     * 1 instanceof RandomAccess 为 true 的列表：使用下表遍历 x.get(i)
+     * 2 其它：foreach 遍历
+     * </pre>
      */
     @Test
     public void test067() {
@@ -473,7 +496,7 @@ public class Suggestions extends Demo {
 
     /**
      * 建议72：subList() 生成字列表后，不要操作原列表
-     * 可通过 Collections.unmodifiableList() 设置列表为只读状态
+     * <p>可通过 Collections.unmodifiableList() 设置列表为只读状态
      */
     @Test
     public void test072() {
@@ -570,11 +593,12 @@ public class Suggestions extends Demo {
 
     /**
      * 建议91：枚举和注解实现 ACL (Access Control List) 访问控制列表 ???
-     * <p>
-     * ACL 三元素：
-     * 1.资源，有哪些信息是要被控制起来的
-     * 2.权限级别，不同的访问者规划在不同的级别中
-     * 3。控制器(也叫鉴权人)，控制不同的级别访问不同的资源
+     * <p>ACL 三元素：
+     * <pre>
+     * 1 资源，有哪些信息是要被控制起来的
+     * 2 权限级别，不同的访问者规划在不同的级别中
+     * 3 控制器(也叫鉴权人)，控制不同的级别访问不同的资源
+     * </pre>
      */
     @Test
     public void test091() {
@@ -594,7 +618,7 @@ public class Suggestions extends Demo {
 
     /**
      * 建议94：不能初始化泛型参数和数组
-     * Java 不支持声明泛型数组，更确切的表达式：数组的类型不可以是类型变量，除非是采用通配符的方式 ?
+     * <p>Java 不支持声明泛型数组，更确切的表达式：数组的类型不可以是类型变量，除非是采用通配符的方式 ?
      */
     @Test
     public void test094() {
@@ -602,7 +626,7 @@ public class Suggestions extends Demo {
         class Test<T> {
             // private T t = new T();       // Type parameter 'T' cannot be instantiated directly
             // private T[] tArr = new T[5]; // Type parameter 'T' cannot be instantiated directly
-            private List<T> list = new ArrayList<T>();
+            private final List<T> list = new ArrayList<>();
         }
 
         // 实现泛型数组
@@ -611,7 +635,7 @@ public class Suggestions extends Demo {
             // 不再初始化，由构造函数初始化
             private T t;
             private T[] tArr;
-            private List<T> list = new ArrayList<T>();
+            private final List<T> list = new ArrayList<>();
 
             // 构造函数初始化
             private Demo(Class<T> tType, int size) {
@@ -628,14 +652,15 @@ public class Suggestions extends Demo {
         Demo<String> demo = new Demo<>(String.class, 10);
         String[] ia = demo.getTArr();
         p(ia);
-
     }
 
     /**
      * 建议96：泛型通配符
-     * 1.只参与"读"操作则限定上界 <? extends E>
-     * 2.只参与"写"操作则限定下届 <? super E>
-     * 3.既参与"读"操作，又参与"写"操作，则都不限定 <E>
+     * <pre>
+     * 1 只参与"读"操作则限定上界 <? extends E>
+     * 2 只参与"写"操作则限定下届 <? super E>
+     * 3 既参与"读"操作，又参与"写"操作，则都不限定 <E>
+     * </pre>
      */
     @Test
     public void test096() {
@@ -661,8 +686,10 @@ public class Suggestions extends Demo {
 
     /**
      * 建议97：泛型不支持协变和逆变
+     * <pre>
      * 协变：窄类型替换宽类型
      * 逆变：宽类型覆盖窄类型
+     * </pre>
      */
     @Test
     public void test097() {
@@ -680,10 +707,11 @@ public class Suggestions extends Demo {
 
     /**
      * 建议98：建议使用顺序 List<T> > List<?> > List<Object>
-     * <p>
-     * List<T>: 表示 List 中的元素为 T 类型，具体类型在运行期决定
-     * List<?>: 表示的是任意类型；读取的元素都是 Object 类型，需要主动转型，常用于泛型方法的返回值
-     * List<Object>: 表示 List 中的元素为 Object 类型；读取时要向下转型，写入时需要向上转型
+     * <pre>
+     * List<T>      表示 List 中的元素为 T 类型，具体类型在运行期决定
+     * List<?>      表示的是任意类型；读取的元素都是 Object 类型，需要主动转型，常用于泛型方法的返回值
+     * List<Object> 表示 List 中的元素为 Object 类型；读取时要向下转型，写入时需要向上转型
+     * </pre>
      */
     @Test
     public void test098() {
@@ -711,7 +739,7 @@ public class Suggestions extends Demo {
 
     /**
      * 建议99：严格限定泛型类型采用多重界限
-     * 只有上界才有多重界限
+     * <p>只有上界才有多重界限
      */
     @Test
     public void test099() {
@@ -738,11 +766,11 @@ public class Suggestions extends Demo {
     }
 
     interface Staff {
-        public int getSalary();
+        int getSalary();
     }
 
     interface Passenger {
-        public boolean isStanding();
+        boolean isStanding();
     }
 
 
@@ -765,9 +793,11 @@ public class Suggestions extends Demo {
 
     /**
      * 建议101：Class 类的特殊性
-     * 1.没有公共构造方法：Class 对象是在加载类时由 JVM 以及通过调用类加载器中的 defineClass() 自动构造的
-     * 2.可以描述基本类型：虽然8个基本类型在 JVM 中并不是一个对象（一般存在于栈内存中）但是 class 类仍然可以描述它们，如：int.class
-     * 3.其对象都是单例模式：一个 Class 实例对象只描述一个类，一个类只有一个 Class 实例对象
+     * <pre>
+     * 1 没有公共构造方法：Class 对象是在加载类时由 JVM 以及通过调用类加载器中的 defineClass() 自动构造的
+     * 2 可以描述基本类型：虽然8个基本类型在 JVM 中并不是一个对象（一般存在于栈内存中）但是 class 类仍然可以描述它们，如：int.class
+     * 3 其对象都是单例模式：一个 Class 实例对象只描述一个类，一个类只有一个 Class 实例对象
+     * </pre>
      */
     @Test
     public void test101() throws ClassNotFoundException {
@@ -787,8 +817,10 @@ public class Suggestions extends Demo {
 
     /**
      * 建议103：反射访问属性和方法时设置 xxx.setAccessible(true)
+     * <pre>
      * Accessible：并不是访问权限的意思，而是指是否更容易获得，是否进行安全检查
      * 设置为 true 将大幅提升系统性能（20倍）
+     * </pre>
      */
     @Test
     public void test103() throws ClassNotFoundException {
@@ -802,20 +834,22 @@ public class Suggestions extends Demo {
 
     /**
      * 建议105：动态加载不适合数组
+     * <pre>
      * Class.forName(className) 要求必须是一个类，所以8个基本类型排除在外
      * 其次，必须具有可追溯的类路径，否则报 ClassNotFoundException
      * 数组是一个非常特殊的类，虽然它是一个类，但没有定义类路径
-     * <p>
-     * 元素类型	                编译后的类型
-     * byte[]	                    [B
-     * char[]	                    [C
-     * double[]	                    [D
-     * float[]	                    [F
-     * int[]	                    [I
-     * long[]	                    [J
-     * short[]	                    [S
-     * boolean[]	                [Z
-     * 引用类型(如String[])	[L引用类型(如：[Ljava.lang.String;)
+     *
+     * 元素类型                 编译后的类型
+     * byte[]                   [B
+     * char[]                   [C
+     * double[]                 [D
+     * float[]                  [F
+     * int[]                    [I
+     * long[]                   [J
+     * short[]                  [S
+     * boolean[]                [Z
+     * 引用类型(如String[])  [L引用类型(如：[Ljava.lang.String;)
+     * </pre>
      */
     @Test
     public void test105() throws ClassNotFoundException {
@@ -894,7 +928,7 @@ public class Suggestions extends Demo {
 
     static class MyException extends Exception {
         private static final long serialVersionUID = 4220795768762558938L;
-        private List<Throwable> causes = new ArrayList<>();
+        private final List<Throwable> causes = new ArrayList<>();
 
         MyException(List<? extends Throwable> causes) {
             this.causes.addAll(causes);
@@ -976,12 +1010,16 @@ public class Suggestions extends Demo {
 
     /**
      * 建议120：不要使用 stop() 终止线程
-     * 1.stop() 是过时的
-     * 2.stop() 导致代码逻辑不完整：一旦执行stop()，即终止正在运行的线程，如果还有重要的代码没有执行（如：线程的主逻辑、资源回收、情景初始化等），这样做就产生了业务逻辑不完整的情况
-     * 3.stop() 破坏原子性：stop() 会丢弃所有的锁，导致原子逻辑受损
+     * <pre>
+     * 1 stop() 是过时的
+     * 2 stop() 导致代码逻辑不完整：一旦执行stop()，即终止正在运行的线程，如果还有重要的代码没有执行（如：线程的主逻辑、资源回收、情景初始化等），这样做就产生了业务逻辑不完整的情况
+     * 3 stop() 破坏原子性：stop() 会丢弃所有的锁，导致原子逻辑受损
+     * </pre>
      * 终止线程的方法：
-     * 1.自定义标志位
-     * 2.interrupt(), isInterrupted()
+     * <pre>
+     * 1 自定义标志位
+     * 2 interrupt(), isInterrupted()
+     * </pre>
      */
     @Test
     public void test120() {
@@ -1013,13 +1051,14 @@ public class Suggestions extends Demo {
 
     /**
      * 建议122：使用线程异常处理器提升系统可靠性
+     * <p>实际应用中需注意以下三个方面：
+     * <pre>
+     * 1 共享资源锁定
+     * 2 脏数据引起系统逻辑混乱
+     * 3 内存溢出
+     * </pre>
      *
      * @see TcpServer
-     * <p>
-     * 实际应用中需注意以下三个方面：
-     * 1.共享资源锁定
-     * 2.脏数据引起系统逻辑混乱
-     * 3.内存溢出
      */
     @Test
     public void test122() throws InterruptedException {
@@ -1035,8 +1074,9 @@ public class Suggestions extends Demo {
     @Test
     public void test124() throws InterruptedException, ExecutionException {
         // 税款计算器
+        @Getter
+        @Setter
         class TaxCalculator implements Callable<Integer> {
-
             // 本金
             private int seedMoney;
 
@@ -1127,14 +1167,15 @@ public class Suggestions extends Demo {
 
     /**
      * 建议132：提升 Java 性能的基本方法
-     * 1.不要在循环条件中计算
-     * 2.尽可能把变量，方法声明为 final static
-     * 3.缩小变量的作用范围：关于变量，能定义在方法内、循环体内、try catch 快内就在里面定义，目的是加快 GC 的回收
-     * 4.频繁字符串操作使用 StringBuffer 或 StringBuilder
-     * 5.在数据量巨大的情况下使用 Collections.binarySearch() 检索元素，否则使用 List 的 indexOf()
-     * 6.覆写 Exception 的 fillInStackTrace()
-     * 7.不要建立冗余对象
-     * <p>
+     * <pre>
+     * 1 不要在循环条件中计算
+     * 2 尽可能把变量，方法声明为 final static
+     * 3 缩小变量的作用范围：关于变量，能定义在方法内、循环体内、try catch 快内就在里面定义，目的是加快 GC 的回收
+     * 4 频繁字符串操作使用 StringBuilder
+     * 5 在数据量巨大的情况下使用 Collections.binarySearch() 检索元素，否则使用 List 的 indexOf()
+     * 6 覆写 Exception 的 fillInStackTrace()
+     * 7 不要建立冗余对象
+     * </pre>
      * 三个方面：CPU，内存，I/O
      */
     @Test
@@ -1222,5 +1263,4 @@ public class Suggestions extends Demo {
      *      }
      * 3.后置条件可以被缩小：方法的返回值称为后置条件
      */
-
 }

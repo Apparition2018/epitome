@@ -14,13 +14,16 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 /**
- * CompletableFuture
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a>
+ * <pre>
  * CompletableFuture 是 JDK1.8 加入的一个实现类，实现了 Future, CompletionStage
  * API 极其丰富，配合流式编程，速度飞快，推荐使用
- * <p>
- * Future、FutureTask、CompletionService、CompletableFuture 解决多线程并发中归集问题的效率对比：https://blog.csdn.net/f641385712/article/details/83580886
- * CompletableFuture 的系统讲解和实例演示：https://blog.csdn.net/f641385712/article/details/83618189
- * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://blog.csdn.net/f641385712/article/details/83580886">Future、FutureTask、CompletionService、CompletableFuture 解决多线程并发中归集问题的效率对比</a>
+ * <a href="https://blog.csdn.net/f641385712/article/details/83618189">CompletableFuture 的系统讲解和实例演示</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/12/1 14:08

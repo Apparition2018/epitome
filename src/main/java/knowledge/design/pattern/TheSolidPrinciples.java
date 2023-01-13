@@ -8,15 +8,16 @@ import java.util.Arrays;
 
 /**
  * The SOLID Principles:
- * 1.单一职责原则 (Single Responsibility Principle)
- * 2.开闭原则 (Open-Closed Principle)
- * 3.里氏替换原则 (Liskov Substitution Principle)
- * 4.接口隔离原则 (Interface Segregation Principle)
- * 5.依赖倒置原则 (Dependence Inversion Principle)
- * 6.迪米特法则 (Law of Demeter) / 最少知识原则 (Least Knowledge Principle)
- * 7.合成复用原则 (Composite/Aggregate Reuse Principle)
- * <p>
- * A Solid Guide to SOLID Principles：https://www.baeldung.com/solid-principles
+ * <pre>
+ * 1 单一职责原则 (Single Responsibility Principle)
+ * 2 开闭原则 (Open-Closed Principle)
+ * 3 里氏替换原则 (Liskov Substitution Principle)
+ * 4 接口隔离原则 (Interface Segregation Principle)
+ * 5 依赖倒置原则 (Dependence Inversion Principle)
+ * 6 迪米特法则 (Law of Demeter) / 最少知识原则 (Least Knowledge Principle)
+ * 7 合成复用原则 (Composite/Aggregate Reuse Principle)
+ * </pre>
+ * 参考：<a href="https://www.baeldung.com/solid-principles">A Solid Guide to SOLID Principles</a>
  *
  * @author ljh
  * @since 2020/9/24 16:13
@@ -25,8 +26,9 @@ public class TheSolidPrinciples {
 
     /**
      * 单一职责原则
-     * 一个类/方法应该有且仅有一个引起它变化的原因，否则类/方法应该被拆分
-     * https://www.baeldung.com/java-single-responsibility-principle
+     * <p>一个类/方法应该有且仅有一个引起它变化的原因，否则类/方法应该被拆分
+     *
+     * @see <a href=" * https://www.baeldung.com/java-single-responsibility-princi">Single Responsibility Principle in Java</a>ple
      */
     static class SRP {
         static class CounterExample {
@@ -106,9 +108,12 @@ public class TheSolidPrinciples {
 
     /**
      * 开闭原则
+     * <pre>
      * 对扩展开放，对修改关闭
      * 核心思想：抽象
-     * https://www.baeldung.com/java-open-closed-principle
+     * </pre>
+     *
+     * @see <a href="https://www.baeldung.com/java-open-closed-principle">Open/Closed Principle in Java</a>
      */
     static class OCP {
         static class CounterExample {
@@ -206,20 +211,29 @@ public class TheSolidPrinciples {
 
     /**
      * 里氏替换原则
+     * <pre>
      * 继承必须确保超类所拥有的性质在子类中仍然成立
      * 子类可以扩展父类的功能，但不能改变父类原有的功能
      * 子类添加新的方法完成新增功能，尽量不要重写父类的方法
+     * </pre>
      * 1.签名规则：
-     * ①重写的子类方法参数类型 >= 超类方法参数类型
-     * ②重写的子类方法返回类型 <= 超类方法的返回类型，如：子类 Integer < 超类 Number
-     * ③子类方法异常 < 超类方法异常
+     * <pre>
+     * 1 重写的子类方法参数类型 >= 超类方法参数类型
+     * 2 重写的子类方法返回类型 <= 超类方法的返回类型，如：子类 Integer < 超类 Number
+     * 3 子类方法异常 < 超类方法异常
+     * </pre>
      * 2.属性规则：
-     * ①类不变量：子类方法必须维护或加强超类型的类不变量 ???
-     * ②历史约束：子类方法状态的改变要符合基类
+     * <pre>
+     * 1 类不变量：子类方法必须维护或加强超类型的类不变量 ???
+     * 2 历史约束：子类方法状态的改变要符合基类
+     * </pre>
      * 3.方法规则：
-     * ①先决条件：子类可以削弱重写方法的先决条件
-     * ②后置条件：子类可以增强重写方法的后置条件
-     * https://www.baeldung.com/java-liskov-substitution-principle
+     * <pre>
+     * 1 先决条件：子类可以削弱重写方法的先决条件
+     * 2 后置条件：子类可以增强重写方法的后置条件
+     * </pre>
+     *
+     * @see <a href="https://www.baeldung.com/java-liskov-substitution-principle">Liskov Substitution Principle in Java</a>
      */
     static class LSP {
         static class CounterExample {
@@ -270,11 +284,14 @@ public class TheSolidPrinciples {
 
     /**
      * 接口隔离原则
+     * <pre>
      * 客户端不应该被迫依赖于它不使用的方法；一个类对另一个类的依赖应该建立在最小的接口上
      * 使用多个专门的接口，而不使用单一的总接口
-     * SRP: 对类的约束
-     * ISP: 对接口的约束
-     * https://www.baeldung.com/java-liskov-substitution-principle
+     * </pre>
+     * <p>SRP: 对类的约束
+     * <p>ISP: 对接口的约束
+     *
+     * @see <a href="https://www.baeldung.com/java-interface-segregation">Interface Segregation Principle in Java</a>
      */
     static class ISP {
         static class CounterExample {
@@ -359,9 +376,12 @@ public class TheSolidPrinciples {
 
     /**
      * 依赖倒置原则
+     * <pre>
      * 高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象
      * 要面向接口编程，不要面向实现编程
-     * https://www.baeldung.com/java-dependency-inversion-principle
+     * </pre>
+     *
+     * @see <a href="https://www.baeldung.com/java-dependency-inversion-principle">The Dependency Inversion Principle in Java</a>
      */
     static class DIP {
         static class CounterExample {
@@ -404,8 +424,10 @@ public class TheSolidPrinciples {
 
     /**
      * 迪米特法则（最少知识原则）
+     * <pre>
      * 只与你的直接朋友交谈，不跟陌生人说话
      * 一个软件实体应当尽可能少地与其他软件实体发生相互作用
+     * </pre>
      */
     static class LOD {
         static class CounterExample {
@@ -467,7 +489,7 @@ public class TheSolidPrinciples {
 
     /**
      * 合成复用原则（组合/聚合复用原则）
-     * 尽量使用组合(has-a)/聚合(contains-a)而不是继承关系达到软件复用的目的
+     * <p>尽量使用组合(has-a)/聚合(contains-a)而不是继承关系达到软件复用的目的
      */
     static class CARP {
         static class CounterExample {

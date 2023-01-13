@@ -39,5 +39,4 @@ interface Identifier {
 // 定义资源类 Foo，Foo 只能是作者级别的人访问
 @Access(level = CommonIdentifier.AUTHOR)
 class Foo {
-
 }

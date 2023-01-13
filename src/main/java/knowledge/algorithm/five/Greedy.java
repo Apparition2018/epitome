@@ -11,12 +11,12 @@ public class Greedy {
 
     /**
      * 哈夫曼编码（霍夫曼编码）
+     * <pre>
      * 一种编码方式，哈夫曼编码是可变字长编码(VLC)的一种。
      * Huffman于1952年提出一种编码方法，该方法完全依据字符出现概率来构造异字头的平均长度最短的码字
-     * <p>
-     * https://blog.csdn.net/likunkun__/article/details/80258515
-     * https://blog.csdn.net/xuefeng0707/article/details/7844834
-     * https://blog.csdn.net/xuefeng0707/article/details/7841328
+     * </pre>
+     *
+     * @see <a href="https://blog.csdn.net/xuefeng0707/article/details/7844834">贪心算法 - 哈夫曼编码 Huffman</a>
      */
     static class HuffmanCoding {
 
@@ -90,25 +90,25 @@ public class Greedy {
 
         /**
          * 最小堆
-         * <p>
-         * 0
-         * / \
-         * 1   2
-         * / \
-         * 3  4
-         * <p>
-         * https://blog.csdn.net/xuefeng0707/article/details/7841328
+         * <pre>
+         *      0
+         *     / \
+         *    1   2
+         *   / \
+         *  3  4
+         * </pre>
+         *
+         * @see <a href="https://blog.csdn.net/xuefeng0707/article/details/7841328">贪心算法 - 最小生成树 Kruskal</a>
          */
         @SuppressWarnings(value = {"unchecked", "rawtypes"})
         static class MinHeap<T extends Comparable> {
-            private Object[] data;
+            private final Object[] data;
 
             public int size;
 
             MinHeap(int capacity) {
                 data = new Object[capacity];
                 size = 0;
-
             }
 
             public boolean add(T val) {
@@ -203,7 +203,6 @@ public class Greedy {
                 double d = freq - node.freq;
                 return d > 0 ? 1 : (d == 0 ? 0 : -1);
             }
-
         }
     }
 }

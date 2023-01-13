@@ -27,13 +27,15 @@ public class ZXingDemo extends Demo {
 
     private static final String FORMAT = "png";
     private static final String CONTENT = "999999999999";
+    private static final String QR_CODE_PATH = DEMO_PATH + "QRCode.png";
+    private static final String EAN_13_PATH = DEMO_PATH + "EAN-13.png";
 
     /**
      * 生成 QR Code
      */
     @Test
     public void createQRCode() {
-        createCode(BarcodeFormat.QR_CODE);
+        this.createCode(BarcodeFormat.QR_CODE, QR_CODE_PATH);
     }
 
     /**
@@ -41,7 +43,7 @@ public class ZXingDemo extends Demo {
      */
     @Test
     public void readQRCode() {
-        Result result = readCode(BarcodeFormat.QR_CODE);
+        Result result = this.readCode(BarcodeFormat.QR_CODE, QR_CODE_PATH);
         if (null != result) {
             p("二维码格式类型：" + result.getBarcodeFormat());
             p("二维码文本内容：" + result.getText());
@@ -55,7 +57,7 @@ public class ZXingDemo extends Demo {
      */
     @Test
     public void createEan13() {
-        createCode(BarcodeFormat.EAN_13);
+        this.createCode(BarcodeFormat.EAN_13, EAN_13_PATH);
     }
 
     /**
@@ -63,7 +65,7 @@ public class ZXingDemo extends Demo {
      */
     @Test
     public void readEan13() {
-        Result result = readCode(BarcodeFormat.EAN_13);
+        Result result = this.readCode(BarcodeFormat.EAN_13, EAN_13_PATH);
         if (null != result) {
             p("条形码格式类型：" + result.getBarcodeFormat());
             p("条形码文本内容：" + result.getText());
@@ -72,8 +74,7 @@ public class ZXingDemo extends Demo {
         }
     }
 
-    private void createCode(BarcodeFormat barcodeFormat) {
-        String filePath = "";
+    private void createCode(BarcodeFormat barcodeFormat, String filePath) {
         int width = 0;
         int height = 0;
         HashMap<EncodeHintType, Serializable> hints = null;
@@ -82,7 +83,6 @@ public class ZXingDemo extends Demo {
             case QR_CODE:
                 width = 300;
                 height = 300;
-                filePath = DEMO_PATH + "QRCode.png";
                 hints = new HashMap<EncodeHintType, Serializable>() {
                     private static final long serialVersionUID = 1955194072729986747L;
 
@@ -101,7 +101,6 @@ public class ZXingDemo extends Demo {
                         (7 * 6) +   // right bars
                         3;          // end guard
                 height = 30;
-                filePath = DEMO_PATH + "EAN-13.png";
                 break;
             default:
                 assert false : "暂只支持 QR Code 和 EAN-13";
@@ -113,16 +112,13 @@ public class ZXingDemo extends Demo {
         } catch (WriterException | IOException e) {
             e.printStackTrace();
         }
-
     }
 
-    private Result readCode(BarcodeFormat barcodeFormat) {
-        String filePath = "";
+    private Result readCode(BarcodeFormat barcodeFormat, String filePath) {
         HashMap<DecodeHintType, Charset> hints = null;
         switch (barcodeFormat) {
             // 二维码 (QR Code)
             case QR_CODE:
-                filePath = DEMO_PATH + "QRCode.png";
                 hints = new HashMap<DecodeHintType, Charset>() {
                     private static final long serialVersionUID = 1025915748647624149L;
 
@@ -133,7 +129,6 @@ public class ZXingDemo extends Demo {
                 break;
             // 条形码 (EAN-13)
             case EAN_13:
-                filePath = DEMO_PATH + "EAN-13.png";
                 break;
             default:
                 assert false : "暂只支持 QR Code 和 EAN-13";

@@ -9,11 +9,9 @@ import java.util.concurrent.TimeUnit;
  * void	    notify()                        唤醒在此对象监视器上等待的单个线程
  * void	    notifyAll()                     唤醒在此对象监视器上等待的所有线程
  * </pre>
- * <pre>
- * 锁池       Monitor，多个线程争夺某个对象的锁的拥有权，没有争夺成功的线程就处于对象的锁池中，锁池中的线程会去争夺锁的拥有权
- * 等待池     WaitSet，线程调用了对象的 wait()，那么线程就处于该对象的等待池中，等待池中的线程不会去争夺锁的拥有权
- * </pre>
- * 参考：<a href="https://blog.csdn.net/u012426327/article/details/77160444">wait & notify</a>
+ * <p>锁池：Monitor，多个线程争夺某个对象的锁的拥有权，没有争夺成功的线程就处于对象的锁池中，锁池中的线程会去争夺锁的拥有权
+ * <p>等待池：WaitSet，线程调用了对象的 wait()，那么线程就处于该对象的等待池中，等待池中的线程不会去争夺锁的拥有权
+ * <p>参考：<a href="https://blog.csdn.net/u012426327/article/details/77160444">wait & notify</a>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -66,8 +64,7 @@ public class ObjectWaitAndNotifyDemo {
     }
 
     static class Increase extends Thread {
-
-        private Target t;
+        private final Target t;
 
         Increase(Target t) {
             this.t = t;
@@ -90,8 +87,7 @@ public class ObjectWaitAndNotifyDemo {
     }
 
     static class Decrease extends Thread {
-
-        private Target t;
+        private final Target t;
 
         Decrease(Target t) {
             this.t = t;

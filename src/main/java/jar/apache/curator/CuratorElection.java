@@ -84,7 +84,7 @@ public class CuratorElection {
         }
 
         @Override
-        public void takeLeadership(CuratorFramework client) throws Exception {
+        public void takeLeadership(CuratorFramework client) {
             final int waitSeconds = new Random().nextInt(5) + 1;
 
             System.out.println(name + " is now the leader. Waiting " + waitSeconds + " seconds...");

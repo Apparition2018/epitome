@@ -10,19 +10,20 @@ import java.util.concurrent.*;
 import java.util.stream.IntStream;
 
 /**
- * CountDownLatch
- * CountDownLatch 一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/CountDownLatch.html
- * <p>
- * void	        await()                                 使当前线程在锁存器倒计数至零之前一直等待，除非线程被中断
- * boolean	    await(long timeout, TimeUnit unit)      使当前线程在锁存器倒计数至零之前一直等待，除非线程被中断或超出了指定的等待时间
- * void	        countDown()                             递减锁存器的计数，如果计数到达零，则释放所有等待的线程
- * long	        getCount()                              返回当前计数
- * <p>
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/CountDownLatch.html">CountDownLatch</a>
+ * <p>CountDownLatch 一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待
+ * <pre>
+ * void         await()                                 使当前线程在锁存器倒计数至零之前一直等待，除非线程被中断
+ * boolean      await(long timeout, TimeUnit unit)      使当前线程在锁存器倒计数至零之前一直等待，除非线程被中断或超出了指定的等待时间
+ * void         countDown()                             递减锁存器的计数，如果计数到达零，则释放所有等待的线程
+ * long         getCount()                              返回当前计数
+ * </pre>
  * 阿里编程规约：
+ * <pre>
  * 使用 CountDownLatch 进行异步转同步操作，每个线程退出前必须调用 countDown 方法，
  * 线程执行代码注意 catch 异常，确保 countDown 方法被执行到，避免主线程无法执行至 await 方法，直到超时才返回结果
  * 注意，子线程抛出异常堆栈，不能在主线程 try-catch 到
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/17 19:09

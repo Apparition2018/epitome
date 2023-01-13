@@ -1,5 +1,6 @@
 package knowledge.concurrent;
 
+import knowledge.suggestions.Suggestions;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
@@ -233,6 +234,7 @@ public class ThreadDemo extends Demo {
      * boolean          isInterrupted()     测试线程是否已经中断，不会清除线程的中断状态
      * </pre>
      *
+     * @see Suggestions#test120()
      * @see <a href="https://www.cnblogs.com/liyutian/p/10196044.html">Java 终止线程的三种方式</a>
      * @see <a href="https://www.cnblogs.com/panchanggui/p/9668284.html">Thread 的中断机制 (interrupt)，循环线程停止的方法</a>
      * @see <a href="https://blog.csdn.net/zwx900102/article/details/106741458">Thread 生命周期及 interrupted() 作用分析</a>

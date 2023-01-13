@@ -7,11 +7,12 @@ import java.util.concurrent.TimeUnit;
 import static l.demo.Demo.p;
 
 /**
- * TimeUnit
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/TimeUnit.html">TimeUnit</a>
+ * <pre>
  * TimeUnit 表示给定单元粒度的时间段，它提供在这些单元中进行跨单元转换和执行计时及延迟操作的实用工具方法。
  * TimeUnit 是一个枚举类，NANOSECONDS, MICROSECONDS, MILLISECONDS, SECONDS, MINUTES, HOURS, DAYS
  * TimeUnit 主要用于通知基于时间的方法如何解释给定的计时参数。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/concurrent/TimeUnit.html
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -20,7 +21,7 @@ public class TimeUnitDemo {
 
     /**
      * long	    convert(long sourceDuration, TimeUnit sourceUnit)
-     * 将给定单元的时间段转换到此单元
+     * <p>将给定单元的时间段转换到此单元
      */
     @Test
     public void convert() {
@@ -31,7 +32,7 @@ public class TimeUnitDemo {
 
     /**
      * void	    sleep(long timeout)
-     * 使用此时间单位执行Thread.sleep
+     * <p>使用此时间单位执行Thread.sleep
      */
     @Test
     public void sleep() throws InterruptedException {
@@ -41,7 +42,7 @@ public class TimeUnitDemo {
 
     /**
      * long	    toXXX(long duration)
-     * 等效于 XXX.convert(duration, this)
+     * <p>等效于 XXX.convert(duration, this)
      */
     @Test
     public void toXXX() {
@@ -52,7 +53,7 @@ public class TimeUnitDemo {
 
     /**
      * void	    timedJoin(Thread thread, long timeout)
-     * 使用此时间单元执行计时的 Thread.join
+     * <p>使用此时间单元执行计时的 Thread.join
      */
     @Test
     public void timeJoin() throws InterruptedException {
@@ -62,7 +63,7 @@ public class TimeUnitDemo {
 
     /**
      * void	    timedWait(Object obj, long timeout)
-     * 使用此时间单元执行计时的 Object.wait
+     * <p>用此时间单元执行计时的 Object.wait
      */
     @Test
     public void timedWait() throws InterruptedException {
@@ -72,5 +73,4 @@ public class TimeUnitDemo {
         }
         p("end!");
     }
-
 }

@@ -16,8 +16,9 @@ public class BranchAndBound {
 
     /**
      * 单源最短路径
-     * https://www.cnblogs.com/zhanghongcan/p/8684465.html
-     * https://blog.csdn.net/gloria0610/article/details/23742799
+     *
+     * @see <a href="https://www.cnblogs.com/zhanghongcan/p/8684465.html">最短路径（Single Source Shortest Path）dijkstra算法求解</a>
+     * @see <a href="https://blog.csdn.net/gloria0610/article/details/23742799">单源最短路径（ Dijkstra算法）</a>
      */
     static class SingleSourceShortestPath {
 
@@ -98,6 +99,5 @@ public class BranchAndBound {
 
             dijkstra();
         }
-
     }
 }

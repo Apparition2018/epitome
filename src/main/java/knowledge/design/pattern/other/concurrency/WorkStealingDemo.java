@@ -11,17 +11,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 工作密取
- * <p>
+ * <pre>
  * 在生产者-消费者模式中，所有消费者都从一个工作队列中取元素，一般使用阻塞队列实现；
  * 而在 工作密取 模式中，每个消费者有其单独的工作队列，一般使用双端队列实现，
  * 如果一个消费者完成了自己队列中的全部工作，那么它可以从其它消费者队列末尾秘密地获取工作。
- * <p>
+ *
  * 工作密取模式 对比 生产者-消费者模式更为灵活，因为多个线程不会因为在同一个工作队列中抢占内容发生竞争。
  * 在大多数时候，它们只是访问自己的双端队列。即使需要访问另一个队列时，也是从队列的尾部获取工作，降低了队列上的竞争程度。
  * 工作密取非常适用于即是消费者也是生产者的问题，当执行某个工作时可能导致出现更多的工作。
- * <p>
- * 工作密取示意图：https://img-blog.csdnimg.cn/20190602161352675.png
- * LinkedBlockingDeque工作密取：https://blog.csdn.net/hxpjava1/article/details/44245593
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://img-blog.csdnimg.cn/20190602161352675.png">工作密取示意图</a>
+ * <a href="https://blog.csdn.net/hxpjava1/article/details/44245593">LinkedBlockingDeque 工作密取</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/10/19 16:17
@@ -121,5 +124,4 @@ public class WorkStealingDemo extends Demo {
             isAllStop[machineIndex] = true;
         }
     }
-
 }

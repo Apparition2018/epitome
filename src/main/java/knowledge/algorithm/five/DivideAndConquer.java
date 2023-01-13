@@ -10,8 +10,7 @@ package knowledge.algorithm.five;
 public class DivideAndConquer {
 
     /**
-     * 汉诺塔
-     * http://www.runoob.com/java/method-tower.html
+     * <a href="http://www.runoob.com/java/method-tower.html">汉诺塔</a>
      */
     static class TowerOfHanoi {
 
@@ -29,15 +28,11 @@ public class DivideAndConquer {
                 hanoi(topN - 1, inter, from, to);
             }
         }
-
     }
 
     /**
      * Binary Search
-     * 二分法查找
-     * <p>
-     * 当数据量很大适宜采用该方法
-     * 采用二分法查找时，数据需是有序不重复的
+     * <p>二分法查找，当数据量很大适宜采用该方法采用二分法查找时，数据需是有序不重复的
      */
     static class BinarySearch {
 

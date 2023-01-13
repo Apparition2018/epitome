@@ -11,8 +11,8 @@ import java.util.concurrent.*;
 
 /**
  * FutureTask
- * FutureTask 是 Future 和 Callable 的结合体
- * https://blog.csdn.net/zmx729618/article/details/51596414
+ * <p>FutureTask 是 Future 和 Callable 的结合体
+ * <p>参考：<a href="https://blog.csdn.net/zmx729618/article/details/51596414">FutureTask & Future</a>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -50,9 +50,7 @@ public class FutureTaskDemo extends Demo {
                         // V	get([long timeout, TimeUnit unit])
                         // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用），会阻塞主线程
                         Map<Integer, String> callMap = future.get();
-                        callMap.forEach((k, v) -> {
-                            p(String.format("%s：任务 %s 运行完毕！", k, v));
-                        });
+                        callMap.forEach((k, v) -> p(String.format("%s：任务 %s 运行完毕！", k, v)));
                         it.remove();
                     } catch (InterruptedException | ExecutionException e) {
                         e.printStackTrace();
@@ -95,13 +93,10 @@ public class FutureTaskDemo extends Demo {
                 // V	get([long timeout, TimeUnit unit])
                 // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用），会阻塞主线程
                 Map<Integer, String> callMap = get();
-                callMap.forEach((k, v) -> {
-                    p(String.format("%s：任务 %s 运行完毕！", k, v));
-                });
+                callMap.forEach((k, v) -> p(String.format("%s：任务 %s 运行完毕！", k, v)));
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
         }
     }
-
 }

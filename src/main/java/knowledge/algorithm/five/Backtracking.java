@@ -23,9 +23,10 @@ public class Backtracking {
 
     /**
      * 数字组合
-     * 从n个数中选取r个数的所有组合
-     * https://www.cnblogs.com/yoona-lin/p/10510518.html
-     * https://www.cnblogs.com/xiaonongpiaoliang/p/5289243.html
+     * <p>从n个数中选取r个数的所有组合
+     *
+     * @see <a href="https://www.cnblogs.com/yoona-lin/p/10510518.html">递归实现从n个数中选取m个数的所有组合</a>
+     * @see <a href="https://www.cnblogs.com/xiaonongpiaoliang/p/5289243.html">回溯法（试探法）生成彩票号码组合</a>
      */
     private static void CombinationOfNumber(int n, int r) {
         for (int i = n; i >= r; i--) {

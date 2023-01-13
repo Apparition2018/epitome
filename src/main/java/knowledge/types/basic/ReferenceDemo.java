@@ -13,12 +13,13 @@ import java.util.stream.IntStream;
 
 /**
  * Reference    引用
+ * <pre>
  * 强引用：抛出 OutOfMemory 错误也不会回收
  * 软引用：内存不足的时候 JVM 才会回收；缓存
  * 弱引用：无论内存是否充足，都会回收
  * 虚引用：跟没有引用与之关联一样，任何时候都可能被回收
- * <p>
- * Java 如何有效地避免 OOM：善于利用软引用和弱引用：https://www.cnblogs.com/dolphin0520/p/3784171.html
+ * </pre>
+ * 参考：<a href="https://www.cnblogs.com/dolphin0520/p/3784171.html">Java 如何有效地避免 OOM：善于利用软引用和弱引用</a>
  *
  * @author ljh
  * @since 2020/11/7 23:00
@@ -27,7 +28,8 @@ public class ReferenceDemo extends Demo {
 
     /**
      * 软引用
-     * 你不可不知的 Java 引用类型之——软引用：https://www.cnblogs.com/mfrank/p/9781216.html
+     *
+     * @see <a href="https://www.cnblogs.com/mfrank/p/9781216.html">Java 引用类型——软引用</a>
      */
     static class SoftReferenceDemo {
 
@@ -98,7 +100,8 @@ public class ReferenceDemo extends Demo {
 
     /**
      * 弱引用
-     * 你不可不知的 Java 引用类型之——弱引用：https://www.cnblogs.com/mfrank/p/9829993.html
+     *
+     * @see <a href="https://www.cnblogs.com/mfrank/p/9829993.html">Java 引用类型——弱引用</a>
      */
     @Test
     public void testWeakReference() {
@@ -111,7 +114,8 @@ public class ReferenceDemo extends Demo {
 
     /**
      * 虚引用
-     * 你不可不知的 Java 引用类型之——虚引用：https://www.cnblogs.com/mfrank/p/9837070.html
+     *
+     * @see <a href="https://www.cnblogs.com/mfrank/p/9837070.html">Java 引用类型——虚引用</a>
      */
     static class PhantomReferenceDemo {
 

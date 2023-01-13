@@ -8,23 +8,21 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * ExecutorService
- * <p>
- * 线程池的主要功能是：
- * 1：控制线程数量
- * 2：重用线程 当开发任务量大时，或者有频繁创建线程任务执行的操作时，就应当使用线程池来调度线程
- * <p>
- * FixedThreadPool, CachedThreadPool, SingleThreadExecutor, ScheduledThreadPool
- * 四种线程池都是使用 ThreadPoolExecutor 实现的，所以 ThreadPoolExecutor 更灵活
- * <p>
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ExecutorService.html">ExecutorService</a>
+ * <p>线程池的主要功能是：
+ * <pre>
+ * 1 控制线程数量
+ * 2 重用线程 当开发任务量大时，或者有频繁创建线程任务执行的操作时，就应当使用线程池来调度线程
+ * </pre>
  * 阿里编程规约：
+ * <pre>
  * 线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险
- * 1.FixedThreadPool 和 SingleThreadPool：允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM
- * 2.CachedThreadPool：允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM
- * 不推荐使用 Executors 操作线程池类：https://blog.csdn.net/u010994966/article/details/103123927
- * <p>
- * 如何在队列排队之前让 ThreadPoolExecutor 将线程增加到最大数量：https://blog.csdn.net/fy_java1995/article/details/107920983
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ExecutorService.html
+ * 1 FixedThreadPool 和 SingleThreadPool：允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM
+ * 2 CachedThreadPool：允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM
+ * 3 ScheduledThreadPool：允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM
+ * <a href="https://blog.csdn.net/u010994966/article/details/103123927">不推荐使用 Executors 操作线程池类</a>
+ * </pre>
+ * 参考：<a href="https://blog.csdn.net/fy_java1995/article/details/107920983">如何在队列排队之前让 ThreadPoolExecutor 将线程增加到最大数量</a>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -33,7 +31,7 @@ public class ExecutorServiceDemo extends Demo {
 
     /**
      * static ExecutorService	        newFixedThreadPool(int nThreads[, ThreadFactory threadFactory])
-     * 创建一个可重用固定线程数的线程池，以共享的无界队列方式来运行这些线程，在需要时使用提供的 ThreadFactory 创建新线程
+     * <p>创建一个可重用固定线程数的线程池，以共享的无界队列方式来运行这些线程，在需要时使用提供的 ThreadFactory 创建新线程
      */
     @Test
     public void testFixedThreadPool() throws InterruptedException {
@@ -43,7 +41,7 @@ public class ExecutorServiceDemo extends Demo {
 
     /**
      * static ExecutorService	        newCachedThreadPool([ThreadFactory threadFactory])
-     * 创建一个可根据需要创建新线程的线程池，但是在以前构造的线程可用时将重用它们，并在需要时使用提供的 ThreadFactory 创建新线程
+     * <p>创建一个可根据需要创建新线程的线程池，但是在以前构造的线程可用时将重用它们，并在需要时使用提供的 ThreadFactory 创建新线程
      */
     @Test
     public void testCachedThreadPool() throws InterruptedException {
@@ -53,10 +51,9 @@ public class ExecutorServiceDemo extends Demo {
 
     /**
      * static ExecutorService	        newSingleThreadExecutor([ThreadFactory threadFactory])
-     * 创建一个使用单个 worker 线程的 Executor，以无界队列方式来运行该线程，并在需要时使用提供的 ThreadFactory 创建新线程
+     * <p>创建一个使用单个 worker 线程的 Executor，以无界队列方式来运行该线程，并在需要时使用提供的 ThreadFactory 创建新线程
      * <p>
-     * 该方法返回一个只有一个线程的线程池，即每次只能执行一个线程任务，多余的任务会保存到一个任务队列中，
-     * 等待这一个线程空闲，当这个线程空闲了再按FIFO方式顺序执行任务队列中的任务
+     * <p>该方法返回一个只有一个线程的线程池，即每次只能执行一个线程任务，多余的任务会保存到一个任务队列中，等待这一个线程空闲，当这个线程空闲了再按FIFO方式顺序执行任务队列中的任务
      */
     @Test
     public void testSingleThreadExecutor() throws InterruptedException {
@@ -66,9 +63,9 @@ public class ExecutorServiceDemo extends Demo {
 
     /**
      * static ScheduledExecutorService  newScheduledThreadPool(int corePoolSize[, ThreadFactory threadFactory])
-     * 创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行
+     * <p>创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行
      * <p>
-     * 多线程并行处理定时任务时，Timer 运行多个 TimeTask 时，只要其中之一没有捕获抛出的异常，其它任务便会自动终止运行，使用 ScheduledExecutorService 则没有这个问题（阿里编程规约）
+     * <p>多线程并行处理定时任务时，Timer 运行多个 TimeTask 时，只要其中之一没有捕获抛出的异常，其它任务便会自动终止运行，使用 ScheduledExecutorService 则没有这个问题（阿里编程规约）
      */
     @Test
     public void testScheduledThreadPool() throws InterruptedException {
@@ -78,7 +75,7 @@ public class ExecutorServiceDemo extends Demo {
 
     /**
      * static ExecutorService           newWorkStealingPool([int parallelism])
-     * 创建工作窃取线程池
+     * <p>创建工作窃取线程池
      */
     @Test
     public void test() throws InterruptedException {
@@ -170,5 +167,4 @@ public class ExecutorServiceDemo extends Demo {
             return result;
         };
     }
-
 }
