@@ -44,7 +44,7 @@ public class PathUtilDemo extends Demo {
 
         // 获取文件属性
         BasicFileAttributes attributes = PathUtil.getAttributes(path, true);
-        p("[size]: " + attributes.size() + "; [lastAccess]: " + attributes.lastAccessTime() + ";");
+        p(String.format("[size]: %s; [lastAccess]: %s;", attributes.size(), attributes.lastAccessTime()));
 
         // 复制文件
         PathUtil.copyFile(path, desPath, StandardCopyOption.REPLACE_EXISTING);

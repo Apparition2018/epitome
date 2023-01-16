@@ -50,24 +50,24 @@ public class FileDemo extends Demo {
     }
 
     @Test
-    public void testFile() throws IOException, InterruptedException {
+    public void testFile() throws IOException {
         // static String	pathSeparator           与系统有关的路径分隔符，为了方便，它被表示为一个字符串
         p(File.separator);      // \
         // static String	separator               与系统有关的默认名称分隔符，为了方便，它被表示为一个字符串
         p(File.pathSeparator);  // ;
 
-        create(FILE);
+        this.create(FILE);
         // boolean	        renameTo(File dest)     重新命名此抽象路径名表示的文件
         // https://blog.csdn.net/u010648555/article/details/78356040
         boolean renameFlag = FILE.renameTo(new File(DEMO_PATH + "a/b/demo"));
         if (renameFlag) {
             p("文件移动成功！");
         }
-        delete(new File(DEMO_PATH + "a"));
+        this.delete(new File(DEMO_PATH + "a"));
 
         // static File	    createTempFile(String prefix, String suffix[, File directory])
         // 在指定目录中创建一个新的空文件，使用给定的前缀和后缀字符串生成其名称
-        File tmpFile = File.createTempFile("tmp", ".txt", new File(DEMO_PATH));
+        File tmpFile = File.createTempFile("tmp-", ".txt", new File(DEMO_PATH));
         // void	            deleteOnExit()          在虚拟机终止时，请求删除此抽象路径名表示的文件或目录
         tmpFile.deleteOnExit();
     }

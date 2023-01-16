@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -73,8 +74,8 @@ public class JoinerDemo extends Demo {
         ImmutableMap<String, String> map = ImmutableMap.of("A", "1", "B", "2");
         // Joiner.MapJoiner	withKeyValueSeparator(char|String keyValueSeparator)
         // 初始化一个Map连接器，连接器连接Map对象时，keyValueSeparator为key和value之间的分隔符
-        String join = Joiner.on("; ").withKeyValueSeparator("=").join(map);
-        p(join); // A=1; B=2
+        String join = Joiner.on(File.pathSeparator).withKeyValueSeparator("=").join(map);
+        p(join); // A=1;B=2
     }
 
     /**
