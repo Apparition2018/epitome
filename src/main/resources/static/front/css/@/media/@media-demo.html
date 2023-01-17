@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,179 +10,170 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script defer src="../../../../public/js/demo.js"></script>
 </head>
-
 <body>
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w100p">
-            <div class="caption">媒体类型</div>
-            <div class="centered">
-                <table class="w1024">
-                    <tr>
-                        <th>类型</th>
-                        <th>概述</th>
-                    </tr>
-                    <tr>
-                        <td>all</td>
-                        <td>所有设备</td>
-                    </tr>
-                    <tr>
-                        <td>print</td>
-                        <td>打印机和打印预览</td>
-                    </tr>
-                    <tr>
-                        <td>screen</td>
-                        <td>电脑屏幕，平板电脑，智能手机等</td>
-                    </tr>
-                    <tr>
-                        <td>speech</td>
-                        <td>屏幕阅读器等发声设备</td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h300">
+    <div class="css-live-wrap w100p">
+        <div class="caption">媒体类型</div>
+        <div class="centered">
+            <table class="w1024">
+                <tr>
+                    <th>类型</th>
+                    <th>概述</th>
+                </tr>
+                <tr>
+                    <td>all</td>
+                    <td>所有设备</td>
+                </tr>
+                <tr>
+                    <td>print</td>
+                    <td>打印机和打印预览</td>
+                </tr>
+                <tr>
+                    <td>screen</td>
+                    <td>电脑屏幕，平板电脑，智能手机等</td>
+                </tr>
+                <tr>
+                    <td>speech</td>
+                    <td>屏幕阅读器等发声设备</td>
+                </tr>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w100p">
-            <div class="caption">媒体特性</div>
-            <div class="centered">
-                <table class="w1024">
-                    <tr>
-                        <th>特性</th>
-                        <th>概述</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td>width</td>
-                        <td>可视宽度</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>height</td>
-                        <td>可视高度</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>orientation</td>
-                        <td>定义屏幕方向</td>
-                        <td>@media (orientation: portrait) {...} // 纵向<br>@media (orientation: landscape) {...} // 横向
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>resolution</td>
-                        <td>定义设备的分辨率</td>
-                        <td>@media (min-resolution: 72dpi) {...}<br>@media (max-resolution: 300dpi) {...}</td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h300">
+    <div class="css-live-wrap w100p">
+        <div class="caption">媒体特性</div>
+        <div class="centered">
+            <table class="w1024">
+                <tr>
+                    <th>特性</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>可视宽度</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>height</td>
+                    <td>可视高度</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>orientation</td>
+                    <td>定义屏幕方向</td>
+                    <td>@media (orientation: portrait) {...} // 纵向<br>@media (orientation: landscape) {...} // 横向
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolution</td>
+                    <td>定义设备的分辨率</td>
+                    <td>@media (min-resolution: 72dpi) {...}<br>@media (max-resolution: 300dpi) {...}</td>
+                </tr>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media -->
-    <section class="code-wrap">
-        <div class="css-live-wrap w40p">
-            <div class="caption">响应式布局</div>
-            <div class="caption">利用 @media 实现</div>
-            <div class="centered" id="eg2">
-                <div class="leftBox"></div>
-                <div class="middleBox"></div>
-                <div class="rightBox"></div>
-            </div>
+<!-- https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media -->
+<section class="code-wrap">
+    <div class="css-live-wrap w40p">
+        <div class="caption">响应式布局</div>
+        <div class="caption">利用 @media 实现</div>
+        <div class="centered" id="eg2">
+            <div class="leftBox"></div>
+            <div class="middleBox"></div>
+            <div class="rightBox"></div>
         </div>
-        <style class="code w60p" contenteditable="true">
+    </div>
+    <style class="code w60p" contenteditable="true">
+        #eg2 {
+            width: 300px;
+            height: 240px;
+            zoom: 1;
+        }
+
+        #eg2:after {
+            content: " ";
+            display: block;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+
+        .leftBox,
+        .rightBox {
+            float: left;
+            width: calc((100% - 30px) / 4);
+            height: calc(100% - 5px * 2);
+            margin: 5px;
+            background: #ffccf7;
+        }
+
+        .middleBox {
+            float: left;
+            width: calc((100% - 30px) / 2);
+            height: calc(100% - 5px * 2);
+            margin: 5px;
+            background: #b1fffc;
+        }
+
+        .rightBox {
+            background: #fffab1;
+        }
+
+        @media screen and (max-width: 1200px) {
             #eg2 {
-                width: 300px;
-                height: 240px;
-                zoom: 1;
+                margin: auto;
             }
+        }
 
-            #eg2:after {
-                content: " ";
-                display: block;
-                line-height: 0;
-                visibility: hidden;
-                clear: both;
-            }
-
-            .leftBox,
+        @media screen and (max-width: 992px) {
             .rightBox {
-                float: left;
-                width: calc((100% - 30px) / 4);
-                height: calc(100% - 5px * 2);
-                margin: 5px;
-                background: #ffccf7;
+                width: 0;
+                margin: 0;
+            }
+
+            .leftBox {
+                width: calc((100% - 20px) / 4);
             }
 
             .middleBox {
-                float: left;
-                width: calc((100% - 30px) /2);
-                height: calc(100% - 5px * 2);
-                margin: 5px;
-                background: #b1fffc;
+                width: calc((100% - 20px) / 4 * 3);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .leftBox,
+            .rightBox,
+            .middleBox {
+                width: calc(100% - 10px);
+                height: calc((100% - 30px) / 3);
             }
 
             .rightBox {
-                background: #fffab1;
+                margin: 5px;
             }
+        }
+    </style>
+</section>
 
-            @media screen and (max-width: 1200px) {
-                #eg2 {
-                    margin: auto;
-                }
-            }
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">media 属性</div>
+        <div class="centered box-media-attr"
+             style="width: 140px; height: 160px; border-radius: 50%;
+                background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);"></div>
+    </div>
+    <link rel="stylesheet" href="@media.css" media="only screen and (max-width: 960px)">
+    <code class="code w60p" contenteditable="true">
+        当可视宽度小于等于960px引入外联样式
 
-            @media screen and (max-width: 992px) {
-                .rightBox {
-                    width: 0;
-                    margin: 0;
-                }
-
-                .leftBox {
-                    width: calc((100% - 20px) / 4);
-                }
-
-                .middleBox {
-                    width: calc((100% - 20px) / 4 * 3);
-                }
-            }
-
-            @media screen and (max-width: 768px) {
-
-                .leftBox,
-                .rightBox,
-                .middleBox {
-                    width: calc(100% - 10px);
-                    height: calc((100% - 30px) / 3);
-                }
-
-                .rightBox {
-                    margin: 5px;
-                }
-            }
-        </style>
-    </section>
-
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w40p">
-            <div class="caption">media 属性</div>
-            <div class="centered box-media-attr"></div>
-        </div>
-        <link rel="stylesheet" href="@media.css" media="only screen and (max-width: 960px)">
-        <style>
-            .box-media-attr {
-                width: 160px;
-                height: 160px;
-                background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
-                border-radius: 50%;
-            }
-        </style>
-        <code class="code w60p" contenteditable="true">
-            当可视宽度小于等于960px引入外联样式
-
-            &lt;link rel="stylesheet" href="@media.css" media="only screen and (max-width: 960px)"&gt;
-        </code>
-    </section>
-
+        &lt;link rel="stylesheet" href="@media.css" media="only screen and (max-width: 960px)"&gt;
+    </code>
+</section>
 </body>
-
 </html>

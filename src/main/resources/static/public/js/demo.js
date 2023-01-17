@@ -1,6 +1,6 @@
 /* 调节centered居中 */
 $('.css-live-wrap').each(function () {
-    var $this = $(this),
+    let $this = $(this),
         captionLen = $this.children('.caption').length,
         clwHeight = parseInt($this.css('height')),
         top;

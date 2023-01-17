@@ -1,15 +1,13 @@
 package jar.hutool.http;
 
 import cn.hutool.http.HtmlUtil;
-import cn.hutool.http.HttpUtil;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 /**
- * HtmlUtil
- * 爬虫爬取 HTML 之后，需要对返回页面的 HTML 内容做一定处理，比如去掉指定标签（例如广告栏等）、去除 JS、去掉样式等等
- * https://hutool.cn/docs/#/http/HTML%E5%B7%A5%E5%85%B7%E7%B1%BB-HtmlUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/HtmlUtil.html
+ * <a href="https://hutool.cn/docs/#/http/HTML工具类-HtmlUtil">HtmlUtil</a>
+ * <p>爬虫爬取 HTML 之后，需要对返回页面的 HTML 内容做一定处理，比如去掉指定标签（例如广告栏等）、去除 JS、去掉样式等等
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/HtmlUtil.html">HtmlUtil api</a>
  *
  * @author ljh
  * @since 2020/11/2 23:35
@@ -18,10 +16,8 @@ public class HtmlUtilDemo extends Demo {
 
     @Test
     public void testHtmlUtil() {
-        String html = HttpUtil.get(BAIDU_URL);
-
         // filter(html)                     过滤 html 文本，防止 XSS 攻击
-        html = HtmlUtil.filter(html);
+        p(HtmlUtil.filter("<span>text</span>"));                                // text
 
         // removeHtml(html, tagName...)     去除指定标签及其内容
         p(HtmlUtil.removeHtmlTag("a<div class='test_div'>b</div>", "div"));     // a

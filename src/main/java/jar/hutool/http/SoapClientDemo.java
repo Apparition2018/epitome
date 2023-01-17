@@ -4,26 +4,27 @@ import cn.hutool.http.webservice.SoapClient;
 import org.junit.jupiter.api.Test;
 
 /**
- * SoapClient   Soap 客户端
- * 实现简便的 WebService 请求
- * <p>
- * 1.使用 SoapUI 解析 WSDL 地址，找到 WebService 方法和参数，得到的 XML 模板为：
- * -<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://WebXml.com.cn/">
- * -   <soapenv:Header/>
- * -   <soapenv:Body>
- * -      <web:getCountryCityByIp>
- * -         <!--Optional:-->
- * -         <web:theIpAddress>?</web:theIpAddress>
- * -      </web:getCountryCityByIp>
- * -   </soapenv:Body>
- * -</soapenv:Envelope>
- * 2.按照 SoapUI 中的相应内容构建 SOAP 请求
- * -  2.1 方法名：web:getCountryCityByIp
- * -  2.2 参数:web:theIpAddress
- * -  2.3 命名空间，前缀为 web，URI为 http://WebXml.com.cn/
- * <p>
- * https://hutool.cn/docs/#/http/WebService/Soap%E5%AE%A2%E6%88%B7%E7%AB%AF-SoapClient
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/webservice/SoapClient.html
+ * <a href="https://hutool.cn/docs/#/http/WebService/Soap客户端-SoapClient">SoapClient</a> Soap 客户端
+ * <p>实现简便的 WebService 请求
+ * <p>使用：
+ * <pre>
+ * 1 使用 SoapUI 解析 WSDL 地址，找到 WebService 方法和参数，得到的 XML 模板为：
+ * {@code
+ *  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://WebXml.com.cn/">
+ *      <soapenv:Header/>
+ *      <soapenv:Body>
+ *          <web:getCountryCityByIp>
+ *              <!--Optional:-->
+ *              <web:theIpAddress>?</web:theIpAddress>
+ *          </web:getCountryCityByIp>
+ *      </soapenv:Body>
+ *  </soapenv:Envelope>}
+ * 2 按照 SoapUI 中的相应内容构建 SOAP 请求
+ *   2.1 方法名：web:getCountryCityByIp
+ *   2.2 参数:web:theIpAddress
+ *   2.3 命名空间，前缀为 web，URI为 http://WebXml.com.cn/
+ * </pre>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/webservice/SoapClient.html">SoapClient api</a>
  *
  * @author ljh
  * @since 2020/11/2 23:41
@@ -33,7 +34,7 @@ public class SoapClientDemo {
     @Test
     public void testSoapClient() {
         // 新建客户端
-        SoapClient soapClient = SoapClient.create("http://www.webxml.com.cn/WebServices/IpAddressSearchWebService.asmx")
+        SoapClient soapClient = SoapClient.create("https://www.webxml.com.cn/WebServices/IpAddressSearchWebService.asmx")
                 // 设置要请求的方法，此接口方法前缀为web，传入对应的命名空间
                 .setMethod("web:getCountryCityByIp", "http://WebXml.com.cn/")
                 // 设置参数，此处自动添加方法的前缀：web

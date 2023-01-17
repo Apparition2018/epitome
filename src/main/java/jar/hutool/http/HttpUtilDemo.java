@@ -92,9 +92,10 @@ public class HttpUtilDemo extends Demo {
                 .form(BeanUtil.beanToMap(personList.get(0)))
                 .body(HELLO_WORLD)
                 .cookie(new HttpCookie("cookie", "oreo"));
-        HttpResponse response = request.execute();
-        if (response.getStatus() == HttpStatus.SC_OK) {
-            p("success");
+        try (HttpResponse response = request.execute()) {
+            if (response.getStatus() == HttpStatus.SC_OK) {
+                p("success");
+            }
         }
     }
 }

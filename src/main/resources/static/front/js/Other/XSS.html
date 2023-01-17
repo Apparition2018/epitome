@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>XXS</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap w40p">
+        <div class="caption">
+            <a href="https://blog.csdn.net/weixin_53002381/article/details/126017006#43_DOMXSS_103" target="_blank">
+                DOOM 型 XSS
+            </a>
+        </div>
+        <div class="caption">地址输入：1' onerror='alert(1)</div>
+        <div class="centered">
+            <header>
+                <h3>插入图片</h3>
+            </header>
+            <main>
+                <input type="text" id="imgUrl" title="" placeholder="输入图片地址" style="margin: 10px 0 10px 1px;">
+                <br/>
+                <button onclick="xss()">插入</button>
+                <button onclick="del()">删除</button>
+                <div id="img"></div>
+            </main>
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        function xss() {
+            let imgUrl = document.getElementById("imgUrl").value;
+            if (imgUrl) {
+                document.getElementById("img").innerHTML = "<img src='" + imgUrl + "'  alt='' />";
+            }
+        }
+        function del() {
+            document.getElementById("img").innerHTML = "";
+        }
+    </script>
+</section>
+</body>
+</html>

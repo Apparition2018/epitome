@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,181 +8,172 @@
     <title>datalist-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap h600">
-        <div class="css-live-wrap w33p">
-            <div class="caption">
-                <a href="https://www.zhangxinxu.com/wordpress/2013/03/html5-datalist-%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8-%e5%8f%af%e8%a1%8c%e6%80%a7/">邮箱后缀自动提示</a>
-            </div>
-            <div class="centered" id="eg1">
-                邮箱：
-                <input type="email" id="email" list="emailList" name="off_autocomplete"  title="email"/>
-                <datalist id="emailList">
-                    <option value="@qq.com" ></option>
-                    <option value="@163.com" ></option>
-                    <option value="@gmail.com" ></option>
-                    <option value="@yahoo.com.cn" ></option>
-                    <option value="@126.com" ></option>
-                </datalist>
-            </div>
+<section class="code-wrap h600">
+    <div class="css-live-wrap w33p">
+        <div class="caption">
+            <a href="https://www.zhangxinxu.com/wordpress/2013/03/html5-datalist-%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8-%e5%8f%af%e8%a1%8c%e6%80%a7/">邮箱后缀自动提示</a>
         </div>
-        <style>
-            #email {
-                padding: 2px 1px 1px 1px;
-            }
-        </style>
-        <script class="code w67p" contenteditable="true">
-            let eleList = document.getElementById("emailList"),
-                eleMail = document.getElementById("email"),
-                htmlListInit = '', arrEmailList = [];
+        <div class="centered" id="eg1">
+            <input type="email" id="email" list="emailList" name="off_autocomplete" title="email"
+                style="padding: 3px;"/>
+            <datalist id="emailList">
+                <option value="@qq.com"></option>
+                <option value="@163.com"></option>
+                <option value="@gmail.com"></option>
+                <option value="@yahoo.com.cn"></option>
+                <option value="@126.com"></option>
+            </datalist>
+        </div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        let eleList = document.getElementById("emailList"),
+            eleMail = document.getElementById("email"),
+            htmlListInit = '', arrEmailList = [];
 
-            if (eleMail && eleList && (htmlListInit = eleList.innerHTML) !== '') {
-                // 得到类似["qq.com", "163.com", "gmail.com", ...]的数据
-                arrEmailList = [].slice.call(eleList.getElementsByTagName("option")).map(function (option) {
-                    return option.value.replace("@", "");
-                });
+        if (eleMail && eleList && (htmlListInit = eleList.innerHTML) !== '') {
+            // 得到类似["qq.com", "163.com", "gmail.com", ...]的数据
+            arrEmailList = [].slice.call(eleList.getElementsByTagName("option")).map(function (option) {
+                return option.value.replace("@", "");
+            });
 
-                eleMail.fnListReplace = function () {
-                    const arrValue = this.value.trim().split("@");
-                    // 修复FireFox浏览器下无限input问题
-                    // 如果值不完全匹配某option值，执行动态替换
-                    if (arrValue.length !== 2 || arrEmailList.indexOf(arrValue[1]) === -1) {
-                        eleList.innerHTML = htmlListInit.replace(/@/g, arrValue[0] + "@");
-                    }
-                    return this;
-                };
-                // 绑定输入事件侦听
-                eleMail.addEventListener("input", function () {
-                    this.fnListReplace.call(this);
-                }, false);
+            eleMail.fnListReplace = function () {
+                const arrValue = this.value.trim().split("@");
+                // 修复FireFox浏览器下无限input问题
+                // 如果值不完全匹配某option值，执行动态替换
+                if (arrValue.length !== 2 || arrEmailList.indexOf(arrValue[1]) === -1) {
+                    eleList.innerHTML = htmlListInit.replace(/@/g, arrValue[0] + "@");
+                }
+                return this;
+            };
+            // 绑定输入事件侦听
+            eleMail.addEventListener("input", function () {
+                this.fnListReplace.call(this);
+            }, false);
 
-                // 载入即匹配
-                // eleMail.fnListReplace.call(eleMail).focus();
+            // 载入即匹配
+            // eleMail.fnListReplace.call(eleMail).focus();
+        } else {
+            eleList = document.createElement("datalist");
+            eleList.innerHTML = '<p class=sorry>抱歉，当前浏览器不支持HTML5 datalist.</p>';
+            eleMail.parentNode.appendChild(eleList);
+        }
+    </script>
+</section>
+
+<section class="code-wrap h900">
+    <div class="css-live-wrap w33p">
+        <div class="caption">
+            <a href="https://blog.csdn.net/dai_qingyun/article/details/52856835">模仿天猫搜索框</a>
+        </div>
+        <div class="centered" id="eg2">
+        </div>
+    </div>
+    <style>
+        .goods::-webkit-input-placeholder {
+            /* WebKit browsers */
+            color: rgb(213, 213, 213);
+            font-size: 14px;
+        }
+
+        .goods:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: rgb(213, 213, 213);
+            font-size: 14px;
+        }
+
+        .goods::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: rgb(213, 213, 213);
+            font-size: 14px;
+        }
+
+        .goods:-ms-input-placeholder {
+            /* Internet Explorer 10+ */
+            color: rgb(213, 213, 213);
+            font-size: 14px;
+        }
+
+        .tip {
+            display: none;
+            position: absolute;
+            top: 32px;
+            left: 0;
+            width: 300px;
+            background-color: white;
+            border: 1px solid rgb(213, 213, 213);
+            z-index: 999;
+        }
+
+        .tip a {
+            display: block;
+            font-size: 12px;
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            text-align: left;
+            text-indent: 5px;
+            color: rgb(213, 213, 213);
+        }
+
+        .tip a:hover {
+            background-color: rgb(196, 0, 0);
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <script class="code w67p" contenteditable="true">
+        const datalist = ['男裤', '男鞋', '男士外套', '男士内衣', '男袜', '男士洗面奶', '男士皮带'];
+        const base = '<a href="javascript:;">*</a>';
+        const tip = document.getElementById('tip');
+        const goods = document.getElementById('goods');
+        goods.addEventListener('input', function () {
+            if (this.value) {
+                //当有值得时候，查找对应的提示项。
+                //这里我就用少量数据模拟了。
+                update(this.value);
             } else {
-                eleList = document.createElement("datalist");
-                eleList.innerHTML = '<p class=sorry>抱歉，当前浏览器不支持HTML5 datalist.</p>';
-                eleMail.parentNode.appendChild(eleList);
+                //没有输入的隐藏掉提示框
+                tip.style.display = "none";
             }
-        </script>
-    </section>
+        }, false);
 
-    <section class="code-wrap h900">
-        <div class="css-live-wrap w33p">
-            <div class="caption">
-                <a href="https://blog.csdn.net/dai_qingyun/article/details/52856835">模仿天猫搜索框</a>
-            </div>
-            <div class="centered" id="eg2">
-            </div>
-        </div>
-        <style>
-            .goods::-webkit-input-placeholder {
-                /* WebKit browsers */
-                color: rgb(213, 213, 213);
-                font-size: 14px;
+        //点击推荐的结果 进入。
+        tip.addEventListener('click', function (e) {
+            const target = e.target;
+            if (target.tagName === 'A') {
+                goods.value = target.innerHTML;
+                tip.style.display = 'none';
             }
+        }, false);
 
-            .goods:-moz-placeholder {
-                /* Mozilla Firefox 4 to 18 */
-                color: rgb(213, 213, 213);
-                font-size: 14px;
-            }
-
-            .goods::-moz-placeholder {
-                /* Mozilla Firefox 19+ */
-                color: rgb(213, 213, 213);
-                font-size: 14px;
-            }
-
-            .goods:-ms-input-placeholder {
-                /* Internet Explorer 10+ */
-                color: rgb(213, 213, 213);
-                font-size: 14px;
-            }
-
-            .tip {
-                display: none;
-                position: absolute;
-                top: 32px;
-                left: 0;
-                width: 300px;
-                background-color: white;
-                border: 1px solid rgb(213, 213, 213);
-                z-index: 999;
-            }
-
-            .tip a {
-                display: block;
-                font-size: 12px;
-                height: 30px;
-                line-height: 30px;
-                width: 100%;
-                text-align: left;
-                text-indent: 5px;
-                color: rgb(213, 213, 213);
-            }
-
-            .tip a:hover {
-                background-color: rgb(196, 0, 0);
-                color: white;
-            }
-
-            a {
-                text-decoration: none;
-            }
-        </style>
-        <script class="code w67p" contenteditable="true">
-            const datalist = ['男裤', '男鞋', '男士外套', '男士内衣', '男袜', '男士洗面奶', '男士皮带'];
-            const base = '<a href="javascript:;">*</a>';
-            const tip = document.getElementById('tip');
-            const goods = document.getElementById('goods');
-            goods.addEventListener('input', function () {
-                if (this.value) {
-                    //当有值得时候，查找对应的提示项。
-                    //这里我就用少量数据模拟了。
-                    update(this.value);
+        //查找数据
+        function update(val) {
+            const arr = [];
+            datalist.map(function (item) {
+                if (item.indexOf(val) !== -1) {
+                    arr.push(item);
                 }
-                else {
-                    //没有输入的隐藏掉提示框
-                    tip.style.display = "none";
+            });
+            if (arr.length !== 0) {
+                const len = arr.length;
+                let htmlStr = '';
+                for (let i = 0; i < len; i++) {
+                    let temp = base;
+                    //使用正则那是相当的方便啊
+                    temp = temp.replace(/\*/, arr[i]);
+                    htmlStr += temp;
                 }
-            }, false);
-
-            //点击推荐的结果 进入。
-            tip.addEventListener('click', function (e) {
-                const target = e.target;
-                if (target.tagName === 'A') {
-                    goods.value = target.innerHTML;
-                    tip.style.display = 'none';
-                }
-            }, false);
-
-            //查找数据
-            function update(val) {
-                const arr = [];
-                datalist.map(function (item) {
-                    if (item.indexOf(val) !== -1) {
-                        arr.push(item);
-                    }
-                });
-                if (arr.length !== 0) {
-                    const len = arr.length;
-                    let htmlStr = '';
-                    for (let i = 0; i < len; i++) {
-                        let temp = base;
-                        //使用正则那是相当的方便啊
-                        temp = temp.replace(/\*/, arr[i]);
-                        htmlStr += temp;
-                    }
-                    tip.getElementsByTagName('dd')[0].innerHTML = htmlStr;
-                    tip.style.display = "block";
-                }
-                else {
-                    tip.style.display = "none";
-                }
+                tip.getElementsByTagName('dd')[0].innerHTML = htmlStr;
+                tip.style.display = "block";
+            } else {
+                tip.style.display = "none";
             }
-        </script>
-    </section>
+        }
+    </script>
+</section>
 </body>
-
 </html>

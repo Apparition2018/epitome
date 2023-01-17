@@ -7,10 +7,9 @@ import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 /**
- * SimpleServer     简易 Http 服务器
- * 用于在不引入 Tomcat、Jetty 等容器的情况下，实现简单的 Http 请求处理
- * https://hutool.cn/docs/#/http/Server/%E7%AE%80%E6%98%93Http%E6%9C%8D%E5%8A%A1%E5%99%A8-SimpleServer
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/server/SimpleServer.html
+ * <a href="https://hutool.cn/docs/#/http/Server/简易Http服务器-SimpleServer">SimpleServer</a>   简易 Http 服务器
+ * <p>用于在不引入 Tomcat、Jetty 等容器的情况下，实现简单的 Http 请求处理
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/server/SimpleServer.html">SimpleServer api</a>
  *
  * @author ljh
  * @since 2020/11/2 23:40
@@ -21,9 +20,7 @@ public class SimpleServerDemo extends Demo {
     public void addAction() {
         HttpUtil.createServer(6666)
                 // 返回 JSON 数据测试
-                .addAction("/restTest", (req, res) -> {
-                    res.write("{\"id\": 1, \"msg\": \"OK\"}", ContentType.JSON.toString());
-                })
+                .addAction("/restTest", (req, res) -> res.write("{\"id\": 1, \"msg\": \"OK\"}", ContentType.JSON.toString()))
                 .start();
 
         HttpUtil.createServer(7777)

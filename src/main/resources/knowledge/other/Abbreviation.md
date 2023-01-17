@@ -177,4 +177,6 @@
 | PRD  | Product Requirement Document       | 产品需求文档   |
 | UTC  | Universal Time Coordinated         | 世界调整时间   |
 | GMT  | Greenwich Mean Time                | 格林威治时间   |
+| XSS  | Cross Site Script                  | 跨站脚本     |
+| CSRF | Cross Site Request Forgery         | 跨站请求伪造   |
 ---
