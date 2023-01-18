@@ -22,16 +22,10 @@
     <form action="validKaptcha.do" method="post">
         <label for="inCode">验证码：</label>
         <input type="text" id="inCode" name="inCode"/>
-        <img src="kaptcha.do" alt="captcha" id="imgCode" onclick="changeCode()"/><br/>
+        <img src="kaptcha.do" alt="captcha" id="imgCode" onclick="changeCode()" style="vertical-align:middle; cursor:pointer;"/><br/>
         <input type="submit" value="登录">
     </form>
     <div style="color:red">${err}</div>
-    <style>
-        #imgCode {
-            vertical-align: middle;
-            cursor: pointer;
-        }
-    </style>
     <script>
         function changeCode() {
             let imgCode = document.getElementById("imgCode");
@@ -44,16 +38,11 @@
     <form action="validKaptcha2.do" method="post">
         <label for="inCode2">验证码：</label>
         <input type="text" id="inCode2" name="inCode2"/>
-        <img src="kaptcha2.do" alt="captcha" id="imgCode2" onclick="changeCode2()"/><br/>
+        <img src="kaptcha2.do" alt="captcha" id="imgCode2" onclick="changeCode2()"
+             style="vertical-align:middle; cursor:pointer;"/><br/>
         <input type="submit" value="登录">
     </form>
     <div style="color:red">${err2}</div>
-    <style>
-        #imgCode2 {
-            vertical-align: middle;
-            cursor: pointer;
-        }
-    </style>
     <script>
         function changeCode2() {
             let imgCode = document.getElementById("imgCode2");
@@ -61,6 +50,5 @@
         }
     </script>
 </section>
-
 </body>
 </html>

@@ -62,15 +62,9 @@
         <div class="caption">能力检测 （特性检测）</div>
         <div class="caption">判断当前的浏览器是否支持特定的能力</div>
         <div class="modernizr centered">
-            <a href="https://modernizr.com/" target="_blank">Modernizr</a>
+            <a href="https://modernizr.com/" target="_blank" style="color: #d81e75; font-size: 1.5em;">Modernizr</a>
         </div>
     </div>
-    <style>
-        .modernizr a {
-            color: #d81e75;
-            font-size: 1.5em;
-        }
-    </style>
     <script class="code w67p" contenteditable="true">
 
         /********** 测试任何对象的某个特性是否存在 **********/
@@ -79,6 +73,7 @@
             const t = typeof object[property];
             return t === "function" || (!!(t === "object" && object[property])) || t === "unknown";
         }
+
         console.log(isHostMethod(window, 'screen')); // true
 
         /********** IE **********/
@@ -92,10 +87,12 @@
         function lteIE8() {
             return typeof window.getComputedStyle === 'undefined';
         }
+
         // IE8 不支持 document.doctype
         function lteIE8_2() {
             return document.doctype == null;
         }
+
         // IE8 的宿主对象是通过 COM 而非 js 实现的。因此，document.createElement() 是一个 COM 对象，所以 typeof 会返回 "object"
         function lteIE8_3() {
             return typeof document.createElement === "object";
@@ -111,10 +108,12 @@
             }
             return false
         }
+
         // IE9 不支持 HTML5 新增的属性 async
         function lteIE9_2() {
             return !document.createElement('script').async;
         }
+
         // IE9 不支持 window.matchMedia() （用来检查 CSS 的 mediaQuery 语句）
         function lteIE9_3() {
             return !window.matchMedia;
@@ -125,14 +124,17 @@
         function lteIE10() {
             return !document.createElement('div').dataset;
         }
+
         // IE10 不支持 navigator 的 language 属性
         function lteIE10_2() {
             return !navigator.language;
         }
+
         // IE10 不支持 navigator 的 product 属性
         function lteIE10_3() {
             return !navigator.product;
         }
+
         function lteIE10_4() {
             return !!window.ActiveXObject;
         }

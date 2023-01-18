@@ -22,16 +22,10 @@
     <form action="valid.do" method="post">
         <label for="inCode">验证码：</label>
         <input type="text" id="inCode" name="inCode"/>
-        <img src="captchaRandom.do" alt="captcha" id="imgCode" onclick="changeCode()"/><br/>
+        <img src="captchaRandom.do" alt="captcha" id="imgCode" onclick="changeCode()" style="vertical-align:middle; cursor:pointer;"/><br/>
         <input type="submit" value="登录">
     </form>
     <div style="color:red">${err}</div>
-    <style>
-        #imgCode {
-            vertical-align: middle;
-            cursor: pointer;
-        }
-    </style>
     <script>
         function changeCode() {
             const imgCode = document.getElementById("imgCode");
@@ -44,17 +38,11 @@
     <form action="index.jsp" method="post">
         <label for="inCode2">验证码：</label>
         <input type="text" id="inCode2" name="inCode"/>
-        <canvas id="cvs" onclick="changeCode2()"></canvas>
+        <canvas id="cvs" onclick="changeCode2()" style="vertical-align:middle; cursor:pointer;"></canvas>
         <br/>
         <input type="submit" value="登录" onclick="return valid()">
     </form>
     <div style="color:red" id="err"></div>
-    <style>
-        #cvs {
-            vertical-align: middle;
-            cursor: pointer;
-        }
-    </style>
     <script>
         let validCode;
 

@@ -88,22 +88,9 @@
         </div>
         <div class="caption">利用 a标签、download属性、canvas 实现</div>
         <div class="canvas centered">
-            <canvas></canvas>
+            <canvas style="box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), -1px -1px 1px rgba(0, 0, 0, 0.1);"></canvas>
         </div>
     </div>
-    <style>
-        .canvas canvas {
-            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), -1px -1px 1px rgba(0, 0, 0, 0.1);
-            margin-top: 40px;
-            margin-right: 20px;
-        }
-
-        .canvas a {
-            position: relative;
-            top: -10px;
-            text-decoration: none;
-        }
-    </style>
     <script class="code" contenteditable="true">
         let canvas = document.querySelector('canvas'),
             c = canvas.getContext('2d'),

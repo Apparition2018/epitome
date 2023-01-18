@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +9,12 @@
     <link rel="stylesheet" href="../../../../public/css/demo.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script defer src="../../../../public/js/demo.js"></script>
+    <style>
+        input {
+            padding: 3px;
+        }
+    </style>
 </head>
-
 <body>
 <section class="code-wrap h350">
     <div class="css-live-wrap w100p">
@@ -53,15 +56,14 @@
                     <td>HTML5 中，一个文档中的多个 form 当中，name 必须唯一而不仅仅是一个空字符串</td>
                 </tr>
                 <tr>
-                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#attr-target">target</a></td>
+                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#attr-target">target</a>
+                    </td>
                     <td>_self, _blank, _top, iframename</td>
                     <td>一个关键字或名字，用来指示在提交表单之后，在哪里显示收到的回复</td>
                 </tr>
             </table>
         </div>
     </div>
-    <style>
-    </style>
 </section>
 
 <!-- https://www.w3school.com.cn/html5/att_input_form.asp -->
@@ -70,12 +72,14 @@
         <div class="caption">&lt;input&gt; 的 form 属性</div>
         <div class="caption">规定 input 元素所属的一个或多个表单</div>
         <div class="att-form centered">
-            <form action="" id="form1">
-                姓名：
-                <input type="text" name="red" size="9" placeholder="表单内">
+            <form action="" id="form1" style="margin-bottom: 10px;">
+                <label>
+                    姓名：<input type="text" name="red" size="9" placeholder="表单内">
+                </label>
             </form>
-            年龄：
-            <input type="text" name="blue" size="9" placeholder="表单外" form="form1">
+            <label>
+                年龄：<input type="text" name="blue" size="9" placeholder="表单外" form="form1">
+            </label>
         </div>
     </div>
     <code class="code w60p" contenteditable="true">
@@ -86,43 +90,27 @@
         &lt;/form&gt;
         年龄：&lt;input type="text" name="blue" size="9" placeholder="表单外" <strong>form</strong>="form1"&gt;
     </code>
-    <style>
-        .att-form {
-            margin-top: 30px;
-            font-size: 15px;
-        }
-
-        .att-form form {
-            margin-bottom: 12px;
-        }
-
-        input {
-            padding: 3px;
-        }
-    </style>
 </section>
-
 <section class="code-wrap h250">
     <div class="css-live-wrap w40p">
         <div class="caption">form 表单提交，页面不跳转</div>
         <div class="caption">利用 隐藏的 &lt;iframe&gt; 和 &lt;form&gt; 的 target 属性实现</div>
         <div class="centered non-jump">
             <form method="post" enctype="multipart/form-data" target="frame1" action="/multipart-file/excel">
-                <input type="file" name="files"/><br/>
-                <input type="file" name="files"/><br/>
-                <input type="submit" value="上传"/>
+                <input type="file" name="files"/>
+                <input type="file" name="files"/>
+                <input type="submit" value="上传" style="margin: 3px 0 0 3px;"/>
             </form>
             <iframe id="frame1" name="frame1" style="display:none;"></iframe>
         </div>
     </div>
     <code class="code w60p" contenteditable="true">
         &lt;form method="post" enctype="multipart/form-data" target="frame1" action="/multipart-file/excel"&gt;
-            &lt;p&gt;&lt;input type="file" name="file"/&gt;&lt;input type="submit" value="上传"/&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;input type="file" name="file"/&gt;&lt;input type="submit" value="上传"/&gt;&lt;/p&gt;
         &lt;/form&gt;
 
         &lt;iframe id="frame1" name="frame1" style="display:none;"&gt;&lt;/iframe&gt;
     </code>
 </section>
 </body>
-
 </html>

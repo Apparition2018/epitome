@@ -13,7 +13,7 @@
     <input type="button" value="发送 WebSocket 请求消息" onclick="send(this.form.message.value)"/>
     <hr color="red"/>
     <h2>客户端接收到服务端返回的应答消息</h2>
-    <textarea id="responseContent" style="width: 1024px; height: 300px;"></textarea>
+    <textarea id="responseContent" class="w1024 h300"></textarea>
 </form>
 <script>
     let socket;
@@ -24,15 +24,15 @@
     if (window.WebSocket) {
         console.log('websocket');
         socket = new WebSocket("ws://localhost:8888/websocket");
-        socket.onmessage = function(event) {
+        socket.onmessage = function (event) {
             console.log('onmessage');
             textarea.value += event.data + "\r\n";
         };
-        socket.onopen = function(event) {
+        socket.onopen = function (event) {
             console.log('onopen');
             textarea.value = "您当前的浏览器支持 WebSocket，请进行后续操作\r\n";
         };
-        socket.onclose = function(event) {
+        socket.onclose = function (event) {
             console.log('onclose');
             textarea.value = "";
             textarea.value = "WebSocket 连接已经关闭\r\n";
@@ -40,7 +40,7 @@
     } else {
         alert("您的浏览器不支持 WebSocket")
     }
-    
+
     function send(message) {
         if (!window.WebSocket) {
             return;

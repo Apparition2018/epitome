@@ -7,6 +7,8 @@
     <base target="_blank">
     <title>获取元素css</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../public/js/demo.js"></script>
     <style>
         .eg {
             padding: 10px 20px;
@@ -57,17 +59,12 @@
         <div class="caption">currentStyle</div>
         <div class="caption">IE, 返回的是元素当前应用的最终CSS属性值</div>
         <div class="centered">
-            <div class="eg eg2">
+            <div class="eg eg2" style="background: violet;">
                 currentStyle
             </div>
             <div class="text"></div>
         </div>
     </div>
-    <style>
-        .eg2 {
-            background: violet;
-        }
-    </style>
     <script class="code w60p" contenteditable="true">
         const eg2 = document.getElementsByClassName('eg2')[0];
         eg2.onclick = function () {
@@ -87,17 +84,12 @@
         </div>
         <div class="caption">返回的style是一个实时的 CSSStyleDeclaration 对象</div>
         <div class="centered">
-            <div class="eg eg3">
+            <div class="eg eg3" style="background: tomato;">
                 getComputedStyle
             </div>
             <div class="text"></div>
         </div>
     </div>
-    <style>
-        .eg3 {
-            background: tomato;
-        }
-    </style>
     <script class="code w60p" contenteditable="true">
         const eg3 = document.getElementsByClassName('eg3')[0];
         eg3.onclick = function () {
@@ -113,17 +105,12 @@
         <div class="caption">styleSheets</div>
         <div class="caption">返回当前页面的所有StyleSheet对象（即所有样式表）</div>
         <div class="centered">
-            <div class="eg eg4">
+            <div class="eg eg4" style="background: navy;">
                 styleSheets
             </div>
             <div class="text"></div>
         </div>
     </div>
-    <style>
-        .eg4 {
-            background: navy;
-        }
-    </style>
     <script class="code w60p" contenteditable="true">
         const eg4 = document.getElementsByClassName('eg4')[0];
         eg4.onclick = function () {
@@ -136,18 +123,12 @@
     <div class="css-live-wrap w40p">
         <div class="caption">jQuery css</div>
         <div class="centered">
-            <div class="eg eg5">
+            <div class="eg eg5" style="background: deepskyblue;">
                 jQuery css
             </div>
             <div class="text"></div>
         </div>
     </div>
-    <style>
-        .eg5 {
-            background: deepskyblue;
-        }
-    </style>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script class="code w60p" contenteditable="true">
         const eg5 = document.getElementsByClassName('eg5')[0];
         eg5.onclick = function () {
@@ -162,17 +143,12 @@
             <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia">matchMedia</a>
         </div>
         <div class="centered">
-            <div class="eg eg6">
+            <div class="eg eg6" style="background: khaki;">
                 matchMedia
             </div>
             <div class="text"></div>
         </div>
     </div>
-    <style>
-        .eg6 {
-            background: khaki;
-        }
-    </style>
     <script class="code w60p" contenteditable="true">
         const eg6 = document.getElementsByClassName('eg6')[0];
         eg6.onclick = function () {
@@ -184,8 +160,5 @@
         }
     </script>
 </section>
-
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../../../public/js/demo.js"></script>
 </body>
 </html>

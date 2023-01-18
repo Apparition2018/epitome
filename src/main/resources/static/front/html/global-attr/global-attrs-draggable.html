@@ -17,20 +17,10 @@
 <section class="code-wrap">
     <div class="css-live-wrap">
         <div class="caption">随着鼠标拖动而移动的小飞机</div>
-        <div class="centered" id="eg1">
-            <img id="ap" src="../../../public/img/other/airplane.png" alt="airplane" class="grab"/>
+        <div class="centered w100p h100p" id="eg1">
+            <img id="ap" src="../../../public/img/other/airplane.png" alt="airplane" style="position: absolute;"/>
         </div>
     </div>
-    <style>
-        #eg1 {
-            width: 100%;
-            height: 100%;
-        }
-
-        #ap {
-            position: absolute;
-        }
-    </style>
     <script class="code" contenteditable="true">
         ap.ondragstart = function (e) {
             console.log('事件源ap开始拖动');

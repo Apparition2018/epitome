@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,143 +7,141 @@
     <title>Worker-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
-
 <body>
-    <!-- https://www.w3school.com.cn/html/html5_webworkers.asp -->
-    <!-- https://www.cnblogs.com/flash3d/archive/2014/05/08/3715600.html -->
-    <!-- https://www.xuanfengge.com/js-realizes-precise-countdown.html -->
-    <section class="code-wrap h900">
-        <div class="css-live-wrap w33p">
-            <div class="caption">秒表</div>
-            <div class="caption">利用 Web Worker 实现</div>
-            <div class="centered" id="eg1">
-                <div>
-                    <p>
-                        <output class="chronograph">00:00.00</output>
-                    </p>
-                    <button onclick="time()">计时</button>
-                    <button onclick="print()">打点</button>
-                    <button onclick="zero()">归零</button>
-                </div>
-                <div id="timePrint">
-                    <p></p>
-                </div>
-            </div>
-        </div>
-        <style>
-            #eg1 {
-                text-align: center;
-            }
-
-            #eg1>div {
-                display: inline-block;
-                vertical-align: middle;
-            }
-
-            #eg1 #timePrint {
-                width: 75px;
-                margin-left: 15px;
-                text-align: center;
-            }
-
-            #eg1 #timePrint output {
-                display: block;
-            }
-
-            #eg1 .chronograph {
-                padding: 3px 6px;
-                background-color: #111;
-                font-size: 28px;
-                color: #dfdfdf;
-                border-radius: 1px;
-                box-shadow: 0 0 0 3px rgb(55, 55, 55), 0 0 0 6px rgb(66, 66, 66), 0 0 0 6px rgb(88, 88, 88);
-            }
-
-            #eg1 button {
-                margin-top: 5px;
-            }
-        </style>
-        <script class="code w67p" contenteditable="true">
-            let worker;
-            let timeFlag = false;
-            let data = {};
-            let millisecond = 0;
-            let min, second;
-            let timeText;
-            let output = document.querySelector("#eg1 output");
-
-            function time() {
-                if (!timeFlag) {
-                    timeFlag = true;
-                    if (typeof (Worker) !== "undefined") {
-                        if (typeof (worker) === "undefined") {
-                            worker = new Worker("demo_workers.js"); // 创建Web Worker对象
-                        }
-                        worker.onmessage = function (event) {
-                            millisecond = event.data;  // 来自 web worker 的数据会存储于 event.data 中
-                            second = ('00' + parseInt(millisecond / 100) % 60).slice(-2);
-                            min = ('00' + parseInt(millisecond / 6000)).slice(-2);
-                            timeText = min + ":" + second + "." + ('00' + millisecond % 100).slice(-2);
-                            output.innerHTML = timeText;
-                        }
-                    } else {
-                        output.innerHTML = "Sorry! No Web Worker support.";
-                    }
-
-                    data.millisecond = millisecond;
-                    data.date = new Date();
-                    worker.postMessage(data);
-                } else {
-                    timeFlag = false;
-                    worker.terminate();
-                    worker = undefined;
-                }
-            }
-
-            function print() {
-                if (millisecond) {
-                    let textNode = document.createTextNode(timeText);
-                    let docfrag = document.createDocumentFragment();
-                    let output = document.createElement('output');
-                    output.appendChild(textNode);
-                    docfrag.appendChild(output);
-                    document.querySelector('#timePrint p').appendChild(docfrag);
-                }
-            }
-
-            function zero() {
-                if (!timeFlag) {
-                    millisecond = 0;
-                    output.innerHTML = "00:00.00";
-                }
-            }
-        </script>
-    </section>
-
-    <!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers -->
-    <!-- https://www.cnblogs.com/peakleo/p/6218823.html -->
-    <!-- https://www.cnblogs.com/wmhuang/p/6913468.html -->
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w33p">
-            <div class="caption">Worker 的简单示例</div>
-            <div class="centered" id="eg2">
+<!-- https://www.w3school.com.cn/html/html5_webworkers.asp -->
+<!-- https://www.cnblogs.com/flash3d/archive/2014/05/08/3715600.html -->
+<!-- https://www.xuanfengge.com/js-realizes-precise-countdown.html -->
+<section class="code-wrap h900">
+    <div class="css-live-wrap w33p">
+        <div class="caption">秒表</div>
+        <div class="caption">利用 Web Worker 实现</div>
+        <div class="centered" id="eg1">
+            <div>
                 <p>
-                    <output>hello worker!</output>
-                    <br/>
-                    <output></output>
+                    <output class="chronograph">00:00.00</output>
                 </p>
+                <button onclick="time()">计时</button>
+                <button onclick="print()">打点</button>
+                <button onclick="zero()">归零</button>
+            </div>
+            <div id="timePrint">
+                <p></p>
             </div>
         </div>
-        <script class="code w67p" contenteditable="true">
-            if (typeof (Worker) !== "undefined") {
-                let worker2 = new Worker("demo_workers2.js");
-                worker2.onmessage = function (e) {
-                    document.querySelectorAll("#eg2 output")[1].innerHTML = e.data;
-                };
-                worker2.postMessage(document.querySelectorAll("#eg2 output")[0].innerHTML);
-            }
-        </script>
-    </section>
-</body>
+    </div>
+    <style>
+        #eg1 {
+            text-align: center;
+        }
 
+        #eg1 > div {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #eg1 #timePrint {
+            width: 75px;
+            margin-left: 15px;
+            text-align: center;
+        }
+
+        #eg1 #timePrint output {
+            display: block;
+        }
+
+        #eg1 .chronograph {
+            padding: 3px 6px;
+            background-color: #111;
+            font-size: 28px;
+            color: #dfdfdf;
+            border-radius: 1px;
+            box-shadow: 0 0 0 3px rgb(55, 55, 55), 0 0 0 6px rgb(66, 66, 66), 0 0 0 6px rgb(88, 88, 88);
+        }
+
+        #eg1 button {
+            margin-top: 5px;
+        }
+    </style>
+    <script class="code w67p" contenteditable="true">
+        let worker;
+        let timeFlag = false;
+        let data = {};
+        let millisecond = 0;
+        let min, second;
+        let timeText;
+        let output = document.querySelector("#eg1 output");
+
+        function time() {
+            if (!timeFlag) {
+                timeFlag = true;
+                if (typeof (Worker) !== "undefined") {
+                    if (typeof (worker) === "undefined") {
+                        worker = new Worker("demo_workers.js"); // 创建Web Worker对象
+                    }
+                    worker.onmessage = function (event) {
+                        millisecond = event.data;  // 来自 web worker 的数据会存储于 event.data 中
+                        second = ('00' + parseInt(millisecond / 100) % 60).slice(-2);
+                        min = ('00' + parseInt(millisecond / 6000)).slice(-2);
+                        timeText = min + ":" + second + "." + ('00' + millisecond % 100).slice(-2);
+                        output.innerHTML = timeText;
+                    }
+                } else {
+                    output.innerHTML = "Sorry! No Web Worker support.";
+                }
+
+                data.millisecond = millisecond;
+                data.date = new Date();
+                worker.postMessage(data);
+            } else {
+                timeFlag = false;
+                worker.terminate();
+                worker = undefined;
+            }
+        }
+
+        function print() {
+            if (millisecond) {
+                let textNode = document.createTextNode(timeText);
+                let docfrag = document.createDocumentFragment();
+                let output = document.createElement('output');
+                output.appendChild(textNode);
+                docfrag.appendChild(output);
+                document.querySelector('#timePrint p').appendChild(docfrag);
+            }
+        }
+
+        function zero() {
+            if (!timeFlag) {
+                millisecond = 0;
+                output.innerHTML = "00:00.00";
+            }
+        }
+    </script>
+</section>
+
+<!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers -->
+<!-- https://www.cnblogs.com/peakleo/p/6218823.html -->
+<!-- https://www.cnblogs.com/wmhuang/p/6913468.html -->
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">Worker 的简单示例</div>
+        <div class="centered" id="eg2">
+            <p>
+                <output>hello worker!</output>
+                <br/>
+                <output></output>
+            </p>
+        </div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        if (typeof (Worker) !== "undefined") {
+            let worker2 = new Worker("demo_workers2.js");
+            worker2.onmessage = function (e) {
+                document.querySelectorAll("#eg2 output")[1].innerHTML = e.data;
+            };
+            worker2.postMessage(document.querySelectorAll("#eg2 output")[0].innerHTML);
+        }
+    </script>
+</section>
+</body>
 </html>
