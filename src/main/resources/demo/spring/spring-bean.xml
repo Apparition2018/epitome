@@ -22,7 +22,7 @@
     <!-- 2.2 实例工厂方法 -->
     <bean id="time" factory-bean="gregorianCalendar" factory-method="getTime"/>
     <!-- 3 FactoryBean -->
-    <bean id="myCal" class="spring.api.beans.MyCalFactoryBean">
+    <bean id="myCal" class="spring.api.beans.factory.MyCalFactoryBean">
         <property name="locale" value="#{T(java.util.Locale).CHINA}"/>
     </bean>
 
@@ -79,8 +79,8 @@
         <property name="properties" ref="jdbc"/>
     </bean>
 
-    <bean id="beanPostProcessor" class="spring.api.beans.MyBeanPostProcessor"/>
-    <bean id="beanFactoryPostProcessor" class="spring.api.beans.MyBeanFactoryPostProcessor"/>
+    <bean id="beanPostProcessor" class="spring.api.beans.factory.MyBeanPostProcessor"/>
+    <bean id="beanFactoryPostProcessor" class="spring.api.beans.factory.MyBeanFactoryPostProcessor"/>
 
 <!--    <context:component-scan base-package="spring.bean"/>-->
     <!-- Lazy -->
