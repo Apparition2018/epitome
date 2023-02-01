@@ -16,9 +16,7 @@ public class CaseUtilsDemo {
      */
     @Test
     public void toCamelCase() {
-
         System.out.println(CaseUtils.toCamelCase("To.Camel.Case", true, '.'));  // ToCamelCase
         System.out.println(CaseUtils.toCamelCase("To.Camel.Case", false, '.')); // toCamelCase
-
     }
 }

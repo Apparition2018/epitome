@@ -31,6 +31,10 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import l.demo.Demo;
 import l.demo.Person;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+import java.io.File;
+import java.net.URL;
 
 public class Test extends Demo {
 
@@ -43,5 +47,10 @@ public class Test extends Demo {
         System.err.println("-----");
         String s = "&amp;&";
         System.err.println(s.replaceAll("(&amp;)|(&)", ""));
+
+        String path = "jar:file:/D:/Liang/svn/zsreport_V2/report_web/target/zsreport-war/WEB-INF/lib/report_core-1.0.0-CORE.jar!/com/sini/zsonline/formdata/service/impl/ld/excel/LD369D_1.xls";
+        URL url = new URL(path);
+        WorkbookFactory.create(new File(url.getFile()));
+        WorkbookFactory.create(url.openStream());
     }
 }

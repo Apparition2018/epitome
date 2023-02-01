@@ -12,10 +12,11 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
 /**
- * URL
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/URL.html">URL</a>
+ * <pre>
  * 统一资源定位符，它是指向互联网“资源”的指针。
  * 资源可以是简单的文件或目录，也可以是对更为复杂的对象的引用，例如对数据库或搜索引擎的查询。
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/URL.html
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -57,16 +58,18 @@ public class URLDemo extends Demo {
             sb.append(line).append("\n");
         }
         p(sb);
-        br.close(); // 关闭最外层流后，内部的流也会关闭
+        // 关闭最外层流后，内部的流也会关闭
+        br.close();
     }
 
     /**
      * URLConnection	openConnection()    返回一个 URLConnection 对象，它表示到 URL 所引用的远程对象的连接
-     * <p>
-     * 1.连接 Http 协议的 URL，返回 HttpURLConnection 对象
-     * 2.连接 Https 协议的 URL，返回 HttpsURLConnection 对象
-     * 3.连接的 URL 为一个 JAR 文件，返回 JarURLConnection 对象
+     * <pre>
+     * 1 连接 Http 协议的 URL，返回 HttpURLConnection 对象
+     * 2 连接 Https 协议的 URL，返回 HttpsURLConnection 对象
+     * 3 连接的 URL 为一个 JAR 文件，返回 JarURLConnection 对象
      * ...
+     * </pre>
      */
     @Test
     public void openConnection() throws IOException {

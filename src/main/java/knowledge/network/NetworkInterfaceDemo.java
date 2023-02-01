@@ -7,11 +7,12 @@ import java.net.SocketException;
 import java.util.Enumeration;
 
 /**
- * NetworkInterface
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/InetAddress.html">InetAddress</a>
+ * <pre>
  * 一个由名称和分配给此接口的 IP 地址列表组成的网络接口。
  * 它用于标识加入多播组的本地接口。
  * 接口通常是按名称（如 "le0"）区分的。
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/InetAddress.html
+ * </pre>
  *
  * @author ljh
  * @since 2022/12/15 11:21

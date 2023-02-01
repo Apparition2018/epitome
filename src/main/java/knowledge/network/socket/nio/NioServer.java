@@ -11,9 +11,11 @@ import java.util.Iterator;
 
 /**
  * 服务端
- * <p>
- * Java NIO教程：https://www.yiibai.com/java_nio
- * java分布式开发TCP/IP NIO无阻塞 Socket：https://www.iteye.com/blog/mars914-1238353
+ * <p>参考：
+ * <pre>
+ * <a href="https://www.yiibai.com/java_nio">Java NIO 教程</a>
+ * <a href="https://www.iteye.com/blog/mars914-1238353">Java 分布式开发 TCP/IP NIO 无阻塞 Socket</a>
+ * </pre>
  *
  * @author NioServer
  * @since 2020/9/22 15:36
@@ -21,7 +23,7 @@ import java.util.Iterator;
 public class NioServer extends Demo {
 
     /**
-     * NIO实现TCP文件传输：https://www.jianshu.com/p/84e57630b25b
+     * @see <a href="https://www.jianshu.com/p/84e57630b25b">NIO 实现 TCP 文件传输</a>
      */
     public static void main(String[] args) throws IOException {
         new NioServer().init(9981).listen();

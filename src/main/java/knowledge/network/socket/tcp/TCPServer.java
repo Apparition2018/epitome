@@ -13,19 +13,22 @@ import static l.demo.Demo.p;
 
 /**
  * 服务端
- * 1.创建ServerSocket对象，绑定监听端口。
- * 2.通过accept()监听客户端请求。
- * 3.连接建立后，通过输入流读取客户端发送的请求信息。
- * 4.通过输出流向客户端发送响应信息。
- * 5.关闭响应的资源。
- * <p>
- * Java Socket 编程基础及深入讲解：https://www.cnblogs.com/yiwangzhibujian/p/7107785.html
- * Java 网络编程 之 socket 的用法与实现：https://blog.csdn.net/a78270528/article/details/80318571
- * Java 实例 - Socket 实现多线程服务器程序：http://www.runoob.com/java/net-multisoc.html
- * 互联网协议入门（一）：http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html
- * 互联网协议入门（二）：http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html
- * <p>
- * 单工，半双工，全双工：https://blog.csdn.net/u012426327/article/details/77160503
+ * <pre>
+ * 1 创建ServerSocket对象，绑定监听端口。
+ * 2 通过accept()监听客户端请求。
+ * 3 连接建立后，通过输入流读取客户端发送的请求信息。
+ * 4 通过输出流向客户端发送响应信息。
+ * 5 关闭响应的资源。
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://www.cnblogs.com/yiwangzhibujian/p/7107785.html">Java Socket 编程基础及深入讲解</a>
+ * <a href="https://blog.csdn.net/a78270528/article/details/80318571">Java 网络编程 之 socket 的用法与实现</a>
+ * <a href="http://www.runoob.com/java/net-multisoc.html">Java 实例 - Socket 实现多线程服务器程序</a>
+ * <a href="http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html">互联网协议入门（一）</a>
+ * <a href="http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html">互联网协议入门（二）</a>
+ * <a href="https://blog.csdn.net/u012426327/article/details/77160503">单工，半双工，全双工</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -57,10 +60,8 @@ public class TCPServer implements Runnable {
     }
 
     /**
-     * Socket
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/net/Socket.html
-     * ServerSocket
-     * https://www.runoob.com/manual/jdk1.6/java.base/java/net/ServerSocket.html
+     * @see <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/Socket.html">Socket</a>
+     * @see <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/ServerSocket.html">ServerSocket</a>
      */
     public void run() {
         while (true) {
@@ -90,5 +91,4 @@ public class TCPServer implements Runnable {
             }
         }
     }
-
 }

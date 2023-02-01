@@ -10,31 +10,33 @@ import java.util.function.Predicate;
 import static l.demo.Demo.p;
 
 /**
- * Class
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Class.html">Class</a>
+ * <pre>
  * Class 类的实例表示正在运行的 Java 应用程序中的类和接口。
  * 枚举是一种类，注释是一种接口。
  * 每个数组属于被映射为 Class 对象的一个类，所有具有相同元素类型和维数的数组都共享该 Class 对象。
  * 基本的 Java 类型（boolean、byte、char、short、int、long、float 和 double）和关键字 void 也表示为 Class 对象。
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Class.html
- * <p>
+ * </pre>
+ * <pre>
  * Class<?>         getEnclosingClass()         返回底层类的立即封闭类
- * Class<?> 	    getComponentType()          返回表示数组组件类型的 Class
- * ClassLoader	    getClassLoader()            返回该类的类加载器
- * Class<?>[]	    getInterfaces()             确定此对象所表示的类或接口实现的接口
- * Package	        getPackage()                返回该类的包
- * Class<? super T>	getSuperclass()             返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的超类的 Class
- * T	            newInstance()               创建此 Class 对象所表示的类的一个新实例
- * <p>
- * boolean	        isAnnotation()              注释类型
- * boolean	        isAnnotationPresent(Class<? extends Annotation> annotationClass)
- * boolean	        isAnonymousClass()          匿名类
- * boolean	        isArray()                   数组类型
- * boolean	        isEnum()                    枚举
- * boolean	        isInterface()               接口
- * boolean	        isLocalClass()              本地类
- * boolean	        isMemberClass()             成员类
- * boolean	        isPrimitive()               基本类型
- * boolean	        isSynthetic()               符合类
+ * Class<?>         getComponentType()          返回表示数组组件类型的 Class
+ * ClassLoader      getClassLoader()            返回该类的类加载器
+ * Class<?>[]       getInterfaces()             确定此对象所表示的类或接口实现的接口
+ * Package          getPackage()                返回该类的包
+ * Class<? super T> getSuperclass()             返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的超类的 Class
+ * T                newInstance()               创建此 Class 对象所表示的类的一个新实例
+ *
+ * boolean          isAnnotation()              注释类型
+ * boolean          isAnnotationPresent(Class<? extends Annotation> annotationClass)
+ * boolean          isAnonymousClass()          匿名类
+ * boolean          isArray()                   数组类型
+ * boolean          isEnum()                    枚举
+ * boolean          isInterface()               接口
+ * boolean          isLocalClass()              本地类
+ * boolean          isMemberClass()             成员类
+ * boolean          isPrimitive()               基本类型
+ * boolean          isSynthetic()               符合类
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -46,9 +48,8 @@ public class ClassDemo {
 
     /**
      * static Class<?>	forName(String name[, boolean initialize, ClassLoader loader])
-     * 使用给定的类加载器，返回与带有给定字符串名的类或接口相关联的 Class 对象
-     * <p>
-     * forName() 只是把一个类加载到内存中，之所以会初始化 static 代码，那是由类加载机制所决定的
+     * <p>使用给定的类加载器，返回与带有给定字符串名的类或接口相关联的 Class 对象
+     * <p>forName() 只是把一个类加载到内存中，之所以会初始化 static 代码，那是由类加载机制所决定的
      */
     @Test
     public void forName() throws ClassNotFoundException {
@@ -62,9 +63,10 @@ public class ClassDemo {
     }
 
     /**
+     * <pre>
      * Field[]      getDeclaredFields()     返回 Field 对象的一个数组，这些对象反映此 Class 对象所表示的类或接口所声明的所有字段
-     * Field[]	    getFields()             返回 Field 对象的一个数组，这些对象反映此 Class 对象所表示的类或接口的所有可访问公共字段
-     * <p>
+     * Field[]      getFields()             返回 Field 对象的一个数组，这些对象反映此 Class 对象所表示的类或接口的所有可访问公共字段
+     * </pre>
      * 类似的还有 getConstructors() 和 getDeclaredConstructors(), getMethods() 和 getDeclaredMethods()
      */
     @Test
@@ -81,9 +83,11 @@ public class ClassDemo {
     }
 
     /**
-     * String	getName()           返回此 Class 对象所表示的实体（类、接口、数组类、基本类型或 void）名称
-     * String	getCanonicalName()  返回 JLS (Java Language Specification) 中所定义的底层类的规范化名称
-     * String	getSimpleName()     返回源代码中给出的底层类的简称
+     * <pre>
+     * String       getName()               返回此 Class 对象所表示的实体（类、接口、数组类、基本类型或 void）名称
+     * String       getCanonicalName()      返回 JLS (Java Language Specification) 中所定义的底层类的规范化名称
+     * String       getSimpleName()         返回源代码中给出的底层类的简称
+     * </pre>
      */
     @Test
     public void getName() {
@@ -105,12 +109,13 @@ public class ClassDemo {
     }
 
     /**
-     * URL	        getResource(String name)            查找具有给定名称的资源
-     * InputStream	getResourceAsStream(String name)    查找具有给定名称的资源
-     * <p>
-     * Class.getResource 和 ClassLoader.getResource 的区别：
-     * https://blog.csdn.net/zhangshk_/article/details/82704010
-     * https://www.cnblogs.com/doit8791/p/5851026.html
+     * <pre>
+     * URL          getResource(String name)            查找具有给定名称的资源
+     * InputStream  getResourceAsStream(String name)    查找具有给定名称的资源
+     * </pre>
+     *
+     * @see <a href="https://blog.csdn.net/zhangshk_/article/details/82704010">Class.getResource vs ClassLoader.getResource</a>
+     * @see <a href="https://www.cnblogs.com/doit8791/p/5851026.html">Class.getResource vs ClassLoader.getResource</a>
      */
     @Test
     public void getResource() {
@@ -127,10 +132,12 @@ public class ClassDemo {
 
 
     /**
-     * boolean	isAssignableFrom(Class<?> cls)  判定此 Class 对象所表示的类或接口与指定的 Class 参数所表示的类或接口是否相同，或是其超类或超接口
-     * boolean	isInstance(Object obj)          判定指定的 Object 是否与此 Class 所表示的对象赋值兼容
-     * <p>
-     * instanceof, isInstance, isAssignableFrom 的区别：https://www.cnblogs.com/exmyth/p/3164492.html
+     * <pre>
+     * boolean      isAssignableFrom(Class<?> cls)      判定此 Class 对象所表示的类或接口与指定的 Class 参数所表示的类或接口是否相同，或是其超类或超接口
+     * boolean      isInstance(Object obj)              判定指定的 Object 是否与此 Class 所表示的对象赋值兼容
+     * </pre>
+     *
+     * @see <a href="https://www.cnblogs.com/exmyth/p/3164492.html">instanceof, isInstance, isAssignableFrom</a>
      */
     @Test
     public void is() {
@@ -144,11 +151,10 @@ public class ClassDemo {
 
     /**
      * boolean	isAnnotationPresent(Class<? extends Annotation> annotationClass)
-     * 如果指定类型的注释存在于此元素上，则返回 true，否则返回 false
+     * <p>如果指定类型的注释存在于此元素上，则返回 true，否则返回 false
      */
     @Test
     public void isAnnotationPresent() {
         p(Predicate.class.isAnnotationPresent(FunctionalInterface.class)); // true
     }
-
 }

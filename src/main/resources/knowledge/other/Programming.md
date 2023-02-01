@@ -21,6 +21,7 @@
 2. netstat -ano|findstr 8080，根据指定端口字符串查找，记下 PID
 3. tasklist|findstr 9776，根据指定 PID 字符串查找任务，记下任务名
 4. taskkill /f /t /im WXWork.exe，或 taskkill /f /t /pid 333412
+- [Hyper-V 占用端口问题](https://www.cnblogs.com/luckyang/p/14591014.html)：`netsh interface ipv4 show excludedportrange protocol=tcp`
 ---
 ## 日志
 1. [一个著名的日志系统是怎么设计出来的？](https://mp.weixin.qq.com/s/XiCky-Z8-n4vqItJVHjDIg)

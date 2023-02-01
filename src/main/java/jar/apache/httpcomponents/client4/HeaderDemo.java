@@ -8,6 +8,7 @@ import static l.demo.Demo.p;
 
 /**
  * <a href="https://hc.apache.org/httpcomponents-client-4.5.x/current/tutorial/html/fundamentals.html#d5e80">Header</a>
+ * <p><a href="https://www.cnblogs.com/soldierback/p/11714052.html">HTTP 头部字段总结</a>
  *
  * @author ljh
  * @since 2020/11/12 21:35

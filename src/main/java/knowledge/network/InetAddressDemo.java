@@ -6,10 +6,11 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * InetAddress
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/InetAddress.html">InetAddress</a>
+ * <pre>
  * 表示互联网协议 (IP) 地址
  * IP 地址是 IP 使用的 32 位或 128 位无符号数字，它是一种低级协议，UDP 和 TCP 协议都是在它的基础上构建的。
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/InetAddress.html
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/17 19:09

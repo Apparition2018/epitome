@@ -5,15 +5,15 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * 类加载
- * https://blog.csdn.net/u012426327/article/details/77160634
- * <p>
- * JVM 加载 Class 文件到内存的方式：
- * 1.隐式加载：继承或引用某个类
- * 2.显式加载：
- * - 1) new()
- * - 2) Class.forName()
- * - 3) classLoader.loadClass()
+ * <a href="https://blog.csdn.net/u012426327/article/details/77160634">类加载</a>
+ * <p>JVM 加载 Class 文件到内存的方式：
+ * <pre>
+ * 1 隐式加载：继承或引用某个类
+ * 2 显式加载：
+ *   2.1 new()
+ *   2.2 Class.forName()
+ *   2.3 classLoader.loadClass()
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51

@@ -6,10 +6,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
- * URI
- * 统一资源标识符
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/URI.html
- * HTTP 协议中 URI 和 URL 有什么区别：https://www.zhihu.com/question/21950864
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/URI.html">URI</a>
+ * <p>统一资源标识符
+ * <p><a href="https://www.zhihu.com/question/21950864">URI vs URL</a>
  *
  * @author ljh
  * @since 2020/9/16 10:46

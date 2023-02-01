@@ -17,9 +17,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * URLConnection
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/URLConnection.html
- * HTTP头部字段总结：https://www.cnblogs.com/soldierback/p/11714052.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/net/URLConnection.html">URLConnection</a>
  *
  * @author ljh
  * @since 2020/11/17 19:09
