@@ -62,6 +62,7 @@ public class SingletonDemo {
      * 饿汉模式，线程安全
      */
     static class EarlySingleton implements Serializable {
+        @Serial
         private static final long serialVersionUID = -7618188072415286252L;
         // 1.创建类的唯一实例，使用 private static 修饰
         // 类加载就创建唯一实例，且类只会被加载一次，故不存在线程安全问题，形象称为饿汉模式
@@ -228,7 +229,7 @@ public class SingletonDemo {
                 if (!SINGLETON_MAP.containsKey(key)) {
                     Object obj = null;
                     try {
-                        obj = Class.forName(key).newInstance();
+                        obj = Class.forName(key).getConstructor().newInstance();
                         SINGLETON_MAP.put(key, obj);
                     } catch (Exception e) {
                         e.printStackTrace();

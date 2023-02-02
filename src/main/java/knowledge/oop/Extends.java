@@ -1,5 +1,6 @@
 package knowledge.oop;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -42,6 +43,7 @@ public class Extends {
      * <p>Java 支持多实现
      */
     static class Son extends Parent implements Serializable, Comparable<Son> {
+        @Serial
         private static final long serialVersionUID = -7624170257458741051L;
         private int sonId;
 

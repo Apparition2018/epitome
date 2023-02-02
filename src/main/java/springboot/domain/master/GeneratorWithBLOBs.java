@@ -1,9 +1,11 @@
 package springboot.domain.master;
 
-public class GeneratorWithBLOBs extends Generator {
-    private String context;
+import java.io.Serial;
 
-    private static final long serialVersionUID = 1L;
+public class GeneratorWithBLOBs extends Generator {
+    @Serial
+    private static final long serialVersionUID = -4812799015218178530L;
+    private String context;
 
     public String getContext() {
         return context;

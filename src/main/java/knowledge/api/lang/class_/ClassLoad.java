@@ -2,6 +2,8 @@ package knowledge.api.lang.class_;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static l.demo.Demo.p;
 
 /**
@@ -52,14 +54,14 @@ public class ClassLoad {
      * Class.forName()          动态加载
      */
     @Test
-    public void classForName() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public void classForName() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         // 内部调用 Class.forName(className, true, classloader);
         // boolean 值表示是否初始化，执行 static 静态块
         Class<?> clazz = Class.forName("knowledge.api.lang.class_.ClassLoad$SonClass");
         // Grand init
         // Father init
         // Son init
-        clazz.newInstance();
+        clazz.getConstructor().newInstance();
         // init Father
         // init Son
     }
@@ -68,12 +70,12 @@ public class ClassLoad {
      * ClassLoader loadClass()  动态加载
      */
     @Test
-    public void loadClass() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public void loadClass() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         // 内部调用 ClassLoader 的 loadClass(className, false)
         // boolean 值表示目标对象是否进行链接
         // 进行链接意味着进行包括初始化等一系列步骤，比如静态块和静态对象
         Class<?> clazz = ClassLoader.getSystemClassLoader().loadClass("knowledge.api.lang.class_.ClassLoad$SonClass");
-        clazz.newInstance();
+        clazz.getConstructor().newInstance();
         // Grand init
         // Father init
         // Son init

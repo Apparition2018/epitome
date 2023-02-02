@@ -5,11 +5,12 @@ import io.protostuff.ProtostuffIOUtil;
 import io.protostuff.Schema;
 import io.protostuff.runtime.RuntimeSchema;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Protostuff 使用示例：https://blog.csdn.net/chszs/article/details/80354356
+ * <a href="https://blog.csdn.net/chszs/article/details/80354356">Protostuff 使用示例</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -53,11 +54,12 @@ public class ProtostuffUtil {
      */
     public static <T> T deserializer(byte[] data, Class<T> clazz) {
         try {
-            T obj = clazz.newInstance();
+            T obj = clazz.getConstructor().newInstance();
             Schema<T> schema = getSchema(clazz);
             ProtostuffIOUtil.mergeFrom(data, obj, schema);
             return obj;
-        } catch (InstantiationException | IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException |
+                 NoSuchMethodException | InvocationTargetException e) {
             throw new IllegalStateException(e.getMessage(), e);
         }
     }

@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serial;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 
 /**
- * 从 Servlet3.0 开始，配置 Servlet 支持注解方式
- * http://blog.csdn.net/mytt_10566/article/details/70173007
+ * <a href="http://blog.csdn.net/mytt_10566/article/details/70173007">@WebServlet 注解配置 Servlet，since Servlet3.0</a>
  *
  * @author ljh
  * @since 2020/11/23 19:39
@@ -23,6 +23,7 @@ import java.util.Enumeration;
 @WebServlet(name = "myUserServlet", urlPatterns = "/user/test", loadOnStartup = 1, initParams = {
         @WebInitParam(name = "name", value = "小明"), @WebInitParam(name = "pwd", value = "123456")})
 public class MyServlet extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = 7107543066863138876L;
 
     @Override
@@ -80,5 +81,4 @@ public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         doPost(request, response);
     }
-
 }

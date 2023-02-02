@@ -5,8 +5,8 @@ import jar.jedis.JedisUtils;
 import lombok.Getter;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.GeoCoordinate;
-import redis.clients.jedis.GeoUnit;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.args.GeoUnit;
 import redis.clients.jedis.params.GeoAddParams;
 import redis.clients.jedis.params.GeoRadiusParam;
 
@@ -15,9 +15,8 @@ import java.util.HashMap;
 import static l.demo.Demo.p;
 
 /**
- * Redis Geospatial
- * 1.坐标
- * https://redis.io/docs/data-types/geospatial/
+ * <a href="https://redis.io/docs/data-types/geospatial/">Redis Geospatial</a>
+ * <p>坐标
  *
  * @author ljh
  * @since 2022/8/16 2:32

@@ -2,6 +2,7 @@ package knowledge.concurrent;
 
 import l.demo.Demo;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -73,6 +74,7 @@ public class ForkJoinPoolDemo extends Demo {
 
         // 执行任务 (RecursiveTask 有返回值，RecursiveAction 无返回值)
         static class SumTask extends RecursiveTask<Long> {
+            @Serial
             private static final long serialVersionUID = -5848348290388247808L;
             private final long[] numbers;
             private final int from;

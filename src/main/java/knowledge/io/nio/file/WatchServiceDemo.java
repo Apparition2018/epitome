@@ -55,20 +55,12 @@ public class WatchServiceDemo extends Demo {
                 WatchEvent.Kind<?> kind = watchEvent.kind();
 
                 switch (kind.name()) {
-                    case "OVERFLOW": // 丢失或丢弃的特殊事件
-                        p(++eventCount + ": OVERFLOW");
-                        break;
-                    case "ENTRY_CREATE":
-                        p(++eventCount + ": File " + watchEvent.context() + " is created!");
-                        break;
-                    case "ENTRY_MODIFY":
-                        p(++eventCount + ": File " + watchEvent.context() + " is changed!");
-                        break;
-                    case "ENTRY_DELETE":
-                        p(++eventCount + ": File " + watchEvent.context() + " is deleted!");
-                        break;
-                    default:
-                        p(++eventCount + ": UNKNOWN EVENT!");
+                    // 丢失或丢弃的特殊事件
+                    case "OVERFLOW" -> p(++eventCount + ": OVERFLOW");
+                    case "ENTRY_CREATE" -> p(++eventCount + ": File " + watchEvent.context() + " is created!");
+                    case "ENTRY_MODIFY" -> p(++eventCount + ": File " + watchEvent.context() + " is changed!");
+                    case "ENTRY_DELETE" -> p(++eventCount + ": File " + watchEvent.context() + " is deleted!");
+                    default -> p(++eventCount + ": UNKNOWN EVENT!");
                 }
                 // 重置 WatchKey
                 watchKey.reset();

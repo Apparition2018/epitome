@@ -1,9 +1,9 @@
 package knowledge.annotation;
 
+import jdk.internal.vm.annotation.Contended;
 import l.demo.Animal.Chicken;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
-import sun.misc.Contended;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,12 +12,14 @@ import java.util.stream.IntStream;
 
 /**
  * JDKAnnotation
- * JDK 自带注解
- * 1. @Override
- * 2. @Deprecation
- * 3. @SuppressWarnings 抑制编译器产生警告信息：https://www.cnblogs.com/fsjohnhuang/p/4040785.html
- * 4. @SafeVarargs
- * 5. @Contended
+ * <p>JDK 自带注解
+ * <pre>
+ * 1 @Override
+ * 2 @Deprecation
+ * 3 <a href="https://www.cnblogs.com/fsjohnhuang/p/4040785.html">@SuppressWarnings</a> 抑制编译器产生警告信息
+ * 4 @SafeVarargs
+ * 5 @Contended
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/18 10:13
@@ -26,11 +28,11 @@ public class JDKAnnotation extends Demo {
 
     /**
      * deprecation              过期
-     * 外部正在调用的接口或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生影响。接口过时必须加 @Deprecated 注解，并清晰地说明采用的新接口或者新服务是什么（阿里编程规约）
+     * <p>外部正在调用的接口或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生影响。接口过时必须加 @Deprecated 注解，并清晰地说明采用的新接口或者新服务是什么（阿里编程规约）
      */
     // @SuppressWarnings("deprecation")
     @Deprecated
-    public void testDeprecation() {
+    public void deprecation() {
         Chicken chicken = new Chicken();
         chicken.fly();
     }
@@ -38,17 +40,18 @@ public class JDKAnnotation extends Demo {
     /**
      * unused                   未使用
      */
-    public void testUnused() {
+    public void unused() {
         @SuppressWarnings("unused")
         int max = Math.max(2, 1);
     }
 
     /**
      * rawtypes                 原生类型未使用泛型
+     * <p>
      * unchecked                未检测转换
      */
     @SuppressWarnings(value = {"unchecked", "rawtypes"})
-    public void testRawTypesAndUnchecked(String item) {
+    public void rawTypesAndUnchecked(String item) {
         List<Object> items = new ArrayList();
         items.add(item);
         p(items.size());
@@ -58,18 +61,17 @@ public class JDKAnnotation extends Demo {
      * InfiniteLoopStatement    无线循环语句
      */
     @SuppressWarnings("InfiniteLoopStatement")
-    public void testInfiniteLoopStatement() {
+    public void infiniteLoopStatement() {
         while (true) {
             p(" ");
         }
     }
 
     /**
-     * SafeVarargs
-     * https://www.cnblogs.com/cxuanBlog/p/10927483.html
+     * @see <a href="https://www.cnblogs.com/cxuanBlog/p/10927483.html">@SafeVarargs</a>
      */
     @SafeVarargs
-    public static <T> List<T> testSafeVarargs(T... t) {
+    public static <T> List<T> safeVarargs(T... t) {
         List<T> list = new ArrayList<>();
         Collections.addAll(list, t);
         return list;
@@ -77,9 +79,9 @@ public class JDKAnnotation extends Demo {
 
     /**
      * Contended
-     * JDK1.8 新增的注解，减少伪共享(False Sharing)的发生
-     * <p>
-     * Java 经典面试题：伪共享问题及如何解决方案：https://www.zhihu.com/zvideo/1312762510748577792
+     * <p>JDK1.8 新增的注解，减少伪共享(False Sharing)的发生
+     *
+     * @see <a href="https://www.zhihu.com/zvideo/1312762510748577792">伪共享问题及如何解决方案</a>
      */
     static class ContendedDemo {
         private volatile long x;
@@ -90,7 +92,7 @@ public class JDKAnnotation extends Demo {
         private volatile long y2;
 
         @Test
-        public void testContented() throws InterruptedException {
+        public void contented() throws InterruptedException {
             Thread t1 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> x = i));
             Thread t2 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> y = i));
             stopWatch.start("contented not used");

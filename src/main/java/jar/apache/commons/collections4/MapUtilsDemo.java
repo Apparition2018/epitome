@@ -4,6 +4,7 @@ import l.demo.Demo;
 import org.apache.commons.collections4.MapUtils;
 import org.junit.jupiter.api.Test;
 
+import java.io.Serial;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,7 +37,8 @@ import java.util.Map;
  */
 public class MapUtilsDemo extends Demo {
 
-    Map<Integer, Object> map = new HashMap<Integer, Object>(16) {
+    Map<Integer, Object> map = new HashMap<>(16) {
+        @Serial
         private static final long serialVersionUID = -3034565247298670375L;
 
         {

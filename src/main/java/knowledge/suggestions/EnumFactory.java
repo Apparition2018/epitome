@@ -1,6 +1,6 @@
 package knowledge.suggestions;
 
-import com.mchange.util.AssertException;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * 建议88：枚举实现工厂模式
@@ -13,8 +13,9 @@ import com.mchange.util.AssertException;
 class CarFactory {
     public static Car createCar(Class<? extends Car> c) {
         try {
-            return c.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            return c.getConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                 NoSuchMethodException e) {
             e.printStackTrace();
         }
         return null;
@@ -25,14 +26,10 @@ enum CarEnumFactory1 {
     FORD_CAR, BUICK_CAR;
 
     public Car create() {
-        switch (this) {
-            case FORD_CAR:
-                return new FordCar();
-            case BUICK_CAR:
-                return new BuickCar();
-            default:
-                throw new AssertException("Invalid Param");
-        }
+        return switch (this) {
+            case FORD_CAR -> new FordCar();
+            case BUICK_CAR -> new BuickCar();
+        };
     }
 
 }

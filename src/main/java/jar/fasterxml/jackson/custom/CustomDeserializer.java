@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import jar.fasterxml.jackson.entity.Person;
 
 import java.io.IOException;
+import java.io.Serial;
 
 /**
  * CustomDeserializer
@@ -15,6 +16,7 @@ import java.io.IOException;
  * @since 2021/7/22 11:15
  */
 public class CustomDeserializer extends StdDeserializer<Person> {
+    @Serial
     private static final long serialVersionUID = 8522054763648986402L;
 
     public CustomDeserializer() {

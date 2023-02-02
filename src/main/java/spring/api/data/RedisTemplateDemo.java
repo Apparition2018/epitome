@@ -1,6 +1,7 @@
 package spring.api.data;
 
 import com.google.common.collect.Lists;
+import jakarta.annotation.Resource;
 import l.demo.Demo;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +11,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.*;
 import springboot.EpitomeApplication;
 
-import javax.annotation.Resource;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -123,6 +123,5 @@ public class RedisTemplateDemo extends Demo {
 
     @Test
     public void testStream() {
-
     }
 }

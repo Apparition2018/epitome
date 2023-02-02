@@ -24,7 +24,7 @@ class DecorateSonGoKu implements SonGoKu {
         InvocationHandler handler = (proxy, method, args) -> {
             Object obj = null;
             if (Modifier.isPublic(method.getModifiers())) {
-                obj = method.invoke(clz.newInstance(), args);
+                obj = method.invoke(clz.getConstructor().newInstance(), args);
             }
             sgk.ability();
             return obj;

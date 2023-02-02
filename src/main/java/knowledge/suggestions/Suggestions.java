@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
 
+import java.io.Serial;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -339,7 +340,8 @@ public class Suggestions extends Demo {
     @Test
     public void test039() {
         // 匿名类
-        List<String> list = new ArrayList<String>() {
+        List<String> list = new ArrayList<>() {
+            @Serial
             private static final long serialVersionUID = 2343608519616911909L;
 
             // 匿名类的构造函数
@@ -640,10 +642,11 @@ public class Suggestions extends Demo {
             // 构造函数初始化
             private Demo(Class<T> tType, int size) {
                 try {
-                    t = tType.newInstance();
+                    t = tType.getConstructor().newInstance();
                     // 通过反射在运行时构造出实际类型为 tType[] 的对象数组，避免了类型擦除
                     tArr = (T[]) Array.newInstance(tType, size);
-                } catch (IllegalAccessException | InstantiationException e) {
+                } catch (IllegalAccessException | InstantiationException |
+                         InvocationTargetException | NoSuchMethodException e) {
                     e.printStackTrace();
                 }
             }
@@ -927,6 +930,7 @@ public class Suggestions extends Demo {
     }
 
     static class MyException extends Exception {
+        @Serial
         private static final long serialVersionUID = 4220795768762558938L;
         private final List<Throwable> causes = new ArrayList<>();
 
@@ -1114,7 +1118,7 @@ public class Suggestions extends Demo {
      * 建议127：Lock 和 synchronized
      */
     @Test
-    public void test127() throws IllegalAccessException, InterruptedException, InstantiationException {
+    public void test127() throws IllegalAccessException, InterruptedException, InstantiationException, InvocationTargetException, NoSuchMethodException {
         // 1.synchronized
         runTasks(TaskWithSync.class);
 
@@ -1149,12 +1153,12 @@ public class Suggestions extends Demo {
         TimeUnit.SECONDS.sleep(10);
     }
 
-    private void runTasks(Class<? extends Runnable> clz) throws IllegalAccessException, InstantiationException, InterruptedException {
+    private void runTasks(Class<? extends Runnable> clz) throws IllegalAccessException, InstantiationException, InterruptedException, NoSuchMethodException, InvocationTargetException {
         ExecutorService threadPool = Executors.newCachedThreadPool();
         p("***开始执行 " + clz.getSimpleName() + " 任务***");
         // 启动3个线程
         for (int i = 0; i < 3; i++) {
-            threadPool.submit(clz.newInstance());
+            threadPool.submit(clz.getConstructor().newInstance());
         }
         // 等待足够长的时间，然后关闭执行器
         TimeUnit.SECONDS.sleep(10);
@@ -1183,6 +1187,7 @@ public class Suggestions extends Demo {
         // 6.覆写 Exception 的 fillInStackTrace()
         // 性能提升10倍以上
         class MyException extends Exception {
+            @Serial
             private static final long serialVersionUID = 4982421851007758674L;
 
             public Throwable fillInStackTrace() {

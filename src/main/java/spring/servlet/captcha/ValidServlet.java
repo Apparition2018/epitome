@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Serial;
 
 /**
  * ValidServlet
@@ -12,6 +13,7 @@ import java.io.IOException;
  * @since 2019/12/23 16:25
  */
 public class ValidServlet extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = -5740434607883686032L;
 
     @Override

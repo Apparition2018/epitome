@@ -1,9 +1,11 @@
 package springboot.domain.master;
 
-public class Generator extends GeneratorKey {
-    private String name;
+import java.io.Serial;
 
-    private static final long serialVersionUID = 1L;
+public class Generator extends GeneratorKey {
+    @Serial
+    private static final long serialVersionUID = 6725387122281561550L;
+    private String name;
 
     public String getName() {
         return name;

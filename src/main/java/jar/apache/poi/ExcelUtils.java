@@ -40,7 +40,7 @@ public class ExcelUtils<T> {
                     continue;
                 }
 
-                T t = clazz.newInstance();
+                T t = clazz.getConstructor().newInstance();
                 for (int cellNum = 0; cellNum <= row.getLastCellNum(); cellNum++) {
                     String fieldName = colNumAndFieldNameMap.get(cellNum);
                     if (null != fieldName) {
@@ -48,14 +48,10 @@ public class ExcelUtils<T> {
                         String setterMethodName = "set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
                         Method method = clazz.getDeclaredMethod(setterMethodName, fieldType);
                         switch (fieldType.getSimpleName()) {
-                            case "Integer":
-                                method.invoke(t, Integer.parseInt(getValue(row.getCell(cellNum))));
-                                break;
-                            case "Date":
-                                method.invoke(t, DateUtils.parseDate(getValue(row.getCell(cellNum)), DatePattern.NORM_DATETIME_PATTERN));
-                                break;
-                            default:
-                                method.invoke(t, getValue(row.getCell(cellNum)));
+                            case "Integer" -> method.invoke(t, Integer.parseInt(getValue(row.getCell(cellNum))));
+                            case "Date" ->
+                                    method.invoke(t, DateUtils.parseDate(getValue(row.getCell(cellNum)), DatePattern.NORM_DATETIME_PATTERN));
+                            default -> method.invoke(t, getValue(row.getCell(cellNum)));
                         }
                     }
                 }

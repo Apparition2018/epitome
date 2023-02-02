@@ -143,10 +143,12 @@ public class CustomAnnotation {
     @Retention(RetentionPolicy.RUNTIME)
     @interface FruitName {
         /**
+         * <pre>
          * 成员以无参无异常方式声明
-         * <p>合法的成员类型包括 String，Class，Annotation，Enumeration，原始类型
-         * <p>如果注解只有一个成员，则成员名必须取名为value()，在使用时可以忽略成员名和赋值号(=)
-         * <p>可以使用 default 为成员指定一个默认值
+         * 合法的成员类型包括 String，Class，Annotation，Enumeration，原始类型
+         * 如果注解只有一个成员，则成员名必须取名为value()，在使用时可以忽略成员名和赋值号(=)
+         * 可以使用 default 为成员指定一个默认值
+         * </pre>
          */
         String value() default "";
     }

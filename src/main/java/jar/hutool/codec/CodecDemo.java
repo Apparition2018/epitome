@@ -1,6 +1,5 @@
 package jar.hutool.codec;
 
-import cn.hutool.core.codec.BCD;
 import cn.hutool.core.codec.Caesar;
 import cn.hutool.core.codec.Morse;
 import cn.hutool.core.codec.Rot;
@@ -72,24 +71,5 @@ public class CodecDemo extends Demo {
 
         decode = morse.decode(encode);
         p(decode);
-    }
-
-    /**
-     * <a href="https://hutool.cn/docs/#/core/语言特性/二进码十进数-BCD">BCD</a> (Binary-Coded Decimal)   二进码十进数
-     * <pre>
-     * 一种二进制的数字编码形式，用二进制编码的十进制代码。
-     * 这种编码形式利用了四个位元来储存一个十进制的数码，使二进制和十进制之间的转换得以快捷的进行。
-     * 这种编码技巧最常用于会计系统的设计里。
-     * </pre>
-     *
-     * @see <a href="https://www.iteye.com/blog/cuisuqiang-1429956">关于 BCD 编码 BCD 与十进制转换</a>
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/BCD.html">BCD api</a>
-     */
-    @Test
-    public void testBCD() {
-        // ASCII String → BCD
-        byte[] bcd = BCD.strToBcd("0");
-        // BCD → ASCII String
-        String asciiStr = BCD.bcdToStr(bcd);
     }
 }

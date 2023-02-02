@@ -2,6 +2,7 @@ package knowledge.datetime;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.Serial;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -25,6 +26,7 @@ import static l.demo.Demo.p;
  * @since 2019/8/8 19:39
  */
 public class GregorianCalendarDemo extends GregorianCalendar {
+    @Serial
     private static final long serialVersionUID = -1103808356456277735L;
 
     /**

@@ -10,6 +10,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.scheduling.annotation.Async;
 import springboot.init.SpringStartupRunningLogic;
 
+import java.io.Serial;
+
 /**
  * SpringObserver
  * <p>JDK 委派事件模型 (Delegation Event Model) 三个参与者：
@@ -76,6 +78,7 @@ public class SpringObserverDemo {
         @Getter
         @Setter
         static class OrderEvent extends ApplicationEvent {
+            @Serial
             private static final long serialVersionUID = 6763968214834834166L;
             private String message;
 

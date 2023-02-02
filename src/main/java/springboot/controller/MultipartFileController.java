@@ -12,8 +12,8 @@ import org.springframework.http.MediaTypeFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import springboot.result.Result;
+import springboot.result.ResultCode;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +25,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.text.ParseException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD">RuoYi 上传下载 (CommonController)</a>
@@ -86,31 +89,25 @@ public class MultipartFileController extends Demo {
 
     /**
      * <a href="https://www.cnblogs.com/zgghb/p/6020581.html">bootstrap-fileInput 示例</a>
-     * <p><a href="http://localhost:3333/front/bootstrap/fileinput/bootstrap-fileinput.html">bootstrap-fileinput.html</a>
+     * <p>
+     * <a href="http://localhost:3333/front/bootstrap/fileinput/bootstrap-fileinput.html">bootstrap-fileinput.html</a>
      */
     @PostMapping("file")
     @Operation(summary = "上传文件")
     public Result<String> uploadFile(HttpServletRequest request) throws IOException {
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver(request.getSession().getServletContext());
-        resolver.setResolveLazily(true);
-        if (resolver.isMultipart(request)) {
-            MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-            Iterator<String> fileNames = multipartRequest.getFileNames();
-            while (fileNames.hasNext()) {
-                MultipartFile file = multipartRequest.getFile(fileNames.next());
-                if (file != null) {
-                    log.info("ContentType: {}", file.getContentType());             // application/vnd.ms-excel
-                    log.info("Size: {}", file.getSize());                           // 18944
-                    log.info("Name: {}", file.getName());                           // file
-                    log.info("OriginalFilename: {}", file.getOriginalFilename());   // Yearly Plan.xls
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+        MultipartFile file = multipartRequest.getFile("file-input");
+        if (file != null && !file.isEmpty()) {
+            log.info("ContentType: {}", file.getContentType());             // application/vnd.ms-excel
+            log.info("Size: {}", file.getSize());                           // 18944
+            log.info("Name: {}", file.getName());                           // file
+            log.info("OriginalFilename: {}", file.getOriginalFilename());   // Yearly Plan.xls
 
-                    // 将接收到的文件传输到给定的目标文件
-                    file.transferTo(new File(DEMO_ABSOLUTE_PATH + file.getOriginalFilename()));
-                }
-            }
+            // 将接收到的文件传输到给定的目标文件
+            file.transferTo(new File(DEMO_ABSOLUTE_PATH + file.getOriginalFilename()));
             return Result.success("success");
         } else {
-            return Result.failure();
+            return Result.failure(ResultCode.PARAM_MISS, "上传文件不能为空");
         }
     }
 }

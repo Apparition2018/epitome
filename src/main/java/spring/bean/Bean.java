@@ -1,5 +1,7 @@
 package spring.bean;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.beans.BeansException;
@@ -10,8 +12,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.util.Properties;
 
 import static l.demo.Demo.pe;

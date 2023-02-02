@@ -3,7 +3,7 @@ package spring.api.http;
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -35,8 +35,7 @@ public class RestTemplateDemo extends Demo {
 
     static {
         HttpComponentsClientHttpRequestFactory requestFactory =
-                new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create()
-                        .setMaxConnTotal(20).setMaxConnPerRoute(20).build());
+                new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
         requestFactory.setConnectionRequestTimeout((int) TimeUnit.SECONDS.toMillis(5));
         requestFactory.setConnectTimeout((int) TimeUnit.SECONDS.toMillis(5));
         requestFactory.setReadTimeout((int) TimeUnit.SECONDS.toMillis(5));
@@ -80,17 +79,18 @@ public class RestTemplateDemo extends Demo {
         // http://localhost:3333/demo/get
         //********** 1.getForEntity() **********
         switch (randomInt(1, 3)) {
-            case 1:
+            case 1 -> {
                 url = DEMO_URL + "get?id=" + 1 + "&name=" + "John";
                 responseEntity = restTemplate.getForEntity(url, Student.class);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 url = DEMO_URL + "get?id={id}&name={name}";
                 responseEntity = restTemplate.getForEntity(url, Student.class, 1, "John");
-                break;
-            default:
+            }
+            default -> {
                 url = DEMO_URL + "get?id={id}&name={name}";
                 responseEntity = restTemplate.getForEntity(url, Student.class, map);
+            }
         }
         printResponseEntity(responseEntity);
 
@@ -102,25 +102,26 @@ public class RestTemplateDemo extends Demo {
     public void post() {
         //********** 1.postForEntity() **********
         switch (randomInt(1, 4)) {
-            case 1:
+            case 1 -> {
                 // http://localhost:3333/demo/post
                 url = DEMO_URL + "post";
                 responseEntity = restTemplate.postForEntity(url, multiValueMap, Student.class);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 // http://localhost:3333/demo/post2
                 url = DEMO_URL + "post2";
                 responseEntity = restTemplate.postForEntity(url, multiValueMap, Student.class);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 // http://localhost:3333/demo/post3
                 url = DEMO_URL + "post3";
                 responseEntity = restTemplate.postForEntity(url, map, Student.class);
-                break;
-            default:
+            }
+            default -> {
                 // http://localhost:3333/demo/post3
                 url = DEMO_URL + "post3";
                 responseEntity = restTemplate.postForEntity(url, person, Student.class);
+            }
         }
         printResponseEntity(responseEntity);
 
@@ -136,17 +137,18 @@ public class RestTemplateDemo extends Demo {
         // http://localhost:3333/demo/path/{id}/{name}
         //********** 1.getForEntity() **********
         switch (randomInt(1, 3)) {
-            case 1:
+            case 1 -> {
                 url = DEMO_URL + "path/1/John";
                 responseEntity = restTemplate.getForEntity(url, Student.class);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 url = DEMO_URL + "path/{id}/{name}";
                 responseEntity = restTemplate.getForEntity(url, Student.class, 1, "John");
-                break;
-            default:
+            }
+            default -> {
                 url = DEMO_URL + "path/{id}/{name}";
                 responseEntity = restTemplate.getForEntity(url, Student.class, map);
+            }
         }
         printResponseEntity(responseEntity);
 
@@ -155,17 +157,18 @@ public class RestTemplateDemo extends Demo {
 
         //********** 3.postForEntity() **********
         switch (randomInt(1, 3)) {
-            case 1:
+            case 1 -> {
                 url = DEMO_URL + "path/1/John";
                 responseEntity = restTemplate.postForEntity(url, null, Student.class);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 url = DEMO_URL + "path/{id}/{name}";
                 responseEntity = restTemplate.postForEntity(url, null, Student.class, 1, "John");
-                break;
-            default:
+            }
+            default -> {
                 url = DEMO_URL + "path/{id}/{name}";
                 responseEntity = restTemplate.postForEntity(url, null, Student.class, map);
+            }
         }
         printResponseEntity(responseEntity);
 

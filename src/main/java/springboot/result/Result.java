@@ -6,6 +6,7 @@ import lombok.ToString;
 import org.springframework.lang.Nullable;
 import org.springframework.util.ObjectUtils;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Optional;
 
@@ -20,6 +21,7 @@ import java.util.Optional;
 @ToString
 @NoArgsConstructor
 public class Result<T> implements Serializable {
+    @Serial
     private static final long serialVersionUID = 2911133065149289466L;
     private int code;
     private boolean success;

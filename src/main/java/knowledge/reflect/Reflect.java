@@ -63,7 +63,7 @@ public class Reflect {
 
         //********** 2.动态创建对象 **********//
         // newInstance() 会调用无参构造器，没有无参构造器会抛出异常
-        cat = (Cat) clazz.newInstance();
+        cat = (Cat) clazz.getConstructor().newInstance();
 
 
         //********** 3.Field **********//

@@ -24,33 +24,18 @@
 // CSDN 阿_毅
 // 林祥纤 SpringBoot
 
-// TODO-LJH springboot springmvc
-// TODO-LJH file-server，把文件上传到 gitee
+// TODO-LJH Java 新特性
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.bean.copier.CopyOptions;
 import l.demo.Demo;
-import l.demo.Person;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-import java.io.File;
 import java.net.URL;
 
 public class Test extends Demo {
 
     public static void main(String[] args) throws Exception {
-        Person person = new Person().setId(1).setName("A");
-        Person person2 = new Person().setName("B");
-        BeanUtil.copyProperties(person2, person, CopyOptions.create(Person.class, true));
-        System.err.println(person);
-
-        System.err.println("-----");
-        String s = "&amp;&";
-        System.err.println(s.replaceAll("(&amp;)|(&)", ""));
-
         String path = "jar:file:/D:/Liang/svn/zsreport_V2/report_web/target/zsreport-war/WEB-INF/lib/report_core-1.0.0-CORE.jar!/com/sini/zsonline/formdata/service/impl/ld/excel/LD369D_1.xls";
         URL url = new URL(path);
-        WorkbookFactory.create(new File(url.getFile()));
         WorkbookFactory.create(url.openStream());
     }
 }

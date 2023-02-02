@@ -2,6 +2,7 @@ package springboot.domain.slaver;
 
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -14,51 +15,29 @@ import java.util.List;
  */
 @Data
 public class SysUser implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1558259076527842171L;
     private Long userId;
-
     private Long deptId;
-
     private String loginName;
-
     private String userName;
-
     private String userType;
-
     private String email;
-
     private String phonenumber;
-
     private String sex;
-
     private String avatar;
-
     private String password;
-
     private String salt;
-
     private String status;
-
     private String delFlag;
-
     private String loginIp;
-
     private Date loginDate;
-
     private Date pwdUpdateDate;
-
     private String createBy;
-
     private Date createTime;
-
     private String updateBy;
-
     private Date updateTime;
-
     private String remark;
-
-    private static final long serialVersionUID = 1L;
-
     private SysDept dept;
-
     private List<SysRole> roles;
 }

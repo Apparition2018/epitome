@@ -2,6 +2,7 @@ package l.demo;
 
 import cn.hutool.core.date.DatePattern;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -10,7 +11,7 @@ import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +28,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Schema(description = "人员")
 public class Person implements Comparable<Person>, Cloneable, Serializable {
+    @Serial
     private static final long serialVersionUID = -8205619618185839521L;
     private Integer id;
     private String name;
@@ -37,6 +39,7 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
 
     @Data
     public static class Home implements Serializable {
+        @Serial
         private static final long serialVersionUID = 5624494519989168136L;
         private String address;
         private String tel;
@@ -146,6 +149,7 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
          *
          * @see <a href="https://www.zhihu.com/question/24852886/answer/117314768">serialVersionUID 的作用</a>
          */
+        @Serial
         private static final long serialVersionUID = 527285523879940432L;
         private String no;
         // 被 transient 修饰的属性，在进行对象序列化时该值会被忽略，已达到对象瘦身的目的

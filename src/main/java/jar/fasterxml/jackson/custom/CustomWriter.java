@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.util.Annotations;
 import lombok.NoArgsConstructor;
 import org.springframework.util.ReflectionUtils;
 
+import java.io.Serial;
 import java.lang.reflect.Field;
 import java.util.Objects;
 
@@ -22,6 +23,7 @@ import java.util.Objects;
  */
 @NoArgsConstructor
 public class CustomWriter extends VirtualBeanPropertyWriter {
+    @Serial
     private static final long serialVersionUID = 741672197096109788L;
 
     public CustomWriter(BeanPropertyDefinition propDef, Annotations contextAnnotations, JavaType declaredType) {

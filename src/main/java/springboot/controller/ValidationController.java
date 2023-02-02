@@ -2,6 +2,8 @@ package springboot.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.*;
+import jakarta.validation.constraints.*;
 import l.demo.CompanyEnum;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,18 +21,18 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import springboot.result.Result;
 
-import javax.validation.*;
-import javax.validation.constraints.*;
 import java.lang.annotation.*;
 import java.util.*;
 
 /**
- * <p><a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81">RuoYi 参数验证</a>
- * <p><a href="https://blog.didispace.com/spring-boot-learning-21-2-3/">JSR-303 实现请求参数校验</a>
- * <p><a href="https://www.cnblogs.com/mr-yang-localhost/p/7812038.html">springboot 使用 hibernate validator 校验</a>
- * <p><a href="https://www.cnblogs.com/cjsblog/p/8946768.html">Spring Boot 参数校验</a>
- * <p><a href="https://docs.jboss.org/hibernate/validator/4.2/reference/zh-CN/html_single">Hibernate Validator</a>
- * <p><a href="https://mp.weixin.qq.com/s/cNcXN7EgGOjAPC7KVFuKig">参数验证 @Validated 和 @Valid 的区别</a>
+ * <pre>
+ * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81">RuoYi 参数验证</a>
+ * <a href="https://blog.didispace.com/spring-boot-learning-21-2-3/">JSR-303 实现请求参数校验</a>
+ * <a href="https://www.cnblogs.com/mr-yang-localhost/p/7812038.html">springboot 使用 hibernate validator 校验</a>
+ * <a href="https://www.cnblogs.com/cjsblog/p/8946768.html">Spring Boot 参数校验</a>
+ * <a href="https://docs.jboss.org/hibernate/validator/4.2/reference/zh-CN/html_single">Hibernate Validator</a>
+ * <a href="https://mp.weixin.qq.com/s/cNcXN7EgGOjAPC7KVFuKig">参数验证 @Validated 和 @Valid 的区别</a>
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -139,8 +141,8 @@ public class ValidationController {
 
         /**
          * 自定义验证，值为1或2或3，其他均不可通过验证
-         * <p>
-         * 自定义验证：https://www.cnblogs.com/soft2018/p/10301479.html
+         *
+         * @see <a href="https://www.cnblogs.com/soft2018/p/10301479.html">自定义验证</a>
          */
         @FlagValidator(values = "1,2,3")
         private String flag;

@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- 指定了当前 pom 版本 -->
+    <!-- POM Reference：https://maven.apache.org/pom.html -->
+
+    <!-- modelVersion：4.0.0 是目前唯一支持的版本，并且是必须的 -->
     <modelVersion>4.0.0</modelVersion>
+
     <!-- 父模块 -->
     <parent>
         <groupId>xxx</groupId>
         <artifactId>xxx</artifactId>
         <version>xxx</version>
     </parent>
-    <groupId>反写的公司网址+项目名</groupId>
-    <artifactId>项目名+模块名</artifactId>
-    <!-- 默认是 jar
-        war zip pom -->
-    <packaging>打包类型</packaging>
-    <!-- 第一个0：大版本号
-        第二个0：分支版本号
-        第三个0：小版本号
-        memento 快照
-        alpha 内部测试
-        beta 公测
-        Release 稳定
-        GA 正式发布 -->
-    <version>版本号</version>
+    <!-- Maven 坐标：https://maven.apache.org/pom.html#maven-coordinates -->
+    <groupId>com.{公司/BU}.业务线.[子业务线]</groupId>
+    <artifactId>产品线名-模块名</artifactId>
+    <version>主版本号.次版本号.修订号</version>
+    <!-- packaging：默认 jar
+            https://maven.apache.org/pom.html#packaging -->
+    <packaging>war</packaging>
     <name>项目名</name>
     <description>项目描述</description>
     <url>项目地址</url>
@@ -43,6 +39,11 @@
         </developer>
     </developers>
 
+    <!-- 多模块 -->
+    <modules>
+        <module>xxx</module>
+    </modules>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
@@ -62,7 +63,6 @@
             <optional>true</optional>
             <!-- 排除依赖传递列表 -->
             <exclusions>
-
             </exclusions>
         </dependency>
     </dependencies>
@@ -76,6 +76,17 @@
     <build>
         <plugins>
         </plugins>
+        <!-- Resources：指定项目资源位置
+                https://maven.apache.org/pom.html#resources -->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xlsx</include>
+                    <include>**/*.xls</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 
     <!-- 远程仓库，如果已在setting.xml中配置了远程仓库，这里则不需要配置 -->
@@ -114,9 +125,4 @@
             <url>xxx</url>
         </snapshotRepository>
     </distributionManagement>
-
-    <!-- 多模块 -->
-    <modules>
-        <module>xxx</module>
-    </modules>
 </project>

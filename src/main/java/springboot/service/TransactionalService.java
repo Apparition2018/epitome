@@ -13,6 +13,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 import springboot.dao.master.DemoMapper;
 import springboot.domain.master.Demo;
 
+import java.io.Serial;
 import java.sql.SQLException;
 
 /**
@@ -102,6 +103,7 @@ public class TransactionalService {
     }
 
     static class MyEvent extends ApplicationEvent {
+        @Serial
         private static final long serialVersionUID = 4600119726191005175L;
 
         public MyEvent(Object source) {

@@ -79,7 +79,7 @@ public class FileSystemDemo extends Demo {
     @Test
     public void unzip() throws IOException {
         // static FileSystem	newFileSystem(Path, ClassLoader)         构造一个新的文件系统来访问文件的内容
-        FileSystem fileSystem = FileSystems.newFileSystem(Paths.get(DEMO_PATH + "demo.zip"), null);
+        FileSystem fileSystem = FileSystems.newFileSystem(Paths.get(DEMO_PATH + "demo.zip"));
         Files.walkFileTree(fileSystem.getPath("/"), new SimpleFileVisitor<Path>() {
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 Path destPath = Paths.get(DEMO_PATH + "a/", file.toString());

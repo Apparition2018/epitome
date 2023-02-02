@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -83,7 +84,8 @@ public class ZXingDemo extends Demo {
             case QR_CODE:
                 width = 300;
                 height = 300;
-                hints = new HashMap<EncodeHintType, Serializable>() {
+                hints = new HashMap<>() {
+                    @Serial
                     private static final long serialVersionUID = 1955194072729986747L;
 
                     {
@@ -119,7 +121,8 @@ public class ZXingDemo extends Demo {
         switch (barcodeFormat) {
             // 二维码 (QR Code)
             case QR_CODE:
-                hints = new HashMap<DecodeHintType, Charset>() {
+                hints = new HashMap<>() {
+                    @Serial
                     private static final long serialVersionUID = 1025915748647624149L;
 
                     {

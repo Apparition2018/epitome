@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 /**
  * RestTemplateUtils
- * https://www.cnblogs.com/hujunzheng/p/6018505.html
+ * <p><a href="https://www.cnblogs.com/hujunzheng/p/6018505.html">RestTemplate 发送请求并携带 Header</a>
  *
  * @author ljh
  * @since 2020/11/13 1:38

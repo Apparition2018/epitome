@@ -5,20 +5,21 @@ import l.demo.Person;
 import l.demo.Person.Home;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 通过反射实现 JavaBean 与 Map 对象互相转化：https://www.cnblogs.com/dreammyle/p/5610906.html
+ * <a href="https://www.cnblogs.com/dreammyle/p/5610906.html">通过反射实现 JavaBean 与 Map 对象互相转化</a>
  *
  * @author ljh
  * @since 2020/11/11 19:18
  */
 public class ReflectExercise extends Demo {
 
-    public static void main(String[] args) throws IllegalAccessException, InstantiationException {
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException {
         /* bean2Map */
         Person person = new Person().setId(1).setName("张三").setAge(18).setGender("男")
                 .setOtherInfo(Collections.singletonList("程序员")).setHome(new Home().setAddress("北京").setTel("010"));
@@ -51,12 +52,12 @@ public class ReflectExercise extends Demo {
     /**
      * Map → JavaBean
      */
-    private static Object map2Bean(Map<String, Object> map, Class<?> beanClass) throws IllegalAccessException, InstantiationException {
+    private static Object map2Bean(Map<String, Object> map, Class<?> beanClass) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         if (null == map) {
             return null;
         }
 
-        Object obj = beanClass.newInstance();
+        Object obj = beanClass.getConstructor().newInstance();
 
         Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
@@ -71,5 +72,4 @@ public class ReflectExercise extends Demo {
 
         return obj;
     }
-
 }

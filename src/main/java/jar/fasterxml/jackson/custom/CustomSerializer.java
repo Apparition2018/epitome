@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import jar.fasterxml.jackson.entity.Person;
 
 import java.io.IOException;
+import java.io.Serial;
 
 /**
  * CustomSerializer
@@ -14,6 +15,7 @@ import java.io.IOException;
  * @since 2021/7/22 11:11
  */
 public class CustomSerializer extends StdSerializer<Person> {
+    @Serial
     private static final long serialVersionUID = 5013605440045804306L;
 
     public CustomSerializer() {
@@ -22,6 +24,5 @@ public class CustomSerializer extends StdSerializer<Person> {
 
     @Override
     public void serialize(Person person, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-
     }
 }

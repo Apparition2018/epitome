@@ -41,5 +41,4 @@ public interface JsonDemo {
         @SerializedName(value = "studentAge", alternate = {"age"})
         private Integer studentAge;
     }
-
 }

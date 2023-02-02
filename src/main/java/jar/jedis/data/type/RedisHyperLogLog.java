@@ -9,9 +9,8 @@ import redis.clients.jedis.Pipeline;
 import java.util.stream.IntStream;
 
 /**
- * Redis HyperLogLog
- * 恒定占用 12 KB，标准误差 0.81%，可估计 2^64 个基数，读取时间恒定，合并 O(n)
- * https://redis.io/docs/data-types/hyperloglogs/
+ * <a href="https://redis.io/docs/data-types/hyperloglogs/">Redis HyperLogLog</a>
+ * <p>恒定占用 12 KB，标准误差 0.81%，可估计 2^64 个基数，读取时间恒定，合并 O(n)
  *
  * @author ljh
  * @since 2022/8/12 0:12

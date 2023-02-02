@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.Serial;
 import java.util.Properties;
 
 /**
@@ -20,6 +21,7 @@ import java.util.Properties;
  * @since 2019/12/24 0:23
  */
 public class KaptchaServlet extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = -2566109140238951865L;
 
     @Override

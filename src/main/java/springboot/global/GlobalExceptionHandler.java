@@ -1,5 +1,7 @@
 package springboot.global;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.impl.FileSizeLimitExceededException;
 import org.hibernate.validator.internal.engine.path.PathImpl;
@@ -30,8 +32,6 @@ import springboot.result.Result;
 import springboot.result.ResultCode;
 
 import javax.servlet.Servlet;
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
 import java.util.*;
 import java.util.stream.Collectors;
 

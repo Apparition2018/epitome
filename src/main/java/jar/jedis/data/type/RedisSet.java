@@ -7,13 +7,14 @@ import redis.clients.jedis.Jedis;
 import java.util.Set;
 
 /**
- * Redis Set
- * 1.常用于唯一数据，集合操作
- * 2.最大长度 2^32 - 1
- * 3.大多数集合操作 O(1)；SMEMBERS O(n)，可考虑使用 SCAN 代替
- * 4.当关注内存使用量和不需要完美的精度，可考虑使用 Bloom 过滤器和 Cuckoo 过滤器
- * 5.用作索引；当需要索引和查询数据，可考虑使用 RedisSearch 和 RedisJSON
- * https://redis.io/docs/data-types/sets/
+ * <a href="https://redis.io/docs/data-types/sets/">Redis Set</a>
+ * <pre>
+ * 1 常用于唯一数据，集合操作
+ * 2 最大长度 2^32 - 1
+ * 3 大多数集合操作 O(1)；SMEMBERS O(n)，可考虑使用 SCAN 代替
+ * 4 当关注内存使用量和不需要完美的精度，可考虑使用 Bloom 过滤器和 Cuckoo 过滤器
+ * 5 用作索引；当需要索引和查询数据，可考虑使用 RedisSearch 和 RedisJSON
+ * </pre>
  *
  * @author ljh
  * @since 2021/5/28 14:23

@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.Serial;
 import java.net.HttpCookie;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ import java.util.Map;
 @Slf4j
 @WebServlet("/ServletUtil")
 public class ServletUtilDemo extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = 770260830268343491L;
 
     @Override

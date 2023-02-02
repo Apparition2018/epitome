@@ -15,9 +15,11 @@ import static l.demo.Demo.p;
 
 /**
  * 需求：
- * 1.有一张用户表，字段包括用户ID，用户名，昵称，年龄，性别，所在城市，邮箱，手机号
- * 2.方便地对每个字段或字段的组合条件进行检索，并打印出SQL
- * 3.使用方式要足够简单，见代码实例
+ * <pre>
+ * 1 有一张用户表，字段包括用户ID，用户名，昵称，年龄，性别，所在城市，邮箱，手机号
+ * 2 方便地对每个字段或字段的组合条件进行检索，并打印出SQL
+ * 3 使用方式要足够简单，见代码实例
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/18 18:01
@@ -157,5 +159,4 @@ public class CustomAnnotationExercise {
     public @interface Column {
         String value();
     }
-
 }

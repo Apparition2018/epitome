@@ -47,14 +47,16 @@ public class BeanUtilsDemo extends Demo {
 
     /**
      * HttpServletRequest → JavaBean
-     * https://www.cnblogs.com/vmax-tam/p/4159985.html
+     *
+     * @see <a href="https://www.cnblogs.com/vmax-tam/p/4159985.html">BeanUtils 工具类</a>
      */
     @SuppressWarnings({"unchecked", "unused"})
     public static <T> T requestToBean(HttpServletRequest request, Class<T> clazz) {
         Object obj = null;
         try {
-            obj = clazz.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            obj = clazz.getConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                 NoSuchMethodException e) {
             e.printStackTrace();
         }
 

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Serial;
 
 /**
  * CaptchaRandomServlet
@@ -13,6 +14,7 @@ import java.io.IOException;
  * @since 2019/12/23 10:20
  */
 public class CaptchaRandomServlet extends HttpServlet {
+    @Serial
     private static final long serialVersionUID = 3291499956991044738L;
 
     @Override

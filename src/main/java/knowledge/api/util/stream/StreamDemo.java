@@ -7,6 +7,7 @@ import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -177,7 +178,8 @@ public class StreamDemo extends Demo {
         IntStream intStream2 = Stream.of(arr).flatMapToInt(IntStream::of);
     }
 
-    private final List<Person> personList = new ArrayList<Person>() {
+    private final List<Person> personList = new ArrayList<>() {
+        @Serial
         private static final long serialVersionUID = -1481510473440954731L;
 
         {

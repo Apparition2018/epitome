@@ -1,7 +1,10 @@
 package jar.lombok;
 
 import l.demo.Demo;
-import lombok.*;
+import lombok.Cleanup;
+import lombok.Getter;
+import lombok.SneakyThrows;
+import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +37,7 @@ public class LombokDemo3 extends Demo {
         var y = 8;
         p(x + y);
 
-        var list = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4));
+        var list = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
         p(list);
     }
 

@@ -6,6 +6,7 @@ import org.springframework.format.AnnotationFormatterFactory;
 import org.springframework.format.Parser;
 import org.springframework.format.Printer;
 
+import java.io.Serial;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +19,8 @@ import java.util.Set;
 public class BooleanFormatAnnotationFormatterFactory extends EmbeddedValueResolutionSupport implements AnnotationFormatterFactory<BooleanFormat> {
     @Override
     public @NonNull Set<Class<?>> getFieldTypes() {
-        return new HashSet<Class<?>>() {
+        return new HashSet<>() {
+            @Serial
             private static final long serialVersionUID = 1403929137022266150L;
 
             {

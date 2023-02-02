@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import org.junit.jupiter.api.Test;
 
+import java.io.Serial;
 import java.util.*;
 
 /**
@@ -219,7 +220,8 @@ public class MapDemo extends Demo {
         public SimpleLRUCache(int cacheSize) {
             MAX_CACHE_SIZE = cacheSize;
             int capacity = (int) Math.ceil(MAX_CACHE_SIZE / DEFAULT_LOAD_FACTORY) + 1;
-            map = new LinkedHashMap<K, V>(capacity, DEFAULT_LOAD_FACTORY, true) {
+            map = new LinkedHashMap<>(capacity, DEFAULT_LOAD_FACTORY, true) {
+                @Serial
                 private static final long serialVersionUID = -2584653547800826492L;
 
                 @Override

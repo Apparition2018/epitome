@@ -1,12 +1,12 @@
 package knowledge.design.pattern.gof.creational.factory;
 
+import jakarta.xml.bind.JAXBContext;
 import knowledge.suggestions.Suggestions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
 
-import javax.xml.bind.JAXBContext;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.xpath.XPathFactory;
@@ -72,14 +72,11 @@ public class FactoryDemo {
 
         static class GUIFactory {
             public static Button createButton(String name) {
-                switch (name) {
-                    case "mac":
-                        return new MacButton();
-                    case "windows":
-                        return new WindowsButton();
-                    default:
-                        return null;
-                }
+                return switch (name) {
+                    case "mac" -> new MacButton();
+                    case "windows" -> new WindowsButton();
+                    default -> null;
+                };
             }
         }
     }

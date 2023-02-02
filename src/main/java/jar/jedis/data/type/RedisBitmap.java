@@ -1,15 +1,16 @@
 package jar.jedis.data.type;
 
 import jar.jedis.JedisUtils;
-import redis.clients.jedis.BitOP;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.args.BitOP;
 
 /**
- * Redis Bitmap
- * 1.二值状态统计；对象权限 ?
- * 2.SETBIT 和 GETBIT O(1)；BITTOP O(n)
- * https://redis.io/docs/data-types/bitmaps/
- * https://segmentfault.com/a/1190000008188655
+ * <a href="https://redis.io/docs/data-types/bitmaps/">Redis Bitmap</a>
+ * <pre>
+ * 1 二值状态统计；对象权限 ?
+ * 2 SETBIT 和 GETBIT O(1)；BITTOP O(n)
+ * </pre>
+ * <a href="https://segmentfault.com/a/1190000008188655">bitmap 妙用</a>
  *
  * @author ljh
  * @since 2021/5/27 9:51

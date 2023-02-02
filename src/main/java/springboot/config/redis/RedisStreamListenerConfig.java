@@ -1,7 +1,6 @@
 package springboot.config.redis;
 
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

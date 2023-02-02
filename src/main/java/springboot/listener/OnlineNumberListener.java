@@ -40,6 +40,11 @@ public class OnlineNumberListener implements HttpSessionListener, ServletRequest
     private HttpServletRequest request;
 
     @Override
+    public void requestDestroyed(ServletRequestEvent servletRequestEvent) {
+        
+    }
+
+    @Override
     public void requestInitialized(ServletRequestEvent sre) {
         request = (HttpServletRequest) sre.getServletRequest();
     }
