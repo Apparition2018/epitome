@@ -4,7 +4,6 @@ import l.demo.Demo;
 import l.demo.Person;
 import org.junit.jupiter.api.Test;
 
-import java.io.Serial;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
@@ -94,17 +93,11 @@ public class CollectorsDemo extends Demo {
      */
     @Test
     public void testReducing() {
-        List<Person> personList = new ArrayList<>() {
-            @Serial
-            private static final long serialVersionUID = -1481510473440954731L;
-
-            {
-                add(new Person("张三", 20, "男"));
-                add(new Person("李四", 21, "女"));
-                add(new Person("王五", 22, "男"));
-                add(new Person("赵六", 23, "女"));
-            }
-        };
+        List<Person> personList = List.of(
+                new Person("张三", 20, "男"),
+                new Person("李四", 21, "女"),
+                new Person("王五", 22, "男"),
+                new Person("赵六", 23, "女"));
 
         Person identity = new Person();
         identity.setName("identity");

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -145,6 +146,8 @@ public class FlyweightDemo extends Demo {
     }
 
     static class Forest extends JFrame {
+        @Serial
+        private static final long serialVersionUID = -5174274255546068383L;
         private final List<Tree> trees = new ArrayList<>();
 
         public void plantTree(int x, int y, String name, Color color, String otherTreeData) {

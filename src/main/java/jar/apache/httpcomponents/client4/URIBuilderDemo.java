@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -20,7 +19,6 @@ public class URIBuilderDemo extends Demo {
 
     @Test
     public void get() throws URISyntaxException {
-
         URIBuilder builder = new URIBuilder(MOZILLA_DEMO_URL);
 
         p(builder);                     // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
@@ -34,7 +32,6 @@ public class URIBuilderDemo extends Demo {
 
     @Test
     public void set() throws URISyntaxException {
-
         URI uri = new URIBuilder()
                 .setScheme("https")
                 .setHost("developer.mozilla.org")
@@ -49,16 +46,9 @@ public class URIBuilderDemo extends Demo {
 
     @Test
     public void testURIBuilder() throws URISyntaxException {
-
-        Map<String, String> params = new HashMap<>();
-        params.put("a", "1");
-        params.put("b", "2");
-        params.put("c", "3");
-
+        Map<String, String> params = Map.of("a", "1", "b", "2", "c", "3");
         URIBuilder builder = new URIBuilder(BAIDU_URL);
-
         params.forEach((k, v) -> builder.addParameter(k, params.get(v)));
-
         p(builder.build()); // https://www.baidu.com/?a=1&b=2&c=3
     }
 }

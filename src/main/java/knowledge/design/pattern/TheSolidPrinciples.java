@@ -149,11 +149,9 @@ public class TheSolidPrinciples {
              */
             static class Calculator {
                 public void calculate(CalculatorOperation operation) {
-                    if (operation instanceof Addition) {
-                        Addition addition = (Addition) operation;
+                    if (operation instanceof Addition addition) {
                         addition.setResult(addition.getLeft() + addition.getRight());
-                    } else if (operation instanceof Subtraction) {
-                        Subtraction subtraction = (Subtraction) operation;
+                    } else if (operation instanceof Subtraction subtraction) {
                         subtraction.setResult(subtraction.getLeft() - subtraction.getRight());
                     }
                 }

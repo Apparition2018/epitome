@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
  * <pre>
  * 避免 Random 实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一 seed 导致的性能下降
  * Random 实例包括 java.util.Random 的实例或者 Math.random() 的方式
- * 在 JDK1.7 之后，可以直接使用 API ThreadLocalRandom，而在 JDK1.7 之前，需要编码保证每个线程持有一个单独的 Random 实例
+ * 在 JDK7 之后，可以直接使用 API ThreadLocalRandom，而在 JDK7 之前，需要编码保证每个线程持有一个单独的 Random 实例
  * </pre>
  * 参考：<a href="https://www.cnblogs.com/shamo89/p/8052161.html">使用 ThreadLocalRandom 代替 Random</a>
  *

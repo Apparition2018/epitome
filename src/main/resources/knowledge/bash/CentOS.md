@@ -31,7 +31,7 @@
     vi ~/.ssh/known_hosts
 ---
 ## JDK
-1. [linux安装jdk1.8(rpm方式)](https://www.cnblogs.com/myibm/p/9232744.html)
+1. [linux安装jdk8(rpm方式)](https://www.cnblogs.com/myibm/p/9232744.html)
 2. [Centos7配置JAVA_HOME](https://www.cnblogs.com/baojun/p/10832624.html)
 ```
 1. rpm -qa|grep XXX         yum list installed|grep XXX
@@ -46,7 +46,7 @@
     2.4 vim /etc/profile
         export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_281-amd64
         export PATH=$PATH:$JAVA_HOME/bin
-        注：JDK1.5 之后不再需要配置 CLASSPATH
+        注：JDK5 之后不再需要配置 CLASSPATH
     2.5 source /etc/profile
 ```
 ---

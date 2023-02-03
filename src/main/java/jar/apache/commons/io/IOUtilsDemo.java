@@ -13,7 +13,6 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,7 +37,7 @@ import java.util.List;
  * static long              skip(XXX input, long toSkip)                跳过指定长度的流
  * static void              skipFully(XXX input, long toSkip)           跳过指定长度的流，如果不够跳会抛出异常
  * </pre>
- * 参考：<a href=" * https://www.cnblogs.com/xing901022/p/5978989.html">IOUtils 总结</a>
+ * 参考：<a href="https://www.cnblogs.com/xing901022/p/5978989.html">IOUtils 总结</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -138,12 +137,7 @@ public class IOUtilsDemo extends Demo {
      */
     @Test
     public void writeLines() throws IOException {
-        List<String> lines = new ArrayList<>();
-        lines.add("静夜思");
-        lines.add("床前明月光，");
-        lines.add("疑是地上霜。");
-        lines.add("举头望明月，");
-        lines.add("低头思故乡。");
+        List<String> lines = List.of("静夜思", "床前明月光，", "疑是地上霜。", "举头望明月，", "低头思故乡。");
         OutputStream os = Files.newOutputStream(Paths.get(DEMO_FILE_PATH));
         IOUtils.writeLines(lines, IOUtils.LINE_SEPARATOR_WINDOWS, os, StandardCharsets.UTF_8.name());
     }

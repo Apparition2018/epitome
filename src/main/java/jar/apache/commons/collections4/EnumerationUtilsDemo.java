@@ -19,7 +19,6 @@ public class EnumerationUtilsDemo {
 
     @Test
     public void enumeration() {
-
         Vector<String> v = new Vector<>();
         v.add("Sunday");
         v.add("Monday");

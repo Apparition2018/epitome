@@ -42,5 +42,4 @@ public class FreeMarkerDemo {
         util.sPrint(params, fName);
         util.fPrint(params, fName, "T:/" + outPath);
     }
-
 }

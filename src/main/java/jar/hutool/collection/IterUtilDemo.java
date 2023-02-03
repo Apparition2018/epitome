@@ -10,18 +10,17 @@ import java.util.Map;
 import java.util.Vector;
 
 /**
- * IterUtil
- * <p>
- * static <T> Iterator<T>	empty()                                 返回一个空 Iterator
- * static Class<?>	        getElementType(Iterable/Iterator)       获得 Iterable 对象的元素类型
- * static <T> T	            getFirst(Iterable/Iterator)             获取集合的第一个元素
- * <p>
- * static boolean	        hasNull(Iterable/Iterator)              是否包含 null 元素
- * static boolean	        isEmpty(Iterable/Iterator)              是否为空 Iterable
- * static boolean	        isNotEmpty(Iterable/Iterator)           是否不为空 Iterable
- * <p>
- * https://hutool.cn/docs/#/core/%E9%9B%86%E5%90%88%E7%B1%BB/Iterator%E5%B7%A5%E5%85%B7-IterUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/IterUtil.html
+ * <a href="https://hutool.cn/docs/#/core/集合类/Iterator工具-IterUtil">IterUtil</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/IterUtil.html">IterUtil api</a>
+ * <pre>
+ * static <T> Iterator<T>   empty()                                 返回一个空 Iterator
+ * static Class<?>          getElementType(Iterable/Iterator)       获得 Iterable 对象的元素类型
+ * static <T> T             getFirst(Iterable/Iterator)             获取集合的第一个元素
+ *
+ * static boolean           hasNull(Iterable/Iterator)              是否包含 null 元素
+ * static boolean           isEmpty(Iterable/Iterator)              是否为空 Iterable
+ * static boolean           isNotEmpty(Iterable/Iterator)           是否不为空 Iterable
+ * </pre>
  *
  * @author ljh
  * @since 2020/10/29 2:22
@@ -30,7 +29,6 @@ public class IterUtilDemo extends Demo {
 
     @Test
     public void testIterUtil() {
-
         // countMap(Iterator)                                   返回一个 Map，记录集合各元素出现的次数
         p(IterUtil.countMap(list.iterator()));                  // {1=1, 2=1, 3=1, 4=1, 5=1, 6=1, 7=1, 8=1, 9=1}
 
@@ -49,7 +47,6 @@ public class IterUtilDemo extends Demo {
      */
     @Test
     public void convert() {
-
         // asIterable(Iterator<E> iter)                         Iterator → Iterable
         Iterable<Integer> iterable = IterUtil.asIterable(list.iterator());
 

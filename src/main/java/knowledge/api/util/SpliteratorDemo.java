@@ -7,14 +7,15 @@ import java.util.Arrays;
 import java.util.Spliterator;
 
 /**
- * Spliterator
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Spliterator.html">Spliterator</a>
+ * <pre>
  * Spliterator 和 Iterator 一样，也用于遍历数据源中的元素，但它是为了并行执行而设计的。
  * 可以遍历 Array, Collection, IO Channel, Generator Function
- * <p>
+ * </pre>
+ * <pre>
  * default Comparator<? super T>	getComparator()         返回 Comparator
- * <p>
- * Java8 中 Spliterator 详解：https://blog.csdn.net/sl1992/article/details/100149187
- * https://docs.oracle.com/javase/8/docs/api/java/util/Spliterator.html
+ * </pre>
+ * <a href="https://blog.csdn.net/sl1992/article/details/100149187">Spliterator 详解</a>
  *
  * @author ljh
  * @since 2020/11/7 1:08

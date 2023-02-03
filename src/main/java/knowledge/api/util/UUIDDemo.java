@@ -3,10 +3,9 @@ package knowledge.api.util;
 import java.util.UUID;
 
 /**
- * UUID (universally unique identifier)
- * 表示通用唯一标识符 (UUID) 的类。 UUID 表示一个 128 位的值。
- * https://www.rfc-editor.org/rfc/rfc4122
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/UUID.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/UUID.html">UUID</a> (universally unique identifier)
+ * <p>表示通用唯一标识符 (UUID) 的类。 UUID 表示一个 128 位的值。
+ * <p><a href="https://www.rfc-editor.org/rfc/rfc4122">RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace</a>
  *
  * @author ljh
  * @since 2020/9/2 17:43

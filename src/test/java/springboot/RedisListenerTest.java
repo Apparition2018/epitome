@@ -9,7 +9,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import springboot.messaging.redis.RedisTopicEnum;
 import springboot.messaging.redis.stream.RedisStreamConstants;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -42,10 +41,7 @@ public class RedisListenerTest {
         redisTemplate.opsForStream().createGroup(RedisStreamConstants.KEY, RedisStreamConstants.GROUP_A);
         redisTemplate.opsForStream().createGroup(RedisStreamConstants.KEY, RedisStreamConstants.GROUP_B);
 
-        Map<String, String> map = new HashMap<>();
-        map.put("a", "1");
-        map.put("b", "2");
-        map.put("c", "3");
+        Map<String, String> map = Map.of("a", "1", "b", "2", "c", "3");
         RecordId recordId = redisTemplate.opsForStream().add(RedisStreamConstants.KEY, map);
         log.info("recordId: {}", recordId);
 

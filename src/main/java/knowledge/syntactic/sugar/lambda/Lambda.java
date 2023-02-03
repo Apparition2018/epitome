@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * Lambda
- * Lambda 允许把函数作为一个方法的参数
- * 1.可选类型声明：不需要声明参数类型，编译器可以统一识别参数值。
- * 2.可选的参数圆括号：一个参数无需定义圆括号，但多个参数需要定义圆括号。
- * 3.可选的大括号：如果主体包含了一个语句，就不需要使用大括号。
- * 4.可选的返回关键字：如果主体只有一个表达式返回值则编译器会自动返回值，大括号需要指定明表达式返回了一个数值。
- * http://www.runoob.com/java/java8-lambda-expressions.html
+ * <a href="http://www.runoob.com/java/java8-lambda-expressions.html">Lambda</a>
+ * 允许把函数作为一个方法的参数
+ * <pre>
+ * 1 可选类型声明：不需要声明参数类型，编译器可以统一识别参数值。
+ * 2 可选的参数圆括号：一个参数无需定义圆括号，但多个参数需要定义圆括号。
+ * 3 可选的大括号：如果主体包含了一个语句，就不需要使用大括号。
+ * 4 可选的返回关键字：如果主体只有一个表达式返回值则编译器会自动返回值，大括号需要指定明表达式返回了一个数值。
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -74,5 +75,4 @@ public class Lambda {
         };
         greetingService.sayMessage("Google");
     }
-
 }

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,8 +25,7 @@ public class JsonpController {
     @GetMapping("json")
     @Operation(summary = "获取回调函数")
     public String callbackJson(HttpServletRequest request) {
-        Map<String, String> map = new HashMap<>();
-        map.put("result", "Arsenal");
+        Map<String, String> map = Map.of("result", "Arsenal");
         String json = new Gson().toJson(map);
         String callback = request.getParameter("callback");
         return String.format("%s(%s)", callback, json);

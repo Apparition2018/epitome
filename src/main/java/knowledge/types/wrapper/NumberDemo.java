@@ -103,7 +103,7 @@ public class NumberDemo {
         // static String	    toHexString(int/long i)
         // 以十六进制（基数 16）无符号整数形式返回一个整数参数的字符串表示形式
         p(Integer.toHexString(11));     // b
-        // JDK1.8 支持无符号整数
+        // JDK8 支持无符号整数
         String unsignedString = String.valueOf((1L << 32) - 1);
         p(unsignedString);  // 4294967295
         int unsignedInt = Integer.parseUnsignedInt(unsignedString, 10);

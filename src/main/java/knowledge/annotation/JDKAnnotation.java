@@ -79,7 +79,7 @@ public class JDKAnnotation extends Demo {
 
     /**
      * Contended
-     * <p>JDK1.8 新增的注解，减少伪共享(False Sharing)的发生
+     * <p>JDK8 新增的注解，减少伪共享(False Sharing)的发生
      *
      * @see <a href="https://www.zhihu.com/zvideo/1312762510748577792">伪共享问题及如何解决方案</a>
      */

@@ -7,7 +7,6 @@ import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.io.Serial;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -21,7 +20,7 @@ import java.util.stream.Stream;
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html">Stream</a>
  * <pre>
- * Stream 支持元素流功能性操作的类，是 JDK1.8 的新特性
+ * Stream 支持元素流功能性操作的类，是 JDK8 的新特性
  * Stream 应该只允许被中间或终端操作操作一次，若 Stream 被检测到重用，将抛出 IllegalStateException。
  * 如果实在要重复操作同一个 Stream，可以通过 Supplier 获取新的 Stream {@link FunctionDemo.SupplierDemo#testSupplier()}
  * </pre>
@@ -29,7 +28,7 @@ import java.util.stream.Stream;
  * <pre>
  * <a href="https://blog.csdn.net/icarusliu/article/details/79495534">函数式编程</a>
  * <a href="https://blog.csdn.net/u011001723/article/details/52794455">parallelStream</a>
- * <a href="http://www.runoob.com/java/java8-streams.html">Java 8 Stream</a>
+ * <a href="http://www.runoob.com/java/java8-streams.html">Java8 Stream</a>
  * </pre>
  *
  * @author ljh
@@ -92,8 +91,8 @@ public class StreamDemo extends Demo {
                 .distinct()
                 .map(i -> i * i)
                 .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
-                .peek(n -> System.out.print(n + " ")) // 3 2 7 5
-                .collect(Collectors.toList());
+                // 3 2 7 5
+                .peek(n -> System.out.print(n + " ")).toList();
         p("\n");
 
         // filter()         过滤
@@ -178,17 +177,11 @@ public class StreamDemo extends Demo {
         IntStream intStream2 = Stream.of(arr).flatMapToInt(IntStream::of);
     }
 
-    private final List<Person> personList = new ArrayList<>() {
-        @Serial
-        private static final long serialVersionUID = -1481510473440954731L;
-
-        {
-            add(new Person("王五", 22, "男"));
-            add(new Person("李四", 21, "女"));
-            add(new Person("张三", 20, "男"));
-            add(new Person("张三", 23, "男"));
-        }
-    };
+    private final List<Person> personList = List.of(
+            new Person("王五", 22, "男"),
+            new Person("李四", 21, "女"),
+            new Person("张三", 20, "男"),
+            new Person("张三", 23, "男"));
 
     /**
      * 对象集合按属性去重

@@ -71,8 +71,7 @@ public class BuilderDemo {
             if (this == obj) {
                 return true;
             }
-            if (obj instanceof TaxReturn) {
-                TaxReturn bean = (TaxReturn) obj;
+            if (obj instanceof TaxReturn bean) {
                 return new EqualsBuilder().append(ssn, bean.ssn).append(year, bean.year).isEquals();
             }
             return false;

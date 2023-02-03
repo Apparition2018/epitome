@@ -83,8 +83,7 @@ public class PrototypeDemo extends Demo {
 
         @Override
         public boolean equals(Object obj) {
-            if (!(obj instanceof Shape)) return false;
-            Shape shape2 = (Shape) obj;
+            if (!(obj instanceof Shape shape2)) return false;
             return shape2.x == x && shape2.y == y && Objects.equals(shape2.color, color);
         }
     }
@@ -112,8 +111,7 @@ public class PrototypeDemo extends Demo {
 
         @Override
         public boolean equals(Object obj) {
-            if (!(obj instanceof Rectangle) || !super.equals(obj)) return false;
-            Rectangle rectangle2 = (Rectangle) obj;
+            if (!(obj instanceof Rectangle rectangle2) || !super.equals(obj)) return false;
             return rectangle2.width == width && rectangle2.height == height;
         }
     }

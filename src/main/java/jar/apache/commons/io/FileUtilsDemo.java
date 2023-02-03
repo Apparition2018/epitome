@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -33,9 +32,7 @@ public class FileUtilsDemo extends Demo {
         // write()
         FileUtils.write(file, "静夜思\n", StandardCharsets.UTF_8.name(), false);
 
-        List<String> lines = new ArrayList<>();
-        lines.add("床前明月光，");
-        lines.add("疑是地上霜。");
+        List<String> lines = List.of("床前明月光，", "疑是地上霜。");
         // writeLines()
         FileUtils.writeLines(file, lines, true);
 

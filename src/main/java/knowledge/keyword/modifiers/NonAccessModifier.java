@@ -49,7 +49,7 @@ public class NonAccessModifier {
      * 5）避免上下文重复使用一个变量，使用 final 关键字可以强制重新定义一个变量，方便更好地进行重构。
      * </pre>
      *
-     * @see <a href="https://www.cnblogs.com/wangymd/p/13213265.html">JDK1.8 常量池整理</a>
+     * @see <a href="https://www.cnblogs.com/wangymd/p/13213265.html">JDK8 常量池整理</a>
      * @see <a href="https://blog.csdn.net/qq_26947195/article/details/79505553">Java 常量池理解和经典总结</a>
      */
     final int value = 10;

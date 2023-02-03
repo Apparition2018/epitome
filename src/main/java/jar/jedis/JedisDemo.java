@@ -7,7 +7,6 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.Pipeline;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -54,9 +53,7 @@ public class JedisDemo extends Demo {
         jedis.hset("Hash:1", "id", "1");
         jedis.hset("Hash:1", "name", "张三");
         // hmset
-        Map<String, String> map = new HashMap<>();
-        map.put("id", "2");
-        map.put("name", "李四");
+        Map<String, String> map = Map.of("id", "2", "name", "李四");
         jedis.hmset("Hash:2", map);
 
         // hget

@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -24,12 +23,7 @@ public class FilesDemo extends Demo {
     public void write() throws IOException {
         Path path = Paths.get(DEMO_FILE_PATH);
 
-        List<String> lines = new ArrayList<>();
-        lines.add("静夜思");
-        lines.add("床前明月光，");
-        lines.add("疑是地上霜。");
-        lines.add("举头望明月，");
-        lines.add("低头思故乡。");
+        List<String> lines = List.of("静夜思", "床前明月光，", "疑是地上霜。", "举头望明月，", "低头思故乡。");
 
         Files.write(path, lines, StandardOpenOption.CREATE);
     }
@@ -163,12 +157,12 @@ public class FilesDemo extends Demo {
     }
 
     /**
-     * https://segmentfault.com/a/1190000020778836
+     * @see <a href="https://segmentfault.com/a/1190000020778836">Files.walkFileTree 遍历文件目录</a>
      */
     @Test
     public void walkFileTree() throws IOException {
         PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**.obj");
-        Files.walkFileTree(Paths.get(DEMO_PATH), new SimpleFileVisitor<Path>() {
+        Files.walkFileTree(Paths.get(DEMO_PATH), new SimpleFileVisitor<>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 if (pathMatcher.matches(file)) {

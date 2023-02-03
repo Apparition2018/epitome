@@ -8,11 +8,8 @@ import java.util.Objects;
 import static l.demo.Demo.p;
 
 /**
- * Objects
- * Objects 是 JDK1.7 新增的工具类
- * Objects 由一些静态方法组成，这些方法是空指针安全的 (null-safe)，容忍空指针的 (null-tolerant)
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html">Objects</a>
+ * <p>JDK7 新增的工具类，由一些静态方法组成，这些方法是空指针安全的 (null-safe)，容忍空指针的 (null-tolerant)
  *
  * @author ljh
  * @since 2020/10/23 20:09
@@ -58,7 +55,7 @@ public class ObjectsDemo {
         // 如果两个参数相等，则返回 true，否则返回 false
         // 阿里编程规约：
         // Object 的 equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用 equals
-        // 推荐使用 JDK1.7 引入的工具类 java.util.Objects#equals(Object a, Object b)
+        // 推荐使用 JDK7 引入的工具类 java.util.Objects#equals(Object a, Object b)
         p(Objects.equals(a, b)); // true
         p(Objects.equals(d, e)); // true
         p(Objects.equals(a, c)); // false
@@ -83,5 +80,4 @@ public class ObjectsDemo {
         // static int	        hashCode(Object o)
         p(Objects.hashCode(new Object()));      // 627185331
     }
-
 }

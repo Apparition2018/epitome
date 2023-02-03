@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
- * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Throwable.html">Throwable</a>
+ * <a href="https://tool.oschina.net/uploads/apidojavacs/jdk-zh/java/lang/Throwable.html">Throwable</a>
  * <p>Throwable 有两个子类 Error 和 Exception
  * <pre>
  * 1 Error 指示运行时环境发生的错误，一般发生在严重的故障时，java 程序通常不捕获此类错误，它们在 java 程序处理范畴之外
@@ -84,8 +84,13 @@ public class ThrowableDemo extends Demo {
     }
 
     /**
-     * <a href="https://www.runoob.com/java/java9-try-with-resources-improvement.html">try-with-resources</a> 是 JDK1.7 中一个新的异常处理机制
-     * <p>在 JDK9，如果你已经有一个资源是 final 或等效于 final 变量,您可以在 try-with-resources 语句中使用该变量，而无需在 try-with-resources 语句中声明一个新变量
+     * try-with-resources
+     * <pre>
+     * JDK7 引入的异常处理机制
+     * JDK9 改进，如果已经有一个 final 或等效于 final 的变量，可以直接在 try-with-resources 语句中使用该变量
+     * </pre>
+     *
+     * @see <a href="https://www.baeldung.com/java-try-with-resources">Try with Resources</a>
      */
     @Test
     public void testTryWithResources() {

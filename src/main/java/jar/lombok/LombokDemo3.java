@@ -12,7 +12,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
@@ -37,7 +37,7 @@ public class LombokDemo3 extends Demo {
         var y = 8;
         p(x + y);
 
-        var list = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+        var list = new ArrayList<>(List.of(1, 2, 3, 4));
         p(list);
     }
 

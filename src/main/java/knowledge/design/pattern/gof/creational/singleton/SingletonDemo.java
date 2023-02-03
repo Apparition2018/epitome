@@ -10,6 +10,7 @@ import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,8 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 1 配置信息类、ID 生成器、连接池、线程池、缓冲池、工具类、日志
  * 2 {@link Runtime#getRuntime()}
  * 3 {@link Desktop#getDesktop()}
- * 4 {@link System#getSecurityManager()}
- * 5 {@link AbstractBeanFactory#getBean(String)} 单例注册表
+ * 4 {@link AbstractBeanFactory#getBean(String)} 单例注册表
  * </pre>
  * 缺点：
  * <pre>
@@ -80,6 +80,7 @@ public class SingletonDemo {
         // 防止序列化攻击
         // ObjectInputStream.java:1665      checkResolve(readOrdinaryObject(unshared))
         // ObjectInputStream.java:2194      desc.invokeReadResolve(obj)
+        @Serial
         private Object readResolve() {
             return INSTANCE;
         }
@@ -183,9 +184,10 @@ public class SingletonDemo {
     public void serializeAttack() {
         EarlySingleton singleton1;
         EarlySingleton singleton2 = EarlySingleton.getInstance();
-        String filePath = "Singleton.obj";
-        try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(filePath)));
-             ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(filePath)))) {
+        String pathStr = "Singleton.obj";
+        Path path = Paths.get(pathStr);
+        try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(path));
+             ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(path))) {
             oos.writeObject(singleton2);
             oos.flush();
             singleton1 = (EarlySingleton) ois.readObject();
@@ -194,7 +196,7 @@ public class SingletonDemo {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        new File(filePath).deleteOnExit();
+        new File(pathStr).deleteOnExit();
     }
 
     /**

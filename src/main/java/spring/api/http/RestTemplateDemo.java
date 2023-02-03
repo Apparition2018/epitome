@@ -11,7 +11,6 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -43,9 +42,7 @@ public class RestTemplateDemo extends Demo {
         restTemplate = new RestTemplate(requestFactory);
         requestHeaders.setContentType(MediaType.APPLICATION_JSON);
 
-        map = new HashMap<>();
-        map.put("id", 1);
-        map.put("name", "John");
+        map = Map.of("id", 1, "name", "John");
 
         multiValueMap = new LinkedMultiValueMap<>();
         multiValueMap.add("id", 1);

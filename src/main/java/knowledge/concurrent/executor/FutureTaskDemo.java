@@ -29,7 +29,6 @@ public class FutureTaskDemo extends Demo {
     public void testFuture() {
         List<Future<Map<Integer, String>>> futureList = new ArrayList<>();
         for (int i = 1; i <= NUM_OF_TASK; i++) {
-
             // <T> Future<T>	submit(Callable<T> task)
             // 提交一个 Callable 任务用于执行，并返回一个表示该任务的 Future
             Future<Map<Integer, String>> future = threadPool.submit(new MyCallable(i));

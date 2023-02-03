@@ -61,6 +61,9 @@ public class ListDemo extends Demo {
 
     @Test
     public void testList() {
+        // List.of() 返回一个不可修改的 List，JDK9 引入
+        list = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9));
+
         // Object[]	    toArray()
         // 返回按适当顺序包含列表中的所有元素的数组（从第一个元素到最后一个元素）
         // 阿里编程规约：
@@ -97,10 +100,7 @@ public class ListDemo extends Demo {
      */
     @Test
     public void testEquals() {
-        List<String> list = new ArrayList<>();
-        list.add("a");
-        list.add("b");
-        list.add("c");
+        List<String> list = List.of("a", "b", "c");
 
         Vector<String> vector = new Vector<>();
         vector.add("a");

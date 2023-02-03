@@ -10,15 +10,19 @@ import java.util.stream.IntStream;
 
 /**
  * BASE64
+ * <pre>
  * BASE64 使用了 64 个字符，包括 A-Za-z0-9+/，其中 +/ 在一些场景下代表着特殊含义(如 url)，会用 -_ 代替
  * BASE64 严格地说，属于编码格式，而非加密算法。
  * BASE 加密后产生的字节位数是8的倍数，如果不够位数以 = 符号填充。
+ * </pre>
  * 应用场景：e-mail、密钥、证书文件
- * <p>
- * Base64 算法原理：https://www.cnblogs.com/chengmo/archive/2014/05/18/3735917.html
- * Java 实现 Base64 加密：https://www.imooc.com/learn/285
- * https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html
- * https://docs.oracle.com/javase/8/docs/api/java/util/Base64.Decoder.html
+ * 参考：
+ * <pre>
+ * <a href="https://www.cnblogs.com/chengmo/archive/2014/05/18/3735917.html">Base64 算法原理</a>
+ * <a href="https://www.imooc.com/learn/285">Java 实现 Base64 加密</a>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html">Base64</a>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Base64.Decoder.html">Base64.Decoder</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/18 19:37
@@ -26,9 +30,8 @@ import java.util.stream.IntStream;
 public class Base64Demo extends Demo {
 
     /**
-     * Base64 编码在 JDK1.8 已经成为 Java 类库的标准。
-     * 而且效率都比 apache-commons-codec, sun.misc, Bouncy Castle 都要快
-     * Java8 Base64 | 菜鸟教程：http://www.runoob.com/java/java8-base64.html
+     * <a href="http://www.runoob.com/java/java8-base64.html">Base64</a>
+     * <p>JDK8 引入，效率都比 apache-commons-codec, sun.misc, Bouncy Castle 快
      */
     @Test
     public void testBase64() {
@@ -50,5 +53,4 @@ public class Base64Demo extends Demo {
         encode = Base64.getMimeEncoder().encodeToString(bytes);
         p("encodeMime:\n" + encode);
     }
-
 }

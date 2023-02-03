@@ -26,10 +26,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Demo {
 
     public static Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    public static List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-    public static List<String> sList = new ArrayList<>(Arrays.asList("1 2 3 4 5 6 7 8 9".split(" ")));
-    public static List<Integer> descList = Arrays.asList(9, 8, 7, 6, 5, 4, 3, 2, 1);
-    public static List<Integer> repeatList = new ArrayList<>(Arrays.asList(1, 1, 2, 2, 3, 3, 4, 5));
+    public static List<Integer> list = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9));
+    public static List<String> sList = new ArrayList<>(List.of("1 2 3 4 5 6 7 8 9".split(" ")));
+    public static List<Integer> descList = List.of(9, 8, 7, 6, 5, 4, 3, 2, 1);
+    public static List<Integer> repeatList = new ArrayList<>(List.of(1, 1, 2, 2, 3, 3, 4, 5));
     public static List<Integer> subList = new ArrayList<>(list.subList(1, 6));
     public static List<Integer> subList2 = list.subList(3, 8);
     public static List<Person> personList = new ArrayList<>() {

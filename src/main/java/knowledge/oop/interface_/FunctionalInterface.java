@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 /**
  * 函数式接口 (Functional Interface)
  * <p>函数式接口就是一个有且仅有一个抽象方法，但是可以有多个非抽象方法的接口
- * <p>JDK1.8 之前已有的函数式接口：
+ * <p>JDK8 之前已有的函数式接口：
  * <pre>
  * java.lang.Runnable
  * java.lang.reflect.InvocationHandler
@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
  * java.security.PrivilegedAction
  * javax.swing.event.ChangeListener
  * </pre>
- * JDK1.8 新增的函数式接口：java.util.function.*
+ * JDK8 新增的函数式接口：java.util.function.*
  * <p>参考：<a href="https://blog.csdn.net/icarusliu/article/details/79495534">函数式编程</a>
  *
  * @author ljh

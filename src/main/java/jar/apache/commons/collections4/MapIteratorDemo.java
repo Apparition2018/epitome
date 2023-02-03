@@ -16,7 +16,6 @@ public class MapIteratorDemo {
     @Test
     public void mapIterator() {
         IterableMap<String, String> map = new HashedMap<>();
-
         map.put("1", "One");
         map.put("2", "Two");
         map.put("3", "Three");

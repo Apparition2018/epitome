@@ -249,7 +249,7 @@
         1. `jdbcTemplate.batchUpdate(String sql, List<Object[]> batchArgs)`
         2. `batchSqlUpdate.update(Object... params)`
     3. 命名参数：使用 NamedParameterJdbcTemplate
-- springboot + JDK 1.6 + JDBC 多数据源 + JdbcTemplate：@see xinling/zsgaqc-imp
+- springboot + JDK6 + JDBC 多数据源 + JdbcTemplate：@see xinling/zsgaqc-imp
 ---
 ## [SpringMVC](https://mp.weixin.qq.com/s/yGP_34nilJp3QKyM3RaO2w)
 - MVC：

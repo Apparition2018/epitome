@@ -54,7 +54,7 @@ public class SimpleDateFormatDemo extends Demo {
      * 阿里编程规约：
      * <pre>
      * SimpleDateFormat 是线程不安全的类，一般不要定义为 static 变量，如果定义为 static，必须加锁，或者使用 DateUtils 工具类
-     * JDK1.8 可以使用 Instant 代替 Date，LocalDateTime 代替 Calendar，DateTimeFormatter 代替 SimpleDateFormat
+     * JDK8 可以使用 Instant 代替 Date，LocalDateTime 代替 Calendar，DateTimeFormatter 代替 SimpleDateFormat
      * </pre>
      *
      * @see l.utils.DateFormatUtils

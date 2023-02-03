@@ -1,5 +1,5 @@
 
-JavaSE:	Java Standard Edition，标准版；自JDK1.5开始，从J2SE改名为Java SE;
+JavaSE:	Java Standard Edition，标准版；自JDK5开始，从J2SE改名为Java SE;
 		是JavaEE的基础，主要包括了Java的基本语法规范，面向对象等内容；
 		主要用于桌面应用程序开发。
 JavaEE:	Java Enterprise Edition，企业版；JavaEE是J2EE的一个新名称；

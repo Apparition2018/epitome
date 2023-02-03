@@ -502,10 +502,7 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test072() {
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
+        List<Integer> list = new ArrayList<>(List.of(1, 2, 3));
 
         List<Integer> subList = list.subList(0, 2);
 
@@ -513,7 +510,6 @@ public class Suggestions extends Demo {
         list.add(4);
         p("原列表长度：" + list.size());    // 4
         p("子列表长度：" + subList.size()); // ConcurrentModificationException
-
     }
 
     /**

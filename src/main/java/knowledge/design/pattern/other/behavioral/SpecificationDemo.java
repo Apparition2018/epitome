@@ -32,10 +32,10 @@ public class SpecificationDemo {
 
     @Test
     public void testSpecification() {
-        List<User> userList = new ArrayList<>();
-        userList.add(new User("Andy", 23));
-        userList.add(new User("Jack", 82));
-        userList.add(new User("King", 10));
+        List<User> userList = List.of(
+                new User("Andy", 23),
+                new User("Jack", 82),
+                new User("King", 10));
 
         UserProvider userProvider = new UserProvider(userList);
         UserByNameEqual nameEqualSpec = new UserByNameEqual("Andy");

@@ -21,7 +21,8 @@ import java.util.Map;
  * 2 便捷：脚本语言是一种解释性语言，不需要编译成二进制代码，也不需要像 Java 一样生成字节码。它的执行时依靠解释器解释的，因此在运行期间变更代码很容易，而且不用停止应用。
  * 3 简单：只能说部分脚本语言简单，比如 Groovy，对于程序员来说，没有多大的门槛。
  * </pre>
- * 参考：<a href="https://blog.didispace.com/books/java8-tutorial/ch3.html">Java 8 Nashorn 教程</a>
+ * Nashorn JS 引擎：JDK8 引入，JDK11 移除
+ * <p>参考：<a href="https://blog.didispace.com/books/java8-tutorial/ch3.html">Java8 Nashorn 教程</a>
  *
  * @author ljh
  * @since 2021/8/10 15:52
@@ -78,8 +79,7 @@ public class ScriptDemo extends Demo {
     public void getList() throws FileNotFoundException, ScriptException, NoSuchMethodException, JsonProcessingException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("Nashorn");
         engine.eval(new FileReader(DEMO_PATH + "person.js"));
-        if (engine instanceof Invocable) {
-            Invocable invocable = (Invocable) engine;
+        if (engine instanceof Invocable invocable) {
             String json = jsonMapper.writeValueAsString(invocable.invokeFunction("listPerson"));
             List<Person> personList = new ArrayList<>(jsonMapper.readValue(json, new TypeReference<Map<Integer, Person>>() {
             }).values());

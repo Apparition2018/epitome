@@ -22,7 +22,7 @@ import java.util.*;
  * 集合类                  key             value       Super           说明
  * Hashtable            not null        not null    Dictionary      线程安全
  * TreeMap              not null        null        AbstractMap     线程不安全
- * ConcurrentHashMap    not null        not null    AbstractMap     锁分段技术（JDK1.8:CAS）
+ * ConcurrentHashMap    not null        not null    AbstractMap     锁分段技术（JDK8:CAS）
  * HashMap              null            null        AbstractMap     线程不安全
  * </pre>
  * <pre>
@@ -37,7 +37,7 @@ import java.util.*;
  * <p>************************************************************
  * <p>HashMap
  * <pre>
- * 1 底层实现是链表数组，JDK1.8 加上了红黑树
+ * 1 底层实现是链表数组，JDK8 加上了红黑树
  * 2 允许空键和空值（但空键只有一个，且放在第一位）
  * 3 两个关键因子：初始容量16、加载因子0.75
  *   3.1.扩容总是原来的2倍，即容量始终为2的幂次方
@@ -76,8 +76,22 @@ import java.util.*;
  */
 public class MapDemo extends Demo {
 
+    /**
+     * 返回一个不可修改的 Map，JDK9 引入
+     */
     @Test
-    public void putIfAbsent() {
+    public void testOf() {
+        Map<Integer, String> map1 = Map.of(1, "A", 2, "B", 3, "C");
+        Map<Integer, String> map2 = Map.ofEntries(
+                new AbstractMap.SimpleEntry<>(1, "A"),
+                new AbstractMap.SimpleEntry<>(2, "B"),
+                new AbstractMap.SimpleEntry<>(3, "C")
+        );
+        p(map1.equals(map2));
+    }
+
+    @Test
+    public void testPutIfAbsent() {
         map.put(4, null);
         p(map);                     // {1=A, 2=B, 3=C, 4=null}
 
@@ -96,7 +110,7 @@ public class MapDemo extends Demo {
      * @see <a href="https://blog.csdn.net/qq_43679056/article/details/104976819">compute</a>
      */
     @Test
-    public void compute() {
+    public void testCompute() {
         p(map.put(1, "a")); // A
         // k 存在时，BiFunction 返回值不为 null，则进行更新，否者删除
         p(map.compute(2, (k, v) -> k + v)); // 2B
@@ -110,7 +124,7 @@ public class MapDemo extends Demo {
     }
 
     @Test
-    public void merge() {
+    public void testMerge() {
         @Data
         @Accessors(chain = true)
         class Student {
@@ -137,7 +151,7 @@ public class MapDemo extends Demo {
      * 1 使用 Map 的方法 keySet() / values() / entrySet() 返回集合对象时，不可以对其进行添加元素操作，否则会抛出 UnsupportedOperationException 异常
      * 2 使用 entrySet 遍历 Map 类集合 KV，而不是 keySet 方式进行遍历
      *   keySet 其实是遍历了 2 次，一次是转为 Iterator 对象，另一次是从 hashMap 中取出 key 所对应的 value。
-     *   而 entrySet 只是遍历了一次就把 key 和 value 都放到了 entry 中，效率更高。如果是 JDK1.8，使用 Map.forEach 方法
+     *   而 entrySet 只是遍历了一次就把 key 和 value 都放到了 entry 中，效率更高。如果是 JDK8，使用 Map.forEach 方法
      * </pre>
      */
     @Test

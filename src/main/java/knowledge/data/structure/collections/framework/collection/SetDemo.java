@@ -24,6 +24,15 @@ import java.util.*;
 public class SetDemo extends Demo {
 
     /**
+     * 返回一个不可修改的 Set，JDK9 引入
+     */
+    @Test
+    public void test() {
+        Set<Integer> set = Set.of(1, 2, 3);
+        p(set); // [3, 2, 1]
+    }
+
+    /**
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/TreeSet.html">TreeSet</a>
      * <pre>
      * TreeSet → NavigableSet → SortedSet → Set

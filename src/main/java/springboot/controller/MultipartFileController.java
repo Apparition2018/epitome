@@ -25,7 +25,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.text.ParseException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -72,10 +71,7 @@ public class MultipartFileController extends Demo {
         try {
             for (MultipartFile file : files) {
                 ExcelUtils<Person> excelUtils = new ExcelUtils<>(Person.class);
-                Map<Integer, String> colNumAndFieldNameMap = new HashMap<>();
-                colNumAndFieldNameMap.put(0, "id");
-                colNumAndFieldNameMap.put(1, "name");
-                colNumAndFieldNameMap.put(2, "age");
+                Map<Integer, String> colNumAndFieldNameMap = Map.of(0, "id", 1, "name", 2, "age");
                 if (!file.isEmpty()) {
                     List<Person> personList = excelUtils.excel2BeanList(file.getInputStream(), colNumAndFieldNameMap);
                     System.out.println(personList);

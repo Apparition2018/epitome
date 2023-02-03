@@ -17,7 +17,8 @@ public class Operators {
 
     /**
      * 相等运算符
-     * String 缓冲池概念的举例说明：http://xiaohuafyle.iteye.com/blog/1473335
+     *
+     * @see <a href="http://xiaohuafyle.iteye.com/blog/1473335">String 缓冲池概念的举例说明</a>
      */
     @Test
     public void equality() {
@@ -48,17 +49,19 @@ public class Operators {
 
     /**
      * 三目运算符
-     * <p>
-     * 转换规则:
-     * 1.若两个操作数不可转换，则不作转换，返回值是Object类型
-     * 2.若两个操作数是明确类型的表达式(比如变量)，则按照正常的二进制数字转换，int转为long，long转为float等
-     * 3.若两个操作数中有一个是数字S，另外一个是表达式，且其类型标志位T，那么，若数字S在T的范围内，则转换为T类型；若S超出了T的范围，则T转换为S
-     * 4.若两个操作数都是直接量数字，则返回值类型范围较大者
-     * <p>
+     * <p>转换规则：
+     * <pre>
+     * 1 若两个操作数不可转换，则不作转换，返回值是Object类型
+     * 2 若两个操作数是明确类型的表达式(比如变量)，则按照正常的二进制数字转换，int转为long，long转为float等
+     * 3 若两个操作数中有一个是数字S，另外一个是表达式，且其类型标志位T，那么，若数字S在T的范围内，则转换为T类型；若S超出了T的范围，则T转换为S
+     * 4 若两个操作数都是直接量数字，则返回值类型范围较大者
+     * </pre>
      * 阿里编程规约：
+     * <pre>
      * 三目运算符 condition ? 表达式 1 : 表达式 2 中，高度注意表达式 1 和 2 在类型对齐时，可能抛出因自动拆箱导致的 NPE 异常
-     * 1）表达式 1 或 表达式 2 的值只要有一个是原始类型。
-     * 2）表达式 1 或 表达式 2 的值的类型不一致，会强制拆箱升级成表示范围更大的那个类型。
+     *  1 表达式 1 或 表达式 2 的值只要有一个是原始类型。
+     *  2 表达式 1 或 表达式 2 的值的类型不一致，会强制拆箱升级成表示范围更大的那个类型。
+     * </pre>
      */
     @Test
     public void ternary() {
@@ -108,14 +111,26 @@ public class Operators {
 
     /**
      * instanceof
+     * <pre>
      * 用于操作对象实例，如果被比较的对象兼容于右侧类型，该运算符仍然返回 true
      * (Object reference variable) instanceof (Class/Interface type)
      * 在无泛型限制定义的集合赋值给泛型限制的集合时，在使用集合元素时，需要进行instanceof 判断，避免抛出 ClassCastException 异常（阿里编程规约）
+     * </pre>
      */
     @Test
     public void instanceof_() {
-        Double d = 3.3D;
-        p(d instanceof Number); // true
+        ops("3.3");
+        ops(3.3D);
     }
 
+    /**
+     * @see <a href="https://openjdk.org/jeps/394">JDK16 JEP 394：instanceof 模式匹配</a>
+     */
+    private void ops(Object obj) {
+        if (obj instanceof String str) {
+            p("String: " + str);
+        } else if (obj instanceof Double d) {
+            p("double: " + d);
+        }
+    }
 }

@@ -15,7 +15,6 @@ import spring.service.BmiService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 import java.util.Map;
 
 import static l.demo.Demo.p;
@@ -79,9 +78,8 @@ public class DataBindingController {
     @RequestMapping("bmi4")
     public ModelAndView bmi4(BmiParam bp) {
         p("bmi4()");
-        Map<String, Object> data = new HashMap<>();
-        data.put("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
-        return new ModelAndView("bmi2", data);
+        String bmi = bmiService.bmi(bp.getHeight(), bp.getWeight());
+        return new ModelAndView("bmi2", Map.of("status", bmi));
     }
 
     /**

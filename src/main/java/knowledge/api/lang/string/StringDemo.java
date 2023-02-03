@@ -65,7 +65,7 @@ public class StringDemo extends Demo {
      * 否则，会将此 String 对象包含的字符串添加到常量池中，并且返回此 String 对象的引用
      * </pre>
      *
-     * @see <a href="https://pic2.zhimg.com/80/v2-16be2d34799123632909e415d956e111_720w.jpg">JDK1.8 JVM 内存模型</a>
+     * @see <a href="https://pic2.zhimg.com/80/v2-16be2d34799123632909e415d956e111_720w.jpg">JDK8 JVM 内存模型</a>
      */
     @Test
     public void intern() {
@@ -173,5 +173,20 @@ public class StringDemo extends Demo {
         p("abc123cba".replaceFirst("[a-z]*", "ABC"));   // ABC123cba
 
         p("13800123456".replaceAll("(.*\\d{3})\\d{4}(\\d{4})", "$1****$2")); // 138****3456，分组替换
+    }
+
+    /**
+     * @see <a href="https://www.jianshu.com/p/eaf732cfb971">文本块</a>
+     * @see <a href="https://openjdk.org/jeps/394">JDK15 JEP 378：Text Blocks</a>
+     */
+    @Test
+    public void textBlocks() {
+        p("""
+                {
+                    greeting: "hello",
+                    audience: "text blocks",
+                    punctuation: "!"
+                }
+                    """);
     }
 }

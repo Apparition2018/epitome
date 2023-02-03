@@ -11,12 +11,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a>
  * <pre>
- * CompletableFuture 是 JDK1.8 加入的一个实现类，实现了 Future, CompletionStage
+ * CompletableFuture 是 JDK8 加入的一个实现类，实现了 Future, CompletionStage
  * API 极其丰富，配合流式编程，速度飞快，推荐使用
  * </pre>
  * 参考：
@@ -43,7 +42,7 @@ public class CompletableFutureDemo extends Demo {
 
         try {
             CompletableFuture<Void> completableFuture = CompletableFuture.allOf(completableFutureList.stream()
-                    .filter(Objects::nonNull).collect(Collectors.toList()).toArray(new CompletableFuture[completableFutureList.size()]));
+                    .filter(Objects::nonNull).toList().toArray(new CompletableFuture[completableFutureList.size()]));
             completableFuture.get();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();

@@ -14,15 +14,14 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
  * ScoreDao
- * JdbcTemplate 会将底层的异常统一转换成一些运行时异常 (RuntimeException)，然后抛出
+ * <p>JdbcTemplate 会将底层的异常统一转换成一些运行时异常 (RuntimeException)，然后抛出
  *
- * @author AresultSetenal
+ * @author Arsenal
  * @since 2020/11/27 1:54
  */
 @Repository
@@ -67,8 +66,7 @@ public class ScoreDao {
      */
     public Score findById3(int id) {
         String sql = "SELECT id, name, course, score FROM score WHERE id=:id";
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("id", id);
+        Map<String, Object> paramMap = Map.of("id", id);
         return namedParameterJdbcTemplate.queryForObject(sql, paramMap, new BeanPropertyRowMapper<>(Score.class));
     }
 
@@ -94,7 +92,7 @@ public class ScoreDao {
 
 
     /**
-     * https://blog.csdn.net/qq_38737586/article/details/110595655
+     * @see <a href="https://blog.csdn.net/qq_38737586/article/details/110595655">使用 SpringJdbcTemplate 进行批量操作</a>
      */
     public void batchUpdate(List<Score> scoreList) {
         if (scoreList.isEmpty()) return;
