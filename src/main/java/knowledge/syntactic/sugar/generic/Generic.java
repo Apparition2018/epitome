@@ -3,25 +3,21 @@ package knowledge.syntactic.sugar.generic;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Generics 泛型
- * <p>
- * Java 泛型是 JDK 5 中引入的一个新特性，泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。
- * <p>
- * PECS 法则：生产者（Producer）使用 extends，消费者（Consumer）使用 super
- * 1.生产者: 如果你需要一个提供 E 类型元素的集合，使用泛型通配符<? extends E>。它好比一个生产者，可以提供数据。
- * 2.消费者: 如果你需要一个只能装入 E 类型元素的集合，使用泛型通配符<? super E>。它好比一个消费者，可以消费你提供的数据。
- * 3.既是生产者也是消费者: 既要存储又要读取，那就别使用泛型通配符。
- * <p>
+ * <p>Java 泛型是 JDK5 引入的新特性，泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。
+ * <p>PECS 法则：生产者(Producer)使用 extends，消费者(Consumer)使用 super
+ * <pre>
+ * 1 生产者: 如果你需要一个提供 E 类型元素的集合，使用泛型通配符<? extends E>。它好比一个生产者，可以提供数据。
+ * 2 消费者: 如果你需要一个只能装入 E 类型元素的集合，使用泛型通配符<? super E>。它好比一个消费者，可以消费你提供的数据。
+ * 3 既是生产者也是消费者: 既要存储又要读取，那就别使用泛型通配符。
+ * </pre>
  * 泛型通配符<? extends T>来接收返回的数据，此写法的泛型集合不能使用 add 方法， 而<? super T>不能使用 get 方法，两者在接口调用赋值的场景中容易出错（阿里编程规约）
- * <p>
- * 为什么不能用基本类型实例化类型参数？：其原因是类型擦除
- * 例如：Pair<double> 擦除之后，Pair 类含有 Object 类型的域，而 Object 不能存储 double 值，这体现了 Java 语言中基本类型的独立状态。
- * <p>
- * 泛型类、泛型方法、类型通配符的使用：https://www.cnblogs.com/songhuiqiang/p/10631268.html
+ * <p>参考：<a href="https://www.cnblogs.com/songhuiqiang/p/10631268.html">泛型类、泛型方法、类型通配符的使用</a>
  *
  * @author ljh
  * @since 2019/9/9 00:51
@@ -40,8 +36,10 @@ public class Generic<T> extends Demo {
 
     /**
      * 泛型类
-     * 1.在类名后面添加了类型参数声明部分
-     * 2.泛型类的类型参数声明部分也包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符
+     * <pre>
+     * 1 在类名后面添加了类型参数声明部分
+     * 2 泛型类的类型参数声明部分也包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符
+     * </pre>
      */
     @Test
     public void genericsClass() {
@@ -57,10 +55,12 @@ public class Generic<T> extends Demo {
 
     /**
      * 泛型方法
-     * 1.所有泛型方法声明都有一个类型参数声明部分（由尖括号分隔），该类型参数声明部分在方法返回类型之前（在下面例子中的<E>）。
-     * 2.每一个类型参数声明部分包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。
-     * 3.类型参数能被用来声明返回值类型，并且能作为泛型方法得到的实际参数类型的占位符。
-     * 4.泛型方法体的声明和其他方法一样。注意类型参数只能代表引用型类型，不能是原始类型。
+     * <pre>
+     * 1 所有泛型方法声明都有一个类型参数声明部分（由尖括号分隔），该类型参数声明部分在方法返回类型之前（在下面例子中的<E>）。
+     * 2 每一个类型参数声明部分包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一个类型变量，是用于指定一个泛型类型名称的标识符。
+     * 3 类型参数能被用来声明返回值类型，并且能作为泛型方法得到的实际参数类型的占位符。
+     * 4 泛型方法体的声明和其他方法一样。注意类型参数只能代表引用型类型，不能是原始类型。
+     * </pre>
      */
     @Test
     public void genericsMethod() {
@@ -139,4 +139,23 @@ public class Generic<T> extends Demo {
         Number obj = (Number) list.get(0);
     }
 
+    /**
+     * JDK9 内部类允许使用菱形
+     *
+     * @see <a href="https://openjdk.org/jeps/213">JDK9 JEP 213: Milling Project Coin - Description 3</a>
+     */
+    @Test
+    public void diamondWithAnonymousClasses() {
+        // JDK9-
+        List<Integer> list1 = new ArrayList<Integer>() {
+            @Serial
+            private static final long serialVersionUID = 314989737144242000L;
+        };
+        // JDK9
+        List<Object> list2 = new ArrayList<>() {
+            @Serial
+            private static final long serialVersionUID = 314989737144242000L;
+        };
+
+    }
 }

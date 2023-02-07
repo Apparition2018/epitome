@@ -27,15 +27,9 @@
 // TODO-LJH Java 新特性
 
 import l.demo.Demo;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-
-import java.net.URL;
 
 public class Test extends Demo {
 
     public static void main(String[] args) throws Exception {
-        String path = "jar:file:/D:/Liang/svn/zsreport_V2/report_web/target/zsreport-war/WEB-INF/lib/report_core-1.0.0-CORE.jar!/com/sini/zsonline/formdata/service/impl/ld/excel/LD369D_1.xls";
-        URL url = new URL(path);
-        WorkbookFactory.create(url.openStream());
     }
 }

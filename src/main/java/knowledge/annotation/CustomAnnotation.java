@@ -13,17 +13,20 @@ import static l.demo.Demo.p;
 /**
  * 用户自定义注解
  * <pre>
- * Annotation 是 Java5 引入的新特征。
+ * Annotation 是 JDK5 引入的新特征。
  * 它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。
  * 为程序的元素（类、方法、成员变量）加上更直观更明了的说明，这些说明信息是与程序的业务逻辑无关，并且供指定的工具或框架使用。
  * Annotation 像一种修饰符一样，应用于包、类型、构造方法、方法、成员变量、参数及本地变量的声明语句中。
  * Annotation 是附加在代码中的一些元信息，用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。
  * Annotation 不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。
  * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html">Annotation 实现原理与自定义注解例子</a>
+ * <a href="http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#导入导出">RuoYi 导入导出 (ExcelUtil)</a>
+ * </pre>
  *
  * @author ljh
- * @see <a href="https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html">Annotation 实现原理与自定义注解例子</a>
- * @see <a href="http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#导入导出">RuoYi 导入导出 (ExcelUtil)</a>
  * @since 2020/9/18 18:01
  */
 public class CustomAnnotation {
@@ -188,7 +191,6 @@ public class CustomAnnotation {
     @Retention(RetentionPolicy.RUNTIME)
     @Documented
     public @interface Description {
-
         String desc();
     }
 }

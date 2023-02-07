@@ -18,9 +18,7 @@ import java.lang.annotation.Target;
 @Getter
 @Setter
 public abstract class Animal {
-
     public static final Boolean HAS_CELL_WALL = true;
-
     public String name;
     @Value
     public int age;
@@ -33,7 +31,6 @@ public abstract class Animal {
 
     @Data
     public static class Cat extends Animal {
-
         private int foot;
 
         static {
@@ -47,12 +44,10 @@ public abstract class Animal {
         public void work() {
             System.out.println("抓老鼠");
         }
-
     }
 
     @Data
     public static class Chicken extends Animal {
-
         private int wing;
 
         static {
@@ -69,9 +64,8 @@ public abstract class Animal {
 
         @Deprecated
         public void fly() {
-
+            System.out.println("飞");
         }
-
     }
 
     @Target(ElementType.FIELD)

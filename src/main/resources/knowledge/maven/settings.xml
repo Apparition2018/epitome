@@ -228,16 +228,33 @@ under the License.
         </profile>
         -->
         <profile>
-            <id>jdk8</id>
+            <id>encoding</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+            </properties>
+        </profile>
+        <profile>
+            <id>jdk8</id>
+            <activation>
                 <jdk>1.8</jdk>
             </activation>
             <properties>
                 <maven.compiler.source>1.8</maven.compiler.source>
                 <maven.compiler.target>1.8</maven.compiler.target>
-                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+            </properties>
+        </profile>
+        <profile>
+            <id>jdk17</id>
+            <activation>
+                <jdk>17</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
             </properties>
         </profile>
         <!--
@@ -285,6 +302,6 @@ under the License.
     </activeProfiles>
     -->
     <activeProfiles>
-        <activeProfile>jdk8</activeProfile>
+        <activeProfile>encoding</activeProfile>
     </activeProfiles>
 </settings>

@@ -177,7 +177,7 @@ public class StringDemo extends Demo {
 
     /**
      * @see <a href="https://www.jianshu.com/p/eaf732cfb971">文本块</a>
-     * @see <a href="https://openjdk.org/jeps/394">JDK15 JEP 378：Text Blocks</a>
+     * @see <a href="https://openjdk.org/jeps/394">JDK15 JEP 378: Text Blocks</a>
      */
     @Test
     public void textBlocks() {

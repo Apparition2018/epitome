@@ -11,15 +11,14 @@ import java.util.stream.Stream;
 import static l.demo.Demo.p;
 
 /**
- * IntStream
- * IntStream 支持顺序和并行聚合操作的 int 序列，类似的还有 LongStream, DoubleStream
- * <p>
- * 大部分 API 跟 Stream 一样 {@link StreamDemo}
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html">IntStream</a>
+ * <p>支持顺序和并行聚合操作的 int 序列，类似的还有 LongStream, DoubleStream
+ * <p>大部分 API 跟 Stream 一样 {@link StreamDemo}
+ * <pre>
  * PrimitiveIterator.OfInt      iterator()
  * Spliterator.OfInt            spliterator()
- * <p>
- * IntStream 用法全解：https://blog.csdn.net/qq_31865983/article/details/106443244
- * https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html
+ * </pre>
+ * 参考：<a href="https://blog.csdn.net/qq_31865983/article/details/106443244">IntStream 用法全解</a>
  *
  * @author ljh
  * @since 2020/11/6 14:43

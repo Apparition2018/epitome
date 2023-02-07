@@ -13,7 +13,7 @@ import java.util.Optional;
  * 1 方法的返回值可以为 null，不强制返回空集合，或者空对象等，必须添加注释充分说明什么情况下会返回 null 值；
  * 2 防止 NPE 是调用者的责任。即使被调用方法返回空集合或者空对象，对调用者来说，也并非高枕无忧，必须考虑到远程调用失败、序列化失败、运行时异常等场景返回 null 的情况；
  * </pre>
- * <a href="https://www.cnblogs.com/xingzc/p/5778090.html">Optional 类深度解析</a>
+ * <a href="https://www.cnblogs.com/xingzc/p/5778090.html">Optional 深度解析</a>
  *
  * @author ljh
  * @since 2020/11/17 19:09
@@ -29,67 +29,71 @@ public class OptionalDemo extends Demo {
         Optional<Object> empty = Optional.ofNullable(null);
         empty = Optional.empty();
 
-        // get() 返回存在的值，或抛出 NoSuchElementException
+        // get() 如果存在值，返回该值，否则抛出 NoSuchElementException
         try {
             p(empty.get());
         } catch (NoSuchElementException ex) {
             p(ex.getMessage()); // No value present
         }
 
-        // isPresent() 用来检查 Optional 实例是否有值
+        // isPresent() 如果存在值，返回 true，否则返回 false
         if (name.isPresent()) {
             // 调用 get() 返回 Optional 的值
             p(name.get()); // Mary
         }
 
-        // ifPresent() 接受 lambda 表达式参数
-        // 如果 Optional 值不为空，lambda 表达式会处理并在其上执行操作
+        // ifPresent(Consumer<? super T> action) 如果存在值，执行 action
         name.ifPresent(value -> p("The length of value is: " + value.length())); // The length of value is: 8
 
-        // 如果有值 orElse() 返回 Option 实例，否则返回传入的错误信息
+        // ifPresentOrElse(Consumer<? super T> action, Runnable emptyAction)
+        // 如果存在值，执行 action，否者执行 emptyAction
+
+        // or(Supplier<? extends Optional<? extends T>> supplier)
+        // 如果存在值，返回该值的 Optional，否者返回 supplier 生成 Optional
+
+        // orElse(T other) 如果存在值，返回该值，否则返回 other
         p(empty.orElse("There is no value present!")); // There is no value present!
         p(name.orElse("There is some value!"));        // Mary
 
-        // orElseGet() 与 orElse() 类似，区别在于传入的默认值
-        // orElseGet() 接受 lambda 表达式生成默认值
+        // orElseGet(Supplier<? extends T> supplier)
+        // 如果存在值，返回该值，否则返回 supplier 生成的结果
         p(empty.orElseGet(() -> "Default Value"));  // Default Value
         p(name.orElseGet(() -> "Default Value"));   // Mary
 
-        // orElseThrow() 与 orElse() 类似，区别在于返回值
-        // orElseThrow() 抛出由传入的 lambda 表达式/方法生成异常
+        // orElseThrow(Supplier<? extends X> exceptionSupplier)
+        // 如果存在值，返回该值，否则抛出 exceptionSupplier 生成的异常
         try {
             empty.orElseThrow(RuntimeException::new);
         } catch (Throwable throwable) {
             p(throwable.getMessage());  // null
         }
 
-        // map() 通过传入的 lambda 表达式修改 Optional 实例默认值
-        // lambda 表达式返回值会包装为 Optional 实例
+        // map(Function<? super T, ? extends U> mapper)
+        // 如果存在值，返回 mapper 应用于该值的结果，否则返回一个空的 Optional
         Optional<String> upperName = name.map(String::toUpperCase);
         p(upperName.orElse("No value found")); // MARY
 
-        // flatMap() 与 map() 类似，区别在于 lambda 表达式的返回值
-        // map() 的 lambda 表达式返回值可以是任何类型，但是返回值会包装成 Optional 实例
-        // flatMap() 的 lambda 返回值只能是 Optional 类型
+        // flatMap(Function<? super T, ? extends Optional<? extends U>> mapper)
+        // 如果存在值，返回 mapper 应用于该值的结果，否则返回一个空的 Optional
+        // map() 的 mapper 返回值可以是任何类型
+        // flatMap() 的 mapper 返回值只能是 Optional 类型
         upperName = name.flatMap(value -> Optional.of(value.toUpperCase()));
         p(upperName.orElse("No value found")); // MARY
 
-        // filter() 检查 Optional 值是否满足给定条件
-        // 如果满足返回 Optional 实例值，否则返回空 Optional
-        Optional<String> longName = name.filter(value -> value.length() > 6);
-        p(longName.orElse("The name is less than 6 characters")); // The name is less than 6 characters
+        // filter(Predicate<? super T> predicate)
+        // 如果存在值，并且该值于 predicate 匹配，返回该值的 Optional，否则返回一个空的 Optional
+        Optional<String> shortName = name.filter(value -> value.length() > 6);
+        p(shortName.orElse("The name is less than 6 characters")); // The name is less than 6 characters
         Optional<String> anotherName = Optional.of("Apparition");
-        Optional<String> shortName = anotherName.filter(value -> value.length() > 6);
-        p(shortName.orElse("The name is less than 6 characters")); // Apparition
+        Optional<String> longName = anotherName.filter(value -> value.length() > 6);
+        p(longName.orElse("The name is less than 6 characters")); // Apparition
     }
 
     @Test
     public void testOptional2() {
-
         Person person = new Person();
         Address address = new Address();
         Country country = new Country();
-
         address.setCountry(country);
         person.setAddress(address);
 
@@ -104,7 +108,6 @@ public class OptionalDemo extends Demo {
     }
 
     static class Person {
-
         private Address address;
 
         public Optional<Address> getAddress() {
@@ -130,7 +133,6 @@ public class OptionalDemo extends Demo {
     }
 
     static class Country {
-
         private String iso;
 
         public Optional<String> getIso() {
@@ -141,5 +143,4 @@ public class OptionalDemo extends Demo {
             this.iso = iso;
         }
     }
-
 }

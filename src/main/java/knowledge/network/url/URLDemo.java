@@ -1,11 +1,14 @@
 package knowledge.network.url;
 
 import l.demo.Demo;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.junit.jupiter.api.Test;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
@@ -25,7 +28,6 @@ public class URLDemo extends Demo {
 
     @Test
     public void testURL() throws IOException {
-        // URL(String spec)         根据 String 表示形式创建 URL 对象
         URL url = new URL(MOZILLA_DEMO_URL);
 
         p(url);                     // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
@@ -43,6 +45,19 @@ public class URLDemo extends Demo {
         url = new URL("http://192.168.0.1:8080");
         p(url.getAuthority());      // 192.168.0.1:8080
         p(url.getHost());           // 192.168.0.1
+    }
+
+    /**
+     * 读取 jar 包里面的文件
+     */
+    @Test
+    public void testReadJarFile() throws IOException {
+        /* 使用 URL 读取 jar 包里面的文件 */
+        String path = "jar:file:/D:/.../test.jar!/com/ljh/template.xls";
+        URL url = new URL(path);
+        // openConnection().getInputStream() 的简写
+        InputStream inputStream = url.openStream();
+        Workbook workbook = WorkbookFactory.create(inputStream);
     }
 
     /**

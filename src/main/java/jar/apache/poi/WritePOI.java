@@ -75,13 +75,13 @@ public class WritePOI {
     private HSSFCellStyle headerStyle(HSSFWorkbook workbook) {
         HSSFCellStyle style = workbook.createCellStyle();
         // 设置字体样式
-        style.setFont(headerFont(workbook));
-        // 前景色
-        style.setFillForegroundColor(IndexedColors.LIGHT_TURQUOISE.getIndex());
+        style.setFont(this.headerFont(workbook));
+        // 前景色（注：当设置背景色为黄色时，使用 setFillForegroundColor()，而不是 setFillBackgroundColor()
+        style.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
         // 背景色
-        style.setFillBackgroundColor(IndexedColors.PALE_BLUE.getIndex());
+        style.setFillBackgroundColor(IndexedColors.AUTOMATIC.getIndex());
         // 图案样式
-        style.setFillPattern(FillPatternType.SPARSE_DOTS);
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         // 水平居中
         style.setAlignment(HorizontalAlignment.CENTER);
         this.setBorder(style, BorderStyle.THIN);
@@ -97,7 +97,7 @@ public class WritePOI {
     private HSSFCellStyle bodyStyle(HSSFWorkbook workbook, HSSFDataFormat dataFormat) {
         HSSFCellStyle style = workbook.createCellStyle();
         // 设置字体样式
-        style.setFont(bodyFont(workbook));
+        style.setFont(this.bodyFont(workbook));
         // 自动换行
         style.setWrapText(true);
         style.setDataFormat(dataFormat.getFormat("0.00"));

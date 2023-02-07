@@ -26,9 +26,9 @@ import java.util.stream.Stream;
  * </pre>
  * 参考：
  * <pre>
- * <a href="https://blog.csdn.net/icarusliu/article/details/79495534">函数式编程</a>
- * <a href="https://blog.csdn.net/u011001723/article/details/52794455">parallelStream</a>
- * <a href="http://www.runoob.com/java/java8-streams.html">Java8 Stream</a>
+ * <a href="https://www.runoob.com/java/java8-streams.html">Java8 Stream</a>
+ * <a href="https://www.runoob.com/java/java9-stream-api-improvements.html">Java9 改进的 Stream</a>
+ * <a href="https://blog.csdn.net/u011001723/article/details/52794455">深入浅出 parallelStream</a>
  * </pre>
  *
  * @author ljh
@@ -67,8 +67,12 @@ public class StreamDemo extends Demo {
         //********** 5.其它 **********//
         // Stream.empty()
         stream = Stream.empty();
-        // Stream.build().add()...build()
+        // Stream.ofNullable()
+        stream = Stream.ofNullable(100);
+        // Stream.builder().add()...build()
         stream = Stream.builder().add(1).add(2).add(3).add(4).add(5).build();
+        // Stream.iterate()
+        stream = Stream.iterate(3, x -> x < 10, x -> x + 3);
         // XxxStream.boxed()
         stream = new Random().ints(0, 10).limit(9).boxed();
 
@@ -92,21 +96,26 @@ public class StreamDemo extends Demo {
                 .map(i -> i * i)
                 .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
                 // 3 2 7 5
-                .peek(n -> System.out.print(n + " ")).toList();
+                .peek(i -> System.out.print(i + " ")).toList();
         p("\n");
 
         // filter()         过滤
         // sorted()         排序
-        // limit()          返回指定元素个数的流
+        // limit()          限数
         Stream.of(9, 8, 7, 6, 5, 4, 3, 2, 1).limit(7)
                 .filter(n -> n % 2 == 0).sorted()
                 .forEach(n -> System.out.print(n + " ")); // 4 6 8
         p("\n");
 
-        // sequential()     返回串行 Stream 对象
-        // parallel()       返回并行 Stream 对象
-        // skip()           跳过指定个数元素
-        Stream.of(9, 7, 5, 3, 1).parallel().skip(2).forEach(n -> System.out.print(n + " ")); // 3 1 5
+        // sequential()     串行
+        // parallel()       并行
+        // skip()           跳过
+        Stream.of(9, 7, 5, 3, 1).parallel().skip(2).forEach(i -> System.out.print(i + " ")); // 3 1 5
+        p("\n");
+
+        // takeWhile()      返回子集知道断言返回false
+        // dropWhile()      断言返回false开始返回子集
+        Stream.of(9, 3, 5, 7, 1).takeWhile(i -> i != 1).dropWhile(i -> i != 3).forEach(i -> System.out.print(i + " ")); // 3 5 7
 
         // close()          关闭 Stream 对象
         Stream.of(9, 7, 5, 3, 1).close();

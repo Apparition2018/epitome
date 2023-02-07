@@ -4,17 +4,18 @@ import org.junit.jupiter.api.Test;
 
 /**
  * 整型缓存
- * <p>
- * 在 Java5 中，为整型对象引入的一个新特性，有助于节省内存和提高性能
+ * <pre>
+ * 在 JDK5 引入的新特性，有助于节省内存和提高性能
  * 整型对象在内部实现中通过使用相同的对象引用实现了缓存和重用
- * <p>
+ * </pre>
+ * <pre>
  * 类型           最小值         最大值
  * Byte         -128            127
  * Short        -128            127
  * Long         -128            127
  * Character    0               127
- * <p>
- * 深入剖析Java中的装箱和拆箱：https://www.cnblogs.com/dolphin0520/p/3780005.html
+ * </pre>
+ * 参考：<a href="https://www.cnblogs.com/dolphin0520/p/3780005.html">深入剖析装箱和拆箱</a>
  *
  * @author ljh
  * @since 2020/9/7 1:28

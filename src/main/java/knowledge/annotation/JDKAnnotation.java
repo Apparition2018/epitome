@@ -29,9 +29,13 @@ public class JDKAnnotation extends Demo {
     /**
      * deprecation              过期
      * <p>外部正在调用的接口或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生影响。接口过时必须加 @Deprecated 注解，并清晰地说明采用的新接口或者新服务是什么（阿里编程规约）
+     * <p><a href="https://openjdk.org/jeps/277">JDK9 JEP 277: Enhanced Deprecation</a>
+     * <pre>
+     * 1 since      被弃用的版本
+     * 2 forRemoval 在将来的版本中会否被删除
+     * </pre>
      */
-    // @SuppressWarnings("deprecation")
-    @Deprecated
+    @Deprecated(since = "2.x", forRemoval = true)
     public void deprecation() {
         Chicken chicken = new Chicken();
         chicken.fly();

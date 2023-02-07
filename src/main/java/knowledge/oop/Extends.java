@@ -7,7 +7,7 @@ import java.io.Serializable;
  * 继承
  * <pre>
  * 继承提供高代码的复用性
- * 子类拥有父类非 private 属性，方法
+ * 子类拥有父类非 private 属性和方法
  * </pre>
  *
  * @author ljh
@@ -36,11 +36,10 @@ public class Extends {
     }
 
     /**
-     * extends
-     * <p>Java 不支持多继承，但支持多重继承
-     * <p>
-     * implements
-     * <p>Java 支持多实现
+     * <pre>
+     * extends      不支持多继承，支持多重继承
+     * implements   支持多实现
+     * </pre>
      */
     static class Son extends Parent implements Serializable, Comparable<Son> {
         @Serial
@@ -49,7 +48,7 @@ public class Extends {
 
         /**
          * 子类构造器
-         * <p>如果父类的构造器带有参数，则必须在子类的构造器中显式地通过 super 关键字调用父类的构造器并配以适当的参数列表
+         * <p>如果父类的构造器带有参数，则必须在子类的构造器中显式地通过 super 关键字调用父类的构造器
          */
         Son(int i, String s) {
             // super: 指向当前对象的父类

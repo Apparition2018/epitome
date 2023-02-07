@@ -124,7 +124,7 @@ public class Operators {
     }
 
     /**
-     * @see <a href="https://openjdk.org/jeps/394">JDK16 JEP 394：instanceof 模式匹配</a>
+     * @see <a href="https://openjdk.org/jeps/394">JDK16 JEP 394: Pattern Matching for instanceof</a>
      */
     private void ops(Object obj) {
         if (obj instanceof String str) {

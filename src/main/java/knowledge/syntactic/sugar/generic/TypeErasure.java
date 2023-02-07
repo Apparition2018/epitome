@@ -7,17 +7,15 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Java 泛型（Generic）的引入加强了参数类型的安全性，减少了类型的转换.
- * 但有一点需要注意：Java 的泛型在编译器有效，在运行期被删除，也就是说所有泛型参数类型在编译后都会被清除掉
- * <p>
- * List<String>, List<Integer>, List<T> 擦除后类型为 List
- * List<String>[] 擦除后类型为 List[]
- * List<? extends E>, List<? super E> 擦除后类型为 List<E>
- * List<T extends Serializable & Cloneable> 擦除后乐行为 List<Serializable>
- * <p>
- * 好处：
- * 1.避免 JVM 的大换血：如果 JVM 将泛型类型延续到运行期，那么到运行期时 JVM 就需要进行大量的重构工作了，提高了运行期的效率
- * 2.版本兼容：在编译期擦除可以更好地支持原生类型 (Raw Type)
+ * Java 的泛型采用的是擦除法实现的伪泛型，因为 Java 开始是不支持泛型的，为了兼容以前的库不得不使用擦除法
+ * <pre>
+ * {@code
+ * List<String>, List<Integer>, List<T>     →   List
+ * List<String>[]                           →   List[]
+ * List<? extends E>, List<? super E>       →   List<E>
+ * List<T extends Serializable & Cloneable> →   List<Serializable>}
+ * </pre>
+ * 为什么不能用基本类型实例化类型参数？因为类型擦除，比如 {@code Pair<double>} 擦除之后，Pair 类含有 Object 类型的域，而 Object 不能存储 double 值，这体现了 Java 语言中基本类型的独立状态
  *
  * @author ljh
  * @since 2019/9/9 00:51
