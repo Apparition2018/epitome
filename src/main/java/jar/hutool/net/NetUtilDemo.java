@@ -11,9 +11,8 @@ import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
 
 /**
- * NetUtil  网络工具
- * https://hutool.cn/docs/#/core/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7-NetUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/net/NetUtil.html
+ * <a href="https://hutool.cn/docs/#/core/网络/网络工具-NetUtil">NetUtil</a>  网络/网络工具-NetUtil
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/net/NetUtil.html">NetUtil api</a>
  *
  * @author ljh
  * @since 2020/10/30 17:16
@@ -63,7 +62,6 @@ public class NetUtilDemo extends Demo {
         p(NetUtil.isValidPort(65536));                  // false，0~65535
         // 是否可用端口
         p(NetUtil.isUsableLocalPort(1856));             // true
-
     }
 
     /**
@@ -71,13 +69,13 @@ public class NetUtilDemo extends Demo {
      */
     @Test
     public void netCat() throws IOException {
-        Student student = new Student(1, "007", "Mary", 20, 100.0f);
+        Student student = new Student(1, "007", "Mary", 20, 100.0F);
 
         // static void	    netCat(String host, int port, byte[] data)
-        NetUtil.netCat("localhost", 4444, getBytes(student));
+        NetUtil.netCat("localhost", PORT, getBytes(student));
 
         // static void	    netCat(String host, int port, boolean isBlock, ByteBuffer data)
-        NetUtil.netCat("localhost", 4444, true, getByteBuffer(student));
+        NetUtil.netCat("localhost", PORT, true, getByteBuffer(student));
     }
 
     private static byte[] getBytes(Object obj) throws IOException {

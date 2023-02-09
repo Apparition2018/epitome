@@ -26,7 +26,7 @@
             iframe.style.display = 'none';
             domain.appendChild(iframe);
             // 1. iframe 先加载不同源下的 name2.html，name2.html 设置 window.name
-            iframe.src = 'http://localhost:4444/front/js/web APIs/Window/Window-name-demo2.html';
+            iframe.src = 'http://localhost:3333/front/js/web APIs/Window/Window-name-demo2.html';
             iframe.onload = function () {
                 // 2. iframe 加载同源下 html（这里加载了自己），因为 name.html 无法获取不同源 name2.html 设置的 window.name
                 iframe.src = 'Window-name-demo.html';

@@ -14,7 +14,7 @@ import java.util.List;
  * </pre>
  * 参考：
  * <pre>
- * <a href="https://mp.weixin.qq.com/s/Jy0zu5LcNM-EvZFJIY9Eeg">Java8 默认方法和静态方法</a>
+ * <a href="https://mp.weixin.qq.com/s/Jy0zu5LcNM-EvZFJIY9Eeg">JDK8 默认方法和静态方法</a>
  * </pre>
  *
  * @author ljh

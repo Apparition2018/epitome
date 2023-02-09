@@ -8,61 +8,61 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 /**
- * ArrayUtil
- * 主要针对 原始类型数组 和 泛型数组 相关方案进行封装
- * <p>
- * static <T> T[]	    newArray(Class<?> componentType, int newSize)   新建一个空数组
- * static Object[]	    newArray(int newSize)                           新建一个空数组
- * <p>
- * static XXX[]	        addAll(XXX[]... arrays)                         将多个数组合并在一起，忽略 null 的数组
- * static <T> T[]	    insert(T[] buffer, int index, T... newElements) 将新元素插入到到已有数组中的某个位置
- * <p>
- * static int	        indexOf(XXX[] array, Object value)              返回数组中指定元素所在位置，未找到返回 INDEX_NOT_FOUND
- * static int	        indexOfIgnoreCase(CharSequence[], Object)       返回数组中指定元素所在位置，忽略大小写，未找到返回 INDEX_NOT_FOUND
- * static int	        lastIndexOf(XXX[] array, Object value)          返回数组中指定元素所在最后的位置，未找到返回 INDEX_NOT_FOUND
- * static <T> T	        get(Object array, int index)                    获取数组对象中指定 index 的值，支持负数
- * static <T> T[]	    getAny(Object array, int... indexes)            获取数组中指定多个下标元素值，组成新数组
- * static <T> T[]	    remove(T[] array, int index)                    移除数组中对应位置的元素
- * static <T> T[]	    removeEle(T[] array, T element)                 移除数组中指定的元素，只会移除匹配到的第一个元素
- * <p>
- * static T	            max(T[] numberArray, Comparator<T> comparator)  最大值
- * static T	            min(T[] numberArray, Comparator<T> comparator)  最小值
- * <p>
- * static Class<?>	    getComponentType(Class<?>/Object)               获取数组对象的元素类型
- * static Class<?>	    getArrayType(Class<?> componentType)            根据数组元素类型，获取数组的类型
- * <p>
- * static <T> T[]	    swap(T[] array, int index1, int index2)         交换数组中两个位置的值
- * static XXX[]	        reverse(XXX[] array,
+ * <a href="https://hutool.cn/docs/#/core/工具类/数组工具-ArrayUtil">ArrayUtil</a>
+ * <p>主要针对 原始类型数组 和 泛型数组 相关方案进行封装
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ArrayUtil.html">ArrayUtil api</a>
+ * <pre>
+ * {@code
+ * static <T> T[]       newArray(Class<?> componentType, int newSize)   新建一个空数组
+ * static Object[]      newArray(int newSize)                           新建一个空数组
+ *
+ * static XXX[]         addAll(XXX[]... arrays)                         将多个数组合并在一起，忽略 null 的数组
+ * static <T> T[]       insert(T[] buffer, int index, T... newElements) 将新元素插入到到已有数组中的某个位置
+ *
+ * static int           indexOf(XXX[] array, Object value)              返回数组中指定元素所在位置，未找到返回 INDEX_NOT_FOUND
+ * static int           indexOfIgnoreCase(CharSequence[], Object)       返回数组中指定元素所在位置，忽略大小写，未找到返回 INDEX_NOT_FOUND
+ * static int           lastIndexOf(XXX[] array, Object value)          返回数组中指定元素所在最后的位置，未找到返回 INDEX_NOT_FOUND
+ * static <T> T         get(Object array, int index)                    获取数组对象中指定 index 的值，支持负数
+ * static <T> T[]       getAny(Object array, int... indexes)            获取数组中指定多个下标元素值，组成新数组
+ * static <T> T[]       remove(T[] array, int index)                    移除数组中对应位置的元素
+ * static <T> T[]       removeEle(T[] array, T element)                 移除数组中指定的元素，只会移除匹配到的第一个元素
+ *
+ * static T             max(T[] numberArray, Comparator<T> comparator)  最大值
+ * static T             min(T[] numberArray, Comparator<T> comparator)  最小值
+ *
+ * static Class<?>      getComponentType(Class<?>/Object)               获取数组对象的元素类型
+ * static Class<?>      getArrayType(Class<?> componentType)            根据数组元素类型，获取数组的类型
+ *
+ * static <T> T[]       swap(T[] array, int index1, int index2)         交换数组中两个位置的值
+ * static XXX[]         reverse(XXX[] array,
  * -                    int startIndexInclusive, int endIndexExclusive) 反转数组，会变更原数组
- * static <T> T[]	    distinct(T[] array)                             去重数组中的元素，去重后生成新的数组，原数组不变
- * static byte[][]	    split(byte[] array, int len)                    拆分 byte 数组为几个等份
- * static <T> T[]	    clone(T[] array)                                克隆数组
- * <p>
- * static boolean	    isArray(Object obj)                             对象是否为数组对象
- * static boolean	    equals(Object array1, Object array2)            判断两个数组是否相等，判断依据包括数组长度和每个元素都相等
- * static boolean	    contains(XXX[] array, T value)                  数组中是否包含元素
- * static boolean	    containsIgnoreCase(CharSequence[], CharSeq)     数组中是否包含元素，忽略大小写
- * static <T> boolean	containsAny(T[] array, T... values)             数组中是否包含指定元素中的任意一个
- * <p>
+ * static <T> T[]       distinct(T[] array)                             去重数组中的元素，去重后生成新的数组，原数组不变
+ * static byte[][]      split(byte[] array, int len)                    拆分 byte 数组为几个等份
+ * static <T> T[]       clone(T[] array)                                克隆数组
+ *
+ * static boolean       isArray(Object obj)                             对象是否为数组对象
+ * static boolean       equals(Object array1, Object array2)            判断两个数组是否相等，判断依据包括数组长度和每个元素都相等
+ * static boolean       contains(XXX[] array, T value)                  数组中是否包含元素
+ * static boolean       containsIgnoreCase(CharSequence[], CharSeq)     数组中是否包含元素，忽略大小写
+ * static <T> boolean   containsAny(T[] array, T... values)             数组中是否包含指定元素中的任意一个
+ *
  * static boolean       isEmpty(XXX array)                              是否为空
  * static boolean       isNotEmpty(XXX array)                           是否不为空
- * static boolean	    hasEmpty(Object... args)                        是否存在 null 或空对象
- * static boolean	    isAllEmpty(Object... args)                      是否存都为 null 或空对象
- * static boolean	    isAllNotEmpty(Object... args)                   是否存都不为 null 或空对象
- * static int	        emptyCount(Object... args)                      计算 null 或空元素对象的个数
- * static <T> T[]	    defaultIfEmpty(T[] array, T[] defaultArray)     如果给定数组为空，返回默认数组
- * static T[]	        removeEmpty(T[] array)                          去除 null 或者 ""
+ * static boolean       hasEmpty(Object... args)                        是否存在 null 或空对象
+ * static boolean       isAllEmpty(Object... args)                      是否存都为 null 或空对象
+ * static boolean       isAllNotEmpty(Object... args)                   是否存都不为 null 或空对象
+ * static int           emptyCount(Object... args)                      计算 null 或空元素对象的个数
+ * static <T> T[]       defaultIfEmpty(T[] array, T[] defaultArray)     如果给定数组为空，返回默认数组
+ * static T[]           removeEmpty(T[] array)                          去除 null 或者 ""
  * static <T> boolean   hasNull(T... array)                             是否包含 null
- * static <T> boolean	isAllNull(T... array)                           是否全为 null
- * static <T> boolean	isAllNotNull(T... array)                        多个字段是否全部不为 null
- * static String[]	    nullToEmpty(String[] array)                     数组元素中的 null 转换为 ""
- * static <T> T[]	    removeNull(T[] array)                           去除 null
- * static <T> T	        firstNonNull(T... array)                        返回数组中第一个非空元素
- * static <T> T	        firstMatch(Matcher<T> matcher, T... array)      返回数组中第一个匹配规则的值
- * static T[]	        removeBlank(T[] array)                          去除 null 或者 "" 或 者空白字符串
- * <p>
- * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%95%B0%E7%BB%84%E5%B7%A5%E5%85%B7-ArrayUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ArrayUtil.html
+ * static <T> boolean   isAllNull(T... array)                           是否全为 null
+ * static <T> boolean   isAllNotNull(T... array)                        多个字段是否全部不为 null
+ * static String[]      nullToEmpty(String[] array)                     数组元素中的 null 转换为 ""
+ * static <T> T[]       removeNull(T[] array)                           去除 null
+ * static <T> T         firstNonNull(T... array)                        返回数组中第一个非空元素
+ * static <T> T         firstMatch(Matcher<T> matcher, T... array)      返回数组中第一个匹配规则的值
+ * static T[]           removeBlank(T[] array)                          去除 null 或者 "" 或 者空白字符串}
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/2 23:44
@@ -129,9 +129,11 @@ public class ArrayUtilDemo extends Demo {
     }
 
     /**
-     * static XXX[]	        wrap(XXX... values)                             将原始类型数组包装为包装类型
-     * static XXX[]	        unWrap(XXX... values)                           将包装类数组转为原始类型数组
-     * Object[]	            cast(Class<?> type, Object arrayObj)            强转数组类型，前提是数组元素类型可被强制转换
+     * <pre>
+     * static XXX[]     wrap(XXX... values)                     将原始类型数组包装为包装类型
+     * static XXX[]     unWrap(XXX... values)                   将包装类数组转为原始类型数组
+     * Object[]         cast(Class<?> type, Object arrayObj)    强转数组类型，前提是数组元素类型可被强制转换
+     * </pre>
      */
     @Test
     public void convert() {
@@ -144,5 +146,4 @@ public class ArrayUtilDemo extends Demo {
         // static String	    toString(Object obj)                    Array → String
         p(ArrayUtil.toString(arr));
     }
-
 }

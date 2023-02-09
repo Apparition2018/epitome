@@ -2,7 +2,6 @@ package l.demo;
 
 import cn.hutool.core.date.DatePattern;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -105,9 +104,11 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
      * 2 属性是私有的 private，提供 getter 和 setter 方法
      * 3 提供无参构造器
      * 4 实现序列化接口 Serializable (分布式应用)
-     * ps：<a href="https://www.cnblogs.com/threecc/archive/2011/09/05/2167667.html">JavaBean 第二个字母不能大写</a>
-     *    产生问题：无法通过 getter/setter 获取和设置属性
-     *    解决方法：使用 @JsonProperty
+     * </pre>
+     * <a href="https://www.cnblogs.com/threecc/archive/2011/09/05/2167667.html">JavaBean 第二个字母不能大写</a>
+     * <pre>
+     * 产生问题：无法通过 getter/setter 获取和设置属性
+     * 解决方法：使用 @JsonProperty
      * </pre>
      * POJO
      * <pre>
@@ -121,14 +122,12 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
      * 2 定义 DO / PO / DTO / VO 等 POJO 类时，不要设定任何属性默认值
      * 3 POJO 类必须写 toString 方法。如果继承了另一个 POJO 类，注意在前面加一下 super.toString()
      * 4 禁止在 POJO 类中，同时存在对应属性 xxx 的 isXxx() 和 getXxx() 方法
-     * 5 velocity 调用 POJO 类的属性时，直接使用属性名取值即可，模板引擎会自动按规范调用 POJO 的 getXxx()，
-     *   如果是 boolean 基本数据类型变量（boolean 命名不需要加 is 前缀），会自动调 isXxx() 方法
+     * 5 velocity 调用 POJO 类的属性时，直接使用属性名取值即可，模板引擎会自动按规范调用 POJO 的 getXxx()，如果是 boolean 基本数据类型变量（boolean 命名不需要加 is 前缀），会自动调 isXxx() 方法
      * </pre>
      */
     @Data
     @Accessors(chain = true)
     @NoArgsConstructor
-    @XmlRootElement(name = "student")
     @Schema(description = "学生")
     public static class Student extends Person {
         /**

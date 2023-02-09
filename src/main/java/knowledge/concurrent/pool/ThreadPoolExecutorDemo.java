@@ -1,4 +1,4 @@
-package knowledge.concurrent.executor;
+package knowledge.concurrent.pool;
 
 import l.demo.Demo;
 import lombok.NonNull;

@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
+import static l.demo.Demo.MY_NAME;
+
 /**
  * JsonGenerator
  *
@@ -31,7 +33,7 @@ public class JsonGeneratorDemo {
             jsonGenerator.setPrettyPrinter(new MinimalPrettyPrinter());
             jsonGenerator.writeStartObject(); // {
 
-            jsonGenerator.writeStringField("name", "ljh");
+            jsonGenerator.writeStringField("name", MY_NAME);
             jsonGenerator.writeNumberField("age", 31);
 
             // 写入 Dog 对象
@@ -88,7 +90,7 @@ public class JsonGeneratorDemo {
         JsonFactory jsonFactory = new JsonFactory();
         try (JsonGenerator jsonGenerator = jsonFactory.createGenerator(System.out, JsonEncoding.UTF8)) {
             jsonGenerator.setCodec(new MyObjectCodec());
-            jsonGenerator.writeObject(new Person("ljh", 31));
+            jsonGenerator.writeObject(new Person(MY_NAME, 31));
         }
     }
 

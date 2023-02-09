@@ -2,6 +2,8 @@ package knowledge.oop;
 
 import org.junit.jupiter.api.Test;
 
+import static l.demo.Demo.MY_NAME;
+
 /**
  * 变量
  *
@@ -41,7 +43,7 @@ public class Variable {
      * 在静态方法以及其他类中，通过 ObjectReference.VariableName 访问
      * </pre>
      */
-    private String name = "ljh";
+    private String name = MY_NAME;
 
 
     /**

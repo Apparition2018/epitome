@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.ref.Reference;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/引用工具-ReferenceUtil">ReferenceUtil</a>    引用工具
+ * <a href="https://hutool.cn/docs/#/core/工具类/引用工具-ReferenceUtil">ReferenceUtil</a>     引用工具
  * <pre>
  * 1 SoftReference  软引用，在 GC 报告内存不足时会被 GC 回收
  * 2 WeakReference  弱引用，在 GC 时发现弱引用会回收其对象

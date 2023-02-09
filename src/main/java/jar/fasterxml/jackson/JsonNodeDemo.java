@@ -50,7 +50,7 @@ public class JsonNodeDemo extends Demo {
         // Missing true :
         log.info("Missing {} : {}", missingNode.isMissingNode(), missingNode.asText());
 
-        ValueNode pojoNode = jsonNodeFactory.pojoNode(new Person("ljh", 31));
+        ValueNode pojoNode = jsonNodeFactory.pojoNode(new Person(MY_NAME, 31));
         // Pojo true : Person(name=ljh, age=31, dog=null, hobbies=null)
         log.info("Pojo {} : {}", pojoNode.isPojo(), pojoNode.asText());
     }
@@ -73,7 +73,7 @@ public class JsonNodeDemo extends Demo {
         dogNode.put("age", 3);
 
         ObjectNode rootNode = jsonNodeFactory.objectNode();
-        rootNode.put("name", "ljh");
+        rootNode.put("name", MY_NAME);
         rootNode.put("age", 31);
         rootNode.set("languages", arrayNode);
         rootNode.set("dog", dogNode);
@@ -84,7 +84,7 @@ public class JsonNodeDemo extends Demo {
 
     @Test
     public void testObjectMapperTree() throws IOException {
-        Person person = new Person("ljh", 31);
+        Person person = new Person(MY_NAME, 31);
         person.setDog(new Person.Dog().setName("旺财").setColor(Person.Color.WHITE));
 
         // <T extends JsonNode> T   valueToTree(Object fromValue)

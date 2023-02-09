@@ -1,4 +1,4 @@
-package knowledge.concurrent.lock;
+package knowledge.concurrent.util;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.BooleanUtils;

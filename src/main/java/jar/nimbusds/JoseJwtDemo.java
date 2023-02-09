@@ -61,10 +61,10 @@ public class JoseJwtDemo extends Demo {
     @Test
     public void testJoseJwt() throws JsonProcessingException, JOSEException, ParseException {
         PayloadDto payloadDto = new PayloadDto()
-                .setSub("ljh").setIat(System.currentTimeMillis())
+                .setSub(MY_NAME).setIat(System.currentTimeMillis())
                 .setExp(DateUtils.addHours(new Date(), 6).getTime())
                 .setJti(new AlternativeJdkIdGenerator().generateId().toString())
-                .setUsername("ljh")
+                .setUsername(MY_NAME)
                 .setAuthorities(Collections.singletonList("ADMIN"));
 
         String token = this.generateTokenByHMAC(jsonMapper.writeValueAsString(payloadDto), secret);

@@ -26,8 +26,8 @@ import java.util.stream.Stream;
  * </pre>
  * 参考：
  * <pre>
- * <a href="https://www.runoob.com/java/java8-streams.html">Java8 Stream</a>
- * <a href="https://www.runoob.com/java/java9-stream-api-improvements.html">Java9 改进的 Stream</a>
+ * <a href="https://www.runoob.com/java/java8-streams.html">JDK8 Stream</a>
+ * <a href="https://www.runoob.com/java/java9-stream-api-improvements.html">JDK9 改进的 Stream</a>
  * <a href="https://blog.csdn.net/u011001723/article/details/52794455">深入浅出 parallelStream</a>
  * </pre>
  *

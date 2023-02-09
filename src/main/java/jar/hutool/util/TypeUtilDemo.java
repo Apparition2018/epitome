@@ -10,9 +10,8 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * TypeUtil     泛型类型工具
- * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B%E5%B7%A5%E5%85%B7-TypeUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/TypeUtil.html
+ * <a href="https://hutool.cn/docs/#/core/工具类/泛型类型工具-TypeUtil">TypeUtil</a> 泛型类型工具
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/TypeUtil.html">TypeUtil api</a>
  *
  * @author ljh
  * @since 2020/10/29 12:48
@@ -39,5 +38,4 @@ public class TypeUtilDemo {
         // isUnknown(Type)                      是否未知类型，null 和 TypeVariable 都视为未知类型
         System.out.println(TypeUtil.isUnknown(type));           // false
     }
-
 }

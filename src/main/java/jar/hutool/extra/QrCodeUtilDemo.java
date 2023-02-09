@@ -11,7 +11,7 @@ import java.io.File;
 /**
  * <a href="https://hutool.cn/docs/#/extra/二维码工具-QrCodeUtil">QrCodeUtil</a>     二维码工具
  * <p>需要引入 com.google.zxing:core
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/qrcode/QrCodeUtil.html">QrCodeUtil api</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/qrcode/QrCodeUtil.html">QrCodeUtil api</a>
  *
  * @author ljh
  * @since 2020/11/5 14:53
@@ -29,11 +29,9 @@ public class QrCodeUtilDemo extends Demo {
         // 设置背景色
         config.setBackColor(Color.WHITE);
         // 设置 logo
-        config.setImg(XIAO_XIN_PNG);
-
+        config.setImg(XIAO_XIN_IMG);
         // 生成指定 content 对应的二维码到文件，宽和高都是 300 像素
         QrCodeUtil.generate("999999999999", config, new File(DEMO_PATH + "QRCode.png"));
-
         // 识别二维码
         p(QrCodeUtil.decode(new File(DEMO_PATH + "QRCode.png")));
     }

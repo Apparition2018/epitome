@@ -5,23 +5,22 @@ import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 /**
- * PhoneUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/PhoneUtil.html
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/PhoneUtil.html">PhoneUtil</a>
  *
  * @author ljh
  * @since 2020/11/22 4:04
  */
 public class PhoneUtilDemo extends Demo {
-    
+
     @Test
     public void testPhoneUtil() {
         // 座机号 或 手机号（中国）
         p(PhoneUtil.isPhone(MOBILE));
         // 座机号（中国）
-        p(PhoneUtil.isTel(MOBILE));   
+        p(PhoneUtil.isTel(MOBILE));
         // 手机号（中国）
-        p(PhoneUtil.isMobile(MOBILE));   
-        
+        p(PhoneUtil.isMobile(MOBILE));
+
         // 获取前三位
         p(PhoneUtil.subBefore(MOBILE));
         // 获取中四位

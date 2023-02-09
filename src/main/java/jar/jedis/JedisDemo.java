@@ -22,7 +22,7 @@ public class JedisDemo extends Demo {
         // 1.新建 Jedis 对象
         Jedis jedis = new Jedis("127.0.0.1", 6379);
         // 2.保存数据
-        jedis.set("name", "ljh");
+        jedis.set("name", MY_NAME);
         // 3.获取数据
         String value = jedis.get("name");
         p("value = " + value);
@@ -40,7 +40,7 @@ public class JedisDemo extends Demo {
         try (JedisPool jedisPool = new JedisPool(poolConfig, "127.0.0.1", 6379);
              // 3.获取 Jedis 对象
              Jedis jedis = jedisPool.getResource()) {
-            jedis.set("name", "ljh");
+            jedis.set("name", MY_NAME);
             String value = jedis.get("name");
             p("value = " + value);
         }

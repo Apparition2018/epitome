@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  * 整型对象在内部实现中通过使用相同的对象引用实现了缓存和重用
  * </pre>
  * <pre>
- * 类型           最小值         最大值
+ * 类型          最小值          最大值
  * Byte         -128            127
  * Short        -128            127
  * Long         -128            127

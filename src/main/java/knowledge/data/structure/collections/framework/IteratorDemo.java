@@ -6,9 +6,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * Iterator
- * Iterator 替代 Enumeration
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Iterator.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Iterator.html">Iterator</a>
+ * <p>替代 Enumeration
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -27,5 +26,4 @@ public class IteratorDemo extends Demo {
             it.remove();
         }
     }
-
 }

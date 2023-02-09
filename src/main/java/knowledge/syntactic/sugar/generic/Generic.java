@@ -156,6 +156,5 @@ public class Generic<T> extends Demo {
             @Serial
             private static final long serialVersionUID = 314989737144242000L;
         };
-
     }
 }

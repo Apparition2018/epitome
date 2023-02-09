@@ -119,8 +119,8 @@ public class Operators {
      */
     @Test
     public void instanceof_() {
-        ops("3.3");
-        ops(3.3D);
+        this.ops("3.3");
+        this.ops(3.3D);
     }
 
     /**

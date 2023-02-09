@@ -17,7 +17,7 @@ public class JsonValueDemo extends Demo {
 
     @Test
     public void testJsonValue() throws JsonProcessingException {
-        Person person = new Person().setName("ljh").setAge(31);
+        Person person = new Person().setName(MY_NAME).setAge(31);
         p(jsonMapper.writeValueAsString(person)); // "ljh"
     }
 
@@ -27,6 +27,5 @@ public class JsonValueDemo extends Demo {
         @JsonValue
         private String name;
         private Integer age;
-
     }
 }

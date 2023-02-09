@@ -8,10 +8,8 @@ import java.io.IOException;
 import java.net.URI;
 
 /**
- * Desktop
- * https://www.runoob.com/manual/jdk1.6/java.desktop/java/awt/Desktop.html
- * Desktop.Action
- * https://www.runoob.com/manual/jdk1.6/java.desktop/java/awt/Desktop.Action.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/Desktop.html">Desktop</a>
+ * <p><a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/Desktop.Action.html">Desktop.Action</a>
  *
  * @author ljh
  * @since 2020/9/25 17:42

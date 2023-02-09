@@ -4,15 +4,15 @@ import java.sql.*;
 
 /**
  * JDBC (Java Database Connectivity)
- * <p>
- * 连接数据库的步骤：
- * 1：加载类库（驱动 jar 包）到 JVM
- * 2：通过 DriverManager 建立连接，这里会加载 jar 包中 JDBC 实现类来与数据库建立连接
- * 3：通过 Connection 创建 Statement 对象，执行 SQL 语句
- * 4：若执行的是 DQL 语句，则会得到查询结果集 Result，遍历该结果集得到查询内容
- * 5：关闭连接
- * <p>
- * JDBC的基本使用：https://www.cnblogs.com/progor/p/9096463.html
+ * <p>连接数据库的步骤：
+ * <pre>
+ * 1 加载类库（驱动 jar 包）到 JVM
+ * 2 通过 DriverManager 建立连接，这里会加载 jar 包中 JDBC 实现类来与数据库建立连接
+ * 3 通过 Connection 创建 Statement 对象，执行 SQL 语句
+ * 4 若执行的是 DQL 语句，则会得到查询结果集 Result，遍历该结果集得到查询内容
+ * 5 关闭连接
+ * </pre>
+ * <a href="https://www.cnblogs.com/progor/p/9096463.html">JDBC 的基本使用</a>
  *
  * @author ljh
  * @since 2020/10/10 15:25

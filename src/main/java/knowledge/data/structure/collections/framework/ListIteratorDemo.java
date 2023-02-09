@@ -5,13 +5,13 @@ import l.demo.Demo;
 import java.util.ListIterator;
 
 /**
- * ListIterator
- * 列表迭代器，允许程序员按任一方向遍历列表、迭代期间修改列表，并获得迭代器在列表中的当前位置。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/util/ListIterator.html
- * <p>
- * void	    add(E e)            将指定的元素插入列表（可选操作）
- * void	    set(E e)            用指定元素替换 next 或 previous 返回的最后一个元素（可选操作）
- * void	    remove()            从列表中移除由 next 或 previous 返回的最后一个元素（可选操作）
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/ListIterator.html">ListIterator</a>
+ * <p>列表迭代器，允许程序员按任一方向遍历列表、迭代期间修改列表，并获得迭代器在列表中的当前位置。
+ * <pre>
+ * void     add(E e)            将指定的元素插入列表（可选操作）
+ * void     set(E e)            用指定元素替换 next 或 previous 返回的最后一个元素（可选操作）
+ * void     remove()            从列表中移除由 next 或 previous 返回的最后一个元素（可选操作）
+ * </pre>
  *
  * @author ljh
  * @since 2020/10/16 15:22
@@ -47,6 +47,5 @@ public class ListIteratorDemo extends Demo {
             // 1, 2, 2
             // 0, 1, 1
         }
-
     }
 }

@@ -30,7 +30,7 @@ public class JsonCreatorDemo extends Demo {
 
         @JsonCreator
         public Person(@JsonProperty("name") String name) {
-            if ("ljh".equals(name)) name = "super" + name;
+            if (MY_NAME.equals(name)) name = "super" + name;
             this.name = name;
         }
     }

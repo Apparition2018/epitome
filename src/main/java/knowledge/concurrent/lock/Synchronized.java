@@ -1,4 +1,4 @@
-package knowledge.concurrent;
+package knowledge.concurrent.lock;
 
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;

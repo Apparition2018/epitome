@@ -1,4 +1,4 @@
-package knowledge.concurrent.executor;
+package knowledge.concurrent.pool;
 
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
@@ -8,26 +8,20 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ExecutorService.html">ExecutorService</a>
- * <p>线程池的主要功能是：
+ * Executors
+ * <p>阿里编程规约：
  * <pre>
- * 1 控制线程数量
- * 2 重用线程 当开发任务量大时，或者有频繁创建线程任务执行的操作时，就应当使用线程池来调度线程
- * </pre>
- * 阿里编程规约：
- * <pre>
- * 线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险
+ * <a href="https://blog.csdn.net/u010994966/article/details/103123927">线程池不允许使用 Executors 去创建</a>，而是通过 ThreadPoolExecutor 的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险
  * 1 FixedThreadPool 和 SingleThreadPool：允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM
  * 2 CachedThreadPool：允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM
  * 3 ScheduledThreadPool：允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM
- * <a href="https://blog.csdn.net/u010994966/article/details/103123927">不推荐使用 Executors 操作线程池类</a>
  * </pre>
  * 参考：<a href="https://blog.csdn.net/fy_java1995/article/details/107920983">如何在队列排队之前让 ThreadPoolExecutor 将线程增加到最大数量</a>
  *
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class ExecutorServiceDemo extends Demo {
+public class ExecutorsDemo extends Demo {
 
     /**
      * static ExecutorService	        newFixedThreadPool(int nThreads[, ThreadFactory threadFactory])
@@ -51,9 +45,10 @@ public class ExecutorServiceDemo extends Demo {
 
     /**
      * static ExecutorService	        newSingleThreadExecutor([ThreadFactory threadFactory])
-     * <p>创建一个使用单个 worker 线程的 Executor，以无界队列方式来运行该线程，并在需要时使用提供的 ThreadFactory 创建新线程
-     * <p>
-     * <p>该方法返回一个只有一个线程的线程池，即每次只能执行一个线程任务，多余的任务会保存到一个任务队列中，等待这一个线程空闲，当这个线程空闲了再按FIFO方式顺序执行任务队列中的任务
+     * <pre>
+     * 创建一个使用单个 worker 线程的 Executor，以无界队列方式来运行该线程，并在需要时使用提供的 ThreadFactory 创建新线程
+     * 该方法返回一个只有一个线程的线程池，即每次只能执行一个线程任务，多余的任务会保存到一个任务队列中，等待这一个线程空闲，当这个线程空闲了再按FIFO方式顺序执行任务队列中的任务
+     * </pre>
      */
     @Test
     public void testSingleThreadExecutor() throws InterruptedException {
@@ -63,9 +58,10 @@ public class ExecutorServiceDemo extends Demo {
 
     /**
      * static ScheduledExecutorService  newScheduledThreadPool(int corePoolSize[, ThreadFactory threadFactory])
-     * <p>创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行
-     * <p>
-     * <p>多线程并行处理定时任务时，Timer 运行多个 TimeTask 时，只要其中之一没有捕获抛出的异常，其它任务便会自动终止运行，使用 ScheduledExecutorService 则没有这个问题（阿里编程规约）
+     * <pre>
+     * 创建一个线程池，它可安排在给定延迟后运行命令或者定期地执行
+     * 多线程并行处理定时任务时，Timer 运行多个 TimeTask 时，只要其中之一没有捕获抛出的异常，其它任务便会自动终止运行，使用 ScheduledExecutorService 则没有这个问题（阿里编程规约）
+     * </pre>
      */
     @Test
     public void testScheduledThreadPool() throws InterruptedException {

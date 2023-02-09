@@ -28,7 +28,7 @@ public class SecureUtilDemo extends Demo {
     private static final String KEY_PATH = DESKTOP + "ljh.pfx";
     private static final String KEY_PASSWORD = "123456";
     private static final String KEY_TYPE_PKCS12 = "PKCS12";
-    private static final String KEY_ALIAS = "ljh";
+    private static final String KEY_ALIAS = MY_NAME;
     private static final String CERT_PATH = DESKTOP + "ljh.cer";
 
     @Test

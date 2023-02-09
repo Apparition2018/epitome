@@ -13,7 +13,7 @@ import static l.demo.Demo.p;
 /**
  * 用户自定义注解
  * <pre>
- * Annotation 是 JDK5 引入的新特征。
+ * Annotation 是 JDK5 引入的新特性
  * 它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。
  * 为程序的元素（类、方法、成员变量）加上更直观更明了的说明，这些说明信息是与程序的业务逻辑无关，并且供指定的工具或框架使用。
  * Annotation 像一种修饰符一样，应用于包、类型、构造方法、方法、成员变量、参数及本地变量的声明语句中。
@@ -134,12 +134,13 @@ public class CustomAnnotation {
      * 使用 @interface 关键字定义注解
      * 注解类可以没有成员，没有成员的注解成为标识注解
      * </pre>
-     * 4种元注解：
+     * 元注解：
      * <pre>
      * 1 @Documented 注解是否包含在 JavaDoc 中
      * 2 @Retention 生命周期 (SOURCE / CLASS / RUNTIME)，什么时候使用注解
      * 3 @Target 作用域，注解用于什么地方
      * 4 @Inherited 是否允许子类继承该注解 (子类会继承父类的类注解，不会继承父类的方法注解)；当类的继承层次较深时，不建议使用
+     * 5 @Repeatable 可重复注释，JDK8 引入
      * </pre>
      */
     @Target(ElementType.FIELD)

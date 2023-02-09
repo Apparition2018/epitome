@@ -1,4 +1,4 @@
-package knowledge.concurrent.executor;
+package knowledge.concurrent;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

@@ -9,13 +9,14 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 
 /**
- * HexUtil  16进制工具
- * 16进制一般针对无法显示的一些二进制进行显示，常用于：
- * 1.图片的字符串表现形式
- * 2.加密解密
- * 3.编码转换
- * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/16%E8%BF%9B%E5%88%B6%E5%B7%A5%E5%85%B7-HexUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/HexUtil.html
+ * <a href="https://hutool.cn/docs/#/core/工具类/16进制工具-HexUtil">HexUtil</a>   16进制工具
+ * <p>16进制一般针对无法显示的一些二进制进行显示，常用于：
+ * <pre>
+ * 1 图片的字符串表现形式
+ * 2 加密解密
+ * 3 编码转换
+ * </pre>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/HexUtil.html">HexUtil api</a>
  *
  * @author ljh
  * @since 2020/11/9 10:10
@@ -34,7 +35,7 @@ public class HexUtilDemo extends Demo {
         String encodeColor = HexUtil.encodeColor(Color.BLACK);
         Color color = HexUtil.decodeColor(encodeColor);
 
-        
+
         // int/long → 16进制字符串
         String hexStr = HexUtil.toHex(16);
         // 16进制字符串 → BigInteger

@@ -27,7 +27,7 @@ public class SerializationUtilsDemo extends Demo {
 
     @BeforeEach
     public void init() {
-        person = new Person().setName("ljh").setHome(new Home().setAddress("gx"));
+        person = new Person().setName(MY_NAME).setHome(new Home().setAddress("gx"));
     }
 
     /**

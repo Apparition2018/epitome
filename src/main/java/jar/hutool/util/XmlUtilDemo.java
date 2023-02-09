@@ -13,10 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * XmlUtil  XML工具
- * XmlUtil 封装了 JDK 自带的 w3c dom 解析和构建工具，简化 XML 的创建、读和写的过程
- * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/XML%E5%B7%A5%E5%85%B7-XmlUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/XmlUtil.html
+ * <a href="https://hutool.cn/docs/#/core/工具类/XML工具-XmlUtil">XmlUtil</a>    XML工具
+ * <p>XmlUtil 封装了 JDK 自带的 w3c dom 解析和构建工具，简化 XML 的创建、读和写的过程
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/XmlUtil.html">XmlUtil api</a>
  *
  * @author ljh
  * @since 2020/11/9 10:32
@@ -29,8 +28,8 @@ public class XmlUtilDemo extends Demo {
 
         Element school = XmlUtil.appendChild(doc, "school");
 
-        appendStudent(school, "1", "张三", "18");
-        appendStudent(school, "2", "李四", "19");
+        this.appendStudent(school, "1", "张三", "18");
+        this.appendStudent(school, "2", "李四", "19");
 
         XmlUtil.toFile(doc, DEMO_ABSOLUTE_PATH + "demo.xml");
     }
@@ -76,7 +75,7 @@ public class XmlUtilDemo extends Demo {
     }
 
     /**
-     * Xpath的更多介绍请看文章：https://www.ibm.com/developerworks/cn/doc/x-javaxpathapi.html
+     * <a href="https://www.ibm.com/developerworks/cn/doc/x-javaxpathapi.html">Xpath</a>
      */
     @Test
     public void testXPath() {
@@ -88,5 +87,4 @@ public class XmlUtilDemo extends Demo {
         String name = (String) XmlUtil.getByXPath("//student[age='18']/name/text()", doc, XPathConstants.STRING);
         p(name); // 张三
     }
-
 }

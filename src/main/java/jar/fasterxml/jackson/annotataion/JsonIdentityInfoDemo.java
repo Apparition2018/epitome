@@ -24,7 +24,7 @@ public class JsonIdentityInfoDemo extends Demo {
         Employee e1 = new Employee().setName("mary");
         Employee e2 = new Employee().setName("lucy");
 
-        Boss boss = new Boss().setName("ljh").setEmployeeList(Lists.list(e1, e2));
+        Boss boss = new Boss().setName(MY_NAME).setEmployeeList(Lists.list(e1, e2));
 
         e1.setBoss(boss);
         e2.setBoss(boss);

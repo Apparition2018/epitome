@@ -6,9 +6,8 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * PageUtil     分页工具
- * https://hutool.cn/docs/#/core/%E5%B7%A5%E5%85%B7%E7%B1%BB/%E5%88%86%E9%A1%B5%E5%B7%A5%E5%85%B7-PageUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/PageUtil.html
+ * <a href="https://hutool.cn/docs/#/core/工具类/分页工具-PageUtil">PageUtil</a>   分页工具
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/PageUtil.html">PageUtil api</a>
  *
  * @author ljh
  * @since 2020/11/19 11:41

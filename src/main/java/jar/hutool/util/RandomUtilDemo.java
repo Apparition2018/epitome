@@ -16,13 +16,14 @@ public class RandomUtilDemo extends Demo {
 
     /**
      * <pre>
+     * {@code
      * static Random                getRandom(boolean isSecure)
      * static ThreadLocalRandom     getRandom()                         线程隔离的随机数生成器
      * static SecureRandom          createSecureRandom(byte[] seed)     强加密随机数生成器(RNG)
      * static SecureRandom          getSecureRandom()                   强加密随机数生成器(RNG)
      *
      * static <T> WeightRandom<T>   weightRandom(Iterable<WeightRandom.WeightObj<T>> weightObjs)    带有权重的随机数生成器
-     * static <T> WeightRandom<T>   weightRandom(WeightRandom.WeightObj<T>[] weightObjs)            带有权重的随机数生成器
+     * static <T> WeightRandom<T>   weightRandom(WeightRandom.WeightObj<T>[] weightObjs)            带有权重的随机数生成器}
      * </pre>
      */
     @Test

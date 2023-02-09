@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">Optional</a>
@@ -87,6 +88,10 @@ public class OptionalDemo extends Demo {
         Optional<String> anotherName = Optional.of("Apparition");
         Optional<String> longName = anotherName.filter(value -> value.length() > 6);
         p(longName.orElse("The name is less than 6 characters")); // Apparition
+
+        // stream()
+        // 如果存在值，返回包含该值的 Stream，否则返回 Stream.empty()
+        Stream<String> stream = name.stream();
     }
 
     @Test

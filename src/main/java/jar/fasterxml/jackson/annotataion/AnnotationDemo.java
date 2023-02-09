@@ -61,7 +61,7 @@ public class AnnotationDemo extends Demo {
         filterProvider.addFilter("customFilter", new CustomFilter());
         jsonMapper.setFilterProvider(filterProvider);
         Person person = new Person()
-                .setName("ljh")
+                .setName(MY_NAME)
                 .setAge(31)
                 .setBirth(new Date())
                 .setSex(1)

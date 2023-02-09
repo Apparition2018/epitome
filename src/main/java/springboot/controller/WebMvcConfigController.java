@@ -25,6 +25,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
+import static l.demo.Demo.MY_NAME;
+
 /**
  * @author ljh
  * @since 2021/8/9 9:20
@@ -47,7 +49,7 @@ public class WebMvcConfigController {
     @GetMapping("configureContentNegotiation")
     @Operation(summary = "配置内容协议", description = "根据 mediaType 参数来觉得返回值格式(xml, json)")
     public Student configureContentNegotiation() {
-        return new Student(1, "ljh");
+        return new Student(1, MY_NAME);
     }
 
     /**

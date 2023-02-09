@@ -33,7 +33,7 @@ public class SettingDemo extends Demo {
 
 
         // getStr(String key, [[String group,] [String defaultValue]])
-        p(setting.getStr("user", "demo", "ljh"));
+        p(setting.getStr("user", "demo", MY_NAME));
         // 带有日志提示的 get，如果没有定义指定的 key，则打印 debug 日志
         p(setting.getByGroupWithLog("user2", "demo"));
         // 获得所有分组名

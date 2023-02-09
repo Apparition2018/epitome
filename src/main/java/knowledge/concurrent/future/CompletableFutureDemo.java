@@ -1,4 +1,4 @@
-package knowledge.concurrent.executor;
+package knowledge.concurrent.future;
 
 import l.demo.Demo;
 import org.assertj.core.util.Lists;
@@ -22,6 +22,7 @@ import java.util.concurrent.Executors;
  * <pre>
  * <a href="https://blog.csdn.net/f641385712/article/details/83580886">Future、FutureTask、CompletionService、CompletableFuture 解决多线程并发中归集问题的效率对比</a>
  * <a href="https://blog.csdn.net/f641385712/article/details/83618189">CompletableFuture 的系统讲解和实例演示</a>
+ * <a href="https://www.runoob.com/java/java9-completablefuture-api-improvements.html">JDK9 改进的 CompletableFuture</a>
  * </pre>
  *
  * @author ljh

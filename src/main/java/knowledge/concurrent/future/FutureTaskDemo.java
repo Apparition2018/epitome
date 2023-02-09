@@ -1,4 +1,4 @@
-package knowledge.concurrent.executor;
+package knowledge.concurrent.future;
 
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;

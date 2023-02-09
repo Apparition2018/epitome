@@ -78,7 +78,7 @@ public class ImgUtilDemo extends Demo {
 
         // 图片水印
         ImgUtil.pressImage(IMG, new File(HU_DEMO_PATH + "capture_pressImage.jpg"),
-                ImgUtil.read(new File(XIAO_XIN_PNG)), // 水印图片
+                ImgUtil.read(new File(XIAO_XIN_IMG)), // 水印图片
                 0,      // x 坐标修正值。 默认在中间，偏移量相对于中间偏移
                 0,      // y 坐标修正值。 默认在中间，偏移量相对于中间偏移
                 0.1f

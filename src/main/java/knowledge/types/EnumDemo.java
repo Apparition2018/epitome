@@ -8,23 +8,28 @@ import java.util.EnumMap;
 import java.util.EnumSet;
 
 /**
- * Enum
- * JLS (Java Language Specification) 提倡枚举项字母大写，单词间用下划线分割
- * JLS: https://docs.oracle.com/javase/specs/jls/se8/html/index.html
- * <p>
- * 优点：
- * 1.提高代码的整洁性、可读性
- * 2.内置方法和可自定义方法
- * 3.限制非法值的传入
- * <p>
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Enum.html">Enum</a>
+ * <pre>
+ * JDK5 引入的新特性
+ * <a href="https://docs.oracle.com/javase/specs/jls/se8/html/index.html">JLS</a> (Java Language Specification) 提倡枚举项字母大写，单词间用下划线分割
+ * </pre>
+ * <p>优点：
+ * <pre>
+ * 1 提高代码的整洁性、可读性
+ * 2 内置方法和可自定义方法
+ * 3 限制非法值的传入
+ * </pre>
  * 阿里编程规约：
- * 1.如果变量值仅在一个固定范围内变化用 enum 类型来定义
- * 2.所有的枚举类型字段必须要有注释，说明每个数据项的用途
- * 3.枚举 enum（括号内）的属性字段必须是私有且不可变
- * <p>
- * JAVA 常量类的项目实践：https://www.cnblogs.com/lihaoyang/p/6913295.html
- * values(), valueOf(String name) 的产生：https://blog.csdn.net/smd2575624555/article/details/113363688
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Enum.html
+ * <pre>
+ * 1 如果变量值仅在一个固定范围内变化用 enum 类型来定义
+ * 2 所有的枚举类型字段必须要有注释，说明每个数据项的用途
+ * 3 枚举 enum（括号内）的属性字段必须是私有且不可变
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://www.cnblogs.com/lihaoyang/p/6913295.html">Java 常量类的项目实践</a>
+ * <a href="https://blog.csdn.net/smd2575624555/article/details/113363688">values(), valueOf(String name) 如何产生</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/2 19:39
@@ -70,12 +75,11 @@ public class EnumDemo extends Demo {
         // equals()
         p(CompanyEnum.SF.name().equals("SF"));      // true
         p(CompanyEnum.SF.equals(CompanyEnum.YTO));  // false
-
     }
 
     /**
      * EnumSet, EnumMap
-     * 比 HashSet、HashMap 性能要好
+     * <p>性能比 HashSet、HashMap 更好
      */
     @Test
     public void enumSetMapAndEnumMap() {

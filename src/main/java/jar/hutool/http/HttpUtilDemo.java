@@ -55,7 +55,7 @@ public class HttpUtilDemo extends Demo {
     public void testDownload() {
         // 如果想更加灵活的将 HTTP 内容转换写出，
         // 可以使用 HttpUtil.download(String url, OutputStream out, boolean isCloseOut[, StreamProgress streamProgress])
-        HttpUtil.downloadFile(ARSENAL_LOGO, FileUtil.file("E:/"), new StreamProgress() {
+        HttpUtil.downloadFile(BIRD_IMG, FileUtil.file("E:/"), new StreamProgress() {
             @Override
             public void start() {
                 p("开始下载...");

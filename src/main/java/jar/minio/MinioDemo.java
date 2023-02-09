@@ -43,7 +43,7 @@ public class MinioDemo extends Demo {
 
     @Test
     public void upload() {
-        File file = new File(XIAO_XIN_PNG);
+        File file = new File(XIAO_XIN_IMG);
         // 这里不能使用 File.separator，否则 window 系统不能创建文件夹
         String date = DateFormatUtils.format(new Date(), "yyyy/MMdd");
         String fileName = "images/" + date + "/蜡笔小新." + FilenameUtils.getExtension(file.getName());

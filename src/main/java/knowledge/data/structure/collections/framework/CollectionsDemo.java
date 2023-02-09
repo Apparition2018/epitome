@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Collections.html">Collections</a>
  * <pre>
+ * {@code
  * static void              copy(List<? super T> dest, List<? extends T> src)   将所有元素从一个列表复制到另一个列表
  * static void              fill(List<? super T> list, T obj)               使用指定元素替换指定列表中的所有元素
  * static void              swap(List<?> list, int i, int j)                在指定列表的指定位置处交换元素
@@ -43,7 +44,7 @@ import java.util.stream.Collectors;
  * static int               frequency(Collection<?> c, Object o)            返回指定 collection 中等于指定对象的元素个数
  *
  * static <T extends Object & Comparable<? super T>> T	max(Collection<? extends T> coll[, Comparator<? super T> comp])     根据元素的自然顺序，返回给定 collection 的最大元素
- * static <T extends Object & Comparable<? super T>> T	min(Collection<? extends T> coll[, Comparator<? super T> comp])     根据元素的自然顺序 返回给定 collection 的最小元素
+ * static <T extends Object & Comparable<? super T>> T	min(Collection<? extends T> coll[, Comparator<? super T> comp])     根据元素的自然顺序 返回给定 collection 的最小元素}
  * </pre>
  * Collections 类返回的对象，如：emptyList() / singletonList() 等都是 immutable list，不可对其进行添加或者删除元素的操作（阿里编程规约）
  *

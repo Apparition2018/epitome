@@ -22,7 +22,7 @@ public class ReflectionUtilsDemo extends Demo {
         // Field handling
         Field field = ReflectionUtils.findField(Person.class, "name", String.class);
         ReflectionUtils.makeAccessible(Objects.requireNonNull(field));
-        ReflectionUtils.setField(field, personList.get(0), "ljh");
+        ReflectionUtils.setField(field, personList.get(0), MY_NAME);
         p(ReflectionUtils.getField(field, personList.get(0)));
 
         // Method handling

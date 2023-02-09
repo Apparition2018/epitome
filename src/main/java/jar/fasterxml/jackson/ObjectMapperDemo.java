@@ -53,7 +53,7 @@ public class ObjectMapperDemo extends Demo {
 
         // String   writeValueAsString(Object value)
         // 写成字符串形式（最常用）
-        String json = jsonMapper.writeValueAsString(new Person("ljh", 31, new Date()));
+        String json = jsonMapper.writeValueAsString(new Person(MY_NAME, 31, new Date()));
         p("========== Obj → String ==========\n" + json);
         // T        readValue(String content, Class<T> valueType)
         // 读为指定 Class 类型的对象

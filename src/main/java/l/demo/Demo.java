@@ -75,6 +75,7 @@ public class Demo {
     public static final int MILLION = THOUSAND * 1000;
     public static final int TEN_MILLION = MILLION * 10;
     public static final int HUNDRED_MILLION = MILLION * 100;
+    public static final int PORT = 3333;
     public static final String HELLO_WORLD = "Hello World!";
     public static final String MY_NAME = "ljh";
     public static final String MY_EMAIL = "88850180@163.com";
@@ -98,8 +99,8 @@ public class Demo {
     public static final String HU_DEMO_ABSOLUTE_PATH = USER_DIR + File.separator + HU_DEMO_PATH;
     public static final String DEMO_FILE_PATH = DEMO_PATH + "demo";
     public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "demo";
-    public static final String ARSENAL_LOGO = "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1113375911,3381445023&fm=26&gp=0.jpg";
-    public static final String XIAO_XIN_PNG = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
+    public static final String BIRD_IMG = "https://i.postimg.cc/1zRqNgPw/bird.jpg";
+    public static final String XIAO_XIN_IMG = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
     public static final String VIDEO = RESOURCES_ABSOLUTE_PATH + "static/public/video/movie.ogg";
     public static final String JDBC_PROPS_FILENAME = "jdbc.properties";
 

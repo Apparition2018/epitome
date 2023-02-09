@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class OkHttpDemo extends Demo {
     private static final String MARKDOWN_RAW_URL = "https://api.github.com/markdown/raw";
     private static final MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse("text/x-markdown; charset=utf-8");
-    private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
+    private static final MediaType MEDIA_TYPE_JPG = MediaType.parse("image/jpg");
     private OkHttpClient client = new OkHttpClient();
 
     /**
@@ -154,16 +154,16 @@ public class OkHttpDemo extends Demo {
      */
     @Test
     public void testMultipartRequest() throws IOException {
-        RequestBody logoRequestBody = RequestBody.create(new File(ARSENAL_LOGO), MEDIA_TYPE_PNG);
-        RequestBody requestBody = new MultipartBody.Builder()
+        RequestBody requestBody = RequestBody.create(new File(BIRD_IMG), MEDIA_TYPE_JPG);
+        RequestBody requestBody2 = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("title", "Arsenal Logo")
-                .addFormDataPart("image", "arsenal-logo.png", logoRequestBody)
+                .addFormDataPart("title", "Bird")
+                .addFormDataPart("image", "bird.jpg", requestBody)
                 .build();
         Request request = new Request.Builder()
                 .header("Authorization", "Client-ID ...")
                 .url("https://api.imgur.com/3/image")
-                .post(requestBody)
+                .post(requestBody2)
                 .build();
         executePrintResult(request);
     }

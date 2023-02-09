@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 /**
- * CharsetUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/CharsetUtil.html
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/CharsetUtil.html">CharsetUtil</a>
  *
  * @author ljh
  * @since 2020/11/22 3:16
