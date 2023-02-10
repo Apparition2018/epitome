@@ -16,8 +16,7 @@ import static l.demo.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html">DateUtils</a>
- * <p>
- * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html">DateFormatUtils</a>
+ * <p><a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html">DateFormatUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -141,13 +140,13 @@ public class DateUtilsDemo {
         Iterator<Calendar> it = DateUtils.iterator(DATE1, DateUtils.RANGE_WEEK_MONDAY);
         while (it.hasNext()) {
             p(new Date(it.next().getTimeInMillis()));
-//            2019-10-28 00:00:00.000
-//            2019-10-29 00:00:00.000
-//            2019-10-30 00:00:00.000
-//            2019-10-31 00:00:00.000
-//            2019-11-01 00:00:00.000
-//            2019-11-02 00:00:00.000
-//            2019-11-03 00:00:00.000
+            // 2019-10-28 00:00:00.000
+            // 2019-10-29 00:00:00.000
+            // 2019-10-30 00:00:00.000
+            // 2019-10-31 00:00:00.000
+            // 2019-11-01 00:00:00.000
+            // 2019-11-02 00:00:00.000
+            // 2019-11-03 00:00:00.000
         }
     }
 

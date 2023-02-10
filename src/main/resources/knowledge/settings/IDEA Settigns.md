@@ -51,17 +51,31 @@
         3.1 Remove trailing spaces on: Modified Lines 勾选
         3.2 Keep trailing spaces on caret line 勾选
 ---
+## Auto Import
+    1. Settings → Editor → General → Auto Import → Java
+    2. Add unambiguous imports on the fly 勾选
+    3. Optimeze imports on the fly 勾选
+---
 ## Code Folding
     1. Settings → Editor → General → Code Folding
     2. Fold by default: → Genral → Imports 取消勾选
 ---
 ## Editor Tabs
     1. Settings → Editor → General → Editor Tabs
-    2. Hide tabs if ther is no space 取消勾选
+    2. Show tabs in one row 取消勾选
 ---
 ## Font (-e)
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
+---
+## Comment Code
+    1. Settings → Editor → Code Style
+    2. Java → Code Generation → Comment Code
+        2.1 Line comment at first column 取消勾选
+        2.2 Add a space at line comment start 勾选
+    3. XML → Code Generation → Comments
+        3.1 Line comment at first column 取消勾选
+        3.2 Add spaces around block comments 勾选
 ---
 ## Inspections (-g|-e)
     1. Settings → Editor → Inspections

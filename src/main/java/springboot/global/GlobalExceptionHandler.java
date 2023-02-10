@@ -202,11 +202,11 @@ public class GlobalExceptionHandler {
         return Result.failure(e.getResultCode(), e.getMessage());
     }
 
-//    @ExceptionHandler({Throwable.class})
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    public R handleError(Throwable e) {
-//        log.error("服务器异常", e);
-//        ErrorLogPublisher.publishEvent(e, UrlUtil.getPath(WebUtil.getRequest().getRequestURI()));
-//        return R.fail(ResultCode.INTERNAL_SERVER_ERROR, Func.isEmpty(e.getMessage()) ? ResultCode.INTERNAL_SERVER_ERROR.getMessage() : e.getMessage());
-//    }
+    // @ExceptionHandler({Throwable.class})
+    // @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    // public R handleError(Throwable e) {
+    //     log.error("服务器异常", e);
+    //     ErrorLogPublisher.publishEvent(e, UrlUtil.getPath(WebUtil.getRequest().getRequestURI()));
+    //     return R.fail(ResultCode.INTERNAL_SERVER_ERROR, Func.isEmpty(e.getMessage()) ? ResultCode.INTERNAL_SERVER_ERROR.getMessage() : e.getMessage());
+    // }
 }

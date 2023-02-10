@@ -67,12 +67,12 @@
     </util:list>
     <bean id="person" class="l.demo.Person">
         <property name="otherInfo" ref="otherInfo"/>
-<!--        <property name="otherInfo">-->
-<!--            <list>-->
-<!--                <value>父亲</value>-->
-<!--                <value>医生</value>-->
-<!--            </list>-->
-<!--        </property>-->
+        <!-- <property name="otherInfo"> -->
+        <!--     <list> -->
+        <!--         <value>父亲</value> -->
+        <!--         <value>医生</value> -->
+        <!--     </list> -->
+        <!-- </property> -->
     </bean>
     <util:properties location="classpath:jdbc.properties" id="jdbc"/>
     <bean id="bean" class="spring.bean.Bean" init-method="initMethod" destroy-method="destroyMethod">
@@ -82,7 +82,7 @@
     <bean id="beanPostProcessor" class="spring.api.beans.factory.MyBeanPostProcessor"/>
     <bean id="beanFactoryPostProcessor" class="spring.api.beans.factory.MyBeanFactoryPostProcessor"/>
 
-<!--    <context:component-scan base-package="spring.bean"/>-->
+    <!-- <context:component-scan base-package="spring.bean"/> -->
     <!-- Lazy -->
     <bean id="otherBean" class="spring.bean.OtherBean" lazy-init="true">
         <!-- SpEL -->

@@ -67,7 +67,7 @@ public class DateDemo2 extends Demo {
     @Test
     public void dateToCalendar() {
         Calendar calendar = Calendar.getInstance();
-//        Calendar calendar = GregorianCalendar.getInstance();
+        // Calendar calendar = GregorianCalendar.getInstance();
 
         // Date → Calendar
         calendar.setTime(date);

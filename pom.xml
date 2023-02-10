@@ -101,7 +101,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        <!-- 热部署：https://blog.csdn.net/Martin_chen2/article/details/116198924 -->
+        <!-- devtools：https://blog.csdn.net/Martin_chen2/article/details/116198924 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -486,8 +486,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <!-- https://jiangchao.blog.csdn.net/article/details/108880019 -->
-                    <fork>true</fork>
+                    <!-- fork：是否分叉运行进程，3.0.0 移除 
+                        https://jiangchao.blog.csdn.net/article/details/108880019 -->
+                    <!-- <fork>true</fork> -->
                     <!-- 资源热刷新 -->
                     <addResources>true</addResources>
                 </configuration>
@@ -514,7 +515,7 @@
                 https://maven.apache.org/plugins/maven-assembly-plugin/ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>org
+                <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <!-- http://maven.apache.org/shared/maven-archiver/index.html -->
                     <archive>

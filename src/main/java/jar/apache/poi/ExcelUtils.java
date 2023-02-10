@@ -66,7 +66,7 @@ public class ExcelUtils<T> {
             if (cell.getCellType() == CellType.BOOLEAN) {
                 return String.valueOf(cell.getBooleanCellValue());
             } else if (cell.getCellType() == CellType.NUMERIC) {
-//                short format = cell.getCellStyle().getDataFormat();
+                // short format = cell.getCellStyle().getDataFormat();
                 if (DateUtil.isCellDateFormatted(cell)) {
                     double cellValue = cell.getNumericCellValue();
                     Date date = DateUtil.getJavaDate(cellValue);

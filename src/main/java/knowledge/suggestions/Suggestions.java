@@ -370,7 +370,7 @@ public class Suggestions extends Demo {
                 setOperator(Ops.ADD);
             }
 
-            //覆写父类的构造方法
+            // 覆写父类的构造方法
             public Add(int _i, int _j) {
                 super(_i, _j);
             }
@@ -457,7 +457,7 @@ public class Suggestions extends Demo {
     public void test067() {
         // List 集合，记录所有学生的份数
         List<Integer> scores = new ArrayList<>(); // 10ms
-//          List<Integer> scores = new LinkedList<>(); // 15ms
+        // List<Integer> scores = new LinkedList<>(); // 15ms
         // 学生人数 100 万
         IntStream.rangeClosed(1, TEN_MILLION).forEach(i -> scores.add(new Random().nextInt(150)));
         StopWatch watch = StopWatch.createStarted();
