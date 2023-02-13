@@ -47,7 +47,7 @@ public class InnerClass {
         private class AInner implements S {
             private int x = 8;
 
-            public void test() {
+            public void demo() {
                 int x = 7;
                 p(x);       // 7
                 p(this.x);  // 8
@@ -69,7 +69,7 @@ public class InnerClass {
 
         public static void main(String[] args) {
             AInner aInner = new A().new AInner();
-            aInner.test();
+            aInner.demo();
         }
     }
 
@@ -104,14 +104,13 @@ public class InnerClass {
          * <p>注意：非静态内部类中不可以声明静态成员变量和方法
          */
         static class CInner {
-            public void test() {
-
+            public void demo() {
             }
         }
 
         public static void main(String[] args) {
             CInner cInner = new C.CInner();
-            cInner.test();
+            cInner.demo();
         }
     }
 

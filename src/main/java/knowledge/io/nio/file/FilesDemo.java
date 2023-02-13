@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
@@ -22,25 +23,28 @@ public class FilesDemo extends Demo {
     @Test
     public void write() throws IOException {
         Path path = Paths.get(DEMO_FILE_PATH);
-
         List<String> lines = List.of("静夜思", "床前明月光，", "疑是地上霜。", "举头望明月，", "低头思故乡。");
 
+        // Path                 write(Path path, Iterable<? extends CharSequence> lines, OpenOption... options)
         Files.write(path, lines, StandardOpenOption.CREATE);
+        // Path                 writeString(Path path, CharSequence csq, OpenOption... options)
+        // JDK11 引入
+        Files.writeString(path, String.join("\r\n", lines) + "\r\n", StandardOpenOption.CREATE);
     }
 
     @Test
     public void read() throws IOException {
         Path path = Paths.get(DEMO_FILE_PATH);
 
-        // 1.
+        // List<String>         readAllLines(Path path)
         Files.readAllLines(path).forEach(Demo::p);
 
-        // 2.
+        // Stream<String>       lines(Path path)
         try (Stream<String> lines = Files.lines(path)) {
             lines.forEach(Demo::p);
         }
 
-        // 3.
+        // BufferedReader       newBufferedReader(Path path)
         try (BufferedReader br = Files.newBufferedReader(path)) {
             String line;
             while (null != (line = br.readLine())) {
@@ -48,6 +52,11 @@ public class FilesDemo extends Demo {
             }
         }
 
+        // String               readString(Path path, Charset cs)
+        // JDK11 引入
+        p(Files.readString(path, StandardCharsets.UTF_8));
+
+        // Map<String,Object>   readAttributes(Path path, String attributes, LinkOption... options)
         // 读取文件属性，"*" 表示 读取所有属性
         p(Files.readAttributes(path, "*"));
         // {lastAccessTime=2020-09-22T06:16:01.487644Z, lastModifiedTime=2020-09-22T06:16:01.487644Z, size=91, creationTime=2020-09-14T06:22:45.436145Z, isSymbolicLink=false, isRegularFile=true, fileKey=null, isOther=false, isDirectory=false}

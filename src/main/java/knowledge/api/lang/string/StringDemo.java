@@ -5,20 +5,21 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/String.html">String</a>
  * <pre>
- * int          length()                                    返回此字符序列的长度
- * char         charAt(int index)                           返回指定索引处的 char 值
- * String       concat(String str)                          将指定字符串连接到此字符串的结尾
- * boolean      contains(CharSequence s)                    当且仅当此字符串包含指定的 char 值序列时，返回 true
+ * int          length()                                返回此字符序列的长度
+ * char         charAt(int index)                       返回指定索引处的 char 值
+ * String       concat(String str)                      将指定字符串连接到此字符串的结尾
+ * boolean      contains(CharSequence s)                当且仅当此字符串包含指定的 char 值序列时，返回 true
  * boolean      endsWith(String suffix)
  * boolean      startsWith(String prefix[, int toffset])
- * boolean      equals(Object anObject)                     将此字符串与指定的对象比较
- * boolean      equalsIgnoreCase(String str)                与另一个 String 比较，不考虑大小写
- * int          indexOf(int ch, int fromIndex)              返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索
- * int          indexOf(String str[, int fromIndex])        返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始
+ * boolean      equals(Object anObject)                 将此字符串与指定的对象比较
+ * boolean      equalsIgnoreCase(String str)            与另一个 String 比较，不考虑大小写
+ * int          indexOf(int ch, int fromIndex)          返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索
+ * int          indexOf(String str[, int fromIndex])    返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始
  * int          lastIndexOf(int ch, int fromIndex)
  * int          lastIndexOf(String str[, int fromIndex])
  * String       toLowerCase()
@@ -56,6 +57,21 @@ public class StringDemo extends Demo {
         // format 转换符：https://www.cnblogs.com/Dhouse/p/7776780.html
         p(String.format("%s来自%s", "我", "中国"));  // 我来自中国
         p(String.format("%.2f", 0.345));            // 0.35
+    }
+
+    @Test
+    public void testJDK11() {
+        p("".isBlank());
+        // 去除头尾空格
+        p(" aaa ".strip());
+        // 去除头部空格
+        p(" aaa".stripLeading());
+        // 去除尾部空格
+        p("aaa ".stripTrailing());
+        // 重复字串
+        p("a".repeat(3));
+        // 返回行终止符的 Stream，包括 \n、\r、\r\n
+        Stream<String> lines = "a\nb\nc".lines();
     }
 
     /**
@@ -143,7 +159,7 @@ public class StringDemo extends Demo {
     }
 
     @Test
-    public void subString() {
+    public void sub() {
         // CharSequence	    subSequence(int beginIndex, int endIndex)
         // 返回一个新的字符序列，它是此序列的一个子序列
         p("www.baidu.com".subSequence(4, 10));  // baidu

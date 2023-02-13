@@ -6,7 +6,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -123,7 +122,7 @@ public class CompositeDemo {
         private final Integer level;
 
         public void add(File... file) {
-            filesList.addAll(Arrays.asList(file));
+            filesList.addAll(List.of(file));
         }
 
         public void remove(File file) {

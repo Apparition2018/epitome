@@ -49,9 +49,9 @@ public class CollectorsDemo extends Demo {
 
     @Test
     public void testCollectors() {
-        List<String> names = Arrays.asList("Luna", "Olivia", "Cora", "Leo", "Henry");
+        List<String> names = List.of("Luna", "Olivia", "Cora", "Leo", "Henry");
 
-        // toCollection(), toList(), toSet(), toMap(), toConcurrentMap()
+        // toCollection(), toList(), toUnmodifiableList()(JDK10 引入) , toSet(), toMap(), toConcurrentMap()
         p(names.stream().collect(Collectors.toList()));
 
         // joining()                                连接字符串

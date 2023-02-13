@@ -69,7 +69,7 @@ public class JedisDistributedLocks extends Demo {
     }
 
     @Test
-    public void test() throws InterruptedException {
+    public void testDistributedLocks() throws InterruptedException {
         try (Jedis jedis = JedisUtils.getResource()) {
             jedis.set(MONEY, "1000");
         }

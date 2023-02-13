@@ -55,7 +55,6 @@ public class ZipUtils extends Demo {
     public static void compress(File[] files, String zipFile) {
 
         if (null != files && files.length > 0) {
-
             if (isEndsWithZip(zipFile)) {
                 Map<String, File> map = new HashMap<>();
                 for (File file : files) {

@@ -20,7 +20,7 @@ public class TkMapperTest {
     private SalesTkMapper salesTkMapper;
 
     @Test
-    public void test() {
+    public void testTkMapper() {
         Sales sales = new Sales();
         sales.setYearId(2013);
         System.err.println(salesTkMapper.select(sales));

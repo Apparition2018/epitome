@@ -2,6 +2,8 @@ package knowledge.oop;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static l.demo.Demo.MY_NAME;
 
 /**
@@ -56,15 +58,24 @@ public class Variable {
      * 没有默认值，所以局部变量被声明后，必须经过初始化，才可以使用
      * </pre>
      * 阿里编程规约：所有的局部变量使用基本数据类型
+     *
+     * @see <a href="https://openjdk.org/jeps/286">JDK10 JEP 286: Local-Variable Type Inference</a>
+     * @see <a href="https://openjdk.org/jeps/323">JDK11 JEP 323: Local-Variable Syntax for Lambda Parameters</a>
      */
     public void method() {
-        int z = 0;
-        System.out.println(z);
+        // 局部变量
+        int i = 0;
+        // 局部变量类型推断
+        var list = List.of(1, 2, 3);
+        // 在 lambda 中使用 局部变量类型推断
+        list.forEach((var e) -> System.out.println(i + 1));
     }
 
     public static void main(String[] args) {
-        System.out.println(Variable.salary);       // 类变量可通过 ClassName.variableName 访问
-        System.out.println(new Variable().name);   // 实例变量通过 ObjectReference.variableName 访问
+        // 类变量可通过 ClassName.variable 访问
+        System.out.println(Variable.salary);
+        // 实例变量通过 ObjectReference.variable 访问
+        System.out.println(new Variable().name);
     }
 
     /**
@@ -83,12 +94,12 @@ public class Variable {
     static class Constant {
 
         @Test
-        public void test() {
+        public void testConstant() {
             System.out.println(Constant.A.COMPILE_TIME_CONSTANT);
         }
 
         @Test
-        public void test2() {
+        public void testConstant2() {
             System.out.println(Constant.A.RUN_TIME_CONSTANT);
         }
 

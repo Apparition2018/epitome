@@ -1,5 +1,9 @@
 package knowledge.keyword.modifiers;
 
+import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Field;
+
 /**
  * 访问修饰符
  * <pre>
@@ -63,5 +67,34 @@ public class AccessModifier {
 
     public int sum() {
         return x + y + z;
+    }
+
+    /**
+     * <a href="https://www.imooc.com/video/18992">基于嵌套的访问控制</a>：如果在一个类中嵌套了多个子类，那么子类中可以访问彼此的私有成员
+     *
+     * @see <a href="https://openjdk.org/jeps/181">JDK11 JEP 181: Nest-Based Access Control</a>
+     */
+    @Test
+    public void testNestBasedAccessControl() throws NoSuchFieldException, IllegalAccessException {
+        X x = new X();
+        x.accessY();
+    }
+
+    static class X {
+        private void accessY() throws NoSuchFieldException, IllegalAccessException {
+            Y y = new Y();
+            y.y = 1;
+
+            Field field = Y.class.getDeclaredField("y");
+            // JDK11 之前需要 setAccessible(true)，否者报 IllegalAccessException: Class com.ljh.Test$X can not access a member of class com.ljh.Test$Y with modifiers "private"
+            // field.setAccessible(true);
+            field.setInt(y, 2);
+
+            System.out.println(y.y);
+        }
+    }
+
+    static class Y {
+        private int y;
     }
 }

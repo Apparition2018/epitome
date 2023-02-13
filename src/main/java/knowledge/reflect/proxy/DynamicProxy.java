@@ -11,11 +11,12 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * DynamicProxy    动态代理
- * java.lang.reflect.Proxy: 创建动态代理类和实例的静态方法，还是由这些方法创建的所有动态代理类的超类
- * java.lang.reflect.InvocationHandler: 代理实例的调用处理程序实现的接口
- * <p>
- * Java 动态代理作用是什么？：https://www.zhihu.com/question/20794107
+ * DynamicProxy     动态代理
+ * <pre>
+ * java.lang.reflect.Proxy              创建动态代理类和实例的静态方法，还是由这些方法创建的所有动态代理类的超类
+ * java.lang.reflect.InvocationHandler  代理实例的调用处理程序实现的接口
+ * </pre>
+ * 参考：<a href="https://www.zhihu.com/question/20794107">Java 动态代理作用是什么？</a>
  *
  * @author ljh
  * @since 2020/11/9 17:51

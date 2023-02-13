@@ -3,7 +3,6 @@ package knowledge.concurrent.pool;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -74,7 +73,7 @@ public class ExecutorsDemo extends Demo {
      * <p>创建工作窃取线程池
      */
     @Test
-    public void test() throws InterruptedException {
+    public void testWorkStealingPool() throws InterruptedException {
         ExecutorService workStealingPool = Executors.newWorkStealingPool();
         executeTask(workStealingPool);
     }
@@ -135,10 +134,10 @@ public class ExecutorsDemo extends Demo {
     @Test
     public void invoke() throws InterruptedException, ExecutionException {
         ExecutorService threadPool = Executors.newWorkStealingPool();
-        List<Callable<String>> callableList = Arrays.asList(
-                callable("task1", 1),
-                callable("task2", 2),
-                callable("task3", 3)
+        List<Callable<String>> callableList = List.of(
+                this.callable("task1", 1),
+                this.callable("task2", 2),
+                this.callable("task3", 3)
         );
         p("--- invokeAll ---");
         // <T> List<Future<T>>  invokeAll(Collection<? extends Callable<T>> tasks[, long timeout, TimeUnit unit])

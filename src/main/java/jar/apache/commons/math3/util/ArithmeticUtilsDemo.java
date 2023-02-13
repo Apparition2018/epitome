@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * ArithmeticUtils  算术
- * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/util/ArithmeticUtils.html
+ * <a href="http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/util/ArithmeticUtils.html">ArithmeticUtils</a>    算术
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -15,8 +14,7 @@ import static l.demo.Demo.p;
 public class ArithmeticUtilsDemo {
 
     @Test
-    public void arithmetic() {
-
+    public void testArithmeticUtils() {
         // static int/long      addAndCheck(int/long x, int/long y)
         // 相加，检查溢出
         p(ArithmeticUtils.addAndCheck(15, 15));
@@ -43,7 +41,5 @@ public class ArithmeticUtilsDemo {
         // static boolean	    isPowerOfTwo(long n)
         // 如果是 2 的幂，则返回 true
         p(ArithmeticUtils.isPowerOfTwo(1024)); // true
-
     }
-
 }

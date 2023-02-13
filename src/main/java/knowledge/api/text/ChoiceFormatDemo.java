@@ -8,11 +8,12 @@ import java.text.ParsePosition;
 import static l.demo.Demo.p;
 
 /**
- * ChoiceFormat
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/ChoiceFormat.html">ChoiceFormat</a>
+ * <pre>
  * ChoiceFormat 允许将格式应用到某个范围的数。它通常用于在 MessageFormat 中处理复数。使用按升序排列的 double 列表指定 choice，列表中每一项都指定一个到下一项的半开区间：
  * 当且仅当 limit[j] <= X < limit[j+1] 时，X 匹配 j。
  * 如果不匹配，则根据数 (X) 的是太小还是太大，选择使用第一个或最后一个索引。
- * https://www.runoob.com/manual/jdk1.6/java.base/java/text/ChoiceFormat.html
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/3 16:22

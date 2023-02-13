@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Timer;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
@@ -108,7 +111,7 @@ public class MediatorDemo {
         private List<Country> countries = new ArrayList<>();
 
         private void addCountry(Country... countries) {
-            this.countries.addAll(Arrays.asList(countries));
+            this.countries.addAll(List.of(countries));
         }
 
         @Override
@@ -120,5 +123,4 @@ public class MediatorDemo {
             }
         }
     }
-
 }

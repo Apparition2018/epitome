@@ -442,7 +442,7 @@ public class Suggestions extends Demo {
         // 在Java中任何一个一维数组的类型都是 "[I"，究其原因就是 Java 并没有定义数组这一个类，它是在编译器编译的时候生成的，是一个特殊的类
 
         Integer[] arr2 = {1, 2, 3, 4, 5};
-        List<Integer> list2 = Arrays.asList(arr2);
+        List<Integer> list2 = List.of(arr2);
         p(list2); // [1, 2, 3, 4, 5]
     }
 
@@ -778,7 +778,7 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test100() {
-        List<Integer> list = Arrays.asList(1, 3, 5, 7, 9);
+        List<Integer> list = List.of(1, 3, 5, 7, 9);
         Integer[] ia = Suggestions.toArray(list, Integer.class);
         p(ia);
     }

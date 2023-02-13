@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Test;
  * BasicDynaClass
  * DynaBean
  * LazyDynaBean
- * <p>
- * <a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/package-summary.html">beanutils</a>
+ * <p><a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/package-summary.html">beanutils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -25,7 +24,7 @@ public class DynaDemo {
      * 2.生成无固定格式的 Bean
      */
     @Test
-    public void test() throws InstantiationException, IllegalAccessException {
+    public void testDyna() throws InstantiationException, IllegalAccessException {
         // 动态 Bean，首先定义 Bean 类
         DynaProperty[] props = new DynaProperty[]{
                 new DynaProperty("name", String.class),

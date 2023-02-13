@@ -81,13 +81,19 @@ public class MapDemo extends Demo {
      */
     @Test
     public void testOf() {
-        Map<Integer, String> map1 = Map.of(1, "A", 2, "B", 3, "C");
-        Map<Integer, String> map2 = Map.ofEntries(
+        // Map<K, V>    of(K k1, V v1, ...)
+        // Map<K, V>    ofEntries(Entry<? extends K, ? extends V>... entries)
+        // 返回一个不可修改的 Map，JDK9 引入
+        Map<Integer, String> map = Map.of(1, "A", 2, "B", 3, "C");
+        map = Map.ofEntries(
                 new AbstractMap.SimpleEntry<>(1, "A"),
                 new AbstractMap.SimpleEntry<>(2, "B"),
                 new AbstractMap.SimpleEntry<>(3, "C")
         );
-        p(map1.equals(map2));
+
+        // Map<K, V>    copyOf(Map<? extends K, ? extends V> map)
+        // 返回一个不可修改的 Map，JDK10 引入
+        map = Map.copyOf(map);
     }
 
     @Test

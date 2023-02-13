@@ -6,8 +6,8 @@ import org.apache.commons.collections4.list.FixedSizeList;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/CollectionUtils.html">CollectionsUtils</a>
@@ -49,7 +49,7 @@ public class CollectionUtilsDemo extends Demo {
 
         // static <E> Collection<List<E>>   permutations(Collection<E> collection)
         // 返回输入集合的所有排列的集合
-        p(CollectionUtils.permutations(Arrays.asList(1, 2, 3)));
+        p(CollectionUtils.permutations(List.of(1, 2, 3)));
         // [[1, 2, 3], [1, 3, 2], [3, 1, 2], [3, 2, 1], [2, 3, 1], [2, 1, 3]]
     }
 

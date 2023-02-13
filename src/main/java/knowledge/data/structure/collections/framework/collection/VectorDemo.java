@@ -3,8 +3,8 @@ package knowledge.data.structure.collections.framework.collection;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -27,7 +27,7 @@ public class VectorDemo extends Demo {
         // Vector()                             构造一个空向量，使其内部数据数组的大小为 10，其标准容量增量为零
         // Vector(Collection<? extends E> c)    构造一个包含指定 collection 中的元素的向量，这些元素按其 collection 的迭代器返回元素的顺序排列
         // Vector(int initialCapacity[, int capacityIncrement])     使用指定的初始容量和容量增量构造一个空的向量
-        V = new Vector<>(Arrays.asList("0 1 2 3 4 5 6 7 8 9".split(" ")));
+        V = new Vector<>(List.of("0 1 2 3 4 5 6 7 8 9".split(" ")));
         p(V);
     }
 

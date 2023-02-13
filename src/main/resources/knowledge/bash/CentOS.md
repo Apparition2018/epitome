@@ -31,14 +31,14 @@
     vi ~/.ssh/known_hosts
 ---
 ## JDK
-1. [linux安装jdk8(rpm方式)](https://www.cnblogs.com/myibm/p/9232744.html)
-2. [Centos7配置JAVA_HOME](https://www.cnblogs.com/baojun/p/10832624.html)
+1. [Linux 安装 JDK8 (rpm 方式)](https://www.cnblogs.com/myibm/p/9232744.html)
+2. [定位 JDK 安装路径](https://www.cnblogs.com/baojun/p/10832624.html)
 ```
-1. rpm -qa|grep XXX         yum list installed|grep XXX
-   rpm -e XXX               yum remove XXX
-   wget XXX.rpm             yum search java|grep -i --color XXX
+1. rpm -qa|grep XXX             yum list installed|grep XXX
+   rpm -e XXX                   yum remove XXX
+   wget XXX.rpm                 yum search java|grep -i --color XXX
    https://www.oracle.com/java/technologies/downloads/archive/
-   rpm -ivh XXX             yum install XXX
+   rpm -ivh XXX.rpm             yum install XXX
 2. 添加环境变量
     2.1 which java
     2.2 ls -l /usr/bin/java
@@ -46,8 +46,15 @@
     2.4 vim /etc/profile
         export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_281-amd64
         export PATH=$PATH:$JAVA_HOME/bin
-        注：JDK5 之后不再需要配置 CLASSPATH
+        注：JDK5 之后，JRE 能自动搜索目录下类文件，并且加载 dt.jar 和 tool.jar，不再需要配置 CLASSPATH
     2.5 source /etc/profile
+3. 配置多版本 JDK：https://www.imooc.com/video/18991
+    3.1 vim /etc/profile
+        export JAVA_8_HOME=/.../jdk1.8...
+        export JAVA_17_HOME=/.../jdk-17...
+        alias jdk8="export JAVA_HOME=$JAVA_8_HOME"
+        alias jdk17="export JAVA_HOME=$JAVA_17_HOME"
+    3.2 source /etc/profile
 ```
 ---
 ## Tomcat

@@ -10,14 +10,14 @@ import java.util.Locale;
 import static l.demo.Demo.p;
 
 /**
- * NumberFormat
- * https://www.runoob.com/manual/jdk1.6/java.base/java/text/NumberFormat.html
- * <p>
- * boolean	        isGroupingUsed()                        如果此格式中使用了分组，则返回 true
- * void	            setGroupingUsed(boolean newValue)       设置此格式中是否使用分组
- * <p>
- * boolean	        isParseIntegerOnly()                    如果此格式只将数作为整数解析，则返回 true
- * void	            setParseIntegerOnly(boolean value)      设置数是否应该仅作为整数进行解析
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/NumberFormat.html">NumberFormat</a>
+ * <pre>
+ * boolean          isGroupingUsed()                        如果此格式中使用了分组，则返回 true
+ * void             setGroupingUsed(boolean newValue)       设置此格式中是否使用分组
+ *
+ * boolean          isParseIntegerOnly()                    如果此格式只将数作为整数解析，则返回 true
+ * void             setParseIntegerOnly(boolean value)      设置数是否应该仅作为整数进行解析
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39

@@ -3,6 +3,7 @@ package jar.hutool.extra;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpResponse;
 import cn.hutool.json.JSONUtil;
 import l.demo.Demo;
 import l.demo.Person;
@@ -46,9 +47,9 @@ public class ServletUtilDemo extends HttpServlet {
     }
 
     @Test
-    public void test() {
+    public void testServletUtil() {
         Map<String, Object> params = BeanUtil.beanToMap(M.personList.get(0));
-        HttpRequest.post("http://localhost:8080/ServletUtil")
+        HttpResponse httpResponse = HttpRequest.post("http://localhost:8080/ServletUtil")
                 .form(params)
                 .body(JSONUtil.toJsonStr(params))
                 .cookie(new HttpCookie("cookie", "zero"))

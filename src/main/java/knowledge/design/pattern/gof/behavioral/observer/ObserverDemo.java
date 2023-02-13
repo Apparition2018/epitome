@@ -42,7 +42,7 @@ import java.util.*;
 public class ObserverDemo {
 
     /**
-     * 事件订阅：https://refactoringguru.cn/design-patterns/observer/java/example
+     * <a href="https://refactoringguru.cn/design-patterns/observer/java/example">事件订阅</a>
      */
     @Test
     public void testObserver() throws Exception {
@@ -150,7 +150,7 @@ public class ObserverDemo {
     static class JdkObserverDemo {
 
         @Test
-        public void test() {
+        public void testJdkObserver() {
             Watched watched = new Watched();
             watched.addObserver(new Watcher());
             watched.setData("start");

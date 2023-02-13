@@ -35,16 +35,15 @@
         <commons-csv.version>1.9.0</commons-csv.version>
         <commons-email.version>1.5</commons-email.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
-        <hutool.version>5.8.11</hutool.version>
+        <hutool.version>5.8.12</hutool.version>
         <curator.version>5.4.0</curator.version>
-        <tika.version>2.6.0</tika.version>
+        <tika.version>2.7.0</tika.version>
         <jsoup.version>1.15.3</jsoup.version>
         <poi.version>5.2.3</poi.version>
         <nimbus-jose-jwt.version>9.30.1</nimbus-jose-jwt.version>
         <okhttps.version>3.5.3</okhttps.version>
         <retrofit2.version>2.9.0</retrofit2.version>
         <minio.version>8.5.1</minio.version>
-        <!-- fastjson 2.x -->
         <fastjson.version>1.2.83</fastjson.version>
         <protostuff.version>1.8.0</protostuff.version>
         <javacv.version>1.5.8</javacv.version>

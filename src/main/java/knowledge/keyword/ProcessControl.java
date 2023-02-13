@@ -46,7 +46,7 @@ public class ProcessControl {
     }
 
     /**
-     * @see <a href="https://openjdk.org/jeps/394">JDK14 JEP 361: Switch Expressions</a>
+     * @see <a href="https://openjdk.org/jeps/361">JDK14 JEP 361: Switch Expressions</a>
      */
     private void season(String season) {
         switch (season) {

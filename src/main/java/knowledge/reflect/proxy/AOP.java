@@ -15,9 +15,11 @@ import static l.demo.Demo.p;
 
 /**
  * AOP
+ * <pre>
  * 详解请查看 spring-aop 项目
- * RuoYi 系统日志 (LogAspect)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97
- * RuoYi 数据权限 (DataScopeAspect)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90
+ * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#系统日志">RuoYi 系统日志</a> (LogAspect)
+ * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#数据权限">RuoYi 数据权限</a> (DataScopeAspect)
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/10 15:43

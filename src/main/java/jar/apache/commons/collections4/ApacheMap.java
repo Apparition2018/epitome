@@ -28,7 +28,8 @@ import java.util.concurrent.TimeUnit;
  * ReferenceIdentityMap     一个 Map 的实现，允许垃圾收集器删除映射，基于 == 而不是 equals() 匹配键和值
  * SingletonMap             一个 Map 的实现，保存单个项且大小固定
  * StaticBucketMap          一个 Map 的高效、线程安全的实现
- * </pre>除了 UnmodifiableXXXMap，SingletonMap，StaticBucketMap 都不是线程同步的，且线程不安全的
+ * </pre>
+ * 除了 UnmodifiableXXXMap，SingletonMap，StaticBucketMap 都不是线程同步的，且线程不安全的
  *
  * @author ljh
  * @since 2020/11/14 14:19
@@ -55,9 +56,11 @@ public class ApacheMap extends Demo {
     }
 
     /**
+     * <pre>
      * OrderedMap                   维持顺序 Map，允许向前向后迭代
-     * <p>LinkedMap                    维持插入顺序 Map
-     * <p>ListOrderedMap               修饰 Map，使其保持插入顺序
+     * LinkedMap                    维持插入顺序 Map
+     * ListOrderedMap               修饰 Map，使其保持插入顺序
+     * </pre>
      */
     @Test
     public void testListOrderedMap() {

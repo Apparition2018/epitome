@@ -14,7 +14,6 @@ import java.nio.charset.StandardCharsets;
 public class Coder extends Demo {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-
         // static String	    encode(String s, String enc)
         // 使用指定的编码机制将字符串转换为 application/x-www-form-urlencoded 格式
         String encode = URLEncoder.encode(MY_CY, StandardCharsets.UTF_8.name());

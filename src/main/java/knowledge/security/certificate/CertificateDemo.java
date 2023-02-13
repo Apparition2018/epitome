@@ -16,6 +16,7 @@ import java.security.cert.*;
 import java.util.Base64;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.Objects;
 
 /**
  * 数字证书
@@ -58,7 +59,7 @@ public class CertificateDemo extends Demo {
     private static final String SIGN_ALGO = "SHA1withRSA";
 
     @Test
-    public void test() throws CertificateException, KeyStoreException, IOException, NoSuchAlgorithmException, UnrecoverableKeyException, SignatureException, InvalidKeyException {
+    public void testCertificate() throws CertificateException, KeyStoreException, IOException, NoSuchAlgorithmException, UnrecoverableKeyException, SignatureException, InvalidKeyException {
         KeyStore keyStore = getKeyStore(KEY_TYPE_PKCS12, KEY_PATH, KEY_PASSWORD);
         PrivateKey privateKey = getPrivateKey(keyStore, null, KEY_PASSWORD);
         Certificate certificate = getCertificate(keyStore, null);
@@ -81,11 +82,7 @@ public class CertificateDemo extends Demo {
      */
     public static KeyStore getKeyStore(String keyType, String keyPath, String password) throws KeyStoreException, IOException, CertificateException, NoSuchAlgorithmException {
         KeyStore keyStore;
-        if (keyType == null) {
-            keyStore = KeyStore.getInstance(KEY_TYPE_JKS);
-        } else {
-            keyStore = KeyStore.getInstance(keyType);
-        }
+        keyStore = KeyStore.getInstance(Objects.requireNonNullElse(keyType, KEY_TYPE_JKS));
         FileInputStream is = new FileInputStream(keyPath);
         keyStore.load(is, password.toCharArray());
         is.close();

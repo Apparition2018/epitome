@@ -7,14 +7,14 @@ import l.demo.Demo;
 
 /**
  * <a href="https://github.com/google/guava/wiki/NewCollectionTypesExplained#multimap">Multimap</a>
- * <p>1个 key 可以映射多个 value
  * <p><a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Multimap.html">Multimap api</a>
+ * <p>1个 key 可以映射多个 value
  * <p>
  * <p><a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#multimaps">Multimaps</a>
  * <p>参考：
  * <pre>
  * <a href="http://www.ibloger.net/article/3316.html">Guava Multimaps</a>
- * <p><a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Multimaps.html">Multimaps api</a>
+ * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Multimaps.html">Multimaps api</a>
  * </pre>
  *
  * @author ljh

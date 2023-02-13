@@ -12,6 +12,7 @@ import java.util.TreeSet;
 /**
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#sets">Sets</a>
  * <pre>
+ * {@code
  * static Set<E>                    newConcurrentHashSet([Iterable<? extends E> elements])      创建 ConcurrentHashSet
  * static CopyOnWriteArraySet<E>    newCopyOnWriteArraySet(Iterable<? extends E> elements)      创建 CopyOnWriteArraySet
  * static TreeSet<E>                newTreeSet(Iterable<? extends E> elements)                  创建 TreeSet
@@ -19,7 +20,7 @@ import java.util.TreeSet;
  * static Set<E>                    newIdentityHashSet()                                        创建 IdentityHashSet
  *
  * static <E> NavigableSet<E>       unmodifiableNavigableSet(NavigableSet<E> set)
- * static <E> NavigableSet<E>       synchronizedNavigableSet(NavigableSet<E> navigableSet)
+ * static <E> NavigableSet<E>       synchronizedNavigableSet(NavigableSet<E> navigableSet)}
  * </pre>
  * 参考：
  * <pre>
@@ -33,7 +34,7 @@ import java.util.TreeSet;
 public class SetsDemo extends Demo {
 
     @Test
-    public void test() {
+    public void testSets() {
         // static <E> HashSet<E>        newHashSetWithExpectedSize(int expectedSize)
         // static <E> LinkedHashSet<E>  newLinkedHashSetWithExpectedSize
         // 创建 set，有足够的初始容量来容纳元素，而不需要扩容
@@ -73,7 +74,7 @@ public class SetsDemo extends Demo {
      * <p>static <E> Sets.SetView<E>   symmetricDifference(Set<? extends E> set1, Set<? extends E> set2)   对称差，只属于其中一个集合，而不属于另一个集合的元素组成的集合
      */
     @Test
-    public void test2() {
+    public void testSets2() {
         Set<Integer> set1 = Sets.newHashSet(1, 2, 3);
         Set<Integer> set2 = Sets.newHashSet(5, 4, 3);
 

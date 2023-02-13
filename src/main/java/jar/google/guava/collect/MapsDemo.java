@@ -15,17 +15,18 @@ import java.util.Objects;
 /**
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#maps">Maps</a>
  * <pre>
- * static ConcurrentMap<K, V>   newConcurrentMap()                                  创建 ConcurrentMap
- * static TreeMap<K, V>         newTreeMap([SortedMap<K, ? extends V> map])         创建 TreeMap
- * static TreeMap<K, V>         newTreeMap(Comparator<C> comparator)                创建 TreeMap，根据 Comparator
- * static EnumMap<K, V>         newEnumMap(Map<K, ? extends V>/Class<K>)            创建 EnumMap
- * static IdentityHashMap<K, V> newIdentityHashMap()                                创建 IdentityHashMap
+ * {@code
+ * static ConcurrentMap<K, V>   newConcurrentMap()                              创建 ConcurrentMap
+ * static TreeMap<K, V>         newTreeMap([SortedMap<K, ? extends V> map])     创建 TreeMap
+ * static TreeMap<K, V>         newTreeMap(Comparator<C> comparator)            创建 TreeMap，根据 Comparator
+ * static EnumMap<K, V>         newEnumMap(Map<K, ? extends V>/Class<K>)        创建 EnumMap
+ * static IdentityHashMap<K, V> newIdentityHashMap()                            创建 IdentityHashMap
  *
- * static ImmutableMap<K, V>    immutableEnumMap(Map<K, ? extends V> map)           Map → immutableEnumMap
- * static XXXMap<K, V>          unmodifiableXXXMap(XXXMap<K, ? extends V> map)      XXXMap → unmodifiableXXXMap
- * static XXXMap<K, V>          synchronizedXXXMap(XXXMap<K, V> map)                XXXMap → synchronizedXXXMap
+ * static ImmutableMap<K, V>    immutableEnumMap(Map<K, ? extends V> map)       Map → immutableEnumMap
+ * static XXXMap<K, V>          unmodifiableXXXMap(XXXMap<K, ? extends V> map)  XXXMap → unmodifiableXXXMap
+ * static XXXMap<K, V>          synchronizedXXXMap(XXXMap<K, V> map)            XXXMap → synchronizedXXXMap
  * static Entry<K, V>           immutableEntry(K key, V value)  key + value → Entry
- * static Converter<A, B>       asConverter(BiMap<A, B> bimap)                      BiMap → Converter
+ * static Converter<A, B>       asConverter(BiMap<A, B> bimap)                  BiMap → Converter}
  * </pre>
  * 参考：
  * <pre>
@@ -39,7 +40,7 @@ import java.util.Objects;
 public class MapsDemo extends Demo {
 
     @Test
-    public void maps() {
+    public void testMaps() {
         // static <K, V> HashMap<K, V>          newHashMapWithExpectedSize(int expectedSize)
         // static <K, V> HashMap<K, V>          newLinkedHashMapWithExpectedSize(int expectedSize)
         // 创建 HashMap/LinkedHashMap，有足够的初始容量来容纳元素，而不需要 growth
@@ -57,7 +58,7 @@ public class MapsDemo extends Demo {
      * <p>static <K, V1, V2> Map<K, V2>    transformEntries(Map<K, V1> fromMap, Maps.EntryTransformer<? s K, ? s V1, V2> transformer)
      */
     @Test
-    public void functionalInterface() {
+    public void testFunctionalInterface() {
         // static <K,V> ImmutableMap<K,V>       uniqueIndex(Iterable<V>/Iterator<V>, Function<? super V,K> keyFunction)
         // List<Bean> → Map<field, Bean>
         ImmutableMap<Integer, Person> intPersonMap = Maps.uniqueIndex(personList.iterator(), Person::getId);

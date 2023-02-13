@@ -25,7 +25,7 @@ public class JsonParserDemo {
     public static final String PERSON_JSON_FILE = System.getProperty("user.dir") + "/src/main/java/jar/fasterxml/jackson/person.json";
 
     @Test
-    public void test() throws IOException {
+    public void testJsonParser() throws IOException {
         JsonFactory jsonFactory = new JsonFactory();
         try (JsonParser jsonParser = jsonFactory.createParser(new File(PERSON_JSON_FILE))) {
             JsonToken jsonToken;

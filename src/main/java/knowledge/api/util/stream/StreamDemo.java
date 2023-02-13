@@ -67,11 +67,11 @@ public class StreamDemo extends Demo {
         //********** 5.其它 **********//
         // Stream.empty()
         stream = Stream.empty();
-        // Stream.ofNullable()
+        // Stream.ofNullable()，JDK9 引入
         stream = Stream.ofNullable(100);
         // Stream.builder().add()...build()
         stream = Stream.builder().add(1).add(2).add(3).add(4).add(5).build();
-        // Stream.iterate()
+        // Stream.iterate()，JDK9 引入
         stream = Stream.iterate(3, x -> x < 10, x -> x + 3);
         // XxxStream.boxed()
         stream = new Random().ints(0, 10).limit(9).boxed();
@@ -113,8 +113,8 @@ public class StreamDemo extends Demo {
         Stream.of(9, 7, 5, 3, 1).parallel().skip(2).forEach(i -> System.out.print(i + " ")); // 3 1 5
         p("\n");
 
-        // takeWhile()      返回子集知道断言返回false
-        // dropWhile()      断言返回false开始返回子集
+        // takeWhile()      返回子集知道断言返回false，JDK9 引入
+        // dropWhile()      断言返回false开始返回子集，JDK9 引入
         Stream.of(9, 3, 5, 7, 1).takeWhile(i -> i != 1).dropWhile(i -> i != 3).forEach(i -> System.out.print(i + " ")); // 3 5 7
 
         // close()          关闭 Stream 对象
@@ -158,7 +158,7 @@ public class StreamDemo extends Demo {
         // collect()
         List<Integer> list = Stream.of(9, 7, 5, 3, 1).collect(Collectors.toList());
         // collect(Supplier<R> supplier, BiConsumer<R, ? super T> accumulator, BiConsumer<R, R> combiner)
-        p(Stream.of(1, 2, 3).map(i -> Arrays.asList(i, i * 2, i * 3)).collect(ArrayList::new, ArrayList::addAll, ArrayList::addAll));
+        p(Stream.of(1, 2, 3).map(i -> List.of(i, i * 2, i * 3)).collect(ArrayList::new, ArrayList::addAll, ArrayList::addAll));
     }
 
     /**

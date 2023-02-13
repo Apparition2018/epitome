@@ -10,21 +10,19 @@ import java.util.Arrays;
 import static l.demo.Demo.p;
 
 /**
- * StatUtils
- * http://www.cnblogs.com/xiao02fang/p/9883909.html
- * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/stat/StatUtils.html
+ * <a href="http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/stat/StatUtils.html">StatUtils</a>
+ * <p><a href="http://www.cnblogs.com/xiao02fang/p/9883909.html">commons-math3 统计</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
 public class StatDemo {
 
-    private double[] values = new double[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    private double[] values2 = new double[]{2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    private final double[] values = new double[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    private final double[] values2 = new double[]{2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
     @Test
     public void testStatUtils() {
-
         // static double	max(double[] values[, int begin, int length])
         // 最大值
         p("max = " + StatUtils.max(values));        // 10.0
@@ -93,7 +91,6 @@ public class StatDemo {
         // static double	varianceDifference(double[] sample1, double[] sample2, double meanDifference)
         // 返回两数组对应位置差的方差 （方差差异性）
         p("variance difference = " + StatUtils.varianceDifference(values2, values, meanDifference));  // 0.0
-
     }
 
     // 中位数

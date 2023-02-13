@@ -47,10 +47,10 @@ public class OptionalDemo extends Demo {
         name.ifPresent(value -> p("The length of value is: " + value.length())); // The length of value is: 8
 
         // ifPresentOrElse(Consumer<? super T> action, Runnable emptyAction)
-        // 如果存在值，执行 action，否者执行 emptyAction
+        // 如果存在值，执行 action，否者执行 emptyAction，JDK9 引入
 
         // or(Supplier<? extends Optional<? extends T>> supplier)
-        // 如果存在值，返回该值的 Optional，否者返回 supplier 生成 Optional
+        // 如果存在值，返回该值的 Optional，否者返回 supplier 生成 Optional，JDK9 引入
 
         // orElse(T other) 如果存在值，返回该值，否则返回 other
         p(empty.orElse("There is no value present!")); // There is no value present!
@@ -60,6 +60,9 @@ public class OptionalDemo extends Demo {
         // 如果存在值，返回该值，否则返回 supplier 生成的结果
         p(empty.orElseGet(() -> "Default Value"));  // Default Value
         p(name.orElseGet(() -> "Default Value"));   // Mary
+
+        // orElseThrow()
+        // 如果存在值，返回该值，否则抛出 NoSuchElementException，JDK10 引入
 
         // orElseThrow(Supplier<? extends X> exceptionSupplier)
         // 如果存在值，返回该值，否则抛出 exceptionSupplier 生成的异常
@@ -90,7 +93,7 @@ public class OptionalDemo extends Demo {
         p(longName.orElse("The name is less than 6 characters")); // Apparition
 
         // stream()
-        // 如果存在值，返回包含该值的 Stream，否则返回 Stream.empty()
+        // 如果存在值，返回包含该值的 Stream，否则返回 Stream.empty()，JDK9 引入
         Stream<String> stream = name.stream();
     }
 

@@ -18,7 +18,6 @@ import l.demo.Demo;
 public class BiMapDemo extends Demo {
 
     public static void main(String[] args) {
-
         BiMap<Integer, String> biMap = HashBiMap.create(map);
 
         // BiMap<V,K>	inverse()       返回此 map 的逆视图

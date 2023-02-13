@@ -44,7 +44,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -120,7 +119,7 @@ public class HttpClientUtils {
         RequestConfig requestConfig = RequestConfig.custom()
                 .setCookieSpec(StandardCookieSpec.STRICT)
                 .setExpectContinueEnabled(true)
-                .setTargetPreferredAuthSchemes(Arrays.asList(StandardAuthScheme.NTLM, StandardAuthScheme.DIGEST))
+                .setTargetPreferredAuthSchemes(List.of(StandardAuthScheme.NTLM, StandardAuthScheme.DIGEST))
                 .setProxyPreferredAuthSchemes(Collections.singletonList(StandardAuthScheme.BASIC))
                 .setConnectTimeout(5, TimeUnit.SECONDS)
                 .setResponseTimeout(5, TimeUnit.SECONDS)
@@ -165,7 +164,7 @@ public class HttpClientUtils {
     }
 
     @Test
-    public void test() throws IOException, URISyntaxException {
+    public void testHttpClientUtils() throws IOException {
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
             // HttpGet
             HttpGet httpGet = new HttpGet("https://credit.gd.gov.cn/creditquery!queryLegalEntityOrgList.do?conditions=914403001922038216");

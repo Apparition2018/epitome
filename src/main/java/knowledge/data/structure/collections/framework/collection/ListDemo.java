@@ -4,7 +4,10 @@ import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Vector;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/awt/List.html">List</a>
@@ -61,8 +64,13 @@ public class ListDemo extends Demo {
 
     @Test
     public void testList() {
-        // List.of() 返回一个不可修改的 List，JDK9 引入
+        // List<E>      of(E e1...)
+        // 返回一个不可修改的 List，JDK9 引入
         list = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9));
+
+        // List<E>      copyOf(Collection<? extends E> coll)
+        // 返回一个不可修改的 List，JDK10 引入
+        list = List.copyOf(list);
 
         // Object[]	    toArray()
         // 返回按适当顺序包含列表中的所有元素的数组（从第一个元素到最后一个元素）
@@ -86,7 +94,7 @@ public class ListDemo extends Demo {
         // boolean      addAll([int index, ]Collection<? extends E> c)
         // 将指定 collection 中的所有元素都插入到列表中的指定位置（可选操作）
         // 在使用 Collection 接口任何实现类的 addAll() 方法时，都要对输入的集合参数进行 NPE 判断（阿里编程规约）
-        list.addAll(0, Arrays.asList(-1, -1));
+        list.addAll(0, List.of(-1, -1));
         p(list);        // [-1, -1, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
         // E            set(int index, E element)

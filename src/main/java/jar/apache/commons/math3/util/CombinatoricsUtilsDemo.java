@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * CombinatoricsUtils   组合学
- * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/util/CombinatoricsUtils.html
+ * <a href="http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/util/CombinatoricsUtils.html">CombinatoricsUtils</a>  组合学
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -15,8 +14,7 @@ import static l.demo.Demo.p;
 public class CombinatoricsUtilsDemo {
 
     @Test
-    public void combinatorics() {
-
+    public void testCombinatoricsUtils() {
         // static long	    binomialCoefficient(int n, int k)
         // 二项式系数
         p(CombinatoricsUtils.binomialCoefficient(4, 0));  // 1
@@ -35,7 +33,5 @@ public class CombinatoricsUtilsDemo {
         p(CombinatoricsUtils.stirlingS2(4, 2)); // 7
         p(CombinatoricsUtils.stirlingS2(4, 3)); // 6
         p(CombinatoricsUtils.stirlingS2(4, 4)); // 1
-
     }
-
 }

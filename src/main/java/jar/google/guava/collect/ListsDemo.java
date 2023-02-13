@@ -8,9 +8,10 @@ import java.util.List;
 /**
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#lists">Lists</a>
  * <pre>
+ * {@code
  * static <E> LinkedList<E>             newLinkedList([Iterable<? extends E> elements])             创建 LinkedList
  * static <E> CopyOnWriteArrayList<E>   newCopyOnWriteArrayList([Iterable<? extends E> elements])   创建 CopyOnWriteArrayList
- * static <T> List<T>                   reverse(List<T> list)                                       返回指定列表的反向视图
+ * static <T> List<T>                   reverse(List<T> list)                                       返回指定列表的反向视图}
  * </pre>
  * 参考：
  * <pre>

@@ -5,13 +5,12 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Caffeine
- * Introduction to Caffeine：https://www.cnblogs.com/oopsguy/p/7731659.html
+ * <a href="https://www.baeldung.com/java-caching-caffeine">Caffeine</a>
  *
  * @author ljh
  * @since 2021/11/2 17:41
@@ -52,7 +51,7 @@ public class CaffeineDemo {
         Assertions.assertNotNull(dataObject);
         Assertions.assertEquals("Data for " + KEY, dataObject.getData());
 
-        Map<String, DataObject> dataObjectMap = cache.getAll(Arrays.asList("A", "B", "C"));
+        Map<String, DataObject> dataObjectMap = cache.getAll(List.of("A", "B", "C"));
         Assertions.assertEquals(3, dataObjectMap.size());
     }
 
@@ -71,7 +70,7 @@ public class CaffeineDemo {
             Assertions.assertEquals("Data for " + KEY, dataObject.getData());
         });
 
-        cache.getAll(Arrays.asList("A", "B", "C")).thenAccept(dataObjectMap -> Assertions.assertEquals(3, dataObjectMap.size()));
+        cache.getAll(List.of("A", "B", "C")).thenAccept(dataObjectMap -> Assertions.assertEquals(3, dataObjectMap.size()));
     }
 
     /**
@@ -192,5 +191,4 @@ public class CaffeineDemo {
         Assertions.assertEquals(2, cache.stats().hitCount());
         Assertions.assertEquals(1, cache.stats().missCount());
     }
-
 }

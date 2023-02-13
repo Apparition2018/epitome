@@ -11,7 +11,6 @@ import javax.lang.model.type.TypeVisitor;
 import java.nio.file.FileVisitor;
 import java.nio.file.SimpleFileVisitor;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -185,8 +184,7 @@ public class VisitorDemo {
         }
 
         public void addEmployee(Employee... employees) {
-            list.addAll(Arrays.asList(employees));
+            list.addAll(List.of(employees));
         }
     }
-
 }

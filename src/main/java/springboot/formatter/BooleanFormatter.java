@@ -4,7 +4,7 @@ import lombok.NonNull;
 import org.springframework.format.Formatter;
 
 import java.text.ParseException;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -20,7 +20,7 @@ public class BooleanFormatter implements Formatter<Boolean> {
     @Override
     public @NonNull Boolean parse(@NonNull String s, @NonNull Locale locale) throws ParseException {
         if (values != null && values.length > 0) {
-            return Arrays.asList(values).contains(s);
+            return List.of(values).contains(s);
         } else {
             switch (s.toLowerCase(Locale.CHINESE)) {
                 case "1":

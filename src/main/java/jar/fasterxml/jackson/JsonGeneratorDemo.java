@@ -23,7 +23,7 @@ public class JsonGeneratorDemo {
     public static final String PERSON_JSON_FILE = System.getProperty("user.dir") + "/src/main/java/jar/fasterxml/jackson/person.json";
 
     @Test
-    public void test() throws IOException {
+    public void testJsonGenerator() throws IOException {
         JsonFactory jsonFactory = new JsonFactory();
 
         try (JsonGenerator jsonGenerator = jsonFactory.createGenerator(new File(PERSON_JSON_FILE), JsonEncoding.UTF8)) {

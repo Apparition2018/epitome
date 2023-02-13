@@ -36,7 +36,6 @@ public class MapIteratorDemo {
                 // void	remove()
                 mIt.remove();
             }
-
         }
 
         System.out.println(map); // {3=Three_, 5=Five_, 2=Two_, 1=One_}

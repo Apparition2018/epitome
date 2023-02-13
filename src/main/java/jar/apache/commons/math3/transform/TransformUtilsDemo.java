@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 /**
- * TransformUtils
- * http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/transform/TransformUtils.html
+ * <a href="http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/transform/TransformUtils.html">...</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -15,7 +14,7 @@ import java.util.Arrays;
 public class TransformUtilsDemo {
 
     @Test
-    public void transform() {
+    public void testTransformUtils() {
         // static Complex[]	    scaleArray(Complex[] f, double d)
         // static double[]	    scaleArray(double[] f, double d)
         // 比例扩/缩数组
