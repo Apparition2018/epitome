@@ -58,11 +58,11 @@ public class CollectorsDemo extends Demo {
         p(names.stream().collect(Collectors.joining(", ")));            // Luna, Olivia, Cora, Leo, Henry
         p(names.stream().collect(Collectors.joining(", ", "[", "]")));  // [Luna, Olivia, Cora, Leo, Henry]
 
-        // collectingAndThen()                      先执行归约操作，再执行 Function 操作
+        // collectingAndThen()                      先执行收集器操作，再执行 Function 操作
         p(names.stream().collect(Collectors.collectingAndThen(Collectors.joining(", "), String::toUpperCase)));
         // LUNA, OLIVIA, CORA, LEO, HENRY
 
-        // mapping()                                先执行 Function 操作，再进行归约操作
+        // mapping()                                先执行 Function 操作，再进行收集器操作
         p(names.stream().collect(Collectors.mapping(String::toUpperCase, Collectors.toList())));
         // [LUNA, OLIVIA, CORA, LEO, HENRY]
 
@@ -84,8 +84,12 @@ public class CollectorsDemo extends Demo {
         // averagingXXX()                           平均值
         p(names.stream().collect(Collectors.averagingInt(String::length))); // 4.4
 
+        // teeing()                                 合并下游收集器结果，JDK12 引入
+        p(names.stream().collect(Collectors.teeing(Collectors.averagingInt(String::length), Collectors.summingInt(String::length), (c1, c2) -> c1 + ":" + c2))); // 4.4:22
+
         // summarizingXXX()                         统计
         IntSummaryStatistics stats = names.stream().collect(Collectors.summarizingInt(String::length));
+        p(stats); // IntSummaryStatistics{count=5, sum=22, min=3, average=4.400000, max=6}
     }
 
     /**

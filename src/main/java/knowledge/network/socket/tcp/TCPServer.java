@@ -9,6 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
+import static l.demo.Demo.PORT;
 import static l.demo.Demo.p;
 
 /**
@@ -35,13 +36,13 @@ import static l.demo.Demo.p;
  */
 public class TCPServer implements Runnable {
 
-    private ServerSocket serverSocket;
+    private final ServerSocket SERVER_SOCKET;
 
-    int clientCount = 0; // 记录客户端的数量
+    private int clientCnt = 0;
 
     public static void main(String[] args) {
         try {
-            Thread t = new Thread(new TCPServer(4444));
+            Thread t = new Thread(new TCPServer(PORT));
             t.start();
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,12 +52,12 @@ public class TCPServer implements Runnable {
     public TCPServer(int port) throws IOException {
         // ServerSocket([int port[, int backlog[, InetAddress bindAddr]]])
         // 使用指定的端口、侦听 backlog 和要绑定到的本地 IP 地址创建服务器
-        serverSocket = new ServerSocket(port);
+        SERVER_SOCKET = new ServerSocket(port);
         // int	                    getLocalPort()              返回此套接字在其上侦听的端口
-        p("***端口号为" + serverSocket.getLocalPort() + "服务器即将启动，等待客户端的连接***");
+        p("***端口号为" + SERVER_SOCKET.getLocalPort() + "服务器即将启动，等待客户端的连接***");
 
         // void	    	            setSoTimeout(int timeout)   通过指定超时值启用/禁用 SO_TIMEOUT，以毫秒为单位
-        serverSocket.setSoTimeout(Math.toIntExact(DateUtils.MILLIS_PER_HOUR));
+        SERVER_SOCKET.setSoTimeout(Math.toIntExact(DateUtils.MILLIS_PER_HOUR));
     }
 
     /**
@@ -66,23 +67,23 @@ public class TCPServer implements Runnable {
     public void run() {
         while (true) {
             try {
-                // Socket	        accept()                    侦听并接受到此套接字的连接
-                Socket socket = serverSocket.accept();
+                // Socket           accept()                    侦听并接受到此套接字的连接
+                Socket socket = SERVER_SOCKET.accept();
 
-                p("客户端数量：" + ++clientCount);
+                p("客户端数量：" + ++clientCnt);
 
-                // SocketAddress	getRemoteSocketAddress()    返回此套接字连接的端点的地址，如果未连接则返回 null
+                // SocketAddress    getRemoteSocketAddress()    返回此套接字连接的端点的地址，如果未连接则返回 null
                 p("远程主机地址：" + socket.getRemoteSocketAddress());
 
-                // InputStream	    getInputStream()            返回此套接字的输入流
+                // InputStream      getInputStream()            返回此套接字的输入流
                 DataInputStream dis = new DataInputStream(socket.getInputStream());
                 p(dis.readUTF());
-                // void	            shutdownInput()             此套接字的输入流置于“流的末尾”
+                // void             shutdownInput()             此套接字的输入流置于“流的末尾”
                 socket.shutdownInput();
 
-                // OutputStream	    getOutputStream()           返回此套接字的输出流
+                // OutputStream     getOutputStream()           返回此套接字的输出流
                 DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-                // SocketAddress	getLocalSocketAddress()     返回此套接字绑定的端点的地址，如果尚未绑定则返回 null
+                // SocketAddress    getLocalSocketAddress()     返回此套接字绑定的端点的地址，如果尚未绑定则返回 null
                 dos.writeUTF("谢谢连接我：" + socket.getLocalSocketAddress() + "\nGoodbye!");
             } catch (SocketTimeoutException s) {
                 p("Socket timed out!");

@@ -147,7 +147,6 @@ public class FunctionDemo extends Demo {
         public void testFactoryPattern() {
             Supplier<Person.Student> supplier = Person.Student::new;
             p(supplier.get());
-            p(supplier.get());
         }
     }
 }

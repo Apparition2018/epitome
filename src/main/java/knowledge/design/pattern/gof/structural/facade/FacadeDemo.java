@@ -26,11 +26,9 @@ import java.io.File;
  * 附加外观 AdditionalFacade (可选)
  * 子系统 Subsystem
  * </pre>
- * <pre>
- * 优点：符合迪米特法则
+ * 优点：符合迪米特法则<br/>
  * 缺点：违反开闭原则
- * </pre>
- * 优化：
+ * <p>优化：
  * <pre>
  * 1 引入 AbstractFacade 和 ConcreteFacade 的概念，可以一定程度上解决违反开闭原则的缺点
  * 2 由于 Facade 持有多个 Subsystem 的引用，可以把 Facade 设计为 Singleton，控制内存开销

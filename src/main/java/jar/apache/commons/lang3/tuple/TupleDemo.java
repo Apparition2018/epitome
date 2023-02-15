@@ -3,6 +3,8 @@ package jar.apache.commons.lang3.tuple;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
+import static l.demo.Demo.p;
+
 /**
  * Tuple
  *
@@ -14,13 +16,13 @@ public class TupleDemo {
     public static void main(String[] args) {
         /* Pair */
         Pair<String, String> pair = Pair.of("A", "B");
-        System.out.println(pair.getLeft());
-        System.out.println(pair.getRight());
+        p(pair.getLeft());      // A
+        p(pair.getRight());     // B
 
         /* Triple */
         Triple<String, String, String> triple = Triple.of("A", "B", "C");
-        System.out.println(triple.getLeft());
-        System.out.println(triple.getMiddle());
-        System.out.println(triple.getRight());
+        p(triple.getLeft());    // A
+        p(triple.getMiddle());  // B
+        p(triple.getRight());   // C
     }
 }

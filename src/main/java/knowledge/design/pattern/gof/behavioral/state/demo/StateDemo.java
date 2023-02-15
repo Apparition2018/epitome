@@ -10,36 +10,46 @@ import java.util.stream.IntStream;
 
 /**
  * 状态模式：允许一个对象在其内部状态改变时行为也发行改变，使其看起来像是改变了对象所属的类
- * 使用场景：行为随状态的改变而改变
+ * <p>使用场景：行为随状态的改变而改变
  * 使用实例：
- * 1.工作流、游戏、电商订单
- * 2.org.springframework.statemachine：https://gupaoedu-tom.blog.csdn.net/article/details/121354228
- * <p>
+ * <pre>
+ * 1 工作流、游戏、电商订单
+ * 2 <a href="https://gupaoedu-tom.blog.csdn.net/article/details/121354228">org.springframework.statemachine</a>
+ * </pre>
+ * 角色：
+ * <pre>
  * 上下文 Context：持有 State 的引用，并提供一个设置器用于接收新的 State
  * 状态部分：接收 Context 的引用，从而可以获取 Context 的信息，和触发 State 转移
  * 抽象状态 State：声明特定 State 的行为
  * 具体状态 ConcreteState
- * <p>
- * 优点：符合单一职责原则
+ * </pre>
+ * 优点：符合单一职责原则<br/>
  * 缺点：一定程度违反开闭原则，扩展新状态只需增加 ConcreteState，但其它 ConcreteState 转移到新状态需要修改代码
- * 状态转换方式：
- * 1.由 ConcreteState 负责状态之间的转换
- * 2.由 Context 负责状态之间的转换，此时相当于还充当了 StateManager 的角色 {@link StateDemo3}
- * <p>
- * 有限状态机：Finite State Machine，
- * 1.状态 State
- * 2.事件 Event / 转移条件 Transition Condition：事件触发 State 的转移及 Action 的执行
- * 3.动作 Action：不是必须的
+ * <p>状态转换方式：
+ * <pre>
+ * 1 由 ConcreteState 负责状态之间的转换
+ * 2 由 Context 负责状态之间的转换，此时相当于还充当了 StateManager 的角色 {@link StateDemo3}
+ * </pre>
+ * 有限状态机：Finite State Machine
+ * <pre>
+ * 1 状态 State
+ * 2 事件 Event / 转移条件 Transition Condition：事件触发 State 的转移及 Action 的执行
+ * 3 动作 Action：不是必须的
+ * </pre>
  * 有限状态机实现方法：
- * 1.分支逻辑法 (if-else)：可读性和可维护性差
- * 2.查表法：建议在 State 比较多，Action 简单的情况下使用
- * -    定义：一维表示 State，二维表示 Event，交值表示 State 经过 Event 之后转移到的新 Sate 和需要执行的 Action
- * -    缺点：只能表示 Action 非常简单的状态机
- * 3.状态模式：建议在 State 不多，Action 复杂的情况下使用
- * <p>
- * State：https://refactoringguru.cn/design-patterns/state
- * Java设计模式：http://c.biancheng.net/view/1388.html
+ * <pre>
+ * 1 分支逻辑法 (if-else)：可读性和可维护性差
+ * 2 查表法：建议在 State 比较多，Action 简单的情况下使用
+ *   定义：一维表示 State，二维表示 Event，交值表示 State 经过 Event 之后转移到的新 Sate 和需要执行的 Action
+ *   缺点：只能表示 Action 非常简单的状态机
+ * 3 状态模式：建议在 State 不多，Action 复杂的情况下使用
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/state">State</a>
+ * <a href="http://c.biancheng.net/view/1388.html">Java设计模式</a>
  * 设计模式之美：状态模式：游戏、工作流引擎中常用的状态机是如何实现的？
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -47,8 +57,7 @@ import java.util.stream.IntStream;
 public class StateDemo {
 
     /**
-     * 媒体播放器根据当前的状态表现不同的控制行为
-     * https://refactoringguru.cn/design-patterns/state/java/example
+     * <a href="https://refactoringguru.cn/design-patterns/state/java/example">媒体播放器根据当前的状态表现不同的控制行为</a>
      */
     public static void main(String[] args) {
         Player player = new Player();

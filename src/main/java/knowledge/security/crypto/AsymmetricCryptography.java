@@ -33,7 +33,6 @@ import java.util.Map;
  * <a href="https://www.jianshu.com/p/aff5492d64f0">JAVA 加解密16-非对称加密算法- RSA 算法</a>
  * <a href="https://blog.csdn.net/a394268045/article/details/52232120">JAVA RSA 非对称加密详解</a>
  * <a href="https://blog.csdn.net/defonds/article/details/42775183">Java 进行 RSA 加解密时不得不考虑到的那些事儿</a>
- * <a href="https://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">数字签名是什么？ - 阮一峰</a>
  * <a href="https://www.cnblogs.com/jtlgb/p/6668691.html">RSA 公钥 私钥</a>
  * </pre>
  *

@@ -29,8 +29,8 @@ import java.util.concurrent.TimeUnit;
  * 真实主题 RealSubject
  * 代理 Proxy：实现 Subject，或直接继承 RealSubject，持有 RealSubject 的引用
  * </pre>
- * 优点：符合开闭原则
- * <p>缺点：RealSubject 与 Proxy 一一对应，RealSubject 增加，Proxy 也要跟着增加
+ * 优点：符合开闭原则<br/>
+ * 缺点：RealSubject 与 Proxy 一一对应，RealSubject 增加，Proxy 也要跟着增加
  * <p>优化：动态代理、Spring AOP
  * <p>参考：
  * <pre>

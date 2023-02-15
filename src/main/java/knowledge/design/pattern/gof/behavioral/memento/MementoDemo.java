@@ -20,8 +20,9 @@ import java.util.Stack;
  * 原发器 Originator   定义 createMemento(), restoreMemento()
  * 备忘录 Memento      不能修改，可声明为 final
  * 负责人 Caretaker    用列表、堆栈等集合存储并管理 Memento
- * </pre>优点：符合单一职责原则
- * <p>缺点：资源消耗大
+ * </pre>
+ * 优点：符合单一职责原则<br/>
+ * 缺点：资源消耗大
  * <p>
  * 参考：
  * <pre>

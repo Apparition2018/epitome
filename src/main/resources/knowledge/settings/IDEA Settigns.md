@@ -73,6 +73,7 @@
     2. Java → Code Generation → Comment Code
         2.1 Line comment at first column 取消勾选
         2.2 Add a space at line comment start 勾选
+        2.3 Add spaces around block comments 勾选
     3. XML → Code Generation → Comments
         3.1 Line comment at first column 取消勾选
         3.2 Add spaces around block comments 勾选

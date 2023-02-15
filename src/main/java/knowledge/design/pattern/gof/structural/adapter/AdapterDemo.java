@@ -6,34 +6,43 @@ import java.util.*;
 
 /**
  * 适配器模式：使现有不兼容的接口可以一起工作
- * 使用场景：
- * 1.现有接口不兼容
- * 2.复用无法添加到超类的通用功能的多个现有子类 ???
- * 3.只想使用接口中的某些方法 (Default Adapter，使用抽象类实现接口)
- * 使用实例：                                    Adaptee             Adapter                     Target
+ * <p>使用场景：
+ * <pre>
+ * 1 现有接口不兼容
+ * 2 复用无法添加到超类的通用功能的多个现有子类 ???
+ * 3 只想使用接口中的某些方法 (Default Adapter，使用抽象类实现接口)
+ * </pre>
+ * 使用实例：
+ * <pre>
+ * {@code
+ *                                              Adaptee             Adapter                     Target
  * Java IO                                      InputStream         InputStreamReader           Reader
  * Java IO                                      OutputStream        OutputStreamWriter          Writer
  * {@link Arrays#asList(Object[])}              E[]                 Arrays#ArrayList            AbstractList
  * {@link Collections#list(Enumeration)}        Enumeration<T>      ArrayList                   ArrayList
  * {@link Collections#enumeration(Collection)}  Collection<T>       实现 Enumeration             Enumeration
  * Spring AOP                                   MethodBeforeAdvice  MethodBeforeAdviceAdapter   AdvisorAdapter
- * Spring MVC                                   HttpRequestHandler  HttpRequestHandlerAdapter   HandlerAdapter
- * <p>
+ * Spring MVC                                   HttpRequestHandler  HttpRequestHandlerAdapter   HandlerAdapter}
+ * </pre>
  * 角色：
+ * <pre>
  * 目标 Target：与 Client 交互的接口
  * 被适配 Adaptee：现有的一些功能类，Client 与其不兼容
  * 适配器 Adapter：实现或继承 Target，类适配器继承 Adaptee，对象适配器持有 Adaptee 的引用
- * <p>
+ * </pre>
  * 分类：
- * 1.Object Adapter     class Adapter extends Adaptee implement Target {}               继承
- * 2.Class Adapter      class Adapter implement Target { private Adaptee adaptee}       委派
- * 3.Default Adapter    abstract class Adapter implement Adaptee {}
- * <p>
+ * <pre>
+ * 1 Object Adapter     class Adapter extends Adaptee implement Target {}               继承
+ * 2 Class Adapter      class Adapter implement Target { private Adaptee adaptee }      委派
+ * 3 Default Adapter    abstract class Adapter implement Adaptee {}
+ * </pre>
  * 优点：符合单一职责原则、开闭原则
- * 扩展：同时实现或继承 Target 和 Adaptee，同时持有 Target 和 Adaptee 的引用，实现双向适配器
- * <p>
- * Adapter：https://refactoringguru.cn/design-patterns/adapter
+ * <p>扩展：同时实现或继承 Target 和 Adaptee，同时持有 Target 和 Adaptee 的引用，实现双向适配器
+ * <p>参考：
+ * <pre>
+ * <a href="https://refactoringguru.cn/design-patterns/adapter">Adapter</a>
  * 设计模式之美：适配器模式：代理、适配器、桥接、装饰，这四个模式有何区别？
+ * </pre>
  *
  * @author ljh
  * @since 2020/9/26 2:51
@@ -41,9 +50,11 @@ import java.util.*;
 public class AdapterDemo {
 
     /**
-     * 1.MediaPlayer 可以播放 MP3
-     * 2.VideoPlayer 可以播放 VLC 或 MP4
+     * <pre>
+     * 1 MediaPlayer 可以播放 MP3
+     * 2 VideoPlayer 可以播放 VLC 或 MP4
      * 让 MediaPlayer 可以播放所有文件
+     * </pre>
      */
     @Test
     public void testAdapter() {

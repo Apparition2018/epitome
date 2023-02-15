@@ -2,6 +2,8 @@ package knowledge.keyword;
 
 import org.junit.jupiter.api.Test;
 
+import static l.demo.Demo.p;
+
 /**
  * 程序控制
  * <p>阿里编程规约：
@@ -39,22 +41,23 @@ public class ProcessControl {
      */
     @Test
     public void testSwitch() {
-        season("春");
-        season("夏");
-        season("秋");
-        season("冬");
+        p(season("春"));
+        p(season("秋"));
     }
 
     /**
      * @see <a href="https://openjdk.org/jeps/361">JDK14 JEP 361: Switch Expressions</a>
      */
-    private void season(String season) {
-        switch (season) {
-            case "春" -> System.out.println("Spring");
-            case "夏" -> System.out.println("Summer");
-            case "秋" -> System.out.println("Autumn");
-            case "冬" -> System.out.println("Winter");
-            default -> System.out.println("Unknown");
-        }
+    private String season(String season) {
+        return switch (season) {
+            case "春" -> "Spring";
+            case "夏" -> "Summer";
+            case "秋" -> "Autumn";
+            case "冬" -> "Winter";
+            default -> {
+                p("Unknown season");
+                yield "Unknown season";
+            }
+        };
     }
 }

@@ -78,7 +78,7 @@ public class FileSystemDemo extends Demo {
      */
     @Test
     public void unzip() throws IOException {
-        // static FileSystem	newFileSystem(Path, ClassLoader)         构造一个新的文件系统来访问文件的内容
+        // static FileSystem	newFileSystem(Path)                     构造一个新的文件系统来访问文件的内容
         FileSystem fileSystem = FileSystems.newFileSystem(Paths.get(DEMO_PATH + "demo.zip"));
         Files.walkFileTree(fileSystem.getPath("/"), new SimpleFileVisitor<Path>() {
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -89,7 +89,6 @@ public class FileSystemDemo extends Demo {
                 return FileVisitResult.CONTINUE;
             }
         });
-
         fileSystem.close();
     }
 }

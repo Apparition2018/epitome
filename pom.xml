@@ -51,6 +51,7 @@
         <dom4j.version>2.1.4</dom4j.version>
         <springdoc.version>1.6.14</springdoc.version>
         <cglib.version>3.3.0</cglib.version>
+        <jmh.version>1.36</jmh.version>
         <zxing.version>3.5.1</zxing.version>
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <kaptcha.version>2.3.2</kaptcha.version>
@@ -150,13 +151,13 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- influxdb：时序数据库
-            包含了 converter-moshi -->
+        <!-- influxdb：时序数据库 -->
         <dependency>
             <groupId>org.influxdb</groupId>
             <artifactId>influxdb-java</artifactId>
         </dependency>
 
+        <!-- jedis：包含了 gson -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
@@ -227,6 +228,12 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-test</artifactId>
             <version>${curator.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.xerial.snappy</groupId>
+                    <artifactId>snappy-java</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -247,6 +254,7 @@
             <version>${jsoup.version}</version>
         </dependency>
 
+        <!-- poi：包含了 converter-moshi、commons-compress -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -274,12 +282,6 @@
             <groupId>com.ejlchina</groupId>
             <artifactId>okhttps</artifactId>
             <version>${okhttps.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.squareup.okio</groupId>
-                    <artifactId>okio</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- retrofit：适用于 Android 和 Java 的类型安全 HTTP 客户端 -->
@@ -296,16 +298,11 @@
             <artifactId>htmlunit</artifactId>
         </dependency>
 
-        <!-- minio：包含了 bcprov-jdk15on，commons-compress -->
+        <!-- minio：包含了 bcprov-jdk15on -->
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>${minio.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
         </dependency>
 
         <dependency>
@@ -370,6 +367,18 @@
             <artifactId>cglib-nodep</artifactId>
             <version>${cglib.version}</version>
             <scope>compile</scope>
+        </dependency>
+
+        <!-- jmh：微基准测试 -->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
         </dependency>
 
         <dependency>

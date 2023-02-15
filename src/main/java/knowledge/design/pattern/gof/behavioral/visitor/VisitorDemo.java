@@ -30,8 +30,8 @@ import java.util.List;
  * 具体元素 ConcreteElement：实现 accept(Visitor visitor)，其中通常包含 visitor.visit(this)
  * 对象结构 ObjectStructure：持有 Element 集合的引用，提供遍历每个 Element 并调用 accept(Visitor visitor) 的方法
  * </pre>
- * 优点：符合单一职责原则
- * <p>缺点：
+ * 优点：符合单一职责原则<br/>
+ * 缺点：
  * <pre>
  * 1 开闭原则：只增加 ConcreteVisitor 符合；增加 ConcreteElement 违反
  * 2 违反依赖倒置原则

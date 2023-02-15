@@ -21,8 +21,7 @@ import java.security.SecureRandom;
  * PBEWithMD5AndDES, PBEWithSHA1AndDESede, PBEWithSHA1AndRC2_40, PBE,
  * RC2, RC4, RC5, RC6
  * </pre>
- * 优点：速度快，常在消息发送方需要加密大量数据时使用，算法公开，计算量小，加密速度快，加密效率高
- * <p>
+ * 优点：速度快，常在消息发送方需要加密大量数据时使用，算法公开，计算量小，加密速度快，加密效率高<br/>
  * 缺点：密钥的分配与管理
  * <pre>
  * 1 密钥在保管和传送时被泄露，那么加密信息也就不安全了。一般将对称加密的密钥进行非对称加密，然后传送给需要它的人。

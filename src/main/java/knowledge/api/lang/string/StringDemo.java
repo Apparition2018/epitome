@@ -59,21 +59,6 @@ public class StringDemo extends Demo {
         p(String.format("%.2f", 0.345));            // 0.35
     }
 
-    @Test
-    public void testJDK11() {
-        p("".isBlank());
-        // 去除头尾空格
-        p(" aaa ".strip());
-        // 去除头部空格
-        p(" aaa".stripLeading());
-        // 去除尾部空格
-        p("aaa ".stripTrailing());
-        // 重复字串
-        p("a".repeat(3));
-        // 返回行终止符的 Stream，包括 \n、\r、\r\n
-        Stream<String> lines = "a\nb\nc".lines();
-    }
-
     /**
      * <a href="https://zhuanlan.zhihu.com/p/357872204">intern()</a>
      * <pre>
@@ -191,6 +176,28 @@ public class StringDemo extends Demo {
         p("13800123456".replaceAll("(.*\\d{3})\\d{4}(\\d{4})", "$1****$2")); // 138****3456，分组替换
     }
 
+    @Test
+    public void jdk11() {
+        p("".isBlank());
+        // 去除头尾空格
+        p(" aaa ".strip());
+        // 去除头部空格
+        p(" aaa".stripLeading());
+        // 去除尾部空格
+        p("aaa ".stripTrailing());
+        // 重复字串
+        p("a".repeat(3));
+        // 返回行终止符的 Stream，包括 \n、\r、\r\n
+        Stream<String> lines = "a\nb\nc".lines();
+    }
+
+    @Test
+    public void jdk12() {
+        p(" abc ".transform(String::strip));
+        // 缩进
+        p("a\nb\nc".indent(2));
+    }
+
     /**
      * @see <a href="https://www.jianshu.com/p/eaf732cfb971">文本块</a>
      * @see <a href="https://openjdk.org/jeps/394">JDK15 JEP 378: Text Blocks</a>
@@ -198,11 +205,18 @@ public class StringDemo extends Demo {
     @Test
     public void textBlocks() {
         p("""
-                {
-                    greeting: "hello",
-                    audience: "text blocks",
-                    punctuation: "!"
-                }
-                    """);
+                <html>
+                    <body>
+                        <p>Hello, %s</p>
+                    </body>
+                </html>
+                """
+                // 删除每行开头和结尾的空格
+                .stripIndent()
+                // 类似 String.format()
+                .formatted("text blocks"));
+
+        // 转移序列
+        p("This is tab \t, Next New Line \n,next backspace \b,next Single Quotes \' next,Double Quotes \" ".translateEscapes());
     }
 }

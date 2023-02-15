@@ -43,7 +43,6 @@ public class SolutionTest {
             }
             return jewelCount;
         }
-
     }
 
     public static boolean stoneGame(int[] piles) {

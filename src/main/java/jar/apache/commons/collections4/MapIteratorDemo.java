@@ -24,16 +24,14 @@ public class MapIteratorDemo {
 
         MapIterator<String, String> mIt = map.mapIterator();
         while (mIt.hasNext()) {
-            System.out.println(mIt.next());
-            // V	getValue()
+            String next = mIt.next();
+            System.out.println(next);
+
             String value = mIt.getValue();
             System.out.println(value);
-
-            // V	setValue(V value)
             mIt.setValue(value + "_");
 
-            if ("Four".equals(value)) {
-                // void	remove()
+            if ("4".equals(next)) {
                 mIt.remove();
             }
         }

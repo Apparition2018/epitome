@@ -34,8 +34,8 @@ import java.util.function.Function;
  * 抽象策略 Strategy：声明 Context 执行策略的方法
  * 具体策略 ConcreteStrategy
  * </pre>
- * 优点：符合开闭原则
- * <p>缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
+ * 优点：符合开闭原则<br/>
+ * 缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
  * <p>
  * 参考：
  * <pre>
