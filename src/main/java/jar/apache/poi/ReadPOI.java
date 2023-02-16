@@ -1,5 +1,8 @@
 package jar.apache.poi;
 
+import java.io.InputStream;
+import java.util.Map;
+
 /**
  * <pre>
  * <a href="http://www.cnblogs.com/hongten/p/java_poi_excel_xls_xlsx.html">POI 读取 Excel</a>
@@ -12,6 +15,10 @@ package jar.apache.poi;
  */
 public class ReadPOI {
 
+    /**
+     * @see ExcelUtils#excel2BeanList(InputStream, Map)
+     */
     public static void main(String[] args) {
+
     }
 }
