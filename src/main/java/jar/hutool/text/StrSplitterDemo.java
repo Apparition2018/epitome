@@ -2,14 +2,12 @@ package jar.hutool.text;
 
 import cn.hutool.core.text.StrSplitter;
 import cn.hutool.core.util.StrUtil;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
 /**
- * StrSplitter   字符串切割
- * https://hutool.cn/docs/#/core/%E6%96%87%E6%9C%AC%E6%93%8D%E4%BD%9C/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E5%89%B2-StrSplitter
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/StrSplitter.html
+ * <a href="https://hutool.cn/docs/#/core/文本操作/字符串切割-StrSplitter">StrSplitter</a>   字符串切割
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/StrSplitter.html">StrSplitter api</a>
  *
  * @author ljh
  * @since 2020/11/5 10:20
@@ -20,8 +18,7 @@ public class StrSplitterDemo {
     private static final String CSV_SLASH = " A / B // C ";
     private static final String FIXED_STR = "abc123ABC";
 
-    @Test
-    public void testStrSplitter() {
+    public static void main(String[] args) {
         // String →[任意]→ List
         // static List<String>  split(String str, separator/separatorPattern[int limit, isTrim, ignoreEmpty])
         p(StrSplitter.split(CSV_COMMA, StrUtil.COMMA, 4, true, true));           // [A, B, C]

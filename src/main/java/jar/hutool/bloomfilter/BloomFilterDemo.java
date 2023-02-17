@@ -2,7 +2,6 @@ package jar.hutool.bloomfilter;
 
 import cn.hutool.bloomfilter.BitSetBloomFilter;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
 
@@ -25,8 +24,7 @@ public class BloomFilterDemo extends Demo {
     private static final int SIZE = 64;
     private static final int CNT = 10;
 
-    @Test
-    public void testBloomFilter() {
+    public static void main(String[] args) {
         BitSetBloomFilter bloomFilter = new BitSetBloomFilter(SIZE, CNT, 3);
         IntStream.rangeClosed(1, CNT).forEach(i -> bloomFilter.add(i + ""));
         p(bloomFilter.getFalsePositiveProbability());   // 0.00302689531306664

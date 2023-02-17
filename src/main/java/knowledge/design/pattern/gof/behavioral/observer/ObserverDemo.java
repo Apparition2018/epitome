@@ -1,8 +1,6 @@
 package knowledge.design.pattern.gof.behavioral.observer;
 
 import jar.google.guava.evenbus.EventBusDemo;
-import lombok.AllArgsConstructor;
-import org.junit.jupiter.api.Test;
 
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingListener;
@@ -44,8 +42,7 @@ public class ObserverDemo {
     /**
      * <a href="https://refactoringguru.cn/design-patterns/observer/java/example">事件订阅</a>
      */
-    @Test
-    public void testObserver() throws Exception {
+    public static void main(String[] args) throws Exception {
         Editor editor = new Editor();
         editor.events.subscribe("open", new LogOpenListener("file.txt"));
         editor.events.subscribe("save", new EmailNotificationListener("admin@example.com"));
@@ -57,7 +54,7 @@ public class ObserverDemo {
     /**
      * Subject/ConcreteSubject
      */
-    static class EventManager {
+    private static class EventManager {
         Map<String, List<EventListener>> listeners = new HashMap<>();
 
         public EventManager(String... operations) {
@@ -84,7 +81,7 @@ public class ObserverDemo {
         }
     }
 
-    static class Editor {
+    private static class Editor {
         public EventManager events;
         private File file;
 
@@ -117,10 +114,7 @@ public class ObserverDemo {
      * ConcreteObserver
      * 收到通知后发送邮件
      */
-    @AllArgsConstructor
-    static class EmailNotificationListener implements EventListener {
-        private final String email;
-
+    private record EmailNotificationListener(String email) implements EventListener {
         @Override
         public void update(String eventType, File file) {
             System.out.println("Email to " + email + ": Someone has performed " + eventType + " operation with the following file: " + file.getName());
@@ -131,7 +125,7 @@ public class ObserverDemo {
      * ConcreteObserver
      * 收到通知后在日志中记录一条消息
      */
-    static class LogOpenListener implements EventListener {
+    private static class LogOpenListener implements EventListener {
         private final File log;
 
         public LogOpenListener(String fileName) {
@@ -147,10 +141,9 @@ public class ObserverDemo {
     /**
      * Java 提供了一个 Observer 接口和 一个 Observable 类对观察者模式的支持
      */
-    static class JdkObserverDemo {
+    private static class JdkObserverDemo {
 
-        @Test
-        public void testJdkObserver() {
+        public static void main(String[] args) {
             Watched watched = new Watched();
             watched.addObserver(new Watcher());
             watched.setData("start");
@@ -161,7 +154,7 @@ public class ObserverDemo {
         /**
          * ConcreteSubject
          */
-        static class Watched extends Observable {
+        private static class Watched extends Observable {
             private String data;
 
             public String getData() {
@@ -182,7 +175,7 @@ public class ObserverDemo {
         /**
          * ConcreteObserver
          */
-        static class Watcher implements java.util.Observer {
+        private static class Watcher implements java.util.Observer {
             @Override
             public void update(Observable o, Object arg) {
                 System.out.println("observer state: " + ((Watched) o).getData());

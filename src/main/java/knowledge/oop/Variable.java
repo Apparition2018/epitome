@@ -103,7 +103,7 @@ public class Variable {
             System.out.println(Constant.A.RUN_TIME_CONSTANT);
         }
 
-        static class A {
+        private static class A {
 
             static {
                 System.out.println("Class A Was Loaded !");

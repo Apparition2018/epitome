@@ -1,7 +1,6 @@
 package knowledge.design.pattern.gof.structural.proxy;
 
 import lombok.SneakyThrows;
-import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
@@ -49,7 +48,7 @@ public class ProxyDemo {
     /**
      * 案例1：延迟初始化
      */
-    static class ProxyLazyDemo {
+    private static class ProxyLazyDemo {
 
         /**
          * Subject
@@ -61,7 +60,7 @@ public class ProxyDemo {
         /**
          * RealSubject
          */
-        static class QueryService implements Query {
+        private static class QueryService implements Query {
             @SneakyThrows
             public QueryService() {
                 TimeUnit.SECONDS.sleep(1);
@@ -76,7 +75,7 @@ public class ProxyDemo {
         /**
          * Proxy
          */
-        static class QueryProxyService implements Query {
+        private static class QueryProxyService implements Query {
             QueryService queryService = null;
 
             @Override
@@ -91,16 +90,15 @@ public class ProxyDemo {
     /**
      * 案例2：缓存
      */
-    static class ProxyCacheDemo {
-        @Test
-        public void testCache() {
+    private static class ProxyCacheDemo {
+        public static void main(String[] args) {
             // RealSubject
             downloadFiveSameVideo(new NaiveDownloader());
             // Proxy
             downloadFiveSameVideo(new SmartDownloader());
         }
 
-        private void downloadFiveSameVideo(Downloader downloader) {
+        private static void downloadFiveSameVideo(Downloader downloader) {
             System.out.println("-------------------------------");
             long startTime = System.currentTimeMillis();
             downloader.download(1);
@@ -123,7 +121,7 @@ public class ProxyDemo {
         /**
          * RealSubject
          */
-        static class NaiveDownloader implements Downloader {
+        private static class NaiveDownloader implements Downloader {
             @SneakyThrows
             @Override
             public Video download(int id) {
@@ -135,7 +133,7 @@ public class ProxyDemo {
         /**
          * Proxy
          */
-        static class SmartDownloader implements Downloader {
+        private static class SmartDownloader implements Downloader {
             private final Downloader downloader;
             private final Map<Integer, Video> cache = new HashMap<>();
 
@@ -157,7 +155,7 @@ public class ProxyDemo {
             }
         }
 
-        static class Video {
+        private static class Video {
             public Integer id;
 
             Video(Integer id) {

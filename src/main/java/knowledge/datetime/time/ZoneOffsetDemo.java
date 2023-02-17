@@ -8,33 +8,33 @@ import java.time.temporal.ChronoField;
 import static l.demo.Demo.p;
 
 /**
- * ZoneOffset
- * 格林威治/UTC偏移时区，如+02:00
- * <p>
- * boolean	        equals(Object obj)                  检查是否等
- * int	            compareTo(ZoneOffset other)         将此 offset 按降序与另一个 offset 进行比较
- *
- * <p>
- * https://docs.oracle.com  /javase/8/docs/api/java/time/ZoneOffset.html
- * https://www.yiibai.com/javatime/javatime_zoneoffset.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZoneOffset.html">ZoneOffset</a>
+ * <p>格林威治/UTC偏移时区，如+02:00
+ * <pre>
+ * boolean      equals(Object obj)              检查是否等
+ * int          compareTo(ZoneOffset other)     将此 offset 按降序与另一个 offset 进行比较
+ * </pre>
+ * <a href="https://www.yiibai.com/javatime/javatime_zoneoffset.html">java.time.ZoneOffset 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
 public class ZoneOffsetDemo {
 
-    private ZoneOffset zo;
-    private ZoneOffset zo2;
-    private ZoneOffset zo3;
+    private final ZoneOffset zo;
+    private final ZoneOffset zo2;
+    private final ZoneOffset zo3;
 
     /**
      * 获取 ZoneOffset
-     * static ZoneOffset	from(TemporalAccessor temporal)
-     * static ZoneOffset	of(String offsetId)
-     * static ZoneOffset	ofHours(int hours)
-     * static ZoneOffset	ofHoursMinutes(int hours, int minutes)
-     * static ZoneOffset	ofHoursMinutesSeconds(int hours, int minutes, int seconds)
-     * static ZoneOffset	ofTotalSeconds(int totalSeconds)
+     * <pre>
+     * static ZoneOffset    from(TemporalAccessor temporal)
+     * static ZoneOffset    of(String offsetId)
+     * static ZoneOffset    ofHours(int hours)
+     * static ZoneOffset    ofHoursMinutes(int hours, int minutes)
+     * static ZoneOffset    ofHoursMinutesSeconds(int hours, int minutes, int seconds)
+     * static ZoneOffset    ofTotalSeconds(int totalSeconds)
+     * </pre>
      */
     public ZoneOffsetDemo() {
         zo = ZoneOffset.of("Z");
@@ -50,10 +50,12 @@ public class ZoneOffsetDemo {
     }
 
     /**
-     * String	        getId()                             获取规范化 zone offset ID
-     * long	            getLong(TemporalField field)        获取指定字段的值
-     * ZoneRules	    getRules()                          获取关联的 time-zone 规则
-     * int	            getTotalSeconds()                   获取以秒为单位的总偏移量
+     * <pre>
+     * String       getId()                         获取规范化 zone offset ID
+     * long         getLong(TemporalField field)    获取指定字段的值
+     * ZoneRules    getRules()                      获取关联的 time-zone 规则
+     * int          getTotalSeconds()               获取以秒为单位的总偏移量
+     * </pre>
      */
     @Test
     public void get() {

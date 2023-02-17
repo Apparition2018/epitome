@@ -7,7 +7,6 @@ import org.apache.commons.configuration2.builder.fluent.Configurations;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.commons.configuration2.tree.DefaultExpressionEngine;
 import org.apache.commons.configuration2.tree.DefaultExpressionEngineSymbols;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
@@ -19,8 +18,7 @@ import java.io.File;
  */
 public class Configuration2Demo extends Demo {
 
-    @Test
-    public void testConfiguration2() throws ConfigurationException {
+    public static void main(String[] args) throws ConfigurationException {
         Configurations configs = new Configurations();
 
         // .properties

@@ -2,7 +2,6 @@ package jar.hutool;
 
 import cn.hutool.core.clone.CloneSupport;
 import cn.hutool.core.clone.Cloneable;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/克隆/支持泛型的克隆接口和克隆类">Cloneable</a>   支持泛型的克隆接口和克隆类
@@ -16,8 +15,7 @@ import org.junit.jupiter.api.Test;
  */
 public class CloneableDemo {
 
-    @Test
-    public void testCloneable() {
+    public static void main(String[] args) {
         X x = new X();
         X xClone = x.clone();
 
@@ -28,7 +26,7 @@ public class CloneableDemo {
     /**
      * 支持泛型的克隆接口
      */
-    static class X implements Cloneable<X> {
+    private static class X implements Cloneable<X> {
 
         @Override
         public X clone() {
@@ -44,6 +42,6 @@ public class CloneableDemo {
     /**
      * 支持泛型的克隆类
      */
-    static class Y extends CloneSupport<Y> {
+    private static class Y extends CloneSupport<Y> {
     }
 }

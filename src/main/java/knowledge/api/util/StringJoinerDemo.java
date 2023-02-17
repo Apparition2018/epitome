@@ -1,7 +1,6 @@
 package knowledge.api.util;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.StringJoiner;
 
@@ -13,10 +12,8 @@ import java.util.StringJoiner;
  */
 public class StringJoinerDemo extends Demo {
 
-    @Test
-    public void testStringJoiner() {
-        StringJoiner joiner = new StringJoiner(", ", "[", "]")
-                .add("a").add("b").add("c");
+    public static void main(String[] args) {
+        StringJoiner joiner = new StringJoiner(", ", "[", "]").add("a").add("b").add("c");
         p(joiner); // [a, b, c]
     }
 }

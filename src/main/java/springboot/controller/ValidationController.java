@@ -108,7 +108,7 @@ public class ValidationController {
     @Getter
     @Setter
     @ToString
-    static class User {
+    private static class User {
 
         @NotBlank(message = "用户名称不能为空")
         @Length(min = 2, max = 10, message = "用户名长度区间[2,10]")
@@ -166,7 +166,7 @@ public class ValidationController {
         Class<? extends Payload>[] payload() default {};
     }
 
-    static class FlagValidatorClass implements ConstraintValidator<FlagValidator, Object> {
+    private static class FlagValidatorClass implements ConstraintValidator<FlagValidator, Object> {
 
         private String values;
 

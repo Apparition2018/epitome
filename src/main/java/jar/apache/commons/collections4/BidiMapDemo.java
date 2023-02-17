@@ -2,7 +2,6 @@ package jar.apache.commons.collections4;
 
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.TreeBidiMap;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -15,8 +14,7 @@ import static l.demo.Demo.p;
  */
 public class BidiMapDemo {
 
-    @Test
-    public void bidiMap() {
+    public static void main(String[] args) {
         BidiMap<String, String> bidi = new TreeBidiMap<>();
         bidi.put("One", "1");
         bidi.put("Tow", "2");

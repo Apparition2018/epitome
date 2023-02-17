@@ -11,7 +11,7 @@ import java.lang.reflect.Modifier;
  * @since 2020/10/10 19:23
  */
 // 抽象模板角色类
-abstract class Initializer {
+public abstract class Initializer {
 
     // 模板方法
     public final void dataInitialing() throws InvocationTargetException, IllegalAccessException {

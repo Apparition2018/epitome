@@ -1,7 +1,6 @@
 package knowledge.io.file;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -16,8 +15,7 @@ import java.util.Objects;
  */
 public class FileFilterDemo extends Demo {
 
-    @Test
-    public void testFileFilter() {
+    public static void main(String[] args) {
         File file = new File(USER_DIR);
 
         // boolean	    accept(File pathname)

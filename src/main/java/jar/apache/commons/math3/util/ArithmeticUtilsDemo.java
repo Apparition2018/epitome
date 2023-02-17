@@ -1,7 +1,6 @@
 package jar.apache.commons.math3.util;
 
 import org.apache.commons.math3.util.ArithmeticUtils;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -13,8 +12,7 @@ import static l.demo.Demo.p;
  */
 public class ArithmeticUtilsDemo {
 
-    @Test
-    public void testArithmeticUtils() {
+    public static void main(String[] args) {
         // static int/long      addAndCheck(int/long x, int/long y)
         // 相加，检查溢出
         p(ArithmeticUtils.addAndCheck(15, 15));

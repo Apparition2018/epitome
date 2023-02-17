@@ -2,7 +2,6 @@ package jar.jedis.data.type;
 
 import jar.jedis.JedisUtils;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Pipeline;
 
@@ -20,11 +19,10 @@ public class RedisHyperLogLog extends Demo {
     /**
      * 独立访客：一天访问网站的访客数
      */
-    static class UniqueVisitor {
+    private static class UniqueVisitor {
         private static final String UV_KEY = "uv";
 
-        @Test
-        public void testUniqueVisitor() {
+        public static void main(String[] args) {
             Jedis jedis = JedisUtils.getResource();
             jedis.del(UV_KEY);
             Pipeline pipeline = jedis.pipelined();

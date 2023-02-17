@@ -4,16 +4,14 @@ import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNode;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TreeUtil     树结构工具
- * https://hutool.cn/docs/#/core/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E5%B7%A5%E5%85%B7-TreeUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/tree/TreeUtil.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/tree/TreeNode.html
+ * <a href="https://hutool.cn/docs/#/core/语言特性/树结构/树结构工具-TreeUtil">TreeUtil</a> 树结构工具
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/tree/TreeUtil.html">TreeUtil api</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/tree/TreeNode.html">TreeNode api</a>
  *
  * @author ljh
  * @since 2020/11/19 22:31
@@ -38,8 +36,7 @@ public class TreeUtilDemo {
      * 21	    2	    商品管理	    10
      * 221	    2	    添加添加	    11
      */
-    @Test
-    public void testTreeUtil() {
+    public static void main(String[] args) {
         List<TreeNode<String>> treeNodeList = new ArrayList<>();
         treeNodeList.add(new TreeNode<>("1", "0", "系统管理", 5));
         treeNodeList.add(new TreeNode<>("11", "1", "用户管理", 10));

@@ -30,14 +30,14 @@ public class TheSolidPrinciples {
      *
      * @see <a href=" * https://www.baeldung.com/java-single-responsibility-princi">Single Responsibility Principle in Java</a>ple
      */
-    static class SRP {
-        static class CounterExample {
+    private static class SRP {
+        private static class CounterExample {
             /**
              * 此类有两个职责：操作文本、打印文本
              */
             @Getter
             @AllArgsConstructor
-            static class TextManipulator {
+            private static class TextManipulator {
                 private String text;
 
                 public void appendText(String newText) {
@@ -60,13 +60,13 @@ public class TheSolidPrinciples {
             }
         }
 
-        static class PositiveExample {
+        private static class PositiveExample {
             /**
              * 此类只有一个职责：操作文本
              */
             @Getter
             @AllArgsConstructor
-            static class TextManipulator {
+            private static class TextManipulator {
                 private String text;
 
                 public void appendText(String newText) {
@@ -87,10 +87,7 @@ public class TheSolidPrinciples {
             /**
              * 此类只有一个职责：打印文本
              */
-            @AllArgsConstructor
-            static class TextPrinter {
-                private final TextManipulator textManipulator;
-
+            private record TextPrinter(TextManipulator textManipulator) {
                 public void printText() {
                     System.out.println(textManipulator.getText());
                 }
@@ -115,13 +112,13 @@ public class TheSolidPrinciples {
      *
      * @see <a href="https://www.baeldung.com/java-open-closed-principle">Open/Closed Principle in Java</a>
      */
-    static class OCP {
-        static class CounterExample {
+    private static class OCP {
+        private static class CounterExample {
             interface CalculatorOperation {
             }
 
             @Data
-            static class Addition implements CalculatorOperation {
+            private static class Addition implements CalculatorOperation {
                 private double left;
                 private double right;
                 private double result = 0D;
@@ -133,7 +130,7 @@ public class TheSolidPrinciples {
             }
 
             @Data
-            static class Subtraction implements CalculatorOperation {
+            private static class Subtraction implements CalculatorOperation {
                 private double left;
                 private double right;
                 private double result = 0D;
@@ -147,7 +144,7 @@ public class TheSolidPrinciples {
             /**
              * 添加乘法或除法功能时，需要修改 Calculator
              */
-            static class Calculator {
+            private static class Calculator {
                 public void calculate(CalculatorOperation operation) {
                     if (operation instanceof Addition addition) {
                         addition.setResult(addition.getLeft() + addition.getRight());
@@ -158,13 +155,13 @@ public class TheSolidPrinciples {
             }
         }
 
-        static class PositiveExample {
+        private static class PositiveExample {
             interface CalculatorOperation {
                 void perform();
             }
 
             @Data
-            static class Addition implements CalculatorOperation {
+            private static class Addition implements CalculatorOperation {
                 private double left;
                 private double right;
                 private double result;
@@ -181,7 +178,7 @@ public class TheSolidPrinciples {
             }
 
             @Data
-            static class Division implements CalculatorOperation {
+            private static class Division implements CalculatorOperation {
                 private double left;
                 private double right;
                 private double result;
@@ -199,7 +196,7 @@ public class TheSolidPrinciples {
                 }
             }
 
-            static class Calculator {
+            private static class Calculator {
                 public void calculate(CalculatorOperation operation) {
                     operation.perform();
                 }
@@ -233,22 +230,22 @@ public class TheSolidPrinciples {
      *
      * @see <a href="https://www.baeldung.com/java-liskov-substitution-principle">Liskov Substitution Principle in Java</a>
      */
-    static class LSP {
-        static class CounterExample {
-            static class Person {
+    private static class LSP {
+        private static class CounterExample {
+            private static class Person {
                 public void move() {
                     System.out.println("移动");
                 }
             }
 
-            static class Man extends Person {
+            private static class Man extends Person {
                 @Override
                 public void move() {
                     System.out.println("步行");
                 }
             }
 
-            static class Baby extends Person {
+            private static class Baby extends Person {
                 @Override
                 public void move() {
                     System.out.println("爬行");
@@ -256,22 +253,22 @@ public class TheSolidPrinciples {
             }
         }
 
-        static class PositiveExample {
+        private static class PositiveExample {
             interface Person {
                 void move();
             }
 
-            static class Adult implements Person {
+            private static class Adult implements Person {
                 @Override
                 public void move() {
                     System.out.println("步行");
                 }
             }
 
-            static class Man extends Adult {
+            private static class Man extends Adult {
             }
 
-            static class Baby implements Person {
+            private static class Baby implements Person {
                 @Override
                 public void move() {
                     System.out.println("爬行");
@@ -291,8 +288,8 @@ public class TheSolidPrinciples {
      *
      * @see <a href="https://www.baeldung.com/java-interface-segregation">Interface Segregation Principle in Java</a>
      */
-    static class ISP {
-        static class CounterExample {
+    private static class ISP {
+        private static class CounterExample {
             interface Payment {
                 Object status();
 
@@ -301,7 +298,7 @@ public class TheSolidPrinciples {
                 void initiateLoanSettlement();
             }
 
-            static class LoanPayment implements Payment {
+            private static class LoanPayment implements Payment {
                 @Override
                 public Object status() {
                     return new Object();
@@ -317,7 +314,7 @@ public class TheSolidPrinciples {
                 }
             }
 
-            static class BankPayment implements Payment {
+            private static class BankPayment implements Payment {
                 @Override
                 public Object status() {
                     return null;
@@ -335,7 +332,7 @@ public class TheSolidPrinciples {
             }
         }
 
-        static class PositiveExample {
+        private static class PositiveExample {
             interface Payment {
                 Object status();
             }
@@ -348,7 +345,7 @@ public class TheSolidPrinciples {
                 void initiateLoanSettlement();
             }
 
-            static class BankPayment implements Bank {
+            private static class BankPayment implements Bank {
                 @Override
                 public Object status() {
                     return new Object();
@@ -359,7 +356,7 @@ public class TheSolidPrinciples {
                 }
             }
 
-            static class LoanPayment implements Loan {
+            private static class LoanPayment implements Loan {
                 @Override
                 public Object status() {
                     return new Object();
@@ -381,38 +378,38 @@ public class TheSolidPrinciples {
      *
      * @see <a href="https://www.baeldung.com/java-dependency-inversion-principle">The Dependency Inversion Principle in Java</a>
      */
-    static class DIP {
-        static class CounterExample {
-            static class Math {
+    private static class DIP {
+        private static class CounterExample {
+            private static class Math {
                 public void knowledge() {
                 }
             }
 
-            static class Student {
+            private static class Student {
                 public void learn(Math course) {
                     course.knowledge();
                 }
             }
         }
 
-        static class PositiveExample {
+        private static class PositiveExample {
             interface Course {
                 void knowledge();
             }
 
-            static class Math implements Course {
+            private static class Math implements Course {
                 @Override
                 public void knowledge() {
                 }
             }
 
-            static class Chinese implements Course {
+            private static class Chinese implements Course {
                 @Override
                 public void knowledge() {
                 }
             }
 
-            static class Student {
+            private static class Student {
                 public void learn(Course course) {
                     course.knowledge();
                 }
@@ -427,9 +424,9 @@ public class TheSolidPrinciples {
      * 一个软件实体应当尽可能少地与其他软件实体发生相互作用
      * </pre>
      */
-    static class LOD {
-        static class CounterExample {
-            static class Phone {
+    private static class LOD {
+        private static class CounterExample {
+            private static class Phone {
                 // 打开 Phone 可以看到 App
                 App app = new App();
                 // 打开 Phone 不该看到 Book
@@ -440,14 +437,14 @@ public class TheSolidPrinciples {
                 }
             }
 
-            static class App {
+            private static class App {
                 public void read(Book book) {
                     System.out.println(book.getTitle());
                 }
             }
 
             @Data
-            static class Book {
+            private static class Book {
                 String title;
 
                 public Book(String title) {
@@ -456,8 +453,8 @@ public class TheSolidPrinciples {
             }
         }
 
-        static class PositiveExample {
-            static class Phone {
+        private static class PositiveExample {
+            private static class Phone {
                 App app = new App();
 
                 public void readBook() {
@@ -465,7 +462,7 @@ public class TheSolidPrinciples {
                 }
             }
 
-            static class App {
+            private static class App {
                 // 打开 App 可以看到 Book
                 Book book = new Book("Book");
 
@@ -475,7 +472,7 @@ public class TheSolidPrinciples {
             }
 
             @Data
-            static class Book {
+            private static class Book {
                 private String title;
 
                 public Book(String title) {
@@ -489,48 +486,48 @@ public class TheSolidPrinciples {
      * 合成复用原则（组合/聚合复用原则）
      * <p>尽量使用组合(has-a)/聚合(contains-a)而不是继承关系达到软件复用的目的
      */
-    static class CARP {
-        static class CounterExample {
-            static class Car {
+    private static class CARP {
+        private static class CounterExample {
+            private static class Car {
             }
 
-            static class GasolineCar extends Car {
+            private static class GasolineCar extends Car {
             }
 
-            static class ElectricCar extends Car {
+            private static class ElectricCar extends Car {
             }
 
-            static class WhiteGasolineCar extends GasolineCar {
+            private static class WhiteGasolineCar extends GasolineCar {
             }
 
-            static class BlackGasolineCar extends GasolineCar {
+            private static class BlackGasolineCar extends GasolineCar {
             }
 
-            static class WhiteElectricCar extends ElectricCar {
+            private static class WhiteElectricCar extends ElectricCar {
             }
 
-            static class BlackElectricCar extends ElectricCar {
+            private static class BlackElectricCar extends ElectricCar {
             }
         }
 
-        static class PositiveExample {
-            static class Color {
+        private static class PositiveExample {
+            private static class Color {
             }
 
-            static class White extends Color {
+            private static class White extends Color {
             }
 
-            static class Black extends Color {
+            private static class Black extends Color {
             }
 
-            static class Car {
+            private static class Car {
                 Color color;
             }
 
-            static class GasolineCar extends Car {
+            private static class GasolineCar extends Car {
             }
 
-            static class ElectricCar extends Car {
+            private static class ElectricCar extends Car {
             }
         }
     }

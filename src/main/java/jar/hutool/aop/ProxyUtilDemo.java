@@ -3,7 +3,6 @@ package jar.hutool.aop;
 import cn.hutool.aop.ProxyUtil;
 import cn.hutool.aop.aspects.TimeIntervalAspect;
 import l.demo.Animal.Cat;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/aop/切面代理工具-ProxyUtil">ProxyUtil</a>    切面代理工具
@@ -18,8 +17,7 @@ import org.junit.jupiter.api.Test;
  */
 public class ProxyUtilDemo {
 
-    @Test
-    public void testProxyUtil() {
+    public static void main(String[] args) {
         Cat proxyCat = ProxyUtil.proxy(new Cat(), new TimeIntervalAspect());
         proxyCat.eat();
         // 吃鱼

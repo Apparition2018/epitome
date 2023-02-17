@@ -2,7 +2,6 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.PhoneUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/PhoneUtil.html">PhoneUtil</a>
@@ -12,8 +11,7 @@ import org.junit.jupiter.api.Test;
  */
 public class PhoneUtilDemo extends Demo {
 
-    @Test
-    public void testPhoneUtil() {
+    public static void main(String[] args) {
         // 座机号 或 手机号（中国）
         p(PhoneUtil.isPhone(MOBILE));
         // 座机号（中国）

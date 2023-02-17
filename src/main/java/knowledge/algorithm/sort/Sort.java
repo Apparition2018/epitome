@@ -31,7 +31,7 @@ public class Sort extends Demo {
     /**
      * 交换排序
      */
-    static class ChangeSort {
+    private static class ChangeSort {
         public static void main(String[] args) {
             bubbleSort(arr.clone());
 
@@ -146,7 +146,7 @@ public class Sort extends Demo {
     /**
      * 选择排序
      */
-    static class SelectionSort {
+    private static class SelectionSort {
         public static void main(String[] args) {
             easySelectionSort(arr.clone());
         }
@@ -201,7 +201,7 @@ public class Sort extends Demo {
     /**
      * 插入排序
      */
-    static class InsertSort {
+    private static class InsertSort {
         public static void main(String[] args) {
             insertionSort(arr);
         }
@@ -244,7 +244,7 @@ public class Sort extends Demo {
     /**
      * <a href="https://www.cnblogs.com/of-fanruice/p/7678801.html">归并排序</a>
      */
-    static class MergeSort {
+    private static class MergeSort {
         public static void main(String[] args) {
             long t1 = System.nanoTime();
             p("归并排序：" + Arrays.toString(mergeSort(arr, 0, arr.length - 1)));

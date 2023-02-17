@@ -1,7 +1,6 @@
 package knowledge.datetime;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -29,8 +28,7 @@ public class CalendarDemo extends Demo {
         CAL.set(Calendar.SECOND, 0);
     }
 
-    @Test
-    public void testCalendar() {
+    public static void main(String[] args) {
         // Date	            getTime()                       返回一个表示此 Calendar 时间值（从历元至现在的毫秒偏移量）的 Date 对象
         Date dateTime = CAL.getTime();
         p(CAL.getTime());                                   // 2018-02-25 12:30:00

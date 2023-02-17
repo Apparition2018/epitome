@@ -1,7 +1,6 @@
 package jar.apache.commons.math3.transform;
 
 import org.apache.commons.math3.transform.TransformUtils;
-import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -13,8 +12,7 @@ import java.util.Arrays;
  */
 public class TransformUtilsDemo {
 
-    @Test
-    public void testTransformUtils() {
+    public static void main(String[] args) {
         // static Complex[]	    scaleArray(Complex[] f, double d)
         // static double[]	    scaleArray(double[] f, double d)
         // 比例扩/缩数组

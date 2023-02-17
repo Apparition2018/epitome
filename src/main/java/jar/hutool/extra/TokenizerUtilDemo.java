@@ -4,7 +4,6 @@ import cn.hutool.extra.tokenizer.Result;
 import cn.hutool.extra.tokenizer.TokenizerEngine;
 import cn.hutool.extra.tokenizer.TokenizerUtil;
 import cn.hutool.extra.tokenizer.Word;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/extra/中文分词/中文分词封装-TokenizerUtil">TokenizerUtil</a>     中文分词封装
@@ -19,8 +18,7 @@ import org.junit.jupiter.api.Test;
  */
 public class TokenizerUtilDemo {
 
-    @Test
-    public void testTokenizerUtil() {
+    public static void main(String[] args) {
         // 根据用户引入的分词引擎，自动创建对应的分词引擎对象
         TokenizerEngine tokenizerEngine = TokenizerUtil.createEngine();
         Result parse = tokenizerEngine.parse("我来自中国，是中国人");

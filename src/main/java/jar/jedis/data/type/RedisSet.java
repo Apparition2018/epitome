@@ -1,7 +1,6 @@
 package jar.jedis.data.type;
 
 import jar.jedis.JedisUtils;
-import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 
 import java.util.Set;
@@ -24,15 +23,14 @@ public class RedisSet {
     /**
      * 关注的人
      */
-    static class Following {
+    private static class Following {
 
         private static final String FOLLOWING_KEY = "following";
         private static final String JACK_FOLLOWING_KEY = FOLLOWING_KEY.concat(":Jack");
         private static final String MARY_FOLLOWING_KEY = FOLLOWING_KEY.concat(":Mary");
         private static final String ROSE_FOLLOWING_KEY = FOLLOWING_KEY.concat(":Rose");
 
-        @Test
-        public void testFollowing() {
+        public static void main(String[] args) {
             Jedis jedis = JedisUtils.getResource();
             // 设置关注的人
             jedis.sadd(JACK_FOLLOWING_KEY, "Mary", "Rose", "King", "Lucy");

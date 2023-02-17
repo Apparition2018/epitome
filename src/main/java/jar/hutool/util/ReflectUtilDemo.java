@@ -2,7 +2,6 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.ReflectUtil;
 import l.demo.Animal.Cat;
-import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -21,9 +20,7 @@ public class ReflectUtilDemo {
 
     public static final String X = "X";
 
-    @Test
-    public void testReflectUtil() {
-
+    public static void main(String[] args) {
         //********** 1.动态创建对象 **********//
         Cat cat = ReflectUtil.newInstanceIfPossible(Cat.class);
         cat.setName("白猫");

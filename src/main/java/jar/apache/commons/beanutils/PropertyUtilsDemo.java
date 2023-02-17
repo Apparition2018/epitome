@@ -3,7 +3,6 @@ package jar.apache.commons.beanutils;
 import l.demo.Demo;
 import l.demo.Person;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
@@ -16,8 +15,7 @@ import java.util.Map;
  */
 public class PropertyUtilsDemo extends Demo {
 
-    @Test
-    public void testPropertyUtils() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Person person = new Person();
         // JavaBean → JavaBean
         PropertyUtils.copyProperties(person, personList.get(0));

@@ -1,7 +1,6 @@
 package knowledge.api.util;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Spliterator;
@@ -22,8 +21,7 @@ import java.util.Spliterator;
  */
 public class SpliteratorDemo extends Demo {
 
-    @Test
-    public void testSpliterator() {
+    public static void main(String[] args) {
         Spliterator<Integer> spliterator = Arrays.spliterator(arr);
 
         // int	            characteristics()

@@ -81,7 +81,7 @@ public class FutureTaskDemo extends Demo {
         threadPool.shutdown();
     }
 
-    static class MyFutureTask extends FutureTask<Map<Integer, String>> {
+    private static class MyFutureTask extends FutureTask<Map<Integer, String>> {
         MyFutureTask(Callable<Map<Integer, String>> callable) {
             super(callable);
         }

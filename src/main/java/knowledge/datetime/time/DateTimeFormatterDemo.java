@@ -1,7 +1,6 @@
 package knowledge.datetime.time;
 
 import cn.hutool.core.date.DatePattern;
-import org.junit.jupiter.api.Test;
 
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
@@ -89,8 +88,7 @@ public class DateTimeFormatterDemo {
      * static DateTimeFormatter	    ofPattern(String pattern[, Locale locale])
      * </pre>
      */
-    @Test
-    public void testDateTimeFormatter() {
+    public static void main(String[] args) {
         DateTimeFormatter[] formatters = new DateTimeFormatter[]{
                 // 常量
                 DateTimeFormatter.BASIC_ISO_DATE,                                               // 20080808

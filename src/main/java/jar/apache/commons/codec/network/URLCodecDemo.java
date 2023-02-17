@@ -3,7 +3,6 @@ package jar.apache.commons.codec.network;
 import l.demo.Demo;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.net.URLCodec;
-import org.junit.jupiter.api.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
@@ -16,8 +15,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class URLCodecDemo extends Demo {
 
-    @Test
-    public void testURLCodec() throws UnsupportedEncodingException, DecoderException {
+    public static void main(String[] args) throws UnsupportedEncodingException, DecoderException {
         URLCodec urlCodec = new URLCodec();
 
         String encode = urlCodec.encode(MY_CY, StandardCharsets.UTF_8.name());

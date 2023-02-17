@@ -2,7 +2,6 @@ package knowledge.design.pattern.gof.structural.decorator;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.xml.BeanDefinitionDecorator;
 import org.springframework.cache.transaction.TransactionAwareCacheDecorator;
 import org.springframework.http.server.reactive.ServerHttpRequestDecorator;
@@ -73,8 +72,7 @@ public class DecoratorDemo {
      * 2 增加加密解密，压缩解压功能
      * </pre>
      */
-    @Test
-    public void testDecorator() {
+    public static void main(String[] args) {
         String salaryRecords = "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
         DataSource dataSource = new CompressionDecorator(
                 new EncryptionDecorator(
@@ -104,12 +102,7 @@ public class DecoratorDemo {
      * ConcreteComponent
      * 简单数据读写器
      */
-    static class FileDataSource implements DataSource {
-        private final String name;
-
-        public FileDataSource(String name) {
-            this.name = name;
-        }
+    private record FileDataSource(String name) implements DataSource {
 
         @Override
         public void writeData(String data) {
@@ -139,7 +132,7 @@ public class DecoratorDemo {
      * Decorator
      * 抽象装饰
      */
-    static class DataSourceDecorator implements DataSource {
+    private static class DataSourceDecorator implements DataSource {
         private final DataSource wrappee;
 
         DataSourceDecorator(DataSource source) {
@@ -161,7 +154,7 @@ public class DecoratorDemo {
      * ConcreteDecorator
      * 加密装饰
      */
-    static class EncryptionDecorator extends DataSourceDecorator {
+    private static class EncryptionDecorator extends DataSourceDecorator {
 
         public EncryptionDecorator(DataSource source) {
             super(source);
@@ -200,7 +193,7 @@ public class DecoratorDemo {
      */
     @Getter
     @Setter
-    static class CompressionDecorator extends DataSourceDecorator {
+    private static class CompressionDecorator extends DataSourceDecorator {
         private int compLevel = 6;
 
         public CompressionDecorator(DataSource source) {

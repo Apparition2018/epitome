@@ -83,7 +83,7 @@ public class NonAccessModifier {
      *   2.4 如果一个类包含若干个抽象方法，那么该类必须声明为抽象类
      * </pre>
      */
-    static abstract class Caravan {
+    private static abstract class Caravan {
         private double price;
         private String model;
         private String year;

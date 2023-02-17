@@ -43,13 +43,10 @@ public class CyclicBarrierDemo extends Demo {
         new Thread(new Worker(cb), "工人2").start();
     }
 
-    static class Worker implements Runnable {
-        // 关卡
-        private final CyclicBarrier cb;
-
-        private Worker(CyclicBarrier cb) {
-            this.cb = cb;
-        }
+    /**
+     * @param cb 关卡
+     */
+    private record Worker(CyclicBarrier cb) implements Runnable {
 
         @Override
         public void run() {

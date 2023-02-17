@@ -2,7 +2,6 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.pinyin.PinyinUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/extra/拼音/拼音工具-PinyinUtil">PinyinUtil</a>   拼音工具
@@ -14,8 +13,7 @@ import org.junit.jupiter.api.Test;
  */
 public class PinyinUtilDemo extends Demo {
 
-    @Test
-    public void testPinyinUtil() {
+    public static void main(String[] args) {
         // static boolean	isChinese(char c)
         // 是否为中文字符
         p(PinyinUtil.isChinese(MY_CY.toCharArray()[0]));// true

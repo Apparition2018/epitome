@@ -4,14 +4,12 @@ import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.asymmetric.Sign;
 import cn.hutool.crypto.asymmetric.SignAlgorithm;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyStore;
-import java.security.KeyStoreException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.cert.Certificate;
@@ -31,8 +29,7 @@ public class SecureUtilDemo extends Demo {
     private static final String KEY_ALIAS = MY_NAME;
     private static final String CERT_PATH = DESKTOP + "ljh.cer";
 
-    @Test
-    public void testCertificate() throws IOException, KeyStoreException {
+    public static void main(String[] args) throws IOException {
         // 获取 KeyStore
         KeyStore keyStore = SecureUtil.readKeyStore(KEY_TYPE_PKCS12, Files.newInputStream(Paths.get(KEY_PATH)), KEY_PASSWORD.toCharArray());
         // 获取 Certificate

@@ -41,7 +41,7 @@ public class ThreadPoolExecutorDemo extends Demo {
         IntStream.rangeClosed(1, 10).forEach(i -> threadPool.execute(new MyTask(i)));
     }
 
-    static class MyThreadFactory implements ThreadFactory {
+    private static class MyThreadFactory implements ThreadFactory {
         private final String namePrefix;
         private final AtomicInteger nextId = new AtomicInteger(1);
 
@@ -69,7 +69,7 @@ public class ThreadPoolExecutorDemo extends Demo {
      *
      * @see <a href="http://kailing.pub/article/index/arcid/255.html">ThreadPoolExecutor 八种拒绝策略</a>
      */
-    static class MyRejectHandler implements RejectedExecutionHandler {
+    private static class MyRejectHandler implements RejectedExecutionHandler {
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             printLog(r, executor);
@@ -84,7 +84,7 @@ public class ThreadPoolExecutorDemo extends Demo {
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ScheduledThreadPoolExecutor.html">ScheduledThreadPoolExecutor</a>
      * <p>创建一个定长线程池，支持定时及周期性任务执行
      */
-    static class ScheduledThreadPoolExecutorDemo extends Demo {
+    private static class ScheduledThreadPoolExecutorDemo extends Demo {
         public static void main(String[] args) {
             // ScheduledThreadPoolExecutor(int corePoolSize)
             // 使用给定核心池大小创建一个新 ScheduledThreadPoolExecutor

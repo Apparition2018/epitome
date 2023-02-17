@@ -1,7 +1,6 @@
 package jar.hutool.http;
 
 import cn.hutool.http.webservice.SoapClient;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/http/WebService/Soap客户端-SoapClient">SoapClient</a> Soap 客户端
@@ -31,8 +30,7 @@ import org.junit.jupiter.api.Test;
  */
 public class SoapClientDemo {
 
-    @Test
-    public void testSoapClient() {
+    public static void main(String[] args) {
         // 新建客户端
         SoapClient soapClient = SoapClient.create("https://www.webxml.com.cn/WebServices/IpAddressSearchWebService.asmx")
                 // 设置要请求的方法，此接口方法前缀为web，传入对应的命名空间

@@ -1,7 +1,6 @@
 package jar.apache.commons.text;
 
 import org.apache.commons.text.CaseUtils;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/CaseUtils.html">CaseUtils</a>
@@ -14,8 +13,7 @@ public class CaseUtilsDemo {
     /**
      * static String	toCamelCase(String str, boolean capitalizeFirstLetter, char... delimiters)
      */
-    @Test
-    public void toCamelCase() {
+    public static void main(String[] args) {
         System.out.println(CaseUtils.toCamelCase("To.Camel.Case", true, '.'));  // ToCamelCase
         System.out.println(CaseUtils.toCamelCase("To.Camel.Case", false, '.')); // toCamelCase
     }

@@ -1,7 +1,5 @@
 package knowledge.datetime.time;
 
-import org.junit.jupiter.api.Test;
-
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -10,21 +8,20 @@ import java.time.temporal.ChronoUnit;
 import static l.demo.Demo.p;
 
 /**
- * Instant
- * 表示时间线上的瞬时点，定义为距离初始时间 (1970-1-1 00:00) 的时间差
- * <p>
- * boolean	        isBefore(Instant otherInstant)      检查此 instant 是否在指定 instant 之前
- * boolean	        isAfter(Instant otherInstant)       检查此 instant 是否在指定 instant 之后
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html
- * https://www.yiibai.com/javatime/javatime_instant.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html">Instant</a>
+ * <p>表示时间线上的瞬时点，定义为距离初始时间 (1970-1-1 00:00) 的时间差
+ * <pre>
+ * boolean      isBefore(Instant otherInstant)  检查此 instant 是否在指定 instant 之前
+ * booleanq     isAfter(Instant otherInstant)   检查此 instant 是否在指定 instant 之后
+ * </pre>
+ * <a href="https://www.yiibai.com/javatime/javatime_instant.html">java.time.Instant 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
 public class InstantDemo {
 
-    private Instant instant;
+    private static Instant instant;
 
     /**
      * 获取 Instant
@@ -35,16 +32,15 @@ public class InstantDemo {
      */
     public InstantDemo() {
         // static Instant	    now([Clock clock])
-        this.instant = Instant.now(Clock.systemDefaultZone());
+        instant = Instant.now(Clock.systemDefaultZone());
         // static Instant	    ofEpochMilli(long epochMilli)                           从1970-01-01T00:00:00Z的纪元获取一个使用毫秒的Instant实例
         // static Instant	    ofEpochSecond(long epochMilli[, long nanoAdjustment])   从1970-01-01T00:00:00Z的纪元获取一个使用秒的Instant实例
-        this.instant = Instant.ofEpochSecond(1218226088L);
+        instant = Instant.ofEpochSecond(1218226088L);
         // static Instant	    parse(CharSequence text)                                从文本字符串(如2007-12-03T10:15:30.00Z)获取Instant实例
-        this.instant = Instant.parse("2008-08-08T12:08:08.00Z");
+        instant = Instant.parse("2008-08-08T12:08:08.00Z");
     }
 
-    @Test
-    public void testInstant() {
+    public static void main(String[] args) {
         // int	            getNano()                       获取时间轴上从秒开始以后的纳秒数
         p(instant.getNano());                               // 0
 

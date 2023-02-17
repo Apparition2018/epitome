@@ -1,9 +1,7 @@
 package knowledge.design.pattern.gof.creational.builder;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -49,8 +47,7 @@ public class BuilderDemo {
     /**
      * <a href="https://refactoringguru.cn/design-patterns/builder/java/example">分步骤生产汽车</a>
      */
-    @Test
-    public void testBuilder() {
+    public static void main(String[] args) {
         Director director = new Director();
 
         CarBuilder carBuilder = new CarBuilder();
@@ -85,7 +82,7 @@ public class BuilderDemo {
      * ConcreteBuilder
      */
     @Setter
-    static class CarBuilder implements Builder {
+    private static class CarBuilder implements Builder {
         private CarType carType;
         private int seats;
         private Engine engine;
@@ -107,7 +104,7 @@ public class BuilderDemo {
      * ConcreteBuilder
      */
     @Setter
-    static class CarManualBuilder implements Builder {
+    private static class CarManualBuilder implements Builder {
         private CarType carType;
         private int seats;
         private Engine engine;
@@ -129,7 +126,7 @@ public class BuilderDemo {
      * Product
      */
     @Getter
-    static class Car {
+    private static class Car {
         private final CarType carType;
         private final int seats;
         private final Engine engine;
@@ -159,15 +156,8 @@ public class BuilderDemo {
     /**
      * Product
      */
-    @AllArgsConstructor
-    static class Manual {
-        private final CarType carType;
-        private final int seats;
-        private final Engine engine;
-        private final Transmission transmission;
-        private final TripComputer tripComputer;
-        private final GPSNavigator gpsNavigator;
-
+    private record Manual(CarType carType, int seats, Engine engine, Transmission transmission,
+                          TripComputer tripComputer, GPSNavigator gpsNavigator) {
         public String print() {
             String info = "";
             info += "Type of car: " + carType + "\n";
@@ -191,7 +181,7 @@ public class BuilderDemo {
     /**
      * Director
      */
-    static class Director {
+    private static class Director {
         public void constructCityCar(Builder builder) {
             builder.setCarType(CarType.CITY_CAR);
             builder.setSeats(2);
@@ -222,10 +212,9 @@ public class BuilderDemo {
     /**
      * 流式建造者模式
      */
-    static class FluentBuilderDemo {
+    private static class FluentBuilderDemo {
 
-        @Test
-        public void testChainBuilder() {
+        public static void main(String[] args) {
             Car car = new Car.Builder()
                     .setCarType(CarType.CITY_CAR)
                     .setSeats(2)
@@ -254,7 +243,7 @@ public class BuilderDemo {
             /**
              * Builder
              */
-            static class Builder {
+            private static class Builder {
                 private final Car car = new Car();
 
                 public Builder setCarType(CarType carType) {
@@ -304,7 +293,7 @@ public class BuilderDemo {
     }
 
     @Getter
-    static class Engine {
+    private static class Engine {
         private final double volume;
         private double mileage;
         private boolean started;
@@ -340,7 +329,7 @@ public class BuilderDemo {
     }
 
     @Setter
-    static class TripComputer {
+    private static class TripComputer {
         private Car car;
 
         public void showFuelLevel() {
@@ -357,7 +346,7 @@ public class BuilderDemo {
     }
 
     @Getter
-    static class GPSNavigator {
+    private static class GPSNavigator {
         private final String route;
 
         public GPSNavigator() {

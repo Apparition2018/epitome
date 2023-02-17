@@ -2,7 +2,6 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.IdcardUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
@@ -16,9 +15,7 @@ import java.util.Date;
  */
 public class IdcardUtilDemo extends Demo {
 
-    @Test
-    public void testIdcardUtil() {
-
+    public static void main(String[] args) {
         // 是否合法
         p(IdcardUtil.isValidCard(ID_CARD));
 

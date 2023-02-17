@@ -1,7 +1,5 @@
 package knowledge.api.util.stream;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.IntSummaryStatistics;
 import java.util.stream.IntStream;
 
@@ -19,8 +17,7 @@ import static l.demo.Demo.p;
  */
 public class IntSummaryStatisticsDemo {
 
-    @Test
-    public void testSummaryStatistics() {
+    public static void main(String[] args) {
         IntSummaryStatistics stats = IntStream.rangeClosed(1, 2).summaryStatistics();
         IntSummaryStatistics stats2 = IntStream.rangeClosed(3, 4).summaryStatistics();
 

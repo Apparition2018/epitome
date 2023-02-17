@@ -13,7 +13,7 @@ public class StateDemo2 {
     /**
      * State
      */
-    static abstract class CState {
+    private static abstract class CState {
         // 里程数
         private int flyMiles;
 
@@ -25,7 +25,7 @@ public class StateDemo2 {
      * ConcreteState
      * 非会员
      */
-    static class CNoCustomer extends CState {
+    private static class CNoCustomer extends CState {
         public double travel(int miles, FrequentFlyer context) {
             // 不累积里程数
             System.out.println("Your travel wil not account for points");
@@ -37,7 +37,7 @@ public class StateDemo2 {
      * ConcreteState
      * 普卡会员
      */
-    static class CBasic extends CState {
+    private static class CBasic extends CState {
         public double travel(int miles, FrequentFlyer context) {
             if (context.flyMiles >= 25000 && context.flyMiles < 50000)
                 context.setState(new CSilver());
@@ -51,7 +51,7 @@ public class StateDemo2 {
      * ConcreteState
      * 银卡会员
      */
-    static class CSilver extends CState {
+    private static class CSilver extends CState {
         public double travel(int miles, FrequentFlyer context) {
             if (context.flyMiles < 25000)
                 context.setState(new CBasic());
@@ -65,7 +65,7 @@ public class StateDemo2 {
      * ConcreteState
      * 金卡会员
      */
-    static class CGold extends CState {
+    private static class CGold extends CState {
         public double travel(int miles, FrequentFlyer context) {
             if (context.flyMiles >= 25000 && context.flyMiles < 50000)
                 context.setState(new CSilver());
@@ -78,7 +78,7 @@ public class StateDemo2 {
     /**
      * Context
      */
-    static class FrequentFlyer {
+    private static class FrequentFlyer {
         CState state;
         double flyMiles;
 

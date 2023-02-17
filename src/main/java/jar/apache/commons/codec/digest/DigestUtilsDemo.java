@@ -2,7 +2,6 @@ package jar.apache.commons.codec.digest;
 
 import l.demo.Demo;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -15,8 +14,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class DigestUtilsDemo extends Demo {
 
-    @Test
-    public void digest() {
+    public static void main(String[] args) {
         // md5
         // 1.
         byte[] md5bytes = DigestUtils.digest(DigestUtils.getMd5Digest(), HELLO_WORLD.getBytes(StandardCharsets.UTF_8));

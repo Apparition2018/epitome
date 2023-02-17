@@ -142,7 +142,7 @@ public class MessageDigestDemo extends Demo {
      *
      * @see <a href="https://blog.csdn.net/iblade/article/details/73288822">Java MD5</a>
      */
-    static class MD5Demo extends Demo {
+    private static class MD5Demo extends Demo {
 
         public static void main(String[] args) throws NoSuchAlgorithmException {
             testMessageDigest("MD5");
@@ -169,7 +169,7 @@ public class MessageDigestDemo extends Demo {
      * 3 速度：MD5 比 SHA-1 快
      * </pre>
      */
-    static class SHADemo {
+    private static class SHADemo {
 
         public static void main(String[] args) throws NoSuchAlgorithmException {
             testMessageDigest("SHA-256");

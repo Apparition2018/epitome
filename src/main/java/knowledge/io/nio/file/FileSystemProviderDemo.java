@@ -2,7 +2,6 @@ package knowledge.io.nio.file;
 
 import com.alibaba.fastjson.JSON;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -30,8 +29,7 @@ public class FileSystemProviderDemo extends Demo {
     /**
      * 此处仅作示例，一般通过 Files 来实现相关操作
      */
-    @Test
-    public void testFileSystemProvider() throws IOException {
+    public static void main(String[] args) throws IOException {
         FileSystemProvider fileSystemProvider = FileSystems.getDefault().provider();
         Path path = Paths.get(DEMO_PATH, "demo" + ThreadLocalRandom.current().nextInt(999));
 

@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public class SolutionTest {
 
-    static class Easy {
+    private static class Easy {
 
         public static void main(String[] args) {
             String j = "aA";

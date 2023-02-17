@@ -2,7 +2,6 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.mail.MailUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/extra/邮件工具-MailUtil">MailUtil</a>  邮件工具
@@ -14,8 +13,7 @@ import org.junit.jupiter.api.Test;
  */
 public class MailUtilDemo extends Demo {
 
-    @Test
-    public void testMailUtil() {
+    public static void main(String[] args) {
         MailUtil.send(MY_EMAIL, "测试", HELLO_WORLD, false);
     }
 }

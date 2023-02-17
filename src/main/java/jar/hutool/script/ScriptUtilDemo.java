@@ -1,7 +1,6 @@
 package jar.hutool.script;
 
 import cn.hutool.script.ScriptUtil;
-import org.junit.jupiter.api.Test;
 
 import javax.script.CompiledScript;
 import javax.script.ScriptException;
@@ -15,8 +14,7 @@ import javax.script.ScriptException;
  */
 public class ScriptUtilDemo {
 
-    @Test
-    public void testScriptUtil() throws ScriptException {
+    public static void main(String[] args) throws ScriptException {
         String script = "var a = 0;" +
                 "var str = 'if (a) { 1 + 1; } else { 1 + 2; }';" +
                 "var b = eval(str);" +

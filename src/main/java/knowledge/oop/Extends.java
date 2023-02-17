@@ -20,7 +20,7 @@ public class Extends {
         System.out.println(p.name);
     }
 
-    static class Parent {
+    private static class Parent {
         private int id;
         public String name;
 
@@ -41,7 +41,7 @@ public class Extends {
      * implements   支持多实现
      * </pre>
      */
-    static class Son extends Parent implements Serializable, Comparable<Son> {
+    private static class Son extends Parent implements Serializable, Comparable<Son> {
         @Serial
         private static final long serialVersionUID = -7624170257458741051L;
         private int sonId;

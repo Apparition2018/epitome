@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import l.demo.Demo;
 import lombok.Data;
-import org.junit.jupiter.api.Test;
 
 /**
  * &#064;JsonCreator
@@ -17,14 +16,13 @@ import org.junit.jupiter.api.Test;
  */
 public class JsonCreatorDemo extends Demo {
 
-    @Test
-    public void testJsonCreator() throws JsonProcessingException {
+    public static void main(String[] args) throws JsonProcessingException {
         Person person = jsonMapper.readValue("{\"name\":\"ljh\",\"age\":31}", Person.class);
         p(person); // JsonCreatorDemo.Person(name=super ljh, age=31)
     }
 
     @Data
-    static class Person {
+    private static class Person {
         private String name;
         private Integer age;
 

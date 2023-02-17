@@ -1,9 +1,5 @@
 package knowledge.design.pattern.other.behavioral;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.junit.jupiter.api.Test;
-
 /**
  * 空对象模式：空值默认行为代替空值判断
  * <p>
@@ -27,8 +23,7 @@ public class NullObjectDemo {
     /**
      * 二叉树
      */
-    @Test
-    public void testNullObject() {
+    public static void main(String[] args) {
         INode root =
                 new Node(
                         "1",
@@ -48,11 +43,11 @@ public class NullObjectDemo {
      * AbstractObject
      */
     interface INode {
-        String getName();
+        String name();
 
-        INode getLeft();
+        INode left();
 
-        INode getRight();
+        INode right();
 
         int getTreeSize();
 
@@ -62,13 +57,7 @@ public class NullObjectDemo {
     /**
      * RealObject
      */
-    @Getter
-    @AllArgsConstructor
-    static class Node implements INode {
-        private final String name;
-        private final INode left;
-        private final INode right;
-
+    private record Node(String name, INode left, INode right) implements INode {
         @Override
         public int getTreeSize() {
             return 1 + left.getTreeSize() + right.getTreeSize();
@@ -89,7 +78,7 @@ public class NullObjectDemo {
     /**
      * NullObject
      */
-    static final class NullNode implements INode {
+    private static class NullNode implements INode {
         private static final NullNode INSTANCE = new NullNode();
 
         private NullNode() {
@@ -100,17 +89,17 @@ public class NullObjectDemo {
         }
 
         @Override
-        public String getName() {
+        public String name() {
             return null;
         }
 
         @Override
-        public INode getLeft() {
+        public INode left() {
             return null;
         }
 
         @Override
-        public INode getRight() {
+        public INode right() {
             return null;
         }
 

@@ -9,35 +9,36 @@ import java.time.Period;
 import static l.demo.Demo.p;
 
 /**
- * Period
- * 表示以年、月、日为基准的时长
- * <p>
- * boolean          isNegative()                            检查这个周期的三个单位中是否有一个是负的
- * boolean	        isZero()                                检查这个周期的三个单位是否都为零
- * <p>
- * long	            toTotalMonths()                         获取此期间的月总数
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/time/Period.html
- * https://www.yiibai.com/javatime/javatime_period.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/Period.html">Period</a>
+ * <p>表示以年、月、日为基准的时长
+ * <pre>
+ * boolean      isNegative()                    检查这个周期的三个单位中是否有一个是负的
+ * boolean      isZero()                        检查这个周期的三个单位是否都为零
+ *
+ * long         toTotalMonths()                 获取此期间的月总数
+ * </pre>
+ * <a href="https://www.yiibai.com/javatime/javatime_period.html">java.time.Period 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
 public class PeriodDemo {
 
-    private Period period;
-    private Period period2;
-    private Period period3;
-    private Period pMonth;
-    private Period period4;
+    private final Period period;
+    private final Period period2;
+    private final Period period3;
+    private final Period pMonth;
+    private final Period period4;
 
     /**
      * 获取 Period
-     * static Period	between(LocalDate startDateInclusive, LocalDate endDateExclusive)
-     * static Period	from(TemporalAmount amount)
-     * static Period	of(int years, int months, int days)
-     * static Period	ofXXX(long xxx) (Years, Months, Weeks, Days)
-     * static Period	parse(CharSequence text)
+     * <pre>
+     * static Period    between(LocalDate startDateInclusive, LocalDate endDateExclusive)
+     * static Period    from(TemporalAmount amount)
+     * static Period    of(int years, int months, int days)
+     * static Period    ofXXX(long xxx) (Years, Months, Weeks, Days)
+     * static Period    parse(CharSequence text)
+     * </pre>
      */
     public PeriodDemo() {
         this.period = Period.between(
@@ -51,10 +52,13 @@ public class PeriodDemo {
 
 
     /**
-     * int	                getYears()                  获取这段时间的年数
-     * int	                getMonths()                 获取此期间的月数
-     * int	                getDays()                   得到此期间的天数
-     * List<TemporalUnit>	getUnits()                  获取此期间支持的单元集
+     * <pre>
+     * {@code
+     * int                  getYears()                  获取这段时间的年数
+     * int                  getMonths()                 获取此期间的月数
+     * int                  getDays()                   得到此期间的天数
+     * List<TemporalUnit>   getUnits()                  获取此期间支持的单元集}
+     * </pre>
      */
     @Test
     public void get() {
@@ -65,15 +69,17 @@ public class PeriodDemo {
     }
 
     /**
-     * Period	        negated()                       返回此持续时间负值的副本
-     * Period	        multipliedBy(int scalar)        返回此持续时间乘以标量的副本
-     * <p>
-     * Period	        withYears(int years)            以指定的年数返回此持续时间的副本
-     * Period	        withMonths(int months)          以指定的月数返回此持续时间的副本
-     * Period	        withDays(int days)              以指定的日数返回此持续时间的副本
-     * <p>
-     * Temporal	        addTo(Temporal temporal)        将此持续时间添加到指定的时态对象
-     * Temporal	        subtractFrom(Temporal temporal) 从指定的时态对象中减去这个持续时间
+     * <pre>
+     * Period           negated()                       返回此持续时间负值的副本
+     * Period           multipliedBy(int scalar)        返回此持续时间乘以标量的副本
+     *
+     * Period           withYears(int years)            以指定的年数返回此持续时间的副本
+     * Period           withMonths(int months)          以指定的月数返回此持续时间的副本
+     * Period           withDays(int days)              以指定的日数返回此持续时间的副本
+     *
+     * Temporal         addTo(Temporal temporal)        将此持续时间添加到指定的时态对象
+     * Temporal         subtractFrom(Temporal temporal) 从指定的时态对象中减去这个持续时间
+     * </pre>
      */
     @Test
     public void calculate() {
@@ -95,11 +101,13 @@ public class PeriodDemo {
     }
 
     /**
-     * Period	        plus(TemporalAmount amountToAdd)
-     * Period	        plusXXX(long xxxToAdd)  (Year, Months, Days)
-     * <p>
-     * Period	        minus(TemporalAmount amountToSubtract)
-     * Period	        minus(long xxxToSubtract)
+     * <pre>
+     * Period           plus(TemporalAmount amountToAdd)
+     * Period           plusXXX(long xxxToAdd)  (Year, Months, Days)
+     *
+     * Period           minus(TemporalAmount amountToSubtract)
+     * Period           minus(long xxxToSubtract)
+     * </pre>
      */
     @Test
     public void plus_minus() {
@@ -109,5 +117,4 @@ public class PeriodDemo {
         p(pMonth.minus(Period.ofDays(1)));  // P2M-1D
         p(pMonth.minusDays(1));             // P2M-1D
     }
-
 }

@@ -3,7 +3,6 @@ package jar.hutool;
 import cn.hutool.core.annotation.AnnotationUtil;
 import knowledge.annotation.CustomAnnotation.Apple;
 import knowledge.annotation.CustomAnnotation.Description;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -16,8 +15,7 @@ import static l.demo.Demo.p;
  */
 public class AnnotationUtilDemo {
 
-    @Test
-    public void testAnnotationUtil() throws NoSuchFieldException {
+    public static void main(String[] args) throws NoSuchFieldException {
         // static Annotation[]              getAnnotations(AnnotatedElement, isToCombination)
         // 获取注解数组
         p(AnnotationUtil.getAnnotations(Apple.class, true));

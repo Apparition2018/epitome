@@ -3,12 +3,10 @@ package jar.hutool.lang;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.IdUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 /**
- * Validator        字段验证器
- * https://hutool.cn/docs/#/core/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/%E5%AD%97%E6%AE%B5%E9%AA%8C%E8%AF%81%E5%99%A8-Validator
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Validator.html
+ * <a href="https://hutool.cn/docs/#/core/语言特性/字段验证器-Validator">Validator</a>   字段验证器
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Validator.html">Validator api</a>
  *
  * @author ljh
  * @since 2020/11/19 21:18
@@ -29,8 +27,7 @@ public class ValidatorDemo extends Demo {
      * <p>
      * validateXXX(..., String errorMsg)    与 isXXX 的区别是，会抛出异常
      */
-    @Test
-    public void testValidator() {
+    public static void main(String[] args) {
         // 通过正则
         p(Validator.isMatchRegex("\\w+", "A1_"));
 

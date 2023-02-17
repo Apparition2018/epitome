@@ -3,7 +3,6 @@ package jar.hutool.util;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.TypeUtil;
 import l.demo.Person;
-import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
@@ -18,8 +17,7 @@ import java.util.List;
  */
 public class TypeUtilDemo {
 
-    @Test
-    public void testTypeUtil() {
+    public static void main(String[] args) {
         Method method;
         method = ReflectUtil.getMethod(Person.class, "setOtherInfo", List.class);
         // getParamType(Method[, index])        获取方法参数的类型

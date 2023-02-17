@@ -4,7 +4,6 @@ import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 
@@ -18,7 +17,7 @@ import java.nio.charset.StandardCharsets;
 public class SymmetricCryptoDemo extends Demo {
 
     /**
-     * SymmetricAlgorithm:
+     * SymmetricAlgorithm：
      * <pre>
      * AES (默认AES/ECB/PKCS5Padding)
      * ARCFOUR
@@ -31,8 +30,7 @@ public class SymmetricCryptoDemo extends Demo {
      * PBEWithSHA1AndRC2_40
      * </pre>
      */
-    @Test
-    public void testSymmetricCrypto() {
+    public static void main(String[] args) {
         // 随机生成密钥
         byte[] key = SecureUtil.generateKey(SymmetricAlgorithm.AES.getValue()).getEncoded();
         // 构建 SymmetricCrypto

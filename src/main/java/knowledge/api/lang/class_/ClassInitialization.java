@@ -35,7 +35,7 @@ public class ClassInitialization {
         new Son();
     }
 
-    static class Father {
+    private static class Father {
         static ClassInitialization sPerson = new ClassInitialization("father 静态成员");
         ClassInitialization person = new ClassInitialization("father 非静态成员");
 
@@ -52,7 +52,7 @@ public class ClassInitialization {
         }
     }
 
-    static class Son extends Father {
+    private static class Son extends Father {
         static ClassInitialization sSon = new ClassInitialization("son 静态成员");
         ClassInitialization son = new ClassInitialization("son 非静态成员");
 

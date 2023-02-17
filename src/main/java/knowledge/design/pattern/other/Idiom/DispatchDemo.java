@@ -1,22 +1,21 @@
 package knowledge.design.pattern.other.Idiom;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 分派
- * Double Dispatch：https://java-design-patterns.com/patterns/double-dispatch/
- * 伪动态双分派：http://c.biancheng.net/view/8499.html
+ * <pre>
+ * <a href="https://java-design-patterns.com/patterns/double-dispatch/">Double Dispatch</a>
+ * <a href="http://c.biancheng.net/view/8499.html">伪动态双分派</a>
+ * </pre>
  *
  * @author ljh
  * @since 2022/2/2 2:12
  */
 public class DispatchDemo {
 
-    @Test
-    public void testDispatch() {
+    public static void main(String[] args) {
         // 类型
         List<Integer> list = new ArrayList<>();
         System.out.println("list 的静态类型(Static Type)是 List");

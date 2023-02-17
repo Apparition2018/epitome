@@ -1,7 +1,5 @@
 package knowledge.network;
 
-import org.junit.jupiter.api.Test;
-
 /**
  * <a href="https://www.baeldung.com/tag/java-httpclient">HttpClient</a>    取代 HttpURLConnection
  * <pre>
@@ -17,7 +15,6 @@ public class HttpClientDemo {
     /**
      * <a href="https://www.baeldung.com/java-9-http-client">Exploring the New HTTP Client in Java</a>
      */
-    @Test
-    public void testHttpClientD() {
+    public static void main(String[] args) {
     }
 }

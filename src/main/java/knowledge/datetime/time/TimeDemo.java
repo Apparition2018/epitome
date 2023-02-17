@@ -12,15 +12,15 @@ import java.util.Date;
 import static l.demo.Demo.p;
 
 /**
- * Time 包下的类都是不可变的、线程安全的
- * <p>
- * 枚举：
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html">Time</a> 包下的类都是不可变的、线程安全的
+ * <p>枚举：
+ * <pre>
  * DayOfWeek    MONDAY TUESDAY WEDNESDAY THURSDAY FRIDAY SATURDAY SUNDAY
  * Month        JANUARY FEBRUARY MARCH APRIL MAY JUNE JULY AUGUST SEPTEMBER OCTOBER NOVEMBER DECEMBER
+ * </pre>
  * <p>
- * https://www.cnblogs.com/wt20/p/8179118.html
- * https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html
- * https://www.yiibai.com/javatime
+ * <a href="https://www.cnblogs.com/wt20/p/8179118.html">Java 8 LocalDateTime 初使用</a>
+ * <a href="https://www.yiibai.com/javatime">java.time 包教程</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

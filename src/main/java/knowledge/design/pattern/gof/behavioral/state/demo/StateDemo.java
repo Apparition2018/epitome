@@ -68,7 +68,7 @@ public class StateDemo {
     /**
      * State
      */
-    static abstract class State {
+    private static abstract class State {
         protected Player player;
 
         private State(Player player) {
@@ -87,7 +87,7 @@ public class StateDemo {
     /**
      * ConcreteState
      */
-    static class LockedState extends State {
+    private static class LockedState extends State {
 
         LockedState(Player player) {
             super(player);
@@ -124,7 +124,7 @@ public class StateDemo {
     /**
      * ConcreteState
      */
-    static class ReadyState extends State {
+    private static class ReadyState extends State {
 
         public ReadyState(Player player) {
             super(player);
@@ -157,7 +157,7 @@ public class StateDemo {
     /**
      * ConcreteState
      */
-    static class PlayingState extends State {
+    private static class PlayingState extends State {
 
         PlayingState(Player player) {
             super(player);
@@ -190,7 +190,7 @@ public class StateDemo {
     /**
      * Context
      */
-    static class Player {
+    private static class Player {
         private State state;
         private boolean playing = false;
         private final List<String> playlist = new ArrayList<>();
@@ -243,13 +243,8 @@ public class StateDemo {
         }
     }
 
-    static class UI {
-        private final Player player;
+    private record UI(Player player) {
         private static final JTextField textField = new JTextField();
-
-        public UI(Player player) {
-            this.player = player;
-        }
 
         public void init() {
             JFrame frame = new JFrame("Test player");

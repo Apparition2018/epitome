@@ -1,7 +1,5 @@
 package knowledge.oop.interface_;
 
-import org.junit.jupiter.api.Test;
-
 /**
  * 函数式接口 (Functional Interface)
  * <p>函数式接口就是一个有且仅有一个抽象方法，但是可以有多个非抽象方法的接口
@@ -29,8 +27,7 @@ public class FunctionalInterface {
     /**
      * 使用 Lambda 表达式来表示函数式接口的一个实现
      */
-    @Test
-    public void testFunctionalInterface() {
+    public static void main(String[] args) {
         GreetingService greetingService = message -> System.out.println("Hello " + message);
         greetingService.sayMessage("World!");
     }

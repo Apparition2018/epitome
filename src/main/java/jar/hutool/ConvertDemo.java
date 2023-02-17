@@ -4,7 +4,6 @@ import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.TypeReference;
 import l.demo.CompanyEnum;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -20,8 +19,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ConvertDemo extends Demo {
 
-    @Test
-    public void testConvert() {
+    public static void main(String[] args) {
         p(Convert.toStr(list));
         p(Convert.toStr(arr));
         p(Convert.toStrArray(arr));

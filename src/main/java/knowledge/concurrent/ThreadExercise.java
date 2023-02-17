@@ -20,7 +20,7 @@ public class ThreadExercise {
         IntStream.rangeClosed(1, 2).forEach(i -> new Dec().start());
     }
 
-    static class Inc extends Thread {
+    private static class Inc extends Thread {
 
         @SneakyThrows
         @Override
@@ -33,7 +33,7 @@ public class ThreadExercise {
         }
     }
 
-    static class Dec extends Thread {
+    private static class Dec extends Thread {
 
         @SneakyThrows
         @Override

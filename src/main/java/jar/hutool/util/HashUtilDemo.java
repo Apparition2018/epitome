@@ -2,7 +2,6 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.HashUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/工具类/Hash算法-HashUtil">HashUtil</a>     Hash算法
@@ -13,8 +12,7 @@ import org.junit.jupiter.api.Test;
  */
 public class HashUtilDemo extends Demo {
 
-    @Test
-    public void testHashUtil() {
+    public static void main(String[] args) {
         // Java 默认 Hash
         p(HashUtil.javaDefaultHash(HELLO_WORLD));
         // 一次一个 Hash

@@ -5,7 +5,6 @@ import l.demo.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
-import org.junit.jupiter.api.Test;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
@@ -21,8 +20,7 @@ import java.util.Map;
  */
 public class BeanUtilsDemo extends Demo {
 
-    @Test
-    public void testBeanUtils() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         // JavaBean → JavaBean
         User origin = new User("2000-01-01");
         User user = new User();

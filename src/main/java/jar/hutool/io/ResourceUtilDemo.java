@@ -2,7 +2,6 @@ package jar.hutool.io;
 
 import cn.hutool.core.io.resource.ResourceUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,8 +15,7 @@ import java.io.IOException;
  */
 public class ResourceUtilDemo extends Demo {
 
-    @Test
-    public void testResourceUtil() throws IOException {
+    public static void main(String[] args) throws IOException {
         // static String	        readUtf8Str(String resource)
         // 读取 Classpath 下的资源为字符串，使用 UTF-8 编码
         p(ResourceUtil.readUtf8Str(JDBC_PROPS_FILENAME));

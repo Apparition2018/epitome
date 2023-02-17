@@ -1,23 +1,21 @@
 package knowledge.datetime.time;
 
-import org.junit.jupiter.api.Test;
-
 import java.time.*;
 
 /**
- * OffsetDateTime
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html">OffsetDateTime</a>
+ * <pre>
  * 与ISO-8601日历系统中的UTC|格林威治时间(例如2007-12-03T10:15:30+01:00)有偏移的日期-时间
  * 用于在数据库中存储日期或通过网络进行通信
- * <p>
- * ZonedDateTime 和 OffsetDateTime 之间的区别：https://www.php.cn/java-article-415981.html
- * https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html
+ * </pre>
+ * <a href="https://www.php.cn/java-article-415981.html">ZonedDateTime vs OffsetDateTime</a>
  *
  * @author ljh
  * @since 2021/1/16 9:51
  */
 public class OffsetDateTimeDemo {
 
-    private OffsetDateTime odt;
+    private static OffsetDateTime odt;
 
     public OffsetDateTimeDemo() {
         // static OffsetDateTime	        now([Clock clock / ZoneId zone])
@@ -34,17 +32,18 @@ public class OffsetDateTimeDemo {
     }
 
     /**
-     * LocalDate	    toLocalDate()               OffsetDateTime → LocalDate
-     * LocalTime	    toLocalTime()               OffsetDateTime → LocalTime
-     * LocalDateTime	toLocalDateTime()           OffsetDateTime → LocalDateTime
-     * ZonedDateTime	toZonedDateTime()           OffsetDateTime → ZonedDateTime
-     * <p>
+     * <pre>
+     * LocalDate        toLocalDate()               OffsetDateTime → LocalDate
+     * LocalTime        toLocalTime()               OffsetDateTime → LocalTime
+     * LocalDateTime    toLocalDateTime()           OffsetDateTime → LocalDateTime
+     * ZonedDateTime    toZonedDateTime()           OffsetDateTime → ZonedDateTime
+     *
      * ChronoZonedDateTime
-     * default Instant	toInstant()                 OffsetDateTime → Instant
-     * default long	    toEpochSecond()             OffsetDateTime → Second (纪元)
+     * default Instant  toInstant()                 OffsetDateTime → Instant
+     * default long     toEpochSecond()             OffsetDateTime → Second (纪元)
+     * </pre>
      */
-    @Test
-    public void to() {
+    public static void main(String[] args) {
         System.out.println(odt.toLocalDate());      // 2008-08-08
         System.out.println(odt.toLocalTime());      // 20:08:08
         System.out.println(odt.toLocalDateTime());  // 2008-08-08T20:08:08

@@ -1,7 +1,6 @@
 package jar.javax.activation;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
@@ -14,8 +13,7 @@ import java.io.File;
  */
 public class MimetypesFileTypeMapDemo extends Demo {
 
-    @Test
-    public void testMimetypesFileTypeMap() {
+    public static void main(String[] args) {
         p(new MimetypesFileTypeMap().getContentType(new File(XIAO_XIN_IMG)));           // image/png
         p(new MimetypesFileTypeMap().getContentType(new File(JDBC_PROPS_FILENAME)));    // application/octet-stream
     }

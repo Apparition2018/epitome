@@ -2,7 +2,6 @@ package knowledge.io.nio.file;
 
 import com.sun.nio.file.SensitivityWatchEventModifier;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -29,8 +28,7 @@ public class WatchServiceDemo extends Demo {
     /**
      * <a href="https://www.zhihu.com/question/264700166">WatchService，重复触发 Modify 事件</a>
      */
-    @Test
-    public void testWatchService() throws IOException, InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
         // 新建 WatchService
         WatchService watchService = FileSystems.getDefault().newWatchService();
         // 注册监听对象，监听对象的创建、修改、删除事件，高频率监听（2秒一次，默认10秒）

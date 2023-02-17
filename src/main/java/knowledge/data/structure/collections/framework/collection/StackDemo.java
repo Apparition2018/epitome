@@ -1,7 +1,5 @@
 package knowledge.data.structure.collections.framework.collection;
 
-import org.junit.jupiter.api.Test;
-
 /**
  * Stack
  *
@@ -17,8 +15,7 @@ public class StackDemo {
      * Stack 类表示后进先出（LIFO）的对象堆栈。它通过五个操作对类 Vector 进行了扩展 ，允许将向量视为堆栈。
      * </pre>
      */
-    @Test
-    public void testStack() {
+    public static void main(String[] args) {
         DequeDemo dequeDemo = new DequeDemo();
         dequeDemo.testDequeAsStack();
     }

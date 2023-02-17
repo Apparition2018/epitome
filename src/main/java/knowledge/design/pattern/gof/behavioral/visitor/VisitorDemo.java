@@ -1,8 +1,5 @@
 package knowledge.design.pattern.gof.behavioral.visitor;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.config.BeanDefinitionVisitor;
 
 import javax.lang.model.element.AnnotationValueVisitor;
@@ -55,8 +52,7 @@ public class VisitorDemo {
     /**
      * <a href="https://blog.csdn.net/LoveLion/article/details/7433576">OA 系统</a>
      */
-    @Test
-    public void testVisitor() {
+    public static void main(String[] args) {
         EmployeeList employeeList = new EmployeeList();
         employeeList.addEmployee(new FullTimeEmployee("Liam", 4000.0, 45));
         employeeList.addEmployee(new PartTimeEmployee("Olivia", 80, 8));
@@ -80,13 +76,7 @@ public class VisitorDemo {
      * ConcreteElement
      * 全职员工
      */
-    @Getter
-    @AllArgsConstructor
-    static class FullTimeEmployee implements Employee {
-        private final String name;
-        private final double weeklyWage;
-        private final int workTime;
-
+    private record FullTimeEmployee(String name, double weeklyWage, int workTime) implements Employee {
         @Override
         public void accept(Department dept) {
             // 第二次动态单分派
@@ -98,13 +88,7 @@ public class VisitorDemo {
      * ConcreteElement
      * 兼职员工
      */
-    @Getter
-    @AllArgsConstructor
-    static class PartTimeEmployee implements Employee {
-        private final String name;
-        private final double hourlyWage;
-        private final int workTime;
-
+    private record PartTimeEmployee(String name, double hourlyWage, int workTime) implements Employee {
         @Override
         public void accept(Department dept) {
             dept.visit(this);
@@ -115,7 +99,7 @@ public class VisitorDemo {
      * Visitor
      * 部门
      */
-    static abstract class Department {
+    private static abstract class Department {
         public abstract void visit(FullTimeEmployee employee);
 
         public abstract void visit(PartTimeEmployee employee);
@@ -125,11 +109,11 @@ public class VisitorDemo {
      * ConcreteVisitor
      * 财务部门
      */
-    static class FADepartment extends Department {
+    private static class FADepartment extends Department {
         @Override
         public void visit(FullTimeEmployee employee) {
-            int workTime = employee.getWorkTime();
-            double weeklyWage = employee.getWeeklyWage();
+            int workTime = employee.workTime();
+            double weeklyWage = employee.weeklyWage();
 
             if (workTime > 40) {
                 weeklyWage = weeklyWage + (workTime - 40) * 100;
@@ -139,14 +123,14 @@ public class VisitorDemo {
                     weeklyWage = 0;
                 }
             }
-            System.out.printf("正式员工 %s 实际工资为：%s元。%n", employee.getName(), weeklyWage);
+            System.out.printf("正式员工 %s 实际工资为：%s元。%n", employee.name(), weeklyWage);
         }
 
         @Override
         public void visit(PartTimeEmployee employee) {
-            int workTime = employee.getWorkTime();
-            double hourlyWage = employee.getHourlyWage();
-            System.out.printf("临时工 %s 实际工资为：%s元。%n", employee.getName(), workTime * hourlyWage);
+            int workTime = employee.workTime();
+            double hourlyWage = employee.hourlyWage();
+            System.out.printf("临时工 %s 实际工资为：%s元。%n", employee.name(), workTime * hourlyWage);
         }
     }
 
@@ -154,27 +138,27 @@ public class VisitorDemo {
      * ConcreteVisitor
      * 人力资源部门
      */
-    static class HRDepartment extends Department {
+    private static class HRDepartment extends Department {
         public void visit(FullTimeEmployee employee) {
-            int workTime = employee.getWorkTime();
-            System.out.printf("正式员工 %s 实际工作时间为：%s小时。%n", employee.getName(), workTime);
+            int workTime = employee.workTime();
+            System.out.printf("正式员工 %s 实际工作时间为：%s小时。%n", employee.name(), workTime);
             if (workTime > 40) {
-                System.out.printf("正式员工 %s 加班时间为：%s小时。%n", employee.getName(), workTime - 40);
+                System.out.printf("正式员工 %s 加班时间为：%s小时。%n", employee.name(), workTime - 40);
             } else if (workTime < 40) {
-                System.out.printf("正式员工 %s 请假时间为：%s小时。%n", employee.getName(), 40 - workTime);
+                System.out.printf("正式员工 %s 请假时间为：%s小时。%n", employee.name(), 40 - workTime);
             }
         }
 
         public void visit(PartTimeEmployee employee) {
-            int workTime = employee.getWorkTime();
-            System.out.printf("临时工 %s 实际工作时间为：%s小时。%n", employee.getName(), workTime);
+            int workTime = employee.workTime();
+            System.out.printf("临时工 %s 实际工作时间为：%s小时。%n", employee.name(), workTime);
         }
     }
 
     /**
      * ObjectStructure
      */
-    static class EmployeeList {
+    private static class EmployeeList {
         private final List<Employee> list = new ArrayList<>();
 
         public void accept(Department dept) {

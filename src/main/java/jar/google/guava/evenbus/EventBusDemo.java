@@ -27,14 +27,14 @@ public class EventBusDemo {
         eventBus.post("event");
     }
 
-    static class FirstSubscriber {
+    private static class FirstSubscriber {
         @Subscribe
         private void update(String event) {
             System.out.println("first update");
         }
     }
 
-    static class SecondSubscriber {
+    private static class SecondSubscriber {
         @Subscribe
         private void update(String event) {
             System.out.println("second update");

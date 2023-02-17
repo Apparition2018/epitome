@@ -2,7 +2,6 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.EnumUtil;
 import l.demo.CompanyEnum;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -15,8 +14,7 @@ import static l.demo.Demo.p;
  */
 public class EnumUtilDemo {
 
-    @Test
-    public void testEnumUtil() {
+    public static void main(String[] args) {
         // getEnumMap
         p(EnumUtil.getEnumMap(CompanyEnum.class));
         // {SF=Company{company='顺丰速运', code=1001}, YTO=Company{company='圆通速递', code=1002}, STO=Company{company='申通物流', code=1003}, EMS=Company{company='中国邮政', code=1004}, DHL=Company{company='中外运敦豪', code=1005}}
@@ -24,7 +22,7 @@ public class EnumUtilDemo {
         // getNames
         p(EnumUtil.getNames(CompanyEnum.class));                // [SF, YTO, STO, EMS, DHL]
 
-        //getFieldNames
+        // getFieldNames
         p(EnumUtil.getFieldNames(CompanyEnum.class));           // [company, code, name]
 
         // getFieldValues

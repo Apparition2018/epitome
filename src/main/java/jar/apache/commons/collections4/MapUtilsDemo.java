@@ -2,10 +2,7 @@ package jar.apache.commons.collections4;
 
 import l.demo.Demo;
 import org.apache.commons.collections4.MapUtils;
-import org.junit.jupiter.api.Test;
 
-import java.io.Serial;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -37,22 +34,12 @@ import java.util.Map;
  */
 public class MapUtilsDemo extends Demo {
 
-    Map<Integer, Object> map = new HashMap<>(16) {
-        @Serial
-        private static final long serialVersionUID = -3034565247298670375L;
-
-        {
-            put(1, "A");
-            put(2, "B");
-            put(3, "C");
-        }
-    };
+    private static final Map<Integer, Object> map = Map.of(1, "A", 2, "B", 3, "C");
 
     /**
      * static <K> XXX	getXXX(Map<? super K,?> map, K key[, Boolean defaultValue])
      */
-    @Test
-    public void testMapUtils() {
+    public static void main(String[] args) {
         // static <K> Xxx           getXxx(Map<? super K, ?> map, K key[, Boolean defaultValue])
         p(MapUtils.getString(map, 4, "D")); // D
         p(MapUtils.getString(map, 1));      // A

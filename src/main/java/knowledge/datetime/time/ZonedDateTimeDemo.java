@@ -1,23 +1,21 @@
 package knowledge.datetime.time;
 
-import org.junit.jupiter.api.Test;
-
 import java.time.*;
 
 /**
- * ZoneDateTime
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html">ZoneDateTime</a>
+ * <pre>
  * ISO-8601日历，具有时区的日期时间，如2007-12-03T10:15:30+01:00 Europe/Paris，2007-12-03T10:15:30 为 LocalDateTime，+01:00 Europe/Paris 为 ZoneId
  * 在用户特定的时区显示日期时间字段非常方便
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html
- * https://www.yiibai.com/javatime/javatime_zoneddatetime.html
+ * </pre>
+ * <a href="https://www.yiibai.com/javatime/javatime_zoneddatetime.html">java.time.ZonedDateTime 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
 public class ZonedDateTimeDemo {
 
-    private ZonedDateTime zdt;
+    private static ZonedDateTime zdt;
 
     public ZonedDateTimeDemo() {
         // static ZonedDateTime	            now([Clock clock / ZoneId zone])
@@ -34,17 +32,18 @@ public class ZonedDateTimeDemo {
     }
 
     /**
-     * LocalDate	    toLocalDate()               ZonedDateTime → LocalDate
-     * LocalTime	    toLocalTime()               ZonedDateTime → LocalTime
-     * LocalDateTime	toLocalDateTime()           ZonedDateTime → LocalDateTime
-     * OffsetDateTime	toOffsetDateTime()          ZonedDateTime → OffsetDateTime
-     * <p>
+     * <pre>
+     * LocalDate        toLocalDate()               ZonedDateTime → LocalDate
+     * LocalTime        toLocalTime()               ZonedDateTime → LocalTime
+     * LocalDateTime    toLocalDateTime()           ZonedDateTime → LocalDateTime
+     * OffsetDateTime   toOffsetDateTime()          ZonedDateTime → OffsetDateTime
+     *
      * ChronoZonedDateTime
-     * default Instant	toInstant()                 ZonedDateTime → Instant
-     * default long	    toEpochSecond()             ZonedDateTime → Second (纪元)
+     * default Instant  toInstant()                 ZonedDateTime → Instant
+     * default long     toEpochSecond()             ZonedDateTime → Second (纪元)
+     * </pre>
      */
-    @Test
-    public void to() {
+    public static void main(String[] args) {
         System.out.println(zdt.toLocalDate());       // 2008-08-08
         System.out.println(zdt.toLocalTime());       // 20:08:08
         System.out.println(zdt.toLocalDateTime());   // 2008-08-08T20:08:08

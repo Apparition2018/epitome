@@ -1,7 +1,6 @@
 package jar.apache.commons.math3.util;
 
 import org.apache.commons.math3.util.MathUtils;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/util/MathUtils.html">MathUtils</a>
@@ -11,8 +10,7 @@ import org.junit.jupiter.api.Test;
  */
 public class MathUtilsDemo {
 
-    @Test
-    public void testMathUtils() {
+    public static void main(String[] args) {
         // static void	    checkFinite(double/double[] x)      检测有限
         MathUtils.checkFinite(Double.POSITIVE_INFINITY); // NotFiniteNumberException: ∞ is not a finite number
 

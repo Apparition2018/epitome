@@ -3,7 +3,6 @@ package jar.hutool.extra;
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import cn.hutool.extra.qrcode.QrConfig;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.io.File;
@@ -18,8 +17,7 @@ import java.io.File;
  */
 public class QrCodeUtilDemo extends Demo {
 
-    @Test
-    public void testQrCodeUtil() {
+    public static void main(String[] args) {
         // 自定义参数
         QrConfig config = new QrConfig(300, 300);
         // 设置边距，既二维码和背景之间的边距

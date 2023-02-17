@@ -87,7 +87,7 @@ public class JDKAnnotation extends Demo {
      *
      * @see <a href="https://www.zhihu.com/zvideo/1312762510748577792">伪共享问题及如何解决方案</a>
      */
-    static class ContendedDemo {
+    private static class ContendedDemo {
         private volatile long x;
         private volatile long y;
         @Contended

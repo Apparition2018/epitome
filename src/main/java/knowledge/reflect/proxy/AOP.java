@@ -4,9 +4,6 @@ import knowledge.reflect.proxy.domain.People;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -26,30 +23,19 @@ import static l.demo.Demo.p;
  */
 public class AOP {
 
-    ClassPathXmlApplicationContext applicationContext;
+    private static final ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/applicationContext.xml");
 
-    @BeforeEach
-    public void init() {
-        applicationContext = new ClassPathXmlApplicationContext("spring/applicationContext.xml");
-    }
-
-    @Test
-    public void aop() {
+    public static void main(String[] args) {
         People people = applicationContext.getBean("man", People.class);
         people.work();
         people.sleep();
-    }
-
-    @AfterEach
-    public void destroy() {
         applicationContext.close();
     }
-
 
     @Order(1)
     @Aspect
     @Component
-    static class StopWatchAspect {
+    private static class StopWatchAspect {
 
         long start;
         long end;
@@ -97,7 +83,7 @@ public class AOP {
     @Order(2)
     @Aspect
     @Component
-    static class ConnectionAspect {
+    private static class ConnectionAspect {
 
         /**
          * 环绕通知
@@ -120,7 +106,7 @@ public class AOP {
     @Order(3)
     @Aspect
     @Component
-    static class TransactionAspect {
+    private static class TransactionAspect {
 
         @Pointcut("@annotation(knowledge.reflect.proxy.domain.Man.AOP)")
         public void pointcut1() {

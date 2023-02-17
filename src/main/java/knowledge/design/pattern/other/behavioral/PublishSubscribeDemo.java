@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
@@ -22,8 +21,7 @@ import java.util.*;
  */
 public class PublishSubscribeDemo {
 
-    @Test
-    public void testPublishSubscribe() {
+    public static void main(String[] args) {
         /* 初始化 publishers, subscribers, broker */
         Publisher javaPublisher = new Publisher();
         Publisher pythonPublisher = new Publisher();
@@ -83,7 +81,7 @@ public class PublishSubscribeDemo {
         void publish(Message message, Broker broker);
     }
 
-    static class Publisher implements IPublisher {
+    private static class Publisher implements IPublisher {
         @Override
         public void publish(Message message, Broker broker) {
             broker.addMessageToQueue(message);
@@ -92,7 +90,7 @@ public class PublishSubscribeDemo {
 
     @Getter
     @Setter
-    static abstract class ISubscriber {
+    private static abstract class ISubscriber {
         private List<Message> subscriberMessages = new ArrayList<>();
 
         protected abstract void addSubscriber(String topic, Broker broker);
@@ -108,7 +106,7 @@ public class PublishSubscribeDemo {
         }
     }
 
-    static class Subscriber extends ISubscriber {
+    private static class Subscriber extends ISubscriber {
         @Override
         public void addSubscriber(String topic, Broker broker) {
             broker.addSubscriber(topic, this);
@@ -125,7 +123,7 @@ public class PublishSubscribeDemo {
         }
     }
 
-    static class Broker {
+    private static class Broker {
         Map<String, Set<Subscriber>> subscriberTopicMap = new HashMap<>();
 
         Queue<Message> messageQueue = new LinkedList<>();
@@ -197,7 +195,7 @@ public class PublishSubscribeDemo {
 
     @Data
     @AllArgsConstructor
-    static class Message {
+    private static class Message {
         private String topic;
         private String payload;
     }

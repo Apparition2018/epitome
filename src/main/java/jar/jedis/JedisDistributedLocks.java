@@ -91,7 +91,7 @@ public class JedisDistributedLocks extends Demo {
         boolean releaseLock(Jedis jedis, String key, String val);
     }
 
-    static class LockInitial implements Lock {
+    private static class LockInitial implements Lock {
 
         public static Random random = new Random();
 

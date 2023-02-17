@@ -115,7 +115,7 @@ public class OptionalDemo extends Demo {
                 .isPresent());
     }
 
-    static class Person {
+    private static class Person {
         private Address address;
 
         public Optional<Address> getAddress() {
@@ -127,7 +127,7 @@ public class OptionalDemo extends Demo {
         }
     }
 
-    static class Address {
+    private static class Address {
 
         private Country country;
 
@@ -140,7 +140,7 @@ public class OptionalDemo extends Demo {
         }
     }
 
-    static class Country {
+    private static class Country {
         private String iso;
 
         public Optional<String> getIso() {

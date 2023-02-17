@@ -6,7 +6,6 @@ import cn.hutool.crypto.asymmetric.AsymmetricCrypto;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.RSA;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
@@ -21,14 +20,15 @@ import java.security.KeyPair;
 public class AsymmetricCryptoDemo extends Demo {
 
     /**
-     * AsymmetricAlgorithm:
+     * AsymmetricAlgorithm：
+     * <pre>
      * RSA
      * RSA_ECB_PKCS1（RSA/ECB/PKCS1Padding）
      * RSA_None（RSA/None/NoPadding）
      * ECIES（需要 Bouncy Castle）
+     * </pre>
      */
-    @Test
-    public void testAsymmetricCrypto() {
+    public static void main(String[] args) {
         AsymmetricCrypto rsa;
 
         // 自助生成密钥对

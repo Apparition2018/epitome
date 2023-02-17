@@ -1,7 +1,5 @@
 package knowledge.design.pattern.gof.structural.bridge;
 
-import org.junit.jupiter.api.Test;
-
 /**
  * 桥接模式
  *
@@ -11,13 +9,13 @@ import org.junit.jupiter.api.Test;
 public class BridgeDemo2 {
 
     /**
-     * 某图像预览程序要求能够查看 BMP、JPEG、GIF 三种格式的文件，而且能够在 Windows 和 Linux 两种操作系统上运行。
-     * 程序需具有较好的扩展性以支持新的文件格式和操作系统。
-     * 1.抽象-图片
-     * 2.实现-操作系统
+     * 某图像预览程序要求能够查看 BMP、JPEG、GIF 三种格式的文件，而且能够在 Windows 和 Linux 两种操作系统上运行。程序需具有较好的扩展性以支持新的文件格式和操作系统。
+     * <pre>
+     * 1 抽象-图片
+     * 2 实现-操作系统
+     * </pre>
      */
-    @Test
-    public void testBridge() {
+    public static void main(String[] args) {
         Image image = new GIFImage();
         image.setOs(new Linux());
         image.parseFile("demo.gif");
@@ -26,14 +24,14 @@ public class BridgeDemo2 {
     /**
      * 各种格式的文件最终都被转化为像素矩阵
      */
-    static class Matrix {
+    private static class Matrix {
         // 此处代码省略
     }
 
     /**
      * Implementor
      */
-    static abstract class OS {
+    private static abstract class OS {
         // 绘制像素矩阵
         private void doPaint(Matrix m) {
         }
@@ -42,7 +40,7 @@ public class BridgeDemo2 {
     /**
      * ConcreteImplementor
      */
-    static class Windows extends OS {
+    private static class Windows extends OS {
         public void doPaint(Matrix m) {
         }
     }
@@ -50,7 +48,7 @@ public class BridgeDemo2 {
     /**
      * ConcreteImplementor
      */
-    static class Linux extends OS {
+    private static class Linux extends OS {
         public void doPaint(Matrix m) {
         }
     }
@@ -58,7 +56,7 @@ public class BridgeDemo2 {
     /**
      * Abstraction
      */
-    static abstract class Image {
+    private static abstract class Image {
         protected OS os;
 
         private void setOs(OS os) {
@@ -71,7 +69,7 @@ public class BridgeDemo2 {
     /**
      * RefinedAbstraction
      */
-    static class GIFImage extends Image {
+    private static class GIFImage extends Image {
         @Override
         public void parseFile(String fileName) {
             // 解析 GIF 文件绘制像素矩阵，此处用 new Matrix() 模拟
@@ -83,12 +81,11 @@ public class BridgeDemo2 {
     /**
      * RefinedAbstraction
      */
-    static class BMPImage extends Image {
+    private static class BMPImage extends Image {
         @Override
         public void parseFile(String fileName) {
             Matrix m = new Matrix();
             os.doPaint(m);
         }
     }
-
 }

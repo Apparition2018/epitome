@@ -3,7 +3,6 @@ package jar.apache.commons.collections4;
 import org.apache.commons.collections4.IterableMap;
 import org.apache.commons.collections4.MapIterator;
 import org.apache.commons.collections4.map.HashedMap;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapIterator.html">MapIterator</a>
@@ -13,8 +12,7 @@ import org.junit.jupiter.api.Test;
  */
 public class MapIteratorDemo {
 
-    @Test
-    public void mapIterator() {
+    public static void main(String[] args) {
         IterableMap<String, String> map = new HashedMap<>();
         map.put("1", "One");
         map.put("2", "Two");

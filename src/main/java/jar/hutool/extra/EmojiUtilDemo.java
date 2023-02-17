@@ -1,7 +1,6 @@
 package jar.hutool.extra;
 
 import cn.hutool.extra.emoji.EmojiUtil;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/extra/emoji/Emoji工具-EmojiUtil">EmojiUtil</a>
@@ -13,8 +12,7 @@ import org.junit.jupiter.api.Test;
  */
 public class EmojiUtilDemo {
 
-    @Test
-    public void testEmojiUtil() {
+    public static void main(String[] args) {
         String emoji = EmojiUtil.toUnicode(":smile:");
         System.out.println(emoji);      // 😄
 

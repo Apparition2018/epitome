@@ -2,7 +2,6 @@ package knowledge.datetime;
 
 import cn.hutool.core.date.DatePattern;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,8 +36,7 @@ import java.util.Date;
  */
 public class SimpleDateFormatDemo extends Demo {
 
-    @Test
-    public void testSimpleDateFormat(String[] args) {
+    public static void main(String[] args) {
         // void	        applyPattern(String pattern)        将给定模式字符串应用于此日期格式
         DATE_TIME_FORMAT.get().applyPattern(DatePattern.NORM_DATETIME_PATTERN);
         p(DATE_TIME_FORMAT.get().format(new Date()));  // 2020-09-03 11:29:36

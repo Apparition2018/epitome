@@ -2,8 +2,6 @@ package jar.google.guava.base;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
-import lombok.AllArgsConstructor;
-import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
@@ -24,11 +22,7 @@ import org.junit.jupiter.api.Test;
  */
 public class PreconditionsDemo {
 
-    @ToString
-    @AllArgsConstructor
-    static class User {
-        private final String userName;
-        private final String password;
+    private record User(String userName, String password) {
     }
 
     /**
@@ -46,8 +40,7 @@ public class PreconditionsDemo {
      */
     @Test
     public void check() {
-        login("mary", "123");
-        // login(null, "234");
+        this.login(null, "123");
     }
 
     private void login(String userName, String password) {

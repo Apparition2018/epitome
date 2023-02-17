@@ -1,8 +1,6 @@
 package knowledge.design.pattern.other.concurrency;
 
 import l.demo.Demo;
-import lombok.Getter;
-import lombok.Setter;
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.Objects;
@@ -63,16 +61,7 @@ public class WorkStealingDemo extends Demo {
         p("********** 消费者消费完毕 **********");
     }
 
-    @Getter
-    @Setter
-    static class Work implements Runnable {
-        private String assignName;
-        private final int jobId;
-
-        public Work(int jobId, String assignName) {
-            this.jobId = jobId;
-            this.assignName = assignName;
-        }
+    private record Work(int jobId, String assignName) implements Runnable {
 
         @Override
         public void run() {
@@ -83,17 +72,9 @@ public class WorkStealingDemo extends Demo {
         }
     }
 
-    static class Machine implements Runnable {
+    private record Machine(LinkedBlockingDeque<Work> deque1, LinkedBlockingDeque<Work> deque2,
+                           int machineIndex) implements Runnable {
         private static final AtomicInteger jobId = new AtomicInteger();
-        private final LinkedBlockingDeque<Work> deque1;
-        private final LinkedBlockingDeque<Work> deque2;
-        private final int machineIndex;
-
-        public Machine(LinkedBlockingDeque<Work> deque1, LinkedBlockingDeque<Work> deque2, int machineIndex) {
-            this.deque1 = deque1;
-            this.deque2 = deque2;
-            this.machineIndex = machineIndex;
-        }
 
         @Override
         public void run() {

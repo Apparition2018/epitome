@@ -64,7 +64,7 @@ public class CuratorElection {
         }
     }
 
-    static class ExampleClient extends LeaderSelectorListenerAdapter implements Closeable {
+    private static class ExampleClient extends LeaderSelectorListenerAdapter implements Closeable {
         private final String name;
         private final LeaderSelector leaderSelector;
         private final AtomicInteger leaderCount = new AtomicInteger();

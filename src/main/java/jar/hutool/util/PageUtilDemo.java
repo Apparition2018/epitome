@@ -1,7 +1,6 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.PageUtil;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -14,8 +13,7 @@ import static l.demo.Demo.p;
  */
 public class PageUtilDemo {
 
-    @Test
-    public void testPageUtil() {
+    public static void main(String[] args) {
         int totalCount = 1255;  // 总条数
         int pageSize = 10;      // 每页条数
         int totalPage;          // 总页数

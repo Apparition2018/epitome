@@ -1,5 +1,7 @@
 package knowledge.algorithm.five;
 
+import java.util.Objects;
+
 /**
  * Greedy
  * 贪婪
@@ -18,7 +20,7 @@ public class Greedy {
      *
      * @see <a href="https://blog.csdn.net/xuefeng0707/article/details/7844834">贪心算法 - 哈夫曼编码 Huffman</a>
      */
-    static class HuffmanCoding {
+    private static class HuffmanCoding {
 
         /**
          * @param cs    : characters
@@ -65,7 +67,7 @@ public class Greedy {
                     }
                     node = node.parent;
                 }
-                System.out.println(nodes[i].val + " : " + sb);
+                System.out.println(Objects.requireNonNull(nodes[i]).val + " : " + sb);
             }
         }
 
@@ -101,7 +103,7 @@ public class Greedy {
          * @see <a href="https://blog.csdn.net/xuefeng0707/article/details/7841328">贪心算法 - 最小生成树 Kruskal</a>
          */
         @SuppressWarnings(value = {"unchecked", "rawtypes"})
-        static class MinHeap<T extends Comparable> {
+        private static class MinHeap<T extends Comparable> {
             private final Object[] data;
 
             public int size;
@@ -185,7 +187,7 @@ public class Greedy {
             }
         }
 
-        static class TreeNode implements Comparable<TreeNode> {
+        private static class TreeNode implements Comparable<TreeNode> {
 
             public char val;
 

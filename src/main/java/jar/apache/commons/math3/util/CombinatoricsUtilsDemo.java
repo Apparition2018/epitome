@@ -1,7 +1,6 @@
 package jar.apache.commons.math3.util;
 
 import org.apache.commons.math3.util.CombinatoricsUtils;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -13,8 +12,7 @@ import static l.demo.Demo.p;
  */
 public class CombinatoricsUtilsDemo {
 
-    @Test
-    public void testCombinatoricsUtils() {
+    public static void main(String[] args) {
         // static long	    binomialCoefficient(int n, int k)
         // 二项式系数
         p(CombinatoricsUtils.binomialCoefficient(4, 0));  // 1

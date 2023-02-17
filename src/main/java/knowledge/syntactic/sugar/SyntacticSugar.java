@@ -1,7 +1,5 @@
 package knowledge.syntactic.sugar;
 
-import org.junit.jupiter.api.Test;
-
 import static l.demo.Demo.p;
 
 /**
@@ -36,10 +34,9 @@ public class SyntacticSugar {
      * 可变参数的各个参数用 "," 隔开，也可以直接传入一个数组
      * </pre>
      */
-    static class VarargsDemo {
+    private static class VarargsDemo {
 
-        @Test
-        public void testVarargs() {
+        public static void main(String[] args) {
             class Base {
                 void func(int price, int... discounts) {
                     p("Base ... func");

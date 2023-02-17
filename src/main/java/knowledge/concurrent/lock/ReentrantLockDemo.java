@@ -50,10 +50,10 @@ public class ReentrantLockDemo extends Demo {
         }
     }
 
-    static class MyThread extends Thread {
+    private static class MyThread extends Thread {
         private final ReentrantLockDemo rlDemo;
 
-        MyThread(ReentrantLockDemo rlDemo, String name) {
+        public MyThread(ReentrantLockDemo rlDemo, String name) {
             super(name);
             this.rlDemo = rlDemo;
         }

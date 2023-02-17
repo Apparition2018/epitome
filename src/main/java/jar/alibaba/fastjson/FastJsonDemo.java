@@ -12,7 +12,7 @@ import java.util.List;
 import static l.demo.Demo.p;
 
 /**
- * FastJson 的简单使用：https://segmentfault.com/a/1190000011212806
+ * <a href="https://segmentfault.com/a/1190000011212806">FastJson 的简单使用</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

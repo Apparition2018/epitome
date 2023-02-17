@@ -4,7 +4,6 @@ import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.asymmetric.Sign;
 import cn.hutool.crypto.asymmetric.SignAlgorithm;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 
@@ -18,8 +17,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class SignDemo extends Demo {
 
-    @Test
-    public void testSign() {
+    public static void main(String[] args) {
         // static Sign	        sign(SignAlgorithm algorithm)
         // 创建签名算法对象，生成新的私钥公钥对
         Sign sign = SecureUtil.sign(SignAlgorithm.MD5withRSA);

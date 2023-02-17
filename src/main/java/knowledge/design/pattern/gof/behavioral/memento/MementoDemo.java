@@ -1,6 +1,5 @@
 package knowledge.design.pattern.gof.behavioral.memento;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.io.Serializable;
@@ -72,7 +71,7 @@ public class MementoDemo {
      * Originator
      */
     @Getter
-    static class InputText {
+    private static class InputText {
         private String text = "";
 
         public void append(String input) {
@@ -91,16 +90,13 @@ public class MementoDemo {
     /**
      * Memento
      */
-    @Getter
-    @AllArgsConstructor
-    static class Memento {
-        private final String text;
+    private record Memento(String text) {
     }
 
     /**
      * Caretaker
      */
-    static class MementoHolder {
+    private static class MementoHolder {
         private final Stack<Memento> mementos = new Stack<>();
 
         public Memento popMemento() {
@@ -116,7 +112,7 @@ public class MementoDemo {
     /**
      * 原型备忘录 (不需要 Memento 角色了)
      */
-    static class PrototypeMementoDemo {
+    private static class PrototypeMementoDemo {
 
         public static void main(String[] args) {
             MementoHolder mementoHolder = new MementoHolder();
@@ -173,7 +169,7 @@ public class MementoDemo {
         /**
          * Caretaker
          */
-        static class MementoHolder {
+        private static class MementoHolder {
             private final Stack<InputText> mementos = new Stack<>();
 
             public InputText popMemento() {

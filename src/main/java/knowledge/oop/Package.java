@@ -11,8 +11,6 @@ package knowledge.oop;
  * import 语句位于 package 语句之后，所有类的定义之前
  */
 
-import org.junit.jupiter.api.Test;
-
 /**
  * 包
  * <pre>
@@ -28,8 +26,4 @@ import org.junit.jupiter.api.Test;
  * @since 2019/8/8 19:39
  */
 public class Package {
-
-    @Test
-    public void testPackage() {
-    }
 }

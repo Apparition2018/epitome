@@ -8,7 +8,6 @@ import cn.hutool.json.JSONUtil;
 import l.demo.Demo;
 import l.demo.Person;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,8 +45,7 @@ public class ServletUtilDemo extends HttpServlet {
         doPost(req, resp);
     }
 
-    @Test
-    public void testServletUtil() {
+    public static void main(String[] args) {
         Map<String, Object> params = BeanUtil.beanToMap(M.personList.get(0));
         HttpResponse httpResponse = HttpRequest.post("http://localhost:8080/ServletUtil")
                 .form(params)
@@ -56,6 +54,6 @@ public class ServletUtilDemo extends HttpServlet {
                 .execute();
     }
 
-    static class M extends Demo {
+    private static class M extends Demo {
     }
 }

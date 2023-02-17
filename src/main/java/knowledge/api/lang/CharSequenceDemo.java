@@ -1,7 +1,6 @@
 package knowledge.api.lang;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.stream.Collectors;
 
@@ -13,8 +12,7 @@ import java.util.stream.Collectors;
  */
 public class CharSequenceDemo extends Demo {
 
-    @Test
-    public void testCharSequence() {
+    public static void main(String[] args) {
         // IntStream        chars()
         p(HELLO_WORLD.chars().mapToObj(c -> String.valueOf((char) c)).collect(Collectors.joining()));       // Hello World!
         // IntStream        codePoints

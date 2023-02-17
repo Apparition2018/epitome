@@ -1,8 +1,6 @@
 package jar.jedis.data.type;
 
 import jar.jedis.JedisUtils;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 
 import java.util.List;
@@ -25,26 +23,20 @@ public class RedisList {
     /**
      * 最近浏览商品
      */
-    static class RecentlyViewedGoods {
+    private static class RecentlyViewedGoods {
         private static final String RECENTLY_VIEWED_GOODS_KEY = "recently_viewed:goods:%s";
-        private Jedis jedis;
+        private static Jedis jedis = jedis = JedisUtils.getResource();
 
-        @BeforeEach
-        public void init() {
-            jedis = JedisUtils.getResource();
-        }
-
-        @Test
-        public void testRecentlyViewedGoods() {
+        public static void main(String[] args) {
             String userKey = String.format(RECENTLY_VIEWED_GOODS_KEY, "Jack");
             // 模拟之前已浏览了 id 为 1~10 的商品
             IntStream.rangeClosed(1, 10).forEach(i -> jedis.lpush(userKey, String.valueOf(i)));
             // 浏览商品 4,8,5
-            this.viewGoods(userKey, 4);
-            this.viewGoods(userKey, 8);
-            this.viewGoods(userKey, 5);
+            viewGoods(userKey, 4);
+            viewGoods(userKey, 8);
+            viewGoods(userKey, 5);
             // Jack 最近浏览商品 id 为：[5, 8, 4, 10, 9, 7, 6, 3, 2, 1]
-            System.out.println("Jack 最近浏览商品 id 为：" + this.getRecentlyViewedGoods(userKey));
+            System.out.println("Jack 最近浏览商品 id 为：" + getRecentlyViewedGoods(userKey));
         }
 
         /**
@@ -53,7 +45,7 @@ public class RedisList {
          * @param key     Redis Key
          * @param goodsId 商品ID
          */
-        private void viewGoods(String key, Integer goodsId) {
+        private static void viewGoods(String key, Integer goodsId) {
             // 先删除该商品之前的浏览记录
             jedis.lrem(key, 1, goodsId.toString());
             jedis.lpush(key, goodsId.toString());
@@ -68,7 +60,7 @@ public class RedisList {
          * @param key Redis Key
          * @return 最近浏览商品列表
          */
-        private List<String> getRecentlyViewedGoods(String key) {
+        private static List<String> getRecentlyViewedGoods(String key) {
             return jedis.lrange(key, 0, jedis.llen(key));
         }
     }

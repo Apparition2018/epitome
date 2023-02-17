@@ -9,16 +9,15 @@ import java.time.temporal.ChronoUnit;
 import static l.demo.Demo.p;
 
 /**
- * LocalTime
- * ISO-8601日历，没有时区的时间，如10:15:30
- * <p>
- * boolean	        equals(Object obj)                  检查是否等
- * int	            compareTo(LocalTime other)          将此 time 与指定 time 进行比较
- * boolean	        isBefore(LocalTime other)           检查此 time 是否在指定 time 之前
- * boolean	        isAfter(LocalTime other)            检查此 time 是否在指定 time 之后
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html
- * https://www.yiibai.com/javatime/javatime_localtime.html#
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html">LocalTime</a>
+ * <p>ISO-8601日历，没有时区的时间，如10:15:30
+ * <pre>
+ * boolean      equals(Object obj)                  检查是否等
+ * int          compareTo(LocalTime other)          将此 time 与指定 time 进行比较
+ * boolean      isBefore(LocalTime other)           检查此 time 是否在指定 time 之前
+ * boolean      isAfter(LocalTime other)            检查此 time 是否在指定 time 之后
+ * </pre>
+ * <a href="https://www.yiibai.com/javatime/javatime_localtime.html">java.time.LocalTime 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

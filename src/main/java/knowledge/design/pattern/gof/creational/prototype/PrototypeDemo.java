@@ -3,7 +3,6 @@ package knowledge.design.pattern.gof.creational.prototype;
 import l.demo.Demo;
 import l.demo.Person;
 import lombok.NoArgsConstructor;
-import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,8 +44,7 @@ public class PrototypeDemo extends Demo {
     /**
      * <a href="https://refactoringguru.cn/design-patterns/prototype/java/example">复制图形（不使用 Cloneable）</a>
      */
-    @Test
-    public void testPrototype() {
+    public static void main(String[] args) {
         Rectangle rectangle = new Rectangle();
         rectangle.width = 10;
         rectangle.height = 20;
@@ -66,7 +64,7 @@ public class PrototypeDemo extends Demo {
      * Prototype
      */
     @NoArgsConstructor
-    static abstract class Shape {
+    private static abstract class Shape {
         protected int x;
         protected int y;
         protected String color;
@@ -92,7 +90,7 @@ public class PrototypeDemo extends Demo {
      * ConcretePrototype
      */
     @NoArgsConstructor
-    static class Rectangle extends Shape {
+    private static class Rectangle extends Shape {
         public int width;
         public int height;
 
@@ -119,7 +117,7 @@ public class PrototypeDemo extends Demo {
     /**
      * PrototypeRegistry
      */
-    static class BundledShapeCache {
+    private static class BundledShapeCache {
         private final Map<String, Shape> CACHE = new HashMap<>();
 
         public BundledShapeCache() {

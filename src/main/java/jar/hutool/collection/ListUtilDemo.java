@@ -2,7 +2,6 @@ package jar.hutool.collection;
 
 import cn.hutool.core.collection.ListUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -22,8 +21,7 @@ import java.util.List;
  */
 public class ListUtilDemo extends Demo {
 
-    @Test
-    public void testListUtil() {
+    public static void main(String[] args) {
         //                                                      创建
         list = ListUtil.list(false, 1, 2, 3, 4, 5, 6, 7, 8, 9);
         list = ListUtil.of(arr);

@@ -2,7 +2,6 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.HexUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.math.BigInteger;
@@ -23,9 +22,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class HexUtilDemo extends Demo {
 
-    @Test
-    public void testHexUtil() {
-
+    public static void main(String[] args) {
         char[] encode = HexUtil.encodeHex(HELLO_WORLD.getBytes(StandardCharsets.UTF_8));
         byte[] decode = HexUtil.decodeHex(encode);
 

@@ -6,14 +6,13 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * SystemUtil   系统属性
- * <p>
- * static String	    get(String name[, boolean quiet])       取得系统属性，如果因为 Java 安全的限制而失败，则将错误打在 Log 中，然后返回 null
- * static String	    get(String name[, String defaultValue]) 取得系统属性，如果因为 Java 安全的限制而失败，则将错误打在 Log 中，然后返回 defaultValue
+ * <a href="https://hutool.cn/docs/#/system/系统属性调用-SystemUtil">SystemUtil</a>   系统属性
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/system/SystemUtil.html">SystemUtil api</a>
+ * <pre>
+ * static String        get(String name[, boolean quiet])       取得系统属性，如果因为 Java 安全的限制而失败，则将错误打在 Log 中，然后返回 null
+ * static String        get(String name[, String defaultValue]) 取得系统属性，如果因为 Java 安全的限制而失败，则将错误打在 Log 中，然后返回 defaultValue
  * static Properties    props()                                 确定当前的系统属性
- * <p>
- * https://hutool.cn/docs/#/system/%E7%B3%BB%E7%BB%9F%E5%B1%9E%E6%80%A7%E8%B0%83%E7%94%A8-SystemUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/system/SystemUtil.html
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/4 17:23
@@ -126,5 +125,4 @@ public class SystemUtilDemo {
         // Java 虚拟机 GarbageCollectorMXBean 列表
         SystemUtil.getGarbageCollectorMXBeans();
     }
-
 }

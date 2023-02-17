@@ -4,7 +4,6 @@ import cn.hutool.core.date.DatePattern;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.lang3.time.DateUtils;
-import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -23,9 +22,8 @@ import static l.demo.Demo.p;
  */
 public class ConvertUtilsDemo {
 
-    @Test
     @SuppressWarnings("unchecked")
-    public void testConvertUtils() {
+    public static void main(String[] args) {
         ConvertUtils.register(new Converter() {
             @Override
             public <T> T convert(Class<T> clazz, Object o) {

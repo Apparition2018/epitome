@@ -30,7 +30,7 @@ class TcpServer implements Runnable {
         throw new RuntimeException();
     }
 
-    static class TcpServerExceptionHandler implements Thread.UncaughtExceptionHandler {
+    private static class TcpServerExceptionHandler implements Thread.UncaughtExceptionHandler {
 
         @Override
         public void uncaughtException(Thread t, Throwable e) {

@@ -2,21 +2,18 @@ package jar.hutool.math;
 
 import cn.hutool.core.math.MathUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 /**
- * MathUtil
- * NumberUtil 的一个补充，MathUtil 偏向复杂数学计算
- * https://hutool.cn/docs/#/core/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6%E7%9B%B8%E5%85%B3-MathUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/math/MathUtil.html
- * 
+ * <a href="https://hutool.cn/docs/#/core/数学/数学相关-MathUtil">MathUtil</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/math/MathUtil.html">MathUtil api</a>
+ * <p>NumberUtil 的一个补充，MathUtil 偏向复杂数学计算
+ *
  * @author ljh
  * @since 2020/11/19 23:37
  */
 public class MathUtilDemo extends Demo {
 
-    @Test
-    public void testMathUtil() {
+    public static void main(String[] args) {
         // 排列数，即A(n, n) = n!
         p(MathUtil.arrangementCount(3));
         // 排列数，即A(n, m) = n!/(n-m)!

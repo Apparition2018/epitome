@@ -80,7 +80,7 @@ public class AccessModifier {
         x.accessY();
     }
 
-    static class X {
+    private static class X {
         private void accessY() throws NoSuchFieldException, IllegalAccessException {
             Y y = new Y();
             y.y = 1;
@@ -94,7 +94,7 @@ public class AccessModifier {
         }
     }
 
-    static class Y {
+    private static class Y {
         private int y;
     }
 }

@@ -2,7 +2,6 @@ package jar.apache.commons.codec.binary;
 
 import l.demo.Demo;
 import org.apache.commons.codec.binary.Base64;
-import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 
@@ -14,8 +13,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class Base64Demo extends Demo {
 
-    @Test
-    public void base64() {
+    public static void main(String[] args) {
         // 加密
         byte[] encodeBytes = Base64.encodeBase64(HELLO_WORLD.getBytes());
         p(new String(encodeBytes, StandardCharsets.UTF_8)); // SGVsbG8gV29ybGQh

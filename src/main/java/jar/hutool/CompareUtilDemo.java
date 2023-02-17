@@ -1,7 +1,6 @@
 package jar.hutool;
 
 import cn.hutool.core.comparator.CompareUtil;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/core//比较器/比较工具-CompareUtil">CompareUtil</a>    比较工具
@@ -12,8 +11,7 @@ import org.junit.jupiter.api.Test;
  */
 public class CompareUtilDemo {
 
-    @Test
-    public void testCompareUtil() {
+    public static void main(String[] args) {
         // compare(T o1, T o2[, boolean isNullGreater])
         // true null 最大，false null 最小，默认 null 最小
         System.out.println(CompareUtil.compare(null, "A", true));

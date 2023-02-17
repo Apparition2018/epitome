@@ -12,14 +12,15 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
- * CsvUtil
- * CSV Comma-Separated Values，逗号分隔值，也称为字符分隔值，因为分隔字符也可以不是逗号，其文件以纯文本形式存储表格数据（数字和文本）。
- * <p>
- * https://hutool.cn/docs/#/core/%E6%96%87%E6%9C%AC%E6%93%8D%E4%BD%9C/CSV%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7-CsvUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvUtil.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvWriter.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvBaseReader.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvRow.html
+ * <a href="https://hutool.cn/docs/#/core/文本操作/CSV文件处理工具-CsvUtil">CsvUtil</a>
+ * <p>CSV Comma-Separated Values，逗号分隔值，也称为字符分隔值，因为分隔字符也可以不是逗号，其文件以纯文本形式存储表格数据（数字和文本）。
+ * api：
+ * <pre>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvUtil.html">CsvUtil api</a>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvWriter.html">CsvWriter api</a>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvBaseReader.html">CsvBaseReader api</a>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvRow.html">CsvRow api</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/5 9:08
@@ -73,7 +74,7 @@ public class CsvUtilDemo extends Demo {
     }
 
     @Data
-    static class CsvBean {
+    private static class CsvBean {
         // 如果 CSV 中标题与字段不对应，可以使用 @Alias 设置别名
         @Alias("Name")
         private String name;

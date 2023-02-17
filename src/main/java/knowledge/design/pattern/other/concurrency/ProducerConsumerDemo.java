@@ -52,13 +52,8 @@ public class ProducerConsumerDemo extends Demo {
         p("********** 消费者消费完毕 **********");
     }
 
-    static class Producer implements Runnable {
+    private record Producer(BlockingQueue<Integer> queue) implements Runnable {
         private static final AtomicInteger goodsId = new AtomicInteger();
-        private final BlockingQueue<Integer> queue;
-
-        public Producer(BlockingQueue<Integer> queue) {
-            this.queue = queue;
-        }
 
         @Override
         public void run() {
@@ -79,14 +74,7 @@ public class ProducerConsumerDemo extends Demo {
         }
     }
 
-    static class Consumer implements Runnable {
-        private final BlockingQueue<Integer> queue;
-        private final int consumerIndex;
-
-        public Consumer(BlockingQueue<Integer> queue, int consumerIndex) {
-            this.queue = queue;
-            this.consumerIndex = consumerIndex;
-        }
+    private record Consumer(BlockingQueue<Integer> queue, int consumerIndex) implements Runnable {
 
         @Override
         public void run() {

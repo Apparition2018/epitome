@@ -2,7 +2,6 @@ package jar.apache.commons.beanutils;
 
 import l.demo.Person;
 import org.apache.commons.beanutils.ConstructorUtils;
-import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -15,8 +14,7 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class ConstructorUtilsDemo {
 
-    @Test
-    public void testConstructorUtils() throws IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
+    public static void main(String[] args) throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
         Constructor<Person> constructor = ConstructorUtils.getAccessibleConstructor(Person.class, new Class[]{Integer.class, String.class});
         System.out.println(constructor.newInstance(1, "John"));
 

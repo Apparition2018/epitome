@@ -94,7 +94,7 @@ public class JsonGeneratorDemo {
         }
     }
 
-    static class MyObjectCodec extends ObjectCodec {
+    private static class MyObjectCodec extends ObjectCodec {
 
         @Override
         public Version version() {

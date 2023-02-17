@@ -4,7 +4,6 @@ import l.demo.Demo;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.client.utils.URLEncodedUtils;
-import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -19,8 +18,7 @@ import java.util.List;
  */
 public class URLEncodedUtilsDemo extends Demo {
 
-    @Test
-    public void testURLEncodedUtils() throws URISyntaxException {
+    public static void main(String[] args) throws URISyntaxException {
         URI uri = new URIBuilder(MOZILLA_DEMO_URL).build();
 
         // 返回 URI 查询参数 NameValuePair 列表

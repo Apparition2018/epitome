@@ -107,7 +107,7 @@ public class QueueDemo extends Demo {
 
     @Data
     @Accessors(chain = true)
-    static class DelayTask implements Delayed {
+    private static class DelayTask implements Delayed {
 
         private String taskName;
         private Date startTime;

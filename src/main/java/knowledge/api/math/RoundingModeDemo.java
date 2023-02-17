@@ -1,7 +1,5 @@
 package knowledge.api.math;
 
-import org.junit.jupiter.api.Test;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -30,13 +28,12 @@ import java.math.RoundingMode;
  */
 public class RoundingModeDemo {
 
-    @Test
-    public void testRoundingMode() {
+    public static void main(String[] args) {
         // multiply
         System.out.println(new BigDecimal("99.99").multiply(new BigDecimal("0.3")).setScale(2, RoundingMode.HALF_UP)); // 30.00
 
         // divide
-        System.out.println(new BigDecimal(1).divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));   //0.33
-        System.out.println(new BigDecimal(2).divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));   //0.67
+        System.out.println(new BigDecimal(1).divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));   // 0.33
+        System.out.println(new BigDecimal(2).divide(new BigDecimal(3), 2, RoundingMode.HALF_UP));   // 0.67
     }
 }

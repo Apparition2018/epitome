@@ -1,7 +1,6 @@
 package knowledge.concurrent.util;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +32,7 @@ public class CountDownLatchDemo extends Demo {
     /**
      * 案例：百米赛跑，多个参加赛跑的人员在听到发令枪响后，开始跑步，到达终点后结束计时，然后统计平均成绩
      */
-    @Test
-    public void testCountDownLatch() throws InterruptedException, ExecutionException {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
         class Runner implements Callable<Integer> {
 
             // 开始信号

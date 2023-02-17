@@ -3,7 +3,6 @@ package jar.hutool.util;
 import cn.hutool.core.lang.ObjectId;
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -25,8 +24,8 @@ import static l.demo.Demo.p;
  * @since 2020/11/19 16:40
  */
 public class IdUtilDemo {
-    @Test
-    public void testIdUtil() {
+
+    public static void main(String[] args) {
         // UUID
         p(IdUtil.randomUUID()); // b174a93f-c148-41b9-96ab-35959de81b21
         p(IdUtil.simpleUUID()); // f2843351a7d8486ca84fcb2857b6283d

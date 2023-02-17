@@ -61,7 +61,7 @@ public class SingletonDemo {
     /**
      * 饿汉模式，线程安全
      */
-    static class EarlySingleton implements Serializable {
+    private static class EarlySingleton implements Serializable {
         @Serial
         private static final long serialVersionUID = -7618188072415286252L;
         // 1.创建类的唯一实例，使用 private static 修饰
@@ -89,7 +89,7 @@ public class SingletonDemo {
     /**
      * 懒汉模式，线程不安全
      */
-    static class LazySingleton {
+    private static class LazySingleton {
         private static LazySingleton instance;
 
         private LazySingleton() {
@@ -117,7 +117,7 @@ public class SingletonDemo {
      * </pre>
      * 通过双重检查锁（double-checked locking），实现延迟初始化需要将目标属性声明为 volatile 型（阿里编程规约）
      */
-    static class DoubleCheckLockSingleton {
+    private static class DoubleCheckLockSingleton {
         private volatile static DoubleCheckLockSingleton instance;
 
         private DoubleCheckLockSingleton() {
@@ -140,9 +140,9 @@ public class SingletonDemo {
      * </pre>
      * 缺点：外部无法传递参数进去内部类里
      */
-    static class InitOnDemandSingleton {
+    private static class InitOnDemandSingleton {
 
-        static class InstanceHolder {
+        private static class InstanceHolder {
             private static final InitOnDemandSingleton INSTANCE = new InitOnDemandSingleton();
         }
 
@@ -220,7 +220,7 @@ public class SingletonDemo {
     /**
      * 容器式单例，线程不安全
      */
-    static class ContainerSingleton {
+    private static class ContainerSingleton {
         private static final Map<String, Object> SINGLETON_MAP = new ConcurrentHashMap<>();
 
         private ContainerSingleton() {

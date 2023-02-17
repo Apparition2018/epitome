@@ -116,7 +116,7 @@ public class CustomAnnotationExercise {
     @Table("user")
     @Getter
     @Setter
-    static class Filter {
+    private static class Filter {
         @Column("id")
         private int id;
         @Column("user_name")
@@ -136,7 +136,7 @@ public class CustomAnnotationExercise {
     @Table("department")
     @Getter
     @Setter
-    static class Filter2 {
+    private static class Filter2 {
         @Column("id")
         private int id;
         @Column("name")

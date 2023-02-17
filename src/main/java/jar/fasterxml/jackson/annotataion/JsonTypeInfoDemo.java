@@ -8,7 +8,6 @@ import l.demo.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.assertj.core.util.Lists;
-import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -21,8 +20,7 @@ import java.util.List;
  */
 public class JsonTypeInfoDemo extends Demo {
 
-    @Test
-    public void testJsonTypeInfo() throws JsonProcessingException {
+    public static void main(String[] args) throws JsonProcessingException {
         Circle circle = new Circle().setRadius("12");
         Rectangle rectangle = new Rectangle().setLength("12").setWidth("13");
         View view = new View().setSharps(Lists.newArrayList(circle, rectangle));
@@ -37,26 +35,26 @@ public class JsonTypeInfoDemo extends Demo {
 
     @Data
     @Accessors(chain = true)
-    static class View {
+    private static class View {
         private List<Sharp> sharps;
     }
 
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "name")
     @JsonSubTypes(value = {@JsonSubTypes.Type(value = Circle.class), @JsonSubTypes.Type(value = Rectangle.class)})
-    static abstract class Sharp {
+    private static abstract class Sharp {
     }
 
     @Data
     @Accessors(chain = true)
     @JsonTypeName("circleType")
-    static class Circle extends Sharp {
+    private static class Circle extends Sharp {
         private String radius;
     }
 
     @Data
     @Accessors(chain = true)
     @JsonTypeName("rectangleType")
-    static class Rectangle extends Sharp {
+    private static class Rectangle extends Sharp {
         private String length;
         private String width;
     }

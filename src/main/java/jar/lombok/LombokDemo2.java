@@ -41,7 +41,7 @@ public class LombokDemo2 {
     @Getter
     @Setter
     @Accessors(fluent = true, chain = true)
-    static class User5 {
+    private static class User5 {
         private Integer id;
         private String name;
         private String password;
@@ -62,7 +62,7 @@ public class LombokDemo2 {
     @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
     @AllArgsConstructor
     @ToString
-    static class User6 {
+    private static class User6 {
         private Integer id;
         private String name;
         private String password;
@@ -80,7 +80,7 @@ public class LombokDemo2 {
     }
 
     @Value
-    static class User7 {
+    private static class User7 {
         Integer id;
         String name;
         String password;
@@ -104,13 +104,7 @@ public class LombokDemo2 {
 
     }
 
-    @ToString
     @Builder(toBuilder = true)
-    static class User8 {
-        private final Integer id;
-        private final String name;
-        private final String password;
-        @Singular
-        private final Set<String> interests;
+    private record User8(Integer id, String name, String password, @Singular Set<String> interests) {
     }
 }

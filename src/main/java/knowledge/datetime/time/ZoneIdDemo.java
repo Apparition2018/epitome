@@ -1,7 +1,6 @@
 package knowledge.datetime.time;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -13,22 +12,20 @@ import java.util.Set;
 import static l.demo.Demo.p;
 
 /**
- * ZoneId
- * 时区ID, 如Europe-Paris
- * <p>
- * boolean	        equals(Object obj)                  检查是否等
- * ZoneId	        normalized()                        规范化时区ID，在可能的情况下返回一个ZoneOffset
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html
- * https://www.yiibai.com/javatime/javatime_zoneid.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html">ZoneId</a>
+ * <p>时区ID, 如Europe-Paris
+ * <pre>
+ * boolean      equals(Object obj)      检查是否等
+ * ZoneId       normalized()            规范化时区ID，在可能的情况下返回一个ZoneOffset
+ * </pre>
+ * <a href="https://www.yiibai.com/javatime/javatime_zoneid.html">java.time.ZoneId 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
 public class ZoneIdDemo {
-    
-    @Test
-    public void testZoneId() {
+
+    public static void main(String[] args) {
         ZoneId zoneId;
         // static ZoneId	    systemDefault()                             获取系统默认时区
         zoneId = ZoneId.systemDefault();
@@ -41,12 +38,12 @@ public class ZoneIdDemo {
         // 使用别名映射获取ZoneId实例，以补充标准的zone ID
         zoneId = ZoneId.of("UTC+8");
         zoneId = ZoneId.of("Asia/Shanghai");
-        
-        
+
+
         // static Set<String>	getAvailableZoneIds()                       获取可用的zone id集
         Set<String> set = ZoneId.getAvailableZoneIds();
         set.forEach(Demo::p);
-        
+
         // String           getDisplayName(TextStyle style, Locale locale)  获取区域的文本表示，如"英国时间"或"+02:00"
         p(zoneId.getDisplayName(TextStyle.FULL, Locale.CHINA));             // 中国时间
         p(zoneId.getDisplayName(TextStyle.FULL_STANDALONE, Locale.CHINA));  // 中国时间

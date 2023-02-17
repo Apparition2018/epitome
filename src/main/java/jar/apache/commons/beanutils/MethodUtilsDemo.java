@@ -2,7 +2,6 @@ package jar.apache.commons.beanutils;
 
 import l.demo.Person;
 import org.apache.commons.beanutils.MethodUtils;
-import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -15,8 +14,7 @@ import java.lang.reflect.Method;
  */
 public class MethodUtilsDemo {
 
-    @Test
-    public void testMethodUtils() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Person person = new Person();
         // static Method	    getAccessibleMethod(Class<?> clazz, String methodName, Class<?> parameterType)
         // 返回一个具有给定名和单个参数的可访问方法

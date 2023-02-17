@@ -1,7 +1,6 @@
 package knowledge.design.pattern.gof.behavioral.interpreter;
 
 import lombok.AllArgsConstructor;
-import org.junit.jupiter.api.Test;
 import org.springframework.expression.ExpressionParser;
 
 import java.util.Stack;
@@ -43,8 +42,7 @@ public class InterpreterDemo {
      * <a href="https://blog.csdn.net/LoveLion/article/details/7713602">自定义语言的实现——解释器模式（五）</a>
      * </pre>
      */
-    @Test
-    public void testInterpreter() {
+    public static void main(String[] args) {
         InstructionHandler instructionHandler = new InstructionHandler();
         instructionHandler.handle("up move 5 and down run 10 and left move 5");
         System.out.println(instructionHandler.output());
@@ -53,7 +51,7 @@ public class InterpreterDemo {
     /**
      * Expression
      */
-    static abstract class Node {
+    private static abstract class Node {
         abstract String interpret();
     }
 
@@ -62,7 +60,7 @@ public class InterpreterDemo {
      * AND
      */
     @AllArgsConstructor
-    static class AndNode extends Node {
+    private static class AndNode extends Node {
 
         private final Node left;
         private final Node right;
@@ -78,7 +76,7 @@ public class InterpreterDemo {
      * 简单句子
      */
     @AllArgsConstructor
-    static class SentenceNode extends Node {
+    private static class SentenceNode extends Node {
         private final Node direction;
         private final Node action;
         private final Node distance;
@@ -94,7 +92,7 @@ public class InterpreterDemo {
      * 方向
      */
     @AllArgsConstructor
-    static class DirectionNode extends Node {
+    private static class DirectionNode extends Node {
         private final String direction;
 
         @Override
@@ -118,7 +116,7 @@ public class InterpreterDemo {
      * 动作
      */
     @AllArgsConstructor
-    static class ActionNode extends Node {
+    private static class ActionNode extends Node {
         private final String action;
 
         @Override
@@ -138,7 +136,7 @@ public class InterpreterDemo {
      * 距离
      */
     @AllArgsConstructor
-    static class DistanceNode extends Node {
+    private static class DistanceNode extends Node {
         private final String distance;
 
         @Override
@@ -147,7 +145,7 @@ public class InterpreterDemo {
         }
     }
 
-    static class InstructionHandler {
+    private static class InstructionHandler {
         private Node node;
 
         public void handle(String instruction) {

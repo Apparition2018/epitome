@@ -3,7 +3,6 @@ package jar.jedis.data.type;
 import jar.jedis.JedisUtils;
 import l.demo.Demo;
 import lombok.Getter;
-import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
@@ -27,14 +26,13 @@ public class RedisSortedSet extends Demo {
     /**
      * 热门书籍
      */
-    static class HotBooks {
+    private static class HotBooks {
         private static final String HOT_BOOKS_KEY = "hot_articles";
         private static final String HOT_BOOKS_20210501 = HOT_BOOKS_KEY.concat(":20210501");
         private static final String HOT_BOOKS_20210502 = HOT_BOOKS_KEY.concat(":20210502");
         private static final String HOT_BOOKS_20210503 = HOT_BOOKS_KEY.concat(":20210503");
 
-        @Test
-        public void testHotBooks() {
+        public static void main(String[] args) {
             Jedis jedis = JedisUtils.getResource();
             Map<String, Double> bookMap = new HashMap<>();
             bookMap.put(BookEnum.SG.getName(), 0D);
@@ -44,9 +42,9 @@ public class RedisSortedSet extends Demo {
             jedis.zadd(HOT_BOOKS_20210501, bookMap);
             jedis.zadd(HOT_BOOKS_20210502, bookMap);
             jedis.zadd(HOT_BOOKS_20210503, bookMap);
-            IntStream.rangeClosed(1, THOUSAND).forEach(i -> this.readBook(jedis, HOT_BOOKS_20210501));
-            IntStream.rangeClosed(1, THOUSAND).forEach(i -> this.readBook(jedis, HOT_BOOKS_20210502));
-            IntStream.rangeClosed(1, THOUSAND).forEach(i -> this.readBook(jedis, HOT_BOOKS_20210503));
+            IntStream.rangeClosed(1, THOUSAND).forEach(i -> readBook(jedis, HOT_BOOKS_20210501));
+            IntStream.rangeClosed(1, THOUSAND).forEach(i -> readBook(jedis, HOT_BOOKS_20210502));
+            IntStream.rangeClosed(1, THOUSAND).forEach(i -> readBook(jedis, HOT_BOOKS_20210503));
             // 20210521 四大名著排名：[[红楼梦,271.0], [水浒传,257.0], [三国演义,240.0], [西游记,232.0]]
             System.out.println("20210521 四大名著排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_20210501, 0, 3));
             // 统计总排名
@@ -55,7 +53,7 @@ public class RedisSortedSet extends Demo {
             System.out.println("四大名著总排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_KEY, 0, 3));
         }
 
-        private void readBook(Jedis jedis, String key) {
+        private static void readBook(Jedis jedis, String key) {
             jedis.zincrby(key, 1, BookEnum.getRandomBookName());
         }
     }

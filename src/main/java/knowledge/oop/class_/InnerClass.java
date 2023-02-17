@@ -36,7 +36,7 @@ public class InnerClass {
     private interface S {
     }
 
-    static class A {
+    private static class A {
 
         private int x = 9;
 
@@ -73,7 +73,7 @@ public class InnerClass {
         }
     }
 
-    static class B {
+    private static class B {
         private int x = 20;
 
         public void bMethod() {
@@ -97,13 +97,13 @@ public class InnerClass {
         }
     }
 
-    static class C {
+    private static class C {
         /**
          * 3.静态内部类：使用 static 修饰的内部类，也称作嵌套内部类
          * <p>特点：不能使用外部类的非 static 成员变量和成员方法
          * <p>注意：非静态内部类中不可以声明静态成员变量和方法
          */
-        static class CInner {
+        private static class CInner {
             public void demo() {
             }
         }
@@ -114,7 +114,7 @@ public class InnerClass {
         }
     }
 
-    static class D {
+    private static class D {
 
         protected void DMethod() {
             p("DMethod");
@@ -148,7 +148,7 @@ public class InnerClass {
         void method();
     }
 
-    static class Y {
+    private static class Y {
         public void method() {
             p("extends class Y");
         }
@@ -157,7 +157,7 @@ public class InnerClass {
     /**
      * 内部类应用场景二：解决继承的类和实现的接口出现相同方法名的问题
      */
-    static class XY extends Y {
+    private static class XY extends Y {
         private class XYInner implements X {
 
             @Override

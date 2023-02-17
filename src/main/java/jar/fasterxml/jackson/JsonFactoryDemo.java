@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonFactoryBuilder;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.core.json.JsonWriteFeature;
-import org.junit.jupiter.api.Test;
 
 /**
  * JsonFactory
@@ -15,8 +14,7 @@ import org.junit.jupiter.api.Test;
  */
 public class JsonFactoryDemo {
 
-    @Test
-    public void testBuilder() {
+    public static void main(String[] args) {
         JsonFactory jsonFactory = new JsonFactoryBuilder()
                 /* === JsonFactory.Feature === */
                 // 字段名调用 intern()，默认 true，需要开启 CANONICALIZE_FIELD_NAMES

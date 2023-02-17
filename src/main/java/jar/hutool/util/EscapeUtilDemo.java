@@ -2,7 +2,6 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.EscapeUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/工具类/Escape工具-EscapeUtil">EscapeUtil</a>
@@ -13,8 +12,7 @@ import org.junit.jupiter.api.Test;
  */
 public class EscapeUtilDemo extends Demo {
 
-    @Test
-    public void testEscapeUtil() {
+    public static void main(String[] args) {
         // ISO Latin（Unicode 字符集的一个子集）字符串编码
         // escape(CharSequence) 默认不对 *@-_+" 编码 
         p(EscapeUtil.escape(MY_CY + "*@-_+"));                          // %u4e2d%u56fd*@-_+

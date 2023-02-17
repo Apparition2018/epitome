@@ -5,7 +5,6 @@ import cn.hutool.extra.template.Template;
 import cn.hutool.extra.template.TemplateConfig;
 import cn.hutool.extra.template.TemplateEngine;
 import cn.hutool.extra.template.TemplateUtil;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/extra/模板引擎/模板引擎封装-TemplateUtil">TemplateUtil</a>   模板引擎封装
@@ -21,8 +20,7 @@ import org.junit.jupiter.api.Test;
  */
 public class TemplateUtilDemo {
 
-    @Test
-    public void testTemplateUtil() {
+    public static void main(String[] args) {
         // 根据用户引入的模板引擎，自动创建对应的模板引擎对象
         TemplateEngine templateEngine = TemplateUtil.createEngine(new TemplateConfig());
 

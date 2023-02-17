@@ -77,7 +77,7 @@ public class SpringObserverDemo {
          */
         @Getter
         @Setter
-        static class OrderEvent extends ApplicationEvent {
+        private static class OrderEvent extends ApplicationEvent {
             @Serial
             private static final long serialVersionUID = 6763968214834834166L;
             private String message;
@@ -96,7 +96,7 @@ public class SpringObserverDemo {
         /**
          * 监听者
          */
-        static class SmsListener implements ApplicationListener<OrderEvent> {
+        private static class SmsListener implements ApplicationListener<OrderEvent> {
 
             @Async
             @Override
@@ -108,7 +108,7 @@ public class SpringObserverDemo {
         /**
          * 监听者
          */
-        static class EmailListener implements ApplicationListener<OrderEvent> {
+        private static class EmailListener implements ApplicationListener<OrderEvent> {
 
             @Async
             @Override

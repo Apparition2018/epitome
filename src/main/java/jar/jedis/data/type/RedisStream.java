@@ -22,6 +22,6 @@ public class RedisStream {
      * 消息队列
      * <p>使用前提：业务足够简单，数据丢失不敏感，消息挤压率小
      */
-    static class MessageQueue {
+    private static class MessageQueue {
     }
 }

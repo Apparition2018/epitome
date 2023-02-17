@@ -7,7 +7,6 @@ import l.demo.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.assertj.core.util.Lists;
-import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -19,8 +18,7 @@ import java.util.List;
  */
 public class JsonIdentityInfoDemo extends Demo {
 
-    @Test
-    public void testJsonIdentityInfo() throws JsonProcessingException {
+    public static void main(String[] args) throws JsonProcessingException {
         Employee e1 = new Employee().setName("mary");
         Employee e2 = new Employee().setName("lucy");
 
@@ -36,7 +34,7 @@ public class JsonIdentityInfoDemo extends Demo {
     @Data
     @Accessors(chain = true)
     @JsonIdentityInfo(property = "name", generator = ObjectIdGenerators.PropertyGenerator.class)
-    static class Boss {
+    private static class Boss {
         private String name;
         private List<Employee> employeeList;
     }
@@ -44,7 +42,7 @@ public class JsonIdentityInfoDemo extends Demo {
     @Data
     @Accessors(chain = true)
     @JsonIdentityInfo(property = "name", generator = ObjectIdGenerators.PropertyGenerator.class)
-    static class Employee {
+    private static class Employee {
         private String name;
         private Boss boss;
     }

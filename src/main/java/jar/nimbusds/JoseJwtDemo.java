@@ -8,8 +8,6 @@ import l.demo.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang3.time.DateUtils;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.util.AlternativeJdkIdGenerator;
 import org.springframework.util.DigestUtils;
 import springboot.exception.ServiceException;
@@ -51,15 +49,9 @@ import java.util.List;
  */
 public class JoseJwtDemo extends Demo {
 
-    private String secret;
+    private static String secret = DigestUtils.md5DigestAsHex("test".getBytes(StandardCharsets.UTF_8));
 
-    @BeforeEach
-    public void init() {
-        secret = DigestUtils.md5DigestAsHex("test".getBytes(StandardCharsets.UTF_8));
-    }
-
-    @Test
-    public void testJoseJwt() throws JsonProcessingException, JOSEException, ParseException {
+    public static void main(String[] args) throws JsonProcessingException, JOSEException, ParseException {
         PayloadDto payloadDto = new PayloadDto()
                 .setSub(MY_NAME).setIat(System.currentTimeMillis())
                 .setExp(DateUtils.addHours(new Date(), 6).getTime())
@@ -67,15 +59,15 @@ public class JoseJwtDemo extends Demo {
                 .setUsername(MY_NAME)
                 .setAuthorities(Collections.singletonList("ADMIN"));
 
-        String token = this.generateTokenByHMAC(jsonMapper.writeValueAsString(payloadDto), secret);
+        String token = generateTokenByHMAC(jsonMapper.writeValueAsString(payloadDto), secret);
         p("token = " + token);
-        p(this.verifyTokenByHMAC(token, secret));
+        p(verifyTokenByHMAC(token, secret));
     }
 
     /**
      * 生成 Token
      */
-    private String generateTokenByHMAC(String payloadStr, String secret) throws JOSEException {
+    private static String generateTokenByHMAC(String payloadStr, String secret) throws JOSEException {
         // 创建 JWSHeader，设置签名算法和类型
         JWSHeader jwsHeader = new JWSHeader.Builder(JWSAlgorithm.HS256).type(JOSEObjectType.JWT).build();
         // 创建 Payload
@@ -92,7 +84,7 @@ public class JoseJwtDemo extends Demo {
     /**
      * 验证 Token
      */
-    private PayloadDto verifyTokenByHMAC(String token, String secret) throws ParseException, JOSEException, JsonProcessingException {
+    private static PayloadDto verifyTokenByHMAC(String token, String secret) throws ParseException, JOSEException, JsonProcessingException {
         // 将 token 转换成 JWSObject
         JWSObject jwsObject = JWSObject.parse(token);
         // 创建 HMAC 验证器
@@ -110,7 +102,7 @@ public class JoseJwtDemo extends Demo {
 
     @Data
     @Accessors(chain = true)
-    static class PayloadDto {
+    private static class PayloadDto {
         private String sub;
         private Long iat;
         private Long exp;

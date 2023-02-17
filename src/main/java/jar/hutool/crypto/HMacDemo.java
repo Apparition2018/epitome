@@ -4,7 +4,6 @@ import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.digest.HMac;
 import cn.hutool.crypto.digest.HmacAlgorithm;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import javax.crypto.SecretKey;
 
@@ -18,8 +17,7 @@ import javax.crypto.SecretKey;
  */
 public class HMacDemo extends Demo {
 
-    @Test
-    public void testHMac() {
+    public static void main(String[] args) {
         // static SecretKey	    generateKey(String algorithm[, byte[] key/int keySize/KeySpec keySpec])
         // 生成 SecretKey，仅用于对称加密和摘要算法
         SecretKey secretKey = SecureUtil.generateKey(HmacAlgorithm.HmacMD5.getValue());

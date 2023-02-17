@@ -20,7 +20,7 @@ public class RedisBitmap {
     /**
      * 活跃用户统计
      */
-    static class ActiveUserStats {
+    private static class ActiveUserStats {
         private static final String USER_LOGIN_KEY = "user:login";
         private static final String USER_LOGIN_20210501 = USER_LOGIN_KEY.concat(":20210501");
         private static final String USER_LOGIN_20210502 = USER_LOGIN_KEY.concat(":20210502");
@@ -51,7 +51,7 @@ public class RedisBitmap {
     /**
      * 在线用户统计
      */
-    static class OnlineUserStats {
+    private static class OnlineUserStats {
         private static final String USER_ONLINE_KEY = "user:online";
 
         public static void main(String[] args) {

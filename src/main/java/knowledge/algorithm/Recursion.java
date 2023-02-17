@@ -41,7 +41,7 @@ public class Recursion {
     /**
      * 阶乘
      */
-    static class Factorial {
+    private static class Factorial {
 
         public static void main(String[] args) {
             p(factorial(10));
@@ -59,7 +59,7 @@ public class Recursion {
      * 第0项是0，第1项是1，从第3项开始，每一项等于前两项之和
      * </pre>
      */
-    static class FibonacciSequence {
+    private static class FibonacciSequence {
 
         public static void main(String[] args) {
             IntStream.range(0, 100).forEach(i -> System.out.print(fibonacci(i) + " "));
@@ -74,7 +74,7 @@ public class Recursion {
     /**
      * 1+2+3+...+100 并输出结果，在该段代码中不得出现 for，while 关键字
      */
-    static class Recursion01 {
+    private static class Recursion01 {
 
         public static void main(String[] args) {
             p(rec1(100));
@@ -109,7 +109,7 @@ public class Recursion {
      * 编写一段代码计算20块钱总共可以得到多少瓶汽水？
      * </pre>
      */
-    static class Recursion02 {
+    private static class Recursion02 {
 
         public static void main(String[] args) {
             p(rec1(20, 20, 20));
@@ -157,7 +157,7 @@ public class Recursion {
     /**
      * 计算二进制中1的个数
      */
-    static class Recursion03 {
+    private static class Recursion03 {
 
         public static void main(String[] args) {
             p(calNumOfOneInBinary(10));

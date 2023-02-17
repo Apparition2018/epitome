@@ -14,9 +14,10 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * ThreadPoolTaskScheduler
- * <p>
- * 基于 Spring 的动态定时任务：https://blog.csdn.net/weixin_44248490/article/details/106900976
- * 定时任务的使用|oKong：https://blog.lqdev.cn/2018/08/19/springboot/chapter-twenty-two/
+ * <pre>
+ * <a href="https://blog.csdn.net/weixin_44248490/article/details/106900976">基于 Spring 的动态定时任务</a>
+ * <a href="https://blog.lqdev.cn/2018/08/19/springboot/chapter-twenty-two/">定时任务的使用|oKong</a>
+ * </pre>
  *
  * @author ljh
  * @since 2021/10/18 15:50
@@ -27,7 +28,7 @@ public class ThreadPoolTaskSchedulerDemo {
         ScheduleUtil.startAtFixedRate(new MyScheduleTask("test"), Date.from(Instant.now().plusSeconds(3)), DateUtils.MILLIS_PER_SECOND);
     }
 
-    static class ScheduleUtil {
+    private static class ScheduleUtil {
         private static final ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
         private static final Map<String, ScheduledFuture<?>> scheduledFutureMap = new HashMap<>();
 
@@ -93,7 +94,7 @@ public class ThreadPoolTaskSchedulerDemo {
         }
     }
 
-    static abstract class ScheduleTask implements Runnable {
+    private static abstract class ScheduleTask implements Runnable {
         private String id;
 
         private ScheduleTask(String id) {
@@ -109,7 +110,7 @@ public class ThreadPoolTaskSchedulerDemo {
         }
     }
 
-    static class MyScheduleTask extends ScheduleTask {
+    private static class MyScheduleTask extends ScheduleTask {
 
         public static int count = 0;
 
@@ -125,5 +126,4 @@ public class ThreadPoolTaskSchedulerDemo {
             if (count == 10) ScheduleUtil.remove(this);
         }
     }
-
 }

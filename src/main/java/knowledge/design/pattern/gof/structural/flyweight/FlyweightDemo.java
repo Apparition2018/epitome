@@ -1,7 +1,6 @@
 package knowledge.design.pattern.gof.structural.flyweight;
 
 import l.demo.Demo;
-import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -101,12 +100,7 @@ public class FlyweightDemo extends Demo {
     /**
      * Context
      */
-    @AllArgsConstructor
-    static class Tree {
-        private final int x;
-        private final int y;
-        private final TreeType type;
-
+    private record Tree(int x, int y, TreeType type) {
         public void draw(Graphics g) {
             type.draw(g, x, y);
         }
@@ -115,12 +109,7 @@ public class FlyweightDemo extends Demo {
     /**
      * Flyweight
      */
-    @AllArgsConstructor
-    static class TreeType {
-        private final String name;
-        private final Color color;
-        private final String otherTreeData;
-
+    private record TreeType(String name, Color color, String otherTreeData) {
         public void draw(Graphics g, int x, int y) {
             g.setColor(Color.BLACK);
             g.fillRect(x - 1, y, 3, 5);
@@ -132,7 +121,7 @@ public class FlyweightDemo extends Demo {
     /**
      * FlyweightFactory
      */
-    static class TreeFactory {
+    private static class TreeFactory {
         static Map<String, TreeType> treeTypes = new HashMap<>();
 
         public static TreeType getTreeType(String name, Color color, String otherTreeData) {
@@ -145,7 +134,7 @@ public class FlyweightDemo extends Demo {
         }
     }
 
-    static class Forest extends JFrame {
+    private static class Forest extends JFrame {
         @Serial
         private static final long serialVersionUID = -5174274255546068383L;
         private final List<Tree> trees = new ArrayList<>();

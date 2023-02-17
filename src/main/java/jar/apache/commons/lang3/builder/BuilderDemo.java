@@ -19,16 +19,16 @@ public class BuilderDemo {
                 .setLastName("O'Brien").setTaxableIncome(new BigDecimal("43000.00"));
         System.out.println(taxReturn.toString());   // jar.apache.commons.lang.builder.TaxReturn@763d9750[ssn=012-68-3242,year=1998,lastName=O'Brien]
         System.out.println(taxReturn.toString2());  // jar.apache.commons.lang.builder.TaxReturn@763d9750[
+        //   lastName=O'Brien
         //   ssn=012-68-3242
-        //  year=1998
-        //  lastName=O'Brien
-        //  taxableIncome=43000
+        //   taxableIncome=43000.00
+        //   year=1998
         // ]
     }
 
     @Data
     @Accessors(chain = true)
-    static class TaxReturn {
+    private static class TaxReturn {
         private String ssn;
         private int year;
         private String lastName;

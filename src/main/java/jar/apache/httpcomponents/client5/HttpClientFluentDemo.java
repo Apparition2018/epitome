@@ -8,7 +8,6 @@ import org.apache.hc.core5.http.HttpStatus;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.message.BasicHeader;
 import org.apache.hc.core5.util.Timeout;
-import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -24,8 +23,7 @@ public class HttpClientFluentDemo {
 
     private static final String URL = "http://localhost:3333/fetch/cookie";
 
-    @Test
-    public void testFluent() throws IOException {
+    public static void main(String[] args) throws IOException {
         String result = Request.post(URL)
                 .connectTimeout(Timeout.of(5, TimeUnit.SECONDS))
                 .responseTimeout(Timeout.of(5, TimeUnit.SECONDS))

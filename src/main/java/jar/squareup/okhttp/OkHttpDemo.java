@@ -211,11 +211,11 @@ public class OkHttpDemo extends Demo {
         p("Response 2 equals Response 1 ? " + Objects.equals(response1Body, response2Body));
     }
 
-    static class Gist {
+    private static class Gist {
         Map<String, GistFile> files;
     }
 
-    static class GistFile {
+    private static class GistFile {
         String content;
     }
 

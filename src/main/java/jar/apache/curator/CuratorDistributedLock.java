@@ -72,7 +72,7 @@ public class CuratorDistributedLock extends Demo {
         }
     }
 
-    static class ExampleClientThatLocks {
+    private static class ExampleClientThatLocks {
         private final InterProcessMutex lock;
         private final FakeLimitedResource resource;
         private final String clientName;
@@ -100,7 +100,7 @@ public class CuratorDistributedLock extends Demo {
     /**
      * 模拟只能由一个进程访问的外部资源
      */
-    static class FakeLimitedResource {
+    private static class FakeLimitedResource {
         private final AtomicBoolean inUse = new AtomicBoolean(false);
 
         public void use() throws InterruptedException {

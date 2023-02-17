@@ -1,7 +1,5 @@
 package knowledge.api.util;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
@@ -19,8 +17,7 @@ import java.util.ResourceBundle;
  */
 public class ResourceBundleDemo {
 
-    @Test
-    public void testResourceBundle() {
+    public static void main(String[] args) {
         // static ResourceBundle	getBundle(String baseName[, ...])
         // 使用指定的基本名称...加载器获取资源包
         // 不需要 .properties 后缀

@@ -2,7 +2,6 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.URLUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.net.URL;
 
@@ -19,8 +18,7 @@ import java.net.URL;
  */
 public class URLUtilDemo extends Demo {
 
-    @Test
-    public void testURLUtil() {
+    public static void main(String[] args) {
         // static String	normalize(String url[, boolean isEncodePath])
         // 标准化URL字符串
         String urlStr = URLUtil.normalize(MOZILLA_DEMO_URL);

@@ -106,7 +106,7 @@ public class JsonParserDemo {
         }
     }
 
-    static class MyObjectCodec extends ObjectCodec {
+    private static class MyObjectCodec extends ObjectCodec {
 
         @Override
         public Version version() {

@@ -2,13 +2,11 @@ package jar.hutool.lang;
 
 import cn.hutool.core.lang.Assert;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 /**
- * Assert
- * 主要对参数的有效性做校验，当不满足断言条件时，会抛出 IllegalArgumentException 或 IllegalStateException
- * https://hutool.cn/docs/#/core/%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/%E6%96%AD%E8%A8%80-Assert
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Assert.html
+ * <a href="https://hutool.cn/docs/#/core/语言特性/断言-Assert">Assert</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Assert.html">Assert api</a>
+ * <p>主要对参数的有效性做校验，当不满足断言条件时，会抛出 IllegalArgumentException 或 IllegalStateException
  *
  * @author ljh
  * @since 2020/11/3 1:56
@@ -32,8 +30,7 @@ public class AssertDemo extends Demo {
      * checkBetween(int/long/double/Number value, int/long/double/Number min, int/long/double/Number max)
      * badIndexMsg(int index, int size, String desc, Object... params)
      */
-    @Test
-    public void testAssert() {
+    public static void main(String[] args) {
         // static <X extends Throwable> void    isTrue(boolean expression[, String errorMsgTemplate, Object... params])
         Assert.isTrue(list.size() == 9, "the list size is {}", list.size());
         // static <X extends Throwable> void    isFalse(boolean expression[, Supplier<? extends X> supplier])

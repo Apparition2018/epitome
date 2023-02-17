@@ -2,7 +2,6 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.cglib.CglibUtil;
 import l.demo.User;
-import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 import java.util.Objects;
@@ -17,8 +16,7 @@ import java.util.Objects;
  */
 public class CglibUtilDemo {
 
-    @Test
-    public void testCglibUtil() {
+    public static void main(String[] args) {
         User user = new User(new Date());
 
         User copy1 = new User();

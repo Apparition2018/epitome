@@ -5,25 +5,21 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.PropDesc;
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.Map;
 
 /**
- * BeanDesc     Bean 描述
- * 可堪称 JDK 的 BeanInfo 的强化版本
- * <p>
- * https://hutool.cn/docs/#/core/JavaBean/Bean%E6%8F%8F%E8%BF%B0-BeanDesc
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanDesc.html
+ * <a href="https://hutool.cn/docs/#/core/JavaBean/Bean描述-BeanDesc">BeanDesc</a>    Bean 描述
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanDesc.html">BeanDesc api</a>
+ * <p>可堪称 JDK 的 BeanInfo 的强化版本
  *
  * @author ljh
  * @since 2022/1/19 9:07
  */
 public class BeanDescDemo extends Demo {
 
-    @Test
-    public void testBeanDesc() {
+    public static void main(String[] args) {
         BeanDesc beanDesc = BeanUtil.getBeanDesc(Person.class);
         // String	            getName()                       获取 Bean 的全类名
         p(beanDesc.getName());                      // l.demo.Person

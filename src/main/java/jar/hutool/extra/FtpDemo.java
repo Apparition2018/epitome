@@ -1,7 +1,6 @@
 package jar.hutool.extra;
 
 import cn.hutool.extra.ftp.Ftp;
-import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
@@ -15,8 +14,7 @@ import java.io.IOException;
  */
 public class FtpDemo {
 
-    @Test
-    public void testFtp() throws IOException {
+    public static void main(String[] args) throws IOException {
         Ftp ftp = new Ftp("172.0.0.1");
         ftp.close();
     }

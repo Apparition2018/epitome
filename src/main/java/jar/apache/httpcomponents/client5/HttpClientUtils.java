@@ -37,7 +37,6 @@ import org.apache.hc.core5.util.TimeValue;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -163,8 +162,7 @@ public class HttpClientUtils {
         };
     }
 
-    @Test
-    public void testHttpClientUtils() throws IOException {
+    public static void main(String[] args) {
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
             // HttpGet
             HttpGet httpGet = new HttpGet("https://credit.gd.gov.cn/creditquery!queryLegalEntityOrgList.do?conditions=914403001922038216");
@@ -186,7 +184,7 @@ public class HttpClientUtils {
             HttpEntity httpEntity = new BufferedHttpEntity(httpResponse2.getEntity());
             String fileMd5 = DigestUtils.md5Hex(httpEntity.getContent());
             Files.copy(httpEntity.getContent(), new File(String.format("%s%s.pdf", DESKTOP, fileMd5)).toPath());
-        } catch (ParseException e) {
+        } catch (ParseException | IOException e) {
             throw new RuntimeException(e);
         }
     }

@@ -5,7 +5,6 @@ import com.squareup.moshi.Moshi;
 import com.squareup.moshi.ToJson;
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.jupiter.api.Test;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
@@ -22,8 +21,7 @@ import java.util.Date;
  */
 public class RetrofitDemo extends Demo {
 
-    @Test
-    public void testRetrofit() throws IOException {
+    public static void main(String[] args) throws IOException {
         Moshi moshi = new Moshi.Builder().add(new CustomDateAdapter()).build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -34,7 +32,7 @@ public class RetrofitDemo extends Demo {
         p(response.body());
     }
 
-    static class CustomDateAdapter {
+    private static class CustomDateAdapter {
         @ToJson
         private String dateToJson(Date d) {
             return DATE_TIME_FORMAT.get().format(d);

@@ -1,7 +1,6 @@
 package jar.hutool.net;
 
 import cn.hutool.core.net.url.UrlBuilder;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/网络/URL生成器-UrlBuilder">UrlBuilder</a>
@@ -18,8 +17,7 @@ import org.junit.jupiter.api.Test;
  */
 public class UrlBuilderDemo {
 
-    @Test
-    public void testUrlBuilder() {
+    public static void main(String[] args) {
         String url = UrlBuilder.create()
                 .setScheme("https").setHost("developer.mozilla.org")
                 .addPath("en-US").addPath("search")

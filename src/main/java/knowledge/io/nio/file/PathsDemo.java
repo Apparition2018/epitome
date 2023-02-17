@@ -1,7 +1,6 @@
 package knowledge.io.nio.file;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.net.URI;
@@ -16,8 +15,7 @@ import java.nio.file.Paths;
  */
 public class PathsDemo extends Demo {
 
-    @Test
-    public void testPaths() {
+    public static void main(String[] args) {
         // static Path	    get(String first, String... more)       pathStr... → Path
         Path path = Paths.get(USER_DIR, File.separator, DEMO_FILE_PATH);
         p(path);    // D:\L\git\epitome\src\main\resources\demo\demo

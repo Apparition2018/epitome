@@ -1,35 +1,33 @@
 package knowledge.design.pattern.other.structural;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.junit.jupiter.api.Test;
-
 import java.awt.*;
 
 /**
  * 私有类数据模式：通过将类属性封装在一个私有类中，来减少类属性的暴露
- * <p>
- * 角色：
+ * <p>角色：
+ * <pre>
  * 主类 MainClass
  * 数据类 DataClass
- * <p>
- * Private Class Data：https://sourcemaking.com/design_patterns/private_class_data
- * Private Class Data：https://java-design-patterns.com/patterns/private-class-data/
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://sourcemaking.com/design_patterns/private_class_data">Private Class Data</a>
+ * <a href="https://java-design-patterns.com/patterns/private-class-data/">Private Class Data</a>
+ * </pre>
  *
  * @author ljh
  * @since 2022/2/8 15:59
  */
 public class PrivateClassDataDemo {
 
-    @Test
-    public void testPrivateClassData() {
+    public static void main(String[] args) {
         Circle circle = new Circle(2.0, Color.RED, new Point());
     }
 
     /**
      * MainCLass
      */
-    static class Circle {
+    private static class Circle {
         private final CircleData circleData;
 
         public Circle(double radius, Color color, Point origin) {
@@ -51,12 +49,7 @@ public class PrivateClassDataDemo {
         /**
          * DataClass
          */
-        @Getter
-        @AllArgsConstructor
-        static class CircleData {
-            private final double radius;
-            private final Color color;
-            private final Point origin;
+        private record CircleData(double radius, Color color, Point origin) {
         }
     }
 }

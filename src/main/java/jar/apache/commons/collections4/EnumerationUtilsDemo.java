@@ -1,7 +1,6 @@
 package jar.apache.commons.collections4;
 
 import org.apache.commons.collections4.EnumerationUtils;
-import org.junit.jupiter.api.Test;
 
 import java.util.Enumeration;
 import java.util.List;
@@ -17,8 +16,7 @@ import static l.demo.Demo.p;
  */
 public class EnumerationUtilsDemo {
 
-    @Test
-    public void enumeration() {
+    public static void main(String[] args) {
         Vector<String> v = new Vector<>();
         v.add("Sunday");
         v.add("Monday");

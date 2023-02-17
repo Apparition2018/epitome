@@ -4,7 +4,6 @@ import org.apache.commons.beanutils.BasicDynaClass;
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.DynaProperty;
 import org.apache.commons.beanutils.LazyDynaBean;
-import org.junit.jupiter.api.Test;
 
 /**
  * DynaProperty
@@ -23,8 +22,7 @@ public class DynaDemo {
      * 1.在运行期生成一个动态 Bean
      * 2.生成无固定格式的 Bean
      */
-    @Test
-    public void testDyna() throws InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException {
         // 动态 Bean，首先定义 Bean 类
         DynaProperty[] props = new DynaProperty[]{
                 new DynaProperty("name", String.class),

@@ -1,7 +1,6 @@
 package knowledge.design.pattern.gof.structural.facade;
 
 import lombok.Getter;
-import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.support.JdbcUtils;
 
 import java.io.File;
@@ -47,8 +46,7 @@ public class FacadeDemo {
     /**
      * <a href="https://refactoring.guru/design-patterns/facade/java/example">复杂视频转换</a>
      */
-    @Test
-    public void testFacade() {
+    public static void main(String[] args) {
         VideoConversionFacade converter = new VideoConversionFacade();
         File mp4Video = converter.convertVideo("youtube-video.ogg", "mp4");
     }
@@ -57,7 +55,7 @@ public class FacadeDemo {
      * Subsystem
      */
     @Getter
-    static class VideoFile {
+    private static class VideoFile {
         private final String name;
         private final String codeType;
 
@@ -73,18 +71,18 @@ public class FacadeDemo {
     interface Codec {
     }
 
-    static class MPEG4CompressionCodec implements Codec {
+    private static class MPEG4CompressionCodec implements Codec {
         public String type = "mp4";
     }
 
-    static class OggCompressionCodec implements Codec {
+    private static class OggCompressionCodec implements Codec {
         public String type = "ogg";
     }
 
     /**
      * Subsystem
      */
-    static class CodecFactory {
+    private static class CodecFactory {
         public static Codec extract(VideoFile file) {
             String type = file.getCodeType();
             if ("mp4".equals(type)) {
@@ -100,7 +98,7 @@ public class FacadeDemo {
     /**
      * Subsystem
      */
-    static class BitrateReader {
+    private static class BitrateReader {
         public static VideoFile read(VideoFile file, Codec codec) {
             System.out.println("BitrateReader: reading file...");
             return file;
@@ -115,7 +113,7 @@ public class FacadeDemo {
     /**
      * Subsystem
      */
-    static class AudioMixer {
+    private static class AudioMixer {
         public File fix(VideoFile result) {
             System.out.println("AudioMixer: fixing audio...");
             return new File("tmp");
@@ -125,7 +123,7 @@ public class FacadeDemo {
     /**
      * Facade
      */
-    static class VideoConversionFacade {
+    private static class VideoConversionFacade {
         public File convertVideo(String fileName, String format) {
             System.out.println("VideoConversionFacade: conversion started.");
             VideoFile file = new VideoFile(fileName);

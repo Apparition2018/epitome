@@ -1,7 +1,6 @@
 package spring.controller;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -167,8 +166,7 @@ public class DataBindingController {
     }
 
     @Getter
-    @Setter
-    static class BmiParam {
+    private static class BmiParam {
         private double height;
         private double weight;
     }

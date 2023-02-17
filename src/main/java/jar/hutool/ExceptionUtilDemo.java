@@ -1,7 +1,6 @@
 package jar.hutool;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -14,8 +13,7 @@ import static l.demo.Demo.p;
  */
 public class ExceptionUtilDemo {
 
-    @Test
-    public void testExceptionUtil() {
+    public static void main(String[] args) {
         try {
             int i = 1 / 0;
         } catch (Exception e) {

@@ -1,7 +1,6 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.ReferenceUtil;
-import org.junit.jupiter.api.Test;
 
 import java.lang.ref.Reference;
 
@@ -20,8 +19,7 @@ import java.lang.ref.Reference;
  */
 public class ReferenceUtilDemo {
 
-    @Test
-    public void testReferenceUtil() {
+    public static void main(String[] args) {
         String str = new String("hello");
         Reference<String> weakReference = ReferenceUtil.create(ReferenceUtil.ReferenceType.WEAK, str);
     }

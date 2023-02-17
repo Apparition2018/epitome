@@ -2,7 +2,6 @@ package jar.hutool.http;
 
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -15,8 +14,8 @@ import static l.demo.Demo.p;
  * @since 2020/11/2 23:38
  */
 public class UserAgentUtilDemo {
-    @Test
-    public void testUserAgentUtil() {
+
+    public static void main(String[] args) {
 
         UserAgent userAgent = UserAgentUtil.parse("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome.md/80.0.3987.87 Safari/537.36");
 

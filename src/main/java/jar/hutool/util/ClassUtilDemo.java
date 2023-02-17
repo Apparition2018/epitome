@@ -3,7 +3,6 @@ package jar.hutool.util;
 import cn.hutool.core.util.ClassUtil;
 import l.demo.Person;
 import l.demo.Person.Student;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -16,8 +15,7 @@ import static l.demo.Demo.p;
  */
 public class ClassUtilDemo {
 
-    @Test
-    public void testClassUtil() {
+    public static void main(String[] args) {
         // static <T> Class<T>  getClass(T obj)                         获取对象的类型，null-safe
         p(ClassUtil.getClass(new Person()));
         // static Class<?>[]    getClasses(Object... objects)           获取对象数组的类型数组

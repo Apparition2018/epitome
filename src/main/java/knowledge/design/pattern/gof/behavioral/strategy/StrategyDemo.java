@@ -66,7 +66,7 @@ public class StrategyDemo {
      */
     @Data
     @AllArgsConstructor
-    static class MovieTicket {
+    private static class MovieTicket {
         private double price;
         private Discount discount;
 
@@ -87,7 +87,7 @@ public class StrategyDemo {
      * ConcreteStrategy
      * 无折扣策略
      */
-    static class NormalDiscount implements Discount {
+    private static class NormalDiscount implements Discount {
         public double calculate(double price) {
             System.out.println("普通票：");
             return price;
@@ -98,7 +98,7 @@ public class StrategyDemo {
      * ConcreteStrategy
      * 学生折扣策略
      */
-    static class StudentDiscount implements Discount {
+    private static class StudentDiscount implements Discount {
         public double calculate(double price) {
             System.out.println("学生票：");
             return price * 0.8;
@@ -109,7 +109,7 @@ public class StrategyDemo {
      * ConcreteStrategy
      * 儿童折扣策略
      */
-    static class ChildrenDiscount implements Discount {
+    private static class ChildrenDiscount implements Discount {
         public double calculate(double price) {
             System.out.println("儿童票：");
             return price - 10 >= 0 ? price - 10 : 0;
@@ -129,7 +129,7 @@ public class StrategyDemo {
      *
      * @see <a href="https://mp.weixin.qq.com/s/hkypvNBkRjPM6HM51_jW9g">优化策略模式</a>
      */
-    static class FunctionInterfaceStrategyDemo {
+    private static class FunctionInterfaceStrategyDemo {
         private final static EnumMap<DiscountEnum, Function<Double, Double>> STRATEGY_MAP = new EnumMap<>(DiscountEnum.class);
 
         static {

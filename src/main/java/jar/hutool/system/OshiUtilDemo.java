@@ -1,23 +1,20 @@
 package jar.hutool.system;
 
 import cn.hutool.system.oshi.OshiUtil;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
 /**
- * OshiUtil     获取系统和硬件信息工具
- * 需要引入 com.github.oshi:oshi-core
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/system/oshi/OshiUtil.html
- * 使用 oshi 获取主机信息：https://www.cnblogs.com/weechang/p/12493978.html
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/system/oshi/OshiUtil.html">OshiUtil</a>   获取系统和硬件信息工具
+ * <p>需要引入 com.github.oshi:oshi-core
+ * <p><a href="https://www.cnblogs.com/weechang/p/12493978.html">使用 oshi 获取主机信息</a>
  *
  * @author ljh
  * @since 2020/11/19 14:39
  */
 public class OshiUtilDemo {
 
-    @Test
-    public void testOshiUtil() {
+    public static void main(String[] args) {
         // 操作系统
         p(OshiUtil.getOs());            // Microsoft Windows 10.0 build 18363
         // BIOS

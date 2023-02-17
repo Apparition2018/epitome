@@ -6,37 +6,35 @@ import cn.hutool.core.collection.ListUtil;
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Home;
-import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
 /**
- * BeanUtil     Bean工具
- * <p>
+ * <a href="https://hutool.cn/docs/#/core/JavaBean/Bean工具-BeanUtil">BeanUtil</a>    Bean工具
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanUtil.html">BeanUtil api</a>
+ * <pre>
+ * {@code
  * static PropertyEditor        findEditor(Class<?> type)                               返回类型转换器 PropertyEditor
  * static PropertyDescriptor[]  getPropertyDescriptors(Class<?>[, fieldName][, ignoreCase])  返回 Bean 字段描述数组
  * static Map<String, PDMap>    getPropertyDescriptorMap(Class<?>, ignoreCase)          返回字段名和字段描述 Map，获得的结果会缓存在 BeanInfoCache 中
  * static BeanDesc              getBeanDesc(Class<?> clazz)                             返回 BeanDesc
- * <p>
+ *
  * static boolean               isBean(Class<?> clazz)                                  是否为 Bean 对象
  * static boolean               isReadableBean(Class<?> clazz)                          是否为可读的 Bean 对象
- * static boolean	            isEmpty(Object bean, String... ignoreFiledNames)        是否为空对象，本身为 null 或 所有属性为 null
- * static boolean	            isNotEmpty(Object bean, String... ignoreFiledNames)     是否不为空对象，本身不为 null 或 含有非 null 属性
- * static boolean	            hasNullField(Object bean, String... ignoreFiledNames)   是否含有 null 属性
- * static boolean	            isMatchName(Object bean, beanClassName, isSimple)       是否匹配类名
+ * static boolean               isEmpty(Object bean, String... ignoreFiledNames)        是否为空对象，本身为 null 或 所有属性为 null
+ * static boolean               isNotEmpty(Object bean, String... ignoreFiledNames)     是否不为空对象，本身不为 null 或 含有非 null 属性
+ * static boolean               hasNullField(Object bean, String... ignoreFiledNames)   是否含有 null 属性
+ * static boolean               isMatchName(Object bean, beanClassName, isSimple)       是否匹配类名
  * static boolean               hasSetter(Class<?> clazz)                               是否有 Setter 方法
- * static boolean               hasGetter(Class<?> clazz)                               是否有 Getter 方法
- * <p>
- * https://hutool.cn/docs/#/core/JavaBean/Bean%E5%B7%A5%E5%85%B7-BeanUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanUtil.html
+ * static boolean               hasGetter(Class<?> clazz)                               是否有 Getter 方法}
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/9 14:54
  */
 public class BeanUtilDemo extends Demo {
 
-    @Test
-    public void testBeanUtil() {
+    public static void main(String[] args) {
         // static void	    descForEach(Class<?>, Consumer<? super PropDesc>)
         // 遍历 Bean 的属性，进行 Consumer 操作
         BeanUtil.descForEach(Person.class, propDesc -> p(propDesc.getFieldName()));

@@ -92,7 +92,7 @@ public class ChainOfResponsibilityDemo {
     /**
      * Handler / BaseHandler
      */
-    static abstract class Middleware {
+    private static abstract class Middleware {
         private Middleware next;
 
         private void setNext(Middleware next) {
@@ -106,7 +106,7 @@ public class ChainOfResponsibilityDemo {
             return next.check(email, password);
         }
 
-        static class Builder {
+        private static class Builder {
             private Middleware head;
             private Middleware tail;
 
@@ -130,7 +130,7 @@ public class ChainOfResponsibilityDemo {
      * ConcreteHandler
      * 限流
      */
-    static class ThrottlingMiddleware extends Middleware {
+    private static class ThrottlingMiddleware extends Middleware {
         private final int requestPerMinute;
         private int request;
         private long currentTime;
@@ -159,7 +159,7 @@ public class ChainOfResponsibilityDemo {
      * ConcreteHandler
      * 账号密码验证
      */
-    static class UserExistsMiddleware extends Middleware {
+    private static class UserExistsMiddleware extends Middleware {
         private final Server server;
 
         public UserExistsMiddleware(Server server) {
@@ -184,7 +184,7 @@ public class ChainOfResponsibilityDemo {
      * ConcreteHandler
      * 角色检查
      */
-    static class RoleCheckMiddleware extends Middleware {
+    private static class RoleCheckMiddleware extends Middleware {
 
         @Override
         public boolean check(String email, String password) {
@@ -197,7 +197,7 @@ public class ChainOfResponsibilityDemo {
         }
     }
 
-    static class Server {
+    private static class Server {
         private final Map<String, String> users = new HashMap<>();
         private Middleware middleware;
 

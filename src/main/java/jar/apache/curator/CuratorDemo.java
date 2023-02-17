@@ -77,7 +77,7 @@ public class CuratorDemo {
         }
     }
 
-    static class Background implements BackgroundCallback {
+    private static class Background implements BackgroundCallback {
         @Override
         public void processResult(CuratorFramework client, CuratorEvent event) {
             System.err.printf("eventType: %s, resultCode: %s%n", event.getType(), event.getResultCode());

@@ -3,7 +3,6 @@ package jar.jedis.data.type;
 import com.google.common.collect.Maps;
 import jar.jedis.JedisUtils;
 import lombok.Getter;
-import org.junit.jupiter.api.Test;
 import redis.clients.jedis.GeoCoordinate;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.args.GeoUnit;
@@ -23,11 +22,10 @@ import static l.demo.Demo.p;
  */
 public class RedisGeospatial {
 
-    static class Map {
+    private static class Map {
         private static final String MAP_GD_KEY = "map:gd";
 
-        @Test
-        public void testMap() {
+        public static void main(String[] args) {
             Jedis jedis = JedisUtils.getResource();
             // 添加地理空间项（经度、维度、名称）
             jedis.geoadd(MAP_GD_KEY, GdEnum.ZHONG_SHAN.getGeoCoordinate().getLongitude(),

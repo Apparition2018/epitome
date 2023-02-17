@@ -150,7 +150,7 @@ public class Suggestions extends Demo {
         p(new GenericClass<String>().isDateInstance(""));
     }
 
-    static class GenericClass<T> {
+    private static class GenericClass<T> {
         // 判断是否是Date类型
         boolean isDateInstance(T t) {
             return t instanceof Date;
@@ -752,7 +752,7 @@ public class Suggestions extends Demo {
         }
     }
 
-    static class People implements Staff, Passenger {
+    private static class People implements Staff, Passenger {
         @Override
         public int getSalary() {
             return 2000;
@@ -925,7 +925,7 @@ public class Suggestions extends Demo {
         }
     }
 
-    static class MyException extends Exception {
+    private static class MyException extends Exception {
         @Serial
         private static final long serialVersionUID = 4220795768762558938L;
         private final List<Throwable> causes = new ArrayList<>();

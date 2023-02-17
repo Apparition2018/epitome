@@ -13,10 +13,10 @@ import static l.demo.Demo.p;
  */
 public class BooleanUtilsDemo {
 
-    private boolean[] b1 = new boolean[]{true, true};
-    private boolean[] b2 = new boolean[]{true, false};
-    private boolean[] b3 = new boolean[]{false, true};
-    private boolean[] b4 = new boolean[]{false, false};
+    private final boolean[] b1 = new boolean[]{true, true};
+    private final boolean[] b2 = new boolean[]{true, false};
+    private final boolean[] b3 = new boolean[]{false, true};
+    private final boolean[] b4 = new boolean[]{false, false};
 
     @Test
     public void boolean_() {

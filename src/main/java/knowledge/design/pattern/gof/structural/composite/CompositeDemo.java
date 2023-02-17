@@ -1,7 +1,6 @@
 package knowledge.design.pattern.gof.structural.composite;
 
 import lombok.AllArgsConstructor;
-import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.awt.*;
@@ -43,8 +42,7 @@ public class CompositeDemo {
     /**
      * <a href="http://c.biancheng.net/view/8474.html">文件系统 (安全模式)</a>
      */
-    @Test
-    public void testComposite() {
+    public static void main(String[] args) {
         Folder folder1 = new Folder("LJH", 1);
         Folder folder2 = new Folder("Exe", 2);
         Folder folder3 = new Folder("Media", 2);
@@ -69,7 +67,7 @@ public class CompositeDemo {
     /**
      * Component
      */
-    static abstract class File {
+    private static abstract class File {
         protected abstract void show();
     }
 
@@ -77,7 +75,7 @@ public class CompositeDemo {
      * Leaf
      */
     @AllArgsConstructor
-    static class ImageFile extends File {
+    private static class ImageFile extends File {
         private final String name;
 
         @Override
@@ -90,7 +88,7 @@ public class CompositeDemo {
      * Leaf
      */
     @AllArgsConstructor
-    static class ExeFile extends File {
+    private static class ExeFile extends File {
         private final String name;
 
         @Override
@@ -103,7 +101,7 @@ public class CompositeDemo {
      * Leaf
      */
     @AllArgsConstructor
-    static class VideoFile extends File {
+    private static class VideoFile extends File {
         private final String name;
 
         @Override
@@ -116,7 +114,7 @@ public class CompositeDemo {
      * Composite/Container
      */
     @AllArgsConstructor
-    static class Folder extends File {
+    private static class Folder extends File {
         private final List<File> filesList = new ArrayList<>();
         private final String name;
         private final Integer level;

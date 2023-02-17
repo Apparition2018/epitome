@@ -1,7 +1,5 @@
 package knowledge.design.pattern.gof.structural.bridge;
 
-import org.junit.jupiter.api.Test;
-
 import java.sql.Driver;
 import java.util.logging.Formatter;
 import java.util.logging.Handler;
@@ -49,13 +47,12 @@ public class BridgeDemo {
      * 2 实现-设备
      * </pre>
      */
-    @Test
-    public void testBridge() {
+    public static void main(String[] args) {
         remoteDevice(new Tv());
         remoteDevice(new Radio());
     }
 
-    private void remoteDevice(Device device) {
+    private static void remoteDevice(Device device) {
         System.out.println("Tests with basic remote.");
         BasicRemote basicRemote = new BasicRemote(device);
         basicRemote.power();
@@ -92,7 +89,7 @@ public class BridgeDemo {
     /**
      * ConcreteImplementor
      */
-    static class Radio implements Device {
+    private static class Radio implements Device {
         private boolean on = false;
         private int volume = 30;
         private int channel = 1;
@@ -147,7 +144,7 @@ public class BridgeDemo {
     /**
      * ConcreteImplementor
      */
-    static class Tv implements Device {
+    private static class Tv implements Device {
         private boolean on = false;
         private int volume = 30;
         private int channel = 1;
@@ -217,7 +214,7 @@ public class BridgeDemo {
     /**
      * RefinedAbstraction
      */
-    static class BasicRemote implements Remote {
+    private static class BasicRemote implements Remote {
         protected Device device;
 
         public BasicRemote() {
@@ -265,7 +262,7 @@ public class BridgeDemo {
     /**
      * RefinedAbstraction
      */
-    static class AdvancedRemote extends BasicRemote {
+    private static class AdvancedRemote extends BasicRemote {
 
         public AdvancedRemote(Device device) {
             super.device = device;

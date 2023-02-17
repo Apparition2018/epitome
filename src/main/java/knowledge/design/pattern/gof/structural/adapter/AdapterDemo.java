@@ -1,7 +1,5 @@
 package knowledge.design.pattern.gof.structural.adapter;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.*;
 
 /**
@@ -56,8 +54,7 @@ public class AdapterDemo {
      * 让 MediaPlayer 可以播放所有文件
      * </pre>
      */
-    @Test
-    public void testAdapter() {
+    public static void main(String[] args) {
         MediaPlayer player = new MediaPlayerAdapter();
 
         player.play("beyond the horizon.mp3");
@@ -69,7 +66,7 @@ public class AdapterDemo {
     /**
      * Adaptee
      */
-    static abstract class VideoPlayer {
+    private static abstract class VideoPlayer {
         void playVlc(String fileName) {
         }
 
@@ -77,14 +74,14 @@ public class AdapterDemo {
         }
     }
 
-    static class VlcPlayer extends VideoPlayer {
+    private static class VlcPlayer extends VideoPlayer {
         @Override
         public void playVlc(String fileName) {
             System.out.println("Playing vlc file. Name: " + fileName);
         }
     }
 
-    static class Mp4Player extends VideoPlayer {
+    private static class Mp4Player extends VideoPlayer {
         @Override
         public void playMp4(String fileName) {
             System.out.println("Playing mp4 file. Name: " + fileName);
@@ -94,7 +91,7 @@ public class AdapterDemo {
     /**
      * Target
      */
-    static class MediaPlayer {
+    private static class MediaPlayer {
         public void play(String fileName) {
             System.out.println("Playing mp3 file. Name: " + fileName);
         }
@@ -104,7 +101,7 @@ public class AdapterDemo {
      * Adapter
      * <p>对象适配器模式
      */
-    static class MediaPlayerAdapter extends MediaPlayer {
+    private static class MediaPlayerAdapter extends MediaPlayer {
         private VideoPlayer videoPlayer;
 
         @Override

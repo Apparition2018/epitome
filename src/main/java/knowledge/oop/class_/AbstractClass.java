@@ -28,9 +28,6 @@ package knowledge.oop.class_;
  */
 public class AbstractClass {
 
-    public static void main(String[] args) {
-    }
-
     interface Action {
         default void eat() {
             System.out.println("吃");
@@ -39,21 +36,21 @@ public class AbstractClass {
         void move();
     }
 
-    abstract static class Dog implements Action {
+    private abstract static class Dog implements Action {
         @Override
         public void move() {
             System.out.println("跑");
         }
     }
 
-    abstract static class Bird implements Action {
+    private abstract static class Bird implements Action {
         @Override
         public void move() {
             System.out.println("飞");
         }
     }
 
-    static class Parrot extends Bird {
+    private static class Parrot extends Bird {
         private static final String name = "鹦鹉";
 
         private void ability() {
@@ -61,7 +58,7 @@ public class AbstractClass {
         }
     }
 
-    static class Sheepdog extends Bird {
+    private static class Sheepdog extends Bird {
         private static final String name = "牧羊犬";
 
         private void ability() {

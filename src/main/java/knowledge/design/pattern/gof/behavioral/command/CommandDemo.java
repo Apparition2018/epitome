@@ -1,6 +1,5 @@
 package knowledge.design.pattern.gof.behavioral.command;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.StatementCallback;
@@ -46,8 +45,7 @@ public class CommandDemo {
     /**
      * 计算器：加法
      */
-    @Test
-    public void testCommand() {
+    public static void main(String[] args) {
         Calculator calculator = new Calculator();
         Adder adder = new Adder();
         calculator.compute(new AddCommand(adder, 1));
@@ -57,7 +55,7 @@ public class CommandDemo {
     /**
      * Invoker
      */
-    static class Calculator {
+    private static class Calculator {
         public void compute(Command command) {
             command.execute();
         }
@@ -66,7 +64,7 @@ public class CommandDemo {
     /**
      * Command
      */
-    static abstract class Command {
+    private static abstract class Command {
         protected final Adder adder;
         protected final int value;
 
@@ -81,7 +79,7 @@ public class CommandDemo {
     /**
      * ConcreteCommand
      */
-    static class AddCommand extends Command {
+    private static class AddCommand extends Command {
         public AddCommand(Adder adder, int value) {
             super(adder, value);
         }
@@ -94,7 +92,7 @@ public class CommandDemo {
     /**
      * Receiver
      */
-    static class Adder {
+    private static class Adder {
         private int result = 0;
 
         public int add(int value) {
@@ -105,9 +103,8 @@ public class CommandDemo {
     /**
      * 宏命令 (Macro Command) / 组合命令模式
      */
-    static class CompositeCommandDemo {
-        @Test
-        public void testCompositeCommand() {
+    private static class CompositeCommandDemo {
+        public static void main(String[] args) {
             Adder adder = new Adder();
             CompositeInvoker compositeInvoker = new CompositeInvoker(adder, 3);
             compositeInvoker.add(new AddCommand(adder, 1));
@@ -118,7 +115,7 @@ public class CommandDemo {
         /**
          * Invoker / Composite
          */
-        static class CompositeInvoker extends Command {
+        private static class CompositeInvoker extends Command {
             private final List<Command> children = new ArrayList<>();
 
             private CompositeInvoker(Adder adder, int value) {
@@ -147,9 +144,8 @@ public class CommandDemo {
     /**
      * 命令队列
      */
-    static class CommandQueueDemo {
-        @Test
-        public void testCommandQueue() {
+    private static class CommandQueueDemo {
+        public static void main(String[] args) {
             Calculator calculator = new Calculator();
             Adder adder = new Adder();
             CommandQueue commandQueue = new CommandQueue();
@@ -161,13 +157,13 @@ public class CommandDemo {
         /**
          * Invoker
          */
-        static class Calculator {
+        private static class Calculator {
             public void compute(CommandQueue commandQueue) {
                 commandQueue.execute();
             }
         }
 
-        static class CommandQueue {
+        private static class CommandQueue {
             private final List<Command> commandList = new ArrayList<>();
 
             public void addCommand(Command command) {
@@ -186,12 +182,11 @@ public class CommandDemo {
      * 备忘录命令模式
      * <p>实现撤销/历史记录，也可用原型命令模式实现
      */
-    static class MementoCommandDemo {
+    private static class MementoCommandDemo {
         /**
          * <a href="https://blog.csdn.net/LoveLion/article/details/8806509">计算器：加法、撤销</a>
          */
-        @Test
-        public void testMementoCommand() {
+        public static void main(String[] args) {
             Calculator calculator = new Calculator();
             Adder adder = new Adder();
             calculator.compute(new AddCommand(adder, 1));
@@ -204,7 +199,7 @@ public class CommandDemo {
         /**
          * Invoker
          */
-        static class Calculator {
+        private static class Calculator {
             private final CommandHistory history = new CommandHistory();
 
             public void compute(Command command) {
@@ -246,7 +241,7 @@ public class CommandDemo {
         /**
          * ConcreteCommand
          */
-        static class AddCommand extends Command {
+        private static class AddCommand extends Command {
             public AddCommand(Adder adder, int value) {
                 super(adder, value);
             }
@@ -260,7 +255,7 @@ public class CommandDemo {
         /**
          * Caretaker
          */
-        static class CommandHistory {
+        private static class CommandHistory {
             private final Stack<Command> history = new Stack<>();
 
             public void push(Command command) {

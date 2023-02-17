@@ -1,7 +1,6 @@
 package jar.hutool.util;
 
 import cn.hutool.core.util.ClassLoaderUtil;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -14,8 +13,7 @@ import static l.demo.Demo.p;
  */
 public class ClassLoaderUtilDemo {
 
-    @Test
-    public void testClassLoaderUtil() {
+    public static void main(String[] args) {
         // static ClassLoader	getClassLoader()
         // 获取 ClassLoader
         p(ClassLoaderUtil.getClassLoader());                // sun.misc.Launcher$AppClassLoader@18b4aac2

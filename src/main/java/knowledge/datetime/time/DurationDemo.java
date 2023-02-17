@@ -10,37 +10,38 @@ import java.time.temporal.ChronoUnit;
 import static l.demo.Demo.p;
 
 /**
- * Duration
- * 表示以秒和纳秒为基准的时长
- * <p>
- * boolean	        equals(Object otherDuration)            检查此持续时间是否等于指定的持续时间
- * int	            compareTo(Duration otherDuration)       将此持续时间与指定持续时间进行比较
- * <p>
- * boolean          isNegative()                            检查此持续时间是否为负值，不包括零
- * boolean	        isZero()                                检查此持续时间是否为零长度
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html
- * https://www.yiibai.com/javatime/javatime_duration.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+ * <p>表示以秒和纳秒为基准的时长
+ * <pre>
+ * boolean      equals(Object otherDuration)        检查此持续时间是否等于指定的持续时间
+ * int          compareTo(Duration otherDuration)   将此持续时间与指定持续时间进行比较
+ *
+ * boolean      isNegative()                        检查此持续时间是否为负值，不包括零
+ * boolean      isZero()                            检查此持续时间是否为零长度
+ * </pre>
+ * <a href="https://www.yiibai.com/javatime/javatime_duration.html">java.time.Duration 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
 public class DurationDemo {
 
-    private Duration dur;
-    private Duration dur2;
-    private Duration dur3;
-    private Duration durDay;
-    private Duration durHour;
-    private Duration durMinute;
+    private final Duration dur;
+    private final Duration dur2;
+    private final Duration dur3;
+    private final Duration durDay;
+    private final Duration durHour;
+    private final Duration durMinute;
 
     /**
      * 获取 Duration
-     * static Duration	between(Temporal startInclusive, Temporal endExclusive)
-     * static Duration	from(TemporalAmount amount)
-     * static Duration	of(long amount, TemporalUnit unit)
-     * static Duration	ofXXX(long xxx) (Days, Hours, Minutes, Seconds, Millis, Nanos)
-     * static Duration	parse(CharSequence text)
+     * <pre>
+     * static Duration  between(Temporal startInclusive, Temporal endExclusive)
+     * static Duration  from(TemporalAmount amount)
+     * static Duration  of(long amount, TemporalUnit unit)
+     * static Duration  ofXXX(long xxx) (Days, Hours, Minutes, Seconds, Millis, Nanos)
+     * static Duration  parse(CharSequence text)
+     * </pre>
      */
     public DurationDemo() {
         this.dur = Duration.between(LocalTime.MIN, LocalTime.MAX);
@@ -52,10 +53,13 @@ public class DurationDemo {
     }
 
     /**
-     * long	                get(TemporalUnit unit)      获取请求单元的值
-     * long	                getSeconds()                获取此持续时间内的秒数
-     * int	                getNano()                   获取此持续时间内每秒内的纳秒数
-     * List<TemporalUnit>	getUnits()                  获取此持续时间所支持的单元集
+     * <pre>
+     * {@code
+     * long                 get(TemporalUnit unit)  获取请求单元的值
+     * long                 getSeconds()            获取此持续时间内的秒数
+     * int                  getNano()               获取此持续时间内每秒内的纳秒数
+     * List<TemporalUnit>   getUnits()              获取此持续时间所支持的单元集}
+     * </pre>
      */
     @Test
     public void get() {
@@ -66,16 +70,18 @@ public class DurationDemo {
     }
 
     /**
-     * Duration	        abs()                           返回此持续时间绝对值的副本
-     * Duration	        negated()                       返回此持续时间负值的副本
-     * Duration	        dividedBy(long divisor)         返回此持续时间除以指定值的副本
-     * Duration	        multipliedBy(long multiplicand) 返回此持续时间乘以标量的副本
-     * <p>
-     * Duration	        withNanos(int nanoOfSecond)     以指定的毫微秒数返回此持续时间的副本
-     * Duration	        withSeconds(long seconds)       返回指定秒数的此持续时间的副本
-     * <p>
-     * Temporal	        addTo(Temporal temporal)        将此持续时间添加到指定的时态对象
-     * Temporal	        subtractFrom(Temporal temporal) 从指定的时态对象中减去这个持续时间
+     * <pre>
+     * Duration         abs()                           返回此持续时间绝对值的副本
+     * Duration         negated()                       返回此持续时间负值的副本
+     * Duration         dividedBy(long divisor)         返回此持续时间除以指定值的副本
+     * Duration         multipliedBy(long multiplicand) 返回此持续时间乘以标量的副本
+     *
+     * Duration         withNanos(int nanoOfSecond)     以指定的毫微秒数返回此持续时间的副本
+     * Duration         withSeconds(long seconds)       返回指定秒数的此持续时间的副本
+     *
+     * Temporal         addTo(Temporal temporal)        将此持续时间添加到指定的时态对象
+     * Temporal         subtractFrom(Temporal temporal) 从指定的时态对象中减去这个持续时间
+     * </pre>
      */
     @Test
     public void calculate() {
@@ -100,13 +106,15 @@ public class DurationDemo {
     }
 
     /**
-     * Duration	        plus(Duration duration)
-     * Duration	        plus(long amountToAdd, TemporalUnit unit)
-     * Duration	        plusXXX(long xxxToAdd)  (Days, Hours, Minutes, Seconds, Millis, Nanos)
-     * <p>
-     * Duration	        minus(Duration duration)
-     * Duration	        minus(long amountToSubtract, TemporalUnit unit)
-     * Duration	        minus(long xxxToSubtract)
+     * <pre>
+     * Duration         plus(Duration duration)
+     * Duration         plus(long amountToAdd, TemporalUnit unit)
+     * Duration         plusXXX(long xxxToAdd)  (Days, Hours, Minutes, Seconds, Millis, Nanos)
+     *
+     * Duration         minus(Duration duration)
+     * Duration         minus(long amountToSubtract, TemporalUnit unit)
+     * Duration         minus(long xxxToSubtract)
+     * </pre>
      */
     @Test
     public void plus_minus() {
@@ -120,7 +128,7 @@ public class DurationDemo {
     }
 
     /**
-     * long	            toXXX()
+     * long             toXXX()
      * (Days, Hours, Minutes, Millis, Nanos)
      */
     @Test

@@ -11,15 +11,18 @@ import static l.demo.Demo.p;
 
 /**
  * Temporal
- * <p>
- * TemporalAccessor
- * ValueRange	    range(TemporalField field)                  获取指定字段的有效值范围
- * <p>
+ * <p>TemporalAccessor
+ * <pre>
+ * ValueRange       range(TemporalField field)          获取指定字段的有效值范围
+ * </pre>
  * TemporalAdjuster
- * Temporal	        adjustInto(Temporal temporal)               调整指定的时间对象以获得此瞬间
- * <p>
+ * <pre>
+ * Temporal         adjustInto(Temporal temporal)       调整指定的时间对象以获得此瞬间
+ * </pre>
  * 它们的实现类：
+ * <pre>
  * LocalDateTime, LocalDate, LocalTime, ZonedDateTime, OffsetDateTime, offsetTime, Instant, Year, YearMonth
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -41,14 +44,16 @@ public class TemporalDemo {
     /* Temporal */
 
     /**
-     * boolean	        isSupported(TemporalUnit unit)              检查是否支持指定的单元
-     * <p>
+     * <pre>
+     * boolean          isSupported(TemporalUnit unit)          检查是否支持指定的单元
+     *
      * ChronoUnit       Nanos Micros Millis Seconds Minutes Hours HalfDays Days Weeks Months Years Decades Centuries Millennia Eras Forever
-     * <p>
+     *
      * LocalDateTime    除了 Forever
      * LocalDate        DateBased           (Days Weeks Months Years Decades Centuries Millennia Eras Forever)
      * LocalTime        TimeBased           (Nanos Micros Millis Seconds Minutes Hours HalfDays)
      * Instant          TimeBased + Days    (Nanos Micros Millis Seconds Minutes Hours HalfDays Days)
+     * </pre>
      */
     @Test
     public void isSupportedUnit() {
@@ -65,11 +70,13 @@ public class TemporalDemo {
     }
 
     /**
-     * Temporal	        plus(long amountToAdd, TemporalUnit unit)
-     * default Temporal	plus(TemporalAmount amount)
-     * <p>
-     * default Temporal	minus(long amountToSubtract, TemporalUnit unit)
-     * default Temporal	minus(TemporalAmount amount)
+     * <pre>
+     * Temporal         plus(long amountToAdd, TemporalUnit unit)
+     * default Temporal plus(TemporalAmount amount)
+     *
+     * default Temporal minus(long amountToSubtract, TemporalUnit unit)
+     * default Temporal minus(TemporalAmount amount)
+     * </pre>
      */
     @Test
     public void plus_minus() {
@@ -80,8 +87,8 @@ public class TemporalDemo {
     }
 
     /**
-     * long	            until(Temporal endExclusive, TemporalUnit unit)
-     * 根据指定的单元计算到另一个瞬间的时间量
+     * long             until(Temporal endExclusive, TemporalUnit unit)
+     * <p>根据指定的单元计算到另一个瞬间的时间量
      */
     @Test
     public void until() {
@@ -90,23 +97,25 @@ public class TemporalDemo {
     }
 
     /**
-     * default Temporal	with(TemporalAdjuster adjuster)             返回即时调整后的副本
-     * - TemporalAdjusters methods:
-     * -    dayOfWeekInMonth                                        返回同一个月中每周的第几天
-     * -    firstDayOfMonth                                         返回当月的第一天
-     * -    firstDayOfNextMonth                                     返回下月的第一天
-     * -    firstDayOfNextYear                                      返回下一年的第一天
-     * -    firstDayOfYear                                          返回本年的第一天
-     * -    firstInMonth                                            返回同一个月中第一个星期几
-     * -    lastDayOfMonth                                          返回当月的最后一天
-     * -    lastDayOfNextMonth                                      返回下月的最后一天
-     * -    lastDayOfNextYear                                       返回下一年的最后一天
-     * -    lastDayOfYear                                           返回本年的最后一天
-     * -    lastInMonth                                             返回同一个月中最后一个星期几
-     * -    next / previous                                         返回后一个/前一个给定的星期几
-     * -    nextOrSame / previousOrSame                             返回后一个/前一个给定的星期几，如果这个值满足条件，直接返回
+     * default Temporal with(TemporalAdjuster adjuster)         返回即时调整后的副本
+     * <pre>
+     *  TemporalAdjusters methods：
+     *      dayOfWeekInMonth                                    返回同一个月中每周的第几天
+     *      firstDayOfMonth                                     返回当月的第一天
+     *      firstDayOfNextMonth                                 返回下月的第一天
+     *      firstDayOfNextYear                                  返回下一年的第一天
+     *      firstDayOfYear                                      返回本年的第一天
+     *      firstInMonth                                        返回同一个月中第一个星期几
+     *      lastDayOfMonth                                      返回当月的最后一天
+     *      lastDayOfNextMonth                                  返回下月的最后一天
+     *      lastDayOfNextYear                                   返回下一年的最后一天
+     *      lastDayOfYear                                       返回本年的最后一天
+     *      lastInMonth                                         返回同一个月中最后一个星期几
+     *      next / previous                                     返回后一个/前一个给定的星期几
+     *      nextOrSame / previousOrSame                         返回后一个/前一个给定的星期几，如果这个值满足条件，直接返回
+     * </pre>
      * <p>
-     * Temporal	        with(TemporalField field, long newValue)    返回指定字段设置为新值的即时副本
+     * Temporal         with(TemporalField field, long newValue)    返回指定字段设置为新值的即时副本
      */
     @Test
     public void with() {
@@ -124,14 +133,16 @@ public class TemporalDemo {
     //
 
     /**
-     * boolean	        isSupported(TemporalField field)            检查是否支持指定字段
-     * <p>
+     * <pre>
+     * boolean          isSupported(TemporalField field)        检查是否支持指定字段
+     *
      * ChronoField      NanoOfSecond NanoOfDay MicroOfSecond MicroOfDay MilliOfSecond MilliOfDay SecondOfMinute SecondOfDay MinuteOfHour MinuteOfDay HourOfAmPm ClockHourOfAmPm HourOfDay ClockHourOfDay AmPmOfDay DayOfWeek AlignedDayOfWeekInMonth AlignedDayOfWeekInYear DayOfMonth DayOfYear EpochDay AlignedWeekOfMonth AlignedWeekOfYear MonthOfYear ProlepticMonth YearOfEra Year Era InstantSeconds OffsetSeconds
-     * <p>
+     *
      * LocalDateTime    DateBased + TimeBased   (NanoOfSecond NanoOfDay MicroOfSecond MicroOfDay MilliOfSecond MilliOfDay SecondOfMinute SecondOfDay MinuteOfHour MinuteOfDay HourOfAmPm ClockHourOfAmPm HourOfDay ClockHourOfDay AmPmOfDay DayOfWeek AlignedDayOfWeekInMonth AlignedDayOfWeekInYear DayOfMonth DayOfYear EpochDay AlignedWeekOfMonth AlignedWeekOfYear MonthOfYear ProlepticMonth YearOfEra Year Era)
      * LocalDate        DateBased               (DayOfWeek AlignedDayOfWeekInMonth AlignedDayOfWeekInYear DayOfMonth DayOfYear EpochDay AlignedWeekOfMonth AlignedWeekOfYear MonthOfYear ProlepticMonth YearOfEra Year Era)
      * LocalTime        TimeBased               (NanoOfSecond NanoOfDay MicroOfSecond MicroOfDay MilliOfSecond MilliOfDay SecondOfMinute SecondOfDay MinuteOfHour MinuteOfDay HourOfAmPm ClockHourOfAmPm HourOfDay ClockHourOfDay AmPmOfDay)
      * Instant          InstantSeconds MicroOfSecond MilliOfSecond NanoOfSecond
+     * </pre>
      */
     @Test
     public void isSupportedField() {
@@ -148,8 +159,10 @@ public class TemporalDemo {
     }
 
     /**
-     * int	            get(TemporalField field)                    从现在开始获取指定字段的值
-     * long	            getLong(TemporalField field)                从现在开始获取指定字段的值
+     * <pre>
+     * int              get(TemporalField field)                从现在开始获取指定字段的值
+     * long             getLong(TemporalField field)            从现在开始获取指定字段的值
+     * </pre>
      */
     @Test
     public void get() {
@@ -158,5 +171,4 @@ public class TemporalDemo {
         p(lt.get(ChronoField.AMPM_OF_DAY));                 // 1
         p(instant.getLong(ChronoField.INSTANT_SECONDS));    // 1218197288
     }
-
 }

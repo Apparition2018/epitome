@@ -1,7 +1,6 @@
 package jar.hutool.extra;
 
 import cn.hutool.extra.spring.SpringUtil;
-import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
 /**
@@ -14,8 +13,7 @@ import org.springframework.context.annotation.Import;
 @Import(cn.hutool.extra.spring.SpringUtil.class)
 public class SpringUtilDemo {
 
-    @Test
-    public void testSpringUtil() {
+    public static void main(String[] args) {
         SpringUtil.getBean("person"); // NullPointerException
     }
 }

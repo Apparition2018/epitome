@@ -2,7 +2,6 @@ package jar.hutool.http;
 
 import cn.hutool.http.HtmlUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/http/HTML工具类-HtmlUtil">HtmlUtil</a>
@@ -14,8 +13,7 @@ import org.junit.jupiter.api.Test;
  */
 public class HtmlUtilDemo extends Demo {
 
-    @Test
-    public void testHtmlUtil() {
+    public static void main(String[] args) {
         // filter(html)                     过滤 html 文本，防止 XSS 攻击
         p(HtmlUtil.filter("<span>text</span>"));                                // text
 

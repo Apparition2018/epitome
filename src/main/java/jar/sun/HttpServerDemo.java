@@ -29,7 +29,7 @@ public class HttpServerDemo {
         httpServer.start();
     }
 
-    static class MyHandler implements HttpHandler {
+    private static class MyHandler implements HttpHandler {
 
         @Override
         public void handle(HttpExchange exchange) throws IOException {

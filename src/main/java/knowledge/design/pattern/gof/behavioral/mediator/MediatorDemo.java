@@ -2,7 +2,6 @@ package knowledge.design.pattern.gof.behavioral.mediator;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
-import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import java.lang.reflect.Method;
@@ -51,8 +50,7 @@ import java.util.concurrent.ScheduledExecutorService;
  */
 public class MediatorDemo {
 
-    @Test
-    public void testMediator() {
+    public static void main(String[] args) {
         final UnitedNationsSecurityCouncil UNSC = new UnitedNationsSecurityCouncil();
         China china = new China("China", UNSC);
         USA usa = new USA("USA", UNSC);
@@ -68,7 +66,7 @@ public class MediatorDemo {
      * Colleague
      */
     @AllArgsConstructor
-    static abstract class Country {
+    private static abstract class Country {
         private final String name;
         private final UnitedNations unitedNations;
 
@@ -81,19 +79,19 @@ public class MediatorDemo {
         }
     }
 
-    static class USA extends Country {
+    private static class USA extends Country {
         public USA(String name, UnitedNations unitedNations) {
             super(name, unitedNations);
         }
     }
 
-    static class Iraq extends Country {
+    private static class Iraq extends Country {
         public Iraq(String name, UnitedNations unitedNations) {
             super(name, unitedNations);
         }
     }
 
-    static class China extends Country {
+    private static class China extends Country {
         public China(String name, UnitedNations unitedNations) {
             super(name, unitedNations);
         }
@@ -102,12 +100,12 @@ public class MediatorDemo {
     /**
      * Mediator
      */
-    static abstract class UnitedNations {
+    private static abstract class UnitedNations {
         protected abstract void declare(String message, Country country);
     }
 
     @Setter
-    static class UnitedNationsSecurityCouncil extends UnitedNations {
+    private static class UnitedNationsSecurityCouncil extends UnitedNations {
         private List<Country> countries = new ArrayList<>();
 
         private void addCountry(Country... countries) {

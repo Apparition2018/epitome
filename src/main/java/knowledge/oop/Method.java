@@ -52,7 +52,7 @@ public class Method {
         return max(num1, max(num2, num3));
     }
 
-    static class ChildMethod extends Method {
+    private static class ChildMethod extends Method {
 
         /**
          * 方法重写

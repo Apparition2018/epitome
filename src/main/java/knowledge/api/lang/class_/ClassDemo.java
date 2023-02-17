@@ -43,7 +43,7 @@ import static l.demo.Demo.p;
  */
 public class ClassDemo {
 
-    static class ClassInnerDemo {
+    private static class ClassInnerDemo {
     }
 
     /**

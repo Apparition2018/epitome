@@ -2,7 +2,6 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.CharsetUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
@@ -14,8 +13,7 @@ import java.io.File;
  */
 public class CharsetUtilDemo extends Demo {
 
-    @Test
-    public void testCharsetUtil() {
+    public static void main(String[] args) {
         p(CharsetUtil.UTF_8);               // UTF-8
         p(CharsetUtil.CHARSET_UTF_8);       // UTF-8
         p(CharsetUtil.GBK);                 // GBK

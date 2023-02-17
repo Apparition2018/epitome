@@ -1,7 +1,5 @@
 package knowledge.concurrent.util;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
@@ -22,8 +20,7 @@ import java.util.stream.IntStream;
  */
 public class ThreadLocalRandomDemo {
 
-    @Test
-    public void testThreadLocalRandom() throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         // 错误用法
         // static ThreadLocalRandom     current()       返回当前线程的 ThreadLocalRandom
         ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();

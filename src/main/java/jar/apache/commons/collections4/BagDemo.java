@@ -2,7 +2,6 @@ package jar.apache.commons.collections4;
 
 import org.apache.commons.collections4.Bag;
 import org.apache.commons.collections4.bag.HashBag;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -20,8 +19,7 @@ import static l.demo.Demo.p;
  */
 public class BagDemo {
 
-    @Test
-    public void testBag() {
+    public static void main(String[] args) {
         // boolean	add(E object[, int nCopies])        添加元素
         Bag<String> bag = new HashBag<>();
         bag.add("c", 3);

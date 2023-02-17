@@ -2,7 +2,6 @@ package knowledge.design.pattern.other.behavioral;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.xml.BeanDefinitionParserDelegate;
 
 import java.util.EnumMap;
@@ -20,8 +19,7 @@ import java.util.EnumMap;
  */
 public class DelegateDemo {
 
-    @Test
-    public void testDelegate() {
+    public static void main(String[] args) {
         Boss boss = new Boss();
         Leader leader = new Leader();
         boss.command(TaskEnum.CRAWLER, leader);
@@ -39,7 +37,7 @@ public class DelegateDemo {
         void doing(TaskEnum task);
     }
 
-    static class EmployeeA implements IEmployee {
+    private static class EmployeeA implements IEmployee {
         protected String goodAt = "编程";
 
         public void doing(TaskEnum task) {
@@ -47,7 +45,7 @@ public class DelegateDemo {
         }
     }
 
-    static class EmployeeB implements IEmployee {
+    private static class EmployeeB implements IEmployee {
         protected String goodAt = "平面设计";
 
         public void doing(TaskEnum task) {
@@ -55,7 +53,7 @@ public class DelegateDemo {
         }
     }
 
-    static class Leader implements IEmployee {
+    private static class Leader implements IEmployee {
 
         private final EnumMap<TaskEnum, IEmployee> employee = new EnumMap<>(TaskEnum.class);
 
@@ -73,7 +71,7 @@ public class DelegateDemo {
         }
     }
 
-    static class Boss {
+    private static class Boss {
         public void command(TaskEnum task, Leader leader) {
             leader.doing(task);
         }

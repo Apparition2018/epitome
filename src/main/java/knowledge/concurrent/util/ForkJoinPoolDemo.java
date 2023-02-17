@@ -68,12 +68,12 @@ public class ForkJoinPoolDemo extends Demo {
         long sumUp(long[] numbers);
     }
 
-    static class ForkJoinCalculator implements Calculator {
+    private static class ForkJoinCalculator implements Calculator {
 
         private final ForkJoinPool threadPool;
 
         // 执行任务 (RecursiveTask 有返回值，RecursiveAction 无返回值)
-        static class SumTask extends RecursiveTask<Long> {
+        private static class SumTask extends RecursiveTask<Long> {
             @Serial
             private static final long serialVersionUID = -5848348290388247808L;
             private final long[] numbers;
@@ -122,7 +122,7 @@ public class ForkJoinPoolDemo extends Demo {
         }
     }
 
-    static class ForLoopCalculator implements Calculator {
+    private static class ForLoopCalculator implements Calculator {
         @Override
         public long sumUp(long[] numbers) {
             long total = 0;
@@ -133,7 +133,7 @@ public class ForkJoinPoolDemo extends Demo {
         }
     }
 
-    static class ExecutorServiceCalculator implements Calculator {
+    private static class ExecutorServiceCalculator implements Calculator {
 
         private final int parallelism;
         private final ExecutorService threadPool;
@@ -143,7 +143,7 @@ public class ForkJoinPoolDemo extends Demo {
             threadPool = Executors.newFixedThreadPool(parallelism);
         }
 
-        static class SumTask implements Callable<Long> {
+        private static class SumTask implements Callable<Long> {
             private final long[] numbers;
             private final int from;
             private final int to;

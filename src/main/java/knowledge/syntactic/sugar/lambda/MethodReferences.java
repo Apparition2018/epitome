@@ -34,7 +34,7 @@ public class MethodReferences {
         cars.forEach(police::follow);
     }
 
-    static class Bus {
+    private static class Bus {
 
         public static Bus create(final Supplier<Bus> supplier) {
             return supplier.get();

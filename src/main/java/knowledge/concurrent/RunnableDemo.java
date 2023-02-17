@@ -1,7 +1,6 @@
 package knowledge.concurrent;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,8 +20,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class RunnableDemo extends Demo {
 
-    @Test
-    public void testRunnable() throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         setCountDownLatch(3);
         TicketRunnable ticketRunnable = new TicketRunnable();
         new Thread(ticketRunnable).start();
@@ -31,7 +29,7 @@ public class RunnableDemo extends Demo {
         countDownLatch.await();
     }
 
-    static class TicketRunnable implements Runnable {
+    private static class TicketRunnable implements Runnable {
         private int ticket = 5;
 
         @Override

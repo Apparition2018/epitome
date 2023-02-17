@@ -6,7 +6,6 @@ import cn.hutool.captcha.generator.CodeGenerator;
 import cn.hutool.captcha.generator.MathGenerator;
 import cn.hutool.captcha.generator.RandomGenerator;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -31,8 +30,7 @@ public class CaptchaDemo extends Demo {
     private static final int CODE_COUNT = 4;
     private static final int Interference_COUNT = 50;
 
-    @Test
-    public void testCaptcha() {
+    public static void main(String[] args) {
         // 直线干扰
         CreateCaptcha(CaptchaUtil.createLineCaptcha(WIDTH, HEIGHT, CODE_COUNT, Interference_COUNT), HU_DEMO_PATH + "captcha_line.jpg", null);
         // 圆圈干扰
@@ -45,7 +43,7 @@ public class CaptchaDemo extends Demo {
         CreateCaptcha(CaptchaUtil.createShearCaptcha(WIDTH, HEIGHT, CODE_COUNT, CODE_COUNT), HU_DEMO_PATH + "captcha_math.jpg", new MathGenerator());
     }
 
-    private void CreateCaptcha(AbstractCaptcha captcha, String captchaPath, CodeGenerator generator) {
+    private static void CreateCaptcha(AbstractCaptcha captcha, String captchaPath, CodeGenerator generator) {
         if (null != generator) captcha.setGenerator(generator);
         try (OutputStream os = Files.newOutputStream(Paths.get(captchaPath))) {
             // 写到流，也可以写到文件

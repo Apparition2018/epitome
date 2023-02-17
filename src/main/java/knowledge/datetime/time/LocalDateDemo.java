@@ -1,35 +1,34 @@
 package knowledge.datetime.time;
 
-import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 import static l.demo.Demo.p;
 
 /**
- * LocalDate
- * ISO-8601日历，没有时区的日期，如2007-12-03
- * <p>
- * boolean	        equals(Object obj)                  检查是否等
- * int	            compareTo(ChronoLocalDate other)    将此 date 与指定 date 进行比较
- * boolean	        isBefore(ChronoLocalDate other)     检查此 date 是否在指定 date 之前
- * boolean	        isAfter(ChronoLocalDate other)      检查此 date 是否在指定 date 之后
- * boolean          isLeapYear()                        根据ISO培训日历系统规则，检查年份是否是闰年
- * <p>
- * https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html
- * https://www.yiibai.com/javatime/javatime_localdate.html
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate</a>
+ * <p>ISO-8601日历，没有时区的日期，如2007-12-03
+ * <pre>
+ * boolean      equals(Object obj)                  检查是否等
+ * int          compareTo(ChronoLocalDate other)    将此 date 与指定 date 进行比较
+ * boolean      isBefore(ChronoLocalDate other)     检查此 date 是否在指定 date 之前
+ * boolean      isAfter(ChronoLocalDate other)      检查此 date 是否在指定 date 之后
+ * boolean      isLeapYear()                        根据ISO培训日历系统规则，检查年份是否是闰年
+ * </pre>
+ * <a href="https://www.yiibai.com/javatime/javatime_localdate.html">java.time.LocalDate 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
 public class LocalDateDemo {
 
-    private LocalDate ld;
+    private static LocalDate ld;
 
     /**
+     * <pre>
      * static LocalDate                 from(TemporalAccessor temporal)
-     * static LocalDate	                ofEpochDay(long epochDay)
+     * static LocalDate                 ofEpochDay(long epochDay)
+     * </pre>
      */
     public LocalDateDemo() {
         // static LocalDate	            now([Clock clock / ZoneId zone])
@@ -43,8 +42,7 @@ public class LocalDateDemo {
         ld = LocalDate.parse("2008-08-08");
     }
 
-    @Test
-    public void testLocalDate() {
+    public static void main(String[] args) {
         // int                          getXXX()
         p(ld.getDayOfYear());           // 220
         p(ld.getDayOfMonth());          // 8

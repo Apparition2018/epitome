@@ -2,7 +2,6 @@ package jar.hutool.util;
 
 import cn.hutool.core.util.StrUtil;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/工具类/字符串工具-StrUtil">StrUtil</a>
@@ -19,8 +18,7 @@ import org.junit.jupiter.api.Test;
  */
 public class StrUtilDemo extends Demo {
 
-    @Test
-    public void testStrUtil() {
+    public static void main(String[] args) {
         // builder
         p(StrUtil.builder("Hello ").append("World!"));  // Hello World!
 

@@ -5,7 +5,6 @@ import l.demo.Demo;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -25,8 +24,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class SettingDemo extends Demo {
 
-    @Test
-    public void testSetting() {
+    public static void main(String[] args) {
         Setting setting = new Setting(new File(HU_DEMO_PATH + "example.setting"), StandardCharsets.UTF_8, true);
         // 在配置文件变更时自动加载
         setting.autoLoad(true);
@@ -53,7 +51,7 @@ public class SettingDemo extends Demo {
     @ToString
     @Getter
     @Setter
-    static class SettingBean {
+    private static class SettingBean {
         private String driver;
         private String url;
         private String user;

@@ -1,7 +1,6 @@
 package jar.hutool.dfa;
 
 import cn.hutool.dfa.WordTree;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="https://hutool.cn/docs/#/dfa/概述">DFA</a> (Deterministic Finite Automaton)   确定有穷自动机
@@ -16,8 +15,7 @@ import org.junit.jupiter.api.Test;
  */
 public class DFADemo {
 
-    @Test
-    public void testDFA() {
+    public static void main(String[] args) {
         String text = "我来自中国，是中国人";
         WordTree wordTree = new WordTree();
         wordTree.addWord("我");

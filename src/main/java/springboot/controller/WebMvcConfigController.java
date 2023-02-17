@@ -102,7 +102,7 @@ public class WebMvcConfigController {
     }
 
     @Data
-    static class User {
+    private static class User {
         private String name;
         private CompanyEnum company;
         @BooleanFormat

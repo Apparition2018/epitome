@@ -1,7 +1,6 @@
 package knowledge.design.pattern.gof.behavioral.template.method;
 
 import knowledge.design.pattern.other.Idiom.CallbackDemo;
-import org.junit.jupiter.api.Test;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -54,8 +53,7 @@ import java.util.AbstractSet;
  */
 public class TemplateMethodDemo {
 
-    @Test
-    public void testTemplateMethod() {
+    public static void main(String[] args) {
         Game football = new Football();
         football.play();
     }
@@ -63,7 +61,7 @@ public class TemplateMethodDemo {
     /**
      * AbstractClass
      */
-    static abstract class Game {
+    private static abstract class Game {
         protected abstract void init();
 
         protected abstract void begin();
@@ -83,7 +81,7 @@ public class TemplateMethodDemo {
     /**
      * ConcreteClass
      */
-    static class Football extends Game {
+    private static class Football extends Game {
         @Override
         public void init() {
             System.out.println("Football Game Init");
@@ -103,7 +101,7 @@ public class TemplateMethodDemo {
     /**
      * ConcreteClass
      */
-    static class Basketball extends Game {
+    private static class Basketball extends Game {
         @Override
         public void init() {
             System.out.println("Basketball Game Init");

@@ -1,7 +1,6 @@
 package jar.hutool.collection;
 
 import cn.hutool.core.collection.BoundedPriorityQueue;
-import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -20,8 +19,7 @@ public class BoundedPriorityQueueDemo {
      * 1.在每个数据库实例上找出最热门的5个
      * 2.将每个数据库实例上的这5条数据按照热门程度排序，最后取出前5条
      */
-    @Test
-    public void testBoundedPriorityQueue() {
+    public static void main(String[] args) {
         BoundedPriorityQueue<Integer> queue = new BoundedPriorityQueue<>(5, Comparator.naturalOrder());
 
         int[] users1 = new int[]{5, 7, 9, 2, 3};

@@ -43,7 +43,7 @@ public class BeanUtilsDemo extends Demo {
         // 165656000  006%  hutool CglibUtil
     }
 
-    static class UsersConverter implements Converter {
+    private static class UsersConverter implements Converter {
         @Override
         public Object convert(Object source, Class target, Object context) {
             return null;

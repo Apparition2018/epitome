@@ -1,7 +1,6 @@
 package jar.apache.commons.math3.distribution;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
-import org.junit.jupiter.api.Test;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/distribution/NormalDistribution.html">NormalDistribution</a>
@@ -20,8 +19,7 @@ public class NormalDistributionDemo {
      * 容量小于590毫升的概率 = p(X < 590) = p(((X - μ) / σ) < ((590 – 600) / 3)) = p(Z < - 10 / 3) = p(Z < - 3.33) = 0.0004
      * </pre>
      */
-    @Test
-    public void testNormalDistribution() {
+    public static void main(String[] args) {
         NormalDistribution normal = new NormalDistribution(600, 3);
 
         try {

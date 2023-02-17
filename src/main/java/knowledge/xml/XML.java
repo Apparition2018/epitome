@@ -1,6 +1,13 @@
 package knowledge.xml;
 
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import l.demo.Demo;
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -23,12 +30,12 @@ import java.util.Stack;
 import java.util.stream.IntStream;
 
 /**
- * Dom
+ * XML
  *
  * @author ljh
  * @since 2020/11/10 9:38
  */
-public class DomDemo extends Demo {
+public class XML extends Demo {
 
     public static final String XML_PATH = DEMO_PATH + "demo.xml";
 
@@ -123,7 +130,7 @@ public class DomDemo extends Demo {
      * 缺点：编码比较困难，而且很难同时访问同一个文档中的多处不同数据；一旦经过了某个元素，我们没有办法返回去再去访问它，缺乏灵活性。
      * </pre>
      */
-    static class OrgXmlSax {
+    private static class OrgXmlSax {
 
         public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
             // 新建 SAXParser 的工厂实例
@@ -134,7 +141,7 @@ public class DomDemo extends Demo {
             saxParser.parse(new File(XML_PATH), new MyHandler());
         }
 
-        static class MyHandler extends DefaultHandler {
+        private static class MyHandler extends DefaultHandler {
             // 用来保存标签
             private final Stack<String> stack = new Stack<>();
 
@@ -193,5 +200,40 @@ public class DomDemo extends Demo {
                 }
             }
         }
+    }
+
+    private static class JakartaJaxb {
+
+        public static void main(String[] args) throws JAXBException {
+            Person me = new Person().setName(MY_NAME).setHome(new Person.Home().setAddress("zs"));
+            System.out.println(me);
+            JAXBContext jaxbContext = JAXBContext.newInstance(Person.class);
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            marshaller.marshal(me, System.out);
+        }
+
+        @Data
+        @Accessors(chain = true)
+        @XmlRootElement
+        private static class Person {
+            @XmlElement
+            private String name;
+            @XmlElement
+            private Home home;
+
+            @Data
+            private static class Home {
+                @XmlElement
+                private String address;
+            }
+        }
+    }
+
+    /**
+     * Stax
+     * <p><a href="http://www.yiidian.com/java-xml/">Java XML 教程</a>
+     */
+    private static class JakartaStax {
     }
 }

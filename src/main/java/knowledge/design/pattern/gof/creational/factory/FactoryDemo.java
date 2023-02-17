@@ -2,7 +2,6 @@ package knowledge.design.pattern.gof.creational.factory;
 
 import jakarta.xml.bind.JAXBContext;
 import knowledge.suggestions.Suggestions;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
@@ -63,14 +62,13 @@ public class FactoryDemo {
      *
      * @see <a href="http://c.biancheng.net/view/8385.html">Java设计模式</a>
      */
-    static class SimpleFactoryDemo {
-        @Test
-        public void testSimpleFactory() {
+    private static class SimpleFactoryDemo {
+        public static void main(String[] args) {
             Button button = GUIFactory.createButton("mac");
             if (button != null) button.paint();
         }
 
-        static class GUIFactory {
+        private static class GUIFactory {
             public static Button createButton(String name) {
                 return switch (name) {
                     case "mac" -> new MacButton();
@@ -96,9 +94,8 @@ public class FactoryDemo {
      * @see <a href="https://refactoringguru.cn/design-patterns/factory-method">Factory Method</a>
      * @see <a href="http://c.biancheng.net/view/1348.html">Java设计模式</a>
      */
-    static class FactoryMethodDemo {
-        @Test
-        public void testFactoryMethod() {
+    private static class FactoryMethodDemo {
+        public static void main(String[] args) {
             GUIFactory macFactory = new MacFactory();
             macFactory.createButton().paint();
         }
@@ -110,14 +107,14 @@ public class FactoryDemo {
             Button createButton();
         }
 
-        static class MacFactory implements GUIFactory {
+        private static class MacFactory implements GUIFactory {
             @Override
             public Button createButton() {
                 return new MacButton();
             }
         }
 
-        static class WindowsFactory implements GUIFactory {
+        private static class WindowsFactory implements GUIFactory {
             @Override
             public Button createButton() {
                 return new WindowsButton();
@@ -141,12 +138,11 @@ public class FactoryDemo {
      * @see <a href="http://c.biancheng.net/view/1351.html">Java设计模式</a>
      * @see <a href="https://www.runoob.com/design-pattern/abstract-factory-pattern.html">菜鸟教程</a>
      */
-    static class AbstractFactoryDemo {
+    private static class AbstractFactoryDemo {
         /**
          * <a href="https://refactoringguru.cn/design-patterns/abstract-factory/java/example">跨平台 GUI 组件</a>
          */
-        @Test
-        public void testAbstractFactory() {
+        public static void main(String[] args) {
             GUIFactory guiFactory;
             if (System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("mac")) {
                 guiFactory = new MacFactory();
@@ -164,14 +160,14 @@ public class FactoryDemo {
             void paint();
         }
 
-        static class MacCheckbox implements Checkbox {
+        private static class MacCheckbox implements Checkbox {
             @Override
             public void paint() {
                 System.out.println("MacCheckbox paint");
             }
         }
 
-        static class WindowsCheckbox implements Checkbox {
+        private static class WindowsCheckbox implements Checkbox {
             @Override
             public void paint() {
                 System.out.println("WindowsCheckbox paint");
@@ -187,7 +183,7 @@ public class FactoryDemo {
             Checkbox createCheckbox();
         }
 
-        static class MacFactory implements GUIFactory {
+        private static class MacFactory implements GUIFactory {
             @Override
             public Button createButton() {
                 return new MacButton();
@@ -199,7 +195,7 @@ public class FactoryDemo {
             }
         }
 
-        static class WindowsFactory implements GUIFactory {
+        private static class WindowsFactory implements GUIFactory {
             @Override
             public Button createButton() {
                 return new WindowsButton();
@@ -219,14 +215,14 @@ public class FactoryDemo {
         void paint();
     }
 
-    static class MacButton implements Button {
+    private static class MacButton implements Button {
         @Override
         public void paint() {
             System.out.println("MacOSButton paint");
         }
     }
 
-    static class WindowsButton implements Button {
+    private static class WindowsButton implements Button {
         @Override
         public void paint() {
             System.out.println("WindowsButton paint");

@@ -1,7 +1,6 @@
 package jar.apache.commons.io;
 
 import org.apache.commons.io.FilenameUtils;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -13,8 +12,7 @@ import static l.demo.Demo.p;
  */
 public class FilenameUtilsDemo {
 
-    @Test
-    public void getXXX() {
+    public static void main(String[] args) {
         // prefix + path + base + ext
 
         // 获取名称，base + ext

@@ -1,8 +1,6 @@
 package knowledge.design.pattern.other.behavioral;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +28,7 @@ import java.util.Objects;
  */
 public class SpecificationDemo {
 
-    @Test
-    public void testSpecification() {
+    public static void main(String[] args) {
         List<User> userList = List.of(
                 new User("Andy", 23),
                 new User("Jack", 82),
@@ -42,7 +39,7 @@ public class SpecificationDemo {
         ISpecification ageThanSpec = new UserByAgeThan(25);
 
         for (User user : userProvider.findUser(nameEqualSpec.or(ageThanSpec))) {
-            System.out.println(user.getName());
+            System.out.println(user.name());
         }
     }
 
@@ -56,7 +53,7 @@ public class SpecificationDemo {
         ISpecification not();
     }
 
-    static abstract class CompositeSpecification implements ISpecification {
+    private static abstract class CompositeSpecification implements ISpecification {
         public abstract boolean isSatisfiedBy(User user);
 
         public ISpecification and(ISpecification spec) {
@@ -73,7 +70,7 @@ public class SpecificationDemo {
     }
 
     @AllArgsConstructor
-    static class AndSpecification extends CompositeSpecification {
+    private static class AndSpecification extends CompositeSpecification {
         private final ISpecification left;
         private final ISpecification right;
 
@@ -83,7 +80,7 @@ public class SpecificationDemo {
     }
 
     @AllArgsConstructor
-    static class OrSpecification extends CompositeSpecification {
+    private static class OrSpecification extends CompositeSpecification {
         private final ISpecification left;
         private final ISpecification right;
 
@@ -93,7 +90,7 @@ public class SpecificationDemo {
     }
 
     @AllArgsConstructor
-    static class NotSpecification extends CompositeSpecification {
+    private static class NotSpecification extends CompositeSpecification {
         private final ISpecification specification;
 
         public boolean isSatisfiedBy(User user) {
@@ -106,11 +103,11 @@ public class SpecificationDemo {
      * 性名相同
      */
     @AllArgsConstructor
-    static class UserByNameEqual extends CompositeSpecification {
+    private static class UserByNameEqual extends CompositeSpecification {
         private final String name;
 
         public boolean isSatisfiedBy(User user) {
-            return Objects.equals(user.getName(), name);
+            return Objects.equals(user.name(), name);
         }
     }
 
@@ -119,7 +116,7 @@ public class SpecificationDemo {
      * 大于基准年龄
      */
     @AllArgsConstructor
-    static class UserByAgeThan extends CompositeSpecification {
+    private static class UserByAgeThan extends CompositeSpecification {
         private final int age;
 
         public boolean isSatisfiedBy(User user) {
@@ -131,10 +128,7 @@ public class SpecificationDemo {
         List<User> findUser(ISpecification specification);
     }
 
-    @AllArgsConstructor
-    static class UserProvider implements IUserProvider {
-        private final List<User> userList;
-
+    private record UserProvider(List<User> userList) implements IUserProvider {
         @Override
         public List<User> findUser(ISpecification specification) {
             List<User> result = new ArrayList<>();
@@ -145,10 +139,6 @@ public class SpecificationDemo {
         }
     }
 
-    @Data
-    @AllArgsConstructor
-    static class User {
-        private final String name;
-        private final int age;
+    private record User(String name, int age) {
     }
 }

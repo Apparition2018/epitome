@@ -3,7 +3,6 @@ package jar.apache.commons.codec.language;
 import org.apache.commons.codec.language.Metaphone;
 import org.apache.commons.codec.language.RefinedSoundex;
 import org.apache.commons.codec.language.Soundex;
-import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
 
@@ -20,8 +19,7 @@ import static l.demo.Demo.p;
  */
 public class LanguageDemo {
 
-    @Test
-    public void testLanguage() {
+    public static void main(String[] args) {
         Metaphone metaphone = new Metaphone();
         RefinedSoundex refinedSoundex = new RefinedSoundex();
         Soundex soundex = new Soundex();

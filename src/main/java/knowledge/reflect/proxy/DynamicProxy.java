@@ -56,7 +56,7 @@ public class DynamicProxy extends Demo {
         peopleProxy.sleep();
     }
 
-    static class StopWatchProxyHandler<T> implements InvocationHandler {
+    private static class StopWatchProxyHandler<T> implements InvocationHandler {
 
         /**
          * 目标对象
@@ -70,6 +70,7 @@ public class DynamicProxy extends Demo {
          * @param target 目标对象
          * @return 返回目标对象的代理对象
          */
+        @SuppressWarnings("unchecked")
         public T getProxy(T target) {
             this.target = target;
             return (T) Proxy.newProxyInstance(
