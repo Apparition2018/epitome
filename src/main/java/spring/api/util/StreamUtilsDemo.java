@@ -1,7 +1,6 @@
 package spring.api.util;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 import org.springframework.util.StreamUtils;
 
 import java.io.IOException;
@@ -17,8 +16,7 @@ import java.nio.file.Paths;
  */
 public class StreamUtilsDemo extends Demo {
 
-    @Test
-    public void testStreamUtils() throws IOException {
+    public static void main(String[] args) throws IOException {
         // 读取
         p(StreamUtils.copyToString(Files.newInputStream(Paths.get(DEMO_FILE_ABSOLUTE_PATH)), StandardCharsets.UTF_8));
     }

@@ -38,6 +38,10 @@ public class ProcessControl {
      *   在一个 switch 块内，都必须包含一个 default 语句并且放在最后，即使它什么代码也没有
      * 2 当 switch 括号内的变量类型为 String 并且此变量为外部参数时，必须先进行 null 判断
      * </pre>
+     *
+     * @see <a href="https://achang.blog.csdn.net/article/details/126440035">Switch 表达式</a>
+     * @see <a href="https://openjdk.org/jeps/361">JDK14 JEP 361: Switch Expressions</a>
+     * @see <a href="https://achang.blog.csdn.net/article/details/126454775">Swtich 模式匹配</a>
      */
     @Test
     public void testSwitch() {
@@ -45,9 +49,6 @@ public class ProcessControl {
         p(season("秋"));
     }
 
-    /**
-     * @see <a href="https://openjdk.org/jeps/361">JDK14 JEP 361: Switch Expressions</a>
-     */
     private String season(String season) {
         return switch (season) {
             case "春" -> "Spring";

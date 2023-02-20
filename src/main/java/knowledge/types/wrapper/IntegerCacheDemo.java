@@ -1,7 +1,5 @@
 package knowledge.types.wrapper;
 
-import org.junit.jupiter.api.Test;
-
 /**
  * 整型缓存
  * <pre>
@@ -22,8 +20,7 @@ import org.junit.jupiter.api.Test;
  */
 public class IntegerCacheDemo {
 
-    @Test
-    public void testXxxCache() {
+    public static void main(String[] args) {
         Long l1 = 100L;
         Long l2 = 100L;
         Long l3 = new Long(100);

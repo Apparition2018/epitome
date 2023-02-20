@@ -1,7 +1,6 @@
 package knowledge.security;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -33,8 +32,7 @@ public class Base64Demo extends Demo {
      * <a href="http://www.runoob.com/java/java8-base64.html">Base64</a>
      * <p>JDK8 引入，效率都比 apache-commons-codec, sun.misc, Bouncy Castle 快
      */
-    @Test
-    public void testBase64() {
+    public static void main(String[] args) {
         // 基本：输出被映射到一组字符 A-Za-z0-9+/，编码不添加任何行标，输出的解码仅支持 A-Za-z0-9+/。
         String encode = Base64.getEncoder().encodeToString(BAIDU_URL.getBytes(StandardCharsets.UTF_8));
         p("encode: " + encode);

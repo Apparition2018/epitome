@@ -2,14 +2,13 @@ package spring.api.util;
 
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.jupiter.api.Test;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ReflectionUtils;
 
 /**
  * ClassUtils
- *
- * <p>
+ * <pre>
+ * {@code
  * static boolean       isPresent(String className, ClassLoader classLoader)            判断是否存在并可以加载
  * static boolean       isVisible(Class<?> clazz, ClassLoader classLoader)              判断是否在指定加载器可见
  * static boolean       isCacheSafe(Class<?> clazz, ClassLoader classLoader)            判断是否在指定加载缓存安全，即是否由指定加载器或其父类加载
@@ -24,7 +23,7 @@ import org.springframework.util.ReflectionUtils;
  * static boolean       hasMethod(Class<?> clazz, Method method[, Class<?>... paramTypes) 判断是否有方法
  * static boolean       hasAtLeastOneMethodWithName(Class<?> clazz, String methodName)  判断是否包含方法
  * static boolean       isUserLevelMethod(Method method)                                判断是否可用方法
- * <p>
+ *
  * static Class<?>[]    toClassArray(Collection<Class<?>> collection)                   Coll<Class> → Class[]
  * static Class<?>[]    getAllInterfaces(Object instance)                               获取对象的所有接口
  * static Set<Class<?>> getAllInterfacesAsSet(Object instance)                          获取对象的所有接口 Set
@@ -32,7 +31,7 @@ import org.springframework.util.ReflectionUtils;
  * static Set<Class<?>> getAllInterfacesForClass(Class<?> clazz[,ClassLoader cl])       获取类的所有接口 Set
  * static Class<?>      determineCommonAncestor(Class<?> clazz1, Class<?> clazz2)       返回共同祖先类
  * static Class<?>      getUserClass(Object instance / Class<?> clazz)                  如果是 cglib 生成的类，返回其原来的类
- * <p>
+ *
  * static <T> Constructor<T> getConstructorIfAvailable(Class<T> clazz, Class<?>... paramTypes)  获取构造器
  * static Method        getMethod(Class<?> clazz, String methodName, Class<?>... paramTypes)    获取方法
  * static Method        getMethodIfAvailable(Class<?> clazz, String methodName, Class<?>... paramTypes) 获取方法
@@ -40,16 +39,16 @@ import org.springframework.util.ReflectionUtils;
  * static Method        getMostSpecificMethod(Method method, Class<?> targetClass)              获取最匹配方法
  * static Method        getInterfaceMethodIfPossible(Method method)                             获取接口方法
  * static Method        getStaticMethod(Class<?> clazz, String methodName, Class<?>... args)    获取静态方法
- * <p>
- * static ClassLoader   overrideThreadContextClassLoader(ClassLoader classLoaderToUse)  替换当前线程 ClassLoader
+ *
+ * static ClassLoader   overrideThreadContextClassLoader(ClassLoader classLoaderToUse)  替换当前线程 ClassLoader}
+ * </pre>
  *
  * @author ljh
  * @since 2021/9/9 9:22
  */
 public class ClassUtilsDemo extends Demo {
 
-    @Test
-    public void testClassUtils() throws ClassNotFoundException {
+    public static void main(String[] args) throws ClassNotFoundException {
         p(ClassUtils.ARRAY_SUFFIX);                 // []
         p(ClassUtils.CGLIB_CLASS_SEPARATOR);        // $$，CGLIB 代理类
         p(ClassUtils.CLASS_FILE_SUFFIX);            // .class

@@ -1,22 +1,19 @@
 package spring.api.util;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 
 /**
  * PathMatcher
- * <p>
- * Spring 路径匹配：https://www.cnblogs.com/leftthen/p/5212221.html
+ * <p><a href="https://www.cnblogs.com/leftthen/p/5212221.html">Spring 路径匹配</a>
  *
  * @author ljh
  * @since 2021/9/7 18:35
  */
 public class PathMatcherDemo extends Demo {
 
-    @Test
-    public void testPathMatcher() {
+    public static void main(String[] args) {
         PathMatcher pathMatcher = new AntPathMatcher();
         // 是否匹配
         p(pathMatcher.match("/x/**/xyz", "/x/x/"));         // false

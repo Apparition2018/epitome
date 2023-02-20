@@ -2,7 +2,6 @@ package spring.api.util;
 
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.jupiter.api.Test;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
@@ -17,8 +16,7 @@ import java.util.Objects;
  */
 public class ReflectionUtilsDemo extends Demo {
 
-    @Test
-    public void testReflectionUtils() {
+    public static void main(String[] args) {
         // Field handling
         Field field = ReflectionUtils.findField(Person.class, "name", String.class);
         ReflectionUtils.makeAccessible(Objects.requireNonNull(field));

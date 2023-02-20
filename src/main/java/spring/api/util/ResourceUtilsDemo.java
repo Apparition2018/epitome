@@ -1,7 +1,6 @@
 package spring.api.util;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
@@ -16,8 +15,7 @@ import java.net.URL;
  */
 public class ResourceUtilsDemo extends Demo {
 
-    @Test
-    public void testResourceUtils() throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException {
         File file = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + APP_PROPS_FILENAME);
         p(file);    // D:\Liang\git\epitome\target\classes\application.properties
 

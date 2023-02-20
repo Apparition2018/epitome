@@ -1,6 +1,5 @@
 package spring.api.core;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.core.SpringProperties;
 
 /**
@@ -12,8 +11,7 @@ import org.springframework.core.SpringProperties;
  */
 public class SpringPropertiesDemo {
 
-    @Test
-    public void testSpringProperties() {
+    public static void main(String[] args) {
         System.out.println(SpringProperties.getProperty("name"));
     }
 }

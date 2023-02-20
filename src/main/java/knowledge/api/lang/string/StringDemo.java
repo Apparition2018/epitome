@@ -199,13 +199,13 @@ public class StringDemo extends Demo {
     }
 
     /**
-     * @see <a href="https://www.jianshu.com/p/eaf732cfb971">文本块</a>
+     * @see <a href="https://achang.blog.csdn.net/article/details/126374794">文本块</a>
      * @see <a href="https://openjdk.org/jeps/394">JDK15 JEP 378: Text Blocks</a>
      */
     @Test
     public void textBlocks() {
         p("""
-                <html>
+                <html> 
                     <body>
                         <p>Hello, %s</p>
                     </body>
@@ -216,7 +216,7 @@ public class StringDemo extends Demo {
                 // 类似 String.format()
                 .formatted("text blocks"));
 
-        // 转移序列
-        p("This is tab \t, Next New Line \n,next backspace \b,next Single Quotes \' next,Double Quotes \" ".translateEscapes());
+        // 转义序列
+        p("This is Horizontal Tab \t, Next Line Feed \n, Next Backspace \b, Next Single Quote \', Next Double Quote \"".translateEscapes());
     }
 }

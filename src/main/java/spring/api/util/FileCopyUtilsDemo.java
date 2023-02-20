@@ -1,7 +1,6 @@
 package spring.api.util;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 import org.springframework.util.FileCopyUtils;
 
 import java.io.File;
@@ -16,8 +15,7 @@ import java.io.IOException;
  */
 public class FileCopyUtilsDemo extends Demo {
 
-    @Test
-    public void testFileCopyUtils() throws IOException {
+    public static void main(String[] args) throws IOException {
         // 复制文件
         FileCopyUtils.copy(new File(DEMO_FILE_ABSOLUTE_PATH), new File(DESKTOP + "demo"));
 

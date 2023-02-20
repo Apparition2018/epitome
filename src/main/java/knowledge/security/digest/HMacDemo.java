@@ -1,7 +1,6 @@
 package knowledge.security.digest;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;
@@ -21,10 +20,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * <p>MAC (Message Authentication Code)，消息认证码，基于密钥的认证协议 (密钥 + 算法 → digest)
- * <p>HMAC (keyed-Hash Message Authentication Code)，散列消息鉴别码，基于密钥的 Hash 算法的认证协议 (密钥 + Hash算法 → digest)
- * <p>MAC 算法结合了 MD5 和 SHA 算法的优势，并加入密钥的支持，是一种更为安全的消息摘要算法。
- * <p>原理：
+ * <pre>
+ * MAC (Message Authentication Code)，消息认证码，基于密钥的认证协议 (密钥 + 算法 → digest)
+ * HMAC (keyed-Hash Message Authentication Code)，散列消息鉴别码，基于密钥的 Hash 算法的认证协议 (密钥 + Hash算法 → digest)
+ * MAC 算法结合了 MD5 和 SHA 算法的优势，并加入密钥的支持，是一种更为安全的消息摘要算法。
+ * </pre>
+ * 原理：
  * <pre>
  * 用公开函数和密钥产生一个固定长度的值作为认证标识，用这个标识鉴别消息的完整性。
  * 使用一个密钥生成一个固定大小的小数据块，即 MAC，并将其加入到消息中，然后传输。
@@ -45,8 +46,7 @@ import java.util.Objects;
  */
 public class HMacDemo extends Demo {
 
-    @Test
-    public void testHMAC() {
+    public static void main(String[] args) {
         String inputStr = HELLO_WORLD;
         p(Objects.equals(getResult1(inputStr), getResult2(inputStr)));
     }
@@ -69,8 +69,7 @@ public class HMacDemo extends Demo {
     /**
      * 初始化 HMAC 密钥
      */
-    private String initMacKey() throws NoSuchAlgorithmException {
-
+    private static String initMacKey() throws NoSuchAlgorithmException {
         // 得到一个 指定算法密钥的密钥生成器
         KeyGenerator keyGenerator = KeyGenerator.getInstance(KEY_MAC);
 
@@ -82,8 +81,7 @@ public class HMacDemo extends Demo {
     /**
      * HMAC 加密
      */
-    private String encryptHMAC(byte[] data, String key) throws NoSuchAlgorithmException, InvalidKeyException {
-
+    private static String encryptHMAC(byte[] data, String key) throws NoSuchAlgorithmException, InvalidKeyException {
         // 根据给定的字节数组构造一个密钥，第二参数指定一个密钥算法的名称
         SecretKey secretKey = new SecretKeySpec(Base64.getDecoder().decode(key), KEY_MAC);
 
@@ -97,7 +95,7 @@ public class HMacDemo extends Demo {
         return new String(mac.doFinal(data), StandardCharsets.UTF_8);
     }
 
-    private String getResult1(String inputStr) {
+    private static String getResult1(String inputStr) {
         Path keyFilePath = Paths.get(DEMO_PATH + "key");
         String result = null;
         try {
@@ -113,7 +111,7 @@ public class HMacDemo extends Demo {
         return result;
     }
 
-    private String getResult2(String inputStr) {
+    private static String getResult2(String inputStr) {
         Path keyFilePath = Paths.get(DEMO_PATH + "key");
         List<String> keyList;
         String result = null;

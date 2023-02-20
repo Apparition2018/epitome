@@ -6,7 +6,6 @@ import cn.hutool.extra.cglib.CglibUtil;
 import l.demo.Demo;
 import l.demo.User;
 import lombok.SneakyThrows;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.cglib.core.Converter;
@@ -16,7 +15,7 @@ import java.util.Date;
 
 /**
  * BeanUtils
- * Apache BeanUtils 性能较差，可以使用其他方案比如 Spring BeanUtils，Cglib BeanCopier，注意均是浅拷贝（阿里编程规约）
+ * <p>Apache BeanUtils 性能较差，可以使用其他方案比如 Spring BeanUtils，Cglib BeanCopier，注意均是浅拷贝（阿里编程规约）
  *
  * @author ljh
  * @since 2022/1/19 11:17
@@ -26,8 +25,7 @@ public class BeanUtilsDemo extends Demo {
     /**
      * Cglib BeanCopier 和 Apache Beanutils 与 lombok 的 @Accessors(chain = true) 冲突
      */
-    @Test
-    public void testBeanCopier() {
+    public static void main(String[] args) {
         User source = new User(new Date());
 
         testCopyEfficiency(stopWatch, source, new User());
@@ -60,6 +58,7 @@ public class BeanUtilsDemo extends Demo {
 
         stopWatch.start("spring cglib BeanCopier");
         for (int i = 0; i < MILLION; i++) {
+            // VM options: --add-opens java.base/java.lang=ALL-UNNAMED
             BeanCopier beanCopier = BeanCopier.create(User.class, User.class, false);
             beanCopier.copy(source, target, null);
         }

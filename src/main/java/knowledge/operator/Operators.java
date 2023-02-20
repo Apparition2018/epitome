@@ -116,6 +116,9 @@ public class Operators {
      * (Object reference variable) instanceof (Class/Interface type)
      * 在无泛型限制定义的集合赋值给泛型限制的集合时，在使用集合元素时，需要进行instanceof 判断，避免抛出 ClassCastException 异常（阿里编程规约）
      * </pre>
+     *
+     * @see <a href="https://achang.blog.csdn.net/article/details/126432374">模式匹配</a>
+     * @see <a href="https://openjdk.org/jeps/394">JDK16 JEP 394: Pattern Matching for instanceof</a>
      */
     @Test
     public void instanceof_() {
@@ -123,9 +126,6 @@ public class Operators {
         this.ops(3.3D);
     }
 
-    /**
-     * @see <a href="https://openjdk.org/jeps/394">JDK16 JEP 394: Pattern Matching for instanceof</a>
-     */
     private void ops(Object obj) {
         if (obj instanceof String str) {
             p("String: " + str);

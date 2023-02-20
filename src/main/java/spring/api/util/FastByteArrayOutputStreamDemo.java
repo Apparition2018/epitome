@@ -2,7 +2,6 @@ package spring.api.util;
 
 import l.demo.Demo;
 import l.demo.Person;
-import org.junit.jupiter.api.Test;
 import org.springframework.util.FastByteArrayOutputStream;
 
 import java.io.*;
@@ -20,14 +19,13 @@ import java.util.stream.IntStream;
  */
 public class FastByteArrayOutputStreamDemo extends Demo {
 
-    @Test
-    public void testFastByteArrayOutputStream() {
+    public static void main(String[] args) {
         stopWatch.start("ByteArrayOutputStream");
-        IntStream.rangeClosed(1, 500).forEach(i -> this.clone(personList.get(0)));
+        IntStream.rangeClosed(1, 500).forEach(i -> clone(personList.get(0)));
         stopWatch.stop();
 
         stopWatch.start("FastByteArrayOutputStream");
-        IntStream.rangeClosed(1, 500).forEach(i -> this.fastClone(personList.get(0)));
+        IntStream.rangeClosed(1, 500).forEach(i -> fastClone(personList.get(0)));
         stopWatch.stop();
 
         p(stopWatch.prettyPrint());
@@ -38,7 +36,7 @@ public class FastByteArrayOutputStreamDemo extends Demo {
         // 020224200  026%  FastByteArrayOutputStream
     }
 
-    private void clone(Person person) {
+    private static void clone(Person person) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {
             oos.writeObject(person);
@@ -51,7 +49,7 @@ public class FastByteArrayOutputStreamDemo extends Demo {
         }
     }
 
-    private void fastClone(Person person) {
+    private static void fastClone(Person person) {
         FastByteArrayOutputStream fbaos = new FastByteArrayOutputStream();
         try (ObjectOutputStream oos = new ObjectOutputStream(fbaos)) {
             oos.writeObject(person);

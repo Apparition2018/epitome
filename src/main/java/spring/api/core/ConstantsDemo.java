@@ -1,7 +1,6 @@
 package spring.api.core;
 
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 import org.springframework.core.Constants;
 
 /**
@@ -17,8 +16,7 @@ public class ConstantsDemo extends Demo {
     public static final int MIN = 0;
     public static final String NAME = MY_NAME;
 
-    @Test
-    public void testConstants() {
+    public static void main(String[] args) {
         Constants constants = new Constants(ConstantsDemo.class);
         p(constants.getSize());                 // 3
         p(constants.asNumber("MAX"));           // 999

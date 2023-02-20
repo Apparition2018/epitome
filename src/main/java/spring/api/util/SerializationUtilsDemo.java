@@ -1,6 +1,5 @@
 package spring.api.util;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.util.SerializationUtils;
 
 import java.util.Date;
@@ -14,8 +13,7 @@ import java.util.Objects;
  */
 public class SerializationUtilsDemo {
 
-    @Test
-    public void testSerializationUtils() {
+    public static void main(String[] args) {
         final Date date = new Date();
 
         byte[] bytes = SerializationUtils.serialize(date);
