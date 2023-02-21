@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
  * 监视已注册对象的更改和事件的监视服务。
  * 例如，文件管理器可以使用监视服务来监视目录的更改，以便在创建或删除文件时更新其显示的文件列表。
  * </pre>
- * <p>
  * <a href="https://docs.oracle.com/javase/8/docs/api/index.html?java/nio/file/WatchKey.html">WatchKey</a>
  * <p>监视对象的令牌
  * <p>

@@ -8,19 +8,18 @@ import java.util.UUID;
 import java.util.stream.IntStream;
 
 /**
- * BASE64
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html">Base64</a><br/>
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Base64.Decoder.html">Base64.Decoder</a>
  * <pre>
  * BASE64 使用了 64 个字符，包括 A-Za-z0-9+/，其中 +/ 在一些场景下代表着特殊含义(如 url)，会用 -_ 代替
  * BASE64 严格地说，属于编码格式，而非加密算法。
  * BASE 加密后产生的字节位数是8的倍数，如果不够位数以 = 符号填充。
  * </pre>
  * 应用场景：e-mail、密钥、证书文件
- * 参考：
+ * <p>参考：
  * <pre>
  * <a href="https://www.cnblogs.com/chengmo/archive/2014/05/18/3735917.html">Base64 算法原理</a>
  * <a href="https://www.imooc.com/learn/285">Java 实现 Base64 加密</a>
- * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Base64.html">Base64</a>
- * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Base64.Decoder.html">Base64.Decoder</a>
  * </pre>
  *
  * @author ljh

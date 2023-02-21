@@ -11,6 +11,7 @@ package knowledge.oop.class_;
  * 参考：
  * <pre>
  * <a href="https://blog.csdn.net/qq_43284469/article/details/126415220">封闭类</a>
+ * <a href="https://achang.blog.csdn.net/article/details/126573767">空指针烦恼</a>
  * <a href="https://openjdk.org/jeps/409">JDK17 JEP 409: Sealed Classes</a>
  * </pre>
  *

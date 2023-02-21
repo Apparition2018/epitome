@@ -8,17 +8,17 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Arrays
- * Arrays 提供的所有方法都是静态的
- * https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html
- * <p>
- * static void	        sort(XXX[] a[, int fromIndex, int toIndex])                 对指定 XXX 型数组的指定范围按数字升序进行排序
- * static boolean	    equals(XXX[] xxx, XXX[] xxx)                                如果两个指定的 XXX 型数组彼此相等，则返回 true
- * static void	        fill(XXX[] a[, int fromIndex, int toIndex], XXX val)        将指定的 XXX 值分配给指定 XXX 节型数组的每个元素
- * static XXX	        deepHashCode(Object[] a)                                    基于指定数组的“深层内容”返回哈希码
- * <p>
- * static Stream	    stream(XXX[] arr[, int startInclusive, int endExclusive])   返回 Stream
- * static Spliterator[.OfXXX]	spliterator(XXX[] array)                            返回 Spliterator
+ * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html">Arrays</a>
+ * <p>Arrays 提供的所有方法都是静态的
+ * <pre>
+ * static void          sort(XXX[] a[, int fromIndex, int toIndex])                 对指定 XXX 型数组的指定范围按数字升序进行排序
+ * static boolean       equals(XXX[] xxx, XXX[] xxx)                                如果两个指定的 XXX 型数组彼此相等，则返回 true
+ * static void          fill(XXX[] a[, int fromIndex, int toIndex], XXX val)        将指定的 XXX 值分配给指定 XXX 节型数组的每个元素
+ * static XXX           deepHashCode(Object[] a)                                    基于指定数组的“深层内容”返回哈希码
+ *
+ * static Stream        stream(XXX[] arr[, int startInclusive, int endExclusive])   返回 Stream
+ * static Spliterator[.OfXXX]   spliterator(XXX[] array)                            返回 Spliterator
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -77,9 +77,11 @@ public class ArraysDemo extends Demo {
 
     /**
      * static <T>List<T> asList(T... a)                 返回一个受指定数组支持的固定大小的列表
-     * 阿里编程规约：
+     * <p>阿里编程规约：
+     * <pre>
      * 使用工具类 Arrays.asList() 把数组转换成集合时，不能使用其修改集合相关的方法，它的 add / remove / clear 方法会抛出 UnsupportedOperationException 异常
      * asList 的返回对象是一个 Arrays 内部类，并没有实现集合的修改方法。Arrays.asList 体现的是适配器模式，只是转换接口，后台的数据仍是数组
+     * </pre>
      */
     @Test
     public void asList() {
@@ -103,5 +105,4 @@ public class ArraysDemo extends Demo {
         List<Integer> intList = Ints.asList(intArr);        // guava 类库的工具方法
         p(intList); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
-
 }

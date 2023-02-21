@@ -19,6 +19,5 @@ public class ReadPOI {
      * @see ExcelUtils#excel2BeanList(InputStream, Map)
      */
     public static void main(String[] args) {
-
     }
 }

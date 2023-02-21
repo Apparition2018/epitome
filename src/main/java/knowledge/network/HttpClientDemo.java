@@ -13,7 +13,7 @@ package knowledge.network;
 public class HttpClientDemo {
 
     /**
-     * <a href="https://www.baeldung.com/java-9-http-client">Exploring the New HTTP Client in Java</a>
+     * @see <a href="https://www.baeldung.com/java-9-http-client">Exploring the New HTTP Client in Java</a>
      */
     public static void main(String[] args) {
     }

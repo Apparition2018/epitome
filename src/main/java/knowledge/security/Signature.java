@@ -12,8 +12,4 @@ package knowledge.security;
  * @since 2023/2/15 9:42
  */
 public class Signature {
-
-    public static void main(String[] args) {
-
-    }
 }

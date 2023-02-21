@@ -1,4 +1,4 @@
-package knowledge.security.certificate;
+package knowledge.security;
 
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
@@ -10,6 +10,7 @@ import javax.crypto.NoSuchPaddingException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.security.Signature;
 import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.*;
@@ -151,7 +152,7 @@ public class CertificateDemo extends Demo {
         if (certificate != null) {
             signAlgo = getSignAlgo(certificate);
         }
-        Signature signature = Signature.getInstance(signAlgo);
+        java.security.Signature signature = java.security.Signature.getInstance(signAlgo);
         signature.initSign(privateKey);
         signature.update(data.getBytes(StandardCharsets.UTF_8));
         return Base64.getEncoder().encodeToString(signature.sign());
@@ -164,7 +165,7 @@ public class CertificateDemo extends Demo {
         if (certificate != null) {
             signAlgo = getSignAlgo(certificate);
         }
-        Signature signature = Signature.getInstance(signAlgo);
+        java.security.Signature signature = Signature.getInstance(signAlgo);
         signature.initVerify(publicKey);
         signature.update(data.getBytes(StandardCharsets.UTF_8));
         return signature.verify(Base64.getDecoder().decode(sign));
