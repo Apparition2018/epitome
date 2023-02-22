@@ -89,8 +89,8 @@ public class RedisTemplateDemo extends Demo {
                 (RedisCallback<Object>) connection -> {
                     connection.openPipeline();
                     for (int i = 1; i <= THOUSAND; i++) {
-                        connection.set((TASK2 + i).getBytes(), String.valueOf(i).getBytes());
-                        connection.del((TASK2 + i).getBytes());
+                        connection.stringCommands().set((TASK2 + i).getBytes(), String.valueOf(i).getBytes());
+                        connection.keyCommands().del((TASK2 + i).getBytes());
                     }
                     connection.closePipeline();
                     return null;
@@ -100,8 +100,9 @@ public class RedisTemplateDemo extends Demo {
 
         final String TASK3 = "pipeline SessionCallback";
         stopWatch.start(TASK3);
-        redisTemplate.executePipelined(new SessionCallback<Object>() {
+        redisTemplate.executePipelined(new SessionCallback<>() {
             @Override
+            @SuppressWarnings("unchecked")
             public Object execute(@NotNull RedisOperations operations) throws DataAccessException {
                 for (int i = 1; i <= THOUSAND; i++) {
                     operations.opsForValue().set(TASK3 + i, i);

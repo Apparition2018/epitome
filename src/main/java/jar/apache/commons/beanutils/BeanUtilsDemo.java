@@ -1,12 +1,12 @@
 package jar.apache.commons.beanutils;
 
+import jakarta.servlet.http.HttpServletRequest;
 import l.demo.Demo;
 import l.demo.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.locale.converters.DateLocaleConverter;
 
-import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.Enumeration;
@@ -48,9 +48,8 @@ public class BeanUtilsDemo extends Demo {
      *
      * @see <a href="https://www.cnblogs.com/vmax-tam/p/4159985.html">BeanUtils 工具类</a>
      */
-    @SuppressWarnings({"unchecked", "unused"})
     public static <T> T requestToBean(HttpServletRequest request, Class<T> clazz) {
-        Object obj = null;
+        T obj = null;
         try {
             obj = clazz.getConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
@@ -69,6 +68,6 @@ public class BeanUtilsDemo extends Demo {
             }
         }
 
-        return (T) obj;
+        return obj;
     }
 }

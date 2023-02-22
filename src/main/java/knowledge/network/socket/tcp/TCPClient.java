@@ -32,7 +32,7 @@ public class TCPClient extends Demo {
         // OutputStream	    getOutputStream()           返回此套接字的输出流
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 
-        Student student = new Student(1, "007", "Mary", 20, 100.0f);
+        Student student = new Student(1, "007", "Mary", 20, 100.0F);
         dos.writeUTF(student + "");
         dos.flush();
 

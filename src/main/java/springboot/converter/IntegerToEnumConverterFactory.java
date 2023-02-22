@@ -16,9 +16,11 @@ import java.util.Map;
  */
 public class IntegerToEnumConverterFactory implements ConverterFactory<Integer, BaseEnum> {
 
+    @SuppressWarnings("rawtypes")
     private static final Map<Class<?>, Converter> CONVERTER_MAP = Maps.newHashMap();
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T extends BaseEnum> @NonNull Converter<Integer, T> getConverter(@NonNull Class<T> targetType) {
         Converter<Integer, T> converter = CONVERTER_MAP.get(targetType);
         if (converter == null) {

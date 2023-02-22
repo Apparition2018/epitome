@@ -5,7 +5,6 @@ import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.extra.cglib.CglibUtil;
 import l.demo.Demo;
 import l.demo.User;
-import lombok.SneakyThrows;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.cglib.core.Converter;
@@ -48,7 +47,6 @@ public class BeanUtilsDemo extends Demo {
         }
     }
 
-    @SneakyThrows
     public static void testCopyEfficiency(StopWatch stopWatch, User source, User target) {
         stopWatch.start("spring BeanUtils");
         for (int i = 0; i < MILLION; i++) {

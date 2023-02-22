@@ -1,17 +1,17 @@
 package springboot.listener;
 
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletRequestEvent;
+import jakarta.servlet.ServletRequestListener;
+import jakarta.servlet.annotation.WebListener;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSessionEvent;
+import jakarta.servlet.http.HttpSessionListener;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequestEvent;
-import javax.servlet.ServletRequestListener;
-import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +41,6 @@ public class OnlineNumberListener implements HttpSessionListener, ServletRequest
 
     @Override
     public void requestDestroyed(ServletRequestEvent servletRequestEvent) {
-        
     }
 
     @Override
@@ -49,12 +48,12 @@ public class OnlineNumberListener implements HttpSessionListener, ServletRequest
         request = (HttpServletRequest) sre.getServletRequest();
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         HttpSession httpSession = se.getSession();
         String sessionId = httpSession.getId();
         ServletContext servletContext = httpSession.getServletContext();
+        @SuppressWarnings("unchecked")
         List<HostInfo> hostInfoList = (List<HostInfo>) servletContext.getAttribute("hostInfoList");
         if (hostInfoList != null) {
             for (HostInfo hostInfo : hostInfoList) {
@@ -71,12 +70,12 @@ public class OnlineNumberListener implements HttpSessionListener, ServletRequest
      * 关闭浏览器，web 服务器是不知道的，所以并不会触发 sessionDestroyed
      * session 被销毁只有两个途径，一个是 session 过期，另外一个是前端调用 session.invalidate()
      */
-    @SuppressWarnings("unchecked")
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
         HttpSession httpSession = se.getSession();
         String sessionId = httpSession.getId();
         ServletContext servletContext = httpSession.getServletContext();
+        @SuppressWarnings("unchecked")
         List<HostInfo> hostInfoList = (List<HostInfo>) servletContext.getAttribute("hostInfoList");
         for (HostInfo hostInfo : hostInfoList) {
             if (StringUtils.equals(sessionId, hostInfo.getSessionId())) {

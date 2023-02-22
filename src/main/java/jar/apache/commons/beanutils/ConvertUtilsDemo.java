@@ -31,7 +31,6 @@ public class ConvertUtilsDemo {
                     return (T) DateUtils.parseDate((String) o, DatePattern.NORM_DATETIME_PATTERN);
                 } catch (ParseException e) {
                     return null;
-
                 }
             }
         }, Date.class);

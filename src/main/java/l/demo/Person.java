@@ -1,6 +1,9 @@
 package l.demo;
 
 import cn.hutool.core.date.DatePattern;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -151,9 +154,12 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
         @Serial
         private static final long serialVersionUID = 527285523879940432L;
         private String no;
+        @JsonIgnore
         // 被 transient 修饰的属性，在进行对象序列化时该值会被忽略，已达到对象瘦身的目的
         private transient String password;
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss a", timezone = "GMT+8")
         private Date birth;
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         private Float score;
 
         public Student(Integer id, String name) {

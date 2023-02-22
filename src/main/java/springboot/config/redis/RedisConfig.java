@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.annotation.CachingConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -29,14 +29,16 @@ import java.util.List;
 
 /**
  * RedisConfig
+ * <pre>
  * RuoYi (RedisConfig)
- * Spring Boot 缓存应用实践：https://mp.weixin.qq.com/s/45S-_XIWgkR6qYbFKll5RQ
+ * <a href="https://mp.weixin.qq.com/s/45S-_XIWgkR6qYbFKll5RQ">Spring Boot 缓存应用实践</a>
+ * </pre>
  *
  * @author ljh
  * @since 2021/9/1 10:56R
  */
 @Configuration
-public class RedisConfig extends CachingConfigurerSupport {
+public class RedisConfig implements CachingConfigurer {
 
     @Bean
     public Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer() {
@@ -44,9 +46,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         objectMapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
 
-        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
-        jackson2JsonRedisSerializer.setObjectMapper(objectMapper);
-        return jackson2JsonRedisSerializer;
+        return new Jackson2JsonRedisSerializer<>(objectMapper, Object.class);
     }
 
     @Bean

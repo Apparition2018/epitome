@@ -122,7 +122,6 @@ public class CustomAnnotation {
         private String appleProvider;
 
         @Description(desc = "displayName")
-        @SuppressWarnings("unused")
         public void displayName() {
             p("水果名称是：苹果");
         }

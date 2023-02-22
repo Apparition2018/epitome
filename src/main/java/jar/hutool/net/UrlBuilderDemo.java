@@ -18,7 +18,7 @@ import cn.hutool.core.net.url.UrlBuilder;
 public class UrlBuilderDemo {
 
     public static void main(String[] args) {
-        String url = UrlBuilder.create()
+        String url = UrlBuilder.of()
                 .setScheme("https").setHost("developer.mozilla.org")
                 .addPath("en-US").addPath("search")
                 .addQuery("q", "URL").setFragment("search-results-close-container")

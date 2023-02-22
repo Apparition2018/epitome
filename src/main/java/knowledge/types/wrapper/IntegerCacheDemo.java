@@ -23,7 +23,7 @@ public class IntegerCacheDemo {
     public static void main(String[] args) {
         Long l1 = 100L;
         Long l2 = 100L;
-        Long l3 = new Long(100);
+        Long l3 = Long.valueOf(100);
         Long l5 = 200L;
         Long l6 = 200L;
 

@@ -189,8 +189,8 @@ public class ListDemo extends Demo {
     /**
      * 通过反射获取 ArrayList 的 capacity
      */
-    @SuppressWarnings("rawtypes")
     public static int getArrayListCapacity(List<?> arrayList) {
+        @SuppressWarnings("rawtypes")
         Class<ArrayList> arrayListClass = ArrayList.class;
         try {
             Field field = arrayListClass.getDeclaredField("elementData");

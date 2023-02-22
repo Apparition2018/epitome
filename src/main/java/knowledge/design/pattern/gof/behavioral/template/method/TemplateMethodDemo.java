@@ -1,11 +1,11 @@
 package knowledge.design.pattern.gof.behavioral.template.method;
 
+import jakarta.servlet.http.HttpServlet;
 import knowledge.design.pattern.other.Idiom.CallbackDemo;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import javax.servlet.http.HttpServlet;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;

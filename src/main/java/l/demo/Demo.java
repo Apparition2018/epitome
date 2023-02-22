@@ -75,7 +75,6 @@ public class Demo {
     public static final int MILLION = THOUSAND * 1000;
     public static final int TEN_MILLION = MILLION * 10;
     public static final int HUNDRED_MILLION = MILLION * 100;
-    public static final int PORT = 3333;
     public static final String HELLO_WORLD = "Hello World!";
     public static final String MY_NAME = "ljh";
     public static final String MY_EMAIL = "88850180@163.com";
@@ -85,8 +84,10 @@ public class Demo {
     public static final String BAIDU_HOST = "www.baidu.com";
     public static final String BAIDU_URL = "https://" + BAIDU_HOST;
     public static final String MOZILLA_DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";
-    public static final String BASE_URL = "http://localhost:3333/";
-    public static final String DEMO_URL = "http://localhost:3333/demo/";
+    public static final int PORT = 3333;
+    public static final String BASE_URL = String.format("http://localhost:%s/", PORT);
+    public static final String DEMO_URL = BASE_URL + "demo/";
+    public static final String COOKIE_URL = BASE_URL + "fetch/cookie";
     public static final String RANDOM_URL = " https://quoters.apps.pcfone.io/api/random";
     public static final String USER_DIR = System.getProperty("user.dir");
     public static final String DESKTOP = FileSystemView.getFileSystemView().getHomeDirectory().getPath() + File.separator;

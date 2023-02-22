@@ -1,5 +1,7 @@
 package spring.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +14,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import spring.bean.OtherBean;
 import spring.service.BmiService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 import static l.demo.Demo.p;

@@ -1,9 +1,9 @@
 package knowledge.design.pattern.gof.behavioral.observer;
 
+import jakarta.servlet.http.HttpSessionAttributeListener;
+import jakarta.servlet.http.HttpSessionBindingListener;
 import jar.google.guava.evenbus.EventBusDemo;
 
-import javax.servlet.http.HttpSessionAttributeListener;
-import javax.servlet.http.HttpSessionBindingListener;
 import java.io.File;
 import java.util.*;
 

@@ -8,9 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * WebSocket
- * 客户端：websocket.html
- * <p>
- * netty(4)高级篇-Websocket协议开发：https://www.cnblogs.com/carl10086/p/6188808.html
+ * <p>客户端：websocket.html
+ * <p><a href="https://www.cnblogs.com/carl10086/p/6188808.html">netty(4)高级篇-Websocket协议开发</a>
  *
  * @author ljh
  * @since 2021/3/5 2:34
@@ -32,7 +31,7 @@ public class WebSocketServer {
             serverBootstrap.channel(NioServerSocketChannel.class);
             serverBootstrap.childHandler(new MyWebSocketChannelInitializer());
             log.info("服务端开启等待客户端连接...");
-            
+
             // ChannelFuture：异步 Channel I/O 操作的结果
             ChannelFuture channelFuture = serverBootstrap.bind(8888).sync();
             // 等待服务端监听端口关闭
@@ -43,6 +42,5 @@ public class WebSocketServer {
             bossGroup.shutdownGracefully();
             workGroup.shutdownGracefully();
         }
-
     }
 }

@@ -2,12 +2,12 @@ package springboot.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springboot.listener.OnlineNumberListener.HostInfo;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -21,10 +21,10 @@ import java.util.List;
 @Tag(name = "Online")
 public class OnlineController {
 
-    @SuppressWarnings("unchecked")
     @GetMapping
     @Operation(summary = "获取在线人数")
     public String count(HttpServletRequest request) {
+        @SuppressWarnings("unchecked")
         List<HostInfo> hostInfoList = (List<HostInfo>) request.getSession().getServletContext().getAttribute("hostInfoList");
         return "count : " + hostInfoList.size();
     }

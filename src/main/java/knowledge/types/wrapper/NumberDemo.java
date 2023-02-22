@@ -28,13 +28,14 @@ public class NumberDemo {
      */
     @Test
     public void testNumberMethods() {
+        Integer i = Integer.valueOf(5);
         // XXX          xxxValue()          以 XXX 形式返回指定的数值
-        p(new Integer(5).intValue());   // 5
-        p(new Integer(5).byteValue());  // 5
-        p(new Integer(5).doubleValue());// 5.0
-        p(new Integer(5).floatValue()); // 5.0
-        p(new Integer(5).longValue());  // 5
-        p(new Integer(5).shortValue()); // 5
+        p(i.intValue());   // 5
+        p(i.byteValue());  // 5
+        p(i.doubleValue());// 5.0
+        p(i.floatValue()); // 5.0
+        p(i.longValue());  // 5
+        p(i.shortValue()); // 5
     }
 
     /**

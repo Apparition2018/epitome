@@ -14,13 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springboot.formatter.BooleanFormat;
 
 import java.util.Date;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -28,6 +28,8 @@ import java.util.concurrent.TimeUnit;
 import static l.demo.Demo.MY_NAME;
 
 /**
+ * WebMvcConfigController
+ *
  * @author ljh
  * @since 2021/8/9 9:20
  */
@@ -83,12 +85,12 @@ public class WebMvcConfigController {
     public Future<Integer> asyncResult(Integer i) throws InterruptedException {
         TimeUnit.SECONDS.sleep(i);
         log.info("{}: {}", Thread.currentThread().getName(), i);
-        return new AsyncResult<>(i + 2);
+        return CompletableFuture.supplyAsync(() -> i + 2);
     }
 
     /**
      * addFormatters
-     * 这里如果使用 @RequestBody 接收参数会使用 Jackson，不会使用配置的 Converter
+     * <p>这里如果使用 @RequestBody 接收参数会使用 Jackson，不会使用配置的 Converter
      */
     @PostMapping("addFormatters")
     @Operation(summary = "添加格式化器", description = "枚举格式化器和注解格式化器")
@@ -119,5 +121,4 @@ public class WebMvcConfigController {
     public Person addArgumentResolvers(Person person) {
         return person;
     }
-
 }

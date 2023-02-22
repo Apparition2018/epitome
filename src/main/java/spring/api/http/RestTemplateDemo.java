@@ -3,7 +3,10 @@ package spring.api.http;
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.core5.http.io.SocketConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -11,6 +14,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -33,13 +37,21 @@ public class RestTemplateDemo extends Demo {
     private ResponseEntity<Student> responseEntity;
 
     static {
-        HttpComponentsClientHttpRequestFactory requestFactory =
-                new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
-        requestFactory.setConnectionRequestTimeout((int) TimeUnit.SECONDS.toMillis(5));
-        requestFactory.setConnectTimeout((int) TimeUnit.SECONDS.toMillis(5));
-        requestFactory.setReadTimeout((int) TimeUnit.SECONDS.toMillis(5));
+        SocketConfig socketConfig = SocketConfig.custom().setSoTimeout(5, TimeUnit.SECONDS).build();
+        try (PoolingHttpClientConnectionManager poolingHttpClientConnectionManager = new PoolingHttpClientConnectionManager()) {
+            poolingHttpClientConnectionManager.setDefaultSocketConfig(socketConfig);
+            try (CloseableHttpClient httpClient = HttpClientBuilder.create().setConnectionManager(poolingHttpClientConnectionManager).build()) {
+                HttpComponentsClientHttpRequestFactory requestFactory =
+                        new HttpComponentsClientHttpRequestFactory(httpClient);
+                requestFactory.setConnectionRequestTimeout((int) TimeUnit.SECONDS.toMillis(5));
+                requestFactory.setConnectTimeout((int) TimeUnit.SECONDS.toMillis(5));
 
-        restTemplate = new RestTemplate(requestFactory);
+                restTemplate = new RestTemplate(requestFactory);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
         requestHeaders.setContentType(MediaType.APPLICATION_JSON);
 
         map = Map.of("id", 1, "name", "John");
@@ -53,7 +65,7 @@ public class RestTemplateDemo extends Demo {
     public void cookie() {
         requestHeaders.add("Cookie", "cny=1");
         HttpEntity<?> httpEntity = new HttpEntity<>(map, requestHeaders);
-        ResponseEntity<String> responseEntity = restTemplate.exchange("http://localhost:3333/fetch/cookie", HttpMethod.POST, httpEntity, String.class);
+        ResponseEntity<String> responseEntity = restTemplate.exchange(COOKIE_URL, HttpMethod.POST, httpEntity, String.class);
         p(responseEntity.getBody());
     }
 

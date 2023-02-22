@@ -1,10 +1,10 @@
 package spring.api.scheduling;
 
 import lombok.SneakyThrows;
-import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.scheduling.Trigger;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class ThreadPoolTaskSchedulerDemo {
 
     public static void main(String[] args) {
-        ScheduleUtil.startAtFixedRate(new MyScheduleTask("test"), Date.from(Instant.now().plusSeconds(3)), DateUtils.MILLIS_PER_SECOND);
+        ScheduleUtil.startAtFixedRate(new MyScheduleTask("test"), Date.from(Instant.now().plusSeconds(3)).toInstant(), Duration.ofSeconds(1));
     }
 
     private static class ScheduleUtil {
@@ -47,7 +47,7 @@ public class ThreadPoolTaskSchedulerDemo {
         /**
          * 执行一次
          */
-        public static void schedule(ScheduleTask scheduleTask, Date startTime) {
+        public static void schedule(ScheduleTask scheduleTask, Instant startTime) {
             if (scheduledFutureMap.containsKey(scheduleTask.getId())) {
                 return;
             }
@@ -58,31 +58,31 @@ public class ThreadPoolTaskSchedulerDemo {
         /**
          * 以上一次任务的开始时间为间隔，真正的间隔时间 = max(任务执行时间，间隔时间）
          */
-        public static void startAtFixedRate(ScheduleTask scheduleTask, Date startTime, long period) {
+        public static void startAtFixedRate(ScheduleTask scheduleTask, Instant startTime, Duration duration) {
             if (scheduledFutureMap.containsKey(scheduleTask.getId())) {
                 return;
             }
-            ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.scheduleAtFixedRate(scheduleTask, startTime, period);
+            ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.scheduleAtFixedRate(scheduleTask, startTime, duration);
             scheduledFutureMap.put(scheduleTask.getId(), scheduledFuture);
         }
 
-        public static void startAtFixedRate(ScheduleTask scheduleTask, long period) {
-            startAtFixedRate(scheduleTask, null, period);
+        public static void startAtFixedRate(ScheduleTask scheduleTask, Duration duration) {
+            startAtFixedRate(scheduleTask, null, duration);
         }
 
         /**
          * 以上一次任务的结束时间为间隔
          */
-        public static void startWithFixedDelay(ScheduleTask scheduleTask, Date startTime, long period) {
+        public static void startWithFixedDelay(ScheduleTask scheduleTask, Instant startTime, Duration duration) {
             if (scheduledFutureMap.containsKey(scheduleTask.getId())) {
                 return;
             }
-            ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.scheduleWithFixedDelay(scheduleTask, startTime, period);
+            ScheduledFuture<?> scheduledFuture = threadPoolTaskScheduler.scheduleWithFixedDelay(scheduleTask, startTime, duration);
             scheduledFutureMap.put(scheduleTask.getId(), scheduledFuture);
         }
 
-        public static void startWithFixedDelay(ScheduleTask scheduleTask, long period) {
-            startWithFixedDelay(scheduleTask, null, period);
+        public static void startWithFixedDelay(ScheduleTask scheduleTask, Duration duration) {
+            startWithFixedDelay(scheduleTask, null, duration);
         }
 
         public static void remove(ScheduleTask scheduleTask) {

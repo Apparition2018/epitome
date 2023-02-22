@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.core.type.ResolvedType;
 import com.fasterxml.jackson.core.type.TypeReference;
 import jar.fasterxml.jackson.entity.Person;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -98,24 +97,26 @@ public class JsonParserDemo {
      * 自定义 ObjectCodec
      */
     @Test
-    public void testMyObjectCodec() throws IOException {
+    public void testMyObjectCodec() {
         JsonFactory jsonFactory = new JsonFactory();
         try (JsonParser jsonParser = jsonFactory.createParser(new File(PERSON_JSON_FILE))) {
-            jsonParser.setCodec(new MyObjectCodec());
+            jsonParser.setCodec(new PersonCodec());
             log.info("person: {}", jsonParser.readValueAs(Person.class));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    private static class MyObjectCodec extends ObjectCodec {
+    private static class PersonCodec extends ObjectCodec {
 
         @Override
         public Version version() {
             return null;
         }
 
-        @SneakyThrows
         @Override
-        public <T> T readValue(JsonParser jsonParser, Class<T> clazz) {
+        @SuppressWarnings("unchecked")
+        public <T> T readValue(JsonParser jsonParser, Class<T> clazz) throws IOException {
             Person person = new Person();
             while (jsonParser.nextToken() != JsonToken.END_OBJECT) {
                 String fieldName = jsonParser.getCurrentName();

@@ -15,10 +15,12 @@ import java.util.Map;
  * @since 2021/6/17 16:31
  */
 public class StringToEnumConverterFactory implements ConverterFactory<String, BaseEnum> {
-    
+
+    @SuppressWarnings("rawtypes")
     private static final Map<Class<?>, Converter> CONVERTER_MAP = Maps.newHashMap();
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T extends BaseEnum> @NonNull Converter<String, T> getConverter(@NonNull Class<T> targetType) {
         Converter<String, T> converter = CONVERTER_MAP.get(targetType);
         if (converter == null) {

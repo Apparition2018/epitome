@@ -1,5 +1,7 @@
 package knowledge.design.pattern.gof.structural.decorator;
 
+import jakarta.servlet.http.HttpServletRequestWrapper;
+import jakarta.servlet.http.HttpServletResponseWrapper;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.xml.BeanDefinitionDecorator;
@@ -7,8 +9,6 @@ import org.springframework.cache.transaction.TransactionAwareCacheDecorator;
 import org.springframework.http.server.reactive.ServerHttpRequestDecorator;
 import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 
-import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpServletResponseWrapper;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

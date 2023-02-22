@@ -21,7 +21,7 @@ public class VectorDemo extends Demo {
      * y = a0x0 + a1x1 + a2x2 + ... + an-1·xn-1
      * 注：数字是下标
      */
-    private static Double sumInScalar() {
+    private static Double sumInScalar(double[] a, double[] x) {
         double[] y = new double[a.length];
         for (int i = 0; i < a.length; i++) {
             y[i] = a[i] * x[i];
@@ -38,7 +38,7 @@ public class VectorDemo extends Demo {
      */
     private static final DoubleVector vx = DoubleVector.fromArray(DoubleVector.SPECIES_128, x, 0);
 
-    private static Double sumInVector() {
+    private static Double sumInVector(DoubleVector va, DoubleVector vx) {
         // 矢量运算
         double[] y = va.mul(vx).toArray();
         return DoubleStream.of(y).sum();
@@ -47,17 +47,17 @@ public class VectorDemo extends Demo {
     public static void main(String[] args) throws IOException {
         stopWatch.start("scalar");
         for (int i = 0; i < THOUSAND; i++) {
-            sumInScalar();
+            sumInScalar(a, x);
         }
         stopWatch.stop();
 
+        // VM options: --add-modules jdk.incubator.vector
         stopWatch.start("vector");
         for (int i = 0; i < THOUSAND; i++) {
-            sumInVector();
+            sumInVector(va, vx);
         }
         stopWatch.stop();
 
         p(stopWatch.prettyPrint());
     }
 }
-   

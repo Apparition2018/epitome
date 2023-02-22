@@ -1,5 +1,10 @@
 package knowledge.design.pattern.gof.behavioral.strategy;
 
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServlet;
 import knowledge.oop.interface_.FunctionalInterface;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,11 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServlet;
 import java.util.EnumMap;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.function.Function;

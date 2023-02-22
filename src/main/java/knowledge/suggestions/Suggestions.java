@@ -35,7 +35,7 @@ import java.util.stream.IntStream;
  * <pre>
  * 建议22：用 BigDecimal 或整数类型处理货币
  * 建议25：银行的四舍六入五考虑
- * 建议29：优先选择基本类型
+ * 建议29：方法参数类型优先选择基本类型
  * 建议30：不要设置随机种子
  * </pre>
  * 第三章：类、对象及方法
@@ -234,24 +234,23 @@ public class Suggestions extends Demo {
     }
 
     /**
-     * 建议29：优先选择基本类型
+     * 建议29：方法参数类型优先选择基本类型
      */
     @Test
     public void test029() {
         Suggestions sg = new Suggestions();
         int i = 140;
-        sg.testMethod(i);
         // 自动装箱：基本类型可以先加宽，再转变成宽类型的包装类型，但不能直接转变成宽类型的包装类型
-        // int → Integer → int → long，所以调用了 testMethod(long a)
-        sg.testMethod(new Integer(i));
+        // Integer → int → long，所以调用了 testMethod(long a)
+        sg.testMethod(Integer.valueOf(i));
     }
 
     public void testMethod(long a) {
-        p("基本类型的方法被调用");
+        p("方法参数类型优先为基本类型");
     }
 
     public void testMethod(Long a) {
-        p("包装类型的方法被调用");
+        p("方法参数类型优先为包装类型");
     }
 
     /**

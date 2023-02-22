@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
+import static l.demo.Demo.COOKIE_URL;
+
 /**
  * fluent API
  *
@@ -21,10 +23,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class HttpClientFluentDemo {
 
-    private static final String URL = "http://localhost:3333/fetch/cookie";
-
     public static void main(String[] args) throws IOException {
-        String result = Request.post(URL)
+        String result = Request.post(COOKIE_URL)
                 .connectTimeout(Timeout.of(5, TimeUnit.SECONDS))
                 .responseTimeout(Timeout.of(5, TimeUnit.SECONDS))
                 .addHeader(new BasicHeader("Cookie", "cny=1"))
