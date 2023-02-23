@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
+ * EpitomeApplication
+ *
  * @author ljh
  * @since 2019/8/8 19:39
  */

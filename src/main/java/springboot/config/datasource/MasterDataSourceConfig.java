@@ -16,6 +16,8 @@ import org.springframework.util.ResourceUtils;
 import java.util.Objects;
 
 /**
+ * MasterDataSourceConfig
+ *
  * @author ljh
  * @since 2019/8/8 19:39
  */

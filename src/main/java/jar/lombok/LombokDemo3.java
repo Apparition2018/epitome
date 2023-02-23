@@ -18,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 /**
+ * Lombok
+ *
  * @author ljh
  * @since 2019/8/8 19:39
  */

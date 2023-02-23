@@ -1,4 +1,4 @@
-package jar.dom4j;
+package knowledge.xml.dom4j;
 
 import l.demo.Demo;
 import org.dom4j.*;
@@ -80,6 +80,9 @@ public class Dom4jDemo extends Demo {
         }
     }
 
+    /**
+     * 需引入 jaxen
+     */
     @Test
     public void xPath() throws DocumentException {
         SAXReader reader = new SAXReader();
@@ -87,8 +90,6 @@ public class Dom4jDemo extends Demo {
         String xpath = "//student[@id='1' or age='19']/name";
         // 根据 XPath 表达式 select
         List<Node> nodeList = doc.selectNodes(xpath);
-        for (Node node : nodeList) {
-            p(node.getText());
-        }
+        nodeList.forEach(node -> p(node.getText()));
     }
 }

@@ -3,6 +3,8 @@ package l.utils;
 import java.math.BigInteger;
 
 /**
+ * LUtils
+ *
  * @author ljh
  * @since 2020/9/7 1:28
  */
@@ -71,5 +73,4 @@ public class LUtils {
         }
         return sb.toString();
     }
-
 }

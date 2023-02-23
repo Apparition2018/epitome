@@ -1,4 +1,4 @@
-package jar.protostuff;
+package jar.google.protostuff;
 
 import io.protostuff.LinkedBuffer;
 import io.protostuff.ProtostuffIOUtil;

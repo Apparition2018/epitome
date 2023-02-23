@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
 
 /**
+ * School
+ *
  * @author ljh
  * @since 2019/8/8 19:39
  */

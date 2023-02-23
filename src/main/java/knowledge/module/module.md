@@ -9,4 +9,5 @@
 1. `--add-exports <source-module>/<package>=<target-module>(,<target-module>)*`
 2. `--add-opens <source-module>/<package>=<target-module>(,<target-module>)*`
 3. `--add-modules <module>(,<module>)*`
+- `-parameters -Xlint:unchecked --add-exports java.base/jdk.internal.vm.annotation=ALL-UNNAMED --add-modules jdk.incubator.vector --add-modules jdk.incubator.vector`
 ---

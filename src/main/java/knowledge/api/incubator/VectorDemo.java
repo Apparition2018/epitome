@@ -1,6 +1,7 @@
 package knowledge.api.incubator;
 
-import jdk.incubator.vector.DoubleVector;
+// import jdk.incubator.vector.DoubleVector;
+
 import l.demo.Demo;
 
 import java.io.IOException;
@@ -29,20 +30,20 @@ public class VectorDemo extends Demo {
         return DoubleStream.of(y).sum();
     }
 
-    /**
-     * va 是 a 的矢量表达形式
-     */
-    private static final DoubleVector va = DoubleVector.fromArray(DoubleVector.SPECIES_128, a, 0);
-    /**
-     * vx 是 x 的矢量表达形式
-     */
-    private static final DoubleVector vx = DoubleVector.fromArray(DoubleVector.SPECIES_128, x, 0);
-
-    private static Double sumInVector(DoubleVector va, DoubleVector vx) {
-        // 矢量运算
-        double[] y = va.mul(vx).toArray();
-        return DoubleStream.of(y).sum();
-    }
+    // /**
+    //  * va 是 a 的矢量表达形式
+    //  */
+    // private static final DoubleVector va = DoubleVector.fromArray(DoubleVector.SPECIES_128, a, 0);
+    // /**
+    //  * vx 是 x 的矢量表达形式
+    //  */
+    // private static final DoubleVector vx = DoubleVector.fromArray(DoubleVector.SPECIES_128, x, 0);
+    //
+    // private static Double sumInVector(DoubleVector va, DoubleVector vx) {
+    //     // 矢量运算
+    //     double[] y = va.mul(vx).toArray();
+    //     return DoubleStream.of(y).sum();
+    // }
 
     public static void main(String[] args) throws IOException {
         stopWatch.start("scalar");
@@ -54,7 +55,7 @@ public class VectorDemo extends Demo {
         // VM options: --add-modules jdk.incubator.vector
         stopWatch.start("vector");
         for (int i = 0; i < THOUSAND; i++) {
-            sumInVector(va, vx);
+            // sumInVector(va, vx);
         }
         stopWatch.stop();
 

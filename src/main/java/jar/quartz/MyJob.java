@@ -8,6 +8,8 @@ import org.quartz.JobExecutionContext;
 import java.util.Date;
 
 /**
+ * MyJob
+ *
  * @author ljh
  * @since 2019/8/8 19:39
  */

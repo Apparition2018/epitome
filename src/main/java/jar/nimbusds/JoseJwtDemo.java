@@ -49,7 +49,7 @@ import java.util.List;
  */
 public class JoseJwtDemo extends Demo {
 
-    private static String secret = DigestUtils.md5DigestAsHex("test".getBytes(StandardCharsets.UTF_8));
+    private static final String SECRET = DigestUtils.md5DigestAsHex("test".getBytes(StandardCharsets.UTF_8));
 
     public static void main(String[] args) throws JsonProcessingException, JOSEException, ParseException {
         PayloadDto payloadDto = new PayloadDto()
@@ -59,9 +59,9 @@ public class JoseJwtDemo extends Demo {
                 .setUsername(MY_NAME)
                 .setAuthorities(Collections.singletonList("ADMIN"));
 
-        String token = generateTokenByHMAC(jsonMapper.writeValueAsString(payloadDto), secret);
+        String token = generateTokenByHMAC(jsonMapper.writeValueAsString(payloadDto), SECRET);
         p("token = " + token);
-        p(verifyTokenByHMAC(token, secret));
+        p(verifyTokenByHMAC(token, SECRET));
     }
 
     /**

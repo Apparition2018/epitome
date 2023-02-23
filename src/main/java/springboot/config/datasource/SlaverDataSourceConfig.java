@@ -15,6 +15,8 @@ import org.springframework.util.ResourceUtils;
 import java.util.Objects;
 
 /**
+ * SlaverDataSourceConfig
+ *
  * @author ljh
  * @since 2019/8/8 19:39
  */

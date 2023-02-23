@@ -1,14 +1,13 @@
 package knowledge.annotation;
 
-import jdk.internal.vm.annotation.Contended;
+// import jdk.internal.vm.annotation.Contended;
+
 import l.demo.Animal.Chicken;
 import l.demo.Demo;
-import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
 
 /**
  * JDKAnnotation
@@ -81,46 +80,46 @@ public class JDKAnnotation extends Demo {
         return list;
     }
 
-    /**
-     * Contended
-     * <p>JDK8 新增的注解，减少伪共享(False Sharing)的发生
-     *
-     * @see <a href="https://www.zhihu.com/zvideo/1312762510748577792">伪共享问题及如何解决方案</a>
-     */
-    static class ContendedDemo {
-        private volatile long x;
-        private volatile long y;
-        @Contended
-        private volatile long x2;
-        @Contended
-        private volatile long y2;
-
-        @Test
-        public void contented() throws InterruptedException {
-            Thread t1 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> x = i));
-            Thread t2 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> y = i));
-            stopWatch.start("contented not used");
-            t1.start();
-            t2.start();
-            t1.join();
-            t2.join();
-            stopWatch.stop();
-
-            Thread t3 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> x2 = i));
-            Thread t4 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> y2 = i));
-            stopWatch.start("contented used");
-            t3.start();
-            t4.start();
-            t3.join();
-            t4.join();
-            stopWatch.stop();
-
-            p(stopWatch.prettyPrint());
-            // ---------------------------------------------
-            // ns         %     Task name
-            // ---------------------------------------------
-            // 197255399  066%  contented not used
-            // 102313399  034%  contented used
-        }
-    }
+    // /**
+    //  * Contended
+    //  * <p>JDK8 新增的注解，减少伪共享(False Sharing)的发生
+    //  *
+    //  * @see <a href="https://www.zhihu.com/zvideo/1312762510748577792">伪共享问题及如何解决方案</a>
+    //  */
+    // static class ContendedDemo {
+    //     private volatile long x;
+    //     private volatile long y;
+    //     @Contended
+    //     private volatile long x2;
+    //     @Contended
+    //     private volatile long y2;
+    //
+    //     @Test
+    //     public void contented() throws InterruptedException {
+    //         Thread t1 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> x = i));
+    //         Thread t2 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> y = i));
+    //         stopWatch.start("contented not used");
+    //         t1.start();
+    //         t2.start();
+    //         t1.join();
+    //         t2.join();
+    //         stopWatch.stop();
+    //
+    //         Thread t3 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> x2 = i));
+    //         Thread t4 = new Thread(() -> IntStream.rangeClosed(1, HUNDRED_MILLION).forEach(i -> y2 = i));
+    //         stopWatch.start("contented used");
+    //         t3.start();
+    //         t4.start();
+    //         t3.join();
+    //         t4.join();
+    //         stopWatch.stop();
+    //
+    //         p(stopWatch.prettyPrint());
+    //         // ---------------------------------------------
+    //         // ns         %     Task name
+    //         // ---------------------------------------------
+    //         // 197255399  066%  contented not used
+    //         // 102313399  034%  contented used
+    //     }
+    // }
 }

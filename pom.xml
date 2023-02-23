@@ -35,7 +35,6 @@
         <commons-csv.version>1.9.0</commons-csv.version>
         <commons-email.version>1.5</commons-email.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
-        <hutool.version>5.8.12</hutool.version>
         <curator.version>5.4.0</curator.version>
         <tika.version>2.7.0</tika.version>
         <jsoup.version>1.15.3</jsoup.version>
@@ -46,22 +45,23 @@
         <minio.version>8.5.1</minio.version>
         <fastjson.version>1.2.83</fastjson.version>
         <protostuff.version>1.8.0</protostuff.version>
-        <javacv.version>1.5.8</javacv.version>
         <jave2.version>3.3.1</jave2.version>
+        <javacv.version>1.5.8</javacv.version>
         <dom4j.version>2.1.4</dom4j.version>
         <springdoc.version>1.6.14</springdoc.version>
-        <cglib.version>3.3.0</cglib.version>
         <jmh.version>1.36</jmh.version>
-        <zxing.version>3.5.1</zxing.version>
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <kaptcha.version>2.3.2</kaptcha.version>
-        <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
-        <lucene-analyzers-smartcn.version>8.11.2</lucene-analyzers-smartcn.version>
-        <jol-core.version>0.16</jol-core.version>
-        <oshi.version>6.4.0</oshi.version>
-        <jsch.version>0.1.55</jsch.version>
-        <thumbnailator.version>0.4.19</thumbnailator.version>
+        <hutool.version>5.8.12</hutool.version>
+        <cglib.version>3.3.0</cglib.version>
         <emoji.version>5.1.1</emoji.version>
+        <jsch.version>0.1.55</jsch.version>
+        <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
+        <zxing.version>3.5.1</zxing.version>
+        <lucene-analyzers-smartcn.version>8.11.2</lucene-analyzers-smartcn.version>
+        <oshi.version>6.4.0</oshi.version>
+        <jol-core.version>0.16</jol-core.version>
+        <thumbnailator.version>0.4.19</thumbnailator.version>
         <truelicense.version>1.33</truelicense.version>
         <!-- plugin -->
         <mybatis-generator-maven-plugin.version>1.4.1</mybatis-generator-maven-plugin.version>
@@ -163,6 +163,7 @@
             <artifactId>jedis</artifactId>
         </dependency>
 
+        <!-- caffeine：高性能本地缓存 -->
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
@@ -209,13 +210,6 @@
                     <artifactId>commons-io</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <!-- hutool：https://www.hutool.cn/docs/#/ -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool.version}</version>
         </dependency>
 
         <!-- curator：操作 zookeeper -->
@@ -292,7 +286,7 @@
         </dependency>
 
         <!-- htmlunit：用于测试基于 web 的应用程序的无头浏览器
-            包含了 commons-net -->
+            包含了 commons-net, httpclient -->
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
@@ -323,19 +317,19 @@
             <version>${protostuff.version}</version>
         </dependency>
 
-        <!-- javacv：封装 OpenCV/FFmpeg 等
-            https://github.com/bytedeco/javacv -->
-        <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>javacv-platform</artifactId>
-            <version>${javacv.version}</version>
-        </dependency>
-
         <!-- jave2：封装 FFmpeg -->
         <dependency>
             <groupId>ws.schild</groupId>
             <artifactId>jave-all-deps</artifactId>
             <version>${jave2.version}</version>
+        </dependency>
+
+        <!-- javacv：封装 OpenCV、FFmpeg 等 TODO-LJH
+            https://github.com/bytedeco/javacv -->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv-platform</artifactId>
+            <version>${javacv.version}</version>
         </dependency>
 
         <!-- dom4j：灵活的 Java XML 框架 -->
@@ -361,20 +355,7 @@
             <version>${springdoc.version}</version>
         </dependency>
 
-        <!-- cglib：Code 生成，动态代理 -->
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib-nodep</artifactId>
-            <version>${cglib.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- jmh：微基准测试 -->
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
@@ -385,12 +366,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>${zxing.version}</version>
         </dependency>
 
         <dependency>
@@ -405,31 +380,25 @@
             <version>${kaptcha.version}</version>
         </dependency>
 
+        <!-- hutool：https://www.hutool.cn/docs/#/ -->
         <dependency>
-            <groupId>io.github.biezhi</groupId>
-            <artifactId>TinyPinyin</artifactId>
-            <version>${TinyPinyin.version}</version>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
         </dependency>
 
-        <!-- lucene：中文智能分析 -->
+        <!-- cglib：Code 生成，动态代理 -->
         <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers-smartcn</artifactId>
-            <version>${lucene-analyzers-smartcn.version}</version>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>${cglib.version}</version>
+            <scope>compile</scope>
         </dependency>
 
-        <!-- 内存可视化工具 -->
         <dependency>
-            <groupId>org.openjdk.jol</groupId>
-            <artifactId>jol-core</artifactId>
-            <version>${jol-core.version}</version>
-        </dependency>
-
-        <!-- oshi：获取系统和硬件信息工具 -->
-        <dependency>
-            <groupId>com.github.oshi</groupId>
-            <artifactId>oshi-core</artifactId>
-            <version>${oshi.version}</version>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>emoji-java</artifactId>
+            <version>${emoji.version}</version>
         </dependency>
 
         <!-- jsch：SSH2 的 Java 实现 -->
@@ -439,17 +408,44 @@
             <version>${jsch.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.github.biezhi</groupId>
+            <artifactId>TinyPinyin</artifactId>
+            <version>${TinyPinyin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>${zxing.version}</version>
+        </dependency>
+
+        <!-- lucene：中文智能分析 -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-smartcn</artifactId>
+            <version>${lucene-analyzers-smartcn.version}</version>
+        </dependency>
+
+        <!-- oshi：获取系统和硬件信息工具 -->
+        <dependency>
+            <groupId>com.github.oshi</groupId>
+            <artifactId>oshi-core</artifactId>
+            <version>${oshi.version}</version>
+        </dependency>
+
+        <!-- 内存可视化工具 -->
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>${jol-core.version}</version>
+        </dependency>
+
         <!-- thumbnailator：一个 Java 的缩略图生成库 -->
         <dependency>
             <groupId>net.coobird</groupId>
             <artifactId>thumbnailator</artifactId>
             <version>${thumbnailator.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.vdurmont</groupId>
-            <artifactId>emoji-java</artifactId>
-            <version>${emoji.version}</version>
         </dependency>
 
         <!-- truelicense：安全许可证管理

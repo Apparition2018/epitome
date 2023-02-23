@@ -7,6 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * <a href="https://jsoup.org/apidocs/">Jsoup</a>
@@ -35,6 +36,6 @@ public class JsoupDemo extends Demo {
         Element su = document.getElementById("su");
 
         // 获取一个表单元素的值 (input, textarea 等)
-        p(su.val()); // 百度一下
+        p(Objects.requireNonNull(su).val()); // 百度一下
     }
 }

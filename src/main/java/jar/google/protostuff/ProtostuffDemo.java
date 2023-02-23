@@ -1,9 +1,11 @@
-package jar.protostuff;
+package jar.google.protostuff;
 
 import com.google.common.collect.Lists;
 import l.demo.Person;
 
 /**
+ * Protostuff
+ *
  * @author ljh
  * @since 2019/8/8 19:39
  */

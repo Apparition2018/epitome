@@ -1,30 +1,31 @@
-// JavaIO三剑客之BIO/NIO/AIO：https://coding.imooc.com/class/chapter/381.html
-// xxl-job
-// Xerces, jaxb
-// asm, Cglib Nodep
-// iText, FOP
-// YunGouOS
-// WebFlux：https://mp.weixin.qq.com/s?__biz=MzA5MzQ2NTY0OA==&mid=2650796733&idx=1&sn=b54cd0c3e18a6fcf04821047e22f3119
-// Arthas
-// rabbitmq, kafka, rocketmq
-// spring cloud, dubbo
-// BladeX + Saber
-// k8s
-// Guns, RuoYi, SpringBlade, ShopXO
-// Jeecg-Boot
-// LuckyFrameWeb
-// uni-app, Flutter, avue, Ant Design
-// 高效使用 IntelliJ IDEA：https://fangshixiang.blog.csdn.net/article/details/119411518
-// Hystrix
+// Kubernetes                   容器编排引擎
+// Spring Cloud
+// Spring Security
+//      https://blog.csdn.net/liuminglei1987/category_10122574.html
+// Spring Security + CAS        中央认证服务
+// Spring Batch
+//      https://blog.csdn.net/masson32/category_9008923.html
+// xxl-job                      分布式任务调度平台
+// itextpdf                     生成 PDF
+// YunGouOS                     聚合支付
+// IJpay                        聚合支付
+// SpringBlade (BladeX + Saber) SaaS 多租户微服务平台
+// ShopXO                       企业级 B2C 开源电商平台
+// RuoYi                        后台管理系统
+// Guns                         后台管理系统
+// rabbitmq, kafka, rocketmq    消息队列
+// JeecgBoot                    基于 BPM 的低代码平台
+// WebFlux                      响应式编程
+// BIO/NIO/AIO                  网络编程
+//      https://coding.imooc.com/class/chapter/381.html
+// LuckyFrameWeb                测试平台
+// Arthas                       线上监控诊断
+//      https://arthas.aliyun.com/doc/
 
-// 微信 Native 支付：https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_4_1.shtml
-// IJPay：https://gitee.com/javen205/IJPay/tree/master
+// uni-app
+// Flutter
 
-// 龙虾三少
-// CSDN 阿_毅
-// 林祥纤 SpringBoot
-
-// TODO-LJH Java 新特性
+// 秒杀系统：https://coding.imooc.com/class/338.html
 
 import l.demo.Demo;
 

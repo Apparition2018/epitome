@@ -1,8 +1,8 @@
 package jar.javax.activation;
 
+import jakarta.activation.MimetypesFileTypeMap;
 import l.demo.Demo;
 
-import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
 
 /**
