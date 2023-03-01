@@ -15,8 +15,15 @@
         <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
-    <!-- 激活 ${…} 占位符的替换：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#xsd-schemas-context-pphc -->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- 激活 ${…} 占位符的替换：https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#xsd-schemas-context-pphc
+        system-properties-mode：
+            ENVIRONMENT 使用 Spring 3.1 提供的 PropertySourcePlaceholderConfigurer，其它使用 Spring 3.1 之前的 PropertyPlaceholderConfigurer
+            ENVIRONMENT 先在 System 属性查找，再在 properties 文件查找
+            NEVER       只在 properties 文件查找，不在 System 属性查找
+            FALLBACK    先在 properties 文件查找，再在 System 属性查找
+            OVERRIDE    Spring 3.1 之前的 ENVIRONMENT 
+            -->
+    <context:property-placeholder location="classpath:jdbc.properties" system-properties-mode="FALLBACK"/>
 
     <!-- Druid 数据源 -->
     <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">

@@ -60,7 +60,7 @@
     1. Settings → Editor → General → Code Folding
     2. Fold by default: → Genral → Imports 取消勾选
 ---
-## Editor Tabs
+## Editor Tabs (-o)
     1. Settings → Editor → General → Editor Tabs
     2. Show tabs in one row 取消勾选
 ---
