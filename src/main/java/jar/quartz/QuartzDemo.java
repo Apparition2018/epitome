@@ -10,16 +10,21 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Quartz
+ * <pre>
  * cron 表达式：秒 分 时 日 月 周 年
  * *：可用在所有字段，表示每
  * ?：只能用在日或周，日或周只能有一个字段为特定值（*或数字），另一个字段为 ?
  * -：范围
  * ,：列表
  * /：等步长，如 0/3 表示从0开始每3秒执行
- * <p>
- * RuoYi 定时任务 (ruoyi-quartz)：http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1
- * 在线Cron表达式生成器：https://cron.qqe2.com/
- * Java 定时任务的6种实现方式：https://mp.weixin.qq.com/s/CtpcHJLkbkub06SBf6Ajbg
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#定时任务">RuoYi 定时任务 (ruoyi-quartz)</a>
+ * <a href="https://blog.csdn.net/userlhj/article/details/89510837">Spring 继承 Quartz</a>
+ * <a href="https://cron.qqe2.com/">在线 Cron 表达式生成器</a>
+ * <a href="https://mp.weixin.qq.com/s/CtpcHJLkbkub06SBf6Ajbg">Java 定时任务的6种实现方式</a>
+ * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39

@@ -109,7 +109,7 @@
         2.3 Description: TODO-LJH
         2.4 Template text: // TODO-LJH: $date$ $todo$
         2.5 Edit variables: Name:date → Expression:date()
-        2.6 Change → Java → Statement 勾选
+        2.6 Change → Java → Declaration, Statement 勾选
 ---
 ## Use eclipse compiler (-g|-e)
     1. Settings → Build, Execution, Deployment

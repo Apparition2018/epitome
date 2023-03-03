@@ -127,7 +127,7 @@
                     const o = {
                         "M+": this.getMonth() + 1,                  // 月份
                         "d+": this.getDate(),                       // 日
-                        "h+": this.getHours(),                      // 小时
+                        "H+": this.getHours(),                      // 小时
                         "m+": this.getMinutes(),                    // 分
                         "s+": this.getSeconds(),                    // 秒
                         "S": this.getMilliseconds(),                // 毫秒
@@ -147,7 +147,23 @@
 
             addDateFormat();
 
-            (new Date).format('yyyy-MM-dd 第 q 季度 hh:mm:ss:S'); // 2018-10-19 第 4 季度 11:28:27:196
+            // 2018-10-19 第 4 季度 11:28:27:196
+            (new Date).format('yyyy-MM-dd 第 q 季度 HH:mm:ss:S');
+        </script>
+    </section>
+
+    <section class="code-wrap h150">
+        <div class="css-live-wrap w33p">
+            <div class="caption">yyyy-MM-dd 和 yyyy/MM/dd 的区别</div>
+            <div class="centered">
+            </div>
+        </div>
+        <script class="code w67p" contenteditable="true">
+            // Fri Aug 08 2008 08:00:00 GMT+0800 (中国标准时间)
+            console.log(new Date('2008-08-08'));
+
+            // Fri Aug 08 2008 00:00:00 GMT+0800 (中国标准时间)
+            console.log(new Date('2008/08/08'));
         </script>
     </section>
 </body>
