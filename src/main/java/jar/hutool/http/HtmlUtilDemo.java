@@ -1,7 +1,8 @@
 package jar.hutool.http;
 
 import cn.hutool.http.HtmlUtil;
-import l.demo.Demo;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://hutool.cn/docs/#/http/HTML工具类-HtmlUtil">HtmlUtil</a>
@@ -11,7 +12,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/2 23:35
  */
-public class HtmlUtilDemo extends Demo {
+public class HtmlUtilDemo {
 
     public static void main(String[] args) {
         // filter(html)                     过滤 html 文本，防止 XSS 攻击

@@ -1,11 +1,11 @@
 package knowledge.datetime;
 
-import l.demo.Demo;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/DateFormat.html">DateFormat</a>
@@ -28,7 +28,7 @@ import java.util.Locale;
  * @author ljh
  * @since 2020/9/3 10:39
  */
-public class DateFormatDemo extends Demo {
+public class DateFormatDemo {
 
     // static DateFormat	getInstance()
     // 获取为日期和时间使用 SHORT 风格的默认日期/时间格式器
@@ -38,7 +38,8 @@ public class DateFormatDemo extends Demo {
     // 获取日期/时间格式器，该格式器具有给定语言环境的给定格式化风格
     // static DateFormat	getTimeInstance([int style[, Locale aLocale]])
     // 获取时间格式器，该格式器具有给定语言环境的给定格式化风格
-    private static final DateFormat FORMAT = DateFormat.getDateInstance();
+    private static final DateFormat DATE_FORMAT = DateFormat.getDateInstance();
+    private static final DateFormat DATE_TIME_FORMAT = DateFormat.getDateTimeInstance();
     private static final DateFormat SHORT_FORMAT = DateFormat.getDateInstance(DateFormat.SHORT, Locale.ENGLISH);
     private static final DateFormat MEDIUM_FORMAT = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.ENGLISH);
     private static final DateFormat LONG_FORMAT = DateFormat.getDateInstance(DateFormat.LONG, Locale.ENGLISH);
@@ -46,18 +47,20 @@ public class DateFormatDemo extends Demo {
 
     public static void main(String[] args) throws ParseException {
         // String       format(Date date)           将一个 Date 格式化为日期/时间字符串
-        String date = FORMAT.format(new Date());
-        p(date);        // 2021-5-13
+        String date = DATE_FORMAT.format(new Date());
+        p(date);        // 2023年3月13日
+        String dateTime = DATE_TIME_FORMAT.format(new Date());
+        p(dateTime);    // 2023年3月13日 下午5:33:27
         String shortDate = SHORT_FORMAT.format(new Date());
-        p(shortDate);   // 5/13/21
+        p(shortDate);   // 3/13/23
         String mediumDate = MEDIUM_FORMAT.format(new Date());
-        p(mediumDate);  // May 13, 2021
+        p(mediumDate);  // Mar 13, 2023
         String longDate = LONG_FORMAT.format(new Date());
-        p(longDate);    // May 13, 2021
+        p(longDate);    // March 13, 2023
         String fullDate = FULL_FORMAT.format(new Date());
-        p(fullDate);    // Thursday, May 13, 2021
+        p(fullDate);    // Monday, March 13, 2023
 
         // Date	p       parse(String source)       从给定字符串的开始解析文本，以生成一个日期
-        System.out.println(SHORT_FORMAT.parse(shortDate));  // Thu May 13 00:00:00 CST 2021
+        System.out.println(SHORT_FORMAT.parse(shortDate));  // Mon Mar 13 00:00:00 CST 2023
     }
 }

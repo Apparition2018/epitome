@@ -1,7 +1,5 @@
 package knowledge.concurrent.util;
 
-import l.demo.Demo;
-
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class SemaphoreDemo extends Demo {
+public class SemaphoreDemo {
 
     /**
      * Semaphore 可以用于做流量控制，特别公用资源有限的应用场景，比如数据库连接。假如有一个需求，要读取几万个文件的数据，
@@ -48,7 +46,7 @@ public class SemaphoreDemo extends Demo {
                     // 返回此信号量中当前可用的许可数
                     // int	    getQueueLength()
                     // 返回正在等待获取的线程的估计数目
-                    p("save data " + num + ", available permits " + semaphore.availablePermits() + ", await " + semaphore.getQueueLength());
+                    System.out.println("save data " + num + ", available permits " + semaphore.availablePermits() + ", await " + semaphore.getQueueLength());
                     // void	    release([int permits])
                     // 释放给定数目的许可，将其返回到信号量
                     semaphore.release();

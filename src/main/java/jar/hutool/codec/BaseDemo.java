@@ -4,8 +4,9 @@ import cn.hutool.core.codec.Base32;
 import cn.hutool.core.codec.Base62;
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.lang.Console;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
+
+import static l.demo.Demo.BAIDU_URL;
 
 /**
  * Base
@@ -13,7 +14,7 @@ import org.junit.jupiter.api.Test;
  * @author ljh
  * @since 2020/11/5 14:11
  */
-public class BaseDemo extends Demo {
+public class BaseDemo {
 
     private String encode;
     private String decode;

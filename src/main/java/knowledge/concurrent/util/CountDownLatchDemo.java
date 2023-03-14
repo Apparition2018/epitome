@@ -91,9 +91,9 @@ public class CountDownLatchDemo extends Demo {
         int count = 0;
         // 统计总分
         for (Future<Integer> future : futures) {
-            System.out.println(future.get());
+            p(future.get());
             count += future.get();
         }
-        System.out.println("平均分数为：" + count / num);
+        p("平均分数为：" + count / num);
     }
 }

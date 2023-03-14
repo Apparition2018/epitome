@@ -1,11 +1,12 @@
 package jar.apache.commons.compress;
 
-import l.demo.Demo;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+
+import static l.demo.Demo.DEMO_FILE_PATH;
 
 /**
  * BZip2 文件压缩/解压工具
@@ -14,7 +15,7 @@ import java.io.*;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class BZip2Utils extends Demo {
+public class BZip2Utils {
 
     private static final int BUFFER = 1024;
     private static final CharSequence EXT = ".bz2";

@@ -3,8 +3,9 @@ package jar.hutool.http;
 import cn.hutool.core.net.multipart.UploadFile;
 import cn.hutool.http.ContentType;
 import cn.hutool.http.HttpUtil;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
+
+import static l.demo.Demo.DEMO_PATH;
 
 /**
  * <a href="https://hutool.cn/docs/#/http/Server/简易Http服务器-SimpleServer">SimpleServer</a>   简易 Http 服务器
@@ -14,7 +15,7 @@ import org.junit.jupiter.api.Test;
  * @author ljh
  * @since 2020/11/2 23:40
  */
-public class SimpleServerDemo extends Demo {
+public class SimpleServerDemo {
 
     @Test
     public void addAction() {

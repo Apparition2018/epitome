@@ -1,10 +1,10 @@
 package knowledge.syntactic.sugar.generic;
 
-import l.demo.Demo;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import static l.demo.Demo.p;
 
 /**
  * Java 的泛型采用的是擦除法实现的伪泛型，因为 Java 开始是不支持泛型的，为了兼容以前的库不得不使用擦除法
@@ -20,7 +20,7 @@ import java.util.Objects;
  * @author ljh
  * @since 2019/9/9 00:51
  */
-public class TypeErasure extends Demo {
+public class TypeErasure {
     public static void main(String[] args) {
         // 1.泛型的 class 对象是相同的
         List<String> ls = new ArrayList<>();

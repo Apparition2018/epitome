@@ -2,13 +2,14 @@ package knowledge.reflect.proxy;
 
 import knowledge.reflect.proxy.domain.Man;
 import knowledge.reflect.proxy.domain.People;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+
+import static l.demo.Demo.p;
 
 /**
  * DynamicProxy     动态代理
@@ -21,7 +22,7 @@ import java.lang.reflect.Proxy;
  * @author ljh
  * @since 2020/11/9 17:51
  */
-public class DynamicProxy extends Demo {
+public class DynamicProxy {
 
     @Test
     public void testDynamicProxy1() {

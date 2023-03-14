@@ -1,10 +1,11 @@
 package jar.apache.commons.lang3;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
 
 import java.util.Collections;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ClassUtils.html">ClassUtils</a>
@@ -12,7 +13,7 @@ import java.util.Collections;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class ClassUtilsDemo extends Demo {
+public class ClassUtilsDemo {
 
     public static void main(String[] args) throws ClassNotFoundException {
         // static List<String>	        convertClassesToClassNames(List<Class<?>> classes)

@@ -1,7 +1,8 @@
 package jar.hutool.lang;
 
 import cn.hutool.core.lang.Assert;
-import l.demo.Demo;
+
+import static l.demo.Demo.list;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/语言特性/断言-Assert">Assert</a>
@@ -11,7 +12,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/3 1:56
  */
-public class AssertDemo extends Demo {
+public class AssertDemo {
 
     /**
      * isTrue(boolean expression, ...), isFalse(boolean expression, ...)

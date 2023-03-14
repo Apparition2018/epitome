@@ -1,8 +1,9 @@
 package jar.apache.commons.lang3;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.jupiter.api.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ArrayUtils.html">ArrayUtils</a>
@@ -26,7 +27,7 @@ import org.junit.jupiter.api.Test;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class ArrayUtilsDemo extends Demo {
+public class ArrayUtilsDemo {
 
     @Test
     public void constant() {

@@ -3,11 +3,12 @@ package knowledge.annotation;
 // import jdk.internal.vm.annotation.Contended;
 
 import l.demo.Animal.Chicken;
-import l.demo.Demo;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static l.demo.Demo.p;
 
 /**
  * JDKAnnotation
@@ -23,7 +24,7 @@ import java.util.List;
  * @author ljh
  * @since 2020/9/18 10:13
  */
-public class JDKAnnotation extends Demo {
+public class JDKAnnotation {
 
     /**
      * deprecation              过期

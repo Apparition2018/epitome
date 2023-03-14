@@ -1,6 +1,5 @@
 package springboot.resolver.argument;
 
-import l.demo.Demo;
 import l.demo.Person;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
@@ -10,13 +9,15 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+import static l.demo.Demo.personList;
+
 /**
  * ArgumentResolver 参数解析器
  *
  * @author ljh
  * @since 2021/8/11 15:02
  */
-public class PersonArgumentResolver extends Demo implements HandlerMethodArgumentResolver {
+public class PersonArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return Person.class.equals(parameter.getParameterType());

@@ -8,8 +8,6 @@ import org.apache.commons.lang3.time.DateUtils;
 import java.text.ParseException;
 import java.util.Date;
 
-import static l.demo.Demo.p;
-
 /**
  * <a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/ConvertUtils.html">ConvertUtils</a>
  * <pre>
@@ -36,9 +34,9 @@ public class ConvertUtilsDemo {
         }, Date.class);
 
         String DateStr = "2008-08-08 20:08:08";
-        p(ConvertUtils.convert(DateStr, Date.class));       // Fri Aug 08 20:08:08 CST 2008
+        System.out.println(ConvertUtils.convert(DateStr, Date.class));       // Fri Aug 08 20:08:08 CST 2008
 
         String[] DateStrArr = new String[]{DateStr, DateStr};
-        p(ConvertUtils.convert(DateStrArr, Date.class));    // [Fri Aug 08 20:08:08 CST 2008, Fri Aug 08 20:08:08 CST 2008]
+        System.out.println(ConvertUtils.convert(DateStrArr, Date.class));    // [Fri Aug 08 20:08:08 CST 2008, Fri Aug 08 20:08:08 CST 2008]
     }
 }

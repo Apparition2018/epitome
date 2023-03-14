@@ -4,10 +4,11 @@ import cn.hutool.core.io.watch.SimpleWatcher;
 import cn.hutool.core.io.watch.WatchMonitor;
 import cn.hutool.core.io.watch.watchers.DelayWatcher;
 import cn.hutool.core.lang.Console;
-import l.demo.Demo;
 
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;
+
+import static l.demo.Demo.DEMO_PATH;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/IO/文件监听-WatchMonitor">WatchMonitor</a>    文件监听
@@ -23,7 +24,7 @@ import java.nio.file.WatchEvent;
  * @author ljh
  * @since 2020/10/30 15:48
  */
-public class WatchMonitorDemo extends Demo {
+public class WatchMonitorDemo {
 
     public static void main(String[] args) {
         // crete(File/Path/path/URI/URL[, maxDepth], WatchEvent.Kind<?>...)     创建并初始化监听

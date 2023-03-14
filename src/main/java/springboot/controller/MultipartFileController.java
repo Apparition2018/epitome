@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jar.apache.poi.ExcelUtils;
-import l.demo.Demo;
 import l.demo.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
@@ -29,6 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import static l.demo.Demo.DEMO_ABSOLUTE_PATH;
+
 /**
  * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD">RuoYi 上传下载 (CommonController)</a>
  *
@@ -39,7 +40,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping("multipart-file")
 @Tag(name = "MultipartFile")
-public class MultipartFileController extends Demo {
+public class MultipartFileController {
 
     /**
      * <a href="http://localhost:3333/front/html/elements/内联文本语义/a-demo.html">a-demo.html</a>

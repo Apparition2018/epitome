@@ -16,6 +16,8 @@ import springboot.domain.master.Demo;
 import java.io.Serial;
 import java.sql.SQLException;
 
+import static l.demo.Demo.pe;
+
 /**
  * TransactionalService
  *
@@ -67,22 +69,22 @@ public class TransactionalService {
             TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
                 @Override
                 public void beforeCommit(boolean readOnly) {
-                    System.err.println("beforeCommit: " + readOnly);
+                    pe("beforeCommit: " + readOnly);
                 }
 
                 @Override
                 public void beforeCompletion() {
-                    System.err.println("beforeCompletion");
+                    pe("beforeCompletion");
                 }
 
                 @Override
                 public void afterCommit() {
-                    System.err.println("afterCommit");
+                    pe("afterCommit");
                 }
 
                 @Override
                 public void afterCompletion(int status) {
-                    System.err.println("afterCompletion: " + status);
+                    pe("afterCompletion: " + status);
                 }
             });
         }
@@ -93,13 +95,13 @@ public class TransactionalService {
     @Async
     @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
     public void beforeCommit(MyEvent event) {
-        System.err.println("before commit: " + event.getSource());
+        pe("before commit: " + event.getSource());
     }
 
     @Async
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMPLETION)
     public void afterCompletion(MyEvent event) {
-        System.err.println("after completion: " + event.getSource());
+        pe("after completion: " + event.getSource());
     }
 
     private static class MyEvent extends ApplicationEvent {

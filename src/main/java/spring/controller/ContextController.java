@@ -11,6 +11,8 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 import java.util.Arrays;
 import java.util.Objects;
 
+import static l.demo.Demo.pe;
+
 /**
  * ContextController
  *
@@ -26,13 +28,13 @@ public class ContextController {
         // Spring 上下文
         // configLocations: applicationContext.xml
         WebApplicationContext ac1 = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext());
-        System.err.println(Objects.requireNonNull(ac1).getDisplayName());   // Root WebApplicationContext
-        System.err.println(Arrays.toString(ac1.getBeanDefinitionNames()));
+        pe(Objects.requireNonNull(ac1).getDisplayName());   // Root WebApplicationContext
+        pe(Arrays.toString(ac1.getBeanDefinitionNames()));
 
         // SpringMVC 上下文
         // configLocations: spring-servlet.xml
         WebApplicationContext ac2 = RequestContextUtils.findWebApplicationContext(request);
-        System.err.println(Objects.requireNonNull(ac2).getDisplayName());   // WebApplicationContext for namespace 'spring-mvc-servlet'
-        System.err.println(Arrays.toString(ac2.getBeanDefinitionNames()));
+        pe(Objects.requireNonNull(ac2).getDisplayName());   // WebApplicationContext for namespace 'spring-mvc-servlet'
+        pe(Arrays.toString(ac2.getBeanDefinitionNames()));
     }
 }

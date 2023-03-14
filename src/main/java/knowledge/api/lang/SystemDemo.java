@@ -1,7 +1,8 @@
 package knowledge.api.lang;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/System.html">System</a>
@@ -24,7 +25,7 @@ import org.junit.jupiter.api.Test;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class SystemDemo extends Demo {
+public class SystemDemo {
 
     /**
      * static void	        arraycopy(Object src, int srcPos, Object dest, int destPos, int length)

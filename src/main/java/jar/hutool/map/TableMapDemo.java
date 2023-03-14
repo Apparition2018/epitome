@@ -1,7 +1,8 @@
 package jar.hutool.map;
 
 import cn.hutool.core.map.TableMap;
-import l.demo.Demo;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/Map/可重复键值Map-TableMap">TableMap</a>   可重复键 Map
@@ -11,7 +12,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/2 11:49
  */
-public class TableMapDemo extends Demo {
+public class TableMapDemo {
 
     public static void main(String[] args) {
         Integer[] keys = new Integer[]{1, 2, 2, 3, 3, 3};

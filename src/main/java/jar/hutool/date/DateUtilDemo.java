@@ -12,12 +12,11 @@ import java.util.Date;
 import java.util.stream.IntStream;
 
 /**
- * DateUtil
- * <p>
+ * <a href="https://hutool.cn/docs/#/core/日期时间/日期时间工具-DateUtil">DateUtil</a>
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/DateUtil.html">DateUtil api</a>
+ * <pre>
  * static int       compare(Date date1, Date date2)
- * <p>
- * https://hutool.cn/docs/#/core/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7-DateUtil
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/DateUtil.html
+ * </pre>
  *
  * @author ljh
  * @since 2020/10/26 22:16

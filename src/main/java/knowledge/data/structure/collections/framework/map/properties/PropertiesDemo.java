@@ -37,7 +37,7 @@ public class PropertiesDemo extends Demo {
         while (keys.hasMoreElements()) {
             String key = (String) keys.nextElement();
             // String	    getProperty(String key[, String defaultValue])  用指定的键在属性列表中搜索属性
-            System.out.println(key + " = " + props.getProperty(key));
+            p(key + " = " + props.getProperty(key));
         }
 
         // Object	        setProperty(String key, String value)           调用 Hashtable 的方法 put

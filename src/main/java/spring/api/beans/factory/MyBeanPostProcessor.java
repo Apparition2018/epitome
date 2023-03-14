@@ -4,6 +4,8 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.lang.NonNull;
 
+import static l.demo.Demo.pe;
+
 /**
  * MyBeanPostProcessor
  * 在 Spring 容器完成实例化、配置和初始化 Bean 之后实现一些自定义逻辑
@@ -14,18 +16,18 @@ import org.springframework.lang.NonNull;
 public class MyBeanPostProcessor implements BeanPostProcessor {
 
     public MyBeanPostProcessor() {
-        System.err.println("BeanPostProcessor's construct()");
+        pe("BeanPostProcessor's construct()");
     }
 
     @Override
     public Object postProcessBeforeInitialization(@NonNull Object bean, @NonNull String beanName) throws BeansException {
-        System.err.println("BeanPostProcessor's postProcessBeforeInitialization(): " + beanName);
+        pe("BeanPostProcessor's postProcessBeforeInitialization(): " + beanName);
         return BeanPostProcessor.super.postProcessBeforeInitialization(bean, beanName);
     }
 
     @Override
     public Object postProcessAfterInitialization(@NonNull Object bean, @NonNull String beanName) throws BeansException {
-        System.err.println("BeanPostProcessor's postProcessAfterInitialization(): " + beanName);
+        pe("BeanPostProcessor's postProcessAfterInitialization(): " + beanName);
         return BeanPostProcessor.super.postProcessAfterInitialization(bean, beanName);
     }
 }

@@ -1,6 +1,5 @@
 package knowledge.reflect;
 
-import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Home;
 
@@ -11,13 +10,15 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import static l.demo.Demo.p;
+
 /**
  * <a href="https://www.cnblogs.com/dreammyle/p/5610906.html">通过反射实现 JavaBean 与 Map 对象互相转化</a>
  *
  * @author ljh
  * @since 2020/11/11 19:18
  */
-public class ReflectExercise extends Demo {
+public class ReflectExercise {
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException {
         /* bean2Map */

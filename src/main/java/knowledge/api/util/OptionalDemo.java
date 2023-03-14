@@ -1,11 +1,12 @@
 package knowledge.api.util;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Stream;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">Optional</a>
@@ -19,7 +20,7 @@ import java.util.stream.Stream;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class OptionalDemo extends Demo {
+public class OptionalDemo {
 
     @Test
     public void testOptional1() {

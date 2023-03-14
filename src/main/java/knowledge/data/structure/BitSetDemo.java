@@ -5,22 +5,19 @@ import java.util.BitSet;
 import static l.demo.Demo.p;
 
 /**
- * BitSet
- * 实现了一个按需增长的位向量。位 set 的每个组件都有一个 boolean 值。
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/BitSet.html
- * Java中BitSet的使用及详解：https://blog.csdn.net/jiangnan2014/article/details/53735429
- * <p>
- * boolean	    get(int bitIndex)                   返回指定索引处的位值
- * BitSet	    get(int fromIndex, int toIndex)     返回一个新的 BitSet，它由此 BitSet 中从 fromIndex（包括）到 toIndex（不包括）范围内的位组成
- * <p>
- * void	        clear()                             将此 BitSet 中的所有位设置为 false
- * void	        clear(int bitIndex)                 将索引指定处的位设置为 false
- * void	        clear(int fromIndex, int toIndex)   将指定的 fromIndex（包括）到指定的 toIndex（不包括）范围内的位设置为 false
- * <p>
- * void	        flip(int bitIndex)                  将指定索引处的位设置为其当前值的补码
- * void	        flip(int fromIndex, int toIndex)    将指定的 fromIndex（包括）到指定的 toIndex（不包括）范围内的每个位设置为其当前值的补码
- * <p>
- * int	        cardinality()                       返回此 BitSet 中设置为 true 的位数
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/BitSet.html">BitSet</a>
+ * <p>实现了一个按需增长的位向量。位 set 的每个组件都有一个 boolean 值。
+ * <pre>
+ * boolean      get(int bitIndex)                   返回指定索引处的位值
+ * BitSet       get(int fromIndex, int toIndex)     返回一个新的 BitSet，它由此 BitSet 中从 fromIndex（包括）到 toIndex（不包括）范围内的位组成
+ * void         clear()                             将此 BitSet 中的所有位设置为 false
+ * void         clear(int bitIndex)                 将索引指定处的位设置为 false
+ * void         clear(int fromIndex, int toIndex)   将指定的 fromIndex（包括）到指定的 toIndex（不包括）范围内的位设置为 false
+ * void         flip(int bitIndex)                  将指定索引处的位设置为其当前值的补码
+ * void         flip(int fromIndex, int toIndex)    将指定的 fromIndex（包括）到指定的 toIndex（不包括）范围内的每个位设置为其当前值的补码
+ * int          cardinality()                       返回此 BitSet 中设置为 true 的位数
+ * </pre>
+ * 参考：<a href="https://blog.csdn.net/jiangnan2014/article/details/53735429">BitSet 使用详解</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

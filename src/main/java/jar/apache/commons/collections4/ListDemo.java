@@ -29,7 +29,7 @@ public class ListDemo extends Demo {
 
         CursorableLinkedList.Cursor<Integer> cursor = cursorableLinkedList.cursor();
         while (cursor.hasNext()) {
-            System.out.print(cursor.next() + " ");
+            p(cursor.next() + " ");
             cursor.remove();
         }
     }

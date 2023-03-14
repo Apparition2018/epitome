@@ -1,12 +1,13 @@
 package knowledge.design.pattern.gof.creational.prototype;
 
-import l.demo.Demo;
 import l.demo.Person;
 import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import static l.demo.Demo.p;
 
 /**
  * 原型模式：用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象
@@ -39,7 +40,7 @@ import java.util.Objects;
  * @author ljh
  * @since 2020/9/26 2:51
  */
-public class PrototypeDemo extends Demo {
+public class PrototypeDemo {
 
     /**
      * <a href="https://refactoringguru.cn/design-patterns/prototype/java/example">复制图形（不使用 Cloneable）</a>

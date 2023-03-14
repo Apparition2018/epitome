@@ -1,12 +1,13 @@
 package jar.apache.commons.email;
 
-import l.demo.Demo;
 import org.apache.commons.mail.*;
 import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+
+import static l.demo.Demo.BIRD_IMG;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-email/index.html">Commons Email</a>
@@ -15,7 +16,7 @@ import java.nio.charset.StandardCharsets;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class EMailDemo extends Demo {
+public class EMailDemo {
 
     /**
      * <a href="http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/SimpleEmail.html">SimpleEmail</a>

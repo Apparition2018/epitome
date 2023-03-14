@@ -1,7 +1,8 @@
 package jar.hutool.math;
 
 import cn.hutool.core.math.MathUtil;
-import l.demo.Demo;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/数学/数学相关-MathUtil">MathUtil</a>
@@ -11,7 +12,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/19 23:37
  */
-public class MathUtilDemo extends Demo {
+public class MathUtilDemo {
 
     public static void main(String[] args) {
         // 排列数，即A(n, n) = n!

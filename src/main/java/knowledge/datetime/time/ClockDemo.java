@@ -1,12 +1,12 @@
 package knowledge.datetime.time;
 
-import l.demo.Demo;
-
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Date;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/Clock.html">Clock</a>
@@ -15,7 +15,7 @@ import java.util.Date;
  * @author ljh
  * @since 2021/1/16 10:41
  */
-public class ClockDemo extends Demo {
+public class ClockDemo {
 
     private static Clock clock;
 

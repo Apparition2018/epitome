@@ -1,7 +1,6 @@
 package jar.apache.commons.beanutils;
 
 import jakarta.servlet.http.HttpServletRequest;
-import l.demo.Demo;
 import l.demo.User;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
@@ -12,13 +11,15 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.Map;
 
+import static l.demo.Demo.p;
+
 /**
  * <a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/BeanUtils.html">BeanUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class BeanUtilsDemo extends Demo {
+public class BeanUtilsDemo {
 
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         // JavaBean → JavaBean

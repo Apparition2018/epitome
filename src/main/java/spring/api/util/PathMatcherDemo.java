@@ -1,8 +1,9 @@
 package spring.api.util;
 
-import l.demo.Demo;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
+
+import static l.demo.Demo.p;
 
 /**
  * PathMatcher
@@ -11,7 +12,7 @@ import org.springframework.util.PathMatcher;
  * @author ljh
  * @since 2021/9/7 18:35
  */
-public class PathMatcherDemo extends Demo {
+public class PathMatcherDemo {
 
     public static void main(String[] args) {
         PathMatcher pathMatcher = new AntPathMatcher();

@@ -1,6 +1,5 @@
 package jar.apache.curator;
 
-import l.demo.Demo;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
@@ -27,7 +26,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author ljh
  * @since 2021/9/28 1:10
  */
-public class CuratorDistributedLock extends Demo {
+public class CuratorDistributedLock {
 
     private static final int QTY = 5;
     private static final int REPETITIONS = QTY * 10;

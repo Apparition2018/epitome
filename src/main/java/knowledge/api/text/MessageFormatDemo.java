@@ -1,6 +1,5 @@
 package knowledge.api.text;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.text.ChoiceFormat;
@@ -8,6 +7,8 @@ import java.text.MessageFormat;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/text/MessageFormat.html">...</a>
@@ -39,7 +40,7 @@ import java.util.List;
  * @author ljh
  * @since 2020/9/3 14:54
  */
-public class MessageFormatDemo extends Demo {
+public class MessageFormatDemo {
 
     public static final MessageFormat FORMAT;
 

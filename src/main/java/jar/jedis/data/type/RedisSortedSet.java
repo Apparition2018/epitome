@@ -46,11 +46,11 @@ public class RedisSortedSet extends Demo {
             IntStream.rangeClosed(1, THOUSAND).forEach(i -> readBook(jedis, HOT_BOOKS_20210502));
             IntStream.rangeClosed(1, THOUSAND).forEach(i -> readBook(jedis, HOT_BOOKS_20210503));
             // 20210521 四大名著排名：[[红楼梦,271.0], [水浒传,257.0], [三国演义,240.0], [西游记,232.0]]
-            System.out.println("20210521 四大名著排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_20210501, 0, 3));
+            p("20210521 四大名著排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_20210501, 0, 3));
             // 统计总排名
             jedis.zunionstore(HOT_BOOKS_KEY, HOT_BOOKS_20210501, HOT_BOOKS_20210502, HOT_BOOKS_20210503);
             // 四大名著总排名：[[红楼梦,761.0], [三国演义,755.0], [西游记,751.0], [水浒传,733.0]]
-            System.out.println("四大名著总排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_KEY, 0, 3));
+            p("四大名著总排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_KEY, 0, 3));
         }
 
         private static void readBook(Jedis jedis, String key) {

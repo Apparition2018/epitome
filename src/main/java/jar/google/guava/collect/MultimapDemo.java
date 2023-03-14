@@ -3,7 +3,8 @@ package jar.google.guava.collect;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
-import l.demo.Demo;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://github.com/google/guava/wiki/NewCollectionTypesExplained#multimap">Multimap</a>
@@ -20,7 +21,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class MultimapDemo extends Demo {
+public class MultimapDemo {
 
     private static final Multimap<Integer, Integer> map;
 

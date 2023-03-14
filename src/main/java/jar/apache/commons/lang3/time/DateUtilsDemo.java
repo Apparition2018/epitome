@@ -1,7 +1,6 @@
 package jar.apache.commons.lang3.time;
 
 import cn.hutool.core.date.DatePattern;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +15,6 @@ import static l.demo.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html">DateUtils</a>
- * <p><a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateFormatUtils.html">DateFormatUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -91,23 +89,12 @@ public class DateUtilsDemo {
     }
 
     /**
-     * static string        format(...)
-     */
-    @Test
-    public void format() {
-        p(DateFormatUtils.format(DATE1, DatePattern.NORM_DATE_PATTERN)); // 2018-11-19
-    }
-
-    /**
      * static long          getFragmentInXXX(Calendar calendar, int fragment)
      * <p>
      * static long          getFragmentInXXX(Date date, int fragment)
      */
     @Test
     public void getFragmentInXXX() {
-        p(DateFormatUtils.format(DATE1, DatePattern.NORM_DATETIME_PATTERN)); // 2018-11-19 10:41:10
-        p("=============================\n");
-
         p("从 2018-01-01 00:00:00 到 当前时间");
         p(DateUtils.getFragmentInDays(DATE1, Calendar.YEAR));       // 323
         p(DateUtils.getFragmentInHours(DATE1, Calendar.YEAR));      // 7738

@@ -6,9 +6,8 @@ import cn.hutool.core.date.DateUtil;
 import static l.demo.Demo.p;
 
 /**
- * ChineseDate  农历日期
- * https://hutool.cn/docs/#/core/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/%E5%86%9C%E5%8E%86%E6%97%A5%E6%9C%9F-ChineseDate
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/ChineseDate.html
+ * <a href="https://hutool.cn/docs/#/core/日期时间/农历日期-ChineseDate">ChineseDate</a>    农历日期
+ * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/ChineseDate.html">ChineseDate api</a>
  *
  * @author ljh
  * @since 2020/10/27 11:29
@@ -41,6 +40,5 @@ public class ChineseDateDemo {
 
         // 闰月
         p(chineseDate.isLeapMonth());           // false
-
     }
 }

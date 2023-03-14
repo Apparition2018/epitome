@@ -1,11 +1,12 @@
 package knowledge.syntactic.sugar.generic;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
+
+import static l.demo.Demo.p;
 
 /**
  * Generics 泛型
@@ -22,7 +23,7 @@ import java.util.List;
  * @author ljh
  * @since 2019/9/9 00:51
  */
-public class Generic<T> extends Demo {
+public class Generic<T> {
 
     private T t;
 

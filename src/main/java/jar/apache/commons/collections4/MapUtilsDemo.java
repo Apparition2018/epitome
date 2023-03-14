@@ -1,9 +1,10 @@
 package jar.apache.commons.collections4;
 
-import l.demo.Demo;
 import org.apache.commons.collections4.MapUtils;
 
 import java.util.Map;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapUtils.html">MapUtils</a>
@@ -32,7 +33,7 @@ import java.util.Map;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class MapUtilsDemo extends Demo {
+public class MapUtilsDemo {
 
     private static final Map<Integer, Object> map = Map.of(1, "A", 2, "B", 3, "C");
 

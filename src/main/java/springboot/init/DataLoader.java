@@ -1,6 +1,5 @@
 package springboot.init;
 
-import l.demo.Demo;
 import l.demo.Person;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static l.demo.Demo.personList;
+
 /**
  * DataLoader
  *
@@ -16,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 2021/9/3 9:18
  */
 @Configuration
-public class DataLoader extends Demo implements CommandLineRunner {
+public class DataLoader implements CommandLineRunner {
 
     private final Map<Integer, Person> personMap = new ConcurrentHashMap<>();
 

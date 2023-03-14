@@ -2,7 +2,8 @@ package knowledge.reflect.proxy;
 
 import knowledge.reflect.proxy.domain.Man;
 import knowledge.reflect.proxy.domain.People;
-import l.demo.Demo;
+
+import static l.demo.Demo.p;
 
 /**
  * StaticProxy  静态代理
@@ -15,7 +16,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/10 13:53
  */
-public class StaticProxy extends Demo {
+public class StaticProxy {
 
     public static void main(String[] args) {
         People proxy = new StopWatchProxy(new Man());

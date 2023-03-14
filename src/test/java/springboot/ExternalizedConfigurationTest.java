@@ -13,6 +13,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Objects;
 
+import static l.demo.Demo.pe;
+
 /**
  * <p><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.external-config">Externalized Configuration</a> 外部化配置
  * <pre>
@@ -35,7 +37,7 @@ public class ExternalizedConfigurationTest {
     @Test
     public void testEnvironment() {
         String schoolName = environment.getProperty("school.name");
-        System.err.println(new String(Objects.requireNonNull(schoolName).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+        pe(new String(Objects.requireNonNull(schoolName).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
     }
 
     @Test
@@ -43,7 +45,7 @@ public class ExternalizedConfigurationTest {
         Binder binder = Binder.get(environment);
 
         String schoolName = binder.bind("school.name", Bindable.of(String.class)).get();
-        System.err.println(new String(schoolName.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+        pe(new String(schoolName.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
 
         List<Student> studentList = binder.bind("school.student", Bindable.listOf(Student.class)).get();
         studentList.forEach(System.err::println);
@@ -51,6 +53,6 @@ public class ExternalizedConfigurationTest {
 
     @Test
     public void testConfigurationProperties() {
-        System.err.println(principal);
+        pe(principal);
     }
 }

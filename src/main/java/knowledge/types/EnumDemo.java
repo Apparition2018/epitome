@@ -1,11 +1,12 @@
 package knowledge.types;
 
 import l.demo.CompanyEnum;
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.EnumMap;
 import java.util.EnumSet;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/lang/Enum.html">Enum</a>
@@ -34,7 +35,7 @@ import java.util.EnumSet;
  * @author ljh
  * @since 2020/11/2 19:39
  */
-public class EnumDemo extends Demo {
+public class EnumDemo {
 
     @Test
     public void companyEnum() {

@@ -1,9 +1,10 @@
 package spring.api.util;
 
-import l.demo.Demo;
 import l.demo.Person;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ReflectionUtils;
+
+import static l.demo.Demo.p;
 
 /**
  * ClassUtils
@@ -46,7 +47,7 @@ import org.springframework.util.ReflectionUtils;
  * @author ljh
  * @since 2021/9/9 9:22
  */
-public class ClassUtilsDemo extends Demo {
+public class ClassUtilsDemo {
 
     public static void main(String[] args) throws ClassNotFoundException {
         p(ClassUtils.ARRAY_SUFFIX);                 // []

@@ -1,12 +1,13 @@
 package jar.apache.commons.dbcp2;
 
 import knowledge.data.structure.collections.framework.map.properties.PropertiesUtil;
-import l.demo.Demo;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
+
+import static l.demo.Demo.JDBC_PROPS_FILENAME;
 
 /**
  * DBUtil
@@ -14,7 +15,7 @@ import java.util.Properties;
  * @author ljh
  * @since 2020/10/10 17:00
  */
-public class DBUtil extends Demo {
+public class DBUtil {
 
     private static BasicDataSource dataSource;
 

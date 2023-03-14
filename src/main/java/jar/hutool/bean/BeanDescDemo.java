@@ -3,11 +3,12 @@ package jar.hutool.bean;
 import cn.hutool.core.bean.BeanDesc;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.PropDesc;
-import l.demo.Demo;
 import l.demo.Person;
 
 import java.util.Collection;
 import java.util.Map;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/JavaBean/Bean描述-BeanDesc">BeanDesc</a>    Bean 描述
@@ -17,7 +18,7 @@ import java.util.Map;
  * @author ljh
  * @since 2022/1/19 9:07
  */
-public class BeanDescDemo extends Demo {
+public class BeanDescDemo {
 
     public static void main(String[] args) {
         BeanDesc beanDesc = BeanUtil.getBeanDesc(Person.class);

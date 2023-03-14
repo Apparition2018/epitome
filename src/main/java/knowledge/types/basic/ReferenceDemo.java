@@ -1,6 +1,5 @@
 package knowledge.types.basic;
 
-import l.demo.Demo;
 import l.demo.Person;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +9,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
+
+import static l.demo.Demo.p;
 
 /**
  * Reference    引用
@@ -24,7 +25,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2020/11/7 23:00
  */
-public class ReferenceDemo extends Demo {
+public class ReferenceDemo {
 
     /**
      * 软引用

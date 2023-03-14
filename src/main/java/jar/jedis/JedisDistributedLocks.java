@@ -1,6 +1,5 @@
 package jar.jedis;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
@@ -11,6 +10,8 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import static l.demo.Demo.p;
+
 /**
  * Redis 实现分布式锁
  * <p>SETNX + Lua 脚本
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2021/5/11 1:47
  */
-public class JedisDistributedLocks extends Demo {
+public class JedisDistributedLocks {
 
     private static final String MONEY = "MONEY";
     private static final String MONEY_LOCK = "MONEY_LOCK";

@@ -1,8 +1,9 @@
 package jar.apache.commons.lang3.math;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/NumberUtils.html">NumberUtils</a>
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class NumberUtilsDemo extends Demo {
+public class NumberUtilsDemo {
 
     /**
      * static int	compare(byte/int/long/short x, byte/int/long/short y)

@@ -1,11 +1,12 @@
 package knowledge.concurrent;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import static l.demo.Demo.p;
 
 /**
  * 死锁
@@ -41,7 +42,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class Deadlock extends Demo {
+public class Deadlock {
 
     private static final Object A = new Object();
     private static final Object B = new Object();

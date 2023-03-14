@@ -2,7 +2,6 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.ssh.JschUtil;
 import com.jcraft.jsch.Session;
-import l.demo.Demo;
 
 /**
  * <a href="https://hutool.cn/docs/#/extra/Jsch封装/Jsch工具-JschUtil">JschUtil</a>
@@ -16,11 +15,11 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/20 17:28
  */
-public class JschUtilDemo extends Demo {
+public class JschUtilDemo {
 
     public static void main(String[] args) {
         Session session = JschUtil.getSession("47.115.17.202", 22, "admin", "zx$due^403c");
-        p(session.getClientVersion());  // SSH-2.0-JSCH-0.1.54
-        p(session.getServerVersion());  // SSH-2.0-OpenSSH_5.3
+        System.out.println(session.getClientVersion()); // SSH-2.0-JSCH-0.1.54
+        System.out.println(session.getServerVersion()); // SSH-2.0-OpenSSH_5.3
     }
 }

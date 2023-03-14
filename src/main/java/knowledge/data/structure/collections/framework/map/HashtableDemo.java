@@ -1,19 +1,18 @@
 package knowledge.data.structure.collections.framework.map;
 
-import l.demo.Demo;
-
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+import static l.demo.Demo.p;
+
 /**
- * Hashtable
- * Hashtable 继承 Dictionary，实现 Map
- * https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Hashtable.html
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Hashtable.html">Hashtable</a>
+ * <p>Hashtable 继承 Dictionary，实现 Map
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class HashtableDemo extends Demo {
+public class HashtableDemo {
 
     public static void main(String[] args) {
         // Hashtable([int initialCapacity[, float loadFactor]]) 用指定初始容量和指定加载因子构造一个新的空哈希表。默认初始容量11，加载因子0.75
@@ -38,7 +37,5 @@ public class HashtableDemo extends Demo {
         while (elements.hasMoreElements()) {
             p("elements(): " + elements.nextElement());
         }
-
     }
-
 }

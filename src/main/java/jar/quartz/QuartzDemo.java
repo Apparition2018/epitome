@@ -1,12 +1,13 @@
 package jar.quartz;
 
-import l.demo.Demo;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+
+import static l.demo.Demo.DATE_TIME_FORMAT;
 
 /**
  * Quartz
@@ -30,7 +31,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2019/8/8 19:39
  */
 @Slf4j
-public class QuartzDemo extends Demo {
+public class QuartzDemo {
 
     public void go() throws Exception {
         // 创建 Scheduler

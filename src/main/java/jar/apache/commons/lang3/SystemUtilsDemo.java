@@ -1,7 +1,8 @@
 package jar.apache.commons.lang3;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.SystemUtils;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/SystemUtils.html">SystemUtils</a>
@@ -9,7 +10,7 @@ import org.apache.commons.lang3.SystemUtils;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class SystemUtilsDemo extends Demo {
+public class SystemUtilsDemo {
 
     public static void main(String[] args) {
         p(SystemUtils.getUserName());       // NL-PC001

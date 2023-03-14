@@ -8,8 +8,6 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-import static l.demo.Demo.p;
-
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html">IntStream</a>
  * <p>支持顺序和并行聚合操作的 int 序列，类似的还有 LongStream, DoubleStream
@@ -37,9 +35,9 @@ public class IntStreamDemo {
         intStream = IntStream.rangeClosed(1, 10);
 
         // average()                            平均数              
-        p(intStream.average());
+        System.out.println(intStream.average());
         // sum()                                总和
-        p(intStream.sum());
+        System.out.println(intStream.sum());
     }
 
     @Test

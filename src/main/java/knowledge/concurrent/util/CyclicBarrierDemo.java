@@ -1,11 +1,11 @@
 package knowledge.concurrent.util;
 
-import l.demo.Demo;
-
 import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/CyclicBarrier.html">CyclicBarrier</a>
@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2020/11/17 19:09
  */
-public class CyclicBarrierDemo extends Demo {
+public class CyclicBarrierDemo {
 
     /**
      * <a href="http://www.blogjava.net/polang1002/archive/2015/02/27/423067.html">案例</a>：两个工人从两端挖掘隧道，各自独立奋战，中间不沟通，如果两个人在汇合点处碰头了，则表明隧道已经挖通。

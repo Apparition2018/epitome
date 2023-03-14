@@ -1,11 +1,12 @@
 package knowledge.data.structure.collections.framework.collection;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Vector.html">Vector</a>   向量
@@ -19,7 +20,7 @@ import java.util.Vector;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class VectorDemo extends Demo {
+public class VectorDemo {
 
     private static final Vector<String> V;
 

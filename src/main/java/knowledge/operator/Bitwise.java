@@ -6,19 +6,22 @@ import static l.demo.Demo.p;
 
 /**
  * Bitwise  位运算
- * CPU 直接支持，效率最高
- * <p>
- * 使用场景：
- * 1.加密算法
- * 2.图形算法
- * 3.状态位
- * <p>
- * Java 语言位运算符详解：https://zhuanlan.zhihu.com/p/106893096
- * Java 位运算经典应用(一)：https://zhuanlan.zhihu.com/p/107246755
- * Java 位运算经典应用(二)：https://zhuanlan.zhihu.com/p/107426506
- * Java 位运算经典应用(三)：https://zhuanlan.zhihu.com/p/109272709
- * Java 位运算经典应用(四)：https://zhuanlan.zhihu.com/p/110263046
- * Java中对于位运算的优化以及运用与思考：https://zhuanlan.zhihu.com/p/101723848
+ * <p>CPU 直接支持，效率最高
+ * <p>使用场景：
+ * <pre>
+ * 1 加密算法
+ * 2 图形算法
+ * 3 状态位
+ * </pre>
+ * 参考：
+ * <pre>
+ * <a href="https://zhuanlan.zhihu.com/p/106893096">Java 语言位运算符详解</a>
+ * <a href="https://zhuanlan.zhihu.com/p/107246755">Java 位运算经典应用(一)</a>
+ * <a href="https://zhuanlan.zhihu.com/p/107426506">Java 位运算经典应用(二)</a>
+ * <a href="https://zhuanlan.zhihu.com/p/109272709">Java 位运算经典应用(三)</a>
+ * <a href="https://zhuanlan.zhihu.com/p/110263046">Java 位运算经典应用(四)</a>
+ * <a href="https://zhuanlan.zhihu.com/p/101723848">Java 中对于位运算的优化以及运用与思考</a>
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/23 17:57

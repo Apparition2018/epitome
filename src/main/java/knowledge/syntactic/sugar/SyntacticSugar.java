@@ -1,7 +1,5 @@
 package knowledge.syntactic.sugar;
 
-import static l.demo.Demo.p;
-
 /**
  * 语法糖
  * <pre>
@@ -39,13 +37,13 @@ public class SyntacticSugar {
         public static void main(String[] args) {
             class Base {
                 void func(int price, int... discounts) {
-                    p("Base ... func");
+                    System.out.println("Base ... func");
                 }
             }
             class Sub extends Base {
                 @Override
                 void func(int price, int[] discounts) {
-                    p("Sub ... func");
+                    System.out.println("Sub ... func");
                 }
             }
 

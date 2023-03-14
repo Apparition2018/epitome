@@ -1,9 +1,10 @@
 package jar.hutool.bloomfilter;
 
 import cn.hutool.bloomfilter.BitSetBloomFilter;
-import l.demo.Demo;
 
 import java.util.stream.IntStream;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://hutool.cn/docs/#/bloomFilter/概述">BloomFilter</a>     布隆过滤器
@@ -19,7 +20,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2020/11/21 17:11
  */
-public class BloomFilterDemo extends Demo {
+public class BloomFilterDemo {
 
     private static final int SIZE = 64;
     private static final int CNT = 10;

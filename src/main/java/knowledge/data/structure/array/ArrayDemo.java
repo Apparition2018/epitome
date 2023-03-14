@@ -1,24 +1,25 @@
 package knowledge.data.structure.array;
 
-import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+import static l.demo.Demo.p;
+
 /**
  * Array
- * <p>
- * Array 与 List 不同之处：
- * 1.List 不可以存基本数据类型
- * 2.Array 容量固定不可改变
- * 3.Array 效率更高
+ * <p>Array 与 List 不同之处：
+ * <pre>
+ * 1 List 不可以存基本数据类型
+ * 2 Array 容量固定不可改变
+ * 3 Array 效率更高
  *
  * @author ljh
  * @since 2020/10/16 16:23
  */
-public class ArrayDemo extends Demo {
+public class ArrayDemo {
 
     /**
      * 创建数组
@@ -68,5 +69,4 @@ public class ArrayDemo extends Demo {
         System.arraycopy(arr1, 0, arr2, 0, 3);
         p(arr2);
     }
-
 }

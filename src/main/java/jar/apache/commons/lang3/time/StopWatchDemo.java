@@ -1,9 +1,10 @@
 package jar.apache.commons.lang3.time;
 
-import l.demo.Demo;
 import org.apache.commons.lang3.time.StopWatch;
 
 import java.util.concurrent.TimeUnit;
+
+import static l.demo.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/StopWatch.html">StopWatch</a>
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2020/10/16 11:04
  */
-public class StopWatchDemo extends Demo {
+public class StopWatchDemo {
 
     public static void main(String[] args) throws InterruptedException {
         // 创建一个 StopWatch，并且马上开始

@@ -1,7 +1,8 @@
 package jar.openjdk.jol;
 
-import l.demo.Demo;
 import org.openjdk.jol.info.ClassLayout;
+
+import static l.demo.Demo.p;
 
 /**
  * JOL: Java Object Layout
@@ -19,7 +20,7 @@ import org.openjdk.jol.info.ClassLayout;
  * @author ljh
  * @since 2022/7/5 2:02
  */
-public class JavaObjectLayoutDemo extends Demo {
+public class JavaObjectLayoutDemo {
 
     public static void main(String[] args) {
         Object obj = new Object();
