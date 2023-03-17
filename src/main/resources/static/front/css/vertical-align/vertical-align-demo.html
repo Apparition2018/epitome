@@ -1,136 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>vertical-align-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
 </head>
-
 <body>
-    <!-- vertical-height 作用于行内元素，替换元素，表单元格 -->
-    <!-- 一个inline-block元素，如果里面没有inline内联元素，或者overflow不是visible，则该元素的基线就是其margin底边缘，否则，其基线就是元素里面最后一行内联元素的基线 -->
-    <!-- https://www.cnblogs.com/xiaohuochai/p/5271217.html#anchor3 -->
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">测试</div>
-            <div class="centered" id="eg1">
+<!-- vertical-height 作用于行内元素，替换元素，表单元格 -->
+<!-- 一个 inline-block 元素，如果里面没有 inline 内联元素，或者 overflow 不是 visible，则该元素的基线就是其 margin 底边缘，否则，其基线就是元素里面最后一行内联元素的基线 -->
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://www.cnblogs.com/xiaohuochai/p/5271217.html#anchor3">测试</a>
+        </div>
+        <div class="centered" id="eg1">
                 <span class="all">
                     <span class="oShow">test</span>XXX</span>
-            </div>
         </div>
-        <style class="code" contenteditable="true">
-            #eg1 {
-                width: 150px;
-                height: 150px;
-                line-height: 150px;
-                font-size: 40px;
-                text-align: center;
-                border: 1px solid var(--gy4);
-            }
+    </div>
+    <style class="code" contenteditable="true">
+        #eg1 {
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            font-size: 40px;
+            text-align: center;
+            border: 1px solid var(--gy4);
+        }
 
-            .all {
-                border: 1px solid var(--gy4);
-            }
+        .all {
+            border: 1px solid var(--gy4);
+        }
 
-            .oShow {
-                line-height: 20px;
-                vertical-align: middle;
-                font-size: 16px;
-                border: 1px solid var(--gy4);
-            }
-        </style>
-    </section>
+        .oShow {
+            line-height: 20px;
+            vertical-align: middle;
+            font-size: 16px;
+            border: 1px solid var(--gy4);
+        }
+    </style>
+</section>
 
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">图片垂直居中</div>
-            <div class="centered" id="eg2">
-                <img alt="穗波玉" src="../../../public/img/people/穗波玉.jpg" />
-            </div>
+<section class="code-wrap h350">
+    <div class="css-live-wrap">
+        <div class="caption">图片垂直居中</div>
+        <div class="centered" id="eg2">
+            <img alt="穗波玉" src="../../../public/img/people/穗波玉.jpg"/>
         </div>
-        <style class="code" contenteditable="true">
-            #eg2 {
-                width: 220px;
-                line-height: 220px;
-                background-color: whitesmoke;
-                font-size: 0;
-                text-align: center;
-                border-radius: 50%;
-            }
+    </div>
+    <style class="code" contenteditable="true">
+        #eg2 {
+            width: 220px;
+            line-height: 220px;
+            background-color: whitesmoke;
+            font-size: 0;
+            text-align: center;
+            border-radius: 50%;
+        }
 
-            #eg2 img {
-                vertical-align: middle;
-                width: 180px;
-                border-radius: 50%;
-            }
-        </style>
-    </section>
+        #eg2 img {
+            vertical-align: middle;
+            width: 180px;
+            border-radius: 50%;
+        }
+    </style>
+</section>
 
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">多行文字垂直居中</div>
-            <div class="centered" id="eg3">
-                <span>窗前明月光 疑似地上霜 举头望明月 低头思故乡</span>
-            </div>
+<section class="code-wrap h450">
+    <div class="css-live-wrap">
+        <div class="caption">多行文字垂直居中</div>
+        <div class="centered" id="eg3">
+            <span>窗前明月光 疑似地上霜 举头望明月 低头思故乡</span>
         </div>
-        <style class="code" contenteditable="true">
-            #eg3 {
-                width: 200px;
-                height: 160px;
-                background-color: whitesmoke;
-                font-size: 0;
-                text-align: center;
-            }
+    </div>
+    <style class="code" contenteditable="true">
+        #eg3 {
+            width: 200px;
+            height: 160px;
+            background-color: whitesmoke;
+            font-size: 0;
+            text-align: center;
+        }
 
-            #eg3::before {
-                content: '';
-                display: inline-block;
-                height: 100%;
-                vertical-align: middle;
-            }
+        #eg3::before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
 
-            #eg3 span {
-                display: inline-block;
-                width: 100px;
-                line-height: 30px;
-                vertical-align: middle;
-                color: var(--gy4);
-                font-size: 16px;
-            }
-        </style>
-    </section>
+        #eg3 span {
+            display: inline-block;
+            width: 100px;
+            line-height: 30px;
+            vertical-align: middle;
+            color: var(--gy4);
+            font-size: 16px;
+        }
+    </style>
+</section>
 
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">
-                <a href="https://blog.csdn.net/weixin_43975059/article/details/86030589">多行文字垂直居中</a>
-            </div>
-            <div class="centered" id="eg4">
-                <span>窗前明月光 疑似地上霜 举头望明月 低头思故乡</span>
-            </div>
+<section class="code-wrap h350">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://blog.csdn.net/weixin_43975059/article/details/86030589">多行文字垂直居中</a>
         </div>
-        <style class="code" contenteditable="true">
-            #eg4 {
-                width: 200px;
-                height: 160px;
-                line-height: 160px;
-                background-color: whitesmoke;
-                text-align: center;
-            }
+        <div class="centered" id="eg4">
+            <span>窗前明月光 疑似地上霜 举头望明月 低头思故乡</span>
+        </div>
+    </div>
+    <style class="code" contenteditable="true">
+        #eg4 {
+            width: 200px;
+            height: 160px;
+            line-height: 160px;
+            background-color: whitesmoke;
+            text-align: center;
+        }
 
-            #eg4 span {
-                display: inline-block;
-                width: 100px;
-                line-height: 30px;
-                vertical-align: middle;
-                color: var(--gy4);
-                font-size: 16px;
-            }
-        </style>
-    </section>
+        #eg4 span {
+            display: inline-block;
+            width: 100px;
+            line-height: 30px;
+            vertical-align: middle;
+            color: var(--gy4);
+            font-size: 16px;
+        }
+    </style>
+</section>
 </body>
-
 </html>

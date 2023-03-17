@@ -10,7 +10,7 @@
     <script defer src="../../../../../public/js/demo.js"></script>
 </head>
 <body>
-<section class="code-wrap h700">
+<section class="code-wrap h250">
     <div class="css-live-wrap w100p">
         <div class="caption">指令</div>
         <div class="math centered">
@@ -72,7 +72,7 @@
                 type: 'name'
             },
             methods: {
-                handleToggleClick () {
+                handleToggleClick() {
                     this.type = this.type === 'name' ? 'mail' : 'name'
                 }
             }
@@ -80,7 +80,7 @@
     </script>
 </section>
 
-<section class="code-wrap h500">
+<section class="code-wrap">
     <div class="css-live-wrap">
         <div class="caption">v-for</div>
         <div class="caption">
@@ -88,7 +88,7 @@
         </div>
         <div class="centered" id="for">
             <!-- 遍历数组 -->
-            <template v-for="color in colors" >
+            <template v-for="color in colors">
                 <div class="demo-circle" :style="{ 'color': color.english }">{{ color.chinese }}</div>
             </template>
             <!-- 迭代整数 -->
@@ -123,37 +123,5 @@
         })
     </script>
 </section>
-
-<section class="code-wrap h300">
-    <div class="css-live-wrap">
-        <div class="caption"></div>
-        <div class="centered" id="model">
-            <input type=” radio ” v-model=” picked” value=” html ” id=” html” >
-            <label for=” html” >HTML</label>
-            <br>
-            <input type=” radio” v-model=” picked” value=” j s ” id=” j s ” >
-            <label for=” j s ” >JavaScript</ labe l >
-            <br>
-            <input type=” radio model picked va ue ＝ css d＝ cs s ” >
-            <label for=” css” >CSS</label>
-            <br>
-            <p ＞选择的项是 （（ picked ))</p>
-        </div>
-    </div>
-    <script class="code" contenteditable="true">
-        new Vue({
-            el: '#if',
-            data: {
-                type: 'name'
-            },
-            methods: {
-                handleToggleClick () {
-                    this.type = this.type === 'name' ? 'mail' : 'name'
-                }
-            }
-        })
-    </script>
-</section>
-
 </body>
 </html>

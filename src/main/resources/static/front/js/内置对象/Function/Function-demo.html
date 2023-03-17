@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,134 +7,138 @@
     <title>Function-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w100p">
-            <div class="caption">
-                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a>
-            </div>
-            <div class="date centered">
-                <table class="w1280">
-                    <tr>
-                        <th>方法</th>
-                        <th>概述</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/caller">Function.caller</a></td>
-                        <td>返回调用指定函数的函数</td>
-                        <td>
-                            <a href="javascript: function x() { return x.caller } alert(x());">function x() { return x.caller };<br/>alert(x()); // null</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Function.length</td>
-                        <td>函数的接收参数个数</td>
-                        <td>
-                            <a href="javascript: function x(a, b, c) { return x.length } alert(x.length);">function x(a, b ,c) { return x.length };<br/>alert(x.length);</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h250">
+    <div class="css-live-wrap w100p">
+        <div class="caption">
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a>
         </div>
-    </section>
-
-    <section class="code-wrap h100">
-        <div class="css-live-wrap w40p">
-            <div class="caption">new Function ([arg1[, arg2[, ...argN]],] functionBody)</div>
-            <div class="centered">
-            </div>
+        <div class="date centered">
+            <table class="w1280">
+                <tr>
+                    <th>方法</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/caller">Function.caller</a>
+                    </td>
+                    <td>返回调用指定函数的函数</td>
+                    <td>
+                        <a href="javascript: function x() { return x.caller } alert(x());">
+                            function x() { return x.caller };<br/>alert(x()); // null
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Function.length</td>
+                    <td>函数的接收参数个数</td>
+                    <td>
+                        <a href="javascript: function x(a, b, c) { return x.length } alert(x.length);">
+                            function x(a, b ,c) { return x.length };<br/>alert(x.length);
+                        </a>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <script class="code w60p" contenteditable="true">
-            let f = new Function('a', 'b', 'return a + b');
-            f(2, 3); // 5
-        </script>
-    </section>
+    </div>
+</section>
 
-    <section class="code-wrap h100">
-        <div class="css-live-wrap w100p">
-            <div class="caption">
-                <a href="https://www.zhihu.com/question/20289071">如何理解和熟练运用 JS 中的 call 及 apply？</a>
-            </div>
-            <div class="caption">
-                <a href="https://zhuanlan.zhihu.com/p/71553017">javascript 基础之 call, apply, bind</a>
-            </div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h100">
+    <div class="css-live-wrap w40p">
+        <div class="caption">new Function ([arg1[, arg2[, ...argN]],] functionBody)</div>
+        <div class="centered">
         </div>
-    </section>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        let f = new Function('a', 'b', 'return a + b');
+        f(2, 3); // 5
+    </script>
+</section>
 
-    <section class="code-wrap h350">
-        <div class="css-live-wrap w40p">
-            <div class="caption">apply(), call(), bind() 区别</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h100">
+    <div class="css-live-wrap w100p">
+        <div class="caption">
+            <a href="https://www.zhihu.com/question/20289071">如何理解和熟练运用 JS 中的 call 及 apply？</a>
         </div>
-        <script class="code w60p" contenteditable="true">
-            let obj = { 'x': 1 };
-
-            function foo(y) {
-                return this.x + y;
-            }
-
-            // apply(thisArg, [argsArray])
-            // 接受参数数组
-            foo.apply(obj, [2]);
-
-            // call(thisArg, arg1, arg2, ...)
-            // 接受参数列表
-            foo.call(obj, 2);
-
-            // bind(thisArg[, arg1[, arg2[, ...]]])
-            // 接受参数列表，返回一个新函数
-            foo.bind(obj, 2)();
-        </script>
-    </section>
-
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w40p">
-            <div class="caption">apply(), call(), bind()</div>
-            <div class="caption">如第一个参数不是对象，js 会尝试将其转换为对象</div>
-            <div class="centered">
-            </div>
+        <div class="caption">
+            <a href="https://zhuanlan.zhihu.com/p/71553017">javascript 基础之 call, apply, bind</a>
         </div>
-        <script class="code w60p" contenteditable="true">
-            function bar() {
-                return this;
-            }
-
-            let a = bar.call(7);
-
-            console.log(a);         // Number(7)
-            console.log(typeof a);  // object
-        </script>
-    </section>
-
-    <section class="code-wrap h300" id="bind">
-        <div class="css-live-wrap w40p">
-            <div class="caption">在 bind() 创建的新函数中，this 将永久地被绑定到了 bind 的第一个参数</div>
-            <div class="caption">无论这个函数是如何被调用的</div>
-            <div class="centered">
-            </div>
+        <div class="centered">
         </div>
-        <script class="code w60p" contenteditable="true">
-            function l() {
-                return this.age;
-            }
+    </div>
+</section>
 
-            let m = l.bind({ age: 17 });
-            m();    // 17
+<section class="code-wrap h350">
+    <div class="css-live-wrap w40p">
+        <div class="caption">apply(), call(), bind() 区别</div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        let obj = {'x': 1};
 
-            let n = m.bind({ age: 18 });
-            n();    // 17
+        function foo(y) {
+            return this.x + y;
+        }
 
-            let o = { age: 37, l: l, m: m, n: n };
-            o.l();  // 37
-            o.m();  // 17
-            o.n();  // 17
-        </script>
-    </section>
+        // apply(thisArg, [argsArray])
+        // 接受参数数组
+        foo.apply(obj, [2]);
+
+        // call(thisArg, arg1, arg2, ...)
+        // 接受参数列表
+        foo.call(obj, 2);
+
+        // bind(thisArg[, arg1[, arg2[, ...]]])
+        // 接受参数列表，返回一个新函数
+        foo.bind(obj, 2)();
+    </script>
+</section>
+
+<section class="code-wrap h200">
+    <div class="css-live-wrap w40p">
+        <div class="caption">apply(), call(), bind()</div>
+        <div class="caption">如第一个参数不是对象，js 会尝试将其转换为对象</div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        function bar() {
+            return this;
+        }
+
+        let a = bar.call(7);
+
+        console.log(a);         // Number(7)
+        console.log(typeof a);  // object
+    </script>
+</section>
+
+<section class="code-wrap h300" id="bind">
+    <div class="css-live-wrap w40p">
+        <div class="caption">在 bind() 创建的新函数中，this 将永久地被绑定到了 bind 的第一个参数</div>
+        <div class="caption">无论这个函数是如何被调用的</div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        function l() {
+            return this.age;
+        }
+
+        let m = l.bind({age: 17});
+        m();    // 17
+
+        let n = m.bind({age: 18});
+        n();    // 17
+
+        let o = {age: 37, l: l, m: m, n: n};
+        o.l();  // 37
+        o.m();  // 17
+        o.n();  // 17
+    </script>
+</section>
 </body>
-
 </html>

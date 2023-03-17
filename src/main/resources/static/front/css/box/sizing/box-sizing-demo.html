@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,50 +7,47 @@
     <title>box-sizing-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap h500">
-        <div class="css-live-wrap">
-            <div class="caption">box-sizing</div>
-            <div class="box-sizing centered">
-                <div class="parent">
-                    <div class="child content-box">content-box</div>
-                </div>
-                <div class="parent">
-                    <div class="child border-box">border-box</div>
-                </div>
+<section class="code-wrap h500">
+    <div class="css-live-wrap">
+        <div class="caption">box-sizing</div>
+        <div class="box-sizing centered">
+            <div class="parent">
+                <div class="child content-box">content-box</div>
+            </div>
+            <div class="parent">
+                <div class="child border-box">border-box</div>
             </div>
         </div>
-        <style class="code" contenteditable="true">
-            .box-sizing {
-                white-space: nowrap;
-            }
+    </div>
+    <style class="code" contenteditable="true">
+        .box-sizing {
+            white-space: nowrap;
+        }
 
-            .parent {
-                display: inline-block;
-                width: 200px;
-                margin: 20px;
-                color: var(--gy4);
-                text-align: center;
-                border: 8px solid rgb(255, 193, 41);
-            }
+        .parent {
+            display: inline-block;
+            width: 200px;
+            margin: 20px;
+            color: var(--gy4);
+            text-align: center;
+            border: 8px solid rgb(255, 193, 41);
+        }
 
-            .child {
-                width: 100%;
-                line-height: 160px;
-                border: 8px solid rgb(91, 109, 205);
-            }
+        .child {
+            width: 100%;
+            line-height: 160px;
+            border: 8px solid rgb(91, 109, 205);
+        }
 
-            .content-box {
-                box-sizing: content-box;
-            }
+        .content-box {
+            box-sizing: content-box;
+        }
 
-            .border-box {
-                box-sizing: border-box;
-            }
-        </style>
-    </section>
-
+        .border-box {
+            box-sizing: border-box;
+        }
+    </style>
+</section>
 </body>
-
 </html>

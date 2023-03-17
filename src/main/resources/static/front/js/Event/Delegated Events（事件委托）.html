@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,78 +7,76 @@
     <title>Delegated Events（事件委托）</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap h100vh">
-        <div class="css-live-wrap w40p">
-            <div class="caption">
-                <a href="https://www.cnblogs.com/dfyg-xiaoxiao/articles/6213063.html" target="_blank">事件委托</a>
-            </div>
-            <div class="centered" id="delegated">
-                <div id="a">ID</div>
-                <div class="b">CLASS</div>
-                <p>TAG</p>
-            </div>
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap w40p">
+        <div class="caption">
+            <a href="https://www.cnblogs.com/dfyg-xiaoxiao/articles/6213063.html" target="_blank">事件委托</a>
         </div>
-        <style>
-            #delegated div,
-            #delegated p {
-                width: 250px;
-                padding: 8px;
-                margin: 10px;
-                background: #afd49f;
-                color: white;
-                font-size: 17px;
-                font-weight: bold;
-                text-align: center;
-                letter-spacing: 1px;
-                border: 1px solid white;
-                box-shadow: 1px 1px 2px #a8d097, inset 0 35px 0 -17px #b6d7a8;
-                border-radius: 5px;
-            }
-        </style>
-        <script class="code w60p" contenteditable="true">
-            const delegated = document.querySelector('#delegated');
-            delegateEvent(delegated, "#a", "click", function () {
-                delegated.querySelector("#a").textContent = '#a';
-            });
-            delegateEvent(delegated, ".b", "click", function () {
-                delegated.querySelector(".b").textContent = '.b';
-            });
-            delegateEvent(delegated, "p", "click", function () {
-                delegated.querySelector("p").textContent = '<p>';
-            })
+        <div class="centered" id="delegated">
+            <div id="a">ID</div>
+            <div class="b">CLASS</div>
+            <p>TAG</p>
+        </div>
+    </div>
+    <style>
+        #delegated div,
+        #delegated p {
+            width: 250px;
+            padding: 8px;
+            margin: 10px;
+            background: #afd49f;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 1px;
+            border: 1px solid white;
+            box-shadow: 1px 1px 2px #a8d097, inset 0 35px 0 -17px #b6d7a8;
+            border-radius: 5px;
+        }
+    </style>
+    <script class="code w60p" contenteditable="true">
+        const delegated = document.querySelector('#delegated');
+        delegateEvent(delegated, "#a", "click", function () {
+            delegated.querySelector("#a").textContent = '#a';
+        });
+        delegateEvent(delegated, ".b", "click", function () {
+            delegated.querySelector(".b").textContent = '.b';
+        });
+        delegateEvent(delegated, "p", "click", function () {
+            delegated.querySelector("p").textContent = '<p>';
+        })
 
-            function delegateEvent(interfaceEle, selector, type, fn) {
-                if (interfaceEle.addEventListener) {
-                    interfaceEle.addEventListener(type, eventfn);
-                } else {
-                    interfaceEle.attachEvent("on" + type, eventfn);
-                }
-
-                function eventfn(e) {
-                    e = e || window.event;
-                    const target = e.target || e.srcElement;
-                    if (matchSelector(target, selector)) {
-                        fn && fn.call(target, e);
-                    }
-                }
+        function delegateEvent(interfaceEle, selector, type, fn) {
+            if (interfaceEle.addEventListener) {
+                interfaceEle.addEventListener(type, eventfn);
+            } else {
+                interfaceEle.attachEvent("on" + type, eventfn);
             }
 
-            function matchSelector(ele, selector) {
-                // if use id
-                if (selector.charAt(0) === "#") {
-                    return ele.id === selector.slice(1);
+            function eventfn(e) {
+                e = e || window.event;
+                const target = e.target || e.srcElement;
+                if (matchSelector(target, selector)) {
+                    fn && fn.call(target, e);
                 }
-                // if use class
-                if (selector.charAt(0) === ".") {
-                    return (" " + ele.className + " ").indexOf(" " + selector.slice(1) + " ") !== -1;
-                }
-                // if use tageName
-                return ele.tagName.toLowerCase() === selector.toLowerCase();
             }
-        </script>
-    </section>
+        }
+
+        function matchSelector(ele, selector) {
+            // if use id
+            if (selector.charAt(0) === "#") {
+                return ele.id === selector.slice(1);
+            }
+            // if use class
+            if (selector.charAt(0) === ".") {
+                return (" " + ele.className + " ").indexOf(" " + selector.slice(1) + " ") !== -1;
+            }
+            // if use tageName
+            return ele.tagName.toLowerCase() === selector.toLowerCase();
+        }
+    </script>
+</section>
 </body>
-
 </html>

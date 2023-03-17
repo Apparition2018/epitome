@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,264 +10,264 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script defer src="../../../../public/js/demo.js"></script>
 </head>
-
 <body>
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w100p">
-            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API">Fetch API</a>
-            </div>
-            <div class="centered">
-                <table class="w1024">
-                    <tr>
-                        <th>接口</th>
-                        <th>概述</th>
-                    </tr>
-                    <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch">fetch()</a></td>
-                        <td>fetch() 必须接受一个参数——资源的路径。无论请求成功与否，它都返回一个 Promise 对象，resolve 对应请求的
-                            Response。<br>你也可以传一个可选的第二个参数init（参见 Request）。</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Headers">Headers</a></td>
-                        <td>相当于 response/request 的头信息，可以使你查询到这些头信息，或者针对不同的结果做不同的操作</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Request">Request</a></td>
-                        <td>相当于一个资源请求</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Response">Response</a></td>
-                        <td>相当于请求的响应</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Body">Body</a></td>
-                        <td>提供了关联 response/request 中 body 的方法，可以定义它的文档类型以及请求如何被处理</td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h300">
+    <div class="css-live-wrap w100p">
+        <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API">Fetch API</a>
         </div>
-    </section>
+        <div class="centered">
+            <table class="w1024">
+                <tr>
+                    <th>接口</th>
+                    <th>概述</th>
+                </tr>
+                <tr>
+                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch">fetch()</a>
+                    </td>
+                    <td>fetch() 必须接受一个参数——资源的路径。无论请求成功与否，它都返回一个 Promise 对象，resolve 对应请求的
+                        Response。<br>你也可以传一个可选的第二个参数init（参见 Request）。
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Headers">Headers</a></td>
+                    <td>相当于 response/request 的头信息，可以使你查询到这些头信息，或者针对不同的结果做不同的操作</td>
+                </tr>
+                <tr>
+                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Request">Request</a></td>
+                    <td>相当于一个资源请求</td>
+                </tr>
+                <tr>
+                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Response">Response</a></td>
+                    <td>相当于请求的响应</td>
+                </tr>
+                <tr>
+                    <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Body">Body</a></td>
+                    <td>提供了关联 response/request 中 body 的方法，可以定义它的文档类型以及请求如何被处理</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
 
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w100p">
-            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Body">Body</a>
-            </div>
-            <div class="centered">
-                <table class="w1024">
-                    <tr>
-                        <th>属性/方法</th>
-                        <th>概述</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td>bodyUsed</td>
-                        <td>包含一个指示body是否被读取过的 Boolean 值</td>
-                        <td rowspan="6"><a href="#body-blob" target="_self">Body.blob()</a></td>
-                    </tr>
-                    <tr>
-                        <td>arrayBuffer()</td>
-                        <td>使用一个buffer数组来读取 Response流中的数据，并将bodyUsed状态改为已使用</td>
-                    </tr>
-                    <tr>
-                        <td>blob()</td>
-                        <td>使用一个Blob对象来读取 Response流中的数据，并将bodyUsed状态改为已使用</td>
-                    </tr>
-                    <tr>
-                        <td>formData()</td>
-                        <td>使用一个 FormData 对象来读取 Response流中的数据，并将bodyUsed状态改为已使用</td>
-                    </tr>
-                    <tr>
-                        <td>json()</td>
-                        <td>使用一个 JSON 对象来读取 Response流中的数据，并将bodyUsed状态改为已使用</td>
-                    </tr>
-                    <tr>
-                        <td>text()</td>
-                        <td>使用一个USVString (文本) 对象来读取 Response流中的数据，并将bodyUsed状态改为已使用</td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h300">
+    <div class="css-live-wrap w100p">
+        <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Body">Body</a>
         </div>
-    </section>
+        <div class="centered">
+            <table class="w1024">
+                <tr>
+                    <th>属性/方法</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>bodyUsed</td>
+                    <td>包含一个指示body是否被读取过的 Boolean 值</td>
+                    <td rowspan="6"><a href="#body-blob" target="_self">Body.blob()</a></td>
+                </tr>
+                <tr>
+                    <td>arrayBuffer()</td>
+                    <td>使用一个buffer数组来读取 Response流中的数据，并将bodyUsed状态改为已使用</td>
+                </tr>
+                <tr>
+                    <td>blob()</td>
+                    <td>使用一个Blob对象来读取 Response流中的数据，并将bodyUsed状态改为已使用</td>
+                </tr>
+                <tr>
+                    <td>formData()</td>
+                    <td>使用一个 FormData 对象来读取 Response流中的数据，并将bodyUsed状态改为已使用</td>
+                </tr>
+                <tr>
+                    <td>json()</td>
+                    <td>使用一个 JSON 对象来读取 Response流中的数据，并将bodyUsed状态改为已使用</td>
+                </tr>
+                <tr>
+                    <td>text()</td>
+                    <td>使用一个USVString (文本) 对象来读取 Response流中的数据，并将bodyUsed状态改为已使用</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
 
-    <section class="code-wrap h300" id="Fetch-API-fetch">
-        <div class="css-live-wrap w40p">
-            <div class="caption">fetch</div>
-            <div class="caption">传递普通类型的数据，如 String</div>
-            <div class="centered box-fetch1"></div>
+<section class="code-wrap h300" id="Fetch-API-fetch">
+    <div class="css-live-wrap w40p">
+        <div class="caption">fetch</div>
+        <div class="caption">传递普通类型的数据，如 String</div>
+        <div class="centered box-fetch1"></div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        (function () {
+            const boxFetch1 = document.getElementsByClassName('box-fetch1')[0];
+            fetch('http://localhost:3333/fetch/string', {
+                method: 'post',
+                headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}),
+                body: "data=Arsenal"
+            }).then(response => response.text()).then(data => {
+                boxFetch1.innerHTML += data + '<br/>';
+            }).catch(function (e) {
+                console.log(e);
+            })
+        })()
+    </script>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">fetch</div>
+        <div class="caption">传递 Json 类型的数据，接收方为 Bean</div>
+        <div class="centered box-fetch2"></div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        (function () {
+            const boxFetch2 = document.getElementsByClassName('box-fetch2')[0];
+            const demo = {id: '1', name: 'zhangsan', course: 'math', score: '99'};
+            fetch('http://localhost:3333/fetch/json-clazz', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(demo)
+            }).then(response => response.text()).then(data => {
+                boxFetch2.innerHTML += data + '<br/>';
+            }).catch(function (e) {
+                console.log(e);
+            })
+        })()
+    </script>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">fetch</div>
+        <div class="caption">传递 Json 类型的数据，接收方为 map</div>
+        <div class="centered box-fetch3"></div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        (function () {
+            const boxFetch3 = document.getElementsByClassName('box-fetch3')[0];
+            const club = {name: 'Arsenal', points: '100'};
+            fetch('http://localhost:3333/fetch/json-map', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(club)
+            }).then(response => response.text()).then(data => {
+                boxFetch3.innerHTML += data + '<br/>';
+            }).catch(function (e) {
+                console.log(e);
+            })
+        })()
+    </script>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">fetch</div>
+        <div class="caption">上传单个文件</div>
+        <div class="centered box-fetch4">
+            <form>
+                <input type="file">
+                <br><br>
+                <button type="button">上传图片</button>
+            </form>
         </div>
-        <script class="code w60p" contenteditable="true">
-            (function () {
-                const boxFetch1 = document.getElementsByClassName('box-fetch1')[0];
-                fetch('http://localhost:3333/fetch/string', {
+    </div>
+    <script class="code w60p" contenteditable="true">
+        (function () {
+            document.querySelector('.box-fetch4 button').onclick = function () {
+                const pictures = document.querySelector('.box-fetch4 input').files;
+                const formData = new FormData();
+                formData.append('file', pictures[0]);
+                fetch('http://localhost:3333/fetch/upload-picture', {
                     method: 'post',
-                    headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }),
-                    body: "data=Arsenal"
+                    body: formData,
                 }).then(response => response.text()).then(data => {
-                    boxFetch1.innerHTML += data + '<br/>';
+                    $('.box-fetch4')[0].innerHTML += data + '<br/>';
                 }).catch(function (e) {
                     console.log(e);
                 })
-            })()
-        </script>
-    </section>
+            }
+        })()
+    </script>
+</section>
 
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w40p">
-            <div class="caption">fetch</div>
-            <div class="caption">传递 Json 类型的数据，接收方为 Bean</div>
-            <div class="centered box-fetch2"></div>
+<section class="code-wrap h350">
+    <div class="css-live-wrap w40p">
+        <div class="caption">fetch</div>
+        <div class="caption">上传多个文件</div>
+        <div class="centered box-fetch5">
+            <form>
+                <input type="file" multiple="multiple">
+                <br><br>
+                <button type="button">上传图片</button>
+            </form>
         </div>
-        <script class="code w60p" contenteditable="true">
-                (function () {
-                    const boxFetch2 = document.getElementsByClassName('box-fetch2')[0];
-                    const demo = { id: '1', name: 'zhangsan', course: 'math', score: '99' };
-                    fetch('http://localhost:3333/fetch/json-clazz', {
-                        method: 'post',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(demo)
-                    }).then(response => response.text()).then(data => {
-                        boxFetch2.innerHTML += data + '<br/>';
-                    }).catch(function (e) {
-                        console.log(e);
-                    })
-                })()
-        </script>
-    </section>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        (function () {
+            document.querySelector('.box-fetch5 button').onclick = function () {
+                const pictures = document.querySelector('.box-fetch5 input').files;
+                const formData = new FormData();
+                for (let i = 0; i < pictures.length; i++) {
+                    formData.append('file', pictures[i]);
+                }
+                fetch('http://localhost:3333/fetch/upload-pictures', {
+                    method: 'post',
+                    body: formData,
+                }).then(response => response.text()).then(data => {
+                    $('.box-fetch5')[0].innerHTML += data + '<br/>';
+                }).catch(function (e) {
+                    console.log(e);
+                })
+            }
+        })()
+    </script>
+</section>
 
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w40p">
-            <div class="caption">fetch</div>
-            <div class="caption">传递 Json 类型的数据，接收方为 map</div>
-            <div class="centered box-fetch3"></div>
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">fetch</div>
+        <div class="caption">发送 Cookie</div>
+        <div class="centered demo-click box-cookie">
+            cookie
         </div>
-        <script class="code w60p" contenteditable="true">
-                (function () {
-                    const boxFetch3 = document.getElementsByClassName('box-fetch3')[0];
-                    const club = { name: 'Arsenal', points: '100' };
-                    fetch('http://localhost:3333/fetch/json-map', {
-                        method: 'post',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(club)
-                    }).then(response => response.text()).then(data => {
-                        boxFetch3.innerHTML += data + '<br/>';
-                    }).catch(function (e) {
-                        console.log(e);
-                    })
-                })()
-        </script>
-    </section>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        (function () {
+            $('.box-cookie')[0].onclick = function () {
+                document.cookie = "cny=999; path=/";
 
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w40p">
-            <div class="caption">fetch</div>
-            <div class="caption">上传单个文件</div>
-            <div class="centered box-fetch4">
-                <form>
-                    <input type="file">
-                    <br><br>
-                    <button type="button">上传图片</button>
-                </form>
-            </div>
+                fetch('http://localhost:3333/fetch/cookie', {
+                    method: 'post',
+                    // 默认情况下，fetch 不会从服务端发送或接收任何 cookies,
+                    // 如果站点依赖于用户 session，则会导致未经认证的请求（要发送 cookies，必须设置 credentials 选项）
+                    credentials: 'include',  // omit(默认，不带cookie) | same-origin(同源带cookie) | include(总是带cookie)
+                }).then(response => response.text()).then(data => {
+                    alert(data);
+                }).catch(function (e) {
+                    console.log(e);
+                })
+            }
+        })()
+    </script>
+</section>
+
+<section class="code-wrap h250" id="body-blob">
+    <div class="css-live-wrap w40p">
+        <div class="caption">Body.blob()</div>
+        <div class="centered demo-click box-blob">
+            <img src="" alt="穗波玉" style="width: 160px;">
         </div>
-        <script class="code w60p" contenteditable="true">
-                (function () {
-                    document.querySelector('.box-fetch4 button').onclick = function () {
-                        const pictures = document.querySelector('.box-fetch4 input').files;
-                        const formData = new FormData();
-                        formData.append('file', pictures[0]);
-                        fetch('http://localhost:3333/fetch/upload-picture', {
-                            method: 'post',
-                            body: formData,
-                        }).then(response => response.text()).then(data => {
-                            $('.box-fetch4')[0].innerHTML += data + '<br/>';
-                        }).catch(function (e) {
-                            console.log(e);
-                        })
-                    }
-                })()
-        </script>
-    </section>
-
-    <section class="code-wrap h350">
-        <div class="css-live-wrap w40p">
-            <div class="caption">fetch</div>
-            <div class="caption">上传多个文件</div>
-            <div class="centered box-fetch5">
-                <form>
-                    <input type="file" multiple="multiple">
-                    <br><br>
-                    <button type="button">上传图片</button>
-                </form>
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-                (function () {
-                    document.querySelector('.box-fetch5 button').onclick = function () {
-                        const pictures = document.querySelector('.box-fetch5 input').files;
-                        const formData = new FormData();
-                        for (let i = 0; i < pictures.length; i++) {
-                            formData.append('file', pictures[i]);
-                        }
-                        fetch('http://localhost:3333/fetch/upload-pictures', {
-                            method: 'post',
-                            body: formData,
-                        }).then(response => response.text()).then(data => {
-                            $('.box-fetch5')[0].innerHTML += data + '<br/>';
-                        }).catch(function (e) {
-                            console.log(e);
-                        })
-                    }
-                })()
-        </script>
-    </section>
-
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w40p">
-            <div class="caption">fetch</div>
-            <div class="caption">发送 Cookie</div>
-            <div class="centered demo-click box-cookie">
-                cookie
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-                (function () {
-                    $('.box-cookie')[0].onclick = function () {
-                        document.cookie = "cny=999; path=/";
-
-                        fetch('http://localhost:3333/fetch/cookie', {
-                            method: 'post',
-                            // 默认情况下，fetch 不会从服务端发送或接收任何 cookies,
-                            // 如果站点依赖于用户 session，则会导致未经认证的请求（要发送 cookies，必须设置 credentials 选项）
-                            credentials: 'include',  // omit(默认，不带cookie) | same-origin(同源带cookie) | include(总是带cookie)
-                        }).then(response => response.text()).then(data => {
-                            alert(data);
-                        }).catch(function (e) {
-                            console.log(e);
-                        })
-                    }
-                })()
-        </script>
-    </section>
-
-    <section class="code-wrap h250" id="body-blob">
-        <div class="css-live-wrap w40p">
-            <div class="caption">Body.blob()</div>
-            <div class="centered demo-click box-blob">
-                <img src="" alt="穗波玉" style="width: 160px;">
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-                (function () {
-                    fetch('http://localhost:3333/public/img/people/穗波玉.jpg', {
-                        mode: 'cors' // cors: 跨域 | same-origin: 同源 | no-cors: 禁止跨域
-                    }).then(response => response.blob()).then(response => {
-                        document.querySelector('.box-blob img').src = URL.createObjectURL(response);
-                    }).catch(function (e) {
-                        console.log(e);
-                    })
-                })()
-        </script>
-    </section>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        (function () {
+            fetch('http://localhost:3333/public/img/people/穗波玉.jpg', {
+                mode: 'cors' // cors: 跨域 | same-origin: 同源 | no-cors: 禁止跨域
+            }).then(response => response.blob()).then(response => {
+                document.querySelector('.box-blob img').src = URL.createObjectURL(response);
+            }).catch(function (e) {
+                console.log(e);
+            })
+        })()
+    </script>
+</section>
 </body>
-
 </html>

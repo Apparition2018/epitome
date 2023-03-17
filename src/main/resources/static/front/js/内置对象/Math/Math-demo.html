@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,125 +8,130 @@
     <title>Math-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap h700">
-        <div class="css-live-wrap w100p">
-            <div class="caption">Math</div>
-            <div class="math centered">
-                <table class="w1280">
-                    <tr>
-                        <th>属性/方法</th>
-                        <th>概述</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td>Math.E</td>
-                        <td>算术常量，欧拉常数，自然对数的底数</td>
-                        <td>约等于 2.718</td>
-                    </tr>
-                    <tr>
-                        <td>Math.PI</td>
-                        <td>圆周率</td>
-                        <td>约等于 3.14159</td>
-                    </tr>
-                    <tr>
-                        <td>Math.SQRT2</td>
-                        <td>2的平方根</td>
-                        <td>约等于 1.414</td>
-                    </tr>
-                    <tr>
-                        <td>Math.abs(x)</td>
-                        <td>返回x的绝对值</td>
-                        <td>Math.abs('-1'); // 1
-                            <br/>Math.abs(null); // 0
-                            <br/>Math.abs("string"); // NaN
-                            <br/>Math.abs(); // NaN</td>
-                    </tr>
-                    <tr>
-                        <td>Math.clz32(x)</td>
-                        <td>返回一个32位整数的前导零的数量</td>
-                        <td>Math.clz32(1000) // 22</td>
-                    </tr>
-                    <tr>
-                        <td>Math.ceil(x)</td>
-                        <td>返回大于或等于一个给定数字的最小整数</td>
-                        <td>Math.ceil(-0.95); // -0</td>
-                    </tr>
-                    <tr>
-                        <td>Math.floor(x)</td>
-                        <td>返回小于或等于一个给定数字的最大整数</td>
-                        <td>Math.floor(-45.05); // -46</td>
-                    </tr>
-                    <tr>
-                        <td>Math.round(x)</td>
-                        <td>返回一个数字四舍五入后最接近的整数</td>
-                        <td>Math.round(-20.51) // -21</td>
-                    </tr>
-                    <tr>
-                        <td>Math.imul(a, b)</td>
-                        <td>返回两个参数的类C的32位整数乘法运算的运算结果</td>
-                        <td>Math.imul(-1, 8) // -8
-                            <br/>Math.imul(0xfffffffe, 5) //-10</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/max">Math.max([value1[,value2, ...]])</a>
-                        </td>
-                        <td>返回一组数中的最大值</td>
-                        <td>Math.max() // -Infinity</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/min">Math.min([value1[,value2, ...]])</a>
-                        </td>
-                        <td>返回零个或更多个数值的最小值</td>
-                        <td>Math.min() // Infinity</td>
-                    </tr>
-                    <tr>
-                        <td>Math.pow(base, exponent) </td>
-                        <td>返回基数（base）的指数（exponent）次幂</td>
-                        <td>Math.pow(2,7) // 128</td>
-                    </tr>
-                    <tr>
-                        <td>Math.random()</td>
-                        <td>返回一个浮点, 伪随机数在范围[0，1)</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Math.sqrt(x)</td>
-                        <td>返回一个数的平方根</td>
-                        <td>Math.sqrt(2); // 1.414213562373095</td>
-                    </tr>
-                    <tr>
-                        <td>Math.trunc(value)</td>
-                        <td>将数字的小数部分去掉，只保留整数部分</td>
-                        <td>Math.trunc("-1.123") // -1
-                            <br/>Math.trunc("foo") // NaN</td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h700">
+    <div class="css-live-wrap w100p">
+        <div class="caption">Math</div>
+        <div class="math centered">
+            <table class="w1280">
+                <tr>
+                    <th>属性/方法</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>Math.E</td>
+                    <td>算术常量，欧拉常数，自然对数的底数</td>
+                    <td>约等于 2.718</td>
+                </tr>
+                <tr>
+                    <td>Math.PI</td>
+                    <td>圆周率</td>
+                    <td>约等于 3.14159</td>
+                </tr>
+                <tr>
+                    <td>Math.SQRT2</td>
+                    <td>2的平方根</td>
+                    <td>约等于 1.414</td>
+                </tr>
+                <tr>
+                    <td>Math.abs(x)</td>
+                    <td>返回x的绝对值</td>
+                    <td>Math.abs('-1'); // 1
+                        <br/>Math.abs(null); // 0
+                        <br/>Math.abs("string"); // NaN
+                        <br/>Math.abs(); // NaN
+                    </td>
+                </tr>
+                <tr>
+                    <td>Math.clz32(x)</td>
+                    <td>返回一个32位整数的前导零的数量</td>
+                    <td>Math.clz32(1000) // 22</td>
+                </tr>
+                <tr>
+                    <td>Math.ceil(x)</td>
+                    <td>返回大于或等于一个给定数字的最小整数</td>
+                    <td>Math.ceil(-0.95); // -0</td>
+                </tr>
+                <tr>
+                    <td>Math.floor(x)</td>
+                    <td>返回小于或等于一个给定数字的最大整数</td>
+                    <td>Math.floor(-45.05); // -46</td>
+                </tr>
+                <tr>
+                    <td>Math.round(x)</td>
+                    <td>返回一个数字四舍五入后最接近的整数</td>
+                    <td>Math.round(-20.51) // -21</td>
+                </tr>
+                <tr>
+                    <td>Math.imul(a, b)</td>
+                    <td>返回两个参数的类C的32位整数乘法运算的运算结果</td>
+                    <td>Math.imul(-1, 8) // -8
+                        <br/>Math.imul(0xfffffffe, 5) //-10
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/max">
+                            Math.max([value1[,value2, ...]])
+                        </a>
+                    </td>
+                    <td>返回一组数中的最大值</td>
+                    <td>Math.max() // -Infinity</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/min">
+                            Math.min([value1[,value2, ...]])
+                        </a>
+                    </td>
+                    <td>返回零个或更多个数值的最小值</td>
+                    <td>Math.min() // Infinity</td>
+                </tr>
+                <tr>
+                    <td>Math.pow(base, exponent)</td>
+                    <td>返回基数（base）的指数（exponent）次幂</td>
+                    <td>Math.pow(2,7) // 128</td>
+                </tr>
+                <tr>
+                    <td>Math.random()</td>
+                    <td>返回一个浮点, 伪随机数在范围[0，1)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Math.sqrt(x)</td>
+                    <td>返回一个数的平方根</td>
+                    <td>Math.sqrt(2); // 1.414213562373095</td>
+                </tr>
+                <tr>
+                    <td>Math.trunc(value)</td>
+                    <td>将数字的小数部分去掉，只保留整数部分</td>
+                    <td>Math.trunc("-1.123") // -1
+                        <br/>Math.trunc("foo") // NaN
+                    </td>
+                </tr>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w33p">
-            <div class="caption">Math.random()</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">Math.random()</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            // 得到一个两数之间的随机数
-            function getRandomArbitrary(min, max) {
-                return Math.random() * (max - min) + min;
-            }
+    </div>
+    <script class="code w67p" contenteditable="true">
+        // 得到一个两数之间的随机数
+        function getRandomArbitrary(min, max) {
+            return Math.random() * (max - min) + min;
+        }
 
-            // 得到一个两数之间的随机整数
-            function getRandomIntInclusive(min, max) {
-                return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min));
-            }
-        </script>
-    </section>
+        // 得到一个两数之间的随机整数
+        function getRandomIntInclusive(min, max) {
+            return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1) + Math.ceil(min));
+        }
+    </script>
+</section>
 </body>
-
 </html>

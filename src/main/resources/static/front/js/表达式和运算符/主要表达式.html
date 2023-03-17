@@ -42,8 +42,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/async允许声明一个函数为一个包含异步操作的函数">async
-                            function</a>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/async允许声明一个函数为一个包含异步操作的函数">
+                            async function
+                        </a>
                     </td>
                     <td>async function [name](param1[, param2...]){ statements }</td>
                     <td>在表达式中定义异步函数，返回一个 Promise 对象</td>
@@ -168,9 +169,11 @@
             await async2();
             boxTiming.innerHTML += 'async1 end' + '<br/>';
         }
+
         async function async2() {
             boxTiming.innerHTML += 'async2' + '<br/>';
         }
+
         boxTiming.innerHTML += 'script start' + '<br/>';
         setTimeout(function () {
             boxTiming.innerHTML += 'settimeout' + '<br/>'; // macrotasks

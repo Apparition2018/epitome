@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,94 +9,92 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script defer src="../../../public/js/demo.js"></script>
 </head>
-
 <body>
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w33p">
-            <div class="caption">for...in</div>
-            <div class="caption">以原始插入顺序迭代对象的可枚举属性</div>
-            <div class="centered">
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">for...in</div>
+        <div class="caption">以原始插入顺序迭代对象的可枚举属性</div>
+        <div class="centered">
 
-            </div>
         </div>
-        <script class="code w67p" contenteditable="true">
-            // 不要用 for in 语句对数组进行遍历
-            // for in 会遍历到数组的后面添加的原型链属性，不会遍历到原生原型链上的属性
-            const arr = [1, 2, 3, 4];
-            Array.prototype.age = 13;
-            for (const i in arr) {
-                console.log(arr[i]); // 1 2 3 4 13，
-            }
-        </script>
-    </section>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        // 不要用 for in 语句对数组进行遍历
+        // for in 会遍历到数组的后面添加的原型链属性，不会遍历到原生原型链上的属性
+        const arr = [1, 2, 3, 4];
+        Array.prototype.age = 13;
+        for (const i in arr) {
+            console.log(arr[i]); // 1 2 3 4 13，
+        }
+    </script>
+</section>
 
-    <section class="code-wrap h100vh">
-        <div class="css-live-wrap w33p">
-            <div class="caption">for...of</div>
-            <div class="caption">在可迭代对象上创建一个迭代循环，<br>调用自定义迭代钩子，并为每个不同属性的值执行语句</div>
-            <div class="centered">
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap w33p">
+        <div class="caption">for...of</div>
+        <div class="caption">在可迭代对象上创建一个迭代循环，<br>调用自定义迭代钩子，并为每个不同属性的值执行语句</div>
+        <div class="centered">
 
-            </div>
         </div>
-        <script class="code w67p" contenteditable="true">
-            // 迭代 Map
-            const iterable = new Map([["a", 1], ["b", 2], ["c", 3]]);
+    </div>
+    <script class="code w67p" contenteditable="true">
+        // 迭代 Map
+        const iterable = new Map([["a", 1], ["b", 2], ["c", 3]]);
 
-            for (const entry of iterable) {
-                console.log(entry);
+        for (const entry of iterable) {
+            console.log(entry);
+        }
+
+        for (const [k, v] of iterable) {
+            console.log(v);
+        }
+
+
+        // 迭代生成器
+        function* fibonacci() {
+            let [prev, curr] = [0, 1];
+            for (; ;) {
+                [prev, curr] = [curr, prev + curr];
+                yield curr;
             }
+        }
 
-            for (const [k, v] of iterable) {
-                console.log(v);
-            }
-
-
-            // 迭代生成器
-            function* fibonacci() {
-                let [prev, curr] = [0, 1];
-                for (; ;) {
-                    [prev, curr] = [curr, prev + curr];
-                    yield curr;
-                }
-            }
-
-            for (const n of fibonacci()) {
-                if (n >= 1000)
-                    break;
-            }
-
-
-            // 关闭生成器
-            // 对于 for of 的循环，可以由 break, throw, return 终止。在这些情况下，迭代器关闭
-            function* foo() {
-                yield 1;
-                yield 2;
-                yield 3;
-            }
-
-            for (const o of foo()) {
-                console.log(o);
+        for (const n of fibonacci()) {
+            if (n >= 1000)
                 break;
-            } // 1
+        }
 
-            for (const o of foo()) {
-                console.log(o);
-            } // 在上一个循环生成器已关闭，无输出
-        </script>
-    </section>
 
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w33p">
-            <div class="caption">for await...of</div>
-            <div class="caption">在异步或者同步可迭代对象上创建一个迭代循环，<br>调用自定义迭代钩子，并为每个不同属性的值执行语句</div>
-            <div class="centered">
-                <a class="demo-click" href="../内置对象/Symbol/Symbol-demo.html">for await...of</a>
-            </div>
+        // 关闭生成器
+        // 对于 for of 的循环，可以由 break, throw, return 终止。在这些情况下，迭代器关闭
+        function* foo() {
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+
+        for (const o of foo()) {
+            console.log(o);
+            break;
+        } // 1
+
+        for (const o of foo()) {
+            console.log(o);
+        } // 在上一个循环生成器已关闭，无输出
+    </script>
+</section>
+
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">for await...of</div>
+        <div class="caption">在异步或者同步可迭代对象上创建一个迭代循环，<br>调用自定义迭代钩子，并为每个不同属性的值执行语句</div>
+        <div class="centered">
+            <a class="demo-click" href="../内置对象/Symbol/Symbol-demo.html">for await...of</a>
         </div>
-        <script class="code w67p" contenteditable="true">
+    </div>
+    <script class="code w67p" contenteditable="true">
 
-        </script>
-    </section>
+    </script>
+</section>
 </body>
-
 </html>

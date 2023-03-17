@@ -1,154 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>position-%</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
 </head>
-
 <body>
-    <!-- relative定位，%值 -->
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">relative定位，%值</div>
-            <div class="caption">%值按离其最近有定位属性的祖先元素的content计算</div>
-            <div class="eg1 centered">
-                <div class="z1">
-                    <div class="z2"></div>
-                </div>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">relative定位，%值</div>
+        <div class="caption">%值按离其最近有定位属性的祖先元素的content计算</div>
+        <div class="eg1 centered">
+            <div class="z1">
+                <div class="z2"></div>
             </div>
         </div>
-        <style class="code" contenteditable="true">
-            .eg1 .z1 {
-                position: relative;
-                width: 200px;
-                height: 100px;
-                padding: 10px;
-                background-color: var(--gn2);
-                background-clip: content-box;
-                border: 5px solid var(--gn3);
-            }
+    </div>
+    <style class="code" contenteditable="true">
+        .eg1 .z1 {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            padding: 10px;
+            background-color: var(--gn2);
+            background-clip: content-box;
+            border: 5px solid var(--gn3);
+        }
 
-            .eg1 .z2 {
-                position: relative;
-                z-index: 2;
-                top: 100%;
-                left: 100%;
-                width: 100px;
-                height: 50px;
-                padding: 10px;
-                background-color: var(--bu2);
-                border: 5px solid var(--bu3);
-            }
-        </style>
-    </section>
+        .eg1 .z2 {
+            position: relative;
+            z-index: 2;
+            top: 100%;
+            left: 100%;
+            width: 100px;
+            height: 50px;
+            padding: 10px;
+            background-color: var(--bu2);
+            border: 5px solid var(--bu3);
+        }
+    </style>
+</section>
 
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">relative定位，top:0，left:0时，初始位置</div>
-            <div class="eg2 centered">
-                <div class="z1">
-                    <div class="z2"></div>
-                </div>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">relative定位，top:0，left:0时，初始位置</div>
+        <div class="eg2 centered">
+            <div class="z1">
+                <div class="z2"></div>
             </div>
         </div>
-        <style class="code" contenteditable="true">
-            .eg2 .z1 {
-                position: relative;
-                width: 200px;
-                height: 100px;
-                padding: 10px;
-                background-color: var(--gn2);
-                background-clip: content-box;
-                border: 5px solid var(--gn3);
-            }
+    </div>
+    <style class="code" contenteditable="true">
+        .eg2 .z1 {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            padding: 10px;
+            background-color: var(--gn2);
+            background-clip: content-box;
+            border: 5px solid var(--gn3);
+        }
 
-            .eg2 .z2 {
-                position: relative;
-                z-index: 2;
-                top: 0;
-                left: 0;
-                width: 100px;
-                height: 50px;
-                padding: 10px;
-                background-color: var(--bu2);
-                border: 5px solid var(--bu3);
-            }
-        </style>
-    </section>
+        .eg2 .z2 {
+            position: relative;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 50px;
+            padding: 10px;
+            background-color: var(--bu2);
+            border: 5px solid var(--bu3);
+        }
+    </style>
+</section>
 
-    <!-- absolute定位，%值 -->
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">absolute定位，%值</div>
-            <div class="caption">%值按离其最近有定位属性的祖先元素的content+padding计算</div>
-            <div class="eg3 centered">
-                <div class="z1">
-                    <div class="z2"></div>
-                </div>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">absolute定位，%值</div>
+        <div class="caption">%值按离其最近有定位属性的祖先元素的content+padding计算</div>
+        <div class="eg3 centered">
+            <div class="z1">
+                <div class="z2"></div>
             </div>
         </div>
-        <style class="code" contenteditable="true">
-            .eg3 .z1 {
-                position: relative;
-                width: 200px;
-                height: 100px;
-                padding: 10px;
-                background: var(--gn2);
-                background-clip: content-box;
-                border: 5px solid var(--gn3);
-            }
+    </div>
+    <style class="code" contenteditable="true">
+        .eg3 .z1 {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            padding: 10px;
+            background: var(--gn2);
+            background-clip: content-box;
+            border: 5px solid var(--gn3);
+        }
 
-            .eg3 .z2 {
-                position: absolute;
-                z-index: 2;
-                top: 100%;
-                left: 100%;
-                width: 100px;
-                height: 50px;
-                padding: 10px;
-                background: var(--bu2);
-                border: 5px solid var(--bu3);
-            }
-        </style>
-    </section>
+        .eg3 .z2 {
+            position: absolute;
+            z-index: 2;
+            top: 100%;
+            left: 100%;
+            width: 100px;
+            height: 50px;
+            padding: 10px;
+            background: var(--bu2);
+            border: 5px solid var(--bu3);
+        }
+    </style>
+</section>
 
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">absolute定位，top:0，left:0时，初始位置</div>
-            <div class="eg4 centered">
-                <div class="z1">
-                    <div class="z2"></div>
-                </div>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">absolute定位，top:0，left:0时，初始位置</div>
+        <div class="eg4 centered">
+            <div class="z1">
+                <div class="z2"></div>
             </div>
         </div>
-        <style class="code" contenteditable="true">
-            .eg4 .z1 {
-                position: relative;
-                width: 200px;
-                height: 100px;
-                padding: 10px;
-                background: var(--gn2);
-                background-clip: content-box;
-                border: 5px solid var(--gn3);
-            }
+    </div>
+    <style class="code" contenteditable="true">
+        .eg4 .z1 {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            padding: 10px;
+            background: var(--gn2);
+            background-clip: content-box;
+            border: 5px solid var(--gn3);
+        }
 
-            .eg4 .z2 {
-                position: absolute;
-                z-index: 2;
-                top: 0;
-                left: 0;
-                width: 100px;
-                height: 50px;
-                padding: 10px;
-                background: var(--bu2);
-                border: 5px solid var(--bu3);
-            }
-        </style>
-    </section>
+        .eg4 .z2 {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 50px;
+            padding: 10px;
+            background: var(--bu2);
+            border: 5px solid var(--bu3);
+        }
+    </style>
+</section>
 </body>
-
 </html>

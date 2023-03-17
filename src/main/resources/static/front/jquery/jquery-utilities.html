@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>工具类 | jQuery</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h1100">
@@ -28,8 +30,9 @@
                     </td>
                     <td>检查一个DOM元素是否为另一个DOM元素的后代</td>
                     <td>
-                        <a href="javascript: alert($.contains(document.documentElement, document.body))">$.contains(document.documentElement,
-                            document.body)</a>
+                        <a href="javascript: alert($.contains(document.documentElement, document.body))">
+                            $.contains(document.documentElement, document.body)
+                        </a>
                     </td>
                 </tr>
                 <tr id="utilities-unique">
@@ -49,8 +52,9 @@
                     </td>
                     <td>为每个匹配元素规定要执行的函数</td>
                     <td>
-                        <a href="javascript: $.each([1,2,3],function(i,v){alert(i+': '+v)})">$.each([1,2,3],function(i,v){alert(i+':
-                            '+v)})</a>
+                        <a href="javascript: $.each([1,2,3],function(i,v){alert(i+': '+v)})">
+                            $.each([1,2,3],function(i,v){alert(i+': '+v)})
+                        </a>
                     </td>
                 </tr>
                 <tr>
@@ -62,8 +66,9 @@
                         <br/>并将处理结果封装为新的数组返回
                     </td>
                     <td>
-                        <a href="javascript: alert($.map([1,2,3], function(v,i){return v * 2}))">$.map([1,2,3],
-                            function(v,i){return v * 2})</a>
+                        <a href="javascript: alert($.map([1,2,3], function(v,i){return v * 2}))">
+                            $.map([1,2,3], function(v,i){return v * 2})
+                        </a>
                     </td>
                 </tr>
                 <tr>
@@ -83,8 +88,9 @@
                     <td>Array.prototype.concat()</td>
                     <td>合并两个数组内容到第一个数组</td>
                     <td>
-                        <a href="javascript: alert($.merge([[1,2],3],[[4,5],6]))">$.merge([[1,2],3],[[4,5],6]) //
-                            [[1,2],3,[4,5],6]</a>
+                        <a href="javascript: alert($.merge([[1,2],3],[[4,5],6]))">
+                            $.merge([[1,2],3],[[4,5],6]) // [[1,2],3,[4,5],6]
+                        </a>
                     </td>
                 </tr>
                 <tr id="utilities-makeArray">
@@ -299,7 +305,6 @@
             </table>
         </div>
     </div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../../public/js/tooltip.js"></script>
     <script>
         $('#utilities-each').tooltip([
@@ -350,7 +355,6 @@
         })
     </script>
 </section>
-
 
 <section class="code-wrap h300" id="util-fn-extend">
     <div class="css-live-wrap w40p">
@@ -440,7 +444,5 @@
         })
     </script>
 </section>
-
-<script src="../../public/js/demo.js"></script>
 </body>
 </html>

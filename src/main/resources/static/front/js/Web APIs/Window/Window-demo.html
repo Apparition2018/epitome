@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,267 +9,269 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script defer src="../../../../public/js/demo.js"></script>
 </head>
-
 <body>
-    <section class="code-wrap h600">
-        <div class="css-live-wrap w100p">
-            <div class="caption">属性</div>
-            <div class="centered">
-                <table class="w1024">
-                    <tr>
-                        <th>属性</th>
-                        <th>概述</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td>closed</td>
-                        <td>表示当前窗口是否关闭，返回 true 或 false</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>frames</td>
-                        <td>返回当前窗口，一个类数组对象，列出了当前窗口的所有直接子窗口</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>length</td>
-                        <td>设置或返回当前窗口中的框架数量(frame 和 iframe)</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>innerHeight</td>
-                        <td>浏览器的视口（viewport）高度，包括水平滚动条</td>
-                        <td rowspan="2">
-                            <a href="https://mdn.mozillademos.org/files/443/FirefoxInnerVsOuterHeight2.png" target="_blank">图像示例</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>outerheight</td>
-                        <td>浏览器的高度，包括侧边栏、窗口镶边（window chrome），
-                            <br>和窗口调正边框（window resizing borders/handles）</td>
-                    </tr>
-                    <tr>
-                        <td>innerWidth</td>
-                        <td>浏览器的视口（viewport）宽度，包括垂直滚动条</td>
-                        <td>
-                            <a href="javascript: alert(innerWidth);">innerWidth</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>outerWidth</td>
-                        <td>浏览器的宽度，包括侧边栏、窗口镶边（window chrome），
-                            <br>和窗口调正边框（window resizing borders/handles）</td>
-                        <td>
-                            <a href="javascript: alert(outerWidth);">outerWidth</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>name</td>
-                        <td>设置或返回窗口的名称</td>
-                        <td>
-                            <a href="http://localhost:3333/knowledge/js/Web%20APIs/Window/name.html">解决跨域问题</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>opener</td>
-                        <td>返回打开当前窗口的那个窗口的引用</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>top</td>
-                        <td>返回当前窗口的顶层窗口的引用</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>parent</td>
-                        <td>返回当前窗口的父窗口的引用</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>self</td>
-                        <td>返回当前窗口的引用，即 window</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>screenX</td>
-                        <td>返回浏览器左边界到系统桌面左边界的水平距离</td>
-                        <td>
-                            <a href="javascript: alert(screenX);">screenX</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>screenY</td>
-                        <td>返回浏览器顶部到系统桌面顶部的垂直距离</td>
-                        <td>
-                            <a href="javascript: alert(screenY);">screenY</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h600">
+    <div class="css-live-wrap w100p">
+        <div class="caption">属性</div>
+        <div class="centered">
+            <table class="w1024">
+                <tr>
+                    <th>属性</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>closed</td>
+                    <td>表示当前窗口是否关闭，返回 true 或 false</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>frames</td>
+                    <td>返回当前窗口，一个类数组对象，列出了当前窗口的所有直接子窗口</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>length</td>
+                    <td>设置或返回当前窗口中的框架数量(frame 和 iframe)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>innerHeight</td>
+                    <td>浏览器的视口（viewport）高度，包括水平滚动条</td>
+                    <td rowspan="2">
+                        <a href="https://mdn.mozillademos.org/files/443/FirefoxInnerVsOuterHeight2.png" target="_blank">图像示例</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>outerheight</td>
+                    <td>浏览器的高度，包括侧边栏、窗口镶边（window chrome），
+                        <br>和窗口调正边框（window resizing borders/handles）
+                    </td>
+                </tr>
+                <tr>
+                    <td>innerWidth</td>
+                    <td>浏览器的视口（viewport）宽度，包括垂直滚动条</td>
+                    <td>
+                        <a href="javascript: alert(innerWidth);">innerWidth</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>outerWidth</td>
+                    <td>浏览器的宽度，包括侧边栏、窗口镶边（window chrome），
+                        <br>和窗口调正边框（window resizing borders/handles）
+                    </td>
+                    <td>
+                        <a href="javascript: alert(outerWidth);">outerWidth</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>设置或返回窗口的名称</td>
+                    <td>
+                        <a href="http://localhost:3333/knowledge/js/Web%20APIs/Window/name.html">解决跨域问题</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>opener</td>
+                    <td>返回打开当前窗口的那个窗口的引用</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>top</td>
+                    <td>返回当前窗口的顶层窗口的引用</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>parent</td>
+                    <td>返回当前窗口的父窗口的引用</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>self</td>
+                    <td>返回当前窗口的引用，即 window</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>screenX</td>
+                    <td>返回浏览器左边界到系统桌面左边界的水平距离</td>
+                    <td>
+                        <a href="javascript: alert(screenX);">screenX</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>screenY</td>
+                    <td>返回浏览器顶部到系统桌面顶部的垂直距离</td>
+                    <td>
+                        <a href="javascript: alert(screenY);">screenY</a>
+                    </td>
+                </tr>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-
-    <section class="code-wrap h550">
-        <div class="css-live-wrap w100p">
-            <div class="caption">方法</div>
-            <div class="centered">
-                <table class="w1024">
-                    <tr>
-                        <th>方法</th>
-                        <th>概述</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td>alert()</td>
-                        <td>显示带有一段消息和一个确认按钮的警告框</td>
-                        <td>
-                            <a href="javascript: alert('alert()');">alert()</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>confirm()</td>
-                        <td>显示带有一段消息以及确认按钮和取消按钮的对话框</td>
-                        <td>
-                            <a
+<section class="code-wrap h550">
+    <div class="css-live-wrap w100p">
+        <div class="caption">方法</div>
+        <div class="centered">
+            <table class="w1024">
+                <tr>
+                    <th>方法</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>alert()</td>
+                    <td>显示带有一段消息和一个确认按钮的警告框</td>
+                    <td>
+                        <a href="javascript: alert('alert()');">alert()</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>confirm()</td>
+                    <td>显示带有一段消息以及确认按钮和取消按钮的对话框</td>
+                    <td>
+                        <a
                                 href="javascript: if (confirm('确定?')) { alert('yes') } else { alert('no') }">confirm('确定?')</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>prompt()</td>
-                        <td>显示可提示用户输入的对话框</td>
-                        <td>
-                            <a href="javascript: const result = prompt('请输入您的名字', ''); alert(result);">prompt('请输入您的名字', '')</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>open()</td>
-                        <td>打开一个新的浏览器窗口或查找一个已命名的窗口</td>
-                        <td>
-                            <a href="javascript: open('https://baidu.com')">open('https://baidu.com')</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>close()</td>
-                        <td>关闭由 window.open 打开的窗口或某个指定的窗口</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>moveTo()</td>
-                        <td>将当前窗口移动到指定的坐标位置</td>
-                        <td>
-                            <a href="javascript: moveTo(10, 10);">moveTo(10, 10)</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>moveBy()</td>
-                        <td>相对窗口当前坐标来移动窗口</td>
-                        <td>
-                            <a href="javascript: moveBy(10, 10);">moveBy(10, 10)</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>resizeTo()</td>
-                        <td>将窗口的大小调整到指定的宽度和高度</td>
-                        <td>
-                            <a href="javascript: resizeTo(600, 400);">resizeTo(600, 400)</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>resizeBy()</td>
-                        <td>相对窗口当前大小来调整窗口大小</td>
-                        <td>
-                            <a href="javascript: resizeTo(-50, -50);">resizeTo(-50, -50)</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>scrollTo()</td>
-                        <td>将文档滚动到指定的坐标</td>
-                        <td>
-                            <a href="javascript: scrollTo(0, 500);">scrollTo(0, 500)</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>scrollBy()</td>
-                        <td>按指定的像素值来滚动文档</td>
-                        <td>
-                            <a href="javascript: scrollBy(0, -200);">scrollBy(0, -50)</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getComputedStyle" target="_blank">getComputedStyle()</a>
-                        </td>
-                        <td>获取指定元素的 CSS 样式</td>
-                        <td>getComputedStyle(ele, null).getPropertyValue('color')</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">moveXX, resizeXX 在以下情况无效
-                            <br>1.当前窗口或标签页不是由 window.open 方法创建的
-                            <br>2.当前标签页所在的窗口包含有多个标签页
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>prompt()</td>
+                    <td>显示可提示用户输入的对话框</td>
+                    <td>
+                        <a href="javascript: const result = prompt('请输入您的名字', ''); alert(result);">
+                            prompt('请输入您的名字', '')
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>open()</td>
+                    <td>打开一个新的浏览器窗口或查找一个已命名的窗口</td>
+                    <td>
+                        <a href="javascript: open('https://baidu.com')">open('https://baidu.com')</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>close()</td>
+                    <td>关闭由 window.open 打开的窗口或某个指定的窗口</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>moveTo()</td>
+                    <td>将当前窗口移动到指定的坐标位置</td>
+                    <td>
+                        <a href="javascript: moveTo(10, 10);">moveTo(10, 10)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>moveBy()</td>
+                    <td>相对窗口当前坐标来移动窗口</td>
+                    <td>
+                        <a href="javascript: moveBy(10, 10);">moveBy(10, 10)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resizeTo()</td>
+                    <td>将窗口的大小调整到指定的宽度和高度</td>
+                    <td>
+                        <a href="javascript: resizeTo(600, 400);">resizeTo(600, 400)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resizeBy()</td>
+                    <td>相对窗口当前大小来调整窗口大小</td>
+                    <td>
+                        <a href="javascript: resizeTo(-50, -50);">resizeTo(-50, -50)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>scrollTo()</td>
+                    <td>将文档滚动到指定的坐标</td>
+                    <td>
+                        <a href="javascript: scrollTo(0, 500);">scrollTo(0, 500)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>scrollBy()</td>
+                    <td>按指定的像素值来滚动文档</td>
+                    <td>
+                        <a href="javascript: scrollBy(0, -200);">scrollBy(0, -50)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getComputedStyle"
+                           target="_blank">getComputedStyle()</a>
+                    </td>
+                    <td>获取指定元素的 CSS 样式</td>
+                    <td>getComputedStyle(ele, null).getPropertyValue('color')</td>
+                </tr>
+                <tr>
+                    <td colspan="3">moveXX, resizeXX 在以下情况无效
+                        <br>1.当前窗口或标签页不是由 window.open 方法创建的
+                        <br>2.当前标签页所在的窗口包含有多个标签页
+                    </td>
+                </tr>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w33p">
-            <div class="caption">确认框</div>
-            <div class="caption">result = window.confirm(message)</div>
-            <div class="confirm centered">
-                <div class="demo-click" onclick="confirmPopUp()">confirm</div>
-            </div>
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">确认框</div>
+        <div class="caption">result = window.confirm(message)</div>
+        <div class="confirm centered">
+            <div class="demo-click" onclick="confirmPopUp()">confirm</div>
         </div>
-        <script class="code w67p" contenteditable="true">
-            function confirmPopUp() {
-                if (confirm('打开百度?')) {
-                    open('http://baidu.com');
+    </div>
+    <script class="code w67p" contenteditable="true">
+        function confirmPopUp() {
+            if (confirm('打开百度?')) {
+                open('http://baidu.com');
+            }
+        }
+    </script>
+</section>
+
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">提示框</div>
+        <div class="caption">result = window.prompt(text, value);</div>
+        <div class="prompt centered">
+            <div class="demo-click" onclick="promptPopUp()">prompt</div>
+        </div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        let count = 0; // 控制 promptPopUp 只能生效一次
+        function promptPopUp() {
+            if (count++ === 0) {
+                let name = prompt("请输入您的名字", ""); // prompt 返回用户输入文字的字符串，或 null
+                if (name != null && name !== "") {
+                    document.querySelector('.prompt .demo-click').innerHTML = `你好，${name}! 今天过得好吗?`;
                 }
             }
-        </script>
-    </section>
+        }
+    </script>
+</section>
 
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w33p">
-            <div class="caption">提示框</div>
-            <div class="caption">result = window.prompt(text, value);</div>
-            <div class="prompt centered">
-                <div class="demo-click" onclick="promptPopUp()">prompt</div>
-            </div>
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">打开一个新的浏览器窗口或查找一个已命名的窗口</div>
+        <div class="caption">newWindow = open(URL, name, features)</div>
+        <div class="open centered">
+            <div class="demo-click" onclick="openWindow()">open</div>
         </div>
-        <script class="code w67p" contenteditable="true">
-            let count = 0; // 控制 promptPopUp 只能生效一次
-            function promptPopUp() {
-                if (count++ === 0) {
-                    let name = prompt("请输入您的名字", ""); // prompt 返回用户输入文字的字符串，或 null
-                    if (name != null && name !== "") {
-                        document.querySelector('.prompt .demo-click').innerHTML = `你好，${name}! 今天过得好吗?`;
-                    }
-                }
-            }
-        </script>
-    </section>
-
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w33p">
-            <div class="caption">打开一个新的浏览器窗口或查找一个已命名的窗口</div>
-            <div class="caption">newWindow = open(URL, name, features)</div>
-            <div class="open centered">
-                <div class="demo-click" onclick="openWindow()">open</div>
-            </div>
-        </div>
-        <script class="code w67p" contenteditable="true">
-            function openWindow() {
-                let myWindow = open('https://www.runoob.com/jsref/met-win-open.html', '', 'width=800,height=600,left=200,top=50');
-                myWindow.focus();
-                setTimeout(function () {
-                    myWindow.close(); // 因为窗口是 window.open() 打开的，所以可以使用 window.close() 关闭
-                }, 2000);
-            }
-        </script>
-    </section>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        function openWindow() {
+            let myWindow = open('https://www.runoob.com/jsref/met-win-open.html', '', 'width=800,height=600,left=200,top=50');
+            myWindow.focus();
+            setTimeout(function () {
+                myWindow.close(); // 因为窗口是 window.open() 打开的，所以可以使用 window.close() 关闭
+            }, 2000);
+        }
+    </script>
+</section>
 </body>
-
 </html>

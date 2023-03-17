@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,164 +7,169 @@
     <title>Date-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap h700">
-        <div class="css-live-wrap w100p">
-            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></div>
-            <div class="date centered">
-                <table class="w1280">
-                    <tr>
-                        <th>方法</th>
-                        <th>概述</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td>new Date()</td>
-                        <td></td>
-                        <td>const birthday = new Date('December 17, 1995 03:24:00');
-                            <br/>const birthday = new Date('1995-12-17T03:24:00');
-                            <br/>const birthday = new Date(1995, 11, 17);
-                            <br/>const birthday = new Date(1995, 11, 17, 3, 24, 0);
-                            <br/>// Sun Dec 17 1995 03:24:00 GMT+0800 (中国标准时间)</td>
-                    </tr>
-                    <tr>
-                        <td>Date.now()</td>
-                        <td>返回自 1970年1月1日 00:00:00 UTC 到当前时间的毫秒数</td>
-                        <td>
-                            <a href="javascript: alert(Date.now());">Date.now()</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/UTC" target="_blank">Date.UTC()</a></td>
-                        <td>接受的参数同日期构造函数接受最多参数时一样，返回从1970-1-1 00:00:00 UTC到指定日期的的毫秒数</td>
-                        <td>
-                            <a href="javascript: alert(Date.UTC(2021,1,18,0,47,30,0));">Date.UTC(2021,1,18,0,47,30,0)</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>getFullYear()</td>
-                        <td>根据本地时间返回指定日期的年份</td>
-                        <td>1995</td>
-                    </tr>
-                    <tr>
-                        <td>getMonth()</td>
-                        <td>根据本地时间，返回一个指定的日期对象的月份，为基于0的值（0表示一年中的第一月）</td>
-                        <td>11</td>
-                    </tr>
-                    <tr>
-                        <td>getDate()</td>
-                        <td>根据本地时间，返回一个指定的日期对象为一个月中的第几天</td>
-                        <td>17</td>
-                    </tr>
-                    <tr>
-                        <td>getHours()</td>
-                        <td>根据本地时间，返回一个指定的日期对象的小时</td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <td>getMinutes()</td>
-                        <td>根据本地时间，返回一个指定的日期对象的分钟数</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>getSeconds()</td>
-                        <td>根据本地时间，返回一个指定的日期对象的秒数</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>getMilliseconds()</td>
-                        <td>根据本地时间，返回一个指定的日期对象的毫秒数</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>getDate()</td>
-                        <td>根据本地时间，返回一个指定的日期对象为一个月中的第几天</td>
-                        <td>17</td>
-                    </tr>
-                    <tr>
-                        <td>getDay()</td>
-                        <td>根据本地时间，返回一个具体日期中一周的第几天，0 表示星期天</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>getTime()</td>
-                        <td>返回一个时间的格林威治时间数值</td>
-                        <td>819141840000</td>
-                    </tr>
-                    <tr>
-                        <td>toUTCString()</td>
-                        <td>把一个日期转换为一个字符串，使用 UTC 时区</td>
-                        <td>Tue, 16 Oct 2018 14:44:47 GMT</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString" target="_blank">toLocaleString()</a></td>
-                        <td>返回该日期对象的字符串，该字符串格式因不同语言而不同</td>
-                        <td>
-                            <a href="javascript: alert(new Date().toLocaleString());">new Date().toLocaleString()</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>valueOf()</td>
-                        <td>返回一个 Date 对象的原始值</td>
-                        <td>819141840000</td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h750">
+    <div class="css-live-wrap w100p">
+        <div class="caption">
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a>
         </div>
-    </section>
+        <div class="date centered">
+            <table class="w1280">
+                <tr>
+                    <th>方法</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>new Date()</td>
+                    <td></td>
+                    <td>const birthday = new Date('December 17, 1995 03:24:00');
+                        <br/>const birthday = new Date('1995-12-17T03:24:00');
+                        <br/>const birthday = new Date(1995, 11, 17);
+                        <br/>const birthday = new Date(1995, 11, 17, 3, 24, 0);
+                        <br/>// Sun Dec 17 1995 03:24:00 GMT+0800 (中国标准时间)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date.now()</td>
+                    <td>返回自 1970年1月1日 00:00:00 UTC 到当前时间的毫秒数</td>
+                    <td>
+                        <a href="javascript: alert(Date.now());">Date.now()</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/UTC"
+                           target="_blank">Date.UTC()</a></td>
+                    <td>接受的参数同日期构造函数接受最多参数时一样，返回从1970-1-1 00:00:00 UTC到指定日期的的毫秒数</td>
+                    <td>
+                        <a href="javascript: alert(Date.UTC(2021,1,18,0,47,30,0));">Date.UTC(2021,1,18,0,47,30,0)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>getFullYear()</td>
+                    <td>根据本地时间返回指定日期的年份</td>
+                    <td>1995</td>
+                </tr>
+                <tr>
+                    <td>getMonth()</td>
+                    <td>根据本地时间，返回一个指定的日期对象的月份，为基于0的值（0表示一年中的第一月）</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td>getDate()</td>
+                    <td>根据本地时间，返回一个指定的日期对象为一个月中的第几天</td>
+                    <td>17</td>
+                </tr>
+                <tr>
+                    <td>getHours()</td>
+                    <td>根据本地时间，返回一个指定的日期对象的小时</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>getMinutes()</td>
+                    <td>根据本地时间，返回一个指定的日期对象的分钟数</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>getSeconds()</td>
+                    <td>根据本地时间，返回一个指定的日期对象的秒数</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>getMilliseconds()</td>
+                    <td>根据本地时间，返回一个指定的日期对象的毫秒数</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>getDate()</td>
+                    <td>根据本地时间，返回一个指定的日期对象为一个月中的第几天</td>
+                    <td>17</td>
+                </tr>
+                <tr>
+                    <td>getDay()</td>
+                    <td>根据本地时间，返回一个具体日期中一周的第几天，0 表示星期天</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>getTime()</td>
+                    <td>返回一个时间的格林威治时间数值</td>
+                    <td>819141840000</td>
+                </tr>
+                <tr>
+                    <td>toUTCString()</td>
+                    <td>把一个日期转换为一个字符串，使用 UTC 时区</td>
+                    <td>Tue, 16 Oct 2018 14:44:47 GMT</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString"
+                           target="_blank">toLocaleString()</a></td>
+                    <td>返回该日期对象的字符串，该字符串格式因不同语言而不同</td>
+                    <td>
+                        <a href="javascript: alert(new Date().toLocaleString());">new Date().toLocaleString()</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>valueOf()</td>
+                    <td>返回一个 Date 对象的原始值</td>
+                    <td>819141840000</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
 
-    <section class="code-wrap h550">
-        <div class="css-live-wrap w33p">
-            <div class="caption">格式化日期</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h550">
+    <div class="css-live-wrap w33p">
+        <div class="caption">格式化日期</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            function addDateFormat() {
-                Date.prototype.format = function (format) {
-                    const o = {
-                        "M+": this.getMonth() + 1,                  // 月份
-                        "d+": this.getDate(),                       // 日
-                        "H+": this.getHours(),                      // 小时
-                        "m+": this.getMinutes(),                    // 分
-                        "s+": this.getSeconds(),                    // 秒
-                        "S": this.getMilliseconds(),                // 毫秒
-                        "q+": Math.floor((this.getMonth() + 3) / 3) // 季度
-                    };
-                    if (/(y+)/.test(format)) {
-                        format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-                    }
-                    for (const k in o) {
-                        if (new RegExp("(" + k + ")").test(format))
-                            // RegExp 是 javascript 中的一个内置对象，RegExp.$1 是 RegExp的 一个属性，指匹配到的第一个字符串
-                            format = format.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-                    }
-                    return format;
+    </div>
+    <script class="code w67p" contenteditable="true">
+        function addDateFormat() {
+            Date.prototype.format = function (format) {
+                const o = {
+                    "M+": this.getMonth() + 1,                  // 月份
+                    "d+": this.getDate(),                       // 日
+                    "H+": this.getHours(),                      // 小时
+                    "m+": this.getMinutes(),                    // 分
+                    "s+": this.getSeconds(),                    // 秒
+                    "S": this.getMilliseconds(),                // 毫秒
+                    "q+": Math.floor((this.getMonth() + 3) / 3) // 季度
+                };
+                if (/(y+)/.test(format)) {
+                    format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
                 }
+                for (const k in o) {
+                    if (new RegExp("(" + k + ")").test(format))
+                        // RegExp 是 javascript 中的一个内置对象，RegExp.$1 是 RegExp的 一个属性，指匹配到的第一个字符串
+                        format = format.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                }
+                return format;
             }
+        }
 
-            addDateFormat();
+        addDateFormat();
 
-            // 2018-10-19 第 4 季度 11:28:27:196
-            (new Date).format('yyyy-MM-dd 第 q 季度 HH:mm:ss:S');
-        </script>
-    </section>
+        // 2018-10-19 第 4 季度 11:28:27:196
+        (new Date).format('yyyy-MM-dd 第 q 季度 HH:mm:ss:S');
+    </script>
+</section>
 
-    <section class="code-wrap h150">
-        <div class="css-live-wrap w33p">
-            <div class="caption">yyyy-MM-dd 和 yyyy/MM/dd 的区别</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h150">
+    <div class="css-live-wrap w33p">
+        <div class="caption">yyyy-MM-dd 和 yyyy/MM/dd 的区别</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            // Fri Aug 08 2008 08:00:00 GMT+0800 (中国标准时间)
-            console.log(new Date('2008-08-08'));
+    </div>
+    <script class="code w67p" contenteditable="true">
+        // Fri Aug 08 2008 08:00:00 GMT+0800 (中国标准时间)
+        console.log(new Date('2008-08-08'));
 
-            // Fri Aug 08 2008 00:00:00 GMT+0800 (中国标准时间)
-            console.log(new Date('2008/08/08'));
-        </script>
-    </section>
+        // Fri Aug 08 2008 00:00:00 GMT+0800 (中国标准时间)
+        console.log(new Date('2008/08/08'));
+    </script>
+</section>
 </body>
-
 </html>

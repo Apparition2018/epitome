@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +7,24 @@
     <title>jquery.countdown</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption"><a href="https://hilios.github.io/jQuery.countdown/examples.html" target="_blank">countdown</a></div>
-            <div class="centered">
-                <div id="getting-started"></div>
-            </div>
+<section class="code-wrap h150">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://hilios.github.io/jQuery.countdown/examples.html" target="_blank">countdown</a>
         </div>
-        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://cdn.bootcdn.net/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
-        <script class="code" contenteditable="true">
-            const nextYear = (new Date().getFullYear() + 1) + "/01/01";
-            $("#getting-started").countdown(nextYear, function (event) {
-                $(this).html(event.strftime('%-d days %H:%M:%S'));
-            });
-        </script>
-    </section>
+        <div class="centered">
+            <div id="getting-started"></div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
+    <script class="code" contenteditable="true">
+        const nextYear = (new Date().getFullYear() + 1) + "/01/01";
+        $("#getting-started").countdown(nextYear, function (event) {
+            $(this).html(event.strftime('%-d days %H:%M:%S'));
+        });
+    </script>
+</section>
 </body>
-
 </html>

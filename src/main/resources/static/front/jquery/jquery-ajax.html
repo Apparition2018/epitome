@@ -7,6 +7,8 @@
     <base target="_blank">
     <title>AJAX | jQuery</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap" style="height: 130vh;">
@@ -237,7 +239,6 @@
         }
     </style>
 
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script class="code w60p" contenteditable="true">
         $('.box1 input').on('change', function () {
             $('#serialize').text('serialize(): ' + $('.box1 form').serialize());
@@ -268,7 +269,5 @@
         $('.box2').text(decodeURI($.param(obj)));
     </script>
 </section>
-
-<script src="../../public/js/demo.js"></script>
 </body>
 </html>

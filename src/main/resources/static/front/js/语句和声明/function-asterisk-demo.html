@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,66 +7,63 @@
     <title>function-asterisk-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap h450">
-        <div class="css-live-wrap w33p">
-            <div class="caption">function*</div>
-            <div class="centered">
+<section class="code-wrap h450">
+    <div class="css-live-wrap w33p">
+        <div class="caption">function*</div>
+        <div class="centered">
 
-            </div>
         </div>
-        <script class="code w67p" contenteditable="true">
-            function* g(i) {
-                yield i;
-                yield* g2(i); // 移交执行权
-                yield i + 10;
-            }
+    </div>
+    <script class="code w67p" contenteditable="true">
+        function* g(i) {
+            yield i;
+            yield* g2(i); // 移交执行权
+            yield i + 10;
+        }
 
-            function* g2(i) {
-                yield i + 1;
-                yield i + 2;
-                yield i + 3;
-            }
+        function* g2(i) {
+            yield i + 1;
+            yield i + 2;
+            yield i + 3;
+        }
 
-            const gen = g(10);
+        const gen = g(10);
 
-            // Generator.prototype.next() 返回一个包含属性 done 和 value 的对象
-            // done: 布尔类型，表示生成器后续是否还有 yield 语句
-            // value: 表示本次 yield 表达式的返回值
-            gen.next(); // {value: 10, done: false}
-            gen.next(); // {value: 11, done: false}
-            gen.next(); // {value: 12, done: false}
-            gen.next(); // {value: 13, done: false}
-            gen.next(); // {value: 20, done: false}
-            gen.next(); // {value: undefined, done: true}
-        </script>
-    </section>
+        // Generator.prototype.next() 返回一个包含属性 done 和 value 的对象
+        // done: 布尔类型，表示生成器后续是否还有 yield 语句
+        // value: 表示本次 yield 表达式的返回值
+        gen.next(); // {value: 10, done: false}
+        gen.next(); // {value: 11, done: false}
+        gen.next(); // {value: 12, done: false}
+        gen.next(); // {value: 13, done: false}
+        gen.next(); // {value: 20, done: false}
+        gen.next(); // {value: undefined, done: true}
+    </script>
+</section>
 
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w33p">
-            <div class="caption">Generator.prototype.next(value) 向生成器传值</div>
-            <div class="caption">value 作为上一条执行的 yield 语句的返回值</div>
-            <div class="centered">
+<section class="code-wrap h250">
+    <div class="css-live-wrap w33p">
+        <div class="caption">Generator.prototype.next(value) 向生成器传值</div>
+        <div class="caption">value 作为上一条执行的 yield 语句的返回值</div>
+        <div class="centered">
 
-            </div>
         </div>
-        <script class="code w67p" contenteditable="true">
-            function* g() {
-                let x = yield 1;
-                let y = yield x + 2;
-                yield y + 3;
-            }
+    </div>
+    <script class="code w67p" contenteditable="true">
+        function* g() {
+            let x = yield 1;
+            let y = yield x + 2;
+            yield y + 3;
+        }
 
-            const gen = g();
+        const gen = g();
 
-            gen.next(); // {value: 1, done: false}
-            gen.next(2);// {value: 4, done: false}
-            gen.next(3);// {value: 6, done: false}
-            gen.next(); // {value: undefined, done: true}
-        </script>
-    </section>
-
+        gen.next(); // {value: 1, done: false}
+        gen.next(2);// {value: 4, done: false}
+        gen.next(3);// {value: 6, done: false}
+        gen.next(); // {value: undefined, done: true}
+    </script>
+</section>
 </body>
-
 </html>

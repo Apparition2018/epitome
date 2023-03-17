@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="description" content="基于 clip-path 的元素碎片飞入特效：https://www.zhangxinxu.com/wordpress/2016/06/fragment-stitching-clip-path/">
     <title>clip-path-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
 </head>
-
 <body>
-    <!-- https://www.zhangxinxu.com/wordpress/2015/03/css3-clip-path-polygon-shape-transition-animation/ -->
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">双三角形</div>
-            <div class="caption">利用 clip-path: polygon 实现</div>
-            <div class="centered" id="eg1">
-            </div>
+<section class="code-wrap h250">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://www.zhangxinxu.com/wordpress/2015/03/css3-clip-path-polygon-shape-transition-animation/">双三角形</a>
         </div>
-        <style class="code" contenteditable="true">
-            #eg1 {
-                width: 100px;
-                height: 20px;
-                background: #555;
-                clip-path: polygon(5px 10px, 16px 3px, 16px 10px, 26px 10px,
-                26px 3px, 37px 10px, 26px 17px, 26px 10px, 16px 10px, 16px 17px);
-            }
-        </style>
-    </section>
-
-    <!-- https://www.zhangxinxu.com/wordpress/2016/06/fragment-stitching-clip-path/ -->
+        <div class="caption">利用 clip-path: polygon 实现</div>
+        <div class="centered" id="eg1">
+        </div>
+    </div>
+    <style class="code" contenteditable="true">
+        #eg1 {
+            width: 100px;
+            height: 20px;
+            background: #555;
+            clip-path: polygon(5px 10px, 16px 3px, 16px 10px, 26px 10px,
+            26px 3px, 37px 10px, 26px 17px, 26px 10px, 16px 10px, 16px 17px);
+        }
+    </style>
+</section>
 </body>
-
 </html>

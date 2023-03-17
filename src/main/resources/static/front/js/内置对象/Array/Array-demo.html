@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,249 +7,270 @@
     <title>Array-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
-
 <body>
-    <section class="code-wrap h1100">
-        <div class="css-live-wrap w100p">
-            <div class="caption">Array</div>
-            <div class="methods centered">
-                <table class="w1280">
-                    <tr>
-                        <th>属性/方法</th>
-                        <th>概述</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td>Array.length</td>
-                        <td>返回或设置一个数组中的元素个数</td>
-                        <td>const arr = [1, 2, 3, 4, 5];
-                            <br/>arr.length = 3; // arr: [1, 2, 3];
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Array.from()</td>
-                        <td>从一个类似数组或可迭代对象中创建一个新的数组实例</td>
-                        <td>function f() { return Array.from(arguments); }</td>
-                    </tr>
-                    <tr>
-                        <td>Array.isArray()</td>
-                        <td>用于确定传递的值是否是一个 Array</td>
-                        <td>Array.isArray([1]); // true</td>
-                    </tr>
-                    <tr>
-                        <td>concat()</td>
-                        <td>合并两个或多个数组并返回一个新数组</td>
-                        <td>[[1]].concat([2,[3,4]]); // [[1],2,[3,4]]</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/every">every()</a>
-                        </td>
-                        <td>测试数组的所有元素是否都通过了指定函数的测试</td>
-                        <td>
-                            <a href="javascript:alert([1,2,3].every(function(v){return v&lt;3}))">[1,2,3].every(function(v){return v&lt;3})</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some">some()</a>
-                        </td>
-                        <td>测试是否至少有一个元素通过由提供的函数实现的测试</td>
-                        <td>
-                            <a href="javascript:alert([1,2,3].some(function(v){return v&lt;3}))">[1,2,3].some(function(v){return v&lt;3})</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>fill()</td>
-                        <td>用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。
-                            <br/>不包括终止索引。</td>
-                        <td>const arr = Array(3).fill({}); // [{}, {}, {}];
-                            <br/>arr[0].a = 'a'; // [{ a: "a" }, { a: "a" }, { a: "a" }]
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>join()</td>
-                        <td>将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串
-                            <br/>默认分隔符","</td>
-                        <td>
-                            <a href="javascript:alert(['Wind', 'Rain', 'Fire'].join('-'))">['Wind', 'Rain', 'Fire'].join('-')</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>push()</td>
-                        <td>将一个或多个元素添加到数组的末尾，并返回新数组的长度</td>
-                        <td>const vegetables = ['parsnip', 'potato'];
-                            <br/>const moreVegs = ['celery', 'beetroot'];
-                            <br/>Array.prototype.push.apply(vegetables, moreVegs);
-                            <br/>// vegetables:['parsnip', 'potato', 'celery', 'beetroot']
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>pop()</td>
-                        <td>从数组中删除最后一个元素，并返回该元素的值</td>
-                        <td>let myFish = ["angel", "clown", "mandarin", "surgeon"];
-                            <br/>let popped = myFish.pop(); // surgenon</td>
-                    </tr>
-                    <tr>
-                        <td>unshift()</td>
-                        <td>将一个或多个元素添加到数组的开头，并返回新数组的长度</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>shift()</td>
-                        <td>从数组中删除第一个元素，并返回该元素的值</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>reverse()</td>
-                        <td>将数组中元素的位置颠倒</td>
-                        <td>const myArray = ['one', 'two', 'three'];
-                            <br/>myArray.reverse(); // myArray:['three', 'two', 'one']</td>
-                    </tr>
-                    <tr>
-                        <td>sort()</td>
-                        <td>用原地算法对数组的元素进行排序，并返回数组
-                            <br/>默认排序顺序是根据字符串Unicode码点</td>
-                        <td>const numbers = [4, 2, 5, 1, 3];
-                            <br/>numbers.sort((a, b) => a - b); // numbers:[1, 2, 3, 4, 5]
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice" target="_blank">slice()</a>
-                        </td>
-                        <td>返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象</td>
-                        <td>const fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
-                            <br/>const citrus = fruits.slice(1, 3); // citrus:['Orange','Lemon']</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank">splice()</a>
-                        </td>
-                        <td>从数组中删除或添加元素，返回被删除元素组成的数组</td>
-                        <td>const myFish = ['angel', 'clown', 'drum', 'sturgeon'];
-                            <br/>const removed = myFish.splice(2, 1, "trumpet");
-                            <br/>// myFish:["angel", "clown", "trumpet", "surgeon"]
-                            <br/>// removed:["drum"]
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>indexOf()</td>
-                        <td>返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1
-                            <br/>第二个参数如果为负数，表示从倒数第几位开始查找
-                        </td>
-                        <td>const array = [2, 5, 9];
-                            <br/>array.indexOf(2, -1); // -1</td>
-                    </tr>
-                    <tr>
-                        <td>forEach()</td>
-                        <td>对数组的每个元素执行一次提供的函数</td>
-                        <td>
-                            <a href="javascript: ['Apple', 'Banana'].forEach(function (value, index, array) {alert(value, index)});">['Apple', 'Banana'].forEach(<br/>function (value, index, array) {alert(value, index)<br/>})</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">map()</a>
-                        </td>
-                        <td>创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果</td>
-                        <td>
-                            <a href="javascript: alert([1,2,3].map(function(value, index, array){return value*value}))">[1,2,3].map(function(value, index, array){return value*value})</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>reduce()</td>
-                        <td>对累加器和数组中的每个元素（从左到右）应用一个函数，将其简化为单个值</td>
-                        <td>const arr = [1, 3, 5, 7, 9];
-                            <br/>arr.reduce(function(x, y) { return x + y; }); // 25</td>
-                    </tr>
-                    <tr>
-                        <td>find()</td>
-                        <td>返回数组中满足提供的测试函数的第一个元素的值，否则返回 undefined</td>
-                        <td>const arr = [9, 2, 4, 6, 1, 10];
-                            <br/>const find = arr.find(x => x > 3 &amp;&amp; x &lt; 7); // 4</td>
-                    </tr>
-                    <tr>
-                        <td>filter()</td>
-                        <td>创建一个新数组, 其包含通过所提供函数实现的测试的所有元素</td>
-                        <td>const arr = [9, 2, 4, 6, 1, 10];
-                            <br/>const filter = arr.filter(x => x % 2 !== 0); // [1, 9]</td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h1100">
+    <div class="css-live-wrap w100p">
+        <div class="caption">Array</div>
+        <div class="methods centered">
+            <table class="w1280">
+                <tr>
+                    <th>属性/方法</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>Array.length</td>
+                    <td>返回或设置一个数组中的元素个数</td>
+                    <td>const arr = [1, 2, 3, 4, 5];
+                        <br/>arr.length = 3; // arr: [1, 2, 3];
+                    </td>
+                </tr>
+                <tr>
+                    <td>Array.from()</td>
+                    <td>从一个类似数组或可迭代对象中创建一个新的数组实例</td>
+                    <td>function f() { return Array.from(arguments); }</td>
+                </tr>
+                <tr>
+                    <td>Array.isArray()</td>
+                    <td>用于确定传递的值是否是一个 Array</td>
+                    <td>Array.isArray([1]); // true</td>
+                </tr>
+                <tr>
+                    <td>concat()</td>
+                    <td>合并两个或多个数组并返回一个新数组</td>
+                    <td>[[1]].concat([2,[3,4]]); // [[1],2,[3,4]]</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/every">every()</a>
+                    </td>
+                    <td>测试数组的所有元素是否都通过了指定函数的测试</td>
+                    <td>
+                        <a href="javascript:alert([1,2,3].every(function(v){return v&lt;3}))">
+                            [1,2,3].every(function(v){return v&lt;3})
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some">some()</a>
+                    </td>
+                    <td>测试是否至少有一个元素通过由提供的函数实现的测试</td>
+                    <td>
+                        <a href="javascript:alert([1,2,3].some(function(v){return v&lt;3}))">
+                            [1,2,3].some(function(v){return v&lt;3})
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>fill()</td>
+                    <td>用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。
+                        <br/>不包括终止索引。
+                    </td>
+                    <td>const arr = Array(3).fill({}); // [{}, {}, {}];
+                        <br/>arr[0].a = 'a'; // [{ a: "a" }, { a: "a" }, { a: "a" }]
+                    </td>
+                </tr>
+                <tr>
+                    <td>join()</td>
+                    <td>将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串
+                        <br/>默认分隔符","
+                    </td>
+                    <td>
+                        <a href="javascript:alert(['Wind', 'Rain', 'Fire'].join('-'))">
+                            ['Wind', 'Rain', 'Fire'].join('-')
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>push()</td>
+                    <td>将一个或多个元素添加到数组的末尾，并返回新数组的长度</td>
+                    <td>const vegetables = ['parsnip', 'potato'];
+                        <br/>const moreVegs = ['celery', 'beetroot'];
+                        <br/>Array.prototype.push.apply(vegetables, moreVegs);
+                        <br/>// vegetables:['parsnip', 'potato', 'celery', 'beetroot']
+                    </td>
+                </tr>
+                <tr>
+                    <td>pop()</td>
+                    <td>从数组中删除最后一个元素，并返回该元素的值</td>
+                    <td>let myFish = ["angel", "clown", "mandarin", "surgeon"];
+                        <br/>let popped = myFish.pop(); // surgenon
+                    </td>
+                </tr>
+                <tr>
+                    <td>unshift()</td>
+                    <td>将一个或多个元素添加到数组的开头，并返回新数组的长度</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>shift()</td>
+                    <td>从数组中删除第一个元素，并返回该元素的值</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>reverse()</td>
+                    <td>将数组中元素的位置颠倒</td>
+                    <td>const myArray = ['one', 'two', 'three'];
+                        <br/>myArray.reverse(); // myArray:['three', 'two', 'one']
+                    </td>
+                </tr>
+                <tr>
+                    <td>sort()</td>
+                    <td>用原地算法对数组的元素进行排序，并返回数组
+                        <br/>默认排序顺序是根据字符串Unicode码点
+                    </td>
+                    <td>const numbers = [4, 2, 5, 1, 3];
+                        <br/>numbers.sort((a, b) => a - b); // numbers:[1, 2, 3, 4, 5]
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice"
+                           target="_blank">slice()</a>
+                    </td>
+                    <td>返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象</td>
+                    <td>const fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
+                        <br/>const citrus = fruits.slice(1, 3); // citrus:['Orange','Lemon']
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice"
+                           target="_blank">splice()</a>
+                    </td>
+                    <td>从数组中删除或添加元素，返回被删除元素组成的数组</td>
+                    <td>const myFish = ['angel', 'clown', 'drum', 'sturgeon'];
+                        <br/>const removed = myFish.splice(2, 1, "trumpet");
+                        <br/>// myFish:["angel", "clown", "trumpet", "surgeon"]
+                        <br/>// removed:["drum"]
+                    </td>
+                </tr>
+                <tr>
+                    <td>indexOf()</td>
+                    <td>返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1
+                        <br/>第二个参数如果为负数，表示从倒数第几位开始查找
+                    </td>
+                    <td>const array = [2, 5, 9];
+                        <br/>array.indexOf(2, -1); // -1
+                    </td>
+                </tr>
+                <tr>
+                    <td>forEach()</td>
+                    <td>对数组的每个元素执行一次提供的函数</td>
+                    <td>
+                        <a href="javascript: ['Apple', 'Banana'].forEach(function (value, index, array) {alert(value, index)});">
+                            ['Apple', 'Banana'].forEach(<br/>function (value, index, array) {alert(value, index)<br/>})
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+                           target="_blank">map()</a>
+                    </td>
+                    <td>创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果</td>
+                    <td>
+                        <a href="javascript: alert([1,2,3].map(function(value, index, array){return value*value}))">
+                            [1,2,3].map(function(value, index, array){return value*value})
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>reduce()</td>
+                    <td>对累加器和数组中的每个元素（从左到右）应用一个函数，将其简化为单个值</td>
+                    <td>const arr = [1, 3, 5, 7, 9];
+                        <br/>arr.reduce(function(x, y) { return x + y; }); // 25
+                    </td>
+                </tr>
+                <tr>
+                    <td>find()</td>
+                    <td>返回数组中满足提供的测试函数的第一个元素的值，否则返回 undefined</td>
+                    <td>const arr = [9, 2, 4, 6, 1, 10];
+                        <br/>const find = arr.find(x => x > 3 &amp;&amp; x &lt; 7); // 4
+                    </td>
+                </tr>
+                <tr>
+                    <td>filter()</td>
+                    <td>创建一个新数组, 其包含通过所提供函数实现的测试的所有元素</td>
+                    <td>const arr = [9, 2, 4, 6, 1, 10];
+                        <br/>const filter = arr.filter(x => x % 2 !== 0); // [1, 9]
+                    </td>
+                </tr>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="code-wrap h100">
-        <div class="css-live-wrap w33p">
-            <div class="caption">为什么数组只能通过 [] 访问元素?</div>
-            <div class="caption">在 JavaScript 中，以数字开头的属性不能用.引用</div>
-            <div class="bracket centered">
-            </div>
+<section class="code-wrap h100">
+    <div class="css-live-wrap w33p">
+        <div class="caption">为什么数组只能通过 [] 访问元素?</div>
+        <div class="caption">在 JavaScript 中，以数字开头的属性不能用.引用</div>
+        <div class="bracket centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            const lottery = { "1A": "a", "2B": "b", "3C": "c" };
-            // lottery.1A; // 语法错误
-            lottery['1A']; // √
-        </script>
-    </section>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        const lottery = {"1A": "a", "2B": "b", "3C": "c"};
+        // lottery.1A; // 语法错误
+        lottery['1A']; // √
+    </script>
+</section>
 
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w33p">
-            <div class="caption">数组去重合并</div>
-            <div class="caption">利用 Array.from(), Set 实现</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">数组去重合并</div>
+        <div class="caption">利用 Array.from(), Set 实现</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            function combine() {
-                const arr = [].concat.apply([], arguments); // 没有去重复的新数组
-                return Array.from(new Set(arr));
-            }
+    </div>
+    <script class="code w67p" contenteditable="true">
+        function combine() {
+            const arr = [].concat.apply([], arguments); // 没有去重复的新数组
+            return Array.from(new Set(arr));
+        }
 
-            const m = [1, 2, 2], n = [2, 3, 3];
-            combine(m, n); // [1, 2, 3]
-        </script>
-    </section>
+        const m = [1, 2, 2], n = [2, 3, 3];
+        combine(m, n); // [1, 2, 3]
+    </script>
+</section>
 
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w33p">
-            <div class="caption">filter(callback(element[, index[, array]])[, thisArg])</div>
-            <div class="caption">thisArg 执行 callback 时的用于 this 的值</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h250">
+    <div class="css-live-wrap w33p">
+        <div class="caption">filter(callback(element[, index[, array]])[, thisArg])</div>
+        <div class="caption">thisArg 执行 callback 时的用于 this 的值</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            function filterName(obj) {
-                return obj.name === 'apple';
-            }
+    </div>
+    <script class="code w67p" contenteditable="true">
+        function filterName(obj) {
+            return obj.name === 'apple';
+        }
 
-            const arr = [{ name: "apple", color: "red" },
-            { name: "apple", color: "green" },
-            { name: "banana", color: "yellow" }];
+        const arr = [{name: "apple", color: "red"},
+            {name: "apple", color: "green"},
+            {name: "banana", color: "yellow"}];
 
-            const newArr = arr.filter(filterName);
-            // [{ name: "apple", color: "red" }, { name: "apple", color: "green" }]
-        </script>
-    </section>
+        const newArr = arr.filter(filterName);
+        // [{ name: "apple", color: "red" }, { name: "apple", color: "green" }]
+    </script>
+</section>
 
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w33p">
-            <div class="caption">reduce(callback[, initialValue])</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">reduce(callback[, initialValue])</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            // callback 可接受4个参数:
-            //      accumulator 返回上一次调用回调时返回的累积值，或initialValue
-            //      currentValue 数组中正在处理的元素
-            //      currentIndex 数组中正在处理的当前元素的索引。如果提供了initialValue，则索引号为0，否则索引为1。
-            //      array 调用reduce()的数组
-            // initialValue 作为第一次调用 callback函数时的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。
+    </div>
+    <script class="code w67p" contenteditable="true">
+        // callback 可接受4个参数:
+        //      accumulator 返回上一次调用回调时返回的累积值，或initialValue
+        //      currentValue 数组中正在处理的元素
+        //      currentIndex 数组中正在处理的当前元素的索引。如果提供了initialValue，则索引号为0，否则索引为1。
+        //      array 调用reduce()的数组
+        // initialValue 作为第一次调用 callback函数时的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。
 
-            [1, 2, 3, 4].reduce((acc, cur) => acc + cur, 0); // 0 + 1 + 2 + 3 + 4 = 10
-        </script>
-    </section>
+        [1, 2, 3, 4].reduce((acc, cur) => acc + cur, 0); // 0 + 1 + 2 + 3 + 4 = 10
+    </script>
+</section>
 </body>
-
 </html>

@@ -1,70 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<title>标签内置padding</title>
-	<style>
-		.ffbtn::-moz-focus-inner {
-			padding: 0
-		}
+    <meta charset="UTF-8">
+    <title>标签内置padding</title>
+    <style>
+        .ffbtn::-moz-focus-inner {
+            padding: 0
+        }
 
-		.iebtn {
-			overflow: visible
-		}
+        .iebtn {
+            overflow: visible
+        }
 
-		.btn {
-			z-index: -1;
-		}
+        .btn {
+            z-index: -1;
+        }
 
-		label {
-			display: inline-block;
-			background: -webkit-linear-gradient(top, white, #ddd);
-			font: 400 13px Arial;
-			box-sizing: border-box;
-			padding: 1px 6px;
-			border: 2px outset #c0c0c0;
-			border-image: initial;
-		}
-	</style>
+        label {
+            display: inline-block;
+            background: -webkit-linear-gradient(top, white, #ddd);
+            font: 400 13px Arial;
+            box-sizing: border-box;
+            padding: 1px 6px;
+            border: 2px outset #c0c0c0;
+            border-image: initial;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- ol/ul
-		1.ol/li元素内置padding-left，但是单位是px不是em
-		2.Chrome浏览器下是40px
-		3.所以如果字号很小，间距会很开
-		4.所以如果字号很大，序号会爬到容器外面
-		注：padding-left相对的是到文字内容的距离，而不是到项目符号的距离 -->
+<!-- ol/ul
+    1.ol/li元素内置padding-left，但是单位是px不是em
+    2.Chrome浏览器下是40px
+    3.所以如果字号很小，间距会很开
+    4.所以如果字号很大，序号会爬到容器外面
+    注：padding-left相对的是到文字内容的距离，而不是到项目符号的距离 -->
 
-	<!-- 1.所有浏览器input/textarea输入框内置padding
-		 2.所有浏览器button按钮内置padding，且最难控制
-		 3.部分浏览器select下拉内置padding，如FireFox，IE8+
-		 4.所有浏览器radio/checkbox单复选框无内置padding -->
+<!-- 1.所有浏览器input/textarea输入框内置padding
+     2.所有浏览器button按钮内置padding，且最难控制
+     3.部分浏览器select下拉内置padding，如FireFox，IE8+
+     4.所有浏览器radio/checkbox单复选框无内置padding -->
 
-	<!-- button按钮的设置 
-		 1)Chrome.md √ -->
-	<!-- 2)FireFox浏览器下，button设置padding: 0，左右依然有padding
-		如下设置可解决这个问题 -->
-	<div>
-		<button class="ffbtn">按钮</button>
-	</div>
-	<!-- 3)IE7，button文字越多，左右padding逐渐变大 -->
-	<div>
-		<button class="iebtn">按钮</button>
-	</div>
-	<!-- 4)padding与高度计算的不兼容（所以实际开发中，经常用a标签模拟按钮）
-		例：如设置line-height: 20px; padding: 10px;
-			IE7: 	45px; ×
-			IE8+:	40px; √
-			FireFox:42px; ×
-			Chrome.md: 40px; √s
-		如下是一个解决方法 ：
-			button需要设置可访问性隐藏，如绝对定位到屏幕外，或z-index为-1藏在背景色之下 -->
-	<div>
-		<button id="btn" class="btn">设为隐藏</button>
-		<label for="btn">按钮</label>
-	</div>
+<!-- button按钮的设置 
+     1)Chrome.md √ -->
+<!-- 2)FireFox浏览器下，button设置padding: 0，左右依然有padding
+    如下设置可解决这个问题 -->
+<div>
+    <button class="ffbtn">按钮</button>
+</div>
+<!-- 3)IE7，button文字越多，左右padding逐渐变大 -->
+<div>
+    <button class="iebtn">按钮</button>
+</div>
+<!-- 4)padding与高度计算的不兼容（所以实际开发中，经常用a标签模拟按钮）
+    例：如设置line-height: 20px; padding: 10px;
+        IE7: 	45px; ×
+        IE8+:	40px; √
+        FireFox:42px; ×
+        Chrome.md: 40px; √s
+    如下是一个解决方法 ：
+        button需要设置可访问性隐藏，如绝对定位到屏幕外，或z-index为-1藏在背景色之下 -->
+<div>
+    <button id="btn" class="btn">设为隐藏</button>
+    <label for="btn">按钮</label>
+</div>
 </body>
-
 </html>

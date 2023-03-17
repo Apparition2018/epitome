@@ -1,169 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="description" content="https://www.jb51.net/article/95705.htm">
+    <meta name="description" content="https://www.jb51.net/article/93752.htm">
     <base target="_blank">
     <title>绑定事件</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../../../public/js/demo.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
 </head>
-
 <body>
-    <!--https://www.jb51.net/article/95705.htm
-        https://www.jb51.net/article/93752.htm -->
-
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w40p">
-            <div class="caption">在DOM元素中直接绑定</div>
-            <div class="demo-button eg1 centered" onclick="eg1()">
-                方法一
-            </div>
-        </div>
-        <code class="code w60p" contenteditable="true">
-            &lt;div onclick="eg1()"&gt;
+<section class="code-wrap h250">
+    <div class="css-live-wrap w40p">
+        <div class="caption">在DOM元素中直接绑定</div>
+        <div class="demo-button eg1 centered" onclick="eg1()">
             方法一
-            &lt;/div&gt;
-        </code>
-        <script>
-            function eg1() {
-                const eg1 = document.getElementsByClassName('eg1')[0];
-                eg1.textContent = '在DOM元素中直接绑定'
+        </div>
+    </div>
+    <code class="code w60p" contenteditable="true">
+        &lt;div onclick="eg1()"&gt;
+        方法一
+        &lt;/div&gt;
+    </code>
+    <script>
+        function eg1() {
+            const eg1 = document.getElementsByClassName('eg1')[0];
+            eg1.textContent = '在DOM元素中直接绑定'
+        }
+    </script>
+</section>
+
+<section class="code-wrap h250">
+    <div class="css-live-wrap w40p">
+        <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onclick">
+            onclick 绑定 (DOM0级)</a>
+        </div>
+        <div class="caption">target.onclick = functionRef</div>
+        <div class="demo-button eg2 centered">
+            方法二
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        const eg2 = document.getElementsByClassName('eg2')[0];
+        eg2.onclick = function () {
+            // 只执行最后绑定的事件
+            this.textContent = 'onclick 绑定';
+        };
+        setTimeout(function () {
+            // js 原生 click 触发一次onclick事件
+            eg2.click();
+        }, 1500)
+
+        // eg2.onclick = null; // 解绑
+    </script>
+</section>
+
+<section class="code-wrap" id="eg3">
+    <div class="css-live-wrap w40p">
+        <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener">
+            绑定事件监听函数 (DOM2级)</a>
+        </div>
+        <div class="caption">target.addEventListener(type, listener, options/useCapture)；
+            <br/>options：一个指定有关 listener 属性的可选参数对象；
+            <br/>useCapture：true-事件捕获，false(默认)-事件冒泡；
+        </div>
+        <div class="demo-button eg3 centered">
+            方法三
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        const obj = document.getElementsByClassName('eg3')[0];
+        addEvent(obj, 'click', eg3);
+
+        function addEvent(obj, type, func) {
+            if (obj.addEventListener) {         // DOM2
+                obj.addEventListener(type, func, false);
+                // addEventListener可以绑定多个事件; 回调函数默认传入一个event; 第三个参数，false为冒泡（默认）, true为捕获
+                // 解除相应的绑定：removeEventListener(type, listener[, useCapture])
+            } else if (obj.attachEvent) {       // IE
+                obj.attachEvent('on' + type, func);
+                // 解除相应的绑定：detachEvent(eventNameWithOn, callback)
+            } else {                            // DOM0
+                obj['on' + type] = func;
             }
-        </script>
-    </section>
+        }
 
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w40p">
-            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onclick">onclick 绑定 (DOM0级)</a></div>
-            <div class="caption">target.onclick = functionRef</div>
-            <div class="demo-button eg2 centered">
-                方法二
-            </div>
+        function eg3() {
+            obj.textContent = '绑定事件监听函数';
+        }
+    </script>
+</section>
+
+<section class="code-wrap h250">
+    <div class="css-live-wrap w40p">
+        <div class="caption"><a href="https://www.jquery123.com/on/">jQuery on 绑定</a></div>
+        <div class="caption">.on(events[, selector][, data], handler(eventObject))</div>
+        <div class="demo-button eg4 centered">
+            方法四
         </div>
-        <script class="code w60p" contenteditable="true">
-            const eg2 = document.getElementsByClassName('eg2')[0];
-            eg2.onclick = function () {
-                // 只执行最后绑定的事件
-                this.textContent = 'onclick 绑定';
-            };
-            setTimeout(function () {
-                // js 原生 click 触发一次onclick事件
-                eg2.click();
-            }, 1500)
+    </div>
+    <script class="code w60p" contenteditable="true">
+        $('body').on('click', '.eg4', function () {
+            $('.eg4').text('jQuery on 绑定');
+        });
+    </script>
+</section>
 
-            // eg2.onclick = null; // 解绑
-        </script>
-    </section>
-
-    <section class="code-wrap" id="eg3">
-        <div class="css-live-wrap w40p">
-            <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener">绑定事件监听函数 (DOM2级)</a></div>
-            <div class="caption">target.addEventListener(type, listener, options/useCapture)；
-                <br/>options：一个指定有关 listener 属性的可选参数对象；
-                <br/>useCapture：true-事件捕获，false(默认)-事件冒泡；
-            </div>
-            <div class="demo-button eg3 centered">
-                方法三
-            </div>
+<section class="code-wrap h250">
+    <div class="css-live-wrap w40p">
+        <div class="caption"><a href="https://www.jquery123.com/bind/">jQuery bind 绑定</a></div>
+        <div class="caption">.bind(eventType[, eventData], handler(eventObject))</div>
+        <div class="demo-button eg5 centered">
+            方法六
         </div>
-        <script class="code w60p" contenteditable="true">
-            const obj = document.getElementsByClassName('eg3')[0];
-            addEvent(obj, 'click', eg3);
-            function addEvent(obj, type, func) {
-                if (obj.addEventListener) {         // DOM2
-                    obj.addEventListener(type, func, false);
-                    // addEventListener可以绑定多个事件; 回调函数默认传入一个event; 第三个参数，false为冒泡（默认）, true为捕获
-                    // 解除相应的绑定：removeEventListener(type, listener[, useCapture])
-                } else if (obj.attachEvent) {       // IE
-                    obj.attachEvent('on' + type, func);
-                    // 解除相应的绑定：detachEvent(eventNameWithOn, callback)
-                } else {                            // DOM0
-                    obj['on' + type] = func;
-                }
+    </div>
+    <script class="code w60p" contenteditable="true">
+        $('.eg5').bind('click', function () {
+            $('.eg5').html('jQuery bind 绑定');
+        });
+        setTimeout(function () {
+            // jQuery 的 click 触发一次onclick事件
+            $('.eg5').click();
+        }, 1500)
+    </script>
+</section>
+
+<section class="code-wrap h250">
+    <div class="css-live-wrap w40p">
+        <div class="caption"><a href="https://www.jquery123.com/click/">jQuery click 绑定</a></div>
+        <div class="caption">.click(handler(eventObject))</div>
+        <div class="demo-button eg6 centered">
+            方法五
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        $('.eg6').click(function () {
+            $('.eg6').html('jQuery click 绑定');
+        });
+        setTimeout(function () {
+            // jQuery 的 click 触发一次onclick事件
+            $('.eg6').click();
+        }, 1500)
+    </script>
+</section>
+
+<section class="code-wrap h250">
+    <div class="css-live-wrap w40p">
+        <div class="caption">事件委托</div>
+        <div class="caption">利用冒泡的原理，把事件加到父元素或祖先元素上</div>
+        <div class="demo-button eg7 centered">
+            方法七
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        const eg7 = document.getElementsByClassName('eg7')[0];
+        document.onclick = function (event) {
+            event = event || window.event;
+            const target = event.target || event.srcElement;
+            if (target === eg7) {
+                eg7.textContent = '事件委托';
             }
-
-            function eg3() {
-                obj.textContent = '绑定事件监听函数';
-            }
-        </script>
-    </section>
-
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w40p">
-            <div class="caption"><a href="https://www.jquery123.com/on/">jQuery on 绑定</a></div>
-            <div class="caption">.on(events[, selector][, data], handler(eventObject))</div>
-            <div class="demo-button eg4 centered">
-                方法四
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-            $('body').on('click', '.eg4', function () {
-                $('.eg4').text('jQuery on 绑定');
-            });
-        </script>
-    </section>
-
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w40p">
-            <div class="caption"><a href="https://www.jquery123.com/bind/">jQuery bind 绑定</a></div>
-            <div class="caption">.bind(eventType[, eventData], handler(eventObject))</div>
-            <div class="demo-button eg5 centered">
-                方法六
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-            $('.eg5').bind('click', function () {
-                $('.eg5').html('jQuery bind 绑定');
-            });
-            setTimeout(function () {
-                // jQuery 的 click 触发一次onclick事件
-                $('.eg5').click();
-            }, 1500)
-        </script>
-    </section>
-
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w40p">
-            <div class="caption"><a href="https://www.jquery123.com/click/">jQuery click 绑定</a></div>
-            <div class="caption">.click(handler(eventObject))</div>
-            <div class="demo-button eg6 centered">
-                方法五
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-            $('.eg6').click(function () {
-                $('.eg6').html('jQuery click 绑定');
-            });
-            setTimeout(function () {
-                // jQuery 的 click 触发一次onclick事件
-                $('.eg6').click();
-            }, 1500)
-        </script>
-    </section>
-
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w40p">
-            <div class="caption">事件委托</div>
-            <div class="caption">利用冒泡的原理，把事件加到父元素或祖先元素上</div>
-            <div class="demo-button eg7 centered">
-                方法七
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-            const eg7 = document.getElementsByClassName('eg7')[0];
-            document.onclick = function (event) {
-                event = event || window.event;
-                const target = event.target || event.srcElement;
-                if (target === eg7) {
-                    eg7.textContent = '事件委托';
-                }
-            }
-        </script>
-    </section>
+        }
+    </script>
+</section>
 </body>
-
 </html>

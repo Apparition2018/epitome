@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,177 +19,190 @@
         }
     </style>
 </head>
-
 <body>
-    <section class="code-wrap h150">
-        <div class="css-live-wrap w40p">
-            <div class="caption">直接量</div>
-            <div class="centered">
-                <ul>
-                    <li>缺点：需要创建多个 Car 的实例</li>
-                </ul>
-            </div>
+<section class="code-wrap h150">
+    <div class="css-live-wrap w40p">
+        <div class="caption">直接量</div>
+        <div class="centered">
+            <ul>
+                <li>缺点：需要创建多个 Car 的实例</li>
+            </ul>
         </div>
-        <script class="code w60p" contenteditable="true">
-            const oCar = {
-                "color": "blue",
-                "doors": 4,
-                "mpg": 25,
-                "showColor": function () { console.log(this.color) }
+    </div>
+    <script class="code w60p" contenteditable="true">
+        const oCar = {
+            "color": "blue",
+            "doors": 4,
+            "mpg": 25,
+            "showColor": function () {
+                console.log(this.color)
             }
-        </script>
-    </section>
+        }
+    </script>
+</section>
 
-    <section class="code-wrap h150">
-        <div class="css-live-wrap w40p">
-            <div class="caption">new Object</div>
-            <div class="centered">
-                <ul>
-                    <li>缺点：需要创建多个 Car 的实例</li>
-                </ul>
-            </div>
+<section class="code-wrap h150">
+    <div class="css-live-wrap w40p">
+        <div class="caption">new Object</div>
+        <div class="centered">
+            <ul>
+                <li>缺点：需要创建多个 Car 的实例</li>
+            </ul>
         </div>
-        <script class="code w60p" contenteditable="true">
-            const oCar = {};
-            oCar.color = "blue";
-            oCar.doors = 4;
-            oCar.mpg = 25;
-            oCar.showColor = function () { console.log(this.color) }
-        </script>
-    </section>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        const oCar = {};
+        oCar.color = "blue";
+        oCar.doors = 4;
+        oCar.mpg = 25;
+        oCar.showColor = function () {
+            console.log(this.color)
+        }
+    </script>
+</section>
 
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w40p">
-            <div class="caption">工厂方式 + 工厂函数外定义对象的方法</div>
-            <div class="centered">
-                <ul>
-                    <li>优点：每个对象的同一个函数，只会创建一次</li>
-                    <li>缺点：看起来不像对象的创建方式</li>
-                </ul>
-            </div>
+<section class="code-wrap h250">
+    <div class="css-live-wrap w40p">
+        <div class="caption">工厂方式 + 工厂函数外定义对象的方法</div>
+        <div class="centered">
+            <ul>
+                <li>优点：每个对象的同一个函数，只会创建一次</li>
+                <li>缺点：看起来不像对象的创建方式</li>
+            </ul>
         </div>
-        <script class="code w60p" contenteditable="true">
-            function showColor() { console.log(this.color) }
+    </div>
+    <script class="code w60p" contenteditable="true">
+        function showColor() {
+            console.log(this.color)
+        }
 
-            function createCar(sColor, iDoors, iMpg) {
-                const oTempCar = {};
-                oTempCar.color = sColor;
-                oTempCar.doors = iDoors;
-                oTempCar.mpg = iMpg;
-                oTempCar.showColor = showColor;
-                return oTempCar;
+        function createCar(sColor, iDoors, iMpg) {
+            const oTempCar = {};
+            oTempCar.color = sColor;
+            oTempCar.doors = iDoors;
+            oTempCar.mpg = iMpg;
+            oTempCar.showColor = showColor;
+            return oTempCar;
+        }
+    </script>
+</section>
+
+<section class="code-wrap h150">
+    <div class="css-live-wrap w40p">
+        <div class="caption">自定义构造函数方式</div>
+        <div class="centered">
+            <ul>
+                <li>优点：看起来像对象的创建方式</li>
+                <li>缺点：每个对象的同一个函数，会各创建一次</li>
+            </ul>
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        function Car(sColor, iDoors, iMpg) {
+            this.color = sColor;
+            this.doors = iDoors;
+            this.mpg = iMpg;
+            this.showColor = function () {
+                console.log(this.color)
             }
-        </script>
-    </section>
+        }
+    </script>
+</section>
 
-    <section class="code-wrap h150">
-        <div class="css-live-wrap w40p">
-            <div class="caption">自定义构造函数方式</div>
-            <div class="centered">
-                <ul>
-                    <li>优点：看起来像对象的创建方式</li>
-                    <li>缺点：每个对象的同一个函数，会各创建一次</li>
-                </ul>
-            </div>
+<section class="code-wrap h200">
+    <div class="css-live-wrap w40p">
+        <div class="caption">原型方式</div>
+        <div class="centered">
+            <ul>
+                <li>优点：每个对象的同一个函数，只会创建一次</li>
+                <li>缺点：
+                    <ol>
+                        <li>不能通过传参来初始化属性值</li>
+                        <li>当属性值是引用会产生问题（如右注释）</li>
+                    </ol>
+                </li>
+            </ul>
         </div>
-        <script class="code w60p" contenteditable="true">
-            function Car(sColor, iDoors, iMpg) {
-                this.color = sColor;
-                this.doors = iDoors;
-                this.mpg = iMpg;
-                this.showColor = function () { console.log(this.color) }
+    </div>
+    <script class="code w60p" contenteditable="true">
+        function Car() {
+        }
+
+        Car.prototype.color = "blue";
+        Car.prototype.doors = 4;
+        Car.prototype.mpg = 25;
+        Car.prototype.drivers = ["Mike", "John"]; // 各新创建对象指向同一引用
+        Car.prototype.showColor = function () {
+            console.log(this.color)
+        }
+    </script>
+</section>
+
+<!-- ECMAScript 定义类或对象：https://www.w3school.com.cn/js/pro_js_object_defining.asp -->
+<section class="code-wrap h350">
+    <div class="css-live-wrap w40p">
+        <div class="caption">混合的构造函数/原型方式（推荐）</div>
+        <div class="eg1 centered">
+            <ul>
+                <li>好处：</li>
+            </ul>
+            <ol>
+                <li>用构造函数定义对象的所有非函数属性，
+                    <br/>每个对象都具有自己的对象属性实例
+                </li>
+                <li>用原型方式定义对象的函数属性，
+                    <br/>每个对象的同一个函数，只会创建一次
+                </li>
+            </ol>
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        function Car(sColor, iDoors, iMpg) {
+            this.color = sColor;
+            this.doors = iDoors;
+            this.mpg = iMpg;
+            this.drivers = ['Mike', 'John'];
+        }
+
+        Car.prototype.showColor = function () {
+            console.log(this.color)
+        };
+
+        const oCar1 = new Car("red", 4, 23);
+        const oCar2 = new Car("blue", 3, 25);
+
+        oCar1.drivers.push("Bill");
+
+        oCar1.drivers; // ["Mike", "John", "Bill"]
+        oCar2.drivers; // ["Mike", "John"]
+    </script>
+</section>
+
+<section class="code-wrap h250">
+    <div class="css-live-wrap w40p">
+        <div class="caption">动态原型方法 （推荐）</div>
+        <div class="centered">
+            <ul>
+                <li>好处：看起来更像其他语言中的类定义</li>
+            </ul>
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        function Car(sColor, iDoors, iMpg) {
+            this.color = sColor;
+            this.doors = iDoors;
+            this.mpg = iMpg;
+            this.drivers = ['Mike', 'John'];
+
+            if (typeof Car._initialized == "undefined") {
+                Car.prototype.showColor = function () {
+                    console.log(this.color)
+                };
+
+                Car._initialized = true;
             }
-        </script>
-    </section>
-
-    <section class="code-wrap h200">
-        <div class="css-live-wrap w40p">
-            <div class="caption">原型方式</div>
-            <div class="centered">
-                <ul>
-                    <li>优点：每个对象的同一个函数，只会创建一次</li>
-                    <li>缺点：
-                        <ol>
-                            <li>不能通过传参来初始化属性值</li>
-                            <li>当属性值是引用会产生问题（如右注释）</li>
-                        </ol>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-            function Car() { }
-
-            Car.prototype.color = "blue";
-            Car.prototype.doors = 4;
-            Car.prototype.mpg = 25;
-            Car.prototype.drivers = ["Mike", "John"]; // 各新创建对象指向同一引用
-            Car.prototype.showColor = function () { console.log(this.color) }
-        </script>
-    </section>
-
-    <!-- ECMAScript 定义类或对象：https://www.w3school.com.cn/js/pro_js_object_defining.asp -->
-    <section class="code-wrap h350">
-        <div class="css-live-wrap w40p">
-            <div class="caption">混合的构造函数/原型方式（推荐）</div>
-            <div class="eg1 centered">
-                <ul>
-                    <li>好处：</li>
-                </ul>
-                <ol>
-                    <li>用构造函数定义对象的所有非函数属性，
-                        <br/>每个对象都具有自己的对象属性实例
-                    </li>
-                    <li>用原型方式定义对象的函数属性，
-                        <br/>每个对象的同一个函数，只会创建一次
-                    </li>
-                </ol>
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-            function Car(sColor, iDoors, iMpg) {
-                this.color = sColor;
-                this.doors = iDoors;
-                this.mpg = iMpg;
-                this.drivers = ['Mike', 'John'];
-            }
-
-            Car.prototype.showColor = function () { console.log(this.color) };
-
-            const oCar1 = new Car("red", 4, 23);
-            const oCar2 = new Car("blue", 3, 25);
-
-            oCar1.drivers.push("Bill");
-
-            oCar1.drivers; // ["Mike", "John", "Bill"]
-            oCar2.drivers; // ["Mike", "John"]
-        </script>
-    </section>
-
-    <section class="code-wrap h250">
-        <div class="css-live-wrap w40p">
-            <div class="caption">动态原型方法 （推荐）</div>
-            <div class="centered">
-                <ul>
-                    <li>好处：看起来更像其他语言中的类定义</li>
-                </ul>
-            </div>
-        </div>
-        <script class="code w60p" contenteditable="true">
-            function Car(sColor, iDoors, iMpg) {
-                this.color = sColor;
-                this.doors = iDoors;
-                this.mpg = iMpg;
-                this.drivers = ['Mike', 'John'];
-
-                if (typeof Car._initialized == "undefined") {
-                    Car.prototype.showColor = function () { console.log(this.color) };
-
-                    Car._initialized = true;
-                }
-            }
-        </script>
-    </section>
+        }
+    </script>
+</section>
 </body>
-
 </html>

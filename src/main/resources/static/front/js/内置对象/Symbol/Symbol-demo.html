@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,159 +9,160 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script defer src="../../../../public/js/demo.js"></script>
 </head>
-
 <body>
-    <section class="code-wrap h600">
-        <div class="css-live-wrap w100p">
-            <div class="caption">Symbol</div>
-            <div class="centered">
-                <table class="w1280">
-                    <tr>
-                        <th>属性/方法</th>
-                        <th>概述</th>
-                        <th>示例</th>
-                    </tr>
-                    <tr>
-                        <td>Symbol.iterator</td>
-                        <td>为每一个对象定义了默认的迭代器</td>
-                        <td>const myIterable = {};
-                            <br/>myIterable[Symbol.iterator] = function* () {
-                            <br/>&nbsp;&nbsp;yield 1;
-                            <br/>&nbsp;&nbsp;yield 2;
-                            <br/>&nbsp;&nbsp;yield 3;
-                            <br/>};
-                            <br/>[...myIterable]; // [1, 2, 3]
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Symbol.asyncIterator</td>
-                        <td>为每一个对象定义了默认的异步迭代器，<br/>
-                            异步迭代器调用 next(), 返回的是一个 Promise 对象</td>
-                        <td>const myAsyncIterable = {};
-                            <br/>myAsyncIterable[Symbol.asyncIterator] = async function* () {
-                            <br/>&nbsp;&nbsp;yield 1;
-                            <br/>&nbsp;&nbsp;yield 2;
-                            <br/>&nbsp;&nbsp;yield 3;
-                            <br/>};
-                            <br/>(async () => {
-                            <br/>&nbsp;&nbsp;for await (const x of myAsyncIterable) {
-                            <br/>&nbsp;&nbsp;&nbsp;&nbsp;console.log(x);
-                            <br/>&nbsp;&nbsp;}
-                            <br/>})(); // 1 2 3
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Symbol.for(key)</td>
-                        <td>从运行时的 symbol 注册表中找到对应的 symbol 并返回，
-                            <br/>如找不到则新建一个 symbol，并放入 symbol 注册表中</td>
-                        <td>Symbol.for('foo') === Symbol.for('foo'); // true</td>
-                    </tr>
-                    <tr>
-                        <td>Symbol.keyFor(sym)</td>
-                        <td>用来获取 symbol 注册表中与某个 symbol 关联的键</td>
-                        <td>const sym = Symbol.for('foo');
-                            <br/>Symbol.keyFor(sym); // "foo"</td>
-                    </tr>
-                </table>
-            </div>
+<section class="code-wrap h600">
+    <div class="css-live-wrap w100p">
+        <div class="caption">Symbol</div>
+        <div class="centered">
+            <table class="w1280">
+                <tr>
+                    <th>属性/方法</th>
+                    <th>概述</th>
+                    <th>示例</th>
+                </tr>
+                <tr>
+                    <td>Symbol.iterator</td>
+                    <td>为每一个对象定义了默认的迭代器</td>
+                    <td>const myIterable = {};
+                        <br/>myIterable[Symbol.iterator] = function* () {
+                        <br/>&nbsp;&nbsp;yield 1;
+                        <br/>&nbsp;&nbsp;yield 2;
+                        <br/>&nbsp;&nbsp;yield 3;
+                        <br/>};
+                        <br/>[...myIterable]; // [1, 2, 3]
+                    </td>
+                </tr>
+                <tr>
+                    <td>Symbol.asyncIterator</td>
+                    <td>为每一个对象定义了默认的异步迭代器，<br/>
+                        异步迭代器调用 next(), 返回的是一个 Promise 对象
+                    </td>
+                    <td>const myAsyncIterable = {};
+                        <br/>myAsyncIterable[Symbol.asyncIterator] = async function* () {
+                        <br/>&nbsp;&nbsp;yield 1;
+                        <br/>&nbsp;&nbsp;yield 2;
+                        <br/>&nbsp;&nbsp;yield 3;
+                        <br/>};
+                        <br/>(async () => {
+                        <br/>&nbsp;&nbsp;for await (const x of myAsyncIterable) {
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;console.log(x);
+                        <br/>&nbsp;&nbsp;}
+                        <br/>})(); // 1 2 3
+                    </td>
+                </tr>
+                <tr>
+                    <td>Symbol.for(key)</td>
+                    <td>从运行时的 symbol 注册表中找到对应的 symbol 并返回，
+                        <br/>如找不到则新建一个 symbol，并放入 symbol 注册表中
+                    </td>
+                    <td>Symbol.for('foo') === Symbol.for('foo'); // true</td>
+                </tr>
+                <tr>
+                    <td>Symbol.keyFor(sym)</td>
+                    <td>用来获取 symbol 注册表中与某个 symbol 关联的键</td>
+                    <td>const sym = Symbol.for('foo');
+                        <br/>Symbol.keyFor(sym); // "foo"
+                    </td>
+                </tr>
+            </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w33p">
-            <div class="caption">获取 Symbol 的三种方法</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h300">
+    <div class="css-live-wrap w33p">
+        <div class="caption">获取 Symbol 的三种方法</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            // 1 Symbol()，Symbol() 每次调用时都返回一个唯一的 Symbol
-            Symbol('foo') === Symbol('foo');            // false
+    </div>
+    <script class="code w67p" contenteditable="true">
+        // 1 Symbol()，Symbol() 每次调用时都返回一个唯一的 Symbol
+        Symbol('foo') === Symbol('foo');            // false
 
-            // 2 Symbol.for(string)，从 Symbol 注册表中返回相应的 Symbol，Symbol 注册表中的 Symbol 是共享的
-            Symbol.for('foo') === Symbol.for('foo');    // true
+        // 2 Symbol.for(string)，从 Symbol 注册表中返回相应的 Symbol，Symbol 注册表中的 Symbol 是共享的
+        Symbol.for('foo') === Symbol.for('foo');    // true
 
-            // 3 Symbol.iterator，返回预定义的 Symbol
-            // Array, TypedArray, String, Map, Set 有默认的迭代器行为
-            const arr = [1, 2, 3];
-            const symArr = arr[Symbol.iterator]();
-            symArr.next(); // {value: 1, done: false}
-            symArr.next(); // {value: 2, done: false}
-            symArr.next(); // {value: 3, done: false}
-            symArr.next(); // {value: undefined, done: true}
-        </script>
-    </section>
+        // 3 Symbol.iterator，返回预定义的 Symbol
+        // Array, TypedArray, String, Map, Set 有默认的迭代器行为
+        const arr = [1, 2, 3];
+        const symArr = arr[Symbol.iterator]();
+        symArr.next(); // {value: 1, done: false}
+        symArr.next(); // {value: 2, done: false}
+        symArr.next(); // {value: 3, done: false}
+        symArr.next(); // {value: undefined, done: true}
+    </script>
+</section>
 
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w33p">
-            <div class="caption">作为属性名的 Symbol</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h300">
+    <div class="css-live-wrap w33p">
+        <div class="caption">作为属性名的 Symbol</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            const sym = Symbol("sym");
+    </div>
+    <script class="code w67p" contenteditable="true">
+        const sym = Symbol("sym");
 
-            // 第一种写法
-            const o = {};
-            o[sym] = 'sym1';
+        // 第一种写法
+        const o = {};
+        o[sym] = 'sym1';
 
-            // 第二种写法
-            const o2 = {
-                [sym]: 'sym2'
-            };
+        // 第二种写法
+        const o2 = {
+            [sym]: 'sym2'
+        };
 
-            // 第三种写法
-            const o3 = {};
-            Object.defineProperty(o3, sym, { value: 'sym3' });
-        </script>
-    </section>
+        // 第三种写法
+        const o3 = {};
+        Object.defineProperty(o3, sym, {value: 'sym3'});
+    </script>
+</section>
 
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w33p">
-            <div class="caption">不能使用 new Symbol() 创建一个显式包装器对象</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h300">
+    <div class="css-live-wrap w33p">
+        <div class="caption">不能使用 new Symbol() 创建一个显式包装器对象</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            // const sym = new Symbol(); // TypeError: Symbol is not a constructor
+    </div>
+    <script class="code w67p" contenteditable="true">
+        // const sym = new Symbol(); // TypeError: Symbol is not a constructor
 
-            // 其实围绕原始数据类型创建一个显式包装器对象从 ECMAScript 6 开始不再被支持
-            // 然而，现有的原始包装器对象，如 new Boolean、new String 以及 new number 因为遗留原因仍可被创建
-            const n1 = 1;
-            typeof n1;      // "number"
-            const n2 = new Number(1);
-            typeof n2;      // "object"
+        // 其实围绕原始数据类型创建一个显式包装器对象从 ECMAScript 6 开始不再被支持
+        // 然而，现有的原始包装器对象，如 new Boolean、new String 以及 new number 因为遗留原因仍可被创建
+        const n1 = 1;
+        typeof n1;      // "number"
+        const n2 = new Number(1);
+        typeof n2;      // "object"
 
-            // 使用 Object() 创建一个 Symbol 包装器对象
-            typeof sym;     // "symbol"
-            const symObj = Object(sym);
-            typeof symObj;  // "object"
-        </script>
-    </section>
+        // 使用 Object() 创建一个 Symbol 包装器对象
+        typeof sym;     // "symbol"
+        const symObj = Object(sym);
+        typeof symObj;  // "object"
+    </script>
+</section>
 
-    <section class="code-wrap h300">
-        <div class="css-live-wrap w33p">
-            <div class="caption">获取对象 Symbol 属性</div>
-            <div class="centered">
-            </div>
+<section class="code-wrap h300">
+    <div class="css-live-wrap w33p">
+        <div class="caption">获取对象 Symbol 属性</div>
+        <div class="centered">
         </div>
-        <script class="code w67p" contenteditable="true">
-            const obj = {};
-            const a = Symbol('a');
-            const b = Symbol.for('b');
+    </div>
+    <script class="code w67p" contenteditable="true">
+        const obj = {};
+        const a = Symbol('a');
+        const b = Symbol.for('b');
 
-            obj[a] = "localSymbol";
-            obj[b] = "globalSymbol";
-            obj.c = 'c';
+        obj[a] = "localSymbol";
+        obj[b] = "globalSymbol";
+        obj.c = 'c';
 
-            // 1 Object.getOwnPropertySymbols()
+        // 1 Object.getOwnPropertySymbols()
 
-            const oSymbols1 = Object.getOwnPropertySymbols(o);  // [Symbol(a), Symbol(b)]
+        const oSymbols1 = Object.getOwnPropertySymbols(o);  // [Symbol(a), Symbol(b)]
 
-            // 2 Reflect.ownKeys
-            const oSymbols2 = Reflect.ownKeys(o);               // ["c", Symbol(a), Symbol(b)]
+        // 2 Reflect.ownKeys
+        const oSymbols2 = Reflect.ownKeys(o);               // ["c", Symbol(a), Symbol(b)]
 
-        </script>
-    </section>
+    </script>
+</section>
 </body>
-
 </html>
