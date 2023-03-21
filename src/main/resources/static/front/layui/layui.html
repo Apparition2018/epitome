@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>Layui</title>
+    <link rel="stylesheet" href="../../public/css/demo.css">
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.7.6/css/layui.css"/>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../public/js/demo.js"></script>
+    <script src="https://www.layuicdn.com/layui-v2.7.6/layui.js"></script>
+</head>
+<body>
+<section class="code-wrap h150">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/element/icon.html">图标 iconfont</a>
+        </div>
+        <div class="caption">class="layui-icon"</div>
+        <div class="centered" id="icon">
+            <i class="layui-icon layui-icon-face-smile"></i>
+            <i class="layui-icon">&#xe69c;</i>
+        </div>
+    </div>
+    <style>
+        #icon .layui-icon {
+            font-size: 30px;
+            color: orange;
+        }
+    </style>
+    <code class="code" contenteditable="true">
+        &lt;i class="layui-icon layui-icon-face-smile"&gt;&lt;/i&gt;
+        &lt;i class="layui-icon"&gt;&amp;#xe69c;&lt;/i&gt;
+    </code>
+</section>
+
+<section class="code-wrap h350">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/element/nav.html">导航 nav</a>
+        </div>
+        <div class="caption">class="layui-nav"</div>
+        <div class="centered w80p">
+            <ul class="layui-nav layui-bg-cyan" lay-filter="">
+                <li class="layui-nav-item"><a href="">最新活动</a></li>
+                <li class="layui-nav-item layui-this"><a href="">产品</a></li>
+                <li class="layui-nav-item"><a href="">大数据</a></li>
+                <li class="layui-nav-item"><a href="">社区</a></li>
+                <li class="layui-nav-item" style="float: right;">
+                    <a href=""><img src="../../public/img/people/NoharaSinnosuke.png" class="layui-nav-img">我</a>
+                    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                        <dd><a href="javascript:;">修改信息</a></dd>
+                        <dd><a href="javascript:;">安全管理</a></dd>
+                        <dd><a href="javascript:;">退了</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <code class="code" contenteditable="true">
+        &lt;!-- 依赖加载模块 element
+            垂直导航：layui-nav-tree 
+            侧边导航：layui-nav-tree layui-nav-side --&gt;
+        &lt;ul class="layui-nav layui-bg-cyan" lay-filter=""&gt;
+            &lt;li class="layui-nav-item"&gt;&lt;a href=""&gt;最新活动&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="layui-nav-item layui-this"&gt;&lt;a href=""&gt;产品&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="layui-nav-item"&gt;&lt;a href=""&gt;大数据&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="layui-nav-item"&gt;&lt;a href=""&gt;社区&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="layui-nav-item" style="float: right;"&gt;
+                &lt;a href=""&gt;&lt;img src="../../public/img/people/NoharaSinnosuke.png" class="layui-nav-img"&gt;我&lt;/a&gt;
+                &lt;dl class="layui-nav-child"&gt; &lt;!-- 二级菜单 --&gt;
+                    &lt;dd&gt;&lt;a href="javascript:;"&gt;修改信息&lt;/a&gt;&lt;/dd&gt;
+                    &lt;dd&gt;&lt;a href="javascript:;"&gt;安全管理&lt;/a&gt;&lt;/dd&gt;
+                    &lt;dd&gt;&lt;a href="javascript:;"&gt;退了&lt;/a&gt;&lt;/dd&gt;
+                &lt;/dl&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    </code>
+</section>
+
+<section class="code-wrap h200">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/element/nav.html#breadcrumb">面包屑 nav</a>
+        </div>
+        <div class="caption">class="layui-breadcrumb"</div>
+        <div class="centered">
+            <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a href="">国际新闻</a>
+                <a href="">亚太地区</a>
+                <a><cite>正文</cite></a>
+            </span>
+        </div>
+    </div>
+    <code class="code" contenteditable="true">
+        &lt;!-- 依赖加载模块 element --&gt;
+        &lt;span class="layui-breadcrumb"&gt;
+            &lt;a href=""&gt;首页&lt;/a&gt;
+            &lt;a href=""&gt;国际新闻&lt;/a&gt;
+            &lt;a href=""&gt;亚太地区&lt;/a&gt;
+            &lt;a&gt;&lt;cite&gt;正文&lt;/cite&gt;&lt;/a&gt;
+        &lt;/span&gt;
+    </code>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/element/tab.html">选项卡 tabs</a>
+        </div>
+        <div class="caption">class="layui-tab"</div>
+        <div class="centered">
+            <div class="layui-tab layui-tab-brief" lay-allowClose="true">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">网站设置</li>
+                    <li>用户管理</li>
+                    <li>权限分配</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">内容1</div>
+                    <div class="layui-tab-item">内容2</div>
+                    <div class="layui-tab-item">内容3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <code class="code" contenteditable="true">
+        &lt;!-- 依赖加载模块 element
+            简洁风格：layui-tab-brief
+            卡片风格：layui-tab-card --&gt;
+        &lt;div class="layui-tab layui-tab-brief" lay-allowClose="true"&gt;
+            &lt;ul class="layui-tab-title"&gt;
+                &lt;li class="layui-this"&gt;网站设置&lt;/li&gt;
+                &lt;li&gt;用户管理&lt;/li&gt;
+                &lt;li&gt;权限分配&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div class="layui-tab-content"&gt;
+                &lt;div class="layui-tab-item layui-show"&gt;内容1&lt;/div&gt;
+                &lt;div class="layui-tab-item"&gt;内容2&lt;/div&gt;
+                &lt;div class="layui-tab-item"&gt;内容3&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    </code>
+</section>
+
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/element/panel.html">面板 panel/card/collapse</a>
+        </div>
+        <div class="caption">class="layui-panel/card/collapse"</div>
+        <div class="centered w400">
+            <div class="layui-collapse" lay-filter="collapse" lay-accordion>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title">杜甫</h2>
+                    <div class="layui-colla-content">射人先射马，擒贼先擒王</div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title">李清照</h2>
+                    <div class="layui-colla-content layui-show">寻寻觅觅，冷冷清清，凄凄惨惨戚戚</div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title">唐伯虎</h2>
+                    <div class="layui-colla-content">别人笑我太疯癫，我笑他人看不穿</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <code class="code" contenteditable="true">
+        &lt;!-- 依赖加载模块 element
+            常规面板：layui-panel
+            卡片面板：layui-card
+            折叠面板：layui-collapse
+                开启手风琴：lay-accordion
+                折叠面板事件：https://layui.gitee.io/v2/docs/modules/element.html#collapse --&gt;
+        &lt;div class="layui-collapse" lay-accordion&gt;
+            &lt;div class="layui-colla-item"&gt;
+                &lt;h2 class="layui-colla-title"&gt;杜甫&lt;/h2&gt;
+                &lt;div class="layui-colla-content layui-show"&gt;内容区域&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="layui-colla-item"&gt;
+                &lt;h2 class="layui-colla-title"&gt;李清照&lt;/h2&gt;
+                &lt;div class="layui-colla-content layui-show"&gt;内容区域&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="layui-colla-item"&gt;
+                &lt;h2 class="layui-colla-title"&gt;鲁迅&lt;/h2&gt;
+                &lt;div class="layui-colla-content layui-show"&gt;内容区域&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    </code>
+    <script>
+        layui.use("element", function () {
+            const element = layui.element;
+            // 折叠面板事件
+            element.on('collapse(collapse)', function(data){
+                console.log(data.show);     // 得到当前面板的展开状态，true或者false
+                console.log(data.title);    // 得到当前点击面板的标题区域DOM对象
+                console.log(data.content);  // 得到当前点击面板的内容区域DOM对象
+            });
+        })
+    </script>
+</section>
+
+<section class="code-wrap h150">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/element/badge.html">徽章 badge</a>
+        </div>
+        <div class="caption">class="layui-badge"</div>
+        <div class="centered">
+            <span class="layui-badge-dot"></span>
+            <span class="layui-badge layui-bg-orange">橙</span>
+            <span class="layui-badge-rim">69</span>
+        </div>
+    </div>
+    <code class="code" contenteditable="true">
+        &lt;!-- 小圆点 --&gt;
+        &lt;span class="layui-badge-dot"&gt;&lt;/span&gt;
+        &lt;!-- 椭圆体 --&gt;
+        &lt;span class="layui-badge layui-bg-orange"&gt;橙&lt;/span&gt;
+        &lt;!-- 边框体 --&gt;
+        &lt;span class="layui-badge-rim"&gt;69&lt;/span&gt;
+    </code>
+</section>
+</body>
+</html>

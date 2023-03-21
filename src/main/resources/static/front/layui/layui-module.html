@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>Layui | 内置模块</title>
+    <link rel="stylesheet" href="../../public/css/demo.css">
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.7.6/css/layui.css"/>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../public/js/demo.js"></script>
+    <script src="https://www.layuicdn.com/layui-v2.7.6/layui.js"></script>
+</head>
+<body>
+<section class="code-wrap h550">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/modules/element.html">常用元素操作 element</a>
+        </div>
+        <div class="caption">
+            lay-filter: 事件过滤器<br/>
+            lay-allowClose: 允许被删除<br/>
+            lay-id: 选项卡 id
+        </div>
+        <div class="centered w80p">
+            <div class="layui-tab layui-tab-brief" lay-filter="filter" lay-allowClose="true">
+                <ul class="layui-tab-title">
+                    <li lay-id="1" class="layui-this">网站设置</li>
+                    <li lay-id="2">用户管理</li>
+                    <li lay-id="3">权限分配</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">内容1</div>
+                    <div class="layui-tab-item">内容2</div>
+                    <div class="layui-tab-item">内容3</div>
+                </div>
+                <div class="layui-btn-group">
+                    <button type="button" class="layui-btn layui-btn-sm" style="width: 100px" id="add">添加一个tab</button>
+                    <button type="button" class="layui-btn layui-btn-sm" style="width: 100px" id="change">切换用户管理</button>
+                    <button type="button" class="layui-btn layui-btn-sm" style="width: 100px" id="delete">删除权限分配</button>
+                    <button type="button" class="layui-btn layui-btn-sm" style="width: 100px" id="deleteAll">删除所有tab</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        layui.use(['jquery', 'element'], function () {
+            const element = layui.element;
+            $('#add').click(function () {
+                // element.tabAdd(filter, options);
+                let maxId = -999;
+                $('li[lay-id]').map(function (i, v) {
+                    maxId = Math.max(maxId, $(v).attr('lay-id')) + 1;
+                })
+                element.tabAdd('filter', {
+                    title: 'title',
+                    // 支持 html
+                    content: 'content',
+                    id: maxId
+                })
+            })
+            $('#change').click(function () {
+                // element.tabChange(filter, layid);
+                element.tabChange('filter', 2);
+            })
+            $('#delete').click(function () {
+                // element.tabDelete(filter, layid);
+                element.tabDelete('filter', 3);
+            })
+            $('#deleteAll').click(function () {
+                $('li[lay-id]').each(function (i, v) {
+                    element.tabDelete('filter', $(v).attr('lay-id'));
+                })
+            })
+        })
+    </script>
+</section>
+
+<section class="code-wrap h350">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/modules/colorpicker.html">颜色选择器 colorpicker</a>
+        </div>
+        <div class="centered">
+            <div class="layui-input-inline w200">
+                <input type="text" value="" placeholder="请选择颜色" class="layui-input" id="colorpicker-input">
+            </div>
+            <div class="layui-inline" style="left: -11px;">
+                <div id="colorpicker"></div>
+            </div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        layui.use("colorpicker", function() {
+            const $ = layui.$;
+            const colorpicker = layui.colorpicker;
+            colorpicker.render({
+                elem: "#colorpicker",
+                color: "#ffc0cb",       // 默认颜色
+                format: "rgb",          // 格式，可选值 hex、rgb
+                alpha: true,            // 是否开启透明度
+                predefine: true,        // 是否开启预定义颜色
+                colors: ["#ffc0cb"],    // 预定义颜色
+                size: 'sm',             // 大小，可选值 lg、sm、xs
+                done: function(color) { // 颜色选择后的回调
+                    $("#colorpicker-input").val(color);
+                    $(".layui-this").css('color', color);
+                    $(".layui-btn").css('background-color', color);
+                }
+            })
+        })
+    </script>
+</section>
+
+<section class="code-wrap h500">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/modules/slider.html">滑块 slider</a>
+        </div>
+        <div class="centered w400">
+            <div id="slider"></div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        layui.use("slider", function() {
+            const slider = layui.slider;
+            slider.render({
+                elem: "#slider",
+                // type: "vertical",           // 垂直滑块
+                // height: 200,                // 高度，配置 type: "vertical" 使用
+                min: 0,                     // 最小值
+                max: 100,                   // 最大值
+                range: true,                // 是否开启范围选择
+                value: [10, 20],            // 初始值
+                step: 5,                    // 步长
+                showstep: true,             // 是否显示间断点
+                tips: true,                 // 是否显示文字提示
+                setTips: function (val) {   // 自定义提示文本
+                    return val + "%";         
+                },
+                // input: false,               // 输入框
+                disabled: false,            // 是否禁用
+                theme: "#ffc0cb",           // 主题颜色
+                change: function(vals) {    // change 回调
+                }
+            })
+        })
+    </script>
+</section>
+
+<section class="code-wrap h450">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/modules/rate.html">评分 rate</a>
+        </div>
+        <div class="centered">
+            <div id="rate"></div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        layui.use("rate", function() {
+            const rate = layui.rate;
+            rate.render({
+                elem: "#rate",
+                length: 5,          // 星星个数
+                value: 1,           // 初始值
+                theme: "#ffc0cb",   // 主题颜色
+                half: false,        // 是否可以选择半星
+                text: true,         // 是否显示文本
+                setText: function(val) {
+                    const arrs = {
+                        "1": "极差",
+                        "2": "较差",
+                        "3": "中等",
+                        "4": "良好",
+                        "5": "极好",
+                    }
+                    this.span.text(arrs[val] || (val + "星"));
+                },
+                readonly: false,    // 是否只读
+            })
+        })
+    </script>
+</section>
+
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/modules/carousel.html">轮播 carousel</a>
+        </div>
+        <div class="caption">class="layui-carousel"</div>
+        <div class="centered">
+            <div class="layui-carousel" id="carousel">
+                <div carousel-item="">
+                    <div><img src="https://unpkg.com/outeres/demo/carousel/720x360-1.jpg" alt="spring" width="400"></div>
+                    <div><img src="https://unpkg.com/outeres/demo/carousel/720x360-3.jpg" alt="autumn" width="400"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        layui.use("carousel", function() {
+            const carousel = layui.carousel;
+            carousel.render({
+                elem: "#carousel",
+                width: "400px",         // 宽度
+                height: "200px",        // 高度
+                full: false,            // 是否全屏轮播
+                anim: "fade",           // 动画，可选值 default、updown、fade
+                autoplay: true,         // 是否自动切换
+                interval: 1500,         // 自动切换时间间隔，>= 800ms
+                index: 0,               // 初始条目索引
+                arrow: "hover",         // 箭头显示状态，可选值 hover、always、none       
+                indicator: "inside",    // 指示器位置，可选值 inside、outside、none
+                change: function(vals) {// change 回调
+                }
+            })
+        })
+    </script>
+</section>
+
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/modules/laydate.html">日期与时间选择 laydate</a>
+        </div>
+        <div class="centered">
+            <input type="text" class="layui-input" id="laydate">
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        layui.use("laydate", function() {
+            const laydate = layui.laydate;
+            laydate.render({
+                elem: "#laydate",
+            })
+        })
+    </script>
+</section>
+</body>
+</html>
