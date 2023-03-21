@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>iframe-child</title>
+    <meta charset="UTF-8">
+    <title>iframe-child</title>
+    <script defer type="text/javascript">
+        function parentPlus() {
+            const value = parent.document.querySelector('#input').value;
+            parent.document.querySelector('#input').value = parseInt(value) + 1;
+        }
+    </script>
 </head>
 <body>
-	<label id='child'>子页面：</label>
-	<input type="text" value="1"  title=""/>
-	<button onclick="parentPlus();">父页+1</button>
-
-	<script type="text/javascript">
-		function parentPlus() {
-			const value = parent.document.querySelector('#input').value;
-			parent.document.querySelector('#input').value = parseInt(value) +1;
-		}
-	</script>
+<label id='child'>子页面：</label>
+<input type="text" value="1" title=""/>
+<button onclick="parentPlus();">父页+1</button>
 </body>
 </html>

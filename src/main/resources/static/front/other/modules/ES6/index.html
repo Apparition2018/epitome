@@ -23,23 +23,23 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="module">
         import operation from './math.js';
-        let product = operation().multiply(9, 9);
+        const product = operation().multiply(9, 9);
         $('.es6').html("9 * 9 = " + product);
     </script>
-    <code class="code w60p" contenteditable="true">
+    <script class="code w60p" contenteditable="true">
         // 在http服务器上访问，否则将会有一个CORS保护报错
 
-        /***** index.html *****/
+        /** index.html **/
         import operation from './math.js';
-        let product = operation().multiply(9, 9);
+        const product = operation().multiply(9, 9);
         $('.es6').html("9 * 9 = " + product);
 
-        /***** math.js *****/
+        /** math.js **/
         export default function operation() {
-            var plus = function (a, b) { return a + b; };
-            var subtract = function (a, b) { return a - b; };
-            var multiply = function (a, b) { return a * b; };
-            var divide = function (a, b) { return a / b; };
+            const plus = function (a, b) { return a + b; };
+            const subtract = function (a, b) { return a - b; };
+            const multiply = function (a, b) { return a * b; };
+            const divide = function (a, b) { return a / b; };
             return {
                 plus: plus,
                 subtract: subtract,
@@ -47,7 +47,7 @@
                 divide: divide
             };
         };
-    </code>
+    </script>
 </section>
 </body>
 </html>

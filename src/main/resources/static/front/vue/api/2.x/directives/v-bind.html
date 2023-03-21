@@ -7,8 +7,8 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
 </head>
 <body>
-<section class="code-wrap h500">
-    <div class="css-live-wrap">
+<section class="code-wrap h550">
+    <div class="css-live-wrap w40p">
         <div class="caption">绑定 class</div>
         <div class="centered" id="app">
             <!-- 对象语法 -->
@@ -21,7 +21,7 @@
             <my-component class="active"></my-component>
         </div>
     </div>
-    <script class="code" contenteditable="true">
+    <script class="code w60p" contenteditable="true">
         Vue.component('my-component', {
             template: '<div class="article">component</div>'
         })
@@ -54,8 +54,8 @@
     </script>
 </section>
 
-<section class="code-wrap h300">
-    <div class="css-live-wrap">
+<section class="code-wrap h350">
+    <div class="css-live-wrap w40p">
         <div class="caption">绑定 内联样式</div>
         <div class="caption">跟绑定 class 一样有对象语法和数组语法</div>
         <div class="centered" id="app2">
@@ -66,7 +66,7 @@
             <div :style="[styleA, styleB]">文本</div>
         </div>
     </div>
-    <script class="code" contenteditable="true">
+    <script class="code w60p" contenteditable="true">
         new Vue({
             el: '#app2',
             data: {
