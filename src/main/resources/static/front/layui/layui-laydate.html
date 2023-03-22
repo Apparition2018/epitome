@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Layui | 内置模块 - laydate</title>
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.7.6/css/layui.css"/>
+    <script src="https://www.layuicdn.com/layui-v2.7.6/layui.js"></script>
+</head>
+<body>
+<div class="layui-input-inline">
+    <input type="text" class="layui-input" id="laydate" placeholder="yyyy-MM-dd">
+</div>
+<script class="code" contenteditable="true">
+    layui.use("laydate", function() {
+        const laydate = layui.laydate;
+        const ins = laydate.render({
+            elem: "#laydate",
+            type: "date",           // 类型，可选值 year、month、date、time、datetime
+            range: "~",             // 是否开启范围选择，自定以分割字符串
+            // range: ['#startDate', '#endDate']
+            format: "yyyy-MM-dd",   // 自定义格式
+            value: "2008-08-08 ~ 2023-08-08",   // 初始值
+            isInitValue: true,      // 是否填充初始值
+            weekStart: 1,           // 定义周起始日
+            isPreview: true,        // 是否开启选择值预览
+            min: "2008-08-08",      // 最小值
+            max: 7,                 // 最大值
+            trigger: "focus",       // 自定义弹出控件的事件，可选值 focus、click、mousedown ...
+            show: false,            // 是否默认显示控件
+            position: "absolute",   // 定位，可选值 absolute、fixed、static
+            zIndex: 66666666,       // 层叠顺序
+            showBottom: true,       // 是否显示底部栏
+            btns: ["clear", "now", "confirm"], // 右下角显示按钮
+            lang: "cn",             // 语言，可选值 cn、en
+            theme: "#ffc0cb",       // 主题，可选值 default、molv、grid、自定义颜色
+            calendar: false,        // 是否显示公历节日
+            mark: {                 // 标注特殊日子
+                "0-10-18": "生日"
+            },
+            holidays: [             // 标注节假日及补假日
+                ["2023-5-1", "2023-5-2", "2023-5-3"],
+                ["2023-5-6"]
+            ],
+            ready: function(date) {
+                ins.hint("可选范围 <br> 2008-08-08 到 七天后");
+            },
+            change: function(val, date, endDate) {
+                ins.hint(val);      // 提示
+            },
+            done: function(val, date, endDate) {
+            },
+            close: function(val, date, endDate) {
+            }
+        });
+        console.log(laydate.getEndDate(3, 2023));   // 获取 2023-03 最后一天
+        // laydate.close(); // 关闭面板
+    })
+</script>
+</body>
+</html>
