@@ -36,7 +36,6 @@ public class EnumUtilsDemo {
         p(EnumUtils.generateBitVector(ImagesTypeEnum.class, ImagesTypeEnum.JPG, ImagesTypeEnum.GIF));   // 17
         p(EnumUtils.processBitVector(ImagesTypeEnum.class, 7));   // [JPG, JPEG, PNG]
         p(EnumUtils.processBitVector(ImagesTypeEnum.class, 14));  // [JPEG, PNG, BPM]
-
     }
 
     private enum ImagesTypeEnum {

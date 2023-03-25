@@ -21,27 +21,22 @@
         -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel
 ---
 ## Sync Settings
-    1. File → Manage IDE Settings
-    2. Sync Settings to JetBrains Account...
+    1. File → Manage IDE Settings → Settings Sync…
+    2. Log in with JetBrains Account…
     3. IDE Settings Sync → Sync Plugins Silently 勾选
 ---
 ## 安装 IDE Eval Reset (-o)
-    1. Settings → Plguins → 设置图标 → Manage Plugin Repositories...
+    1. Settings → Plguins → 设置图标 → Manage Plugin Repositories…
         1.1 添加 https://plugins.zhile.io
         1.2 Marketplace → 搜索并安装 IDE Eval Reset
     2. Help → Eval Reset
         2.1 Auto reset before per restart 勾选
 ---
-## Maven (-g|-e)
+## Build Tools (-g)
     1. Settings → Build, Execution, Deployment → Build Tools → Maven
-    2. User settings file: D:\dev\.maven\settings.xml
----
-## Project/Solution
-    1. Settings → Appearance & Behavior → System Settings
-    2. Project/Solution
-        2.1 Reopen projects on startup 勾选
-        2.2 Open project in: New window
-        2.3 Default project directory: D:\Liang\git
+    2. Maven
+        2.1 User settings file: D:\dev\.maven\settings.xml 
+    3. Gradle D:\dev\.gradle
 ---
 ## Trailing Spaces
     1. Settings → Editor → General
@@ -64,28 +59,28 @@
     1. Settings → Editor → General → Editor Tabs
     2. Show tabs in one row 取消勾选
 ---
-## Font (-e)
+## Font (-e|o)
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
 ---
-## Comment Code
+## Comment Code (-g)
     1. Settings → Editor → Code Style
     2. Java → Code Generation → Comment Code
         2.1 Line comment at first column 取消勾选
         2.2 Add a space at line comment start 勾选
         2.3 Add spaces around block comments 勾选
-    3. XML → Code Generation → Comments
+    3. HTML/XML → Code Generation → Comments
         3.1 Line comment at first column 取消勾选
         3.2 Add spaces around block comments 勾选
 ---
-## Inspections (-g|-e)
+## Inspections (-g)
     1. Settings → Editor → Inspections
     2. 搜索 serialVersionUID
         2.1 'serialVersionUID' field not declared 'private static final long' 勾选
         2.2 Serializable class without 'serialVersionUID' 勾选
     3. Java → Naming conventions → Class → class naming convention 取消勾选 
 ---
-## File and Code Templates (-g|-e)
+## File and Code Templates (-g)
     1. Settings → Editor → File and Code Templates
     2. Files
     3. Class | Interface | Enum | Record | AnnotationType
@@ -95,6 +90,11 @@
          * @author ${USER}
          * @since ${DATE} ${TIME}
          */
+---
+## File Encodings
+    1. Settings → Editor → File Encodings
+    2. Project Encoding: UTF-8
+    3. Default encoding for properties files: UTF-8 
 ---
 ## TODO
     1. Settings → Editor → TODO → Patterns
@@ -109,21 +109,21 @@
         2.3 Description: TODO-LJH
         2.4 Template text: // TODO-LJH: $date$ $todo$
         2.5 Edit variables: Name:date → Expression:date()
-        2.6 Change → Java → Declaration, Statement 勾选
+        2.6 Define/Change → Java → Declaration, Statement 勾选
 ---
-## Use eclipse compiler (-g|-e)
+## Use eclipse compiler (-g)
     1. Settings → Build, Execution, Deployment
     2. Build Tools → Maven → Importing
         # 2.1 Detect compiler automatically 取消勾选
     3. Compiler
         3.1 Shared build process VM options: 
-            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.24\lombok-1.18.24.jar
+            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.26\lombok-1.18.26.jar
         3.2 Java Compiler
             3.2.1 Use compiler: Eclipse
         3.3 Annotation Processors
             3.3.1 Enable annotation processing 勾选
 ---
-## JavaScript version
+## JavaScript version (-g)
     1. Settings → Languages & Frameworks → JavaScript
     2. JavaScript language version: ECMAScript 6+
 ---
@@ -141,29 +141,31 @@
         2.1 Prettier package: ~\AppData\Roaming\npm\node_modules\prettier
         2.1 On Save 勾选
 ---
-## Actions on Save (-e)
+## Actions on Save (-g)
     1. Settings → Tools → Actions on Save
     2. Reformat code 勾选
     3. Optimize imports 勾选
 ---
-## Terminal (-g|-e)
+## Terminal (-g)
     1. Settings → Tools → Terminal
     2. Shell path: D:\Git\bin\bash.exe
 ---
-## [Jrebel & XRebel](https://javajgs.com/archives/218383)
+## Jrebel & XRebel
     1. 下载 ReverseProxy：https://github.com/ilanyu/ReverseProxy/releases/tag/v1.4
     2. Generate GUIDs online：https://www.guidgen.com/
+    3. http://127.0.0.1:8888/{guid}
+    4. Settings → JRebel & XRebel → Work offline
 ---
-## [Project Structure...](https://www.jianshu.com/p/39b2206999e7)
+## [Project Structure…](https://www.jianshu.com/p/39b2206999e7)
 ### Modules
-    1. Dependencies → + → 2 Library...
+    1. Dependencies → + → 2 Library…
     2. Tomcat
 ### Facets
     1. Web
     2. Deployment Descriptors 配置 web.xml
     3. Web Resource Directories 配置 webapp
 ### Artifacts
-    1. + Web Application: Exploded ▶ From Modules...
+    1. + Web Application: Exploded ▶ From Modules…
     2. Output directory
     3. 把 Available Elements 中需要用到的 jar Put into /WEB-INF/lib，特别是 javax.servlet-api
 ---
