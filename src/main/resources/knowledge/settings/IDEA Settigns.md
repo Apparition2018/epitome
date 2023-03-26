@@ -22,8 +22,7 @@
 ---
 ## Sync Settings
     1. File → Manage IDE Settings → Settings Sync…
-    2. Log in with JetBrains Account…
-    3. IDE Settings Sync → Sync Plugins Silently 勾选
+    2. Enable Settings Sync…
 ---
 ## 安装 IDE Eval Reset (-o)
     1. Settings → Plguins → 设置图标 → Manage Plugin Repositories…
@@ -35,7 +34,7 @@
 ## Build Tools (-g)
     1. Settings → Build, Execution, Deployment → Build Tools → Maven
     2. Maven
-        2.1 User settings file: D:\dev\.maven\settings.xml 
+        2.1 User settings file: D:\dev\.maven\settings.xml
     3. Gradle D:\dev\.gradle
 ---
 ## Trailing Spaces
@@ -78,7 +77,7 @@
     2. 搜索 serialVersionUID
         2.1 'serialVersionUID' field not declared 'private static final long' 勾选
         2.2 Serializable class without 'serialVersionUID' 勾选
-    3. Java → Naming conventions → Class → class naming convention 取消勾选 
+    3. Java → Naming conventions → Class → class naming convention 取消勾选
 ---
 ## File and Code Templates (-g)
     1. Settings → Editor → File and Code Templates
@@ -94,7 +93,7 @@
 ## File Encodings
     1. Settings → Editor → File Encodings
     2. Project Encoding: UTF-8
-    3. Default encoding for properties files: UTF-8 
+    3. Default encoding for properties files: UTF-8
 ---
 ## TODO
     1. Settings → Editor → TODO → Patterns
@@ -111,7 +110,7 @@
         2.5 Edit variables: Name:date → Expression:date()
         2.6 Define/Change → Java → Declaration, Statement 勾选
 ---
-## Use eclipse compiler (-g)
+## Compiler (-g)
     1. Settings → Build, Execution, Deployment
     2. Build Tools → Maven → Importing
         # 2.1 Detect compiler automatically 取消勾选
@@ -171,7 +170,7 @@
 ---
 ## Error running 'XxxApp': Command line is too long
     1. .idea/workspace.xml
-    2. 在 <component name="PropertiesComponent" /> 里添加 
+    2. 在 <component name="PropertiesComponent" /> 里添加
         <property name="dynamic.classpath" value="true" /> 或 "dynamic.classpath": "true"
 ---
 ## 一个窗口同时打开两个项目

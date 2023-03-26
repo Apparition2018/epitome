@@ -9,6 +9,12 @@ import l.demo.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.http.MediaTypeFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,53 +49,71 @@ import static l.demo.Demo.DEMO_ABSOLUTE_PATH;
 public class MultipartFileController {
 
     /**
-     * <a href="http://localhost:3333/front/html/elements/内联文本语义/a-demo.html">a-demo.html</a>
+     * <a href="http://localhost:3333/front/html/elements/内联文本语义/a-demo.html#downloadFile">download file</a>
      */
-    @GetMapping("file")
+    @GetMapping("download/file")
     @Operation(summary = "下载文件")
     public void downloadFile(@RequestParam("filename") String filename, HttpServletResponse response) {
         URL classesUrl = Thread.currentThread().getContextClassLoader().getResource("");
         String classesPath = StringUtils.substringAfter(Objects.requireNonNull(classesUrl).toString(), "file:/");
-        File template = new File(classesPath + "demo" + File.separator + filename + ".xlsx");
+        File template = new File(classesPath + "demo" + File.separator + filename);
 
         try (InputStream inputStream = Files.newInputStream(template.toPath());
              OutputStream outputStream = response.getOutputStream()) {
             response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
-            response.addHeader("Content-Disposition", "attachment;filename=download.xlsx");
+            response.addHeader("Content-Disposition", "attachment;filename=file.xlsx");
             IOUtils.copy(inputStream, outputStream);
             outputStream.flush();
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    /**
+     * <a href="http://localhost:3333/front/html/elements/内联文本语义/a-demo.html#downloadExcel">download excel</a>
+     */
+    @GetMapping("download/excel")
+    @Operation(summary = "下载 excel")
+    public void downloadExcel(@RequestParam("filename") String filename, HttpServletResponse response) {
+        URL classesUrl = Thread.currentThread().getContextClassLoader().getResource("");
+        String classesPath = StringUtils.substringAfter(Objects.requireNonNull(classesUrl).toString(), "file:/");
+        File template = new File(classesPath + "demo" + File.separator + filename);
+
+        try (Workbook workbook = new XSSFWorkbook(template);
+             OutputStream outputStream = response.getOutputStream()) {
+            Sheet sheet = workbook.getSheetAt(0);
+            /* 第一行数据 */
+            Row row = sheet.createRow(1);
+            Cell cell = row.createCell(0);
+            cell.setCellValue("1");
+            cell = row.createCell(1);
+            cell.setCellValue("zs");
+            cell = row.createCell(2);
+            cell.setCellValue("18");
+            /* 第一行数据 */
+            row = sheet.createRow(2);
+            cell = row.createCell(0);
+            cell.setCellValue("2");
+            cell = row.createCell(1);
+            cell.setCellValue("ls");
+            cell = row.createCell(2);
+            cell.setCellValue("22");
+
+            response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
+            response.addHeader("Content-Disposition", "attachment;filename=excel.xlsx");
+            workbook.write(outputStream);
+        } catch (IOException | InvalidFormatException e) {
+            throw new RuntimeException(e);
         }
     }
 
     /**
-     * <a href="http://localhost:3333/front/html/elements/表单/form/form-demo.html">form-demo.html</a>
+     * <a href="http://localhost:3333/front/bootstrap/bootstrap-fileinput.html#file-input">bootstrap-fileinput</a>
+     *
+     * @see <a href="https://www.cnblogs.com/zgghb/p/6020581.html">bootstrap-fileInput 示例</a>
      */
-    @PostMapping("excel")
-    @Operation(summary = "上传 excel")
-    public void uploadExcel(@RequestPart MultipartFile[] files) {
-        try {
-            for (MultipartFile file : files) {
-                ExcelUtils<Person> excelUtils = new ExcelUtils<>(Person.class);
-                Map<Integer, String> colNumAndFieldNameMap = Map.of(0, "id", 1, "name", 2, "age");
-                if (!file.isEmpty()) {
-                    List<Person> personList = excelUtils.excel2BeanList(file.getInputStream(), colNumAndFieldNameMap);
-                    System.out.println(personList);
-                }
-            }
-        } catch (IllegalAccessException | InstantiationException | IOException | NoSuchMethodException |
-                 NoSuchFieldException | InvocationTargetException | ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * <a href="https://www.cnblogs.com/zgghb/p/6020581.html">bootstrap-fileInput 示例</a>
-     * <p>
-     * <a href="http://localhost:3333/front/bootstrap/fileinput/bootstrap-fileinput.html">bootstrap-fileinput.html</a>
-     */
-    @PostMapping("file")
+    @PostMapping("upload/file")
     @Operation(summary = "上传文件")
     public Result<String> uploadFile(HttpServletRequest request) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -105,6 +129,27 @@ public class MultipartFileController {
             return Result.success("success");
         } else {
             return Result.failure(ResultCode.PARAM_MISS, "上传文件不能为空");
+        }
+    }
+
+    /**
+     * <a href="http://localhost:3333/front/html/elements/表单/form-demo.html#form1">upload excel</a>
+     */
+    @PostMapping("upload/excel")
+    @Operation(summary = "上传 excel")
+    public void uploadExcel(@RequestPart MultipartFile[] files) {
+        try {
+            for (MultipartFile file : files) {
+                ExcelUtils<Person> excelUtils = new ExcelUtils<>(Person.class);
+                Map<Integer, String> colNumAndFieldNameMap = Map.of(0, "id", 1, "name", 2, "age");
+                if (!file.isEmpty()) {
+                    List<Person> personList = excelUtils.excel2BeanList(file.getInputStream(), colNumAndFieldNameMap);
+                    System.out.println(personList);
+                }
+            }
+        } catch (IllegalAccessException | InstantiationException | IOException | NoSuchMethodException |
+                 NoSuchFieldException | InvocationTargetException | ParseException e) {
+            throw new RuntimeException(e);
         }
     }
 }

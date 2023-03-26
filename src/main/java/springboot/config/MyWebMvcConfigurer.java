@@ -2,6 +2,7 @@ package springboot.config;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -125,7 +126,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
      * <p>常见用于 DispatcherServlet 被映射到 "/"，从而覆盖 Servlet 容器对静态资源的默认处理
      */
     @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+    public void configureDefaultServletHandling(@NotNull DefaultServletHandlerConfigurer configurer) {
         WebMvcConfigurer.super.configureDefaultServletHandling(configurer);
     }
 
@@ -242,7 +243,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
      * @see <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto.spring-mvc.customize-view-resolvers">Customize ViewResolvers</a>
      */
     @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
+    public void configureViewResolvers(@NotNull ViewResolverRegistry registry) {
         WebMvcConfigurer.super.configureViewResolvers(registry);
     }
 
@@ -288,7 +289,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
      * @see <a href="https://blog.didispace.com/spring-boot-learning-21-2-8/">SpringBoot 如何扩展 XML 格式的请求和响应</a>
      */
     @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    public void configureMessageConverters(@NotNull List<HttpMessageConverter<?>> converters) {
         WebMvcConfigurer.super.configureMessageConverters(converters);
     }
 
@@ -298,7 +299,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
      * @see <a href="https://www.cnblogs.com/woyujiezhen/p/12105852.html">configureMessageConverters vs extendMessageConverters</a>
      */
     @Override
-    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+    public void extendMessageConverters(@NotNull List<HttpMessageConverter<?>> converters) {
         WebMvcConfigurer.super.extendMessageConverters(converters);
     }
 
@@ -308,7 +309,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
      * @see <a href="https://www.cnblogs.com/yihuihui/p/11673496.html">自定义异常处理 HandlerExceptionResolver</a>
      */
     @Override
-    public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+    public void configureHandlerExceptionResolvers(@NotNull List<HandlerExceptionResolver> resolvers) {
         WebMvcConfigurer.super.configureHandlerExceptionResolvers(resolvers);
     }
 
@@ -316,7 +317,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
      * 16.扩展或修改处理异常解析器
      */
     @Override
-    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+    public void extendHandlerExceptionResolvers(@NotNull List<HandlerExceptionResolver> resolvers) {
         WebMvcConfigurer.super.extendHandlerExceptionResolvers(resolvers);
     }
 

@@ -73,7 +73,7 @@
         </div>
         <div class="caption">规定 input 元素所属的一个或多个表单</div>
         <div class="att-form centered">
-            <form action="" id="form1" style="margin-bottom: 10px;">
+            <form id="form1" style="margin-bottom: 10px;" action="">
                 <label>姓名：<input type="text" name="red" size="9" placeholder="表单内"></label>
             </form>
             <label>年龄：<input type="text" name="blue" size="9" placeholder="表单外" form="form1"></label>
@@ -81,7 +81,7 @@
     </div>
     <code class="code w60p" contenteditable="true">
         &lt;!-- 虽然 input 元素位于form元素之外，但仍然是表单的一部分，数据会一并提交 --&gt;
-        &lt;form action="" id="form1"&gt;
+        &lt;form id="form1" action=""&gt;
             &lt;label&gt;姓名：&lt;input type="text" name="red" size="9" placeholder="表单内"&gt;&lt;/label&gt;
         &lt;/form&gt;
         &lt;label&gt;年龄：&lt;input type="text" name="blue" size="9" placeholder="表单外" <strong>form</strong>="form1"&gt;&lt;/label&gt;
@@ -93,19 +93,17 @@
         <div class="caption">form 表单提交，页面不跳转</div>
         <div class="caption">利用 隐藏的 &lt;iframe&gt; 和 &lt;form&gt; 的 target 属性实现</div>
         <div class="centered non-jump">
-            <form method="post" enctype="multipart/form-data" target="frame1" action="/multipart-file/excel">
+            <form id="form2" enctype="multipart/form-data" target="frame1" action="/multipart-file/upload/excel" method="post">
                 <input type="file" name="files"/>
-                <input type="file" name="files"/>
-                <input type="submit" value="上传" style="margin: 3px 0 0 3px;"/>
+                <button type="submit" style="margin: 3px 0 0 3px;">上传</button>
             </form>
             <iframe id="frame1" name="frame1" style="display:none;"></iframe>
         </div>
     </div>
     <code class="code w60p" contenteditable="true">
-        &lt;form method="post" enctype="multipart/form-data" target="frame1" action="/multipart-file/excel"&gt;
+        &lt;form id="form2" enctype="multipart/form-data" <strong>target</strong>="frame1" action="/multipart-file/upload/excel" method="post"&gt;
             &lt;input type="file" name="files"/&gt;
-            &lt;input type="file" name="files"/&gt;
-            &lt;input type="submit" value="上传" style="margin: 3px 0 0 3px;"/&gt;
+            &lt;button type="submit"&gt;&lt;/button&gt;
         &lt;/form&gt;
         &lt;iframe id="frame1" name="frame1" style="display:none;"&gt;&lt;/iframe&gt;
     </code>

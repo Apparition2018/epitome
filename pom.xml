@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.4</version>
+        <version>3.0.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ljh</groupId>
@@ -26,15 +26,16 @@
         <skipTests>true</skipTests>
         <!-- dependency -->
         <pagehelper-spring-boot-starter.version>1.4.6</pagehelper-spring-boot-starter.version>
+        <mybatis-spring.version>3.0.1</mybatis-spring.version>
         <mapper-spring-boot-starter.version>4.2.2</mapper-spring-boot-starter.version>
         <mybatis-dynamic-sql.version>1.4.1</mybatis-dynamic-sql.version>
         <druid.version>1.2.16</druid.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <commons-cli.version>1.5.0</commons-cli.version>
         <commons-configuration2.version>2.8.0</commons-configuration2.version>
-        <commons-csv.version>1.9.0</commons-csv.version>
+        <commons-csv.version>1.10.0</commons-csv.version>
         <commons-email.version>1.5</commons-email.version>
-        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-fileupload.version>1.5</commons-fileupload.version>
         <curator.version>5.4.0</curator.version>
         <tika.version>2.7.0</tika.version>
         <jsoup.version>1.15.4</jsoup.version>
@@ -115,6 +116,11 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis-spring.version}</version>
+        </dependency>
         <!-- spring boot 整合 pagehelper
             包含了 mybatis-spring-boot-starter -->
         <dependency>
