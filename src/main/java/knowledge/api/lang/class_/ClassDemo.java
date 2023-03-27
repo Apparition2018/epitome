@@ -117,17 +117,14 @@ public class ClassDemo {
      * @see <a href="https://blog.csdn.net/zhangshk_/article/details/82704010">Class.getResource vs ClassLoader.getResource</a>
      * @see <a href="https://www.cnblogs.com/doit8791/p/5851026.html">Class.getResource vs ClassLoader.getResource</a>
      */
-    @Test
-    public void getResource() {
+    public static void main(String[] args) {
         // Class.getResource()
-        p(ClassDemo.class.getResource(""));                     // file:/C:/Users/234607/git/epitome/target/classes/knowledge/api/lang/class_/
-        p(ClassDemo.class.getResource("/"));                    // file:/C:/Users/234607/git/epitome/target/test-classes/
+        p(ClassDemo.class.getResource(""));                     // file:/D:/Liang/git/epitome/target/classes/knowledge/api/lang/class_/
+        p(ClassDemo.class.getResource("/"));                    // file:/D:/Liang/git/epitome/target/classes/
 
         // ClassLoader.getResource()
-        p(ClassDemo.class.getClassLoader().getResource(""));    // file:/C:/Users/234607/git/epitome/target/test-classes/
+        p(ClassDemo.class.getClassLoader().getResource(""));    // file:/D:/Liang/git/epitome/target/classes/
         p(ClassDemo.class.getClassLoader().getResource("/"));   //
-
-        // PS：在获取资源路径时推荐使用 Class.getResource("/")
     }
 
 

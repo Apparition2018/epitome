@@ -62,15 +62,17 @@
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
 ---
-## Comment Code (-g)
+## Code Style (-g)
     1. Settings → Editor → Code Style
-    2. Java → Code Generation → Comment Code
-        2.1 Line comment at first column 取消勾选
-        2.2 Add a space at line comment start 勾选
-        2.3 Add spaces around block comments 勾选
-    3. HTML/XML → Code Generation → Comments
+    2. Java → JavaDoc
+        2.1 Other → Do not wrap one line comments 勾选
+    3. Java → Code Generation → Comment Code
         3.1 Line comment at first column 取消勾选
-        3.2 Add spaces around block comments 勾选
+        3.2 Add a space at line comment start 勾选
+        3.3 Add spaces around block comments 勾选
+    4. HTML/XML → Code Generation → Comments
+        4.1 Line comment at first column 取消勾选
+        4.2 Add spaces around block comments 勾选
 ---
 ## Inspections (-g)
     1. Settings → Editor → Inspections
