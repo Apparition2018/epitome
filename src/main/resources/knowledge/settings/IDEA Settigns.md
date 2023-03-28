@@ -115,7 +115,7 @@
 ## Compiler (-g)
     1. Settings → Build, Execution, Deployment
     2. Build Tools → Maven → Importing
-        # 2.1 Detect compiler automatically 取消勾选
+        2.1 Detect compiler automatically 取消勾选
     3. Compiler
         3.1 Shared build process VM options: 
             -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.26\lombok-1.18.26.jar

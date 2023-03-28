@@ -172,11 +172,11 @@ public class StreamDemo extends Demo {
         // Optional<T>	    findAny()                   串行返回 Optional(first)，并行返回 Optional(any)，空 Stream 返回 Optional.empty()
         p(Stream.of(arr).findAny().orElse(null));       // 1
 
-        // boolean          allMatch(IntPredicate)      // 全匹配
+        // boolean          allMatch(IntPredicate)      全匹配
         p(Stream.of(arr).allMatch(i -> i > 5));         // false
-        // boolean          anyMatch(IntPredicate)      // 任意一个匹配
+        // boolean          anyMatch(IntPredicate)      任意一个匹配
         p(Stream.of(arr).anyMatch(i -> i > 5));         // true
-        // boolean          noneMatch(IntPredicate)     // 全匹配
+        // boolean          noneMatch(IntPredicate)     全匹配
         p(Stream.of(arr).noneMatch(i -> i > 5));        // false
 
         // XxxStream        mapToXxx(XxxFunction<? super T>)                        经过 XxxFunction Stream → XxxStream
