@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <meta name="description" content="Less.js 中文文档：https://www.html.cn/doc/less/">
-    <meta name="description" content="estZ.less：http://www.aibusy.com/zless/">
+    <meta name="description" content="Less 中文网：https://less.bootcss.com/">
     <meta name="description" content="est：http://ecomfe.github.io/est/">
     <title>less-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
@@ -48,7 +47,7 @@
     </code>
 </section>
 
-<section class="code-wrap h200">
+<section class="code-wrap h250">
     <div class="css-live-wrap w40p">
         <div class="caption">@arguments</div>
         <div class="centered">
@@ -61,6 +60,7 @@
                 -moz-box-shadow: @arguments;
                     box-shadow: @arguments;
         }
+
         .arguments {
             width: 100px;
             height: 100px;
@@ -70,16 +70,16 @@
     </code>
 </section>
 
-<section class="code-wrap h200">
+<section class="code-wrap h350">
     <div class="css-live-wrap w40p">
         <div class="caption">Operations 运算</div>
         <div class="centered">
-            <div class="oper"></div>
+            <div class="opn"></div>
         </div>
     </div>
     <code class="code w60p" contenteditable="true">
         &lt;!-- less --&gt;
-        .oper {
+        .opn {
             @length: 50px;
             @base: 5%;
             @base-color: #888;
@@ -87,6 +87,14 @@
             height: 20px + @length;
             background-color: @base-color - #765;
             border: @base solid @base-color;
+        }
+
+        &lt;-- css --&gt;
+        .opn {
+            width: 100px;
+            height: 70px;
+            background-color: #112233;
+            border: 5px solid #888888;
         }
     </code>
 </section>
@@ -106,6 +114,7 @@
             -moz-border-radius: @radius;
             border-radius: @radius;
         }
+
         .mixins {
             width: 100px;
             height: 100px;
@@ -115,7 +124,7 @@
     </code>
 </section>
 
-<section class="code-wrap h350">
+<section class="code-wrap">
     <div class="css-live-wrap w40p">
         <div class="caption">Pattern-matching 匹配模式</div>
         <div class="centered">
@@ -146,7 +155,7 @@
     </code>
 </section>
 
-<section class="code-wrap h350">
+<section class="code-wrap">
     <div class="css-live-wrap w40p">
         <div class="caption">Nested rules 嵌套规则</div>
         <div class="centered">
@@ -168,7 +177,8 @@
                 margin-bottom: 5px;
                 padding: 0 10px;
                 background-color: lightpink;
-                &:hover { // & 代表上一层选择器
+                // & 代表上一层选择器
+                &:hover {
                     background-color: lightcoral;
                 }
             }
@@ -191,12 +201,13 @@
     <code class="code w60p" contenteditable="true">
         &lt;!-- less --&gt;
         .e {
-            width: ~"calc(300px -30px)"; // 避免编译
+            // 避免编译
+            width: ~"calc(300px - 30px)";
         }
 
         &lt;!-- css --&gt;
         .e {
-            width: calc(300px -30px);
+            width: calc(300px - 30px);
         }
     </code>
 </section>

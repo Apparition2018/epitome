@@ -15,7 +15,7 @@
   box-shadow: 2px 5px 1px #000000;
 }
 /* 运算 */
-.oper {
+.opn {
   width: 100px;
   height: 70px;
   background-color: #112233;
@@ -78,5 +78,5 @@
 }
 /* 避免编译 */
 .e {
-  width: calc(300px -30px);
+  width: calc(300px - 30px);
 }

@@ -366,7 +366,6 @@ Ctrl + Alt + P                  Services Groups                                 
 Ctrl + Alt + T                  Services Type                                                   ???
 Alt + Enter                     Show Context Actions                显示内容动作
 Ctrl + Alt + F                  Show Filter Popup                                               ???
-Ctrl + Alt + F12                Show in Explorer (user)             在 Explorer 显示文件
 Ctrl + Alt + Enter              Show Quick Actions Popup            显示快捷动作弹窗
 Ctrl + P                        Show/Hide path text                                             ???
 Ctrl + Alt + J                  Surround with Live Template…        使用 Live 模板包围代码

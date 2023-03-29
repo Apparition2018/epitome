@@ -23,7 +23,7 @@
 }
 
 /* 运算 */
-.oper {
+.opn {
     @length: 50px;
     @base-color: #888;
     width: @length + 50px;
@@ -98,7 +98,8 @@
     border-style: dashed dashed dashed solid;
 }
 
-.triangle(@_, @w:5px, @c:#ccc) { // 无论匹配到哪个，都会匹配到@_
+// 无论匹配到哪个，都会匹配到@_
+.triangle(@_, @w:5px, @c:#ccc) {
     width: 0;
     height: 0;
     overflow: hidden;
@@ -119,7 +120,8 @@
         margin-bottom: 5px;
         padding: 0 10px;
         background-color: lightpink;
-        &:hover { // & 代表上一层选择器
+        // & 代表上一层选择器
+        &:hover {
             background-color: lightcoral;
         }
     }
@@ -133,5 +135,5 @@
 
 /* 避免编译 */
 .e {
-    width: ~"calc(300px -30px)";
+    width: ~"calc(300px - 30px)";
 }
