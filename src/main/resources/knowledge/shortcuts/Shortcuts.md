@@ -29,8 +29,8 @@ Ctrl+Shift+N        Ctrl+P              Ctrl+P              Ctrl+P              
 
 Ctrl+Alt+F12        Alt+Shift+R         Alt+Shift+R                             在 Explorer 中显示
 
-Alt+1               Ctrl+Shift+M        Ctrl+Shift+E        Alt+Q               Project/目录树/源管理器/项目管理器
-                    Ctrl+B              Ctrl+Shift+Alt+B                        侧栏
+Alt+1               Ctrl+Shift+M        Ctrl+Shift+E        Alt+Shift+Q         Project/目录树/源管理器/项目管理器
+                    Ctrl+Shift+Alt+B    Ctrl+B              Alt+Q               侧栏
                     Ctrl+J              Ctrl+J                                  面板
                     Ctrl+Shift+D                            Alt+P               模拟器/预览
 Alt+F12             Ctrl+`              Ctrl+`              Alt+C               Terminal

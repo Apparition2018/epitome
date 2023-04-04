@@ -1,7 +1,18 @@
 package jar.apache.poi;
 
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Map;
+import java.util.Objects;
+
+import static l.demo.Demo.p;
 
 /**
  * <pre>
@@ -15,9 +26,22 @@ import java.util.Map;
  */
 public class ReadPOI {
 
+    @Test
+    public void testReadPOI() throws IOException {
+        URL excelUrl = ReadPOI.class.getResource("/demo/person.xlsx");
+        try (Workbook workbook = WorkbookFactory.create(new File(Objects.requireNonNull(excelUrl).getFile()))) {
+            Sheet sheet = workbook.getSheetAt(0);
+            // getLastRowNum()      返回最后一行的索引，即比行数小1
+            p(sheet.getLastRowNum());
+            // getLastCellNum()     返回最后一列的列数，即等于列数
+            p(sheet.getRow(0).getLastCellNum());
+        }
+    }
+
     /**
      * @see ExcelUtils#excel2BeanList(InputStream, Map)
      */
-    public static void main(String[] args) {
+    @Test
+    public void testExcel2BeanList() {
     }
 }
