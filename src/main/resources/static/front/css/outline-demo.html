@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>outline-demo</title>
+    <link rel="stylesheet" href="../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../public/js/demo.js"></script>
+</head>
+<body>
+<section class="code-wrap h350">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://www.zhangxinxu.com/wordpress/2015/04/css3-radius-outline/">双边框</a>
+        </div>
+        <div class="caption">利用 border、outline 实现<br/>border近亲，不占据空间</div>
+        <div class="frame centered">
+        </div>
+    </div>
+    <style class="code" contenteditable="true">
+        .frame {
+            width: 200px;
+            height: 120px;
+            background: indianred;
+            border: 2px solid white;
+            outline: 4px dotted indianred;
+            /* 设置 outline 与一个元素边缘或边框之间的间隙 */
+            outline-offset: 2px;
+        }
+    </style>
+</section>
+</body>
+</html>
