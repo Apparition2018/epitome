@@ -4,102 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <title>3-margin-margin重叠</title>
+    <meta name="description"
+          content="margin 重叠：https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing">
+    <title>margin-margin重叠</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
+    <style>
+        .element {
+            width: 100px;
+            line-height: 2em;
+            padding: 0 10px;
+            background: thistle;
+        }
+    </style>
 </head>
 <body>
-<!-- margin重叠通常的特性
-    1.只发生在block水平元素（不包括float和absolute元素）
-    2.不考虑writing-mode，只发生在垂直方向（margin-top/margin-bottom） -->
+<!--
+    1.只发生在 block 元素，float 和 absolute 元素 不会出现
+    2.只发生在垂直方向 (margin-top/margin-bottom)
+ -->
 
-<!-- margin重叠计算规则
+<!-- 计算规则：
     1.正正取大值
     2.正负值相加
-    3.负负取绝对值大值 -->
+    3.负负取绝对值大值
+-->
 
-<!-- margin重叠的意义
-    1.连续段落或列表之类，如果没有margin重叠，首尾项间距会和其他兄弟标签的间距为1:2关系
-    2.web中任何地方嵌套或直接放入任何裸div（没有CSS），都不会影响原来的布局
-    3.遗落的空任意多个<p>元素，不会影响原来的阅读排版 -->
-
-<!-- 善用margin重叠
-    当需要设置元素距离15px时，如下设置
-    .list {
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-    这样会使代码更具有健壮性，最后一个元素移除或位置调换，均不会破坏原来的布局 -->
-
+<!-- 意义：
+    1.连续段落或列表之类，如果没有 margin 重叠，首尾项间距会和其他兄弟标签的间距为1:2关系
+    2.任何地方嵌套或直接放入任何裸 div（没有 CSS），都不会影响原来的布局
+    3.遗落的空任意多个 <p> 元素，不会影响原来的阅读排版
+-->
 <section class="code-wrap h200">
-    <div class="css-live-wrap">
-        <div class="caption">1.相邻的兄弟元素</div>
+    <div class="css-live-wrap w40p">
+        <div class="caption">1. 相邻的兄弟元素</div>
         <div class="centered">
             <div id="eg1">
-                <p>第一行</p>
-                <p>第二行</p>
+                <p class="element son">first</p>
+                <p class="element son">second</p>
             </div>
         </div>
     </div>
-    <style class="code" contenteditable="true">
-        #eg1 p {
-            width: 100px;
-            line-height: 2em;
+    <style class="code w60p" contenteditable="true">
+        #eg1 .son {
             margin: 1em 0;
-            background: thistle;
         }
     </style>
 </section>
 
-<section class="code-wrap h200">
-    <div class="css-live-wrap">
-        <div class="caption">2.父级和第一个/最后一个子元素</div>
-        <!-- 条件：
-            1）父元素非块状格式化上下文元素（bfc）
-            2）父元素没有设置border-top/border-bottom
-            3）父元素没有设置padding-top/padding-bottom
-            4）父元素和第一个/最后一个元素之间没有inline元素分隔
-            5）其中margin-bottom重叠还要求父元素没有height,min-height,max-height限制 -->
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">2. 父级 和 第一个/最后一个子元素</div>
         <div class="centered">
             <div id="eg2">
-                <div class="son">son</div>
+                <p class="element son">son</p>
+                <p class="element son">son</p>
             </div>
         </div>
     </div>
-    <style class="code" contenteditable="true">
+    <style class="code w60p" contenteditable="true">
+        /* 没有将父元素和后代元素分开：
+            1.父元素不是 BFC
+            2.父元素没有设置 border-top / border-bottom
+            3.父元素没有设置 padding-top / padding-bottom
+            4.父元素和后代元素之间没有 inline 元素分隔
+            5.margin-bottom 重叠要求父元素没有设置 height、min-height、max-height */
+
         #eg2 {
-            width: 100px;
-            /* margin-top: 2em; */
-            background: thistle;
+            margin: 1em 0;
         }
 
         #eg2 .son {
-            margin-top: 2em;
+            margin: 1em 0;
         }
     </style>
 </section>
 
-<section class="code-wrap h200">
-    <div class="css-live-wrap">
-        <div class="caption">3.空的block元素</div>
-        <!-- 条件：
-            1）元素没有border设置
-            2）元素没有padding设置
-            3）里面没有inline元素
-            4）没有height或min-height -->
+<section class="code-wrap h250">
+    <div class="css-live-wrap w40p">
+        <div class="caption">3. 空的 block 元素</div>
         <div class="centered">
             <div id="eg3">
-                <div class="son"></div>
+                <div class="element son">first</div>
+                <div class="element son empty"></div>
+                <div class="element son">last</div>
             </div>
         </div>
     </div>
-    <style class="code" contenteditable="true">
-        #eg3 {
-            width: 100px;
-            background: thistle;
-            overflow: hidden;
-        }
+    <style class="code w60p" contenteditable="true">
+        /*  1.没有设置 border
+            2.没有设置 padding
+            3.没有设置 height、min-height、max-height
+            4.不是 inline-block*/
 
         #eg3 .son {
+            margin: 0;
+        }
+
+        #eg3 .empty {
             margin: 1em 0;
         }
     </style>

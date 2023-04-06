@@ -70,9 +70,12 @@
         3.1 Line comment at first column 取消勾选
         3.2 Add a space at line comment start 勾选
         3.3 Add spaces around block comments 勾选
-    4. HTML/XML → Code Generation → Comments
+    4. HTML/JavaScript/XML → Code Generation → Comments
         4.1 Line comment at first column 取消勾选
         4.2 Add spaces around block comments 勾选
+    5. Style Sheets → CSS/Less/Sass/SCSS → Other → Comments
+        5.1 Add a space at line comment start 勾选
+        5.2 Add spaces around block comments 勾选
 ---
 ## Inspections (-g)
     1. Settings → Editor → Inspections
@@ -110,7 +113,9 @@
         2.3 Description: TODO-LJH
         2.4 Template text: // TODO-LJH: $date$ $todo$
         2.5 Edit variables: Name:date → Expression:date()
-        2.6 Define/Change → Java → Declaration, Statement 勾选
+        2.6 Define/Change
+            2.6.1 Java → Declaration, Statement 勾选
+            2.6.2 JavaScript and TypeScript → Statement → Other 勾选
 ---
 ## Compiler (-g)
     1. Settings → Build, Execution, Deployment
