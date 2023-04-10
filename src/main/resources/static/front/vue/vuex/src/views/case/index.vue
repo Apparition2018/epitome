@@ -81,7 +81,7 @@ export default {
           }
         })
       } else {
-        alert("权限不足，无法观看")
+      c  alert("权限不足，无法观看")
       }
     },
     checkPermission (e) {

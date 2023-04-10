@@ -4,7 +4,7 @@
 ## Reference
 1. [Vue.js 中文文档](https://vuejs.bootcss.com/guide/)
 2. [Vue.js 教程](https://learning.dcloud.io/#/)
-3. [vue-20-hello-world - CodeSandbox](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-hello-world)   
+3. [vue-20-hello-world - CodeSandbox](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-hello-world)
 4. [Vue Documentation Guide](https://scrimba.com/learn/vuedocs)
 ---
 ## 教程
@@ -195,55 +195,60 @@ slot                                         作为组件模板之中的内容�
 15. 非空 HTML attribute 值应该始终带引号
 16. 指令缩写要么都用要么都不用
 ### [推荐](https://vuejs.bootcss.com/style-guide/#%E4%BC%98%E5%85%88%E7%BA%A7-C-%E7%9A%84%E8%A7%84%E5%88%99%EF%BC%9A%E6%8E%A8%E8%8D%90-%E5%B0%86%E9%80%89%E6%8B%A9%E5%92%8C%E8%AE%A4%E7%9F%A5%E6%88%90%E6%9C%AC%E6%9C%80%E5%B0%8F%E5%8C%96)
-1. 组件/实例的选项的顺序
-    ```
-    1. 副作用（触发组件外的影响）
-        - el
-    2. 全局感知（要求组件以外的知识）
-        - name
-        - parent
-    3. 组件类型（更改组件的类型）
-        - functional
-    4. 模板修改器（改变模板的编译方式）
-        - delimiters
-        - comments
-    5. 模板依赖（模板内使用的资源）
-        - components
-        - directives
-        - filters
-    6. 组合（向选项里合并 property）
-        - extends
-        - mixins
-    7. 接口（组件的接口）
-        - inheritAttrs
-        - model
-        - props / propsData
-    8. 本地状态（本地的响应式 property)
-        - data
-        - computed
-    9. 事件（通过响应式事件触发的回调）
-        - watch
-        - 生命周期钩子（按照它们被调用的顺序）
-                2.x                 3.x
-                        - beforeCreate
-                        - created
-                        - beforeMount
-                        - mounted
-                        - beforeUpdate
-                        - updated
-                        - activated
-            - deactivated
-            - beforeDestroy    - beforeUnmount
-            - destroyed        - unmounted
-                               - errorCaptured
-                               - renderTracked
-                               - renderTriggered
-    10. 非响应式的 property（不依赖响应系统的实例 property）
-       - methods
-    11. 渲染（组件输出的声明式描述）
-       - template / render
-       - renderError
-    ```
+    1. 组件/实例的选项的顺序
+        ```
+        1. 副作用（触发组件外的影响）
+            - el
+        2. 全局感知（要求组件以外的知识）
+            - name
+            - parent
+        3. 组件类型（更改组件的类型）
+            - functional
+        4. 模板修改器（改变模板的编译方式）
+            - delimiters
+            - comments
+        5. 模板依赖（模板内使用的资源）
+            - components
+            - directives
+            - filters
+        6. 组合（向选项里合并 property）
+            - extends
+            - mixins
+        7. 接口（组件的接口）
+            - inheritAttrs
+            - model
+            - props / propsData
+        8. 本地状态（本地的响应式 property)
+            - data
+            - computed
+        9. 事件（通过响应式事件触发的回调）
+            - watch
+            - 生命周期钩子（按照它们被调用的顺序） ???
+                    2.x                 3.x
+                            - beforeCreate
+                            - created
+                            - beforeMount
+                            - mounted
+                            - beforeUpdate
+                            - updated
+                                    - beforeUnmount
+                                    - unmounted
+                                    - errorCaptured
+                                    - renderTracked
+                                    - renderTriggered
+                - activated         - activated
+                - deactivated       - deactivated
+                - beforeDestroy     - serverPrefetch
+                - destroyed
+                - errorCaptured     
+                               
+                               
+        10. 非响应式的 property（不依赖响应系统的实例 property）
+           - methods
+        11. 渲染（组件输出的声明式描述）
+           - template / render
+           - renderError
+        ```
 2. 元素 attribute 的顺序
     ```
     1. 定义（提供组件的选项）

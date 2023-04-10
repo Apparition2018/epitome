@@ -3,32 +3,78 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页"
 			}
 		}, {
-			"path": "pages/list/list",
+			"path": "pages/news/news",
 			"style": {
-				"navigationBarTitleText": "新闻列表",
+				"navigationBarTitleText": "新闻",
 				"navigationBarBackgroundColor": "#272822",
 				"navigationBarTextStyle": "white"
 			}
+		}, {
+			"path": "pages/test/test",
+			"style": {
+				"navigationBarTitleText": "测试"
+			}
 
+		}, {
+			"path": "pages/demo/demo",
+			"style": {
+				"navigationBarTitleText": "Demo",
+				"enablePullDownRefresh": true
+			}
+
+		}, {
+			"path": "pages/demo/swiper/swiper",
+			"style": {
+				"navigationBarTitleText": "swiper",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/demo/scroll-view/scroll-view",
+			"style": {
+				"navigationBarTitleText": "scroll-view",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/demo/nav/nav",
+			"style": {
+				"navigationBarTitleText": "nav",
+				"enablePullDownRefresh": false
+			}
 		}
 	    ,{
-            "path" : "pages/test/test",
+            "path" : "pages/demo/components/components",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "test",
+                "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
             
         }
     ],
 	"globalStyle": {
+		"navigationBarBackgroundColor": "#F8F8F8",
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
-	"uniIdRouter": {}
+	"uniIdRouter": {},
+	"tabBar": {
+		"color": "#333",
+		"selectedColor": "#015FF9",
+		"list": [{
+			"text": "首页",
+			"pagePath": "pages/index/index"
+		}, {
+			"text": "新闻",
+			"pagePath": "pages/news/news"
+		}, {
+			"text": "Demo",
+			"pagePath": "pages/demo/demo"
+		}]
+	}
 }
