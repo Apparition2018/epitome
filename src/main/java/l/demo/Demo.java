@@ -88,7 +88,8 @@ public class Demo {
     public static final String BASE_URL = String.format("http://localhost:%s/", PORT);
     public static final String DEMO_URL = BASE_URL + "demo/";
     public static final String COOKIE_URL = BASE_URL + "fetch/cookie";
-    public static final String RANDOM_URL = " https://quoters.apps.pcfone.io/api/random";
+    // https://github.com/public-apis/public-apis
+    public static final String RANDOM_DOG_IMG_URL = "https://dog.ceo/api/breeds/image/random";
     public static final String USER_DIR = System.getProperty("user.dir");
     public static final String DESKTOP = FileSystemView.getFileSystemView().getHomeDirectory().getPath() + File.separator;
     public static final String JAVA_PATH = "src/main/java/";

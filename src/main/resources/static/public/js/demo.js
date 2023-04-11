@@ -1,3 +1,4 @@
+const demo_url = 'https://dog.ceo/api/breeds/image/random';
 /* 调节centered居中 */
 $('.css-live-wrap').each(function () {
     let $this = $(this),

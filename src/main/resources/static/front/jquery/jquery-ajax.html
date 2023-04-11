@@ -58,10 +58,11 @@
                     </td>
                     <td>使用 AJAX 的 HTTP GET 请求从服务器加载数据</td>
                     <td>$.ajax({
-                        <br/>&nbsp;&nbsp;url:url,
-                        <br/>&nbsp;&nbsp;data:data,
-                        <br/>&nbsp;&nbsp;success:success,
-                        <br/>&nbsp;&nbsp;dataType:dataType
+                        <br/>&nbsp;&nbsp;url: url,
+                        <br/>&nbsp;&nbsp;data: data,
+                        <br/>&nbsp;&nbsp;success: success,
+                        <br/>&nbsp;&nbsp;// 默认：智能猜测（xml,json,script,html）
+                        <br/>&nbsp;&nbsp;dataType: dataType
                         <br/>});
                     </td>
                 </tr>
@@ -71,10 +72,10 @@
                     </td>
                     <td>使用 HTTP GET 请求从服务器加载 JSON 编码的数据</td>
                     <td>$.ajax({
-                        <br/>&nbsp;&nbsp;url:url,
-                        <br/>&nbsp;&nbsp;data:data,
-                        <br/>&nbsp;&nbsp;success:success,
-                        <br/>&nbsp;&nbsp;dataType:"json"
+                        <br/>&nbsp;&nbsp;url: url,
+                        <br/>&nbsp;&nbsp;data: data,
+                        <br/>&nbsp;&nbsp;success: success,
+                        <br/>&nbsp;&nbsp;dataType: "json"
                         <br/>});
                     </td>
                 </tr>
@@ -84,10 +85,9 @@
                     </td>
                     <td>使用 AJAX 的 HTTP GET 请求从服务器加载并执行 JavaScript</td>
                     <td>$.ajax({
-                        <br/>&nbsp;&nbsp;url:url,
-                        <br/>&nbsp;&nbsp;data:data,
-                        <br/>&nbsp;&nbsp;success:success,
-                        <br/>&nbsp;&nbsp;dataType:"script"
+                        <br/>&nbsp;&nbsp;url: url,
+                        <br/>&nbsp;&nbsp;success: success,
+                        <br/>&nbsp;&nbsp;dataType: "script"
                         <br/>});
                     </td>
                 </tr>
@@ -97,11 +97,11 @@
                     </td>
                     <td>使用 AJAX 的 HTTP POST 请求从服务器加载数据</td>
                     <td>$.ajax({
-                        <br/>&nbsp;&nbsp;type:"POST",
-                        <br/>&nbsp;&nbsp;url:url,
-                        <br/>&nbsp;&nbsp;data:data,
-                        <br/>&nbsp;&nbsp;success:success,
-                        <br/>&nbsp;&nbsp;dataType:"dataType"
+                        <br/>&nbsp;&nbsp;type: "POST",
+                        <br/>&nbsp;&nbsp;url: url,
+                        <br/>&nbsp;&nbsp;data: data,
+                        <br/>&nbsp;&nbsp;success: success,
+                        <br/>&nbsp;&nbsp;dataType: "dataType"
                         <br/>});
                     </td>
                 </tr>

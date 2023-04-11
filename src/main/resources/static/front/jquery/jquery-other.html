@@ -24,7 +24,9 @@
 
                 </tr>
                 <tr>
-                    <td rowspan="2">CSS</td>
+                    <td rowspan="2">
+                        <a href="https://www.jquery123.com/category/css/">CSS</a>
+                    </td>
                     <td>
                         <a href="https://www.jquery123.com/jQuery.cssHooks/">$.cssHooks</a>
                     </td>
@@ -37,7 +39,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="https://www.html.cn/jqapi-1.9/jQuery.escapeSelector/">$.escapeSelector()</a>
+                        <a href="https://www.jquery123.com/jQuery.escapeSelector/">$.escapeSelector()</a>
                     </td>
                     <td>转义CSS选择器中有特殊意义的字符或字符串</td>
                     <td>
@@ -45,9 +47,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>回调对象</td>
                     <td>
-                        <a href="https://www.jquery123.com/category/callbacks-object/">$.Callbacks()</a>
+                        <a href="https://www.jquery123.com/category/callbacks-object/">回调对象</a>
+                    </td>
+                    <td>
+                        <a href="https://www.jquery123.com/jQuery.Callbacks/">$.Callbacks()</a>
                     </td>
                     <td>返回一个全能的对象，此对象对管理回调列表提供了强大的方式。
                         <br/>它能够增加、删除、触发、禁用回调函数
@@ -55,7 +59,9 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td rowspan="3">延迟对象</td>
+                    <td rowspan="3">
+                        <a href="https://www.jquery123.com/category/deferred-object/">延迟对象</a>
+                    </td>
                     <td>
                         <a href="https://www.jquery123.com/jQuery.Deferred/">$.Deferred()</a>
                     </td>
@@ -79,7 +85,9 @@
                     <td>提供一种方法来执行一个或多个对象的回调函数</td>
                 </tr>
                 <tr>
-                    <td rowspan="2">内部属性</td>
+                    <td rowspan="2">
+                        <a href="https://www.jquery123.com/category/properties/">内部属性</a>
+                    </td>
                     <td>
                         <a href="https://www.jquery123.com/jquery-2/">.jquery</a>
                     </td>
@@ -94,7 +102,9 @@
                     <td>$('li').length</td>
                 </tr>
                 <tr>
-                    <td rowspan="2">内部函数</td>
+                    <td rowspan="2">
+                        <a href="https://www.jquery123.com/category/internals/">内部函数</a>
+                    </td>
                     <td>
                         <a href="https://www.jquery123.com/jQuery.error/">$.error()</a>
                     </td>
@@ -116,15 +126,40 @@
 <section class="code-wrap h200" id="jq-escapeSelector">
     <div class="css-live-wrap w40p">
         <div class="caption">$.escapeSelector()</div>
-        <div class="caption">version added: 3.0</div>
-        <div class="centered box-escapeSelector">
-            <div id="#target">#target</div>
-            <div id="target">target</div>
+        <div class="centered">
+            <div id="#target">id="#target"</div>
+            <div id="target">id="target"</div>
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
         $(function () {
             $('#' + $.escapeSelector('#target')).css('color', 'red');
+        })
+    </script>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap w40p">
+        <div class="caption">$.Deferred()</div>
+        <div class="caption">jqXHR.done(), jqXHR.fail(), jqXHR.then()</div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        $(function () {
+            $.get(demo_url)
+                .done(function (data, textStatus, jqXHR) {
+                    console.log(data);
+                })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                })
+                // then() 相当于 done() + fail()
+                .then(function (data, textStatus, jqXHR) {
+                    console.log(data);
+                }, function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                });
         })
     </script>
 </section>
