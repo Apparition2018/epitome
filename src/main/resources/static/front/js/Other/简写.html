@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>简写</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
 </head>
 <body>
-<section class="code-wrap" style="height: 1600px;">
+<section class="code-wrap" style="height: 1350px;">
     <div class="css-live-wrap w100p">
         <div class="caption">简写</div>
         <div class="simplify centered" id="a">
@@ -40,7 +42,7 @@
                     <td>parseInt('1');</td>
                     <td>+'1';</td>
                     <td>String 转 Number</td>
-                    <td>一元加运算符</td>
+                    <td rowspan="2">一元加运算符</td>
                 </tr>
                 <tr>
                     <td>Date.parse(new Date()); // 精确到秒
@@ -49,7 +51,6 @@
                     </td>
                     <td>+new Date;</td>
                     <td>Date 转 Number</td>
-                    <td>一元加运算符</td>
                 </tr>
                 <tr>
                     <td>undefined</td>
@@ -147,7 +148,7 @@
                         <br>var arr2 = [...arr1];
                     </td>
                     <td>复制数组</td>
-                    <td>... 展开语法</td>
+                    <td rowspan="2">... 展开语法</td>
                 </tr>
                 <tr>
                     <td>var arr = [1, 2, 3];
@@ -157,7 +158,6 @@
                         <br>myfunction(...arr);
                     </td>
                     <td>数组传参</td>
-                    <td>... 展开语法</td>
                 </tr>
                 <tr>
                     <td>var x = 'Hello', y = 'World';
@@ -167,7 +167,9 @@
                         <br>var z = `${x} ${y}`;
                     </td>
                     <td>拼接字符串</td>
-                    <td>模板字面量</td>
+                    <td rowspan="2">
+                        <a href="#template_literals">模板字面量</a>
+                    </td>
                 </tr>
                 <tr>
                     <td>var x = '床前明月光\n\t'
@@ -181,7 +183,6 @@
                         <br>&nbsp;&nbsp;低头思故乡`;
                     </td>
                     <td>多行字符串</td>
-                    <td>模板字面量</td>
                 </tr>
                 <tr>
                     <td>if (color == 'red') {
@@ -207,21 +208,27 @@
                     <td></td>
                     <td>对象属性</td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
             </table>
         </div>
     </div>
+</section>
+
+<section class="code-wrap h200" id="template_literals">
+    <div class="css-live-wrap w40p">
+        <div class="caption">多行字符串 & 插入表达式</div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        let a = 5, b = 10;
+
+        // 原
+        console.log('Fifteen is ' + (a + b) + ' and\nnot ' + (2 * a + b) + '.');
+
+        // 模板字符串
+        console.log(`Fifteen is ${a + b} and
+            not ${2 * a + b}.`);
+    </script>
 </section>
 </body>
 </html>

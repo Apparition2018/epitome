@@ -72,7 +72,10 @@
 
             $("#load").click(function () {
                 // layer.load(icon, options)
-                layer.load(2, {time: 3 * 1000})
+                const loading = layer.load(2, {time: 3 * 1000});
+                setTimeout(function() {
+                    layer.close(loading);
+                }, 1000);
             })
 
             $("#tips").click(function () {
