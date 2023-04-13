@@ -13,12 +13,6 @@
 				"navigationBarTextStyle": "white"
 			}
 		}, {
-			"path": "pages/test/test",
-			"style": {
-				"navigationBarTitleText": "测试"
-			}
-
-		}, {
 			"path": "pages/demo/demo",
 			"style": {
 				"navigationBarTitleText": "Demo",
@@ -28,34 +22,37 @@
 		}, {
 			"path": "pages/demo/swiper/swiper",
 			"style": {
-				"navigationBarTitleText": "swiper",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "swiper"
 			}
 
 		}, {
 			"path": "pages/demo/scroll-view/scroll-view",
 			"style": {
-				"navigationBarTitleText": "scroll-view",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "scroll-view"
 			}
 
 		}, {
 			"path": "pages/demo/nav/nav",
 			"style": {
-				"navigationBarTitleText": "nav",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "nav"
+			}
+		}, {
+			"path": "pages/demo/components/components",
+			"style": {
+				"navigationBarTitleText": "components"
+			}
+		}, {
+			"path": "pages/demo/route/route",
+			"style": {
+				"navigationBarTitleText": "route"
+			}
+		}, {
+			"path": "pages/demo/route/route2",
+			"style": {
+				"navigationBarTitleText": "route2"
 			}
 		}
-	    ,{
-            "path" : "pages/demo/components/components",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"navigationBarTextStyle": "black",

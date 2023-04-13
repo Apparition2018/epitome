@@ -169,7 +169,7 @@
                 });
                 $("[lay-filter='like']").each(function (i, v) {
                     if (["write", "game"].indexOf($(v).val()) !== -1) {
-                        $(v).attr("checked", "checked");
+                        $(v).prop("checked", true);
                     } else {
                         $(v).attr("checked", null);
                     }

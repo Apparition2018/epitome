@@ -67,12 +67,12 @@ public class DateTimeDemo {
      */
     @Test
     public void testGetAndSet() {
-        p(DATETIME.setField(DateField.YEAR, 2020));
+        p(DATETIME.setField(DateField.YEAR, 2008));
         p(DATETIME.getField(DateField.YEAR));
 
-        // 设置一周的第一天 ?
-        p(DATETIME.setFirstDayOfWeek(Week.SUNDAY));     // 2020-08-08 20:08:08
-        p(DATETIME.getFirstDayOfWeek());                // SUNDAY
+        // 设置一周的第一天
+        p(DATETIME.setFirstDayOfWeek(Week.MONDAY));     // 2008-08-08 20:08:08
+        p(DATETIME.getFirstDayOfWeek());                // MONDAY
 
         DATETIME.setTime(DateUtil.toInstant(DATETIME).toEpochMilli());
     }

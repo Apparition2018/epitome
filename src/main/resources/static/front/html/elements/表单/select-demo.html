@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>select-demo</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../../public/js/demo.js"></script>
+</head>
+<body>
+<section class="code-wrap h250">
+    <div class="css-live-wrap w40p">
+        <div class="caption"></div>
+        <div class="centered">
+            <select id="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="fiat">Fiat</option>
+                <option value="audi">Audi</option>
+            </select>
+        </div>
+    </div>
+    <script class="code w60p" contenteditable="true">
+        const $cars = $('#cars');
+        $cars.change(function() {
+            console.log($cars.val());
+        })
+    </script>
+</section>
+</body>
+</html>

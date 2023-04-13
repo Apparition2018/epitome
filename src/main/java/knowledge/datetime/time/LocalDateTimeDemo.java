@@ -67,7 +67,7 @@ public class LocalDateTimeDemo {
         p(ldt.minusMinutes(1));                 // 2008-08-08T20:07:08
 
         // LocalDateTim                         witXXX(int xxx)                     返回更改xxx后的本地时间副本
-        p(ldt.withYear(2018));                  // 2018-08-08T20:08:08
+        p(ldt.withYear(2008));                  // 2008-08-08T20:08:08
         p(ldt.withMonth(10));                   // 2008-10-08T20:08:08
         p(ldt.withDayOfYear(200));              // 2008-07-18T20:08:08
         p(ldt.withDayOfMonth(18));              // 2008-08-18T20:08:08

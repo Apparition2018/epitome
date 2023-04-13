@@ -16,14 +16,14 @@
 #### 源码视图
 ```json5
 {
-   // 下面两个配置相当与上面的配置服务器
-   "browsers.config" : {
-      "Chrome.path" : "C:/Program Files/Google/Chrome/Application/chrome.exe"
-   },
-   "weApp.devTools.path" : "D:/Tencent/微信web开发者工具",
-   "editor.colorScheme" : "Monokai",
-   "editor.saveOnFocusLost" : true,
-   "editor.codeassistKeyTab": true
+  // 下面两个配置相当与上面的配置服务器
+  "browsers.config" : {
+    "Chrome.path" : "C:/Program Files/Google/Chrome/Application/chrome.exe"
+  },
+  "weApp.devTools.path" : "D:/Tencent/微信web开发者工具",
+  "editor.colorScheme" : "Monokai",
+  "editor.saveOnFocusLost" : true,
+  "editor.codeassistKeyTab": true
 }
 ```
 ---
