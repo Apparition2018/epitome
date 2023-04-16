@@ -1,7 +1,8 @@
 <template>
 	<view>
 		<view class="nav">
-			<view class="item" :class="navIndex == index ? 'active' : ''" v-for="(item,index) in titles" :key="index" @click="clickNav(index)">{{item}}
+			<view class="item" :class="navIndex == index ? 'active' : ''" v-for="(item,index) in titles" :key="index"
+				@click="clickNav(index)">{{item}}
 			</view>
 		</view>
 	</view>
@@ -40,7 +41,6 @@
 			&.active {
 				background-color: #1AA03A;
 				color: #fff;
-
 			}
 		}
 	}

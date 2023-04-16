@@ -3,14 +3,14 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "首页",
+				"navigationBarBackgroundColor": "#272822",
+				"navigationBarTextStyle": "white"
 			}
 		}, {
 			"path": "pages/news/news",
 			"style": {
-				"navigationBarTitleText": "新闻",
-				"navigationBarBackgroundColor": "#272822",
-				"navigationBarTextStyle": "white"
+				"navigationBarTitleText": "新闻"
 			}
 		}, {
 			"path": "pages/demo/demo",
@@ -44,12 +44,27 @@
 		}, {
 			"path": "pages/demo/route/route",
 			"style": {
-				"navigationBarTitleText": "route"
+				"navigationBarTitleText": "页面和路由"
 			}
 		}, {
 			"path": "pages/demo/route/route2",
 			"style": {
-				"navigationBarTitleText": "route2"
+				"navigationBarTitleText": "页面和路由2"
+			}
+		}, {
+			"path": "pages/demo/interaction-feedback/interaction-feedback",
+			"style": {
+				"navigationBarTitleText": "交互反馈"
+			}
+		}, {
+			"path": "pages/demo/navigation-bar/navigation-bar",
+			"style": {
+				"navigationBarTitleText": "导航条"
+			}
+		}, {
+			"path": "pages/demo/request/request",
+			"style": {
+				"navigationBarTitleText": "request"
 			}
 		}
 	],
@@ -63,15 +78,31 @@
 	"tabBar": {
 		"color": "#333",
 		"selectedColor": "#015FF9",
+		"iconfontSrc": "static/icon/iconfont.ttf",
 		"list": [{
 			"text": "首页",
-			"pagePath": "pages/index/index"
+			"pagePath": "pages/index/index",
+			"iconfont": {
+				"text": "\ue789",
+				"selectedText": "\ue789",
+				"selectedColor": "#015FF9"
+			}
 		}, {
 			"text": "新闻",
-			"pagePath": "pages/news/news"
+			"pagePath": "pages/news/news",
+			"iconfont": {
+				"text": "\ue7b1",
+				"selectedText": "\ue7b1",
+				"selectedColor": "#015FF9"
+			}
 		}, {
 			"text": "Demo",
-			"pagePath": "pages/demo/demo"
+			"pagePath": "pages/demo/demo",
+			"iconfont": {
+				"text": "\ue787",
+				"selectedText": "\ue787",
+				"selectedColor": "#015FF9"
+			}
 		}]
 	}
 }

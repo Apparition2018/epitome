@@ -1,25 +1,49 @@
 <template>
-	<div class="box">
-		<h1>uni-app<span class="zero">零基础</span>入门</h1>
-		<view>从基础到进阶</view>
-	</div>
+	<view class="content">
+		<image class="logo" src="/static/logo.png"></image>
+		<view class="text-area">
+			<text class="title">{{title}}</text>
+		</view>
+	</view>
 </template>
 
 <script>
 	export default {
+		data() {
+			return {
+				title: 'Hello'
+			}
+		},
+		onLoad() {
+
+		},
+		methods: {
+
+		}
 	}
 </script>
 
-<style lang="scss">
-.box {
-	height: 100px;
-	background: pink;
-	h1 {
-		font-style: 40rpx;
-		color: red;
-		.zero {
-			font-style: italic;
-		}
+<style>
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 	}
-}
+
+	.logo {
+		width: 200rpx;
+		height: 200rpx;
+		margin: 200rpx auto 50rpx;
+	}
+
+	.text-area {
+		display: flex;
+		justify-content: center;
+	}
+
+	.title {
+		font-size: 36rpx;
+		color: #8f8f94;
+	}
 </style>
