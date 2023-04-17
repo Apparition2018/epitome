@@ -41,3 +41,11 @@
 - [应用生命周期](https://uniapp.dcloud.net.cn/collocation/App.html#applifecycle)
 - [页面生命周期](https://uniapp.dcloud.net.cn/tutorial/page.html#lifecycle)
 ---
+## [iconfont](https://www.iconfont.cn/)
+1. 点击图标 → 添加入库
+2. 点击购物车 → 添加到项目
+3. 资管管理 →  我的项目
+---
+## [内置 CSS 变量](https://uniapp.dcloud.net.cn/tutorial/syntax-css.html#css-%E5%8F%98%E9%87%8F)
+
+---

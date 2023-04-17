@@ -13,12 +13,6 @@
 			return {
 				title: 'Hello'
 			}
-		},
-		onLoad() {
-
-		},
-		methods: {
-
 		}
 	}
 </script>

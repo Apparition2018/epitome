@@ -2,9 +2,9 @@
 	<view>
 		<uniTitle :time="time" title="Demo" subtitle="demo" :list="[4,5,6]" user="{user: 'Mary', gender: 'female'}">
 		</uniTitle>
-		
+
 		<uniEvent @myevent="onmyevent" @click.native="onclick"></uniEvent>
-		
+
 		<button @click="turnOn">开启</button>
 		<!-- 第一种 -->
 		<!-- <uniPopup :state="state" @turnoff="onturnoff"></uniPopup> -->
@@ -25,7 +25,7 @@
 		},
 		methods: {
 			onmyevent(e) {
-				console.log(e);
+				console.log(e)
 			},
 			onclick() {
 				console.log('click');

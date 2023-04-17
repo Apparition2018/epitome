@@ -9,6 +9,7 @@
 			@click="goto('/pages/demo/interaction-feedback/interaction-feedback')">interaction-feedback</button>
 		<button type="default" @click="goto('/pages/demo/navigation-bar/navigation-bar')">navigation-bar</button>
 		<button type="default" @click="goto('/pages/demo/request/request')">request</button>
+		<button type="default" @click="goto('/pages/demo/storage/storage')">storage</button>
 	</view>
 </template>
 

@@ -10,14 +10,11 @@
 	export default {
 		name: "uniEvent",
 		data() {
-			return {
-
-			};
+			return {};
 		},
 		props: {},
 		methods: {
 			oninput(e) {
-				console.log(e.detail.value);
 				this.$emit("myevent", {
 					value: e.detail.value,
 					time: Date.now()

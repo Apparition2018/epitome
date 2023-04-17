@@ -10,9 +10,7 @@
 	export default {
 		name: "uniPopup",
 		data() {
-			return {
-
-			};   
+			return {};
 		},
 		props: {
 			state: {

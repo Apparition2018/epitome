@@ -1,18 +1,13 @@
 <template>
 	<view>
-		
+
 	</view>
 </template>
 
 <script>
 	export default {
 		data() {
-			return {
-				
-			}
-		},
-		methods: {
-			
+			return {}
 		},
 		onReady() {
 			uni.setNavigationBarTitle({
@@ -23,7 +18,7 @@
 				backgroundColor: '#000000'
 			})
 			uni.showNavigationBarLoading();
-			setTimeout(()=>{
+			setTimeout(() => {
 				uni.hideNavigationBarLoading()
 			}, 1500)
 		}

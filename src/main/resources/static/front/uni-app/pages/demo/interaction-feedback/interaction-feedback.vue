@@ -10,9 +10,7 @@
 <script>
 	export default {
 		data() {
-			return {
-
-			}
+			return {}
 		},
 		methods: {
 			showToast() {
@@ -26,7 +24,10 @@
 				uni.showLoading({
 					title: 'loading',
 					mask: true
-				})
+				});
+				setTimeout(() => {
+					uni.hideLoading();
+				}, 1500)
 			},
 			showModal() {
 				uni.showModal({

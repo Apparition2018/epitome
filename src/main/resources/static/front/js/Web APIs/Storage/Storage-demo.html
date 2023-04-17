@@ -11,16 +11,17 @@
     <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
-<section class="code-wrap">
+<section class="code-wrap h450">
     <div class="css-live-wrap w33p">
         <div class="caption">
-            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage">sessionStorage</a>：数据在页面会话结束时会被清除
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage">sessionStorage</a>
+            ：数据在页面会话结束时会被清除
         </div>
         <div class="caption">
             <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage">localStorage</a>
             ：数据可以长期保留，除非 removeItem() 或 clear()
         </div>
-        <div class="caption">cookie 大小不超过 4kb，localStorage 和 sessionStorage 可达 5M</div>
+        <div class="caption">cookie <= 4kb，localStorage/sessionStorage 可达 5M</div>
         <div class="centered">
             <p id="sessionStorage"></p>
             <p id="localStorage"></p>
@@ -59,7 +60,7 @@
     localforage 规避了 localStorage 的缺点，且 API 和 localStorage 相同
     localforage 的逻辑：有限使用 indexedDB 存储数据；如果浏览器不支持，使用 WebSQL；浏览器再不支持，使用 localStorage
 -->
-<section class="code-wrap h500">
+<section class="code-wrap h550">
     <div class="css-live-wrap w33p">
         <div class="caption">
             <a href="https://www.zhangxinxu.com/wordpress/?p=7621">yux-storage 存储 blob 格式图片</a>
