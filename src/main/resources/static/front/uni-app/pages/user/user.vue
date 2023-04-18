@@ -5,9 +5,13 @@
 			<view class="text">浏览历史</view>
 		</view>
 		<view class="content">
-			<view class="row" v-for="item in 10">
-				<newsBox></newsBox>
+			<view class="row" v-for="item in historyArr">
+				<newsBox :item="item" @click.native="goDetail(item)"></newsBox>
 			</view>
+		</view>
+		<view class="nohistory" v-if="!historyArr.length">
+			<image src="../../static/image/nodata.png" mode="widthFix"></image>
+			<view class="text">暂无浏览记录</view>
 		</view>
 	</view>
 </template>
@@ -16,8 +20,21 @@
 	export default {
 		data() {
 			return {
-
+				historyArr: []
 			};
+		},
+		onShow() {
+			this.getData();
+		},
+		methods: {
+			goDetail(item) {
+				uni.navigateTo({
+					url: `/pages/news/detail?cid=${item.classid}&id=${item.id}`
+				})
+			},
+			getData() {
+				this.historyArr = uni.getStorageSync('historyArr') || []
+			}
 		}
 	}
 </script>
@@ -51,6 +68,22 @@
 		.row {
 			border-bottom: 1rpx dotted #efefef;
 			padding: 15rpx 0;
+		}
+	}
+
+	.nohistory {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		image {
+			width: 360rpx;
+		}
+
+		.text {
+			font-size: 26rpx;
+			color: #888;
 		}
 	}
 </style>

@@ -32,7 +32,7 @@
 6. 闭包
 ---
 ## Tasks
-[gradle打包或执行命令时中文乱码](https://blog.csdn.net/u011943534/article/details/105940309)
+- [gradle打包或执行命令时中文乱码](https://blog.csdn.net/u011943534/article/details/105940309)
 1. jar
 ```
 java -classpath build/libs/gradle-1.0-SNAPSHOT.jar com.ljh.gradle.todo.App

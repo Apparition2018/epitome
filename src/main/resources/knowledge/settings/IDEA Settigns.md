@@ -1,5 +1,4 @@
 # IDEA Settings
-- e: every time
 - g: global
 - o: optional
 - u: unknown
@@ -21,7 +20,7 @@
         -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel
 ---
 ## Sync Settings
-    1. File → Manage IDE Settings → Settings Sync…
+    1. Settings → Settings Sync
     2. Enable Settings Sync…
 ---
 ## 安装 IDE Eval Reset (-o)
@@ -58,7 +57,7 @@
     1. Settings → Editor → General → Editor Tabs
     2. Show tabs in one row 取消勾选
 ---
-## Font (-e|o)
+## Font (o)
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
 ---
@@ -74,8 +73,9 @@
         4.1 Line comment at first column 取消勾选
         4.2 Add spaces around block comments 勾选
     5. Style Sheets → CSS/Less/Sass/SCSS → Other → Comments
-        5.1 Add a space at line comment start 勾选
-        5.2 Add spaces around block comments 勾选
+        5.1 Line comment at first column 取消勾选
+        5.2 Add a space at line comment start 勾选
+        5.3 Add spaces around block comments 勾选
 ---
 ## Inspections (-g)
     1. Settings → Editor → Inspections
@@ -95,7 +95,7 @@
          * @since ${DATE} ${TIME}
          */
 ---
-## File Encodings
+## File Encodings (-g)
     1. Settings → Editor → File Encodings
     2. Project Encoding: UTF-8
     3. Default encoding for properties files: UTF-8
@@ -128,10 +128,6 @@
             3.2.1 Use compiler: Eclipse
         3.3 Annotation Processors
             3.3.1 Enable annotation processing 勾选
----
-## JavaScript version (-g)
-    1. Settings → Languages & Frameworks → JavaScript
-    2. JavaScript language version: ECMAScript 6+
 ---
 ## [ESLint](https://www.jetbrains.com/help/idea/eslint.html) (-u)
     1. npm install --g eslint

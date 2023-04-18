@@ -5,12 +5,12 @@
 		</view>
 		<view class="text">
 			<view class="title">{{item.title}}</view>
-			<view class="info" v-if="!item.lookTime">
+			<view class="info" v-if="!item.looktime">
 				<text>{{item.author}}</text>
 				<text>{{item.hits}}</text>
 			</view>
 			<view class="info" v-else>
-				<text>浏览时间：{{item.lookTime}}</text>
+				<text>浏览时间：{{item.looktime}}</text>
 			</view>
 		</view>
 	</view>
@@ -28,7 +28,7 @@
 						author: 'author',
 						hits: 666,
 						picurl: '../../static/logo.png',
-						lookTime: '2023-04-18 00:00:00'
+						looktime: '2023-04-18 00:00:00'
 					}
 				}
 			}

@@ -34,11 +34,34 @@
 						res.data.posttime = parseTime(res.data.posttime);
 						res.data.content = res.data.content.replace(/<img/gi, '<img style="max-width:100%"');
 						this.detail = res.data;
+						this.addHistory();
 						uni.setNavigationBarTitle({
 							title: this.detail.title
 						})
 					}
 				})
+			},
+			addHistory() {
+				let historyArr = uni.getStorageSync('historyArr') || [];
+				let item = {
+					id: this.detail.id,
+					classid: this.detail.classid,
+					picurl: this.detail.picurl,
+					title: this.detail.title,
+					looktime: parseTime(Date.now())
+				};
+				let index = historyArr.findIndex(i => {
+					return i.id == this.detail.id
+				});
+				if (index >= 0) {
+					// 从数组指定索引位置删除1个元素
+					historyArr.splice(index, 1);
+				};
+				// 将元素添加到数组的开头
+				historyArr.unshift(item);
+				// 保留10条浏览记录
+				historyArr = historyArr.slice(0, 10);
+				uni.setStorageSync('historyArr', historyArr);
 			}
 		}
 	}

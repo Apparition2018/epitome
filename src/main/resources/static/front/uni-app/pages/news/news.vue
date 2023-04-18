@@ -74,7 +74,7 @@
 					url: 'https://ku.qingnian8.com/dataApi/news/newslist.php',
 					data: {
 						page: this.curPage,
-						num: 5,
+						num: 8,
 						cid: cid
 					},
 					success: res => {
@@ -132,7 +132,6 @@
 	}
 
 	.nodata {
-		height: 50vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
