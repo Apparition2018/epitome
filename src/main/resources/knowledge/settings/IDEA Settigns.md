@@ -152,11 +152,13 @@
     1. Settings → Tools → Terminal
     2. Shell path: D:\Git\bin\bash.exe
 ---
-## Jrebel & XRebel
+## JRebel & XRebel
     1. 下载 ReverseProxy：https://github.com/ilanyu/ReverseProxy/releases/tag/v1.4
     2. Generate GUIDs online：https://www.guidgen.com/
     3. http://127.0.0.1:8888/{guid}
     4. Settings → JRebel & XRebel → Work offline
+    5. View → Tool Windows → JRebel，勾选模块
+    6. 修改代码后，Ctrl + Shift + F9
 ---
 ## [Project Structure…](https://www.jianshu.com/p/39b2206999e7)
 ### Modules

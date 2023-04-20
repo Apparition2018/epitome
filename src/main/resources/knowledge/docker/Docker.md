@@ -374,13 +374,13 @@ nacos/nacos-server
 ```bash
 docker run -d --name sentinel -p 8858:8858 bladex/sentinel-dashboard
 ```
-14. [Jenkins](https://hub.docker.com/_/jenkins)
+14. [Jenkins](https://hub.docker.com/r/jenkins/jenkins)
 - [Docker 快速安装 Jenkins 完美教程](https://www.cnblogs.com/fuzongle/p/12834080.html)
 ```bash
-docker run -d --name jenkins -p 8080:8080 -p 50000:50000 \
+docker run -d --name jenkins -p 8080:8080 -p 50000:50000 --restart=on-failure \
 -v D:/Docker/Data/Jenkins:/var/jenkins_home \
 [-v /etc/localtime:/etc/localtime \]
-jenkins
+jenkins/jenkins:lts-jdk11
 
 http://localhost:8080
 ```

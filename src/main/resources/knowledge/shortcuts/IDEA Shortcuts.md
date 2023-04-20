@@ -195,7 +195,7 @@ Ctrl + Alt + N                  Inline…                             行内
 ### Build
 ```
 Ctrl + F9                       Build Project                       编译项目
-Ctrl + Shift + F9               Rebuild                             重新编译
+Ctrl + Shift + F9               Rebuild / Recompile                 重新编译
 Ctrl + Shift + F10              Run Ant Target
 ```
 ### Run
