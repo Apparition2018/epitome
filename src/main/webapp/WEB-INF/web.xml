@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- https://tomcat.apache.org/whichversion.html -->
 <!-- web.xml 3.1    JDK7    Tomcat8     Spring4.x -->
 <!-- web.xml 4.0    JDK8    Tomcat9     Spring5.x -->
+<!--                JDK11   Tomcat10.1            -->
+<!-- web.xml 6.0    JDK17   Tomcat11              -->
 <!-- %TOMCAT_HOME%/webapps/examples/WEB-INF/web.xml -->
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0"
          metadata-complete="true">
     <icon>
         <small-icon/>
@@ -20,7 +24,7 @@
 
     <error-page>
         <error-code>500</error-code>
-        <location>/WEB-INF/jsp/error.jsp</location>
+        <location>/src/main/webapp/WEB-INF/jsp/error.jsp</location>
     </error-page>
 
     <!-- web.xml 加载顺序：context-param → listener → filter → servlet -->
@@ -138,84 +142,6 @@
     <servlet-mapping>
         <servlet-name>valid</servlet-name>
         <url-pattern>/valid.do</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>kaptcha</servlet-name>
-        <servlet-class>spring.servlet.captcha.KaptchaServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>kaptcha</servlet-name>
-        <url-pattern>/kaptcha.do</url-pattern>
-    </servlet-mapping>
-
-    <!-- 配置 Kaptcha 验证码 Servlet -->
-    <servlet>
-        <servlet-name>kaptcha2</servlet-name>
-        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
-        <!-- Kaptcha 属性配置：https://blog.csdn.net/elephantboy/article/details/52795309 -->
-        <init-param>
-            <param-name>kaptcha.border</param-name>
-            <param-value>no</param-value>
-        </init-param>
-        <init-param>
-            <param-name>kaptcha.image.width</param-name>
-            <param-value>80</param-value>
-        </init-param>
-        <init-param>
-            <param-name>kaptcha.image.height</param-name>
-            <param-value>30</param-value>
-        </init-param>
-        <init-param>
-            <param-name>kaptcha.textproducer.char.string</param-name>
-            <param-value>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</param-value>
-        </init-param>
-        <init-param>
-            <param-name>kaptcha.textproducer.char.length</param-name>
-            <param-value>4</param-value>
-        </init-param>
-        <init-param>
-            <param-name>kaptcha.textproducer.char.space</param-name>
-            <param-value>3</param-value>
-        </init-param>
-        <init-param>
-            <param-name>kaptcha.textproducer.font.color</param-name>
-            <param-value>red</param-value>
-        </init-param>
-        <init-param>
-            <param-name>kaptcha.textproducer.font.size</param-name>
-            <param-value>24</param-value>
-        </init-param>
-        <init-param>
-            <param-name>kaptcha.obscurificator.impl</param-name>
-            <param-value>com.google.code.kaptcha.impl.ShadowGimpy</param-value>
-        </init-param>
-        <init-param>
-            <param-name>kaptcha.noise.impl</param-name>
-            <param-value>com.google.code.kaptcha.impl.NoNoise</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>kaptcha2</servlet-name>
-        <url-pattern>/kaptcha2.do</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>validKaptcha</servlet-name>
-        <servlet-class>spring.servlet.captcha.ValidKaptchaServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>validKaptcha</servlet-name>
-        <url-pattern>/validKaptcha.do</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>validKaptcha2</servlet-name>
-        <servlet-class>spring.servlet.captcha.ValidKaptcha2Servlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>validKaptcha2</servlet-name>
-        <url-pattern>/validKaptcha2.do</url-pattern>
     </servlet-mapping>
 
     <!-- session 配置 -->

@@ -1,5 +1,6 @@
 package springboot.global;
 
+import jakarta.servlet.Servlet;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,6 @@ import springboot.exception.ServiceException;
 import springboot.result.Result;
 import springboot.result.ResultCode;
 
-import javax.servlet.Servlet;
 import java.util.*;
 import java.util.stream.Collectors;
 

@@ -1,24 +1,23 @@
 package jar.hutool.extra;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.json.JSONUtil;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import l.demo.Demo;
-import l.demo.Person;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.Serial;
 import java.net.HttpCookie;
 import java.util.Map;
 
 /**
  * <a href="https://hutool.cn/docs/#/extra/Servlet工具-ServletUtil">ServletUtil</a>
+ * <p>需要引入 javax.servlet:javax.servlet-api
  * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/servlet/ServletUtil.html">ServletUtil api</a>
  *
  * @author ljh
@@ -32,12 +31,13 @@ public class ServletUtilDemo extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        log.info("Header: {}", ServletUtil.getHeaderMap(req));
-        log.info("Client IP: {}", ServletUtil.getClientIP(req));
-        log.info("Param: {}", ServletUtil.getParamMap(req));
-        log.info("Body: {}", ServletUtil.getBody(req));
-        log.info("Cookie: {}", ServletUtil.readCookieMap(req));
-        log.info("Person: {}", ServletUtil.fillBean(req, Person.class, true));
+        // ServletUtil 不支持 jakarta.servlet 需要引入 javax.servlet:javax.servlet-api
+        // log.info("Header: {}", ServletUtil.getHeaderMap(req));
+        // log.info("Client IP: {}", ServletUtil.getClientIP(req));
+        // log.info("Param: {}", ServletUtil.getParamMap(req));
+        // log.info("Body: {}", ServletUtil.getBody(req));
+        // log.info("Cookie: {}", ServletUtil.readCookieMap(req));
+        // log.info("Person: {}", ServletUtil.fillBean(req, Person.class, true));
     }
 
     @Override

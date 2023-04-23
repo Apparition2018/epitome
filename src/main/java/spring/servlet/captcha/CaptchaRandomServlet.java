@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.Serial;
 
 /**
- * CaptchaRandomServlet
+ * <a href="http://localhost:8080/captchaRandom.do">CaptchaRandomServlet</a>
  * <p>随机字符串验证码
  *
  * @author ljh

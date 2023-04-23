@@ -1,6 +1,5 @@
 package spring.servlet.captcha;
 
-import com.google.code.kaptcha.Constants;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -78,7 +77,7 @@ public abstract class CaptchaUtils {
         for (int i = 0; i < code.length(); i++) {
             pen.setColor((randomColor()));
             // 绘制字符
-            pen.drawString(code.charAt(i) + "", 4 + fontSize * i, (fontSize + height) / 2);
+            pen.drawString(String.valueOf(code.charAt(i)), 4 + fontSize * i, (fontSize + height) / 2);
         }
         //  4.4绘制噪音线
         drawLine(image);
@@ -93,27 +92,13 @@ public abstract class CaptchaUtils {
 
     public static void valid(HttpServletRequest request, HttpServletResponse response, String captchaType) throws IOException {
         // 1.得到数据
-        String validCode;
-        if (captchaType.contains("kaptcha")) {
-            validCode = request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY).toString();
-        } else {
-            validCode = request.getSession().getAttribute("validCode").toString();
-        }
-        String inCode;
-        if ("kaptcha2".equals(captchaType)) {
-            inCode = request.getParameter("inCode2");
-        } else {
-            inCode = request.getParameter("inCode");
-        }
+        String validCode = request.getSession().getAttribute("validCode").toString();
+        String inCode = request.getParameter("inCode");
         // 2.验证是否正确
         if (inCode.equalsIgnoreCase(validCode)) {
             response.sendRedirect("index.jsp");
         } else {
-            if ("kaptcha2".equals(captchaType)) {
-                request.getSession().setAttribute("err2", "验证码输入错误，请重新输入！");
-            } else {
-                request.getSession().setAttribute("err", "验证码输入错误，请重新输入！");
-            }
+            request.getSession().setAttribute("err", "验证码输入错误，请重新输入！");
             // 返回上一页
             response.sendRedirect(request.getHeader("Referer"));
         }
@@ -129,16 +114,13 @@ public abstract class CaptchaUtils {
         int two = random.nextInt(100);
         char operator = operators.charAt(random.nextInt(operators.length()));
         switch (operator) {
-            case '+':
-                result = one + two;
-                break;
-            case '-':
-                result = one - two;
-                break;
-            default:
+            case '+' -> result = one + two;
+            case '-' -> result = one - two;
+            default -> {
                 assert false : "error";
+            }
         }
-        return "" + one + operator + two + "=?";
+        return String.valueOf(one) + operator + two + "=?";
     }
 
     /**
