@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>weui.js</title>
+    <link rel="stylesheet" href="../../public/css/demo.css">
+    <link rel="stylesheet" href="https://res.wx.qq.com/t/wx_fed/weui-source/res/2.5.16/weui.min.css"/>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../public/js/demo.js"></script>
+    <script src="https://res.wx.qq.com/t/wx_fed/weui.js/res/1.2.18/weui.min.js"></script>
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">weui.confirm 和 weui.alert 嵌套使用</div>
+        <div class="caption">需要先调用 hide()</div>
+        <div class="centered demo-click">
+            confirm
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        $('.demo-click').click(function() {
+            const confirm = weui.confirm('确定？', function() {
+               confirm.hide(function() {
+                   weui.alert('成功！');
+               })
+            });
+        })
+    </script>
+</section>
+</body>
+</html>

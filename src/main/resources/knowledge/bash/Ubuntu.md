@@ -27,11 +27,16 @@ apt update                                      更新软件源中的所有软�
 apt full-upgrade                                更新软件
 apt upgrade                                     更新软件
 
+apt install -y initscripts
+    service
 apt install -y procps
     ps
 apt install -y tzdata                           Time Zone Database
     tzselect                                    修改时区
+apt install -y ufw                              防火墙
+    ufw enable/disable/status
 apt isntall -y build-essential                  c/c++
+apt install -y openssh-client
 apt install -y openssh-server
 apt install -y wget
 apt install -y vim

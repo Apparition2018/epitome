@@ -380,12 +380,12 @@ docker run -d --name sentinel -p 8858:8858 bladex/sentinel-dashboard
 docker run -d --name jenkins -p 8080:8080 -p 50000:50000 --restart=on-failure \
 -v D:/Docker/Data/Jenkins:/var/jenkins_home \
 [-v /etc/localtime:/etc/localtime \]
-jenkins/jenkins:lts-jdk11
+jenkins/jenkins:latest-jdk11
 
 http://localhost:8080
 ```
 15. [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash
-docker run -itd --name ubuntu --privileged ubuntu
+docker run -itd --name ubuntu -p 22:22 --privileged ubuntu
 ```
 --- 

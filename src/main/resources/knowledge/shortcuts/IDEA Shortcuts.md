@@ -318,11 +318,11 @@ Shift + F4                      Jump to Object Source                           
 ```
 ---
 ## Database
-### Database Explorer
 ```
+F4                              Edit Data
 Ctrl + Shift + Q                Query Console
 Ctrl + B                        Go to DDL
-
+Ctrl + F5                       Refresh
 Shift + Enter                   Data Source Properties
 ```
 ---
