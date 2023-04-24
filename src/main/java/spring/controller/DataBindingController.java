@@ -16,8 +16,6 @@ import spring.service.BmiService;
 
 import java.util.Map;
 
-import static l.demo.Demo.p;
-
 /**
  * DataBindingController
  *
@@ -35,124 +33,89 @@ public class DataBindingController {
         this.bmiService = bmiService;
     }
 
-    /**
-     * SpringMVC 默认采用转发方式定位视图
-     */
+    /** SpringMVC 默认采用转发方式定位视图 */
     @RequestMapping("toBmi")
     public String toBmi() {
-        p("toBmi()");
         return "bmi";
     }
 
-    /**
-     * HttpServletRequest 获取参数
-     */
-    @RequestMapping("bmi")
+    /** HttpServletRequest 获取参数 */
+    @RequestMapping("bmi1")
     public String bmi(HttpServletRequest request) {
-        p("bmi()");
         String height = request.getParameter("height");
         String weight = request.getParameter("weight");
         return bmi(Double.parseDouble(height), Double.parseDouble(weight), request);
     }
 
-    /**
-     * &#064;RequestParam 获取请求参数并赋值给形参
-     */
+    /** &#064;RequestParam 获取请求参数并赋值给形参 */
     @RequestMapping("bmi2")
     public String bmi2(@RequestParam("height") String ht, String weight, HttpServletRequest request) {
-        p("bmi2()");
         return bmi(Double.parseDouble(ht), Double.parseDouble(weight), request);
     }
 
-    /**
-     * Bean 获取参数
-     */
+    /** Bean 获取参数 */
     @RequestMapping("bmi3")
     public String bmi3(BmiParam bp, HttpServletRequest request) {
-        p("bmi3()");
         return bmi(bp.getHeight(), bp.getWeight(), request);
     }
 
-    /**
-     * ModelAndView 传递参数
-     */
+    /** ModelAndView 传递参数 */
     @RequestMapping("bmi4")
     public ModelAndView bmi4(BmiParam bp) {
-        p("bmi4()");
         String bmi = bmiService.bmi(bp.getHeight(), bp.getWeight());
         return new ModelAndView("bmi2", Map.of("status", bmi));
     }
 
-    /**
-     * ModelAndView 传递参数
-     */
+    /** ModelAndView 传递参数 */
     @RequestMapping("bmi5")
     public ModelAndView bmi5(BmiParam bp) {
-        p("bmi5()");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
         modelAndView.setViewName("bmi2");
         return modelAndView;
     }
 
-    /**
-     * ModelMap 传递参数
-     */
+    /** ModelMap 传递参数 */
     @RequestMapping("bmi6")
     public String bmi6(BmiParam bp, ModelMap mm) {
-        p("bmi6()");
         mm.addAttribute("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
         return "bmi2";
     }
 
-    /**
-     * HttpSession 传递参数
-     */
+    /** HttpSession 传递参数 */
     @RequestMapping("bmi7")
     public String bmi7(BmiParam bp, HttpSession session) {
-        p("bmi7()");
         session.setAttribute("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
         return "bmi2";
     }
 
-    /**
-     * viewName 重定向
-     */
+    /** viewName 重定向 */
     @RequestMapping("redirect1")
     public String redirect1() {
-        p("redirect1()");
         return "hello";
     }
 
-    /**
-     * ModelAndView 和 RedirectView 重定向
-     */
+    /** ModelAndView 和 RedirectView 重定向 */
     @RequestMapping("redirect2")
     public ModelAndView redirect2() {
-        return new ModelAndView(new RedirectView("hello.do"));
+        return new ModelAndView(new RedirectView("hello"));
     }
 
     @RequestMapping("hello")
     public String hello() {
-        p("hello()");
         return "hello";
     }
 
-    /**
-     * HttpServletRequest 传递参数
-     */
+    /** HttpServletRequest 传递参数 */
     private String bmi(double height, double weight, HttpServletRequest request) {
         String status = bmiService.bmi(height, weight);
         request.setAttribute("status", status);
         return "bmi2";
     }
 
-    /**
-     * &#064;ExceptionHandler Spring 异常处理
-     */
+    /** &#064;ExceptionHandler Spring 异常处理 */
     @RequestMapping("error")
     public String error() {
-        p("error()");
         throw new RuntimeException("error");
     }
 

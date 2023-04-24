@@ -2,7 +2,7 @@
 <!-- https://tomcat.apache.org/whichversion.html -->
 <!-- web.xml 3.1    JDK7    Tomcat8     Spring4.x -->
 <!-- web.xml 4.0    JDK8    Tomcat9     Spring5.x -->
-<!--                JDK11   Tomcat10.1            -->
+<!-- web.xml 6.0    JDK11   Tomcat10.1            -->
 <!-- web.xml 6.0    JDK17   Tomcat11              -->
 <!-- %TOMCAT_HOME%/webapps/examples/WEB-INF/web.xml -->
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
@@ -24,7 +24,7 @@
 
     <error-page>
         <error-code>500</error-code>
-        <location>/src/main/webapp/WEB-INF/jsp/error.jsp</location>
+        <location>/WEB-INF/jsp/error.jsp</location>
     </error-page>
 
     <!-- web.xml 加载顺序：context-param → listener → filter → servlet -->

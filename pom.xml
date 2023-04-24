@@ -45,6 +45,7 @@
         <retrofit2.version>2.9.0</retrofit2.version>
         <minio.version>8.5.2</minio.version>
         <fastjson.version>1.2.83</fastjson.version>
+        <tablibs.version>1.2.5</tablibs.version>
         <protostuff.version>1.8.0</protostuff.version>
         <jave2.version>3.3.1</jave2.version>
         <javacv.version>1.5.8</javacv.version>
@@ -314,6 +315,21 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-impl</artifactId>
+            <version>${tablibs.version}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- protostuff：基于 protobuf，序列化/反序列化 -->

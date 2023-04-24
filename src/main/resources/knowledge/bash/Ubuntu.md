@@ -27,8 +27,6 @@ apt update                                      更新软件源中的所有软�
 apt full-upgrade                                更新软件
 apt upgrade                                     更新软件
 
-apt install -y initscripts
-    service
 apt install -y procps
     ps
 apt install -y tzdata                           Time Zone Database

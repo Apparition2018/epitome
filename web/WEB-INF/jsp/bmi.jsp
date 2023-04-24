@@ -1,9 +1,10 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
 <html>
 <head>
     <title>bmi</title>
 </head>
 <body style="font-size: 30px;">
+<%-- action="bim1~7" --%>
 <form action="bmi5" method="post">
     <fieldset>
         <legend>计算bmi质数</legend>

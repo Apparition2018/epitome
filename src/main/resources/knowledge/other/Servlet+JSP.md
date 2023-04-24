@@ -135,7 +135,7 @@ Connection: keep-alive
 |:--------|:-------------------------|:--------------------|-------------|--------------|
 | JSP 小脚本 | JSP 表达式                  | JSP 声明              | JSP 注释      | 隐藏注释         |
 | -       | 变量、变量加运算符组合的表达式、有返回值的方法  | 成员属性或成员方法的声明        | 可带有 JSP 表达式 | 不会被 JSP 引擎处理 |
-| 原封不动    | service() 中的 out.print() | Servlet 类中成员属性或成员方法 |||
+| 原封不动    | service() 中的 out.print() | Servlet 类中成员属性或成员方法 |             |              |
 ---
 ## JSP → Servlet
 |                                  |                                                                        |
@@ -261,7 +261,7 @@ Connection: keep-alive
     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 </bean>
 ```
-- *.jsp 使用 [JSTL 标签](https://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/)
+- *.jsp 使用 [JSTL 标签](https://jakarta.ee/specifications/tags/1.2/tagdocs/)
     - c 标签
     ```html
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

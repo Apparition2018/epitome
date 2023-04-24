@@ -36,8 +36,8 @@
 ## [Docker](https://blog.csdn.net/qq_41318914/article/details/124494776)
 1. `docker run -itd --name ubuntu -p 22:22 --privileged ubuntu`
 2. `passwd root`
-3. `apt update`
-4. `apt install -y openssh-client openssh-server vim`
+3. `apt update`，`apt upgrade`
+4. `apt install -y openssh-client openssh-server vim systemctl`
     - `vim /etc/ssh/sshd_config`：`PermitRootLogin yes`
     - `/etc/init.d/ssh start|restart`，启动/重启 sshd 服务程序
     - `ps -e|grep ssh`，查看 sshd 服务程序是否启动
