@@ -14,41 +14,51 @@ apt update
 ```
 ---
 ## [Package Management](https://ubuntu.com/server/docs/package-management)
-## [apt](https://www.runoob.com/linux/linux-comm-apt.html)
-- 语法： `apt [options] [command] [package ...]`
-    - options：`-h`帮助, `-y`当安装过程提示选择，默认全部选 yes, `-q`不显示安装的过程
+## [apt](https://manpages.ubuntu.com/manpages/xenial/man8/apt.8.html)
+- [options](https://manpages.ubuntu.com/manpages/xenial/man8/apt-get.8.html#options)
+    - `-h`：帮助
+    - `-y`：所有提示默认选择 yes
+    - `-q`：Quite，安静
+    - `-s`：simulate，模拟
 ```
-apt list                                        列出所有包
-    --installed                                 列出所有已安装的包
-    --all-versions                              列出所有已安装的包的版本信息
-apt show <package_name>                         显示安装包的信息
-apt search <keyword>                            查找软件
+unminimize                                      解除系统最小化
 apt update                                      更新软件源中的所有软件列表
-apt full-upgrade                                更新软件
 apt upgrade                                     更新软件
+apt list                                        列出所有包
+    --installed                                 已安装
+    --upgradeable                               可升级
+    --all-versions                              所有可用版本
+apt search <keyword>                            查找软件
+apt show <package_name>                         显示安装包的信息
 
-apt install -y procps
-    ps
-apt install -y tzdata                           Time Zone Database
-    tzselect                                    修改时区
-apt install -y ufw                              防火墙
-    ufw enable/disable/status
-apt isntall -y build-essential                  c/c++
+apt install -y man-db
+    man
+apt install -y tzdata                           Time Zone Databas
+    tzselect
+apt isntall -y build-essential                  GNU 调试器、g++/GNU 编译器集合，和更多编译程序所需的工具和库
 apt install -y openssh-client
 apt install -y openssh-server
 apt install -y wget
 apt install -y vim
 apt install -y iptables
-apt install -y net-tools
+apt install -y firewalld                        防火墙，智能化的 iptables 管理服务器
+apt install -y ufw                              防火墙，轻量化配置 iptables
+    ufw enable/disable/status
+# net-tools vs iproute2：https://www.cnblogs.com/liyuanhong/p/15960954.html
+apt install -y net-tools                        网络工具
+    ifconfig
+    netstat
 apt install -y curl
 apt install -y systemctl
-apt install -y daemon
 apt install -y openjdk-8-jdk
 apt install -y openjdk-17-jdk
+    java -version
+apt install -y git
+    git version
 
-apt remove <package_name>                       卸载，保留配置
-apt autoremove                                  自动卸载
-apt purge <package_name>                        卸载
+apt remove <package_name>                       卸载，保留配置文件
+apt purge <package_name>                        卸载，清除配置文件
+apt autoremove                                  删除为满足其它包而自动安装的且现在不再需要的软件包
 ```
 ---
 ## [dpkg](http://manpages.ubuntu.com/manpages/jammy/man1/dpkg.1.html)

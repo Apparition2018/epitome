@@ -35,20 +35,24 @@
 ---
 ## [Docker](https://blog.csdn.net/qq_41318914/article/details/124494776)
 1. `docker run -itd --name ubuntu -p 22:22 --privileged ubuntu`
+    - `docker exec -it ubuntu bash`
 2. `passwd root`
-3. `apt update`，`apt upgrade`
+3. `unminimize`，`apt update`，`apt upgrade`
 4. `apt install -y openssh-client openssh-server vim systemctl`
-    - `vim /etc/ssh/sshd_config`：`PermitRootLogin yes`
-    - `/etc/init.d/ssh start|restart`，启动/重启 sshd 服务程序
-    - `ps -e|grep ssh`，查看 sshd 服务程序是否启动
+    1. `vim /etc/ssh/sshd_config`：`PermitRootLogin yes`
+    2. 启动/重启 sshd：`/etc/init.d/ssh start|restart`，
+    3. 设置开机启动 sshd：`systemctl enable ssh`
 5. `ssh root@127.0.0.1 -p 22`
-6. idea → Tools → Deployment → Configuration
-    - &divide; → SFTP → New server name: test → SSH configuration
+6. IDEA 配置 Deployment
+    1. Tools → Deployment → Configuration
+    2. &divide; → SFTP → New server name: test → SSH configuration
         ```
         Host: 127.0.0.1
         Username: root
         Authenication type: Password
         ```
-    - Mappings → Local Path / Deployment path
-    - Tools → Deployment → Sync With Local…
+    3. Mappings → Local Path / Deployment path
+    4. Tools → Deployment → Sync With Local…
+7. `apt install -y openjdk-17-jdk`
+8. `apt install -y git`，@see CentOS.md#Git
 ---

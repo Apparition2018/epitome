@@ -58,7 +58,6 @@ public class CollectionUtilsDemo extends Demo {
         p(subList);                                             // [2, 3, 4, 5, 6]        
         p(subList2);                                            // [4, 5, 6, 7, 8]
         // static <O> Collection<O>	union(Iterable<? extends O> a, Iterable<? extends O> b)         并集
-        // 并集
         p(CollectionUtils.union(subList, subList2));            // [2, 3, 4, 5, 6, 7, 8]
         // static <O> Collection<O>	subtract(Iterable<? extends O> a, Iterable<? extends O> b)      差集
         p(CollectionUtils.subtract(subList, subList2));         // [2, 3]

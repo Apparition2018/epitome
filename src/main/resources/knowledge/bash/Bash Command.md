@@ -4,15 +4,14 @@
 ## 参考网站
 1. [Linux 命令大全 | 菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
 2. [Linux 命令大全 | 易百教程](https://www.yiibai.com/linux)
-3. [Linux/Basic commands](https://en.wikiversity.org/wiki/Linux/Basic_commands)
+3. [Linux man pages online](https://linux.die.net/man/)
 4. [Linux man pages online](https://man7.org/linux/man-pages/)
+5. [Linux/Basic commands](https://en.wikiversity.org/wiki/Linux/Basic_commands)
 ---
 ## 问题
-2. [Linux 常见命令缩写](https://www.cnblogs.com/h2mm/p/6691309.html)
-1. [Linux 下如何查看系统和内核版本](https://www.cnblogs.com/lcword/p/5680731.html)
-2. [Linux 命令之 ssh 基本用法](https://blog.csdn.net/gaoxilong526/article/details/79757285)
-3. [Linux 下命令行 curl 的 10 种常见用法示例](https://www.cnblogs.com/zxqblogrecord/p/8900219.html)
-4. [Linux 日志常用查看技巧](https://blog.csdn.net/zw235345721/article/details/70792195)
+1. [Linux 常见命令缩写](https://www.cnblogs.com/h2mm/p/6691309.html)
+2. [Linux 下命令行 curl 的 10 种常见用法示例](https://www.cnblogs.com/zxqblogrecord/p/8900219.html)
+3. [Linux 日志常用查看技巧](https://blog.csdn.net/zw235345721/article/details/70792195)
 ---
 ## 其它
     --help                                                              显示帮助信息
@@ -23,8 +22,11 @@
     bg                              background                          在后台运行
     fg                              foreground                          在前台运行
     ps                              process status                      显示进程状态
-        -e                                                              显示所有进程
-        -f                                                              显示程序间的关系
+        -ef                                                             System V 风格
+            -e                                                          所有程序
+            -f                                                          全格式列表
+        axu                                                             BSD 风格
+            u                                                           面向用户格式
     kill                                                                杀死进程
         -9                                                              彻底杀死进程
     pkill                                                               杀死匹配 pattern 的进程
@@ -33,7 +35,7 @@
 ---
 ## 联网 (Networking)
     hostanme                                                            显示系统主机名
-    netstat                                                             显示网络信息和统计信息                             yum install net-tools -y
+    netstat                                                             显示网络信息和统计信息
         -t                          tcp                                 显示TCP传输协议的连线状况
         -u                          udp                                 显示UDP传输协议的连线状况
         -n                          numeric                             直接使用IP地址，而不通过域名服务器
@@ -81,7 +83,7 @@
         /etc/localtime                                                  本地时间
         /etc/passwd                                                     用户，https://www.linuxprobe.com/explain-etc-passwd.html
         /etc/profile                                                    环境变量
-        /etc/sysconfig/iptables
+        /etc/sysconfig/iptables                                         防火墙
         /etc/sysconfig/network-scripts/                                 网络脚本
         /etc/selinux/                                                   强制访问控制系统
         /etc/timezone                                                   时区
@@ -111,7 +113,7 @@
     crontab                                                             定时任务
     export                                                              设置或显示环境变量
     fc
-    man                             manual                              显示文档                                                                  
+    man                             manual                              手册指南                                     
 ---
 ## 文件管理
     nl                                                                  显示文件内容，添加行号
@@ -235,9 +237,13 @@
     exit                                                                退出目前的 shell
 ---
 ## 系统设置
-    ssh-keygen                                                          创建 SSH Key
-        -t                                                              指定要创建密钥类型 (RSA|DSA)
-        -C                                                              添加备注
+    ssh-keygen                                                          生成、管理和转换 SSH 的省份验证密钥
+        -t rsa|dsa|…                                                    指定密钥类型
+        -C                                                              添加注释
+    ssh-agent                                                           一个程序用于保存私钥（用于公钥身份验证）
+        bash                                                            启动 ssh-agent
+    ssh-add                                                             将私钥添加到 ssh-agent
+        -L                                                              列出公钥
     uptime                                                              显示系统运行时间或系统的平均负载
     clear                                                               清除屏幕
     useradd                                                             添加用户

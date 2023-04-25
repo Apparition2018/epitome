@@ -387,5 +387,7 @@ http://localhost:8080
 15. [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash
 docker run -itd --name ubuntu -p 22:22 --privileged ubuntu
+
+docker exec -it ubuntu bash
 ```
 --- 

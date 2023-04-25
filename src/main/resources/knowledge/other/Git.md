@@ -51,7 +51,7 @@ User two
 git config --global --unset user.name
 git config --global --unset user.email
 ```
-8. 设置局部用户名和邮箱
+7. 设置局部用户名和邮箱
 ```
 git config user.name "one"; git config user.email "one@gmail.com"
 ```

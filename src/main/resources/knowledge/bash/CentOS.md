@@ -218,14 +218,14 @@
     4.5 passwd mysql                           `                        更改 mysql 用户密码
 5. /etc/my.cnf
 6. 初始化
-    5.1 /usr/local/mysql-5.7/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/
-    5.2 记住日志最后一行的密码
-    5.3 chown -R mysql:mysql /usr/local/mysql-5.7/data/                 更改 data 目录所属用户组和用户
+    6.1 /usr/local/mysql-5.7/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/
+    6.2 记住日志最后一行的密码
+    6.3 chown -R mysql:mysql /usr/local/mysql-5.7/data/                 更改 data 目录所属用户组和用户
 7. 添加 mysql 服务
     7.1 cp /usr/local/mysql-5.7/support-files/mysql.server /etc/init.d/mysql
                                                                         复制服务脚本到 /etc/init.d/
-                                                                        使得 Centos 6 可以使用 service mysql start | stop | restart | status 命令
-                                                                        使得 Centos 7 可以使用 systemctl start | stop | restart | status | enable | disable mysql 命令
+                                                                        使得 Centos 6 可以使用 service mysql start|stop|restart|status 命令
+                                                                        使得 Centos 7 可以使用 systemctl start|stop|restart|status|enable|disable mysql 命令
     7.2 chmod +x /etc/init.d/mysql                                      增加脚本可执行权限
     7.3 chkconfig --add mysql                                           添加 mysql 服务
     7.4 chkconfig --list mysql                                          列出 mysql 服务情况
@@ -282,24 +282,19 @@
     3.3 make prefix=/usr/local install
     3.4 git --version
 4. 基础配置
-    4.1 配置用户名
-        git config --global user.name 'Apparition2018'
-    4.2 配置邮箱
-        git config --global user.email '88850180@163.com'
-    4.3 忽略 Windows/Unix 换行符转换
-        git config --global core.autocrlf false
-    4.4 编码相关配置
-        git config --global gui.encoding utf-8
-        git config --global core.quotepath off
-    4.5 关闭忽略大小写
-        git config --global core.ignorecase flase
-5. 配置 ssh key pair
-    5.1 ssh-keygen -t rsa -C '88850180@163.com'
-    5.2 一路回车，生成 ssh key pair
-    5.3 ssh-add ~/.ssh/id_rsa
-        如果出现 Could not open a connection to your authentication agent，先执行 eval `ssh-agent`
-    5.4 cat ~/.ssh/id_rsa.pub
-    5.5 登录码云设置 SSH 公钥
+    4.1 git config --global user.name 'Apparition2018'          配置用户名
+    4.2 git config --global user.email '88850180@163.com'       配置邮箱
+    4.3 git config --global core.autocrlf false                 忽略 Windows/Unix 换行符转换
+    4.4 git config --global gui.encoding utf-8                  指定默认 gui/gitk 字符编码
+        git config --global core.quotepath off                  避免中文乱码
+    4.5 git config --global core.ignorecase flase               关闭忽略大小写
+5. 配置 SSH keys
+    5.1 ssh-keygen -t rsa -C '88850180@163.com'                 生成密钥
+    5.2 ssh-agent bash 或 eval `ssh-agent`                       启动 ssh-agent
+    5.3 ssh-add ~/.ssh/id_rsa                                   添加密钥到 ssh-agent
+    5.4 登录 GitHub|Gitee 新建 SSH key，把公钥复制过去
+        ssh-add -L 或 vim ~/.ssh/id_rsa.pub                      查看公钥
+    5.5 ssh git@github.com                                      验证配置是否成功
 ```
 ---
 ## Redis
