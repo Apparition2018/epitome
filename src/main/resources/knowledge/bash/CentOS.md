@@ -47,7 +47,7 @@
         export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_281-amd64
         export PATH=$PATH:$JAVA_HOME/bin
         注：JDK5 之后，JRE 能自动搜索目录下类文件，并且加载 dt.jar 和 tool.jar，不再需要配置 CLASSPATH
-    2.5 source /etc/profile
+    2.5 source /etc/profile 或 . /etc/profile
 3. 配置多版本 JDK：https://www.imooc.com/video/18991
     3.1 vim /etc/profile
         export JAVA_8_HOME=/.../jdk1.8...
@@ -62,16 +62,16 @@
 - [Tomcat 启动慢警告：Creation of SecureRandom instance for ...](https://zhuanlan.zhihu.com/p/107078362)
 ```
 1. https://archive.apache.org/dist/tomcat/
-    wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz 
+    wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.8/bin/apache-tomcat-10.1.8.tar.gz
     tar -zxvf xxx.tar.gz
-    mv apache-tomcat-9.0.44 /usr/local/
+    mv apache-tomcat-10.1.8 /usr/local/
 2. 添加环境变量
     2.1 vim /etc/profile
-        export CATALINA_HOME=/usr/local/apache-tomcat-9.0.44
+        export CATALINA_HOME=/usr/local/apache-tomcat-10.1.8
     2.2 source /etc/profile
     2.3 配置多个 Tomcat
         2.3.1 vim /etc/profile
-              exprot CATALINA_HOME2=/user/local/apache-tomcat2-9.0.44
+              exprot CATALINA_HOME2=/user/local/apache-tomcat2-10.1.8
         2.3.2 vim ${CATALINA_HOME2}/bin/catalina.sh，在开头添加 
               export CATALINA_HOME=$CATALINA_HOME2
               export CATALINA_BASE=$CATALINA_HOME2
@@ -89,19 +89,22 @@
         4.2.2 firewall-cmd --zone=public --add-port=8080/tcp --permanent
         4.2.3 firewall-cmd --zone=public --remove-port=8080/tcp --permanent
         4.2.4 systemctl restart firewalld
-5. ${CATALINA_HOME}/sbin/startup.sh
+5. ${CATALINA_HOME}/bin/startup.sh
    ${CATALINA_HOME}/bin/shutdown.sh
+6. 可选
+    - 增加可执行权限：cd ${CATALINA_HOME} → chmod a+x -R *
+    - 修改端口：vim con/server.xml
 ```
 ---
 ## Maven
 ```
 1. https://maven.apache.org/download.cgi
-    wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+    wget https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.tar.gz
     tar -zxvf xxx.tar.gz
-    mv apache-maven-3.6.3 /usr/local/
-2. 添加环境变量
+    mv apache-maven-3.9.1 /usr/local/
+2. 添加环境变量:
     2.1 vim /etc/profile
-        export M2_HOME=/usr/local/apache-maven-3.6.3
+        export M2_HOME=/usr/local/apache-maven-3.9.1
         export PATH=$PATH:$M2_HOME/bin
     2.2 source /etc/profile
 3. mvn -version

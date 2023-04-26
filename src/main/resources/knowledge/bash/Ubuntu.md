@@ -52,9 +52,7 @@ apt install -y curl
 apt install -y systemctl
 apt install -y openjdk-8-jdk
 apt install -y openjdk-17-jdk
-    java -version
 apt install -y git
-    git version
 
 apt remove <package_name>                       卸载，保留配置文件
 apt purge <package_name>                        卸载，清除配置文件

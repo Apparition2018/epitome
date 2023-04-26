@@ -15,7 +15,8 @@
 ![VM vs Docker](https://img3.mukewang.com/608d8eeb0001298319201080-500-284.jpg)
 
 ---
-## Docker Desktop 安装
+## Docker Desktop
+### 安装
 1. [安装前创建目录链接](https://www.zhihu.com/question/359332823/answer/923520420)
 - 以管理员身份运行 CMD
 ```bash
@@ -30,19 +31,48 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roa
 3. 下载并安装 [WSL2](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
 4. Settings → Docker Engine
 ```
-  "registry-mirrors": [
-    "https://docker-cn.com",
-    "http://hub-mirror.c.163.com",
-    "https://docker.mirrors.ustc.edu.cn"
-  ],
+"registry-mirrors": [
+  "https://docker-cn.com",
+  "http://hub-mirror.c.163.com",
+  "https://docker.mirrors.ustc.edu.cn"
+],
 ```
-4. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
-5. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
+5. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
+6. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
 ```
 [wsl2]
 memory=2GB
 swap=4GB
 localhostForwarding=true
+```
+### 增加端口映射
+1. docker ps -a → 记下 CONTAINER ID                                         
+2. docker inspect <CONTAINER ID>|grep Id，查看容器的 Id                       
+3. Win + E → \\wsl.localhost\docker-desktop-data\data\docker\containers\Id
+4. 修改 hostconfig.json
+```
+"PortBindings": {
+	"8080/tcp": [
+		{
+			"HostIp": "",
+			"HostPort": "8088"
+		}
+	]
+},
+```
+5. 修改 config.v2.json
+```
+"ExposedPorts": {
+	"8080/tcp": {}
+},
+"Ports": {
+	"8080/tcp": [
+		{
+			"HostIp": "0.0.0.0",
+			"HostPort": "8088"
+		}
+	]
+},
 ```
 ---
 ## [Linux 安装 Docker](https://docs.docker.com/desktop/install/linux-install/)
@@ -66,44 +96,44 @@ rm -rf /var/lib/docker
 service docker start
 service docker status
 
-docker version [OPTIONS]                                          显示版本信息
-docker info [OPTIONS]                                             显示系统信息
-docker images [OPTIONS] [REPOSITORY[:TAG]]                        列出 iamges
-docker search [OPTIONS] TERM                                      在 Docker Hub 搜索 images
-docker pull [OPTIONS] NAME[:TAG|@DIGEST]                          拉取 image 或 repository
-docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                     创建新的 container 并运行 command
-    -d                                                            后台运行
-    -v                                                            绑定挂载 volume，$PWD 当前目录
-    --volumes-from                                                从指定 container 挂载 volumes
-    -p                                                            指定端口映射
-    -P                                                            暴露容器所有端口到宿主随机端口
-    --restart                                                     总是启动
-    --privileged                                                  扩展权限
-    --rm                                                          当容器退出时自动删除
-    --link                                                        连接其它容器
-    --net                                                         将容器连接到网络
-docker ps [OPTIONS]                                               列出 containers
-docker exec [OPTIONS] CONTAINER COMMAND [ARG...]                  在 container 中运行 command
+docker version [OPTIONS]                                        显示版本信息
+docker info [OPTIONS]                                           显示系统信息
+docker images [OPTIONS] [REPOSITORY[:TAG]]                      列出 iamges
+docker search [OPTIONS] TERM                                    在 Docker Hub 搜索 images
+docker pull [OPTIONS] NAME[:TAG|@DIGEST]                        拉取 image 或 repository
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                   创建新的 container 并运行 command
+    -d                                                          后台运行
+    -v                                                          绑定挂载 volume，$PWD 当前目录
+    --volumes-from                                              从指定 container 挂载 volumes
+    -p                                                          指定端口映射
+    -P                                                          暴露容器所有端口到宿主随机端口
+    --restart                                                   总是启动
+    --privileged                                                扩展权限
+    --rm                                                        当容器退出时自动删除
+    --link                                                      连接其它容器
+    --net                                                       将容器连接到网络
+docker ps [OPTIONS]                                             列出 containers
+docker exec [OPTIONS] CONTAINER COMMAND [ARG...]                在 container 中运行 command
     -it CONTAINER bash
-docker start|stop|restart [OPTIONS] CONTAINER [CONTAINER...]      启动|停止|重启 containers
-docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                  创建 container
-docker container                                                  管理 containers
-    update [OPTIONS] CONTAINER [CONTAINER...]                     修改一个或多个 containers 的配置
-docker rm [OPTIONS] CONTAINER [CONTAINER...]                      移除 containers
-docker rmi [OPTIONS] IMAGE [IMAGE...]                             移除 images
-    -a
-docker inspect [OPTIONS] NAME|ID [NAME|ID...]                     返回 Docker 对象的 low-level 信息
-docker kill [OPTIONS] CONTAINER [CONTAINER...]                    杀掉 containers
-docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-                在 container 和本地文件系统之间 复制文件或文件夹
-docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]              根据 container 的更改创建 image
-    -m                                                            提交消息
-docker push [OPTIONS] NAME[:TAG]                                  将 image 或 repository 推到 registry
-docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]                  创建与 SOURCE_IMAGE 关联的 TARGET_IMAGE[:TAG]
-docker login [OPTIONS] [SERVER]                                   登录
-docker network                                                    管理网络
-    create                                                        创建网络
-docker build [OPTIONS] PATH | URL | -                             从 Dockerfile 构建 image
-    -t                                                            命名 'name:tag'
+docker start|stop|restart [OPTIONS] CONTAINER [CONTAINER...]    启动|停止|重启 containers
+docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                创建 container
+docker container                                                管理 containers
+    update [OPTIONS] CONTAINER [CONTAINER...]                   修改一个或多个 containers 的配置
+docker rm [OPTIONS] CONTAINER [CONTAINER...]                    移除 containers
+docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
+docker port CONTAINER [PRIVATE_PORT[/PROTO]]                    列出容器的端口映射或特定映射
+docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   返回 Docker 对象的 low-level 信息
+docker kill [OPTIONS] CONTAINER [CONTAINER...]                  杀掉 containers
+docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-              在 container 和本地文件系统之间 复制文件或文件夹
+docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]            根据 container 的更改创建 image
+    -m                                                          提交消息
+docker push [OPTIONS] NAME[:TAG]                                将 image 或 repository 推到 registry
+docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]                创建与 SOURCE_IMAGE 关联的 TARGET_IMAGE[:TAG]
+docker login [OPTIONS] [SERVER]                                 登录
+docker network                                                  管理网络
+    create                                                      创建网络
+docker build [OPTIONS] PATH | URL | -                           从 Dockerfile 构建 image
+    -t                                                          命名 'name:tag'
 ```
 ---
 ## [Docker 网络](https://docs.docker.com/network/)
@@ -131,7 +161,7 @@ WORKDIR                                            工作目录
 EXPOSE                                             端口
 ```
 2. 镜像分层：Dockerfile 中的每一行都产生一个新层
-![镜像分层](https://img2.mukewang.com/608d9d330001dd2819201080-500-284.jpg)
+   ![镜像分层](https://img2.mukewang.com/608d9d330001dd2819201080-500-284.jpg)
 3. Dockerfile Demo
     1. 编写 Dockerfile 文件
     ```

@@ -185,19 +185,25 @@
     </div>
 </section>
 
-<section class="code-wrap h350" id="ajax-serialize">
+<section class="code-wrap" id="ajax-serialize">
     <div class="css-live-wrap w40p">
-        <div class="caption">serialize()</div>
-        <div class="caption">通过序列化表单值创建 URL 编码文本字符串</div>
+        <div class="caption">serialize() & serializeArray()</div>
+        <div class="caption">对 disabled 失效，对 readonly 有效；但 readonly 对 radio 和 checkbox 失效</div>
         <div class="centered box1">
             <form action="">
                 <div>
-                    <label>邮&nbsp;&nbsp;箱</label>
-                    <input type="email" name="email" required title="email">
+                    <label>姓名</label>
+                    <input type="text" name="name" title="name">
+                </div>
+                <div>
+                    <label>性别</label>
+                    <input type="radio" name="gender" title="male" value="male" disabled checked>男
+                    &nbsp;
+                    <input type="radio" name="gender" title="female" value="female" disabled>女
                 </div>
                 <div>
                     <label>手机号</label>
-                    <input type="tel" name="tel" required title="tel">
+                    <input type="tel" name="tel" required title="tel" value="113425589294" readonly>
                 </div>
             </form>
             <div id="serialize">serialize():</div>
@@ -238,13 +244,12 @@
             border-bottom: 1px solid #a9a9a9;
         }
     </style>
-
     <script class="code w60p" contenteditable="true">
         $('.box1 input').on('change', function () {
-            $('#serialize').text('serialize(): ' + $('.box1 form').serialize());
+            $('#serialize').text($('.box1 form').serialize());
         });
         $('.box1 input').on('change', function () {
-            $('#serializeArray').text('serializeArray(): ' + JSON.stringify($('.box1 form').serializeArray()));
+            $('#serializeArray').text(JSON.stringify($('.box1 form').serializeArray()));
         })
     </script>
 </section>

@@ -55,4 +55,5 @@
     4. Tools → Deployment → Sync With Local…
 7. `apt install -y openjdk-17-jdk`
 8. `apt install -y git`，@see CentOS.md#Git
+9. @see CentOS.md#Maven
 ---

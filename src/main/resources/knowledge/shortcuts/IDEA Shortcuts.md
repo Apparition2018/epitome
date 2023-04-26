@@ -59,9 +59,9 @@ Ctrl + Alt + Shift + V          Paste as Plain Text                 粘贴为纯
 >#### Find
 >```
 >Ctrl + F                       Find…
->  Alt + C                      Match Case
->  Alt + W                      Words
->  Alt + X                      Regex
+>   Alt + C                     Match Case
+>   Alt + W                     Words
+>   Alt + X                     Regex
 >F3 | Ctrl + L                  Find Next / Move to Next Occurrence 跳转到下一个匹配
 >Shift + F3 | Ctrl + Shift + L  Find Previous / Move to Previous Occurrence
 >Ctrl + Alt + Shift + J         Select All Occurrences              选中所有匹配
@@ -103,21 +103,19 @@ Ctrl + Alt + →                  Forward                             下一个�
 Ctrl + N                        Go to Class…                        搜索类跳转
 Ctrl + Shift + N                Go to File…                         搜索文件跳转
 Ctrl + Alt + Shift + N          Go to Symbol…                       搜索 Symbol 跳转
-   Alt + O                      Choose scope
-   Alt + P                      Toggle scope
+    Alt + O                     Choose scope
+    Alt + P                     Toggle scope
 Ctrl + G                        Go to Line:Column…                  搜索行跳转
 Ctrl + Shift + \                Go to URL Mapping…                  搜索 URL 跳转
 F2                              Next Highlighted Error              下一条错误
 Shift + F2                      Previous Highlighted Error          上一条错误
 Ctrl + Shift + Backspace        Last Edit Location                  最近编辑位置
 Alt + F1 +                      Select In…
-   1                            Project View
-   7                            File Structure
-   A                            Local Changes
-   B                            Web Browser
-   C                            Show in Explorer
-   E                            Project Structure
-   F                            Maven
+    0                           Navigation Bar
+    B                           Web Browser
+    C                           Show in Explorer                    ★
+    D                           Terminal
+    G                           Maven                               ★
 Alt + Home                      Jump to Navigation Bar              跳到导航栏
 Ctrl + B                        Go to Declaration or Usages         定位到声明的位置或显示在哪里被调用
 Ctrl + Alt + B                  Go to Implemention(s)               定位到实现的位置

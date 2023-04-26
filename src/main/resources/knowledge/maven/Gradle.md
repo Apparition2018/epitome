@@ -3,13 +3,11 @@
 
 ---
 ## 参考网站
-1. [新一代构建工具gradle-慕课网](https://www.imooc.com/learn/833)
-2. [gradle用户目录本地库移动设置](https://blog.csdn.net/lisheng19870305/article/details/111051780)
-3. [被误导的gradle使用本地maven仓库](https://blog.csdn.net/a386139471/article/details/107738615)
-4. [gradle配置全局镜像](https://www.jianshu.com/p/e1be573e3884)
-5. [idea每次打开gradle项目都要下载 gradle-xx-bin.zip](https://blog.csdn.net/weixin_50045980/article/details/108431388)
-6. [Gradle 关于Daemon的配置提高程序的编译速度](https://blog.csdn.net/changsimeng/article/details/62421202)
-7. [Gradle依赖那些事](https://www.jianshu.com/p/a38904a10988)
+1. [Gradle User Manual](https://docs.gradle.org/current/userguide/userguide.html)
+2. [新一代构建工具gradle-慕课网](https://www.imooc.com/learn/833)
+3. [配置镜像](https://www.cnblogs.com/junejs/p/12686834.html)
+4. [解决每次打开项目都要下载 gradle-xx-bin.zip](https://www.cnblogs.com/passedbylove/p/11232278.html)
+5. [配置 daemon 提高程序的编译速度](https://blog.csdn.net/changsimeng/article/details/62421202)
 ---
 ## Groovy
 - 用于 Java 虚拟机的一种敏捷的动态语言
@@ -32,17 +30,16 @@
 6. 闭包
 ---
 ## Tasks
-- [gradle打包或执行命令时中文乱码](https://blog.csdn.net/u011943534/article/details/105940309)
 1. jar
-```
-java -classpath build/libs/gradle-1.0-SNAPSHOT.jar com.ljh.gradle.todo.App
-```
+    ```
+    java -classpath build/libs/gradle-1.0-SNAPSHOT.jar com.ljh.gradle.todo.App
+    ```
 2. war
-```
-1. 把 gradle-1.0-SNAPSHOT.war 复制到 %TOMCAT_HOME%\webapps
-2. %TOMCAT_HOME%\bin\startup.bat 启动 Tomcat
-3. http://localhost:8080/gradle-1.0-SNAPSHOT/index.html
-```
+    ```
+    1. 把 gradle-1.0-SNAPSHOT.war 复制到 %TOMCAT_HOME%\webapps
+    2. %TOMCAT_HOME%\bin\startup.bat 启动 Tomcat
+    3. http://localhost:8080/gradle-1.0-SNAPSHOT/index.html
+    ```
 ---
 ## 构建脚本
 <img alt="项目-任务关系" src="https://img3.mukewang.com/606612910001be5b13660768.jpg" width="500">
@@ -75,30 +72,30 @@ java -classpath build/libs/gradle-1.0-SNAPSHOT.jar com.ljh.gradle.todo.App
 
 ### 解决冲突
 1. 默认选用相对高的版本
-   - 修改默认解决策略
-      ```
-      configurations.all{
-          resolutionStrategy {
-              failOnVersionConflict()
-          }
-      }
-      ```
+    - 修改默认解决策略
+        ```
+        configurations.all{
+            resolutionStrategy {
+                failOnVersionConflict()
+            }
+        }
+        ```
 2. 排除传递性依赖
-   ```
-   dependencies {
-       implementation('org.hibernate:hibernate-core:3.6.3.Final') {
-           exclude group: 'org.slf4j', module: 'slf4j-api'
-       }
-   }
-   ```
+    ```
+    dependencies {
+        implementation('org.hibernate:hibernate-core:3.6.3.Final') {
+            exclude group: 'org.slf4j', module: 'slf4j-api'
+        }
+    }
+    ```
 3. 强制一个版本
-   ```
-   configurations.all{
-       resolutionStrategy {
-           force 'org.slf4j:slf4j-api:1.7.24'
-       }
-   }
-   ```
+    ```
+    configurations.all{
+        resolutionStrategy {
+            force 'org.slf4j:slf4j-api:1.7.24'
+        }
+    }
+    ```
 ---
 ## 多项目构建
 - 项目模块化  
