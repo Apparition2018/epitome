@@ -93,7 +93,7 @@
    ${CATALINA_HOME}/bin/shutdown.sh
 6. 可选
     - 增加可执行权限：cd ${CATALINA_HOME} → chmod a+x -R *
-    - 修改端口：vim con/server.xml
+    - 修改端口：vim conf/server.xml
 ```
 ---
 ## Maven

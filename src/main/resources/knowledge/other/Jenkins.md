@@ -38,10 +38,9 @@
     - `docker exec -it ubuntu bash`
 2. `passwd root`
 3. `unminimize`，`apt update`，`apt upgrade`
-4. `apt install -y openssh-client openssh-server vim systemctl`
+4. `apt install -y openssh-client openssh-server vim`
     1. `vim /etc/ssh/sshd_config`：`PermitRootLogin yes`
-    2. 启动/重启 sshd：`/etc/init.d/ssh start|restart`，
-    3. 设置开机启动 sshd：`systemctl enable ssh`
+    2. 启动/重启 sshd：`/etc/init.d/ssh start` 等同于 `service start ssh`
 5. `ssh root@127.0.0.1 -p 22`
 6. IDEA 配置 Deployment
     1. Tools → Deployment → Configuration
@@ -56,4 +55,13 @@
 7. `apt install -y openjdk-17-jdk`
 8. `apt install -y git`，@see CentOS.md#Git
 9. @see CentOS.md#Maven
+10. @see CentOS.md#Tomcat
+---
+## 新建节点
+- 系统管理 → 管理节点 →  New Node → Create
+    1. 远程工作目录：/root/.jenkins
+    2. 启动方式：Launch agent via SSH
+        - 主机：127.0.0.1
+        - Credentials → 添加 → root/root
+    3. 保存
 ---

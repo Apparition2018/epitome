@@ -45,7 +45,7 @@
 ## 文件系统 (Filesystem)
     chgrp                           change group                        更改文件组所有权
     chown                           change ownership                    更改文件所有权
-    chmod                           change modes                        更改文件模式/属性/权限
+    chmod                           change modes                        更改文件模式/属性/权限，https://mp.weixin.qq.com/s/2OyR1GlQLQcQkbMVQbIRjg
         -R                                                              递归处理
         u                           user                                文件所有者
         g                           group                               文件所有者所在组
@@ -79,7 +79,7 @@
         /etc/group                                                      用户组
         /etc/hostname                                                   主机名
         /etc/hosts                                                      IP 和主机名映射
-        /etc/init.d/                                                    /etc/rc.d/init.d 软链接
+        /etc/init.d/                                                    /etc/rc.d/init.d 软链接，https://blog.csdn.net/liaowenxiong/article/details/117083906
         /etc/localtime                                                  本地时间
         /etc/passwd                                                     用户，https://www.linuxprobe.com/explain-etc-passwd.html
         /etc/profile                                                    环境变量

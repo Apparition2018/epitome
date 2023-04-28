@@ -273,20 +273,25 @@ Alt + F12                       Terminal
 ---
 ## Version Control Systems
 ```
-Alt + M                         Amend Commit                                                    ???
-Ctrl + K                        Commit                              提交
+Alt + M                         Amend Commit
+Ctrl + K                        Commit…                             提交
+--------------------
 Alt + H                         Show History (user)                 显示历史
-Alt + Shift + A                 Show All Affected Files                                         ???
-Ctrl + Alt + Shift + ↑          Next Change                         上一个改变
-Ctrl + Alt + Shift + ↓          Previous Change                     下一个改变
+Alt + Shift + A                 Show All Affected Files             显示所有受影响的文件
+--------------------
+Ctrl + Alt + Shift + ↑          Next Change                         上一个改变   ★
+Ctrl + Alt + Shift + ↓          Previous Change                     下一个改变   ★
+--------------------
 Alt + `                         VCS Operations                      VCS操作弹窗
 Ctrl + T                        Update Project                      更新项目
+--------------------
 Ctrl + Alt + Z                  Rollback…                           回滚
 Ctrl + Space                    Set Active Changelist                                           ???
 Alt + Shift + M                 Move to Another Changelist…         移动行到其它 Changelist
 Ctrl + D                        Show Diff                           显示差异
 Ctrl + Alt + A                  Add to VSC                          添加到VCS
-Ctrl + M | Ctrl + E             Commit Message History              提交信息历史
+--------------------
+Ctrl + M                        Commit Message History              提交信息历史
 Ctrl + Shift + K                Push                                推送
 ```
 ### Shelve
@@ -297,16 +302,19 @@ Ctrl + Alt + U                  Unshelve Silently                   静默取消
 ```
 ### Diff &amp; Merge
 ```
-Ctrl + Tab                      Select Opposite Diff Pane           切换选中窗口
-Ctrl + Shift + D                Show Diff Settings Popup…           显示差异设置弹窗
-Alt + ←                         Compare Previous File               对比前一个文件
-Alt + →                         Compare Next File                   对比后一个文件
-Shift + F7                      Previous Difference                 上一个差异
+Ctrl + Shift + Tab              Select Opposite Diff Pane           切换选中窗口
+Alt + Shift + ←                 Compare Previous File               对比前一个文件
+Alt + Shift + →                 Compare Next File                   对比后一个文件
 F7                              Next Difference                     下一个差异
-Ctrl + N                        Go To Changed File…                 搜索改变文件跳转
-Alt + Shift + ←                 Accept Left Side                    接受左边
-Alt + Shift + →                 Accept Right Side                   接受右边
->```
+Shift + F7                      Previous Difference                 上一个差异
+Ctrl + Alt + R                  Accept Left Side                    接受左边
+Ctrl + Alt + A                  Accept Right Side                   接受右边
+```
+### Group By
+```
+Ctrl + Alt + P                  Directory
+Ctrl + Alt + M                  Module
+```
 ---
 ## Debugger Actions
 ```
@@ -360,7 +368,6 @@ Alt + Shift + R                 Rerun Tests                         重新运行
 Ctrl + Shift + F10              Run context configuration                                       ???
 Alt + ↓                         Search History                                                  ???
 Ctrl + Alt + Space              Second Basic Completion             第二基本补全
-Ctrl + Alt + P                  Services Groups                                                 ???
 Ctrl + Alt + T                  Services Type                                                   ???
 Alt + Enter                     Show Context Actions                显示内容动作
 Ctrl + Alt + F                  Show Filter Popup                                               ???

@@ -49,7 +49,8 @@ apt install -y net-tools                        网络工具
     ifconfig
     netstat
 apt install -y curl
-apt install -y systemctl
+apt isntall -y [--reinstall] systemd            一个系统和服务管理器，用于引导用户空间和管理用户进程的 init 系统，可代替 System V 与 BSD 风格等 init 程序
+    systemctl
 apt install -y openjdk-8-jdk
 apt install -y openjdk-17-jdk
 apt install -y git
