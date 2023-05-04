@@ -46,8 +46,8 @@ swap=4GB
 localhostForwarding=true
 ```
 ### 增加端口映射
-1. docker ps -a → 记下 CONTAINER ID                                         
-2. docker inspect <CONTAINER ID>|grep Id，查看容器的 Id                       
+1. docker ps -a → 记下 CONTAINER ID
+2. docker inspect \<CONTAINER ID>|grep Id，查看容器的 Id
 3. Win + E → \\wsl.localhost\docker-desktop-data\data\docker\containers\Id
 4. 修改 hostconfig.json
 ```
@@ -123,6 +123,8 @@ docker rm [OPTIONS] CONTAINER [CONTAINER...]                    移除 container
 docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
 docker port CONTAINER [PRIVATE_PORT[/PROTO]]                    列出容器的端口映射或特定映射
 docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   返回 Docker 对象的 low-level 信息
+    # 显示所有容器 IP
+    docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
 docker kill [OPTIONS] CONTAINER [CONTAINER...]                  杀掉 containers
 docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-              在 container 和本地文件系统之间 复制文件或文件夹
 docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]            根据 container 的更改创建 image
@@ -407,7 +409,10 @@ docker run -d --name sentinel -p 8858:8858 bladex/sentinel-dashboard
 14. [Jenkins](https://hub.docker.com/r/jenkins/jenkins)
 - [Docker 快速安装 Jenkins 完美教程](https://www.cnblogs.com/fuzongle/p/12834080.html)
 ```bash
+[docker network create --subnet=172.11.0.0/16 jenkins_net]
+
 docker run -d --name jenkins -p 8080:8080 -p 50000:50000 --restart=on-failure \
+[--net jenkins_net --ip 172.11.0.2 \]
 -v D:/Docker/Data/Jenkins:/var/jenkins_home \
 [-v /etc/localtime:/etc/localtime \]
 jenkins/jenkins:latest-jdk11

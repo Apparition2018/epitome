@@ -39,18 +39,44 @@ public class NumberFormatDemo {
     private static final NumberFormat PERCENT_FORMAT = NumberFormat.getPercentInstance();
 
     @Test
-    public void testNumberFormat() throws ParseException {
+    public void format() throws ParseException {
         double d = 12345.4321;
 
+        this.digits();
         p(FORMAT.format(d));                    // 12,345.432
         p(INTEGER_FORMAT.format(d));            // 12,345
         p(NUMBER_FORMAT.format(d));             // 12,345.432
         p(COMPACT_NUMBER_FORMAT.format(d));     // 1万
         p(CURRENCY_FORMAT.format(d));           // ¥12,345.43
-        p(PERCENT_FORMAT.format(d));            // 1,234,543%
+        p(PERCENT_FORMAT.format(d));            // 1,234,543.21%
 
         p(CURRENCY_FORMAT.parse("¥12,345.43")); // 12345.43
         p(PERCENT_FORMAT.parse("1,234,543%"));  // 12345.43
+    }
+
+    /**
+     * <pre>
+     * void     setMaximumIntegerDigits(int newValue)   设置数的整数部分所允许的最大位数
+     * void     setMinimumIntegerDigits(int newValue)   设置数的整数部分所允许的最小位数
+     * int      getMaximumIntegerDigits()               返回数的整数部分所允许的最大位数
+     * int      getMinimumIntegerDigits()               返回数的整数部分所允许的最小位数
+     * void     setMaximumFractionDigits(int newValue)  设置数的小数部分所允许的最大位数
+     * void     setMinimumFractionDigits(int newValue)  设置数的小数部分所允许的最小位数
+     * int      getMaximumFractionDigits()              返回数的小数部分所允许的最大位数
+     * int      getMinimumFractionDigits()              返回数的小数部分所允许的最小位数
+     * </pre>
+     */
+    public void digits() {
+        p(FORMAT.getMaximumIntegerDigits());            // 2147483647
+        p(FORMAT.getMinimumIntegerDigits());            // 1
+        p(FORMAT.getMaximumFractionDigits());           // 3
+        p(FORMAT.getMinimumFractionDigits());           // 0
+
+        PERCENT_FORMAT.setMinimumFractionDigits(2);
+        p(PERCENT_FORMAT.getMaximumIntegerDigits());    // 2147483647
+        p(PERCENT_FORMAT.getMinimumIntegerDigits());    // 1
+        p(PERCENT_FORMAT.getMaximumFractionDigits());   // 2
+        p(PERCENT_FORMAT.getMinimumFractionDigits());   // 2
     }
 
     /**
@@ -68,30 +94,6 @@ public class NumberFormatDemo {
 
         CURRENCY_FORMAT.setCurrency(Currency.getInstance(Locale.JAPAN));
         p(CURRENCY_FORMAT.getCurrency()); // JPY
-    }
-
-    /**
-     * <pre>
-     * int      getMaximumFractionDigits()      返回数的小数部分所允许的最大位数
-     * int      getMinimumFractionDigits()      返回数的小数部分所允许的最小位数
-     * </pre>
-     */
-    @Test
-    public void getFractionDigits() {
-        p(FORMAT.getMaximumFractionDigits());           // 3
-        p(FORMAT.getMinimumFractionDigits());           // 0
-
-        p(INTEGER_FORMAT.getMaximumFractionDigits());   // 0
-        p(INTEGER_FORMAT.getMinimumFractionDigits());   // 0
-
-        p(NUMBER_FORMAT.getMaximumFractionDigits());    // 3
-        p(NUMBER_FORMAT.getMinimumFractionDigits());    // 0
-
-        p(CURRENCY_FORMAT.getMaximumFractionDigits());  // 2
-        p(CURRENCY_FORMAT.getMinimumFractionDigits());  // 2
-
-        p(PERCENT_FORMAT.getMaximumFractionDigits());   // 0
-        p(PERCENT_FORMAT.getMinimumFractionDigits());   // 0
     }
 
     /**

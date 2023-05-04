@@ -587,4 +587,28 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>druid</id>
+            <properties>
+                <profileActive>druid</profileActive>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>h2</id>
+            <properties>
+                <profileActive>h2</profileActive>
+            </properties>
+        </profile>
+        <profile>
+            <id>hikari</id>
+            <properties>
+                <profileActive>hikari</profileActive>
+            </properties>
+        </profile>
+    </profiles>
 </project>

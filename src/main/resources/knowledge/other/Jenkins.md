@@ -33,9 +33,8 @@
         - Add user… → admin → Grant all permissions to admin (在右边) → 保存
         - Add user… → user01 → Grant all permissions to admin (在右边) → 取消勾选 Administer - 保存
 ---
-## [Docker](https://blog.csdn.net/qq_41318914/article/details/124494776)
-1. `docker run -itd --name ubuntu -p 22:22 --privileged ubuntu`
-    - `docker exec -it ubuntu bash`
+## [Docker Ubuntu](https://blog.csdn.net/qq_41318914/article/details/124494776)
+1. `docker run -itd --name ubuntu -p 22:22 8088:8080 [--net jenkins_net --ip 172.11.0.3 ]--privileged ubuntu`
 2. `passwd root`
 3. `unminimize`，`apt update`，`apt upgrade`
 4. `apt install -y openssh-client openssh-server vim`
@@ -44,7 +43,7 @@
 5. `ssh root@127.0.0.1 -p 22`
 6. IDEA 配置 Deployment
     1. Tools → Deployment → Configuration
-    2. &divide; → SFTP → New server name: test → SSH configuration
+    2. &divide; → SFTP → New server name：test → SSH configuration
         ```
         Host: 127.0.0.1
         Username: root
@@ -52,16 +51,27 @@
         ```
     3. Mappings → Local Path / Deployment path
     4. Tools → Deployment → Sync With Local…
-7. `apt install -y openjdk-17-jdk`
-8. `apt install -y git`，@see CentOS.md#Git
+7. `apt install -y openjdk-11-jdk`
+8. `apt install -y git`，配置 @see CentOS.md#Git 4 和 5
+    - `cd /home/git` → `git clone git@github.com:Apparition2018/order.git` 
 9. @see CentOS.md#Maven
 10. @see CentOS.md#Tomcat
 ---
 ## 新建节点
-- 系统管理 → 管理节点 →  New Node → Create
+- 系统管理 → 节点管理 →  New Node → 名称 → Create
     1. 远程工作目录：/root/.jenkins
     2. 启动方式：Launch agent via SSH
-        - 主机：127.0.0.1
+        - 主机：172.11.0.3
         - Credentials → 添加 → root/root
     3. 保存
+---
+## 新建任务
+- 新建任务 → 名称 → 构建一个自由风格的软件项目 → 名称 → 确定
+    1. General
+        - 勾选 限制项目的运行节点 → 标签表达式：test
+    2. 源码管理：Git
+        - Repositories：git@github.com:Apparition2018/order.git
+    3. Build Steps → 执行 shell: `ifconfig`
+    4. 保存
+    5. 立即构建
 ---
