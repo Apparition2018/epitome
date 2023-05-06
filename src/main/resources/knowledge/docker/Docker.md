@@ -411,13 +411,17 @@ docker run -d --name sentinel -p 8858:8858 bladex/sentinel-dashboard
 ```bash
 [docker network create --subnet=172.11.0.0/16 jenkins_net]
 
-docker run -d --name jenkins -p 8080:8080 -p 50000:50000 --restart=on-failure \
+docker run -d --name jenkins -p 8081:8080 -p 50000:50000 --restart=on-failure \
 [--net jenkins_net --ip 172.11.0.2 \]
 -v D:/Docker/Data/Jenkins:/var/jenkins_home \
 [-v /etc/localtime:/etc/localtime \]
-jenkins/jenkins:latest-jdk11
+jenkins/jenkins:latest-jdk8
 
-http://localhost:8080
+# 进入 jenkins 工作目录，打开 hudson.model.UpdateCenter.xml，
+# 把 https://updates.jenkins.io/update-center.json 改成 
+# https:mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
+
+http://localhost:8081
 ```
 15. [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash

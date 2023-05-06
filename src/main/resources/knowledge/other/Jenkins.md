@@ -25,10 +25,10 @@
 ---
 ## 管理用户 & 全局安全配置
 1. 新建用户
-    - Dashboard → 系统管理 → 安全 → 管理用户
+    - 安全 → 管理用户
     - Create User → user01/123456 → 新建用户
 2. 全局安全配置
-    - Dashboard → 系统管理 → 安全 → 全局安全配置
+    - 安全 → 全局安全配置
     - 授权策略 → 安全矩阵
         - Add user… → admin → Grant all permissions to admin (在右边) → 保存
         - Add user… → user01 → Grant all permissions to admin (在右边) → 取消勾选 Administer - 保存
@@ -51,11 +51,18 @@
         ```
     3. Mappings → Local Path / Deployment path
     4. Tools → Deployment → Sync With Local…
-7. `apt install -y openjdk-11-jdk`
-8. `apt install -y git`，配置 @see CentOS.md#Git 4 和 5
-    - `cd /home/git` → `git clone git@github.com:Apparition2018/order.git` 
-9. @see CentOS.md#Maven
-10. @see CentOS.md#Tomcat
+7. `apt install -y openjdk-8-jdk`
+8. `apt install -y mysql-server-8.0`
+    ```bash
+    service mysql start
+    mysql -uroot -p
+    create user ljh@localhost identified by '123456';
+    grant all privileges on *.* to ljh@localhost with grant option;
+    flush privileges;
+    ```
+9. `apt install -y git`，配置 @see CentOS.md#Git 4 和 5
+10. @see CentOS.md#Maven
+11. @see CentOS.md#Tomcat
 ---
 ## 新建节点
 - 系统管理 → 节点管理 →  New Node → 名称 → Create
@@ -63,15 +70,25 @@
     2. 启动方式：Launch agent via SSH
         - 主机：172.11.0.3
         - Credentials → 添加 → root/root
+        - Host Key Verification Strategy：Manually trusted key Verification Strategy
     3. 保存
 ---
 ## 新建任务
-- 新建任务 → 名称 → 构建一个自由风格的软件项目 → 名称 → 确定
+- 新建任务 → 名称 → 构建一个自由风格的软件项目 → 确定
     1. General
         - 勾选 限制项目的运行节点 → 标签表达式：test
     2. 源码管理：Git
         - Repositories：git@github.com:Apparition2018/order.git
-    3. Build Steps → 执行 shell: `ifconfig`
+        - Credentials：root/root
+        - Additional Behaviours → 检出到子目录 → order
+    3. Build Steps → 执行 shell
+        ```
+        BUILD_ID=DontKillMe
+        . /etc/profile
+        export PROJ_PATH=`pwd`
+        export TOMCAT_APP_PATH=/usr/local/apache-tomcat-9.0.74
+        sh $PROJ_PATH/order/deploy.sh
+        ```
     4. 保存
     5. 立即构建
 ---

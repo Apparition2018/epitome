@@ -69,7 +69,7 @@
 ## 数据类型速查表
 | 数据类型              |       MySQL        |                           SQL Server                           |        Oracle        |
 |:------------------|:------------------:|:--------------------------------------------------------------:|:--------------------:|
-| boolean           |                    |                              bit                               ||
+| boolean           |                    |                              bit                               |                      |
 | integer           |        int         |                              int                               |        number        |
 | float             |      decimal       |                       decimal / numeric                        |        number        |
 | date              |  date / datetime   |                        date / datetime                         |   date / timestamp   |

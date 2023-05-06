@@ -235,7 +235,7 @@
     7.5 service mysql start | systemctl start mysql
 8. 防火墙：开放 3306 端口
 9. 连接 mysql：mysql -uroot -p 
-    9.1 alter user root@localhsot identified by 'root';                 修改密码
+    9.1 alter user root@localhost identified by 'root';                 修改密码
     9.2 grant all privileges on *.* to root@'%' identified by 'root';   授权
     9.3 flush privileges;
 ```
@@ -297,7 +297,7 @@
     5.3 ssh-add ~/.ssh/id_rsa                                   添加密钥到 ssh-agent
     5.4 登录 GitHub|Gitee 新建 SSH key，把公钥复制过去
         ssh-add -L 或 vim ~/.ssh/id_rsa.pub                      查看公钥
-    5.5 ssh git@github.com                                      验证配置是否成功
+    5.5 ssh -T git@github.com                                   验证配置是否成功
 ```
 ---
 ## Redis
