@@ -92,50 +92,70 @@ rm -rf /var/lib/docker
 ```
 ---
 ## [常用命令](https://docs.docker.com/engine/reference/commandline/docker/)
+- Docker
 ```
-service docker start
-service docker status
-
-docker version [OPTIONS]                                        显示版本信息
-docker info [OPTIONS]                                           显示系统信息
+docker version [OPTIONS]                                        显示 Docker 版本信息
+docker info [OPTIONS]                                           显示 Docker system-wide 信息
+docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   显示 Docker low-level 信息
+    # 显示所有 container IP
+    docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+```
+- image
+```
 docker images [OPTIONS] [REPOSITORY[:TAG]]                      列出 iamges
 docker search [OPTIONS] TERM                                    在 Docker Hub 搜索 images
-docker pull [OPTIONS] NAME[:TAG|@DIGEST]                        拉取 image 或 repository
-docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                   创建新的 container 并运行 command
-    -d                                                          后台运行
-    -v                                                          绑定挂载 volume，$PWD 当前目录
-    --volumes-from                                              从指定 container 挂载 volumes
-    -p                                                          指定端口映射
-    -P                                                          暴露容器所有端口到宿主随机端口
-    --restart                                                   总是启动
-    --privileged                                                扩展权限
-    --rm                                                        当容器退出时自动删除
-    --link                                                      连接其它容器
-    --net                                                       将容器连接到网络
-docker ps [OPTIONS]                                             列出 containers
-docker exec [OPTIONS] CONTAINER COMMAND [ARG...]                在 container 中运行 command
-    -it CONTAINER bash
-docker start|stop|restart [OPTIONS] CONTAINER [CONTAINER...]    启动|停止|重启 containers
-docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                创建 container
-docker container                                                管理 containers
-    update [OPTIONS] CONTAINER [CONTAINER...]                   修改一个或多个 containers 的配置
-docker rm [OPTIONS] CONTAINER [CONTAINER...]                    移除 containers
+docker pull [OPTIONS] NAME[:TAG|@DIGEST]                        从 registry 下载 image
+docker push [OPTIONS] NAME[:TAG]                                将 image 上载 registry
 docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
-docker port CONTAINER [PRIVATE_PORT[/PROTO]]                    列出容器的端口映射或特定映射
-docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   返回 Docker 对象的 low-level 信息
-    # 显示所有容器 IP
-    docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+```
+- container
+```
+docker ps [OPTIONS]                                             列出 containers
+docker container ls [OPTIONS]                                   列出 containers
+docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                创建新 container
+docker update [OPTIONS] CONTAINER [CONTAINER...]                更新 container 配置
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                   从 image 创建并运行新 container
+    -i, --interactive                                           即使没有 attached，也要保持 STDIN 打开
+    -t, --tty                                                   分配一个伪 TTY
+    -d, --detach                                                在后台运行 container 并打印 ID
+    -v, --volume                                                挂载 volume，$PWD 当前目录
+    --volumes-from                                              从指定 container 挂载 volumes
+    -p, --publish                                               将 container 的端口发布到主机
+    -e, --env                                                   设置环境变量
+    --restart                                                   container 退出时要应用的自动重启策略
+        no                                                      默认，不自动重启
+        on-failure[:max-retries]                                退出状态非0则自动重启，即遇到错误时自动重启
+        unless-stopped                                          总是自动重启，除非状态为 Exited
+        always                                                  总是自动重启
+    --privileged                                                扩展权限，获得完整的 container 功能
+    --rm                                                        退出时自动移除 container
+    --link                                                      将 link 添加到另一个 container
+    --net, --network                                            将 container 连接到网络
+    --ip                                                        IPv4 地址
+    --ip6		                                                IPv6 地址
+docker start [OPTIONS] CONTAINER [CONTAINER...]                 启动 containers
+docker stop [OPTIONS] CONTAINER [CONTAINER...]                  停止 containers
+docker restart [OPTIONS] CONTAINER [CONTAINER...]               重启 containers
+docker rm [OPTIONS] CONTAINER [CONTAINER...]                    移除 containers
 docker kill [OPTIONS] CONTAINER [CONTAINER...]                  杀掉 containers
-docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-              在 container 和本地文件系统之间 复制文件或文件夹
+docker exec [OPTIONS] CONTAINER COMMAND [ARG...]                在运行的 container 中执行命令
+    -it CONTAINER bash
+docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-              在 container 和本地文件系统之间复制文件或文件夹
 docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]            根据 container 的更改创建 image
     -m                                                          提交消息
-docker push [OPTIONS] NAME[:TAG]                                将 image 或 repository 推到 registry
+docker logs [OPTIONS] CONTAINER                                 获取 container 日志
+docker port CONTAINER [PRIVATE_PORT[/PROTO]]                    列出 container 的端口映射或特定映射
+docker container inspect                                        显示 containers 详细信息
+
 docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]                创建与 SOURCE_IMAGE 关联的 TARGET_IMAGE[:TAG]
 docker login [OPTIONS] [SERVER]                                 登录
-docker network                                                  管理网络
-    create                                                      创建网络
 docker build [OPTIONS] PATH | URL | -                           从 Dockerfile 构建 image
     -t                                                          命名 'name:tag'
+```
+- network
+```
+docker network create [OPTIONS] NETWORK                         创建网络
+    -- subnet                                                   代表网段的 CIDR 格式的子网
 ```
 ---
 ## [Docker 网络](https://docs.docker.com/network/)
