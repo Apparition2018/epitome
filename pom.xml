@@ -477,11 +477,6 @@
             <version>${truelicense.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>10.1.8</version>
-        </dependency>
     </dependencies>
 
     <repositories>

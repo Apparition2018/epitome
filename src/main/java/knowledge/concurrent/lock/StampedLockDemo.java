@@ -11,7 +11,7 @@ import java.util.concurrent.locks.StampedLock;
  * StampedLock 为了解决读操作很多，写操作很少的情况下，可能长时间存在读锁而无法获取写锁的线程饥饿问题
  * StampedLock 支持读写锁互相转换；ReentrantReadWriteLock 写锁可以降级成读锁，但反过来则不行
  * </pre>
- * StampedLock 有三种模式：
+ * 三种模式：
  * <pre>
  * 1 writing：独占写锁
  * 2 reading：悲观读锁，与独占写互斥，与乐观读共享
@@ -33,9 +33,7 @@ public class StampedLockDemo {
     private final StampedLock lock = new StampedLock();
     private final Map<Integer, String> idMap = new HashMap<>();
 
-    /**
-     * 独占写
-     */
+    /** 独占写 */
     public void write(Integer key, String value) {
         long stamp = lock.writeLock();
         try {
@@ -45,9 +43,7 @@ public class StampedLockDemo {
         }
     }
 
-    /**
-     * 乐观读
-     */
+    /** 乐观读 */
     public String optimisticRead(Integer key) {
         // 1. 尝试通过乐观读模式读取数据，非阻塞
         long stamp = lock.tryOptimisticRead();
@@ -67,9 +63,7 @@ public class StampedLockDemo {
         return currentValue;
     }
 
-    /**
-     * 悲观读
-     */
+    /** 悲观读 */
     public String read(Integer key) {
         long stamp = lock.readLock();
         String currentValue;
@@ -81,9 +75,7 @@ public class StampedLockDemo {
         return currentValue;
     }
 
-    /**
-     * 如果数据不存在则从数据库读取添加到 map 中，锁升级运用
-     */
+    /** 如果数据不存在则从数据库读取添加到 map 中，锁升级运用 */
     public String writeIfNotExist(Integer key, String value) {
         // 获取读锁，也可以直接调用 get 方法使用乐观读
         long stamp = lock.readLock();
