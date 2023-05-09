@@ -18,62 +18,62 @@
 ## Docker Desktop
 ### 安装
 1. [安装前创建目录链接](https://www.zhihu.com/question/359332823/answer/923520420)
-- 以管理员身份运行 CMD
-```bash
-mklink /j "C:\Program Files\Docker" "D:\Docker\Docker"
-mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
-mklink /j "C:\Users\Administrator\AppData\Local\Docker" "D:\Docker\Local"
-mklink /j "C:\Users\Administrator\AppData\Roaming\Docker" "D:\Docker\Roaming\Docker"
-mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roaming\Docker Desktop"
-```
+    - 以管理员身份运行 CMD
+    ```bash
+    mklink /j "C:\Program Files\Docker" "D:\Docker\Docker"
+    mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
+    mklink /j "C:\Users\Administrator\AppData\Local\Docker" "D:\Docker\Local"
+    mklink /j "C:\Users\Administrator\AppData\Roaming\Docker" "D:\Docker\Roaming\Docker"
+    mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roaming\Docker Desktop"
+    ```
 2. 下载地址：https://www.docker.com/products/docker-desktop
    或：https://hub.docker.com/editions/community/docker-ce-desktop-windows
 3. 下载并安装 [WSL2](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
 4. Settings → Docker Engine
-```
-"registry-mirrors": [
-  "https://docker-cn.com",
-  "http://hub-mirror.c.163.com",
-  "https://docker.mirrors.ustc.edu.cn"
-],
-```
+    ```
+    "registry-mirrors": [
+      "https://docker-cn.com",
+      "http://hub-mirror.c.163.com",
+      "https://docker.mirrors.ustc.edu.cn"
+    ],
+    ```
 5. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
 6. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
-```
-[wsl2]
-memory=2GB
-swap=4GB
-localhostForwarding=true
-```
+    ```
+    [wsl2]
+    memory=2GB
+    swap=4GB
+    localhostForwarding=true
+    ```
 ### 增加端口映射
 1. docker ps -a → 记下 CONTAINER ID
 2. docker inspect \<CONTAINER ID>|grep Id，查看容器的 Id
 3. Win + E → \\wsl.localhost\docker-desktop-data\data\docker\containers\Id
 4. 修改 hostconfig.json
-```
-"PortBindings": {
-	"8080/tcp": [
-		{
-			"HostIp": "",
-			"HostPort": "8088"
-		}
-	]
-},
-```
+    ```
+    "PortBindings": {
+    	"8080/tcp": [
+    		{
+    			"HostIp": "",
+    			"HostPort": "8088"
+    		}
+    	]
+    },
+    ```
 5. 修改 config.v2.json
-```
-"ExposedPorts": {
-	"8080/tcp": {}
-},
-"Ports": {
-	"8080/tcp": [
-		{
-			"HostIp": "0.0.0.0",
-			"HostPort": "8088"
-		}
-	]
-},
-```
+    ```
+    "ExposedPorts": {
+    	"8080/tcp": {}
+    },
+    "Ports": {
+    	"8080/tcp": [
+    		{
+    			"HostIp": "0.0.0.0",
+    			"HostPort": "8088"
+    		}
+    	]
+    },
+    ```
 ---
 ## [Linux 安装 Docker](https://docs.docker.com/desktop/install/linux-install/)
 ```bash
@@ -96,7 +96,7 @@ rm -rf /var/lib/docker
 ```
 docker version [OPTIONS]                                        显示 Docker 版本信息
 docker info [OPTIONS]                                           显示 Docker system-wide 信息
-docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   显示 Docker low-level 信息
+docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   显示 Docker 对象的 low-level 信息
     # 显示所有 container IP
     docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
 ```
@@ -107,14 +107,14 @@ docker search [OPTIONS] TERM                                    在 Docker Hub �
 docker pull [OPTIONS] NAME[:TAG|@DIGEST]                        从 registry 下载 image
 docker push [OPTIONS] NAME[:TAG]                                将 image 上载 registry
 docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
+docker build [OPTIONS] PATH | URL | -                           从 Dockerfile 构建 image
+    -t, --tag                                                   名字和标签，name:tag 格式
 ```
 - container
 ```
-docker ps [OPTIONS]                                             列出 containers
-docker container ls [OPTIONS]                                   列出 containers
-docker create [OPTIONS] IMAGE [COMMAND] [ARG...]                创建新 container
-docker update [OPTIONS] CONTAINER [CONTAINER...]                更新 container 配置
-docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                   从 image 创建并运行新 container
+docker container create [OPTIONS] IMAGE [COMMAND] [ARG...]      创建新 container
+docker container update [OPTIONS] CONTAINER [CONTAINER...]      更新 container 配置
+docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]         从 image 创建并运行新 container
     -i, --interactive                                           即使没有 attached，也要保持 STDIN 打开
     -t, --tty                                                   分配一个伪 TTY
     -d, --detach                                                在后台运行 container 并打印 ID
@@ -133,24 +133,21 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]                   从 image 创建
     --net, --network                                            将 container 连接到网络
     --ip                                                        IPv4 地址
     --ip6		                                                IPv6 地址
-docker start [OPTIONS] CONTAINER [CONTAINER...]                 启动 containers
-docker stop [OPTIONS] CONTAINER [CONTAINER...]                  停止 containers
-docker restart [OPTIONS] CONTAINER [CONTAINER...]               重启 containers
-docker rm [OPTIONS] CONTAINER [CONTAINER...]                    移除 containers
-docker kill [OPTIONS] CONTAINER [CONTAINER...]                  杀掉 containers
-docker exec [OPTIONS] CONTAINER COMMAND [ARG...]                在运行的 container 中执行命令
+docker ps [OPTIONS]                                             列出 containers
+docker container ls [OPTIONS]                                   列出 containers
+docker container start [OPTIONS] CONTAINER [CONTAINER...]       启动 containers
+docker container stop [OPTIONS] CONTAINER [CONTAINER...]        停止 containers
+docker container restart [OPTIONS] CONTAINER [CONTAINER...]     重启 containers
+docker container rm [OPTIONS] CONTAINER [CONTAINER...]          移除 containers
+docker container kill [OPTIONS] CONTAINER [CONTAINER...]        杀掉 containers
+docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]      在运行的 container 中执行命令
     -it CONTAINER bash
-docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-              在 container 和本地文件系统之间复制文件或文件夹
-docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]            根据 container 的更改创建 image
+docker container cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-    在 container 和本地文件系统之间复制文件或文件夹
+docker container commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]  根据 container 的更改创建 image
     -m                                                          提交消息
-docker logs [OPTIONS] CONTAINER                                 获取 container 日志
-docker port CONTAINER [PRIVATE_PORT[/PROTO]]                    列出 container 的端口映射或特定映射
-docker container inspect                                        显示 containers 详细信息
-
-docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]                创建与 SOURCE_IMAGE 关联的 TARGET_IMAGE[:TAG]
-docker login [OPTIONS] [SERVER]                                 登录
-docker build [OPTIONS] PATH | URL | -                           从 Dockerfile 构建 image
-    -t                                                          命名 'name:tag'
+docker container logs [OPTIONS] CONTAINER                       获取 container 日志
+docker container port CONTAINER [PRIVATE_PORT[/PROTO]]          列出 container 的端口映射或特定映射
+docker container inspect [OPTIONS] CONTAINER [CONTAINER...]     显示 containers 详细信息
 ```
 - network
 ```
@@ -164,38 +161,38 @@ docker network create [OPTIONS] NETWORK                         创建网络
 ---
 ## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
 1. Commands
-```
-FROM                                               初始化构建并为后续指令设置基本 image
-RUN                                                执行命令，docker build 时运行
-    shell 格式    RUN ./test.php dev offine
-    exec 格式     RUN ["./test.php", "dev", "offine"]
-CMD                                                执行命令，docker run 时运行
-ENTRYPOINT                                         执行命令，不会被 docker run 的参数指定的指令所覆盖，而且参数会传送给指定的程序
-ADD                                                添加文件，gzip 和 bzip2 会自动解压
-COPY                                               复制文件
-ENV                                                设置环境变量
-ARG                                                设置环境变量，仅在 Dockerfile 内有效
-    docker build --build-arg
-MAINTAINER                                         维护者
-USER                                               用户
-VOLUME                                             VOLUME
-WORKDIR                                            工作目录
-EXPOSE                                             端口
-```
+    ```
+    FROM                                            初始化构建并为后续指令设置基本 image
+    RUN                                             执行命令，docker build 时运行
+        shell 格式    RUN ./test.php dev offine
+        exec 格式     RUN ["./test.php", "dev", "offine"]
+    CMD                                             执行命令，docker run 时运行
+    ENTRYPOINT                                      执行命令，不会被 docker run 的参数指定的指令所覆盖，而且参数会传送给指定的程序
+    ADD                                             添加文件，gzip 和 bzip2 会自动解压
+    COPY                                            复制文件
+    ENV                                             设置环境变量
+    ARG                                             设置环境变量，仅在 Dockerfile 内有效
+        docker build --build-arg
+    MAINTAINER                                      维护者
+    USER                                            用户
+    VOLUME                                          VOLUME
+    WORKDIR                                         工作目录
+    EXPOSE                                          端口
+    ```
 2. 镜像分层：Dockerfile 中的每一行都产生一个新层
    ![镜像分层](https://img2.mukewang.com/608d9d330001dd2819201080-500-284.jpg)
 3. Dockerfile Demo
     1. 编写 Dockerfile 文件
-    ```
-    FROM ubuntu:latest
-    MAINTAINER ljh
-    RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-    RUN apt-get update
-    RUN apt-get install -y nginx
-    COPY index.html /var/www/html
-    ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
-    EXPOSE 80
-    ```
+        ```
+        FROM ubuntu:latest
+        MAINTAINER ljh
+        RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+        RUN apt-get update
+        RUN apt-get install -y nginx
+        COPY index.html /var/www/html
+        ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
+        EXPOSE 80
+        ```
     2. `docker build -t hello_docker`
     3. `docker run hello_docker`
     4. localhost:80
@@ -205,29 +202,29 @@ EXPOSE                                             端口
     1. 定义应用程序依赖项
     2. 创建 Dockerfile
     3. [在 Compose 文件中定义服务](https://docs.docker.com/compose/compose-file/)
-    ```
-    build                           构建时的配置选项，可直接指定一个文件夹
-    image                           指定镜像
-    networks                        所属网路
-    depends_on                      服务之间的依赖关系
-    ```
+        ```
+        build                           构建时的配置选项，可直接指定一个文件夹
+        image                           指定镜像
+        networks                        所属网路
+        depends_on                      服务之间的依赖关系
+        ```
 2. [docker-compose CLI](https://docs.docker.com/compose/reference/)
-```
-build                               构建或重构 services
-config                              验证并查看 Compose 文件
-download                            停止和删除 containers, networks, images, and volumes
-exec                                在正在运行的 container 中执行命令
-logs                                查看 containers 输出
-ps                                  列出 containers
-rm                                  移除停止的 containers
-stop                                停止 services
-up -d                               创建并启动 containers
-```
+    ```
+    build                               构建或重构 services
+    config                              验证并查看 Compose 文件
+    download                            停止和删除 containers, networks, images, and volumes
+    exec                                在正在运行的 container 中执行命令
+    logs                                查看 containers 输出
+    ps                                  列出 containers
+    rm                                  移除停止的 containers
+    stop                                停止 services
+    up -d                               创建并启动 containers
+    ```
 3. [Sample apps with Compose](https://docs.docker.com/compose/samples-for-compose/)
 4. [环境变量](https://docs.docker.com/compose/environment-variables/)
 ---
 ## 安装软件
-1. [MySQL](https://hub.docker.com/_/mysql)
+### [MySQL](https://hub.docker.com/_/mysql)
 - [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
 docker run -d --name mysql -p 3306:3306 mysql
@@ -247,7 +244,7 @@ docker exec -it mysql mysql -uroot -proot
      grant all privileges on `ry-vue`.* to ljh@172.17.0.1 with grant option;
      flush privileges;
 ```
-2. [SQL Server](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-docker)
+### [SQL Server](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-docker)
 ```
 docker pull mcr.microsoft.com/mssql/server:2019-latest
 
@@ -257,7 +254,7 @@ docker run -d --name mssql \
 -p 1433:1433 \
 mcr.microsoft.com/mssql/server:2019-latest
 ```
-3. [InfluxDB](https://hub.docker.com/_/influxdb)
+### [InfluxDB](https://hub.docker.com/_/influxdb)
 - [InfluxDBException](https://community.influxdata.com/t/getting-started-with-influxdb-docker-401-unauthorized/16989/3)
 - [influx v1 auth](https://docs.influxdata.com/influxdb/v2.0/reference/cli/influx/v1/auth/)
 ```bash
@@ -275,7 +272,7 @@ influx bucket list                                    # 记下 ID
 influx v1 auth create --read-bucket 303f1c88eaa4473a --write-bucket 303f1c88eaa4473a --username admin
 influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --default
 ```
-4. [Redis](https://hub.docker.com/_/redis)
+### [Redis](https://hub.docker.com/_/redis)
 - [Docker 部署 Redis](https://blog.csdn.net/qq_41316955/article/details/108381923)
 - [redis.conf](https://redis.io/docs/manual/config/) 选择对应版本
     - `# bind 127.0.0.1 -::1` 或 `bind 0.0.0.0`x`x`
@@ -301,7 +298,7 @@ info replication
 docker exec -it redis-replica redis-cli
 info replication
 ```
-5. [MongoDB](https://hub.docker.com/_/mongo)
+### [MongoDB](https://hub.docker.com/_/mongo)
 - [MongoDB 用户角色配置](https://www.cnblogs.com/out-of-memory/p/6810411.html)
 ```bash
 docker run -d --name mongo mongo:4.4.18
@@ -335,14 +332,14 @@ db.createUser({user: "ljh", pwd: "123456", roles: [{role: "readWrite", db: "spri
 exit
 mongo -uljh -p123456 --authenticationDatabse=spring_data
 ```
-6. [Tomcat](https://hub.docker.com/_/tomcat)
+### [Tomcat](https://hub.docker.com/_/tomcat)
 - [Docker 安装 tomcat 并挂载目录](https://www.cnblogs.com/liyiran/p/12544715.html)
 ```bash
 docker run -d --name tomcat -p 8080:8080 \
 -v D:/Docker/Data/Tomcat/webapps:/usr/local/tomcat/webapps \
 tomcat
 ```
-7. [Nginx](https://hub.docker.com/_/nginx)
+### [Nginx](https://hub.docker.com/_/nginx)
 ```bash
 docker run -d --name nginx -p 80:80 --restart=unless-stopped \
 -v D:/Docker/Data/Nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
@@ -351,7 +348,7 @@ docker run -d --name nginx -p 80:80 --restart=unless-stopped \
 -v D:/Docker/Data/Nginx/html:/usr/share/nginx/html \
 nginx
 ```
-8. [Zookeeper](https://hub.docker.com/_/zookeeper)
+### [Zookeeper](https://hub.docker.com/_/zookeeper)
 - [Docker 实战之 Zookeeper 集群](https://www.cnblogs.com/idea360/p/12405113.html)
 - @see [docker-compose.yml](compose/zookeeper-cluster/docker-compose.yml)
 ```bash
@@ -374,7 +371,7 @@ docker run -it --rm --name ZookeeperCluster --link zoo1 --link zoo2 --link zoo3 
 ```bash
 docker run -d --name zookeeper -p 2181:2181 --restart=unless-stopped zookeeper
 ```
-9. [RabbitMQ](https://hub.docker.com/_/rabbitmq)
+### [RabbitMQ](https://hub.docker.com/_/rabbitmq)
 - [Win10 Docker 安装 RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash
 docker run -d --name rabbitmq \
@@ -387,7 +384,7 @@ docker exec -it rabbitmq bash
         http://localhost:15672       Username:guest      Password:guest
     rabbitmq-plugins enable rabbitmq_mqtt
 ```
-10. [RocketMQ](https://hub.docker.com/r/rocketmqinc/rocketmq)
+### [RocketMQ](https://hub.docker.com/r/rocketmqinc/rocketmq)
 - [docker-compose 部署 rocketmq](https://blog.csdn.net/oschina_41731918/article/details/123115102)
 - @see [docker-compose.yml](compose/rocketmq/docker-compose.yml)
 ```bash
@@ -395,7 +392,7 @@ docker compose up -d
 
 http://localhost:8180
 ``` 
-11. [MinIO](https://hub.docker.com/r/minio/minio)
+### [MinIO](https://hub.docker.com/r/minio/minio)
 - [MinIO's Docker Implementation](https://docs.min.io/docs/minio-docker-quickstart-guide.html)
 ```bash
 docker run -d --name minio -p 9000:9000 -p 9001:9001 \
@@ -407,7 +404,7 @@ minio/minio server /data --console-address ":9001"
 
 http://localhost:9001/login
 ```
-12. [Nacos](https://hub.docker.com/r/nacos/nacos-server)
+### [Nacos](https://hub.docker.com/r/nacos/nacos-server)
 - [Docker 部署 Nacos](https://www.cnblogs.com/serendipity-fzx/articles/15400618.html)
 ```bash
 docker run -d --name nacos -p 8848:8848 -e MODE=standalone nacos/nacos-server
@@ -422,16 +419,16 @@ docker run -d --name nacos -p 8848:8848 -p 9848:9848 -p 9849:9849 \
 -e MYSQL_SERVICE_DB_NAME=ry-config \
 nacos/nacos-server
 ```
-13. [Sentinel](https://hub.docker.com/r/bladex/sentinel-dashboard)
+### [Sentinel](https://hub.docker.com/r/bladex/sentinel-dashboard)
 ```bash
 docker run -d --name sentinel -p 8858:8858 bladex/sentinel-dashboard
 ```
-14. [Jenkins](https://hub.docker.com/r/jenkins/jenkins)
+### [Jenkins](https://hub.docker.com/r/jenkins/jenkins)
 - [Docker 快速安装 Jenkins 完美教程](https://www.cnblogs.com/fuzongle/p/12834080.html)
 ```bash
 [docker network create --subnet=172.11.0.0/16 jenkins_net]
 
-docker run -d --name jenkins -p 8081:8080 -p 50000:50000 --restart=on-failure \
+docker run -d --name jenkins -p 8081:8080 -p 50000:50000 --restart=unless-stopped \
 [--net jenkins_net --ip 172.11.0.2 \]
 -v D:/Docker/Data/Jenkins:/var/jenkins_home \
 [-v /etc/localtime:/etc/localtime \]
@@ -443,7 +440,7 @@ jenkins/jenkins:latest-jdk8
 
 http://localhost:8081
 ```
-15. [Ubuntu](https://hub.docker.com/_/ubuntu)
+### [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash
 docker run -itd --name ubuntu -p 22:22 --privileged ubuntu
 

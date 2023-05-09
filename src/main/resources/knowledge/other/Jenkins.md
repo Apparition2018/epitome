@@ -41,18 +41,8 @@
     1. `vim /etc/ssh/sshd_config`：`PermitRootLogin yes`
     2. 启动/重启 sshd：`/etc/init.d/ssh start` 等同于 `service start ssh`
 5. `ssh root@127.0.0.1 -p 22`
-6. IDEA 配置 Deployment
-    1. Tools → Deployment → Configuration
-    2. &divide; → SFTP → New server name：test → SSH configuration
-        ```
-        Host: 127.0.0.1
-        Username: root
-        Authenication type: Password
-        ```
-    3. Mappings → Local Path / Deployment path
-    4. Tools → Deployment → Sync With Local…
-7. `apt install -y openjdk-8-jdk`
-8. `apt install -y mysql-server-8.0`
+6. `apt install -y openjdk-8-jdk`
+7. `apt install -y mysql-server-8.0`
     ```bash
     service mysql start
     mysql -uroot -p
@@ -60,9 +50,9 @@
     grant all privileges on *.* to ljh@localhost with grant option;
     flush privileges;
     ```
-9. `apt install -y git`，配置 @see CentOS.md#Git 4 和 5
-10. @see CentOS.md#Maven
-11. @see CentOS.md#Tomcat
+8. `apt install -y git`，配置 @see CentOS.md#Git 4 和 5
+9. @see CentOS.md#Maven
+10. @see CentOS.md#Tomcat
 ---
 ## 新建节点
 - 系统管理 → 节点管理 →  New Node → 名称 → Create

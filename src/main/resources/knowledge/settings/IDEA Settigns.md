@@ -173,11 +173,24 @@
     2. Output directory
     3. 把 Available Elements 中需要用到的 jar Put into /WEB-INF/lib，特别是 javax.servlet-api
 ---
-## Error running 'XxxApp': Command line is too long
+## Tools
+### Deployment
+    1. Tools → Deployment → Configuration
+    2. + → SFTP → New server name：test → SSH configuration
+        Host: 43.136.102.115
+        Username: root
+        Authenication type: Password
+        password: Cesc123!
+    3. Mappings
+        Local path: D:\OpenCloudOS
+        Deployment path: /home
+    4. Tools → Deployment → Sync With Local…
+---
+## Other
+### Error running 'XxxApp': Command line is too long
     1. .idea/workspace.xml
     2. 在 <component name="PropertiesComponent" /> 里添加
         <property name="dynamic.classpath" value="true" /> 或 "dynamic.classpath": "true"
----
-## 一个窗口同时打开两个项目
+### 一个窗口同时打开两个项目
     1. Project Structure → Modules → + → Import Module
 ---

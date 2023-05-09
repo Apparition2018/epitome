@@ -30,9 +30,7 @@ public class JdbcTemplateDemo {
         scoreDao = applicationContext.getBean("scoreDao", ScoreDao.class);
     }
 
-    /**
-     * 数据源
-     */
+    /** 数据源 */
     @Test
     public void testConnection() throws SQLException {
         DataSource dataSource = applicationContext.getBean("dbcpDataSource", DataSource.class);
@@ -54,6 +52,7 @@ public class JdbcTemplateDemo {
         pe(scoreDao.findById2(9));
         pe(scoreDao.findById3(9));
         pe(scoreDao.findById4(9));
+        pe(scoreDao.findMapById(9));
     }
 
     @Test

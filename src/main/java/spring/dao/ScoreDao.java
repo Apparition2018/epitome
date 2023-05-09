@@ -42,18 +42,14 @@ public class ScoreDao {
         jdbcTemplate.update(sql, args);
     }
 
-    /**
-     * 通过 BeanPropertyRowMapper 查询
-     */
+    /** 通过 BeanPropertyRowMapper 查询 */
     public Score findById(int id) {
         String sql = "SELECT id, name, course, score FROM score WHERE id=?";
         Object[] args = {id};
         return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Score.class), args);
     }
 
-    /**
-     * 通过自定义 RowMapper 查询
-     */
+    /** 通过自定义 RowMapper 查询 */
     public Score findById2(int id) {
         String sql = "SELECT id, name, course, score FROM score WHERE id=?";
         Object[] args = {id};
@@ -61,22 +57,23 @@ public class ScoreDao {
         return jdbcTemplate.queryForObject(sql, new ScoreRowMapper(), args);
     }
 
-    /**
-     * 通过 NamedParameterJdbcTemplate 查询，传参是 Map
-     */
+    /** 通过 NamedParameterJdbcTemplate 查询，传参是 Map */
     public Score findById3(int id) {
         String sql = "SELECT id, name, course, score FROM score WHERE id=:id";
         Map<String, Object> paramMap = Map.of("id", id);
         return namedParameterJdbcTemplate.queryForObject(sql, paramMap, new BeanPropertyRowMapper<>(Score.class));
     }
 
-    /**
-     * 通过 NamedParameterJdbcTemplate 查询，传参是 BeanPropertySqlParameterSource
-     */
+    /** 通过 NamedParameterJdbcTemplate 查询，传参是 BeanPropertySqlParameterSource */
     public Score findById4(int id) {
         String sql = "SELECT id, name, course, score FROM score WHERE id=:id";
         Score score = new Score().setId(id);
         return namedParameterJdbcTemplate.queryForObject(sql, new BeanPropertySqlParameterSource(score), new BeanPropertyRowMapper<>(Score.class));
+    }
+
+    public Map<String, Object> findMapById(int id) {
+        String sql = "SELECT id, name, course, score FROM score WHERE id=?";
+        return jdbcTemplate.queryForMap(sql, id);
     }
 
     public List<Score> findAll() {
@@ -91,9 +88,7 @@ public class ScoreDao {
     }
 
 
-    /**
-     * @see <a href="https://blog.csdn.net/qq_38737586/article/details/110595655">使用 SpringJdbcTemplate 进行批量操作</a>
-     */
+    /** @see <a href="https://blog.csdn.net/qq_38737586/article/details/110595655">使用 SpringJdbcTemplate 进行批量操作</a> */
     public void batchUpdate(List<Score> scoreList) {
         if (scoreList.isEmpty()) return;
         DataSource dataSource = jdbcTemplate.getDataSource();
@@ -113,9 +108,7 @@ public class ScoreDao {
         jdbcTemplate.update(sql, args);
     }
 
-    /**
-     * 告诉 JdbcTemplate 如何处理 ResultSet
-     */
+    /** 告诉 JdbcTemplate 如何处理 ResultSet */
     private static class ScoreRowMapper implements RowMapper<Score> {
         @Override
         public Score mapRow(ResultSet resultSet, int index) throws SQLException {
