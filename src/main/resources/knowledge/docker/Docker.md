@@ -4,8 +4,7 @@
 ## Reference
 1. [Docker overview](https://docs.docker.com/get-started/overview/)
 2. [Docker - Learn | Microsoft Docs](https://docs.microsoft.com/zh-CN/learn/modules/intro-to-docker-containers/)
-3. [Windows 安装 | 菜鸟教程](https://www.runoob.com/docker/windows-docker-install.html)
-4. [Docker Desktop 快速上手](https://xunmi.blog.csdn.net/article/details/108641842)
+3. [搭建和使用 Docker](https://cloud.tencent.com/document/product/213/46000)
 ---
 ## 课程
 1. [第一个docker化的java应用-慕课网](https://www.imooc.com/learn/824)
@@ -15,7 +14,7 @@
 ![VM vs Docker](https://img3.mukewang.com/608d8eeb0001298319201080-500-284.jpg)
 
 ---
-## Docker Desktop
+## [Windows 安装 Docker Desktop](https://docs.docker.com/desktop/install/windows-install/)
 ### 安装
 1. [安装前创建目录链接](https://www.zhihu.com/question/359332823/answer/923520420)
     - 以管理员身份运行 CMD
@@ -75,23 +74,106 @@
     },
     ```
 ---
-## [Linux 安装 Docker](https://docs.docker.com/desktop/install/linux-install/)
+## [Linux 安装 Docker](https://docs.docker.com/engine/install/)
 ```bash
-# 安装 docker 三种方式
-apt-get install -y docker.io
-curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
-curl -sSL https://get.daocloud.io/docker | sh
-# 安装 docker-compose：https://docs.docker.com/compose/install/
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-# 卸载 docker
-apt-get autoremove docker docker-ce docker-engine docker.io containerd runc
-dpkg -l | grep docker
-apt-get autoremove docker-ce-*
-rm -rf /etc/systemd/system/docker.service.d
-rm -rf /var/lib/docker
+# 卸载旧版本（存储在/var/lib/docker/中的 images、container、volumes、networks 不会自动删除）
+sudo yum remove docker docker-client docker-client-latest docker-common \
+docker-latest docker-latest-logrotate docker-logrotate docker-engine
+
+# 安装 Docker Engine 三种方式
+# 1 设置 Docker's repositories 并从中进行安装，以便于安装和升级任务（推荐）
+# 1.1 设置 repository
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+# 1.2 安装 Docker Engine、container 和 Docker Compose
+sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# 2 下载 RPM package 并手动安装，适用于无法访问互联网的情况
+# 2.1 https://download.docker.com/linux/centos/，选择 CentOS 版本，x86_64/stable/Packages/，下载要装的 rpm 文件
+# 2.2 安装 Docker Engine，将下面路径更改为下载的 Docker package 路径
+sudo yum install /**/***.rpm
+# 2.3 升级 Docker Engine，下载新的 package 文件
+sudo yum -y upgrade /**/***.rpm
+# 3 在测试和开发环境下，使用自动化的便利脚本安装
+curl -fsSL https://get.docker.com -o get-docker.sh
+# 了解调用脚本时将运行哪些步骤
+sudo sh ./get-docker.sh --dry-run
+sudo sh get-docker.sh
+
+# 卸载 Docker Engine
+sudo yum remove docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+```
+### [安装后步骤](https://docs.docker.com/engine/install/linux-postinstall/)
+```bash
+# 创建 docker 组
+sudo groupadd docker
+# 将用户添加到 docker 组，然后注销重新登录
+sudo usermod aGdocker $USER
+# 登录到新组
+newgrp docker
+# 验证不是用 sudo 的情况下运行 docker 命令
+docker run hello-world
+# 开机启动
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+# 取消开机启动
+sudo systemctl disable docker.service
+sudo systemctl disable containerd.service
+```
+### [daemon.json](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file)
+1. `vim /etc/docker/daemon.json`
+    ```json5
+    {
+      "registry-mirrors": [
+        // 腾讯云 Docker 镜像
+        "https://mirror.ccs.tencentyun.com"
+      ],
+      // json-file driver: https://docs.docker.com/config/containers/logging/json-file/
+      "log-driver": "json-file",
+      "log-opts": {
+        "max-size": "10m",
+        "max-file": "3"
+      }
+    }
+    ```
+2. `sudo systemctl restart docker`，使更改生效。现有 containers 不使用新 json-file driver
+3. 使用 `--log-driver` 为 docker create 或 docker run 的 container 设置日志驱动
+    - `docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world`
+---
+## [Docker Compose](https://docs.docker.com/compose/)
+- [Sample apps with Compose](https://docs.docker.com/compose/samples-for-compose/)
+- [环境变量](https://docs.docker.com/compose/environment-variables/)
+### [安装场景](https://docs.docker.com/compose/install/)
+1. [安装 Docker Desktop](https://docs.docker.com/desktop/install/linux-install/)，Docker Desktop 包含 Docker Compose、Docker Engine、Docker CLI
+2. 安装 Compose plugin
+    1. [Docker's repository](https://docs.docker.com/compose/install/linux/#install-using-the-repository)
+    2. [手动安装](https://docs.docker.com/compose/install/linux/#install-the-plugin-manually) 
+3. [安装 Compose standalone](https://docs.docker.com/compose/install/other/)
+### [基本步骤](https://docs.docker.com/compose/gettingstarted/)
+1. 定义应用程序依赖项
+2. 创建 Dockerfile
+3. [在 Compose 文件中定义服务](https://docs.docker.com/compose/compose-file/)
+    ```
+    build                           构建时的配置选项，可直接指定一个文件夹
+    image                           指定镜像
+    networks                        所属网路
+    depends_on                      服务之间的依赖关系
+    ```
+### [docker-compose CLI](https://docs.docker.com/compose/reference/)
+```
+build                               构建或重构 services
+config                              验证并查看 Compose 文件
+download                            停止和删除 containers, networks, images, and volumes
+exec                                在正在运行的 container 中执行命令
+logs                                查看 containers 输出
+ps                                  列出 containers
+rm                                  移除停止的 containers
+stop                                停止 services
+up -d                               创建并启动 containers
 ```
 ---
-## [常用命令](https://docs.docker.com/engine/reference/commandline/docker/)
+## [基本命令](https://docs.docker.com/engine/reference/commandline/docker/)
 - Docker
 ```
 docker version [OPTIONS]                                        显示 Docker 版本信息
@@ -99,6 +181,8 @@ docker info [OPTIONS]                                           显示 Docker sy
 docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   显示 Docker 对象的 low-level 信息
     # 显示所有 container IP
     docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+docker login                                                    登录 registry
+docker logout                                                   注销 registry 
 ```
 - image
 ```
@@ -109,6 +193,7 @@ docker push [OPTIONS] NAME[:TAG]                                将 image 上载
 docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
 docker build [OPTIONS] PATH | URL | -                           从 Dockerfile 构建 image
     -t, --tag                                                   名字和标签，name:tag 格式
+docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]                创建 tag
 ```
 - container
 ```
@@ -135,6 +220,7 @@ docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]         从 image 创建
     --ip6		                                                IPv6 地址
 docker ps [OPTIONS]                                             列出 containers
 docker container ls [OPTIONS]                                   列出 containers
+    -a, --all                                                   显示所有 running containers
 docker container start [OPTIONS] CONTAINER [CONTAINER...]       启动 containers
 docker container stop [OPTIONS] CONTAINER [CONTAINER...]        停止 containers
 docker container restart [OPTIONS] CONTAINER [CONTAINER...]     重启 containers
@@ -162,22 +248,20 @@ docker network create [OPTIONS] NETWORK                         创建网络
 ## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
 1. Commands
     ```
-    FROM                                            初始化构建并为后续指令设置基本 image
-    RUN                                             执行命令，docker build 时运行
-        shell 格式    RUN ./test.php dev offine
-        exec 格式     RUN ["./test.php", "dev", "offine"]
-    CMD                                             执行命令，docker run 时运行
-    ENTRYPOINT                                      执行命令，不会被 docker run 的参数指定的指令所覆盖，而且参数会传送给指定的程序
-    ADD                                             添加文件，gzip 和 bzip2 会自动解压
-    COPY                                            复制文件
-    ENV                                             设置环境变量
-    ARG                                             设置环境变量，仅在 Dockerfile 内有效
+    FROM                                    初始化一个新的 build stage，并为后续指令设置 base iamge
+    RUN                                     执行命令，docker build 时执行
+    CMD                                     执行命令，docker run 时执行
+    ENTRYPOINT                              执行命令，不会被 docker run 的参数指定的指令所覆盖，而且参数会传送给指定的程序
+    ADD                                     添加文件，gzip 和 bzip2 会自动解压
+    COPY                                    复制文件
+    ENV                                     设置环境变量
+    ARG                                     设置环境变量，仅在 Dockerfile 内有效
         docker build --build-arg
-    MAINTAINER                                      维护者
-    USER                                            用户
-    VOLUME                                          VOLUME
-    WORKDIR                                         工作目录
-    EXPOSE                                          端口
+    MAINTAINER                              维护者
+    USER                                    用户
+    VOLUME                                  VOLUME
+    WORKDIR                                 工作目录
+    EXPOSE                                  端口
     ```
 2. 镜像分层：Dockerfile 中的每一行都产生一个新层
    ![镜像分层](https://img2.mukewang.com/608d9d330001dd2819201080-500-284.jpg)
@@ -196,32 +280,6 @@ docker network create [OPTIONS] NETWORK                         创建网络
     2. `docker build -t hello_docker`
     3. `docker run hello_docker`
     4. localhost:80
----
-## [Docker Compose](https://docs.docker.com/compose/)
-1. [基本步骤](https://docs.docker.com/compose/gettingstarted/)
-    1. 定义应用程序依赖项
-    2. 创建 Dockerfile
-    3. [在 Compose 文件中定义服务](https://docs.docker.com/compose/compose-file/)
-        ```
-        build                           构建时的配置选项，可直接指定一个文件夹
-        image                           指定镜像
-        networks                        所属网路
-        depends_on                      服务之间的依赖关系
-        ```
-2. [docker-compose CLI](https://docs.docker.com/compose/reference/)
-    ```
-    build                               构建或重构 services
-    config                              验证并查看 Compose 文件
-    download                            停止和删除 containers, networks, images, and volumes
-    exec                                在正在运行的 container 中执行命令
-    logs                                查看 containers 输出
-    ps                                  列出 containers
-    rm                                  移除停止的 containers
-    stop                                停止 services
-    up -d                               创建并启动 containers
-    ```
-3. [Sample apps with Compose](https://docs.docker.com/compose/samples-for-compose/)
-4. [环境变量](https://docs.docker.com/compose/environment-variables/)
 ---
 ## 安装软件
 ### [MySQL](https://hub.docker.com/_/mysql)

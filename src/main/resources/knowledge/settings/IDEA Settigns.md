@@ -191,6 +191,11 @@
     1. .idea/workspace.xml
     2. 在 <component name="PropertiesComponent" /> 里添加
         <property name="dynamic.classpath" value="true" /> 或 "dynamic.classpath": "true"
+### 运行 main 方法或 @Test 避免编译整个项目
+    1. Edit Configurations… → Edit configuration templates…
+    2. Applicatoin/JUnit → Modify options
+        2.1 Java → Do not build before run 勾选
+        2.2 Before Lauch → Add before launch task 勾选 → Build, no error check
 ### 一个窗口同时打开两个项目
     1. Project Structure → Modules → + → Import Module
 ---

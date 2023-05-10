@@ -43,7 +43,7 @@
         -p                          programs                            显示正在使用Socket的程序识别码和程序名称
 ---
 ## 文件系统 (Filesystem)
-    chgrp                           change group                        更改文件组所有权
+    chgrp                           change group                        更改组所有权
     chown                           change ownership                    更改文件所有权
     chmod                           change modes                        更改文件模式/属性/权限，https://mp.weixin.qq.com/s/2OyR1GlQLQcQkbMVQbIRjg
         -R                                                              递归处理
@@ -209,9 +209,11 @@
 ---
 ## 系统管理
     rsh                             remote shell                        登入远端 shell
-    groupadd                                                            创建一个新的工作组，新工作组的信息将被添加到系统文件中
+    groupadd                                                            创建一个新的组
         -r                                                              建立系统账号
-        -g                                                              指定用户所属的群组
+        -g                                                              指定用户所属的组
+    groups                                                              打印用户所在组
+    newgrp                                                              登录到新组
     adduser                                                             新增使用者帐号或更新预设的使用者资料
     su                              switch user                         切换用户
     sudo                            super user do                       以系统管理者的身份执行指令
@@ -252,6 +254,8 @@
         -g                                                              指定用户所属用户组
         -M                                                              不创建 HOME_DIR
     usermod                                                             修改用户
+        -a, --append                                                    将用户添加到组，仅与 -G 一起使用
+        -G, --groups                                                    组列表，用逗号分隔
     userdel                                                             删除用户
         -r                                                              删除用户登入目录以及目录中所有文件
         -f                                                              强制删除用户
