@@ -44,7 +44,6 @@ apt install -y iptables
 apt install -y firewalld                        防火墙，智能化的 iptables 管理服务器
 apt install -y ufw                              防火墙，轻量化配置 iptables
     ufw enable/disable/status
-# net-tools vs iproute2：https://www.cnblogs.com/liyuanhong/p/15960954.html
 apt install -y net-tools                        网络工具
     ifconfig
     netstat

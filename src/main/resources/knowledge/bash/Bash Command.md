@@ -19,28 +19,16 @@
     |                                                                   管道命令
 ---
 ## 进程管理 (Process Management)
-    bg                              background                          在后台运行
-    fg                              foreground                          在前台运行
     ps                              process status                      显示进程状态
         -ef                                                             System V 风格
-            -e                                                          所有程序
+            -e                                                          所有进程
             -f                                                          全格式列表
         axu                                                             BSD 风格
             u                                                           面向用户格式
-    kill                                                                杀死进程
+    top                                                                 显示进程
+        -p                                                              显示指定的进程
+    kill                                                                终止进程
         -9                                                              彻底杀死进程
-    pkill                                                               杀死匹配 pattern 的进程
-    top                                                                 实时显示正在运行的进程
-        -p                                                              实时显示指定的进程
----
-## 联网 (Networking)
-    hostanme                                                            显示系统主机名
-    netstat                                                             显示网络信息和统计信息
-        -t                          tcp                                 显示TCP传输协议的连线状况
-        -u                          udp                                 显示UDP传输协议的连线状况
-        -n                          numeric                             直接使用IP地址，而不通过域名服务器
-        -l                          listening                           显示监控中的服务器的Socket
-        -p                          programs                            显示正在使用Socket的程序识别码和程序名称
 ---
 ## 文件系统 (Filesystem)
     chgrp                           change group                        更改组所有权
@@ -68,6 +56,7 @@
     pwd                             print work directory                打印工作目录
     cd                              change directory                    更改工作目录
     ls                              list                                列出目录内容
+        -l                                                              long listing 格式
     mkdir                           make directory                      创建目录
         -p                          --parents                           创建目录，如需要则创建上层目录
     touch                                                               创建文件和更改文件的访问和修改时间
@@ -195,17 +184,29 @@
     badblocks                                                           检查磁盘装置中损坏的区块
 ---
 ## 网络通信
-    ping                            packet internet grouper             检测主机
-    telnet                          telecommunications network          远端登入
-    ip                                                                  显示或设置网络设备，比 ifconfig 功能强大
-    ifconfig                                                            显示或设置网络设备
-    dig                                                                 显示域的 DNS 信息
-    wget                                                                下载文件
-    tcpdump                                                             倾倒网络传输数据
+    hostname                                                            获取或设置主机名或 NIS 域名
+    ping                            packet internet grouper             像网络主机发送 ICMP ECHO_REQUEST
+    # net-tools vs iproute2：https://www.cnblogs.com/liyuanhong/p/15960954.html
+    ifconfig --help                 ip help
+    ifconfig                        ip link
+    ifconfig -a                     ip addr show
+    route add                       ip route add
+    route del                       ip route del
+    route -n                        ip route show
+    netstat -r                      ip route
+    netstat -i                      ip -s link
+    netstat -g                      ip maddr
+    netstat                         ss
+    netstat                                                             显示网络信息和统计信息
+        -t, --tcp                                                       显示 TCP 传输协议的连线状况
+        -u, --udp                                                       显示 UDP 传输协议的连线状况
+        -n, --numeric                                                   直接使用 IP 地址，而不通过域名服务器
+        -l, --listening                                                 显示监控中的服务器的 Socket
+        -p, --program                                                   显示正在使用 Socket 的程序识别码和程序名称
+    wget                                                                非交互网络下载器
+    telnet                          telecommunications network          远程连接
     ssh                                                                 远程连接
-    talnet                          terminal over network               登入远端主机
-    wall                            writer all                          将讯息传给每一个 mesg 设定为 yes 的上线使用者
-    tty                             teletypewriter                      显示终端机连接标准输入设备的文件名称
+    tty                             teletypewriter                      打印连接到标准输入的终端的文件名
 ---
 ## 系统管理
     rsh                             remote shell                        登入远端 shell

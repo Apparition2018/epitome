@@ -1,61 +1,50 @@
-# CentOS
+# CentOS 6.8
 
 ---
 ## 问题
 1. [在 VMware 上安装 CentOS6.8](https://www.cnblogs.com/moranlei/p/9333184.html)
-2. [centos磁盘安装与磁盘分区方案详解](https://www.cnblogs.com/sunmoonp/p/10968359.html)
-3. [没有足够内存自动启用kdump](http://www.360doc.com/content/20/0415/23/67357512_906311206.shtml)
-4. [CentOS6.8联网设置](https://blog.csdn.net/Catdingwt/article/details/79585929)
-5. [SSH登录：WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!](https://blog.csdn.net/xlgen157387/article/details/52669709)
-6. [CentOS6 YUM 源失效问题解决办法](https://www.cnblogs.com/binbingg/p/14082610.html)
+2. [VMware 没有足够内存自动启用 kdump](http://www.360doc.com/content/20/0415/23/67357512_906311206.shtml)
+3. [CentOS 磁盘安装与磁盘分区方案详解](https://www.cnblogs.com/sunmoonp/p/10968359.html)
+4. [CentOS6.8 联网设置](https://blog.csdn.net/Catdingwt/article/details/79585929)
 ---
 ## Partition
-    1. /boot：   Linux 系统启动有关的程序，256mb
-    2. /home：   用户目录，5120mb
-    3. swap：    虚拟内存，物理内存的1~2倍
-    4. /：       系统根目录，剩余空间
+| 分区    | 作用              | 空间       |
+|-------|-----------------|----------|
+| /boot | Linux 系统启动有关的程序 | 256mb    |
+| /home | 用户目录            | 5120bm   |
+| swap  | 虚拟内存            | 物理内存1~2倍 |
+| /     | 系统根目录           | 剩余空间     |
 ---
-## Basic Info
-    1. host: 192.168.58.129
-    2. user: ljh
-    3. password: 123456
----
-## Sign in
-    ssh ljh@192.168.58.129
-    123456
----
-## Common Commands
+## 安装后执行命令
     su
     ip addr
     vi /etc/sysconfig/network-scripts/ifcfg-eth0; ONBOOT=yes;
     vi ~/.ssh/known_hosts
 ---
 ## JDK
-1. [Linux 安装 JDK8 (rpm 方式)](https://www.cnblogs.com/myibm/p/9232744.html)
-2. [定位 JDK 安装路径](https://www.cnblogs.com/baojun/p/10832624.html)
-```
-1. rpm -qa|grep XXX             yum list installed|grep XXX
-   rpm -e XXX                   yum remove XXX
-   wget XXX.rpm                 yum search java|grep -i --color XXX
-   https://www.oracle.com/java/technologies/downloads/archive/
-   rpm -ivh XXX.rpm             yum install XXX
+1. [downloads](https://www.oracle.com/java/technologies/downloads/archive/) 并安装
+    ```
+    rpm -qa|grep xxx    yum list installed|grep xxx
+    rpm -e xxx          yum remove xxx
+    wget xxx.rpm        yum search java|grep -i --color xxx     wget xxx.tar.gz
+    rpm -ivh xxx.rpm    yum install xxx                         tar -zxvf xxx.tar.gz
+    ```
 2. 添加环境变量
-    2.1 which java
-    2.2 ls -l /usr/bin/java
-    2.3 ls -l /etc/alternatives/java
-    2.4 vim /etc/profile
-        export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_281-amd64
+    - `which java` → `ls -l /usr/bin/java` → `ls -l /etc/alternatives/java`
+    - `vim /etc/profile` → `source /etc/profile` 或 `. /etc/profile`
+        ```
+        # JDK5 之后，JRE 能自动搜索目录下类文件，并且加载 dt.jar 和 tool.jar，不再需要配置 CLASSPATH
+        export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_*
         export PATH=$PATH:$JAVA_HOME/bin
-        注：JDK5 之后，JRE 能自动搜索目录下类文件，并且加载 dt.jar 和 tool.jar，不再需要配置 CLASSPATH
-    2.5 source /etc/profile 或 . /etc/profile
-3. 配置多版本 JDK：https://www.imooc.com/video/18991
-    3.1 vim /etc/profile
+        ```
+3. [配置多版本 JDK](https://www.imooc.com/video/18991)
+    - `vim /etc/profile` → `source /etc/profile`
+        ```
         export JAVA_8_HOME=/.../jdk1.8...
         export JAVA_17_HOME=/.../jdk-17...
         alias jdk8="export JAVA_HOME=$JAVA_8_HOME"
         alias jdk17="export JAVA_HOME=$JAVA_17_HOME"
-    3.2 source /etc/profile
-```
+        ```
 ---
 ## Tomcat
 - [CentOS 搭建多个 Tomcat](https://blog.csdn.net/qq_40065776/article/details/105652328)
@@ -199,7 +188,7 @@
 ```
 1. yum list installed|grep mysql
    yum list installed|grep mariadb
-   yum remove XXX
+   yum remove xxx
 2. https://downloads.mysql.com/archives/community/
     Product Version     5.7.38
     Operating System    Linux - Generic
