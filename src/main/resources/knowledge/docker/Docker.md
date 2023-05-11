@@ -281,14 +281,14 @@ docker network create [OPTIONS] NETWORK                         创建网络
     3. `docker run hello_docker`
     4. localhost:80
 ---
-## 安装软件
-### [MySQL](https://hub.docker.com/_/mysql)
+## [MySQL](https://hub.docker.com/_/mysql)
 - [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
-docker run -d --name mysql -p 3306:3306 mysql
-
-# 复制一份 my.cnf
-docker cp mysql:/etc/my.cnf my.cnf
+# 从容器复制一份 my.cnf
+docker run -d --name mysql mysql
+docker cp mysql:/etc/mysql/my.cnf D:/Docker/Data/MySQL/my.cnf
+docker stop mysql
+docker rm mysql
 
 docker run -d --name mysql -p 3306:3306 --privileged --restart=unless-stopped \
 -v D:/Docker/Data/MySQL/my.cnf:/etc/mysql/my.cnf \
@@ -298,12 +298,35 @@ docker run -d --name mysql -p 3306:3306 --privileged --restart=unless-stopped \
 mysql
 
 docker exec -it mysql mysql -uroot -proot
-     create user ljh@172.17.0.1 identified by '123456';
-     grant all privileges on `ry-vue`.* to ljh@172.17.0.1 with grant option;
-     flush privileges;
+create user ljh@'%' identified by '123456';
+grant all privileges on *.* to ljh@'%' with grant option;
+flush privileges;
 ```
-### [SQL Server](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-docker)
+---
+## MariaDB
+```bash
+mkdir /home/lighthouse/docker_data/mariadb/{conf,logs,data}
+cd /home/lighthouse/docker_data/mariadb
+
+# 从容器复制配置文件
+docker run -d --name mariadb --privileged -e MYSQL_ROOT_PASSWORD=root mariadb
+docker cp mariadb:/etc/mysql/. $PWD/conf
+docker stop mariadb
+docker rm mariadb
+
+docker run -d --name mariadb -p 3307:3306 --privileged --restart=unless-stopped \
+-v $PWD/conf:/etc/mysql \
+-v $PWD/data:/var/lib/mysql \
+-v $PWD/logs:/var/log/mysql \
+-e MYSQL_ROOT_PASSWORD=root \
+mariadb \
+--default_authentication_plugin=mysql_native_password \
+--character-set-server=utf8mb4 \
+--collation-server=utf8mb4_general_ci
 ```
+---
+## [SQL Server](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-docker)
+```bash
 docker pull mcr.microsoft.com/mssql/server:2019-latest
 
 docker run -d --name mssql \
@@ -312,7 +335,8 @@ docker run -d --name mssql \
 -p 1433:1433 \
 mcr.microsoft.com/mssql/server:2019-latest
 ```
-### [InfluxDB](https://hub.docker.com/_/influxdb)
+---
+## [InfluxDB](https://hub.docker.com/_/influxdb)
 - [InfluxDBException](https://community.influxdata.com/t/getting-started-with-influxdb-docker-401-unauthorized/16989/3)
 - [influx v1 auth](https://docs.influxdata.com/influxdb/v2.0/reference/cli/influx/v1/auth/)
 ```bash
@@ -330,7 +354,8 @@ influx bucket list                                    # 记下 ID
 influx v1 auth create --read-bucket 303f1c88eaa4473a --write-bucket 303f1c88eaa4473a --username admin
 influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --default
 ```
-### [Redis](https://hub.docker.com/_/redis)
+---
+## [Redis](https://hub.docker.com/_/redis)
 - [Docker 部署 Redis](https://blog.csdn.net/qq_41316955/article/details/108381923)
 - [redis.conf](https://redis.io/docs/manual/config/) 选择对应版本
     - `# bind 127.0.0.1 -::1` 或 `bind 0.0.0.0`x`x`
@@ -356,7 +381,8 @@ info replication
 docker exec -it redis-replica redis-cli
 info replication
 ```
-### [MongoDB](https://hub.docker.com/_/mongo)
+---
+## [MongoDB](https://hub.docker.com/_/mongo)
 - [MongoDB 用户角色配置](https://www.cnblogs.com/out-of-memory/p/6810411.html)
 ```bash
 docker run -d --name mongo mongo:4.4.18
@@ -390,14 +416,16 @@ db.createUser({user: "ljh", pwd: "123456", roles: [{role: "readWrite", db: "spri
 exit
 mongo -uljh -p123456 --authenticationDatabse=spring_data
 ```
-### [Tomcat](https://hub.docker.com/_/tomcat)
+---
+## [Tomcat](https://hub.docker.com/_/tomcat)
 - [Docker 安装 tomcat 并挂载目录](https://www.cnblogs.com/liyiran/p/12544715.html)
 ```bash
 docker run -d --name tomcat -p 8080:8080 \
 -v D:/Docker/Data/Tomcat/webapps:/usr/local/tomcat/webapps \
 tomcat
 ```
-### [Nginx](https://hub.docker.com/_/nginx)
+---
+## [Nginx](https://hub.docker.com/_/nginx)
 ```bash
 docker run -d --name nginx -p 80:80 --restart=unless-stopped \
 -v D:/Docker/Data/Nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
@@ -406,7 +434,8 @@ docker run -d --name nginx -p 80:80 --restart=unless-stopped \
 -v D:/Docker/Data/Nginx/html:/usr/share/nginx/html \
 nginx
 ```
-### [Zookeeper](https://hub.docker.com/_/zookeeper)
+---
+## [Zookeeper](https://hub.docker.com/_/zookeeper)
 - [Docker 实战之 Zookeeper 集群](https://www.cnblogs.com/idea360/p/12405113.html)
 - @see [docker-compose.yml](compose/zookeeper-cluster/docker-compose.yml)
 ```bash
@@ -429,7 +458,8 @@ docker run -it --rm --name ZookeeperCluster --link zoo1 --link zoo2 --link zoo3 
 ```bash
 docker run -d --name zookeeper -p 2181:2181 --restart=unless-stopped zookeeper
 ```
-### [RabbitMQ](https://hub.docker.com/_/rabbitmq)
+---
+## [RabbitMQ](https://hub.docker.com/_/rabbitmq)
 - [Win10 Docker 安装 RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
 ```bash
 docker run -d --name rabbitmq \
@@ -442,7 +472,8 @@ docker exec -it rabbitmq bash
         http://localhost:15672       Username:guest      Password:guest
     rabbitmq-plugins enable rabbitmq_mqtt
 ```
-### [RocketMQ](https://hub.docker.com/r/rocketmqinc/rocketmq)
+---
+## [RocketMQ](https://hub.docker.com/r/rocketmqinc/rocketmq)
 - [docker-compose 部署 rocketmq](https://blog.csdn.net/oschina_41731918/article/details/123115102)
 - @see [docker-compose.yml](compose/rocketmq/docker-compose.yml)
 ```bash
@@ -450,7 +481,8 @@ docker compose up -d
 
 http://localhost:8180
 ``` 
-### [MinIO](https://hub.docker.com/r/minio/minio)
+---
+## [MinIO](https://hub.docker.com/r/minio/minio)
 - [MinIO's Docker Implementation](https://docs.min.io/docs/minio-docker-quickstart-guide.html)
 ```bash
 docker run -d --name minio -p 9000:9000 -p 9001:9001 \
@@ -462,7 +494,8 @@ minio/minio server /data --console-address ":9001"
 
 http://localhost:9001/login
 ```
-### [Nacos](https://hub.docker.com/r/nacos/nacos-server)
+---
+## [Nacos](https://hub.docker.com/r/nacos/nacos-server)
 - [Docker 部署 Nacos](https://www.cnblogs.com/serendipity-fzx/articles/15400618.html)
 ```bash
 docker run -d --name nacos -p 8848:8848 -e MODE=standalone nacos/nacos-server
@@ -477,11 +510,13 @@ docker run -d --name nacos -p 8848:8848 -p 9848:9848 -p 9849:9849 \
 -e MYSQL_SERVICE_DB_NAME=ry-config \
 nacos/nacos-server
 ```
-### [Sentinel](https://hub.docker.com/r/bladex/sentinel-dashboard)
+---
+## [Sentinel](https://hub.docker.com/r/bladex/sentinel-dashboard)
 ```bash
 docker run -d --name sentinel -p 8858:8858 bladex/sentinel-dashboard
 ```
-### [Jenkins](https://hub.docker.com/r/jenkins/jenkins)
+---
+## [Jenkins](https://hub.docker.com/r/jenkins/jenkins)
 - [Docker 快速安装 Jenkins 完美教程](https://www.cnblogs.com/fuzongle/p/12834080.html)
 ```bash
 [docker network create --subnet=172.11.0.0/16 jenkins_net]
@@ -498,7 +533,8 @@ jenkins/jenkins:latest-jdk8
 
 http://localhost:8081
 ```
-### [Ubuntu](https://hub.docker.com/_/ubuntu)
+---
+## [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash
 docker run -itd --name ubuntu -p 22:22 --privileged ubuntu
 

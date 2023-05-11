@@ -1,8 +1,5 @@
-# Ubuntu
+# [Ubuntu](https://ubuntu.com/server/docs)
 
---- 
-## Reference
-1. [Introduction | Ubuntu](https://ubuntu.com/server/docs)
 ---
 ## 更改软件源配置
 ```shell
@@ -14,6 +11,7 @@ apt update
 ```
 ---
 ## [Package Management](https://ubuntu.com/server/docs/package-management)
+
 ## [apt](https://manpages.ubuntu.com/manpages/xenial/man8/apt.8.html)
 - [options](https://manpages.ubuntu.com/manpages/xenial/man8/apt-get.8.html#options)
     - `-h`：帮助
@@ -35,7 +33,7 @@ apt install -y man-db
     man
 apt install -y tzdata                           Time Zone Databas
     tzselect
-apt isntall -y build-essential                  GNU 调试器、g++/GNU 编译器集合，和更多编译程序所需的工具和库
+apt install -y build-essential                  GNU 调试器、g++/GNU 编译器集合，和更多编译程序所需的工具和库
 apt install -y openssh-client
 apt install -y openssh-server
 apt install -y wget
@@ -48,7 +46,7 @@ apt install -y net-tools                        网络工具
     ifconfig
     netstat
 apt install -y curl
-apt isntall -y [--reinstall] systemd            一个系统和服务管理器，用于引导用户空间和管理用户进程的 init 系统，可代替 System V 与 BSD 风格等 init 程序
+apt install -y [--reinstall] systemd            一个系统和服务管理器，用于引导用户空间和管理用户进程的 init 系统，可代替 System V 与 BSD 风格等 init 程序
     systemctl
 apt install -y openjdk-8-jdk
 apt install -y mysql-server-8.0

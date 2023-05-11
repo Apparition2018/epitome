@@ -27,7 +27,7 @@
     rpm -qa|grep xxx    yum list installed|grep xxx
     rpm -e xxx          yum remove xxx
     wget xxx.rpm        yum search java|grep -i --color xxx     wget xxx.tar.gz
-    rpm -ivh xxx.rpm    yum install xxx                         tar -zxvf xxx.tar.gz
+    rpm -ivh xxx.rpm    yum -y install xxx                      tar -zxvf xxx.tar.gz
     ```
 2. 添加环境变量
     - `which java` → `ls -l /usr/bin/java` → `ls -l /etc/alternatives/java`
@@ -183,51 +183,55 @@
         192.168.58.129 s.ljh.com
 ```
 ---
-## MySQL
-- [安装 mysql-5.7](https://cnblogs.com/qcq0703/p/11186055.html)
-```
-1. yum list installed|grep mysql
-   yum list installed|grep mariadb
-   yum remove xxx
-2. https://downloads.mysql.com/archives/community/
-    Product Version     5.7.38
+## [MySQL 5.7](https://www.cnblogs.com/qcq0703/p/11186055.html)
+1. `yum list installed|grep mysql`、`yum list installed|grep mariadb` → `yum remove xxx`
+2. [downloads](https://downloads.mysql.com/archives/community/) 并解压和移动
+    ```
+    Product Version     5.7.41
     Operating System    Linux - Generic
     OS Version          Linux - Generic(glibc 2.12)(x86,64-bit)
-    wget https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.38-linux-glibc2.12-x86_64.tar.gz
+    ```
+    ```
+    wget https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.41-linux-glibc2.12-x86_64.tar.gz
     tar -zxvf xxx.tar.gz
-    mv mysql-5.7... mysql-5.7                               重命名
-    mv mysql-5.7 /usr/local/                                移动
+    mv mysql-5.7… mysql-5.7
+    mv mysql-5.7 /usr/local/
+    ```
 3. 添加环境变量
-    3.1 vim /etc/profile
+    - `vim /etc/profile` → `source /etc/profile`
+        ```
         export MYSQL_HOME=/usr/local/mysql-5.7
         export PATH=$PATH:$MYSQL_HOME/bin
-    3.2 source /etc/profile
+        ```
 4. 创建用户组和用户
-    4.1 cat /etc/group|grep mysql                                       查看 mysql 组是否存在
-    4.2 cat /etc/passwd|grep mysql                                      查看 mysql 用户是否存在
-    4.3 groupadd mysql                                                  创建 mysql 组
-    4.4 useradd -g mysql -s /sbin/nologin mysql                         创建 mysql 用户在 mysql 组下
-    4.5 passwd mysql                           `                        更改 mysql 用户密码
+    ```
+    cat /etc/group|grep mysql                       查看 mysql 组是否存在
+    cat /etc/passwd|grep mysql                      查看 mysql 用户是否存在
+    groupadd mysql                                  创建 mysql 组
+    useradd -g mysql -s /sbin/nologin mysql         添加 mysql 用户到 mysql 组下
+    passwd mysql                           `        更改 mysql 用户密码
+    ```
 5. /etc/my.cnf
-6. 初始化
-    6.1 /usr/local/mysql-5.7/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/
-    6.2 记住日志最后一行的密码
-    6.3 chown -R mysql:mysql /usr/local/mysql-5.7/data/                 更改 data 目录所属用户组和用户
+6. 初始化并更改 data 目录所属用户组和用户
+    1. `/usr/local/mysql-5.7/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql-5.7/ --datadir=/usr/local/mysql-5.7/data/`，记住日志最后一行的密码
+    2. `chown -R mysql:mysql /usr/local/mysql-5.7/data/`
 7. 添加 mysql 服务
-    7.1 cp /usr/local/mysql-5.7/support-files/mysql.server /etc/init.d/mysql
-                                                                        复制服务脚本到 /etc/init.d/
-                                                                        使得 Centos 6 可以使用 service mysql start|stop|restart|status 命令
-                                                                        使得 Centos 7 可以使用 systemctl start|stop|restart|status|enable|disable mysql 命令
-    7.2 chmod +x /etc/init.d/mysql                                      增加脚本可执行权限
-    7.3 chkconfig --add mysql                                           添加 mysql 服务
-    7.4 chkconfig --list mysql                                          列出 mysql 服务情况
-    7.5 service mysql start | systemctl start mysql
-8. 防火墙：开放 3306 端口
-9. 连接 mysql：mysql -uroot -p 
-    9.1 alter user root@localhost identified by 'root';                 修改密码
-    9.2 grant all privileges on *.* to root@'%' identified by 'root';   授权
-    9.3 flush privileges;
-```
+    ```
+    cp /usr/local/mysql-5.7/support-files/mysql.server /etc/init.d/mysql
+    chmod +x /etc/init.d/mysql                      添加可执行权限
+    chkconfig --add mysql                           添加 mysql 服务
+    chkconfig --list mysql                          列出 mysql 服务情况
+    chkconfig mysqld on                             开机启动
+    service mysql start|stop|restart|status
+    systemctl start|stop|restart|status|enable|disable mysql
+    ```
+8. 防火墙开放 3306 端口
+9. 连接 msql：`mysql -uroot -p`
+    ```
+    alter user root@localhost identified by 'root';                 -- 修改密码
+    grant all privileges on *.* to root@'%' identified by 'root';   -- 授权
+    flush privileges;
+    ```
 ### MySQL 双主
 ```
 1. 主1：`vim /etc/my.cnf`，@see MySQL.md#master my.cnf

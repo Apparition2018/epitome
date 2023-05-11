@@ -20,15 +20,16 @@
 ---
 ## 进程管理 (Process Management)
     ps                              process status                      显示进程状态
-        -ef                                                             System V 风格
+    ps -ef                                                              System V 风格
             -e                                                          所有进程
-            -f                                                          全格式列表
-        axu                                                             BSD 风格
-            u                                                           面向用户格式
+            -f                                                          full-format listing
+    ps aux                                                              BSD-style
+            u                                                           user-oriented 格式
     top                                                                 显示进程
-        -p                                                              显示指定的进程
+        -p, --pid                                                       显示指定的进程
     kill                                                                终止进程
-        -9                                                              彻底杀死进程
+        -9                                                              强制杀死进程
+        -15                                                             正常退出进程
 ---
 ## 文件系统 (Filesystem)
     chgrp                           change group                        更改组所有权
@@ -58,10 +59,10 @@
     ls                              list                                列出目录内容
         -l                                                              long listing 格式
     mkdir                           make directory                      创建目录
-        -p                          --parents                           创建目录，如需要则创建上层目录
+        -p, --parents                                                   创建目录，如需要创建父目录
     touch                                                               创建文件和更改文件的访问和修改时间
     file                                                                确定文件类型
-    find                                                                查找文件
+    find                                                                搜索文件
         -iname                                                          文件名，忽略大小写
     cat                             concatenate                         连接并打印文件
         /etc/alternatives/                                              http://www.manongjc.com/detail/17-aeorawzcehpuatd.html
@@ -80,20 +81,18 @@
     cp                              copy                                复制文件
     cmp                             compare                             对比两个文件
     rm                              remove                              删除文件或目录
-        -r                          recursive                           递归删除
-        -f                          force                               强制删除
+        -r, -R, --recursive                                             递归删除
+        -f, --force                                                     忽略不存在的文件，不提示
         -i                          interactive                         交互式删除
-    rmdir                           remove directory                    删除目录
+    rmdir                           remove directory                    删除空目录
+        --ignore-fail-on-non-empty                                      非空时忽略失败
     dd                              disk dump                           转换和复制文件
-    df                              disk free                           显示可用磁盘空间
-    du                              disk usage                          显示文件空间使用情况
-    ln                              link                                链接文件
-        -s                          sof                                 软链接
+    df                              disk free                           报告磁盘空间使用情况
+    du                              disk usage                          估计文件空间使用情况
+    ln                              link                                在文件之间建立链接
+        -s, -symbolic                                                   符号链接
     mount                                                               挂载文件
     umount                          unmount                             取消挂载
----
-## 系统 (System)
-
 ---
 ## 杂项 (Misc)
     bc                              basic calculator                    任意精度算术语言，在 linux 下通常用作计算器
@@ -264,7 +263,6 @@
     chkconfig                                                           检查和设置系统各种服务
         --add                                                           增加系统服务
         --list                                                          列出服务的情况
-        --level                                                         指定在哪一指定等级中开启或关闭
     eval                            evaluate                            读取一连串的参数，然后再依参数本身的特性来执行
     rpm                             redhat package manager              红帽子打包管理器
         -a                                                              查询所有套件
@@ -276,11 +274,17 @@
         -v                                                              显示指令执行过程
         -q                                                              使用询问模式，当遇到任何问题时，会先询问用户
     yum                             yellow dog updater, modified        Shell 前端软件包管理器
+        list available                                                  列出可供安装的包
+        list updates                                                    列出可更新的包
         list installd                                                   列出已安装的包
-        search                                                          搜索软件
-        install                                                         安装软件
-        remove                                                          删除软件
-        -y                                                              提示全部选择 "yes"
+        search                                                          搜索包
+        install                                                         安装包
+        check-update                                                    列出可更新的软件
+        update                                                          更新所有或指定包
+        remove                                                          删除包
+        clean packages                                                  消除缓存包
+        clean headers                                                   清除 header 文件
+        clean all                                                       清除所有
     lsmod                           list modules                        显示已载入模块
     insmod                          install modules                     载入模块
     rmmod                           remove modules                      删除模块

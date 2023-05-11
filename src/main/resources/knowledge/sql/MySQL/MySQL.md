@@ -25,8 +25,10 @@ max_connect_errors=10
 # 服务端使用的字符集默认为UTF8
 character-set-client-handshake=FALSE
 character-set-server=utf8mb4
-collation-server = utf8mb4_bin
+collation-server=utf8mb4_general_ci
+init_connect='SET collation_connection=utf8mb4_general_ci'
 init_connect='SET NAMES utf8mb4'
+skip-character-set-client-handshake
 # 创建新表时将使用的默认存储引擎
 default-storage-engine=INNODB
 # 默认使用mysql_native_password插件认证
