@@ -20,41 +20,38 @@
 ---
 ## [配置多个 git 账号](https://blog.csdn.net/qq_33254766/article/details/122941664)
 1. 生成多个 SSH key
-```
-ssh-keygen -t rsa -C "one@gmail.com"
-    Enter file in which to save the key         one_rsa
-    
-ssh-keygen -t rsa -C "two@gmail.com"
-    Enter file in which to save the key         two_rsa
-```
+    ```
+    ssh-keygen -t rsa -C "one@gmail.com"
+        Enter file in which to save the key         one_rsa
+        
+    ssh-keygen -t rsa -C "two@gmail.com"
+        Enter file in which to save the key         two_rsa
+    ```
 2. 创建 config 配置文件
-```
-# one(one@gmail.com)
-Host github.com
-HostName github.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/one_rsa
-User one
-    
-# two(two@gmail.com)
-Host gitee.com
-HostName gitee.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/two_rsa
-User two
-```
+    ```
+    # one(one@gmail.com)
+    Host github.com
+    HostName github.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/one_rsa
+    User one
+        
+    # two(two@gmail.com)
+    Host gitee.com
+    HostName gitee.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/two_rsa
+    User two
+    ```
 3. 部署 SSH key：Settings → SSH and GPG keys
 4. SSH 测试：`ssh -T git@github.com`，`ssh -T git@gitee.com`
 5. 克隆项目：`git clone git@github.com:one/epitome.git`
 6. 取消全局用户名和邮箱
-```
-git config --global --unset user.name
-git config --global --unset user.email
-```
-7. 设置局部用户名和邮箱
-```
-git config user.name "one"; git config user.email "one@gmail.com"
-```
+    ```
+    git config --global --unset user.name
+    git config --global --unset user.email
+    ```
+7. 设置局部用户名和邮箱：`git config user.name "one"; git config user.email "one@gmail.com"`
 ---
 ## .gitconfig
 - [gitignore Documentation](https://git-scm.com/docs/gitignore)

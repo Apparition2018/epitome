@@ -28,7 +28,7 @@
 ```
 ---
 ## Obtaining Authorization
-1. Authorization Code Grant
+- Authorization Code Grant
 ```
 +-----------+
 | Resource  |
@@ -50,7 +50,7 @@
 |           |←-(E)---- Access Token --------------------’
 +-----------+   (w/ Optional Refresh Token)
 ```
-2. Implicit Grant
+- Implicit Grant
 ```
 +-----------+
 | Resource  |
@@ -75,7 +75,7 @@
 |  Client   |
 +-----------+
 ```
-3. Resource Owner Password Credentials Grant
+- Resource Owner Password Credentials Grant
 ```
 +-----------+
 | Resource  |
@@ -89,7 +89,7 @@
 |           |←-(C)---- Access Token --------|               |
 +-----------+   (w/ Optional Refresh Token) +---------------+
 ```
-4. Client Credentials Grant
+- Client Credentials Grant
 ```
 +-----------+                                   +---------------+
 |  Client   |--(A)-- Client Authentication ----→| Authorization |

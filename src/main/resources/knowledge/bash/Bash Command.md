@@ -25,8 +25,12 @@
             -f                                                          full-format listing
     ps aux                                                              BSD-style
             u                                                           user-oriented 格式
-    top                                                                 显示进程
-        -p, --pid                                                       显示指定的进程
+    top                                                                 显示系统摘要信息和内核管理的任务列表
+        -p                                                              指定进程 ID
+    lsof                            list open files
+        -i                                                              Internet address 匹配
+        -P                                                              禁止端口号转换为端口名
+        -n                                                              禁止 IP 转换为 host names 
     kill                                                                终止进程
         -9                                                              强制杀死进程
         -15                                                             正常退出进程
@@ -265,13 +269,13 @@
         --list                                                          列出服务的情况
     eval                            evaluate                            读取一连串的参数，然后再依参数本身的特性来执行
     rpm                             redhat package manager              红帽子打包管理器
-        -a                                                              查询所有套件
-        -e                                                              删除指定套件
-        --nodeps                                                        不验证套件档的相互关联性
-        -i                                                              安装指定的套件档
-        -h                                                              套件安装时列出标记
-        -U                          --upgrade                           升级指定的套件档
+        -a, -all                                                        查询所有套件
+        -e, --erase                                                     删除指定套件
+        --nodeps                                                        不进行依赖项检查
+        -i, --install                                                   安装指定的套件档
+        -U, --upgrade                                                   升级指定的套件档
         -v                                                              显示指令执行过程
+        -h                                                              套件安装时列出标记
         -q                                                              使用询问模式，当遇到任何问题时，会先询问用户
     yum                             yellow dog updater, modified        Shell 前端软件包管理器
         list available                                                  列出可供安装的包

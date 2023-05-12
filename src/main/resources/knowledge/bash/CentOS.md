@@ -27,7 +27,7 @@
     rpm -qa|grep xxx    yum list installed|grep xxx
     rpm -e xxx          yum remove xxx
     wget xxx.rpm        yum search java|grep -i --color xxx     wget xxx.tar.gz
-    rpm -ivh xxx.rpm    yum -y install xxx                      tar -zxvf xxx.tar.gz
+    rpm -ivh xxx.rpm    yum install -y xxx                      tar -zxvf xxx.tar.gz
     ```
 2. 添加环境变量
     - `which java` → `ls -l /usr/bin/java` → `ls -l /etc/alternatives/java`
@@ -107,8 +107,8 @@
 ## vsftpd
 - Very Secure FTP Daemon，一个完全免费的、开放源代码的 ftp 服务器软件
 ```
-1. yum -y install ftp
-   yum -y install vsftpd
+1. yum install -y ftp
+   yum install -y vsftpd
 2. 创建虚拟用户
     mkdir /ftpfile                                      创建 ftp 文件夹
     useradd ftpuser -d /ftpfile -s /sbin/nologin        添加匿名用户 ftpuser
@@ -141,7 +141,7 @@
 ---
 ## [Nginx](https://cnblogs.com/bluestorm/p/4574688.html)
 ```
-1. yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel
+1. yum install -y gcc zlib zlib-devel pcre-devel openssl openssl-devel
 2. https://nginx.org/en/download.html
     wget https://nginx.org/download/nginx-1.22.0.tar.gz
     tar -zxvf xxx.tar.gz
@@ -268,7 +268,7 @@
 ---
 ## Git
 ```
-1. yum -y install zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
+1. yum install -y zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 2. https://github.com/git/git/releases
     wget https://github.com/git/git/archive/refs/tags/v2.31.0.tar.gz
     tar -zxvf xxx.tar.gz

@@ -2,13 +2,15 @@
 
 ---
 ## Reference
-1. [Docker overview](https://docs.docker.com/get-started/overview/)
-2. [Docker - Learn | Microsoft Docs](https://docs.microsoft.com/zh-CN/learn/modules/intro-to-docker-containers/)
-3. [搭建和使用 Docker](https://cloud.tencent.com/document/product/213/46000)
+1. [Docker Documentation](https://docs.docker.com/get-started/overview/)
+2. [Docker Hub](https://hub.docker.com)
+3. [搭建和使用 Docker-腾讯云](https://cloud.tencent.com/document/product/213/46000)
 ---
 ## 课程
 1. [第一个docker化的java应用-慕课网](https://www.imooc.com/learn/824)
 2. [Docker入门教程-慕课网](https://www.imooc.com/learn/867)
+3. [Docker 容器简介 - Training | Microsoft Learn](https://learn.microsoft.com/zh-cn/training/modules/intro-to-docker-containers/)
+4. [使用 Docker 生成容器化 Web 应用程序 - Training | Microsoft Learn](https://learn.microsoft.com/zh-cn/training/modules/intro-to-containers/)
 ---
 ## VM vs DOcker
 ![VM vs Docker](https://img3.mukewang.com/608d8eeb0001298319201080-500-284.jpg)
@@ -263,7 +265,7 @@ docker network create [OPTIONS] NETWORK                         创建网络
     WORKDIR                                 工作目录
     EXPOSE                                  端口
     ```
-2. 镜像分层：Dockerfile 中的每一行都产生一个新层
+2. 镜像分层：Dockerfile 中的每一行都产生一个新层<br/>
    ![镜像分层](https://img2.mukewang.com/608d9d330001dd2819201080-500-284.jpg)
 3. Dockerfile Demo
     1. 编写 Dockerfile 文件
@@ -289,23 +291,25 @@ docker run -d --name mysql mysql
 docker cp mysql:/etc/mysql/my.cnf D:/Docker/Data/MySQL/my.cnf
 docker stop mysql
 docker rm mysql
-
+```
+```bash
 docker run -d --name mysql -p 3306:3306 --privileged --restart=unless-stopped \
 -v D:/Docker/Data/MySQL/my.cnf:/etc/mysql/my.cnf \
 -v D:/Docker/Data/MySQL/data:/var/lib/mysql \
 -v D:/Docker/Data/MySQL/files:/var/lib/mysql-files \
 -e MYSQL_ROOT_PASSWORD=root \
 mysql
-
+```
+```bash
 docker exec -it mysql mysql -uroot -proot
 create user ljh@'%' identified by '123456';
 grant all privileges on *.* to ljh@'%' with grant option;
 flush privileges;
 ```
 ---
-## MariaDB
+## [MariaDB](https://hub.docker.com/_/mariadb)
 ```bash
-mkdir /home/lighthouse/docker_data/mariadb/{conf,logs,data}
+mkdir -p /home/lighthouse/docker_data/mariadb/{conf,logs,data}
 cd /home/lighthouse/docker_data/mariadb
 
 # 从容器复制配置文件
@@ -313,7 +317,8 @@ docker run -d --name mariadb --privileged -e MYSQL_ROOT_PASSWORD=root mariadb
 docker cp mariadb:/etc/mysql/. $PWD/conf
 docker stop mariadb
 docker rm mariadb
-
+```
+```bash
 docker run -d --name mariadb -p 3307:3306 --privileged --restart=unless-stopped \
 -v $PWD/conf:/etc/mysql \
 -v $PWD/data:/var/lib/mysql \
@@ -327,8 +332,6 @@ mariadb \
 ---
 ## [SQL Server](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-docker)
 ```bash
-docker pull mcr.microsoft.com/mssql/server:2019-latest
-
 docker run -d --name mssql \
 -e "ACCEPT_EULA=Y" \
 -e "SA_PASSWORD=Cesc123456!" \
@@ -346,7 +349,8 @@ docker run -d --name influxdb -p 8086:8086 \
 -e DOCKER_INFLUXDB_INIT_ORG=my-org \
 -e DOCKER_INFLUXDB_INIT_BUCKET=my-bucket \
 influxdb
-
+```
+```bash
 docker exec -it influxdb bash
 cd /usr/local/bin
 influx setup
@@ -374,7 +378,8 @@ docker run -d --name redis-replica \
 --net redis_net --ip 172.10.0.3 -p 6380:6379 \
 -v D:/Docker/Data/Redis/redis-replica.conf:/etc/redis/redis.conf:ro \
 redis redis-server ../etc/redis/redis.conf
-
+```
+```bash
 docker exec -it redis-master redis-cli
 info replication
 
@@ -385,19 +390,22 @@ info replication
 ## [MongoDB](https://hub.docker.com/_/mongo)
 - [MongoDB 用户角色配置](https://www.cnblogs.com/out-of-memory/p/6810411.html)
 ```bash
+# 从容器复制一份 mongod.conf，并修改配置
 docker run -d --name mongo mongo:4.4.18
-
-# 复制一份 mongod.conf，并修改配置
 docker cp mongo:/etc/mongod.conf.orig D:/Docker/Data/MongoDB/mongod.conf
-storage:
-  dbPath: /data/db
-net:
-  bindIp: 0.0.0.0
-
+    storage:
+      dbPath: /data/db
+    net:
+      bindIp: 0.0.0.0
+docker stop mongo
+docker rm mongo
+```
+```bash
 docker run -d --name mongo -p 27017:27017 \
 -v D:/Docker/Data/MongoDB/mongod.conf:/etc/mongo/mongod.conf \
 mongo:4.4.18 -f ../etc/mongo/mongod.conf
-
+```
+```bash
 # 进入 admin 数据库
 # mongo 4- 使用 mongo，mongo 5+ 使用 mongosh
 docker exec -it mongo mongo admin | docker exec -it mongo mongosh admin
@@ -461,11 +469,23 @@ docker run -d --name zookeeper -p 2181:2181 --restart=unless-stopped zookeeper
 ---
 ## [RabbitMQ](https://hub.docker.com/_/rabbitmq)
 - [Win10 Docker 安装 RabbitMQ](https://www.cnblogs.com/feily/p/14207897.html)
+- [Networking and RabbitMQ](https://www.rabbitmq.com/networking.html)
+    ```
+    4369            EPMD (Erlang Port Mapper Daemon)
+    25672           Erlang distribution
+    5672, 5671      AMQP 0-9-1 and AMQP 1.0 clients without and with TLS
+    15672, 15671    HTTP API clients, management UI and rabbitmqadmin, without and with TLS
+    1883, 8883      MQTT clients without and with TLS
+    ```
 ```bash
 docker run -d --name rabbitmq \
--p 4369:4369 -p 5671:5671 -p 5672:5672 -p 15672:15672 -p 1883:1883 -p 8883:8883 \
+-p 4369:4369 -p 25672:25672 \
+-p 5672:5672 -p 5671:5671 \
+-p 15672:15672 -p 15671:15671 \
+-p 1883:1883 -p 8883:8883 \
 rabbitmq:management
-
+```
+```bash
 docker exec -it rabbitmq bash
     rabbitmq-plugins list
     rabbitmq-plugins enable rabbitmq_management
@@ -492,7 +512,7 @@ docker run -d --name minio -p 9000:9000 -p 9001:9001 \
 -e MINIO_ROOT_PASSWORD=minio123 \
 minio/minio server /data --console-address ":9001"
 
-http://localhost:9001/login
+# http://localhost:9001/login
 ```
 ---
 ## [Nacos](https://hub.docker.com/r/nacos/nacos-server)
@@ -528,16 +548,12 @@ docker run -d --name jenkins -p 8081:8080 -p 50000:50000 --restart=unless-stoppe
 jenkins/jenkins:latest-jdk8
 
 # 进入 jenkins 工作目录，打开 hudson.model.UpdateCenter.xml，
-# 把 https://updates.jenkins.io/update-center.json 改成 
-# https:mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
-
-http://localhost:8081
+# 把 https://updates.jenkins.io/update-center.json 改成 https:mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
+# http://localhost:8081
 ```
 ---
 ## [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash
 docker run -itd --name ubuntu -p 22:22 --privileged ubuntu
-
-docker exec -it ubuntu bash
 ```
 --- 
