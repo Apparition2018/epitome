@@ -33,27 +33,6 @@
         - Add user… → admin → Grant all permissions to admin (在右边) → 保存
         - Add user… → user01 → Grant all permissions to admin (在右边) → 取消勾选 Administer - 保存
 ---
-## [Docker Ubuntu](https://blog.csdn.net/qq_41318914/article/details/124494776)
-1. `docker run -itd --name ubuntu -p 22:22 8088:8080 [--net jenkins_net --ip 172.11.0.3 ]--privileged ubuntu`
-2. `passwd root`
-3. `unminimize`，`apt update`，`apt upgrade`
-4. `apt install -y openssh-client openssh-server vim`
-    1. `vim /etc/ssh/sshd_config`：`PermitRootLogin yes`
-    2. 启动/重启 sshd：`/etc/init.d/ssh start` 等同于 `service start ssh`
-5. `ssh root@127.0.0.1 -p 22`
-6. `apt install -y openjdk-8-jdk`
-7. `apt install -y mysql-server-8.0`
-    ```bash
-    service mysql start
-    mysql -uroot -p
-    create user ljh@localhost identified by '123456';
-    grant all privileges on *.* to ljh@localhost with grant option;
-    flush privileges;
-    ```
-8. `apt install -y git`，配置 @see CentOS.md#Git 4 和 5
-9. @see CentOS.md#Maven
-10. @see CentOS.md#Tomcat
----
 ## 新建节点
 - 系统管理 → 节点管理 →  New Node → 名称 → Create
     1. 远程工作目录：/root/.jenkins

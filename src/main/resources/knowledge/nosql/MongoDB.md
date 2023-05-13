@@ -5,23 +5,24 @@
 ## Reference
 1. [MongoDB Documentation](https://www.mongodb.com/docs/)
 2. [MongoDB Manual](https://www.mongodb.com/docs/manual/)
-3. [尚硅谷MongoDB入门基础教程](https://www.bilibili.com/video/BV18s411E78K/)
-4. [黑马程序员MongoDB基础入门到高级进阶](https://www.bilibili.com/video/BV1bJ411x7mq/)
-5. [2022B站最新的MongoDB视频教程](https://www.bilibili.com/video/BV1CS4y1e7Pb/)
-6. [MongoDB 教程 | 菜鸟教程](https://www.runoob.com/mongodb/mongodb-tutorial.html)
+---
+## 课程
+1. [尚硅谷MongoDB入门基础教程](https://www.bilibili.com/video/BV18s411E78K/)
+2. [黑马程序员MongoDB基础入门到高级进阶](https://www.bilibili.com/video/BV1bJ411x7mq/)
+3. [2022B站最新的MongoDB视频教程](https://www.bilibili.com/video/BV1CS4y1e7Pb/)
 ---
 ## 数据库对比
-| 术语/概念 |    RDBMS    |     MongoDB     | ElasticSearch |
-|-------|:-----------:|:---------------:|:-------------:|
-| 数据库   |  database   |    database     |      es库      |
-| 表/集合  |    table    |   collection    |     index     |
-| 行/文档  |     row     | document (BSON) |   document    |
-| 列/字段  |   column    |      field      |     field     |
-| 主键    | primary key |       _id       |      _id      |
-| 表连接   |    join     |     $lookup     |               |
-| 语言    |     SQL     |      类 SQL      |      DSL      |
-| 分布式   |     第三方     |       分布式       |      分布式      |
-| 扩容    |    分库分表     |       分片        |      分片       |
+| 术语/概念 |    RDBMS    |     MongoDB     |  ElasticSearch  |
+|-------|:-----------:|:---------------:|:---------------:|
+| 数据库   |  database   |    database     |       es库       |
+| 表/集合  |    table    |   collection    |      index      |
+| 行/文档  |     row     | document (BSON) | document (JSON) |
+| 列/字段  |   column    |      field      |      field      |
+| 主键    | primary key |       _id       |       _id       |
+| 表连接   |    join     |     $lookup     |                 |
+| 语言    |     SQL     |      类 SQL      |       DSL       |
+| 分布式   |     第三方     |       分布式       |       分布式       |
+| 扩容    |    分库分表     |       分片        |       分片        |
 ---
 ## MongoDB 优势
 1. 高性能
@@ -237,176 +238,176 @@ $bucket                                 根据指定的表达式和桶边界将�
 ## 聚合操作
 ### 聚合实战1
 1. data.js
-```javascript
-// book
-var tags = ["nosql", "mongodb", "document", "developer", "popluar"];
-var types = ["technology", "sociality", "travel", "novel", "literature"];
-var books = [];
-for (var i = 0; i < 50; i++) {
-    var typeIdx = Math.floor(Math.random() * types.length);
-    var tagIdx = Math.floor(Math.random() * tags.length);
-    var tagIdx2 = Math.floor(Math.random() * tags.length);
-    var favCount = Math.floor(Math.random() * 100);
-    var username = "xx00" + Math.floor(Math.random() * 10);
-    var age = 20 + Math.floor(Math.random() * 15);
-    var book = {
-        title: "book-" + i,
-        type: types[typeIdx],
-        tag: [tags[tagIdx], tags[tagIdx2]],
-        favCount: favCount,
-        author: { name: username, age: age }
-    };
-    books.push(book);
-}
-db.book.insertMany(books);
-db.book.insert([
-    {
-        "title": "book-51",
-        "type": "technology",
-        "favCount": 11,
-        "tag": [],
-        "author": {
-            "name": "fox",
-            "age": 28
-        }
-    },
-    {
-        "title": "book-52",
-        "type": "technology",
-        "favCount": 15,
-        "author": {
-            "name": "fox",
-            "age": 28
-        }
-    },
-    {
-        "title": "book-53",
-        "type": "technology",
-        "favCount": 20,
-        "tag": [
-            "nosql",
-            "document"
-        ],
-        "author": {
-            "name": "fox",
-            "age": 28
-        }
+    ```javascript
+    // book
+    var tags = ["nosql", "mongodb", "document", "developer", "popluar"];
+    var types = ["technology", "sociality", "travel", "novel", "literature"];
+    var books = [];
+    for (var i = 0; i < 50; i++) {
+        var typeIdx = Math.floor(Math.random() * types.length);
+        var tagIdx = Math.floor(Math.random() * tags.length);
+        var tagIdx2 = Math.floor(Math.random() * tags.length);
+        var favCount = Math.floor(Math.random() * 100);
+        var username = "xx00" + Math.floor(Math.random() * 10);
+        var age = 20 + Math.floor(Math.random() * 15);
+        var book = {
+            title: "book-" + i,
+            type: types[typeIdx],
+            tag: [tags[tagIdx], tags[tagIdx2]],
+            favCount: favCount,
+            author: { name: username, age: age }
+        };
+        books.push(book);
     }
-]);
-
-db.customer.insert({ customerCode: 1, name: "customer1", phone: "13112345678", address: "address1" });
-db.customer.insert({ customerCode: 2, name: "customer2", phone: "13112345679", address: "address2" });
-
-db.order.insert({ orderId: 1, orderCode: "order001", customerCode: 1, price: 200 });
-db.order.insert({ orderId: 2, orderCode: "order002", customerCode: 2, price: 400 });
-
-db.orderItem.insert({ itemId: 1, productName: "apples", qutity: 2, orderId: 1 });
-db.orderItem.insert({ itemId: 2, productName: "oranges", qutity: 2, orderId: 1 });
-db.orderItem.insert({ itemId: 3, productName: "mangoes", qutity: 2, orderId: 1 });
-db.orderItem.insert({ itemId: 4, productName: "apples", qutity: 2, orderId: 2 });
-db.orderItem.insert({ itemId: 5, productName: "oranges", qutity: 2, orderId: 2 });
-db.orderItem.insert({ itemId: 6, productName: "mangoes", qutity: 2, orderId: 2 });
-```
+    db.book.insertMany(books);
+    db.book.insert([
+        {
+            "title": "book-51",
+            "type": "technology",
+            "favCount": 11,
+            "tag": [],
+            "author": {
+                "name": "fox",
+                "age": 28
+            }
+        },
+        {
+            "title": "book-52",
+            "type": "technology",
+            "favCount": 15,
+            "author": {
+                "name": "fox",
+                "age": 28
+            }
+        },
+        {
+            "title": "book-53",
+            "type": "technology",
+            "favCount": 20,
+            "tag": [
+                "nosql",
+                "document"
+            ],
+            "author": {
+                "name": "fox",
+                "age": 28
+            }
+        }
+    ]);
+    
+    db.customer.insert({ customerCode: 1, name: "customer1", phone: "13112345678", address: "address1" });
+    db.customer.insert({ customerCode: 2, name: "customer2", phone: "13112345679", address: "address2" });
+    
+    db.order.insert({ orderId: 1, orderCode: "order001", customerCode: 1, price: 200 });
+    db.order.insert({ orderId: 2, orderCode: "order002", customerCode: 2, price: 400 });
+    
+    db.orderItem.insert({ itemId: 1, productName: "apples", qutity: 2, orderId: 1 });
+    db.orderItem.insert({ itemId: 2, productName: "oranges", qutity: 2, orderId: 1 });
+    db.orderItem.insert({ itemId: 3, productName: "mangoes", qutity: 2, orderId: 1 });
+    db.orderItem.insert({ itemId: 4, productName: "apples", qutity: 2, orderId: 2 });
+    db.orderItem.insert({ itemId: 5, productName: "oranges", qutity: 2, orderId: 2 });
+    db.orderItem.insert({ itemId: 6, productName: "mangoes", qutity: 2, orderId: 2 });
+    ```
 2. 复制 data.js 到 mongodb：`docker cp C:/Users/HP/Desktop/data.js mongo:/data/db/js/`
 3. 执行 `load("data.js")`
     - `load()` 接受相对路径和绝对路径，可以使用 `pwd()` 查看 mongo shell 的当前工作目录
 4. 聚合操作
     1. 标签热度排行：按其关联 book 的收藏数计算
-    ```javascript
-    db.book.aggregate([
-        { $match: { favCount: { $gt: 0 } } },
-        { $unwind: "$tag" },
-        { $group: { _id: "$tag", total: { $sum: "$favCount" } } },
-        { $sort: { total: -1 } }
-    ])
-    ```
+        ```javascript
+        db.book.aggregate([
+            { $match: { favCount: { $gt: 0 } } },
+            { $unwind: "$tag" },
+            { $group: { _id: "$tag", total: { $sum: "$favCount" } } },
+            { $sort: { total: -1 } }
+        ])
+        ```
     2. 统计 book 收藏数 [0,10), [10,60), [60,80), [80,100), [100,+∞)
-    ```javascript
-    db.book.aggregate([{
-        $bucket: {
-            groupBy: "$favCount",
-            boundaries: [0, 10, 60, 80, 100],
-            default: "other",
-            output: { "count": { $sum: 1 } }
-        }
-    }])
-    ```
+        ```javascript
+        db.book.aggregate([{
+            $bucket: {
+                groupBy: "$favCount",
+                boundaries: [0, 10, 60, 80, 100],
+                default: "other",
+                output: { "count": { $sum: 1 } }
+            }
+        }])
+        ```
     3. customer c left join order o on c.customerCode = o.customerCode
-    ```javascript
-    db.customer.aggregate([{
-        $lookup: {
-            from: "order",
-            localField: "customerCode",
-            foreignField: "customerCode",
-            as: "customerOrder"
-        }
-    }]).pretty()
-    ```
-    4. order o left join customer c on o.customerCode = c.customerCode
-       left join orderItem oi on o.orderId = oi.orderId
-    ```javascript
-    db.order.aggregate([
-        {
+        ```javascript
+        db.customer.aggregate([{
             $lookup: {
-                from: "customer",
+                from: "order",
                 localField: "customerCode",
                 foreignField: "customerCode",
-                as: "customer"
+                as: "customerOrder"
             }
-        },
-        {
-            $lookup: {
-                from: "orderItem",
-                localField: "orderId",
-                foreignField: "orderId",
-                as: "orderItem"
+        }]).pretty()
+        ```
+    4. order o left join customer c on o.customerCode = c.customerCode
+       left join orderItem oi on o.orderId = oi.orderId
+        ```javascript
+        db.order.aggregate([
+            {
+                $lookup: {
+                    from: "customer",
+                    localField: "customerCode",
+                    foreignField: "customerCode",
+                    as: "customer"
+                }
+            },
+            {
+                $lookup: {
+                    from: "orderItem",
+                    localField: "orderId",
+                    foreignField: "orderId",
+                    as: "orderItem"
+                }
             }
-        }
-    ]).pretty()
-    ```
+        ]).pretty()
+        ```
 ### 聚合实战2
 1. [zips.json](https://media.mongodb.org/zips.json)
 2. [MongoDB Command Line Database Tools](https://www.mongodb.com/try/download/database-tools)
 3. `.\mongoimport.exe -h localhost -p 27017 -u fox -p fox --authenticationDatabase=admin -d test -c zip --file C:/Users/HP/Desktop/zips.json`
 4. 聚合操作
     1. 返回人口超过1000万的州
-    ```javascript
-    db.zip.aggregate([
-        { $group: { _id: "$state", totalPop: { $sum: "$pop" } } },
-        { $match: { totalPop: { $gt: 1000 * 10000 } } }
-    ])
-    ```
+        ```javascript
+        db.zip.aggregate([
+            { $group: { _id: "$state", totalPop: { $sum: "$pop" } } },
+            { $match: { totalPop: { $gt: 1000 * 10000 } } }
+        ])
+        ```
     2. 返回各州平均城市人口
-    ```javascript
-    db.zip.aggregate([
-        { $group: { _id: { state: "$state", city: "$city" }, cityPop: { $sum: "$pop" } } },
-        { $group: { _id: "$_id.state", avgCityPop: { $avg: "$cityPop" } } }
-    ])
-    ```
+        ```javascript
+        db.zip.aggregate([
+            { $group: { _id: { state: "$state", city: "$city" }, cityPop: { $sum: "$pop" } } },
+            { $group: { _id: "$_id.state", avgCityPop: { $avg: "$cityPop" } } }
+        ])
+        ```
     3. 按州返回人口最大和最小的城市
-    ```javascript
-    db.zip.aggregate([
-        { $group: { _id: { state: "$state", city: "$city" }, cityPop: { $sum: "$pop" } } },
-        { $sort: { cityPop: 1 } },
-        {
-            $group: {
-                _id: "$_id.state",
-                biggestCity: { $last: "$_id.city" },
-                biggestPop: { $last: "$cityPop" },
-                smallestCity: { $first: "$_id.city" },
-                smallestPop: { $first: "$cityPop" }
+        ```javascript
+        db.zip.aggregate([
+            { $group: { _id: { state: "$state", city: "$city" }, cityPop: { $sum: "$pop" } } },
+            { $sort: { cityPop: 1 } },
+            {
+                $group: {
+                    _id: "$_id.state",
+                    biggestCity: { $last: "$_id.city" },
+                    biggestPop: { $last: "$cityPop" },
+                    smallestCity: { $first: "$_id.city" },
+                    smallestPop: { $first: "$cityPop" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    state: "$_id",
+                    biggestCity: { name: "$biggestCity", pop: "$biggestPop" },
+                    smallestCity: { name: "$smallestCity", pop: "$smallestPop" }
+                }
             }
-        },
-        {
-            $project: {
-                _id: 0,
-                state: "$_id",
-                biggestCity: { name: "$biggestCity", pop: "$biggestPop" },
-                smallestCity: { name: "$smallestCity", pop: "$smallestPop" }
-            }
-        }
-    ])
-    ```
+        ])
+        ```
 ---
 ## [索引](https://www.mongodb.com/docs/manual/indexes/)
 - B+Tree 数据结构
@@ -436,41 +437,41 @@ db.orderItem.insert({ itemId: 6, productName: "mangoes", qutity: 2, orderId: 2 }
 | Hidden Indexes  | 对查询计划器是不可见的，不能用于支持查询  |
 ### 索引实战
 1. data.js
-```javascript
-db.restaurant.insert({
-    restaurantId: 0,
-    restaurantName: "兰州牛肉面",
-    location: {
-        type: "Point",
-        coordinates: [-73.97, 40.77]
-    }
-})
-
-db.store.insert([
-    { _id: 1, name: "Java Hut", description: "Coffee and cakes" },
-    { _id: 2, name: "Burger Buns", description: "Gourmet hamburgers" },
-    { _id: 3, name: "Coffee Shop", description: "Just Coffee" },
-    { _id: 4, name: "Clothes Clothes Clothes", description: "Discount clothing" },
-    { _id: 5, name: "Java Shoping", description: "Indonesian goods" }
-])
-```
+    ```javascript
+    db.restaurant.insert({
+        restaurantId: 0,
+        restaurantName: "兰州牛肉面",
+        location: {
+            type: "Point",
+            coordinates: [-73.97, 40.77]
+        }
+    })
+    
+    db.store.insert([
+        { _id: 1, name: "Java Hut", description: "Coffee and cakes" },
+        { _id: 2, name: "Burger Buns", description: "Gourmet hamburgers" },
+        { _id: 3, name: "Coffee Shop", description: "Just Coffee" },
+        { _id: 4, name: "Clothes Clothes Clothes", description: "Discount clothing" },
+        { _id: 5, name: "Java Shoping", description: "Indonesian goods" }
+    ])
+    ```
 2. 复制 data.js 到 mongodb：`docker cp C:/Users/HP/Desktop/data.js mongo:/data/db/js/`
 3. 地理空间索引
     1. 创建 2dsphere 索引：`db.restaurant.createIndex({ location: "2dsphere" })`
     2. 查询附件10000米商家信息
-    ```javascript
-    db.restaurant.find({
-        location: {
-            $near: {
-                $geometry: {
-                    type: "Point",
-                    coordinates: [-73.88, 40.78]
-                },
-                $maxDistance: 10000
+        ```javascript
+        db.restaurant.find({
+            location: {
+                $near: {
+                    $geometry: {
+                        type: "Point",
+                        coordinates: [-73.88, 40.78]
+                    },
+                    $maxDistance: 10000
+                }
             }
-        }
-    })
-    ```
+        })
+        ```
 4. 文本索引
     1. 创建文本索引：`db.store.createIndex({ name: "text", description: "text" })`
     2. 查找包含 coffee, shop, java 的商店：`db.store.find({ $text: { $search: "java coffee shop" } })` 
@@ -480,59 +481,59 @@ db.store.insert([
 ---
 ## [视图](https://www.mongodb.com/docs/v6.0/core/views/)
 1. data.js
-```javascript
-var orders = [];
-var shipping = [];
-var addresses = ["广西省玉林市", "湖南省岳阳市", "湖北省荆州市", "甘肃省兰州市", "吉林省松原市", "江西省景德镇", "辽宁省沈阳市", "福建省厦门市", "广东省广州市", "北京市朝阳区"];
-for (var i = 10000; i < 20000; i++) {
-    var orderNo = i + Math.random().toString().substring(2, 5);
-    orders[i] = {
-        orderNo: orderNo,
-        userId: i,
-        price: Math.round(Math.random() * 10000) / 100,
-        qty: Math.floor(Math.random() * 10) + 1,
-        orderTime: new Date(new Date().setSeconds(Math.floor(Math.random() * 10000)))
+    ```javascript
+    var orders = [];
+    var shipping = [];
+    var addresses = ["广西省玉林市", "湖南省岳阳市", "湖北省荆州市", "甘肃省兰州市", "吉林省松原市", "江西省景德镇", "辽宁省沈阳市", "福建省厦门市", "广东省广州市", "北京市朝阳区"];
+    for (var i = 10000; i < 20000; i++) {
+        var orderNo = i + Math.random().toString().substring(2, 5);
+        orders[i] = {
+            orderNo: orderNo,
+            userId: i,
+            price: Math.round(Math.random() * 10000) / 100,
+            qty: Math.floor(Math.random() * 10) + 1,
+            orderTime: new Date(new Date().setSeconds(Math.floor(Math.random() * 10000)))
+        }
+        var address = addresses[Math.floor(Math.random() * 10)];
+        shipping[i] = {
+            orderNo: orderNo,
+            address: address,
+            recipient: "wilson",
+            province: address.substring(0, 3),
+            city: address.substring(3, 3)
+        }
     }
-    var address = addresses[Math.floor(Math.random() * 10)];
-    shipping[i] = {
-        orderNo: orderNo,
-        address: address,
-        recipient: "wilson",
-        province: address.substring(0, 3),
-        city: address.substring(3, 3)
-    }
-}
-db.order2.insert(orders);
-db.shipping.insert(shipping);
-```
+    db.order2.insert(orders);
+    db.shipping.insert(shipping);
+    ```
 2. 复制 data.js 到 mongodb：`docker cp C:/Users/HP/Desktop/data.js mongo:/data/db/js/`
 3. 执行 `load("data.js")`
 4. 创建视图：当天最高的10笔订单
-```javascript
-db.createView(
-    "orderInfo",    // 视图名称
-    "order2",        // 数据源
-        [
+    ```javascript
+    db.createView(
+        "orderInfo",    // 视图名称
+        "order2",        // 数据源
+            [
+                { $match: { "orderTime": { $gte: new Date(new Date().toLocaleDateString()) } } },
+                { $sort: { "price": -1 } },
+                { $limit: 10 },
+                { $project: { _id: 0, orderNo: 1, price: 1, orderTime: 1 } }
+            ]
+    )
+    ```
+5. 修改视图
+    ```javascript
+    db.runCommand({
+        collMod: "orderInfo",
+        viewOn: "order2",
+        pipeline: [
             { $match: { "orderTime": { $gte: new Date(new Date().toLocaleDateString()) } } },
             { $sort: { "price": -1 } },
             { $limit: 10 },
-            { $project: { _id: 0, orderNo: 1, price: 1, orderTime: 1 } }
+            { $project: { _id: 0, orderNo: 1, price: 1, qty: 1, orderTime: 1 } }
         ]
-)
-```
-5. 修改视图
-```javascript
-db.runCommand({
-    collMod: "orderInfo",
-    viewOn: "order2",
-    pipeline: [
-        { $match: { "orderTime": { $gte: new Date(new Date().toLocaleDateString()) } } },
-        { $sort: { "price": -1 } },
-        { $limit: 10 },
-        { $project: { _id: 0, orderNo: 1, price: 1, qty: 1, orderTime: 1 } }
-    ]
-})
-```
+    })
+    ```
 6. 删除视图：`db.orderInfo.drop()`
 ---
 ## [副本集](https://www.mongodb.com/docs/v6.0/replication/)

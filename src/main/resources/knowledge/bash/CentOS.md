@@ -1,4 +1,4 @@
-# CentOS 6.8
+# CentOS
 
 ---
 ## 问题
@@ -20,6 +20,10 @@
     ip addr
     vi /etc/sysconfig/network-scripts/ifcfg-eth0; ONBOOT=yes;
     vi ~/.ssh/known_hosts
+---
+## [腾讯云](https://console.cloud.tencent.com/lighthouse/instance/index?rid=1)
+- 公网：43.136.102.115
+- 内网：10.0.8.8
 ---
 ## JDK
 1. [downloads](https://www.oracle.com/java/technologies/downloads/archive/) 并安装
@@ -225,7 +229,7 @@
     service mysql start|stop|restart|status
     systemctl start|stop|restart|status|enable|disable mysql
     ```
-8. 防火墙开放 3306 端口
+8. 防火墙：开放 3306 端口
 9. 连接 msql：`mysql -uroot -p`
     ```
     alter user root@localhost identified by 'root';                 -- 修改密码
@@ -315,3 +319,97 @@
 8. 停止：./bin/redis-cli shutdown
 ```
 ---
+## [RabbitMQ](https://www.imooc.com/video/23816)
+1. [Downloading and Installing RabbitMQ](https://rabbitmq.com/download.html)
+2. Erlang
+    - [RabbitMQ 和 Erlang/OTP 兼容性矩阵](https://rabbitmq.com/which-erlang.html#compatibility-matrix)
+    - [Zero-dependency Erlang from RabbitMQ](https://rabbitmq.com/install-rpm.html#install-zero-dependency-rpm)
+        - [Install From PackageCloud](https://packagecloud.io/rabbitmq/erlang)
+3. 复制文件到服务器
+    ```bash
+    mkdir /usr/local/rabbitmq
+    # windows
+    scp C:/Users/HP/Desktop/rabbitmq-server-3.11.15-1.el8.noarch.rpm \
+        C:/Users/HP/Desktop/erlang-25.3.2-1.el8.x86_64.rpm \
+        root@43.136.102.115:/usr/local/rabbitmq
+    ```
+4. 升级软件包并安装：`cd /usr/local/rabbitmq`
+    ```bash
+    rpm -Uvh erlang-*.rpm
+    yum install -y erlang
+    erl
+    ```   
+    ```bash
+    rpm -Uvh rabbitmq-server-*.noarch.rpm
+    yum install -y socat
+    yum install -y rabbitmq-server
+    systemctl start rabbitmq-server
+    ```
+5. 防火墙：开放 5672 和 15672 端口
+6. rabbitmq_management
+    ```bash
+    rabbitmq-plugins enable rabbitmq_management
+    # 添加用户
+    rabbitmqctl add_user ljh 123456
+    # 设置为管理员
+    rabbitmqctl set_user_tags ljh administrator
+    # 授予所有权限
+    rabbitmqctl set_permissions -p / ljh ".*" ".*" ".*"
+    # http://43.136.102.115:15672
+    # Admin → Virtual Hosts → Add a new virtual host
+    ```
+---
+## [MongoDB](https://www.imooc.com/video/23829)
+1. download
+    - [MongoDB Community Server Download](https://www.mongodb.com/try/download/community)
+        ```
+        Version         current
+        Platform        RedHat/CentOS 8.0
+        Package         tgz
+        ```
+    - [MongoDB Shell Download](https://www.mongodb.com/try/download/shell)
+        ```
+        Version
+        Platform        Linux Tarball 64-bit
+        Package         tgz
+        ```
+2. 复制文件到服务器
+    ```bash
+    # windows
+    scp C:/Users/Administrator/Desktop/mongodb-linux-x86_64-rhel80-6.0.6.tgz \
+        C:/Users/Administrator/Desktop/mongosh-1.8.2-linux-x64.tgz \
+        root@43.136.102.115:/home/lighthouse/software
+    ```
+    ```bash
+    cd /home/lighthouse/software
+    cp erlang-*.rpm rabbitmq-server-*.noarch.rpm /usr/local/rabbitmq
+    ```
+3. 解压和移动：`cd /home/software`
+    ```bash
+    tar -zxvf mongodb-linux-x86_64-rhel80-6.0.6.tgz
+    mv mongodb-linux-x86_64-rhel80-6.0.6 /usr/local/mongodb
+    tar -zxvf mongosh-1.8.2-linux-x64.tgz
+    mv mongosh-1.8.2-linux-x64 /usr/local/mongosh
+    ```
+4. 添加环境变量：`vim /etc/profile` → `source /etc/profile` → `mongod -version`
+    ```
+    export MONGODB_HOME=/usr/local/mongodb
+    export MONGOSH_HOME=/usr/local/mongosh
+    export PATH=$PATH:$MONGODB_HOME/bin:$MONGOSH_HOME/bin
+    ```
+5. 创建数据和日志文件夹：`cd /usr/local/mongodb`
+    - `mkdir db`
+    - `mkdir logs` → `cd logs` → `touch mongod.log`
+6. 修改配置文件：`vim /etc/mongod.conf`，@see [MongoDB.md](../nosql/MongoDB.md)
+7. 命令
+    - 启动服务：`mongod -f /etc/mongod.conf`
+    - 停止服务：`mongod --shutdown --dbpath /usr/local/mongodb/db`
+8. 连接 mongodb：`mongosh`
+    ```
+    use admin
+    db.createUser({user: "root", pwd: "root", roles: ["root"]})
+    db.auth("root", "root")
+    ``` 
+9. 防火墙：开放 27017 端口
+---
+

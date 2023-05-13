@@ -311,7 +311,6 @@ flush privileges;
 ```bash
 mkdir -p /home/lighthouse/docker_data/mariadb/{conf,logs,data}
 cd /home/lighthouse/docker_data/mariadb
-
 # 从容器复制配置文件
 docker run -d --name mariadb --privileged -e MYSQL_ROOT_PASSWORD=root mariadb
 docker cp mariadb:/etc/mysql/. $PWD/conf
@@ -390,9 +389,11 @@ info replication
 ## [MongoDB](https://hub.docker.com/_/mongo)
 - [MongoDB 用户角色配置](https://www.cnblogs.com/out-of-memory/p/6810411.html)
 ```bash
+mkdir -p /home/lighthouse/docker_data/mongodb
+cd /home/lighthouse/docker_data/mongodb
 # 从容器复制一份 mongod.conf，并修改配置
-docker run -d --name mongo mongo:4.4.18
-docker cp mongo:/etc/mongod.conf.orig D:/Docker/Data/MongoDB/mongod.conf
+docker run -d --name mongo mongo:4.4.21
+docker cp mongo:/etc/mongod.conf.orig $PWD/mongod.conf
     storage:
       dbPath: /data/db
     net:
@@ -402,8 +403,8 @@ docker rm mongo
 ```
 ```bash
 docker run -d --name mongo -p 27017:27017 \
--v D:/Docker/Data/MongoDB/mongod.conf:/etc/mongo/mongod.conf \
-mongo:4.4.18 -f ../etc/mongo/mongod.conf
+-v $PWD/mongod.conf:/data/configdb/mongod.conf \
+mongo:4.4.21 -f /data/configdb/mongod.conf
 ```
 ```bash
 # 进入 admin 数据库
@@ -554,6 +555,18 @@ jenkins/jenkins:latest-jdk8
 ---
 ## [Ubuntu](https://hub.docker.com/_/ubuntu)
 ```bash
-docker run -itd --name ubuntu -p 22:22 --privileged ubuntu
+docker run -itd --name ubuntu -p 22:22 -p 8088:8080 [--net jenkins_net --ip 172.11.0.3 ]--privileged ubuntu
 ```
---- 
+```bash
+docker exec -it ubuntu bash
+passwd root
+unminimize
+apt update
+apt upgrade
+apt install -y openssh-client openssh-server vim
+    vim /etc/ssh/sshd_config
+        PermitRootLogin yes
+    /etc/init.d/ssh start
+ssh root@127.0.0.1
+```
+---
