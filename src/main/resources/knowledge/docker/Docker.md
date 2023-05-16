@@ -286,17 +286,19 @@ docker network create [OPTIONS] NETWORK                         创建网络
 ## [MySQL](https://hub.docker.com/_/mysql)
 - [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
+mkdir -p /home/lighthouse/docker_data/mysql/data
+cd /home/lighthouse/docker_data/mysql
 # 从容器复制一份 my.cnf
-docker run -d --name mysql mysql
-docker cp mysql:/etc/mysql/my.cnf D:/Docker/Data/MySQL/my.cnf
+docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root mysql
+docker cp mysql:/etc/my.cnf $PWD/my.cnf
 docker stop mysql
 docker rm mysql
 ```
 ```bash
 docker run -d --name mysql -p 3306:3306 --privileged --restart=unless-stopped \
--v D:/Docker/Data/MySQL/my.cnf:/etc/mysql/my.cnf \
--v D:/Docker/Data/MySQL/data:/var/lib/mysql \
--v D:/Docker/Data/MySQL/files:/var/lib/mysql-files \
+-v $PWD/my.cnf:/etc/mysql/my.cnf \
+-v $PWD/data:/var/lib/mysql \
+-v $PWD/files:/var/lib/mysql-files \
 -e MYSQL_ROOT_PASSWORD=root \
 mysql
 ```
@@ -361,22 +363,26 @@ influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --defa
 ## [Redis](https://hub.docker.com/_/redis)
 - [Docker 部署 Redis](https://blog.csdn.net/qq_41316955/article/details/108381923)
 - [redis.conf](https://redis.io/docs/manual/config/) 选择对应版本
-    - `# bind 127.0.0.1 -::1` 或 `bind 0.0.0.0`x`x`
+    - `# bind 127.0.0.1 -::1` 或 `bind 0.0.0.0`
     - `protected-mode no`
 ```bash
+mkdir -p /home/lighthouse/docker_data/redis/data
+cd /home/lighthouse/docker_data/redis
+# 将 redis.conf scp 到当前目录
+
 docker network create --subnet=172.10.0.0/16 redis_net
 
 docker run -d --name redis-master --restart=unless-stopped \
 --net redis_net --ip 172.10.0.2 -p 6379:6379 \
--v D:/Docker/Data/Redis/data:/data:rw \
--v D:/Docker/Data/Redis/redis.conf:/etc/redis/redis.conf:ro \
-redis redis-server ../etc/redis/redis.conf
+-v $PWD/data:/data:rw \
+-v $PWD/redis.conf:/etc/redis/redis.conf:ro \
+redis redis-server /etc/redis/redis.conf
 
 # replica 不挂载 data 目录，否则 replica 不知该挂载数据还是从 master 复制数据
 docker run -d --name redis-replica \
 --net redis_net --ip 172.10.0.3 -p 6380:6379 \
--v D:/Docker/Data/Redis/redis-replica.conf:/etc/redis/redis.conf:ro \
-redis redis-server ../etc/redis/redis.conf
+-v $PWD/redis-replica.conf:/etc/redis/redis.conf:ro \
+redis redis-server /etc/redis/redis.conf
 ```
 ```bash
 docker exec -it redis-master redis-cli
