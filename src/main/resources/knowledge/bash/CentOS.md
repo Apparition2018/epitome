@@ -297,27 +297,26 @@
     5.5 ssh -T git@github.com                                   验证配置是否成功
 ```
 ---
-## Redis
-```
-1. yum install gcc-c++
-2. https://redis.io/download/
-    wget https://github.com/redis/redis/archive/refs/tags/6.2.2.tar.gz
-    tar -zxvf xxx.tar.gz
-3. 安装
-    3.1 cd redis-6.2.2
-    3.2 make
-    3.4 make PREFIX=/usr/local/redis install
-4. 配置
-    4.1 cd redis-6.2.2
-    4.2 cp redis.conf /usr/local/redis
+## [Redis](https://www.imooc.com/video/23818)
+1. `yum install gcc-c++`
+2. [Download](https://redis.io/download/)
+    - `wget https://github.com/redis/redis/archive/7.0.11.tar.gz`
+    - `tar -zxvf 7.0.11.tar.gz`
+3. 安装：`cd redis-7.0.11` → `make` → `make PREFIX=/usr/local/redis install`
+4. 配置文件
+    ```bash
+    cp redis.conf /usr/local/redis
+    cd /usr/local/redis
+    vim redis.conf
+        requirepass 123456         
+        # bind 127.0.0.1 -::1
+        bind 0.0.0.0
+        daemonize yes
+    ```
 5. 防火墙：开放 6379 端口
-6. 启动
-    6.1 cd /usr/local/redis
-    6.2 vim redis.conf，修改 daemonize no 改成 daemonize yes，保存退出
-    6.3 ./bin/redis-server ./redis.conf
-7. 客户端操作：./bin/redis-cli
-8. 停止：./bin/redis-cli shutdown
-```
+6. 操作
+    - 启动：`./bin/redis-server ./redis.conf`
+    - 客户端：`./bin/redis-cli`
 ---
 ## [RabbitMQ](https://www.imooc.com/video/23816)
 1. [Downloading and Installing RabbitMQ](https://rabbitmq.com/download.html)

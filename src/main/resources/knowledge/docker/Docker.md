@@ -363,8 +363,11 @@ influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --defa
 ## [Redis](https://hub.docker.com/_/redis)
 - [Docker 部署 Redis](https://blog.csdn.net/qq_41316955/article/details/108381923)
 - [redis.conf](https://redis.io/docs/manual/config/) 选择对应版本
-    - `# bind 127.0.0.1 -::1` 或 `bind 0.0.0.0`
-    - `protected-mode no`
+    ```
+    requirepass 123456
+    # bind 127.0.0.1 -::1
+    bind 0.0.0.0
+    ```
 ```bash
 mkdir -p /home/lighthouse/docker_data/redis/data
 cd /home/lighthouse/docker_data/redis
@@ -386,9 +389,11 @@ redis redis-server /etc/redis/redis.conf
 ```
 ```bash
 docker exec -it redis-master redis-cli
+auth 123456
 info replication
 
 docker exec -it redis-replica redis-cli
+auth 123456
 info replication
 ```
 ---

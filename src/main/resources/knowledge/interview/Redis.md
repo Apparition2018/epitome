@@ -82,20 +82,20 @@
 ## [配置](https://redis.io/docs/manual/config/)
 ```
 # 设置客户端密码
-requirepass password
-# 监听 loopback IPv4 和 IPv6
-# docker 下注释掉
+# requirepass password
+# bind 监听主机的网卡 IP
+# bind 127.0.0.1 -::1，监听回送 IPv4 和 IPv6 地址
+# bind 0.0.0.0，监听所有 IPv4 地址
 bind 127.0.0.1 -::1
-# 是否开启保护模式
-# docker 下设置为 no
+# 是否开启保护模式；如果没有设置 requirepass，只接受回送地址的连接
 protected-mode yes
 # 是否守护线程运行
 # docker 下设置为 no，因为 docker run -d 已经是后台启动 
-daemonize no
+daemonize yes
 # 持久化文件存储目录
 dir ./
 # 包含其它配置文件
-include other.conf
+# include /path/to/other.conf
 ```
 - 通过命令行传递参数：使用 `--` 前缀，如：`./redis-server --port 6380 --replicaof 127.0.0.1 6379`
 - 运行时修改配置：`CONFIG SET`，`CONFIG REWRITE`
