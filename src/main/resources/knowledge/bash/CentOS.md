@@ -21,10 +21,6 @@
     vi /etc/sysconfig/network-scripts/ifcfg-eth0; ONBOOT=yes;
     vi ~/.ssh/known_hosts
 ---
-## [腾讯云](https://console.cloud.tencent.com/lighthouse/instance/index?rid=1)
-- 公网：43.136.102.115
-- 内网：10.0.8.8
----
 ## JDK
 1. [downloads](https://www.oracle.com/java/technologies/downloads/archive/) 并安装
     ```
@@ -411,4 +407,24 @@
     ``` 
 9. 防火墙：开放 27017 端口
 ---
-
+## [MinIO](https://www.imooc.com/video/23862)
+1. [Download](https://www.minio.org.cn/download.shtml#/linux)
+    ```bash
+    mkdir /usr/local/minio
+    cd /usr/local/minio
+    wget https://dl.minio.org.cn/server/minio/release/linux-amd64/minio
+    chmod +x minio
+    ```
+2. 编写启动 shell：`vim start-minio.sh` → `chmod +x start-minio.sh`
+    ```shell
+    export MINIO_ROOT_USER=minio
+    export MINIO_ROOT_PASSWORD=minio123
+    # 2>&1 详解：https://blog.csdn.net/icanlove/article/details/38018169
+    # &：后台运行
+    ./minio server --console-address 0.0.0.0:9001 /usr/local/minio/data > /usr/local/minio/minio.log 2>&1 &
+    ```
+3. MinIO Console：`http://localhost:9001/login`
+    - Buckets → Create Bucket → Bucket Name: test → Create Bucket
+    - 点击 test Bucket → Access Policy: Public
+        - 右上角 Browse Bucket → Upload
+---

@@ -3,7 +3,7 @@ package knowledge.api.awt;
 import javax.swing.*;
 import java.awt.*;
 
-import static l.demo.Demo.XIAO_XIN_IMG;
+import static l.demo.Demo.XIAO_XIN_PNG;
 
 /**
  * SystemTray   系统托盘
@@ -14,7 +14,7 @@ import static l.demo.Demo.XIAO_XIN_IMG;
 public class SystemTrayDemo {
 
     public static void main(String[] args) throws AWTException {
-        TrayIcon trayIcon = new TrayIcon(new ImageIcon(XIAO_XIN_IMG).getImage());
+        TrayIcon trayIcon = new TrayIcon(new ImageIcon(XIAO_XIN_PNG).getImage());
         SystemTray.getSystemTray().add(trayIcon);
     }
 }

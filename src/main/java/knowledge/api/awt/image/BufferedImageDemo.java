@@ -16,7 +16,7 @@ import java.io.IOException;
 public class BufferedImageDemo extends Demo {
 
     public static void main(String[] args) throws IOException {
-        BufferedImage bi = ImageIO.read(new File(XIAO_XIN_IMG));
+        BufferedImage bi = ImageIO.read(new File(XIAO_XIN_PNG));
         ImageIO.write(bi, "png", new File(DEMO_PATH + "copy.png"));
     }
 }

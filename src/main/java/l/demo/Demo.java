@@ -27,7 +27,6 @@ public class Demo {
 
     public static Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     public static List<Integer> list = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9));
-    public static List<String> sList = new ArrayList<>(List.of("1 2 3 4 5 6 7 8 9".split(" ")));
     public static List<Integer> descList = List.of(9, 8, 7, 6, 5, 4, 3, 2, 1);
     public static List<Integer> repeatList = new ArrayList<>(List.of(1, 1, 2, 2, 3, 3, 4, 5));
     public static List<Integer> subList = new ArrayList<>(list.subList(1, 6));
@@ -74,13 +73,13 @@ public class Demo {
     public static final int THOUSAND = 1000;
     public static final int MILLION = THOUSAND * 1000;
     public static final int TEN_MILLION = MILLION * 10;
-    public static final int HUNDRED_MILLION = MILLION * 100;
     public static final String HELLO_WORLD = "Hello World!";
     public static final String MY_NAME = "ljh";
     public static final String MY_EMAIL = "88850180@163.com";
     public static final String MY_CY = "中国";
     public static final String MOBILE = "13800589230";
     public static final String ID_CARD = "110101199003077950";
+    public static final String MY_SERVER_IP = "43.136.102.115";
     public static final String BAIDU_HOST = "www.baidu.com";
     public static final String BAIDU_URL = "https://" + BAIDU_HOST;
     public static final String MOZILLA_DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";
@@ -102,7 +101,7 @@ public class Demo {
     public static final String DEMO_FILE_PATH = DEMO_PATH + "demo";
     public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "demo";
     public static final String BIRD_IMG = "https://i.postimg.cc/1zRqNgPw/bird.jpg";
-    public static final String XIAO_XIN_IMG = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
+    public static final String XIAO_XIN_PNG = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
     public static final String VIDEO = RESOURCES_ABSOLUTE_PATH + "static/public/video/movie.ogg";
     public static final String JDBC_PROPS_FILENAME = "jdbc.properties";
 

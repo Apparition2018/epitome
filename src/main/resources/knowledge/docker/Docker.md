@@ -515,16 +515,20 @@ http://localhost:8180
 ``` 
 ---
 ## [MinIO](https://hub.docker.com/r/minio/minio)
-- [MinIO's Docker Implementation](https://docs.min.io/docs/minio-docker-quickstart-guide.html)
+- [Download MinIO](https://www.minio.org.cn/download.shtml#/docker)
+- [MinIO Object Storage for Container](https://min.io/docs/minio/container/index.html)
 ```bash
+mkdir -p /home/lighthouse/docker_data/minio/{data,config}
+cd /home/lighthouse/docker_data/minio
+
 docker run -d --name minio -p 9000:9000 -p 9001:9001 \
--v D:/Docker/Data/MinIO:/data \
--v D:/Docker/Data/MinIO/config:/root/.minio \
+-v $PWD/data:/data \
+-v $PWD/config:/root/.minio \
 -e MINIO_ROOT_USER=minio \
 -e MINIO_ROOT_PASSWORD=minio123 \
 minio/minio server /data --console-address ":9001"
 
-# http://localhost:9001/login
+# http://43.136.102.115:9001/login
 ```
 ---
 ## [Nacos](https://hub.docker.com/r/nacos/nacos-server)

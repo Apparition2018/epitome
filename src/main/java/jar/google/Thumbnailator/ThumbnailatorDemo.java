@@ -18,7 +18,7 @@ import java.io.IOException;
 public class ThumbnailatorDemo extends Demo {
 
     public static void main(String[] args) throws IOException {
-        Thumbnails.of(XIAO_XIN_IMG)
+        Thumbnails.of(XIAO_XIN_PNG)
                 // 缩放
                 .scale(0.5)
                 // 旋转
@@ -28,7 +28,7 @@ public class ThumbnailatorDemo extends Demo {
                 // 输出格式
                 .outputFormat("png")
                 // 水印
-                .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(XIAO_XIN_IMG)), 0.1F)
-                .toFile(DESKTOP + FilenameUtils.getName(XIAO_XIN_IMG));
+                .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(XIAO_XIN_PNG)), 0.1F)
+                .toFile(DESKTOP + FilenameUtils.getName(XIAO_XIN_PNG));
     }
 }

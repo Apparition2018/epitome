@@ -14,7 +14,7 @@ import java.io.File;
 public class MimetypesFileTypeMapDemo extends Demo {
 
     public static void main(String[] args) {
-        p(new MimetypesFileTypeMap().getContentType(new File(XIAO_XIN_IMG)));           // image/png
+        p(new MimetypesFileTypeMap().getContentType(new File(XIAO_XIN_PNG)));           // image/png
         p(new MimetypesFileTypeMap().getContentType(new File(JDBC_PROPS_FILENAME)));    // application/octet-stream
     }
 }
