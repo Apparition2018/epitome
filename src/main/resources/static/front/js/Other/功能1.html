@@ -28,8 +28,8 @@
         </div>
     </div>
     <script class="code w67p" contenteditable="true">
-        Math.random().toString(16).substring(2); // 13位
-        Math.random().toString(36).substring(2); // 11位
+        // toString(x) 表示转 x 进制
+        Math.random().toString(36).slice(-10); // 10位
     </script>
 </section>
 

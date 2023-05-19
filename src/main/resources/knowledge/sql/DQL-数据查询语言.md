@@ -106,6 +106,8 @@ SELECT * FROM (
        SELECT ename, sal, deptno FROM emp ORDER BY sal DESC
    ) t
 WHERE ROWNUM <= 10) WHERE rn > 5;
+-- ROWNUM <= (page * pageSize)
+-- rn > ((page - 1) * pageSize)
 ```
 ---
 ## 排名查询

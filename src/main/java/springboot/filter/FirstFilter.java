@@ -18,22 +18,24 @@ import java.io.IOException;
  */
 // @Order 数字越小代表越先被该 Filter 过滤
 @Order(1)
-@WebFilter(filterName = "firstFilter", urlPatterns = {"/demo/*", "/restful/*"})
+@WebFilter(filterName = "firstFilter", urlPatterns = {"/demo/*", "/persons/*"})
 @Slf4j
 public class FirstFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) {
+        log.info("First Filter init");
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("first filter 1");
+        log.info("First Filter doFilter start");
         filterChain.doFilter(servletRequest, servletResponse);
-        log.info("first filter 2");
+        log.info("First Filter doFilter end");
     }
 
     @Override
     public void destroy() {
+        log.info("First Filter destroy");
     }
 }

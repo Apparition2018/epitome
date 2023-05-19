@@ -44,10 +44,13 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
+        let expires = new Date();
+        expires.setMinutes(expires.getMinutes() + 30);
+
         // 设置 cookie
-        document.cookie = "test1=Hello; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
-        document.cookie = "test2=World";
-        document.cookie; // "test1=Hello; test2=World;"
+        document.cookie = `test1=Hello; expires=${expires.toUTCString()}; path=/`;
+        document.cookie = 'test2=World';
+        document.cookie; // 'test1=Hello; test2=World;'
 
         // 读取 cookie
         const test2 = document.cookie.replace(/(?:(?:^|.*;\s*)test2\s*=\s*([^;]*).*$)|^.*$/, "$1"); // "World"

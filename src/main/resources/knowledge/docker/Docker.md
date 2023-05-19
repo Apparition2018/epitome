@@ -3,7 +3,7 @@
 ---
 ## Reference
 1. [Docker Documentation](https://docs.docker.com/get-started/overview/)
-2. [Docker Hub](https://hub.docker.com)
+2. [RuoYi 应用容器部署](http://doc.ruoyi.vip/ruoyi-cloud/cloud/dokcer.html#%E5%BA%94%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2)
 3. [搭建和使用 Docker-腾讯云](https://cloud.tencent.com/document/product/213/46000)
 ---
 ## 课程
@@ -286,9 +286,10 @@ docker network create [OPTIONS] NETWORK                         创建网络
 ## [MySQL](https://hub.docker.com/_/mysql)
 - [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
 ```bash
-mkdir -p /home/lighthouse/docker_data/mysql/data
+mkdir -p /home/lighthouse/docker_data/mysql/{data,files}
 cd /home/lighthouse/docker_data/mysql
-# 从容器复制一份 my.cnf
+# 从容器复制 my.cnf
+# 查找配置文件位置命令：mysql --verbose --help|grep -A 1 'Default options'
 docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root mysql
 docker cp mysql:/etc/my.cnf $PWD/my.cnf
 docker stop mysql
@@ -402,7 +403,7 @@ info replication
 ```bash
 mkdir -p /home/lighthouse/docker_data/mongodb
 cd /home/lighthouse/docker_data/mongodb
-# 从容器复制一份 mongod.conf，并修改配置
+# 从容器复制 mongod.conf
 docker run -d --name mongo mongo:4.4.21
 docker cp mongo:/etc/mongod.conf.orig $PWD/mongod.conf
     storage:
@@ -446,12 +447,21 @@ tomcat
 ```
 ---
 ## [Nginx](https://hub.docker.com/_/nginx)
+- [Docker 安装 Nginx](https://blog.csdn.net/BThinker/article/details/123507820)
+```bash
+mkdir -p /home/lighthouse/docker_data/nginx/{conf,logs,html}
+cd /home/lighthouse/docker_data/nginx
+# 从容器复制配置文件
+docker run -d --name nginx nginx
+docker cp nginx:/etc/nginx $PWD/conf
+docker stop nginx
+docker rm nginx
+```
 ```bash
 docker run -d --name nginx -p 80:80 --restart=unless-stopped \
--v D:/Docker/Data/Nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
--v D:/Docker/Data/Nginx/conf/conf.d:/etc/nginx/conf.d \
--v D:/Docker/Data/Nginx/log:/var/log/nginx \
--v D:/Docker/Data/Nginx/html:/usr/share/nginx/html \
+-v $PWD/conf:/etc/nginx \
+-v $PWD/logs:/var/log/nginx \
+-v $PWD/html:/usr/share/nginx/html \
 nginx
 ```
 ---

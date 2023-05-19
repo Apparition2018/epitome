@@ -14,22 +14,24 @@ import java.io.IOException;
  * @since 2019/8/8 19:39
  */
 @Order(2)
-@WebFilter(filterName = "secondFilter", urlPatterns = {"/demo/*", "/restful/*"})
+@WebFilter(filterName = "secondFilter", urlPatterns = {"/demo/*", "/persons/*"})
 @Slf4j
 public class SecondFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) {
+        log.info("Second Filter init");
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("second filter 1");
+        log.info("Second Filter doFilter start");
         filterChain.doFilter(servletRequest, servletResponse);
-        log.info("second filter 2");
+        log.info("Second Filter doFilter end");
     }
 
     @Override
     public void destroy() {
+        log.info("Second Filter destroy");
     }
 }
