@@ -17,7 +17,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import springboot.formatter.BooleanFormat;
+import springboot.util.formatter.BooleanFormat;
 
 import java.util.Date;
 import java.util.concurrent.CompletableFuture;

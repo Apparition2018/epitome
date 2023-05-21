@@ -18,13 +18,13 @@ import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import springboot.controller.WebMvcConfigController;
-import springboot.converter.IntegerToEnumConverterFactory;
-import springboot.converter.StringToEnumConverterFactory;
-import springboot.formatter.BooleanFormatAnnotationFormatterFactory;
-import springboot.handler.MyHandlerMethodReturnValueHandler;
 import springboot.interceptor.HttpInterceptor;
-import springboot.resolver.argument.PersonArgumentResolver;
 import springboot.util.SpringUtils;
+import springboot.util.converter.IntegerToEnumConverterFactory;
+import springboot.util.converter.StringToEnumConverterFactory;
+import springboot.util.formatter.BooleanFormatAnnotationFormatterFactory;
+import springboot.util.handler.MyHandlerMethodReturnValueHandler;
+import springboot.util.resolver.PersonArgumentResolver;
 
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;

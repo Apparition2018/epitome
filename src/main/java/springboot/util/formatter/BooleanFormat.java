@@ -1,4 +1,4 @@
-package springboot.formatter;
+package springboot.util.formatter;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package springboot.formatter;
+package springboot.util.formatter;
 
 import lombok.NonNull;
 import org.springframework.context.support.EmbeddedValueResolutionSupport;

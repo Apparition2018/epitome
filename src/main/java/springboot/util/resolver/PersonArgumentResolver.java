@@ -1,4 +1,4 @@
-package springboot.resolver.argument;
+package springboot.util.resolver;
 
 import l.demo.Person;
 import lombok.NonNull;
