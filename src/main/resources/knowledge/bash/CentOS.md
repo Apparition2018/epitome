@@ -355,7 +355,7 @@
     ```
 ---
 ## [MongoDB](https://www.imooc.com/video/23829)
-1. download
+1. Download
     - [MongoDB Community Server Download](https://www.mongodb.com/try/download/community)
         ```
         Version         current
@@ -427,4 +427,14 @@
     - Buckets → Create Bucket → Bucket Name: test → Create Bucket
     - 点击 test Bucket → Access Policy: Public
         - 右上角 Browse Bucket → Upload
+---
+## [Nacos](https://www.imooc.com/video/23826)
+1. [Download](https://github.com/alibaba/nacos/releases)
+    ```
+    wget https://github.com/alibaba/nacos/releases/download/2.1.1/nacos-server-2.1.1.tar.gz
+    tar -zxvf nacos-server-2.1.1.tar.gz
+    mv nacos /usr/local/
+    cd /usr/local/nacos
+    ```
+2. 启动：`sh ./bin/startup.sh -m standalone`
 ---

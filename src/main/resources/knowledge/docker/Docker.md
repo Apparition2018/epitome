@@ -305,8 +305,8 @@ mysql
 ```
 ```bash
 docker exec -it mysql mysql -uroot -proot
-create user ljh@'%' identified by '123456';
-grant all privileges on *.* to ljh@'%' with grant option;
+create user root@'%' identified by 'root';
+grant all privileges on *.* to root@'%' with grant option;
 flush privileges;
 ```
 ---
@@ -316,7 +316,7 @@ mkdir -p /home/lighthouse/docker_data/mariadb/{conf,logs,data}
 cd /home/lighthouse/docker_data/mariadb
 # 从容器复制配置文件
 docker run -d --name mariadb --privileged -e MYSQL_ROOT_PASSWORD=root mariadb
-docker cp mariadb:/etc/mysql/. $PWD/conf
+docker cp mariadb:/etc/mysql/ $PWD/conf
 docker stop mariadb
 docker rm mariadb
 ```
@@ -538,23 +538,35 @@ docker run -d --name minio -p 9000:9000 -p 9001:9001 \
 -e MINIO_ROOT_PASSWORD=minio123 \
 minio/minio server /data --console-address ":9001"
 
-# http://43.136.102.115:9001/login
+# Console：http://43.136.102.115:9001/login
 ```
 ---
 ## [Nacos](https://hub.docker.com/r/nacos/nacos-server)
 - [Docker 部署 Nacos](https://www.cnblogs.com/serendipity-fzx/articles/15400618.html)
 ```bash
-docker run -d --name nacos -p 8848:8848 -e MODE=standalone nacos/nacos-server
-
-# RuoYi
+mkdir -p /home/lighthouse/docker_data/nacos/{conf,logs}
+cd /home/lighthouse/docker_data/nacos
+# 从容器复制 conf 和 logs 文件夹
+docker run -d --name nacos -e MODE=standalone nacos/nacos-server
+docker cp nacos:/home/nacos/conf/ $PWD/conf
+docker cp nacos:/home/nacos/logs/ $PWD/logs
+docker stop nacos
+docker rm nacos
+```
+```bash
 docker run -d --name nacos -p 8848:8848 -p 9848:9848 -p 9849:9849 \
 -e MODE=standalone \
 -e SPRING_DATASOURCE_PLATFORM=mysql \
--e MYSQL_SERVICE_HOST=172.17.0.3 \
+-e MYSQL_SERVICE_HOST=43.136.102.115 \
 -e MYSQL_SERVICE_USER=root \
 -e MYSQL_SERVICE_PASSWORD=root \
--e MYSQL_SERVICE_DB_NAME=ry-config \
+-e MYSQL_SERVICE_DB_NAME=nacos \
+-e MYSQL_SERVICE_DB_PARAM="characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true" \
+-v $PWD/conf:/home/nacos/conf \
+-v $PWD/logs:/home/nacos/logs \
 nacos/nacos-server
+
+# Console：http://43.136.102.115:8848/nacos/index.html nacos/nacos
 ```
 ---
 ## [Sentinel](https://hub.docker.com/r/bladex/sentinel-dashboard)
