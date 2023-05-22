@@ -53,7 +53,7 @@ public class BooleanUtilsDemo {
 
     @Test
     public void is() {
-
+        p(BooleanUtils.isTrue(null));       // false
         p(BooleanUtils.isTrue(true));       // true
         p(BooleanUtils.isNotTrue(true));    // false
         p(BooleanUtils.isFalse(true));      // false

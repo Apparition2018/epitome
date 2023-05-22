@@ -316,7 +316,7 @@ mkdir -p /home/lighthouse/docker_data/mariadb/{conf,logs,data}
 cd /home/lighthouse/docker_data/mariadb
 # 从容器复制配置文件
 docker run -d --name mariadb --privileged -e MYSQL_ROOT_PASSWORD=root mariadb
-docker cp mariadb:/etc/mysql/ $PWD/conf
+docker cp mariadb:/etc/mysql/. $PWD/conf
 docker stop mariadb
 docker rm mariadb
 ```
@@ -543,13 +543,14 @@ minio/minio server /data --console-address ":9001"
 ---
 ## [Nacos](https://hub.docker.com/r/nacos/nacos-server)
 - [Docker 部署 Nacos](https://www.cnblogs.com/serendipity-fzx/articles/15400618.html)
+- [Nacos 内存参数调优](https://cloud.tencent.com/developer/article/1913455)
 ```bash
 mkdir -p /home/lighthouse/docker_data/nacos/{conf,logs}
 cd /home/lighthouse/docker_data/nacos
 # 从容器复制 conf 和 logs 文件夹
 docker run -d --name nacos -e MODE=standalone nacos/nacos-server
-docker cp nacos:/home/nacos/conf/ $PWD/conf
-docker cp nacos:/home/nacos/logs/ $PWD/logs
+docker cp nacos:/home/nacos/conf/. $PWD/conf
+docker cp nacos:/home/nacos/logs/. $PWD/logs
 docker stop nacos
 docker rm nacos
 ```
@@ -562,6 +563,11 @@ docker run -d --name nacos -p 8848:8848 -p 9848:9848 -p 9849:9849 \
 -e MYSQL_SERVICE_PASSWORD=root \
 -e MYSQL_SERVICE_DB_NAME=nacos \
 -e MYSQL_SERVICE_DB_PARAM="characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true" \
+-e JVM_XMS=64m \
+-e JVM_XMX=64m \
+-e JVM_XMN=16m \
+-e JVM_MS=8m \
+-e JVM_MMS=8m \
 -v $PWD/conf:/home/nacos/conf \
 -v $PWD/logs:/home/nacos/logs \
 nacos/nacos-server

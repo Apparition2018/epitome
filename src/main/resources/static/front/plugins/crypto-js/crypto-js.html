@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>crypto-js</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+            integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap w40p">
+        <div class="caption">Base64</div>
+        <div class="centered">
+        </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
+    <script class="code w60p" contenteditable="true">
+        $(function () {
+            let obj = {
+                a: "A",
+                b: "B"
+            }
+            /* obj → json */
+            let json = JSON.stringify(obj);
+            /* json → WordArray object */
+            let words = CryptoJS.enc.Utf8.parse(json);
+            /* WordArray object → base64 */
+            const base64 = CryptoJS.enc.Base64.stringify(words);
+            /* base64 → WordArray object */
+            words = CryptoJS.enc.Base64.parse(base64);
+            /* WordArray object → json */
+            json = CryptoJS.enc.Utf8.stringify(words);
+            /* json → obj */
+            obj = JSON.parse(json);
+        })
+    </script>
+</section>
+</body>
+</html>
