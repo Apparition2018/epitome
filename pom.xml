@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.6</version>
+        <version>3.1.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ljh</groupId>
@@ -18,53 +18,96 @@
         <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.compilerVersion>${java.version}</maven.compiler.compilerVersion>
         <!-- http://maven.apache.org/general.html#encoding-warning -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- http://maven.apache.org/general.html#special-characters-site -->
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- 跳过 Test -->
         <skipTests>true</skipTests>
+
         <!-- dependency -->
+        <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
         <pagehelper-spring-boot-starter.version>1.4.6</pagehelper-spring-boot-starter.version>
-        <mybatis-spring.version>3.0.1</mybatis-spring.version>
+        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+        <mybatis-spring.version>3.0.2</mybatis-spring.version>
+        <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
         <mapper-spring-boot-starter.version>4.2.2</mapper-spring-boot-starter.version>
+        <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
         <mybatis-dynamic-sql.version>1.5.0</mybatis-dynamic-sql.version>
-        <druid.version>1.2.17</druid.version>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+        <druid.version>1.2.18</druid.version>
+        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
+        <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
         <commons-cli.version>1.5.0</commons-cli.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
         <commons-configuration2.version>2.9.0</commons-configuration2.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
         <commons-csv.version>1.10.0</commons-csv.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
         <commons-email.version>1.5</commons-email.version>
+        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
         <commons-fileupload.version>1.5</commons-fileupload.version>
-        <curator.version>5.4.0</curator.version>
-        <tika.version>2.7.0</tika.version>
-        <jsoup.version>1.15.4</jsoup.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
+        <curator.version>5.5.0</curator.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
+        <tika.version>2.8.0</tika.version>
+        <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+        <jsoup.version>1.16.1</jsoup.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.2.3</poi.version>
+        <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
         <nimbus-jose-jwt.version>9.31</nimbus-jose-jwt.version>
+        <!-- https://mvnrepository.com/artifact/com.ejlchina/okhttps -->
         <okhttps.version>3.5.3</okhttps.version>
+        <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava2 -->
         <retrofit2.version>2.9.0</retrofit2.version>
-        <minio.version>8.5.2</minio.version>
+        <!-- https://mvnrepository.com/artifact/io.minio/minio -->
+        <minio.version>8.5.3</minio.version>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <fastjson.version>1.2.83</fastjson.version>
-        <tablibs.version>1.2.5</tablibs.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
+        <tablibs-standard.version>1.2.5</tablibs-standard.version>
+        <!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
         <protostuff.version>1.8.0</protostuff.version>
+        <!-- https://mvnrepository.com/artifact/ws.schild/jave-all-deps -->
         <jave2.version>3.3.1</jave2.version>
+        <!-- https://mvnrepository.com/artifact/org.bytedeco/javacv -->
         <javacv.version>1.5.8</javacv.version>
+        <!-- https://mvnrepository.com/artifact/org.dom4j/dom4j -->
         <dom4j.version>2.1.4</dom4j.version>
+        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
         <springdoc.version>1.7.0</springdoc.version>
+        <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
         <jmh.version>1.36</jmh.version>
+        <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
         <easy-captcha.version>1.6.2</easy-captcha.version>
+        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
         <hutool.version>5.8.18</hutool.version>
+        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <cglib.version>3.3.0</cglib.version>
+        <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
         <emoji.version>5.1.1</emoji.version>
+        <!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
         <jsch.version>0.1.55</jsch.version>
+        <!-- https://mvnrepository.com/artifact/com.github.promeg/tinypinyin -->
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
+        <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
         <zxing.version>3.5.1</zxing.version>
-        <lucene-analyzers-smartcn.version>8.11.2</lucene-analyzers-smartcn.version>
-        <oshi.version>6.4.1</oshi.version>
-        <jol-core.version>0.17</jol-core.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
+        <lucene-analyzers.version>8.11.2</lucene-analyzers.version>
+        <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
+        <oshi.version>6.4.2</oshi.version>
+        <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
+        <jol.version>0.17</jol.version>
+        <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
         <thumbnailator.version>0.4.19</thumbnailator.version>
+        <!-- https://mvnrepository.com/artifact/de.schlichtherle.truelicense/truelicense-core -->
         <truelicense.version>1.33</truelicense.version>
+
         <!-- plugin -->
+        <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin -->
         <mybatis-generator-maven-plugin.version>1.4.2</mybatis-generator-maven-plugin.version>
     </properties>
 
@@ -328,7 +371,7 @@
         <dependency>
             <groupId>org.apache.taglibs</groupId>
             <artifactId>taglibs-standard-impl</artifactId>
-            <version>${tablibs.version}</version>
+            <version>${tablibs-standard.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -445,7 +488,7 @@
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-smartcn</artifactId>
-            <version>${lucene-analyzers-smartcn.version}</version>
+            <version>${lucene-analyzers.version}</version>
         </dependency>
 
         <!-- oshi：获取系统和硬件信息工具 -->
@@ -459,7 +502,7 @@
         <dependency>
             <groupId>org.openjdk.jol</groupId>
             <artifactId>jol-core</artifactId>
-            <version>${jol-core.version}</version>
+            <version>${jol.version}</version>
         </dependency>
 
         <!-- thumbnailator：一个 Java 的缩略图生成库 -->
@@ -528,6 +571,9 @@
                     <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <fork>true</fork>
+                    <!-- https://maven.apache.org/plugins/maven-compiler-plugin/examples/compile-using-different-jdk.html -->
+                    <compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <compilerArgs>
                         <arg>-Xlint:unchecked</arg>
