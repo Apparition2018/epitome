@@ -12,7 +12,7 @@
     <script src="https://res.wx.qq.com/t/wx_fed/weui.js/res/1.2.18/weui.min.js"></script>
 </head>
 <body>
-<section class="code-wrap">
+<section class="code-wrap h250">
     <div class="css-live-wrap">
         <div class="caption">weui.confirm 和 weui.alert 嵌套使用</div>
         <div class="caption">需要先调用 hide()</div>
@@ -21,12 +21,148 @@
         </div>
     </div>
     <script class="code" contenteditable="true">
-        $('.demo-click').click(function() {
-            const confirm = weui.confirm('确定？', function() {
-               confirm.hide(function() {
-                   weui.alert('成功！');
-               })
+        $(function() {
+            $('.demo-click').click(function () {
+                const confirm = weui.confirm('确定？', function () {
+                    confirm.hide(function () {
+                        weui.alert('成功！');
+                    })
+                });
+            })
+        })
+    </script>
+</section>
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://github.com/Tencent/weui.js/blob/master/docs/component/uploader.md">uploader</a>
+        </div>
+        <div class="caption">
+            <a href="https://github.com/Tencent/weui.js/blob/master/docs/component/gallery.md">gallery</a>
+        </div>
+        <div class="centered w50p">
+            <div class="weui-cells weui-cells_form" id="uploader" max="3">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <div class="weui-uploader">
+                            <div class="weui-uploader__hd">
+                                <p class="weui-uploader__title">图片上传</p>
+                                <div class="weui-uploader__info">&nbsp;<span id="uploadCnt">0</span>/3</div>
+                            </div>
+                            <div class="weui-uploader__bd">
+                                <ul class="weui-uploader__files" id="uploaderFiles"></ul>
+                                <div class="weui-uploader__input-box">
+                                    <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*"
+                                           capture="camera" multiple/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        $(function() {
+            const selector = '#uploader';
+            const allowTypes = ["image/jpg", "image/jpeg", "image/png", "image/gif"];
+            const maxSize = 10 * 1024 * 1024;
+            const maxUploadCnt = $(selector).attr('max') || 1;
+            weui.uploader(selector, {
+                url: 'http://localhost:3333/multipart-file/upload/file',
+                // true-自动上传；false-手动上传，通过 this.upload() 上传
+                auto: true,
+                type: 'file',
+                // 文件上传域的 name
+                fileVal: 'file',
+                // 压缩配置，false 则不压缩
+                compress: {
+                    // 最大宽度
+                    width: 4090,
+                    // 最大高度
+                    height: 2160,
+                    // 压缩质量, 取值范围 0 ~ 1
+                    quality: 1
+                },
+                // 文件添加前的回调
+                onBeforeQueued: function (files) {
+                    // `this` 是轮询到的文件, `files` 是所有文件
+
+                    if (allowTypes.indexOf(this.type) < 0) {
+                        weui.alert('请上传图片');
+                        return false; // 阻止文件添加
+                    }
+                    if (this.size > maxSize) {
+                        weui.alert('请上传不超过10M的图片');
+                        return false;
+                    }
+                    // <input multiple/> 可多选的情况下，防止选择文件数量超出上限
+                    if (files.length > maxUploadCnt) {
+                        weui.alert('最多只能上传' + maxUploadCnt + '张图片，请重新选择');
+                        return false;
+                    }
+                    let uploadCnt = $(selector).find('.weui-uploader__file').length;
+                    if (uploadCnt + 1 > maxUploadCnt) {
+                        weui.alert('最多只能上传5张图片');
+                        return false;
+                    }
+
+                    // return true; // 阻止默认行为，不插入预览图的框架
+                },
+                // 文件添加成功的回调
+                onQueued: function () {
+                    console.log(this);
+
+                    let uploadCnt = $(selector).find('.weui-uploader__file').length;
+                    if (uploadCnt >= maxUploadCnt) $(selector).find('.weui-uploader__input-box').css('display', 'none');
+                    $('#uploadCnt').text(uploadCnt);
+
+                    // console.log(this.status); // 文件的状态：'ready', 'progress', 'success', 'fail'
+                    // console.log(this.base64); // 如果是base64上传，file.base64可以获得文件的base64
+
+                    // this.upload(); // 如果是手动上传，这里可以通过调用upload来实现；也可以用它来实现重传。
+                    // this.stop(); // 中断上传
+
+                    // return true; // 阻止默认行为，不显示预览图的图像
+                },
+                // 文件上传前的回调
+                onBeforeSend: function (data, headers) {
+                    console.log(this, data, headers);
+                    // $.extend(data, { test: 1 }); // 可以扩展此对象来控制上传参数
+                    // $.extend(headers, { Origin: 'http://127.0.0.1' }); // 可以扩展此对象来控制上传头部
+
+                    // return false; // 阻止文件上传
+                },
+                // 上传进度的回调
+                onProgress: function (percent) {
+                    console.log(this, percent);
+                    // return true; // 阻止默认行为，不使用默认的进度显示
+                },
+                onSuccess: function (ret) {
+                    console.log(this, ret);
+                    // return true; // 阻止默认行为，不使用默认的成功态
+                },
+                onError: function (err) {
+                    console.log(this, err);
+                    // return true; // 阻止默认行为，不使用默认的失败态
+                }
             });
+
+            $(selector).on('click', '.weui-uploader__file', function () {
+                let $this = $(this);
+                let imgUrl = $this.attr('style').match(/(?<=background-image:\s?url\(")[^)]*?(?="\))/);
+                if (imgUrl) {
+                    let gallery = weui.gallery(imgUrl[0], {
+                        onDelete: function () {
+                            weui.confirm('确定删除此图片？', function () {
+                                $this.parent().parent().children('.weui-uploader__input-box').css('display', 'block');
+                                $this.remove();
+                                gallery.hide();
+                            });
+                        }
+                    });
+                }
+            })
         })
     </script>
 </section>
