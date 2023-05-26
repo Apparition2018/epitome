@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import static l.demo.Demo.DEMO_ABSOLUTE_PATH;
+import static l.demo.Demo.UPLOAD_ABSOLUTE_PATH;
 
 /**
  * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD">RuoYi 上传下载 (CommonController)</a>
@@ -117,7 +117,7 @@ public class MultipartFileController {
     @Operation(summary = "上传文件")
     public Result<String> uploadFile(HttpServletRequest request) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-        MultipartFile file = multipartRequest.getFile("file-input");
+        MultipartFile file = multipartRequest.getFile("file");
         if (file != null && !file.isEmpty()) {
             log.info("ContentType: {}", file.getContentType());             // application/vnd.ms-excel
             log.info("Size: {}", file.getSize());                           // 18944
@@ -125,7 +125,7 @@ public class MultipartFileController {
             log.info("OriginalFilename: {}", file.getOriginalFilename());   // Yearly Plan.xls
 
             // 将接收到的文件传输到给定的目标文件
-            file.transferTo(new File(DEMO_ABSOLUTE_PATH + file.getOriginalFilename()));
+            file.transferTo(new File(UPLOAD_ABSOLUTE_PATH + file.getOriginalFilename()));
             return Result.success("success");
         } else {
             return Result.failure(ResultCode.PARAM_MISS, "上传文件不能为空");

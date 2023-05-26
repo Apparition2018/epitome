@@ -94,11 +94,12 @@ public class Demo {
     public static final String JAVA_PATH = "src/main/java/";
     public static final String RESOURCES_PATH = "src/main/resources/";
     public static final String RESOURCES_ABSOLUTE_PATH = USER_DIR + File.separator + RESOURCES_PATH;
-    public static final String DEMO_PATH = RESOURCES_PATH + "demo/";
-    public static final String HU_DEMO_PATH = DEMO_PATH + "hutool/";
+    public static final String DEMO_PATH = RESOURCES_PATH + "demo" + File.separator;
+    public static final String HU_DEMO_PATH = DEMO_PATH + "hutool" + File.separator;
     public static final String DEMO_ABSOLUTE_PATH = USER_DIR + File.separator + DEMO_PATH;
     public static final String HU_DEMO_ABSOLUTE_PATH = USER_DIR + File.separator + HU_DEMO_PATH;
     public static final String DEMO_FILE_PATH = DEMO_PATH + "demo";
+    public static final String UPLOAD_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "upload" + File.separator;
     public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "demo";
     public static final String BIRD_IMG = "https://i.postimg.cc/1zRqNgPw/bird.jpg";
     public static final String XIAO_XIN_PNG = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
