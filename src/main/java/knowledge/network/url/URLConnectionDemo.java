@@ -1,6 +1,7 @@
 package knowledge.network.url;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
 
@@ -86,7 +87,7 @@ public class URLConnectionDemo extends Demo {
         String line;
         StringBuilder sb = new StringBuilder();
         while (null != (line = br.readLine())) {
-            sb.append(line).append("\n");
+            sb.append(line).append(StringUtils.CR);
         }
         p(sb);
     }

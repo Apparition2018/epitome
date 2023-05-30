@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import knowledge.oop.interface_.FunctionalInterface;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -54,7 +55,7 @@ public class StrategyDemo {
     @Test
     public void testStrategy() {
         MovieTicket ticket = new MovieTicket(60D, new NormalDiscount());
-        System.out.println("原始价格：" + ticket.getPrice() + "\n");
+        System.out.println("原始价格：" + ticket.getPrice() + StringUtils.CR);
 
         ticket.setDiscount(new ChildrenDiscount());
         System.out.println("折扣价格：" + ticket.getPrice());
@@ -129,7 +130,7 @@ public class StrategyDemo {
      *
      * @see <a href="https://mp.weixin.qq.com/s/hkypvNBkRjPM6HM51_jW9g">优化策略模式</a>
      */
-    private static class FunctionInterfaceStrategyDemo {
+    static class FunctionInterfaceStrategyDemo {
         private final static EnumMap<DiscountEnum, Function<Double, Double>> STRATEGY_MAP = new EnumMap<>(DiscountEnum.class);
 
         static {
@@ -150,7 +151,7 @@ public class StrategyDemo {
         @Test
         public void testStrategyLambda() {
             double price = 60D;
-            System.out.println("折扣价格：" + STRATEGY_MAP.get(DiscountEnum.STUDENT).apply(price) + "\n");
+            System.out.println("折扣价格：" + STRATEGY_MAP.get(DiscountEnum.STUDENT).apply(price) + StringUtils.CR);
             System.out.println("折扣价格：" + STRATEGY_MAP.get(DiscountEnum.CHILDREN).apply(price));
         }
 

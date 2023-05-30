@@ -3,6 +3,7 @@ package springboot.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpHeaders;
 import org.springframework.core.io.UrlResource;
 import org.springframework.core.io.support.ResourceRegion;
 import org.springframework.http.HttpStatus;
@@ -33,7 +34,7 @@ public class VideoController {
         UrlResource resource = new UrlResource("https://www.runoob.com/try/demo_source/movie.mp4");
         // 2. 视频文件
         // FileUrlResource resource = new FileUrlResource("F:\\video\\movie.mp4");
-        String range = request.getHeader("Range");
+        String range = request.getHeader(HttpHeaders.RANGE);
         ResourceRegion resourceRegion = this.getResourceRegion(resource, range);
         Optional<MediaType> mediaType = MediaTypeFactory.getMediaType(resource);
         return ResponseEntity.status(HttpStatus.PARTIAL_CONTENT)

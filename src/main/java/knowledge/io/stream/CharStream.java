@@ -1,6 +1,7 @@
 package knowledge.io.stream;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -62,14 +63,14 @@ public class CharStream extends Demo {
             while (isr.read(data) != -1) {
                 isrString.append(new String(data));
             }
-            p(isrString + "\n");
+            p(isrString + StringUtils.CR);
 
             /* FileReader */
             StringBuilder frString = new StringBuilder();
             while (fr.read(data) != -1) {
                 frString.append(new String(data));
             }
-            p(frString + "\n");
+            p(frString + StringUtils.CR);
 
             /* BufferedReader */
             String line;
@@ -151,7 +152,7 @@ public class CharStream extends Demo {
             }
 
             // 第一种获取数据：toString()
-            p(caw + "\n");
+            p(caw + StringUtils.CR);
 
             // 第二种获取数据：toByteArray()
             // char[]	    toCharArray()           返回输入数据的副本

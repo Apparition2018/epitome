@@ -1,6 +1,7 @@
 package knowledge.io.stream;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -117,7 +118,7 @@ public class ByteStream extends Demo {
         }
 
         // 第一种获取数据：toString()
-        p(baos + "\n");
+        p(baos + StringUtils.CR);
 
         // 第二种获取数据：toByteArray()
         // byte[]	        toByteArray()                   创建一个新分配的 byte 数组

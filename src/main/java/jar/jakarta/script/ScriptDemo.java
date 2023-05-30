@@ -1,4 +1,4 @@
-package jar.javax.script;
+package jar.jakarta.script;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -63,7 +63,7 @@ public class ScriptDemo extends Demo {
         int var2 = 99;
 
         // Object	    eval(Reader reader)                         除了脚本的源是以 Reader 形式提供的外，与 eval(String) 相同
-        engine.eval(new FileReader(JAVA_PATH + "jar/javax/script/model.js"));
+        engine.eval(new FileReader(JAVA_PATH + "jar/jakarta/script/model.js"));
         if (engine instanceof Invocable) {
             Invocable invocable = (Invocable) this.engine;
             // Object	invokeFunction(String name, Object... args) 用于调用脚本中定义的顶层程序和函数

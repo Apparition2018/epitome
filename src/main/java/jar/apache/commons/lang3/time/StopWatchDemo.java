@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3.time;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.StopWatch;
 
 import java.util.concurrent.TimeUnit;
@@ -22,16 +23,16 @@ public class StopWatchDemo {
         TimeUnit.MILLISECONDS.sleep(50);
         // 切点
         stopWatch.split();
-        p("开始到现在：" + stopWatch.getTime());                      // 开始到现在：50
-        p("开始到现在：" + stopWatch.getTime(TimeUnit.MILLISECONDS)); // 开始到现在：50
-        p("开始到现在：" + stopWatch.getNanoTime());                  // 开始到现在：50000000
-        p("开始到现在：" + stopWatch.formatTime() + "\n");            // 开始到现在：00:00:00.50
+        p("开始到现在：" + stopWatch.getTime());                          // 开始到现在：50
+        p("开始到现在：" + stopWatch.getTime(TimeUnit.MILLISECONDS));     // 开始到现在：50
+        p("开始到现在：" + stopWatch.getNanoTime());                      // 开始到现在：50000000
+        p("开始到现在：" + stopWatch.formatTime() + StringUtils.CR);      // 开始到现在：00:00:00.50
 
         TimeUnit.MILLISECONDS.sleep(100);
-        p("开始到现在：" + stopWatch.getTime());                      // 开始到现在：150
-        p("开始到切点：" + stopWatch.getSplitTime());                 // 开始到切点：50
-        p("开始到切点：" + stopWatch.getSplitNanoTime());             // 开始到切点：50000000
-        p("开始到切点：" + stopWatch.formatSplitTime() + "\n");       // 开始到切点：00:00:00.50
+        p("开始到现在：" + stopWatch.getTime());                          // 开始到现在：150
+        p("开始到切点：" + stopWatch.getSplitTime());                     // 开始到切点：50
+        p("开始到切点：" + stopWatch.getSplitNanoTime());                 // 开始到切点：50000000
+        p("开始到切点：" + stopWatch.formatSplitTime() + StringUtils.CR); // 开始到切点：00:00:00.50
         // 取消切点
         stopWatch.unsplit();
 
@@ -48,7 +49,7 @@ public class StopWatchDemo {
         // 恢复暂停
         stopWatch.resume();
         TimeUnit.MILLISECONDS.sleep(50);
-        p("重开到现在：" + stopWatch.getTime() + "\n");               // 重开到现在：100
+        p("重开到现在：" + stopWatch.getTime() + StringUtils.CR);               // 重开到现在：100
 
         // 停止
         stopWatch.stop();

@@ -50,9 +50,7 @@ public class MybatisTest {
         System.out.println(count);
     }
 
-    /**
-     * `@MapKey
-     */
+    /** &#064;MapKey */
     @Test
     public void testMapKey() {
         sysUserMapper.map(null).entrySet().forEach(user -> {
@@ -64,9 +62,7 @@ public class MybatisTest {
         });
     }
 
-    /**
-     * <association/> 和 <collection/>
-     */
+    /** <association/> 和 <collection/> */
     @Test
     public void testAssociationAndCollection() throws JsonProcessingException {
         System.out.println(objectMapper.writeValueAsString(sysUserMapper.list(new SysUser())));

@@ -5,6 +5,7 @@ import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import l.demo.JsonDemo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -33,9 +34,7 @@ public class JSONUtilDemo implements JsonDemo {
     JSONObject courseJsonObject;
     JSONArray studentsJsonArray;
 
-    /**
-     * 复杂/简单对象JSON ⇆ JSONObject ⇆ JavaBean
-     */
+    /** 复杂/简单对象JSON ⇆ JSONObject ⇆ JavaBean */
     @Test
     public void testJSONObject() {
         // 复杂对象JSON → JSONObject
@@ -46,7 +45,7 @@ public class JSONUtilDemo implements JsonDemo {
         // JSONObject → 复杂对象JSON
         jsonStr = JSONUtil.toJsonStr(jsonObject);
         jsonStr = jsonObject.toJSONString(0);
-        p(jsonStr + "\n");
+        p(jsonStr + StringUtils.CR);
 
         // 复杂对象JSON → JavaBean
         teacher = JSONUtil.toBean(JSON_COMPLEX, Teacher.class);
@@ -55,7 +54,7 @@ public class JSONUtilDemo implements JsonDemo {
         p(teacher);
         // JavaBean → 复杂对象JSON
         jsonStr = JSONUtil.toJsonStr(teacher);
-        p(jsonStr + "\n");
+        p(jsonStr + StringUtils.CR);
 
         // JSONObject → JavaBean
         teacher = JSONUtil.toBean(jsonObject, Teacher.class);
@@ -65,12 +64,10 @@ public class JSONUtilDemo implements JsonDemo {
 
         // JavaBean → JSONObject
         jsonObject = JSONUtil.parseObj(teacher);
-        p(jsonObject + "\n");
+        p(jsonObject + StringUtils.CR);
     }
 
-    /**
-     * 数组对象JSON ⇆ JSONObject ⇆ List<JavaBean>
-     */
+    /** 数组对象JSON ⇆ JSONObject ⇆ List<JavaBean> */
     @Test
     public void testJSONArray() {
         // 数组对象JSON → JSONArray
@@ -79,7 +76,7 @@ public class JSONUtilDemo implements JsonDemo {
         // JSONArray → 数组对象JSON
         jsonStr = JSONUtil.toJsonStr(jsonArray);
         jsonStr = jsonArray.toJSONString(0);
-        p(jsonStr + "\n");
+        p(jsonStr + StringUtils.CR);
 
         // 数组对象JSON → List<JavaBean>
         students = JSONUtil.toBean(JSON_ARRAY, new TypeReference<ArrayList<Student>>() {
@@ -87,13 +84,13 @@ public class JSONUtilDemo implements JsonDemo {
         p(students);
         // List<JavaBean> → 数组对象JSON
         jsonStr = JSONUtil.toJsonStr(students);
-        p(jsonStr + "\n");
+        p(jsonStr + StringUtils.CR);
 
         // JSONArray → List<JavaBean>
         students = JSONUtil.toList(jsonArray, Student.class);
         p(students);
         // List<JavaBean> → JSONArray
         jsonArray = JSONUtil.parseArray(students);
-        p(jsonArray + "\n");
+        p(jsonArray + StringUtils.CR);
     }
 }

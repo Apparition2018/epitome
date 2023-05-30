@@ -3,6 +3,7 @@ package spring.api.http;
 import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
@@ -138,9 +139,7 @@ public class RestTemplateDemo extends Demo {
         // 同 postForEntity()，只是返回值变为 T
     }
 
-    /**
-     * -@PathVariable
-     */
+    /** &#064;PathVariable */
     @Test
     public void path() {
         // http://localhost:3333/demo/path/{id}/{name}
@@ -188,6 +187,6 @@ public class RestTemplateDemo extends Demo {
     private void printResponseEntity(ResponseEntity<?> responseEntity) {
         p(responseEntity.getStatusCode());
         p(responseEntity.getHeaders());
-        p(responseEntity.getBody() + "\n");
+        p(responseEntity.getBody() + StringUtils.CR);
     }
 }

@@ -3,6 +3,7 @@ package knowledge.api.util.stream;
 import knowledge.api.util.FunctionDemo;
 import l.demo.Demo;
 import l.demo.Person;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.junit.jupiter.api.Test;
 
@@ -36,9 +37,7 @@ import java.util.stream.Stream;
  */
 public class StreamDemo extends Demo {
 
-    /**
-     * 创建
-     */
+    /** 创建 */
     @Test
     public void createStream() throws IOException {
         Stream<?> stream;
@@ -97,7 +96,7 @@ public class StreamDemo extends Demo {
                 .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
                 // 3 2 7 5
                 .peek(i -> System.out.print(i + " ")).toList();
-        p("\n");
+        p(StringUtils.CR);
 
         // filter()         过滤
         // sorted()         排序
@@ -105,13 +104,13 @@ public class StreamDemo extends Demo {
         Stream.of(9, 8, 7, 6, 5, 4, 3, 2, 1).limit(7)
                 .filter(n -> n % 2 == 0).sorted()
                 .forEach(n -> System.out.print(n + " ")); // 4 6 8
-        p("\n");
+        p(StringUtils.CR);
 
         // sequential()     串行
         // parallel()       并行
         // skip()           跳过
         Stream.of(9, 7, 5, 3, 1).parallel().skip(2).forEach(i -> System.out.print(i + " ")); // 3 1 5
-        p("\n");
+        p(StringUtils.CR);
 
         // takeWhile()      返回子集知道断言返回false，JDK9 引入
         // dropWhile()      断言返回false开始返回子集，JDK9 引入
@@ -192,9 +191,7 @@ public class StreamDemo extends Demo {
             new Person("张三", 20, "男"),
             new Person("张三", 23, "男"));
 
-    /**
-     * 对象集合按属性去重
-     */
+    /** 对象集合按属性去重 */
     @Test
     public void testDistinct() {
         // 使用 collectingAndThen 先执行归约操作（List → Set 实现去重），再执行 Function 操作（Set → List）
@@ -207,9 +204,7 @@ public class StreamDemo extends Demo {
         p(personList.stream().collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Person::getName)))));
     }
 
-    /**
-     * 对象集合按属性去重2 ???
-     */
+    /** 对象集合按属性去重2 ??? */
     @Test
     public void testDistinct2() {
         // 单属性去重

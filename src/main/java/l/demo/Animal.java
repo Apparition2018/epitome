@@ -34,7 +34,7 @@ public abstract class Animal {
         private int foot;
 
         static {
-            System.out.println("The is a Cat." + "\n");
+            System.out.println("The is a Cat.\n");
         }
 
         public void eat() {
@@ -51,7 +51,7 @@ public abstract class Animal {
         private int wing;
 
         static {
-            System.out.println("The is a Chicken." + "\n");
+            System.out.println("The is a Chicken.\n");
         }
 
         public void eat() {

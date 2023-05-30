@@ -1,6 +1,7 @@
 package knowledge.io.nio.file;
 
 import l.demo.Demo;
+import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +39,7 @@ public class FilesDemo extends Demo {
         Files.write(filePath, lines, StandardOpenOption.CREATE);
         // Path                 writeString(Path path, CharSequence csq, OpenOption... options)
         // JDK11 引入
-        Files.writeString(filePath, String.join("\r\n", lines) + "\r\n", StandardOpenOption.CREATE);
+        Files.writeString(filePath, String.join(IOUtils.LINE_SEPARATOR_WINDOWS, lines) + IOUtils.LINE_SEPARATOR_WINDOWS, StandardOpenOption.CREATE);
     }
 
     @Test

@@ -1,4 +1,4 @@
-package jar.javax.activation;
+package jar.jakarta.activation;
 
 import jakarta.activation.MimetypesFileTypeMap;
 import l.demo.Demo;

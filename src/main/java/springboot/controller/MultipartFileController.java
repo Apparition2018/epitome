@@ -1,5 +1,6 @@
 package springboot.controller;
 
+import com.google.common.net.HttpHeaders;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -61,7 +62,7 @@ public class MultipartFileController {
         try (InputStream inputStream = Files.newInputStream(template.toPath());
              OutputStream outputStream = response.getOutputStream()) {
             response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
-            response.addHeader("Content-Disposition", "attachment;filename=file.xlsx");
+            response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=file.xlsx");
             IOUtils.copy(inputStream, outputStream);
             outputStream.flush();
         } catch (Exception e) {
@@ -101,7 +102,7 @@ public class MultipartFileController {
             cell.setCellValue("22");
 
             response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
-            response.addHeader("Content-Disposition", "attachment;filename=excel.xlsx");
+            response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=excel.xlsx");
             workbook.write(outputStream);
         } catch (IOException | InvalidFormatException e) {
             throw new RuntimeException(e);

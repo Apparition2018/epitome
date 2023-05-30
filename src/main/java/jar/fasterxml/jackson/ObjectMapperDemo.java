@@ -18,6 +18,7 @@ import jar.fasterxml.jackson.custom.CustomDeserializer;
 import jar.fasterxml.jackson.custom.CustomSerializer;
 import jar.fasterxml.jackson.entity.Person;
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -58,7 +59,7 @@ public class ObjectMapperDemo extends Demo {
         // T        readValue(String content, Class<T> valueType)
         // 读为指定 Class 类型的对象
         Person person = jsonMapper.readValue(json, Person.class);
-        System.out.println("========== String → Obj ==========\n" + person + "\n");
+        System.out.println("========== String → Obj ==========\n" + person + StringUtils.CR);
 
         json = jsonMapper.writeValueAsString(list);
         System.out.println("========== List → String ==========\n" + json);

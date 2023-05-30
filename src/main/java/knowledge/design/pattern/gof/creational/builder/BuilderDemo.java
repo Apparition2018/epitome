@@ -2,6 +2,7 @@ package knowledge.design.pattern.gof.creational.builder;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -44,9 +45,7 @@ import java.nio.ByteBuffer;
  */
 public class BuilderDemo {
 
-    /**
-     * <a href="https://refactoringguru.cn/design-patterns/builder/java/example">分步骤生产汽车</a>
-     */
+    /** <a href="https://refactoringguru.cn/design-patterns/builder/java/example">分步骤生产汽车</a> */
     public static void main(String[] args) {
         Director director = new Director();
 
@@ -61,9 +60,7 @@ public class BuilderDemo {
         System.out.println("\nCar manual built:\n" + carManual.print());
     }
 
-    /**
-     * Builder
-     */
+    /** Builder */
     interface Builder {
         void setCarType(CarType type);
 
@@ -78,9 +75,7 @@ public class BuilderDemo {
         void setGPSNavigator(GPSNavigator gpsNavigator);
     }
 
-    /**
-     * ConcreteBuilder
-     */
+    /** ConcreteBuilder */
     @Setter
     private static class CarBuilder implements Builder {
         private CarType carType;
@@ -100,9 +95,7 @@ public class BuilderDemo {
         }
     }
 
-    /**
-     * ConcreteBuilder
-     */
+    /** ConcreteBuilder */
     @Setter
     private static class CarManualBuilder implements Builder {
         private CarType carType;
@@ -122,9 +115,7 @@ public class BuilderDemo {
         }
     }
 
-    /**
-     * Product
-     */
+    /** Product */
     @Getter
     private static class Car {
         private final CarType carType;
@@ -153,34 +144,30 @@ public class BuilderDemo {
         }
     }
 
-    /**
-     * Product
-     */
+    /** Product */
     private record Manual(CarType carType, int seats, Engine engine, Transmission transmission,
                           TripComputer tripComputer, GPSNavigator gpsNavigator) {
         public String print() {
             String info = "";
-            info += "Type of car: " + carType + "\n";
-            info += "Count of seats: " + seats + "\n";
-            info += "Engine: volume - " + engine.getVolume() + "; mileage - " + engine.getMileage() + "\n";
-            info += "Transmission: " + transmission + "\n";
+            info += "Type of car: " + carType + StringUtils.CR;
+            info += "Count of seats: " + seats + StringUtils.CR;
+            info += "Engine: volume - " + engine.getVolume() + "; mileage - " + engine.getMileage() + StringUtils.CR;
+            info += "Transmission: " + transmission + StringUtils.CR;
             if (this.tripComputer != null) {
-                info += "Trip Computer: Functional" + "\n";
+                info += "Trip Computer: Functional" + StringUtils.CR;
             } else {
-                info += "Trip Computer: N/A" + "\n";
+                info += "Trip Computer: N/A" + StringUtils.CR;
             }
             if (this.gpsNavigator != null) {
-                info += "GPS Navigator: Functional" + "\n";
+                info += "GPS Navigator: Functional" + StringUtils.CR;
             } else {
-                info += "GPS Navigator: N/A" + "\n";
+                info += "GPS Navigator: N/A" + StringUtils.CR;
             }
             return info;
         }
     }
 
-    /**
-     * Director
-     */
+    /** Director */
     private static class Director {
         public void constructCityCar(Builder builder) {
             builder.setCarType(CarType.CITY_CAR);
@@ -209,9 +196,7 @@ public class BuilderDemo {
         }
     }
 
-    /**
-     * 流式建造者模式
-     */
+    /** 流式建造者模式 */
     private static class FluentBuilderDemo {
 
         public static void main(String[] args) {
@@ -226,9 +211,7 @@ public class BuilderDemo {
             System.out.println("Car built:\n" + car.getCarType());
         }
 
-        /**
-         * Product
-         */
+        /** Product */
         @Getter
         @Setter
         static class Car {
@@ -240,9 +223,7 @@ public class BuilderDemo {
             private GPSNavigator gpsNavigator;
             private double fuel = 0D;
 
-            /**
-             * Builder
-             */
+            /** Builder */
             private static class Builder {
                 private final Car car = new Car();
 

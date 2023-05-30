@@ -9,16 +9,18 @@ import cn.hutool.socket.aio.AioClient;
 import cn.hutool.socket.aio.AioServer;
 import cn.hutool.socket.aio.AioSession;
 import cn.hutool.socket.aio.SimpleIoAction;
+import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 
 /**
- * AIO
- * https://hutool.cn/docs/#/socket/AIO%E5%B0%81%E8%A3%85-AioServer%E5%92%8CAioClient
+ * <a href="https://hutool.cn/docs/#/socket/AIO封装-AioServer和AioClient">AIO</a>
+ * <pre>
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/socket/aio/AioClient.html
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/socket/aio/AioServer.html
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/2 13:39
@@ -43,9 +45,9 @@ public class AioDemo {
                     if (!data.hasRemaining()) {
                         StringBuilder response = StrUtil.builder()
                                 .append("HTTP/1.1 200 OK\r\n")
-                                .append("Date: ").append(DateUtil.formatHttpDate(DateUtil.date())).append("\r\n")
+                                .append("Date: ").append(DateUtil.formatHttpDate(DateUtil.date())).append(IOUtils.LINE_SEPARATOR_WINDOWS)
                                 .append("Content-Type: text/html; charset=UTF-8\r\n")
-                                .append("\r\n")
+                                .append(IOUtils.LINE_SEPARATOR_WINDOWS)
                                 .append("Hello Hutool socket");
                         session.writeAndClose(BufferUtil.createUtf8(response));
                     } else {

@@ -1,6 +1,7 @@
 package knowledge.network.url;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.junit.jupiter.api.Test;
@@ -47,9 +48,7 @@ public class URLDemo extends Demo {
         p(url.getHost());           // 192.168.0.1
     }
 
-    /**
-     * 读取 jar 包里面的文件
-     */
+    /** 读取 jar 包里面的文件 */
     @Test
     public void testReadJarFile() throws IOException {
         /* 使用 URL 读取 jar 包里面的文件 */
@@ -70,7 +69,7 @@ public class URLDemo extends Demo {
         String line;
         StringBuilder sb = new StringBuilder();
         while (null != (line = br.readLine())) {
-            sb.append(line).append("\n");
+            sb.append(line).append(StringUtils.CR);
         }
         p(sb);
         // 关闭最外层流后，内部的流也会关闭

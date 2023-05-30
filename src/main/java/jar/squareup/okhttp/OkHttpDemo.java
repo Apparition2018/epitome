@@ -6,6 +6,7 @@ import l.demo.Demo;
 import lombok.NonNull;
 import okhttp3.*;
 import okio.BufferedSink;
+import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.Test;
 
 import javax.annotation.Nullable;
@@ -65,15 +66,15 @@ public class OkHttpDemo extends Demo {
     @Test
     public void testAccessingHeaders() throws IOException {
         Request request = new Request.Builder().url("https://api.github.com/repos/square/okhttp/issues")
-                .header("User-Agent", "OKHttp Headers.java")
-                .addHeader("Accept", "application/json; q=0.5")
-                .addHeader("Accept", "application/vnd.github.vs+json")
+                .header(HttpHeaders.USER_AGENT, "OKHttp Headers.java")
+                .addHeader(HttpHeaders.ACCEPT, "application/json; q=0.5")
+                .addHeader(HttpHeaders.ACCEPT, "application/vnd.github.vs+json")
                 .build();
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-            p("Server: " + response.header("Server"));
-            p("Date: " + response.header("Date"));
-            p("Vary: " + response.header("Vary"));
+            System.out.printf("%s: %s%n", HttpHeaders.SERVER, response.header(HttpHeaders.SERVER));
+            System.out.printf("%s: %s%n", HttpHeaders.DATE, response.header(HttpHeaders.DATE));
+            System.out.printf("%s: %s%n", HttpHeaders.VARY, response.header(HttpHeaders.VARY));
         }
     }
 
@@ -161,7 +162,7 @@ public class OkHttpDemo extends Demo {
                 .addFormDataPart("image", "bird.jpg", requestBody)
                 .build();
         Request request = new Request.Builder()
-                .header("Authorization", "Client-ID ...")
+                .header(HttpHeaders.AUTHORIZATION, "Client-ID ...")
                 .url("https://api.imgur.com/3/image")
                 .post(requestBody2)
                 .build();
@@ -291,13 +292,13 @@ public class OkHttpDemo extends Demo {
                     @Nullable
                     @Override
                     public Request authenticate(@Nullable Route route, @NonNull Response response) {
-                        if (response.request().header("Authorization") != null) {
+                        if (response.request().header(HttpHeaders.AUTHORIZATION) != null) {
                             return null;
                         }
                         p("Authenticating for response: " + response);
                         p("Challenges: " + response.challenges());
                         String credential = Credentials.basic("jesse", "password1");
-                        return response.request().newBuilder().header("Authorization", credential).build();
+                        return response.request().newBuilder().header(HttpHeaders.AUTHORIZATION, credential).build();
                     }
                 }).build();
         Request request = new Request.Builder().url(getPublicObjUrl("secrets/hellosecret.txt")).build();

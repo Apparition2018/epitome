@@ -15,10 +15,11 @@ import java.nio.channels.SocketChannel;
 import java.util.Scanner;
 
 /**
- * NIO
- * https://hutool.cn/docs/#/socket/NIO%E5%B0%81%E8%A3%85-NioServer%E5%92%8CNioClient
+ * <a href="https://hutool.cn/docs/#/socket/NIO封装-NioServer和NioClient">NIO</a>
+ * <pre>
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/socket/nio/NioClient.html
  * https://apidoc.gitee.com/dromara/hutool/cn/hutool/socket/nio/NioServer.html
+ * </pre>
  *
  * @author ljh
  * @since 2020/11/2 13:55

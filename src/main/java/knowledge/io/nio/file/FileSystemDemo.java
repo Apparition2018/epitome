@@ -73,14 +73,12 @@ public class FileSystemDemo extends Demo {
         fileSystem.close();
     }
 
-    /**
-     * <a href="https://www.cnblogs.com/lyndon-chen/p/3575393.html">解压 Zip 文件</a>
-     */
+    /** <a href="https://www.cnblogs.com/lyndon-chen/p/3575393.html">解压 Zip 文件</a> */
     @Test
     public void unzip() throws IOException {
         // static FileSystem	newFileSystem(Path)                     构造一个新的文件系统来访问文件的内容
         FileSystem fileSystem = FileSystems.newFileSystem(Paths.get(DEMO_PATH + "demo.zip"));
-        Files.walkFileTree(fileSystem.getPath("/"), new SimpleFileVisitor<Path>() {
+        Files.walkFileTree(fileSystem.getPath("/"), new SimpleFileVisitor<>() {
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 Path destPath = Paths.get(DEMO_PATH + "a/", file.toString());
                 Files.deleteIfExists(destPath);

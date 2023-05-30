@@ -1,6 +1,7 @@
 package knowledge.reflect;
 
 import l.demo.Animal.Cat;
+import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.*;
 
@@ -103,7 +104,7 @@ public class Reflect {
         // 改变访问限制
         field.setAccessible(true);
         field.set(cat, 3);
-        p("cat.getFoot() = " + cat.getAge() + "\n");
+        p("cat.getFoot() = " + cat.getAge() + StringUtils.CR);
 
         //********** 4.Method **********//
         Method[] methods;

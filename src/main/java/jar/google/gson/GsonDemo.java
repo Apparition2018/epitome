@@ -5,6 +5,7 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import l.demo.Demo;
 import l.demo.JsonDemo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -29,9 +30,7 @@ public class GsonDemo extends Demo implements JsonDemo {
     JsonObject courseJsonObject;
     JsonArray studentsJsonArray;
 
-    /**
-     * 复杂/简单对象JSON ⇆ JsonObject ⇆ JavaBean
-     */
+    /** 复杂/简单对象JSON ⇆ JsonObject ⇆ JavaBean */
     @Test
     public void testJSONObject() {
         // 复杂对象JSON → JsonObject
@@ -41,14 +40,14 @@ public class GsonDemo extends Demo implements JsonDemo {
         p(jsonObject);
         // JsonObject → 复杂对象JSON
         jsonStr = gson.toJson(jsonObject);
-        p(jsonStr + "\n");
+        p(jsonStr + StringUtils.CR);
 
         // 复杂对象JSON → JavaBean
         teacher = gson.fromJson(JSON_COMPLEX, Teacher.class);
         p(teacher);
         // JavaBean → 复杂对象JSON
         jsonStr = gson.toJson(teacher);
-        p(jsonStr + "\n");
+        p(jsonStr + StringUtils.CR);
 
         // JsonObject → JavaBean
         teacher = gson.fromJson(jsonObject, Teacher.class);
@@ -56,12 +55,10 @@ public class GsonDemo extends Demo implements JsonDemo {
 
         // JavaBean → JsonObject
         jsonObject = (JsonObject) gson.toJsonTree(teacher);
-        p(jsonObject + "\n");
+        p(jsonObject + StringUtils.CR);
     }
 
-    /**
-     * 数组对象JSON ⇆ JSONObject ⇆ List<JavaBean>
-     */
+    /** 数组对象JSON ⇆ JSONObject ⇆ List<JavaBean> */
     @Test
     public void testJSONArray() {
         // 数组对象JSON → JSONArray
@@ -69,7 +66,7 @@ public class GsonDemo extends Demo implements JsonDemo {
         p(jsonArray);
         // JSONArray → 数组对象JSON
         jsonStr = gson.toJson(jsonArray);
-        p(jsonStr + "\n");
+        p(jsonStr + StringUtils.CR);
 
         // 数组对象JSON → List<JavaBean>
         students = gson.fromJson(JSON_ARRAY, new TypeToken<List<Student>>() {
@@ -77,7 +74,7 @@ public class GsonDemo extends Demo implements JsonDemo {
         p(students);
         // List<JavaBean> → 数组对象JSON
         jsonStr = gson.toJson(students);
-        p(jsonStr + "\n");
+        p(jsonStr + StringUtils.CR);
 
         // JSONArray → List<JavaBean>
         students = gson.fromJson(jsonArray, new TypeToken<List<Student>>() {
@@ -85,12 +82,10 @@ public class GsonDemo extends Demo implements JsonDemo {
         p(students);
         // List<JavaBean> → JSONArray
         jsonArray = (JsonArray) gson.toJsonTree(students);
-        p(jsonArray + "\n");
+        p(jsonArray + StringUtils.CR);
     }
 
-    /**
-     * &#064;SerializedName 字段别名
-     */
+    /** &#064;SerializedName 字段别名 */
     @Test
     public void testSerializedName() {
         p(gson.fromJson(JSON_PLAIN, Student.class));
@@ -102,9 +97,7 @@ public class GsonDemo extends Demo implements JsonDemo {
         p(jsonObject2Map(jsonObject));
     }
 
-    /**
-     * JsonObject → Map
-     */
+    /** JsonObject → Map */
     private HashMap<String, Object> jsonObject2Map(JsonObject jo) {
         HashMap<String, Object> map = Maps.newHashMap();
         for (Entry<String, JsonElement> entry : jo.entrySet()) {
