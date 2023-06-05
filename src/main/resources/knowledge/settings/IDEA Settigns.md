@@ -1,7 +1,7 @@
 # IDEA Settings
-- g: global
-- o: optional
-- u: unknown
+- -g: global
+- -o: optional
+- -u: unknown
 ---
 ## 修改 .IntelliJIdea 位置 (-o)
     1. %IDEA_HOME%\bin\idea.properties
@@ -17,6 +17,7 @@
     1. %IDEA_HOME%\bin\idea64.exe.vmoptions
         -Xms1024m
         -Xmx2048m
+        -Dfile.encoding=UTF-8
         -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel
 ---
 ## Sync Settings
@@ -55,9 +56,9 @@
 ---
 ## Editor Tabs (-o)
     1. Settings → Editor → General → Editor Tabs
-    2. Show tabs in one row 取消勾选
+    2. Show tabs in: one row, and if tabs don't fit: Squeeze tabs
 ---
-## Font (o)
+## Font (-o)
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: SimHei
 ---
@@ -76,6 +77,7 @@
         5.1 Line comment at first column 取消勾选
         5.2 Add a space at line comment start 勾选
         5.3 Add spaces around block comments 勾选
+    6. Markdown → Tabs and Indents 全部设为0
 ---
 ## Inspections (-g)
     1. Settings → Editor → Inspections
@@ -129,20 +131,6 @@
         3.3 Annotation Processors
             3.3.1 Enable annotation processing 勾选
 ---
-## [ESLint](https://www.jetbrains.com/help/idea/eslint.html) (-u)
-    1. npm install --g eslint
-    2. npm install standard --global
-    3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
-        3.1 Manual ESLint configuration 勾选
-        3.2 ESLint package: ~\AppData\Roaming\npm\node_modules\standard
-        3.3 Run eslint --fix on save 勾选
----
-## [Prettier](https://www.jetbrains.com/help/idea/prettier.html) (-u)
-    1. npm install --global prettier
-    2. Settings → Languages & Frameworks → JavaScript → Prettier
-        2.1 Prettier package: ~\AppData\Roaming\npm\node_modules\prettier
-        2.1 On Save 勾选
----
 ## Actions on Save (-g)
     1. Settings → Tools → Actions on Save
     2. Reformat code 勾选
@@ -172,6 +160,20 @@
     1. + Web Application: Exploded ▶ From Modules…
     2. Output directory
     3. 把 Available Elements 中需要用到的 jar Put into /WEB-INF/lib，特别是 javax.servlet-api
+---
+## npm
+### [ESLint](https://www.jetbrains.com/help/idea/eslint.html) (-u)
+    1. npm install --g eslint
+    2. npm install standard --global
+    3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
+        3.1 Manual ESLint configuration 勾选
+        3.2 ESLint package: ~\AppData\Roaming\npm\node_modules\standard
+        3.3 Run eslint --fix on save 勾选
+### [Prettier](https://www.jetbrains.com/help/idea/prettier.html) (-u)
+    1. npm install --global prettier
+    2. Settings → Languages & Frameworks → JavaScript → Prettier
+        2.1 Prettier package: ~\AppData\Roaming\npm\node_modules\prettier
+        2.1 On Save 勾选
 ---
 ## Tools
 ### Deployment

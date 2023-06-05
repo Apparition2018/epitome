@@ -18,6 +18,10 @@
 2. 查找 github.com 和 github.global.ssl.fastly.net 的 IP，并记录在 hosts 文件
 3. cmd → `ipconfig /flushdns`
 ---
+## TortoiseGit
+- Settings → Network
+    - SSH client: D:\Git\usr\bin\ssh.exe
+---
 ## [配置多个 git 账号](https://blog.csdn.net/qq_33254766/article/details/122941664)
 1. 生成多个 SSH key
     ```
@@ -53,22 +57,6 @@
     ```
 7. 设置局部用户名和邮箱：`git config user.name "one"; git config user.email "one@gmail.com"`
 ---
-## .gitconfig
-- [gitignore Documentation](https://git-scm.com/docs/gitignore)
-- [github/gitignore](https://github.com/github/gitignore)
-- [Git 忽略提交 .gitignore](https://www.cnblogs.com/youyoui/p/8337147.html)
-```
-[user]
-	name = Apparition2018
-	email = 88850180@163.com
-[core]
-	excludesfile = D:/Liang/git/epitome/.gitignore
-[http]
-	sslVerify = false
-[https]
-	sslVerify = false
-```
----
 ## 命令
 - Git 常用命令速查表
 ![Git 常用命令速查表](https://img-blog.csdn.net/20171126101742109)
@@ -78,23 +66,39 @@
 ```
 help [COMMAND|GUIDE]                            帮助
 config                                          获取和设置 repository 或全局选项
-    --global                                    全局配置
+    --global                                    全局配置，写到 ~/.gitconfig
     -l | --list                                 列出配置文件中设置的所有变量及其值
-    --unset                                     从配置文件中删除与密钥匹配的行
+    --add                                       在不更改任何现有值的情况下向选项添加新行
+    --unset                                     从配置文件中删除与 key 匹配的行
         user.name                               用户名称
         user.email                              用户邮件
-        core.editor                             编辑器
         core.excludesFile                       .ignore 文件地址
-        core.autocrlf                           提交或检出转换 lf 和 crlf
+        core.autocrlf                           提交或检出转换 LF 和 CRLF，默认 true
+            true                                提交时转换为 LF，检出时转换为 CRLF
+            input                               提交时转换为 LF，检出时不转换
+            false                               提交时转换为 LF，检出时转换为 CRLF
         core.safecrlf                           提交混合换行符提示
-        http.postBuffer                         
-        merge.tool                              合并工具
+            true                                拒绝提交包含混合换行符的文件
+            false                               允许提交包含混合换行符的文件
+            warn                                提交包含混合换行符的文件时给出警告
         alias                                   别名
             .co checkout
             .br branch
             .ci commit
             .st status
 ```
+### .gitconfig
+- [gitignore Documentation](https://git-scm.com/docs/gitignore)
+- [github/gitignore](https://github.com/github/gitignore)
+- [Git 忽略提交 .gitignore](https://www.cnblogs.com/youyoui/p/8337147.html)
+```
+[user]
+	name = Apparition2018
+	email = 88850180@163.com
+[core]
+	excludesfile = D:/Liang/git/epitome/.gitignore
+```
+---
 ### [获取与创建项目](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E8%8E%B7%E5%8F%96%E4%B8%8E%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE)
 ```
 init                                            创建一个空的 Git repository 或重新初始化一个现有的 repository
