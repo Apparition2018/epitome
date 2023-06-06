@@ -161,30 +161,36 @@
         </div>
     </div>
     <script class="code" contenteditable="true">
-        const re = /quick\s(brown).+?(jumps)/gi;
+        const regex = /quick\s(brown).+?(jumps)/gi;
 
-        const matchResult = ('The Quick Brown Fox Jumps Over The Lazy Dog').match(re);
+        const matchResult = ('The Quick Brown Fox Jumps Over The Lazy Dog').match(regex);
         // ["Quick Brown Fox Jumps"]
 
-        const execresult = re.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
+        const execResult = regex.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
         // ["Quick Brown Fox Jumps", "Brown", "Jumps", index: 4, input: "The Quick Brown Fox Jumps Over The Lazy Dog", groups: undefined]
     </script>
 </section>
 
 <section class="code-wrap h200">
     <div class="css-live-wrap">
-        <div class="caption">断言（Assertions）</div>
+        <div class="caption">
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions/Assertions">断言（Assertions）</a>
+        </div>
         <div class="centered">
         </div>
     </div>
     <script class="code" contenteditable="true">
-        // x(?=y) 仅匹配被y跟随的x
-        const re = /\b\w{2}(?=a)/g;
-        "aaa aab aac bba bbb bbc cca ccb ccc".match(re); // ["aa", "bb", "cc"]
+        // x(?=y) 先行断言： x 被 y 跟随时匹配 x
+        "aaa aab aac bba bbb bbc cca ccb ccc".match(/\b\w{2}(?=a)/g); // ["aa", "bb", "cc"]
 
-        // x(?!y) 仅匹配不被y跟随的x
-        const re = /\b\w{2}(?!a)/g;
-        "aaa aab aac bba bbb bbc cca ccb ccc".match(re); // ["aa", "aa", "bb", "bb", "cc", "cc"]
+        // x(?!y) 先行否定断言： x 没有被 y 紧随时匹配 x
+        "aaa aab aac bba bbb bbc cca ccb ccc".match(/\b\w{2}(?!a)/g); // ["aa", "aa", "bb", "bb", "cc", "cc"]
+
+		// (?<=y)x 后行断言： x 跟随 y 的情况下匹配 x
+		"aaa aab aac bba bbb bbc cca ccb ccc".match(/(?<=a)\w{2}\b/g); // ['aa', 'ab', 'ac']
+
+		// (?<!y)x 后行否定断言： x 不跟随 y 时匹配 x
+		"aaa aab aac bba bbb bbc cca ccb ccc".match(/(?<!a)\w{2}\b/g); // ['ba', 'bb', 'bc', 'ca', 'cb', 'cc']
     </script>
 </section>
 </body>

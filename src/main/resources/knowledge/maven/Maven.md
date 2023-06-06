@@ -34,10 +34,12 @@
 ---              
 ## [仓库](https://developer.aliyun.com/mvn/guide)
 1. 本地仓库：
-    1. 默认路径：${user.home}/.m2/repository
-    2. 自定义路径：修改 settings.xml 中的 &lt;localRepository/&gt; 
-2. 远程仓库：中央仓库 + 私服 + 其它仓库
-- settings.xml
+    - 默认路径：${user.home}/.m2/repository
+    - 自定义路径：修改 settings.xml 中的 &lt;localRepository/&gt; 
+2. 远程仓库
+    - 中央仓库 + 私服仓库 + 其它仓库
+    - 通过各种协议如 http:// 和 file:// 访问的仓库
+- [settings.xml](settings.xml)
     ```xml
     <mirror>
         <id>aliyunmaven</id>
@@ -46,7 +48,7 @@
         <url>https://maven.aliyun.com/repository/public</url>
     </mirror>
     ```
-- pom.xml
+- [pom.xml](pom.xml)
     ```xml
     <repository>
         <id>aliyunmaven</id>
@@ -59,7 +61,6 @@
         </snapshots>
     </repository>
     ```
-- 其它远程仓库地址请查看 settings.xml
 ---
 ## 生命周期
 1. clean 清理项目
