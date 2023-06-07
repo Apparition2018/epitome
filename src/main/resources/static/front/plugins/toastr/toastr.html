@@ -9,39 +9,39 @@
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
 <body>
-    <section class="code-wrap">
-        <div class="css-live-wrap w50p">
-            <div class="caption"><a href="https://www.bootcdn.cn/toastr.js/" target="_blank">toastr</a></div>
-            <div class="centered toastr demo-click">toastr</div>
-        </div>
-        <style>
-            .toast-center-center {
-                top: 50%;
-                left: 50%;
-                margin-top: -30px;
-                margin-left: -150px;
-            }
-        </style>
-        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <link href="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-        <script src="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        <script class="code w50p" contenteditable="true">
-            toastr.options = {
-                "positionClass": "toast-center-center",
-                "progressBar": true,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "3000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            };
-            $(".toastr").on('click', function () {
-                toastr.info('Are you the 6 fingered man?')
-            })
-        </script>
-    </section>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.bootcdn.cn/toastr.js/" target="_blank">toastr</a></div>
+        <div class="centered toastr demo-click">toastr</div>
+    </div>
+    <style>
+        .toast-center-center {
+            top: 50%;
+            left: 50%;
+            margin-top: -30px;
+            margin-left: -150px;
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script class="code" contenteditable="true">
+        toastr.options = {
+            "positionClass": "toast-center-center",
+            "progressBar": true,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        $(".toastr").on('click', function () {
+            toastr.info('Are you the 6 fingered man?')
+        })
+    </script>
+</section>
 </body>
 </html>

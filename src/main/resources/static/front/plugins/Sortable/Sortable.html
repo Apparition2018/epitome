@@ -11,120 +11,122 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 </head>
 <body>
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">foo 和 bar 可以拖进 qux</div>
-            <div class="eg1 centered">
-                <div id="foo">
-                    <div><span class="handle"></span><span class="text">foo1</span></div>
-                    <div><span class="handle"></span><span class="text">foo2</span></div>
-                    <div><span class="handle"></span><span class="text">foo3</span></div>
-                </div>
-                <div id="bar">
-                    <div><span class="handle"></span><span class="text">bar1</span></div>
-                    <div><span class="handle"></span><span class="text">bar2</span></div>
-                    <div><span class="handle"></span><span class="text">bar3</span></div>
-                </div>
-                <div id="qux">
-                    <div><span class="handle"></span><span class="text">qux1</span></div>
-                    <div><span class="handle"></span><span class="text">qux2</span></div>
-                    <div><span class="handle"></span><span class="text">qux3</span></div>
-                </div>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">foo 和 bar 可以拖进 qux</div>
+        <div class="eg1 centered">
+            <div id="foo">
+                <div><span class="handle"></span><span class="text">foo1</span></div>
+                <div><span class="handle"></span><span class="text">foo2</span></div>
+                <div><span class="handle"></span><span class="text">foo3</span></div>
+            </div>
+            <div id="bar">
+                <div><span class="handle"></span><span class="text">bar1</span></div>
+                <div><span class="handle"></span><span class="text">bar2</span></div>
+                <div><span class="handle"></span><span class="text">bar3</span></div>
+            </div>
+            <div id="qux">
+                <div><span class="handle"></span><span class="text">qux1</span></div>
+                <div><span class="handle"></span><span class="text">qux2</span></div>
+                <div><span class="handle"></span><span class="text">qux3</span></div>
             </div>
         </div>
-        <style>
-            .eg1 #foo {
-                min-height: 32px;
-                margin: 5px 0 5px;
-                border: 1px double black;
-            }
+    </div>
+    <style>
+        .eg1 #foo {
+            min-height: 32px;
+            margin: 5px 0 5px;
+            border: 1px double black;
+        }
 
-            .eg1 #foo div {
-                width: 150px;
-                line-height: 30px;
-                text-align: center;
-                background-color: var(--ggb2);
-                border: 1px solid black;
-            }
+        .eg1 #foo div {
+            width: 150px;
+            line-height: 30px;
+            text-align: center;
+            background-color: var(--ggb2);
+            border: 1px solid black;
+        }
 
-            .eg1 #bar {
-                min-height: 32px;
-                margin: 5px 0 5px;
-                border: 1px double black;
-            }
+        .eg1 #bar {
+            min-height: 32px;
+            margin: 5px 0 5px;
+            border: 1px double black;
+        }
 
-            .eg1 #bar div {
-                width: 150px;
-                line-height: 30px;
-                text-align: center;
-                background-color: var(--ggb4);
-                border: 1px solid black;
-            }
+        .eg1 #bar div {
+            width: 150px;
+            line-height: 30px;
+            text-align: center;
+            background-color: var(--ggb4);
+            border: 1px solid black;
+        }
 
-            .eg1 #qux {
-                margin: 5px 0 5px;
-                border: 1px double black;
-            }
+        .eg1 #qux {
+            margin: 5px 0 5px;
+            border: 1px double black;
+        }
 
-            .eg1 #qux div {
-                width: 150px;
-                line-height: 30px;
-                text-align: center;
-                background-color: var(--ggb5);
-                border: 1px solid black;
-            }
+        .eg1 #qux div {
+            width: 150px;
+            line-height: 30px;
+            text-align: center;
+            background-color: var(--ggb5);
+            border: 1px solid black;
+        }
 
-            .handle {
-                display: inline-block;
-                width: 30%;
-                cursor: grab;
-            }
+        .handle {
+            display: inline-block;
+            width: 30%;
+            cursor: grab;
+        }
 
-            .text {
-                display: inline-block;
-                text-align: left;
-                text-indent: 15px;
-                width: 70%;
-            }
+        .text {
+            display: inline-block;
+            text-align: left;
+            text-indent: 15px;
+            width: 70%;
+        }
 
-            .handle::before {
-                content: '\f047';
-                font-family: FontAwesome,serif;
-                color: black;
-                font-size: 14px;
-            }
-        </style>
-        <script class="code" contenteditable="true">
-            Sortable.create(foo, {
-                group: 'foo',
-                handle: '.handle',
-                animation: 100
-            });
+        .handle::before {
+            content: '\f047';
+            font-family: FontAwesome, serif;
+            color: black;
+            font-size: 14px;
+        }
+    </style>
+    <script class="code" contenteditable="true">
+        Sortable.create(foo, {
+            group: 'foo',
+            handle: '.handle',
+            animation: 100
+        });
 
-            Sortable.create(bar, {
-                group: 'bar',
-                animation: 100
-            });
+        Sortable.create(bar, {
+            group: 'bar',
+            animation: 100
+        });
 
-            Sortable.create(qux, {
-                group: {
-                    name: 'qux',
-                    put: ['foo', 'bar']
-                },
-                animation: 100
-            });
-        </script>
-    </section>
+        Sortable.create(qux, {
+            group: {
+                name: 'qux',
+                put: ['foo', 'bar']
+            },
+            animation: 100
+        });
+    </script>
+</section>
 
-    <section class="code-wrap">
-        <div class="css-live-wrap">
-            <div class="caption">Nested Sortables</div>
-            <div class="eg2 centered">
-                <a class="demo-click" href="https://sortablejs.github.io/Sortable/#nested" target="_blank">Nested Sortables Example</a>
-            </div>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">Nested Sortables</div>
+        <div class="eg2 centered">
+            <a class="demo-click" href="https://sortablejs.github.io/Sortable/#nested" target="_blank">
+                Nested Sortables Example
+            </a>
         </div>
-        <script class="code" contenteditable="true">
-        </script>
-    </section>
+    </div>
+    <script class="code" contenteditable="true">
+    </script>
+</section>
 </body>
 </html>
