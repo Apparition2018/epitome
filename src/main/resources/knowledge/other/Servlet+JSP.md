@@ -1,4 +1,4 @@
-# Servlet + JSP
+# Servlet + [JSP](https://www.runoob.com/jsp/jsp-tutorial.html)
 
 ---
 ## 网络模型
@@ -14,10 +14,10 @@
 | 物理层   | 在终端设备间传送比特流，定义了电压、借口、电缆标准和传输距离     | 中继器、集线器、双绞线、光纤、电缆  |
 | 数据链路层 | 将源自网络层来的数据可靠地传输到相邻节点的目标机网络层        | 网桥、以太网交换机、网卡（半物理层） |
 | 网络层   | 将网络地址翻译成对应的物理地址，并决定如何将数据从发送方路由到接收方 | 路由器、三层交换机 IP       |
-| 传输层   || TCP UDP                            |
-| 会话层   |||
-| 表示层   |||
-| 应用层   || HTTP HTTPS FTP                     |
+| 传输层   |                                    | TCP UDP            |
+| 会话层   |                                    |                    |
+| 表示层   |                                    |                    |
+| 应用层   |                                    | HTTP HTTPS FTP     |
 - 把 IP 想象成一种高速公路，它允许其它协议在上面行驶并找到其它电脑的出口。TCP 和 UD P是高速公路上的"卡车"，它们携带的货物就是 HTTP, FTP 等包装出来的数据包
 ### TCP/IP 四层模型
 - 更加侧重的是互联网通信核心（也是就是围绕 TCP/IP 协议展开的一系列通信协议）的分层，因此它不包括物理层，以及其他一些不想干的协议
@@ -144,7 +144,7 @@ Connection: keep-alive
 | JVM 将 .java 文件转换为 .class 文件      | 与任何编码的设置都没有关系，.java 文件就转换成了统一的 Unicode 格式的 .class 文件                   |
 | 输出到浏览器                           | 如果设置了 charset 则浏览器就会使用指定的编码格式进行解码，否则采用默认的 ISO-8859-1                   | 
 ---
-## JSP 九大内置对象（隐含对象）
+## [JSP 隐式对象](https://www.runoob.com/jsp/jsp-implicit-objects.html)
 - 容器会依次从 pageContext → request → session → application 中查找，调用"getXXX"方法输出
 
 | 隐含对象        | 类型                  | 说明                              |
@@ -159,7 +159,7 @@ Connection: keep-alive
 | config      | ServletConfig       | Servlet 配置对象                    |
 | exception   | Throwable           | 捕获网页异常                          |
 --- 
-## JSP 指令
+## [JSP 指令](https://www.runoob.com/jsp/jsp-directives.html)
 <table>
     <tr>
         <td rowspan="14">page</td>
@@ -230,7 +230,7 @@ Connection: keep-alive
 </table>
 
 ---
-## EL 表达式
+## [EL 表达式](https://www.runoob.com/jsp/jsp-expression-language.html)
 - 一套简单的运算规则，用于给 JSP 标签的属性赋值，也可以直接用来输出
 - 作用：
     1. 访问 Bean 属性：如果没有赋值或名字写错，输出""
@@ -261,15 +261,22 @@ Connection: keep-alive
     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 </bean>
 ```
-- *.jsp 使用 [JSTL 标签](https://jakarta.ee/specifications/tags/1.2/tagdocs/)
-    - c 标签
+### 使用 [JSTL 标签](https://jakarta.ee/specifications/tags/1.2/tagdocs/)
+- [c 标签](../../../../../web/WEB-INF/jsp/jstl/core.jsp)
     ```html
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+    <!-- value      必要，输出的内容
+         default    可选，默认值 -->
+    <c:out value="${x}" deafult="100"/>
+     
+    <!-- var        可选，存储值的变量
+         value      可选，变量存储的值 -->
+    <c:set value="1" var="x"/>
     
-    <!-- test       必要，条件 -->
-    <c:if test="${x > 1}">
-        …
-    </c:if>
+    <!-- test       必要，条件
+         var        可选，存储条件结果的变量 -->
+    <c:if test="${x > 1}">…</c:if>
 
     <c:choose>
         <!-- 可以出现多次 -->
@@ -278,21 +285,34 @@ Connection: keep-alive
         <c:otherwise>…</c:otherwise>
     </c:choose>
     
-    <!-- items      要被迭代的集合
-         var        当前迭代项的名称
-         varStatus  迭代状态的名称 -->
+    <!-- items      可选，要被迭代的集合
+         var        可选，当前迭代条目的变量名称
+         varStatus  可选，当前迭代状态的变量名称 -->
     <c:forEach items="${list}" var="i" varStatus="s">
         <span>i</span> - <span>s.index</span> - <span>s.count</span>
     </c:forEach>
-   
-    <!-- var        存储值的变量
-         value      变量存储的值 -->
-    <c:set value="1" var="x"/>
+    <!-- begin      可选，开始的元素，默认值0
+         end        可选，最后的元素，默认最后一个元素
+         step       可选，每次迭代的步长  -->
+    <:forEach var="i" begin="1" end="9" step="2">${i}</:forEach>
+
+    <!-- 具有 <c:forEach> 相似的属性，此外还有
+         delims     必要，分隔符 -->    
+    <:forTokens items="1,2,3,4,5" var="i" step="2">${i}</:forTokens>
     ```
-    - fmt 标签
+- [fmt 标签](../../../../../web/WEB-INF/jsp/jstl/fmt.jsp)
     ```html
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    
-    <fmt:formatDate value="${createTime}" pattern="yyyy-MM-dd hh:mm:ss"/>
+
+    <!-- value      必要，要显示的日期
+         type       可选，date | time | both，默认 date
+         dateStyle  可选，full | long | medium | short | default
+         timeStyle  可选，full | long | medium | short | default
+         pattern    可选，自定义格式模式
+         timeZone   可选，日期时区
+         var        可选，存储格式化日期的变量名 -->
+    <fmt:formatDate value="<%= new java.util.Date()%>" pattern="yyyy-MM-dd hh:mm:ss"/>
+    <fmt:parseDate value="2023-01-01" pattern="yyyy-MM-dd"/>
     ```
+- [JSTL 函数](../../../../../web/WEB-INF/jsp/jstl/fn.jsp)
 ---

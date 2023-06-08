@@ -17,7 +17,7 @@ import spring.service.BmiService;
 import java.util.Map;
 
 /**
- * DataBindingController
+ * 数据绑定
  *
  * @author ljh
  * @since 2020/11/25 11:45
@@ -36,7 +36,7 @@ public class DataBindingController {
     /** SpringMVC 默认采用转发方式定位视图 */
     @RequestMapping("toBmi")
     public String toBmi() {
-        return "bmi";
+        return "bmi/bmi";
     }
 
     /** HttpServletRequest 获取参数 */
@@ -63,7 +63,7 @@ public class DataBindingController {
     @RequestMapping("bmi4")
     public ModelAndView bmi4(BmiParam bp) {
         String bmi = bmiService.bmi(bp.getHeight(), bp.getWeight());
-        return new ModelAndView("bmi2", Map.of("status", bmi));
+        return new ModelAndView("bmi/bmi2", Map.of("status", bmi));
     }
 
     /** ModelAndView 传递参数 */
@@ -71,7 +71,7 @@ public class DataBindingController {
     public ModelAndView bmi5(BmiParam bp) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
-        modelAndView.setViewName("bmi2");
+        modelAndView.setViewName("bmi/bmi2");
         return modelAndView;
     }
 
@@ -79,20 +79,20 @@ public class DataBindingController {
     @RequestMapping("bmi6")
     public String bmi6(BmiParam bp, ModelMap mm) {
         mm.addAttribute("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
-        return "bmi2";
+        return "bmi/bmi2";
     }
 
     /** HttpSession 传递参数 */
     @RequestMapping("bmi7")
     public String bmi7(BmiParam bp, HttpSession session) {
         session.setAttribute("status", bmiService.bmi(bp.getHeight(), bp.getWeight()));
-        return "bmi2";
+        return "bmi/bmi2";
     }
 
     /** viewName 重定向 */
     @RequestMapping("redirect1")
     public String redirect1() {
-        return "hello";
+        return "bmi/hello";
     }
 
     /** ModelAndView 和 RedirectView 重定向 */
@@ -103,14 +103,14 @@ public class DataBindingController {
 
     @RequestMapping("hello")
     public String hello() {
-        return "hello";
+        return "bmi/hello";
     }
 
     /** HttpServletRequest 传递参数 */
     private String bmi(double height, double weight, HttpServletRequest request) {
         String status = bmiService.bmi(height, weight);
         request.setAttribute("status", status);
-        return "bmi2";
+        return "bmi/bmi2";
     }
 
     /** &#064;ExceptionHandler Spring 异常处理 */

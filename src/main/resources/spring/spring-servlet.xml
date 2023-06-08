@@ -57,7 +57,7 @@
         ②<mvc:default-servlet-handler/>：https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-default-servlet-handler
         SpringMVC 访问静态资源的3种方式：https://www.cnblogs.com/caoyc/p/5639078.html
         <mvc:resources/> vs <mvc:default-servlet-handler/>：http://www.javacoder.cn/?p=178 -->
-    <mvc:resources location="classpath:static/public/" mapping="/**" cache-period="900"/>
+    <mvc:resources location="classpath:static/public/,classpath:demo/" mapping="/**" cache-period="900"/>
 
     <!-- 拦截器：https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-config-interceptors -->
     <mvc:interceptors>

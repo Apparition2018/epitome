@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.Serial;
 
 /**
- * <a href="http://localhost:8080/captchaArithmetic.do">CaptchaArithmeticServlet</a>
+ * <a href="http://localhost:3333/captchaArithmetic.do">CaptchaArithmeticServlet</a>
  * <p>算术验证码
  *
  * @author ljh

@@ -4,6 +4,6 @@
     <title>hello</title>
 </head>
 <body style="font-size: 30px;">
-Hello SpringMVC!
+<h2>Hello SpringMVC!</h2>
 </body>
 </html>

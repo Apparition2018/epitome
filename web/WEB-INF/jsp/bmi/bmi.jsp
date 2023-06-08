@@ -4,8 +4,8 @@
     <title>bmi</title>
 </head>
 <body style="font-size: 30px;">
-<%-- action="bim1~7" --%>
-<form action="bmi5" method="post">
+<%-- action="${pageContext.request.contextPath}/data-binding/bim1~7" --%>
+<form action="${pageContext.request.contextPath}/data-binding/bmi5" method="post">
     <fieldset>
         <legend>计算bmi质数</legend>
         <label for="height">身高（米）：</label><input name="height" id="height"/><br/>
