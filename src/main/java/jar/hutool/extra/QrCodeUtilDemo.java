@@ -29,8 +29,8 @@ public class QrCodeUtilDemo extends Demo {
         // 设置 logo
         config.setImg(XIAO_XIN_PNG);
         // 生成指定 content 对应的二维码到文件，宽和高都是 300 像素
-        QrCodeUtil.generate("999999999999", config, new File(DEMO_PATH + "QRCode.png"));
+        QrCodeUtil.generate("999999999999", config, new File(DEMO_DIR_PATH + "QRCode.png"));
         // 识别二维码
-        p(QrCodeUtil.decode(new File(DEMO_PATH + "QRCode.png")));
+        p(QrCodeUtil.decode(new File(DEMO_DIR_PATH + "QRCode.png")));
     }
 }

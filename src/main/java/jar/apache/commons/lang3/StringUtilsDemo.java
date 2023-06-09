@@ -21,8 +21,7 @@ public class StringUtilsDemo {
         p(StringUtils.CR);      // "\r"，Carriage Return，回车
     }
 
-    // Abbreviate
-    // 显示指定数量字符
+    /** abbreviate  显示指定数量字符 */
     @Test
     public void abbreviate() {
         p(StringUtils.abbreviate("123456789", 8));              // 12345...
@@ -33,23 +32,25 @@ public class StringUtilsDemo {
         p(StringUtils.abbreviateMiddle("123456789", "..", 8));  // 123..789
     }
 
-    // AppendIfMissing / PrependIfMissing
-    // 如果开头/结尾不是指定的 suffix / prefix，则拼接到开头/结果
+    /**
+     * appendIfMissing / prependIfMissing
+     * <p>如果开头/结尾不是指定的 suffix / prefix，则拼接到开头/结果
+     */
     @Test
     public void ifMissing() {
-        p(StringUtils.appendIfMissing(null, null));             //
-        p(StringUtils.appendIfMissing("abc", null));            // abc
-        p(StringUtils.appendIfMissing("", "xyz"));              // xyz
-        p(StringUtils.appendIfMissing("abc", "xyz"));           // abcxyz
-        p(StringUtils.appendIfMissing("abcxyz", "xyz"));        // abcxyz
-        p(StringUtils.appendIfMissing("abcXYZ", "xyz"));        // abcXYZxyz
-        p(StringUtils.appendIfMissing("abc", "xyz", "mno"));    // abcxyz
-        p(StringUtils.appendIfMissing("abcmno", "xyz", "mno")); // abcmno
-        p(StringUtils.appendIfMissing("abcXYZ", "xyz", "mno")); // abcXYZxyz
+        p(StringUtils.appendIfMissing(null, null));                 //
+        p(StringUtils.appendIfMissing("abc", null));                // abc
+        p(StringUtils.appendIfMissing(StringUtils.EMPTY, "xyz"));   // xyz
+        p(StringUtils.appendIfMissing("abc", "xyz"));               // abcxyz
+        p(StringUtils.appendIfMissing("abcxyz", "xyz"));            // abcxyz
+        p(StringUtils.appendIfMissing("abcXYZ", "xyz"));            // abcXYZxyz
+        p(StringUtils.appendIfMissing("abc", "xyz", "mno"));        // abcxyz
+        p(StringUtils.appendIfMissing("abcmno", "xyz", "mno"));     // abcmno
+        p(StringUtils.appendIfMissing("abcXYZ", "xyz", "mno"));     // abcXYZxyz
     }
 
     /**
-     * UpperCase / LowerCase / SwapCase / Capitalize / UnCapitalize
+     * upperCase / lowerCase / swapCase / capitalize / unCapitalize
      * <p>大小写相关
      */
     @Test
@@ -61,10 +62,7 @@ public class StringUtilsDemo {
         p(StringUtils.uncapitalize("ABC")); // aBC
     }
 
-    /**
-     * Chomp / Chop
-     * <p>删除最后一位
-     */
+    /** chomp / chop    删除最后一位 */
     @Test
     public void chompAndChop() {
         // 最后一位如果是 "\n", "\r", or "\r\n", 删除
@@ -78,26 +76,23 @@ public class StringUtilsDemo {
         p(StringUtils.chop("www.baidu.com\r\n"));   // www.baidu.com
     }
 
-    // CountMatches
-    // 计算匹配数
+    /** countMatches    计算匹配数 */
     @Test
     public void countMatches() {
         p(StringUtils.countMatches("a-bc-def", "-")); // 2
     }
 
-    // DefaultString
-    // 如果字符串是 null，转换为 "" 或 指定字符串
+    /** defaultString   如果字符串是 null，转换为 "" 或 指定字符串 */
     @Test
     public void defaultString() {
-        p(StringUtils.defaultString(null));         //
-        p(StringUtils.defaultString(""));           //
+        p(StringUtils.defaultString(null));                     //
+        p(StringUtils.defaultString(StringUtils.EMPTY));        //
 
-        p(StringUtils.defaultString(null, "NULL")); // NULL
-        p(StringUtils.defaultString("", "NULL"));   //
+        p(StringUtils.defaultString(null, "NULL"));             // NULL
+        p(StringUtils.defaultString(StringUtils.EMPTY, "NULL"));//
     }
 
-    // Difference
-    // 从头比较两个字符串，返回后者相对于前者的不相同部分
+    /** difference  从头比较两个字符串，返回后者相对于前者的不相同部分 */
     @Test
     public void difference() {
         p(StringUtils.difference("abc", "ab"));     //
@@ -105,7 +100,7 @@ public class StringUtilsDemo {
         p(StringUtils.difference("abcde", "bcd"));  // bcd
     }
 
-    // Equals / Compare
+    // equals / compare
     @Test
     public void equals() {
         p(StringUtils.equalsAny("aaa", "aaa", "bbb", "ccc"));               // true
@@ -122,57 +117,56 @@ public class StringUtilsDemo {
         p(StringUtils.compareIgnoreCase("aaa", "AAA")); // 0
     }
 
-    // IsEmpty / IsBlank
+    /** isEmpty / isBlank */
     @Test
     public void is1() {
         // "" 或 null
-        p(StringUtils.isEmpty(""));         // true
-        p(StringUtils.isEmpty(null));       // true
-        p(StringUtils.isEmpty(" "));        // false
-        p(StringUtils.isNotEmpty(" "));     // true
-        p(StringUtils.isAnyEmpty("", " ")); // true
-        p(StringUtils.isNoneEmpty("", " "));// false
+        p(StringUtils.isEmpty(StringUtils.EMPTY));                          // true
+        p(StringUtils.isEmpty(null));                                       // true
+        p(StringUtils.isEmpty(StringUtils.SPACE));                          // false
+        p(StringUtils.isNotEmpty(StringUtils.SPACE));                       // true
+        p(StringUtils.isAnyEmpty(StringUtils.EMPTY, StringUtils.SPACE));    // true
+        p(StringUtils.isNoneEmpty(StringUtils.EMPTY, StringUtils.SPACE));   // false
 
         // "", " " 或 null
-        p(StringUtils.isBlank(""));         // true
-        p(StringUtils.isBlank(null));       // true
-        p(StringUtils.isBlank(" "));        // true
-        p(StringUtils.isNotBlank(""));      // false
-        p(StringUtils.isAnyBlank("", "1")); // true
-        p(StringUtils.isNoneBlank("", "1"));// false
+        p(StringUtils.isBlank(StringUtils.EMPTY));          // true
+        p(StringUtils.isBlank(null));                       // true
+        p(StringUtils.isBlank(StringUtils.SPACE));          // true
+        p(StringUtils.isNotBlank(StringUtils.EMPTY));       // false
+        p(StringUtils.isAnyBlank(StringUtils.EMPTY, "1"));  // true
+        p(StringUtils.isNoneBlank(StringUtils.EMPTY, "1")); // false
     }
 
-    // IsAlpha / IsNumeric / IsWhitespace / IsAsciiPrintable
+    /** isAlpha / isNumeric / isWhitespace / isAsciiPrintable */
     @Test
     public void is2() {
-
-        p(StringUtils.isAllLowerCase("abc"));       // true
-        p(StringUtils.isAllUpperCase("ABC"));       // true
+        p(StringUtils.isAllLowerCase("abc"));           // true
+        p(StringUtils.isAllUpperCase("ABC"));           // true
 
         // 字母
-        p(StringUtils.isAlpha("ABC D"));            // false
-        p(StringUtils.isAlphaSpace("ABC D"));       // true
+        p(StringUtils.isAlpha("ABC D"));                // false
+        p(StringUtils.isAlphaSpace("ABC D"));           // true
 
         // 数字
-        p(StringUtils.isNumeric("123 4"));          // false
-        p(StringUtils.isNumericSpace("123 4"));     // true
+        p(StringUtils.isNumeric("123 4"));              // false
+        p(StringUtils.isNumericSpace("123 4"));         // true
 
         // 字母数字
-        p(StringUtils.isAlphanumeric("1B3 D"));     // false
-        p(StringUtils.isAlphanumericSpace("1B3 D"));// true
+        p(StringUtils.isAlphanumeric("1B3 D"));         // false
+        p(StringUtils.isAlphanumericSpace("1B3 D"));    // true
 
         // ascii (ch >= ' ' && ch < 127)
-        p(StringUtils.isAsciiPrintable("~!@#"));    // true
+        p(StringUtils.isAsciiPrintable("~!@#"));        // true
 
         // "", " ", "  ", ...
-        p(StringUtils.isWhitespace("  "));          // true
-        p(StringUtils.isWhitespace(" "));           // true
-        p(StringUtils.isWhitespace(""));            // true
-        p(StringUtils.isWhitespace(null));          // false
+        p(StringUtils.isWhitespace("  "));              // true
+        p(StringUtils.isWhitespace(StringUtils.SPACE)); // true
+        p(StringUtils.isWhitespace(StringUtils.EMPTY)); // true
+        p(StringUtils.isWhitespace(null));              // false
 
     }
 
-    // IndexOf / LastIndexOf / Contains
+    // indexOf / lastIndexOf / contains
     @Test
     public void indexOf() {
         p(StringUtils.indexOf("abcdabcd", 'b'));            // 1
@@ -215,7 +209,7 @@ public class StringUtilsDemo {
         p(StringUtils.containsWhitespace("abcd abcd"));             // true
     }
 
-    // LeftPad / RightPad / Center / Repeat
+    // leftPad / rightPad / center / repeat
     @Test
     public void pad() {
         p(StringUtils.leftPad("760", 4));       //  760
@@ -235,7 +229,7 @@ public class StringUtilsDemo {
         p(StringUtils.repeat("a", ",", 3));     // a,a,a
     }
 
-    // Remove / Delete
+    // remove / delete
     @Test
     public void remove() {
         p(StringUtils.remove("abcdabcd", "a"));                 // bcdbcd
@@ -250,7 +244,7 @@ public class StringUtilsDemo {
         p(StringUtils.deleteWhitespace("abcd abcd")); // abcdabcd
     }
 
-    // Replace / Overlay
+    // replace / overlay
     @Test
     public void replace() {
         p(StringUtils.replace("AbcdAbcd", "A", "a"));           // abcdabcd
@@ -268,7 +262,7 @@ public class StringUtilsDemo {
         p(StringUtils.overlay("0bcd4", "123", 1, 4)); // 01234
     }
 
-    // Reverse / ReverseDelimited
+    /** reverse / reverseDelimited */
     @Test
     public void reverse() {
         p(StringUtils.reverse("abc"));                  // cba
@@ -276,7 +270,7 @@ public class StringUtilsDemo {
         p(StringUtils.reverseDelimited("a:b:c", ':'));  // c:b:a
     }
 
-    // Rotate
+    /** rotate */
     @Test
     public void rotate() {
         p(StringUtils.rotate("abcdefg", 0));    // abcdefg
@@ -288,7 +282,7 @@ public class StringUtilsDemo {
         p(StringUtils.rotate("abcdefg", -9));   // cdefgab
     }
 
-    // Split / Join
+    // split / join
     @Test
     public void split() {
         // 用空格分割
@@ -296,13 +290,13 @@ public class StringUtilsDemo {
         p(StringUtils.split("a b c d", ' '));   // [a, b, c, d]
         p(StringUtils.split("a b c d", "b c")); // [a, d]
         // 用空格分割，分成3份
-        p(StringUtils.split("a b c d", " ", 3));// [a, b, c d]
+        p(StringUtils.split("a b c d", StringUtils.SPACE, 3));// [a, b, c d]
 
         // ???
-        p(StringUtils.splitByWholeSeparator("abcd", ""));
+        p(StringUtils.splitByWholeSeparator("abcd", StringUtils.EMPTY));
 
         // ???
-        p(StringUtils.splitPreserveAllTokens("abcd", ""));
+        p(StringUtils.splitPreserveAllTokens("abcd", StringUtils.EMPTY));
 
         // 按字符类型分割
         p(StringUtils.splitByCharacterType("11aA啊啊"));          // [11, a, A, 啊啊]
@@ -319,7 +313,7 @@ public class StringUtilsDemo {
         p(StringUtils.joinWith("-", "a", "b", "c", "d"));   // a-b-c-d
     }
 
-    // startsWith / endsWith
+    /** startsWith / endsWith */
     @Test
     public void with() {
         p(StringUtils.startsWith("abc", "A"));          // false
@@ -331,7 +325,7 @@ public class StringUtilsDemo {
         p(StringUtils.endsWithIgnoreCase("abc", "C"));  // true
     }
 
-    // SubString / Left / Right / Mid
+    // subString / left / right / mid
     @Test
     public void subString() {
         p(StringUtils.substring("abcdabcd", 2));                // cdabcd
@@ -358,31 +352,31 @@ public class StringUtilsDemo {
         p(StringUtils.mid("abcdabcd", 3, 3));   // cdabcd
     }
 
-    // Trim / Strip
+    // trim / strip
     @Test
     public void trim() {
         // null, ""
-        p("* " + StringUtils.trim(null));       // * null
-        p("* " + StringUtils.trim(""));         // *
-        p("* " + StringUtils.trim(" "));        // *
+        p("* " + StringUtils.trim(null));                       // * null
+        p("* " + StringUtils.trim(StringUtils.EMPTY));          // *
+        p("* " + StringUtils.trim(StringUtils.SPACE));          // *
 
         // null, "" 均转换为 null
-        p("* " + StringUtils.trimToNull(null)); // * null
-        p("* " + StringUtils.trimToNull(""));   // * null
-        p("* " + StringUtils.trimToNull(" "));  // * null
+        p("* " + StringUtils.trimToNull(null));                 // * null
+        p("* " + StringUtils.trimToNull(StringUtils.EMPTY));    // * null
+        p("* " + StringUtils.trimToNull(StringUtils.SPACE));    // * null
 
         // null, "" 均转换为 ""
-        p("* " + StringUtils.trimToEmpty(null));// *
-        p("* " + StringUtils.trimToEmpty(""));  // *
-        p("* " + StringUtils.trimToEmpty(" ")); // *
+        p("* " + StringUtils.trimToEmpty(null));                // *
+        p("* " + StringUtils.trimToEmpty(StringUtils.EMPTY));   // *
+        p("* " + StringUtils.trimToEmpty(StringUtils.SPACE));   // *
     }
 
     @Test
     public void strip() {
         // 等同于 trim, trimToNull, trimToEmpty
-        p("* " + StringUtils.strip(""));        // *
-        p("* " + StringUtils.stripToNull(""));  // * null
-        p("* " + StringUtils.stripToEmpty("")); // *
+        p("* " + StringUtils.strip(StringUtils.EMPTY));        // *
+        p("* " + StringUtils.stripToNull(StringUtils.EMPTY));  // * null
+        p("* " + StringUtils.stripToEmpty(StringUtils.EMPTY)); // *
 
         // 指定 strip 字符
         p(StringUtils.strip("11234321", "1"));      // 23432

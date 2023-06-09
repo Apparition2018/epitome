@@ -44,9 +44,7 @@ import java.util.SimpleTimeZone;
  */
 public class ObjectMapperDemo extends Demo {
 
-    /**
-     * JsonMapper 为 ObjectMapper 的子类
-     */
+    /** JsonMapper 为 ObjectMapper 的子类 */
     @Test
     public void testJsonMapper() throws JsonProcessingException {
         JsonMapper jsonMapper = JsonMapper.builder().build();

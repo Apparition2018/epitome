@@ -1,5 +1,7 @@
 package knowledge.oop.class_;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.stream.IntStream;
 
 /**
@@ -30,7 +32,7 @@ public final class ImmutableClass {
 
     public String toString() {
         StringBuilder sb = new StringBuilder("Numbers are: ");
-        IntStream.range(0, arr.length).forEach(i -> sb.append(arr[i]).append(" "));
+        IntStream.range(0, arr.length).forEach(i -> sb.append(arr[i]).append(StringUtils.SPACE));
         return sb.toString();
     }
 

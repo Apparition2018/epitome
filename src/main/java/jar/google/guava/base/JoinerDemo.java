@@ -26,9 +26,7 @@ public class JoinerDemo extends Demo {
     private final List<String> list = Lists.newArrayList("A", "B", "C");
     private final List<String> listWithNull = Lists.newArrayList("A", "B", "C", null);
 
-    /**
-     * null 值处理
-     */
+    /** null 值处理 */
     @Test
     public void null_() {
         String join = Joiner.on("-")
@@ -46,12 +44,10 @@ public class JoinerDemo extends Demo {
         p(join); // A-B-C-D
     }
 
-    /**
-     * appendTo
-     */
+    /** appendTo */
     @Test
     public void appendTo() {
-        try (FileWriter writer = new FileWriter(DEMO_PATH + "join.txt")) {
+        try (FileWriter writer = new FileWriter(DEMO_DIR_PATH + "join.txt")) {
             // <A extendsAppendable> A	appendTo(A appendable, Iterable<?> parts)
             // 将parts通过连接器的连接符连接成字符串，并拼接到appendable后
             Joiner.on("-").appendTo(writer, list);
@@ -66,9 +62,7 @@ public class JoinerDemo extends Demo {
         p(join); // SSS-SS-S-A-B-C
     }
 
-    /**
-     * map  →  String
-     */
+    /** map  →  String */
     @Test
     public void withKeyValueSeparator() {
         ImmutableMap<String, String> map = ImmutableMap.of("A", "1", "B", "2");
@@ -78,9 +72,7 @@ public class JoinerDemo extends Demo {
         p(join); // A=1;B=2
     }
 
-    /**
-     * JDK8 joining
-     */
+    /** JDK8 joining */
     @Test
     public void joining() {
         String collect = listWithNull.stream().filter(s -> null != s && !s.isEmpty())

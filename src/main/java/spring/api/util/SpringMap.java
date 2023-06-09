@@ -17,9 +17,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class SpringMap extends Demo {
 
-    /**
-     * LinkedCaseInsensitiveMap     键不区分大小写
-     */
+    /** LinkedCaseInsensitiveMap    键不区分大小写 */
     @Test
     public void testLinkedCaseInsensitiveMap() {
         Map<String, Integer> map = new LinkedCaseInsensitiveMap<>();
@@ -27,9 +25,7 @@ public class SpringMap extends Demo {
         p(map.get("A")); // 1
     }
 
-    /**
-     * LinkedMultiValueMap          1键-多值 Map
-     */
+    /** LinkedMultiValueMap         1键-多值 Map */
     @Test
     public void testLinkedMultiValueMap() {
         LinkedMultiValueMap<Integer, String> map = new LinkedMultiValueMap<>();

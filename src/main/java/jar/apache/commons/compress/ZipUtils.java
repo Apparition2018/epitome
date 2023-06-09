@@ -33,17 +33,17 @@ public class ZipUtils extends Demo {
 
     @Test
     public void compress() {
-        compress(new File(DEMO_PATH + "a").listFiles(), DEMO_PATH + "a.zip");
+        compress(new File(DEMO_DIR_PATH + "a").listFiles(), DEMO_DIR_PATH + "a.zip");
     }
 
     @Test
     public void compress2() {
-        compress2(DEMO_FILE_PATH, DEMO_PATH + "demo.zip");
+        compress2(DEMO_FILE_PATH, DEMO_DIR_PATH + "demo.zip");
     }
 
     @Test
     public void decompress() {
-        decompress(DEMO_PATH + "a.zip", DEMO_PATH);
+        decompress(DEMO_DIR_PATH + "a.zip", DEMO_DIR_PATH);
     }
 
     /**

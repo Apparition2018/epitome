@@ -1,6 +1,7 @@
 package knowledge.api.util;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -27,17 +28,15 @@ public class ZipUtils extends Demo {
 
     @Test
     public void testZip() throws IOException {
-        zip(DEMO_PATH + "a3.zip", null, DEMO_PATH + "a/", DEMO_FILE_PATH);
+        zip(DEMO_DIR_PATH + "a3.zip", null, DEMO_DIR_PATH + "a/", DEMO_FILE_PATH);
     }
 
     @Test
     public void testUnzip() throws IOException {
-        unzip(DEMO_PATH + "a3.zip", DEMO_PATH);
+        unzip(DEMO_DIR_PATH + "a3.zip", DEMO_DIR_PATH);
     }
 
-    /**
-     * 压缩
-     */
+    /** 压缩 */
     public void zip(String zipPath, String path, String... srcPaths) throws IOException {
         ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(new File(zipPath).toPath()));
         File[] srcFiles = new File[srcPaths.length];
@@ -46,9 +45,7 @@ public class ZipUtils extends Demo {
         zos.close();
     }
 
-    /**
-     * 压缩
-     */
+    /** 压缩 */
     public void zip(File zipFile, String path, File... srcFiles) throws IOException {
         ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(zipFile.toPath()));
         zip(zos, path, srcFiles);
@@ -64,7 +61,7 @@ public class ZipUtils extends Demo {
      */
     public void zip(ZipOutputStream outStream, String path, File... srcFiles) throws IOException {
         if (path == null) {
-            path = "";
+            path = StringUtils.EMPTY;
         }
         path = path.replaceAll("\\*", "/");
         if (path.length() > 0 && !path.endsWith("/")) {
@@ -100,16 +97,12 @@ public class ZipUtils extends Demo {
         }
     }
 
-    /**
-     * 解压
-     */
+    /** 解压 */
     public void unzip(String zipPath, String descDir) throws IOException {
         unzip(new File(zipPath), new File(descDir), null);
     }
 
-    /**
-     * 解压
-     */
+    /** 解压 */
     public void unzip(File zipFile, File destFile) throws IOException {
         unzip(zipFile, destFile, null);
     }

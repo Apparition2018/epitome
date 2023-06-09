@@ -2,6 +2,7 @@ package knowledge.api.util;
 
 import l.demo.Demo;
 import l.demo.Person;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -91,7 +92,7 @@ public class FunctionDemo extends Demo {
         private static void eval(List<Integer> list, Predicate<Integer> predicate) {
             for (Integer n : list) {
                 if (predicate.test(n)) {
-                    System.out.print(n + " ");
+                    System.out.print(n + StringUtils.SPACE);
                 }
             }
         }
@@ -120,29 +121,25 @@ public class FunctionDemo extends Demo {
      */
     static class SupplierDemo {
 
-        /**
-         * 一个 Stream 只允许被中间或终端操作操作一次，可通过 Supplier 的 get() 来获取新的 Stream，再对其进行操作
-         */
+        /** 一个 Stream 只允许被中间或终端操作操作一次，可通过 Supplier 的 get() 来获取新的 Stream，再对其进行操作 */
         @Test
         public void testSupplier() {
             //********** Supplier get() **********
             Supplier<Stream<Integer>> streamSupplier = () -> Stream.of(1, 2, 3);
-            streamSupplier.get().forEach(x -> System.out.print(x + " "));
-            streamSupplier.get().forEach(x -> System.out.print(x + 3 + " "));
+            streamSupplier.get().forEach(x -> System.out.print(x + StringUtils.SPACE));
+            streamSupplier.get().forEach(x -> System.out.print(x + 3 + StringUtils.SPACE));
             // 1 2 3 4 5 6 ，因为 supplier.get() 每次都会获取一个新的对象，所以不会抛异常
             p();
 
             //********** Stream **********
             Stream<Integer> stream = Stream.of(1, 2, 3);
-            stream.forEach(x -> System.out.print(x + " "));
-            stream.forEach(x -> System.out.print(x + 3 + " "));
+            stream.forEach(x -> System.out.print(x + StringUtils.SPACE));
+            stream.forEach(x -> System.out.print(x + 3 + StringUtils.SPACE));
             // 1 2 3
             // IllegalStateException: stream has already been operated upon or closed
         }
 
-        /**
-         * <a href="https://www.cnblogs.com/webor2006/p/8243874.html">实现不用传参的工厂模式</a>
-         */
+        /** @see <a href="https://www.cnblogs.com/webor2006/p/8243874.html">实现不用传参的工厂模式</a> */
         @Test
         public void testFactoryPattern() {
             Supplier<Person.Student> supplier = Person.Student::new;

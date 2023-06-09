@@ -27,7 +27,7 @@ public class FilesDemo extends Demo {
 
     @BeforeEach
     public void init() {
-        dirPath = Paths.get(DEMO_PATH);
+        dirPath = Paths.get(DEMO_DIR_PATH);
         filePath = Paths.get(DEMO_FILE_PATH);
     }
 
@@ -72,8 +72,8 @@ public class FilesDemo extends Demo {
 
     @Test
     public void create() throws IOException {
-        Path path = Paths.get(DEMO_PATH + "a/b/c");
-        Path path2 = Paths.get(DEMO_PATH + "a/b/demo");
+        Path path = Paths.get(DEMO_DIR_PATH + "a/b/c");
+        Path path2 = Paths.get(DEMO_DIR_PATH + "a/b/demo");
 
         // 创建文件夹（多级）
         Files.createDirectories(path);
@@ -87,8 +87,8 @@ public class FilesDemo extends Demo {
 
     @Test
     public void delete() throws IOException {
-        Path path = Paths.get(DEMO_PATH + "a");
-        Path path2 = Paths.get(DEMO_PATH + "a/b/demo");
+        Path path = Paths.get(DEMO_DIR_PATH + "a");
+        Path path2 = Paths.get(DEMO_DIR_PATH + "a/b/demo");
 
         Files.deleteIfExists(path2);
         Files.deleteIfExists(path); // DirectoryNotEmptyException: src\main\resources\demo\a
@@ -96,7 +96,7 @@ public class FilesDemo extends Demo {
 
     @Test
     public void move() throws IOException {
-        Path filePath2 = Paths.get(DEMO_PATH + "a/b/demo");
+        Path filePath2 = Paths.get(DEMO_DIR_PATH + "a/b/demo");
 
         // ATOMIC_MOVE：原子性操作，要么移动成功完成，要么源文件保持在原位置
         Files.move(filePath, filePath2, StandardCopyOption.ATOMIC_MOVE);
@@ -105,7 +105,7 @@ public class FilesDemo extends Demo {
 
     @Test
     public void copy() throws IOException {
-        Path filePath2 = Paths.get(DEMO_PATH + "a/b/demo");
+        Path filePath2 = Paths.get(DEMO_DIR_PATH + "a/b/demo");
 
         // static Path      copy(Path source, Path target, CopyOption... options)
         // StandardCopyOption：REPLACE_EXISTING（覆盖），COPY_ATTRIBUTES（复制文件属性）
@@ -164,9 +164,7 @@ public class FilesDemo extends Demo {
         Files.walk(dirPath, 5).filter(p -> String.valueOf(p).endsWith(".obj")).forEach(System.out::println);
     }
 
-    /**
-     * @see <a href="https://segmentfault.com/a/1190000020778836">Files.walkFileTree 遍历文件目录</a>
-     */
+    /** @see <a href="https://segmentfault.com/a/1190000020778836">Files.walkFileTree 遍历文件目录</a> */
     @Test
     public void walkFileTree() throws IOException {
         PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**.obj");

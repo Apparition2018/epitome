@@ -2,6 +2,7 @@ package knowledge.design.pattern.other.concurrency;
 
 import l.demo.Demo;
 import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 import java.util.concurrent.*;
@@ -33,9 +34,7 @@ public class WorkStealingDemo extends Demo {
     private static final boolean[] isAllStop = new boolean[]{false, false, false, false};
     private static final long SLEEP_TIME = TimeUnit.SECONDS.toMillis(1);
 
-    /**
-     * 本例基于 LinkedBlockingDeque 实现
-     */
+    /** 本例基于 LinkedBlockingDeque 实现 */
     public static void main(String[] args) throws InterruptedException {
         LinkedBlockingDeque<Work> deque1 = new LinkedBlockingDeque<>();
         LinkedBlockingDeque<Work> deque2 = new LinkedBlockingDeque<>();
@@ -68,7 +67,7 @@ public class WorkStealingDemo extends Demo {
             ThreadLocalRandom r = ThreadLocalRandom.current();
             sleep(r.nextLong(SLEEP_TIME), TimeUnit.MILLISECONDS);
             String finishName = Thread.currentThread().getName();
-            p(finishName + " - " + jobId + (finishName.equals(assignName) ? "" : " + " + assignName));
+            p(finishName + " - " + jobId + (finishName.equals(assignName) ? StringUtils.EMPTY : " + " + assignName));
         }
     }
 

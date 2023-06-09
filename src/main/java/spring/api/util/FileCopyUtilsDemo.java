@@ -17,7 +17,7 @@ public class FileCopyUtilsDemo extends Demo {
 
     public static void main(String[] args) throws IOException {
         // 复制文件
-        FileCopyUtils.copy(new File(DEMO_FILE_ABSOLUTE_PATH), new File(DESKTOP + "demo"));
+        FileCopyUtils.copy(new File(DEMO_FILE_ABSOLUTE_PATH), new File(DESKTOP + DEMO_FILE_NAME));
 
         // 读取
         p(FileCopyUtils.copyToString(new FileReader(DEMO_FILE_ABSOLUTE_PATH)));

@@ -93,10 +93,10 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
 
     @Override
     public String toString() {
-        String result = (null != id ? "id=" + id : "") + (null != name ? ", name='" + name + '\'' : "") +
-                (null != age ? ", age=" + age : "") + (null != gender ? ", gender='" + gender + '\'' : "") +
-                (null != otherInfo ? ", otherInfo=[" + StringUtils.join(otherInfo, ", ") + "]" : "") +
-                (null != getHome() ? ", home=Home(" + (null != getHome().getAddress() ? "address='" + getHome().getAddress() + '\'' : "") + (null != getHome().getTel() ? ", tel='" + getHome().getTel() + '\'' : "") + ")" : "");
+        String result = (null != id ? "id=" + id : StringUtils.EMPTY) + (null != name ? ", name='" + name + '\'' : StringUtils.EMPTY) +
+                (null != age ? ", age=" + age : StringUtils.EMPTY) + (null != gender ? ", gender='" + gender + '\'' : StringUtils.EMPTY) +
+                (null != otherInfo ? ", otherInfo=[" + StringUtils.join(otherInfo, ", ") + "]" : StringUtils.EMPTY) +
+                (null != getHome() ? ", home=Home(" + (null != getHome().getAddress() ? "address='" + getHome().getAddress() + '\'' : StringUtils.EMPTY) + (null != getHome().getTel() ? ", tel='" + getHome().getTel() + '\'' : StringUtils.EMPTY) + ")" : StringUtils.EMPTY);
         return "Person{" + (result.startsWith(",") ? result.substring(2) : result) + "}";
     }
 
@@ -181,12 +181,12 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
 
         @Override
         public String toString() {
-            String result = (null != super.id ? "id=" + super.id : "") + (null != super.name ? ", name='" + super.name + '\'' : "") +
-                    (null != super.age ? ", age=" + super.age : "") + (null != super.gender ? ", gender='" + super.gender + '\'' : "") +
-                    (null != super.otherInfo ? ", otherInfo=[" + StringUtils.join(super.otherInfo, ", ") + "]" : "") +
-                    (null != super.getHome() ? ", home=Home(" + (null != super.getHome().getAddress() ? "address='" + super.getHome().getAddress() + '\'' : "") + (null != super.getHome().getTel() ? ", tel='" + super.getHome().getTel() + '\'' : "") + ")" : "") +
-                    (null != no ? ", no='" + no + '\'' : "") +
-                    (null != birth ? ", birth=" + DateFormatUtils.format(birth, DatePattern.NORM_DATE_PATTERN) : "") + (null != score ? ", score=" + score : "");
+            String result = (null != super.id ? "id=" + super.id : StringUtils.EMPTY) + (null != super.name ? ", name='" + super.name + '\'' : StringUtils.EMPTY) +
+                    (null != super.age ? ", age=" + super.age : StringUtils.EMPTY) + (null != super.gender ? ", gender='" + super.gender + '\'' : StringUtils.EMPTY) +
+                    (null != super.otherInfo ? ", otherInfo=[" + StringUtils.join(super.otherInfo, ", ") + "]" : StringUtils.EMPTY) +
+                    (null != super.getHome() ? ", home=Home(" + (null != super.getHome().getAddress() ? "address='" + super.getHome().getAddress() + '\'' : StringUtils.EMPTY) + (null != super.getHome().getTel() ? ", tel='" + super.getHome().getTel() + '\'' : StringUtils.EMPTY) + ")" : StringUtils.EMPTY) +
+                    (null != no ? ", no='" + no + '\'' : StringUtils.EMPTY) +
+                    (null != birth ? ", birth=" + DateFormatUtils.format(birth, DatePattern.NORM_DATE_PATTERN) : StringUtils.EMPTY) + (null != score ? ", score=" + score : StringUtils.EMPTY);
             return "Student{" + (result.startsWith(",") ? result.substring(2) : result) + "}";
         }
     }

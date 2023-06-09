@@ -1,5 +1,7 @@
 package knowledge.algorithm.five;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.stream.IntStream;
 
 /**
@@ -35,7 +37,7 @@ public class Backtracking {
                 CombinationOfNumber(i - 1, r - 1);
             } else {
                 for (int j = R - 1; j >= 0; j--)
-                    System.out.print(b[j] + " ");
+                    System.out.print(b[j] + StringUtils.SPACE);
                 System.out.println();
             }
         }

@@ -21,10 +21,10 @@ public class DesktopUtilDemo extends Demo {
         // DesktopUtil.mail(MY_EMAIL);
 
         // 启动关联应用程序来打开文件
-        DesktopUtil.open(new File(DEMO_PATH));
+        DesktopUtil.open(new File(DEMO_DIR_PATH));
 
         // 启动关联编辑器应用程序并打开用于编辑的文件
-        DesktopUtil.edit(new File(DEMO_PATH + "QRCode.png"));
+        DesktopUtil.edit(new File(DEMO_DIR_PATH + "QRCode.png"));
 
         // 使用关联应用程序的打印命令, 用本机桌面打印设备来打印文件
         // DesktopUtil.print(new File(DEMO_PATH + "QRCode.png"));

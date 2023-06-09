@@ -6,6 +6,7 @@ import l.demo.Demo;
 import l.demo.Person;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
 
@@ -147,7 +148,7 @@ public class Suggestions extends Demo {
         p((String) null instanceof String);
 
         // 在泛型类型中判断String对象是否是Date的实例：false，编译成字节码时，T 是 Object 类型，所以等价于 Object instanceof Date，编译通过
-        p(new GenericClass<String>().isDateInstance(""));
+        p(new GenericClass<String>().isDateInstance(StringUtils.EMPTY));
     }
 
     private static class GenericClass<T> {
@@ -309,7 +310,7 @@ public class Suggestions extends Demo {
         }
 
         new Demo();
-        new Demo("");
+        new Demo(StringUtils.EMPTY);
     }
 
     /**
@@ -397,14 +398,14 @@ public class Suggestions extends Demo {
     @Test
     public void test056() {
         stopWatch.start("+");
-        String str = "";
+        String str = StringUtils.EMPTY;
         for (int i = 0; i < THOUSAND; i++) {
             str += "c";
         }
         stopWatch.stop();
 
         stopWatch.start("concat");
-        str = "";
+        str = StringUtils.EMPTY;
         for (int i = 0; i < THOUSAND; i++) {
             str = str.concat("c");
         }
@@ -807,7 +808,7 @@ public class Suggestions extends Demo {
         // 1.类属性方式
         Class<?> clazz1 = String.class;
         // 2.getClass()
-        String str = "";
+        String str = StringUtils.EMPTY;
         Class<?> clazz2 = str.getClass();
         // 3.forName()
         Class<?> clazz3 = Class.forName("java.lang.String");

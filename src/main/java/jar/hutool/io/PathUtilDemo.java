@@ -32,7 +32,7 @@ public class PathUtilDemo extends Demo {
     @Test
     public void testPathUtil() {
         Path path = Paths.get(DEMO_FILE_PATH);
-        Path desPath = Paths.get(DEMO_PATH + "a/b/demo");
+        Path desPath = Paths.get(DEMO_DIR_PATH + "a/b/demo");
 
         // 获取指定位置的子路径部分，支持负数
         p(PathUtil.subPath(path, 0, 5));    // src\main\resources\demo\demo
@@ -53,12 +53,12 @@ public class PathUtilDemo extends Demo {
         PathUtil.rename(desPath, "demo2", true);
 
         // 删除文件
-        PathUtil.del(Paths.get(DEMO_PATH + "a/b/demo2"));
+        PathUtil.del(Paths.get(DEMO_DIR_PATH + "a/b/demo2"));
     }
 
     @Test
     public void traversal() {
-        Path dir = Paths.get(DEMO_PATH);
+        Path dir = Paths.get(DEMO_DIR_PATH);
 
         // static List<File>	loopFiles(Path path, int maxDepth, FileFilter fileFilter)
         // 递归遍历目录以及子目录中的所有文件，返回过滤结果

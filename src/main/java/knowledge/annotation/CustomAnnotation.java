@@ -2,6 +2,7 @@ package knowledge.annotation;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.lang.annotation.*;
@@ -105,9 +106,7 @@ public class CustomAnnotation {
         }
     }
 
-    /**
-     * 使用自定义注解
-     */
+    /** 使用自定义注解 */
     @Getter
     @Setter
     @Description(desc = "Apple")
@@ -153,12 +152,10 @@ public class CustomAnnotation {
          * 可以使用 default 为成员指定一个默认值
          * </pre>
          */
-        String value() default "";
+        String value() default StringUtils.EMPTY;
     }
 
-    /**
-     * 水果颜色注解
-     */
+    /** 水果颜色注解 */
     @Target(ElementType.FIELD)
     @Retention(RetentionPolicy.RUNTIME)
     @interface FruitColor {
@@ -171,9 +168,7 @@ public class CustomAnnotation {
         Color fruitColor() default Color.GREEN;
     }
 
-    /**
-     * 水果供应商注解
-     */
+    /** 水果供应商注解 */
     @Target(ElementType.FIELD)
     @Retention(RetentionPolicy.RUNTIME)
     @interface FruitProvider {
@@ -181,10 +176,10 @@ public class CustomAnnotation {
         int id() default -1;
 
         // 供应商名称
-        String name() default "";
+        String name() default StringUtils.EMPTY;
 
         // 供应商地址
-        String address() default "";
+        String address() default StringUtils.EMPTY;
     }
 
     @Target({ElementType.METHOD, ElementType.TYPE})

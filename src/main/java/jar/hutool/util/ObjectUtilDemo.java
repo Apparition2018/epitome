@@ -57,22 +57,23 @@ public class ObjectUtilDemo extends Demo {
 
     @Test
     public void nullAndEmpty() {
-        p(ObjectUtil.isNull(null));                         // true
-        p(ObjectUtil.isNotNull(null));                      // false
-        p(ObjectUtil.isEmpty(map));                         // false
-        p(ObjectUtil.isNotEmpty(map));                      // true
-        p(ObjectUtil.isAllEmpty(map));                      // false
-        p(ObjectUtil.isAllNotEmpty(map));                   // true
+        p(ObjectUtil.isNull(null));              // true
+        p(ObjectUtil.isNotNull(null));           // false
+        p(ObjectUtil.isEmpty(map));              // false
+        p(ObjectUtil.isNotEmpty(map));           // true
+        p(ObjectUtil.isAllEmpty(map));           // false
+        p(ObjectUtil.isAllNotEmpty(map));        // true
 
+        Object[] arr = new Object[]{1, StringUtils.EMPTY, "2", StringUtils.EMPTY, 3};
         // 多少位 Empty
-        p(ObjectUtil.emptyCount(1, "", "2", "", 3));        // 2
+        p(ObjectUtil.emptyCount(arr));          // 2
         // 是否有 Empty
-        p(ObjectUtil.hasEmpty(1, "", "2", "", 3));          // true
+        p(ObjectUtil.hasEmpty(arr));            // true
 
         // default
         p(ObjectUtil.defaultIfNull(null, (s) -> StringUtils.trim(String.valueOf(s)), "1")); // 1
-        p(ObjectUtil.defaultIfNull(null, "1"));             // 1
-        p(ObjectUtil.defaultIfEmpty(null, "1"));            // 1
-        p(ObjectUtil.defaultIfBlank(null, "1"));            // 1
+        p(ObjectUtil.defaultIfNull(null, "1")); // 1
+        p(ObjectUtil.defaultIfEmpty(null, "1"));// 1
+        p(ObjectUtil.defaultIfBlank(null, "1"));// 1
     }
 }

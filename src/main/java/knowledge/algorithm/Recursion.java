@@ -1,5 +1,7 @@
 package knowledge.algorithm;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.stream.IntStream;
 
 import static l.demo.Demo.p;
@@ -62,7 +64,7 @@ public class Recursion {
     private static class FibonacciSequence {
 
         public static void main(String[] args) {
-            IntStream.range(0, 100).forEach(i -> System.out.print(fibonacci(i) + " "));
+            IntStream.range(0, 100).forEach(i -> System.out.print(fibonacci(i) + StringUtils.SPACE));
         }
 
         private static long fibonacci(long num) {
@@ -71,9 +73,7 @@ public class Recursion {
 
     }
 
-    /**
-     * 1+2+3+...+100 并输出结果，在该段代码中不得出现 for，while 关键字
-     */
+    /** 1+2+3+...+100 并输出结果，在该段代码中不得出现 for，while 关键字 */
     private static class Recursion01 {
 
         public static void main(String[] args) {
@@ -154,9 +154,7 @@ public class Recursion {
 
     }
 
-    /**
-     * 计算二进制中1的个数
-     */
+    /** 计算二进制中1的个数 */
     private static class Recursion03 {
 
         public static void main(String[] args) {

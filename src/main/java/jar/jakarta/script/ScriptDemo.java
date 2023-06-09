@@ -31,9 +31,7 @@ public class ScriptDemo extends Demo {
 
     private final ScriptEngine engine = new ScriptEngineManager().getEngineByName("Nashorn");
 
-    /**
-     * 脚本引擎工厂
-     */
+    /** 脚本引擎工厂 */
     @Test
     public void scriptEngineFactory() {
         ScriptEngineManager manager = new ScriptEngineManager();
@@ -48,9 +46,7 @@ public class ScriptDemo extends Demo {
         }
     }
 
-    /**
-     * 绑定参数和方法参数
-     */
+    /** 绑定参数和方法参数 */
     @Test
     public void bindingsAndFunctionArgs() throws FileNotFoundException, ScriptException, NoSuchMethodException {
         Bindings bindings = engine.createBindings();
@@ -72,13 +68,11 @@ public class ScriptDemo extends Demo {
         }
     }
 
-    /**
-     * 获取对象列表
-     */
+    /** 获取对象列表 */
     @Test
     public void getList() throws FileNotFoundException, ScriptException, NoSuchMethodException, JsonProcessingException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("Nashorn");
-        engine.eval(new FileReader(DEMO_PATH + "person.js"));
+        engine.eval(new FileReader(DEMO_DIR_PATH + "person.js"));
         if (engine instanceof Invocable invocable) {
             String json = jsonMapper.writeValueAsString(invocable.invokeFunction("listPerson"));
             List<Person> personList = new ArrayList<>(jsonMapper.readValue(json, new TypeReference<Map<Integer, Person>>() {

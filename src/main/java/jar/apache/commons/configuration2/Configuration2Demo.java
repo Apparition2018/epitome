@@ -28,7 +28,7 @@ public class Configuration2Demo extends Demo {
 
         // .xml
         // http://www.voidcn.com/article/p-kusllija-bqy.html
-        XMLConfiguration xmlConfiguration = configs.xml(DEMO_PATH + "demo.xml");
+        XMLConfiguration xmlConfiguration = configs.xml(DEMO_DIR_PATH + "demo.xml");
         // 使用默认的符号定义创建一个表达式引擎
         DefaultExpressionEngine defaultExpressionEngine = new DefaultExpressionEngine(DefaultExpressionEngineSymbols.DEFAULT_SYMBOLS);
         xmlConfiguration.setExpressionEngine(defaultExpressionEngine);

@@ -27,13 +27,11 @@ import java.nio.file.Paths;
  */
 public class IoStream extends Demo {
 
-    /**
-     * 使用缓冲流赋值文件
-     */
+    /** 使用缓冲流赋值文件 */
     @Test
     public void copyByBufferedStream() {
         try (InputStream is = new BufferedInputStream(Files.newInputStream(Paths.get(DEMO_FILE_PATH)));
-             OutputStream os = new BufferedOutputStream(Files.newOutputStream(Paths.get(DEMO_PATH + "demo_copy")))) {
+             OutputStream os = new BufferedOutputStream(Files.newOutputStream(Paths.get(DEMO_DIR_PATH + "demo_copy")))) {
             this.readIsAndOsWrite(is, os);
         } catch (IOException e) {
             p("copy failed!");
@@ -42,9 +40,7 @@ public class IoStream extends Demo {
         p("copy completed!");
     }
 
-    /**
-     * 通过字节数组流实现 InputStream 重复使用
-     */
+    /** 通过字节数组流实现 InputStream 重复使用 */
     @Test
     public void repeatableUse() {
         try (FileInputStream is = new FileInputStream(DEMO_FILE_PATH)) {

@@ -1,6 +1,7 @@
 package knowledge.design.pattern.gof.structural.flyweight;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -43,9 +44,7 @@ import java.util.Map;
  */
 public class FlyweightDemo extends Demo {
 
-    /**
-     * <a href="http://c.biancheng.net/view/8471.html">String 使用了享元模式</a>
-     */
+    /** <a href="http://c.biancheng.net/view/8471.html">String 使用了享元模式</a> */
     @Test
     public void testString() {
         String s1 = "hello";
@@ -69,9 +68,7 @@ public class FlyweightDemo extends Demo {
     private static final int TREES_TO_DRAW = MILLION;
     private static final int TREE_TYPES = 2;
 
-    /**
-     * <a href="https://refactoringguru.cn/design-patterns/flyweight/java/example">渲染一片森林</a>
-     */
+    /** @see <a href="https://refactoringguru.cn/design-patterns/flyweight/java/example">渲染一片森林</a> */
     public static void main(String[] args) {
         Forest forest = new Forest();
         for (int i = 0; i < TREES_TO_DRAW / TREE_TYPES; i++) {
@@ -87,7 +84,7 @@ public class FlyweightDemo extends Demo {
         p("---------------------");
         p("Memory usage:");
         p("Tree size (8 bytes) * " + TREES_TO_DRAW);
-        p("+ TreeTypes size (~30 bytes) * " + TREE_TYPES + "");
+        p("+ TreeTypes size (~30 bytes) * " + TREE_TYPES + StringUtils.EMPTY);
         p("---------------------");
         p("Total: " + ((TREES_TO_DRAW * 8 + TREE_TYPES * 30) / 1024 / 1024) +
                 "MB (instead of " + ((TREES_TO_DRAW * 38) / 1024 / 1024) + "MB)");
@@ -97,18 +94,14 @@ public class FlyweightDemo extends Demo {
         return min + (int) (Math.random() * ((max - min) + 1));
     }
 
-    /**
-     * Context
-     */
+    /** Context */
     private record Tree(int x, int y, TreeType type) {
         public void draw(Graphics g) {
             type.draw(g, x, y);
         }
     }
 
-    /**
-     * Flyweight
-     */
+    /** Flyweight */
     private record TreeType(String name, Color color, String otherTreeData) {
         public void draw(Graphics g, int x, int y) {
             g.setColor(Color.BLACK);
@@ -118,9 +111,7 @@ public class FlyweightDemo extends Demo {
         }
     }
 
-    /**
-     * FlyweightFactory
-     */
+    /** FlyweightFactory */
     private static class TreeFactory {
         static Map<String, TreeType> treeTypes = new HashMap<>();
 

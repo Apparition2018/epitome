@@ -28,20 +28,16 @@ public class ZXingDemo extends Demo {
 
     private static final String FORMAT = "png";
     private static final String CONTENT = "999999999999";
-    private static final String QR_CODE_PATH = DEMO_PATH + "QRCode.png";
-    private static final String EAN_13_PATH = DEMO_PATH + "EAN-13.png";
+    private static final String QR_CODE_PATH = DEMO_DIR_PATH + "QRCode.png";
+    private static final String EAN_13_PATH = DEMO_DIR_PATH + "EAN-13.png";
 
-    /**
-     * 生成 QR Code
-     */
+    /** 生成 QR Code */
     @Test
     public void createQRCode() {
         this.createCode(BarcodeFormat.QR_CODE, QR_CODE_PATH);
     }
 
-    /**
-     * 读取 QR Code
-     */
+    /** 读取 QR Code */
     @Test
     public void readQRCode() {
         Result result = this.readCode(BarcodeFormat.QR_CODE, QR_CODE_PATH);
@@ -53,17 +49,13 @@ public class ZXingDemo extends Demo {
         }
     }
 
-    /**
-     * 生成条形码 (EAN-13)
-     */
+    /** 生成条形码 (EAN-13) */
     @Test
     public void createEan13() {
         this.createCode(BarcodeFormat.EAN_13, EAN_13_PATH);
     }
 
-    /**
-     * 读取条形码 (EAN-13)
-     */
+    /** 读取条形码 (EAN-13) */
     @Test
     public void readEan13() {
         Result result = this.readCode(BarcodeFormat.EAN_13, EAN_13_PATH);

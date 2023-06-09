@@ -5,7 +5,7 @@ import cn.hutool.http.ContentType;
 import cn.hutool.http.HttpUtil;
 import org.junit.jupiter.api.Test;
 
-import static l.demo.Demo.DEMO_PATH;
+import static l.demo.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://hutool.cn/docs/#/http/Server/简易Http服务器-SimpleServer">SimpleServer</a>   简易 Http 服务器
@@ -35,21 +35,19 @@ public class SimpleServerDemo {
                 .addAction("/file", (req, res) -> {
                             final UploadFile file = req.getMultipart().getFile("file");
                             // 传入目录，默认读取 HTTP 头中的文件名然后创建文件
-                            file.write(DEMO_PATH);
+                            file.write(DEMO_DIR_PATH);
                             res.write("OK!", ContentType.TEXT_PLAIN.toString());
                         }
                 )
                 .start();
     }
 
-    /**
-     * 简单的文件服务器
-     */
+    /** 简单的文件服务器 */
     @Test
     public void setRoot() {
         HttpUtil.createServer(8888)
                 // 设置默认根目录
-                .setRoot(DEMO_PATH)
+                .setRoot(DEMO_DIR_PATH)
                 .start();
     }
 }

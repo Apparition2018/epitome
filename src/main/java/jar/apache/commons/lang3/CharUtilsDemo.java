@@ -1,6 +1,7 @@
 package jar.apache.commons.lang3;
 
 import org.apache.commons.lang3.CharUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
@@ -25,34 +26,34 @@ public class CharUtilsDemo {
 
     @Test
     public void isAscii() {
-        p(CharUtils.isAscii('1'));              // true
-        p(CharUtils.isAscii('©'));              // false
+        p(CharUtils.isAscii('1'));                  // true
+        p(CharUtils.isAscii('©'));                  // false
 
         // 可见
-        p(CharUtils.isAsciiPrintable('1'));     // false
-        p(CharUtils.isAsciiPrintable('\n'));    // false
+        p(CharUtils.isAsciiPrintable('1'));         // false
+        p(CharUtils.isAsciiPrintable(CharUtils.LF));// false
 
         // 不可见
-        p(CharUtils.isAsciiControl('\n'));      // true
-        p(CharUtils.isAsciiControl('1'));       // false
+        p(CharUtils.isAsciiControl(CharUtils.LF));  // true
+        p(CharUtils.isAsciiControl('1'));           // false
 
         // 字母
-        p(CharUtils.isAsciiAlpha('a'));         // true
-        p(CharUtils.isAsciiAlpha('1'));         // false
+        p(CharUtils.isAsciiAlpha('a'));             // true
+        p(CharUtils.isAsciiAlpha('1'));             // false
 
         // 大写字母
-        p(CharUtils.isAsciiAlphaLower('a'));    // true
+        p(CharUtils.isAsciiAlphaLower('a'));        // true
         // 小写字母
-        p(CharUtils.isAsciiAlphaUpper('A'));    // false
+        p(CharUtils.isAsciiAlphaUpper('A'));        // false
 
         // 数字
-        p(CharUtils.isAsciiNumeric('1'));       // true
-        p(CharUtils.isAsciiNumeric('a'));       // false
+        p(CharUtils.isAsciiNumeric('1'));           // true
+        p(CharUtils.isAsciiNumeric('a'));           // false
 
         // 字幕数字
-        p(CharUtils.isAsciiAlphanumeric('1'));   // true
-        p(CharUtils.isAsciiAlphanumeric('a'));   // true
-        p(CharUtils.isAsciiAlphanumeric('©'));   // false
+        p(CharUtils.isAsciiAlphanumeric('1'));      // true
+        p(CharUtils.isAsciiAlphanumeric('a'));      // true
+        p(CharUtils.isAsciiAlphanumeric('©'));      // false
     }
 
     /**
@@ -64,16 +65,16 @@ public class CharUtilsDemo {
     public void toChar() {
         String s = null;
 
-        p(CharUtils.toChar(' '));               //
-        p(CharUtils.toChar('A'));               // A
-        p(CharUtils.toChar("A"));               // A
-        // p(CharUtils.toChar(s));              // IllegalArgumentException: The String must not be empty
-        p(CharUtils.toChar(s, '?'));            // ?
+        p(CharUtils.toChar(' '));                           //
+        p(CharUtils.toChar('A'));                           // A
+        p(CharUtils.toChar("A"));                           // A
+        // p(CharUtils.toChar(s));                          // IllegalArgumentException: The String must not be empty
+        p(CharUtils.toChar(s, '?'));                        // ?
 
-        p(CharUtils.toCharacterObject(null));   // null
-        p(CharUtils.toCharacterObject(""));     // null
-        p(CharUtils.toCharacterObject("A"));    // A
-        p(CharUtils.toCharacterObject("AB"));   // A
+        p(CharUtils.toCharacterObject(null));               // null
+        p(CharUtils.toCharacterObject(StringUtils.EMPTY));  // null
+        p(CharUtils.toCharacterObject("A"));                // A
+        p(CharUtils.toCharacterObject("AB"));               // A
     }
 
     /**

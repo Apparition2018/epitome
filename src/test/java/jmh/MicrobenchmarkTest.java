@@ -1,5 +1,6 @@
 package jmh;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.results.format.ResultFormatType;
@@ -54,7 +55,7 @@ public class MicrobenchmarkTest {
 
     @Benchmark
     public void testString(Blackhole blackhole) {
-        String s = "";
+        String s = StringUtils.EMPTY;
         for (int i = 0; i < length; i++) {
             s += i;
         }

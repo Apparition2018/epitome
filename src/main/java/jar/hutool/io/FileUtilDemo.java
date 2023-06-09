@@ -54,8 +54,8 @@ public class FileUtilDemo extends Demo {
     @Test
     public void testFileUtil() {
         // 创建文件夹
-        FileUtil.mkParentDirs(new File(DEMO_PATH));
-        File dir = FileUtil.mkdir(new File(DEMO_PATH));
+        FileUtil.mkParentDirs(new File(DEMO_DIR_PATH));
+        File dir = FileUtil.mkdir(new File(DEMO_DIR_PATH));
 
         // 修复路径
         String dirPath = FileUtil.normalize(dir.getAbsolutePath());
@@ -65,9 +65,9 @@ public class FileUtilDemo extends Demo {
         FileUtil.loopFiles(dir, 1, pathname -> false);
 
         // 创建文件及其父目录
-        FileUtil.touch(dir, "demo");
+        FileUtil.touch(dir, DEMO_FILE_NAME);
         // 会检查 slip 漏洞
-        File file = FileUtil.file(dir, "demo");
+        File file = FileUtil.file(dir, DEMO_FILE_NAME);
 
         // 检查父完整路径是否为自路径的前半部分，如果不是说明不是子路径，可能存在 slip 注入
         p(FileUtil.checkSlip(dir, file));

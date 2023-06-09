@@ -1,5 +1,6 @@
 package knowledge.types.basic;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -12,8 +13,7 @@ public class Conversion {
 
     /**
      * 自动类型转换:
-     * <p>
-     * 低  --------------------------------------->  高
+     * <p>低  --------------------------------------->  高<br/>
      * byte, short, char → int → long → float → double
      */
     @Test
@@ -31,11 +31,13 @@ public class Conversion {
 
     /**
      * 数据类型转换必须满足一下规则：
+     * <pre>
      * 1.不能对 boolean 类型进行类型转换
      * 2.不能把对象类型转换成不相关类的对象
      * 3.在把容量大的类型转换为容量小的类型时必须使用强制类型转换
      * 4.转换过程中可能导致溢出或精度损失
      * 5.浮点数到整数的转换是通过舍弃小数得到的，而不是四舍五入
+     * </pre>
      */
     @Test
     public void rule() {
@@ -50,7 +52,7 @@ public class Conversion {
         System.out.println((int) -45.89f);  // -45
     }
 
-    // int <=> String
+    /** int <=> String */
     @Test
     public void cnvIntAndString() {
         int i;
@@ -63,7 +65,6 @@ public class Conversion {
         // int → String
         s = String.valueOf(2);
         s = Integer.toString(2);
-        s = "" + 2;
+        s = StringUtils.EMPTY + 2;
     }
-
 }

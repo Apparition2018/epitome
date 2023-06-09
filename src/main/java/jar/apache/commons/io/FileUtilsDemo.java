@@ -55,8 +55,8 @@ public class FileUtilsDemo extends Demo {
     // 删除
     @Test
     public void delete() throws IOException {
-        File file1 = new File(DEMO_PATH + "a/b/c");
-        File file2 = new File(DEMO_PATH + "a/b");
+        File file1 = new File(DEMO_DIR_PATH + "a/b/c");
+        File file2 = new File(DEMO_DIR_PATH + "a/b");
 
         if (file1.mkdirs()) {
             // deleteDirectory()
@@ -70,7 +70,7 @@ public class FileUtilsDemo extends Demo {
     @Test
     public void move() throws IOException {
         File file1 = new File(DEMO_FILE_PATH);
-        File file2 = new File(DEMO_PATH + "a/demo");
+        File file2 = new File(DEMO_DIR_PATH + "a/demo");
 
         // moveFile()
         FileUtils.moveFile(file1, file2);
@@ -86,7 +86,7 @@ public class FileUtilsDemo extends Demo {
     @Test
     public void copy() throws IOException, InterruptedException {
         File file1 = new File(DEMO_FILE_PATH);
-        File file2 = new File(DEMO_PATH + "a");
+        File file2 = new File(DEMO_DIR_PATH + "a");
 
         // copyFileToDirectory()
         FileUtils.copyFileToDirectory(file1, file2);
@@ -103,7 +103,7 @@ public class FileUtilsDemo extends Demo {
     // 其它
     @Test
     public void other() throws IOException {
-        File file1 = new File(DEMO_PATH);
+        File file1 = new File(DEMO_DIR_PATH);
         File file2 = new File(DEMO_FILE_PATH);
 
         // directoryContains()

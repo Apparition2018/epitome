@@ -1,6 +1,5 @@
 前端：
 	JS
-	1. 总是使用 ===
 	2. 使用.parseInt()时，总是指定第二个参数(代表进制)
 		如：parseInt("08", 10) // 如果不指定10进制，则被当做8进制处理
 	3. 使用应用名作为全局变量的命名空间
@@ -10,10 +9,6 @@
 				...
 			}
 		}
-	4. 缓存频繁使用的对象，数组长度等
-		var toLoop = new Array(1000);
-		for (var i = 0, len = toLoop.length; i < len; i++) {}
-	5. 循环性能——使用'break'和'continue'
 	6. 函数调用不要传输太多参数，可读性差。预先构建一个对象作为参数
 		function greet(user) {}
 			greet({
@@ -22,24 +17,10 @@
 		})
 	7. 把this映射为其它变量
 		如：var _self = this;
-	8. 布尔变量命名：is, can, has
-		如：isEditing = true;
 	9. 尽量减少重新绘制和重新布局
 		重新绘制是在某个元素的外观被改变但没有对布局进行调整的情况下触发的。如：如是否可以见，背景色改变等
 		重新布局由调整页面布局的一些改变引发。如：增删元素，改变某个元素的宽度或高度，甚至是改变浏览器窗口的大小。最糟糕是重新布局导致先辈、兄弟和孩子节点元素也需要重新布局的多米诺骨牌效应。
 		如：先 append 10个 li，再将10个 li 放到 ul 里
-	11. 使用可读的毫秒数F
-		var timeout = 30 * 1000; // 不过会降低
-	12. if(!myValue){} 代替 if(myValue != undefined){}
-							if(myValue !=null){}  
-							if(myValue != false){}
-	13. var arr = [] 创建数组;  var obj = {} 创建对象;
-	14. 尽量使用内置函数
-	15.	使用switch代替if
-	16. 最小化语句数量
-		如：var num = 365, color = "yellow"; 
-		如：var sCar = aCars[i++]; 代替 var sCar = aCars[i]; i++;
-	17. 尽可能的用局部变量来代替全局变量
 	18. 不直接操作NodeList，将其装换成静态数组后再使用
 		如：现代浏览器：	Array.prototype.slice.call()
 			IE:				逐个拷贝到新数组
@@ -66,12 +47,12 @@
 	27. new Function(script)() 代替 eval(script);
 		(function() { eval(script) }()) 代替 eval(script)
 	28.
-	
+
 	jQuery
 	1. data-*
 	2. 缓存选择器结果
 		如：var $start = $(".start");
-		
+
 	CSS
 	1. box-sizing: border-box;
 	2. position定位
@@ -88,7 +69,7 @@
 			right: 0;
 			margin: 0;
 		}
-	6. @font-face	
+	6. @font-face
 	7. 宽度分离：box-sizing 搞不定 margin
 	8. 如果值为若干单词，要加引号
 		如：p {font-family: "san serif";}
@@ -97,7 +78,7 @@
 	1. 始终为属性值加引号
 		class="clearfix"
 	2. 请确保将 HTML heading 标签只用于标题。搜索引擎使用标题为您的网页的结构和内容编制索引。
-	3. 条件注释（IE）	
+	3. 条件注释（IE）
 		<!--[if IE 8]>
 			... some html here ...
 		<![endif]-->
@@ -107,14 +88,14 @@
 	6. 布局标签 header nav section footer article aside details summary
 
 	只对表格数据用table标签
-	
-	
-
-	
-
-	
 
 
 
-	
-	
+
+
+
+
+
+
+
+

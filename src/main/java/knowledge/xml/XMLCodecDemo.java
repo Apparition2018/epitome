@@ -20,11 +20,9 @@ import java.util.List;
  */
 public class XMLCodecDemo extends Demo {
 
-    private static final File FILE = new File(DEMO_PATH + "person.xml");
+    private static final File FILE = new File(DEMO_DIR_PATH + "person.xml");
 
-    /**
-     * Bean → XML
-     */
+    /** Bean → XML */
     @Test
     public void testXMLEncoder() throws IOException {
         XMLEncoder encoder = new XMLEncoder(Files.newOutputStream(FILE.toPath()));
@@ -35,9 +33,7 @@ public class XMLCodecDemo extends Demo {
         encoder.close();
     }
 
-    /**
-     * XML → Bean
-     */
+    /** XML → Bean */
     @Test
     public void testXMLDecoder() throws IOException {
         List<Person> personList = new ArrayList<>();

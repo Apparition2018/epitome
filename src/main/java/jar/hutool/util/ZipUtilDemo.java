@@ -24,13 +24,13 @@ public class ZipUtilDemo extends Demo {
     public void zip() {
         // static File      zip([String srcPath, ]String zipPath[, Charset, withSrcDir])
         // 将单个文件或单个目录压缩到 zipPath
-        ZipUtil.zip(DEMO_ABSOLUTE_PATH + "a/", DEMO_ABSOLUTE_PATH + "a.zip",
+        ZipUtil.zip(DEMO_DIR_ABSOLUTE_PATH + "a/", DEMO_DIR_ABSOLUTE_PATH + "a.zip",
                 StandardCharsets.UTF_8, true);
 
         // static File      zip(File zipFile[, Charset], withSrcDir[, FileFilter], File... srcFiles)
         // 将缩多个文件或多个目录压缩到 zipFile
-        ZipUtil.zip(FileUtil.file(DEMO_ABSOLUTE_PATH + "a2.zip"), StandardCharsets.UTF_8, true,
-                FileUtil.file(DEMO_ABSOLUTE_PATH + "a/"),
+        ZipUtil.zip(FileUtil.file(DEMO_DIR_ABSOLUTE_PATH + "a2.zip"), StandardCharsets.UTF_8, true,
+                FileUtil.file(DEMO_DIR_ABSOLUTE_PATH + "a/"),
                 FileUtil.file(DEMO_FILE_ABSOLUTE_PATH)
         );
     }
@@ -43,6 +43,6 @@ public class ZipUtilDemo extends Demo {
     public void unzip() {
         // static File      unzip(String zipFilePath[, String outFileDir, Charset charset])
         // 解压
-        ZipUtil.unzip(DEMO_ABSOLUTE_PATH + "a2.zip", DEMO_ABSOLUTE_PATH, StandardCharsets.UTF_8);
+        ZipUtil.unzip(DEMO_DIR_ABSOLUTE_PATH + "a2.zip", DEMO_DIR_ABSOLUTE_PATH, StandardCharsets.UTF_8);
     }
 }

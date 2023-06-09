@@ -65,16 +65,16 @@ public class IterUtilDemo extends Demo {
         p(IterUtil.toMap(subList, descList, true));             // {2=9, 3=8, 4=7, 5=6, 6=5}
 
         // toMap(Iterable<T>, Function<T,K>, Function<T,V>)     Iterable → Map
-        p(IterUtil.toMap(subList, i -> i + "", i -> i));        // {2=[2], 3=[3], 4=[4], 5=[5], 6=[6]}
+        p(IterUtil.toMap(subList, String::valueOf, i -> i));    // {2=[2], 3=[3], 4=[4], 5=[5], 6=[6]}
 
         // toMap(Iterable<V> , Function<V,K>)                   Iterable → Map
-        p(IterUtil.toMap(subList, i -> i + ""));                // {2=[2], 3=[3], 4=[4], 5=[5], 6=[6]}
+        p(IterUtil.toMap(subList, String::valueOf));            // {2=[2], 3=[3], 4=[4], 5=[5], 6=[6]}
 
         // toListMap(Iterable<T>, Function<T,K>, Function<T,V>) Iterable → Map<K,List<V>>
-        p(IterUtil.toListMap(subList, i -> i + "", i -> i));    // {2=[2], 3=[3], 4=[4], 5=[5], 6=[6]}
+        p(IterUtil.toListMap(subList, String::valueOf, i -> i));// {2=[2], 3=[3], 4=[4], 5=[5], 6=[6]}
 
         // toListMap(Iterable<V> , Function<V,K>)               Iterable → Map<K,List<V>>
-        p(IterUtil.toListMap(subList, i -> i + ""));            // {2=[2], 3=[3], 4=[4], 5=[5], 6=[6]}
+        p(IterUtil.toListMap(subList, String::valueOf));        // {2=[2], 3=[3], 4=[4], 5=[5], 6=[6]}
 
 
         // fieldValueList(Iterable<V>/Iterator<V>, fieldName)   Iterable<Obj>/Iterator<Obj> → Iterable<field>

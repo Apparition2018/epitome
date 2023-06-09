@@ -3,6 +3,7 @@ package knowledge.design.pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 
@@ -32,9 +33,7 @@ public class TheSolidPrinciples {
      */
     private static class SRP {
         private static class CounterExample {
-            /**
-             * 此类有两个职责：操作文本、打印文本
-             */
+            /** 此类有两个职责：操作文本、打印文本 */
             @Getter
             @AllArgsConstructor
             private static class TextManipulator {
@@ -50,7 +49,7 @@ public class TheSolidPrinciples {
                 }
 
                 public String findWordAndDelete(String word) {
-                    if (text.contains(word)) text = text.replace(word, "");
+                    if (text.contains(word)) text = text.replace(word, StringUtils.EMPTY);
                     return text;
                 }
 
@@ -61,9 +60,7 @@ public class TheSolidPrinciples {
         }
 
         private static class PositiveExample {
-            /**
-             * 此类只有一个职责：操作文本
-             */
+            /** 此类只有一个职责：操作文本 */
             @Getter
             @AllArgsConstructor
             private static class TextManipulator {
@@ -79,21 +76,19 @@ public class TheSolidPrinciples {
                 }
 
                 public String findWordAndDelete(String word) {
-                    if (text.contains(word)) text = text.replace(word, "");
+                    if (text.contains(word)) text = text.replace(word, StringUtils.EMPTY);
                     return text;
                 }
             }
 
-            /**
-             * 此类只有一个职责：打印文本
-             */
+            /** 此类只有一个职责：打印文本 */
             private record TextPrinter(TextManipulator textManipulator) {
                 public void printText() {
                     System.out.println(textManipulator.getText());
                 }
 
                 public void printOutEachWordOfText() {
-                    System.out.println(Arrays.toString(textManipulator.getText().split(" ")));
+                    System.out.println(Arrays.toString(textManipulator.getText().split(StringUtils.SPACE)));
                 }
 
                 public void printRangeOfCharacters(int startingIndex, int endIndex) {
@@ -141,9 +136,7 @@ public class TheSolidPrinciples {
                 }
             }
 
-            /**
-             * 添加乘法或除法功能时，需要修改 Calculator
-             */
+            /** 添加乘法或除法功能时，需要修改 Calculator */
             private static class Calculator {
                 public void calculate(CalculatorOperation operation) {
                     if (operation instanceof Addition addition) {

@@ -4,6 +4,7 @@ import cn.hutool.extra.tokenizer.Result;
 import cn.hutool.extra.tokenizer.TokenizerEngine;
 import cn.hutool.extra.tokenizer.TokenizerUtil;
 import cn.hutool.extra.tokenizer.Word;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * <a href="https://hutool.cn/docs/#/extra/中文分词/中文分词封装-TokenizerUtil">TokenizerUtil</a>     中文分词封装
@@ -24,7 +25,7 @@ public class TokenizerUtilDemo {
         Result parse = tokenizerEngine.parse("我来自中国，是中国人");
 
         for (Word word : parse) {
-            System.out.print(word.getText() + " "); // 我 来自 中国 是 中国 人 
+            System.out.print(word.getText() + StringUtils.SPACE); // 我 来自 中国 是 中国 人
         }
     }
 }

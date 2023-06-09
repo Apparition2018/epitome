@@ -5,7 +5,7 @@ import cn.hutool.core.swing.RobotUtil;
 import java.awt.*;
 import java.io.File;
 
-import static l.demo.Demo.DEMO_PATH;
+import static l.demo.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/swing/RobotUtil.html">RobotUtil</a>  Robot 封装工具类
@@ -19,6 +19,6 @@ public class RobotUtilDemo {
         // 截图
         Rectangle rectangle = new Rectangle();
         rectangle.setBounds(60, 40, 400, 250);
-        RobotUtil.captureScreen(rectangle, new File(DEMO_PATH + "capture.jpg"));
+        RobotUtil.captureScreen(rectangle, new File(DEMO_DIR_PATH + "capture.jpg"));
     }
 }

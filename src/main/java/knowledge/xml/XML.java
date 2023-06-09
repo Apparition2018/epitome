@@ -37,7 +37,7 @@ import java.util.stream.IntStream;
  */
 public class XML extends Demo {
 
-    public static final String XML_PATH = DEMO_PATH + "demo.xml";
+    public static final String XML_PATH = DEMO_DIR_PATH + "demo.xml";
 
     /**
      * org.w3c.dom
@@ -232,7 +232,8 @@ public class XML extends Demo {
 
     /**
      * Stax
-     * <p><a href="http://www.yiidian.com/java-xml/">Java XML 教程</a>
+     *
+     * @see <a href="http://www.yiidian.com/java-xml/">Java XML 教程</a>
      */
     private static class JakartaStax {
     }

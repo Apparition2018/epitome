@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class Dom4jDemo extends Demo {
 
-    public static final String XML_PATH = DEMO_PATH + "demo.xml";
+    public static final String XML_PATH = DEMO_DIR_PATH + "demo.xml";
 
     @Test
     public void writeXML() throws IOException {
@@ -80,9 +80,7 @@ public class Dom4jDemo extends Demo {
         }
     }
 
-    /**
-     * 需引入 jaxen
-     */
+    /** 需引入 jaxen */
     @Test
     public void xPath() throws DocumentException {
         SAXReader reader = new SAXReader();

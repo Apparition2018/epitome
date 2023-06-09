@@ -2,6 +2,8 @@ package spring.api.util;
 
 import org.springframework.util.ObjectUtils;
 
+import static l.demo.Demo.p;
+
 /**
  * ObjectUtils
  * <p>
@@ -13,10 +15,9 @@ import org.springframework.util.ObjectUtils;
 public class ObjectUtilsDemo {
 
     public static void main(String[] args) {
-
         // 判断相等，null 安全
-        System.out.println(ObjectUtils.nullSafeEquals("a", "a"));   // true
-        System.out.println(ObjectUtils.nullSafeEquals("a", null));  // false
-        System.out.println(ObjectUtils.nullSafeEquals(null, "a"));  // false
+        p(ObjectUtils.nullSafeEquals("a", "a"));    // true
+        p(ObjectUtils.nullSafeEquals("a", null));   // false
+        p(ObjectUtils.nullSafeEquals(null, "a"));   // false
     }
 }

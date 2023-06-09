@@ -46,7 +46,7 @@ public class FileDemo extends Demo {
         // File(String pathname)                通过将给定路径名字符串转换为抽象路径名来创建一个新 File 实例
         // File(String parent, String child)    根据 parent 路径名字符串和 child 路径名字符串创建一个新 File 实例
         // File(URI uri)                        通过将给定的 file: URI 转换为一个抽象路径名来创建一个新的 File 实例
-        FILE = new File(DEMO_PATH + "a/b/c/demo");
+        FILE = new File(DEMO_DIR_PATH + "a/b/c/demo");
     }
 
     @Test
@@ -59,22 +59,20 @@ public class FileDemo extends Demo {
         this.create(FILE);
         // boolean	        renameTo(File dest)     重新命名此抽象路径名表示的文件
         // https://blog.csdn.net/u010648555/article/details/78356040
-        boolean renameFlag = FILE.renameTo(new File(DEMO_PATH + "a/b/demo"));
+        boolean renameFlag = FILE.renameTo(new File(DEMO_DIR_PATH + "a/b/demo"));
         if (renameFlag) {
             p("文件移动成功！");
         }
-        this.delete(new File(DEMO_PATH + "a"));
+        this.delete(new File(DEMO_DIR_PATH + "a"));
 
         // static File	    createTempFile(String prefix, String suffix[, File directory])
         // 在指定目录中创建一个新的空文件，使用给定的前缀和后缀字符串生成其名称
-        File tmpFile = File.createTempFile("tmp-", ".txt", new File(DEMO_PATH));
+        File tmpFile = File.createTempFile("tmp-", ".txt", new File(DEMO_DIR_PATH));
         // void	            deleteOnExit()          在虚拟机终止时，请求删除此抽象路径名表示的文件或目录
         tmpFile.deleteOnExit();
     }
 
-    /**
-     * 创建文件
-     */
+    /** 创建文件 */
     public void create(File file) throws IOException {
         if (!file.exists()) {
             // String	    getName()               返回由此抽象路径名表示的文件或目录的名称
@@ -108,25 +106,27 @@ public class FileDemo extends Demo {
     }
 
     /**
-     * <p>String                getPath()               将此抽象路径名转换为一个路径名字符串
-     * <p>String                getAbsolutePath()       返回此抽象路径名的绝对路径名字符串
-     * <p>String                getCanonicalPath()      返回此抽象路径名的规范路径名字符串
+     * <pre>
+     * String               getPath()               将此抽象路径名转换为一个路径名字符串
+     * String               getAbsolutePath()       返回此抽象路径名的绝对路径名字符串
+     * String               getCanonicalPath()      返回此抽象路径名的规范路径名字符串
+     * </pre>
      */
     @Test
     public void getPath() throws IOException {
         p(USER_DIR);                            // D:\L\git\epitome
 
-        File f0 = new File(DEMO_PATH + "Demo.txt");
+        File f0 = new File(DEMO_DIR_PATH + "Demo.txt");
         p("相对路径：" + f0.getPath());          // 相对路径：src\main\resources\demo\Demo.txt
         p("绝对路径：" + f0.getAbsolutePath());  // 绝对路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
         p("抽象路径：" + f0.getCanonicalPath()); // 抽象路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
 
-        File f1 = new File(DEMO_ABSOLUTE_PATH + "Demo.txt");
+        File f1 = new File(DEMO_DIR_ABSOLUTE_PATH + "Demo.txt");
         p("相对路径：" + f1.getPath());          // 相对路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
         p("绝对路径：" + f1.getAbsolutePath());  // 绝对路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
         p("抽象路径：" + f1.getCanonicalPath()); // 抽象路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
 
-        File f2 = new File("." + File.separator + DEMO_PATH + "Demo.txt");
+        File f2 = new File("." + File.separator + DEMO_DIR_PATH + "Demo.txt");
         p("相对路径：" + f2.getPath());          // 相对路径：.\src\main\resources\demo\Demo.txt
         p("绝对路径：" + f2.getAbsolutePath());  // 绝对路径：D:\L\git\epitome\.\src\main\resources\demo\Demo.txt
         p("抽象路径：" + f2.getCanonicalPath()); // 抽象路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt

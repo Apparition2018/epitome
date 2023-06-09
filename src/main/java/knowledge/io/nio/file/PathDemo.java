@@ -29,11 +29,11 @@ import java.nio.file.Paths;
 public class PathDemo extends Demo {
 
     // 使用 FileSystem.getDefault().getPath(...) 创建 Path
-    private final Path p1 = FileSystems.getDefault().getPath(DEMO_PATH);
+    private final Path p1 = FileSystems.getDefault().getPath(DEMO_DIR_PATH);
     // 使用 Paths.get(String first[, String... more]) 创建 Path
     private final Path p2 = Paths.get(RESOURCES_PATH, "spring");
 
-    private final Path p3 = Paths.get(DEMO_ABSOLUTE_PATH);
+    private final Path p3 = Paths.get(DEMO_DIR_ABSOLUTE_PATH);
     private final Path p4 = Paths.get(RESOURCES_ABSOLUTE_PATH + "spring");
 
     @Test
@@ -64,7 +64,7 @@ public class PathDemo extends Demo {
      */
     @Test
     public void normalize() {
-        Path path = Paths.get(DEMO_PATH + "a/../demo/");
+        Path path = Paths.get(DEMO_DIR_PATH + "a/../demo/");
         p(path.normalize()); // src\main\resources\demo\demo
     }
 
@@ -95,7 +95,7 @@ public class PathDemo extends Demo {
         Path p5 = Paths.get(DEMO_FILE_PATH);
         p(p1);                                              // src\main\resources\demo
         p(p5);                                              // src\main\resources\demo\demo
-        p(p1.resolve("demo"));                              // src\main\resources\demo\demo
+        p(p1.resolve(DEMO_FILE_NAME));                              // src\main\resources\demo\demo
         p(p1.resolve("/demo"));                             // \demo
         p(p1.resolve(p5.toAbsolutePath()));                 // D:\L\git\epitome\src\main\resources\demo\demo
 

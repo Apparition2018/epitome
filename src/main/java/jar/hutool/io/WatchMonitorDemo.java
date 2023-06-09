@@ -8,7 +8,7 @@ import cn.hutool.core.lang.Console;
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;
 
-import static l.demo.Demo.DEMO_PATH;
+import static l.demo.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://hutool.cn/docs/#/core/IO/文件监听-WatchMonitor">WatchMonitor</a>    文件监听
@@ -29,7 +29,7 @@ public class WatchMonitorDemo {
     public static void main(String[] args) {
         // crete(File/Path/path/URI/URL[, maxDepth], WatchEvent.Kind<?>...)     创建并初始化监听
         // createAll(File/Path/path/URI/URL, Watcher)                           创建并初始化监听，监听所有事件
-        WatchMonitor.createAll(DEMO_PATH,
+        WatchMonitor.createAll(DEMO_DIR_PATH,
                 // DelayWatcher: 此类通过维护一个 Set 将短时间内相同文件多次 modify 的事件合并处理触发
                 new DelayWatcher(new SimpleWatcher() {
 

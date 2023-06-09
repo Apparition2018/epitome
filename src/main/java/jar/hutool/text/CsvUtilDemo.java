@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class CsvUtilDemo extends Demo {
 
-    private static final String CSV_FILE_ABSOLUTE_PATH = DEMO_ABSOLUTE_PATH + "demo.csv";
+    private static final String CSV_FILE_ABSOLUTE_PATH = DEMO_DIR_ABSOLUTE_PATH + "demo.csv";
 
     @Test
     public void writeCSV() {

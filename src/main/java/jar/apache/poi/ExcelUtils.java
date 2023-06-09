@@ -1,6 +1,7 @@
 package jar.apache.poi;
 
 import cn.hutool.core.date.DatePattern;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.poi.ss.usermodel.*;
@@ -77,7 +78,7 @@ public class ExcelUtils<T> {
                 return String.valueOf(cell.getStringCellValue());
             }
         } else {
-            return "";
+            return StringUtils.EMPTY;
         }
     }
 }

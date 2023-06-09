@@ -21,9 +21,7 @@ import java.util.Date;
  */
 public class BeanUtilsDemo extends Demo {
 
-    /**
-     * Cglib BeanCopier 和 Apache Beanutils 与 lombok 的 @Accessors(chain = true) 冲突
-     */
+    /** Cglib BeanCopier 和 Apache Beanutils 与 lombok 的 @Accessors(chain = true) 冲突 */
     public static void main(String[] args) {
         User source = new User(new Date());
 

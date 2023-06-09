@@ -27,7 +27,7 @@ public class BloomFilterDemo {
 
     public static void main(String[] args) {
         BitSetBloomFilter bloomFilter = new BitSetBloomFilter(SIZE, CNT, 3);
-        IntStream.rangeClosed(1, CNT).forEach(i -> bloomFilter.add(i + ""));
+        IntStream.rangeClosed(1, CNT).forEach(i -> bloomFilter.add(String.valueOf(i)));
         p(bloomFilter.getFalsePositiveProbability());   // 0.00302689531306664
         p(bloomFilter.contains("9"));                   // true
         p(bloomFilter.contains("10"));                  // false

@@ -16,7 +16,7 @@ public class FileSystemUtilsDemo extends Demo {
 
     public static void main(String[] args) throws IOException {
         // 递归复制
-        FileSystemUtils.copyRecursively(new File(DEMO_ABSOLUTE_PATH + "a"), new File(DESKTOP + "a"));
+        FileSystemUtils.copyRecursively(new File(DEMO_DIR_ABSOLUTE_PATH + "a"), new File(DESKTOP + "a"));
         // 递归删除
         FileSystemUtils.deleteRecursively(new File(DESKTOP + "a"));
     }

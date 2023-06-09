@@ -1,6 +1,7 @@
 package knowledge.api.lang.string;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -178,7 +179,7 @@ public class StringDemo extends Demo {
 
     @Test
     public void jdk11() {
-        p("".isBlank());
+        p(StringUtils.EMPTY.isBlank());
         // 去除头尾空格
         p(" aaa ".strip());
         // 去除头部空格
@@ -205,7 +206,7 @@ public class StringDemo extends Demo {
     @Test
     public void textBlocks() {
         p("""
-                <html> 
+                <html>
                     <body>
                         <p>Hello, %s</p>
                     </body>
@@ -217,6 +218,6 @@ public class StringDemo extends Demo {
                 .formatted("text blocks"));
 
         // 转义序列
-        p("This is Horizontal Tab \t, Next Line Feed \n, Next Backspace \b, Next Single Quote \', Next Double Quote \"".translateEscapes());
+        p("This is Horizontal Tab \t, Next Line Feed \n, Next Backspace \b, Next Single Quote ', Next Double Quote \"".translateEscapes());
     }
 }

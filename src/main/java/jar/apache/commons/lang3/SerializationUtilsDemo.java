@@ -67,7 +67,7 @@ public class SerializationUtilsDemo extends Demo {
 
     @Test
     public void testByteStreamSerialize() {
-        Path path = Paths.get(DEMO_PATH + "Serialization.obj");
+        Path path = Paths.get(DEMO_DIR_PATH + "Serialization.obj");
         try (OutputStream os = Files.newOutputStream(path);
              InputStream is = Files.newInputStream(path)) {
             // static void	    serialize(Serializable obj, OutputStream outputStream)

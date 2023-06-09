@@ -1,5 +1,7 @@
 package knowledge.jdbc;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.sql.*;
 
 /**
@@ -48,7 +50,7 @@ public class JDBC {
                 String name = resultSet.getString("name");
                 String course = resultSet.getString("course");
                 String score = resultSet.getString("score");
-                System.out.println(id + " " + name + course + (null != score ? "成绩为" + score : "没有成绩"));
+                System.out.println(id + StringUtils.SPACE + name + course + (null != score ? "成绩为" + score : "没有成绩"));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

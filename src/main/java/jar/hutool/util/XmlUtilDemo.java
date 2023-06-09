@@ -31,7 +31,7 @@ public class XmlUtilDemo extends Demo {
         this.appendStudent(school, "1", "张三", "18");
         this.appendStudent(school, "2", "李四", "19");
 
-        XmlUtil.toFile(doc, DEMO_ABSOLUTE_PATH + "demo.xml");
+        XmlUtil.toFile(doc, DEMO_DIR_ABSOLUTE_PATH + "demo.xml");
     }
 
     private void appendStudent(Element school, String id, String nameText, String ageText) {
@@ -47,7 +47,7 @@ public class XmlUtilDemo extends Demo {
 
     @Test
     public void readXML() {
-        Document doc = XmlUtil.readXML(DEMO_ABSOLUTE_PATH + "demo.xml");
+        Document doc = XmlUtil.readXML(DEMO_DIR_ABSOLUTE_PATH + "demo.xml");
 
         // 格式化输出
         p(XmlUtil.format(doc));
@@ -64,9 +64,9 @@ public class XmlUtilDemo extends Demo {
             Map<String, Object> studentMap = XmlUtil.xmlToMap(studentEle);
 
             // Object → XML File
-            XmlUtil.writeObjectAsXml(new File(DEMO_ABSOLUTE_PATH + "student.xml"), student);
+            XmlUtil.writeObjectAsXml(new File(DEMO_DIR_ABSOLUTE_PATH + "student.xml"), student);
             // XML File → Object
-            p(XmlUtil.readXML(new File(DEMO_ABSOLUTE_PATH + "student.xml")));
+            p(XmlUtil.readXML(new File(DEMO_DIR_ABSOLUTE_PATH + "student.xml")));
 
             // Map → Document
             Document studentDoc = XmlUtil.mapToXml(studentMap, "student");
@@ -74,12 +74,10 @@ public class XmlUtilDemo extends Demo {
         }
     }
 
-    /**
-     * <a href="https://www.ibm.com/developerworks/cn/doc/x-javaxpathapi.html">Xpath</a>
-     */
+    /** <a href="https://www.ibm.com/developerworks/cn/doc/x-javaxpathapi.html">Xpath</a> */
     @Test
     public void testXPath() {
-        Document doc = XmlUtil.readXML(DEMO_ABSOLUTE_PATH + "demo.xml");
+        Document doc = XmlUtil.readXML(DEMO_DIR_ABSOLUTE_PATH + "demo.xml");
 
         Element student = XmlUtil.getElementByXPath("//student[age='18']", doc);
         p(student.getElementsByTagName("name").item(0).getNodeValue()); // 张三

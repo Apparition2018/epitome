@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,7 +61,7 @@ public class MyServlet extends HttpServlet {
         pw.append("<br />***** Request.ServletContext *****<br />");
         ServletContext requestServletContext = request.getServletContext();
         pw.append("ServletContextName: ").append(requestServletContext.getServletContextName()).append("<br />"); // Epitome
-        pw.append("RealPath: ").append(requestServletContext.getRealPath("")).append("<br />");                   // D:\L\git\epitome\src\main\webapp\
+        pw.append("RealPath: ").append(requestServletContext.getRealPath(StringUtils.EMPTY)).append("<br />"); // D:\L\git\epitome\src\main\webapp\
 
         pw.append("<br />***** Request.Session.ServletContext *****<br />");
         ServletContext sessionServletContext = request.getSession().getServletContext();

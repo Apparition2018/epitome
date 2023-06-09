@@ -95,7 +95,7 @@ public class StreamDemo extends Demo {
                 .map(i -> i * i)
                 .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
                 // 3 2 7 5
-                .peek(i -> System.out.print(i + " ")).toList();
+                .peek(i -> System.out.print(i + StringUtils.SPACE)).toList();
         p(StringUtils.CR);
 
         // filter()         过滤
@@ -103,18 +103,18 @@ public class StreamDemo extends Demo {
         // limit()          限数
         Stream.of(9, 8, 7, 6, 5, 4, 3, 2, 1).limit(7)
                 .filter(n -> n % 2 == 0).sorted()
-                .forEach(n -> System.out.print(n + " ")); // 4 6 8
+                .forEach(n -> System.out.print(n + StringUtils.SPACE)); // 4 6 8
         p(StringUtils.CR);
 
         // sequential()     串行
         // parallel()       并行
         // skip()           跳过
-        Stream.of(9, 7, 5, 3, 1).parallel().skip(2).forEach(i -> System.out.print(i + " ")); // 3 1 5
+        Stream.of(9, 7, 5, 3, 1).parallel().skip(2).forEach(i -> System.out.print(i + StringUtils.SPACE)); // 3 1 5
         p(StringUtils.CR);
 
         // takeWhile()      返回子集知道断言返回false，JDK9 引入
         // dropWhile()      断言返回false开始返回子集，JDK9 引入
-        Stream.of(9, 3, 5, 7, 1).takeWhile(i -> i != 1).dropWhile(i -> i != 3).forEach(i -> System.out.print(i + " ")); // 3 5 7
+        Stream.of(9, 3, 5, 7, 1).takeWhile(i -> i != 1).dropWhile(i -> i != 3).forEach(i -> System.out.print(i + StringUtils.SPACE)); // 3 5 7
 
         // close()          关闭 Stream 对象
         Stream.of(9, 7, 5, 3, 1).close();
@@ -130,11 +130,11 @@ public class StreamDemo extends Demo {
         p(Stream.of(9, 7, 5, 3, 1).count()); // 5
 
         // forEach()        迭代所有元素
-        Stream.of(9, 7, 5, 3, 1).forEach(n -> System.out.print(n + " ")); // 9 7 5 3 1
+        Stream.of(9, 7, 5, 3, 1).forEach(n -> System.out.print(n + StringUtils.SPACE)); // 9 7 5 3 1
         p();
 
         // forEachOrdered() 有序迭代所有元素
-        Stream.of(9, 7, 5, 3, 1).parallel().forEachOrdered(n -> System.out.print(n + " ")); // 9 7 5 3 1
+        Stream.of(9, 7, 5, 3, 1).parallel().forEachOrdered(n -> System.out.print(n + StringUtils.SPACE)); // 9 7 5 3 1
         p();
 
         // isParallel       判断当前 Stream 是否并行

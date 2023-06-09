@@ -29,7 +29,7 @@ public class DesktopDemo extends Demo {
             desktop.mail();
 
             // void	            open(File file              启动关联应用程序来打开文件
-            desktop.open(new File(DEMO_PATH));
+            desktop.open(new File(DEMO_DIR_PATH));
 
             // void	            edit(File file)             启动关联编辑器应用程序并打开用于编辑的文件
             // void	            print(File file)            使用关联应用程序的打印命令，用本机桌面打印设施来打印文件

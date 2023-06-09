@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3.math;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
 
@@ -44,8 +45,8 @@ public class NumberUtilsDemo {
      */
     @Test
     public void toXXX() {
-        p(NumberUtils.toFloat(null, -1));   // -1.0
-        p(NumberUtils.toFloat("", -1));     // -1.0
+        p(NumberUtils.toFloat(null, -1));               // -1.0
+        p(NumberUtils.toFloat(StringUtils.EMPTY, -1));  // -1.0
         p(NumberUtils.toFloat("321.00"));               //  321.0
     }
 

@@ -1,6 +1,7 @@
 package knowledge.algorithm;
 
 import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
@@ -16,9 +17,7 @@ import static l.demo.Demo.p;
  */
 public class Algorithm {
 
-    /**
-     * 求 a + aa + aaa + aaaa + aaaaa = ?
-     */
+    /** 求 a + aa + aaa + aaaa + aaaaa = ? */
     @Test
     public void testSumOfSeq() {
         int a = 4;
@@ -36,9 +35,7 @@ public class Algorithm {
         p("=" + sum);
     }
 
-    /**
-     * 输出 n 内的质数（每行输出10个）
-     */
+    /** 输出 n 内的质数（每行输出10个） */
     @Test
     public void testPrimeNumber() {
         Random random = new Random();
@@ -55,7 +52,7 @@ public class Algorithm {
                 }
             }
             if (!flag) {
-                System.out.print(i + " ");
+                System.out.print(i + StringUtils.SPACE);
                 if (++count % 10 == 0) {
                     p();
                 }
@@ -63,27 +60,25 @@ public class Algorithm {
         }
     }
 
-    /**
-     * 99 乘法表
-     */
+    /** 99 乘法表 */
     @Test
     public void testMultiplicationTable() {
         for (int i = 1; i <= 9; i++) {
             for (int j = 1; j <= i; j++) {
-                System.out.print(j + "×" + i + "=" + i * j + "\t");// \t 跳到下一个TAB位置
+                // \t 跳到下一个TAB位置
+                System.out.print(j + "×" + i + "=" + i * j + "\t");
             }
             p();
         }
     }
 
-    /**
-     * 生成 m ~ n 位随机字符数组
-     */
+    /** 生成 m ~ n 位随机字符数组 */
     @Test
     public void testGenRanArr() {
         char[] chs = new char[RandomUtils.nextInt(4, 10)];
+        // 随机字符范围数组
         char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-                'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}; // 随机字符范围数组
+                'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         int len = letters.length;
         boolean[] flags = new boolean[len];
         for (int i = 0; i < chs.length; i++) {
@@ -94,7 +89,6 @@ public class Algorithm {
             chs[i] = letters[index];
             flags[index] = true;
         }
-
         p(chs);
     }
 }

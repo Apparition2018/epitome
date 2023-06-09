@@ -1,8 +1,12 @@
 package knowledge.concurrent.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
+
+import static l.demo.Demo.p;
 
 /**
  * ThreadLocalRandom
@@ -24,25 +28,25 @@ public class ThreadLocalRandomDemo {
         // 错误用法
         // static ThreadLocalRandom     current()       返回当前线程的 ThreadLocalRandom
         ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
-        new Thread(() -> IntStream.rangeClosed(1, 10).forEach(i -> System.out.print(threadLocalRandom.nextInt() + " "))).start();
+        new Thread(() -> IntStream.rangeClosed(1, 10).forEach(i -> System.out.print(threadLocalRandom.nextInt() + StringUtils.SPACE))).start();
         TimeUnit.SECONDS.sleep(1);
-        System.out.println();
-        new Thread(() -> IntStream.rangeClosed(1, 10).forEach(i -> System.out.print(threadLocalRandom.nextInt() + " "))).start();
+        p();
+        new Thread(() -> IntStream.rangeClosed(1, 10).forEach(i -> System.out.print(threadLocalRandom.nextInt() + StringUtils.SPACE))).start();
         TimeUnit.SECONDS.sleep(1);
-        System.out.println();
+        p();
 
         // 正确用法
         new Thread(() -> {
             ThreadLocalRandom threadLocalRandom2 = ThreadLocalRandom.current();
             for (int i = 0; i < 10; i++) {
-                System.out.print(threadLocalRandom2.nextInt() + " ");
+                System.out.print(threadLocalRandom2.nextInt() + StringUtils.SPACE);
             }
         }).start();
         TimeUnit.SECONDS.sleep(1);
-        System.out.println();
+        p();
         new Thread(() -> {
             ThreadLocalRandom threadLocalRandom2 = ThreadLocalRandom.current();
-            IntStream.rangeClosed(1, 10).forEach(i -> System.out.print(threadLocalRandom2.nextInt() + " "));
+            IntStream.rangeClosed(1, 10).forEach(i -> System.out.print(threadLocalRandom2.nextInt() + StringUtils.SPACE));
         }).start();
     }
 }

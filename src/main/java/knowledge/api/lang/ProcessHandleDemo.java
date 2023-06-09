@@ -1,5 +1,7 @@
 package knowledge.api.lang;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.IOException;
 import java.time.ZoneId;
 
@@ -26,7 +28,7 @@ public class ProcessHandleDemo {
                 info.startInstant().map(i -> i.atZone(ZoneId.systemDefault())
                         .toLocalDateTime().toString()).orElse(np));
 
-        System.out.printf("Arguments : %s%n", info.arguments().map(a -> String.join(" ", a)).orElse(np));
+        System.out.printf("Arguments : %s%n", info.arguments().map(a -> String.join(StringUtils.SPACE, a)).orElse(np));
         System.out.printf("User : %s%n", info.user().orElse(np));
     }
 }

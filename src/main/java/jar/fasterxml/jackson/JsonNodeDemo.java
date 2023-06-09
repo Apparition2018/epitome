@@ -56,10 +56,11 @@ public class JsonNodeDemo extends Demo {
     }
 
     /**
-     * 除了使用 JsonNodeFactory 创建 ArrayNode, ObjectNode
-     * 还是可以使用 ObjectMapper 创建
+     * <pre>
+     * 除了使用 JsonNodeFactory 创建 ArrayNode, ObjectNode，还是可以使用 ObjectMapper 创建
      * ArrayNode jsonArray = objectMapper.createArrayNode();
      * ObjectNode jsonObject = objectMapper.createObjectNode();
+     * </pre>
      */
     @Test
     public void testContainerNode() {

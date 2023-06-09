@@ -55,9 +55,11 @@ public class JsonGeneratorDemo {
     }
 
     /**
+     * <pre>
      * JsonGenerator enable(Feature f)                      开启
      * JsonGenerator disable(Feature f)                     关闭
      * JsonGenerator configure(Feature f, boolean state)    开启/关闭
+     * </pre>
      */
     @Test
     public void testFeature() throws IOException {
@@ -82,9 +84,7 @@ public class JsonGeneratorDemo {
         }
     }
 
-    /**
-     * 自定义 ObjectCodec
-     */
+    /** 自定义 ObjectCodec */
     @Test
     public void testMyObjectCodec() throws IOException {
         JsonFactory jsonFactory = new JsonFactory();

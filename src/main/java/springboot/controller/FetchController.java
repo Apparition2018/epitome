@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -92,7 +93,7 @@ public class FetchController {
     @PostMapping("cookie")
     @Operation(summary = "发送 Cookie")
     public String cookie(@CookieValue(value = "cny", required = false) String cny, HttpServletRequest request) {
-        String rtnString = "";
+        String rtnString = StringUtils.EMPTY;
         Cookie[] cookies = request.getCookies();
         if (null == cookies) {
             log.info("没有 cookie");

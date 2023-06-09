@@ -3,6 +3,7 @@ package jar.apache.commons.collections4;
 import com.google.common.collect.Lists;
 import l.demo.Demo;
 import org.apache.commons.collections4.list.*;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -29,7 +30,7 @@ public class ListDemo extends Demo {
 
         CursorableLinkedList.Cursor<Integer> cursor = cursorableLinkedList.cursor();
         while (cursor.hasNext()) {
-            p(cursor.next() + " ");
+            p(cursor.next() + StringUtils.SPACE);
             cursor.remove();
         }
     }

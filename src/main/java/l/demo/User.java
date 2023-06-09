@@ -2,6 +2,7 @@ package l.demo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
 
@@ -27,8 +28,8 @@ public class User {
 
     @Override
     public String toString() {
-        String result = (birthDate != null ? "birthDate=" + birthDate : "") +
-                (birth != null ? "birthString='" + birth : "") + '\'';
+        String result = (birthDate != null ? "birthDate=" + birthDate : StringUtils.EMPTY) +
+                (birth != null ? "birthString='" + birth : StringUtils.EMPTY) + '\'';
         return "User{" + (result.startsWith(",") ? result.substring(2) : result) + "}";
     }
 }

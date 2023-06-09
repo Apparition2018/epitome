@@ -31,8 +31,8 @@ public class IoUtilDemo extends Demo {
 
     @Test
     public void testIoUtil() {
-        File file = new File(DEMO_PATH + "Input");
-        File file2 = FileUtil.touch(new File(DEMO_PATH), "a/Input");
+        File file = new File(DEMO_DIR_PATH + "Input");
+        File file2 = FileUtil.touch(new File(DEMO_DIR_PATH), "a/Input");
 
         // 写入
         BufferedOutputStream bos = FileUtil.getOutputStream(file2);
@@ -59,15 +59,13 @@ public class IoUtilDemo extends Demo {
         file2.deleteOnExit();
     }
 
-    /**
-     * 转换
-     */
+    /** 转换 */
     @Test
     public void convert() throws IOException {
-        File file = new File(DEMO_PATH + "Input");
-        InputStream is = Files.newInputStream(Paths.get(DEMO_PATH + "Input"));
-        byte[] bytes = FileUtil.readBytes(DEMO_PATH + "Input");
-        OutputStream os = Files.newOutputStream(Paths.get(DEMO_PATH + "Output"));
+        File file = new File(DEMO_DIR_PATH + "Input");
+        InputStream is = Files.newInputStream(Paths.get(DEMO_DIR_PATH + "Input"));
+        byte[] bytes = FileUtil.readBytes(DEMO_DIR_PATH + "Input");
+        OutputStream os = Files.newOutputStream(Paths.get(DEMO_DIR_PATH + "Output"));
 
         // InputStream  → BufferedInputStream
         BufferedInputStream bis = IoUtil.toBuffered(is);

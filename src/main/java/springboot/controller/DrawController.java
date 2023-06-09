@@ -32,13 +32,9 @@ import java.util.concurrent.TimeUnit;
 @Tag(name = "Draw")
 public class DrawController {
 
-    /**
-     * 抽奖活动 KEY
-     */
+    /** 抽奖活动 KEY */
     private static final String DRAW_KEY = "draw:%d";
-    /**
-     * 抽奖奖品无库存 KEY
-     */
+    /** 抽奖奖品无库存 KEY */
     private static final String DRAW_PRIZE_NO_STOCK_KEY = "draw:prize:noStock:%d";
 
     private final UserMapper userMapper;
@@ -138,7 +134,7 @@ public class DrawController {
      * @return 奖品无库存缓存
      */
     private Object getPrizeNoStockCache(int drawId, int winId) {
-        return redisTemplate.opsForHash().get(String.format(DRAW_PRIZE_NO_STOCK_KEY, drawId), winId + "");
+        return redisTemplate.opsForHash().get(String.format(DRAW_PRIZE_NO_STOCK_KEY, drawId), String.valueOf(winId));
     }
 
     /**
@@ -149,7 +145,7 @@ public class DrawController {
      */
     private void setPrizeNoStockCache(int drawId, int winId) {
         String key = String.format(DRAW_PRIZE_NO_STOCK_KEY, drawId);
-        redisTemplate.opsForHash().put(key, winId + "", 0);
+        redisTemplate.opsForHash().put(key, String.valueOf(winId), 0);
         redisTemplate.expire(key, 1, TimeUnit.DAYS);
     }
 
@@ -157,9 +153,7 @@ public class DrawController {
     @Accessors(chain = true)
     private static class Draw {
         private int id;
-        /**
-         * 扣分积分
-         */
+        /** 扣分积分 */
         private int score;
         List<Prize> prizeList;
     }

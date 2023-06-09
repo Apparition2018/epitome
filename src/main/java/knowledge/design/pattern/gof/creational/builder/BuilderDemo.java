@@ -148,7 +148,7 @@ public class BuilderDemo {
     private record Manual(CarType carType, int seats, Engine engine, Transmission transmission,
                           TripComputer tripComputer, GPSNavigator gpsNavigator) {
         public String print() {
-            String info = "";
+            String info = StringUtils.EMPTY;
             info += "Type of car: " + carType + StringUtils.CR;
             info += "Count of seats: " + seats + StringUtils.CR;
             info += "Engine: volume - " + engine.getVolume() + "; mileage - " + engine.getMileage() + StringUtils.CR;

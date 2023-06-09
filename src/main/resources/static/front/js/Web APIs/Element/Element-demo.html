@@ -178,17 +178,21 @@
 
         function set(e) {
             const ele = e.target;
-            if (ele.className === "iH") {
-                ele.innerHTML = "S<b>E</b>T";
-            }
-            if (ele.className === "oH") {
-                ele.outerHTML = "S<b>E</b>T";
-            }
-            if (ele.className === "iT") {
-                ele.innerText = "S<b>E</b>T";
-            }
-            if (ele.className === "oT") {
-                ele.outerText = "S<b>E</b>T";
+            switch (ele.className) {
+                case "iH":
+                    ele.innerHTML = "S<b>E</b>T";
+                    break;
+                case "oH":
+                    ele.outerHTML = "S<b>E</b>T";
+                    break;
+                case "iT":
+                    ele.innerText = "S<b>E</b>T";
+                    break;
+                case "oT":
+                    ele.outerText = "S<b>E</b>T";
+                    break;
+                default:
+                    console.log(`Sorry, we are out of ${ele.className}.`);
             }
         }
     </script>

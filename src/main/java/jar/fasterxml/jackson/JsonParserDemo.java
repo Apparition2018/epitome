@@ -37,7 +37,7 @@ public class JsonParserDemo {
                 } else if ("age".equals(fieldName)) {
                     jsonToken = jsonParser.nextToken();
                     log.info("token 类型：{}", jsonToken);
-                    log.info(jsonParser.getIntValue() + "");
+                    log.info(String.valueOf(jsonParser.getIntValue()));
                 } else if ("dog".equals(fieldName)) {
                     jsonToken = jsonParser.nextToken();
                     log.info("token 类型：{}", jsonToken);
@@ -65,9 +65,11 @@ public class JsonParserDemo {
     }
 
     /**
+     * <pre>
      * JsonParser enable(Feature f)                     开启
      * JsonParser disable(Feature f)                    关闭
      * JsonParser configure(Feature f, boolean state)   开启/关闭
+     * </pre>
      */
     @Test
     public void testFeature() throws IOException {
@@ -93,9 +95,7 @@ public class JsonParserDemo {
         }
     }
 
-    /**
-     * 自定义 ObjectCodec
-     */
+    /** 自定义 ObjectCodec */
     @Test
     public void testMyObjectCodec() {
         JsonFactory jsonFactory = new JsonFactory();

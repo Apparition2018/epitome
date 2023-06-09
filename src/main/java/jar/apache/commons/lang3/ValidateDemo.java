@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
 import java.util.Arrays;
@@ -40,11 +41,11 @@ public class ValidateDemo {
         Validate.noNullElements(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, null)); // IllegalArgumentException: The validated collection contains null element at index: 8
 
         // 验证 blank (" ", "", null)
-        Validate.notBlank(" "); // IllegalArgumentException: The validated character sequence is blank
+        Validate.notBlank(StringUtils.SPACE); // IllegalArgumentException: The validated character sequence is blank
 
         // 验证 empty ("", null)
-        Validate.notEmpty(" ");
-        Validate.notEmpty(""); // IllegalArgumentException: The validated character sequence is empty
+        Validate.notEmpty(StringUtils.SPACE);
+        Validate.notEmpty(StringUtils.EMPTY); // IllegalArgumentException: The validated character sequence is empty
 
         // 验证 null
         Validate.notNull(null); // NullPointerException: The validated object is null

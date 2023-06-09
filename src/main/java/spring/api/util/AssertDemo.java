@@ -1,5 +1,6 @@
 package spring.api.util;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 
 /**
@@ -11,7 +12,7 @@ import org.springframework.util.Assert;
 public class AssertDemo {
 
     public static void main(String[] args) {
-        Assert.hasLength(" ", "不能为空");
+        Assert.hasLength(StringUtils.SPACE, "不能为空");
         Assert.hasText("1", "不能为空");
     }
 }

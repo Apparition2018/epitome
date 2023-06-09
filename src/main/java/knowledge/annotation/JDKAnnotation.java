@@ -3,6 +3,7 @@ package knowledge.annotation;
 // import jdk.internal.vm.annotation.Contended;
 
 import l.demo.Animal.Chicken;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,17 +42,14 @@ public class JDKAnnotation {
         chicken.fly();
     }
 
-    /**
-     * unused                   未使用
-     */
+    /** unused                  未使用 */
     public void unused() {
         @SuppressWarnings("unused")
         int max = Math.max(2, 1);
     }
 
     /**
-     * rawtypes                 原生类型未使用泛型
-     * <p>
+     * rawtypes                 原生类型未使用泛型<br/>
      * unchecked                未检测转换
      */
     @SuppressWarnings(value = {"unchecked", "rawtypes"})
@@ -61,19 +59,15 @@ public class JDKAnnotation {
         p(items.size());
     }
 
-    /**
-     * InfiniteLoopStatement    无线循环语句
-     */
+    /** InfiniteLoopStatement   无线循环语句 */
     @SuppressWarnings("InfiniteLoopStatement")
     public void infiniteLoopStatement() {
         while (true) {
-            p(" ");
+            p(StringUtils.SPACE);
         }
     }
 
-    /**
-     * @see <a href="https://www.cnblogs.com/cxuanBlog/p/10927483.html">@SafeVarargs</a>
-     */
+    /** @see <a href="https://www.cnblogs.com/cxuanBlog/p/10927483.html">@SafeVarargs</a> */
     @SafeVarargs
     public static <T> List<T> safeVarargs(T... t) {
         List<T> list = new ArrayList<>();

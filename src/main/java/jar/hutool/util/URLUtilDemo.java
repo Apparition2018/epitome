@@ -25,7 +25,7 @@ public class URLUtilDemo extends Demo {
 
         // static URL	    url(String url)
         //  通过一个字符串形式的URL地址创建URL对象
-        URL url = URLUtil.url(DEMO_PATH);
+        URL url = URLUtil.url(DEMO_DIR_PATH);
 
         // static boolean	isFileURL(URL url)
         // 是否为文件 URL        

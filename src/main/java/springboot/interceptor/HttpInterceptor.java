@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.StopWatch;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -70,7 +71,7 @@ public class HttpInterceptor implements HandlerInterceptor {
     public void afterCompletion(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler, Exception ex) {
         StopWatch stopWatch = stopWatchThreadLocal.get();
         stopWatch.stop();
-        String fullMethodName = "";
+        String fullMethodName = StringUtils.EMPTY;
         if (handler instanceof HandlerMethod) {
             String beanType = ((HandlerMethod) handler).getBeanType().getName();
             String method = ((HandlerMethod) handler).getMethod().getName();

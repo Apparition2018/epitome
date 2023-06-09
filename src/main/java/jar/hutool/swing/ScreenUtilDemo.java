@@ -18,7 +18,7 @@ public class ScreenUtilDemo extends Demo {
         // 截图
         Rectangle rectangle = new Rectangle();
         rectangle.setBounds(60, 40, 250, 200);
-        ScreenUtil.captureScreen(rectangle, new File(HU_DEMO_PATH + "capture.jpg"));
+        ScreenUtil.captureScreen(rectangle, new File(HU_DEMO_DIR_PATH + "capture.jpg"));
 
         p(ScreenUtil.getRectangle());   // java.awt.Rectangle[x=0,y=0,width=1920,height=1080]
         p(ScreenUtil.getWidth());       // 1920

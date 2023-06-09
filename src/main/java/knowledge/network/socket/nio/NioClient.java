@@ -73,7 +73,7 @@ public class NioClient extends Demo {
                     int readLength = socketChannel.read(byteBuffer);
                     byteBuffer.flip();
                     int count = 0;
-                    File file = new File(DEMO_PATH + "demo_copy");
+                    File file = new File(DEMO_DIR_PATH + "demo_copy");
                     if (!file.exists()) {
                         boolean b = file.createNewFile();
                     }

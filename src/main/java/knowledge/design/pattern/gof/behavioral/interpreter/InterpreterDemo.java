@@ -1,6 +1,7 @@
 package knowledge.design.pattern.gof.behavioral.interpreter;
 
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.expression.ExpressionParser;
 
 import java.util.Stack;
@@ -153,7 +154,7 @@ public class InterpreterDemo {
             // 存储抽象语法树
             Stack<Node> stack = new Stack<>();
             // 空格分隔指令
-            String[] words = instruction.split(" ");
+            String[] words = instruction.split(StringUtils.SPACE);
             for (int i = 0; i < words.length; i++) {
                 if (words[i].equalsIgnoreCase("and")) {
                     left = stack.pop();

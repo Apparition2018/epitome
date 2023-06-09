@@ -75,9 +75,7 @@ public class EMailDemo {
         email.send();
     }
 
-    /**
-     * <a href="http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/ImageHtmlEmail.html">ImageHtmlEmail</a>
-     */
+    /** <a href="http://commons.apache.org/proper/commons-email/apidocs/org/apache/commons/mail/ImageHtmlEmail.html">ImageHtmlEmail</a> */
     @Test
     public void sendImageEmail() throws EmailException {
         ImageHtmlEmail email = new ImageHtmlEmail();

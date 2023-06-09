@@ -26,12 +26,10 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class FileSystemProviderDemo extends Demo {
 
-    /**
-     * 此处仅作示例，一般通过 Files 来实现相关操作
-     */
+    /** 此处仅作示例，一般通过 Files 来实现相关操作 */
     public static void main(String[] args) throws IOException {
         FileSystemProvider fileSystemProvider = FileSystems.getDefault().provider();
-        Path path = Paths.get(DEMO_PATH, "demo" + ThreadLocalRandom.current().nextInt(999));
+        Path path = Paths.get(DEMO_DIR_PATH, "demo" + ThreadLocalRandom.current().nextInt(999));
 
         // abstract String	getScheme()                 返回标识此提供程序的 URI 方案
         p(fileSystemProvider.getScheme());

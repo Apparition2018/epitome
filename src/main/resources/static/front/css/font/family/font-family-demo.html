@@ -13,7 +13,7 @@
 <section class="code-wrap h350">
     <div class="css-live-wrap">
         <div class="caption">
-            <a href="https://www.zhangxinxu.com/wordpress/2016/07/monospaced-font-css3-ch-unit/" target="_blank">字符模拟solid/dashed/dotted</a>
+            <a href="https://www.zhangxinxu.com/wordpress/2016/07/monospaced-font-css3-ch-unit/" target="_blank">字符模拟 solid/dashed/dotted</a>
         </div>
         <div class="caption">利用等宽字体实现</div>
         <div class="monospace centered">
@@ -44,21 +44,25 @@
         const monospace = document.getElementsByClassName('monospace')[0];
         document.getElementsByTagName('select')[0].onchange = function () {
             monospace.style.borderStyle = this.value;
-            if (this.value === "none") {
-                monospace.style.borderColor = "transparent";
-                monospace.style.backgroundColor = "transparent";
-            }
-            if (this.value === "solid") {
-                monospace.style.borderColor = "yellow";
-                monospace.style.backgroundColor = "#fff0b4";
-            }
-            if (this.value === "dashed") {
-                monospace.style.borderColor = "blue";
-                monospace.style.backgroundColor = "#19c8dc";
-            }
-            if (this.value === "dotted") {
-                monospace.style.borderColor = "pink";
-                monospace.style.backgroundColor = "#eb2d78";
+            switch (this.value) {
+                case "none":
+                    monospace.style.borderColor = "transparent";
+                    monospace.style.backgroundColor = "transparent";
+                    break;
+                case "solid":
+                    monospace.style.borderColor = "yellow";
+                    monospace.style.backgroundColor = "#fff0b4";
+                    break;
+                case "dashed":
+                    monospace.style.borderColor = "blue";
+                    monospace.style.backgroundColor = "#19c8dc";
+                    break;
+                case "dotted":
+                    monospace.style.borderColor = "pink";
+                    monospace.style.backgroundColor = "#eb2d78";
+                    break;
+                default:
+                    console.log(`Sorry, we are out of ${this.value}.`);
             }
         };
     </script>

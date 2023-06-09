@@ -2,6 +2,7 @@ package jar.hutool.date;
 
 import cn.hutool.core.date.*;
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
@@ -24,7 +25,7 @@ import java.util.stream.IntStream;
 public class DateUtilDemo extends Demo {
     private static final String DATE_STR = "2008-08-08";
     private static final String TIME_STR = "20:08:08";
-    private static final String DATE_TIME_STR = DATE_STR + " " + TIME_STR;
+    private static final String DATE_TIME_STR = DATE_STR + StringUtils.SPACE + TIME_STR;
     private final Date DATE = DATE_TIME_FORMAT.get().parse(DATE_TIME_STR);
     private final LocalDateTime LDT = DateUtil.toLocalDateTime(DATE);
     private final Instant INSTANT = DateUtil.toInstant(DATE);
@@ -146,9 +147,7 @@ public class DateUtilDemo extends Demo {
         // [2008-08-08 20:08:08, 2008-08-09 20:08:08, ..., 2020-10-26 20:08:08]
     }
 
-    /**
-     * 转换
-     */
+    /** 转换 */
     @Test
     public void convert() {
         //********** xxx → DateTime **********//
@@ -178,9 +177,7 @@ public class DateUtilDemo extends Demo {
         p(DateUtil.nanosToSeconds(MILLION));            // 0.001
     }
 
-    /**
-     * parse
-     */
+    /** parse */
     @Test
     public void parse() {
         //********** String → DateTime **********//
@@ -202,9 +199,7 @@ public class DateUtilDemo extends Demo {
                 DatePattern.NORM_DATETIME_PATTERN));    // 2008-08-08T20:08:08
     }
 
-    /**
-     * format
-     */
+    /** format */
     @Test
     public void format() {
         // static String        format(Date date, String format)
@@ -227,10 +222,7 @@ public class DateUtilDemo extends Demo {
         p(DateUtil.formatLocalDateTime(localDateTime));                     // 2020-10-26 23:26:57
     }
 
-    /**
-     * 计时器
-     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/TimeInterval.html
-     */
+    /** <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/TimeInterval.html">计时器</a> */
     @Test
     public void timer() throws InterruptedException {
         setCountDownLatch(100);
@@ -256,7 +248,7 @@ public class DateUtilDemo extends Demo {
      * 计时器
      *
      * @see spring.api.util.StopWatchDemo
-     * https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/StopWatch.html
+     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/StopWatch.html">StopWatch api</a>
      */
     @Test
     public void createStopWatch() throws InterruptedException {

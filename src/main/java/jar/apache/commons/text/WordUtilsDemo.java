@@ -1,5 +1,6 @@
 package jar.apache.commons.text;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.junit.jupiter.api.Test;
 
@@ -19,11 +20,11 @@ public class WordUtilsDemo {
      */
     @Test
     public void abbreviate() {
-        p(WordUtils.abbreviate("Now is the time for all good men", 0, 40, null));   // Now
-        p(WordUtils.abbreviate("Now is the time for all good men", 10, 40, ""));    // Now is the
-        p(WordUtils.abbreviate("Now is the time for all good men", 20, 40, " ..."));// Now is the time for all ...
-        p(WordUtils.abbreviate("Now is the time for all good men", 50, -1, " ..."));// Now is the time for all good men
-        p(WordUtils.abbreviate("Now is the time for all good men", 9, -10, null));  // IllegalArgumentException: upper value cannot be less than -1
+        p(WordUtils.abbreviate("Now is the time for all good men", 0, 40, null));               // Now
+        p(WordUtils.abbreviate("Now is the time for all good men", 10, 40, StringUtils.EMPTY)); // Now is the
+        p(WordUtils.abbreviate("Now is the time for all good men", 20, 40, " ..."));            // Now is the time for all ...
+        p(WordUtils.abbreviate("Now is the time for all good men", 50, -1, " ..."));            // Now is the time for all good men
+        p(WordUtils.abbreviate("Now is the time for all good men", 9, -10, null));              // IllegalArgumentException: upper value cannot be less than -1
     }
 
     /**

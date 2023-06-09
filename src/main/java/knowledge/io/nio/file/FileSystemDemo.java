@@ -1,6 +1,7 @@
 package knowledge.io.nio.file;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class FileSystemDemo extends Demo {
         FileSystem fileSystem = FileSystems.getDefault();
 
         // Path                 getPath(String first, String... more)   将路径字符串或多个路径字符串连接起来转换为 Path
-        Path path = fileSystem.getPath(DEMO_PATH, "demo");
+        Path path = fileSystem.getPath(DEMO_DIR_PATH, DEMO_FILE_NAME);
         p(path); // src\main\resources\demo\demo
 
         // Set<String>	        supportedFileAttributeViews()           返回此文件系统支持的文件属性视图的名称集
@@ -58,7 +59,7 @@ public class FileSystemDemo extends Demo {
         // Iterable<FileStore>	getFileStores()                         返回文件存储器 Iterable
         Iterable<FileStore> fileStores = fileSystem.getFileStores();
         for (FileStore fileStore : fileStores) {
-            p(fileStore.name() + " " + fileStore.type());
+            p(fileStore.name() + StringUtils.SPACE + fileStore.type());
         }
 
         // PathMatcher	        getPathMatcher(String syntaxAndPattern) 返回 PathMatcher，用于匹配路径
@@ -77,10 +78,10 @@ public class FileSystemDemo extends Demo {
     @Test
     public void unzip() throws IOException {
         // static FileSystem	newFileSystem(Path)                     构造一个新的文件系统来访问文件的内容
-        FileSystem fileSystem = FileSystems.newFileSystem(Paths.get(DEMO_PATH + "demo.zip"));
+        FileSystem fileSystem = FileSystems.newFileSystem(Paths.get(DEMO_DIR_PATH + "demo.zip"));
         Files.walkFileTree(fileSystem.getPath("/"), new SimpleFileVisitor<>() {
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                Path destPath = Paths.get(DEMO_PATH + "a/", file.toString());
+                Path destPath = Paths.get(DEMO_DIR_PATH + "a/", file.toString());
                 Files.deleteIfExists(destPath);
                 Files.createDirectories(destPath.getParent());
                 Files.move(file, destPath);

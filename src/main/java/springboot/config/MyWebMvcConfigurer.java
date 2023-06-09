@@ -84,9 +84,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
         WebMvcConfigurer.super.configureContentNegotiation(configurer);
     }
 
-    /**
-     * 异步线程池
-     */
+    /** 异步线程池 */
     @Bean
     public ThreadPoolTaskExecutor asyncTaskExecutor() {
         ThreadPoolTaskExecutor asyncTaskExecutor = new ThreadPoolTaskExecutor();
@@ -151,12 +149,10 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
         return new HttpInterceptor();
     }
 
-    /**
-     * 6.添加 SpringMVC 生命周期拦截器
-     */
+    /** 6.添加 SpringMVC 生命周期拦截器 */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(httpInterceptor()).addPathPatterns("/mvc/**").excludePathPatterns("");
+        registry.addInterceptor(httpInterceptor()).addPathPatterns("/mvc/**").excludePathPatterns(StringUtils.EMPTY);
         WebMvcConfigurer.super.addInterceptors(registry);
     }
 
@@ -313,17 +309,13 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
         WebMvcConfigurer.super.configureHandlerExceptionResolvers(resolvers);
     }
 
-    /**
-     * 16.扩展或修改处理异常解析器
-     */
+    /** 16.扩展或修改处理异常解析器 */
     @Override
     public void extendHandlerExceptionResolvers(@NotNull List<HandlerExceptionResolver> resolvers) {
         WebMvcConfigurer.super.extendHandlerExceptionResolvers(resolvers);
     }
 
-    /**
-     * 17.自定义 Validator
-     */
+    /** 17.自定义 Validator */
     @Override
     public Validator getValidator() {
         return WebMvcConfigurer.super.getValidator();

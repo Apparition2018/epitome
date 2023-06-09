@@ -32,7 +32,7 @@ public class CharUtilDemo {
         // 可见 ASCII
         p(CharUtil.isAsciiPrintable('1'));                      // true
         // 不可见 ASCII
-        p(CharUtil.isAsciiControl('\n'));                       // true
+        p(CharUtil.isAsciiControl(CharUtil.LF));                // true
         // 空白符（空格、制表符、全角空格和不间断空格）
         p(CharUtil.isBlankChar(CharUtil.TAB));                  // true
         // 字母

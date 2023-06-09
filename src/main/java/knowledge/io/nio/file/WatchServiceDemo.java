@@ -24,14 +24,12 @@ import java.util.concurrent.TimeUnit;
  */
 public class WatchServiceDemo extends Demo {
 
-    /**
-     * <a href="https://www.zhihu.com/question/264700166">WatchService，重复触发 Modify 事件</a>
-     */
+    /** <a href="https://www.zhihu.com/question/264700166">WatchService，重复触发 Modify 事件</a> */
     public static void main(String[] args) throws InterruptedException, IOException {
         // 新建 WatchService
         WatchService watchService = FileSystems.getDefault().newWatchService();
         // 注册监听对象，监听对象的创建、修改、删除事件，高频率监听（2秒一次，默认10秒）
-        Paths.get(DEMO_PATH).register(watchService,
+        Paths.get(DEMO_DIR_PATH).register(watchService,
                 new WatchEvent.Kind[]{StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY, StandardWatchEventKinds.ENTRY_DELETE},
                 SensitivityWatchEventModifier.HIGH);
 

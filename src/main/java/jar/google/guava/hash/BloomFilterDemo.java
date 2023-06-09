@@ -22,7 +22,7 @@ public class BloomFilterDemo {
     public static void main(String[] args) {
         BloomFilter<CharSequence> bloomFilter = BloomFilter.create(Funnels.stringFunnel(Charset.defaultCharset()), SIZE, 0.001);
         for (int i = 0; i < 10; i++) {
-            bloomFilter.put(i + "");
+            bloomFilter.put(String.valueOf(i));
         }
         System.err.println(bloomFilter.mightContain("9"));  // true
         System.err.println(bloomFilter.mightContain("10")); // false

@@ -4,12 +4,11 @@ import cn.hutool.core.util.StrUtil;
 import l.demo.Demo;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/字符串工具-StrUtil">StrUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/StrUtil.html">StrUtil api</a>
+ * <a href="https://hutool.cn/docs/#/core/工具类/字符串工具-StrUtil">StrUtil</a><br/>
+ * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/StrUtil.html">StrUtil api</a>
  * <pre>
- * C_COMMA          ','
- * C_SLASH          '/'
- *
+ * String           COMMA                           ','
+ * String           SLASH                           '/'
  * static boolean   isBlankIfStr(Object obj)        先判断是否为字符串，再判断是否为空白
  * </pre>
  *

@@ -8,12 +8,15 @@
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
 <body>
-<!-- https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentFragment
-     https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createDocumentFragment -->
-<!-- DocumentFragment 不是真实 DOM 树的一部分，它的变化不会引起DOM树的重新渲染的操作(reflow) ，且不会导致性能等问题。 -->
 <section class="code-wrap h350">
     <div class="css-live-wrap w40p">
-        <div class="caption">使用 DocumentFragment 操作 DOM</div>
+        <div class="caption">
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/DocumentFragment">使用 DocumentFragment 操作
+                DOM</a>
+        </div>
+        <div class="caption">与 document 相比，最大的区别是它不是真实 DOM 树的一部分，它的变化不会触发 DOM
+            树的重新渲染，且不会对性能产生影响
+        </div>
         <div class="centered">
             <ul data-uid="ul"></ul>
         </div>
@@ -21,20 +24,15 @@
     <script class="code w60p" contenteditable="true">
         const ul = document.querySelector('[data-uid="ul"]'),
             // 创建一个新的空白的文档片段
-            docfrag = document.createDocumentFragment();
-        const browserList = [
-            "Internet Explorer",
-            "Mozilla Firefox",
-            "Safari",
-            "Chrome",
-            "Opera"
-        ];
-        browserList.forEach((e) => {
+            fragment = document.createDocumentFragment(),
+            // fragment = new DocumentFragment(),
+            fruits = ['Apple', 'Orange', 'Banana', 'Melon'];
+        fruits.forEach((fruit) => {
             const li = document.createElement("li");
-            li.textContent = e;
-            docfrag.appendChild(li);
+            li.textContent = fruit;
+            fragment.appendChild(li);
         })
-        ul.appendChild(docfrag);
+        ul.appendChild(fragment);
     </script>
 </section>
 </body>

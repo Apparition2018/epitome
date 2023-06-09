@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
  */
 public class ExcelUtilDemo extends Demo {
 
-    private static final String EXCEL_PATH = HU_DEMO_ABSOLUTE_PATH + "demo.xlsx";
+    private static final String EXCEL_PATH = HU_DEMO_DIR_ABSOLUTE_PATH + "demo.xlsx";
 
     /**
      * <pre>

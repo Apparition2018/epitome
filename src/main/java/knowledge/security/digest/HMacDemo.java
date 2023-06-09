@@ -78,9 +78,7 @@ public class HMacDemo extends Demo {
         return Base64.getEncoder().encodeToString(secretKey.getEncoded());
     }
 
-    /**
-     * HMAC 加密
-     */
+    /** HMAC 加密 */
     private static String encryptHMAC(byte[] data, String key) throws NoSuchAlgorithmException, InvalidKeyException {
         // 根据给定的字节数组构造一个密钥，第二参数指定一个密钥算法的名称
         SecretKey secretKey = new SecretKeySpec(Base64.getDecoder().decode(key), KEY_MAC);
@@ -96,7 +94,7 @@ public class HMacDemo extends Demo {
     }
 
     private static String getResult1(String inputStr) {
-        Path keyFilePath = Paths.get(DEMO_PATH + "key");
+        Path keyFilePath = Paths.get(DEMO_DIR_PATH + "key");
         String result = null;
         try {
             byte[] inputData = inputStr.getBytes();
@@ -112,7 +110,7 @@ public class HMacDemo extends Demo {
     }
 
     private static String getResult2(String inputStr) {
-        Path keyFilePath = Paths.get(DEMO_PATH + "key");
+        Path keyFilePath = Paths.get(DEMO_DIR_PATH + "key");
         List<String> keyList;
         String result = null;
         try {

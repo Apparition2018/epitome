@@ -1,5 +1,6 @@
 package knowledge.types.wrapper;
 
+import org.apache.commons.lang3.CharUtils;
 import org.junit.jupiter.api.Test;
 
 import static l.demo.Demo.p;
@@ -70,15 +71,15 @@ public class CharacterDemo {
      */
     @Test
     public void isSpace() {
-        p(Character.isSpaceChar(' '));      // true
-        p(Character.isSpaceChar('\u00A0')); // true
-        p(Character.isSpaceChar('\u2007')); // true
-        p(Character.isSpaceChar('\u202F')); // true
+        p(Character.isSpaceChar(' '));          // true
+        p(Character.isSpaceChar('\u00A0'));     // true
+        p(Character.isSpaceChar('\u2007'));     // true
+        p(Character.isSpaceChar('\u202F'));     // true
 
-        p(Character.isWhitespace(' '));    // true
-        p(Character.isWhitespace('\f'));   // true，换页
-        p(Character.isWhitespace('\n'));   // true，换行
-        p(Character.isWhitespace('\r'));   // true，回车
-        p(Character.isWhitespace('\t'));   // true，tab
+        p(Character.isWhitespace(' '));         // true
+        p(Character.isWhitespace('\f'));        // true，换页
+        p(Character.isWhitespace(CharUtils.LF));// true，换行
+        p(Character.isWhitespace(CharUtils.CR));// true，回车
+        p(Character.isWhitespace('\t'));        // true，tab
     }
 }

@@ -39,36 +39,36 @@ import java.io.IOException;
  */
 public class ImgUtilDemo extends Demo {
 
-    private static final File IMG = new File(HU_DEMO_PATH + "capture.jpg");
+    private static final File IMG = new File(HU_DEMO_DIR_PATH + "capture.jpg");
 
     @Test
     public void edit() {
         // 缩放
-        ImgUtil.scale(IMG, new File(HU_DEMO_PATH + "capture_scale.jpg"), 0.5f);
+        ImgUtil.scale(IMG, new File(HU_DEMO_DIR_PATH + "capture_scale.jpg"), 0.5f);
 
         // 旋转
-        ImgUtil.rotate(IMG, 180, new File(HU_DEMO_PATH + "capture_rotate.jpg"));
+        ImgUtil.rotate(IMG, 180, new File(HU_DEMO_DIR_PATH + "capture_rotate.jpg"));
 
         // 水平翻转
-        ImgUtil.flip(IMG, new File(HU_DEMO_PATH + "capture_flip.jpg"));
+        ImgUtil.flip(IMG, new File(HU_DEMO_DIR_PATH + "capture_flip.jpg"));
 
         // 裁剪
-        ImgUtil.cut(IMG, new File(HU_DEMO_PATH + "capture_cut.jpg"), new Rectangle(0, 0, 100, 100));
+        ImgUtil.cut(IMG, new File(HU_DEMO_DIR_PATH + "capture_cut.jpg"), new Rectangle(0, 0, 100, 100));
 
         // 切片
         // ImgUtil.slice(IMG, new File(HU_DEMO_PATH), 100, 100);
 
         // 类型转换
-        ImgUtil.convert(IMG, new File(HU_DEMO_PATH + "capture_convert.jpg"));
+        ImgUtil.convert(IMG, new File(HU_DEMO_DIR_PATH + "capture_convert.jpg"));
 
         // 黑白
-        ImgUtil.gray(IMG, new File(HU_DEMO_PATH + "capture_gray.jpg"));
+        ImgUtil.gray(IMG, new File(HU_DEMO_DIR_PATH + "capture_gray.jpg"));
 
         // 压缩
-        ImgUtil.compress(IMG, new File(HU_DEMO_PATH + "capture_compress.jpg"), 0.8f);
+        ImgUtil.compress(IMG, new File(HU_DEMO_DIR_PATH + "capture_compress.jpg"), 0.8f);
 
         // 文字水印
-        ImgUtil.pressText(IMG, new File(HU_DEMO_PATH + "capture_pressText.jpg"),
+        ImgUtil.pressText(IMG, new File(HU_DEMO_DIR_PATH + "capture_pressText.jpg"),
                 "版权所有", Color.PINK, // 文字
                 new Font("黑体", Font.ITALIC, 36), // 字体
                 0,      // x 坐标修正值。 默认在中间，偏移量相对于中间偏移
@@ -77,7 +77,7 @@ public class ImgUtilDemo extends Demo {
         );
 
         // 图片水印
-        ImgUtil.pressImage(IMG, new File(HU_DEMO_PATH + "capture_pressImage.jpg"),
+        ImgUtil.pressImage(IMG, new File(HU_DEMO_DIR_PATH + "capture_pressImage.jpg"),
                 ImgUtil.read(new File(XIAO_XIN_PNG)), // 水印图片
                 0,      // x 坐标修正值。 默认在中间，偏移量相对于中间偏移
                 0,      // y 坐标修正值。 默认在中间，偏移量相对于中间偏移
@@ -111,12 +111,10 @@ public class ImgUtilDemo extends Demo {
         bais = ImgUtil.toStream(ImgUtil.read(IMG), "jpg");
     }
 
-    /**
-     * 创建文字图片
-     */
+    /** 创建文字图片 */
     @Test
     public void createImage() throws IOException {
         ImgUtil.createImage("ABC", new Font("黑体", Font.PLAIN, 28), Color.WHITE, Color.BLACK,
-                new FileImageOutputStream(new File(HU_DEMO_PATH + "createImage.jpg")));
+                new FileImageOutputStream(new File(HU_DEMO_DIR_PATH + "createImage.jpg")));
     }
 }

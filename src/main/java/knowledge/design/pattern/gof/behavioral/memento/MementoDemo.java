@@ -1,6 +1,7 @@
 package knowledge.design.pattern.gof.behavioral.memento;
 
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.util.Scanner;
@@ -67,12 +68,10 @@ public class MementoDemo {
         }
     }
 
-    /**
-     * Originator
-     */
+    /** Originator */
     @Getter
     private static class InputText {
-        private String text = "";
+        private String text = StringUtils.EMPTY;
 
         public void append(String input) {
             text = text + input;
@@ -87,15 +86,11 @@ public class MementoDemo {
         }
     }
 
-    /**
-     * Memento
-     */
+    /** Memento */
     private record Memento(String text) {
     }
 
-    /**
-     * Caretaker
-     */
+    /** Caretaker */
     private static class MementoHolder {
         private final Stack<Memento> mementos = new Stack<>();
 
@@ -109,9 +104,7 @@ public class MementoDemo {
         }
     }
 
-    /**
-     * 原型备忘录 (不需要 Memento 角色了)
-     */
+    /** 原型备忘录 (不需要 Memento 角色了) */
     private static class PrototypeMementoDemo {
 
         public static void main(String[] args) {
@@ -136,12 +129,10 @@ public class MementoDemo {
             }
         }
 
-        /**
-         * Originator
-         */
+        /** Originator */
         @Getter
         static class InputText implements Cloneable {
-            private String text = "";
+            private String text = StringUtils.EMPTY;
 
             public void append(String input) {
                 text = text + input;
@@ -166,9 +157,7 @@ public class MementoDemo {
             }
         }
 
-        /**
-         * Caretaker
-         */
+        /** Caretaker */
         private static class MementoHolder {
             private final Stack<InputText> mementos = new Stack<>();
 

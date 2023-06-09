@@ -1,6 +1,7 @@
 package knowledge.network.socket.nio;
 
 import l.demo.Demo;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,9 +23,7 @@ import java.util.Iterator;
  */
 public class NioServer extends Demo {
 
-    /**
-     * @see <a href="https://www.jianshu.com/p/84e57630b25b">NIO 实现 TCP 文件传输</a>
-     */
+    /** @see <a href="https://www.jianshu.com/p/84e57630b25b">NIO 实现 TCP 文件传输</a> */
     public static void main(String[] args) throws IOException {
         new NioServer().init(9981).listen();
     }
@@ -32,9 +31,7 @@ public class NioServer extends Demo {
     // 通道选择器
     private Selector selector;
 
-    /**
-     * 获取一个 ServerSocket 通道，并初始化通道
-     */
+    /** 获取一个 ServerSocket 通道，并初始化通道 */
     public NioServer init(int port) throws IOException {
         // 获取一个 ServerSocket 通道
         try (ServerSocketChannel serverChannel = ServerSocketChannel.open()) {
@@ -92,7 +89,7 @@ public class NioServer extends Demo {
                             socketChannel.write(byteBuffer);
                         }
                         byteBuffer.clear();
-                        p(fileChannel.position() + " " + fileChannel.size());
+                        p(fileChannel.position() + StringUtils.SPACE + fileChannel.size());
                     }
                     p("结束写操作");
                     socketChannel.close();

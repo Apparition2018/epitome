@@ -247,12 +247,21 @@
             left.style.background = '';
             right.style.background = '';
             middle.style.background = '';
-            if (button === 0) {         // 左键
-                left.style.background = 'var(--pkt5)';
-            } else if (button === 1) {  // 中键
-                middle.style.background = 'var(--pkt5)';
-            } else if (button === 2) {  // 右键
-                right.style.background = 'var(--pkt5)';
+            switch (button) {
+                // 左键
+                case 0:
+                    left.style.background = 'var(--pkt5)';
+                    break;
+                // 中键
+                case 1:
+                    middle.style.background = 'var(--pkt5)';
+                    break;
+                // 右键
+                case 2:
+                    right.style.background = 'var(--pkt5)';
+                    break;
+                default:
+                    console.log(`Sorry, we are out of ${button}.`);
             }
         }
     </script>

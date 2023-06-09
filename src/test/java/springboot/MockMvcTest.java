@@ -1,5 +1,6 @@
 package springboot;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -80,7 +81,7 @@ public class MockMvcTest {
         requestBuilder = MockMvcRequestBuilders.delete("/persons/1");
         mockMvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("")));
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo(StringUtils.EMPTY)));
 
         requestBuilder = MockMvcRequestBuilders.get("/persons");
         mockMvc.perform(requestBuilder)

@@ -32,15 +32,15 @@ public class CaptchaDemo extends Demo {
 
     public static void main(String[] args) {
         // 直线干扰
-        CreateCaptcha(CaptchaUtil.createLineCaptcha(WIDTH, HEIGHT, CODE_COUNT, Interference_COUNT), HU_DEMO_PATH + "captcha_line.jpg", null);
+        CreateCaptcha(CaptchaUtil.createLineCaptcha(WIDTH, HEIGHT, CODE_COUNT, Interference_COUNT), HU_DEMO_DIR_PATH + "captcha_line.jpg", null);
         // 圆圈干扰
-        CreateCaptcha(CaptchaUtil.createCircleCaptcha(WIDTH, HEIGHT, CODE_COUNT, Interference_COUNT), HU_DEMO_PATH + "captcha_circle.jpg", null);
+        CreateCaptcha(CaptchaUtil.createCircleCaptcha(WIDTH, HEIGHT, CODE_COUNT, Interference_COUNT), HU_DEMO_DIR_PATH + "captcha_circle.jpg", null);
         // 扭曲干扰
-        CreateCaptcha(CaptchaUtil.createShearCaptcha(WIDTH, HEIGHT, CODE_COUNT, CODE_COUNT), HU_DEMO_PATH + "captcha_shear.jpg", null);
+        CreateCaptcha(CaptchaUtil.createShearCaptcha(WIDTH, HEIGHT, CODE_COUNT, CODE_COUNT), HU_DEMO_DIR_PATH + "captcha_shear.jpg", null);
         // 自定义验证码
-        CreateCaptcha(CaptchaUtil.createShearCaptcha(WIDTH, HEIGHT, CODE_COUNT, CODE_COUNT), HU_DEMO_PATH + "captcha_random.jpg", new RandomGenerator("0123456789", CODE_COUNT));
+        CreateCaptcha(CaptchaUtil.createShearCaptcha(WIDTH, HEIGHT, CODE_COUNT, CODE_COUNT), HU_DEMO_DIR_PATH + "captcha_random.jpg", new RandomGenerator("0123456789", CODE_COUNT));
         // 数学验证码
-        CreateCaptcha(CaptchaUtil.createShearCaptcha(WIDTH, HEIGHT, CODE_COUNT, CODE_COUNT), HU_DEMO_PATH + "captcha_math.jpg", new MathGenerator());
+        CreateCaptcha(CaptchaUtil.createShearCaptcha(WIDTH, HEIGHT, CODE_COUNT, CODE_COUNT), HU_DEMO_DIR_PATH + "captcha_math.jpg", new MathGenerator());
     }
 
     private static void CreateCaptcha(AbstractCaptcha captcha, String captchaPath, CodeGenerator generator) {

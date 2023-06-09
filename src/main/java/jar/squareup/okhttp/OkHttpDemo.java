@@ -29,18 +29,14 @@ public class OkHttpDemo extends Demo {
     private static final MediaType MEDIA_TYPE_JPG = MediaType.parse("image/jpg");
     private OkHttpClient client = new OkHttpClient();
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#synchronous-get-kt-java">Synchronous Get</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#synchronous-get-kt-java">Synchronous Get</a> */
     @Test
     public void testSynchronousGet() throws IOException {
         Request request = new Request.Builder().url(getPublicObjUrl("helloworld.txt")).build();
         executePrintResult(request);
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#asynchronous-get-kt-java">Asynchronous Get</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#asynchronous-get-kt-java">Asynchronous Get</a> */
     @Test
     public void testAsynchronousGet() {
         Request request = new Request.Builder().url(getPublicObjUrl("helloworld.txt")).build();
@@ -60,9 +56,7 @@ public class OkHttpDemo extends Demo {
         });
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#accessing-headers-kt-java">Accessing Headers</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#accessing-headers-kt-java">Accessing Headers</a> */
     @Test
     public void testAccessingHeaders() throws IOException {
         Request request = new Request.Builder().url("https://api.github.com/repos/square/okhttp/issues")
@@ -78,9 +72,7 @@ public class OkHttpDemo extends Demo {
         }
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#posting-a-string-kt-java">Posting a String</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#posting-a-string-kt-java">Posting a String</a> */
     @Test
     public void testPostingString() throws IOException {
         String postBody = """
@@ -96,9 +88,7 @@ public class OkHttpDemo extends Demo {
         executePrintResult(request);
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#post-streaming-kt-java">Post Streaming</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#post-streaming-kt-java">Post Streaming</a> */
     @Test
     public void testPostingStream() throws IOException {
         RequestBody requestBody = new RequestBody() {
@@ -129,9 +119,7 @@ public class OkHttpDemo extends Demo {
         executePrintResult(request);
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#posting-a-file-kt-java">Posting a File</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#posting-a-file-kt-java">Posting a File</a> */
     @Test
     public void testPostFile() throws IOException {
         File file = new File(DEMO_FILE_PATH);
@@ -140,9 +128,7 @@ public class OkHttpDemo extends Demo {
         executePrintResult(request);
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#posting-form-parameters-kt-java">Posting form parameters</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#posting-form-parameters-kt-java">Posting form parameters</a> */
     @Test
     public void testPostFormParameters() throws IOException {
         RequestBody requestBody = new FormBody.Builder().add("Search", "Jurassic Park").build();
@@ -150,9 +136,7 @@ public class OkHttpDemo extends Demo {
         executePrintResult(request);
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#posting-a-multipart-request-kt-java">Posting a multipart request</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#posting-a-multipart-request-kt-java">Posting a multipart request</a> */
     @Test
     public void testMultipartRequest() throws IOException {
         RequestBody requestBody = RequestBody.create(new File(BIRD_IMG), MEDIA_TYPE_JPG);
@@ -169,9 +153,7 @@ public class OkHttpDemo extends Demo {
         executePrintResult(request);
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#parse-a-json-response-with-moshi-kt-java">Parse a JSON Response With Moshi</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#parse-a-json-response-with-moshi-kt-java">Parse a JSON Response With Moshi</a> */
     @Test
     public void testParseJSONResponseWithMoshi() throws IOException {
         Moshi moshi = new Moshi.Builder().build();
@@ -184,13 +166,11 @@ public class OkHttpDemo extends Demo {
         }
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#response-caching-kt-java">Response Caching</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#response-caching-kt-java">Response Caching</a> */
     @Test
     public void testResponseCaching() throws IOException {
         int cacheSize = 10 * 1024 * 1024;
-        Cache cache = new Cache(new File(DEMO_PATH), cacheSize);
+        Cache cache = new Cache(new File(DEMO_DIR_PATH), cacheSize);
         client = new OkHttpClient.Builder().cache(cache).build();
         Request request = new Request.Builder().url(getPublicObjUrl("hellowrold.txt")).build();
         String response1Body;
@@ -220,9 +200,7 @@ public class OkHttpDemo extends Demo {
         String content;
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#canceling-a-call-kt-java">Canceling a Call</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#canceling-a-call-kt-java">Canceling a Call</a> */
     @Test
     public void testCancelingCall() {
         Request request = new Request.Builder().url(getDelayUrl(2)).build();
@@ -243,9 +221,7 @@ public class OkHttpDemo extends Demo {
         }
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#timeouts-kt-java">Timeouts</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#timeouts-kt-java">Timeouts</a> */
     @Test
     public void testTimeouts() throws IOException {
         client = new OkHttpClient.Builder()
@@ -260,9 +236,7 @@ public class OkHttpDemo extends Demo {
         }
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#per-call-configuration-kt-java">Per-call Configuration</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#per-call-configuration-kt-java">Per-call Configuration</a> */
     @Test
     public void testPerCallConfiguration() {
         Request request = new Request.Builder().url(getDelayUrl(1)).build();
@@ -282,9 +256,7 @@ public class OkHttpDemo extends Demo {
         }
     }
 
-    /**
-     * <a href="https://square.github.io/okhttp/recipes/#handling-authentication-kt-java">Handling authentication</a>
-     */
+    /** <a href="https://square.github.io/okhttp/recipes/#handling-authentication-kt-java">Handling authentication</a> */
     @Test
     public void testHandlingAuthentication() throws IOException {
         client = new OkHttpClient.Builder()
