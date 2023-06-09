@@ -198,6 +198,9 @@
     2. Applicatoin/JUnit → Modify options
         2.1 Java → Do not build before run 勾选
         2.2 Before Lauch → Add before launch task 勾选 → Build, no error check
+### 全局搜索排除 out 和 log 目录
+    1. Project Structure → Modules
+    2. 把文件夹设为 Excluded Folders
 ### 一个窗口同时打开两个项目
     1. Project Structure → Modules → + → Import Module
 ---
