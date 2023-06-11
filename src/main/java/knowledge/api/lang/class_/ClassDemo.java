@@ -1,5 +1,6 @@
 package knowledge.api.lang.class_;
 
+import cn.hutool.core.util.StrUtil;
 import l.demo.Animal;
 import l.demo.Animal.Chicken;
 import org.apache.commons.lang3.StringUtils;
@@ -121,11 +122,11 @@ public class ClassDemo {
     public static void main(String[] args) {
         // Class.getResource()
         p(ClassDemo.class.getResource(StringUtils.EMPTY));                  // file:/D:/Liang/git/epitome/target/classes/knowledge/api/lang/class_/
-        p(ClassDemo.class.getResource("/"));                                // file:/D:/Liang/git/epitome/target/classes/
+        p(ClassDemo.class.getResource(StrUtil.SLASH));                      // file:/D:/Liang/git/epitome/target/classes/
 
         // ClassLoader.getResource()
         p(ClassDemo.class.getClassLoader().getResource(StringUtils.EMPTY)); // file:/D:/Liang/git/epitome/target/classes/
-        p(ClassDemo.class.getClassLoader().getResource("/"));               //
+        p(ClassDemo.class.getClassLoader().getResource(StrUtil.SLASH));     //
     }
 
 

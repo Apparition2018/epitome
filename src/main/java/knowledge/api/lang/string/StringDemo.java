@@ -1,5 +1,6 @@
 package knowledge.api.lang.string;
 
+import cn.hutool.core.util.StrUtil;
 import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
@@ -95,14 +96,14 @@ public class StringDemo extends Demo {
     public void splitAndJoin() {
         // String[]	        split(String regex, int limit)
         // 根据匹配给定的正则表达式来拆分此字符串
-        p("www.baidu.com".split("\\.", 2)); // [www, baidu.com]
+        p("www.baidu.com".split("\\.", 2));         // [www, baidu.com]
         // 使用索引访问用 String 的 split 方法得到的数组时，需做最后一个分隔符后有无内容的检查，否则会有抛 IndexOutOfBoundsException 的风险（阿里编程规约）
-        p("a,b,c,,".split(","));            // [a,b,c]
-        p("a,b,c,,".split(",").length);     // 3
+        p("a,b,c,,".split(StrUtil.COMMA));          // [a,b,c]
+        p("a,b,c,,".split(StrUtil.COMMA).length);   // 3
 
         // static String    join(CharSequence delimiter, Iterable<? extends CharSequence> / CharSequence... elements)
         // 返回由 elements 和指定分隔符组成的新字符串。
-        p(String.join(",", "A", "B", "C"));
+        p(String.join(StrUtil.COMMA, "A", "B", "C"));
 
     }
 

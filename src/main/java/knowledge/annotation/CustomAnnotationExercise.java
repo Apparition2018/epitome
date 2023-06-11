@@ -1,5 +1,6 @@
 package knowledge.annotation;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -94,11 +95,11 @@ public class CustomAnnotationExercise {
             }
             sb.append(" and ").append(columnName);
             if (fieldValue instanceof String) {
-                if (((String) fieldValue).contains(",")) {
-                    String[] values = ((String) fieldValue).split(",");
+                if (((String) fieldValue).contains(StrUtil.COMMA)) {
+                    String[] values = ((String) fieldValue).split(StrUtil.COMMA);
                     sb.append(" in(");
                     for (String value : values) {
-                        sb.append("'").append(value).append("'").append(",");
+                        sb.append("'").append(value).append("'").append(StrUtil.COMMA);
                     }
                     sb.deleteCharAt(sb.length() - 1);
                     sb.append(")");

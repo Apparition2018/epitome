@@ -1,5 +1,6 @@
 package l.demo;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -30,6 +31,6 @@ public class User {
     public String toString() {
         String result = (birthDate != null ? "birthDate=" + birthDate : StringUtils.EMPTY) +
                 (birth != null ? "birthString='" + birth : StringUtils.EMPTY) + '\'';
-        return "User{" + (result.startsWith(",") ? result.substring(2) : result) + "}";
+        return "User{" + (result.startsWith(StrUtil.COMMA) ? result.substring(2) : result) + "}";
     }
 }

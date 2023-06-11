@@ -1,5 +1,6 @@
 package knowledge.io.nio.file;
 
+import cn.hutool.core.util.StrUtil;
 import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
@@ -79,7 +80,7 @@ public class FileSystemDemo extends Demo {
     public void unzip() throws IOException {
         // static FileSystem	newFileSystem(Path)                     构造一个新的文件系统来访问文件的内容
         FileSystem fileSystem = FileSystems.newFileSystem(Paths.get(DEMO_DIR_PATH + "demo.zip"));
-        Files.walkFileTree(fileSystem.getPath("/"), new SimpleFileVisitor<>() {
+        Files.walkFileTree(fileSystem.getPath(StrUtil.SLASH), new SimpleFileVisitor<>() {
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 Path destPath = Paths.get(DEMO_DIR_PATH + "a/", file.toString());
                 Files.deleteIfExists(destPath);

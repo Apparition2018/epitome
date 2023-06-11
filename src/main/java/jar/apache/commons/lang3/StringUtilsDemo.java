@@ -1,5 +1,6 @@
 package jar.apache.commons.lang3;
 
+import cn.hutool.core.util.StrUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
@@ -224,9 +225,9 @@ public class StringUtilsDemo {
 
     @Test
     public void repeat() {
-        p(StringUtils.repeat("a", -1));         //
-        p(StringUtils.repeat("a", 3));          // aaa
-        p(StringUtils.repeat("a", ",", 3));     // a,a,a
+        p(StringUtils.repeat("a", -1));                 //
+        p(StringUtils.repeat("a", 3));                  // aaa
+        p(StringUtils.repeat("a", StrUtil.COMMA, 3));   // a,a,a
     }
 
     // remove / delete

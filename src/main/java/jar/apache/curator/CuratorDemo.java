@@ -1,5 +1,6 @@
 package jar.apache.curator;
 
+import cn.hutool.core.util.StrUtil;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.api.BackgroundCallback;
 import org.apache.curator.framework.api.CuratorEvent;
@@ -35,9 +36,7 @@ public class CuratorDemo {
 
     private static final String PATH = "/test";
 
-    /**
-     * <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/framework">framework</a>
-     */
+    /** <a href="https://github.com/apache/curator/tree/master/curator-examples/src/main/java/framework">framework</a> */
     @Test
     public void testCurator() throws Exception {
         try (CuratorFramework client = CuratorUtils.getCuratorFramework()) {
@@ -62,7 +61,7 @@ public class CuratorDemo {
             System.out.println(new String(client.getData().forPath(path), StandardCharsets.UTF_8));
 
             // 获取子节点
-            List<String> children = client.getChildren().forPath("/");
+            List<String> children = client.getChildren().forPath(StrUtil.SLASH);
 
             // 删除节点
             for (String child : children) {
@@ -71,7 +70,7 @@ public class CuratorDemo {
                         .deletingChildrenIfNeeded()
                         // 异步后台操作完成时执行
                         .inBackground(new Background(), Executors.newFixedThreadPool(2))
-                        .forPath("/" + child);
+                        .forPath(StrUtil.SLASH + child);
             }
             TimeUnit.SECONDS.sleep(6);
         }
@@ -84,9 +83,7 @@ public class CuratorDemo {
         }
     }
 
-    /**
-     * 事务
-     */
+    /** 事务 */
     @Test
     public void testTransaction() throws Exception {
         try (CuratorFramework client = CuratorUtils.getCuratorFramework()) {

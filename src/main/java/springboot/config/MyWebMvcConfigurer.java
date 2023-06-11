@@ -1,5 +1,6 @@
 package springboot.config;
 
+import cn.hutool.core.util.StrUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.jetbrains.annotations.NotNull;
@@ -179,7 +180,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
         // addResourceHandler       设置资源映射路径（前缀）
         // addResourceLocations     设置资源位置
         registry.addResourceHandler("/webjars/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/META-INF/resources/webjars/");
-        registry.addResourceHandler(staticPathPatterns).addResourceLocations(StringUtils.split(staticLocations, ","));
+        registry.addResourceHandler(staticPathPatterns).addResourceLocations(StringUtils.split(staticLocations, StrUtil.COMMA));
         // registry.addResourceHandler("/swagger-ui/**").addResourceLocations(ResourceUtils.CLASSPATH_URL_PREFIX + "/META-INF/resources/webjars/springfox-swagger-ui/");
         WebMvcConfigurer.super.addResourceHandlers(registry);
     }

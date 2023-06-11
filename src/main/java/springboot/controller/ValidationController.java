@@ -1,5 +1,6 @@
 package springboot.controller;
 
+import cn.hutool.core.util.StrUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.*;
@@ -70,7 +71,7 @@ public class ValidationController {
             String errorMsg = messageSource.getMessage(fieldError, locale);
             errorMsgMap.put(fieldError.getField(), errorMsg);
         }
-        return StringUtils.join(errorMsgMap.values().toArray(), ",");
+        return StringUtils.join(errorMsgMap.values().toArray(), StrUtil.COMMA);
     }
 
     @GetMapping("bindException")
@@ -177,7 +178,7 @@ public class ValidationController {
 
         @Override
         public boolean isValid(Object value, ConstraintValidatorContext constraintValidatorContext) {
-            String[] valueArr = values.split(",");
+            String[] valueArr = values.split(StrUtil.COMMA);
             boolean isFlag = false;
             for (String v : valueArr) {
                 if (Objects.equals(v, value)) {

@@ -1,5 +1,6 @@
 package spring.api.util;
 
+import cn.hutool.core.util.StrUtil;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
@@ -88,28 +89,28 @@ public class StringUtilsDemo extends Demo {
     public void testDelimited() {
         /* Object[]         →   delimited String */
         // static String        arrayToDelimitedString(Object[] arr[, String delim])
-        String str = StringUtils.arrayToDelimitedString(arr, ",");
+        String str = StringUtils.arrayToDelimitedString(arr, StrUtil.COMMA);
         p(str); // 1,2,3,4,5,6,7,8,9
 
         /* Collection<?>    →   delimited String */
         // static String        collectionToDelimitedString(Collection<?> coll[, String delim, String prefix, String suffix])
-        p(StringUtils.collectionToDelimitedString(list, ",", "[", "]"));// [1],[2],[3],[4],[5],[6],[7],[8],[9]
+        p(StringUtils.collectionToDelimitedString(list, StrUtil.COMMA, "[", "]"));  // [1],[2],[3],[4],[5],[6],[7],[8],[9]
 
         /* delimited String →   Set<String> */
         // static Set<String>   commaDelimitedListToSet(String str)
-        p(StringUtils.commaDelimitedListToSet(str));                    // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        p(StringUtils.commaDelimitedListToSet(str));                                // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
         /* delimited String →   String[] */
         // static String[]      commaDelimitedListToStringArray(String str)
-        p(StringUtils.commaDelimitedListToStringArray(str));            // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        p(StringUtils.commaDelimitedListToStringArray(str));                        // [1, 2, 3, 4, 5, 6, 7, 8, 9]
         // static String[]      delimitedListToStringArray(String str, String delimiter, String charsToDelete)
-        p(StringUtils.delimitedListToStringArray(str, ",", "12345"));   // [, , , , , 6, 7, 8, 9]
+        p(StringUtils.delimitedListToStringArray(str, StrUtil.COMMA, "12345"));     // [, , , , , 6, 7, 8, 9]
         // static String[]      tokenizeToStringArray(String str, String delimiters, boolean trimTokens, boolean ignoreEmptyTokens)
-        p(StringUtils.tokenizeToStringArray(str, ",", true, true));     // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        p(StringUtils.tokenizeToStringArray(str, StrUtil.COMMA, true, true));       // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
         String[] arr = new String[]{"1:A", "2:B"};
         /* delimited String →   Properties */
         // static Properties    splitArrayElementsIntoProperties(String[] array, String delimiter[, String charsToDelete])
-        p(StringUtils.splitArrayElementsIntoProperties(arr, ":"));      // {2=B, 1=A}
+        p(StringUtils.splitArrayElementsIntoProperties(arr, ":"));                  // {2=B, 1=A}
     }
 }

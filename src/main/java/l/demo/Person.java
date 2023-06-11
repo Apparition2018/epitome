@@ -1,6 +1,7 @@
 package l.demo;
 
 import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -97,7 +98,7 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
                 (null != age ? ", age=" + age : StringUtils.EMPTY) + (null != gender ? ", gender='" + gender + '\'' : StringUtils.EMPTY) +
                 (null != otherInfo ? ", otherInfo=[" + StringUtils.join(otherInfo, ", ") + "]" : StringUtils.EMPTY) +
                 (null != getHome() ? ", home=Home(" + (null != getHome().getAddress() ? "address='" + getHome().getAddress() + '\'' : StringUtils.EMPTY) + (null != getHome().getTel() ? ", tel='" + getHome().getTel() + '\'' : StringUtils.EMPTY) + ")" : StringUtils.EMPTY);
-        return "Person{" + (result.startsWith(",") ? result.substring(2) : result) + "}";
+        return "Person{" + (result.startsWith(StrUtil.COMMA) ? result.substring(2) : result) + "}";
     }
 
     /**
@@ -187,7 +188,7 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
                     (null != super.getHome() ? ", home=Home(" + (null != super.getHome().getAddress() ? "address='" + super.getHome().getAddress() + '\'' : StringUtils.EMPTY) + (null != super.getHome().getTel() ? ", tel='" + super.getHome().getTel() + '\'' : StringUtils.EMPTY) + ")" : StringUtils.EMPTY) +
                     (null != no ? ", no='" + no + '\'' : StringUtils.EMPTY) +
                     (null != birth ? ", birth=" + DateFormatUtils.format(birth, DatePattern.NORM_DATE_PATTERN) : StringUtils.EMPTY) + (null != score ? ", score=" + score : StringUtils.EMPTY);
-            return "Student{" + (result.startsWith(",") ? result.substring(2) : result) + "}";
+            return "Student{" + (result.startsWith(StrUtil.COMMA) ? result.substring(2) : result) + "}";
         }
     }
 }

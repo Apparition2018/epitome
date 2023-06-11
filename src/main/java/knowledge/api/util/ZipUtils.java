@@ -1,5 +1,6 @@
 package knowledge.api.util;
 
+import cn.hutool.core.util.StrUtil;
 import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
@@ -63,18 +64,18 @@ public class ZipUtils extends Demo {
         if (path == null) {
             path = StringUtils.EMPTY;
         }
-        path = path.replaceAll("\\*", "/");
-        if (path.length() > 0 && !path.endsWith("/")) {
-            path += "/";
+        path = path.replaceAll("\\*", StrUtil.SLASH);
+        if (path.length() > 0 && !path.endsWith(StrUtil.SLASH)) {
+            path += StrUtil.SLASH;
         }
         byte[] buf = new byte[1024];
         for (File srcFile : srcFiles) {
             if (srcFile.isDirectory()) {
                 File[] files = srcFile.listFiles();
                 String srcPath = srcFile.getName();
-                srcPath = srcPath.replaceAll("\\*", "/");
-                if (!srcPath.endsWith("/")) {
-                    srcPath += "/";
+                srcPath = srcPath.replaceAll("\\*", StrUtil.SLASH);
+                if (!srcPath.endsWith(StrUtil.SLASH)) {
+                    srcPath += StrUtil.SLASH;
                 }
                 // void	        putNextEntry(ZipEntry e)
                 // 开始写入新的 ZIP 文件 entry，并将流定位到 entry 数据的开始位置
@@ -128,7 +129,7 @@ public class ZipUtils extends Demo {
             // InputStream	                getInputStream(ZipEntry entry)
             // 返回用于读取指定 zip 文件 entry 内容的输入流
             InputStream is = zip.getInputStream(entry);
-            String outPath = zipEntryName.replaceAll("\\*", "/");
+            String outPath = zipEntryName.replaceAll("\\*", StrUtil.SLASH);
             int index = outPath.lastIndexOf('/');
             if (index != -1) {
                 File file = new File(destFile, outPath.substring(0, outPath.lastIndexOf('/')));

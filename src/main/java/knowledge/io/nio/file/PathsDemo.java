@@ -1,5 +1,6 @@
 package knowledge.io.nio.file;
 
+import cn.hutool.core.util.StrUtil;
 import l.demo.Demo;
 
 import java.io.File;
@@ -21,7 +22,7 @@ public class PathsDemo extends Demo {
         p(path);    // D:\L\git\epitome\src\main\resources\demo\demo
 
         // static Path	    get(URI uri)                            URI → Path
-        Path uriPath = Paths.get(URI.create("file:///" + (USER_DIR + File.separator + DEMO_FILE_PATH).replaceAll("\\\\", "/")));
+        Path uriPath = Paths.get(URI.create("file:///" + (USER_DIR + File.separator + DEMO_FILE_PATH).replaceAll("\\\\", StrUtil.SLASH)));
         p(uriPath); // D:\L\git\epitome\src\main\resources\demo\demo
     }
 }

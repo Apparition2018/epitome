@@ -1,5 +1,6 @@
 package jar.apache.curator;
 
+import cn.hutool.core.util.StrUtil;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.cache.CuratorCache;
@@ -20,9 +21,7 @@ public class CuratorCacheDemo {
 
     private static final String PATH = "/cache";
 
-    /**
-     * <a href="https://github.com/apache/curator/blob/master/curator-examples/src/main/java/cache/CuratorCacheExample.java">CuratorCache Example</a>
-     */
+    /** <a href="https://github.com/apache/curator/blob/master/curator-examples/src/main/java/cache/CuratorCacheExample.java">CuratorCache Example</a> */
     public static void main(String[] args) throws Exception {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         try (TestingServer testingServer = new TestingServer()) {
@@ -59,6 +58,6 @@ public class CuratorCacheDemo {
         if (depth == 0) {
             return PATH;
         }
-        return makeRandomPath(random, depth - 1) + "/" + random.nextInt(3);
+        return makeRandomPath(random, depth - 1) + StrUtil.SLASH + random.nextInt(3);
     }
 }
