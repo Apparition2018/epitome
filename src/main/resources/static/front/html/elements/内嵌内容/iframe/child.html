@@ -5,8 +5,8 @@
     <title>iframe-child</title>
     <script defer type="text/javascript">
         function parentPlus() {
-            const value = parent.document.querySelector('#input').value;
-            parent.document.querySelector('#input').value = parseInt(value) + 1;
+            let parentInput = parent.document.querySelector('#input');
+            parentInput.value = parseInt(parentInput.value, 10) + 1;
         }
     </script>
 </head>

@@ -122,7 +122,7 @@
                         <a href="https://www.jquery123.com/contents/">.contents()</a>
                     </td>
                     <td>返回被选元素的所有直接子元素（包含文本和注释节点）</td>
-                    <td>$('div').contents().filter('em').wrap('&lt;b/&gt;')</td>
+                    <td>$('div').contents().filter('em').wrap('&lt;b&gt;&lt;/b&gt;')</td>
                 </tr>
                 <tr>
                     <td>
@@ -198,8 +198,8 @@
     </div>
 </section>
 
-<section class="code-wrap" id="jquery-end">
-    <div class="css-live-wrap w33p">
+<section class="code-wrap">
+    <div class="css-live-wrap w40p">
         <div class="caption">end()</div>
         <div class="div1 centered">
             <div class="div2 centered">
@@ -241,7 +241,7 @@
             border: 1px solid black;
         }
     </style>
-    <script class="code w67p" contenteditable="true">
+    <script class="code w60p" contenteditable="true">
         /*  https://www.cnblogs.com/MnCu8261/p/6046532.html
             http://www.jb51.net/article/69466.htm
             end() 方法能够回到最近的一个"破坏性"操作之前，即将匹配的元素列表变为前一次的状态，如果没有破坏性操作将返回一个空集。

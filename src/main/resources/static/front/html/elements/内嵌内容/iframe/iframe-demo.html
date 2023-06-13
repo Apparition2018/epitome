@@ -75,9 +75,9 @@
     </div>
     <script class="code w60p" contenteditable="true">
         function childPlus() {
-            let child = document.getElementById('child').contentWindow;
-            const value = child.document.querySelector('input').value;
-            child.document.querySelector('input').value = parseInt(value) + 1 + "";
+            const child = document.getElementById('child').contentWindow;
+            const childInput = child.document.querySelector('input');
+            childInput.value = parseInt(childInput.value, 10) + 1 + "";
         }
     </script>
 </section>
@@ -94,8 +94,9 @@
     </div>
     <script class="code w60p" contenteditable="true">
         function child2Plus() {
-            const value = $('#child2').contents().find('input')[0].value;
-            $('#child2').contents().find('input')[0].value = parseInt(value) + 1;
+            let childInput = $('#child2').contents().find('input')[0];
+            // let childInput = $('input', $('#child2').contents())[0];
+            childInput.value = parseInt(childInput.value, 10) + 1;
         }
     </script>
 </section>

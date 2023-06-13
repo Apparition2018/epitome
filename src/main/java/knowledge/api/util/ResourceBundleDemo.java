@@ -3,8 +3,11 @@ package knowledge.api.util;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
+import static l.demo.Demo.p;
+
 /**
- * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/ResourceBundle.html">ResourceBundle</a>
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/ResourceBundle.html">ResourceBundle</a><br/>
+ * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/PropertyResourceBundle.html">PropertyResourceBundle</a>
  * <pre>
  * 资源包包含特定于语言环境的对象
  * 当程序需要一个特定于语言环境的资源时（如 String），程序可以从适合当前用户语言环境的资源包中加载它。
@@ -25,17 +28,17 @@ public class ResourceBundleDemo {
 
         // String	                getString(String key)
         // 从此资源包或它的某个父包中获取给定键的字符串
-        System.out.println("driver = " + bundle.getString("jdbc.driver"));
-        System.out.println("url = " + bundle.getString("jdbc.url"));
-        System.out.println("username = " + bundle.getString("jdbc.username"));
-        System.out.println("password = " + bundle.getString("jdbc.password"));
+        p("driver = " + bundle.getString("jdbc.driver"));
+        p("url = " + bundle.getString("jdbc.url"));
+        p("username = " + bundle.getString("jdbc.username"));
+        p("password = " + bundle.getString("jdbc.password"));
 
         // abstract  Enumeration<String>	getKeys()
         // 返回键的枚举
         Enumeration<String> keys = bundle.getKeys();
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
-            System.out.println(key + " = " + bundle.getString(key));
+            p(key + " = " + bundle.getString(key));
         }
     }
 }

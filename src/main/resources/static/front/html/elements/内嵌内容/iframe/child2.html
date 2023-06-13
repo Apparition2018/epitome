@@ -6,8 +6,8 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script defer type="text/javascript">
         function parentPlus() {
-            const value = $('#input2', parent.document)[0].value;
-            $('#input2', parent.document)[0].value = parseInt(value) + 1;
+            let parentInput = $('#input2', parent.document)[0];
+            parentInput.value = parseInt(parentInput.value, 10) + 1;
         }
     </script>
 </head>

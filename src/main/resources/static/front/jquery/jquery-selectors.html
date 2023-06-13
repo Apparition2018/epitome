@@ -7,6 +7,8 @@
     <base target="_blank">
     <title>选择器 | jQuery</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../public/js/tooltip.js"></script>
 </head>
 <body>
 <section class="code-wrap" style="height: 2000px">
@@ -76,7 +78,7 @@
                         <a href="https://www.jquery123.com/child-selector/">parent > child</a>
                     </td>
                     <td>child selector</td>
-                    <td>指定"cparent"c元素中指定的"child"的直接子</td>
+                    <td>指定"parent"元素中指定的"child"的直接子元素</td>
                     <td></td>
                 </tr>
                 <tr>
@@ -496,8 +498,6 @@
             </table>
         </div>
     </div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../../public/js/tooltip.js"></script>
     <script>
         $(function () {
             $('#selectors-target').tooltip(['例如，给定的 URI http://example.com/#foo，$("p:target")，将选择&lt;p id="foo"&gt;元素']);
@@ -518,6 +518,42 @@
                     "3.隐藏元素上做动画，元素被认为是可见的，直到动画结束。"
                 ]
             ]);
+        })
+    </script>
+</section>
+
+<section class="code-wrap h250">
+    <div class="css-live-wrap">
+        <div class="caption">父子</div>
+        <div class="div1 centered">
+            <div class="div2 centered">
+                <div class="div3 centered">
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .div1 {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            background: lightblue;
+        }
+
+        .div2 {
+            width: 75px;
+            height: 75px;
+            border: 1px solid black;
+            background: lightgreen;
+        }
+    </style>
+    <script class="code" contenteditable="true">
+        $(function () {
+            // $("父 子")
+            console.log($(".div1 .div2"))   // 1，查找 div1 的子元素 div2
+            // $("子", "父")
+            console.log($(".div2", ".div1"))// 1，查找 div1 的子元素 div2
+            console.log($(".div1,.div2"))   // 2，查找 div1 和 div2
         })
     </script>
 </section>
