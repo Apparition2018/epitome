@@ -110,9 +110,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>parseInt()</td>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt">parseInt(string, radix)</a>
+                    </td>
                     <td>解析一个字符串参数并返回一个指定基数的整数，
-                        <br/>应该总是指定基数
+                        <br/>应该总是指定 radix，否则有些浏览器会把以0开头的数字，使用八进制
                     </td>
                     <td>parseInt(15.99, 10); // 15
                         <br/>parseInt(15 * 3, 10); // 45

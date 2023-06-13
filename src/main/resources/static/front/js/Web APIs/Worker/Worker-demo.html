@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
 <body>
-<!-- https://www.w3school.com.cn/html/html5_webworkers.asp -->
-<!-- https://www.cnblogs.com/flash3d/archive/2014/05/08/3715600.html -->
-<!-- https://www.xuanfengge.com/js-realizes-precise-countdown.html -->
-<section class="code-wrap h900">
+<section class="code-wrap h1000">
     <div class="css-live-wrap w33p">
         <div class="caption">秒表</div>
-        <div class="caption">利用 Web Worker 实现</div>
+        <div class="caption">
+            利用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API">Web Worker</a> 实现
+        </div>
         <div class="centered" id="eg1">
             <div>
                 <p>
@@ -63,6 +62,10 @@
         }
     </style>
     <script class="code w67p" contenteditable="true">
+        /*  https://www.w3school.com.cn/html/html5_webworkers.asp
+            解决 setInterval 计时器不准的问题：https://www.cnblogs.com/flash3d/archive/2014/05/08/3715600.html
+            js 实现活动精确倒计时：https://www.xuanfengge.com/js-realizes-precise-countdown.html */
+
         let worker;
         let timeFlag = false;
         let data = {};
@@ -102,11 +105,11 @@
         function print() {
             if (millisecond) {
                 let textNode = document.createTextNode(timeText);
-                let docfrag = document.createDocumentFragment();
+                let documentFragment = document.createDocumentFragment();
                 let output = document.createElement('output');
                 output.appendChild(textNode);
-                docfrag.appendChild(output);
-                document.querySelector('#timePrint p').appendChild(docfrag);
+                documentFragment.appendChild(output);
+                document.querySelector('#timePrint p').appendChild(documentFragment);
             }
         }
 
@@ -119,7 +122,6 @@
     </script>
 </section>
 
-<!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers -->
 <!-- https://www.cnblogs.com/peakleo/p/6218823.html -->
 <!-- https://www.cnblogs.com/wmhuang/p/6913468.html -->
 <section class="code-wrap h200">

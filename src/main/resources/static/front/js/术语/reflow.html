@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reflow</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap w33p">
+        <div class="caption">reflow (回流/重排/重新渲染)</div>
+        <div class="caption">
+            <a href="https://developers.google.com/speed/docs/insights/browser-reflow?hl=zh-cn">尽可能减少浏览器重排</a>
+        </div>
+        <div class="centered">
+            <img src="https://developers.google.com/static/speed/images/reflow-chart.png?hl=zh-cn" alt="reflow time by browser">
+        </div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        /*  准则：
+            1. 减少不必要的 DOM 深度。在 DOM 树中的一个级别进行更改可能会致使该树的所有级别（上至根节点，下至所修改节点的子级）都随之变化。
+            2. 尽可能减少 CSS 规则的数量，并移除未使用的 CSS 规则。
+            3. 如果您想进行复杂的渲染更改（例如动画），请在流程外执行此操作。您可以使用 position-absolute 或 position-fixed 来实现此目的。
+            4. 避免使用不必要且复杂的 CSS 选择器（尤其是后代选择器），因为此类选择器需要耗用更多的 CPU 处理能力来执行选择器匹配。
+
+            优化：
+            1. 使用 DocumentFragment 操作 DOM，@see DocumentFragment-demo.html
+            2. 优化节点修改，使用 cloneNode 在外部更新节点然后再通过 replace 与原始节点互换，@see Node-demo.html
+            3. 优化节点修改，先 display: none 隐藏元素，然后进行所有的操作，最后再显示回来。只会触发一次 reflow
+            4. 动态改变样式时，通过改变元素的 className 或 style.cssText 来改变样式。只会触发一次 reflow
+         */
+    </script>
+</section>
+</body>
+</html>

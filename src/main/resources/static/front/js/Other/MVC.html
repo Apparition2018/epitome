@@ -34,7 +34,8 @@
                         return localStorage.setItem(key, JSON.stringify(data));
                     } else {
                         const storeData = localStorage.getItem(key);
-                        return (storeData && JSON.parse(storeData)) || []; // 这里一定要设置初始值为 []
+                        // 这里一定要设置初始值为 []
+                        return (storeData && JSON.parse(storeData)) || [];
                     }
                 }
             };
@@ -70,17 +71,20 @@
                         this.add()
                     }, false)
 
-                    this.todoList.addEventListener('click', (item) => { // 事件委托，优化性能
+                    // 事件委托，优化性能
+                    this.todoList.addEventListener('click', (item) => {
                         this.remove(item)
                     }, false)
                 },
 
                 // 这里勉强抽象成一个视图吧!!!
                 view() {
-                    let fragment = document.createDocumentFragment()    // 减少回流次数
+                    // 减少回流次数
+                    let fragment = document.createDocumentFragment()
                     fragment = ''
 
-                    for (let i = 0; i < this.todos.length; i++) { // 一次性DOM节点生成
+                    // 一次性DOM节点生成
+                    for (let i = 0; i < this.todos.length; i++) {
                         // 这里使用拼接字符串代替视图的模板,
                         // *******注意模板并不是一个视图,模板是由视图定义配置出来的,并被其管理着*******
                         // 模板是用一种声明的方式指定部分甚至所有的视图对象

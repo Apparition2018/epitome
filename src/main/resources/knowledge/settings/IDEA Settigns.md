@@ -67,17 +67,16 @@
     2. Java → JavaDoc
         2.1 Other → Do not wrap one line comments 勾选
     3. Java → Code Generation → Comment Code
+       HTML/JavaScript/XML → Code Generation → Comments
+       Style Sheets → CSS/Less/Sass/SCSS → Other → Comments
         3.1 Line comment at first column 取消勾选
         3.2 Add a space at line comment start 勾选
         3.3 Add spaces around block comments 勾选
-    4. HTML/JavaScript/XML → Code Generation → Comments
-        4.1 Line comment at first column 取消勾选
-        4.2 Add spaces around block comments 勾选
-    5. Style Sheets → CSS/Less/Sass/SCSS → Other → Comments
-        5.1 Line comment at first column 取消勾选
-        5.2 Add a space at line comment start 勾选
-        5.3 Add spaces around block comments 勾选
-    6. Markdown → Tabs and Indents 全部设为0
+    4. Style Sheets → CSS/Less/SCSS → Other
+        4.1 Keep single-line blocks 勾选
+    5. HTML → Other
+        5.1 Wrap text 取消勾选
+    6. Markdown → Blank Lines → 全部设为0
 ---
 ## Inspections (-g)
     1. Settings → Editor → Inspections

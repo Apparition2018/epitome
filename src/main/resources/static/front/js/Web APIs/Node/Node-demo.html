@@ -399,19 +399,26 @@
                     <th style="width: 50%">textContent</th>
                 </tr>
                 <tr>
-                    <td>不会</td>
+                    <td>只获取展示给人看的元素</td>
                     <td>textContent 会获取所有元素的内容，包括 &lt;script&gt; 和 &lt;style&gt; 元素</td>
                 </tr>
                 <tr>
-                    <td>innerText 受 CSS 样式的影响，会触发 reflow</td>
-                    <td>不会</td>
+                    <td>innerText 受 CSS 样式的影响，并且不会返回隐藏元素的文本</td>
+                    <td>会返回节点中的每一个元素</td>
                 </tr>
                 <tr>
-                    <td>innerText 受 CSS 样式的影响，不会返回隐藏元素的文本</td>
-                    <td>会</td>
+                    <td>
+                        innerText 受 CSS 样式的影响，会触发回流
+                        (<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Reflow">reflow</a>)
+                        以确保是最新的计算样式
+                    </td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td>在小于等于 IE11 中对 innerText 进行修改， 不仅会移除当前元素的子节点，而且还会永久性地破坏所有后代文本节点（所以不可能再次将节点再次插入到任何其他元素或同一元素中）???
+                    <td>
+                        在 <= IE11 中对 innerText 进行修改，
+                        不仅会移除当前元素的子节点，而且还会永久性地破坏所有后代文本节点。
+                        在之后不可能再次将节点再次插入到任何其他元素或同一元素中。
                     </td>
                     <td>在节点上设置 textContent 属性的话，会删除它的所有子节点，并替换为一个具有给定值的文本节点</td>
                 </tr>
@@ -516,15 +523,15 @@
 
             const ul = document.querySelector('.insert ul');
 
-            /* 创建元素节点 */
+            // 创建元素节点
             const liuBei = document.createElement('li');
-            /* 创建文本节点 */
+            // 创建文本节点
             const newContent = document.createTextNode('刘备');
             liuBei.appendChild(newContent);
-            /* 创建 Attr 节点 */
+            // 创建 attr 节点
             const att = document.createAttribute('class');
             att.nodeValue = 'active';
-            /* 向元素中添加指定的属性节点 */
+            // 向元素中添加指定的属性节点
             liuBei.setAttributeNode(att);
 
             if (e.textContent === 'insertBefore 刘备') {
@@ -536,12 +543,12 @@
     </script>
 </section>
 
-<!--前端性能优化指南：https://cnodejs.org/topic/55e31bd6898f6bdc7e5551ac
-    https://developer.mozilla.org/zh-CN/docs/Web/API/Node/cloneNode -->
 <section class="code-wrap h500">
     <div class="css-live-wrap w40p">
-        <div class="caption">cloneNode() &amp; replaceChild() &amp; appendChild() &amp; removeChild()</div>
-        <div class="caption">优化节点修改，使用 cloneNode 在外部更新节点然后再通过 replaceChild 与原始节点互换</div>
+        <div class="caption">
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/cloneNode">cloneNode()</a>
+            &amp; replaceChild() &amp; appendChild() &amp; removeChild()</div>
+        <div class="caption">优化节点修改，使用 cloneNode 在外部更新节点然后再通过 replace 与原始节点互换</div>
         <div class="clone-node centered">
             <div>
                 <ul class="origin"></ul>
@@ -642,7 +649,7 @@
 
         function remove() {
             const origin = document.getElementsByClassName('origin')[0];
-            /* 返回包含指定节点的子节点的集合，该集合为即时更新的集合 */
+            // 返回包含指定节点的子节点的集合，该集合为即时更新的集合
             const children = origin.childNodes;
             for (let i = children.length - 1; i >= 0; i--) {
                 origin.removeChild(children[i]);

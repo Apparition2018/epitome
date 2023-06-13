@@ -1,9 +1,13 @@
 package knowledge.api.lang.class_;
 
+import cn.hutool.core.util.StrUtil;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.ClassUtils;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -30,9 +34,7 @@ import java.util.Objects;
  */
 public class ClassLoaderDemo extends Demo {
 
-    /**
-     * 获得 ClassLoader 的三种途径
-     */
+    /** 获得 ClassLoader 的三种途径 */
     @Test
     public void getClassLoader() {
         // 使用当前类
@@ -51,14 +53,37 @@ public class ClassLoaderDemo extends Demo {
 
     /**
      * <pre>
-     * InputStream          getResourceAsStream(String name)        返回读取指定资源的输入流
+     * InputStream          {@link Class#getResourceAsStream(String) Class.getResourceAsStream(String name)}    查找具有给定名称的资源
+     * URL                  {@link Class#getResource(String) Class.getResource(String name)}    查找具有给定名称的资源
      * static InputStream   getSystemResourceAsStream(String name)  从用来加载类的搜索路径打开具有指定名称的资源，以读取该资源
      * </pre>
      */
     @Test
-    public void getSystemResourceAsStream() {
-        InputStream is1 = ClassLoaderDemo.class.getResourceAsStream(DEMO_FILE_PATH);
-        InputStream is2 = ClassLoader.getSystemResourceAsStream(DEMO_FILE_PATH);
-        p(Objects.equals(is1, is2));
+    public void getSystemResourceAsStream() throws IOException {
+        Class<ClassLoaderDemo> clazz = ClassLoaderDemo.class;
+        final String extension = ".class";
+
+        String name = this.getClass().getSimpleName() + ".class";
+        p(name);                    // ClassLoaderDemo.class
+        // 相对路径（相对于类路径）
+        try (InputStream is = clazz.getResourceAsStream(name)) {
+            p(Objects.requireNonNull(is).available());
+            URL url = clazz.getResource(name);
+            p(url);
+        }
+
+        String name2 = ClassUtils.convertClassNameToResourcePath(this.getClass().getName()) + extension;
+        p(StrUtil.SLASH + name2);   // /knowledge/api/lang/class_/ClassLoaderDemo.class
+        // 绝对路径
+        try (InputStream is = clazz.getResourceAsStream(StrUtil.SLASH + name2)) {
+            p(Objects.requireNonNull(is).available());
+            URL url = clazz.getResource(StrUtil.SLASH + name2);
+            p(url);
+        }
+
+        p(name2);                   // knowledge/api/lang/class_/ClassLoaderDemo.class
+        // 相对路径（相对 classpath）
+        InputStream is = ClassLoader.getSystemResourceAsStream(name2);
+        p(Objects.requireNonNull(is).available());
     }
 }
