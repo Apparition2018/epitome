@@ -9,44 +9,62 @@
 </head>
 <body>
 <section class="code-wrap h500">
-    <div class="css-live-wrap">
-        <div class="caption">最经典的清除浮动方法</div>
-        <div class="centered" id="eg1">
-            <div class="box1 clearfix" style="background-color: palevioletred;">
-                <div class="a" style="background-color: red;"></div>
-                <div class="b" style="background-color: yellow;"></div>
+    <div class="css-live-wrap w60p">
+        <div class="caption">
+            <a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Floats">浮动</a>
+        </div>
+        <div class="centered" id="eg2">
+            <h1>Simple float example</h1>
+            <div class="wrapper">
+                <div class="box">Float</div>
+                <p class="special">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. </p>
             </div>
-            <div class="box2" style="background-color: aquamarine;"></div>
+            <p>Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p>
+            <p>Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus tristique elit dolor, sed pretium metus suscipit vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu urna eget velit cursus viverra quis vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
         </div>
     </div>
-    <style class="code" contenteditable="true">
-        .box1 {
-            width: 200px
+    <style>
+        #eg2 {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            font: .9em/1.2 Arial, Helvetica, sans-serif;
         }
 
-        .box2 {
-            width: 200px;
-            height: 200px;
+        .wrapper {
+            background-color: rgb(79, 185, 227);
+            padding: 10px;
+            color: #fff;
         }
 
-        .a,
-        .b {
-            width: 50px;
-            height: 50px;
+        .box {
             float: left;
+            margin: 15px;
+            width: 150px;
+            height: 100px;
+            border-radius: 5px;
+            background-color: rgb(207, 232, 220);
+            padding: 1em;
         }
-
-        /* :after 伪元素，在元素内容的最后面插入生成内容。这个伪元素默认是行内元素 */
-        .clearfix:after {
-            content: ' ';
-            display: table;
+    </style>
+    <style class="code w40p" contenteditable="true">
+        /* 方案一：先向包含浮动内容及其本身的盒子后方插入一些生成的内容，
+            并将生成的内容清除浮动 */
+        .wrapper::after {
+            content: "";
+            display: block;
             clear: both;
         }
 
-        .clearfix {
-            /* 在IE6中触发hasLayout */
-            zoom: 1;
-        }
+        /* 方案二：创建 BFC */
+        /* .wrapper { */
+        /*     overflow: auto; */
+        /* } */
+
+        /* 方案san：创建 BFC，较为现代的方案 */
+        /* .wrapper { */
+        /*     overflow: flow-root; */
+        /* } */
     </style>
 </section>
 </body>

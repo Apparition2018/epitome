@@ -1,82 +1,19 @@
 前端性能优化指南：https://cnodejs.org/topic/55e31bd6898f6bdc7e5551ac
 前端：
 	JS
-	3. 使用应用名作为全局变量的命名空间
-		var myAppName = {
-			settings: {
-				settingA: true;
-				...
-			}
-		}
 	6. 函数调用不要传输太多参数，可读性差。预先构建一个对象作为参数
 		function greet(user) {}
 			greet({
 				name: "Bob",
 				gender: "male"
-		})
-	7. 把this映射为其它变量
-		如：var _self = this;
-	18. 不直接操作NodeList，将其转换成静态数组后再使用
-		如：现代浏览器：	Array.prototype.slice.call()
-			IE:				逐个拷贝到新数组
+		    })
 	24. 使脚本尽可能少地运行，或者不运行(Be lazy)
-		1) 短路表达式应用：如 a && b || c
 		2) 基于事件去写相应的处理方法
 		3) 惰性函数
-	25. 流控制
-		1)在if语句中，将经常会发生的条件，放在靠上的位置
-		2)if的条件为连续的区间时，可以使用二分法的方式来拆分
-		3)较多离散值的判断，可以使用switch来替代
-		4)使用数组查询的方式
-		5)要注意隐式的类型转换
-		6)小心递归　
-	26. 循环
-		var i = arr.length;
-		while (i--) { }
-	27. new Function(script)() 代替 eval(script);
-		(function() { eval(script) }()) 代替 eval(script)
-	28.
 
 	jQuery
-	1. data-*
 	2. 缓存选择器结果
 		如：var $start = $(".start");
-
-	CSS
-	1. box-sizing: border-box;
-	2. position定位
-	3. 给一个样式表里维护多个样式区域添加注释
-	4. 清除浮动 clearfix  https://blog.csdn.net/FE_dev/article/details/68954481
-	5. 水平、垂直居中
-		.class {
-			width: 100px;
-			height: 100px;
-			position: absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-			right: 0;
-			margin: 0;
-		}
-	6. @font-face
-	7. 宽度分离：box-sizing 搞不定 margin
-	8. 如果值为若干单词，要加引号
-		如：p {font-family: "san serif";}
-
-	html
-	1. 始终为属性值加引号
-		class="clearfix"
-	2. 请确保将 HTML heading 标签只用于标题。搜索引擎使用标题为您的网页的结构和内容编制索引。
-	3. 条件注释（IE）
-		<!--[if IE 8]>
-			... some html here ...
-		<![endif]-->
-	4. <a> 链接最后应始终添加正斜杠"/"。如果不加，服务器会产生两次http请求。
-		<a href="http://www.w3school.com.cn/html/"></a>
-	5. <img> 始终添加 alt 属性
-	6. 布局标签 header nav section footer article aside details summary
-
-	只对表格数据用table标签
 
 
 

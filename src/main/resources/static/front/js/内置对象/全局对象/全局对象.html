@@ -82,7 +82,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>eval()</td>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval">eval()</a>
+                    </td>
                     <td>将传入的字符串当做 JavaScript 代码进行执行
                         <br/>返回最后一个表达式的值
                     </td>
@@ -139,7 +141,7 @@
 
         // 方法一
         x === undefined; // true
-        y === undefined; // ReferenceError: x is not defined
+        // y === undefined; // ReferenceError: y is not defined
 
         // 方法二
         typeof x === 'undefined'; // true
@@ -147,7 +149,7 @@
 
         // 方法三
         x === void 0; // true
-        y === void 0; // ReferenceError: x is not defined
+        // y === void 0; // ReferenceError: y is not defined
     </script>
 </section>
 
@@ -158,15 +160,27 @@
         </div>
     </div>
     <script class="code w67p" contenteditable="true">
-        function test() {
-            const x = 2, y = 4;
-            eval('x + y');      // 6，直接调用，使用本地作用域
-            const geval = eval; // 将 eval 赋给一个引用
-            geval('x + y');     // ReferenceError: x is not defined，间接调用，使用全局作用域
-            (0, eval)('x + y'); // 另一个间接调用的例子
-        }
+        (function (x, y) {
+            console.log(eval('x + y'));     // 6，直接调用，使用本地作用域
 
-        // ps: eval() 是一个危险的函数， 他执行的代码拥有着执行者的权利
+            const geval = eval;             // 等价于在全局作用域调用
+            console.log(geval('x + y'));    // ReferenceError: y is not defined，间接调用，使用全局作用域
+
+            (0, eval)('x + y');             // 另一个间接调用的例子
+        })(2, 4)
+    </script>
+</section>
+
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#never_use_eval!">永远不要使用 eval！</a>用 Function 等其它方法代替
+        </div>
+        <div class="caption">eval() 是一个危险的函数，它使用与调用者相同的权限执行代码</div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w67p" contenteditable="true">
     </script>
 </section>
 </body>

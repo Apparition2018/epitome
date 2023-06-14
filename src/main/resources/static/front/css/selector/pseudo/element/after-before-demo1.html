@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<!--https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements
-    https://www.cnblogs.com/laden666666/p/6089880.html 6.做一些效果
-
-    ::before 和 ::after 匹配一个虚拟元素，主要被用于为当前元素增加装饰性内容的
-    他显示的内容是其自身的 content 属性，默认是内联元素
-    ::after 和 ::before 是虚拟节点，而不是正在的节点，在 document 里面找不到对应 Node 对象 -->
+<!-- https://www.cnblogs.com/laden666666/p/6089880.html -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>after-before-demo1</title>
     <link rel="stylesheet" href="../../../../../public/css/demo.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -18,7 +14,7 @@
 <body>
 <section class="code-wrap h200">
     <div class="css-live-wrap w40p">
-        <div class="caption">font-awesome图标</div>
+        <div class="caption">font-awesome 图标</div>
         <div class="centered">
             <span class="font-awesome"></span>
         </div>
@@ -36,13 +32,14 @@
 
 <section class="code-wrap h350">
     <div class="css-live-wrap w40p">
-        <div class="caption">阿里 iconfont 图标</div>
+        <div class="caption">
+            阿里 <a href="https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code">iconfont</a> 图标
+        </div>
         <div class="centered">
             <span class="iconfont">&#xe72a;</span>
         </div>
     </div>
     <style class="code w60p" contenteditable="true">
-        /* http://iconfont.cn/help/detail?spm=a313x.7781069.1998910419.15&helptype=code */
         @font-face {
             font-family: 'iconfont';
             src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
@@ -65,9 +62,12 @@
 <section class="code-wrap">
     <div class="css-live-wrap w40p">
         <div class="caption">大小不固定的图片居中</div>
-        <div class="caption">利用伪类、content: ""、height: 100%、vertical-align: middle实现</div>
+        <div class="caption">利用
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements">伪元素</a>
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/::after">::after</a>
+            实现</div>
         <div class="middle centered">
-            <img src="../../../../../public/img/other/heart.png"/>
+            <img src="../../../../../public/img/other/heart.png" alt="heart"/>
         </div>
     </div>
     <style class="code w60p" contenteditable="true">
@@ -97,7 +97,7 @@
 <section class="code-wrap h600">
     <div class="css-live-wrap w40p">
         <div class="caption">消除伪元素事件</div>
-        <div class="caption">使用pointer-events: none实现，</div>
+        <div class="caption">使用 pointer-events: none 实现</div>
         <div class="canc centered">
             <div></div>
         </div>
@@ -191,7 +191,7 @@
 
 <section class="code-wrap h350">
     <div class="css-live-wrap w40p">
-        <div class="caption">实现inline元素换行，替代&lt;br&gt;</div>
+        <div class="caption">实现 inline 元素换行，替代 &lt;br&gt;</div>
         <div class="br centered">
             <span>First Line</span>
             <span>Second Line</span>
