@@ -3,11 +3,12 @@
 2. 目的：快速开发高性能、高可靠性的网络服务器和客户端程序
 3. 优点：提供事件驱动的、异步的非阻塞的网络应用程序框架和工具
 ---
-## 参考网站
+## Reference
 1. [Netty.docs: Netty.docs: Home](https://netty.io/wiki/)
-2. [Netty入门之WebSocket初体验-慕课网](https://www.imooc.com/learn/941)
-3. [解锁网络编程之NIO的前世今生-慕课网](https://www.imooc.com/learn/1118)
-4. [通俗地讲，Netty 能做什么？](https://www.zhihu.com/question/24322387)
+2. [通俗地讲，Netty 能做什么？](https://www.zhihu.com/question/24322387)
+## 课程
+1. [Netty入门之WebSocket初体验-慕课网](https://www.imooc.com/learn/941)
+2. [解锁网络编程之NIO的前世今生-慕课网](https://www.imooc.com/learn/1118)
 ---
 ## 使用场景
 1. 高性能：游戏，大数据分布式计算

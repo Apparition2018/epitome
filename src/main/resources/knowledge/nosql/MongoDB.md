@@ -5,7 +5,6 @@
 ## Reference
 1. [MongoDB Documentation](https://www.mongodb.com/docs/)
 2. [MongoDB Manual](https://www.mongodb.com/docs/manual/)
----
 ## 课程
 1. [尚硅谷MongoDB入门基础教程](https://www.bilibili.com/video/BV18s411E78K/)
 2. [黑马程序员MongoDB基础入门到高级进阶](https://www.bilibili.com/video/BV1bJ411x7mq/)

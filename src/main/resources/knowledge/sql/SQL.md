@@ -9,14 +9,12 @@
 1. [SQL Fiddle](http://sqlfiddle.com/)
 2. [db<>fiddle](https://dbfiddle.uk)
 3. [Oracle Live SQL](https://livesql.oracle.com/apex/f?p=590:1000)
----
-## 慕课
+## 课程
 1. [数据库设计那些事](https://www.imooc.com/learn/117)
 2. [性能优化之MySQL优化](https://www.imooc.com/learn/194)
 3. [MySQL开发技巧（一）](https://www.imooc.com/learn/398)
 4. [MySQL开发技巧（二）](https://www.imooc.com/learn/427)
 5. [MySQL开发技巧（三）](https://www.imooc.com/learn/449)
----
 ## 问题
 1. [MySQL, SQL Server, Oracle 的区别](https://www.cnblogs.com/cherxu/p/6856262.html)
 2. [distinct 和 group by 的去重逻辑浅析](https://www.cnblogs.com/dancesir/p/7505730.html)

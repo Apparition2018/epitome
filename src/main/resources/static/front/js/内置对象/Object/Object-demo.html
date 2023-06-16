@@ -140,10 +140,12 @@
                     <td>Object.getPrototypeOf([1, 2, 3]) === Array.prototype; // ture</td>
                 </tr>
                 <tr>
-                    <td>Object.is()</td>
+                    <td>
+                        <a href="#">Object.is()</a>
+                    </td>
                     <td>判断两个值是否是相同的值</td>
                     <td>
-                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is#描述">相等规则</a>
+                        <a href="#Object.is" target="_self">== vs === vs Object.is()</a>
                     </td>
                 </tr>
                 <tr>
@@ -183,34 +185,10 @@
             </table>
         </div>
     </div>
-    <script>
-        const p1 = {};
-        Object.defineProperty(p1, 'name', {
-            value: '张三',
-            writable: true,
-            enumberable: true,
-            configurable: false
-        });
-
-        const p2 = {};
-        Object.defineProperties(p2, {
-            name: {
-                value: '张三',
-                writable: true,
-                enumberable: true,
-                configurable: false
-            },
-            age: {
-                value: 18,
-                configurable: true
-            }
-        });
-    </script>
 </section>
 
-
 <section class="code-wrap h200">
-    <div class="css-live-wrap w33p">
+    <div class="css-live-wrap w40p">
         <div class="caption">Object.prototype.__proto__ 的指向</div>
         <div class="caption">
             <a href="https://www.cnblogs.com/shuiyi/p/5305435.html">三张图搞懂 JS 的原型对象与原型链</a>
@@ -221,7 +199,7 @@
         <div class="__proto__ centered">
         </div>
     </div>
-    <script class="code w67p" contenteditable="true">
+    <script class="code w60p" contenteditable="true">
         // 指向构造器的原型对象
         const arr1 = [1, 2, 3];
         arr1.__proto__ === Array.prototype; // true
@@ -234,7 +212,7 @@
 </section>
 
 <section class="code-wrap">
-    <div class="css-live-wrap w33p">
+    <div class="css-live-wrap w40p">
         <div class="caption">Object.defineProperty()</div>
         <div class="caption">
             <a href="https://blog.csdn.net/kzj0916/article/details/108298865">实现 vue 数据响应式</a>
@@ -242,7 +220,7 @@
         <div class="centered">
         </div>
     </div>
-    <script class="code w67p" contenteditable="true">
+    <script class="code w60p" contenteditable="true">
         const o = {};
 
         o.a = 1;
@@ -263,6 +241,17 @@
             configurable: false
         })
     </script>
+</section>
+
+<section class="code-wrap h850" id="Object.is">
+    <div class="css-live-wrap w100p">
+        <div class="caption">
+            <a href="https://www.jstips.co/en/javascript/why-you-should-use-Object.is()-in-equality-comparison/">== vs === vs Object.is()</a>
+        </div>
+        <div class="centered">
+            <img src="https://i.postimg.cc/tTVJWkDZ/pCyqkLc.png" alt="differences of operators in equality comparisons javascript" />
+        </div>
+    </div>
 </section>
 </body>
 </html>

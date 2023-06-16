@@ -7,7 +7,6 @@
 3. [Linux man pages online](https://linux.die.net/man/)
 4. [Linux man pages online](https://man7.org/linux/man-pages/)
 5. [Linux/Basic commands](https://en.wikiversity.org/wiki/Linux/Basic_commands)
----
 ## 问题
 1. [Linux 常见命令缩写](https://www.cnblogs.com/h2mm/p/6691309.html)
 2. [Linux 下命令行 curl 的 10 种常见用法示例](https://www.cnblogs.com/zxqblogrecord/p/8900219.html)

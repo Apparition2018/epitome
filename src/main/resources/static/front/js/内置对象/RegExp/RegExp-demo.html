@@ -47,8 +47,6 @@
             </table>
         </div>
     </div>
-    <style class="code w0" contenteditable="true">
-    </style>
 </section>
 
 <section class="code-wrap h600">
@@ -186,11 +184,11 @@
         // x(?!y) 先行否定断言： x 没有被 y 紧随时匹配 x
         "aaa aab aac bba bbb bbc cca ccb ccc".match(/\b\w{2}(?!a)/g); // ["aa", "aa", "bb", "bb", "cc", "cc"]
 
-		// (?<=y)x 后行断言： x 跟随 y 的情况下匹配 x
-		"aaa aab aac bba bbb bbc cca ccb ccc".match(/(?<=a)\w{2}\b/g); // ['aa', 'ab', 'ac']
+        // (?<=y)x 后行断言： x 跟随 y 的情况下匹配 x
+        "aaa aab aac bba bbb bbc cca ccb ccc".match(/(?<=a)\w{2}\b/g); // ['aa', 'ab', 'ac']
 
-		// (?<!y)x 后行否定断言： x 不跟随 y 时匹配 x
-		"aaa aab aac bba bbb bbc cca ccb ccc".match(/(?<!a)\w{2}\b/g); // ['ba', 'bb', 'bc', 'ca', 'cb', 'cc']
+        // (?<!y)x 后行否定断言： x 不跟随 y 时匹配 x
+        "aaa aab aac bba bbb bbc cca ccb ccc".match(/(?<!a)\w{2}\b/g); // ['ba', 'bb', 'bc', 'ca', 'cb', 'cc']
     </script>
 </section>
 </body>

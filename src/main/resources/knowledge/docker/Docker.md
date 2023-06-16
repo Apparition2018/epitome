@@ -5,7 +5,6 @@
 1. [Docker Documentation](https://docs.docker.com/get-started/overview/)
 2. [RuoYi 应用容器部署](http://doc.ruoyi.vip/ruoyi-cloud/cloud/dokcer.html#%E5%BA%94%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2)
 3. [搭建和使用 Docker-腾讯云](https://cloud.tencent.com/document/product/213/46000)
----
 ## 课程
 1. [第一个docker化的java应用-慕课网](https://www.imooc.com/learn/824)
 2. [Docker入门教程-慕课网](https://www.imooc.com/learn/867)

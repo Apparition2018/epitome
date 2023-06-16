@@ -1,15 +1,16 @@
 # RESTful (Resource **Re**presentational **S**tate **T**ransfer)
 
 ---
-## 参考网站
-1. [SpringMVC数据绑定入门](https://www.imooc.com/learn/558) `第8章 知识点小扩展RESTful`
-2. [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
-3. [RESTful API 最佳实践](https://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
-4. [GitHub REST API](https://docs.github.com/en/rest)
-5. [RESTful API 设计最佳实践](https://www.oschina.net/translate/best-practices-for-a-pragmatic-restful-api)
-6. [RESTful API 登录设计](https://www.v2ex.com/t/118049)
-7. [WEB开发中，使用JSON-RPC好，还是RESTful API好？](https://www.zhihu.com/question/28570307/answer/541465581)
-8. [为什么很多后端写接口都不按照restful规范？](https://www.zhihu.com/question/438825740/answer/1692268189)
+## Reference
+1. [RESTful API 设计指南](https://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+2. [RESTful API 最佳实践](https://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
+3. [RESTful API 登录设计](https://www.v2ex.com/t/118049)
+## 课程
+1. [SpringMVC数据绑定入门-慕课网](https://www.imooc.com/learn/558) `第8章 知识点小扩展RESTful`
+2. [GitHub REST API](https://docs.github.com/en/rest)
+## 问题
+1. [WEB开发中，使用JSON-RPC好，还是RESTful API好？](https://www.zhihu.com/question/28570307/answer/541465581)
+2. [为什么很多后端写接口都不按照restful规范？](https://www.zhihu.com/question/438825740/answer/1692268189)
 ---
 ## 字面分解
 1. Resource (资源）：文本，图片，音频，服务 ...

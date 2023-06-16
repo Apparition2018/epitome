@@ -2,9 +2,10 @@
 ![ES6 思维导图](http://img1.mukewang.com/60abe37100010d0805000417.jpg)
 
 ---
-## 参考网站
+## Reference
 1. [ECMAScript2015~2020语法全解析](http://es.xiecheng.live/)
-2. [带你快速入坑ES6](https://www.imooc.com/learn/1246)
+2. [ES6 入门教程](https://es6.ruanyifeng.com/)
+3. [带你快速入坑ES6_ES6入门-慕课网](https://www.imooc.com/learn/1246)
 ---
 ## const
 1. 不允许重复声明
@@ -115,7 +116,7 @@ function myFreeze(obj) {
     obj2.showName(); // undefined
 ```
 ---
-## 解构赋值
+## [解构赋值](../../js/表达式和运算符/解构赋值.html)
 ```javascript
     // 对象解构赋值
     const course = {
@@ -167,6 +168,9 @@ function myFreeze(obj) {
         console.log(name, type);
     })
 ```
+---
+## [展开语法](../../js/表达式和运算符/展开语法.html)
+
 ---
 ## babel
 ```

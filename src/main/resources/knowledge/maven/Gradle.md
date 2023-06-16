@@ -2,12 +2,13 @@
 <img alt="主流构建工具" src="https://img.mukewang.com/6065f52d0001055212800720.jpg" width="500">
 
 ---
-## 参考网站
+## Reference
 1. [Gradle User Manual](https://docs.gradle.org/current/userguide/userguide.html)
 2. [新一代构建工具gradle-慕课网](https://www.imooc.com/learn/833)
-3. [配置镜像](https://www.cnblogs.com/junejs/p/12686834.html)
-4. [解决每次打开项目都要下载 gradle-xx-bin.zip](https://www.cnblogs.com/passedbylove/p/11232278.html)
-5. [配置 daemon 提高程序的编译速度](https://blog.csdn.net/changsimeng/article/details/62421202)
+## 问题
+1. [配置镜像](https://www.cnblogs.com/junejs/p/12686834.html)
+2. [解决每次打开项目都要下载 gradle-xx-bin.zip](https://www.cnblogs.com/passedbylove/p/11232278.html)
+3. [配置 daemon 提高程序的编译速度](https://blog.csdn.net/changsimeng/article/details/62421202)
 ---
 ## Groovy
 - 用于 Java 虚拟机的一种敏捷的动态语言
