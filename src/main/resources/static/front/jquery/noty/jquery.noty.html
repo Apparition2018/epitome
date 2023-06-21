@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
     <title>jquery.noty</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
 <body>
 <section class="code-wrap h300">
     <div class="css-live-wrap">
-        <div class="caption"><a href="https://ned.im/noty/v2/options.html" target="_blank">NOTY</a></div>
-        <div class="caption"><a href="https://www.cnblogs.com/lwme/p/noty-jquery-notification-plugin.html"
-                                target="_blank">NOTY</a></div>
+        <div class="caption"><a href="https://ned.im/noty/v2/">NOTY 2</a></div>
+        <div class="caption"><a href="https://ned.im/noty/#/">NOTY 3</a></div>
         <div class="centered noty demo-click">noty</div>
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery-noty/2.4.1/jquery.noty.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-noty/2.4.1/packaged/jquery.noty.packaged.min.js"></script>
     <script class="code" contenteditable="true">
         $(".noty").on('click', function () {
-            noty(
-                {
-                    text: "NOTY - a jquery notification library!",
-                    layout: "topRight",
-                    type: "information",
-                    progressBar: true,
-                    timeout: 3000
-                }
-            );
+            noty({
+                text: "NOTY - a jquery notification library!",
+                layout: "topRight",
+                type: "information",
+                timeout: 3000
+            });
         })
     </script>
 </section>

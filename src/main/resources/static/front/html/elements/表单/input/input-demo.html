@@ -20,7 +20,7 @@
     <div class="css-live-wrap w33p">
         <div class="caption"><a href="https://www.w3school.com.cn/tags/att_input_pattern.asp">pattern 属性</a></div>
         <div class="caption">适用于以下输入类型：text、search、url、tel、email、and password。</div>
-        <div class="centered" id="eg1">
+        <div class="centered">
             <form action="">
                 <p>
                     <input type="text" placeholder="信用卡" title="信用卡" pattern="[0-9]{13,16}" required/>
@@ -50,7 +50,8 @@
                 </p>
                 <!-- 大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间 -->
                 <p>
-                    <input type="text" placeholder="强密码" title="强密码" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$"/>
+                    <input type="text" placeholder="强密码" title="强密码"
+                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$"/>
                 </p>
                 <p>
                     <input type="text" placeholder="7个汉字或14个字符" title=""
@@ -79,15 +80,15 @@
 
 <section class="code-wrap h200">
     <div class="css-live-wrap w33p">
-        <div class="caption">onfocus="this.placeholder=''"</div>
-        <div class="caption">onblur="this.placeholder='请输入用户名'"</div>
-        <div class="centered" id="eg2">
-            <input type="text" id="account" placeholder="请输入用户名" title="" onfocus="this.placeholder=''"
-                   onblur="this.placeholder='请输入用户名'" autocomplete="off"/>
+        <div class="caption">number 控制范围</div>
+        <div class="centered">
+            <input type="number" placeholder="请输入数字（范围：10~100）" title="" style="width: 200px"
+                   onblur="if(value<10)value=10;if(value>100)value=100;" autocomplete="off"/>
         </div>
     </div>
     <code class="code w67p" contenteditable="true">
-        &lt;input type="text" placeholder="请输入用户名" onfocus="this.placeholder=''" onblur="this.placeholder='请输入用户名'"/&gt;
+        &lt;input type="number" placeholder="请输入数字（范围：10~100）"
+            onblur="if(value<10)value=10;if(value>100)value=100;"/&gt;
     </code>
 </section>
 </body>
