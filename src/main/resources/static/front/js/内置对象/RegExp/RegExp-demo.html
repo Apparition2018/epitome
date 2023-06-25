@@ -16,33 +16,37 @@
         <div class="caption">
             <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions">正则表达式</a>
         </div>
-        <div class="spec centered">
-            <table>
+        <div class="centered">
+            <table class="w800">
                 <tr>
-                    <td>字符类别（Character Classes）</td>
-                    <td>., \d, \w, \s ...</td>
-                </tr>
-                <tr>
-                    <td>字符集合（Character Sets）</td>
-                    <td>[xyz], [^xyz]</td>
-                </tr>
-                <tr>
-                    <td>边界（Boundaries）</td>
-                    <td>^, $, \b, \B</td>
-                </tr>
-                <tr>
-                    <td>分组（grouping）
-                        <br/>反向引用（back references）
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions/Assertions">断言（Assertions）</a>
                     </td>
-                    <td>(x), \n, (?:x)</td>
+                    <td>^, $, \b, \B, x(?=y), x(?!y), (?<=y)x, (?&lt;!y)x</td>
                 </tr>
                 <tr>
-                    <td>数量词（Quantifiers）</td>
-                    <td>x*, x+, x?, x(?=y), x(?!y), x|y, x{n,m} ...</td>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions/Character_classes">字符类（Character Classes）</a>
+                    </td>
+                    <td>., \d, \D, \w, \W, \s, \S, \t, \r, \n, \v, \f, [\b] ……</td>
                 </tr>
                 <tr>
-                    <td>断言（Assertions）</td>
-                    <td>x(?=y), x(?!y)</td>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions/Groups_and_backreferences">组和范围</a>
+                    </td>
+                    <td>x|y, (x), \n, (?&lt;Name&gt;x), (?:x)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions/Quantifiers">量词（Quantifiers）</a>
+                    </td>
+                    <td>x*, x+, x?, x{n,m} ...</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions">Unicode 属性转义（Unicode Property Escapes）</a>
+                    </td>
+                    <td></td>
                 </tr>
             </table>
         </div>
@@ -53,7 +57,7 @@
     <div class="css-live-wrap w100p">
         <div class="caption">exec():在一个指定字符串中执行一个搜索匹配。返回一个结果数组或 null。</div>
         <div class="caption">RegExp 属性</div>
-        <div class="brush centered">
+        <div class="centered">
             <table class="w1280">
                 <tr>
                     <th>对象</th>

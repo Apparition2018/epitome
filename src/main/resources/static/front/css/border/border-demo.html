@@ -47,7 +47,7 @@
         document.getElementsByTagName('select')[0].onchange = function () {
             const demo = document.getElementsByClassName('demo')[0];
             demo.textContent = '';
-            this.value === '10%' && (demo.textContent = "不支持百分比值") || (demo.style.borderWidth = this.value);
+            this.value === '10%' ? (demo.textContent = "不支持百分比值") : (demo.style.borderWidth = this.value);
         }
     </script>
 </section>

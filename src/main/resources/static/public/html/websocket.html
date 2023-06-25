@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>WebSocket</title>
+    <link rel="stylesheet" href="../css/demo.css">
 </head>
 <body>
 <form onsubmit="return false;">
@@ -16,24 +17,27 @@
     <textarea id="responseContent" class="w1024 h300"></textarea>
 </form>
 <script>
-    let socket;
+    let webSocket;
+    let timerID = 0;
     const textarea = document.getElementById('responseContent');
     if (!window.WebSocket) {
         window.WebSocket = window.MozWebSocket;
     }
     if (window.WebSocket) {
         console.log('websocket');
-        socket = new WebSocket("ws://localhost:8888/websocket");
-        socket.onmessage = function (event) {
+        webSocket = new WebSocket("ws://localhost:8888/websocket");
+        webSocket.onmessage = function (event) {
             console.log('onmessage');
             textarea.value += event.data + "\r\n";
         };
-        socket.onopen = function (event) {
+        webSocket.onopen = function (event) {
             console.log('onopen');
+            keepAlive();
             textarea.value = "您当前的浏览器支持 WebSocket，请进行后续操作\r\n";
         };
-        socket.onclose = function (event) {
+        webSocket.onclose = function (event) {
             console.log('onclose');
+            cancelKeepAlive();
             textarea.value = "";
             textarea.value = "WebSocket 连接已经关闭\r\n";
         }
@@ -45,7 +49,22 @@
         if (!window.WebSocket) {
             return;
         }
-        (socket.readyState === WebSocket.OPEN) && socket.send(message) || alert("WebSocket 连接没有建立成功");
+        webSocket.readyState === WebSocket.OPEN ? webSocket.send(message) : alert("WebSocket 连接没有建立成功");
+    }
+
+    /* Websocket 超时问题：https://www.jstips.co/zh_cn/javascript/working-with-websocket-timeout/ */
+    function keepAlive() {
+        let timeout = 20000;
+        if (webSocket.readyState === webSocket.OPEN) {
+            webSocket.send('');
+        }
+        timerID = setTimeout(keepAlive, timeout);
+    }
+
+    function cancelKeepAlive() {
+        if (timerID) {
+            clearTimeout(timerID);
+        }
     }
 </script>
 </body>

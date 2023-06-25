@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <base target="_blank">
     <title>input-demo</title>
     <link rel="stylesheet" href="../../../../../public/css/demo.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -18,63 +17,57 @@
 <body>
 <section class="code-wrap h600">
     <div class="css-live-wrap w33p">
-        <div class="caption"><a href="https://www.w3school.com.cn/tags/att_input_pattern.asp">pattern 属性</a></div>
+        <div class="caption"><a href="https://www.w3school.com.cn/tags/att_input_pattern.asp"
+                                target="_blank">pattern 属性</a></div>
         <div class="caption">适用于以下输入类型：text、search、url、tel、email、and password。</div>
         <div class="centered">
             <form action="">
+                <p><input type="text" placeholder="QQ" title="QQ 格式错误（5到11位数字组合）" pattern="[1-9][0-9]{4,10}" value="524986144"/></p>
                 <p>
-                    <input type="text" placeholder="信用卡" title="信用卡" pattern="[0-9]{13,16}" required/>
+                    <input type="text" placeholder="手机" title="手机号码格式错误"
+                           pattern="(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}"
+                           value="13425589294"/>
                 </p>
                 <p>
-                    <input type="text" placeholder="银联卡" title="银联卡" pattern="^62[0-5]\d{13,16}$"/>
+                    <input type="text" placeholder="大陆身份证" title="大陆身份证号码格式错误"
+                           pattern="([1-9]\d{7}((0\d)|(1[0-2]))(([012]\d)|3[0-1])\d{3})|([1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([012]\d)|3[0-1])((\d{4})|\d{3}[Xx]))"
+                           value="442000199010160716"/>
                 </p>
                 <p>
-                    <input type="text" placeholder="Visa" title="Visa" pattern="^4[0-9]{12}(?:[0-9]{3})?$"/>
+                    <input type="text" placeholder="香港身份证" title="香港身份证号码格式错误"
+                           pattern="[A-Z]{1,2}[0-9]{6,10}[0-9A-Z]" value="E8548440"/>
                 </p>
                 <p>
-                    <input type="text" placeholder="万事达" title="万事达" pattern="^5[1-5][0-9]{14}$"/>
+                    <input type="text" placeholder="澳门身份证" title="澳门身份证号码格式错误"
+                           pattern="[1|5|7][0-9]{6}[0-9A-Z]" value="52152998"/>
                 </p>
                 <p>
-                    <input type="text" placeholder="QQ" title="QQ" pattern="[1-9][0-9]{4,14}"/>
+                    <input type="text" placeholder="港澳通行证" title="港澳通行证号码格式错误"
+                           pattern="[A-Z]\d{6,10}(\w1)?" value="C03350016"/>
                 </p>
                 <p>
-                    <input type="text" placeholder="手机" title="手机"
-                           pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$"/>
+                    <input type="password" placeholder="密码" title="密码格式错误（6~10位，数字和大小写字母组合）"
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,10}" value="ABcd1234"/>
                 </p>
                 <p>
-                    <input type="text" placeholder="身份证" title="身份证" pattern="^([0-9]){7,18}(x|X)?$"/>
+                    <input type="text" placeholder="7个汉字或14个字符" title="7个汉字或14个字符"
+                           pattern="[\u4e00-\u9fa5]{1,7}$|^[\d\w]{1,14}" value="中国人"/>
                 </p>
-                <!-- 字母开头，长度在6~18之间，只能包含字母、数字和下划线 -->
-                <p>
-                    <input type="text" placeholder="密码" title="密码" pattern="^[a-zA-Z]\w{5,17}$"/>
-                </p>
-                <!-- 大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间 -->
-                <p>
-                    <input type="text" placeholder="强密码" title="强密码"
-                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$"/>
-                </p>
-                <p>
-                    <input type="text" placeholder="7个汉字或14个字符" title=""
-                           pattern="^[\u4e00-\u9fa5]{1,7}$|^[\dA-Za-z_]{1,14}$"/>
-                </p>
-                <p>
-                    <input type="submit" class="w100p"/>
-                </p>
+                <p><input type="submit" class="w100p"/></p>
             </form>
         </div>
     </div>
     <code class="code w67p" contenteditable="true">
-        &lt;input type="text" placeholder="信用卡" pattern="[0-9]{13,16}" /&gt;
-        &lt;input type="text" placeholder="银联卡" pattern="^62[0-5]\d{13,16}$" /&gt;
-        &lt;input type="text" placeholder="Visa" pattern="^4[0-9]{12}(?:[0-9]{3})?$" /&gt;
-        &lt;input type="text" placeholder="万事达" pattern="^5[1-5][0-9]{14}$" /&gt;
-        &lt;input type="text" placeholder="QQ" pattern="[1-9][0-9]{4,14}" /&gt;
+        &lt;input type="text" placeholder="QQ" pattern="[1-9][0-9]{4,10}" /&gt;
         &lt;input type="text" placeholder="手机"
-        pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" /&gt;
-        &lt;input type="text" placeholder="身份证" pattern="^([0-9]){7,18}(x|X)?$" /&gt;
-        &lt;input type="text" placeholder="密码" pattern="^[a-zA-Z]\w{5,17}$" /&gt;
-        &lt;input type="text" placeholder="强密码" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$" /&gt;
-        &lt;input type="text" placeholder="7个汉字或14个字符" pattern="^[\u4e00-\u9fa5]{1,7}$|^[\dA-Za-z_]{1,14}$" /&gt;
+            pattern="(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}" /&gt;
+        &lt;input type="text" placeholder="大陆身份证"
+            pattern="([1-9]\d{7}((0\d)|(1[0-2]))(([012]\d)|3[0-1])\d{3})|([1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([012]\d)|3[0-1])((\d{4})|\d{3}[Xx]))" /&gt;
+        &lt;input type="text" placeholder="香港身份证" pattern="[A-Z]{1,2}[0-9]{6,10}[0-9A-Z]" /&gt;
+        &lt;input type="text" placeholder="澳门身份证" pattern="[1|5|7][0-9]{6}[0-9A-Z]" /&gt;
+        &lt;input type="text" placeholder="港澳通行证" pattern="[A-Z]\d{6,10}(\w1)?" /&gt;
+        &lt;input type="password" placeholder="密码" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,10}" /&gt;
+        &lt;input type="text" placeholder="7个汉字或14个字符" pattern="[\u4e00-\u9fa5]{1,7}$|^[\d\w]{1,14}" /&gt;
     </code>
 </section>
 
@@ -88,7 +81,7 @@
     </div>
     <code class="code w67p" contenteditable="true">
         &lt;input type="number" placeholder="请输入数字（范围：10~100）"
-            onblur="if(value<10)value=10;if(value>100)value=100;"/&gt;
+        onblur="if(value<10)value=10;if(value>100)value=100;"/&gt;
     </code>
 </section>
 </body>

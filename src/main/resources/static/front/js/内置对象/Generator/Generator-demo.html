@@ -172,7 +172,7 @@
     </script>
 </section>
 
-<section class="code-wrap h300">
+<section class="code-wrap">
     <div class="css-live-wrap w40p">
         <div class="caption">
             <a href="https://es6.ruanyifeng.com/#docs/generator#Generator-与状态机">Generator 与状态机</a>
@@ -183,9 +183,11 @@
         // 不使用 Generator 写法
         let ticking = true;
         const clock = function () {
-            ticking && console.log('Tick!') || console.log('Tock!');
+            ticking ? console.log('Tick!') : console.log('Tock!');
             ticking = !ticking;
         }
+        clock(); // Tick!
+        clock(); // Tock!
 
         // 使用 Generator 写法
         const clock2 = function* () {
@@ -196,6 +198,9 @@
                 yield;
             }
         }
+        let clock2Yield = clock2();
+        clock2Yield.next(); // Tick!
+        clock2Yield.next(); // Tock!
     </script>
 </section>
 </body>

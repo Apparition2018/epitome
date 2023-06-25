@@ -42,7 +42,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/every">every()</a>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/every"
+                           target="_blank">every()</a>
                     </td>
                     <td>测试数组的所有元素是否都通过了指定函数的测试</td>
                     <td>
@@ -53,7 +54,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some">some()</a>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some"
+                           target="_blank">some()</a>
                     </td>
                     <td>测试是否至少有一个元素通过由提供的函数实现的测试</td>
                     <td>
@@ -244,7 +246,7 @@
 <section class="code-wrap h250">
     <div class="css-live-wrap w33p">
         <div class="caption">filter(callback(element[, index[, array]])[, thisArg])</div>
-        <div class="caption">thisArg 执行 callback 时的用于 this 的值</div>
+        <div class="caption">thisArg 执行 callback 时用作 this 的值</div>
         <div class="centered">
         </div>
     </div>
@@ -277,6 +279,33 @@
         // initialValue 作为第一次调用 callback函数时的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。
 
         [1, 2, 3, 4].reduce((acc, cur) => acc + cur, 0); // 0 + 1 + 2 + 3 + 4 = 10
+    </script>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap w33p">
+        <div class="caption">
+            <a href="https://www.jstips.co/zh_cn/javascript/break-continue-loop-functional/">some() 使用 return 实现 break 和 continue</a>
+        </div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        [1, 2, 3, 4].some(function (v, i) {
+            if (i === 1) {
+                // 相当于 continue
+                return false;
+            }
+            console.log(v);
+        });
+
+        [1, 2, 3, 4].some(function (v, i) {
+            if (i === 1) {
+                // 相当于 break
+                return true;
+            }
+            console.log(v);
+        });
     </script>
 </section>
 </body>
