@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>resize-demo</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
+</head>
+<body>
+<section class="code-wrap h300">
+    <div class="css-live-wrap">
+        <div class="caption">resize</div>
+        <div class="caption">需要先设置 overflow 属性</div>
+        <div class="resize centered">
+            RESIZE
+        </div>
+    </div>
+    <style class="code" contenteditable="true">
+        .resize {
+            width: 180px;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid black;
+            overflow: auto;
+            resize: both;
+        }
+    </style>
+</section>
+</body>
+</html>

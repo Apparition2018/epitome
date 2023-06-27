@@ -49,6 +49,7 @@
                 return ((index % 3) ? value : value + ',') + acc;
             })
         }
+
         formatMoney('1234567890'); // "1,234,567,890"
     </script>
 </section>
@@ -89,6 +90,60 @@
     </script>
 </section>
 
+<section class="code-wrap h150">
+    <div class="css-live-wrap w33p">
+        <div class="caption">一行代码生成 [0, 1, …, N-1] 数组</div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        // 方法一
+        Array.apply(null, {length: 10}).map(Function.call, Number);
+
+        // 方法二
+        Array.from(new Array(10), (val, index) => index);
+    </script>
+</section>
+
+<section class="code-wrap h200">
+    <div class="css-live-wrap w33p">
+        <div class="caption">
+            <a href="https://www.jstips.co/zh_cn/javascript/writing-a-single-method-for-arrays-and-a-single-element/">可以接受单个参数或数组的方法</a>，而不是分开写两个方法
+        </div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        function printUpperCase(words) {
+            // 利用 Array.concat 实现
+            const elements = [].concat(words || []);
+            for (let i = 0; i < elements.length; i++) {
+                console.log(elements[i].toUpperCase());
+            }
+        }
+
+        printUpperCase("a");
+        printUpperCase(["a", "b", "c"])
+    </script>
+</section>
+
+<section class="code-wrap h150">
+    <div class="css-live-wrap w33p">
+        <div class="caption">未传方法参数错误警告</div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        const _err = function (msg) {
+            throw new Error(msg)
+        };
+
+        const getSum = (a = _err('a is not defined'), b = _err('b is not defined')) => a + b;
+
+        // getSum(1); // Error: b is not defined
+    </script>
+</section>
+
 <section class="code-wrap h300">
     <div class="css-live-wrap w33p">
         <div class="caption">二维数组变一维数组</div>
@@ -99,17 +154,22 @@
         let arr = [[0, 1], [2, 3], [4, 5]];
 
         // apply
-        console.log([].concat.apply([], arr));
+        [].concat.apply([], arr);
 
         // reduce
-        console.log(arr.reduce((l, r) => {return l.concat(r)}));
+        arr.reduce((l, r) => {
+            return l.concat(r)
+        });
 
         // ...
-        function flatten(arr) { return [].concat(...arr.map(e => Array.isArray(e) ? flatten(e) : e ))}
-        console.log(flatten(arr));
+        function flatten(arr) {
+            return [].concat(...arr.map(e => Array.isArray(e) ? flatten(e) : e))
+        }
+
+        flatten(arr);
 
         // flat
-        console.log(arr.flat());
+        arr.flat();
     </script>
 </section>
 
@@ -152,26 +212,42 @@
         // 如果，函数变成了表达式，则会自动执行。
         // 那么，匿名函数附近使用括号或一些一元运算符来引导解析器，指明运算符附近是一个表达式。
 
-        (function () { }());
-        (function () { })();
-        [function () { }()];
+        (function () {
+        }());
+        (function () {
+        })();
+        [function () {
+        }()];
 
-        ~ function () { }();
-        ! function () { }();
-        + function () { }();
-        - function () { }();
+        ~function () {
+        }();
+        !function () {
+        }();
+        +function () {
+        }();
+        -function () {
+        }();
 
-        delete function () { }();
-        typeof function () { }();
-        void function () { }();
-        new function () { }();
-        new function () { };
+        delete function () {
+        }();
+        typeof function () {
+        }();
+        void function () {
+        }();
+        new function () {
+        }();
+        new function () {
+        };
 
-        const f = function () { }();
+        const f = function () {
+        }();
 
-        1, function () { }();
-        1 ^ function () { }();
-        1 > function () { }();
+        1, function () {
+        }();
+        1 ^ function () {
+        }();
+        1 > function () {
+        }();
     </script>
 </section>
 </body>

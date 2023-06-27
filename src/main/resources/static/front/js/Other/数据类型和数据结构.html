@@ -13,7 +13,9 @@
 <body>
 <section class="code-wrap" id="DataTypes">
     <div class="css-live-wrap w100p">
-        <div class="caption">数据类型</div>
+        <div class="caption">
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures">数据类型</a>
+        </div>
         <div class="data-types centered">
             <table class="w1280">
                 <tr>
@@ -22,17 +24,12 @@
                     <th>示例</th>
                 </tr>
                 <tr>
-                    <td>Boolean</td>
-                    <td rowspan="6" style="width: 10px; text-align: center;">原始类型</td>
-                    <td rowspan="6" style="width: 320px;">除 Object 以外的所有类型都是不可变的，
+                    <td>Null</td>
+                    <td rowspan="7" style="width: 10px; text-align: center;">原始类型</td>
+                    <td rowspan="7" style="width: 320px;">除 Object 以外的所有类型都是不可变的，
                         <br>例如对字符串的操作一定返回了一个新字符串，
                         <br>这些类型的值为“原始值”
                     </td>
-                    <td>表示一个逻辑实体，可以有两个值：true 和 false</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Null</td>
                     <td>一个字面量</td>
                     <td rowspan="2">
                         <a href="../内置对象/全局对象/全局对象.html">全局对象</a>
@@ -43,11 +40,21 @@
                     <td>一个没有被赋值的变量会有个默认值 undefined</td>
                 </tr>
                 <tr>
+                    <td>Boolean</td>
+                    <td>表示一个逻辑实体，可以有两个值：true 和 false</td>
+                    <td></td>
+                </tr>
+                <tr>
                     <td>Number</td>
-                    <td>数字类型，JS 中只有一种数字类型：基于 IEEE 754 标准的双精度 64 位二进制格式的值</td>
+                    <td>数字类型，基于 IEEE 754 标准的双精度 64 位二进制格式的值</td>
                     <td>
                         <a href="../内置对象/Number/Number-demo.html">Number-demo</a>
                     </td>
+                </tr>
+                <tr>
+                    <td>BigInt</td>
+                    <td>数字类型，可以表示任意大小的整数</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>String</td>

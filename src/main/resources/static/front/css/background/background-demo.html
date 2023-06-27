@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>background-demo</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://www.cnblogs.com/xiaohuochai/p/5221936.html">background-attachment</a>
+        </div>
+        <div class="attachment centered">
+            <div class="fixed">
+                <div></div>
+            </div>
+            <div class="local">
+                <div></div>
+            </div>
+            <div class="scroll">
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <style class="code" contenteditable="true">
+        .attachment {
+            white-space: nowrap;
+        }
+
+        .attachment > div {
+            display: inline-block;
+            width: 200px;
+            height: 150px;
+            overflow-y: auto;
+        }
+
+        .attachment > div > div {
+            width: 200px;
+            height: 200px;
+        }
+
+        .fixed,
+        .local,
+        .scroll {
+            background-size: 200px 200px;
+        }
+
+        .fixed {
+            background-image: url(../../../public/img/people/趙雲.png);
+            background-attachment: fixed;
+        }
+
+        .local {
+            background-image: url(../../../public/img/people/馬超.png);
+            background-attachment: local;
+        }
+
+        .scroll {
+            background-image: url(../../../public/img/people/黃忠.png);
+            background-attachment: scroll;
+        }
+    </style>
+</section>
+
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">background-clip</div>
+        <div class="clip centered">
+            <p class="border-box">border-box</p>
+            <p class="padding-box">padding-box</p>
+            <p class="content-box">content-box</p>
+        </div>
+    </div>
+    <style class="code" contenteditable="true">
+        .clip p {
+            margin: 1em;
+            padding: 1em 1em;
+            font-size: 120%;
+            font-weight: bold;
+            border: 8px navy;
+            border-style: dotted double;
+            background: #F8D575;
+        }
+
+        .clip .border-box {
+            background-clip: border-box;
+        }
+
+        .clip .padding-box {
+            background-clip: padding-box;
+        }
+
+        .clip .content-box {
+            background-clip: content-box;
+        }
+    </style>
+</section>
+
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-position">background-position</a>
+        </div>
+        <div class="position centered">
+            <div class="container1">
+                <div class="subcontainer1">center</div>
+                <div class="subcontainer2">50% 50%</div>
+                <div class="subcontainer3">2em 75%</div>
+                <div class="subcontainer4">right 1cm</div>
+            </div>
+            <div class="container2">
+                <div class="subcontainer1">3ch bottom</div>
+                <div class="subcontainer2">right 3em top 50px</div>
+                <div class="subcontainer3">bottom 20px right
+                </div>
+                <div class="subcontainer4">top right, center, left bottom</div>
+            </div>
+        </div>
+    </div>
+    <style class="code" contenteditable="true">
+        .position {
+            width: 400px;
+            height: 200px;
+            font-size: 0;
+            white-space: nowrap;
+        }
+
+        .position > div {
+            display: flex;
+            height: 100px;
+            font-size: 12px;
+        }
+
+        .position > div > div {
+            width: calc((100% - 32px) / 4);
+            height: calc(100% - 8px);
+            margin: 1px;
+            background-color: #E5E8FC;
+            background-image: url("https://interactive-examples.mdn.mozilla.net/media/examples/star.png");
+            background-size: 20px;
+            background-repeat: no-repeat;
+            border: 3px solid #112382;
+        }
+
+        .container1 .subcontainer1 {
+            background-position: center;
+        }
+
+        .container1 .subcontainer2 {
+            background-position: 50% 50%;
+        }
+
+        .container1 .subcontainer3 {
+            background-position: 2em 75%;
+        }
+
+        .container1 .subcontainer4 {
+            background-position: right 1cm;
+        }
+
+        .container2 .subcontainer1 {
+            background-position: 3ch bottom;
+        }
+
+        .container2 .subcontainer2 {
+            background-position: right 3em top 50px;
+            white-space: pre-line;
+        }
+
+        .container2 .subcontainer3 {
+            background-position: bottom 20px right;
+            white-space: pre-line;
+        }
+
+        .container2 .subcontainer4 {
+            --img: url("https://interactive-examples.mdn.mozilla.net/media/examples/star.png");
+            background-image: var(--img), var(--img), var(--img);
+            background-position: top right, center, left bottom;
+            white-space: pre-line;
+        }
+    </style>
+</section>
+
+<section class="code-wrap h500">
+    <div class="css-live-wrap">
+        <div class="caption">
+            background-repeat &amp;
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size">background-size</a> &amp; 
+            background-origin
+        </div>
+        <div class="repeat centered">
+            <div class="heart" id="heart"></div>
+            <select title="">
+                <option value="repeat">repeat</option>
+                <option value="no-repeat">no-repeat</option>
+                <option value="repeat-x">repeat-x</option>
+                <option value="repeat-y">repeat-y</option>
+                <option value="space">space</option>
+                <option value="round">round</option>
+            </select>
+            <select title="">
+                <option value="auto">auto</option>
+                <option value="cover">cover</option>
+                <option value="contain">contain</option>
+                <option value="25%">25%</option>
+                <option value="auto 4em">auto 4em</option>
+            </select>
+            <select title="">
+                <option value="padding-box">padding-box</option>
+                <option value="border-box">border-box</option>
+                <option value="content-box">content-box</option>
+            </select>
+        </div>
+    </div>
+    <style class="code" contenteditable="true">
+        .repeat {
+            text-align: center;
+        }
+
+        .repeat > div {
+            margin: 0 auto;
+        }
+
+        .repeat select {
+            margin: 20px 5px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .heart {
+            box-sizing: border-box;
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            background: lightpink url(../../../public/img/other/heart.png);
+            border: 20px solid #ff99a8;
+            border-radius: 2px;
+        }
+    </style>
+    <script>
+        document.getElementsByTagName('select')[0].onchange = function () {
+            document.getElementById('heart').style.backgroundRepeat = this.value;
+        };
+
+        document.getElementsByTagName('select')[1].onchange = function () {
+            document.getElementById('heart').style.backgroundSize = this.value;
+        };
+
+        document.getElementsByTagName('select')[2].onchange = function () {
+            document.getElementById('heart').style.backgroundOrigin = this.value;
+        }
+    </script>
+</section>
+
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">背景半透明，文字不透明</div>
+        <div class="bg centered">
+            <div class="translucence">
+                <p>穗波玉</p>
+            </div>
+        </div>
+    </div>
+    <style class="code" contenteditable="true">
+        .bg {
+            position: relative;
+            width: 240px;
+            height: 240px;
+            background-image: url(../../../public/img/people/穗波玉.jpg);
+            background-size: cover;
+        }
+
+        .bg .translucence {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        .bg p {
+            color: #333333;
+            line-height: 240px;
+            text-align: center;
+        }
+    </style>
+</section>
+</body>
+</html>
