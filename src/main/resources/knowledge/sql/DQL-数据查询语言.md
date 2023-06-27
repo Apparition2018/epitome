@@ -41,7 +41,7 @@ SELECT deptno, MAX(sal) max_sal FROM emp GROUP BY deptno HAVING MAX(sal) > 2000;
 ```
 ### 高级分组查询
 1. MySQL：`GROUP_CONCAT`
-```sql
+```mysql
 SELECT d.loc, GROUP_CONCAT(e.ename ORDER BY e.ename)
 FROM emp e
 JOIN dept d ON e.deptno = d.deptno
@@ -50,7 +50,7 @@ GROUP BY d.loc
 2. Oracle：`ROLLUP`，`CUBE`，`GROUPING SETS`
 ---
 ## 关联查询
-```sql
+```oracle
 SELECT e.ename, d.loc FROM emp e, dept d;                                           -- 笛卡儿积
 SELECT e.ename, d.loc FROM emp e, dept d WHERE e.deptno = d.deptno;                 -- WHERE
 SELECT e.ename, d.loc FROM emp e INNER JOIN dept d ON e.deptno = d.deptno;          -- 内关联
@@ -90,7 +90,7 @@ SELECT e.ename, e.deptno, (SELECT d.loc FROM dept d WHERE d.deptno = e.deptno) d
 ---
 ## 分页查询 
 1. MySQL
-```sql
+```mysql
 SELECT ename, sal, deptno 
 FROM emp ORDER BY sal DESC LIMIT 5, 5
 ```
@@ -100,7 +100,7 @@ SELECT deptno, count(*) cnt
 FROM emp GROUP BY deptno WITH ROLLUP
 ```
 2. Oracle
-```sql
+```oracle
 SELECT * FROM (
    SELECT ROWNUM rn, t.* FROM (
        SELECT ename, sal, deptno FROM emp ORDER BY sal DESC
@@ -113,19 +113,19 @@ WHERE ROWNUM <= 10) WHERE rn > 5;
 ## 排名查询
 1. [MySQL](https://www.jb51.net/article/194925.htm) / Oracle
 - ROW_NUMBER: 连续且唯一
-```sql
+```mysql
 SELECT ename, deptno, sal, ROW_NUMBER() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
 ```
 - RANK: 不连续不唯一
-```sql
+```mysql
 SELECT ename, deptno, sal, RANK() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
 ```
 - DENSE_RANK: 连续不唯一
-```sql
+```mysql
 SELECT ename, deptno, sal, DENSE_RANK() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
 ```
 - null 值排最后
-```sql
+```mysql
 SELECT ename, sal, RANK() OVER(ORDER BY -sal ASC) sal_rank FROM emp;
 ```
 ---

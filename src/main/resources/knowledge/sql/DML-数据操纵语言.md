@@ -25,12 +25,12 @@ ON DUPLICATE KEY UPDATE id = 1, name = '王五', course = '语文', score = 81;
 ```
 ---
 ## UPDATE
-```sql
+```mysql
 UPDATE score SET name = '王五', course = '语文', score = 81 WHERE id = 1;
 ```
 ---
 ## DELETE
-```sql
+```mysql
 DELETE FROM score WHERE id = 1;
 ```
 ---

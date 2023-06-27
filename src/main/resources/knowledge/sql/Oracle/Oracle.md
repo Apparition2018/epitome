@@ -28,6 +28,12 @@ DEFAULT TABLESPACE tablespace_name;
 ```
 4. 授权：`GRANT DBA TO user_name`
 ---
+## [CONNECT BY](https://www.cnblogs.com/wanggang-java/p/10916426.html)
+- 用于父子、上下层级关系的查询
+```oracle
+SELECT * FROM emplyee START WITH lead_id = 0 CONNECT BY PRIOR emp_id = lead_id;
+```
+---
 ## dmp 文件导入
 ```
 imp user_name/password@ip:port/service_name file=filename.dmp show=n buffer=20480 ignore=n commit=y grants=y full=y log=filename.log
