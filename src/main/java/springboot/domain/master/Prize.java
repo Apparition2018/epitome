@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
 public class Prize {
     private Integer id;
     private Integer drawId;
-    private Integer pr;
+    private Integer probability;
     private Integer totalQty;
     private Integer winQty;
 }

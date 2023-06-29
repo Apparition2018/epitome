@@ -35,6 +35,8 @@ import static l.demo.Demo.MY_NAME;
  */
 @Slf4j
 @RestController
+// @see @see MyWebMvcConfigurer#configurePathMatch(PathMatchConfigurer)
+// @RequestMapping("webmvc-config")
 @Tag(name = "WebMvcConfig")
 public class WebMvcConfigController {
 

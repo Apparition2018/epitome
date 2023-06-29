@@ -29,11 +29,11 @@ import java.util.Objects;
 @Controller
 @RequestMapping("weather")
 @Tag(name = "jQuery-pjax")
-public class WeatherController {
+public class PJaxController {
 
     private final ObjectMapper objectMapper;
 
-    public WeatherController(ObjectMapper objectMapper) {
+    public PJaxController(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 

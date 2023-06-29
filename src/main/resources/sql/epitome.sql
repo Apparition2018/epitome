@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : 43.136.102.115
  Source Server Type    : MySQL
- Source Server Version : 80029
- Source Host           : localhost:3306
+ Source Server Version : 80033
+ Source Host           : 43.136.102.115:3306
  Source Schema         : epitome
 
  Target Server Type    : MySQL
- Target Server Version : 80029
+ Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 01/11/2022 23:16:02
+ Date: 29/06/2023 17:13:03
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `demo`  (
   `id` int(0) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of demo
@@ -103,10 +103,10 @@ CREATE TABLE `generator`  (
 DROP TABLE IF EXISTS `prize`;
 CREATE TABLE `prize`  (
   `id` int(0) NOT NULL COMMENT '主键',
-  `drawId` int(0) NOT NULL COMMENT '抽奖活动ID',
-  `pr` int(0) NOT NULL COMMENT '概率（1表示万分之一）',
-  `totalQty` int(0) NOT NULL COMMENT '总数',
-  `winQty` int(0) NOT NULL COMMENT '中奖数',
+  `draw_id` int(0) NOT NULL COMMENT '抽奖活动ID',
+  `probability` int(0) NOT NULL COMMENT '概率（1表示万分之一）',
+  `total_qty` int(0) NOT NULL COMMENT '总数',
+  `win_qty` int(0) NOT NULL COMMENT '中奖数',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '奖品表' ROW_FORMAT = Dynamic;
 

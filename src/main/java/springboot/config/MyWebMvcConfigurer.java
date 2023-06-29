@@ -53,7 +53,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
         // 给匹配的 Controller 增加前缀
-        configurer.addPathPrefix("mvc", p -> p.isInstance(SpringUtils.getBean(WebMvcConfigController.class)));
+        configurer.addPathPrefix("webmvc-config", p -> p.isInstance(SpringUtils.getBean(WebMvcConfigController.class)));
         configurer.setUseTrailingSlashMatch(true);
         WebMvcConfigurer.super.configurePathMatch(configurer);
     }

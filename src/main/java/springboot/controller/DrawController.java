@@ -101,7 +101,7 @@ public class DrawController {
         int random = ThreadLocalRandom.current().nextInt(10000);
         int threshold = 0;
         for (Prize prize : prizeList) {
-            if (random < (threshold += prize.getPr())) return prize.getId();
+            if (random < (threshold += prize.getProbability())) return prize.getId();
         }
         return 0;
     }

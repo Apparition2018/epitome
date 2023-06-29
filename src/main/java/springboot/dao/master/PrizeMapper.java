@@ -23,7 +23,7 @@ public interface PrizeMapper {
      * @param drawId 抽奖活动ID
      * @return 奖品概率列表
      */
-    @Select({"select id, pr from prize where draw_id = #{drawId}"})
+    @Select({"select id, probability from prize where draw_id = #{drawId}"})
     List<Prize> listIdAndPrByDrawId(@Param("drawId") Integer drawId);
 
     /**

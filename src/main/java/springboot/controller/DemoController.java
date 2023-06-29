@@ -62,4 +62,13 @@ public class DemoController {
         log.info("header name: {}, cookie name: {}", name, name2);
         return new Student(1, name);
     }
+
+
+    @RequestMapping("test")
+    public void test(@RequestParam("flag") boolean flag) throws InterruptedException {
+        if (flag) {
+            Thread.sleep(10000);
+        }
+
+    }
 }
