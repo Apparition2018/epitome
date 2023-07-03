@@ -104,8 +104,5 @@
         <table tableName="sys_dept" domainObjectName="SysDept" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="sys_role" domainObjectName="SysRole" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>

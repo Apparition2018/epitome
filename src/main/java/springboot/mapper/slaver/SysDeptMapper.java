@@ -2,7 +2,6 @@ package springboot.mapper.slaver;
 
 import org.apache.ibatis.annotations.Mapper;
 import springboot.domain.slaver.SysDept;
-import springboot.domain.slaver.SysRole;
 
 import java.util.List;
 
@@ -10,13 +9,13 @@ import java.util.List;
 public interface SysDeptMapper {
     int deleteByPrimaryKey(Long roleId);
 
-    int insert(SysRole row);
+    int insert(SysDept row);
 
-    SysRole selectByPrimaryKey(Long roleId);
+    SysDept selectByPrimaryKey(Long roleId);
 
-    List<SysRole> selectAll();
+    List<SysDept> selectAll();
 
-    int updateByPrimaryKey(SysRole row);
+    int updateByPrimaryKey(SysDept row);
 
     List<SysDept> list(SysDept sysDept);
 }

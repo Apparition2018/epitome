@@ -2,7 +2,6 @@ package springboot.mapper.slaver;
 
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
-import springboot.domain.slaver.SysRole;
 import springboot.domain.slaver.SysUser;
 
 import java.util.List;
@@ -12,13 +11,13 @@ import java.util.Map;
 public interface SysUserMapper {
     int deleteByPrimaryKey(Long roleId);
 
-    int insert(SysRole row);
+    int insert(SysUser row);
 
-    SysRole selectByPrimaryKey(Long roleId);
+    SysUser selectByPrimaryKey(Long roleId);
 
-    List<SysRole> selectAll();
+    List<SysUser> selectAll();
 
-    int updateByPrimaryKey(SysRole row);
+    int updateByPrimaryKey(SysUser row);
 
     List<SysUser> list(SysUser sysUser);
 

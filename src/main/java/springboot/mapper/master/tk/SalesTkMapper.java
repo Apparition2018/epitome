@@ -2,6 +2,7 @@ package springboot.mapper.master.tk;
 
 import org.springframework.stereotype.Component;
 import springboot.domain.master.Sales;
+import springboot.mapper.master.MyMapper;
 
 /**
  * SalesTkMapper

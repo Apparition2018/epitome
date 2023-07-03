@@ -22,7 +22,7 @@ import java.util.Objects;
  * @since 2019/8/8 19:39
  */
 @Configuration
-@MapperScan(basePackages = "springboot.dao.master", sqlSessionTemplateRef = "masterSqlSessionTemplate")
+@MapperScan(basePackages = "springboot.mapper.master", sqlSessionTemplateRef = "masterSqlSessionTemplate")
 public class MasterDataSourceConfig {
 
     @Primary

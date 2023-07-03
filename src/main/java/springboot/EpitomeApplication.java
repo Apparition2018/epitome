@@ -28,8 +28,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableScheduling
 @EnableAsync
 @EnableTransactionManagement
-// TK Mybatis MapperScan
-@MapperScan(basePackages = "springboot.mapper.master")
+// TK Mybatis MapperScan，不能包含通用 mapper 的路径，所以 MyMapper.java 不能放在 springboot.mapper.master.tk 里
+@MapperScan(basePackages = "springboot.mapper.master.tk")
 public class EpitomeApplication {
 
     public static void main(String[] args) {

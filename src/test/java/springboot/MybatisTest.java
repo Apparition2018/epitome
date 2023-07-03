@@ -12,6 +12,9 @@ import springboot.domain.slaver.SysUser;
 import springboot.mapper.slaver.SysDeptMapper;
 import springboot.mapper.slaver.SysUserMapper;
 
+import static l.demo.Demo.p;
+import static l.demo.Demo.phr;
+
 /**
  * Mybatis
  *
@@ -37,17 +40,17 @@ public class MybatisTest {
     public void testPageHelper() throws JsonProcessingException {
         /* 返回 Page */
         Page<SysDeptMapper> deptPage = PageHelper.startPage(1, 2).doSelectPage(() -> sysDeptMapper.list(null));
-        System.out.println(objectMapper.writeValueAsString(deptPage));
-        System.out.println("====================");
+        p(objectMapper.writeValueAsString(deptPage));
+        phr(40);
 
         /* 返回 PageInfo */
         PageInfo<SysDeptMapper> deptPageInfo = PageHelper.startPage(1, 2).doSelectPageInfo(() -> sysDeptMapper.list(null));
-        System.out.println(objectMapper.writeValueAsString(deptPageInfo));
-        System.out.println("====================");
+        p(objectMapper.writeValueAsString(deptPageInfo));
+        phr(40);
 
         /* 返回 sql 返回数据条数 */
         long count = PageHelper.count(() -> sysDeptMapper.list(null));
-        System.out.println(count);
+        p(count);
     }
 
     /** &#064;MapKey */
@@ -55,7 +58,7 @@ public class MybatisTest {
     public void testMapKey() {
         sysUserMapper.map(null).entrySet().forEach(user -> {
             try {
-                System.out.println(objectMapper.writeValueAsString(user));
+                p(objectMapper.writeValueAsString(user));
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
@@ -65,11 +68,11 @@ public class MybatisTest {
     /** &lt;association/> 和 &lt;collection/> */
     @Test
     public void testAssociationAndCollection() throws JsonProcessingException {
-        System.out.println(objectMapper.writeValueAsString(sysUserMapper.list(new SysUser())));
+        p(objectMapper.writeValueAsString(sysUserMapper.list(new SysUser())));
     }
 
     @Test
     public void testAssociation() throws JsonProcessingException {
-        System.out.println(objectMapper.writeValueAsString(sysUserMapper.list2(new SysUser())));
+        p(objectMapper.writeValueAsString(sysUserMapper.list2(new SysUser())));
     }
 }

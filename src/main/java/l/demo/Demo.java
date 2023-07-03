@@ -170,6 +170,10 @@ public class Demo {
         printStream.println(obj);
     }
 
+    public static void phr(int cnt) {
+        System.out.println("=".repeat(Math.max(0, cnt)));
+    }
+
     /** 模拟 Thread.sleep()，为了避免 Thread.sleep() 而需要捕获 InterruptedException 而带来的理解上的困惑 */
     public static void sleep(long timeout, TimeUnit timeUnit) {
         long now = System.currentTimeMillis();

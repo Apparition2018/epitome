@@ -12,6 +12,7 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import static l.demo.Demo.p;
+import static l.demo.Demo.phr;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DateUtils.html">DateUtils</a>
@@ -65,21 +66,21 @@ public class DateUtilsDemo {
     @Test
     public void ceilRoundTruncate() {
         p(DATE1);                                       // 2019-10-31 17:20:13.450
-        p("=============================\n");
+        phr(28);
 
         p(DateUtils.ceiling(DATE1, Calendar.YEAR));     // 2020-01-01 00:00:00.000
         p(DateUtils.ceiling(DATE1, Calendar.MONTH));    // 2019-11-01 00:00:00.000
         p(DateUtils.ceiling(DATE1, Calendar.DATE));     // 2019-11-01 00:00:00.000
         p(DateUtils.ceiling(DATE1, Calendar.HOUR));     // 2019-10-31 18:00:00.000
         p(DateUtils.ceiling(DATE1, Calendar.MINUTE));   // 2019-10-31 17:21:00.000
-        p("=============================\n");
+        phr(28);
 
         p(DateUtils.round(DATE1, Calendar.YEAR));       // 2019-01-01 00:00:00.000
         p(DateUtils.round(DATE1, Calendar.MONTH));      // 2019-11-01 00:00:00.000
         p(DateUtils.round(DATE1, Calendar.DATE));       // 2019-11-01 00:00:00.000
         p(DateUtils.round(DATE1, Calendar.HOUR));       // 2019-10-31 17:00:00.000
         p(DateUtils.round(DATE1, Calendar.MINUTE));     // 2019-10-31 17:20:00.000
-        p("=============================\n");
+        phr(28);
 
         p(DateUtils.truncate(DATE1, Calendar.YEAR));    // 2019-01-01 00:00:00.000
         p(DateUtils.truncate(DATE1, Calendar.MONTH));   // 2019-10-01 00:00:00.000
@@ -100,21 +101,21 @@ public class DateUtilsDemo {
         p(DateUtils.getFragmentInHours(DATE1, Calendar.YEAR));      // 7738
         p(DateUtils.getFragmentInMinutes(DATE1, Calendar.YEAR));    // 464322
         p(DateUtils.getFragmentInSeconds(DATE1, Calendar.YEAR));    // 27859353
-        p("=============================\n");
+        phr(32);
 
         p("从 2018-11-01 00:00:00 到 当前时间");
         p(DateUtils.getFragmentInDays(DATE1, Calendar.MONTH));      // 19
         p(DateUtils.getFragmentInHours(DATE1, Calendar.MONTH));     // 442
         p(DateUtils.getFragmentInMinutes(DATE1, Calendar.MONTH));   // 26562
         p(DateUtils.getFragmentInSeconds(DATE1, Calendar.MONTH));   // 1593753
-        p("=============================\n");
+        phr(32);
 
         p("从 2018-11-01 10:00:00 到 当前时间");
         p(DateUtils.getFragmentInDays(DATE1, Calendar.DATE));       // 0
         p(DateUtils.getFragmentInHours(DATE1, Calendar.DATE));      // 10
         p(DateUtils.getFragmentInMinutes(DATE1, Calendar.DATE));    // 642
         p(DateUtils.getFragmentInSeconds(DATE1, Calendar.DATE));    // 38553
-        p("=============================\n");
+        phr(32);
     }
 
     /**

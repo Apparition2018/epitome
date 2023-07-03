@@ -307,6 +307,9 @@ docker exec -it mysql mysql -uroot -proot
 create user root@'%' identified by 'root';
 grant all privileges on *.* to root@'%' with grant option;
 flush privileges;
+
+alter user root@'%' identified by 'Cesc)1@9*3$7' password expire never;
+alter user root@'localhost' identified by 'Cesc)1@9*3$7';
 ```
 ---
 ## [MariaDB](https://hub.docker.com/_/mariadb)

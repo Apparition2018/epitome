@@ -4,6 +4,7 @@
 ## 参考网站
 1. [MySQL :: MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)
 2. [MySQL :: Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/)
+    - [Example Databases](https://dev.mysql.com/doc/index-other.html)
 3. [MySQL 规范](https://blog.csdn.net/shenjian58/article/details/89850405)
 4. [MySQL 总结](https://mp.weixin.qq.com/s/pWHCieOwAdCrz8cauduWlQ)
 ---

@@ -4,12 +4,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import l.demo.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import springboot.domain.master.Demo;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -39,8 +39,8 @@ public class FetchController {
 
     @PostMapping("json-clazz")
     @Operation(summary = "传递 Json 类型的数据，接收方为 Bean")
-    public Demo jsonClazz(@RequestBody Demo demo) {
-        return demo;
+    public Person jsonClazz(@RequestBody Person person) {
+        return person;
     }
 
     @PostMapping("json-map")

@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.stream.IntStream;
 
 import static l.demo.Demo.p;
+import static l.demo.Demo.phr;
 
 /**
  * Branch and Bound
@@ -60,12 +61,11 @@ public class BranchAndBound {
 
             // 输出路径
             IntStream.rangeClosed(1, N).forEach(i -> p("从" + 1 + "出发到" + i + "的最短路径为：" + path[i]));
-            p("=====================================");
+            phr(35);
             IntStream.rangeClosed(1, N).forEach(i -> p("从1出发到" + i + "点的最短距离为：" + bestmin[i]));
         }
 
         public static void main(String[] args) {
-
             Scanner scan = new Scanner(System.in);
             System.out.print("请输入节点个数N，路径总数M： ");
             N = scan.nextInt();
