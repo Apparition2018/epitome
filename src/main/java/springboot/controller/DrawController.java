@@ -11,10 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import springboot.dao.master.PrizeMapper;
-import springboot.dao.master.UserMapper;
-import springboot.domain.master.Prize;
+import springboot.domain.master.draw.Prize;
 import springboot.exception.ServiceException;
+import springboot.mapper.master.draw.PrizeMapper;
+import springboot.mapper.master.draw.UserMapper;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;

@@ -1,4 +1,4 @@
-package springboot.dao.master;
+package springboot.mapper.master;
 
 import org.springframework.stereotype.Repository;
 import springboot.domain.master.Demo;

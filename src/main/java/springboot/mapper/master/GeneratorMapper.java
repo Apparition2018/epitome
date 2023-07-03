@@ -1,11 +1,12 @@
-package springboot.dao.master;
+package springboot.mapper.master;
 
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import springboot.domain.master.Generator;
 import springboot.domain.master.GeneratorExample;
 import springboot.domain.master.GeneratorKey;
 import springboot.domain.master.GeneratorWithBLOBs;
+
+import java.util.List;
 
 public interface GeneratorMapper {
     long countByExample(GeneratorExample example);

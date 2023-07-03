@@ -1,4 +1,4 @@
-package springboot.dao.master;
+package springboot.mapper.master.draw;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

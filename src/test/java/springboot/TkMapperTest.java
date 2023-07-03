@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import springboot.domain.master.Sales;
-import springboot.mapper.master.SalesTkMapper;
+import springboot.mapper.master.tk.SalesTkMapper;
 import tk.mybatis.mapper.entity.Example;
 
 /**

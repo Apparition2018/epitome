@@ -10,8 +10,8 @@ import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
-import springboot.dao.master.DemoMapper;
 import springboot.domain.master.Demo;
+import springboot.mapper.master.DemoMapper;
 
 import java.io.Serial;
 import java.sql.SQLException;

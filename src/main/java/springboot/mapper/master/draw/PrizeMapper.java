@@ -1,10 +1,10 @@
-package springboot.dao.master;
+package springboot.mapper.master.draw;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import springboot.domain.master.Prize;
+import springboot.domain.master.draw.Prize;
 
 import java.util.List;
 

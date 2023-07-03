@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import springboot.domain.master.Score;
+import springboot.domain.master.Demo;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -39,8 +39,8 @@ public class FetchController {
 
     @PostMapping("json-clazz")
     @Operation(summary = "传递 Json 类型的数据，接收方为 Bean")
-    public Score jsonClazz(@RequestBody Score score) {
-        return score;
+    public Demo jsonClazz(@RequestBody Demo demo) {
+        return demo;
     }
 
     @PostMapping("json-map")

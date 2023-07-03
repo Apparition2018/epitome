@@ -41,7 +41,7 @@
                     ②用于指定数据库连接的属性
                 http://mybatis.org/generator/configreference/jdbcConnection.html-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/ry"
+                        connectionURL="jdbc:mysql://43.136.102.115:3306/ry"
                         userId="root" password="root">
             <!-- MySQL 8.x 需要指定服务器的时区 -->
             <property name="serverTimezone" value="UTC"/>
@@ -90,7 +90,7 @@
                     ②MIXEDMAPPER：生成基于 注解 和 XML 混合的 Mapper
                     ③XMLMAPPER：生成基于 XML 的 Mapper
                 http://mybatis.org/generator/configreference/javaClientGenerator.html -->
-        <javaClientGenerator targetPackage="springboot.dao.slaver" targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="springboot.mapper.slaver" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <!-- <table>：
                     ①<context> 至少需要一个 <table>

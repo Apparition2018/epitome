@@ -1,4 +1,4 @@
-package springboot.domain.master;
+package springboot.domain.master.draw;
 
 import lombok.Data;
 

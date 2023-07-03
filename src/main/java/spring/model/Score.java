@@ -3,6 +3,9 @@ package spring.model;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * Score
  *
@@ -11,7 +14,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class Score {
+public class Score implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 500668519675954582L;
     private Integer id;
     private String name;
     private String course;

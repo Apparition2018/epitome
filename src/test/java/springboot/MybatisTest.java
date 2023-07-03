@@ -8,9 +8,9 @@ import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import springboot.dao.slaver.SysDeptMapper;
-import springboot.dao.slaver.SysUserMapper;
 import springboot.domain.slaver.SysUser;
+import springboot.mapper.slaver.SysDeptMapper;
+import springboot.mapper.slaver.SysUserMapper;
 
 /**
  * Mybatis
@@ -62,7 +62,7 @@ public class MybatisTest {
         });
     }
 
-    /** <association/> 和 <collection/> */
+    /** &lt;association/> 和 &lt;collection/> */
     @Test
     public void testAssociationAndCollection() throws JsonProcessingException {
         System.out.println(objectMapper.writeValueAsString(sysUserMapper.list(new SysUser())));

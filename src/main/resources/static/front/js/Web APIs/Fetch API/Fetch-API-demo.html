@@ -104,7 +104,7 @@
                 headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}),
                 body: "data=Arsenal"
             }).then(response => response.text()).then(data => {
-                boxFetch1.innerHTML += data + '<br/>';
+                boxFetch1.innerHTML = data;
             }).catch(function (e) {
                 console.log(e);
             })
@@ -121,13 +121,13 @@
     <script class="code w60p" contenteditable="true">
         (function () {
             const boxFetch2 = document.getElementsByClassName('box-fetch2')[0];
-            const demo = {id: '1', name: 'zhangsan', course: 'math', score: '99'};
+            const demo = {id: '1', name: 'zhangsan'};
             fetch('http://localhost:3333/fetch/json-clazz', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(demo)
             }).then(response => response.text()).then(data => {
-                boxFetch2.innerHTML += data + '<br/>';
+                boxFetch2.innerHTML = data;
             }).catch(function (e) {
                 console.log(e);
             })
@@ -150,7 +150,7 @@
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(club)
             }).then(response => response.text()).then(data => {
-                boxFetch3.innerHTML += data + '<br/>';
+                boxFetch3.innerHTML = data;
             }).catch(function (e) {
                 console.log(e);
             })
@@ -180,7 +180,7 @@
                     method: 'post',
                     body: formData,
                 }).then(response => response.text()).then(data => {
-                    $('.box-fetch4')[0].innerHTML += data + '<br/>';
+                    $('.box-fetch4')[0].innerHTML = data;
                 }).catch(function (e) {
                     console.log(e);
                 })
@@ -213,7 +213,7 @@
                     method: 'post',
                     body: formData,
                 }).then(response => response.text()).then(data => {
-                    $('.box-fetch5')[0].innerHTML += data + '<br/>';
+                    $('.box-fetch5')[0].innerHTML = data;
                 }).catch(function (e) {
                     console.log(e);
                 })

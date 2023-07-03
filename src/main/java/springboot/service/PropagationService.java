@@ -3,8 +3,8 @@ package springboot.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import springboot.dao.master.DemoMapper;
 import springboot.domain.master.Demo;
+import springboot.mapper.master.DemoMapper;
 
 /**
  * PropagationService

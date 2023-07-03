@@ -5,7 +5,7 @@
 1. [TechOnTheNet](https://www.techonthenet.com/)
 2. [建表规范](https://www.cnblogs.com/xphdbky/p/7154434.html)
 3. [SQL 语法速成手册](https://juejin.cn/post/6844903790571700231)
-## 在线 SQL
+## [在线 SQL](https://mp.weixin.qq.com/s/E-gX16MWr-h7y5725JJUrw)
 1. [SQL Fiddle](http://sqlfiddle.com/)
 2. [db<>fiddle](https://dbfiddle.uk)
 3. [Oracle Live SQL](https://livesql.oracle.com/apex/f?p=590:1000)

@@ -30,7 +30,7 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <javaClientGenerator targetPackage="springboot.dao.slaver" targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="springboot.mapper.slaver" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <table tableName="sys_dept"/>
     </context>
