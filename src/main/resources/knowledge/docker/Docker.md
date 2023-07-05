@@ -182,6 +182,8 @@ docker info [OPTIONS]                                           显示 Docker sy
 docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   显示 Docker 对象的 low-level 信息
     # 显示所有 container IP
     docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+    # 显示 container 日志地址
+    docker inspect --format '{{.LogPath}}' 1e8ca741b95b
 docker login                                                    登录 registry
 docker logout                                                   注销 registry 
 ```
@@ -308,8 +310,8 @@ create user root@'%' identified by 'root';
 grant all privileges on *.* to root@'%' with grant option;
 flush privileges;
 
-alter user root@'%' identified by 'Cesc)1@9*3$7' password expire never;
-alter user root@'localhost' identified by 'Cesc)1@9*3$7';
+alter user root@'%' identified by 'Cesc123!' password expire never;
+alter user root@'localhost' identified by 'Cesc123!';
 ```
 ---
 ## [MariaDB](https://hub.docker.com/_/mariadb)
@@ -550,7 +552,13 @@ minio/minio server /data --console-address ":9001"
 mkdir -p /home/lighthouse/docker_data/nacos/{conf,logs}
 cd /home/lighthouse/docker_data/nacos
 # 从容器复制 conf 和 logs 文件夹
-docker run -d --name nacos -e MODE=standalone nacos/nacos-server
+docker run -d --name nacos -e MODE=standalone \
+-e JVM_XMS=64m \
+-e JVM_XMX=64m \
+-e JVM_XMN=16m \
+-e JVM_MS=8m \
+-e JVM_MMS=8m \
+nacos/nacos-server
 docker cp nacos:/home/nacos/conf/. $PWD/conf
 docker cp nacos:/home/nacos/logs/. $PWD/logs
 docker stop nacos
@@ -562,9 +570,9 @@ docker run -d --name nacos -p 8848:8848 -p 9848:9848 -p 9849:9849 \
 -e SPRING_DATASOURCE_PLATFORM=mysql \
 -e MYSQL_SERVICE_HOST=43.136.102.115 \
 -e MYSQL_SERVICE_USER=root \
--e MYSQL_SERVICE_PASSWORD=root \
+-e MYSQL_SERVICE_PASSWORD=Cesc123! \
 -e MYSQL_SERVICE_DB_NAME=nacos \
--e MYSQL_SERVICE_DB_PARAM="characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true" \
+-e MYSQL_SERVICE_DB_PARAM="characterEncoding=utf8&connectTimeout=10000&socketTimeout=30000&autoReconnect=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true" \
 -e JVM_XMS=64m \
 -e JVM_XMX=64m \
 -e JVM_XMN=16m \
