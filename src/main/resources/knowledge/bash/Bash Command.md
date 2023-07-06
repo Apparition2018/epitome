@@ -31,8 +31,9 @@
         -P                                                              禁止端口号转换为端口名
         -n                                                              禁止 IP 转换为 host names 
     kill                                                                终止进程
-        -9                                                              强制杀死进程
-        -15                                                             正常退出进程
+        -1, -HUP                                                        重新加载进程
+        -9, -KILL                                                       强制杀死进程
+        -15, -TERM                                                      正常退出进程
 ---
 ## 文件系统 (Filesystem)
     chgrp                           change group                        更改组所有权

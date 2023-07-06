@@ -183,7 +183,7 @@ docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   显示 Docker �
     # 显示所有 container IP
     docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
     # 显示 container 日志地址
-    docker inspect --format '{{.LogPath}}' 1e8ca741b95b
+    docker inspect --format '{{.LogPath}}' 516aad49fe58
 docker login                                                    登录 registry
 docker logout                                                   注销 registry 
 ```
@@ -453,19 +453,21 @@ tomcat
 ## [Nginx](https://hub.docker.com/_/nginx)
 - [Docker 安装 Nginx](https://blog.csdn.net/BThinker/article/details/123507820)
 ```bash
-mkdir -p /home/lighthouse/docker_data/nginx/{conf,logs,html}
+mkdir -p /home/lighthouse/docker_data/nginx/{conf,logs,share}
 cd /home/lighthouse/docker_data/nginx
 # 从容器复制配置文件
 docker run -d --name nginx nginx
-docker cp nginx:/etc/nginx $PWD/conf
+docker cp nginx:/etc/nginx/. $PWD/conf
+docker cp nginx:/var/run/nginx.pid $PWD/
 docker stop nginx
 docker rm nginx
 ```
 ```bash
-docker run -d --name nginx -p 80:80 --restart=unless-stopped \
+docker run -d --name nginx -p 80:80 -p 8080:8080 --restart=unless-stopped \
 -v $PWD/conf:/etc/nginx \
 -v $PWD/logs:/var/log/nginx \
--v $PWD/html:/usr/share/nginx/html \
+-v $PWD/share:/usr/share/nginx \
+-v $PWD/nginx.pid:/var/run/nginx.pid \
 nginx
 ```
 ---
@@ -515,7 +517,7 @@ rabbitmq:management
 docker exec -it rabbitmq bash
     rabbitmq-plugins list
     rabbitmq-plugins enable rabbitmq_management
-        http://localhost:15672       Username:guest      Password:guest
+        # Console：http://43.136.102.115:15672/  guest/guest
     rabbitmq-plugins enable rabbitmq_mqtt
 ```
 ---
@@ -542,7 +544,7 @@ docker run -d --name minio -p 9000:9000 -p 9001:9001 \
 -e MINIO_ROOT_PASSWORD=minio123 \
 minio/minio server /data --console-address ":9001"
 
-# Console：http://43.136.102.115:9001/login
+# Console：http://43.136.102.115:9001/login  minio/minio123
 ```
 ---
 ## [Nacos](https://hub.docker.com/r/nacos/nacos-server)

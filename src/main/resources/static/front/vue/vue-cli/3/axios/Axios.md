@@ -137,7 +137,7 @@ npm i vant -S
 npm i babel-plugin-import -D
 ```
 ```javascript
-# babel.config.js
+// babel.config.js
 module.exports = {
     plugins: [
         ['import', {
@@ -148,7 +148,7 @@ module.exports = {
     ]
 };
 
-# Xxx.vue
+// Xxx.vue
 import {Button} from 'vant'
 export default {
     name: 'Xxx',

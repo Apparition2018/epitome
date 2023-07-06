@@ -139,23 +139,61 @@
 7. FTP 软件：FileZilla
 ```
 ---
-## [Nginx](https://cnblogs.com/bluestorm/p/4574688.html)
-```
-1. yum install -y gcc zlib zlib-devel pcre-devel openssl openssl-devel
-2. https://nginx.org/en/download.html
-    wget https://nginx.org/download/nginx-1.22.0.tar.gz
+## [Nginx](https://www.imooc.com/video/23837)
+1. [Download](https://nginx.org/en/download.html)
+    ```bash
+    cd /home/lighthouse/software
+    wget https://nginx.org/download/nginx-1.24.0.tar.gz
     tar -zxvf xxx.tar.gz
+    ```
+2. 安装基础依赖：`yum install -y gcc zlib zlib-devel pcre pcre-devel openssl openssl-devel`
 3. 创建用户组和用户
-    3.1 groupadd nginx
-    3.2 useradd -g nginx -s /sbin/nologin nginx
-    3.3 passwd nginx
-4. 编译和安装
-    4.1 ./configure --group=nginx --user=nginx --with-pcre \
-        --with-http_ssl_module --with-http_stub_status_module
-        4.1.1 --prefix=PATH，指定安装目录，默认 /usr/local/nginx
-    4.2 make
-    4.3 make install
+    ```bash
+    groupadd nginx
+    useradd -g nginx -s /sbin/nologin nginx
+    passwd nginx
+    ```
+4. [配置并安装](https://nginx.org/en/docs/configure.html)：`mkdir -p /var/temp/nginx`
+    ```bash
+    ./configure \
+    #--prefix=path，指定安装目录，默认 /usr/local/nginx
+    --prefix=/usr/local/nginx \
+    --http-client-body-temp-path=/var/temp/nginx/client \
+    --http-proxy-temp-path=/var/temp/nginx/proxy \
+    --http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
+    --http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
+    --http-scgi-temp-path=/var/temp/nginx/scgi
+    --group=nginx \
+    --user=nginx \
+    #强制使用 pcre 库
+    --with pcre
+    #启用动态模块兼容性
+    --with-compat
+    #允许在 FreeBSD 和 Linux 上使用异步文件 I/O (AIO)
+    --with-file-aio
+    #允许使用线程池
+    --with-threads
+    #需要安装的模块
+    #--with-http_addition_module
+    #……
+    make
+    make install
+    ```
+    - 可参考 docker 安装 nginx 后，输入 nginx -V 查看配置参数
 5. 防火墙：开放 80 端口
+6. [命令](https://nginx.org/en/docs/switches.html)：`cd /usr/local/nginx/sbin`
+```
+.nginx -h                   帮助
+.nginx -t                   测试
+.nginx                      启动
+.nginx -s stop              快速关闭
+.nginx -s quit              优雅关闭
+.nginx -s reload            重新加载配置
+.nginx -v                   版本
+.nginx -V                   版本、编译版本、配置参数
+kill -s QUIT 1628           杀死进程 /var/run/nginx.pid
+```
+```
 6. 虚拟域名配置及测试验证
     6.1 vim /usr/local/nginx/conf/nginx.conf
         # 加载 vhost/ 目录下的配置文件（方便维护），在 Server 节点前
@@ -165,16 +203,6 @@
         www.ljh.com.conf
         image.ljh.com.conf
         ...
-7. 常用命令
-    /usr/local/nginx//sbin/nginx -t             测试配置文件
-    /usr/local/nginx//sbin/nginx                启动
-    /usr/local/nginx//sbin/nginx -s stop        停止
-    /usr/local/nginx//sbin/ngxin -s quit        退出
-    /usr/local/nginx//sbin/ngxin -s reload      重启
-    kill -HUP PID                               平滑重启（进程号查询：ps -ef|grep nginx）
-    /usr/local/nginx//sbin/nginx -v             版本
-    /usr/local/nginx//sbin/nginx -V             版本和配置选项
-    /usr/local/nginx//sbin/nginx -h             帮助
 8. 修改 hosts 文件，配置域名转发
     C:\Windows\System32\dirvers\etc\hosts       Windows
     /etc/hosts                                  Linux
@@ -314,7 +342,7 @@
     - 启动：`./bin/redis-server ./redis.conf`
     - 客户端：`./bin/redis-cli`
 ---
-## [RabbitMQ](https://www.imooc.com/video/23816)
+## [RabbitMQ](https://www.imooc.com/video/23821)
 1. [Downloading and Installing RabbitMQ](https://rabbitmq.com/download.html)
 2. Erlang
     - [RabbitMQ 和 Erlang/OTP 兼容性矩阵](https://rabbitmq.com/which-erlang.html#compatibility-matrix)
@@ -330,12 +358,12 @@
     ```
 4. 升级软件包并安装：`cd /usr/local/rabbitmq`
     ```bash
-    rpm -Uvh erlang-*.rpm
+    rpm -Uvh erlang-25.3.2-1.el8.x86_64.rpm
     yum install -y erlang
     erl
     ```   
     ```bash
-    rpm -Uvh rabbitmq-server-*.noarch.rpm
+    rpm -Uvh rabbitmq-server-3.11.15-1.el8.noarch.rpm
     yum install -y socat
     yum install -y rabbitmq-server
     systemctl start rabbitmq-server
@@ -354,7 +382,7 @@
     # Admin → Virtual Hosts → Add a new virtual host
     ```
 ---
-## [MongoDB](https://www.imooc.com/video/23829)
+## [MongoDB](https://www.imooc.com/video/23831)
 1. Download
     - [MongoDB Community Server Download](https://www.mongodb.com/try/download/community)
         ```
@@ -375,11 +403,7 @@
         C:/Users/Administrator/Desktop/mongosh-1.8.2-linux-x64.tgz \
         root@43.136.102.115:/home/lighthouse/software
     ```
-    ```bash
-    cd /home/lighthouse/software
-    cp erlang-*.rpm rabbitmq-server-*.noarch.rpm /usr/local/rabbitmq
-    ```
-3. 解压和移动：`cd /home/software`
+3. 解压和移动：`cd /home/lighthouse/software`
     ```bash
     tar -zxvf mongodb-linux-x86_64-rhel80-6.0.6.tgz
     mv mongodb-linux-x86_64-rhel80-6.0.6 /usr/local/mongodb

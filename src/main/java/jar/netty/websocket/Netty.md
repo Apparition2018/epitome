@@ -7,7 +7,7 @@
 1. [Netty.docs: Netty.docs: Home](https://netty.io/wiki/)
 2. [通俗地讲，Netty 能做什么？](https://www.zhihu.com/question/24322387)
 ## 课程
-1. [Netty入门之WebSocket初体验-慕课网](https://www.imooc.com/learn/941)
+1. [Netty入门之WebSocket初体验·(https://www.imooc.com/learn/941)
 2. [解锁网络编程之NIO的前世今生-慕课网](https://www.imooc.com/learn/1118)
 ---
 ## 使用场景
