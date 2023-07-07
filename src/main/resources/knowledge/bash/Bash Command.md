@@ -6,7 +6,8 @@
 2. [Linux 命令大全 | 易百教程](https://www.yiibai.com/linux)
 3. [Linux man pages online](https://linux.die.net/man/)
 4. [Linux man pages online](https://man7.org/linux/man-pages/)
-5. [Linux/Basic commands](https://en.wikiversity.org/wiki/Linux/Basic_commands)
+5. [CSE 390 Bash Command Reference](https://courses.cs.washington.edu/courses/cse390a/14au/bash.html)
+6. [Linux Command Reference](https://personales.unican.es/corcuerp/Linux/commands/Bash%20Command%20Reference.html)
 ## 问题
 1. [Linux 常见命令缩写](https://www.cnblogs.com/h2mm/p/6691309.html)
 2. [Linux 下命令行 curl 的 10 种常见用法示例](https://www.cnblogs.com/zxqblogrecord/p/8900219.html)
@@ -14,30 +15,59 @@
 ---
 ## 其它
     --help                                                              显示帮助信息
-    &                                                                   后台执行
     |                                                                   管道命令
 ---
-## 进程管理 (Process Management)
-    ps                              process status                      显示进程状态
-    ps -ef                                                              System V 风格
-            -e                                                          所有进程
-            -f                                                          full-format listing
-    ps aux                                                              BSD-style
-            u                                                           user-oriented 格式
-    top                                                                 显示系统摘要信息和内核管理的任务列表
-        -p                                                              指定进程 ID
-    lsof                            list open files
-        -i                                                              Internet address 匹配
-        -P                                                              禁止端口号转换为端口名
-        -n                                                              禁止 IP 转换为 host names 
-    kill                                                                终止进程
-        -1, -HUP                                                        重新加载进程
-        -9, -KILL                                                       强制杀死进程
-        -15, -TERM                                                      正常退出进程
+## 基础 shell (basic shell)
+    clear                                                               清除终端所有输出文本
+    exit / logout                                                       退出 shell
+    alias, unalias                                                      给一个命令起一个别名
+    history                                                             显示历史输入命令
 ---
-## 文件系统 (Filesystem)
-    chgrp                           change group                        更改组所有权
-    chown                           change ownership                    更改文件所有权
+## 目录 (directories)
+    ls                              list                                列出目录内容
+        -l                                                              long listing 格式
+    pwd                             print work directory                打印当前工作目录
+    cd                              change directory                    更改工作目录
+    mkdir                           make directory                      创建目录
+        -p, --parents                                                   创建目录，如需要创建父目录
+    rmdir                           remove directory                    删除空目录
+        --ignore-fail-on-non-empty                                      非空时忽略失败
+---
+## 文件操作 (file operations)
+    cp                              copy                                复制文件或目录
+    mv                              move                                移动文件或目录
+    rm                              remove                              删除文件或目录
+        -r, -R, --recursive                                             递归删除
+        -f, --force                                                     忽略不存在的文件，不提示
+        -i                          interactive                         交互式删除
+    touch                                                               创建文件和更改文件的访问和修改时间
+---
+## 文件审查 (file examination)
+    cat                             concatenate                         连接并打印文件内容
+        /etc/alternatives/                                              http://www.manongjc.com/detail/17-aeorawzcehpuatd.html
+        /etc/group                                                      用户组
+        /etc/hostname                                                   主机名
+        /etc/hosts                                                      IP 和主机名映射
+        /etc/init.d/                                                    /etc/rc.d/init.d 软链接，https://blog.csdn.net/liaowenxiong/article/details/117083906
+        /etc/localtime                                                  本地时间
+        /etc/passwd                                                     用户，https://www.linuxprobe.com/explain-etc-passwd.html
+        /etc/profile                                                    环境变量
+        /etc/sysconfig/iptables                                         防火墙
+        /etc/sysconfig/network-scripts/                                 网络脚本
+        /etc/selinux/                                                   强制访问控制系统
+        /etc/timezone                                                   时区
+    more / less                                                         打印文件内容，一次一页
+    head / tail                                                         打印文件的前/后十行内容
+        -n                                                              打印文件的前/后n行内容
+    wc                              word count
+        -w                                                              打印字数
+        -c                                                              打印字节数
+        -m                                                              打印字符数
+        -l                                                              打印行数
+    du                              disk usage                          递归目录文件的磁盘使用情况
+    diff                            difference                          打印两个文件的差异
+---
+## 文件权限 (file permissions)
     chmod                           change modes                        更改文件模式/属性/权限，https://mp.weixin.qq.com/s/2OyR1GlQLQcQkbMVQbIRjg
         -R                                                              递归处理
         u                           user                                文件所有者
@@ -58,41 +88,82 @@
         5                           r-x             101                 可读+可执行
         6                           rw-             110                 可读+可写
         7                           rwx             110                 可读+可写+可执行
-    pwd                             print work directory                打印工作目录
-    cd                              change directory                    更改工作目录
-    ls                              list                                列出目录内容
-        -l                                                              long listing 格式
-    mkdir                           make directory                      创建目录
-        -p, --parents                                                   创建目录，如需要创建父目录
-    touch                                                               创建文件和更改文件的访问和修改时间
-    file                                                                确定文件类型
-    find                                                                搜索文件
+    chown                           change ownership                    更改文件所有权
+    chgrp                           change group                        更改组所有权
+    umask                           user's mask                         指定建立文件时预设的权限掩码
+---
+## 搜索和排序 (searching and sorting)
+    grep PATTERN [FILE]             global regular expression print     查找与给定 PATTERN 匹配的行
+        -i, --ignore-case                                               不区分大小写
+        -n, --line-number                                               显示行号
+        --color                                                         红色字体
+    sort                                                                输出排序后的文件内容
+    uniq                            unique                              删除重复的行
+    find                                                                在给定目录中查找文件
         -iname                                                          文件名，忽略大小写
-    cat                             concatenate                         连接并打印文件
-        /etc/alternatives/                                              http://www.manongjc.com/detail/17-aeorawzcehpuatd.html
-        /etc/group                                                      用户组
-        /etc/hostname                                                   主机名
-        /etc/hosts                                                      IP 和主机名映射
-        /etc/init.d/                                                    /etc/rc.d/init.d 软链接，https://blog.csdn.net/liaowenxiong/article/details/117083906
-        /etc/localtime                                                  本地时间
-        /etc/passwd                                                     用户，https://www.linuxprobe.com/explain-etc-passwd.html
-        /etc/profile                                                    环境变量
-        /etc/sysconfig/iptables                                         防火墙
-        /etc/sysconfig/network-scripts/                                 网络脚本
-        /etc/selinux/                                                   强制访问控制系统
-        /etc/timezone                                                   时区
-    mv                              move                                移动文件
-    cp                              copy                                复制文件
+    xargs                           extended arguments                  给命令传递参数的一个过滤器，也是组合多个命令的一个工具
+    locate                                                              按名称查找文件
+    which                                                               显示命令或文件的完整路径
+---
+## 压缩 (compression)
+    tar                             tape archive                        存档/解存档
+        -z, --gzip                                                      通过 gzip 过滤存档
+        -c, --create                                                    创建新的存档
+        -C, --directory=DIR                                             更改目录 DIR
+        -x, --extract, --get                                            从存档中提取文件
+        -v, --verbose                                                   显示执行过程
+        -f, --file=ARCHIVE                                              使用归档文件或设备 ARCHIVE
+    gzip / gunzip                                                       压缩/解压缩
+---
+## 系统信息 (system information
+    date                            date '+%Y-%m-%d %H:%M:%S'           打印或设置系统日期时间
+    cal                                                                 显示日历
+    uname                           unix name                           打印系统信息
+        -a, --all                                                       打印全部信息
+        -n, --nodename                                                  打印主机名
+        -m, --machine                                                   打印处理器架构
+        -r, --kernel-release                                            打印内核版本
+        -s, --kernel-name                                               打印内核名称
+    time                                                                测量命令或程序运行时间
+---
+## 进程管理 (process management)
+    ps                              process status                      显示进程状态
+    ps -ef                                                              System V 风格
+            -e                                                          所有进程
+            -f                                                          full-format listing
+    ps aux                                                              BSD-style
+            u                                                           user-oriented 格式
+    top                                                                 显示当前内核管理的任务
+        -p                                                              指定进程 ID
+    lsof                            list open files
+        -i                                                              Internet address 匹配
+        -P                                                              禁止端口号转换为端口名
+        -n                                                              禁止 IP 转换为 host names 
+    kill                                                                杀死进程
+        -1, -HUP                                                        重新加载进程
+        -9, -KILL                                                       强制杀死进程
+        -15, -TERM                                                      正常退出进程
+    killall                                                             按名称杀死进程
+    &                                                                   当 & 放在命令末尾时，该命令在后台运行
+---
+## 用户和组 (users and groups)
+    whoami                                                              打印与当前有效用户 ID 关联的用户名
+    passwd                          password                            更改用户密码
+    groups                                                              打印用户所在组
+    sudo                            super user do                       以超级用户身份执行命令
+    su                              switch user                         切换用户
+---
+##
+    nohup                           no hang up                          运行命令，忽略 hangup signals
+        nohup java -jar thymeleaf-8081.jar > thymeleaf-8081.log 2>&1 &
+        nohup java -jar thymeleaf-8082.jar > thymeleaf-8082.log 2>&1 &
+        nohup java -jar thymeleaf-8083.jar > thymeleaf-8083.log 2>&1 &
+---
+## 文件系统 (Filesystem)
+    file                                                                确定文件类型
     cmp                             compare                             对比两个文件
-    rm                              remove                              删除文件或目录
-        -r, -R, --recursive                                             递归删除
-        -f, --force                                                     忽略不存在的文件，不提示
-        -i                          interactive                         交互式删除
-    rmdir                           remove directory                    删除空目录
-        --ignore-fail-on-non-empty                                      非空时忽略失败
     dd                              disk dump                           转换和复制文件
     df                              disk free                           报告磁盘空间使用情况
-    du                              disk usage                          估计文件空间使用情况
     ln                              link                                在文件之间建立链接
         -s, -symbolic                                                   符号链接
     mount                                                               挂载文件
@@ -100,8 +171,6 @@
 ---
 ## 杂项 (Misc)
     bc                              basic calculator                    任意精度算术语言，在 linux 下通常用作计算器
-    cal                                                                 打印日历
-    date                            date '+%Y-%m-%d %H:%M:%S'           显示或设定系统的日期与时间
     crontab                                                             定时任务
     export                                                              设置或显示环境变量
     fc
@@ -109,10 +178,6 @@
 ---
 ## 文件管理
     nl                                                                  显示文件内容，添加行号
-    more                                                                显示文件内容，以一页一页的形式
-    head                                                                显示文件头部内容
-        -n                                                              显示的行数
-    tail [FILE]                                                         显示文件尾部内容
     od                              octal dump                          以八进制显示文件内容
     cut                                                                 切割文件并显示
     tee                                                                 读取标准输入的数据，并将其内容输出成文件
@@ -121,22 +186,12 @@
     scp                             secure copy                         Linux 之间复制文件或目录
     chattr                          change attribute                    更改文件属性
     whereis                                                             查找文件
-    which                                                               查找文件
-    locate                                                              查找符合条件的文件
-    diff                            difference                          比较两个文件的差异
-    umask                           user's mask                         指定建立文件时预设的权限掩码
     mc                              midnight commander                  提供一个菜单式的文件管理程序
 ---
 ## 文档编辑
-    grep PATTERN [FILE]             global regular expression print     查找文件里符合条件的字符串
-        -i, --ignore-case                                               不区分大小写
-        -n, --line-number                                               显示行号
-        --color                                                         红色字体
     egrep                           extended grep                       查找文件里符合条件的字符串 (grep -e)
     fgrep                           fixed grep                          查找文件里符合条件的字符串 (grep -f)
-    uniq                            unique                              删除重复的行列
     tr                              translate                           转换大小写或删除字符
-    sort                                                                排序文本
     ed                              editor                              编辑文本
     joe                             joe's own editor                    编辑文本
     pico                            pine's message composition editor   编辑文本
@@ -153,11 +208,6 @@
     col                                                                 过滤控制字符
     join                                                                将两个文件中，指定栏位内容相同的行连接起来
     split                                                               将一个文件分割成数个文件
-    wc                              word count                          统计字数
-        -w                                                              统计字数
-        -c                                                              统计字节数
-        -m                                                              统计字符数
-        -l                                                              统计行数
 ---
 ## 文件传输
     lpr                             line print                          将一个或多个文件放入打印队列等待打印
@@ -215,31 +265,19 @@
     groupadd                                                            创建一个新的组
         -r                                                              建立系统账号
         -g                                                              指定用户所属的组
-    groups                                                              打印用户所在组
     newgrp                                                              登录到新组
     adduser                                                             新增使用者帐号或更新预设的使用者资料
-    su                              switch user                         切换用户
-    sudo                            super user do                       以系统管理者的身份执行指令
     chsh                            change shell                        更改使用者 shell 设定
     ulimit                          user's limit                        控制 shell 程序的资源
-    whoami                                                              显示自身用户名称
     id                                                                  显示用户 ID，以及所属群组 ID
     w                                                                   显示当前用户的信息
     finger                                                              显示其它用户的信息
     who                                                                 显示系统所有使用者信息
     whois                                                               查找并显示用户信息
-    uname                           unix name                           显示系统信息
-        -a                          --all                               显示全部信息
-        -n                          --nodename                          显示主机名称
-        -m                          --machine                           显示处理器架构
-        -r                          --release                           显示操作系统的发行编号
-        -s                          --sysname                           显示操作系统名称
     shutdown                                                            关闭系统
         -h                                                              关闭系统后停机
         -r                                                              关闭系统后重新开机
     reboot                                                              重启系统
-    logout                                                              退出系统
-    exit                                                                退出目前的 shell
 ---
 ## 系统设置
     ssh-keygen                                                          生成、管理和转换 SSH 的省份验证密钥
@@ -250,7 +288,6 @@
     ssh-add                                                             将私钥添加到 ssh-agent
         -L                                                              列出公钥
     uptime                                                              显示系统运行时间或系统的平均负载
-    clear                                                               清除屏幕
     useradd                                                             添加用户
         -d                                                              指定用户登录目录 HOME_DIR，默认 BASE_DIR + LOGIN name
         -s                                                              指定用户使用的 shell
@@ -262,7 +299,6 @@
     userdel                                                             删除用户
         -r                                                              删除用户登入目录以及目录中所有文件
         -f                                                              强制删除用户
-    passwd                          password                            更改用户密码
     chkconfig                                                           检查和设置系统各种服务
         --add                                                           增加系统服务
         --list                                                          列出服务的情况
@@ -293,19 +329,9 @@
     rmmod                           remove modules                      删除模块
 ---
 ## 备份压缩
-    tar                             tape archive                        备份文件
-        -z                          --gzip                              通过 gzip指令处理备份文件
-        -c                          --create                            建立新的备份文件
-        -C | --directory                                                解压到指定目录
-        -x                          --extract                           从备份文件中还原文件
-        -v                          --verbose                           显示指定执行过程
-        -f                          --file                              指定备份文件
-    gzip                                                                压缩文件
-    gunzip                                                              解压 gzip 文件
     gzcat                                                               查看 gzip 文件
 ---
 ## 其它
-    xargs                           extended arguments                  给命令传递参数的一个过滤器，也是组合多个命令的一个工具
     printf                          print formatted
     echo                                                                输出字符串
 ---

@@ -48,8 +48,12 @@
 ---
 ## [.conf](nginx_0.conf)
 1. [反向代理](nginx_1.conf)
-    - [负载均衡](nginx_1_1.conf)
-2. [提供静态内容](nginx_2.conf)
-    - [HTTP服务器（包含动静）](nginx_2_1.conf)
-3. 正向代理
+    - [负载均衡](nginx_2.conf)
+2. [提供静态内容](nginx_3.conf)
+    - [动静分离](nginx_1.conf)
+3. [正向代理](https://www.yiibai.com/nginx/nginx-main-use-scenes.html#h2-5-)
+---
+## [Nginx 集群](https://www.imooc.com/video/23861)
+![Nginx 集群](https://img.mukewang.com/64a7cdca0001214919201080-500-284.jpg)
+
 ---

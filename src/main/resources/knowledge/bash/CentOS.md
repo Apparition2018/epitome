@@ -24,9 +24,9 @@
 ## JDK
 1. [downloads](https://www.oracle.com/java/technologies/downloads/archive/) 并安装
     ```
-    rpm -qa|grep xxx    yum list installed|grep xxx
-    rpm -e xxx          yum remove xxx
-    wget xxx.rpm        yum search java|grep -i --color xxx     wget xxx.tar.gz
+    rpm -qa|grep jdk    yum list installed|grep jdk
+    rpm -e jdk          yum remove jdk
+    wget xxx.rpm        yum search java|grep -i --color jdk     wget xxx.tar.gz
     rpm -ivh xxx.rpm    yum install -y xxx                      tar -zxvf xxx.tar.gz
     ```
 2. 添加环境变量
@@ -444,7 +444,6 @@ kill -s QUIT 1628           杀死进程 /var/run/nginx.pid
     export MINIO_ROOT_USER=minio
     export MINIO_ROOT_PASSWORD=minio123
     # 2>&1 详解：https://blog.csdn.net/icanlove/article/details/38018169
-    # &：后台运行
     ./minio server --console-address 0.0.0.0:9001 /usr/local/minio/data > /usr/local/minio/minio.log 2>&1 &
     ```
 3. MinIO Console：`http://localhost:9001/login`
