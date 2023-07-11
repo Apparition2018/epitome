@@ -97,6 +97,7 @@
         -i, --ignore-case                                               不区分大小写
         -n, --line-number                                               显示行号
         --color                                                         红色字体
+        -A <num>                                                        在匹配行之后再打印 num 行
     sort                                                                输出排序后的文件内容
     uniq                            unique                              删除重复的行
     find                                                                在给定目录中查找文件
@@ -153,6 +154,18 @@
     sudo                            super user do                       以超级用户身份执行命令
     su                              switch user                         切换用户
 ---
+## 多用户环境 (multi-user environments)
+    hostname                                                            显示或设置主机名
+    w                                                                   显示当前登录用户
+    write                                                               向其他登录用户发送信息，特定
+    wall                                                                向其他登录用户发送信息，广播
+## 网络 (network)
+    ssh                             OpenSSH SSH client                  远程登录程序
+    sftp                            secure file transfer program        安全文件传输程序
+    scp                             secure copy                         远程文件复制程序
+
+---
+---
 ##
     nohup                           no hang up                          运行命令，忽略 hangup signals
         nohup java -jar thymeleaf-8081.jar > thymeleaf-8081.log 2>&1 &
@@ -183,7 +196,6 @@
     tee                                                                 读取标准输入的数据，并将其内容输出成文件
     paste                                                               合并文件的列
         -r                          --recursive                         递归复制
-    scp                             secure copy                         Linux 之间复制文件或目录
     chattr                          change attribute                    更改文件属性
     whereis                                                             查找文件
     mc                              midnight commander                  提供一个菜单式的文件管理程序
@@ -236,7 +248,6 @@
     badblocks                                                           检查磁盘装置中损坏的区块
 ---
 ## 网络通信
-    hostname                                                            获取或设置主机名或 NIS 域名
     ping                            packet internet grouper             像网络主机发送 ICMP ECHO_REQUEST
     # net-tools vs iproute2：https://www.cnblogs.com/liyuanhong/p/15960954.html
     ifconfig --help                 ip help
@@ -257,7 +268,6 @@
         -p, --program                                                   显示正在使用 Socket 的程序识别码和程序名称
     wget                                                                非交互网络下载器
     telnet                          telecommunications network          远程连接
-    ssh                                                                 远程连接
     tty                             teletypewriter                      打印连接到标准输入的终端的文件名
 ---
 ## 系统管理
@@ -270,7 +280,6 @@
     chsh                            change shell                        更改使用者 shell 设定
     ulimit                          user's limit                        控制 shell 程序的资源
     id                                                                  显示用户 ID，以及所属群组 ID
-    w                                                                   显示当前用户的信息
     finger                                                              显示其它用户的信息
     who                                                                 显示系统所有使用者信息
     whois                                                               查找并显示用户信息
@@ -300,7 +309,8 @@
         -r                                                              删除用户登入目录以及目录中所有文件
         -f                                                              强制删除用户
     chkconfig                                                           检查和设置系统各种服务
-        --add                                                           增加系统服务
+        --add                                                           增加服务
+        --del                                                           移除服务
         --list                                                          列出服务的情况
     eval                            evaluate                            读取一连串的参数，然后再依参数本身的特性来执行
     rpm                             redhat package manager              红帽子打包管理器

@@ -183,7 +183,7 @@ docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   显示 Docker �
     # 显示所有 container IP
     docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
     # 显示 container 日志地址
-    docker inspect --format '{{.LogPath}}' 516aad49fe58
+    docker inspect --format '{{.LogPath}}' c951678a44fc
 docker login                                                    登录 registry
 docker logout                                                   注销 registry 
 ```
@@ -286,23 +286,21 @@ docker network create [OPTIONS] NETWORK                         创建网络
 ---
 ## [MySQL](https://hub.docker.com/_/mysql)
 - [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
+- 配置文件读取顺序命令：`mysql --verbose --help|grep -A 1 'Default options'`
 ```bash
-mkdir -p /home/lighthouse/docker_data/mysql/{data,files}
+mkdir -p /home/lighthouse/docker_data/mysql/{data,conf,log,files}
 cd /home/lighthouse/docker_data/mysql
-# 从容器复制 my.cnf
-# 查找配置文件位置命令：mysql --verbose --help|grep -A 1 'Default options'
-docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root mysql
-docker cp mysql:/etc/my.cnf $PWD/my.cnf
-docker stop mysql
-docker rm mysql
 ```
 ```bash
 docker run -d --name mysql -p 3306:3306 --privileged --restart=unless-stopped \
--v $PWD/my.cnf:/etc/mysql/my.cnf \
 -v $PWD/data:/var/lib/mysql \
+-v $PWD/conf:/etc/mysql/conf.d \
+-v $PWD/log:/var/log/mysql \
 -v $PWD/files:/var/lib/mysql-files \
 -e MYSQL_ROOT_PASSWORD=root \
-mysql
+mysql \
+--character-set-server=utf8mb4 \
+--collation-server=utf8mb4_unicode_ci
 ```
 ```bash
 docker exec -it mysql mysql -uroot -proot

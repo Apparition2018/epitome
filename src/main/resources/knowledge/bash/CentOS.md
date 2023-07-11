@@ -2,24 +2,53 @@
 
 ---
 ## 问题
-1. [在 VMware 上安装 CentOS6.8](https://www.cnblogs.com/moranlei/p/9333184.html)
-2. [VMware 没有足够内存自动启用 kdump](http://www.360doc.com/content/20/0415/23/67357512_906311206.shtml)
-3. [CentOS 磁盘安装与磁盘分区方案详解](https://www.cnblogs.com/sunmoonp/p/10968359.html)
-4. [CentOS6.8 联网设置](https://blog.csdn.net/Catdingwt/article/details/79585929)
+1. [CentOS 6.8 联网设置](https://blog.csdn.net/Catdingwt/article/details/79585929)
 ---
-## Partition
+## 安装与配置
+- [Download](https://www.centos.org/download/)
+### VMware
+- [Downloads](https://customerconnect.vmware.com/en/downloads/#all_products)：VMware Workstation
+- [VMware 安装 CentOS 7](https://www.imooc.com/video/24343)
+    - 网络连接：桥接模式
+- [VMware 克隆环境](https://www.imooc.com/video/24347)
+- [VMware 10 安装 CentOS 6.8](https://www.cnblogs.com/moranlei/p/9333184.html)
+- [VMware 10 没有足够内存自动启用 kdump](http://www.360doc.com/content/20/0415/23/67357512_906311206.shtml)
+### [分区](https://www.cnblogs.com/sunmoonp/p/10968359.html)
 | 分区    | 作用              | 空间       |
 |-------|-----------------|----------|
 | /boot | Linux 系统启动有关的程序 | 256mb    |
 | /home | 用户目录            | 5120bm   |
 | swap  | 虚拟内存            | 物理内存1~2倍 |
 | /     | 系统根目录           | 剩余空间     |
+### 其它
+1. 修改 [ifcfg-eth0](https://blog.csdn.net/wanghailan1818/article/details/123629708)：`vim /etc/sysconfig/network-scripts/ifcfg-eth0` → `service network restart`
+    ```
+    BOOTPROTO=static
+    ONBOOT=yes
+    IPADDR=192.168.0.9
+    NETMASK=255.255.255.0
+    GATEWAY=192.168.0.2
+    DNS1=192.168.0.2
+    HWADDR=00:0c:29:fe:82:89
+    ```
+2. 修改 hostname：`hostnamectl set-hostname <hostname>` → `reboot`
+3. [防火墙](https://www.likecs.com/show-205138371.html) ???
+
+| CentOS 6                                        | CentOS 7                                                      |                   |
+|-------------------------------------------------|---------------------------------------------------------------|-------------------|
+| chkconfig iptables on\|off                      | systemctl enable\|disable firewalld                           | 开启/关闭防火墙（重启后永久生效) |
+| service iptables start\|stop                    | systemctl start\|stop firewalld                               | 开启/关闭防火墙（重启后失效)   |
+| service iptables restart\|status\|save          | systemctl restart\|status firewalld                           |                   |
+| /etc/sysconfig/iptables                         |                                                               | 防火墙文件             |
+| iptables -I INPUT -p tcp --dport 8090 -j ACCEPT | firewall-cmd --zone=public --add-port=8080/tcp --permanent    | 添加                |
+| iptables -D INPUT -p tcp --dport 8090 -j ACCEPT | firewall-cmd --zone=public --remove-port=8080/tcp --permanent | 移除                |
 ---
-## 安装后执行命令
-    su
-    ip addr
-    vi /etc/sysconfig/network-scripts/ifcfg-eth0; ONBOOT=yes;
-    vi ~/.ssh/known_hosts
+## [内网互通原则](https://www.imooc.com/video/24348)
+1. 关闭本地防火墙
+2. 关闭 Linux 防火墙 或 开启安全组端口
+3. 连接同一个 WiFi 下的网段
+4. 保证同一个网段设备同处于一个网段
+5. 前端 (IOS/Android/HarmonyOS/…) 不要使用 localhost
 ---
 ## JDK
 1. [downloads](https://www.oracle.com/java/technologies/downloads/archive/) 并安装
@@ -29,6 +58,7 @@
     wget xxx.rpm        yum search java|grep -i --color jdk     wget xxx.tar.gz
     rpm -ivh xxx.rpm    yum install -y xxx                      tar -zxvf xxx.tar.gz
     ```
+    - [Azul Zulu JDK](https://www.azul.com/downloads/?package=jdk#zulu)
 2. 添加环境变量
     - `which java` → `ls -l /usr/bin/java` → `ls -l /etc/alternatives/java`
     - `vim /etc/profile` → `source /etc/profile` 或 `. /etc/profile`
@@ -76,8 +106,7 @@
     4.2 CentOS 7
         4.2.1 firewall-cmd --zone=public --list-ports
         4.2.2 firewall-cmd --zone=public --add-port=8080/tcp --permanent
-        4.2.3 firewall-cmd --zone=public --remove-port=8080/tcp --permanent
-        4.2.4 systemctl restart firewalld
+        4.2.3 systemctl restart firewalld
 5. ${CATALINA_HOME}/bin/startup.sh
    ${CATALINA_HOME}/bin/shutdown.sh
 6. 可选
@@ -86,23 +115,25 @@
 ```
 ---
 ## Maven
-```
-1. https://maven.apache.org/download.cgi
-    wget https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.tar.gz
+1. [download](https://maven.apache.org/download.cgi) 并解压
+    ```bash
+    wget https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
     tar -zxvf xxx.tar.gz
-    mv apache-maven-3.9.1 /usr/local/
-2. 添加环境变量:
-    2.1 vim /etc/profile
-        export M2_HOME=/usr/local/apache-maven-3.9.1
-        export PATH=$PATH:$M2_HOME/bin
-    2.2 source /etc/profile
-3. mvn -version
-4. 常用命令
+    mv apache-maven-3.9.3 /usr/local/
+    ```
+2. 添加环境变量：`vim /etc/profile` → `source /etc/profile`
+    ```
+    export M2_HOME=/usr/local/apache-maven-3.9.3
+    export PATH=$PATH:$M2_HOME/bin
+    ```
+3. 命令
+    ```
+    mvn -version
     mvn clean                                       清除
     mvn compile                                     编译
     mvn package                                     打包
     mvn clean package -Dmaven.test.skip=true        跳过单元测试
-```
+    ``` 
 ---
 ## vsftpd
 - Very Secure FTP Daemon，一个完全免费的、开放源代码的 ftp 服务器软件
@@ -182,34 +213,17 @@
     - 可参考 docker 安装 nginx 后，输入 nginx -V 查看配置参数
 5. 防火墙：开放 80 端口
 6. [命令](https://nginx.org/en/docs/switches.html)：`cd /usr/local/nginx/sbin`
-```
-.nginx -h                   帮助
-.nginx -t                   测试
-.nginx                      启动
-.nginx -s stop              快速关闭
-.nginx -s quit              优雅关闭
-.nginx -s reload            重新加载配置
-.nginx -v                   版本
-.nginx -V                   版本、编译版本、配置参数
-kill -s QUIT 1628           杀死进程 /var/run/nginx.pid
-```
-```
-6. 虚拟域名配置及测试验证
-    6.1 vim /usr/local/nginx/conf/nginx.conf
-        # 加载 vhost/ 目录下的配置文件（方便维护），在 Server 节点前
-        include vhost/*.conf;
-    6.2 mkdir /usr/local/nginx/conf/vhost
-    6.3 创建域名转发配置文件
-        www.ljh.com.conf
-        image.ljh.com.conf
-        ...
-8. 修改 hosts 文件，配置域名转发
-    C:\Windows\System32\dirvers\etc\hosts       Windows
-    /etc/hosts                                  Linux
-        192.168.58.129 www.ljh.com
-        192.168.58.129 image.ljh.com
-        192.168.58.129 s.ljh.com
-```
+    ```
+    .nginx -h                   帮助
+    .nginx -t                   测试
+    .nginx                      启动
+    .nginx -s stop              快速关闭
+    .nginx -s quit              优雅关闭
+    .nginx -s reload            重新加载配置
+    .nginx -v                   版本
+    .nginx -V                   版本、编译版本、配置参数
+    kill -s QUIT 1628           杀死进程 /var/run/nginx.pid
+    ```
 ---
 ## [MySQL 5.7](https://www.cnblogs.com/qcq0703/p/11186055.html)
 1. `yum list installed|grep mysql`、`yum list installed|grep mariadb` → `yum remove xxx`
@@ -225,12 +239,11 @@ kill -s QUIT 1628           杀死进程 /var/run/nginx.pid
     mv mysql-5.7… mysql-5.7
     mv mysql-5.7 /usr/local/
     ```
-3. 添加环境变量
-    - `vim /etc/profile` → `source /etc/profile`
-        ```
-        export MYSQL_HOME=/usr/local/mysql-5.7
-        export PATH=$PATH:$MYSQL_HOME/bin
-        ```
+3. 添加环境变量：`vim /etc/profile` → `source /etc/profile`
+    ```
+    export MYSQL_HOME=/usr/local/mysql-5.7
+    export PATH=$PATH:$MYSQL_HOME/bin
+    ```
 4. 创建用户组和用户
     ```
     cat /etc/group|grep mysql                       查看 mysql 组是否存在
