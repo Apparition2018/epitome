@@ -70,17 +70,24 @@
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-1.8",
-      "path": "D:\\Java\\jdk1.8.0_321",
+      "path": "D:\\Java\\jdk1.8.0_361"
+    },
+    {
+      "name": "JavaSE-17",
+      "path": "D:\\Java\\jdk-17",
       "default": true
     }
   ],
+  "java.compile.nullAnalysis.mode": "automatic",
   // maven
   "java.configuration.maven.globalSettings": "D:\\dev\\.maven\\settings.xml",
   "java.configuration.maven.userSettings": "D:\\dev\\.maven\\settings.xml",
   // lombok
   "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"D:\\dev\\.vscode\\extensions\\gabrielbb.vscode-lombok-1.0.1\\server\\lombok.jar\"",
-  // appworks
-  "appworks.materialSources": [],
+  // remote
+  "remote.SSH.remotePlatform": {
+    "43.136.102.115": "linux"
+  },
   // prettier: https://prettier.io/docs/en/
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",

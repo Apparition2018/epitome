@@ -16,10 +16,7 @@ MAXSIZE 34359721984
 -- 本地管理
 EXTENT MANAGEMENT LOCAL;
 ```
-2. 删除表空间
-```
-DROP TABLESPACE tablespace_name [INCLUDING CONTENTS and DATAFILES];
-```
+2. 删除表空间：`DROP TABLESPACE tablespace_name [INCLUDING CONTENTS and DATAFILES];`
 3. [创建用户](https://www.techonthenet.com/oracle/users/index.php)
 ```oracle
 CREATE USER user_name IDENTIFIED BY password

@@ -3,18 +3,25 @@
 ---
 ## [查询语句执行顺序](https://www.cnblogs.com/wyq178/p/11576065.html)
 ```
-FROM
+FROM                        ←   小表放在后面，作为驱动表
 ON
 JOIN
-WHERE                       不能使用别名，因为还没执行 SELECT
-GROUP BY                    只保留了分组字段和聚合函数的结果，因此 SELECT、ORDER BY 只能使用这些字段 
+WHERE                       ←   过滤越多数据的条件写在越后面；不能使用别名，因为还没执行 SELECT
+GROUP BY                    →   只保留了分组字段和聚合函数结果，因此 SELECT 和 ORDER BY 只能使用这些字段 
 AGGREGATE
-HAVING                      能用 WHERE 过滤就不要用 HAVING
+HAVING                          能用 WHERE 过滤就不用 HAVING
 SELECT
 DISTINCT
 UNION|INTERSECT|EXCEPT
 ORDER BY
 LIMIT|TOP|OFFSET|FETCH
+
+SELECT name, avg(score)     5
+FROM score                  1
+WHERE id > 0                2
+GROUP BY name	            3
+    HAVING name <> ''       4
+ORDER BY name;              6
 ```
 ---
 ## 基础查询
@@ -48,6 +55,14 @@ JOIN dept d ON e.deptno = d.deptno
 GROUP BY d.loc
 ```
 2. Oracle：`ROLLUP`，`CUBE`，`GROUPING SETS`
+```oracle
+-- ROLLUP(a,b,c): (a,b,c) + (a,b) + (a)
+SELECT year_id,month_id,day_id,SUM(sales_value) sum FROM sales GROUP BY ROLLUP(year_id,month_id,day_id) ORDER BY year_id,month_id,day_id;
+-- CUBE(a,b,c): (a,b,c) + (a,b) + (a,c) + (a) + (b,c) + (b) + (c) + ()
+SELECT year_id,month_id,day_id,SUM(sales_value) sum FROM sales GROUP BY CUBE(year_id,month_id,day_id) ORDER BY year_id,month_id,day_id;
+-- GROUPING SETS((…),(…),…): (…) + (…) + …
+SELECT year_id,month_id,day_id,SUM(sales_value) sum FROM sales GROUP BY GROUPING SETS((year_id,month_id,day_id),(year_id,month_id)) ORDER BY year_id,month_id,day_id;
+```
 ---
 ## 关联查询
 ```oracle

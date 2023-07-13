@@ -29,12 +29,13 @@
 2. 下载地址：https://www.docker.com/products/docker-desktop
    或：https://hub.docker.com/editions/community/docker-ce-desktop-windows
 3. 下载并安装 [WSL2](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
-4. Settings → Docker Engine
+4. [镜像加速器](https://cr.console.aliyun.com/cn-qingdao/instances/mirrors)：Settings → Docker Engine
     ```
     "registry-mirrors": [
       "https://docker-cn.com",
       "http://hub-mirror.c.163.com",
-      "https://docker.mirrors.ustc.edu.cn"
+      "https://docker.mirrors.ustc.edu.cn",
+      "https://vdm14qsf.mirror.aliyuncs.com"
     ],
     ```
 5. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
@@ -341,6 +342,11 @@ docker run -d --name mssql \
 -e "SA_PASSWORD=Cesc123456!" \
 -p 1433:1433 \
 mcr.microsoft.com/mssql/server:2019-latest
+```
+---
+## Oracle
+```bash
+docker run -d --name oracle_11g -p 1521:1521 registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
 ```
 ---
 ## [InfluxDB](https://hub.docker.com/_/influxdb)

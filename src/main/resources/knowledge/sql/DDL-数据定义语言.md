@@ -1,7 +1,7 @@
 # 数据定义语言 Data Definition Language
 
 ---
-## 参考网站
+## Reference
 1. [Oracle、MySQL、SQL Server创建表和给表和字段加注释](https://www.cnblogs.com/zt528/p/5386516.html)
 2. [SQL Server 添加表注释、字段注释](https://blog.csdn.net/stupidbird003/article/details/64562683)
 3. [Data Definition Statements](https://dev.mysql.com/doc/refman/8.0/en/sql-data-definition-statements.html)
@@ -53,7 +53,7 @@ TRUNCATE TABLE score;
 CREATE TEMPORARY TABLE `tmp` (
     `id` int PRIMARY KEY,
     `name` varchar(20)
-)
+);
 ```
 2. Oracle
 ```oracle
@@ -69,8 +69,12 @@ CREATE GLOBAL TEMPORARY TABLE demo (
 CREATE TABLE #temp (
     id int PRIMARY KEY,
     name varchar(20)
-)
+);
 ```
+### 复制表结构
+1. MySQL / Oracle：`CREATE TABLE score_bak AS SELECT * FROM score WHERE 1=2;`
+2. MySQL：`CREATE TABLE score_bak LIKE score;`
+3. SQL server：`SELECT * INTO score_bak FROM score WHERE 1=2;`
 ---
 ## 备注
 1. MySQL
@@ -105,18 +109,19 @@ DROP INDEX `idx_course` ON `score`;
 3. SQL Server：`DROP INDEX score.idx_course;`
 ---
 ## 字段
-1. MySQL
-```mysql
--- 增加字段
-ALTER TABLE `score` ADD `grade` varchar(1) AFTER `name`;
+```sql
+-- 增加字段，Oracle/SQL server 不支持 AFTER
+ALTER TABLE score ADD grade varchar(1) AFTER name;
 -- 修改字段
-ALTER TABLE `score` MODIFY `grade` varchar(2);
+ALTER TABLE score MODIFY grade varchar(2);
+-- 修改字段 (SQL Server)
+ALTER TABLE score ALTER COLUMN grade varchar(2);
 -- 删除字段
-ALTER TABLE `score` DROP COLUMN `grade`;
+ALTER TABLE score DROP COLUMN grade;
 ```
 ### 修改字段名
-1. MySQL
-```mysql
-ALTER TABLE `score` CHANGE `course` subject varchar(10) COMMENT '课程';
-```
+| DB     | SQL                                                               |
+|--------|-------------------------------------------------------------------|
+| MySQL  | ALTER TABLE score CHANGE course subject varchar(10) COMMENT '课程'; |
+| Oracle | ALTER TABLE score RENAME COLUMN course To subject                 |
 ---

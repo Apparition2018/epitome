@@ -120,7 +120,7 @@ SELECT ename,job,sal FROM emp WHERE job = 'MANAGER' INTERSECT SELECT ename,job,s
 
 SELECT ename,job,sal FROM emp WHERE job = 'MANAGER' MINUS SELECT ename,job,sal FROM emp WHERE sal > 2500;
 
-CREATE TABLE sales(
+`CREATE TABLE sales(
   year_id NUMBER NOT NULL,
   month_id NUMBER NOT NULL,
   day_id NUMBER NOT NULL,
@@ -132,7 +132,7 @@ SELECT TRUNC(DBMS_RANDOM.value(2010,2012)) AS year_id,
        TRUNC(DBMS_RANDOM.value(1,32)) AS day_id,
        ROUND(DBMS_RANDOM.value(1,100),2) AS sales_value
 FROM dual
-CONNECT BY level <=1000;
+CONNECT BY level <=1000;`
 
 SELECT year_id,month_id,day_id,sales_value FROM sales ORDER BY year_id,month_id,day_id;
 

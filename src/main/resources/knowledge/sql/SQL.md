@@ -65,15 +65,16 @@
 3. 修改异常：如果更新表所对应的某个实体实例的单独属性时，需要将多行更新
 ---
 ## 数据类型速查表
-| 数据类型              |       MySQL        |                           SQL Server                           |        Oracle        |
-|:------------------|:------------------:|:--------------------------------------------------------------:|:--------------------:|
-| boolean           |                    |                              bit                               |                      |
-| integer           |        int         |                              int                               |        number        |
-| float             |      decimal       |                       decimal / numeric                        |        number        |
-| date              |  date / datetime   |                        date / datetime                         |   date / timestamp   |
-| string (fixed)    |        char        |                              char                              |         char         |
-| string (variable) | varchar / nvarchar |                       varchar / nvarchar                       | varchar2 / nvarchar2 |
-| binary object     |    blob / text     | binary (fixed up to 8k) <br> varbinary (<8k) <br> image (<2GB) |      long / raw      |
+| 数据类型              |        MySQL         |                           SQL Server                           |        Oracle        |
+|:------------------|:--------------------:|:--------------------------------------------------------------:|:--------------------:|
+| boolean           |                      |                              bit                               |                      |
+| integer           |         int          |                              int                               |        number        |
+| float             |       decimal        |                       decimal / numeric                        |        number        |
+| date              |         date         |                              date                              |                      |
+| datetime          | datetime / timestamp |                  smalldatetime / datetime / …                  |   date / timestamp   |
+| string (fixed)    |         char         |                              char                              |         char         |
+| string (variable) |  varchar / nvarchar  |                       varchar / nvarchar                       | varchar2 / nvarchar2 |
+| binary object     |     blob / text      | binary (fixed up to 8k) <br> varbinary (<8k) <br> image (<2GB) |      long / raw      |
 ---
 ## [事务的特性 (ACID)](https://en.wikipedia.org/wiki/ACID)
 1. Atomicity：原子性，事务通常由多个语句组成。原子性保证每个事务都被视为一个单独的'单元'，要么完全成功，要么完全失败。
