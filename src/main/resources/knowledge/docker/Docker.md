@@ -21,6 +21,7 @@
     - 以管理员身份运行 CMD
     ```bash
     mklink /j "C:\Program Files\Docker" "D:\Docker\Docker"
+    # 此路径不能是 symlink 了
     mklink /j "C:\ProgramData\DockerDesktop" "D:\Docker\DockerDesktop"
     mklink /j "C:\Users\Administrator\AppData\Local\Docker" "D:\Docker\Local"
     mklink /j "C:\Users\Administrator\AppData\Roaming\Docker" "D:\Docker\Roaming\Docker"
@@ -28,18 +29,20 @@
     ```
 2. 下载地址：https://www.docker.com/products/docker-desktop
    或：https://hub.docker.com/editions/community/docker-ce-desktop-windows
-3. 下载并安装 [WSL2](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
-4. [镜像加速器](https://cr.console.aliyun.com/cn-qingdao/instances/mirrors)：Settings → Docker Engine
+3. 启用 Windows 功能：①Hyper-V；②WSL（适用于 Linux 的 Windows 子系统）
+4. 下载并安装 [WSL2](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
+5. [镜像加速器](https://cr.console.aliyun.com/cn-qingdao/instances/mirrors)：Settings → Docker Engine
     ```
-    "registry-mirrors": [
-      "https://docker-cn.com",
-      "http://hub-mirror.c.163.com",
-      "https://docker.mirrors.ustc.edu.cn",
-      "https://vdm14qsf.mirror.aliyuncs.com"
-    ],
+    ,
+     "registry-mirrors": [
+       "https://docker-cn.com",
+       "https://hub-mirror.c.163.com",
+       "https://docker.mirrors.ustc.edu.cn",
+       "https://vdm14qsf.mirror.aliyuncs.com"
+     ]
     ```
-5. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
-6. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
+6. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
+7. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
     ```
     [wsl2]
     memory=2GB
