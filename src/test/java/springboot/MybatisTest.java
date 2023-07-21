@@ -17,6 +17,7 @@ import static l.demo.Demo.phr;
 
 /**
  * Mybatis
+ * <p>参考：mybatis 项目的 MybatisTest
  *
  * @author ljh
  * @since 2021/8/30 17:14

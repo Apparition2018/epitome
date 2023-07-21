@@ -63,7 +63,6 @@
     - `which java` → `ls -l /usr/bin/java` → `ls -l /etc/alternatives/java`
     - `vim /etc/profile` → `source /etc/profile` 或 `. /etc/profile`
         ```
-        # JDK5 之后，JRE 能自动搜索目录下类文件，并且加载 dt.jar 和 tool.jar，不再需要配置 CLASSPATH
         export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_*
         export PATH=$PATH:$JAVA_HOME/bin
         ```

@@ -64,6 +64,21 @@ default-character-set=utf8mb4
     1. linear read-ahead：线性预读
     2. random read-ahead：随机预读
 ---
+## [MySQL 编码](https://khiav223577.github.io/blog/2019/06/30/MySQL-%E7%B7%A8%E7%A2%BC%E6%8C%91%E9%81%B8%E8%88%87%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83/)
+1. 使用 utf8mb4
+2. ci vs cs vs bin
+    1. ci: case-insensitive，不区分大小写
+    2. cs: case-sensitive，区分大小写
+    3. bin: 使用 binary value 比对
+3. ai vs as
+    1. ai: accent-insensitive，不区分音调
+    2. as: accent-sensitive，区分音调 
+4. [general vs unicode vs 0900](https://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci)
+    1. general: 排序速度较快，但准确性稍差
+    2. unicode: unicode 4.0 规范，适用于多种语言准确排序
+    3. unicode_520: unicode 5.2 规范
+    4. 0900: unicode 9.0 规范
+---
 ## MySQL8 新特性
 - [window functions](https://www.jb51.net/article/129447.htm)
 ---

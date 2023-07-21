@@ -4,6 +4,7 @@
 //      https://blog.csdn.net/liuminglei1987/category_10122574.html
 // Spring Security + CAS        中央认证服务
 // Spring Batch
+//      https://www.baeldung.com/tag/spring-batch
 //      https://blog.csdn.net/masson32/category_9008923.html
 // xxl-job                      分布式任务调度平台
 // itextpdf                     生成 PDF

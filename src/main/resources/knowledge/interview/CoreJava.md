@@ -1,19 +1,22 @@
 # Core Java  
 
 ## Reference
-1. [Java 关键字大全](http://www.mabiji.com/java/javaguanjianzi.html)
+1. [Java SE - Documentation](https://www.oracle.com/java/technologies/javase-documentation.html)
+2. [Java Platform Standard Edition 8 Documentation](https://docs.oracle.com/javase/8/docs/)
+3. [Java 关键字大全](http://www.mabiji.com/java/javaguanjianzi.html)
 ---
 ## 环境变量
 1. 新建 JAVA_HOME：D:\Java\jdk1.8.0_221
 2. Path 增加 %JAVA_HOME%\bin; %JAVA_HOME%\jre\bin;
+3. JDK5 之后，JRE 能自动搜索目录下类文件，并且加载 dt.jar 和 tool.jar，不再需要配置 CLASSPATH
 ---
 ## [Java 命令](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/s1-create-build-tools.html)
-| 命令      | 说明                        |
-|:--------|:--------------------------|
-| javac   | 将 Java 源文件编译成 class 字节码文件 |
-| java    | 启动 Java 应用程序              |
-| jar     | 将 class 文件打成一个 jar 包      |
-| javadoc | 生成 API 文档                 |
+| 命令      | 说明                        | 例句                                               |
+|:--------|:--------------------------|--------------------------------------------------|
+| javac   | 将 Java 源文件编译成 class 字节码文件 |                                                  |
+| java    | 启动 Java 应用程序              |                                                  |
+| jar     | 将 class 文件打成一个 jar 包      | jar -cvf name.jar ./a/b/index.jsp ./a/b/list.jsp |
+| javadoc | 生成 API 文档                 |                                                  |
 ---
 ## Java 编译和运行过程
 1. 编译：Java 源文件(*.java) 经过 Java 编译器(javac) 编译成 JVM 能够识别的 Java 二进制字节码文件 (*.class)
