@@ -5,7 +5,7 @@ import org.apache.commons.io.FilenameUtils;
 import static l.demo.Demo.p;
 
 /**
- * <a href="http://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/FilenameUtils.html">FilenameUtils</a>
+ * <a href="https://commons.apache.org/proper/commons-io/description.html#FilenameUtils">FilenameUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

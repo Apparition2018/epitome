@@ -1,15 +1,16 @@
 package jar.apache.commons.math3.distribution;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
+import org.junit.jupiter.api.Test;
 
 /**
- * <a href="http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/distribution/NormalDistribution.html">NormalDistribution</a>
+ * <a href="https://commons.apache.org/proper/commons-math/userguide/distribution.html">Probability Distributions</a>
  * <p><a href="http://yzd.iteye.com/blog/852082">commons-math3 分布</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class NormalDistributionDemo {
+public class DistributionDemo {
 
     /**
      * 饮料装填量不足与超量的概率
@@ -19,7 +20,8 @@ public class NormalDistributionDemo {
      * 容量小于590毫升的概率 = p(X < 590) = p(((X - μ) / σ) < ((590 – 600) / 3)) = p(Z < - 10 / 3) = p(Z < - 3.33) = 0.0004
      * </pre>
      */
-    public static void main(String[] args) {
+    @Test
+    public void testNormalDistribution() {
         NormalDistribution normal = new NormalDistribution(600, 3);
 
         try {

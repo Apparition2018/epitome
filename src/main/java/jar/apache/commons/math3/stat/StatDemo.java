@@ -10,7 +10,7 @@ import java.util.Arrays;
 import static l.demo.Demo.p;
 
 /**
- * <a href="http://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/org/apache/commons/math3/stat/StatUtils.html">StatUtils</a>
+ * <a href="https://commons.apache.org/proper/commons-math/userguide/stat.html">Statistics</a>
  * <p><a href="http://www.cnblogs.com/xiao02fang/p/9883909.html">commons-math3 统计</a>
  *
  * @author ljh

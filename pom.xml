@@ -7,7 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.1</version>
+        <version>3.1.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ljh</groupId>
@@ -34,10 +34,10 @@
         <mybatis-spring.version>3.0.2</mybatis-spring.version>
         <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
         <mapper-spring-boot-starter.version>4.2.3</mapper-spring-boot-starter.version>
-        <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
-        <mybatis-dynamic-sql.version>1.5.0</mybatis-dynamic-sql.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
         <druid.version>1.2.18</druid.version>
+        <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
+        <mybatis-dynamic-sql.version>1.5.0</mybatis-dynamic-sql.version>
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
@@ -50,22 +50,22 @@
         <commons-email.version>1.5</commons-email.version>
         <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
         <commons-fileupload.version>1.5</commons-fileupload.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
-        <curator.version>5.5.0</curator.version>
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
         <tika.version>2.8.0</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.16.1</jsoup.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-        <poi.version>5.2.3</poi.version>
-        <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>9.31</nimbus-jose-jwt.version>
-        <!-- https://mvnrepository.com/artifact/com.ejlchina/okhttps -->
-        <okhttps.version>3.5.3</okhttps.version>
-        <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava2 -->
-        <retrofit2.version>2.9.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
         <minio.version>8.5.4</minio.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <poi.version>5.2.3</poi.version>
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core/8.0.0 -->
+        <itext7.version>8.0</itext7.version>
+        <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
+        <nimbus-jose-jwt.version>9.31</nimbus-jose-jwt.version>
+        <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava2 -->
+        <retrofit2.version>2.9.0</retrofit2.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
+        <curator.version>5.5.0</curator.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <fastjson.version>1.2.83</fastjson.version>
         <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
@@ -116,6 +116,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -160,6 +166,30 @@
         </dependency>
 
         <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- influxdb：时序数据库 -->
+        <dependency>
+            <groupId>org.influxdb</groupId>
+            <artifactId>influxdb-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>${mybatis-spring.version}</version>
@@ -182,34 +212,16 @@
             <version>${mybatis-dynamic-sql.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!-- influxdb：时序数据库 -->
-        <dependency>
-            <groupId>org.influxdb</groupId>
-            <artifactId>influxdb-java</artifactId>
-        </dependency>
-
         <!-- jedis：包含了 gson -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.json</groupId>
+                    <artifactId>json</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- caffeine：高性能本地缓存 -->
@@ -259,30 +271,6 @@
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>${commons-fileupload.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-io</groupId>
-                    <artifactId>commons-io</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- curator：操作 zookeeper -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>${curator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-test</artifactId>
-            <version>${curator.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.xerial.snappy</groupId>
-                    <artifactId>snappy-java</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -303,7 +291,14 @@
             <version>${jsoup.version}</version>
         </dependency>
 
-        <!-- poi：包含了 converter-moshi、commons-compress -->
+        <!-- minio：包含了 bcprov-jdk15on -->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>${minio.version}</version>
+        </dependency>
+
+        <!-- poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -314,6 +309,14 @@
             <artifactId>poi-ooxml</artifactId>
             <version>${poi.version}</version>
         </dependency>
+
+        <!-- itextpdf：Java-PDF TODO-LJH -->
+        <!-- <dependency> -->
+        <!--     <groupId>com.itextpdf</groupId> -->
+        <!--     <artifactId>itext7-core</artifactId> -->
+        <!--     <version>${itext7.version}</version> -->
+        <!--     <type>pom</type> -->
+        <!-- </dependency> -->
 
         <dependency>
             <groupId>com.nimbusds</groupId>
@@ -326,13 +329,6 @@
             <artifactId>httpclient5-fluent</artifactId>
         </dependency>
 
-        <!-- okhttps：对 OkHttp 轻量封装 -->
-        <dependency>
-            <groupId>com.ejlchina</groupId>
-            <artifactId>okhttps</artifactId>
-            <version>${okhttps.version}</version>
-        </dependency>
-
         <!-- retrofit：适用于 Android 和 Java 的类型安全 HTTP 客户端 -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
@@ -341,17 +337,22 @@
         </dependency>
 
         <!-- htmlunit：用于测试基于 web 的应用程序的无头浏览器
-            包含了 commons-net, httpclient -->
+            包含了 commons-net, httpclient 4 -->
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
         </dependency>
 
-        <!-- minio：包含了 bcprov-jdk15on -->
+        <!-- curator：操作 zookeeper -->
         <dependency>
-            <groupId>io.minio</groupId>
-            <artifactId>minio</artifactId>
-            <version>${minio.version}</version>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>${curator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-test</artifactId>
+            <version>${curator.version}</version>
         </dependency>
 
         <dependency>
@@ -368,6 +369,7 @@
             <groupId>jakarta.servlet.jsp.jstl</groupId>
             <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.apache.taglibs</groupId>
             <artifactId>taglibs-standard-impl</artifactId>
@@ -395,7 +397,8 @@
         </dependency>
 
         <!-- javacv：封装 OpenCV、FFmpeg 等 TODO-LJH
-            https://github.com/bytedeco/javacv -->
+            https://github.com/bytedeco/javacv
+            https://blog.csdn.net/eguid_1/category_11472450.html -->
         <dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>javacv-platform</artifactId>
@@ -423,6 +426,12 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>${springdoc.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- jmh：微基准测试 -->
@@ -463,6 +472,12 @@
             <groupId>com.vdurmont</groupId>
             <artifactId>emoji-java</artifactId>
             <version>${emoji.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.json</groupId>
+                    <artifactId>json</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- jsch：SSH2 的 Java 实现 -->

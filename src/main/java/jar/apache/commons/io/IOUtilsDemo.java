@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * <a href="http://commons.apache.org/proper/commons-io/javadocs/api-release/org/apache/commons/io/IOUtils.html">IOUtils</a>
+ * <a href="https://commons.apache.org/proper/commons-io/description.html#IOUtils">IOUtils</a>
  * <pre>
  * static InputStream       toInputStream(CharSequence/String input, Charset/String encoding)
  * static InputStream       toBufferedInputStream(InputStream input[, int size])

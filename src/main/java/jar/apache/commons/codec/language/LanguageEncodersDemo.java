@@ -7,17 +7,12 @@ import org.apache.commons.codec.language.Soundex;
 import static l.demo.Demo.p;
 
 /**
- * Language
- * <pre>
- * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/Metaphone.html">Metaphone</a>
- * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/Soundex.html">Soundex</a>
- * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/language/RefinedSoundex.html">RefinedSoundex</a>
- * </pre>
+ * <a href="https://commons.apache.org/proper/commons-codec/userguide.html#Language_Encoders">Language Encoders</a>
  *
  * @author ljh
  * @since 2020/11/15 0:28
  */
-public class LanguageDemo {
+public class LanguageEncodersDemo {
 
     public static void main(String[] args) {
         Metaphone metaphone = new Metaphone();

@@ -10,8 +10,8 @@ import java.nio.charset.StandardCharsets;
 import static l.demo.Demo.BIRD_IMG;
 
 /**
- * <a href="https://commons.apache.org/proper/commons-email/index.html">Commons Email</a>
- * <a href="https://www.cnblogs.com/jimboi/p/6406237.html">Commons Email 发送邮件</a>
+ * <a href="https://commons.apache.org/proper/commons-email/">Commons Email</a>
+ * <p><a href="https://www.cnblogs.com/jimboi/p/6406237.html">Commons Email 发送邮件</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

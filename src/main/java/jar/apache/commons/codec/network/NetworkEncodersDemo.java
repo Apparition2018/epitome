@@ -3,19 +3,21 @@ package jar.apache.commons.codec.network;
 import l.demo.Demo;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.net.URLCodec;
+import org.junit.jupiter.api.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
 /**
- * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/net/URLCodec.html">URLCodec</a>
+ * <a href="https://commons.apache.org/proper/commons-codec/userguide.html#Network_Encoders">Network Encoders</a>
  *
  * @author ljh
  * @since 2020/11/15 0:18
  */
-public class URLCodecDemo extends Demo {
+public class NetworkEncodersDemo extends Demo {
 
-    public static void main(String[] args) throws UnsupportedEncodingException, DecoderException {
+    @Test
+    public void testURLCodec() throws UnsupportedEncodingException, DecoderException {
         URLCodec urlCodec = new URLCodec();
 
         String encode = urlCodec.encode(MY_CY, StandardCharsets.UTF_8.name());

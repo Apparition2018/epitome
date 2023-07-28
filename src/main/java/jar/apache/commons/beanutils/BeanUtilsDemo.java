@@ -14,7 +14,7 @@ import java.util.Map;
 import static l.demo.Demo.p;
 
 /**
- * <a href="http://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/BeanUtils.html">BeanUtils</a>
+ * <a href="https://commons.apache.org/proper/commons-beanutils/">BeanUtils</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

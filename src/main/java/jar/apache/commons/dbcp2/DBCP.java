@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
- * DBCP (Database Connection Pool)
+ * <a href="https://commons.apache.org/proper/commons-dbcp/">DBCP (Database Connection Pool)</a>
  * <pre>
  * JDBC: JAVA 连接数据库和执行 SQL 语句的 API
  * DBCP: 依赖 Jakarta commons-pool2 对象池机制的数据库连接池

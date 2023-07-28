@@ -11,7 +11,7 @@ import org.apache.commons.configuration2.tree.DefaultExpressionEngineSymbols;
 import java.io.File;
 
 /**
- * <a href="https://commons.apache.org/proper/commons-configuration/userguide/user_guide.html">Configuration2</a>
+ * <a href="https://commons.apache.org/proper/commons-configuration/">Commons Configuration</a>
  *
  * @author ljh
  * @since 2020/11/15 1:06

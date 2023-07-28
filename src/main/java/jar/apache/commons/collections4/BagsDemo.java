@@ -6,7 +6,7 @@ import org.apache.commons.collections4.bag.HashBag;
 import static l.demo.Demo.p;
 
 /**
- * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/Bag.html">Bag</a>
+ * <a href="https://commons.apache.org/proper/commons-collections/userguide.html#Bags">Bags</a>
  * <p>Bag 是一个接口，该接口可以计算一个对象出现在集合中的次数
  * <pre>
  * Iterator<E>	iterator()
@@ -17,7 +17,7 @@ import static l.demo.Demo.p;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class BagDemo {
+public class BagsDemo {
 
     public static void main(String[] args) {
         // boolean	add(E object[, int nCopies])        添加元素

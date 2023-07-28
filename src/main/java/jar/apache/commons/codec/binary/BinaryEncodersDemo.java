@@ -2,18 +2,20 @@ package jar.apache.commons.codec.binary;
 
 import l.demo.Demo;
 import org.apache.commons.codec.binary.Base64;
+import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 
 /**
- * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/binary/Base64.html">Base46</a>
+ * <a href="https://commons.apache.org/proper/commons-codec/userguide.html#Binary_Encoders">Binary Encoders</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class Base64Demo extends Demo {
+public class BinaryEncodersDemo extends Demo {
 
-    public static void main(String[] args) {
+    @Test
+    public void testBase64() {
         // 加密
         byte[] encodeBytes = Base64.encodeBase64(HELLO_WORLD.getBytes());
         p(new String(encodeBytes, StandardCharsets.UTF_8)); // SGVsbG8gV29ybGQh

@@ -2,19 +2,21 @@ package jar.apache.commons.codec.digest;
 
 import l.demo.Demo;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 
 /**
- * <a href="http://commons.apache.org/proper/commons-codec/apidocs/org/apache/commons/codec/digest/DigestUtils.html">DigestUtils</a>
+ * <a href="https://commons.apache.org/proper/commons-codec/userguide.html#Digest_Encoders">Digest Encoders</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class DigestUtilsDemo extends Demo {
+public class DigestEncodersDemo extends Demo {
 
-    public static void main(String[] args) {
+    @Test
+    public void testDigestUtils() {
         // md5
         // 1.
         byte[] md5bytes = DigestUtils.digest(DigestUtils.getMd5Digest(), HELLO_WORLD.getBytes(StandardCharsets.UTF_8));

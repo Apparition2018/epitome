@@ -3,10 +3,6 @@
 // Spring Security
 //      https://blog.csdn.net/liuminglei1987/category_10122574.html
 // Spring Security + CAS        中央认证服务
-// Spring Batch
-//      https://www.baeldung.com/tag/spring-batch
-//      https://blog.csdn.net/masson32/category_9008923.html
-// itextpdf                     生成 PDF
 // YunGouOS                     聚合支付
 // IJpay                        聚合支付
 // SpringBlade (BladeX + Saber) SaaS 多租户微服务平台

@@ -3,6 +3,7 @@ package jar.apache.httpcomponents.client5;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.ClientProtocolException;
+import org.apache.hc.client5.http.HttpRoute;
 import org.apache.hc.client5.http.auth.StandardAuthScheme;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
@@ -100,13 +101,11 @@ public class HttpClientUtils {
         // 连接管理器
         PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(
                 socketFactoryRegistry, PoolConcurrencyPolicy.STRICT, PoolReusePolicy.LIFO, TimeValue.ofMinutes(5));
-        connManager.setDefaultSocketConfig(
-                SocketConfig.custom().setSoTimeout(30, TimeUnit.SECONDS).setTcpNoDelay(true).build()
-        );
+        connManager.setDefaultSocketConfig(SocketConfig.custom().setSoTimeout(30, TimeUnit.SECONDS).setTcpNoDelay(true).build());
         connManager.setValidateAfterInactivity(TimeValue.ofSeconds(10));
         connManager.setMaxTotal(100);
         connManager.setDefaultMaxPerRoute(10);
-        connManager.setValidateAfterInactivity(TimeValue.ofMinutes(10));
+        connManager.setMaxPerRoute(new HttpRoute(new HttpHost("somehost", 80)), 20);
 
         // Cookie
         cookieStore = new BasicCookieStore();

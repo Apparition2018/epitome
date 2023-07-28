@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * <a href="https://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/package-summary.html">Apache Map</a>
+ * <a href="https://commons.apache.org/proper/commons-collections/userguide.html#Maps">Maps</a>
  * <pre>
  * FixedSizeMap             修饰另一个 Map，使其大小固定
  * FixedSizeSortedMap       修饰另一个 SortedMap，使其大小固定
@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2020/11/14 14:19
  */
-public class ApacheMap extends Demo {
+public class MapsDemo extends Demo {
 
     /**
      * CaseInsensitiveMap           键大小写不敏感
