@@ -79,9 +79,6 @@ default-character-set=utf8mb4
     3. unicode_520: unicode 5.2 规范
     4. 0900: unicode 9.0 规范
 ---
-## MySQL8 新特性
-- [window functions](https://www.jb51.net/article/129447.htm)
----
 ## [InnoDB 存储引擎](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)
 |                  |     |                                                               |
 |------------------|-----|---------------------------------------------------------------|
@@ -265,7 +262,7 @@ text            大于
 >- [EXPLAIN Output Format](https://dev.mysql.com/doc/refman/8.0/en/explain-output.html)
 >- [EXPLAIN 百科](https://mp.weixin.qq.com/s/QCJq1o-CWbNNwnuzJmVEPg)
 >- [Using index vs Using where](https://www.cnblogs.com/wy123/p/7366486.html)
-## [慢查询](https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html)
+### [慢查询](https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html)
 - 开启慢查询日志
 ```mysql
 -- 是否开启慢查询

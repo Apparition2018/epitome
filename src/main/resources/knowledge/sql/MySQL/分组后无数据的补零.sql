@@ -15,7 +15,7 @@ FROM sys_post p
     LEFT JOIN (SELECT post_name, count(*) cnt
             FROM sys_user u, sys_user_post up, sys_post p
 	        WHERE u.user_id = up.user_id  AND up.post_id = p.post_id
-	        GROUP BY post_name) AS temp ON p.post_name = temp.post_name
+	        GROUP BY post_name) AS temp ON p.post_name = temp.post_name;
 
 -- 3)
 SELECT

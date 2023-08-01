@@ -126,7 +126,7 @@ WHERE ROWNUM <= 10) WHERE rn > 5;
 ```
 ---
 ## 排名查询
-1. [MySQL](https://www.jb51.net/article/194925.htm) / Oracle
+1. MySQL / Oracle
 - ROW_NUMBER: 连续且唯一
 ```mysql
 SELECT ename, deptno, sal, ROW_NUMBER() OVER(PARTITION BY deptno ORDER BY sal DESC) sal_rank FROM emp;
@@ -143,6 +143,8 @@ SELECT ename, deptno, sal, DENSE_RANK() OVER(PARTITION BY deptno ORDER BY sal DE
 ```mysql
 SELECT ename, sal, RANK() OVER(ORDER BY -sal ASC) sal_rank FROM emp;
 ```
+>- [窗口函数](https://www.jb51.net/article/129447.htm)
+>- [Window Functions](https://dev.mysql.com/doc/refman/8.1/en/window-functions.html)
 ---
 ## 集合查询
 ```
