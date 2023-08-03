@@ -286,11 +286,6 @@ select * from store limit 10;
 ```
 - 慢查询日志分析工具
     1. [mysqldumpslow](https://dev.mysql.com/doc/refman/8.0/en/mysqldumpslow.html)
-    ```
-    # 查看帮助
-    mysqldumpslow -h
-    mysqldumpslow [options] [log_file ...]
-    ```
     2. pt-query-digest
     ```
     # 查看帮助

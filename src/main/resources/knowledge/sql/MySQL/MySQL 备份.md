@@ -26,12 +26,12 @@
 ## [crontab](https://www.bilibili.com/video/BV1ei4y1S7za/)
 1. 创建 shell 脚本：`vim /etc/mysql-backup.sh`
     ```shell
-    today=`/bin/date + "%Y-%m-%d"`
+    today=`/bin/date +%Y-%m-%d`
     /usr/bin/mysqldump --login-path=bkpuse_local --all-databases --events --routines --triggers --lock-all-tables --flush-logs --flush-privileges --add-drop-database --master-data=2 > /mysqlbackup/mysql-all-$today.sql
     ```
 2. 使用 chmod 命令赋予 /etc/mysql-backup.sh 脚本执行权限：`chmod 755 /etc/mysql-backup.sh`
-3. 使用 crontab -e 命令添加周期备份任务：`crontab -e 0 23 * * * /bin/bash /etc/mysql-backup.sh`
-4. 使用 crontab -l 命令查看周期备份任务：`crontabl -l`
+3. 添加周期备份任务：`crontab -e 0 23 * * * /bin/bash /etc/mysql-backup.sh`
+4. 查看周期备份任务：`crontab -l`
 ---
 ## [backup-x](https://github.com/jeessy2/backup-x)
 ```bash
