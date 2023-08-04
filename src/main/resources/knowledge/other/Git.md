@@ -66,7 +66,7 @@
 help [COMMAND|GUIDE]                            帮助
 config                                          获取和设置 repository 或全局选项
     --global                                    全局配置，写到 ~/.gitconfig
-    -l | --list                                 列出配置文件中设置的所有变量及其值
+    -l, --list                                  列出配置文件中设置的所有变量及其值
     --add                                       在不更改任何现有值的情况下向选项添加新行
     --unset                                     从配置文件中删除与 key 匹配的行
         user.name                               用户名称
@@ -103,7 +103,7 @@ config                                          获取和设置 repository 或�
 init                                            创建一个空的 Git repository 或重新初始化一个现有的 repository
 clone <repository>                              克隆一个 repository 到一个新目录
     --depth <depth>                             创建一个浅克隆，其中历史记录被截断为指定提交次数
-    -b | --branch <name>                        克隆分支
+    -b, --branch <name>                         克隆分支
 ```
 ### [快照基础](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E5%BF%AB%E7%85%A7%E5%9F%BA%E7%A1%80)
 - [git commit -amend：重写 commit 历史](https://blog.csdn.net/weixin_39558754/article/details/110643585)
@@ -114,7 +114,7 @@ clone <repository>                              克隆一个 repository 到一�
 add [<pathspec>…]                               将文件内容添加到 index
     .                                           将修改的文件，新建的文件，添加到 index
     -u                                          将修改的文件，删除的文件，添加到 index
-    -A | --all                                  将修改的文件，删除的文件，新建的文件，添加到 index
+    -A, --all                                   将修改的文件，删除的文件，新建的文件，添加到 index
 stage                                           add 同义
 status [<pathspec>…]                            显示 working tree 状态
 commit                                          将变更记录到 repository
@@ -135,9 +135,9 @@ mv                                              移动或重命名文件，目�
 ```
 branch                                          列出，创建或删除 branch
     <branchname>                                创建 branch
-    -a | --all                                  列出远程和本地所有分支
-    -r | --remotes                              列出或删除（与 -d 一起使用）远程所有分支
-    -d | --delete <branchname>…                 删除 branch
+    -a, --all                                   列出远程和本地所有分支
+    -r, --remotes                               列出或删除（与 -d 一起使用）远程所有分支
+    -d, --delete <branchname>…                  删除 branch
 checkout                                        切换 branch 或 恢复 working tree 文件
     <branhc|tag>                                切换 branch 或 tag
     -b <new_branch> [<start_point>]             创建并切换 branch
@@ -147,7 +147,7 @@ stash                                           将更改 stash 在 dirty workin
     list/show/apply/drop/pop                    列出/显示/恢复/删除/恢复并删除储藏的工作
 tag                                             创建、列表、删除或验证用 GPG 签名的 tag 对象
     <tagname>                                   基于最新提交创建 tag
-    -d | --delete <tagname>…                    删除 tag
+    -d, --delete <tagname>…                     删除 tag
 ```
 ### [项目分享与更新](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E9%A1%B9%E7%9B%AE%E5%88%86%E4%BA%AB%E4%B8%8E%E6%9B%B4%E6%96%B0)
 ```
@@ -156,12 +156,12 @@ pull [<repository> [<refspec>…]]                从另一个 directory 或 loc
 push                                            使用 local refs 更新 remote refs，并发送相关 objects
     <repository> <refname>                      更新到远程 ref                                                               git push origin HEAD --force
     <repository> :<expect>                      删除远程 ref
-    -u | --set-upstream                         下次输入同样的命令，只需输入 git push，无需输入参数
+    -u, --set-upstream                          下次输入同样的命令，只需输入 git push，无需输入参数
 remote                                          管理一组被跟踪的 repository
-    -v | --verbose                              显示 remote 的 url 在 name 之后
+    -v, --verbose                               显示 remote 的 url 在 name 之后
     show <name>…                                显示指定 name 的 remote 的信息
     add <name> <url>                            给在 url 的 repository 添加一个名为 name 的 remote
-    remove | rm <name>                          删除名为 name 的 remote
+    remove, rm <name>                           删除名为 name 的 remote
 ```
 ### [检查和比较](https://git-scm.com/book/zh/v2/%E9%99%84%E5%BD%95-C%3A-Git-%E5%91%BD%E4%BB%A4-%E6%A3%80%E6%9F%A5%E4%B8%8E%E6%AF%94%E8%BE%83)
 ```
@@ -204,7 +204,7 @@ rev-list [<<commit>…>]                          以反时间顺序列出提交
     --objects
     --all
 verify-pack <pack>.idx …                        验证已打包的 Git 归档文件
-    -v|--verbose
+    -v, --verbose
 ```
 ---
 ## git-bash shortcuts
