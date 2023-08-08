@@ -165,7 +165,6 @@
     scp                             secure copy                         远程文件复制程序
 
 ---
----
 ##
     nohup                           no hang up                          运行命令，忽略 hangup signals
         nohup java -jar thymeleaf-8081.jar > thymeleaf-8081.log 2>&1 &
@@ -289,7 +288,7 @@
     reboot                                                              重启系统
 ---
 ## 系统设置
-    ssh-keygen                                                          生成、管理和转换 SSH 的省份验证密钥
+    ssh-keygen                                                          生成、管理和转换 SSH 的身份验证密钥
         -t rsa|dsa|…                                                    指定密钥类型
         -C                                                              添加注释
     ssh-agent                                                           一个程序用于保存私钥（用于公钥身份验证）

@@ -307,31 +307,23 @@
 ```
 ---
 ## Git
-```
-1. yum install -y zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
-2. https://github.com/git/git/releases
-    wget https://github.com/git/git/archive/refs/tags/v2.31.0.tar.gz
-    tar -zxvf xxx.tar.gz
-3. 安装
-    3.1 cd git-2.31.0
-    3.2 make prefix=/usr/local all
-    3.3 make prefix=/usr/local install
-    3.4 git --version
-4. 基础配置
-    4.1 git config --global user.name 'Apparition2018'          配置用户名
-    4.2 git config --global user.email '88850180@163.com'       配置邮箱
-    4.3 git config --global core.autocrlf false                 忽略 Windows/Unix 换行符转换
-    4.4 git config --global gui.encoding utf-8                  指定默认 gui/gitk 字符编码
-        git config --global core.quotepath off                  避免中文乱码
-    4.5 git config --global core.ignorecase flase               关闭忽略大小写
-5. 配置 SSH keys
-    5.1 ssh-keygen -t rsa -C '88850180@163.com'                 生成密钥
-    5.2 ssh-agent bash 或 eval `ssh-agent`                       启动 ssh-agent
-    5.3 ssh-add ~/.ssh/id_rsa                                   添加密钥到 ssh-agent
-    5.4 登录 GitHub|Gitee 新建 SSH key，把公钥复制过去
-        ssh-add -L 或 vim ~/.ssh/id_rsa.pub                      查看公钥
-    5.5 ssh -T git@github.com                                   验证配置是否成功
-```
+1. `yum install -y git`
+2. 全局配置
+    ```bash
+    git config --global user.name 'Apparition2018'
+    git config --global user.email '88850180@163.com'
+    git config --global core.autocrlf false
+    git config --global gui.encoding utf-8
+    git config --global core.quotepath off
+    git config --global core.ignorecase false
+    ```
+3. 配置 SSH keys
+    1. 生成密钥：`ssh-keygen -t rsa -C '88850180@163.com'`
+    2. 启动 ssh-agent：`ssh-agent bash` 或 eval `ssh-agent`
+    3. 将私钥添加到 ssh-agent：`ssh-add ~/.ssh/id_rsa`
+    4. 登录 GitHub|Gitee 新建 SSH key，把公钥复制过去
+        - 查看公钥：`ssh-add -L` or `vim ~/.ssh/id_rsa.pub`
+    5. 验证：`ssh -T git@github.com`
 ---
 ## [Redis](https://www.imooc.com/video/23818)
 1. `yum install gcc-c++`

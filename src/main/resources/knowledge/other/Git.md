@@ -73,9 +73,9 @@ config                                          获取和设置 repository 或�
         user.email                              用户邮件
         core.excludesFile                       .ignore 文件地址
         core.autocrlf                           提交或检出转换 LF 和 CRLF，默认 true
-            true                                提交时转换为 LF，检出时转换为 CRLF
-            input                               提交时转换为 LF，检出时不转换
-            false                               提交时转换为 LF，检出时转换为 CRLF
+            true                                提交时转换为 LF，检出时转换为 CRLF       在 Windows 上编程并与非 Windows 上的人一起工作   
+            input                               提交时转换为 LF，检出时不转换            使用 LF 行结果的 Linux 或 macOS 系统
+            false                               关闭转换
         core.safecrlf                           提交混合换行符提示
             true                                拒绝提交包含混合换行符的文件
             false                               允许提交包含混合换行符的文件

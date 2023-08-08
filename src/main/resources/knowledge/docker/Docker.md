@@ -2,21 +2,24 @@
 
 ---
 ## Reference
-1. [Docker Documentation](https://docs.docker.com/get-started/overview/)
+1. [Docker Documentation](https://docs.docker.com)
 2. [RuoYi 应用容器部署](http://doc.ruoyi.vip/ruoyi-cloud/cloud/dokcer.html#%E5%BA%94%E7%94%A8%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2)
 3. [搭建和使用 Docker-腾讯云](https://cloud.tencent.com/document/product/213/46000)
 ## 课程
-1. [第一个docker化的java应用-慕课网](https://www.imooc.com/learn/824)
-2. [Docker入门教程-慕课网](https://www.imooc.com/learn/867)
-3. [Docker 容器简介 - Training | Microsoft Learn](https://learn.microsoft.com/zh-cn/training/modules/intro-to-docker-containers/)
-4. [使用 Docker 生成容器化 Web 应用程序 - Training | Microsoft Learn](https://learn.microsoft.com/zh-cn/training/modules/intro-to-containers/)
+1. [尚硅谷Docker实战教程](https://www.bilibili.com/video/BV1gr4y1U7CY/)
+2. [第一个docker化的java应用-慕课网](https://www.imooc.com/learn/824)
+3. [Docker入门教程-慕课网](https://www.imooc.com/learn/867)
+4. [Docker 容器简介 - Training | Microsoft Learn](https://learn.microsoft.com/zh-cn/training/modules/intro-to-docker-containers/)
+5. [使用 Docker 生成容器化 Web 应用程序 - Training | Microsoft Learn](https://learn.microsoft.com/zh-cn/training/modules/intro-to-containers/)
 ---
-## VM vs DOcker
-![VM vs Docker](https://img3.mukewang.com/608d8eeb0001298319201080-500-284.jpg)
-
+## Docker vs Others
+1. [Docker 与 VM - 应用程序部署技术之间的区别 - AWS](https://aws.amazon.com/cn/compare/the-difference-between-docker-vm/)
+    ![Docker vs VM](https://geekflare.com/wp-content/uploads/2019/09/traditional-vs-new-gen.png)
+2. [Kubernetes 与 Docker — 容器技术之间的区别 — AWS](https://aws.amazon.com/cn/compare/the-difference-between-kubernetes-and-docker/)
 ---
-## [Windows 安装 Docker Desktop](https://docs.docker.com/desktop/install/windows-install/)
-### 安装
+## [Docker Desktop](https://docs.docker.com/desktop/)
+- [Docker Desktop for Linux vs Docker Engine](https://docs.docker.com/desktop/faqs/linuxfaqs/#what-is-the-difference-between-docker-desktop-for-linux-and-docker-engine)
+### [Windows 安装 Docker Desktop](https://docs.docker.com/desktop/install/windows-install/)
 1. [安装前创建目录链接](https://www.zhihu.com/question/359332823/answer/923520420)
     - 以管理员身份运行 CMD
     ```bash
@@ -49,37 +52,40 @@
     swap=4GB
     localhostForwarding=true
     ```
-### 增加端口映射
-1. docker ps -a → 记下 CONTAINER ID
-2. docker inspect \<CONTAINER ID>|grep Id，查看容器的 Id
-3. Win + E → \\wsl.localhost\docker-desktop-data\data\docker\containers\Id
-4. 修改 hostconfig.json
-    ```
-    "PortBindings": {
-    	"8080/tcp": [
-    		{
-    			"HostIp": "",
-    			"HostPort": "8088"
-    		}
-    	]
-    },
-    ```
-5. 修改 config.v2.json
-    ```
-    "ExposedPorts": {
-    	"8080/tcp": {}
-    },
-    "Ports": {
-    	"8080/tcp": [
-    		{
-    			"HostIp": "0.0.0.0",
-    			"HostPort": "8088"
-    		}
-    	]
-    },
-    ```
+>### 增加端口映射
+>1. docker ps -a → 记下 CONTAINER ID
+>2. docker inspect \<CONTAINER ID>|grep Id，查看容器的 Id
+>3. Win + E → \\wsl.localhost\docker-desktop-data\data\docker\containers\Id
+>4. 修改 hostconfig.json
+>   ```
+>   "PortBindings": {
+>       80/tcp": [
+>           {
+>               "HostIp": "",
+>               "HostPort": "8088"
+>           }
+>       ]
+>   },
+>   ```
+>5. 修改 config.v2.json
+>   ```
+>   "ExposedPorts": {
+>       "8080/tcp": {}
+>   },
+>   "Ports": {
+>       "8080/tcp": [
+>           {
+>               "HostIp": "0.0.0.0",
+>               "HostPort": "8088"
+>           }
+>       ]
+>   },
+>   ```
+### [Linux 安装 Docker Desktop](https://docs.docker.com/desktop/install/linux-install/)
+
 ---
-## [Linux 安装 Docker](https://docs.docker.com/engine/install/)
+## [Docker Engine](https://docs.docker.com/engine/)
+### [安装 Docker Engine](https://docs.docker.com/engine/install/)
 ```bash
 # 卸载旧版本（存储在/var/lib/docker/中的 images、container、volumes、networks 不会自动删除）
 sudo yum remove docker docker-client docker-client-latest docker-common \
@@ -248,10 +254,6 @@ docker network create [OPTIONS] NETWORK                         创建网络
     -- subnet                                                   代表网段的 CIDR 格式的子网
 ```
 ---
-## [Docker 网络](https://docs.docker.com/network/)
-![Docker 网络](https://img.mukewang.com/608d6a4c0001e15019201080-500-284.jpg)
-
----
 ## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
 1. Commands
     ```
@@ -270,23 +272,23 @@ docker network create [OPTIONS] NETWORK                         创建网络
     WORKDIR                                 工作目录
     EXPOSE                                  端口
     ```
-2. 镜像分层：Dockerfile 中的每一行都产生一个新层<br/>
-   ![镜像分层](https://img2.mukewang.com/608d9d330001dd2819201080-500-284.jpg)
-3. Dockerfile Demo
-    1. 编写 Dockerfile 文件
-        ```
-        FROM ubuntu:latest
-        MAINTAINER ljh
-        RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-        RUN apt-get update
-        RUN apt-get install -y nginx
-        COPY index.html /var/www/html
-        ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
-        EXPOSE 80
-        ```
-    2. `docker build -t hello_docker`
-    3. `docker run hello_docker`
-    4. localhost:80
+2. Dockerfile Demo
+    1. [Containerize an application](https://docs.docker.com/get-started/02_our_app/)
+        - 克隆项目：`cd /home/lighthouse/git` → `git clone https://github.com/docker/getting-started-app.git`
+        - 创建 Dockerfile 文件：`cd /getting-started-app` → `touch Dockerfile`
+            ```
+            # syntax=docker/dockerfile:1
+               
+            FROM node:18-alpine
+            WORKDIR /app
+            COPY . .
+            RUN yarn install --production
+            CMD ["node", "src/index.js"]
+            EXPOSE 3000
+            ```
+        - 构建容器镜像：`docker build -t getting-started .`
+        - 启动容器：`docker run -dp 127.0.0.1:3000:3000 getting-started` → http://localhost:3000
+    2. [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 ---
 ## [MySQL](https://hub.docker.com/_/mysql)
 - [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
