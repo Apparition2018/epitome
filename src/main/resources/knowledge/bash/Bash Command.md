@@ -65,6 +65,8 @@
         -m                                                              打印字符数
         -l                                                              打印行数
     du                              disk usage                          递归目录文件的磁盘使用情况
+        -s, --summarize                                                 仅显示每个参数的总计
+        -h, --human-readable                                            以人类可读格式打印大小，例如 1K 234M 2G
     diff                            difference                          打印两个文件的差异
 ---
 ## 文件权限 (file permissions)

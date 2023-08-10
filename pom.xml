@@ -58,8 +58,8 @@
         <minio.version>8.5.4</minio.version>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.2.3</poi.version>
-        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core/8.0.0 -->
-        <itext7.version>8.0</itext7.version>
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
+        <itext.version>8.0.1</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
         <nimbus-jose-jwt.version>9.31</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava2 -->
@@ -81,11 +81,11 @@
         <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
         <springdoc.version>1.7.0</springdoc.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
-        <jmh.version>1.36</jmh.version>
+        <jmh.version>1.37</jmh.version>
         <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <hutool.version>5.8.20</hutool.version>
+        <hutool.version>5.8.21</hutool.version>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <cglib.version>3.3.0</cglib.version>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
@@ -95,7 +95,7 @@
         <!-- https://mvnrepository.com/artifact/io.github.biezhi/TinyPinyin -->
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
         <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
-        <zxing.version>3.5.1</zxing.version>
+        <zxing.version>3.5.2</zxing.version>
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
         <lucene-analyzers.version>8.11.2</lucene-analyzers.version>
         <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
@@ -311,12 +311,12 @@
         </dependency>
 
         <!-- itextpdf：Java-PDF TODO-LJH -->
-        <!-- <dependency> -->
-        <!--     <groupId>com.itextpdf</groupId> -->
-        <!--     <artifactId>itext7-core</artifactId> -->
-        <!--     <version>${itext7.version}</version> -->
-        <!--     <type>pom</type> -->
-        <!-- </dependency> -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-core</artifactId>
+            <version>${itext.version}</version>
+            <type>pom</type>
+        </dependency>
 
         <dependency>
             <groupId>com.nimbusds</groupId>

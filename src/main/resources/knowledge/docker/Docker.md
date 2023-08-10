@@ -54,7 +54,7 @@
     ```
 >### 增加端口映射
 >1. docker ps -a → 记下 CONTAINER ID
->2. docker inspect \<CONTAINER ID>|grep Id，查看容器的 Id
+>2. docker inspect \<CONTAINER ID>|grep Id，查看 container Id
 >3. Win + E → \\wsl.localhost\docker-desktop-data\data\docker\containers\Id
 >4. 修改 hostconfig.json
 >   ```
@@ -152,39 +152,139 @@ sudo systemctl disable containerd.service
 3. 使用 `--log-driver` 为 docker create 或 docker run 的 container 设置日志驱动
     - `docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world`
 ---
+## 使用
+1. [容器化应用程序](https://docs.docker.com/get-started/02_our_app/)
+    1. 克隆项目：`cd /home/lighthouse/git` → `git clone https://github.com/docker/getting-started-app.git`
+    2. 创建 Dockerfile 文件：`cd /getting-started-app` → `touch Dockerfile`
+        ```
+        # syntax=docker/dockerfile:1
+        FROM node:18-alpine
+        WORKDIR /app
+        COPY package.json yarn.lock ./
+        RUN yarn install --production
+        COPY . .
+        CMD ["node", "src/index.js"]
+        EXPOSE 3000
+        ```
+    3. 创建 .dockerignore：`vim .dockerignore` → `node_modules`
+    4. 构建 container image：`docker build -t getting-started .`
+    5. 启动 container：`docker run -dp 127.0.0.1:3000:3000 getting-started` → http://localhost:3000
+2. [分享应用程序](https://docs.docker.com/get-started/04_sharing_app/)
+    1. 创建 repository
+        1. 登录 [Docker Hub](https://hub.docker.com/)
+        2. 点击 Create Repository
+        3. 填写 Repository Name，Visibility 选择 Public
+        4. 创建
+    2. 推送 image
+        1. 登录 Docker Hub：`docker login -u apparition2018`
+        2. 指定 image 名字：`docker tag getting-started apparition2018/getting-started`
+        3. 推送 image：`docker push apparition2018/getting-started`
+3. [多容器应用程序](https://docs.docker.com/get-started/07_multi_container/)
+    1. 创建 network：`docker network create todo-app`
+    2. 启动 MySQL 容器并将其连接到网络
+        ```bash
+        docker run -d \
+        --network todo-app --network-alias mysql \
+        -v todo-mysql-data:/var/lib/mysql \
+        -e MYSQL_ROOT_PASSWORD=secret \
+        -e MYSQL_DATABASE=todos \
+        mysql:8.0
+        ```
+    3. 启动容器连接 MySQL并将其连接到同一网络
+        ```bash
+        docker run -dp 3000:3000 \
+        -w /app -v "$(pwd):/app" \
+        --network todo-app \
+        -e MYSQL_HOST=mysql \
+        -e MYSQL_USER=root \
+        -e MYSQL_PASSWORD=secret \
+        -e MYSQL_DB=todos \
+        node:18-alpine \
+        sh -c "yarn install && yarn run dev"
+        ```
+4. [使用 Docker Compose](https://docs.docker.com/get-started/08_using_compose/)
+    - 一款用于帮助和定义多容器应用程序的工具
+    1. 创建 docker-compose.yml
+        ```yaml
+        # Docker Compose 会自动创建一个 network (getting-stated-app_default)  
+        services:
+          app:
+            image: node:18-alpine
+            command: sh -c "yarn install && yarn run dev"
+            ports:
+              - 127.0.0.1:3000:3000
+          working_dir: /app
+          volumes:
+            - ./:/app
+          environment:
+            MYSQL_HOST: mysql8
+            MYSQL_USER: root
+            MYSQL_PASSWORD: secret
+            MYSQL_DB: todos
+          
+          mysql8:
+            image: mysql:8.0
+            volumes:
+              - todo-mysql-data:/var/lib/mysql
+            environment:
+              MYSQL_ROOT_PASSWORD: secret
+              MYSQL_DATABASE: todos
+        
+        # 使用 docker run 时，会自动创建 named volume
+        # 使用 Compose 时，则需要在 top-level volumes: 定义 volume
+        volumes:
+          todo-mysql-data:
+        ```
+    2. 启动应用程序：`docker-compose up -d`
+5. [资源清理](https://blog.csdn.net/xixihahalelehehe/article/details/106594576)
+    - 移除 untagged images：`docker rmi $(docker images -f "dangling=true" -q)`
+    - 移除未被任何容器引用的 volume：`docker volume rm $(docker volume ls -qf dangling=true)`
+---
+## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
+1. Instruction
+    ```
+    FROM                                    初始化一个新的 build stage，并为后续指令设置 base iamge
+    RUN                                     执行命令，docker build 时执行
+    CMD                                     执行命令，docker run 时执行
+    ENTRYPOINT                              执行命令，不会被 docker run 的参数指定的指令所覆盖，而且参数会传送给指定的程序
+    ADD                                     添加文件，gzip 和 bzip2 会自动解压
+    COPY                                    复制文件
+    ENV                                     设置环境变量
+    ARG                                     设置环境变量，仅在 Dockerfile 内有效
+        docker build --build-arg
+    MAINTAINER                              维护者
+    USER                                    用户
+    VOLUME                                  VOLUME
+    WORKDIR                                 工作目录
+    EXPOSE                                  端口
+    ```
+2. Dockerfile Demo
+    1. @see Docker.md#使用 1.容器化应用程序
+    2. [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+---
 ## [Docker Compose](https://docs.docker.com/compose/)
-- [Sample apps with Compose](https://docs.docker.com/compose/samples-for-compose/)
-- [环境变量](https://docs.docker.com/compose/environment-variables/)
-### [安装场景](https://docs.docker.com/compose/install/)
-1. [安装 Docker Desktop](https://docs.docker.com/desktop/install/linux-install/)，Docker Desktop 包含 Docker Compose、Docker Engine、Docker CLI
+- @see Docker.md#使用 4.使用 Docker Compose
+### [安装场景](https://docs.docker.com/compose/install/#installation-scenarios)
+1. [安装 Docker Desktop](https://docs.docker.com/desktop/install/linux-install/)：Docker Desktop 包含 Docker Compose、Docker Engine、Docker CLI
 2. 安装 Compose plugin
-    1. [Docker's repository](https://docs.docker.com/compose/install/linux/#install-using-the-repository)
+    1. [使用 Docker's repository](https://docs.docker.com/compose/install/linux/#install-using-the-repository)
     2. [手动安装](https://docs.docker.com/compose/install/linux/#install-the-plugin-manually) 
 3. [安装 Compose standalone](https://docs.docker.com/compose/install/other/)
-### [基本步骤](https://docs.docker.com/compose/gettingstarted/)
-1. 定义应用程序依赖项
-2. 创建 Dockerfile
-3. [在 Compose 文件中定义服务](https://docs.docker.com/compose/compose-file/)
-    ```
-    build                           构建时的配置选项，可直接指定一个文件夹
-    image                           指定镜像
-    networks                        所属网路
-    depends_on                      服务之间的依赖关系
-    ```
-### [docker-compose CLI](https://docs.docker.com/compose/reference/)
+### [docker compose CLI](https://docs.docker.com/compose/reference/)
 ```
-build                               构建或重构 services
-config                              验证并查看 Compose 文件
-download                            停止和删除 containers, networks, images, and volumes
-exec                                在正在运行的 container 中执行命令
-logs                                查看 containers 输出
-ps                                  列出 containers
-rm                                  移除停止的 containers
-stop                                停止 services
-up -d                               创建并启动 containers
+docker compose build [OPTIONS] [SERVICE...]                     构建或重构 services
+docker compose config [OPTIONS] [SERVICE...]                    以规范格式 parse/resove/reder compose 文件
+docker compose down [OPTIONS] [SERVICES]                        停止和移除 containers, networks
+docker compose exec [OPTIONS] SERVICE COMMAND [ARGS...]         在正在运行的 container 中执行命令
+docker compose logs [OPTIONS] [SERVICE...]                      查看 containers 输出
+    -f, --follow
+docker compose ps [OPTIONS] [SERVICE...]                        列出 containers
+docker compose rm [OPTIONS] [SERVICE...]                        移除停止的 containers
+docker compose stop [OPTIONS] [SERVICE...]                      停止 services
+docker compose up [OPTIONS] [SERVICE...]                        创建并启动 containers
 ```
 ---
-## [基本命令](https://docs.docker.com/engine/reference/commandline/docker/)
+## [Docker CLI](https://docs.docker.com/engine/reference/commandline/docker/)
 - Docker
 ```
 docker version [OPTIONS]                                        显示 Docker 版本信息
@@ -193,7 +293,7 @@ docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   显示 Docker �
     # 显示所有 container IP
     docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
     # 显示 container 日志地址
-    docker inspect --format '{{.LogPath}}' c951678a44fc
+    docker inspect --format '{{.LogPath}}' f9d2bd079dbc
 docker login                                                    登录 registry
 docker logout                                                   注销 registry 
 ```
@@ -201,12 +301,14 @@ docker logout                                                   注销 registry
 ```
 docker images [OPTIONS] [REPOSITORY[:TAG]]                      列出 iamges
 docker search [OPTIONS] TERM                                    在 Docker Hub 搜索 images
-docker pull [OPTIONS] NAME[:TAG|@DIGEST]                        从 registry 下载 image
-docker push [OPTIONS] NAME[:TAG]                                将 image 上载 registry
+docker image pull [OPTIONS] NAME[:TAG|@DIGEST]                  从 registry 下载 image
+docker image pull [OPTIONS] NAME[:TAG|@DIGEST]                  将 image 上载 registry
 docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
-docker build [OPTIONS] PATH | URL | -                           从 Dockerfile 构建 image
+docker image rm [OPTIONS] IMAGE [IMAGE...]                      移除 images
+docker image build [OPTIONS] PATH | URL | -                     从 Dockerfile 构建 image
     -t, --tag                                                   名字和标签，name:tag 格式
-docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]                创建 tag
+docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]          创建 tag
+docker image history [OPTIONS] IMAGE                            显示 image 历史记录                               
 ```
 - container
 ```
@@ -217,6 +319,9 @@ docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]         从 image 创建
     -t, --tty                                                   分配一个伪 TTY
     -d, --detach                                                在后台运行 container 并打印 ID
     -v, --volume                                                挂载 volume，$PWD 当前目录
+    --mount                                                     将文件系统挂载到容器
+        -v vs --mount:  https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag
+                        https://docs.docker.com/storage/bind-mounts/#choose-the--v-or---mount-flag
     --volumes-from                                              从指定 container 挂载 volumes
     -p, --publish                                               将 container 的端口发布到主机
     -e, --env                                                   设置环境变量
@@ -228,7 +333,8 @@ docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]         从 image 创建
     --privileged                                                扩展权限，获得完整的 container 功能
     --rm                                                        退出时自动移除 container
     --link                                                      将 link 添加到另一个 container
-    --net, --network                                            将 container 连接到网络
+    --network                                                   将 container 连接到 network
+    --network-alias		                                        为 container 添加 network-scoped 别名
     --ip                                                        IPv4 地址
     --ip6		                                                IPv6 地址
 docker ps [OPTIONS]                                             列出 containers
@@ -248,49 +354,21 @@ docker container logs [OPTIONS] CONTAINER                       获取 container
 docker container port CONTAINER [PRIVATE_PORT[/PROTO]]          列出 container 的端口映射或特定映射
 docker container inspect [OPTIONS] CONTAINER [CONTAINER...]     显示 containers 详细信息
 ```
+- volume
+```
+docker volume create [OPTIONS] [VOLUME]                         创建 volume
+docker volume inspect [OPTIONS] VOLUME [VOLUME...]              显示 volumes 的详细信息
+docker volume ls [OPTIONS]                                      列出 volumes
+docker volume rm [OPTIONS] VOLUME [VOLUME...]                   移除 volumes
+```
 - network
 ```
-docker network create [OPTIONS] NETWORK                         创建网络
+docker network create [OPTIONS] NETWORK                         创建 network
     -- subnet                                                   代表网段的 CIDR 格式的子网
+docker network prune [OPTIONS]                                  移除所有未使用的网络
 ```
 ---
-## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
-1. Commands
-    ```
-    FROM                                    初始化一个新的 build stage，并为后续指令设置 base iamge
-    RUN                                     执行命令，docker build 时执行
-    CMD                                     执行命令，docker run 时执行
-    ENTRYPOINT                              执行命令，不会被 docker run 的参数指定的指令所覆盖，而且参数会传送给指定的程序
-    ADD                                     添加文件，gzip 和 bzip2 会自动解压
-    COPY                                    复制文件
-    ENV                                     设置环境变量
-    ARG                                     设置环境变量，仅在 Dockerfile 内有效
-        docker build --build-arg
-    MAINTAINER                              维护者
-    USER                                    用户
-    VOLUME                                  VOLUME
-    WORKDIR                                 工作目录
-    EXPOSE                                  端口
-    ```
-2. Dockerfile Demo
-    1. [Containerize an application](https://docs.docker.com/get-started/02_our_app/)
-        - 克隆项目：`cd /home/lighthouse/git` → `git clone https://github.com/docker/getting-started-app.git`
-        - 创建 Dockerfile 文件：`cd /getting-started-app` → `touch Dockerfile`
-            ```
-            # syntax=docker/dockerfile:1
-               
-            FROM node:18-alpine
-            WORKDIR /app
-            COPY . .
-            RUN yarn install --production
-            CMD ["node", "src/index.js"]
-            EXPOSE 3000
-            ```
-        - 构建容器镜像：`docker build -t getting-started .`
-        - 启动容器：`docker run -dp 127.0.0.1:3000:3000 getting-started` → http://localhost:3000
-    2. [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
----
-## [MySQL](https://hub.docker.com/_/mysql)
+## [MySQL](https://hub.docker.com/_/mysql) / MariaDB
 - [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
 - 配置文件读取顺序命令：`mysql --verbose --help|grep -A 1 'Default options'`
 ```bash
@@ -316,28 +394,6 @@ flush privileges;
 
 alter user root@'%' identified by 'Cesc123!' password expire never;
 alter user root@'localhost' identified by 'Cesc123!';
-```
----
-## [MariaDB](https://hub.docker.com/_/mariadb)
-```bash
-mkdir -p /home/lighthouse/docker_data/mariadb/{conf,logs,data}
-cd /home/lighthouse/docker_data/mariadb
-# 从容器复制配置文件
-docker run -d --name mariadb --privileged -e MYSQL_ROOT_PASSWORD=root mariadb
-docker cp mariadb:/etc/mysql/. $PWD/conf
-docker stop mariadb
-docker rm mariadb
-```
-```bash
-docker run -d --name mariadb -p 3307:3306 --privileged --restart=unless-stopped \
--v $PWD/conf:/etc/mysql \
--v $PWD/data:/var/lib/mysql \
--v $PWD/logs:/var/log/mysql \
--e MYSQL_ROOT_PASSWORD=root \
-mariadb \
---default_authentication_plugin=mysql_native_password \
---character-set-server=utf8mb4 \
---collation-server=utf8mb4_general_ci
 ```
 ---
 ## [SQL Server](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-docker)

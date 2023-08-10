@@ -32,10 +32,13 @@
         2.1 Auto reset before per restart 勾选
 ---
 ## Build Tools (-g)
-    1. Settings → Build, Execution, Deployment → Build Tools → Maven
+    1. Settings → Build, Execution, Deployment → Build Tools
     2. Maven
         2.1 User settings file: D:\dev\.maven\settings.xml
-    3. Gradle D:\dev\.gradle
+    3. Gradle
+        3.1 Gradle user home: D:\dev\.gradle
+        3.2 Build and run using: IntelliJ IDEA
+        3.3 Run tetss using: IntelliJ IDEA
 ---
 ## Trailing Spaces
     1. Settings → Editor → General
