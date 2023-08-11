@@ -1,84 +1,72 @@
 # Maven
 
 ---
-## 参考网站
-1. [Maven – POM Reference](https://maven.apache.org/pom.html)
-2. [Maven – Settings Reference](https://maven.apache.org/settings.html)
-3. [POM 文件详解](https://zhuanlan.zhihu.com/p/341619947)
-4. [Profile 详解](https://www.cnblogs.com/wxgblogs/p/6696229.html)
+## Reference
+1. [Maven](https://maven.apache.org/)
+2. [Maven – POM Reference](https://maven.apache.org/pom.html)
+    - [POM 文件详解](https://zhuanlan.zhihu.com/p/341619947)
+    - [Profile 详解](https://www.cnblogs.com/wxgblogs/p/6696229.html)
+3. [Maven – Settings Reference](https://maven.apache.org/settings.html)
 ---
-## 环境变量
-```
-1. WIN+R 输入 sysdm.cpl → 高级 → 环境变量
-2. 在系统变量新建 JAVA_HOME：D:\Java\jdk1.8.0_291
-3. 在系统变量新建 M2_HOME：D:\dev\apache-maven-3.8.5
-4. 在系统变量找到 Path，增加 %JAVA_HOME%\bin; %M2_HOME%\bin;
-5. 在 cmd 输入 mvn -v
-```
+## 课程
+1. [Maven 项目依赖管理](https://www.imooc.com/learn/1282)
+2. [Maven Guide](https://www.jetbrains.com/idea/guide/tutorials/marco-codes-maven/introduction/)
 ---
-## 常用命令
-    mvn -v                                              查看版本
-    mvn compile                                         编译
-    mvn test                                            测试
-    mvn package                                         打包
-    mvn clean                                           删除 target
-    mvn install                                         安装 jar 包到本地仓库
-    mvn deploy                                          上传到私服
+## [安装](https://maven.apache.org/install.html)
+1. 安装 JDK（以下二选一）
+    1. 设置系统变量 JAVA_HOME
+    2. 设置系统变量 PATH
+2. [下载](https://maven.apache.org/download.cgi)并解压 Maven
+    - maven 1.x   设置 MAVEN_HOME、PATH 变量
+    - maven 2.x   设置 M2_HOME、PATH 变量
+    - maven 3.x   只需设置 PATH 变量
+3. `mvn -v`
 ---
-## 创建 maven 项目的两种方式
-    1. archetype:generate                               按照提示进行选择
-    2. archetype:generate   -DgroupId=组织名，公司网站的反写+项目名
-                            -DartifactId=项目名-模块名
-                            -Dversion=版本号
-                            -Dpackage=代码所在包名
----              
-## [仓库](https://developer.aliyun.com/mvn/guide)
-1. 本地仓库：
+## [创建项目](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html#creating-a-project)
+- 命令：`mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false`
+- [标准目录布局](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)
+---
+## [生命周期](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference)
+1. clean：删除上一个生成生成的所有文件
+2. default：处理项目部署
+    ```
+    validate        验证项目   验证项目是否正确，所有必要的信息是否可用
+    compile         编译      编译项目的源代码
+    test            测试      使用合适的单元测试框架运行测试。这些测试不应该要求打包或部署代码
+    package         打包      将编译后的代码打包为可分发的格式，例如 JAR
+    verify          验证包     运行任何检查以验证包是否有效并符合质量标准
+    install         安装      将包安装到本地存储库中，以便在本地其他项目中用作依赖项
+        依赖冲突：①短路优先；②声明优先
+    deploy          部署      在集成或发布环境中完成，将最终包复制到远程存储库，以便与其他开发人员和项目共享
+    ```
+3. site：生成项目的站点文档
+---
+## [仓库](https://maven.apache.org/repositories/index.html)
+1. 本地仓库：运行 Maven 的计算机上的一个目录。它缓存远程下载，并包含尚未发布的临时构建 artifacts
     - 默认路径：${user.home}/.m2/repository
     - 自定义路径：修改 settings.xml 中的 &lt;localRepository/&gt; 
-2. 远程仓库
-    - 中央仓库 + 私服仓库 + 其它仓库
-    - 通过各种协议如 http:// 和 file:// 访问的仓库
-- [settings.xml](settings.xml)
+2. 远程仓库：通过各种协议（如：file:// 和 http://）访问的任何其它类型的仓库（远程仓库、中央仓库、私有仓库）
+    - [settings.xml](settings.xml)
     ```xml
+    <!-- 阿里云云效 Maven：https://developer.aliyun.com/mvn/guide -->
     <mirror>
         <id>aliyunmaven</id>
-        <mirrorOf>*</mirrorOf>
+        <mirrorOf>*,!central</mirrorOf>
         <name>阿里云公共仓库</name>
         <url>https://maven.aliyun.com/repository/public</url>
     </mirror>
     ```
-- [pom.xml](pom.xml)
     ```xml
+    <!-- central 使用其它代理仓库 -->
     <repository>
-        <id>aliyunmaven</id>
-        <url>https://maven.aliyun.com/repository/public</url>
+        <id>central</id>
+        <url>https://maven.aliyun.com/repository/central</url>
         <releases>
             <enabled>true</enabled>
         </releases>
         <snapshots>
-            <enabled>false</enabled>
+            <enabled>true</enabled>
         </snapshots>
     </repository>
     ```
----
-## 生命周期
-1. clean 清理项目
-    ```
-    pre-clean                                           执行清理前的工作
-    clean                                               清理上一次构建生成的文件
-    post-clean                                          执行清理后的文件
-    ```
-2. default 构建项目（最核心）：`compile test package install`
-3. site         生成项目站点
-    ```
-    pre-site                                            在生成项目站点前要完成的工作
-    site                                                生成项目的站点文档
-    post-site                                           在生成项目站点后要完成的工作
-    site-deploy                                         发布生成的站点到服务器上
-    ```
----
-## 依赖冲突
-1. 短路优先
-2. 先声明优先
 ---

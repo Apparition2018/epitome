@@ -159,16 +159,17 @@ under the License.
         </mirror>
          -->
         <!-- 阿里云云效 Maven：https://developer.aliyun.com/mvn/guide -->
+        <!-- Using Mirrors for Repositories：https://maven.apache.org/guides/mini/guide-mirror-settings.html -->
         <!-- Maven 仓库：https://blog.csdn.net/abu935009066/article/details/124206273 -->
         <!-- 配置多个 mirror，当 mirrorOf 指向远程仓库的 ID 相同时，当且仅当上一个远程仓库连接失败才会访问下一个远程仓库；
                 连接成功后，即使没有获取到想要的 jar 包，也不会访问下一个远程仓库 -->
         <mirror>
-            <!-- mirrorOf：指向远程仓库 ID
-                    external:*  所有远程仓库，除了使用 localhost 和 file:// 协议的
-                    repo1,repo2 远程仓库 ID 为 repo1 和 rep2 的仓库
-                    *,!inhouse  所有远程仓库，除了 ID 为 inhouse -->
-            <mirrorOf>*,!repo1</mirrorOf>
             <id>aliyunmaven</id>
+            <!-- mirrorOf：指向远程仓库 ID
+                    repo1,repo2 指向远程仓库 ID 为 repo1 和 rep2 的仓库
+                    *,!inhouse  指向所有远程仓库，除了 ID 为 inhouse
+                    external:*  指向所有远程仓库，除了使用 localhost 和 file:// 协议的 -->
+            <mirrorOf>*,!central</mirrorOf>
             <name>阿里云公共仓库</name>
             <url>https://maven.aliyun.com/repository/public</url>
         </mirror>

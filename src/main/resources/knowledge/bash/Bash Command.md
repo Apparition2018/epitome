@@ -165,7 +165,17 @@
     ssh                             OpenSSH SSH client                  远程登录程序
     sftp                            secure file transfer program        安全文件传输程序
     scp                             secure copy                         远程文件复制程序
-
+    wget                                                                从 URL 下载并将其保存到本地硬盘上的文件中
+    curl                                                                从 URL 下载并将其内容输出到控制台
+---
+## 文本编辑 (text editors)
+    pico, nano                                                          简单的文本编辑器（推荐）
+    emacs                                                               复杂的文本编辑器（不推荐）
+    vi, vim                                                             复杂的文本编辑器（不推荐）
+---
+## 正则表达式 (regular expressions)
+    sed                             stream  editor                      流编辑器；基于正则表达式查找/替换
+    egrep                           extended grep                       匹配正则表达式的 grep 扩展版本 (grep -e)
 ---
 ##
     nohup                           no hang up                          运行命令，忽略 hangup signals
@@ -202,21 +212,11 @@
     mc                              midnight commander                  提供一个菜单式的文件管理程序
 ---
 ## 文档编辑
-    egrep                           extended grep                       查找文件里符合条件的字符串 (grep -e)
     fgrep                           fixed grep                          查找文件里符合条件的字符串 (grep -f)
     tr                              translate                           转换大小写或删除字符
     ed                              editor                              编辑文本
     joe                             joe's own editor                    编辑文本
-    pico                            pine's message composition editor   编辑文本
     awk                                                                 处理文本
-    sed {scrip} [input-file]        stream  editor                      使用脚本处理文本
-    sed "s/xyz/XYZ/g" file_name                                         全局取代xyz为XYZ
-        a                           add                                 新增
-        c                           replace                             替换
-        d                           delete                              删除
-        i                           insert                              插入
-        p                           print                               打印
-        s                           substitute                          取代
     fmt                             format                              格式化文本
     col                                                                 过滤控制字符
     join                                                                将两个文件中，指定栏位内容相同的行连接起来
@@ -267,7 +267,6 @@
         -n, --numeric                                                   直接使用 IP 地址，而不通过域名服务器
         -l, --listening                                                 显示监控中的服务器的 Socket
         -p, --program                                                   显示正在使用 Socket 的程序识别码和程序名称
-    wget                                                                非交互网络下载器
     telnet                          telecommunications network          远程连接
     tty                             teletypewriter                      打印连接到标准输入的终端的文件名
 ---
