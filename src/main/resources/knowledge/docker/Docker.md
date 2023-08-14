@@ -152,10 +152,10 @@ sudo systemctl disable containerd.service
 3. 使用 `--log-driver` 为 docker create 或 docker run 的 container 设置日志驱动
     - `docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world`
 ---
-## 使用
+## [使用](https://docs.docker.com/get-started/)
 1. [容器化应用程序](https://docs.docker.com/get-started/02_our_app/)
-    1. 克隆项目：`cd /home/lighthouse/git` → `git clone https://github.com/docker/getting-started-app.git`
-    2. 创建 Dockerfile 文件：`cd /getting-started-app` → `touch Dockerfile`
+    1. Clone repository：`cd /home/lighthouse/git` → `git clone https://github.com/docker/getting-started-app.git`
+    2. Create Dockerfile：`cd /getting-started-app` → `vim Dockerfile`
         ```
         # syntax=docker/dockerfile:1
         FROM node:18-alpine
@@ -166,9 +166,9 @@ sudo systemctl disable containerd.service
         CMD ["node", "src/index.js"]
         EXPOSE 3000
         ```
-    3. 创建 .dockerignore：`vim .dockerignore` → `node_modules`
-    4. 构建 container image：`docker build -t getting-started .`
-    5. 启动 container：`docker run -dp 127.0.0.1:3000:3000 getting-started` → http://localhost:3000
+    3. Create .dockerignore：`vim .dockerignore` → `node_modules`
+    4. Build image：`docker build -t getting-started .`
+    5. Run container：`docker run -dp 127.0.0.1:3000:3000 getting-started` → http://localhost:3000
 2. [分享应用程序](https://docs.docker.com/get-started/04_sharing_app/)
     1. 创建 repository
         1. 登录 [Docker Hub](https://hub.docker.com/)
@@ -212,7 +212,7 @@ sudo systemctl disable containerd.service
             image: node:18-alpine
             command: sh -c "yarn install && yarn run dev"
             ports:
-              - 127.0.0.1:3000:3000
+              - "3000:3000"
           working_dir: /app
           volumes:
             - ./:/app
@@ -235,10 +235,116 @@ sudo systemctl disable containerd.service
         volumes:
           todo-mysql-data:
         ```
-    2. 启动应用程序：`docker-compose up -d`
+    2. 启动应用程序：`docker-compose up -d` → http://localhost:3000
 5. [资源清理](https://blog.csdn.net/xixihahalelehehe/article/details/106594576)
-    - 移除 untagged images：`docker rmi $(docker images -f "dangling=true" -q)`
-    - 移除未被任何容器引用的 volume：`docker volume rm $(docker volume ls -qf dangling=true)`
+    - 移除 untagged images：`docker rmi $(docker images -qf dangling=true)`
+    - 移除 untagged volume：`docker volume rm $(docker volume ls -qf dangling=true)`
+    - 移除 untagged network：`docker network rm $(docker network ls -qf dangling=true)`
+---
+## [Java 指南](https://docs.docker.com/language/java/)
+1. [Build image](https://docs.docker.com/language/java/build-images/)
+    1. Clone repository：`cd /home/lighthouse/git` → `git clone https://github.com/spring-projects/spring-petclinic.git`
+    2. Create Dockerfile：`cd /spring-petclinic` → `vim Dockerfile`
+        ```
+        # syntax=docker/dockerfile:1
+        FROM eclipse-temurin:17-jdk-focal
+        WORKDIR /app
+        COPY .mvn/ .mvn
+        COPY mvnw pom.xml ./
+        RUN ./mvnw dependency:resolve
+        COPY src ./src
+        CMD ["./mvnw", "spring-boot:run"]
+        ```
+    3. Create .dockerignore：`vim .dockerignore` → `target`
+    4. Build image：`docker build --tag java-docker .`
+    5. Run container：`docker run --rm -d -p 8080:8080 --name springboot-server java-docker`
+        - `curl --request GET --url http://localhost:8080/actuator/health --header 'content-type: application/json'`
+2. [Develop app](https://docs.docker.com/language/java/develop/)
+    1. create volumes and network
+        ```bash
+        docker volume create mysql_data
+        docker volume create mysql_config
+        docker network create mysqlnet
+        ```
+    2. run MySQL
+        ```bash
+        docker run -it --rm -d \
+        -v mysql_data:/var/lib/mysql -v mysql_config:/etc/mysql/conf.d \
+        --network mysqlnet --name mysqlserver \
+        -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic \
+        -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=petclinic \
+        -p 3306:3306 mysql:8.0
+        ```
+    3. H2 数据库切换到 MySQL：`vim Dockerfile` → `CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=mysql"]`
+    4. Build image：`docker build --tag java-docker .`
+    5. Run container
+        ```bash
+        docker run --rm -d \
+        --name springboot-server --network mysqlnet \
+        -e MYSQL_URL=jdbc:mysql://mysqlserver/petclinic \
+        -p 8080:8080 java-docker
+        ```
+        - `curl --request GET --url http://localhost:8080/vets --header 'content-type: application/json'`
+    6. Multi-stage Dockerfile：`vim Dockerfile`
+        ```bash
+        # syntax=docker/dockerfile:1
+        
+        FROM eclipse-temurin:17-jdk-focal as base
+        WORKDIR /app
+        COPY .mvn/ .mvn
+        COPY mvnw pom.xml ./
+        RUN ./mvnw dependency:resolve
+        COPY src ./src
+        
+        FROM base as development
+        CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=mysql", "-Dspring-boot.run.jvmArguments='-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000'"]
+        
+        FROM base as build
+        RUN ./mvnw package
+        
+        FROM eclipse-temurin:17-jre-jammy as production
+        EXPOSE 8080
+        COPY --from=build /app/target/spring-petclinic-*.jar /spring-petclinic.jar
+        CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/spring-petclinic.jar"]
+        ```
+    7. Use Compose：`vim docker-compose.dev.yml` → `docker-compose -f docker-compose.dev.yml up -d --build`
+        → `curl --request GET --url http://localhost:8080/vets --header 'content-type: application/json'`
+        ```yaml
+        version: '3.8'
+        services:
+          petclinic:
+            build:
+              context: .
+              target: development
+            ports:
+              - "8000:8000"
+              - "8080:8080"
+            environment:
+              - SERVER_PORT=8080
+              - MYSQL_URL=jdbc:mysql://mysqlserver/petclinic
+            volumes:
+              - ./:/app
+            depends_on:
+              - mysqlserver
+        
+          mysqlserver:
+            image: mysql:8.0
+            ports:
+              - "3306:3306"
+            environment:
+              - MYSQL_ROOT_PASSWORD=
+              - MYSQL_ALLOW_EMPTY_PASSWORD=true
+              - MYSQL_USER=petclinic
+              - MYSQL_PASSWORD=petclinic
+              - MYSQL_DATABASE=petclinic
+            volumes:
+              - mysql_data:/var/lib/mysql
+              - mysql_config:/etc/mysql/conf.d
+        volumes:
+          mysql_data:
+          mysql_config:
+        ```
+    8. Connect a Debugger：IDEA → Edit Configurations… → Remote JVM Debug → Port: 8000
 ---
 ## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
 1. Instruction
@@ -272,6 +378,8 @@ sudo systemctl disable containerd.service
 3. [安装 Compose standalone](https://docs.docker.com/compose/install/other/)
 ### [docker compose CLI](https://docs.docker.com/compose/reference/)
 ```
+    -f, --file
+    -p, --project-name
 docker compose build [OPTIONS] [SERVICE...]                     构建或重构 services
 docker compose config [OPTIONS] [SERVICE...]                    以规范格式 parse/resove/reder compose 文件
 docker compose down [OPTIONS] [SERVICES]                        停止和移除 containers, networks
@@ -305,7 +413,7 @@ docker image pull [OPTIONS] NAME[:TAG|@DIGEST]                  从 registry 下
 docker image pull [OPTIONS] NAME[:TAG|@DIGEST]                  将 image 上载 registry
 docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
 docker image rm [OPTIONS] IMAGE [IMAGE...]                      移除 images
-docker image build [OPTIONS] PATH | URL | -                     从 Dockerfile 构建 image
+docker image build [OPTIONS] PATH | URL | -                     从 Dockerfile build image
     -t, --tag                                                   名字和标签，name:tag 格式
 docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]          创建 tag
 docker image history [OPTIONS] IMAGE                            显示 image 历史记录                               
