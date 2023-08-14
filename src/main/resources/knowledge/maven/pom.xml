@@ -6,44 +6,32 @@
     <!-- modelVersion：4.0.0 是目前唯一支持的版本，并且是必须的 -->
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- 父模块 -->
+
+    <!-- 1. The Basics：https://maven.apache.org/pom.html#The_Basics -->
+    <!-- 项目继承：https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Project_Inheritance -->
+    <!-- 项目聚合：https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#project-aggregation -->
     <parent>
         <groupId>xxx</groupId>
         <artifactId>xxx</artifactId>
         <version>xxx</version>
+        <relativePath/>
     </parent>
     <!-- Maven 坐标：https://maven.apache.org/pom.html#maven-coordinates -->
     <groupId>com.{公司/BU}.业务线.[子业务线]</groupId>
     <artifactId>产品线名-模块名</artifactId>
+    <!-- 语义化版本：https://semver.org/lang/zh-CN/ -->
+    <!-- Version Order Specification：https://maven.apache.org/pom.html#version-order-specification
+            非数字标记顺序：alpha(a) < beta(b) < milestone(m) < rc = cr < snapshot < 空 = final = ga = release < sp -->
     <version>主版本号.次版本号.修订号</version>
-    <!-- packaging：默认 jar
+    <!-- packaging：pom, jar（默认）, maven-plugin, ejb, war, ear, rar
             https://maven.apache.org/pom.html#packaging -->
-    <packaging>war</packaging>
-    <name>项目名</name>
-    <description>项目描述</description>
-    <url>项目地址</url>
+    <packaging>pom</packaging>
 
-    <organization>
-        <name>组织</name>
-        <url>...</url>
-    </organization>
-    <licenses>
-        <license>
-            <name>许可证</name>
-            <url>...</url>
-        </license>
-    </licenses>
-    <developers>
-        <developer>
-            <name>开发人员列表</name>
-        </developer>
-    </developers>
-
-    <!-- 多模块 -->
     <modules>
-        <module>xxx</module>
+        <module>module-1</module>
     </modules>
 
+    <!-- 项目插值和变量：https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#project-interpolation-and-variables -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
@@ -56,23 +44,33 @@
             <artifactId>xxx</artifactId>
             <version>xxx</version>
             <type>xxx</type>
-            <!-- 范围 -->
+            <!-- 依赖范围：https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#dependency-scope
+                    compile     default     spring-core     compile     test    runtime
+                    provided                servlet-api     compile     test
+                    runtime                 jdbc                        test    runtime
+                    test                    junit                       test
+                    system      deprecated
+                    import -->
             <scope>test</scope>
-            <!-- 设置依赖是否可以传递
-                optional=true，依赖不会传递，之后依赖此项目的项目如果想要使用, 需要重新引入 -->
+            <!-- 可选依赖：设置依赖是否可以传递。optional=true，表示依赖不会传递；子模块赖如果想要使用, 需要重新声明依赖
+                    https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html#optional-dependencies -->
             <optional>true</optional>
-            <!-- 排除依赖传递列表 -->
+            <!-- 依赖排除：https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html#dependency-exclusions -->
             <exclusions>
             </exclusions>
         </dependency>
     </dependencies>
 
-    <!-- 依赖管理，让子模块继承 -->
+    <!-- 依赖管理：管理其所有子项的依赖关系信息
+            https://maven.apache.org/pom.html#dependency-management -->
     <dependencyManagement>
         <dependencies>
         </dependencies>
     </dependencyManagement>
 
+
+    <!-- 2. Build Settings：https://maven.apache.org/pom.html#Build_Settings -->
+    <!-- Available Plugins：https://maven.apache.org/plugins/index.html -->
     <build>
         <plugins>
         </plugins>
@@ -89,20 +87,49 @@
         </resources>
     </build>
 
-    <!-- 远程仓库，如果已在setting.xml中配置了远程仓库，这里则不需要配置 -->
+
+    <!-- 3. More Project Information：https://maven.apache.org/pom.html#More_Project_Information -->
+    <name>项目名</name>
+    <description>项目描述</description>
+    <url>项目地址</url>
+    <inceptionYear>创建年份</inceptionYear>
+    <licenses>
+        <license>
+            <name>许可证</name>
+        </license>
+    </licenses>
+    <organization>
+        <name>组织</name>
+    </organization>
+    <developers>
+        <developer>
+            <name>开发人员</name>
+        </developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <name>贡献者</name>
+        </contributor>
+    </contributors>
+
+
+    <!-- 4. Environment Settings：https://maven.apache.org/pom.html#Environment_Settings -->
+    <!-- 仓库：Maven 首先尝试使用指定 artifact 的本地副本。如果本地仓库不存在该 artifact，将尝试从远程仓库下载。
+                <repository/> 指定要搜索的备用仓库。Maven 默认会搜索 central(https://repo.maven.apache.org/maven2/) 仓库
+                https://maven.apache.org/pom.html#repositories -->
     <repositories>
         <repository>
-            <id>aliyunmaven</id>
-            <url>https://maven.aliyun.com/repository/public</url>
+            <id>central</id>
+            <url>https://maven.aliyun.com/repository/central</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </snapshots>
         </repository>
     </repositories>
-    <!-- 远程插件仓库 -->
+    <!-- 插件仓库：https://maven.apache.org/pom.html#plugin-repositories -->
     <pluginRepositories>
         <pluginRepository>
             <id>aliyunmaven</id>
@@ -110,19 +137,40 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <!-- 指定 maven 发布构建的位置 -->
+    <!-- 发布管理：https://maven.apache.org/pom.html#distribution-management -->
     <distributionManagement>
-        <!-- 正式库 -->
         <repository>
             <id>xxx</id>
             <name>xxx</name>
             <url>xxx</url>
         </repository>
-        <!-- 快照库 -->
         <snapshotRepository>
             <id>xxx</id>
             <name>xxx</name>
             <url>xxx</url>
         </snapshotRepository>
     </distributionManagement>
+
+    <!-- Profiles：项目根据构建环境更改设置
+            https://maven.apache.org/pom.html#profiles -->
+    <profiles>
+        <profile>
+            <id>test</id>
+            <!-- Activation：
+                    < Maven 3.2.2，满足一个或多个时激活
+                    >= Maven 3.2.2，满足所有才激活
+                    https://maven.apache.org/pom.html#activation -->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>1.8</jdk>
+                <os>
+                    <name>Windows XP</name>
+                </os>
+                <property>
+                </property>
+                <file>
+                </file>
+            </activation>
+        </profile>
+    </profiles>
 </project>

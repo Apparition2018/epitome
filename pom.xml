@@ -465,7 +465,6 @@
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
             <version>${cglib.version}</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
