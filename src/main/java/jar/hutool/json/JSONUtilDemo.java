@@ -58,7 +58,7 @@ public class JSONUtilDemo implements JsonDemo {
 
         // JSONObject → JavaBean
         teacher = JSONUtil.toBean(jsonObject, Teacher.class);
-        teacher = JSONUtil.toBean(jsonObject, new TypeReference<Teacher>() {
+        teacher = JSONUtil.toBean(jsonObject, new TypeReference<>() {
         }, false);
         p(teacher);
 
