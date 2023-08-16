@@ -51,7 +51,7 @@ public class FastJsonDemo implements JsonDemo {
 
         // JSONObject → JavaBean
         teacher = JSONObject.parseObject(jsonObject.toJSONString(), Teacher.class);
-        teacher = JSONObject.parseObject(jsonObject.toJSONString(), new TypeReference<Teacher>() {
+        teacher = JSONObject.parseObject(jsonObject.toJSONString(), new TypeReference<>() {
         });
         p(teacher);
 
@@ -82,7 +82,7 @@ public class FastJsonDemo implements JsonDemo {
 
         // JSONArray → List<JavaBean>
         students = JSONArray.parseArray(jsonArray.toJSONString(), Student.class);
-        students = JSONArray.parseObject(jsonArray.toJSONString(), new TypeReference<List<Student>>() {
+        students = JSONArray.parseObject(jsonArray.toJSONString(), new TypeReference<>() {
         });
         p(students);
         // List<JavaBean> → JSONArray

@@ -1,5 +1,7 @@
 # Docker
-
+- 快速、一致地交付应用程序
+- 响应式部署和扩展
+- 在同一硬件上运行更多工作负载
 ---
 ## Reference
 1. [Docker Documentation](https://docs.docker.com)
@@ -16,6 +18,17 @@
 1. [Docker 与 VM - 应用程序部署技术之间的区别 - AWS](https://aws.amazon.com/cn/compare/the-difference-between-docker-vm/)
     ![Docker vs VM](https://geekflare.com/wp-content/uploads/2019/09/traditional-vs-new-gen.png)
 2. [Kubernetes 与 Docker — 容器技术之间的区别 — AWS](https://aws.amazon.com/cn/compare/the-difference-between-kubernetes-and-docker/)
+---
+## [Docker 架构](https://docs.docker.com/get-started/overview/#docker-architecture)
+![architecture](https://docs.docker.com/assets/images/architecture.svg)
+
+|                   |                                                                                                                                                                                         |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Docker daemon     | Docker 守护进程 (dockerd) 侦听 Docker API 请求并管理 Docker 对象。守护进程还可以与其他守护进程通信来管理 Docker 服务                                                                                                       |
+| Docker client     | Docker 客户端 (docker) 是许多 Docker 用户与 Docker 交互的主要方式。当您使用诸如 docker-run 之类的命令时，客户端会将这些命令发送给 dockerd，后者会执行这些命令。Docker 客户端可以与多个守护进程进行通信                                                       |
+| Docker Desktop    | Docker Desktop 是一款适用于 Mac、Windows 或 Linux 环境的易于安装的应用程序，使您能够构建和共享容器化应用程序和微服务。Docker Desktop 包括 Docker 守护进程、Docker 客户端、Docker-Compose、Docker Content Trust、Kubernetes 和 Credential Helper |
+| Docker registries | Docker 注册表存储 Docker 映像。Docker Hub 是一个任何人都可以使用的公共注册表，默认情况下 Docker 会在 DockerHub 上查找映像                                                                                                     |
+| Docker objects    | 当您使用 Docker 时，您正在创建和使用图像、容器、网络、卷、插件和其他对象                                                                                                                                                |
 ---
 ## [Docker Desktop](https://docs.docker.com/desktop/)
 - [Docker Desktop for Linux vs Docker Engine](https://docs.docker.com/desktop/faqs/linuxfaqs/#what-is-the-difference-between-docker-desktop-for-linux-and-docker-engine)
@@ -158,6 +171,7 @@ sudo systemctl disable containerd.service
     2. Create Dockerfile：`cd /getting-started-app` → `vim Dockerfile`
         ```
         # syntax=docker/dockerfile:1
+        
         FROM node:18-alpine
         WORKDIR /app
         COPY package.json yarn.lock ./
@@ -247,6 +261,7 @@ sudo systemctl disable containerd.service
     2. Create Dockerfile：`cd /spring-petclinic` → `vim Dockerfile`
         ```
         # syntax=docker/dockerfile:1
+        
         FROM eclipse-temurin:17-jdk-focal
         WORKDIR /app
         COPY .mvn/ .mvn
@@ -255,38 +270,39 @@ sudo systemctl disable containerd.service
         COPY src ./src
         CMD ["./mvnw", "spring-boot:run"]
         ```
-    3. Create .dockerignore：`vim .dockerignore` → `target`
+    3. Create .dockerignore file：`vim .dockerignore` → `target`
     4. Build image：`docker build --tag java-docker .`
     5. Run container：`docker run --rm -d -p 8080:8080 --name springboot-server java-docker`
         - `curl --request GET --url http://localhost:8080/actuator/health --header 'content-type: application/json'`
 2. [Develop app](https://docs.docker.com/language/java/develop/)
-    1. create volumes and network
-        ```bash
-        docker volume create mysql_data
-        docker volume create mysql_config
-        docker network create mysqlnet
+    1. Run a database in a container
+        1. create volumes and network
+            ```bash
+            docker volume create mysql_data
+            docker volume create mysql_config
+            docker network create mysqlnet
+            ```
+        2. run MySQL
+            ```bash
+            docker run -it --rm -d \
+            -v mysql_data:/var/lib/mysql -v mysql_config:/etc/mysql/conf.d \
+            --network mysqlnet --name mysqlserver \
+            -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic \
+            -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=petclinic \
+            -p 3306:3306 mysql:8.0
+            ```
+        3. H2 数据库切换到 MySQL：`vim Dockerfile` → `CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=mysql"]`
+        4. Build image：`docker build --tag java-docker .`
+        5. Run container
+            ```bash
+            docker run --rm -d \
+            --name springboot-server --network mysqlnet \
+            -e MYSQL_URL=jdbc:mysql://mysqlserver/petclinic \
+            -p 8080:8080 java-docker
+            ```
+            - `curl --request GET --url http://localhost:8080/vets --header 'content-type: application/json'`
+    2. Multi-stage Dockerfile：`vim Dockerfile`
         ```
-    2. run MySQL
-        ```bash
-        docker run -it --rm -d \
-        -v mysql_data:/var/lib/mysql -v mysql_config:/etc/mysql/conf.d \
-        --network mysqlnet --name mysqlserver \
-        -e MYSQL_USER=petclinic -e MYSQL_PASSWORD=petclinic \
-        -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=petclinic \
-        -p 3306:3306 mysql:8.0
-        ```
-    3. H2 数据库切换到 MySQL：`vim Dockerfile` → `CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=mysql"]`
-    4. Build image：`docker build --tag java-docker .`
-    5. Run container
-        ```bash
-        docker run --rm -d \
-        --name springboot-server --network mysqlnet \
-        -e MYSQL_URL=jdbc:mysql://mysqlserver/petclinic \
-        -p 8080:8080 java-docker
-        ```
-        - `curl --request GET --url http://localhost:8080/vets --header 'content-type: application/json'`
-    6. Multi-stage Dockerfile：`vim Dockerfile`
-        ```bash
         # syntax=docker/dockerfile:1
         
         FROM eclipse-temurin:17-jdk-focal as base
@@ -295,6 +311,9 @@ sudo systemctl disable containerd.service
         COPY mvnw pom.xml ./
         RUN ./mvnw dependency:resolve
         COPY src ./src
+        
+        FROM base as test
+        RUN ["./mvnw", "test"]
         
         FROM base as development
         CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=mysql", "-Dspring-boot.run.jvmArguments='-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000'"]
@@ -307,7 +326,7 @@ sudo systemctl disable containerd.service
         COPY --from=build /app/target/spring-petclinic-*.jar /spring-petclinic.jar
         CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/spring-petclinic.jar"]
         ```
-    7. Use Compose：`vim docker-compose.dev.yml` → `docker-compose -f docker-compose.dev.yml up -d --build`
+    3. Use Compose：`vim docker-compose.dev.yml` → `docker-compose -f docker-compose.dev.yml up -d --build`
         → `curl --request GET --url http://localhost:8080/vets --header 'content-type: application/json'`
         ```yaml
         version: '3.8'
@@ -344,26 +363,31 @@ sudo systemctl disable containerd.service
           mysql_data:
           mysql_config:
         ```
-    8. Connect a Debugger：IDEA → Edit Configurations… → Remote JVM Debug → Port: 8000
+    4. Connect a Debugger：IDEA → Edit Configurations… → Remote JVM Debug → Port: 8000
+3. [Run tests](https://docs.docker.com/language/java/run-tests/)
+    1. start the container and run tests：`docker run -it --rm --name springboot-test java-docker ./mvnw test`
+    2. build image and run test build stage：`docker build -t java-docker --target test .`
+4. [Configure CI/CD](https://docs.docker.com/language/java/configure-ci-cd/)
+5. [Deploy app](https://docs.docker.com/language/java/deploy/)
 ---
 ## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
 1. Instruction
     ```
-    FROM                                    初始化一个新的 build stage，并为后续指令设置 base iamge
-    RUN                                     执行命令，docker build 时执行
-    CMD                                     执行命令，docker run 时执行
-    ENTRYPOINT                              执行命令，不会被 docker run 的参数指定的指令所覆盖，而且参数会传送给指定的程序
-    ADD                                     添加文件，gzip 和 bzip2 会自动解压
-    COPY                                    复制文件
-    ENV                                     设置环境变量
-    ARG                                     设置环境变量，仅在 Dockerfile 内有效
-        docker build --build-arg
-    MAINTAINER                              维护者
-    USER                                    用户
-    VOLUME                                  VOLUME
-    WORKDIR                                 工作目录
-    EXPOSE                                  端口
+    FROM                初始化一个新的 build stage，并为后续指令设置 base iamge
+    RUN                 执行命令，docker build 时执行
+    CMD                 执行命令，docker run 时执行
+    ENTRYPOINT          执行命令，docker run 时执行
+    COPY                复制文件
+    ADD                 添加文件
+    ARG                 设置环境变量
+    ENV                 设置环境变量
+    MAINTAINER          维护者
+    USER                用户
+    VOLUME              VOLUME
+    WORKDIR             工作目录
+    EXPOSE              端口
     ```
+    - [CMD vs ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)
 2. Dockerfile Demo
     1. @see Docker.md#使用 1.容器化应用程序
     2. [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
