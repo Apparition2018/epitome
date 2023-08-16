@@ -22,13 +22,13 @@
 ## [Docker 架构](https://docs.docker.com/get-started/overview/#docker-architecture)
 ![architecture](https://docs.docker.com/assets/images/architecture.svg)
 
-|                   |                                                                                                                                                                                         |
-|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Docker daemon     | Docker 守护进程 (dockerd) 侦听 Docker API 请求并管理 Docker 对象。守护进程还可以与其他守护进程通信来管理 Docker 服务                                                                                                       |
-| Docker client     | Docker 客户端 (docker) 是许多 Docker 用户与 Docker 交互的主要方式。当您使用诸如 docker-run 之类的命令时，客户端会将这些命令发送给 dockerd，后者会执行这些命令。Docker 客户端可以与多个守护进程进行通信                                                       |
-| Docker Desktop    | Docker Desktop 是一款适用于 Mac、Windows 或 Linux 环境的易于安装的应用程序，使您能够构建和共享容器化应用程序和微服务。Docker Desktop 包括 Docker 守护进程、Docker 客户端、Docker-Compose、Docker Content Trust、Kubernetes 和 Credential Helper |
-| Docker registries | Docker 注册表存储 Docker 映像。Docker Hub 是一个任何人都可以使用的公共注册表，默认情况下 Docker 会在 DockerHub 上查找映像                                                                                                     |
-| Docker objects    | 当您使用 Docker 时，您正在创建和使用图像、容器、网络、卷、插件和其他对象                                                                                                                                                |
+|                   |                                                                                                                                                                                              |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Docker daemon     | Docker daemon (dockerd) 侦听 Docker API 请求并管理 Docker 对象。daemon 还可以与其他 daemon 通信来管理 Docker 服务                                                                                                   |
+| Docker client     | Docker client (docker) 是许多 Docker 用户与 Docker 交互的主要方式。当您使用诸如 docker-run 之类的命令时，client 会将这些命令发送给 dockerd，后者会执行这些命令。Docker client 可以与多个 daemon 进行通信                                             |
+| Docker Desktop    | Docker Desktop 是一款适用于 Mac、Windows 或 Linux 环境的易于安装的应用程序，使您能够构建和共享容器化应用程序和微服务。Docker Desktop 包括 Docker daemon、Docker client、Docker-Compose、Docker Content Trust、Kubernetes 和 Credential Helper |
+| Docker registries | Docker 注册表存储 Docker 映像。Docker Hub 是一个任何人都可以使用的公共注册表，默认情况下 Docker 会在 DockerHub 上查找映像                                                                                                          |
+| Docker objects    | 当您使用 Docker 时，您正在创建和使用图像、容器、网络、卷、插件和其他对象                                                                                                                                                     |
 ---
 ## [Docker Desktop](https://docs.docker.com/desktop/)
 - [Docker Desktop for Linux vs Docker Engine](https://docs.docker.com/desktop/faqs/linuxfaqs/#what-is-the-difference-between-docker-desktop-for-linux-and-docker-engine)
@@ -171,6 +171,7 @@ sudo systemctl disable containerd.service
     2. Create Dockerfile：`cd /getting-started-app` → `vim Dockerfile`
         ```
         # syntax=docker/dockerfile:1
+        
         FROM node:18-alpine
         WORKDIR /app
         COPY package.json yarn.lock ./
@@ -260,6 +261,7 @@ sudo systemctl disable containerd.service
     2. Create Dockerfile：`cd /spring-petclinic` → `vim Dockerfile`
         ```
         # syntax=docker/dockerfile:1
+        
         FROM eclipse-temurin:17-jdk-focal
         WORKDIR /app
         COPY .mvn/ .mvn
@@ -300,7 +302,7 @@ sudo systemctl disable containerd.service
             ```
             - `curl --request GET --url http://localhost:8080/vets --header 'content-type: application/json'`
     2. Multi-stage Dockerfile：`vim Dockerfile`
-        ```bash
+        ```
         # syntax=docker/dockerfile:1
         
         FROM eclipse-temurin:17-jdk-focal as base
@@ -366,29 +368,88 @@ sudo systemctl disable containerd.service
     1. start the container and run tests：`docker run -it --rm --name springboot-test java-docker ./mvnw test`
     2. build image and run test build stage：`docker build -t java-docker --target test .`
 4. [Configure CI/CD](https://docs.docker.com/language/java/configure-ci-cd/)
+    - [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
 5. [Deploy app](https://docs.docker.com/language/java/deploy/)
 ---
 ## [Dockerfile](https://docs.docker.com/engine/reference/builder/)
-1. Instruction
+1. [解析器指令 (Parser directives)](https://docs.docker.com/engine/reference/builder/#parser-directives)
+    - 可选的，影响 Dockerfile 中后续行的处理方式
+    - 一旦处理了注释、空行、构建器指令，就不再查找解析器指令。因此必须位于 Dockerfile 顶部 
+    - 不区分大小写。解析器指令后留一个空行。不支持换行符
+    - 支持的指令
+        1. [syntax](https://docs.docker.com/build/dockerfile/frontend/)：仅在使用 BuildKit backend 时可用，在使用 classic builder backend 时被忽略
+            - `# syntax=docker/dockerfile:1`，建议使用 docker/dockerfile:1，它总是指向版本1语法的最新版本
+        2. escape：`# escape=\ (backtick)`，设置用于对字符进行转义的字符。默认为 \
+2. [环境替换 (Environment replacement)](https://docs.docker.com/engine/reference/builder/#environment-replacement)
+    - 使用 ENV 声明 
+    - 表示：①$variable_name；②${variable_name}
+    - ${variable:-word}：如设置了 variable，则结果是该值，否则为 word
+    - ${variable:+word}：如设置了 variable，则结果是 word，否则为空字符串
+3. Instruction
     ```
-    FROM                初始化一个新的 build stage，并为后续指令设置 base iamge
-    RUN                 执行命令，docker build 时执行
-    CMD                 执行命令，docker run 时执行
-    ENTRYPOINT          执行命令，docker run 时执行
-    COPY                复制文件
-    ADD                 添加文件
-    ARG                 设置环境变量
-    ENV                 设置环境变量
-    MAINTAINER          维护者
-    USER                用户
-    VOLUME              VOLUME
-    WORKDIR             工作目录
-    EXPOSE              端口
+    FROM                    初始化一个新的 build stage，并为后续指令设置 base iamge
+        FROM scratch        最小 image
+    RUN                     执行命令，docker build 时执行
+    CMD                     执行命令，docker run 时执行
+    ENTRYPOINT              执行命令，docker run 时执行
+    COPY                    复制文件
+        COPY --from=<name>  指定 build stage
+    ADD                     添加文件
+    ARG                     设置环境变量
+    ENV                     设置环境变量
+    USER                    用户
+    VOLUME                  VOLUME
+    WORKDIR                 工作目录
+    EXPOSE                  端口
     ```
     - [CMD vs ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)
-2. Dockerfile Demo
-    1. @see Docker.md#使用 1.容器化应用程序
-    2. [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+4. [Dockerfile examples](https://docs.docker.com/engine/reference/builder/#dockerfile-examples)
+---
+## [Docker Build](https://docs.docker.com/build/)
+### [Architecture](https://docs.docker.com/build/architecture/)
+![build-high-level-arch](https://docs.docker.com/build/images/build-high-level-arch.png)
+1. Buildx：一个 CLI 工具。在较新版本中，调用 Docker build 默认使用 Buildx
+2. Builders：一个用于描述 BuildKit backend 实例的术语。Builder nodes 可以是 containers、虚拟机或物理机
+3. BuildKit：BuildKit or buildkitd 是执行构建工作负载的 daemon
+### Building images
+1. [Build context](https://docs.docker.com/build/building/context/)：传递给 build 命令的参数
+    ```
+    docker build [OPTIONS] PATH | URL | -
+                           ^^^^^^^^^^^^^^
+    ```
+    1. Filesystem contexts：文件夹、压缩包、远程 Git 仓库
+    2. Text file contexts：[-](https://docs.docker.com/build/building/context/#pipes)
+2. [Multi-stage builds](https://docs.docker.com/build/building/multi-stage/)
+    1. Use：使用多个 FROM 语句。①可以使用不同的 base；②begins a new stage
+    2. Name build stages：①从 0 的整数；②`AS <name>`
+    3. build at a specific build stage：`--target <name>`
+3. [Builders](https://docs.docker.com/build/builders/)
+    1. Default Builder：Docker Engine 自动创建的 builder。使用 docker driver
+    2. [Manage builders](https://docs.docker.com/build/builders/manage/)
+4. [Drivers](https://docs.docker.com/build/drivers/)
+
+    | Feature                  |              docker               |       docker-container        |           kubernetes            |           remote           |
+    |--------------------------|:---------------------------------:|:-----------------------------:|:-------------------------------:|:--------------------------:|
+    | explanation              | 使用绑定到 Docker daemon 中的 BuildKit 库 | 使用 Docker 创建一个专用的 BuildKit 容器 | 在 Kubernetes 集群中创建 BuildKit pod | 直接连接到手动管理的 BuildKit daemon |
+    | Automatically load image |                 √                 |                               |                                 |                            |
+    | Cache export             |           	Inline only            |               √               |                √                |             √              |
+    | Tarball output           |                                   |               √               |                √                |             √              |
+    | Multi-arch images        |                                   |               √               |                √                |             √              |
+    | BuildKit configuration   |                                   |               √               |                √                |     Managed externally     |
+5. [BuildKit](https://docs.docker.com/build/buildkit/)：Docker Desktop 和 Docker Engine v23.0 以上版本的默认 builder
+    - enable BuildKit
+        1. BuildKit environment variable：`DOCKER_BUILDKIT=1 docker build .`
+        2. /etc/docker/daemon.json
+            ```json
+            {
+              "features": {
+                "buildkit": true
+              }
+            }
+            ```
+    - [configure](https://docs.docker.com/build/buildkit/configure/)
+    - [legacy builder vs BuildKit](https://docs.docker.com/build/building/multi-stage/#differences-between-legacy-builder-and-buildkit)
+6. [Continuous integration](https://docs.docker.com/build/ci/)
 ---
 ## [Docker Compose](https://docs.docker.com/compose/)
 - @see Docker.md#使用 4.使用 Docker Compose
