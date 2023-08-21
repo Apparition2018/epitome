@@ -402,6 +402,7 @@ sudo systemctl disable containerd.service
     WORKDIR                 工作目录
     EXPOSE                  端口
     ```
+    - 只有 `RUN`、`COPY`、`ADD` 才创建 layers，其它指令创建临时中间 images，不会增加 build 大小
     - [CMD vs ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)
 4. [Dockerfile examples](https://docs.docker.com/engine/reference/builder/#dockerfile-examples)
 ---

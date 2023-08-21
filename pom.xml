@@ -55,7 +55,7 @@
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.16.1</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
-        <minio.version>8.5.4</minio.version>
+        <minio.version>8.5.5</minio.version>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.2.3</poi.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
@@ -67,7 +67,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
         <curator.version>5.5.0</curator.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-        <fastjson.version>2.0.38</fastjson.version>
+        <fastjson.version>2.0.39</fastjson.version>
         <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
         <tablibs-standard.version>1.2.5</tablibs-standard.version>
         <!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
