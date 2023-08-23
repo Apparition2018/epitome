@@ -89,10 +89,8 @@ public class URLDemo extends Demo {
     public void openConnection() throws IOException {
         URL url = new URL(BAIDU_URL);
         URLConnection urlConn = url.openConnection();
-        HttpsURLConnection conn;
-        if (urlConn instanceof HttpsURLConnection) {
-            conn = (HttpsURLConnection) urlConn;
-            p(conn);
+        if (urlConn instanceof HttpsURLConnection httpsURLConnection) {
+            p(httpsURLConnection);
         }
     }
 }

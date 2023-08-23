@@ -78,6 +78,8 @@
         <javacv.version>1.5.9</javacv.version>
         <!-- https://mvnrepository.com/artifact/org.dom4j/dom4j -->
         <dom4j.version>2.1.4</dom4j.version>
+        <!-- https://mvnrepository.com/artifact/org.openjdk.nashorn/nashorn-core -->
+        <nashorn.version>15.4</nashorn.version>
         <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
         <springdoc.version>1.7.0</springdoc.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
@@ -416,6 +418,12 @@
         <dependency>
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjdk.nashorn</groupId>
+            <artifactId>nashorn-core</artifactId>
+            <version>${nashorn.version}</version>
         </dependency>
 
         <!-- OpenAPI 3：

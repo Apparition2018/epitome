@@ -166,12 +166,16 @@ public class HttpClientUtils {
             // HttpGet
             HttpGet httpGet = new HttpGet("https://credit.gd.gov.cn/creditquery!queryLegalEntityOrgList.do?conditions=914403001922038216");
             httpGet.setHeader("User-Agent", "PostmanRuntime/  7.29.2");
-            CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
-            // Document
-            Document document = Jsoup.parse(EntityUtils.toString(httpResponse.getEntity(), StandardCharsets.UTF_8));
-            Elements creditReportInput = document.select("#creditReportForm input");
-            String paramName = creditReportInput.attr("name");
-            String paramValue = creditReportInput.attr("value");
+            String paramName;
+            String paramValue;
+            try (CloseableHttpResponse httpResponse = httpClient.execute(httpGet)) {
+                if (httpResponse.getCode() != HttpStatus.SC_OK) return;
+                // Document
+                Document document = Jsoup.parse(EntityUtils.toString(httpResponse.getEntity(), StandardCharsets.UTF_8));
+                Elements creditReportInput = document.select("#creditReportForm input");
+                paramName = creditReportInput.attr("name");
+                paramValue = creditReportInput.attr("value");
+            }
 
             // HttpPost
             HttpPost httpPost = new HttpPost("https://credit.gd.gov.cn/creditreportAction!exportCreditReport.do");
@@ -179,10 +183,12 @@ public class HttpClientUtils {
             List<BasicNameValuePair> nameValuePairList = Collections.singletonList(new BasicNameValuePair(paramName, paramValue));
             HttpEntity formEntity = new UrlEncodedFormEntity(nameValuePairList, StandardCharsets.UTF_8);
             httpPost.setEntity(formEntity);
-            CloseableHttpResponse httpResponse2 = httpClient.execute(httpPost);
-            HttpEntity httpEntity = new BufferedHttpEntity(httpResponse2.getEntity());
-            String fileMd5 = DigestUtils.md5Hex(httpEntity.getContent());
-            Files.copy(httpEntity.getContent(), new File(String.format("%s%s.pdf", DESKTOP, fileMd5)).toPath());
+            try (CloseableHttpResponse httpResponse2 = httpClient.execute(httpPost)) {
+                if (httpResponse2.getCode() != HttpStatus.SC_OK) return;
+                HttpEntity httpEntity = new BufferedHttpEntity(httpResponse2.getEntity());
+                String fileMd5 = DigestUtils.md5Hex(httpEntity.getContent());
+                Files.copy(httpEntity.getContent(), new File(String.format("%s%s.pdf", DESKTOP, fileMd5)).toPath());
+            }
         } catch (ParseException | IOException e) {
             throw new RuntimeException(e);
         }

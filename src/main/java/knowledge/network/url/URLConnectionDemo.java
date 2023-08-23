@@ -75,9 +75,7 @@ public class URLConnectionDemo extends Demo {
     public void getInputStream() throws IOException {
         URL url = new URL(BAIDU_URL);
         URLConnection conn = url.openConnection();
-        HttpURLConnection httpConn;
-        if (conn instanceof HttpURLConnection) {
-            httpConn = (HttpURLConnection) conn;
+        if (conn instanceof HttpURLConnection httpConn) {
             p(httpConn);
         } else {
             p("请输入 url 地址");
