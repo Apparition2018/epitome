@@ -396,6 +396,7 @@ sudo systemctl disable containerd.service
         COPY --from=<name>  指定 build stage
     ADD                     添加文件
     ARG                     设置环境变量
+        --build-arg
     ENV                     设置环境变量
     USER                    用户
     VOLUME                  VOLUME
@@ -419,7 +420,7 @@ sudo systemctl disable containerd.service
                            ^^^^^^^^^^^^^^
     ```
     1. Filesystem contexts：文件夹、压缩包、远程 Git 仓库
-    2. Text file contexts：[-](https://docs.docker.com/build/building/context/#pipes)
+    2. [Text file contexts](https://docs.docker.com/build/building/context/#text-files)：[-](https://docs.docker.com/build/building/context/#pipes)
 2. [Multi-stage builds](https://docs.docker.com/build/building/multi-stage/)
     1. Use：使用多个 FROM 语句。①可以使用不同的 base；②begins a new stage
     2. Name build stages：①从 0 的整数；②`AS <name>`
@@ -499,6 +500,9 @@ docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
 docker image rm [OPTIONS] IMAGE [IMAGE...]                      移除 images
 docker image build [OPTIONS] PATH | URL | -                     从 Dockerfile build image
     -t, --tag                                                   名字和标签，name:tag 格式
+    --target                                                    设置要生成的目标生成阶段
+    --output                                                    自定义生成输出
+    --platform                                                  设置平台，如果服务器支持多平台
 docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]          创建 tag
 docker image history [OPTIONS] IMAGE                            显示 image 历史记录                               
 ```
