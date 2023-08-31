@@ -165,6 +165,9 @@
     find                                                                在给定目录中查找文件
         -iname                                                          文件名，忽略大小写
     xargs                           extended arguments                  给命令传递参数的一个过滤器，也是组合多个命令的一个工具
+        docker ps -aq | xargs docker rm -f
+        相当于
+        docker rm -f $(docker ps -aq)
     locate                                                              按名称查找文件
     which                                                               显示命令或文件的完整路径
 ---
