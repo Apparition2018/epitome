@@ -7,7 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.2</version>
+        <version>3.1.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ljh</groupId>
@@ -35,7 +35,7 @@
         <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
         <mapper-spring-boot-starter.version>4.2.3</mapper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
-        <druid.version>1.2.18</druid.version>
+        <druid.version>1.2.19</druid.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
         <mybatis-dynamic-sql.version>1.5.0</mybatis-dynamic-sql.version>
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
@@ -51,23 +51,23 @@
         <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
-        <tika.version>2.8.0</tika.version>
+        <tika.version>2.9.0</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.16.1</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
-        <minio.version>8.5.5</minio.version>
+        <minio.version>8.5.6</minio.version>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.2.3</poi.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
         <itext.version>8.0.1</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>9.31</nimbus-jose-jwt.version>
+        <nimbus-jose-jwt.version>9.35</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava2 -->
         <retrofit2.version>2.9.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
         <curator.version>5.5.0</curator.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-        <fastjson.version>2.0.39</fastjson.version>
+        <fastjson.version>2.0.40</fastjson.version>
         <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
         <tablibs-standard.version>1.2.5</tablibs-standard.version>
         <!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
@@ -87,7 +87,7 @@
         <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <hutool.version>5.8.21</hutool.version>
+        <hutool.version>5.8.22</hutool.version>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <cglib.version>3.3.0</cglib.version>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
@@ -101,7 +101,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
         <lucene-analyzers.version>8.11.2</lucene-analyzers.version>
         <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
-        <oshi.version>6.4.4</oshi.version>
+        <oshi.version>6.4.6</oshi.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
         <jol.version>0.17</jol.version>
         <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
