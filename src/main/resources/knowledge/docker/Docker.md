@@ -229,7 +229,7 @@ docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world
     - 一款用于帮助和定义多容器应用程序的工具
     1. 创建 docker-compose.yml
         ```yaml
-        # Docker Compose 会自动创建一个 network (getting-stated-app_default)  
+        # Docker Compose 会自动创建一个 network (getting-stated-app_default)
         services:
           app:
             image: node:18-alpine
@@ -554,7 +554,8 @@ docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]      在运行的 con
 docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH              在 container 和本地文件系统之间复制文件或文件夹
 docker container cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-    在 container 和本地文件系统之间复制文件或文件夹
 docker container commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]  根据 container 的更改创建 image
-    -m                                                          提交消息
+    -a, --author                                                作者
+    -m, --mesage                                                提交消息
 docker container logs [OPTIONS] CONTAINER                       获取 container 日志
 docker container port CONTAINER [PRIVATE_PORT[/PROTO]]          列出 container 的端口映射或特定映射
 docker container inspect [OPTIONS] CONTAINER [CONTAINER...]     显示 containers 详细信息
@@ -893,14 +894,27 @@ docker run -itd --name ubuntu -p 22:22 -p 8088:8080 [--net jenkins_net --ip 172.
 ```
 ```bash
 docker exec -it ubuntu bash
-passwd root
-unminimize
-apt update
-apt upgrade
-apt install -y openssh-client openssh-server vim
+    apt update
+    apt install -y openssh-client openssh-server vim net-tools
     vim /etc/ssh/sshd_config
         PermitRootLogin yes
     /etc/init.d/ssh start
 ssh root@127.0.0.1
+docker commit -m="my ubuntu" -a="ljh" 996aa42add87 ljh/ubuntu:1.0
+
+### 推送 image 到阿里云 ###
+# 阿里云仓库管理：https://cr.console.aliyun.com/cn-guangzhou/instance/dashboard → 创建命名空间 → 创建镜像仓库
+docker login --username=Apparition2018 registry.cn-guangzhou.aliyuncs.com
+docker tag 656f4856adaa registry.cn-guangzhou.aliyuncs.com/apparition2018/ubuntu:1.0
+docker push registry.cn-guangzhou.aliyuncs.com/apparition2018/ubuntu:1.0
+
+### 推送 image 到私有仓库 ###
+docker run -d --name registry -p 5000:5000 -v /home/lighthouse/docker_data/registry:/var/lib/registry --privileged registry
+docker tag 2548adfcf618 43.136.102.115:5000/ubuntu:1.0
+vim /etc/docker/daemon.json
+    { "insecure-registries": ["43.136.102.115:5000"] }
+docker push 43.136.102.115:5000/ubuntu:1.0
+# 查看仓库有哪些镜像
+curl -XGET http://43.136.102.115:5000/v2/_catalog
 ```
 ---
