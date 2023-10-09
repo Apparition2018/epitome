@@ -25,14 +25,14 @@ import java.nio.file.Paths;
  * @author ljh
  * @since 2020/9/7 1:28
  */
-public class IoStream extends Demo {
+public class IoStreamDemo extends Demo {
 
-    /** 使用缓冲流赋值文件 */
+    /** 使用缓冲流复制文件 */
     @Test
     public void copyByBufferedStream() {
         try (InputStream is = new BufferedInputStream(Files.newInputStream(Paths.get(DEMO_FILE_PATH)));
              OutputStream os = new BufferedOutputStream(Files.newOutputStream(Paths.get(DEMO_DIR_PATH + "demo_copy")))) {
-            this.readIsAndOsWrite(is, os);
+            this.readIsThenWriteOs(is, os);
         } catch (IOException e) {
             p("copy failed!");
             throw new RuntimeException(e);
@@ -44,30 +44,23 @@ public class IoStream extends Demo {
     @Test
     public void repeatableUse() {
         try (FileInputStream is = new FileInputStream(DEMO_FILE_PATH)) {
-            InputStream is2 = this.cloneInputStream(is);
-            p(is2.available());
-            p(is2.available());
+
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			this.readIsThenWriteOs(is, baos);
+			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+
+			p(bais.available());
+            p(bais.available());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private ByteArrayInputStream cloneInputStream(InputStream is) {
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            this.readIsAndOsWrite(is, baos);
-            return new ByteArrayInputStream(baos.toByteArray());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void readIsAndOsWrite(InputStream is, OutputStream os) throws IOException {
+    private void readIsThenWriteOs(InputStream is, OutputStream os) throws IOException {
         byte[] buffer = new byte[1024];
         int len;
         while ((len = is.read(buffer)) != -1) {
             os.write(buffer, 0, len);
         }
-        os.flush();
     }
 }
