@@ -1,4 +1,4 @@
-# IDEA Settings
+# [IDEA Settings](https://www.jetbrains.com/help/idea/settings-preferences-dialog.html)
 - -g: global
 - -o: optional
 - -u: unknown
@@ -20,9 +20,8 @@
         -Dfile.encoding=UTF-8
         -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel
 ---
-## Sync Settings
-    1. Settings → Settings Sync
-    2. Enable Settings Sync…
+## Manage IDE Settings
+    1. Settings Sync → Enable Settings Sync…
 ---
 ## 安装 IDE Eval Reset (-o)
     1. Settings → Plguins → 设置图标 → Manage Plugin Repositories…
@@ -124,10 +123,10 @@
 ## Compiler (-g)
     1. Settings → Build, Execution, Deployment
     2. Build Tools → Maven → Importing
-        2.1 Detect compiler automatically 取消勾选 ???
+        2.1 Detect compiler automatically 取消勾选
     3. Compiler
         3.1 Shared build process VM options: 
-            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.26\lombok-1.18.26.jar
+            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar
         3.2 Java Compiler
             3.2.1 Use compiler: Eclipse
         3.3 Annotation Processors
@@ -143,12 +142,26 @@
     2. Shell path: D:\Git\bin\bash.exe
 ---
 ## JRebel & XRebel
-    1. 下载 ReverseProxy：https://github.com/ilanyu/ReverseProxy/releases/tag/v1.4
+    1. 下载 ReverseProxy：https://github.com/ilanyu/ReverseProxy/releases
     2. Generate GUIDs online：https://www.guidgen.com/
     3. http://127.0.0.1:8888/{guid}
     4. Settings → JRebel & XRebel → Work offline
     5. View → Tool Windows → JRebel → 勾选模块自动生成 rebel.xml → <classpath/> 指向编译输出路径
     6. 修改代码后，Ctrl + Shift + F9
+---
+## Tools
+### Deployment
+    1. Tools → Deployment → Configuration
+        1.1 + → SFTP → New server name：test → SSH configuration
+            Host: 43.136.102.115
+            Username: root
+            Authenication type: Password
+            password: Cesc123!
+        1.2 Advanced → Encoding for client-server communication: UTF8
+        1.3 Mappings
+            Local path: D:\Liang\git\epitome\OpenCloudOS8.6
+            Deployment path: /home/lighthouse/sync_dir
+    2. Tools → Deployment → Sync With Local…
 ---
 ## [Project Structure…](https://www.jianshu.com/p/39b2206999e7)
 ### Modules
@@ -177,19 +190,6 @@
         2.1 Prettier package: ~\AppData\Roaming\npm\node_modules\prettier
         2.1 On Save 勾选
 ---
-## Tools
-### Deployment
-    1. Tools → Deployment → Configuration
-    2. + → SFTP → New server name：test → SSH configuration
-        Host: 43.136.102.115
-        Username: root
-        Authenication type: Password
-        password: Cesc123!
-    3. Mappings
-        Local path: D:\OpenCloudOS
-        Deployment path: /home
-    4. Tools → Deployment → Sync With Local…
----
 ## Other
 ### Error running 'XxxApp': Command line is too long
     1. .idea/workspace.xml
@@ -200,9 +200,9 @@
     2. Applicatoin/JUnit → Modify options
         2.1 Java → Do not build before run 勾选
         2.2 Before Lauch → Add before launch task 勾选 → Build, no error check
-### 全局搜索排除 out 和 log 目录
-    1. Project Structure → Modules
-    2. 把文件夹设为 Excluded Folders
+### 全局搜索排除 out 和 log 文件夹内容
+    1. Project Structure → Modules → Sources
+    2. 把 out 和 log 文件夹设为 Excluded Folders
 ### 一个窗口同时打开两个项目
     1. Project Structure → Modules → + → Import Module
 ---

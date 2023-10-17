@@ -592,10 +592,10 @@ cd /home/lighthouse/docker_data/mysql
 ```
 ```bash
 docker run -d --name mysql -p 3306:3306 --privileged --restart=unless-stopped \
--v $PWD/data:/var/lib/mysql \
 -v $PWD/conf:/etc/mysql/conf.d \
--v $PWD/log:/var/log/mysql \
+-v $PWD/data:/var/lib/mysql \
 -v $PWD/files:/var/lib/mysql-files \
+-v $PWD/log:/var/log/mysql \
 -e MYSQL_ROOT_PASSWORD=root \
 mysql \
 --character-set-server=utf8mb4 \
