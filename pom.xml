@@ -35,7 +35,7 @@
         <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
         <mapper-spring-boot-starter.version>4.2.3</mapper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
-        <druid.version>1.2.19</druid.version>
+        <druid.version>1.2.20</druid.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
         <mybatis-dynamic-sql.version>1.5.0</mybatis-dynamic-sql.version>
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
@@ -61,7 +61,7 @@
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
         <itext.version>8.0.1</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>9.35</nimbus-jose-jwt.version>
+        <nimbus-jose-jwt.version>9.36</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava2 -->
         <retrofit2.version>2.9.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
