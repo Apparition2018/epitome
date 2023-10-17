@@ -60,8 +60,7 @@ public class ScriptDemo extends Demo {
 
         // Object	    eval(Reader reader)                         除了脚本的源是以 Reader 形式提供的外，与 eval(String) 相同
         engine.eval(new FileReader(JAVA_PATH + "jar/jakarta/script/model.js"));
-        if (engine instanceof Invocable) {
-            Invocable invocable = (Invocable) this.engine;
+        if (engine instanceof Invocable invocable) {
             // Object	invokeFunction(String name, Object... args) 用于调用脚本中定义的顶层程序和函数
             Double result = (Double) invocable.invokeFunction("formula", var1, var2);
             p("运算结果是：" + result.intValue());
@@ -71,7 +70,6 @@ public class ScriptDemo extends Demo {
     /** 获取对象列表 */
     @Test
     public void getList() throws FileNotFoundException, ScriptException, NoSuchMethodException, JsonProcessingException {
-        ScriptEngine engine = new ScriptEngineManager().getEngineByName("Nashorn");
         engine.eval(new FileReader(DEMO_DIR_PATH + "person.js"));
         if (engine instanceof Invocable invocable) {
             String json = jsonMapper.writeValueAsString(invocable.invokeFunction("listPerson"));

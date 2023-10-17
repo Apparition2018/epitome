@@ -11,12 +11,12 @@
 3. JDK5 之后，JRE 能自动搜索目录下类文件，并且加载 dt.jar 和 tool.jar，不再需要配置 CLASSPATH
 ---
 ## [Java 命令](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/s1-create-build-tools.html)
-| 命令      | 说明                        | 例句                                               |
-|:--------|:--------------------------|--------------------------------------------------|
-| javac   | 将 Java 源文件编译成 class 字节码文件 |                                                  |
-| java    | 启动 Java 应用程序              |                                                  |
-| jar     | 将 class 文件打成一个 jar 包      | jar -cvf name.jar ./a/b/index.jsp ./a/b/list.jsp |
-| javadoc | 生成 API 文档                 |                                                  |
+| 命令      | 说明                            | 例句                                               |
+|:--------|:------------------------------|--------------------------------------------------|
+| javac   | 读取 Java 类和接口定义，并将它们编译为字节码和类文件 |                                                  |
+| java    | 启动 Java 应用程序                  |                                                  |
+| jar     | 将多个文件合并为一个 JAR 文件             | jar -cvf name.jar ./a/b/index.jsp ./a/b/list.jsp |
+| javadoc | 从 Java 源文件生成 API 文档的 HTML 页面  |                                                  |
 ---
 ## Java 编译和运行过程
 1. 编译：Java 源文件(*.java) 经过 Java 编译器(javac) 编译成 JVM 能够识别的 Java 二进制字节码文件 (*.class)

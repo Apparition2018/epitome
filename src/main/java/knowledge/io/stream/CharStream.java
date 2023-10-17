@@ -89,7 +89,7 @@ public class CharStream extends Demo {
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/Writer.html">Writer</a>
      * <pre>
      * Writer           append(CharSequence csq[, int start, int end])  将指定字符序列的子序列添加到此 writer.Appendable
-     * abstract  void   close()                     关闭此流，但要先刷新它
+     * abstract  void   close()                     关闭此流，但要先 flush()
      * </pre>
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/OutputStreamWriter.html">OutputStreamWriter</a>
      * <p>字符流通向字节流的桥梁：可使用指定的 charset 将要写入流中的字符编码成字节。
@@ -100,7 +100,7 @@ public class CharStream extends Demo {
      * 要自己指定这些值，可以先在 FileOutputStream 上构造一个 OutputStreamWriter。
      * </pre>
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/PrintWriter.html">PrintWriter</a>   缓冲字符输出流
-     * <p>可以按行写出字符串，并且具有自动行刷新功能
+     * <p>可以按行写出字符串，并且具有自动 flush 功能
      */
     @Test
     public void testWriter() {
@@ -133,8 +133,8 @@ public class CharStream extends Demo {
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/CharArrayWriter.html">CharArrayWriter</a>
      * <pre>
      * 用作 Writer 的字符缓冲区。缓冲区会随向流中写入数据而自动增长。
-     * 可使用 toCharArray() 和 toString() 获取数据。
-     * 不需要关闭。
+     * 可使用 toCharArray() 和 toString() 检索数据。
+     * 注意：close() 不起作用。
      * </pre>
      */
     @Test

@@ -261,7 +261,7 @@ Connection: keep-alive
     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 </bean>
 ```
-### 使用 [JSTL 标签](https://jakarta.ee/specifications/tags/1.2/tagdocs/)
+### [JSTL 标签](https://jakarta.ee/specifications/tags/1.2/tagdocs/)
 - [c 标签](../../../../../web/WEB-INF/jsp/jstl/core.jsp)
     ```html
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -314,5 +314,6 @@ Connection: keep-alive
     <fmt:formatDate value="<%= new java.util.Date()%>" pattern="yyyy-MM-dd hh:mm:ss"/>
     <fmt:parseDate value="2023-01-01" pattern="yyyy-MM-dd"/>
     ```
-- [JSTL 函数](../../../../../web/WEB-INF/jsp/jstl/fn.jsp)
+### [JSTL 函数](../../../../../web/WEB-INF/jsp/jstl/fn.jsp)
+
 ---

@@ -114,14 +114,17 @@ sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 # 2 下载 RPM package 并手动安装，适用于无法访问互联网的情况
 # 2.1 https://download.docker.com/linux/centos/，选择 CentOS 版本，x86_64/stable/Packages/，下载要装的 rpm 文件
 # 2.2 安装 Docker Engine，将下面路径更改为下载的 Docker package 路径
-sudo yum install /**/***.rpm
+sudo yum install /path/to/package.rpm
 # 2.3 升级 Docker Engine，下载新的 package 文件
-sudo yum -y upgrade /**/***.rpm
+sudo yum -y upgrade /path/to/package.rpm
 # 3 在测试和开发环境下，使用自动化的便利脚本安装
 curl -fsSL https://get.docker.com -o get-docker.sh
 # 了解调用脚本时将运行哪些步骤
 sudo sh ./get-docker.sh --dry-run
 sudo sh get-docker.sh
+
+# 启动 Docker
+sudo systemctl start docker
 
 # 卸载 Docker Engine
 sudo yum remove docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
@@ -129,41 +132,47 @@ sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 ```
 ### [安装后步骤](https://docs.docker.com/engine/install/linux-postinstall/)
+- 以非 root 用户身份管理 Docker
 ```bash
 # 创建 docker 组
 sudo groupadd docker
-# 将用户添加到 docker 组，然后注销重新登录
-sudo usermod aGdocker $USER
-# 登录到新组
+# 将用户添加到 docker 组，然后注销重新登录（虚拟机需要重启）
+sudo usermod -aG docker $USER
+# 激活对组的更改
 newgrp docker
 # 验证不是用 sudo 的情况下运行 docker 命令
 docker run hello-world
-# 开机启动
-sudo systemctl enable docker.service
-sudo systemctl enable containerd.service
-# 取消开机启动
-sudo systemctl disable docker.service
-sudo systemctl disable containerd.service
 ```
-### [daemon.json](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file)
-1. `vim /etc/docker/daemon.json`
-    ```json5
-    {
-      "registry-mirrors": [
-        // 腾讯云 Docker 镜像
-        "https://mirror.ccs.tencentyun.com"
-      ],
-      // json-file driver: https://docs.docker.com/config/containers/logging/json-file/
-      "log-driver": "json-file",
-      "log-opts": {
-        "max-size": "10m",
-        "max-file": "3"
-      }
-    }
-    ```
-2. `sudo systemctl restart docker`，使更改生效。现有 containers 不使用新 json-file driver
-3. 使用 `--log-driver` 为 docker create 或 docker run 的 container 设置日志驱动
-    - `docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world`
+- 配置开机启动
+```bash
+sudo systemctl enable/disable docker.service
+sudo systemctl enable/disable containerd.service
+```
+- log rotation
+```bash
+vim /etc/docker/daemon.json
+# https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file
+{
+  "registry-mirrors": [
+    // 腾讯云 Docker 镜像
+    "https://mirror.ccs.tencentyun.com"
+  ],
+  // json-file：默认日志驱动，捕获所有标准输出（和标准错误），并使用 JSON 格式写入文件
+  // https://docs.docker.com/config/containers/logging/json-file/
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3"
+  }
+}
+
+# 使更改对新创建的 containers 生效（已存在的不生效）
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+# 使用 `--log-driver` 为 docker create 或 docker run 的 container 设置日志驱动
+docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world
+```
 ---
 ## [使用](https://docs.docker.com/get-started/)
 1. [容器化应用程序](https://docs.docker.com/get-started/02_our_app/)
@@ -220,7 +229,7 @@ sudo systemctl disable containerd.service
     - 一款用于帮助和定义多容器应用程序的工具
     1. 创建 docker-compose.yml
         ```yaml
-        # Docker Compose 会自动创建一个 network (getting-stated-app_default)  
+        # Docker Compose 会自动创建一个 network (getting-stated-app_default)
         services:
           app:
             image: node:18-alpine
@@ -396,12 +405,14 @@ sudo systemctl disable containerd.service
         COPY --from=<name>  指定 build stage
     ADD                     添加文件
     ARG                     设置环境变量
+        --build-arg
     ENV                     设置环境变量
     USER                    用户
     VOLUME                  VOLUME
     WORKDIR                 工作目录
     EXPOSE                  端口
     ```
+    - 只有 `RUN`、`COPY`、`ADD` 才创建 layers，其它指令创建临时中间 images，不会增加 build 大小
     - [CMD vs ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)
 4. [Dockerfile examples](https://docs.docker.com/engine/reference/builder/#dockerfile-examples)
 ---
@@ -418,7 +429,7 @@ sudo systemctl disable containerd.service
                            ^^^^^^^^^^^^^^
     ```
     1. Filesystem contexts：文件夹、压缩包、远程 Git 仓库
-    2. Text file contexts：[-](https://docs.docker.com/build/building/context/#pipes)
+    2. [Text file contexts](https://docs.docker.com/build/building/context/#text-files)：[-](https://docs.docker.com/build/building/context/#pipes)
 2. [Multi-stage builds](https://docs.docker.com/build/building/multi-stage/)
     1. Use：使用多个 FROM 语句。①可以使用不同的 base；②begins a new stage
     2. Name build stages：①从 0 的整数；②`AS <name>`
@@ -482,7 +493,7 @@ docker version [OPTIONS]                                        显示 Docker �
 docker info [OPTIONS]                                           显示 Docker system-wide 信息
 docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   显示 Docker 对象的 low-level 信息
     # 显示所有 container IP
-    docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+    docker inspect --format='{{.Name}} - {{range. NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
     # 显示 container 日志地址
     docker inspect --format '{{.LogPath}}' f9d2bd079dbc
 docker login                                                    登录 registry
@@ -493,11 +504,14 @@ docker logout                                                   注销 registry
 docker images [OPTIONS] [REPOSITORY[:TAG]]                      列出 iamges
 docker search [OPTIONS] TERM                                    在 Docker Hub 搜索 images
 docker image pull [OPTIONS] NAME[:TAG|@DIGEST]                  从 registry 下载 image
-docker image pull [OPTIONS] NAME[:TAG|@DIGEST]                  将 image 上载 registry
+docker image push [OPTIONS] NAME[:TAG|@DIGEST]                  将 image 上载 registry
 docker rmi [OPTIONS] IMAGE [IMAGE...]                           移除 images
 docker image rm [OPTIONS] IMAGE [IMAGE...]                      移除 images
 docker image build [OPTIONS] PATH | URL | -                     从 Dockerfile build image
     -t, --tag                                                   名字和标签，name:tag 格式
+    --target                                                    设置要生成的目标生成阶段
+    --output                                                    自定义生成输出
+    --platform                                                  设置平台，如果服务器支持多平台
 docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]          创建 tag
 docker image history [OPTIONS] IMAGE                            显示 image 历史记录                               
 ```
@@ -530,7 +544,6 @@ docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]         从 image 创建
     --ip6		                                                IPv6 地址
 docker ps [OPTIONS]                                             列出 containers
 docker container ls [OPTIONS]                                   列出 containers
-    -a, --all                                                   显示所有 running containers
 docker container start [OPTIONS] CONTAINER [CONTAINER...]       启动 containers
 docker container stop [OPTIONS] CONTAINER [CONTAINER...]        停止 containers
 docker container restart [OPTIONS] CONTAINER [CONTAINER...]     重启 containers
@@ -538,12 +551,16 @@ docker container rm [OPTIONS] CONTAINER [CONTAINER...]          移除 container
 docker container kill [OPTIONS] CONTAINER [CONTAINER...]        杀掉 containers
 docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]      在运行的 container 中执行命令
     -it CONTAINER bash
+docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH              在 container 和本地文件系统之间复制文件或文件夹
 docker container cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-    在 container 和本地文件系统之间复制文件或文件夹
 docker container commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]  根据 container 的更改创建 image
-    -m                                                          提交消息
+    -a, --author                                                作者
+    -m, --mesage                                                提交消息
 docker container logs [OPTIONS] CONTAINER                       获取 container 日志
 docker container port CONTAINER [PRIVATE_PORT[/PROTO]]          列出 container 的端口映射或特定映射
 docker container inspect [OPTIONS] CONTAINER [CONTAINER...]     显示 containers 详细信息
+docker container export [OPTIONS] CONTAINER                     将 container 的文件系统导出为 tar 存档
+docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]           从 tarball 导入内容以创建文件系统 image 
 ```
 - volume
 ```
@@ -557,6 +574,13 @@ docker volume rm [OPTIONS] VOLUME [VOLUME...]                   移除 volumes
 docker network create [OPTIONS] NETWORK                         创建 network
     -- subnet                                                   代表网段的 CIDR 格式的子网
 docker network prune [OPTIONS]                                  移除所有未使用的网络
+```
+- 常用 Options
+```
+    -a, --all                                                   显示所有
+    -f, --filter                                                根据提供的条件过滤输出
+    --format                                                    使用自定义模板设置输出格式
+    -q, --quiet                                                 仅显示 IDs
 ```
 ---
 ## [MySQL](https://hub.docker.com/_/mysql) / MariaDB
@@ -870,14 +894,27 @@ docker run -itd --name ubuntu -p 22:22 -p 8088:8080 [--net jenkins_net --ip 172.
 ```
 ```bash
 docker exec -it ubuntu bash
-passwd root
-unminimize
-apt update
-apt upgrade
-apt install -y openssh-client openssh-server vim
+    apt update
+    apt install -y openssh-client openssh-server vim net-tools
     vim /etc/ssh/sshd_config
         PermitRootLogin yes
     /etc/init.d/ssh start
 ssh root@127.0.0.1
+docker commit -m="my ubuntu" -a="ljh" 996aa42add87 ljh/ubuntu:1.0
+
+### 推送 image 到阿里云 ###
+# 阿里云仓库管理：https://cr.console.aliyun.com/cn-guangzhou/instance/dashboard → 创建命名空间 → 创建镜像仓库
+docker login --username=Apparition2018 registry.cn-guangzhou.aliyuncs.com
+docker tag 656f4856adaa registry.cn-guangzhou.aliyuncs.com/apparition2018/ubuntu:1.0
+docker push registry.cn-guangzhou.aliyuncs.com/apparition2018/ubuntu:1.0
+
+### 推送 image 到私有仓库 ###
+docker run -d --name registry -p 5000:5000 -v /home/lighthouse/docker_data/registry:/var/lib/registry --privileged registry
+docker tag 2548adfcf618 43.136.102.115:5000/ubuntu:1.0
+vim /etc/docker/daemon.json
+    { "insecure-registries": ["43.136.102.115:5000"] }
+docker push 43.136.102.115:5000/ubuntu:1.0
+# 查看仓库有哪些镜像
+curl -XGET http://43.136.102.115:5000/v2/_catalog
 ```
 ---

@@ -34,14 +34,17 @@
 2. 修改 hostname：`hostnamectl set-hostname <hostname>` → `reboot`
 3. [防火墙](https://www.likecs.com/show-205138371.html) ???
 
-| CentOS 6                                        | CentOS 7                                                      |                   |
-|-------------------------------------------------|---------------------------------------------------------------|-------------------|
-| chkconfig iptables on\|off                      | systemctl enable\|disable firewalld                           | 开启/关闭防火墙（重启后永久生效) |
-| service iptables start\|stop                    | systemctl start\|stop firewalld                               | 开启/关闭防火墙（重启后失效)   |
-| service iptables restart\|status\|save          | systemctl restart\|status firewalld                           |                   |
-| /etc/sysconfig/iptables                         |                                                               | 防火墙文件             |
-| iptables -I INPUT -p tcp --dport 8090 -j ACCEPT | firewall-cmd --zone=public --add-port=8080/tcp --permanent    | 添加                |
-| iptables -D INPUT -p tcp --dport 8090 -j ACCEPT | firewall-cmd --zone=public --remove-port=8080/tcp --permanent | 移除                |
+    | CentOS 6                                        | CentOS 7                                                      |                   |
+    |-------------------------------------------------|---------------------------------------------------------------|-------------------|
+    | chkconfig iptables on\|off                      | systemctl enable\|disable firewalld                           | 开启/关闭防火墙（重启后永久生效) |
+    | service iptables start\|stop                    | systemctl start\|stop firewalld                               | 开启/关闭防火墙（重启后失效)   |
+    | service iptables restart\|status\|save          | systemctl restart\|status firewalld                           |                   |
+    | /etc/sysconfig/iptables                         |                                                               | 防火墙文件             |
+    | iptables -I INPUT -p tcp --dport 8090 -j ACCEPT | firewall-cmd --zone=public --add-port=8080/tcp --permanent    | 添加                |
+    | iptables -D INPUT -p tcp --dport 8090 -j ACCEPT | firewall-cmd --zone=public --remove-port=8080/tcp --permanent | 移除                |
+4. CentOS 7 设置打开 Terminal 快捷键
+    1. Applications → System Tools → Settings → Devices → Keyboard
+    2. \+ → Name:Terminal  Command:/usr/bin/gnome-terminal
 ---
 ## [内网互通原则](https://www.imooc.com/video/24348)
 1. 关闭本地防火墙

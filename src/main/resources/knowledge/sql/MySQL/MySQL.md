@@ -64,7 +64,7 @@ default-character-set=utf8mb4
     1. linear read-ahead：线性预读
     2. random read-ahead：随机预读
 ---
-## [MySQL 编码](https://khiav223577.github.io/blog/2019/06/30/MySQL-%E7%B7%A8%E7%A2%BC%E6%8C%91%E9%81%B8%E8%88%87%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83/)
+## [MySQL 字符集](https://khiav223577.github.io/blog/2019/06/30/MySQL-%E7%B7%A8%E7%A2%BC%E6%8C%91%E9%81%B8%E8%88%87%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83/)
 1. 使用 utf8mb4
 2. ci vs cs vs bin
     1. ci: case-insensitive，不区分大小写
@@ -78,6 +78,7 @@ default-character-set=utf8mb4
     2. unicode: unicode 4.0 规范，适用于多种语言准确排序
     3. unicode_520: unicode 5.2 规范
     4. 0900: unicode 9.0 规范
+5. [字符集配置](https://dev.mysql.com/doc/refman/8.0/en/charset-configuration.html)
 ---
 ## [InnoDB 存储引擎](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)
 |                  |     |                                                               |
