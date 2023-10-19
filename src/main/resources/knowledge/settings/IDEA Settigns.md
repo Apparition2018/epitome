@@ -14,7 +14,7 @@
         2.2 删除 C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea
 ---
 ## 自定义 VM Options (-o)
-    1. %IDEA_HOME%\bin\idea64.exe.vmoptions
+    1. D:\JetBrains\jetbra\vmoptions\idea.vmoptions
         -Xms1024m
         -Xmx2048m
         -Dfile.encoding=UTF-8
@@ -119,6 +119,11 @@
         2.6 Define/Change
             2.6.1 Java → Declaration, Statement 勾选
             2.6.2 JavaScript and TypeScript → Statement → Other 勾选
+---
+## Version Control
+    1. Settings → Version Control
+        1.1 Git → Path to Git executable: D:\Git\cmd\git.exe
+        1.2 Subversion → Path to Subversion executable: D:\TortoiseSVN\bin\svn.exe
 ---
 ## Compiler (-g)
     1. Settings → Build, Execution, Deployment

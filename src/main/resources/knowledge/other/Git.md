@@ -17,9 +17,13 @@
 2. 查找 github.com 和 github.global.ssl.fastly.net 的 IP，并记录在 hosts 文件
 3. cmd → `ipconfig /flushdns`
 ---
-## TortoiseGit
-- Settings → Network
-    - SSH client: D:\Git\usr\bin\ssh.exe
+## 配置
+1. TortoiseGit
+    - Settings → Network
+        - SSH client: D:\Git\usr\bin\ssh.exe
+2. JetBrains
+    - Settings → Version Control → Git
+        - Path to Git executable: D:\Git\cmd\git.exe
 ---
 ## [配置多个 git 账号](https://blog.csdn.net/qq_33254766/article/details/122941664)
 1. 生成多个 SSH key

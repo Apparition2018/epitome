@@ -65,20 +65,26 @@ default-character-set=utf8mb4
     2. random read-ahead：随机预读
 ---
 ## [MySQL 字符集](https://khiav223577.github.io/blog/2019/06/30/MySQL-%E7%B7%A8%E7%A2%BC%E6%8C%91%E9%81%B8%E8%88%87%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83/)
-1. 使用 utf8mb4
-2. ci vs cs vs bin
+- [字符集配置](https://dev.mysql.com/doc/refman/8.0/en/charset-configuration.html)
+    ```
+    [mysqld]
+    character-set-server=utf8mb4
+    collation-server=utf8mb4_unicode_ci
+    [client]
+    default-character-set=utf8mb4
+    ```
+1. ci vs cs vs bin
     1. ci: case-insensitive，不区分大小写
     2. cs: case-sensitive，区分大小写
     3. bin: 使用 binary value 比对
-3. ai vs as
+2. ai vs as
     1. ai: accent-insensitive，不区分音调
     2. as: accent-sensitive，区分音调 
-4. [general vs unicode vs 0900](https://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci)
+3. [general vs unicode vs 0900](https://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci)
     1. general: 排序速度较快，但准确性稍差
     2. unicode: unicode 4.0 规范，适用于多种语言准确排序
     3. unicode_520: unicode 5.2 规范
     4. 0900: unicode 9.0 规范
-5. [字符集配置](https://dev.mysql.com/doc/refman/8.0/en/charset-configuration.html)
 ---
 ## [InnoDB 存储引擎](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)
 |                  |     |                                                               |
@@ -387,70 +393,46 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
 | 隔离级别  | RC、RR                                                                                              |                                                                                    |
 ---
 ## [复制](https://dev.mysql.com/doc/refman/8.0/en/replication.html)
-1. 创建 bin_log/ 和 relay_log/ 文件夹，并更改其所属用户组和用户为 mysql
-2. master my.cnf
+- 配置
 ```
+# https://dev.mysql.com/doc/refman/8.0/en/replication-options.html
+server_id=1
+
 # https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html
 # 开启binlog，binlog文件名称
-log-bin=/usr/local/mysql-5.7/bin_log/log-bin
-# binlog记录格式：MIXED、STATEMENT、ROW
+log-bin=/usr/local/mysql-a/bin_log/log-bin
+# binlog记录格式：MIXED、STATEMENT、ROW（默认）
 binlog_format=ROW
-# format为ROW时生效，信息日志时间写入binlog
+# 记录格式为ROW时生效，信息性日志事件（如行查询日志事件）写入binlog，默认OFF
 binlog_rows_query_log_events=ON
-# binlon自动删除天数
-expire_logs_days=30
-# binlong单个日志文件最大大小，最大和默认为1G
+# binlon过期时间，单位秒，默认2592000（30天），范围[0,4294967295]；expire_logs_days已被弃用
+binlog_expire_logs_seconds=2592000
+# binlog单个日志文件最大大小，默认1GB，范围[4096B,1GB]
 max_binlog_size=1024M
+# 事务期间保存binlog更改的内存缓冲大小，默认32KB，范围[4096B,100GB]
+binlog_cache_size=1M
+# 不记录指定数据库的binlog（设置在主库上）
+binlog-ignore-db=mysql
+binlog-ignore-db=sys
+binlog-ignore-db=information_schema
+binlog-ignore-db=performance_schema
+# replice server从source server接收的更新是否记录到replice的binlong中
+# 8.0.26之前使用log_slave_updates
+log_replica_updates=ON
 
 # https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html
-server-id=1
-# relay log文件名称
-relay_log=/usr/local/mysql-5.7/relay_log/relay-bin
-# 忽略不需要同步的数据库
-replicate-ignore-db=information_schema
-replicate-ignore-db=mysql
-replicate-ignore-db=performance_schema
-replicate-ignore-db=sys
+# 中继日志文件名称
+relay_log=/usr/local/mysql-a/relay_log/relay-bin
+# 不复制指定数据库（设置在从库上）
+# replicate-ignore-db=epitome
+# 跳过错误，避免复制中断
+# slave_skip_errors=1062
 
 # https://dev.mysql.com/doc/refman/8.0/en/replication-options-gtids.html
 # 开启gtid
 enforce_gtid_consistency=ON
 gtid_mode=ON
 ```
-3. slave my.cnf
-```
-log-bin=/usr/local/mysql-5.7/bin_log/log-bin2
-service-id=2
-relay_log=/usr/local/mysql-5.7/relay_log/relay-bin2
-```
-4. 连接 master
-```mysql
--- 创建 repl 账号，允许从 192.168.0.141 访问，密码为 repl
-grant replication slave on *.* to repl@192.168.0.141 identified by 'repl';
-flush privileges;
--- 重置 master，初次配置时可以使用
-reset master;
--- 查看 master 信息
-show master status;
-```
-5. 连接 slave
-```mysql
--- 停止 slave
-stop slave;
--- 将 192.168.0.141:3306 设为 master
--- master_user, master_password，使用 master 创建的 repl 账号
--- master_log_file, master_log_pos 是在 master 使用 show master status 语句查看到的 File 和 Position
-change master to master_host='192.168.0.141', master_port=3306, master_user='repl',
-    master_password='repl', master_log_file='log-bin.000001', master_log_pos=154;
--- 开启 slave
-start slave;
--- 查看 slave 状态，Slave_IO_Running 和 Slave_SQL_Running 都为 Yes 时，表示成功
--- 如果不成功，可查看 data 目录下 *。err 日志文件
-show slave status;
--- 重置 slave，slave 异常时可以使用
-reset slave all;
-```
->- [MySQL 双主配置](https://www.jb51.net/article/252651.htm)
 ---
 ## 其它
 1. [delimiter](https://www.jb51.net/article/146693.htm)：分隔符

@@ -493,7 +493,7 @@ docker version [OPTIONS]                                        显示 Docker �
 docker info [OPTIONS]                                           显示 Docker system-wide 信息
 docker inspect [OPTIONS] NAME|ID [NAME|ID...]                   显示 Docker 对象的 low-level 信息
     # 显示所有 container IP
-    docker inspect --format='{{.Name}} - {{range. NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+    docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
     # 显示 container 日志地址
     docker inspect --format '{{.LogPath}}' f9d2bd079dbc
 docker login                                                    登录 registry
@@ -583,9 +583,8 @@ docker network prune [OPTIONS]                                  移除所有未�
     -q, --quiet                                                 仅显示 IDs
 ```
 ---
-## [MySQL](https://hub.docker.com/_/mysql) / MariaDB
-- [Windows 下 docker 安装 mysql 并挂载数据](https://blog.csdn.net/pall_scall/article/details/112154454)
-- 配置文件读取顺序命令：`mysql --verbose --help|grep -A 1 'Default options'`
+## [MySQL](https://hub.docker.com/_/mysql) / [MariaDB](https://hub.docker.com/_/mariadb)
+- 配置文件读取顺序：`mysql --verbose --help|grep -A 1 'Default options'`
 ```bash
 mkdir -p /home/lighthouse/docker_data/mysql/{data,conf,log,files}
 cd /home/lighthouse/docker_data/mysql
@@ -609,6 +608,74 @@ flush privileges;
 
 alter user root@'%' identified by 'Cesc123!' password expire never;
 alter user root@'localhost' identified by 'Cesc123!';
+```
+---
+## [MySQL 主从](https://www.bilibili.com/video/BV1gr4y1U7CY/?p=41)
+- @see CentOS.md#双主
+```bash
+mkdir -p /home/lighthouse/docker_data/mysql-a/{data,conf,log,files}
+mkdir -p /home/lighthouse/docker_data/mysql-b/{data,conf,log,files}
+cd /home/lighthouse/docker_data
+```
+```bash
+docker run -d --name mysql-a -p 3307:3306 \
+-v $PWD/mysql-a/conf:/etc/mysql/conf.d \
+-v $PWD/mysql-a/data:/var/lib/mysql \
+-v $PWD/mysql-a/files:/var/lib/mysql-files \
+-v $PWD/mysql-a/log:/var/log/mysql \
+-e MYSQL_ROOT_PASSWORD=root \
+mysql:5.7
+
+docker run -d --name mysql-b -p 3308:3306 \
+-v $PWD/mysql-b/conf:/etc/mysql/conf.d \
+-v $PWD/mysql-b/data:/var/lib/mysql \
+-v $PWD/mysql-b/files:/var/lib/mysql-files \
+-v $PWD/mysql-b/log:/var/log/mysql \
+-e MYSQL_ROOT_PASSWORD=root \
+mysql:5.7
+```
+```
+vim mysql-a/conf/a.cnf
+[mysqld]
+server_id=101
+log-bin=log-bin
+binlog-ignore-db=mysql
+binlog-ignore-db=sys
+binlog-ignore-db=information_schema
+binlog-ignore-db=performance_schema
+binlog_cache_size=1M
+binlog_format=MIXED
+
+vim mysql-b/conf/b.cnf
+[mysqld]
+server_id=102
+binlog-ignore-db=mysql
+binlog-ignore-db=sys
+binlog-ignore-db=information_schema
+binlog-ignore-db=performance_schema
+log-bin=log-bin
+binlog_cache_size=1M
+binlog_format=MIXED
+expire_logs_days=7
+log_slave_updates=1
+relay_log=relay-bin
+read_only=1
+```
+```mysql
+-- 节点 a：创建 slave（节点 b）复制使用的账号
+CREATE USER 'slave'@'%' IDENTIFIED BY '123456';
+GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'slave'@'%';
+-- 查看 binlog 状态信息，记下 File 和 Position
+SHOW MASTER STATUS;
+```
+```mysql
+-- 节点 b：更改节点 b 的 master 为节点 a
+STOP SLAVE;
+CHANGE MASTER TO 
+    MASTER_HOST='10.0.8.8', MASTER_PORT=3307,
+    MASTER_USER='slave', MASTER_PASSWORD='123456',
+    MASTER_LOG_FILE='log-bin.000001', MASTER_LOG_POS=154;
+START SLAVE;
 ```
 ---
 ## [SQL Server](https://docs.microsoft.com/zh-cn/sql/linux/quickstart-install-connect-docker)

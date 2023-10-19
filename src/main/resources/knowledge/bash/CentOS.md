@@ -275,39 +275,49 @@
     grant all privileges on *.* to root@'%' identified by 'root';   -- 授权
     flush privileges;
     ```
-### MySQL 双主
-```
-1. 主1：`vim /etc/my.cnf`，@see MySQL.md#master my.cnf
-    log-bin=log-bin
-    relay_log=relay-bin
-2. 主2：`vim /etc/my.cnf`，只列出与 主1 不同的项
-    service-id=2
-3. 把主1设为主数据库，主2设为从数据库
-    3.1 连接主1
-        -- 创建 repl 账号，允许从 192.168.0.141 访问，密码为 repl
-        grant replication slave on *.* to repl@192.168.0.141 identified by 'repl';
-        flush privileges;
-        -- 重置 master，初次配置时可以使用
-        reset master;
-        -- 查看 master 信息（File 和 Position）
-        show master status;
-    3.2 连接主2        
-        -- 停止 slave
-        stop slave;
-        -- 将 192.168.0.141:3306 设为 master
-        -- master_user, master_password，使用 master 创建的 repl 账号
-        -- master_log_file, master_log_pos 是在 master 使用 show master status 语句查看到的 File 和 Position
-        change master to master_host='192.168.0.141', master_port=3306, master_user='repl',
-            master_password='repl', master_log_file='log-bin.000001', master_log_pos=154;
-        -- 开启 slave
-        start slave;
-        -- 查看 slave 状态，Slave_IO_Running 和 Slave_SQL_Running 都为 Yes 时，表示成功
-        -- 如果不成功，可查看 data 目录下 *。err 日志文件
-        show slave status;
-        -- 重置 slave，slave 异常时可以使用
-        reset slave all;
-4. 把主2设为主数据库，主1设为从数据库
-```
+### [MySQL 双主](https://www.jb51.net/article/252651.htm)
+1. 节点 a 配置：`vim /etc/my.cnf`，@see MySQL.md#复制
+2. 节点 b 配置：`vim /etc/my.cnf`，只列出与节点 a 不同的配置
+    ```
+    service_id=2
+    log-bin=/usr/local/mysql-b/bin_log/log-bin
+    relay_log=/usr/local/mysql-b/relay_log/relay-bin
+    ```
+3. 把节点 a 设为 master，节点 b 设为 slave
+    - 连接节点 a，创建 slave（节点 b）复制使用的账号
+    ```mysql
+    -- 创建账号 repl ，密码为 repl，允许任意 IP 访问，并授予 replication slave 权限
+    grant replication slave on *.* to 'repl'@'%' identified by 'repl';
+    flush privileges;
+    -- 删除所有 binlog 文件，并重置 binlog 索引文件
+    -- https://dev.mysql.com/doc/refman/5.7/en/reset-master.html
+    reset master;
+    -- 查看 binlog 状态信息，记下 File 和 Position
+    -- https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html
+    show master status;
+    ```
+    - 连接节点 b，并设置为 slave
+    ```mysql
+    -- 停止复制线程：https://dev.mysql.com/doc/refman/5.7/en/stop-slave.html
+    stop slave;
+    -- 更改节点 b 的 master 为节点 a
+    -- https://dev.mysql.com/doc/refman/5.7/en/change-master-to.html
+    -- master_log_file, master_log_pos 是在节点 a 使用 show master status 语句查看到的 File 和 Position
+    change master to 
+        master_host='节点 a 的 ip', master_port=3306, 
+        master_user='repl', master_password='repl', 
+        master_log_file='log-bin.000001', master_log_pos=154;
+    -- 启动复制线程：https://dev.mysql.com/doc/refman/5.7/en/start-slave.html
+    start slave;
+    -- 查看复制线程基本参数的状态信息：https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html
+    -- 成功时：Slave_IO_Running 和 Slave_SQL_Running 都为 Yes
+    -- 不成功时：可查看 data 目录下 *.err 日志文件
+    show slave status;
+    -- 重置 slave，slave 出现异常时使用
+    -- https://dev.mysql.com/doc/refman/5.7/en/reset-slave.html
+    -- reset slave all;
+    ```
+4. 把节点 b 设为主数据库，节点 a 设为从数据库
 ---
 ## Git
 1. `yum install -y git`
