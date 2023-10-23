@@ -127,15 +127,16 @@
 ---
 ## Compiler (-g)
     1. Settings → Build, Execution, Deployment
-    2. Build Tools → Maven → Importing
-        2.1 Detect compiler automatically 取消勾选
-    3. Compiler
-        3.1 Shared build process VM options: 
-            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar
-        3.2 Java Compiler
-            3.2.1 Use compiler: Eclipse
-        3.3 Annotation Processors
-            3.3.1 Enable annotation processing 勾选
+        1.1 Build Tools → Maven → Importing
+            1.1.1 Detect compiler automatically 取消勾选
+        1.2 Compiler
+            1.2.1 Build project automatically 勾选
+            1.2.2 Shared build process VM options: 
+                -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar
+            1.2.3 Java Compiler → Use compiler: Eclipse 
+            1.2.4 Annotation Processors → Enable annotation processing 勾选
+    2. Settings → Advanced Settings → Compiler
+        2.1 Allow auto-make to start even if developed application is currently running 勾选
 ---
 ## Actions on Save (-g)
     1. Settings → Tools → Actions on Save

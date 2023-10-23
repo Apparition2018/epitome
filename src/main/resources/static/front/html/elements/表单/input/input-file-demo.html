@@ -50,18 +50,20 @@
             // 获取File引用:
             const file = fileInput.files[0];
             // 获取File信息:
-            info.innerHTML = '文件: ' + file.name + '<br>' + '大小: ' + file.size
-                + '<br>' + '修改: ' + file.lastModifiedDate;
-            if (file.type !== 'image/jpeg' && file.type !== 'image/png'
-                && file.type !== 'image/gif') {
+            info.innerHTML = `文件名称：${file.name.split('.').shift()}<br>
+                        文件类型：${file.name.split('.').pop()}<br>
+                        文件大小：${(file.size / 1024).toFixed(2)}KB<br>
+                        修改时间：${file.lastModifiedDate.toLocaleString()}`;
+            if (!file.type.match('image*')) {
                 alert('不是有效的图片文件!');
                 return;
             }
             // 读取文件:
             const reader = new FileReader();
             reader.onload = function (e) {
-                const data = e.target.result; // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
-                preview.style.backgroundImage = 'url(' + data + ')';
+                // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+                const data = e.target.result;
+                preview.style.backgroundImage = `url(${data})`;
             };
             // 以DataURL的形式读取文件:
             reader.readAsDataURL(file);
