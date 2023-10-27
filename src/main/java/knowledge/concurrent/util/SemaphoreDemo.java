@@ -51,7 +51,7 @@ public class SemaphoreDemo {
                     // 释放给定数目的许可，将其返回到信号量
                     semaphore.release();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             });
         }

@@ -127,7 +127,7 @@ public class Synchronized extends Demo {
                     p(Thread.currentThread().getName() + " end");
                     countDownLatch.countDown();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
         }

@@ -51,12 +51,12 @@ public class FutureTaskDemo extends Demo {
                         Map<Integer, String> callMap = future.get();
                         callMap.forEach((k, v) -> p(String.format("%s：任务 %s 运行完毕！", k, v)));
                         it.remove();
-                    } catch (InterruptedException | ExecutionException e) {
-                        e.printStackTrace();
+                    } catch (ExecutionException | InterruptedException e) {
+                        throw new RuntimeException(e);
                     }
                 }
             }
-            if (futureList.size() == 0) {
+            if (futureList.isEmpty()) {
                 flag = false;
             }
         }
@@ -93,8 +93,8 @@ public class FutureTaskDemo extends Demo {
                 // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用），会阻塞主线程
                 Map<Integer, String> callMap = get();
                 callMap.forEach((k, v) -> p(String.format("%s：任务 %s 运行完毕！", k, v)));
-            } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
+            } catch (ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }

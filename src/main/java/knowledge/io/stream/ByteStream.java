@@ -62,7 +62,7 @@ public class ByteStream extends Demo {
 
             p(sb);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -90,7 +90,7 @@ public class ByteStream extends Demo {
             //  void	        flush()                             刷新此输出流并强制写出所有缓冲的输出字节
             os.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -145,7 +145,7 @@ public class ByteStream extends Demo {
             p(dis.readInt());
             p(dis.readUTF());
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -180,7 +180,7 @@ public class ByteStream extends Demo {
             // Object	    readObject()                从 ObjectInputStream 读取对象
             p(ois.readObject());
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

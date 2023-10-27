@@ -87,8 +87,7 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
         try {
             return (Person) super.clone();
         } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException(e);
         }
     }
 

@@ -36,8 +36,8 @@ public class WebSocketServer {
             ChannelFuture channelFuture = serverBootstrap.bind(8888).sync();
             // 等待服务端监听端口关闭
             channelFuture.channel().closeFuture().sync();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         } finally {
             bossGroup.shutdownGracefully();
             workGroup.shutdownGracefully();

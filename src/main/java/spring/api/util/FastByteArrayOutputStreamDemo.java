@@ -45,7 +45,7 @@ public class FastByteArrayOutputStreamDemo extends Demo {
             ObjectInputStream ois = new ObjectInputStream(bais);
             ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -57,7 +57,7 @@ public class FastByteArrayOutputStreamDemo extends Demo {
             ObjectInputStream ois = new ObjectInputStream(fbaos.getInputStream());
             ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

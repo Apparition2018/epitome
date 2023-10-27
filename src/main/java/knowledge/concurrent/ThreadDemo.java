@@ -121,7 +121,7 @@ public class ThreadDemo extends Demo {
                 try {
                     TimeUnit.MILLISECONDS.sleep(30);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
             p("down:图片下载完毕！");
@@ -139,7 +139,7 @@ public class ThreadDemo extends Demo {
             try {
                 download.join(); // void join(): 等待该线程终止
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
             if (!isFinish) {
                 throw new RuntimeException("图片没有下载完毕！");
@@ -170,7 +170,7 @@ public class ThreadDemo extends Demo {
                 try {
                     TimeUnit.MILLISECONDS.sleep(500);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
             p("rose: 啊啊啊AAAaaa...");
@@ -184,7 +184,7 @@ public class ThreadDemo extends Demo {
                 try {
                     TimeUnit.MILLISECONDS.sleep(500);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
         });

@@ -117,10 +117,10 @@ public class ConditionDemo extends Demo {
             p(threadName + " - start");
             ThreadLocalRandom r = ThreadLocalRandom.current();
             try {
-                while (isProducing || list.size() != 0) {
+                while (isProducing || !list.isEmpty()) {
                     POLL_LOCK.lock();
                     try {
-                        while (list.size() == 0) {
+                        while (list.isEmpty()) {
                             // boolean	    await(long time, TimeUnit unit)
                             // 造成当前线程在接到信号、被中断或到达指定等待时间之前一直处于等待状态
                             POLL_CON.await(r.nextLong(SLEEP_TIME / 4), TimeUnit.MILLISECONDS);

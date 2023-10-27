@@ -23,12 +23,7 @@ public class DistributionDemo {
     @Test
     public void testNormalDistribution() {
         NormalDistribution normal = new NormalDistribution(600, 3);
-
-        try {
-            System.out.println("p(X > 605) = " + normal.cumulativeProbability(605));
-            System.out.println("p(X < 590) = " + (1 - normal.cumulativeProbability(590)));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println("p(X > 605) = " + normal.cumulativeProbability(605));
+        System.out.println("p(X < 590) = " + (1 - normal.cumulativeProbability(590)));
     }
 }

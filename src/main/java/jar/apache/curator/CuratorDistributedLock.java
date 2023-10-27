@@ -54,7 +54,7 @@ public class CuratorDistributedLock {
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        throw new RuntimeException(e);
                     } finally {
                         CloseableUtils.closeQuietly(client);
                     }

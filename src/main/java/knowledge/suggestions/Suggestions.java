@@ -641,9 +641,9 @@ public class Suggestions extends Demo {
                     t = tType.getConstructor().newInstance();
                     // 通过反射在运行时构造出实际类型为 tType[] 的对象数组，避免了类型擦除
                     tArr = (T[]) Array.newInstance(tType, size);
-                } catch (IllegalAccessException | InstantiationException |
-                         InvocationTargetException | NoSuchMethodException e) {
-                    e.printStackTrace();
+                } catch (InvocationTargetException | InstantiationException | IllegalAccessException |
+                         NoSuchMethodException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }
@@ -1132,7 +1132,7 @@ public class Suggestions extends Demo {
                     lock.lock();
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 } finally {
                     lock.unlock();
                 }

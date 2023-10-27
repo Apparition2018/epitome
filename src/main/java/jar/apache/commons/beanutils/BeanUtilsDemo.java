@@ -53,9 +53,9 @@ public class BeanUtilsDemo {
         T obj = null;
         try {
             obj = clazz.getConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+        } catch (InvocationTargetException | InstantiationException | IllegalAccessException |
                  NoSuchMethodException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
         Enumeration<String> e = request.getParameterNames();
@@ -64,8 +64,8 @@ public class BeanUtilsDemo {
             String value = request.getParameter(name);
             try {
                 BeanUtils.setProperty(obj, name, value);
-            } catch (IllegalAccessException | InvocationTargetException e1) {
-                e1.printStackTrace();
+            } catch (InvocationTargetException | IllegalAccessException ex) {
+                throw new RuntimeException(ex);
             }
         }
 

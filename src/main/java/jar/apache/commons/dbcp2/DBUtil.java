@@ -17,7 +17,7 @@ import static l.demo.Demo.JDBC_PROPS_FILENAME;
  */
 public class DBUtil {
 
-    private static BasicDataSource dataSource;
+    private static final BasicDataSource dataSource;
 
     static {
         try {
@@ -32,7 +32,7 @@ public class DBUtil {
             dataSource.setMaxTotal(10);
             dataSource.setMaxWaitMillis(5000);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

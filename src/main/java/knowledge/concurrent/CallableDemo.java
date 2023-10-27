@@ -39,8 +39,8 @@ public class CallableDemo {
             // V	    get([long timeout, TimeUnit unit])
             // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用）
             result = task.get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
         }
         System.out.println(result);
 

@@ -145,10 +145,9 @@ public class ExecutorsDemo extends Demo {
         threadPool.invokeAll(callableList).stream().map(future -> {
             try {
                 return future.get();
-            } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
+            } catch (ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
             }
-            return null;
         }).forEach(System.out::println);
         p("--- invokeAny ---");
         // <T> T                invokeAny(Collection<? extends Callable<T>> tasks[, long timeout, TimeUnit unit])

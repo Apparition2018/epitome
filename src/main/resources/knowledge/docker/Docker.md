@@ -715,10 +715,17 @@ influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --defa
 ## [Redis](https://hub.docker.com/_/redis)
 - [Docker 部署 Redis](https://blog.csdn.net/qq_41316955/article/details/108381923)
 - [redis.conf](https://redis.io/docs/manual/config/) 选择对应版本
+    - redis.conf
     ```
     requirepass 123456
-    # bind 127.0.0.1 -::1
     bind 0.0.0.0
+    ```
+    - redis-replica.conf
+    ```
+    requirepass 123456
+    bind 0.0.0.0
+    replicaof 43.136.102.115 6379
+    masterauth 123456
     ```
 ```bash
 mkdir -p /home/lighthouse/docker_data/redis/data
@@ -747,6 +754,12 @@ info replication
 docker exec -it redis-replica redis-cli
 auth 123456
 info replication
+```
+---
+## Redis 集群（3主3从）
+```bash
+mkdir -p /home/lighthouse/docker_data/redis-cluster/data
+cd /home/lighthouse/docker_data/redis-cluster
 ```
 ---
 ## [MongoDB](https://hub.docker.com/_/mongo)

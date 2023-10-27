@@ -26,7 +26,7 @@ public class ReentrantLockDemo extends Demo {
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         t2.interrupt(); // 因为 1s 后线程 t2 还在等待中，所以可以中断
 

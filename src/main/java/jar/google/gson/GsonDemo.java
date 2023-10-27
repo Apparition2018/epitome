@@ -34,7 +34,7 @@ public class GsonDemo extends Demo implements JsonDemo {
     @Test
     public void testJSONObject() {
         // 复杂对象JSON → JsonObject
-        jsonObject = JsonParser.parseString(JSON_COMPLEX).getAsJsonObject();
+        jsonObject = JsonParser.parseString(COMPLEX_JSON).getAsJsonObject();
         courseJsonObject = jsonObject.getAsJsonObject("course");
         studentsJsonArray = jsonObject.getAsJsonArray("students");
         p(jsonObject);
@@ -43,7 +43,7 @@ public class GsonDemo extends Demo implements JsonDemo {
         p(jsonStr + StringUtils.CR);
 
         // 复杂对象JSON → JavaBean
-        teacher = gson.fromJson(JSON_COMPLEX, Teacher.class);
+        teacher = gson.fromJson(COMPLEX_JSON, Teacher.class);
         p(teacher);
         // JavaBean → 复杂对象JSON
         jsonStr = gson.toJson(teacher);
@@ -62,14 +62,14 @@ public class GsonDemo extends Demo implements JsonDemo {
     @Test
     public void testJSONArray() {
         // 数组对象JSON → JSONArray
-        jsonArray = JsonParser.parseString(JSON_ARRAY).getAsJsonArray();
+        jsonArray = JsonParser.parseString(ARRAY_JSON).getAsJsonArray();
         p(jsonArray);
         // JSONArray → 数组对象JSON
         jsonStr = gson.toJson(jsonArray);
         p(jsonStr + StringUtils.CR);
 
         // 数组对象JSON → List<JavaBean>
-        students = gson.fromJson(JSON_ARRAY, new TypeToken<List<Student>>() {
+        students = gson.fromJson(ARRAY_JSON, new TypeToken<List<Student>>() {
         }.getType());
         p(students);
         // List<JavaBean> → 数组对象JSON
@@ -93,7 +93,7 @@ public class GsonDemo extends Demo implements JsonDemo {
 
     @Test
     public void testJsonObjectToMap() {
-        jsonObject = JsonParser.parseString(JSON_COMPLEX).getAsJsonObject();
+        jsonObject = JsonParser.parseString(COMPLEX_JSON).getAsJsonObject();
         p(jsonObject2Map(jsonObject));
     }
 

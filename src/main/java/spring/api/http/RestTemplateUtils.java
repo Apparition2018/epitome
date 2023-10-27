@@ -1,20 +1,20 @@
 package spring.api.http;
 
-import com.alibaba.fastjson.JSONObject;
-import jakarta.servlet.http.HttpServletResponse;
+import com.alibaba.fastjson2.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.lang.Nullable;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.ResponseErrorHandler;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.*;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -29,26 +29,59 @@ import java.util.regex.Pattern;
  */
 public class RestTemplateUtils {
 
+    /** <a href="https://blog.csdn.net/huang714/article/details/132401585">RestTemplate 异常处理器 ErrorHandler 详解</a> */
     private static class DefaultResponseErrorHandler implements ResponseErrorHandler {
 
         @Override
         public boolean hasError(ClientHttpResponse response) throws IOException {
-            return response.getStatusCode().value() != HttpServletResponse.SC_OK;
+            HttpStatus statusCode = HttpStatus.resolve(response.getStatusCode().value());
+            return statusCode != null && this.hasError(statusCode);
         }
 
+
+        protected boolean hasError(HttpStatus statusCode) {
+            return statusCode.series() == HttpStatus.Series.CLIENT_ERROR || statusCode.series() == HttpStatus.Series.SERVER_ERROR;
+        }
+
+        /** 自定义 error 处理 */
         @Override
         public void handleError(ClientHttpResponse response) throws IOException {
-            BufferedReader br = new BufferedReader(new InputStreamReader(response.getBody()));
-            StringBuilder sb = new StringBuilder();
-            String str;
-            while ((str = br.readLine()) != null) {
-                sb.append(str);
+            HttpStatus statusCode = HttpStatus.resolve(response.getStatusCode().value());
+            if (statusCode == null) {
+                throw new UnknownHttpStatusCodeException(response.getStatusCode().value(), response.getStatusText(), response.getHeaders(), this.getResponseBody(response), this.getCharset(response));
+            } else {
+                this.handleError(response, statusCode);
             }
+        }
+
+        protected void handleError(ClientHttpResponse response, HttpStatus statusCode) throws IOException {
+            String statusText = response.getStatusText();
+            HttpHeaders headers = response.getHeaders();
+            byte[] body = this.getResponseBody(response);
+            Charset charset = this.getCharset(response);
+            switch (statusCode.series()) {
+                case CLIENT_ERROR:
+                    throw HttpClientErrorException.create(statusCode, statusText, headers, body, charset);
+                case SERVER_ERROR:
+                    throw HttpServerErrorException.create(statusCode, statusText, headers, body, charset);
+                default:
+                    throw new UnknownHttpStatusCodeException(statusCode.value(), statusText, headers, body, charset);
+            }
+        }
+
+        protected byte[] getResponseBody(ClientHttpResponse response) {
             try {
-                throw new Exception(sb.toString());
-            } catch (Exception e) {
-                e.printStackTrace();
+                return FileCopyUtils.copyToByteArray(response.getBody());
+            } catch (IOException var3) {
+                return new byte[0];
             }
+        }
+
+        @Nullable
+        protected Charset getCharset(ClientHttpResponse response) {
+            HttpHeaders headers = response.getHeaders();
+            MediaType contentType = headers.getContentType();
+            return contentType != null ? contentType.getCharset() : null;
         }
     }
 
@@ -58,9 +91,7 @@ public class RestTemplateUtils {
         return restTemplate.getForObject(expandURL(url, params.keySet()), String.class, params);
     }
 
-    /**
-     * 将参数都拼接在 url 之后
-     */
+    /** 将参数都拼接在 url 之后 */
     public static String post(String url, JSONObject params, MediaType mediaType) {
         RestTemplate restTemplate = new RestTemplate();
         // 拿到 header 信息
@@ -75,9 +106,7 @@ public class RestTemplateUtils {
     }
 
 
-    /**
-     * 发送 json 或者 form 格式数据
-     */
+    /** 发送 json 或者 form 格式数据 */
     public static <T> T post(String url, JSONObject params, MediaType mediaType, Class<T> clz) {
         RestTemplate restTemplate = new RestTemplate();
         // 这是为 MediaType.APPLICATION_FORM_URLENCODED 格式 HttpEntity 数据 添加转换器

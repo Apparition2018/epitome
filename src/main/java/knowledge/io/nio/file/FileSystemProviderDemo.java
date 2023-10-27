@@ -1,6 +1,6 @@
 package knowledge.io.nio.file;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import l.demo.Demo;
 
 import java.io.IOException;

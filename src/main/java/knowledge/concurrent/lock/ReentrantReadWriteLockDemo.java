@@ -45,7 +45,7 @@ public class ReentrantReadWriteLockDemo {
                 try {
                     TimeUnit.MILLISECONDS.sleep(20);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
                 this.data = data;
                 System.out.println(Thread.currentThread().getName() + " 写入" + this.data);
@@ -61,7 +61,7 @@ public class ReentrantReadWriteLockDemo {
                 try {
                     TimeUnit.MILLISECONDS.sleep(20);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
                 System.out.println(Thread.currentThread().getName() + " 读取" + this.data);
             } finally {

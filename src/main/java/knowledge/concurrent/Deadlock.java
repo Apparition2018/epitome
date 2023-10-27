@@ -58,7 +58,7 @@ public class Deadlock {
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
                 synchronized (B) {
                     p("线程 t1 拿到 B 锁");
@@ -72,7 +72,7 @@ public class Deadlock {
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
                 synchronized (A) {
                     p("线程 t2 拿到 A 锁");
@@ -89,7 +89,7 @@ public class Deadlock {
                 p("doSomething ...");
             }
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } finally {
             lock.unlock();
         }

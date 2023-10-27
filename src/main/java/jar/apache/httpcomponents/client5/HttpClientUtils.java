@@ -140,7 +140,7 @@ public class HttpClientUtils {
             try {
                 httpClient.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }));
 

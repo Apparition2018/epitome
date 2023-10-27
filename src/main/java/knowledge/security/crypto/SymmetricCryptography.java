@@ -69,12 +69,10 @@ public class SymmetricCryptography {
 
             // 通过 Base64 转码返回
             return Base64.encodeBase64String(result);
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | BadPaddingException |
-                 IllegalBlockSizeException e) {
-            e.printStackTrace();
+        } catch (NoSuchPaddingException | IllegalBlockSizeException | NoSuchAlgorithmException |
+                 BadPaddingException | InvalidKeyException e) {
+            throw new RuntimeException(e);
         }
-
-        return null;
     }
 
     private static String decrypt(String content, String key) throws NoSuchPaddingException {
@@ -89,11 +87,9 @@ public class SymmetricCryptography {
             byte[] result = cipher.doFinal(Base64.decodeBase64(content));
 
             return new String(result, StandardCharsets.UTF_8);
-        } catch (NoSuchAlgorithmException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
-            e.printStackTrace();
+        } catch (IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException e) {
+            throw new RuntimeException(e);
         }
-
-        return null;
     }
 
     /**
@@ -116,10 +112,8 @@ public class SymmetricCryptography {
             // 转换为 AES 专用密钥
             return new SecretKeySpec(secretKey.getEncoded(), KEY_ALGORITHM);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
-        return null;
     }
 
     public static void main(String[] args) throws NoSuchPaddingException {

@@ -18,9 +18,9 @@ import l.demo.JsonDemo;
 public class JsonPathDemo extends Demo implements JsonDemo {
 
     public static void main(String[] args) {
-        ReadContext context = JsonPath.parse(JSON_COMPLEX);
+        ReadContext context = JsonPath.parse(COMPLEX_JSON);
 
         p("studentName: " + context.read("$.students[0].studentName"));
-        p("studentName: " + JsonPath.read(JSON_COMPLEX, "$.students[0].studentName"));
+        p("studentName: " + JsonPath.read(COMPLEX_JSON, "$.students[0].studentName"));
     }
 }

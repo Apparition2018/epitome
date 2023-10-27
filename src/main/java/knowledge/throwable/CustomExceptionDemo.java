@@ -1,5 +1,7 @@
 package knowledge.throwable;
 
+import lombok.Getter;
+
 import java.io.Serial;
 
 /**
@@ -32,9 +34,8 @@ public class CustomExceptionDemo {
         }
     }
 
-    /**
-     * 自定义异常类
-     */
+    /** 自定义异常类 */
+    @Getter
     private static class CustomException extends RuntimeException {
         @Serial
         private static final long serialVersionUID = 1612100152025079049L;
@@ -46,15 +47,10 @@ public class CustomExceptionDemo {
         CustomException(double amount) {
             this.amount = amount;
         }
-
-        public double getAmount() {
-            return amount;
-        }
     }
 
-    /**
-     * 模拟银行账户
-     */
+    /** 模拟银行账户 */
+    @Getter
     private static class CheckingAccount {
 
         /**
@@ -89,12 +85,5 @@ public class CustomExceptionDemo {
             }
         }
 
-        public double getBalance() {
-            return balance;
-        }
-
-        public int getNumber() {
-            return number;
-        }
     }
 }

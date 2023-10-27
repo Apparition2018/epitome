@@ -23,7 +23,7 @@ class TcpServer implements Runnable {
                 TimeUnit.SECONDS.sleep(1);
                 System.out.println("系统正常运： " + i);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
         // 模拟异常

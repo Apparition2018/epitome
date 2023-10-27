@@ -68,7 +68,7 @@ public class LockDemo {
         try {
             System.out.println("do something");
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } finally {
             lock.unlock();
         }
@@ -86,7 +86,7 @@ public class LockDemo {
             try {
                 System.out.println("do something");
             } catch (Exception e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             } finally {
                 lock.unlock();
             }

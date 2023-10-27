@@ -1,6 +1,7 @@
 package springboot.config.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,6 +18,7 @@ import java.util.Objects;
 
 /**
  * MasterDataSourceConfig
+ * <p>Mybatis 多数据源
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -29,7 +31,7 @@ public class MasterDataSourceConfig {
     @Bean(name = "masterDataSource", destroyMethod = "close", initMethod = "init")
     @ConfigurationProperties(prefix = "spring.datasource.master")
     public DruidDataSource dataSource() {
-        return new DruidDataSource();
+        return DruidDataSourceBuilder.create().build();
     }
 
     @Primary

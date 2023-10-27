@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 /**
  * IpConverter
  * <p>
- * logback 高级特性使用(二)：https://blog.csdn.net/chenjie2000/article/details/8892764
+ * <a href="https://blog.csdn.net/chenjie2000/article/details/8892764">logback 高级特性使用(二)</a>
  *
  * @author ljh
  * @since 2021/4/7 11:08
@@ -21,8 +21,7 @@ public class IpConverter extends ClassicConverter {
         try {
             return InetAddress.getLocalHost().getHostName();
         } catch (UnknownHostException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
     }
 }

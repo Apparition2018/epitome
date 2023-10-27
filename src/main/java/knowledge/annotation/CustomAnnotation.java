@@ -102,7 +102,7 @@ public class CustomAnnotation {
                 }
             }
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

@@ -38,7 +38,7 @@ public class CuratorDistributedCounter extends Demo {
                     p("Increment: from " + atomicValue.preValue() + " to " + atomicValue.postValue());
                 countDownLatch.countDown();
             } catch (Exception e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }).start();
     }

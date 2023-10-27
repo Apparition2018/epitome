@@ -30,7 +30,7 @@ public class PropertiesUtil extends Demo {
                 props.load(reader);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } finally {
             if (null != reader) {
                 try {

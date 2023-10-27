@@ -61,7 +61,7 @@ public class MybatisTest {
             try {
                 p(objectMapper.writeValueAsString(user));
             } catch (JsonProcessingException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         });
     }

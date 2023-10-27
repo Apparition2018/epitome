@@ -14,11 +14,10 @@ class CarFactory {
     public static Car createCar(Class<? extends Car> c) {
         try {
             return c.getConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+        } catch (InvocationTargetException | InstantiationException | IllegalAccessException |
                  NoSuchMethodException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
     }
 }
 

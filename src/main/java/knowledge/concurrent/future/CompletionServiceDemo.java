@@ -43,8 +43,8 @@ public class CompletionServiceDemo extends Demo {
                 // Map<Integer, String> callMap = completionService.poll(300, TimeUnit.MILLISECONDS).get();
                 callMap.forEach((k, v) -> p(String.format("%s：任务 %s 运行完毕！", k, v)));
             }
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
         } finally {
             threadPool.shutdown();
         }

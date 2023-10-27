@@ -37,7 +37,7 @@ public class ObjectWaitAndNotifyDemo {
                 try {
                     wait();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
             count++;
@@ -52,7 +52,7 @@ public class ObjectWaitAndNotifyDemo {
                     // 所以 Decrease 线程进入对象 t (main函数中实例化的)的等待池，并且释放对象 t 的锁
                     wait();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
             count--;
@@ -78,7 +78,7 @@ public class ObjectWaitAndNotifyDemo {
                     // sleep() 不会释放对象 t 的锁
                     TimeUnit.MILLISECONDS.sleep(new Random().nextInt(500));
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
 
                 t.increase();
@@ -99,7 +99,7 @@ public class ObjectWaitAndNotifyDemo {
                 try {
                     TimeUnit.MILLISECONDS.sleep(new Random().nextInt(500));
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
 
                 t.decrease();

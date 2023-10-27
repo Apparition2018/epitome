@@ -57,9 +57,8 @@ public class FreeMarkerUtil {
         try {
             return cfg.getTemplate(fName);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     /**
@@ -72,7 +71,7 @@ public class FreeMarkerUtil {
         try {
             Objects.requireNonNull(getTemplate(fName)).process(params, new PrintWriter(System.out));
         } catch (TemplateException | IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -86,7 +85,7 @@ public class FreeMarkerUtil {
         try {
             Objects.requireNonNull(getTemplate(fName)).process(params, new FileWriter(outPath));
         } catch (TemplateException | IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

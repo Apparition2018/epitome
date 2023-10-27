@@ -32,9 +32,7 @@ public class JedisDistributedLocks {
     private Runnable notLock() {
         return () -> {
             try (Jedis jedis = JedisUtils.getResource()) {
-                cal(jedis);
-            } catch (Exception e) {
-                e.printStackTrace();
+                this.cal(jedis);
             }
         };
     }
@@ -46,9 +44,7 @@ public class JedisDistributedLocks {
         LockInitial lockInitial = new LockInitial();
         return () -> {
             try (Jedis jedis = JedisUtils.getResource()) {
-                calWithLock(lockInitial, jedis);
-            } catch (Exception e) {
-                e.printStackTrace();
+                this.calWithLock(lockInitial, jedis);
             }
         };
     }

@@ -57,8 +57,8 @@ public class CyclicBarrierDemo {
                 // int	    await([long timeout, TimeUnit unit])
                 // 等待所有 parties已经在此屏障上调用 await ，或指定的等待时间过去
                 cb.await();
-            } catch (InterruptedException | BrokenBarrierException e) {
-                e.printStackTrace();
+            } catch (BrokenBarrierException | InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
     }

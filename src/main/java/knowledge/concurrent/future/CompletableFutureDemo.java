@@ -45,8 +45,8 @@ public class CompletableFutureDemo extends Demo {
             CompletableFuture<Void> completableFuture = CompletableFuture.allOf(completableFutureList.stream()
                     .filter(Objects::nonNull).toList().toArray(new CompletableFuture[completableFutureList.size()]));
             completableFuture.get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
         } finally {
             threadPool.shutdown();
         }
@@ -62,8 +62,8 @@ public class CompletableFutureDemo extends Demo {
         try {
             CompletableFuture<Void> completableFuture = CompletableFuture.allOf(completableFutures);
             completableFuture.get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
         } finally {
             threadPool.shutdown();
         }

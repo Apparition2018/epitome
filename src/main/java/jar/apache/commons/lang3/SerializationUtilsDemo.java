@@ -81,7 +81,7 @@ public class SerializationUtilsDemo extends Demo {
             p(Objects.equals(person, deserialize));     // true
             p(person.getHome() == deserialize.getHome());// false
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

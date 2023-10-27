@@ -1,24 +1,24 @@
 package jar.alibaba.fastjson;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.TypeReference;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONObject;
+import com.alibaba.fastjson2.TypeReference;
 import l.demo.JsonDemo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://segmentfault.com/a/1190000011212806">FastJson 的简单使用</a>
+ * FastJson2
  *
  * @author ljh
- * @since 2019/8/8 19:39
+ * @since 2023/10/26 9:13
  */
-public class FastJsonDemo implements JsonDemo {
+public class FastJson2Demo implements JsonDemo {
     JSONObject jsonObject;
     JSONArray jsonArray;
     String jsonStr;
@@ -56,7 +56,7 @@ public class FastJsonDemo implements JsonDemo {
         p(teacher);
 
         // JavaBean → JSONObject
-        jsonObject = (JSONObject) JSONObject.toJSON(teacher);
+        jsonObject = (JSONObject) JSON.toJSON(teacher);
         jsonObject = JSONObject.parseObject(JSONObject.toJSONString(teacher));
         p(jsonObject);
     }
@@ -73,8 +73,7 @@ public class FastJsonDemo implements JsonDemo {
         p(jsonStr + StringUtils.CR);
 
         // 数组对象JSON → List<JavaBean>
-        students = JSONArray.parseObject(ARRAY_JSON, new TypeReference<ArrayList<Student>>() {
-        });
+        students = JSONArray.parseArray(ARRAY_JSON, Student.class);
         p(students);
         // List<JavaBean> → 数组对象JSON
         jsonStr = JSONArray.toJSONString(students);
@@ -82,11 +81,10 @@ public class FastJsonDemo implements JsonDemo {
 
         // JSONArray → List<JavaBean>
         students = JSONArray.parseArray(jsonArray.toJSONString(), Student.class);
-        students = JSONArray.parseObject(jsonArray.toJSONString(), new TypeReference<>() {
-        });
+        students = jsonArray.toList(Student.class);
         p(students);
         // List<JavaBean> → JSONArray
-        jsonArray = (JSONArray) JSONArray.toJSON(students);
+        jsonArray = JSONArray.of(students);
         jsonArray = JSONArray.parseArray(JSONArray.toJSONString(students));
         p(jsonArray);
     }

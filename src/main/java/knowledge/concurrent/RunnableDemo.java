@@ -38,7 +38,7 @@ public class RunnableDemo extends Demo {
                 try {
                     TimeUnit.MILLISECONDS.sleep(20);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
                 p(Thread.currentThread().getName() + "正在卖票" + ticket--);
             }

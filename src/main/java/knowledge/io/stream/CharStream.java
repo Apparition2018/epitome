@@ -81,7 +81,7 @@ public class CharStream extends Demo {
             }
             p(brString);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -122,7 +122,7 @@ public class CharStream extends Demo {
             pw.println("Output");
             pw.println("Output");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -158,7 +158,7 @@ public class CharStream extends Demo {
             // char[]	    toCharArray()           返回输入数据的副本
             p(new String(caw.toCharArray()));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

@@ -33,8 +33,7 @@ public class CloneableDemo {
             try {
                 return (X) super.clone();
             } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
-                return null;
+                throw new RuntimeException(e);
             }
         }
     }

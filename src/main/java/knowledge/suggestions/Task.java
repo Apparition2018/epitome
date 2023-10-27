@@ -17,7 +17,7 @@ class Task {
             // 每个线程等待2秒钟，注意此时线程的状态变为 Warning 状态
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
         System.out.printf("线程名称：%s，执行时间：%ss%n", Thread.currentThread().getName(), Calendar.getInstance().get(Calendar.SECOND));

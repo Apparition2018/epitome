@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,8 +52,8 @@ public class JoinerDemo extends Demo {
             // <A extendsAppendable> A	appendTo(A appendable, Iterable<?> parts)
             // 将parts通过连接器的连接符连接成字符串，并拼接到appendable后
             Joiner.on("-").appendTo(writer, list);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         StringBuilder sb = new StringBuilder("SSS-SS-S-");

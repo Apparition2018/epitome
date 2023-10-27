@@ -143,8 +143,7 @@ public class MementoDemo {
                 try {
                     return (InputText) super.clone();
                 } catch (CloneNotSupportedException e) {
-                    e.printStackTrace();
-                    return null;
+                    throw new RuntimeException(e);
                 }
             }
 

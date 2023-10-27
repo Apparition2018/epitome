@@ -86,8 +86,8 @@ public class CustomAnnotationExercise {
             try {
                 Method method = clazz.getMethod(getMethodName);
                 fieldValue = method.invoke(filter);
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
+            } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+                throw new RuntimeException(e);
             }
             // 4.3拼装sql
             if (null == fieldValue || (fieldValue instanceof Integer && (Integer) fieldValue == 0)) {

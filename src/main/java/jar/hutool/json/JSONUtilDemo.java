@@ -38,7 +38,7 @@ public class JSONUtilDemo implements JsonDemo {
     @Test
     public void testJSONObject() {
         // 复杂对象JSON → JSONObject
-        jsonObject = JSONUtil.parseObj(JSON_COMPLEX);
+        jsonObject = JSONUtil.parseObj(COMPLEX_JSON);
         courseJsonObject = jsonObject.getJSONObject("course");
         studentsJsonArray = jsonObject.getJSONArray("students");
         p(jsonObject);
@@ -48,8 +48,8 @@ public class JSONUtilDemo implements JsonDemo {
         p(jsonStr + StringUtils.CR);
 
         // 复杂对象JSON → JavaBean
-        teacher = JSONUtil.toBean(JSON_COMPLEX, Teacher.class);
-        teacher = JSONUtil.toBean(JSON_COMPLEX, new TypeReference<Teacher>() {
+        teacher = JSONUtil.toBean(COMPLEX_JSON, Teacher.class);
+        teacher = JSONUtil.toBean(COMPLEX_JSON, new TypeReference<Teacher>() {
         }, false);
         p(teacher);
         // JavaBean → 复杂对象JSON
@@ -71,7 +71,7 @@ public class JSONUtilDemo implements JsonDemo {
     @Test
     public void testJSONArray() {
         // 数组对象JSON → JSONArray
-        jsonArray = JSONUtil.parseArray(JSON_ARRAY);
+        jsonArray = JSONUtil.parseArray(ARRAY_JSON);
         p(jsonArray);
         // JSONArray → 数组对象JSON
         jsonStr = JSONUtil.toJsonStr(jsonArray);
@@ -79,7 +79,7 @@ public class JSONUtilDemo implements JsonDemo {
         p(jsonStr + StringUtils.CR);
 
         // 数组对象JSON → List<JavaBean>
-        students = JSONUtil.toBean(JSON_ARRAY, new TypeReference<ArrayList<Student>>() {
+        students = JSONUtil.toBean(ARRAY_JSON, new TypeReference<ArrayList<Student>>() {
         }, false);
         p(students);
         // List<JavaBean> → 数组对象JSON

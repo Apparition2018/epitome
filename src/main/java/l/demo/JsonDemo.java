@@ -17,10 +17,10 @@ public interface JsonDemo {
     String JSON_PLAIN = "{\"name\":\"lily\",\"age\":12}";
 
     // 数组对象
-    String JSON_ARRAY = "[{\"studentName\":\"lily\",\"studentAge\":12},{\"studentName\":\"lucy\",\"studentAge\":15}]";
+    String ARRAY_JSON = "[{\"studentName\":\"lily\",\"studentAge\":12},{\"studentName\":\"lucy\",\"studentAge\":15}]";
 
     // 复杂对象
-    String JSON_COMPLEX = "{\"teacherName\":\"crystal\",\"teacherAge\":27,\"course\":{\"courseName\":\"english\",\"code\":1270},\"students\":[{\"studentName\":\"lily\",\"studentAge\":12},{\"studentName\":\"lucy\",\"studentAge\":15}]}";
+    String COMPLEX_JSON = "{\"teacherName\":\"crystal\",\"teacherAge\":27,\"course\":{\"courseName\":\"english\",\"code\":1270},\"students\":[{\"studentName\":\"lily\",\"studentAge\":12},{\"studentName\":\"lucy\",\"studentAge\":15}]}";
 
     @Data
     class Teacher {

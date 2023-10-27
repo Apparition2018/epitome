@@ -7,7 +7,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
 
 import static l.demo.Demo.PORT;
 import static l.demo.Demo.p;
@@ -45,7 +44,7 @@ public class TCPServer implements Runnable {
             Thread t = new Thread(new TCPServer(PORT));
             t.start();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -85,10 +84,8 @@ public class TCPServer implements Runnable {
                 DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
                 // SocketAddress    getLocalSocketAddress()     返回此套接字绑定的端点的地址，如果尚未绑定则返回 null
                 dos.writeUTF("谢谢连接我：" + socket.getLocalSocketAddress() + "\nGoodbye!");
-            } catch (SocketTimeoutException s) {
-                p("Socket timed out!");
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }

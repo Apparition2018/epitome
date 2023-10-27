@@ -104,7 +104,7 @@ public class HMacDemo extends Demo {
             Files.write(keyFilePath, keyList, StandardOpenOption.CREATE); // 将密钥写入文件
             result = encryptHMAC(inputData, key); // HMAC 加密
         } catch (NoSuchAlgorithmException | IOException | InvalidKeyException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return result;
     }
@@ -119,7 +119,7 @@ public class HMacDemo extends Demo {
             byte[] inputData = inputStr.getBytes();
             result = encryptHMAC(inputData, keyList.get(0)); // HMAC 加密
         } catch (IOException | NoSuchAlgorithmException | InvalidKeyException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return result;
     }

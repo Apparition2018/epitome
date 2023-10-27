@@ -50,7 +50,7 @@ public class CaptchaDemo extends Demo {
             captcha.write(os);
             p(captcha.verify(captcha.getCode()));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }

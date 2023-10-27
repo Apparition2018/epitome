@@ -194,7 +194,7 @@ public class SingletonDemo {
             // 断言是否相等
             Assertions.assertSame(singleton1, singleton2);
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         new File(pathStr).deleteOnExit();
     }
@@ -234,7 +234,7 @@ public class SingletonDemo {
                         obj = Class.forName(key).getConstructor().newInstance();
                         SINGLETON_MAP.put(key, obj);
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        throw new RuntimeException(e);
                     }
                     return obj;
                 } else {

@@ -52,8 +52,8 @@ public class JDBC {
                 String score = resultSet.getString("score");
                 System.out.println(id + StringUtils.SPACE + name + course + (null != score ? "成绩为" + score : "没有成绩"));
             }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
         } finally {
             if (null != conn) {
                 try {

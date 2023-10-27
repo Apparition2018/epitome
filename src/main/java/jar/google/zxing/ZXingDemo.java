@@ -103,8 +103,8 @@ public class ZXingDemo extends Demo {
         try {
             BitMatrix bitMatrix = new MultiFormatWriter().encode(CONTENT, barcodeFormat, width, height, hints);
             MatrixToImageWriter.writeToPath(bitMatrix, FORMAT, new File(filePath).toPath());
-        } catch (WriterException | IOException e) {
-            e.printStackTrace();
+        } catch (IOException | WriterException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -134,9 +134,8 @@ public class ZXingDemo extends Demo {
                     new BufferedImageLuminanceSource(ImageIO.read(new File(filePath)))));
 
             return new MultiFormatReader().decode(binaryBitmap, hints);
-        } catch (IOException | NotFoundException e) {
-            e.printStackTrace();
-            return null;
+        } catch (NotFoundException | IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
