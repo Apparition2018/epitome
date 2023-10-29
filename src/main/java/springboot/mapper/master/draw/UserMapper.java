@@ -21,7 +21,7 @@ public interface UserMapper {
      * @return 影响条数
      */
     @Update({
-            "update user set score = score - #{score}",
+            "update draw_user set score = score - #{score}",
             "where id = #{id} and score >= #{score}"
     })
     int deductScore(@Param("id") Integer id, @Param("score") Integer score);

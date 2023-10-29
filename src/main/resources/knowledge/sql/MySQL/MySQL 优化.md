@@ -1,4 +1,4 @@
-# [MySQL 优化](https://dev.mysql.com/doc/refman/8.0/en/optimize-overview.html)
+# [MySQL 优化](https://dev.mysql.com/doc/refman/8.2/en/optimize-overview.html)
 
 ---
 ## 优化概述

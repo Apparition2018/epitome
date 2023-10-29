@@ -8,7 +8,7 @@ ON
 JOIN
 WHERE                       ←   过滤越多数据的条件写在越后面；不能使用别名，因为还没执行 SELECT
 GROUP BY                    →   只保留了分组字段和聚合函数结果，因此 SELECT 和 ORDER BY 只能使用这些字段 
-AGGREGATE
+AGGREGATE                       WHERE 在 AGGREGATE 之前，所以不能使用 AGGREGATE 作为过滤条件，而 HAVING 可以
 HAVING                          能用 WHERE 过滤就不用 HAVING
 SELECT
 DISTINCT
@@ -43,6 +43,7 @@ SELECT ename, job, deptno FROM emp WHERE deptno NOT IN(10, 20, 40);
 ```
 ---
 ## 分组查询 (GROUP BY / HAVING)
+- 当SELECT子句中使用了聚合函数时，那么凡不在聚合函数中的单独字段都必须出现在GROUP BY子句中
 ```sql
 SELECT deptno, MAX(sal) max_sal FROM emp GROUP BY deptno HAVING MAX(sal) > 2000;
 ```
@@ -66,13 +67,15 @@ SELECT year_id,month_id,day_id,SUM(sales_value) sum FROM sales GROUP BY GROUPING
 ---
 ## 关联查询
 ```oracle
-SELECT e.ename, d.loc FROM emp e, dept d;                                           -- 笛卡儿积
-SELECT e.ename, d.loc FROM emp e, dept d WHERE e.deptno = d.deptno;                 -- WHERE
-SELECT e.ename, d.loc FROM emp e INNER JOIN dept d ON e.deptno = d.deptno;          -- 内关联
-SELECT e.ename, d.loc FROM emp e LEFT JOIN dept d ON e.deptno = d.deptno;           -- 左关联
-SELECT e.ename, d.loc FROM emp e RIGHT JOIN dept d ON e.deptno = d.deptno;          -- 右关联
-SELECT e.ename, d.loc FROM emp e FULL JOIN dept d ON e.deptno = d.deptno;           -- 全关联 (MySQL 不支持)
-SELECT e.ename, m.ename, e.sal, m.sal FROM emp e, emp m WHERE e.mgr = m.empno;      -- 自关联
+SELECT e.ename, d.loc FROM emp e, dept d;                                       -- 笛卡儿积
+SELECT e.ename, d.loc FROM emp e, dept d WHERE e.deptno = d.deptno;             -- WHERE
+SELECT e.ename, d.loc FROM emp e INNER JOIN dept d ON e.deptno = d.deptno;      -- 内关联
+SELECT e.ename, d.loc FROM emp e LEFT JOIN dept d ON e.deptno = d.deptno;       -- 左关联
+SELECT e.ename, d.loc FROM emp e, dept d WHERE e.deptno = d.deptno(+);          -- 左关联 (Oracle)
+SELECT e.ename, d.loc FROM emp e RIGHT JOIN dept d ON e.deptno = d.deptno;      -- 右关联
+SELECT e.ename, d.loc FROM emp e, dept d WHERE e.deptno(+) = d.deptno;          -- 右关联 (Oracle)
+SELECT e.ename, d.loc FROM emp e FULL JOIN dept d ON e.deptno = d.deptno;       -- 全关联 (MySQL 不支持)
+SELECT e.ename, m.ename, e.sal, m.sal FROM emp e, emp m WHERE e.mgr = m.empno;  -- 自关联
 ```
 ---
 ## 子查询

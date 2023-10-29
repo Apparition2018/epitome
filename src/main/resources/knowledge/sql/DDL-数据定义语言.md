@@ -4,7 +4,7 @@
 ## Reference
 1. [Oracle、MySQL、SQL Server创建表和给表和字段加注释](https://www.cnblogs.com/zt528/p/5386516.html)
 2. [SQL Server 添加表注释、字段注释](https://blog.csdn.net/stupidbird003/article/details/64562683)
-3. [Data Definition Statements](https://dev.mysql.com/doc/refman/8.0/en/sql-data-definition-statements.html)
+3. [Data Definition Statements](https://dev.mysql.com/doc/refman/8.2/en/sql-data-definition-statements.html)
 ---
 ## 存储过程
 1. [MySQL: Procedures](https://www.techonthenet.com/mysql/procedures.php)
@@ -42,6 +42,11 @@ CREATE TABLE score (
     score int
 );
 ```
+### 重命名表
+| DB     | SQL                          |
+|--------|------------------------------|
+| MySQL  | RENAME TABLE score TO score; |
+| Oracle | RENAME score TO score;       |
 ### 删除表
 ```sql
 DROP TABLE score;
@@ -76,6 +81,23 @@ CREATE TABLE #temp (
 2. MySQL：`CREATE TABLE score_bak LIKE score;`
 3. SQL server：`SELECT * INTO score_bak FROM score WHERE 1=2;`
 ---
+## 字段
+```sql
+-- 增加字段，Oracle/MySQL server 不支持 AFTER
+ALTER TABLE score ADD grade varchar(1) AFTER name;
+-- 修改字段
+ALTER TABLE score MODIFY grade varchar(2);
+-- 修改字段 (SQL Server)
+ALTER TABLE score ALTER COLUMN grade varchar(2);
+-- 删除字段
+ALTER TABLE score DROP COLUMN grade;
+```
+### 修改字段名
+| DB     | SQL                                                  |
+|--------|------------------------------------------------------|
+| MySQL  | ALTER TABLE score CHANGE course subject varchar(10); |
+| Oracle | ALTER TABLE score RENAME COLUMN course To subject;   |
+---
 ## 备注
 1. MySQL
 ```mysql
@@ -107,21 +129,4 @@ DROP INDEX `idx_course` ON `score`;
 ```
 2. Oracle：`DROP INDEX idx_course;`
 3. SQL Server：`DROP INDEX score.idx_course;`
----
-## 字段
-```sql
--- 增加字段，Oracle/SQL server 不支持 AFTER
-ALTER TABLE score ADD grade varchar(1) AFTER name;
--- 修改字段
-ALTER TABLE score MODIFY grade varchar(2);
--- 修改字段 (SQL Server)
-ALTER TABLE score ALTER COLUMN grade varchar(2);
--- 删除字段
-ALTER TABLE score DROP COLUMN grade;
-```
-### 修改字段名
-| DB     | SQL                                                               |
-|--------|-------------------------------------------------------------------|
-| MySQL  | ALTER TABLE score CHANGE course subject varchar(10) COMMENT '课程'; |
-| Oracle | ALTER TABLE score RENAME COLUMN course To subject                 |
 ---

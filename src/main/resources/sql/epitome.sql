@@ -11,7 +11,7 @@
  Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 29/06/2023 17:13:03
+ Date: 27/10/2023 10:32:43
 */
 
 SET NAMES utf8mb4;
@@ -48,6 +48,41 @@ INSERT INTO `dept` VALUES (10, 'ACCOUNTING', 'NEW YORK');
 INSERT INTO `dept` VALUES (20, 'RESEARCH', 'DALLAS');
 INSERT INTO `dept` VALUES (30, 'SALES', 'CHICAGO');
 INSERT INTO `dept` VALUES (40, 'OPERATIONS', 'BOSTON');
+
+-- ----------------------------
+-- Table structure for draw_prize
+-- ----------------------------
+DROP TABLE IF EXISTS `draw_prize`;
+CREATE TABLE `draw_prize`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `draw_id` int(0) NOT NULL COMMENT '抽奖活动ID',
+  `probability` int(0) NOT NULL COMMENT '概率（1表示万分之一）',
+  `total_qty` int(0) NOT NULL COMMENT '总数',
+  `win_qty` int(0) NOT NULL COMMENT '中奖数',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '抽奖奖品表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of draw_prize
+-- ----------------------------
+INSERT INTO `draw_prize` VALUES (1, 1, 1, 1, 0);
+INSERT INTO `draw_prize` VALUES (2, 1, 100, 10, 0);
+INSERT INTO `draw_prize` VALUES (3, 1, 1000, 100, 0);
+
+-- ----------------------------
+-- Table structure for draw_user
+-- ----------------------------
+DROP TABLE IF EXISTS `draw_user`;
+CREATE TABLE `draw_user`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `score` int(0) NOT NULL COMMENT '积分',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '抽奖用户表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of draw_user
+-- ----------------------------
+INSERT INTO `draw_user` VALUES (1, 10000);
 
 -- ----------------------------
 -- Table structure for emp
@@ -91,31 +126,11 @@ CREATE TABLE `generator`  (
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   `context` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of generator
 -- ----------------------------
-
--- ----------------------------
--- Table structure for prize
--- ----------------------------
-DROP TABLE IF EXISTS `prize`;
-CREATE TABLE `prize`  (
-  `id` int(0) NOT NULL COMMENT '主键',
-  `draw_id` int(0) NOT NULL COMMENT '抽奖活动ID',
-  `probability` int(0) NOT NULL COMMENT '概率（1表示万分之一）',
-  `total_qty` int(0) NOT NULL COMMENT '总数',
-  `win_qty` int(0) NOT NULL COMMENT '中奖数',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '奖品表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of prize
--- ----------------------------
-INSERT INTO `prize` VALUES (1, 1, 1, 1, 0);
-INSERT INTO `prize` VALUES (2, 1, 100, 10, 0);
-INSERT INTO `prize` VALUES (3, 1, 1000, 100, 0);
 
 -- ----------------------------
 -- Table structure for sales
@@ -1156,20 +1171,5 @@ INSERT INTO `score` VALUES (6, '张三', '英语', NULL);
 INSERT INTO `score` VALUES (7, '李四', '语文', 76);
 INSERT INTO `score` VALUES (8, '李四', '数学', 90);
 INSERT INTO `score` VALUES (9, '赵六', '体育', 100);
-
--- ----------------------------
--- Table structure for user
--- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `score` int(0) NOT NULL COMMENT '积分',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of user
--- ----------------------------
-INSERT INTO `user` VALUES (1, 10000);
 
 SET FOREIGN_KEY_CHECKS = 1;

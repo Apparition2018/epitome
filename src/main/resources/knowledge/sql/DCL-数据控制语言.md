@@ -2,9 +2,9 @@
 
 ---
 ## Reference
-1. [Database Administration Statements](https://dev.mysql.com/doc/refman/8.0/en/sql-server-administration-statements.html)
+1. [Database Administration Statements](https://dev.mysql.com/doc/refman/8.2/en/sql-server-administration-statements.html)
 --- 
-## [GRANT](https://dev.mysql.com/doc/refman/8.0/en/grant.html)
+## [GRANT](https://dev.mysql.com/doc/refman/8.2/en/grant.html)
 ```sql
 GRANT
     SELECT, INSERT, UPDATE, DELETE, REFERENCES, ALTER
@@ -12,7 +12,7 @@ ON epitome.score
 TO ljh@localhost;
 ```
 ---
-## [REVOKE](https://dev.mysql.com/doc/refman/8.0/en/revoke.html)
+## [REVOKE](https://dev.mysql.com/doc/refman/8.2/en/revoke.html)
 ```sql
 REVOKE
     SELECT, INSERT, UPDATE, DELETE, REFERENCES, ALTER

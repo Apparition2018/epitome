@@ -2,8 +2,8 @@
 
 ---
 ## Reference
-1. [Backup and Recovery](https://dev.mysql.com/doc/refman/8.0/en/backup-and-recovery.html)
-2. [InnoDB Backup](https://dev.mysql.com/doc/refman/8.0/en/innodb-backup.html)
+1. [Backup and Recovery](https://dev.mysql.com/doc/refman/8.2/en/backup-and-recovery.html)
+2. [InnoDB Backup](https://dev.mysql.com/doc/refman/8.2/en/innodb-backup.html)
 ---
 ## 分类
 1. 数据库是否运行

@@ -57,7 +57,7 @@ port=3306
 default-character-set=utf8mb4
 ```
 ---
-## [MySQL 术语](https://dev.mysql.com/doc/refman/8.0/en/glossary.html)
+## [MySQL 术语](https://dev.mysql.com/doc/refman/8.2/en/glossary.html)
 - dirty page：脏页，Buffer Pool 中更改过，且未 written/flushed 到数据文件的页
 - extent：tablespace 的一组页，1页默认16KB，1 extent 包含64页
 - read-ahead：预读，预先读取一组页面到 Buffer Pool
@@ -65,7 +65,7 @@ default-character-set=utf8mb4
     2. random read-ahead：随机预读
 ---
 ## [MySQL 字符集](https://khiav223577.github.io/blog/2019/06/30/MySQL-%E7%B7%A8%E7%A2%BC%E6%8C%91%E9%81%B8%E8%88%87%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83/)
-- [字符集配置](https://dev.mysql.com/doc/refman/8.0/en/charset-configuration.html)
+- [字符集配置](https://dev.mysql.com/doc/refman/8.2/en/charset-configuration.html)
     ```
     [mysqld]
     character-set-server=utf8mb4
@@ -86,7 +86,7 @@ default-character-set=utf8mb4
     3. unicode_520: unicode 5.2 规范
     4. 0900: unicode 9.0 规范
 ---
-## [InnoDB 存储引擎](https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html)
+## [InnoDB 存储引擎](https://dev.mysql.com/doc/refman/8.2/en/innodb-storage-engine.html)
 |                  |     |                                                               |
 |------------------|-----|---------------------------------------------------------------|
 | Row              | 行   | 由一组列定义的逻辑数据结构，每一页面可以包含一行或多行                                   |
@@ -110,14 +110,14 @@ default-character-set=utf8mb4
 | 存储文件            |     .frm .idb      | .frm .myd .myi  |
 | 记录存储顺序          |        主键大小        |      插入顺序       |
 >- [MyISAM 为什么查询比 InnoDB 快](https://mp.weixin.qq.com/s/Nisohn7GyuvUX6xdp8YaXw)
-### [InnoDB 多版本](https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html)
+### [InnoDB 多版本](https://dev.mysql.com/doc/refman/8.2/en/innodb-multi-versioning.html)
 | 字段          | 说明                  |
 |:------------|:--------------------|
 | DB_TRX_ID   | 记录插入或更新行得事务的事务ID    |
 | DB_ROLL_PTR | 回滚指针，指向 undo log 记录 |
 | DB_ROW_ID   | 行ID                 |
 >- [MySQL MVCC](https://blog.csdn.net/Waves___/article/details/105295060)
-### [InnoDB 内存结构](https://dev.mysql.com/doc/refman/8.0/en/innodb-in-memory-structures.html)
+### [InnoDB 内存结构](https://dev.mysql.com/doc/refman/8.2/en/innodb-in-memory-structures.html)
 1. [Buffer Pool](https://mp.weixin.qq.com/s/nA6UHBh87U774vu4VvGhyw) ：缓冲池
     - 缓存数据和索引
     - 变种 LRU 算法
@@ -130,14 +130,14 @@ default-character-set=utf8mb4
     - InnoDB 自行判断是否创建 Hash Index
 4. [Log Buffer](https://mp.weixin.qq.com/s/-Hx2KKYMEQCcTC-ADEuwVA) ：日志缓冲
     - 缓冲要写入磁盘日志文件的数据
-### [InnoDB 磁盘结构](https://dev.mysql.com/doc/refman/8.0/en/innodb-on-disk-structures.html)
+### [InnoDB 磁盘结构](https://dev.mysql.com/doc/refman/8.2/en/innodb-on-disk-structures.html)
 1. Tablespaces：表空间，保存一个或多个 InnoDB 表和相关联索引的数据文件
 2. [Doublewrite Buffer](https://mp.weixin.qq.com/s/bkoQ9g4cIcFFZBnpVh8ERQ) ：双写缓冲
     - 解决的问题：Dirty Page(16KB) 写入磁盘(1页4KB)失败，可从中找到副本恢复错误
     - 两部分：①内存；②双写文件
     - 步骤：Dirty Page → 内存双写缓冲 → ①双写文件双写缓冲；②InnoDB 数据文件
 3. Redo Log：重做日志
-### [Innodb 索引类型]( https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html)
+### [Innodb 索引类型]( https://dev.mysql.com/doc/refman/8.2/en/innodb-index-types.html)
 1. 聚簇索引：Clustered Indexes
     - 索引树的叶子节点存储：①索引；②行记录（索引与行记录一起存储，所以称之为聚簇）
     - 如何选择聚簇索引：①主键；②第一个 NOT NULL UNIQUE 列；③自动生成隐藏 GEN_CLUST_INDEX
@@ -148,12 +148,12 @@ default-character-set=utf8mb4
 >- [架构师之路](https://mp.weixin.qq.com/s/woz5lkQwyJZNmoiiJZy7NA)
 ---
 ## MySQL 调优
-1. [Optimization](https://dev.mysql.com/doc/refman/8.0/en/optimization.html)
+1. [Optimization](https://dev.mysql.com/doc/refman/8.2/en/optimization.html)
 2. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
 3. [字符串索引前缀长度](https://blog.csdn.net/qq_38670588/article/details/108499966)
 ### 优化建议
 - 索引相关
-    - [索引方法](https://dev.mysql.com/doc/refman/8.0/en/index-btree-hash.html)
+    - [索引方法](https://dev.mysql.com/doc/refman/8.2/en/index-btree-hash.html)
         1. B+Tree：[最左前缀原则 (Leftmost Prefix Principle)](https://www.cnblogs.com/-mrl/p/13230006.html)
             1. 从左到右匹配知道遇到范围查询 (>, <, between, like) 停止匹配，建议范围查询放最后
             2. in 和 = 可以乱序
@@ -167,12 +167,12 @@ default-character-set=utf8mb4
         - DQL 操作优化器选择使用哪一个索引需要时间
     - [索引选择性高的列放在索引的前面](https://www.cnblogs.com/liyasong/p/mysql_xuanzexing_index.html)
     - [组合索引 (Composite Indexes)](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
-    - [索引下推 (Index Condition Pushdown)](https://dev.mysql.com/doc/refman/8.0/en/index-condition-pushdown-optimization.html)
+    - [索引下推 (Index Condition Pushdown)](https://dev.mysql.com/doc/refman/8.2/en/index-condition-pushdown-optimization.html)
         - [索引下推](https://blog.csdn.net/LBWNB_Java/article/details/120348886)
     - [覆盖索引 (Covering Indexes)](https://mp.weixin.qq.com/s/y0pjtNUZhOW2ZBOy4m-xsA)
         - 如何实现：将被查询的字段、条件字段、排序字段等，建立到联合索引里去
         - explain extra 显示 Using index
-    - [降序索引 (Descending Indexes)](https://dev.mysql.com/doc/refman/8.0/en/descending-indexes.html)
+    - [降序索引 (Descending Indexes)](https://dev.mysql.com/doc/refman/8.2/en/descending-indexes.html)
     - [MySQL8 三大索引](https://www.mdnice.com/writing/ca72a1892384484aa67bc37398dea3b8) 
     - 查找重复索引及冗余索引
         1. 语句查询
@@ -239,7 +239,7 @@ text            大于
 ```
 6. 枚举：enum 或 set
 >- [MySQL 数据类型选择](https://blog.csdn.net/weixin_39583222/article/details/113140641)
-### explain
+### [explain](https://dev.mysql.com/doc/refman/8.2/en/explain.html)
 - [type](https://blog.csdn.net/lilongsy/article/details/95184594) ：连接类型
 
 | type   | 说明                                                                |
@@ -260,16 +260,16 @@ text            大于
     
 | extra                    | 说明                                                              | 优化              |
 |:-------------------------|:----------------------------------------------------------------|:----------------|
-| Using index              | 在一棵索引树上获取所有所需数据，无需额外查询来读取实际行                                    ||
-| Using index condition    | 在一棵索引树上获取不到所有所需数据，需要额外查询来读取实际行                                  ||
-| Using where; Using index | 同 Using index，但 where 条件不是索引的前导列                                ||
+| Using index              | 在一棵索引树上获取所有所需数据，无需额外查询来读取实际行                                    |                 |
+| Using index condition    | 在一棵索引树上获取不到所有所需数据，需要额外查询来读取实际行                                  |                 |
+| Using where; Using index | 同 Using index，但 where 条件不是索引的前导列                                |                 |
 | Using filesort           | 需对结果集进行额外文件排序操作<br/>原因：①order by 没有索引；②结果集大小超过 sort_buffer_size | order by 字段添加索引 |
-| Using temporary          | 需创建临时表暂存中间结果                                                    ||
+| Using temporary          | 需创建临时表暂存中间结果                                                    |                 |
 | Using join buffer        | 需创建连接缓冲区暂存中间结果                                                  | 关联字段添加索引        |
->- [EXPLAIN Output Format](https://dev.mysql.com/doc/refman/8.0/en/explain-output.html)
->- [EXPLAIN 百科](https://mp.weixin.qq.com/s/QCJq1o-CWbNNwnuzJmVEPg)
+>- [EXPLAIN Output Format](https://dev.mysql.com/doc/refman/8.2/en/explain-output.html)
+>- [EXPLAIN 百科全书](https://mp.weixin.qq.com/s/QCJq1o-CWbNNwnuzJmVEPg)
 >- [Using index vs Using where](https://www.cnblogs.com/wy123/p/7366486.html)
-### [慢查询](https://dev.mysql.com/doc/refman/8.0/en/slow-query-log.html)
+### [慢查询](https://dev.mysql.com/doc/refman/8.2/en/slow-query-log.html)
 - 开启慢查询日志
 ```mysql
 -- 是否开启慢查询
@@ -292,7 +292,7 @@ SET timestamp=1631505644;
 select * from store limit 10;
 ```
 - 慢查询日志分析工具
-    1. [mysqldumpslow](https://dev.mysql.com/doc/refman/8.0/en/mysqldumpslow.html)
+    1. [mysqldumpslow](https://dev.mysql.com/doc/refman/8.2/en/mysqldumpslow.html)
     2. pt-query-digest
     ```
     # 查看帮助
@@ -342,8 +342,8 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
 ```
 3. 第三方配置工具：[Percona Configuration Wizard](https://tools.percona.com/wizard)
 ---
-## [InnoDB 锁和事务模型](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-transaction-model.html)
-### [InnoDB 锁](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
+## [InnoDB 锁和事务模型](https://dev.mysql.com/doc/refman/8.2/en/innodb-locking-transaction-model.html)
+### [InnoDB 锁](https://dev.mysql.com/doc/refman/8.2/en/innodb-locking.html)
 1. 共享/排它锁 (Shared and Exclusive Locks)
     1. 共享锁 (Shared Locks, S)：
         - 对符合条件的行加S锁，其它事务可以对这些记录添加IS锁和S锁，即其它事务可以读取这些数据但无法修改
@@ -384,7 +384,7 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
     - 对于覆盖索引查询，不对聚簇索引加锁
 - 唯一索引上的范围查询会访问到不满足条件的第一个值为止
 ### 非锁定读 vs 锁定读
-| Read  | [Consistent Nonlocking Reads](https://dev.mysql.com/doc/refman/8.0/en/innodb-consistent-read.html) | [Locking Reads](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-reads.html) |
+| Read  | [Consistent Nonlocking Reads](https://dev.mysql.com/doc/refman/8.2/en/innodb-consistent-read.html) | [Locking Reads](https://dev.mysql.com/doc/refman/8.2/en/innodb-locking-reads.html) |
 |:------|:---------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------|
 | 中文    | 一致性非锁定读，快照读                                                                                        | 锁定读                                                                                |
 | 语句    | select                                                                                             | select … for share<br/>select … for update                                         |
@@ -392,13 +392,13 @@ innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计�
 | 是否会幻读 | 不可能                                                                                                | 可能                                                                                 |
 | 隔离级别  | RC、RR                                                                                              |                                                                                    |
 ---
-## [复制](https://dev.mysql.com/doc/refman/8.0/en/replication.html)
+## [复制](https://dev.mysql.com/doc/refman/8.2/en/replication.html)
 - 配置
 ```
-# https://dev.mysql.com/doc/refman/8.0/en/replication-options.html
+# https://dev.mysql.com/doc/refman/8.2/en/replication-options.html
 server_id=1
 
-# https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html
+# https://dev.mysql.com/doc/refman/8.2/en/replication-options-binary-log.html
 # 开启binlog，binlog文件名称
 log-bin=/usr/local/mysql-a/bin_log/log-bin
 # binlog记录格式：MIXED、STATEMENT、ROW（默认）
@@ -420,7 +420,7 @@ binlog-ignore-db=performance_schema
 # 8.0.26之前使用log_slave_updates
 log_replica_updates=ON
 
-# https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html
+# https://dev.mysql.com/doc/refman/8.2/en/replication-options-replica.html
 # 中继日志文件名称
 relay_log=/usr/local/mysql-a/relay_log/relay-bin
 # 不复制指定数据库（设置在从库上）
@@ -428,7 +428,7 @@ relay_log=/usr/local/mysql-a/relay_log/relay-bin
 # 跳过错误，避免复制中断
 # slave_skip_errors=1062
 
-# https://dev.mysql.com/doc/refman/8.0/en/replication-options-gtids.html
+# https://dev.mysql.com/doc/refman/8.2/en/replication-options-gtids.html
 # 开启gtid
 enforce_gtid_consistency=ON
 gtid_mode=ON
@@ -455,7 +455,7 @@ gtid_mode=ON
     - MySQL 在 Windows 下不区分大小写，但在 Linux 下默认是区分大小写
 2. 表名不使用复数名词
 3. 禁用保留字，如 desc、range、match、delayed 等
-    - https://dev.mysql.com/doc/refman/8.0/en/keywords.html
+    - https://dev.mysql.com/doc/refman/8.2/en/keywords.html
 4. 主键索引名为 pk_字段名；唯一索引名为 uk_字段名；普通索引名则为 idx_字段名
 5. 小数类型为 decimal，禁止使用 float 和 double
 6. 如果存储的字符串长度几乎相等，使用 char 定长字符串类型

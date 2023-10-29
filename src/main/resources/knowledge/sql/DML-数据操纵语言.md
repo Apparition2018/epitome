@@ -2,7 +2,7 @@
 
 ---
 ## 参考网站
-1. [Data Manipulation Statements](https://dev.mysql.com/doc/refman/8.0/en/sql-data-manipulation-statements.html)
+1. [Data Manipulation Statements](https://dev.mysql.com/doc/refman/8.2/en/sql-data-manipulation-statements.html)
 ---
 ## INSERT
 ```sql
