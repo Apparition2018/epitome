@@ -82,10 +82,8 @@ SELECT e.ename, m.ename, e.sal, m.sal FROM emp e, emp m WHERE e.mgr = m.empno;  
 ```
 1. 子查询必须写在括号内
 2. 子查询必须包括 SELECT 子句和 FROM 子句
-3. 子查询可以使用 WHERE，GROUP BY 和 HAVING 子句
-4. 子查询不能使用 COMPUTE 或 FOR BROWSE 子句
-5. 只有在使用了 TOP 子句时，才能使用 ORDER BY 子句  ???
-6. 可以嵌套最多 32 个级别的子查询
+3. 子查询最多可以嵌套 32 层
+4. 单列子查询常用在过滤条件中，多列子查询常用在 FROM 子句（当作表看待）
 ```
 - 多行比较操作符：IN / ANY / ALL
 ```sql
@@ -93,7 +91,7 @@ SELECT empno, ename FROM emp WHERE deptno IN(SELECT deptno FROM emp WHERE job = 
 
 SELECT ename, sal FROM emp WHERE sal > ALL(SELECT sal FROM emp WHERE job = 'CLERK');
 ```
-- EXISTS
+- EXISTS：当子查询可以查询出至少一条记录时，即判定为满足条件
 ```sql
 SELECT d.deptno, d.dname, d.loc FROM dept d WHERE EXISTS (SELECT 1 FROM emp e WHERE e.deptno = d.deptno);
 ```
@@ -126,6 +124,19 @@ SELECT * FROM (
 WHERE ROWNUM <= 10) WHERE rn > 5;
 -- ROWNUM <= (page * pageSize)
 -- rn > ((page - 1) * pageSize)
+```
+- ROWNUM：Oracle 中的一种伪列，查询结果返回后生成的行号，从1开始递增
+```oracle
+-- 返回工资排名1~5名
+SELECT ROWNUM, ename, sal FROM (SELECT * FROM emp ORDER BY sal DESC)
+WHERE ROWNUM BETWEEN 1 AND 5;
+-- ORA-00904: "RN": invalid identifier
+SELECT ROWNUM RN, ename, sal FROM (SELECT * FROM emp ORDER BY sal DESC)
+WHERE RN BETWEEN 1 AND 5;
+-- 返回空
+-- 当使用大于等条件时，如果第一条记录不满足条件时，则会被删除，但由于 ROWNUM 已经递增，因此下一条记录的 ROWNUM 值并不会递增，从而导致查询结果为空
+SELECT ROWNUM, ename, sal FROM (SELECT * FROM emp ORDER BY sal DESC)
+WHERE ROWNUM BETWEEN 2 AND 5;
 ```
 ---
 ## 排名查询
