@@ -25,7 +25,7 @@ CREATE TABLE `score` (
 2. Oracle
 ```oracle
 CREATE TABLE score (
-    -- 自增：使用 CREATE SEQUENCE 实现
+    -- 自增：使用 SEQUENCE 实现
     id number(10) PRIMARY KEY,
     name varchar2(20),
     course varchar2(10),
@@ -91,6 +91,34 @@ CREATE TABLE #temp (
 2. MySQL：`CREATE TABLE score_bak LIKE score;`
 3. SQL server：`SELECT * INTO score_bak FROM score WHERE 1=2;`
 ---
+## 约束
+| Constraints | Abbreviation |
+|-------------|:------------:|
+| Primary Key |      pk      |
+| Unique      |      uk      |
+| Check       |     chk      |
+| Foreign Key |      fk      |
+| Not Null    |              |
+| Default     |              |
+### 添加约束
+```mysql
+-- 检查约束
+CREATE TABLE emp(
+    empno int(0) PRIMARY KEY,
+    sal decimal(7, 2),
+    CONSTRAINT chk_emp_sal CHECK (sal > 0)
+);
+
+-- 外键约束
+ALTER TABLE emp
+ADD CONSTRAINT fk_emp_deptno FOREIGN KEY (deptno) REFERENCES dept (deptno);
+```
+### 删除约束
+```sql
+ALTER TABLE emp  
+DROP CONSTRAINT chk_emp_sal;
+```
+---
 ## 视图
 - 目的：①简化操作；②控制访问权限
 - 简单视图：只包含基本列的 SELECT 语句
@@ -103,14 +131,14 @@ CREATE TABLE #temp (
     - WITH CHECK OPTION：对视图数据进行 DML 操作后，如果视图对这些数据不可见，则不通过该操作
     - WITH READ ONLY：只允许 SELECT 操作
 
-|       | Statement                                                                                                 |
-|-------|-----------------------------------------------------------------------------------------------------------|
-| 创建    | CREATE VIEW v_emp AS SELECT empno, ename, sal*12 sal FROM emp WHERE mgr IS NOT NULL                       |
-| 删除    | DROP VIEW v_emp                                                                                           |
-| 创建或替换 | CREATE OR REPLACE VIEW v_emp AS SELECT empno, ename, deptno FROM emp WHERE deptno <> 50 WITH CHECK OPTION |
-| 插入行   | INSERT INTO v_emp (empno, ename, deptno) VALUES (9999, 'JACK', 10)                                        |
-| 更新行   | UPDATE v_emp SET deptno = 50 WHERE empno = 9999                                                           |
-| 删除行   | DELETE v_emp WHERE empno = 9999                                                                           |
+|       | Statement                                                                                                  |
+|-------|------------------------------------------------------------------------------------------------------------|
+| 创建    | CREATE VIEW v_emp AS SELECT empno, ename, sal*12 sal FROM emp WHERE mgr IS NOT NULL;                       |
+| 删除    | DROP VIEW v_emp;                                                                                           |
+| 创建或替换 | CREATE OR REPLACE VIEW v_emp AS SELECT empno, ename, deptno FROM emp WHERE deptno <> 50 WITH CHECK OPTION; |
+| 插入行   | INSERT INTO v_emp (empno, ename, deptno) VALUES (9999, 'JACK', 10);                                        |
+| 更新行   | UPDATE v_emp SET deptno = 50 WHERE empno = 9999;                                                           |
+| 删除行   | DELETE v_emp WHERE empno = 9999;                                                                           |
 ---
 ## 字段
 ```sql
@@ -152,17 +180,39 @@ EXEC sys.sp_addextendedproperty 'MS_Description', '成绩表', 'user', 'dbo', 't
 ```sql
 CREATE INDEX idx_emp_ename ON emp(ename);
 ```
-### 重建索引
-1. Oracle
-```oracle
-ALTER INDEX idx_emp_ename REBUILD;
-```
+1. MySQL：`ALTER TABLE emp ADD INDEX idx_emp_ename(ename);`
 ### 删除索引
 1. MySQL
 ```mysql
-ALTER TABLE emp DROP INDEX idx_emp_ename;
 DROP INDEX idx_emp_ename ON emp;
+ALTER TABLE emp DROP INDEX idx_emp_ename;
 ```
 2. Oracle：`DROP INDEX idx_emp_ename;`
 3. SQL Server：`DROP INDEX emp.idx_emp_ename;`
+### 重建索引
+1. MySQL：先删除索引，后重新创建索引
+2. Oracle
+```oracle
+ALTER INDEX idx_emp_ename REBUILD;
+```
+---
+## 序列
+### 创建序列
+```oracle
+CREATE SEQUENCE seq_emp_id START WITH 1000 INCREMENT BY 1 NOCACHE;
+```
+### 将序列插入到表的主键
+```oracle
+-- NEXTVAL：生成序列的下一个值
+-- CURRVAL：获取序列的当前值
+CREATE OR REPLACE TRIGGER tri_emp_before_insert
+BEFORE INSERT ON emp FOR EACH ROW
+BEGIN
+    SELECT seq_emp_id.NEXTVAL INTO :NEW.empno FROM DUAL;
+END;
+```
+### 删除序列
+```oracle
+DROP SEQUENCE sep_emp_id;
+```
 ---

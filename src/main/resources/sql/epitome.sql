@@ -11,7 +11,7 @@
  Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 27/10/2023 10:32:43
+ Date: 02/11/2023 02:43:45
 */
 
 SET NAMES utf8mb4;
@@ -36,9 +36,10 @@ CREATE TABLE `demo`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `dept`;
 CREATE TABLE `dept`  (
-  `deptno` tinyint(0) NULL DEFAULT NULL,
+  `deptno` tinyint(0) NOT NULL,
   `dname` varchar(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `loc` varchar(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL
+  `loc` varchar(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`deptno`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -46,8 +47,6 @@ CREATE TABLE `dept`  (
 -- ----------------------------
 INSERT INTO `dept` VALUES (10, 'ACCOUNTING', 'NEW YORK');
 INSERT INTO `dept` VALUES (20, 'RESEARCH', 'DALLAS');
-INSERT INTO `dept` VALUES (30, 'SALES', 'CHICAGO');
-INSERT INTO `dept` VALUES (40, 'OPERATIONS', 'BOSTON');
 
 -- ----------------------------
 -- Table structure for draw_prize
@@ -60,7 +59,7 @@ CREATE TABLE `draw_prize`  (
   `total_qty` int(0) NOT NULL COMMENT '总数',
   `win_qty` int(0) NOT NULL COMMENT '中奖数',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '抽奖奖品表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '抽奖奖品表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of draw_prize
@@ -89,14 +88,15 @@ INSERT INTO `draw_user` VALUES (1, 10000);
 -- ----------------------------
 DROP TABLE IF EXISTS `emp`;
 CREATE TABLE `emp`  (
-  `empno` int(0) NULL DEFAULT NULL,
+  `empno` int(0) NOT NULL,
   `ename` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `job` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `mgr` int(0) NULL DEFAULT NULL,
   `hiredate` date NULL DEFAULT NULL,
   `sal` decimal(7, 2) NULL DEFAULT NULL,
   `comm` decimal(7, 2) NULL DEFAULT NULL,
-  `deptno` tinyint(0) NULL DEFAULT NULL
+  `deptno` tinyint(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`empno`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
