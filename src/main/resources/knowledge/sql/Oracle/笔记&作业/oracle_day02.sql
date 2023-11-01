@@ -1,5 +1,5 @@
 CREATE TABLE emp(
-  empno NUMBER(4,0),
+  empno NUMBER(4,0) PRIMARY KEY,
   ename VARCHAR2(10),
   job VARCHAR2(9),
   mgr NUMBER(4,0),
@@ -10,7 +10,7 @@ CREATE TABLE emp(
 );
 
 CREATE TABLE dept(
-  deptno NUMBER(2,0),
+  deptno NUMBER(2,0) PRIMARY KEY,
   dname VARCHAR2(14 BYTE),
   loc VARCHAR2(13 BYTE)
 );

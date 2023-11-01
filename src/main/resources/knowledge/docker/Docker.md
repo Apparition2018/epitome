@@ -613,29 +613,29 @@ alter user root@'localhost' identified by 'Cesc123!';
 ## [MySQL 主从](https://www.bilibili.com/video/BV1gr4y1U7CY/?p=41)
 - @see CentOS.md#双主
 ```bash
-mkdir -p /home/lighthouse/docker_data/mysql-a/{data,conf,log,files}
-mkdir -p /home/lighthouse/docker_data/mysql-b/{data,conf,log,files}
+mkdir -p /home/lighthouse/docker_data/mysql-ms/master/{data,conf,log,files}
+mkdir -p /home/lighthouse/docker_data/mysql-ms/slave/{data,conf,log,files}
 cd /home/lighthouse/docker_data
 ```
 ```bash
-docker run -d --name mysql-a -p 3307:3306 \
--v $PWD/mysql-a/conf:/etc/mysql/conf.d \
--v $PWD/mysql-a/data:/var/lib/mysql \
--v $PWD/mysql-a/files:/var/lib/mysql-files \
--v $PWD/mysql-a/log:/var/log/mysql \
+docker run -d --name mysql-master -p 3307:3306 \
+-v $PWD/mysql-ms/master/conf:/etc/mysql/conf.d \
+-v $PWD/mysql-ms/master/data:/var/lib/mysql \
+-v $PWD/mysql-ms/master/files:/var/lib/mysql-files \
+-v $PWD/mysql-ms/master/log:/var/log/mysql \
 -e MYSQL_ROOT_PASSWORD=root \
 mysql:5.7
 
-docker run -d --name mysql-b -p 3308:3306 \
--v $PWD/mysql-b/conf:/etc/mysql/conf.d \
--v $PWD/mysql-b/data:/var/lib/mysql \
--v $PWD/mysql-b/files:/var/lib/mysql-files \
--v $PWD/mysql-b/log:/var/log/mysql \
+docker run -d --name mysql-slave -p 3308:3306 \
+-v $PWD/mysql-ms/slave/conf:/etc/mysql/conf.d \
+-v $PWD/mysql-ms/slave/data:/var/lib/mysql \
+-v $PWD/mysql-ms/slave/files:/var/lib/mysql-files \
+-v $PWD/mysql-ms/slave/log:/var/log/mysql \
 -e MYSQL_ROOT_PASSWORD=root \
 mysql:5.7
 ```
 ```
-vim mysql-a/conf/a.cnf
+vim mysql-ms/master/conf/master.cnf
 [mysqld]
 server_id=101
 log-bin=log-bin
@@ -646,7 +646,7 @@ binlog-ignore-db=performance_schema
 binlog_cache_size=1M
 binlog_format=MIXED
 
-vim mysql-b/conf/b.cnf
+vim mysql-ms/slave/conf/slave.cnf
 [mysqld]
 server_id=102
 binlog-ignore-db=mysql
