@@ -250,6 +250,13 @@ sentinel announce-port <port>
 >- [小林coding](https://mp.weixin.qq.com/s/DzVY4iA-_my0JUSqOOniOw)
 ---
 ## [集群](https://redis.io/docs/manual/scaling/)
+- 功能：①在多个节点之间自动拆分数据集；②当节点的一个子集出现故障或无法与集群的其他部分通信时，可以继续操作
+- 每个节点需要两个 TCP 端口：①客户端通信端口，通常为6379；②群集总线端口，默认+10000
+- 使用哈希槽(hash slot)进行分片，有16384个哈希槽，为了计算给定密钥的哈希槽，我们只需取密钥的CRC16模16384 ……
+- [集群配置参数](https://redis.io/docs/management/scaling/#redis-cluster-configuration-parameters)
+- [步骤](https://redis.io/docs/management/scaling/#create-and-use-a-redis-cluster)
+### [集群规范](https://redis.io/docs/reference/cluster-spec/)
+### [企业线性扩展](https://redis.com/redis-enterprise/technology/linear-scaling-redis-enterprise/)
 
 ---
 ## [事务](https://redis.io/docs/manual/transactions/)

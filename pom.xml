@@ -41,7 +41,7 @@
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
-        <commons-cli.version>1.5.0</commons-cli.version>
+        <commons-cli.version>1.6.0</commons-cli.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
         <commons-configuration2.version>2.9.0</commons-configuration2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
@@ -59,7 +59,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.2.4</poi.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
-        <itext.version>8.0.1</itext.version>
+        <itext.version>8.0.2</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
         <nimbus-jose-jwt.version>9.37</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava2 -->
@@ -99,6 +99,8 @@
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
         <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
         <zxing.version>3.5.2</zxing.version>
+		<!-- https://mvnrepository.com/artifact/QRCode/QRCode -->
+        <QRCode.version>3.0.0</QRCode.version>
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
         <lucene-analyzers.version>8.11.2</lucene-analyzers.version>
         <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
@@ -512,6 +514,22 @@
             <version>${zxing.version}</version>
         </dependency>
 
+		<dependency>
+			<groupId>QRCode</groupId>
+			<artifactId>QRCode</artifactId>
+			<version>${QRCode.version}</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/qrcode.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>QRCode</groupId>
+			<artifactId>QRCode_swetake</artifactId>
+			<version>${QRCode.version}</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/qrcode_swetake.jar</systemPath>
+		</dependency>
+
         <!-- lucene：中文智能分析 -->
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -553,7 +571,7 @@
     <repositories>
         <repository>
             <id>central</id>
-            <url>https://maven.aliyun.com/repository/central</url>
+            <url>https://repo1.maven.org/maven2/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>

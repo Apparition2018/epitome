@@ -712,7 +712,7 @@ influx v1 auth create --read-bucket 303f1c88eaa4473a --write-bucket 303f1c88eaa4
 influx v1 dbrp create --bucket-id 303f1c88eaa4473a --db test --rp autogen --default
 ```
 ---
-## [Redis](https://hub.docker.com/_/redis)
+## [Redis 主从](https://hub.docker.com/_/redis)
 - [Docker 部署 Redis](https://blog.csdn.net/qq_41316955/article/details/108381923)
 - [redis.conf](https://redis.io/docs/manual/config/) 选择对应版本
     - redis.conf
@@ -756,10 +756,33 @@ auth 123456
 info replication
 ```
 ---
-## Redis 集群（3主3从）
+## [Redis 集群（3主3从）](https://www.bilibili.com/video/BV1gr4y1U7CY/?p=45)
 ```bash
-mkdir -p /home/lighthouse/docker_data/redis-cluster/data
+# 创建 node1~node6 文件夹
+mkdir -p /home/lighthouse/docker_data/redis-cluster/node1
 cd /home/lighthouse/docker_data/redis-cluster
+
+# 端口 6381~6386，则总线端口默认 16381~16386
+docker run -d --name redis-node1 --net host \
+-v $PWD/node1:/data \
+redis --cluster-enabled yes --appendonly yes --port 6381
+```
+```bash
+docker exec -it redis-node1 bash
+
+# 使用 create 命令，--cluster-replicas 1 表示为每一个 master 对应一个 replica
+redis-cli --cluster create \
+43.136.102.115:6381 43.136.102.115:6382 43.136.102.115:6383 \
+43.136.102.115:6384 43.136.102.115:6385 43.136.102.115:6386 \
+--cluster-replicas 1
+
+redis-cli -p 6381
+  cluster info
+  cluster nodes
+```
+```bash
+# -c 表示集群方式连接
+redis-cli -p 6381 -c
 ```
 ---
 ## [MongoDB](https://hub.docker.com/_/mongo)
