@@ -15,11 +15,11 @@ import java.nio.charset.StandardCharsets;
 public class QrcodeUtils {
 
 	public static BufferedImage createQRCodeImage(String content) {
-		return createQRCodeImage(content, 4, null);
+		return createQRCodeImage(content, 4, null, null);
 	}
 
 	public static BufferedImage createQRCodeImage(String content, int pixels) {
-		return createQRCodeImage(content, pixels, null);
+		return createQRCodeImage(content, pixels, null, null);
 	}
 
 	/**
@@ -27,13 +27,13 @@ public class QrcodeUtils {
 	 *
 	 * @param content       内容
 	 * @param pixels        每个格子的像素
+	 * @param offset        二维码周边空白像素
 	 * @param qrcodeVersion 二维码版本 (1~40)，值越大可存储信息越大。每增加1，长度增加4。版本1 (21*21)，版本2 (25*25)…
 	 * @return BufferedImage
 	 */
-	public static BufferedImage createQRCodeImage(String content, int pixels, Integer qrcodeVersion) {
+	public static BufferedImage createQRCodeImage(String content, int pixels, Integer offset, Integer qrcodeVersion) {
+		offset = offset != null ? offset : pixels;
 		qrcodeVersion = qrcodeVersion != null ? qrcodeVersion : 1;
-		// 二维码周边空白像素
-		int offset = 4;
 		// 二维码边长
 		int size = (21 + (qrcodeVersion - 1) * 4) * pixels + offset * 2;
 		BufferedImage image = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
@@ -63,7 +63,7 @@ public class QrcodeUtils {
 			return image;
 		} catch (ArrayIndexOutOfBoundsException e) {
 			// 数组下标越界，版本+1
-			image = createQRCodeImage(content, pixels, ++qrcodeVersion);
+			image = createQRCodeImage(content, pixels, offset, ++qrcodeVersion);
 		}
 		return image;
 	}

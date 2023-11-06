@@ -237,7 +237,7 @@ sentinel announce-port <port>
     - 注：哨兵数应该是奇数，quorum 值建议为 (哨兵数/2)+1
     1. 得票数 > 哨兵数的一半
     2. 得票数 >= quorum
-- [命令](https://redis.io/docs/manual/sentinel/#sentinel-commands)
+- [命令](https://redis.io/docs/management/sentinel/#sentinel-commands)
     - [运行时重新配置 Sentinel](https://redis.io/docs/manual/sentinel/#reconfiguring-sentinel-at-runtime)
         - `SENTINEL SET`：修改 Master-specific 配置参数
         - `SENTINEL CONFIG SET`：修改全局配置参数
@@ -255,6 +255,7 @@ sentinel announce-port <port>
 - 使用哈希槽(hash slot)进行分片，有16384个哈希槽，为了计算给定密钥的哈希槽，我们只需取密钥的CRC16模16384 ……
 - [集群配置参数](https://redis.io/docs/management/scaling/#redis-cluster-configuration-parameters)
 - [步骤](https://redis.io/docs/management/scaling/#create-and-use-a-redis-cluster)
+- [--cluster 命令](https://blog.csdn.net/cj_eryue/article/details/132811758)
 ### [集群规范](https://redis.io/docs/reference/cluster-spec/)
 ### [企业线性扩展](https://redis.com/redis-enterprise/technology/linear-scaling-redis-enterprise/)
 
@@ -496,7 +497,7 @@ XGROUP CREATE key groupname <id | $>                创建消费者组
 XGROUP DESTROY key groupname                        销毁消费者组
 XREADGROUP GROUP group consumer STREAMS key [key ...] id [id ...]
 ```
-- [Geospatial](https://redis.io/commands/?group=geo)
+- [Geospatial indices](https://redis.io/commands/?group=geo)
 ```
 GEOADD key longitude latitude member                添加
 GEOPOS key member [member ...]                      获取
@@ -556,6 +557,11 @@ EXEC                                                执行所有事务块内的�
 DISCARD                                             取消事务
 WATCH key [key ...]                                 监视 key，在事务执行之前 key 被其他命令改动，则事务中断
 UNWATCH                                             取消监视
+```
+- [集群管理](https://redis.io/commands/?group=cluster)
+```
+CLUSTER INFO
+CLUSTER NODES
 ```
 ---
 ## [计数器并发精准数量控制](https://www.imooc.com/learn/1067)

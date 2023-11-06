@@ -396,9 +396,9 @@ docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world
     - ${variable:+word}：如设置了 variable，则结果是 word，否则为空字符串
 3. Instruction
     ```
-    FROM                    初始化一个新的 build stage，并为后续指令设置 base iamge
+    FROM                    基于某个 image 初始化一个新的 build stage，并为后续指令设置 base iamge
         FROM scratch        最小 image
-    RUN                     执行命令，docker build 时执行
+    RUN                     执行命令，docker build 时执行；两种格式：①shell ②exec
     CMD                     执行命令，docker run 时执行
     ENTRYPOINT              执行命令，docker run 时执行
     COPY                    复制文件
@@ -767,6 +767,7 @@ docker run -d --name redis-node1 --net host \
 -v $PWD/node1:/data \
 redis --cluster-enabled yes --appendonly yes --port 6381
 ```
+- 创建 Redis 集群
 ```bash
 docker exec -it redis-node1 bash
 
@@ -776,13 +777,36 @@ redis-cli --cluster create \
 43.136.102.115:6384 43.136.102.115:6385 43.136.102.115:6386 \
 --cluster-replicas 1
 
-redis-cli -p 6381
-  cluster info
-  cluster nodes
-```
-```bash
 # -c 表示集群方式连接
-redis-cli -p 6381 -c
+redis-cli -c -p 6387
+```
+- [扩容](https://www.bilibili.com/video/BV1gr4y1U7CY?p=52)
+```bash
+# 添加节点 6387
+redis-cli --cluster add-node 43.136.102.115:6387 43.136.102.115:6381
+# 检查集群，发现 6387 0 slots | 0 slaves，表示没有槽位，没有 slave
+redis-cli --cluster check 43.136.102.115:6381
+# 槽位迁移，分配 6387 槽位
+redis-cli --cluster reshard 43.136.102.115:6381
+  #How many slots do you want to move?  4096
+  #What is the receiving node ID?       <6387_node_id>
+  #Source node #1:                      all
+# 添加节点 6388 为 6387 的 slave
+redis-cli --cluster add-node 43.136.102.115:6388 43.136.102.115:6387 \
+--cluster-slave --cluster-master-id <6387_node_id>
+```
+- [缩容](https://www.bilibili.com/video/BV1gr4y1U7CY?p=54)
+```bash
+# 删除节点 6388
+redis-cli --cluster del-node 43.136.102.115:6388 <6388_node_id>
+# 槽位迁移，清除 6387 槽位
+redis-cli --cluster reshard 43.136.102.115:6381
+  #How many slots do you want to move?  4096
+  #What is the receiving node ID ?      <6381_node_id>
+  #Source node #1:                      <6387_node_id>
+  #Source node #2:                      done
+# 删除节点 6387
+redis-cli --cluster del-node 43.136.102.115:6387 <6387_node_id>
 ```
 ---
 ## [MongoDB](https://hub.docker.com/_/mongo)

@@ -52,12 +52,11 @@
     </style>
     <script>
         document.getElementsByTagName('select')[0].onchange = function () {
-            document.querySelector('.dimension .child').style.width = this.value;
+            document.querySelector('.dim .child').style.width = this.value;
         };
 
         document.getElementsByTagName('select')[1].onchange = function () {
-            console.log(this.value);
-            document.querySelector('.dimension .child').style.padding = this.value;
+            document.querySelector('.dim .child').style.padding = this.value;
         }
     </script>
 </section>
