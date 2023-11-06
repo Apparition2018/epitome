@@ -7,17 +7,18 @@
     <base target="_blank">
     <title>jquery.noty</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-noty/2.4.1/jquery.noty.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-noty/2.4.1/packaged/jquery.noty.packaged.min.js"></script>
+    <script defer src="../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h300">
     <div class="css-live-wrap">
-        <div class="caption"><a href="https://ned.im/noty/v2/">NOTY 2</a></div>
-        <div class="caption"><a href="https://ned.im/noty/#/">NOTY 3</a></div>
+        <div class="caption"><a href="https://ned.im/noty/v2/">NOTY v2</a> (dependent to jQuery)</div>
+        <div class="caption"><a href="https://ned.im/noty/#/">NOTY v3</a> (NOT dependent to jQuery)</div>
         <div class="centered noty demo-click">noty</div>
     </div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-noty/2.4.1/jquery.noty.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-noty/2.4.1/packaged/jquery.noty.packaged.min.js"></script>
     <script class="code" contenteditable="true">
         $(".noty").on('click', function () {
             noty({
