@@ -9,7 +9,7 @@
     <base target="_blank">
     <title>绑定事件</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
     <script defer src="../../../public/js/demo.js"></script>
 </head>
 <body>
@@ -27,8 +27,8 @@
     </code>
     <script>
         function eg1() {
-            const eg1 = document.getElementsByClassName('eg1')[0];
-            eg1.textContent = '在DOM元素中直接绑定'
+            const eg1 = document.getElementsByClassName("eg1")[0];
+            eg1.textContent = "在DOM元素中直接绑定"
         }
     </script>
 </section>
@@ -44,10 +44,10 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const eg2 = document.getElementsByClassName('eg2')[0];
+        const eg2 = document.getElementsByClassName("eg2")[0];
         eg2.onclick = function () {
             // 只执行最后绑定的事件
-            this.textContent = 'onclick 绑定';
+            this.textContent = "onclick 绑定";
         };
         setTimeout(function () {
             // js 原生 click 触发一次onclick事件
@@ -72,8 +72,8 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const obj = document.getElementsByClassName('eg3')[0];
-        addEvent(obj, 'click', eg3);
+        const obj = document.getElementsByClassName("eg3")[0];
+        addEvent(obj, "click", eg3Fuc);
 
         function addEvent(obj, type, func) {
             if (obj.addEventListener) {         // DOM2
@@ -88,8 +88,8 @@
             }
         }
 
-        function eg3() {
-            obj.textContent = '绑定事件监听函数';
+        function eg3Fuc() {
+            obj.textContent = "绑定事件监听函数";
         }
     </script>
 </section>
@@ -103,7 +103,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        $('body').on('click', '.eg4', function () {
+        $('body').on("click", ".eg4", function () {
             $('.eg4').text('jQuery on 绑定');
         });
     </script>
@@ -118,7 +118,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        $('.eg5').bind('click', function () {
+        $('.eg5').bind("click", function () {
             $('.eg5').html('jQuery bind 绑定');
         });
         setTimeout(function () {
@@ -156,12 +156,12 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const eg7 = document.getElementsByClassName('eg7')[0];
+        const eg7 = document.getElementsByClassName("eg7")[0];
         document.onclick = function (event) {
             event = event || window.event;
             const target = event.target || event.srcElement;
             if (target === eg7) {
-                eg7.textContent = '事件委托';
+                eg7.textContent = "事件委托";
             }
         }
     </script>

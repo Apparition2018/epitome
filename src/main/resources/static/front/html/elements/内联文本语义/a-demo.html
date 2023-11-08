@@ -7,8 +7,6 @@
     <base target="_blank">
     <title>a-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h150">
@@ -25,7 +23,7 @@
     </code>
 </section>
 
-<section class="code-wrap h200">
+<section class="code-wrap h250">
     <div class="css-live-wrap">
         <div class="caption">
             <a href="https://www.cnblogs.com/bincoding/p/5741574.html">创建 email，电话链接</a>
@@ -93,13 +91,13 @@
         </div>
     </div>
     <script class="code" contenteditable="true">
-        let canvas = document.querySelector('canvas'),
-            c = canvas.getContext('2d'),
+        let canvas = document.querySelector("canvas"),
+            c = canvas.getContext("2d"),
             mouseX = 0,
             mouseY = 0,
             width = 250,
             height = 250,
-            colour = 'hotpink',
+            colour = "hotpink",
             mousedown = false;
 
         canvas.width = width;
@@ -115,7 +113,7 @@
             }
         }
 
-        canvas.addEventListener('mousemove', function (event) {
+        canvas.addEventListener("mousemove", function (event) {
             if (event.offsetX) {
                 mouseX = event.offsetX;
                 mouseY = event.offsetY;
@@ -126,21 +124,21 @@
             draw();
         }, false);
 
-        canvas.addEventListener('mousedown', function () {
+        canvas.addEventListener("mousedown", function () {
             mousedown = true;
         }, false);
-        canvas.addEventListener('mouseup', function () {
+        canvas.addEventListener("mouseup", function () {
             mousedown = false;
         }, false);
 
-        const link = document.createElement('a');
-        link.classList.add('demo-button');
-        link.innerHTML = 'download';
-        link.addEventListener('click', function () {
+        const link = document.createElement("a");
+        link.classList.add("demo-button");
+        link.innerHTML = "download";
+        link.addEventListener("click", function () {
             link.href = canvas.toDataURL();
             link.download = "my_painting.png";
         }, false);
-        document.getElementsByClassName('canvas')[0].append(link);
+        document.getElementsByClassName("canvas")[0].append(link);
     </script>
 </section>
 </body>

@@ -7,8 +7,6 @@
     <base target="_blank">
     <title>animation-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap">
@@ -69,7 +67,7 @@
     <div class="css-live-wrap">
         <div class="caption">点击播放动画</div>
         <div class="caption">
-            <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Tips">tips and tricks</a> &
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Tips">tips and tricks</a> |
             <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame">requestAnimationFrame</a>
         </div>
         <div class="centered">
@@ -195,7 +193,7 @@
         setTimeout(function () {
             const eleBox = $(".img");
             const funStep = function () {
-                const myImage = new Image(), src = '../../../public/img/people/穗波玉.jpg';
+                const myImage = new Image(), src = "../../../public/img/people/穗波玉.jpg";
                 myImage.onload = function () {
                     eleBox.eq(0).html('<img alt="穗波玉" src="' + src + '" width="160px">');
                 };
@@ -211,10 +209,10 @@
         <div class="caption">图片模态框</div>
         <div class="img-modal centered">
             <img class="centered" src="../../../public/img/other/NorthernLights.jpg" alt="Northern Lights, Norway">
-            <div class="modal" id="modal">
+            <div id="modal">
                 <span class="close">×</span>
-                <img class="modal-content" id="modal-content" src="">
-                <div class="modal-caption" id="modal-caption"></div>
+                <img class="modal-content" id="modalContent" src="">
+                <div class="modal-caption" id="modalCaption"></div>
             </div>
         </div>
     </div>
@@ -235,7 +233,7 @@
             opacity: 0.7;
         }
 
-        .img-modal .modal {
+        .img-modal #modal {
             display: none;
             position: fixed;
             z-index: 1;
@@ -312,12 +310,7 @@
         }
     </style>
     <script>
-        const img = document.querySelector('.img-modal>img');
-        const modal = document.getElementById('modal');
-        const modalContent = document.getElementById("modal-content");
-        const modalCaption = document.getElementById("modal-caption");
-
-        img.onclick = function () {
+        document.querySelector(".img-modal>img").onclick = function () {
             modal.style.display = "block";
             modalContent.src = this.src;
             modalContent.alt = this.alt;

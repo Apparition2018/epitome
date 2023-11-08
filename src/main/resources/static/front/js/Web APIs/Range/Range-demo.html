@@ -17,8 +17,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const oBtn = document.getElementById("button");
-        oBtn.onclick = function () {
+        document.getElementById("button").onclick = function () {
             let userSelection, text;
             window.getSelection && (userSelection = window.getSelection()) || document.selection && (userSelection = document.selection.createRange())
             !(text = userSelection.text) && (text = userSelection)

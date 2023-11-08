@@ -14,23 +14,23 @@
         <div class="centered">
             <div id="subject">
                 <label for="Chinese">
-                    <input id="Chinese" class="subject" name='subject' type="checkbox" value="Chinese"/>
+                    <input id="Chinese" class="subject" name="subject" type="checkbox" value="Chinese"/>
                     <span class="pane"></span>
                     <span>语文</span>
                 </label>
                 <label for="Math">
-                    <input id="Math" class="subject" name='subject' type="checkbox" checked value="Math"/>
+                    <input id="Math" class="subject" name="subject" type="checkbox" checked value="Math"/>
                     <span class="pane"></span>
                     <span>数学</span>
                 </label>
                 <label for="English">
-                    <input id="English" class="subject" name='subject' type="checkbox" checked="checked"
+                    <input id="English" class="subject" name="subject" type="checkbox" checked="checked"
                            value="English"/>
                     <span class="pane"></span>
                     <span>英语</span>
                 </label>
                 <label for="Sport">
-                    <input id="Sport" class="subject" name='subject' type="checkbox" value="Sport"/>
+                    <input id="Sport" class="subject" name="subject" type="checkbox" value="Sport"/>
                     <span class="pane"></span>
                     <span>体育</span>
                 </label>
@@ -84,7 +84,7 @@
         }
     </style>
     <script>
-        document.getElementById("subject").addEventListener('click', clickCheckBox);
+        subject.addEventListener("click", clickCheckBox);
 
         // 点击多选框，在input框输出选中的元素
         function clickCheckBox() {

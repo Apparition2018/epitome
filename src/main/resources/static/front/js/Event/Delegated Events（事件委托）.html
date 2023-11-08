@@ -37,15 +37,15 @@
         }
     </style>
     <script class="code w60p" contenteditable="true">
-        const delegated = document.querySelector('#delegated');
+        const delegated = document.getElementById("delegated");
         delegateEvent(delegated, "#a", "click", function () {
-            delegated.querySelector("#a").textContent = '#a';
+            delegated.querySelector("#a").textContent = "#a";
         });
         delegateEvent(delegated, ".b", "click", function () {
-            delegated.querySelector(".b").textContent = '.b';
+            delegated.querySelector(".b").textContent = ".b";
         });
         delegateEvent(delegated, "p", "click", function () {
-            delegated.querySelector("p").textContent = '<p>';
+            delegated.querySelector("p").textContent = "<p>";
         })
 
         function delegateEvent(interfaceEle, selector, type, fn) {

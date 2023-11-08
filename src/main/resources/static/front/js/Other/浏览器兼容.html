@@ -11,7 +11,7 @@
 <section class="code-wrap">
     <div class="css-live-wrap w100p">
         <div class="caption">事件相关兼容</div>
-        <div class="centered" id="compatible">
+        <div class="centered">
             <table class="w1280">
                 <tr>
                     <th style="width: 25%">IE</th>
@@ -112,10 +112,8 @@
         }
     </style>
     <script class="code w60p" contenteditable="true">
-        const outer = document.getElementById('outer');
-        const inner = document.getElementById('inner');
-        addEvent(outer, 'click', targetColor);
-        addEvent(inner, 'click', targetColor);
+        addEvent(document.getElementById("outer"), "click", targetColor);
+        addEvent(document.getElementById("inner"), "click", targetColor);
         function targetColor(e) {
             e = e || window.event;
             alert(this.id);
@@ -132,7 +130,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const prevent = document.querySelector('.box-prevent>a');
+        const prevent = document.querySelector(".box-prevent>a");
         prevent.onclick = function (e) {
             e = e || event;
             e.preventDefault() && e.preventDefault() || (e.returnValue = false);

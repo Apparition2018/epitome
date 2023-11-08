@@ -8,7 +8,7 @@
     <base target="_blank">
     <title>获取元素css</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
     <script defer src="../../../public/js/demo.js"></script>
     <style>
         .eg {
@@ -45,7 +45,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const eg1 = document.getElementsByClassName('eg1')[0];
+        const eg1 = document.getElementsByClassName("eg1")[0];
         eg1.onclick = function () {
             this.nextSibling.nextSibling.innerHTML = this.style.backgroundColor;
             this.style.setProperty('background-color', 'springgreen')
@@ -65,7 +65,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const eg2 = document.getElementsByClassName('eg2')[0];
+        const eg2 = document.getElementsByClassName("eg2")[0];
         eg2.onclick = function () {
             try {
                 this.nextSibling.nextSibling.innerHTML = this.currentStyle.backgroundColor;
@@ -90,7 +90,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const eg3 = document.getElementsByClassName('eg3')[0];
+        const eg3 = document.getElementsByClassName("eg3")[0];
         eg3.onclick = function () {
             // 不同浏览器下，获取 css 属性值 的兼容写法
             this.nextSibling.nextSibling.innerHTML = this.currentStyle ? this.currentStyle.backgroundColor : getComputedStyle(this, null).getPropertyValue('background-color');
@@ -111,7 +111,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const eg4 = document.getElementsByClassName('eg4')[0];
+        const eg4 = document.getElementsByClassName("eg4")[0];
         eg4.onclick = function () {
             this.nextSibling.nextSibling.innerHTML = document.styleSheets[4].rules[0].style.background;
         }
@@ -129,7 +129,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const eg5 = document.getElementsByClassName('eg5')[0];
+        const eg5 = document.getElementsByClassName("eg5")[0];
         eg5.onclick = function () {
             this.nextSibling.nextSibling.innerHTML = $(this).css('background-color');
         }
@@ -149,7 +149,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const eg6 = document.getElementsByClassName('eg6')[0];
+        const eg6 = document.getElementsByClassName("eg6")[0];
         eg6.onclick = function () {
             if (window.matchMedia("(min-width: 400px").matches) {
                 this.nextSibling.nextSibling.innerHTML = 'matches';

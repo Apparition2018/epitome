@@ -7,9 +7,8 @@
     <title>weui.js</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
     <link rel="stylesheet" href="https://res.wx.qq.com/t/wx_fed/weui-source/res/2.5.16/weui.min.css"/>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../public/js/demo.js"></script>
     <script src="https://res.wx.qq.com/t/wx_fed/weui.js/res/1.2.18/weui.min.js"></script>
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
 </head>
 <body>
 <section class="code-wrap h250">
@@ -40,7 +39,7 @@
         <div class="caption">
             <a href="https://github.com/Tencent/weui.js/blob/master/docs/component/gallery.md">gallery</a>
         </div>
-        <div class="centered w50p">
+        <div class="centered w400">
             <div class="weui-cells weui-cells_form" id="uploader" max="3">
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
@@ -69,12 +68,12 @@
             const maxSize = 10 * 1024 * 1024;
             const maxUploadCnt = $(selector).attr('max') || 1;
             weui.uploader(selector, {
-                url: 'http://localhost:3333/multipart-file/upload/file',
+                url: "http://localhost:3333/multipart-file/upload/file",
                 // true-自动上传；false-手动上传，通过 this.upload() 上传
                 auto: true,
-                type: 'file',
+                type: "file",
                 // 文件上传域的 name
-                fileVal: 'file',
+                fileVal: "file",
                 // 压缩配置，false 则不压缩
                 compress: {
                     // 最大宽度
@@ -89,21 +88,21 @@
                     // `this` 是轮询到的文件, `files` 是所有文件
 
                     if (allowTypes.indexOf(this.type) < 0) {
-                        weui.alert('请上传图片');
+                        weui.alert("请上传图片");
                         return false; // 阻止文件添加
                     }
                     if (this.size > maxSize) {
-                        weui.alert('请上传不超过10M的图片');
+                        weui.alert("请上传不超过10M的图片");
                         return false;
                     }
                     // <input multiple/> 可多选的情况下，防止选择文件数量超出上限
                     if (files.length > maxUploadCnt) {
-                        weui.alert('最多只能上传' + maxUploadCnt + '张图片，请重新选择');
+                        weui.alert(`最多只能上传${maxUploadCnt}张图片，请重新选择`);
                         return false;
                     }
-                    let uploadCnt = $(selector).find('.weui-uploader__file').length;
+                    let uploadCnt = $(selector).find(".weui-uploader__file").length;
                     if (uploadCnt + 1 > maxUploadCnt) {
-                        weui.alert('最多只能上传5张图片');
+                        weui.alert(`最多只能上传${maxUploadCnt}张图片`);
                         return false;
                     }
 
@@ -113,8 +112,8 @@
                 onQueued: function () {
                     console.log(this);
 
-                    let uploadCnt = $(selector).find('.weui-uploader__file').length;
-                    if (uploadCnt >= maxUploadCnt) $(selector).find('.weui-uploader__input-box').css('display', 'none');
+                    let uploadCnt = $(selector).find(".weui-uploader__file").length;
+                    if (uploadCnt >= maxUploadCnt) $(selector).find(".weui-uploader__input-box").css('display', 'none');
                     $('#uploadCnt').text(uploadCnt);
 
                     // console.log(this.status); // 文件的状态：'ready', 'progress', 'success', 'fail'
@@ -148,14 +147,14 @@
                 }
             });
 
-            $(selector).on('click', '.weui-uploader__file', function () {
+            $(selector).on("click", ".weui-uploader__file", function () {
                 let $this = $(this);
                 let imgUrl = $this.attr('style').match(/(?<=background-image:\s?url\(")[^)]*?(?="\))/);
                 if (imgUrl) {
                     let gallery = weui.gallery(imgUrl[0], {
                         onDelete: function () {
-                            weui.confirm('确定删除此图片？', function () {
-                                $this.parent().parent().children('.weui-uploader__input-box').css('display', 'block');
+                            weui.confirm("确定删除此图片？", function () {
+                                $this.parent().parent().children(".weui-uploader__input-box").css('display', 'block');
                                 $this.remove();
                                 gallery.hide();
                             });

@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>font-family-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h350">
@@ -15,7 +13,7 @@
         <div class="caption">
             <a href="https://www.zhangxinxu.com/wordpress/2016/07/monospaced-font-css3-ch-unit/" target="_blank">字符模拟 solid/dashed/dotted</a>
         </div>
-        <div class="caption">利用等宽字体实现</div>
+        <div class="caption">利用 等宽字体 实现</div>
         <div class="monospace centered">
             <select title="">
                 <option value="none">请选择</option>
@@ -41,8 +39,8 @@
         }
     </style>
     <script>
-        const monospace = document.getElementsByClassName('monospace')[0];
-        document.getElementsByTagName('select')[0].onchange = function () {
+        const monospace = document.getElementsByClassName("monospace")[0];
+        document.getElementsByTagName("select")[0].onchange = function () {
             monospace.style.borderStyle = this.value;
             switch (this.value) {
                 case "none":

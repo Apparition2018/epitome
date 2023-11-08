@@ -7,8 +7,6 @@
     <base target="_blank">
     <title>Fetch-API-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h300">
@@ -90,21 +88,20 @@
     </div>
 </section>
 
-<section class="code-wrap h300" id="Fetch-API-fetch">
+<section class="code-wrap h250">
     <div class="css-live-wrap w40p">
         <div class="caption">fetch</div>
         <div class="caption">传递普通类型的数据，如 String</div>
-        <div class="centered box-fetch1"></div>
+        <div id="fetchBox1" class="centered"></div>
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            const boxFetch1 = document.getElementsByClassName('box-fetch1')[0];
-            fetch('http://localhost:3333/fetch/string', {
-                method: 'post',
+            fetch("http://localhost:3333/fetch/string", {
+                method: "post",
                 headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}),
                 body: "data=Arsenal"
             }).then(response => response.text()).then(data => {
-                boxFetch1.innerHTML = data;
+                document.getElementById("fetchBox1").innerHTML = data;
             }).catch(function (e) {
                 console.log(e);
             })
@@ -116,18 +113,17 @@
     <div class="css-live-wrap w40p">
         <div class="caption">fetch</div>
         <div class="caption">传递 Json 类型的数据，接收方为 Bean</div>
-        <div class="centered box-fetch2"></div>
+        <div id="fetchBox2" class="centered"></div>
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            const boxFetch2 = document.getElementsByClassName('box-fetch2')[0];
-            const demo = {id: '1', name: 'zhangsan'};
-            fetch('http://localhost:3333/fetch/json-clazz', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
+            const demo = {id: "1", name: "zhangsan"};
+            fetch("http://localhost:3333/fetch/json-clazz", {
+                method: "post",
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(demo)
             }).then(response => response.text()).then(data => {
-                boxFetch2.innerHTML = data;
+                document.getElementById("fetchBox2").innerHTML = data;
             }).catch(function (e) {
                 console.log(e);
             })
@@ -139,18 +135,17 @@
     <div class="css-live-wrap w40p">
         <div class="caption">fetch</div>
         <div class="caption">传递 Json 类型的数据，接收方为 map</div>
-        <div class="centered box-fetch3"></div>
+        <div id="fetchBox3" class="centered box-fetch3"></div>
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            const boxFetch3 = document.getElementsByClassName('box-fetch3')[0];
-            const club = {name: 'Arsenal', points: '100'};
-            fetch('http://localhost:3333/fetch/json-map', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
+            const club = {name: "Arsenal", points: "100"};
+            fetch("http://localhost:3333/fetch/json-map", {
+                method: "post",
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(club)
             }).then(response => response.text()).then(data => {
-                boxFetch3.innerHTML = data;
+                document.getElementById("fetchBox3").innerHTML = data;
             }).catch(function (e) {
                 console.log(e);
             })
@@ -162,7 +157,7 @@
     <div class="css-live-wrap w40p">
         <div class="caption">fetch</div>
         <div class="caption">上传单个文件</div>
-        <div class="centered box-fetch4">
+        <div id="fetchBox4" class="centered">
             <form>
                 <input type="file">
                 <br><br>
@@ -172,15 +167,15 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            document.querySelector('.box-fetch4 button').onclick = function () {
-                const pictures = document.querySelector('.box-fetch4 input').files;
+            document.querySelector("#fetchBox4 button").onclick = function () {
+                const pictures = document.querySelector("#fetchBox4 input").files;
                 const formData = new FormData();
-                formData.append('file', pictures[0]);
-                fetch('http://localhost:3333/fetch/upload-picture', {
-                    method: 'post',
+                formData.append("file", pictures[0]);
+                fetch("http://localhost:3333/fetch/upload-picture", {
+                    method: "post",
                     body: formData,
                 }).then(response => response.text()).then(data => {
-                    $('.box-fetch4')[0].innerHTML = data;
+                    document.getElementById("fetchBox4").innerHTML = data;
                 }).catch(function (e) {
                     console.log(e);
                 })
@@ -193,7 +188,7 @@
     <div class="css-live-wrap w40p">
         <div class="caption">fetch</div>
         <div class="caption">上传多个文件</div>
-        <div class="centered box-fetch5">
+        <div id="fetchBox5" class="centered">
             <form>
                 <input type="file" multiple="multiple">
                 <br><br>
@@ -203,17 +198,17 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            document.querySelector('.box-fetch5 button').onclick = function () {
-                const pictures = document.querySelector('.box-fetch5 input').files;
+            document.querySelector("#fetchBox5 button").onclick = function () {
+                const pictures = document.querySelector("#fetchBox5 input").files;
                 const formData = new FormData();
                 for (let i = 0; i < pictures.length; i++) {
-                    formData.append('file', pictures[i]);
+                    formData.append("file", pictures[i]);
                 }
-                fetch('http://localhost:3333/fetch/upload-pictures', {
-                    method: 'post',
+                fetch("http://localhost:3333/fetch/upload-pictures", {
+                    method: "post",
                     body: formData,
                 }).then(response => response.text()).then(data => {
-                    $('.box-fetch5')[0].innerHTML = data;
+                    document.getElementById("fetchBox5").innerHTML = data;
                 }).catch(function (e) {
                     console.log(e);
                 })
@@ -226,20 +221,20 @@
     <div class="css-live-wrap w40p">
         <div class="caption">fetch</div>
         <div class="caption">发送 Cookie</div>
-        <div class="centered demo-click box-cookie">
+        <div id="fetchBox6" class="centered demo-click">
             cookie
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            $('.box-cookie')[0].onclick = function () {
+            document.getElementById("fetchBox6").onclick = function () {
                 document.cookie = "cny=999; path=/";
 
-                fetch('http://localhost:3333/fetch/cookie', {
-                    method: 'post',
+                fetch("http://localhost:3333/fetch/cookie", {
+                    method: "post",
                     // 默认情况下，fetch 不会从服务端发送或接收任何 cookies,
                     // 如果站点依赖于用户 session，则会导致未经认证的请求（要发送 cookies，必须设置 credentials 选项）
-                    credentials: 'include',  // omit(默认，不带cookie) | same-origin(同源带cookie) | include(总是带cookie)
+                    credentials: "include",  // omit(默认，不带cookie) | same-origin(同源带cookie) | include(总是带cookie)
                 }).then(response => response.text()).then(data => {
                     alert(data);
                 }).catch(function (e) {
@@ -259,10 +254,10 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            fetch('http://localhost:3333/public/img/people/穗波玉.jpg', {
-                mode: 'cors' // cors: 跨域 | same-origin: 同源 | no-cors: 禁止跨域
+            fetch("http://localhost:3333/public/img/people/穗波玉.jpg", {
+                mode: "cors" // cors: 跨域 | same-origin: 同源 | no-cors: 禁止跨域
             }).then(response => response.blob()).then(response => {
-                document.querySelector('.box-blob img').src = URL.createObjectURL(response);
+                document.querySelector(".box-blob img").src = URL.createObjectURL(response);
             }).catch(function (e) {
                 console.log(e);
             })

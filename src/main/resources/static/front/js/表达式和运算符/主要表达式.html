@@ -7,11 +7,9 @@
     <base target="_blank">
     <title>primary-expressions</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
 </head>
 <body>
-<section class="code-wrap">
+<section class="code-wrap h350">
     <div class="css-live-wrap w100p">
         <div class="caption">主要表达式</div>
         <div class="centered">
@@ -81,7 +79,7 @@
 
         const appleStore = countAppleSales();
 
-        const boxYield = document.getElementsByClassName('box-yield')[0];
+        const boxYield = document.getElementsByClassName("box-yield")[0];
         boxYield.innerHTML = JSON.stringify(appleStore.next());
         boxYield.innerHTML += JSON.stringify(appleStore.next());
         boxYield.innerHTML += JSON.stringify(appleStore.next());
@@ -109,7 +107,7 @@
 
         const iterator = g2();
 
-        const boxYield2 = document.getElementsByClassName('box-yield*')[0];
+        const boxYield2 = document.getElementsByClassName("box-yield*")[0];
         boxYield2.innerHTML = JSON.stringify(iterator.next());
         boxYield2.innerHTML += JSON.stringify(iterator.next());
         boxYield2.innerHTML += JSON.stringify(iterator.next());
@@ -117,7 +115,7 @@
         boxYield2.innerHTML += JSON.stringify(iterator.next());
         boxYield2.innerHTML += JSON.stringify(iterator.next());
         boxYield2.innerHTML += JSON.stringify(iterator.next());
-        boxYield2.innerHTML += '<br/>' + JSON.stringify(result);
+        boxYield2.innerHTML += "<br/>" + JSON.stringify(result);
     </script>
 </section>
 
@@ -127,12 +125,12 @@
         <div class="centered box-async"></div>
     </div>
     <script class="code w67p" contenteditable="true">
-        const boxAsync = document.getElementsByClassName('box-async')[0];
+        const boxAsync = document.getElementsByClassName("box-async")[0];
 
         function timeOut(msg) {
             return new Promise(
                 resolve => setTimeout(() => {
-                    resolve(boxAsync.innerHTML += msg + '<br/>');
+                    resolve(boxAsync.innerHTML += msg + "<br/>");
                 }, 1000)
             )
         }
@@ -162,30 +160,30 @@
         <div class="centered box-timing"></div>
     </div>
     <script class="code w67p" contenteditable="true">
-        const boxTiming = document.getElementsByClassName('box-timing')[0]
+        const boxTiming = document.getElementsByClassName("box-timing")[0]
 
         async function async1() {
-            boxTiming.innerHTML += 'async1 start' + '<br/>';
+            boxTiming.innerHTML += "async1 start" + "<br/>";
             await async2();
-            boxTiming.innerHTML += 'async1 end' + '<br/>';
+            boxTiming.innerHTML += "async1 end" + "<br/>";
         }
 
         async function async2() {
-            boxTiming.innerHTML += 'async2' + '<br/>';
+            boxTiming.innerHTML += "async2" + "<br/>";
         }
 
-        boxTiming.innerHTML += 'script start' + '<br/>';
+        boxTiming.innerHTML += "script start" + "<br/>";
         setTimeout(function () {
-            boxTiming.innerHTML += 'settimeout' + '<br/>'; // macrotasks
+            boxTiming.innerHTML += "settimeout" + "<br/>"; // macrotasks
         }, 0);
         async1();
         new Promise(function (resolve) {
-            boxTiming.innerHTML += 'promise1' + '<br/>';
+            boxTiming.innerHTML += "promise1" + "<br/>";
             resolve();
         }).then(function () {
-            boxTiming.innerHTML += 'promise2' + '<br/>'; // microtasks
+            boxTiming.innerHTML += "promise2" + "<br/>"; // microtasks
         });
-        boxTiming.innerHTML += 'script end' + '<br/>';
+        boxTiming.innerHTML += "script end" + "<br/>";
     </script>
 </section>
 </body>

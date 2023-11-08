@@ -1,6 +1,6 @@
 seajs.config({
     alias: {
-        "jquery": "https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"
+        "jquery": "https://unpkg.com/jquery@^1/dist/jquery.min.js"
     }
 });
 

@@ -7,22 +7,22 @@
     <base target="_blank">
     <title>lazysizes</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap">
     <div class="css-live-wrap w40p">
-        <div class="caption"><a href="https://github.com/aFarkas/lazysizes">懒加载图片</a></div>
-        <div class="caption"><a href="https://afarkas.github.io/lazysizes/#examples">Demo with code examples</a></div>
+        <div class="caption"><a href="https://github.com/aFarkas/lazysizes">lazysizes</a></div>
         <div class="centered">
-            <img alt="穗波玉" src="low-quality.jpg" class="lazyload w200 br50p"
+            <img alt="穗波玉" class="lazyload w200 br50p"
+                 src="../../../public/img/people/穗波玉2.jpg"
                  data-src="../../../public/img/people/穗波玉.jpg"/>
         </div>
     </div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/lazysizes/5.3.2/lazysizes.min.js"></script>
+    <script src="https://unpkg.com/lazysizes/lazysizes.min.js"></script>
     <code class="code w60p" contenteditable="true">
-        &lt;img alt="穗波玉" src="low-quality.jpg" class="lazyload" data-src="../../../public/img/people/穗波玉.jpg" /&gt;
+        &lt;img alt="穗波玉" class="lazyload"
+            src="../../../public/img/people/穗波玉2.jpg"
+            data-src="../../../public/img/people/穗波玉.jpg" /&gt;
 
         1.&lt;img&gt; 添加 "lazyload" class
         2.src 属性可以链接低质量图片

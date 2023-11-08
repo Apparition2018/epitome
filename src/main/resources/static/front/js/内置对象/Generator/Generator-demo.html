@@ -7,8 +7,6 @@
     <base target="_blank">
     <title>Generator-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h350">
@@ -102,7 +100,7 @@
 
         const gN = gNext(5);
 
-        const boxNext = document.getElementsByClassName('box-next')[0];
+        const boxNext = document.getElementsByClassName("box-next")[0];
         boxNext.innerHTML = JSON.stringify(gN.next());      // 5 + 1 = 6
         boxNext.innerHTML += JSON.stringify(gN.next(12));   // 2 * 12 / 3 = 8
         boxNext.innerHTML += JSON.stringify(gN.next(13));   // 5 + 2 * 12 + 13 = 42

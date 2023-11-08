@@ -6,20 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>input-demo</title>
     <link rel="stylesheet" href="../../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../../public/js/demo.js"></script>
     <style>
         input {
-            padding: 5px 5px 5px 6px;
+            padding: 4px 5px 5px 6px;
         }
     </style>
 </head>
 <body>
 <section class="code-wrap h600">
     <div class="css-live-wrap w33p">
-        <div class="caption"><a href="https://www.w3school.com.cn/tags/att_input_pattern.asp"
-                                target="_blank">pattern 属性</a></div>
-        <div class="caption">适用于以下输入类型：text、search、url、tel、email、and password。</div>
+        <div class="caption">
+            <a href="https://www.w3school.com.cn/tags/att_input_pattern.asp" target="_blank">pattern 属性</a>
+        </div>
+        <div class="caption">适用类型：text, search, url, tel, email, password</div>
         <div class="centered">
             <form action="">
                 <p><input type="text" placeholder="QQ" title="QQ 格式错误（5到11位数字组合）" pattern="[1-9][0-9]{4,10}" value="524986144"/></p>
@@ -81,7 +80,7 @@
     </div>
     <code class="code w67p" contenteditable="true">
         &lt;input type="number" placeholder="请输入数字（范围：10~100）"
-        onblur="if(value<10)value=10;if(value>100)value=100;"/&gt;
+            onblur="if(value<10)value=10;if(value>100)value=100;"/&gt;
     </code>
 </section>
 </body>

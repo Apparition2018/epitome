@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>input-file-demo</title>
     <link rel="stylesheet" href="../../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h500">
@@ -15,16 +13,16 @@
         <div class="caption">上产图片，并预览</div>
         <div class="centered preview">
             <form method="post" action="http://localhost/test" enctype="multipart/form-data">
-                <div id="image-preview"></div>
+                <div id="previewBox"></div>
                 <p>
-                    <input type="file" id="image-file" name="test">
+                    <input type="file" id="fileInput" name="test">
                 </p>
-                <p id="file-info">没有选择文件</p>
+                <p id="fileInfo">没有选择文件</p>
             </form>
         </div>
     </div>
     <style>
-        .preview #image-preview {
+        .preview previewBox {
             width: 100%;
             height: 200px;
             background: no-repeat center center;
@@ -33,29 +31,24 @@
         }
     </style>
     <script class="code w60p" contenteditable="true">
-        const
-            fileInput = document.getElementById('image-file'),
-            info = document.getElementById('file-info'),
-            preview = document.getElementById('image-preview');
-
         //监听change事件:
-        fileInput.addEventListener('change', function () {
+        fileInput.addEventListener("change", function () {
             // 清除背景图片:
-            preview.style.backgroundImage = '';
+            previewBox.style.backgroundImage = "";
             // 检查文件是否选择:
             if (!fileInput.value) {
-                info.innerHTML = '没有选择文件';
+                fileInfo.innerHTML = "没有选择文件";
                 return;
             }
             // 获取File引用:
             const file = fileInput.files[0];
             // 获取File信息:
-            info.innerHTML = `文件名称：${file.name.split('.').shift()}<br>
-                        文件类型：${file.name.split('.').pop()}<br>
+            fileInfo.innerHTML = `文件名称：${file.name.split(".").shift()}<br>
+                        文件类型：${file.name.split(".").pop()}<br>
                         文件大小：${(file.size / 1024).toFixed(2)}KB<br>
                         修改时间：${file.lastModifiedDate.toLocaleString()}`;
-            if (!file.type.match('image*')) {
-                alert('不是有效的图片文件!');
+            if (!file.type.match("image*")) {
+                alert("不是有效的图片文件!");
                 return;
             }
             // 读取文件:
@@ -63,7 +56,7 @@
             reader.onload = function (e) {
                 // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
                 const data = e.target.result;
-                preview.style.backgroundImage = `url(${data})`;
+                previewBox.style.backgroundImage = `url(${data})`;
             };
             // 以DataURL的形式读取文件:
             reader.readAsDataURL(file);
@@ -75,10 +68,10 @@
     <div class="css-live-wrap w40p">
         <div class="caption">美化 input-file</div>
         <div class="caption">隐藏 input，点击新样式时调用 input 的点击事件</div>
-        <div class="centered beautify">
-            <div id="text"></div>
-            <div id="select">选择文件</div>
-            <input id="input-file" type="file">
+        <div class="centered beautify w300">
+            <div class="text"></div>
+            <div class="select">选择文件</div>
+            <input type="file">
         </div>
     </div>
     <style>
@@ -91,14 +84,14 @@
             vertical-align: middle;
         }
 
-        #text {
+        .text {
             width: 180px;
             height: 30px;
             border: 1px solid #111;
             border-radius: 2px 0 0 2px;
         }
 
-        #select {
+        .select {
             padding: 0 10px;
             margin-left: -1px;
             line-height: 30px;
@@ -110,8 +103,8 @@
         }
     </style>
     <script class="code w60p" contenteditable="true">
-        document.getElementById('select').onclick = function () {
-            document.getElementById('input-file').click();
+        document.querySelector(".beautify .select").onclick = function () {
+            document.querySelector(".beautify input").click();
         }
     </script>
 </section>

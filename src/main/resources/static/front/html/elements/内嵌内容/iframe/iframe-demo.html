@@ -12,8 +12,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>iframe-demo</title>
     <link rel="stylesheet" href="../../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap">
@@ -67,16 +65,15 @@
     <div class="css-live-wrap w40p">
         <div class="caption">使用 Javascript 演示父页面和 iframe 主页面元素获取</div>
         <div class="centered">
-            <label id='parent'>父页面：</label>
-            <input id='input' type="text" value="1" title=""/>
+            <label id="parent">父页面：</label>
+            <input id="input" type="text" value="1" title=""/>
             <button onclick="childPlus();">子页+1</button>
             <iframe id="child" src="child.html"></iframe>
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
         function childPlus() {
-            const child = document.getElementById('child').contentWindow;
-            const childInput = child.document.querySelector('input');
+            const childInput = child.contentWindow.document.querySelector("input");
             childInput.value = parseInt(childInput.value, 10) + 1 + "";
         }
     </script>
@@ -86,8 +83,8 @@
     <div class="css-live-wrap w40p">
         <div class="caption">使用 jQuery 演示父页面和 iframe 主页面元素获取</div>
         <div class="centered">
-            <label id='parent2'>父页面：</label>
-            <input id='input2' type="text" value="1" title=""/>
+            <label id="parent2">父页面：</label>
+            <input id="input2" type="text" value="1" title=""/>
             <button onclick="child2Plus();">子页+1</button>
             <iframe id="child2" src="child2.html"></iframe>
         </div>

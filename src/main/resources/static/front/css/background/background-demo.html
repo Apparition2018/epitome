@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>background-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap">
@@ -193,9 +191,9 @@
             <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size">background-size</a> &amp; 
             background-origin
         </div>
-        <div class="repeat centered">
-            <div class="heart" id="heart"></div>
-            <select title="">
+        <div class="bg centered">
+            <div id="heart"></div>
+            <select id="bgRepeat" title="">
                 <option value="repeat">repeat</option>
                 <option value="no-repeat">no-repeat</option>
                 <option value="repeat-x">repeat-x</option>
@@ -203,14 +201,14 @@
                 <option value="space">space</option>
                 <option value="round">round</option>
             </select>
-            <select title="">
+            <select id="bgSize" title="">
                 <option value="auto">auto</option>
                 <option value="cover">cover</option>
                 <option value="contain">contain</option>
                 <option value="25%">25%</option>
                 <option value="auto 4em">auto 4em</option>
             </select>
-            <select title="">
+            <select id="bgOrigin" title="">
                 <option value="padding-box">padding-box</option>
                 <option value="border-box">border-box</option>
                 <option value="content-box">content-box</option>
@@ -218,41 +216,41 @@
         </div>
     </div>
     <style class="code" contenteditable="true">
-        .repeat {
+        .bg {
             text-align: center;
         }
 
-        .repeat > div {
+        .bg > div {
             margin: 0 auto;
         }
 
-        .repeat select {
+        .bg select {
             margin: 20px 5px;
             font-size: 14px;
             white-space: nowrap;
         }
 
-        .heart {
+        #heart {
             box-sizing: border-box;
             width: 300px;
             height: 200px;
             padding: 20px;
-            background: lightpink url(../../../public/img/other/heart.png);
+            background: lightpink url(../../../public/img/other/heart.gif);
             border: 20px solid #ff99a8;
             border-radius: 2px;
         }
     </style>
     <script>
-        document.getElementsByTagName('select')[0].onchange = function () {
-            document.getElementById('heart').style.backgroundRepeat = this.value;
+        bgRepeat.onchange = function () {
+            heart.style.backgroundRepeat = this.value;
         };
 
-        document.getElementsByTagName('select')[1].onchange = function () {
-            document.getElementById('heart').style.backgroundSize = this.value;
+        bgSize.onchange = function () {
+            heart.style.backgroundSize = this.value;
         };
 
-        document.getElementsByTagName('select')[2].onchange = function () {
-            document.getElementById('heart').style.backgroundOrigin = this.value;
+        bgOrigin.onchange = function () {
+            heart.style.backgroundOrigin = this.value;
         }
     </script>
 </section>
@@ -260,14 +258,15 @@
 <section class="code-wrap">
     <div class="css-live-wrap">
         <div class="caption">背景半透明，文字不透明</div>
-        <div class="bg centered">
+        <div class="caption">利用 rgba第四个参数alpha 实现</div>
+        <div class="rbg-alpha centered">
             <div class="translucence">
                 <p>穗波玉</p>
             </div>
         </div>
     </div>
     <style class="code" contenteditable="true">
-        .bg {
+        .rbg-alpha {
             position: relative;
             width: 240px;
             height: 240px;
@@ -275,7 +274,7 @@
             background-size: cover;
         }
 
-        .bg .translucence {
+        .rbg-alpha .translucence {
             position: absolute;
             left: 0;
             right: 0;
@@ -284,7 +283,7 @@
             background-color: rgba(255, 255, 255, 0.75);
         }
 
-        .bg p {
+        .rbg-alpha p {
             color: #333333;
             line-height: 240px;
             text-align: center;

@@ -15,7 +15,7 @@
         <div class="caption"><a href="https://seajs.github.io/seajs/docs/">SeaJS docs</a></div>
         <div class="centered sea"></div>
     </div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/seajs/3.0.3/sea.js"></script>
+    <script src="https://unpkg.com/seajs/dist/sea.js"></script>
     <script>
         seajs.use("./page.js");
     </script>
@@ -26,7 +26,7 @@
         /***** page.js *****/
         seajs.config({
             alias: {
-                "jquery": "https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"
+                "jquery": "https://unpkg.com/jquery@^1/dist/jquery.min.js"
             }
         });
 

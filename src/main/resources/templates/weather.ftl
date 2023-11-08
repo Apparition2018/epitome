@@ -3,8 +3,8 @@
     <meta name="description" content="https://github.com/defunkt/jquery-pjax/#pjax--pushstate--ajax">
     <meta name="description" content="https://blog.csdn.net/weixin_44776993/article/details/107502380">
     <title>${city!''}天气</title>
-    <link href="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-    <script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    <link href="https://unpkg.com/nprogress/nprogress.css" rel="stylesheet">
+    <script src="https://unpkg.com/nprogress/nprogress.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -96,8 +96,8 @@
 <footer class="footer">
     <h3>数据由 wthrcdn.etouch.cn 提供</h3>
 </footer>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/jquery.pjax/jquery.pjax.js"></script>
 <script type="text/javascript">
     $.pjax({
         selector: 'a',

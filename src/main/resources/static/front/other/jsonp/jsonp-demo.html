@@ -5,7 +5,7 @@
     <base target="_blank">
     <title>jsonp-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
 </head>
 <body>
 <section class="code-wrap">
@@ -141,25 +141,25 @@
             }
         }
 
-        let input = document.getElementById('input');
+        let input = document.getElementById("input");
 
         // 搜索框键盘按键被松开时
         input.onkeyup = function () {
             if (this.value) {
                 if (input.data !== this.value) {
-                    btn.setAttribute('href', 'https://www.baidu.com/s?wd=' + this.value);
+                    document.getElementById("btn").setAttribute("href", "https://www.baidu.com/s?wd=" + this.value);
                     const that = this;
                     loadScript("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + that.value + "&&cb=callback");
                 }
             } else {
-                list.innerHTML = '';
+                list.innerHTML = "";
             }
             input.data = this.value;
         };
 
         // input，显示list
         input.onclick = function (e) {
-            list.style.display = 'block';
+            list.style.display = "block";
             // 取消冒泡的冒泡
             if (e.stopPropagation) {
                 e.stopPropagation();
@@ -170,7 +170,7 @@
 
         // 点击文档任意区域，隐藏list
         document.onclick = function () {
-            list.style.display = 'none';
+            list.style.display = "none";
         }
     </script>
 </section>

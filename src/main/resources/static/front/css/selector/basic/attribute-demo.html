@@ -57,7 +57,7 @@
         }
     </style>
     <script>
-        document.getElementsByTagName('select')[0].onchange = function () {
+        document.getElementsByTagName("select")[0].onchange = function () {
             let selects = document.querySelectorAll(".regex div");
             selects.forEach(function (value, index, array) {
                 value.style.borderColor = "#ccc";
@@ -92,7 +92,7 @@
         .search {
             box-sizing: content-box;
             width: 180px;
-            padding: 5px;
+            padding: 6px 5px;
         }
 
         .datalist {
@@ -124,14 +124,14 @@
         const style = document.createElement("style"),
             input = document.querySelector("#city");
 
-        document.querySelector("#filterStyle").appendChild(style);
+        filterStyle.appendChild(style);
 
         input.addEventListener("input", function () {
             const val = this.value.trim().toLowerCase();
-            if (val !== '') {
+            if (val !== "") {
                 style.innerHTML = '.list:not([data-index*="' + this.value + '"]) { display: none; }';
             } else {
-                style.innerHTML = '';
+                style.innerHTML = "";
             }
         });
     </script>

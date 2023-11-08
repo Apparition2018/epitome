@@ -111,7 +111,7 @@
 
         // IE9 不支持 HTML5 新增的属性 async
         function lteIE9_2() {
-            return !document.createElement('script').async;
+            return !document.createElement("script").async;
         }
 
         // IE9 不支持 window.matchMedia() （用来检查 CSS 的 mediaQuery 语句）
@@ -122,7 +122,7 @@
         /********** IE10 **********/
         // IE10 不支持自定义属性 dataset
         function lteIE10() {
-            return !document.createElement('div').dataset;
+            return !document.createElement("div").dataset;
         }
 
         // IE10 不支持 navigator 的 language 属性

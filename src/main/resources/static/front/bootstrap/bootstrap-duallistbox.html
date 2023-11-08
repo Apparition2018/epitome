@@ -8,18 +8,18 @@
     <meta name="description" content="https://www.cnblogs.com/hangwei/p/5040866.html">
     <title>bootstrap-duallistbox</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-duallistbox@3.0.9/dist/bootstrap-duallistbox.min.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../public/js/demo.js"></script>
+    <link href="https://unpkg.com/bootstrap@^3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/bootstrap@^3/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/bootstrap-duallistbox/dist/bootstrap-duallistbox.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
 </head>
 <body>
 <section class="code-wrap h500">
     <div class="css-live-wrap">
-        <div class="caption"><a href="https://github.com/kartik-v/bootstrap-fileinput">github</a></div>
-        <div class="caption"><a href="https://www.virtuosoft.eu/code/bootstrap-duallistbox/">document</a></div>
+        <div class="caption">
+            <a href="https://github.com/kartik-v/bootstrap-fileinput">github</a> &
+            <a href="https://www.virtuosoft.eu/code/bootstrap-duallistbox/">document</a>
+        </div>
         <div class="centered w80p">
             <select multiple="multiple" size="10" name="duallistbox_demo1" class="select">
                 <option value="1">Option 1</option>
@@ -37,10 +37,10 @@
             <input id="showValue" type="button" value="show selected data"/>
         </div>
     </div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-fileinput/5.5.2/js/fileinput.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-fileinput/5.5.2/js/locales/zh.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-duallistbox@3.0.9/dist/jquery.bootstrap-duallistbox.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@^3/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-fileinput/js/locales/zh.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.min.js"></script>
     <script class="code" contenteditable="true">
         $(function () {
             $('select').bootstrapDualListbox({
@@ -51,7 +51,7 @@
                 // nonSelectedFilter: 'ion ([7-9]|[1][0-2])'
             });
 
-            $("#showValue").on('click', function () {
+            $("#showValue").on("click", function () {
                 alert($('[name="duallistbox_demo1"]').val());
             });
         });

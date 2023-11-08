@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>onmouseXXX-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h500">
@@ -54,29 +52,29 @@
         }
     </style>
     <script class="code" contenteditable="true">
-        const ul = document.querySelector('.onmouse ul');
-        const omOutput = document.querySelector('.onmouse .output');
+        const ul = document.querySelector(".onmouse ul");
+        const omOutput = document.querySelector(".onmouse .output");
 
         ul.onmouseover = function (e) {
             const node = e.target;
-            node.style.backgroundColor = 'var(--gyb5)';
-            (node.nodeName === 'LI') && (node.style.color = 'white');
-            omOutput.textContent += 'over ';
+            node.style.backgroundColor = "var(--gyb5)";
+            (node.nodeName === "LI") && (node.style.color = "white");
+            omOutput.textContent += "over ";
         }
 
         ul.mouseenter = function (e) {
             const node = e.target;
-            node.style.backgroundColor = '';
-            (node.nodeName === 'LI') && (node.style.color = 'var(--gyb5)');
-            omOutput.textContent += 'out ';
+            node.style.backgroundColor = "";
+            (node.nodeName === "LI") && (node.style.color = "var(--gyb5)");
+            omOutput.textContent += "out ";
         }
 
         ul.onmouseout = function () {
-            omOutput.textContent += 'enter ';
+            omOutput.textContent += "enter ";
         }
 
         ul.onmouseleave = function () {
-            omOutput.textContent += 'leave ';
+            omOutput.textContent += "leave ";
         }
     </script>
 </section>

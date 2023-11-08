@@ -19,7 +19,7 @@
             <a href="https://www.w3school.com.cn/html/html5_draganddrop.asp">HTML5 拖放</a>
         </div>
         <div class="caption">随着鼠标拖动而移动的小飞机</div>
-        <div class="centered w100p h100p" id="eg1">
+        <div class="centered w100p h100p">
             <img id="ap" src="../../../public/img/other/airplane.png" alt="airplane" style="position: absolute;"/>
         </div>
     </div>
@@ -94,41 +94,43 @@
         }
     </style>
     <script class="code w60p" contenteditable="true">
-        const moveItem = document.getElementsByTagName('label');
+        const moveItem = document.getElementsByTagName("label");
 
         for (let i = 0; i < moveItem.length; i++) {
-            moveItem[i].setAttribute('id', 'label' + i);                // 动态设置label元素id
+            moveItem[i].setAttribute("id", "label" + i);                // 动态设置label元素id
             moveItem[i].ondragstart = function (ev) {
                 ev.dataTransfer.setData("Text", this.id);               // dataTransfer.setData() 方法设置被拖数据的数据类型和值
             };
         }
 
-        // 左－〉右
-        document.getElementById('right').ondragover = function (ev) {
+        // 左 → 右
+        const right = document.getElementById("right");
+        right.ondragover = function (ev) {
             ev.preventDefault();                                        // 默认地，数据/元素无法被放置到其他元素中，取消此默认动作
         };
-        document.getElementById('right').ondrop = function (ev) {
+        right.ondrop = function (ev) {
             ev.preventDefault();                                        // 阻止数据的浏览器默认处理方式（drop 事件的默认行为是以链接形式打开）
-            const id = ev.dataTransfer.getData('Text');
+            const id = ev.dataTransfer.getData("Text");
             const elem = document.getElementById(id);                   // 当前拖动的元素
             const toElem = ev.toElement.id;                             // 放置位置
-            if (toElem === 'right') {
+            if (toElem === "right") {
                 this.appendChild(elem);                                 // 如果为container，元素放置在末尾                                 
             } else {
                 this.insertBefore(elem, document.getElementById(toElem));// 如果为container里的元素，则插入该元素之前
             }
         };
 
-        // 右－〉左
-        document.getElementById('left').ondragover = function (ev) {
+        // 右 → 左
+        const left = document.getElementById("left");
+        left.ondragover = function (ev) {
             ev.preventDefault();                                        // 默认地，数据/元素无法被放置到其他元素中，取消此默认动作
         };
-        document.getElementById('left').ondrop = function (ev) {
+        left.ondrop = function (ev) {
             ev.preventDefault();
             const id = ev.dataTransfer.getData('Text');
             const elem = document.getElementById(id);
             const toElem = ev.toElement.id;
-            if (toElem === 'left') {
+            if (toElem === "left") {
                 this.appendChild(elem);                                 // 如果为container，元素放置在末尾
             } else {
                 this.insertBefore(elem, document.getElementById(toElem));// 如果为container里的元素，则插入该元素之前
@@ -180,28 +182,28 @@
     <script class="code w60p" contenteditable="true">
         const iosDragDropShim = {enableEnterLeave: true};           // 兼容移动端
         let source = document.querySelectorAll('.list'),
-            recycleBin = document.getElementById('recycle-bin'),
+            recycleBin = document.getElementById("recycle-bin"),
             dragElement = null,                                     // 用于存放拖动元素
             lock = true;                                            // 最后元素拖放时会进入enter和leave的循环，用来锁住
 
         for (let i = 0; i < source.length; i++) {
-            source[i].addEventListener('dragstart', function (ev) { // 开始拖动元素时触发
+            source[i].addEventListener("dragstart", function (ev) { // 开始拖动元素时触发
                 dragElement = this;                                 // 用于存放拖动元素
-                this.style.backgroundColor = '#eeeeee';             // 设置拖动元素的背景
+                this.style.backgroundColor = "#eeeeee";             // 设置拖动元素的背景
             }, false);
 
-            source[i].addEventListener('dragend', function (ev) {   // 完成元素的拖动时触发
-                ev.target.style.backgroundColor = 'white';          // 拖放结束还原拖动元素的背景
+            source[i].addEventListener("dragend", function (ev) {   // 完成元素的拖动时触发
+                ev.target.style.backgroundColor = "white";          // 拖放结束还原拖动元素的背景
                 ev.preventDefault();
             }, false);
 
-            source[i].addEventListener('dragenter', function (ev) { // 拖动的元素进入放置目标时触发
+            source[i].addEventListener("dragenter", function (ev) { // 拖动的元素进入放置目标时触发
                 if (dragElement !== this) {                         // 拖动的元素不是进入的放置目标元素
                     this.parentNode.insertBefore(dragElement, this);// 把拖动元素添加到当前元素的前面
                 }
             }, false);
 
-            source[i].addEventListener('dragleave', function (ev) { // 拖动元素离开放置目标时触发
+            source[i].addEventListener("dragleave", function (ev) { // 拖动元素离开放置目标时触发
                 if (dragElement !== this) {
                     if (lock && (this === this.parentNode.lastElementChild || this === this.parentNode.lastChild)) { // 当前元素时最后一个元素
                         this.parentNode.appendChild(dragElement);   // 把拖动元素添加最后面
@@ -213,7 +215,7 @@
             }, false)
         }
 
-        recycleBin.addEventListener('drop', function (ev) {         // 拖动元素放置在目标区域时触发
+        recycleBin.addEventListener("drop", function (ev) {         // 拖动元素放置在目标区域时触发
             dragElement.parentNode.removeChild(dragElement);        // 拖进回收站则删除该元素
         }, false);
 

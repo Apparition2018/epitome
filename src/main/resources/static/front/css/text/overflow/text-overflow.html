@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>text-overflow</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h300">
@@ -40,8 +38,8 @@
     </style>
 </section>
 <script>
-    document.getElementsByTagName('select')[0].onchange = function () {
-        document.querySelector('#eg1 p').style.textOverflow = this.value;
+    document.querySelector("#eg1 select").onchange = function () {
+        document.getElementById("text").style.textOverflow = this.value;
     }
 </script>
 

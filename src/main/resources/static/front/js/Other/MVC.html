@@ -66,13 +66,13 @@
 
                 // 模拟 Controller (业务逻辑层)
                 bindEvent() {
-                    this.confirm.addEventListener('click', () => {
+                    this.confirm.addEventListener("click", () => {
                         // 要求模型 M 改变状态，add()函数是写入数据操作
                         this.add()
                     }, false)
 
                     // 事件委托，优化性能
-                    this.todoList.addEventListener('click', (item) => {
+                    this.todoList.addEventListener("click", (item) => {
                         this.remove(item)
                     }, false)
                 },

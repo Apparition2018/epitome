@@ -6,8 +6,7 @@
     <meta name="description" content="html 页面之间传递参数的方法：https://blog.csdn.net/liuyan19891230/article/details/50961335">
     <title>pass value between html</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
     <style>
         button {
             width: 80px;
@@ -17,7 +16,7 @@
     </style>
 </head>
 <body>
-<section class="code-wrap h200">
+<section class="code-wrap h150">
     <div class="css-live-wrap w33p">
         <div class="caption">form 表单</div>
         <div class="centered">
@@ -35,7 +34,7 @@
     </code>
 </section>
 
-<section class="code-wrap h200">
+<section class="code-wrap h150">
     <div class="css-live-wrap w33p">
         <div class="caption">location.href</div>
         <div class="centered">
@@ -45,13 +44,13 @@
         </div>
     </div>
     <script class="code w67p" contenteditable="true">
-        $('body').on('click', '#two button', function () {
+        $('body').on("click", "#two button", function () {
             location.href = 'HTML页面间传值2.html?index=lemon2';
         })
     </script>
 </section>
 
-<section class="code-wrap h300">
+<section class="code-wrap h250">
     <div class="css-live-wrap w33p">
         <div class="caption">open()</div>
         <div class="centered">
@@ -63,7 +62,7 @@
     <script class="code w67p" contenteditable="true">
         let blocked = 0;
         try {
-            $('body').on('click', '#three button', function () {
+            $('body').on("click", "#three button", function () {
                 const newWin = open('HTML页面间传值2.html?index=lemon3');
                 (newWin == null) && (blocked = 1);
             })

@@ -7,8 +7,6 @@
     <base target="_blank">
     <title>Element-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap">
@@ -253,7 +251,6 @@
         function get(e) {
             const ele = e.target;
             if (ele.className === "iH") {
-                console.log(document.getElementById("text"));
                 document.getElementsByClassName("text")[0].textContent = ele.innerHTML;
             }
             if (ele.className === "oH") {

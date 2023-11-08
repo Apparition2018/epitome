@@ -12,17 +12,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>after-before-content-demo</title>
     <link rel="stylesheet" href="../../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h300">
     <div class="css-live-wrap">
         <div class="caption">分割线</div>
-        <div class="caption">利用::after、content: " | "实现</div>
+        <div class="caption">利用 ::after、content: " | " 实现</div>
         <nav class="centered">
             <ul class="verticalBar">
-                <li>HTML 5</li>
+                <li>HTML5</li>
                 <li>CSS3</li>
                 <li>JavaScript</li>
             </ul>
@@ -45,14 +43,14 @@
     </style>
     <script>
         // document不能获取到::after和::before所对应的节点对象，但是可以通过querySelector获取其样式属性
-        console.log(getComputedStyle(document.querySelector('li'), '::after').content); // " |"
+        console.log(getComputedStyle(document.querySelector("li"), "::after").content); // " |"
     </script>
 </section>
 
 <section class="code-wrap h300">
     <div class="css-live-wrap">
         <div class="caption">字符图标</div>
-        <div class="caption">利用::befor、content: "☌"实现</div>
+        <div class="caption">利用 ::befor、content: "☌" 实现</div>
         <div class="charIcon centered">
             <input placeholder="请输入搜索词">
         </div>
@@ -60,7 +58,7 @@
     <style class="code" contenteditable="true">
         .charIcon input {
             display: block;
-            padding-left: 24px;
+            padding-left: 23px;
             height: 30px;
             box-sizing: border-box;
         }

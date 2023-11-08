@@ -6,7 +6,7 @@
     <title>characterData</title>
 </head>
 <body>
-<div id='demo'>
+<div>
     <ol>
         <li>111</li>
     </ol>
@@ -14,7 +14,7 @@
 <script type="text/javascript">
     const MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 
-    const list = document.querySelector('ol');
+    const list = document.querySelector("ol");
 
     const Observer = new MutationObserver(function (mutations, instance) {
         mutations.forEach(function (mutation) {

@@ -7,8 +7,6 @@
     <base target="_blank">
     <title>Event-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h700">
@@ -103,7 +101,7 @@
     </div>
 </section>
 
-<section class="code-wrap h350" id="event-target">
+<section class="code-wrap">
     <div class="css-live-wrap w40p">
         <div class="caption">target, currentTarget, delegateTarget 的区别</div>
         <div class="centered">
@@ -142,7 +140,7 @@
         }
     </style>
     <script class="code w60p" contenteditable="true">
-        $('container').on('click', 'outer', target);
+        $('container').on("click", "outer", target);
 
         function target(e) {
             alert(e.target.nodeName);
@@ -153,7 +151,7 @@
     </script>
 </section>
 
-<section class="code-wrap h300" id="event-type">
+<section class="code-wrap h250">
     <div class="css-live-wrap w40p">
         <div class="caption">Event.type</div>
         <div class="caption">返回一个字符串, 表示该事件对象的事件类型</div>
@@ -178,11 +176,11 @@
     </script>
 </section>
 
-<section class="code-wrap">
+<section class="code-wrap h500">
     <div class="css-live-wrap w40p">
         <div class="caption">MouseEvent.button</div>
         <div class="caption">返回一个值，代表用户按下并触发了事件的鼠标按键</div>
-        <div class="button centered" id="button">
+        <div class="button centered">
             <div class="mouse" id="mouse">
                 <div class="top">
                     <div class="left" id="left"></div>
@@ -236,12 +234,16 @@
         }
     </style>
     <script class="code w60p" contenteditable="true">
+        const mouse = document.getElementById("mouse");
         mouse.addEventListener("mousedown", getEvtButton, false);
         mouse.addEventListener("click", getEvtButton, false);
         mouse.addEventListener("mouseup", getEvtButton, false);
 
         function getEvtButton(e) {
-            let button = e.button;
+            const button = e.button,
+                left = document.getElementById("left"),
+                right = document.getElementById("right"),
+                middle = document.getElementById("middle");
             console.log(e.type);
             left.style.background = '';
             right.style.background = '';
@@ -274,7 +276,7 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        let y = document.getElementsByClassName('box-event-y')[0];
+        let y = document.getElementsByClassName("box-event-y")[0];
         y.onclick = function (e) {
             console.log('screenY', e.screenY);
             console.log('pageY', e.pageY);
@@ -284,7 +286,7 @@
     </script>
 </section>
 
-<section class="code-wrap h200" id="event-key">
+<section class="code-wrap h150" id="event-key">
     <div class="css-live-wrap w40p">
         <div class="caption">ctrlKey &amp; shiftKey &amp; altKey</div>
         <div class="caption">按下 ctrl + alt + z, BOOM</div>
@@ -306,7 +308,7 @@
 
         function showBoom(e) {
             if (e.ctrlKey && e.altKey && e.key === 'z') {
-                boom.style.transform = 'scale(1, 1)';
+                document.getElementById("boom").style.transform = 'scale(1, 1)';
             }
         }
     </script>

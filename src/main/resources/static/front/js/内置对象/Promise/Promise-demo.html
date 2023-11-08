@@ -7,16 +7,12 @@
     <base target="_blank">
     <title>Promise-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h450">
     <div class="css-live-wrap w100p">
         <div class="caption">
-            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
-        </div>
-        <div class="caption">
+            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> |
             <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises">使用 Promise</a>
         </div>
         <div class="centered">
@@ -104,20 +100,20 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            let boxCatch = document.getElementsByClassName('box-catch')[0];
+            let boxCatch = document.getElementsByClassName("box-catch")[0];
 
             new Promise((resolve, reject) => {
-                boxCatch.innerHTML = 'Initial';
+                boxCatch.innerHTML = "Initial";
 
                 resolve();
             }).then(() => {
-                throw new Error('Something failed');
+                throw new Error("Something failed");
 
-                boxCatch.innerHTML += '<br/> Do this';
+                boxCatch.innerHTML += "<br/> Do this";
             }).catch(() => {
-                boxCatch.innerHTML += '<br/> Do that';
+                boxCatch.innerHTML += "<br/> Do that";
             }).then(() => {
-                boxCatch.innerHTML += '<br/> Do this whatever happened before';
+                boxCatch.innerHTML += "<br/> Do this whatever happened before";
             })
         })()
 
@@ -134,17 +130,17 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            let boxResolve = document.getElementsByClassName('box-resolve')[0];
+            let boxResolve = document.getElementsByClassName("box-resolve")[0];
 
             setTimeout(() => {
-                boxResolve.innerHTML += '<br/> three';
+                boxResolve.innerHTML += "<br/> three";
             }, 0);
 
             Promise.resolve().then(() => {
-                boxResolve.innerHTML += '<br/> two';
+                boxResolve.innerHTML += "<br/> two";
             });
 
-            boxResolve.innerHTML += '<br/> one';
+            boxResolve.innerHTML += "<br/> one";
         })()
     </script>
 </section>
@@ -158,12 +154,12 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            let boxAll = document.getElementsByClassName('box-all')[0];
+            let boxAll = document.getElementsByClassName("box-all")[0];
 
             let p1 = Promise.resolve(3);
             let p2 = 42;
             let p3 = new Promise((resolve, reject) => {
-                setTimeout(resolve, 100, 'foo');
+                setTimeout(resolve, 100, "foo");
             });
 
             Promise.all([p1, p2, p3]).then(resolve => {
@@ -182,13 +178,13 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            let boxRace = document.getElementsByClassName('box-race')[0];
+            let boxRace = document.getElementsByClassName("box-race")[0];
 
             let p1 = new Promise((resolve, reject) => {
-                setTimeout(resolve, 500, 'p1');
+                setTimeout(resolve, 500, "p1");
             });
             let p2 = new Promise((resolve, reject) => {
-                setTimeout(resolve, 100, 'two');
+                setTimeout(resolve, 100, "two");
             });
 
             Promise.race([p1, p2]).then(resolve => {

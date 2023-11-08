@@ -227,22 +227,22 @@
             margin: 20px 5px 5px;
         }
     </style>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
     <script class="code w60p" contenteditable="true">
         $(function () {
-            $('.box-effects-basics .hide').on('click', function () {
+            $('.box-effects-basics .hide').on("click", function () {
                 $('.box-effects-basics span:last-child').hide("fast", function () {
                     $(this).prev().hide("fast", arguments.callee);
                 });
             });
 
-            $('.box-effects-basics .show').on('click', function () {
+            $('.box-effects-basics .show').on("click", function () {
                 $('.box-effects-basics span:first-child').show("fast", function showNext() {
                     $(this).next().show("fast", showNext);
                 });
             });
 
-            $('.box-effects-basics .toggle').on('click', function () {
+            $('.box-effects-basics .toggle').on("click", function () {
                 $('.box-effects-basics span').toggle("normal");
             })
         })
@@ -284,19 +284,19 @@
     </style>
     <script class="code w60p" contenteditable="true">
         $(function () {
-            $('.box-effects-fading .fadeOut').on('click', function () {
+            $('.box-effects-fading .fadeOut').on("click", function () {
                 $('.box-effects-fading .square:visible:last').fadeOut("normal");
             });
 
-            $('.box-effects-fading .fadeIn').on('click', function () {
+            $('.box-effects-fading .fadeIn').on("click", function () {
                 $('.box-effects-fading .square:hidden:first').fadeIn("normal");
             });
 
-            $('.box-effects-fading .fadeToggle').on('click', function () {
+            $('.box-effects-fading .fadeToggle').on("click", function () {
                 $('.box-effects-fading .square').fadeToggle("normal", "linear");
             });
 
-            $('.box-effects-fading .fadeTo').on('click', function () {
+            $('.box-effects-fading .fadeTo').on("click", function () {
                 $('.box-effects-fading .square').fadeTo("normal", Math.random());
             })
         })
@@ -337,15 +337,15 @@
     </style>
     <script class="code w60p" contenteditable="true">
         $(function () {
-            $('.box-effects-sliding .slideUp').on('click', function () {
+            $('.box-effects-sliding .slideUp').on("click", function () {
                 $('.box-effects-sliding .square:visible:last').slideUp("normal");
             });
 
-            $('.box-effects-sliding .slideDown').on('click', function () {
+            $('.box-effects-sliding .slideDown').on("click", function () {
                 $('.box-effects-sliding .square:hidden:first').slideDown("normal");
             });
 
-            $('.box-effects-sliding .slideToggle').on('click', function () {
+            $('.box-effects-sliding .slideToggle').on("click", function () {
                 $('.box-effects-sliding .square').slideToggle("normal", "linear");
             })
         })
@@ -393,12 +393,11 @@
             margin: 20px 5px 5px;
         }
     </style>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-color/2.1.2/jquery.color.min.js"
-            integrity="sha256-H28SdxWrZ387Ldn0qogCzFiUDDxfPiNIyJX7BECQkDE=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/jquery-color/dist/jquery.color.min.js"></script>
     <script class="code w60p" contenteditable="true">
         $(function () {
             const $ball = $('#ball');
-            $('.box-effects-custom .start').on('click', function () {
+            $('.box-effects-custom .start').on("click", function () {
                 // 背景颜色渐变需要 jquery.color 插件
                 $ball.queue(function () {
                     $(this).text('黄');
@@ -417,7 +416,7 @@
                 $ball.animate({left: '0', top: '0', backgroundColor: '#fbcb43'}, 1000);
             });
 
-            $('.box-effects-custom .stop').on('click', function () {
+            $('.box-effects-custom .stop').on("click", function () {
                 $ball.clearQueue();
                 $ball.stop();
             })

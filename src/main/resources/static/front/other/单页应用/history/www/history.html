@@ -66,21 +66,21 @@
         const self = this;
 
         // 重新加载函数，这里使用的主机是 http://localhost:3333/
-        window.addEventListener('load', function () {
+        window.addEventListener("load", function () {
             self.currentRoute = location.href.slice(location.href.indexOf('/', 8));
             console.log(self.currentRoute);
             self.refresh(self.currentRoute);
         });
 
         // 当用户点击前进后退按钮时触发函数
-        window.addEventListener('popstate', function () {
-            console.log('history.state.path:', history.state.path);
+        window.addEventListener("popstate", function () {
+            console.log("history.state.path:", history.state.path);
             self.currentRoute = history.state.path;
             self.refresh(self.currentRoute, 2);
         }, false);
 
         // 对所有的link标签进行绑定事件
-        const historyLinks = document.querySelectorAll('.history-link');
+        const historyLinks = document.querySelectorAll(".history-link");
         for (let i = 0, len = historyLinks.length; i < len; i++) {
             historyLinks[i].onclick = function (e) {
                 // 阻止默认
@@ -93,7 +93,7 @@
 </script>
 
 <script>
-    const wrap = document.querySelector('.router-wrap');
+    const wrap = document.querySelector(".router-wrap");
 
     // 实例化Router
     window.Router = new Router();

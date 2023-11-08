@@ -7,8 +7,6 @@
     <base target="_blank">
     <title>Node-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
     <style>
         th {
             background-color: var(--gyb5);
@@ -250,7 +248,7 @@
     </div>
 </section>
 
-<section class="code-wrap h550">
+<section class="code-wrap h500">
     <div class="css-live-wrap w100p">
         <div class="caption">nodeName &amp; nodeValue</div>
         <div class="name centered">
@@ -333,7 +331,7 @@
     </div>
 </section>
 
-<section class="code-wrap h350">
+<section class="code-wrap h300">
     <div class="css-live-wrap w100p">
         <div class="caption">nodeType</div>
         <div class="nodeType centered">
@@ -383,7 +381,7 @@
     </div>
 </section>
 
-<section class="code-wrap h350">
+<section class="code-wrap h300">
     <div class="css-live-wrap w100p">
         <div class="caption">
             <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/textContent">textContent</a>
@@ -431,7 +429,7 @@
     </div>
 </section>
 
-<section class="code-wrap h550" id="create">
+<section class="code-wrap h600">
     <div class="css-live-wrap w40p">
         <div class="caption">insertBefore()</div>
         <div class="caption">利用 insertBefore &amp; nextSibling 模拟 insertAfter</div>
@@ -508,33 +506,33 @@
         }
     </style>
     <script class="code w60p" contenteditable="true">
-        const current = document.querySelector('.insert ul').children[2];
-        document.querySelector('.btn').children[0].onclick =
-            document.querySelector('.btn').children[1].onclick = insertChange;
+        const current = document.querySelector(".insert ul").children[2];
+        document.querySelector(".btn").children[0].onclick =
+            document.querySelector(".btn").children[1].onclick = insertChange;
 
         function insertChange(e) {
             e = e.target;
 
-            const heroes = document.querySelector('.insert ul').children;
+            const heroes = document.querySelector("3").children;
 
             for (let i = 0; i < heroes.length; i++) {
                 heroes[i].className = '';
             }
 
-            const ul = document.querySelector('.insert ul');
+            const ul = document.querySelector(".insert ul");
 
             // 创建元素节点
-            const liuBei = document.createElement('li');
+            const liuBei = document.createElement("li");
             // 创建文本节点
-            const newContent = document.createTextNode('刘备');
+            const newContent = document.createTextNode("刘备");
             liuBei.appendChild(newContent);
             // 创建 attr 节点
-            const att = document.createAttribute('class');
-            att.nodeValue = 'active';
+            const att = document.createAttribute("class");
+            att.nodeValue = "active";
             // 向元素中添加指定的属性节点
             liuBei.setAttributeNode(att);
 
-            if (e.textContent === 'insertBefore 刘备') {
+            if (e.textContent === "insertBefore 刘备") {
                 ul.insertBefore(liuBei, current);
             } else {
                 ul.insertBefore(liuBei, current.nextElementSibling);
@@ -634,13 +632,13 @@
     </style>
     <script class="code w60p" contenteditable="true">
         function replace() {
-            const origin = document.getElementsByClassName('origin')[0];
+            const origin = document.getElementsByClassName("origin")[0];
             // 如果为true，深度克隆，则该节点的所有后代节点也都会被克隆
             const clone = origin.cloneNode(true);
-            const list = ['關羽', '張飛', '趙雲', '馬超', '趙雲'];
+            const list = ["關羽", "張飛", "趙雲", "馬超", "趙雲"];
             let li;
             for (let i = 0, len = list.length; i < len; i++) {
-                li = document.createElement('li');
+                li = document.createElement("li");
                 li.textContent = list[i];
                 clone.appendChild(li);
             }
@@ -648,7 +646,7 @@
         }
 
         function remove() {
-            const origin = document.getElementsByClassName('origin')[0];
+            const origin = document.getElementsByClassName("origin")[0];
             // 返回包含指定节点的子节点的集合，该集合为即时更新的集合
             const children = origin.childNodes;
             for (let i = children.length - 1; i >= 0; i--) {
@@ -658,7 +656,7 @@
     </script>
 </section>
 
-<section class="code-wrap h500">
+<section class="code-wrap h450">
     <div class="css-live-wrap w40p">
         <div class="caption">
             <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelectorAll">querySelectorAll</a>

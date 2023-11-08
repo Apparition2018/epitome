@@ -6,18 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>replace()-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap">
     <div class="css-live-wrap w33p">
-        <div class="caption">
-            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace"
-               target="_blank">replace()</a>
-        </div>
         <div class="caption">textarea 替换空格和换行符，保存到数据库</div>
-        <div class="caption">利用 replace()中的 global 选项 实现</div>
+        <div class="caption">利用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace">replace()</a> 中的 global 选项 实现</div>
         <div class="centered" id="eg1">
             <label>
                 <textarea name="textarea" cols="36" rows="8" placeholder="输入空格和换行，看看效果..." onkeyup="eg1()"></textarea>
@@ -43,7 +37,7 @@
         function eg1() {
             let text = document.querySelector("#eg1 .text");
             let textarea = document.querySelector("#eg1 textarea");
-            text.textContent = textarea.value.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, '&nbsp;');
+            text.textContent = textarea.value.replace(/\r\n/g, "<br/>").replace(/\n/g, "<br/>").replace(/\s/g, '&nbsp;');
         }
     </script>
 </section>
@@ -55,22 +49,22 @@
         </div>
     </div>
     <script class="code w67p" contenteditable="true">
-        let str = '1a2b3';
+        let str = "1a2b3";
 
         // $$: 插入一个 "$"
         let newStr = str.replace(/[a-z]/g, '$$');   // "1$2$3"
 
         // $&: 插入匹配的子串
-        newStr = str.replace(/[a-z]/g, '$&');       // "1a2b3"
+        newStr = str.replace(/[a-z]/g, "$&");       // "1a2b3"
 
         // $`: 插入当前匹配的子串左边的内容
-        newStr = str.replace(/[a-z]/g, '$`');       // "1121a23"
+        newStr = str.replace(/[a-z]/g, "$`");       // "1121a23"
 
         // $': 插入当前匹配的子串右边的内容
         newStr = str.replace(/[a-z]/g, "$'");       // "12b3233"
 
         // $$: 假如第一个参数是 RegExp对象，并且 n 是个小于100的非负整数，那么插入第 n 个括号匹配的字符串
-        newStr = str.replace(/([a-z])\d([a-z])/g, '$2'); // "1b3"
+        newStr = str.replace(/([a-z])\d([a-z])/g, "$2"); // "1b3"
     </script>
 </section>
 
@@ -97,24 +91,24 @@
     <script class="code w67p" contenteditable="true">
         function styleHyphenFormat(propertyName) {
             function upperToHyphenLower(match) {
-                return '-' + match.toLowerCase();
+                return "-" + match.toLowerCase();
             }
 
             return propertyName.replace(/[A-Z]/g, upperToHyphenLower);
         }
 
-        styleHyphenFormat('backgroundColor');
+        styleHyphenFormat("backgroundColor");
     </script>
 </section>
 
-<section class="code-wrap h150">
+<section class="code-wrap h100">
     <div class="css-live-wrap w33p">
         <div class="caption">千位分隔符</div>
         <div class="centered">
         </div>
     </div>
     <script class="code w67p" contenteditable="true">
-        '123456789'.replace(/\B(?=(\d{3})+$)/g, ',');
+        "123456789".replace(/\B(?=(\d{3})+$)/g, ",");
     </script>
 </section>
 </body>

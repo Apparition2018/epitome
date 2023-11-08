@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>overflow-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap">
@@ -81,7 +79,7 @@
         <div class="caption">避免 margin 穿透</div>
         <div class="caption">overflow 不为 visible 触发 BFC</div>
         <div class="demo centered">
-            <div class="wrap" id="wrap">
+            <div class="wrap">
                 <div>CONTENT</div>
             </div>
             <select title="">
@@ -119,8 +117,8 @@
         }
     </style>
     <script>
-        document.getElementsByTagName('select')[0].onchange = function () {
-            document.getElementById('wrap').style.overflow = this.value;
+        document.querySelector(".demo select").onchange = function () {
+            document.querySelector(".demo .wrap").style.overflow = this.value;
         }
     </script>
 </section>

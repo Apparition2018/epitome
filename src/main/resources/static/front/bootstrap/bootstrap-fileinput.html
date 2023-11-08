@@ -7,9 +7,9 @@
     <base target="_blank">
     <title>bootstrap-fileinput</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-fileinput/5.5.2/css/fileinput.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/bootstrap@^3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/bootstrap@^3/dist/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet">
 </head>
 <body>
 <section class="code-wrap h100vh">
@@ -27,44 +27,44 @@
             <div id="kartik-file-errors"></div>
         </div>
     </div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-fileinput/5.5.2/js/fileinput.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-fileinput/5.5.2/js/locales/zh.min.js"></script>
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@^3/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-fileinput/js/locales/zh.min.js"></script>
     <script class="code w60p" contenteditable="true">
         $(function () {
             $("#file-input").fileinput({
-                language: 'zh',
+                language: "zh",
                 showPreview: false,
-                uploadUrl: 'http://localhost:3333/multipart-file/upload/file',
+                uploadUrl: "http://localhost:3333/multipart-file/upload/file",
                 maxFileSize: 10240,
                 msgSizeTooLarge: '"{name}" ({size} kb) 超过允许的最大上传大小 {maxsize} kb。请重新上传!',
-                allowedFileExtensions: ['xls', 'xlsx'],
-                elErrorContainer: '#kartik-file-errors',
+                allowedFileExtensions: ["xls", "xlsx"],
+                elErrorContainer: "#kartik-file-errors",
             })
-                .on('filepreupload', function (event, data, previewId, index, fileId) {
+                .on("filepreupload", function (event, data, previewId, index, fileId) {
                     let form = data.form, files = data.files, extra = data.extra,
                         response = data.response, reader = data.reader;
-                    console.log('File pre upload triggered', fileId);
+                    console.log("File pre upload triggered", fileId);
                 })
                 .on("fileuploaded", function (event, previewId, index, fileId) {
-                    console.log('File uploaded', previewId, index, fileId);
+                    console.log("File uploaded", previewId, index, fileId);
                 })
-                .on('filebatchpreupload', function (event, data) {
+                .on("filebatchpreupload", function (event, data) {
                     let form = data.form, files = data.files, extra = data.extra,
                         response = data.response, reader = data.reader;
-                    console.log('File batch pre upload');
+                    console.log("File batch pre upload");
                 })
-                .on('filebatchuploadsuccess', function (event, data) {
+                .on("filebatchuploadsuccess", function (event, data) {
                     let form = data.form, files = data.files, extra = data.extra,
                         response = data.response, reader = data.reader;
-                    console.log('File batch upload success');
+                    console.log("File batch upload success");
                 })
                 .on("fileclear", function (event) {
                     console.log("fileclear");
                 })
-                .on('fileuploaderror', function (event, data, msg) {
-                    console.log('File uploaded', data.previewId, data.index, data.fileId, msg);
+                .on("fileuploaderror", function (event, data, msg) {
+                    console.log("File uploaded", data.previewId, data.index, data.fileId, msg);
                 })
         })
     </script>

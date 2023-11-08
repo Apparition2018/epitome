@@ -7,7 +7,6 @@
     <title>Document-cookie-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h3">
@@ -58,19 +57,17 @@
     </script>
 </section>
 
-<section class="code-wrap h650">
+<section class="code-wrap h600">
     <div class="css-live-wrap w40p">
         <div class="caption">
-            <a href="https://www.w3school.com.cn/js/js_cookies.asp">欢迎用户 cookie</a>
+            <a href="https://www.w3school.com.cn/js/js_cookies.asp" target="_blank">Welcome</a>
         </div>
-        <div class="centered demo-click box-cookie">
-            cookie
+        <div id="welcome" class="centered demo-click">
+            Welcome
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        (function () {
-            $('.box-cookie')[0].onclick = checkCookie;
-        })();
+        document.getElementById("welcome").onclick = checkCookie;
 
         function getCookie(c_name) {
             if (document.cookie.length > 0) {

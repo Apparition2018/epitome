@@ -7,8 +7,6 @@
     <base target="_blank">
     <title>select-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h250">
@@ -24,10 +22,9 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const $cars = $('#cars');
-        $cars.change(function() {
-            console.log($cars.val());
-        })
+        cars.onchange = function() {
+            console.log(this.value);
+        }
     </script>
 </section>
 </body>

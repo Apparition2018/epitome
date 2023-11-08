@@ -59,7 +59,7 @@
             color: #aaa;
         }
     </style>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
     <script>
         (function () {
             // 滑动时的样式
@@ -72,20 +72,20 @@
                 };
 
                 const $input = $(this);
-                const text = document.getElementById('text');
+                const text = document.getElementById("text");
 
                 const min = this.sliderCfg.min;
                 const max = this.sliderCfg.max;
                 const step = this.sliderCfg.step;
                 const callback = this.sliderCfg.callback;
 
-                $input.attr('min', min).attr('max', max).attr('step', step);
+                $input.attr("min", min).attr("max", max).attr("step", step);
 
                 $input.on("input", function () {
-                    $input.attr('value', this.value);
-                    $input.css('background', 'linear-gradient(to right, #ebeff4, #059CFA ' + this.value + '%, #ebeff4 ' + this.value + '%)');
+                    $input.attr("value", this.value);
+                    $input.css("background", "linear-gradient(to right, #ebeff4, #059CFA " + this.value + "%, #ebeff4 " + this.value + "%)");
 
-                    text.dataset.text = '';
+                    text.dataset.text = "";
                     text.innerText = this.value;
 
                     if ($.isFunction(callback)) {
@@ -93,7 +93,7 @@
                     }
                 });
             };
-            $('#snrPollInterval').RangeSlider({min: 0, max: 100, step: 5, callback: ''});
+            $("#snrPollInterval").RangeSlider({min: 0, max: 100, step: 5, callback: ''});
         })()
     </script>
 </section>

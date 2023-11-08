@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>Document-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h450">
@@ -159,7 +157,7 @@
     </div>
 </section>
 
-<section class="code-wrap h300">
+<section class="code-wrap h250">
     <div class="css-live-wrap w40p">
         <div class="caption">document.referrer</div>
         <div class="caption">返回跳转或打开到当前页面的那个页面的 URI，如果没有者返回空</div>
@@ -170,8 +168,8 @@
     <script class="code w60p" contenteditable="true">
         if (!document.referrer) {
             /* 如果document.referrer为假，则跳转到百度首页 */
-            let a = document.querySelector('.jsBack a');
-            a.setAttribute('href', 'https://www.baidu.com');
+            let a = document.querySelector(".jsBack a");
+            a.setAttribute("href", "https://www.baidu.com");
         }
     </script>
 </section>
@@ -270,14 +268,14 @@
         let finished = document.getElementById("finished");
         let num = document.getElementById("num");
         let oTimer = setInterval(function () {
-            document.title = num.innerHTML = parseInt(getCSS(finished, 'width')) + "";
+            document.title = num.innerHTML = parseInt(getCSS(finished, "width")) + "";
         }, 100);
 
-        document.addEventListener('visibilitychange', function () {
+        document.addEventListener("visibilitychange", function () {
             if (document.hidden) {
-                finished.style.animationPlayState = 'paused';
+                finished.style.animationPlayState = "paused";
             } else {
-                finished.style.animationPlayState = 'running';
+                finished.style.animationPlayState = "running";
             }
         }, false);
     </script>

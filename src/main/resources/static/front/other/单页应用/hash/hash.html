@@ -56,18 +56,18 @@
     // 初始化
     Router.prototype.init = function () {
         const self = this;
-        window.addEventListener('load', function () {
+        window.addEventListener("load", function () {
             self.refresh();
         }, false);
 
-        window.addEventListener('hashchange', function () {
+        window.addEventListener("hashchange", function () {
             self.refresh();
         });
     }
 </script>
 
 <script>
-    const wrap = document.querySelector('.router-wrap');
+    const wrap = document.querySelector(".router-wrap");
 
     window.Router = new Router();
     Router.route('/', function () {

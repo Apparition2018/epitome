@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <meta http-equiv="Refresh" content="99;url=http://www.baidu.com/#s_kw_wrap"/>
+    <meta http-equiv="Refresh" content="3;url=https://www.deepl.com/translator"/>
     <title>meta-fresh</title>
     <style>
         #eg1 {
@@ -28,15 +28,14 @@
 </head>
 <body>
 <div id="eg1">
-    <span>还有<b id="second">99</b>秒跳转到百度</span>
+    <span>还有<b id="seconds">3</b>秒跳转到 DeepL</span>
 </div>
 <script>
-    // <meta http-equiv="Refresh" content="60;url=http://www.baidu.com/" />
+    // <meta http-equiv="Refresh" content="3;url=https://www.deepl.com/translator"/>
 
-    let i = 99;
+    let i = 3;
     setInterval(function () {
-        const oSecond = document.getElementById('second');
-        oSecond.innerText = --i;
+        document.getElementById("seconds").innerText = --i;
     }, 1000);
 </script>
 </body>

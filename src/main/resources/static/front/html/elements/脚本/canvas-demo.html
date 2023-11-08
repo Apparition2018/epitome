@@ -11,16 +11,16 @@
 <section class="code-wrap h350">
     <div class="css-live-wrap w40p">
         <div class="caption">canvas 绘制形状</div>
-        <canvas id="canvas-1" class="centered" width="200" height="200">
+        <canvas id="canvas" class="centered" width="200" height="200">
             您的浏览器不支持 HTML5 canvas 标签。
         </canvas>
     </div>
     <script class="code w60p" contenteditable="true">
         // 绘制形状
-        const canvas = document.getElementById('canvas-1'),
-            ctx = canvas.getContext('2d');
+        const canvas = document.getElementById("canvas"),
+            ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, 200, 200); // 擦除(0,0)位置大小为200x200的矩形，擦除的意思是把该区域变为透明
-        ctx.fillStyle = '#dddddd'; // 使用内部方式描述颜色和样式
+        ctx.fillStyle = "#dddddd"; // 使用内部方式描述颜色和样式
         ctx.fillRect(35, 35, 130, 130); // 把(35,35)位置大小为130x130的矩形涂色
         // 利用Path绘制复杂路径:
         const path = new Path2D();
@@ -31,7 +31,7 @@
         path.arc(85, 90, 5, 0, Math.PI * 2, true);
         path.moveTo(120, 90);
         path.arc(115, 90, 5, 0, Math.PI * 2, true);
-        ctx.strokeStyle = '#0000ff'; // 描述画笔（绘制图形）颜色或者样式
+        ctx.strokeStyle = "#0000ff"; // 描述画笔（绘制图形）颜色或者样式
         ctx.stroke(path); // 根据当前的画线样式，绘制当前或已经存在的路径
     </script>
 </section>
@@ -39,22 +39,22 @@
 <section class="code-wrap h250">
     <div class="css-live-wrap w40p">
         <div class="caption">canvas 绘制文本</div>
-        <canvas id="canvas-2" class="centered" width="185" height="70">
+        <canvas id="canvas2" class="centered" width="185" height="70">
             您的浏览器不支持 HTML5 canvas 标签。
         </canvas>
     </div>
     <script class="code w60p" contenteditable="true">
         // 绘制文本
-        const canvas2 = document.getElementById('canvas-2'),
-            ctx2 = canvas2.getContext('2d');
+        const canvas2 = document.getElementById("canvas2"),
+            ctx2 = canvas2.getContext("2d");
         ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
         ctx2.shadowOffsetX = 2; // 阴影水平偏移距离
         ctx2.shadowOffsetY = 2; // 阴影垂直偏移距离
         ctx2.shadowBlur = 2; // 模糊效果程度
-        ctx2.shadowColor = '#666666'; // 阴影颜色
-        ctx2.font = '24px Arial'; // 字体样式
-        ctx2.fillStyle = '#333333';
-        ctx2.fillText('带阴影的文字', 20, 40); // 在(x, y)位置填充文本
+        ctx2.shadowColor = "#666666"; // 阴影颜色
+        ctx2.font = "24px Arial"; // 字体样式
+        ctx2.fillStyle = "#333333";
+        ctx2.fillText("带阴影的文字", 20, 40); // 在(x, y)位置填充文本
     </script>
 </section>
 </body>

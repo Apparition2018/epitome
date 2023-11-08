@@ -87,19 +87,19 @@
     </div>
     <script class="code w67p" contenteditable="true">
         let getScrollY = function () {
-            if (typeof window.pageYOffset === 'number') {
+            if (typeof window.pageYOffset === "number") {
                 getScrollY = function () {
                     return window.pageYOffset;
                 };
-            } else if ((typeof document.compatMode === 'string') &&
+            } else if ((typeof document.compatMode === "string") &&
                 (document.compatMode.indexOf('CSS') >= 0) &&
                 (document.documentElement) &&
-                (typeof document.documentElement.scrollTop === 'number')) {
+                (typeof document.documentElement.scrollTop === "number")) {
                 getScrollY = function () {
                     return document.documentElement.scrollTop;
                 };
             } else if ((document.body) &&
-                (typeof document.body.scrollTop === 'number')) {
+                (typeof document.body.scrollTop === "number")) {
                 getScrollY = function () {
                     return document.body.scrollTop;
                 }

@@ -7,11 +7,9 @@
     <base target="_blank">
     <title>FormData-Demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script defer src="../../../../public/js/demo.js"></script>
 </head>
 <body>
-<section class="code-wrap h400">
+<section class="code-wrap">
     <div class="css-live-wrap w100p">
         <div class="caption"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData">FormData</a>
         </div>
@@ -101,18 +99,16 @@
     </style>
     <script class="code w60p" contenteditable="true">
         (function () {
-            document.getElementById('submit').onclick = function (e) {
-                const myForm = document.getElementById("myForm");
-
+            document.getElementById("submit").onclick = function (e) {
                 // 构造器
-                const formData1 = new FormData(myForm);
+                const formData1 = new FormData(document.getElementById("myForm"));
                 for (const pair of formData1.entries()) {
                     console.log(pair[0] + ": " + pair[1]);
                 }
 
                 // append()
                 const formData2 = new FormData();
-                formData2.append('username', document.getElementById('username').value);
+                formData2.append("username", document.getElementById("username").value);
                 console.log(formData2.get("username"));
 
                 e.preventDefault();
