@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <base target="_blank">
     <title>mustache.js</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
 </head>
 <body>
-<section class="code-wrap h250">
+<section class="code-wrap">
     <div class="css-live-wrap w40p">
-        <div class="caption"><a href="https://github.com/janl/mustache.js#templates">mustache.js</a></div>
+        <div class="caption"><a href="https://www.npmjs.com/package/mustache" target="_blank">mustache.js</a></div>
         <div class="centered">
             <div id="target">Loading...</div>
             <script id="template" type="x-tmpl-mustache">
-                    Hello {{ name }}!
+                Hello {{ name }}!
             </script>
         </div>
     </div>
     <script src="https://unpkg.com/mustache/mustache.min.js"></script>
     <script class="code w60p" contenteditable="true">
-        const rendered = Mustache.render(template.innerHTML, { name: 'Luke' });
+        const rendered = Mustache.render(template.innerHTML, {name: 'Luke'});
         target.innerHTML = rendered;
     </script>
 </section>

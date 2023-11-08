@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>jqGrid</title>
+    <link rel="stylesheet" href="https://unpkg.com/jquery-ui/dist/themes/base/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/jqGrid/css/ui.jqgrid.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"></div>
+        <div class="centered">
+            <table id="jqGrid"></table>
+            <div id="jqGridPager"></div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/jqGrid/jquery.js"></script>
+    <script src="https://unpkg.com/jqGrid/js/jquery.jqGrid.min.js"></script>
+    <script src="https://unpkg.com/jqGrid/js/i18n/grid.locale-cn.js"></script>
+    <script class="code" contenteditable="true">
+        var mydata = [
+            { id: "1", invdate: "2007-10-01", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00" },
+            { id: "2", invdate: "2007-10-02", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00" },
+            { id: "3", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" },
+            { id: "4", invdate: "2007-10-04", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00" },
+            { id: "5", invdate: "2007-10-05", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00" },
+            { id: "6", invdate: "2007-09-06", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" },
+            { id: "7", invdate: "2007-10-04", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00" },
+            { id: "8", invdate: "2007-10-03", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00" },
+            { id: "9", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00" }
+        ];
+
+        $(document).ready(function () {
+            $("#jqGrid").jqGrid({
+                caption: "<a href='https://www.npmjs.com/package/jqGrid'>jqGrid</a> | <a href='https://www.cnblogs.com/ghq120/p/8847727.html'>jqGrid 中文指南</a>",
+                datatype: "local",
+                data: mydata,
+                colModel: [
+                    {label: 'Inv No', name: 'id', width: 75, key: true},
+                    {label: 'Date', name: 'invdate', width: 90},
+                    {label: 'Client', name: 'name', width: 100},
+                    {label: 'Amount', name: 'amount', width: 80},
+                    {label: 'Tax', name: 'tax', width: 80},
+                    {label: 'Total', name: 'total', width: 80},
+                    {label: 'Notes', name: 'note', width: 150}
+                ],
+                page: 1,
+                rowNum: 5,
+                width: 780,
+                height: 130,
+                viewrecords: true, // show the current page, data rang and total records on the toolbar
+                scroll: 1, // set the scroll property to 1 to enable paging with scrollbar - virtual loading of records
+                emptyrecords: 'Scroll to bottom to retrieve new page', // the message will be displayed at the bottom
+                pager: "#jqGridPager",
+            });
+        });
+    </script>
+</section>
+</body>
+</html>

@@ -97,7 +97,7 @@
     <h3>数据由 wthrcdn.etouch.cn 提供</h3>
 </footer>
 <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-<script src="https://unpkg.com/jquery.pjax/jquery.pjax.js"></script>
+<script src="https://unpkg.com/jquery-pjax/jquery.pjax.js"></script>
 <script type="text/javascript">
     $.pjax({
         selector: 'a',
