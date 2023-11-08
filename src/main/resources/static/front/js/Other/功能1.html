@@ -41,16 +41,17 @@
     </div>
     <script class="code w67p" contenteditable="true">
         // 方法一： 使用正则
-        '1234567890'.replace(/\B(?=(\d{3})+(?!\d))/g, ","); // "1,234,567,890"
+        console.log("1234567890".replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
         // 方法二
         function formatMoney(money) {
-            return money.split('').reverse().reduce((acc, value, index, arr) => {
-                return ((index % 3) ? value : value + ',') + acc;
+            money = typeof money !== "string" ? money + "" : money;
+            return money.split("").reverse().reduce((acc, value, index, arr) => {
+                return ((index % 3) ? value : value + ",") + acc;
             })
         }
 
-        formatMoney('1234567890'); // "1,234,567,890"
+        console.log(formatMoney(1234567890));
     </script>
 </section>
 
@@ -86,7 +87,7 @@
         </div>
     </div>
     <script class="code w67p" contenteditable="true">
-        [...new Set([1, '1', 2, 2, 1, 3])]; // [1, "1", 2, 3]
+        [...new Set([1, "1", 2, 2, 1, 3])]; // [1, "1", 2, 3]
     </script>
 </section>
 
@@ -138,7 +139,7 @@
             throw new Error(msg)
         };
 
-        const getSum = (a = _err('a is not defined'), b = _err('b is not defined')) => a + b;
+        const getSum = (a = _err("a is not defined"), b = _err("b is not defined")) => a + b;
 
         // getSum(1); // Error: b is not defined
     </script>
@@ -182,21 +183,21 @@
     <script class="code w67p" contenteditable="true">
         // 方法一
         function getRandomColor1() {
-            return '#' + (function (color) {
-                return (color += '0123456789abcdef'[Math.floor(Math.random() * 16)] && (color.length === 6) ? color : arguments.callee(color));
+            return "#" + (function (color) {
+                return (color += "0123456789abcdef"[Math.floor(Math.random() * 16)] && (color.length === 6) ? color : arguments.callee(color));
             })('');
         }
 
         // 方法二
         function getRandomColor2() {
             return (function (s, c) {
-                return (c ? arguments.callee(s, c - 1) : '#') + s[Math.floor(Math.random() * 16)]
-            })('0123456789abcdef', 5);
+                return (c ? arguments.callee(s, c - 1) : "#") + s[Math.floor(Math.random() * 16)]
+            })("0123456789abcdef", 5);
         }
 
         // 方法三
         function getRandomColor3() {
-            return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16).slice(-6));
+            return "#" + ("00000" + (Math.random() * 0x1000000 << 0).toString(16).slice(-6));
         }
     </script>
 </section>

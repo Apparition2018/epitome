@@ -205,7 +205,7 @@
             const firstname = $("#firstname").val();
             const lastname = $("#lastname").val();
             if (firstname && lastname && !this.value) {
-                this.value = firstname + "." + lastname;
+                this.value = `${firstname}.${lastname}`;
             }
         });
 

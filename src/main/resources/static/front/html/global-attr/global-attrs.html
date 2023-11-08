@@ -100,7 +100,9 @@
 <section class="code-wrap h200">
     <div class="css-live-wrap w40p">
         <div class="caption">为表单域添加快捷键</div>
-        <div class="caption">利用 <a href="https://www.zhangxinxu.com/study/201705/accesskey-js-enhance.html">accesskey.js</a> 实现</div>
+        <div class="caption">利用 <a
+                href="https://www.zhangxinxu.com/study/201705/accesskey-js-enhance.html">accesskey.js</a> 实现
+        </div>
         <div class="ak centered">
             <div>
                 <label for="myName">姓名</label>
@@ -173,8 +175,7 @@
             // 获取字符Unicode值方法
             const U = function (a, b) {
                 if (!a) return "";
-                for (let b = b || "x", c = "", d = 0, e; d < a.length; d += 1) a.charCodeAt(d) >= 55296 && a.charCodeAt(d) <= 56319 ? (e = (65536 + 1024 * (Number(a.charCodeAt(d)) - 55296) + Number(a.charCodeAt(d + 1)) - 56320).toString(16), d += 1) : e = a.charCodeAt(d).toString(16),
-                    c += b + e;
+                for (let b = b || "x", c = "", d = 0, e; d < a.length; d += 1) a.charCodeAt(d) >= 55296 && a.charCodeAt(d) <= 56319 ? (e = (65536 + 1024 * (Number(a.charCodeAt(d)) - 55296) + Number(a.charCodeAt(d + 1)) - 56320).toString(16), d += 1) : e = a.charCodeAt(d).toString(16), c += b + e;
                 return c.substr(b.length);
             };
 
@@ -214,8 +215,8 @@
                     div.className = "AK_Tips";
                     div.setAttribute("style", "position:absolute;top:" + (bounding.top + scrollTop) + "px;left:" + (bounding.left + scrollLeft) + 'px;z-index:9999;font-family:consolas,"Liberation Mono",courier,monospace;font-size:12px;border-radius:2px;color:white;background:rgba(0,0,0,.75);opacity:0.8;line-height:13px;padding:0 3px;');
                     div.innerHTML = arrAccesskey.map(function (key) {
-                        return '<kbd style="font-family:inherit;">' + key.replace("Key", '') + '</kbd>';
-                    }).join('+');
+                        return '<kbd style="font-family:inherit;">' + key.replace("Key", "") + "</kbd>";
+                    }).join("+");
 
                     document.body.appendChild(div);
 
@@ -271,7 +272,7 @@
                     // 根据这个判断按键是否有对应的匹配
                     let indexMatch = -1;
                     arrAcceeekey.forEach(function (accesskey, index) {
-                        if ((event.key && event.key === accesskey) || (event.keyIdentifier && parseInt(event.keyIdentifier.toLowerCase().replace('u+', ''), 16) === parseInt(U(accesskey), 16))) {
+                        if ((event.key && event.key === accesskey) || (event.keyIdentifier && parseInt(event.keyIdentifier.toLowerCase().replace("u+", ""), 16) === parseInt(U(accesskey), 16))) {
                             indexMatch = index;
                             return false;
                         }

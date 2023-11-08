@@ -461,9 +461,9 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        $('.box-event-data').click({'a': 1, 'b': 2, 'c': 3}, function (e) {
+        $(".box-event-data").click({"a": 1, "b": 2, "c": 3}, function (e) {
             $.each(e.data, function (i, v) {
-                alert(i + ': ' + v);
+                alert(`${i}: ${v}`);
             })
         })
     </script>

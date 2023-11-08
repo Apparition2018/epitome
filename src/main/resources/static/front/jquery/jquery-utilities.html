@@ -53,8 +53,8 @@
                     </td>
                     <td>为每个匹配元素规定要执行的函数</td>
                     <td>
-                        <a href="javascript: $.each([1,2,3],function(i,v){alert(i+': '+v)})">
-                            $.each([1,2,3],function(i,v){alert(i+': '+v)})
+                        <a href="javascript: $.each([1,2,3],function(i,v){alert(`${i}: ${v}`)})">
+                            $.each([1,2,3],function(i,v){alert(`${i}: ${v}`)})
                         </a>
                     </td>
                 </tr>
@@ -307,22 +307,24 @@
         </div>
     </div>
     <script>
-        $('#utilities-each').tooltip([
-            [
-                'forEach()返回值是undefined，不可以链式调用',
-                'map()返回一个新数组，原数组不会改变',
-                '没有办法终止或者跳出forEach()循环，除非抛出异常',
-                '$.each()规定为每个匹配元素规定运行的函数，可以返回 false 可用于及早停止循环'
-            ]
-        ]);
+        $(function () {
+            $('#utilities-each').tooltip([
+                [
+                    'forEach()返回值是undefined，不可以链式调用',
+                    'map()返回一个新数组，原数组不会改变',
+                    '没有办法终止或者跳出forEach()循环，除非抛出异常',
+                    '$.each()规定为每个匹配元素规定运行的函数，可以返回 false 可用于及早停止循环'
+                ]
+            ]);
 
-        $('#utilities-noop').tooltip([
-            '这对一些插件作者很有用，当插件提供了一个可选的回调函数接口，那么如果调用的时候没有传递这个回调函数，就用jQuery.noop来代替执行'
-        ]);
+            $('#utilities-noop').tooltip([
+                '这对一些插件作者很有用，当插件提供了一个可选的回调函数接口，那么如果调用的时候没有传递这个回调函数，就用jQuery.noop来代替执行'
+            ]);
 
-        $('#utilities-unique').tooltip([
-            'jQuery 3.0 更名为 $.uniqueSort()'
-        ])
+            $('#utilities-unique').tooltip([
+                'jQuery 3.0 更名为 $.uniqueSort()'
+            ])
+        })
     </script>
 </section>
 
@@ -349,7 +351,7 @@
             // $.extend( [deep ], target, object1 [, objectN ] )
             $.extend(true, obj1, obj2);
 
-            $('.box-extend>div').on("click", function () {
+            $(".box-extend>div").on("click", function () {
                 alert(JSON.stringify(obj1, null, 4))
             });
         })
@@ -375,7 +377,7 @@
                 }
             });
 
-            $('.box-fn-extend').printNodeName();
+            $(".box-fn-extend").printNodeName();
         })
     </script>
 </section>
@@ -392,7 +394,7 @@
         const name = "全局变量";
         $(function () {
             const name = "局部变量";
-            $('.box-globalEval div').on("click", function () {
+            $(".box-globalEval div").on("click", function () {
                 alert(name);
                 eval("alert('alert: ' + name)");
                 $.globalEval("alert('globalEval: ' + name)");
@@ -416,9 +418,9 @@
     </div>
     <script class="code w60p" contenteditable="true">
         $(function () {
-            $('.box-makeArray .demo-button').on("click", function () {
-                const arr = $.makeArray(document.querySelectorAll('.box-makeArray li'));
-                $(arr.reverse()).appendTo($('.box-makeArray ul'));
+            $(".box-makeArray .demo-button").on("click", function () {
+                const arr = $.makeArray(document.querySelectorAll(".box-makeArray li"));
+                $(arr.reverse()).appendTo($(".box-makeArray ul"));
             })
         })
     </script>
@@ -438,9 +440,9 @@
             const dom = $.parseHTML(str);
             const nodeNames = [];
             $.each(dom, function (i, e) {
-                nodeNames[i] = "<li>" + e.nodeName + "</li>";
+                nodeNames[i] = `<li>${e.nodeName}</li>`;
             });
-            $("<ol>").append(nodeNames.join("")).appendTo($('.box-parseHTML'));
+            $("<ol>").append(nodeNames.join("")).appendTo($(".box-parseHTML"));
         })
     </script>
 </section>

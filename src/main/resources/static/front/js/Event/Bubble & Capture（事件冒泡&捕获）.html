@@ -59,63 +59,65 @@
         const yellow = document.getElementById("yellow");
         const red = document.getElementById("red");
 
-        // 捕获阶段绑定事件
+        /* 捕获阶段绑定事件 */
+        const capture = (e) => `捕获 | ${e.target.nodeName} | ${e.currentTarget.nodeName}`;
         window.addEventListener("click", function (e) {
-            alert("window 捕获 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`window ${capture(e)}`);
         }, true);
 
         document.addEventListener("click", function (e) {
-            alert("document 捕获 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`document ${capture(e)}`);
         }, true);
 
         document.documentElement.addEventListener("click", function (e) {
-            alert("documentElement 捕获 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`documentElement ${capture(e)}`);
         }, true);
 
         document.body.addEventListener("click", function (e) {
-            alert("body 捕获 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`body ${capture(e)}`);
         }, true);
 
         blue.addEventListener("click", function (e) {
-            alert("blue 捕获 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`blue ${capture(e)}`);
         }, true);
 
         yellow.addEventListener("click", function (e) {
-            alert("yellow 捕获 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`yellow ${capture(e)}`);
         }, true);
 
         red.addEventListener("click", function (e) {
-            alert("red 捕获 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`red ${capture(e)}`);
         }, true);
 
 
-        // 冒泡阶段绑定的事件
+        /* 冒泡阶段绑定的事件 */
+        const bubble = (e) => `冒泡 | ${e.target.nodeName} | ${e.currentTarget.nodeName}`;
         window.addEventListener("click", function (e) {
-            alert("window 冒泡 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`window ${bubble(e)}`);
         }, false);
 
         document.addEventListener("click", function (e) {
-            alert("document 冒泡 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`document ${bubble(e)}`);
         }, false);
 
         document.documentElement.addEventListener("click", function (e) {
-            alert("documentElement 冒泡 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`documentElement ${bubble(e)}`);
         }, false);
 
         document.body.addEventListener("click", function (e) {
-            alert("body 冒泡 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`body ${bubble(e)}`);
         }, false);
 
         blue.addEventListener("click", function (e) {
-            alert("blue 冒泡 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`blue ${bubble(e)}`);
         }, false);
 
         yellow.addEventListener("click", function (e) {
-            alert("yellow 冒泡 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`yellow ${bubble(e)}`);
         }, false);
 
         red.addEventListener("click", function (e) {
-            alert("red 冒泡 | " + e.target.nodeName + " | " + e.currentTarget.nodeName);
+            console.log(`red ${bubble(e)}`);
         }, false);
     </script>
 </section>

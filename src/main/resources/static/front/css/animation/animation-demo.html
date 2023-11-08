@@ -191,11 +191,10 @@
     <script>
         // setTimeout 模拟读取图片
         setTimeout(function () {
-            const eleBox = $(".img");
             const funStep = function () {
                 const myImage = new Image(), src = "../../../public/img/people/穗波玉.jpg";
                 myImage.onload = function () {
-                    eleBox.eq(0).html('<img alt="穗波玉" src="' + src + '" width="160px">');
+                    document.querySelector(".img").innerHTML = `<img alt='穗波玉' src='${src}' width='160px'>`;
                 };
                 myImage.src = src;
             };

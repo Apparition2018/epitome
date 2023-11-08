@@ -83,7 +83,7 @@
 
                 $input.on("input", function () {
                     $input.attr("value", this.value);
-                    $input.css("background", "linear-gradient(to right, #ebeff4, #059CFA " + this.value + "%, #ebeff4 " + this.value + "%)");
+                    $input.css("background", `linear-gradient(to right, #ebeff4, #059CFA ${this.value}%, #ebeff4 ${this.value}%)`);
 
                     text.dataset.text = "";
                     text.innerText = this.value;

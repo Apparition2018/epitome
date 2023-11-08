@@ -82,19 +82,19 @@
             return ""
         }
 
-        function setCookie(c_name, value, expiredays) {
-            const exdate = new Date();
-            exdate.setDate(exdate.getDate() + expiredays);
-            document.cookie = c_name + "=" + encodeURIComponent(value) + ((expiredays == null) ? "" : "; expires=" + exdate.toGMTString())
+        function setCookie(c_name, value, expireDays) {
+            const expireDate = new Date();
+            expireDate.setDate(expireDate.getDate() + expireDays);
+            document.cookie = c_name + "=" + encodeURIComponent(value) + ((expireDays == null) ? "" : "; expires=" + expireDate.toGMTString())
         }
 
         function checkCookie() {
             let username = getCookie('username');
             if (username != null && username !== "") {
-                alert('Welcome again ' + username + '!')
+                alert(`Welcome again ${username}!`)
             } else {
-                username = prompt('Please enter your name:', "");
-                (username != null && username !== "") && setCookie('username', username, 365);
+                username = prompt("Please enter your name:", "");
+                (username != null && username !== "") && setCookie("username", username, 365);
             }
         }
     </script>

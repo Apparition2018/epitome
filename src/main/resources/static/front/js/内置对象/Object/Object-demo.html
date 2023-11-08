@@ -236,13 +236,13 @@
         for(let key in dirtyMap){
             // Check to avoid iterating over inherited properties.
             if (dirtyMap.hasOwnProperty(key)) {
-                console.log(key + " -> " + dirtyMap[key]);
+                console.log(`${key} -> ${dirtyMap[key]}`);
             }
         }
 
         for(let key in cleanMap){
             // No need to add extra checks, as the object will always be clean
-            console.log(key + " -> " + cleanMap[key]);
+            console.log(`${key} -> ${cleanMap[key]}`);
         }
     </script>
 </section>

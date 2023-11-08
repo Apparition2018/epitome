@@ -258,11 +258,13 @@
     </style>
     <script>
         function left() {
-            $('.layout .left span').html($('.layout .left span').html() + '<br>' + '导航');
+            const $left = $('.layout .left span');
+            $left.html(`${$left.html()}<br>导航`);
         }
 
         function module() {
-            $('.layout .module div').html($('.layout .module div').html() + '<br>' + '模块');
+            const $module = $('.layout .module div');
+            $module.html(`${$module.html()}<br>导航`);
         }</script>
 </section>
 </body>

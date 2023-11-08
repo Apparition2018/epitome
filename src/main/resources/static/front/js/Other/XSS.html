@@ -25,7 +25,7 @@
                 <br/>
                 <button onclick="xss()">插入</button>
                 <button onclick="del()">删除</button>
-                <div id="img"></div>
+                <div id="img" style="margin-top: 10px;"></div>
             </main>
         </div>
     </div>
@@ -33,9 +33,10 @@
         function xss() {
             let imgUrl = document.getElementById("imgUrl").value;
             if (imgUrl) {
-                document.getElementById("img").innerHTML = "<img src='" + imgUrl + "'  alt='' />";
+                document.getElementById("img").innerHTML = `<img src='${imgUrl }' alt='' />`;
             }
         }
+
         function del() {
             document.getElementById("img").innerHTML = "";
         }

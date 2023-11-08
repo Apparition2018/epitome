@@ -6,12 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>draggable-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <style>
-        .code-wrap-2 {
-            height: 400px;
-        }
-    </style>
-</head>
 <body>
 <section class="code-wrap h450">
     <div class="css-live-wrap w40p">
@@ -20,21 +14,23 @@
         </div>
         <div class="caption">随着鼠标拖动而移动的小飞机</div>
         <div class="centered w100p h100p">
-            <img id="ap" src="../../../public/img/other/airplane.png" alt="airplane" style="position: absolute;"/>
+            <img id="airplane" src="../../../public/img/other/airplane.png" alt="airplane" style="position: absolute;"/>
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        ap.ondragstart = function (e) {
-            console.log('事件源ap开始拖动');
+        const airplane = document.getElementById("airplane");
+        let offsetX, offsetY;
+        airplane.ondragstart = function (e) {
+            console.log("事件源airplane开始拖动");
             // 记录刚一拖动时，鼠标在飞机上的偏移量
             offsetX = e.offsetX + 8;
             offsetY = e.offsetY + 8;
         };
-        ap.ondrag = function (e) {
-            console.log('事件源ap拖动中');
+        airplane.ondrag = function (e) {
+            console.log("事件源airplane拖动中");
             let x = e.pageX;
             let y = e.pageY;
-            console.log(x + '-' + y);
+            console.log(`${x}-${y}`);
             // drag事件最后一刻，无法读取鼠标的坐标，pageX和pageY都变为0
             if (x === 0 && y === 0) {
                 // 不处理拖动最后一刻X和Y都为0的情形
@@ -43,11 +39,11 @@
             x -= offsetX;
             y -= offsetY;
 
-            ap.style.left = x + 'px';
-            ap.style.top = y + 'px';
+            airplane.style.left = x + "px";
+            airplane.style.top = y + "px";
         };
-        ap.ondragend = function () {
-            console.log('源对象ap拖动结束');
+        airplane.ondragend = function () {
+            console.log("源对象airplane拖动结束");
         }
     </script>
 </section>
@@ -181,7 +177,7 @@
     </style>
     <script class="code w60p" contenteditable="true">
         const iosDragDropShim = {enableEnterLeave: true};           // 兼容移动端
-        let source = document.querySelectorAll('.list'),
+        let source = document.querySelectorAll(".list"),
             recycleBin = document.getElementById("recycle-bin"),
             dragElement = null,                                     // 用于存放拖动元素
             lock = true;                                            // 最后元素拖放时会进入enter和leave的循环，用来锁住

@@ -124,7 +124,7 @@
                 value.style.boxShadow = "1px 1px 2px #aaa";
             });
 
-            selects = document.querySelectorAll(".type>div div:nth-of-type(" + this.value + ")");
+            selects = document.querySelectorAll(`.type>div div:nth-of-type(${this.value})`);
             selects.forEach(function (value, index, array) {
                 value.style.color = "crimson";
                 value.style.boxShadow = "1px 1px 2px #c80a32";

@@ -29,12 +29,12 @@
     <script class="code w60p" contenteditable="true">
         // 在http服务器上访问，否则将会有一个CORS保护报错
 
-        /** index.html **/
+        /***** index.html *****/
         import operation from './math.js';
         const product = operation().multiply(9, 9);
         $('.es6').html("9 * 9 = " + product);
 
-        /** math.js **/
+        /***** math.js *****/
         export default function operation() {
             const plus = function (a, b) { return a + b; };
             const subtract = function (a, b) { return a - b; };

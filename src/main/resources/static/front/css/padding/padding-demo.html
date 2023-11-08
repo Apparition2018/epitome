@@ -193,11 +193,13 @@
     </style>
     <script>
         function addGreen() {
-            $('.layout1-left div').html($('.layout1-left div').html() + '<br>' + 'LEFT');
+            const left = document.querySelector('.layout1-left div');
+            left.innerHTML = `${left.innerHTML}<br>LEFT`;
         }
 
         function addOrange() {
-            $('.layout1-right div').html($('.layout1-right div').html() + '<br>' + 'RIGHT');
+            const right = document.querySelector('.layout1-right div');
+            right.innerHTML = `${right.innerHTML}<br>RIGHT`;
         }</script>
 </section>
 

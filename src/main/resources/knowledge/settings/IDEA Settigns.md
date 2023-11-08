@@ -62,7 +62,7 @@
 ---
 ## Font (-o)
     1. Settings → Editor → Font
-    2. Typography Settings → Fallback font: SimHei
+    2. Typography Settings → Fallback font: Microsoft YaHei
 ---
 ## Code Style (-g)
     1. Settings → Editor → Code Style

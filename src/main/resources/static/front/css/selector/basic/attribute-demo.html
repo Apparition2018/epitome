@@ -124,12 +124,12 @@
         const style = document.createElement("style"),
             input = document.querySelector("#city");
 
-        filterStyle.appendChild(style);
+        document.getElementById("filterStyle").appendChild(style);
 
         input.addEventListener("input", function () {
             const val = this.value.trim().toLowerCase();
             if (val !== "") {
-                style.innerHTML = '.list:not([data-index*="' + this.value + '"]) { display: none; }';
+                style.innerHTML = `.list:not([data-index*='${this.value}']) { display: none; }`;
             } else {
                 style.innerHTML = "";
             }

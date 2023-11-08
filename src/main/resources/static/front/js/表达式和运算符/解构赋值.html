@@ -55,17 +55,17 @@
     <script class="code w67p" contenteditable="true">
         let people = [
             {
-                name: 'Jack',
-                interest: ['Math', 'Football']
+                name: "Jack",
+                interest: ["Math", "Football"]
             },
             {
-                name: 'Rose',
-                interest: ['English', 'Badminton']
+                name: "Rose",
+                interest: ["English", "Badminton"]
             }
         ];
 
         for (let {name: x, interest: [y, z]} of people) {
-            console.log("Name: " + x + ", interest: " + y + "-" + z);
+            console.log(`Name: ${x}, interest: ${y}-${z}`);
         }
         // Name: Jack, interest: Math-Football
         // Name: Rose, interest: English-Badminton
@@ -80,19 +80,20 @@
     </div>
     <script class="code w67p" contenteditable="true">
         function whois({displayName: displayName, fullName: {firstName: name}}) {
-            console.log(displayName + " is " + name);
+            console.log(`${displayName} is ${name}`);
         }
 
         let user = {
             id: 41,
-            displayName: 'Henry',
+            displayName: "Henry",
             fullName: {
-                firstName: 'Thierry',
-                lastName: 'Henry'
+                firstName: "Thierry",
+                lastName: "Henry"
             }
         };
 
-        whois(user); // Henry is Thierry
+        // Henry is Thierry
+        whois(user);
     </script>
 </section>
 </body>

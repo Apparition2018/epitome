@@ -76,8 +76,11 @@
             for (let i = 0; i < lTrigger; i += 1) {
                 oTrigger[i].onmouseenter = function () {
                     const index = Number(this.href.replace(/.*#/g, "")) || 1;
-                    // oBox.style.marginLeft = (1 - index) * 200 + "px"; // 利用 margin-left 实现
-                    oBox.style.transform = "translateX(" + (1 - index) * 250 + "px" + ")"; // 利用 translateX 实现
+                    // 利用 margin-left 实现
+                    // oBox.style.marginLeft = (1 - index) * 200 + "px";
+
+                    // 利用 translateX 实现
+                    oBox.style.transform = `translateX(${(1 - index) * 250}px)`;
                     for (let i = 0; i < lTrigger; i += 1) {
                         oTrigger[i].style.background = "#dfdfdf";
                     }

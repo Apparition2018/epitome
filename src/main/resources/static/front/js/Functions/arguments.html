@@ -23,7 +23,7 @@
     <script class="code w67p" contenteditable="true">
         function product(num) {
             if (num === 0) {
-                return '请输入大于0的整数';
+                return "请输入大于0的整数";
             }
             // return num > 1 ? arguments.callee(num - 1) * num : 1;
             return num > 1 ? product(num - 1) * num : 1; // 使用函数命名表达式取代上面写法
@@ -94,10 +94,10 @@
     </div>
     <script class="code w67p" contenteditable="true">
         function list(type) {
-            let result = "<" + type + "><li class='demo-circle'>";
+            let result = `<${type}><li class='demo-circle'>`;
             let args = Array.prototype.slice.call(arguments, 1);
             result += args.join("</li><li class='demo-circle'>");
-            result += "</li></" + type + ">"; // end list
+            result += `</li></${type}>`;
             return result;
         }
 

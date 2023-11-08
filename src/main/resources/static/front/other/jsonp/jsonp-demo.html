@@ -31,7 +31,7 @@
                     $("#content").text("Result: " + data.result)
                 },
                 error: function () {
-                    alert('fail');
+                    alert("fail");
                 }
             });
 
@@ -119,7 +119,7 @@
     <script class="code w60p" contenteditable="true">
         // 动态添加<script>元素
         function loadScript(url) {
-            loadScript.mark = 'load';
+            loadScript.mark = "load";
             const script = document.createElement("script");
             script.type = "text/javascript";
             script.src = url;
@@ -130,7 +130,7 @@
         function callback(data) {
             if (data) {
                 const arr = data.s;
-                let html = '';
+                let html = "";
                 for (let i = 0, len = arr.length; i < len; i++) {
                     html += "<li class='in'><a href='https://www.baidu.com/s?wd="
                         + arr[i]
@@ -149,7 +149,7 @@
                 if (input.data !== this.value) {
                     document.getElementById("btn").setAttribute("href", "https://www.baidu.com/s?wd=" + this.value);
                     const that = this;
-                    loadScript("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + that.value + "&&cb=callback");
+                    loadScript(`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${that.value}&&cb=callback`);
                 }
             } else {
                 list.innerHTML = "";

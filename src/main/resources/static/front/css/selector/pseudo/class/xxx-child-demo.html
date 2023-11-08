@@ -125,7 +125,7 @@
                 value.style.boxShadow = "1px 1px 2px #aaa";
             });
 
-            selects = document.querySelectorAll(".child>div div:nth-child(" + this.value + ")");
+            selects = document.querySelectorAll(`.child>div div:nth-child(${this.value})`);
             selects.forEach(function (value, index, array) {
                 value.style.color = "mediumblue";
                 value.style.boxShadow = "1px 1px 2px #0000af";

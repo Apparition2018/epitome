@@ -69,8 +69,8 @@
         let worker;
         let timeFlag = false;
         let data = {};
-        let millisecond = 0;
-        let min, second;
+        let milliseconds = 0;
+        let minutes, seconds;
         let timeText;
         let output = document.querySelector("#eg1 output");
 
@@ -79,20 +79,21 @@
                 timeFlag = true;
                 if (typeof (Worker) !== "undefined") {
                     if (typeof (worker) === "undefined") {
-                        worker = new Worker("demo_workers.js"); // 创建Web Worker对象
+                        worker = new Worker("demo_workers.js");
                     }
                     worker.onmessage = function (event) {
-                        millisecond = event.data;  // 来自 web worker 的数据会存储于 event.data 中
-                        second = ('00' + parseInt(millisecond / 100) % 60).slice(-2);
-                        min = ('00' + parseInt(millisecond / 6000)).slice(-2);
-                        timeText = min + ":" + second + "." + ('00' + millisecond % 100).slice(-2);
+                        // 来自 web worker 的数据会存储于 event.data 中
+                        milliseconds = event.data;
+                        minutes = ("00" + parseInt((milliseconds / 6000).toString())).slice(-2);
+                        seconds = ("00" + parseInt((milliseconds / 100).toString()) % 60).slice(-2);
+                        timeText = `${minutes}:${seconds}.` + ("00" + milliseconds % 100).slice(-2);
                         output.innerHTML = timeText;
                     }
                 } else {
                     output.innerHTML = "Sorry! No Web Worker support.";
                 }
 
-                data.millisecond = millisecond;
+                data.milliseconds = milliseconds;
                 data.date = new Date();
                 worker.postMessage(data);
             } else {
@@ -103,7 +104,7 @@
         }
 
         function print() {
-            if (millisecond) {
+            if (milliseconds) {
                 let textNode = document.createTextNode(timeText);
                 let documentFragment = document.createDocumentFragment();
                 let output = document.createElement("output");
@@ -115,7 +116,7 @@
 
         function zero() {
             if (!timeFlag) {
-                millisecond = 0;
+                milliseconds = 0;
                 output.innerHTML = "00:00.00";
             }
         }

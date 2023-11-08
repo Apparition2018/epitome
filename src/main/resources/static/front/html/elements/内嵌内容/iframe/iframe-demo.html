@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>iframe-demo</title>
     <link rel="stylesheet" href="../../../../../public/css/demo.css">
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
 </head>
 <body>
 <section class="code-wrap">
@@ -73,7 +74,8 @@
     </div>
     <script class="code w60p" contenteditable="true">
         function childPlus() {
-            const childInput = child.contentWindow.document.querySelector("input");
+            const child = document.getElementById('child').contentWindow;
+            const childInput = child.document.querySelector("input");
             childInput.value = parseInt(childInput.value, 10) + 1 + "";
         }
     </script>
