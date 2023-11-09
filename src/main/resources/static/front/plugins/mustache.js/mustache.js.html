@@ -9,7 +9,7 @@
 </head>
 <body>
 <section class="code-wrap">
-    <div class="css-live-wrap w40p">
+    <div class="css-live-wrap">
         <div class="caption"><a href="https://www.npmjs.com/package/mustache" target="_blank">mustache.js</a></div>
         <div class="centered">
             <div id="target">Loading...</div>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <script src="https://unpkg.com/mustache/mustache.min.js"></script>
-    <script class="code w60p" contenteditable="true">
+    <script class="code" contenteditable="true">
         const rendered = Mustache.render(template.innerHTML, {name: 'Luke'});
         target.innerHTML = rendered;
     </script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>js-cookie</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/js-cookie">js-cookie</a></div>
+        <div class="centered"></div>
+    </div>
+    <script src="https://unpkg.com/js-cookie/dist/js.cookie.min.js"></script>
+    <script class="code" contenteditable="true">
+        // 创建
+        Cookies.set('name', 'value', { expires: 7, path: '' })
+        // 读取
+        console.log(Cookies.get('name'));
+        console.log(Cookies.get('nothing'));
+        // 读取所有可见
+        console.log(Cookies.get());
+        // 删除
+        // 删除 cookie 时，如果不依赖默认属性，则必须传递与设置 cookie 完全相同的路径和域属性
+        Cookies.remove('name');                 // fail!
+        Cookies.remove('name', { path: '' });   // removed!
+    </script>
+</section>
+</body>
+</html>

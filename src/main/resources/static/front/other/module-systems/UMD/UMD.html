@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>UMD</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap w40p">
+        <div class="caption"><a href="https://segmentfault.com/a/1190000020226119">UMD 入门指南</a></div>
+        <div class="centered amd"></div>
+        <div class="centered cmd"></div>
+        <div class="centered default"></div>
+    </div>
+    <!-- ① require.js 引用 umd -->
+    <!-- <script src="https://unpkg.com/requirejs/require.js" data-main="./amd-main.js"></script> -->
+
+    <!-- ② sea.js 引用 umd -->
+    <!-- <script src="https://unpkg.com/seajs/dist/sea.js"></script> -->
+    <!-- <script> -->
+    <!--     seajs.use('./cmd-main.js'); -->
+    <!-- </script> -->
+
+    <!-- ③ 默认方式 引用 umd -->
+    <script src="math.js"></script>
+    <script src="default-main.js"></script>
+    <code class="code w60p" contenteditable="true">
+    </code>
+</section>
+</body>
+</html>

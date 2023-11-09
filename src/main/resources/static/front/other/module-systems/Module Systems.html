@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>Module Systems</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap w100p">
+        <div class="caption">
+            1. <a href="https://zhuanlan.zhihu.com/p/467991875">前端模块化</a>
+            <br/>
+            2. <a href="https://www.freecodecamp.org/news/anatomy-of-js-module-systems-and-building-libraries-fadcd8dbd0e/">the basics of the JavaScript module system</a>
+            <br/>
+            3. <a href="https://dev.to/iggredible/what-the-heck-are-cjs-amd-umd-and-esm-ikm">CJS, AMD, UMD, and ESM</a>
+        </div>
+        <div class="centered">
+            <table class="w1280">
+                <tr>
+                    <th>类型</th>
+                    <th>全称</th>
+                    <th>实现</th>
+                    <th>import</th>
+                    <th>export</th>
+                    <th>同步/异步</th>
+                    <th>前端/后端</th>
+                    <th>备注</th>
+                </tr>
+                <tr>
+                    <td>CJS</td>
+                    <td>CommonJS</td>
+                    <td>Node.js</td>
+                    <td>require</td>
+                    <td>module.exports</td>
+                    <td>同步</td>
+                    <td>后端</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="AMD/AMD.html">AMD</a></td>
+                    <td>Async Module Definition</td>
+                    <td>require.js</td>
+                    <td>data-main<br/>require</td>
+                    <td></td>
+                    <td>异步</td>
+                    <td>前端</td>
+                    <td>依赖前置、提前执行</td>
+                </tr>
+                <tr>
+                    <td><a href="CMD/CMD.html">CMD</a></td>
+                    <td>Common Module Definition</td>
+                    <td>sea.js</td>
+                    <td>seajs.use<br/>require</td>
+                    <td></td>
+                    <td>异步</td>
+                    <td>前端</td>
+                    <td>依赖就近、延迟执行</td>
+                </tr>
+                <tr>
+                    <td><a href="UMD/UMD.html">UMD</a></td>
+                    <td>Universal Module Definition</td>
+                    <td>CommonJS + AMD + CMD</td>
+                    <td></td>
+                    <td></td>
+                    <td>同步 / 异步</td>
+                    <td>前端 & 后端</td>
+                    <td>通常用作 ESM 的后备方案</td>
+                </tr>
+                <tr>
+                    <td><a href="ESM/ESM.html">ESM</a></td>
+                    <td>ECMAScript Modules</td>
+                    <td>the official standard format</td>
+                    <td>import</td>
+                    <td>export</td>
+                    <td>同步 / 异步</td>
+                    <td>前端 & 后端</td>
+                    <td>可以在 HTML 中使用</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+</html>
