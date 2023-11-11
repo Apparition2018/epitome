@@ -5,30 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <base target="_blank">
-    <title>jquery-viewer</title>
+    <title>viewerjs</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
-    <link href="https://unpkg.com/imageviewer/dist/viewer.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/viewerjs/dist/viewer.min.css" rel="stylesheet">
 </head>
 <body>
 <section class="code-wrap h200">
     <div class="css-live-wrap">
-        <div class="caption"><a href="https://www.npmjs.com/package/jquery-viewer">jquery-viewer</a></div>
-        <div class="caption"><a href="https://www.jq22.com/(A(caqiry))/jquery-info6536">jquery-viewer 中文</a></div>
+        <div class="caption"><a href="https://www.npmjs.com/package/viewerjs">viewerjs</a></div>
+        <div class="caption"><a href="../../jquery/jquery-viewer/jquery-viewer.html">jquery-viewer</a></div>
         <div class="centered">
             <img src="../../../public/img/other/heart.png" id="image" alt="heart" style="width: 100px;">
         </div>
     </div>
-    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/imageviewer/dist/viewer.min.js"></script>
+    <script src="https://unpkg.com/viewerjs/dist/viewer.min.js"></script>
     <script class="code" contenteditable="true">
-        $('#image').viewer({
+        new Viewer(document.getElementById('image'), {
             navbar: false,
             scalable: false,
             fullscreen: false,
-            viewed: function () {
-                $('#image').viewer('zoomTo', 1);
+            viewed() {
+                this.viewer.zoomTo(1).rotateTo(180);
             }
-        });
+        })
     </script>
 </section>
 
@@ -41,19 +40,18 @@
         </div>
     </div>
     <script class="code" contenteditable="true">
-        const $image = $('#image2');
+        const image2 = document.getElementById('image2');
 
         function preview() {
-            $image[0].src = '../../../public/img/people/唐慧中.png';
-            $image.click();
+            image2.src = '../../../public/img/people/唐慧中.png';
+            new Viewer(image2, {
+                navbar: false,
+                scalable: false,
+                transition: false,
+                fullscreen: false
+            });
+            image2.click();
         }
-
-        $image.viewer({
-            navbar: false,
-            scalable: false,
-            transition: false,
-            fullscreen: false
-        });
     </script>
 </section>
 </body>

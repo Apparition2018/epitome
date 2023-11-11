@@ -120,6 +120,22 @@
     </div>
 </section>
 
+<section class="code-wrap h150">
+    <div class="css-live-wrap w33p">
+        <div class="caption">/：UTC 时间</div>
+        <div class="caption">-：本地时间</div>
+        <div class="centered">
+        </div>
+    </div>
+    <script class="code w67p" contenteditable="true">
+        // 2008/8/8 08:00:00
+        console.log(new Date("2008-08-08").toLocaleString());
+
+        // 2008/8/8 00:00:00
+        console.log(new Date("2008/08/08").toLocaleString());
+    </script>
+</section>
+
 <section class="code-wrap h550">
     <div class="css-live-wrap w33p">
         <div class="caption">格式化日期</div>
@@ -154,21 +170,6 @@
 
         // 2018-10-19 第 4 季度 11:28:27:196
         console.log((new Date).format("yyyy-MM-dd 第 q 季度 HH:mm:ss:S"));
-    </script>
-</section>
-
-<section class="code-wrap h150">
-    <div class="css-live-wrap w33p">
-        <div class="caption">yyyy-MM-dd 和 yyyy/MM/dd 的区别</div>
-        <div class="centered">
-        </div>
-    </div>
-    <script class="code w67p" contenteditable="true">
-        // Fri Aug 08 2008 08:00:00 GMT+0800 (中国标准时间)
-        console.log(new Date("2008-08-08"));
-
-        // Fri Aug 08 2008 00:00:00 GMT+0800 (中国标准时间)
-        console.log(new Date("2008/08/08"));
     </script>
 </section>
 </body>
