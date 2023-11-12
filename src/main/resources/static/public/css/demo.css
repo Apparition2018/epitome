@@ -302,6 +302,10 @@ a {
     width: 200px;
 }
 
+.w100 {
+    width: 100px;
+}
+
 .w0 {
     width: 0;
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>crypto-js</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap w40p">
+        <div class="caption"><a href="https://www.npmjs.com/package/crypto-js">crypto-js</a></div>
+        <div class="caption"><a href="https://cryptojs.gitbook.io/docs/">crypto-js API</a></div>
+        <div class="centered demo-text">Base64</div>
+    </div>
+    <script src="https://unpkg.com/crypto-js/crypto-js.js"></script>
+    <script class="code w60p" contenteditable="true">
+        let obj = {
+            a: "A",
+            b: "B"
+        }
+        /* obj → json */
+        let json = JSON.stringify(obj);
+        /* json → WordArray object */
+        let words = CryptoJS.enc.Utf8.parse(json);
+        /* WordArray object → base64 */
+        const base64 = CryptoJS.enc.Base64.stringify(words);
+        /* base64 → WordArray object */
+        words = CryptoJS.enc.Base64.parse(base64);
+        /* WordArray object → json */
+        json = CryptoJS.enc.Utf8.stringify(words);
+        /* json → obj */
+        console.log(JSON.parse(json));
+    </script>
+</section>
+</body>
+</html>

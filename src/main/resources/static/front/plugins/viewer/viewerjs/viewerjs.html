@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>viewerjs</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <link href="https://unpkg.com/viewerjs/dist/viewer.min.css" rel="stylesheet">
+</head>
+<body>
+<section class="code-wrap h200">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/viewerjs">viewerjs</a></div>
+        <div class="caption"><a href="../jquery-viewer/jquery-viewer.html">jquery-viewer</a></div>
+        <div class="centered">
+            <img src="../../../../public/img/other/heart.png" id="image" class="w100" alt="heart">
+        </div>
+    </div>
+    <script src="https://unpkg.com/viewerjs/dist/viewer.min.js"></script>
+    <script class="code" contenteditable="true">
+        new Viewer(document.getElementById('image'), {
+            navbar: false,
+            scalable: false,
+            fullscreen: false,
+            viewed() {
+                this.viewer.zoomTo(1).rotateTo(180);
+            }
+        })
+    </script>
+</section>
+
+<section class="code-wrap h350">
+    <div class="css-live-wrap">
+        <div class="caption">点击按钮预览照片</div>
+        <div class="centered ">
+            <div class="demo-button" onclick="preview()">preview</div>
+            <img src="" id="image2" alt="唐慧中" style="display: none;">
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        const image2 = document.getElementById('image2');
+
+        function preview() {
+            image2.src = '../../../../public/img/people/唐慧中.png';
+            new Viewer(image2, {
+                navbar: false,
+                scalable: false,
+                transition: false,
+                fullscreen: false
+            });
+            image2.click();
+        }
+    </script>
+</section>
+</body>
+</html>

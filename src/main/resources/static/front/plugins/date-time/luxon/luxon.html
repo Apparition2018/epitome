@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>luxon</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap">
+        <div class="caption">
+            1. <a href="https://www.npmjs.com/package/luxon">luxon</a><br/>
+            2. <a href="https://moment.github.io/luxon/#/why">Why does Luxon exist?</a><br/>
+            3. <a href="https://moment.github.io/luxon/#/moment">For Moment users</a>
+        </div>
+        <div class="centered"></div>
+    </div>
+    <script src="https://unpkg.com/luxon/build/global/luxon.js"></script>
+    <script class="code" contenteditable="true">
+        const DateTime = luxon.DateTime;
+
+        // Date → DateTime
+        let dt = DateTime.fromJSDate(new Date());
+        // String → DateTime
+        dt = DateTime.fromISO('2008-08-08');
+        dt = DateTime.fromFormat('2008-08-08', 'YYYY-MM-DD');
+        // Now
+        dt = DateTime.now();
+
+        /*** Get + Set：有参数是 setter，没有参数是 getter ***/
+        // set
+        dt.set({millisecond: 0});
+        // get
+        dt.millisecond;
+        dt.get('millisecond');
+
+        /*** Manipulate：操纵 ***/
+        dt.plus({days: 1});
+        dt.minus({days: 1});
+        dt.endOf('minute');
+        dt.startOf('minute');
+
+        /*** Display ***/
+        // Moment → String
+        dt.toFormat('yyyy-MM-dd');                  // 2023-11-12
+        // 差异
+        dt.diff(DateTime.now()).values;             // {"milliseconds": -2149}
+        dt.diff(DateTime.now(), 'second').values;   // {"seconds": -4.048}
+        // 时间戳
+        dt.valueOf();                               // 1699738836531
+        dt.toMillis();                              // 1699738836531
+        +dt;                                        // 1699738836531
+        // daysInMonth
+        dt.daysInMonth;                             // 30
+        // Moment → Date
+        m.toJSDate();
+    </script>
+</section>
+</body>
+</html>

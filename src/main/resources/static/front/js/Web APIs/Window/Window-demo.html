@@ -220,7 +220,7 @@
         <div class="caption">确认框</div>
         <div class="caption">result = window.confirm(message)</div>
         <div class="confirm centered">
-            <div class="demo-click" onclick="confirmPopUp()">confirm</div>
+            <div class="demo-button" onclick="confirmPopUp()">confirm</div>
         </div>
     </div>
     <script class="code w67p" contenteditable="true">
@@ -237,7 +237,7 @@
         <div class="caption">提示框</div>
         <div class="caption">result = window.prompt(text, value);</div>
         <div class="prompt centered">
-            <div class="demo-click" onclick="promptPopUp()">prompt</div>
+            <div class="demo-button" onclick="promptPopUp()">prompt</div>
         </div>
     </div>
     <script class="code w67p" contenteditable="true">
@@ -246,7 +246,7 @@
             if (count++ === 0) {
                 let name = prompt("请输入您的名字", ""); // prompt 返回用户输入文字的字符串，或 null
                 if (name != null && name !== "") {
-                    document.querySelector(".prompt .demo-click").innerHTML = `你好，${name}! 今天过得好吗?`;
+                    document.querySelector(".prompt .demo-button").innerHTML = `你好，${name}! 今天过得好吗?`;
                 }
             }
         }
@@ -258,7 +258,7 @@
         <div class="caption">打开一个新的浏览器窗口或查找一个已命名的窗口</div>
         <div class="caption">newWindow = open(URL, name, features)</div>
         <div class="open centered">
-            <div class="demo-click" onclick="openWindow()">open</div>
+            <div class="demo-button" onclick="openWindow()">open</div>
         </div>
     </div>
     <script class="code w67p" contenteditable="true">

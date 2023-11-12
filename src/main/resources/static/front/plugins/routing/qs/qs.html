@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>qs</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/qs">file-qs</a></div>
+        <div class="centered"></div>
+    </div>
+    <script src="https://unpkg.com/qs/dist/qs.js"></script>
+    <script class="code" contenteditable="true">
+        const obj = {a: 1, b: 2};
+        const qs = Qs.stringify(obj);
+        console.log(qs);            // a=1&b=2
+        console.log(Qs.parse(qs));  // {a: '1', b: '2'}
+    </script>
+</section>
+</body>
+</html>

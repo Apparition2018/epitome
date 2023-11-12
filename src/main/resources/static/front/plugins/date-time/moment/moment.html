@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>moment</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/moment">moment</a></div>
+        <div class="caption">
+            <a href="https://momentjs.com/docs/#/-project-status/recommendations/">项目状态：推荐使用其它替代品</a>：<a href="../luxon/luxon.html">Luxon</a>, Day.js, Date-fns
+        </div>
+        <div class="centered"></div>
+    </div>
+    <script src="https://unpkg.com/moment/moment.js"></script>
+    <script class="code" contenteditable="true">
+        /*** Parse：调用 Moment() 获得 Date 的包装器  ***/
+        // Date → Moment
+        let m = moment(new Date());
+        // String → Moment
+        m = moment('2008-08-08');
+        m = moment('2008-08-08', 'YYYY-MM-DD');
+        // Clone
+        m = m.clone();
+        // Now
+        m = moment();
+
+        /*** Get + Set：有参数是 setter，没有参数是 getter ***/
+        // set
+        m.millisecond(0);
+        m.set('millisecond', 0);
+        // get
+        m.millisecond();
+        m.get('millisecond');
+
+        /*** Manipulate：操纵 ***/
+        m.add(1, 'days');
+        m.subtract(1, 'days');
+        m.endOf('minute');
+        m.startOf('minute');
+
+        /*** Display ***/
+        // Moment → String
+        m.format('YYYY-MM-DD');         // 2023-11-12
+        m.format();                     // 2023-11-12T04:16:00+08:00
+        // 差异
+        m.diff(new Date());             // -50000
+        m.diff(new Date(), 'second');   // -50
+        // 时间戳
+        m.valueOf();                    // 1699735140000
+        +m;                             // 1699735140000
+        // daysInMonth
+        m.daysInMonth();                // 30
+        // Moment → Date
+        m.toDate();
+
+        /*** Query ***/
+        // isBefore, isSame, isAfter, isSameOrBefore, isSameOrAfter, isBetween
+        // isDST, isLeapYear
+    </script>
+</section>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>img-previewer</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <link href="https://unpkg.com/img-previewer/dist/index.css" rel="stylesheet">
+</head>
+<body>
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/img-previewer">img-previewer</a></div>
+        <div class="centered w80p" id="app" style="text-align: center;">
+            <div>
+                <img src="../../../../public/img/people/張飛.png" class="w200" alt="張飛">
+                <img src="../../../../public/img/people/關羽.png" class="w200" alt="關羽">
+                <img src="../../../../public/img/people/趙雲.png" class="w200" alt="趙雲">
+            </div>
+            <div class="demo-button" style="margin-top: 50px;">幻灯片播放</div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/img-previewer/dist/img-previewer.min.js"></script>
+    <script class="code" contenteditable="true">
+        const app = new ImgPreviewer('#app', {
+            scrollbar: true,
+            ratio: 0.7,
+            imageZoom: {
+                step: 1
+            },
+            style: {
+                modalOpacity: 0.8
+            },
+            bubblingLevel: 1,
+            i18n: {
+                RESET: 'reset',
+                ROTATE_LEFT: 'rotate left',
+                ROTATE_RIGHT: 'rotate right',
+                CLOSE: 'close',
+                NEXT: 'next',
+                PREV: 'prev'
+            },
+            onHide() {
+                clearInterval(timer)
+            }
+        })
+
+        let timer = null
+
+        function play() {
+            timer && clearInterval(timer)
+            let index = 0
+            app.show(index)
+            timer = setInterval(() => {
+                if (index < app.getTotalIndex()) {
+                    index++
+                } else {
+                    index = 0
+                }
+                app.show(index)
+            }, 1000)
+        }
+
+        document.querySelector('.demo-button').onclick = play
+    </script>
+</section>
+</body>
+</html>

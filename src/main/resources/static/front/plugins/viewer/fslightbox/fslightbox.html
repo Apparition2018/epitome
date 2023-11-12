@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>fslightbox</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/fslightbox">fslightbox</a></div>
+        <div class="centered w80p">
+            <a data-fslightbox="gallery" href="../../../../public/img/people/張飛.png">
+                <img src="../../../../public/img/people/張飛.png" class="w200" alt="張飛">
+            </a>
+            <a data-fslightbox="gallery" href="../../../../public/img/people/關羽.png">
+                <img src="../../../../public/img/people/關羽.png" class="w200" alt="關羽">
+            </a>
+            <a data-fslightbox="gallery" href="../../../../public/img/people/趙雲.png">
+                <img src="../../../../public/img/people/趙雲.png" class="w200" alt="趙雲">
+            </a>
+        </div>
+    </div>
+    <script src="https://unpkg.com/fslightbox"></script>
+    <script class="code" contenteditable="true">
+        fsLightboxInstances["gallery"].props.onOpen = function () {
+        }
+    </script>
+</section>
+</body>
+</html>

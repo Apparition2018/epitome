@@ -15,13 +15,13 @@
     <div class="css-live-wrap">
         <div class="caption">weui.confirm 和 weui.alert 嵌套使用</div>
         <div class="caption">需要先调用 hide()</div>
-        <div class="centered demo-click">
+        <div class="centered demo-button">
             confirm
         </div>
     </div>
     <script class="code" contenteditable="true">
         $(function() {
-            $('.demo-click').click(function () {
+            $('.demo-button').click(function () {
                 const confirm = weui.confirm('确定？', function () {
                     confirm.hide(function () {
                         weui.alert('成功！');
