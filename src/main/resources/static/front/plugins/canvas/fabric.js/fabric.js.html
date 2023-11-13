@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>fabric.js</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/fabric">fabric.js</a></div>
+        <div class="centered">
+            <canvas id="canvas" width="300" height="300"></canvas>
+        </div>
+    </div>
+    <script src="https://unpkg.com/fabric"></script>
+    <script class="code" contenteditable="true">
+        const canvas = new fabric.Canvas('canvas');
+        const rect = new fabric.Rect({
+            top: 100,
+            left: 100,
+            width: 60,
+            height: 70,
+            fill: 'red',
+        });
+        canvas.add(rect);
+    </script>
+</section>
+</body>
+</html>

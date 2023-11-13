@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>pixi.js</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/pixi.js">pixi.js</a></div>
+        <div class="centered" id="pixi"></div>
+    </div>
+    <script src="https://unpkg.com/pixi.js/dist/pixi.min.js"></script>
+    <script class="code" contenteditable="true">
+        // Create a PixiJS application of type cavas with specify background color and make it resizes to the iframe window
+        const app = new PIXI.Application({
+            background: '#1099bb',
+            width: 300,
+            height: 300,
+        });
+
+        // Adding the application's view to the DOM
+        document.getElementById('#pixi').appendChild(app.view);
+
+        // create a new Sprite from an image path
+        const bunny = PIXI.Sprite.from('https://pixijs.com/assets/bunny.png');
+
+        // center the sprite's anchor point
+        bunny.anchor.set(0.5);
+
+        // move the sprite to the center of the screen
+        bunny.x = app.screen.width / 2;
+        bunny.y = app.screen.height / 2;
+
+        app.stage.addChild(bunny);
+
+        // Listen for animate update
+        app.ticker.add((delta) => {
+            // just for fun, let's rotate mr rabbit a little
+            // delta is 1 if running at 100% performance
+            // creates frame-independent transformation
+            bunny.rotation += 0.1 * delta;
+        });
+    </script>
+</section>
+</body>
+</html>

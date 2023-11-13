@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>html-to-image</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/html-to-image">html-to-image</a></div>
+        <div class="centered">
+            <img src="../../../../public/img/other/heart.png" id="image" class="w100" alt="heart">
+        </div>
+    </div>
+    <script src="https://unpkg.com/html-to-image"></script>
+    <script class="code" contenteditable="true">
+        const image = document.getElementById('image');
+        htmlToImage.toPng(image)
+            .then(function (dataUrl) {
+                const img = new Image();
+                img.src = dataUrl;
+                image.parentElement.appendChild(img);
+            })
+            .catch(function (error) {
+                console.error('oops, something went wrong!', error);
+            });
+    </script>
+</section>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>tui-color-picker</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <link rel="stylesheet" href="https://unpkg.com/tui-color-picker/dist/tui-color-picker.min.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/tui-color-picker">tui-color-picker</a></div>
+        <div class="centered">
+            <div id="color-picker"></div>
+            <div class="explain">
+                <h3>Result of <a href="https://nhn.github.io/tui.color-picker/latest/ColorPicker#event-selectColor">selectColor</a> event:</h3>
+                <textarea id="result" readonly style="height: 60px;"></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/tui-color-picker/dist/tui-color-picker.min.js"></script>
+    <script class="code" contenteditable="true">
+        const colorPicker = tui.colorPicker.create({
+            container: document.getElementById('color-picker')
+        });
+
+        colorPicker.on('selectColor', function(ev) {
+            document.getElementById('result').value = result.value = JSON.stringify(ev, null, 2);
+        });
+    </script>
+</section>
+</body>
+</html>
