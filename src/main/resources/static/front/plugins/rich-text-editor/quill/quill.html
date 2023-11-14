@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>quill</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <link rel="stylesheet" href="https://unpkg.com/quill/dist/quill.snow.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/quill">quill</a></div>
+        <div class="centered w200">
+            <div id="editor">
+                <p>Hello World!</p>
+            </div>
+            <div id="toolbar">
+                <button class="ql-bold">Bold</button>
+                <button class="ql-italic">Italic</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/quill/dist/quill.min.js"></script>
+    <script class="code" contenteditable="true">
+        const editor = new Quill('#editor', {
+            modules: { toolbar: '#toolbar' },
+            theme: 'snow',
+        });
+    </script>
+</section>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>echarts</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/echarts">echarts</a></div>
+        <div class="centered">
+            <div id="main" style="width: 400px; height: 260px;"></div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/echarts"></script>
+    <script class="code" contenteditable="true">
+        // 基于准备好的dom，初始化echarts实例
+        const myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        const option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: '销量',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10, 20]
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</section>
+</body>
+</html>

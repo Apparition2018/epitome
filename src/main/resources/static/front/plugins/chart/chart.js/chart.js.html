@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>chart.js</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/chart.js">chart.js</a></div>
+        <div class="centered">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    <script src="https://unpkg.com/chart.js"></script>
+    <script class="code" contenteditable="true">
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</section>
+</body>
+</html>

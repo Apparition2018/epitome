@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>Lottie</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/lottie-web">Lottie</a></div>
+        <div class="centered" id="bm" style="width: 500px;height: 300px;">
+        </div>
+    </div>
+    <script src="https://unpkg.com/bodymovin/build/player/bodymovin.min.js"></script>
+    <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
+    <script class="code" contenteditable="true">
+        lottie.loadAnimation({
+            // the dom element that will contain the animation
+            container: document.getElementById('bm'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            // the path to the animation json
+            path: 'data.json'
+        });
+    </script>
+</section>
+</body>
+</html>
