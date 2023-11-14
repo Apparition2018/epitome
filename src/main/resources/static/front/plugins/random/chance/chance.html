@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <base target="_blank">
-    <title>validator</title>
+    <title>chance</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
 <body>
 <section class="code-wrap">
     <div class="css-live-wrap">
-        <div class="caption"><a href="https://www.npmjs.com/package/validator">validator</a></div>
+        <div class="caption"><a href="https://www.npmjs.com/package/chance">chance</a></div>
         <div class="centered"></div>
     </div>
-    <script src="https://unpkg.com/validator/validator.min.js"></script>
+    <script src="https://unpkg.com/chance/chance.js"></script>
     <script class="code" contenteditable="true">
-        console.log(validator.isEmail('foo@bar.com'));
+        const my_chance = new Chance();
+        console.log(my_chance.bool());
     </script>
 </section>
 </body>

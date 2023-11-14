@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>randomColor</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap h100vh">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/randomcolor">randomColor</a></div>
+        <div class="centered w300">
+            <span class="br50p"></span>
+            <span class="br50p"></span>
+            <span class="br50p"></span>
+            <span class="br50p"></span>
+            <span class="br50p"></span>
+            <span class="br50p"></span>
+            <span class="br50p"></span>
+            <span class="br50p"></span>
+            <span class="br50p"></span>
+            <span class="br50p"></span>
+        </div>
+    </div>
+    <style>
+        .br50p {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+    <script src="https://unpkg.com/randomcolor/randomColor.js"></script>
+    <script class="code" contenteditable="true">
+        const color = randomColor();
+
+        // 返回包含十种红色的数组
+        const greedArr = randomColor({
+            count: 10,
+            hue: 'red'
+        });
+
+        // 返回“真正随机”颜色的十六进制代码
+        randomColor({
+            luminosity: 'random',
+            hue: 'random'
+        });
+
+        // 返回带有随机 alpha 的深色 RGB 颜色
+        randomColor({
+            luminosity: 'dark',
+            format: 'rgba' // e.g. 'rgba(9, 1, 107, 0.6482447960879654)'
+        });
+
+        // 返回具有指定 alpha 的深色 RGB 颜色
+        randomColor({
+            luminosity: 'dark',
+            format: 'rgba',
+            alpha: 0.5 // e.g. 'rgba(9, 1, 107, 0.5)',
+        });
+
+        // 返回带有随机 alpha 的浅色 HSL 颜色
+        randomColor({
+            luminosity: 'light',
+            format: 'hsla' // e.g. 'hsla(27, 88.99%, 81.83%, 0.6450211517512798)'
+        });
+
+        (function () {
+            document.querySelectorAll('.br50p').forEach((node, index) => {
+                node.style.backgroundColor = greedArr[index];
+            })
+        })()
+    </script>
+</section>
+</body>
+</html>

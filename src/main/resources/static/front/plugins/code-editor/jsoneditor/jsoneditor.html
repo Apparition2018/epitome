@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>JSON Editor</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <link rel="stylesheet" href="https://unpkg.com/jsoneditor/dist/jsoneditor.min.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/jsoneditor">JSON Editor</a></div>
+        <div class="centered" id="jsoneditor"></div>
+    </div>
+    <script src="https://unpkg.com/jsoneditor/dist/jsoneditor.min.js"></script>
+    <script class="code" contenteditable="true">
+        // create the editor
+        const container = document.getElementById("jsoneditor")
+        const options = {}
+        const editor = new JSONEditor(container, options)
+
+        // set json
+        const initialJson = {
+            "Array": [1, 2, 3],
+            "Boolean": true,
+            "Null": null,
+            "Number": 123,
+            "Object": {"a": "b", "c": "d"},
+            "String": "Hello World"
+        }
+        editor.set(initialJson)
+
+        // get json
+        const updatedJson = editor.get()
+    </script>
+</section>
+</body>
+</html>

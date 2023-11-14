@@ -38,7 +38,7 @@
                     <th>Result</th>
                 </tr>
                 <tr>
-                    <td rowspan="5">Array</td>
+                    <td rowspan="6">Array</td>
                     <td>chunk</td>
                     <td>_.chunk([1, 2, 3, 4, 5], 2)</td>
                     <td></td>
@@ -122,7 +122,7 @@
                 <tr>
                     <td rowspan="3">Lang</td>
                     <td>cloneDeep</td>
-                    <td>_cloneDeep(obj)</td>
+                    <td>_.cloneDeep(obj)</td>
                     <td>structuredClone(obj)</td>
                     <td></td>
                 </tr>
@@ -134,7 +134,7 @@
                 </tr>
                 <tr>
                     <td>isEqual</td>
-                    <td>_.isEqual({a: 1, b: 2}, {b: 2, a: 1})</td>
+                    <td>_.isEqual({a: 1, b: 2, c: 3}, {c: 3, b: 2, a: 1})</td>
                     <td></td>
                     <td>true</td>
                 </tr>
@@ -152,6 +152,8 @@
         // memoize
         // partition
         import _ from 'https://unpkg.com/lodash-es/lodash.js';
+
+        console.log(_.isEqual({a: 1, b: 2, c: 3}, {c: 3, b: 2, a: 1}));
     </script>
 </section>
 
@@ -180,7 +182,7 @@
 <section class="code-wrap h300">
     <div class="css-live-wrap w40p">
         <div class="caption">
-            <a href="https://www.lodashjs.com/docs/lodash#_value">-</a>: 隐式链，返回唯一值或返回原始值会自动解除链，否者需要调用 _#value
+            <a href="https://www.lodashjs.com/docs/lodash#_value">-</a>: 隐式链，返回唯一值或返回原始值会自动解除链，否者需要调用 _#value 解除链
         </div>
         <div class="caption">
             <a href="https://www.lodashjs.com/docs/lodash.chain">chain</a>: 显式链，解除链必须使用 _#value

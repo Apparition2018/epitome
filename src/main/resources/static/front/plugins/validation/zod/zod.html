@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>zod</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/zod">zod</a></div>
+        <div class="centered"></div>
+    </div>
+    <script type="module" class="code" contenteditable="true">
+        import { z } from "https://unpkg.com/zod/lib/index.mjs";
+
+        // 创建一个字符串的模式
+        const mySchema = z.string();
+
+        // 解析
+        mySchema.parse("tuna"); // => "tuna"
+        // mySchema.parse(12);  // => throws ZodError
+
+        // "安全"解析(如果验证失败不抛出错误)
+        mySchema.safeParse("tuna"); // => { success: true; data: "tuna" }
+        mySchema.safeParse(12);     // => { success: false; error: ZodError }
+    </script>
+</section>
+</body>
+</html>

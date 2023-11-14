@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>superstruct</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/superstruct">superstruct</a></div>
+        <div class="centered"></div>
+    </div>
+    <script src="https://unpkg.com/superstruct"></script>
+    <script type="module" class="code" contenteditable="true">
+        import * as Superstruct from 'https://unpkg.com/superstruct/dist/index.mjs'
+
+        const data = {
+            id: 43,
+            name: false,
+            email: 'jane@example.com',
+        }
+
+        const User = Superstruct.object({
+            id: Superstruct.number(),
+            name: Superstruct.string(),
+            email: Superstruct.string(),
+        })
+
+        Superstruct.assert(data, User);
+        // At path: name -- Expected a string, but received: false
+    </script>
+</section>
+</body>
+</html>
