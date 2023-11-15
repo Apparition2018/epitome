@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>alpine</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+    <script defer src="https://unpkg.com/alpinejs/dist/cdn.min.js"></script>
+</head>
+<body>
+<section class="code-wrap h150">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/alpinejs">alpine</a></div>
+        <div class="centered">
+            <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+        </div>
+    </div>
+    <pre class="code" contenteditable="true"><code>
+        &lt;h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message">&lt;/h1>
+    </code></pre>
+</section>
+
+<section class="code-wrap h150">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://alpinejs.dev/start-here#building-a-counter">Building a counter</a></div>
+        <div class="centered">
+            <div x-data="{ count: 0 }">
+                <button x-on:click="count++">Increment</button>
+                <span x-text="count"></span>
+            </div>
+        </div>
+    </div>
+    <pre class="code" contenteditable="true"><code>
+        &lt;div x-data="{ count: 0 }">
+            &lt;button x-on:click="count++">Increment&lt;/button>
+            &lt;span x-text="count">&lt;/span>
+        &lt;/div>
+    </code></pre>
+</section>
+
+<section class="code-wrap h150">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://alpinejs.dev/start-here#building-a-dropdown">Building a dropdown</a></div>
+        <div class="centered w100 h50">
+            <div x-data="{ open: false }">
+                <button @click="open = ! open">Toggle</button>
+                <div x-show="open" @click.outside="open = false">Contents...</div>
+            </div>
+        </div>
+    </div>
+    <pre class="code" contenteditable="true"><code>
+        &lt;div x-data="{ open: false }">
+            &lt;button @click="open = ! open">Toggle&lt;/button>
+            &lt;div x-show="open" @click.outside="open = false">Contents...&lt;/div>
+        &lt;/div>
+    </code></pre>
+</section>
+
+<section class="code-wrap h300">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://alpinejs.dev/start-here#building-a-search-input">Building a search input</a></div>
+        <div class="centered h100">
+            <div x-data="{
+                    search: '',
+                    items: ['foo', 'bar', 'baz'],
+                    get filteredItems() {
+                        return this.items.filter(i => i.startsWith(this.search))
+                    }
+                }"
+            >
+                <input x-model="search" placeholder="Search...">
+                <ul>
+                    <template x-for="item in filteredItems" :key="item">
+                        <li x-text="item"></li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <pre class="code" contenteditable="true"><code>
+            &lt;div x-data="{
+                    search: '',
+                    items: ['foo', 'bar', 'baz'],
+                    get filteredItems() {
+                        return this.items.filter(i => i.startsWith(this.search))
+                    }
+                }"
+            >
+                &lt;input x-model="search" placeholder="Search...">
+                &lt;ul>
+                    &lt;template x-for="item in filteredItems" :key="item">
+                        &lt;li x-text="item">&lt;/li>
+                    &lt;/template>
+                &lt;/ul>
+            &lt;/div>
+    </code></pre>
+</section>
+</body>
+</html>

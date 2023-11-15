@@ -490,6 +490,10 @@ a {
     color: inherit;
 }
 
+pre {
+    margin: 0;
+}
+
 .centered {
     position: absolute;
     left: 50%;
@@ -730,6 +734,10 @@ td {
 
 .h100 {
     height: 100px;
+}
+
+.h50 {
+    height: 50px;
 }
 
 .br50p {

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <base target="_blank">
+    <title>htmx</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption"><a href="https://www.npmjs.com/package/htmx.org">htmx</a></div>
+        <div class="caption">
+            <a href="http://localhost:3333/front/plugins/html-tagging/htmx/htmx.html">htmx on the server</a>
+        </div>
+        <div class="centered">
+            <button hx-get="/demo/path/1/John" hx-swap="outerHTML" class="demo-button">Get Request</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/htmx.org/dist/htmx.min.js"></script>
+    <pre class="code" contenteditable="true"><code>
+        &lt;button hx-get="/demo/path/1/John" hx-swap="outerHTML">Get Request&lt;/button>
+    </code></pre>
+</section>
+</body>
+</html>
