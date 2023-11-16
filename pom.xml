@@ -29,7 +29,7 @@
 
         <!-- dependency -->
         <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
-        <pagehelper-spring-boot-starter.version>1.4.7</pagehelper-spring-boot-starter.version>
+        <pagehelper-spring-boot-starter.version>2.0.0</pagehelper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
         <mybatis-spring.version>3.0.2</mybatis-spring.version>
         <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
@@ -55,26 +55,26 @@
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.16.2</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
-        <minio.version>8.5.6</minio.version>
+        <minio.version>8.5.7</minio.version>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.2.4</poi.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
         <itext.version>8.0.2</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>9.37</nimbus-jose-jwt.version>
+        <nimbus-jose-jwt.version>9.37.1</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava2 -->
         <retrofit2.version>2.9.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
         <curator.version>5.5.0</curator.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
-        <fastjson.version>2.0.41</fastjson.version>
+        <fastjson.version>2.0.42</fastjson.version>
         <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
         <tablibs-standard.version>1.2.5</tablibs-standard.version>
         <!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
         <protostuff.version>1.8.0</protostuff.version>
         <!-- https://mvnrepository.com/artifact/ws.schild/jave-all-deps -->
-        <jave2.version>3.3.1</jave2.version>
+        <jave2.version>3.4.0</jave2.version>
         <!-- https://mvnrepository.com/artifact/org.bytedeco/javacv -->
         <javacv.version>1.5.9</javacv.version>
         <!-- https://mvnrepository.com/artifact/org.dom4j/dom4j -->
@@ -88,7 +88,7 @@
         <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <hutool.version>5.8.22</hutool.version>
+        <hutool.version>5.8.23</hutool.version>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <cglib.version>3.3.0</cglib.version>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
@@ -104,7 +104,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
         <lucene-analyzers.version>8.11.2</lucene-analyzers.version>
         <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
-        <oshi.version>6.4.6</oshi.version>
+        <oshi.version>6.4.7</oshi.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
         <jol.version>0.17</jol.version>
         <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->

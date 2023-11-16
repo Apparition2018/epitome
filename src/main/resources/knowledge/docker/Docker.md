@@ -395,22 +395,28 @@ docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world
     - ${variable:-word}：如设置了 variable，则结果是该值，否则为 word
     - ${variable:+word}：如设置了 variable，则结果是 word，否则为空字符串
 3. Instruction
+    - Build Stage
     ```
     FROM                    基于某个 image 初始化一个新的 build stage，并为后续指令设置 base iamge
         FROM scratch        最小 image
-    RUN                     执行命令，docker build 时执行；两种格式：①shell ②exec
-    CMD                     执行命令，docker run 时执行
-    ENTRYPOINT              执行命令，docker run 时执行
+    ARG                     设置变量
+    ADD                     复制文件；自动解压 tar
     COPY                    复制文件
-        COPY --from=<name>  指定 build stage
-    ADD                     添加文件
-    ARG                     设置环境变量
-        --build-arg
-    ENV                     设置环境变量
-    USER                    用户
+    RUN                     执行命令，docker build 时执行；两种格式：①shell ②exec
+    ```
+    - Run Stage
+    ```
     VOLUME                  VOLUME
-    WORKDIR                 工作目录
+    ENTRYPOINT              执行命令，docker run 时执行；两种格式：①shell ②exec
+                                不会被 docker run 后的参数覆盖；
+    CMD                     执行命令，docker run 时执行；三种格式：①shell ②exec ③作为 ENTRYPOINT 的参数；
+                                可以有多个 CMD 指令，但只有最后一个生效，且会被 docker run 后的参数覆盖；
     EXPOSE                  端口
+    ```
+    - Both Stage
+    ```
+    ENV                     设置变量
+    WORKDIR                 工作目录
     ```
     - 只有 `RUN`、`COPY`、`ADD` 才创建 layers，其它指令创建临时中间 images，不会增加 build 大小
     - [CMD vs ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)
