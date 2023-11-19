@@ -97,83 +97,6 @@
 ### [Linux 安装 Docker Desktop](https://docs.docker.com/desktop/install/linux-install/)
 
 ---
-## [Docker Engine](https://docs.docker.com/engine/)
-### [安装 Docker Engine](https://docs.docker.com/engine/install/)
-```bash
-# 卸载旧版本（存储在/var/lib/docker/中的 images、container、volumes、networks 不会自动删除）
-sudo yum remove docker docker-client docker-client-latest docker-common \
-docker-latest docker-latest-logrotate docker-logrotate docker-engine
-
-# 安装 Docker Engine 三种方式
-# 1 设置 Docker's repositories 并从中进行安装，以便于安装和升级任务（推荐）
-# 1.1 设置 repository
-sudo yum install -y yum-utils
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-# 1.2 安装 Docker Engine、container 和 Docker Compose
-sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-# 2 下载 RPM package 并手动安装，适用于无法访问互联网的情况
-# 2.1 https://download.docker.com/linux/centos/，选择 CentOS 版本，x86_64/stable/Packages/，下载要装的 rpm 文件
-# 2.2 安装 Docker Engine，将下面路径更改为下载的 Docker package 路径
-sudo yum install /path/to/package.rpm
-# 2.3 升级 Docker Engine，下载新的 package 文件
-sudo yum -y upgrade /path/to/package.rpm
-# 3 在测试和开发环境下，使用自动化的便利脚本安装
-curl -fsSL https://get.docker.com -o get-docker.sh
-# 了解调用脚本时将运行哪些步骤
-sudo sh ./get-docker.sh --dry-run
-sudo sh get-docker.sh
-
-# 启动 Docker
-sudo systemctl start docker
-
-# 卸载 Docker Engine
-sudo yum remove docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
-sudo rm -rf /var/lib/docker
-sudo rm -rf /var/lib/containerd
-```
-### [安装后步骤](https://docs.docker.com/engine/install/linux-postinstall/)
-- 以非 root 用户身份管理 Docker
-```bash
-# 创建 docker 组
-sudo groupadd docker
-# 将用户添加到 docker 组，然后注销重新登录（虚拟机需要重启）
-sudo usermod -aG docker $USER
-# 激活对组的更改
-newgrp docker
-# 验证不是用 sudo 的情况下运行 docker 命令
-docker run hello-world
-```
-- 配置开机启动
-```bash
-sudo systemctl enable/disable docker.service
-sudo systemctl enable/disable containerd.service
-```
-- log rotation
-```bash
-vim /etc/docker/daemon.json
-# https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file
-{
-  "registry-mirrors": [
-    // 腾讯云 Docker 镜像
-    "https://mirror.ccs.tencentyun.com"
-  ],
-  // json-file：默认日志驱动，捕获所有标准输出（和标准错误），并使用 JSON 格式写入文件
-  // https://docs.docker.com/config/containers/logging/json-file/
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "10m",
-    "max-file": "3"
-  }
-}
-
-# 使更改对新创建的 containers 生效（已存在的不生效）
-sudo systemctl daemon-reload
-sudo systemctl restart docker
-
-# 使用 `--log-driver` 为 docker create 或 docker run 的 container 设置日志驱动
-docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world
-```
----
 ## [使用](https://docs.docker.com/get-started/)
 1. [容器化应用程序](https://docs.docker.com/get-started/02_our_app/)
     1. Clone repository：`cd /home/lighthouse/git` → `git clone https://github.com/docker/getting-started-app.git`
@@ -263,6 +186,94 @@ docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world
     - 移除 untagged images：`docker rmi $(docker images -qf dangling=true)`
     - 移除 untagged volume：`docker volume rm $(docker volume ls -qf dangling=true)`
     - 移除 untagged network：`docker network rm $(docker network ls -qf dangling=true)`
+---
+## [Docker Engine](https://docs.docker.com/engine/)
+### [安装 Docker Engine](https://docs.docker.com/engine/install/)
+```bash
+# 卸载旧版本（存储在/var/lib/docker/中的 images、container、volumes、networks 不会自动删除）
+sudo yum remove docker docker-client docker-client-latest docker-common \
+docker-latest docker-latest-logrotate docker-logrotate docker-engine
+
+# 安装 Docker Engine 三种方式
+# 1 设置 Docker's repositories 并从中进行安装，以便于安装和升级任务（推荐）
+# 1.1 设置 repository
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+# 1.2 安装 Docker Engine、container 和 Docker Compose
+sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# 2 下载 RPM package 并手动安装，适用于无法访问互联网的情况
+# 2.1 https://download.docker.com/linux/centos/，选择 CentOS 版本，x86_64/stable/Packages/，下载要装的 rpm 文件
+# 2.2 安装 Docker Engine，将下面路径更改为下载的 Docker package 路径
+sudo yum install /path/to/package.rpm
+# 2.3 升级 Docker Engine，下载新的 package 文件
+sudo yum -y upgrade /path/to/package.rpm
+# 3 在测试和开发环境下，使用自动化的便利脚本安装
+curl -fsSL https://get.docker.com -o get-docker.sh
+# 了解调用脚本时将运行哪些步骤
+sudo sh ./get-docker.sh --dry-run
+sudo sh get-docker.sh
+
+# 启动 Docker
+sudo systemctl start docker
+
+# 卸载 Docker Engine
+sudo yum remove docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+```
+### [安装后步骤](https://docs.docker.com/engine/install/linux-postinstall/)
+- 以非 root 用户身份管理 Docker
+```bash
+# 创建 docker 组
+sudo groupadd docker
+# 将用户添加到 docker 组，然后注销重新登录（虚拟机需要重启）
+sudo usermod -aG docker $USER
+# 激活对组的更改
+newgrp docker
+# 验证不是用 sudo 的情况下运行 docker 命令
+docker run hello-world
+```
+- 配置开机启动
+```bash
+sudo systemctl enable/disable docker.service
+sudo systemctl enable/disable containerd.service
+```
+- log rotation
+```bash
+vim /etc/docker/daemon.json
+# https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file
+{
+  "registry-mirrors": [
+    // 腾讯云 Docker 镜像
+    "https://mirror.ccs.tencentyun.com"
+  ],
+  // json-file：默认日志驱动，捕获所有标准输出（和标准错误），并使用 JSON 格式写入文件
+  // https://docs.docker.com/config/containers/logging/json-file/
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3"
+  }
+}
+
+# 使更改对新创建的 containers 生效（已存在的不生效）
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+# 使用 `--log-driver` 为 docker create 或 docker run 的 container 设置日志驱动
+docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world
+```
+### [网络](https://www.bilibili.com/video/BV1gr4y1U7CY?p=66)
+- [docker run network-settings](https://docs.docker.com/engine/reference/run/#network-settings)
+
+| Network             | Description        |
+|---------------------|--------------------|
+| none                | 容器中没有网络            |
+| bridge (default)    | 通过 veth 接口将容器连接到网桥 |
+| host                | 使用主机的网络堆栈          |
+| container:<name/id> | 使用另一个容器的网络堆栈       |
+- [Network drivers](https://docs.docker.com/network/drivers/)
+- 自定义网络的好处：ip 和 容器名都可以 ping 通
 ---
 ## [Java 指南](https://docs.docker.com/language/java/)
 1. [Build image](https://docs.docker.com/language/java/build-images/)
@@ -1035,13 +1046,13 @@ docker exec -it ubuntu bash
 ssh root@127.0.0.1
 docker commit -m="my ubuntu" -a="ljh" 996aa42add87 ljh/ubuntu:1.0
 
-### 推送 image 到阿里云 ###
+### 推送 image 到阿里云：https://www.bilibili.com/video/BV1gr4y1U7CY?p=26 ###
 # 阿里云仓库管理：https://cr.console.aliyun.com/cn-guangzhou/instance/dashboard → 创建命名空间 → 创建镜像仓库
 docker login --username=Apparition2018 registry.cn-guangzhou.aliyuncs.com
 docker tag 656f4856adaa registry.cn-guangzhou.aliyuncs.com/apparition2018/ubuntu:1.0
 docker push registry.cn-guangzhou.aliyuncs.com/apparition2018/ubuntu:1.0
 
-### 推送 image 到私有仓库 ###
+### 推送 image 到私有仓库：https://www.bilibili.com/video/BV1gr4y1U7CY?p=28 ###
 docker run -d --name registry -p 5000:5000 -v /home/lighthouse/docker_data/registry:/var/lib/registry --privileged registry
 docker tag 2548adfcf618 43.136.102.115:5000/ubuntu:1.0
 vim /etc/docker/daemon.json
