@@ -56,7 +56,7 @@ wsl --unregister <Distribution>                             注销或卸载分�
 ```
 [wsl2]
 memory=2GB
-swap=0
+swap=4GB
 ```
 ---
 ## 基本使用

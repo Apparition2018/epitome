@@ -44,17 +44,15 @@
     mklink /j "C:\Users\Administrator\AppData\Roaming\Docker Desktop" "D:\Docker\Roaming\Docker Desktop"
     ```
 2. 下载地址：https://www.docker.com/products/docker-desktop
-   或：https://hub.docker.com/editions/community/docker-ce-desktop-windows
-3. 启用 Windows 功能：①Hyper-V；②WSL（适用于 Linux 的 Windows 子系统）
+3. 启用 Windows 功能：WSL（适用于 Linux 的 Windows 子系统），instead of Hyper-V
 4. 下载并安装 [WSL2](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
 5. [镜像加速器](https://cr.console.aliyun.com/cn-qingdao/instances/mirrors)：Settings → Docker Engine
     ```
     ,
      "registry-mirrors": [
-       "https://docker-cn.com",
+       "https://vdm14qsf.mirror.aliyuncs.com",
        "https://hub-mirror.c.163.com",
-       "https://docker.mirrors.ustc.edu.cn",
-       "https://vdm14qsf.mirror.aliyuncs.com"
+       "https://docker.mirrors.ustc.edu.cn"
      ]
     ```
 6. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
@@ -63,7 +61,6 @@
     [wsl2]
     memory=2GB
     swap=4GB
-    localhostForwarding=true
     ```
 >### 增加端口映射
 >1. docker ps -a → 记下 CONTAINER ID
@@ -609,13 +606,12 @@ docker network prune [OPTIONS]                                  移除所有未�
 ```
 ---
 ## [Portainer](https://docs.portainer.io/)
-### [Install](https://docs.portainer.io/start/install-ce/server/docker/linux)
-- [Portainer Version ⇔ Docker Version]()
-```bash
-docker volume create portainer_data
-docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:<portainer_version>
-# https://localhost:9443  admin/123123123
-```
+### [Install](https://docs.portainer.io/start/install-ce/server/docker)
+- [Portainer Version ⇔ Docker Version](https://docs.portainer.io/start/requirements-and-prerequisites#portainer-community-edition-ce)
+1. create the volume：`docker volume create portainer_data`
+2. download and install the Portainer Server container：
+   `docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:<version>`
+3. [Logging In](https://localhost:9443)：admin/123123123
 ---
 ## [CIG](https://www.bilibili.com/video/BV1gr4y1U7CY/?p=90)
 - [cAdvisor](https://github.com/google/cAdvisor)：收集、聚合、处理和导出有关正在运行的 container 的信息

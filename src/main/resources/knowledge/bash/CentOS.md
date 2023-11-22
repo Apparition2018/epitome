@@ -463,7 +463,7 @@
     # 2>&1 详解：https://blog.csdn.net/icanlove/article/details/38018169
     ./minio server --console-address 0.0.0.0:9001 /usr/local/minio/data > /usr/local/minio/minio.log 2>&1 &
     ```
-3. MinIO Console：`http://localhost:9001/login`
+3. [MinIO Console](http://localhost:9001/login)
     - Buckets → Create Bucket → Bucket Name: test → Create Bucket
     - 点击 test Bucket → Access Policy: Public
         - 右上角 Browse Bucket → Upload
