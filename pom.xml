@@ -31,7 +31,7 @@
         <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
         <pagehelper-spring-boot-starter.version>2.0.0</pagehelper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
-        <mybatis-spring.version>3.0.2</mybatis-spring.version>
+        <mybatis-spring.version>3.0.3</mybatis-spring.version>
         <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
         <mapper-spring-boot-starter.version>4.2.3</mapper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->

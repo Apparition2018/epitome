@@ -409,7 +409,6 @@ docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world
     - Build Stage
     ```
     FROM                    基于某个 image 初始化一个新的 build stage，并为后续指令设置 base iamge
-        FROM scratch        最小 image
     ARG                     设置变量
     ADD                     复制文件；自动解压 tar
     COPY                    复制文件
@@ -432,6 +431,13 @@ docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world
     - 只有 `RUN`、`COPY`、`ADD` 才创建 layers，其它指令创建临时中间 images，不会增加 build 大小
     - [CMD vs ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)
 4. [Dockerfile examples](https://docs.docker.com/engine/reference/builder/#dockerfile-examples)
+5. [5个技巧](https://zhuanlan.zhihu.com/p/639250951)
+    1. alpine image：基于 Alpine Linux 的最小 Docker image
+        - scratch image：'空' image，在构建基础图像（如debian和busybox）或超最小图像（仅包含单个二进制文件和所需的任何内容，如helloworld）时最有用
+    2. Multi-stage builds
+    3. 灵活运用 ARG
+    4. ENTRYPOINT + CMD
+    5. ADD 相对于 COPY，自动解压 tar
 ---
 ## [Docker Build](https://docs.docker.com/build/)
 ### [Architecture](https://docs.docker.com/build/architecture/)
@@ -480,7 +486,9 @@ docker run --log-driver json-file --log-opt max-size=10m alpine echo hello world
 6. [Continuous integration](https://docs.docker.com/build/ci/)
 ---
 ## [Docker Compose](https://docs.docker.com/compose/)
-- @see Docker.md#使用 4.使用 Docker Compose
+- @see Docker.md#使用 4. 使用 Docker Compose
+- @see Docker.md#Java 指南 2.3. Use Compose
+- [使用 compose 编排服务](https://www.bilibili.com/video/BV1gr4y1U7CY?p=85)
 ### [安装场景](https://docs.docker.com/compose/install/#installation-scenarios)
 1. [安装 Docker Desktop](https://docs.docker.com/desktop/install/linux-install/)：Docker Desktop 包含 Docker Compose、Docker Engine、Docker CLI
 2. 安装 Compose plugin
@@ -568,11 +576,11 @@ docker container rm [OPTIONS] CONTAINER [CONTAINER...]          移除 container
 docker container kill [OPTIONS] CONTAINER [CONTAINER...]        杀掉 containers
 docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]      在运行的 container 中执行命令
     -it CONTAINER bash
-docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH              在 container 和本地文件系统之间复制文件或文件夹
 docker container cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-    在 container 和本地文件系统之间复制文件或文件夹
 docker container commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]  根据 container 的更改创建 image
     -a, --author                                                作者
     -m, --mesage                                                提交消息
+docker container stats [OPTIONS] [CONTAINER...]                 显示 container 资源使用情况统计信息的实时流
 docker container logs [OPTIONS] CONTAINER                       获取 container 日志
 docker container port CONTAINER [PRIVATE_PORT[/PROTO]]          列出 container 的端口映射或特定映射
 docker container inspect [OPTIONS] CONTAINER [CONTAINER...]     显示 containers 详细信息
@@ -599,6 +607,20 @@ docker network prune [OPTIONS]                                  移除所有未�
     --format                                                    使用自定义模板设置输出格式
     -q, --quiet                                                 仅显示 IDs
 ```
+---
+## [Portainer](https://docs.portainer.io/)
+### [Install](https://docs.portainer.io/start/install-ce/server/docker/linux)
+- [Portainer Version ⇔ Docker Version]()
+```bash
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:<portainer_version>
+# https://localhost:9443  admin/123123123
+```
+---
+## [CIG](https://www.bilibili.com/video/BV1gr4y1U7CY/?p=90)
+- [cAdvisor](https://github.com/google/cAdvisor)：收集、聚合、处理和导出有关正在运行的 container 的信息
+- [InfluxDB](https://github.com/influxdata/influxdb)：时序数据库
+- [Grafana](https://github.com/grafana/grafana)：定制面板，查询、可视化和理解数据
 ---
 ## [MySQL](https://hub.docker.com/_/mysql) / [MariaDB](https://hub.docker.com/_/mariadb)
 - 配置文件读取顺序：`mysql --verbose --help|grep -A 1 'Default options'`
