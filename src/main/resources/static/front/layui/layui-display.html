@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <base target="_blank">
-    <title>Layui | 页面元素</title>
+    <title>Layui | 展示</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
     <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.8.18/css/layui.css"/>
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
@@ -13,34 +13,22 @@
     <script defer src="../../public/js/demo.js"></script>
 </head>
 <body>
-<section class="code-wrap h150">
+<section class="code-wrap h100">
     <div class="css-live-wrap">
         <div class="caption">
-            <a href="https://layui.gitee.io/v2/docs/element/icon.html">图标 iconfont</a>
+            <a href="https://layui.dev/docs/2/table/">表格 Table</a>
         </div>
-        <div class="caption">class="layui-icon"</div>
-        <div class="centered" id="icon">
-            <i class="layui-icon layui-icon-face-smile"></i>
-            <i class="layui-icon">&#xe69c;</i>
+        <div class="centered">
         </div>
     </div>
-    <style>
-        #icon .layui-icon {
-            font-size: 30px;
-            color: orange;
-        }
-    </style>
-    <pre class="code" contenteditable="true"><code>
-        &lt;i class="layui-icon layui-icon-face-smile"&gt;&lt;/i&gt;
-        &lt;i class="layui-icon"&gt;&amp;#xe69c;&lt;/i&gt;
-    </code></pre>
+    <script class="code" contenteditable="true">
+    </script>
 </section>
 
 <section class="code-wrap h350">
     <div class="css-live-wrap">
         <div class="caption">
-            <a href="https://layui.gitee.io/v2/docs/element/nav.html">导航 nav</a> |
-            <a href="https://layui.gitee.io/v2/demo/nav.html">示例</a>
+            <a href="https://layui.dev/docs/2/nav/">导航 Nav</a>
         </div>
         <div class="caption">class="layui-nav"</div>
         <div class="centered w80p">
@@ -84,8 +72,7 @@
 <section class="code-wrap h200">
     <div class="css-live-wrap">
         <div class="caption">
-            <a href="https://layui.gitee.io/v2/docs/element/nav.html#breadcrumb">面包屑 nav</a> |
-            <a href="https://layui.gitee.io/v2/demo/nav.html">示例</a>
+            <a href="https://layui.dev/docs/2/nav/#separator">面包屑 Breadcrumb</a>
         </div>
         <div class="caption">class="layui-breadcrumb"</div>
         <div class="centered">
@@ -111,8 +98,7 @@
 <section class="code-wrap h300">
     <div class="css-live-wrap">
         <div class="caption">
-            <a href="https://layui.gitee.io/v2/docs/element/tab.html">选项卡 tabs</a> |
-            <a href="https://layui.gitee.io/v2/demo/tab.html">示例</a>
+            <a href="https://layui.dev/docs/2/tab/">选项卡 Tab</a>
         </div>
         <div class="caption">class="layui-tab"</div>
         <div class="centered">
@@ -149,11 +135,32 @@
     </code></pre>
 </section>
 
+<section class="code-wrap h200">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.dev/docs/2/badge/">徽章 Badge</a>
+        </div>
+        <div class="caption">class="layui-badge"</div>
+        <div class="centered">
+            <span class="layui-badge-dot"></span>
+            <span class="layui-badge layui-bg-orange">橙</span>
+            <span class="layui-badge-rim">69</span>
+        </div>
+    </div>
+    <pre class="code" contenteditable="true"><code>
+        &lt;!-- 小圆点 --&gt;
+        &lt;span class="layui-badge-dot"&gt;&lt;/span&gt;
+        &lt;!-- 椭圆体 --&gt;
+        &lt;span class="layui-badge layui-bg-orange"&gt;橙&lt;/span&gt;
+        &lt;!-- 边框体 --&gt;
+        &lt;span class="layui-badge-rim"&gt;69&lt;/span&gt;
+    </code></pre>
+</section>
+
 <section class="code-wrap">
     <div class="css-live-wrap">
         <div class="caption">
-            <a href="https://layui.gitee.io/v2/docs/element/panel.html">面板 panel/card/collapse</a> |
-            <a href="https://layui.gitee.io/v2/demo/panel.html">示例</a>
+            <a href="https://layui.dev/docs/2/panel/">面板 Panel / Card / Collapse</a>
         </div>
         <div class="caption">class="layui-panel/card/collapse"</div>
         <div class="centered w400">
@@ -178,8 +185,8 @@
             常规面板：layui-panel
             卡片面板：layui-card
             折叠面板：layui-collapse
-                开启手风琴：lay-accordion
-                折叠面板事件：https://layui.gitee.io/v2/docs/modules/element.html#collapse --&gt;
+            开启手风琴：lay-accordion
+            折叠面板事件：https://layui.dev/docs/2/panel/#on-collapse --&gt;
         &lt;div class="layui-collapse" lay-accordion&gt;
             &lt;div class="layui-colla-item"&gt;
                 &lt;h2 class="layui-colla-title"&gt;杜甫&lt;/h2&gt;
@@ -208,27 +215,128 @@
     </script>
 </section>
 
-<section class="code-wrap h200">
+<section class="code-wrap h150">
     <div class="css-live-wrap">
         <div class="caption">
-            <a href="https://layui.gitee.io/v2/docs/element/badge.html">徽章 badge</a> |
-            <a href="https://layui.gitee.io/v2/demo/badge.html">示例</a>
+            <a href="https://layui.dev/docs/2/tree/">树组件 Tree</a>
         </div>
-        <div class="caption">class="layui-badge"</div>
+        <div class="caption">
+            <a href="https://dev.layuion.com/extend/dtree">第三方 dtree</a>
+        </div>
         <div class="centered">
-            <span class="layui-badge-dot"></span>
-            <span class="layui-badge layui-bg-orange">橙</span>
-            <span class="layui-badge-rim">69</span>
         </div>
     </div>
-    <pre class="code" contenteditable="true"><code>
-        &lt;!-- 小圆点 --&gt;
-        &lt;span class="layui-badge-dot"&gt;&lt;/span&gt;
-        &lt;!-- 椭圆体 --&gt;
-        &lt;span class="layui-badge layui-bg-orange"&gt;橙&lt;/span&gt;
-        &lt;!-- 边框体 --&gt;
-        &lt;span class="layui-badge-rim"&gt;69&lt;/span&gt;
-    </code></pre>
+    <script class="code" contenteditable="true">
+    </script>
+</section>
+
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.dev/docs/2/carousel/">轮播 Carousel</a>
+        </div>
+        <div class="caption">class="layui-carousel"</div>
+        <div class="centered">
+            <div class="layui-carousel" id="carousel">
+                <div carousel-item="">
+                    <div>
+                        <img src="https://unpkg.com/outeres/demo/carousel/720x360-1.jpg" alt="spring" width="400">
+                    </div>
+                    <div>
+                        <img src="https://unpkg.com/outeres/demo/carousel/720x360-3.jpg" alt="autumn" width="400">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        layui.use("carousel", function () {
+            const carousel = layui.carousel;
+            carousel.render({
+                elem: "#carousel",
+                width: "400px",         // 宽度
+                height: "200px",        // 高度
+                full: false,            // 是否全屏轮播
+                anim: "fade",           // 动画，可选值 default、updown、fade
+                autoplay: true,         // 是否自动切换
+                interval: 1500,         // 自动切换时间间隔，>= 800ms
+                index: 0,               // 初始条目索引
+                arrow: "hover",         // 箭头显示状态，可选值 hover、always、none
+                indicator: "inside",    // 指示器位置，可选值 inside、outside、none
+                change: function (vals) {// change 回调
+                }
+            })
+        })
+    </script>
+</section>
+
+<section class="code-wrap h550">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://layui.gitee.io/v2/docs/modules/element.html">常用元素操作 element</a>
+        </div>
+        <div class="caption">
+            lay-filter: 事件过滤器<br/>
+            lay-allowClose: 允许被删除<br/>
+            lay-id: 选项卡 id
+        </div>
+        <div class="centered w80p">
+            <div class="layui-tab layui-tab-brief" lay-filter="filter" lay-allowClose="true">
+                <ul class="layui-tab-title">
+                    <li lay-id="1" class="layui-this">网站设置</li>
+                    <li lay-id="2">用户管理</li>
+                    <li lay-id="3">权限分配</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">内容1</div>
+                    <div class="layui-tab-item">内容2</div>
+                    <div class="layui-tab-item">内容3</div>
+                </div>
+                <div class="layui-btn-group">
+                    <button type="button" class="layui-btn layui-btn-sm w100" id="add">添加一个tab
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-sm w100" id="change">切换用户管理
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-sm w100" id="delete">删除权限分配
+                    </button>
+                    <button type="button" class="layui-btn layui-btn-sm w100" id="deleteAll">
+                        删除所有tab
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script class="code" contenteditable="true">
+        layui.use(['jquery', 'element'], function () {
+            const $ = layui.$, element = layui.element;
+            $('#add').click(function () {
+                // element.tabAdd(filter, options);
+                let maxId = -999;
+                $('li[lay-id]').map(function (i, v) {
+                    maxId = Math.max(maxId, $(v).attr('lay-id')) + 1;
+                })
+                element.tabAdd('filter', {
+                    title: 'title',
+                    // 支持 html
+                    content: 'content',
+                    id: maxId
+                })
+            })
+            $('#change').click(function () {
+                // element.tabChange(filter, layid);
+                element.tabChange('filter', 2);
+            })
+            $('#delete').click(function () {
+                // element.tabDelete(filter, layid);
+                element.tabDelete('filter', 3);
+            })
+            $('#deleteAll').click(function () {
+                $('li[lay-id]').each(function (i, v) {
+                    element.tabDelete('filter', $(v).attr('lay-id'));
+                })
+            })
+        })
+    </script>
 </section>
 </body>
 </html>

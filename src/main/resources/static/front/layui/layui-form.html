@@ -14,11 +14,7 @@
 <section class="code-wrap h100vh">
     <div class="css-live-wrap">
         <div class="caption">
-            <a href="https://layui.gitee.io/v2/docs/element/form.html">页面元素</a> |
-            <a href="https://layui.gitee.io/v2/docs/modules/form.html">内置模块</a>
-        </div>
-        <div class="caption">
-            <a href="https://layui.gitee.io/v2/demo/form.html">示例</a>
+            <a href="https://layui.dev/docs/2/form/#examples">表单组件 Form</a>
         </div>
         <div class="centered w90p">
             <form class="layui-form" action="" lay-filter="form">
@@ -111,7 +107,8 @@
         layui.use("form", function () {
             const $ = layui.$;
             const form = layui.form;
-            // submit 事件：https://layui.gitee.io/v2/docs/modules/form.html#onsubmit
+            // 事件：https://layui.dev/docs/2/form/#on
+            // 提交：https://layui.dev/docs/2/form/#submit
             form.on('submit(demo)', function (data) {
                 console.log(data.elem)  // 被执行事件的元素DOM对象，一般为button对象
                 console.log(data.form)  // 被执行提交的form对象，一般在存在form标签时才会返回
@@ -119,27 +116,27 @@
                 // $.post();            // 使用ajax提交                
                 return false;           // 阻止表单跳转。如果需要表单跳转，去掉这段即可。
             });
-            // select 事件：https://layui.gitee.io/v2/docs/modules/form.html#onselect
+            // 选择框 Select：https://layui.dev/docs/2/form/select.html
             form.on('select(jiguan)', function (data) {
                 console.log(data.elem); // 得到select原始DOM对象
                 console.log(data.value);// 得到被选中的值
                 console.log(data.othis);// 得到美化后的DOM对象
             });
-            // checkbox 事件：https://layui.gitee.io/v2/docs/modules/form.html#oncheckbox
+            // 复选框 Checkbox：https://layui.dev/docs/2/form/checkbox.html
             form.on('checkbox(like)', function (data) {
                 console.log(data.elem); // 得到checkbox原始DOM对象
                 console.log(data.elem.checked); // 是否被选中，true或者false
                 console.log(data.value);// 复选框value值，也可以通过data.elem.value得到
                 console.log(data.othis);// 得到美化后的DOM对象
             });
-            // switch 事件：https://layui.gitee.io/v2/docs/modules/form.html#onswitch
+            // 开关
             form.on('switch(onJob)', function (data) {
                 console.log(data.elem); // 得到checkbox原始DOM对象
                 console.log(data.elem.checked); //开关是否开启，true或者false
                 console.log(data.value);// 开关value值，也可以通过data.elem.value得到
                 console.log(data.othis);// 得到美化后的DOM对象
             });
-            // radio 事件：https://layui.gitee.io/v2/docs/modules/form.html#onradio
+            // 单选框 Radio：https://layui.dev/docs/2/form/radio.html
             form.on('radio(sex)', function (data) {
                 console.log(data.elem); // 得到radio原始DOM对象
                 console.log(data.value);// 被点击的radio的value值
@@ -147,13 +144,13 @@
             // 籍贯添加深圳
             $("#btn1").click(function () {
                 $("#jiguan").append("<option value=3>深圳</option>");
-                // 渲染：https://layui.gitee.io/v2/docs/modules/form.html#render
+                // 渲染：https://layui.dev/docs/2/form/#render
                 form.render("select");  // 渲染select
                 // form.render();       // 渲染所有
             })
             // 表单赋值
             $("#btn2").click(function () {
-                // 表单赋值/取值：https://layui.gitee.io/v2/docs/modules/form.html#val
+                // 赋值/取值：https://layui.dev/docs/2/form/#val
                 form.val("form", {
                     username: "张三",
                     pwd: "123456",
@@ -172,7 +169,7 @@
                 })
                 form.render();
             })
-            // 定义验证规则：https://layui.gitee.io/v2/docs/modules/form.html#verify
+            // 验证：https://layui.dev/docs/2/form/#lay-verify
             form.verify({
                 username: function (value, item) { // value：表单的值、item：表单的DOM对象
                     if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {

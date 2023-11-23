@@ -5,7 +5,9 @@
 ## Reference
 1. [Kubernetes Documentation](https://kubernetes.io/docs/home/)
 2. [Kubernetes 文档](https://kubernetes.io/zh-cn/docs/home/)
-3. [Kubernetes（k8s）入门到实战教程](https://www.bilibili.com/video/BV1GT4y1A756/)
+3. [完整版Kubernetes（K8S）全套入门+微服务实战项目](https://www.bilibili.com/video/BV1MT411x7GH/)
+4. [Kubernetes（k8s）入门到实战教程](https://www.bilibili.com/video/BV1GT4y1A756/)
+5. [云原生Java架构师的第一课](https://www.bilibili.com/video/BV13Q4y1C7hS/)
 ---
 ## 了解 Kubernetes
 ### [应用部署演变](https://kubernetes.io/zh-cn/docs/concepts/overview/#going-back-in-time)
