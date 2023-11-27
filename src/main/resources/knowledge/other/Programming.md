@@ -112,6 +112,12 @@ if (logger.isDebugEnabled()) {
 | 操作目的 |            查询或改变现状            |          分析规律、预测趋势           |
 | 业务类型 |           账户查询，转账等            |          统计报告，多维度分析          |
 ---
+## 测试
+### JMeter
+1. [JMeter 接口性能压测](https://blog.csdn.net/qq_30654043/article/details/124550052)
+2. [JMeter 多用户 token 使用](https://blog.csdn.net/lluozh2015/article/details/122552565)
+- 解决 HTTP 请求响应参数中文乱码：修改 jmeter.properties 文件，`sampleresult.default.encoding=UTF-8`
+---
 ## [阿里 Java 开发手册](https://github.com/alibaba/p3c)
 ### 编程规约
 1. 命名风格

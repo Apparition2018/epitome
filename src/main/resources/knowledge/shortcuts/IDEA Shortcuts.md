@@ -333,21 +333,25 @@ Shift + Enter                   Data Source Properties
 ```
 ---
 ## Plugins
-### HTML Tools
+### AWS Toolkit
 ```
-Alt + F2                        Web Preview…                        浏览器选择
+Alt + Z                         Invoke CodeWisperer (user)
 ```
 ### Diagrams
 ```
 Ctrl + Alt + U                  Show UML Popup                      显示 UML 弹窗
 Ctrl + Alt + Shift + U          Show UML Diagram                    显示 UML 视图
 ```
----
+### HTML Tools
+```
+Alt + F2                        Web Preview…                        浏览器选择
+```
 ### Markdown
 ```
 Ctrl + Shift + C                Code
 Ctrl + Shift + U                Create Link
 ```
+---
 ## Other
 ```
 Alt + Shift + F                 Add to Favorites                    添加到 Favorites
