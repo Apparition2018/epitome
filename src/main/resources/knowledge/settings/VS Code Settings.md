@@ -2,8 +2,9 @@
 
 ---
 ## Reference
-1. [VS Code + ESLint + Prettier + Git Hooks](https://zhuanlan.zhihu.com/p/444925446)
-2. [Syntax Highlighting](https://babeljs.io/docs/en/editors/#visual-studio-code)
+1. [VS Code 用法大全](https://space.bilibili.com/337242418/channel/collectiondetail)
+2. [VS Code + ESLint + Prettier + Git Hooks](https://zhuanlan.zhihu.com/p/444925446)
+3. [Syntax Highlighting](https://babeljs.io/docs/en/editors/#visual-studio-code)
 ---
 ## [配置 user-data-dir 和 extensions-dir](https://stackoverflow.com/a/66281688/19598136)
     1. 找到 vscode 快捷方式位置
