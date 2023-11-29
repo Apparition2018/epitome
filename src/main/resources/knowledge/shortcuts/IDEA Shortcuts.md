@@ -1,6 +1,5 @@
 # IDEA Shortcuts
 
-1. [IntelliJ IDEA overview](https://www.jetbrains.com/help/idea/discover-intellij-idea.html)
 ---
 ## Editor Actions
 ```
@@ -38,7 +37,6 @@ Alt + P                         Manage Projects… (user)             管理项�
 Ctrl + Alt + S                  Settings…
 Ctrl + Alt + Shift + S          Project Structure…
 Ctrl + Alt + Y                  Synchronize                         同步
-Alt + S                         Settings for New Projects…
 ```
 ### Edit
 ```
@@ -333,6 +331,10 @@ Shift + Enter                   Data Source Properties
 ```
 ---
 ## Plugins
+### AceJump
+```
+Ctrl + ;                        Activate / Cycle AceJump Mode
+```
 ### AWS Toolkit
 ```
 Alt + Z                         Invoke CodeWisperer (user)
@@ -342,6 +344,10 @@ Alt + Z                         Invoke CodeWisperer (user)
 Ctrl + Alt + U                  Show UML Popup                      显示 UML 弹窗
 Ctrl + Alt + Shift + U          Show UML Diagram                    显示 UML 视图
 ```
+### GsonFormatPlus
+```
+Alt + S                         GsonFOrmatPlus
+```
 ### HTML Tools
 ```
 Alt + F2                        Web Preview…                        浏览器选择
@@ -350,6 +356,11 @@ Alt + F2                        Web Preview…                        浏览器�
 ```
 Ctrl + Shift + C                Code
 Ctrl + Shift + U                Create Link
+```
+### String Manipulation
+```
+Alt + M | Alt + Shjift + M      Popup String Manipulation …
+Alt + Shift + U                 Switch case (user)
 ```
 ---
 ## Other
