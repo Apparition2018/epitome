@@ -5,12 +5,14 @@
 - [AWS Toolkit](https://github.com/aws/aws-toolkit-jetbrains)
 - [Tabnine](https://github.com/codota/tabnine-intellij)
 - [Bito AI Code Assistant](https://github.com/gitbito/bitoai)
+- [Codeium](https://codeium.com/)
 - [通义灵码](https://tongyi.aliyun.com/lingma)
 - [aiXcoder](https://github.com/aixcoder-plugin)
 - [ChatGPT - EasyCode](https://github.com/obiscr/ChatGPT)：速率限制
 - [GitHub Copilot](https://github.com/github/copilot-docs)：30 天免费试用
 - [Google Cloud Code](https://github.com/GoogleCloudPlatform)：无法登陆 GCP
 - [AI Assistant](https://plugins.jetbrains.com/plugin/22282-ai-assistant)：所在的位置不允许
+- [CodiumAI](https://github.com/Codium-ai/pr-agent)：无法登录
 ---
 ## Productivity
 - [AceJump](https://github.com/acejump/AceJump)
@@ -68,6 +70,7 @@
 ---
 ## Other
 - [arthas idea](https://github.com/WangJi92/arthas-idea-plugin)
+- [Diffblue Cover - AI for Code](https://docs.diffblue.com/features/cover-plugin)
 - [Manifold](https://github.com/manifold-systems/manifold)
 - [Maven Helper](https://github.com/krasa/MavenHelper)
 ---
