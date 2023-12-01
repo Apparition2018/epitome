@@ -39,13 +39,14 @@
         3.2 Build and run using: IntelliJ IDEA
         3.3 Run tetss using: IntelliJ IDEA
 ---
-## Trailing Spaces
+## Virtual Space & On Save
     1. Settings → Editor → General
     2. Virtual Space
         2.1 Allow caret placement: After the end of line 取消勾选
     3. On Save
         3.1 Remove trailing spaces on: Modified Lines 勾选
         3.2 Keep trailing spaces on caret line 勾选
+    4. Ensure every saved files ends with a line break 勾选
 ---
 ## Auto Import
     1. Settings → Editor → General → Auto Import → Java

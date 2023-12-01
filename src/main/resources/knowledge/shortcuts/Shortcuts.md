@@ -1,6 +1,8 @@
 # Shortcuts
 ```
     IDEA                WeChat              VS Code             HX
+Ctrl+Alt+S                              Ctrl+,                                  Settings
+
 Ctrl+Alt+L          Alt+Shift+F         Alt+Shift+F         Ctrl+K              格式化
 
 Ctrl+D              Alt+Shift+↑|↓       Alt+Shift+↑|↓       Ctrl+Insert         复制行

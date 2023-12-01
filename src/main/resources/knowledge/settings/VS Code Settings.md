@@ -2,7 +2,7 @@
 
 ---
 ## Reference
-1. [VS Code 用法大全](https://space.bilibili.com/337242418/channel/collectiondetail)
+1. [VS Code 用法大全](https://space.bilibili.com/337242418/channel/collectiondetail?sid=1815914)
 2. [VS Code + ESLint + Prettier + Git Hooks](https://zhuanlan.zhihu.com/p/444925446)
 3. [Syntax Highlighting](https://babeljs.io/docs/en/editors/#visual-studio-code)
 ---
@@ -16,8 +16,19 @@
     1. File → Preferences → Turn on Settings Sync...
     2. Sign in & Turn on → GitHub
 ---
-## Extensions
-1. [Marketplace](https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs)
+## [Extensions](https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs)
+- Git Extension Pack
+- Extension Pack for Java
+- Python Extension Pack
+- .NET Extension Pack
+- Spring Boot Extension Pack
+- Vue.js Extension Pack
+- Remote Development
+- Auto Rename Tag
+- vscode-icons
+- EditorConfig for VS Code
+- Community Server Connectors
+- json
 ---
 ## settings.json
 ```json5
@@ -31,17 +42,8 @@
   // explorer
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
-  // git
   "git.path": "D:/Git/cmd/git.exe",
-  // emmet
-  "emmet.includeLanguages": {
-    "vue-html": "html",
-    "javascript": "javascriptreact"
-  },
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.variables": {
-    "lang": "zh-CN"
-  },
+  "search.useGlobalIgnoreFiles": true,
   // Terminal
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
@@ -79,16 +81,31 @@
       "default": true
     }
   ],
-  "java.compile.nullAnalysis.mode": "automatic",
-  // maven
+  "java.configuration.updateBuildConfiguration": "automatic",
   "java.configuration.maven.globalSettings": "D:\\dev\\.maven\\settings.xml",
   "java.configuration.maven.userSettings": "D:\\dev\\.maven\\settings.xml",
-  // lombok
-  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"D:\\dev\\.vscode\\extensions\\gabrielbb.vscode-lombok-1.0.1\\server\\lombok.jar\"",
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
+  "java.format.settings.profile": "GoogleStyle",
+  "java.jdt.ls.vmargs": "-Xmx2G -Xms1G -javaagent:D:\\dev\\.maven\\repository\\org\\projectlombok\\lombok\\1.18.30\\lombok-1.18.30.jar",
   // remote
   "remote.SSH.remotePlatform": {
     "43.136.102.115": "linux"
   },
+  // emmet
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.variables": {
+    "lang": "zh-CN"
+  },
+  // eslint
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"],
   // prettier: https://prettier.io/docs/en/
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -119,11 +136,18 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // eslint
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+  "gitlens.views.commitDetails.files.layout": "tree",
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
   },
-  "eslint.validate": ["javascript"]
+  "rsp-ui.enableStartServerOnActivation": [
+    {
+      "id": "redhat.vscode-community-server-connector",
+      "name": "Community Server Connector",
+      "startOnActivation": true
+    }
+  ],
+  "workbench.iconTheme": "vscode-icons",
 }
 ```
 ---

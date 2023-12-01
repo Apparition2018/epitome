@@ -328,7 +328,6 @@
     git config --global core.autocrlf false
     git config --global gui.encoding utf-8
     git config --global core.quotepath off
-    git config --global core.ignorecase false
     ```
 3. 配置 SSH keys
     1. 生成密钥：`ssh-keygen -t rsa -C '88850180@163.com'`
