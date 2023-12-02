@@ -166,7 +166,7 @@ Ctrl + Alt + Shift + K          Convert Java File to Kotlin File                
 >Ctrl + NumPad *, 1~5           Expand to Level                     展开多少层
 >```
 ### Refactor
-```             
+```
 Ctrl + Alt + Shift + T          Refactor This…
 Shift + F6                      Rename…                             重命名
 Ctrl + F6                       Change Signature…                   修改签名
@@ -296,7 +296,7 @@ Ctrl + Shift + K                Push                                推送
 ```
 Ctrl + Shift + H                Shelve Silently                     静默搁置
 Ctrl + Shift + U                Unshelve…                           取消搁置
-Ctrl + Alt + U                  Unshelve Silently                   静默取消搁置    
+Ctrl + Alt + U                  Unshelve Silently                   静默取消搁置
 ```
 ### Diff &amp; Merge
 ```
@@ -339,6 +339,10 @@ Ctrl + ;                        Activate / Cycle AceJump Mode
 ```
 Alt + Z                         Invoke CodeWisperer (user)
 ```
+### CodeGlance Pro
+```
+Ctrl + Shift + G                Toggle Current CodeGlance
+```
 ### Diagrams
 ```
 Ctrl + Alt + U                  Show UML Popup                      显示 UML 弹窗
@@ -346,7 +350,7 @@ Ctrl + Alt + Shift + U          Show UML Diagram                    显示 UML �
 ```
 ### GsonFormatPlus
 ```
-Alt + S                         GsonFOrmatPlus
+Alt + S                         GsonFormatPlus
 ```
 ### HTML Tools
 ```

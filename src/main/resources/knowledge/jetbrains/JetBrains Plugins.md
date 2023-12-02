@@ -1,6 +1,11 @@
 # [JetBrains Plugins](https://plugins.jetbrains.com/)
 
 ---
+## User Interface
+- [Atom Material Icons](https://github.com/file-icons/atom)
+- [CodeGlance Pro](https://github.com/Nasller/CodeGlancePro)
+- [Rainbow Brackets](https://github.com/izhangzhihao/intellij-rainbow-brackets)
+---
 ## AI / Completion
 - [AWS Toolkit](https://github.com/aws/aws-toolkit-jetbrains)
 - [Tabnine](https://github.com/codota/tabnine-intellij)
@@ -16,12 +21,10 @@
 ---
 ## Productivity
 - [AceJump](https://github.com/acejump/AceJump)
-- [CodeGlance Pro](https://github.com/Nasller/CodeGlancePro)
 - [Handy Export Jar](https://plugins.jetbrains.com/plugin/11438-handy-export-jar)
 - [IdeaVim](https://github.com/JetBrains/ideavim)
 - [JRebel and XRebel](https://www.jrebel.com/)
 - [Key Promoter X](https://github.com/halirutan/IntelliJ-Key-Promoter-X)
-- [Rainbow Brackets](https://github.com/izhangzhihao/intellij-rainbow-brackets)
 - [Translation](https://github.com/YiiGuxing/TranslationPlugin)
 ---
 ## Generate
