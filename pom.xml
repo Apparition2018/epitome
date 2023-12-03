@@ -506,7 +506,7 @@
 			<artifactId>QRCode</artifactId>
 			<version>${QRCode.version}</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/qrcode.jar</systemPath>
+			<systemPath>${project.basedir}\lib\qrcode.jar</systemPath>
 		</dependency>
 
 		<dependency>
@@ -514,7 +514,7 @@
 			<artifactId>QRCode_swetake</artifactId>
 			<version>${QRCode.version}</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/qrcode_swetake.jar</systemPath>
+			<systemPath>${project.basedir}\lib\qrcode_swetake.jar</systemPath>
 		</dependency>
 
         <!-- lucene：中文智能分析 -->
@@ -588,7 +588,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <!-- fork：是否分叉运行进程，3.0.0 移除 
+                    <!-- fork：是否分叉运行进程，3.0.0 移除
                         https://jiangchao.blog.csdn.net/article/details/108880019 -->
                     <!-- <fork>true</fork> -->
                     <!-- 资源热刷新 -->

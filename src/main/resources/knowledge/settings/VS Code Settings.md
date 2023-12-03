@@ -16,20 +16,6 @@
     1. File → Preferences → Turn on Settings Sync...
     2. Sign in & Turn on → GitHub
 ---
-## [Extensions](https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs)
-- Git Extension Pack
-- Extension Pack for Java
-- Python Extension Pack
-- .NET Extension Pack
-- Spring Boot Extension Pack
-- Vue.js Extension Pack
-- Remote Development
-- Auto Rename Tag
-- vscode-icons
-- EditorConfig for VS Code
-- Community Server Connectors
-- json
----
 ## settings.json
 ```json5
 {
@@ -73,7 +59,7 @@
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-1.8",
-      "path": "D:\\Java\\jdk1.8.0_361"
+      "path": "D:\\Java\\jdk-1.8"
     },
     {
       "name": "JavaSE-17",

@@ -1,0 +1,66 @@
+# [VS Code Extensions](https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs)
+
+---
+## Extension Packs
+- Git Extension Pack
+    - Git History
+    - Project Manager
+    - GitLens
+    - gitignore
+    - Open in …
+- Extension Pack for Java
+    - Language Support for Java(TM) by Red Hat
+    - Debugger for Java
+    - Test Runner for Java
+    - Maven for Java
+    - Project Manager for Java
+    - IntelliCode
+- Python Extension Pack
+    - autoDocstring
+    - Python
+        - Pylance
+    - Jinja
+    - Diango
+    - IntelliCode
+    - Python Indent
+    - Python Environment Manager
+- .NET Extension Pack
+    - C#
+        - .NET Install Tool
+    - Polyglot Notebooks
+    - Jupyter
+    - lonide for F#
+- Spring Boot Extension Pack
+    - Spring Boot Tools
+    - Spring Initializr Java Support
+    - Spring Boot Dashboard
+- Vue.js Extension Pack
+    - Vue Language Features (Volar)
+    - TypeScript Vue Plugin (Volar)
+    - Vue VSCode Snippets
+    - Vite
+        - Browse Lite
+    - Vitest
+    - JavaScript (ES6) code snippets
+    - ESLint
+    - Prettier
+    - Formatting Toggle
+    - npm Intellisense
+    - IntelliCode
+- Remote Development
+    - WSL
+    - Dev Containers
+    - Remote - SSH
+        - Remote - SSH: Editing Configuration Files
+        - Remote Explorer
+    - Remote - Tunnels
+- Auto Rename Tag
+## Keymaps
+- IntelliJ IDEA Keybindings
+## Theme
+- vscode-icons
+## Other
+- Community Server Connectors
+- EditorConfig for VS Code
+- json
+---
