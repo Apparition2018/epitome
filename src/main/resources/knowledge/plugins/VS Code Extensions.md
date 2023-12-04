@@ -47,6 +47,13 @@
     - Formatting Toggle
     - npm Intellisense
     - IntelliCode
+- React Extension Pack
+    - Reactjs code snippets
+    - ESLint
+    - JavaScript (ES6) code snippets
+    - Search node_modules
+    - npm Intellisense
+    - Path Intellisense
 - Remote Development
     - WSL
     - Dev Containers
@@ -57,10 +64,16 @@
 - Auto Rename Tag
 ## Keymaps
 - IntelliJ IDEA Keybindings
+## Programming Languages
+- Code Runner
+- Tabnine
 ## Theme
 - vscode-icons
 ## Other
 - Community Server Connectors
+    - Runtime Server Protocol UI
 - EditorConfig for VS Code
 - json
+- Live Server
+- Markdown All in One
 ---

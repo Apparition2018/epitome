@@ -84,10 +84,9 @@ if (logger.isDebugEnabled()) {
 1. [Web Services——重整山河待后生](https://zhuanlan.zhihu.com/p/26252433)
 ---
 ## API 设计
-### GraphQL
-1. [GraphQL | 一种为你的 API 而生的查询语言](https://graphql.cn)
-2. [使用 GraphQL 的 6 个月](https://zhuanlan.zhihu.com/p/139226118)
-3. [GraphQL 为何没有火起来?](https://www.zhihu.com/question/38596306/answer/79714979)
+### [GraphQL](https://graphql.cn)
+1. [什么是 GraphQL？](https://www.zhihu.com/question/264629587/answer/949588861)
+2. [GraphQL 为何没有火起来?](https://www.zhihu.com/question/38596306/answer/79714979)
 ### Google API Design Guide
 1. [Google API Design Guide](https://www.bookstack.cn/read/API-design-guide/API-design-guide-README.md)
 ---
@@ -154,7 +153,7 @@ if (logger.isDebugEnabled()) {
 ```
 1. 前后端交互的 API，需要明确协议、域名、路径、请求方法、请求内容、状态码、响应体
 2. 前后端数据列表相关的接口返回，如果为空，则返回空数组[]或空集合{}
-3. 服务端发生错误时，返回给前端的响应信息必须包含 HTTP 状态码，errorCode、errorMessage、用户提示信息四个部分   
+3. 服务端发生错误时，返回给前端的响应信息必须包含 HTTP 状态码，errorCode、errorMessage、用户提示信息四个部分
 4. errorMessage 是前后端错误追踪机制的体现，可以在前端输出到 type="hidden" 文字类控件中，或者用户端的日志中，帮助我们快速地定位出问题
 5. 对于需要使用超大整数的场景，服务端一律使用 String 字符串类型返回，禁止使用 Long 类型
     - Java 服务端如果直接返回 Long 整型数据给前端，JS 会自动转换为 Number 类型（注：此类型表示原理与取值范围等同于 Java 中的 Double）

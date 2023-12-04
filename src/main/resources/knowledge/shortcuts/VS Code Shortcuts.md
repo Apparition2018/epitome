@@ -38,7 +38,7 @@ Ctrl + K Shift + Enter      Pin/Unpin Editor                                    
 ## Search
 ```
 Ctrl + Shift + H            Replace in Files                                    全局替换
-F4                          Focus Next Search Result                            聚焦下一个搜索结果                            
+F4                          Focus Next Search Result                            聚焦下一个搜索结果
 Shift + F4                  Focus Previous Search Result                        聚焦上一个搜索结果
 ```
 ## Search Editor
@@ -73,7 +73,7 @@ F11                         Step Into
 ## File
 ```
 Shift + Alt + C             Copy Path of Active File                            复制当前文件路径
-Shift + Alt + R             Reveal in File Explorer                             在资源管理器中显示     
+Shift + Alt + R             Reveal in File Explorer                             在资源管理器中显示
 Ctrl + N                    New Untitled File                                   新建无标题文件
 Ctrl + O                    Open File...                                        打开文件
 Ctrl + R                    Open Recent...                                      打开最近
@@ -124,7 +124,7 @@ Ctrl + I                    Trigger Suggest                                     
 Ctrl + L                    expandLineSelection                                 选中当前行
 Ctrl + P                    Go to File...                                       跳转到文件
 Ctrl + K Ctrl + F           Format Selection                                    格式化所选
-Ctrl + K Ctrl + Q           Go to Last Edit Location                            跳转到最后修改位置                             
+Ctrl + K Ctrl + Q           Go to Last Edit Location                            跳转到最后修改位置
 Ctrl + K M                  Change Language Mode                                改变语言模式
 Ctrl + T                    Go to Symbol in Workspace...                        跳转到工作空间的 Symbol
 Ctrl + U                    Cursor Undo                                         光标撤回
@@ -134,7 +134,7 @@ Ctrl + ]                    Indent Line                                         
 Ctrl + Delete               deleteWordRight                                     删除右侧字符
 
 Ctrl + SHift + K            Delete Line                                         删除行
-Ctrl + Shift + N            New Window                                          新建窗口           
+Ctrl + Shift + N            New Window                                          新建窗口
 Ctrl + Shift + O            Go to Symbol in Editor...                           跳转到编辑器的 Symbol
 Ctrl + Shift + P            Show All Commands                                   显示所有命令
 Ctrl + Shift + R            Refactor...                                         重构
@@ -160,15 +160,18 @@ F7                          Go to Next Difference                               
 F7                          Go to Next Symbol Highlight                         跳转到下一个高亮
 F8                          Go to Next Problem in Files                         跳转到下一个问题
 F12                         Go to Definition                                    跳转到定义
-                            
+
 Alt + 多个 Left Click       Toggle Multi-Cursor Modifier
 ```
 ---
 ## Ctrl + P
 ```
-?                                                                               列出当前可执行的动作                           
+?                                                                               列出当前可执行的动作
 :                           Ctrl + G                                            跳转到行/列
 @                           Ctrl + Shift + O                                    在编辑器跳转到 Symbol
 #                           Ctrl + T                                            在工作区跳转到 Symbol
 ```
+---
+## Extensions
+Ctrl + Alt + Normal         Run Code
 ---

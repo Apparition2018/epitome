@@ -196,7 +196,7 @@
     lsof                            list open files
         -i                                                              Internet address 匹配
         -P                                                              禁止端口号转换为端口名
-        -n                                                              禁止 IP 转换为 host names 
+        -n                                                              禁止 IP 转换为 host names
     kill                                                                杀死进程
         -1, -HUP                                                        重新加载进程
         -9, -KILL                                                       强制杀死进程
@@ -279,7 +279,7 @@
     bc                              basic calculator                    任意精度算术语言，在 linux 下通常用作计算器
     crontab                                                             定时任务
     fc
-    man                             manual                              手册指南                                     
+    man                             manual                              手册指南
 ---
 ## 文件管理
     nl                                                                  显示文件内容，添加行号
@@ -351,6 +351,7 @@
         bash                                                            启动 ssh-agent
     ssh-add                                                             将私钥添加到 ssh-agent
         -L                                                              列出公钥
+    ssh-copy-id                                                         在远程计算机的 authorized_keys 中安装公钥
     chkconfig                                                           检查和设置系统各种服务
         --add                                                           增加服务
         --del                                                           移除服务
