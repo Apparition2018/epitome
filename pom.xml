@@ -48,8 +48,8 @@
         <commons-csv.version>1.10.0</commons-csv.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
         <commons-email.version>1.5</commons-email.version>
-        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
-        <commons-fileupload.version>1.5</commons-fileupload.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-rng-core -->
+        <commons-rng.version>1.5</commons-rng.version>
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
         <tika.version>2.9.1</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
@@ -112,6 +112,8 @@
         <!-- https://mvnrepository.com/artifact/de.schlichtherle.truelicense/truelicense-core -->
         <truelicense.version>1.33</truelicense.version>
         <!-- plugin -->
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-install-plugin -->
+        <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin -->
         <mybatis-generator-maven-plugin.version>1.4.2</mybatis-generator-maven-plugin.version>
     </properties>
@@ -267,6 +269,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>
             <version>${commons-email.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-rng-simple</artifactId>
+            <version>${commons-rng.version}</version>
         </dependency>
 
         <dependency>

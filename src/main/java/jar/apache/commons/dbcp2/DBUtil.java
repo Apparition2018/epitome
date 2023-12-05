@@ -5,6 +5,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.Duration;
 import java.util.Properties;
 
 import static l.demo.Demo.JDBC_PROPS_FILENAME;
@@ -30,7 +31,7 @@ public class DBUtil {
             dataSource.setUsername(props.getProperty("jdbc.username"));
             dataSource.setPassword(props.getProperty("jdbc.password"));
             dataSource.setMaxTotal(10);
-            dataSource.setMaxWaitMillis(5000);
+            dataSource.setMaxWait(Duration.ofMillis(5000));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

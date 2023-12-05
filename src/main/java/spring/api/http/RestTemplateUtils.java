@@ -27,7 +27,10 @@ import java.util.regex.Pattern;
  * @author ljh
  * @since 2020/11/13 1:38
  */
-public class RestTemplateUtils {
+public final class RestTemplateUtils {
+    private RestTemplateUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
     /** <a href="https://blog.csdn.net/huang714/article/details/132401585">RestTemplate 异常处理器 ErrorHandler 详解</a> */
     private static class DefaultResponseErrorHandler implements ResponseErrorHandler {
@@ -98,11 +101,11 @@ public class RestTemplateUtils {
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.setContentType(mediaType);
         HttpEntity<JSONObject> requestEntity = mediaType == MediaType.APPLICATION_JSON
-                ? new HttpEntity<>(params, requestHeaders) : new HttpEntity<>(null, requestHeaders);
+            ? new HttpEntity<>(params, requestHeaders) : new HttpEntity<>(null, requestHeaders);
         restTemplate.setErrorHandler(new DefaultResponseErrorHandler());
         return mediaType == MediaType.APPLICATION_JSON
-                ? restTemplate.postForObject(url, requestEntity, String.class)
-                : restTemplate.postForObject(expandURL(url, params.keySet()), requestEntity, String.class, params);
+            ? restTemplate.postForObject(url, requestEntity, String.class)
+            : restTemplate.postForObject(expandURL(url, params.keySet()), requestEntity, String.class, params);
     }
 
 
@@ -118,18 +121,18 @@ public class RestTemplateUtils {
         requestHeaders.setContentType(mediaType);
 
         HttpEntity<?> requestEntity = mediaType == MediaType.APPLICATION_JSON
-                ? new HttpEntity<>(params, requestHeaders)
-                : (mediaType == MediaType.APPLICATION_FORM_URLENCODED
-                ? new HttpEntity<>(createMultiValueMap(params), requestHeaders)
-                : new HttpEntity<>(null, requestHeaders));
+            ? new HttpEntity<>(params, requestHeaders)
+            : (mediaType == MediaType.APPLICATION_FORM_URLENCODED
+            ? new HttpEntity<>(createMultiValueMap(params), requestHeaders)
+            : new HttpEntity<>(null, requestHeaders));
 
         restTemplate.setErrorHandler(new DefaultResponseErrorHandler());
 
         return mediaType == MediaType.APPLICATION_JSON
-                ? restTemplate.postForObject(url, requestEntity, clz)
-                : restTemplate.postForObject(mediaType == MediaType.APPLICATION_FORM_URLENCODED
-                ? url
-                : expandURL(url, params.keySet()), requestEntity, clz, params);
+            ? restTemplate.postForObject(url, requestEntity, clz)
+            : restTemplate.postForObject(mediaType == MediaType.APPLICATION_FORM_URLENCODED
+            ? url
+            : expandURL(url, params.keySet()), requestEntity, clz, params);
     }
 
     @SuppressWarnings("unchecked")

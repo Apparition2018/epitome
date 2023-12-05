@@ -29,7 +29,10 @@ import java.util.*;
  * @since 2019/8/8 19:39
  */
 @Slf4j
-public class ZipUtils extends Demo {
+public final class ZipUtils extends Demo {
+    private ZipUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
     @Test
     public void compress() {

@@ -1,5 +1,6 @@
 package springboot.util;
 
+import lombok.Getter;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
@@ -17,17 +18,17 @@ import java.util.Map;
  * @since 2021/6/21 16:59
  */
 @Component
-public class SpringUtils implements ApplicationContextAware {
+public final class SpringUtils implements ApplicationContextAware {
+    private SpringUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
+    @Getter
     private static ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
         SpringUtils.applicationContext = applicationContext;
-    }
-
-    public static ApplicationContext getApplicationContext() {
-        return applicationContext;
     }
 
     @SuppressWarnings("unchecked")

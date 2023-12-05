@@ -22,7 +22,10 @@ import java.util.Map;
  * @author ljh
  * @since 2021/1/8 0:39
  */
-public class ExcelUtils<T> {
+public final class ExcelUtils<T> {
+    private ExcelUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
     public Class<T> clazz;
 
@@ -51,7 +54,7 @@ public class ExcelUtils<T> {
                         switch (fieldType.getSimpleName()) {
                             case "Integer" -> method.invoke(t, Integer.parseInt(getValue(row.getCell(cellNum))));
                             case "Date" ->
-                                    method.invoke(t, DateUtils.parseDate(getValue(row.getCell(cellNum)), DatePattern.NORM_DATETIME_PATTERN));
+                                method.invoke(t, DateUtils.parseDate(getValue(row.getCell(cellNum)), DatePattern.NORM_DATETIME_PATTERN));
                             default -> method.invoke(t, getValue(row.getCell(cellNum)));
                         }
                     }

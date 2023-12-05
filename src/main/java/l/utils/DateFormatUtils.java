@@ -13,11 +13,12 @@ import java.util.Map;
  * @author ljh
  * @since 2023/1/9 16:16
  */
-public class DateFormatUtils {
+public final class DateFormatUtils {
+    private DateFormatUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
-    /**
-     * 存放不同的日期格式模板的 dateFormat 的 Map
-     */
+    /** 存放不同的日期格式模板的 dateFormat 的 Map */
     private static final Map<String, ThreadLocal<SimpleDateFormat>> DATE_FORMAT_MAP = new HashMap<>();
 
     /**

@@ -50,15 +50,15 @@ public class StopWatchDemo {
         p(stopWatch.getTaskCount());        // 3
         // 总耗时
         p(stopWatch.getTotalTimeMillis());  // 350
-        // 最后一个任务耗时
-        p(stopWatch.getLastTaskTimeMillis());// 62
         // 当前任务名
         p(stopWatch.currentTaskName());     // null
-        // 最后一个任务名
-        p(stopWatch.getLastTaskName());     // 锁门
         // 所有任务信息
         StopWatch.TaskInfo[] taskInfos = stopWatch.getTaskInfo();
         // 最后一个任务信息
-        StopWatch.TaskInfo lastTaskInfo = stopWatch.getLastTaskInfo();
+        StopWatch.TaskInfo lastTaskInfo = stopWatch.lastTaskInfo();
+        // 最后一个任务耗时
+        p(lastTaskInfo.getTimeMillis());    // 62
+        // 最后一个任务名
+        p(lastTaskInfo.getTaskName());     // 锁门
     }
 }
