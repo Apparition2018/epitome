@@ -3,6 +3,7 @@ package knowledge.design.pattern.gof.behavioral.observer;
 import jakarta.servlet.http.HttpSessionAttributeListener;
 import jakarta.servlet.http.HttpSessionBindingListener;
 import jar.google.guava.evenbus.EventBusDemo;
+import lombok.Getter;
 
 import java.io.File;
 import java.util.*;
@@ -154,12 +155,9 @@ public class ObserverDemo {
         /**
          * ConcreteSubject
          */
+        @Getter
         private static class Watched extends Observable {
             private String data;
-
-            public String getData() {
-                return data;
-            }
 
             public void setData(String data) {
                 if (!Objects.equals(this.data, data)) {

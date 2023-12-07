@@ -3,7 +3,7 @@ package springboot.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpHeaders;
+import org.apache.hc.core5.http.HttpHeaders;
 import org.springframework.core.io.UrlResource;
 import org.springframework.core.io.support.ResourceRegion;
 import org.springframework.http.HttpStatus;
@@ -38,8 +38,8 @@ public class VideoController {
         ResourceRegion resourceRegion = this.getResourceRegion(resource, range);
         Optional<MediaType> mediaType = MediaTypeFactory.getMediaType(resource);
         return ResponseEntity.status(HttpStatus.PARTIAL_CONTENT)
-                .contentType(mediaType.orElse(MediaType.APPLICATION_OCTET_STREAM))
-                .body(resourceRegion);
+            .contentType(mediaType.orElse(MediaType.APPLICATION_OCTET_STREAM))
+            .body(resourceRegion);
     }
 
     private static final long CHUNK_SIZE = 1000000L;

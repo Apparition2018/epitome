@@ -6,7 +6,7 @@ import l.demo.Demo;
 import lombok.NonNull;
 import okhttp3.*;
 import okio.BufferedSink;
-import org.apache.http.HttpHeaders;
+import org.apache.hc.core5.http.HttpHeaders;
 import org.junit.jupiter.api.Test;
 
 import javax.annotation.Nullable;
@@ -60,10 +60,10 @@ public class OkHttpDemo extends Demo {
     @Test
     public void testAccessingHeaders() throws IOException {
         Request request = new Request.Builder().url("https://api.github.com/repos/square/okhttp/issues")
-                .header(HttpHeaders.USER_AGENT, "OKHttp Headers.java")
-                .addHeader(HttpHeaders.ACCEPT, "application/json; q=0.5")
-                .addHeader(HttpHeaders.ACCEPT, "application/vnd.github.vs+json")
-                .build();
+            .header(HttpHeaders.USER_AGENT, "OKHttp Headers.java")
+            .addHeader(HttpHeaders.ACCEPT, "application/json; q=0.5")
+            .addHeader(HttpHeaders.ACCEPT, "application/vnd.github.vs+json")
+            .build();
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
             System.out.printf("%s: %s%n", HttpHeaders.SERVER, response.header(HttpHeaders.SERVER));
@@ -76,13 +76,13 @@ public class OkHttpDemo extends Demo {
     @Test
     public void testPostingString() throws IOException {
         String postBody = """
-                Releases
-                --------
+            Releases
+            --------
 
-                 * _1.0_ May 6, 2013
-                 * _1.1_ June 15, 2013
-                 * _1.2_ August 11, 2013
-                """;
+             * _1.0_ May 6, 2013
+             * _1.1_ June 15, 2013
+             * _1.2_ August 11, 2013
+            """;
         RequestBody requestBody = RequestBody.create(postBody, MEDIA_TYPE_MARKDOWN);
         Request request = new Request.Builder().url(MARKDOWN_RAW_URL).post(requestBody).build();
         executePrintResult(request);
@@ -141,15 +141,15 @@ public class OkHttpDemo extends Demo {
     public void testMultipartRequest() throws IOException {
         RequestBody requestBody = RequestBody.create(new File(BIRD_IMG), MEDIA_TYPE_JPG);
         RequestBody requestBody2 = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("title", "Bird")
-                .addFormDataPart("image", "bird.jpg", requestBody)
-                .build();
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("title", "Bird")
+            .addFormDataPart("image", "bird.jpg", requestBody)
+            .build();
         Request request = new Request.Builder()
-                .header(HttpHeaders.AUTHORIZATION, "Client-ID ...")
-                .url("https://api.imgur.com/3/image")
-                .post(requestBody2)
-                .build();
+            .header(HttpHeaders.AUTHORIZATION, "Client-ID ...")
+            .url("https://api.imgur.com/3/image")
+            .post(requestBody2)
+            .build();
         executePrintResult(request);
     }
 
@@ -214,10 +214,10 @@ public class OkHttpDemo extends Demo {
         System.out.printf("%.2f Executing call.%n", (System.nanoTime() - startNanos) / 1e9f);
         try (Response response = call.execute()) {
             System.out.printf("%.2f Call was expected to fail, but completed: %s%n",
-                    (System.nanoTime() - startNanos) / 1e9f, response);
+                (System.nanoTime() - startNanos) / 1e9f, response);
         } catch (IOException e) {
             System.out.printf("%.2f Call failed as expected: %s%n",
-                    (System.nanoTime() - startNanos) / 1e9f, e);
+                (System.nanoTime() - startNanos) / 1e9f, e);
         }
     }
 
@@ -225,10 +225,10 @@ public class OkHttpDemo extends Demo {
     @Test
     public void testTimeouts() throws IOException {
         client = new OkHttpClient.Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .build();
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .build();
 
         Request request = new Request.Builder().url(getDelayUrl(2)).build();
         try (Response response = client.newCall(request).execute()) {
@@ -241,14 +241,14 @@ public class OkHttpDemo extends Demo {
     public void testPerCallConfiguration() {
         Request request = new Request.Builder().url(getDelayUrl(1)).build();
         OkHttpClient client1 = client.newBuilder()
-                .readTimeout(500, TimeUnit.MILLISECONDS).build();
+            .readTimeout(500, TimeUnit.MILLISECONDS).build();
         try (Response response = client1.newCall(request).execute()) {
             System.out.println("Response 1 succeeded: " + response);
         } catch (IOException e) {
             System.out.println("Response 1 failed: " + e);
         }
         OkHttpClient client2 = client.newBuilder()
-                .readTimeout(1, TimeUnit.SECONDS).build();
+            .readTimeout(1, TimeUnit.SECONDS).build();
         try (Response response = client2.newCall(request).execute()) {
             System.out.println("Response 2 succeeded: " + response);
         } catch (IOException e) {
@@ -260,19 +260,19 @@ public class OkHttpDemo extends Demo {
     @Test
     public void testHandlingAuthentication() throws IOException {
         client = new OkHttpClient.Builder()
-                .authenticator(new Authenticator() {
-                    @Nullable
-                    @Override
-                    public Request authenticate(@Nullable Route route, @NonNull Response response) {
-                        if (response.request().header(HttpHeaders.AUTHORIZATION) != null) {
-                            return null;
-                        }
-                        p("Authenticating for response: " + response);
-                        p("Challenges: " + response.challenges());
-                        String credential = Credentials.basic("jesse", "password1");
-                        return response.request().newBuilder().header(HttpHeaders.AUTHORIZATION, credential).build();
+            .authenticator(new Authenticator() {
+                @Nullable
+                @Override
+                public Request authenticate(@Nullable Route route, @NonNull Response response) {
+                    if (response.request().header(HttpHeaders.AUTHORIZATION) != null) {
+                        return null;
                     }
-                }).build();
+                    p("Authenticating for response: " + response);
+                    p("Challenges: " + response.challenges());
+                    String credential = Credentials.basic("jesse", "password1");
+                    return response.request().newBuilder().header(HttpHeaders.AUTHORIZATION, credential).build();
+                }
+            }).build();
         Request request = new Request.Builder().url(getPublicObjUrl("secrets/hellosecret.txt")).build();
         executePrintResult(request);
     }

@@ -13,7 +13,10 @@ import java.time.temporal.ChronoUnit;
  * @author ljh
  * @since 2021/5/27 10:10
  */
-public class JedisUtils {
+public final class JedisUtils {
+    private JedisUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
     private static final JedisPool jedisPool;
 
@@ -23,7 +26,7 @@ public class JedisUtils {
         poolConfig.setMaxIdle(10);
         poolConfig.setMinIdle(2);
         poolConfig.setTimeBetweenEvictionRuns(Duration.of(3, ChronoUnit.SECONDS));
-        poolConfig.setMinEvictableIdleTime(Duration.of(3, ChronoUnit.SECONDS));
+        poolConfig.setMinEvictableIdleDuration(Duration.of(3, ChronoUnit.SECONDS));
         poolConfig.setTestOnBorrow(true);
         poolConfig.setTestOnReturn(false);
         poolConfig.setBlockWhenExhausted(true);

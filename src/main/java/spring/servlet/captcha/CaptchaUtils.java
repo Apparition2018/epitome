@@ -3,7 +3,7 @@ package spring.servlet.captcha;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.http.HttpHeaders;
+import org.apache.hc.core5.http.HttpHeaders;
 import org.springframework.http.MediaTypeFactory;
 
 import javax.imageio.ImageIO;
@@ -22,7 +22,10 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2019/12/23 23:08
  */
-public abstract class CaptchaUtils {
+public final class CaptchaUtils {
+    private CaptchaUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
     private static int width = 80;
     private static int height = 30;

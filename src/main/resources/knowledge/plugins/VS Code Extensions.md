@@ -66,6 +66,7 @@
 - IntelliJ IDEA Keybindings
 ## Programming Languages
 - Code Runner
+    - OUTPUT 中文乱码：控制面板 → 区域 → 管理 → 更改系统区域设置 → 勾选 使用 Unicode UTF-8 提供全球语言支持
 - Tabnine
 ## Theme
 - vscode-icons

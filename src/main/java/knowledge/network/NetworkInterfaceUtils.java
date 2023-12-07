@@ -18,10 +18,9 @@ import static l.demo.Demo.pe;
  * @author ljh
  * @since 2022/12/15 11:21
  */
-public class NetworkInterfaceUtils {
-
-    public static void main(String[] args) throws SocketException {
-        getInetAddressList();
+public final class NetworkInterfaceUtils {
+    private NetworkInterfaceUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
     }
 
     public static List<InetAddress> getInetAddressList() throws SocketException {

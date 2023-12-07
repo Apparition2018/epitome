@@ -16,7 +16,10 @@ import static l.demo.Demo.DEMO_FILE_PATH;
  * @author ljh
  * @since 2019/8/8 19:39
  */
-public class BZip2Utils {
+public final class BZip2Utils {
+    private BZip2Utils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
     private static final int BUFFER = 1024;
     private static final CharSequence EXT = ".bz2";

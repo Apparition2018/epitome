@@ -2,7 +2,7 @@ package springboot.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.apache.http.HttpStatus;
+import org.apache.hc.core5.http.HttpStatus;
 
 /**
  * ResultCode

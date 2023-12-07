@@ -54,7 +54,6 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     public void configurePathMatch(PathMatchConfigurer configurer) {
         // 给匹配的 Controller 增加前缀
         configurer.addPathPrefix("webmvc-config", p -> p.isInstance(SpringUtils.getBean(WebMvcConfigController.class)));
-        configurer.setUseTrailingSlashMatch(true);
         WebMvcConfigurer.super.configurePathMatch(configurer);
     }
 
@@ -77,11 +76,11 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         // https://www.baeldung.com/spring-mvc-content-negotiation-json-xml#basics-4
         configurer.defaultContentType(MediaType.APPLICATION_JSON)
-                .ignoreAcceptHeader(true)
-                .favorParameter(true)
-                .parameterName("mediaType")
-                .mediaType("xml", MediaType.APPLICATION_XML)
-                .mediaType("json", MediaType.APPLICATION_JSON);
+            .ignoreAcceptHeader(true)
+            .favorParameter(true)
+            .parameterName("mediaType")
+            .mediaType("xml", MediaType.APPLICATION_XML)
+            .mediaType("json", MediaType.APPLICATION_JSON);
         WebMvcConfigurer.super.configureContentNegotiation(configurer);
     }
 
@@ -202,14 +201,14 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         // 设置允许跨域的路径
         registry.addMapping("/**")
-                // 设置允许跨域请求的域名
-                .allowedOriginPatterns("*")
-                // 设置允许的方法
-                .allowedMethods("*")
-                // 是否允许证书
-                .allowCredentials(true)
-                // 跨域允许时间
-                .maxAge(3600);
+            // 设置允许跨域请求的域名
+            .allowedOriginPatterns("*")
+            // 设置允许的方法
+            .allowedMethods("*")
+            // 是否允许证书
+            .allowCredentials(true)
+            // 跨域允许时间
+            .maxAge(3600);
         WebMvcConfigurer.super.addCorsMappings(registry);
     }
 

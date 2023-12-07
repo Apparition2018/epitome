@@ -1,7 +1,7 @@
 package knowledge.algorithm;
 
-import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.rng.simple.RandomSource;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
@@ -75,10 +75,10 @@ public class Algorithm {
     /** 生成 m ~ n 位随机字符数组 */
     @Test
     public void testGenRanArr() {
-        char[] chs = new char[RandomUtils.nextInt(4, 10)];
+        char[] chs = new char[RandomSource.XO_RO_SHI_RO_128_PP.create().nextInt(4, 10)];
         // 随机字符范围数组
         char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-                'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+            'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         int len = letters.length;
         boolean[] flags = new boolean[len];
         for (int i = 0; i < chs.length; i++) {

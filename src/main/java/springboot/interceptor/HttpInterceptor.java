@@ -79,19 +79,19 @@ public class HttpInterceptor implements HandlerInterceptor {
         }
         if (null == ex) {
             log.info("requestUri[{}] method[{}] spend[{}ms-{}ms-{}ms]",
-                    request.getRequestURI(),
-                    fullMethodName,
-                    stopWatch.getTotalTimeMillis(),
-                    stopWatch.getTotalTimeMillis() - stopWatch.getLastTaskTimeMillis(),
-                    stopWatch.getLastTaskTimeMillis());
+                request.getRequestURI(),
+                fullMethodName,
+                stopWatch.getTotalTimeMillis(),
+                stopWatch.getTotalTimeMillis() - stopWatch.lastTaskInfo().getTimeMillis(),
+                stopWatch.lastTaskInfo().getTimeMillis());
         } else {
             log.info("requestUri[{}] method[{}] exception[{}] spend[{}ms-{}ms-{}ms]",
-                    request.getRequestURI(),                            // 请求 URI
-                    fullMethodName,                                     // 方法全路径
-                    ex.getClass().getName() + ":" + ex.getMessage(),    // 异常
-                    stopWatch.getTotalTimeMillis(),                     // 请求总消耗时间
-                    stopWatch.getTotalTimeMillis() - stopWatch.getLastTaskTimeMillis(),
-                    stopWatch.getLastTaskTimeMillis());
+                request.getRequestURI(),                            // 请求 URI
+                fullMethodName,                                     // 方法全路径
+                ex.getClass().getName() + ":" + ex.getMessage(),    // 异常
+                stopWatch.getTotalTimeMillis(),                     // 请求总消耗时间
+                stopWatch.getTotalTimeMillis() - stopWatch.lastTaskInfo().getTimeMillis(),
+                stopWatch.lastTaskInfo().getTimeMillis());
         }
         stopWatchThreadLocal.remove();
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!-- <classPathEntry>：
                 ①可选的，如果使用 java 命令 -cp 参数运行 或 在 mybatis-generator-maven-plugin 加入 数据库依赖则不需要
@@ -42,14 +42,14 @@
                 http://mybatis.org/generator/configreference/jdbcConnection.html-->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
                         connectionURL="jdbc:mysql://43.136.102.115:3306/ry"
-                        userId="root" password="root">
+                        userId="root" password="Cesc123!">
             <!-- MySQL 8.x 需要指定服务器的时区 -->
             <property name="serverTimezone" value="UTC"/>
             <!-- MySQL 8.x 默认启用 SSL，不关闭会有警告 -->
             <property name="useSSL" value="false"/>
-            <!-- MySQL 不支持 catalogs 和 schema：
-                    http://mybatis.org/generator/usage/mysql.html#catalogs-and-schema -->
+            <!-- MySQL 不支持 catalogs 和 schema：http://mybatis.org/generator/usage/mysql.html#catalogs-and-schema -->
             <property name="nullCatalogMeansCurrent" value="true"/>
+            <property name="allowPublicKeyRetrieval" value="true"/>
         </jdbcConnection>
 
         <!-- <javaTypeResolver>：用于定义 Java 类型解析器的属性

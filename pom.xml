@@ -48,27 +48,27 @@
         <commons-csv.version>1.10.0</commons-csv.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
         <commons-email.version>1.5</commons-email.version>
-        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
-        <commons-fileupload.version>1.5</commons-fileupload.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-rng-core -->
+        <commons-rng.version>1.5</commons-rng.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <poi.version>5.2.5</poi.version>
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
         <tika.version>2.9.1</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-        <jsoup.version>1.16.2</jsoup.version>
+        <jsoup.version>1.17.1</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
         <minio.version>8.5.7</minio.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-        <poi.version>5.2.5</poi.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
         <itext.version>8.0.2</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>9.37.1</nimbus-jose-jwt.version>
+        <nimbus-jose-jwt.version>9.37.2</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava2 -->
         <retrofit2.version>2.9.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
         <curator.version>5.5.0</curator.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
-        <fastjson.version>2.0.42</fastjson.version>
+        <fastjson.version>2.0.43</fastjson.version>
         <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
         <tablibs-standard.version>1.2.5</tablibs-standard.version>
         <!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
@@ -112,6 +112,8 @@
         <!-- https://mvnrepository.com/artifact/de.schlichtherle.truelicense/truelicense-core -->
         <truelicense.version>1.33</truelicense.version>
         <!-- plugin -->
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-install-plugin -->
+        <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin -->
         <mybatis-generator-maven-plugin.version>1.4.2</mybatis-generator-maven-plugin.version>
     </properties>
@@ -121,12 +123,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.yaml</groupId>
-                    <artifactId>snakeyaml</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -217,12 +213,6 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.json</groupId>
-                    <artifactId>json</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- caffeine：高性能本地缓存 -->
@@ -268,6 +258,18 @@
             <artifactId>commons-email</artifactId>
             <version>${commons-email.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-rng-simple</artifactId>
+            <version>${commons-rng.version}</version>
+        </dependency>
+
+        <!-- poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>io.netty</groupId>
@@ -292,18 +294,6 @@
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>${minio.version}</version>
-        </dependency>
-
-        <!-- poi -->
-        <!-- <dependency> -->
-        <!--     <groupId>org.apache.poi</groupId> -->
-        <!--     <artifactId>poi</artifactId> -->
-        <!--     <version>${poi.version}</version> -->
-        <!-- </dependency> -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>${poi.version}</version>
         </dependency>
 
         <!-- itextpdf：Java-PDF TODO-LJH -->
@@ -429,12 +419,6 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>${springdoc.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.yaml</groupId>
-                    <artifactId>snakeyaml</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- jmh：微基准测试 -->
@@ -474,12 +458,6 @@
             <groupId>com.vdurmont</groupId>
             <artifactId>emoji-java</artifactId>
             <version>${emoji.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.json</groupId>
-                    <artifactId>json</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- jsch：SSH2 的 Java 实现 -->

@@ -14,7 +14,6 @@ import org.apache.hc.client5.http.cookie.StandardCookieSpec;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
@@ -63,12 +62,12 @@ import static l.demo.Demo.DESKTOP;
  * @author ljh
  * @since 2020/11/12 21:35
  */
-public class HttpClientUtils {
+public final class HttpClientUtils {
+    private HttpClientUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
     private static volatile HttpClientUtils instance;
-
-    private HttpClientUtils() {
-    }
 
     public static HttpClientUtils getInstance() {
         if (instance == null) {
@@ -94,13 +93,13 @@ public class HttpClientUtils {
     static {
         // 连接 Socket 工厂的注册表
         Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
-                .register("http", PlainConnectionSocketFactory.INSTANCE)
-                .register("https", SSLConnectionSocketFactory.getSystemSocketFactory())
-                .build();
+            .register("http", PlainConnectionSocketFactory.INSTANCE)
+            .register("https", SSLConnectionSocketFactory.getSystemSocketFactory())
+            .build();
 
         // 连接管理器
         PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(
-                socketFactoryRegistry, PoolConcurrencyPolicy.STRICT, PoolReusePolicy.LIFO, TimeValue.ofMinutes(5));
+            socketFactoryRegistry, PoolConcurrencyPolicy.STRICT, PoolReusePolicy.LIFO, TimeValue.ofMinutes(5));
         connManager.setDefaultSocketConfig(SocketConfig.custom().setSoTimeout(30, TimeUnit.SECONDS).setTcpNoDelay(true).build());
         connManager.setValidateAfterInactivity(TimeValue.ofSeconds(10));
         connManager.setMaxTotal(100);
@@ -115,25 +114,25 @@ public class HttpClientUtils {
 
         // 全局请求配置
         RequestConfig requestConfig = RequestConfig.custom()
-                .setCookieSpec(StandardCookieSpec.STRICT)
-                .setExpectContinueEnabled(true)
-                .setTargetPreferredAuthSchemes(List.of(StandardAuthScheme.NTLM, StandardAuthScheme.DIGEST))
-                .setProxyPreferredAuthSchemes(Collections.singletonList(StandardAuthScheme.BASIC))
-                .setConnectTimeout(5, TimeUnit.SECONDS)
-                .setResponseTimeout(5, TimeUnit.SECONDS)
-                .setConnectionRequestTimeout(5, TimeUnit.SECONDS)
-                .build();
+            .setCookieSpec(StandardCookieSpec.STRICT)
+            .setExpectContinueEnabled(true)
+            .setTargetPreferredAuthSchemes(List.of(StandardAuthScheme.NTLM, StandardAuthScheme.DIGEST))
+            .setProxyPreferredAuthSchemes(Collections.singletonList(StandardAuthScheme.BASIC))
+            .setConnectTimeout(5, TimeUnit.SECONDS)
+            .setResponseTimeout(5, TimeUnit.SECONDS)
+            .setConnectionRequestTimeout(5, TimeUnit.SECONDS)
+            .build();
 
         // HttpClient
         httpClient = HttpClients.custom()
-                .setConnectionManager(connManager)
-                .setDefaultCookieStore(cookieStore)
-                .setDefaultCredentialsProvider(basicCredentialsProvider)
-                .setDefaultRequestConfig(requestConfig)
-                // 设置定时清理连接池中过期的连接
-                .evictExpiredConnections()
-                .evictIdleConnections(TimeValue.ofMinutes(3))
-                .build();
+            .setConnectionManager(connManager)
+            .setDefaultCookieStore(cookieStore)
+            .setDefaultCredentialsProvider(basicCredentialsProvider)
+            .setDefaultRequestConfig(requestConfig)
+            // 设置定时清理连接池中过期的连接
+            .evictExpiredConnections()
+            .evictIdleConnections(TimeValue.ofMinutes(3))
+            .build();
 
         // JVM 停止或重启时，关闭连接池释放掉连接
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -168,14 +167,11 @@ public class HttpClientUtils {
             httpGet.setHeader("User-Agent", "PostmanRuntime/  7.29.2");
             String paramName;
             String paramValue;
-            try (CloseableHttpResponse httpResponse = httpClient.execute(httpGet)) {
-                if (httpResponse.getCode() != HttpStatus.SC_OK) return;
-                // Document
-                Document document = Jsoup.parse(EntityUtils.toString(httpResponse.getEntity(), StandardCharsets.UTF_8));
-                Elements creditReportInput = document.select("#creditReportForm input");
-                paramName = creditReportInput.attr("name");
-                paramValue = creditReportInput.attr("value");
-            }
+            String responseString = httpClient.execute(httpGet, responseHandler);
+            Document document = Jsoup.parse(responseString);
+            Elements creditReportInput = document.select("#creditReportForm input");
+            paramName = creditReportInput.attr("name");
+            paramValue = creditReportInput.attr("value");
 
             // HttpPost
             HttpPost httpPost = new HttpPost("https://credit.gd.gov.cn/creditreportAction!exportCreditReport.do");
@@ -183,13 +179,18 @@ public class HttpClientUtils {
             List<BasicNameValuePair> nameValuePairList = Collections.singletonList(new BasicNameValuePair(paramName, paramValue));
             HttpEntity formEntity = new UrlEncodedFormEntity(nameValuePairList, StandardCharsets.UTF_8);
             httpPost.setEntity(formEntity);
-            try (CloseableHttpResponse httpResponse2 = httpClient.execute(httpPost)) {
-                if (httpResponse2.getCode() != HttpStatus.SC_OK) return;
-                HttpEntity httpEntity = new BufferedHttpEntity(httpResponse2.getEntity());
-                String fileMd5 = DigestUtils.md5Hex(httpEntity.getContent());
-                Files.copy(httpEntity.getContent(), new File(String.format("%s%s.pdf", DESKTOP, fileMd5)).toPath());
-            }
-        } catch (ParseException | IOException e) {
+            HttpEntity responseEntity = httpClient.execute(httpPost, httpResponse -> {
+                int statusCode = httpResponse.getCode();
+                if (statusCode >= HttpStatus.SC_SUCCESS && statusCode < HttpStatus.SC_REDIRECTION) {
+                    return httpResponse.getEntity();
+                } else {
+                    throw new ClientProtocolException("Unexpected response status: " + statusCode);
+                }
+            });
+            HttpEntity httpEntity = new BufferedHttpEntity(responseEntity);
+            String fileMd5 = DigestUtils.md5Hex(httpEntity.getContent());
+            Files.copy(httpEntity.getContent(), new File(String.format("%s%s.pdf", DESKTOP, fileMd5)).toPath());
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -198,7 +199,7 @@ public class HttpClientUtils {
         HttpPost httpPost = new HttpPost(url);
         if (params != null) {
             List<BasicNameValuePair> nameValuePairList = params.entrySet().stream().map(
-                    entry -> new BasicNameValuePair(entry.getKey(), entry.getValue())).collect(Collectors.toList());
+                entry -> new BasicNameValuePair(entry.getKey(), entry.getValue())).collect(Collectors.toList());
             HttpEntity formEntity = new UrlEncodedFormEntity(nameValuePairList, StandardCharsets.UTF_8);
             httpPost.setEntity(formEntity);
         }

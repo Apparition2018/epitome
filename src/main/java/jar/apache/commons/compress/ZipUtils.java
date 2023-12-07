@@ -29,7 +29,10 @@ import java.util.*;
  * @since 2019/8/8 19:39
  */
 @Slf4j
-public class ZipUtils extends Demo {
+public final class ZipUtils extends Demo {
+    private ZipUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
     @Test
     public void compress() {
@@ -105,7 +108,7 @@ public class ZipUtils extends Demo {
         try (ZipArchiveOutputStream zaos = new ZipArchiveOutputStream(new File(zipFile))) {
 
             for (File f : filesToArchive) {
-                ArchiveEntry entry = zaos.createArchiveEntry(f, f.getCanonicalPath().substring(rootPath.length()));
+                ZipArchiveEntry entry = zaos.createArchiveEntry(f, f.getCanonicalPath().substring(rootPath.length()));
                 zaos.putArchiveEntry(entry);
                 if (f.isFile()) {
                     try (InputStream is = Files.newInputStream(f.toPath())) {
@@ -139,7 +142,7 @@ public class ZipUtils extends Demo {
 
                     ArchiveEntry entry;
                     // 把 zip 包中的每个文件读取出来，然后把文件写到指定的文件夹
-                    while (null != (entry = zais.getNextZipEntry())) {
+                    while (null != (entry = zais.getNextEntry())) {
                         if (!zais.canReadEntryData(entry)) {
                             continue;
                         }

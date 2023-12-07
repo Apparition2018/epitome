@@ -10,7 +10,10 @@ import org.springframework.context.i18n.LocaleContextHolder;
  * @author ljh
  * @since 2021/11/21 1:26
  */
-public class MessageUtils {
+public final class MessageUtils {
+    private MessageUtils() {
+        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
+    }
 
     /**
      * 根据消息键和参数 获取消息 委托给spring messageSource

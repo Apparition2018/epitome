@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>BlockUI</title>
+    <link rel="stylesheet" href="../../../../public/css/demo.css">
+</head>
+<body>
+<section class="code-wrap">
+    <div class="css-live-wrap">
+        <div class="caption">
+            <a href="https://www.npmjs.com/package/block-ui" target="_blank">BlockUI</a>
+        </div>
+        <div class="centered">
+            <div id="block-ui" class="demo-button">BlockUI</div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/block-ui/jquery.blockUI.js"></script>
+    <script class="code" contenteditable="true">
+        $('#block-ui').click(function () {
+            $.blockUI();
+            setTimeout($.unblockUI, 1000);
+        });
+    </script>
+</section>
+</body>
+</html>
