@@ -1,11 +1,6 @@
 # VS Code Settings
 
 ---
-## Reference
-1. [VS Code 用法大全](https://space.bilibili.com/337242418/channel/collectiondetail?sid=1815914)
-2. [VS Code + ESLint + Prettier + Git Hooks](https://zhuanlan.zhihu.com/p/444925446)
-3. [Syntax Highlighting](https://babeljs.io/docs/en/editors/#visual-studio-code)
----
 ## [配置 user-data-dir 和 extensions-dir](https://stackoverflow.com/a/66281688/19598136)
     1. 找到 vscode 快捷方式位置
     2. 右键 → 属性 → 目标
@@ -19,7 +14,11 @@
 ## settings.json
 ```json5
 {
+  // icon theme
+  "workbench.iconTheme": "vscode-icons",
+  // files
   "files.autoSave": "afterDelay",
+  "files.autoGuessEncoding": true,
   "files.associations": {
     "*.wxml": "html",
     "*.wxs": "javascript",
@@ -54,48 +53,16 @@
   "terminal.integrated.defaultProfile.windows": "Git-Bash",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
-  // java
-  "java.configuration.runtimes": [
-    {
-      "name": "JavaSE-1.8",
-      "path": "D:\\Java\\jdk-1.8"
-    },
-    {
-      "name": "JavaSE-17",
-      "path": "D:\\Java\\jdk-17",
-      "default": true
-    }
-  ],
-  "java.configuration.updateBuildConfiguration": "automatic",
-  "java.configuration.maven.globalSettings": "D:\\dev\\.maven\\settings.xml",
-  "java.configuration.maven.userSettings": "D:\\dev\\.maven\\settings.xml",
-  "java.compile.nullAnalysis.mode": "automatic",
-  "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
-  "java.format.settings.profile": "GoogleStyle",
-  "java.jdt.ls.vmargs": "-Xmx2G -Xms1G -javaagent:D:\\dev\\.maven\\repository\\org\\projectlombok\\lombok\\1.18.30\\lombok-1.18.30.jar",
-  // editor formatter
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
-  },
-  "[java]": {
-    "editor.defaultFormatter": "redhat.java"
-  },
-  // remote
-  "remote.SSH.remotePlatform": {
-    "43.136.102.115": "linux"
-  },
-  // emmet
-  "emmet.includeLanguages": {
-    "vue-html": "html",
-    "javascript": "javascriptreact"
-  },
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.variables": {
-    "lang": "zh-CN"
-  },
+  // editor
+  // "editor.formatOn…": true,
+  "editor.guides.bracketPairs": true,
+  "editor.wordWrap": "on",
+  "editor.mouseWheelZoom": true,
+  "editor.snippetSuggestions": "top",
+  "editor.acceptSuggestionOnEnter": "off",
   // eslint
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "eslint.validate": ["javascript"],
   // prettier: https://prettier.io/docs/en/
@@ -128,6 +95,50 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  // editor formatter
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  // emmet
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.variables": {
+    "lang": "zh-CN"
+  },
+  // debug
+  "debug.showBreakpointsInOverviewRuler": true,
+  // colorize
+  "colorize.colorized_variables": ["CSS"],
+  "colorize.languages": ["javascript"],
+  // java
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-1.8",
+      "path": "D:\\Java\\jdk-1.8"
+    },
+    {
+      "name": "JavaSE-17",
+      "path": "D:\\Java\\jdk-17",
+      "default": true
+    }
+  ],
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.configuration.maven.globalSettings": "D:\\dev\\.maven\\settings.xml",
+  "java.configuration.maven.userSettings": "D:\\dev\\.maven\\settings.xml",
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
+  "java.format.settings.profile": "GoogleStyle",
+  "java.jdt.ls.vmargs": "-Xmx2G -Xms1G -javaagent:D:\\dev\\.maven\\repository\\org\\projectlombok\\lombok\\1.18.30\\lombok-1.18.30.jar",
+  // remote
+  "remote.SSH.remotePlatform": {
+    "43.136.102.115": "linux"
+  },
   // gitlens
   "gitlens.views.commitDetails.files.layout": "tree",
   // rsp-ui
@@ -138,12 +149,8 @@
       "startOnActivation": true
     }
   ],
-  // icon theme
-  "workbench.iconTheme": "vscode-icons",
   // project manager
-  "projectManager.git.baseFolders": [
-    "D:\\Liang\\git"
-  ],
+  "projectManager.git.baseFolders": ["D:\\Liang\\git"],
   // tabnine
   "tabnine.experimentalAutoImports": true,
   // code-runner

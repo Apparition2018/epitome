@@ -75,8 +75,8 @@ F11                         Step Into
 Shift + Alt + C             Copy Path of Active File                            复制当前文件路径
 Shift + Alt + R             Reveal in File Explorer                             在资源管理器中显示
 Ctrl + N                    New Untitled File                                   新建无标题文件
-Ctrl + O                    Open File...                                        打开文件
-Ctrl + R                    Open Recent...                                      打开最近
+Ctrl + O                    Open File…                                          打开文件
+Ctrl + R                    Open Recent…                                        打开最近
 ```
 ---
 ## Workspaces
@@ -109,24 +109,25 @@ Alt + L Alt + O             Open with Live Server                               
 ```
 Alt + 1-9                   openEditorAtIndex1-9
 Ctrl + 1-8                  focusXXXEditorGroup
-Ctrl + ,                    openSettings                       打开设置
-Ctrl + K P                  files.copyPathOfActiveFile         复制当前文件路径
-Ctrl + K R                  files.revealActiveFileInWindows    在资源管理器中显示当前文件
+Ctrl + ,                    openSettings                                        打开设置
+Ctrl + K P                  files.copyPathOfActiveFile                          复制当前文件路径
+Ctrl + K R                  files.revealActiveFileInWindows                     在资源管理器中显示当前文件
 ```
 ---
 ## System
 ```
+?                                                                               列出当前可执行的动作
 Ctrl + F2                   Change All Occurrences                              更改所有匹配项
 Ctrl + D                    Add Selection To Next Find Match                    将选择添加到下一个查找匹配项
-Ctrl + E                    Go to File...                                       跳转到文件
-Ctrl + G                    Go to Line/Column...                                跳转到行/列
+Ctrl + E                    … Go to File…                                       跳转到文件
+Ctrl + G                    : Go to Line/Column…                                跳转到行/列
 Ctrl + I                    Trigger Suggest                                     建议
 Ctrl + L                    expandLineSelection                                 选中当前行
-Ctrl + P                    Go to File...                                       跳转到文件
+Ctrl + P                    … Go to File…                                       跳转到文件
 Ctrl + K Ctrl + F           Format Selection                                    格式化所选
 Ctrl + K Ctrl + Q           Go to Last Edit Location                            跳转到最后修改位置
 Ctrl + K M                  Change Language Mode                                改变语言模式
-Ctrl + T                    Go to Symbol in Workspace...                        跳转到工作空间的 Symbol
+Ctrl + T                    # Go to Symbol in Workspace…                        跳转到工作空间的 Symbol
 Ctrl + U                    Cursor Undo                                         光标撤回
 Ctrl + Y                    Redo                                                重做
 Ctrl + [                    Outdent Line                                        反缩进
@@ -135,9 +136,9 @@ Ctrl + Delete               deleteWordRight                                     
 
 Ctrl + SHift + K            Delete Line                                         删除行
 Ctrl + Shift + N            New Window                                          新建窗口
-Ctrl + Shift + O            Go to Symbol in Editor...                           跳转到编辑器的 Symbol
+Ctrl + Shift + O            @ Go to Symbol in Editor…                           跳转到编辑器的 Symbol
 Ctrl + Shift + P            Show All Commands                                   显示所有命令
-Ctrl + Shift + R            Refactor...                                         重构
+Ctrl + Shift + R            Refactor…                                           重构
 Ctrl + Shift + Z            Redo                                                重做
 Ctrl + Shift + \            Go to Bracket                                       转到括号
 Ctrl + Shift + [            Fold                                                折叠
@@ -163,15 +164,19 @@ F12                         Go to Definition                                    
 
 Alt + 多个 Left Click       Toggle Multi-Cursor Modifier
 ```
----
-## Ctrl + P
+### Preferences
 ```
-?                                                                               列出当前可执行的动作
-:                           Ctrl + G                                            跳转到行/列
-@                           Ctrl + Shift + O                                    在编辑器跳转到 Symbol
-#                           Ctrl + T                                            在工作区跳转到 Symbol
+Ctrl + K Ctrl + T           Color Theme                                         颜色主题
 ```
 ---
 ## Extensions
-Ctrl + Alt + Normal         Run Code
+Ctrl + Alt + N              Run Code                                            Code Runner
+Alt + B                     Open In Default Browser                             open in browser
+Ctrl + Alt + K              Toggle                                              Bookmarks
+Ctrl + Alt + J              Jump to Previous                                    Bookmarks
+Ctrl + Alt + L              Jump to Next                                        Bookmarks
+Ctrl + Alt + L              Display Log Message                                 Turbo Console Log
+Shift + Alt + C             Comment All Log Message                             Turbo Console Log
+Shift + Alt + U             Uncomment All Log Message                           Turbo Console Log
+Shift + Alt + D             Delete All Log Message                              Turbo Console Log
 ---
