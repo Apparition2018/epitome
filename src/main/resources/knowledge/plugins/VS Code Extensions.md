@@ -1,12 +1,10 @@
 # [VS Code Extensions](https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs)
-- https://www.bilibili.com/video/BV1Hd4y1o7CN/
-- https://www.bilibili.com/video/BV1Hm4y1W7SK/
+
 ---
 ## Reference
 1. [VS Code 用法大全](https://space.bilibili.com/337242418/channel/collectiondetail?sid=1815914)
 2. [VS Code 必备插件大全](https://space.bilibili.com/383062034/channel/collectiondetail?sid=1900603)
 3. [VS Code + ESLint + Prettier + Git Hooks](https://zhuanlan.zhihu.com/p/444925446)
-4. [Syntax Highlighting](https://babeljs.io/docs/en/editors/#visual-studio-code)
 ---
 ## Extension Packs
 - Git Extension Pack
@@ -78,6 +76,8 @@
 - [IntelliJ IDEA Keybindings](https://marketplace.visualstudio.com/items?itemName=k--kato.intellij-idea-keybindings)
 ## Linters
 - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+- [StandardJS](https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard)
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 ## Machine Learning
 - [AWS Toolkit](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.aws-toolkit-vscode)
 - [CodeGeeX](https://marketplace.visualstudio.com/items?itemName=aminer.codegeex)
@@ -108,7 +108,9 @@
 - [Comment Translate](https://marketplace.visualstudio.com/items?itemName=intellsmi.comment-translate)
 - [Community Server Connectors](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-community-server-connector)
     - Runtime Server Protocol UI
+- [Doxygen Documentation Generator](https://marketplace.visualstudio.com/items?itemName=cschlosser.doxdocgen)
 - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+- [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
 - [GitHub Repositories](https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub)
 - [Image preview](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview)
     - Azure Repos

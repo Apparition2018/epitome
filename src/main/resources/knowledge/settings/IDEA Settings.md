@@ -132,9 +132,9 @@
             1.1.1 Detect compiler automatically 取消勾选
         1.2 Compiler
             1.2.1 Build project automatically 勾选
-            1.2.2 Shared build process VM options: 
+            1.2.2 Shared build process VM options:
                 -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar
-            1.2.3 Java Compiler → Use compiler: Eclipse 
+            1.2.3 Java Compiler → Use compiler: Eclipse
             1.2.4 Annotation Processors → Enable annotation processing 勾选
     2. Settings → Advanced Settings → Compiler
         2.1 Allow auto-make to start even if developed application is currently running 勾选
@@ -186,16 +186,18 @@
 ## npm
 ### [ESLint](https://www.jetbrains.com/help/idea/eslint.html) (-u)
     1. npm install --g eslint
-    2. npm install standard --global
+    2. npm install --g standard
     3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
         3.1 Manual ESLint configuration 勾选
-        3.2 ESLint package: ~\AppData\Roaming\npm\node_modules\standard
+        3.2 ESLint package: D:\nodejs\node_global\node_modules\standard
         3.3 Run eslint --fix on save 勾选
 ### [Prettier](https://www.jetbrains.com/help/idea/prettier.html) (-u)
     1. npm install --global prettier
     2. Settings → Languages & Frameworks → JavaScript → Prettier
-        2.1 Prettier package: ~\AppData\Roaming\npm\node_modules\prettier
-        2.1 On Save 勾选
+        2.1 Manual prettier configuration 勾选
+        2.2 Prettier package: D:\nodejs\node_global\node_modules\prettier
+        2.3 Run on 'Reformat Code' action 勾选
+        2.4 Run on Save 勾选
 ---
 ## Other
 ### Error running 'XxxApp': Command line is too long

@@ -54,7 +54,6 @@
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   // editor
-  // "editor.formatOn…": true,
   "editor.guides.bracketPairs": true,
   "editor.wordWrap": "on",
   "editor.mouseWheelZoom": true,
@@ -68,37 +67,7 @@
   // prettier: https://prettier.io/docs/en/
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[less]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   // editor formatter
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
-  },
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
   },
@@ -208,7 +177,7 @@
     "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
     "sml": "cd $dir && sml $fileName",
     "mojo": "mojo run"
-  },
+  }
 }
 ```
 ---

@@ -70,23 +70,9 @@ F11                         Start Debugging and Stop on Entry                   
 F11                         Step Into
 ```
 ---
-## File
-```
-Shift + Alt + C             Copy Path of Active File                            复制当前文件路径
-Shift + Alt + R             Reveal in File Explorer                             在资源管理器中显示
-Ctrl + N                    New Untitled File                                   新建无标题文件
-Ctrl + O                    Open File…                                          打开文件
-Ctrl + R                    Open Recent…                                        打开最近
-```
----
 ## Workspaces
 ```
 Ctrl + K F                  Close Workspace                                     关闭工作区
-```
----
-## Preferences
-```
-Ctrl + K Ctrl + S           Open Keyboard Shortcuts                             打开键盘快捷键
 ```
 ---
 ## Tasks
@@ -164,8 +150,19 @@ F12                         Go to Definition                                    
 
 Alt + 多个 Left Click       Toggle Multi-Cursor Modifier
 ```
+### File
+```
+Shift + Alt + C             Copy Path of Active File                            复制当前文件路径
+Shift + Alt + R             Reveal in File Explorer                             在资源管理器中显示
+Ctrl + N                    New Untitled File                                   新建无标题文件
+Ctrl + O                    Open File…                                          打开文件
+Ctrl + R                    Open Recent…                                        打开最近
+Ctrl + K C                  Compare Active File with Clipboard
+```
+---
 ### Preferences
 ```
+Ctrl + K Ctrl + S           Open Keyboard Shortcuts                             打开键盘快捷键
 Ctrl + K Ctrl + T           Color Theme                                         颜色主题
 ```
 ---
