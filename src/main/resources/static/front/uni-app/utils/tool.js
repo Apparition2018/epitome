@@ -1,37 +1,36 @@
-//时间间隔函数
-export function timeInterval(timesData) {
-  //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
-  var dateBegin = timesData;//将-转化为/，使用new Date    
-  var dateEnd = new Date();//获取当前时间   
-  var dateDiff = Math.abs( dateEnd.getTime() - dateBegin );  //时间差的毫秒数
-  var yearDiff = Math.floor(dateDiff / (24 * 3600 * 1000*365));
-  var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));  //计算出相差天数
-  var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
-  var hours = Math.floor(leave1 / (3600 * 1000))//计算出小时数
-  //计算相差分钟数
-  var leave2 = leave1 % (3600 * 1000)    //计算小时数后剩余的毫秒数
-  var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分钟数
-  //计算相差秒数
-  var leave3 = leave2 % (60 * 1000)      //计算分钟数后剩余的毫秒数
-  var seconds = Math.round(leave3 / 1000);
-  var timesString = '';
-  if (yearDiff!=0){
-    timesString = yearDiff + '年前';
-  } else if (yearDiff == 0   && dayDiff != 0) {
-    timesString = dayDiff + '天前';
-  } else if (dayDiff == 0 && hours != 0) {
-    timesString = hours + '小时前';
-  } else if (hours == 0 && minutes != 0) {      
-    timesString = minutes + '分钟前';      
-  } else if (minutes == 0 && seconds<60){ 
-    timesString = '刚刚'; 
-  } 
-  return timesString 
+// 时间间隔函数
+export function timeInterval (timesData) {
+  // 如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
+  const dateBegin = timesData// 将-转化为/，使用new Date
+  const dateEnd = new Date()// 获取当前时间
+  const dateDiff = Math.abs(dateEnd.getTime() - dateBegin) // 时间差的毫秒数
+  const yearDiff = Math.floor(dateDiff / (24 * 3600 * 1000 * 365))
+  const dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000)) // 计算出相差天数
+  const leave1 = dateDiff % (24 * 3600 * 1000) // 计算天数后剩余的毫秒数
+  const hours = Math.floor(leave1 / (3600 * 1000))// 计算出小时数
+  // 计算相差分钟数
+  const leave2 = leave1 % (3600 * 1000) // 计算小时数后剩余的毫秒数
+  const minutes = Math.floor(leave2 / (60 * 1000))// 计算相差分钟数
+  // 计算相差秒数
+  const leave3 = leave2 % (60 * 1000) // 计算分钟数后剩余的毫秒数
+  const seconds = Math.round(leave3 / 1000)
+  let timesString = ''
+  if (yearDiff !== 0) {
+    timesString = yearDiff + '年前'
+  } else if (yearDiff === 0 && dayDiff !== 0) {
+    timesString = dayDiff + '天前'
+  } else if (dayDiff === 0 && hours !== 0) {
+    timesString = hours + '小时前'
+  } else if (hours === 0 && minutes !== 0) {
+    timesString = minutes + '分钟前'
+  } else if (minutes === 0 && seconds < 60) {
+    timesString = '刚刚'
+  }
+  return timesString
 }
 
-
 // 日期格式化
-export function parseTime(time, pattern) {
+export function parseTime (time, pattern) {
   if (arguments.length === 0 || !time) {
     return null
   }
@@ -43,7 +42,7 @@ export function parseTime(time, pattern) {
     if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
       time = parseInt(time)
     } else if (typeof time === 'string') {
-      time = time.replace(new RegExp(/-/gm), '/').replace('T', ' ').replace(new RegExp(/\.[\d]{3}/gm), '');
+      time = time.replace(new RegExp(/-/gm), '/').replace('T', ' ').replace(new RegExp(/\.[\d]{3}/gm), '')
     }
     if ((typeof time === 'number') && (time.toString().length === 10)) {
       time = time * 1000

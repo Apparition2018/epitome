@@ -13,7 +13,7 @@ const routes = [
     path: '/file-saver',
     name: 'FileSaver',
     component: () => import('@/views/FileSaver')
-  },
+  }
 ]
 
 const router = new VueRouter({
