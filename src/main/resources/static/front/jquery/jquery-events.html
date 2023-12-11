@@ -8,7 +8,7 @@
     <title>事件 | jQuery</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script defer src="../../public/js/demo.js"></script>
+    <script async src="../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h800">
@@ -206,9 +206,7 @@
             </table>
         </div>
     </div>
-    <script>
-
-    </script>
+    <script></script>
 </section>
 
 <section class="code-wrap h1100">
@@ -461,10 +459,10 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        $(".box-event-data").click({"a": 1, "b": 2, "c": 3}, function (e) {
-            $.each(e.data, function (i, v) {
-                alert(`${i}: ${v}`);
-            })
+        $('.box-event-data').click({ a: 1, b: 2, c: 3 }, function (e) {
+          $.each(e.data, function (i, v) {
+            alert(`${i}: ${v}`)
+          })
         })
     </script>
 </section>

@@ -8,7 +8,7 @@
     <title>其它 | jQuery</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
     <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
-    <script defer src="../../public/js/demo.js"></script>
+    <script async src="../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h500">
@@ -133,7 +133,7 @@
     </div>
     <script class="code w60p" contenteditable="true">
         $(function () {
-            $('#' + $.escapeSelector('#target')).css('color', 'red');
+          $('#' + $.escapeSelector('#target')).css('color', 'red')
         })
     </script>
 </section>
@@ -147,19 +147,19 @@
     </div>
     <script class="code w60p" contenteditable="true">
         $(function () {
-            $.get(DEMO_URL)
-                .done(function (data, textStatus, jqXHR) {
-                    console.log(data);
-                })
-                .fail(function (jqXHR, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                })
-                // then() 相当于 done() + fail()
-                .then(function (data, textStatus, jqXHR) {
-                    console.log(data);
-                }, function (jqXHR, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                });
+          $.get(DEMO_URL)
+            .done(function (data, textStatus, jqXHR) {
+              console.log(data)
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+              console.log(errorThrown)
+            })
+            // then() 相当于 done() + fail()
+            .then(function (data, textStatus, jqXHR) {
+              console.log(data)
+            }, function (jqXHR, textStatus, errorThrown) {
+              console.log(errorThrown)
+            })
         })
     </script>
 </section>

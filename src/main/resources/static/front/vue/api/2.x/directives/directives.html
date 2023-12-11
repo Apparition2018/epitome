@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../../../../public/css/demo.css">
     <script src="https://unpkg.com/vue@^2/dist/vue.min.js"></script>
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script defer src="../../../../../public/js/demo.js"></script>
+    <script async src="../../../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h250">
@@ -61,15 +61,15 @@
     </div>
     <script class="code" contenteditable="true">
         new Vue({
-            el: '#if',
-            data: {
-                type: 'name'
-            },
-            methods: {
-                handleToggleClick() {
-                    this.type = this.type === 'name' ? 'mail' : 'name'
-                }
+          el: '#if',
+          data: {
+            type: 'name'
+          },
+          methods: {
+            handleToggleClick () {
+              this.type = this.type === 'name' ? 'mail' : 'name'
             }
+          }
         })
     </script>
 </section>
@@ -97,23 +97,23 @@
     </div>
     <script class="code" contenteditable="true">
         new Vue({
-            el: '#for',
-            data: {
-                colors: [
-                    {
-                        chinese: '红',
-                        english: 'red'
-                    },
-                    {
-                        chinese: '黄',
-                        english: 'yellow'
-                    },
-                    {
-                        chinese: '蓝',
-                        english: 'blue'
-                    }
-                ]
-            }
+          el: '#for',
+          data: {
+            colors: [
+              {
+                chinese: '红',
+                english: 'red'
+              },
+              {
+                chinese: '黄',
+                english: 'yellow'
+              },
+              {
+                chinese: '蓝',
+                english: 'blue'
+              }
+            ]
+          }
         })
     </script>
 </section>

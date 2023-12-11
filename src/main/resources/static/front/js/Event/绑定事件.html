@@ -10,7 +10,7 @@
     <title>绑定事件</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
+    <script async src="../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h250">
@@ -26,9 +26,9 @@
         &lt;/div&gt;
     </code>
     <script>
-        function eg1() {
-            const eg1 = document.getElementsByClassName("eg1")[0];
-            eg1.textContent = "在DOM元素中直接绑定"
+        function eg1 () {
+          const eg1 = document.getElementsByClassName('eg1')[0]
+          eg1.textContent = '在DOM元素中直接绑定'
         }
     </script>
 </section>
@@ -44,14 +44,14 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const eg2 = document.getElementsByClassName("eg2")[0];
+        const eg2 = document.getElementsByClassName('eg2')[0]
         eg2.onclick = function () {
-            // 只执行最后绑定的事件
-            this.textContent = "onclick 绑定";
-        };
+          // 只执行最后绑定的事件
+          this.textContent = 'onclick 绑定'
+        }
         setTimeout(function () {
-            // js 原生 click 触发一次onclick事件
-            eg2.click();
+          // js 原生 click 触发一次onclick事件
+          eg2.click()
         }, 1500)
 
         // eg2.onclick = null; // 解绑
@@ -72,24 +72,24 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const obj = document.getElementsByClassName("eg3")[0];
-        addEvent(obj, "click", eg3Fuc);
+        const obj = document.getElementsByClassName('eg3')[0]
+        addEvent(obj, 'click', eg3Fuc)
 
-        function addEvent(obj, type, func) {
-            if (obj.addEventListener) {         // DOM2
-                obj.addEventListener(type, func, false);
-                // addEventListener可以绑定多个事件; 回调函数默认传入一个event; 第三个参数，false为冒泡（默认）, true为捕获
-                // 解除相应的绑定：removeEventListener(type, listener[, useCapture])
-            } else if (obj.attachEvent) {       // IE
-                obj.attachEvent('on' + type, func);
-                // 解除相应的绑定：detachEvent(eventNameWithOn, callback)
-            } else {                            // DOM0
-                obj['on' + type] = func;
-            }
+        function addEvent (obj, type, func) {
+          if (obj.addEventListener) { // DOM2
+            obj.addEventListener(type, func, false)
+            // addEventListener可以绑定多个事件; 回调函数默认传入一个event; 第三个参数，false为冒泡（默认）, true为捕获
+            // 解除相应的绑定：removeEventListener(type, listener[, useCapture])
+          } else if (obj.attachEvent) { // IE
+            obj.attachEvent('on' + type, func)
+            // 解除相应的绑定：detachEvent(eventNameWithOn, callback)
+          } else { // DOM0
+            obj['on' + type] = func
+          }
         }
 
-        function eg3Fuc() {
-            obj.textContent = "绑定事件监听函数";
+        function eg3Fuc () {
+          obj.textContent = '绑定事件监听函数'
         }
     </script>
 </section>
@@ -103,9 +103,9 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        $('body').on("click", ".eg4", function () {
-            $('.eg4').text('jQuery on 绑定');
-        });
+        $('body').on('click', '.eg4', function () {
+          $('.eg4').text('jQuery on 绑定')
+        })
     </script>
 </section>
 
@@ -118,12 +118,12 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        $('.eg5').bind("click", function () {
-            $('.eg5').html('jQuery bind 绑定');
-        });
+        $('.eg5').bind('click', function () {
+          $('.eg5').html('jQuery bind 绑定')
+        })
         setTimeout(function () {
-            // jQuery 的 click 触发一次onclick事件
-            $('.eg5').click();
+          // jQuery 的 click 触发一次onclick事件
+          $('.eg5').click()
         }, 1500)
     </script>
 </section>
@@ -138,11 +138,11 @@
     </div>
     <script class="code w60p" contenteditable="true">
         $('.eg6').click(function () {
-            $('.eg6').html('jQuery click 绑定');
-        });
+          $('.eg6').html('jQuery click 绑定')
+        })
         setTimeout(function () {
-            // jQuery 的 click 触发一次onclick事件
-            $('.eg6').click();
+          // jQuery 的 click 触发一次onclick事件
+          $('.eg6').click()
         }, 1500)
     </script>
 </section>
@@ -156,13 +156,13 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const eg7 = document.getElementsByClassName("eg7")[0];
+        const eg7 = document.getElementsByClassName('eg7')[0]
         document.onclick = function (event) {
-            event = event || window.event;
-            const target = event.target || event.srcElement;
-            if (target === eg7) {
-                eg7.textContent = "事件委托";
-            }
+          event = event || window.event
+          const target = event.target || event.srcElement
+          if (target === eg7) {
+            eg7.textContent = '事件委托'
+          }
         }
     </script>
 </section>

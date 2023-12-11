@@ -170,6 +170,24 @@
             Deployment path: /home/lighthouse/sync_dir
     2. Tools → Deployment → Sync With Local…
 ---
+## JavaScript
+### [ESLint](https://www.jetbrains.com/help/idea/eslint.html) (-u)
+    1. npm init @eslint/config
+    2. npm i --save-dev eslint eslint-config-standard eslint-config-standard-jsx
+        eslint-plugin-promise eslint-plugin-import eslint-plugin-n
+        eslint-plugin-html eslint-plugin-jquery eslint-plugin-vue eslint-plugin-react
+    3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
+        3.1 Manual ESLint configuration 勾选
+        3.2 ESLint package: D:\Liang\git\epitome\node_modules\eslint
+        3.3 Run eslint --fix on save 勾选
+### [Prettier](https://www.jetbrains.com/help/idea/prettier.html) (-u)
+    1. npm install --global prettier
+    2. Settings → Languages & Frameworks → JavaScript → Prettier
+        2.1 Manual prettier configuration 勾选
+        2.2 Prettier package: D:\nodejs\node_global\node_modules\prettier
+        2.3 Run on 'Reformat Code' action 勾选
+        2.4 Run on Save 勾选
+---
 ## [Project Structure…](https://www.jianshu.com/p/39b2206999e7)
 ### Modules
     1. Dependencies → + → 2 Library…
@@ -182,22 +200,6 @@
     1. + Web Application: Exploded ▶ From Modules…
     2. Output directory
     3. 把 Available Elements 中需要用到的 jar Put into /WEB-INF/lib，特别是 javax.servlet-api
----
-## npm
-### [ESLint](https://www.jetbrains.com/help/idea/eslint.html) (-u)
-    1. npm install --g eslint
-    2. npm install --g standard
-    3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
-        3.1 Manual ESLint configuration 勾选
-        3.2 ESLint package: D:\nodejs\node_global\node_modules\standard
-        3.3 Run eslint --fix on save 勾选
-### [Prettier](https://www.jetbrains.com/help/idea/prettier.html) (-u)
-    1. npm install --global prettier
-    2. Settings → Languages & Frameworks → JavaScript → Prettier
-        2.1 Manual prettier configuration 勾选
-        2.2 Prettier package: D:\nodejs\node_global\node_modules\prettier
-        2.3 Run on 'Reformat Code' action 勾选
-        2.4 Run on Save 勾选
 ---
 ## Other
 ### Error running 'XxxApp': Command line is too long

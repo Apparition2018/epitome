@@ -7,7 +7,7 @@
     <title>border-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
+    <script async src="../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h300">
@@ -44,10 +44,10 @@
         }
     </style>
     <script>
-        document.getElementsByTagName("select")[0].onchange = function () {
-            const demo = document.getElementsByClassName("demo")[0];
-            demo.textContent = "";
-            this.value === "10%" ? (demo.textContent = "不支持百分比值") : (demo.style.borderWidth = this.value);
+        document.getElementsByTagName('select')[0].onchange = function () {
+          const demo = document.getElementsByClassName('demo')[0]
+          demo.textContent = ''
+          this.value === '10%' ? (demo.textContent = '不支持百分比值') : (demo.style.borderWidth = this.value)
         }
     </script>
 </section>
@@ -257,15 +257,16 @@
         }
     </style>
     <script>
-        function left() {
-            const $left = $('.layout .left span');
-            $left.html(`${$left.html()}<br>导航`);
+        function left () {
+          const $left = $('.layout .left span')
+          $left.html(`${$left.html()}<br>导航`)
         }
 
-        function module() {
-            const $module = $('.layout .module div');
-            $module.html(`${$module.html()}<br>导航`);
-        }</script>
+        function module () {
+          const $module = $('.layout .module div')
+          $module.html(`${$module.html()}<br>导航`)
+        }
+    </script>
 </section>
 </body>
 </html>

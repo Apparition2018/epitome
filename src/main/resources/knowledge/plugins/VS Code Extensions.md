@@ -4,7 +4,6 @@
 ## Reference
 1. [VS Code 用法大全](https://space.bilibili.com/337242418/channel/collectiondetail?sid=1815914)
 2. [VS Code 必备插件大全](https://space.bilibili.com/383062034/channel/collectiondetail?sid=1900603)
-3. [VS Code + ESLint + Prettier + Git Hooks](https://zhuanlan.zhihu.com/p/444925446)
 ---
 ## Extension Packs
 - Git Extension Pack

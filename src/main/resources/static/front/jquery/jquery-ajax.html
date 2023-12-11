@@ -8,7 +8,7 @@
     <title>AJAX | jQuery</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script defer src="../../public/js/demo.js"></script>
+    <script async src="../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap" style="height: 130vh;">
@@ -245,11 +245,11 @@
         }
     </style>
     <script class="code w60p" contenteditable="true">
-        $('.box1 input').on("change", function () {
-            $('#serialize').text($('.box1 form').serialize());
-        });
-        $('.box1 input').on("change", function () {
-            $('#serializeArray').text(JSON.stringify($('.box1 form').serializeArray()));
+        $('.box1 input').on('change', function () {
+          $('#serialize').text($('.box1 form').serialize())
+        })
+        $('.box1 input').on('change', function () {
+          $('#serializeArray').text(JSON.stringify($('.box1 form').serializeArray()))
         })
     </script>
 </section>
@@ -263,15 +263,15 @@
     </div>
     <script class="code w60p" contenteditable="true">
         const obj = {
-            a: {
-                one: 1,
-                two: 2,
-                three: 3
-            },
-            b: [1, 2, 3]
-        };
+          a: {
+            one: 1,
+            two: 2,
+            three: 3
+          },
+          b: [1, 2, 3]
+        }
 
-        $('.box2').text(decodeURI($.param(obj)));
+        $('.box2').text(decodeURI($.param(obj)))
     </script>
 </section>
 </body>

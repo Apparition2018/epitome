@@ -8,7 +8,7 @@
     <title>比较操作符</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
+    <script async src="../../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h250">
@@ -19,16 +19,15 @@
         </div>
     </div>
     <script class="code" contenteditable="true">
-        25 < "3";               // false
-        "25" < 3;               // false
-        "25" < "3";             // true
-        "25".charCodeAt(0);     // 50
-        "3".charCodeAt(0);      // 51
+        25 < '3' // false
+        '25' < 3 // false
+        '25' < '3' // true
+        '25'.charCodeAt(0) // 50
+        '3'.charCodeAt(0) // 51
 
-        "apple" > "Banana";     // true
-        "apple".charCodeAt(0);  // 97；a 的 unicode 为97
-        "Banana".charCodeAt(0); // 66；B 的 unicode 为66
-
+        'apple' > 'Banana' // true
+        'apple'.charCodeAt(0) // 97；a 的 unicode 为97
+        'Banana'.charCodeAt(0) // 66；B 的 unicode 为66
     </script>
 </section>
 

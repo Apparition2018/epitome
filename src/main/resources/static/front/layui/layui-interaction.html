@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.8.18/css/layui.css"/>
     <script src="https://www.layuicdn.com/layui-v2.8.18/layui.js"></script>
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script defer src="../../public/js/demo.js"></script>
+    <script async src="../../public/js/demo.js"></script>
 </head>
 <style>
     .layui-btn {background-color: #ffc0cb;}
@@ -60,22 +60,22 @@
         </div>
     </div>
     <script class="code" contenteditable="true">
-        layui.use("colorpicker", function () {
-            const colorpicker = layui.colorpicker;
-            colorpicker.render({
-                elem: "#colorpicker",
-                color: "#ffc0cb",       // 默认颜色
-                format: "rgb",          // 格式，可选值 hex、rgb
-                alpha: true,            // 是否开启透明度
-                predefine: true,        // 是否开启预定义颜色
-                colors: ["#ffc0cb"],    // 预定义颜色
-                size: 'sm',             // 大小，可选值 lg、sm、xs
-                done: function (color) { // 颜色选择后的回调
-                    $("#colorpicker-input").val(color);
-                    $(".layui-this").css('color', color);
-                    $(".layui-btn").css('background-color', color);
-                }
-            })
+        layui.use('colorpicker', function () {
+          const colorpicker = layui.colorpicker
+          colorpicker.render({
+            elem: '#colorpicker',
+            color: '#ffc0cb', // 默认颜色
+            format: 'rgb', // 格式，可选值 hex、rgb
+            alpha: true, // 是否开启透明度
+            predefine: true, // 是否开启预定义颜色
+            colors: ['#ffc0cb'], // 预定义颜色
+            size: 'sm', // 大小，可选值 lg、sm、xs
+            done: function (color) { // 颜色选择后的回调
+              $('#colorpicker-input').val(color)
+              $('.layui-this').css('color', color)
+              $('.layui-btn').css('background-color', color)
+            }
+          })
         })
     </script>
 </section>
@@ -90,28 +90,28 @@
         </div>
     </div>
     <script class="code" contenteditable="true">
-        layui.use("slider", function () {
-            const slider = layui.slider;
-            slider.render({
-                elem: "#slider",
-                // type: "vertical",           // 垂直滑块
-                // height: 200,                // 高度，配置 type: "vertical" 使用
-                min: 0,                     // 最小值
-                max: 100,                   // 最大值
-                range: true,                // 是否开启范围选择
-                value: [10, 20],            // 初始值
-                step: 5,                    // 步长
-                showstep: true,             // 是否显示间断点
-                tips: true,                 // 是否显示文字提示
-                setTips: function (val) {   // 自定义提示文本
-                    return val + "%";
-                },
-                // input: false,               // 输入框
-                disabled: false,            // 是否禁用
-                theme: "#ffc0cb",           // 主题颜色
-                change: function (vals) {    // change 回调
-                }
-            })
+        layui.use('slider', function () {
+          const slider = layui.slider
+          slider.render({
+            elem: '#slider',
+            // type: "vertical",       // 垂直滑块
+            // height: 200,            // 高度，配置 type: "vertical" 使用
+            min: 0, // 最小值
+            max: 100, // 最大值
+            range: true, // 是否开启范围选择
+            value: [10, 20], // 初始值
+            step: 5, // 步长
+            showstep: true, // 是否显示间断点
+            tips: true, // 是否显示文字提示
+            setTips: function (val) { // 自定义提示文本
+              return val + '%'
+            },
+            // input: false,        // 输入框
+            disabled: false, // 是否禁用
+            theme: '#ffc0cb', // 主题颜色
+            change: function (vals) { // change 回调
+            }
+          })
         })
     </script>
 </section>
@@ -126,27 +126,27 @@
         </div>
     </div>
     <script class="code" contenteditable="true">
-        layui.use("rate", function () {
-            const rate = layui.rate;
-            rate.render({
-                elem: "#rate",
-                length: 5,          // 星星个数
-                value: 1,           // 初始值
-                theme: "#ffc0cb",   // 主题颜色
-                half: false,        // 是否可以选择半星
-                text: true,         // 是否显示文本
-                setText: function (val) {
-                    const arrs = {
-                        "1": "极差",
-                        "2": "较差",
-                        "3": "中等",
-                        "4": "良好",
-                        "5": "极好",
-                    }
-                    this.span.text(arrs[val] || (val + "星"));
-                },
-                readonly: false,    // 是否只读
-            })
+        layui.use('rate', function () {
+          const rate = layui.rate
+          rate.render({
+            elem: '#rate',
+            length: 5, // 星星个数
+            value: 1, // 初始值
+            theme: '#ffc0cb', // 主题颜色
+            half: false, // 是否可以选择半星
+            text: true, // 是否显示文本
+            setText: function (val) {
+              const arrs = {
+                1: '极差',
+                2: '较差',
+                3: '中等',
+                4: '良好',
+                5: '极好'
+              }
+              this.span.text(arrs[val] || (val + '星'))
+            },
+            readonly: false // 是否只读
+          })
         })
     </script>
 </section>

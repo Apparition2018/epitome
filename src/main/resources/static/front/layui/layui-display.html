@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.8.18/css/layui.css"/>
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
     <script src="https://www.layuicdn.com/layui-v2.8.18/layui.js"></script>
-    <script defer src="../../public/js/demo.js"></script>
+    <script async src="../../public/js/demo.js"></script>
 </head>
 <body>
 <section class="code-wrap h100">
@@ -50,7 +50,7 @@
     </div>
     <pre class="code" contenteditable="true"><code>
         &lt;!-- 依赖加载模块 element
-            垂直导航：layui-nav-tree 
+            垂直导航：layui-nav-tree
             侧边导航：layui-nav-tree layui-nav-side --&gt;
         &lt;ul class="layui-nav layui-bg-cyan" lay-filter=""&gt;
             &lt;li class="layui-nav-item"&gt;&lt;a href=""&gt;最新活动&lt;/a&gt;&lt;/li&gt;
@@ -203,14 +203,14 @@
         &lt;/div&gt;
     </code></pre>
     <script>
-        layui.use("element", function () {
-            const element = layui.element;
-            // 折叠面板事件
-            element.on('collapse(collapse)', function(data){
-                console.log(data.show);     // 得到当前面板的展开状态，true或者false
-                console.log(data.title);    // 得到当前点击面板的标题区域DOM对象
-                console.log(data.content);  // 得到当前点击面板的内容区域DOM对象
-            });
+        layui.use('element', function () {
+          const element = layui.element
+          // 折叠面板事件
+          element.on('collapse(collapse)', function (data) {
+            console.log(data.show) // 得到当前面板的展开状态，true或者false
+            console.log(data.title) // 得到当前点击面板的标题区域DOM对象
+            console.log(data.content) // 得到当前点击面板的内容区域DOM对象
+          })
         })
     </script>
 </section>
@@ -250,22 +250,22 @@
         </div>
     </div>
     <script class="code" contenteditable="true">
-        layui.use("carousel", function () {
-            const carousel = layui.carousel;
-            carousel.render({
-                elem: "#carousel",
-                width: "400px",         // 宽度
-                height: "200px",        // 高度
-                full: false,            // 是否全屏轮播
-                anim: "fade",           // 动画，可选值 default、updown、fade
-                autoplay: true,         // 是否自动切换
-                interval: 1500,         // 自动切换时间间隔，>= 800ms
-                index: 0,               // 初始条目索引
-                arrow: "hover",         // 箭头显示状态，可选值 hover、always、none
-                indicator: "inside",    // 指示器位置，可选值 inside、outside、none
-                change: function (vals) {// change 回调
-                }
-            })
+        layui.use('carousel', function () {
+          const carousel = layui.carousel
+          carousel.render({
+            elem: '#carousel',
+            width: '400px', // 宽度
+            height: '200px', // 高度
+            full: false, // 是否全屏轮播
+            anim: 'fade', // 动画，可选值 default、updown、fade
+            autoplay: true, // 是否自动切换
+            interval: 1500, // 自动切换时间间隔，>= 800ms
+            index: 0, // 初始条目索引
+            arrow: 'hover', // 箭头显示状态，可选值 hover、always、none
+            indicator: 'inside', // 指示器位置，可选值 inside、outside、none
+            change: function (vals) { // change 回调
+            }
+          })
         })
     </script>
 </section>
@@ -308,33 +308,34 @@
     </div>
     <script class="code" contenteditable="true">
         layui.use(['jquery', 'element'], function () {
-            const $ = layui.$, element = layui.element;
-            $('#add').click(function () {
-                // element.tabAdd(filter, options);
-                let maxId = -999;
-                $('li[lay-id]').map(function (i, v) {
-                    maxId = Math.max(maxId, $(v).attr('lay-id')) + 1;
-                })
-                element.tabAdd('filter', {
-                    title: 'title',
-                    // 支持 html
-                    content: 'content',
-                    id: maxId
-                })
+          const $ = layui.$
+          const element = layui.element
+          $('#add').click(function () {
+            // element.tabAdd(filter, options);
+            let maxId = -999
+            $('li[lay-id]').map(function (i, v) {
+              maxId = Math.max(maxId, $(v).attr('lay-id')) + 1
             })
-            $('#change').click(function () {
-                // element.tabChange(filter, layid);
-                element.tabChange('filter', 2);
+            element.tabAdd('filter', {
+              title: 'title',
+              // 支持 html
+              content: 'content',
+              id: maxId
             })
-            $('#delete').click(function () {
-                // element.tabDelete(filter, layid);
-                element.tabDelete('filter', 3);
+          })
+          $('#change').click(function () {
+            // element.tabChange(filter, layid);
+            element.tabChange('filter', 2)
+          })
+          $('#delete').click(function () {
+            // element.tabDelete(filter, layid);
+            element.tabDelete('filter', 3)
+          })
+          $('#deleteAll').click(function () {
+            $('li[lay-id]').each(function (i, v) {
+              element.tabDelete('filter', $(v).attr('lay-id'))
             })
-            $('#deleteAll').click(function () {
-                $('li[lay-id]').each(function (i, v) {
-                    element.tabDelete('filter', $(v).attr('lay-id'));
-                })
-            })
+          })
         })
     </script>
 </section>

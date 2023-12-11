@@ -13,15 +13,15 @@
     3. `npm config set registry https://registry.npm.taobao.org`
 3. `npm install -g yarn`
 4. `npm install -g cnpm`
-5. yarnrc
+5. `npm install -g pnpm`
+6. .yarnrc
     1. `yarn config set cache-folder "D:\nodejs\yarn_cache"`
     2. `yarn config set global-folder "D:\nodejs\yarn_global"`
     3. `yarn config set registry https://registry.npm.taobao.org`
-6. cnpmrc
+7. .cnpmrc
     1. `cnpm config set cache "D:\nodejs\node_cache"`
     2. `cnpm config set prefix "D:\nodejs\node_global"`
     3. `cnpm config set registry https://registry.npm.taobao.org`
-7. `cnpm i -g @vue/cli`
 ---
 ## [npm](https://docs.npmjs.com/)
 ### [npm CLI Commands](https://docs.npmjs.com/cli/v8/commands)
@@ -59,17 +59,17 @@
 2. process.arg：返回一个数组，其中包含启动 Node.js 进程时传递的命令行参数
     ```javascript
     import {argv} from 'process';
-    
+
     argv.forEach((v, i) => {
         console.log(`${i}: ${v}`);
     })
-    
+
     // output:
     // 0: /usr/local/bin/node                       // process.execPath
     // 1: /Users/mjr/work/node/process-args.js      // 正在执行的 JavaScript 文件的路径
     // 2: one                                       // 命令行参数 1
     // 3: two=three                                 // 命令行参数 2
-    // 4: four 
+    // 4: four
     ```
 3. process.execPath：返回启动 Node.js 进程的可执行文件的绝对路径名
 ---

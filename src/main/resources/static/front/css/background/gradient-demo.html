@@ -8,7 +8,7 @@
     <title>gradient-demo</title>
     <link rel="stylesheet" href="../../../public/css/demo.css">
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script defer src="../../../public/js/demo.js"></script>
+    <script async src="../../../public/js/demo.js"></script>
 </head>
 <body>
 <!--
@@ -206,23 +206,23 @@
         }
     </style>
     <script>
-        const degs = document.querySelector("input[type='range']").value;
-        document.getElementsByClassName("deg")[0].textContent = degs + "°";
-        const styleTextContent = style.textContent;
-        const browser = document.getElementsByName("browser");
-        const radio = document.getElementsByClassName("radio")[0];
+        const degs = document.querySelector('input[type=\'range\']').value
+        document.getElementsByClassName('deg')[0].textContent = degs + '°'
+        const styleTextContent = style.textContent
+        const browser = document.getElementsByName('browser')
+        const radio = document.getElementsByClassName('radio')[0]
         radio.onclick = function () {
-            const degs = document.querySelector("input[type='range']").value;
-            document.getElementsByClassName("deg")[0].textContent = degs + "°";
-            for (let i = 0, len = browser.length; i < len; i++) {
-                if (browser[i].checked) {
-                    if (browser[i].value === "std") {
-                        style.textContent = styleTextContent + ".deg { background-image: linear-gradient(" + degs + "deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }"
-                    } else {
-                        style.textContent = styleTextContent + ".deg { background-image: -webkit-linear-gradient(" + degs + "deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }"
-                    }
-                }
+          const degs = document.querySelector('input[type=\'range\']').value
+          document.getElementsByClassName('deg')[0].textContent = degs + '°'
+          for (let i = 0, len = browser.length; i < len; i++) {
+            if (browser[i].checked) {
+              if (browser[i].value === 'std') {
+                style.textContent = styleTextContent + '.deg { background-image: linear-gradient(' + degs + 'deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }'
+              } else {
+                style.textContent = styleTextContent + '.deg { background-image: -webkit-linear-gradient(' + degs + 'deg, red calc(50px * 1.4142135623731), yellow calc(100px * 1.4142135623731)); }'
+              }
             }
+          }
         }
     </script>
 </section>

@@ -7,7 +7,7 @@
     <title>工具类 | jQuery</title>
     <link rel="stylesheet" href="../../public/css/demo.css">
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script defer src="../../public/js/demo.js"></script>
+    <script async src="../../public/js/demo.js"></script>
     <script defer src="../../public/js/tooltip.js"></script>
 </head>
 <body>
@@ -308,22 +308,22 @@
     </div>
     <script>
         $(function () {
-            $('#utilities-each').tooltip([
-                [
-                    'forEach()返回值是undefined，不可以链式调用',
-                    'map()返回一个新数组，原数组不会改变',
-                    '没有办法终止或者跳出forEach()循环，除非抛出异常',
-                    '$.each()规定为每个匹配元素规定运行的函数，可以返回 false 可用于及早停止循环'
-                ]
-            ]);
+          $('#utilities-each').tooltip([
+            [
+              'forEach()返回值是undefined，不可以链式调用',
+              'map()返回一个新数组，原数组不会改变',
+              '没有办法终止或者跳出forEach()循环，除非抛出异常',
+              '$.each()规定为每个匹配元素规定运行的函数，可以返回 false 可用于及早停止循环'
+            ]
+          ])
 
-            $('#utilities-noop').tooltip([
-                '这对一些插件作者很有用，当插件提供了一个可选的回调函数接口，那么如果调用的时候没有传递这个回调函数，就用jQuery.noop来代替执行'
-            ]);
+          $('#utilities-noop').tooltip([
+            '这对一些插件作者很有用，当插件提供了一个可选的回调函数接口，那么如果调用的时候没有传递这个回调函数，就用jQuery.noop来代替执行'
+          ])
 
-            $('#utilities-unique').tooltip([
-                'jQuery 3.0 更名为 $.uniqueSort()'
-            ])
+          $('#utilities-unique').tooltip([
+            'jQuery 3.0 更名为 $.uniqueSort()'
+          ])
         })
     </script>
 </section>
@@ -338,22 +338,22 @@
     </div>
     <script class="code w60p" contenteditable="true">
         $(function () {
-            const obj1 = {
-                apple: 0,
-                banana: {weight: 52, price: 100},
-                cherry: 97
-            };
-            const obj2 = {
-                banana: {price: 200},
-                durian: 100
-            };
+          const obj1 = {
+            apple: 0,
+            banana: { weight: 52, price: 100 },
+            cherry: 97
+          }
+          const obj2 = {
+            banana: { price: 200 },
+            durian: 100
+          }
 
-            // $.extend( [deep ], target, object1 [, objectN ] )
-            $.extend(true, obj1, obj2);
+          // $.extend( [deep ], target, object1 [, objectN ] )
+          $.extend(true, obj1, obj2)
 
-            $(".box-extend>div").on("click", function () {
-                alert(JSON.stringify(obj1, null, 4))
-            });
+          $('.box-extend>div').on('click', function () {
+            alert(JSON.stringify(obj1, null, 4))
+          })
         })
     </script>
 </section>
@@ -369,15 +369,15 @@
         // jquery中的$.fn的用法：https://www.cnblogs.com/qicao/p/8568158.html
 
         $(function () {
-            jQuery.fn.extend({
-                printNodeName: function () {
-                    return this.each(function () {
-                        this.innerText = this.nodeName;
-                    })
-                }
-            });
+          jQuery.fn.extend({
+            printNodeName: function () {
+              return this.each(function () {
+                this.innerText = this.nodeName
+              })
+            }
+          })
 
-            $(".box-fn-extend").printNodeName();
+          $('.box-fn-extend').printNodeName()
         })
     </script>
 </section>
@@ -391,14 +391,14 @@
         </div>
     </div>
     <script class="code w60p" contenteditable="true">
-        const name = "全局变量";
+        const name = '全局变量'
         $(function () {
-            const name = "局部变量";
-            $(".box-globalEval div").on("click", function () {
-                alert(name);
-                eval("alert('alert: ' + name)");
-                $.globalEval("alert('globalEval: ' + name)");
-            })
+          const name = '局部变量'
+          $('.box-globalEval div').on('click', function () {
+            alert(name)
+            eval('alert(\'alert: \' + name)')
+            $.globalEval('alert(\'globalEval: \' + name)')
+          })
         })
     </script>
 </section>
@@ -418,10 +418,10 @@
     </div>
     <script class="code w60p" contenteditable="true">
         $(function () {
-            $(".box-makeArray .demo-button").on("click", function () {
-                const arr = $.makeArray(document.querySelectorAll(".box-makeArray li"));
-                $(arr.reverse()).appendTo($(".box-makeArray ul"));
-            })
+          $('.box-makeArray .demo-button').on('click', function () {
+            const arr = $.makeArray(document.querySelectorAll('.box-makeArray li'))
+            $(arr.reverse()).appendTo($('.box-makeArray ul'))
+          })
         })
     </script>
 </section>
@@ -436,13 +436,13 @@
     </div>
     <script class="code w60p" contenteditable="true">
         $(function () {
-            const str = "hello, <b>my name is</b> jQuery";
-            const dom = $.parseHTML(str);
-            const nodeNames = [];
-            $.each(dom, function (i, e) {
-                nodeNames[i] = `<li>${e.nodeName}</li>`;
-            });
-            $("<ol>").append(nodeNames.join("")).appendTo($(".box-parseHTML"));
+          const str = 'hello, <b>my name is</b> jQuery'
+          const dom = $.parseHTML(str)
+          const nodeNames = []
+          $.each(dom, function (i, e) {
+            nodeNames[i] = `<li>${e.nodeName}</li>`
+          })
+          $('<ol>').append(nodeNames.join('')).appendTo($('.box-parseHTML'))
         })
     </script>
 </section>

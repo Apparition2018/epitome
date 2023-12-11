@@ -96,15 +96,15 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            fetch("http://localhost:3333/fetch/string", {
-                method: "post",
-                headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}),
-                body: "data=Arsenal"
-            }).then(response => response.text()).then(data => {
-                document.getElementById("fetchBox1").innerHTML = data;
-            }).catch(function (e) {
-                console.log(e);
-            })
+          fetch('http://localhost:3333/fetch/string', {
+            method: 'post',
+            headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }),
+            body: 'data=Arsenal'
+          }).then(response => response.text()).then(data => {
+            document.getElementById('fetchBox1').innerHTML = data
+          }).catch(function (e) {
+            console.log(e)
+          })
         })()
     </script>
 </section>
@@ -117,16 +117,16 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            const demo = {id: "1", name: "zhangsan"};
-            fetch("http://localhost:3333/fetch/json-clazz", {
-                method: "post",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(demo)
-            }).then(response => response.text()).then(data => {
-                document.getElementById("fetchBox2").innerHTML = data;
-            }).catch(function (e) {
-                console.log(e);
-            })
+          const demo = { id: '1', name: 'zhangsan' }
+          fetch('http://localhost:3333/fetch/json-clazz', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(demo)
+          }).then(response => response.text()).then(data => {
+            document.getElementById('fetchBox2').innerHTML = data
+          }).catch(function (e) {
+            console.log(e)
+          })
         })()
     </script>
 </section>
@@ -139,16 +139,16 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            const club = {name: "Arsenal", points: "100"};
-            fetch("http://localhost:3333/fetch/json-map", {
-                method: "post",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(club)
-            }).then(response => response.text()).then(data => {
-                document.getElementById("fetchBox3").innerHTML = data;
-            }).catch(function (e) {
-                console.log(e);
-            })
+          const club = { name: 'Arsenal', points: '100' }
+          fetch('http://localhost:3333/fetch/json-map', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(club)
+          }).then(response => response.text()).then(data => {
+            document.getElementById('fetchBox3').innerHTML = data
+          }).catch(function (e) {
+            console.log(e)
+          })
         })()
     </script>
 </section>
@@ -167,19 +167,19 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            document.querySelector("#fetchBox4 button").onclick = function () {
-                const pictures = document.querySelector("#fetchBox4 input").files;
-                const formData = new FormData();
-                formData.append("file", pictures[0]);
-                fetch("http://localhost:3333/fetch/upload-picture", {
-                    method: "post",
-                    body: formData,
-                }).then(response => response.text()).then(data => {
-                    document.getElementById("fetchBox4").innerHTML = data;
-                }).catch(function (e) {
-                    console.log(e);
-                })
-            }
+          document.querySelector('#fetchBox4 button').onclick = function () {
+            const pictures = document.querySelector('#fetchBox4 input').files
+            const formData = new FormData()
+            formData.append('file', pictures[0])
+            fetch('http://localhost:3333/fetch/upload-picture', {
+              method: 'post',
+              body: formData
+            }).then(response => response.text()).then(data => {
+              document.getElementById('fetchBox4').innerHTML = data
+            }).catch(function (e) {
+              console.log(e)
+            })
+          }
         })()
     </script>
 </section>
@@ -198,21 +198,21 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            document.querySelector("#fetchBox5 button").onclick = function () {
-                const pictures = document.querySelector("#fetchBox5 input").files;
-                const formData = new FormData();
-                for (let i = 0; i < pictures.length; i++) {
-                    formData.append("file", pictures[i]);
-                }
-                fetch("http://localhost:3333/fetch/upload-pictures", {
-                    method: "post",
-                    body: formData,
-                }).then(response => response.text()).then(data => {
-                    document.getElementById("fetchBox5").innerHTML = data;
-                }).catch(function (e) {
-                    console.log(e);
-                })
+          document.querySelector('#fetchBox5 button').onclick = function () {
+            const pictures = document.querySelector('#fetchBox5 input').files
+            const formData = new FormData()
+            for (let i = 0; i < pictures.length; i++) {
+              formData.append('file', pictures[i])
             }
+            fetch('http://localhost:3333/fetch/upload-pictures', {
+              method: 'post',
+              body: formData
+            }).then(response => response.text()).then(data => {
+              document.getElementById('fetchBox5').innerHTML = data
+            }).catch(function (e) {
+              console.log(e)
+            })
+          }
         })()
     </script>
 </section>
@@ -227,20 +227,20 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            document.getElementById("fetchBox6").onclick = function () {
-                document.cookie = "cny=999; path=/";
+          document.getElementById('fetchBox6').onclick = function () {
+            document.cookie = 'cny=999; path=/'
 
-                fetch("http://localhost:3333/fetch/cookie", {
-                    method: "post",
-                    // 默认情况下，fetch 不会从服务端发送或接收任何 cookies,
-                    // 如果站点依赖于用户 session，则会导致未经认证的请求（要发送 cookies，必须设置 credentials 选项）
-                    credentials: "include",  // omit(默认，不带cookie) | same-origin(同源带cookie) | include(总是带cookie)
-                }).then(response => response.text()).then(data => {
-                    alert(data);
-                }).catch(function (e) {
-                    console.log(e);
-                })
-            }
+            fetch('http://localhost:3333/fetch/cookie', {
+              method: 'post',
+              // 默认情况下，fetch 不会从服务端发送或接收任何 cookies,
+              // 如果站点依赖于用户 session，则会导致未经认证的请求（要发送 cookies，必须设置 credentials 选项）
+              credentials: 'include' // omit(默认，不带cookie) | same-origin(同源带cookie) | include(总是带cookie)
+            }).then(response => response.text()).then(data => {
+              alert(data)
+            }).catch(function (e) {
+              console.log(e)
+            })
+          }
         })()
     </script>
 </section>
@@ -254,13 +254,13 @@
     </div>
     <script class="code w60p" contenteditable="true">
         (function () {
-            fetch("http://localhost:3333/public/img/people/穗波玉.jpg", {
-                mode: "cors" // cors: 跨域 | same-origin: 同源 | no-cors: 禁止跨域
-            }).then(response => response.blob()).then(response => {
-                document.querySelector(".box-blob img").src = URL.createObjectURL(response);
-            }).catch(function (e) {
-                console.log(e);
-            })
+          fetch('http://localhost:3333/public/img/people/穗波玉.jpg', {
+            mode: 'cors' // cors: 跨域 | same-origin: 同源 | no-cors: 禁止跨域
+          }).then(response => response.blob()).then(response => {
+            document.querySelector('.box-blob img').src = URL.createObjectURL(response)
+          }).catch(function (e) {
+            console.log(e)
+          })
         })()
     </script>
 </section>
