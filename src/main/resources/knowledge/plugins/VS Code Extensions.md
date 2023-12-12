@@ -101,7 +101,6 @@
 - vscode-icons
 ## Other
 - [Bookmarks](https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks)
-- [Bracket Pair Color DLW](https://marketplace.visualstudio.com/items?itemName=BracketPairColorDLW.bracket-pair-color-dlw)
 - [CodeSnap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap)
 - [colorize](https://marketplace.visualstudio.com/items?itemName=kamikillerto.vscode-colorize)
 - [Comment Translate](https://marketplace.visualstudio.com/items?itemName=intellsmi.comment-translate)

@@ -36,6 +36,6 @@ Alt+1               Ctrl+Shift+M        Ctrl+Shift+E        Alt+Shift+Q         
                     Ctrl+J              Ctrl+J                                  面板
                     Ctrl+Shift+D                            Alt+P               模拟器/预览
                                         Ctrl+Shift+X                            扩展
-                                        Ctrl+Shift+G                            
+                                        Ctrl+Shift+G
 Alt+F12             Ctrl+`              Ctrl+`              Alt+C               Terminal
 ```
