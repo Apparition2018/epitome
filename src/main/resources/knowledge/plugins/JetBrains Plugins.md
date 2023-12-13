@@ -74,6 +74,7 @@
 ## Other
 - [arthas idea](https://github.com/WangJi92/arthas-idea-plugin)
 - [Diffblue Cover - AI for Code](https://docs.diffblue.com/features/cover-plugin)
+- [google-java-format](https://github.com/google/google-java-format)
 - [Manifold](https://github.com/manifold-systems/manifold)
 - [Maven Helper](https://github.com/krasa/MavenHelper)
 ---

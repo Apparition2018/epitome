@@ -66,6 +66,7 @@
     2. Typography Settings → Fallback font: Microsoft YaHei
 ---
 ## Code Style (-g)
+    # https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml
     1. Settings → Editor → Code Style
     2. Java → JavaDoc
         2.1 Other → Do not wrap one line comments 勾选
@@ -77,9 +78,12 @@
         3.3 Add spaces around block comments 勾选
     4. Style Sheets → CSS/Less/SCSS → Other
         4.1 Keep single-line blocks 勾选
-    5. HTML → Other
-        5.1 Wrap text 取消勾选
-    6. Markdown → Blank Lines → 全部设为0
+    5. JavaScript → Set from… → JavaScript Standard Style
+    6. HTML → Other
+        6.1 Set from… → JavaScript
+        6.2 In empty tag 勾选
+        6.3 Wrap text 取消勾选
+    7. Markdown → Blank Lines → 全部设为0
 ---
 ## Inspections (-g)
     1. Settings → Editor → Inspections
@@ -179,14 +183,19 @@
     3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
         3.1 Manual ESLint configuration 勾选
         3.2 ESLint package: D:\Liang\git\epitome\node_modules\eslint
-        3.3 Run eslint --fix on save 勾选
+        3.3 Run for files: {**/*,*}.{js,ts,jsx,tsx,html,vue}
+        3.4 Run eslint --fix on save 勾选
 ### [Prettier](https://www.jetbrains.com/help/idea/prettier.html) (-u)
-    1. npm install --global prettier
+    1. npm i --save-dev --save-exact prettier
     2. Settings → Languages & Frameworks → JavaScript → Prettier
         2.1 Manual prettier configuration 勾选
-        2.2 Prettier package: D:\nodejs\node_global\node_modules\prettier
+        2.2 Prettier package: D:\Liang\git\epitome\node_modules\prettier
         2.3 Run on 'Reformat Code' action 勾选
-        2.4 Run on Save 勾选
+        2.4 Run for files: {**/*,*}.{html,astro,css,less,scss,sass}
+        2.5 Run on Save 勾选
+> - [JavaScript Standard Style](https://standardjs.com/)
+> - [Google Style Guides | styleguide](https://github.com/google/styleguide)
+> - [Google developer documentation style guide](https://developers.google.com/style)
 ---
 ## [Project Structure…](https://www.jianshu.com/p/39b2206999e7)
 ### Modules

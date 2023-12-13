@@ -1,0 +1,6 @@
+{
+  "embedded-language-formatting": {
+    "html": true,
+    "javascript": false
+  }
+}
