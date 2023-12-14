@@ -26,8 +26,6 @@ module.exports = {
     // 'plugin:jquery/deprecated',
     // https://www.npmjs.com/package/eslint-plugin-vue
     'plugin:vue/recommended'
-    // https://www.npmjs.com/package/eslint-plugin-react
-    // 'plugin:react/recommended'
   ],
   plugins: [
     // https://www.npmjs.com/package/eslint-plugin-html
@@ -36,7 +34,8 @@ module.exports = {
   ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-unused-vars': 'warn'
   },
   overrides: [
     {

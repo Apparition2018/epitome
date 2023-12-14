@@ -40,7 +40,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 扩展：
  * <pre>
  * 1 多例模式：{@link MultitonDemo}
- * 2 TODO-LJH 分布式单例
+ * 2 TODO(LJH) 分布式单例
  * </pre>
  * 参考：
  * <pre>

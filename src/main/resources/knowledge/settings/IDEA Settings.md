@@ -81,8 +81,7 @@
     5. JavaScript → Set from… → JavaScript Standard Style
     6. HTML → Other
         6.1 Set from… → JavaScript
-        6.2 In empty tag 勾选
-        6.3 Wrap text 取消勾选
+        6.2 Wrap text 取消勾选
     7. Markdown → Blank Lines → 全部设为0
 ---
 ## Inspections (-g)
@@ -111,15 +110,15 @@
 ## TODO
     1. Settings → Editor → TODO → Patterns
         1.1 Patterns → +
-        1.2 Pattern: \btodo-ljh\b.*
+        1.2 Pattern: \btodo\(ljh\).*
         1.3 Use color scheme TODO default colors 取消勾选
         1.4 Bold 勾选, Italic 取消勾选
         1.5 Foreground #CC0033
     2. Settings → Editor → Live Templates
         2.1 user → +
         2.2 Abbreviation: todoljh
-        2.3 Description: TODO-LJH
-        2.4 Template text: // TODO-LJH: $date$ $todo$
+        2.3 Description: TODO(LJH)
+        2.4 Template text: // TODO(LJH): $date$ $todo$
         2.5 Edit variables: Name:date → Expression:date()
         2.6 Define/Change
             2.6.1 Java → Declaration, Statement 勾选
@@ -191,7 +190,7 @@
         2.1 Manual prettier configuration 勾选
         2.2 Prettier package: D:\Liang\git\epitome\node_modules\prettier
         2.3 Run on 'Reformat Code' action 勾选
-        2.4 Run for files: {**/*,*}.{html,astro,css,less,scss,sass}
+        2.4 Run for files: {**/*,*}.{js,ts,jsx,tsx,html,vue,css,less,scss,sass}
         2.5 Run on Save 勾选
 > - [JavaScript Standard Style](https://standardjs.com/)
 > - [Google Style Guides | styleguide](https://github.com/google/styleguide)

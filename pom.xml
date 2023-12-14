@@ -296,7 +296,7 @@
             <version>${minio.version}</version>
         </dependency>
 
-        <!-- itextpdf：Java-PDF TODO-LJH -->
+        <!-- itextpdf：Java-PDF TODO(LJH) -->
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itext-core</artifactId>
@@ -383,7 +383,7 @@
             <version>${jave2.version}</version>
         </dependency>
 
-        <!-- javacv：封装 OpenCV、FFmpeg 等 TODO-LJH
+        <!-- javacv：封装 OpenCV、FFmpeg 等 TODO(LJH)
             https://github.com/bytedeco/javacv
             https://blog.csdn.net/eguid_1/category_11472450.html -->
         <dependency>
