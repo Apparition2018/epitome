@@ -1,150 +1,153 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
     <title>Worker-demo</title>
-    <link rel="stylesheet" href="../../../../public/css/demo.css">
-</head>
-<body>
-<section class="code-wrap h1000">
-    <div class="css-live-wrap w33p">
+    <link rel="stylesheet" href="../../../../public/css/demo.css" />
+  </head>
+  <body>
+    <section class="code-wrap h1000">
+      <div class="css-live-wrap w33p">
         <div class="caption">秒表</div>
         <div class="caption">
-            利用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API">Web Worker</a> 实现
+          利用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API">Web Worker</a> 实现
         </div>
         <div class="centered" id="eg1">
-            <div>
-                <p>
-                    <output class="chronograph">00:00.00</output>
-                </p>
-                <button onclick="time()">计时</button>
-                <button onclick="print()">打点</button>
-                <button onclick="zero()">归零</button>
-            </div>
-            <div id="timePrint">
-                <p></p>
-            </div>
+          <div>
+            <p>
+              <output class="chronograph">00:00.00</output>
+            </p>
+            <button onclick="time()">计时</button>
+            <button onclick="print()">打点</button>
+            <button onclick="zero()">归零</button>
+          </div>
+          <div id="time-print">
+            <p></p>
+          </div>
         </div>
-    </div>
-    <style>
+      </div>
+      <style>
         #eg1 {
-            text-align: center;
+          text-align: center;
         }
 
         #eg1 > div {
-            display: inline-block;
-            vertical-align: middle;
+          display: inline-block;
+          vertical-align: middle;
         }
 
-        #eg1 #timePrint {
-            width: 75px;
-            margin-left: 15px;
-            text-align: center;
+        #eg1 #time-print {
+          width: 75px;
+          margin-left: 15px;
+          text-align: center;
         }
 
-        #eg1 #timePrint output {
-            display: block;
+        #eg1 #time-print output {
+          display: block;
         }
 
         #eg1 .chronograph {
-            padding: 3px 6px;
-            background-color: #111;
-            font-size: 28px;
-            color: #dfdfdf;
-            border-radius: 1px;
-            box-shadow: 0 0 0 3px rgb(55, 55, 55), 0 0 0 6px rgb(66, 66, 66), 0 0 0 6px rgb(88, 88, 88);
+          padding: 3px 6px;
+          background-color: #111;
+          font-size: 28px;
+          color: #dfdfdf;
+          border-radius: 1px;
+          box-shadow:
+            0 0 0 3px rgb(55, 55, 55),
+            0 0 0 6px rgb(66, 66, 66),
+            0 0 0 6px rgb(88, 88, 88);
         }
 
         #eg1 button {
-            margin-top: 5px;
+          margin-top: 5px;
         }
-    </style>
-    <script class="code w67p" contenteditable="true">
+      </style>
+      <script class="code w67p" contenteditable="true">
         /*  https://www.w3school.com.cn/html/html5_webworkers.asp
             解决 setInterval 计时器不准的问题：https://www.cnblogs.com/flash3d/archive/2014/05/08/3715600.html
             js 实现活动精确倒计时：https://www.xuanfengge.com/js-realizes-precise-countdown.html */
 
-        let worker;
-        let timeFlag = false;
-        let data = {};
-        let milliseconds = 0;
-        let minutes, seconds;
-        let timeText;
-        let output = document.querySelector("#eg1 output");
+        let worker
+        let timeFlag = false
+        const data = {}
+        let milliseconds = 0
+        let minutes, seconds
+        let timeText
+        const output = document.querySelector('#eg1 output')
 
-        function time() {
-            if (!timeFlag) {
-                timeFlag = true;
-                if (typeof (Worker) !== "undefined") {
-                    if (typeof (worker) === "undefined") {
-                        worker = new Worker("demo_workers.js");
-                    }
-                    worker.onmessage = function (event) {
-                        // 来自 web worker 的数据会存储于 event.data 中
-                        milliseconds = event.data;
-                        minutes = ("00" + parseInt((milliseconds / 6000).toString())).slice(-2);
-                        seconds = ("00" + parseInt((milliseconds / 100).toString()) % 60).slice(-2);
-                        timeText = `${minutes}:${seconds}.` + ("00" + milliseconds % 100).slice(-2);
-                        output.innerHTML = timeText;
-                    }
-                } else {
-                    output.innerHTML = "Sorry! No Web Worker support.";
-                }
-
-                data.milliseconds = milliseconds;
-                data.date = new Date();
-                worker.postMessage(data);
+        const time = () => {
+          if (!timeFlag) {
+            timeFlag = true
+            if (typeof Worker !== 'undefined') {
+              if (typeof worker === 'undefined') {
+                worker = new Worker('demo_workers.js')
+              }
+              worker.onmessage = function (event) {
+                // 来自 web worker 的数据会存储于 event.data 中
+                milliseconds = event.data
+                minutes = ('00' + parseInt((milliseconds / 6000).toString())).slice(-2)
+                seconds = ('00' + (parseInt((milliseconds / 100).toString()) % 60)).slice(-2)
+                timeText = `${minutes}:${seconds}.` + ('00' + (milliseconds % 100)).slice(-2)
+                output.innerHTML = timeText
+              }
             } else {
-                timeFlag = false;
-                worker.terminate();
-                worker = undefined;
+              output.innerHTML = 'Sorry! No Web Worker support.'
             }
+
+            data.milliseconds = milliseconds
+            data.date = new Date()
+            worker.postMessage(data)
+          } else {
+            timeFlag = false
+            worker.terminate()
+            worker = undefined
+          }
         }
 
-        function print() {
-            if (milliseconds) {
-                let textNode = document.createTextNode(timeText);
-                let documentFragment = document.createDocumentFragment();
-                let output = document.createElement("output");
-                output.appendChild(textNode);
-                documentFragment.appendChild(output);
-                document.querySelector("#timePrint p").appendChild(documentFragment);
-            }
+        const print = () => {
+          if (milliseconds) {
+            const textNode = document.createTextNode(timeText)
+            const documentFragment = document.createDocumentFragment()
+            const output = document.createElement('output')
+            output.appendChild(textNode)
+            documentFragment.appendChild(output)
+            document.querySelector('#time-print p').appendChild(documentFragment)
+          }
         }
 
-        function zero() {
-            if (!timeFlag) {
-                milliseconds = 0;
-                output.innerHTML = "00:00.00";
-            }
+        const zero = () => {
+          if (!timeFlag) {
+            milliseconds = 0
+            output.innerHTML = '00:00.00'
+          }
         }
-    </script>
-</section>
+      </script>
+    </section>
 
-<!-- https://www.cnblogs.com/peakleo/p/6218823.html -->
-<!-- https://www.cnblogs.com/wmhuang/p/6913468.html -->
-<section class="code-wrap h200">
-    <div class="css-live-wrap w33p">
+    <!-- https://www.cnblogs.com/peakleo/p/6218823.html -->
+    <!-- https://www.cnblogs.com/wmhuang/p/6913468.html -->
+    <section class="code-wrap h200">
+      <div class="css-live-wrap w33p">
         <div class="caption">Worker 的简单示例</div>
         <div class="centered" id="eg2">
-            <p>
-                <output>hello worker!</output>
-                <br/>
-                <output></output>
-            </p>
+          <p>
+            <output>hello worker!</output>
+            <br />
+            <output></output>
+          </p>
         </div>
-    </div>
-    <script class="code w67p" contenteditable="true">
-        if (typeof (Worker) !== "undefined") {
-            let worker2 = new Worker("demo_workers2.js");
-            worker2.onmessage = function (e) {
-                document.querySelectorAll("#eg2 output")[1].innerHTML = e.data;
-            };
-            worker2.postMessage(document.querySelectorAll("#eg2 output")[0].innerHTML);
+      </div>
+      <script class="code w67p" contenteditable="true">
+        if (typeof Worker !== 'undefined') {
+          const worker2 = new Worker('demo_workers2.js')
+          worker2.onmessage = function (e) {
+            document.querySelectorAll('#eg2 output')[1].innerHTML = e.data
+          }
+          worker2.postMessage(document.querySelectorAll('#eg2 output')[0].innerHTML)
         }
-    </script>
-</section>
-</body>
+      </script>
+    </section>
+  </body>
 </html>

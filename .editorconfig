@@ -10,5 +10,5 @@ indent_style = space
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{json,json5,js,ts,jsx,tsx,html,vue,css,less,scss,sass,prettierrc}]
+[*.{json,json5,js,ts,jsx,tsx,html,vue,css,less,scss,sass,prettierrc,ftl}]
 indent_size = 2

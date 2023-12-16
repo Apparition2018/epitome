@@ -1,86 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <base target="_blank">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <base target="_blank" />
     <title>flex-demo</title>
-    <link rel="stylesheet" href="../../../public/css/demo.css">
-</head>
-<body>
-<section class="code-wrap h100vh">
-    <div class="css-live-wrap w40p">
+    <link rel="stylesheet" href="../../../public/css/demo.css" />
+  </head>
+  <body>
+    <section class="code-wrap h100vh">
+      <div class="css-live-wrap w40p">
         <div class="caption">
-            <a href="https://www.runoob.com/w3cnote/flex-grammar.html">flex 布局</a>
+          <a href="https://www.runoob.com/w3cnote/flex-grammar.html">flex 布局</a>
         </div>
         <div class="caption">
-            <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">flex 布局</a>
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">
+            flex 布局
+          </a>
         </div>
         <div class="centered flex">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
         </div>
-    </div>
-    <style class="code w60p" contenteditable="true">
+      </div>
+      <style class="code w60p" contenteditable="true">
         .flex {
-            width: 200px;
-            height: 150px;
-            border: 1px solid #F44336;
+          width: 200px;
+          height: 150px;
+          border: 1px solid #f44336;
 
-            display: flex;
-            /* 容器属性 */
-            /* 方向：row, row-reverse, column, column-reverse */
-            flex-direction: row;
-            /* 换行：nowrap, wrap, wrap-reverse */
-            flex-wrap: wrap;
-            /* flex-direction flex-wrap 的简写 */
-            flex-flow: row wrap;
-            /* 主轴对齐方式：flex-start, flex-end, center, space-between, space-around */
-            justify-content: space-around;
-            /* 交叉轴对齐方式：flex-start, flex-end, center, baseline, stretch */
-            align-items: center;
-            /* 多轴对齐方式：flex-start, flex-end, center, space-around, stretch */
-            align-content: center;
+          display: flex;
+          /* 容器属性 */
+          /* 方向：row, row-reverse, column, column-reverse */
+          flex-direction: row;
+          /* 换行：nowrap, wrap, wrap-reverse */
+          flex-wrap: wrap;
+          /* flex-direction flex-wrap 的简写 */
+          flex-flow: row wrap;
+          /* 主轴对齐方式：flex-start, flex-end, center, space-between, space-around */
+          justify-content: space-around;
+          /* 交叉轴对齐方式：flex-start, flex-end, center, baseline, stretch */
+          align-items: center;
+          /* 多轴对齐方式：flex-start, flex-end, center, space-around, stretch */
+          align-content: center;
         }
 
         .flex div {
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            color: white;
-            margin: 5px;
-            background-color: #F44336;
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          color: white;
+          margin: 5px;
+          background-color: #f44336;
 
-            /* 项目属性 */
-            /* 排序 */
-            order: 0;
-            /* 存在剩余空间时放大：0-不放大；其他数值-放大，数值越大，放大比例越大 */
-            flex-grow: 0;
-            /* 空间不足时缩小：0-不缩小；1-缩小 */
-            flex-shrink: 1;
-            /* 分配多余空间时，项目占据的主轴空间 */
-            flex-basis: auto;
-            /* flex-grow flex-shrink flex-basis 的缩写 */
-            flex: 0 1 auto;
-            /* 覆盖父元素 align-items */
-            align-self: auto;
+          /* 项目属性 */
+          /* 排序 */
+          order: 0;
+          /* 存在剩余空间时放大：0-不放大；其他数值-放大，数值越大，放大比例越大 */
+          flex-grow: 0;
+          /* 空间不足时缩小：0-不缩小；1-缩小 */
+          flex-shrink: 1;
+          /* 分配多余空间时，项目占据的主轴空间 */
+          flex-basis: auto;
+          /* flex-grow flex-shrink flex-basis 的缩写 */
+          flex: 0 1 auto;
+          /* 覆盖父元素 align-items */
+          align-self: auto;
         }
 
         .flex div:last-child {
-            order: 2;
-            flex-grow: 1;
+          order: 2;
+          flex-grow: 1;
         }
 
         .flex div:first-child {
-            order: 3;
-            flex-grow: 2;
+          order: 3;
+          flex-grow: 2;
         }
-    </style>
-</section>
-</body>
+      </style>
+    </section>
+  </body>
 </html>

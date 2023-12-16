@@ -115,12 +115,12 @@
   --pkt3: #ff91a7;
   --pkt4: #ff5e9f;
   --pkt5: #ff0894;
-  --gga1: #ffffff;
+  --gga1: #fff;
   --gga2: #109d59;
   --gga3: #fcbe1f;
   --gga4: #dc4437;
   --gga5: #4385f5;
-  --ggb1: #ffffff;
+  --ggb1: #fff;
   --ggb2: #34b67a;
   --ggb3: #fbcb43;
   --ggb4: #e57368;
@@ -171,19 +171,19 @@ pre {
 .demo-button {
   display: inline-block;
   padding: 6px 20px;
-  background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-  color: #666666;
+  background: #fff linear-gradient(to bottom, #fff 5%, #f6f6f6 100%);
+  color: #666;
   font-size: 15px;
   font-weight: bold;
-  text-shadow: 0 1px 0 #ffffff;
+  text-shadow: 0 1px 0 #fff;
   border: 1px solid #dcdcdc;
   border-radius: 5px;
-  box-shadow: inset 0 1px 0 0 #ffffff;
+  box-shadow: inset 0 1px 0 0 #fff;
   cursor: pointer;
 }
 
 .demo-button:hover {
-  background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #fff 100%);
   box-shadow: 1px 1px 1px #ccc;
 }
 
@@ -194,7 +194,7 @@ pre {
   margin: 5px;
   text-align: center;
   color: var(--gy4);
-  background-image: linear-gradient(300deg, #dfe9f3 0%, #ffffff 100%);
+  background-image: linear-gradient(300deg, #dfe9f3 0%, #fff 100%);
   border-radius: 50%;
   cursor: pointer;
 }

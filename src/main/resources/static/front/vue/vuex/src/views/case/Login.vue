@@ -1,50 +1,62 @@
 <template>
   <div class="login">
-    <button id="guide" @click="guide">Guide</button>
+    <button
+      id="guide"
+      @click="guide"
+    >
+      Guide
+    </button>
     <p class="login-title">
       <span class="login-title_left">Muke</span>
       <span class="login-title_right">Wang</span>
     </p>
     <div class="section">
       <input
-          class="section-input"
-          v-model="form.account"
-          placeholder-class="input-holder"
-          placeholder="请输入您的账号"
-      />
+        v-model="form.account"
+        class="section-input"
+        placeholder-class="input-holder"
+        placeholder="请输入您的账号"
+      >
     </div>
     <div class="section">
       <input
-          class="section-input"
-          type="password"
-          v-model="form.password"
-          placeholder-class="input-holder"
-          placeholder="请输入您的密码"
-      />
+        v-model="form.password"
+        class="section-input"
+        type="password"
+        placeholder-class="input-holder"
+        placeholder="请输入您的密码"
+      >
     </div>
-    <button class="btn" @click="login">登录</button>
-    <p class="login-text">版本归属@ytu所有</p>
+    <button
+      class="btn"
+      @click="login"
+    >
+      登录
+    </button>
+    <p class="login-text">
+      版本归属@ytu所有
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Login",
+  name: 'Login',
   data () {
     return {
       isHidden: false,
       isPassword: true,
       logs: [],
       form: {
-        account: "",
-        password: ""
+        account: '',
+        password: ''
       }
     }
   },
   methods: {
     login () {
       if (!this.form.account && !this.form.password) {
-        alert("请填写账号密码")
+        alert('请填写账号密码')
         return false
       }
       const that = this
@@ -79,7 +91,7 @@ export default {
   }
 
   &-title {
-    color: #111111;
+    color: #111;
     font-size: 36px;
     padding: 40px 0 30px;
 
@@ -107,7 +119,7 @@ export default {
     }
 
     .input-holder {
-      color: #777777;
+      color: #777;
       font-size: 16px;
     }
   }
@@ -136,7 +148,7 @@ export default {
     width: 100%;
     height: auto;
     font-size: 12px;
-    color: #777777;
+    color: #777;
     text-align: center;
   }
 }

@@ -28,10 +28,10 @@ img {
   margin-top: 20px;
 }
 .title h3 {
-  font: 22px/62px "微软雅黑";
+  font: 22px/62px '微软雅黑';
   color: #557575;
   width: 106px;
-  border-top: 2px solid #F97374;
+  border-top: 2px solid #f97374;
   margin-top: -1px;
   position: relative;
   float: left;
@@ -58,7 +58,7 @@ img {
   zoom: 1;
 }
 .content:after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
 }
@@ -86,7 +86,7 @@ img {
   height: 18px;
   line-height: 18px;
   font-size: 12px;
-  color: #FFF;
+  color: #fff;
   background-repeat: no-repeat;
   text-indent: 7.5px;
 }
@@ -101,7 +101,7 @@ img {
   font-size: 12px;
 }
 .item_list a {
-  color: #666666;
+  color: #666;
 }
 .item_list a:hover {
   color: red;

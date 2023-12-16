@@ -12,12 +12,12 @@ import ThemeBar from './components/ThemeBar'
 const themes = {
   light: {
     classnames: 'btn btn-primary',
-    bgColor: '#eeeeee',
+    bgColor: '#eee',
     color: '#000'
   },
   dark: {
     classnames: 'btn btn-light',
-    bgColor: '#222222',
+    bgColor: '#222',
     color: '#fff'
   }
 }
@@ -25,7 +25,7 @@ const themes = {
 const tags = ['恐龙', '足球小子']
 
 class App extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       theme: 'light',
@@ -35,17 +35,17 @@ class App extends Component {
     this.addComment = this.addComment.bind(this)
   }
 
-  changeTheme (theme) {
+  changeTheme(theme) {
     this.setState({ theme })
   }
 
-  addComment (comment) {
+  addComment(comment) {
     this.setState({
       comments: [...this.state.comments, comment]
     })
   }
 
-  render () {
+  render() {
     const { comments } = this.state
     return (
       <ThemContext.Provider value={themes[this.state.theme]}>
@@ -55,12 +55,7 @@ class App extends Component {
             <p>
               Edit <code>src/App.js</code> and save to reload.
             </p>
-            <a
-              className='App-link'
-              href='https://reactjs.org'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
+            <a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
               Learn React
             </a>
           </header>
@@ -91,10 +86,7 @@ class App extends Component {
           <DigitalClock />
           <hr />
           <CommentList comments={comments} />
-          <CommentBox
-            commentsLength={comments.length}
-            onAddComment={this.addComment}
-          />
+          <CommentBox commentsLength={comments.length} onAddComment={this.addComment} />
         </div>
       </ThemContext.Provider>
     )
