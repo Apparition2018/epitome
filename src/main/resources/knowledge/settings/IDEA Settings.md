@@ -1,9 +1,8 @@
 # [IDEA Settings](https://www.jetbrains.com/help/idea/settings-preferences-dialog.html)
+- -e: every time
 - -g: global
-- -o: optional
-- -u: unknown
 ---
-## 修改 .IntelliJIdea 位置 (-o)
+## 修改 .IntelliJIdea 位置
     1. %IDEA_HOME%\bin\idea.properties
         idea.config.path=D:/JetBrains/.IntelliJIdea/config
         idea.system.path=D:/JetBrains/.IntelliJIdea/system
@@ -13,7 +12,7 @@
         2.1 删除 C:\Users\Administrator\AppData\Local\JetBrains\IntelliJIdea
         2.2 删除 C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea
 ---
-## 自定义 VM Options (-o)
+## 自定义 VM Options
     1. D:\JetBrains\jetbra\vmoptions\idea.vmoptions
         -Xms1024m
         -Xmx2048m
@@ -22,13 +21,6 @@
 ---
 ## Manage IDE Settings
     1. Settings Sync → Enable Settings Sync…
----
-## 安装 IDE Eval Reset (-o)
-    1. Settings → Plguins → 设置图标 → Manage Plugin Repositories…
-        1.1 添加 https://plugins.zhile.io
-        1.2 Marketplace → 搜索并安装 IDE Eval Reset
-    2. Help → Eval Reset
-        2.1 Auto reset before per restart 勾选
 ---
 ## Build Tools (-g)
     1. Settings → Build, Execution, Deployment → Build Tools
@@ -57,11 +49,11 @@
     1. Settings → Editor → General → Code Folding
     2. Fold by default: → Genral → Imports 取消勾选
 ---
-## Editor Tabs (-o)
+## Editor Tabs
     1. Settings → Editor → General → Editor Tabs
     2. Show tabs in: one row, and if tabs don't fit: Squeeze tabs
 ---
-## Font (-o)
+## Font
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: Microsoft YaHei
 ---
@@ -124,23 +116,34 @@
             2.6.1 Java → Declaration, Statement 勾选
             2.6.2 JavaScript and TypeScript → Statement → Other 勾选
 ---
-## Version Control
+## Version Control (-g)
     1. Settings → Version Control
         1.1 Git → Path to Git executable: D:\Git\cmd\git.exe
         1.2 Subversion → Path to Subversion executable: D:\TortoiseSVN\bin\svn.exe
 ---
 ## Compiler (-g)
     1. Settings → Build, Execution, Deployment
-        1.1 Build Tools → Maven → Importing
-            1.1.1 Detect compiler automatically 取消勾选
-        1.2 Compiler
-            1.2.1 Build project automatically 勾选
-            1.2.2 Shared build process VM options:
+        1.1 Compiler
+            1.1.1 Build project automatically 勾选
+            1.1.2 Shared build process VM options:
                 -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar
-            1.2.3 Java Compiler → Use compiler: Eclipse
-            1.2.4 Annotation Processors → Enable annotation processing 勾选
+            1.1.3 Java Compiler → Use compiler: Eclipse
+            1.1.4 Annotation Processors → Enable annotation processing 勾选
     2. Settings → Advanced Settings → Compiler
         2.1 Allow auto-make to start even if developed application is currently running 勾选
+---
+## Deployment
+    1. Settings → Build, Execution, Deployment → Deployment
+        1.1 + → SFTP → New server name：test → SSH configuration
+            Host: 43.136.102.115
+            Username: root
+            Authenication type: Password
+            password: Cesc123!
+        1.2 Advanced → Encoding for client-server communication: UTF8
+        1.3 Mappings
+            Local path: D:\Liang\git\epitome\OpenCloudOS8.6
+            Deployment path: /home/lighthouse/sync_dir
+    2. Tools → Deployment → Sync With Local…
 ---
 ## Actions on Save (-g)
     1. Settings → Tools → Actions on Save
@@ -159,22 +162,8 @@
     5. View → Tool Windows → JRebel → 勾选模块自动生成 rebel.xml → <classpath/> 指向编译输出路径
     6. 修改代码后，Ctrl + Shift + F9
 ---
-## Tools
-### Deployment
-    1. Tools → Deployment → Configuration
-        1.1 + → SFTP → New server name：test → SSH configuration
-            Host: 43.136.102.115
-            Username: root
-            Authenication type: Password
-            password: Cesc123!
-        1.2 Advanced → Encoding for client-server communication: UTF8
-        1.3 Mappings
-            Local path: D:\Liang\git\epitome\OpenCloudOS8.6
-            Deployment path: /home/lighthouse/sync_dir
-    2. Tools → Deployment → Sync With Local…
----
-## JavaScript
-### [ESLint](https://www.jetbrains.com/help/idea/eslint.html) (-u)
+## JavaScript (-g)
+### [ESLint](https://www.jetbrains.com/help/idea/eslint.html)
     1. npm init @eslint/config
     2. npm i --save-dev eslint eslint-config-standard eslint-config-standard-jsx
         eslint-plugin-promise eslint-plugin-import eslint-plugin-n
@@ -182,16 +171,15 @@
     3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
         3.1 Manual ESLint configuration 勾选
         3.2 ESLint package: D:\Liang\git\epitome\node_modules\eslint
-        3.3 Run for files: {**/*,*}.{js,ts,jsx,tsx,html,vue}
+        3.3 Run for files: **/*.{js,ts,jsx,tsx,html,vue}
         3.4 Run eslint --fix on save 勾选
-### [Prettier](https://www.jetbrains.com/help/idea/prettier.html) (-u)
+### [Prettier](https://www.jetbrains.com/help/idea/prettier.html)
     1. npm i --save-dev --save-exact prettier
     2. Settings → Languages & Frameworks → JavaScript → Prettier
         2.1 Manual prettier configuration 勾选
         2.2 Prettier package: D:\Liang\git\epitome\node_modules\prettier
         2.3 Run on 'Reformat Code' action 勾选
-        2.4 Run for files: {**/*,*}.{html,css,less,scss,sass}
-        2.5 Run on Save 勾选
+        2.4 Run for files: **/*.{html,css,less,scss,sass}
 > - [JavaScript Standard Style](https://standardjs.com/)
 > - [Google Style Guides | styleguide](https://github.com/google/styleguide)
 > - [Google developer documentation style guide](https://developers.google.com/style)

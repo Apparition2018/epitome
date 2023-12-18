@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="test" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="test">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/lighthouse/sync_dir" local="$PROJECT_DIR$/OpenCloudOS8.6" web="/" />
+            <mapping deploy="/home/lighthouse/sync_dir" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
