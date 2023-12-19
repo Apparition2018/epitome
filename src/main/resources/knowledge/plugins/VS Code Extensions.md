@@ -11,7 +11,7 @@
     - Project Manager
     - GitLens
     - gitignore
-    - Open in …
+    - Open in GitHub / Bitbucket / VisualStudio.com
 - Extension Pack for Java
     - Language Support for Java(TM) by Red Hat
     - Debugger for Java
@@ -24,7 +24,7 @@
     - Python
         - Pylance
     - Jinja
-    - Diango
+    - Django
     - IntelliCode
     - Python Indent
     - Python Environment Manager
@@ -33,6 +33,10 @@
         - .NET Install Tool
     - Polyglot Notebooks
     - Jupyter
+        - Jupyter Keymap
+        - Jupyter Notebook Renderers
+        - Jupyter Slide Show
+        - Jupyter Cell Tags
     - lonide for F#
 - Spring Boot Extension Pack
     - Spring Boot Tools
@@ -69,7 +73,7 @@
 ## Data Science
 - [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
 ## Debuggers
-- [JavaScript Debugger](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)
+- [JavaScript Debugger (Nightly)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)
 - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode)
 ## Keymaps
 - [IntelliJ IDEA Keybindings](https://marketplace.visualstudio.com/items?itemName=k--kato.intellij-idea-keybindings)
@@ -83,6 +87,8 @@
 - [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [Tabnine](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode)
 ## Programming Languages
+- [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
+    - [IntelliCode for C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp)
 - [CSS Class Intellisense](https://marketplace.visualstudio.com/items?itemName=Tarrow.css-class-intellisense)
 - [CSS Flexbox Cheatsheet](https://marketplace.visualstudio.com/items?itemName=dzhavat.css-flexbox-cheatsheet)
 - [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner)
@@ -91,6 +97,7 @@
 - [HTML CSS Support](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css)
 - [HTML to CSS autocompletion](https://marketplace.visualstudio.com/items?itemName=solnurkarim.html-to-css-autocompletion)
 - [MySQL](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2)
+    - Database Client JDBC
 - [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 ## Snippets
 - [jQuery Code Snippets](https://marketplace.visualstudio.com/items?itemName=donjayamanne.jquerysnippets)
@@ -110,8 +117,9 @@
 - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 - [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
 - [GitHub Repositories](https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub)
-- [Image preview](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview)
     - Azure Repos
+- [Image preview](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview)
+- [IntelliCode API Usage Examples](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.intellicode-api-usage-examples)
 - [json](https://marketplace.visualstudio.com/items?itemName=ZainChen.json)
 - [Learn Vim](https://marketplace.visualstudio.com/items?itemName=vintharas.learn-vim)
 - [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
@@ -119,5 +127,6 @@
 - [Minify](https://marketplace.visualstudio.com/items?itemName=HookyQR.minify)
 - [open in browser](https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser)
 - [Red Hat Dependency Analytics](https://marketplace.visualstudio.com/items?itemName=redhat.fabric8-analytics)
+- [Remote Repositories](https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-repositories)
 - [Turbo Console Log](https://marketplace.visualstudio.com/items?itemName=ChakrounAnas.turbo-console-log)
 ---
