@@ -1,6 +1,7 @@
 # [IDEA Settings](https://www.jetbrains.com/help/idea/settings-preferences-dialog.html)
-- -e: every time
-- -g: global
+- -j: JetBrains
+- -n: New
+- -e: Every Time
 ---
 ## 修改 .IntelliJIdea 位置
     1. %IDEA_HOME%\bin\idea.properties
@@ -19,35 +20,35 @@
         -Dfile.encoding=UTF-8
         -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel
 ---
-## Manage IDE Settings
+## Manage IDE Settings (-j)
     1. Settings Sync → Enable Settings Sync…
 ---
-## Build Tools (-g)
+## Build Tools (-n)
     1. Settings → Build, Execution, Deployment → Build Tools
     2. Maven
         2.1 User settings file: D:\dev\.maven\settings.xml
     3. Gradle
         3.1 Gradle user home: D:\dev\.gradle
         3.2 Build and run using: IntelliJ IDEA
-        3.3 Run tetss using: IntelliJ IDEA
+        3.3 Run tests using: IntelliJ IDEA
 ---
-## Virtual Space & On Save
+## Virtual Space & On Save (-j)
     1. Settings → Editor → General
     2. Virtual Space
         2.1 Allow caret placement: After the end of line 取消勾选
     3. On Save
         3.1 Remove trailing spaces on: Modified Lines 勾选
         3.2 Keep trailing spaces on caret line 勾选
-    4. Ensure every saved files ends with a line break 勾选
+        3.3 Ensure every saved files ends with a line break 勾选
 ---
 ## Auto Import
     1. Settings → Editor → General → Auto Import → Java
     2. Add unambiguous imports on the fly 勾选
-    3. Optimeze imports on the fly 勾选
+    3. Optimize imports on the fly 勾选
 ---
-## Code Folding
+## Code Folding (-j)
     1. Settings → Editor → General → Code Folding
-    2. Fold by default: → Genral → Imports 取消勾选
+    2. Fold by default: → General → Imports 取消勾选
 ---
 ## Editor Tabs
     1. Settings → Editor → General → Editor Tabs
@@ -57,7 +58,7 @@
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: Microsoft YaHei
 ---
-## Code Style (-g)
+## Code Style (-jn)
     # https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml
     1. Settings → Editor → Code Style
     2. Java → JavaDoc
@@ -76,14 +77,14 @@
         6.2 Wrap text 取消勾选
     7. Markdown → Blank Lines → 全部设为0
 ---
-## Inspections (-g)
+## Inspections (-n)
     1. Settings → Editor → Inspections
     2. 搜索 serialVersionUID
         2.1 'serialVersionUID' field not declared 'private static final long' 勾选
         2.2 Serializable class without 'serialVersionUID' 勾选
     3. Java → Naming conventions → Class → class naming convention 取消勾选
 ---
-## File and Code Templates (-g)
+## File and Code Templates (-n)
     1. Settings → Editor → File and Code Templates
     2. Files
     3. Class | Interface | Enum | Record | AnnotationType
@@ -94,7 +95,7 @@
          * @since ${DATE} ${TIME}
          */
 ---
-## File Encodings (-g)
+## File Encodings (-jn)
     1. Settings → Editor → File Encodings
     2. Project Encoding: UTF-8
     3. Default encoding for properties files: UTF-8
@@ -116,12 +117,12 @@
             2.6.1 Java → Declaration, Statement 勾选
             2.6.2 JavaScript and TypeScript → Statement → Other 勾选
 ---
-## Version Control (-g)
+## Version Control (-jn)
     1. Settings → Version Control
         1.1 Git → Path to Git executable: D:\Git\cmd\git.exe
         1.2 Subversion → Path to Subversion executable: D:\TortoiseSVN\bin\svn.exe
 ---
-## Compiler (-g)
+## Compiler (-n)
     1. Settings → Build, Execution, Deployment
         1.1 Compiler
             1.1.1 Build project automatically 勾选
@@ -132,25 +133,26 @@
     2. Settings → Advanced Settings → Compiler
         2.1 Allow auto-make to start even if developed application is currently running 勾选
 ---
-## Deployment
+## Deployment (-jn)
     1. Settings → Build, Execution, Deployment → Deployment
-        1.1 + → SFTP → New server name：test → SSH configuration
+        1.1 + → SFTP → New server name：43.1356.102.115 → SSH configuration
             Host: 43.136.102.115
             Username: root
-            Authenication type: Password
+            Authentication type: Password
             password: Cesc123!
-        1.2 Advanced → Encoding for client-server communication: UTF8
-        1.3 Mappings
+        1.2 Root path: /
+        1.3 Advanced → Encoding for client-server communication: UTF8
+        1.4 Mappings
             Local path: D:\Liang\git\epitome\OpenCloudOS8.6
             Deployment path: /home/lighthouse/sync_dir
     2. Tools → Deployment → Sync With Local…
 ---
-## Actions on Save (-g)
+## Actions on Save (-n)
     1. Settings → Tools → Actions on Save
     2. Reformat code 勾选
     3. Optimize imports 勾选
 ---
-## Terminal (-g)
+## Terminal (-jn)
     1. Settings → Tools → Terminal
     2. Shell path: D:\Git\bin\bash.exe
 ---
@@ -162,7 +164,7 @@
     5. View → Tool Windows → JRebel → 勾选模块自动生成 rebel.xml → <classpath/> 指向编译输出路径
     6. 修改代码后，Ctrl + Shift + F9
 ---
-## JavaScript (-g)
+## JavaScript (-jn)
 ### [ESLint](https://www.jetbrains.com/help/idea/eslint.html)
     1. npm init @eslint/config
     2. npm i --save-dev eslint eslint-config-standard eslint-config-standard-jsx
