@@ -24,7 +24,7 @@
     - Python
         - Pylance
     - Jinja
-    - Django
+    - Diango
     - IntelliCode
     - Python Indent
     - Python Environment Manager
@@ -88,6 +88,8 @@
 - [Tabnine](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode)
 ## Programming Languages
 - [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
+    - C#
+        - .NET Install Tool
     - [IntelliCode for C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp)
 - [CSS Class Intellisense](https://marketplace.visualstudio.com/items?itemName=Tarrow.css-class-intellisense)
 - [CSS Flexbox Cheatsheet](https://marketplace.visualstudio.com/items?itemName=dzhavat.css-flexbox-cheatsheet)

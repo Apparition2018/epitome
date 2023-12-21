@@ -141,7 +141,7 @@
             Authentication type: Password
             password: Cesc123!
         1.2 Root path: /
-        1.3 Advanced → Encoding for client-server communication: UTF8
+        1.3 Advanced → Encoding for client-server communication: UTF-8
         1.4 Mappings
             Local path: D:\Liang\git\epitome\OpenCloudOS8.6
             Deployment path: /home/lighthouse/sync_dir
