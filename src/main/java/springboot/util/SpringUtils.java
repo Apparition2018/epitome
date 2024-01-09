@@ -18,10 +18,7 @@ import java.util.Map;
  * @since 2021/6/21 16:59
  */
 @Component
-public final class SpringUtils implements ApplicationContextAware {
-    private SpringUtils() {
-        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
-    }
+public class SpringUtils implements ApplicationContextAware {
 
     @Getter
     private static ApplicationContext applicationContext;

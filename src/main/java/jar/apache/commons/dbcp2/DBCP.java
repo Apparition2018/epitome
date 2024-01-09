@@ -1,6 +1,8 @@
 package jar.apache.commons.dbcp2;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.springframework.jdbc.datasource.DataSourceUtils;
+import org.springframework.jdbc.support.JdbcUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,6 +22,7 @@ public class DBCP {
 
     public static void main(String[] args) {
         Connection conn = null;
+        PreparedStatement ps = null;
         try {
             conn = DBUtil.getConnection();
             // 默认 为 true，自动提交事务
@@ -27,7 +30,7 @@ public class DBCP {
             String sql = "INSERT INTO score (name, course, score) VALUES (?, ?, ?)";
             // PreparedStatement，预编译的 SQL 对象，可执行含有动态信息的 SQL 语句，动态信息用 ? 代替
             // 由于 PreparedStatement 不会将动态信息拼接到 SQL 中，所以可以防止 SQL 注入攻击
-            PreparedStatement ps = conn.prepareStatement(sql);
+            ps = conn.prepareStatement(sql);
             {
                 ps.setString(1, "王五");
                 ps.setString(2, "语文");
@@ -59,13 +62,8 @@ public class DBCP {
                 }
             }
         } finally {
-            if (null != conn) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            JdbcUtils.closeStatement(ps);
+            DataSourceUtils.releaseConnection(conn, DBUtil.getDataSource());
         }
     }
 }

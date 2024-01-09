@@ -3,6 +3,7 @@ package jar.apache.commons.dbcp2;
 import knowledge.data.structure.collections.framework.map.properties.PropertiesUtil;
 import org.apache.commons.dbcp2.BasicDataSource;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.Duration;
@@ -35,6 +36,10 @@ public class DBUtil {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static DataSource getDataSource() {
+        return dataSource;
     }
 
     public static Connection getConnection() throws SQLException {
