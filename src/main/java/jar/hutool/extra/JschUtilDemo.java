@@ -2,10 +2,11 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.ssh.JschUtil;
 import com.jcraft.jsch.Session;
+import l.demo.Demo;
 
 /**
  * <a href="https://hutool.cn/docs/#/extra/Jsch封装/Jsch工具-JschUtil">JschUtil</a>
- * <p>需要引入 com.jcraft:jsch
+ * <p>需要引入 com.github.mwiede:jsch
  * <p>参考：
  * <pre>
  * <a href="https://segmentfault.com/a/1190000019967309">JSch-用java实现服务器远程操作</a>
@@ -15,11 +16,11 @@ import com.jcraft.jsch.Session;
  * @author ljh
  * @since 2020/11/20 17:28
  */
-public class JschUtilDemo {
+public class JschUtilDemo extends Demo {
 
     public static void main(String[] args) {
-        Session session = JschUtil.getSession("47.115.17.202", 22, "admin", "zx$due^403c");
-        System.out.println(session.getClientVersion()); // SSH-2.0-JSCH-0.1.54
-        System.out.println(session.getServerVersion()); // SSH-2.0-OpenSSH_5.3
+        Session session = JschUtil.getSession(MY_SERVER_IP, 22, "root", "Cesc123!");
+        System.out.println(session.getClientVersion()); // SSH-2.0-JSCH_0.2.16
+        System.out.println(session.getServerVersion()); // SSH-2.0-OpenSSH_8.0
     }
 }
