@@ -2,7 +2,8 @@ package jar.hutool.extra;
 
 import cn.hutool.extra.ssh.JschUtil;
 import com.jcraft.jsch.Session;
-import l.demo.Demo;
+
+import static l.demo.Demo.MY_SERVER_IP;
 
 /**
  * <a href="https://hutool.cn/docs/#/extra/Jsch封装/Jsch工具-JschUtil">JschUtil</a>
@@ -16,7 +17,7 @@ import l.demo.Demo;
  * @author ljh
  * @since 2020/11/20 17:28
  */
-public class JschUtilDemo extends Demo {
+public class JschUtilDemo {
 
     public static void main(String[] args) {
         Session session = JschUtil.getSession(MY_SERVER_IP, 22, "root", "Cesc123!");

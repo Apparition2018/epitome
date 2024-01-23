@@ -21,21 +21,25 @@ import java.util.Objects;
 
 /**
  * 数字证书
- * <p>证书生成：
+ * <p>生成 .keysotre 存储密钥对：
  * <pre>
- * keytool -genkey -validity 1 -alias ljh -keyalg RSA -keystore C:\Users\Administrator\Desktop\ljh.keystore
- * 口令：123456
+ * keytool -genkeypair -validity 1 -alias ljh -keyalg RSA -keystore C:\Users\Administrator\Desktop\ljh.keystore
+ * 口令：123123
  * CN=ljh, OU=ljh, O=ljh, L=zs, ST=gd, C=cn
  * </pre>
- * 公钥证书导出：
+ * 导出证书：
  * <pre>
- * keytool -export -keystore C:\Users\Administrator\Desktop\ljh.keystore -alias ljh -file C:\Users\Administrator\Desktop\ljh.cer -rfc
+ * keytool -exportcert -alias ljh -keystore C:\Users\Administrator\Desktop\ljh.keystore -file C:\Users\Administrator\Desktop\ljh.crt -rfc
  * </pre>
- * 证书转换，jks → PKCS12
+ * 导入证书：
+ * <pre>
+ * keytool -importcert -alias ljh2 -file C:\Users\Administrator\Desktop\ljh.crt -keystore C:\Users\Administrator\Desktop\ljh2.keystore
+ * </pre>
+ * 转换 (jks → PKCS12)
  * <pre>
  * keytool -importkeystore -srckeystore C:\Users\Administrator\Desktop\ljh.keystore -destkeystore C:\Users\Administrator\Desktop\ljh.pfx -deststoretype pkcs12
  * </pre>
- * 证书查看：
+ * 列出 .keystore：
  * <pre>
  * keytool -list -keystore C:\Users\Administrator\Desktop\ljh.pfx -rfc
  * </pre>
@@ -52,10 +56,10 @@ import java.util.Objects;
 public class CertificateDemo extends Demo {
 
     private static final String KEY_PATH = DESKTOP + "ljh.pfx";
-    private static final String KEY_PASSWORD = "123456";
+    private static final String KEY_PASSWORD = "123123";
     private static final String KEY_TYPE_JKS = "JKS";
     private static final String KEY_TYPE_PKCS12 = "PKCS12";
-    private static final String CERT_PATH = DESKTOP + "ljh.cer";
+    private static final String CERT_PATH = DESKTOP + "ljh.crt";
     private static final String CERT_TYPE_X509 = "X.509";
     private static final String SIGN_ALGO = "SHA1withRSA";
 
@@ -82,11 +86,10 @@ public class CertificateDemo extends Demo {
      * 获取 KeyStore
      */
     public static KeyStore getKeyStore(String keyType, String keyPath, String password) throws KeyStoreException, IOException, CertificateException, NoSuchAlgorithmException {
-        KeyStore keyStore;
-        keyStore = KeyStore.getInstance(Objects.requireNonNullElse(keyType, KEY_TYPE_JKS));
-        FileInputStream is = new FileInputStream(keyPath);
-        keyStore.load(is, password.toCharArray());
-        is.close();
+        KeyStore keyStore = KeyStore.getInstance(Objects.requireNonNullElse(keyType, KEY_TYPE_JKS));
+        try (FileInputStream is = new FileInputStream(keyPath)) {
+            keyStore.load(is, password.toCharArray());
+        }
         return keyStore;
     }
 
@@ -125,10 +128,9 @@ public class CertificateDemo extends Demo {
      */
     public static Certificate getCertificate(String certPath) throws CertificateException, IOException {
         CertificateFactory certificateFactory = CertificateFactory.getInstance(CERT_TYPE_X509);
-        FileInputStream is = new FileInputStream(certPath);
-        Certificate certificate = certificateFactory.generateCertificate(is);
-        is.close();
-        return certificate;
+        try (FileInputStream is = new FileInputStream(certPath)) {
+			return certificateFactory.generateCertificate(is);
+        }
     }
 
     /**
