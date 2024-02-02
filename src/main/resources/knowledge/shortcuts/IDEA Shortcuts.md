@@ -34,6 +34,7 @@ Alt + Shit + O                  Show Options Popup for In-place Refactoring     
 ### File
 ```
 Alt + P                         Manage Projects… (user)             管理项目
+Alt + S                         Settings for New Projects… (user)
 Ctrl + Alt + S                  Settings…
 Ctrl + Alt + Shift + S          Project Structure…
 Ctrl + Alt + Y                  Synchronize                         同步
@@ -243,7 +244,7 @@ Ctrl + Alt + ]                  Next Project Window                 下一个项
 >```
 >Alt + ←                        Select Previous Tab                 上一个Tab
 >Alt + →                        Select Next Tab                     下一个Tab
->Alt + W                        Close Tab (user) Reopen Closed Tab ???
+>Alt + W                        Close Tab (user)
 >Alt + R                        Split and Move Right (user)         垂直分屏并移到右边
 >Alt + D                        Split and Move Down (user)          水平分屏并移到下边
 >Alt + Numpad-4                 Goto Next Splitter (user)

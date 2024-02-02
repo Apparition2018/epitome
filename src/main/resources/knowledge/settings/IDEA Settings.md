@@ -50,11 +50,11 @@
     1. Settings → Editor → General → Code Folding
     2. Fold by default: → General → Imports 取消勾选
 ---
-## Editor Tabs
+## Editor Tabs (-j)
     1. Settings → Editor → General → Editor Tabs
     2. Show tabs in: one row, and if tabs don't fit: Squeeze tabs
 ---
-## Font
+## Font (-j)
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: Microsoft YaHei
 ---
@@ -147,7 +147,7 @@
             Deployment path: /home/lighthouse/sync_dir
     2. Tools → Deployment → Sync With Local…
 ---
-## Actions on Save (-n)
+## Actions on Save (-jn)
     1. Settings → Tools → Actions on Save
     2. Reformat code 勾选
     3. Optimize imports 勾选
@@ -193,7 +193,7 @@
 ### Facets
     1. Web
     2. Deployment Descriptors 配置 web.xml
-    3. Web Resource Directories 配置 webapp
+    3. Web Resource Directories 配置 web
 ### Artifacts
     1. + Web Application: Exploded ▶ From Modules…
     2. Output directory

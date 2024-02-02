@@ -1,22 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <base target="_blank">
-    <title>jsPDF</title>
-    <link rel="stylesheet" href="../../../../public/css/demo.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+  <base target="_blank">
+  <title>jsPDF</title>
+  <link rel="stylesheet" href="../../../../public/css/demo.css">
 </head>
 <body>
-<section class="code-wrap">
-    <div class="css-live-wrap">
-        <div class="caption"><a href="https://www.npmjs.com/package/jspdf">jsPDF</a></div>
-        <div class="centered"></div>
+<section class="code-wrap h100vh">
+  <div class="css-live-wrap w40p">
+    <div class="caption"><a href="https://www.npmjs.com/package/jspdf">jsPDF</a></div>
+    <div class="caption"><a href="https://www.cnblogs.com/lucas27/p/14794294.html">jsPDF 表格</a></div>
+    <div class="centered" id="pdf">
+      <table style="width: 300px; margin: 50px;">
+        <tr>
+          <th>球队</th>
+          <th>积分</th>
+        </tr>
+        <tr>
+          <td>阿森纳</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>曼联</td>
+          <td>90</td>
+        </tr>
+        <tr>
+          <td>利物浦</td>
+          <td>80</td>
+        </tr>
+        <tr>
+          <td>切尔西</td>
+          <td>70</td>
+        </tr>
+      </table>
     </div>
-    <script src="https://unpkg.com/jspdf/dist/jspdf.umd.min.js"></script>
-    <script class="code" contenteditable="true">
-    </script>
+  </div>
+  <style>
+    th, td { text-align: center; }
+  </style>
+  <script src="https://unpkg.com/html2canvas/dist/html2canvas.min.js"></script>
+  <script src="https://unpkg.com/jspdf@^1/dist/jspdf.min.js"></script>
+  <script class="code w60p" contenteditable="true">
+    const downloadPdf = () => {
+      html2canvas(document.getElementById('pdf'), {
+        allowTaint: true,
+        taintTest: false
+      }).then((canvas) => {
+        const pdf = new jsPDF('portrait', 'pt', 'a4')
+        const pageData = canvas.toDataURL('image/jpeg', 1.0)
+        const a4 = {
+          width: 592.28,
+          height: 841.89
+        }
+        // 一页pdf显示canvas的高度
+        const canvasPageHeight = canvas.width * a4.height / a4.width
+        const imgHeight = a4.width * canvas.height / canvas.width
+        if (canvas.height < canvasPageHeight) {
+          pdf.addImage(pageData, 'JPEG', 0, 0, a4.width, imgHeight)
+        } else {
+          let remainingHeight = canvas.height
+          let y = 0
+          while (remainingHeight > 0) {
+            pdf.addImage(pageData, 'JPEG', 0, y, a4.width, imgHeight)
+            remainingHeight -= canvasPageHeight
+            y -= a4.height
+            if (remainingHeight > 0) {
+              pdf.addPage()
+            }
+          }
+        }
+        pdf.save('test.pdf')
+      })
+    }
+    downloadPdf()
+  </script>
 </section>
 </body>
 </html>
