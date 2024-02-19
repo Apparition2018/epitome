@@ -57,9 +57,9 @@
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.17.2</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
-        <minio.version>8.5.7</minio.version>
+        <minio.version>8.5.8</minio.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
-        <itext.version>8.0.2</itext.version>
+        <itext.version>8.0.3</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
         <nimbus-jose-jwt.version>9.37.3</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
@@ -68,15 +68,15 @@
         <curator.version>5.6.0</curator.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
-        <fastjson.version>2.0.45</fastjson.version>
+        <fastjson.version>2.0.46</fastjson.version>
         <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
         <tablibs-standard.version>1.2.5</tablibs-standard.version>
         <!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
         <protostuff.version>1.8.0</protostuff.version>
         <!-- https://mvnrepository.com/artifact/ws.schild/jave-all-deps -->
-        <jave2.version>3.4.0</jave2.version>
+        <jave2.version>3.5.0</jave2.version>
         <!-- https://mvnrepository.com/artifact/org.bytedeco/javacv -->
-        <javacv.version>1.5.9</javacv.version>
+        <javacv.version>1.5.10</javacv.version>
         <!-- https://mvnrepository.com/artifact/org.dom4j/dom4j -->
         <dom4j.version>2.1.4</dom4j.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.nashorn/nashorn-core -->
@@ -88,7 +88,7 @@
         <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <hutool.version>5.8.25</hutool.version>
+        <hutool.version>5.8.26</hutool.version>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <cglib.version>3.3.0</cglib.version>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
@@ -98,13 +98,13 @@
         <!-- https://mvnrepository.com/artifact/io.github.biezhi/TinyPinyin -->
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
         <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
-        <zxing.version>3.5.2</zxing.version>
+        <zxing.version>3.5.3</zxing.version>
 		<!-- https://mvnrepository.com/artifact/QRCode/QRCode -->
         <QRCode.version>3.0.0</QRCode.version>
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
-        <lucene-analyzers.version>8.11.2</lucene-analyzers.version>
+        <lucene-analyzers.version>8.11.3</lucene-analyzers.version>
         <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
-        <oshi.version>6.4.11</oshi.version>
+        <oshi.version>6.4.12</oshi.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
         <jol.version>0.17</jol.version>
         <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->

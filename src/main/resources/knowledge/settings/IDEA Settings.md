@@ -99,6 +99,7 @@
     1. Settings → Editor → File Encodings
     2. Project Encoding: UTF-8
     3. Default encoding for properties files: UTF-8
+    4. Create UTF-8 files: with NO BOM
 ---
 ## TODO
     1. Settings → Editor → TODO → Patterns

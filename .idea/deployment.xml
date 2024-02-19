@@ -5,7 +5,7 @@
       <paths name="test">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/lighthouse/sync_dir" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/lighthouse/sync_dir" local="$PROJECT_DIR$/OpenCloudOS" web="/" />
           </mappings>
         </serverdata>
       </paths>
