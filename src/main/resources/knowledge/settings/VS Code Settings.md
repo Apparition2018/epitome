@@ -129,3 +129,37 @@
 }
 ```
 ---
+## [Tasks](https://code.visualstudio.com/docs/editor/tasks)
+- [通过任务使用 Chrome 打开 HTML](https://blog.csdn.net/u010510187/article/details/96635089)
+    - Ctrl + Shift + P → Configure Task → 使用模板创建 task.json 文件 → Others
+    - 打开任意 HTML 文件 → Ctrl + Shift + B
+```json5
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run HTML file with Chrome",
+      // 任务类型：shell/process
+      "type": "process",
+      "command": "chrome",
+      "args": [
+        // 预定义变量：https://code.visualstudio.com/docs/editor/variables-reference
+        // 当前打开文件
+        "${file}"
+      ],
+      "windows": {
+        "command": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+      },
+      "group": "build",
+      // 任务输出
+      "presentation": {
+        // 控制是否将集成终端面板移到前面：always/never/silent
+        "reveal": "never"
+      }
+    }
+  ]
+}
+```
+---
