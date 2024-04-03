@@ -21,3 +21,38 @@ function guid () {
 function sleep (s) {
   for (let t = Date.now(); Date.now() - t <= s;) ;
 }
+
+/** 验证居民身份证：http://www.ip33.com/shenfenzheng.html */
+function isValidChineseIdCard (idCard) {
+  // 校验身份证号码长度
+  if (idCard.length !== 18) {
+    return false
+  }
+
+  // 系数数组
+  const coefficients = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2]
+  // 校验码对照表
+  const checkCodes = '10X98765432'
+
+  // 计算前17位乘积和
+  let sum = 0
+  for (let i = 0; i < 17; i++) {
+    sum += parseInt(idCard[i]) * coefficients[i]
+  }
+
+  // 计算校验码
+  const calculatedCheckCode = checkCodes[sum % 11]
+
+  // 比较计算出的校验码与身份证上的校验码是否一致
+  return calculatedCheckCode.toUpperCase() === idCard[17].toUpperCase()
+}
+
+/** 验证香港永久性居民身份证：C668668(E) */
+function isValidHongKongIdCard (idCard) {
+  return /^[A-Z]{1,2}\d{6,10}[(\d)|A]{3}$/.test(idCard)
+}
+
+/** 验证澳门永久性居民身份证：5215299(8) */
+function isValidMacaoIdCard (idCard) {
+  return /^[157][0-9]{6}[(\d)]{3}$/.test(idCard)
+}
