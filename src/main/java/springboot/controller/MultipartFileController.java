@@ -11,10 +11,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
+import org.apache.poi.ss.extractor.EmbeddedData;
+import org.apache.poi.ss.extractor.EmbeddedExtractor;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.http.MediaTypeFactory;
 import org.springframework.web.bind.annotation.*;
@@ -23,21 +24,20 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import springboot.result.Result;
 import springboot.result.ResultCode;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
-import static l.demo.Demo.DEMO_DIR_NAME;
-import static l.demo.Demo.UPLOAD_ABSOLUTE_PATH;
+import static l.demo.Demo.*;
 
 /**
  * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD">RuoYi 上传下载 (CommonController)</a>
@@ -63,8 +63,8 @@ public class MultipartFileController {
              OutputStream outputStream = response.getOutputStream()) {
             response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
             response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename="
-                    // 防止文件名有中文时显示为下划线
-                    + new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
+                // 防止文件名有中文时显示为下划线
+                + new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
             IOUtils.copy(inputStream, outputStream);
             outputStream.flush();
         } catch (Exception e) {
@@ -102,8 +102,8 @@ public class MultipartFileController {
             cell.setCellValue("22");
 
             response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
-            response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename="
-                    + new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
+            response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" +
+                new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
             workbook.write(outputStream);
         } catch (IOException | InvalidFormatException e) {
             throw new RuntimeException(e);
@@ -117,14 +117,41 @@ public class MultipartFileController {
      */
     @PostMapping("upload/file")
     @Operation(summary = "上传文件")
-    public Result<String> uploadFile(HttpServletRequest request) throws IOException {
+    public Result<String> uploadFile(HttpServletRequest request) throws IOException, OpenXML4JException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("file");
         if (file != null && !file.isEmpty()) {
-            log.info("ContentType: {}", file.getContentType());             // application/vnd.ms-excel
-            log.info("Size: {}", file.getSize());                           // 18944
-            log.info("Name: {}", file.getName());                           // file
-            log.info("OriginalFilename: {}", file.getOriginalFilename());   // Yearly Plan.xls
+            System.err.printf("ContentType: %s%n", file.getContentType());
+            System.err.printf("Size: %s%n", file.getSize());
+            System.err.printf("Name: %s%n", file.getName());
+            System.err.printf("OriginalFilename: %s%n", file.getOriginalFilename());
+
+            try (XSSFWorkbook workbook = new XSSFWorkbook(file.getInputStream())) {
+                // 提取器尝试识别 Excel 文件中的各种嵌入文档
+                EmbeddedExtractor extractor = new EmbeddedExtractor();
+                for (EmbeddedData embeddedData : extractor.extractAll(workbook.getSheetAt(0))) {
+                    Shape shape = embeddedData.getShape();
+                    XSSFClientAnchor anchor = (XSSFClientAnchor) shape.getAnchor();
+                    // 文件名：行-列
+                    System.err.println(embeddedData.getFilename() + "：" + anchor.getRow2() + "-" + anchor.getCol2());
+                    byte[] bytes = embeddedData.getEmbeddedData();
+                    // 判断是否为 ZIP（ZIP 文件的魔数是 0x50 0x4B 0x03 0x04）
+                    if (bytes != null && bytes.length >= 4 && bytes[0] == 0x50 && bytes[1] == 0x4B && bytes[2] == 0x03 && bytes[3] == 0x04) {
+                        try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+                             // 防止压缩包里的文件的文件名包含中文而报错
+                             ZipInputStream zis = new ZipInputStream(bais, Charset.forName("GBK"))) {
+                            ZipEntry zipEntry;
+                            while ((zipEntry = zis.getNextEntry()) != null) {
+                                try (FileOutputStream fos = new FileOutputStream(DESKTOP + zipEntry.getName())) {
+                                    zis.transferTo(fos);
+                                } finally {
+                                    zis.closeEntry();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
             // 将接收到的文件传输到给定的目标文件
             file.transferTo(new File(UPLOAD_ABSOLUTE_PATH + file.getOriginalFilename()));
