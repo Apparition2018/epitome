@@ -135,9 +135,9 @@ public class ExecutorsDemo extends Demo {
     public void invoke() throws InterruptedException, ExecutionException {
         ExecutorService threadPool = Executors.newWorkStealingPool();
         List<Callable<String>> callableList = List.of(
-                this.callable("task1", 1),
-                this.callable("task2", 2),
-                this.callable("task3", 3)
+            this.callable("task1", 1),
+            this.callable("task2", 2),
+            this.callable("task3", 3)
         );
         p("--- invokeAll ---");
         // <T> List<Future<T>>  invokeAll(Collection<? extends Callable<T>> tasks[, long timeout, TimeUnit unit])

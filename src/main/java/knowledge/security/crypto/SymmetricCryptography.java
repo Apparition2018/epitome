@@ -19,7 +19,7 @@ import java.security.SecureRandom;
  * <pre>
  * AES, ARCFOUR, Blowfish, DES, DESX, 3DES, DESede, IDEA,
  * PBEWithMD5AndDES, PBEWithSHA1AndDESede, PBEWithSHA1AndRC2_40, PBE,
- * RC2, RC4, RC5, RC6
+ * RC2, RC4, RC5, RC6，ChaCha20-Poly1305
  * </pre>
  * 优点：速度快，常在消息发送方需要加密大量数据时使用，算法公开，计算量小，加密速度快，加密效率高<br/>
  * 缺点：密钥的分配与管理

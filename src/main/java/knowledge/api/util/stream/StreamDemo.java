@@ -91,19 +91,19 @@ public class StreamDemo extends Demo {
         // flatMap()        元素一对一执行，返回元素的 Stream
         // peek()           元素一对一执行，无返回
         List<Integer> list = Stream.of(3, 2, 2, 3, 7, 3, 5)
-                .distinct()
-                .map(i -> i * i)
-                .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
-                // 3 2 7 5
-                .peek(i -> System.out.print(i + StringUtils.SPACE)).toList();
+            .distinct()
+            .map(i -> i * i)
+            .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
+            // 3 2 7 5
+            .peek(i -> System.out.print(i + StringUtils.SPACE)).toList();
         p(StringUtils.CR);
 
         // filter()         过滤
         // sorted()         排序
         // limit()          限数
         Stream.of(9, 8, 7, 6, 5, 4, 3, 2, 1).limit(7)
-                .filter(n -> n % 2 == 0).sorted()
-                .forEach(n -> System.out.print(n + StringUtils.SPACE)); // 4 6 8
+            .filter(n -> n % 2 == 0).sorted()
+            .forEach(n -> System.out.print(n + StringUtils.SPACE)); // 4 6 8
         p(StringUtils.CR);
 
         // sequential()     串行
@@ -186,10 +186,11 @@ public class StreamDemo extends Demo {
     }
 
     private final List<Person> personList = List.of(
-            new Person("王五", 22, "男"),
-            new Person("李四", 21, "女"),
-            new Person("张三", 20, "男"),
-            new Person("张三", 23, "男"));
+        new Person("王五", 22, "男"),
+        new Person("李四", 21, "女"),
+        new Person("张三", 20, "男"),
+        new Person("张三", 23, "男")
+    );
 
     /** 对象集合按属性去重 */
     @Test

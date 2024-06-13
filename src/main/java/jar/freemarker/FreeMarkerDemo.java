@@ -32,13 +32,14 @@ public class FreeMarkerDemo {
     private void test(String fName, String outPath) {
         Employer emp = new Employer(1, "张三", 18);
         List<Employer> empList = List.of(
-                new Employer(1, "张三", 18),
-                new Employer(2, "李四", 20),
-                new Employer(3, "王五", 22));
+            new Employer(1, "张三", 18),
+            new Employer(2, "李四", 20),
+            new Employer(3, "王五", 22)
+        );
         Map<String, Object> params = Map.of(
-                "username", "小张",
-                "emp", emp,
-                "empList", empList
+            "username", "小张",
+            "emp", emp,
+            "empList", empList
         );
         util.sPrint(params, fName);
         util.fPrint(params, fName, "T:/" + outPath);

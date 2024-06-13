@@ -6,10 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.ObjectInputFilter;
 import java.io.ObjectInputStream;
-import java.io.Serial;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 import static l.demo.Demo.DEMO_DIR_PATH;
@@ -27,69 +25,60 @@ import static l.demo.Demo.DEMO_DIR_PATH;
  */
 public class ObjectInputFilterDemo {
 
-	/** @see jar.apache.commons.io.ValidatingObjectInputStreamDemo */
-	@Test
-	public void testCreateFilter() throws IOException, ClassNotFoundException {
-		ObjectInputFilter oif = ObjectInputFilter.Config.createFilter("java.lang.*;l.demo.Person;!*");
-		ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(DEMO_DIR_PATH + "person.obj")));
-		ois.setObjectInputFilter(oif);
-		Person person = (Person) ois.readObject();
-		System.err.println(person);
-	}
+    /** @see jar.apache.commons.io.ValidatingObjectInputStreamDemo */
+    @Test
+    public void testCreateFilter() throws IOException, ClassNotFoundException {
+        ObjectInputFilter oif = ObjectInputFilter.Config.createFilter("java.lang.*;l.demo.Person;!*");
+        ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(DEMO_DIR_PATH + "person.obj")));
+        ois.setObjectInputFilter(oif);
+        Person person = (Person) ois.readObject();
+        System.err.println(person);
+    }
 
-	@Test
-	public void testCustomerFilter() throws IOException, ClassNotFoundException {
-		ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(DEMO_DIR_PATH + "person.obj")));
-		ois.setObjectInputFilter(new MyObjectInputFilter());
-		Person person = (Person) ois.readObject();
-		System.err.println(person);
-	}
+    @Test
+    public void testCustomerFilter() throws IOException, ClassNotFoundException {
+        ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(DEMO_DIR_PATH + "person.obj")));
+        ois.setObjectInputFilter(new MyObjectInputFilter());
+        Person person = (Person) ois.readObject();
+        System.err.println(person);
+    }
 
-	static class MyObjectInputFilter implements ObjectInputFilter {
-		private final long maxDepth = 3;
-		private final long maxReferences = 10;
-		private final long maxStreamBytes = 300;
+    static class MyObjectInputFilter implements ObjectInputFilter {
+        private final long maxDepth = 3;
+        private final long maxReferences = 10;
+        private final long maxStreamBytes = 300;
 
-		/** 白名单 */
-		private final List<Class<?>> whiteList = new ArrayList<>() {
-			@Serial
-			private static final long serialVersionUID = -3042406361545838532L;
+        /** 白名单 */
+        private final List<Class<?>> whiteList = List.of(Person.class, Number.class, Integer.class);
 
-			{
-				add(Person.class);
-				add(Number.class);
-				add(Integer.class);
-			}
-		};
+        @Override
+        public Status checkInput(FilterInfo filterInfo) {
+            Class<?> clazz = filterInfo.serialClass();
 
-		@Override
-		public Status checkInput(FilterInfo filterInfo) {
-			Class<?> clazz = filterInfo.serialClass();
+            if (filterInfo.depth() < 0 ||
+                filterInfo.depth() > maxDepth ||
+                filterInfo.references() < 0 ||
+                filterInfo.references() > maxReferences ||
+                filterInfo.streamBytes() < 0 ||
+                filterInfo.streamBytes() > maxStreamBytes) {
+                return Status.REJECTED;
+            } else if (clazz != null && filterInfo.depth() <= maxDepth) {
+                System.err.println(clazz);
+                System.err.println(filterInfo.depth());
+                System.err.println(filterInfo.references());
+                System.err.println(filterInfo.streamBytes());
+                System.err.println();
+            }
 
-			if (filterInfo.depth() < 0 ||
-					filterInfo.depth() > maxDepth ||
-					filterInfo.references() < 0 ||
-					filterInfo.references() > maxReferences ||
-					filterInfo.streamBytes() < 0 ||
-					filterInfo.streamBytes() > maxStreamBytes) {
-				return Status.REJECTED;
-			} else if (clazz != null && filterInfo.depth() <= maxDepth) {
-				System.err.println(clazz);
-				System.err.println(filterInfo.depth());
-				System.err.println(filterInfo.references());
-				System.err.println(filterInfo.streamBytes());
-				System.err.println();
-			}
+            if (clazz != null) {
+                if (whiteList.contains(clazz)) {
+                    return Status.ALLOWED;
+                } else {
+                    return Status.REJECTED;
+                }
+            }
 
-			if (clazz != null) {
-				if (whiteList.contains(clazz)) {
-					return Status.ALLOWED;
-				} else {
-					return Status.REJECTED;
-				}
-			}
-
-			return Status.UNDECIDED;
-		}
-	}
+            return Status.UNDECIDED;
+        }
+    }
 }

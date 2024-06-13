@@ -5,6 +5,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import knowledge.design.pattern.other.behavioral.PipelineDemo;
+import lombok.Setter;
 import org.springframework.web.servlet.HandlerExecutionChain;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -65,9 +66,9 @@ public class ChainOfResponsibilityDemo {
         server.register("admin@example.com", "admin_pass");
         server.register("user@example.com", "user_pass");
         server.setMiddleware(new Middleware.Builder()
-                .setNext(new ThrottlingMiddleware(2))
-                .setNext(new UserExistsMiddleware(server))
-                .setNext(new RoleCheckMiddleware()).build());
+            .setNext(new ThrottlingMiddleware(2))
+            .setNext(new UserExistsMiddleware(server))
+            .setNext(new RoleCheckMiddleware()).build());
     }
 
     /**
@@ -199,11 +200,8 @@ public class ChainOfResponsibilityDemo {
 
     private static class Server {
         private final Map<String, String> users = new HashMap<>();
+        @Setter
         private Middleware middleware;
-
-        public void setMiddleware(Middleware middleware) {
-            this.middleware = middleware;
-        }
 
         public boolean logIn(String email, String password) {
             if (middleware.check(email, password)) {

@@ -46,7 +46,7 @@ public class SolutionTest {
     }
 
     public static boolean stoneGame(int[] piles) {
-        Map<String, Object> map = Map.of("x", 0, "y", 0, "arr", piles);
+        Map<String, Object> map = new HashMap<>(Map.of("x", 0, "y", 0, "arr", piles));
         return takeStone(map);
     }
 

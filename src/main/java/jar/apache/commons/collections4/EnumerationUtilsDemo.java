@@ -17,15 +17,7 @@ import static l.demo.Demo.p;
 public class EnumerationUtilsDemo {
 
     public static void main(String[] args) {
-        Vector<String> v = new Vector<>();
-        v.add("Sunday");
-        v.add("Monday");
-        v.add("Tuesday");
-        v.add("Wednesday");
-        v.add("Thursday");
-        v.add("Friday");
-        v.add("Saturday");
-
+        Vector<String> v = new Vector<>(List.of("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"));
         Enumeration<String> e = v.elements();
 
         // static <E> List<E>	toList(Enumeration<? extends E> enumeration)

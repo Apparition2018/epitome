@@ -42,18 +42,18 @@ public final class ZipUtils extends Demo {
 
     /** 压缩 */
     public void zip(String zipPath, String path, String... srcPaths) throws IOException {
-        ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(new File(zipPath).toPath()));
-        File[] srcFiles = new File[srcPaths.length];
-        IntStream.range(0, srcPaths.length).forEach(i -> srcFiles[i] = new File(srcPaths[i]));
-        zip(zos, path, srcFiles);
-        zos.close();
+        try (ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(new File(zipPath).toPath()))) {
+            File[] srcFiles = new File[srcPaths.length];
+            IntStream.range(0, srcPaths.length).forEach(i -> srcFiles[i] = new File(srcPaths[i]));
+            zip(zos, path, srcFiles);
+        }
     }
 
     /** 压缩 */
     public void zip(File zipFile, String path, File... srcFiles) throws IOException {
-        ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(zipFile.toPath()));
-        zip(zos, path, srcFiles);
-        zos.close();
+        try (ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(zipFile.toPath()))) {
+            zip(zos, path, srcFiles);
+        }
     }
 
     /**
@@ -71,7 +71,6 @@ public final class ZipUtils extends Demo {
         if (path.length() > 0 && !path.endsWith(StrUtil.SLASH)) {
             path += StrUtil.SLASH;
         }
-        byte[] buf = new byte[1024];
         for (File srcFile : srcFiles) {
             if (srcFile.isDirectory()) {
                 File[] files = srcFile.listFiles();
@@ -85,18 +84,13 @@ public final class ZipUtils extends Demo {
                 outStream.putNextEntry(new ZipEntry(path + srcPath));
                 zip(outStream, path + srcPath, files);
             } else {
-                FileInputStream fis = new FileInputStream(srcFile);
-                outStream.putNextEntry(new ZipEntry(path + srcFile.getName()));
-                int len;
-                while ((len = fis.read(buf)) > 0) {
-                    // void	    write(byte[] b, int off, int len)
-                    // 将字节数组写入当前 ZIP entry 数据
-                    outStream.write(buf, 0, len);
+                try (FileInputStream fis = new FileInputStream(srcFile)) {
+                    outStream.putNextEntry(new ZipEntry(path + srcFile.getName()));
+                    fis.transferTo(outStream);
+                    // void	            closeEntry()
+                    // 关闭当前  ZIP entry 并定位流以便写入下一个 entry
+                    outStream.closeEntry();
                 }
-                // void	            closeEntry()
-                // 关闭当前  ZIP entry 并定位流以便写入下一个 entry
-                outStream.closeEntry();
-                fis.close();
             }
         }
     }
@@ -131,32 +125,28 @@ public final class ZipUtils extends Demo {
             String zipEntryName = entry.getName();
             // InputStream	                getInputStream(ZipEntry entry)
             // 返回用于读取指定 zip 文件 entry 内容的输入流
-            InputStream is = zip.getInputStream(entry);
-            String outPath = zipEntryName.replaceAll("\\*", StrUtil.SLASH);
-            int index = outPath.lastIndexOf('/');
-            if (index != -1) {
-                File file = new File(destFile, outPath.substring(0, outPath.lastIndexOf('/')));
-                if (!file.exists()) {
-                    file.mkdirs();
+            try (InputStream is = zip.getInputStream(entry)) {
+                String outPath = zipEntryName.replaceAll("\\*", StrUtil.SLASH);
+                int index = outPath.lastIndexOf('/');
+                if (index != -1) {
+                    File file = new File(destFile, outPath.substring(0, outPath.lastIndexOf('/')));
+                    if (!file.exists()) {
+                        file.mkdirs();
+                    }
+                }
+                // 判断文件全路径是否为文件夹,如果是上面已经上传,不需要解压
+                File realFile = new File(destFile, outPath);
+                if (zipList != null) {
+                    zipList.add(outPath);
+                }
+                if (realFile.isDirectory()) {
+                    continue;
+                }
+
+                try (OutputStream os = Files.newOutputStream(realFile.toPath())) {
+                    is.transferTo(os);
                 }
             }
-            // 判断文件全路径是否为文件夹,如果是上面已经上传,不需要解压
-            File realFile = new File(destFile, outPath);
-            if (zipList != null) {
-                zipList.add(outPath);
-            }
-            if (realFile.isDirectory()) {
-                continue;
-            }
-
-            OutputStream os = Files.newOutputStream(realFile.toPath());
-            byte[] buf = new byte[1024];
-            int len;
-            while ((len = is.read(buf)) > 0) {
-                os.write(buf, 0, len);
-            }
-            is.close();
-            os.close();
         }
     }
 }

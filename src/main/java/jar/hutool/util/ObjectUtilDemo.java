@@ -71,7 +71,7 @@ public class ObjectUtilDemo extends Demo {
         p(ObjectUtil.hasEmpty(arr));            // true
 
         // default
-        p(ObjectUtil.defaultIfNull(null, (s) -> StringUtils.trim(String.valueOf(s)), "1")); // 1
+        p(ObjectUtil.defaultIfNull(null, (s) -> String.valueOf(s).trim(), "1")); // 1
         p(ObjectUtil.defaultIfNull(null, "1")); // 1
         p(ObjectUtil.defaultIfEmpty(null, "1"));// 1
         p(ObjectUtil.defaultIfBlank(null, "1"));// 1

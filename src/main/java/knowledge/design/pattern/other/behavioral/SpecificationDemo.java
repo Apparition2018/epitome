@@ -30,9 +30,10 @@ public class SpecificationDemo {
 
     public static void main(String[] args) {
         List<User> userList = List.of(
-                new User("Andy", 23),
-                new User("Jack", 82),
-                new User("King", 10));
+            new User("Andy", 23),
+            new User("Jack", 82),
+            new User("King", 10)
+        );
 
         UserProvider userProvider = new UserProvider(userList);
         UserByNameEqual nameEqualSpec = new UserByNameEqual("Andy");

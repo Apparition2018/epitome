@@ -28,18 +28,19 @@ public class ByteStream extends Demo {
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/InputStream.html">InputStream</a>
      * <p>字节输入流的所有类的超类
      * <pre>
-     * void             close()                 关闭此输入流并释放与该流关联的所有系统资源
-     * void             mark(int readlimit)     在此输入流中标记当前的位置
-     * void             reset()                 将此流重新定位到最后一次对此输入流调用 mark 方法时的位置
-     * boolean          markSupported()         测试此输入流是否支持 mark 和 reset 方法
-     * long             skip(long n)            跳过和丢弃此输入流中数据的 n 个字节
-     * int              available()             返回此输入流下一个方法调用可以不受阻塞地从此输入流读取（或跳过）的估计字节数
+     * void             close()                     关闭此输入流并释放与该流关联的所有系统资源
+     * void             mark(int readlimit)         在此输入流中标记当前的位置
+     * void             reset()                     将此流重新定位到最后一次对此输入流调用 mark 方法时的位置
+     * boolean          markSupported()             测试此输入流是否支持 mark 和 reset 方法
+     * long             skip(long n)                跳过和丢弃此输入流中数据的 n 个字节
+     * int              available()                 返回此输入流下一个方法调用可以不受阻塞地从此输入流读取（或跳过）的估计字节数
+     * long             transferTo(OutputStream out)从此输入流中读取所有字节，并按读取顺序将字节写入给定的输出流，JDK9 引入
      * </pre>
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/io/FileInputStream.html">FileInputStream</a>   文件输入流
      * <p>从文件系统中的某个文件中获得输入字节。哪些文件可用取决于主机环境。
      * <pre>
-     * FileChannel      getChannel()            返回与此文件输入流有关的唯一 FileChannel 对象
-     * FileDescriptor   getFD()                 返回表示到文件系统中实际文件的连接的 FileDescriptor 对象，该文件系统正被此 FileInputStream 使用<p>
+     * FileChannel      getChannel()                返回与此文件输入流有关的唯一 FileChannel 对象
+     * FileDescriptor   getFD()                     返回表示到文件系统中实际文件的连接的 FileDescriptor 对象，该文件系统正被此 FileInputStream 使用<p>
      * </pre>
      * 乱码解决方法：使用转换流 InputStreamReader
      * <p>

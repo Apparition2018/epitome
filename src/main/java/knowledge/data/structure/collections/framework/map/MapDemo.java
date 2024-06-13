@@ -76,9 +76,7 @@ import java.util.*;
  */
 public class MapDemo extends Demo {
 
-    /**
-     * 返回一个不可修改的 Map，JDK9 引入
-     */
+    /** 返回一个不可修改的 Map，JDK9 引入 */
     @Test
     public void testOf() {
         // Map<K, V>    of(K k1, V v1, ...)
@@ -86,9 +84,9 @@ public class MapDemo extends Demo {
         // 返回一个不可修改的 Map，JDK9 引入
         Map<Integer, String> map = Map.of(1, "A", 2, "B", 3, "C");
         map = Map.ofEntries(
-                new AbstractMap.SimpleEntry<>(1, "A"),
-                new AbstractMap.SimpleEntry<>(2, "B"),
-                new AbstractMap.SimpleEntry<>(3, "C")
+            new AbstractMap.SimpleEntry<>(1, "A"),
+            new AbstractMap.SimpleEntry<>(2, "B"),
+            new AbstractMap.SimpleEntry<>(3, "C")
         );
 
         // Map<K, V>    copyOf(Map<? extends K, ? extends V> map)
@@ -138,14 +136,15 @@ public class MapDemo extends Demo {
             private String subject;
             private int score;
         }
-        List<Student> studentList = new ArrayList<>();
-        studentList.add(new Student().setId(1).setSubject("chinese").setScore(99));
-        studentList.add(new Student().setId(1).setSubject("math").setScore(100));
-        studentList.add(new Student().setId(1).setSubject("english").setScore(98));
-        studentList.add(new Student().setId(2).setSubject("chinese").setScore(85));
-        studentList.add(new Student().setId(2).setSubject("math").setScore(60));
-        studentList.add(new Student().setId(2).setSubject("english").setScore(100));
 
+        List<Student> studentList = List.of(
+            new Student().setId(1).setSubject("chinese").setScore(99),
+            new Student().setId(1).setSubject("math").setScore(100),
+            new Student().setId(1).setSubject("english").setScore(98),
+            new Student().setId(2).setSubject("chinese").setScore(85),
+            new Student().setId(2).setSubject("math").setScore(60),
+            new Student().setId(2).setSubject("english").setScore(100)
+        );
         Map<Integer, Integer> studentMap = new HashMap<>();
         studentList.forEach(student -> studentMap.merge(student.getId(), student.getScore(), Integer::sum));
         System.out.println(studentMap); // {1=297, 2=245}

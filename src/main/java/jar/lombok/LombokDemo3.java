@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -39,7 +38,7 @@ public class LombokDemo3 extends Demo {
         var y = 8;
         p(x + y);
 
-        var list = new ArrayList<>(List.of(1, 2, 3, 4));
+        var list = List.of(1, 2, 3, 4);
         p(list);
     }
 

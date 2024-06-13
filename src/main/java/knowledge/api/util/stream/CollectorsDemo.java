@@ -31,8 +31,8 @@ public class CollectorsDemo extends Demo {
         // 1.在使用 Collectors 类的 toMap() 方法转为 Map 集合时，一定要使用参数类型为 BinaryOperator，参数名为 mergeFunction 的方法，否则当出现相同 key 时会抛出 IllegalStateException 异常
         personList.add(new Person(3, "赵六"));
         Map<Integer, Object> personMap = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity(),
-                (duplicate1, duplicate2) -> duplicate2, // 合并函数，解决相同 key 冲突问题
-                TreeMap::new)                           // 自定义返回 Map 类型
+            (duplicate1, duplicate2) -> duplicate2, // 合并函数，解决相同 key 冲突问题
+            TreeMap::new)                           // 自定义返回 Map 类型
         );
         p(personMap);   // {1=Person{id=1, name='张三'}, 2=Person{id=2, name='李四'}, 3=Person{id=3, name='赵六'}}
         // personMap = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity())); // Duplicate key Person{id=3, name='王五'}
@@ -98,10 +98,11 @@ public class CollectorsDemo extends Demo {
     @Test
     public void testReducing() {
         List<Person> personList = List.of(
-                new Person("张三", 20, "男"),
-                new Person("李四", 21, "女"),
-                new Person("王五", 22, "男"),
-                new Person("赵六", 23, "女"));
+            new Person("张三", 20, "男"),
+            new Person("李四", 21, "女"),
+            new Person("王五", 22, "男"),
+            new Person("赵六", 23, "女")
+        );
 
         Person identity = new Person();
         identity.setName("identity");
@@ -118,7 +119,7 @@ public class CollectorsDemo extends Demo {
         Comparator<Person> compareAge = Comparator.comparing(Person::getAge);
 
         Map<String, Person> collect = personList.stream().collect(Collectors.groupingBy(Person::getGender,
-                Collectors.reducing(identity, round, BinaryOperator.maxBy(compareAge))));
+            Collectors.reducing(identity, round, BinaryOperator.maxBy(compareAge))));
         p(collect); // {女=Person{name='赵六', age=23, gender='女'}, 男=Person{name='identity', age=22}}
     }
 }

@@ -84,11 +84,8 @@ public class Generic<T> {
      */
     @Test
     public void wildcard() {
-        List<String> name = new ArrayList<>();
-        List<Integer> age = new ArrayList<>();
-
-        name.add("icon");
-        age.add(18);
+        List<String> name = List.of("icon");
+        List<Integer> age = List.of(18);
 
         getData(name);
         getData(age);

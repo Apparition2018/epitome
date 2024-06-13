@@ -2,6 +2,7 @@ package jar.apache.commons.collections4;
 
 import org.apache.commons.collections4.MapUtils;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static l.demo.Demo.p;
@@ -35,7 +36,7 @@ import static l.demo.Demo.p;
  */
 public class MapUtilsDemo {
 
-    private static final Map<Integer, Object> map = Map.of(1, "A", 2, "B", 3, "C");
+    private static final Map<Integer, Object> map = new HashMap<>(Map.of(1, "A", 2, "B", 3, "C"));
 
     /**
      * static <K> XXX	getXXX(Map<? super K,?> map, K key[, Boolean defaultValue])

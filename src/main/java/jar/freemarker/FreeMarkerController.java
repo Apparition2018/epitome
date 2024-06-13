@@ -29,8 +29,7 @@ public class FreeMarkerController {
 
     @RequestMapping("helloTestFtl")
     public String helloTestFtl(Model model) {
-        List<Employer> emps = List.of(new Employer(1, "小李", 22), new Employer(2, "八戒", 444),
-                new Employer(3, "刘德华", 54));
+        List<Employer> emps = List.of(new Employer(1, "小李", 22), new Employer(2, "八戒", 444), new Employer(3, "刘德华", 54));
         model.addAttribute("emps", emps);
         return "helloTestFtl";
     }

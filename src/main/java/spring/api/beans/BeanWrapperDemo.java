@@ -5,7 +5,6 @@ import l.demo.Person;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.PropertyValue;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -29,8 +28,7 @@ public class BeanWrapperDemo extends Demo {
         beanWrapper.setPropertyValue("name", "B");
         p(person);          // Person{id=1, name='B'}
 
-        Map<String, String> map = new HashMap<>();
-        map.put("name", "C");
+        Map<String, String> map = Map.of("name", "C");
         beanWrapper.setPropertyValues(map);
         p(person);          // Person{id=1, name='C'}
 

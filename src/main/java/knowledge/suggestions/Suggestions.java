@@ -229,8 +229,8 @@ public class Suggestions extends Demo {
         BigDecimal r = new BigDecimal(String.valueOf(0.001875));
         // 计算利息
         BigDecimal i = d.multiply(r).setScale(2,
-                // 银行家舍入法：四舍六入五考虑
-                RoundingMode.HALF_EVEN);
+            // 银行家舍入法：四舍六入五考虑
+            RoundingMode.HALF_EVEN);
         p("月利息是：" + i);
     }
 
@@ -517,15 +517,16 @@ public class Suggestions extends Demo {
      */
     @Test
     public void test073() {
-        List<Employee> list = new ArrayList<>(5);
-        // 一个老板
-        list.add(new Employee().setId(1001).setName("张三").setPosition(Position.BOSS));
-        // 两个经理
-        list.add(new Employee().setId(1006).setName("赵七").setPosition(Position.MANAGER));
-        list.add(new Employee().setId(1003).setName("王五").setPosition(Position.MANAGER));
-        // 两个职员
-        list.add(new Employee().setId(1002).setName("李四").setPosition(Position.STAFF));
-        list.add(new Employee().setId(1005).setName("马六").setPosition(Position.STAFF));
+        List<Employee> list = new ArrayList<>(List.of(
+            // 一个老板
+            new Employee().setId(1001).setName("张三").setPosition(Position.BOSS),
+            // 两个经理
+            new Employee().setId(1006).setName("赵七").setPosition(Position.MANAGER),
+            new Employee().setId(1003).setName("王五").setPosition(Position.MANAGER),
+            // 两个职员
+            new Employee().setId(1002).setName("李四").setPosition(Position.STAFF),
+            new Employee().setId(1005).setName("马六").setPosition(Position.STAFF)
+        ));
 
         p("----- Comparable -----");
         Collections.sort(list);

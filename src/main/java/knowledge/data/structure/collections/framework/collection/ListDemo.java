@@ -66,7 +66,7 @@ public class ListDemo extends Demo {
     public void testList() {
         // List<E>      of(E e1...)
         // 返回一个不可修改的 List，JDK9 引入
-        list = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9));
+        list = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
         // List<E>      copyOf(Collection<? extends E> coll)
         // 返回一个不可修改的 List，JDK10 引入
@@ -91,6 +91,7 @@ public class ListDemo extends Demo {
         List<Integer> subList = list.subList(2, 7);
         p(subList);     // [3, 4, 5, 6, 7]
 
+        list = new ArrayList<>(list);
         // boolean      addAll([int index, ]Collection<? extends E> c)
         // 将指定 collection 中的所有元素都插入到列表中的指定位置（可选操作）
         // 在使用 Collection 接口任何实现类的 addAll() 方法时，都要对输入的集合参数进行 NPE 判断（阿里编程规约）
@@ -109,12 +110,7 @@ public class ListDemo extends Demo {
     @Test
     public void testEquals() {
         List<String> list = List.of("a", "b", "c");
-
-        Vector<String> vector = new Vector<>();
-        vector.add("a");
-        vector.add("b");
-        vector.add("c");
-
+        Vector<String> vector = new Vector<>(List.of("a", "b", "c"));
         p(Objects.equals(list, vector)); // true
     }
 

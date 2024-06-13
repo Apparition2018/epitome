@@ -32,7 +32,7 @@ public class IoStreamDemo extends Demo {
     public void copyByBufferedStream() {
         try (InputStream is = new BufferedInputStream(Files.newInputStream(Paths.get(DEMO_FILE_PATH)));
              OutputStream os = new BufferedOutputStream(Files.newOutputStream(Paths.get(DEMO_DIR_PATH + "demo_copy")))) {
-            this.readIsThenWriteOs(is, os);
+            is.transferTo(os);
         } catch (IOException e) {
             p("copy failed!");
             throw new RuntimeException(e);
@@ -44,23 +44,14 @@ public class IoStreamDemo extends Demo {
     @Test
     public void repeatableUse() {
         try (FileInputStream is = new FileInputStream(DEMO_FILE_PATH)) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            is.transferTo(baos);
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			this.readIsThenWriteOs(is, baos);
-			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-
-			p(bais.available());
+            p(bais.available());
             p(bais.available());
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    private void readIsThenWriteOs(InputStream is, OutputStream os) throws IOException {
-        byte[] buffer = new byte[1024];
-        int len;
-        while ((len = is.read(buffer)) != -1) {
-            os.write(buffer, 0, len);
         }
     }
 }

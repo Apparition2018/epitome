@@ -51,35 +51,23 @@ public final class BZip2Utils {
 
     /** 文件压缩 */
     private static void compress(File file, boolean delete) throws Exception {
-        FileInputStream fis = new FileInputStream(file);
-        FileOutputStream fos = new FileOutputStream(file.getPath() + EXT);
-
-        compress(fis, fos);
-
-        fis.close();
-        fos.flush();
-        fos.close();
-
-        if (delete) {
-            boolean b = file.delete();
+        try (FileInputStream fis = new FileInputStream(file);
+             FileOutputStream fos = new FileOutputStream(file.getPath() + EXT)) {
+            compress(fis, fos);
+            fos.flush();
+            if (delete) {
+                boolean b = file.delete();
+            }
         }
     }
 
     /** 数据压缩 */
     private static void compress(InputStream is, OutputStream os) throws Exception {
-
-        BZip2CompressorOutputStream cos = new BZip2CompressorOutputStream(os);
-
-        int count;
-        byte[] data = new byte[BUFFER];
-        while ((count = is.read(data, 0, BUFFER)) != -1) {
-            cos.write(data, 0, count);
+        try (BZip2CompressorOutputStream cos = new BZip2CompressorOutputStream(os)) {
+            is.transferTo(cos);
+            cos.finish();
+            cos.flush();
         }
-
-        cos.finish();
-
-        cos.flush();
-        cos.close();
     }
 
     /** 文件压缩 */
@@ -111,28 +99,21 @@ public final class BZip2Utils {
 
     /** 文件解压缩 */
     private static void decompress(File file, boolean delete) throws Exception {
-        FileInputStream fis = new FileInputStream(file);
-        FileOutputStream fos = new FileOutputStream(file.getPath().replace(EXT, StringUtils.EMPTY));
-        decompress(fis, fos);
-        fis.close();
-        fos.flush();
-        fos.close();
-
-        if (delete) {
-            boolean b = file.delete();
+        try (FileInputStream fis = new FileInputStream(file);
+             FileOutputStream fos = new FileOutputStream(file.getPath().replace(EXT, StringUtils.EMPTY))) {
+            decompress(fis, fos);
+            fos.flush();
+            if (delete) {
+                boolean b = file.delete();
+            }
         }
     }
 
     /** 数据解压缩 */
     private static void decompress(InputStream is, OutputStream os) throws Exception {
-        BZip2CompressorInputStream cis = new BZip2CompressorInputStream(is);
-
-        int count;
-        byte[] data = new byte[BUFFER];
-        while ((count = cis.read(data, 0, BUFFER)) != -1) {
-            os.write(data, 0, count);
+        try (BZip2CompressorInputStream cis = new BZip2CompressorInputStream(is)) {
+            cis.transferTo(os);
         }
-        cis.close();
     }
 
     /** 文件解压缩 */

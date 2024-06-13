@@ -14,7 +14,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
@@ -99,8 +98,7 @@ public class HMacDemo extends Demo {
         try {
             byte[] inputData = inputStr.getBytes();
             String key = initMacKey(); // 生成密钥
-            List<String> keyList = new ArrayList<>();
-            keyList.add(key);
+            List<String> keyList = List.of(key);
             Files.write(keyFilePath, keyList, StandardOpenOption.CREATE); // 将密钥写入文件
             result = encryptHMAC(inputData, key); // HMAC 加密
         } catch (NoSuchAlgorithmException | IOException | InvalidKeyException e) {

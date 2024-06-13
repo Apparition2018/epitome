@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.net.HttpCookie;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -37,20 +36,15 @@ import java.util.Map;
  */
 public class HttpUtilDemo extends Demo {
 
-    /**
-     * 上传
-     */
+    /** 上传 */
     @Test
     public void testUpload() {
-        Map<String, Object> paramMap = new HashMap<>();
         // 文件上传只需将参数中的键指定为 file
-        paramMap.put("file", new File(DEMO_FILE_PATH));
+        Map<String, Object> paramMap = Map.of("file", new File(DEMO_FILE_PATH));
         p(HttpUtil.post(BAIDU_URL, paramMap));
     }
 
-    /**
-     * 下载
-     */
+    /** 下载 */
     @Test
     public void testDownload() {
         // 如果想更加灵活的将 HTTP 内容转换写出，

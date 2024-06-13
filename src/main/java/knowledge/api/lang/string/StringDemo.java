@@ -182,6 +182,7 @@ public class StringDemo extends Demo {
     public void jdk11() {
         p(StringUtils.EMPTY.isBlank());
         // 去除头尾空格
+        // strip() 可以去除全角空格，trim() 不可以
         p(" aaa ".strip());
         // 去除头部空格
         p(" aaa".stripLeading());

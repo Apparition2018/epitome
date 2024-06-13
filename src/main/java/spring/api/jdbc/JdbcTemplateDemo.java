@@ -8,7 +8,6 @@ import spring.model.Score;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static l.demo.Demo.pe;
@@ -62,9 +61,10 @@ public class JdbcTemplateDemo {
 
     @Test
     public void testBatchUpdate() {
-        List<Score> scoreList = new ArrayList<>();
-        scoreList.add(new Score().setId(1).setScore(82));
-        scoreList.add(new Score().setId(2).setScore(99));
+        List<Score> scoreList = List.of(
+            new Score().setId(1).setScore(82),
+            new Score().setId(2).setScore(99)
+        );
         scoreDao.batchUpdate(scoreList);
     }
 

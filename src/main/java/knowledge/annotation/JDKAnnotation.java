@@ -54,8 +54,7 @@ public class JDKAnnotation {
      */
     @SuppressWarnings(value = {"unchecked", "rawtypes"})
     public void rawTypesAndUnchecked(String item) {
-        List<Object> items = new ArrayList();
-        items.add(item);
+        List<Object> items = List.of(item);
         p(items.size());
     }
 

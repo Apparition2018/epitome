@@ -8,7 +8,6 @@ import org.springframework.util.StopWatch;
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.PrintStream;
-import java.io.Serial;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.Callable;
@@ -28,45 +27,20 @@ public class Demo {
     public static Integer[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     public static List<Integer> list = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9));
     public static List<Integer> descList = List.of(9, 8, 7, 6, 5, 4, 3, 2, 1);
-    public static List<Integer> repeatList = new ArrayList<>(List.of(1, 1, 2, 2, 3, 3, 4, 5));
-    public static List<Integer> subList = new ArrayList<>(list.subList(1, 6));
+    public static List<Integer> repeatList = List.of(1, 1, 2, 2, 3, 3, 4, 5);
+    public static List<Integer> subList = list.subList(1, 6);
     public static List<Integer> subList2 = list.subList(3, 8);
-    public static List<Person> personList = new ArrayList<>() {
-        @Serial
-        private static final long serialVersionUID = 17362850008309337L;
-
-        {
-            add(new Person(1, "张三"));
-            add(new Person(2, "李四"));
-            add(new Person(3, "王五"));
-        }
-    };
-    public static Map<Integer, String> map = new HashMap<>() {
-        @Serial
-        private static final long serialVersionUID = -6695635216046532571L;
-
-        {
-            put(1, "A");
-            put(2, "B");
-            put(3, "C");
-        }
-    };
-    public static Map<Integer, String> map2 = new HashMap<>() {
-        @Serial
-        private static final long serialVersionUID = -2963536074355318510L;
-
-        {
-            put(1, "A");
-            put(2, "B");
-            put(3, "C");
-            put(4, "D");
-            put(5, "E");
-            put(6, "F");
-            put(7, "G");
-            put(8, "H");
-            put(9, "I");
-        }
-    };
+    public static List<Person> personList = new ArrayList<>(List.of(
+        new Person(1, "张三"),
+        new Person(2, "李四"),
+        new Person(3, "王五")
+    ));
+    public static Map<Integer, String> map = new HashMap<>(Map.of(1, "A", 2, "B", 3, "C"));
+    public static Map<Integer, String> map2 = Map.of(
+        1, "A", 2, "B", 3, "C",
+        4, "D", 5, "E", 6, "F",
+        7, "G", 8, "H", 9, "I"
+    );
     public static StopWatch stopWatch = new StopWatch("demo");
     public static JsonMapper jsonMapper = JsonMapper.builder().build();
     public static CountDownLatch countDownLatch;
@@ -241,8 +215,7 @@ public class Demo {
             Thread t = Thread.currentThread();
             p(String.format("%s：任务 %s 正在运行 ...", t.getName(), taskId));
             TimeUnit.MILLISECONDS.sleep(300);
-            Map<Integer, String> map = new HashMap<>();
-            map.put(taskId, Thread.currentThread().getName());
+            Map<Integer, String> map = Map.of(taskId, Thread.currentThread().getName());
             if (null != countDownLatch) {
                 countDownLatch.countDown();
             }

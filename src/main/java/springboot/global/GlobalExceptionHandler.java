@@ -133,10 +133,10 @@ public class GlobalExceptionHandler {
         Locale locale = LocaleContextHolder.getLocale();
         Map<String, Object> map = new HashMap<>();
         fieldErrors.forEach(fieldError -> {
-                    String field = fieldError.getField();
-                    String errorMessage = messageSource.getMessage(fieldError, locale);
-                    map.put(field, errorMessage);
-                }
+                String field = fieldError.getField();
+                String errorMessage = messageSource.getMessage(fieldError, locale);
+                map.put(field, errorMessage);
+            }
         );
         return Result.failure(ResultCode.PARAM_BIND_ERROR, map);
     }

@@ -5,7 +5,6 @@ import l.demo.Demo;
 import lombok.Getter;
 import redis.clients.jedis.Jedis;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -34,11 +33,12 @@ public class RedisSortedSet extends Demo {
 
         public static void main(String[] args) {
             Jedis jedis = JedisUtils.getResource();
-            Map<String, Double> bookMap = new HashMap<>();
-            bookMap.put(BookEnum.SG.getName(), 0D);
-            bookMap.put(BookEnum.XY.getName(), 0D);
-            bookMap.put(BookEnum.HL.getName(), 0D);
-            bookMap.put(BookEnum.SH.getName(), 0D);
+            Map<String, Double> bookMap = Map.of(
+                BookEnum.SG.getName(), 0D,
+                BookEnum.XY.getName(), 0D,
+                BookEnum.HL.getName(), 0D,
+                BookEnum.SH.getName(), 0D
+            );
             jedis.zadd(HOT_BOOKS_20210501, bookMap);
             jedis.zadd(HOT_BOOKS_20210502, bookMap);
             jedis.zadd(HOT_BOOKS_20210503, bookMap);

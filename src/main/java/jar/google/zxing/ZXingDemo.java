@@ -12,11 +12,10 @@ import org.junit.jupiter.api.Test;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.io.Serial;
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * zxing
@@ -70,30 +69,26 @@ public class ZXingDemo extends Demo {
     private void createCode(BarcodeFormat barcodeFormat, String filePath) {
         int width = 0;
         int height = 0;
-        HashMap<EncodeHintType, Serializable> hints = null;
+        Map<EncodeHintType, Serializable> hints = null;
         switch (barcodeFormat) {
             // 二维码 (QR Code)
             case QR_CODE:
                 width = 300;
                 height = 300;
-                hints = new HashMap<>() {
-                    @Serial
-                    private static final long serialVersionUID = 1955194072729986747L;
-
-                    {
-                        put(EncodeHintType.CHARACTER_SET, StandardCharsets.UTF_8.name());
-                        put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M); // 纠错等级
-                        put(EncodeHintType.MARGIN, 2);
-                    }
-                };
+                hints = Map.of(
+                    EncodeHintType.CHARACTER_SET, StandardCharsets.UTF_8.name(),
+                    // 纠错等级
+                    EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M,
+                    EncodeHintType.MARGIN, 2
+                );
                 break;
             // 条形码 (EAN-13)
             case EAN_13:
-                width = 3 +         // start guard
-                        (7 * 6) +   // left bars
-                        5 +         // middle guard     
-                        (7 * 6) +   // right bars
-                        3;          // end guard
+                width = 3 +     // start guard
+                    (7 * 6) +   // left bars
+                    5 +         // middle guard
+                    (7 * 6) +   // right bars
+                    3;          // end guard
                 height = 30;
                 break;
             default:
@@ -109,18 +104,11 @@ public class ZXingDemo extends Demo {
     }
 
     private Result readCode(BarcodeFormat barcodeFormat, String filePath) {
-        HashMap<DecodeHintType, Charset> hints = null;
+        Map<DecodeHintType, Charset> hints = null;
         switch (barcodeFormat) {
             // 二维码 (QR Code)
             case QR_CODE:
-                hints = new HashMap<>() {
-                    @Serial
-                    private static final long serialVersionUID = 1025915748647624149L;
-
-                    {
-                        put(DecodeHintType.CHARACTER_SET, StandardCharsets.UTF_8);
-                    }
-                };
+                hints = Map.of(DecodeHintType.CHARACTER_SET, StandardCharsets.UTF_8);
                 break;
             // 条形码 (EAN-13)
             case EAN_13:
@@ -130,8 +118,14 @@ public class ZXingDemo extends Demo {
         }
 
         try {
-            BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(
-                    new BufferedImageLuminanceSource(ImageIO.read(new File(filePath)))));
+            BinaryBitmap binaryBitmap =
+                new BinaryBitmap(
+                    new HybridBinarizer(
+                        new BufferedImageLuminanceSource(
+                            ImageIO.read(new File(filePath))
+                        )
+                    )
+                );
 
             return new MultiFormatReader().decode(binaryBitmap, hints);
         } catch (NotFoundException | IOException e) {

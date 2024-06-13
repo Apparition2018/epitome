@@ -73,7 +73,7 @@ public class ListUtilsDemo extends Demo {
 
         // predicatedList()     追加限制
         List<Integer> predicatedList = ListUtils.predicatedList(ObjectUtils.clone(list), i -> i <= 9);
-        predicatedList.add(10);// IllegalArgumentException: Cannot add Object '11' - Predicate '...ListUtilsDemo$$Lambda$3/33553623@1341870' rejected it
+        predicatedList.add(10);// IllegalArgumentException: Cannot add Object '10' - Predicate '...ListUtilsDemo$$Lambda$3/33553623@1341870' rejected it
     }
 
     @Test

@@ -4,6 +4,8 @@ import org.apache.commons.collections4.IterableMap;
 import org.apache.commons.collections4.MapIterator;
 import org.apache.commons.collections4.map.HashedMap;
 
+import java.util.Map;
+
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/MapIterator.html">MapIterator</a>
  *

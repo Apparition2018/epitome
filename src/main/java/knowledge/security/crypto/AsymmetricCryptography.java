@@ -12,7 +12,6 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -95,10 +94,7 @@ public class AsymmetricCryptography {
         // 返回对此密钥对的私钥组件的引用
         RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
 
-        Map<String, Object> keyMap = new HashMap<>();
-        keyMap.put(PUBLIC_KEY, publicKey);
-        keyMap.put(PRIVATE_KEY, privateKey);
-        return keyMap;
+        return Map.of(PUBLIC_KEY, publicKey, PRIVATE_KEY, privateKey);
     }
 
     /**
