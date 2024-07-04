@@ -10,18 +10,18 @@
 2. .npmrc
     1. `npm config set cache "D:\nodejs\node_cache"`
     2. `npm config set prefix "D:\nodejs\node_global"`，并添加到系统环境变量 Path
-    3. `npm config set registry https://registry.npm.taobao.org`
+    3. `npm config set registry https://registry.npmmirror.com`
 3. `npm install -g yarn`
 4. `npm install -g cnpm`
 5. `npm install -g pnpm`
 6. .yarnrc
     1. `yarn config set cache-folder "D:\nodejs\yarn_cache"`
     2. `yarn config set global-folder "D:\nodejs\yarn_global"`
-    3. `yarn config set registry https://registry.npm.taobao.org`
+    3. `yarn config set registry https://registry.npmmirror.com`
 7. .cnpmrc
     1. `cnpm config set cache "D:\nodejs\node_cache"`
     2. `cnpm config set prefix "D:\nodejs\node_global"`
-    3. `cnpm config set registry https://registry.npm.taobao.org`
+    3. `cnpm config set registry https://registry.npmmirror.com`
 ---
 ## [npm](https://docs.npmjs.com/)
 ### [npm CLI Commands](https://docs.npmjs.com/cli/v8/commands)

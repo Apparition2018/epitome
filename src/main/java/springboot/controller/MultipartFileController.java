@@ -132,8 +132,9 @@ public class MultipartFileController {
                 for (EmbeddedData embeddedData : extractor.extractAll(workbook.getSheetAt(0))) {
                     Shape shape = embeddedData.getShape();
                     XSSFClientAnchor anchor = (XSSFClientAnchor) shape.getAnchor();
+                    String filename = new String(embeddedData.getFilename().getBytes(StandardCharsets.ISO_8859_1), Charset.forName("GBK"));
                     // 文件名：行-列
-                    System.err.println(embeddedData.getFilename() + "：" + anchor.getRow2() + "-" + anchor.getCol2());
+                    System.err.println(filename + "：" + anchor.getRow2() + "-" + anchor.getCol2());
                     byte[] bytes = embeddedData.getEmbeddedData();
                     // 判断是否为 ZIP（ZIP 文件的魔数是 0x50 0x4B 0x03 0x04）
                     if (bytes != null && bytes.length >= 4 && bytes[0] == 0x50 && bytes[1] == 0x4B && bytes[2] == 0x03 && bytes[3] == 0x04) {
@@ -142,10 +143,20 @@ public class MultipartFileController {
                              ZipInputStream zis = new ZipInputStream(bais, Charset.forName("GBK"))) {
                             ZipEntry zipEntry;
                             while ((zipEntry = zis.getNextEntry()) != null) {
-                                try (FileOutputStream fos = new FileOutputStream(DESKTOP + zipEntry.getName())) {
-                                    zis.transferTo(fos);
-                                } finally {
-                                    zis.closeEntry();
+                                // 包含文件夹路径的文件名
+                                String fileName = zipEntry.getName();
+                                boolean isFile = !fileName.endsWith("/");
+                                if (isFile) {
+                                    int separatorIndex = fileName.lastIndexOf('/');
+                                    if (separatorIndex != -1) {
+                                        // 不包含文件路径的文件名
+                                        fileName = fileName.substring(separatorIndex + 1);
+                                    }
+                                    try (FileOutputStream fos = new FileOutputStream(DESKTOP + fileName)) {
+                                        zis.transferTo(fos);
+                                    } finally {
+                                        zis.closeEntry();
+                                    }
                                 }
                             }
                         }
