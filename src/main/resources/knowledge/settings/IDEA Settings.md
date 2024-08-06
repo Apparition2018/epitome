@@ -3,7 +3,7 @@
 - -n: New
 - -e: Every Time
 ---
-## 修改 .IntelliJIdea 位置
+### 修改 .IntelliJIdea 位置
     1. %IDEA_HOME%\bin\idea.properties
         idea.config.path=D:/JetBrains/.IntelliJIdea/config
         idea.system.path=D:/JetBrains/.IntelliJIdea/system
@@ -12,18 +12,19 @@
     2. 退出 IDEA 并删除原 IntelliJIdea 位置
         2.1 删除 C:\Users\Administrator\AppData\Local\JetBrains\IntelliJIdea
         2.2 删除 C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea
----
-## 自定义 VM Options
+### 自定义 VM Options
     1. D:\JetBrains\jetbra\vmoptions\idea.vmoptions
         -Xms1024m
         -Xmx2048m
         -Dfile.encoding=UTF-8
         -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel
 ---
-## Manage IDE Settings (-j)
+## File
+### Manage IDE Settings (-j)
     1. Settings Sync → Enable Settings Sync…
 ---
-## Build Tools (-n)
+## Settings → Build, Execution, Deployment
+### Build Tools (-n)
     1. Settings → Build, Execution, Deployment → Build Tools
     2. Maven
         2.1 User settings file: D:\dev\.maven\settings.xml
@@ -31,8 +32,31 @@
         3.1 Gradle user home: D:\dev\.gradle
         3.2 Build and run using: IntelliJ IDEA
         3.3 Run tests using: IntelliJ IDEA
+### Compiler (-n)
+    1. Settings → Build, Execution, Deployment → Compiler
+        1.1 Build project automatically 勾选
+        1.2 Shared build process VM options:
+            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar
+        1.3 Java Compiler → Use compiler: Eclipse
+        1.4 Annotation Processors → Enable annotation processing 勾选
+    2. Settings → Advanced Settings → Compiler
+        2.1 Allow auto-make to start even if developed application is currently running 勾选
+### Deployment (-jn)
+    1. Settings → Build, Execution, Deployment → Deployment
+        1.1 + → SFTP → New server name：43.1356.102.115 → SSH configuration
+            Host: 43.136.102.115
+            Username: root
+            Authentication type: Password
+            password: Cesc123!
+        1.2 Root path: /
+        1.3 Advanced → Encoding for client-server communication: UTF-8
+        1.4 Mappings
+            Local path: D:\Liang\git\epitome\OpenCloudOS8.6
+            Deployment path: /home/lighthouse/sync_dir
+    2. Tools → Deployment → Sync With Local…
 ---
-## Virtual Space & On Save (-j)
+## Settings → Editor
+### Virtual Space & On Save (-j)
     1. Settings → Editor → General
     2. Virtual Space
         2.1 Allow caret placement: After the end of line 取消勾选
@@ -40,25 +64,20 @@
         3.1 Remove trailing spaces on: Modified Lines 勾选
         3.2 Keep trailing spaces on caret line 勾选
         3.3 Ensure every saved files ends with a line break 勾选
----
-## Auto Import
+### Auto Import
     1. Settings → Editor → General → Auto Import → Java
     2. Add unambiguous imports on the fly 勾选
     3. Optimize imports on the fly 勾选
----
-## Code Folding (-j)
+### Code Folding (-j)
     1. Settings → Editor → General → Code Folding
     2. Fold by default: → General → Imports 取消勾选
----
-## Editor Tabs (-j)
+### Editor Tabs (-j)
     1. Settings → Editor → General → Editor Tabs
     2. Show tabs in: one row, and if tabs don't fit: Squeeze tabs
----
-## Font (-j)
+### Font (-j)
     1. Settings → Editor → Font
     2. Typography Settings → Fallback font: Microsoft YaHei
----
-## Code Style (-jn)
+### Code Style (-jn)
     # https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml
     1. Settings → Editor → Code Style
     2. Java → JavaDoc
@@ -76,15 +95,13 @@
         6.1 Set from… → JavaScript
         6.2 Wrap text 取消勾选
     7. Markdown → Blank Lines → 全部设为0
----
-## Inspections (-n)
+### Inspections (-n)
     1. Settings → Editor → Inspections
     2. 搜索 serialVersionUID
         2.1 'serialVersionUID' field not declared 'private static final long' 勾选
         2.2 Serializable class without 'serialVersionUID' 勾选
     3. Java → Naming conventions → Class → class naming convention 取消勾选
----
-## File and Code Templates (-n)
+### File and Code Templates (-n)
     1. Settings → Editor → File and Code Templates
     2. Files
     3. Class | Interface | Enum | Record | AnnotationType
@@ -94,14 +111,12 @@
          * @author ${USER}
          * @since ${DATE} ${TIME}
          */
----
-## File Encodings (-jn)
+### File Encodings (-jn)
     1. Settings → Editor → File Encodings
     2. Project Encoding: UTF-8
     3. Default encoding for properties files: UTF-8
     4. Create UTF-8 files: with NO BOM
----
-## TODO
+### TODO
     1. Settings → Editor → TODO → Patterns
         1.1 Patterns → +
         1.2 Pattern: \btodo\(ljh\).*
@@ -118,42 +133,17 @@
             2.6.1 Java → Declaration, Statement 勾选
             2.6.2 JavaScript and TypeScript → Statement → Other 勾选
 ---
-## Version Control (-jn)
+## Settings → Version Control (-jn)
     1. Settings → Version Control
         1.1 Git → Path to Git executable: D:\Git\cmd\git.exe
         1.2 Subversion → Path to Subversion executable: D:\TortoiseSVN\bin\svn.exe
 ---
-## Compiler (-n)
-    1. Settings → Build, Execution, Deployment
-        1.1 Compiler
-            1.1.1 Build project automatically 勾选
-            1.1.2 Shared build process VM options:
-                -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar
-            1.1.3 Java Compiler → Use compiler: Eclipse
-            1.1.4 Annotation Processors → Enable annotation processing 勾选
-    2. Settings → Advanced Settings → Compiler
-        2.1 Allow auto-make to start even if developed application is currently running 勾选
----
-## Deployment (-jn)
-    1. Settings → Build, Execution, Deployment → Deployment
-        1.1 + → SFTP → New server name：43.1356.102.115 → SSH configuration
-            Host: 43.136.102.115
-            Username: root
-            Authentication type: Password
-            password: Cesc123!
-        1.2 Root path: /
-        1.3 Advanced → Encoding for client-server communication: UTF-8
-        1.4 Mappings
-            Local path: D:\Liang\git\epitome\OpenCloudOS8.6
-            Deployment path: /home/lighthouse/sync_dir
-    2. Tools → Deployment → Sync With Local…
----
-## Actions on Save (-jn)
+## Settings → Tools
+### Actions on Save (-jn)
     1. Settings → Tools → Actions on Save
     2. Reformat code 勾选
     3. Optimize imports 勾选
----
-## Terminal (-jn)
+### Terminal (-jn)
     1. Settings → Tools → Terminal
     2. Shell path: D:\Git\bin\bash.exe
 ---
