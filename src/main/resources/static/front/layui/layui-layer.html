@@ -1,162 +1,172 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <base target="_blank">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <base target="_blank" />
     <title>Layui | 弹出层 Layer</title>
-    <link rel="stylesheet" href="../../public/css/demo.css">
-    <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.8.18/css/layui.css"/>
+    <link rel="stylesheet" href="../../public/css/demo.css" />
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.8.18/css/layui.css" />
     <script src="https://www.layuicdn.com/layui-v2.8.18/layui.js"></script>
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-</head>
-<body>
-<section class="code-wrap h100vh">
-    <div class="css-live-wrap w40p">
+  </head>
+  <body>
+    <section class="code-wrap h100vh">
+      <div class="css-live-wrap w40p">
         <div class="caption">
-            <a href="https://layui.dev/docs/2/layer/#api">弹出层 Layer</a>
+          <a href="https://layui.dev/docs/2/layer/#api">弹出层 Layer</a>
         </div>
         <div class="caption">
-            <a href="https://layui.gitee.io/v2/layer/">layer 弹出层组件</a>
+          <a href="https://layui.gitee.io/v2/layer/">layer 弹出层组件</a>
         </div>
         <div class="centered w67p">
-            <div class="layui-btn-group">
-                <button class="layui-btn layui-btn-sm" id="alert">alert</button>
-                <button class="layui-btn layui-btn-sm" id="confirm">confirm</button>
-                <button class="layui-btn layui-btn-sm" id="msg">msg</button>
-                <button class="layui-btn layui-btn-sm" id="load">load</button>
-                <button class="layui-btn layui-btn-sm" id="tips">tips</button>
-                <button class="layui-btn layui-btn-sm" id="open">open</button>
-            </div>
-            <hr/>
-            <div class="layui-btn-group">
-                <button class="layui-btn layui-btn-sm" id="prompt">prompt</button>
-                <button class="layui-btn layui-btn-sm" id="tab">tab</button>
-                <button class="layui-btn layui-btn-sm" id="photos">photos</button>
-            </div>
+          <div class="layui-btn-group">
+            <button class="layui-btn layui-btn-sm" id="alert">alert</button>
+            <button class="layui-btn layui-btn-sm" id="confirm">confirm</button>
+            <button class="layui-btn layui-btn-sm" id="msg">msg</button>
+            <button class="layui-btn layui-btn-sm" id="load">load</button>
+            <button class="layui-btn layui-btn-sm" id="tips">tips</button>
+            <button class="layui-btn layui-btn-sm" id="open">open</button>
+          </div>
+          <hr />
+          <div class="layui-btn-group">
+            <button class="layui-btn layui-btn-sm" id="prompt">prompt</button>
+            <button class="layui-btn layui-btn-sm" id="tab">tab</button>
+            <button class="layui-btn layui-btn-sm" id="photos">photos</button>
+          </div>
         </div>
-    </div>
-    <script class="code w60p" contenteditable="true">
+      </div>
+      <script class="code w60p" contenteditable="true">
         layui.use('layer', function () {
-            const layer = layui.layer;
-            layer.config({                  // 全局
-                skin: 'layui-layer-lan',    // 皮肤，可选值 layui-layer-lan, layui-layer-molv
-                anim: 5,                    // 动画
-            })
+          const layer = layui.layer
+          layer.config({
+            // 全局
+            skin: 'layui-layer-lan', // 皮肤，可选值 layui-layer-lan, layui-layer-molv
+            anim: 5 // 动画
+          })
 
-            $("#alert").click(function () {
-                // layer.alert(content, options, yes)
-                layer.alert('alert', {icon: 1}, function (index) {
-                    alert('yes callback');
-                    layer.close(index);
-                })
+          $('#alert').click(function () {
+            // layer.alert(content, options, yes)
+            layer.alert('alert', { icon: 1 }, function (index) {
+              alert('yes callback')
+              layer.close(index)
             })
+          })
 
-            $("#confirm").click(function () {
-                // layer.confirm(content, options, yes, cancel)
-                layer.confirm('confirm?', {icon: 3, title: '提示'}, function (index) {
-                    alert('yes callback');
-                    layer.close(index);
-                })
+          $('#confirm').click(function () {
+            // layer.confirm(content, options, yes, cancel)
+            layer.confirm('confirm?', { icon: 3, title: '提示' }, function (index, layero) {
+              // 防止重复点击
+              $(layero).find('.layui-layer-btn0').css('pointer-events', 'none')
+              setTimeout(function () {
+                layer.close(index)
+              }, 1000)
             })
+          })
 
-            $("#msg").click(function () {
-                // layer.msg(content, options, end)
-                layer.msg('msg', {icon: 1, time: 1500}, function () {
-                })
-            })
+          $('#msg').click(function () {
+            // layer.msg(content, options, end)
+            layer.msg('msg', { icon: 1, time: 1500 }, function () {})
+          })
 
-            $("#load").click(function () {
-                // layer.load(icon, options)
-                const loading = layer.load(2, {time: 3 * 1000});
-                setTimeout(function() {
-                    layer.close(loading);
-                }, 1000);
-            })
+          $('#load').click(function () {
+            // layer.load(icon, options)
+            const loading = layer.load(2, { time: 3 * 1000 })
+            setTimeout(function () {
+              layer.close(loading)
+            }, 1000)
+          })
 
-            $("#tips").click(function () {
-                // layer.tips(content, follow, options)
-                const that = this;
-                layer.tips('tips', that);
-            })
+          $('#tips').click(function () {
+            // layer.tips(content, follow, options)
+            const that = this
+            layer.tips('tips', that)
+          })
 
-            $("#open").click(function () {
-                layer.open({                // 核心方法，不管是使用哪种方式创建层，都是走layer.open()
-                    title: "layer demo",
-                    content: "layer open"
-                })
+          $('#open').click(function () {
+            layer.open({
+              // 核心方法，不管是使用哪种方式创建层，都是走layer.open()
+              title: 'layer demo',
+              content: 'layer open'
             })
+          })
 
-            $("#prompt").click(function () {
-                // layer.prompt(options, yes)
-                layer.prompt({
-                    formType: 0,            // 输入框类型，可选值 0（文本）、1（密码）、2（多行文本）
-                    value: '',              // 初始值
-                    maxlength: 100,         // 最大长度
-                }, function (value, index, elem) {
-                    alert(value);
-                    layer.close(index);
-                });
-            })
+          $('#prompt').click(function () {
+            // layer.prompt(options, yes)
+            layer.prompt(
+              {
+                formType: 0, // 输入框类型，可选值 0（文本）、1（密码）、2（多行文本）
+                value: '', // 初始值
+                maxlength: 100 // 最大长度
+              },
+              function (value, index, elem) {
+                alert(value)
+                layer.close(index)
+              }
+            )
+          })
 
-            $("#tab").click(function () {
-                // layer.tab(options)
-                layer.tab({
-                    area: ['600px', '300px'],
-                    tab: [{
-                        title: 'tab1',
-                        content: 'content1'
-                    }, {
-                        title: 'tab2',
-                        content: 'content2'
-                    }]
-                });
+          $('#tab').click(function () {
+            // layer.tab(options)
+            layer.tab({
+              area: ['600px', '300px'],
+              tab: [
+                {
+                  title: 'tab1',
+                  content: 'content1'
+                },
+                {
+                  title: 'tab2',
+                  content: 'content2'
+                }
+              ]
             })
+          })
 
-            $("#photos").click(function () {
-                // layer.photos(options)
-                layer.photos({
-                    photos:                 // 支持 json 和 选择器
-                        {
-                            "title": "Premier League",
-                            "id": 1,
-                            "start": 0,
-                            "data": [
-                                {
-                                    "alt": "Arsenal",
-                                    "pid": 1,
-                                    "src": "https://t13.baidu.com/it/u=919380618,3927312376&fm=58",
-                                    "thumb": "https://t13.baidu.com/it/u=919380618,3927312376&fm=58"
-                                },
-                                {
-                                    "alt": "Manchester United",
-                                    "pid": 2,
-                                    "src": "https://t14.baidu.com/it/u=3351449767,632618335&fm=58",
-                                    "thumb": "https://t14.baidu.com/it/u=3351449767,632618335&fm=58"
-                                },
-                                {
-                                    "alt": "Liverpool",
-                                    "pid": 3,
-                                    "src": "https://t13.baidu.com/it/u=3536936463,4110772522&fm=58",
-                                    "thumb": "https://t13.baidu.com/it/u=3536936463,4110772522&fm=58"
-                                },
-                                {
-                                    "alt": "Manchester City",
-                                    "pid": 4,
-                                    "src": "https://t13.baidu.com/it/u=4236106217,3624165746&fm=58",
-                                    "thumb": "https://t13.baidu.com/it/u=4236106217,3624165746&fm=58"
-                                }
-                            ]
-                        },
-                    tab: function (pic, layero) {
-                        console.log(pic)
-                        console.log(layero)
-                    }
-                })
+          $('#photos').click(function () {
+            // layer.photos(options)
+            layer.photos({
+              // 支持 json 和 选择器
+              photos: {
+                title: 'Premier League',
+                id: 1,
+                start: 0,
+                data: [
+                  {
+                    alt: 'Arsenal',
+                    pid: 1,
+                    src: 'https://t13.baidu.com/it/u=919380618,3927312376&fm=58',
+                    thumb: 'https://t13.baidu.com/it/u=919380618,3927312376&fm=58'
+                  },
+                  {
+                    alt: 'Manchester United',
+                    pid: 2,
+                    src: 'https://t14.baidu.com/it/u=3351449767,632618335&fm=58',
+                    thumb: 'https://t14.baidu.com/it/u=3351449767,632618335&fm=58'
+                  },
+                  {
+                    alt: 'Liverpool',
+                    pid: 3,
+                    src: 'https://t13.baidu.com/it/u=3536936463,4110772522&fm=58',
+                    thumb: 'https://t13.baidu.com/it/u=3536936463,4110772522&fm=58'
+                  },
+                  {
+                    alt: 'Manchester City',
+                    pid: 4,
+                    src: 'https://t13.baidu.com/it/u=4236106217,3624165746&fm=58',
+                    thumb: 'https://t13.baidu.com/it/u=4236106217,3624165746&fm=58'
+                  }
+                ]
+              },
+              tab: function (pic, layero) {
+                console.log(pic)
+                console.log(layero)
+              }
             })
-        });
-    </script>
-</section>
-</body>
+          })
+        })
+      </script>
+    </section>
+  </body>
 </html>

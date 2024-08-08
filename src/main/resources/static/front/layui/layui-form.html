@@ -1,201 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <base target="_blank">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <base target="_blank" />
     <title>Layui | 表单</title>
-    <link rel="stylesheet" href="../../public/css/demo.css">
-    <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.8.18/css/layui.css"/>
+    <link rel="stylesheet" href="../../public/css/demo.css" />
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.8.18/css/layui.css" />
     <script src="https://www.layuicdn.com/layui-v2.8.18/layui.js"></script>
-</head>
-<body>
-<section class="code-wrap h100vh">
-    <div class="css-live-wrap">
+  </head>
+  <body>
+    <section class="code-wrap h100vh">
+      <div class="css-live-wrap">
         <div class="caption">
-            <a href="https://layui.dev/docs/2/form/#examples">表单组件 Form</a>
+          <a href="https://layui.dev/docs/2/form/#examples">表单组件 Form</a>
         </div>
         <div class="centered w90p">
-            <form class="layui-form" action="" lay-filter="form">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">用户名</label>
-                    <!-- layui-input-block: 一个表单占一行 -->
-                    <div class="layui-input-block">
-                        <input type="text" name="username" autocomplete="off" placeholder="用户名" class="layui-input"
-                               lay-verify="username">
-                    </div>
+          <form class="layui-form" action="" lay-filter="form">
+            <div class="layui-form-item">
+              <label class="layui-form-label">用户名</label>
+              <!-- layui-input-block: 一个表单占一行 -->
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="username"
+                  autocomplete="off"
+                  placeholder="用户名"
+                  class="layui-input"
+                  lay-verify="username"
+                />
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">用户密码</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  name="pwd"
+                  autocomplete="off"
+                  placeholder="用户密码"
+                  class="layui-input"
+                  lay-verify="pass"
+                />
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label">用户手机</label>
+                <!-- layui-input-inline: 多个表单占一行 -->
+                <div class="layui-input-inline">
+                  <input
+                    type="tel"
+                    name="phone"
+                    autocomplete="off"
+                    class="layui-input demo-phone"
+                    lay-verify="required|phone"
+                  />
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">用户密码</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="pwd" autocomplete="off" placeholder="用户密码" class="layui-input"
-                               lay-verify="pass">
-                    </div>
+              </div>
+              <div class="layui-inline">
+                <label class="layui-form-label">用户邮箱</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="email" autocomplete="off" class="layui-input" lay-verify="email" />
                 </div>
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">用户手机</label>
-                        <!-- layui-input-inline: 多个表单占一行 -->
-                        <div class="layui-input-inline">
-                            <input type="tel" name="phone" autocomplete="off" class="layui-input demo-phone"
-                                   lay-verify="required|phone">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">用户邮箱</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="email" autocomplete="off" class="layui-input"
-                                   lay-verify="email">
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">籍贯</label>
-                    <div class="layui-input-block">
-                        <select id="jiguan" name="jiguan" lay-filter="jiguan" lay-search="">
-                            <option value=""></option>
-                            <option value="0">北京</option>
-                            <option value="1" selected="">上海</option>
-                            <option value="2">广州</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">性别</label>
-                    <div class="layui-input-block">
-                        <input type="radio" lay-filter="sex" name="sex" value="men" title="男" checked="">
-                        <input type="radio" lay-filter="sex" name="sex" value="women" title="女">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">爱好</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" lay-filter="like" value="write" name="like[write]" title="写作">
-                        <input type="checkbox" lay-filter="like" value="read" name="like[read]" title="阅读" checked>
-                        <input type="checkbox" lay-filter="like" value="game" name="like[game]" title="游戏">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">是否在职</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" lay-filter="onJob" name="onJob" lay-skin="switch" lay-text="是|否">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo">立即提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                        <button type="button" class="layui-btn" id="btn1">籍贯添加深圳</button>
-                        <button type="button" class="layui-btn" id="btn2">表单赋值</button>
-                    </div>
-                </div>
-            </form>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">籍贯</label>
+              <div class="layui-input-block">
+                <select id="jiguan" name="jiguan" lay-filter="jiguan" lay-search="">
+                  <option value=""></option>
+                  <option value="0">北京</option>
+                  <option value="1" selected="">上海</option>
+                  <option value="2">广州</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">性别</label>
+              <div class="layui-input-block">
+                <input type="radio" lay-filter="sex" name="sex" value="men" title="男" checked="" />
+                <input type="radio" lay-filter="sex" name="sex" value="women" title="女" />
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">爱好</label>
+              <div class="layui-input-block">
+                <input type="checkbox" lay-filter="like" value="write" name="like[write]" title="写作" />
+                <input type="checkbox" lay-filter="like" value="read" name="like[read]" title="阅读" checked />
+                <input type="checkbox" lay-filter="like" value="game" name="like[game]" title="游戏" />
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">是否在职</label>
+              <div class="layui-input-block">
+                <input type="checkbox" lay-filter="onJob" name="onJob" lay-skin="switch" lay-text="是|否" />
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button type="button" class="layui-btn" id="btn1">籍贯添加深圳</button>
+                <button type="button" class="layui-btn" id="btn2">表单赋值</button>
+              </div>
+            </div>
+          </form>
         </div>
-    </div>
-    <style>
+      </div>
+      <style>
         .layui-inline {
-            margin-right: 0 !important;
+          margin-right: 0 !important;
         }
 
         .layui-input-inline {
-            width: 170px !important;
-            margin-right: 0 !important;
+          width: 170px !important;
+          margin-right: 0 !important;
         }
-    </style>
-    <script class="code" contenteditable="true">
-        layui.use("form", function () {
-            const $ = layui.$;
-            const form = layui.form;
-            // 事件：https://layui.dev/docs/2/form/#on
-            // 提交：https://layui.dev/docs/2/form/#submit
-            form.on('submit(demo)', function (data) {
-                console.log(data.elem)  // 被执行事件的元素DOM对象，一般为button对象
-                console.log(data.form)  // 被执行提交的form对象，一般在存在form标签时才会返回
-                console.log(data.field) // 当前容器的全部表单字段，名值对形式：{name: value}
-                // $.post();            // 使用ajax提交                
-                return false;           // 阻止表单跳转。如果需要表单跳转，去掉这段即可。
-            });
-            // 选择框 Select：https://layui.dev/docs/2/form/select.html
-            form.on('select(jiguan)', function (data) {
-                console.log(data.elem); // 得到select原始DOM对象
-                console.log(data.value);// 得到被选中的值
-                console.log(data.othis);// 得到美化后的DOM对象
-            });
-            // 复选框 Checkbox：https://layui.dev/docs/2/form/checkbox.html
-            form.on('checkbox(like)', function (data) {
-                console.log(data.elem); // 得到checkbox原始DOM对象
-                console.log(data.elem.checked); // 是否被选中，true或者false
-                console.log(data.value);// 复选框value值，也可以通过data.elem.value得到
-                console.log(data.othis);// 得到美化后的DOM对象
-            });
-            // 开关
-            form.on('switch(onJob)', function (data) {
-                console.log(data.elem); // 得到checkbox原始DOM对象
-                console.log(data.elem.checked); //开关是否开启，true或者false
-                console.log(data.value);// 开关value值，也可以通过data.elem.value得到
-                console.log(data.othis);// 得到美化后的DOM对象
-            });
-            // 单选框 Radio：https://layui.dev/docs/2/form/radio.html
-            form.on('radio(sex)', function (data) {
-                console.log(data.elem); // 得到radio原始DOM对象
-                console.log(data.value);// 被点击的radio的value值
-            });
-            // 籍贯添加深圳
-            $("#btn1").click(function () {
-                $("#jiguan").append("<option value=3>深圳</option>");
-                // 渲染：https://layui.dev/docs/2/form/#render
-                form.render("select");  // 渲染select
-                // form.render();       // 渲染所有
+      </style>
+      <script class="code" contenteditable="true">
+        layui.use('form', function () {
+          const $ = layui.$
+          const form = layui.form
+          // 事件：https://layui.dev/docs/2/form/#on
+          // 提交：https://layui.dev/docs/2/form/#submit
+          form.on('submit(demo)', function (data) {
+            console.log(data.elem) // 被执行事件的元素DOM对象，一般为button对象
+            console.log(data.form) // 被执行提交的form对象，一般在存在form标签时才会返回
+            console.log(data.field) // 当前容器的全部表单字段，名值对形式：{name: value}
+            // $.post();            // 使用ajax提交
+            return false // 阻止表单跳转。如果需要表单跳转，去掉这段即可。
+          })
+          // 选择框 Select：https://layui.dev/docs/2/form/select.html
+          form.on('select(jiguan)', function (data) {
+            console.log(data.elem) // 得到select原始DOM对象
+            console.log(data.value) // 得到被选中的值
+            console.log(data.othis) // 得到美化后的DOM对象
+          })
+          // 复选框 Checkbox：https://layui.dev/docs/2/form/checkbox.html
+          form.on('checkbox(like)', function (data) {
+            console.log(data.elem) // 得到checkbox原始DOM对象
+            console.log(data.elem.checked) // 是否被选中，true或者false
+            console.log(data.value) // 复选框value值，也可以通过data.elem.value得到
+            console.log(data.othis) // 得到美化后的DOM对象
+          })
+          // 开关
+          form.on('switch(onJob)', function (data) {
+            console.log(data.elem) // 得到checkbox原始DOM对象
+            console.log(data.elem.checked) // 开关是否开启，true或者false
+            console.log(data.value) // 开关value值，也可以通过data.elem.value得到
+            console.log(data.othis) // 得到美化后的DOM对象
+          })
+          // 单选框 Radio：https://layui.dev/docs/2/form/radio.html
+          form.on('radio(sex)', function (data) {
+            console.log(data.elem) // 得到radio原始DOM对象
+            console.log(data.value) // 被点击的radio的value值
+          })
+          // 籍贯添加深圳
+          $('#btn1').click(function () {
+            $('#jiguan').append('<option value=3>深圳</option>')
+            // 渲染：https://layui.dev/docs/2/form/#render
+            form.render('select') // 渲染select
+            // form.render();       // 渲染所有
+          })
+          // 表单赋值
+          $('#btn2').click(function () {
+            // 赋值/取值：https://layui.dev/docs/2/form/#val
+            form.val('form', {
+              username: '张三',
+              pwd: '123456',
+              phone: '13811223344',
+              email: 'zhangsan@1633.com',
+              jiguan: 3,
+              sex: 'man',
+              onJob: true
             })
-            // 表单赋值
-            $("#btn2").click(function () {
-                // 赋值/取值：https://layui.dev/docs/2/form/#val
-                form.val("form", {
-                    username: "张三",
-                    pwd: "123456",
-                    phone: "13811223344",
-                    email: "zhangsan@1633.com",
-                    jiguan: 3,
-                    sex: "man",
-                    onJob: true
-                });
-                $("[lay-filter='like']").each(function (i, v) {
-                    if (["write", "game"].indexOf($(v).val()) !== -1) {
-                        $(v).prop("checked", true);
-                    } else {
-                        $(v).attr("checked", null);
-                    }
-                })
-                form.render();
+            $("[lay-filter='like']").each(function (i, v) {
+              if (['write', 'game'].indexOf($(v).val()) !== -1) {
+                $(v).prop('checked', true)
+              } else {
+                $(v).attr('checked', null)
+              }
             })
-            // 验证：https://layui.dev/docs/2/form/#lay-verify
-            form.verify({
-                username: function (value, item) { // value：表单的值、item：表单的DOM对象
-                    if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
-                        return '用户名不能有特殊字符';
-                    }
-                    if (/(^\_)|(\__)|(\_+$)/.test(value)) {
-                        return '用户名首尾不能出现下划线\'_\'';
-                    }
-                    if (/^\d+\d+\d$/.test(value)) {
-                        return '用户名不能全为数字';
-                    }
+            form.render()
+          })
+          // 验证：https://layui.dev/docs/2/form/#lay-verify
+          form.verify({
+            username: function (value, item) {
+              // value：表单的值、item：表单的DOM对象
+              if (!new RegExp('^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$').test(value)) {
+                return '用户名不能有特殊字符'
+              }
+              if (/(^\_)|(\__)|(\_+$)/.test(value)) {
+                return "用户名首尾不能出现下划线'_'"
+              }
+              if (/^\d+\d+\d$/.test(value)) {
+                return '用户名不能全为数字'
+              }
 
-                    // 如果不想自动弹出默认提示框，可以直接返回 true，这时你可以通过其他任意方式提示
-                    if (value === 'xxx') {
-                        alert('用户名不能为敏感词');
-                        return true;
-                    }
-                },
-                // 数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
-                pass: [
-                    /^[\S]{6,12}$/
-                    , '密码必须6到12位，且不能出现空格'
-                ]
-            });
+              // 如果不想自动弹出默认提示框，可以直接返回 true，这时你可以通过其他任意方式提示
+              if (value === 'xxx') {
+                alert('用户名不能为敏感词')
+                return true
+              }
+            },
+            // 数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
+            pass: [/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格']
+          })
         })
-    </script>
-</section>
-</body>
+      </script>
+    </section>
+  </body>
 </html>
