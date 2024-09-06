@@ -19,7 +19,7 @@ function guid () {
 
 /** sleep */
 function sleep (s) {
-  for (let t = Date.now(); Date.now() - t <= s;) ;
+  for (let t = Date.now(); Date.now() - t <= s;) { /* empty */ }
 }
 
 /** 验证居民身份证：http://www.ip33.com/shenfenzheng.html */
@@ -55,4 +55,22 @@ function isValidHongKongIdCard (idCard) {
 /** 验证澳门永久性居民身份证：5215299(8) */
 function isValidMacaoIdCard (idCard) {
   return /^[157][0-9]{6}[(\d)]{3}$/.test(idCard)
+}
+
+function getAgeByIdCard (idCard) {
+  const birthYear = parseInt(idCard.slice(6, 10))
+  const birthMonth = parseInt(idCard.slice(10, 12))
+  const birthDay = parseInt(idCard.slice(12, 14))
+
+  const now = new Date()
+  const currentYear = now.getFullYear()
+  const currentMonth = now.getMonth() + 1
+  const currentDay = now.getDate()
+
+  let age = currentYear - birthYear
+  if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
+    age--
+  }
+
+  return age
 }

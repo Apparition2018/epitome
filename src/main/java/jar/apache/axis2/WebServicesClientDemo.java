@@ -1,5 +1,10 @@
 package jar.apache.axis2;
 
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jar.apache.axis2.BorlandSampleService.Service1Stub;
+import jar.apache.axis2.tokenService.Root;
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
@@ -9,11 +14,13 @@ import org.apache.axis2.addressing.EndpointReference;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.client.ServiceClient;
 import org.apache.axis2.rpc.client.RPCServiceClient;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import javax.xml.namespace.QName;
-import java.util.HashMap;
+import java.io.StringWriter;
+import java.rmi.RemoteException;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -40,7 +47,7 @@ public class WebServicesClientDemo {
     @Test
     public void testServiceClient() throws AxisFault {
         final String WSDL_URL = "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL";
-        // SOAP 1.1 <xs:schema targetNamespace/> 的值
+        // targetNamespace 的值
         final String NAMESPACE = "http://www.oorsprong.org/websamples.countryinfo";
         OMElement response = this.invoke(WSDL_URL, NAMESPACE, "FullCountryInfoAllCountries", Map.of());
         OMElement result = response.getFirstElement();
@@ -63,9 +70,7 @@ public class WebServicesClientDemo {
     @Test
     public void testServiceClient2() throws AxisFault {
         final String WSDL_URL = "https://demo.borland.com/BorlandSampleService/BorlandSampleService.asmx?wsdl";
-        // SOAP 1.2 <s:schema targetNamespace/> 的值
         final String NAMESPACE = "http://tempuri.org/";
-
         Map<String, Object> usr = Map.of(
             "FirstName", "ABC",
             "LastName", "L",
@@ -73,10 +78,63 @@ public class WebServicesClientDemo {
             "City", "ZS",
             "Age", "18"
         );
-        Map<String, Object> params = new HashMap<>();
-        params.put("usr", usr);
-        OMElement result = this.invoke(WSDL_URL, NAMESPACE, "SetUserObject", params);
-        System.err.println(result.getFirstElement().getText());
+        OMElement response = this.invoke(WSDL_URL, NAMESPACE, "SetUserObject", Map.of("usr", usr));
+        System.err.println(response.getFirstElement().getText());
+    }
+
+    /**
+     * 生成代码
+     * <pre>
+     * 1 下载 axis-1.x.x-bin.zip 并解压到指定目录
+     * 2 设置环境变量 AXIS2_HOME 为解压后的目录路径，并将 AXIS2_HOME\bin 添加到 PATH
+     * 3 在 cmd 输入 cd 到 AXIS2_HOME\bin，并输入：wsdl2java.bat -uri xxx -o D:\webservice -p com.ljh
+     * </pre>
+     */
+    @Test
+    public void testGenerateCode() throws RemoteException {
+        final String WSDL_URL = "https://demo.borland.com/BorlandSampleService/BorlandSampleService.asmx?wsdl";
+        Service1Stub stub = new Service1Stub(WSDL_URL);
+        Service1Stub.User user = new Service1Stub.User();
+        user.setFirstName("ABC");
+        user.setLastName("L");
+        user.setStreet("1 Street");
+        user.setCity("ZS");
+        user.setAge(18);
+        Service1Stub.SetUserObject setUserObject10 = new Service1Stub.SetUserObject();
+        setUserObject10.setUsr(user);
+        Service1Stub.SetUserObjectResponse response = stub.setUserObject(setUserObject10);
+        System.err.println(response.getSetUserObjectResult());
+    }
+
+    /**
+     * 传递 xml 参数
+     */
+    @Test
+    public void testXmlParam() throws AxisFault, JAXBException {
+        final String WSDL_URL = "http://120.234.108.89/services/tokenService";
+        final String NAMESPACE = "http://service.creditquery.portal.neusoft.com";
+        final String METHOD = "getUploadingToken";
+        final String username = "zss_tysbblpt";
+        final String pwd = "zss_tysbblpt@0826";
+        final String timestamp = String.valueOf(System.currentTimeMillis());
+        String md5key = DigestUtils.md5Hex(username + pwd + timestamp);
+
+        Root root = new Root();
+        root.getData().setUsername(username);
+        root.getData().setMd5key(md5key);
+        root.getData().setTimestamp(timestamp);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Root.class);
+        Marshaller marshaller = jaxbContext.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        StringWriter writer = new StringWriter();
+        marshaller.marshal(root, writer);
+        String in0 = writer.toString();
+
+        OMElement response = this.invoke(WSDL_URL, NAMESPACE, METHOD, Map.of("in0", in0));
+        System.err.println(response);
+        // soap:operation 没有指定 style，所以也可以通过 rpc 调用
+        response = this.invokeByRpc(WSDL_URL, NAMESPACE, METHOD, OMElement.class, in0);
+        System.err.println(response);
     }
 
     /**

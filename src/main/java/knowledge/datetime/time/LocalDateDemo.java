@@ -1,9 +1,15 @@
 package knowledge.datetime.time;
 
+import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 import static l.demo.Demo.p;
+import static l.demo.Demo.pe;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate</a>
@@ -78,5 +84,23 @@ public class LocalDateDemo {
 
         // long	                        toEpochDay()                        将此日期转换为纪元日
         p(ld.toEpochDay());             // 14099
+    }
+
+    @Test
+    public void getAgeByIdCard() {
+        final String idCard = "11010119640101234X";
+        String birthDateString = idCard.substring(6, 14);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate birthDate = LocalDate.parse(birthDateString, formatter);
+        LocalDate now = LocalDate.now();
+
+        long age = Period.between(birthDate, now).getYears();
+        pe(age);
+
+        age = ChronoUnit.YEARS.between(birthDate, LocalDate.now());
+        if (now.isBefore(birthDate.plusYears(age))) {
+            age--;
+        }
+        pe(age);
     }
 }

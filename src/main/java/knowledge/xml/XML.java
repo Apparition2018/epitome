@@ -1,13 +1,7 @@
 package knowledge.xml;
 
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
 import l.demo.Demo;
-import lombok.Data;
-import lombok.experimental.Accessors;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -48,7 +42,8 @@ public class XML extends Demo {
      * 缺点：当 XML 文件较大时，对内存耗费比较大，容易影响解析性能并造成内存溢出。
      * </pre>
      */
-    static class OrgW3cDom {
+    @Nested
+    class OrgW3cDom {
 
         // 新建 Document 档建造器的工厂实例
         private final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -68,7 +63,7 @@ public class XML extends Demo {
             // 在节点列表的末端添加节点
             doc.appendChild(school);
 
-            appendStudent(doc, school, "1", "张三", "18");
+            appendStudent(doc, school, "1", "张三", "18 ");
             appendStudent(doc, school, "2", "李四", "19");
 
             // 新建 Transformer 的工厂实例
@@ -130,9 +125,11 @@ public class XML extends Demo {
      * 缺点：编码比较困难，而且很难同时访问同一个文档中的多处不同数据；一旦经过了某个元素，我们没有办法返回去再去访问它，缺乏灵活性。
      * </pre>
      */
-    private static class OrgXmlSax {
+    @Nested
+    class OrgXmlSax {
 
-        public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+        @Test
+        public void test() throws ParserConfigurationException, SAXException, IOException {
             // 新建 SAXParser 的工厂实例
             SAXParserFactory factory = SAXParserFactory.newInstance();
             // 新建 SAXParser
@@ -198,34 +195,6 @@ public class XML extends Demo {
                 if ("student".equals(qName)) {
                     p(name + ": id " + id + "，年龄" + age + "岁");
                 }
-            }
-        }
-    }
-
-    private static class JakartaJaxb {
-
-        public static void main(String[] args) throws JAXBException {
-            Person me = new Person().setName(MY_NAME).setHome(new Person.Home().setAddress("zs"));
-            System.out.println(me);
-            JAXBContext jaxbContext = JAXBContext.newInstance(Person.class);
-            Marshaller marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            marshaller.marshal(me, System.out);
-        }
-
-        @Data
-        @Accessors(chain = true)
-        @XmlRootElement
-        private static class Person {
-            @XmlElement
-            private String name;
-            @XmlElement
-            private Home home;
-
-            @Data
-            private static class Home {
-                @XmlElement
-                private String address;
             }
         }
     }
