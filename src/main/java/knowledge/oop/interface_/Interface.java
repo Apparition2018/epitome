@@ -12,12 +12,9 @@ import java.util.List;
  * JDK8     默认方法、静态方法
  * JDK9     私有方法、私有静态方法
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://mp.weixin.qq.com/s/Jy0zu5LcNM-EvZFJIY9Eeg">JDK8 默认方法和静态方法</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://mp.weixin.qq.com/s/Jy0zu5LcNM-EvZFJIY9Eeg">JDK8 默认方法和静态方法</a>
  * @since 2020/8/8 19:39
  */
 public class Interface {

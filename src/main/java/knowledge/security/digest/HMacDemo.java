@@ -38,9 +38,9 @@ import java.util.Objects;
  * </pre>
  * 应用场景二：<a href="https://www.cnblogs.com/fishou/p/4206980.html">HMAC 结合"挑战/响应"保障数据传输安全</a>
  * <p>
- * 参考：<a href="https://www.cnblogs.com/fishou/p/4159092.html">HMAC 的 JAVA 实现和应用</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/fishou/p/4159092.html">HMAC 的 JAVA 实现和应用</a>
  * @since 2020/11/18 19:37
  */
 public class HMacDemo extends Demo {

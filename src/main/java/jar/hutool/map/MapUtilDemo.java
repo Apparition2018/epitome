@@ -12,8 +12,7 @@ import java.util.Map;
 /**
  * <a href="https://hutool.cn/docs/#/core/Map/Map工具-MapUtil">MapUtil</a>
  * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/map/MapUtil.html">MapUtil api</a>
- * <pre>
- * {@code
+ * <pre>{@code
  * static <K,V> Map<K,V>                createMap(Class<?> mapType)                         创建 Map
  * static <K,V> HashMap<K,V>            newHashMap([[int size][, boolean isOrder]])         新建 HashMap
  * static <K,V> TreeMap<K,V>            newTreeMap([Map<K,V> map, ]Comparator<? super K>)   新建 TreeMap
@@ -80,7 +79,7 @@ public class MapUtilDemo extends Demo {
     @Test
     public void convert() {
 
-        // join(Map, separator, kvSeparator[, isIgnoreNull, String... otherParams]) Map → String 
+        // join(Map, separator, kvSeparator[, isIgnoreNull, String... otherParams]) Map → String
         p(MapUtil.join(map, "|", "-", true));       // 1-A|2-B|3-C
         p(MapUtil.sortJoin(map, "|", "-", true));   // 1-A|2-B|3-C
         p(MapUtil.joinIgnoreNull(map, "|", "-"));   // 1-A|2-B|3-C

@@ -10,9 +10,9 @@ import static l.demo.Demo.p;
 
 /**
  * 算法
- * <p>参考：<a href="https://mp.weixin.qq.com/s/nQ0aNLPcwb2enmrlqCsvOg">「时间」与「空间」复杂度</a>
  *
  * @author ljh
+ * @see <a href="https://mp.weixin.qq.com/s/nQ0aNLPcwb2enmrlqCsvOg">「时间」与「空间」复杂度</a>
  * @since 2019/8/8 19:39
  */
 public class Algorithm {

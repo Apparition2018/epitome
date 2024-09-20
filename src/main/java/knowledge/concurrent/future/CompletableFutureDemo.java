@@ -18,14 +18,11 @@ import java.util.concurrent.Executors;
  * CompletableFuture 是 JDK8 加入的一个实现类，实现了 Future, CompletionStage
  * API 极其丰富，配合流式编程，速度飞快，推荐使用
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://blog.csdn.net/f641385712/article/details/83580886">Future、FutureTask、CompletionService、CompletableFuture 解决多线程并发中归集问题的效率对比</a>
- * <a href="https://blog.csdn.net/f641385712/article/details/83618189">CompletableFuture 的系统讲解和实例演示</a>
- * <a href="https://www.runoob.com/java/java9-completablefuture-api-improvements.html">JDK9 改进的 CompletableFuture</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/f641385712/article/details/83580886">Future、FutureTask、CompletionService、CompletableFuture 解决多线程并发中归集问题的效率对比</a>
+ * @see <a href="https://blog.csdn.net/f641385712/article/details/83618189">CompletableFuture 的系统讲解和实例演示</a>
+ * @see <a href="https://www.runoob.com/java/java9-completablefuture-api-improvements.html">JDK9 改进的 CompletableFuture</a>
  * @since 2020/12/1 14:08
  */
 public class CompletableFutureDemo extends Demo {
@@ -43,7 +40,7 @@ public class CompletableFutureDemo extends Demo {
 
         try {
             CompletableFuture<Void> completableFuture = CompletableFuture.allOf(completableFutureList.stream()
-                    .filter(Objects::nonNull).toList().toArray(new CompletableFuture[completableFutureList.size()]));
+                .filter(Objects::nonNull).toList().toArray(new CompletableFuture[completableFutureList.size()]));
             completableFuture.get();
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);

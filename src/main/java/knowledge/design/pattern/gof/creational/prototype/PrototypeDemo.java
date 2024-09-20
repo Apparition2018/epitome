@@ -30,14 +30,11 @@ import static l.demo.Demo.p;
  * 原型注册表 PrototypeRegistry (可选)：注册表存储预生成对象，以供复制使用
  * </pre>
  * 缺点：违反开闭原则
- * <p>参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/prototype">Prototype</a>
- * <a href="http://c.biancheng.net/view/1343.html">Java设计模式</a>
- * 设计模式之美：原型模式：如何最快速地 clone 一个 HashMap 散列表？
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/prototype">Prototype</a>
+ * @see <a href="http://c.biancheng.net/view/1343.html">Java设计模式</a>
+ * @see <a href="">设计模式之美：原型模式：如何最快速地 clone 一个 HashMap 散列表？</a>
  * @since 2020/9/26 2:51
  */
 public class PrototypeDemo {

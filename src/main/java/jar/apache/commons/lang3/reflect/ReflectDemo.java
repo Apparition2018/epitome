@@ -11,13 +11,11 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Reflect
- * <pre>
- * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/reflect/FieldUtils.html">FieldUtils</a>
- * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/reflect/ConstructorUtils.html">ConstructorUtils</a>
- * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/reflect/MethodUtils.html">MethodUtils</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/reflect/FieldUtils.html">FieldUtils</a>
+ * @see <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/reflect/ConstructorUtils.html">ConstructorUtils</a>
+ * @see <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/reflect/MethodUtils.html">MethodUtils</a>
  * @since 2022/11/9 10:40
  */
 public class ReflectDemo extends Demo {

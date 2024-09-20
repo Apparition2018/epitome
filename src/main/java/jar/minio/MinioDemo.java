@@ -13,13 +13,11 @@ import java.util.Date;
 
 /**
  * Minio
- * <pre>
- * <a href="https://min.io/docs/minio/linux/developers/java/minio-java.html">Java Quickstart Guide</a>
- * <a href="https://min.io/docs/minio/linux/developers/java/API.html">Java Client API Reference</a>
- * <a href="https://blog.csdn.net/weixin_42170236/article/details/109356921">MinIO 工具类</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://min.io/docs/minio/linux/developers/java/minio-java.html">Java Quickstart Guide</a>
+ * @see <a href="https://min.io/docs/minio/linux/developers/java/API.html">Java Client API Reference</a>
+ * @see <a href="https://blog.csdn.net/weixin_42170236/article/details/109356921">MinIO 工具类</a>
  * @since 2021/4/25 16:28
  */
 public class MinioDemo extends Demo {
@@ -34,9 +32,9 @@ public class MinioDemo extends Demo {
     @BeforeEach
     public void init() throws Exception {
         minioClient = MinioClient.builder().
-                endpoint(String.format("http://%s:9000", MY_SERVER_IP))
-                .credentials("minio", "minio123")
-                .build();
+            endpoint(String.format("http://%s:9000", MY_SERVER_IP))
+            .credentials("minio", "minio123")
+            .build();
 
         // 这里不能使用 File.separator，否则 window 系统不能创建文件夹
         objectName = String.format("images/%s/%s", DateFormatUtils.format(new Date(), "yyyy/MMdd"), file.getName());
@@ -50,11 +48,11 @@ public class MinioDemo extends Demo {
     public void putObject() throws Exception {
         try (FileInputStream fis = new FileInputStream(file)) {
             ObjectWriteResponse response = minioClient.putObject(
-                    PutObjectArgs.builder().bucket(BUCKET_NAME)
-                            .object(objectName)
-                            .stream(fis, fis.available(), -1)
-                            .contentType(new MimetypesFileTypeMap().getContentType(file))
-                            .build()
+                PutObjectArgs.builder().bucket(BUCKET_NAME)
+                    .object(objectName)
+                    .stream(fis, fis.available(), -1)
+                    .contentType(new MimetypesFileTypeMap().getContentType(file))
+                    .build()
             );
             p("etag = " + response.etag());
             p("versionId = " + response.versionId());

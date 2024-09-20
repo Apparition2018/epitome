@@ -13,9 +13,9 @@ package knowledge.types.wrapper;
  * Long         -128            127
  * Character    0               127
  * </pre>
- * 参考：<a href="https://www.cnblogs.com/dolphin0520/p/3780005.html">深入剖析装箱和拆箱</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/dolphin0520/p/3780005.html">深入剖析装箱和拆箱</a>
  * @since 2020/9/7 1:28
  */
 public class IntegerCacheDemo {

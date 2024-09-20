@@ -15,9 +15,9 @@ import java.util.concurrent.*;
  * 2 CachedThreadPool：允许的创建线程数量为 Integer.MAX_VALUE，可能会创建大量的线程，从而导致 OOM
  * 3 ScheduledThreadPool：允许的请求队列长度为 Integer.MAX_VALUE，可能会堆积大量的请求，从而导致 OOM
  * </pre>
- * 参考：<a href="https://blog.csdn.net/fy_java1995/article/details/107920983">如何在队列排队之前让 ThreadPoolExecutor 将线程增加到最大数量</a>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/fy_java1995/article/details/107920983">如何在队列排队之前让 ThreadPoolExecutor 将线程增加到最大数量</a>
  * @since 2020/11/17 19:09
  */
 public class ExecutorsDemo extends Demo {

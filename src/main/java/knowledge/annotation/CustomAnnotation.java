@@ -21,13 +21,10 @@ import static l.demo.Demo.p;
  * Annotation 是附加在代码中的一些元信息，用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。
  * Annotation 不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html">Annotation 实现原理与自定义注解例子</a>
- * <a href="http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#导入导出">RuoYi 导入导出 (ExcelUtil)</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/acm-bingzi/p/javaAnnotation.html">Annotation 实现原理与自定义注解例子</a>
+ * @see <a href="http://doc.ruoyi.vip/ruoyi-vue/document/htsc.html#导入导出">RuoYi 导入导出 (ExcelUtil)</a>
  * @since 2020/9/18 18:01
  */
 public class CustomAnnotation {

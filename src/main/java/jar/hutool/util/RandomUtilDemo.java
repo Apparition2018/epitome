@@ -14,8 +14,7 @@ import l.demo.Demo;
 public class RandomUtilDemo extends Demo {
 
     /**
-     * <pre>
-     * {@code
+     * <pre>{@code
      * static Random                getRandom(boolean isSecure)
      * static ThreadLocalRandom     getRandom()                         线程隔离的随机数生成器
      * static SecureRandom          createSecureRandom(byte[] seed)     强加密随机数生成器(RNG)

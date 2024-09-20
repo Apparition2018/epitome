@@ -23,13 +23,10 @@ import java.util.Objects;
  * 6 使用 Using
  * 7 卸载 Unloading
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://blog.csdn.net/briblue/article/details/54973413">ClassLoader 详解</a>
- * <a href="https://blog.csdn.net/xiongyouqiang/article/details/79151903">可以自定义一个 Java.lang.String 吗？</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/briblue/article/details/54973413">ClassLoader 详解</a>
+ * @see <a href="https://blog.csdn.net/xiongyouqiang/article/details/79151903">可以自定义一个 Java.lang.String 吗？</a>
  * @since 2019/8/8 19:39
  */
 public class ClassLoaderDemo extends Demo {

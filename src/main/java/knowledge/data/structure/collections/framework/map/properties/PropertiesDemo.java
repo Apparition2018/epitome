@@ -16,9 +16,9 @@ import java.util.Properties;
  * <pre>
  * void	    list(PrintStream out/PrintStream out)       将属性列表输出到指定的输出流
  * </pre>
- * 参考：<a href="https://www.cnblogs.com/tonghun/p/7124245.html">Properties vs ResourceBundle</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/tonghun/p/7124245.html">Properties vs ResourceBundle</a>
  * @since 2020/9/7 19:43
  */
 public class PropertiesDemo extends Demo {

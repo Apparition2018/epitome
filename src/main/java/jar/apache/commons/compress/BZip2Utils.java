@@ -11,9 +11,9 @@ import static l.demo.Demo.DEMO_FILE_PATH;
 
 /**
  * BZip2 文件压缩/解压工具
- * <p>参考：<a href="http://snowolf.iteye.com/blog/644591">Bzip2 Commons 实现</a>
  *
  * @author ljh
+ * @see <a href="http://snowolf.iteye.com/blog/644591">Bzip2 Commons 实现</a>
  * @since 2019/8/8 19:39
  */
 public final class BZip2Utils {

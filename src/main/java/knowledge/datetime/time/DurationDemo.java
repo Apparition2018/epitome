@@ -53,8 +53,7 @@ public class DurationDemo {
     }
 
     /**
-     * <pre>
-     * {@code
+     * <pre>{@code
      * long                 get(TemporalUnit unit)  获取请求单元的值
      * long                 getSeconds()            获取此持续时间内的秒数
      * int                  getNano()               获取此持续时间内每秒内的纳秒数

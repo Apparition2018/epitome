@@ -25,13 +25,10 @@ import java.util.regex.Pattern;
  * </pre>
  * 优点：符合开闭原则
  * <p>
- * 参考：
- * <pre>
- * <a href="http://c.biancheng.net/view/1402.html">Java设计模式</a>
- * <a href="https://www.runoob.com/design-pattern/interpreter-pattern.html">菜鸟模式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="http://c.biancheng.net/view/1402.html">Java设计模式</a>
+ * @see <a href="https://www.runoob.com/design-pattern/interpreter-pattern.html">菜鸟模式</a>
  * @since 2020/9/26 2:51
  */
 public class InterpreterDemo {

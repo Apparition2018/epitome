@@ -17,9 +17,9 @@ import java.util.stream.IntStream;
  * 4 通过构造器初始化所有成员，如果某一个类成员不是原始变量 (primitive) 或者不可变类，必须通过在成员初始化 (in) 或者 get 方法 (out) 时通过深度 clone 方法，来确保类的不可变。
  * </pre>
  * 优点：线程安全
- * <p>参考：<a href="https://www.cnblogs.com/yg_zhang/p/4355354.html">可变类 vs 不可变类</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/yg_zhang/p/4355354.html">可变类 vs 不可变类</a>
  * @since 2020/11/10 19:19
  */
 public final class ImmutableClass {

@@ -38,13 +38,10 @@ import java.util.function.Function;
  * 优点：符合开闭原则<br/>
  * 缺点：使用者必须事先知道有哪些策略和策略之间的不同才能选择策略
  * <p>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/strategy">Strategy</a>
- * <a href="http://c.biancheng.net/view/1378.html">Java设计模式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/strategy">Strategy</a>
+ * @see <a href="http://c.biancheng.net/view/1378.html">Java设计模式</a>
  * @since 2020/9/26 2:51
  */
 public class StrategyDemo {

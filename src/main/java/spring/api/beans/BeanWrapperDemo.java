@@ -9,9 +9,9 @@ import java.util.Map;
 
 /**
  * BeanWrapper
- * <p>参考：<a href="https://www.cnblogs.com/qlqwjy/p/16264681.html">Spring BeanWrapper 的使用</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/qlqwjy/p/16264681.html">Spring BeanWrapper 的使用</a>
  * @since 2023/1/19 15:14
  */
 public class BeanWrapperDemo extends Demo {

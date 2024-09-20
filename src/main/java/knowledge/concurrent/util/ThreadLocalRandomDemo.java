@@ -17,9 +17,9 @@ import static l.demo.Demo.p;
  * Random 实例包括 java.util.Random 的实例或者 Math.random() 的方式
  * 在 JDK7 之后，可以直接使用 API ThreadLocalRandom，而在 JDK7 之前，需要编码保证每个线程持有一个单独的 Random 实例
  * </pre>
- * 参考：<a href="https://www.cnblogs.com/shamo89/p/8052161.html">使用 ThreadLocalRandom 代替 Random</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/shamo89/p/8052161.html">使用 ThreadLocalRandom 代替 Random</a>
  * @since 2020/11/6 9:52
  */
 public class ThreadLocalRandomDemo {

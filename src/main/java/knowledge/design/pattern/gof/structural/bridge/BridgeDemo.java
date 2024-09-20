@@ -28,13 +28,10 @@ import java.util.logging.Handler;
  * 2 与 Abstract Factory 联合使用，使用 Factory 创建 Implementor 需要的不同 Abstraction
  * 3 与 Builder 联合使用，Director 充当 Abstraction，Builder 充当 Implementor
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/bridge">Bridge</a>
- * <a href="http://c.biancheng.net/view/1364.html">Java设计模式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/bridge">Bridge</a>
+ * @see <a href="http://c.biancheng.net/view/1364.html">Java设计模式</a>
  * @since 2020/11/23 19:38
  */
 public class BridgeDemo {

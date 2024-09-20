@@ -7,13 +7,10 @@ package knowledge.design.pattern.other.behavioral;
  * 1 Jenkins Pipeline：Stage, Node, Step
  * 2 Tomcat Pipeline：Pipeline, Value, Context
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://java-design-patterns.com/patterns/pipeline/">Pipeline</a>
- * <a href="https://zhuanlan.zhihu.com/p/370363597">设计模式最佳套路2 —— 基于 Spring 实现管道模式的最佳实践</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://java-design-patterns.com/patterns/pipeline/">Pipeline</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/370363597">设计模式最佳套路2 —— 基于 Spring 实现管道模式的最佳实践</a>
  * @since 2022/2/8 9:32
  */
 public class PipelineDemo {

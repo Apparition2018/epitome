@@ -8,8 +8,7 @@ import static l.demo.Demo.p;
 
 /**
  * Java 的泛型采用的是擦除法实现的伪泛型，因为 Java 开始是不支持泛型的，为了兼容以前的库不得不使用擦除法
- * <pre>
- * {@code
+ * <pre>{@code
  * List<String>, List<Integer>, List<T>     →   List
  * List<String>[]                           →   List[]
  * List<? extends E>, List<? super E>       →   List<E>
@@ -36,4 +35,3 @@ public class TypeErasure {
         // p(list instanceof List<String>) // 编译不通过
     }
 }
-

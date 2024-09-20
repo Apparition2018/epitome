@@ -9,11 +9,11 @@ import java.util.List;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/ListUtils.html">ListUtils</a>
- * <pre>
+ * <pre>{@code
  * static <T> List<T>   defaultIfNull(List<T> list, List<T> defaultList)        如果为 null，返回给定默认 List
  * static <T> List<T>   emptyIfNull(List<T> list)                               如果为 null，返回空 List
  * static int           hashCodeForList(Collection<?> list)                     生成 HashCode
- * static boolean       isEqualList(Collection<?> list1, Collection<?> list2)   判断两个集合是否相等
+ * static boolean       isEqualList(Collection<?> list1, Collection<?> list2)   判断两个集合是否相等}
  * </pre>
  *
  * @author ljh
@@ -50,13 +50,13 @@ public class ListUtilsDemo extends Demo {
     }
 
     /**
-     * <pre>
-     * static <E> List<E>	fixedSizeList(List<E> list)                             固定长度
+     * <pre>{@code
+     * static <E> List<E>   fixedSizeList(List<E> list)                             固定长度
      * static <E> List<E>   lazyList(List<E> list, Factory<? extends E> factory)    延迟创建
      * static <E> List<E>   predicatedList(List<E> list, Predicate<E> predicate)    追加限制
-     * static <E> List<E>	synchronizedList(List<E> list)                          同步
-     * static <E> List<E>	unmodifiableList(List<? extends E> list)                不可修改
-     * static <E> List<E>	transformedList(List<E> list, Transformer<? super E,? extends E> transformer)   追加转换
+     * static <E> List<E>   synchronizedList(List<E> list)                          同步
+     * static <E> List<E>   unmodifiableList(List<? extends E> list)                不可修改
+     * static <E> List<E>   transformedList(List<E> list, Transformer<? super E,? extends E> transformer)   追加转换}
      */
     @Test
     public void testListUtils2() {

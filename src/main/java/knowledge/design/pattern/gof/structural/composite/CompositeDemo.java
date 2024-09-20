@@ -28,13 +28,10 @@ import java.util.stream.IntStream;
  * </pre>
  * 优点：符合开闭原则
  * <p>扩展：使用 Builder 创建复杂 Composite
- * <p>参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/composite">Composite</a>
- * <a href="http://c.biancheng.net/view/1373.html">Java设计模式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/composite">Composite</a>
+ * @see <a href="http://c.biancheng.net/view/1373.html">Java设计模式</a>
  * @since 2020/9/26 2:51
  */
 public class CompositeDemo {

@@ -43,14 +43,11 @@ import java.util.Objects;
  * <pre>
  * keytool -list -keystore C:\Users\Administrator\Desktop\ljh.pfx -rfc
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.iteye.com/blog/snowolf-391931">Java 加密技术（八）——数字证书</a>
- * <a href="https://blog.csdn.net/meng564764406/article/details/79156559">数字证书基本知识总结</a>
- * <a href="https://blog.csdn.net/meng564764406/article/details/79427687">Keytool 或 Keystore 使用及证书转换</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.iteye.com/blog/snowolf-391931">Java 加密技术（八）——数字证书</a>
+ * @see <a href="https://blog.csdn.net/meng564764406/article/details/79156559">数字证书基本知识总结</a>
+ * @see <a href="https://blog.csdn.net/meng564764406/article/details/79427687">Keytool 或 Keystore 使用及证书转换</a>
  * @since 2021/7/7 17:09
  */
 public class CertificateDemo extends Demo {
@@ -129,7 +126,7 @@ public class CertificateDemo extends Demo {
     public static Certificate getCertificate(String certPath) throws CertificateException, IOException {
         CertificateFactory certificateFactory = CertificateFactory.getInstance(CERT_TYPE_X509);
         try (FileInputStream is = new FileInputStream(certPath)) {
-			return certificateFactory.generateCertificate(is);
+            return certificateFactory.generateCertificate(is);
         }
     }
 

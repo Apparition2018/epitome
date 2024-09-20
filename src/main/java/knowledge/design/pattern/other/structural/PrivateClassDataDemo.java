@@ -9,13 +9,10 @@ import java.awt.*;
  * 主类 MainClass
  * 数据类 DataClass
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://sourcemaking.com/design_patterns/private_class_data">Private Class Data</a>
- * <a href="https://java-design-patterns.com/patterns/private-class-data/">Private Class Data</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://sourcemaking.com/design_patterns/private_class_data">Private Class Data</a>
+ * @see <a href="https://java-design-patterns.com/patterns/private-class-data/">Private Class Data</a>
  * @since 2022/2/8 15:59
  */
 public class PrivateClassDataDemo {

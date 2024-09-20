@@ -38,14 +38,11 @@ import java.util.concurrent.ScheduledExecutorService;
  * 1 不定义 Mediator，用 Singleton 代替 ConcreteMediator
  * 2 Colleague 不再持有 Mediator，使用时直接获取 singletonMediator.getInstance()
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/mediator">Mediator</a>
- * <a href="http://c.biancheng.net/view/1393.html">Java设计模式</a>
- * <a href="https://www.runoob.com/design-pattern/mediator-pattern.html">菜鸟模式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/mediator">Mediator</a>
+ * @see <a href="http://c.biancheng.net/view/1393.html">Java设计模式</a>
+ * @see <a href="https://www.runoob.com/design-pattern/mediator-pattern.html">菜鸟模式</a>
  * @since 2020/9/26 2:51
  */
 public class MediatorDemo {

@@ -9,9 +9,9 @@ import java.util.Map;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/Validate.html">Validate</a>
- * <p>参考：<a href="https://blog.csdn.net/yaomingyang/article/details/80876009">Validate 数据校验工具类</a>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/yaomingyang/article/details/80876009">Validate 数据校验工具类</a>
  * @since 2019/8/8 19:39
  */
 public class ValidateDemo {

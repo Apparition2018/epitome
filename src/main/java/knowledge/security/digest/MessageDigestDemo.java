@@ -18,13 +18,10 @@ import java.security.NoSuchAlgorithmException;
  * 消息摘要是安全的单向哈希函数，它接收任意大小的数据，并输出固定长度的哈希值。
  * 消息摘要算法是不可逆的，理论上无法通过反向运算取得原数据内容，因此它通常只能被用来做数据完整性验证。
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#MessageDigest">JDK8 MessageDigest Algorithms</a>
- * <a href="https://www.cnblogs.com/oumyye/p/4593592.html">Java Base64 和消息摘要</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#MessageDigest">JDK8 MessageDigest Algorithms</a>
+ * @see <a href="https://www.cnblogs.com/oumyye/p/4593592.html">Java Base64 和消息摘要</a>
  * @since 2020/11/8 19:04
  */
 public class MessageDigestDemo extends Demo {

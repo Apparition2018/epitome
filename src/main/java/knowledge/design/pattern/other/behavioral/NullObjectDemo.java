@@ -9,13 +9,10 @@ package knowledge.design.pattern.other.behavioral;
  * 真实对象 RealObject：实现预期行为
  * 空对象 NullObject：实现 null 值下的行为
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://sourcemaking.com/design_patterns/null_object">Null Object</a>
- * <a href="https://java-design-patterns.com/patterns/null-object/">Null Object</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://sourcemaking.com/design_patterns/null_object">Null Object</a>
+ * @see <a href="https://java-design-patterns.com/patterns/null-object/">Null Object</a>
  * @since 2022/2/8 16:29
  */
 public class NullObjectDemo {
@@ -25,16 +22,16 @@ public class NullObjectDemo {
      */
     public static void main(String[] args) {
         INode root =
+            new Node(
+                "1",
                 new Node(
-                        "1",
-                        new Node(
-                                "11",
-                                new Node("111", NullNode.getInstance(), NullNode.getInstance()),
-                                NullNode.getInstance()),
-                        new Node(
-                                "12",
-                                NullNode.getInstance(),
-                                new Node("122", NullNode.getInstance(), NullNode.getInstance())));
+                    "11",
+                    new Node("111", NullNode.getInstance(), NullNode.getInstance()),
+                    NullNode.getInstance()),
+                new Node(
+                    "12",
+                    NullNode.getInstance(),
+                    new Node("122", NullNode.getInstance(), NullNode.getInstance())));
 
         root.walk();
     }

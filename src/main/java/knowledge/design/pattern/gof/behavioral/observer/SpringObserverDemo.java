@@ -2,6 +2,7 @@ package knowledge.design.pattern.gof.behavioral.observer;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
@@ -39,14 +40,11 @@ import java.io.Serial;
  * RequestHandledEvent              ApplicationContext 中处理请求时引发的事件。仅适用于使用 Spring 的 DispatcherServlet 的 web 应用程序
  * ServletRequestHandledEvent       RequestHandledEvent 的子类，用于添加特定于 servlet 的上下文信息
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.baeldung.com/spring-events">Spring Events</a>
- * <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#context-functionality-events">Standard and Custom Events</a>
- * <a href="https://zhuanlan.zhihu.com/p/141069636">Springboot学习（二）观察者模式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.baeldung.com/spring-events">Spring Events</a>
+ * @see <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#context-functionality-events">Standard and Custom Events</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/141069636">Springboot学习（二）观察者模式</a>
  * @since 2020/12/3 14:54
  */
 public class SpringObserverDemo {
@@ -54,7 +52,8 @@ public class SpringObserverDemo {
     /**
      * Spring
      */
-    static class SpringListener {
+    @Nested
+    class SpringListener {
 
         @Test
         public void testSpringListener() {

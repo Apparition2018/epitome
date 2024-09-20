@@ -37,9 +37,9 @@ import java.util.List;
  * static long              skip(XXX input, long toSkip)                跳过指定长度的流
  * static void              skipFully(XXX input, long toSkip)           跳过指定长度的流，如果不够跳会抛出异常
  * </pre>
- * 参考：<a href="https://www.cnblogs.com/xing901022/p/5978989.html">IOUtils 总结</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/xing901022/p/5978989.html">IOUtils 总结</a>
  * @since 2019/8/8 19:39
  */
 public class IOUtilsDemo extends Demo {

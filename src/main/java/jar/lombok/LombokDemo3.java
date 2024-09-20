@@ -43,8 +43,8 @@ public class LombokDemo3 extends Demo {
     }
 
     /**
-     * &#064;cleanup
-     * <p>自动资源管理，不用再使用 close() 释放资源
+     * {@code @cleanup}
+     * 自动资源管理，不用再使用 close() 释放资源
      */
     @Test
     public void testCleanup() {
@@ -65,8 +65,8 @@ public class LombokDemo3 extends Demo {
     }
 
     /**
-     * &#064;SneakyThrows
-     * <p>不用捕捉或抛出异常了，谨慎使用
+     * {@code @SneakyThrows}
+     * 不用捕捉或抛出异常了，谨慎使用
      */
     @Test
     @SneakyThrows
@@ -77,8 +77,8 @@ public class LombokDemo3 extends Demo {
     }
 
     /**
-     * &#064;synchronized
-     * <p>几乎相当于 synchronized method
+     * {@code @synchronized}
+     * 几乎相当于 synchronized method
      */
     @Test
     @Synchronized
@@ -86,7 +86,7 @@ public class LombokDemo3 extends Demo {
     }
 
     /**
-     * &#064;Getter(lazy = true)
+     * {@code @Getter(lazy = true)}
      * <pre>
      * 实际使用到的时候才生成
      * 高代码效率，同时由 lombok 管理线程安全问题

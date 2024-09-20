@@ -42,18 +42,15 @@ import java.util.concurrent.ConcurrentHashMap;
  * 1 多例模式：{@link MultitonDemo}
  * 2 TODO(LJH) 分布式单例
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/singleton">Singleton</a>
- * <a href="http://c.biancheng.net/view/1338.html">Java设计模式</a>
- * 设计模式之美：单例模式（上）：为什么说支持懒加载的双重检测不比饿汉式更优？
- * 设计模式之美：单例模式（中）：我为什么不推荐使用单例模式？又有何替代方案？
- * 设计模式之美：单例模式（下）：如何设计实现一个集群环境下的分布式单例模式？
- * <a href="https://gupaoedu-tom.blog.csdn.net/article/details/120972136">Tom|多种单例写法和两种攻击</a>
- * <a href="https://www.baeldung.com/java-static-class-vs-singleton">单例 vs 静态类</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/singleton">Singleton</a>
+ * @see <a href="http://c.biancheng.net/view/1338.html">Java设计模式</a>
+ * @see <a href="">设计模式之美：单例模式（上）：为什么说支持懒加载的双重检测不比饿汉式更优？</a>
+ * @see <a href="">设计模式之美：单例模式（中）：我为什么不推荐使用单例模式？又有何替代方案？</a>
+ * @see <a href="">设计模式之美：单例模式（下）：如何设计实现一个集群环境下的分布式单例模式？</a>
+ * @see <a href="https://gupaoedu-tom.blog.csdn.net/article/details/120972136">Tom|多种单例写法和两种攻击</a>
+ * @see <a href="https://www.baeldung.com/java-static-class-vs-singleton">单例 vs 静态类</a>
  * @since 2019/8/7 17:12
  */
 public class SingletonDemo {

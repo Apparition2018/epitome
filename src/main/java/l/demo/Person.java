@@ -135,19 +135,13 @@ public class Person implements Comparable<Person>, Cloneable, Serializable {
     public static class Student extends Person {
         /**
          * 当一个类实现了可序列化接口，就要定义一个常量：版本号 (serialVersionUID)
-         * <p>
-         * 生成方式：
-         * <pre>
-         * 1 1L
-         * 2 根据类名、接口名、成员方法及属性等来生成
-         * </pre>
-         * 版本号决定着对象反序列化是否成功：
+         * <p>生成方式：①1L；②根据类名、接口名、成员方法及属性等来生成
+         * <p>版本号决定着对象反序列化是否成功：
          * <pre>
          * 1 反序列化的对象的版本号若与当前类版本号一致，反序列化成功。若反序列化对象的结构与当前类接口有变化，那么可以还原的属性就还原，没有的属性就忽略
          * 2 版本号若不一致，则反序列化直接失败
          * </pre>
          * 序列化类新增属性时，请不要修改 serialVersionUID 字段，避免反序列失败；如果完全不兼容升级，避免反序列化混乱，那么请修改 serialVersionUID 值（阿里编程规约）
-         * <p>
          *
          * @see <a href="https://www.zhihu.com/question/24852886/answer/117314768">serialVersionUID 的作用</a>
          */

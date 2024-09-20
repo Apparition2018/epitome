@@ -20,9 +20,9 @@ import static l.demo.Demo.p;
  * 弱引用：无论内存是否充足，都会回收
  * 虚引用：跟没有引用与之关联一样，任何时候都可能被回收
  * </pre>
- * 参考：<a href="https://www.cnblogs.com/dolphin0520/p/3784171.html">Java 如何有效地避免 OOM：善于利用软引用和弱引用</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/dolphin0520/p/3784171.html">Java 如何有效地避免 OOM：善于利用软引用和弱引用</a>
  * @since 2020/11/7 23:00
  */
 public class ReferenceDemo {

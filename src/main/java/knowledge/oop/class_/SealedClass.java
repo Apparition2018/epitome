@@ -8,14 +8,11 @@ package knowledge.oop.class_;
  * 2 final 类        彻底放弃了可扩展性
  * 3 sealed 类       把可扩展控制在可预测和可控制的范围内
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://blog.csdn.net/qq_43284469/article/details/126415220">封闭类</a>
- * <a href="https://achang.blog.csdn.net/article/details/126573767">空指针烦恼</a>
- * <a href="https://openjdk.org/jeps/409">JDK17 JEP 409: Sealed Classes</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/qq_43284469/article/details/126415220">封闭类</a>
+ * @see <a href="https://achang.blog.csdn.net/article/details/126573767">空指针烦恼</a>
+ * @see <a href="https://openjdk.org/jeps/409">JDK17 JEP 409: Sealed Classes</a>
  * @since 2023/2/16 10:10
  */
 public class SealedClass {

@@ -26,9 +26,9 @@ import static l.demo.Demo.p;
  * 2 解决继承的类和实现的接口出现相同方法名的问题
  * 3 实现多继承：建议41
  * </pre>
- * 参考：<a href="https://www.zhihu.com/question/26954130">Java 内部类有什么作用？</a>
  *
  * @author ljh
+ * @see <a href="https://www.zhihu.com/question/26954130">Java 内部类有什么作用？</a>
  * @since 2020/11/17 23:49
  */
 public class InnerClass {

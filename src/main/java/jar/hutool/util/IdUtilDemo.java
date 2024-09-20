@@ -13,14 +13,11 @@ import static l.demo.Demo.p;
  * 2 ObjectId (MongoDB)
  * 3 Snowflake (Twitter)
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/IdUtil.html">IdUtil api</a>
- * <a href="https://mp.weixin.qq.com/s/a5kT_XBGkkvP9xsMlhWBYw">分布式 Unique ID 的生成方法一览</a>
- * <a href="https://tech.meituan.com/2017/04/21/mt-leaf.html">Leaf——美团点评分布式ID生成系统</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/IdUtil.html">IdUtil api</a>
+ * @see <a href="https://mp.weixin.qq.com/s/a5kT_XBGkkvP9xsMlhWBYw">分布式 Unique ID 的生成方法一览</a>
+ * @see <a href="https://tech.meituan.com/2017/04/21/mt-leaf.html">Leaf——美团点评分布式ID生成系统</a>
  * @since 2020/11/19 16:40
  */
 public class IdUtilDemo {

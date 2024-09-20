@@ -44,14 +44,11 @@ import java.util.stream.IntStream;
  *   缺点：只能表示 Action 非常简单的状态机
  * 3 状态模式：建议在 State 不多，Action 复杂的情况下使用
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/state">State</a>
- * <a href="http://c.biancheng.net/view/1388.html">Java设计模式</a>
- * 设计模式之美：状态模式：游戏、工作流引擎中常用的状态机是如何实现的？
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/state">State</a>
+ * @see <a href="http://c.biancheng.net/view/1388.html">Java设计模式</a>
+ * @see <a href="">设计模式之美：状态模式：游戏、工作流引擎中常用的状态机是如何实现的？</a>
  * @since 2020/9/26 2:51
  */
 public class StateDemo {

@@ -16,14 +16,11 @@ package knowledge.oop.class_;
  * 使用动机      代码复用   实现多态
  *             类的抽象   行为的抽象
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.iteye.com/blog/yinny-1152430">接口 vs 抽象类</a>
- * <a href="https://mp.weixin.qq.com/s/viaZtRXp3tCPtmph9bRKCA">接口 vs 抽象类</a>
- * <a href="https://www.zhihu.com/question/36909455/answer/303566988">抽象类实现接口有什么意义？</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.iteye.com/blog/yinny-1152430">接口 vs 抽象类</a>
+ * @see <a href="https://mp.weixin.qq.com/s/viaZtRXp3tCPtmph9bRKCA">接口 vs 抽象类</a>
+ * @see <a href="https://www.zhihu.com/question/36909455/answer/303566988">抽象类实现接口有什么意义？</a>
  * @since 2019/8/8 19:39
  */
 public class AbstractClass {

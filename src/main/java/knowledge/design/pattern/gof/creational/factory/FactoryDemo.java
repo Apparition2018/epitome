@@ -36,14 +36,11 @@ import java.util.*;
  * 2 工厂方法：符合
  * 3 抽象工厂：只增加 ConcreteProduct 符合；增加 Product 违反
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.zhihu.com/question/27125796/answer/1615074467">简单工厂 vs 工厂方法 vs 抽象工厂</a>
- * <a href="https://zhuanlan.zhihu.com/p/392524169">设计模式最佳套路5 —— 愉快地使用工厂方法模式</a>
- * 枚举实现工厂模式 {@link Suggestions#test088()}
- * </pre>
+ * {@link Suggestions#test088() 枚举实现工厂模式}
  *
  * @author ljh
+ * @see <a href="https://www.zhihu.com/question/27125796/answer/1615074467">简单工厂 vs 工厂方法 vs 抽象工厂</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/392524169">设计模式最佳套路5 —— 愉快地使用工厂方法模式</a>
  * @since 2022/1/23 0:49
  */
 public class FactoryDemo {

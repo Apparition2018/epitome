@@ -26,13 +26,10 @@ import static l.demo.Demo.p;
  * 2 所有的枚举类型字段必须要有注释，说明每个数据项的用途
  * 3 枚举 enum（括号内）的属性字段必须是私有且不可变
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.cnblogs.com/lihaoyang/p/6913295.html">Java 常量类的项目实践</a>
- * <a href="https://blog.csdn.net/smd2575624555/article/details/113363688">values(), valueOf(String name) 如何产生</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/lihaoyang/p/6913295.html">Java 常量类的项目实践</a>
+ * @see <a href="https://blog.csdn.net/smd2575624555/article/details/113363688">values(), valueOf(String name) 如何产生</a>
  * @since 2020/11/2 19:39
  */
 public class EnumDemo {

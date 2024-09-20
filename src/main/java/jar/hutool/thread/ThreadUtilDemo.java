@@ -11,8 +11,7 @@ import java.util.stream.IntStream;
 /**
  * <a href="https://hutool.cn/docs/#/core/线程和并发/线程工具-ThreadUtil">ThreadUtil</a>     线程工具
  * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/thread/ThreadUtil.html">ThreadUtil api</a>
- * <pre>
- * {@code
+ * <pre>{@code
  * static ThreadFactory             newNamedThreadFactory(String prefix[, ThreadGroup threadGroup], boolean isDaemon[, UncaughtExceptionHandler handler)]]  创建 ThreadFactory
  * static Thread                    newThread(Runnable runnable, String name[, boolean isDaemon])   创建 Thread
  * static ExecutorService           newSingleExecutor()                                 创建单线程线程池

@@ -14,13 +14,10 @@ import static l.demo.Demo.DEMO_DIR_PATH;
 
 /**
  * <a href="https://davidvlijmincx.com/posts/creating_context_specific_deserialization_filters/">ObjectInputFilter</a> 反序列化过滤器
- * <p>参考：
- * <pre>
- * <a href="https://snyk.io/blog/serialization-and-deserialization-in-java/">解释 Java 反序列化漏洞</a>
- * <a href="https://cryin.github.io/blog/secure-development-java-deserialization-vulnerability/">JAVA 反序列化漏洞之殇</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://snyk.io/blog/serialization-and-deserialization-in-java/">解释 Java 反序列化漏洞</a>
+ * @see <a href="https://cryin.github.io/blog/secure-development-java-deserialization-vulnerability/">JAVA 反序列化漏洞之殇</a>
  * @since 2023/9/28 9:23
  */
 public class ObjectInputFilterDemo {

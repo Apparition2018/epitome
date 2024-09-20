@@ -22,9 +22,9 @@ import java.util.Map;
  * 3 简单：只能说部分脚本语言简单，比如 Groovy，对于程序员来说，没有多大的门槛。
  * </pre>
  * Nashorn JS 引擎：JDK8 引入，JDK11 移除
- * <p>参考：<a href="https://blog.didispace.com/books/java8-tutorial/ch3.html">JDK8 Nashorn 教程</a>
  *
  * @author ljh
+ * @see <a href="https://blog.didispace.com/books/java8-tutorial/ch3.html">JDK8 Nashorn 教程</a>
  * @since 2021/8/10 15:52
  */
 public class ScriptDemo extends Demo {

@@ -20,17 +20,14 @@ import static l.demo.Demo.p;
  * 4 通过输出流向客户端发送响应信息。
  * 5 关闭响应的资源。
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.cnblogs.com/yiwangzhibujian/p/7107785.html">Java Socket 编程基础及深入讲解</a>
- * <a href="https://blog.csdn.net/a78270528/article/details/80318571">Java 网络编程 之 socket 的用法与实现</a>
- * <a href="http://www.runoob.com/java/net-multisoc.html">Java 实例 - Socket 实现多线程服务器程序</a>
- * <a href="http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html">互联网协议入门（一）</a>
- * <a href="http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html">互联网协议入门（二）</a>
- * <a href="https://blog.csdn.net/u012426327/article/details/77160503">单工，半双工，全双工</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/yiwangzhibujian/p/7107785.html">Java Socket 编程基础及深入讲解</a>
+ * @see <a href="https://blog.csdn.net/a78270528/article/details/80318571">Java 网络编程 之 socket 的用法与实现</a>
+ * @see <a href="http://www.runoob.com/java/net-multisoc.html">Java 实例 - Socket 实现多线程服务器程序</a>
+ * @see <a href="http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html">互联网协议入门（一）</a>
+ * @see <a href="http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html">互联网协议入门（二）</a>
+ * @see <a href="https://blog.csdn.net/u012426327/article/details/77160503">单工，半双工，全双工</a>
  * @since 2020/11/17 19:09
  */
 public class TCPServer implements Runnable {

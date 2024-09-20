@@ -22,13 +22,10 @@ import org.springframework.context.event.EventListener;
  * 6 ApplicationRunner's run()
  * 7 CommandLineRunner's run()
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.jianshu.com/p/01e08aef73c9">Guide To Running Logic on Startup in Spring</a>
- * <a href="https://www.jianshu.com/p/01e08aef73c9">SpringBoot 启动初始化数据</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.jianshu.com/p/01e08aef73c9">Guide To Running Logic on Startup in Spring</a>
+ * @see <a href="https://www.jianshu.com/p/01e08aef73c9">SpringBoot 启动初始化数据</a>
  * @since 2021/12/10 15:33
  */
 @Slf4j

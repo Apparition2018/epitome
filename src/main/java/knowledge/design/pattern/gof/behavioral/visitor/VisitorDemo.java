@@ -35,16 +35,13 @@ import java.util.List;
  * 3 可能破坏封装 ???
  * </pre>
  * 扩展：当 ConcreteElement 为 LeafElement/CompositeElement 时，与 Composite 联合使用
- * <p>参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/visitor">Visitor</a>
- * <a href="http://c.biancheng.net/view/1397.html">Java设计模式</a>
- * <a href="https://www.runoob.com/design-pattern/visitor-pattern.html">菜鸟模式</a>
- * 设计模式之美：访问者模式（上）：手把手带你还原访问者模式诞生的思维过程
- * 设计模式之美：访问者模式（下）：为什么支持双分派的语言不需要访问者模式？
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/visitor">Visitor</a>
+ * @see <a href="http://c.biancheng.net/view/1397.html">Java设计模式</a>
+ * @see <a href="https://www.runoob.com/design-pattern/visitor-pattern.html">菜鸟模式</a>
+ * @see <a href="">设计模式之美：访问者模式（上）：手把手带你还原访问者模式诞生的思维过程</a>
+ * @see <a href="">设计模式之美：访问者模式（下）：为什么支持双分派的语言不需要访问者模式？</a>
  * @since 2020/9/26 2:51
  */
 public class VisitorDemo {

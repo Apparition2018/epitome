@@ -46,13 +46,10 @@ import java.util.concurrent.locks.ReentrantLock;
  *     </tr>
  * </table>
  * <p>性能：但随着版本的不断优化，synchronized 效率越来越高，一般情况下优先使用 synchronized
- * <p>参考：
- * <pre>
- * <a href="https://www.cnblogs.com/dolphin0520/p/3923167.html">并发编程 Lock</a>
- * <a href="https://blog.csdn.net/ns_code/article/details/17487337">Lock 锁和条件变量</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/dolphin0520/p/3923167.html">并发编程 Lock</a>
+ * @see <a href="https://blog.csdn.net/ns_code/article/details/17487337">Lock 锁和条件变量</a>
  * @since 2020/11/17 19:09
  */
 public class LockDemo {

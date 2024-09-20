@@ -32,13 +32,10 @@ import java.io.File;
  * 1 引入 AbstractFacade 和 ConcreteFacade 的概念，可以一定程度上解决违反开闭原则的缺点
  * 2 由于 Facade 持有多个 Subsystem 的引用，可以把 Facade 设计为 Singleton，控制内存开销
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/facade">Facade</a>
- * <a href="http://c.biancheng.net/view/1369.html">Java设计模式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/facade">Facade</a>
+ * @see <a href="http://c.biancheng.net/view/1369.html">Java设计模式</a>
  * @since 2020/9/26 2:51
  */
 public class FacadeDemo {

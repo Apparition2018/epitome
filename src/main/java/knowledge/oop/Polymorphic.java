@@ -24,13 +24,10 @@ import l.demo.Animal.Cat;
  * 2 重写
  * 3 父类引用指向子类对象
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.cnblogs.com/mengchunchen/p/7860397.html">静态分派 vs 动态分派</a>
- * <a href="https://www.zhihu.com/question/30082151">几句话解析 Java 多态</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/mengchunchen/p/7860397.html">静态分派 vs 动态分派</a>
+ * @see <a href="https://www.zhihu.com/question/30082151">几句话解析 Java 多态</a>
  * @since 2019/8/8 19:39
  */
 public class Polymorphic {

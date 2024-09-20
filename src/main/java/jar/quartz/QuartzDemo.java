@@ -19,15 +19,12 @@ import static l.demo.Demo.DATE_TIME_FORMAT;
  * ,：列表
  * /：等步长，如 0/3 表示从0开始每3秒执行
  * </pre>
- * 参考：
- * <pre>
- * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#定时任务">RuoYi 定时任务 (ruoyi-quartz)</a>
- * <a href="https://blog.csdn.net/userlhj/article/details/89510837">Spring 继承 Quartz</a>
- * <a href="https://cron.qqe2.com/">在线 Cron 表达式生成器</a>
- * <a href="https://mp.weixin.qq.com/s/CtpcHJLkbkub06SBf6Ajbg">Java 定时任务的6种实现方式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#定时任务">RuoYi 定时任务 (ruoyi-quartz)</a>
+ * @see <a href="https://blog.csdn.net/userlhj/article/details/89510837">Spring 继承 Quartz</a>
+ * @see <a href="https://cron.qqe2.com/">在线 Cron 表达式生成器</a>
+ * @see <a href="https://mp.weixin.qq.com/s/CtpcHJLkbkub06SBf6Ajbg">Java 定时任务的6种实现方式</a>
  * @since 2019/8/8 19:39
  */
 @Slf4j

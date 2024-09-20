@@ -11,24 +11,20 @@ import java.util.TreeSet;
 
 /**
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#sets">Sets</a>
- * <pre>
- * {@code
- * static Set<E>                    newConcurrentHashSet([Iterable<? extends E> elements])      创建 ConcurrentHashSet
- * static CopyOnWriteArraySet<E>    newCopyOnWriteArraySet(Iterable<? extends E> elements)      创建 CopyOnWriteArraySet
- * static TreeSet<E>                newTreeSet(Iterable<? extends E> elements)                  创建 TreeSet
- * static EnumSet<E>                newEnumSet(Iterable<E> iterable, Class<E> elementType)      创建 EnumSet
- * static Set<E>                    newIdentityHashSet()                                        创建 IdentityHashSet
+ * <pre>{@code
+ * static Set<E>                    newConcurrentHashSet([Iterable<? extends E> elements])
+ * static CopyOnWriteArraySet<E>    newCopyOnWriteArraySet(Iterable<? extends E> elements)
+ * static TreeSet<E>                newTreeSet(Iterable<? extends E> elements)
+ * static EnumSet<E>                newEnumSet(Iterable<E> iterable, Class<E> elementType)
+ * static Set<E>                    newIdentityHashSet()
  *
  * static <E> NavigableSet<E>       unmodifiableNavigableSet(NavigableSet<E> set)
  * static <E> NavigableSet<E>       synchronizedNavigableSet(NavigableSet<E> navigableSet)}
  * </pre>
- * 参考：
- * <pre>
- * <a href="http://www.ibloger.net/article/3313.html">Guava Sets</a>
- * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Sets.html">Sets api</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="http://www.ibloger.net/article/3313.html">Guava Sets</a>
+ * @see <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Sets.html">Sets api</a>
  * @since 2019/8/8 19:39
  */
 public class SetsDemo extends Demo {

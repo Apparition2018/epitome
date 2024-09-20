@@ -52,8 +52,7 @@ public class PeriodDemo {
 
 
     /**
-     * <pre>
-     * {@code
+     * <pre>{@code
      * int                  getYears()                  获取这段时间的年数
      * int                  getMonths()                 获取此期间的月数
      * int                  getDays()                   得到此期间的天数

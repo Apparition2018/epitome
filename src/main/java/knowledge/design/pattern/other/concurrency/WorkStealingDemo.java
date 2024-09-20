@@ -19,13 +19,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 在大多数时候，它们只是访问自己的双端队列。即使需要访问另一个队列时，也是从队列的尾部获取工作，降低了队列上的竞争程度。
  * 工作密取非常适用于即是消费者也是生产者的问题，当执行某个工作时可能导致出现更多的工作。
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://img-blog.csdnimg.cn/20190602161352675.png">工作密取示意图</a>
- * <a href="https://blog.csdn.net/hxpjava1/article/details/44245593">LinkedBlockingDeque 工作密取</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://img-blog.csdnimg.cn/20190602161352675.png">工作密取示意图</a>
+ * @see <a href="https://blog.csdn.net/hxpjava1/article/details/44245593">LinkedBlockingDeque 工作密取</a>
  * @since 2020/10/19 16:17
  */
 public class WorkStealingDemo extends Demo {

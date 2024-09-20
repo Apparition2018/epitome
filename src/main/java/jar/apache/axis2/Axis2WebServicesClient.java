@@ -25,19 +25,20 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * WebServices 客户端
- * <p>参考：
+ * Axis2 Web Services 客户端
+ * <p>公开的 Web Services：
  * <pre>
- * <a href="https://www.bilibili.com/video/BV1WJ41167da/">WebServices Java 调用</a>
  * <a href="http://www.webxml.com.cn/zh_cn/web_services.aspx">WEB服务（Web Services）</a>
  * <a href="https://www.postman.com/cs-demo/public-soap-apis/collection/eebj1yq/public-soap-apis">Public SOAP APIs</a>
  * <a href="https://www.microfocus.com/documentation/silk-performer/195/en/silkperformer-195-webhelp-en/SILKPERF-9B8724D2-SOA-PUBLICWEBSERVICES.html">Public Web Services</a>
  * </pre>
  *
  * @author ljh
+ * @see <a href="https://axis.apache.org/axis2/java/core/index.html">Apache Axis2</a>
+ * @see <a href="https://www.bilibili.com/video/BV1WJ41167da/">WebServices Java 调用</a>
  * @since 2024/8/27 8:50
  */
-public class WebServicesClientDemo {
+public class Axis2WebServicesClient {
 
     /**
      * getChildElements & getChildrenWithName
@@ -83,15 +84,17 @@ public class WebServicesClientDemo {
     }
 
     /**
-     * 生成代码
+     * 生成客户端
      * <pre>
      * 1 下载 axis-1.x.x-bin.zip 并解压到指定目录
      * 2 设置环境变量 AXIS2_HOME 为解压后的目录路径，并将 AXIS2_HOME\bin 添加到 PATH
-     * 3 在 cmd 输入 cd 到 AXIS2_HOME\bin，并输入：wsdl2java.bat -uri xxx -o D:\webservice -p com.ljh
+     * 3 在 cmd 输入：%AXIS2_HOME%\bin\wsdl2java.bat -uri xxx -p com.ljh
      * </pre>
+     *
+     * @see <a href="https://axis.apache.org/axis2/java/core/docs/userguide-creatingclients.html">Creating Clients</a>
      */
     @Test
-    public void testGenerateCode() throws RemoteException {
+    public void testGeneratedClient() throws RemoteException {
         final String WSDL_URL = "https://demo.borland.com/BorlandSampleService/BorlandSampleService.asmx?wsdl";
         Service1Stub stub = new Service1Stub(WSDL_URL);
         Service1Stub.User user = new Service1Stub.User();

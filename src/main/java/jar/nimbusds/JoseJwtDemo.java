@@ -35,16 +35,13 @@ import java.util.List;
  *   2.3 Private Claim Names：使用者自定义
  * 3 Signature：HmacSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://jwt.io/introduction">JSON Web Token Introduction</a>
- * <a href="https://zhuanlan.zhihu.com/p/86937325">JWT 介绍</a>
- * <a href="https://learnku.com/articles/17883">JWT 超详细分析</a>
- * <a href="https://www.zhihu.com/question/274566992">JWT 与 Token+Redis，哪种方案更好用？</a>
- * <a href="https://mp.weixin.qq.com/s/Jo3PZoa7nL99c8UCxPiTTA">nimbus-jose-jwt 使用介绍</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://jwt.io/introduction">JSON Web Token Introduction</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/86937325">JWT 介绍</a>
+ * @see <a href="https://learnku.com/articles/17883">JWT 超详细分析</a>
+ * @see <a href="https://www.zhihu.com/question/274566992">JWT 与 Token+Redis，哪种方案更好用？</a>
+ * @see <a href="https://mp.weixin.qq.com/s/Jo3PZoa7nL99c8UCxPiTTA">nimbus-jose-jwt 使用介绍</a>
  * @since 2021/8/27 8:59
  */
 public class JoseJwtDemo extends Demo {
@@ -53,11 +50,11 @@ public class JoseJwtDemo extends Demo {
 
     public static void main(String[] args) throws JsonProcessingException, JOSEException, ParseException {
         PayloadDto payloadDto = new PayloadDto()
-                .setSub(MY_NAME).setIat(System.currentTimeMillis())
-                .setExp(DateUtils.addHours(new Date(), 6).getTime())
-                .setJti(new AlternativeJdkIdGenerator().generateId().toString())
-                .setUsername(MY_NAME)
-                .setAuthorities(Collections.singletonList("ADMIN"));
+            .setSub(MY_NAME).setIat(System.currentTimeMillis())
+            .setExp(DateUtils.addHours(new Date(), 6).getTime())
+            .setJti(new AlternativeJdkIdGenerator().generateId().toString())
+            .setUsername(MY_NAME)
+            .setAuthorities(Collections.singletonList("ADMIN"));
 
         String token = generateTokenByHMAC(jsonMapper.writeValueAsString(payloadDto), SECRET);
         p("token = " + token);

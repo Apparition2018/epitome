@@ -31,16 +31,13 @@ import java.util.concurrent.TimeUnit;
  * 1 状态标记 volatile boolean
  * 2 双重检查 double check，如双重检查锁单例
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://blog.csdn.net/dhfzhishi/article/details/74279091">深入 Java 内存模型—happen-before 规则及其对 DCL 的分析</a>
- * <a href="https://blog.csdn.net/ns_code/article/details/17377197">深入 Java 内存模型—内存操作规则总结</a>
- * <a href="https://www.jianshu.com/p/195ae7c77afe">volatile 关键字解惑</a>
- * <a href="https://www.jb51.net/article/115374.htm">volatile 的理解与正确使用</a>
- * <a href="https://www.cnblogs.com/ouyxy/p/7242563.html">volatile 的适用场景</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/dhfzhishi/article/details/74279091">深入 Java 内存模型—happen-before 规则及其对 DCL 的分析</a>
+ * @see <a href="https://blog.csdn.net/ns_code/article/details/17377197">深入 Java 内存模型—内存操作规则总结</a>
+ * @see <a href="https://www.jianshu.com/p/195ae7c77afe">volatile 关键字解惑</a>
+ * @see <a href="https://www.jb51.net/article/115374.htm">volatile 的理解与正确使用</a>
+ * @see <a href="https://www.cnblogs.com/ouyxy/p/7242563.html">volatile 的适用场景</a>
  * @since 2020/11/18 19:37
  */
 public class Volatile {

@@ -16,13 +16,10 @@ import java.util.stream.IntStream;
  * BASE 加密后产生的字节位数是8的倍数，如果不够位数以 = 符号填充。
  * </pre>
  * 应用场景：e-mail、密钥、证书文件
- * <p>参考：
- * <pre>
- * <a href="https://www.cnblogs.com/chengmo/archive/2014/05/18/3735917.html">Base64 算法原理</a>
- * <a href="https://www.imooc.com/learn/285">Java 实现 Base64 加密</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/chengmo/archive/2014/05/18/3735917.html">Base64 算法原理</a>
+ * @see <a href="https://www.imooc.com/learn/285">Java 实现 Base64 加密</a>
  * @since 2020/11/18 19:37
  */
 public class Base64Demo extends Demo {

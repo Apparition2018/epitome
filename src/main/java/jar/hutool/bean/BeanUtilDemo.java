@@ -12,8 +12,7 @@ import java.util.Map;
 /**
  * <a href="https://hutool.cn/docs/#/core/JavaBean/Bean工具-BeanUtil">BeanUtil</a>    Bean工具
  * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanUtil.html">BeanUtil api</a>
- * <pre>
- * {@code
+ * <pre>{@code
  * static PropertyEditor        findEditor(Class<?> type)                               返回类型转换器 PropertyEditor
  * static PropertyDescriptor[]  getPropertyDescriptors(Class<?>[, fieldName][, ignoreCase])  返回 Bean 字段描述数组
  * static Map<String, PDMap>    getPropertyDescriptorMap(Class<?>, ignoreCase)          返回字段名和字段描述 Map，获得的结果会缓存在 BeanInfoCache 中

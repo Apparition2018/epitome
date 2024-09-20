@@ -9,9 +9,9 @@ package knowledge.oop.interface_;
  * 3 RandomAccess
  * </pre>
  * 作用：当某个类实现了这个接口的时候，我们就认为该类拥有了标记接口所描述的功能。
- * <p>参考：<a href="https://blog.csdn.net/x_iya/article/details/79071839">Java 标记接口</a>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/x_iya/article/details/79071839">Java 标记接口</a>
  * @since 2020/11/13 22:52
  */
 public class MarkInterface {

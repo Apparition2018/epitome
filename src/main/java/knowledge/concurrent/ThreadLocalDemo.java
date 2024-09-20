@@ -17,13 +17,10 @@ import java.util.List;
  * 3 进行事务操作，用于存储线程事务信息
  * 4 数据库连接，Session 会话管理
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://baijiahao.baidu.com/s?id=1653790035315010634">知道 ThreadLocal 嘛？谈谈你对它的理解？</a>
- * <a href="https://blog.csdn.net/qq_33589510/article/details/105071141">说说线程封闭与 ThreadLocal 的关系</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://baijiahao.baidu.com/s?id=1653790035315010634">知道 ThreadLocal 嘛？谈谈你对它的理解？</a>
+ * @see <a href="https://blog.csdn.net/qq_33589510/article/details/105071141">说说线程封闭与 ThreadLocal 的关系</a>
  * @since 2020/11/6 12:55
  */
 public class ThreadLocalDemo {

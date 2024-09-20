@@ -18,11 +18,12 @@ import static l.demo.Demo.p;
 public class LombokDemo2 {
 
     /**
-     * &#064;Accessors
-     * <p>主要用于控制生成的 getter / setter
-     * <p>fluent boolean 值，默认 false。如果为 true，生成的 getter / setter 方法前面不带 get / set
-     * <p>chain boolean 值，默认 false。如果为 true，setter 返回的是此对象，方便链式调用方法
-     * <p>prefix 去除前缀
+     * {@code @Accessors}
+     * <pre>
+     * 主要用于控制生成的 getter / setter
+     * fluent boolean 值，默认 false。如果为 true，生成的 getter / setter 方法前面不带 get / set
+     * chain boolean 值，默认 false。如果为 true，setter 返回的是此对象，方便链式调用方法
+     * prefix 去除前缀
      */
     @Test
     public void testAccessorsFluentAndChain() {
@@ -52,8 +53,8 @@ public class LombokDemo2 {
     }
 
     /**
-     * &#064;FieldDefaults
-     * <p>主要用于给字段添加修饰符
+     * {@code @FieldDefaults}
+     * 主要用于给字段添加修饰符
      */
     @Test
     public void testFieldDefaults() {
@@ -71,9 +72,14 @@ public class LombokDemo2 {
     }
 
     /**
-     * &#064;Value
-     * <p>不可变对象
-     * <p>相当于 @Getter, @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE), @AllArgsConstructor, @ToString, @EqualsAndHashCode
+     * {@code @Value}
+     * 不可变对象，相当于
+     * <pre>{@code
+     * @Getter
+     * @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
+     * @AllArgsConstructor
+     * @ToString
+     * @EqualsAndHashCode}
      */
     @Test
     public void testValue() {
@@ -95,12 +101,12 @@ public class LombokDemo2 {
     @Test
     public void testBuilder() {
         User8 u = User8.builder()
-                .id(1)
-                .name("Henry")
-                .password("123")
-                .interest("football")
-                .interest("running")
-                .build();
+            .id(1)
+            .name("Henry")
+            .password("123")
+            .interest("football")
+            .interest("running")
+            .build();
 
         p(u); // User8(id=1, name=Henry, password=123, interests=[football, running])
 

@@ -29,9 +29,9 @@ import java.util.List;
  * 2 HttpSessionAttributeListener
  * 3 ServletContextAttributeListener
  * </pre>
- * 参考：<a href="https://www.baeldung.com/javaee-web-annotations#weblistener">@WebListener</a>
  *
  * @author ljh
+ * @see <a href="https://www.baeldung.com/javaee-web-annotations#weblistener">@WebListener</a>
  * @since 2019/7/22 11:44
  */
 @WebListener

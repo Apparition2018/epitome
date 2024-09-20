@@ -18,15 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
  * 2 创建一个 Java 类继承 WebMvcConfigurer/WebMvcConfigurationSupport，并重写 addInterceptors 方法
  * 3 实例化自定义的拦截器，并添加到拦截器链中
  * </pre>
- * 参考：
- * <pre>
- * <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#防重复提交">RuoYi 防重复提交</a> (RepeatSubmitInterceptor)
- * <a href="https://blog.csdn.net/qq_35098526/article/details/88734991">Web MvcConfigurer & HandlerInterceptorAdapter</a>
- * <a href="https://blog.csdn.net/qq_41788977/article/details/103610068">Spring Interceptor & Servlet Filter</a>
- * <a href="https://www.baeldung.com/spring-mvc-handlerinterceptor-vs-filter">HandlerInterceptors vs. Filters in Spring MVC</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#防重复提交">RuoYi 防重复提交</a> (RepeatSubmitInterceptor)
+ * @see <a href="https://blog.csdn.net/qq_35098526/article/details/88734991">Web MvcConfigurer & HandlerInterceptorAdapter</a>
+ * @see <a href="https://blog.csdn.net/qq_41788977/article/details/103610068">Spring Interceptor & Servlet Filter</a>
+ * @see <a href="https://www.baeldung.com/spring-mvc-handlerinterceptor-vs-filter">HandlerInterceptors vs. Filters in Spring MVC</a>
  * @since 2019/8/8 19:39
  */
 @Slf4j

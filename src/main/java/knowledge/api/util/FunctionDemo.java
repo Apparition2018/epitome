@@ -3,6 +3,7 @@ package knowledge.api.util;
 import l.demo.Demo;
 import l.demo.Person;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -119,7 +120,8 @@ public class FunctionDemo extends Demo {
      * <a href="https://blog.csdn.net/m0_37779570/article/details/81871197">Supplier<T></a>
      * <p>不接受参数，返回一个新的对象 T
      */
-    static class SupplierDemo {
+    @Nested
+    public class SupplierDemo {
 
         /** 一个 Stream 只允许被中间或终端操作操作一次，可通过 Supplier 的 get() 来获取新的 Stream，再对其进行操作 */
         @Test

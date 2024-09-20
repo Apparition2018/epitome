@@ -16,9 +16,9 @@ import static l.demo.Demo.p;
  * 9 子类非静态代码块
  * 10 子类构造器
  * </pre>
- * 参考：<a href="https://blog.csdn.net/mmd0308/article/details/75453720">对象初始化过程详解</a>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/mmd0308/article/details/75453720">对象初始化过程详解</a>
  * @since 2019/8/8 19:39
  */
 public class ClassInitialization {

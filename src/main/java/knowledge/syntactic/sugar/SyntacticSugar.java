@@ -17,9 +17,9 @@ package knowledge.syntactic.sugar;
  * 12 switch-case 对 String 和 枚举的支持
  * 13 String 对 + 号的支持
  * </pre>
- * 参考：<a href="https://www.cnblogs.com/helloworld2048/p/10916453.html">Java 语法糖详解</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/helloworld2048/p/10916453.html">Java 语法糖详解</a>
  * @since 2020/9/24 11:57
  */
 public class SyntacticSugar {

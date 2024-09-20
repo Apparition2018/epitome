@@ -12,12 +12,10 @@ import java.nio.file.Paths;
 
 /**
  * Tika
- * <pre>
- * <a href="https://www.oschina.net/p/tika">Apache Tika 内容抽取工具集合</a>
- * <a href="https://blog.csdn.net/weixin_42184707/article/details/91045592">Apache Tika 介绍及使用</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.oschina.net/p/tika">Apache Tika 内容抽取工具集合</a>
+ * @see <a href="https://blog.csdn.net/weixin_42184707/article/details/91045592">Apache Tika 介绍及使用</a>
  * @since 2020/10/25 1:06
  */
 public class TikaDemo extends Demo {

@@ -18,9 +18,9 @@ import static l.demo.Demo.p;
  * 3 既是生产者也是消费者: 既要存储又要读取，那就别使用泛型通配符。
  * </pre>
  * 泛型通配符<? extends T>来接收返回的数据，此写法的泛型集合不能使用 add 方法， 而<? super T>不能使用 get 方法，两者在接口调用赋值的场景中容易出错（阿里编程规约）
- * <p>参考：<a href="https://www.cnblogs.com/songhuiqiang/p/10631268.html">泛型类、泛型方法、类型通配符的使用</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/songhuiqiang/p/10631268.html">泛型类、泛型方法、类型通配符的使用</a>
  * @since 2019/9/9 00:51
  */
 public class Generic<T> {

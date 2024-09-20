@@ -18,9 +18,9 @@ import java.util.Arrays;
  * 6 迪米特法则 (Law of Demeter) / 最少知识原则 (Least Knowledge Principle)
  * 7 合成复用原则 (Composite/Aggregate Reuse Principle)
  * </pre>
- * 参考：<a href="https://www.baeldung.com/solid-principles">A Solid Guide to SOLID Principles</a>
  *
  * @author ljh
+ * @see <a href="https://www.baeldung.com/solid-principles">A Solid Guide to SOLID Principles</a>
  * @since 2020/9/24 16:13
  */
 public class TheSolidPrinciples {

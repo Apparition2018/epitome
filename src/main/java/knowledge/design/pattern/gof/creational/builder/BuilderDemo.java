@@ -33,14 +33,11 @@ import java.nio.ByteBuffer;
  * 导演 Director (可选)：定义构造步骤的调用顺序，创建特定 Product
  * </pre>
  * 优点：符合单一职责原则、迪米特法则
- * <p>参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/builder">Builder</a>
- * <a href="http://c.biancheng.net/view/1354.html">Java设计模式</a>
- * <a href="https://gupaoedu-tom.blog.csdn.net/article/details/121016859">Tom|动态构建SQL语句</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/builder">Builder</a>
+ * @see <a href="http://c.biancheng.net/view/1354.html">Java设计模式</a>
+ * @see <a href="https://gupaoedu-tom.blog.csdn.net/article/details/121016859">Tom|动态构建SQL语句</a>
  * @since 2020/9/26 2:51
  */
 public class BuilderDemo {
@@ -201,13 +198,13 @@ public class BuilderDemo {
 
         public static void main(String[] args) {
             Car car = new Car.Builder()
-                    .setCarType(CarType.CITY_CAR)
-                    .setSeats(2)
-                    .setEngine(new Engine(1.2, 0))
-                    .setTransmission(Transmission.AUTOMATIC)
-                    .setTripComputer(new TripComputer())
-                    .setGPSNavigator(new GPSNavigator())
-                    .build();
+                .setCarType(CarType.CITY_CAR)
+                .setSeats(2)
+                .setEngine(new Engine(1.2, 0))
+                .setTransmission(Transmission.AUTOMATIC)
+                .setTripComputer(new TripComputer())
+                .setGPSNavigator(new GPSNavigator())
+                .build();
             System.out.println("Car built:\n" + car.getCarType());
         }
 

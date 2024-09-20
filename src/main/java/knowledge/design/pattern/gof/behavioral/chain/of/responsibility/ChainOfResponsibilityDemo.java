@@ -48,13 +48,10 @@ import java.util.logging.Logger;
  * 2 管道模式 {@link PipelineDemo}
  * 3 <a href="https://www.kancloud.cn/sstd521/design/193638">与 Command 联合使用</a>
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/chain-of-responsibility">Chain of Responsibility</a>
- * <a href="http://c.biancheng.net/view/1383.html">Java设计模式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/chain-of-responsibility">Chain of Responsibility</a>
+ * @see <a href="http://c.biancheng.net/view/1383.html">Java设计模式</a>
  * @since 2020/9/26 2:51
  */
 public class ChainOfResponsibilityDemo {

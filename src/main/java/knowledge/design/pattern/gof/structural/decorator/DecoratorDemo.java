@@ -54,13 +54,10 @@ import java.util.zip.InflaterInputStream;
  * 1 透明装饰模式：Client 应该将对象全部声明为 Component，而不是 ConcreteComponent 或 ConcreteDecorator
  * 2 半透明装饰模式：为了调用 ConcreteDecorator 新增的方法而不得不把对象声明为 ConcreteDecorator，缺点无法再次装饰
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/decorator">Decorator</a>
- * <a href="http://c.biancheng.net/view/1366.html">Java设计模式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/decorator">Decorator</a>
+ * @see <a href="http://c.biancheng.net/view/1366.html">Java设计模式</a>
  * @since 2020/9/26 2:51
  */
 public class DecoratorDemo {
@@ -75,8 +72,8 @@ public class DecoratorDemo {
     public static void main(String[] args) {
         String salaryRecords = "Name,Salary\nJohn Smith,100000\nSteven Jobs,912000";
         DataSource dataSource = new CompressionDecorator(
-                new EncryptionDecorator(
-                        new FileDataSource("OutputDemo.txt")));
+            new EncryptionDecorator(
+                new FileDataSource("OutputDemo.txt")));
         dataSource.writeData(salaryRecords);
 
         DataSource plain = new FileDataSource("OutputDemo.txt");

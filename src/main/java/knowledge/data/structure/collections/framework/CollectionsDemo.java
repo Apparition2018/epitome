@@ -12,8 +12,7 @@ import java.util.stream.Collectors;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Collections.html">Collections</a>
- * <pre>
- * {@code
+ * <pre>{@code
  * static void              copy(List<? super T> dest, List<? extends T> src)   将所有元素从一个列表复制到另一个列表
  * static void              fill(List<? super T> list, T obj)               使用指定元素替换指定列表中的所有元素
  * static void              swap(List<?> list, int i, int j)                在指定列表的指定位置处交换元素

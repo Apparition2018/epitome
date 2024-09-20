@@ -23,13 +23,10 @@ import java.net.URL;
  * ByteSink 和 CharSlink 分别表示二进制数字和字符的可写接收器
  * 使用上面这些类的实现可以完全绕过打开和关闭流的问题
  * </pre>
- * 参考：
- * <pre>
- * <a href="http://www.ibloger.net/article/3339.html">Guava IO</a>
- * <a href="https://github.com/google/guava/wiki/ClosingResourcesExplained">ClosingResourcesExplained</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="http://www.ibloger.net/article/3339.html">Guava IO</a>
+ * @see <a href="https://github.com/google/guava/wiki/ClosingResourcesExplained">ClosingResourcesExplained</a>
  * @since 2023/1/10 9:48
  */
 public class IoDemo extends Demo {
@@ -43,10 +40,10 @@ public class IoDemo extends Demo {
 
         p("\nCount distinct word occurrences in a file");
         Multiset<String> wordOccurrences = HashMultiset.create(
-                Splitter.on(CharMatcher.whitespace())
-                        .trimResults()
-                        .omitEmptyStrings()
-                        .split(Files.asCharSource(file, Charsets.UTF_8).read()));
+            Splitter.on(CharMatcher.whitespace())
+                .trimResults()
+                .omitEmptyStrings()
+                .split(Files.asCharSource(file, Charsets.UTF_8).read()));
         wordOccurrences.forEach(Demo::p);
 
         p("\nSHA-256 a file");

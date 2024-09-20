@@ -8,8 +8,7 @@ import static l.demo.Demo.p;
 
 /**
  * ClassUtils
- * <pre>
- * {@code
+ * <pre>{@code
  * static boolean       isPresent(String className, ClassLoader classLoader)            判断是否存在并可以加载
  * static boolean       isVisible(Class<?> clazz, ClassLoader classLoader)              判断是否在指定加载器可见
  * static boolean       isCacheSafe(Class<?> clazz, ClassLoader classLoader)            判断是否在指定加载缓存安全，即是否由指定加载器或其父类加载

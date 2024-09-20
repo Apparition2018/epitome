@@ -53,13 +53,11 @@ import static l.demo.Demo.DESKTOP;
 
 /**
  * HttpClientUtils
- * <pre>
- * <a href="https://hc.apache.org/httpcomponents-client-5.2.x/index.html">HttpClient</a>
- * <a href="https://www.baeldung.com/httpclient-guide">Apache HttpClient Tutorial</a>
- * <a href="https://blog.csdn.net/citywu123/article/details/109456035">七大 Http 客户端比较</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://hc.apache.org/httpcomponents-client-5.2.x/index.html">HttpClient</a>
+ * @see <a href="https://www.baeldung.com/httpclient-guide">Apache HttpClient Tutorial</a>
+ * @see <a href="https://blog.csdn.net/citywu123/article/details/109456035">七大 Http 客户端比较</a>
  * @since 2020/11/12 21:35
  */
 public final class HttpClientUtils {

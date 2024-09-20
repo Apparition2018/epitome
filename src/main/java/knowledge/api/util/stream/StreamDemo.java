@@ -25,14 +25,11 @@ import java.util.stream.Stream;
  * Stream 应该只允许被中间或终端操作操作一次，若 Stream 被检测到重用，将抛出 IllegalStateException。
  * 如果实在要重复操作同一个 Stream，可以通过 Supplier 获取新的 Stream {@link FunctionDemo.SupplierDemo#testSupplier()}
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.runoob.com/java/java8-streams.html">JDK8 Stream</a>
- * <a href="https://www.runoob.com/java/java9-stream-api-improvements.html">JDK9 改进的 Stream</a>
- * <a href="https://blog.csdn.net/u011001723/article/details/52794455">深入浅出 parallelStream</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.runoob.com/java/java8-streams.html">JDK8 Stream</a>
+ * @see <a href="https://www.runoob.com/java/java9-stream-api-improvements.html">JDK9 改进的 Stream</a>
+ * @see <a href="https://blog.csdn.net/u011001723/article/details/52794455">深入浅出 parallelStream</a>
  * @since 2019/8/8 19:39
  */
 public class StreamDemo extends Demo {

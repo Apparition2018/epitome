@@ -14,14 +14,11 @@ import java.util.Arrays;
  * 5 要求排序稳定，不要求空间：归并排序
  * 6 堆排序空间复杂度比快速排序低，且最坏时间幅度比快速排序低
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.cnblogs.com/chengxiao/p/6103002.html">图解排序算法(一)之3种简单排序(选择，冒泡，直接插入) </a>
- * <a href="https://www.cnblogs.com/onepixel/articles/7674659.html">十大经典排序算法（动图演示）</a>
- * <a href="https://www.cnblogs.com/end/archive/2011/10/22/2220995.html">排序算法性能和使用场景总结</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/chengxiao/p/6103002.html">图解排序算法(一)之3种简单排序(选择，冒泡，直接插入) </a>
+ * @see <a href="https://www.cnblogs.com/onepixel/articles/7674659.html">十大经典排序算法（动图演示）</a>
+ * @see <a href="https://www.cnblogs.com/end/archive/2011/10/22/2220995.html">排序算法性能和使用场景总结</a>
  * @since 2020/10/10 19:23
  */
 public class Sort extends Demo {

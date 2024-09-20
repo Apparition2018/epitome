@@ -12,9 +12,9 @@ import java.util.concurrent.*;
 /**
  * FutureTask
  * <p>FutureTask 是 Future 和 Callable 的结合体
- * <p>参考：<a href="https://blog.csdn.net/zmx729618/article/details/51596414">FutureTask & Future</a>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/zmx729618/article/details/51596414">FutureTask & Future</a>
  * @since 2020/11/17 19:09
  */
 public class FutureTaskDemo extends Demo {

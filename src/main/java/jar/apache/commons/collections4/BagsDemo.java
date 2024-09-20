@@ -7,14 +7,14 @@ import static l.demo.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-collections/userguide.html#Bags">Bags</a>
- * <p>Bag 是一个接口，该接口可以计算一个对象出现在集合中的次数
- * <pre>
+ * <p>一个接口，该接口可以计算一个对象出现在集合中的次数
+ * <pre>{@code
  * Iterator<E>	iterator()
- * int	        size()
+ * int	        size()}
  * </pre>
- * <a href="https://blog.csdn.net/sinat_34093604/article/details/79551924">Commons Collections4 简单使用</a>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/sinat_34093604/article/details/79551924">Commons Collections4 简单使用</a>
  * @since 2019/8/8 19:39
  */
 public class BagsDemo {

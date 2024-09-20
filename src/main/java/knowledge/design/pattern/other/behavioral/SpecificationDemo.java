@@ -17,13 +17,10 @@ import java.util.Objects;
  * 非规格 NotSpecification
  * 业务规格 BizSpecification
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://java-design-patterns.com/patterns/specification/">Specification</a>
- * <a href="https://www.kancloud.cn/sstd521/design/193648">Specification</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://java-design-patterns.com/patterns/specification/">Specification</a>
+ * @see <a href="https://www.kancloud.cn/sstd521/design/193648">Specification</a>
  * @since 2022/2/8 17:46
  */
 public class SpecificationDemo {

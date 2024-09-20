@@ -12,13 +12,10 @@ import static l.demo.Demo.p;
  * <p>1个 key 可以映射多个 value
  * <p>
  * <p><a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#multimaps">Multimaps</a>
- * <p>参考：
- * <pre>
- * <a href="http://www.ibloger.net/article/3316.html">Guava Multimaps</a>
- * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Multimaps.html">Multimaps api</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="http://www.ibloger.net/article/3316.html">Guava Multimaps</a>
+ * @see <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Multimaps.html">Multimaps api</a>
  * @since 2019/8/8 19:39
  */
 public class MultimapDemo {

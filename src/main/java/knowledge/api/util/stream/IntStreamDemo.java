@@ -16,9 +16,9 @@ import java.util.stream.Stream;
  * PrimitiveIterator.OfInt      iterator()
  * Spliterator.OfInt            spliterator()
  * </pre>
- * 参考：<a href="https://blog.csdn.net/qq_31865983/article/details/106443244">IntStream 用法全解</a>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/qq_31865983/article/details/106443244">IntStream 用法全解</a>
  * @since 2020/11/6 14:43
  */
 public class IntStreamDemo {
@@ -27,14 +27,14 @@ public class IntStreamDemo {
     public void testIntStream() {
         IntStream intStream;
 
-        // ints()                               通过 Random 的 ints() 生成 IntStream                     
+        // ints()                               通过 Random 的 ints() 生成 IntStream
         intStream = new Random().ints(0, 10).limit(9);
         // IntStream.range(start, end)          范围内元素，不包括 end
         intStream = IntStream.range(1, 11);
         // IntStream.rangeClosed(start, end)    范围内元素，包括 end
         intStream = IntStream.rangeClosed(1, 10);
 
-        // average()                            平均数              
+        // average()                            平均数
         System.out.println(intStream.average());
         // sum()                                总和
         System.out.println(intStream.sum());

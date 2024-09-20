@@ -17,16 +17,13 @@ import java.util.stream.LongStream;
  * ForkJoinPool 最适合的是计算密集型的任务，如果存在 I/O，线程间同步，sleep() 等会造成线程长时间阻塞的情况时，最好配合使用 ManagedBlocker。
  * 不是 CPU 密集型的任务，不建议使用 ForkJoinPool 进行处理
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://blog.csdn.net/f641385712/article/details/83749798">ForkJoinPool 线程池的使用以及原理</a>
- * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinPool.html">ForkJoinPool api</a>
- * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinTask.html">ForkJoinTask api</a>
- * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveTask.html">RecursiveTask api</a>
- * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveAction.html">RecursiveAction api</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/f641385712/article/details/83749798">ForkJoinPool 线程池的使用以及原理</a>
+ * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinPool.html">ForkJoinPool api</a>
+ * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinTask.html">ForkJoinTask api</a>
+ * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveTask.html">RecursiveTask api</a>
+ * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveAction.html">RecursiveAction api</a>
  * @since 2020/12/1 12:58
  */
 public class ForkJoinPoolDemo extends Demo {

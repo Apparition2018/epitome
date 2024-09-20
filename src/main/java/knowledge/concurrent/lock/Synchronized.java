@@ -1,6 +1,7 @@
 package knowledge.concurrent.lock;
 
 import l.demo.Demo;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -24,19 +25,17 @@ import java.util.concurrent.TimeUnit;
  * <a href="https://www.csdn.net/tags/Ntjacg1sOTAwOTYtYmxvZwO0O0OO0O0O.html">用户态和内核态</a>
  * </pre>
  * <a href="https://www.zhihu.com/question/63859501/answer/214026841">锁降级</a>：发生在 GC 的 <a href="https://blog.csdn.net/l2470334493/article/details/108168099">STW (Stop The World)</a> 阶段
- * 参考：
- * <pre>
- * <a href="https://www.zhihu.com/question/485107493">synchronized 原理是什么</a>
- * <a href="https://www.imooc.com/learn/1086">synchronized 深度解析</a>
- *  - <a href="https://www.imooc.com/video/23603">查看 monitor 指令</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.zhihu.com/question/485107493">synchronized 原理是什么</a>
+ * @see <a href="https://www.imooc.com/learn/1086">synchronized 深度解析</a>
+ * @see <a href="https://www.imooc.com/video/23603">查看 monitor 指令</a>
  * @since 2020/11/17 19:09
  */
 public class Synchronized extends Demo {
 
-    static class SynchronizedDemo1 {
+    @Nested
+    class SynchronizedDemo1 {
 
         private Table table = new Table();
 

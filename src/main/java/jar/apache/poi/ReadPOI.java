@@ -15,13 +15,12 @@ import java.util.Objects;
 import static l.demo.Demo.p;
 
 /**
- * <pre>
- * <a href="http://www.cnblogs.com/hongten/p/java_poi_excel_xls_xlsx.html">POI 读取 Excel</a>
- * <a href="https://www.cnblogs.com/stono/p/6713158.html">POI 日期格式</a>
- * <a href="https://blog.csdn.net/weixin_38084097/article/details/77242508">POI 日期格式</a>
- * </pre>
+ * ReadPOI
  *
  * @author ljh
+ * @see <a href="http://www.cnblogs.com/hongten/p/java_poi_excel_xls_xlsx.html">POI 读取 Excel</a>
+ * @see <a href="https://www.cnblogs.com/stono/p/6713158.html">POI 日期格式</a>
+ * @see <a href="https://blog.csdn.net/weixin_38084097/article/details/77242508">POI 日期格式</a>
  * @since 2019/8/8 19:39
  */
 public class ReadPOI {

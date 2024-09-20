@@ -31,14 +31,11 @@ import java.util.Scanner;
  * 2 与 Factory Method 联合使用，使得 ConcreteAggregate 能获取不同 ConcreteIterator
  * 3 与 Memento 联合使用，实现回滚
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/iterator">Iterator</a>
- * <a href="http://c.biancheng.net/view/1395.html">Java设计模式</a>
- * 设计模式之美：迭代器模式（下）：如何设计实现一个支持“快照”功能的iterator？
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/iterator">Iterator</a>
+ * @see <a href="http://c.biancheng.net/view/1395.html">Java设计模式</a>
+ * @see <a href="">设计模式之美：迭代器模式（下）：如何设计实现一个支持“快照”功能的iterator？</a>
  * @since 2020/9/26 2:51
  */
 public class IteratorDemo {

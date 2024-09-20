@@ -26,13 +26,10 @@ import java.util.Objects;
  * 3 调用Template实例的process完成数据模型和模板的合并
  *   template.process(Object dataModel, Writer out);
  * </pre>
- * 参考：
- * <pre>
- * <a href="http://blog.csdn.net/zhanggnol/article/details/6324090">FreeMarker 使用详解</a>
- * <a href="http://blog.csdn.net/u012759397/article/details/54092092">FreeMarker .ftl 换成 .htm 或 .jsp</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="http://blog.csdn.net/zhanggnol/article/details/6324090">FreeMarker 使用详解</a>
+ * @see <a href="http://blog.csdn.net/u012759397/article/details/54092092">FreeMarker .ftl 换成 .htm 或 .jsp</a>
  * @since 2019/8/8 19:39
  */
 public class FreeMarkerUtil {

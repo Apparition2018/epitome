@@ -54,8 +54,7 @@ public class CharacterDemo {
      * SPACE_SEPARATOR, LINE_SEPARATOR, PARAGRAPH_SEPARATOR
      * </pre>
      * static boolean       isWhitespace(char ch / int codePoint)       建议使用
-     * <pre>
-     * {@code
+     * <pre>{@code
      * 确定指定字符依据 Java 标准是否为空白字符
      * Unicode 空白字符，但不是非中断空格（'\u00A0'、'\u2007'、'\u202F'）
      * '\u0009' \t  HORIZONTAL TABULATION   水平制表符

@@ -17,9 +17,9 @@ import static l.demo.Demo.p;
  * void         flip(int fromIndex, int toIndex)    将指定的 fromIndex（包括）到指定的 toIndex（不包括）范围内的每个位设置为其当前值的补码
  * int          cardinality()                       返回此 BitSet 中设置为 true 的位数
  * </pre>
- * 参考：<a href="https://blog.csdn.net/jiangnan2014/article/details/53735429">BitSet 使用详解</a>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/jiangnan2014/article/details/53735429">BitSet 使用详解</a>
  * @since 2019/8/8 19:39
  */
 public class BitSetDemo {

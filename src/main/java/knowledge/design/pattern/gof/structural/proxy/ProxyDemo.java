@@ -31,16 +31,13 @@ import java.util.concurrent.TimeUnit;
  * 优点：符合开闭原则<br/>
  * 缺点：RealSubject 与 Proxy 一一对应，RealSubject 增加，Proxy 也要跟着增加
  * <p>优化：动态代理、Spring AOP
- * <p>参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/proxy">Proxy</a>
- * <a href="http://c.biancheng.net/view/1359.html">Java设计模式</a>
- * <a href="https://zhuanlan.zhihu.com/p/381795745">设计模式最佳套路3 —— 愉快地使用代理模式</a>
- * <a href="https://gupaoedu-tom.blog.csdn.net/article/details/120984573">Tom</a>
- * <a href="https://github.com/Snailclimb/JavaGuide/blob/main/docs/java/basis/proxy.md">JavaGuide</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/proxy">Proxy</a>
+ * @see <a href="http://c.biancheng.net/view/1359.html">Java设计模式</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/381795745">设计模式最佳套路3 —— 愉快地使用代理模式</a>
+ * @see <a href="https://gupaoedu-tom.blog.csdn.net/article/details/120984573">Tom</a>
+ * @see <a href="https://github.com/Snailclimb/JavaGuide/blob/main/docs/java/basis/proxy.md">JavaGuide</a>
  * @since 2020/9/26 2:51
  */
 public class ProxyDemo {

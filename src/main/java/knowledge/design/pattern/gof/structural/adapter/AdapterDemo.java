@@ -36,13 +36,10 @@ import java.util.*;
  * </pre>
  * 优点：符合单一职责原则、开闭原则
  * <p>扩展：同时实现或继承 Target 和 Adaptee，同时持有 Target 和 Adaptee 的引用，实现双向适配器
- * <p>参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/adapter">Adapter</a>
- * 设计模式之美：适配器模式：代理、适配器、桥接、装饰，这四个模式有何区别？
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/adapter">Adapter</a>
+ * @see <a href="">设计模式之美：适配器模式：代理、适配器、桥接、装饰，这四个模式有何区别？</a>
  * @since 2020/9/26 2:51
  */
 public class AdapterDemo {

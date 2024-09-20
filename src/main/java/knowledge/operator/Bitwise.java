@@ -13,17 +13,14 @@ import static l.demo.Demo.p;
  * 2 图形算法
  * 3 状态位
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://zhuanlan.zhihu.com/p/106893096">Java 语言位运算符详解</a>
- * <a href="https://zhuanlan.zhihu.com/p/107246755">Java 位运算经典应用(一)</a>
- * <a href="https://zhuanlan.zhihu.com/p/107426506">Java 位运算经典应用(二)</a>
- * <a href="https://zhuanlan.zhihu.com/p/109272709">Java 位运算经典应用(三)</a>
- * <a href="https://zhuanlan.zhihu.com/p/110263046">Java 位运算经典应用(四)</a>
- * <a href="https://zhuanlan.zhihu.com/p/101723848">Java 中对于位运算的优化以及运用与思考</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://zhuanlan.zhihu.com/p/106893096">Java 语言位运算符详解</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/107246755">Java 位运算经典应用(一)</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/107426506">Java 位运算经典应用(二)</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/109272709">Java 位运算经典应用(三)</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/110263046">Java 位运算经典应用(四)</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/101723848">Java 中对于位运算的优化以及运用与思考</a>
  * @since 2020/11/23 17:57
  */
 public class Bitwise {

@@ -19,13 +19,10 @@ package knowledge.oop.class_;
  * 4 不支持实例初始化的方法，只能使用档案类形式的构造方法
  * 5 不能声明本地(native)方法
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://achang.blog.csdn.net/article/details/126394638">档案类</a>
- * <a href="https://openjdk.org/jeps/395">JDK16 JEP 395: Records</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://achang.blog.csdn.net/article/details/126394638">档案类</a>
+ * @see <a href="https://openjdk.org/jeps/395">JDK16 JEP 395: Records</a>
  * @since 2023/2/16 11:03
  */
 public class RecordClass {

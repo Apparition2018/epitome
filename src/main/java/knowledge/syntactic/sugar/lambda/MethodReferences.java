@@ -7,13 +7,10 @@ import java.util.function.Supplier;
 /**
  * 方法引用 (Method References)
  * <p>JDK8 新特性，一种特殊的 lambda 表达式，通过方法的名字来指向一个方法
- * <p>参考：
- * <pre>
- * <a href="https://www.baeldung.com/java-method-references">Method References in Java</a>
- * <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html">Method References</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.baeldung.com/java-method-references">Method References in Java</a>
+ * @see <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html">Method References</a>
  * @since 2019/8/8 19:39
  */
 public class MethodReferences {

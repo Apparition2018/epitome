@@ -25,9 +25,9 @@ import static l.demo.Demo.p;
  * boolean          removeFirstOccurrence(Object o) 从此双端队列中移除第一次出现的指定元素
  * boolean          removeLastOccurrence(Object o)  从此双端队列移除最后一次出现的指定元素
  * </pre>
- * 参考：<a href="https://www.pianshen.com/article/27711847617/">算法刻意练习之栈、队列、双端队列、优先队列</a>
  *
  * @author ljh
+ * @see <a href="https://www.pianshen.com/article/27711847617/">算法刻意练习之栈、队列、双端队列、优先队列</a>
  * @since 2019/8/8 19:39
  */
 public class DequeDemo {

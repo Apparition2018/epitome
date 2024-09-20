@@ -7,9 +7,9 @@ import l.demo.Demo;
 import lombok.Data;
 
 /**
- * &#064;JsonCreator
- * <p>Jackson 反序列化时，会默认使用无参构造函数实例化对象；
- * <p>当没有无参构造函数时可使用 @JsonCreator 来指定反序列化时候的构造函数，需要配合 @JsonProperty 使用
+ * {@code @JsonCreator}<br/>
+ * Jackson 反序列化时，会默认使用无参构造函数实例化对象；<br/>
+ * 当没有无参构造函数时可使用 {@code @JsonCreator} 来指定反序列化时候的构造函数，需要配合 {@code @JsonProperty} 使用
  *
  * @author ljh
  * @since 2021/7/24 17:00

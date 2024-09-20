@@ -27,15 +27,12 @@ import java.util.*;
  * 具体观察者 ConcreteObserver
  * </pre>
  * 优点：符合开闭原则
- * <p>参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/observer">Observer</a>
- * <a href="http://c.biancheng.net/view/1390.html">Java设计模式</a>
- * 设计模式之美：观察者模式（上）：详解各种应用场景下观察者模式的不同实现方式
- * 设计模式之美：观察者模式（下）：如何实现一个异步非阻塞的EventBus框架？{@link EventBusDemo}
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/observer">Observer</a>
+ * @see <a href="http://c.biancheng.net/view/1390.html">Java设计模式</a>
+ * @see <a href="">设计模式之美：观察者模式（上）：详解各种应用场景下观察者模式的不同实现方式</a>
+ * @see <a href="">设计模式之美：观察者模式（下）：如何实现一个异步非阻塞的EventBus框架？{@link EventBusDemo}</a>
  * @since 2020/9/26 2:51
  */
 public class ObserverDemo {

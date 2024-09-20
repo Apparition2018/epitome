@@ -19,9 +19,9 @@ import static l.demo.Demo.p;
  * CharSequence     subSequence(int start, int end)
  * String           substring(int start[, int end])
  * </pre>
- * 参考：<a href="https://zhuanlan.zhihu.com/p/209112736">String vs StringBuilder vs StringBuffer</a>
  *
  * @author ljh
+ * @see <a href="https://zhuanlan.zhihu.com/p/209112736">String vs StringBuilder vs StringBuffer</a>
  * @since 2019/8/8 19:39
  */
 public class StringBufferBuilderDemo {

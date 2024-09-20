@@ -24,14 +24,11 @@ import java.util.Stack;
  * 优点：符合单一职责原则<br/>
  * 缺点：资源消耗大
  * <p>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/memento">Command</a>
- * <a href="http://c.biancheng.net/view/1400.html">Java设计模式</a>
- * <a href="https://www.runoob.com/design-pattern/memento-pattern.html">菜鸟模式</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/memento">Command</a>
+ * @see <a href="http://c.biancheng.net/view/1400.html">Java设计模式</a>
+ * @see <a href="https://www.runoob.com/design-pattern/memento-pattern.html">菜鸟模式</a>
  * @since 2020/9/26 2:51
  */
 public class MementoDemo {

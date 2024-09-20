@@ -7,21 +7,21 @@ import static l.demo.Demo.p;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ArrayUtils.html">ArrayUtils</a>
- * <pre>
- * static void	    shift(XXX[] array[, int startIndexInclusive, int endIndexExclusive], int offset)    移动 ???
- * static void	    swap(XXX[] array, int offset1, int offset2[, int len])  交换位置
- * static void	    reverse(XXX[] array)                                    反转
- * static void	    shuffle(XXX[] array[, Random random])                   洗牌
- * static XXX[]	    clone(XXX[] array)                                      复制
- * static <T> T	    get(T[] array, int index, T defaultValue)               获取指定
+ * <pre>{@code
+ * static void      shift(XXX[] array[, int startIndexInclusive, int endIndexExclusive], int offset)    移动 ???
+ * static void      swap(XXX[] array, int offset1, int offset2[, int len])  交换位置
+ * static void      reverse(XXX[] array)                                    反转
+ * static void      shuffle(XXX[] array[, Random random])                   洗牌
+ * static XXX[]     clone(XXX[] array)                                      复制
+ * static <T> T     get(T[] array, int index, T defaultValue)               获取指定
  * static String    toString(Object array[, String stringIfNull])           打印数组
- * static int	    getLength(Object array)                                 获取数组长度，对 null 安全
+ * static int       getLength(Object array)                                 获取数组长度，对 null 安全
  * static boolean   isSameLength(XXX[] array1, XXX[] array2)                判断两数组长度是否相等，对 null 安全
  * static boolean   isSameType(Object array1, Object array2)                判断两数组类型是否相等
  * static boolean   contains(XXX[] array, byte valueToFind)                 判断是否包含
  * static boolean   isEmpty(XXX[] array)                                    判断是否为空
  * static boolean   isNotEmpty(XXX[] array)                                 判断是否不为空
- * static boolean   isSorted(XXX[] array)                                   判断是否已排序
+ * static boolean   isSorted(XXX[] array)                                   判断是否已排序}
  * </pre>
  *
  * @author ljh

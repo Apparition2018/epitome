@@ -28,15 +28,12 @@ import java.security.SecureRandom;
  * 2 如果密钥被多个用户共享，不能提供身份验证（抗抵赖性）
  * 3 N 个用户需要 N(N-1)/2 个共享密钥，当用户量增大，密钥空间急剧增大
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://blog.csdn.net/weixin_43853965/article/details/103870110">通俗解释对称加密、非对称加密、散列算法与 PKI</a>
- * <a href="https://blog.csdn.net/chengbinbbs/article/details/78640589">Java 对称加密与非对称加密</a>
- * <a href="https://www.cnblogs.com/sunxuchu/p/5483956.html">各种加密算法比较</a>
- * <a href="https://zhuanlan.zhihu.com/p/20064358">加解密（Encryption）& 哈希（Hash）算法</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/weixin_43853965/article/details/103870110">通俗解释对称加密、非对称加密、散列算法与 PKI</a>
+ * @see <a href="https://blog.csdn.net/chengbinbbs/article/details/78640589">Java 对称加密与非对称加密</a>
+ * @see <a href="https://www.cnblogs.com/sunxuchu/p/5483956.html">各种加密算法比较</a>
+ * @see <a href="https://zhuanlan.zhihu.com/p/20064358">加解密（Encryption）& 哈希（Hash）算法</a>
  * @since 2020/11/18 19:37
  */
 public class SymmetricCryptography {

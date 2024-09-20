@@ -37,13 +37,10 @@ import java.io.IOException;
  *   推荐业界已定义过的自定义异常，如：DAOException / ServiceException 等
  * 8 对于公司外的 http / api 开放接口必须使用 errorCode，而应用内部推荐异常抛出；跨应用间 RPC 调用优先考虑使用 Result 方式，封装 isSuccess() 方法、errorCode、errorMessage；应用内部推荐异常抛出
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://blog.csdn.net/kingzone_2008/article/details/8535287">选择 Checked Exception 还是 Unchecked Exception</a>
- * <a href="https://www.cnblogs.com/jurendage/p/11255197.html">Java 生鲜电商平台-统一异常处理及架构实战</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/kingzone_2008/article/details/8535287">选择 Checked Exception 还是 Unchecked Exception</a>
+ * @see <a href="https://www.cnblogs.com/jurendage/p/11255197.html">Java 生鲜电商平台-统一异常处理及架构实战</a>
  * @since 2019/8/8 19:39
  */
 public class ThrowableDemo extends Demo {

@@ -17,9 +17,9 @@ package knowledge.oop.interface_;
  * javax.swing.event.ChangeListener
  * </pre>
  * JDK8 新增的函数式接口：java.util.function.*
- * <p>参考：<a href="https://blog.csdn.net/icarusliu/article/details/79495534">函数式编程</a>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/icarusliu/article/details/79495534">函数式编程</a>
  * @since 2020/11/10 19:19
  */
 public class FunctionalInterface {

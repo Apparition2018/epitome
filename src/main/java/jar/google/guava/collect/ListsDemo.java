@@ -9,17 +9,14 @@ import java.util.List;
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#lists">Lists</a>
  * <pre>
  * {@code
- * static <E> LinkedList<E>             newLinkedList([Iterable<? extends E> elements])             创建 LinkedList
- * static <E> CopyOnWriteArrayList<E>   newCopyOnWriteArrayList([Iterable<? extends E> elements])   创建 CopyOnWriteArrayList
+ * static <E> LinkedList<E>             newLinkedList([Iterable<? extends E> elements])
+ * static <E> CopyOnWriteArrayList<E>   newCopyOnWriteArrayList([Iterable<? extends E> elements])
  * static <T> List<T>                   reverse(List<T> list)                                       返回指定列表的反向视图}
- * </pre>
- * 参考：
- * <pre>
- * <a href="http://www.ibloger.net/article/3312.html">Guava Lists</a>
- * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Lists.html">Lists api</a>
  * </pre>
  *
  * @author ljh
+ * @see <a href="http://www.ibloger.net/article/3312.html">Guava Lists</a>
+ * @see <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Lists.html">Lists api</a>
  * @since 2019/8/8 19:39
  */
 public class ListsDemo extends Demo {

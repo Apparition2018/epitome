@@ -11,7 +11,7 @@ import org.assertj.core.util.Lists;
 import java.util.List;
 
 /**
- * &#064;JsonManagedReference 和 @JsonBackReference：解决循环依赖序列化和反序列化问题（父/子）
+ * {@code @JsonManagedReference} 和 {@code @JsonBackReference} 解决循环依赖序列化和反序列化问题（父/子）
  *
  * @author ljh
  * @since 2021/7/24 17:03

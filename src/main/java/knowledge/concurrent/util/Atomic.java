@@ -39,16 +39,13 @@ import java.util.stream.IntStream;
  * 1 粒度细：原子变量可以把竞争范围缩小到变量级别
  * 2 效率高：原子类底层利用了 CAS 操作，不会阻塞线程
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://www.jianshu.com/p/66758b960698">原子类（一）如何保证线程安全？</a>
- * <a href="https://www.jianshu.com/p/18aa29f72252">原子类（二）高并发下的 AtomicInteger 和 LongAdder</a>
- * <a href="https://www.jianshu.com/p/61fc48f84056">原子类（三）原子类和 volatile</a>
- * <a href="https://www.jianshu.com/p/85af7c8bc8a1">原子类（四）AtomicInteger 和 synchronized</a>
- * <a href="https://www.jianshu.com/p/492f1f5f7763">原子类（五）Adder 和 Accumulator</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://www.jianshu.com/p/66758b960698">原子类（一）如何保证线程安全？</a>
+ * @see <a href="https://www.jianshu.com/p/18aa29f72252">原子类（二）高并发下的 AtomicInteger 和 LongAdder</a>
+ * @see <a href="https://www.jianshu.com/p/61fc48f84056">原子类（三）原子类和 volatile</a>
+ * @see <a href="https://www.jianshu.com/p/85af7c8bc8a1">原子类（四）AtomicInteger 和 synchronized</a>
+ * @see <a href="https://www.jianshu.com/p/492f1f5f7763">原子类（五）Adder 和 Accumulator</a>
  * @since 2020/11/17 0:52
  */
 public class Atomic extends Demo {

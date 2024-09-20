@@ -14,8 +14,7 @@ import java.util.Objects;
 
 /**
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#maps">Maps</a>
- * <pre>
- * {@code
+ * <pre>{@code
  * static ConcurrentMap<K, V>   newConcurrentMap()                              创建 ConcurrentMap
  * static TreeMap<K, V>         newTreeMap([SortedMap<K, ? extends V> map])     创建 TreeMap
  * static TreeMap<K, V>         newTreeMap(Comparator<C> comparator)            创建 TreeMap，根据 Comparator
@@ -28,13 +27,10 @@ import java.util.Objects;
  * static Entry<K, V>           immutableEntry(K key, V value)  key + value → Entry
  * static Converter<A, B>       asConverter(BiMap<A, B> bimap)                  BiMap → Converter}
  * </pre>
- * 参考：
- * <pre>
- * <a href="http://www.ibloger.net/article/3314.html">Guava Maps</a>
- * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Maps.html">Maps api</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="http://www.ibloger.net/article/3314.html">Guava Maps</a>
+ * @see <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Maps.html">Maps api</a>
  * @since 2019/8/8 19:39
  */
 public class MapsDemo extends Demo {

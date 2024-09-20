@@ -36,21 +36,19 @@ import java.util.Date;
 public class AnnotationDemo extends Demo {
 
     /**
-     * <pre>
-     * &#064;JsonInclude
-     * &#064;JsonIgnoreProperties
-     * &#064;JsonIgnore
-     * &#064;JsonIgnoreType
-     * &#064;JsonPropertyOrder
-     * &#064;JsonProperty
-     * &#064;JsonAppend
-     * &#064;JsonFilter
-     * &#064;JsonRootName
-     * &#064;JsonNaming
-     * &#064;JsonFormat
-     * &#064;JsonRawValue
-     * &#064;JsonAnyGetter
-     * </pre>
+     * {@code @JsonInclude}
+     * {@code @JsonIgnoreProperties}
+     * {@code @JsonIgnore}
+     * {@code @JsonIgnoreType}
+     * {@code @JsonPropertyOrder}
+     * {@code @JsonProperty}
+     * {@code @JsonAppend}
+     * {@code @JsonFilter}
+     * {@code @JsonRootName}
+     * {@code @JsonNaming}
+     * {@code @JsonFormat}
+     * {@code @JsonRawValue}
+     * {@code @JsonAnyGetter}
      *
      * @see jar.fasterxml.jackson.entity.Person
      */
@@ -75,17 +73,15 @@ public class AnnotationDemo extends Demo {
     }
 
     /**
-     * <pre>
-     * &#064;JsonNaming
-     * &#064;JsonProperty
-     * &#064;JsonIgnoreProperties
-     * &#064;JsonIgnore
-     * &#064;JsonIgnoreType
-     * &#064;JsonAlias
-     * &#064;JacksonInject
-     * &#064;JsonAnySetter
-     * &#064;JsonEnumDefaultValue
-     * </pre>
+     * {@code @JsonNaming}
+     * {@code @JsonProperty}
+     * {@code @JsonIgnoreProperties}
+     * {@code @JsonIgnore}
+     * {@code @JsonIgnoreType}
+     * {@code @JsonAlias}
+     * {@code @JacksonInject}
+     * {@code @JsonAnySetter}
+     * {@code @JsonEnumDefaultValue}
      *
      * @see jar.fasterxml.jackson.entity.Person
      */

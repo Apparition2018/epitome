@@ -8,22 +8,22 @@ import java.util.List;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/ObjectUtils.html">ObjectUtils</a>
- * <pre>
+ * <pre>{@code
  * static boolean   notEqual(Object object1, Object object2)            是否不相等
  * static boolean   isEmpty(Object object)                              是否为空
  * static boolean   isNotEmpty(Object object)                           是否不为空
- * static boolean	allNotNull(Object... values)                        检查数组中的所有值是否不为空
- * static boolean	anyNotNull(Object... values)                        检查给定数组中的任何值是否不为空
+ * static boolean   allNotNull(Object... values)                        检查数组中的所有值是否不为空
+ * static boolean   anyNotNull(Object... values)                        检查给定数组中的任何值是否不为空
  * static <T> T     defaultIfNull(T object, T defaultValue)             如果为空返回默认值
  * static <T> T     getIfNull(T object, Supplier<T> defaultSupplier)    如果为空返回 Supplier
  *
- * static int	    compare(T c1, T c2[, boolean nullGreater])          比较大小，null-safe
+ * static int       compare(T c1, T c2[, boolean nullGreater])          比较大小，null-safe
  * static T         max(T... values)                                    最大值，null-safe
  * static T         min(T... values)                                    最小值，null-safe
  *
- * static <T> T	    getFirstNonNull(Supplier<T>... suppliers)           ???
- * static String	identityToString(Object object)                     ???
- * static void	    identityToString(Appendable/StringBuffer/StringBuilder, Object object) ???
+ * static <T> T     getFirstNonNull(Supplier<T>... suppliers)           ???
+ * static String    identityToString(Object object)                     ???
+ * static void      identityToString(Appendable/StringBuffer/StringBuilder, Object object) ???}
  * </pre>
  *
  * @author ljh

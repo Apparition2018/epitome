@@ -51,9 +51,9 @@ import java.util.concurrent.TimeUnit;
  * void                         run()                               如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回
  * void                         start()                             使该线程开始执行；Java 虚拟机调用该线程的 run 方法；多次启动一个线程是非法的
  * </pre>
- * 参考：<a href="https://zhuanlan.zhihu.com/p/240281836">如何使用 JUnit 测试异步代码</a>
  *
  * @author ljh
+ * @see <a href="https://zhuanlan.zhihu.com/p/240281836">如何使用 JUnit 测试异步代码</a>
  * @since 2020/11/17 19:09
  */
 public class ThreadDemo extends Demo {

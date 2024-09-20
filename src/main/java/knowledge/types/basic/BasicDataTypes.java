@@ -28,13 +28,10 @@ package knowledge.types.basic;
  * 1 4字节：单独使用时，使用 int 相关指令代替
  * 2 1字节：以数组形式使用时，公用 byte 数组的 baload 和 bastore 指令
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://blog.csdn.net/heixuanfenghei/article/details/80403644">byte类型取值范围为什么是127到-128？</a>
- * <a href="https://www.zhihu.com/question/46432979/answer/221485161">float vs double</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/heixuanfenghei/article/details/80403644">byte类型取值范围为什么是127到-128？</a>
+ * @see <a href="https://www.zhihu.com/question/46432979/answer/221485161">float vs double</a>
  * @since 2019/8/8 19:39
  */
 public class BasicDataTypes {

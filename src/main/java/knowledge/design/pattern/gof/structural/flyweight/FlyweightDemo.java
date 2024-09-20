@@ -32,14 +32,11 @@ import java.util.Map;
  * 1 单纯享元模式：不存在 UnsharedConcreteFlyweight
  * 2 复合享元模式：单纯享元对象使用组合模式，组合成复合享元对象 CompositeConcreteFlyweight
  * </pre>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/flyweight">Flyweight</a>
- * <a href="http://c.biancheng.net/view">Java设计模式</a>/1371.html
- * 设计模式之美：享元模式（下）：剖析享元模式在JavaInteger、String中的应用
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/flyweight">Flyweight</a>
+ * @see <a href="http://c.biancheng.net/view">Java设计模式</a>/1371.html
+ * @see <a href="">设计模式之美：享元模式（下）：剖析享元模式在JavaInteger、String中的应用</a>
  * @since 2020/9/26 2:51
  */
 public class FlyweightDemo extends Demo {
@@ -73,9 +70,9 @@ public class FlyweightDemo extends Demo {
         Forest forest = new Forest();
         for (int i = 0; i < TREES_TO_DRAW / TREE_TYPES; i++) {
             forest.plantTree(random(0, CANVAS_SIZE), random(0, CANVAS_SIZE),
-                    "Summer Oak", Color.GREEN, "Oak texture stub");
+                "Summer Oak", Color.GREEN, "Oak texture stub");
             forest.plantTree(random(0, CANVAS_SIZE), random(0, CANVAS_SIZE),
-                    "Autumn Oak", Color.ORANGE, "Autumn Oak texture stub");
+                "Autumn Oak", Color.ORANGE, "Autumn Oak texture stub");
         }
         forest.setSize(CANVAS_SIZE, CANVAS_SIZE);
         forest.setVisible(true);
@@ -87,7 +84,7 @@ public class FlyweightDemo extends Demo {
         p("+ TreeTypes size (~30 bytes) * " + TREE_TYPES + StringUtils.EMPTY);
         p("---------------------");
         p("Total: " + ((TREES_TO_DRAW * 8 + TREE_TYPES * 30) / 1024 / 1024) +
-                "MB (instead of " + ((TREES_TO_DRAW * 38) / 1024 / 1024) + "MB)");
+            "MB (instead of " + ((TREES_TO_DRAW * 38) / 1024 / 1024) + "MB)");
     }
 
     private static int random(int min, int max) {

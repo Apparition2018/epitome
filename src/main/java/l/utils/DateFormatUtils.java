@@ -8,9 +8,9 @@ import java.util.Map;
 
 /**
  * DateFormatUtils
- * <p>参考：<a href="https://www.cnblogs.com/zemliu/p/3290585.html">SimpleDateFormat的线程安全问题与解决方案</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/zemliu/p/3290585.html">SimpleDateFormat的线程安全问题与解决方案</a>
  * @since 2023/1/9 16:16
  */
 public final class DateFormatUtils {

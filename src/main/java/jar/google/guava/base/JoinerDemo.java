@@ -14,12 +14,10 @@ import java.util.stream.Collectors;
 
 /**
  * <a href="https://github.com/google/guava/wiki/StringsExplained#joiner">Joiner</a>
- * <pre>
- * <a href="http://www.ibloger.net/article/3334.html">Guava Joiner</a>
- * <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Joiner.html">Joiner api</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="http://www.ibloger.net/article/3334.html">Guava Joiner</a>
+ * @see <a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/base/Joiner.html">Joiner api</a>
  * @since 2019/8/8 19:39
  */
 public class JoinerDemo extends Demo {
@@ -31,17 +29,17 @@ public class JoinerDemo extends Demo {
     @Test
     public void null_() {
         String join = Joiner.on("-")
-                // Joiner	skipNulls()
-                // 用于过滤集合中为null的元素，然后返回一个新的Joiner对象实例
-                .skipNulls()
-                .join(listWithNull);
+            // Joiner	skipNulls()
+            // 用于过滤集合中为null的元素，然后返回一个新的Joiner对象实例
+            .skipNulls()
+            .join(listWithNull);
         p(join); // A-B-C
 
         join = Joiner.on("-")
-                // Joiner	useForNull(String nullText)
-                // 连接器做join连接操作时用nullText替换null元素值
-                .useForNull("D")
-                .join(listWithNull);
+            // Joiner	useForNull(String nullText)
+            // 连接器做join连接操作时用nullText替换null元素值
+            .useForNull("D")
+            .join(listWithNull);
         p(join); // A-B-C-D
     }
 
@@ -77,7 +75,7 @@ public class JoinerDemo extends Demo {
     @Test
     public void joining() {
         String collect = listWithNull.stream().filter(s -> null != s && !s.isEmpty())
-                .collect(Collectors.joining("-"));
+            .collect(Collectors.joining("-"));
         p(collect); // A-B-C
     }
 }

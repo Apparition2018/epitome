@@ -41,14 +41,11 @@ import java.util.AbstractSet;
  * <p>优点：符合单一职责原则、开闭原则
  * <p>优化：函数式接口优化模板方法模式 {@link CallbackDemo}
  * <p>
- * 参考：
- * <pre>
- * <a href="https://refactoringguru.cn/design-patterns/template-method">Template Method</a>
- * <a href="http://c.biancheng.net/view/1376.html">Java设计模式</a>
- * <a href="https://gupaoedu-tom.blog.csdn.net/article/details/121194483">Tom|搞懂钩子方法</a>
- * </pre>
  *
  * @author ljh
+ * @see <a href="https://refactoringguru.cn/design-patterns/template-method">Template Method</a>
+ * @see <a href="http://c.biancheng.net/view/1376.html">Java设计模式</a>
+ * @see <a href="https://gupaoedu-tom.blog.csdn.net/article/details/121194483">Tom|搞懂钩子方法</a>
  * @since 2020/9/26 2:51
  */
 public class TemplateMethodDemo {

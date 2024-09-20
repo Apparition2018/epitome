@@ -142,19 +142,10 @@ public class DateUtilsDemo {
      * <pre>
      * static boolean	    isSameDay(Calendar cal1, Calendar cal2)
      * static boolean	    isSameDay(Date DATE1, Date DATE2)
-     * </pre>
-     * 判断 Date 或 Calendar 是否是同一天
-     * <p>
-     * <pre>
      * static boolean	    isSameInstant(Calendar cal1, Calendar cal2)
      * static boolean	    isSameInstant(Date DATE1, Date DATE2)
-     * </pre>
-     * 判断 Date 或 Calendar 是否是同一毫秒
-     * <p>
-     * <pre>
      * static boolean	    isSameLocalTime(Calendar cal1, Calendar cal2)
      * </pre>
-     * 判断 Calendar 是否是同一个本地时间
      */
     @Test
     public void isSameDay() {
@@ -204,16 +195,11 @@ public class DateUtilsDemo {
 
     /**
      * <pre>
-     * static int	        truncatedCompareTo(Calendar cal1, Calendar cal2, int field)
-     * static int	        truncatedCompareTo(Date DATE1, Date DATE2, int field)
+     * static int           truncatedCompareTo(Calendar cal1, Calendar cal2, int field)
+     * static int           truncatedCompareTo(Date DATE1, Date DATE2, int field)
+     * static boolean       truncatedEquals(Calendar cal1, Calendar cal2, int field)
+     * static boolean       truncatedEquals(Date DATE1, Date DATE2, int field)
      * </pre>
-     * 比较两个 Date 或 Calendar 在指定字段上大小
-     * <p>
-     * <pre>
-     * static boolean	    truncatedEquals(Calendar cal1, Calendar cal2, int field)
-     * static boolean	    truncatedEquals(Date DATE1, Date DATE2, int field)
-     * </pre>
-     * 比较两个 Date 或 Calendar 在指定字段上 的是否相等
      */
     @Test
     public void truncatedXXX() {

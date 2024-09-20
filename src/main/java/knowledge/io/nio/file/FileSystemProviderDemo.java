@@ -19,9 +19,9 @@ import java.util.concurrent.ThreadLocalRandom;
  * 此类主要定义了如何在其对应的文件系统定位和加载文件，以及文件中常见的删除、拷贝等操作。
  * 四个子类：AbstractFileSystemProvider, JarFileSystemProvider, WindowFilesSystemProvider, ZipFilesSystemProvider
  * </pre>
- * 参考：<a href="https://blog.csdn.net/huitoukest/article/details/106983050">Java FileSystemProvider</a>
  *
  * @author ljh
+ * @see <a href="https://blog.csdn.net/huitoukest/article/details/106983050">Java FileSystemProvider</a>
  * @since 2020/11/6 9:43
  */
 public class FileSystemProviderDemo extends Demo {
