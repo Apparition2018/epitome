@@ -1,41 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
     <title>jquery-qrcode</title>
-    <link rel="stylesheet" href="../../../../public/css/demo.css">
-</head>
-<body>
-<section class="code-wrap">
-    <div class="css-live-wrap w33p">
-        <div class="caption"><a href="https://www.npmjs.com/package/jquery.qrcode" target="_blank">jquery-qrcode</a></div>
-        <div class="centered">
-            <div id="qrcode"></div>
+    <link rel="stylesheet" href="../../../../public/css/demo.css" />
+  </head>
+  <body>
+    <section class="code-wrap">
+      <div class="css-live-wrap w33p">
+        <div class="caption">
+          <a href="https://www.npmjs.com/package/jquery.qrcode" target="_blank">jquery-qrcode</a>
         </div>
-    </div>
-    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/jquery.qrcode/jquery.qrcode.min.js"></script>
-    <script class="code w67p" contenteditable="true">
+        <div class="centered">
+          <div id="qrcode"></div>
+        </div>
+      </div>
+      <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
+      <script src="https://unpkg.com/jquery.qrcode/jquery.qrcode.min.js"></script>
+      <script class="code w67p" contenteditable="true">
         // vCard: https://baike.baidu.com/item/vCard/8993775?fr=aladdin
-        const text = "BEGIN:VCARD\n" +
-            "VERSION:2.1\n" +
-            "N:Gump;Forrest\n" +
-            "FN:Forrest Gump\n" +
-            "ORG:Gump Shrimp Co.\n" +
-            "TITLE:Shrimp Man\n" +
-            "TEL;WORK;VOICE:(111) 555-1212\n" +
-            "TEL;HOME;VOICE:(404) 555-1212\n" +
-            "ADR;WORK:;;100 Waters Edge;Baytown;LA;30314;United States of America\n" +
-            "LABEL;WORK;ENCODING=QUOTED-PRINTABLE:100 Waters Edge=0D=0ABaytown, LA 30314=0D=0AUnited States of America\n" +
-            "ADR;HOME:;;42 Plantation St.;Baytown;LA;30314;United States of America\n" +
-            "LABEL;HOME;ENCODING=QUOTED-PRINTABLE:42 Plantation St.=0D=0ABaytown, LA 30314=0D=0AUnited States of America\n" +
-            "EMAIL;PREF;INTERNET:forrestgump@walladalla.com\n" +
-            "REV:20080424T195243Z\n" +
-            "END:VCARD";
-        $('#qrcode').qrcode(text);
-    </script>
-</section>
-</body>
+        const text =
+          'BEGIN:VCARD\n' +
+          'VERSION:2.1\n' +
+          'N:Gump;Forrest\n' +
+          'FN:Forrest Gump\n' +
+          'ORG:Gump Shrimp Co.\n' +
+          'TITLE:Shrimp Man\n' +
+          'TEL;WORK;VOICE:(111) 555-1212\n' +
+          'TEL;HOME;VOICE:(404) 555-1212\n' +
+          'ADR;WORK:;;100 Waters Edge;Baytown;LA;30314;United States of America\n' +
+          'LABEL;WORK;ENCODING=QUOTED-PRINTABLE:100 Waters Edge=0D=0ABaytown, LA 30314=0D=0AUnited States of America\n' +
+          'ADR;HOME:;;42 Plantation St.;Baytown;LA;30314;United States of America\n' +
+          'LABEL;HOME;ENCODING=QUOTED-PRINTABLE:42 Plantation St.=0D=0ABaytown, LA 30314=0D=0AUnited States of America\n' +
+          'EMAIL;PREF;INTERNET:forrestgump@walladalla.com\n' +
+          'REV:20080424T195243Z\n' +
+          'END:VCARD'
+        $('#qrcode').qrcode(text)
+      </script>
+    </section>
+  </body>
 </html>

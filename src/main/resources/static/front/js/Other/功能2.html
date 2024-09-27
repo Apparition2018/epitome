@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
     <title>功能2</title>
     <link rel="stylesheet" href="../../../public/css/demo.css" />
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
+    <script async src="../../../public/js/demo.js"></script>
   </head>
   <body>
     <section class="code-wrap">
-      <div class="css-live-wrap w33p">
+      <div class="css-live-wrap w40p">
         <div class="caption">保存记录，撤销返回上一次记录</div>
         <div class="caption">可撤销多次</div>
         <div class="undo centered">
@@ -36,27 +38,120 @@
           margin-right: 5px;
         }
       </style>
-      <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
-      <script class="code w67p" contenteditable="true">
-        const $save = $('#save')
-        $save.on('click', function () {
-          let index = $(this).data('index')
-          // 记录次数
-          index = index ? index + 1 : 1
+      <script class="code w60p" contenteditable="true">
+        const $saveButton = $('#save')
+        const $textField = $('#text')
+        let lastSavedValue = ''
+        $saveButton.on('click', function () {
+          const currentValue = $textField.val()
+          if (lastSavedValue === currentValue) return
+          let index = parseInt($(this).data('index'), 10) || 0
+          index++
           $(this).data('index', index)
-          const cache = $('#text').val()
-          // 缓存
-          $(this).data('cache' + index, cache)
+          $(this).data('cache' + index, currentValue)
+          lastSavedValue = currentValue
         })
         $('#repeal').on('click', function () {
-          const index = $save.data('index')
-          if (!index) {
-            return
+          const index = parseInt($saveButton.data('index'), 10) || 0
+          if (!index) return
+          $textField.val($saveButton.data('cache' + (index - 1)))
+          $saveButton.data('cache' + index, '').data('index', index - 1)
+        })
+      </script>
+    </section>
+
+    <section class="code-wrap h750">
+      <div class="css-live-wrap w40p">
+        <div class="caption">倒计时</div>
+        <div class="caption">
+          <a href="../../plugins/other/jquery-countdown/jquery-countdown.html">jquery-countdown</a>
+        </div>
+        <div class="centered" id="countdownDisplay"></div>
+      </div>
+      <script class="code w60p" contenteditable="true">
+        class Countdown {
+          constructor (elementId, initialTime) {
+            this.elementId = elementId
+            this.countdown = initialTime
+            this.intervalId = null
           }
-          // 重新加载缓存的对象
-          $('#text').val($save.data('cache' + index))
-          // 把已经回退的对象清空，计数减一
-          $save.data('cache' + index, '').data('index', index - 1)
+
+          formatTime (seconds) {
+            const minutes = Math.floor(seconds / 60)
+            const remainderSeconds = seconds % 60
+            return `${minutes.toString().padStart(2, '0')}:${remainderSeconds.toString().padStart(2, '0')}`
+          }
+
+          updateDisplay () {
+            document.getElementById(this.elementId).innerText = this.formatTime(this.countdown)
+          }
+
+          start () {
+            if (this.intervalId !== null) return
+
+            this.intervalId = setInterval(() => {
+              if (this.countdown >= 0) {
+                this.updateDisplay()
+                this.countdown--
+              } else {
+                clearInterval(this.intervalId)
+                this.intervalId = null
+              }
+            }, 1000)
+          }
+
+          stop () {
+            if (this.intervalId !== null) {
+              clearInterval(this.intervalId)
+              this.intervalId = null
+            }
+          }
+        }
+
+        const countdown = new Countdown('countdownDisplay', 60)
+        countdown.start()
+      </script>
+    </section>
+
+    <section class="code-wrap h200">
+      <div class="css-live-wrap w40p">
+        <div class="caption">全选</div>
+        <div class="centered">
+          <table style="width: 300px">
+            <thead>
+              <tr>
+                <th><input id="selectAll" type="checkbox" /></th>
+                <th>ID</th>
+                <th>名称</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>1</td>
+                <td>Mary</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>2</td>
+                <td>Tom</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>3</td>
+                <td>Rose</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <script class="code w60p" contenteditable="true">
+        const $checkbox = $('tbody input[type="checkbox"]')
+        $('#selectAll').click(function () {
+          $checkbox.prop('checked', $(this).is(':checked'))
+        })
+        $checkbox.click(function () {
+          $('#selectAll').prop('checked', $checkbox.length === $checkbox.filter(':checked').length)
         })
       </script>
     </section>

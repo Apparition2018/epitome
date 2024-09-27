@@ -10,7 +10,8 @@
 2. .npmrc
     1. `npm config set cache "D:\nodejs\node_cache"`
     2. `npm config set prefix "D:\nodejs\node_global"`，并添加到系统环境变量 Path
-    3. `npm config set registry https://registry.npmmirror.com`
+    3. 添加系统变量 NODE_PATH `D:\nodejs\node_modules`
+    4. `npm config set registry https://registry.npmmirror.com`
 3. `npm install -g yarn`
 4. `npm install -g cnpm`
 5. `npm install -g pnpm`

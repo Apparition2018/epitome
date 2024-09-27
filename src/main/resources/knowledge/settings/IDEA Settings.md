@@ -158,8 +158,8 @@
 ## JavaScript (-jn)
 ### [ESLint](https://www.jetbrains.com/help/idea/eslint.html)
     1. npm init @eslint/config
-    2. npm i --save-dev eslint eslint-config-standard eslint-config-standard-jsx
-        eslint-plugin-promise eslint-plugin-import eslint-plugin-n
+    2. npm i --save-dev eslint eslint-config-standard eslint-config-standard-jsx \
+        eslint-plugin-promise eslint-plugin-import eslint-plugin-n \
         eslint-plugin-html eslint-plugin-jquery eslint-plugin-vue eslint-plugin-react
     3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
         3.1 Manual ESLint configuration 勾选

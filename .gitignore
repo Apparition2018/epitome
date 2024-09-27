@@ -800,6 +800,8 @@ $RECYCLE.BIN/
 
 
 #####[ LJH ]#####
-# HBuilder X
+#####[ HBuilderX ]#####
 .hbuilderx/
 unpackage/
+#####[ ASP.NET ]#####
+!**/wwwroot/**/dist
