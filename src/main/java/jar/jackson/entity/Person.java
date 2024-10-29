@@ -1,10 +1,10 @@
-package jar.fasterxml.jackson.entity;
+package jar.jackson.entity;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import jar.fasterxml.jackson.custom.CustomWriter;
+import jar.jackson.custom.CustomWriter;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;

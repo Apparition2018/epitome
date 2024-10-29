@@ -1,4 +1,4 @@
-package jar.fasterxml.jackson.annotataion;
+package jar.jackson.annotataion;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.core.JsonProcessingException;

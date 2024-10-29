@@ -1,71 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
     <title>WebSocket</title>
-    <link rel="stylesheet" href="../css/demo.css">
-</head>
-<body>
-<form onsubmit="return false;">
-    <input type="text" name="message" value=""/>
-    <br/><br/>
-    <input type="button" value="发送 WebSocket 请求消息" onclick="send(this.form.message.value)"/>
-    <hr color="red"/>
-    <h2>客户端接收到服务端返回的应答消息</h2>
-    <textarea id="responseContent" class="w1024 h300"></textarea>
-</form>
-<script>
-    let webSocket;
-    let timerID = 0;
-    const textarea = document.getElementById('responseContent');
-    if (!window.WebSocket) {
-        window.WebSocket = window.MozWebSocket;
-    }
-    if (window.WebSocket) {
-        console.log('websocket');
-        webSocket = new WebSocket("ws://localhost:8888/websocket");
+    <link rel="stylesheet" href="../css/demo.css" />
+  </head>
+  <body>
+    <form onsubmit="return false;">
+      <input type="text" name="message" />
+      <br /><br />
+      <input type="button" value="发送 WebSocket 请求消息" onclick="send(this.form.message.value)" />
+      <hr color="red" />
+      <h2>客户端接收到服务端返回的应答消息</h2>
+      <textarea id="responseContent" class="w1024 h300"></textarea>
+    </form>
+    <script>
+      let webSocket
+      let timerID = 0
+      const textarea = document.getElementById('responseContent')
+      if (!window.WebSocket) {
+        window.WebSocket = window.MozWebSocket
+      }
+      if (window.WebSocket) {
+        console.log('websocket')
+        webSocket = new WebSocket('ws://localhost:8888/websocket')
         webSocket.onmessage = function (event) {
-            console.log('onmessage');
-            textarea.value += event.data + "\r\n";
-        };
+          console.log('onmessage')
+          textarea.value += event.data + '\r\n'
+        }
         webSocket.onopen = function (event) {
-            console.log('onopen');
-            keepAlive();
-            textarea.value = "您当前的浏览器支持 WebSocket，请进行后续操作\r\n";
-        };
+          console.log('onopen')
+          keepAlive()
+          textarea.value = '您当前的浏览器支持 WebSocket，请进行后续操作\r\n'
+        }
         webSocket.onclose = function (event) {
-            console.log('onclose');
-            cancelKeepAlive();
-            textarea.value = "";
-            textarea.value = "WebSocket 连接已经关闭\r\n";
+          console.log('onclose')
+          cancelKeepAlive()
+          textarea.value = ''
+          textarea.value = 'WebSocket 连接已经关闭\r\n'
         }
-    } else {
-        alert("您的浏览器不支持 WebSocket")
-    }
+      } else {
+        alert('您的浏览器不支持 WebSocket')
+      }
 
-    function send(message) {
+      function send (message) {
         if (!window.WebSocket) {
-            return;
+          return
         }
-        webSocket.readyState === WebSocket.OPEN ? webSocket.send(message) : alert("WebSocket 连接没有建立成功");
-    }
+        webSocket.readyState === WebSocket.OPEN ? webSocket.send(message) : alert('WebSocket 连接没有建立成功')
+      }
 
-    /* Websocket 超时问题：https://www.jstips.co/zh_cn/javascript/working-with-websocket-timeout/ */
-    function keepAlive() {
-        let timeout = 20000;
+      /* Websocket 超时问题：https://www.jstips.co/zh_cn/javascript/working-with-websocket-timeout/ */
+      function keepAlive () {
+        const timeout = 20000
         if (webSocket.readyState === webSocket.OPEN) {
-            webSocket.send('');
+          webSocket.send('')
         }
-        timerID = setTimeout(keepAlive, timeout);
-    }
+        timerID = setTimeout(keepAlive, timeout)
+      }
 
-    function cancelKeepAlive() {
+      function cancelKeepAlive () {
         if (timerID) {
-            clearTimeout(timerID);
+          clearTimeout(timerID)
         }
-    }
-</script>
-</body>
+      }
+    </script>
+  </body>
 </html>

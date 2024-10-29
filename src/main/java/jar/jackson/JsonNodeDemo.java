@@ -1,11 +1,12 @@
-package jar.fasterxml.jackson;
+package jar.jackson;
 
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.*;
-import jar.fasterxml.jackson.entity.Person;
+import jar.jackson.entity.Person;
+import jar.jackson.entity.Person;
 import l.demo.Demo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

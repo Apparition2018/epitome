@@ -1,4 +1,4 @@
-package jar.fasterxml.jackson.custom;
+package jar.jackson.custom;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;

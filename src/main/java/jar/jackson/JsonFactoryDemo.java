@@ -1,4 +1,4 @@
-package jar.fasterxml.jackson;
+package jar.jackson;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonFactoryBuilder;

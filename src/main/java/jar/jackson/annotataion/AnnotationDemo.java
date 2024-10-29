@@ -1,12 +1,13 @@
-package jar.fasterxml.jackson.annotataion;
+package jar.jackson.annotataion;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import jar.fasterxml.jackson.custom.CustomFilter;
-import jar.fasterxml.jackson.entity.Person;
+import jar.jackson.custom.CustomFilter;
+import jar.jackson.entity.Person;
+import jar.jackson.custom.CustomFilter;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +51,7 @@ public class AnnotationDemo extends Demo {
      * {@code @JsonRawValue}
      * {@code @JsonAnyGetter}
      *
-     * @see jar.fasterxml.jackson.entity.Person
+     * @see Person
      */
     @Test
     public void testGenerator() throws JsonProcessingException {
@@ -83,7 +84,7 @@ public class AnnotationDemo extends Demo {
      * {@code @JsonAnySetter}
      * {@code @JsonEnumDefaultValue}
      *
-     * @see jar.fasterxml.jackson.entity.Person
+     * @see Person
      */
     @Test
     public void testParser() throws JsonProcessingException {

@@ -1,4 +1,4 @@
-package knowledge.caffeine;
+package jar.caffeine;
 
 import com.github.benmanes.caffeine.cache.*;
 import org.apache.commons.lang3.time.DateUtils;
@@ -19,9 +19,7 @@ public class CaffeineDemo {
 
     private final static String KEY = "A";
 
-    /**
-     * 填充缓存-手动填充
-     */
+    /** 填充缓存-手动填充 */
     @Test
     public void testManualPopulating() {
         Cache<String, DataObject> cache = Caffeine.newBuilder()
@@ -34,12 +32,10 @@ public class CaffeineDemo {
 
         dataObject = cache.get(KEY, k -> DataObject.get("Data for A"));
         Assertions.assertNotNull(dataObject);
-        Assertions.assertEquals("Data for A", dataObject.getData());
+        Assertions.assertEquals("Data for A", dataObject.data());
     }
 
-    /**
-     * 填充缓存-同步加载
-     */
+    /** 填充缓存-同步加载 */
     @Test
     public void testSynchronousLoading() {
         LoadingCache<String, DataObject> cache = Caffeine.newBuilder()
@@ -49,38 +45,18 @@ public class CaffeineDemo {
 
         DataObject dataObject = cache.get(KEY);
         Assertions.assertNotNull(dataObject);
-        Assertions.assertEquals("Data for " + KEY, dataObject.getData());
+        Assertions.assertEquals("Data for " + KEY, dataObject.data());
 
         Map<String, DataObject> dataObjectMap = cache.getAll(List.of("A", "B", "C"));
         Assertions.assertEquals(3, dataObjectMap.size());
     }
 
-    /**
-     * 填充缓存-异步加载
-     */
-    @Test
-    public void testAsynchronousLoading() {
-        AsyncLoadingCache<String, DataObject> cache = Caffeine.newBuilder()
-                .maximumSize(100)
-                .expireAfterWrite(1, TimeUnit.MINUTES)
-                .buildAsync(k -> DataObject.get("Data for " + k));
-
-        cache.get(KEY).thenAccept(dataObject -> {
-            Assertions.assertNotNull(dataObject);
-            Assertions.assertEquals("Data for " + KEY, dataObject.getData());
-        });
-
-        cache.getAll(List.of("A", "B", "C")).thenAccept(dataObjectMap -> Assertions.assertEquals(3, dataObjectMap.size()));
-    }
-
-    /**
-     * 值驱逐-基于大小
-     */
+    /** 值驱逐-基于大小 */
     @Test
     public void testSizeBased() {
         LoadingCache<String, DataObject> cache = Caffeine.newBuilder()
-                .maximumSize(1)
-                .build(k -> DataObject.get("Data for " + k));
+            .maximumSize(1)
+            .build(k -> DataObject.get("Data for " + k));
 
         Assertions.assertEquals(0, cache.estimatedSize());
 
@@ -93,9 +69,9 @@ public class CaffeineDemo {
 
 
         cache = Caffeine.newBuilder()
-                .maximumWeight(4)
-                .weigher((k, v) -> 2)
-                .build(k -> DataObject.get("Data for " + k));
+            .maximumWeight(4)
+            .weigher((k, v) -> 2)
+            .build(k -> DataObject.get("Data for " + k));
 
         Assertions.assertEquals(0, cache.estimatedSize());
 
@@ -111,9 +87,23 @@ public class CaffeineDemo {
         Assertions.assertEquals(2, cache.estimatedSize());
     }
 
-    /**
-     * 值驱逐-基于时间
-     */
+    /** 填充缓存-异步加载 */
+    @Test
+    public void testAsynchronousLoading() {
+        AsyncLoadingCache<String, DataObject> cache = Caffeine.newBuilder()
+                .maximumSize(100)
+                .expireAfterWrite(1, TimeUnit.MINUTES)
+                .buildAsync(k -> DataObject.get("Data for " + k));
+
+        cache.get(KEY).thenAccept(dataObject -> {
+            Assertions.assertNotNull(dataObject);
+            Assertions.assertEquals("Data for " + KEY, dataObject.data());
+        });
+
+        cache.getAll(List.of("A", "B", "C")).thenAccept(dataObjectMap -> Assertions.assertEquals(3, dataObjectMap.size()));
+    }
+
+    /** 值驱逐-基于时间 */
     @Test
     public void testTimeBased() {
         LoadingCache<String, DataObject> cache = Caffeine.newBuilder()
@@ -133,7 +123,7 @@ public class CaffeineDemo {
                 .expireAfter(new Expiry<String, DataObject>() {
                     @Override
                     public long expireAfterCreate(String key, DataObject value, long currentTime) {
-                        return value.getData().length() * DateUtils.MILLIS_PER_SECOND;
+                        return value.data().length() * DateUtils.MILLIS_PER_SECOND;
                     }
 
                     @Override
@@ -148,9 +138,7 @@ public class CaffeineDemo {
                 }).build(k -> DataObject.get("Data for " + k));
     }
 
-    /**
-     * 值驱逐-基于引用
-     */
+    /** 值驱逐-基于引用 */
     @Test
     public void testReferenceBased() {
         LoadingCache<String, DataObject> cache = Caffeine.newBuilder()
@@ -165,9 +153,7 @@ public class CaffeineDemo {
                 .build(k -> DataObject.get("Data for " + k));
     }
 
-    /**
-     * 统计
-     */
+    /** 统计 */
     @Test
     public void testRefreshing() {
         LoadingCache<String, DataObject> cache = Caffeine.newBuilder()
@@ -175,9 +161,7 @@ public class CaffeineDemo {
                 .build(k -> DataObject.get("Data for " + k));
     }
 
-    /**
-     * 刷新
-     */
+    /** 刷新 */
     @Test
     public void testStatistics() {
         LoadingCache<String, DataObject> cache = Caffeine.newBuilder()

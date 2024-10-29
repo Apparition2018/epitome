@@ -1,13 +1,15 @@
 package knowledge.security.crypto;
 
-import org.apache.commons.codec.binary.Base64;
-
-import javax.crypto.*;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Base64;
+
+import static l.demo.Demo.HELLO_WORLD;
 
 /**
  * 对称加密 (Symmetric Cryptography)
@@ -31,93 +33,60 @@ import java.security.SecureRandom;
  *
  * @author ljh
  * @see <a href="https://blog.csdn.net/weixin_43853965/article/details/103870110">通俗解释对称加密、非对称加密、散列算法与 PKI</a>
- * @see <a href="https://blog.csdn.net/chengbinbbs/article/details/78640589">Java 对称加密与非对称加密</a>
+ * @see <a href="https://blog.csdn.net/weixin_43219644/article/details/141385976">对称加密AES详解</a>
  * @see <a href="https://www.cnblogs.com/sunxuchu/p/5483956.html">各种加密算法比较</a>
  * @see <a href="https://zhuanlan.zhihu.com/p/20064358">加解密（Encryption）& 哈希（Hash）算法</a>
  * @since 2020/11/18 19:37
  */
 public class SymmetricCryptography {
 
+    private static final String SECURE_ALGORITHM = "SHA1PRNG";
     private static final String KEY_ALGORITHM = "AES";
+    // AES 支持 128、192、256 位的密钥长度
+    private static final int KEY_SIZE = 16 * 8;
+    private static final String TRANSFORMATION = "AES/ECB/PKCS5Padding";
 
-    // 默认加密算法
-    private static final String DEFAULT_CIPHER_ALGORITHM = "AES/ECB/PKCS5Padding";
-
-    /**
-     * AES 加密操作
-     *
-     * @param content 待加密内容
-     * @param key     加密密钥
-     * @return Base64转码后的加密数据
-     */
-    private static String encrypt(String content, String key) {
+    private static SecretKeySpec getSecretKey(String seed) {
         try {
-            // Cipher 为加密和解密提供密码功能
-            // 创建密码器
-            Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
-
-            byte[] byteContent = content.getBytes(StandardCharsets.UTF_8);
-
-            // 初始化为加密模式的密码器
-            cipher.init(Cipher.ENCRYPT_MODE, getSecretKey(key));
-
-            // 加密
-            byte[] result = cipher.doFinal(byteContent);
-
-            // 通过 Base64 转码返回
-            return Base64.encodeBase64String(result);
-        } catch (NoSuchPaddingException | IllegalBlockSizeException | NoSuchAlgorithmException |
-                 BadPaddingException | InvalidKeyException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static String decrypt(String content, String key) throws NoSuchPaddingException {
-        try {
-            // 实例化
-            Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
-
-            // 使用密钥初始化，设置为解密模式
-            cipher.init(Cipher.DECRYPT_MODE, getSecretKey(key));
-
-            // 执行操作
-            byte[] result = cipher.doFinal(Base64.decodeBase64(content));
-
-            return new String(result, StandardCharsets.UTF_8);
-        } catch (IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /**
-     * 生成密钥
-     */
-    private static SecretKeySpec getSecretKey(final String key) {
-        // 返回生成指定算法密钥生成器的 keyGenerator 对象
-        KeyGenerator kg;
-
-        try {
+            SecureRandom secureRandom = SecureRandom.getInstance(SECURE_ALGORITHM);
+            secureRandom.setSeed(seed.getBytes(StandardCharsets.UTF_8));
             // https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyGenerator
-            kg = KeyGenerator.getInstance(KEY_ALGORITHM);
-
-            // AES 要求密钥长度为128
-            kg.init(128, new SecureRandom(key.getBytes()));
-
-            // 生成一个密钥
-            SecretKey secretKey = kg.generateKey();
-
-            // 转换为 AES 专用密钥
-            return new SecretKeySpec(secretKey.getEncoded(), KEY_ALGORITHM);
+            KeyGenerator keyGenerator = KeyGenerator.getInstance(KEY_ALGORITHM);
+            keyGenerator.init(KEY_SIZE, secureRandom);
+            return new SecretKeySpec(keyGenerator.generateKey().getEncoded(), KEY_ALGORITHM);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }
 
+    private static String encrypt(String content, String seed) {
+        try {
+            Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+            cipher.init(Cipher.ENCRYPT_MODE, getSecretKey(seed));
+            byte[] encryptedBytes = cipher.doFinal(content.getBytes(StandardCharsets.UTF_8));
+            return Base64.getEncoder().encodeToString(encryptedBytes);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static String decrypt(String content, String seed) {
+        try {
+            Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+            cipher.init(Cipher.DECRYPT_MODE, getSecretKey(seed));
+            byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(content));
+            return new String(decryptedBytes, StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void main(String[] args) throws NoSuchPaddingException {
-        String content = "Hello";
-        String key = "sde@5f98H*^hsff%dfs$r344&df8543*er";
-        String h = encrypt(content, key);
-        System.out.println(h);
-        System.out.println(decrypt(h, key));
+        String content = HELLO_WORLD;
+        String seed = System.currentTimeMillis() + "";
+        String encryptContent = encrypt(content, seed);
+        System.err.printf("加密前：%s%n", content);
+        System.err.printf("加密后：%s%n", encryptContent);
+        System.err.printf("解密后：%s%n", decrypt(encryptContent, seed));
     }
 }

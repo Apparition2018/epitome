@@ -1,4 +1,4 @@
-package jar.fasterxml.jackson;
+package jar.jackson;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -14,9 +14,10 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import jar.fasterxml.jackson.custom.CustomDeserializer;
-import jar.fasterxml.jackson.custom.CustomSerializer;
-import jar.fasterxml.jackson.entity.Person;
+import jar.jackson.custom.CustomDeserializer;
+import jar.jackson.custom.CustomSerializer;
+import jar.jackson.entity.Person;
+import jar.jackson.entity.Person;
 import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;

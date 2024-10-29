@@ -1,4 +1,4 @@
-package jar.fasterxml.jackson.annotataion;
+package jar.jackson.annotataion;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
