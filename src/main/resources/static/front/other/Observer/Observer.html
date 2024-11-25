@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <title>Observer</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css" />
+  </head>
+  <body>
+    <section class="code-wrap h300">
+      <div class="css-live-wrap w40p">
+        <div class="caption">
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Resize_Observer_API">ResizeObserver</a>
+        </div>
+        <div class="caption">监视元素的大小更改</div>
+        <div class="centered" id="resize-box"></div>
+      </div>
+      <script class="code w60p" contenteditable="true">
+        console.log('=== ResizeObserver ===')
+        const resizeObserver = new ResizeObserver((entries) => {
+          for (const entry of entries) {
+            const contentRect = entry.contentRect
+            console.log('Element:', entry.target)
+            console.log(`Element size: ${contentRect.width}px x ${contentRect.height}px`)
+            console.log(`Element padding: ${contentRect.top}px ; ${contentRect.left}px`)
+          }
+        })
+
+        const resizeBox = document.querySelector('#resize-box')
+        resizeObserver.observe(resizeBox)
+        resizeBox.style.height = '100px'
+      </script>
+    </section>
+
+    <section class="code-wrap h300">
+      <div class="css-live-wrap w40p">
+        <div class="caption">
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API">IntersectionObserver</a>
+        </div>
+        <div class="caption">检测目标元素与祖先元素或顶级文档的视口相交情况</div>
+        <div class="centered"></div>
+      </div>
+      <script class="code w60p" contenteditable="true"></script>
+    </section>
+  </body>
+</html>

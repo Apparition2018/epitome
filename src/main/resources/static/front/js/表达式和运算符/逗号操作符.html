@@ -1,39 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
     <title>逗号操作符</title>
-    <link rel="stylesheet" href="../../../public/css/demo.css">
-</head>
-<body>
-<section class="code-wrap h150">
-    <div class="css-live-wrap w33p">
+    <link rel="stylesheet" href="../../../public/css/demo.css" />
+  </head>
+  <body>
+    <section class="code-wrap h150">
+      <div class="css-live-wrap w33p">
         <div class="caption">逗号操作符</div>
         <div class="caption">对它的每个操作数求值（从左到右），并返回最后一个操作数的值</div>
-        <div class="centered">
-        </div>
-    </div>
-    <script class="code w67p" contenteditable="true">
+        <div class="centered"></div>
+      </div>
+      <script class="code w67p" contenteditable="true">
         // 语法：expr1, expr2, expr3...（任一表达式）
         // 表达式，就是一个JavaScript的“短语”，JavaScript解释器可以计算它，从而生成一个值。
 
-        // var x = 16, x * 2;   // SyntaxError: Unexpected token *，var x = 16 不是表达式
-        x = 16, x * 2;          // 32，返回最后一个操作数的值
-    </script>
-</section>
+        // var x = 16, x * 2   // SyntaxError: Unexpected token *，var x = 16 不是表达式
+        (x = 16), x * 2 // 32，返回最后一个操作数的值
+      </script>
+    </section>
 
-<section class="code-wrap h100">
-    <div class="css-live-wrap w33p">
+    <section class="code-wrap h100">
+      <div class="css-live-wrap w33p">
         <div class="caption">逗号操作符 优先级最低</div>
-        <div class="centered">
-        </div>
-    </div>
-    <script class="code w67p" contenteditable="true">
-        // alert(2, 10);   // 2，因为 函数表达式 的优先级比 逗号运算符 高
-        // alert((2, 10)); // 10
-    </script>
-</section>
-</body>
+        <div class="centered"></div>
+      </div>
+      <script class="code w67p" contenteditable="true">
+        // alert(2, 10)   // 2，因为 函数表达式 的优先级比 逗号运算符 高
+        // alert((2, 10)) // 10
+      </script>
+    </section>
+  </body>
 </html>

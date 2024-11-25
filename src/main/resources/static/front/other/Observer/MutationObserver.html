@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <title>MutationObserver</title>
+    <link rel="stylesheet" href="../../../public/css/demo.css" />
+  </head>
+  <body>
+    <section class="code-wrap">
+      <div class="css-live-wrap w40p">
+        <div class="caption">
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe#childlist">childList</a>
+        </div>
+        <div class="caption">节点的新增与删除</div>
+        <div class="centered" id="childList-box">
+          <ul>
+            <li>childList</li>
+          </ul>
+        </div>
+      </div>
+      <script class="code w60p" contenteditable="true">
+        console.log('=== childList ===')
+        const ul = document.querySelector('#childList-box ul')
+
+        const observer = new MutationObserver(function (mutations, observer) {
+          // 变动数组
+          console.log(mutations)
+          // 观察器实例
+          console.log(observer)
+          mutations.forEach(function (mutation) {
+            console.log(mutation)
+          })
+        })
+
+        observer.observe(ul, {
+          childList: true,
+          // 整个子树。包括子树中所有节点的属性，而不仅仅是针对 target
+          subtree: true
+        })
+
+        ul.appendChild(document.createElement('div'))
+        ul.appendChild(document.createTextNode('foo'))
+        ul.removeChild(ul.childNodes[0])
+        ul.childNodes[0].appendChild(document.createElement('div'))
+      </script>
+    </section>
+
+    <section class="code-wrap h350">
+      <div class="css-live-wrap w40p">
+        <div class="caption">
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe#attributes">attributes</a>
+        </div>
+        <div class="caption">属性值的变化</div>
+        <div class="centered" id="attributes-box">
+          <ul>
+            <li>characterData</li>
+          </ul>
+        </div>
+      </div>
+      <script class="code w60p" contenteditable="true">
+        console.log('=== attributes ===')
+        const ul3 = document.querySelector('#attributes-box ul')
+
+        const observer3 = new MutationObserver(function (mutations, observer) {
+          mutations.forEach(function (mutation) {
+            console.log(mutation)
+          })
+        })
+
+        observer3.observe(ul3, {
+          attributes: true,
+          // 声明哪些属性名会被监听
+          attributeFilter: ['data-value']
+        })
+
+        ul3.setAttribute('data-value', '111')
+        ul3.setAttribute('data-value', '222')
+        ul3.removeAttribute('data-value')
+      </script>
+    </section>
+
+    <section class="code-wrap h300">
+      <div class="css-live-wrap w40p">
+        <div class="caption">
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe#characterData"
+            >characterData</a
+          >
+        </div>
+        <div class="caption">字符的变化</div>
+        <div class="centered" id="characterData-box">
+          <ul>
+            <li>characterData</li>
+          </ul>
+        </div>
+      </div>
+      <script class="code w60p" contenteditable="true">
+        console.log('=== characterData ===')
+        const ul2 = document.querySelector('#characterData-box ul')
+
+        const observer2 = new MutationObserver(function (mutations, observer) {
+          mutations.forEach(function (mutation) {
+            console.log(mutation)
+          })
+        })
+
+        observer2.observe(ul2, {
+          characterData: true,
+          subtree: true
+        })
+
+        ul2.childNodes[0].data = 'aaa'
+        ul2.childNodes[0].data = 'bbb'
+      </script>
+    </section>
+  </body>
+</html>

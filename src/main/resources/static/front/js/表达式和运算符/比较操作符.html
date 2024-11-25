@@ -1,24 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <base target="_blank">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <base target="_blank" />
     <title>比较操作符</title>
-    <link rel="stylesheet" href="../../../public/css/demo.css">
+    <link rel="stylesheet" href="../../../public/css/demo.css" />
     <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
     <script async src="../../../public/js/demo.js"></script>
-</head>
-<body>
-<section class="code-wrap h250">
-    <div class="css-live-wrap">
+  </head>
+  <body>
+    <section class="code-wrap h250">
+      <div class="css-live-wrap">
         <div class="caption">比较字符串</div>
         <div class="caption">使用基于标准字典的 Unicode 值来进行比较</div>
-        <div class="centered">
-        </div>
-    </div>
-    <script class="code" contenteditable="true">
+        <div class="centered"></div>
+      </div>
+      <script class="code" contenteditable="true">
         25 < '3' // false
         '25' < 3 // false
         '25' < '3' // true
@@ -28,136 +27,138 @@
         'apple' > 'Banana' // true
         'apple'.charCodeAt(0) // 97；a 的 unicode 为97
         'Banana'.charCodeAt(0) // 66；B 的 unicode 为66
-    </script>
-</section>
+      </script>
+    </section>
 
-<section class="code-wrap h450">
-    <div class="css-live-wrap w100p">
+    <section class="code-wrap h450">
+      <div class="css-live-wrap w100p">
         <div class="caption">
-            <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness#非严格相等">==</a>
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness#非严格相等">
+            ==
+          </a>
         </div>
-        <div class="caption">ToPrimitive:
-            <br/>首先, 计算 obj.valueOf()，如果结果是原始值，则返回此结果；
-            <br/>否则，计算 obj.toString()，如果结果是原始值，则返回此结果；
-            <br/>否则，抛出异常
+        <div class="caption">
+          ToPrimitive:<br />
+          首先, 计算 obj.valueOf()，如果结果是原始值，则返回此结果；<br />
+          否则，计算 obj.toString()，如果结果是原始值，则返回此结果；<br />
+          否则，抛出异常
         </div>
         <div class="equality centered">
-            <table class="w1280" style="text-align:center;">
-                <tr>
-                    <td></td>
-                    <td colspan="7">B</td>
-                </tr>
-                <tr>
-                    <td rowspan="7">A</td>
-                    <td></td>
-                    <td>Undefined</td>
-                    <td>Null</td>
-                    <td>Number</td>
-                    <td>String</td>
-                    <td>Boolean</td>
-                    <td>Object</td>
-                </tr>
-                <tr>
-                    <td>Undefined</td>
-                    <td>true</td>
-                    <td>true</td>
-                    <td>false</td>
-                    <td>false</td>
-                    <td>false</td>
-                    <td>IsFalsy(B)</td>
-                </tr>
-                <tr>
-                    <td>Null</td>
-                    <td>true</td>
-                    <td>true</td>
-                    <td>false</td>
-                    <td>false</td>
-                    <td>false</td>
-                    <td>IsFalsy(B)</td>
-                </tr>
-                <tr>
-                    <td>Number</td>
-                    <td>false</td>
-                    <td>false</td>
-                    <td>A === B</td>
-                    <td>A === ToNumber(B)</td>
-                    <td>A === ToNumber(B)</td>
-                    <td>A == ToPrimitive(B)</td>
-                </tr>
-                <tr>
-                    <td>String</td>
-                    <td>false</td>
-                    <td>false</td>
-                    <td>ToNumber(A) === B</td>
-                    <td>A === B</td>
-                    <td>ToNumber(A) === ToNumber(B)</td>
-                    <td>A == ToPrimitive(B)</td>
-                </tr>
-                <tr>
-                    <td>Boolean</td>
-                    <td>false</td>
-                    <td>false</td>
-                    <td>ToNumber(A) === B</td>
-                    <td>ToNumber(A) === ToNumber(B)</td>
-                    <td>A === B</td>
-                    <td>ToNumber(A) == ToPrimitive(B)</td>
-                </tr>
-                <tr>
-                    <td>Object</td>
-                    <td>false</td>
-                    <td>false</td>
-                    <td>ToPrimitive(A) == B</td>
-                    <td>ToPrimitive(A) == B</td>
-                    <td>ToPrimitive(A) == ToNumber(B)</td>
-                    <td>A === B</td>
-                </tr>
-            </table>
+          <table class="w1280" style="text-align: center">
+            <tr>
+              <td></td>
+              <td colspan="7">B</td>
+            </tr>
+            <tr>
+              <td rowspan="7">A</td>
+              <td></td>
+              <td>Undefined</td>
+              <td>Null</td>
+              <td>Number</td>
+              <td>String</td>
+              <td>Boolean</td>
+              <td>Object</td>
+            </tr>
+            <tr>
+              <td>Undefined</td>
+              <td>true</td>
+              <td>true</td>
+              <td>false</td>
+              <td>false</td>
+              <td>false</td>
+              <td>IsFalsy(B)</td>
+            </tr>
+            <tr>
+              <td>Null</td>
+              <td>true</td>
+              <td>true</td>
+              <td>false</td>
+              <td>false</td>
+              <td>false</td>
+              <td>IsFalsy(B)</td>
+            </tr>
+            <tr>
+              <td>Number</td>
+              <td>false</td>
+              <td>false</td>
+              <td>A === B</td>
+              <td>A === ToNumber(B)</td>
+              <td>A === ToNumber(B)</td>
+              <td>A == ToPrimitive(B)</td>
+            </tr>
+            <tr>
+              <td>String</td>
+              <td>false</td>
+              <td>false</td>
+              <td>ToNumber(A) === B</td>
+              <td>A === B</td>
+              <td>ToNumber(A) === ToNumber(B)</td>
+              <td>A == ToPrimitive(B)</td>
+            </tr>
+            <tr>
+              <td>Boolean</td>
+              <td>false</td>
+              <td>false</td>
+              <td>ToNumber(A) === B</td>
+              <td>ToNumber(A) === ToNumber(B)</td>
+              <td>A === B</td>
+              <td>ToNumber(A) == ToPrimitive(B)</td>
+            </tr>
+            <tr>
+              <td>Object</td>
+              <td>false</td>
+              <td>false</td>
+              <td>ToPrimitive(A) == B</td>
+              <td>ToPrimitive(A) == B</td>
+              <td>ToPrimitive(A) == ToNumber(B)</td>
+              <td>A === B</td>
+            </tr>
+          </table>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="code-wrap">
-    <div class="css-live-wrap">
+    <section class="code-wrap">
+      <div class="css-live-wrap">
         <div class="caption">[] == ![];</div>
         <div class="centered">
-            <table>
-                <tr>
-                    <td>1</td>
-                    <td>[] == !true</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>[] == false</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>[].valueOf() == Number(false)</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>[] == 0</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>[].toString() == 0</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>"" == 0</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Number("") == 0</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>0 === 0</td>
-                </tr>
-            </table>
+          <table>
+            <tr>
+              <td>1</td>
+              <td>[] == !true</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>[] == false</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>[].valueOf() == Number(false)</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>[] == 0</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>[].toString() == 0</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>"" == 0</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Number("") == 0</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>0 === 0</td>
+            </tr>
+          </table>
         </div>
-    </div>
-    <script class="code" contenteditable="true">
-    </script>
-</section>
-</body>
+      </div>
+      <script class="code" contenteditable="true"></script>
+    </section>
+  </body>
 </html>
