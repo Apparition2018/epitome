@@ -109,7 +109,7 @@ public class ValidationController {
     @Getter
     @Setter
     @ToString
-    private static class User {
+    public static class User {
 
         @NotBlank(message = "用户名称不能为空")
         @Length(min = 2, max = 10, message = "用户名长度区间[2,10]")

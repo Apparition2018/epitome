@@ -46,6 +46,7 @@ import java.nio.file.Files;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -230,9 +231,7 @@ public final class HttpClientUtils {
 
     public String doGet(String url, Map<String, String> params) throws IOException, URISyntaxException {
         URIBuilder builder = new URIBuilder(url);
-        if (params != null) {
-            params.forEach(builder::addParameter);
-        }
+        Optional.ofNullable(params).ifPresent(p -> p.forEach(builder::addParameter));
         HttpGet httpGet = new HttpGet(builder.build());
         // 模拟 Postman 访问，防止网页拦截
         httpGet.setHeader("User-Agent", "PostmanRuntime/7.29.2");

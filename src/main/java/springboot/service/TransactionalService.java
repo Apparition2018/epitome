@@ -104,7 +104,7 @@ public class TransactionalService {
         pe("after completion: " + event.getSource());
     }
 
-    private static class MyEvent extends ApplicationEvent {
+    public static class MyEvent extends ApplicationEvent {
         @Serial
         private static final long serialVersionUID = 4600119726191005175L;
 

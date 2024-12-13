@@ -66,22 +66,19 @@ public final class ExcelUtils<T> {
     }
 
     private static String getValue(Cell cell) {
-        if (cell != null) {
-            if (cell.getCellType() == CellType.BOOLEAN) {
-                return String.valueOf(cell.getBooleanCellValue());
-            } else if (cell.getCellType() == CellType.NUMERIC) {
-                // short format = cell.getCellStyle().getDataFormat();
-                if (DateUtil.isCellDateFormatted(cell)) {
-                    double cellValue = cell.getNumericCellValue();
-                    Date date = DateUtil.getJavaDate(cellValue);
-                    return DateFormatUtils.format(date, DatePattern.NORM_DATETIME_PATTERN);
-                }
-                return String.valueOf((int) cell.getNumericCellValue());
-            } else {
-                return String.valueOf(cell.getStringCellValue());
+        if (cell == null) return StringUtils.EMPTY;
+        if (cell.getCellType() == CellType.BOOLEAN) {
+            return String.valueOf(cell.getBooleanCellValue());
+        } else if (cell.getCellType() == CellType.NUMERIC) {
+            // short format = cell.getCellStyle().getDataFormat();
+            if (DateUtil.isCellDateFormatted(cell)) {
+                double cellValue = cell.getNumericCellValue();
+                Date date = DateUtil.getJavaDate(cellValue);
+                return DateFormatUtils.format(date, DatePattern.NORM_DATETIME_PATTERN);
             }
+            return String.valueOf((int) cell.getNumericCellValue());
         } else {
-            return StringUtils.EMPTY;
+            return String.valueOf(cell.getStringCellValue());
         }
     }
 }

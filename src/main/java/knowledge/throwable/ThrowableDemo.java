@@ -118,16 +118,14 @@ public class ThrowableDemo extends Demo {
                 var2 = var12;
                 throw var12;
             } finally {
-                if (fis != null) {
-                    if (var2 != null) {
-                        try {
-                            fis.close();
-                        } catch (Throwable var11) {
-                            var2.addSuppressed(var11);
-                        }
-                    } else {
+                if (var2 != null) {
+                    try {
                         fis.close();
+                    } catch (Throwable var11) {
+                        var2.addSuppressed(var11);
                     }
+                } else {
+                    fis.close();
                 }
             }
         } catch (IOException var14) {

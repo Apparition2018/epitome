@@ -93,7 +93,7 @@ public class NioDemo {
             Scanner scanner = new Scanner(System.in);
             while (scanner.hasNextLine()) {
                 String request = scanner.nextLine();
-                if (request != null && request.trim().length() > 0) {
+                if (request != null && !request.trim().isEmpty()) {
                     client.write(BufferUtil.createUtf8(request));
                 }
             }

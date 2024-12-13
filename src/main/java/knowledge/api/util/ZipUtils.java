@@ -9,6 +9,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.IntStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -136,9 +137,7 @@ public final class ZipUtils extends Demo {
                 }
                 // 判断文件全路径是否为文件夹,如果是上面已经上传,不需要解压
                 File realFile = new File(destFile, outPath);
-                if (zipList != null) {
-                    zipList.add(outPath);
-                }
+                Optional.ofNullable(zipList).ifPresent(list -> list.add(outPath));
                 if (realFile.isDirectory()) {
                     continue;
                 }

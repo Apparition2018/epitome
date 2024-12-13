@@ -63,12 +63,7 @@ public class DemoController {
         return new Student(1, name);
     }
 
-
     @RequestMapping("test")
-    public void test(@RequestParam("flag") boolean flag) throws InterruptedException {
-        if (flag) {
-            Thread.sleep(10000);
-        }
-
+    public void test() throws InterruptedException {
     }
 }

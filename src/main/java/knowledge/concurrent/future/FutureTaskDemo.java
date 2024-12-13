@@ -40,16 +40,14 @@ public class FutureTaskDemo extends Demo {
         while (flag) {
             for (Iterator<Future<Map<Integer, String>>> it = futureList.iterator(); it.hasNext(); ) {
                 Future<Map<Integer, String>> future = it.next();
-
                 // boolean	    isDone()
                 // 如果任务已完成，则返回 true
                 if (future.isDone()) {
                     try {
-
                         // V	get([long timeout, TimeUnit unit])
                         // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用），会阻塞主线程
                         Map<Integer, String> callMap = future.get();
-                        callMap.forEach((k, v) -> p(String.format("%s：任务 %s 运行完毕！", k, v)));
+                        callMap.forEach((k, v) -> p(String.format("%s：任务 %s 运行完毕！", v, k)));
                         it.remove();
                     } catch (ExecutionException | InterruptedException e) {
                         throw new RuntimeException(e);
@@ -92,7 +90,7 @@ public class FutureTaskDemo extends Demo {
                 // V	get([long timeout, TimeUnit unit])
                 // 如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用），会阻塞主线程
                 Map<Integer, String> callMap = get();
-                callMap.forEach((k, v) -> p(String.format("%s：任务 %s 运行完毕！", k, v)));
+                callMap.forEach((k, v) -> p(String.format("%s：任务 %s 运行完毕！", v, k)));
             } catch (ExecutionException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
