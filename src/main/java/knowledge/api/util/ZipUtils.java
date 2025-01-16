@@ -42,7 +42,7 @@ public final class ZipUtils extends Demo {
     }
 
     /** 压缩 */
-    public void zip(String zipPath, String path, String... srcPaths) throws IOException {
+    public static void zip(String zipPath, String path, String... srcPaths) throws IOException {
         try (ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(new File(zipPath).toPath()))) {
             File[] srcFiles = new File[srcPaths.length];
             IntStream.range(0, srcPaths.length).forEach(i -> srcFiles[i] = new File(srcPaths[i]));
@@ -51,7 +51,7 @@ public final class ZipUtils extends Demo {
     }
 
     /** 压缩 */
-    public void zip(File zipFile, String path, File... srcFiles) throws IOException {
+    public static void zip(File zipFile, String path, File... srcFiles) throws IOException {
         try (ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(zipFile.toPath()))) {
             zip(zos, path, srcFiles);
         }
@@ -64,12 +64,12 @@ public final class ZipUtils extends Demo {
      * @param path      文件夹，为空则不添加文件夹
      * @param srcFiles  压缩源文件
      */
-    public void zip(ZipOutputStream outStream, String path, File... srcFiles) throws IOException {
+    public static void zip(ZipOutputStream outStream, String path, File... srcFiles) throws IOException {
         if (path == null) {
             path = StringUtils.EMPTY;
         }
         path = path.replaceAll("\\*", StrUtil.SLASH);
-        if (path.length() > 0 && !path.endsWith(StrUtil.SLASH)) {
+        if (!path.isEmpty() && !path.endsWith(StrUtil.SLASH)) {
             path += StrUtil.SLASH;
         }
         for (File srcFile : srcFiles) {
@@ -97,12 +97,12 @@ public final class ZipUtils extends Demo {
     }
 
     /** 解压 */
-    public void unzip(String zipPath, String descDir) throws IOException {
+    public static void unzip(String zipPath, String descDir) throws IOException {
         unzip(new File(zipPath), new File(descDir), null);
     }
 
     /** 解压 */
-    public void unzip(File zipFile, File destFile) throws IOException {
+    public static void unzip(File zipFile, File destFile) throws IOException {
         unzip(zipFile, destFile, null);
     }
 
@@ -113,37 +113,37 @@ public final class ZipUtils extends Demo {
      * @param destFile 目标目录
      * @param zipList  压缩文件内路径集合
      */
-    @SuppressWarnings("rawtypes")
-    public void unzip(File zipFile, File destFile, List<String> zipList) throws IOException {
+    public static void unzip(File zipFile, File destFile, List<String> zipList) throws IOException {
         if (!destFile.exists()) {
             destFile.mkdirs();
         }
-        ZipFile zip = new ZipFile(zipFile);
-        // Enumeration<? extends ZipEntry>  entries()
-        // 返回 ZIP 文件 entries 的枚举
-        for (Enumeration entries = zip.entries(); entries.hasMoreElements(); ) {
-            ZipEntry entry = (ZipEntry) entries.nextElement();
-            String zipEntryName = entry.getName();
-            // InputStream	                getInputStream(ZipEntry entry)
-            // 返回用于读取指定 zip 文件 entry 内容的输入流
-            try (InputStream is = zip.getInputStream(entry)) {
-                String outPath = zipEntryName.replaceAll("\\*", StrUtil.SLASH);
-                int index = outPath.lastIndexOf('/');
-                if (index != -1) {
-                    File file = new File(destFile, outPath.substring(0, outPath.lastIndexOf('/')));
-                    if (!file.exists()) {
-                        file.mkdirs();
+        try (ZipFile zip = new ZipFile(zipFile)) {
+            // Enumeration<? extends ZipEntry>  entries()
+            // 返回 ZIP 文件 entries 的枚举
+            for (Enumeration<?> entries = zip.entries(); entries.hasMoreElements(); ) {
+                ZipEntry entry = (ZipEntry) entries.nextElement();
+                String zipEntryName = entry.getName();
+                // InputStream	                getInputStream(ZipEntry entry)
+                // 返回用于读取指定 zip 文件 entry 内容的输入流
+                try (InputStream is = zip.getInputStream(entry)) {
+                    String outPath = zipEntryName.replaceAll("\\*", StrUtil.SLASH);
+                    int index = outPath.lastIndexOf('/');
+                    if (index != -1) {
+                        File file = new File(destFile, outPath.substring(0, outPath.lastIndexOf('/')));
+                        if (!file.exists()) {
+                            file.mkdirs();
+                        }
                     }
-                }
-                // 判断文件全路径是否为文件夹,如果是上面已经上传,不需要解压
-                File realFile = new File(destFile, outPath);
-                Optional.ofNullable(zipList).ifPresent(list -> list.add(outPath));
-                if (realFile.isDirectory()) {
-                    continue;
-                }
+                    // 判断文件全路径是否为文件夹,如果是上面已经上传,不需要解压
+                    File realFile = new File(destFile, outPath);
+                    Optional.ofNullable(zipList).ifPresent(list -> list.add(outPath));
+                    if (realFile.isDirectory()) {
+                        continue;
+                    }
 
-                try (OutputStream os = Files.newOutputStream(realFile.toPath())) {
-                    is.transferTo(os);
+                    try (OutputStream os = Files.newOutputStream(realFile.toPath())) {
+                        is.transferTo(os);
+                    }
                 }
             }
         }

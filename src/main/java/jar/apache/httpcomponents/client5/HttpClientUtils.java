@@ -163,7 +163,7 @@ public final class HttpClientUtils {
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
             // HttpGet
             HttpGet httpGet = new HttpGet("https://credit.gd.gov.cn/creditquery!queryLegalEntityOrgList.do?conditions=914403001922038216");
-            httpGet.setHeader("User-Agent", "PostmanRuntime/  7.29.2");
+            httpGet.setHeader(HttpHeaders.USER_AGENT, "PostmanRuntime/  7.29.2");
             String paramName;
             String paramValue;
             String responseString = httpClient.execute(httpGet, responseHandler);
@@ -174,7 +174,7 @@ public final class HttpClientUtils {
 
             // HttpPost
             HttpPost httpPost = new HttpPost("https://credit.gd.gov.cn/creditreportAction!exportCreditReport.do");
-            httpPost.setHeader("User-Agent", "PostmanRuntime/7.29.2");
+            httpPost.setHeader(HttpHeaders.USER_AGENT, "PostmanRuntime/7.29.2");
             List<BasicNameValuePair> nameValuePairList = Collections.singletonList(new BasicNameValuePair(paramName, paramValue));
             HttpEntity formEntity = new UrlEncodedFormEntity(nameValuePairList, StandardCharsets.UTF_8);
             httpPost.setEntity(formEntity);
@@ -234,7 +234,7 @@ public final class HttpClientUtils {
         Optional.ofNullable(params).ifPresent(p -> p.forEach(builder::addParameter));
         HttpGet httpGet = new HttpGet(builder.build());
         // 模拟 Postman 访问，防止网页拦截
-        httpGet.setHeader("User-Agent", "PostmanRuntime/7.29.2");
+        httpGet.setHeader(HttpHeaders.USER_AGENT, "PostmanRuntime/7.29.2");
         return httpClient.execute(httpGet, responseHandler);
     }
 

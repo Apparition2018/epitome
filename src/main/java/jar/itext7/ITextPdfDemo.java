@@ -5,7 +5,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static l.demo.Demo.DESKTOP;
 
@@ -17,7 +17,7 @@ import static l.demo.Demo.DESKTOP;
  */
 public class ITextPdfDemo {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         try (Document document = new Document(new PdfDocument(new PdfWriter(DESKTOP + "hello-pdf.pdf")))) {
             document.add(new Paragraph("Hello PDF!"));
         }
