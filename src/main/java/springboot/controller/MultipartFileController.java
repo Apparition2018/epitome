@@ -27,6 +27,7 @@ import springboot.result.ResultCode;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -64,7 +65,8 @@ public class MultipartFileController {
             response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
             response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename="
                 // 防止文件名有中文时显示为下划线
-                + new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
+                + URLEncoder.encode(filename, StandardCharsets.UTF_8));
+                // + new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
             IOUtils.copy(inputStream, outputStream);
             outputStream.flush();
         } catch (Exception e) {
@@ -102,8 +104,7 @@ public class MultipartFileController {
             cell.setCellValue("22");
 
             response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
-            response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" +
-                new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
+            response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + URLEncoder.encode(filename, StandardCharsets.UTF_8));
             workbook.write(outputStream);
         } catch (IOException | InvalidFormatException e) {
             throw new RuntimeException(e);

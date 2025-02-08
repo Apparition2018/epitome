@@ -7,7 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.1</version>
+        <version>3.4.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ljh</groupId>
@@ -53,11 +53,11 @@
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.4.0</poi.version>
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
-        <tika.version>3.0.0</tika.version>
+        <tika.version>3.1.0</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.18.3</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
-        <minio.version>8.5.15</minio.version>
+        <minio.version>8.5.17</minio.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
         <itext.version>9.0.0</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
@@ -96,7 +96,7 @@
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
         <emoji.version>5.1.1</emoji.version>
         <!-- https://mvnrepository.com/artifact/com.github.mwiede/jsch -->
-        <jsch.version>0.2.22</jsch.version>
+        <jsch.version>0.2.23</jsch.version>
         <!-- https://mvnrepository.com/artifact/io.github.biezhi/TinyPinyin -->
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
         <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
@@ -106,7 +106,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
         <lucene-analyzers.version>8.11.4</lucene-analyzers.version>
         <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
-        <oshi.version>6.6.5</oshi.version>
+        <oshi.version>6.6.6</oshi.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
         <jol.version>0.17</jol.version>
         <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->

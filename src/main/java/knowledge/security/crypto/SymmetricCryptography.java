@@ -1,5 +1,7 @@
 package knowledge.security.crypto;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
@@ -83,7 +85,7 @@ public class SymmetricCryptography {
 
     public static void main(String[] args) throws NoSuchPaddingException {
         String content = HELLO_WORLD;
-        String seed = System.currentTimeMillis() + "";
+        String seed = System.currentTimeMillis() + StringUtils.EMPTY;
         String encryptContent = encrypt(content, seed);
         System.err.printf("加密前：%s%n", content);
         System.err.printf("加密后：%s%n", encryptContent);

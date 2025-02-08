@@ -19,7 +19,7 @@ public final class RuntimeUtils {
     }
 
     public static String getWindowsSerial(String command) throws IOException {
-        String serial = "";
+        String serial = StringUtils.EMPTY;
         Process process = Runtime.getRuntime().exec(command);
         try (Scanner scanner = new Scanner(process.getInputStream())) {
             if (scanner.hasNext()) {
@@ -35,7 +35,7 @@ public final class RuntimeUtils {
     }
 
     public static String getLinuxSerial(String... shell) throws IOException {
-        String serial = "";
+        String serial = StringUtils.EMPTY;
         Process process = Runtime.getRuntime().exec(shell);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
             String line = reader.readLine().trim();

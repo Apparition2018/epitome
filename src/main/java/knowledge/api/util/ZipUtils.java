@@ -88,6 +88,7 @@ public final class ZipUtils extends Demo {
                 try (FileInputStream fis = new FileInputStream(srcFile)) {
                     outStream.putNextEntry(new ZipEntry(path + srcFile.getName()));
                     fis.transferTo(outStream);
+                } finally {
                     // void	            closeEntry()
                     // 关闭当前  ZIP entry 并定位流以便写入下一个 entry
                     outStream.closeEntry();
