@@ -1,5 +1,6 @@
 package jar.apache.axis2;
 
+import com.sun.tools.ws.WsImport;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -84,12 +85,17 @@ public class Axis2WebServicesClient {
     }
 
     /**
-     * 生成客户端
-     * <pre>
-     * 1 下载 axis-1.x.x-bin.zip 并解压到指定目录
-     * 2 设置环境变量 AXIS2_HOME 为解压后的目录路径，并将 AXIS2_HOME\bin 添加到 PATH
-     * 3 在 cmd 输入：%AXIS2_HOME%\bin\wsdl2java.bat -uri xxx -p com.ljh
-     * </pre>
+     * 使用 axis2 生成客户端
+     * <ol>
+     * <li>下载 axis-1.x.x-bin.zip 并解压到指定目录</li>
+     * <li>设置环境变量 AXIS2_HOME 为解压后的目录路径，并将 AXIS2_HOME\bin 添加到 PATH</li>
+     * <li>在 cmd 输入：%AXIS2_HOME%\bin\wsdl2java.bat -uri xxx -p com.ljh</li>
+     * </ol>
+     * 其它生成客户端方法
+     * <ol>
+     * <li>jaxws-tools 的 {@link WsImport}</li>
+     * <li>cxf-tools-wsdlto-core 的 WSDLToJava</li>
+     * </ol>
      *
      * @see <a href="https://axis.apache.org/axis2/java/core/docs/userguide-creatingclients.html">Creating Clients</a>
      */
