@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import springboot.filter.HeaderMapFilter;
 
+import java.util.Date;
+
 /**
  * DemoController
  *
@@ -19,6 +21,14 @@ import springboot.filter.HeaderMapFilter;
 @RequestMapping("demo")
 @Tag(name = "Demo")
 public class DemoController {
+
+    /** <a href="http://localhost:3333/demo/get">demo/get</a> */
+    @GetMapping("get")
+    @Operation(summary = "GET 请求")
+    public Student get(@RequestParam(value = "id", required = false) Integer id,
+                       @RequestParam(value = "name", required = false) String name) {
+        return new Student(id, name).setBirth(new Date());
+    }
 
     /** <a href="http://localhost:3333/demo/post">demo/post</a> */
     @PostMapping("post")
