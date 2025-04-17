@@ -1,25 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <base target="_blank">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <base target="_blank" />
     <title>faker</title>
-    <link rel="stylesheet" href="../../../../public/css/demo.css">
-</head>
-<body>
-<section class="code-wrap">
-    <div class="css-live-wrap">
-        <div class="caption"><a href="https://www.npmjs.com/package/@faker-js/faker">faker</a></div>
+    <link rel="stylesheet" href="../../../../public/css/demo.css" />
+  </head>
+  <body>
+    <section class="code-wrap">
+      <div class="css-live-wrap">
+        <div class="caption">
+          <a href="https://www.npmjs.com/package/@faker-js/faker">faker</a>
+        </div>
         <div class="centered"></div>
-    </div>
-    <script type="module" class="code" contenteditable="true">
-        import { faker } from "https://unpkg.com/@faker-js/faker/dist/esm/index.mjs";
+      </div>
+      <script type="module" class="code" contenteditable="true">
+        import { faker } from 'https://unpkg.com/@faker-js/faker'
 
-        console.log(faker.person.fullName());
-        console.log(faker.internet.email());
-    </script>
-</section>
-</body>
+        console.log(faker.person.fullName())
+        console.log(faker.internet.email())
+      </script>
+    </section>
+  </body>
 </html>

@@ -61,8 +61,6 @@ public class Demo {
     public static final String BASE_URL = String.format("http://localhost:%s/", PORT);
     public static final String DEMO_URL = BASE_URL + "demo/";
     public static final String COOKIE_URL = BASE_URL + "fetch/cookie";
-    // https://github.com/public-apis/public-apis
-    public static final String RANDOM_DOG_IMG_URL = "https://dog.ceo/api/breeds/image/random";
     public static final String USER_DIR = System.getProperty("user.dir");
     public static final String DESKTOP = FileSystemView.getFileSystemView().getHomeDirectory().getPath() + File.separator;
     public static final String JAVA_PATH = "src/main/java/";
@@ -77,7 +75,7 @@ public class Demo {
     public static final String DEMO_FILE_PATH = DEMO_DIR_PATH + DEMO_FILE_NAME;
     public static final String UPLOAD_ABSOLUTE_PATH = DEMO_DIR_ABSOLUTE_PATH + "upload" + File.separator;
     public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_DIR_ABSOLUTE_PATH + DEMO_FILE_NAME;
-    public static final String BIRD_IMG = "https://i.postimg.cc/1zRqNgPw/bird.jpg";
+    public static final String BIRD_IMG = "https://i.imgs.ovh/2025/04/18/j9kHY.jpeg";
     public static final String XIAO_XIN_PNG = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
     public static final String VIDEO = RESOURCES_ABSOLUTE_PATH + "static/public/video/movie.ogg";
     public static final String JDBC_PROPS_FILENAME = "jdbc.properties";
@@ -232,5 +230,19 @@ public class Demo {
             thread.setName("MyPool-" + map2.get(count.getAndIncrement()));
             return thread;
         }
+    }
+
+    /**
+     * <a href="https://github.com/public-apis/public-apis">公共接口</a>
+     */
+    public static class PublicApis {
+        public static final String IMG = "https://picsum.photos/800/450";
+        public static final String DOG_IMAGE = "https://dog.ceo/api/breeds/image/random";
+        public static final String CAT_IMAGE = "https://api.thecatapi.com/v1/images/search";
+        public static final String TODOS = "https://jsonplaceholder.typicode.com/todos";
+        public static final String TODO = "https://jsonplaceholder.typicode.com/todos/1";
+        public static final String USER_TODO = "https://jsonplaceholder.typicode.com/todos?userId=1";
+        public static final String USERS = "https://reqres.in/api/users?page=1";
+        public static final String USER = "https://reqres.in/api/users/1";
     }
 }

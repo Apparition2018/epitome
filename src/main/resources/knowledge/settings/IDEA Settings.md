@@ -173,6 +173,7 @@
         2.2 Prettier package: D:\Liang\git\epitome\node_modules\prettier
         2.3 Run on 'Reformat Code' action 勾选
         2.4 Run for files: **/*.{html,css,less,scss,sass}
+        2.5 Run eslint --fix on save 勾选
 > - [JavaScript Standard Style](https://standardjs.com/)
 > - [Google Style Guides | styleguide](https://github.com/google/styleguide)
 > - [Google developer documentation style guide](https://developers.google.com/style)

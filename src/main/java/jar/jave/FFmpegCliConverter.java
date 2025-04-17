@@ -26,7 +26,7 @@ public class FFmpegCliConverter {
         try (Stream<Path> stream = Files.walk(Paths.get(DESKTOP))) {
             stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.mp3$"))
                 .parallel()
-                .forEach(mp3Path -> convert(mp3Path, buildOutputPath(mp3Path)));
+                .forEach(mp3Path -> convert(mp3Path, buildOutputPath(mp3Path), null));
         } catch (IOException e) {
             System.err.println("目录遍历异常: " + e.getMessage());
         }
@@ -37,7 +37,7 @@ public class FFmpegCliConverter {
         );
     }
 
-    public static void convert(Path input, Path output) {
+    public static void convert(Path input, Path output, String inputBitRate) {
         try {
             MultimediaObject multimediaObject = new MultimediaObject(input.toFile());
             AudioInfo audioInfo = multimediaObject.getInfo().getAudio();
@@ -49,17 +49,17 @@ public class FFmpegCliConverter {
             // 构建 FFmpeg 命令
             String[] cmd = {
                 "ffmpeg",
-                "-y",                               // 覆盖输出文件
-                "-i", input.toString(),             // 输入文件
-                "-c:a", "aac",                      // 使用 aac 编码器
-                "-b:a", String.valueOf(bitRate),    // 设置比特率
-                "-ar", String.valueOf(samplingRate),// 设置采样率
-                "-ac", String.valueOf(channels),    // 设置声道数
-                "-c:v", "copy",                     // 复制视频流（如封面图片）
-                "-movflags", "+faststart",          // 优化流媒体播放
-                "-map_metadata", "0",               // 复制所有元数据
-                "-map_chapters", "0",               // 复制所有章节信息
-                output.toString()                   // 输出文件
+                "-y",                                                                   // 覆盖输出文件
+                "-i", input.toString(),                                                 // 输入文件
+                "-c:a", "aac",                                                          // 使用 aac 编码器
+                "-b:a", String.valueOf(inputBitRate != null ? inputBitRate : bitRate),  // 设置比特率
+                "-ar", String.valueOf(samplingRate),                                    // 设置采样率
+                "-ac", String.valueOf(channels),                                        // 设置声道数
+                "-c:v", "copy",                                                         // 复制视频流（如封面图片）
+                "-movflags", "+faststart",                                              // 优化流媒体播放
+                "-map_metadata", "0",                                                   // 复制所有元数据
+                "-map_chapters", "0",                                                   // 复制所有章节信息
+                output.toString()                                                       // 输出文件
             };
 
             ProcessBuilder pb = new ProcessBuilder(cmd).redirectErrorStream(true);

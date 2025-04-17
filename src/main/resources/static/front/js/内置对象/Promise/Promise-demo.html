@@ -34,7 +34,9 @@
             </tr>
             <tr>
               <td>
-                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch">
+                <a
+                  href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"
+                >
                   catch()
                 </a>
               </td>
@@ -43,7 +45,9 @@
             </tr>
             <tr>
               <td>
-                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally">
+                <a
+                  href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally"
+                >
                   finally()
                 </a>
               </td>
@@ -52,7 +56,9 @@
             </tr>
             <tr>
               <td>
-                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve">
+                <a
+                  href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve"
+                >
                   Promise.resolve()
                 </a>
               </td>
@@ -67,7 +73,9 @@
             </tr>
             <tr>
               <td>
-                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject">
+                <a
+                  href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject"
+                >
                   Promise.reject()
                 </a>
               </td>
@@ -270,12 +278,63 @@
               }, 10)
             )
 
-          function executeInOrder (funcs) {
+          function executeInOrder(funcs) {
             return funcs.reduce((promiseChain, func) => promiseChain.then(func), Promise.resolve())
           }
 
           executeInOrder([p1, p2, p3])
         })()
+      </script>
+    </section>
+
+    <section class="code-wrap h100vh">
+      <div class="css-live-wrap">
+        <div class="caption">优化嵌套 ajax</div>
+        <div class="centered"></div>
+      </div>
+      <script class="code" contenteditable="true">
+        $.ajax({
+          url: 'https://reqres.in/api/users',
+          type: 'POST',
+          data: {
+            name: 'paul rudd',
+            movies: ['I Love You Man', 'Role Models']
+          },
+          success: function (response) {
+            console.log(response.id)
+            $.ajax({
+              url: 'https://reqres.in/api/users',
+              type: 'POST',
+              data: {
+                name: 'paul rudd',
+                movies: ['I Love You Man', 'Role Models']
+              },
+              success: function (response) {
+                console.log(response.name)
+                $.ajax({
+                  url: 'https://reqres.in/api/users',
+                  type: 'POST',
+                  data: {
+                    name: 'paul rudd',
+                    movies: ['I Love You Man', 'Role Models']
+                  },
+                  success: function (response) {
+                    console.log(response.createdAt)
+                  },
+                  error: function (data, status, e) {
+                    console.log(e)
+                  }
+                })
+              },
+              error: function (data, status, e) {
+                console.log(e)
+              }
+            })
+          },
+          error: function (data, status, e) {
+            console.log(e)
+          }
+        })
       </script>
     </section>
   </body>
