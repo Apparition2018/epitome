@@ -7,6 +7,7 @@
     <base target="_blank" />
     <title>primary-expressions</title>
     <link rel="stylesheet" href="../../../public/css/demo.css" />
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
   </head>
   <body>
     <section class="code-wrap h350">
@@ -22,9 +23,7 @@
             </tr>
             <tr>
               <td>
-                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield#描述">
-                  yield
-                </a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/yield#描述">yield</a>
               </td>
               <td>[rv] = yield [expression]</td>
               <td>暂停和恢复一个生成器函数（function* 或遗留的生成器函数）</td>
@@ -70,13 +69,13 @@
     </section>
 
     <section class="code-wrap h300" id="primary-yield">
-      <div class="css-live-wrap w33p">
+      <div class="css-live-wrap w40p">
         <div class="caption">
           <a href="https://es6.ruanyifeng.com/#docs/generator#yield-表达式">yield 表达式</a>
         </div>
         <div class="centered" id="yield-box"></div>
       </div>
-      <script class="code w67p" contenteditable="true">
+      <script class="code w60p" contenteditable="true">
         function * countAppleSales () {
           const saleList = [3, 7, 5]
           for (let i = 0; i < saleList.length; i++) {
@@ -95,11 +94,11 @@
     </section>
 
     <section class="code-wrap h450" id="primary-yield*">
-      <div class="css-live-wrap w33p">
+      <div class="css-live-wrap w40p">
         <div class="caption">yield*</div>
         <div class="centered" id="yield-box2"></div>
       </div>
-      <script class="code w67p" contenteditable="true">
+      <script class="code w60p" contenteditable="true">
         function * g1 () {
           yield 2
           yield 3
@@ -127,11 +126,11 @@
     </section>
 
     <section class="code-wrap h450" id="primary-async">
-      <div class="css-live-wrap w33p">
+      <div class="css-live-wrap w40p">
         <div class="caption">async & await</div>
         <div class="centered" id="async-box"></div>
       </div>
-      <script class="code w67p" contenteditable="true">
+      <script class="code w60p" contenteditable="true">
         const asyncBox = document.querySelector('#async-box')
 
         function timeOut (msg) {
@@ -161,13 +160,49 @@
       </script>
     </section>
 
+    <section class="code-wrap h500" id="nestedAjax">
+      <div class="css-live-wrap w40p">
+        <div class="caption">优化嵌套 ajax</div>
+        <div class="centered demo-click"><a href="../内置对象/Promise/Promise-demo.html#nestedAjax">async / await 优化嵌套 ajax</a></div>
+      </div>
+      <script class="code w60p" contenteditable="true">
+        function createUser (data) {
+          return $.ajax({
+            url: 'https://reqres.in/api/users',
+            type: 'POST',
+            data
+          })
+        }
+
+        const userData = { name: 'paul rudd', movies: ['I Love You Man', 'Role Models'] }
+
+        async function sendRequestsSequentially () {
+          try {
+            const response1 = await createUser(userData)
+            console.log(response1.id)
+
+            const response2 = await createUser(userData)
+            console.log(response2.name)
+
+            const response3 = await createUser(userData)
+            console.log(response3.createdAt)
+          } catch (error) {
+            console.log(error)
+          }
+        }
+
+        sendRequestsSequentially()
+      </script>
+    </section>
+
     <section class="code-wrap h450">
-      <div class="css-live-wrap w33p">
+      <div class="css-live-wrap w40p">
         <div class="caption">async/await, promise, setTimeout 执行顺序</div>
         <div class="centered" id="timing-box"></div>
       </div>
-      <script class="code w67p" contenteditable="true">
+      <script class="code w60p" contenteditable="true">
         const timingBox = document.querySelector('#timing-box')
+
         async function async1 () {
           timingBox.innerHTML += 'async1 start<br/>'
           await async2()
@@ -180,7 +215,6 @@
 
         timingBox.innerHTML += 'script start<br/>'
         setTimeout(function () {
-          // macrotasks
           timingBox.innerHTML += 'setTimeout<br/>'
         }, 0)
         async1()
@@ -188,7 +222,6 @@
           timingBox.innerHTML += 'promise1<br/>'
           resolve()
         }).then(function () {
-          // microtasks
           timingBox.innerHTML += 'promise2<br/>'
         })
         timingBox.innerHTML += 'script end<br/>'

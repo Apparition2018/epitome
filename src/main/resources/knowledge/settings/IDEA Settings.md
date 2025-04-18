@@ -165,7 +165,7 @@
         3.1 Manual ESLint configuration 勾选
         3.2 ESLint package: D:\Liang\git\epitome\node_modules\eslint
         3.3 Run for files: **/*.{js,ts,jsx,tsx,html,vue}
-        3.4 Run eslint --fix on save 勾选
+        3.4 Run eslint --fix on save 勾选（主动格式化 触发 Prettier，再主动保存触发 eslint --fix，修复 Prettier 无法实现的 space-before-function-paren）
 ### [Prettier](https://www.jetbrains.com/help/idea/prettier.html)
     1. npm i --save-dev --save-exact prettier
     2. Settings → Languages & Frameworks → JavaScript → Prettier
@@ -173,7 +173,6 @@
         2.2 Prettier package: D:\Liang\git\epitome\node_modules\prettier
         2.3 Run on 'Reformat Code' action 勾选
         2.4 Run for files: **/*.{html,css,less,scss,sass}
-        2.5 Run eslint --fix on save 勾选
 > - [JavaScript Standard Style](https://standardjs.com/)
 > - [Google Style Guides | styleguide](https://github.com/google/styleguide)
 > - [Google developer documentation style guide](https://developers.google.com/style)

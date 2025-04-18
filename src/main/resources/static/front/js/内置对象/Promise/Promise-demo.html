@@ -7,6 +7,7 @@
     <base target="_blank" />
     <title>Promise-demo</title>
     <link rel="stylesheet" href="../../../../public/css/demo.css" />
+    <script src="https://unpkg.com/jquery@^1/dist/jquery.min.js"></script>
   </head>
   <body>
     <section class="code-wrap h450">
@@ -25,47 +26,32 @@
             </tr>
             <tr>
               <td>
-                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/then">
-                  then()
-                </a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/then">then()</a>
               </td>
               <td>为 Promise 实例添加状态改变时的回调函数，返回一个 Promise 对象</td>
               <td></td>
             </tr>
             <tr>
               <td>
-                <a
-                  href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"
-                >
-                  catch()
-                </a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch">catch()</a>
               </td>
               <td>用于指定发生错误时的回调函数</td>
               <td><a href="#promise-catch" target="_self">catch()</a></td>
             </tr>
             <tr>
               <td>
-                <a
-                  href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally"
-                >
-                  finally()
-                </a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally">finally()</a>
               </td>
               <td>用于指定不管 Promise 对象最后状态如何，都会执行的操作。</td>
               <td></td>
             </tr>
             <tr>
               <td>
-                <a
-                  href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve"
-                >
-                  Promise.resolve()
-                </a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve">Promise.resolve()</a>
               </td>
               <td>
                 返回一个以给定值解析后的 Promise 对象。<br />
-                但如果这个值是个 thenable（即带有then方法），返回的 promise 会"跟随"这个 thenable
-                的对象，采用它的最终状态;<br />
+                但如果这个值是个 thenable（即带有then方法），返回的 promise 会"跟随"这个 thenable 的对象，采用它的最终状态;<br />
                 如果传入的 value 本身就是 promise 对象，则该对象作为 Promise.resolve() 的返回值返回；<br />
                 否则以该值为成功状态返回 promise 对象。
               </td>
@@ -73,34 +59,24 @@
             </tr>
             <tr>
               <td>
-                <a
-                  href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject"
-                >
-                  Promise.reject()
-                </a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject">Promise.reject()</a>
               </td>
               <td>返回一个带有拒绝原因 reason 参数的 Promise 对象。</td>
               <td></td>
             </tr>
             <tr>
               <td>
-                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/all">
-                  Promise.all()
-                </a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/all">Promise.all()</a>
               </td>
               <td>
-                返回一个 Promise 实例，此实例在 iterable 参数内所有的 promise 都"完成（resolved）"或参数中不包含 promise
-                时回调完成（resolve）；<br />
-                如果参数中 promise 有一个失败（rejected），此实例回调失败（reject），失败原因的是第一个失败 promise
-                的结果。
+                返回一个 Promise 实例，此实例在 iterable 参数内所有的 promise 都"完成（resolved）"或参数中不包含 promise 时回调完成（resolve）；<br />
+                如果参数中 promise 有一个失败（rejected），此实例回调失败（reject），失败原因的是第一个失败 promise 的结果。
               </td>
               <td><a href="#promise-all" target="_self">Promise.all()</a></td>
             </tr>
             <tr>
               <td>
-                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/race">
-                  Promise.race()
-                </a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/race">Promise.race()</a>
               </td>
               <td>返回一个 promise，一旦迭代器中的某个 promise 解决或拒绝，返回的 promise 就会解决或拒绝</td>
               <td><a href="#promise-race" target="_self">Promise.race()</a></td>
@@ -111,18 +87,16 @@
     </section>
 
     <section class="code-wrap h350" id="promise-catch">
-      <div class="css-live-wrap">
+      <div class="css-live-wrap w40p">
         <div class="caption">
           <a href="https://es6.ruanyifeng.com/#docs/promise#Promise-prototype-catch">Promise.prototype.catch()</a>
         </div>
         <div class="caption">
-          <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises#Catch_的后续链式操作">
-            Catch 的后续链式操作
-          </a>
+          <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises#catch_的后续链式操作">Catch 的后续链式操作</a>
         </div>
         <div class="centered w60p" id="catch-box"></div>
       </div>
-      <script class="code" contenteditable="true">
+      <script class="code w60p" contenteditable="true">
         ;(function () {
           const catchBox = document.querySelector('#catch-box')
 
@@ -145,14 +119,14 @@
     </section>
 
     <section class="code-wrap h300" id="promise-resolve">
-      <div class="css-live-wrap">
+      <div class="css-live-wrap w40p">
         <div class="caption">
           <a href="https://es6.ruanyifeng.com/#docs/promise#Promise-resolve">Promise.resolve()</a>
         </div>
         <div class="caption">立即 resolve() 的 Promise 对象，是在本轮“事件循环”（event loop）的结束时执行</div>
         <div class="centered" id="resolve-box"></div>
       </div>
-      <script class="code" contenteditable="true">
+      <script class="code w60p" contenteditable="true">
         ;(function () {
           const resolveBox = document.querySelector('#resolve-box')
 
@@ -173,7 +147,7 @@
     </section>
 
     <section class="code-wrap h300" id="promise-all">
-      <div class="css-live-wrap">
+      <div class="css-live-wrap w40p">
         <div class="caption">
           <a href="https://es6.ruanyifeng.com/#docs/promise#Promise-all">Promise.all()</a>
         </div>
@@ -181,7 +155,7 @@
         <div class="caption">p1、p2、p3 之中有一个被 rejected，p 的状态就变成 rejected</div>
         <div class="centered" id="all-box"></div>
       </div>
-      <script class="code" contenteditable="true">
+      <script class="code w60p" contenteditable="true">
         ;(function () {
           const allBox = document.querySelector('#all-box')
 
@@ -199,14 +173,14 @@
     </section>
 
     <section class="code-wrap h300" id="promise-race">
-      <div class="css-live-wrap">
+      <div class="css-live-wrap w40p">
         <div class="caption">
           <a href="https://es6.ruanyifeng.com/#docs/promise#Promise-race">Promise.race()</a>
         </div>
-        <div class="caption">p1、p2、p3 之中有一个实例率先改变状态，p 的状态就跟着改变</div>
+        <div class="caption">p1、p2 之中有一个实例率先改变状态，p 的状态就跟着改变</div>
         <div class="centered" id="race-box"></div>
       </div>
-      <script class="code" contenteditable="true">
+      <script class="code w60p" contenteditable="true">
         ;(function () {
           const raceBox = document.querySelector('#race-box')
 
@@ -226,13 +200,13 @@
     </section>
 
     <section class="code-wrap h250">
-      <div class="css-live-wrap">
+      <div class="css-live-wrap w40p">
         <div class="caption">
           <a href="https://es6.ruanyifeng.com/#docs/promise#加载图片">加载图片</a>
         </div>
         <div class="centered"></div>
       </div>
-      <script class="code" contenteditable="true">
+      <script class="code w60p" contenteditable="true">
         ;(function () {
           const preloadImage = function (path) {
             return new Promise(function (resolve, reject) {
@@ -246,12 +220,12 @@
       </script>
     </section>
 
-    <section class="code-wrap h500">
-      <div class="css-live-wrap">
+    <section class="code-wrap h550">
+      <div class="css-live-wrap w40p">
         <div class="caption">按顺序执行</div>
         <div class="centered" id="inOrder-box"></div>
       </div>
-      <script class="code" contenteditable="true">
+      <script class="code w60p" contenteditable="true">
         ;(function () {
           const inOrderBox = document.querySelector('#inOrder-box')
 
@@ -278,7 +252,7 @@
               }, 10)
             )
 
-          function executeInOrder(funcs) {
+          function executeInOrder (funcs) {
             return funcs.reduce((promiseChain, func) => promiseChain.then(func), Promise.resolve())
           }
 
@@ -287,54 +261,41 @@
       </script>
     </section>
 
-    <section class="code-wrap h100vh">
-      <div class="css-live-wrap">
+    <section class="code-wrap h500" id="nestedAjax">
+      <div class="css-live-wrap w40p">
         <div class="caption">优化嵌套 ajax</div>
-        <div class="centered"></div>
+        <div class="centered demo-click"><a href="../../表达式和运算符/主要表达式.html#nestedAjax">async / await 优化嵌套 ajax</a></div>
       </div>
-      <script class="code" contenteditable="true">
-        $.ajax({
-          url: 'https://reqres.in/api/users',
-          type: 'POST',
-          data: {
-            name: 'paul rudd',
-            movies: ['I Love You Man', 'Role Models']
-          },
-          success: function (response) {
-            console.log(response.id)
+      <script class="code w60p" contenteditable="true">
+        function createUser (data) {
+          return new Promise((resolve, reject) => {
             $.ajax({
               url: 'https://reqres.in/api/users',
               type: 'POST',
-              data: {
-                name: 'paul rudd',
-                movies: ['I Love You Man', 'Role Models']
-              },
-              success: function (response) {
-                console.log(response.name)
-                $.ajax({
-                  url: 'https://reqres.in/api/users',
-                  type: 'POST',
-                  data: {
-                    name: 'paul rudd',
-                    movies: ['I Love You Man', 'Role Models']
-                  },
-                  success: function (response) {
-                    console.log(response.createdAt)
-                  },
-                  error: function (data, status, e) {
-                    console.log(e)
-                  }
-                })
-              },
-              error: function (data, status, e) {
-                console.log(e)
-              }
+              data,
+              success: resolve,
+              error: reject
             })
-          },
-          error: function (data, status, e) {
-            console.log(e)
-          }
-        })
+          })
+        }
+
+        const userData = { name: 'paul rudd', movies: ['I Love You Man', 'Role Models'] }
+
+        createUser(userData)
+          .then((response) => {
+            console.log(response.id)
+            return createUser(userData)
+          })
+          .then((response) => {
+            console.log(response.name)
+            return createUser(userData)
+          })
+          .then((response) => {
+            console.log(response.createdAt)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
       </script>
     </section>
   </body>
