@@ -9,8 +9,8 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/泛型类型工具-TypeUtil">TypeUtil</a> 泛型类型工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/TypeUtil.html">TypeUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/TypeUtil/">TypeUtil</a> 泛型类型工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/TypeUtil.html">TypeUtil api</a>
  *
  * @author ljh
  * @since 2020/10/29 12:48

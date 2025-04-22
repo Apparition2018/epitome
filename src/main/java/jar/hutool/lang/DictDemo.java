@@ -5,9 +5,9 @@ import l.demo.Demo;
 import l.demo.Person;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/语言特性/HashMap扩展-Dict">Dict</a>
+ * <a href="https://doc.hutool.cn/pages/Dict/">Dict</a>
  * <p>Dict 继承 HashMap，key 为 String，value 为 Object，提供了更灵活多样的使用
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Dict.html">Dict api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/lang/Dict.html">Dict api</a>
  * <pre>{@code
  * Dict         filter(String... keys)                      过滤 Dict 保留指定键值对，如果键不存在跳过
  * <T> T        getXXX(String attr)                         获得特定类型值

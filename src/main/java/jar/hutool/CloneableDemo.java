@@ -4,10 +4,10 @@ import cn.hutool.core.clone.CloneSupport;
 import cn.hutool.core.clone.Cloneable;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/克隆/支持泛型的克隆接口和克隆类">Cloneable</a>   支持泛型的克隆接口和克隆类
+ * <a href="https://doc.hutool.cn/pages/Cloneable/">Cloneable</a>   支持泛型的克隆接口和克隆类
  * <pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/clone/Cloneable.html">Cloneable api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/clone/CloneSupport.html">CloneSupport api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/clone/Cloneable.html">Cloneable api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/clone/CloneSupport.html">CloneSupport api</a>
  * </pre>
  *
  * @author ljh

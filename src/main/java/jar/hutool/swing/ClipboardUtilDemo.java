@@ -9,8 +9,8 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/剪贴板工具-ClipboardUtil">ClipboardUtil</a>    剪贴板工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/swing/clipboard/ClipboardUtil.html">ClipboardUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ClipboardUtil/">ClipboardUtil</a>   剪贴板工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/swing/clipboard/ClipboardUtil.html">ClipboardUtil api</a>
  *
  * @author ljh
  * @since 2020/11/19 12:00

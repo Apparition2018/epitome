@@ -6,7 +6,7 @@ import l.demo.Demo;
 import java.io.File;
 
 /**
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/CharsetUtil.html">CharsetUtil</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/CharsetUtil.html">CharsetUtil</a>
  *
  * @author ljh
  * @since 2020/11/22 3:16

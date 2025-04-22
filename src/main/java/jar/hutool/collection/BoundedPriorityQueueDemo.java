@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/集合类/有界优先队列-BoundedPriorityQueue">BoundedPriorityQueue</a>     有界优先队列
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/BoundedPriorityQueue.html">BoundedPriorityQueue api</a>
+ * <a href="https://doc.hutool.cn/pages/BoundedPriorityQueue/">BoundedPriorityQueue</a> 有界优先队列
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/collection/BoundedPriorityQueue.html">BoundedPriorityQueue api</a>
  *
  * @author ljh
  * @since 2020/11/1 23:23

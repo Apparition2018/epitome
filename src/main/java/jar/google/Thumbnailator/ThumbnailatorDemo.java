@@ -1,5 +1,6 @@
 package jar.google.Thumbnailator;
 
+import cn.hutool.core.img.ImgUtil;
 import l.demo.Demo;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
@@ -26,7 +27,7 @@ public class ThumbnailatorDemo extends Demo {
                 // 输出质量
                 .outputQuality(1)
                 // 输出格式
-                .outputFormat("png")
+                .outputFormat(ImgUtil.IMAGE_TYPE_PNG)
                 // 水印
                 .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(XIAO_XIN_PNG)), 0.1F)
                 .toFile(DESKTOP + FilenameUtils.getName(XIAO_XIN_PNG));

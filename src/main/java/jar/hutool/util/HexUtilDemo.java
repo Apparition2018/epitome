@@ -8,14 +8,14 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/16进制工具-HexUtil">HexUtil</a>   16进制工具
+ * <a href="https://doc.hutool.cn/pages/HexUtil/">HexUtil</a>   16进制工具
  * <p>16进制一般针对无法显示的一些二进制进行显示，常用于：
  * <pre>
  * 1 图片的字符串表现形式
  * 2 加密解密
  * 3 编码转换
  * </pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/HexUtil.html">HexUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/HexUtil.html">HexUtil api</a>
  *
  * @author ljh
  * @since 2020/11/9 10:10

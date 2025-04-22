@@ -11,8 +11,8 @@ import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/网络/网络工具-NetUtil">NetUtil</a>  网络/网络工具-NetUtil
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/net/NetUtil.html">NetUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/NetUtil/">NetUtil</a>   网络工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/net/NetUtil.html">NetUtil api</a>
  *
  * @author ljh
  * @since 2020/10/30 17:16

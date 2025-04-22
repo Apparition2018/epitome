@@ -20,10 +20,10 @@ public class BaseDemo {
     private String decode;
 
     /**
-     * <a href="https://hutool.cn/docs/#/core/Codec编码/Base64编码解码-Base64">Base64</a>
+     * <a href="https://doc.hutool.cn/pages/Base64/">Base64</a>
      * <p>BASE64 使用了 64 个字符，包括 A-Za-z0-9+/
      *
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Base64.html">Base64 api</a>
+     * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/codec/Base64.html">Base64 api</a>
      */
     @Test
     public void testBase64() {
@@ -34,13 +34,13 @@ public class BaseDemo {
     }
 
     /**
-     * <a href="https://hutool.cn/docs/#/core/Codec编码/Base62编码解码-Base62">Base62</a>
+     * <a href="https://doc.hutool.cn/pages/Base62/">Base62</a>
      * <pre>
      * BASE62 使用了 62 个字符，包括 A-Za-z0-9，因为 +/ 在一些场景下代表着特殊含义
      * 多用于安全领域和短 URL 生成
      * </pre>
      *
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Base62.html">Base62 api</a>
+     * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/codec/Base62.html">Base62 api</a>
      */
     @Test
     public void testBase62() {
@@ -51,10 +51,10 @@ public class BaseDemo {
     }
 
     /**
-     * <a href="https://hutool.cn/docs/#/core/Codec编码/Base32编码解码-Base32">Base32</a>
+     * <a href="https://doc.hutool.cn/pages/Base32/">Base32</a>
      * <p>BASE32 使用了 32 个字符，包括 A-Z2-7
      *
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Base32.html">Base32 api</a>
+     * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/codec/Base32.html">Base32 api</a>
      */
     @Test
     public void testBase32() {

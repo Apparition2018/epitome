@@ -7,8 +7,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/IO/资源/资源工具-ResourceUtil-ResourceUtil">ResourceUtil</a>    资源工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/resource/ResourceUtil.html">ResourceUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ResourceUtil/">ResourceUtil</a> 资源工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/io/resource/ResourceUtil.html">ResourceUtil api</a>
  *
  * @author ljh
  * @since 2020/10/30 16:45

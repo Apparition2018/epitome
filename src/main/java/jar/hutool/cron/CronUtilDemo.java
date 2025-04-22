@@ -6,12 +6,12 @@ import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 /**
- * <a href="https://hutool.cn/docs/#/cron/全局定时任务-CronUtil">CronUtil</a>     全局定时任务
+ * <a href="https://doc.hutool.cn/pages/CronUtil/">CronUtil</a> 全局定时任务
  * <p>同时兼容 Crontab 和 Quartz 表达式
  *
  * @author ljh
  * @see <a href="https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html">Linux crontab 命令</a>
- * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/cron/CronUtil.html">CronUtil api</a>
+ * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/cron/CronUtil.html">CronUtil api</a>
  * @since 2020/11/20 13:34
  */
 public class CronUtilDemo extends Demo {

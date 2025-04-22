@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/system/系统属性调用-SystemUtil">SystemUtil</a>   系统属性
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/system/SystemUtil.html">SystemUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/SystemUtil/">SystemUtil</a> 系统属性调用
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/system/SystemUtil.html">SystemUtil api</a>
  * <pre>
  * static String        get(String name[, boolean quiet])       取得系统属性，如果因为 Java 安全的限制而失败，则将错误打在 Log 中，然后返回 null
  * static String        get(String name[, String defaultValue]) 取得系统属性，如果因为 Java 安全的限制而失败，则将错误打在 Log 中，然后返回 defaultValue
@@ -79,7 +79,7 @@ public class SystemUtilDemo {
         // OS Name:        Windows 10
         // OS Version:     10.0
         // File Separator: \
-        // Line Separator: 
+        // Line Separator:
         // Path Separator: ;
 
         // User

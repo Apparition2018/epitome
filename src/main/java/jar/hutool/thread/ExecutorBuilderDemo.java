@@ -6,8 +6,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/线程和并发/自定义线程池-ExecutorBuilder">ExecutorBuilder</a> 自定义线程池
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/thread/ExecutorBuilder.html">ExecutorBuilder</a>
+ * <a href="https://doc.hutool.cn/pages/ExecutorBuilder/">ExecutorBuilder</a>   自定义线程池
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/thread/ExecutorBuilder.html">ExecutorBuilder</a>
  *
  * @author ljh
  * @since 2020/11/19 15:29

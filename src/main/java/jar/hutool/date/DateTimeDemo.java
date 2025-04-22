@@ -9,8 +9,8 @@ import java.util.Objects;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/日期时间/日期时间对象-DateTime">DateTime</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/DateTime.html">DateTime api</a>
+ * <a href="https://doc.hutool.cn/pages/DateTime/">DateTime</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/date/DateTime.html">DateTime api</a>
  * <p>DateTime 继承 java.util.Date，使用 DateTime 可以完全替代开发中 Date 的使用
  *
  * @author ljh

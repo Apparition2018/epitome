@@ -5,8 +5,8 @@ import cn.hutool.core.exceptions.ExceptionUtil;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/异常/异常工具-ExceptionUtil">ExceptionUtil</a>  异常工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/exceptions/ExceptionUtil.html">ExceptionUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ExceptionUtil/">ExceptionUtil</a>   异常工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/exceptions/ExceptionUtil.html">ExceptionUtil api</a>
  *
  * @author ljh
  * @since 2020/11/19 23:31

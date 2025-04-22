@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.Vector;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/集合类/Iterator工具-IterUtil">IterUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/IterUtil.html">IterUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/IterUtil/">IterUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/collection/IterUtil.html">IterUtil api</a>
  * <pre>
  * static <T> Iterator<T>   empty()                                 返回一个空 Iterator
  * static Class<?>          getElementType(Iterable/Iterator)       获得 Iterable 对象的元素类型

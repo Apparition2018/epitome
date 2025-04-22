@@ -11,8 +11,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/LocalDateTime%E5%B7%A5%E5%85%B7-LocalDateTimeUtil">LocalDateTimeUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/LocalDateTimeUtil.html">LocalDateTimeUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/LocalDateTimeUtil/">LocalDateTimeUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/date/LocalDateTimeUtil.html">LocalDateTimeUtil api</a>
  *
  * @author ljh
  * @since 2020/10/27 11:45

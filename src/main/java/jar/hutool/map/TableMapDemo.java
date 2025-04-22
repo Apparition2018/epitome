@@ -5,8 +5,8 @@ import cn.hutool.core.map.TableMap;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/Map/可重复键值Map-TableMap">TableMap</a>   可重复键 Map
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/map/TableMap.html">TableMap api</a>
+ * <a href="https://doc.hutool.cn/pages/TableMap/">TableMap</a> 可重复键 Map
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/map/TableMap.html">TableMap api</a>
  * <p>TableMap 支持键值重复，且正反向查找
  *
  * @author ljh

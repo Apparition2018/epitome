@@ -8,9 +8,9 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/数组工具-ArrayUtil">ArrayUtil</a>
+ * <a href="https://doc.hutool.cn/pages/ArrayUtil/">ArrayUtil</a>
  * <p>主要针对 原始类型数组 和 泛型数组 相关方案进行封装
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ArrayUtil.html">ArrayUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/ArrayUtil.html">ArrayUtil api</a>
  * <pre>{@code
  * static <T> T[]       newArray(Class<?> componentType, int newSize)   新建一个空数组
  * static Object[]      newArray(int newSize)                           新建一个空数组

@@ -7,12 +7,12 @@ import cn.hutool.extra.template.TemplateEngine;
 import cn.hutool.extra.template.TemplateUtil;
 
 /**
- * <a href="https://hutool.cn/docs/#/extra/模板引擎/模板引擎封装-TemplateUtil">TemplateUtil</a>   模板引擎封装
+ * <a href="https://doc.hutool.cn/pages/TemplateUtil/">TemplateUtil</a> 模板引擎封装
  * <p>需要引入 org.freemarker:freemarker
  * <pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/template/TemplateUtil.html">TemplateUtil api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/template/TemplateEngine.html">TemplateEngine api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/template/Template.html">Template api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/template/TemplateUtil.html">TemplateUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/template/TemplateEngine.html">TemplateEngine api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/template/Template.html">Template api</a>
  * </pre>
  *
  * @author ljh

@@ -8,9 +8,9 @@ import java.awt.*;
 import java.io.File;
 
 /**
- * <a href="https://hutool.cn/docs/#/extra/二维码工具-QrCodeUtil">QrCodeUtil</a>     二维码工具
+ * <a href="https://doc.hutool.cn/pages/QrCodeUtil/">QrCodeUtil</a> 二维码工具
  * <p>需要引入 com.google.zxing:core
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/qrcode/QrCodeUtil.html">QrCodeUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/qrcode/QrCodeUtil.html">QrCodeUtil api</a>
  *
  * @author ljh
  * @since 2020/11/5 14:53

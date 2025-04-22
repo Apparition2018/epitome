@@ -5,7 +5,7 @@ import cn.hutool.system.oshi.OshiUtil;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/system/oshi/OshiUtil.html">OshiUtil</a>   获取系统和硬件信息工具
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/system/oshi/OshiUtil.html">OshiUtil</a>    获取系统和硬件信息工具
  * <p>需要引入 com.github.oshi:oshi-core
  * <p><a href="https://www.cnblogs.com/weechang/p/12493978.html">使用 oshi 获取主机信息</a>
  *

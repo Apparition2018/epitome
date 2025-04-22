@@ -10,14 +10,14 @@ import java.io.File;
 import java.nio.charset.StandardCharsets;
 
 /**
- * <a href="https://hutool.cn/docs/#/setting/设置文件-Setting">Setting</a>  设置文件
+ * <a href="https://doc.hutool.cn/pages/setting/example/">Setting</a>   设置文件
  * <pre>
  * 1 兼容 .properties
  * 2 编码支持
  * 3 变量支持 ${key}
  * 4 分组支持
  * </pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/setting/Setting.html">Setting api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/setting/Setting.html">Setting api</a>
  *
  * @author ljh
  * @since 2020/11/20 1:03

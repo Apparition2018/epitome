@@ -11,12 +11,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/IO/文件工具类-FileUtil-FileUtil">FileUtil</a>
+ * <a href="https://doc.hutool.cn/pages/FileUtil/">FileUtil</a>
  * <pre>
  * FileUtil 继承 PathUtil
  * FileUtil 方法名与 Linux 相一致
  * </pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/FileUtil.html">FileUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/io/FileUtil.html">FileUtil api</a>
  * <pre>
  * static boolean               isAbsolutePath(String path)                                     判断是否位绝对路径
  * static boolean               isEmpty(File file)                                              文件是否为空

@@ -1,5 +1,6 @@
 package jar.jave;
 
+import cn.hutool.core.img.ImgUtil;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 import ws.schild.jave.Encoder;
@@ -71,7 +72,7 @@ public class JaveDemo extends Demo {
         VideoInfo videoInfo = multimediaObject.getInfo().getVideo();
 
         VideoAttributes video = new VideoAttributes();
-        video.setCodec("png");
+        video.setCodec(ImgUtil.IMAGE_TYPE_PNG);
         video.setSize(videoInfo.getSize());
 
         EncodingAttributes attrs = new EncodingAttributes();

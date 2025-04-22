@@ -5,8 +5,8 @@ import cn.hutool.core.util.IdUtil;
 import l.demo.Demo;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/语言特性/字段验证器-Validator">Validator</a>   字段验证器
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Validator.html">Validator api</a>
+ * <a href="https://doc.hutool.cn/pages/Validator/">Validator</a>   字段验证器
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/lang/Validator.html">Validator api</a>
  *
  * @author ljh
  * @since 2020/11/19 21:18

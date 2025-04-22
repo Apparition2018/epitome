@@ -7,11 +7,11 @@ import cn.hutool.extra.tokenizer.Word;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * <a href="https://hutool.cn/docs/#/extra/中文分词/中文分词封装-TokenizerUtil">TokenizerUtil</a>     中文分词封装
+ * <a href="https://doc.hutool.cn/pages/TokenizerUtil/">TokenizerUtil</a>   中文分词封装
  * <p>需要引入 org.apache.lucene:lucene-analyzers-smartcn
  * <pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/tokenizer/TokenizerUtil.html">TokenizerUtil api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/tokenizer/TokenizerEngine.html">TokenizerEngine api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/tokenizer/TokenizerUtil.html">TokenizerUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/tokenizer/TokenizerEngine.html">TokenizerEngine api</a>
  * </pre>
  *
  * @author ljh

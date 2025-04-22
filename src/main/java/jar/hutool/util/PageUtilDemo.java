@@ -5,8 +5,8 @@ import cn.hutool.core.util.PageUtil;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/分页工具-PageUtil">PageUtil</a>   分页工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/PageUtil.html">PageUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/PageUtil/">PageUtil</a> 分页工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/PageUtil.html">PageUtil api</a>
  *
  * @author ljh
  * @since 2020/11/19 11:41

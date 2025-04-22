@@ -5,8 +5,8 @@ import cn.hutool.core.lang.Assert;
 import static l.demo.Demo.list;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/语言特性/断言-Assert">Assert</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Assert.html">Assert api</a>
+ * <a href="https://doc.hutool.cn/pages/Assert/">Assert</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/lang/Assert.html">Assert api</a>
  * <p>主要对参数的有效性做校验，当不满足断言条件时，会抛出 IllegalArgumentException 或 IllegalStateException
  *
  * @author ljh

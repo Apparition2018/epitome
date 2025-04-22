@@ -15,8 +15,8 @@ import java.security.PublicKey;
 import java.security.cert.Certificate;
 
 /**
- * <a href="https://hutool.cn/docs/#/crypto/加密解密工具-SecureUtil">SecureUtil</a>   加密解密工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/SecureUtil.html">SecureUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/SecureUtil/">SecureUtil</a>   加密解密工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/crypto/SecureUtil.html">SecureUtil api</a>
  *
  * @author ljh
  * @since 2020/11/9 2:16

@@ -22,7 +22,7 @@ public class CodecDemo extends Demo {
      * <a href="https://github.com/zhaorenjie110/SymmetricEncryptionAndDecryption">凯撒密码</a>
      * <p>一种最简单且最广为人知的加密技术，它是一种替换加密的技术，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。
      *
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Caesar.html">Caesar api</a>
+     * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/codec/Caesar.html">Caesar api</a>
      */
     @Test
     public void testCaesar() {
@@ -38,7 +38,7 @@ public class CodecDemo extends Demo {
      * <p>凯撒密码的一种变体
      *
      * @see <a href="https://www.cnblogs.com/swordcreater/p/12562077.html">rot位移密码详解</a>
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Rot.html">Rot api</a>
+     * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/codec/Rot.html">Rot api</a>
      */
     @Test
     public void testRot() {
@@ -60,7 +60,7 @@ public class CodecDemo extends Demo {
      * <a href="https://github.com/TakWolf/Java-MorseCoder">摩斯密码</a>
      * <p>一种时通时断的信号代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。
      *
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/codec/Morse.html">Morse api</a>
+     * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/codec/Morse.html">Morse api</a>
      */
     @Test
     public void testMorse() {

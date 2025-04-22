@@ -129,7 +129,7 @@ public final class ZipUtils extends Demo {
                 try (InputStream is = zip.getInputStream(entry)) {
                     String outPath = zipEntryName.replaceAll("\\*", StrUtil.SLASH);
                     int index = outPath.lastIndexOf('/');
-                    if (index != -1) {
+                    if (index != StringUtils.INDEX_NOT_FOUND) {
                         File file = new File(destFile, outPath.substring(0, outPath.lastIndexOf('/')));
                         if (!file.exists()) {
                             file.mkdirs();

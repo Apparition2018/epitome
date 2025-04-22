@@ -8,9 +8,9 @@ import l.demo.Demo;
 import java.nio.charset.StandardCharsets;
 
 /**
- * <a href="https://hutool.cn/docs/#/crypto/签名和验证-Sign">Sign</a> 签名和验证
+ * <a href="https://doc.hutool.cn/pages/Sign/">Sign</a> 签名和验证
  * <p>SignAlgorithm: MD5withRSA, SHA256withRSA, SHA1withDSA, SHA256withECDSA ......
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/Sign.html">Sign api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/crypto/asymmetric/Sign.html">Sign api</a>
  *
  * @author ljh
  * @since 2021/7/5 10:51

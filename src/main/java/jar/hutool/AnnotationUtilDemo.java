@@ -7,8 +7,8 @@ import knowledge.annotation.CustomAnnotation.Description;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/注解/注解工具-AnnotationUtil">注解工具</a>  注解工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/annotation/AnnotationUtil.html">AnnotationUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/AnnotationUtil/">AnnotationUtil</a> 注解工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/annotation/AnnotationUtil.html">AnnotationUtil api</a>
  *
  * @author ljh
  * @since 2020/11/9 16:25

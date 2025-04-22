@@ -3,9 +3,9 @@ package jar.hutool.extra;
 import cn.hutool.extra.emoji.EmojiUtil;
 
 /**
- * <a href="https://hutool.cn/docs/#/extra/emoji/Emoji工具-EmojiUtil">EmojiUtil</a>
+ * <a href="https://doc.hutool.cn/pages/EmojiUtil/">EmojiUtil</a>
  * <p>需要引入 com.vdurmont:emoji-java
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/emoji/EmojiUtil.html">EmojiUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/emoji/EmojiUtil.html">EmojiUtil api</a>
  *
  * @author ljh
  * @since 2020/11/20 17:46

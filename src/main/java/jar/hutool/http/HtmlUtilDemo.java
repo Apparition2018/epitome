@@ -5,9 +5,9 @@ import cn.hutool.http.HtmlUtil;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/http/HTML工具类-HtmlUtil">HtmlUtil</a>
+ * <a href="https://doc.hutool.cn/pages/HtmlUtil/">HtmlUtil</a>
  * <p>爬虫爬取 HTML 之后，需要对返回页面的 HTML 内容做一定处理，比如去掉指定标签（例如广告栏等）、去除 JS、去掉样式等等
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/HtmlUtil.html">HtmlUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/http/HtmlUtil.html">HtmlUtil api</a>
  *
  * @author ljh
  * @since 2020/11/2 23:35

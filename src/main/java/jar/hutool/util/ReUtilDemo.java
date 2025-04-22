@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/正则工具-ReUtil">ReUtil</a>   正则工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ReUtil.html">ReUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ReUtil/">ReUtil</a> 正则工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/ReUtil.html">ReUtil api</a>
  *
  * @author ljh
  * @since 2020/11/2 22:47

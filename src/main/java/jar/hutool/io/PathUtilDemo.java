@@ -11,7 +11,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 /**
  * PathUtil
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/file/PathUtil.html">PathUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/io/file/PathUtil.html">PathUtil api</a>
  * <pre>
  * static boolean               isDirectory(Path path, boolean isFollowLinks)   判断是否为目录，如果 file 为 null，则返回 false
  * static boolean               isDirEmpty(Path dirPath)                        目录是否为空

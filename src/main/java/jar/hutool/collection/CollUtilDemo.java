@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/集合类/集合工具-CollUtil">CollUtil</a>
+ * <a href="https://doc.hutool.cn/pages/CollUtil/">CollUtil</a> 集合工具
  * <pre>
  * static <E,T extends Coll<E>> T   empty(Class<?> collectionClass)                                 根据给定的集合类型，返回对应的空集合，支持类型包括： *
  * static <T> Collection<T>         create(Class<?> collectionType)                                 创建新的集合对象
@@ -43,7 +43,7 @@ import java.util.*;
  * <p>
  * static void                      clear(Collection<?>... collections)                             清除一个或多个集合内的元素，每个集合调用 clear()
  * </pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/CollUtil.html">CollUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/collection/CollUtil.html">CollUtil api</a>
  *
  * @author ljh
  * @since 2020/10/27 20:13

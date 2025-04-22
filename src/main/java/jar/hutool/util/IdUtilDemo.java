@@ -7,7 +7,7 @@ import cn.hutool.core.util.IdUtil;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/唯一ID工具-IdUtil">IdUtil</a>   唯一ID工具
+ * <a href="https://doc.hutool.cn/pages/IdUtil/">IdUtil</a> 唯一ID工具
  * <pre>
  * 1 UUID
  * 2 ObjectId (MongoDB)
@@ -15,7 +15,7 @@ import static l.demo.Demo.p;
  * </pre>
  *
  * @author ljh
- * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/IdUtil.html">IdUtil api</a>
+ * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/IdUtil.html">IdUtil api</a>
  * @see <a href="https://mp.weixin.qq.com/s/a5kT_XBGkkvP9xsMlhWBYw">分布式 Unique ID 的生成方法一览</a>
  * @see <a href="https://tech.meituan.com/2017/04/21/mt-leaf.html">Leaf——美团点评分布式ID生成系统</a>
  * @since 2020/11/19 16:40

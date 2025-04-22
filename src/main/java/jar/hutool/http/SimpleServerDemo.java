@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.DEMO_DIR_PATH;
 
 /**
- * <a href="https://hutool.cn/docs/#/http/Server/简易Http服务器-SimpleServer">SimpleServer</a>   简易 Http 服务器
+ * <a href="https://doc.hutool.cn/pages/SimpleServer/">SimpleServer</a>   简易 Http 服务器
  * <p>用于在不引入 Tomcat、Jetty 等容器的情况下，实现简单的 Http 请求处理
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/server/SimpleServer.html">SimpleServer api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/http/server/SimpleServer.html">SimpleServer api</a>
  *
  * @author ljh
  * @since 2020/11/2 23:40

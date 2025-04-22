@@ -4,8 +4,8 @@ import cn.hutool.extra.spring.SpringUtil;
 import org.springframework.context.annotation.Import;
 
 /**
- * <a href="https://hutool.cn/docs/#/extra/Spring/Spring工具-SpringUtil">SpringUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/spring/SpringUtil.html">SpringUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/SpringUtil/">SpringUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/spring/SpringUtil.html">SpringUtil api</a>
  *
  * @author ljh
  * @since 2020/11/21 15:03

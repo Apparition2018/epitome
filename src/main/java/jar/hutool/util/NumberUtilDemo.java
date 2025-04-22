@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.math.RoundingMode;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/数字工具-NumberUtil">NumberUtil</a>
+ * <a href="https://doc.hutool.cn/pages/NumberUtil/">NumberUtil</a>
  * <p>针对数学运算做工具性封装
  * <pre>
  * NumberUtil.factorial()       阶乘
@@ -20,7 +20,7 @@ import java.math.RoundingMode;
  * NumberUtil.compare()         比较两个值的大小
  * NumberUtil.toStr()           数字转字符串，自动并去除尾小数点儿后多余的 0
  * </pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/NumberUtil.html">NumberUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/NumberUtil.html">NumberUtil api</a>
  *
  * @author ljh
  * @since 2020/10/27 14:50
@@ -34,7 +34,7 @@ public class NumberUtilDemo extends Demo {
         p(NumberUtil.div(10, 6, 2, RoundingMode.HALF_EVEN));    // 1.67
 
         // 舍入
-        p(NumberUtil.round(2.25, 1, RoundingMode.HALF_EVEN));   // 2.2  
+        p(NumberUtil.round(2.25, 1, RoundingMode.HALF_EVEN));   // 2.2
         p(NumberUtil.roundStr(5.55, 1, RoundingMode.HALF_EVEN));// 5.6
 
         // 随机数 (不重复的)

@@ -12,14 +12,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/文本操作/CSV文件处理工具-CsvUtil">CsvUtil</a>
+ * <a href="https://doc.hutool.cn/pages/CsvUtil/">CsvUtil</a>   CSV文件处理工具
  * <p>CSV Comma-Separated Values，逗号分隔值，也称为字符分隔值，因为分隔字符也可以不是逗号，其文件以纯文本形式存储表格数据（数字和文本）。
  * api：
  * <pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvUtil.html">CsvUtil api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvWriter.html">CsvWriter api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvBaseReader.html">CsvBaseReader api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/csv/CsvRow.html">CsvRow api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/text/csv/CsvUtil.html">CsvUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/text/csv/CsvWriter.html">CsvWriter api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/text/csv/CsvBaseReader.html">CsvBaseReader api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/text/csv/CsvRow.html">CsvRow api</a>
  * </pre>
  *
  * @author ljh

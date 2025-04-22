@@ -6,9 +6,9 @@ import cn.hutool.http.useragent.UserAgentUtil;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/http/UA工具类-UserAgentUtil">UserAgentUtil</a>    User Agent 工具类
+ * <a href="https://doc.hutool.cn/pages/UserAgentUtil/">UserAgentUtil</a>   User Agent 工具类
  * <p>User Agent 中文名为用户代理，简称 UA，它是一个特殊字符串头，使得服务器能够识别客户使用的操作系统及版本、浏览器及版本、浏览器渲染引擎等
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/useragent/UserAgentUtil.html">UserAgentUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/http/useragent/UserAgentUtil.html">UserAgentUtil api</a>
  *
  * @author ljh
  * @since 2020/11/2 23:38

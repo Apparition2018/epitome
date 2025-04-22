@@ -52,42 +52,34 @@ public class FetchController {
     @PostMapping("upload-picture")
     @Operation(summary = "上传单个文件")
     public String uploadPicture(@RequestParam("file") MultipartFile file) {
-        try {
-            if (!file.isEmpty()) {
-                byte[] bytes = file.getBytes();
-                File picture = new File("temp.png");
-                BufferedOutputStream bos = new BufferedOutputStream(Files.newOutputStream(picture.toPath()));
-                bos.write(bytes);
-                bos.close();
-                return "success";
-            }
+        if (file.isEmpty()) return "fail";
+        File temp = new File("temp.png");
+        try (BufferedOutputStream bos = new BufferedOutputStream(Files.newOutputStream(temp.toPath()));) {
+            bos.write(file.getBytes());
+            return "success";
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return "fail";
     }
 
     @PostMapping("upload-pictures")
     @Operation(summary = "上传多个文件")
     public String uploadPictures(HttpServletRequest request) {
+        List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
+        MultipartFile file;
         try {
-            List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
-            MultipartFile file;
-            for (int i = 0; i < files.size(); i++) {
+            for (int i = 1; i <= files.size(); i++) {
                 file = files.get(i);
-                if (!file.isEmpty()) {
-                    byte[] bytes = file.getBytes();
-                    File picture = new File("temp" + i + ".png");
-                    BufferedOutputStream bos = new BufferedOutputStream(Files.newOutputStream(picture.toPath()));
-                    bos.write(bytes);
-                    bos.close();
+                if (file.isEmpty()) return "fail";
+                File temp = new File("temp" + i + ".png");
+                try (BufferedOutputStream bos = new BufferedOutputStream(Files.newOutputStream(temp.toPath()))) {
+                    bos.write(file.getBytes());
                 }
             }
-            return "success";
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return "fail";
+        return "success";
     }
 
     @PostMapping("cookie")

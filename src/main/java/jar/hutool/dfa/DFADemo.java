@@ -3,10 +3,10 @@ package jar.hutool.dfa;
 import cn.hutool.dfa.WordTree;
 
 /**
- * <a href="https://hutool.cn/docs/#/dfa/概述">DFA</a> (Deterministic Finite Automaton)   确定有穷自动机
- * <p><a href="https://hutool.cn/docs/#/dfa/DFA查找">DFA 查找</a>
+ * <a href="https://doc.hutool.cn/pages/dfa/index/">DFA</a> (Deterministic Finite Automaton)    确定有穷自动机
+ * <p><a href="https://doc.hutool.cn/pages/dfa/">DFA 查找</a>
  * <pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/dfa/WordTree.html">WordTree api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/dfa/WordTree.html">WordTree api</a>
  * <a href="https://www.cnblogs.com/naaoveGIS/archive/2016/10/14/5960352.html">基于DFA敏感词查询的算法简析</a>
  * </pre>
  *

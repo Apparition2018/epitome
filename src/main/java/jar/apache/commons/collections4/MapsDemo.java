@@ -52,6 +52,9 @@ public class MapsDemo extends Demo {
     @Test
     public void testDefaultedMap() {
         DefaultedMap<Integer, String> defaultedMap = DefaultedMap.defaultedMap(map, "-");
+        p(defaultedMap.get(1)); // A
+        p(defaultedMap.get(2)); // B
+        p(defaultedMap.get(3)); // C
         p(defaultedMap.get(4)); // -
     }
 

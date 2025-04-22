@@ -8,8 +8,8 @@ import l.demo.Demo;
 import java.nio.charset.StandardCharsets;
 
 /**
- * <a href="https://hutool.cn/docs/#/crypto/对称加密-SymmetricCrypto">SymmetricCrypto</a>  对称加密
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/symmetric/SymmetricCrypto.html">SymmetricCrypto api</a>
+ * <a href="https://doc.hutool.cn/pages/SymmetricCrypto/">SymmetricCrypto</a>  对称加密
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/crypto/symmetric/SymmetricCrypto.html">SymmetricCrypto api</a>
  *
  * @author ljh
  * @since 2020/11/9 9:30

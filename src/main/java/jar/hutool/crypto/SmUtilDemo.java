@@ -8,15 +8,16 @@ import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.SM2;
 import cn.hutool.crypto.symmetric.SM4;
 import l.demo.Demo;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
 
 /**
- * <a href="https://hutool.cn/docs/#/crypto/国密算法工具-SmUtil">SmUtil</a>   国密算法工具
+ * <a href="https://doc.hutool.cn/pages/SmUtil/">SmUtil</a> 国密算法工具
  * <p>需要 Bouncy Castle
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/SmUtil.html">SmUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/crypto/SmUtil.html">SmUtil api</a>
  *
  * @author ljh
  * @since 2020/11/9 3:06
@@ -34,7 +35,7 @@ public class SmUtilDemo extends Demo {
     /**
      * SM4: 对称加密
      *
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/symmetric/SM4.html">SM4 api</a>
+     * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/crypto/symmetric/SM4.html">SM4 api</a>
      */
     @Test
     public void testSM4() {
@@ -49,10 +50,11 @@ public class SmUtilDemo extends Demo {
     /**
      * SM2: 非对称加密和签名
      *
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/AbstractAsymmetricCrypto.html">AbstractAsymmetricCrypto api</a>
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/asymmetric/SM2.html">SM2 api</a>
+     * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/crypto/asymmetric/AbstractAsymmetricCrypto.html">AbstractAsymmetricCrypto api</a>
+     * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/crypto/asymmetric/SM2.html">SM2 api</a>
      */
-    static class SM2Demo {
+    @Nested
+    class SM2Demo {
 
         /**
          * 随机生成密钥对

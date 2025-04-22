@@ -1,10 +1,15 @@
 package jar.qrcode;
 
+import cn.hutool.core.img.ImgUtil;
 import com.swetake.util.Qrcode;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 /**
  * <a href="https://java.hotexamples.com/zh/examples/com.swetake.util/Qrcode/calQrcode/java-qrcode-calqrcode-method-examples.html">QrcodeUtils</a>
@@ -13,6 +18,18 @@ import java.nio.charset.StandardCharsets;
  * @since 2023/11/3 10:17
  */
 public final class QrcodeUtils {
+
+    public static String createQRCodeBae64(String content) {
+        BufferedImage image = createQRCodeImage(content, 4);
+        String format = ImgUtil.IMAGE_TYPE_PNG;
+        try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
+            ImageIO.write(image, format, os);
+            return String.format("data:image/%s;base64,%s", format, Base64.getEncoder().encodeToString(os.toByteArray()));
+        } catch (IOException e) {
+            throw new RuntimeException("创建二维码 Base64 异常", e);
+        }
+    }
+
     private QrcodeUtils() {
         throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
     }

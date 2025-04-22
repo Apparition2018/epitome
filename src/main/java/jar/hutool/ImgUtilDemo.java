@@ -13,8 +13,8 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * <a href="https://hutool.cn/docs/#/core//图片/图片工具-ImgUtil">ImgUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/img/ImgUtil.html">ImgUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ImgUtil/">ImgUtil</a>   图片工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/img/ImgUtil.html">ImgUtil api</a>
  * <pre>
  * static ImageInputStream  getImageInputStream(InputStream in)                         获取 ImageInputStream
  * static ImageOutputStream getImageOutputStream(File outFile / OutputStream out)       获取 ImageOutputStream

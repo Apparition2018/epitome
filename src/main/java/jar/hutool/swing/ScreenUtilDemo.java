@@ -7,7 +7,7 @@ import java.awt.*;
 import java.io.File;
 
 /**
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/swing/ScreenUtil.html">ScreenUtil</a>    屏幕工具类
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/swing/ScreenUtil.html">ScreenUtil</a> 屏幕工具类
  *
  * @author ljh
  * @since 2020/11/19 15:44

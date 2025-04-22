@@ -1,4 +1,4 @@
-package jar.hutool.captcha;
+package jar.hutool.cache;
 
 import cn.hutool.cache.CacheUtil;
 import cn.hutool.cache.file.LFUFileCache;
@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 import static l.demo.Demo.DEMO_DIR_PATH;
 
 /**
- * <a href="https://hutool.cn/docs/#/cache/CacheUtil">CacheUtil</a>     缓存工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/cache/CacheUtil.html">CacheUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/CacheUtil/">CacheUtil</a>   缓存工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/cache/CacheUtil.html">CacheUtil api</a>
  * <pre>
  * static <K,V> NoCache<K,V>        newNoCache(int capacity)                        无缓存
  * static <K,V> FIFOCache<K,V>      newFIFOCache(int capacity[, long timeout])      FIFO (first in first out) 先进先出缓存
@@ -31,7 +31,7 @@ public class CacheUtilDemo {
         WeakCache<String, String> weakCache = CacheUtil.newWeakCache(TimeUnit.SECONDS.toMillis(3));
     }
 
-    /** <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/cache/file/LFUFileCache.html">LFUFileCache api</a> */
+    /** <a href="https://plus.hutool.cn/apidocs/cn/hutool/cache/file/LFUFileCache.html">LFUFileCache api</a> */
     @Test
     public void testFileCache() {
         // 参数1：容量，能容纳的 byte 数

@@ -7,13 +7,13 @@ import l.demo.Person;
 import java.util.Objects;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/语言特性/单例工具-Singleton">Singleton</a>    单例工具
+ * <a href="https://doc.hutool.cn/pages/Singleton/">Singleton</a>   单例工具
  * <p>一般获取单例方式：
  * <pre>
  * 1 手写单例，通过 getInstance() 获取
  * 2 通过 Spring 统一管理对象获取
  * </pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Singleton.html">Singleton api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/lang/Singleton.html">Singleton api</a>
  * <pre>
  * static void      put([String key, ]Object obj)       将已有对象放入单例中，其 Class 做为键
  * static void      remove(Class<?> clazz/String key)   移除指定 Singleton 对象

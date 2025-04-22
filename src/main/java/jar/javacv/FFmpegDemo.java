@@ -1,5 +1,6 @@
 package jar.javacv;
 
+import com.google.common.net.MediaType;
 import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.FFmpegFrameRecorder;
@@ -66,7 +67,7 @@ public class FFmpegDemo {
         // 设置声道数
         recorder.setAudioChannels(grabber.getAudioChannels());
         // 设置输出格式为 mp4
-        recorder.setFormat("mp4");
+        recorder.setFormat(MediaType.MP4_AUDIO.subtype());
         // 流媒体优化
         recorder.setOption("movflags", "+faststart");
         // 高质量编码

@@ -1,5 +1,6 @@
 package jar.google.zxing;
 
+import cn.hutool.core.img.ImgUtil;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
@@ -25,7 +26,7 @@ import java.util.Map;
  */
 public class ZXingDemo extends Demo {
 
-    private static final String FORMAT = "png";
+    private static final String FORMAT = ImgUtil.IMAGE_TYPE_PNG;
     private static final String CONTENT = "999999999999";
     private static final String QR_CODE_PATH = DEMO_DIR_PATH + "QRCode.png";
     private static final String EAN_13_PATH = DEMO_DIR_PATH + "EAN-13.png";

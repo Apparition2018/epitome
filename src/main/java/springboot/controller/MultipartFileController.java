@@ -1,5 +1,6 @@
 package springboot.controller;
 
+import cn.hutool.core.util.StrUtil;
 import com.google.common.net.HttpHeaders;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -146,10 +147,10 @@ public class MultipartFileController {
                             while ((zipEntry = zis.getNextEntry()) != null) {
                                 // 包含文件夹路径的文件名
                                 String fileName = zipEntry.getName();
-                                boolean isFile = !fileName.endsWith("/");
+                                boolean isFile = !fileName.endsWith(StrUtil.SLASH);
                                 if (isFile) {
-                                    int separatorIndex = fileName.lastIndexOf('/');
-                                    if (separatorIndex != -1) {
+                                    int separatorIndex = fileName.lastIndexOf(StrUtil.SLASH);
+                                    if (separatorIndex != StringUtils.INDEX_NOT_FOUND) {
                                         // 不包含文件路径的文件名
                                         fileName = fileName.substring(separatorIndex + 1);
                                     }

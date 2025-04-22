@@ -6,8 +6,8 @@ import cn.hutool.core.util.StrUtil;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/文本操作/字符串切割-StrSplitter">StrSplitter</a>   字符串切割
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/StrSplitter.html">StrSplitter api</a>
+ * <a href="https://doc.hutool.cn/pages/StrSplitter/">StrSplitter</a>   字符串切割
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/text/StrSplitter.html">StrSplitter api</a>
  *
  * @author ljh
  * @since 2020/11/5 10:20

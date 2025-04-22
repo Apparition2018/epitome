@@ -14,12 +14,12 @@ import java.util.List;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/json/JSONUtil">JSONUtil</a>
+ * <a href="https://doc.hutool.cn/pages/JSONUtil/">JSONUtil</a>
  * <pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONUtil.html">JSONUtil api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSON.html">JSON api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONObject.html">JSONObject api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/json/JSONArray.html">JSONArray api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/json/JSONUtil.html">JSONUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/json/JSON.html">JSON api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/json/JSONObject.html">JSONObject api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/json/JSONArray.html">JSONArray api</a>
  * </pre>
  *
  * @author ljh

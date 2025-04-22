@@ -8,7 +8,7 @@ import java.io.File;
 import static l.demo.Demo.DEMO_DIR_PATH;
 
 /**
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/swing/RobotUtil.html">RobotUtil</a>  Robot 封装工具类
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/swing/RobotUtil.html">RobotUtil</a>   Robot 封装工具类
  *
  * @author ljh
  * @since 2020/11/19 15:37

@@ -1,5 +1,6 @@
 package knowledge.io.file;
 
+import cn.hutool.core.util.StrUtil;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
@@ -126,7 +127,7 @@ public class FileDemo extends Demo {
         p("绝对路径：" + f1.getAbsolutePath());  // 绝对路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
         p("抽象路径：" + f1.getCanonicalPath()); // 抽象路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt
 
-        File f2 = new File("." + File.separator + DEMO_DIR_PATH + "Demo.txt");
+        File f2 = new File(StrUtil.DOT + File.separator + DEMO_DIR_PATH + "Demo.txt");
         p("相对路径：" + f2.getPath());          // 相对路径：.\src\main\resources\demo\Demo.txt
         p("绝对路径：" + f2.getAbsolutePath());  // 绝对路径：D:\L\git\epitome\.\src\main\resources\demo\Demo.txt
         p("抽象路径：" + f2.getCanonicalPath()); // 抽象路径：D:\L\git\epitome\src\main\resources\demo\Demo.txt

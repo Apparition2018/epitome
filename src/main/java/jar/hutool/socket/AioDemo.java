@@ -16,10 +16,10 @@ import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 
 /**
- * <a href="https://hutool.cn/docs/#/socket/AIO封装-AioServer和AioClient">AIO</a>
+ * <a href="https://doc.hutool.cn/pages/AioServer/">AIO 封装</a>
  * <pre>
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/socket/aio/AioClient.html
- * https://apidoc.gitee.com/dromara/hutool/cn/hutool/socket/aio/AioServer.html
+ * https://plus.hutool.cn/apidocs/cn/hutool/socket/aio/AioClient.html
+ * https://plus.hutool.cn/apidocs/cn/hutool/socket/aio/AioServer.html
  * </pre>
  *
  * @author ljh

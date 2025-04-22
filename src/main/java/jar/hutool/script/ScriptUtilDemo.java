@@ -6,8 +6,8 @@ import javax.script.CompiledScript;
 import javax.script.ScriptException;
 
 /**
- * <a href="https://hutool.cn/docs/#/script/Script工具-ScriptUtil">ScriptUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/script/ScriptUtil.html">ScriptUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ScriptUtil/">ScriptUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/script/ScriptUtil.html">ScriptUtil api</a>
  *
  * @author ljh
  * @since 2020/11/21 17:22

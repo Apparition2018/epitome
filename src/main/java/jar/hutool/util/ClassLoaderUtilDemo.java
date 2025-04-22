@@ -5,8 +5,8 @@ import cn.hutool.core.util.ClassLoaderUtil;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/类加载工具-ClassLoaderUtil">ClassLoaderUtil</a>    类加载工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ClassLoaderUtil.html">ClassLoaderUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ClassLoaderUtil/">ClassLoaderUtil</a>   类加载工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/ClassLoaderUtil.html">ClassLoaderUtil api</a>
  *
  * @author ljh
  * @since 2020/11/2 14:49

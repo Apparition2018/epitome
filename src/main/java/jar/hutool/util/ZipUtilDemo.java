@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.nio.charset.StandardCharsets;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/压缩工具-ZipUtil">ZipUtil</a> 压缩工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ZipUtil.html">ZipUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ZipUtil/">ZipUtil</a>   压缩工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/ZipUtil.html">ZipUtil api</a>
  *
  * @author ljh
  * @since 2020/11/7 17:56

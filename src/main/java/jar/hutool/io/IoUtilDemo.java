@@ -11,8 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/IO/IO工具类-IoUtil-IoUtil">IOUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/IoUtil.html">IOUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/IoUtil/">IOUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/io/IoUtil.html">IOUtil api</a>
  * <pre>
  * static Checksum                  checksum(InputStream in, Checksum checksum)         计算流的校验码，计算后关闭流
  * static long                      checksumCRC32(InputStream in)                       计算流 CRC32 校验码，计算后关闭流

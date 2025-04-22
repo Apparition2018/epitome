@@ -6,8 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/对象工具-ObjectUtil">ObjectUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ObjectUtil.html">ObjectUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ObjectUtil/">ObjectUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/ObjectUtil.html">ObjectUtil api</a>
  *
  * @author ljh
  * @since 2020/10/27 12:51

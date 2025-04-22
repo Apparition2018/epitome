@@ -11,8 +11,8 @@ import java.util.Map;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/JavaBean/Bean描述-BeanDesc">BeanDesc</a>    Bean 描述
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanDesc.html">BeanDesc api</a>
+ * <a href="https://doc.hutool.cn/pages/BeanDesc/">BeanDesc</a> Bean描述
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/bean/BeanDesc.html">BeanDesc api</a>
  * <p>可堪称 JDK 的 BeanInfo 的强化版本
  *
  * @author ljh
@@ -26,7 +26,7 @@ public class BeanDescDemo {
         p(beanDesc.getName());                      // l.demo.Person
         // String	            getSimpleName()                 获取 Bean 的简单类名
         p(beanDesc.getSimpleName());                // Person
-        // Collection<PropDesc>	getProps()                      获取字段属性列表    
+        // Collection<PropDesc>	getProps()                      获取字段属性列表
         Collection<PropDesc> props = beanDesc.getProps();
         // Map<String,PropDesc>	getPropMap(boolean ignoreCase)  获取字段名-字段属性 Map
         Map<String, PropDesc> propMap = beanDesc.getPropMap(false);

@@ -8,7 +8,7 @@ import java.util.Currency;
 import java.util.Locale;
 
 /**
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/math/Money.html">Money</a>   货币
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/math/Money.html">Money</a>    货币
  *
  * @author ljh
  * @since 2020/11/22 2:43

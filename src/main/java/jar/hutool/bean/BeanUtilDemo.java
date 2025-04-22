@@ -10,8 +10,8 @@ import l.demo.Person.Home;
 import java.util.Map;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/JavaBean/Bean工具-BeanUtil">BeanUtil</a>    Bean工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanUtil.html">BeanUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/BeanUtil/">BeanUtil</a> Bean工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/bean/BeanUtil.html">BeanUtil api</a>
  * <pre>{@code
  * static PropertyEditor        findEditor(Class<?> type)                               返回类型转换器 PropertyEditor
  * static PropertyDescriptor[]  getPropertyDescriptors(Class<?>[, fieldName][, ignoreCase])  返回 Bean 字段描述数组

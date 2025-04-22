@@ -5,8 +5,8 @@ import cn.hutool.core.math.MathUtil;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/数学/数学相关-MathUtil">MathUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/math/MathUtil.html">MathUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/MathUtil/">MathUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/math/MathUtil.html">MathUtil api</a>
  * <p>NumberUtil 的一个补充，MathUtil 偏向复杂数学计算
  *
  * @author ljh

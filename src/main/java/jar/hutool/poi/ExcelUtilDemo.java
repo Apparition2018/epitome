@@ -10,8 +10,8 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.junit.jupiter.api.Test;
 
 /**
- * <a href="https://hutool.cn/docs/#/poi/Excel工具-ExcelUtil">ExcelUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/poi/excel/ExcelUtil.html">ExcelUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ExcelUtil/">ExcelUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/poi/excel/ExcelUtil.html">ExcelUtil api</a>
  *
  * @author ljh
  * @since 2020/11/21 18:26
@@ -22,10 +22,10 @@ public class ExcelUtilDemo extends Demo {
 
     /**
      * <pre>
-     * <a href="https://hutool.cn/docs/#/poi/Excel生成-ExcelWriter">ExcelWriter</a>
-     * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/poi/excel/ExcelWriter.html">ExcelWriter api</a>
-     * <a href="https://hutool.cn/docs/#/poi/Excel大数据生成-BigExcelWriter">BigExcelWriter</a>
-     * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/poi/excel/BigExcelWriter.html">BigExcelWriter api</a>
+     * <a href="https://doc.hutool.cn/pages/ExcelWriter/">ExcelWriter</a>
+     * <a href="https://plus.hutool.cn/apidocs/cn/hutool/poi/excel/ExcelWriter.html">ExcelWriter api</a>
+     * <a href="https://doc.hutool.cn/pages/BigExcelWriter/">BigExcelWriter</a>
+     * <a href="https://plus.hutool.cn/apidocs/cn/hutool/poi/excel/BigExcelWriter.html">BigExcelWriter api</a>
      * </pre>
      */
     @Test
@@ -67,10 +67,10 @@ public class ExcelUtilDemo extends Demo {
 
     /**
      * <pre>
-     * <a href="https://hutool.cn/docs/#/poi/Excel读取-ExcelReader">ExcelReader</a>
-     * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/poi/excel/ExcelReader.html">ExcelReader api</a>
-     * <a href="https://hutool.cn/docs/#/poi/流方式读取Excel2007-Excel07SaxReader">Excel07SaxReader</a>
-     * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/poi/excel/sax/Excel07SaxReader.html">Excel07SaxReader api</a>
+     * <a href="https://doc.hutool.cn/pages/ExcelReader/">ExcelReader</a>
+     * <a href="https://plus.hutool.cn/apidocs/cn/hutool/poi/excel/ExcelReader.html">ExcelReader api</a>
+     * <a href="https://doc.hutool.cn/pages/Excel07SaxReader/">Excel07SaxReader</a>
+     * <a href="https://plus.hutool.cn/apidocs/cn/hutool/poi/excel/sax/Excel07SaxReader.html">Excel07SaxReader api</a>
      * </pre>
      */
     @Test

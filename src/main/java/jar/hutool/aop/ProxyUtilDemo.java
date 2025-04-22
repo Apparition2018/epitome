@@ -5,12 +5,12 @@ import cn.hutool.aop.aspects.TimeIntervalAspect;
 import l.demo.Animal.Cat;
 
 /**
- * <a href="https://hutool.cn/docs/#/aop/切面代理工具-ProxyUtil">ProxyUtil</a>    切面代理工具
+ * <a href="https://doc.hutool.cn/pages/ProxyUtil/">ProxyUtil</a>   切面代理工具
  * <pre>
  * SimpleAspect         简单切面对象，重写自己需要的方法
  * TimeIntervalAspect   执行时间切面对象
  * </pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/aop/ProxyUtil.html">ProxyUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/aop/ProxyUtil.html">ProxyUtil api</a>
  *
  * @author ljh
  * @since 2020/11/2 15:46

@@ -6,8 +6,8 @@ import l.demo.CompanyEnum;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/枚举工具-EnumUtil">EnumUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/EnumUtil.html">EnumUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/EnumUtil/">EnumUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/EnumUtil.html">EnumUtil api</a>
  *
  * @author ljh
  * @since 2020/11/2 13:58
@@ -35,7 +35,7 @@ public class EnumUtilDemo {
         p(EnumUtil.fromString(CompanyEnum.class, "SF"));        // Company{company='顺丰速运', code=1001}
 
         // likeValueOf
-        p(EnumUtil.likeValueOf(CompanyEnum.class, "SF"));       // Company{company='顺丰速运', code=1001} 
+        p(EnumUtil.likeValueOf(CompanyEnum.class, "SF"));       // Company{company='顺丰速运', code=1001}
 
         // isEnum
         p(EnumUtil.isEnum(CompanyEnum.SF));                     // true

@@ -4,8 +4,8 @@ import cn.hutool.core.util.HashUtil;
 import l.demo.Demo;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/Hash算法-HashUtil">HashUtil</a>     Hash算法
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/HashUtil.html">HashUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/HashUtil/">HashUtil</a> Hash算法
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/HashUtil.html">HashUtil api</a>
  *
  * @author ljh
  * @since 2020/11/19 10:22

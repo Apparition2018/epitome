@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/CharUtil.html">CharUtil</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/CharUtil.html">CharUtil</a>
  *
  * @author ljh
  * @since 2020/11/22 3:27
@@ -15,7 +15,7 @@ public class CharUtilDemo {
 
     @Test
     public void testCharUtil() {
-        p(CharUtil.SLASH);      // /      
+        p(CharUtil.SLASH);      // /
         p(CharUtil.BACKSLASH);  // \
         p(CharUtil.CR);         // \r
         p(CharUtil.LF);         // \n
@@ -38,7 +38,7 @@ public class CharUtilDemo {
         // 字母
         p(CharUtil.isLetter('a'));                              // true
         // 小写字母
-        p(CharUtil.isLetterLower('a'));                         // true           
+        p(CharUtil.isLetterLower('a'));                         // true
         // 大写字母
         p(CharUtil.isLetterUpper('A'));                         // true
         // 数字

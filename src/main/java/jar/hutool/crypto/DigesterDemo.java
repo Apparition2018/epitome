@@ -7,11 +7,11 @@ import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
 /**
- * <a href="https://hutool.cn/docs/#/crypto/摘要加密-Digester">Digester</a>     摘要加密
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/Digester.html">Digester api</a>
+ * <a href="https://doc.hutool.cn/pages/Digester/">Digester</a> 摘要加密
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/crypto/digest/Digester.html">Digester api</a>
  * <p>
  * DigestUtil   摘要加密工具类
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/DigestUtil.html">DigestUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/crypto/digest/DigestUtil.html">DigestUtil api</a>
  *
  * @author ljh
  * @since 2020/11/9 2:07

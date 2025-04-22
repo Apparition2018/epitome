@@ -6,12 +6,12 @@ import l.demo.Demo;
 import java.net.URL;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/URL工具-URLUtil">URLUtil</a>    URL工具
+ * <a href="https://doc.hutool.cn/pages/URLUtil/">URLUtil</a>   URL工具
  * <pre>
  * 1 网页地址，即互联网上的资源
  * 2 Classpath 中的资源地址
  * </pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/URLUtil.html">URLUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/URLUtil.html">URLUtil api</a>
  *
  * @author ljh
  * @since 2020/11/19 10:32
@@ -28,7 +28,7 @@ public class URLUtilDemo extends Demo {
         URL url = URLUtil.url(DEMO_DIR_PATH);
 
         // static boolean	isFileURL(URL url)
-        // 是否为文件 URL        
+        // 是否为文件 URL
         p(URLUtil.isFileURL(url));
     }
 }

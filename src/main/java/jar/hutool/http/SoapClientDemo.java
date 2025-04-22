@@ -3,7 +3,7 @@ package jar.hutool.http;
 import cn.hutool.http.webservice.SoapClient;
 
 /**
- * <a href="https://hutool.cn/docs/#/http/WebService/Soap客户端-SoapClient">SoapClient</a> Soap 客户端
+ * <a href="https://doc.hutool.cn/pages/SoapClient/">SoapClient</a> Soap 客户端
  * <p>实现简便的 WebService 请求
  * <p>使用：
  * <pre>
@@ -25,7 +25,7 @@ import cn.hutool.http.webservice.SoapClient;
  * </pre>
  *
  * @author ljh
- * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/http/webservice/SoapClient.html">SoapClient api</a>
+ * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/http/webservice/SoapClient.html">SoapClient api</a>
  * @since 2020/11/2 23:41
  */
 public class SoapClientDemo {

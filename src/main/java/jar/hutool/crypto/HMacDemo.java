@@ -8,9 +8,9 @@ import l.demo.Demo;
 import javax.crypto.SecretKey;
 
 /**
- * <a href="https://hutool.cn/docs/#/crypto/消息认证码算法-HMac">HMac</a>  消息认证码算法
+ * <a href="https://doc.hutool.cn/pages/HMac/">HMac</a>  消息认证码算法
  * <p>HmacAlgorithm: HmacMD5, HmacSHA1, HmacSHA256, HmacSHA384, HmacSHA512, HmacSM3
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/crypto/digest/HMac.html">HMac api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/crypto/digest/HMac.html">HMac api</a>
  *
  * @author ljh
  * @since 2021/7/5 10:47

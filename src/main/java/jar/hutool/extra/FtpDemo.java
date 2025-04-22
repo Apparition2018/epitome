@@ -5,9 +5,9 @@ import cn.hutool.extra.ftp.Ftp;
 import java.io.IOException;
 
 /**
- * <a href="https://hutool.cn/docs/#/extra/FTP/FTP客户端封装-Ftp">Ftp</a>  FTP 封装
+ * <a href="https://doc.hutool.cn/pages/Ftp/">FTP客户端封装-Ftp</a>
  * <p>需要引入 commons-net:commons-net
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/ftp/Ftp.html">Ftp api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/ftp/Ftp.html">Ftp api</a>
  *
  * @author ljh
  * @since 2020/11/9 16:11

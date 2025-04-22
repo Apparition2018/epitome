@@ -3,8 +3,8 @@ package jar.hutool.lang;
 import cn.hutool.core.lang.Console;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/语言特性/控制台打印封装-Console">Console</a> 控制台打印封装
- * <p>><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/Console.html">Console api</a>
+ * <a href="https://doc.hutool.cn/pages/Console/">Console</a> 控制台打印封装
+ * <p>><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/lang/Console.html">Console api</a>
  * <pre>
  * static Scanner       scanner()                           创建从控制台读取内容的 Scanner
  * static String        input()                             读取用户输入的内容（在控制台敲回车前的内容）

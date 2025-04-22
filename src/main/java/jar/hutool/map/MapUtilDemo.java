@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/Map/Map工具-MapUtil">MapUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/map/MapUtil.html">MapUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/MapUtil/">MapUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/map/MapUtil.html">MapUtil api</a>
  * <pre>{@code
  * static <K,V> Map<K,V>                createMap(Class<?> mapType)                         创建 Map
  * static <K,V> HashMap<K,V>            newHashMap([[int size][, boolean isOrder]])         新建 HashMap

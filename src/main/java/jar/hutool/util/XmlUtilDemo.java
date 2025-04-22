@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/XML工具-XmlUtil">XmlUtil</a>    XML工具
+ * <a href="https://doc.hutool.cn/pages/XmlUtil/">XmlUtil</a>   XML工具
  * <p>XmlUtil 封装了 JDK 自带的 w3c dom 解析和构建工具，简化 XML 的创建、读和写的过程
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/XmlUtil.html">XmlUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/XmlUtil.html">XmlUtil api</a>
  *
  * @author ljh
  * @since 2020/11/9 10:32

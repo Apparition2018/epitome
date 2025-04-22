@@ -6,8 +6,8 @@ import l.demo.Person;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/JavaBean/DynaBean">DynaBean</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/DynaBean.html">DynaBean api</a>
+ * <a href="https://doc.hutool.cn/pages/DynaBean/">DynaBean</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/bean/DynaBean.html">DynaBean api</a>
  * <p>使用反射机制动态操作 JavaBean 的一个封装类
  *
  * @author ljh

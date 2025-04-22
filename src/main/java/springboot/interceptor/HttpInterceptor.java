@@ -1,5 +1,6 @@
 package springboot.interceptor;
 
+import cn.hutool.core.util.StrUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
@@ -72,7 +73,7 @@ public class HttpInterceptor implements HandlerInterceptor {
         if (handler instanceof HandlerMethod) {
             String beanType = ((HandlerMethod) handler).getBeanType().getName();
             String method = ((HandlerMethod) handler).getMethod().getName();
-            fullMethodName = beanType + "." + method;
+            fullMethodName = beanType + StrUtil.DOT + method;
         }
         if (null == ex) {
             log.info("requestUri[{}] method[{}] spend[{}ms-{}ms-{}ms]",

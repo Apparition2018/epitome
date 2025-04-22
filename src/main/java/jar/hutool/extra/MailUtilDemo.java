@@ -4,10 +4,10 @@ import cn.hutool.extra.mail.MailUtil;
 import l.demo.Demo;
 
 /**
- * <a href="https://hutool.cn/docs/#/extra/邮件工具-MailUtil">MailUtil</a>  邮件工具
+ * <a href="https://doc.hutool.cn/pages/MailUtil/">MailUtil</a>  邮件工具
  * <p>封装 javax.mail，需要在 resources 文件夹下配置 mail.setting 文件
  * <p>需要引入 com.sun.mail:javax.mail
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/mail/MailUtil.html">MailUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/mail/MailUtil.html">MailUtil api</a>
  *
  * @author ljh
  * @since 2020/11/13 17:31

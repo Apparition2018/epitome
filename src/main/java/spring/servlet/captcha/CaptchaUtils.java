@@ -1,5 +1,7 @@
 package spring.servlet.captcha;
 
+import cn.hutool.core.img.ImgUtil;
+import cn.hutool.core.util.StrUtil;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -51,10 +53,10 @@ public final class CaptchaUtils {
         // * 画图过程省略 *
         // ***************
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        final String extension = "jpg";
+        final String extension = ImgUtil.IMAGE_TYPE_JPG;
         // 将图片按照指定的格式（jpeg）画到流上
         ImageIO.write(bufferedImage, extension, baos);
-        String contentType = MediaTypeFactory.getMediaType("." + extension).orElseThrow().toString();
+        String contentType = MediaTypeFactory.getMediaType(StrUtil.DOT + extension).orElseThrow().toString();
         // 将流转换成 base64 字符串
         return String.format("data:%s;base64,%s", contentType, Base64.getEncoder().encodeToString(baos.toByteArray()));
     }
@@ -91,7 +93,7 @@ public final class CaptchaUtils {
         drawNoise(image);
         // 5.存为图片并发送
         ServletOutputStream sos = response.getOutputStream();
-        ImageIO.write(image, "png", sos);
+        ImageIO.write(image, ImgUtil.IMAGE_TYPE_PNG, sos);
         sos.flush();
         sos.close();
     }

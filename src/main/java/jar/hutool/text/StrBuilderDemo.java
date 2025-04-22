@@ -4,8 +4,8 @@ import cn.hutool.core.text.StrBuilder;
 import l.demo.Demo;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/文本操作/可复用字符串生成器-StrBuilder">StrBuilder</a> 可复用字符串生成器
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/text/StrBuilder.html">StrBuilder api</a>
+ * <a href="https://doc.hutool.cn/pages/StrBuilder/">StrBuilder</a> 可复用字符串生成器
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/text/StrBuilder.html">StrBuilder api</a>
  *
  * @author ljh
  * @since 2020/11/5 2:20

@@ -4,8 +4,8 @@ import cn.hutool.core.bean.BeanPath;
 import l.demo.Demo;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/JavaBean/表达式解析-BeanPath">BeanPath</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/bean/BeanPath.html">BeanPath</a>
+ * <a href="https://doc.hutool.cn/pages/BeanPath/">BeanPath</a> 表达式解析
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/bean/BeanPath.html">BeanPath</a>
  * <p>使用表达式来获取 JavaBean 指定深度的对象
  *
  * @author ljh

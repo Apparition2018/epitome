@@ -16,9 +16,9 @@ import java.net.HttpCookie;
 import java.util.Map;
 
 /**
- * <a href="https://hutool.cn/docs/#/extra/Servlet工具-ServletUtil">ServletUtil</a>
+ * <a href="https://doc.hutool.cn/pages/ServletUtil/">ServletUtil</a>
  * <p>需要引入 javax.servlet:javax.servlet-api
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/servlet/ServletUtil.html">ServletUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/servlet/ServletUtil.html">ServletUtil api</a>
  *
  * @author ljh
  * @since 2020/11/20 14:03

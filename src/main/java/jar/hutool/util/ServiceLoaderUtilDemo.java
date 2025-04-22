@@ -1,7 +1,7 @@
 package jar.hutool.util;
 
 /**
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ServiceLoaderUtil.html">ServiceLoaderUtil</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/ServiceLoaderUtil.html">ServiceLoaderUtil</a>
  * <p>SPI 机制中的服务加载工具类
  *
  * @author ljh

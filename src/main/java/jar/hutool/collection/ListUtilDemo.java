@@ -6,7 +6,7 @@ import l.demo.Demo;
 import java.util.List;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/集合类/列表工具-ListUtil">ListUtil</a>
+ * <a href="https://doc.hutool.cn/pages/ListUtil/">ListUtil</a>
  * <pre>
  * static <T> List<T>       reverse(List<T> list)                           反转 List，会在原 List 基础上直接修改
  * static <T> List<T>       reverseNew(List<T> list)                        反转 List，会创建一个新的 List
@@ -14,7 +14,7 @@ import java.util.List;
  * static List<String>      sortByPinyin(List<String> list)                 根据汉字的拼音顺序排序
  * static <T> List<T>       sortByProperty(List<T> list, String property)   根据 Bean 的属性排序
  * </pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/collection/ListUtil.html">ListUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/collection/ListUtil.html">ListUtil api</a>
  *
  * @author ljh
  * @since 2020/10/29 2:06
@@ -46,7 +46,7 @@ public class ListUtilDemo extends Demo {
         p(ListUtil.lastIndexOf(ListUtil.of(1, 2, 3, 2, 1), Integer.valueOf(2)::equals));// 3
 
         // indexOfAll(List, Matcher)                            获取匹配规则定义中匹配到元素的所有位置
-        p(ListUtil.indexOfAll(ListUtil.of(1, 2, 3, 2, 1), Integer.valueOf(2)::equals)); // [1, 3] 
+        p(ListUtil.indexOfAll(ListUtil.of(1, 2, 3, 2, 1), Integer.valueOf(2)::equals)); // [1, 3]
 
         // setOrAppend(List, index, element)                    设置或增加元素。当 index 小于 List 的长度时，替换指定位置的值，否则在尾部追加
         p(ListUtil.setOrAppend(ListUtil.toList(list), 5, 0));   // [1, 2, 3, 4, 5, 0, 7, 8, 9]

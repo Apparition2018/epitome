@@ -11,7 +11,7 @@ import java.nio.file.WatchEvent;
 import static l.demo.Demo.DEMO_DIR_PATH;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/IO/文件监听-WatchMonitor">WatchMonitor</a>    文件监听
+ * <a href="https://doc.hutool.cn/pages/WatchMonitor/">WatchMonitor</a> 文件监听
  * <p>WatchMonitor 主要针对 WatchService 做了封装
  * <pre>
  * 1 支持多级目录的监听（WatchService 只支持一级目录），可自定义监听目录深度
@@ -19,7 +19,7 @@ import static l.demo.Demo.DEMO_DIR_PATH;
  * 3 简洁易懂的 API 方法，一个方法即可搞定监听，无需理解复杂的监听注册机制
  * 4 多观察者实现，可以根据业务实现多个 Watcher 来响应同一个事件（通过 WatcherChain）
  * </pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/io/watch/WatchMonitor.html">WatchMonitor api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/io/watch/WatchMonitor.html">WatchMonitor api</a>
  *
  * @author ljh
  * @since 2020/10/30 15:48

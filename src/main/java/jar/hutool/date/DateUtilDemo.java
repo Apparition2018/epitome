@@ -13,8 +13,8 @@ import java.util.Date;
 import java.util.stream.IntStream;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/日期时间/日期时间工具-DateUtil">DateUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/DateUtil.html">DateUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/DateUtil/">DateUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/date/DateUtil.html">DateUtil api</a>
  * <pre>
  * static int       compare(Date date1, Date date2)
  * </pre>
@@ -222,7 +222,7 @@ public class DateUtilDemo extends Demo {
         p(DateUtil.formatLocalDateTime(localDateTime));                     // 2020-10-26 23:26:57
     }
 
-    /** <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/TimeInterval.html">计时器</a> */
+    /** <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/date/TimeInterval.html">计时器</a> */
     @Test
     public void timer() throws InterruptedException {
         setCountDownLatch(100);
@@ -248,7 +248,7 @@ public class DateUtilDemo extends Demo {
      * 计时器
      *
      * @see spring.api.util.StopWatchDemo
-     * @see <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/StopWatch.html">StopWatch api</a>
+     * @see <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/date/StopWatch.html">StopWatch api</a>
      */
     @Test
     public void createStopWatch() throws InterruptedException {

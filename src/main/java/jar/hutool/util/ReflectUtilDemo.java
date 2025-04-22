@@ -10,8 +10,8 @@ import java.lang.reflect.Modifier;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/反射工具-ReflectUtil">ReflectUtil</a> 反射工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ReflectUtil.html">ReflectUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ReflectUtil/">ReflectUtil</a> 反射工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/ReflectUtil.html">ReflectUtil api</a>
  *
  * @author ljh
  * @since 2020/10/29 13:38

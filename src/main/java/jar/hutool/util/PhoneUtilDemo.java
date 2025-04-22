@@ -4,7 +4,7 @@ import cn.hutool.core.util.PhoneUtil;
 import l.demo.Demo;
 
 /**
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/PhoneUtil.html">PhoneUtil</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/PhoneUtil.html">PhoneUtil</a>
  *
  * @author ljh
  * @since 2020/11/22 4:04

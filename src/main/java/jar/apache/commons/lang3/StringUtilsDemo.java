@@ -80,7 +80,7 @@ public class StringUtilsDemo {
     /** countMatches    计算匹配数 */
     @Test
     public void countMatches() {
-        p(StringUtils.countMatches("a-bc-def", "-")); // 2
+        p(StringUtils.countMatches("Banana", "a")); // 3
     }
 
     /** defaultString   如果字符串是 null，转换为 "" 或 指定字符串 */

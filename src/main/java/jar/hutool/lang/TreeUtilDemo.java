@@ -8,9 +8,9 @@ import cn.hutool.core.lang.tree.TreeUtil;
 import java.util.List;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/语言特性/树结构/树结构工具-TreeUtil">TreeUtil</a> 树结构工具
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/tree/TreeUtil.html">TreeUtil api</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/lang/tree/TreeNode.html">TreeNode api</a>
+ * <a href="https://doc.hutool.cn/pages/TreeUtil/">TreeUtil</a> 树结构工具
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/lang/tree/TreeUtil.html">TreeUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/lang/tree/TreeNode.html">TreeNode api</a>
  *
  * @author ljh
  * @since 2020/11/19 22:31

@@ -1,4 +1,4 @@
-package jar.hutool.cache;
+package jar.hutool.captcha;
 
 import cn.hutool.captcha.AbstractCaptcha;
 import cn.hutool.captcha.CaptchaUtil;
@@ -13,11 +13,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * <a href="https://hutool.cn/docs/#/captcha/概述">Captcha</a>    验证码
+ * <a href="https://doc.hutool.cn/pages/captcha/">Captcha</a>    图形验证码
  * <pre>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/ICaptcha.html">ICaptcha api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/CaptchaUtil.html">CaptchaUtil api</a>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/captcha/generator/RandomGenerator.html">RandomGenerator api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/captcha/ICaptcha.html">ICaptcha api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/captcha/CaptchaUtil.html">CaptchaUtil api</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/captcha/generator/RandomGenerator.html">RandomGenerator api</a>
  * </pre>
  *
  * @author ljh

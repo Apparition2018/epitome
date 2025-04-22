@@ -4,8 +4,8 @@ import cn.hutool.core.util.StrUtil;
 import l.demo.Demo;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/字符串工具-StrUtil">StrUtil</a><br/>
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/StrUtil.html">StrUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/StrUtil/">StrUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/StrUtil.html">StrUtil api</a>
  * <pre>
  * String           COMMA                           ','
  * String           SLASH                           '/'

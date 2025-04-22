@@ -3,7 +3,7 @@ package jar.hutool.util;
 import org.junit.jupiter.api.Test;
 
 /**
- * <a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/BooleanUtil.html">BooleanUtil</a>
+ * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/BooleanUtil.html">BooleanUtil</a>
  * <pre>
  * static boolean   toBoolean(String valueStr)      转换字符串为 boolean 值
  * static XXX       toXXX(boolean xxx)              boolean 值转为 XXX

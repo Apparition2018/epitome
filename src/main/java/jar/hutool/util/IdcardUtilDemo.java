@@ -6,9 +6,9 @@ import l.demo.Demo;
 import java.util.Date;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/对象工具-ObjectUtil">IdcardUtil</a>   身份证工具
+ * <a href="https://doc.hutool.cn/pages/IdcardUtil/">IdcardUtil</a>   身份证工具
  * <p>支持大陆15位、18位身份证，港澳台10位身份证
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/IdcardUtil.html">IdcardUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/IdcardUtil.html">IdcardUtil api</a>
  *
  * @author ljh
  * @since 2020/11/13 17:39

@@ -7,8 +7,8 @@ import l.demo.Person.Student;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/工具类/类工具-ClassUtil">ClassUtil</a>
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/util/ClassUtil.html">ClassUtil api</a>
+ * <a href="https://doc.hutool.cn/pages/ClassUtil/">ClassUtil</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/util/ClassUtil.html">ClassUtil api</a>
  *
  * @author ljh
  * @since 2020/11/2 14:43
@@ -31,7 +31,7 @@ public class ClassUtilDemo {
         // static String        getClassName(Class<?>, isSimple)        获取类名
         p(ClassUtil.getClassName(Person.class, true));                  // Person
         // static String        getShortClassName(String className)     获取短格式类名
-        p(ClassUtil.getShortClassName("class l.demo.Person"));          // c.d.Person              
+        p(ClassUtil.getShortClassName("class l.demo.Person"));          // c.d.Person
 
         // static Class<?>      getEnclosingClass(Class<?> clazz)       获取外围类
         p(ClassUtil.getEnclosingClass(Student.class));                  // class l.demo.Person

@@ -6,8 +6,8 @@ import cn.hutool.core.date.DateUtil;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://hutool.cn/docs/#/core/日期时间/农历日期-ChineseDate">ChineseDate</a>    农历日期
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/core/date/ChineseDate.html">ChineseDate api</a>
+ * <a href="https://doc.hutool.cn/pages/ChineseDate/">ChineseDate</a>   农历日期
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/date/ChineseDate.html">ChineseDate api</a>
  *
  * @author ljh
  * @since 2020/10/27 11:29

@@ -4,9 +4,9 @@ import cn.hutool.extra.pinyin.PinyinUtil;
 import l.demo.Demo;
 
 /**
- * <a href="https://hutool.cn/docs/#/extra/拼音/拼音工具-PinyinUtil">PinyinUtil</a>   拼音工具
+ * <a href="https://doc.hutool.cn/pages/PinyinUtil/">PinyinUtil</a>   拼音工具
  * <p>需要引入 io.github.biezhi:TinyPinYin
- * <p><a href="https://apidoc.gitee.com/dromara/hutool/cn/hutool/extra/pinyin/PinyinUtil.html">PinyinUtil api</a>
+ * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/extra/pinyin/PinyinUtil.html">PinyinUtil api</a>
  *
  * @author ljh
  * @since 2020/11/5 16:10
