@@ -63,7 +63,73 @@
         <div class="caption"></div>
         <div class="centered"></div>
       </div>
-      <script class="code" contenteditable="true"></script>
+      <script class="code" contenteditable="true">
+        const images = [
+          'https://i.imgs.ovh/2025/04/18/j9kHY.jpeg',
+          'https://i.imgs.ovh/2025/04/18/j9kHY.jpeg',
+          'https://i.imgs.ovh/2025/04/18/j9kHY.jpeg',
+          'https://i.imgs.ovh/2025/04/18/j9kHY.jpeg'
+        ]
+        printImagesSeparately(images)
+
+        async function printImagesSeparately (images) {
+          // 1. 预加载所有图片
+          await Promise.all(
+            images.map(
+              (url) =>
+                new Promise((resolve) => {
+                  const img = new Image()
+                  img.onload = resolve
+                  img.src = url
+                })
+            )
+          )
+
+          // 2. 创建隔离打印环境
+          const iframe = document.createElement('iframe')
+          iframe.style.cssText = 'position:fixed;left:9999px;width:1px;height:1px;'
+          document.body.appendChild(iframe)
+
+          // 3. 构建受控打印内容
+          let html = `<html>
+                        <style>
+                          @page { margin: 5mm; } /* 安全边距 */
+                          body {
+                            margin: 0 !important;
+                            background: white !important;
+                          }
+                          .page {
+                            page-break-after: always; /* 兼容旧浏览器 */
+                            height: calc(100vh - 10mm); /* 预留边距 */
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          }
+                          img {
+                            max-width: 95%;
+                            max-height: 95%;
+                            object-fit: contain;
+                          }
+                        </style>
+                        <body>`
+
+          images.forEach((url) => {
+            html += `<div class="page"><img src="${url}"></div>`
+          })
+
+          html += '</body></html>'
+          console.log(html)
+
+          // 4. 加载并触发打印
+          iframe.contentDocument.write(html)
+          iframe.contentDocument.close()
+
+          setTimeout(() => {
+            iframe.contentWindow.print()
+            setTimeout(() => iframe.remove(), 3000) // 延长移除时间
+          }, 500)
+        }
+      </script>
     </section>
 
     <section class="code-wrap">

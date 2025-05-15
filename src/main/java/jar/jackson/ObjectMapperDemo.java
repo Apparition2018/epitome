@@ -17,7 +17,6 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import jar.jackson.custom.CustomDeserializer;
 import jar.jackson.custom.CustomSerializer;
 import jar.jackson.entity.Person;
-import jar.jackson.entity.Person;
 import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;

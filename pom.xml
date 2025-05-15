@@ -7,7 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.4</version>
+        <version>3.4.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ljh</groupId>
@@ -43,7 +43,7 @@
         <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
         <commons-cli.version>1.9.0</commons-cli.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
-        <commons-configuration2.version>2.11.0</commons-configuration2.version>
+        <commons-configuration2.version>2.12.0</commons-configuration2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
         <commons-csv.version>1.14.0</commons-csv.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
@@ -55,13 +55,13 @@
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
         <tika.version>3.1.0</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-        <jsoup.version>1.19.1</jsoup.version>
+        <jsoup.version>1.20.1</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
         <minio.version>8.5.17</minio.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
         <itext.version>9.1.0</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>10.2</nimbus-jose-jwt.version>
+        <nimbus-jose-jwt.version>10.3</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
         <retrofit2.version>2.11.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.axis2/axis2 -->
@@ -90,13 +90,13 @@
         <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <hutool.version>5.8.37</hutool.version>
+        <hutool.version>5.8.38</hutool.version>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <cglib.version>3.3.0</cglib.version>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
         <emoji.version>5.1.1</emoji.version>
         <!-- https://mvnrepository.com/artifact/com.github.mwiede/jsch -->
-        <jsch.version>0.2.25</jsch.version>
+        <jsch.version>2.27.0</jsch.version>
         <!-- https://mvnrepository.com/artifact/io.github.biezhi/TinyPinyin -->
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
         <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
@@ -106,7 +106,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
         <lucene-analyzers.version>8.11.4</lucene-analyzers.version>
         <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
-        <oshi.version>6.8.0</oshi.version>
+        <oshi.version>6.8.1</oshi.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
         <jol.version>0.17</jol.version>
         <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
@@ -553,8 +553,8 @@
             <version>${thumbnailator.version}</version>
         </dependency>
 
-        <!-- truelicense：安全许可证管理
-            https://www.cnblogs.com/xifengxiaoma/p/9377654.html -->
+        <!-- truelicense：安全许可证管理，https://www.cnblogs.com/xifengxiaoma/p/9377654.html
+                LICENSE4J：https://github.com/license4j -->
         <dependency>
             <groupId>de.schlichtherle.truelicense</groupId>
             <artifactId>truelicense-core</artifactId>
