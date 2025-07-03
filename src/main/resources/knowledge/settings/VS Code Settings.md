@@ -2,10 +2,11 @@
 
 ---
 ## [配置 user-data-dir 和 extensions-dir](https://stackoverflow.com/a/66281688/19598136)
-    1. 找到 vscode 快捷方式位置
-    2. 右键 → 属性 → 目标
-    3. "D:\Microsoft VS Code\Code.exe" --user-data-dir "D:\Microsoft VS Code\data" --extensions-dir "D:\Microsoft VS Code\extensions"
-    4. 删除 C:\Users\HP\AppData\Roaming\Code 和 C:\Users\HP\.vscode\extensions
+- 以管理员身份运行 CMD
+```bash
+mklink /j "C:\Users\Administrator\.vscode\extensions" "D:\Microsoft VS Code\extensions"
+mklink /j "C:\Users\Administrator\AppData\Roaming\Code" "D:\Microsoft VS Code\Code"
+```
 ---
 ## Settings Sync
     1. File → Preferences → Turn on Settings Sync...

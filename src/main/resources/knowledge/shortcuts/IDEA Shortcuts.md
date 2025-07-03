@@ -205,24 +205,24 @@ Ctrl + Alt + F5                 Attach to Process…                            
 Ctrl + F2                       Stop
 Ctrl + Shift + F2               Stop Background Processes…          停止后台进程
 Ctrl + F8                       Toggle Line Breakpoint              开关断点
-Ctrl + Shift + F8               View Breakpoints…                   查看所有断点
+Ctrl + Shift + F8               View Breakpoints…                   查看断点
 Ctrl + Alt + F6                 Show Coverage Data…                                           ???
 ```
 >#### Debugging Actions
 >```
->Ctrl + F10                     Update Running Application
+>Ctrl + F10                     Update Running Application          更新正在运行的应用程序
 >F8                             Step Over                           步过
 >Alt + Shift + F8               Force Step Over                     强制步过
 >F7                             Step Into                           步入
 >Alt + Shift + F7               Force Step Into                     强制步入
 >Shift + F7                     Smart Step Into                     智能步入
 >Shift + F8                     Step Out                            步出
->Alt + F9                       Run to Cursor                       运行至光标
->Ctrl + Alt + F9                Force Run to Cursor                 强制运行至光标
+>Alt + F9                       Run to Cursor                       运行到光标
+>Ctrl + Alt + F9                Force Run to Cursor                 强制运行到光标
 >F9                             Resume Program                      恢复程序
->Alt + F8                       Evaluate Expression…                                          ???
->Ctrl + Alt + F8                Quick Evaluate Expression
->Alt + F10                      Show Execution Point
+>Alt + F8                       Evaluate Expression…                对表达式求值…
+>Ctrl + Alt + F8                Quick Evaluate Expression           对表达式快速求值
+>Alt + F10                      Show Execution Point                显示执行点
 >```
 ### Window
 ```
