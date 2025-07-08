@@ -93,7 +93,7 @@ public class StreamDemo extends Demo {
             .flatMap((Function<Integer, Stream<Integer>>) i -> Stream.of((int) Math.sqrt(i)))
             // 3 2 7 5
             .peek(i -> System.out.print(i + StringUtils.SPACE)).toList();
-        p(StringUtils.CR);
+        p();
 
         // filter()         过滤
         // sorted()         排序
@@ -101,13 +101,13 @@ public class StreamDemo extends Demo {
         Stream.of(9, 8, 7, 6, 5, 4, 3, 2, 1).limit(7)
             .filter(n -> n % 2 == 0).sorted()
             .forEach(n -> System.out.print(n + StringUtils.SPACE)); // 4 6 8
-        p(StringUtils.CR);
+        p();
 
         // sequential()     串行
         // parallel()       并行
         // skip()           跳过
         Stream.of(9, 7, 5, 3, 1).parallel().skip(2).forEach(i -> System.out.print(i + StringUtils.SPACE)); // 3 1 5
-        p(StringUtils.CR);
+        p();
 
         // takeWhile()      返回子集知道断言返回false，JDK9 引入
         // dropWhile()      断言返回false开始返回子集，JDK9 引入
@@ -124,32 +124,32 @@ public class StreamDemo extends Demo {
     @Test
     public void terminal() {
         // count()          返回元素的个数
-        p(Stream.of(9, 7, 5, 3, 1).count()); // 5
+        ae(Stream.of(9, 7, 5, 3, 1).count(), 5L);
 
         // forEach()        迭代所有元素
-        Stream.of(9, 7, 5, 3, 1).forEach(n -> System.out.print(n + StringUtils.SPACE)); // 9 7 5 3 1
+        Stream.of(9, 7, 5, 3, 1).forEach(n -> System.out.print(n + StringUtils.SPACE));
         p();
 
         // forEachOrdered() 有序迭代所有元素
-        Stream.of(9, 7, 5, 3, 1).parallel().forEachOrdered(n -> System.out.print(n + StringUtils.SPACE)); // 9 7 5 3 1
+        Stream.of(9, 7, 5, 3, 1).parallel().forEachOrdered(n -> System.out.print(n + StringUtils.SPACE));
         p();
 
         // isParallel       判断当前 Stream 是否并行
-        p(Stream.of(9, 7, 5, 3, 1).isParallel()); // false
+        ae(Stream.of(9, 7, 5, 3, 1).isParallel(), false);
 
         // toArray()        返回所有元素的数组
-        p(Stream.of(9, 7, 5, 3, 1).toArray()); // [9, 7, 5, 3, 1]
+        p(Stream.of(9, 7, 5, 3, 1).toArray());
 
         // max()            返回元素中最大的 Optional 对象
         // min()            返回元素中最小的 Optional 对象
         // findFirst()      返回第一个元素的 Optional 对象
-        p(Stream.of(3, 1, -1, -3).max(Integer::compare).get());    // 3
-        p(Stream.of(3, 1, -1, -3).min(Integer::compare).get());    // -3
-        p(Stream.of(3, 1, -1, -3).findFirst().get());              // 3
+        ae(Stream.of(3, 1, -1, -3).max(Integer::compare).get(), 3);
+        ae(Stream.of(3, 1, -1, -3).min(Integer::compare).get(), -3);
+        ae(Stream.of(3, 1, -1, -3).findFirst().get(), 3);
 
         // reduce()
-        p(Stream.of(1, 2, 3, 4, 5, 6).reduce((i1, i2) -> i1 + 2).get()); // 11
-        p(Stream.of(1, 2, 3, 4, 5, 6).reduce(7, (i1, i2) -> i1 + 2));    // 19
+        ae(Stream.of(1, 2, 3, 4, 5, 6).reduce((i1, i2) -> i1 + 2).get(), 11);
+        ae(Stream.of(1, 2, 3, 4, 5, 6).reduce(7, (i1, i2) -> i1 + 2), 19);
 
         // collect()
         List<Integer> list = Stream.of(9, 7, 5, 3, 1).collect(Collectors.toList());
@@ -164,16 +164,16 @@ public class StreamDemo extends Demo {
     @Test
     public void other() {
         // Optional<T>	    findFirst()                 返回 Optional(first)，空 Stream 返回 Optional.empty()
-        p(Stream.of(arr).findFirst().orElse(null));     // 1
+        ae(Stream.of(arr).findFirst().orElse(null), 1);
         // Optional<T>	    findAny()                   串行返回 Optional(first)，并行返回 Optional(any)，空 Stream 返回 Optional.empty()
-        p(Stream.of(arr).findAny().orElse(null));       // 1
+        ae(Stream.of(arr).findAny().orElse(null), 1);
 
         // boolean          allMatch(IntPredicate)      全匹配
-        p(Stream.of(arr).allMatch(i -> i > 5));         // false
+        ae(Stream.of(arr).allMatch(i -> i > 5), false);
         // boolean          anyMatch(IntPredicate)      任意一个匹配
-        p(Stream.of(arr).anyMatch(i -> i > 5));         // true
-        // boolean          noneMatch(IntPredicate)     全匹配
-        p(Stream.of(arr).noneMatch(i -> i > 5));        // false
+        ae(Stream.of(arr).anyMatch(i -> i > 5), true);
+        // boolean          noneMatch(IntPredicate)     全不匹配
+        ae(Stream.of(arr).noneMatch(i -> i > 10), true);
 
         // XxxStream        mapToXxx(XxxFunction<? super T>)                        经过 XxxFunction Stream → XxxStream
         // 当流操作均为数值操作时，将普通流转换成数值流，能获得较高的效率

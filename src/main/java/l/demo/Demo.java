@@ -2,6 +2,7 @@ package l.demo;
 
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import org.junit.Assert;
 import org.springframework.lang.NonNull;
 import org.springframework.util.StopWatch;
 
@@ -144,6 +145,10 @@ public class Demo {
 
     public static void phr(int cnt) {
         System.out.println("=".repeat(Math.max(0, cnt)));
+    }
+
+    public static void ae(Object obj1, Object obj2) {
+        Assert.assertEquals(obj1, obj2);
     }
 
     /** 模拟 Thread.sleep()，为了避免 Thread.sleep() 而需要捕获 InterruptedException 而带来的理解上的困惑 */
