@@ -53,7 +53,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.4.1</poi.version>
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
-        <tika.version>3.2.0</tika.version>
+        <tika.version>3.2.1</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.21.1</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
@@ -61,7 +61,7 @@
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
         <itext.version>9.2.0</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>10.3</nimbus-jose-jwt.version>
+        <nimbus-jose-jwt.version>10.3.1</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
         <retrofit2.version>3.0.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.axis2/axis2 -->
@@ -78,9 +78,9 @@
         <!-- https://mvnrepository.com/artifact/ws.schild/jave-all-deps -->
         <jave2.version>3.5.0</jave2.version>
         <!-- https://mvnrepository.com/artifact/org.bytedeco/javacv -->
-        <javacv.version>1.5.11</javacv.version>
+        <javacv.version>1.5.12</javacv.version>
         <!-- https://mvnrepository.com/artifact/org.dom4j/dom4j -->
-        <dom4j.version>2.1.4</dom4j.version>
+        <dom4j.version>2.2.0</dom4j.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.nashorn/nashorn-core -->
         <nashorn.version>15.6</nashorn.version>
         <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
@@ -90,7 +90,7 @@
         <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <hutool.version>5.8.38</hutool.version>
+        <hutool.version>5.8.39</hutool.version>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <cglib.version>3.3.0</cglib.version>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->

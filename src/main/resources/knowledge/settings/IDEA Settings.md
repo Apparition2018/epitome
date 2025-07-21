@@ -2,6 +2,7 @@
 - -j: JetBrains
 - -n: New
 - -e: Every Time
+- -o: Optional
 ---
 ### 修改 .IntelliJIdea 位置
     1. %IDEA_HOME%\bin\idea.properties
@@ -21,7 +22,7 @@
 ---
 ## File
 ### Manage IDE Settings (-j)
-    1. Settings Sync → Enable Settings Sync…
+    1. Manage IDE Settings → Backup and Sync…
 ---
 ## Settings → Build, Execution, Deployment
 ### Build Tools (-n)
@@ -37,8 +38,7 @@
         1.1 Build project automatically 勾选
         1.2 Shared build process VM options:
             -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar
-        1.3 Java Compiler → Use compiler: Eclipse
-        1.4 Annotation Processors → Enable annotation processing 勾选
+        1.3 Annotation Processors → Enable annotation processing 勾选
     2. Settings → Advanced Settings → Compiler
         2.1 Allow auto-make to start even if developed application is currently running 勾选
 ### Deployment (-jn)
@@ -64,11 +64,11 @@
         3.1 Remove trailing spaces on: Modified Lines 勾选
         3.2 Keep trailing spaces on caret line 勾选
         3.3 Ensure every saved files ends with a line break 勾选
-### Auto Import
+### Auto Import (-o)
     1. Settings → Editor → General → Auto Import → Java
     2. Add unambiguous imports on the fly 勾选
     3. Optimize imports on the fly 勾选
-### Code Folding (-j)
+### Code Folding (-jo)
     1. Settings → Editor → General → Code Folding
     2. Fold by default: → General → Imports 取消勾选
 ### Editor Tabs (-j)
@@ -91,9 +91,9 @@
     4. Style Sheets → CSS/Less/SCSS → Other
         4.1 Keep single-line blocks 勾选
     5. JavaScript → Set from… → JavaScript Standard Style
-    6. HTML → Other
+    6. HTML
         6.1 Set from… → JavaScript
-        6.2 Wrap text 取消勾选
+        6.2 Other → Wrap text 取消勾选
     7. Markdown → Blank Lines → 全部设为0
 ### Inspections (-n)
     1. Settings → Editor → Inspections
@@ -117,7 +117,7 @@
     3. Default encoding for properties files: UTF-8
     4. Create UTF-8 files: with NO BOM
 ### TODO
-    1. Settings → Editor → TODO → Patterns
+    1. Settings → Editor → TODO
         1.1 Patterns → +
         1.2 Pattern: \btodo\(ljh\).*
         1.3 Use color scheme TODO default colors 取消勾选
@@ -139,7 +139,7 @@
         1.2 Subversion → Path to Subversion executable: D:\TortoiseSVN\bin\svn.exe
 ---
 ## Settings → Tools
-### Actions on Save (-jn)
+### Actions on Save (-jno)
     1. Settings → Tools → Actions on Save
     2. Reformat code 勾选
     3. Optimize imports 勾选
@@ -164,7 +164,7 @@
     3. Settings → Languages & Frameworks → JavaScript → Code Quality Tools → ESLint
         3.1 Manual ESLint configuration 勾选
         3.2 ESLint package: D:\Liang\git\epitome\node_modules\eslint
-        3.3 Run for files: **/*.{js,ts,jsx,tsx,html,vue}
+        3.3 **/*.{js,ts,jsx,tsx,cjs,cts,mjs,mts,html,vue}
         3.4 Run eslint --fix on save 勾选（主动格式化 触发 Prettier，再主动保存触发 eslint --fix，修复 Prettier 无法实现的 space-before-function-paren）
 ### [Prettier](https://www.jetbrains.com/help/idea/prettier.html)
     1. npm i --save-dev --save-exact prettier
