@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import static l.demo.Demo.p;
 
 /**
- * <a href="https://commons.apache.org/proper/commons-text/userguide.html#StringEscapeUtils">StringEscapeUtils</a>
- * <p>转义和反转义 Java, JavaScript, HTML, XML 字符串
+ * <a href="https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/StringEscapeUtils.html">StringEscapeUtils</a>
+ * <p>转义和反转义 Java、JavaScrip、HTML、XML 字符串</p>
  *
  * @author ljh
  * @since 2019/8/8 19:39

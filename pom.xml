@@ -7,7 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.3</version>
+        <version>3.5.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ljh</groupId>
@@ -35,17 +35,17 @@
         <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
         <mapper-spring-boot-starter.version>5.0.1</mapper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
-        <druid.version>1.2.25</druid.version>
+        <druid.version>1.2.27</druid.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
         <mybatis-dynamic-sql.version>1.5.2</mybatis-dynamic-sql.version>
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
         <commons-beanutils.version>1.11.0</commons-beanutils.version>
         <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
-        <commons-cli.version>1.9.0</commons-cli.version>
+        <commons-cli.version>1.10.0</commons-cli.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
         <commons-configuration2.version>2.12.0</commons-configuration2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
-        <commons-csv.version>1.14.0</commons-csv.version>
+        <commons-csv.version>1.14.1</commons-csv.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
         <commons-email.version>1.6.0</commons-email.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-rng-core -->
@@ -53,7 +53,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.4.1</poi.version>
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
-        <tika.version>3.2.1</tika.version>
+        <tika.version>3.2.2</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.21.1</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
@@ -61,16 +61,16 @@
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
         <itext.version>9.2.0</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>10.3.1</nimbus-jose-jwt.version>
+        <nimbus-jose-jwt.version>10.4.1</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
         <retrofit2.version>3.0.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.axis2/axis2 -->
         <axis2.version>2.0.0</axis2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
-        <curator.version>5.8.0</curator.version>
+        <curator.version>5.9.0</curator.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
-        <fastjson.version>2.0.57</fastjson.version>
+        <fastjson.version>2.0.58</fastjson.version>
         <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
         <tablibs-standard.version>1.2.5</tablibs-standard.version>
         <!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
