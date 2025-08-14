@@ -8,6 +8,7 @@ import static l.demo.Demo.p;
 
 /**
  * <a href="https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/WordUtils.html">WordUtils</a>
+ * <p>对包含单词的字符串进行操作</p>
  *
  * @author ljh
  * @since 2019/8/8 19:39

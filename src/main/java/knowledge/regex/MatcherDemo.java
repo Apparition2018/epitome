@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static l.demo.Demo.ae;
 import static l.demo.Demo.p;
 
 /**
@@ -17,154 +18,98 @@ import static l.demo.Demo.p;
 public class MatcherDemo {
 
     // 在使用正则表达式时，利用好其预编译功能，可以有效加快正则匹配速度。不要在方法体内定义（阿里编程规约）
-    private static final Pattern pattern = Pattern.compile("(a*b)(foo)");
+    private static final Pattern pattern = Pattern.compile("(\\d+)([a-z]+)");
 
-    /**
-     * 索引方法
-     * <p>索引方法提供了有用的索引值，精确表明输入字符串中在哪能找到匹配
-     * <pre>
-     * int      start([int group])      返回在以前的匹配操作期间，由给定组所捕获的子序列的初始索引
-     * int      end([int group])        返回在以前的匹配操作期间，由给定组所捕获子序列的最后字符之后的偏移量
-     * </pre>
-     */
+    private static Matcher matcher = pattern.matcher("123abc234bcd");
+
+    /** 研究方法：研究方法用来检查输入字符串并返回一个布尔值，表示是否找到该模式 */
+    @Test
+    public void research() {
+        // 1. find()：重置此匹配器，然后尝试查找匹配该模式、从指定索引开始的输入序列的下一个子序列
+        if (matcher.find(4)) {
+            // 整个正则匹配的内容，相当于 group()
+            ae(matcher.group(0), "234bcd");
+            // 第1个捕获组匹配的内容
+            ae(matcher.group(1), "234");
+            // 第2个捕获组匹配的内容
+            ae(matcher.group(2), "bcd");
+        }
+
+        // 2. lookingAt()：尝试将从区域开头开始的输入序列与该模式匹配
+        ae(matcher.lookingAt(), true);
+        matcher = pattern.matcher("abc123");
+        ae(matcher.lookingAt(), false);
+
+        // 3. matches()：尝试将整个区域与模式匹配
+        ae(matcher.matches(), false);
+        matcher = pattern.matcher("123abc");
+        ae(matcher.matches(), true);
+    }
+
+    /** 索引方法：索引方法提供了有用的索引值，精确表明输入字符串中在哪能找到匹配 */
     @Test
     public void index() {
-        Matcher matcher = pattern.matcher("abfooaabfooaaabfoob");
         while (matcher.find()) {
-            // String	    group([int group])
-            // 返回在以前匹配操作期间由给定组捕获的输入子序列，group() 相当于 group(0)
+            // group([int group])：返回在以前匹配操作期间由给定组捕获的输入子序列，group() 相当于 group(0)
             p(matcher.group());
+            // 1. start([int group])：返回在以前的匹配操作期间，由给定组所捕获的子序列的初始索引
+            // 2. end([int group])：返回在以前的匹配操作期间，由给定组所捕获子序列的最后字符之后的偏移量
             p(String.format("全分组：start[%s]，end[%s]", matcher.start(), matcher.end()));
             p(String.format("分组1：start[%s]，end[%s]", matcher.start(1), matcher.end(1)));
             p(String.format("分组2：start[%s]，end[%s]", matcher.start(2), matcher.end(2)));
-            // abfoo
-            // 全分组：start[0]，end[5]
-            // 分组1：start[0]，end[2]
-            // 分组2：start[2]，end[5]
-            // aabfoo
-            // 全分组：start[5]，end[11]
-            // 分组1：start[5]，end[8]
-            // 分组2：start[8]，end[11]
-            // aaabfoo
-            // 全分组：start[11]，end[18]
-            // 分组1：start[11]，end[15]
-            // 分组2：start[15]，end[18]
+            // 123abc
+            // 全分组：start[0]，end[6]
+            // 分组1：start[0]，end[3]
+            // 分组2：start[3]，end[6]
+            // 234bcd
+            // 全分组：start[6]，end[12]
+            // 分组1：start[6]，end[9]
+            // 分组2：start[9]，end[12]
         }
     }
 
-    /**
-     * 研究方法
-     * <p>研究方法用来检查输入字符串并返回一个布尔值，表示是否找到该模式
-     * <pre>
-     * boolean  find([int start])       重置此匹配器，然后尝试查找匹配该模式、从指定索引开始的输入序列的下一个子序列
-     * boolean  lookingAt()             尝试将从区域开头开始的输入序列与该模式匹配
-     * boolean  matches()               尝试将整个区域与模式匹配
-     * </pre>
-     */
-    @Test
-    public void research() {
-        // find()
-        Matcher matcher = pattern.matcher("abfooaabfooaaabfoob");
-        if (matcher.find()) {
-            p(matcher.group());     // abfoo
-            p(matcher.group(0));    // abfoo
-            p(matcher.group(1));    // ab
-            p(matcher.group(2));    // foo
-        }
-        if (matcher.find(10)) {
-            p(matcher.group());     // aaabfoo
-            p(matcher.group(0));    // aaabfoo
-            p(matcher.group(1));    // aaab
-            p(matcher.group(2));    // foo
-        }
-
-        // lookingAt()
-        Pattern pattern2 = Pattern.compile("foo");
-        Matcher matcher2 = pattern2.matcher("fooooooooooooooooo");
-        p(matcher2.lookingAt());    // true
-        matcher2 = pattern.matcher("boofoooooooooooooo");
-        p(matcher2.lookingAt());    // false
-
-        // matches()
-        Pattern pattern3 = Pattern.compile("foo");
-        Matcher matcher3 = pattern3.matcher("fooooooooooooooooo");
-        p(matcher3.matches());      // false
-        matcher3 = pattern3.matcher("foo");
-        p(matcher3.matches());      // true
-    }
-
-    /**
-     * 替换方法
-     * <p>替换方法是替换输入字符串里文本的方法
-     * <pre>
-     * String           replaceFirst(String replacement)    替换模式与给定替换字符串匹配的输入序列的第一个子序列
-     * String           replaceAll(String replacement)      替换模式与给定替换字符串相匹配的输入序列的每个子序列
-     * Matcher          appendReplacement(StringBuffer sb, String replacement)  实现非终端添加和替换步骤
-     * StringBuffer     appendTail(StringBuffer sb)         实现终端添加和替换步骤
-     * static String    quoteReplacement(String s)          返回指定 String 的字面值替换 String
-     * static String    quoteReplacement(String s)          返回指定 String 的字面值替换 String
-     * </pre>
-     */
+    /** 替换方法：替换方法是替换输入字符串里文本的方法 */
     @Test
     public void replace() {
-        // replaceFirst(), replaceAll()
-        Pattern pattern = Pattern.compile("a*b");
-        Matcher matcher = pattern.matcher("abfooaabfooaaabfoob");
-        p(matcher.replaceFirst("-"));   // -fooaabfooaaabfoob
-        p(matcher.replaceAll("-"));     // -foo-foo-foo-
+        Pattern pattern = Pattern.compile("(ha+)+");
+        Matcher matcher = pattern.matcher("Laugh: hahaha, haa!");
 
+        // 1. replaceFirst()：替换模式与给定替换字符串匹配的输入序列的第一个子序列
+        //    replaceAll()：替换模式与给定替换字符串相匹配的输入序列的每个子序列
+        ae(matcher.replaceFirst("LOL"), "Laugh: LOL, haa!");
+        ae(matcher.replaceAll("LOL"), "Laugh: LOL, LOL!");
 
-        // appendReplacement(), appendTail()
-        // https://blog.zzkun.com/archives/89
-        Pattern pattern2 = Pattern.compile("a*b");
-        Matcher matcher2 = pattern2.matcher("abfooaabfooaaabfoob");
+        // 2. appendReplacement()：实现非终端添加和替换步骤
+        //    appendTail()：实现终端添加和替换步骤
+        matcher.reset();
         StringBuffer sb = new StringBuffer();
-        while (matcher2.find()) {
-            matcher2.appendReplacement(sb, "-");
-            p(sb);
-            // -
-            // -foo-
-            // -foo-foo-
-            // -foo-foo-foo-
-        }
-        matcher2.appendTail(sb);
-        p(sb); // -foo-foo-foo-
-
-
-        Pattern pattern3 = Pattern.compile("a*b");
-        Matcher mather3 = pattern3.matcher("abfooaabfooaaabfoob");
-        try {
-            p(mather3.replaceAll("-$"));
-        } catch (Exception e) {
-            p(e.getMessage()); // Illegal group reference: group index is missing
-        }
-        p(mather3.replaceAll(Matcher.quoteReplacement("-$"))); // -$foo-$foo-$foo-$
-    }
-
-    /**
-     * 计算有多少个英文单词
-     */
-    @Test
-    public void countWord() {
-        String s1 = "This is a Cat";
-        String s2 = "This is  a Cat";
-        String s3 = "This is a Cat? No!";
-        String s4 = "I'm OK";
-
-        Pattern pattern = Pattern.compile("\\b\\w+\\b");
-
-        countWord(s1, pattern);
-        countWord(s2, pattern);
-        countWord(s3, pattern);
-        countWord(s4, pattern);
-    }
-
-    private void countWord(String str, Pattern pattern) {
-        Matcher matcher = pattern.matcher(str);
-        int count = 0;
         while (matcher.find()) {
-            ++count;
+            matcher.appendReplacement(sb, "LOL");
+            p(sb);
+            // Laugh: LOL
+            // Laugh: LOL, LOL
         }
-        p(str + " 单词数：" + count);
+        matcher.appendTail(sb);
+        ae(sb.toString(), "Laugh: LOL, LOL!");
+
+        // 3. quoteReplacement()：返回指定 String 的字面值替换 String
+        pattern = Pattern.compile("(the\\s)?USD");
+        matcher = pattern.matcher("I love the USD");
+        try {
+            p(matcher.replaceAll("$"));
+        } catch (Exception e) {
+            ae(e.getMessage(), "Illegal group reference: group index is missing");
+        }
+        ae(matcher.replaceAll(Matcher.quoteReplacement("$")), "I love $");
+    }
+
+    /** 计算有多少个英文单词 */
+    @Test
+    public void results() {
+        Pattern pattern = Pattern.compile("\\b\\w+\\b");
+        // results()：返回与模式匹配的输入序列的每个子序列的匹配结果流
+        ae(pattern.matcher("This is a Cat").results().count(), 4L);
+        ae(pattern.matcher("This is a Cat? No!").results().count(), 5L);
+        ae(pattern.matcher("I'm OK").results().count(), 3L);
     }
 }
