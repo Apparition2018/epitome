@@ -2,10 +2,9 @@
 
 ---
 ## 参考网站
-1. [批处理教程™](https://www.yiibai.com/batch_script)
-2. [DOS命令学习手册_w3cschool](https://www.w3cschool.cn/dosmlxxsc1/)
-3. [批处理入门手册_w3cschool](https://www.w3cschool.cn/pclrmsc/)
-4. [批处理之家](http://www.bathome.net/)
+1. [DOS命令学习手册_w3cschool](https://www.w3cschool.cn/dosmlxxsc1/)
+2. [批处理入门手册_w3cschool](https://www.w3cschool.cn/pclrmsc/)
+3. [批处理之家](http://www.bathome.net/)
 ---
 ## DOS (Disk Operating System)
     help                                    显示原生命令
@@ -109,7 +108,7 @@
     @echo off
     set info=abcde
     echo %info:~0,-2%
-    
+
     结果：abc
 ---
 ## 其它
@@ -129,7 +128,7 @@
     call other.bat 999
     echo Please press any key to delete... && pause>nul
     del %userprofile%\Desktop\arg.txt
-    
+
     --- other.bat ---
     SET /A arg=%1
     echo %arg% > %userprofile%\Desktop\arg.txt

@@ -17,7 +17,6 @@ import static l.demo.Demo.p;
  *
  * long         toTotalMonths()                 获取此期间的月总数
  * </pre>
- * <a href="https://www.yiibai.com/javatime/javatime_period.html">java.time.Period 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

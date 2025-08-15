@@ -17,7 +17,6 @@ import static l.demo.Demo.p;
  * boolean      isBefore(LocalTime other)           检查此 time 是否在指定 time 之前
  * boolean      isAfter(LocalTime other)            检查此 time 是否在指定 time 之后
  * </pre>
- * <a href="https://www.yiibai.com/javatime/javatime_localtime.html">java.time.LocalTime 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

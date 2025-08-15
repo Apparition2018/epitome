@@ -14,7 +14,6 @@ import static l.demo.Demo.p;
  * boolean      isBefore(Instant otherInstant)  检查此 instant 是否在指定 instant 之前
  * booleanq     isAfter(Instant otherInstant)   检查此 instant 是否在指定 instant 之后
  * </pre>
- * <a href="https://www.yiibai.com/javatime/javatime_instant.html">java.time.Instant 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

@@ -4,8 +4,7 @@
 ## Reference
 1. [nginx documentation](http://nginx.org/en/docs/)
     - [Admin Guide](https://docs.nginx.com/nginx/admin-guide/)
-2. [Nginx教程™](https://www.yiibai.com/nginx)
-3. [Nginx-慕课网](https://www.imooc.com/video/23825)
+2. [Nginx-慕课网](https://www.imooc.com/video/23825)
 ---
 ## 常见服务器
 | 服务器            | 说明                |
