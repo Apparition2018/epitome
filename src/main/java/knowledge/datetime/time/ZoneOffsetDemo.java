@@ -14,7 +14,6 @@ import static l.demo.Demo.p;
  * boolean      equals(Object obj)              检查是否等
  * int          compareTo(ZoneOffset other)     将此 offset 按降序与另一个 offset 进行比较
  * </pre>
- * <a href="https://www.yiibai.com/javatime/javatime_zoneoffset.html">java.time.ZoneOffset 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

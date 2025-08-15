@@ -18,11 +18,9 @@ import static l.demo.Demo.p;
  * DayOfWeek    MONDAY TUESDAY WEDNESDAY THURSDAY FRIDAY SATURDAY SUNDAY
  * Month        JANUARY FEBRUARY MARCH APRIL MAY JUNE JULY AUGUST SEPTEMBER OCTOBER NOVEMBER DECEMBER
  * </pre>
- * <p>
- * <a href="https://www.cnblogs.com/wt20/p/8179118.html">Java 8 LocalDateTime 初使用</a>
- * <a href="https://www.yiibai.com/javatime">java.time 包教程</a>
  *
  * @author ljh
+ * @see <a href="https://www.cnblogs.com/wt20/p/8179118.html">Java 8 LocalDateTime 初使用</a>
  * @since 2019/8/8 19:39
  */
 public class TimeDemo {

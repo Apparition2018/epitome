@@ -20,7 +20,6 @@ import static l.demo.Demo.p;
  * boolean      isAfter(ChronoLocalDateTime<?> other)   检查此 date-time 是否在指定 date-time 之后
  * boolean      isEqual(ChronoLocalDateTime<?> other)   检查此 date-time 是否等于 date-time
  * </pre>
- * <a href="https://www.yiibai.com/javatime/javatime_localdatetime.html">java.time.LocalDateTime 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -49,7 +48,7 @@ public class LocalDateTimeDemo {
 
     @Test
     public void testLocalDateTime() {
-        // int	                                getXXX()            
+        // int	                                getXXX()
         p(ldt.getDayOfYear());                  // 221
         p(ldt.getDayOfMonth());                 // 8
         p(ldt.getDayOfWeek());                  // FRIDAY

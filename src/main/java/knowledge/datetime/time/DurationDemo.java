@@ -19,7 +19,6 @@ import static l.demo.Demo.p;
  * boolean      isNegative()                        检查此持续时间是否为负值，不包括零
  * boolean      isZero()                            检查此持续时间是否为零长度
  * </pre>
- * <a href="https://www.yiibai.com/javatime/javatime_duration.html">java.time.Duration 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

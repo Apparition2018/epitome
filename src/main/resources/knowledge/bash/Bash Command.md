@@ -3,11 +3,10 @@
 ---
 ## 参考网站
 1. [Linux 命令大全 | 菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
-2. [Linux 命令大全 | 易百教程](https://www.yiibai.com/linux)
-3. [Linux man pages online](https://linux.die.net/man/)
-4. [Linux man pages online](https://man7.org/linux/man-pages/)
-5. [Linux Command Reference](https://personales.unican.es/corcuerp/Linux/commands/Bash%20Command%20Reference.html)
-6. [CSE 390 Bash Command Reference](https://courses.cs.washington.edu/courses/cse390a/14au/bash.html)
+2. [Linux man pages](https://linux.die.net/man/)
+3. [Linux man pages online](https://man7.org/linux/man-pages/)
+4. [Linux Command Reference](https://personales.unican.es/corcuerp/Linux/commands/Bash%20Command%20Reference.html)
+5. [CSE 390 Bash Command Reference](https://courses.cs.washington.edu/courses/cse390a/14au/bash.html)
 ## 问题
 1. [Linux 常见命令缩写](https://www.cnblogs.com/h2mm/p/6691309.html)
 2. [Linux 下命令行 curl 的 10 种常见用法示例](https://www.cnblogs.com/zxqblogrecord/p/8900219.html)
@@ -72,9 +71,12 @@
 ---
 ## 目录 (directories)
     ls                              list                                列出目录内容
-        -l                                                              long listing 格式
+        -a, --all                                                       不忽略.开头的隐藏文件和目录
+        -l, -ll                     long listing                        长列表格式
     pwd                             print work directory                打印当前工作目录
-    cd                              change directory                    更改工作目录
+    cd                              change directory                    切换工作目录
+        ~                                                               切换到主目录；/root or /home/ljh
+        -                                                               切换到上次访问的目录
     mkdir                           make directory                      创建目录
         -p, --parents                                                   创建目录，如需要创建父目录
     rmdir                           remove directory                    删除空目录
@@ -82,6 +84,7 @@
 ---
 ## 文件操作 (file operations)
     cp                              copy                                复制文件或目录
+        -r, -R, --recursive                                             递归复制
     mv                              move                                移动文件或目录
     rm                              remove                              删除文件或目录
         -r, -R, --recursive                                             递归删除
@@ -163,7 +166,8 @@
     sort                                                                输出排序后的文件内容
     uniq                            unique                              删除重复的行
     find                                                                在给定目录中查找文件
-        -iname                                                          文件名，忽略大小写
+        -iname pattern                                                  文件名（忽略大小写），支持通配符 * ?
+        -ctime n                                                        n*24 小时内状态发生变化的文件
     xargs                           extended arguments                  给命令传递参数的一个过滤器，也是组合多个命令的一个工具
         docker ps -aq | xargs docker rm -f
         相当于
@@ -339,9 +343,13 @@
     ulimit                          user's limit                        控制 shell 程序的资源
     whois                                                               查找并显示用户信息
     shutdown                                                            关闭系统
-        -h                                                              关闭系统后停机
-        -r                                                              关闭系统后重新开机
-    reboot                                                              重启系统
+        -h                          halt                                停止系统；-h 10（10分钟后停止系统）
+        -r                          reboot                              重启系统
+        -P                          power off                           关机断电
+        -c                          cancel                              取消已经计划的关机或重启任务
+    halt                                                                立即停止系统，相当于 shotdown -h now
+    reboot                                                              立即重启系统，相当于 shutdown -r now
+    poweroff                                                            立即关机断电，相当于 shutdown -P now
 ---
 ## 系统设置
     ssh-keygen                                                          生成、管理和转换 SSH 的身份验证密钥
@@ -381,7 +389,4 @@
     lsmod                           list modules                        显示已载入模块
     insmod                          install modules                     载入模块
     rmmod                           remove modules                      删除模块
----
-## 备份压缩
-    gzcat                                                               查看 gzip 文件
 ---

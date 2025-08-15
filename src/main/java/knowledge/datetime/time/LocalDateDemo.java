@@ -21,7 +21,6 @@ import static l.demo.Demo.pe;
  * boolean      isAfter(ChronoLocalDate other)      检查此 date 是否在指定 date 之后
  * boolean      isLeapYear()                        根据ISO培训日历系统规则，检查年份是否是闰年
  * </pre>
- * <a href="https://www.yiibai.com/javatime/javatime_localdate.html">java.time.LocalDate 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39

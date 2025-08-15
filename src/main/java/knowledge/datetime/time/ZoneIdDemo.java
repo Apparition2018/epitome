@@ -18,7 +18,6 @@ import static l.demo.Demo.p;
  * boolean      equals(Object obj)      检查是否等
  * ZoneId       normalized()            规范化时区ID，在可能的情况下返回一个ZoneOffset
  * </pre>
- * <a href="https://www.yiibai.com/javatime/javatime_zoneid.html">java.time.ZoneId 类</a>
  *
  * @author ljh
  * @since 2019/8/8 19:39
