@@ -6,7 +6,7 @@
 ## General subjects
 ### intro：Vim 概述
 - [vim-modes](https://vimhelp.org/intro.txt.html#vim-modes-intro)
-    - [Normal mode](#Normal-mode)：Command mode，启动编辑器时默认模式
+    - Normal mode：Command mode，启动编辑器时默认模式
         - 从 other mode 进入：`Esc`，`Ctrl + [`，`Ctrl + C`
         - 从 Command-line mode 输入数字再\<Enter>进入：`num<Enter>`
     - Visual mode
@@ -30,35 +30,74 @@
         - 从 Normal mode 进入 Search History Window：`q/`，`q?`
         - 从 Insert mode 进入 Expression Mode：`Ctrl+R =`
 ---
+## General subjects
+### intro：Vim 概述；帮助文件的符号与标记
+- [notation](https://vimhelp.org/intro.txt.html#notation)
+```
+[count]                                 在命令前输入一个数字，使其执行多次
+```
+### helphelp：关于使用帮助文件
+- [online-help](https://vimhelp.org/helphelp.txt.html#online-help)
+```
+:he[elp]                                显示帮助文件
+```
+---
 ## Basic editing
 ### starting：启动 Vim，Vim 命令参数，初始化
 - [vim-arguments](https://vimhelp.org/starting.txt.html#vim-arguments)
 ```
-+[num]                              光标将定位在第 num 行；缺少 num 将定位在最后一行
++[num]                                  光标将定位在第 num 行；缺少 num 将定位在最后一行
+```
+### editing：编辑和写入文件
+- [writing](https://vimhelp.org/editing.txt.html#writing)
+```
+:w[rite] [++opt]                        将整个缓冲区内容写入当前文件
+```
+- [write-quit](https://vimhelp.org/editing.txt.html#write-quit)
+```
+:q[uit]                                 退出当前窗口，如果是最后一个窗口则退出
+:q[uit]!                                强制退出当前窗口，如果是最后一个窗口则退出
+:wq [++opt]                             写入当前文件并关闭窗口，如果是最后一个窗口则退出；对于只读文件可使用 :wq!
+:qa[ll]!                                离开，缓冲区的任何更改都将丢失
+```
+### motion：移动指令
+- [up-down-motions](https://vimhelp.org/motion.txt.html#up-down-motions)
+```
+G                                       跳转到第 count 行，缺少 count 跳到末行
+gg                                      跳转到第 count 行，缺少 count 跳到首行
+```
+### change：删除和替换文本
+- [deleting](https://vimhelp.org/change.txt.html#deleting)
+```
+["x]<Del>   or  ["x]x                   删除 count 个字符，并存入寄存器 x(a-z)
+["x]dd                                  删除 count 行内容，并存入寄存器 x(a-z)
+```
+- [copy-move](https://vimhelp.org/change.txt.html#copy-move)
+```
+["x]p                                   粘贴 count 次寄存器 x(a-z) 或最近一次删除或复制的内容
+```
+### undo：撤消和重做
+- [undo-commands](https://vimhelp.org/undo.txt.html#undo-commands)
+```
+<Undo>      or  u                       撤销 count 次更改
+CTRL-R                                  重做 count 已撤消的更改
 ```
 ---
-## modes
-### Normal-mode
+## Advanced editing
+### options：选项描述
+- [set-option](https://vimhelp.org/options.txt.html#set-option)
 ```
-[num]gg                             跳转到第 num 行，缺少 num 跳到首行
-[num]G                              跳转到第 num 行，缺少 num 跳到末行
-/                                   向下搜索关键字，n 下一个
-?                                   向上搜索关键字，n 上一个
-x                                   删除当前光标所在处的字符
+:se[t] {option}                         开关选项
 ```
-### 输入模式
+- [option-summary](https://vimhelp.org/options.txt.html#option-summary)
 ```
-HOME / END                          跳转到行首/行尾
-Page Up / Page Down                 上/下翻页
-Insert                              切换光标为输入/替换模式，光标将变成竖线/下划线
-ESC                                 退出输入模式，切换到命令模式
+'number' 'nu'                           在每一行的前面打印行号                     :set nu
 ```
-### 底线命令模式
+### pattern：正则表达式模式和搜索命
+- [search-commands](https://vimhelp.org/pattern.txt.html#search-commands)
 ```
-q                                   退出程序
-q!                                  不保存强制退出
-w                                   保存文件
-wq                                  存储后退出
-set nu                              显示行号
+/{pattern}[/]<CR>                       向前（光标往文件末尾）正则搜索
+?{pattern}[?]<CR>                       向后（光标往文件开头）正则搜索
+n                                       重复上一次 / 或 ? 执行的搜索 count 次
 ```
 ---
