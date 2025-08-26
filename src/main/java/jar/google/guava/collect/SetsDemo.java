@@ -67,7 +67,7 @@ public class SetsDemo extends Demo {
      * <p>static <E> Sets.SetView<E>   union(Set<? extends E> set1, Set<? extends E> set2)                 并集
      * <p>static <E> Sets.SetView<E>   intersection(Set<E> set1, Set<?> set2)                              交集
      * <p>static <E> Sets.SetView<E>   difference(Set<E> set1, Set<?> set2)                                差集，属于 set1 且不属于 set2
-     * <p>static <E> Sets.SetView<E>   symmetricDifference(Set<? extends E> set1, Set<? extends E> set2)   对称差，只属于其中一个集合，而不属于另一个集合的元素组成的集合
+     * <p>static <E> Sets.SetView<E>   symmetricDifference(Set<? extends E> set1, Set<? extends E> set2)   对称差集，属于 set1 或 set2，但不同时属于两者
      */
     @Test
     public void testSets2() {

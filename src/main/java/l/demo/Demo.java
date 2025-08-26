@@ -241,13 +241,21 @@ public class Demo {
      * <a href="https://github.com/public-apis/public-apis">公共接口</a>
      */
     public static class PublicApis {
-        public static final String IMG = "https://picsum.photos/800/450";
-        public static final String DOG_IMAGE = "https://dog.ceo/api/breeds/image/random";
-        public static final String CAT_IMAGE = "https://api.thecatapi.com/v1/images/search";
-        public static final String TODOS = "https://jsonplaceholder.typicode.com/todos";
-        public static final String TODO = "https://jsonplaceholder.typicode.com/todos/1";
-        public static final String USER_TODO = "https://jsonplaceholder.typicode.com/todos?userId=1";
-        public static final String USERS = "https://reqres.in/api/users?page=1";
-        public static final String USER = "https://reqres.in/api/users/1";
+        public static class Image {
+            public static final String RANDOM = "https://picsum.photos/width/height";
+            public static final String DOG = "https://dog.ceo/api/breeds/image/random";
+            public static final String CAT = "https://api.thecatapi.com/v1/images/search";
+        }
+        public static class Json {
+            public static final String TODOS = "https://jsonplaceholder.typicode.com/todos";
+            public static final String TODO_BY_ID = "https://jsonplaceholder.typicode.com/todos/%s";
+            public static final String TODOS_BY_USER_ID = "https://jsonplaceholder.typicode.com/todos?userId=%s";
+            public static final String USERS_BY_PAGE = "https://reqres.in/api/users?page=%s";
+            public static final String USER_BY_ID = "https://reqres.in/api/users/%s";
+        }
+        public static class XML {
+            public static final String NOTE = "https://www.w3schools.com/xml/note.xml";
+            public static final String BOOKS = "https://www.w3schools.com/xml/books.xml";
+        }
     }
 }
