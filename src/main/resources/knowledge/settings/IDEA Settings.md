@@ -43,7 +43,7 @@
         2.1 Allow auto-make to start even if developed application is currently running 勾选
 ### Deployment (-jn)
     1. Settings → Build, Execution, Deployment → Deployment
-        1.1 + → SFTP → New server name：43.1356.102.115 → SSH configuration
+        1.1 + → SFTP → New server name：43.136.102.115 → SSH configuration
             Host: 43.136.102.115
             Username: root
             Authentication type: Password
