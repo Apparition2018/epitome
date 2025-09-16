@@ -19,10 +19,6 @@ public class ResourceUtilDemo extends Demo {
         // static String	        readUtf8Str(String resource)
         // 读取 Classpath 下的资源为字符串，使用 UTF-8 编码
         p(ResourceUtil.readUtf8Str(JDBC_PROPS_FILENAME));
-        // jdbc.driver=com.mysql.cj.jdbc.Driver
-        // jdbc.url=jdbc:mysql://127.0.0.1:3306/epitome?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
-        // jdbc.username=root
-        // jdbc.password=root
 
         // static BufferedReader	getUtf8Reader(String resource)
         // 从 ClassPath 资源中获取 BufferedReader
