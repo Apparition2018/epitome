@@ -2,6 +2,7 @@ package knowledge.io.nio.file;
 
 import l.demo.Demo;
 import org.apache.commons.io.IOUtils;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -151,17 +152,22 @@ public class FilesDemo extends Demo {
 
     @Test
     public void stream() throws IOException {
-        // 返回指定目录下的条目 Stream，不会递归遍历
-        Files.newDirectoryStream(dirPath, "demo*").forEach(System.out::println);
-
-        // 返回指定目录下的条目 Stream，不会递归遍历
-        Files.list(dirPath).filter(p -> String.valueOf(p).endsWith(".xml")).forEach(System.out::println);
-
-        // 返回指定目录下的条目 Stream，指定递归深度
-        Files.find(dirPath, 5, (p, a) -> String.valueOf(p).endsWith(".png")).forEach(System.out::println);
-
-        // 返回指定目录下的条目 Stream，指定递归深度
-        Files.walk(dirPath, 5).filter(p -> String.valueOf(p).endsWith(".obj")).forEach(System.out::println);
+        // 单层遍历
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dirPath, "demo*")) {
+            stream.forEach(System.out::println);
+        }
+        // 单层遍历
+        try (Stream<Path> stream = Files.list(dirPath)) {
+            stream.filter(p -> String.valueOf(p).endsWith(".xml")).forEach(System.out::println);
+        }
+        // 条件查找
+        try (Stream<Path> stream = Files.find(dirPath, 5, (p, a) -> String.valueOf(p).endsWith(".png"))) {
+            stream.forEach(System.out::println);
+        }
+        // 递归遍历
+        try (Stream<Path> stream = Files.walk(dirPath, 5)) {
+            stream.filter(p -> String.valueOf(p).endsWith(".obj")).forEach(System.out::println);
+        }
     }
 
     /** @see <a href="https://segmentfault.com/a/1190000020778836">Files.walkFileTree 遍历文件目录</a> */
@@ -169,8 +175,8 @@ public class FilesDemo extends Demo {
     public void walkFileTree() throws IOException {
         PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**.obj");
         Files.walkFileTree(dirPath, new SimpleFileVisitor<>() {
-            @Override
-            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+            @NotNull
+            public FileVisitResult visitFile(@NotNull Path file, @NotNull BasicFileAttributes attrs) {
                 if (pathMatcher.matches(file)) {
                     p(file);
                     return FileVisitResult.TERMINATE;

@@ -27,9 +27,6 @@ import java.util.zip.ZipOutputStream;
  * @since 2020/11/8 16:44
  */
 public final class ZipUtils extends Demo {
-    private ZipUtils() {
-        throw new AssertionError(String.format("No %s instances for you!", this.getClass().getName()));
-    }
 
     @Test
     public void testZip() throws IOException {
