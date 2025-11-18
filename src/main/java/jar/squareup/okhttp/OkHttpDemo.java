@@ -2,6 +2,7 @@ package jar.squareup.okhttp;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
+import jakarta.annotation.Nullable;
 import l.demo.Demo;
 import lombok.NonNull;
 import okhttp3.*;
@@ -9,7 +10,6 @@ import okio.BufferedSink;
 import org.apache.hc.core5.http.HttpHeaders;
 import org.junit.jupiter.api.Test;
 
-import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;

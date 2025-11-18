@@ -1,8 +1,8 @@
 # [IDEA Settings](https://www.jetbrains.com/help/idea/settings-preferences-dialog.html)
-- -j: JetBrains
-- -n: New
-- -e: Every Time
-- -o: Optional
+- j: JetBrains
+- n: New
+- e: Every Time
+- o: Optional
 ---
 ### 修改 .IntelliJIdea 位置
     1. %IDEA_HOME%\bin\idea.properties
@@ -149,6 +149,7 @@
 ---
 ## JRebel & XRebel
     1. 下载 ReverseProxy：https://github.com/ilanyu/ReverseProxy/releases
+        - 后备：https://github.com/yu-xiaoyao/jrebel-license-active-server/releases
     2. Generate GUIDs online：https://www.guidgen.com/
     3. http://127.0.0.1:8888/{guid}
     4. Settings → JRebel & XRebel → Work offline
