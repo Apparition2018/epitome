@@ -1,5 +1,6 @@
 package jar.jave;
 
+import lombok.Getter;
 import ws.schild.jave.EncoderException;
 import ws.schild.jave.MultimediaObject;
 import ws.schild.jave.info.AudioInfo;
@@ -26,7 +27,7 @@ public class FFmpegCliConverter {
         try (Stream<Path> stream = Files.walk(Paths.get(DESKTOP))) {
             stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.mp3$"))
                 .parallel()
-                .forEach(mp3Path -> convert(mp3Path, buildOutputPath(mp3Path), null));
+                .forEach(mp3Path -> convert(mp3Path, buildOutputPath(mp3Path), BitRate.ULTRA));
         } catch (IOException e) {
             System.err.println("目录遍历异常: " + e.getMessage());
         }
@@ -36,7 +37,7 @@ public class FFmpegCliConverter {
         return input.resolveSibling(input.getFileName().toString().replaceAll("(?i)\\.mp3$", ".m4a"));
     }
 
-    public static void convert(Path input, Path output, Integer inputBitRate) {
+    public static void convert(Path input, Path output, BitRate inputBitRate) {
         try {
             MultimediaObject multimediaObject = new MultimediaObject(input.toFile());
             AudioInfo audioInfo = multimediaObject.getInfo().getAudio();
@@ -45,21 +46,21 @@ public class FFmpegCliConverter {
             int channels = audioInfo.getChannels();
             System.err.printf("%s %s %s%n", bitRate, samplingRate, channels);
 
-            bitRate = inputBitRate != null ? inputBitRate : bitRate;
+            bitRate = inputBitRate != null ? inputBitRate.getM4a() : bitRate;
             // 构建 FFmpeg 命令
             String[] cmd = {
                 "ffmpeg",
-                "-y",                                                   // 覆盖输出文件
-                "-i", input.toString(),                                 // 输入文件
-                "-c:a", "aac",                                          // 使用 aac 编码器
-                "-b:a", String.valueOf(Math.min(bitRate, 256000)),      // 设置比特率，256000 已被视为 AAC 的“等效无损”阈值
-                "-ar", String.valueOf(Math.min(samplingRate, 44100)),   // 设置采样率，44100 兼容传统播放设备
-                "-ac", String.valueOf(channels),                        // 设置声道数
-                "-c:v", "copy",                                         // 复制视频流（如封面图片）
-                "-movflags", "+faststart",                              // 将 metadata 移动到文件的开头以实现更好的播放
-                "-map_metadata", "0",                                   // 复制所有元数据
-                "-map_chapters", "0",                                   // 复制所有章节信息
-                output.toString()                                       // 输出文件
+                "-y",                                                               // 覆盖输出文件
+                "-i", input.toString(),                                             // 输入文件
+                "-c:a", "aac",                                                      // 使用 aac 编码器
+                "-b:a", String.valueOf(Math.min(bitRate, BitRate.ULTRA.getM4a())),  // 比特率
+                "-ar", String.valueOf(Math.min(samplingRate, 44100)),               // 采样率，44100 兼容传统播放设备
+                "-ac", String.valueOf(channels),                                    // 声道数
+                "-c:v", "copy",                                                     // 复制视频流（如封面图片）
+                "-movflags", "+faststart",                                          // 将 metadata 移动到文件的开头以实现更好的播放
+                "-map_metadata", "0",                                               // 复制所有元数据
+                "-map_chapters", "0",                                               // 复制所有章节信息
+                output.toString()                                                   // 输出文件
             };
 
             ProcessBuilder pb = new ProcessBuilder(cmd).redirectErrorStream(true);
@@ -78,6 +79,18 @@ public class FFmpegCliConverter {
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Getter
+    private static enum BitRate {
+        LOW(96000, 128000), MEDIUM(128000, 192000), HIGH(192000, 256000), ULTRA(256000, 320000);
+        private final int m4a;
+        private final int mp3;
+
+        BitRate(int m4a, int mp3) {
+            this.m4a = m4a;
+            this.mp3 = mp3;
         }
     }
 }

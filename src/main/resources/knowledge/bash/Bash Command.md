@@ -2,11 +2,11 @@
 
 ---
 ## 参考网站
-1. [Linux 命令大全 | 菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
-2. [Linux man pages](https://linux.die.net/man/)
-3. [Linux man pages online](https://man7.org/linux/man-pages/)
-4. [Linux Command Reference](https://personales.unican.es/corcuerp/Linux/commands/Bash%20Command%20Reference.html)
-5. [CSE 390 Bash Command Reference](https://courses.cs.washington.edu/courses/cse390a/14au/bash.html)
+1. [Linux Command Reference](https://personales.unican.es/corcuerp/Linux/commands/Bash%20Command%20Reference.html)
+2. [CSE 390 Bash Command Reference](https://courses.cs.washington.edu/courses/cse390a/14au/bash.html)
+3. [Linux man pages](https://linux.die.net/man/)
+4. [Linux man pages online](https://man7.org/linux/man-pages/)
+5. [Linux 命令大全 | 菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
 ## 问题
 1. [Linux 常见命令缩写](https://www.cnblogs.com/h2mm/p/6691309.html)
 2. [Linux 下命令行 curl 的 10 种常见用法示例](https://www.cnblogs.com/zxqblogrecord/p/8900219.html)

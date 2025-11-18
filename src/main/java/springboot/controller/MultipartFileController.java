@@ -122,56 +122,53 @@ public class MultipartFileController {
     public Result<String> uploadFile(HttpServletRequest request) throws IOException, OpenXML4JException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("file");
-        if (file != null && !file.isEmpty()) {
-            System.err.printf("ContentType: %s%n", file.getContentType());
-            System.err.printf("Size: %s%n", file.getSize());
-            System.err.printf("Name: %s%n", file.getName());
-            System.err.printf("OriginalFilename: %s%n", file.getOriginalFilename());
+        if (file == null || file.isEmpty()) return Result.failure(ResultCode.PARAM_MISS, "上传文件不能为空");
+        System.err.printf("ContentType: %s%n", file.getContentType());
+        System.err.printf("Size: %s%n", file.getSize());
+        System.err.printf("Name: %s%n", file.getName());
+        System.err.printf("OriginalFilename: %s%n", file.getOriginalFilename());
 
-            try (XSSFWorkbook workbook = new XSSFWorkbook(file.getInputStream())) {
-                // 提取器尝试识别 Excel 文件中的各种嵌入文档
-                EmbeddedExtractor extractor = new EmbeddedExtractor();
-                for (EmbeddedData embeddedData : extractor.extractAll(workbook.getSheetAt(0))) {
-                    Shape shape = embeddedData.getShape();
-                    XSSFClientAnchor anchor = (XSSFClientAnchor) shape.getAnchor();
-                    String filename = new String(embeddedData.getFilename().getBytes(StandardCharsets.ISO_8859_1), Charset.forName("GBK"));
-                    // 文件名：行-列
-                    System.err.println(filename + "：" + anchor.getRow2() + "-" + anchor.getCol2());
-                    byte[] bytes = embeddedData.getEmbeddedData();
-                    // 判断是否为 ZIP（ZIP 文件的魔数是 0x50 0x4B 0x03 0x04）
-                    if (bytes != null && bytes.length >= 4 && bytes[0] == 0x50 && bytes[1] == 0x4B && bytes[2] == 0x03 && bytes[3] == 0x04) {
-                        try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-                             // 防止压缩包里的文件的文件名包含中文而报错
-                             ZipInputStream zis = new ZipInputStream(bais, Charset.forName("GBK"))) {
-                            ZipEntry zipEntry;
-                            while ((zipEntry = zis.getNextEntry()) != null) {
-                                // 包含文件夹路径的文件名
-                                String fileName = zipEntry.getName();
-                                boolean isFile = !fileName.endsWith(StrUtil.SLASH);
-                                if (isFile) {
-                                    int separatorIndex = fileName.lastIndexOf(StrUtil.SLASH);
-                                    if (separatorIndex != StringUtils.INDEX_NOT_FOUND) {
-                                        // 不包含文件路径的文件名
-                                        fileName = fileName.substring(separatorIndex + 1);
-                                    }
-                                    try (FileOutputStream fos = new FileOutputStream(DESKTOP + fileName)) {
-                                        zis.transferTo(fos);
-                                    } finally {
-                                        zis.closeEntry();
-                                    }
+        try (XSSFWorkbook workbook = new XSSFWorkbook(file.getInputStream())) {
+            // 提取器尝试识别 Excel 文件中的各种嵌入文档
+            EmbeddedExtractor extractor = new EmbeddedExtractor();
+            for (EmbeddedData embeddedData : extractor.extractAll(workbook.getSheetAt(0))) {
+                Shape shape = embeddedData.getShape();
+                XSSFClientAnchor anchor = (XSSFClientAnchor) shape.getAnchor();
+                String filename = new String(embeddedData.getFilename().getBytes(StandardCharsets.ISO_8859_1), Charset.forName("GBK"));
+                // 文件名：行-列
+                System.err.println(filename + "：" + anchor.getRow2() + "-" + anchor.getCol2());
+                byte[] bytes = embeddedData.getEmbeddedData();
+                // 判断是否为 ZIP（ZIP 文件的魔数是 0x50 0x4B 0x03 0x04）
+                if (bytes != null && bytes.length >= 4 && bytes[0] == 0x50 && bytes[1] == 0x4B && bytes[2] == 0x03 && bytes[3] == 0x04) {
+                    try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+                         // 防止压缩包里的文件的文件名包含中文而报错
+                         ZipInputStream zis = new ZipInputStream(bais, Charset.forName("GBK"))) {
+                        ZipEntry zipEntry;
+                        while ((zipEntry = zis.getNextEntry()) != null) {
+                            // 包含文件夹路径的文件名
+                            String fileName = zipEntry.getName();
+                            boolean isFile = !fileName.endsWith(StrUtil.SLASH);
+                            if (isFile) {
+                                int separatorIndex = fileName.lastIndexOf(StrUtil.SLASH);
+                                if (separatorIndex != StringUtils.INDEX_NOT_FOUND) {
+                                    // 不包含文件路径的文件名
+                                    fileName = fileName.substring(separatorIndex + 1);
+                                }
+                                try (FileOutputStream fos = new FileOutputStream(DESKTOP + fileName)) {
+                                    zis.transferTo(fos);
+                                } finally {
+                                    zis.closeEntry();
                                 }
                             }
                         }
                     }
                 }
             }
-
-            // 将接收到的文件传输到给定的目标文件
-            file.transferTo(new File(UPLOAD_ABSOLUTE_PATH + file.getOriginalFilename()));
-            return Result.success("success");
-        } else {
-            return Result.failure(ResultCode.PARAM_MISS, "上传文件不能为空");
         }
+
+        // 将接收到的文件传输到给定的目标文件
+        file.transferTo(new File(UPLOAD_ABSOLUTE_PATH + file.getOriginalFilename()));
+        return Result.success("success");
     }
 
     /** <a href="http://localhost:3333/front/html/elements/表单/form-demo.html#form1">upload excel</a> */
