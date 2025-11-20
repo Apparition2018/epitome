@@ -13,6 +13,11 @@ import ws.schild.jave.info.AudioInfo;
 import ws.schild.jave.info.VideoInfo;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 /**
  * <a href="https://github.com/a-schild/jave2">Jave</a>
@@ -24,10 +29,56 @@ import java.io.File;
 public class JaveDemo extends Demo {
 
     /**
+     * flac/mp3 → m4a
+     */
+    @Test
+    public void testConvertToM4a() throws IOException {
+        try (Stream<Path> stream = Files.walk(Paths.get(DESKTOP))) {
+            stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.(mp3|flac)$"))
+                .parallel()
+                .forEach(path -> convertToM4a(path.toFile(), buildOutputFile(path), BitRate.VBR.create(2f)));
+        }
+    }
+
+    private static File buildOutputFile(Path input) {
+        return input.resolveSibling(input.getFileName().toString().replaceAll("(?i)\\.(mp3|flac)$", ".m4a")).toFile();
+    }
+
+    private static void convertToM4a(File source, File target, BitRate targetBitRate) {
+        try {
+            MultimediaObject multimediaObject = new MultimediaObject(source);
+            AudioInfo audioInfo = multimediaObject.getInfo().getAudio();
+
+            // Audio Attributes
+            AudioAttributes audioAttrs = new AudioAttributes();
+            audioAttrs.setCodec("aac");
+            audioAttrs.setChannels(audioInfo.getChannels());
+            audioAttrs.setSamplingRate(audioInfo.getSamplingRate());
+            if (targetBitRate instanceof BitRate.CBR) {
+                audioAttrs.setBitRate(((BitRate.CBR) targetBitRate).getM4a());
+            } else if (targetBitRate instanceof BitRate.VBR) {
+                audioAttrs.setBitRate(0);
+                audioAttrs.setQuality((int) ((BitRate.VBR) targetBitRate).getQuality());
+            }
+
+            // Encoding Attributes
+            EncodingAttributes encodingAttrs = new EncodingAttributes();
+            encodingAttrs.setOutputFormat("mp4");
+            encodingAttrs.setAudioAttributes(audioAttrs);
+
+            // Encoder
+            Encoder encoder = new Encoder();
+            encoder.encode(multimediaObject, target, encodingAttrs);
+        } catch (EncoderException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * 转换视频格式
      */
     @Test
-    public void testConvertFormat() throws EncoderException {
+    public void testConvertToVideo() throws EncoderException {
         File source = new File(VIDEO);
         File target = new File(RESOURCES_ABSOLUTE_PATH + "static/public/video/movie.mp4");
 
@@ -36,28 +87,28 @@ public class JaveDemo extends Demo {
         VideoInfo videoInfo = multimediaObject.getInfo().getVideo();
 
         // Audio Attributes
-        AudioAttributes audio = new AudioAttributes();
-        audio.setCodec("libmp3lame");
-        audio.setBitRate(audioInfo.getBitRate());
-        audio.setChannels(audioInfo.getChannels());
-        audio.setSamplingRate(audioInfo.getSamplingRate());
+        AudioAttributes audioAttrs = new AudioAttributes();
+        audioAttrs.setCodec("libmp3lame");
+        audioAttrs.setBitRate(audioInfo.getBitRate());
+        audioAttrs.setChannels(audioInfo.getChannels());
+        audioAttrs.setSamplingRate(audioInfo.getSamplingRate());
 
         // Video Attributes
-        VideoAttributes video = new VideoAttributes();
-        video.setCodec("libx264");
-        video.setBitRate(160000);
-        video.setFrameRate((int) videoInfo.getFrameRate());
-        video.setSize(videoInfo.getSize());
+        VideoAttributes videoAttrs = new VideoAttributes();
+        videoAttrs.setCodec("libx264");
+        videoAttrs.setBitRate(160000);
+        videoAttrs.setFrameRate((int) videoInfo.getFrameRate());
+        videoAttrs.setSize(videoInfo.getSize());
 
         // Encoding Attributes
-        EncodingAttributes attrs = new EncodingAttributes();
-        attrs.setOutputFormat("mp4");
-        attrs.setAudioAttributes(audio);
-        attrs.setVideoAttributes(video);
+        EncodingAttributes encodingAttrs = new EncodingAttributes();
+        encodingAttrs.setOutputFormat("mp4");
+        encodingAttrs.setAudioAttributes(audioAttrs);
+        encodingAttrs.setVideoAttributes(videoAttrs);
 
-        // Encode
+        // Encoder
         Encoder encoder = new Encoder();
-        encoder.encode(multimediaObject, target, attrs);
+        encoder.encode(multimediaObject, target, encodingAttrs);
     }
 
     /**
@@ -71,19 +122,22 @@ public class JaveDemo extends Demo {
         MultimediaObject multimediaObject = new MultimediaObject(source);
         VideoInfo videoInfo = multimediaObject.getInfo().getVideo();
 
-        VideoAttributes video = new VideoAttributes();
-        video.setCodec(ImgUtil.IMAGE_TYPE_PNG);
-        video.setSize(videoInfo.getSize());
+        // Video Attributes
+        VideoAttributes videoAttrs = new VideoAttributes();
+        videoAttrs.setCodec(ImgUtil.IMAGE_TYPE_PNG);
+        videoAttrs.setSize(videoInfo.getSize());
 
-        EncodingAttributes attrs = new EncodingAttributes();
-        attrs.setOutputFormat("image2");
+        // Encoding Attributes
+        EncodingAttributes encodingAttrs = new EncodingAttributes();
+        encodingAttrs.setOutputFormat("image2");
         // 设置偏移位置，即开始转码位置（3秒）
-        attrs.setOffset(3f);
+        encodingAttrs.setOffset(3f);
         // 设置转码持续时间（1秒）
-        attrs.setDuration(0.01f);
-        attrs.setVideoAttributes(video);
+        encodingAttrs.setDuration(0.01f);
+        encodingAttrs.setVideoAttributes(videoAttrs);
 
+        // Encoder
         Encoder encoder = new Encoder();
-        encoder.encode(multimediaObject, target, attrs);
+        encoder.encode(multimediaObject, target, encodingAttrs);
     }
 }
