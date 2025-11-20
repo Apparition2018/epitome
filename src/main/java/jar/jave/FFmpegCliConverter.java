@@ -1,6 +1,5 @@
 package jar.jave;
 
-import lombok.Getter;
 import ws.schild.jave.EncoderException;
 import ws.schild.jave.MultimediaObject;
 import ws.schild.jave.info.AudioInfo;
@@ -11,6 +10,8 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static l.demo.Demo.DESKTOP;
@@ -25,44 +26,54 @@ public class FFmpegCliConverter {
 
     public static void main(String[] args) throws EncoderException, IOException, InterruptedException {
         try (Stream<Path> stream = Files.walk(Paths.get(DESKTOP))) {
-            stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.mp3$"))
+            stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.(mp3|flac)$"))
                 .parallel()
-                .forEach(mp3Path -> convert(mp3Path, buildOutputPath(mp3Path), BitRate.ULTRA));
-        } catch (IOException e) {
-            System.err.println("目录遍历异常: " + e.getMessage());
+                .forEach(path -> convertToM4a(path, buildOutputPath(path), BitRate.CBR.ULTRA));
         }
     }
 
     private static Path buildOutputPath(Path input) {
-        return input.resolveSibling(input.getFileName().toString().replaceAll("(?i)\\.mp3$", ".m4a"));
+        return input.resolveSibling(input.getFileName().toString().replaceAll("(?i)\\.(mp3|flac)$", ".m4a"));
     }
 
-    public static void convert(Path input, Path output, BitRate inputBitRate) {
+    /**
+     * @see <a href="https://trac.ffmpeg.org/wiki/Encode/AAC">Encode/AAC</a>
+     */
+    public static void convertToM4a(Path source, Path target, BitRate targetBitRate) {
         try {
-            MultimediaObject multimediaObject = new MultimediaObject(input.toFile());
+            MultimediaObject multimediaObject = new MultimediaObject(source.toFile());
             AudioInfo audioInfo = multimediaObject.getInfo().getAudio();
             int bitRate = audioInfo.getBitRate();
             int samplingRate = audioInfo.getSamplingRate();
             int channels = audioInfo.getChannels();
-            System.err.printf("%s %s %s%n", bitRate, samplingRate, channels);
+            System.err.printf("bitRate: %s samplingRate: %s channels: %s%n", bitRate, samplingRate, channels);
 
-            bitRate = inputBitRate != null ? inputBitRate.getM4a() : bitRate;
             // 构建 FFmpeg 命令
-            String[] cmd = {
-                "ffmpeg",
-                "-y",                                                               // 覆盖输出文件
-                "-i", input.toString(),                                             // 输入文件
-                "-c:a", "aac",                                                      // 使用 aac 编码器
-                "-b:a", String.valueOf(Math.min(bitRate, BitRate.ULTRA.getM4a())),  // 比特率
-                "-ar", String.valueOf(Math.min(samplingRate, 44100)),               // 采样率，44100 兼容传统播放设备
-                "-ac", String.valueOf(channels),                                    // 声道数
-                "-c:v", "copy",                                                     // 复制视频流（如封面图片）
-                "-movflags", "+faststart",                                          // 将 metadata 移动到文件的开头以实现更好的播放
-                "-map_metadata", "0",                                               // 复制所有元数据
-                "-map_chapters", "0",                                               // 复制所有章节信息
-                output.toString()                                                   // 输出文件
-            };
+            // ①Global Options  -y
+            List<String> globalCmd = List.of("ffmpeg", "-y");
+            // ②Input Options
+            // ③Input File      -i
+            List<String> inputFileCmd = List.of("-i", source.toString());
+            // ④Output Options  -c:a, -b:a, -q:a,
+            List<String> outputOptionsCmd = new ArrayList<>(List.of(
+                "-ar", String.valueOf(samplingRate),    // 采样率
+                "-ac", String.valueOf(channels),        // 声道数
+                "-c:v", "copy",                         // 视频处理方式：复制（视频或封面）
+                "-movflags", "+faststart",              // 文件结构优化：将元数据从文件的末尾移动到开头，使得无需下载整个文件就能开始播放
+                "-map_metadata", "0",                   // 元数据映射：复制输入文件（索引0）中的所有全局元数据
+                "-map_chapters", "0"                    // 章节信息映射：复制输入文件（索引 0）中的所有章节信息
+            ));
+            if (targetBitRate instanceof BitRate.CBR) {
+                outputOptionsCmd.add("-b:a");           // 恒定比特率 (CBR)
+                outputOptionsCmd.add(String.valueOf(((BitRate.CBR) targetBitRate).getM4a()));
+            } else if (targetBitRate instanceof BitRate.VBR) {
+                outputOptionsCmd.add("-q:a");           // 可变比特率 (VBR)
+                outputOptionsCmd.add(String.valueOf(((BitRate.VBR) targetBitRate).getQuality()));
+            }
+            // ⑤Output File
+            List<String> outFileCmd = List.of(target.toString());
 
+            String[] cmd = Stream.of(globalCmd, inputFileCmd, outputOptionsCmd, outFileCmd).flatMap(List::stream).toArray(String[]::new);
             ProcessBuilder pb = new ProcessBuilder(cmd).redirectErrorStream(true);
 
             // 启动进程并处理输出
@@ -79,18 +90,6 @@ public class FFmpegCliConverter {
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    @Getter
-    private static enum BitRate {
-        LOW(96000, 128000), MEDIUM(128000, 192000), HIGH(192000, 256000), ULTRA(256000, 320000);
-        private final int m4a;
-        private final int mp3;
-
-        BitRate(int m4a, int mp3) {
-            this.m4a = m4a;
-            this.mp3 = mp3;
         }
     }
 }
