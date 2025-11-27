@@ -11,6 +11,15 @@ import lombok.Getter;
 public interface BitRate {
 
     /**
+     * 原始比特率
+     */
+    class OBR implements BitRate {
+        public static OBR create() {
+            return new OBR();
+        }
+    }
+
+    /**
      * 恒定比特率
      */
     @Getter
@@ -32,7 +41,7 @@ public interface BitRate {
     class VBR implements BitRate {
         private final float quality;
 
-        public VBR(float quality) {
+        private VBR(float quality) {
             this.quality = quality;
         }
 

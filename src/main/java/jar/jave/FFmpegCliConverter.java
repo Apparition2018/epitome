@@ -26,14 +26,15 @@ public class FFmpegCliConverter {
 
     public static void main(String[] args) throws EncoderException, IOException, InterruptedException {
         try (Stream<Path> stream = Files.walk(Paths.get(DESKTOP))) {
-            stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.(mp3|flac)$"))
+            stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.(mp3|flac|wav)$"))
                 .parallel()
+                // .forEach(path -> convertToM4a(path, buildOutputPath(path), BitRate.OBR.create()));
                 .forEach(path -> convertToM4a(path, buildOutputPath(path), BitRate.CBR.ULTRA));
         }
     }
 
     private static Path buildOutputPath(Path input) {
-        return input.resolveSibling(input.getFileName().toString().replaceAll("(?i)\\.(mp3|flac)$", ".m4a"));
+        return input.resolveSibling(input.getFileName().toString().replaceAll("(?i)\\.(mp3|flac|wav)$", ".m4a"));
     }
 
     /**
@@ -56,16 +57,21 @@ public class FFmpegCliConverter {
             List<String> inputFileCmd = List.of("-i", source.toString());
             // ④Output Options  -c:a, -b:a, -q:a,
             List<String> outputOptionsCmd = new ArrayList<>(List.of(
-                "-ar", String.valueOf(samplingRate),    // 采样率
-                "-ac", String.valueOf(channels),        // 声道数
-                "-c:v", "copy",                         // 视频处理方式：复制（视频或封面）
-                "-movflags", "+faststart",              // 文件结构优化：将元数据从文件的末尾移动到开头，使得无需下载整个文件就能开始播放
-                "-map_metadata", "0",                   // 元数据映射：复制输入文件（索引0）中的所有全局元数据
-                "-map_chapters", "0"                    // 章节信息映射：复制输入文件（索引 0）中的所有章节信息
+                "-ar", String.valueOf(Math.min(samplingRate, 96000)),   // 采样率
+                "-ac", String.valueOf(channels),                        // 声道数
+                // "-af", "volume=4dB",                                    // 音量提升4dB
+                "-c:v", "copy",                                         // 视频处理方式：复制（视频或封面）
+                "-movflags", "+faststart",                              // 文件结构优化：将元数据从文件的末尾移动到开头，使得无需下载整个文件就能开始播放
+                "-map_metadata", "0",                                   // 元数据映射：复制输入文件（索引0）中的所有全局元数据
+                "-map_chapters", "0"                                    // 章节信息映射：复制输入文件（索引 0）中的所有章节信息
             ));
-            if (targetBitRate instanceof BitRate.CBR) {
+            if (targetBitRate instanceof BitRate.CBR || targetBitRate instanceof BitRate.OBR) {
                 outputOptionsCmd.add("-b:a");           // 恒定比特率 (CBR)
-                outputOptionsCmd.add(String.valueOf(((BitRate.CBR) targetBitRate).getM4a()));
+                if (targetBitRate instanceof BitRate.CBR) {
+                    outputOptionsCmd.add(String.valueOf(((BitRate.CBR) targetBitRate).getM4a()));
+                } else {
+                    outputOptionsCmd.add(String.valueOf(bitRate == -1 ? BitRate.CBR.HIGH.getM4a() : bitRate));
+                }
             } else if (targetBitRate instanceof BitRate.VBR) {
                 outputOptionsCmd.add("-q:a");           // 可变比特率 (VBR)
                 outputOptionsCmd.add(String.valueOf(((BitRate.VBR) targetBitRate).getQuality()));

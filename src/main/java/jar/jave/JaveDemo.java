@@ -59,6 +59,8 @@ public class JaveDemo extends Demo {
             } else if (targetBitRate instanceof BitRate.VBR) {
                 audioAttrs.setBitRate(0);
                 audioAttrs.setQuality((int) ((BitRate.VBR) targetBitRate).getQuality());
+            } else if (targetBitRate instanceof BitRate.OBR) {
+                audioAttrs.setBitRate(audioInfo.getBitRate());
             }
 
             // Encoding Attributes
