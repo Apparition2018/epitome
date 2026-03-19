@@ -53,6 +53,10 @@ public class FilesDemo extends Demo {
             lines.forEach(Demo::p);
         }
 
+        // byte[]               readAllBytes(Path path)
+        byte[] bytes = Files.readAllBytes(filePath);
+        p(new String(bytes, StandardCharsets.UTF_8));
+
         // BufferedReader       newBufferedReader(Path path)
         try (BufferedReader br = Files.newBufferedReader(filePath)) {
             String line;
