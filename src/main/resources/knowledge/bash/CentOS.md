@@ -93,7 +93,7 @@
     2.3 配置多个 Tomcat
         2.3.1 vim /etc/profile
               exprot CATALINA_HOME2=/user/local/apache-tomcat2-10.1.8
-        2.3.2 vim ${CATALINA_HOME2}/bin/catalina.sh，在开头添加 
+        2.3.2 vim ${CATALINA_HOME2}/bin/catalina.sh，在开头添加
               export CATALINA_HOME=$CATALINA_HOME2
               export CATALINA_BASE=$CATALINA_HOME2
 3. 配置 UTF-8 字符集
@@ -128,14 +128,6 @@
     export M2_HOME=/usr/local/apache-maven-3.9.3
     export PATH=$PATH:$M2_HOME/bin
     ```
-3. 命令
-    ```
-    mvn -version
-    mvn clean                                       清除
-    mvn compile                                     编译
-    mvn package                                     打包
-    mvn clean package -Dmaven.test.skip=true        跳过单元测试
-    ``` 
 ---
 ## vsftpd
 - Very Secure FTP Daemon，一个完全免费的、开放源代码的 ftp 服务器软件
@@ -303,9 +295,9 @@
     -- 更改节点 b 的 master 为节点 a
     -- https://dev.mysql.com/doc/refman/5.7/en/change-master-to.html
     -- master_log_file, master_log_pos 是在节点 a 使用 show master status 语句查看到的 File 和 Position
-    change master to 
-        master_host='节点 a 的 ip', master_port=3306, 
-        master_user='repl', master_password='repl', 
+    change master to
+        master_host='节点 a 的 ip', master_port=3306,
+        master_user='repl', master_password='repl',
         master_log_file='log-bin.000001', master_log_pos=154;
     -- 启动复制线程：https://dev.mysql.com/doc/refman/5.7/en/start-slave.html
     start slave;
@@ -348,7 +340,7 @@
     cp redis.conf /usr/local/redis
     cd /usr/local/redis
     vim redis.conf
-        requirepass 123456         
+        requirepass 123456
         # bind 127.0.0.1 -::1
         bind 0.0.0.0
         daemonize yes
@@ -377,7 +369,7 @@
     rpm -Uvh erlang-25.3.2-1.el8.x86_64.rpm
     yum install -y erlang
     erl
-    ```   
+    ```
     ```bash
     rpm -Uvh rabbitmq-server-3.11.15-1.el8.noarch.rpm
     yum install -y socat
@@ -444,7 +436,7 @@
     use admin
     db.createUser({user: "root", pwd: "root", roles: ["root"]})
     db.auth("root", "root")
-    ``` 
+    ```
 9. 防火墙：开放 27017 端口
 ---
 ## [MinIO](https://www.imooc.com/video/23862)

@@ -29,7 +29,7 @@
 ## [仓库](https://maven.apache.org/repositories/index.html)
 1. 本地仓库：运行 Maven 的计算机上的一个目录。它缓存远程下载，并包含尚未发布的临时构建 artifacts
     - 默认路径：${user.home}/.m2/repository
-    - 自定义路径：修改 settings.xml 中的 &lt;localRepository/&gt; 
+    - 自定义路径：修改 settings.xml 中的 &lt;localRepository/&gt;
 2. 远程仓库：通过各种协议（如：file:// 和 http://）访问的任何其它类型的仓库（远程仓库、中央仓库、私有仓库）
     - [settings.xml](settings.xml)
     ```xml
@@ -56,19 +56,20 @@
     ```
 ---
 ## [生命周期](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference)
-1. clean：删除上一个生成生成的所有文件
-2. default：处理项目部署
+1. Clean Lifecycle：清理项目
+2. Default Lifecycle：部署项目
     ```
-    validate        验证项目   验证项目是否正确，所有必要的信息是否可用
-    compile         编译      编译项目的源代码
-    test            测试      使用合适的单元测试框架运行测试。这些测试不应该要求打包或部署代码
-    package         打包      将编译后的代码打包为可分发的格式，例如 JAR
-    verify          验证包     运行任何检查以验证包是否有效并符合质量标准
-    install         安装      将包安装到本地存储库中，以便在本地其他项目中用作依赖项
-        依赖冲突：①短路优先；②声明优先
-    deploy          部署      在集成或发布环境中完成，将最终包复制到远程存储库，以便与其他开发人员和项目共享
+    validate            验证项目    验证项目是否正确且所有必要信息都可用
+    compile             编译       编译项目的源代码
+    test                测试       使用合适的单元测试框架测试编译后的源代码。这些测试不应该要求代码被打包或部署
+    package             打包       将编译后的代码打包为可分发的格式，例如 JAR
+        -Dmaven.test.skip=true    跳过编译测试
+    verify              验证       运行任何检查以验证包是否有效并符合质量标准
+    install             安装       运行对集成测试结果的各项检查，以确保满足质量标准
+        依赖冲突：①短路优先 ②声明优先
+    deploy              部署       在构建环境中执行，将最终包复制到远程仓库，以便其他开发者和项目共享
     ```
-3. site：生成项目的站点文档
+3. Site Lifecycle：创建项目站点
 ---
 ## [Maven Wrapper](https://maven.apache.org/wrapper/)
 - 作用：确保用户拥有运行 Maven build 所需的一切
