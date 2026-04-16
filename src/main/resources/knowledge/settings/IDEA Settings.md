@@ -37,7 +37,7 @@
     1. Settings → Build, Execution, Deployment → Compiler
         1.1 Build project automatically 勾选
         1.2 Shared build process VM options:
-            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar
+            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.42\lombok-1.18.42.jar
         1.3 Annotation Processors → Enable annotation processing 勾选
     2. Settings → Advanced Settings → Compiler
         2.1 Allow auto-make to start even if developed application is currently running 勾选
