@@ -1,48 +1,46 @@
 # [IDEA Settings](https://www.jetbrains.com/help/idea/settings-preferences-dialog.html)
 - j: JetBrains
-- n: New
-- e: Every Time
+- n: New Project
 - o: Optional
 ---
 ### 修改 .IntelliJIdea 位置
-    1. %IDEA_HOME%\bin\idea.properties
+    1 %IDEA_HOME%\bin\idea.properties
         idea.config.path=D:/JetBrains/.IntelliJIdea/config
         idea.system.path=D:/JetBrains/.IntelliJIdea/system
         idea.plugins.path=${idea.config.path}/plugins
         idea.log.path=${idea.system.path}/log
-    2. 退出 IDEA 并删除原 IntelliJIdea 位置
+    2 退出 IDEA 并删除原 IntelliJIdea 位置
         2.1 删除 C:\Users\Administrator\AppData\Local\JetBrains\IntelliJIdea
         2.2 删除 C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea
 ### 自定义 VM Options
-    1. D:\JetBrains\jetbra\vmoptions\idea.vmoptions
+    1 D:\JetBrains\jetbra\vmoptions\idea.vmoptions
         -Xms1024m
         -Xmx2048m
         -Dfile.encoding=UTF-8
         -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel
 ---
-## File
-### Manage IDE Settings (-j)
-    1. Manage IDE Settings → Backup and Sync…
+## Backup and Sync (-j)
+
 ---
-## Settings → Build, Execution, Deployment
-### Build Tools (-n)
-    1. Settings → Build, Execution, Deployment → Build Tools
-    2. Maven
-        2.1 User settings file: D:\dev\.maven\settings.xml
-    3. Gradle
-        3.1 Gradle user home: D:\dev\.gradle
-        3.2 Build and run using: IntelliJ IDEA
-        3.3 Run tests using: IntelliJ IDEA
-### Compiler (-n)
-    1. Settings → Build, Execution, Deployment → Compiler
+## Build, Execution, Deployment
+### Build Tools
+    1 Maven
+        1.1 User settings file: D:\dev\.maven\settings.xml
+    2 Gradle (-n)
+        2.1 Gradle user home: D:\dev\.gradle
+        2.2 Build and run using: IntelliJ IDEA
+        2.3 Run tests using: IntelliJ IDEA
+### Compiler
+    1 Compliler
         1.1 Build project automatically 勾选
-        1.2 Shared build process VM options:
+        1.2 Build Process → Shared VM options:
             -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.42\lombok-1.18.42.jar
-        1.3 Annotation Processors → Enable annotation processing 勾选
-    2. Settings → Advanced Settings → Compiler
-        2.1 Allow auto-make to start even if developed application is currently running 勾选
+    2 Annotation Processors
+        2.1 Enable annotation processing 勾选
+    3 Settings → Advanced Settings → Compiler
+        3.1 Allow auto-make to start even if developed application is currently running 勾选
 ### Deployment (-jn)
-    1. Settings → Build, Execution, Deployment → Deployment
+    1 Deployment
         1.1 + → SFTP → New server name：43.136.102.115 → SSH configuration
             Host: 43.136.102.115
             Username: root
@@ -56,7 +54,7 @@
     2. Tools → Deployment → Sync With Local…
 ---
 ## Settings → Editor
-### Virtual Space & On Save (-j)
+### General (-j)
     1. Settings → Editor → General
     2. Virtual Space
         2.1 Allow caret placement: After the end of line 取消勾选
@@ -100,7 +98,7 @@
     2. 搜索 serialVersionUID
         2.1 'serialVersionUID' field not declared 'private static final long' 勾选
         2.2 Serializable class without 'serialVersionUID' 勾选
-    3. Java → Naming conventions → Class → class naming convention 取消勾选
+    3. Java → Naming conventions → Class → Class naming convention 取消勾选
 ### File and Code Templates (-n)
     1. Settings → Editor → File and Code Templates
     2. Files

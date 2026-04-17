@@ -66,7 +66,7 @@ public class MultipartFileController {
             response.setContentType(MediaTypeFactory.getMediaType(filename).toString());
             response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename="
                 // 防止文件名有中文时显示为下划线
-                + URLEncoder.encode(filename, StandardCharsets.UTF_8));
+                + URLEncoder.encode(filename, StandardCharsets.UTF_8).replace("+", "%20"));
                 // + new String(filename.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1));
             IOUtils.copy(inputStream, outputStream);
             outputStream.flush();
