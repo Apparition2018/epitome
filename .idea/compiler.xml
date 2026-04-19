@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <option name="BUILD_PROCESS_ADDITIONAL_VM_OPTIONS" value="-javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar" />
+    <option name="BUILD_PROCESS_ADDITIONAL_VM_OPTIONS" value="-javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.42\lombok-1.18.42.jar" />
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">

@@ -3,7 +3,6 @@
   <component name="PrettierConfiguration">
     <option name="myConfigurationMode" value="MANUAL" />
     <option name="myRunOnReformat" value="true" />
-    <option name="myFilesPattern" value="**/*.{html,css,less,scss,sass}" />
-    <option name="codeStyleSettingsModifierEnabled" value="false" />
+    <option name="myFilesPattern" value="**/*.{js,ts,jsx,tsx,cjs,cts,mjs,mts,vue,astro,css,scss,html,json}" />
   </component>
 </project>

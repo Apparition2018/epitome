@@ -1,80 +1,100 @@
 # [JetBrains Plugins](https://plugins.jetbrains.com/)
 
 ---
-## User Interface
-- [Atom Material Icons](https://github.com/file-icons/atom)
-- [CodeGlance Pro](https://github.com/Nasller/CodeGlancePro)
-- [Rainbow Brackets](https://github.com/izhangzhihao/intellij-rainbow-brackets)
+## [AI / Completion](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Completion)
+- [Lingma](https://plugins.jetbrains.com/plugin/17809-lingma--alibaba-cloud-ai-coding-assistant)
+- [TRAE AI](https://plugins.jetbrains.com/plugin/24326-trae-ai-coding-assistant)
+- [Tencent Cloud CodeBuddy](https://plugins.jetbrains.com/plugin/24379-tencent-cloud-codebuddy)
+
+- [Bito AI Code Reviews](https://plugins.jetbrains.com/plugin/18289-bito-ai-code-reviews)
+- [ChatGPT - EasyCode](https://plugins.jetbrains.com/plugin/20603-chatgpt--easycode)
+- [Gemini Code Assist](https://plugins.jetbrains.com/plugin/24198-gemini-code-assist)
+- [GitHub Copilot](https://plugins.jetbrains.com/plugin/17718-github-copilot--your-ai-pair-programmer)
 ---
-## AI / Completion
-- [AWS Toolkit](https://github.com/aws/aws-toolkit-jetbrains)
-- [Tabnine](https://github.com/codota/tabnine-intellij)
-- [Bito AI Code Assistant](https://github.com/gitbito/bitoai)
-- [Codeium](https://codeium.com/)
-- [通义灵码](https://tongyi.aliyun.com/lingma)
-- [aiXcoder](https://github.com/aixcoder-plugin)
-- [ChatGPT - EasyCode](https://github.com/obiscr/ChatGPT)：速率限制
-- [GitHub Copilot](https://github.com/github/copilot-docs)：30 天免费试用
-- [Google Cloud Code](https://github.com/GoogleCloudPlatform)：无法登陆 GCP
-- [AI Assistant](https://plugins.jetbrains.com/plugin/22282-ai-assistant)：所在的位置不允许
-- [CodiumAI](https://github.com/Codium-ai/pr-agent)：无法登录
+## [Code Tools](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Code%20Tools)
+- [arthas idea](https://plugins.jetbrains.com/plugin/13581-arthas-idea)
+- [EasyCode](https://plugins.jetbrains.com/plugin/10954-easycode)
+- [GenerateAllSetter](https://plugins.jetbrains.com/plugin/9360-generateallsetter)：一键调用一个对象的所有的set方法
+- [GsonFormatPlus](https://plugins.jetbrains.com/plugin/14949-gsonformatplus)
+- [JetBrains Academy](https://plugins.jetbrains.com/plugin/10081-jetbrains-academy)：学习和教授编程
+- [LeetCode Editor](https://plugins.jetbrains.com/plugin/12132-leetcode-editor)
+- [POJO to JSON](https://plugins.jetbrains.com/plugin/12066-pojo-to-json)
+- [RestfulToolkit-fix](https://plugins.jetbrains.com/plugin/16788-restfultoolkit-fix)
+- [Translation](https://plugins.jetbrains.com/plugin/8579-translation)
 ---
-## Productivity
-- [AceJump](https://github.com/acejump/AceJump)
+## [Code Editing](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Code%20Editing)
+- [Nginx Configuration](https://plugins.jetbrains.com/plugin/15461-nginx-configuration)
+---
+## [Formatting](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Formatting)
+- [google-java-format](https://plugins.jetbrains.com/plugin/8527-google-java-format)
+---
+## [JEE](https://plugins.jetbrains.com/search?orderBy=downloads&tags=JEE)
+- [MybatisX](https://plugins.jetbrains.com/plugin/10119-mybatisx)
+---
+## [Productivity](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Productivity)
+- [AceJump](https://plugins.jetbrains.com/plugin/7086-acejump)
 - [Handy Export Jar](https://plugins.jetbrains.com/plugin/11438-handy-export-jar)
-- [IdeaVim](https://github.com/JetBrains/ideavim)
-- [JRebel and XRebel](https://www.jrebel.com/)
-- [Key Promoter X](https://github.com/halirutan/IntelliJ-Key-Promoter-X)
-- [Translation](https://github.com/YiiGuxing/TranslationPlugin)
+- [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x)
 ---
-## Generate
-- [EasyCode](https://github.com/makejavas/EasyCode)
-- [GenerateAllSetter](https://github.com/gejun123456/intellij-generateAllSetMethod)
-- [GsonFormatPlus](https://github.com/mars-men/GsonFormatPlus)
-- [POJO to JSON](https://github.com/organics2016/pojo2json)
+## [Database](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Database)
+- [Database Navigator](https://plugins.jetbrains.com/plugin/1800-database-navigator)
+- [JPA Buddy](https://plugins.jetbrains.com/plugin/15075-jpa-buddy)
 ---
-## Tools
-- [CSV Editor](https://github.com/SeeSharpSoft/intellij-csv-validator)
-- [Grep Console](https://github.com/krasa/GrepConsole)
-- [RestfulTool](https://github.com/ZhangYuanSheng1217/RestfulTool)
-- [String Manipulation](https://github.com/krasa/StringManipulation)
+## [Maven](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Maven)
+- [MavenHelper](https://plugins.jetbrains.com/plugin/7179-mavenhelper)
 ---
-## Database
-- [Database Navigator](https://github.com/withrocks/idea-database-navigator)
-- [JPA Buddy](https://github.com/JetBrains/jpa-buddy-documentation)
-- [MybatisX](https://github.com/baomidou/MybatisX)
+## [Modeling and CASE tools](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Modeling%20and%20CASE%20tools)
+- [plantuml4idea](https://plugins.jetbrains.com/plugin/7017-plantuml4idea)
+- [SequenceDiagram Core](https://plugins.jetbrains.com/plugin/8286-sequencediagram)
 ---
-## Modeling
-- [PlantUML Integration](https://plugins.jetbrains.com/plugin/7017-plantuml-integration)
-- [SequenceDiagram](https://plugins.jetbrains.com/plugin/8286-sequencediagram)
+## [Testing](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Testing)
+- [Diffblue Cover](https://plugins.jetbrains.com/plugin/14946-diffblue-cover--ai-agent-for-unit-testing)
 ---
-## Web
-- [Live Edit](https://www.jetbrains.com/help/webstorm/live-editing.html)
-- [Prettier](https://github.com/prettier/prettier)
-- [Quokka](https://github.com/wallabyjs/quokka)
+## [Tools Integration](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Tools%20Integration)
+- [JRebel and XRebel](https://plugins.jetbrains.com/plugin/4441-jrebel-and-xrebel)
 ---
-## VCS
-- [.ignore](https://github.com/JetBrains/idea-gitignore)
-- [GitToolBox](https://github.com/zielu/GitToolBox)
+## [VCS](https://plugins.jetbrains.com/search?orderBy=downloads&tags=VCS)
+- [.ignore](https://plugins.jetbrains.com/plugin/7495--ignore)
+- [GitToolBox](https://plugins.jetbrains.com/plugin/7499-gittoolbox)
 ---
-## Inspection
-- [Alibaba Java Coding Guidelines](https://github.com/alibaba/p3c)
-- [CheckStyle-IDEA](https://github.com/jshiell/checkstyle-idea)
-- [Digma Continuous Feedback](https://github.com/digma-ai/digma-intellij-plugin)
-- [SonarLint](https://github.com/SonarSource/sonarlint-intellij)
+## [Inspection](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Inspection)
+- [Alibaba Java Coding Guidelines](https://plugins.jetbrains.com/plugin/14109-alibaba-java-coding-guidelines-xenoamess-tpm-)
+- [SonarQube for IDE](https://plugins.jetbrains.com/plugin/7973-sonarqube-for-ide)：静态分析工具，旨在同时提升你的代码质量和安全性
 ---
-## Learning
-- [JetBrains Academy](https://plugins.jetbrains.com/plugin/10081-jetbrains-academy)
-- [LeetCode Editor](https://github.com/shuzijun/leetcode-editor)
----
-## Cloud
-- [Alibaba Cloud Toolkit](https://www.aliyun.com/product/cloudtoolkit)
-- [Kubernetes](https://plugins.jetbrains.com/plugin/10485-kubernetes)
----
-## Other
-- [arthas idea](https://github.com/WangJi92/arthas-idea-plugin)
-- [Diffblue Cover - AI for Code](https://docs.diffblue.com/features/cover-plugin)
-- [google-java-format](https://github.com/google/google-java-format)
-- [Manifold](https://github.com/manifold-systems/manifold)
-- [Maven Helper](https://github.com/krasa/MavenHelper)
+## Disable
+### Deployment
+- WildFly
+### IDE Settings
+- Configuration Script
+- Copyright
+### JavaScript Frameworks and Tools
+- Angular
+- Polymer & Web Components
+- TSLint
+### JVM Frameworks
+- JavaFX
+- Micronaut
+- Quarkus
+### JVM Tools
+- Code Coverage for Java
+### Keymap
+- Eclipse Keymap
+- NetBeans Keymap
+### Languages
+- Protocol Buffers
+- TextMate Bundles
+- Toml
+### Platform Development
+- DevKit Runtime：提供用于 IDE 和插件开发的工具
+### Remote Development
+- Dev Containers
+- Remote Development
+- Remote Development Gateway
+- Remote Development Server
+- Remote Execution Agent
+- Station
+### Test Tools
+- TestNG
+### Other Tools
+- Eclipse Interoperability
 ---
