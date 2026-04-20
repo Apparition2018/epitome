@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import jar.jackson.custom.CustomFilter;
 import jar.jackson.entity.Person;
-import jar.jackson.custom.CustomFilter;
 import l.demo.Demo;
 import org.junit.jupiter.api.Test;
 
@@ -60,13 +59,13 @@ public class AnnotationDemo extends Demo {
         filterProvider.addFilter("customFilter", new CustomFilter());
         jsonMapper.setFilterProvider(filterProvider);
         Person person = new Person()
-                .setName(MY_NAME)
-                .setAge(31)
-                .setBirth(new Date())
-                .setSex(1)
-                .setHairStyle("pony-tail")
-                .setDog(new Person.Dog().setName("旺财").setColor(Person.Color.BLACK))
-                .setJson("{\"language\":\"chinese\"}");
+            .setName(MY_NAME)
+            .setAge(31)
+            .setBirth(new Date())
+            .setSex(1)
+            .setHairStyle("pony-tail")
+            .setDog(new Person.Dog().setName("旺财").setColor(Person.Color.BLACK))
+            .setJson("{\"language\":\"chinese\"}");
         person.getOther().put("country", "cn");
         // {"P":{"name":"ljh","gender":1,"birth":"2021-07-24 18:07:36 PM","hairstyle":"pony-tail",
         //      "dog":{"name":"旺财","color":"BLACK"},"json":{"language":"chinese"},"height":"163","version":"1.2","country":"cn"}}

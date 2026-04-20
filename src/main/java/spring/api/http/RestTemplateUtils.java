@@ -1,13 +1,13 @@
 package spring.api.http;
 
 import com.alibaba.fastjson2.JSONObject;
+import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.converter.FormHttpMessageConverter;
-import org.springframework.lang.Nullable;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -47,7 +47,6 @@ public final class RestTemplateUtils {
         }
 
         /** 自定义 error 处理 */
-        @Override
         public void handleError(ClientHttpResponse response) throws IOException {
             HttpStatus statusCode = HttpStatus.resolve(response.getStatusCode().value());
             if (statusCode == null) {

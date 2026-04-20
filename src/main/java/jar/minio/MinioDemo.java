@@ -50,7 +50,7 @@ public class MinioDemo extends Demo {
             ObjectWriteResponse response = minioClient.putObject(
                 PutObjectArgs.builder().bucket(BUCKET_NAME)
                     .object(objectName)
-                    .stream(fis, fis.available(), -1)
+                    .stream(fis, file.length(), -1L)
                     .contentType(new MimetypesFileTypeMap().getContentType(file))
                     .build()
             );

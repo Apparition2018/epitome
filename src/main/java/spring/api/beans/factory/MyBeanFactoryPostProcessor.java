@@ -1,9 +1,9 @@
 package spring.api.beans.factory;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.lang.NonNull;
 
 /**
  * MyBeanFactoryPostProcessor

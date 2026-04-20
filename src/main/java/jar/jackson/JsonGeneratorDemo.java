@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.type.ResolvedType;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 import jar.jackson.entity.Person;
-import jar.jackson.entity.Person;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

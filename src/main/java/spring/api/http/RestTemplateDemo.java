@@ -4,10 +4,12 @@ import l.demo.Demo;
 import l.demo.Person;
 import l.demo.Person.Student;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.hc.client5.http.config.ConnectionConfig;
+import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
-import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
-import org.apache.hc.core5.http.io.SocketConfig;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
+import org.apache.hc.core5.util.Timeout;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -38,19 +40,19 @@ public class RestTemplateDemo extends Demo {
     private ResponseEntity<Student> responseEntity;
 
     static {
-        SocketConfig socketConfig = SocketConfig.custom().setSoTimeout(5, TimeUnit.SECONDS).build();
-        try (PoolingHttpClientConnectionManager poolingHttpClientConnectionManager = new PoolingHttpClientConnectionManager()) {
-            poolingHttpClientConnectionManager.setDefaultSocketConfig(socketConfig);
-            try (CloseableHttpClient httpClient = HttpClientBuilder.create().setConnectionManager(poolingHttpClientConnectionManager).build()) {
-                HttpComponentsClientHttpRequestFactory requestFactory =
-                        new HttpComponentsClientHttpRequestFactory(httpClient);
-                requestFactory.setConnectionRequestTimeout((int) TimeUnit.SECONDS.toMillis(5));
-                requestFactory.setConnectTimeout((int) TimeUnit.SECONDS.toMillis(5));
-
-                restTemplate = new RestTemplate(requestFactory);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        ConnectionConfig connectionConfig = ConnectionConfig.custom().setConnectTimeout(Timeout.ofSeconds(5)).build();
+        RequestConfig requestConfig = RequestConfig.custom()
+            .setConnectionRequestTimeout(Timeout.of(5, TimeUnit.SECONDS))
+            .setResponseTimeout(Timeout.of(5, TimeUnit.SECONDS))
+            .build();
+        try (CloseableHttpClient httpClient = HttpClientBuilder.create().setConnectionManager(
+                PoolingHttpClientConnectionManagerBuilder.create().setDefaultConnectionConfig(connectionConfig).build())
+            .setDefaultRequestConfig(requestConfig)
+            .build()) {
+            HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+            restTemplate = new RestTemplate(requestFactory);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         requestHeaders.setContentType(MediaType.APPLICATION_JSON);

@@ -3,7 +3,7 @@ package springboot.result;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.lang.Nullable;
+import org.jspecify.annotations.Nullable;
 import org.springframework.util.ObjectUtils;
 
 import java.io.Serial;

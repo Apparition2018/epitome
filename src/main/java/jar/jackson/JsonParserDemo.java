@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.core.type.ResolvedType;
 import com.fasterxml.jackson.core.type.TypeReference;
 import jar.jackson.entity.Person;
-import jar.jackson.entity.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 

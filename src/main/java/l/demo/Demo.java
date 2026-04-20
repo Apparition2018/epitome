@@ -2,8 +2,8 @@ package l.demo;
 
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import org.jspecify.annotations.NonNull;
 import org.junit.Assert;
-import org.springframework.lang.NonNull;
 import org.springframework.util.StopWatch;
 
 import javax.swing.filechooser.FileSystemView;

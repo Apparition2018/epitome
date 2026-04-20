@@ -63,9 +63,9 @@
 ---
 ## Disable
 ### Deployment
-- WildFly
+- WildFly：允许配置和使用 WildFly（JBoss 应用服务器），用于部署和运行调试网页及企业应用
 ### IDE Settings
-- Configuration Script
+- Configuration Script：支持使用文本文件（YAML、JSON）配置IDE
 - Copyright
 ### JavaScript Frameworks and Tools
 - Angular
@@ -97,4 +97,6 @@
 - TestNG
 ### Other Tools
 - Eclipse Interoperability
+- Task Management
+- Time Tracking
 ---

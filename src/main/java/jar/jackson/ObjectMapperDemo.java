@@ -11,9 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import jar.jackson.custom.CustomDeserializer;
 import jar.jackson.custom.CustomSerializer;
 import jar.jackson.entity.Person;
@@ -100,8 +98,6 @@ public class ObjectMapperDemo extends Demo {
 
                 // 设置空如何序列化
                 .setDefaultPropertyInclusion(JsonInclude.Include.NON_EMPTY)
-                // 同上，底层调用了 setDefaultPropertyInclusion(Include incl)
-                .setSerializationInclusion(JsonInclude.Include.NON_EMPTY)
                 // 设置 DateFormat
                 .setDateFormat(DATE_TIME_FORMAT.get())
                 // 设置 TimeZone
@@ -113,8 +109,6 @@ public class ObjectMapperDemo extends Demo {
                 .registerModule(simpleModule)
                 // 注册模块
                 .registerModule(new JavaTimeModule())
-                .registerModule(new ParameterNamesModule())
-                .registerModule(new Jdk8Module())
                 // 自动注册所有模块
                 .findAndRegisterModules();
     }

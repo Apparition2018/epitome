@@ -1,8 +1,8 @@
 package spring.api.beans.factory;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.lang.NonNull;
 
 import static l.demo.Demo.pe;
 

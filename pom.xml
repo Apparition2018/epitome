@@ -1,19 +1,32 @@
+<!-- POM Reference：https://maven.apache.org/pom.html -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- modelVersion：4.0.0 是目前唯一支持的 POM 版本，且始终是必需的 -->
     <modelVersion>4.0.0</modelVersion>
-    <!-- maven 多继承和继承链：https://blog.csdn.net/bingo_liu/article/details/73609381 -->
+    <!-- The Basics：https://maven.apache.org/pom.html#The_Basics -->
+    <!-- 项目继承：https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Project_Inheritance -->
+    <!-- 项目聚合：https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#project-aggregation -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <!-- Maven 坐标：https://maven.apache.org/pom.html#maven-coordinates -->
     <groupId>com.ljh</groupId>
     <artifactId>epitome</artifactId>
+    <!-- 语义化版本：https://semver.org/lang/zh-CN/ -->
+    <!-- Version Order Specification：https://maven.apache.org/pom.html#version-order-specification
+            非数字标记顺序：alpha(a) < beta(b) < milestone(m) < rc = cr < snapshot < 空 = final = ga = release < sp -->
     <version>0.0.1-SNAPSHOT</version>
+    <!-- packaging：pom, jar（默认）, maven-plugin, ejb, war, ear, rar
+            https://maven.apache.org/pom.html#packaging -->
+    <packaging>jar</packaging>
 
+    <!-- 项目插值和变量：https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#project-interpolation-and-variables -->
     <properties>
         <!-- settings.xml 中 <profile/> 可设置 <properties/>  -->
         <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
@@ -43,7 +56,7 @@
         <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
         <commons-cli.version>1.11.0</commons-cli.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
-        <commons-configuration2.version>2.13.0</commons-configuration2.version>
+        <commons-configuration2.version>2.14.0</commons-configuration2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
         <commons-csv.version>1.14.1</commons-csv.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
@@ -53,15 +66,15 @@
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.5.1</poi.version>
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
-        <tika.version>3.2.3</tika.version>
+        <tika.version>3.3.0</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <jsoup.version>1.22.1</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
-        <minio.version>8.6.0</minio.version>
+        <minio.version>9.0.0</minio.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
-        <itext.version>9.5.0</itext.version>
+        <itext.version>9.6.0</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>10.8</nimbus-jose-jwt.version>
+        <nimbus-jose-jwt.version>10.9</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
         <retrofit2.version>3.0.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.axis2/axis2 -->
@@ -96,7 +109,7 @@
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
         <emoji.version>5.1.1</emoji.version>
         <!-- https://mvnrepository.com/artifact/com.github.mwiede/jsch -->
-        <jsch.version>2.27.9</jsch.version>
+        <jsch.version>2.28.0</jsch.version>
         <!-- https://mvnrepository.com/artifact/io.github.biezhi/TinyPinyin -->
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
         <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
@@ -106,7 +119,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
         <lucene-analyzers.version>8.11.4</lucene-analyzers.version>
         <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
-        <oshi.version>6.10.0</oshi.version>
+        <oshi.version>6.11.1</oshi.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
         <jol.version>0.17</jol.version>
         <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
@@ -158,8 +171,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <!-- 依赖范围：https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#dependency-scope
+                    compile     default     spring-core     compile     test    runtime
+                    provided                servlet-api     compile     test
+                    runtime                 jdbc                        test    runtime
+                    test                    junit                       test
+                    system      deprecated
+                    import -->
             <scope>runtime</scope>
-            <!-- optional=true，表示依赖不会传递；依赖此项目的项想要使用 devtools，需要重新引入 -->
+            <!-- 可选依赖：设置依赖是否可以传递。optional=true，表示依赖不会传递；子模块赖如果想要使用, 需要重新声明依赖
+                    https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html#optional-dependencies -->
             <optional>true</optional>
         </dependency>
         <!-- 配置处理器：https://www.xttblog.com/?p=2834 -->
@@ -232,6 +253,7 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>${commons-beanutils.version}</version>
+            <!-- 依赖排除：https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html#dependency-exclusions -->
             <exclusions>
                 <exclusion>
                     <groupId>commons-collections</groupId>
@@ -562,32 +584,17 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <url>https://maven.aliyun.com/repository/central</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <!-- 依赖管理：管理其所有子项的依赖关系信息
+        https://maven.apache.org/pom.html#dependency-management -->
+    <!-- <dependencyManagement/> -->
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>aliyunmaven</id>
-            <url>https://maven.aliyun.com/repository/public</url>
-        </pluginRepository>
-    </pluginRepositories>
-
+    <!-- Build Settings：https://maven.apache.org/pom.html#Build_Settings -->
     <build>
         <finalName>${project.artifactId}</finalName>
         <!-- spring-boot-starter-parent 的 resources
             https://stackoverflow.com/questions/60041457/spring-boot-starter-parent-resources-includes-excludes-explained -->
-        <!-- <resources/> -->
 
+        <!-- Available Plugins：https://maven.apache.org/plugins/index.html -->
         <plugins>
             <plugin>
                 <!-- Creating an Executable Jar：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#getting-started.first-application.executable-jar
@@ -669,8 +676,44 @@
                 </dependencies>
             </plugin>
         </plugins>
+
+        <!-- Resources：指定项目资源位置
+                https://maven.apache.org/pom.html#resources -->
+        <!-- <resources/> -->
     </build>
 
+    <!-- Environment Settings：https://maven.apache.org/pom.html#Environment_Settings -->
+    <!-- 仓库：Maven 首先尝试使用指定 artifact 的本地副本。如果本地仓库不存在该 artifact，将尝试从远程仓库下载。
+                <repository/> 指定要搜索的备用仓库。Maven 默认会搜索 central(https://repo.maven.apache.org/maven2/) 仓库
+                https://maven.apache.org/pom.html#repositories -->
+    <repositories>
+        <repository>
+            <id>central</id>
+            <!-- public 是 “聚合版”仓库（包含 central + jcenter 等） -->
+            <!-- <url>https://maven.aliyun.com/repository/central</url> -->
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <!-- 插件仓库：https://maven.apache.org/pom.html#plugin-repositories -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aliyunmaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <!-- 发布管理：https://maven.apache.org/pom.html#distribution-management -->
+    <!-- <distributionManagement/> -->
+
+    <!-- Profiles：项目根据构建环境更改设置
+        https://maven.apache.org/pom.html#profiles -->
     <profiles>
         <profile>
             <id>druid</id>
