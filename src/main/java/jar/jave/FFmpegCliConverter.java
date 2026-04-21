@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static l.demo.Demo.DESKTOP;
-
 /**
  * FFmpegCliConverter
  *
@@ -25,7 +23,7 @@ import static l.demo.Demo.DESKTOP;
 public class FFmpegCliConverter {
 
     public static void main(String[] args) throws EncoderException, IOException, InterruptedException {
-        try (Stream<Path> stream = Files.walk(Paths.get(DESKTOP))) {
+        try (Stream<Path> stream = Files.walk(Paths.get("F:\\音樂\\New2\\小梦音乐\\downLoad"))) {
             stream.filter(p -> Files.isRegularFile(p) && p.toString().matches("(?i).*\\.(mp3|flac|wav)$"))
                 .parallel()
                 // .forEach(path -> convertToM4a(path, buildOutputPath(path), BitRate.OBR.create()));

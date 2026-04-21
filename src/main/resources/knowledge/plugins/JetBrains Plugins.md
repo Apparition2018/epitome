@@ -1,5 +1,10 @@
-# [JetBrains Plugins](https://plugins.jetbrains.com/)
-
+# JetBrains Plguins
+- [JetBrains Marketplace](https://plugins.jetbrains.com/)
+---
+## Common
+- [AceJump](https://plugins.jetbrains.com/plugin/7086-acejump)
+- [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x)
+- [Translation](https://plugins.jetbrains.com/plugin/8579-translation)
 ---
 ## [AI / Completion](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Completion)
 - [Lingma](https://plugins.jetbrains.com/plugin/17809-lingma--alibaba-cloud-ai-coding-assistant)
@@ -20,7 +25,6 @@
 - [LeetCode Editor](https://plugins.jetbrains.com/plugin/12132-leetcode-editor)
 - [POJO to JSON](https://plugins.jetbrains.com/plugin/12066-pojo-to-json)
 - [RestfulToolkit-fix](https://plugins.jetbrains.com/plugin/16788-restfultoolkit-fix)
-- [Translation](https://plugins.jetbrains.com/plugin/8579-translation)
 ---
 ## [Code Editing](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Code%20Editing)
 - [Nginx Configuration](https://plugins.jetbrains.com/plugin/15461-nginx-configuration)
@@ -32,9 +36,7 @@
 - [MybatisX](https://plugins.jetbrains.com/plugin/10119-mybatisx)
 ---
 ## [Productivity](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Productivity)
-- [AceJump](https://plugins.jetbrains.com/plugin/7086-acejump)
 - [Handy Export Jar](https://plugins.jetbrains.com/plugin/11438-handy-export-jar)
-- [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x)
 ---
 ## [Database](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Database)
 - [Database Navigator](https://plugins.jetbrains.com/plugin/1800-database-navigator)
