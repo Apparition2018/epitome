@@ -106,7 +106,6 @@
     1 Global Encoding: UTF-8
     2 Project Encoding: UTF-8
     3 Default encoding for properties files: UTF-8
-    4 Transparaent native-to-ascii conversion 勾选
 ### TODO
     1 TODO
         1.1 Patterns → +
