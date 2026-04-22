@@ -13,14 +13,18 @@
         2.1 删除 C:\Users\Administrator\AppData\Local\JetBrains\IntelliJIdea
         2.2 删除 C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea
 ### 自定义 VM Options
-    1 D:\JetBrains\jetbra\vmoptions\idea.vmoptions
+    1 ...\vmoptions\idea.vmoptions | Help → Edit Custom VM Options…
         -Xms1024m
         -Xmx2048m
-        -Dfile.encoding=UTF-8
+        -XX:ReservedCodeCacheSize=1024m
         -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel
 ---
 ## Backup and Sync (-j)
 
+---
+## Appearance & Behavior
+### Appearance （-j)
+    1 UI Options → Main menu: Merge with Main Toolbar
 ---
 ## Build, Execution, Deployment
 ### Build Tools
@@ -55,13 +59,18 @@
 ---
 ## Editor
 ### General (-j)
-    1 Auto Import (-no) → Java
-        1.1 Add unambiguous imports on the fly 勾选
-        1.2 Optimize imports on the fly 勾选
-    2 Editor Tabs
-        2.1 Show tabs in: Multiple rows
+    1 General → On Save
+        1.1 Keep trailing spaces on caet line 取消勾选
+        1.2 Remove trailing blank lines at the end of saved files 勾选
+        1.3 Ensure every saved files ends with a line 勾选
+    2 Auto Import (-no) → Java
+        2.1 Add unambiguous imports on the fly 勾选
+        2.2 Optimize imports on the fly 勾选
+    3 Editor Tabs
+        3.1 Show tabs in: Multiple rows
 ### Font (-j)
-    1 Typography Settings → Fallback font: Microsoft YaHei
+    1 Size: 10.0
+    2 Typography Settings → Fallback font: Microsoft YaHei
 ### Code Style (-j)
     # https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml
     1 Java → JavaDoc
@@ -113,7 +122,7 @@
         2.5 Edit variables: Name:date → Expression:date()
         2.6 Define/Change
             2.6.1 Java → Declaration, Statement 勾选
-            2.6.2 JavaScript and TypeScript → Statement → Other 勾选
+            2.6.2 JavaScript/TypeScript → Statement → Other 勾选
 ---
 ## Version Control (-j)
     1 Git → Path to Git executable: D:\Git\cmd\git.exe
