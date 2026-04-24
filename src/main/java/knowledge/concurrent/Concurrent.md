@@ -52,7 +52,7 @@
             SELECT quantity, updated_at FROM good WHERE id = 1;
             UPDATE good SET quantity = newQuantity, updated_at = newUpdatedAt WHERE id = 1 AND updated_at = oldUpdatedAt;
             ```
-    3. 悲观锁：`SELECT … FOR UPDATE`  
+    3. 悲观锁：`SELECT … FOR UPDATE`
 2. Redis：@see [JedisDistributedLocks](../../jar/jedis/JedisDistributedLocks.java)
     ```
     互斥性             只有一个客户端持有锁                                                      SETNX
@@ -68,11 +68,12 @@
 ---
 ## 秒杀活动
 ### [seckill-1]
-1. 详情页 - [CDN 缓存](https://zhuanlan.zhihu.com/p/190935418) ：Content Delivery Network，建议存放静态资源和经常访问的页面
-2. 秒杀地址接口 - 服务器缓存：Redis 等
-3. 秒杀操作接口 - 库存处理 | 热点商品
-    - 原子计数器记录库存（NoSQL）→ 记录行为消息（分布式 MQ） → 消费消息落地（DB）
-    - 事务竞争优化（减事务锁时间）：存储过程，包含 insert（购买行为）和 update（减库存）
+1. 详情页 - [CDN 缓存](https://zhuanlan.zhihu.com/p/190935418) ：Content Delivery Network，静态资源（图片、CSS/JS、字体）、静态页面（秒杀固定信息）
+2. 秒杀地址接口 - Redis 缓存秒杀相关信息
+3. 秒杀操作接口
+    1. 减少事务时间：先 insert 购买行为（无竞争不加锁），再 update 扣减库存（加行锁）
+    2. 减少事务时间：存储过程（insert 购买行为 + update 扣减库存）
+    3. 原子操作扣减库存（Redis+Lua）→ 记录购买行为消息（分布式 MQ）→ 消费消息落地（DB）
 ### [seckill-2]
 1. 商品表分为商品表(item)和库存表(item_stock)：加减库存锁库存表(item_stock)的时候不影响商品表(item)的使用
     - 减库存方式：①下单成功减库存；②付款成功减库存

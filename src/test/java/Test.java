@@ -19,8 +19,6 @@
 
 // Flutter
 
-// 秒杀系统：https://coding.imooc.com/class/338.html
-
 import l.demo.Demo;
 
 public class Test extends Demo {

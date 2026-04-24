@@ -43,7 +43,7 @@
         2.1 Enable annotation processing 勾选
     3 Settings → Advanced Settings → Compiler
         3.1 Allow auto-make to start even if developed application is currently running 勾选
-### Deployment (-j)
+### Deployment (-jo)
     1 Deployment
         1.1 + → SFTP → New server name：43.136.102.115 → SSH configuration
             Host: 43.136.102.115
@@ -69,7 +69,7 @@
     3 Editor Tabs
         3.1 Show tabs in: Multiple rows
 ### Font (-j)
-    1 Size: 10.0
+    1 Size: 12.0
     2 Typography Settings → Fallback font: Microsoft YaHei
 ### Code Style (-j)
     # https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml
@@ -131,7 +131,7 @@
 ### Actions on Save (-jo)
     1 Reformat code 勾选
     2 Optimize imports 勾选
-### Terminal (-jo)
+### Terminal (-j)
     1 Shell path: D:\Git\bin\bash.exe
 ---
 ## Languages & Frameworks

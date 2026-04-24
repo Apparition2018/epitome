@@ -246,7 +246,7 @@ Ctrl + Alt + ]                  Next Project Window                 下一个项
 >Alt + ←                        Select Previous Tab                 上一个Tab
 >Alt + →                        Select Next Tab                     下一个Tab
 >Alt + R                        Split and Move Right (user)         垂直分屏并移到右边
->Alt + D                        Split and Move Down (user)          水平分屏并移到下边
+>Alt + D                        Split and Move Down                 水平分屏并移到下边
 >```
 ### Help
 ```
