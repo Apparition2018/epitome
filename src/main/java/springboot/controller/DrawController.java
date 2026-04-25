@@ -1,11 +1,10 @@
 package springboot.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +14,7 @@ import springboot.domain.master.draw.Prize;
 import springboot.exception.ServiceException;
 import springboot.mapper.master.draw.PrizeMapper;
 import springboot.mapper.master.draw.UserMapper;
+import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -53,41 +53,42 @@ public class DrawController {
      * <a href="http://localhost:3333/draw/test?userId=1">抽奖测试</a>
      *
      * @param userId 用户ID
-     * @return 奖品ID，0表示不中奖
+     * @return 奖品ID，0表示各种异常
      */
     @GetMapping("test")
-    @Transactional(rollbackFor = Exception.class)
-    public Integer test(int userId) throws InterruptedException, JsonProcessingException {
-        // 抽奖活动缓存
+    public Integer test(int userId) {
         int drawId = 1;
+        // 抽奖活动缓存
         Draw drawCache = this.getDrawCache(drawId);
 
-        // 扣减积分
-        int effect = userMapper.deductScore(userId, drawCache.getScore());
-        if (effect == 0) throw new ServiceException("积分不足");
-
-        // 抽奖
-        Integer winId = this.draw(drawCache.getPrizeList());
-        if (winId != 0) {
-            // 查看奖品无库存缓存
-            if (this.getPrizeNoStockCache(drawId, winId) == null) {
-                // 奖品无库存缓存为 null，表示奖品有库存
-                // 奖品中奖数+1
-                synchronized (DrawController.class) {
-                    effect = prizeMapper.incrWinQty(winId);
-                }
-                if (effect == 0) {
-                    // 奖品中奖数+1失败，表示库存为0
-                    // 设置奖品无库存缓存
-                    this.setPrizeNoStockCache(drawId, winId);
-                    winId = 0;
-                }
-            } else {
-                // 奖品无库存缓存不为 null，表示奖品无库存
-                winId = 0;
-            }
+        try {
+            return ((DrawController) AopContext.currentProxy()).executeDraw(userId, drawCache);
+        } catch (ServiceException e) {
+            log.warn("用户{}抽奖失败: {}", userId, e.getMessage());
+            return 0;
         }
+    }
 
+    @Transactional(rollbackFor = Exception.class)
+    public Integer executeDraw(int userId, Draw draw) {
+        // 1. 扣减积分
+        int userEffect = userMapper.deductScore(userId, draw.getScore());
+        // 2. 积分不足
+        if (userEffect == 0) return 0;
+        // 3. 抽奖
+        Integer winId = this.doDraw(draw.getPrizeList());
+        // 4. 没中奖
+        if (winId == 0) return 0;
+        // 5. 中奖，但奖品无库存
+        if (this.getPrizeNoStockCache(draw.getId(), winId) != null) return 0;
+        // 6. 中奖，增加中奖数
+        int prizeEffect = prizeMapper.incrWinQty(winId);
+        // 7. 增加中奖数失败，表示奖品无库存，设置无库存缓存
+        if (prizeEffect == 0) {
+            this.setPrizeNoStockCache(draw.getId(), winId);
+            return 0;
+        }
+        // 8. 返回奖品ID
         return winId;
     }
 
@@ -97,7 +98,7 @@ public class DrawController {
      * @param prizeList 奖品列表
      * @return 奖品ID，0表示不中奖
      */
-    private Integer draw(List<Prize> prizeList) {
+    private Integer doDraw(List<Prize> prizeList) {
         int random = ThreadLocalRandom.current().nextInt(10000);
         int threshold = 0;
         for (Prize prize : prizeList) {
@@ -112,16 +113,22 @@ public class DrawController {
      * @param drawId 抽奖活动ID
      * @return 抽奖活动
      */
-    private Draw getDrawCache(Integer drawId) throws JsonProcessingException {
+    private Draw getDrawCache(Integer drawId) {
         String key = String.format(DRAW_KEY, drawId);
-        if (Boolean.TRUE.equals(redisTemplate.hasKey(key))) {
-            String cacheStr = (String) redisTemplate.opsForValue().get(key);
-            return objectMapper.readValue(cacheStr, Draw.class);
-        } else {
+        Object cachedObj = redisTemplate.opsForValue().get(key);
+        if (cachedObj != null) {
+            return objectMapper.readValue((String) cachedObj, Draw.class);
+        }
+        synchronized (this) {
+            // 双重检查锁，防止缓存击穿
+            cachedObj = redisTemplate.opsForValue().get(key);
+            if (cachedObj != null) {
+                return objectMapper.readValue((String) cachedObj, Draw.class);
+            }
+
             List<Prize> prizeList = prizeMapper.listIdAndPrByDrawId(drawId);
             Draw draw = new Draw().setId(drawId).setScore(1).setPrizeList(prizeList);
-            String cacheStr = objectMapper.writeValueAsString(draw);
-            redisTemplate.opsForValue().set(key, cacheStr, 1, TimeUnit.DAYS);
+            redisTemplate.opsForValue().set(key, objectMapper.writeValueAsString(draw), 1, TimeUnit.DAYS);
             return draw;
         }
     }

@@ -1,6 +1,5 @@
 package springboot.util.handler;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import org.apache.hc.core5.http.ContentType;
@@ -12,6 +11,7 @@ import org.springframework.web.method.support.AsyncHandlerMethodReturnValueHandl
 import org.springframework.web.method.support.ModelAndViewContainer;
 import springboot.controller.WebMvcConfigController;
 import springboot.result.Result;
+import tools.jackson.databind.ObjectMapper;
 
 import java.nio.charset.StandardCharsets;
 
@@ -34,8 +34,8 @@ public class MyHandlerMethodReturnValueHandler implements AsyncHandlerMethodRetu
     @Override
     public boolean supportsReturnType(MethodParameter returnType) {
         return WebMvcConfigController.class.equals(returnType.getDeclaringClass()) &&
-                !BasicErrorController.class.equals(returnType.getDeclaringClass()) &&
-                !Result.class.equals(returnType.getParameterType());
+            !BasicErrorController.class.equals(returnType.getDeclaringClass()) &&
+            !Result.class.equals(returnType.getParameterType());
     }
 
     @Override

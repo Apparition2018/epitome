@@ -1,8 +1,8 @@
-package springboot.mapper.master.tk;
+package springboot.mapper.tk.sales;
 
 import org.springframework.stereotype.Component;
 import springboot.domain.master.Sales;
-import springboot.mapper.master.MyMapper;
+import springboot.mapper.tk.MyMapper;
 
 /**
  * SalesTkMapper

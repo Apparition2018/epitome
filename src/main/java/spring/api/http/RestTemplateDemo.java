@@ -45,8 +45,8 @@ public class RestTemplateDemo extends Demo {
             .setConnectionRequestTimeout(Timeout.of(5, TimeUnit.SECONDS))
             .setResponseTimeout(Timeout.of(5, TimeUnit.SECONDS))
             .build();
-        try (CloseableHttpClient httpClient = HttpClientBuilder.create().setConnectionManager(
-                PoolingHttpClientConnectionManagerBuilder.create().setDefaultConnectionConfig(connectionConfig).build())
+        try (CloseableHttpClient httpClient = HttpClientBuilder.create()
+            .setConnectionManager(PoolingHttpClientConnectionManagerBuilder.create().setDefaultConnectionConfig(connectionConfig).build())
             .setDefaultRequestConfig(requestConfig)
             .build()) {
             HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
