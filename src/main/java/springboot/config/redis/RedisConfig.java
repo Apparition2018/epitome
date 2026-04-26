@@ -3,8 +3,6 @@ package springboot.config.redis;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurer;
@@ -17,13 +15,18 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.JacksonJsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import springboot.messaging.redis.CnMessageSubscriber;
 import springboot.messaging.redis.RedisTopicEnum;
 import springboot.messaging.redis.Subscriber;
+import tools.jackson.databind.DefaultTyping;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import tools.jackson.databind.jsontype.PolymorphicTypeValidator;
 
 import java.util.List;
 
@@ -41,24 +44,25 @@ import java.util.List;
 public class RedisConfig implements CachingConfigurer {
 
     @Bean
-    public Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        objectMapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
-
-        return new Jackson2JsonRedisSerializer<>(objectMapper, Object.class);
+    public RedisSerializer<Object> jacksonJsonRedisSerializer() {
+        // 1. 定义多态类型校验器（Jackson 3 强制要求更安全的校验）
+        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder().allowIfBaseType(Object.class).build();
+        // 2. 构建 ObjectMapper
+        ObjectMapper objectMapper = JsonMapper.builder()
+            .changeDefaultVisibility(vc -> vc.withVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY))
+            .activateDefaultTyping(ptv, DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY)
+            .build();
+        return new JacksonJsonRedisSerializer<>(objectMapper, Object.class);
     }
 
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
-                // .entryTtl(Duration.ofSeconds(600L))
-                // .disableCachingNullValues()
-                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer()));
-        return RedisCacheManager.builder(redisConnectionFactory)
-                .cacheDefaults(config)
-                .build();
+            // .entryTtl(Duration.ofSeconds(600L))
+            // .disableCachingNullValues()
+            .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
+            .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jacksonJsonRedisSerializer()));
+        return RedisCacheManager.builder(redisConnectionFactory).cacheDefaults(config).build();
     }
 
     @Bean
@@ -66,9 +70,9 @@ public class RedisConfig implements CachingConfigurer {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer());
+        redisTemplate.setValueSerializer(jacksonJsonRedisSerializer());
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer());
+        redisTemplate.setHashValueSerializer(jacksonJsonRedisSerializer());
         redisTemplate.setEnableTransactionSupport(true);
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
@@ -100,7 +104,7 @@ public class RedisConfig implements CachingConfigurer {
     @Bean
     public MessageListenerAdapter cnMessageListenerAdapter() {
         MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(new CnMessageSubscriber(), "onMessage");
-        messageListenerAdapter.setSerializer(jackson2JsonRedisSerializer());
+        messageListenerAdapter.setSerializer(jacksonJsonRedisSerializer());
         return messageListenerAdapter;
     }
 }

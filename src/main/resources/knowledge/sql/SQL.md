@@ -1,4 +1,4 @@
-# SQL  
+# SQL
 
 ---
 ## Reference
@@ -90,10 +90,10 @@
 | Phantom Read      | 幻读    | 一个事务两次读取的结果不一致，有新的数据 insert        |
 ---
 ## 事务隔离级别
-| 隔离级别             | 脏读  | 不可重复读 | 幻读  | Oracle | MySQL | SQL Server |
-|:-----------------|:---:|:-----:|:---:|:------:|:-----:|:----------:|
-| Read Uncommitted | 可能  |  可能   | 可能  |   ×    |   √   |     √      |
-| Read Committed   | 不可能 |  可能   | 可能  |   ⚪    |   √   |     ⚪      |
-| Repeatable Read  | 不可能 |  不可能  | 可能  |   ×    |   ⚪   |     √      |
-| Serializable     | 不可能 |  不可能  | 不可能 |   √    |   √   |     √      |
+| Isolation Level  | Dirty Read | Non-repeatable Read |    Phantom Read    | MySQL | Oracle | SQL Server | Use Cases |
+|:-----------------|:----------:|:-------------------:|:------------------:|:-----:|:------:|:----------:|:---------:|
+| Read Uncommitted |     √      |          √          |         √          |   √   |   ×    |     √      | 容许数据暂时不一致 |
+| Read Committed   |     ×      |          √          |         √          |   √   |   ○    |     ○      |           |
+| Repeatable Read  |     ×      |          ×          | √ (MySQL InnoDB ×) |   ○   |   ×    |     √      |           |
+| Serializable     |     ×      |          ×          |         ×          |   √   |   √    |     √      |   银行、金融   |
 ---
