@@ -1,7 +1,5 @@
 package springboot;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -11,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import springboot.domain.slaver.SysUser;
 import springboot.mapper.slaver.SysDeptMapper;
 import springboot.mapper.slaver.SysUserMapper;
+import tools.jackson.databind.ObjectMapper;
 
 import static l.demo.Demo.p;
 import static l.demo.Demo.phr;
@@ -38,7 +37,7 @@ public class MybatisTest {
      * @see <a href="http://doc.ruoyi.vip/ruoyi/document/htsc.html#分页实现">RuoYi 分页实现</a>
      */
     @Test
-    public void testPageHelper() throws JsonProcessingException {
+    public void testPageHelper() {
         /* 返回 Page */
         Page<SysDeptMapper> deptPage = PageHelper.startPage(1, 2).doSelectPage(() -> sysDeptMapper.list(null));
         p(objectMapper.writeValueAsString(deptPage));
@@ -57,23 +56,17 @@ public class MybatisTest {
     /** &#064;MapKey */
     @Test
     public void testMapKey() {
-        sysUserMapper.map(null).entrySet().forEach(user -> {
-            try {
-                p(objectMapper.writeValueAsString(user));
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        sysUserMapper.map(null).entrySet().forEach(user -> p(objectMapper.writeValueAsString(user)));
     }
 
     /** &lt;association/> 和 &lt;collection/> */
     @Test
-    public void testAssociationAndCollection() throws JsonProcessingException {
+    public void testAssociationAndCollection() {
         p(objectMapper.writeValueAsString(sysUserMapper.list(new SysUser())));
     }
 
     @Test
-    public void testAssociation() throws JsonProcessingException {
+    public void testAssociation() {
         p(objectMapper.writeValueAsString(sysUserMapper.list2(new SysUser())));
     }
 }

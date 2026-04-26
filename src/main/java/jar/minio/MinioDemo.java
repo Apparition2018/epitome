@@ -1,12 +1,12 @@
 package jar.minio;
 
 import io.minio.*;
+import jakarta.activation.MimetypesFileTypeMap;
 import l.demo.Demo;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Date;

@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.server.servlet.context.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -28,8 +29,9 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableScheduling
 @EnableAsync
 @EnableTransactionManagement
+@EnableAspectJAutoProxy(exposeProxy = true)
 // TK Mybatis MapperScan，不能包含通用 mapper 的路径，所以 MyMapper.java 不能放在 springboot.mapper.master.tk 里
-@MapperScan(basePackages = "springboot.mapper.master.tk")
+@MapperScan(basePackages = "springboot.mapper.tk.sales")
 public class EpitomeApplication {
 
     public static void main(String[] args) {
