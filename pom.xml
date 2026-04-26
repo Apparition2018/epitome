@@ -42,13 +42,13 @@
 
         <!-- dependency -->
         <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
-        <pagehelper-spring-boot-starter.version>2.1.1</pagehelper-spring-boot-starter.version>
+        <pagehelper-spring-boot-starter.version>4.0.0</pagehelper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
         <mybatis-spring.version>4.0.0</mybatis-spring.version>
         <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
         <mapper-spring-boot-starter.version>6.0.0</mapper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
-        <druid.version>1.2.28</druid.version>
+        <druid-spring-boot-4-starter.version>1.2.28</druid-spring-boot-4-starter.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
         <mybatis-dynamic-sql.version>2.0.0</mybatis-dynamic-sql.version>
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
@@ -59,8 +59,8 @@
         <commons-configuration2.version>2.14.0</commons-configuration2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
         <commons-csv.version>1.14.1</commons-csv.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
-        <commons-email.version>1.6.0</commons-email.version>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email2-jakarta -->
+        <commons-email2.version>2.0.0-M1</commons-email2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-rng-core -->
         <commons-rng.version>1.6</commons-rng.version>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
@@ -96,8 +96,8 @@
         <dom4j.version>2.2.0</dom4j.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.nashorn/nashorn-core -->
         <nashorn.version>15.7</nashorn.version>
-        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
-        <springdoc.version>1.8.0</springdoc.version>
+        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+        <springdoc-openapi-starter.version>3.0.3</springdoc-openapi-starter.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
         <jmh.version>1.37</jmh.version>
         <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
@@ -209,18 +209,13 @@
 
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid.version}</version>
+              <artifactId>druid-spring-boot-4-starter</artifactId>
+            <version>${druid-spring-boot-4-starter.version}</version>
         </dependency>
 
         <!-- spring boot 整合 pagehelper
             包含 mybatis-spring-boot-starter
                 包含 mybatis-spring -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>${mybatis-spring.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
@@ -284,8 +279,8 @@
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
-            <artifactId>commons-email</artifactId>
-            <version>${commons-email.version}</version>
+            <artifactId>commons-email2-jakarta</artifactId>
+            <version>${commons-email2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -465,12 +460,11 @@
 
         <!-- OpenAPI 3：
             https://springdoc.org/
-            https://github.com/springdoc/springdoc-openapi
-             springfox：集成 swagger2/swagger3 到 spring，但停更很久了 -->
+            https://github.com/springdoc/springdoc-openapi -->
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.version}</version>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc-openapi-starter.version}</version>
         </dependency>
 
         <!-- jmh：微基准测试 -->
@@ -591,8 +585,6 @@
     <!-- Build Settings：https://maven.apache.org/pom.html#Build_Settings -->
     <build>
         <finalName>${project.artifactId}</finalName>
-        <!-- spring-boot-starter-parent 的 resources
-            https://stackoverflow.com/questions/60041457/spring-boot-starter-parent-resources-includes-excludes-explained -->
 
         <!-- Available Plugins：https://maven.apache.org/plugins/index.html -->
         <plugins>
@@ -679,6 +671,8 @@
 
         <!-- Resources：指定项目资源位置
                 https://maven.apache.org/pom.html#resources -->
+        <!-- spring-boot-starter-parent 的 resources
+            https://stackoverflow.com/questions/60041457/spring-boot-starter-parent-resources-includes-excludes-explained -->
         <!-- <resources/> -->
     </build>
 

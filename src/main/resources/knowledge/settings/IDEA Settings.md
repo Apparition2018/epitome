@@ -38,7 +38,7 @@
     1 Compliler
         1.1 Build project automatically 勾选
         1.2 Build Process → Shared VM options:
-            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.42\lombok-1.18.42.jar
+            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.44\lombok-1.18.44.jar
     2 Annotation Processors
         2.1 Enable annotation processing 勾选
     3 Settings → Advanced Settings → Compiler
@@ -73,21 +73,22 @@
     2 Typography Settings → Fallback font: Microsoft YaHei
 ### Code Style (-j)
     # https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml
-    1 Java → JavaDoc
-        1.1 Other → Do not wrap one line comments 勾选
-    2 Java → Code Generation → Comment Code
+    1 Code Style → Hard wrap at: 160
+    2 Java → JavaDoc
+        2.1 Other → Do not wrap one line comments 勾选
+    3 Java → Code Generation → Comment Code
         HTML/JavaScript/XML → Code Generation → Comments
         Style Sheets → CSS/Less/Sass/SCSS → Other → Comments
-        2.1 Line comment at first column 取消勾选
-        2.2 Add a space at line comment start 勾选
+        3.1 Line comment at first column 取消勾选
+        3.2 Add a space at line comment start 勾选
             2.2.1 Enforce on reformat 勾选
-        2.3 Block comment at first column 取消勾选
-        2.4 Add spaces around block comments 勾选
-    3 Style Sheets → CSS/Less/SCSS → Other
-        3.1 Keep single-line blocks 勾选
-    4 JavaScript → Set from… → JavaScript Standard Style
-    5 HTML → Set from… → JavaScript
-    6 Markdown → Blank Lines → 全部设为0
+        3.3 Block comment at first column 取消勾选
+        3.4 Add spaces around block comments 勾选
+    4 Style Sheets → CSS/Less/SCSS → Other
+        4.1 Keep single-line blocks 勾选
+    5 JavaScript → Set from… → JavaScript Standard Style
+    6 HTML → Set from… → JavaScript
+    7 Markdown → Blank Lines → 全部设为0
 ### Inspections
     1 Java
         1.1 Naming conventions → Class → Class naming convention → Highlighting in editor: Weak Warning

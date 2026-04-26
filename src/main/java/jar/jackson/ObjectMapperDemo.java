@@ -3,21 +3,20 @@ package jar.jackson;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.InjectableValues;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jar.jackson.custom.CustomDeserializer;
 import jar.jackson.custom.CustomSerializer;
 import jar.jackson.entity.Person;
 import l.demo.Demo;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DeserializationFeature;
+import tools.jackson.databind.InjectableValues;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.cfg.DateTimeFeature;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.module.SimpleModule;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -33,7 +32,7 @@ import java.util.SimpleTimeZone;
  * -  1.2 JSON 树模型的读/写
  * 2 可以高度定制，以使用不同风格的 JSON
  * -  2.1 Feature
- * -  2.2 com.fasterxml.jackson.databind.Module
+ * -  2.2 tools.jackson.databind.module
  * 3 支持更高级的对象概念：多态泛型、对象标识
  * 4 充当其它更高级的 API：ObjectReader 和 ObjectWriter 的工厂
  *
@@ -44,9 +43,8 @@ public class ObjectMapperDemo extends Demo {
 
     /** JsonMapper 为 ObjectMapper 的子类 */
     @Test
-    public void testJsonMapper() throws JsonProcessingException {
-        JsonMapper jsonMapper = JsonMapper.builder().build();
-        jsonMapper.setInjectableValues(new InjectableValues.Std().addValue("age", 0));
+    public void testJsonMapper() {
+        JsonMapper jsonMapper = JsonMapper.builder().injectableValues(new InjectableValues.Std().addValue("age", 0)).build();
 
         // String   writeValueAsString(Object value)
         // 写成字符串形式（最常用）
@@ -61,7 +59,7 @@ public class ObjectMapperDemo extends Demo {
         System.out.println("========== List → String ==========\n" + json);
         // T        readValue(String content, TypeReference<T> valueTypeRef)
         // 读为指定 TypeReference 类型的对象，一般用于泛型集合/Map的反序列化
-        List<Long> list = jsonMapper.readValue(json, new TypeReference<List<Long>>() {
+        List<Long> list = jsonMapper.readValue(json, new TypeReference<>() {
         });
         System.out.println("========== String → List ==========\n" + list);
 
@@ -82,34 +80,27 @@ public class ObjectMapperDemo extends Demo {
         // 自定义反序列化
         simpleModule.addDeserializer(Person.class, new CustomDeserializer());
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper
-                /* === SerializationFeature === */
-                // 格式化输出，默认 false
-                .enable(SerializationFeature.INDENT_OUTPUT)
-                // 没有找到属性的访问器或注解则报错，默认 true
-                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
-                // 日期转为时间戳，默认 true
-                .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-
-                /* === DeserializationFeature === */
-                // 遇到未知属性报错，默认 true
-                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-
-                // 设置空如何序列化
-                .setDefaultPropertyInclusion(JsonInclude.Include.NON_EMPTY)
-                // 设置 DateFormat
-                .setDateFormat(DATE_TIME_FORMAT.get())
-                // 设置 TimeZone
-                .setTimeZone(SimpleTimeZone.getTimeZone("GMT+8"))
-                // 设置可视化
-                .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
-
-                // 注册自定义模块
-                .registerModule(simpleModule)
-                // 注册模块
-                .registerModule(new JavaTimeModule())
-                // 自动注册所有模块
-                .findAndRegisterModules();
+        ObjectMapper objectMapper = JsonMapper.builder()
+            // 格式化输出，默认 false
+            .enable(SerializationFeature.INDENT_OUTPUT)
+            // 没有找到属性的访问器或注解则报错，默认 true
+            .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
+            // 遇到未知属性报错，默认 true
+            .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+            // 日期转为时间戳，默认 true
+            .disable(DateTimeFeature.WRITE_DATES_AS_TIMESTAMPS)
+            // 设置空如何序列化
+            .changeDefaultPropertyInclusion(incl -> incl.withValueInclusion(JsonInclude.Include.NON_EMPTY))
+            // 设置 DateFormat
+            .defaultDateFormat(DATE_TIME_FORMAT.get())
+            // 设置 TimeZone
+            .defaultTimeZone(SimpleTimeZone.getTimeZone("GMT+8"))
+            // 设置可视化
+            .changeDefaultVisibility(vc -> vc.withVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY))
+            // 注册自定义模块
+            .addModule(simpleModule)
+            // 自动注册所有模块
+            .findAndAddModules()
+            .build();
     }
 }
