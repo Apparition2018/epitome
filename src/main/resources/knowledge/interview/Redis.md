@@ -64,7 +64,7 @@
 >- [小林coding](https://mp.weixin.qq.com/s/apScwfXHWlh8xUS1RhMSIA)
 ---
 ## [数据类型](https://redis.io/docs/manual/data-types/)
-| 数据类型        | 使用场景                                                        |
+| Data Types  | 使用场景                                                        |
 |:------------|:------------------------------------------------------------|
 | String      | 缓存、计数器（数量统计（阅读量）、数量控制（限流））、时效信息（验证码）、全局 ID、分布式 session、分布式锁 |
 | List        | 简单队列、定时排行榜、最近/最新                                            |
@@ -90,7 +90,7 @@ bind 127.0.0.1 -::1
 # 是否开启保护模式；如果没有设置 requirepass，只接受回送地址的连接
 protected-mode yes
 # 是否守护线程运行
-# docker 下设置为 no，因为 docker run -d 已经是后台启动 
+# docker 下设置为 no，因为 docker run -d 已经是后台启动
 daemonize yes
 # 持久化文件存储目录
 dir ./
@@ -109,7 +109,7 @@ dir ./
 | 惰性  | 查询 KEY 时，判断是否过期，过期则删除                               | √        |
 | 定期  | 每隔一段时间（默认100ms）删除到期 KEY<br/>检查多少个数据库和删除多少 KEY，由算法决定 | √        |
 - redis.conf
-    - `maxmemory <bytes>` 
+    - `maxmemory <bytes>`
     - `maxmemory-policy <policy>`
 - [驱逐策略](https://redis.io/docs/manual/eviction/)
     - lru：Least Recently Used
@@ -145,7 +145,7 @@ dir ./
     - commands：`SAVE`, `BGSAVE [SCHEDULE]`
 2. AOF：Append Only File，记录每个写入操作
     - 优点
-        1. fsync 策略：`everysec`（每秒）、`always`（每个命令），所以使用 AOF 最多丢失一秒的写入 
+        1. fsync 策略：`everysec`（每秒）、`always`（每个命令），所以使用 AOF 最多丢失一秒的写入
         2. append-only 日志，即使由于某些原因（磁盘已满）日志以写一半的命令结束，可使用 redis-check-aof 工具修复
         3. AOF 变得太大时，后台将自动重写 AOF
         4. 能通过删除误操作命令恢复数据
@@ -211,7 +211,7 @@ replica-priority 100
 - sentinel.conf
 ```
 # sentinel monitor
-# 当<quorum>个 Sentinel 同时同意 master 不可访问时，其中一个会尝试启动故障转移 
+# 当<quorum>个 Sentinel 同时同意 master 不可访问时，其中一个会尝试启动故障转移
 sentinel monitor <master-group-name> <ip> <port> <quorum>
 # sentinel <option_name> <master_name> <option_value>
 sentinel down-after-milliseconds master 5000
@@ -283,20 +283,18 @@ slowlog-max-length <length>
     - `SLOWLOG LEN`：返回慢查询日志条数
     - `SLOWLOG RESET`：清除慢查询日志
 ---
-## 缓存雪崩、击穿、穿透
-1. 穿透 (Penetration)：访问一个缓存和数据库都不存在的数据
-    - 接口校验：用户鉴权、参数校验
-    - 缓存空值或默认值：设置较短过期时间
+## 缓存穿透、击穿、雪崩
+1. 穿透 (Penetration)：查询的数据在缓存和数据库中都不存在
+    - 缓存空值：即使查不到也缓存一个 null 或特定标识，并设置较短过期时间
     - 布隆过滤器 @see BloomFilterDemo
-2. 击穿 (Breakdown)：某个缓存在过期的瞬间有大量请求
-    - 互斥锁或队列
-    - 不设置过期时间：定时更新，或更新操作时更新
-    - 多级缓存
+2. 击穿 (Breakdown)：热点缓存在过期的瞬间有大量请求
+    - 互斥锁：只有第一个请求拿到锁（如 SETNX）查 DB
+    - 不设置过期时间：①将过期时间写在 value 里，代码判断是否过期异步更新 ②定时更新，慎用
 3. 雪崩 (Avalanche)
-    1. 多个缓存在同一时刻过期且有大量请求
+    1. 大量缓存同时过期
         - 同击穿
         - 打散过期时间
-    2. Redis 故障宕机
+    2. 缓存服务器宕机
         - 熔断、降级、限流：Hystrix
         - 高可用：主从，哨兵，集群
 >- [程序员囧辉](https://mp.weixin.qq.com/s/QX8UviH7iaxXTz-Io_7uZg)
@@ -306,42 +304,39 @@ slowlog-max-length <length>
 1. 更新缓存 or 删除缓存？：推荐删除缓存
     - 写写并发：无论是先更新缓存还是后更新缓存，都会出现数据不一致的问题，而删除缓存则不会
     - 读写并发：更新缓存和删除缓存都存在数据不一致的问题
+        - 但删除缓存也有可能把“错误缓存”删除，从而解决了问题
 2. 先删除缓存 or 后删除缓存？：推荐后删除缓存
-    - a写b读：
+    - a先写b后读：
         - 先删除缓存：
             1. a删除x缓存
             2. b读取x缓存不存在，读取x数据库值1
             3. b更新x缓存值1
             4. a更新x数据库值2
-            5. 无论3和4谁先执行，数据库都是新值，缓存都是旧值，b读到旧值
-            - 注：可以使用延迟双删解决
+            5. 结果：无论3和4谁先执行，数据库都是新值，缓存都是旧值，b读到旧值
         - 后删除缓存：
             1. a更新x数据库值2
             2. b读取x缓存值1
             3. a删除x缓存
-            4. 数据库是新值，缓存无值，b读到旧值
-            - 注：加锁，保证a更新数据库和删除缓存串行执行
-    - a读b写：
+            4. 结果：数据库是新值，缓存无值，b读到旧值
+            - 注：下一次读取会读到新值（最终一致）
+    - a先读b后写：
         1. a读取x缓存不存在，读取x数据库值1
         2. b更新x数据库值2 (缓存不存在，所以不考虑先删除还是后删除缓存)
         3. a更新x缓存值1
-        4. 数据库是新值，缓存是旧值，a读到旧值
-        - 注：出现概率不高，因为缓存操作+读数据库通常要快于写数据库
-3. 删除缓存失败怎么办？：①异步重试；②MySQL binlog (阿里 canal)
-4. [常用的缓存模式](https://blog.csdn.net/z69183787/article/details/112308815)
-    1. Cache Aside：旁路缓存模式
-        - 读：命中缓存则直接返回数据；未命中缓存则查询数据库数据，并将数据更新至缓存，然后返回数据
-        - 写：先更新数据库，再删除缓存
-        - ![Cache Aside](https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvaulG1WsztCXujT0qDxALxwEy8knbFcMB7NoiajEYjxo04ww5kmKIOyicbnpbMD0kz3N57EzT4H46xkQ/640) 
-    2. Read Through
-        - 读：访问控制层（同 Cache Aside）
-        - ![Read Through](https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvaulG1WsztCXujT0qDxALxwEMibwZEPeCZE1icibze89CLf9h8aPkgcJ0NUWlvJjd0IcMa6Yib4ziamibic1w/640) 
-    3. Write Through
-        - 写：访问控制层（先更新数据库，再更新缓存，加锁)
-        - ![Write Through](https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvaulG1WsztCXujT0qDxALxwEbcBG5HIc4pohTLg9sMgRNDlAR3xPmYHS2HlMbz3Gv57bTeRJsmicKAA/640) 
-    4. Write Behind
-        - 写：访问控制层（先更新缓存，后异步更新数据库）
-        - ![Write Behind](https://mmbiz.qpic.cn/mmbiz_jpg/j3gficicyOvaulG1WsztCXujT0qDxALxwEfl7FaXmIwmgNPoUOwib2tSWykFoZicIpiaxbHPIpLC51VKyFazLkKEaeQ/640) 
+        4. 结果：数据库是新值，缓存是旧值，a读到旧值
+        - 注：出现概率不高，因为缓存操作/读数据库通常要快于写数据库
+    - 注：缓存都是旧值的问题，可用延迟双删来解决
+3. 删除缓存失败怎么办？：①重试/异步重试 ②MySQL binlog (阿里 canal) ③合理过期时间
+4. 常用缓存模式
+    1. Cache Aside：旁路缓存，大多数业务
+        - 读：读 Cache → 读 DB → 写 Cache
+        - 写：更 DB → 删 Cache
+    2. Read/Write Through：强一致场景
+        - 读：读 Cache → 缓存层（读 DB → 写 Cache）
+        - 写：更 Cache → 缓存层同步更 DB
+    3. Write Behind：写多读少场景
+        - 写：写 Cache → 缓存层异步更 DB
+    - 注：只有 Cache Aside 感知 DB
 >- [腾讯技术工程](https://mp.weixin.qq.com/s/Y9S89MT0uAobzRKgYVrI9Q)
 >- [苏三说技术](https://mp.weixin.qq.com/s/4hP-T0h8QPyjcpH8m0cbsA)
 >- [水滴与银弹 | Magic Kaito](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
@@ -375,6 +370,10 @@ slowlog-max-length <length>
 >- [Redis开发运维实战 | 付磊](https://mp.weixin.qq.com/s/LqyjZ0ZinI_JmPlSt4oa6Q)
 >- [小林coding | 大白斯基](https://mp.weixin.qq.com/s/l3l9d9sLiWoUM381E9o-3Q)
 >- [BiggerBoy | ITwalking](https://mp.weixin.qq.com/s/ruMfDiloAm9qev4C49bGYg)
+---
+## [计数器并发精准数量控制](https://www.imooc.com/learn/1067)
+- ![redis 数量控制并发问题](https://img1.mukewang.com/6092cf44000167a319201080-500-284.jpg)
+- ![redis 数量控制并发优化](https://img1.mukewang.com/6092d0560001c11019201080-500-284.jpg)
 ---
 ## [CLI](https://redis.io/docs/manual/cli/)
 - [Try Redis](https://try.redis.io/)
@@ -563,8 +562,4 @@ UNWATCH                                             取消监视
 CLUSTER INFO
 CLUSTER NODES
 ```
----
-## [计数器并发精准数量控制](https://www.imooc.com/learn/1067)
-![redis 数量控制并发问题](https://img1.mukewang.com/6092cf44000167a319201080-500-284.jpg)
-![redis 数量控制并发优化](https://img4.mukewang.com/6092d0560001c11019201080-500-284.jpg)
 ---

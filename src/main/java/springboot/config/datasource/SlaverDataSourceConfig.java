@@ -9,6 +9,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.util.ResourceUtils;
@@ -21,6 +22,7 @@ import java.util.Objects;
  * @author ljh
  * @since 2019/8/8 19:39
  */
+@Profile("druid")
 @Configuration
 @MapperScan(basePackages = "springboot.mapper.slaver", sqlSessionTemplateRef = "slaverSqlSessionTemplate")
 public class SlaverDataSourceConfig {
@@ -31,6 +33,11 @@ public class SlaverDataSourceConfig {
         return DruidDataSourceBuilder.create().build();
     }
 
+    @Bean(name = "slaverTransactionManager")
+    public DataSourceTransactionManager transactionManager() {
+        return new DataSourceTransactionManager(dataSource());
+    }
+
     @Bean(name = "slaverSqlSessionFactory")
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
@@ -39,11 +46,6 @@ public class SlaverDataSourceConfig {
         bean.setTypeAliasesPackage("springboot.domain.slaver");
         Objects.requireNonNull(bean.getObject()).getConfiguration().setMapUnderscoreToCamelCase(Boolean.TRUE);
         return bean.getObject();
-    }
-
-    @Bean(name = "slaverTransactionManager")
-    public DataSourceTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
     }
 
     @Bean(name = "slaverSqlSessionTemplate")

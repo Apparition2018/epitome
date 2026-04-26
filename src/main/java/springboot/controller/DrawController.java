@@ -34,8 +34,6 @@ public class DrawController {
 
     /** 抽奖活动 KEY */
     private static final String DRAW_KEY = "draw:%d";
-    /** 抽奖奖品无库存 KEY */
-    private static final String DRAW_PRIZE_NO_STOCK_KEY = "draw:prize:noStock:%d";
 
     private final UserMapper userMapper;
     private final PrizeMapper prizeMapper;
@@ -79,13 +77,13 @@ public class DrawController {
         Integer winId = this.doDraw(draw.getPrizeList());
         // 4. 没中奖
         if (winId == 0) return 0;
-        // 5. 中奖，但奖品无库存
-        if (this.getPrizeNoStockCache(draw.getId(), winId) != null) return 0;
-        // 6. 中奖，增加中奖数，返回奖品ID
+        // 5. 中奖，增加中奖数
         int prizeEffect = prizeMapper.incrWinQty(winId);
+        // Cache Aside，删除缓存
+        redisTemplate.delete(String.format(DRAW_KEY, draw.getId()));
+        // 返回奖品ID
         if (prizeEffect != 0) return winId;
-        // 7. 增加中奖数失败，表示奖品无库存，设置无库存缓存
-        this.setPrizeNoStockCache(draw.getId(), winId);
+        // 6. 增加中奖数失败
         return 0;
     }
 
@@ -123,41 +121,18 @@ public class DrawController {
                 return objectMapper.readValue((String) cachedObj, Draw.class);
             }
 
-            List<Prize> prizeList = prizeMapper.listIdAndPrByDrawId(drawId);
+            List<Prize> prizeList = prizeMapper.listHasStockByDrawId(drawId);
             Draw draw = new Draw().setId(drawId).setScore(1).setPrizeList(prizeList);
             redisTemplate.opsForValue().set(key, objectMapper.writeValueAsString(draw), 1, TimeUnit.DAYS);
             return draw;
         }
     }
 
-    /**
-     * 获取奖品无库存缓存
-     *
-     * @param drawId 抽奖活动ID
-     * @param winId  中奖奖品ID
-     * @return 奖品无库存缓存
-     */
-    private Object getPrizeNoStockCache(int drawId, int winId) {
-        return redisTemplate.opsForHash().get(String.format(DRAW_PRIZE_NO_STOCK_KEY, drawId), String.valueOf(winId));
-    }
-
-    /**
-     * 设置奖品无库存缓存
-     *
-     * @param drawId 抽奖活动ID
-     * @param winId  中奖奖品ID
-     */
-    private void setPrizeNoStockCache(int drawId, int winId) {
-        String key = String.format(DRAW_PRIZE_NO_STOCK_KEY, drawId);
-        redisTemplate.opsForHash().put(key, String.valueOf(winId), 0);
-        redisTemplate.expire(key, 1, TimeUnit.DAYS);
-    }
-
     @Data
     @Accessors(chain = true)
-    private static class Draw {
+    public static class Draw {
         private int id;
-        /** 扣分积分 */
+        /** 每次抽奖扣减的积分 */
         private int score;
         List<Prize> prizeList;
     }

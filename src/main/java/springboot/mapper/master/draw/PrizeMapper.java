@@ -18,13 +18,13 @@ import java.util.List;
 public interface PrizeMapper {
 
     /**
-     * 根据 drawId 查找奖品概率列表
+     * 根据 drawId 查找有库存的奖品列表
      *
      * @param drawId 抽奖活动ID
      * @return 奖品概率列表
      */
-    @Select({"select id, probability from draw_prize where draw_id = #{drawId}"})
-    List<Prize> listIdAndPrByDrawId(@Param("drawId") Integer drawId);
+    @Select({"select id, probability from draw_prize where draw_id = #{drawId} andm total_qty > win_qty"})
+    List<Prize> listHasStockByDrawId(@Param("drawId") Integer drawId);
 
     /**
      * 中将数+1

@@ -54,7 +54,7 @@ INSERT INTO `dept` VALUES (20, 'RESEARCH', 'DALLAS');
 DROP TABLE IF EXISTS `draw_prize`;
 CREATE TABLE `draw_prize`  (
   `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `draw_id` int(0) NOT NULL COMMENT '抽奖活动ID',
+  `draw_id` int(0) NOT NULL COMMENT '抽奖活动 ID',
   `probability` int(0) NOT NULL COMMENT '概率（1表示万分之一）',
   `total_qty` int(0) NOT NULL COMMENT '总数',
   `win_qty` int(0) NOT NULL COMMENT '中奖数',
