@@ -1,6 +1,8 @@
 package knowledge.design.pattern.gof.behavioral.state.demo;
 
 import knowledge.design.pattern.gof.behavioral.state.demo3.StateDemo3;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -188,7 +190,10 @@ public class StateDemo {
      * Context
      */
     private static class Player {
+        @Getter
         private State state;
+        @Getter
+        @Setter
         private boolean playing = false;
         private final List<String> playlist = new ArrayList<>();
         private int currentTrack = 0;
@@ -201,18 +206,6 @@ public class StateDemo {
 
         public void changeState(State state) {
             this.state = state;
-        }
-
-        public State getState() {
-            return state;
-        }
-
-        public void setPlaying(boolean playing) {
-            this.playing = playing;
-        }
-
-        public boolean isPlaying() {
-            return playing;
         }
 
         public String startPlayback() {

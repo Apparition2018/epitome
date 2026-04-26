@@ -3,13 +3,15 @@ package jar.jsonpath;
 import com.jayway.jsonpath.*;
 import com.jayway.jsonpath.spi.json.JacksonJsonProvider;
 import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
-import l.demo.Demo;
 import l.demo.JsonDemo;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import static l.demo.Demo.ae;
+import static l.demo.Demo.p;
 
 /**
  * JsonPath
@@ -18,7 +20,7 @@ import java.util.Map;
  * @see <a href="https://github.com/json-path/JsonPath">JsonPath</a>
  * @since 2021/8/31 15:42
  */
-public class JsonPathDemo extends Demo implements JsonDemo {
+public class JsonPathDemo implements JsonDemo {
 
     @Test
     public void test() {

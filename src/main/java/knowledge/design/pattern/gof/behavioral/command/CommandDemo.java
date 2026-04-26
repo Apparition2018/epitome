@@ -33,7 +33,7 @@ import java.util.Stack;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/command">Command</a>
- * @see <a href="http://c.biancheng.net/view/1380.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/f01u127.html">Java设计模式</a>
  * @see <a href="https://www.runoob.com/design-pattern/command-pattern.html">菜鸟模式</a>
  * @since 2020/9/26 2:51
  */

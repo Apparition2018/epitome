@@ -27,7 +27,7 @@ import java.util.Stack;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/memento">Command</a>
- * @see <a href="http://c.biancheng.net/view/1400.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/4be9xrt.html">Java设计模式</a>
  * @see <a href="https://www.runoob.com/design-pattern/memento-pattern.html">菜鸟模式</a>
  * @since 2020/9/26 2:51
  */

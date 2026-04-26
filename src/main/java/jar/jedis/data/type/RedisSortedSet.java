@@ -42,9 +42,9 @@ public class RedisSortedSet extends Demo {
             jedis.zadd(HOT_BOOKS_20210501, bookMap);
             jedis.zadd(HOT_BOOKS_20210502, bookMap);
             jedis.zadd(HOT_BOOKS_20210503, bookMap);
-            IntStream.rangeClosed(1, THOUSAND).forEach(i -> readBook(jedis, HOT_BOOKS_20210501));
-            IntStream.rangeClosed(1, THOUSAND).forEach(i -> readBook(jedis, HOT_BOOKS_20210502));
-            IntStream.rangeClosed(1, THOUSAND).forEach(i -> readBook(jedis, HOT_BOOKS_20210503));
+            IntStream.rangeClosed(1, 1000).forEach(i -> readBook(jedis, HOT_BOOKS_20210501));
+            IntStream.rangeClosed(1, 1000).forEach(i -> readBook(jedis, HOT_BOOKS_20210502));
+            IntStream.rangeClosed(1, 1000).forEach(i -> readBook(jedis, HOT_BOOKS_20210503));
             // 20210521 四大名著排名：[[红楼梦,271.0], [水浒传,257.0], [三国演义,240.0], [西游记,232.0]]
             p("20210521 四大名著排名：" + jedis.zrevrangeWithScores(HOT_BOOKS_20210501, 0, 3));
             // 统计总排名

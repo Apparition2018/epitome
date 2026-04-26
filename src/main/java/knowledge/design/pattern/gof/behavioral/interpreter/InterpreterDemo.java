@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
  * <p>
  *
  * @author ljh
- * @see <a href="http://c.biancheng.net/view/1402.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/kt1usp5.html">Java设计模式</a>
  * @see <a href="https://www.runoob.com/design-pattern/interpreter-pattern.html">菜鸟模式</a>
  * @since 2020/9/26 2:51
  */

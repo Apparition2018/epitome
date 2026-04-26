@@ -45,9 +45,6 @@ public class Demo {
     public static StopWatch stopWatch = new StopWatch("demo");
     public static JsonMapper jsonMapper = JsonMapper.builder().build();
     public static CountDownLatch countDownLatch;
-    public static final int THOUSAND = 1000;
-    public static final int MILLION = THOUSAND * 1000;
-    public static final int TEN_MILLION = MILLION * 10;
     public static final String HELLO_WORLD = "Hello World!";
     public static final String MY_NAME = "ljh";
     public static final String MY_EMAIL = "88850180@163.com";

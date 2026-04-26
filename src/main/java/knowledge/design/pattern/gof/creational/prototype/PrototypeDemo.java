@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import static l.demo.Demo.p;
+import static l.demo.Demo.ae;
 
 /**
  * 原型模式：用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象
@@ -33,7 +33,7 @@ import static l.demo.Demo.p;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/prototype">Prototype</a>
- * @see <a href="http://c.biancheng.net/view/1343.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/b0vkwh5.html">Java设计模式</a>
  * @see <a href="">设计模式之美：原型模式：如何最快速地 clone 一个 HashMap 散列表？</a>
  * @since 2020/9/26 2:51
  */
@@ -48,14 +48,14 @@ public class PrototypeDemo {
         rectangle.height = 20;
         rectangle.color = "blue";
         Shape clone = rectangle.clone();
-        p(rectangle == clone);                                          // false
-        p(Objects.equals(rectangle, clone));                            // true
+        ae(rectangle == clone, false);
+        ae(Objects.equals(rectangle, clone), true);
 
         BundledShapeCache cache = new BundledShapeCache();
         Shape mediumBlueRectangle = cache.get("Medium blue rectangle");
         Shape mediumBlueRectangle2 = cache.get("Medium blue rectangle");
-        p(mediumBlueRectangle == mediumBlueRectangle2);                 // false
-        p(Objects.equals(mediumBlueRectangle, mediumBlueRectangle2));   // true
+        ae(mediumBlueRectangle == mediumBlueRectangle2, false);
+        ae(Objects.equals(mediumBlueRectangle, mediumBlueRectangle2), true);
     }
 
     /**

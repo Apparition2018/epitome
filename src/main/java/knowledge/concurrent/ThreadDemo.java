@@ -244,7 +244,7 @@ public class ThreadDemo extends Demo {
     public void interrupt() {
         Thread thread = new Thread(() -> {
             try {
-                for (int i = 0; i < THOUSAND; i++) {
+                for (int i = 0; i < 1000; i++) {
                     TimeUnit.MILLISECONDS.sleep(3);
                     p(i);
                     if (Thread.currentThread().isInterrupted()) {

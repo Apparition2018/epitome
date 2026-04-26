@@ -399,14 +399,14 @@ public class Suggestions extends Demo {
     public void test056() {
         stopWatch.start("+");
         String str = StringUtils.EMPTY;
-        for (int i = 0; i < THOUSAND; i++) {
+        for (int i = 0; i < 1000; i++) {
             str += "c";
         }
         stopWatch.stop();
 
         stopWatch.start("concat");
         str = StringUtils.EMPTY;
-        for (int i = 0; i < THOUSAND; i++) {
+        for (int i = 0; i < 1000; i++) {
             str = str.concat("c");
         }
         stopWatch.stop();
@@ -414,7 +414,7 @@ public class Suggestions extends Demo {
         // StringBuilder
         stopWatch.start("StringBuilder");
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < THOUSAND; i++) {
+        for (int i = 0; i < 1000; i++) {
             sb.append("c");
         }
         stopWatch.stop();
@@ -459,7 +459,7 @@ public class Suggestions extends Demo {
         List<Integer> scores = new ArrayList<>(); // 10ms
         // List<Integer> scores = new LinkedList<>(); // 15ms
         // 学生人数 100 万
-        IntStream.rangeClosed(1, TEN_MILLION).forEach(i -> scores.add(new Random().nextInt(150)));
+        IntStream.rangeClosed(1, 10_000_000).forEach(i -> scores.add(new Random().nextInt(150)));
         StopWatch watch = StopWatch.createStarted();
         p("平均分是：" + this.average(scores));
         p("执行时间：" + watch.getTime() + "ms");
@@ -543,9 +543,9 @@ public class Suggestions extends Demo {
     @Test
     public void test080() throws InterruptedException {
         // 火车票列表
-        Vector<String> tickets = new Vector<>(THOUSAND);
+        Vector<String> tickets = new Vector<>(1000);
         // 初始化票据池
-        IntStream.rangeClosed(1, THOUSAND).forEach(i -> tickets.add("火车票 " + i));
+        IntStream.rangeClosed(1, 1000).forEach(i -> tickets.add("火车票 " + i));
         // 10个窗口售票
         setCountDownLatch(10);
         for (int i = 0; i < 10; i++) {

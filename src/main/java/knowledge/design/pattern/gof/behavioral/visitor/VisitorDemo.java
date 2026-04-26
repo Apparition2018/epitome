@@ -15,9 +15,9 @@ import java.util.List;
  * <p>使用场景：解耦数据结构和数据操作
  * <p>使用实例：
  * <pre>
- * 1 {@link FileVisitor} 和 {@link SimpleFileVisitor}：http://c.biancheng.net/view/8501.html
+ * 1 {@link FileVisitor} 和 {@link SimpleFileVisitor}
  * 2 {@link AnnotationValueVisitor}, {@link ElementVisitor} 和 {@link TypeVisitor}
- * 3 {@link BeanDefinitionVisitor}：http://c.biancheng.net/view/8502.html
+ * 3 {@link BeanDefinitionVisitor}
  * </pre>
  * 角色：
  * <pre>
@@ -38,7 +38,7 @@ import java.util.List;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/visitor">Visitor</a>
- * @see <a href="http://c.biancheng.net/view/1397.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/olsgdif.html">Java设计模式</a>
  * @see <a href="https://www.runoob.com/design-pattern/visitor-pattern.html">菜鸟模式</a>
  * @see <a href="">设计模式之美：访问者模式（上）：手把手带你还原访问者模式诞生的思维过程</a>
  * @see <a href="">设计模式之美：访问者模式（下）：为什么支持双分派的语言不需要访问者模式？</a>

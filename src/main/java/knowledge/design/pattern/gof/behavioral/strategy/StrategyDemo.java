@@ -41,7 +41,7 @@ import java.util.function.Function;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/strategy">Strategy</a>
- * @see <a href="http://c.biancheng.net/view/1378.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/nlsg9m5.html">Java设计模式</a>
  * @since 2020/9/26 2:51
  */
 public class StrategyDemo {

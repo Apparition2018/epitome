@@ -2,9 +2,10 @@ package jar.google.guava.hash;
 
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
-import l.demo.Demo;
 
 import java.nio.charset.Charset;
+
+import static l.demo.Demo.ae;
 
 /**
  * <a href="https://github.com/google/guava/wiki/HashingExplained#bloomfilter">BloomFilter</a>  布隆过滤器
@@ -12,7 +13,7 @@ import java.nio.charset.Charset;
  * @author ljh
  * @since 2022/7/21 11:01
  */
-public class BloomFilterDemo extends Demo {
+public class BloomFilterDemo {
 
     public static void main(String[] args) {
         // 初始化：把所有数据加入布隆过滤器

@@ -35,7 +35,7 @@ import java.util.Map;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/flyweight">Flyweight</a>
- * @see <a href="http://c.biancheng.net/view">Java设计模式</a>/1371.html
+ * @see <a href="https://c.biancheng.net/view/vbs5j23.html">Java设计模式</a>
  * @see <a href="">设计模式之美：享元模式（下）：剖析享元模式在JavaInteger、String中的应用</a>
  * @since 2020/9/26 2:51
  */
@@ -46,23 +46,23 @@ public class FlyweightDemo extends Demo {
     public void testString() {
         String s1 = "hello";
         String s2 = "hello";
-        String s3 = "he" + "llo";
-        String s4 = "hel" + new String("lo");
-        String s5 = new String("hello");
-        String s6 = s5.intern();
-        String s7 = "h";
-        String s8 = "ello";
-        String s9 = s7 + s8;
-        p(s1 == s2);    // true
-        p(s1 == s3);    // true
-        p(s1 == s4);    // false
-        p(s1 == s9);    // false
-        p(s4 == s5);    // false
-        p(s1 == s6);    // true
+        String s3 = new String("hello");
+        String s4 = s3.intern();
+        String s5 = "he" + "llo";
+        String s6 = "he" + new String("llo");
+        String a = "he";
+        String b = "llo";
+        String s7 = a + b;
+        ae(s1 == s2, true);
+        ae(s1 == s3, false);
+        ae(s1 == s4, true);
+        ae(s1 == s5, true);
+        ae(s1 == s6, false);
+        ae(s1 == s7, false);
     }
 
     private static final int CANVAS_SIZE = 500;
-    private static final int TREES_TO_DRAW = MILLION;
+    private static final int TREES_TO_DRAW = 1_000_000;
     private static final int TREE_TYPES = 2;
 
     /** @see <a href="https://refactoringguru.cn/design-patterns/flyweight/java/example">渲染一片森林</a> */

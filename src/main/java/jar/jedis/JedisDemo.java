@@ -74,7 +74,7 @@ public class JedisDemo extends Demo {
 
         final String TASK1 = "normal";
         stopWatch.start(TASK1);
-        for (int i = 1; i <= THOUSAND; i++) {
+        for (int i = 1; i <= 1000; i++) {
             jedis.set(TASK1 + i, "i");
             jedis.del((TASK1 + i));
         }
@@ -82,9 +82,9 @@ public class JedisDemo extends Demo {
 
         final String TASK2 = "multi";
         stopWatch.start(TASK2);
-        String[] setArr = new String[THOUSAND * 2];
-        String[] delArr = new String[THOUSAND];
-        for (int i = 1; i <= THOUSAND; i++) {
+        String[] setArr = new String[1000 * 2];
+        String[] delArr = new String[1000];
+        for (int i = 1; i <= 1000; i++) {
             setArr[i * 2 - 2] = TASK2 + i;
             setArr[i * 2 - 1] = String.valueOf(i);
             delArr[i - 1] = TASK2 + i;
@@ -96,7 +96,7 @@ public class JedisDemo extends Demo {
         final String TASK3 = "pipeline";
         stopWatch.start(TASK3);
         Pipeline pipeline = jedis.pipelined();
-        for (int i = 1; i <= THOUSAND; i++) {
+        for (int i = 1; i <= 1000; i++) {
             pipeline.set(TASK3 + i, String.valueOf(i));
             pipeline.del((TASK3 + i));
         }

@@ -19,8 +19,8 @@ import java.util.concurrent.TimeUnit;
  * 1 @PreAuthorize，@Cacheable，@Transactional
  * 2 {@link java.rmi}
  * 3 {@link Proxy}
- * 4 {@link org.springframework.aop.framework.JdkDynamicAopProxyJdkDynamicAopProxy}
- * 5 {@link org.springframework.aop.framework.CglibAopProxyCglibAopProxy}
+ * 4 {@link org.springframework.aop.framework.JdkDynamicAopProxy}
+ * 5 {@link org.springframework.aop.framework.CglibAopProxy}
  * </pre>
  * 角色：
  * <pre>

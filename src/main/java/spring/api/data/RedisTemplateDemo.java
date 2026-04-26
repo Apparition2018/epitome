@@ -77,7 +77,7 @@ public class RedisTemplateDemo extends Demo {
     public void testPipeline() {
         final String TASK1 = "normal";
         stopWatch.start(TASK1);
-        for (int i = 1; i <= THOUSAND; i++) {
+        for (int i = 1; i <= 1000; i++) {
             redisTemplate.opsForValue().set(TASK1 + i, "i");
             redisTemplate.opsForValue().getAndDelete((TASK1 + i));
         }
@@ -88,7 +88,7 @@ public class RedisTemplateDemo extends Demo {
         redisTemplate.executePipelined(
                 (RedisCallback<Object>) connection -> {
                     connection.openPipeline();
-                    for (int i = 1; i <= THOUSAND; i++) {
+                    for (int i = 1; i <= 1000; i++) {
                         connection.stringCommands().set((TASK2 + i).getBytes(), String.valueOf(i).getBytes());
                         connection.keyCommands().del((TASK2 + i).getBytes());
                     }
@@ -104,7 +104,7 @@ public class RedisTemplateDemo extends Demo {
             @Override
             @SuppressWarnings("unchecked")
             public Object execute(@NotNull RedisOperations operations) throws DataAccessException {
-                for (int i = 1; i <= THOUSAND; i++) {
+                for (int i = 1; i <= 1000; i++) {
                     operations.opsForValue().set(TASK3 + i, i);
                     operations.opsForValue().getAndDelete(TASK3 + i);
                 }

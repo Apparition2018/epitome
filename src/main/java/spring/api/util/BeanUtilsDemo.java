@@ -47,13 +47,13 @@ public class BeanUtilsDemo extends Demo {
 
     public static void testCopyEfficiency(StopWatch stopWatch, User source, User target) {
         stopWatch.start("spring BeanUtils");
-        for (int i = 0; i < MILLION; i++) {
+        for (int i = 0; i < 1_000_000; i++) {
             BeanUtils.copyProperties(source, target);
         }
         stopWatch.stop();
 
         stopWatch.start("spring cglib BeanCopier");
-        for (int i = 0; i < MILLION; i++) {
+        for (int i = 0; i < 1_000_000; i++) {
             // VM options: --add-opens java.base/java.lang=ALL-UNNAMED
             BeanCopier beanCopier = BeanCopier.create(User.class, User.class, false);
             beanCopier.copy(source, target, null);
@@ -61,27 +61,27 @@ public class BeanUtilsDemo extends Demo {
         stopWatch.stop();
 
         stopWatch.start("spring cglib BeanCopier with Converter");
-        for (int i = 0; i < MILLION; i++) {
+        for (int i = 0; i < 1_000_000; i++) {
             BeanCopier beanCopier = BeanCopier.create(User.class, User.class, true);
             beanCopier.copy(source, target, new UsersConverter());
         }
         stopWatch.stop();
 
         stopWatch.start("hutool BeanUtil");
-        for (int i = 0; i < MILLION; i++) {
+        for (int i = 0; i < 1_000_000; i++) {
             BeanUtil.copyProperties(source, target, false);
         }
         stopWatch.stop();
 
         stopWatch.start("hutool BeanCopier");
-        for (int i = 0; i < MILLION; i++) {
+        for (int i = 0; i < 1_000_000; i++) {
             cn.hutool.core.bean.copier.BeanCopier<User> beanCopier = cn.hutool.core.bean.copier.BeanCopier.create(source, target, CopyOptions.create());
             beanCopier.copy();
         }
         stopWatch.stop();
 
         stopWatch.start("hutool CglibUtil");
-        for (int i = 0; i < MILLION; i++) {
+        for (int i = 0; i < 1_000_000; i++) {
             CglibUtil.copy(source, target);
         }
         stopWatch.stop();

@@ -36,7 +36,7 @@ import java.nio.ByteBuffer;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/builder">Builder</a>
- * @see <a href="http://c.biancheng.net/view/1354.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/4be4jgy.html">Java设计模式</a>
  * @see <a href="https://gupaoedu-tom.blog.csdn.net/article/details/121016859">Tom|动态构建SQL语句</a>
  * @since 2020/9/26 2:51
  */
@@ -58,7 +58,7 @@ public class BuilderDemo {
     }
 
     /** Builder */
-    interface Builder {
+    private interface Builder {
         void setCarType(CarType type);
 
         void setSeats(int seats);
@@ -121,6 +121,7 @@ public class BuilderDemo {
         private final Transmission transmission;
         private final TripComputer tripComputer;
         private final GPSNavigator gpsNavigator;
+        @Setter
         private double fuel = 0D;
 
         public Car(CarType carType, int seats, Engine engine, Transmission transmission,
@@ -134,10 +135,6 @@ public class BuilderDemo {
                 this.tripComputer.setCar(this);
             }
             this.gpsNavigator = gpsNavigator;
-        }
-
-        public void setFuel(double fuel) {
-            this.fuel = fuel;
         }
     }
 

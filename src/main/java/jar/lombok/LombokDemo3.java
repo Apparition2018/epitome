@@ -101,7 +101,7 @@ public class LombokDemo3 extends Demo {
     private final double[] cached = expensive();
 
     private double[] expensive() {
-        double[] result = new double[THOUSAND];
+        double[] result = new double[1000];
         IntStream.range(0, result.length).forEach(i -> result[i] = new Random().nextInt(100));
         return result;
     }

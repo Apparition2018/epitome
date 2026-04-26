@@ -39,6 +39,7 @@ import java.util.*;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/adapter">Adapter</a>
+ * @see <a href="https://c.biancheng.net/view/vb1xwi4.html">Java设计模式</a>
  * @see <a href="">设计模式之美：适配器模式：代理、适配器、桥接、装饰，这四个模式有何区别？</a>
  * @since 2020/9/26 2:51
  */

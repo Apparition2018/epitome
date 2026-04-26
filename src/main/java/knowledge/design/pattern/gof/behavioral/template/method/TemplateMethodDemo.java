@@ -44,7 +44,7 @@ import java.util.AbstractSet;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/template-method">Template Method</a>
- * @see <a href="http://c.biancheng.net/view/1376.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/p0vgdz7.html">Java设计模式</a>
  * @see <a href="https://gupaoedu-tom.blog.csdn.net/article/details/121194483">Tom|搞懂钩子方法</a>
  * @since 2020/9/26 2:51
  */

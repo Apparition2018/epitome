@@ -31,7 +31,7 @@ import java.util.stream.IntStream;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/composite">Composite</a>
- * @see <a href="http://c.biancheng.net/view/1373.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/2bscwfy.html">Java设计模式</a>
  * @since 2020/9/26 2:51
  */
 public class CompositeDemo {

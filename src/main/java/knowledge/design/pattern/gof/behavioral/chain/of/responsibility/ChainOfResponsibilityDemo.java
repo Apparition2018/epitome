@@ -51,7 +51,7 @@ import java.util.logging.Logger;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/chain-of-responsibility">Chain of Responsibility</a>
- * @see <a href="http://c.biancheng.net/view/1383.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/elv5j6f.html">Java设计模式</a>
  * @since 2020/9/26 2:51
  */
 public class ChainOfResponsibilityDemo {

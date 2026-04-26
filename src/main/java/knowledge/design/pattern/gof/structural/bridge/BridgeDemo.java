@@ -31,7 +31,7 @@ import java.util.logging.Handler;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/bridge">Bridge</a>
- * @see <a href="http://c.biancheng.net/view/1364.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/6ts4trt.html">Java设计模式</a>
  * @since 2020/11/23 19:38
  */
 public class BridgeDemo {

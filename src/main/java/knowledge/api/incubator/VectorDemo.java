@@ -47,14 +47,14 @@ public class VectorDemo extends Demo {
 
     public static void main(String[] args) throws IOException {
         stopWatch.start("scalar");
-        for (int i = 0; i < THOUSAND; i++) {
+        for (int i = 0; i < 1000; i++) {
             sumInScalar(a, x);
         }
         stopWatch.stop();
 
         // VM options: --add-modules jdk.incubator.vector
         stopWatch.start("vector");
-        for (int i = 0; i < THOUSAND; i++) {
+        for (int i = 0; i < 1000; i++) {
             // sumInVector(va, vx);
         }
         stopWatch.stop();

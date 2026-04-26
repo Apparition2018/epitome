@@ -152,7 +152,7 @@ public class ListDemo extends Demo {
     public void testArrayList() {
         stopWatch.start("没有调用 ensureCapacity()");
         ArrayList<Object> list = new ArrayList<>();
-        for (int i = 0; i < TEN_MILLION; i++) {
+        for (int i = 0; i < 10_000_000; i++) {
             list.add(new Object());
         }
         stopWatch.stop();
@@ -161,8 +161,8 @@ public class ListDemo extends Demo {
         list = new ArrayList<>();
         // void	    ensureCapacity(int minCapacity)
         // 如有必要，增加此 ArrayList 实例的容量，以确保它至少能够容纳最小容量参数所指定的元素数。
-        list.ensureCapacity(TEN_MILLION * 2);
-        for (int i = 0; i < TEN_MILLION; i++) {
+        list.ensureCapacity(10_000_000 * 2);
+        for (int i = 0; i < 10_000_000; i++) {
             list.add(new Object());
         }
         stopWatch.stop();

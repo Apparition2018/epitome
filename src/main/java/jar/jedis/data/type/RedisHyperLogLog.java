@@ -27,13 +27,13 @@ public class RedisHyperLogLog extends Demo {
             jedis.del(UV_KEY);
             Pipeline pipeline = jedis.pipelined();
             // 模拟100万个访客
-            IntStream.rangeClosed(1, MILLION).forEach(i -> pipeline.pfadd(UV_KEY, "user" + i));
+            IntStream.rangeClosed(1, 1_000_000).forEach(i -> pipeline.pfadd(UV_KEY, "user" + i));
             pipeline.sync();
             long uv = jedis.pfcount(UV_KEY);
             // 访客数：1001788
             p(String.format("访客数：%s", uv));
             // 误差率：-0.001788
-            p(String.format("误差率：%s", (MILLION - uv) * 1F / MILLION));
+            p(String.format("误差率：%s", (1_000_000 - uv) * 1F / 1_000_000));
         }
     }
 }

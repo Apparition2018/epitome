@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 
 /**
- * 中介模式：用一个中介对象来封装一系列对象之间的交互，各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互
+ * 中介者模式：用一个中介对象来封装一系列对象之间的交互，各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互
  * <p>使用场景：多个对象之间存在复杂的网状关系，且难以复用
  * <p>使用实例：
  * <pre>
@@ -41,7 +41,7 @@ import java.util.concurrent.ScheduledExecutorService;
  *
  * @author ljh
  * @see <a href="https://refactoringguru.cn/design-patterns/mediator">Mediator</a>
- * @see <a href="http://c.biancheng.net/view/1393.html">Java设计模式</a>
+ * @see <a href="https://c.biancheng.net/view/tlv9eip.html">Java设计模式</a>
  * @see <a href="https://www.runoob.com/design-pattern/mediator-pattern.html">菜鸟模式</a>
  * @since 2020/9/26 2:51
  */

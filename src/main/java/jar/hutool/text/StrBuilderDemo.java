@@ -15,7 +15,7 @@ public class StrBuilderDemo extends Demo {
     public static void main(String[] args) {
         stopWatch.start("JDK StringBuilder");
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < MILLION; i++) {
+        for (int i = 0; i < 1_000_000; i++) {
             sb.append("test");
             // 重新构建新的字符串，需要重新构建StringBuilder对象，造成性能损耗和内存浪费
             sb = new StringBuilder();
@@ -24,7 +24,7 @@ public class StrBuilderDemo extends Demo {
 
         stopWatch.start("HuTool StrBuilder");
         StrBuilder sb2 = new StrBuilder();
-        for (int i = 0; i < MILLION; i++) {
+        for (int i = 0; i < 1_000_000; i++) {
             sb2.append("test");
             // 重新构建新的字符串，不必开辟新内存
             sb2.reset();
