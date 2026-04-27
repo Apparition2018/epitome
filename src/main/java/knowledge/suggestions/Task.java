@@ -1,5 +1,7 @@
 package knowledge.suggestions;
 
+import lombok.SneakyThrows;
+
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -12,13 +14,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * @since 2020/10/10 19:23
  */
 class Task {
+
+    @SneakyThrows
     void doSomething() {
-        try {
-            // 每个线程等待2秒钟，注意此时线程的状态变为 Warning 状态
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        // 每个线程等待2秒钟，注意此时线程的状态变为 Warning 状态
+        TimeUnit.SECONDS.sleep(2);
 
         System.out.printf("线程名称：%s，执行时间：%ss%n", Thread.currentThread().getName(), Calendar.getInstance().get(Calendar.SECOND));
     }

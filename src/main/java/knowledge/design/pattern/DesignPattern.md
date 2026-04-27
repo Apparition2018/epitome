@@ -23,7 +23,7 @@
     </tr>
     <tr>
         <td rowspan="5">创建</td>
-        <td>抽象工厂</td>
+        <td>工厂方法</td>
         <td>类</td>
         <td>5</td>
         <td rowspan="11">行为</td>
@@ -32,7 +32,7 @@
         <td>3</td>
     </tr>
     <tr>
-        <td>工厂方法</td>
+        <td>抽象工厂</td>
         <td>类</td>
         <td>5</td>
         <td>命令</td>

@@ -1,5 +1,6 @@
 package knowledge.concurrent;
 
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -82,14 +83,13 @@ public class Deadlock {
     }
 
     @Test
+    @SneakyThrows
     public void tryLock() {
         final Lock lock = new ReentrantLock();
         try {
             if (lock.tryLock(2, TimeUnit.SECONDS)) {
                 p("doSomething ...");
             }
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         } finally {
             lock.unlock();
         }

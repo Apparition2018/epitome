@@ -1,6 +1,7 @@
 package knowledge.data.structure.collections.framework.collection;
 
 import l.demo.Demo;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
@@ -60,6 +61,7 @@ import java.util.Vector;
  * @author ljh
  * @since 2019/8/8 19:39
  */
+@Slf4j
 public class ListDemo extends Demo {
 
     @Test
@@ -192,9 +194,9 @@ public class ListDemo extends Demo {
             Field field = arrayListClass.getDeclaredField("elementData");
             field.setAccessible(true);
             Object[] objects = (Object[]) field.get(arrayList);
-            return objects.length;
+            return objects != null ? objects.length : 0;
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
+            log.warn("Failed to get ArrayList capacity via reflection", e);
             return -1;
         }
     }

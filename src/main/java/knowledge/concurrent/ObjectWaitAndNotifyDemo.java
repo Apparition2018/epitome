@@ -1,5 +1,7 @@
 package knowledge.concurrent;
 
+import lombok.SneakyThrows;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -32,28 +34,22 @@ public class ObjectWaitAndNotifyDemo {
     private static class Target {
         private int count;
 
+        @SneakyThrows
         public synchronized void increase() {
             if (count == 2) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                wait();
             }
             count++;
             System.out.println(Thread.currentThread().getName() + ":" + count);
             notify();
         }
 
+        @SneakyThrows
         public synchronized void decrease() {
             if (count == 0) {
-                try {
-                    // 等待，由于 Decrease 线程调用的该方法,
-                    // 所以 Decrease 线程进入对象 t (main函数中实例化的)的等待池，并且释放对象 t 的锁
-                    wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                // 等待，由于 Decrease 线程调用的该方法,
+                // 所以 Decrease 线程进入对象 t (main函数中实例化的)的等待池，并且释放对象 t 的锁
+                wait();
             }
             count--;
             System.out.println(Thread.currentThread().getName() + ":" + count);
@@ -71,15 +67,12 @@ public class ObjectWaitAndNotifyDemo {
         }
 
         @Override
+        @SneakyThrows
         public void run() {
             for (int i = 0; i < 30; i++) {
-                try {
-                    // 随机睡眠[0~500)毫秒
-                    // sleep() 不会释放对象 t 的锁
-                    TimeUnit.MILLISECONDS.sleep(new Random().nextInt(500));
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                // 随机睡眠[0~500)毫秒
+                // sleep() 不会释放对象 t 的锁
+                TimeUnit.MILLISECONDS.sleep(new Random().nextInt(500));
 
                 t.increase();
             }
@@ -94,13 +87,10 @@ public class ObjectWaitAndNotifyDemo {
         }
 
         @Override
+        @SneakyThrows
         public void run() {
             for (int i = 0; i < 30; i++) {
-                try {
-                    TimeUnit.MILLISECONDS.sleep(new Random().nextInt(500));
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                TimeUnit.MILLISECONDS.sleep(new Random().nextInt(500));
 
                 t.decrease();
             }

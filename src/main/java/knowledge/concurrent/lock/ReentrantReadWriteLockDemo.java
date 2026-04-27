@@ -1,5 +1,7 @@
 package knowledge.concurrent.lock;
 
+import lombok.SneakyThrows;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -39,14 +41,11 @@ public class ReentrantReadWriteLockDemo {
         private final Lock r = rwl.readLock();
 
         // 写操作，同时只允许一个写操作
+        @SneakyThrows
         public void write(int data) {
             w.lock(); // 取到写锁
             try {
-                try {
-                    TimeUnit.MILLISECONDS.sleep(20);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                TimeUnit.MILLISECONDS.sleep(20);
                 this.data = data;
                 System.out.println(Thread.currentThread().getName() + " 写入" + this.data);
             } finally {
@@ -55,14 +54,11 @@ public class ReentrantReadWriteLockDemo {
         }
 
         // 读操作，可并发执行
+        @SneakyThrows
         public void read() {
             r.lock(); // 取到读锁
             try {
-                try {
-                    TimeUnit.MILLISECONDS.sleep(20);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                TimeUnit.MILLISECONDS.sleep(20);
                 System.out.println(Thread.currentThread().getName() + " 读取" + this.data);
             } finally {
                 r.unlock(); // 释放读锁

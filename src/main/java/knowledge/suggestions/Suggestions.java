@@ -6,6 +6,7 @@ import l.demo.Demo;
 import l.demo.Person;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
@@ -102,6 +103,7 @@ import java.util.stream.IntStream;
  * @author ljh
  * @since 2020/10/10 19:23
  */
+@Slf4j
 @SuppressWarnings("unchecked")
 public class Suggestions extends Demo {
 
@@ -562,14 +564,14 @@ public class Suggestions extends Demo {
     /* 第六章：枚举和注解 */
 
     /**
-     * 建议88：枚举实现工厂模式
+     * 建议88：枚举实现简单工厂模式
      * <pre>
-     * 1 通过非静态方法实现工厂模式，{@link CarEnumFactory1}
-     * 2 通过抽象方法实现工厂模式，{@link CarEnumFactory2}
+     * 1 通过非静态方法实现，{@link CarEnumFactory1}
+     * 2 通过抽象方法实现，{@link CarEnumFactory2}
      * </pre>
-     * 枚举实现工厂模式的优点：
+     * 枚举实现的优点：
      * <pre>
-     * 1 一般工厂模式可接受3种类型参数：类型参数、String、int
+     * 1 简单工厂模式可接受3种类型参数：类型参数、String、int
      *   这三种参数是宽泛的数据类型，很容易发生错误，且这类错误编译器不会警报
      * 2 性能好，使用简洁
      * 3 降低耦合，不需接受参数
@@ -581,7 +583,6 @@ public class Suggestions extends Demo {
         p(CarEnumFactory1.BUICK_CAR.create());
         // 抽象方法实现
         p(CarEnumFactory2.BUICK_CAR.create());
-        // 一般工厂模式
         p(CarFactory.createCar(BuickCar.class));
     }
 
@@ -921,7 +922,7 @@ public class Suggestions extends Demo {
             validate("[Arsenal]", "123");
         } catch (MyException e) {
             for (Throwable throwable : e.getExceptions()) {
-                throwable.printStackTrace();
+                log.warn(throwable.getMessage(), e);
             }
         }
     }

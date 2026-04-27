@@ -1,6 +1,7 @@
 package knowledge.design.pattern.other.concurrency;
 
 import l.demo.Demo;
+import lombok.SneakyThrows;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -73,29 +74,25 @@ public class WorkStealingDemo extends Demo {
         private static final AtomicInteger jobId = new AtomicInteger();
 
         @Override
+        @SneakyThrows
         public void run() {
             ThreadLocalRandom r = ThreadLocalRandom.current();
-            while (isProducing || deque1.size() != 0 || deque2.size() != 0) {
-                try {
-                    if (isProducing && r.nextBoolean()) {
-                        String assignName = Thread.currentThread().getName();
-                        TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
-                        for (int i = 0; i < r.nextInt(4); i++) {
-                            Work work = new Work(jobId.incrementAndGet(), assignName);
-                            deque1.putLast(work);
-                            p(assignName + " + " + jobId);
-                        }
+            while (isProducing || !deque1.isEmpty() || !deque2.isEmpty()) {
+                if (isProducing && r.nextBoolean()) {
+                    String assignName = Thread.currentThread().getName();
+                    TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
+                    for (int i = 0; i < r.nextInt(4); i++) {
+                        Work work = new Work(jobId.incrementAndGet(), assignName);
+                        deque1.putLast(work);
+                        p(assignName + " + " + jobId);
                     }
-                    if (!deque1.isEmpty()) {
-                        Objects.requireNonNull(deque1.pollFirst()).run();
-                    } else {
-                        if (!deque2.isEmpty()) {
-                            Objects.requireNonNull(deque2.pollLast()).run();
-                        }
+                }
+                if (!deque1.isEmpty()) {
+                    Objects.requireNonNull(deque1.pollFirst()).run();
+                } else {
+                    if (!deque2.isEmpty()) {
+                        Objects.requireNonNull(deque2.pollLast()).run();
                     }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    Thread.currentThread().interrupt();
                 }
             }
             isAllStop[machineIndex] = true;

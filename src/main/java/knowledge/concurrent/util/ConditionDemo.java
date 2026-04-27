@@ -1,6 +1,7 @@
 package knowledge.concurrent.util;
 
 import l.demo.Demo;
+import lombok.SneakyThrows;
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.LinkedList;
@@ -70,35 +71,31 @@ public class ConditionDemo extends Demo {
         }
 
         @Override
+        @SneakyThrows
         public void run() {
             String threadName = Thread.currentThread().getName();
             p(threadName + " + start");
             ThreadLocalRandom r = ThreadLocalRandom.current();
-            try {
-                while (isProducing) {
-                    TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME / 2));
-                    ADD_LOCK.lock();
-                    try {
-                        while (MAX == list.size()) {
-                            // void	        await()
-                            // 造成当前线程在接到信号或被中断之前一直处于等待状态
-                            ADD_CON.await();
-                        }
-                        list.addFirst(goodsId.incrementAndGet());
-                        p(threadName + " + " + goodsId);
-                        if (list.size() + 1 < MAX)
-                            // void	        signal()
-                            // 唤醒所有等待线程
-                            ADD_CON.signalAll();
-                    } finally {
-                        ADD_LOCK.unlock();
+            while (isProducing) {
+                TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME / 2));
+                ADD_LOCK.lock();
+                try {
+                    while (MAX == list.size()) {
+                        // void	        await()
+                        // 造成当前线程在接到信号或被中断之前一直处于等待状态
+                        ADD_CON.await();
                     }
+                    list.addFirst(goodsId.incrementAndGet());
+                    p(threadName + " + " + goodsId);
+                    if (list.size() + 1 < MAX)
+                        // void	        signal()
+                        // 唤醒所有等待线程
+                        ADD_CON.signalAll();
+                } finally {
+                    ADD_LOCK.unlock();
                 }
-                p(threadName + " + end");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                Thread.currentThread().interrupt();
             }
+            p(threadName + " + end");
         }
     }
 
@@ -112,32 +109,28 @@ public class ConditionDemo extends Demo {
         }
 
         @Override
+        @SneakyThrows
         public void run() {
             String threadName = Thread.currentThread().getName();
             p(threadName + " - start");
             ThreadLocalRandom r = ThreadLocalRandom.current();
-            try {
-                while (isProducing || !list.isEmpty()) {
-                    POLL_LOCK.lock();
-                    try {
-                        while (list.isEmpty()) {
-                            // boolean	    await(long time, TimeUnit unit)
-                            // 造成当前线程在接到信号、被中断或到达指定等待时间之前一直处于等待状态
-                            POLL_CON.await(r.nextLong(SLEEP_TIME / 4), TimeUnit.MILLISECONDS);
-                        }
-                        p(threadName + " - " + list.pollLast());
-                        if (list.size() > 1) POLL_CON.signalAll();
-                    } finally {
-                        POLL_LOCK.unlock();
+            while (isProducing || !list.isEmpty()) {
+                POLL_LOCK.lock();
+                try {
+                    while (list.isEmpty()) {
+                        // boolean	    await(long time, TimeUnit unit)
+                        // 造成当前线程在接到信号、被中断或到达指定等待时间之前一直处于等待状态
+                        POLL_CON.await(r.nextLong(SLEEP_TIME / 4), TimeUnit.MILLISECONDS);
                     }
-                    TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
+                    p(threadName + " - " + list.pollLast());
+                    if (list.size() > 1) POLL_CON.signalAll();
+                } finally {
+                    POLL_LOCK.unlock();
                 }
-                isAllConsumerStop[consumerIndex] = true;
-                p(threadName + " - end");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                Thread.currentThread().interrupt();
+                TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
             }
+            isAllConsumerStop[consumerIndex] = true;
+            p(threadName + " - end");
         }
     }
 }

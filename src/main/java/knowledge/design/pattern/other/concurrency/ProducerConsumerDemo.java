@@ -1,6 +1,7 @@
 package knowledge.design.pattern.other.concurrency;
 
 import l.demo.Demo;
+import lombok.SneakyThrows;
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.concurrent.*;
@@ -53,45 +54,37 @@ public class ProducerConsumerDemo extends Demo {
         private static final AtomicInteger goodsId = new AtomicInteger();
 
         @Override
+        @SneakyThrows
         public void run() {
             String threadName = Thread.currentThread().getName();
             p(threadName + " + start");
             ThreadLocalRandom r = ThreadLocalRandom.current();
-            try {
-                while (isProducing) {
-                    TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME / 2));
-                    queue.put(goodsId.incrementAndGet());
-                    p(threadName + " + " + goodsId);
-                }
-                p(threadName + " + end");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                Thread.currentThread().interrupt();
+            while (isProducing) {
+                TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME / 2));
+                queue.put(goodsId.incrementAndGet());
+                p(threadName + " + " + goodsId);
             }
+            p(threadName + " + end");
         }
     }
 
     private record Consumer(BlockingQueue<Integer> queue, int consumerIndex) implements Runnable {
 
         @Override
+        @SneakyThrows
         public void run() {
             String threadName = Thread.currentThread().getName();
             p(threadName + " - start");
             ThreadLocalRandom r = ThreadLocalRandom.current();
-            try {
-                while (isProducing || queue.size() != 0) {
-                    Integer goodsId = queue.poll(r.nextLong(SLEEP_TIME), TimeUnit.MILLISECONDS);
-                    if (null != goodsId) {
-                        p(threadName + " - " + goodsId);
-                        TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
-                    }
+            while (isProducing || !queue.isEmpty()) {
+                Integer goodsId = queue.poll(r.nextLong(SLEEP_TIME), TimeUnit.MILLISECONDS);
+                if (null != goodsId) {
+                    p(threadName + " - " + goodsId);
+                    TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
                 }
-                isAllConsumerStop[consumerIndex] = true;
-                p(threadName + " - end");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                Thread.currentThread().interrupt();
             }
+            isAllConsumerStop[consumerIndex] = true;
+            p(threadName + " - end");
         }
     }
 }

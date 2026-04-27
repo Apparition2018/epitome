@@ -21,24 +21,13 @@ public class PropertiesUtil extends Demo {
 
     public static Properties loadProps(String fileName) {
         Properties props = new Properties();
-        Reader reader = null;
-        try (InputStream is = ClassLoader.getSystemResourceAsStream(fileName)) {
-            if (null != is) {
-                props.load(new InputStreamReader(is, StandardCharsets.UTF_8));
-            } else {
-                reader = new InputStreamReader(Files.newInputStream(Paths.get(fileName)), StandardCharsets.UTF_8);
-                props.load(reader);
-            }
+        try (InputStream is = ClassLoader.getSystemResourceAsStream(fileName);
+             Reader reader = is != null
+                 ? new InputStreamReader(is, StandardCharsets.UTF_8)
+                 : new InputStreamReader(Files.newInputStream(Paths.get(fileName)), StandardCharsets.UTF_8)) {
+            props.load(reader);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } finally {
-            if (null != reader) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         return props;
     }

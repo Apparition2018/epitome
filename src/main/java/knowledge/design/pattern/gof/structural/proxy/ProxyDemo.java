@@ -1,8 +1,12 @@
 package knowledge.design.pattern.gof.structural.proxy;
 
+import knowledge.reflect.proxy.DynamicProxy;
+import knowledge.reflect.proxy.StaticProxy;
 import lombok.SneakyThrows;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.transaction.annotation.Transactional;
+import springboot.service.TransactionalService;
 
-import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -10,17 +14,15 @@ import java.util.concurrent.TimeUnit;
 /**
  * 代理模式：为原始对象提供一个代理以控制对这个对象的访问，在到达原始对象之前或之后执行某些操作
  * <p>使用场景：控制访问
- * <pre>
- * 1 非业务需求：鉴权、缓存、事务、监控、统计、限流、幂等、日志，可使用 Spring AOP 实现
- * 2 延迟初始化
- * </pre>
  * 使用实例：
- * <pre>x
- * 1 @PreAuthorize，@Cacheable，@Transactional
- * 2 {@link java.rmi}
- * 3 {@link Proxy}
- * 4 {@link org.springframework.aop.framework.JdkDynamicAopProxy}
- * 5 {@link org.springframework.aop.framework.CglibAopProxy}
+ * <pre>
+ * 1 JDK：{@link DynamicProxy}、{@link java.rmi}
+ * 2 Spring：@PreAuthorize、{@link Cacheable}、{@link Transactional}、{@link TransactionalService#beforeCommit(TransactionalService.MyEvent) @TransactionalEventListener}
+ *  ① {@link org.springframework.aop.framework.JdkDynamicAopProxy JDK 动态代理}：目标类必须实现接口，Spring 默认策略
+ *  ② {@link org.springframework.aop.framework.CglibAopProxy CGLIB 动态代理}：不需要接口，Spring Boot >= 2.x 默认策略
+ * 3 {@link StaticProxy}：代理类和目标类必须实现同接口
+ * 4 非业务需求（面向切面编程）：鉴权、{@link CacheDemo 缓存}、事务、监控、统计、限流、幂等、日志、多租户数据隔离
+ * 5 {@link LazyInitDemo 延迟初始化}
  * </pre>
  * 角色：
  * <pre>
@@ -41,123 +43,107 @@ import java.util.concurrent.TimeUnit;
  * @since 2020/9/26 2:51
  */
 public class ProxyDemo {
+}
 
-    /**
-     * 案例1：延迟初始化
-     */
-    private static class ProxyLazyDemo {
+/** 案例1：延迟初始化 */
+class LazyInitDemo {
 
-        /**
-         * Subject
-         */
-        interface Query {
-            Object request();
+    /** Subject */
+    interface Query {
+        Object request();
+    }
+
+    /** RealSubject */
+    private static class QueryService implements Query {
+        @SneakyThrows
+        public QueryService() {
+            TimeUnit.SECONDS.sleep(1);
         }
 
-        /**
-         * RealSubject
-         */
-        private static class QueryService implements Query {
-            @SneakyThrows
-            public QueryService() {
-                TimeUnit.SECONDS.sleep(1);
-            }
-
-            @Override
-            public Object request() {
-                return new Object();
-            }
-        }
-
-        /**
-         * Proxy
-         */
-        private static class QueryProxyService implements Query {
-            QueryService queryService = null;
-
-            @Override
-            public Object request() {
-                // 第一次使用时才实例化 RealSubject
-                if (queryService == null) queryService = new QueryService();
-                return queryService.request();
-            }
+        @Override
+        public Object request() {
+            return new Object();
         }
     }
 
-    /**
-     * 案例2：缓存
-     */
-    private static class ProxyCacheDemo {
-        public static void main(String[] args) {
-            // RealSubject
-            downloadFiveSameVideo(new NaiveDownloader());
-            // Proxy
-            downloadFiveSameVideo(new SmartDownloader());
+    /** Proxy */
+    private static class QueryProxyService implements Query {
+        QueryService queryService = null;
+
+        @Override
+        public Object request() {
+            // 第一次使用时才实例化 RealSubject
+            if (queryService == null) queryService = new QueryService();
+            return queryService.request();
+        }
+    }
+}
+
+/** 案例2：缓存 */
+class CacheDemo {
+    public static void main(String[] args) {
+        // RealSubject
+        downloadFiveSameVideo(new NaiveDownloader());
+        // Proxy
+        downloadFiveSameVideo(new SmartDownloader());
+    }
+
+    private static void downloadFiveSameVideo(Downloader downloader) {
+        System.out.println("-------------------------------");
+        long startTime = System.currentTimeMillis();
+        downloader.download(1);
+        downloader.download(1);
+        downloader.download(1);
+        downloader.download(1);
+        downloader.download(1);
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        System.out.print("Time elapsed: " + estimatedTime + "ms\n");
+        System.out.println("-------------------------------\n");
+    }
+
+    /** Subject */
+    interface Downloader {
+        Video download(int id);
+    }
+
+    /** RealSubject */
+    private static class NaiveDownloader implements Downloader {
+        @SneakyThrows
+        @Override
+        public Video download(int id) {
+            TimeUnit.MILLISECONDS.sleep(100);
+            return new Video(id);
+        }
+    }
+
+    /** Proxy */
+    private static class SmartDownloader implements Downloader {
+        private final Downloader downloader;
+        private final Map<Integer, Video> cache = new HashMap<>();
+
+        public SmartDownloader() {
+            this.downloader = new NaiveDownloader();
         }
 
-        private static void downloadFiveSameVideo(Downloader downloader) {
-            System.out.println("-------------------------------");
-            long startTime = System.currentTimeMillis();
-            downloader.download(1);
-            downloader.download(1);
-            downloader.download(1);
-            downloader.download(1);
-            downloader.download(1);
-            long estimatedTime = System.currentTimeMillis() - startTime;
-            System.out.print("Time elapsed: " + estimatedTime + "ms\n");
-            System.out.println("-------------------------------\n");
-        }
-
-        /**
-         * Subject
-         */
-        interface Downloader {
-            Video download(int id);
-        }
-
-        /**
-         * RealSubject
-         */
-        private static class NaiveDownloader implements Downloader {
-            @SneakyThrows
-            @Override
-            public Video download(int id) {
-                TimeUnit.MILLISECONDS.sleep(100);
-                return new Video(id);
+        @Override
+        public Video download(int id) {
+            // 查看缓存中是否已经存在
+            Video video = cache.get(id);
+            if (video == null) {
+                video = downloader.download(id);
+                cache.put(id, video);
+            } else {
+                System.out.println("download video " + id + " from cache.");
             }
+            return video;
         }
+    }
 
-        /**
-         * Proxy
-         */
-        private static class SmartDownloader implements Downloader {
-            private final Downloader downloader;
-            private final Map<Integer, Video> cache = new HashMap<>();
+    static class Video {
+        public Integer id;
 
-            public SmartDownloader() {
-                this.downloader = new NaiveDownloader();
-            }
-
-            @Override
-            public Video download(int id) {
-                // 查看缓存中是否已经存在
-                Video video = cache.get(id);
-                if (video == null) {
-                    video = downloader.download(id);
-                    cache.put(id, video);
-                } else {
-                    System.out.println("download video " + id + " from cache.");
-                }
-                return video;
-            }
-        }
-
-        private static class Video {
-            public Integer id;
-
-            Video(Integer id) {
-                this.id = id;
-            }
+        Video(Integer id) {
+            this.id = id;
         }
     }
 }

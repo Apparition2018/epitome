@@ -1,6 +1,7 @@
 package knowledge.types.basic;
 
 import l.demo.Person;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.lang.ref.*;
@@ -25,6 +26,7 @@ import static l.demo.Demo.p;
  * @see <a href="https://www.cnblogs.com/dolphin0520/p/3784171.html">Java 如何有效地避免 OOM：善于利用软引用和弱引用</a>
  * @since 2020/11/7 23:00
  */
+@Slf4j
 public class ReferenceDemo {
 
     /**
@@ -137,7 +139,7 @@ public class ReferenceDemo {
                     try {
                         TimeUnit.SECONDS.sleep(1);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        log.warn(e.getMessage(), e);
                         Thread.currentThread().interrupt();
                     }
                     p(personPhantomReference.get());
@@ -159,7 +161,7 @@ public class ReferenceDemo {
             try {
                 Thread.currentThread().join();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                log.warn(e.getMessage(), e);
                 System.exit(1);
             }
         }

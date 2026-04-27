@@ -1,5 +1,8 @@
 package knowledge.suggestions;
 
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -8,6 +11,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2020/10/10 19:23
  */
+@Slf4j
 class TcpServer implements Runnable {
 
     TcpServer() {
@@ -17,14 +21,11 @@ class TcpServer implements Runnable {
     }
 
     @Override
+    @SneakyThrows
     public void run() {
         for (int i = 0; i < 3; i++) {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-                System.out.println("系统正常运： " + i);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println("系统正常运： " + i);
         }
         // 模拟异常
         throw new RuntimeException();
@@ -35,8 +36,7 @@ class TcpServer implements Runnable {
         @Override
         public void uncaughtException(Thread t, Throwable e) {
             // 记录线程异常信息
-            System.out.println("线程" + t.getName() + " 出现异常，自行重启，请分析原因。");
-            e.printStackTrace();
+            log.warn("线程 {} 出现异常，自行重启，请分析原因。", t.getName(), e);
             // 重启线程，保证业务不中断
             new TcpServer();
         }

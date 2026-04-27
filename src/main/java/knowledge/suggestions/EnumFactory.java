@@ -9,7 +9,6 @@ import java.lang.reflect.InvocationTargetException;
  * @since 2020/10/10 19:23
  */
 
-// 一般工厂模式
 class CarFactory {
     public static Car createCar(Class<? extends Car> c) {
         try {

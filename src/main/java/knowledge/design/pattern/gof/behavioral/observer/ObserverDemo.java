@@ -3,7 +3,7 @@ package knowledge.design.pattern.gof.behavioral.observer;
 import jakarta.servlet.http.HttpSessionAttributeListener;
 import jakarta.servlet.http.HttpSessionBindingListener;
 import jar.google.guava.evenbus.EventBusDemo;
-import lombok.Getter;
+import springboot.service.TransactionalService;
 
 import java.io.File;
 import java.util.*;
@@ -13,9 +13,13 @@ import java.util.*;
  * <p>使用场景：关联行为、消息队列、事件
  * <p>使用实例：
  * <pre>
- * 1 {@link Observer} 和 {@link Observable}
- * 2 {@link EventListener} 的所有实现，广泛应用于 Swing 组件
- * 3 {@link HttpSessionBindingListener} 和 {@link HttpSessionAttributeListener}
+ * 1 JDK：
+ *  ① {@link JdkObserverDemo Observer 和 Observable}
+ *  ② {@link EventListener} 的所有实现，广泛应用于 Swing 组件
+ *  ③ {@link HttpSessionBindingListener} 和 {@link HttpSessionAttributeListener}
+ * 2 Spring：
+ *  ① {@link SpringApplicationEventDemo}
+ *  ② {@link TransactionalService#beforeCommit(TransactionalService.MyEvent) @TransactionalEventListener}
  * </pre>
  * 角色：
  * <pre>
@@ -37,144 +41,96 @@ import java.util.*;
  */
 public class ObserverDemo {
 
-    /**
-     * <a href="https://refactoringguru.cn/design-patterns/observer/java/example">事件订阅</a>
-     */
+    /** <a href="https://refactoringguru.cn/design-patterns/observer/java/example">事件订阅</a> */
     public static void main(String[] args) throws Exception {
         Editor editor = new Editor();
-        editor.events.subscribe("open", new LogOpenListener("file.txt"));
+        editor.events.subscribe("open", new LogRecordListener("file.txt"));
         editor.events.subscribe("save", new EmailNotificationListener("admin@example.com"));
 
         editor.openFile("test.txt");
         editor.saveFile();
     }
+}
 
-    /**
-     * Subject/ConcreteSubject
-     */
-    private static class EventManager {
-        Map<String, List<EventListener>> listeners = new HashMap<>();
+/** Subject/ConcreteSubject */
+class EventManager {
+    Map<String, List<MyEventListener>> listeners = new HashMap<>();
 
-        public EventManager(String... operations) {
-            for (String operation : operations) {
-                this.listeners.put(operation, new ArrayList<>());
-            }
-        }
-
-        public void subscribe(String eventType, EventListener listener) {
-            List<EventListener> users = listeners.get(eventType);
-            users.add(listener);
-        }
-
-        public void unsubscribe(String eventType, EventListener listener) {
-            List<EventListener> users = listeners.get(eventType);
-            users.remove(listener);
-        }
-
-        public void notify(String eventType, File file) {
-            List<EventListener> users = listeners.get(eventType);
-            for (EventListener listener : users) {
-                listener.update(eventType, file);
-            }
+    public EventManager(String... operations) {
+        for (String operation : operations) {
+            this.listeners.put(operation, new ArrayList<>());
         }
     }
 
-    private static class Editor {
-        public EventManager events;
-        private File file;
-
-        public Editor() {
-            this.events = new EventManager("open", "save");
-        }
-
-        public void openFile(String filePath) {
-            this.file = new File(filePath);
-            events.notify("open", file);
-        }
-
-        public void saveFile() throws Exception {
-            if (this.file != null) {
-                events.notify("save", file);
-            } else {
-                throw new Exception("Please open a file first.");
-            }
-        }
+    public void subscribe(String eventType, MyEventListener listener) {
+        List<MyEventListener> users = listeners.get(eventType);
+        users.add(listener);
     }
 
-    /**
-     * Observer
-     */
-    interface EventListener {
-        void update(String eventType, File file);
+    public void unsubscribe(String eventType, MyEventListener listener) {
+        List<MyEventListener> users = listeners.get(eventType);
+        users.remove(listener);
     }
 
-    /**
-     * ConcreteObserver
-     * 收到通知后发送邮件
-     */
-    private record EmailNotificationListener(String email) implements EventListener {
-        @Override
-        public void update(String eventType, File file) {
-            System.out.println("Email to " + email + ": Someone has performed " + eventType + " operation with the following file: " + file.getName());
+    public void notify(String eventType, File file) {
+        List<MyEventListener> users = listeners.get(eventType);
+        for (MyEventListener listener : users) {
+            listener.update(eventType, file);
         }
     }
+}
 
-    /**
-     * ConcreteObserver
-     * 收到通知后在日志中记录一条消息
-     */
-    private static class LogOpenListener implements EventListener {
-        private final File log;
+class Editor {
+    public EventManager events;
+    private File file;
 
-        public LogOpenListener(String fileName) {
-            this.log = new File(fileName);
-        }
-
-        @Override
-        public void update(String eventType, File file) {
-            System.out.println("Save to log " + log + ": Someone has performed " + eventType + " operation with the following file: " + file.getName());
-        }
+    public Editor() {
+        this.events = new EventManager("open", "save");
     }
 
-    /**
-     * Java 提供了一个 Observer 接口和 一个 Observable 类对观察者模式的支持
-     */
-    private static class JdkObserverDemo {
+    public void openFile(String filePath) {
+        this.file = new File(filePath);
+        events.notify("open", file);
+    }
 
-        public static void main(String[] args) {
-            Watched watched = new Watched();
-            watched.addObserver(new Watcher());
-            watched.setData("start");
-            watched.setData("run");
-            watched.setData("stop");
+    public void saveFile() throws Exception {
+        if (this.file != null) {
+            events.notify("save", file);
+        } else {
+            throw new Exception("Please open a file first.");
         }
+    }
+}
 
-        /**
-         * ConcreteSubject
-         */
-        @Getter
-        private static class Watched extends Observable {
-            private String data;
+/** Observer */
+interface MyEventListener {
+    void update(String eventType, File file);
+}
 
-            public void setData(String data) {
-                if (!Objects.equals(this.data, data)) {
-                    this.data = data;
-                    // 将 Observable 对象的 changed 标记为 true
-                    setChanged();
-                }
-                // 当 Observable 对象的 changed 标记为 true 才通知 Observer
-                notifyObservers();
-            }
-        }
+/**
+ * ConcreteObserver
+ * 收到通知后发送邮件
+ */
+record EmailNotificationListener(String email) implements MyEventListener {
+    @Override
+    public void update(String eventType, File file) {
+        System.out.println("Email to " + email + ": Someone has performed " + eventType + " operation with the following file: " + file.getName());
+    }
+}
 
-        /**
-         * ConcreteObserver
-         */
-        private static class Watcher implements java.util.Observer {
-            @Override
-            public void update(Observable o, Object arg) {
-                System.out.println("observer state: " + ((Watched) o).getData());
-            }
-        }
+/**
+ * ConcreteObserver
+ * 收到通知后在日志中记录一条消息
+ */
+class LogRecordListener implements MyEventListener {
+    private final File log;
+
+    public LogRecordListener(String fileName) {
+        this.log = new File(fileName);
+    }
+
+    @Override
+    public void update(String eventType, File file) {
+        System.out.println("Save to log " + log + ": Someone has performed " + eventType + " operation with the following file: " + file.getName());
     }
 }

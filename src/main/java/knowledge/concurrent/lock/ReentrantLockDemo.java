@@ -15,7 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ReentrantLockDemo extends Demo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ReentrantLockDemo rdlDemo = new ReentrantLockDemo();
 
         MyThread t1 = new MyThread(rdlDemo, "A");
@@ -23,11 +23,7 @@ public class ReentrantLockDemo extends Demo {
         t1.start();
         t2.start();
 
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        TimeUnit.SECONDS.sleep(1);
         t2.interrupt(); // 因为 1s 后线程 t2 还在等待中，所以可以中断
 
     }

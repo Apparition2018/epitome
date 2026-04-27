@@ -18,9 +18,9 @@ import java.util.Stack;
  * 1 {@link Runnable} 的所有实现
  * 2 {@link Action} 的所有实现
  * 3 {@link JdbcTemplate#query(String, ResultSetExtractor)}
- *      Invoker         {@link JdbcTemplate#execute(StatementCallback)}
- *      Command         {@link StatementCallback}
- *      Receiver        {@link Statement}
+ *   - {@link JdbcTemplate#execute(StatementCallback) Invoker}
+ *   - {@link StatementCallback Command}
+ *   - {@link Statement Receiver}
  * </pre>
  * 角色:
  * <pre>

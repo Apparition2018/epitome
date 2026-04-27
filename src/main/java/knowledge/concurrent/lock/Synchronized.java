@@ -1,6 +1,7 @@
 package knowledge.concurrent.lock;
 
 import l.demo.Demo;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -119,15 +120,12 @@ public class Synchronized extends Demo {
                 }
             }
 
+            @SneakyThrows
             private static void getBean() {
-                try {
-                    p(Thread.currentThread().getName() + " start");
-                    TimeUnit.MILLISECONDS.sleep(200);
-                    p(Thread.currentThread().getName() + " end");
-                    countDownLatch.countDown();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                p(Thread.currentThread().getName() + " start");
+                TimeUnit.MILLISECONDS.sleep(200);
+                p(Thread.currentThread().getName() + " end");
+                countDownLatch.countDown();
             }
         }
     }

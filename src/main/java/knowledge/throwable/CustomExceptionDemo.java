@@ -1,6 +1,7 @@
 package knowledge.throwable;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serial;
 
@@ -16,21 +17,21 @@ import java.io.Serial;
  * @author ljh
  * @since 2020/9/4 14:10
  */
+@Slf4j
 public class CustomExceptionDemo {
 
     public static void main(String[] args) {
         CheckingAccount ca = new CheckingAccount(101);
-        System.out.println("Depositing $500...");
+        log.info("Depositing $500...");
         ca.deposit(500.00);
 
         try {
-            System.out.println("Withdrawing $100...");
+            log.info("Withdrawing $100...");
             ca.withdraw(100.00);
-            System.out.println("Withdrawing $600...");
+            log.info("Withdrawing $600...");
             ca.withdraw(600.00);
         } catch (CustomException e) {
-            System.out.println("Sorry, but you are short $" + e.getAmount());
-            e.printStackTrace();
+            log.info("Sorry, but you are short ${}", e.getAmount(), e);
         }
     }
 
@@ -84,6 +85,5 @@ public class CustomExceptionDemo {
                 throw new CustomException(needs);
             }
         }
-
     }
 }

@@ -4,6 +4,7 @@ import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import l.demo.Demo;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import okio.BufferedSink;
 import org.apache.hc.core5.http.HttpHeaders;
@@ -23,6 +24,7 @@ import java.util.concurrent.TimeUnit;
  * @author ljh
  * @since 2021/8/3 9:10
  */
+@Slf4j
 public class OkHttpDemo extends Demo {
     private static final String MARKDOWN_RAW_URL = "https://api.github.com/markdown/raw";
     private static final MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse("text/x-markdown; charset=utf-8");
@@ -43,7 +45,7 @@ public class OkHttpDemo extends Demo {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
+                log.warn("failure: {}", e.getMessage(), e);
             }
 
             @Override

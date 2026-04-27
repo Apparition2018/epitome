@@ -1,6 +1,7 @@
 package knowledge.concurrent;
 
 import l.demo.Demo;
+import lombok.SneakyThrows;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,13 +34,10 @@ public class RunnableDemo extends Demo {
         private int ticket = 5;
 
         @Override
+        @SneakyThrows
         public synchronized void run() {
             while (ticket > 0) {
-                try {
-                    TimeUnit.MILLISECONDS.sleep(20);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                TimeUnit.MILLISECONDS.sleep(20);
                 p(Thread.currentThread().getName() + "正在卖票" + ticket--);
             }
             countDownLatch.countDown();

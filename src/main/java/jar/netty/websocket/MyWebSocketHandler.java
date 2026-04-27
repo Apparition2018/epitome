@@ -64,7 +64,7 @@ public class MyWebSocketHandler extends SimpleChannelInboundHandler<Object> {
         // 返回应该消息
         // 获取客户端向服务端发送的消息
         String requestText = ((TextWebSocketFrame) webSocketFrame).text();
-        log.info("服务端收到客户端的消息===>>>" + requestText);
+        log.info("服务端收到客户端的消息===>>>{}", requestText);
         TextWebSocketFrame textWebSocketFrame = new TextWebSocketFrame(new Date().toString() + ctx.channel().id() + " ===>>> " + requestText);
         // 群发，服务端向每个连接上来的客户端群发消息
         NettyConfig.group.writeAndFlush(textWebSocketFrame);
@@ -136,7 +136,7 @@ public class MyWebSocketHandler extends SimpleChannelInboundHandler<Object> {
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        cause.printStackTrace();
+        log.warn("异常：{}", cause.getMessage(), cause);
         ctx.close();
     }
 }
