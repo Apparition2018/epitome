@@ -14,10 +14,10 @@ import java.io.File;
  * </pre>
  * 使用实例：
  * <pre>
- * 1 slf4j
- * 2 各种工具类 {@link JdbcUtils}
- * 3 给第三方使用的接口
- * 4 MVC
+ * 1 Service 层
+ * 2 给第三方使用的接口
+ * 3 各种工具类 {@link JdbcUtils}
+ * 4 slf4j
  * </pre>
  * 角色：
  * <pre>
@@ -40,102 +40,88 @@ import java.io.File;
  */
 public class FacadeDemo {
 
-    /**
-     * <a href="https://refactoring.guru/design-patterns/facade/java/example">复杂视频转换</a>
-     */
+    /** <a href="https://refactoring.guru/design-patterns/facade/java/example">复杂视频转换</a> */
     public static void main(String[] args) {
         VideoConversionFacade converter = new VideoConversionFacade();
         File mp4Video = converter.convertVideo("youtube-video.ogg", "mp4");
     }
+}
 
-    /**
-     * Subsystem
-     */
-    @Getter
-    private static class VideoFile {
-        private final String name;
-        private final String codeType;
+/** Subsystem */
+@Getter
+class VideoFile {
+    private final String name;
+    private final String codeType;
 
-        public VideoFile(String name) {
-            this.name = name;
-            this.codeType = name.substring(name.indexOf('.') + 1);
+    public VideoFile(String name) {
+        this.name = name;
+        this.codeType = name.substring(name.indexOf('.') + 1);
+    }
+}
+
+/** Subsystem */
+interface Codec {
+}
+
+class MPEG4CompressionCodec implements Codec {
+    public String type = "mp4";
+}
+
+class OggCompressionCodec implements Codec {
+    public String type = "ogg";
+}
+
+/** Subsystem */
+class CodecFactory {
+    public static Codec extract(VideoFile file) {
+        String type = file.getCodeType();
+        if ("mp4".equals(type)) {
+            System.out.println("CodecFactory: extracting mpeg audio...");
+            return new MPEG4CompressionCodec();
+        } else {
+            System.out.println("CodecFactory: extracting ogg audio...");
+            return new OggCompressionCodec();
         }
     }
+}
 
-    /**
-     * Subsystem
-     */
-    interface Codec {
+/** Subsystem */
+class BitrateReader {
+    public static VideoFile read(VideoFile file, Codec codec) {
+        System.out.println("BitrateReader: reading file...");
+        return file;
     }
 
-    private static class MPEG4CompressionCodec implements Codec {
-        public String type = "mp4";
+    public static VideoFile convert(VideoFile buffer, Codec codec) {
+        System.out.println("BitrateReader: writing file...");
+        return buffer;
     }
+}
 
-    private static class OggCompressionCodec implements Codec {
-        public String type = "ogg";
+/** Subsystem */
+class AudioMixer {
+    public File fix(VideoFile result) {
+        System.out.println("AudioMixer: fixing audio...");
+        return new File("tmp");
     }
+}
 
-    /**
-     * Subsystem
-     */
-    private static class CodecFactory {
-        public static Codec extract(VideoFile file) {
-            String type = file.getCodeType();
-            if ("mp4".equals(type)) {
-                System.out.println("CodecFactory: extracting mpeg audio...");
-                return new MPEG4CompressionCodec();
-            } else {
-                System.out.println("CodecFactory: extracting ogg audio...");
-                return new OggCompressionCodec();
-            }
+/** Facade */
+class VideoConversionFacade {
+    public File convertVideo(String fileName, String format) {
+        System.out.println("VideoConversionFacade: conversion started.");
+        VideoFile file = new VideoFile(fileName);
+        Codec sourceCodec = CodecFactory.extract(file);
+        Codec destinationCodec;
+        if ("mp4".equals(format)) {
+            destinationCodec = new OggCompressionCodec();
+        } else {
+            destinationCodec = new MPEG4CompressionCodec();
         }
-    }
-
-    /**
-     * Subsystem
-     */
-    private static class BitrateReader {
-        public static VideoFile read(VideoFile file, Codec codec) {
-            System.out.println("BitrateReader: reading file...");
-            return file;
-        }
-
-        public static VideoFile convert(VideoFile buffer, Codec codec) {
-            System.out.println("BitrateReader: writing file...");
-            return buffer;
-        }
-    }
-
-    /**
-     * Subsystem
-     */
-    private static class AudioMixer {
-        public File fix(VideoFile result) {
-            System.out.println("AudioMixer: fixing audio...");
-            return new File("tmp");
-        }
-    }
-
-    /**
-     * Facade
-     */
-    private static class VideoConversionFacade {
-        public File convertVideo(String fileName, String format) {
-            System.out.println("VideoConversionFacade: conversion started.");
-            VideoFile file = new VideoFile(fileName);
-            Codec sourceCodec = CodecFactory.extract(file);
-            Codec destinationCodec;
-            if ("mp4".equals(format)) {
-                destinationCodec = new OggCompressionCodec();
-            } else {
-                destinationCodec = new MPEG4CompressionCodec();
-            }
-            VideoFile buffer = BitrateReader.read(file, sourceCodec);
-            VideoFile intermediateResult = BitrateReader.convert(buffer, destinationCodec);
-            File result = new AudioMixer().fix(intermediateResult);
-            System.out.println("VideoConversionFacade: conversion completed.");
-            return result;
-        }
+        VideoFile buffer = BitrateReader.read(file, sourceCodec);
+        VideoFile intermediateResult = BitrateReader.convert(buffer, destinationCodec);
+        File result = new AudioMixer().fix(intermediateResult);
+        System.out.println("VideoConversionFacade: conversion completed.");
+        return result;
     }
 }

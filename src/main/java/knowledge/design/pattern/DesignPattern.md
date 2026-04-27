@@ -83,7 +83,7 @@
     <tr>
         <td>组合</td>
         <td>对象</td>
-        <td>3</td>
+        <td>2</td>
         <td>状态</td>
         <td>对象</td>
         <td>3</td>
@@ -125,16 +125,8 @@
     Object Pool        每个对象都等价     主要目的是节省时间       独占
     Flyweight          每个对象不等价     主要目的是节省空间       共享
 ### Proxy vs Decorator
-1. 服务对象的生命周期
-    ```
     Proxy              通常由 Proxy 控制 服务对象(RealSubject) 的生命周期，即在 Proxy 里 new 服务对象
     Decorator          必定由 Client 控制 服务对象(Component) 的生命周期，即通过 Decorator 构造器传入 服务对象
-    ```
-2. Decorator 是 Proxy 的一个特例
-    ```
-    Proxy              Proxy 实现 Subject，其持有的 RealSubject 也实现 Subject
-    Decorator          Decorator 实现 Component，其持有的 Compoent 的类型就是 Component
-    ```
 ### Proxy vs Decorator vs Object Adapter
     Proxy              为对象提供相同接口   Proxy 和其持有的 服务对象(RealSubject) 都实现 Subject
     Decorator          为对象提供增强接口   Decorator 和其持有的 服务对象(Component) 都实现 Component

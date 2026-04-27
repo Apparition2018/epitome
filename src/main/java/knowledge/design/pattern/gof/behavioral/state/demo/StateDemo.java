@@ -55,211 +55,199 @@ import java.util.stream.IntStream;
  */
 public class StateDemo {
 
-    /**
-     * <a href="https://refactoringguru.cn/design-patterns/state/java/example">媒体播放器根据当前的状态表现不同的控制行为</a>
-     */
+    /** <a href="https://refactoringguru.cn/design-patterns/state/java/example">媒体播放器根据当前的状态表现不同的控制行为</a> */
     public static void main(String[] args) {
         Player player = new Player();
         UI ui = new UI(player);
         ui.init();
     }
+}
 
-    /**
-     * State
-     */
-    private static abstract class State {
-        protected Player player;
+/** State */
+abstract class State {
+    protected Player player;
 
-        private State(Player player) {
-            this.player = player;
-        }
-
-        protected abstract String onLock();
-
-        protected abstract String onPlay();
-
-        protected abstract String onNext();
-
-        protected abstract String onPrevious();
+    public State(Player player) {
+        this.player = player;
     }
 
-    /**
-     * ConcreteState
-     */
-    private static class LockedState extends State {
+    protected abstract String onLock();
 
-        LockedState(Player player) {
-            super(player);
-            player.setPlaying(false);
-        }
+    protected abstract String onPlay();
 
-        @Override
-        public String onLock() {
-            if (player.isPlaying()) {
-                player.changeState(new ReadyState(player));
-                return "Stop playing";
-            } else {
-                return "Locked...";
-            }
-        }
+    protected abstract String onNext();
 
-        @Override
-        public String onPlay() {
+    protected abstract String onPrevious();
+}
+
+/** ConcreteState */
+class LockedState extends State {
+
+    LockedState(Player player) {
+        super(player);
+        player.setPlaying(false);
+    }
+
+    @Override
+    public String onLock() {
+        if (player.isPlaying()) {
             player.changeState(new ReadyState(player));
-            return "Ready";
-        }
-
-        @Override
-        public String onNext() {
-            return "Locked...";
-        }
-
-        @Override
-        public String onPrevious() {
-            return "Locked...";
-        }
-    }
-
-    /**
-     * ConcreteState
-     */
-    private static class ReadyState extends State {
-
-        public ReadyState(Player player) {
-            super(player);
-        }
-
-        @Override
-        public String onLock() {
-            player.changeState(new LockedState(player));
-            return "Locked...";
-        }
-
-        @Override
-        public String onPlay() {
-            String action = player.startPlayback();
-            player.changeState(new PlayingState(player));
-            return action;
-        }
-
-        @Override
-        public String onNext() {
-            return "Locked...";
-        }
-
-        @Override
-        public String onPrevious() {
-            return "Locked...";
-        }
-    }
-
-    /**
-     * ConcreteState
-     */
-    private static class PlayingState extends State {
-
-        PlayingState(Player player) {
-            super(player);
-        }
-
-        @Override
-        public String onLock() {
-            player.changeState(new LockedState(player));
-            player.setCurrentTrackAfterStop();
             return "Stop playing";
-        }
-
-        @Override
-        public String onPlay() {
-            player.changeState(new ReadyState(player));
-            return "Paused...";
-        }
-
-        @Override
-        public String onNext() {
-            return player.nextTrack();
-        }
-
-        @Override
-        public String onPrevious() {
-            return player.previousTrack();
+        } else {
+            return "Locked...";
         }
     }
 
-    /**
-     * Context
-     */
-    private static class Player {
-        @Getter
-        private State state;
-        @Getter
-        @Setter
-        private boolean playing = false;
-        private final List<String> playlist = new ArrayList<>();
-        private int currentTrack = 0;
-
-        public Player() {
-            this.state = new ReadyState(this);
-            setPlaying(true);
-            IntStream.rangeClosed(1, 12).forEach(i -> playlist.add("Track " + i));
-        }
-
-        public void changeState(State state) {
-            this.state = state;
-        }
-
-        public String startPlayback() {
-            return "Playing " + playlist.get(currentTrack);
-        }
-
-        public String nextTrack() {
-            currentTrack++;
-            if (currentTrack > playlist.size() - 1) {
-                currentTrack = 0;
-            }
-            return "Playing " + playlist.get(currentTrack);
-        }
-
-        public String previousTrack() {
-            currentTrack--;
-            if (currentTrack < 0) {
-                currentTrack = playlist.size() - 1;
-            }
-            return "Playing " + playlist.get(currentTrack);
-        }
-
-        public void setCurrentTrackAfterStop() {
-            this.currentTrack = 0;
-        }
+    @Override
+    public String onPlay() {
+        player.changeState(new ReadyState(player));
+        return "Ready";
     }
 
-    private record UI(Player player) {
-        private static final JTextField textField = new JTextField();
+    @Override
+    public String onNext() {
+        return "Locked...";
+    }
 
-        public void init() {
-            JFrame frame = new JFrame("Test player");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            JPanel context = new JPanel();
-            context.setLayout(new BoxLayout(context, BoxLayout.Y_AXIS));
-            frame.getContentPane().add(context);
-            JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            context.add(textField);
-            context.add(buttons);
+    @Override
+    public String onPrevious() {
+        return "Locked...";
+    }
+}
 
-            JButton play = new JButton("Play");
-            play.addActionListener(e -> textField.setText(player.getState().onPlay()));
-            JButton stop = new JButton("Stop");
-            stop.addActionListener(e -> textField.setText(player.getState().onLock()));
-            JButton next = new JButton("Next");
-            next.addActionListener(e -> textField.setText(player.getState().onNext()));
-            JButton prev = new JButton("Prev");
-            prev.addActionListener(e -> textField.setText(player.getState().onPrevious()));
-            frame.setVisible(true);
-            frame.setSize(300, 100);
-            buttons.add(play);
-            buttons.add(stop);
-            buttons.add(next);
-            buttons.add(prev);
+/** ConcreteState */
+class ReadyState extends State {
+
+    public ReadyState(Player player) {
+        super(player);
+    }
+
+    @Override
+    public String onLock() {
+        player.changeState(new LockedState(player));
+        return "Locked...";
+    }
+
+    @Override
+    public String onPlay() {
+        String action = player.startPlayback();
+        player.changeState(new PlayingState(player));
+        return action;
+    }
+
+    @Override
+    public String onNext() {
+        return "Locked...";
+    }
+
+    @Override
+    public String onPrevious() {
+        return "Locked...";
+    }
+}
+
+/** ConcreteState */
+class PlayingState extends State {
+
+    PlayingState(Player player) {
+        super(player);
+    }
+
+    @Override
+    public String onLock() {
+        player.changeState(new LockedState(player));
+        player.setCurrentTrackAfterStop();
+        return "Stop playing";
+    }
+
+    @Override
+    public String onPlay() {
+        player.changeState(new ReadyState(player));
+        return "Paused...";
+    }
+
+    @Override
+    public String onNext() {
+        return player.nextTrack();
+    }
+
+    @Override
+    public String onPrevious() {
+        return player.previousTrack();
+    }
+}
+
+/** Context */
+class Player {
+    @Getter
+    private State state;
+    @Getter
+    @Setter
+    private boolean playing = false;
+    private final List<String> playlist = new ArrayList<>();
+    private int currentTrack = 0;
+
+    public Player() {
+        this.state = new ReadyState(this);
+        setPlaying(true);
+        IntStream.rangeClosed(1, 12).forEach(i -> playlist.add("Track " + i));
+    }
+
+    public void changeState(State state) {
+        this.state = state;
+    }
+
+    public String startPlayback() {
+        return "Playing " + playlist.get(currentTrack);
+    }
+
+    public String nextTrack() {
+        currentTrack++;
+        if (currentTrack > playlist.size() - 1) {
+            currentTrack = 0;
         }
+        return "Playing " + playlist.get(currentTrack);
+    }
+
+    public String previousTrack() {
+        currentTrack--;
+        if (currentTrack < 0) {
+            currentTrack = playlist.size() - 1;
+        }
+        return "Playing " + playlist.get(currentTrack);
+    }
+
+    public void setCurrentTrackAfterStop() {
+        this.currentTrack = 0;
+    }
+}
+
+record UI(Player player) {
+    static JTextField textField = new JTextField();
+
+    public void init() {
+        JFrame frame = new JFrame("Test player");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel context = new JPanel();
+        context.setLayout(new BoxLayout(context, BoxLayout.Y_AXIS));
+        frame.getContentPane().add(context);
+        JPanel buttons = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        context.add(textField);
+        context.add(buttons);
+
+        JButton play = new JButton("Play");
+        play.addActionListener(e -> textField.setText(player.getState().onPlay()));
+        JButton stop = new JButton("Stop");
+        stop.addActionListener(e -> textField.setText(player.getState().onLock()));
+        JButton next = new JButton("Next");
+        next.addActionListener(e -> textField.setText(player.getState().onNext()));
+        JButton prev = new JButton("Prev");
+        prev.addActionListener(e -> textField.setText(player.getState().onPrevious()));
+        frame.setVisible(true);
+        frame.setSize(300, 100);
+        buttons.add(play);
+        buttons.add(stop);
+        buttons.add(next);
+        buttons.add(prev);
     }
 }

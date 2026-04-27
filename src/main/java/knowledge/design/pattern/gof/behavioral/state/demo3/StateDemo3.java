@@ -19,64 +19,62 @@ public class StateDemo3 {
         screen.onClick();
         screen.onClick();
     }
+}
 
-    /**
-     * Context & StateManager
-     */
-    private static class Screen {
-        private State currentState;
-        private final State normalState;
-        private final State doubleState;
-        private final State quadrupleState;
+/** Context & StateManager */
+class Screen {
+    private State currentState;
+    private final State normalState;
+    private final State doubleState;
+    private final State quadrupleState;
 
-        public Screen() {
-            this.normalState = new NormalState();
-            this.doubleState = new DoubleState();
-            this.quadrupleState = new QuadrupleState();
-            this.currentState = normalState;
+    public Screen() {
+        this.normalState = new NormalState();
+        this.doubleState = new DoubleState();
+        this.quadrupleState = new QuadrupleState();
+        this.currentState = normalState;
+        this.currentState.display();
+    }
+
+    public void setState(State state) {
+        this.currentState = state;
+    }
+
+    public void onClick() {
+        if (this.currentState == normalState) {
+            this.setState(doubleState);
+            this.currentState.display();
+        } else if (this.currentState == doubleState) {
+            this.setState(quadrupleState);
+            this.currentState.display();
+        } else if (this.currentState == quadrupleState) {
+            this.setState(normalState);
             this.currentState.display();
         }
-
-        public void setState(State state) {
-            this.currentState = state;
-        }
-
-        public void onClick() {
-            if (this.currentState == normalState) {
-                this.setState(doubleState);
-                this.currentState.display();
-            } else if (this.currentState == doubleState) {
-                this.setState(quadrupleState);
-                this.currentState.display();
-            } else if (this.currentState == quadrupleState) {
-                this.setState(normalState);
-                this.currentState.display();
-            }
-        }
     }
+}
 
-    private static abstract class State {
-        protected abstract void display();
+abstract class State {
+    protected abstract void display();
+}
+
+class NormalState extends State {
+    @Override
+    public void display() {
+        System.out.println("正常大小");
     }
+}
 
-    private static class NormalState extends State {
-        @Override
-        public void display() {
-            System.out.println("正常大小");
-        }
+class DoubleState extends State {
+    @Override
+    public void display() {
+        System.out.println("双倍大小");
     }
+}
 
-    private static class DoubleState extends State {
-        @Override
-        public void display() {
-            System.out.println("双倍大小");
-        }
-    }
-
-    private static class QuadrupleState extends State {
-        @Override
-        public void display() {
-            System.out.println("四倍大小");
-        }
+class QuadrupleState extends State {
+    @Override
+    public void display() {
+        System.out.println("四倍大小");
     }
 }

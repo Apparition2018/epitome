@@ -1,6 +1,10 @@
 package knowledge.design.pattern.gof.structural.adapter;
 
-import java.util.*;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Enumeration;
 
 /**
  * 适配器模式：使现有不兼容的接口可以一起工作
@@ -30,9 +34,9 @@ import java.util.*;
  * </pre>
  * 分类：
  * <pre>
- * 1 Object Adapter     class Adapter extends Adaptee implement Target {}               继承
- * 2 Class Adapter      class Adapter implement Target { private Adaptee adaptee }      委派
- * 3 Default Adapter    abstract class Adapter implement Adaptee {}
+ * 1 {@link ObjectPaymentAdapter 对象适配器}
+ * 2 {@link ClassPaymentAdapter 类适配器}
+ * 3 {@link DefaultPaymentAdapter 缺省适配器}
  * </pre>
  * 优点：符合单一职责原则、开闭原则
  * <p>扩展：同时实现或继承 Target 和 Adaptee，同时持有 Target 和 Adaptee 的引用，实现双向适配器
@@ -44,78 +48,72 @@ import java.util.*;
  * @since 2020/9/26 2:51
  */
 public class AdapterDemo {
+}
 
-    /**
-     * <pre>
-     * 1 MediaPlayer 可以播放 MP3
-     * 2 VideoPlayer 可以播放 VLC 或 MP4
-     * 让 MediaPlayer 可以播放所有文件
-     * </pre>
-     */
-    public static void main(String[] args) {
-        MediaPlayer player = new MediaPlayerAdapter();
+/** Adaptee */
+class OldBankApi {
+    public void executeTransaction(String bankCode, double money, long id) {
+        System.out.println("银行接口扣款：" + money);
+    }
+}
 
-        player.play("beyond the horizon.mp3");
-        player.play("alone.mp4");
-        player.play("far far away.vlc");
-        player.play("mind me.avi");
+/** Target */
+interface IPaymentService {
+    void pay(Long orderId, BigDecimal amount);
+
+    void onBeforePay();
+
+    void onAfterPay();
+}
+
+/**
+ * <pre>
+ * 1 Default Adapter：通过空实现来实现
+ * 2 Object/Class Adapter 的 Target
+ * </pre>
+ */
+abstract class DefaultPaymentAdapter implements IPaymentService {
+    @Override
+    public void pay(Long orderId, BigDecimal amount) {
     }
 
-    /**
-     * Adaptee
-     */
-    private static abstract class VideoPlayer {
-        void playVlc(String fileName) {
-        }
-
-        void playMp4(String fileName) {
-        }
+    @Override
+    public void onBeforePay() {
     }
 
-    private static class VlcPlayer extends VideoPlayer {
-        @Override
-        public void playVlc(String fileName) {
-            System.out.println("Playing vlc file. Name: " + fileName);
-        }
+    @Override
+    public void onAfterPay() {
+    }
+}
+
+/** Object Adapter：通过组合来实现 */
+class ObjectPaymentAdapter extends DefaultPaymentAdapter {
+    // 组合关系
+    private final OldBankApi oldBankApi;
+
+    public ObjectPaymentAdapter(OldBankApi oldBankApi) {
+        this.oldBankApi = oldBankApi;
     }
 
-    private static class Mp4Player extends VideoPlayer {
-        @Override
-        public void playMp4(String fileName) {
-            System.out.println("Playing mp4 file. Name: " + fileName);
-        }
+    @Override
+    public void pay(Long orderId, BigDecimal amount) {
+        oldBankApi.executeTransaction("BK01", amount.doubleValue(), orderId);
+    }
+}
+
+/** Class Adapter：通过多重继承实现（Java 不支持多重继承，所以通过继承并实现接口实现） */
+class ClassPaymentAdapter extends OldBankApi implements IPaymentService {
+
+    @Override
+    public void pay(Long orderId, BigDecimal amount) {
+        super.executeTransaction("BK01", amount.doubleValue(), orderId);
     }
 
-    /**
-     * Target
-     */
-    private static class MediaPlayer {
-        public void play(String fileName) {
-            System.out.println("Playing mp3 file. Name: " + fileName);
-        }
+    @Override
+    public void onBeforePay() {
     }
 
-    /**
-     * Adapter
-     * <p>对象适配器模式
-     */
-    private static class MediaPlayerAdapter extends MediaPlayer {
-        private VideoPlayer videoPlayer;
-
-        @Override
-        public void play(String fileName) {
-            Locale.setDefault(Locale.ENGLISH);
-            if (fileName.toLowerCase().endsWith("vlc")) {
-                videoPlayer = new VlcPlayer();
-                videoPlayer.playVlc(fileName);
-            } else if (fileName.toLowerCase().endsWith("mp4")) {
-                videoPlayer = new Mp4Player();
-                videoPlayer.playMp4(fileName);
-            } else if (fileName.toLowerCase().endsWith("mp3")) {
-                super.play(fileName);
-            } else {
-                System.out.println("Invalid media. " + fileName.split("\\.")[1] + " format not supported");
-            }
-        }
+    @Override
+    public void onAfterPay() {
     }
 }

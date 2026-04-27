@@ -15,9 +15,10 @@ import java.util.Stack;
  * <p>使用场景：控制请求的执行，如异步、延迟、排队执行、撤销/重做、记录日志等
  * <p>使用实例：
  * <pre>
- * 1 {@link Runnable} 的所有实现
- * 2 {@link Action} 的所有实现
- * 3 {@link JdbcTemplate#query(String, ResultSetExtractor)}
+ * 1 JDK：
+ *  ① {@link Runnable} 的所有实现
+ *  ② {@link Action} 的所有实现
+ * 2 {@link JdbcTemplate#query(String, ResultSetExtractor)}
  *   - {@link JdbcTemplate#execute(StatementCallback) Invoker}
  *   - {@link StatementCallback Command}
  *   - {@link Statement Receiver}
@@ -39,9 +40,7 @@ import java.util.Stack;
  */
 public class CommandDemo {
 
-    /**
-     * 计算器：加法
-     */
+    /** 计算器：加法 */
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
         Adder adder = new Adder();
@@ -49,18 +48,14 @@ public class CommandDemo {
         calculator.compute(new AddCommand(adder, 2));
     }
 
-    /**
-     * Invoker
-     */
+    /** Invoker */
     private static class Calculator {
         public void compute(Command command) {
             command.execute();
         }
     }
 
-    /**
-     * Command
-     */
+    /** Command */
     private static abstract class Command {
         protected final Adder adder;
         protected final int value;
@@ -73,9 +68,7 @@ public class CommandDemo {
         protected abstract void execute();
     }
 
-    /**
-     * ConcreteCommand
-     */
+    /** ConcreteCommand */
     private static class AddCommand extends Command {
         public AddCommand(Adder adder, int value) {
             super(adder, value);
@@ -86,9 +79,7 @@ public class CommandDemo {
         }
     }
 
-    /**
-     * Receiver
-     */
+    /** Receiver */
     private static class Adder {
         private int result = 0;
 
@@ -97,9 +88,7 @@ public class CommandDemo {
         }
     }
 
-    /**
-     * 宏命令 (Macro Command) / 组合命令模式
-     */
+    /** 宏命令 (Macro Command) / 组合命令模式 */
     private static class CompositeCommandDemo {
         public static void main(String[] args) {
             Adder adder = new Adder();
@@ -109,9 +98,7 @@ public class CommandDemo {
             compositeInvoker.execute();
         }
 
-        /**
-         * Invoker / Composite
-         */
+        /** Invoker / Composite */
         private static class CompositeInvoker extends Command {
             private final List<Command> children = new ArrayList<>();
 
@@ -138,9 +125,7 @@ public class CommandDemo {
         }
     }
 
-    /**
-     * 命令队列
-     */
+    /** 命令队列 */
     private static class CommandQueueDemo {
         public static void main(String[] args) {
             Calculator calculator = new Calculator();
@@ -151,9 +136,7 @@ public class CommandDemo {
             calculator.compute(commandQueue);
         }
 
-        /**
-         * Invoker
-         */
+        /** Invoker */
         private static class Calculator {
             public void compute(CommandQueue commandQueue) {
                 commandQueue.execute();
@@ -180,9 +163,7 @@ public class CommandDemo {
      * <p>实现撤销/历史记录，也可用原型命令模式实现
      */
     private static class MementoCommandDemo {
-        /**
-         * <a href="https://blog.csdn.net/LoveLion/article/details/8806509">计算器：加法、撤销</a>
-         */
+        /** <a href="https://blog.csdn.net/LoveLion/article/details/8806509">计算器：加法、撤销</a> */
         public static void main(String[] args) {
             Calculator calculator = new Calculator();
             Adder adder = new Adder();
@@ -193,9 +174,7 @@ public class CommandDemo {
             calculator.undo();
         }
 
-        /**
-         * Invoker
-         */
+        /** Invoker */
         private static class Calculator {
             private final CommandHistory history = new CommandHistory();
 
@@ -211,9 +190,7 @@ public class CommandDemo {
             }
         }
 
-        /**
-         * Command / Memento
-         */
+        /** Command / Memento */
         static abstract class Command {
             protected final Adder adder;
             protected final int value;
@@ -235,9 +212,7 @@ public class CommandDemo {
             }
         }
 
-        /**
-         * ConcreteCommand
-         */
+        /** ConcreteCommand */
         private static class AddCommand extends Command {
             public AddCommand(Adder adder, int value) {
                 super(adder, value);
@@ -249,9 +224,7 @@ public class CommandDemo {
             }
         }
 
-        /**
-         * Caretaker
-         */
+        /** Caretaker */
         private static class CommandHistory {
             private final Stack<Command> history = new Stack<>();
 

@@ -1,9 +1,12 @@
 package knowledge.design.pattern.gof.behavioral.template.method;
 
 import jakarta.servlet.http.HttpServlet;
+import knowledge.design.pattern.gof.behavioral.strategy.SpringStrategyFactoryDemo;
 import knowledge.design.pattern.other.Idiom.CallbackDemo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.io.InputStream;
@@ -19,12 +22,14 @@ import java.util.AbstractSet;
  * <p>使用场景：多个类可抽象出相同的算法步骤，算法步骤的实现可以相同（复用），也可以有各自不同的实现（扩展)
  * <p>使用实例：
  * <pre>
- * 1 {@link InputStream} {@link OutputStream} {@link Reader} {@link Writer} 所有非抽象方法
- * 2 {@link AbstractList} {@link AbstractSet} {@link AbstractMap} 所有非抽象方法
- * 3 {@link HttpServlet} 所有默认发送 HTTP 405 错误相应的 doXXX()
- * 4 {@link JdbcTemplate}
- * 5 {@link RedisTemplate}
- * 6 {@link TransactionTemplate}
+ * 1 JDK：
+ *  ① {@link InputStream} {@link OutputStream} {@link Reader} {@link Writer} 所有非抽象方法
+ *  ② {@link AbstractList} {@link AbstractSet} {@link AbstractMap} 所有非抽象方法
+ *  ③ {@link HttpServlet} 所有默认发送 HTTP 405 错误相应的 doXXX()
+ * 2 Spring：
+ *  ① {@link JdbcTemplate}
+ *  ② {@link RedisTemplate}
+ *  ③ {@link TransactionTemplate}
  * </pre>
  * 角色：
  * <pre>
@@ -46,72 +51,77 @@ import java.util.AbstractSet;
  * @see <a href="https://refactoringguru.cn/design-patterns/template-method">Template Method</a>
  * @see <a href="https://c.biancheng.net/view/p0vgdz7.html">Java设计模式</a>
  * @see <a href="https://gupaoedu-tom.blog.csdn.net/article/details/121194483">Tom|搞懂钩子方法</a>
+ * @see SpringStrategyFactoryDemo
  * @since 2020/9/26 2:51
  */
+@Service
 public class TemplateMethodDemo {
 
-    public static void main(String[] args) {
-        Game football = new Football();
-        football.play();
+    @Autowired
+    private NotificationTemplate emailNotification;
+    @Autowired
+    private NotificationTemplate smsNotification;
+
+    public void completeOrder(String orderId, String type) {
+        // 1. 处理订单逻辑...
+        System.out.println("订单 " + orderId + " 处理完成");
+
+        // 2. 根据类型调用对应的模板子类
+        NotificationTemplate template;
+        if ("EMAIL".equalsIgnoreCase(type)) {
+            template = emailNotification;
+        } else if ("SMS".equalsIgnoreCase(type)) {
+            template = smsNotification;
+        } else {
+            throw new IllegalArgumentException("暂不支持的通知类型: " + type);
+        }
+        // 执行模板方法（固定流程 + 钩子方法）
+        template.execute("您的订单已完成！");
+    }
+}
+
+/** AbstractClass */
+abstract class NotificationTemplate {
+
+    // 模板方法：定义算法骨架（final 防止子类破坏）
+    public final void execute(String message) {
+        validate();
+        String content = buildContent(message);
+        doSend(content);
+        recordLog();
     }
 
-    /**
-     * AbstractClass
-     */
-    private static abstract class Game {
-        protected abstract void init();
-
-        protected abstract void begin();
-
-        protected abstract void finished();
-
-        /**
-         * 模板方法
-         */
-        private void play() {
-            init();
-            begin();
-            finished();
-        }
+    protected void validate() {
+        System.out.println("参数校验通过");
     }
 
-    /**
-     * ConcreteClass
-     */
-    private static class Football extends Game {
-        @Override
-        public void init() {
-            System.out.println("Football Game Init");
-        }
-
-        @Override
-        public void begin() {
-            System.out.println("Football Game Begin");
-        }
-
-        @Override
-        public void finished() {
-            System.out.println("Football Game Finished");
-        }
+    protected String buildContent(String message) {
+        return "[系统通知] " + message;
     }
 
-    /**
-     * ConcreteClass
-     */
-    private static class Basketball extends Game {
-        @Override
-        public void init() {
-            System.out.println("Basketball Game Init");
-        }
+    protected abstract void doSend(String content);
 
-        @Override
-        public void begin() {
-            System.out.println("Basketball Game Begin");
-        }
+    protected void recordLog() {
+        System.out.println("记录通知日志");
+    }
+}
 
-        @Override
-        public void finished() {
-            System.out.println("Basketball Game Finished");
-        }
+/** ConcreteClass */
+@Service
+class EmailNotification extends NotificationTemplate {
+
+    @Override
+    protected void doSend(String content) {
+        System.out.println("发送邮件通知: " + content);
+    }
+}
+
+/** ConcreteClass */
+@Service
+class SmsNotification extends NotificationTemplate {
+
+    @Override
+    protected void doSend(String content) {
+        System.out.println("发送短信通知: " + content);
     }
 }

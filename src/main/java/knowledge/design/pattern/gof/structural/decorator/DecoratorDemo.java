@@ -4,8 +4,11 @@ import jakarta.servlet.http.HttpServletRequestWrapper;
 import jakarta.servlet.http.HttpServletResponseWrapper;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.factory.xml.BeanDefinitionDecorator;
 import org.springframework.cache.transaction.TransactionAwareCacheDecorator;
+import org.springframework.core.task.TaskDecorator;
+import org.springframework.http.server.reactive.HttpHeadResponseDecorator;
 import org.springframework.http.server.reactive.ServerHttpRequestDecorator;
 import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 
@@ -20,7 +23,8 @@ import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 
 /**
- * 装饰器模式：通过将对象放入特殊的封装对象，动态地给对象添加一些新的功能
+ * 装饰器模式：通过将对象放入特殊的封装对象，动态地给对象添加一些新的功能。
+ *  Spring 强大的 AOP 几乎可以完成所有功能增强，所以很少用到装饰器了
  * <p>使用场景：功能组合
  * <pre>
  * 1 业务逻辑可用一个基本组件及多个额外可选层表示
@@ -28,16 +32,21 @@ import java.util.zip.InflaterInputStream;
  * </pre>
  * 使用实例：
  * <pre>
- * 1 Java IO：
+ * 1 JDK：
+ *  ① Java IO：
  *      Component:          {@link InputStream} {@link OutputStream} {@link Reader} {@link Writer}
  *      ConcreteComponent:  {@link FileInputStream} {@link ByteArrayInputStream} {@link PipedInputStream}
  *      Decorator:          {@link FilterInputStream}
  *      ConcreteDecorator:  {@link BufferedInputStream} {@link DataInputStream}
- * 2 {@link Collections} 的 checkedXXX()、 synchronizedXXX() 和 unmodifiableXXX()
- * 3 {@link HttpServletRequestWrapper} 和 {@link HttpServletResponseWrapper}
- * 4 {@link BeanDefinitionDecorator}
- * 5 {@link ServerHttpRequestDecorator} 和 {@link ServerHttpResponseDecorator}
- * 6 {@link TransactionAwareCacheDecorator}
+ *  ② {@link Collections} 的 checkedXXX()、 synchronizedXXX() 和 unmodifiableXXX()
+ *  ③ {@link HttpServletRequestWrapper} 和 {@link HttpServletResponseWrapper}
+ *  ④ {@link TaskDecorator}
+ * 2 Spring：
+ *  ① {@link ServerHttpRequestDecorator} 和 {@link ServerHttpResponseDecorator}
+ *  ② {@link BeanWrapper}
+ *  ③ {@link TransactionAwareCacheDecorator}
+ *  ④ {@link BeanDefinitionDecorator}
+ *  ⑤ {@link HttpHeadResponseDecorator}
  * </pre>
  * 角色：
  * <pre>
@@ -84,160 +93,160 @@ public class DecoratorDemo {
         System.out.println("\n- Decoded --------------");
         System.out.println(dataSource.readData());
     }
+}
 
-    /**
-     * Component
-     * 定义了读取和写入操作的通用数据接口
-     */
-    interface DataSource {
-        void writeData(String data);
+/**
+ * Component
+ * 定义了读取和写入操作的通用数据接口
+ */
+interface DataSource {
+    void writeData(String data);
 
-        String readData();
-    }
+    String readData();
+}
 
-    /**
-     * ConcreteComponent
-     * 简单数据读写器
-     */
-    private record FileDataSource(String name) implements DataSource {
+/**
+ * ConcreteComponent
+ * 简单数据读写器
+ */
+record FileDataSource(String name) implements DataSource {
 
-        @Override
-        public void writeData(String data) {
-            File file = new File(name);
-            try (OutputStream fos = Files.newOutputStream(file.toPath())) {
-                fos.write(data.getBytes(), 0, data.length());
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
-
-        @Override
-        public String readData() {
-            char[] buffer = null;
-            File file = new File(name);
-            try (FileReader reader = new FileReader(file)) {
-                buffer = new char[(int) file.length()];
-                reader.read(buffer);
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
-            return new String(Objects.requireNonNull(buffer));
+    @Override
+    public void writeData(String data) {
+        File file = new File(name);
+        try (OutputStream fos = Files.newOutputStream(file.toPath())) {
+            fos.write(data.getBytes(), 0, data.length());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
-    /**
-     * Decorator
-     * 抽象装饰
-     */
-    private static class DataSourceDecorator implements DataSource {
-        private final DataSource wrappee;
-
-        DataSourceDecorator(DataSource source) {
-            this.wrappee = source;
+    @Override
+    public String readData() {
+        char[] buffer;
+        File file = new File(name);
+        try (FileReader reader = new FileReader(file)) {
+            buffer = new char[(int) file.length()];
+            reader.read(buffer);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        return new String(Objects.requireNonNull(buffer));
+    }
+}
 
-        @Override
-        public void writeData(String data) {
-            wrappee.writeData(data);
+/**
+ * Decorator
+ * 抽象装饰
+ */
+class DataSourceDecorator implements DataSource {
+    private final DataSource wrapper;
+
+    DataSourceDecorator(DataSource source) {
+        this.wrapper = source;
+    }
+
+    @Override
+    public void writeData(String data) {
+        wrapper.writeData(data);
+    }
+
+    @Override
+    public String readData() {
+        return wrapper.readData();
+    }
+}
+
+/**
+ * ConcreteDecorator
+ * 加密装饰
+ */
+class EncryptionDecorator extends DataSourceDecorator {
+
+    public EncryptionDecorator(DataSource source) {
+        super(source);
+    }
+
+    @Override
+    public void writeData(String data) {
+        super.writeData(encode(data));
+    }
+
+    @Override
+    public String readData() {
+        return decode(super.readData());
+    }
+
+    private String encode(String data) {
+        byte[] result = data.getBytes();
+        for (int i = 0; i < result.length; i++) {
+            result[i] += (byte) 1;
         }
+        return Base64.getEncoder().encodeToString(result);
+    }
 
-        @Override
-        public String readData() {
-            return wrappee.readData();
+    private String decode(String data) {
+        byte[] result = Base64.getDecoder().decode(data);
+        for (int i = 0; i < result.length; i++) {
+            result[i] -= (byte) 1;
+        }
+        return new String(result, StandardCharsets.UTF_8);
+    }
+}
+
+/**
+ * ConcreteDecorator
+ * 压缩装饰
+ */
+@Getter
+@Setter
+class CompressionDecorator extends DataSourceDecorator {
+    private int compLevel = 6;
+
+    public CompressionDecorator(DataSource source) {
+        super(source);
+    }
+
+    @Override
+    public void writeData(String data) {
+        super.writeData(compress(data));
+    }
+
+    @Override
+    public String readData() {
+        return decompress(super.readData());
+    }
+
+    private String compress(String stringData) {
+        byte[] data = stringData.getBytes();
+        try {
+            ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
+            DeflaterOutputStream dos = new DeflaterOutputStream(bout, new Deflater(compLevel));
+            dos.write(data);
+            dos.close();
+            bout.close();
+            return Base64.getEncoder().encodeToString(bout.toByteArray());
+        } catch (IOException ex) {
+            return null;
         }
     }
 
-    /**
-     * ConcreteDecorator
-     * 加密装饰
-     */
-    private static class EncryptionDecorator extends DataSourceDecorator {
-
-        public EncryptionDecorator(DataSource source) {
-            super(source);
-        }
-
-        @Override
-        public void writeData(String data) {
-            super.writeData(encode(data));
-        }
-
-        @Override
-        public String readData() {
-            return decode(super.readData());
-        }
-
-        private String encode(String data) {
-            byte[] result = data.getBytes();
-            for (int i = 0; i < result.length; i++) {
-                result[i] += (byte) 1;
+    private String decompress(String stringData) {
+        byte[] data = Base64.getDecoder().decode(stringData);
+        try {
+            InputStream in = new ByteArrayInputStream(data);
+            InflaterInputStream iin = new InflaterInputStream(in);
+            ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
+            int b;
+            while ((b = iin.read()) != -1) {
+                bout.write(b);
             }
-            return Base64.getEncoder().encodeToString(result);
-        }
-
-        private String decode(String data) {
-            byte[] result = Base64.getDecoder().decode(data);
-            for (int i = 0; i < result.length; i++) {
-                result[i] -= (byte) 1;
-            }
-            return new String(result, StandardCharsets.UTF_8);
-        }
-    }
-
-    /**
-     * ConcreteDecorator
-     * 压缩装饰
-     */
-    @Getter
-    @Setter
-    private static class CompressionDecorator extends DataSourceDecorator {
-        private int compLevel = 6;
-
-        public CompressionDecorator(DataSource source) {
-            super(source);
-        }
-
-        @Override
-        public void writeData(String data) {
-            super.writeData(compress(data));
-        }
-
-        @Override
-        public String readData() {
-            return decompress(super.readData());
-        }
-
-        private String compress(String stringData) {
-            byte[] data = stringData.getBytes();
-            try {
-                ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
-                DeflaterOutputStream dos = new DeflaterOutputStream(bout, new Deflater(compLevel));
-                dos.write(data);
-                dos.close();
-                bout.close();
-                return Base64.getEncoder().encodeToString(bout.toByteArray());
-            } catch (IOException ex) {
-                return null;
-            }
-        }
-
-        private String decompress(String stringData) {
-            byte[] data = Base64.getDecoder().decode(stringData);
-            try {
-                InputStream in = new ByteArrayInputStream(data);
-                InflaterInputStream iin = new InflaterInputStream(in);
-                ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
-                int b;
-                while ((b = iin.read()) != -1) {
-                    bout.write(b);
-                }
-                in.close();
-                iin.close();
-                bout.close();
-                return bout.toString();
-            } catch (IOException ex) {
-                return null;
-            }
+            in.close();
+            iin.close();
+            bout.close();
+            return bout.toString();
+        } catch (IOException ex) {
+            return null;
         }
     }
 }

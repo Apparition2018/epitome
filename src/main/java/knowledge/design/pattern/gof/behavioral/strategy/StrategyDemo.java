@@ -26,7 +26,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  *  ④ {@link ThreadPoolExecutor} 的构造器参数 RejectedExecutionHandler 的四个实现：
  *      <a href="https://blog.csdn.net/yangsen159/article/details/103146038">策略模式在JDK中的应用</a>
  * 2 Spring：{@link ResourceLoader#getResource(String)} 和 {@link Resource}
- * 3 {@link StrategyFactoryDemo 策略模式 + 简单工厂}
+ * 3 {@link SpringStrategyFactoryDemo Spring + 策略模式 + 简单工厂}
  * </pre>
  * 角色:
  * <pre>
