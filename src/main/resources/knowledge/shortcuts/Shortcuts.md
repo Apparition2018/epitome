@@ -1,7 +1,9 @@
 # Shortcuts
 ```
-    IDEA                    VS              VS Code             WeChat              HX
-Ctrl+Alt+S                              Ctrl+,                                                      Settings
+    IDEA                    VS              VS Code             WeChat              HBX
+Ctrl+Alt+S                              Ctrl+,                                                      设置
+                    Ctrl+K, K           Ctrl+K, Ctrl+S      Ctrl+K, Ctrl+S                          键盘/快捷键
+Ctrl+Shift+A        Ctrl+Q              Ctrl+Shift+P        Ctrl+Shift+P                            查找动作/快速启动/显示所有命令
 
 Ctrl+D              Ctrl+D              Alt+Shift+↑/↓       Alt+Shift+↑/↓       Ctrl+Insert         复制行
 Alt+Shift+↑/↓       Alt+↑/↓             Alt+↑/↓             Alt+↑/↓             Ctrl+↑/↓            移动行
@@ -17,8 +19,8 @@ Ctrl+F4             Ctrl+F4             Ctrl+W              Ctrl+W              
 Alt+←/→             Ctrl+Alt+PgUp/PgDn  Ctrl+PgUp/PgDn      Ctrl+PgUp/PgDn      Ctrl+PgUp/PgDn      切换编辑器
                                         Alt+1~9             Alt+1~9             Alt+1~9             打开指定索引编辑器
 
-Ctrl+B              F12                 F12                 F12                 Alt+D/F12           转到定义
 Ctrl+Shift+N        Ctrl+Shift+T        Ctrl+P              Ctrl+P              Ctrl+P              跳转到文件
+Ctrl+B              F12                 F12                 F12                 Alt+D/F12           转到定义
 
 Alt+1               Ctrl+Alt+L          Ctrl+Shift+E        Ctrl+Shift+M        Alt+Shift+Q         Project/目录树/源管理器/项目管理器
                                         Ctrl+B              Ctrl+Alt+Shift+B    Alt+Q               侧栏
@@ -32,6 +34,7 @@ Ctrl+R              Ctrl+H              Ctrl+H              Ctrl+H              
 Ctrl+F5                                                     Ctrl+R                                  刷新
 Ctrl+F9             Ctrl+Shift+B                            Ctrl+B                                  编译
 Ctrl+Alt+L          Ctrl+K, Ctrl+D      Alt+Shift+F         Alt+Shift+F         Ctrl+K              格式化
-Ctrl+Alt+O          Ctrl+R, Ctrl+G                                                                  优化导入
+Ctrl+Alt+O          Ctrl+R, Ctrl+G      Alt+Shift+O                                                 优化导入
 Ctrl+Alt+F12                            Alt+Shift+R         Alt+Shift+R                             在 Explorer 中显示
+                                        Alt+Z                                                       切换自动换行
 ```

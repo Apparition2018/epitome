@@ -68,68 +68,51 @@
     - Remote - SSH
         - Remote - SSH: Editing Configuration Files
         - Remote Explorer
-    - Remote - Tunnels
-- Auto Rename Tag
-## Data Science
-- [Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
+    - Remote - TunnelsQuokka
+- json
 ## Debuggers
-- [JavaScript Debugger (Nightly)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)
-- [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode)
-## Keymaps
-- [IntelliJ IDEA Keybindings](https://marketplace.visualstudio.com/items?itemName=k--kato.intellij-idea-keybindings)
+- JavaScript Debugger (Nightly)
+- Quok.js
 ## Linters
-- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
-- [StandardJS](https://marketplace.visualstudio.com/items?itemName=standard.vscode-standard)
-- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
-## Machine Learning
-- [AWS Toolkit](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.aws-toolkit-vscode)
-- [CodeGeeX](https://marketplace.visualstudio.com/items?itemName=aminer.codegeex)
-- [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
-- [Tabnine](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode)
+- Code Spell Checker
+- StandardJS
+- Tailwind CSS IntelliSense
 ## Programming Languages
-- [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
+- C# Dev Kit
     - C#
         - .NET Install Tool
-    - [IntelliCode for C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.vscodeintellicode-csharp)
-- [CSS Class Intellisense](https://marketplace.visualstudio.com/items?itemName=Tarrow.css-class-intellisense)
-- [CSS Flexbox Cheatsheet](https://marketplace.visualstudio.com/items?itemName=dzhavat.css-flexbox-cheatsheet)
-- [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner)
+    - IntelliCode for C# Dev Kit
+- CSS Class Intellisense
+- Code Runner
     - OUTPUT 中文乱码：控制面板 → 区域 → 管理 → 更改系统区域设置 → 勾选 使用 Unicode UTF-8 提供全球语言支持
-- [CSS Peek](https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek)
-- [HTML CSS Support](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css)
-- [HTML to CSS autocompletion](https://marketplace.visualstudio.com/items?itemName=solnurkarim.html-to-css-autocompletion)
-- [MySQL](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2)
+- CSS Peek
+- HTML CSS Support
+- HTML to CSS autocompletion
+- MySQL
     - Database Client JDBC
-- [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+- Vetur
+- Auto Rename Tag
+- Markdown All in One
 ## Snippets
-- [jQuery Code Snippets](https://marketplace.visualstudio.com/items?itemName=donjayamanne.jquerysnippets)
-- [vue-helper](https://marketplace.visualstudio.com/items?itemName=shenjiaolong.vue-helper)
+- jQuery Code Snippets
+- vue-helper
 ## Testing
-- [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
+- Thunder Client
 ## Theme
 - vscode-icons
 ## Other
-- [Bookmarks](https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks)
-- [CodeSnap](https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap)
-- [colorize](https://marketplace.visualstudio.com/items?itemName=kamikillerto.vscode-colorize)
-- [Comment Translate](https://marketplace.visualstudio.com/items?itemName=intellsmi.comment-translate)
-- [Community Server Connectors](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-community-server-connector)
+- Bookmarks
+- Community Server Connectors
     - Runtime Server Protocol UI
-- [Doxygen Documentation Generator](https://marketplace.visualstudio.com/items?itemName=cschlosser.doxdocgen)
-- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-- [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
-- [GitHub Repositories](https://marketplace.visualstudio.com/items?itemName=GitHub.remotehub)
+- Doxygen Documentation Generator
+- EditorConfig
+- Error Lens
+- GitHub Repositories
     - Azure Repos
-- [Image preview](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview)
-- [IntelliCode API Usage Examples](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.intellicode-api-usage-examples)
-- [json](https://marketplace.visualstudio.com/items?itemName=ZainChen.json)
-- [Learn Vim](https://marketplace.visualstudio.com/items?itemName=vintharas.learn-vim)
-- [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
-- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=starkwang.markdown)
-- [Minify](https://marketplace.visualstudio.com/items?itemName=HookyQR.minify)
-- [open in browser](https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser)
-- [Red Hat Dependency Analytics](https://marketplace.visualstudio.com/items?itemName=redhat.fabric8-analytics)
-- [Remote Repositories](https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-repositories)
-- [SQLite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
-- [Turbo Console Log](https://marketplace.visualstudio.com/items?itemName=ChakrounAnas.turbo-console-log)
+- Image preview
+- IntelliCode API Usage Examples
+- Live Server
+- open in browser
+- Remote Repositories
+- SQLite
 ---

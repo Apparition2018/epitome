@@ -1,5 +1,4 @@
 # VS Code Settings
-
 ---
 ## [配置 user-data-dir 和 extensions-dir](https://stackoverflow.com/a/66281688/19598136)
 - 以管理员身份运行 CMD
@@ -15,118 +14,81 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Code" "D:\Microsoft VS Code\Co
 ## settings.json
 ```json5
 {
-  // icon theme
-  "workbench.iconTheme": "vscode-icons",
-  // files
   "files.autoSave": "afterDelay",
-  "files.autoGuessEncoding": true,
+  // 微信小程序关联文件类型
   "files.associations": {
     "*.wxml": "html",
     "*.wxs": "javascript",
-    "*.wxss": "css"
+    "*.wxss": "css",
   },
-  // git
   "git.path": "D:/Git/cmd/git.exe",
   "git.autofetch": true,
   "search.useGlobalIgnoreFiles": true,
-  // terminal
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
       "source": "PowerShell",
-      "icon": "terminal-powershell"
+      "icon": "terminal-powershell",
     },
     "Command Prompt": {
-      "path": [
-        "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe"
-      ],
-      "args": [],
-      "icon": "terminal-cmd"
+      "path": "${env:windir}\\System32\\cmd.exe",
+      "icon": "terminal-cmd",
     },
     "Git-Bash": {
       "path": "D:\\Git\\bin\\bash.exe",
-      "args": []
+      "icon": "terminal-bash",
     },
-    "Windows PowerShell": {
-      "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-    }
   },
   "terminal.integrated.defaultProfile.windows": "Git-Bash",
   "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.cursorStyle": "line",
-  // editor
+  "editor.fontSize": 12,
   "editor.guides.bracketPairs": true,
-  "editor.wordWrap": "on",
-  "editor.mouseWheelZoom": true,
   "editor.snippetSuggestions": "top",
   "editor.acceptSuggestionOnEnter": "off",
-  // eslint
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "eslint.validate": ["javascript"],
-  // prettier: https://prettier.io/docs/en/
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  // editor formatter
-  "[java]": {
-    "editor.defaultFormatter": "redhat.java"
-  },
-  // emmet
   "emmet.includeLanguages": {
     "vue-html": "html",
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
   },
-  "emmet.triggerExpansionOnTab": true,
   "emmet.variables": {
-    "lang": "zh-CN"
+    "lang": "zh-CN",
   },
-  // debug
   "debug.showBreakpointsInOverviewRuler": true,
-  // project manager
+
+  /** extensions */
+  // vscode-icons
+  "workbench.iconTheme": "vscode-icons",
+  // ESLint
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+  },
+  "eslint.validate": ["javascript"],
+  // Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Project Manager
   "projectManager.git.baseFolders": ["D:\\Liang\\git"],
-  // colorize
-  "colorize.colorized_variables": ["CSS"],
-  "colorize.languages": ["javascript"],
-  // java
+  // Language Support for Java(TM) by Red Hat
   "java.configuration.runtimes": [
     {
-      "name": "JavaSE-1.8",
-      "path": "D:\\Java\\jdk-1.8"
+      "name": "JavaSE-21",
+      "path": "D:\\Java\\jdk-21",
+      "default": true,
     },
-    {
-      "name": "JavaSE-17",
-      "path": "D:\\Java\\jdk-17",
-      "default": true
-    }
   ],
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java",
+  },
   "java.configuration.updateBuildConfiguration": "automatic",
   "java.configuration.maven.globalSettings": "D:\\dev\\.maven\\settings.xml",
   "java.configuration.maven.userSettings": "D:\\dev\\.maven\\settings.xml",
   "java.compile.nullAnalysis.mode": "automatic",
   "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
   "java.format.settings.profile": "GoogleStyle",
-  "java.jdt.ls.vmargs": "-Xmx2G -Xms1G -javaagent:D:\\dev\\.maven\\repository\\org\\projectlombok\\lombok\\1.18.30\\lombok-1.18.30.jar",
-  // remote
-  "remote.SSH.remotePlatform": {
-    "43.136.102.115": "linux"
-  },
-  // gitlens
-  "gitlens.views.commitDetails.files.layout": "tree",
-  // rsp-ui
-  "rsp-ui.enableStartServerOnActivation": [
-    {
-      "id": "redhat.vscode-community-server-connector",
-      "name": "Community Server Connector",
-      "startOnActivation": true
-    }
-  ],
-  // tabnine
-  "tabnine.experimentalAutoImports": true,
-  // code-runner
+  "java.jdt.ls.vmargs": "-Xms1G -Xmx2G -javaagent:D:\\dev\\.maven\\repository\\org\\projectlombok\\lombok\\1.18.44\\lombok-1.18.44.jar",
+  "redhat.telemetry.enabled": false,
+  // Code Runner
   "code-runner.executorMap": {
-    "java": "cd $dir && javac -encoding utf8 $fileName && java -Dfile.encoding=UTF-8 $fileNameWithoutExt"
-  }
+    "java": "cd $dir && javac -encoding utf8 $fileName && java -Dfile.encoding=UTF-8 $fileNameWithoutExt",
+  },
 }
 ```
 ---
