@@ -1,17 +1,17 @@
 /*
- Navicat Premium Data Transfer
+ Navicat Premium Dump SQL
 
  Source Server         : 43.136.102.115
  Source Server Type    : MySQL
- Source Server Version : 80033
+ Source Server Version : 80033 (8.0.33)
  Source Host           : 43.136.102.115:3306
  Source Schema         : epitome
 
  Target Server Type    : MySQL
- Target Server Version : 80033
+ Target Server Version : 80033 (8.0.33)
  File Encoding         : 65001
 
- Date: 02/11/2023 02:43:45
+ Date: 29/04/2026 18:02:15
 */
 
 SET NAMES utf8mb4;
@@ -22,10 +22,10 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `demo`;
 CREATE TABLE `demo`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of demo
@@ -36,11 +36,11 @@ CREATE TABLE `demo`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `dept`;
 CREATE TABLE `dept`  (
-  `deptno` tinyint(0) NOT NULL,
+  `deptno` tinyint NOT NULL,
   `dname` varchar(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `loc` varchar(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`deptno`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of dept
@@ -53,13 +53,13 @@ INSERT INTO `dept` VALUES (20, 'RESEARCH', 'DALLAS');
 -- ----------------------------
 DROP TABLE IF EXISTS `draw_prize`;
 CREATE TABLE `draw_prize`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `draw_id` int(0) NOT NULL COMMENT '抽奖活动 ID',
-  `probability` int(0) NOT NULL COMMENT '概率（1表示万分之一）',
-  `total_qty` int(0) NOT NULL COMMENT '总数',
-  `win_qty` int(0) NOT NULL COMMENT '中奖数',
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `draw_id` int NOT NULL COMMENT '抽奖活动 ID',
+  `probability` int NOT NULL COMMENT '概率（1表示万分之一）',
+  `total_qty` int NOT NULL COMMENT '总数',
+  `win_qty` int NOT NULL COMMENT '中奖数',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '抽奖奖品表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs COMMENT = '抽奖奖品表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of draw_prize
@@ -73,31 +73,32 @@ INSERT INTO `draw_prize` VALUES (3, 1, 1000, 100, 0);
 -- ----------------------------
 DROP TABLE IF EXISTS `draw_user`;
 CREATE TABLE `draw_user`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `score` int(0) NOT NULL COMMENT '积分',
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `score` int NOT NULL COMMENT '积分',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '抽奖用户表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs COMMENT = '抽奖用户表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of draw_user
 -- ----------------------------
-INSERT INTO `draw_user` VALUES (1, 10000);
+INSERT INTO `draw_user` VALUES (1, 9999);
 
 -- ----------------------------
 -- Table structure for emp
 -- ----------------------------
 DROP TABLE IF EXISTS `emp`;
 CREATE TABLE `emp`  (
-  `empno` int(0) NOT NULL,
+  `empno` int NOT NULL,
   `ename` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `job` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `mgr` int(0) NULL DEFAULT NULL,
+  `mgr` int NULL DEFAULT NULL,
   `hiredate` date NULL DEFAULT NULL,
   `sal` decimal(7, 2) NULL DEFAULT NULL,
   `comm` decimal(7, 2) NULL DEFAULT NULL,
-  `deptno` tinyint(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`empno`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  `deptno` tinyint NULL DEFAULT NULL,
+  PRIMARY KEY (`empno`) USING BTREE,
+  CONSTRAINT `chk_emp_sal` CHECK (`sal` > 0)
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of emp
@@ -118,15 +119,47 @@ INSERT INTO `emp` VALUES (7902, 'FORD', 'ANALYST', 7566, '1981-12-03', 3000.00, 
 INSERT INTO `emp` VALUES (7934, 'MILLER', 'CLERK', 7782, '1982-01-23', 1300.00, NULL, 10);
 
 -- ----------------------------
+-- Table structure for exam_book
+-- ----------------------------
+DROP TABLE IF EXISTS `exam_book`;
+CREATE TABLE `exam_book`  (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `session_id` bigint NOT NULL COMMENT '场次ID',
+  `user_id` bigint NOT NULL COMMENT '预约人ID',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs COMMENT = '考试预约记录' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of exam_book
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for exam_session
+-- ----------------------------
+DROP TABLE IF EXISTS `exam_session`;
+CREATE TABLE `exam_session`  (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '场次名称',
+  `max_book_num` int NOT NULL COMMENT '可预约总数',
+  `cur_book_num` int NOT NULL COMMENT '当前预约数',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs COMMENT = '考试场次' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of exam_session
+-- ----------------------------
+INSERT INTO `exam_session` VALUES (1, 'session 1', 10000, 0);
+
+-- ----------------------------
 -- Table structure for generator
 -- ----------------------------
 DROP TABLE IF EXISTS `generator`;
 CREATE TABLE `generator`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   `context` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of generator
@@ -137,11 +170,11 @@ CREATE TABLE `generator`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `sales`;
 CREATE TABLE `sales`  (
-  `year_id` int(0) NOT NULL,
-  `month_id` int(0) NOT NULL,
-  `day_id` int(0) NOT NULL,
+  `year_id` int NOT NULL,
+  `month_id` int NOT NULL,
+  `day_id` int NOT NULL,
   `sales_value` decimal(10, 2) NOT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sales
@@ -1152,12 +1185,12 @@ INSERT INTO `sales` VALUES (2017, 7, 24, 32.33);
 -- ----------------------------
 DROP TABLE IF EXISTS `score`;
 CREATE TABLE `score`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '姓名',
   `course` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '课程',
-  `score` int(0) NULL DEFAULT NULL COMMENT '成绩',
+  `score` int NULL DEFAULT NULL COMMENT '成绩',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '成绩表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs COMMENT = '成绩表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of score

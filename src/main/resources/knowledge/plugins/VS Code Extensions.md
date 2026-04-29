@@ -31,7 +31,6 @@
 - .NET Extension Pack
     - C#
         - .NET Install Tool
-    - Polyglot Notebooks
     - Jupyter
         - Jupyter Keymap
         - Jupyter Notebook Renderers
