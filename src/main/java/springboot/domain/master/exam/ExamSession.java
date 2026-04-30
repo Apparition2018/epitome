@@ -24,7 +24,11 @@ public class ExamSession {
     /** 可预约总数 */
     @Column(name = "max_book_num")
     private Integer maxBookNum;
-    /** 可预约总数 */
+    /** 当前已预约数 */
     @Column(name = "cur_book_num")
     private Integer curBookNum;
+    /** 乐观锁版本号 */
+    @Version
+    @Column(name = "version")
+    private Integer version;
 }

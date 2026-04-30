@@ -67,7 +67,7 @@
         2.1 Add unambiguous imports on the fly 勾选
         2.2 Optimize imports on the fly 勾选
     3 Editor Tabs
-        3.1 Show tabs in: Multiple rows
+        3.1 Show tabs in: One row, and if tabs don't fit: Squeeze tabs
 ### Font (-j)
     1 Size: 12.0
     2 Typography Settings → Fallback font: Microsoft YaHei

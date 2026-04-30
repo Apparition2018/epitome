@@ -19,7 +19,7 @@ public class ExamBook {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "session_id")
+    @JoinColumn(name = "session_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private ExamSession session;
     /** 预约人ID */
     @Column(name = "user_id")

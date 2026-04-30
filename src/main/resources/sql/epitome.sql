@@ -11,7 +11,7 @@
  Target Server Version : 80033 (8.0.33)
  File Encoding         : 65001
 
- Date: 29/04/2026 18:02:15
+ Date: 30/04/2026 20:51:11
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `demo`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of demo
@@ -127,7 +127,7 @@ CREATE TABLE `exam_book`  (
   `session_id` bigint NOT NULL COMMENT '场次ID',
   `user_id` bigint NOT NULL COMMENT '预约人ID',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs COMMENT = '考试预约记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs COMMENT = '考试预约记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of exam_book
@@ -142,13 +142,14 @@ CREATE TABLE `exam_session`  (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '场次名称',
   `max_book_num` int NOT NULL COMMENT '可预约总数',
   `cur_book_num` int NOT NULL COMMENT '当前预约数',
+  `version` int NOT NULL DEFAULT 0 COMMENT '乐观锁版本号',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs COMMENT = '考试场次' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_as_cs COMMENT = '考试场次' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of exam_session
 -- ----------------------------
-INSERT INTO `exam_session` VALUES (1, 'session 1', 10000, 0);
+INSERT INTO `exam_session` VALUES (1, 'session 1', 50, 0, 0);
 
 -- ----------------------------
 -- Table structure for generator
