@@ -6,9 +6,9 @@ import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import springboot.domain.slaver.SysUser;
-import springboot.mapper.slaver.SysDeptMapper;
-import springboot.mapper.slaver.SysUserMapper;
+import springboot.domain.slave.SysUser;
+import springboot.mapper.slave.SysDeptMapper;
+import springboot.mapper.slave.SysUserMapper;
 import tools.jackson.databind.ObjectMapper;
 
 import static l.demo.Demo.p;

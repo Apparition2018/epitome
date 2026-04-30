@@ -1,4 +1,4 @@
-package springboot.domain.slaver;
+package springboot.domain.slave;
 
 import lombok.Data;
 

@@ -18,9 +18,9 @@ public class ExamBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    /** 场次ID */
-    @Column(name = "session_id")
-    private Long sessionId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "session_id")
+    private ExamSession session;
     /** 预约人ID */
     @Column(name = "user_id")
     private Long userId;

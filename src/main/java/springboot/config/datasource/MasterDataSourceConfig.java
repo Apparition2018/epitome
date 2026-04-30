@@ -18,8 +18,7 @@ import org.springframework.util.ResourceUtils;
 import java.util.Objects;
 
 /**
- * MasterDataSourceConfig
- * <p>Mybatis 多数据源
+ * Mybatis + Druid 多数据源配置
  *
  * @author ljh
  * @since 2019/8/8 19:39

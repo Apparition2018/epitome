@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.jpa.autoconfigure.JpaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -15,11 +16,11 @@ import javax.sql.DataSource;
 
 /**
  * JPA 配置
- * 为主数据源配置 JPA 的 EntityManagerFactory 和 TransactionManager
  *
  * @author ljh
  * @since 2026/4/29
  */
+@Profile("druid")
 @Configuration
 @EnableJpaRepositories(
     basePackages = "springboot.repository.master",
@@ -28,8 +29,8 @@ import javax.sql.DataSource;
 )
 public class JpaConfig {
 
-    @Bean(name = "jpaEntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("masterDataSource") DataSource dataSource, JpaProperties jpaProperties) {
+    @Bean
+    public LocalContainerEntityManagerFactoryBean jpaEntityManagerFactory(@Qualifier("masterDataSource") DataSource dataSource, JpaProperties jpaProperties) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
         em.setPackagesToScan("springboot.domain.master");
@@ -38,8 +39,8 @@ public class JpaConfig {
         return em;
     }
 
-    @Bean(name = "jpaTransactionManager")
-    public PlatformTransactionManager transactionManager(@Qualifier("jpaEntityManagerFactory") EntityManagerFactory entityManagerFactory) {
+    @Bean
+    public PlatformTransactionManager jpaTransactionManager(@Qualifier("jpaEntityManagerFactory") EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
     }
 }

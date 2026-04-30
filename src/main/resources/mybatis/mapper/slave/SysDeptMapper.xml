@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="springboot.mapper.slaver.SysDeptMapper">
-  <resultMap id="BaseResultMap" type="springboot.domain.slaver.SysDept">
+<mapper namespace="springboot.mapper.slave.SysDeptMapper">
+  <resultMap id="BaseResultMap" type="springboot.domain.slave.SysDept">
     <id column="dept_id" jdbcType="BIGINT" property="deptId" />
     <result column="parent_id" jdbcType="BIGINT" property="parentId" />
     <result column="ancestors" jdbcType="VARCHAR" property="ancestors" />
@@ -21,19 +21,19 @@
     delete from sys_dept
     where dept_id = #{deptId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="springboot.domain.slaver.SysDept">
-    insert into sys_dept (dept_id, parent_id, ancestors, 
-      dept_name, order_num, leader, 
-      phone, email, status, 
-      del_flag, create_by, create_time, 
+  <insert id="insert" parameterType="springboot.domain.slave.SysDept">
+    insert into sys_dept (dept_id, parent_id, ancestors,
+      dept_name, order_num, leader,
+      phone, email, status,
+      del_flag, create_by, create_time,
       update_by, update_time)
-    values (#{deptId,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{ancestors,jdbcType=VARCHAR}, 
-      #{deptName,jdbcType=VARCHAR}, #{orderNum,jdbcType=INTEGER}, #{leader,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
-      #{delFlag,jdbcType=CHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+    values (#{deptId,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{ancestors,jdbcType=VARCHAR},
+      #{deptName,jdbcType=VARCHAR}, #{orderNum,jdbcType=INTEGER}, #{leader,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{status,jdbcType=CHAR},
+      #{delFlag,jdbcType=CHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
       #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="springboot.domain.slaver.SysDept">
+  <update id="updateByPrimaryKey" parameterType="springboot.domain.slave.SysDept">
     update sys_dept
     set parent_id = #{parentId,jdbcType=BIGINT},
       ancestors = #{ancestors,jdbcType=VARCHAR},
@@ -51,13 +51,13 @@
     where dept_id = #{deptId,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select dept_id, parent_id, ancestors, dept_name, order_num, leader, phone, email, 
+    select dept_id, parent_id, ancestors, dept_name, order_num, leader, phone, email,
     status, del_flag, create_by, create_time, update_by, update_time
     from sys_dept
     where dept_id = #{deptId,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select dept_id, parent_id, ancestors, dept_name, order_num, leader, phone, email, 
+    select dept_id, parent_id, ancestors, dept_name, order_num, leader, phone, email,
     status, del_flag, create_by, create_time, update_by, update_time
     from sys_dept
   </select>

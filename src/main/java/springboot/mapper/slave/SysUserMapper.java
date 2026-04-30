@@ -1,8 +1,8 @@
-package springboot.mapper.slaver;
+package springboot.mapper.slave;
 
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
-import springboot.domain.slaver.SysUser;
+import springboot.domain.slave.SysUser;
 
 import java.util.List;
 import java.util.Map;

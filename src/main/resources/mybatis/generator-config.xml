@@ -68,7 +68,7 @@
                     ②用于定义 Java Model 生成器的属性；
                         即 GeneratorKey.java、Generator.java、GeneratorWithBLOBs.java 和 GeneratorExample.java
                 http://mybatis.org/generator/configreference/javaModelGenerator.html -->
-        <javaModelGenerator targetPackage="springboot.domain.slaver" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="springboot.domain.slave" targetProject="src/main/java">
             <!-- 是否会根据自省表的 catalog and schema 为对象生成不同的 Java 包，默认 false
                     MySQL 不支持 catalogs 和 schema -->
             <property name="enableSubPackages" value="false"/>
@@ -80,7 +80,7 @@
                     ① javaClientGenerator 需要 XML 时，才是 <context> 的必需子元素
                     ②用于定义 SQL 映射生成器的属性
                 http://mybatis.org/generator/configreference/sqlMapGenerator.html -->
-        <sqlMapGenerator targetPackage="mapper.slaver" targetProject="src/main/resources/mybatis"/>
+        <sqlMapGenerator targetPackage="mapper.slave" targetProject="src/main/resources/mybatis"/>
 
         <!-- <javaClientGenerator>：
                     ①<context> 的可选子元素
@@ -90,7 +90,7 @@
                     ②MIXEDMAPPER：生成基于 注解 和 XML 混合的 Mapper
                     ③XMLMAPPER：生成基于 XML 的 Mapper
                 http://mybatis.org/generator/configreference/javaClientGenerator.html -->
-        <javaClientGenerator targetPackage="springboot.mapper.slaver" targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="springboot.mapper.slave" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <!-- <table>：
                     ①<context> 至少需要一个 <table>

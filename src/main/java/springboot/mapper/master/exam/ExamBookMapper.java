@@ -15,6 +15,6 @@ import springboot.domain.master.exam.ExamBook;
 public interface ExamBookMapper {
 
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("INSERT INTO exam_book(session_id, user_id) VALUES(#{sessionId}, #{userId})")
+    @Insert("INSERT INTO exam_book(session_id, user_id) VALUES(#{session.id}, #{userId})")
     int insert(ExamBook examBook);
 }

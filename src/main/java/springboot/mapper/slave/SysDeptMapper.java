@@ -1,7 +1,7 @@
-package springboot.mapper.slaver;
+package springboot.mapper.slave;
 
 import org.apache.ibatis.annotations.Mapper;
-import springboot.domain.slaver.SysDept;
+import springboot.domain.slave.SysDept;
 
 import java.util.List;
 
