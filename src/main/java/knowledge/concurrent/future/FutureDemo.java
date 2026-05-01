@@ -10,14 +10,23 @@ import java.util.Map;
 import java.util.concurrent.*;
 
 /**
- * FutureTask
- * <p>FutureTask 是 Future 和 Callable 的结合体
+ * Future
+ * <pre>
+ * Future                               异步结果的容器                 获取异步计算结果
+ *  1 RunnableFuture                    Future + Runnable           可执行且可返回结果的任务
+ *    1.1 FutureTask                    实现 RunnableFuture       任务完成时回调 done() 执行后置逻辑
+ *  2 CompletionService                 已完成 Future 的阻塞队列    批量任务，按完成先后顺序处理
+ *    2.1 ExecutorCompletionService     实现 CompletionService    基于 BlockingQueue 实现
+ *  3 CompletionStage                   异步任务编排                  多个任务串行/并行/合并
+ *    3.1 CompletableFuture             实现 CompletionStage      异步链式调用/函数式组合
+ *  4 ScheduledFuture                   延迟/周期任务的 Future         延迟执行一次或周期性执行
+ * </pre>
+ *
  *
  * @author ljh
- * @see <a href="https://blog.csdn.net/zmx729618/article/details/51596414">FutureTask & Future</a>
  * @since 2020/11/17 19:09
  */
-public class FutureTaskDemo extends Demo {
+public class FutureDemo extends Demo {
 
     private final static int NUM_OF_TASK = 5;
     private final static ExecutorService threadPool = Executors.newFixedThreadPool(5, new MyThreadFactory());

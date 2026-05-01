@@ -1,23 +1,32 @@
-# 并发编程
+# 并发
 
 ---
 ## 参考网站
 1. [透彻理解 Java 并发编程](https://segmentfault.com/blog/ressmix_multithread)
 ---
 ## 阿里编程规约：
-1. 获取单例对象需要保证线程安全，其中的方法也要保证线程安全
-2. 高并发时，同步调用应该去考量锁的性能损耗
+1. 高并发时，同步调用应该去考量锁的性能损耗
     1. 能用无锁数据结构，就不要用锁
         - [Java 下实现锁无关数据结构](https://blog.csdn.net/netliving/article/details/83676228)
     2. 能锁区块，就不要锁整个方法体
     3. 能用对象锁，就不要用类锁
     - 注：避免在锁代码块中调用 RPC 方法
-3. 并发修改同一记录时，避免更新丢失，需要加锁。要么在应用层加锁，要么在缓存加锁，要么在数据库层使用乐观锁，使用 version 作为更新依据
+2. 并发修改同一记录时，避免更新丢失，需要加锁。要么在应用层加锁，要么在缓存加锁，要么在数据库层使用乐观锁，使用 version 作为更新依据
     - 如果每次访问冲突概率小于 20%，推荐使用乐观锁，否则使用悲观锁。乐观锁的重试次数不得小于 3 次，可以使用 spring-retry
     - [乐观锁和悲观锁](https://www.jianshu.com/p/d2ac26ca6525)
-4. 资金相关的金融敏感信息，使用悲观锁策略；悲观锁遵循一锁、二判、三更新、四释放的原则
-5. 在高并发场景中，避免使用“等于”判断作为中断或退出的条件
+3. 资金相关的金融敏感信息，使用悲观锁策略；悲观锁遵循一锁、二判、三更新、四释放的原则
+4. 在高并发场景中，避免使用“等于”判断作为中断或退出的条件
     - 如果并发控制没有处理好，容易产生等值判断被“击穿”的情况，使用大于或小于的区间判断条件来代替
+---
+## 线程池
+1. JDK [`ThreadPoolExecutor` 参数 和 内置拒绝策略](pool/ThreadPoolExecutorDemo.java)
+2. Spring `ThreadPoolTaskExecutor` 参数 [AsyncConfig#createBaseExecutor](../../springboot/config/AsyncConfig.java)
+3. [线程池对待任务的策略](pool/ThreadPoolExecutorDemo.java)
+4. 何时创建：项目启动时创建自定义线程池 [AsyncConfig#cpuBoundTaskExecutor#ioBoundTaskExecutor](../../springboot/config/AsyncConfig.java)
+5. 使用场景：[Spring 项目全局线程池](../../springboot/controller/GlobalExecutorsController.java)
+6. 异步失败怎么处理？会回滚吗？
+     （短信/邮件/推送） ← 失败了有补偿？
+     数据同步到 ES/Redis    ← 有定时兜底？
 ---
 ## 分布式锁
 1. [数据库](https://honeypps.com/architect/distribute-lock-based-on-database/)

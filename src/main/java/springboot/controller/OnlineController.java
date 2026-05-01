@@ -17,7 +17,7 @@ import java.util.List;
  * @since 2019/8/8 19:39
  */
 @RestController
-@RequestMapping("online")
+@RequestMapping("/online")
 @Tag(name = "Online")
 public class OnlineController {
 

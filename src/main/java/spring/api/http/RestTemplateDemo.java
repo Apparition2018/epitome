@@ -141,7 +141,7 @@ public class RestTemplateDemo extends Demo {
         // 同 postForEntity()，只是返回值变为 T
     }
 
-    /** &#064;PathVariable */
+    /** {@code PathVariable} */
     @Test
     public void path() {
         // http://localhost:3333/demo/path/{id}/{name}

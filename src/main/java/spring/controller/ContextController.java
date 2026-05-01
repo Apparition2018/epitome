@@ -20,7 +20,7 @@ import static l.demo.Demo.pe;
  * @since 2022/4/5 15:03
  */
 @RestController
-@RequestMapping("context")
+@RequestMapping("/context")
 public class ContextController {
 
     @GetMapping

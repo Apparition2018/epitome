@@ -1,31 +1,29 @@
 package knowledge.concurrent.pool;
 
 import l.demo.Demo;
-import lombok.NonNull;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</a>
- * <p>线程池对待任务的策略:
+ * <p>参数：
+ * <pre>
+ * corePoolSize     最小线程数
+ * maximumPoolSize  最大线程数
+ * keepAliveTime    当 poolSize > corePoolSize，空闲线程等待新任务的最长时间，超时则回收
+ * unit             keepAliveTime 时间单位
+ * workQueue        当 poolSize ≥ corePoolSize，execute() 提交的 Runnable 任务进入的队列
+ * threadFactory    创建新线程时使用的工厂
+ * handler          当 poolSize ≥ corePoolSize + queueCapacity，新提交的任务出发的 {@link MyRejectHandler 拒绝策略}
+ * </pre>
+ * 线程池对待任务的策略:
  * <pre>
  * 1 池中任务数 <= corePoolSize -> 放入立即执行
  * 2 池中任务数 > corePoolSize -> 放入队列等待
  * 3 池中任务数 > (corePoolSize + workQueue.size()) -> 新建线程立即执行
  * 4 池中任务数 > maxPoolSize -> 触发handler（RejectedExecutionHandler）异常
- * </pre>
- * 参数：
- * <pre>
- * corePoolSize     池中所保存的线程数，包括空闲线程
- * maximumPoolSize  池中允许的最大线程数
- * keepAliveTime    当线程数大于核心时，此为终止前多余的空闲线程等待新任务的最长时间
- * unit             keepAliveTime 参数的时间单位
- * workQueue        执行前用于保持任务的队列。此队列仅保持由 execute() 提交的 Runnable 任务
- * threadFactory    执行程序创建新线程时使用的工厂
- * handler          由于超出线程范围和队列容量而使执行被阻塞时所使用的处理程序
  * </pre>
  * 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程（阿里编程规约）
  *
@@ -36,40 +34,21 @@ public class ThreadPoolExecutorDemo extends Demo {
 
     public static void main(String[] args) {
         ThreadPoolExecutor threadPool = new ThreadPoolExecutor(2, 5, 10, TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(3), new MyThreadFactory("test"), new MyRejectHandler());
+                new ArrayBlockingQueue<>(3), new MyThreadFactory("Demo"), new MyRejectHandler());
 
         IntStream.rangeClosed(1, 10).forEach(i -> threadPool.execute(new MyTask(i)));
-    }
-
-    private static class MyThreadFactory implements ThreadFactory {
-        private final String namePrefix;
-        private final AtomicInteger nextId = new AtomicInteger(1);
-
-        private MyThreadFactory(String featureOfGroup) {
-            namePrefix = "From LjhThreadFactory's " + featureOfGroup + "-Worker-";
-        }
-
-        @Override
-        public Thread newThread(@NonNull Runnable r) {
-            Thread thread = new Thread(r);
-            thread.setName(namePrefix + nextId.getAndIncrement());
-            p(thread.getName() + " is created");
-            return thread;
-        }
     }
 
     /**
      * ThreadPoolExecutor 内置4种拒绝策略：
      * <pre>
-     * 1 AbortPolicy：丢弃任务，抛出 RejectedExecutionException
-     * 2 DiscardPolicy：丢弃任务，但是不抛出异常
-     * 3 DiscardOldestPolicy：丢弃队列最前面的任务，然后重新提交被拒绝的任务
-     * 4 CallerRunsPolicy：由调用线程处理该任务
+     * 1 {@link ThreadPoolExecutor.AbortPolicy}：丢弃被拒绝任务，抛出 RejectedExecutionException
+     * 2 {@link ThreadPoolExecutor.DiscardPolicy}：丢弃被拒绝任务，不抛出异常
+     * 3 {@link ThreadPoolExecutor.DiscardOldestPolicy}：丢弃队列头部最早的任务，重新尝试提交被拒绝任务
+     * 4 {@link ThreadPoolExecutor.CallerRunsPolicy}：调用者线程运行被拒绝任务
      * </pre>
-     *
-     * @see <a href="http://kailing.pub/article/index/arcid/255.html">ThreadPoolExecutor 八种拒绝策略</a>
      */
-    private static class MyRejectHandler implements RejectedExecutionHandler {
+    public static class MyRejectHandler implements RejectedExecutionHandler {
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             printLog(r, executor);

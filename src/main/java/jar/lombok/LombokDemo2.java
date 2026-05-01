@@ -95,11 +95,11 @@ public class LombokDemo2 {
     }
 
     /**
-     * &#064;Builder & &#064;Singular
-     * <p>与 Builder 一起用于在集合的生成器中创建单个元素 add()
+     * {@code @Singular}
+     * <p>与 @Builder 一起使用，在构建器中创建集合的单元素 add()
      */
     @Test
-    public void testBuilder() {
+    public void testBuilderAndSingular() {
         User8 u = User8.builder()
             .id(1)
             .name("Henry")

@@ -211,7 +211,7 @@
 
         <dependency>
             <groupId>com.alibaba</groupId>
-              <artifactId>druid-spring-boot-4-starter</artifactId>
+            <artifactId>druid-spring-boot-4-starter</artifactId>
             <version>${druid-spring-boot-4-starter.version}</version>
         </dependency>
 
@@ -388,6 +388,15 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-test</artifactId>
             <version>${curator.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tools.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
         </dependency>
 
         <!-- fastjson：包含 fastjson2 -->

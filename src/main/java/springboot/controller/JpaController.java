@@ -37,7 +37,7 @@ import java.util.function.Supplier;
  * @since 2026/4/29 18:03
  */
 @RestController
-@RequestMapping("exam")
+@RequestMapping("/exam")
 @Tag(name = "Exam")
 @Transactional(transactionManager = "jpaTransactionManager", rollbackFor = Exception.class)
 public class JpaController {
@@ -72,7 +72,7 @@ public class JpaController {
     private static final CyclicBarrier BARRIER = new CyclicBarrier(50);
 
     /** <a href="http://localhost:3333/exam/book">exam.jmx JMeter 测试</a> */
-    @GetMapping("book")
+    @GetMapping("/book")
     @Operation(summary = "预约(JPA)")
     public ResponseEntity<String> bookByJPA() throws Exception {
         return book(
@@ -85,7 +85,7 @@ public class JpaController {
         );
     }
 
-    @GetMapping("book2")
+    @GetMapping("/book2")
     @Operation(summary = "预约(Hibernate)")
     public ResponseEntity<String> bookByHibernate() throws Exception {
         // Session 是 Hibernate 对 EntityManager 的实现
@@ -100,7 +100,7 @@ public class JpaController {
         );
     }
 
-    @GetMapping("book22")
+    @GetMapping("/book22")
     @Operation(summary = "预约(Hibernate) — 并发超卖")
     public ResponseEntity<String> bookByHibernate2() throws Exception {
         Session session = entityManager.unwrap(Session.class);
@@ -118,7 +118,7 @@ public class JpaController {
         );
     }
 
-    @GetMapping("book23")
+    @GetMapping("/book23")
     @Operation(summary = "预约(Hibernate) — 乐观锁防超卖")
     public ResponseEntity<String> bookByHibernate3() throws Exception {
         Session session = entityManager.unwrap(Session.class);
@@ -135,7 +135,7 @@ public class JpaController {
         );
     }
 
-    @GetMapping("book24")
+    @GetMapping("/book24")
     @Operation(summary = "预约(Hibernate) — 手动版乐观锁防超卖")
     public ResponseEntity<String> bookByHibernate4() throws Exception {
         Session session = entityManager.unwrap(Session.class);
@@ -158,7 +158,7 @@ public class JpaController {
         );
     }
 
-    @GetMapping("book3")
+    @GetMapping("/book3")
     @Operation(summary = "预约(Spring Data JPA)")
     public ResponseEntity<String> bookBySpringDataJPA() throws Exception {
         return book(
@@ -168,7 +168,7 @@ public class JpaController {
         );
     }
 
-    @GetMapping("book4")
+    @GetMapping("/book4")
     @Operation(summary = "预约(Mybatis)")
     @Transactional(transactionManager = "masterTransactionManager", rollbackFor = Exception.class)
     public ResponseEntity<String> bookByMybatis() throws Exception {

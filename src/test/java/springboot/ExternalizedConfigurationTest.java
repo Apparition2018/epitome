@@ -26,7 +26,7 @@ import static l.demo.Demo.pe;
  * @author ljh
  * @since 2021/8/6 17:49
  */
-@SpringBootTest
+@SpringBootTest(classes = EpitomeApplication.class)
 public class ExternalizedConfigurationTest {
 
     @Autowired

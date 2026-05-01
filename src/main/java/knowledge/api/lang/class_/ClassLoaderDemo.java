@@ -50,9 +50,9 @@ public class ClassLoaderDemo extends Demo {
 
     /**
      * <pre>
-     * InputStream          {@link Class#getResourceAsStream(String) Class.getResourceAsStream(String name)}    查找具有给定名称的资源
-     * URL                  {@link Class#getResource(String) Class.getResource(String name)}    查找具有给定名称的资源
-     * static InputStream   getSystemResourceAsStream(String name)  从用来加载类的搜索路径打开具有指定名称的资源，以读取该资源
+     * InputStream          {@link Class#getResourceAsStream(String)}               查找具有给定名称的资源
+     * URL                  {@link Class#getResource(String)}                       查找具有给定名称的资源
+     * static InputStream   {@link ClassLoader#getSystemResourceAsStream(String)}   从用来加载类的搜索路径打开具有指定名称的资源，以读取该资源
      * </pre>
      */
     @Test

@@ -1,9 +1,6 @@
 package knowledge.design.pattern.gof.behavioral.chain.of.responsibility;
 
 import jakarta.servlet.Filter;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
 import knowledge.design.pattern.other.behavioral.PipelineDemo;
 import lombok.Setter;
 import org.springframework.web.servlet.HandlerExecutionChain;
@@ -27,7 +24,7 @@ import java.util.logging.Logger;
  * </pre>
  * 使用实例：
  * <pre>
- * 1 {@link Filter#doFilter(ServletRequest, ServletResponse, FilterChain)}
+ * 1 {@link Filter#doFilter)}
  * 2 {@link Logger#log(Level, String)}
  * 3 {@link HandlerExecutionChain} 和 {@link HandlerInterceptor}
  * </pre>

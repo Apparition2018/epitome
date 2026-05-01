@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.server.servlet.context.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tk.mybatis.spring.annotation.MapperScan;
@@ -27,7 +26,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 // @Enable 源码分析：https://www.cnblogs.com/duanxz/p/4875156.html
 @EnableCaching
 @EnableScheduling
-@EnableAsync
 @EnableTransactionManagement
 @EnableAspectJAutoProxy(exposeProxy = true)
 // TK Mybatis MapperScan，不能包含通用 mapper 的路径，所以 MyMapper.java 不能放在 springboot.mapper.master.tk 里

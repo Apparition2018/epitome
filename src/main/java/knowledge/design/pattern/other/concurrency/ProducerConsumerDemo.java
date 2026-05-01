@@ -20,7 +20,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ProducerConsumerDemo extends Demo {
     private static volatile boolean isProducing = true;
     private static final boolean[] isAllConsumerStop = new boolean[]{false, false};
-    private static final long SLEEP_TIME = TimeUnit.SECONDS.toMillis(1);
 
     /**
      * 本例基于 LinkedBlockingQueue 实现
@@ -39,12 +38,12 @@ public class ProducerConsumerDemo extends Demo {
         threadPool.execute(c1);
         threadPool.execute(c2);
 
-        TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
+        TimeUnit.SECONDS.sleep(1);
         isProducing = false;
         p("********** 生产者停止生产 **********");
 
         while (!BooleanUtils.and(isAllConsumerStop)) {
-            TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
+            TimeUnit.SECONDS.sleep(1);
         }
         threadPool.shutdown();
         p("********** 消费者消费完毕 **********");
@@ -60,7 +59,7 @@ public class ProducerConsumerDemo extends Demo {
             p(threadName + " + start");
             ThreadLocalRandom r = ThreadLocalRandom.current();
             while (isProducing) {
-                TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME / 2));
+                TimeUnit.MILLISECONDS.sleep(r.nextLong(500));
                 queue.put(goodsId.incrementAndGet());
                 p(threadName + " + " + goodsId);
             }
@@ -77,10 +76,10 @@ public class ProducerConsumerDemo extends Demo {
             p(threadName + " - start");
             ThreadLocalRandom r = ThreadLocalRandom.current();
             while (isProducing || !queue.isEmpty()) {
-                Integer goodsId = queue.poll(r.nextLong(SLEEP_TIME), TimeUnit.MILLISECONDS);
+                Integer goodsId = queue.poll(r.nextLong(1000), TimeUnit.MILLISECONDS);
                 if (null != goodsId) {
                     p(threadName + " - " + goodsId);
-                    TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
+                    TimeUnit.MILLISECONDS.sleep(r.nextLong(1000));
                 }
             }
             isAllConsumerStop[consumerIndex] = true;

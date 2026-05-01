@@ -19,7 +19,7 @@ import java.util.*;
  *  ③ {@link HttpSessionBindingListener} 和 {@link HttpSessionAttributeListener}
  * 2 Spring：
  *  ① {@link SpringApplicationEventDemo}
- *  ② {@link TransactionalService#beforeCommit(TransactionalService.MyEvent) @TransactionalEventListener}
+ *  ② {@link TransactionalService#beforeCommit @TransactionalEventListener}
  * </pre>
  * 角色：
  * <pre>

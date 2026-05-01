@@ -27,29 +27,29 @@ import java.util.Objects;
  */
 @Slf4j
 @RestController
-@RequestMapping("fetch")
+@RequestMapping("/fetch")
 @Tag(name = "Fetch")
 public class FetchController {
 
-    @PostMapping("string")
+    @PostMapping("/string")
     @Operation(summary = "传递普通类型的数据，如 String")
     public String string(@RequestParam String data) {
         return data;
     }
 
-    @PostMapping("json-clazz")
+    @PostMapping("/json-clazz")
     @Operation(summary = "传递 Json 类型的数据，接收方为 Bean")
     public Person jsonClazz(@RequestBody Person person) {
         return person;
     }
 
-    @PostMapping("json-map")
+    @PostMapping("/json-map")
     @Operation(summary = "传递 Json 类型的数据，接收方为 Map")
     public Map<String, String> jsonMap(@RequestBody Map<String, String> map) {
         return map;
     }
 
-    @PostMapping("upload-picture")
+    @PostMapping("/upload-picture")
     @Operation(summary = "上传单个文件")
     public String uploadPicture(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) return "fail";
@@ -62,7 +62,7 @@ public class FetchController {
         }
     }
 
-    @PostMapping("upload-pictures")
+    @PostMapping("/upload-pictures")
     @Operation(summary = "上传多个文件")
     public String uploadPictures(HttpServletRequest request) {
         List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
@@ -82,7 +82,7 @@ public class FetchController {
         return "success";
     }
 
-    @PostMapping("cookie")
+    @PostMapping("/cookie")
     @Operation(summary = "发送 Cookie")
     public String cookie(@CookieValue(value = "cny", required = false) String cny, HttpServletRequest request) {
         String rtnString = StringUtils.EMPTY;

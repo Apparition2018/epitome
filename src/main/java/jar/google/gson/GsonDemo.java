@@ -85,7 +85,7 @@ public class GsonDemo extends Demo implements JsonDemo {
         p(jsonArray + StringUtils.CR);
     }
 
-    /** &#064;SerializedName 字段别名 */
+    /** {@code @SerializedName} 字段别名 */
     @Test
     public void testSerializedName() {
         p(gson.fromJson(JSON_PLAIN, Student.class));

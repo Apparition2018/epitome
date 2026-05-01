@@ -23,28 +23,13 @@ import java.util.concurrent.locks.ReentrantLock;
  * 5 Lock 可以通过 lock.newCondition() 获得该锁的 Condition 对象，再通过 condition.signal() 或 condition.signalAll() 唤醒该 Condition 对象上的等待的线程
  * </pre>
  * 相对于 synchronized 的不同点：
- * <table>
- *     <tr>
- *         <th>synchronized</th>
- *         <th>Lock</th>
- *     </tr>
- *     <tr>
- *         <td>关键字</td>
- *         <td>接口</td>
- *     </tr>
- *     <tr>
- *         <td>Java 的内置特性，基于 JVM；</td>
- *         <td>基于 JDK</td>
- *     </tr>
- *     <tr>
- *         <td>悲观锁，阻塞同步</td>
- *         <td>乐观锁，非阻塞同步</td>
- *     </tr>
- *     <tr>
- *         <td>不需要手动释放锁</td>
- *         <td>必须手动释放锁，一般在 finally 中释放锁</td>
- *     </tr>
- * </table>
+ * <pre>
+ * synchronized                 Lock
+ * 关键字                      接口
+ * Java 的内置特性，基于 JVM    基于 JDK
+ * 悲观锁，阻塞同步             乐观锁，非阻塞同步
+ * 不需要手动释放锁             必须手动释放锁，一般在 finally 中释放锁
+ * </pre>
  * <p>性能：但随着版本的不断优化，synchronized 效率越来越高，一般情况下优先使用 synchronized
  *
  * @author ljh

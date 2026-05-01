@@ -19,6 +19,11 @@
 
 // Flutter
 
+// 简单进度条 - SEE（轻量，单向推送足够）
+// 需要前后端双向通信 → WebSocket
+// 极度简单、实时性要求低 → 轮询
+
+
 import l.demo.Demo;
 
 public class Test extends Demo {

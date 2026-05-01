@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @RestController
-@RequestMapping("draw")
+@RequestMapping("/draw")
 @Tag(name = "Draw")
 public class DrawController {
 
@@ -53,7 +53,7 @@ public class DrawController {
      * @param userId 用户ID
      * @return 奖品ID，0表示各种异常
      */
-    @GetMapping("test")
+    @GetMapping("/test")
     public Integer test(int userId) {
         int drawId = 1;
         // 抽奖活动缓存

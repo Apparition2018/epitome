@@ -18,11 +18,11 @@ import java.util.Map;
  * @since 2019/8/8 19:39
  */
 @RestController
-@RequestMapping("jsonp")
+@RequestMapping("/jsonp")
 @Tag(name = "Jsonp")
 public class JsonpController {
 
-    @GetMapping("json")
+    @GetMapping("/json")
     @Operation(summary = "获取回调函数")
     public String callbackJson(HttpServletRequest request) {
         Map<String, String> map = Map.of("result", "Arsenal");

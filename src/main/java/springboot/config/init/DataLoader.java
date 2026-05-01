@@ -1,4 +1,4 @@
-package springboot.init;
+package springboot.config.init;
 
 import l.demo.Person;
 import org.springframework.boot.CommandLineRunner;

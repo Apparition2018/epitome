@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * &#064;JsonValue  序列化只返回这个字段的值
+ * {@code @JsonValue} 序列化只返回这个字段的值
  *
  * @author ljh
  * @since 2021/7/24 17:02

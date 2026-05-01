@@ -6,9 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.scheduling.annotation.Async;
-import springboot.init.SpringStartupRunningLogic;
+import springboot.config.init.SpringStartupRunningLogic;
 
 import java.io.Serial;
 
@@ -29,7 +28,7 @@ import java.io.Serial;
  *  ② @EventListener
  * </pre>
  * <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#context-functionality-events-annotation">@EventListener</a> 注解使用
- * {@link SpringStartupRunningLogic.ExampleBean#contextStarted(ContextRefreshedEvent)}
+ * {@link SpringStartupRunningLogic.ExampleBean#contextStarted}
  * <p><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/core.html">Spring 内置事件</a>：
  * <pre>
  * ApplicationContextEvent 子类：

@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  * @since 2021/8/20 10:19
  */
 @RestController
-@RequestMapping("persons")
+@RequestMapping("/persons")
 @Tag(name = "Restful")
 public class RestfulController {
 
@@ -60,7 +60,7 @@ public class RestfulController {
         return new ArrayList<>(personMap.values());
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     @Operation(summary = "获取人员")
     public Person getPerson(@PathVariable Integer id) {
         return personMap.get(id);

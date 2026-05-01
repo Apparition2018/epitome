@@ -27,7 +27,7 @@ import java.util.Objects;
  */
 @Slf4j
 @Controller
-@RequestMapping("weather")
+@RequestMapping("/weather")
 @Tag(name = "jQuery-pjax")
 public class PJaxController {
 
@@ -37,7 +37,7 @@ public class PJaxController {
         this.objectMapper = objectMapper;
     }
 
-    @GetMapping("{city}")
+    @GetMapping("/{city}")
     @Operation(summary = "获取城市天气")
     public String city(@PathVariable String city, HttpServletRequest request, Model model) {
         // pjax 请求
@@ -52,7 +52,7 @@ public class PJaxController {
         return "weather";
     }
 
-    @GetMapping("json/{city}")
+    @GetMapping("/json/{city}")
     @ResponseBody
     @Operation(summary = "获取城市天气(pjax)")
     public String cityJson(@PathVariable String city) {

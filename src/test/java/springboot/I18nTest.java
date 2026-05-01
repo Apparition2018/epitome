@@ -11,7 +11,7 @@ import springboot.util.MessageUtils;
  * @author ljh
  * @since 2021/11/21 1:59
  */
-@SpringBootTest
+@SpringBootTest(classes = EpitomeApplication.class)
 public class I18nTest {
 
     @Test

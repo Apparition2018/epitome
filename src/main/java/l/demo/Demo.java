@@ -2,7 +2,7 @@ package l.demo;
 
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import org.jspecify.annotations.NonNull;
+import lombok.NonNull;
 import org.junit.Assert;
 import org.springframework.util.StopWatch;
 
@@ -224,12 +224,25 @@ public class Demo {
     }
 
     public static class MyThreadFactory implements ThreadFactory {
-        private final AtomicInteger count = new AtomicInteger(1);
+        private final String namePrefix;
+        private final AtomicInteger nextId = new AtomicInteger(1);
+        private static final String NAME_PREFIX_FORMAT = "LjhThreadFactory-%s-Worker-";
+
+
+        public MyThreadFactory() {
+            namePrefix = String.format(NAME_PREFIX_FORMAT, "Demo");
+        }
+
+        public MyThreadFactory(String featureOfGroup) {
+            namePrefix = String.format(NAME_PREFIX_FORMAT, featureOfGroup);
+        }
 
         @Override
-        public Thread newThread(@NonNull Runnable r) {
-            Thread thread = new Thread(r);
-            thread.setName("MyPool-" + map2.get(count.getAndIncrement()));
+        public Thread newThread(@NonNull Runnable task) {
+            Thread thread = new Thread(task);
+            thread.setName(namePrefix + nextId.getAndIncrement());
+            // 有需要可自定义 Thread 的 priority、daemon、contextClassLoader、uncaughtExceptionHandler
+            p(thread.getName() + " is created");
             return thread;
         }
     }

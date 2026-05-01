@@ -1,4 +1,4 @@
-package springboot.init;
+package springboot.config.init;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +37,7 @@ public class SpringStartupRunningLogic {
         return new ExampleBean();
     }
 
-    private static class ExampleBean implements InitializingBean, ApplicationRunner, CommandLineRunner {
+    public static class ExampleBean implements InitializingBean, ApplicationRunner, CommandLineRunner {
         public ExampleBean() {
             log.warn("@Bean's Constructor");
         }

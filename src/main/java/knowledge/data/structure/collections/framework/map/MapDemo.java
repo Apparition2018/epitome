@@ -188,7 +188,7 @@ public class MapDemo extends Demo {
      * <pre>
      * TreeMap → NavigableMap → SortedMap → Map
      * 基于红黑树（Red-Black tree）的 NavigableMap 实现。该映射根据其键的自然顺序进行排序，或者根据创建映射时提供的 Comparator 进行排序。
-     * 大部分 API 类似 TreeSet {@link SetDemo#testTreeSet}
+     * 大部分 API 类似 TreeSet {@link SetDemo#testTreeSet()}
      * </pre>
      */
     @Test

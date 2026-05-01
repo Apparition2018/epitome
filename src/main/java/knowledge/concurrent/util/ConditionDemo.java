@@ -24,7 +24,6 @@ public class ConditionDemo extends Demo {
 
     private static volatile boolean isProducing = true;
     private static final boolean[] isAllConsumerStop = new boolean[]{false, false};
-    private static final long SLEEP_TIME = TimeUnit.SECONDS.toMillis(1);
     private static final int MAX = 10;
 
     private static final ReentrantLock ADD_LOCK = new ReentrantLock();
@@ -51,12 +50,12 @@ public class ConditionDemo extends Demo {
         threadPool.execute(c1);
         threadPool.execute(c2);
 
-        TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
+        TimeUnit.SECONDS.sleep(1);
         isProducing = false;
         p("********** 生产者停止生产 **********");
 
         while (!BooleanUtils.and(isAllConsumerStop)) {
-            TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
+            TimeUnit.SECONDS.sleep(1);
         }
         threadPool.shutdown();
         p("********** 消费者消费完毕 **********");
@@ -77,7 +76,7 @@ public class ConditionDemo extends Demo {
             p(threadName + " + start");
             ThreadLocalRandom r = ThreadLocalRandom.current();
             while (isProducing) {
-                TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME / 2));
+                TimeUnit.MILLISECONDS.sleep(r.nextLong(500));
                 ADD_LOCK.lock();
                 try {
                     while (MAX == list.size()) {
@@ -120,14 +119,14 @@ public class ConditionDemo extends Demo {
                     while (list.isEmpty()) {
                         // boolean	    await(long time, TimeUnit unit)
                         // 造成当前线程在接到信号、被中断或到达指定等待时间之前一直处于等待状态
-                        POLL_CON.await(r.nextLong(SLEEP_TIME / 4), TimeUnit.MILLISECONDS);
+                        POLL_CON.await(r.nextLong(250), TimeUnit.MILLISECONDS);
                     }
                     p(threadName + " - " + list.pollLast());
                     if (list.size() > 1) POLL_CON.signalAll();
                 } finally {
                     POLL_LOCK.unlock();
                 }
-                TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
+                TimeUnit.MILLISECONDS.sleep(r.nextLong(1000));
             }
             isAllConsumerStop[consumerIndex] = true;
             p(threadName + " - end");

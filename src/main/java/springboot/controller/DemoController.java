@@ -18,12 +18,12 @@ import java.util.Date;
  */
 @Slf4j
 @RestController
-@RequestMapping("demo")
+@RequestMapping("/demo")
 @Tag(name = "Demo")
 public class DemoController {
 
     /** <a href="http://localhost:3333/demo/get">demo/get</a> */
-    @GetMapping("get")
+    @GetMapping("/get")
     @Operation(summary = "GET 请求")
     public Student get(@RequestParam(value = "id", required = false) Integer id,
                        @RequestParam(value = "name", required = false) String name) {
@@ -31,7 +31,7 @@ public class DemoController {
     }
 
     /** <a href="http://localhost:3333/demo/post">demo/post</a> */
-    @PostMapping("post")
+    @PostMapping("/post")
     @Operation(summary = "POST 请求，@RequestParam")
     public Student post(@RequestParam(value = "id", required = false) Integer id,
                         @RequestParam(value = "name", required = false) String name) {
@@ -39,14 +39,14 @@ public class DemoController {
     }
 
     /** <a href="http://localhost:3333/demo/post2">demo/post2</a> ??? */
-    @PostMapping("post2")
+    @PostMapping("/post2")
     @Operation(summary = "POST 请求，JavaBean")
     public Student post2(Person person) {
         return new Student(person.getId(), person.getName());
     }
 
     /** <a href="http://localhost:3333/demo/post3">demo/post3</a> */
-    @PostMapping("post3")
+    @PostMapping("/post3")
     @Operation(summary = "POST 请求，@RequestBody")
     public Student post3(@RequestBody Person person) {
         return new Student(person.getId(), person.getName());
@@ -56,7 +56,7 @@ public class DemoController {
      * <a href="https://www.cnblogs.com/fangpengchengbupter/p/7823493.html">@PathVariable</a>
      * <p><a href="http://localhost:3333/demo/path/1/John">demo/path/{id}/{name}</a>
      */
-    @GetMapping("path/{id:[0-9]+}/{name}")
+    @GetMapping("/path/{id:[0-9]+}/{name}")
     @Operation(summary = "@PathVariable")
     public Student path(@PathVariable("id") Integer id, @PathVariable("name") String name) {
         return new Student(id, name);
@@ -66,14 +66,14 @@ public class DemoController {
      * <a href="http://localhost:3333/header">demo/header</a><br/>
      * 添加 Cookie name=ljh，拦截器 {@link HeaderMapFilter} 把 Cookie 添加到了 Header
      */
-    @GetMapping("header")
+    @GetMapping("/header")
     @Operation(summary = "@RequestHeader")
     public Student path(@RequestHeader("name") String name, @CookieValue("name") String name2) {
         log.info("header name: {}, cookie name: {}", name, name2);
         return new Student(1, name);
     }
 
-    @RequestMapping("test")
+    @RequestMapping("/test")
     public void test() throws InterruptedException {
     }
 }

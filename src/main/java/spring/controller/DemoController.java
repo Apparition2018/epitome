@@ -15,7 +15,7 @@ import static l.demo.Demo.personList;
  * @since 2023/4/24 9:17
  */
 @Controller
-@RequestMapping("demo")
+@RequestMapping("/demo")
 public class DemoController {
 
     @GetMapping

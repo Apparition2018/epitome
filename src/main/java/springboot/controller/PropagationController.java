@@ -16,7 +16,7 @@ import springboot.service.PropagationService;
  * @since 2022/2/19 23:36
  */
 @RestController
-@RequestMapping("propagation")
+@RequestMapping("/propagation")
 @Tag(name = "Propagation")
 public class PropagationController {
 
@@ -34,7 +34,7 @@ public class PropagationController {
      * required：加入事务（同一事务）一方回滚，另一方也回滚
      * <p>supports 和 mandatory 也是加入事务
      */
-    @GetMapping("required")
+    @GetMapping("/required")
     @Transactional(propagation = Propagation.REQUIRED)
     public void required() {
         // 回滚
@@ -49,7 +49,7 @@ public class PropagationController {
     /**
      * requiresNew：新建事务（不同事物）回滚互不影响
      */
-    @GetMapping("requiresNew")
+    @GetMapping("/requiresNew")
     @Transactional(propagation = Propagation.REQUIRED)
     public void requiresNew(boolean noException) {
         // 插入/回滚
@@ -67,7 +67,7 @@ public class PropagationController {
     /**
      * nested：嵌套事务，外回滚内回滚，内回滚外不回滚
      */
-    @GetMapping("nested")
+    @GetMapping("/nested")
     @Transactional(propagation = Propagation.REQUIRED)
     public void nested(boolean noException) {
         // 插入/回滚
@@ -82,7 +82,7 @@ public class PropagationController {
         if (!noException) throw new RuntimeException();
     }
 
-    @GetMapping("notSupported")
+    @GetMapping("/notSupported")
     @Transactional(propagation = Propagation.REQUIRED)
     public void notSupports() {
         // 回滚
@@ -93,7 +93,7 @@ public class PropagationController {
         service.addNotSupportedException(demo3);
     }
 
-    @GetMapping("never")
+    @GetMapping("/never")
     public void never() {
         // 插入
         service.addRequired(demo);

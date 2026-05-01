@@ -15,19 +15,19 @@ import java.util.List;
 @Controller
 public class FreeMarkerController {
 
-    @RequestMapping("helloFtl")
+    @RequestMapping("/helloFtl")
     public String HelloFtl(Model model) {
         model.addAttribute("username", "nishuibaichuan");
         return "helloFtl";
     }
 
-    @RequestMapping("helloJsp")
+    @RequestMapping("/helloJsp")
     public String HelloJsp(Model model) {
         model.addAttribute("username", "nishuibaichuan");
         return "helloJsp";
     }
 
-    @RequestMapping("helloTestFtl")
+    @RequestMapping("/helloTestFtl")
     public String helloTestFtl(Model model) {
         List<Employer> emps = List.of(new Employer(1, "小李", 22), new Employer(2, "八戒", 444), new Employer(3, "刘德华", 54));
         model.addAttribute("emps", emps);

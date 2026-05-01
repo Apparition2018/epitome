@@ -49,12 +49,12 @@ import static l.demo.Demo.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("multipart-file")
+@RequestMapping("/multipart-file")
 @Tag(name = "MultipartFile")
 public class MultipartFileController {
 
     /** <a href="http://localhost:3333/front/html/elements/内联文本语义/a-demo.html#downloadFile">download file</a> */
-    @GetMapping("download/file")
+    @GetMapping("/download/file")
     @Operation(summary = "下载文件")
     public void downloadFile(@RequestParam("filename") String filename, HttpServletResponse response) {
         URL classesUrl = Thread.currentThread().getContextClassLoader().getResource(StringUtils.EMPTY);
@@ -77,7 +77,7 @@ public class MultipartFileController {
 
 
     /** <a href="http://localhost:3333/front/html/elements/内联文本语义/a-demo.html#downloadExcel">download excel</a> */
-    @GetMapping("download/excel")
+    @GetMapping("/download/excel")
     @Operation(summary = "下载 excel")
     public void downloadExcel(@RequestParam("filename") String filename, HttpServletResponse response) {
         URL classesUrl = Thread.currentThread().getContextClassLoader().getResource(StringUtils.EMPTY);
@@ -117,7 +117,7 @@ public class MultipartFileController {
      *
      * @see <a href="https://www.cnblogs.com/zgghb/p/6020581.html">bootstrap-fileInput 示例</a>
      */
-    @PostMapping("upload/file")
+    @PostMapping("/upload/file")
     @Operation(summary = "上传文件")
     public Result<String> uploadFile(HttpServletRequest request) throws IOException, OpenXML4JException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -172,7 +172,7 @@ public class MultipartFileController {
     }
 
     /** <a href="http://localhost:3333/front/html/elements/表单/form-demo.html#form1">upload excel</a> */
-    @PostMapping("upload/excel")
+    @PostMapping("/upload/excel")
     @Operation(summary = "上传 excel")
     public void uploadExcel(@RequestPart MultipartFile[] files) {
         try {

@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static l.demo.Demo.p;
 
@@ -71,7 +72,7 @@ public class JedisDistributedLocks {
                 while (!locked) {
                     locked = lockManager.tryLock(jedis, MONEY_LOCK, lockValue, LOCK_EXPIRE_SECONDS);
                     if (!locked) {
-                        Thread.sleep(50);
+                        TimeUnit.MILLISECONDS.sleep(50);
                     }
                 }
                 try {

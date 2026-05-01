@@ -1,4 +1,4 @@
-package springboot.global;
+package springboot.config.global;
 
 import jakarta.servlet.Servlet;
 import jakarta.validation.ConstraintViolation;
@@ -51,7 +51,7 @@ import java.util.stream.Collectors;
  *   3.2 将基于 string 的请求值(如请求参数、路径变量、报头、cookie 等)转换为控制器方法参数的目标类型
  *   3.3 在呈现 HTML 表单时，将模型对象值格式化为 String 值
  * </pre>
- * &#064;RestControllerAdvice = @ResponseBody + @ControllerAdvice
+ * {@code RestControllerAdvice} = @ResponseBody + @ControllerAdvice
  *
  * @author ljh
  * @since 2020/11/26 17:51
@@ -72,9 +72,6 @@ public class GlobalExceptionHandler {
         this.messageSource = messageSource;
     }
 
-    /**
-     * &#064;RequestParam
-     */
     @ExceptionHandler({MissingServletRequestParameterException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(MissingServletRequestParameterException e) {
@@ -96,9 +93,7 @@ public class GlobalExceptionHandler {
         return Result.failure(ResultCode.FAILURE, e.getMessage());
     }
 
-    /**
-     * 对象接收参数 + @Valid
-     */
+    /** 对象接收参数 + @Valid */
     @ExceptionHandler({BindException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(BindException e) {
@@ -112,9 +107,7 @@ public class GlobalExceptionHandler {
         return this.handleException(e.getBindingResult());
     }
 
-    /**
-     * 对象接收参数 + @Valid + @RequestBody
-     */
+    /** 对象接收参数 + @Valid + @RequestBody */
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(MethodArgumentNotValidException e) {
@@ -141,9 +134,7 @@ public class GlobalExceptionHandler {
         return Result.failure(ResultCode.PARAM_BIND_ERROR, map);
     }
 
-    /**
-     * Controller 类上 @Validated + JSR303 注解
-     */
+    /** Controller 类上 @Validated + JSR303 注解 */
     @ExceptionHandler({ConstraintViolationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result<Object> handleException(ConstraintViolationException e) {

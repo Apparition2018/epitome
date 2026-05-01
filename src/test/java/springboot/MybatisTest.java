@@ -21,7 +21,7 @@ import static l.demo.Demo.phr;
  * @author ljh
  * @since 2021/8/30 17:14
  */
-@SpringBootTest
+@SpringBootTest(classes = EpitomeApplication.class)
 public class MybatisTest {
 
     @Autowired
@@ -53,7 +53,7 @@ public class MybatisTest {
         p(count);
     }
 
-    /** &#064;MapKey */
+    /** {@code @MapKey} */
     @Test
     public void testMapKey() {
         sysUserMapper.map(null).entrySet().forEach(user -> p(objectMapper.writeValueAsString(user)));

@@ -13,7 +13,7 @@ import tk.mybatis.mapper.entity.Example;
  * @author ljh
  * @since 2022/11/1 17:17
  */
-@SpringBootTest
+@SpringBootTest(classes = EpitomeApplication.class)
 public class TkMapperTest {
 
     @Autowired

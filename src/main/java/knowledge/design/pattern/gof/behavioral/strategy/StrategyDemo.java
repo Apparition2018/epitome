@@ -1,9 +1,6 @@
 package knowledge.design.pattern.gof.behavioral.strategy;
 
 import jakarta.servlet.Filter;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServlet;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +18,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * <pre>
  * 1 JDK：
  *  ① {@link FunctionInterfaceStrategyDemo @FunctionalInterface}
- *  ② {@link Filter#doFilter(ServletRequest, ServletResponse, FilterChain)}
+ *  ② {@link Filter#doFilter}
  *  ③ {@link HttpServlet} 的 service(req, resp), doXXX(req, resp)
  *  ④ {@link ThreadPoolExecutor} 的构造器参数 RejectedExecutionHandler 的四个实现：
  *      <a href="https://blog.csdn.net/yangsen159/article/details/103146038">策略模式在JDK中的应用</a>

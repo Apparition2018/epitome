@@ -30,7 +30,6 @@ public class WorkStealingDemo extends Demo {
 
     public static volatile boolean isProducing = true;
     private static final boolean[] isAllStop = new boolean[]{false, false, false, false};
-    private static final long SLEEP_TIME = TimeUnit.SECONDS.toMillis(1);
 
     /** 本例基于 LinkedBlockingDeque 实现 */
     public static void main(String[] args) throws InterruptedException {
@@ -47,12 +46,12 @@ public class WorkStealingDemo extends Demo {
         threadPool.execute(m3);
         threadPool.execute(m4);
 
-        TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
+        TimeUnit.SECONDS.sleep(1);
         isProducing = false;
         p("********** 生产者停止生产 **********");
 
         while (!BooleanUtils.and(isAllStop)) {
-            TimeUnit.MILLISECONDS.sleep(SLEEP_TIME);
+            TimeUnit.SECONDS.sleep(1);
         }
         threadPool.shutdown();
         p("********** 消费者消费完毕 **********");
@@ -63,7 +62,7 @@ public class WorkStealingDemo extends Demo {
         @Override
         public void run() {
             ThreadLocalRandom r = ThreadLocalRandom.current();
-            sleep(r.nextLong(SLEEP_TIME), TimeUnit.MILLISECONDS);
+            sleep(r.nextLong(1000), TimeUnit.MILLISECONDS);
             String finishName = Thread.currentThread().getName();
             p(finishName + " - " + jobId + (finishName.equals(assignName) ? StringUtils.EMPTY : " + " + assignName));
         }
@@ -80,7 +79,7 @@ public class WorkStealingDemo extends Demo {
             while (isProducing || !deque1.isEmpty() || !deque2.isEmpty()) {
                 if (isProducing && r.nextBoolean()) {
                     String assignName = Thread.currentThread().getName();
-                    TimeUnit.MILLISECONDS.sleep(r.nextLong(SLEEP_TIME));
+                    TimeUnit.MILLISECONDS.sleep(r.nextLong(1000));
                     for (int i = 0; i < r.nextInt(4); i++) {
                         Work work = new Work(jobId.incrementAndGet(), assignName);
                         deque1.putLast(work);

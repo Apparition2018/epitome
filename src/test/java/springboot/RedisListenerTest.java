@@ -18,7 +18,7 @@ import java.util.Map;
  * @since 2021/9/2 2:17
  */
 @Slf4j
-@SpringBootTest
+@SpringBootTest(classes = EpitomeApplication.class)
 public class RedisListenerTest {
 
     @Autowired

@@ -24,11 +24,11 @@ import java.util.Optional;
  * @since 2021/10/19 16:28
  */
 @RestController
-@RequestMapping("video")
+@RequestMapping("/video")
 @Tag(name = "Video")
 public class VideoController {
 
-    @GetMapping("play")
+    @GetMapping("/play")
     public ResponseEntity<ResourceRegion> play(HttpServletRequest request) throws IOException {
         // 1. URL视频
         UrlResource resource = new UrlResource("https://www.runoob.com/try/demo_source/movie.mp4");
