@@ -12,18 +12,18 @@ import java.util.stream.IntStream;
  * <pre>
  * corePoolSize     最小线程数
  * maximumPoolSize  最大线程数
- * keepAliveTime    当 poolSize > corePoolSize，空闲线程等待新任务的最长时间，超时则回收
+ * keepAliveTime    当 alivePoolSize > corePoolSize，空闲线程等待新任务的最长时间，超时则回收
  * unit             keepAliveTime 时间单位
- * workQueue        当 poolSize ≥ corePoolSize，execute() 提交的 Runnable 任务进入的队列
+ * workQueue        当 taskCount ≥ corePoolSize，execute() 提交的 Runnable 任务进入的队列
  * threadFactory    创建新线程时使用的工厂
- * handler          当 poolSize ≥ corePoolSize + queueCapacity，新提交的任务出发的 {@link MyRejectHandler 拒绝策略}
+ * handler          当 taskCount ≥ (maxPoolSize + queueCapacity)，新提交的任务出发的 {@link MyRejectHandler 拒绝策略}
  * </pre>
  * 线程池对待任务的策略:
  * <pre>
- * 1 池中任务数 <= corePoolSize -> 放入立即执行
- * 2 池中任务数 > corePoolSize -> 放入队列等待
- * 3 池中任务数 > (corePoolSize + workQueue.size()) -> 新建线程立即执行
- * 4 池中任务数 > maxPoolSize -> 触发handler（RejectedExecutionHandler）异常
+ * 1 taskCount < corePoolSize → 放入立即执行
+ * 2 taskCount ≥ corePoolSize → 放入队列等待
+ * 3 taskCount ≥ (corePoolSize + queueCapacity) → 新建线程立即执行
+ * 4 taskCount ≥ (maxPoolSize + queueCapacity) → 触发handler（RejectedExecutionHandler）异常
  * </pre>
  * 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程（阿里编程规约）
  *

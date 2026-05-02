@@ -6,6 +6,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.ResponseEntity;
+import org.springframework.resilience.annotation.Retryable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +19,7 @@ import springboot.config.WebMvcConfig;
 import java.util.concurrent.*;
 
 /**
- * 全局线程池
+ * 异步
  * <pre>
  * 1 异步方法：{@link AsyncConfig#getAsyncExecutor() @Async}，客户端不等待结果
  * 2 异步请求：{@link WebMvcConfig#configureAsyncSupport Callable/WebAsyncTask/DeferredResult}，客户端等待结果，释放 Tomcat 线程。
@@ -33,43 +34,43 @@ import java.util.concurrent.*;
  */
 @Slf4j
 @RestController
-@RequestMapping("/global-executors")
+@RequestMapping("/async")
 @Tag(name = "GlobalExecutors")
-public class GlobalExecutorsController {
+public class AsyncController {
 
     private final ApplicationContext applicationContext;
 
-    public GlobalExecutorsController(ApplicationContext applicationContext) {
+    public AsyncController(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
-    /** <a href="http://localhost:3333/global-executors/asyncMethodVoid">asyncMethodVoid</a> */
-    @RequestMapping("/asyncMethodVoid")
+    /** <a href="http://localhost:3333/async/method/void">asyncMethodVoid</a> */
+    @RequestMapping("/method/void")
     @Operation(summary = "@Async - 发送邮件（客户端不等待结果）")
     public ResponseEntity<String> asyncMethodVoid() {
-        async().sendEmail();
+        self().sendEmail();
         return ResponseEntity.ok("ok");
     }
 
-    /** <a href="http://localhost:3333/global-executors/asyncMethodFuture">asyncMethodFuture</a> */
-    @RequestMapping("/asyncMethodFuture")
+    /** <a href="http://localhost:3333/async/method/future">asyncMethodFuture</a> */
+    @RequestMapping("/method/future")
     @Operation(summary = "@Async - 并行查询汇总结果（客户端等待结果）")
     public ResponseEntity<String> asyncMethodFuture() {
-        CompletableFuture<Void> userFuture = async().queryUser();
-        CompletableFuture<Void> orderFuture = async().queryOrder();
+        CompletableFuture<Void> userFuture = self().queryUser();
+        CompletableFuture<Void> orderFuture = self().queryOrder();
         CompletableFuture.allOf(userFuture, orderFuture).join();
         return ResponseEntity.ok("ok");
     }
 
-    /** <a href="http://localhost:3333/global-executors/asyncRequestCallable">asyncRequestCallable</a> */
-    @RequestMapping("/asyncRequestCallable")
+    /** <a href="http://localhost:3333/async/request/callable">asyncRequestCallable</a> */
+    @RequestMapping("/request/callable")
     @Operation(summary = "Callable - 生成用户仪表盘")
     public Callable<ResponseEntity<String>> asyncRequestCallable() {
         return this::buildDashboard;
     }
 
-    /** <a href="http://localhost:3333/global-executors/asyncRequestWebAsyncTask">asyncRequestWebAsyncTask</a> */
-    @RequestMapping("/asyncRequestWebAsyncTask")
+    /** <a href="http://localhost:3333/async/request/webAsyncTask">asyncRequestWebAsyncTask</a> */
+    @RequestMapping("/request/webAsyncTask")
     @Operation(summary = "WebAsyncTask - 生成用户仪表盘（超时3秒返回兜底）")
     public WebAsyncTask<ResponseEntity<String>> asyncRequestWebAsyncTask() {
         // 本质：WebAsyncTask = Callable + 超时控制 + 超时回调
@@ -79,21 +80,21 @@ public class GlobalExecutorsController {
     }
 
     private ResponseEntity<String> buildDashboard() {
-        CompletableFuture<Void> userFuture = async().queryUser();
-        CompletableFuture<Void> orderFuture = async().queryOrder();
+        CompletableFuture<Void> userFuture = self().queryUser();
+        CompletableFuture<Void> orderFuture = self().queryOrder();
         return userFuture
             // 并行
             .thenCombine(orderFuture, (user, order) -> 1)
             // 串行
-            .thenCompose(uid -> async().genDashboard())
+            .thenCompose(uid -> self().genDashboard())
             .thenApply(o -> ResponseEntity.ok("ok"))
             .join();
     }
 
     private final ConcurrentHashMap<String, DeferredResult<String>> pendingPayments = new ConcurrentHashMap<>();
 
-    /** <a href="http://localhost:3333/global-executors/asyncRequestDeferredResult?orderId=123">asyncRequestDeferredResult</a> */
-    @RequestMapping("/asyncRequestDeferredResult")
+    /** <a href="http://localhost:3333/async/request/deferredResult?orderId=123">asyncRequestDeferredResult</a> */
+    @RequestMapping("/request/deferredResult")
     @Operation(summary = "DeferredResult - 等待支付结果（30秒超时）")
     public DeferredResult<String> asyncRequestDeferredResult(@RequestParam String orderId) {
         DeferredResult<String> result = new DeferredResult<>(30_000L, "pay timeout");
@@ -103,8 +104,8 @@ public class GlobalExecutorsController {
         return result;
     }
 
-    /** <a href="http://localhost:3333/global-executors/payCallback?orderId=123">模拟支付回调</a> */
-    @RequestMapping("/payCallback")
+    /** <a href="http://localhost:3333/async/request/deferredResul/payCallback?orderId=123">模拟支付回调</a> */
+    @RequestMapping("/request/deferredResult/payCallback")
     @Operation(summary = "DeferredResult - 模拟支付回调")
     public ResponseEntity<String> payCallback(@RequestParam String orderId) {
         DeferredResult<String> result = pendingPayments.remove(orderId);
@@ -115,6 +116,19 @@ public class GlobalExecutorsController {
 
     @Async
     public void sendEmail() {
+        self().retrySendEmail();
+    }
+
+    /**
+     * {@code @Async} + {@code @Retryable}：无法合到一个方法上使用，以下为解决方法
+     * <pre>
+     * 1 @Retryable + 注入 {@link AsyncConfig#ioBoundTaskExecutor()}
+     * 2 @Async + 编程式 RetryTemplate
+     * </pre>
+     */
+    @Retryable(maxRetries = 2, delay = 300)
+    public void retrySendEmail() {
+        Integer.parseInt("a");
         simulateWork("发送邮件");
     }
 
@@ -143,7 +157,7 @@ public class GlobalExecutorsController {
         System.out.printf("%s 线程: %s，耗时%s秒%n", taskName, Thread.currentThread().getName(), elapsedTime);
     }
 
-    private GlobalExecutorsController async() {
-        return applicationContext.getBean(GlobalExecutorsController.class);
+    private AsyncController self() {
+        return applicationContext.getBean(AsyncController.class);
     }
 }

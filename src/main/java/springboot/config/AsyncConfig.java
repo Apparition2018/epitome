@@ -35,8 +35,8 @@ public class AsyncConfig implements AsyncConfigurer {
      *      2.1.2 null → 使用 {@link SimpleAsyncTaskExecutor}：不是线程池，每个任务新创建一个线程的简易异步执行器
      *  2.2 否
      *      2.2.1 查找唯一的 TaskExecutor Bean
-     *          注：容器中没有其他 Executor Bean 时，Spring Boot 会创建 线程名前缀 "task-" 的 ThreadPoolTaskExecutor
-     *              queueCapacity 默认 Integer.MAX_VALUE → OOM
+     *          注：容器中没有其它 Executor Bean 时，Spring Boot 会创建 task- 前缀 ThreadPoolTaskExecutor
+     *              queueCapacity = Integer.MAX_VALUE → OOM
      *      2.2.2 查找 beanName = "taskExecutor" 的 Executor
      *      2.2.3 使用 SimpleAsyncTaskExecutor
      * </pre
@@ -59,12 +59,11 @@ public class AsyncConfig implements AsyncConfigurer {
     /**
      * IO 密集型任务线程池（非常适合异步）
      * <pre>
-     * 1. MQ 消息发送
-     * 2. 发送通知（短信/邮件/推送）
-     * 3. 数据同步到 ES / Redis（商品信息/缓存预热/全文检索/实时榜单）
-     * 4. 写操作日志
-     * 5. 导出大批量数据文件（①查DB-IO ②生成文件-CPU ③上传-IO）
-     * 6. 导入大批量数据文件（①解析文件-CPU ②写DB-IO）
+     * 1 MQ 消息发送                                                自带的重试+死信队列
+     * 2 发送通知（短信/邮件/推送）                                 @Retryable+重试表定时扫描
+     * 3 数据同步到 ES / Redis（商品信息/缓存预热/全文检索/实时榜单）  定时任务全量/增量兜底
+     * 4 写操作日志                                                  失败降级
+     * 5 导出大批量数据文件（①查DB-IO ②生成文件-CPU ③上传-IO）        失败标记+异步通知
      * </pre>
      */
     @Bean
@@ -79,8 +78,8 @@ public class AsyncConfig implements AsyncConfigurer {
     /**
      * CPU 密集型任务线程池（有限适合异步）
      * <pre>
-     * 1. 批量图片处理（压缩/缩略图/多尺寸/水印/OCR 识别）
-     * 2. 加密/签名
+     * 1 批量图片处理（压缩/缩略图/多尺寸/水印/OCR 识别）
+     * 2 加密/签名
      * </pre>
      */
     @Bean
@@ -90,7 +89,6 @@ public class AsyncConfig implements AsyncConfigurer {
     }
 
     /**
-     * @see ThreadPoolTaskExecutor
      * @see ThreadPoolExecutorDemo.MyRejectHandler
      */
     private ThreadPoolTaskExecutor createBaseExecutor(int coreSize, int maxSize, int queueCap, String prefix, RejectedExecutionHandler handler) {

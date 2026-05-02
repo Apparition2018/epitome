@@ -2,6 +2,7 @@ package springboot.config.init;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -39,36 +40,36 @@ public class SpringStartupRunningLogic {
 
     public static class ExampleBean implements InitializingBean, ApplicationRunner, CommandLineRunner {
         public ExampleBean() {
-            log.warn("@Bean's Constructor");
+            log.info("@Bean's Constructor");
         }
 
         @PostConstruct
         public void postConstruct() {
-            log.warn("@PostConstruct");
+            log.info("@PostConstruct");
         }
 
         @Override
         public void afterPropertiesSet() {
-            log.warn("InitializingBean's afterPropertiesSet()");
+            log.info("InitializingBean's afterPropertiesSet()");
         }
 
         public void init() {
-            log.warn("@Bean's InitMethod");
+            log.info("@Bean's InitMethod");
         }
 
         @EventListener
         public void contextStarted(ContextRefreshedEvent event) {
-            log.warn("ContextRefreshedEvent");
+            log.info("ContextRefreshedEvent");
         }
 
         @Override
-        public void run(ApplicationArguments args) throws Exception {
-            log.warn("ApplicationRunner's run()");
+        public void run(@NonNull ApplicationArguments args) throws Exception {
+            log.info("ApplicationRunner's run()");
         }
 
         @Override
-        public void run(String... args) throws Exception {
-            log.warn("CommandLineRunner's run()");
+        public void run(String @NonNull ... args) throws Exception {
+            log.info("CommandLineRunner's run()");
         }
     }
 }

@@ -2,6 +2,7 @@ package jar.hutool;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
 
+import static l.demo.Demo.ae;
 import static l.demo.Demo.p;
 
 /**
@@ -15,14 +16,14 @@ public class ExceptionUtilDemo {
 
     public static void main(String[] args) {
         try {
-            int i = 1 / 0;
+            p(1 / 0);
         } catch (Exception e) {
             // 完整消息
-            p(ExceptionUtil.getMessage(e));         // ArithmeticException: / by zero
+            ae(ExceptionUtil.getMessage(e), "ArithmeticException: / by zero");
             // 简单消息
-            p(ExceptionUtil.getSimpleMessage(e));   // / by zero
+            ae(ExceptionUtil.getSimpleMessage(e), "/ by zero");
             // 异常链中最尾端的异常的消息
-            p(ExceptionUtil.getRootCauseMessage(e));// ArithmeticException: / by zero
+            ae(ExceptionUtil.getRootCauseMessage(e), "ArithmeticException: / by zero");
 
             // 堆栈转为完整字符串
             p(ExceptionUtil.stacktraceToString(e));

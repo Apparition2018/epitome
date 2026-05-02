@@ -22,11 +22,11 @@
 1. JDK [`ThreadPoolExecutor` 参数 和 内置拒绝策略](pool/ThreadPoolExecutorDemo.java)
 2. Spring `ThreadPoolTaskExecutor` 参数 [AsyncConfig#createBaseExecutor](../../springboot/config/AsyncConfig.java)
 3. [线程池对待任务的策略](pool/ThreadPoolExecutorDemo.java)
-4. 何时创建：项目启动时创建自定义线程池 [AsyncConfig#cpuBoundTaskExecutor#ioBoundTaskExecutor](../../springboot/config/AsyncConfig.java)
-5. 使用场景：[Spring 项目全局线程池](../../springboot/controller/GlobalExecutorsController.java)
-6. 异步失败怎么处理？会回滚吗？
-     （短信/邮件/推送） ← 失败了有补偿？
-     数据同步到 ES/Redis    ← 有定时兜底？
+4. 何时创建：
+    1. 项目启动时创建自定义线程池 [AsyncConfig#ioBoundTaskExecutor#cpuBoundTaskExecutor](../../springboot/config/AsyncConfig.java)
+    2. Spring Boot 兜底创建 task- 前缀 ThreadPoolTaskExecutor（必须在配置文件自定义属性）
+5. 使用场景：[异步方法/异步请求](../../springboot/controller/AsyncController.java)
+6. 异步方法调用可靠性要求和补偿方案：[AsyncConfig#ioBoundTaskExecutor](../../springboot/config/AsyncConfig.java)
 ---
 ## 分布式锁
 1. [数据库](https://honeypps.com/architect/distribute-lock-based-on-database/)
