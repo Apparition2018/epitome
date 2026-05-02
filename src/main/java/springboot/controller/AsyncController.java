@@ -126,7 +126,7 @@ public class AsyncController {
      * 2 @Async + 编程式 RetryTemplate
      * </pre>
      */
-    @Retryable(maxRetries = 2, delay = 300)
+    @Retryable(maxRetries = 3, delay = 300)
     public void retrySendEmail() {
         Integer.parseInt("a");
         simulateWork("发送邮件");

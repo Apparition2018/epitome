@@ -25,7 +25,6 @@ import java.util.stream.IntStream;
  * 3 taskCount ≥ (corePoolSize + queueCapacity) → 新建线程立即执行
  * 4 taskCount ≥ (maxPoolSize + queueCapacity) → 触发handler（RejectedExecutionHandler）异常
  * </pre>
- * 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程（阿里编程规约）
  *
  * @author ljh
  * @since 2020/11/17 19:09

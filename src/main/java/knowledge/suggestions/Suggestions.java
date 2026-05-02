@@ -554,7 +554,7 @@ public class Suggestions extends Demo {
             new Thread(() -> {
                 do {
                     System.out.printf("窗口 %s：卖出 %s%n", Thread.currentThread().getId(), tickets.remove(0));
-                } while (tickets.size() != 0);
+                } while (!tickets.isEmpty());
                 countDownLatch.countDown();
             }).start();
         }

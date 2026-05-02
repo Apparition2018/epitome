@@ -36,7 +36,7 @@ public class AsyncConfig implements AsyncConfigurer {
      *  2.2 否
      *      2.2.1 查找唯一的 TaskExecutor Bean
      *          注：容器中没有其它 Executor Bean 时，Spring Boot 会创建 task- 前缀 ThreadPoolTaskExecutor
-     *              queueCapacity = Integer.MAX_VALUE → OOM
+     *              queueCapacity=∞ → OOM
      *      2.2.2 查找 beanName = "taskExecutor" 的 Executor
      *      2.2.3 使用 SimpleAsyncTaskExecutor
      * </pre

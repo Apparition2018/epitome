@@ -63,7 +63,7 @@ public class CuratorDistributedLock {
                 threadPool.submit(task);
             }
             threadPool.shutdown();
-            if (!threadPool.awaitTermination(10, TimeUnit.MINUTES)) {
+            if (!threadPool.awaitTermination(1, TimeUnit.MINUTES)) {
                 threadPool.shutdownNow();
             }
         } finally {

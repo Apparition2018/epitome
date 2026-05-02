@@ -24,8 +24,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * JPA
- * <p>Jakarta Persistence API</p>
+ * JPA (Jakarta Persistence API)
  * <pre>
  * JPA              EntityManager   定义接口无实现
  * Spring Data JPA  Repository      内部持有 EntityManager 并调用其 API     委托关系
@@ -40,7 +39,7 @@ import java.util.function.Supplier;
 @RequestMapping("/exam")
 @Tag(name = "Exam")
 @Transactional(transactionManager = "jpaTransactionManager", rollbackFor = Exception.class)
-public class JpaController {
+public class ConcurrentController {
 
     /**
      * {@code @PersistenceContext} 作用：
@@ -60,8 +59,8 @@ public class JpaController {
     private final ExamSessionMapper sessionMapper;
     private final ExamBookMapper bookMapper;
 
-    public JpaController(ExamSessionRepository sessionRepository, ExamBookRepository bookRepository,
-                         ExamSessionMapper sessionMapper, ExamBookMapper bookMapper) {
+    public ConcurrentController(ExamSessionRepository sessionRepository, ExamBookRepository bookRepository,
+                                ExamSessionMapper sessionMapper, ExamBookMapper bookMapper) {
         this.sessionRepository = sessionRepository;
         this.bookRepository = bookRepository;
         this.sessionMapper = sessionMapper;

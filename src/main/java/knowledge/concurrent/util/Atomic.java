@@ -7,6 +7,7 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.*;
@@ -170,14 +171,12 @@ public class Atomic extends Demo {
      */
     @Test
     public void testAccumulator() throws InterruptedException {
-        LongAccumulator longAccumulator = new LongAccumulator(Long::sum, 0);
+        LongAccumulator accumulator = new LongAccumulator(Long::sum, 0);
         ExecutorService threadPool = Executors.newFixedThreadPool(100);
-        setCountDownLatch(1_000_000);
-        IntStream.rangeClosed(1, 1_000_000).forEach(i -> threadPool.submit(() -> {
-            longAccumulator.accumulate(i);
-            countDownLatch.countDown();
-        }));
-        countDownLatch.await();
-        p(longAccumulator.getThenReset()); // 500000500000
+        List<Callable<Void>> tasks = IntStream.rangeClosed(1, 1_000_000)
+            .mapToObj(i -> (Callable<Void>) () -> { accumulator.accumulate(i); return null; })
+            .toList();
+        threadPool.invokeAll(tasks);
+        ae(accumulator.getThenReset(), 500000500000L);
     }
 }

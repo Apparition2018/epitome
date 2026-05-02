@@ -29,11 +29,9 @@ import java.util.concurrent.*;
 public class FutureDemo extends Demo {
 
     private final static int NUM_OF_TASK = 5;
-    private final static ExecutorService threadPool = Executors.newFixedThreadPool(5, new MyThreadFactory());
+    private final static ExecutorService threadPool = Executors.newFixedThreadPool(NUM_OF_TASK, new MyThreadFactory());
 
-    /**
-     * Future 是一个抽象的概念，它表示一个值，在某一点会变得可用。
-     */
+    /** Future 是一个抽象的概念，它表示一个值，在某一点会变得可用。 */
     @Test
     public void testFuture() {
         List<Future<Map<Integer, String>>> futureList = new ArrayList<>();
@@ -70,22 +68,20 @@ public class FutureDemo extends Demo {
         threadPool.shutdownNow();
     }
 
-    /**
-     * 使用 FutureTask 实现上面例子
-     */
+    /** 使用 FutureTask 实现上面例子 */
     @Test
     public void testFutureTask() throws InterruptedException {
-        setCountDownLatch(5);
-
         for (int i = 1; i <= NUM_OF_TASK; i++) {
             // FutureTask(Callable<V> callable)
             // 创建一个 FutureTask，一旦运行就执行给定的 Callable
             MyFutureTask ft = new MyFutureTask(new MyCallable(i));
-            threadPool.submit(ft);
+            threadPool.execute(ft);
             p(String.format("指派了一个任务 %s 给线程池！", i));
         }
-        countDownLatch.await();
         threadPool.shutdown();
+        if (!threadPool.awaitTermination(1, TimeUnit.MINUTES)) {
+            threadPool.shutdownNow();
+        }
     }
 
     private static class MyFutureTask extends FutureTask<Map<Integer, String>> {
