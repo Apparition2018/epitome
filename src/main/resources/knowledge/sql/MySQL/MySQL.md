@@ -329,8 +329,8 @@ select * from store limit 10;
     ```
     - 关闭防火墙 iptables, selinux
 2. MySQL 配置
+    - 配置文件的查找顺序：`/usr/sbin/mysqld --verbose --help | grep -A 1 'Default options'`）
     ```
-    # 查找配置文件的顺序：/usr/sbin/mysqld --verbose --help | grep -A 1 'Default options'
     innodb_buffer_pool_size            # 缓冲池大小；如果只有 innodb 表，推荐配置为总内存的75%
     innodb_buffer_pool_instances       # 缓冲池的个数，默认1个
     innodb_flush_log_at_trx_commit     # 0：每秒 flush | 1：每次 flush | 2：每次刷到缓冲区每秒 flush；默认1，推荐2

@@ -34,14 +34,10 @@
 2. 修改 hostname：`hostnamectl set-hostname <hostname>` → `reboot`
 3. [防火墙](https://www.likecs.com/show-205138371.html) ???
 
-    | CentOS 6                                        | CentOS 7                                                      |                   |
-    |-------------------------------------------------|---------------------------------------------------------------|-------------------|
-    | chkconfig iptables on/off                       | systemctl enable/disable firewalld                            | 开启/关闭防火墙（重启后永久生效) |
-    | service iptables start/stop                     | systemctl start/stop firewalld                                | 开启/关闭防火墙（重启后失效)   |
-    | service iptables restart/status/save            | systemctl restart/status firewalld                            |                   |
-    | /etc/sysconfig/iptables                         |                                                               | 防火墙文件             |
-    | iptables -I INPUT -p tcp --dport 8090 -j ACCEPT | firewall-cmd --zone=public --add-port=8080/tcp --permanent    | 添加                |
-    | iptables -D INPUT -p tcp --dport 8090 -j ACCEPT | firewall-cmd --zone=public --remove-port=8080/tcp --permanent | 移除                |
+    | CentOS 6                                        | CentOS 7                                                      |    |
+    |-------------------------------------------------|---------------------------------------------------------------|----|
+    | iptables -I INPUT -p tcp --dport 8090 -j ACCEPT | firewall-cmd --zone=public --add-port=8080/tcp --permanent    | 添加 |
+    | iptables -D INPUT -p tcp --dport 8090 -j ACCEPT | firewall-cmd --zone=public --remove-port=8080/tcp --permanent | 移除 |
 4. CentOS 7 设置打开 Terminal 快捷键
     1. Applications → System Tools → Settings → Devices → Keyboard
     2. `+` → Name:Terminal  Command:/usr/bin/gnome-terminal
@@ -205,7 +201,7 @@
     make install
     ```
     - 可参考 docker 安装 nginx 后，输入 nginx -V 查看配置参数
-5. 防火墙：开放 80 端口
+5. 防火墙：放行 80 端口
 6. [命令](https://nginx.org/en/docs/switches.html)：`cd /usr/local/nginx/sbin`
     ```
     .nginx -h                   帮助
@@ -257,16 +253,14 @@
     chkconfig --add mysql                           添加 mysql 服务
     chkconfig --list mysql                          列出 mysql 服务情况
     chkconfig mysqld on                             开机启动
-    service mysql start|stop|restart|status
-    systemctl start|stop|restart|status|enable|disable mysql
     ```
-8. 防火墙：开放 3306 端口
-9. 连接 msql：`mysql -uroot -p`
+8. 连接 msql `mysql -uroot -p` → 修改密码和授权
     ```
-    alter user root@localhost identified by 'root';                 -- 修改密码
-    grant all privileges on *.* to root@'%' identified by 'root';   -- 授权
+    alter user 'root'@'localhost' identified by 'root';
+    grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;
     flush privileges;
     ```
+9. 防火墙：放行 3306 端口
 ### [MySQL 双主](https://www.jb51.net/article/252651.htm)
 1. 节点 a 配置：`vim /etc/my.cnf`，@see MySQL.md#复制
 2. 节点 b 配置：`vim /etc/my.cnf`，只列出与节点 a 不同的配置
@@ -345,7 +339,7 @@
         bind 0.0.0.0
         daemonize yes
     ```
-5. 防火墙：开放 6379 端口
+5. 防火墙：放行 6379 端口
 6. 操作
     - 启动：`./bin/redis-server ./redis.conf`
     - 客户端：`./bin/redis-cli`
@@ -376,7 +370,7 @@
     yum install -y rabbitmq-server
     systemctl start rabbitmq-server
     ```
-5. 防火墙：开放 5672 和 15672 端口
+5. 防火墙：放行 5672 和 15672 端口
 6. rabbitmq_management
     ```bash
     rabbitmq-plugins enable rabbitmq_management
@@ -437,7 +431,7 @@
     db.createUser({user: "root", pwd: "root", roles: ["root"]})
     db.auth("root", "root")
     ```
-9. 防火墙：开放 27017 端口
+9. 防火墙：放行 27017 端口
 ---
 ## [MinIO](https://www.imooc.com/video/23862)
 1. [Download](https://www.minio.org.cn/download.shtml#/linux)
