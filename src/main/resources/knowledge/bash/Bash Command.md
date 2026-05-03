@@ -109,9 +109,10 @@
         /etc/group                                                      用户组
         /etc/hostname                                                   主机名
         /etc/hosts                                                      IP 和主机名映射
-        /etc/init.d/                                                    /etc/rc.d/init.d 软链接，https://blog.csdn.net/liaowenxiong/article/details/117083906
+        /etc/init.d/                                                    存放 SysV init 风格的服务启动脚本，/etc/rc.d/init.d 的软链接
         /etc/localtime                                                  本地时间
-        /etc/passwd                                                     用户，https://www.linuxprobe.com/explain-etc-passwd.html
+        /etc/os-release                                                 操作系统信息
+        /etc/passwd                                                     用户账户基本信息
         /etc/profile                                                    环境变量
         /etc/sysconfig/iptables                                         防火墙
         /etc/sysconfig/network-scripts/                                 网络脚本

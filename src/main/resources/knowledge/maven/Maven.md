@@ -29,7 +29,7 @@
 ## [仓库](https://maven.apache.org/repositories/index.html)
 1. 本地仓库：运行 Maven 的计算机上的一个目录。它缓存远程下载，并包含尚未发布的临时构建 artifacts
     - 默认路径：${user.home}/.m2/repository
-    - 自定义路径：修改 settings.xml 中的 &lt;localRepository/&gt;
+    - 自定义路径：修改 settings.xml 中的 `<localRepository/>`
 2. 远程仓库：通过各种协议（如：file:// 和 http://）访问的任何其它类型的仓库（远程仓库、中央仓库、私有仓库）
     - [settings.xml](settings.xml)
     ```xml

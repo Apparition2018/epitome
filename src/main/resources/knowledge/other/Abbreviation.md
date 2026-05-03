@@ -1,4 +1,4 @@
-# Abbreviation  
+# Abbreviation
 
 ---
 ## Base
@@ -82,9 +82,9 @@
 | DCL    | Data Control Language                      | 数据控制语言          |
 | ACID   | Atomicity Consistency Isolation Durability | 原子性、一致性、隔离性、持久性 |
 | DBMS   | Database Management System                 | 数据库管理系统         |
-| JDBC   | Java Database Connectivity                 | Java 数据库连接      | 
+| JDBC   | Java Database Connectivity                 | Java 数据库连接      |
 | DBCP   | Database Connection Pool                   | 数据库连接池          |
-| DAO    | Data Access Object                         | 数据访问对象          | 
+| DAO    | Data Access Object                         | 数据访问对象          |
 ---
 ## 网络协议
 |       |                                                      |                |
@@ -117,44 +117,44 @@
 | BOM   | Browser Object Model                 | 浏览器对象模型              |
 | JSON  | JavaScript Object Notation           | 一种轻量级的数据交换格式         |
 | JSTL  | JSP Standard Tag Library             | Java 标准标签库           |
-| EL    | Expression Language                  | EL表达式                | 
+| EL    | Expression Language                  | EL表达式                |
 | OGNL  | Object-Graph Navigation Language     | 对象图导航语言              |
 | CDN   | Content Delivery Network             | 内容分发网络               |
 ---
 ## HTML
-|           |                        |               |
-|:----------|:-----------------------|:--------------|
-| ol        | ordered list           | 有序列表          |
-| ul        | unordered list         | 无序列表          |
-| li        | list item              | 列表项目          |
-| dl        | definition list        | 定义列表          |
-| dt        | definition term        | 定义项           |
-| dd        | definition description | 定义描述          |
-| p         | paragraph              | 段落            |
-| a         | anchor                 | 锚             |
-| tr        | table row              | 表格行           |
-| td        | table data             | 表格数据          |
-| ins       | insert                 | 插入            |
-| rel       | relation               | 当前文本和被连接文本的关系 |
-| href      | Hypertext Reference    | 超文本引用         |
-| i         | italic                 | 斜体            |
-| em        | emphasized             | 强调            |
-| b         | bold                   | 加粗            |
-| br        | break                  | 换行            |
-| src       | source                 | 来源            |
-| \&nbsp;   | Non-Breaking Space     |               |	
-| \&ensp;   | En Space               |               |	
-| \&emsp;   | Em Space               |               |	
-| \&lt;     | less than              | &lt;          |
-| \&gt;     | greater than           | &gt;          |
-| \&amp;    | ampersand              | &             |
-| \&quot;   | quotation marks        | "             |
-| \&apos;   | apostrophe             | '             |
-| \&times;  | times                  | ×             |
-| \&divide; | divide                 | ÷             |
-| \&copy;   | copyright              | ©             |
-| \&reg;    | register               | ®             |
-| \&trade;  | trademark              | ™             |
+|            |                        |               |
+|:-----------|:-----------------------|:--------------|
+| `ol`       | ordered list           | 有序列表          |
+| `ul`       | unordered list         | 无序列表          |
+| `li`       | list item              | 列表项目          |
+| `dl`       | definition list        | 定义列表          |
+| `dt`       | definition term        | 定义项           |
+| `dd`       | definition description | 定义描述          |
+| `p`        | paragraph              | 段落            |
+| `a`        | anchor                 | 锚             |
+| `tr`       | table row              | 表格行           |
+| `td`       | table data             | 表格数据          |
+| `ins`      | insert                 | 插入            |
+| `rel`      | relation               | 当前文本和被连接文本的关系 |
+| `href`     | Hypertext Reference    | 超文本引用         |
+| `i`        | italic                 | 斜体            |
+| `em`       | emphasized             | 强调            |
+| `b`        | bold                   | 加粗            |
+| `br`       | break                  | 换行            |
+| `src`      | source                 | 来源            |
+| `&nbsp;`   | Non-Breaking Space     |               |
+| `&ensp;`   | En Space               |               |
+| `&emsp;`   | Em Space               |               |
+| `&lt;`     | less than              | &lt;          |
+| `&gt;`     | greater than           | &gt;          |
+| `&amp;`    | ampersand              | &             |
+| `&quot;`   | quotation marks        | "             |
+| `&apos;`   | apostrophe             | '             |
+| `&times;`  | times                  | ×             |
+| `&divide;` | divide                 | ÷             |
+| `&copy;`   | copyright              | ©             |
+| `&reg;`    | register               | ®             |
+| `&trade;`  | trademark              | ™             |
 ---
 ## 其它
 |      |                                    |          |

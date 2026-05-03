@@ -27,22 +27,22 @@
 1. 基于内存：①内存读写比磁盘快；②省去将数据从磁盘读到内存的时间
 2. 高效的数据结构
 
-| 中文      | 英文                     | 数据类型                   |
-|:--------|:-----------------------|:-----------------------|
-| 简单动态字符串 | Simple Dynamic Strings | String                 |
-| 双端链表    | LinkedList             | List                   |
-| 压缩链表    | ZipList                | List, Hash, Sorted Set |
-| 字典      | HashTable              | Hash, Set              |
-| 跳跃表     | SkipList               | Sorted Set             |
+    | 中文      | 英文                     | 数据类型                   |
+    |:--------|:-----------------------|:-----------------------|
+    | 简单动态字符串 | Simple Dynamic Strings | String                 |
+    | 双端链表    | LinkedList             | List                   |
+    | 压缩链表    | ZipList                | List, Hash, Sorted Set |
+    | 字典      | HashTable              | Hash, Set              |
+    | 跳跃表     | SkipList               | Sorted Set             |
 3. 合理的数据编码
 
-| 数据类型       | 编码方式                                                |
-|:-----------|:----------------------------------------------------|
-| String     | 数字用 Int 编码，<=39字节的字符串用 EmbStr 编码，>39字节用 Raw 编码      |
-| List       | 元素小于512个，且每个元素小于64字节，用 ZipList 编码，否则用 LinkedList 编码 |
-| Hash       | 元素小于512个，且每个元素小于64字节，用 ZipList 编码，否则用 HashTable 编码  |
-| Set        | 元素小于512个，且都是整数，用 IntSet 编码，否则用 HashTable 编码         |
-| Sorted Set | 元素小于128个，且每个元素小于64字节，用 ZipList 编码，否则用 SkipList 编码   |
+    | 数据类型       | 编码方式                                                |
+    |:-----------|:----------------------------------------------------|
+    | String     | 数字用 Int 编码，≤39字节的字符串用 EmbStr 编码，>39字节用 Raw 编码       |
+    | List       | 元素小于512个，且每个元素小于64字节，用 ZipList 编码，否则用 LinkedList 编码 |
+    | Hash       | 元素小于512个，且每个元素小于64字节，用 ZipList 编码，否则用 HashTable 编码  |
+    | Set        | 元素小于512个，且都是整数，用 IntSet 编码，否则用 HashTable 编码         |
+    | Sorted Set | 元素小于128个，且每个元素小于64字节，用 ZipList 编码，否则用 SkipList 编码   |
 4. 合理的线程模型
     - 文件事件处理器：基于 Reactor 模式开发的一套事件处理机制，是单线程运行的
     ![文件事件处理器](https://mp.weixin.qq.com/s/apScwfXHWlh8xUS1RhMSIA)
@@ -103,11 +103,11 @@ dir ./
 ## [键驱逐](https://redis.io/docs/manual/eviction/)
 - 过期删除策略
 
-| 策略  | 说明                                                  | Redis 使用 |
-|:----|:----------------------------------------------------|:---------|
-| 定时  | 设置过期时间的同时，创建一个定时器，当 KEY 到期时立即删除                     ||
-| 惰性  | 查询 KEY 时，判断是否过期，过期则删除                               | √        |
-| 定期  | 每隔一段时间（默认100ms）删除到期 KEY<br/>检查多少个数据库和删除多少 KEY，由算法决定 | √        |
+    | 策略 | 说明                                                  | Redis 使用 |
+    |:---|:----------------------------------------------------|:---------|
+    | 定时 | 设置过期时间的同时，创建一个定时器，当 KEY 到期时立即删除                     |          |
+    | 惰性 | 查询 KEY 时，判断是否过期，过期则删除                               | √        |
+    | 定期 | 每隔一段时间（默认100ms）删除到期 KEY<br/>检查多少个数据库和删除多少 KEY，由算法决定 | √        |
 - redis.conf
     - `maxmemory <bytes>`
     - `maxmemory-policy <policy>`
@@ -236,7 +236,7 @@ sentinel announce-port <port>
 - 选举执行故障转移的 sentinel
     - 注：哨兵数应该是奇数，quorum 值建议为 (哨兵数/2)+1
     1. 得票数 > 哨兵数的一半
-    2. 得票数 >= quorum
+    2. 得票数 ≥ quorum
 - [命令](https://redis.io/docs/management/sentinel/#sentinel-commands)
     - [运行时重新配置 Sentinel](https://redis.io/docs/manual/sentinel/#reconfiguring-sentinel-at-runtime)
         - `SENTINEL SET`：修改 Master-specific 配置参数
@@ -267,8 +267,8 @@ sentinel announce-port <port>
 - Redis 不支持事务回滚，因为支持回滚会对 Redis 的简单性和性能产生重大影响
 ---
 ## [可编程性](https://redis.io/docs/manual/programmability/)
-1. &gt;= 7：使用 Redis Functions 来管理和运行脚本
-2. <= 6.2：使用 Lua 脚本和 EVAL 命令对服务器进行编程
+1. ≥ 7：使用 Redis Functions 来管理和运行脚本
+2. ≤ 6.2：使用 Lua 脚本和 EVAL 命令对服务器进行编程
 ---
 ## 慢查询日志
 - redis.conf
@@ -362,7 +362,7 @@ slowlog-max-length <length>
 - 优化
     1. 可删除
         1. < 4.0：`SCAN`，渐进式删除，
-        2. &gt;= 4.0：`UNLINK`，惰性删除
+        2. ≥ 4.0：`UNLINK`，惰性删除
     2. 不可删除：
         1. value 只存有用信息
         2. 压缩：大 str 压缩

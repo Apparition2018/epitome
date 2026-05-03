@@ -18,8 +18,8 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://43.136.102.115:3306/epitome"
-                        userId="root" password="Cesc123!">
+                        connectionURL="jdbc:mysql://mysql6.sqlpub.com:3311/epitome"
+                        userId="arsenal" password="wJ3fLsjs2GbJ4BGn">
             <property name="serverTimezone" value="UTC"/>
             <property name="useSSL" value="false"/>
             <property name="nullCatalogMeansCurrent" value="true"/>

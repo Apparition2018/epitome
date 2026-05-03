@@ -8,7 +8,7 @@
 - [vim-modes](https://vimhelp.org/intro.txt.html#vim-modes-intro)
     - Normal mode：Command mode，启动编辑器时默认模式
         - 从 other mode 进入：`Esc`，`Ctrl + [`，`Ctrl + C`
-        - 从 Command-line mode 输入数字再\<Enter>进入：`num<Enter>`
+        - 从 Command-line mode 输入数字再`<Enter>`进入：`num<Enter>`
     - Visual mode
         - 从 Normal mode 进入 Character-wise Visual mode：`v`
         - 从 Normal mode 进入 Line-wise Visual mode：`V`

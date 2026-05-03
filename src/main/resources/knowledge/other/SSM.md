@@ -1,5 +1,5 @@
 # SSM
-Spring + SpringMVC + Mybatis  
+Spring + SpringMVC + Mybatis
 
 ---
 ## 系统分层
@@ -50,7 +50,7 @@ Spring + SpringMVC + Mybatis
             </props>
     　   </property>
     </bean>
-    ```    
+    ```
     2. BeanNameUrlHandlerMapping
     3. RequestMappingHandlerMapping
 3. Controller：负责执行具体的业务处理，实现 Controller 接口及约定方法 handleRequest(req, resp)
@@ -67,7 +67,7 @@ Spring + SpringMVC + Mybatis
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    ```           
+    ```
     3. XmlViewResolver
     4. FreeMarkerViewResolver
 #### 基于注解配置的 MVC
@@ -139,7 +139,7 @@ public String bmi(BmiParam bp, ModelMap modelMap) {
     </filter>
 </web-app>
 ```
-### Spring 拦截器       
+### Spring 拦截器
 - DispatchServlet → interceptor.preHandle() → Controller → interceptor.postHandle() → interceptor.afterCompletion()
 - Interceptor 属于 Spring 框架，Filter 属于 Servlet 规范
 - 步骤：
@@ -167,7 +167,7 @@ public String bmi(BmiParam bp, ModelMap modelMap) {
             <props>
                 <prop key="java.lang.NumberFormatException">erorViewName</prop>
             </pops>
-        </propety>	
+        </propety>
     </bean>
     ```
 2. 自定义：创建异常处理类 实现 HandlerExceptionResolver 接口
@@ -236,8 +236,8 @@ void            close();
     ```
 - 动态 SQL：if，choose(when, otherwise)，trim(where, set)，foreach
 - ["#" 与 "$" 的区别](https://mybatis.org/mybatis-3/zh/sqlmap-xml.html#Parameters)
-    - \#：使用 #{} 参数语法时，MyBatis 会创建 PreparedStatement 参数占位符，并通过占位符安全地设置参数（就像使用 ? 一样，可防止 SQL 注入）。 这样做更安全，更迅速，通常也是首选做法
-    - $：在 SQL 语句中直接插入一个不转义的字符串，一般用于传入数据库对象
+    - `#`：使用 #{} 参数语法时，MyBatis 会创建 PreparedStatement 参数占位符，并通过占位符安全地设置参数（就像使用 ? 一样，可防止 SQL 注入）。 这样做更安全，更迅速，通常也是首选做法
+    - `$`：在 SQL 语句中直接插入一个不转义的字符串，一般用于传入数据库对象
         - 使用场景一：ORDER BY 子句，`ORDER BY ${columnName}`
         - 使用场景二：select 一个表任意一列的数据
         ```
@@ -269,7 +269,7 @@ void            close();
     <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     <property name="basePackage" value="spring.dao"/>
 </bean>
-```  
+```
 ### [mybatis-config.xml](https://mybatis.org/mybatis-3/zh/configuration.html)
 ```xml
 <configuration>

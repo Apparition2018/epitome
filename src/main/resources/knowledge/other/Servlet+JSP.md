@@ -131,7 +131,7 @@ Connection: keep-alive
 | 可被用户禁止，如 Cookie 被完全禁用，Session 也将失效                                        | 当用户第一次请求生成 Session 对象时会生成 SessionID，SessionID 保存在 Cookie 中     |
 ---
 ## Scriptlet
-| <% %>   | <%= %>                   | <%! %>              | \<!-- -->   | <%-- --%>    |
+| `<% %>` | `<%= %>`                 | `<%! %>`            | `<!-- -->`  | `<%-- --%>`  |
 |:--------|:-------------------------|:--------------------|-------------|--------------|
 | JSP 小脚本 | JSP 表达式                  | JSP 声明              | JSP 注释      | 隐藏注释         |
 | -       | 变量、变量加运算符组合的表达式、有返回值的方法  | 成员属性或成员方法的声明        | 可带有 JSP 表达式 | 不会被 JSP 引擎处理 |
@@ -142,7 +142,7 @@ Connection: keep-alive
 |:---------------------------------|:-----------------------------------------------------------------------|
 | 容器将 .jsp 文件转换为 .java 文件(servlet) | JVM 首先会获取 pageEncoding 的值，如果该值存在则采用它设定的编码来编译，否则则采用 file.encoding 编码来编译 |
 | JVM 将 .java 文件转换为 .class 文件      | 与任何编码的设置都没有关系，.java 文件就转换成了统一的 Unicode 格式的 .class 文件                   |
-| 输出到浏览器                           | 如果设置了 charset 则浏览器就会使用指定的编码格式进行解码，否则采用默认的 ISO-8859-1                   | 
+| 输出到浏览器                           | 如果设置了 charset 则浏览器就会使用指定的编码格式进行解码，否则采用默认的 ISO-8859-1                   |
 ---
 ## [JSP 隐式对象](https://www.runoob.com/jsp/jsp-implicit-objects.html)
 - 容器会依次从 pageContext → request → session → application 中查找，调用"getXXX"方法输出
@@ -158,7 +158,7 @@ Connection: keep-alive
 | page        | Object              | JSP 页面本身                        |
 | config      | ServletConfig       | Servlet 配置对象                    |
 | exception   | Throwable           | 捕获网页异常                          |
---- 
+---
 ## [JSP 指令](https://www.runoob.com/jsp/jsp-directives.html)
 <table>
     <tr>
@@ -256,7 +256,7 @@ Connection: keep-alive
 </dependency>
 ```
 - [spring-servlet.xml](../../spring/spring-servlet.xml) 配置视图解析器
-```xml  
+```xml
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 </bean>
@@ -269,11 +269,11 @@ Connection: keep-alive
     <!-- value      必要，输出的内容
          default    可选，默认值 -->
     <c:out value="${x}" deafult="100"/>
-     
+
     <!-- var        可选，存储值的变量
          value      可选，变量存储的值 -->
     <c:set value="1" var="x"/>
-    
+
     <!-- test       必要，条件
          var        可选，存储条件结果的变量 -->
     <c:if test="${x > 1}">…</c:if>
@@ -284,7 +284,7 @@ Connection: keep-alive
         <!-- 可以出现0次或1次 -->
         <c:otherwise>…</c:otherwise>
     </c:choose>
-    
+
     <!-- items      可选，要被迭代的集合
          var        可选，当前迭代条目的变量名称
          varStatus  可选，当前迭代状态的变量名称 -->
@@ -297,7 +297,7 @@ Connection: keep-alive
     <:forEach var="i" begin="1" end="9" step="2">${i}</:forEach>
 
     <!-- 具有 <c:forEach> 相似的属性，此外还有
-         delims     必要，分隔符 -->    
+         delims     必要，分隔符 -->
     <:forTokens items="1,2,3,4,5" var="i" step="2">${i}</:forTokens>
     ```
 - [fmt 标签](../../../../../web/WEB-INF/jsp/jstl/fmt.jsp)

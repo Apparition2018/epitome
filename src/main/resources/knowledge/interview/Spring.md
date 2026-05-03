@@ -53,7 +53,7 @@
     - p 命名空间注入：快捷的 setter 注入
 ### [依赖配置细节](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-properties-detailed)
 1. 引用其它 Bean：在 `<constructor-arg/>`/`<property/>` 使用 ref 属性 或 `<ref/>` 子元素
-2. 内部 Bean：在 `<constructor-arg/>`/`<property/>` 使用 `<bean/>` 子元素 
+2. 内部 Bean：在 `<constructor-arg/>`/`<property/>` 使用 `<bean/>` 子元素
 3. 集合：`<list/>`, `<set/>`, `<map/>`, `<props/>`
 4. null：`<property name="age">`, `<null/>`, `</property>`
 5. 复合属性名：`<property name="fred.bob.sammy" value="123"/>`
@@ -211,21 +211,21 @@
 1. 事务隔离级别：@see [SQL.md#事务隔离级别](../sql/SQL.md)
 2. [事务传播机制](https://segmentfault.com/a/1190000013341344)
 
-| 事务传播          | 外层无事务 | 外层有事务 | 外层有事务备注 |
-|:--------------|:------|:------|:--------|
-| REQUIRED      | 新建事务  | 加入事务  | 同一事务    |
-| REQUIRES_NEW  | 新建事务  | 新建事务  | 不同事务    |
-| NESTED        | 新建事务  | 嵌套事务  | 内不影响外   |
-| SUPPORTS      | 无事务   | 加入事务  | 同一事务    |
-| NOT_SUPPORTED | 无事务   | 无事务   |         |
-| NEVER         | 无事务   | 抛出异常  |         |
-| MANDATORY     | 抛出异常  | 加入事务  | 同一事务    |
+    | 事务传播          | 外层无事务 | 外层有事务 | 外层有事务备注 |
+    |:--------------|:------|:------|:--------|
+    | REQUIRED      | 新建事务  | 加入事务  | 同一事务    |
+    | REQUIRES_NEW  | 新建事务  | 新建事务  | 不同事务    |
+    | NESTED        | 新建事务  | 嵌套事务  | 内不影响外   |
+    | SUPPORTS      | 无事务   | 加入事务  | 同一事务    |
+    | NOT_SUPPORTED | 无事务   | 无事务   |         |
+    | NEVER         | 无事务   | 抛出异常  |         |
+    | MANDATORY     | 抛出异常  | 加入事务  | 同一事务    |
 3. [编程式事务管理](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-programmatic)
     1. TransactionTemplate
     2. TransactionalOperator
     3. TransactionManager
 4. [声明式事务管理](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative)
-    1. [基于 XML - \<tx:advice/>](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative-txadvice-settings)
+    1. [基于 XML - `<tx:advice/>`](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative-txadvice-settings)
     2. [基于注解 - @Transactional](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative-annotations)
         - 开启事务管理
             - XML：applicationContext.xml

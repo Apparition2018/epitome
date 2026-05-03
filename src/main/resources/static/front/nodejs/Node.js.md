@@ -26,30 +26,30 @@
 ---
 ## [npm](https://docs.npmjs.com/)
 ### [npm CLI Commands](https://docs.npmjs.com/cli/v8/commands)
-| commands   | aliases           | synopsis                                                                                                                              | description        |
-|:-----------|:------------------|:--------------------------------------------------------------------------------------------------------------------------------------|:-------------------|
-| config     | c                 | npm config set key=value [key=value...]<br/>npm config get [key ...]<br/>npm config delete key [key ...]<br/>npm config list [--json] | 管理 npm 配置文件        |
-| init       | create            | npm init [--force&#124;-f&#124;--yes&#124;-y&#124;--scope]<br/>npm init <@scope><br/>npm init [<@scope>/]&lt;name&gt;                 | 创建 package.json 文件 |
-| install    | i, add            | npm install [<@scope>/]&lt;pkg&gt;[@&lt;tag&gt;]<br/>npm install [<@scope>/]&lt;pkg&gt;[@&lt;version range&gt;]                       | 安装包                |
-| update     | up, upgrade       | npm update [&lt;pkg&gt;...]                                                                                                           | 更新包                |
-| uninstall  | un, remove, r, rm | npm uninstall [<@scope>/]&lt;pkg&gt;...                                                                                               | 卸载包                |
-| ls         | list              | npm ls [[<@scope>/]&lt;pkg&gt; ...]<br/><br/>npm list -g --depth=0                                                                    | 列出已安装的包            |
-| view       | info, show, v     | npm view [<@scope>/]&lt;pkg&gt;[@&lt;version&gt;] [&lt;field&gt;[.subfield]...]                                                       | 查看包信息              |
-| run-script | run               | npm run-script &lt;command&gt; [-- &lt;args&gt;]                                                                                      | 运行脚本               |
+| commands   | aliases           | synopsis                                                                                                                                                                                   | description        |
+|:-----------|:------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------|
+| config     | c                 | `npm config set <key>=<value> [<key>=<value> ...]`<br/>`npm config get [<key> [<key> ...]]`<br/>`npm config delete <key> [<key> ...]`<br/>`npm config list [--json]`<br/>`npm config edit` | 管理 npm 配置文件        |
+| init       | create            | `npm init <package-spec>`<br/>`npm init <@scope>`                                                                                                                                          | 创建 package.json 文件 |
+| install    | i, add            | `npm install [<package-spec> ...]`                                                                                                                                                         | 安装包                |
+| update     | up, upgrade       | `npm update [<pkg>...]`                                                                                                                                                                    | 更新包                |
+| uninstall  | un, remove, r, rm | `npm uninstall [<@scope>/]<pkg>...`                                                                                                                                                        | 卸载包                |
+| ls         | list              | `npm ls <package-spec>`                                                                                                                                                                    | 列出已安装的包            |
+| view       | info, show, v     | `npm view [<package-spec>] [<field>[.subfield]...]`                                                                                                                                        | 查看包信息              |
+| run-script | run               | `npm run-script <command> [-- <args>]`                                                                                                                                                     | 运行脚本               |
 ## [package.json](https://docs.npmjs.com/cli/v8/configuring-npm/package-json)
 
 ---
 ## npm vs [yarn](https://yarn.bootcss.com/docs/cli/)
-| npm                                | yarn                        |
-|:-----------------------------------|:----------------------------|
-| npm init                           | yarn create ?               |
-| npm install                        | yarn [install]              |
-| npm install &lt;pkg&gt;            | yarn add &lt;pkg&gt;        |
-| npm install &lt;pkg&gt; --save-dev | yarn add &lt;pkg&gt; --dev  |
-| npm install &lt;pkg&gt; -g         | yarn global add &lt;pkg&gt; |
-| npm update &lt;pkg&gt;             | yarn upgrade &lt;pkg&gt;    |
-| npm uninstall &lt;pkg&gt;          | yarn remove &lt;pkg&gt;     |
-| npm run &lt;command&gt;            | yarn run &lt;command&gt;    |
+| npm                            | yarn                    |
+|:-------------------------------|:------------------------|
+| `npm init`                     | `yarn create ?`         |
+| `npm install`                  | `yarn [install]`        |
+| `npm install <pkg>`            | `yarn add <pkg>`        |
+| `npm install <pkg> --save-dev` | `yarn add <pkg> --dev`  |
+| `npm install <pkg> -g`         | `yarn global add <pkg>` |
+| `npm update <pkg>`             | `yarn upgrade <pkg>`    |
+| `npm uninstall <pkg>`          | `yarn remove <pkg>`     |
+| `npm run <command>`            | `yarn run <command>`    |
 ---
 ## [Globals](https://nodejs.org/dist/latest-v16.x/docs/api/globals.html)
 1. __dirname：当前模块的目录名
