@@ -3,7 +3,7 @@ package l.demo;
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import lombok.NonNull;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.util.StopWatch;
 
 import javax.swing.filechooser.FileSystemView;
@@ -144,8 +144,16 @@ public class Demo {
         System.out.println("=".repeat(Math.max(0, cnt)));
     }
 
-    public static void ae(Object obj1, Object obj2) {
-        Assert.assertEquals(obj1, obj2);
+    public static void an(Object actual) {
+        Assertions.assertNull(actual);
+    }
+
+    public static void ann(Object actual) {
+        Assertions.assertNotNull(actual);
+    }
+
+    public static void ae(Object actual, Object expected) {
+        Assertions.assertEquals(expected, actual);
     }
 
     /** 模拟 Thread.sleep()，为了避免 Thread.sleep() 而需要捕获 InterruptedException 而带来的理解上的困惑 */

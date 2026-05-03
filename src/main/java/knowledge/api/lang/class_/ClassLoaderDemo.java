@@ -34,18 +34,17 @@ public class ClassLoaderDemo extends Demo {
     /** 获得 ClassLoader 的三种途径 */
     @Test
     public void getClassLoader() {
-        // 使用当前类
         ClassLoader classLoader1 = this.getClass().getClassLoader();
+        ClassLoader classLoader2 = ClassLoader.class.getClassLoader();
+        // 返回当前线程上下文类加载器
+        ClassLoader classLoader3 = Thread.currentThread().getContextClassLoader();
+        // 返回系统类加载器
+        ClassLoader classLoader4 = ClassLoader.getSystemClassLoader();
 
-        // 使用当前线程
-        ClassLoader classLoader2 = Thread.currentThread().getContextClassLoader();
-
-        // 使用系统 ClassLoader
-        ClassLoader classLoader3 = ClassLoader.getSystemClassLoader();
-
-        p(classLoader1);
-        p(classLoader2);
-        p(classLoader3);
+        ae(classLoader1.getClass().getName(), "jdk.internal.loader.ClassLoaders$AppClassLoader");
+        ae(classLoader2.getClass().getName(), "jdk.internal.loader.ClassLoaders$AppClassLoader");
+        ae(classLoader3.getClass().getName(), "jdk.internal.loader.ClassLoaders$AppClassLoader");
+        ae(classLoader4.getClass().getName(), "jdk.internal.loader.ClassLoaders$AppClassLoader");
     }
 
     /**
@@ -58,29 +57,36 @@ public class ClassLoaderDemo extends Demo {
     @Test
     public void getSystemResourceAsStream() throws IOException {
         Class<ClassLoaderDemo> clazz = ClassLoaderDemo.class;
-        final String extension = ".class";
+        final String clazzExt = ".class";
 
-        String name = this.getClass().getSimpleName() + ".class";
-        p(name);                    // ClassLoaderDemo.class
-        // 相对路径（相对于类路径）
-        try (InputStream is = clazz.getResourceAsStream(name)) {
+        String relativePath = this.getClass().getSimpleName() + clazzExt;
+        ae("ClassLoaderDemo.class", relativePath);
+        /* 相对路径（相对 clazz 所在包的路径） */
+        try (InputStream is = clazz.getResourceAsStream(relativePath)) {
             p(Objects.requireNonNull(is).available());
-            URL url = clazz.getResource(name);
-            p(url);
+            URL url = clazz.getResource(relativePath);
+            ann(url);
+            p(url.getPath());
+            ae(url.getPath(), "/D:/Liang/git/epitome/target/classes/knowledge/api/lang/class_/ClassLoaderDemo.class");
         }
 
-        String name2 = ClassUtils.convertClassNameToResourcePath(this.getClass().getName()) + extension;
-        p(StrUtil.SLASH + name2);   // /knowledge/api/lang/class_/ClassLoaderDemo.class
-        // 绝对路径
-        try (InputStream is = clazz.getResourceAsStream(StrUtil.SLASH + name2)) {
+        String absolutePath = StrUtil.SLASH + ClassUtils.convertClassNameToResourcePath(this.getClass().getName()) + clazzExt;
+        ae("/knowledge/api/lang/class_/ClassLoaderDemo.class", absolutePath);
+        /* 绝对路径 */
+        try (InputStream is = clazz.getResourceAsStream(absolutePath)) {
             p(Objects.requireNonNull(is).available());
-            URL url = clazz.getResource(StrUtil.SLASH + name2);
-            p(url);
+            URL url = clazz.getResource(absolutePath);
+            ann(url);
+            ae(url.getPath(), "/D:/Liang/git/epitome/target/classes/knowledge/api/lang/class_/ClassLoaderDemo.class");
         }
 
-        p(name2);                   // knowledge/api/lang/class_/ClassLoaderDemo.class
-        // 相对路径（相对 classpath）
-        InputStream is = ClassLoader.getSystemResourceAsStream(name2);
-        p(Objects.requireNonNull(is).available());
+        String rootRelativePath = absolutePath.substring(1);
+        ae("knowledge/api/lang/class_/ClassLoaderDemo.class", rootRelativePath);
+        /* 根相对路径 */
+        try (InputStream is = ClassLoader.getSystemResourceAsStream(rootRelativePath)) {
+            p(Objects.requireNonNull(is).available());
+            URL url = clazz.getResource(rootRelativePath);
+            an(url);
+        }
     }
 }
