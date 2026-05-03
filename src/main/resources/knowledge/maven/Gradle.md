@@ -1,5 +1,5 @@
 # Gradle
-<img alt="主流构建工具" src="https://img.mukewang.com/6065f52d0001055212800720.jpg" width="500">
+![主流构建工具](https://img1.sycdn.imooc.com/6065f52d0001055212800720.jpg)
 
 ---
 ## Reference
@@ -43,7 +43,7 @@
     ```
 ---
 ## 构建脚本
-<img alt="项目-任务关系" src="https://img3.mukewang.com/606612910001be5b13660768.jpg" width="500">
+<img alt="项目-任务关系" src="https://img1.sycdn.imooc.com/606612910001be5b13660768.jpg" width="500">
 
 - Gradle 构件中两个基本概念是项目(project)和任务(task)
 - 每个构建至少包含一个项目，项目中包含一个或多个任务
@@ -59,17 +59,15 @@
 - doFirst, doLast, <<
 ---
 ## 构建生命周期
-<img alt="构建生命周期1" src="https://img.mukewang.com/6066172100016f7d13660768.jpg" width="500">
-<img alt="构建生命周期2" src="https://img.mukewang.com/6066179a00017f5213660768.jpg" width="500">
-
+- ![构建生命周期1](https://img1.sycdn.imooc.com/6066172100016f7d13660768.jpg)
+- ![构建生命周期2](https://img1.sycdn.imooc.com/6066179a00017f5213660768.jpg)
 ---
 ## 依赖管理
-[gradle 新的依赖方式](https://blog.csdn.net/wangliblog/article/details/81366095)
+- [gradle 新的依赖方式](https://blog.csdn.net/wangliblog/article/details/81366095)
 ### 自动化依赖管理
-<img alt="自动化依赖管理" src="https://img1.mukewang.com/60661a6c0001769113660768.jpg" width="500">
-
+[自动化依赖管理](https://img1.sycdn.imooc.com/60661a6c0001769113660768.jpg)
 ### 依赖阶段关系
-<img alt="依赖阶段关系" src="https://img2.mukewang.com/60661b0e0001cc1b13660768.jpg" width="500">
+[依赖阶段关系](https://img1.sycdn.imooc.com/60661b0e0001cc1b13660768.jpg)
 
 ### 解决冲突
 1. 默认选用相对高的版本
@@ -99,16 +97,15 @@
     ```
 ---
 ## 多项目构建
-- 项目模块化  
-<img alt="模块依赖关系" src="https://img4.mukewang.com/606696430001dfd213660768.jpg" width="500"/>
+- 项目模块化
+    ![模块依赖关系](https://img1.sycdn.imooc.com/606696430001dfd213660768.jpg)
 - 配置要求
     - 所有项目应用 Java 插件
     - web 子项目打包成 war
     - 所有项目添加 logback
     - 统一配置公共属性
-- 项目范围  
-<img alt="项目范围" src="https://img2.mukewang.com/606bc4dc00015a8f13660768.jpg" width="500"/>
-
+- 项目范围
+    ![项目范围](https://img1.sycdn.imooc.com/606bc4dc00015a8f13660768.jpg)
 ---
 ## 测试
 - 测试发现
@@ -118,6 +115,5 @@
 - 测试报告：build/reports
 ---
 ## 发布
-<img alt="发布" src="https://img3.mukewang.com/606bfa310001854f13660768.jpg" width="500"/>
-
+![发布](https://img1.sycdn.imooc.com/606bfa310001854f13660768.jpg)
 ---

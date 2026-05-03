@@ -24,6 +24,8 @@
 // 极度简单、实时性要求低 → 轮询
 // 删除无用依赖
 // @Enable 独立配置？
+// Controller → Test、Controller + @RequiredArgsConstructor
+// Nginx 优化 + 限流
 
 
 import l.demo.Demo;

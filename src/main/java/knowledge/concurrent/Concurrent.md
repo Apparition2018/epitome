@@ -5,12 +5,12 @@
 1. [透彻理解 Java 并发编程](https://segmentfault.com/blog/ressmix_multithread)
 ---
 ## 阿里编程规约
-1. 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程。
+1. 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程
 2. 线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式
     ```
-    FixedThreadPool/SingleThreadPool    queueCapacity   ∞ → OOM
-    CachedThreadPool                    maxPoolSize     ∞ → OOM
-    ScheduledThreadPool                 queueCapacity   ∞ → OOM
+    FixedThreadPool/SingleThreadExecutor    queueCapacity                ∞ → OOM
+    CachedThreadPool                        maxPoolSize                  ∞ → OOM
+    ScheduledThreadPool                     maxPoolSize/queueCapacity    ∞ → OOM
     ```
 3. 高并发时，同步调用应该去考量锁的性能损耗
     - 无锁数据结构 → 锁区块 → 对象锁 → 类锁
@@ -29,6 +29,25 @@
     ```
 8. 在高并发场景中，避免使用“等于”判断作为中断或退出的条件
     - 如果并发控制没有处理好，容易产生等值判断被“击穿”的情况，使用大于或小于的区间判断条件来代替
+---
+## 抗住高并发
+- 分层削峰，减少流量直接打到数据库
+- 客户端 → CDN → Nginx → 应用集群 → Redis → 消息队列 → 数据库
+### 前端层
+1. CDN：Content Delivery Network，静态资源（图片、CSS/JS、字体）、页面静态化（秒杀固定信息）
+2. 合并请求：字体图标、SVG Sprite、接口合并（GraphQL）
+3. 减少请求：节流（throttle）、防抖（debounce）
+### 网关层
+1. 负载均衡
+    1. DNS 轮询：多机房入口分流（一个机房对应一个公网 IP）
+    2. Nginx：单机房内[负载均衡](../../../resources/knowledge/nginx/nginx_3_load_balancer.conf)
+2. 限流
+    1. 单机：Guava RateLimiter、Semaphore
+    2. [Nginx](../../../resources/knowledge/nginx/nginx_4_limit.conf)
+    3. 分布式
+        1. Spring Cloud Gateway 内置 RequestRateLimiter。仅限网关层，无法在业务方法上使用
+        2. 自定义：Redis + Lua 实现令牌桶（Token Bucket）和滑动窗口（Sliding Window）
+        3. Redisson 的 RRateLimiter
 ---
 ## 线程池
 1. JDK [`ThreadPoolExecutor` 参数 和 内置拒绝策略](pool/ThreadPoolExecutorDemo.java)
@@ -89,9 +108,8 @@
 ---
 ## 秒杀活动
 ### [seckill-1]
-1. 详情页 - [CDN 缓存](https://zhuanlan.zhihu.com/p/190935418) ：Content Delivery Network，静态资源（图片、CSS/JS、字体）、静态页面（秒杀固定信息）
-2. 秒杀地址接口 - Redis 缓存秒杀相关信息
-3. 秒杀操作接口
+1. 秒杀地址接口 - Redis 缓存秒杀相关信息
+2. 秒杀操作接口
     1. 减少事务时间：先 insert 购买行为（无竞争不加锁），再 update 扣减库存（加行锁）
     2. 减少事务时间：存储过程（insert 购买行为 + update 扣减库存）
     3. 原子操作扣减库存（Redis+Lua）→ 记录购买行为消息（分布式 MQ）→ 消费消息落地（DB）

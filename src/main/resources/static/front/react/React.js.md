@@ -49,12 +49,12 @@ yarn build
     - 如：`class ShoppingList extends React.Component {}`
 2. Props（属性）- NameCard.js
     - 组件像一个函数一样，接受特定的不可变的输入(props)，产出特定的输出(React elements)，纯函数
-    - V = f(props) 
+    - V = f(props)
 3. State（状态）- LikesButton.js
     - 组件内部的数据，可以动态改变
     - this.setState() 是更新 state 的唯一途径
-4. 生命周期 - DigitalClock.js  
-    <img alt="生命周期" src="https://img3.mukewang.com/60785824000118b219201080.jpg" width="500"/>
+4. 生命周期 - DigitalClock.js
+    ![生命周期](https://img1.sycdn.imooc.com/60785824000118b219201080.jpg)
 5. Forms（表单）- CommentBox.js
     - 表单元素和其它 DOM 元素的区别
     - Controlled Components - 受控组件
