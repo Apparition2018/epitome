@@ -3,22 +3,20 @@
 // Spring Security
 //      https://blog.csdn.net/liuminglei1987/category_10122574.html
 // Spring Security + CAS        中央认证服务
-// YunGouOS                     聚合支付
-// IJpay                        聚合支付
+// YunGouOS / IJpay             聚合支付
 // SpringBlade (BladeX + Saber) SaaS 多租户微服务平台
 // ShopXO                       企业级 B2C 开源电商平台
 // RuoYi                        后台管理系统
 // Guns                         后台管理系统
-// JeecgBoot                    基于 BPM 的低代码平台
 // WebFlux                      响应式编程
-// BIO/NIO/AIO                  网络编程
-//      https://coding.imooc.com/class/chapter/381.html
-// LuckyFrameWeb                测试平台
 // Arthas                       线上监控诊断
 //      https://arthas.aliyun.com/doc/
 
 // Flutter
 
+// IDEA Learn
+// IDEA Services (Kubernetes、Docker)
+// 手机抽奖抓包
 // 简单进度条 - SEE（轻量，单向推送足够）
 // 需要前后端双向通信 → WebSocket
 // 极度简单、实时性要求低 → 轮询
@@ -27,6 +25,9 @@
 // Controller → Test、Controller + @RequiredArgsConstructor
 // Nginx 优化 + 限流
 // 限流
+// Elasticsearch、ELK
+// 埋点
+// Messaging | Spring Boot
 
 
 import l.demo.Demo;

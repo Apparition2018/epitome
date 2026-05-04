@@ -64,7 +64,7 @@ public class ThreadDemo extends Demo {
         Thread t = Thread.currentThread();
         p("Thread = " + t);
         // 线程标识符
-        p("id = " + t.getId());
+        p("id = " + t.threadId());
         // 线程名称
         // 创建线程或线程池时请指定有意义的线程名称，方便出错时回溯（阿里编程规约）
         t.setName("test");

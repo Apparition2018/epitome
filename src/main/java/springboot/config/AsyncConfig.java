@@ -1,6 +1,7 @@
 package springboot.config;
 
 import knowledge.concurrent.pool.ThreadPoolExecutorDemo;
+import org.apache.commons.lang3.time.DateUtils;
 import org.jspecify.annotations.Nullable;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Bean;
@@ -9,8 +10,11 @@ import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -22,32 +26,44 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 @Configuration
 @EnableAsync
-public class AsyncConfig implements AsyncConfigurer {
+public class AsyncConfig implements WebMvcConfigurer, AsyncConfigurer {
 
     /**
-     * 处理异步方法(@Async)调用
+     * 1）实现 WebMvcConfigurer，配置异步请求
+     * <p>支持的请求返回值：①Callable ②DeferredResult ③WebAsyncTask
+     *
+     * @see <a href="https://mp.weixin.qq.com/s/Vqj7L9hQL9b11LEdDWp-HQ">异步请求和异步调用有区别</a>
+     */
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
+        configurer.setDefaultTimeout(DateUtils.MILLIS_PER_SECOND * 30);
+    }
+
+    /**
+     * 2）实现 AsyncConfigurer，处理异步方法(@Async)调用
      * <p>@Async 查找线程池流程：
      * <pre>
-     * 1 指定线程池：找不到 抛出 NoSuchBeanDefinitionException
+     * 1 指定线程池：找不到则抛出 NoSuchBeanDefinitionException
      * 2 没有指定线程池，是否实现了 {@link AsyncConfigurer#getAsyncExecutor()}
      *  2.1 是
-     *      2.1.1 not null → 使用配置的线程池
-     *      2.1.2 null → 使用 {@link SimpleAsyncTaskExecutor}：不是线程池，每个任务新创建一个线程的简易异步执行器
+     *      2.1.1 not null → 使用配置的线程池或 Executor
+     *      2.1.2 null → 使用 {@link SimpleAsyncTaskExecutor}：不是线程池，每个任务新创建一个简易异步执行器
      *  2.2 否
      *      2.2.1 查找唯一的 TaskExecutor Bean
-     *          注：容器中没有其它 Executor Bean 时，Spring Boot 会创建 task- 前缀 ThreadPoolTaskExecutor
+     *          注：① 容器中没有其它 Executor Bean 时，Spring Boot 会创建 task- 前缀的 ThreadPoolTaskExecutor
      *              queueCapacity=∞ → OOM
+     *              ② 启用虚拟线程后，这里使用的是虚拟线程
      *      2.2.2 查找 beanName = "taskExecutor" 的 Executor
      *      2.2.3 使用 SimpleAsyncTaskExecutor
      * </pre
      */
     @Override
     public @Nullable Executor getAsyncExecutor() {
-        return ioBoundTaskExecutor();
+        return Executors.newThreadPerTaskExecutor(Thread.ofVirtual().name("virtual-", 0).factory());
     }
 
     /**
-     * 为异步方法(@Async)提供异常处理
+     * 实现 AsyncConfigurer，为异步方法(@Async)提供异常处理
      * <p>仅对返回 void 的方法，其它方法异常可通过 future.get() 传递给调用方
      * <p>@Async 方法支持且建议的返回类型：①void ②Future ③CompletableFuture
      */
@@ -58,6 +74,7 @@ public class AsyncConfig implements AsyncConfigurer {
 
     /**
      * IO 密集型任务线程池（非常适合异步）
+     * 注：JDK21 建议使用虚拟线程代替
      * <pre>
      * 1 MQ 消息发送                                                自带的重试+死信队列
      * 2 发送通知（短信/邮件/推送）                                 @Retryable+重试表定时扫描
@@ -79,7 +96,8 @@ public class AsyncConfig implements AsyncConfigurer {
      * CPU 密集型任务线程池（有限适合异步）
      * <pre>
      * 1 批量图片处理（压缩/缩略图/多尺寸/水印/OCR 识别）
-     * 2 加密/签名
+     * 2 视频转码
+     * 3 加解密/签名
      * </pre>
      */
     @Bean
@@ -88,9 +106,7 @@ public class AsyncConfig implements AsyncConfigurer {
         return this.createBaseExecutor(cpuCores + 1, cpuCores + 1, 200, "CpuBoundTask-", new ThreadPoolExecutor.AbortPolicy());
     }
 
-    /**
-     * @see ThreadPoolExecutorDemo.MyRejectHandler
-     */
+    /** @see ThreadPoolExecutorDemo.MyRejectHandler */
     private ThreadPoolTaskExecutor createBaseExecutor(int coreSize, int maxSize, int queueCap, String prefix, RejectedExecutionHandler handler) {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(coreSize);

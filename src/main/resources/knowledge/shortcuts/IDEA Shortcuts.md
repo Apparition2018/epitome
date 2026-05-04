@@ -257,7 +257,7 @@ Ctrl + Shift + A                Find Action…
 ```
 Alt + 0                         Commit
 Alt + 1                         Project
-Alt + 2                         Favorites
+Alt + 2                         Bookmarks
 Alt + 3                         Find
 Alt + 4                         Run
 Alt + 5                         Debug
@@ -265,6 +265,8 @@ Alt + 6                         Problems
 Alt + 7                         Structure
 Alt + 8                         Services
 Alt + 9                         Git
+Alt + Shift + 1                 AI Assistant
+Alt + Shift + 2                 CodeBuddy (user)
 Alt + F12                       Terminal
 ```
 ---
@@ -334,15 +336,6 @@ Shift + Enter                   Data Source Properties
 ```
 Ctrl + ;                        Activate / Cycle AceJump Mode
 ```
-### CodeGlance Pro
-```
-Ctrl + Shift + G                Toggle Current CodeGlance
-```
-### Diagrams
-```
-Ctrl + Alt + U                  Show UML Popup                      显示 UML 弹窗
-Ctrl + Alt + Shift + U          Show UML Diagram                    显示 UML 视图
-```
 ### GsonFormatPlus
 ```
 Alt + S                         GsonFormatPlus
@@ -353,9 +346,22 @@ Alt + F2                        Web Preview…                        浏览器�
 ```
 ### Markdown
 ```
-Ctrl + Shift + C                Code
+Ctrl + Shift + C                Code`
 Ctrl + Shift + U                Create Link
 ```
+### Tencent Cloud CodeBuddy
+```
+Alt + K                                                             开始内联聊天
+Alt + U                                                             添加到 CodeBuddy 对话
+Alt + Shift + R                                                     代码审核
+Alt + Shift + B                                                     修复代码
+Alt + Shift + X                                                     解释代码
+```
+### Translation
+```
+Ctrl + Shift + Y                Translate                           翻译
+```
+---
 ## Other
 ```
 Alt + Shift + F                 Add to Favorites                    添加到 Favorites

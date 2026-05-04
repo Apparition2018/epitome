@@ -51,14 +51,15 @@
         4. 自定义：Redis + Lua 实现令牌桶（Token Bucket）和滑动窗口（Sliding Window）
 ---
 ## 线程池
-1. JDK [`ThreadPoolExecutor` 参数 和 内置拒绝策略](pool/ThreadPoolExecutorDemo.java)
-2. Spring `ThreadPoolTaskExecutor` 参数 [AsyncConfig#createBaseExecutor](../../springboot/config/AsyncConfig.java)
-3. [线程池对待任务的策略](pool/ThreadPoolExecutorDemo.java)
-4. 何时创建：
+1. IO 密集型优先使用虚拟线程
+2. JDK [`ThreadPoolExecutor` 参数 和 内置拒绝策略](pool/ThreadPoolExecutorDemo.java)
+3. Spring `ThreadPoolTaskExecutor` 参数 [AsyncConfig#createBaseExecutor](../../springboot/config/AsyncConfig.java)
+4. [线程池对待任务的策略](pool/ThreadPoolExecutorDemo.java)
+5. 何时创建：
     1. 项目启动时创建自定义线程池 [AsyncConfig#ioBoundTaskExecutor#cpuBoundTaskExecutor](../../springboot/config/AsyncConfig.java)
     2. Spring Boot 兜底创建 task- 前缀 ThreadPoolTaskExecutor（必须在配置文件自定义属性）
-5. 使用场景：[异步方法/异步请求](../../springboot/controller/AsyncController.java)
-6. 异步方法调用可靠性要求和补偿方案：[AsyncConfig#ioBoundTaskExecutor](../../springboot/config/AsyncConfig.java)
+6. 使用场景：[异步方法/异步请求](../../springboot/controller/AsyncController.java)
+7. 异步方法调用可靠性要求和补偿方案：[AsyncConfig#ioBoundTaskExecutor](../../springboot/config/AsyncConfig.java)
 ---
 ## 分布式锁
 1. [数据库](https://honeypps.com/architect/distribute-lock-based-on-database/)

@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.resilience.annotation.Retryable;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.context.request.async.WebAsyncTask;
 import springboot.config.AsyncConfig;
-import springboot.config.WebMvcConfig;
 
 import java.util.concurrent.*;
 
@@ -22,7 +22,7 @@ import java.util.concurrent.*;
  * 异步
  * <pre>
  * 1 异步方法：{@link AsyncConfig#getAsyncExecutor() @Async}，客户端不等待结果
- * 2 异步请求：{@link WebMvcConfig#configureAsyncSupport Callable/WebAsyncTask/DeferredResult}，客户端等待结果，释放 Tomcat 线程。
+ * 2 异步请求：{@link AsyncConfig#configureAsyncSupport Callable/WebAsyncTask/DeferredResult}，客户端等待结果，释放 Tomcat 线程。
  *      解决的问题不是“服务器变快了”，是慢接口不抢 Tomcat 线程，快接口不被慢接口堵死
  *  1 {@link #asyncRequestCallable() Callable}：结果不需要外部系统
  *  2 {@link #asyncRequestWebAsyncTask() WebAsyncTask}：同 Callable，但需要自定义超时时间和超时回调
@@ -128,7 +128,7 @@ public class AsyncController {
      */
     @Retryable(maxRetries = 3, delay = 300)
     public void retrySendEmail() {
-        Integer.parseInt("a");
+        if (ThreadLocalRandom.current().nextBoolean()) Integer.parseInt("a");
         simulateWork("发送邮件");
     }
 
@@ -154,7 +154,8 @@ public class AsyncController {
     private void simulateWork(String taskName) {
         int elapsedTime = ThreadLocalRandom.current().nextInt(1, 3);
         TimeUnit.SECONDS.sleep(elapsedTime);
-        System.out.printf("%s 线程: %s，耗时%s秒%n", taskName, Thread.currentThread().getName(), elapsedTime);
+        Thread thread = Thread.currentThread();
+        System.out.printf("【%s】%s线程: %s，耗时%s秒%n", taskName, thread.isVirtual() ? "虚拟" : StringUtils.EMPTY, thread.getName(), elapsedTime);
     }
 
     private AsyncController self() {

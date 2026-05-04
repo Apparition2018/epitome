@@ -3,7 +3,6 @@ package springboot.config;
 import cn.hutool.core.util.StrUtil;
 import knowledge.xml.jaxb.JaxbDemo;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.webmvc.autoconfigure.WebMvcAutoConfiguration;
@@ -13,7 +12,6 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.yaml.JacksonYamlHttpMessageConverter;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.ResourceUtils;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.validation.Validator;
@@ -47,14 +45,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Value("${spring.web.resources.static-locations}")
     private String staticLocations;
 
-    private final ThreadPoolTaskExecutor ioBoundTaskExecutor;
-
-    public WebMvcConfig(ThreadPoolTaskExecutor ioBoundTaskExecutor) {
-        this.ioBoundTaskExecutor = ioBoundTaskExecutor;
-    }
-
     /**
-     * 1.配置 HandlerMapping 路径匹配
+     * 配置 HandlerMapping 路径匹配
      *
      * @see <a href="https://www.baeldung.com/spring-mvc-matrix-variables">A Quick Guide to Spring MVC Matrix Variables</a>
      */
@@ -66,7 +58,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 2.配置内容协议
+     * 配置内容协议
      * <pre>
      * 1 URL suffixes：根据 URL 后缀返回内容格式，5.2.4 弃用
      * 2 URL parameter：根据 URL 请求参数返回内容格式
@@ -95,19 +87,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 3.配置异步请求
-     * <p>支持的请求返回值：①Callable ②DeferredResult ③WebAsyncTask
-     *
-     * @see <a href="https://mp.weixin.qq.com/s/Vqj7L9hQL9b11LEdDWp-HQ">异步请求和异步调用有区别</a>
-     */
-    @Override
-    public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
-        configurer.setTaskExecutor(ioBoundTaskExecutor);
-        configurer.setDefaultTimeout(DateUtils.MILLIS_PER_SECOND * 30);
-    }
-
-    /**
-     * 4.配置默认 Servlet 处理器
+     * 配置默认 Servlet 处理器
      * <p>常见用于 DispatcherServlet 被映射到 "/"，从而覆盖 Servlet 容器对静态资源的默认处理
      */
     @Override
@@ -116,7 +96,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 5.添加转换器和格式化器
+     * 添加转换器和格式化器
      *
      * @see <a href="https://xkcoding.com/2019/01/30/spring-boot-request-use-enums-params.html">使用枚举作为请求参数</a>
      * @see <a href="https://www.cnblogs.com/eclipse-/p/10998269.html">自定义注解转换请求参数</a>
@@ -136,7 +116,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return new HttpInterceptor();
     }
 
-    /** 6.添加 SpringMVC 生命周期拦截器 */
+    /** 添加 SpringMVC 生命周期拦截器 */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(httpInterceptor()).addPathPatterns("/mvc/**").excludePathPatterns(StringUtils.EMPTY);
@@ -144,7 +124,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 7.添加静态资源处理器
+     * 添加静态资源处理器
      * <pre>
      * 1 extends WebMvcConfigurationSupport 会使默认配置失效，需重写 addResourceHandlers
      * 2 implements WebMvcConfigurer 则不需要，在 application.yml 配置即可
@@ -173,7 +153,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 8.配置全局跨域请求处理
+     * 配置全局跨域请求处理
      * <p>也可以使用 @CrossOrigin 针对单独的 Controller
      * <pre>
      * {@code @CrossOrigin(origins = "http://192.168.1.123:8080",
@@ -201,7 +181,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 9.添加简单的自动控制器
+     * 添加简单的自动控制器
      * <p>常用于无业务逻辑的页面跳转，如：主页、URL 重定向、404 页面等
      * <p>下面代码相当于：
      * <pre>
@@ -222,7 +202,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 10.配置视图解析器
+     * 配置视图解析器
      *
      * @see <a href="https://www.baeldung.com/spring-mvc-view-resolver-tutorial">A Guide to the ViewResolver in Spring MVC</a>
      * @see
@@ -239,7 +219,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 11.添加参数解析器
+     * 添加参数解析器
      * <p>要自定义参数解析的内置支持，请直接配置 RequestMappingHandlerAdapter
      *
      * @see <a href="https://www.baeldung.com/spring-mvc-custom-data-binder#binding-a-hierarchy-of-objects">Binding Domain Objects</a>
@@ -256,7 +236,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 12.添加返回值处理器
+     * 添加返回值处理器
      * <p>要自定义处理返回值的内置支持，请直接配置 RequestMappingHandlerAdapter
      */
     @Override
@@ -266,7 +246,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 13.配置消息转换器
+     * 配置消息转换器
      * <p>处理特定格式的请求体和响应
      * <pre>
      * 1 WebMvcConfigurer 的 configureMessageConverters 和 extendMessageConverters 过时了
@@ -290,7 +270,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     /**
-     * 14.配置处理异常解析器
+     * 配置处理异常解析器
      *
      * @see <a href="https://www.cnblogs.com/yihuihui/p/11673496.html">自定义异常处理 HandlerExceptionResolver</a>
      */
@@ -299,20 +279,20 @@ public class WebMvcConfig implements WebMvcConfigurer {
         WebMvcConfigurer.super.configureHandlerExceptionResolvers(resolvers);
     }
 
-    /** 15.扩展或修改处理异常解析器 */
+    /** 扩展或修改处理异常解析器 */
     @Override
     public void extendHandlerExceptionResolvers(@NotNull List<HandlerExceptionResolver> resolvers) {
         WebMvcConfigurer.super.extendHandlerExceptionResolvers(resolvers);
     }
 
-    /** 16.自定义 Validator */
+    /** 自定义 Validator */
     @Override
     public Validator getValidator() {
         return WebMvcConfigurer.super.getValidator();
     }
 
     /**
-     * 17.自定义 MessageCodesResolver
+     * 自定义 MessageCodesResolver
      * <p>用于从数据绑定和验证错误代码构建消息代码
      */
     @Override
