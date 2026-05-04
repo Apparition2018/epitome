@@ -4,7 +4,7 @@
 2. Mybatis-plus 是如何实现的
 3. Hibernate/Mybatis
 
-1. 高并发，线程池
+1. 高并发
 2. SQL 优化，慢 SQL（发现、解决），命中索引
 3. MQ 幂等
 4. 不用 For Update

@@ -1,6 +1,5 @@
 # ES6
 ![ES6 思维导图](http://img1.mukewang.com/60abe37100010d0805000417.jpg)
-
 ---
 ## Reference
 1. [ECMAScript2015~2020语法全解析](http://es.xiecheng.live/)
@@ -87,11 +86,11 @@ function myFreeze(obj) {
     function sum (x, y) {
         return x + y;
     }
-    
+
     const sum2 = function (x, y) {
         return x + y;
     }
-    
+
     // 箭头函数
     const sum3 = (x, y) => {
         return x + y;
@@ -174,7 +173,7 @@ function myFreeze(obj) {
 ---
 ## babel
 ```
-1. 进入项目目录，执行初始化 npm init -y 
+1. 进入项目目录，执行初始化 npm init -y
 2. npm install --save-dev babel-preset-env babel-cli
     (npm install -D @babel/cli @babel/core @babel/preset-env)
     (npm install -g @babel/core @babel/cli)

@@ -23,7 +23,7 @@ import java.util.stream.IntStream;
  * 1 taskCount < corePoolSize → 放入立即执行
  * 2 taskCount ≥ corePoolSize → 放入队列等待
  * 3 taskCount ≥ (corePoolSize + queueCapacity) → 新建线程立即执行
- * 4 taskCount ≥ (maxPoolSize + queueCapacity) → 触发handler（RejectedExecutionHandler）异常
+ * 4 taskCount ≥ (maxPoolSize + queueCapacity) → 触发 handler（RejectedExecutionHandler 异常）
  * </pre>
  *
  * @author ljh

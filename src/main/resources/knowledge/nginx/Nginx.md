@@ -16,13 +16,11 @@
 | Netty          | 高性能服务器编程          |
 ---
 ## 正向代理 vs 反向代理
-| 正向代理                        | 反向代理                        |
-|-----------------------------|-----------------------------|
-| 为在防火墙内的局域网提供访问 Internet 的途径 | 将防火墙后面的服务器提供给 Internet 用户访问 |
-| 代理客户端                       | 代理服务器                       |
-| 客户端架构                       | 服务器架构                       |
-| 服务器不知道真正的用户                 | 用户不知道真正的服务器                 |
-| 解决访问问题                      | 解决负载均衡、安全防护                 |
+| 正向代理         | 反向代理         |
+|--------------|--------------|
+| 代理客户端        | 代理服务器        |
+| 服务器只能看到代理 IP | 客户端只能看到代理 IP |
+| VPN、局域网、爬虫   | 负载均衡、安全防护    |
 ---
 ## [指令 (directives)](http://nginx.org/en/docs/ngx_core_module.html#directives)
 1. 简单指令 (simple directives)：`<名称> <空格分隔的参数>;`
@@ -33,26 +31,26 @@
             - [location](http://nginx.org/en/docs/http/ngx_http_core_module.html#location)
 ---
 ## [模块](http://nginx.org/en/docs/#development)
-| 模块                       | 指令                       |
-|--------------------------|--------------------------|
-| Core functionality       | events, worker_processes |
-| ngx_http_core_module     | http, server, location   |
-| ngx_http_log_module      | access_log, log_format   |
-| ngx_http_upstream_module | upstream                 |
-| ngx_http_charset_module  | charset                  |
-| ngx_http_index_module    | index                    |
-| ngx_http_proxy_module    | proxy_pass               |
-| ngx_http_access_module   | allow, deny              |
-| ngx_http_headers_module  | expires                  |
+| 模块                       | 指令                                 |
+|--------------------------|------------------------------------|
+| Core functionality       | events, worker_processes           |
+| ngx_http_core_module     | http, server, location, limit_rate |
+| ngx_http_log_module      | access_log, log_format             |
+| ngx_http_upstream_module | upstream                           |
+| ngx_http_charset_module  | charset                            |
+| ngx_http_index_module    | index                              |
+| ngx_http_proxy_module    | proxy_pass                         |
+| ngx_http_access_module   | allow, deny                        |
+| ngx_http_headers_module  | expires                            |
 ---
 ## [.conf](nginx_0.conf)
-1. [反向代理](nginx_1.conf)
-    - [负载均衡](nginx_2.conf)
-2. [提供静态内容](nginx_3.conf)
-    - [动静分离](nginx_1.conf)
-3. [正向代理](https://www.yiibai.com/nginx/nginx-main-use-scenes.html#h2-5-)
+1. [反向代理](nginx_1_proxy.conf)
+2. [提供静态内容](nginx_2_static_content.conf)
+    - [动静分离](nginx_1_proxy.conf)
+3. [负载均衡](nginx_3_load_balancer.conf)
+4. [限流](nginx_4_limit.conf)
+5. [正向代理](https://www.yiibai.com/nginx/nginx-main-use-scenes.html#h2-5-)
 ---
 ## [Nginx 集群](https://www.imooc.com/video/23861)
-![Nginx 集群](https://img.mukewang.com/64a7cdca0001214919201080-500-284.jpg)
-
+![Nginx 集群](https://img1.sycdn.imooc.com/64a7cdca0001214919201080-500-284.jpg)
 ---
