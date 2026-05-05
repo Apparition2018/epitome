@@ -7,3 +7,6 @@
 2. [消息队列是什么？](https://www.zhihu.com/question/54152397/answer/923992679)
 3. [Messaging | Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#messaging)
 ---
+## [RocketMQ](https://rocketmq.apache.org/zh/docs/)
+- @see OrderFlowIntegrationTest.java
+---

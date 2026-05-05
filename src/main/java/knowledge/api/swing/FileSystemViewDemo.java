@@ -2,6 +2,8 @@ package knowledge.api.swing;
 
 import javax.swing.filechooser.FileSystemView;
 
+import static l.demo.Demo.ae;
+
 /**
  * FileSystemView
  *
@@ -12,6 +14,6 @@ public class FileSystemViewDemo {
 
     public static void main(String[] args) {
         FileSystemView fileSystemView = FileSystemView.getFileSystemView();
-        System.out.println(fileSystemView.getHomeDirectory()); // C:\Users\Administrator\Desktop
+        ae(fileSystemView.getHomeDirectory().getPath(), "C:\\Users\\Administrator\\Desktop");
     }
 }

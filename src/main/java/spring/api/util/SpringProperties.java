@@ -12,6 +12,7 @@ import org.springframework.util.SystemPropertyUtils;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
+import static l.demo.Demo.ae;
 
 /**
  * SpringProperties
@@ -33,7 +34,7 @@ public class SpringProperties {
         Properties properties = PropertiesUtil.loadProps(PROPERTIES_NAME);
 
         PropertyPlaceholderHelper propertyPlaceholderHelper = new PropertyPlaceholderHelper("{", "}");
-        System.out.println(propertyPlaceholderHelper.replacePlaceholders(s, properties)); // Jack 18 100
+        ae(propertyPlaceholderHelper.replacePlaceholders(s, properties), "Jack 18 100");
     }
 
     /**
@@ -43,7 +44,7 @@ public class SpringProperties {
     @Test
     public void testSystemPropertyUtils() {
         String s = "My computer os is ${user.name}";
-        System.out.println(SystemPropertyUtils.resolvePlaceholders(s)); // My computer os is Administrator
+        ae(SystemPropertyUtils.resolvePlaceholders(s), "My computer os is Administrator");
     }
 
     @Test
@@ -53,8 +54,7 @@ public class SpringProperties {
         Properties props = PropertiesLoaderUtils.loadProperties(new ClassPathResource(PROPERTIES_NAME));
         // static Properties    loadProperties(EncodedResource resource)
         // 加载指定 EncodedResource 的 properties 文件
-        props = PropertiesLoaderUtils.loadProperties(new EncodedResource(
-                new ClassPathResource(PROPERTIES_NAME), StandardCharsets.UTF_8));
+        props = PropertiesLoaderUtils.loadProperties(new EncodedResource(new ClassPathResource(PROPERTIES_NAME), StandardCharsets.UTF_8));
 
         // static Properties    loadAllProperties(String resourceName)
         // 加载当前 classpath 下所有相同名称的 properties 文件
