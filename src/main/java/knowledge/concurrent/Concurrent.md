@@ -17,7 +17,7 @@
     - 避免在锁代码块中调用 RPC 方法
 4. 对多个资源、数据库表、对象同时加锁时，需要保持一致的加锁顺序，否则可能会造成死锁
 5. 并发修改同一记录时，避免更新丢失，需要加锁。
-    - 应用层加锁 / 缓存加锁 / 数据库层乐观锁 (version / updated_at) / 数据库层 CAS
+    - 应用层加锁 / 缓存加锁 / 数据库层乐观锁 (version / updated_at / 状态) / 数据库层 CAS
     - 冲突概率小于 20% 使用乐观锁，否则使用悲观锁
     - 乐观锁的重试次数不得小于 3 次，可以使用 @Retryable
 6. 资金相关的金融敏感信息，使用悲观锁策略；悲观锁遵循一锁、二判、三更新、四释放的原则
@@ -49,6 +49,21 @@
         2. Redisson 的 RRateLimiter
         3. Sentinel 的 Token Server
         4. 自定义：Redis + Lua 实现令牌桶（Token Bucket）和滑动窗口（Sliding Window）
+### 缓存层
+1. 浏览器缓存：强缓存 / 协商缓存
+2. Nginx 本地缓存
+3. [Redis](../../../resources/knowledge/interview/Redis.md) 分布式缓存
+4. [Caffeine](../../jar/caffeine/CaffeineDemo.java) 本地进程缓
+---
+### 应用层
+1. [线程池](#线程池)
+2. [消息队列](../../../resources/knowledge/interview/Messaging.md)
+3. 读写分离
+    1. 动态数据源 + AOP
+    2. ShardingSphere-JDBC
+    3. MyBatis-Plus dynamic-datasource
+### 数据库层
+
 ---
 ## 线程池
 1. IO 密集型优先使用虚拟线程

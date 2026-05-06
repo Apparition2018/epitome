@@ -24,7 +24,7 @@
 ## [JPA](../../../java/springboot/controller/JpaController.java)
 
 ---
-## MQ
+## [Messaging](./Messaging.md)
 
 ---
 ## [Concurrent](../../../java/knowledge/concurrent/concurrent.md)

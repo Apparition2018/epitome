@@ -49,7 +49,7 @@ import java.util.stream.IntStream;
  * @see <a href="https://www.jianshu.com/p/492f1f5f7763">原子类（五）Adder 和 Accumulator</a>
  * @since 2020/11/17 0:52
  */
-public class Atomic extends Demo {
+public class AtomicDemo extends Demo {
 
     /**
      * AtomicReference      原子引用

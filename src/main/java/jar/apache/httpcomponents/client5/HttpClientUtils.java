@@ -128,7 +128,6 @@ public final class HttpClientUtils {
             .setDefaultCookieStore(cookieStore)
             .setDefaultCredentialsProvider(basicCredentialsProvider)
             .setDefaultRequestConfig(requestConfig)
-            // 设置定时清理连接池中过期的连接
             .evictExpiredConnections()
             .evictIdleConnections(TimeValue.ofMinutes(3))
             .build();

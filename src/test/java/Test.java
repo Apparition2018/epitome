@@ -25,6 +25,7 @@
 // Controller → Test、Controller + @RequiredArgsConstructor
 // Nginx 优化 + 限流
 // 限流
+// 多层缓存架构 Caffeine + Redis 二级缓存
 // Elasticsearch、ELK
 // 埋点
 // Messaging | Spring Boot

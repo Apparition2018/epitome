@@ -54,18 +54,12 @@ public class URLConnectionDemo extends Demo {
         }
 
         p("======== get ========");
-        // 字节长度
-        p("ContentLength = " + conn.getContentLength());    // ContentLength = 97996
-        // 编码类型
-        p("ContentEncoding = " + conn.getContentEncoding());// ContentEncoding = null
-        // MIME类型
-        p("ContentType = " + conn.getContentType());        // ContentType = image/png
-        // 最后修改时间
-        p("LastModified = " + conn.getLastModified());      // LastModified = 0
-        // Date
-        p("Date = " + conn.getDate());                      // Date = 1600221472000
-        // 过期时间
-        p("Expiration = " + conn.getExpiration());          // Expiration = 1602848715000
+        ae(conn.getContentLengthLong(), 2443L);
+        ae(conn.getContentEncoding(), null);
+        ae(conn.getContentType(), "text/html");
+        ae(conn.getLastModified(), 0L);
+        p("Date = " + conn.getDate());
+        ae(conn.getExpiration(), 0L);
     }
 
     /**
