@@ -63,7 +63,10 @@
     2. ShardingSphere-JDBC
     3. MyBatis-Plus dynamic-datasource
 ### 数据库层
-
+1. [SQL 优化](../../../resources/knowledge/sql/MySQL/MySQL.md)
+2. 读写分离：主库写、从库读，从库可水平扩展
+3. [分库分表](../../../resources/knowledge/other/Database.md)
+4. 合理配置连接池连接数
 ---
 ## 线程池
 1. IO 密集型优先使用虚拟线程

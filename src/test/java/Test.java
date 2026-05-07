@@ -17,6 +17,8 @@
 // IDEA Learn
 // IDEA Services (Kubernetes、Docker)
 // 手机抽奖抓包
+// 历史表迁移读取、读写分离、合理配置连接池连接数、数据库备份迁移
+// 删 notes/html/*
 // 简单进度条 - SEE（轻量，单向推送足够）
 // 需要前后端双向通信 → WebSocket
 // 极度简单、实时性要求低 → 轮询
