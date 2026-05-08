@@ -22,6 +22,69 @@
 3. [码哥字节](https://mp.weixin.qq.com/s/zI5jJapggUURWcpPVB8IVg)
 4. [掘金开发者社区 | 小姐姐味道](https://mp.weixin.qq.com/s/-nZ08zGTYNS1b1ep-dDwRQ)
 ---
+## 🔺缓存穿透、击穿、雪崩
+1. 穿透 (Penetration)：查询的数据在缓存和数据库中都不存在
+    - 缓存空值：即使查不到也缓存一个 null 或特定标识，并设置较短过期时间
+    - 布隆过滤器 @see BloomFilterDemo
+2. 击穿 (Breakdown)：热点缓存在过期的瞬间有大量请求
+    - 互斥锁：只有第一个请求拿到锁（如 SETNX）查 DB
+    - 不设置过期时间：①将过期时间写在 value 里，代码判断是否过期异步更新 ②定时更新，慎用
+3. 雪崩 (Avalanche)
+    1. 大量缓存同时过期
+        - 同击穿
+        - 打散过期时间
+    2. 缓存服务器宕机
+        - 熔断、降级、限流：Hystrix
+        - 高可用：主从，哨兵，集群
+>- [程序员囧辉](https://mp.weixin.qq.com/s/QX8UviH7iaxXTz-Io_7uZg)
+>- [小林coding](https://mp.weixin.qq.com/s/_StOUX9Nu-Bo8UpX7ThZmg)
+---
+## 🔺热点 key 处理
+- Caffeine 本地缓存
+- Redis 分片：超过单节点带宽的热 key，拆分成多个子 key（hot:1~hot:N）
+---
+## 数据库和缓存一致性问题
+1. 更新缓存 or 删除缓存？：推荐删除缓存
+    - 写写并发：无论是先更新缓存还是后更新缓存，都会出现数据不一致的问题，而删除缓存则不会
+    - 读写并发：更新缓存和删除缓存都存在数据不一致的问题
+        - 但删除缓存也有可能把“错误缓存”删除，从而解决了问题
+2. 先删除缓存 or 后删除缓存？：推荐后删除缓存
+    - a先写b后读：
+        - 先删除缓存：
+            1. a删除x缓存
+            2. b读取x缓存不存在，读取x数据库值1
+            3. b更新x缓存值1
+            4. a更新x数据库值2
+            5. 结果：无论3和4谁先执行，数据库都是新值，缓存都是旧值，b读到旧值
+        - 后删除缓存：
+            1. a更新x数据库值2
+            2. b读取x缓存值1
+            3. a删除x缓存
+            4. 结果：数据库是新值，缓存无值，b读到旧值
+            - 注：下一次读取会读到新值（最终一致）
+    - a先读b后写：
+        1. a读取x缓存不存在，读取x数据库值1
+        2. b更新x数据库值2 (缓存不存在，所以不考虑先删除还是后删除缓存)
+        3. a更新x缓存值1
+        4. 结果：数据库是新值，缓存是旧值，a读到旧值
+        - 注：出现概率不高，因为缓存操作/读数据库通常要快于写数据库
+    - 注：缓存都是旧值的问题，可用延迟双删来解决
+3. 删除缓存失败怎么办？：①重试/异步重试 ②MySQL binlog (阿里 canal) ③合理过期时间
+4. 常用缓存模式
+    1. 🔺Cache Aside：旁路缓存，大多数业务
+        - 读：读 Cache → 读 DB → 写 Cache
+        - 写：更 DB → 删 Cache
+    2. Read/Write Through：强一致场景
+        - 读：读 Cache → 缓存层（读 DB → 写 Cache）
+        - 写：更 Cache → 缓存层同步更 DB
+    3. Write Behind：写多读少场景
+        - 写：写 Cache → 缓存层异步更 DB
+    - 注：只有 Cache Aside 感知 DB
+>- [腾讯技术工程](https://mp.weixin.qq.com/s/Y9S89MT0uAobzRKgYVrI9Q)
+>- [苏三说技术](https://mp.weixin.qq.com/s/4hP-T0h8QPyjcpH8m0cbsA)
+>- [水滴与银弹 | Magic Kaito](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
+>- [小林coding](https://mp.weixin.qq.com/s/sh-pEcDd9l5xFHIEN87sDA)
+---
 ## [Redis 多快，为什么快](https://mmbiz.qpic.cn/mmbiz_png/g6hBZ0jzZb0Zb0XiaaR6bGaN80wicXIIP735YhoW1fic47MuJOx0HheBX4ficULcmdHhdGQnqGcfCgvunMmxpb8LnA/640)
 - 官方：Redis 的瓶颈通常是内存或网络，而不是 CPU；查询 QPS 达 10w/s
 1. 基于内存：①内存读写比磁盘快；②省去将数据从磁盘读到内存的时间
@@ -282,65 +345,6 @@ slowlog-max-length <length>
     - `SLOWLOG GET [count]`：返回指定条数的慢查询，默认返回所有
     - `SLOWLOG LEN`：返回慢查询日志条数
     - `SLOWLOG RESET`：清除慢查询日志
----
-## 缓存穿透、击穿、雪崩
-1. 穿透 (Penetration)：查询的数据在缓存和数据库中都不存在
-    - 缓存空值：即使查不到也缓存一个 null 或特定标识，并设置较短过期时间
-    - 布隆过滤器 @see BloomFilterDemo
-2. 击穿 (Breakdown)：热点缓存在过期的瞬间有大量请求
-    - 互斥锁：只有第一个请求拿到锁（如 SETNX）查 DB
-    - 不设置过期时间：①将过期时间写在 value 里，代码判断是否过期异步更新 ②定时更新，慎用
-3. 雪崩 (Avalanche)
-    1. 大量缓存同时过期
-        - 同击穿
-        - 打散过期时间
-    2. 缓存服务器宕机
-        - 熔断、降级、限流：Hystrix
-        - 高可用：主从，哨兵，集群
->- [程序员囧辉](https://mp.weixin.qq.com/s/QX8UviH7iaxXTz-Io_7uZg)
->- [小林coding](https://mp.weixin.qq.com/s/_StOUX9Nu-Bo8UpX7ThZmg)
----
-## 数据库和缓存一致性问题
-1. 更新缓存 or 删除缓存？：推荐删除缓存
-    - 写写并发：无论是先更新缓存还是后更新缓存，都会出现数据不一致的问题，而删除缓存则不会
-    - 读写并发：更新缓存和删除缓存都存在数据不一致的问题
-        - 但删除缓存也有可能把“错误缓存”删除，从而解决了问题
-2. 先删除缓存 or 后删除缓存？：推荐后删除缓存
-    - a先写b后读：
-        - 先删除缓存：
-            1. a删除x缓存
-            2. b读取x缓存不存在，读取x数据库值1
-            3. b更新x缓存值1
-            4. a更新x数据库值2
-            5. 结果：无论3和4谁先执行，数据库都是新值，缓存都是旧值，b读到旧值
-        - 后删除缓存：
-            1. a更新x数据库值2
-            2. b读取x缓存值1
-            3. a删除x缓存
-            4. 结果：数据库是新值，缓存无值，b读到旧值
-            - 注：下一次读取会读到新值（最终一致）
-    - a先读b后写：
-        1. a读取x缓存不存在，读取x数据库值1
-        2. b更新x数据库值2 (缓存不存在，所以不考虑先删除还是后删除缓存)
-        3. a更新x缓存值1
-        4. 结果：数据库是新值，缓存是旧值，a读到旧值
-        - 注：出现概率不高，因为缓存操作/读数据库通常要快于写数据库
-    - 注：缓存都是旧值的问题，可用延迟双删来解决
-3. 删除缓存失败怎么办？：①重试/异步重试 ②MySQL binlog (阿里 canal) ③合理过期时间
-4. 常用缓存模式
-    1. Cache Aside：旁路缓存，大多数业务
-        - 读：读 Cache → 读 DB → 写 Cache
-        - 写：更 DB → 删 Cache
-    2. Read/Write Through：强一致场景
-        - 读：读 Cache → 缓存层（读 DB → 写 Cache）
-        - 写：更 Cache → 缓存层同步更 DB
-    3. Write Behind：写多读少场景
-        - 写：写 Cache → 缓存层异步更 DB
-    - 注：只有 Cache Aside 感知 DB
->- [腾讯技术工程](https://mp.weixin.qq.com/s/Y9S89MT0uAobzRKgYVrI9Q)
->- [苏三说技术](https://mp.weixin.qq.com/s/4hP-T0h8QPyjcpH8m0cbsA)
->- [水滴与银弹 | Magic Kaito](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
->- [小林coding](https://mp.weixin.qq.com/s/sh-pEcDd9l5xFHIEN87sDA)
 ---
 ## bigkey
 - 什么是 bigkey

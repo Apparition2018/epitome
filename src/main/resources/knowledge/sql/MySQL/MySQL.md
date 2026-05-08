@@ -9,13 +9,30 @@
 4. [MySQL 总结](https://mp.weixin.qq.com/s/pWHCieOwAdCrz8cauduWlQ)
 ---
 ## [MySQL 术语](https://dev.mysql.com/doc/refman/8.4/en/glossary.html)
+- 🔺column prefix：列前缀索引，字符串列索引使用`col_name(N)`语法，创建仅使用列的前 N 个字符的索引
+    - [Index Prefixes](https://dev.mysql.com/doc/refman/8.4/en/column-indexes.html#column-indexes-prefix)
+    - 减少索引大小并提高查询性能
+    - 当索引 BLOB 或 TEXT 列时，必须指定前缀长度
+- ⚪cardinality：基数，索引列中不同值的预估数量
+    - 查看索引的 Cardinality 统计值：`SHOW INDEX FROM table_name`
+- 🔺selectivity：选择性/区分度，= Cardinality / TABLE_ROWS，值越高说明索引过滤性越好
+- 🔺index hint：索引提示，覆盖优化器推荐的索引。适用于 cardinality 分布非常不均匀时
+    1. FORCE INDEX：强制使用
+    2. USE INDEX：建议使用
+    3. IGNORE INDEX：忽略使用
+- 🔺[Leftmost Prefix](https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html)：最左前缀原则，按索引顺序从左到右连续使用，索引才生效
+    - 如：(col1,col2,col3) 索引，那么这些条件组合 (coll1)、(col1,col2) 和 (col1,col2,col3)，索引都生效
+    - 再加上 WHERE 条件重排序，那么 WHERE 条件中包含索引最左的列，索引即生效
+- 🔺covering index：覆盖索引，一个索引包含查询所需的所有列，而无需回表读取数据行。extra 显示 Using index
+- ⚪[index condition pushdown](https://dev.mysql.com/doc/refman/8.4/en/index-condition-pushdown-optimization.html)：索引条件下推，将 WHERE 条件中能用索引列判断的部分，下推到存储引擎层
+    - 减少回表次数和 MySQL 服务器访问存储引擎的次数
 - dirty page：脏页，Buffer Pool 中更改过，且未 written/flushed 到数据文件的页
 - extent：tablespace 的一组页，1页默认16KB，1 extent 包含64页
 - read-ahead：预读，预先读取一组页面到 Buffer Pool
     1. linear read-ahead：线性预读
     2. random read-ahead：随机预读
 ---
-## 阿里 MySQL 数据库=
+## 阿里 MySQL 数据库
 ### 建表规约
 1. 表达是与否概念的字段，必须使用 is_xxx 的方式命名，数据类型是 unsigned tinyint（1 表示是，0 表示否）
     - POJO 类中的任何布尔类型的变量，都不要加 is 前缀，所以需要在<resultMap>设置从 is_xxx 到 Xxx 的映射关系
@@ -55,26 +72,32 @@
 1. 业务上具有唯一特性的字段，即使是组合字段，也必须建成唯一索引
 2. 超过三个表禁止 join。🔺需要 join 的字段，数据类型保持绝对一致；多表关联查询时，保证被关联的字段需要有索引
     - https://www.zhihu.com/question/56236190
-3. 🔺在 varchar 字段上建立索引时，必须指定索引长度，没必要对全字段建立索引，根据实际文本区分度决定索引长度
-    - 可以使用 count(distinct left(列名，索引长度)) / count(*) 的区分度来确定
+3. 🔺在 varchar 字段上建立索引时，必须指定索引长度（前缀索引），没必要对全字段建立索引，根据实际文本区分度决定索引长度
+    - 可以使用 count(distinct left(列名，索引长度)) / count(*) ≥ 90% 的区分度来确定
 4. 🔺页面搜索严禁左模糊或者全模糊，如果需要请走搜索引擎来解决
     - 索引文件具有 B-Tree 的最左前缀匹配特性，如果左边的值未确定，那么无法使用此索引
-    - 全文索引、冗余“反向字段”、限定范围（加筛选条件）+索引覆盖、前缀索引+关键词分词
+    - 解决方案：全文索引、冗余“反向字段”、限定范围（加筛选条件）+覆盖索引、前缀索引+关键词分词
 5. 🔺如果有 order by 的场景，请注意利用索引的有序性。order by 最后的字段是组合索引的一部 分，并且放在索引组合顺序的最后
     - where a = ? and b = ? order by c；索引：a_b_c
     - 索引如果存在范围查询，那么索引有序性无法利用
-6. 🔺利用覆盖索引来进行查询操作，避免回表
-    - 覆盖索引只是一种查询的一种效果，用 explain 的结果，extra 列会出现：using index
-7. 利用延迟关联或者子查询优化超多分页场景 ???
+6. 🔺利用延迟关联或者子查询优化超多分页场景
     - MySQL 并不是跳过 offset 行，而是取 offset+N 行，然后返回放弃前 offset 行，返回 N 行
     - 先快速定位需要获取的 id 段，然后再关联
     - SELECT t1.* FROM 表 1 as t1 , (select id from 表 1 where 条件 LIMIT 100000 , 20) as t2 where t1.id = t2.id
     - https://mp.weixin.qq.com/s/3Pc88OtKr3_KJXItX2IJ3Q
-8. 🔺SQL 性能优化的目标：至少要达到 range 级别，要求是 ref 级别，如果可以是 const 最好
-9. 🔺建组合索引的时候，区分度最高的在最左边
+7. 🔺SQL 性能优化的目标：至少要达到 range 级别，要求是 ref 级别，如果可以是 const 最好
+8. 建组合索引的时候，区分度最高的在最左边
     - 如果 where a = ? and b = ?，a 列的几乎接近于唯一值，那么只需要单建 idx_a 索引即可
     - 存在非等号和等号混合判断条件时，在建索引时，请把等号条件的列前置
         - 如：where c > ? and d = ? 那么即使 c 的区分度更高，也必须把 d 放在索引的最前列，即建立组合索引 idx_d_c
+9. 创建索引时避免有如下极端误解
+    - ⚪索引宁滥勿缺。认为一个查询就需要建一个索引
+        - 如：①WHERE order_status = ? 不建，选择性极低 ②表数据少
+        - 索引也占用空间，还需要定期维护索引
+        - DML 操作需要重建索引
+        - DQL 操作优化器选择使用哪一个索引需要时间
+    - 吝啬索引的创建。认为索引会消耗空间、严重拖慢记录的更新以及行的新增速度
+    - 抵制唯一索引。认为唯一索引一律需要在应用层通过“先查后插”方式解决
 ### SQL 语句
 1. 🔺不要使用 count(列名) 或 count(常量) 来替代 count(*)，count(*) 是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关
     - count(*) 会统计值为 NULL 的行，而 count(列名) 不会统计此列为 NULL 值的行
@@ -113,30 +136,11 @@
 10. <isEqual>中的 compareValue 是与属性值对比的常量，一般是数字，表示相等时带上此条件；<isNotEmpty>表示不为空且不为 null 时执行；<isNotNull>表示不为 null 值时执行
 ---
 ## MySQL 调优
-1. [Optimization](https://dev.mysql.com/doc/refman/8.4/en/optimization.html)
-2. [SQL 性能优化梳理](https://juejin.cn/post/6844903494504185870)
-3. [字符串索引前缀长度](https://blog.csdn.net/qq_38670588/article/details/108499966)
 ### 优化建议
 - 索引相关
-    - [索引方法](https://dev.mysql.com/doc/refman/8.4/en/index-btree-hash.html)
-        1. 🔺B+Tree：默认，[最左前缀原则 (Leftmost Prefix)](https://www.cnblogs.com/-mrl/p/13230006.html)
-            1. 从左到右匹配直到遇到范围查询 (>, <, between, like) 停止匹配，建议范围查询放最后
-            2. in 和 = 可以乱序
-        2. Hash：所有索引列；不支持排序；只支持等值查询：=，<=>
-    - 表数据太少不需要添加索引
-    - 索引的数据类型越小效率越高
-    - 索引不要包括太长的数据类型，使用前缀索引代替：ALTER TABLE <table_name> ADD INDEX idx_content(content(6))
-    - 索引不是越多越好
-        - 索引也占用空间，还需要定期维护索引
-        - DML 操作需要重建索引
-        - DQL 操作优化器选择使用哪一个索引需要时间
-    - 🔺[索引选择性高的列放在索引的前面](https://www.cnblogs.com/liyasong/p/mysql_xuanzexing_index.html)
     - [组合索引 (Composite Indexes)](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
-    - [索引下推 (Index Condition Pushdown)](https://dev.mysql.com/doc/refman/8.4/en/index-condition-pushdown-optimization.html)
-        - [索引下推](https://blog.csdn.net/LBWNB_Java/article/details/120348886)
-    - [覆盖索引 (Covering Indexes)](https://mp.weixin.qq.com/s/y0pjtNUZhOW2ZBOy4m-xsA)
-        - 如何实现：将被查询的字段、条件字段、排序字段等，建立到联合索引里去
-        - explain extra 显示 Using index
+        1. 从左到右匹配直到遇到范围查询 (>, <, between, like) 停止匹配，建议范围查询放最后
+        2. in 和 = 可以乱序
     - [降序索引 (Descending Indexes)](https://dev.mysql.com/doc/refman/8.4/en/descending-indexes.html)
     - [MySQL8 三大索引](https://www.mdnice.com/writing/ca72a1892384484aa67bc37398dea3b8)
     - 查找重复索引及冗余索引
@@ -152,7 +156,7 @@
         2. pt-duplicate-key-checker
     - 删除不用的索引
         - pt-index-usage
-- 避免全表扫描：①表无索引；②放弃使用索引：成本是否够小，比如数据量小的表，!= 和 is null 等也可能使用索引
+- 避免全表扫描：放弃使用索引：成本是否够小，比如数据量小的表，!= 和 is null 等也可能使用索引
     1. 在 ①where ②order by ③group by ④多表关联涉及的列 上建立索引
     2. 避免使用 is null 和 is not null，建表时尽量设置 not null
     3. 避免使用 != 和 <>
@@ -192,15 +196,15 @@
 ### [explain](https://dev.mysql.com/doc/refman/8.4/en/explain.html)
 - [type](https://dev.mysql.com/doc/refman/8.4/en/explain-output.html#explain-join-types) ：连接类型
 
-| type   | 说明                                                                    |
-|:-------|:----------------------------------------------------------------------|
-| system | MyISAM 且只有一行记录，const 的特例                                              |
-| const  | 单表单行匹配，pk 或 unique not null 索引的等值查询                                   |
-| eq_ref | join被驱动表单行匹配，pk 或 unique not null 索引的等值查询                             |
-| ref    | 多行匹配，非 unique 索引的等值查询                                                 |
-| range  | 索引范围检索；可能走 range：<>, >, >=, <, <=, IS [NOT] NULL, BETWEEN, LIKE, IN() |
-| index  | 覆盖索引？是，extra 显示 Using index；否，索引树的全表扫描                                |
-| ALL    | 全表扫描                                                                  |
+| type   | 说明                                                                         |
+|:-------|:---------------------------------------------------------------------------|
+| system | MyISAM 且只有一行记录，const 的特例                                                   |
+| const  | 单表单行匹配，pk 或 unique not null 索引的等值查询                                        |
+| eq_ref | join被驱动表单行匹配，pk 或 unique not null 索引的等值查询                                  |
+| ref    | 多行匹配，非 unique 索引的等值查询                                                      |
+| range  | 索引范围检索；可能走 range： >, <, >=, <=, BETWEEN, !=, <>, IS [NOT] NULL, LIKE, IN() |
+| index  | 覆盖索引？是，extra 显示 Using index；否，索引树的全表扫描                                     |
+| ALL    | 全表扫描                                                                       |
 - possible_keys：可选择使用的索引
 - key：实际选择使用的索引
 - [key_len](https://www.cnblogs.com/lukexwang/articles/7060950.html) ：使用索引的长度
@@ -472,7 +476,7 @@ gtid_mode=ON
 2. [为什么 varchar 默认是 255](https://www.jianshu.com/p/83bdcf9bd5a8)
     - varchar 有一个长度前缀表示字节数
         1. varchar ≤ 255个字节时，长度前缀为1个字节
-        2. varchar >  255个字节时，长度前缀为2个字节
+        2. varchar > 255个字节时，长度前缀为2个字节
 3. 变更大表表结构
     1. gh-ost：5.5 | 5.6 | 5.7（主从修改表结构的操作） | 8.0（主从不支持 INSTANT 的操作）
     2. DDL
