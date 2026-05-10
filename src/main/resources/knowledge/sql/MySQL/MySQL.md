@@ -9,10 +9,6 @@
 4. [MySQL 总结](https://mp.weixin.qq.com/s/pWHCieOwAdCrz8cauduWlQ)
 ---
 ## [MySQL 术语](https://dev.mysql.com/doc/refman/8.4/en/glossary.html)
-- 🔺column prefix：列前缀索引，字符串列索引使用`col_name(N)`语法，创建仅使用列的前 N 个字符的索引
-    - [Index Prefixes](https://dev.mysql.com/doc/refman/8.4/en/column-indexes.html#column-indexes-prefix)
-    - 减少索引大小并提高查询性能
-    - 当索引 BLOB 或 TEXT 列时，必须指定前缀长度
 - ⚪cardinality：基数，索引列中不同值的预估数量
     - 查看索引的 Cardinality 统计值：`SHOW INDEX FROM table_name`
 - 🔺selectivity：选择性/区分度，= Cardinality / TABLE_ROWS，值越高说明索引过滤性越好
@@ -21,11 +17,23 @@
     2. USE INDEX：建议使用
     3. IGNORE INDEX：忽略使用
 - 🔺[Leftmost Prefix](https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html)：最左前缀原则，按索引顺序从左到右连续使用，索引才生效
-    - 如：(col1,col2,col3) 索引，那么这些条件组合 (coll1)、(col1,col2) 和 (col1,col2,col3)，索引都生效
-    - 再加上 WHERE 条件重排序，那么 WHERE 条件中包含索引最左的列，索引即生效
+    - 如：(col1,col2,col3) 索引，那么这些条件组合 (coll1)、(col1,col2) 和 (col1,col2,col3) 索引都生效
+    - 遇到范围条件 (>, <, >=, <=, !=, <>, BETWEEN, LIKE, OR)，不再考虑后续部分
+        - 使用 UNION (ALL) 代替 OR
+    - 综上和条件重排，一般情况下 WHERE 条件中包含索引最左的列，索引即生效（范围查询也有可能生效）
 - 🔺covering index：覆盖索引，一个索引包含查询所需的所有列，而无需回表读取数据行。extra 显示 Using index
 - ⚪[index condition pushdown](https://dev.mysql.com/doc/refman/8.4/en/index-condition-pushdown-optimization.html)：索引条件下推，将 WHERE 条件中能用索引列判断的部分，下推到存储引擎层
     - 减少回表次数和 MySQL 服务器访问存储引擎的次数
+    - 如：索引 (a,b,c) `WHERE a = 1 AND b > 2 AND c = 3` ❓
+- 🔺column prefix / [Index Prefixes](https://dev.mysql.com/doc/refman/8.4/en/column-indexes.html#column-indexes-prefix)：列前缀索引，字符串列索引使用 `col_name(N)` 语法，创建仅使用列的前 N 个字符的索引
+    - 减少索引大小并提高查询性能
+    - 当索引 BLOB 或 TEXT 列时，必须指定前缀长度
+- 🔺FULLTEXT index：全文索引，利用倒排索引加速文本搜索
+    - 中文场景要用 ngram 分词器 `FULLTEXT INDEX ft_idx_xxx (goods_name, detail_text) WITH PARSER ngram`
+- ⚪descending index：降序索引，允许索引列按降序 DESC 存储
+    - 使索引排序方向与 order by 方向一致，从而消除 filesort
+- ⚪[Functional indexes](https://dev.mysql.com/doc/refman/8.4/en/create-index.html#create-index-functional-key-parts)：函数索引，允许对表达式建立索引
+- [Invisible Indexes](https://dev.mysql.com/doc/refman/8.4/en/invisible-indexes.html)：隐藏索引，使得索引对优化器不可见，有助于索引的灰度测试和发布
 - dirty page：脏页，Buffer Pool 中更改过，且未 written/flushed 到数据文件的页
 - extent：tablespace 的一组页，1页默认16KB，1 extent 包含64页
 - read-ahead：预读，预先读取一组页面到 Buffer Pool
@@ -70,16 +78,15 @@
     - 🔺[数据类型选择](#数据类型选择)
 ### 索引规约
 1. 业务上具有唯一特性的字段，即使是组合字段，也必须建成唯一索引
-2. 超过三个表禁止 join。🔺需要 join 的字段，数据类型保持绝对一致；多表关联查询时，保证被关联的字段需要有索引
+2. 超过三个表禁止 join。🔺需要 join 的字段，数据类型和编码保持绝对一致；多表关联查询时，保证被关联的字段需要有索引
     - https://www.zhihu.com/question/56236190
 3. 🔺在 varchar 字段上建立索引时，必须指定索引长度（前缀索引），没必要对全字段建立索引，根据实际文本区分度决定索引长度
     - 可以使用 count(distinct left(列名，索引长度)) / count(*) ≥ 90% 的区分度来确定
-4. 🔺页面搜索严禁左模糊或者全模糊，如果需要请走搜索引擎来解决
+4. 🔺页面搜索严禁左模糊或者全模糊
     - 索引文件具有 B-Tree 的最左前缀匹配特性，如果左边的值未确定，那么无法使用此索引
-    - 解决方案：全文索引、冗余“反向字段”、限定范围（加筛选条件）+覆盖索引、前缀索引+关键词分词
-5. 🔺如果有 order by 的场景，请注意利用索引的有序性。order by 最后的字段是组合索引的一部 分，并且放在索引组合顺序的最后
+    - 解决方案：①全文索引 ②冗余“反向字段” ③限定范围（加筛选条件）+覆盖索引 ④前缀索引+关键词分词 ⑤搜索引擎
+5. 🔺如果有 order by 的场景，请注意利用索引的有序性。order by 最后的字段是组合索引的一部 分，并且放在索引组合顺序的最后，避免出现 filesort 的情况
     - where a = ? and b = ? order by c；索引：a_b_c
-    - 索引如果存在范围查询，那么索引有序性无法利用
 6. 🔺利用延迟关联或者子查询优化超多分页场景
     - MySQL 并不是跳过 offset 行，而是取 offset+N 行，然后返回放弃前 offset 行，返回 N 行
     - 先快速定位需要获取的 id 段，然后再关联
@@ -112,76 +119,46 @@
 7. 禁止使用存储过程，存储过程难以调试和扩展，更没有移植性
 8. 数据订正（特别是删除或修改记录操作）时，要先 select，避免出现误删除的情况，确认无误才能执行更新语句
 9. 🔺in 操作能避免则避免，若实在避免不了，需要仔细评估 in 后边的集合元素数量，控制在 1000 个之内
-    - join 代替、临时表 + join、分批查询
+    1. 表值构造器：`JOIN (VALUES ROW(1), ROW(2), ROW(3)) AS tmp(id)`
+    2. 临时表 + join：临时表主键索引
+    3. 应用层分批查询
+    4. 子查询代替：优化器将子查询优化为 Semi Join
 10. 因国际化需要，所有的字符存储与表示，均采用 utf8mb4 字符集，字符计数方法需要注意
     1. SELECT LENGTH("轻松工作")；--返回为 12
     2. SELECT CHARACTER_LENGTH("轻松工作")；--返回为 4
     - 表情需要用 utf8mb4 来进行存储，注意它与 utf8 编码的区别
 11. TRUNCATE TABLE 比 DELETE 速度快，且使用的系统和事务日志资源少，但 TRUNCATE 无事务且不触发 trigger，有可能造成事故，故不建议在开发代码中使用此语句
 ### ORM 映射
-1. 🔺POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行字段与属性之间的映射
-   - 增加查询分析器解析成本
-   - 增减字段容易与 resultMap 配置不一致
-   - 无用字段增加网络消耗，尤其是 text 类型的字段
-2. POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行字段与属性之间的映射
-3. 不要用 resultClass 当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义<resultMap>；反过来，每一个表也必然有一个<resultMap>与之对应
-4. ⚪sql.xml 配置参数使用：#{}，#param# 不要使用 ${} 此种方式容易出现 SQL 注入
-5. iBATIS 自带的 queryForList(String statementName，int start，int size) 不推荐使用
+1. ⚪在表查询中，一律不要使用 * 作为查询的字段列表，需要哪些字段必须明确写明
+    - 失去覆盖索引的可能性
+    - 无用大字段增加网络/磁盘消耗
+2. ⚪POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行字段与属性之间的映射
+3. POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行字段与属性之间的映射
+4. 不要用 resultClass 当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义<resultMap>；反过来，每一个表也必然有一个<resultMap>与之对应
+5. ⚪sql.xml 配置参数使用：#{}，#param# 不要使用 ${} 此种方式容易出现 SQL 注入
+6. iBATIS 自带的 queryForList(String statementName，int start，int size) 不推荐使用
     - 其实现方式是在数据库取到 statementName 对应的 SQL 语句的所有记录，再通过 subList 取 start
-6. 不允许直接拿 HashMap 与 Hashtable 作为查询结果集的输出
-7. 更新数据表记录时，必须同时更新记录对应的 update_time 字段值为当前时间
-8. 不要写一个大而全的数据更新接口。传入为 POJO 类，不管是不是自己的目标更新字段，都进行 update table set c1 = value1 , c2 = value2 , c3 = value3
+7. 不允许直接拿 HashMap 与 Hashtable 作为查询结果集的输出
+8. 更新数据表记录时，必须同时更新记录对应的 update_time 字段值为当前时间
+9. 不要写一个大而全的数据更新接口。传入为 POJO 类，不管是不是自己的目标更新字段，都进行 update table set c1 = value1 , c2 = value2 , c3 = value3
     - 一是易出错；二是效率低；三是增加 binlog 存储
-9. @Transactional 事务不要滥用。事务会影响数据库的 QPS，另外使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等
-10. <isEqual>中的 compareValue 是与属性值对比的常量，一般是数字，表示相等时带上此条件；<isNotEmpty>表示不为空且不为 null 时执行；<isNotNull>表示不为 null 值时执行
+10. @Transactional 事务不要滥用。事务会影响数据库的 QPS，另外使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等
+11. <isEqual>中的 compareValue 是与属性值对比的常量，一般是数字，表示相等时带上此条件；<isNotEmpty>表示不为空且不为 null 时执行；<isNotNull>表示不为 null 值时执行
 ---
 ## MySQL 调优
 ### 优化建议
-- 索引相关
-    - [组合索引 (Composite Indexes)](https://www.cnblogs.com/zjdxr-up/p/8319881.html)
-        1. 从左到右匹配直到遇到范围查询 (>, <, between, like) 停止匹配，建议范围查询放最后
-        2. in 和 = 可以乱序
-    - [降序索引 (Descending Indexes)](https://dev.mysql.com/doc/refman/8.4/en/descending-indexes.html)
-    - [MySQL8 三大索引](https://www.mdnice.com/writing/ca72a1892384484aa67bc37398dea3b8)
-    - 查找重复索引及冗余索引
-        1. 语句查询
-            ```mysql
-            use information_schema;
+- 🔺查找重复索引及冗余索引
+    1.
+        ```mysql
+        use information_schema;
 
-            select s1.table_schema, s1.table_name, s1.index_name as index1, s2.index_name as index2, s1.column_name as dup_col
-            from statistics s1
-            join statistics s2 on s1.table_schema = s2.table_schema and s1.table_name = s2.table_name and s1.seq_in_index = s2.seq_in_index and s1.column_name = s2.column_name
-            where s1.seq_in_index = 1 and s1.index_name <> s2.index_name;
-            ```
-        2. pt-duplicate-key-checker
-    - 删除不用的索引
-        - pt-index-usage
-- 避免全表扫描：放弃使用索引：成本是否够小，比如数据量小的表，!= 和 is null 等也可能使用索引
-    1. 在 ①where ②order by ③group by ④多表关联涉及的列 上建立索引
-    2. 避免使用 is null 和 is not null，建表时尽量设置 not null
-    3. 避免使用 != 和 <>
-    4. 避免使用 左% like，如 field like "%x" 和 field like "%x%"；代替：①locate('x', field) > 0，②[FULLTEXT](https://juejin.cn/post/6969887148036063239) ，③全文搜索引擎
-    5. 避免对字段进行操作，①表达式 ②函数 ③隐式转换 ④手动转换
-    6. [避免 join 表字符编码不同](https://mp.weixin.qq.com/s/1Sowt2TcjMGDv55OQOe2rQ)
-    7. 避免使用[变量](https://www.cnblogs.com/Brambling/p/9259375.html) ，如 where field = @num;
-    8. 谨慎使用 in 和 or，使用 union/union all 代替
-        - 当返回数据过多导致应用堆内存溢出时，in 和 or 不走索引：@see SQL 语句-9
-        - [or vs in](https://www.cnblogs.com/chengho/p/16149979.html)：当字段没有索引，随着查询条件的增多，in 的性能明显优于 or
-- [避免使用 select *](https://www.cnblogs.com/MrYuChen-Blog/p/13936680.html)
-    1. 增加网络开销，
-    2. 大字段(长度超过728字节)，会先把超出的数据序列化到另外一个地方，等于多增加一次 IO 操作
-    3. 失去了覆盖索引的可能性
-- ⚪[避免使用子查询和 join](https://blog.csdn.net/weixin_38676357/article/details/81510079)
-    - ①避免使用子查询，用 join 代替；②OLTP 场景也避免使用 join
-    - [联表查询 和 单表查询+业务层处理 比较](https://www.zhihu.com/question/68258877)
-- 避免使用 having：查询语句执行顺序是 where → 聚合操作 → having，尽量在 where 过滤数据
-- [小表驱动大表](https://blog.csdn.net/qq_20891495/article/details/93744495)
-    - [根据驱动表优化查询](https://www.cnblogs.com/zhengyun_ustc/p/slowquery1.html)
-    - [in 小表内大表外，exists 小表外大表内](https://www.cnblogs.com/zjxiang/p/9160810.html)
+        select s1.table_schema, s1.table_name, s1.index_name as index1, s2.index_name as index2, s1.column_name as dup_col
+        from statistics s1
+        join statistics s2 on s1.table_schema = s2.table_schema and s1.table_name = s2.table_name and s1.seq_in_index = s2.seq_in_index and s1.column_name = s2.column_name
+        where s1.seq_in_index = 1 and s1.index_name <> s2.index_name;
+        ```
+    2. [Percona Toolkit](https://tools.percona.com/wizard)：pt-duplicate-key-checker
 - 汇总表/缓存表：定时生成数据，用于用户耗时时间长的操作
-- [offset 和 limit 分页优化](https://juejin.cn/post/6844903939247177741)：@see 索引规约-7
-- 水平分表：mod(id, 5)；查询用分表，统计用总表
-- [表分区](https://www.cnblogs.com/zhouguowei/p/9360136.html)
 ### [数据类型选择](https://mp.weixin.qq.com/s/IEyaazf_Z1fTObsmCizelQ)
 1. 优先选择小的数据类型：数值 > 日期时间 > 字符串
 
@@ -193,37 +170,43 @@
 |    ID    | INT UNSIGNED / BIGINT UNSIGNED |                                                      |
 |   日期时间   |            DATETIME            |          存储 UTC + 应用层转换，TIMESTAMP 有 2038 问题          |
 |    金额    |            CHAR(36)            |                        精确定点数                         |
-### [explain](https://dev.mysql.com/doc/refman/8.4/en/explain.html)
-- [type](https://dev.mysql.com/doc/refman/8.4/en/explain-output.html#explain-join-types) ：连接类型
+### [explain](https://dev.mysql.com/doc/refman/8.4/en/explain-output.html)
+- select_type：查询类型
+- table：当前访问的表
+- partitions：匹配的分区
+- 🔺[type](https://dev.mysql.com/doc/refman/8.4/en/explain-output.html#explain-join-types) ：连接类型
 
-| type   | 说明                                                                         |
-|:-------|:---------------------------------------------------------------------------|
-| system | MyISAM 且只有一行记录，const 的特例                                                   |
-| const  | 单表单行匹配，pk 或 unique not null 索引的等值查询                                        |
-| eq_ref | join被驱动表单行匹配，pk 或 unique not null 索引的等值查询                                  |
-| ref    | 多行匹配，非 unique 索引的等值查询                                                      |
-| range  | 索引范围检索；可能走 range： >, <, >=, <=, BETWEEN, !=, <>, IS [NOT] NULL, LIKE, IN() |
-| index  | 覆盖索引？是，extra 显示 Using index；否，索引树的全表扫描                                     |
-| ALL    | 全表扫描                                                                       |
-- possible_keys：可选择使用的索引
-- key：实际选择使用的索引
-- [key_len](https://www.cnblogs.com/lukexwang/articles/7060950.html) ：使用索引的长度
-- ref：索引中的使用了的列
-- rows：估计需要查询的行数
-- extra：附加信息
+| type            | 说明                            |
+|:----------------|:------------------------------|
+| system          | 表只有一行，是 const 的特例             |
+| const           | pk / unique 索引等值匹配，最多一行       |
+| eq_ref          | join 时被驱动表 pk / unique 索引等值匹配 |
+| ref             | 非 unique 索引等值查询               |
+| fulltext        | 全文索引                          |
+| ref_or_null     | 非 unique 索引等值查询 or is null    |
+| index_merge     | 多个单列索引合并使用                    |
+| unique_subquery | IN 子查询返回唯一值                   |
+| index_subquery  | IN 子查询返回非一值                   |
+| range           | 范围检索                          |
+| index           | 全索引扫描                         |
+| ALL             | 全表扫描                          |
+- possible_keys：可能使用的索引
+- 🔺key：实际使用的索引
+- ⚪key_len：使用索引的字节数，越大说明用到的索引越多
+- ref：与索引比较的列或常量
+- rows：预估需要扫描的行数，越小越好
+- filtered：经过 WHERE 条件过滤后，剩余行数的百分比，越小越好
+- 🔺[extra](https://dev.mysql.com/doc/refman/8.4/en/explain-output.html#explain-extra-information)：额外信息
 
-| extra                    | 说明                                                              | 优化              |
-|:-------------------------|:----------------------------------------------------------------|:----------------|
-| Using index              | 在一棵索引树上获取所有所需数据，无需额外查询来读取实际行                                    |                 |
-| Using index condition    | 在一棵索引树上获取不到所有所需数据，需要额外查询来读取实际行                                  |                 |
-| Using where; Using index | 同 Using index，但 where 条件不是索引的前导列                                |                 |
-| Using filesort           | 需对结果集进行额外文件排序操作<br/>原因：①order by 没有索引；②结果集大小超过 sort_buffer_size | order by 字段添加索引 |
-| Using temporary          | 需创建临时表暂存中间结果                                                    |                 |
-| Using join buffer        | 需创建连接缓冲区暂存中间结果                                                  | 关联字段添加索引        |
->- [EXPLAIN Output Format](https://dev.mysql.com/doc/refman/8.4/en/explain-output.html)
->- [EXPLAIN 百科全书](https://mp.weixin.qq.com/s/QCJq1o-CWbNNwnuzJmVEPg)
->- [Using index vs Using where](https://www.cnblogs.com/wy123/p/7366486.html)
-### [慢查询](https://dev.mysql.com/doc/refman/8.4/en/slow-query-log.html)
+| extra                 | 说明             | 优化                  |
+|:----------------------|:---------------|:--------------------|
+| Using index           | 覆盖索引，无需回表      |                     |
+| Using index condition | 索引条件下推         |                     |
+| Using where           | 服务层过滤          |                     |
+| Using filesort        | 需额外文件排序        | order by 列加索引       |
+| Using temporary       | 需创建临时表暂存中间结果   | group by / distinct |
+| Using join buffer     | 需创建连接缓冲区暂存中间结果 | join 列加索引           |
+### 🔺[慢查询](https://dev.mysql.com/doc/refman/8.4/en/slow-query-log.html)
 - 开启慢查询日志
 ```mysql
 -- 是否开启慢查询
@@ -247,7 +230,7 @@ select * from store limit 10;
 ```
 - 慢查询日志分析工具
     1. [mysqldumpslow](https://dev.mysql.com/doc/refman/8.4/en/mysqldumpslow.html)
-    2. pt-query-digest
+    2. Percona Toolkit：pt-query-digest
         ```
         # 查看帮助
         pt-query-digest -h
@@ -294,7 +277,6 @@ select * from store limit 10;
     innodb_file_per_table              # 每个表使用独立的表空间，默认 OFF，推荐 ON
     innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计信息
     ```
-3. 第三方配置工具：[Percona Configuration Wizard](https://tools.percona.com/wizard)
 ---
 ## [MySQL 字符集](https://khiav223577.github.io/blog/2019/06/30/MySQL-%E7%B7%A8%E7%A2%BC%E6%8C%91%E9%81%B8%E8%88%87%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83/)
 - [字符集配置](https://dev.mysql.com/doc/refman/8.4/en/charset-configuration.html)

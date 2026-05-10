@@ -54,7 +54,6 @@
 2. Nginx 本地缓存
 3. [Redis](../../../resources/knowledge/interview/Redis.md) 分布式缓存
 4. [Caffeine](../../jar/caffeine/CaffeineDemo.java) 本地进程缓
----
 ### 应用层
 1. [线程池](#线程池)
 2. [消息队列](../../../resources/knowledge/interview/Messaging.md)

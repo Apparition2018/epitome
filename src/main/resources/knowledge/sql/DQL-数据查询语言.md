@@ -7,7 +7,7 @@ FROM                        ←   小表放在后面，作为驱动表
 ON
 JOIN
 WHERE                       ←   过滤越多数据的条件写在越后面；不能使用别名，因为还没执行 SELECT
-GROUP BY                    →   只保留了分组字段和聚合函数结果，因此 SELECT 和 ORDER BY 只能使用这些字段 
+GROUP BY                    →   只保留了分组字段和聚合函数结果，因此 SELECT 和 ORDER BY 只能使用这些字段
 AGGREGATE                       WHERE 在 AGGREGATE 之前，所以不能使用 AGGREGATE 作为过滤条件，而 HAVING 可以
 HAVING                          能用 WHERE 过滤就不用 HAVING
 SELECT
@@ -104,10 +104,10 @@ SELECT e.ename, e.deptno FROM emp e, (SELECT deptno, AVG(sal) avg_sal FROM emp G
 SELECT e.ename, e.deptno, (SELECT d.loc FROM dept d WHERE d.deptno = e.deptno) deptno FROM emp e;
 ```
 ---
-## 分页查询 
+## 分页查询
 1. MySQL
 ```mysql
-SELECT ename, sal, deptno 
+SELECT ename, sal, deptno
 FROM emp ORDER BY sal DESC LIMIT 5, 5
 ```
 - WITH ROLLUP
@@ -162,7 +162,7 @@ SELECT ename, sal, RANK() OVER(ORDER BY -sal ASC) sal_rank FROM emp;
 ---
 ## 集合查询
 ```
-UNION                                                   并集，去掉重复，第一列升序 
+UNION                                                   并集，去掉重复，第一列升序
 UNION ALL                                               并集，包括重复，不排序
 INTERSECT                                               交集，第一列升序
 MINUS / EXCEPT                                          差集
