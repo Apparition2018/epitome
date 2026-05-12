@@ -60,9 +60,10 @@ public class WorkStealingDemo extends Demo {
     private record Work(int jobId, String assignName) implements Runnable {
 
         @Override
+        @SneakyThrows
         public void run() {
             ThreadLocalRandom r = ThreadLocalRandom.current();
-            sleep(r.nextLong(1000), TimeUnit.MILLISECONDS);
+            TimeUnit.MILLISECONDS.sleep(r.nextLong(1000));
             String finishName = Thread.currentThread().getName();
             p(finishName + " - " + jobId + (finishName.equals(assignName) ? StringUtils.EMPTY : " + " + assignName));
         }

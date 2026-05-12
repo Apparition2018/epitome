@@ -3,7 +3,6 @@ package jar.lombok;
 import l.demo.Demo;
 import lombok.Cleanup;
 import lombok.Getter;
-import lombok.SneakyThrows;
 import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -69,8 +68,7 @@ public class LombokDemo3 extends Demo {
      * 不用捕捉或抛出异常了，谨慎使用
      */
     @Test
-    @SneakyThrows
-    public void testSneakyThrows() {
+    public void testSneakyThrows() throws InterruptedException {
         p("sleep start");
         TimeUnit.SECONDS.sleep(2);
         p("sleep end");

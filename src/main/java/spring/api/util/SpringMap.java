@@ -40,15 +40,15 @@ public class SpringMap extends Demo {
      * 键值使用软引用或弱引用的 ConcurrentHashMap，键值支持 null
      */
     @Test
-    public void testConcurrentReferenceHashMap() {
+    public void testConcurrentReferenceHashMap() throws InterruptedException {
         // 可以指定软引用，弱引用
         Map<String, Object> concurrentReferenceHashMap = new ConcurrentReferenceHashMap<>(10, ConcurrentReferenceHashMap.ReferenceType.WEAK);
         concurrentReferenceHashMap.put("key", "value");
-        System.out.println(concurrentReferenceHashMap); // {key=value}
+        p(concurrentReferenceHashMap); // {key=value}
 
         System.gc();
 
-        sleep(1, TimeUnit.SECONDS);
+        TimeUnit.SECONDS.sleep(1);
         p(concurrentReferenceHashMap); // {}
     }
 }

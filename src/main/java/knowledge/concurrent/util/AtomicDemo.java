@@ -3,6 +3,7 @@ package knowledge.concurrent.util;
 import com.google.common.collect.Lists;
 import l.demo.Demo;
 import l.demo.Person;
+import lombok.SneakyThrows;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.jupiter.api.Test;
 
@@ -114,20 +115,21 @@ public class AtomicDemo extends Demo {
      * @see <a href="https://www.jianshu.com/p/dddb531e403c">比 AtomicLong 更优秀的 LongAdder</a>
      */
     @Test
-    public void testAtomicLongAdder() throws InterruptedException {
+    public void testAtomicLongAdder() {
         this.testEff(1, 10_000_000);
         this.testEff(10, 10_000_000);
         this.testEff(100, 10_000_000);
     }
 
-    private void testEff(int threadCount, int times) throws InterruptedException {
+    private void testEff(int threadCount, int times) {
         p("threadCount: " + threadCount + ", times: " + times);
         testLongAdder(threadCount, times);
         testAtomicLong(threadCount, times);
         p("--------------------------------------------------");
     }
 
-    private void testLongAdder(int threadCount, int times) throws InterruptedException {
+    @SneakyThrows
+    private void testLongAdder(int threadCount, int times) {
         LongAdder longAdder = new LongAdder();
         List<Thread> threadList = Lists.newArrayList();
         StopWatch stopWatch = StopWatch.createStarted();
@@ -144,7 +146,8 @@ public class AtomicDemo extends Demo {
         p("LongAdder spend: " + stopWatch.getTime() + "ms");
     }
 
-    private void testAtomicLong(int threadCount, int times) throws InterruptedException {
+    @SneakyThrows
+    private void testAtomicLong(int threadCount, int times) {
         AtomicLong atomicLong = new AtomicLong();
         List<Thread> threadList = Lists.newArrayList();
         StopWatch stopWatch = StopWatch.createStarted();

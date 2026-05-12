@@ -47,9 +47,7 @@ public class JedisDistributedLocks {
         }
     }
 
-    /**
-     * 没有锁的时候的情况
-     */
+    /** 没有锁的时候的情况 */
     private Runnable deductWithoutLock(CountDownLatch latch) {
         return () -> {
             try (Jedis jedis = JedisUtils.getResource()) {
@@ -60,9 +58,7 @@ public class JedisDistributedLocks {
         };
     }
 
-    /**
-     * 有锁的时候的情况
-     */
+    /** 有锁的时候的情况 */
     private Runnable deductWithLock(CountDownLatch latch) {
         return () -> {
             String lockValue = UUID.randomUUID().toString();
@@ -113,7 +109,7 @@ public class JedisDistributedLocks {
             return Objects.equals(RELEASE_SUCCESS, result);
         }
 
-        // 锁续期
+        // 锁续期（可直接使用 Redisson 已实现的看门狗机制自动续期）
         public boolean renewLock(Jedis jedis, String key, String val, int ttlSeconds) {
             String script = "if redis.call('get', KEYS[1]) == ARGV[1] " +
                 "then return redis.call('expire', KEYS[1], ARGV[2]) " +

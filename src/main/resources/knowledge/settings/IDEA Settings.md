@@ -14,7 +14,7 @@
         2.2 删除 C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea
 ### 自定义 VM Options
     1 ...\vmoptions\idea.vmoptions | Help → Edit Custom VM Options…
-        -Xms1024m
+        -Xms2048m
         -Xmx2048m
         -XX:ReservedCodeCacheSize=1024m
         -Drebel.base=D:\JetBrains\.IntelliJIdea\config\plugins\.jrebel

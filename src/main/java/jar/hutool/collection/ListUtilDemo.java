@@ -7,13 +7,6 @@ import java.util.List;
 
 /**
  * <a href="https://doc.hutool.cn/pages/ListUtil/">ListUtil</a>
- * <pre>
- * static <T> List<T>       reverse(List<T> list)                           反转 List，会在原 List 基础上直接修改
- * static <T> List<T>       reverseNew(List<T> list)                        反转 List，会创建一个新的 List
- * static <T> List<T>       sort(List<T> list, Comparator<? super T> c)     List 排序，排序会修改原 List
- * static List<String>      sortByPinyin(List<String> list)                 根据汉字的拼音顺序排序
- * static <T> List<T>       sortByProperty(List<T> list, String property)   根据 Bean 的属性排序
- * </pre>
  * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/collection/ListUtil.html">ListUtil api</a>
  *
  * @author ljh

@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 import static l.demo.Demo.p;
+import static l.demo.Demo.sleep;
 
 /**
  * Reference    引用
@@ -36,9 +37,7 @@ public class ReferenceDemo {
      */
     private static class SoftReferenceDemo {
 
-        /**
-         * VM options: -verbose:gc -Xms4m -Xmx4m -Xmn2m
-         */
+        /** VM options: -verbose:gc -Xms4m -Xmx4m -Xmn2m */
         public static void main(String[] args) {
             SoftCache<OOMClass> softCache = new SoftCache<>();
 
@@ -111,7 +110,7 @@ public class ReferenceDemo {
         String str = new String("hello");
         WeakReference<String> weakReference = new WeakReference<>(str);
         str = null;
-        // 重新关联上强引用
+        // 重新关联上强引用。如果对象被垃圾回收，则返回 null
         str = weakReference.get();
     }
 
@@ -125,9 +124,7 @@ public class ReferenceDemo {
         private static final List<Object> TEST_DATA = new LinkedList<>();
         private static final ReferenceQueue<Person> QUEUE = new ReferenceQueue<>();
 
-        /**
-         * VM options: -verbose:gc -Xms4m -Xmx4m -Xmn2m
-         */
+        /** VM options: -verbose:gc -Xms4m -Xmx4m -Xmn2m */
         public static void main(String[] args) {
             Person person = new Person(1, "张三");
             PhantomReference<Person> personPhantomReference = new PhantomReference<>(person, QUEUE);
@@ -136,12 +133,7 @@ public class ReferenceDemo {
             new Thread(() -> {
                 while (true) {
                     TEST_DATA.add(new byte[1024 * 100]);
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                    } catch (InterruptedException e) {
-                        log.warn(e.getMessage(), e);
-                        Thread.currentThread().interrupt();
-                    }
+                    sleep(1, TimeUnit.SECONDS);
                     p(personPhantomReference.get());
                 }
             }).start();

@@ -16,38 +16,14 @@ import java.util.Vector;
  * <pre>
  * List             Vector          ArrayList           LinkedList
  * 实现               动态数组        动态数组            双向链表，实现 Deque
- * 线程同步             是               否               否
- * 查找               效率高 (实现 RandomAccess)           效率低
- * 插入删除         效率低             效率低             效率高
- * capacity         10                  10              无
- * 扩容               100%                50%             无
- * </pre>
- * <pre>
- * void             add(int index, E element)   在列表的指定位置插入指定元素（可选操作）
- * E                get(int index)              返回列表中指定位置的元素
- * E                remove(int index)           移除列表中指定位置的元素（可选操作）
- * int              indexOf(Object o)           返回此列表中首次出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1
- * int              lastIndexOf(Object o)       返回此列表中最后出现的指定元素的索引，如果此列表中不包含该元素，则返回 -1
- * ListIterator<E>	listIterator([int index])   返回列表中元素的列表迭代器（按适当顺序），从列表的指定位置开始
- * </pre>
- * <p>************************************************************
- * <p>AbstractList
- * <pre>
- * 1 实现 List，专为继承而设计的类
- * 2 有抽象方法：get(), size()
- * 3 如果想要通过 AbstractList 派生出 List。需要实现 get(), size() 和重写 set(int, E) / add(int, E) / remove(int)，
- *   因为 set(int, E) / add(int, E) / remove(int) 会抛出 UnsupportedOperationException。
- * 4 有内部迭代器 Itr, ListItr
- * 5 有内部类 SubList, RandomAccessSublist
- * 6 get() 效率快于 iterator()
- * </pre>
- * <p>************************************************************
- * <p>AbstractSequentialList
- * <pre>
- * 1 继承 AbstractList，LinkedList 的父类，专为继承而设计的类 (只能按次序访问)
- * 2 有抽象方法：listIterator(), size()
- * 3 get() 效率慢于 iterator()
- * 4 ...
+ * 查找/访问            快               快                   慢
+ * 插入/删除            慢               慢                   快
+ * 线程同步             是               否                   否
+ * capacity            10              10                   /
+ * 扩容               100%             50%                   /
+ * 注：①数组内存连续所以访问快，只有数组
+ *    ②capacity 是基于数组的数据结构才有的概念
+ *    ②LinkedList 每个元素都是一个 Node 对象，Node 包含两个指向前后节点的两个指针，这是双向链表的标准实现
  * </pre>
  * <p>************************************************************
  * <p>CopyOnWriteArrayList

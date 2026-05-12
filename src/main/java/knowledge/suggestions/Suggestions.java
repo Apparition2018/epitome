@@ -1132,9 +1132,7 @@ public class Suggestions extends Demo {
             new Thread(() -> {
                 try {
                     lock.lock();
-                    TimeUnit.SECONDS.sleep(2);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    sleep(2, TimeUnit.SECONDS);
                 } finally {
                     lock.unlock();
                 }

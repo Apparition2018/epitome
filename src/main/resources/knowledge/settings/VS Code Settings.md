@@ -83,7 +83,7 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Code" "D:\Microsoft VS Code\Co
   "java.compile.nullAnalysis.mode": "automatic",
   "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
   "java.format.settings.profile": "GoogleStyle",
-  "java.jdt.ls.vmargs": "-Xms1G -Xmx2G -javaagent:D:\\dev\\.maven\\repository\\org\\projectlombok\\lombok\\1.18.44\\lombok-1.18.44.jar",
+  "java.jdt.ls.vmargs": "-Xms2G -Xmx2G -javaagent:D:\\dev\\.maven\\repository\\org\\projectlombok\\lombok\\1.18.44\\lombok-1.18.44.jar",
   "redhat.telemetry.enabled": false,
   // Code Runner
   "code-runner.executorMap": {

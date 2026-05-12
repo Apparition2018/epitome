@@ -12,15 +12,6 @@ import java.util.Vector;
 /**
  * <a href="https://doc.hutool.cn/pages/IterUtil/">IterUtil</a>
  * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/collection/IterUtil.html">IterUtil api</a>
- * <pre>
- * static <T> Iterator<T>   empty()                                 返回一个空 Iterator
- * static Class<?>          getElementType(Iterable/Iterator)       获得 Iterable 对象的元素类型
- * static <T> T             getFirst(Iterable/Iterator)             获取集合的第一个元素
- *
- * static boolean           hasNull(Iterable/Iterator)              是否包含 null 元素
- * static boolean           isEmpty(Iterable/Iterator)              是否为空 Iterable
- * static boolean           isNotEmpty(Iterable/Iterator)           是否不为空 Iterable
- * </pre>
  *
  * @author ljh
  * @since 2020/10/29 2:22

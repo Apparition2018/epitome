@@ -11,25 +11,6 @@ import java.util.stream.IntStream;
 /**
  * <a href="https://doc.hutool.cn/pages/ThreadUtil/">ThreadUtil</a> 线程工具
  * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/thread/ThreadUtil.html">ThreadUtil api</a>
- * <pre>{@code
- * static ThreadFactory             newNamedThreadFactory(String prefix[, ThreadGroup threadGroup], boolean isDaemon[, UncaughtExceptionHandler handler)]]  创建 ThreadFactory
- * static Thread                    newThread(Runnable runnable, String name[, boolean isDaemon])   创建 Thread
- * static ExecutorService           newSingleExecutor()                                 创建单线程线程池
- * static CountDownLatch            newCountDownLatch(int threadCount)                  创建 CountDownLatch
- * static <T> CompletionService<T>  newCompletionService([ExecutorService executor])    创建 CompletionService
- * static <T> ThreadLocal<T>        createThreadLocal(boolean isInheritable)            创建本地线程对象
- * static ConcurrencyTester         concurrencyTest(int threadSize, Runnable runnable)  高并发测试工具类
- * static boolean                   sleep(Number/long timeout[, TimeUnit timeUnit])     挂起当前线程，通过返回boolean值表示是否被打断，而不是抛出异常
- * static boolean                   safeSleep(Number/long millis)                       挂起当前线程，保证挂起足够时间，...
- * static ThreadGroup               currentThreadGroup()                                获取进程的线程组
- * static Thread[]                  getThreads([ThreadGroup group])                     获取JVM中与当前线程同组的所有线程
- * static Thread                    getMainThread()                                     获取进程的主线程
- * static StackTraceElement[]       getStackTrace()                                     获得堆栈列表
- * static StackTraceElement         getStackTraceElement(int i)                         获得堆栈项
- * static void                      interrupt(Thread thread, boolean isJoin)            结束线程，调用此方法后，线程将抛出InterruptedException异常
- * static void                      waitForDie([Thread thread])                         等待线程结束. 调用 Thread.join() 并忽略 InterruptedException
- * static void                      sync(Object obj)                                    同步对象}
- * </pre>
  *
  * @author ljh
  * @since 2020/10/26 9:30

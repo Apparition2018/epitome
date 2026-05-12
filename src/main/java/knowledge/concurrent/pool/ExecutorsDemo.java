@@ -1,6 +1,7 @@
 package knowledge.concurrent.pool;
 
 import l.demo.Demo;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class ExecutorsDemo extends Demo {
      * <p>创建一个可重用固定线程数的线程池，以共享的无界队列方式来运行这些线程，在需要时使用提供的 ThreadFactory 创建新线程
      */
     @Test
-    public void testFixedThreadPool() throws InterruptedException {
+    public void testFixedThreadPool() {
         ExecutorService fixedThreadPool = Executors.newFixedThreadPool(2, new MyThreadFactory());
         executeTask(fixedThreadPool);
     }
@@ -29,7 +30,7 @@ public class ExecutorsDemo extends Demo {
      * <p>创建一个可根据需要创建新线程的线程池，但是在以前构造的线程可用时将重用它们，并在需要时使用提供的 ThreadFactory 创建新线程
      */
     @Test
-    public void testCachedThreadPool() throws InterruptedException {
+    public void testCachedThreadPool() {
         ExecutorService cachedThreadPool = Executors.newCachedThreadPool(new MyThreadFactory());
         executeTask(cachedThreadPool);
     }
@@ -42,7 +43,7 @@ public class ExecutorsDemo extends Demo {
      * </pre>
      */
     @Test
-    public void testSingleThreadExecutor() throws InterruptedException {
+    public void testSingleThreadExecutor() {
         ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor(new MyThreadFactory());
         executeTask(singleThreadExecutor);
     }
@@ -55,7 +56,7 @@ public class ExecutorsDemo extends Demo {
      * </pre>
      */
     @Test
-    public void testScheduledThreadPool() throws InterruptedException {
+    public void testScheduledThreadPool() {
         ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(2, new MyThreadFactory());
         executeTask(scheduledThreadPool);
     }
@@ -65,14 +66,15 @@ public class ExecutorsDemo extends Demo {
      * <p>创建工作窃取线程池
      */
     @Test
-    public void testWorkStealingPool() throws InterruptedException {
+    public void testWorkStealingPool() {
         ExecutorService workStealingPool = Executors.newWorkStealingPool();
         executeTask(workStealingPool);
     }
 
     private final static int NUM_OF_TASK = 5;
 
-    private void executeTask(ExecutorService pool) throws InterruptedException {
+    @SneakyThrows
+    private void executeTask(ExecutorService pool) {
         setCountDownLatch(NUM_OF_TASK);
 
         for (int i = 1; i <= NUM_OF_TASK; i++) {
@@ -149,7 +151,7 @@ public class ExecutorsDemo extends Demo {
 
     private Callable<String> callable(String result, long seconds) {
         return () -> {
-            sleep(seconds, TimeUnit.SECONDS);
+            TimeUnit.SECONDS.sleep(seconds);
             return result;
         };
     }

@@ -8,35 +8,46 @@
 3. [MySQL 规范](https://blog.csdn.net/shenjian58/article/details/89850405)
 4. [MySQL 总结](https://mp.weixin.qq.com/s/pWHCieOwAdCrz8cauduWlQ)
 ---
+## B-Tree vs InnoDB B+ Tree
+🔺![B+ Tree](https://cdnjson.com/images/2026/05/13/image.png)
+1. 节点存储
+    1. 非叶子节点存[键+指针]
+    2. 主键索引（聚簇索引）叶子节点存[键（有序排序）+整行数据]
+    3. 二级索引（非主键索引）叶子节点存[索引列+主键]
+2. 每个节点对应一页16KB，因为非叶子节点不存数据，所以单个节点能放更多索引项，比 B-Tree 扇出更大，树更矮 → IO 更少 → 查询更快
+    - 同理，主键/索引选择更短的数据类型，查询更快
+3. 叶子节点用双向链表相连，便于范围查询
+4. 非叶子节点的键会在叶子节点重复出现
+5. 回表：使用二级索引查询时，需要根据主键去主键索引中查找行数据
+---
 ## [MySQL 术语](https://dev.mysql.com/doc/refman/8.4/en/glossary.html)
-- ⚪cardinality：基数，索引列中不同值的预估数量
+1. ⚪cardinality：基数，索引列中不同值的预估数量
     - 查看索引的 Cardinality 统计值：`SHOW INDEX FROM table_name`
-- 🔺selectivity：选择性/区分度，= Cardinality / TABLE_ROWS，值越高说明索引过滤性越好
-- 🔺index hint：索引提示，覆盖优化器推荐的索引。适用于 cardinality 分布非常不均匀时
+2. 🔺selectivity：选择性/区分度，= Cardinality / TABLE_ROWS，值越高说明索引过滤性越好
+3. ⚪index hint：索引提示，覆盖优化器推荐的索引。适用于 cardinality 分布非常不均匀时
     1. FORCE INDEX：强制使用
     2. USE INDEX：建议使用
     3. IGNORE INDEX：忽略使用
-- 🔺[Leftmost Prefix](https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html)：最左前缀原则，按索引顺序从左到右连续使用，索引才生效
+4. 🔺[Leftmost Prefix](https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html)：最左前缀原则，按索引顺序从左到右连续使用，索引才生效
     - 如：(col1,col2,col3) 索引，那么这些条件组合 (coll1)、(col1,col2) 和 (col1,col2,col3) 索引都生效
     - 遇到范围条件 (>, <, >=, <=, !=, <>, BETWEEN, LIKE, OR)，不再考虑后续部分
-        - 使用 UNION (ALL) 代替 OR
     - 综上和条件重排，一般情况下 WHERE 条件中包含索引最左的列，索引即生效（范围查询也有可能生效）
-- 🔺covering index：覆盖索引，一个索引包含查询所需的所有列，而无需回表读取数据行。extra 显示 Using index
-- ⚪[index condition pushdown](https://dev.mysql.com/doc/refman/8.4/en/index-condition-pushdown-optimization.html)：索引条件下推，将 WHERE 条件中能用索引列判断的部分，下推到存储引擎层
+5. 🔺covering index：覆盖索引，一个索引包含查询所需的所有列，而无需回表读取数据行。extra 显示 Using index
+6. ⚪[index condition pushdown](https://dev.mysql.com/doc/refman/8.4/en/index-condition-pushdown-optimization.html)：索引条件下推，将 WHERE 条件中能用索引列判断的部分，下推到存储引擎层
     - 减少回表次数和 MySQL 服务器访问存储引擎的次数
     - 如：索引 (a,b,c) `WHERE a = 1 AND b > 2 AND c = 3` ❓
-- 🔺column prefix / [Index Prefixes](https://dev.mysql.com/doc/refman/8.4/en/column-indexes.html#column-indexes-prefix)：列前缀索引，字符串列索引使用 `col_name(N)` 语法，创建仅使用列的前 N 个字符的索引
+7. 🔺column prefix / [Index Prefixes](https://dev.mysql.com/doc/refman/8.4/en/column-indexes.html#column-indexes-prefix)：列前缀索引，字符串列索引使用 `col_name(N)` 语法，创建仅使用列的前 N 个字符的索引
     - 减少索引大小并提高查询性能
     - 当索引 BLOB 或 TEXT 列时，必须指定前缀长度
-- 🔺FULLTEXT index：全文索引，利用倒排索引加速文本搜索
+8. ⚪FULLTEXT index：全文索引，利用倒排索引加速文本搜索
     - 中文场景要用 ngram 分词器 `FULLTEXT INDEX ft_idx_xxx (goods_name, detail_text) WITH PARSER ngram`
-- ⚪descending index：降序索引，允许索引列按降序 DESC 存储
+9. ⚪descending index：降序索引，允许索引列按降序 DESC 存储
     - 使索引排序方向与 order by 方向一致，从而消除 filesort
-- ⚪[Functional indexes](https://dev.mysql.com/doc/refman/8.4/en/create-index.html#create-index-functional-key-parts)：函数索引，允许对表达式建立索引
-- [Invisible Indexes](https://dev.mysql.com/doc/refman/8.4/en/invisible-indexes.html)：隐藏索引，使得索引对优化器不可见，有助于索引的灰度测试和发布
-- dirty page：脏页，Buffer Pool 中更改过，且未 written/flushed 到数据文件的页
-- extent：tablespace 的一组页，1页默认16KB，1 extent 包含64页
-- read-ahead：预读，预先读取一组页面到 Buffer Pool
+10. ⚪[Functional indexes](https://dev.mysql.com/doc/refman/8.4/en/create-index.html#create-index-functional-key-parts)：函数索引，允许对表达式建立索引
+11. [Invisible Indexes](https://dev.mysql.com/doc/refman/8.4/en/invisible-indexes.html)：隐藏索引，使得索引对优化器不可见，有助于索引的灰度测试和发布
+12. dirty page：脏页，Buffer Pool 中更改过，且未 written/flushed 到数据文件的页
+13. extent：tablespace 的一组页，1页默认16KB，1 extent 包含64页
+14. read-ahead：预读，预先读取一组页面到 Buffer Pool
     1. linear read-ahead：线性预读
     2. random read-ahead：随机预读
 ---
@@ -54,7 +65,7 @@
 7. 如果存储的字符串长度几乎相等，使用 char 定长字符串类型
     - ⚪对于现代数据库，只有长度完全固定的业务字段（如国家代码、UUID、MD5）才用 CHAR
 8. varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索引率
-    - 🔺①字段长度500~8192字节且不常与主表一起查询 ②多个中等长度字段累加超过8KB
+    - ⚪①字段长度500~8192字节且不常与主表一起查询 ②多个中等长度字段累加超过8KB
 9. 表必备三字段：id，create_time，update_time
     - id 必为主键，类型为 bigint unsigned、单表时自增、步长为 1
     - create_time，update_time 的类型均为 datetime 类型，如果要记录时区信息，那么类型设置为 timestamp
@@ -62,7 +73,7 @@
 10. 在数据库中不能使用物理删除操作，要使用逻辑删除
     - 会使得一些情况下的唯一主键变得不唯一，需要根据情况来酌情解决
 11. 表的命名最好是遵循“业务名称_表的作用”：alipay_task / force_project / trade_config / tes_question
-12. 🔺字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循
+12. ⚪字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循
     1. 不是频繁修改的字段
     2. 不是唯一索引的字段
     3. 不是 varchar 超长字段，更不能是 text 字段
@@ -78,35 +89,35 @@
     - 🔺[数据类型选择](#数据类型选择)
 ### 索引规约
 1. 业务上具有唯一特性的字段，即使是组合字段，也必须建成唯一索引
-2. 超过三个表禁止 join。🔺需要 join 的字段，数据类型和编码保持绝对一致；多表关联查询时，保证被关联的字段需要有索引
+2. 超过三个表禁止 join。⚪需要 join 的字段，数据类型和编码保持绝对一致；多表关联查询时，保证被关联的字段需要有索引
     - https://www.zhihu.com/question/56236190
-3. 🔺在 varchar 字段上建立索引时，必须指定索引长度（前缀索引），没必要对全字段建立索引，根据实际文本区分度决定索引长度
+3. ⚪在 varchar 字段上建立索引时，必须指定索引长度（前缀索引），没必要对全字段建立索引，根据实际文本区分度决定索引长度
     - 可以使用 count(distinct left(列名，索引长度)) / count(*) ≥ 90% 的区分度来确定
-4. 🔺页面搜索严禁左模糊或者全模糊
+4. ⚪页面搜索严禁左模糊或者全模糊
     - 索引文件具有 B-Tree 的最左前缀匹配特性，如果左边的值未确定，那么无法使用此索引
     - 解决方案：①全文索引 ②冗余“反向字段” ③限定范围（加筛选条件）+覆盖索引 ④前缀索引+关键词分词 ⑤搜索引擎
-5. 🔺如果有 order by 的场景，请注意利用索引的有序性。order by 最后的字段是组合索引的一部 分，并且放在索引组合顺序的最后，避免出现 filesort 的情况
+5. ⚪如果有 order by 的场景，请注意利用索引的有序性。order by 最后的字段是组合索引的一部 分，并且放在索引组合顺序的最后，避免出现 filesort 的情况
     - where a = ? and b = ? order by c；索引：a_b_c
-6. 🔺利用延迟关联或者子查询优化超多分页场景
+6. ⚪利用延迟关联或者子查询优化超多分页场景
     - MySQL 并不是跳过 offset 行，而是取 offset+N 行，然后返回放弃前 offset 行，返回 N 行
     - 先快速定位需要获取的 id 段，然后再关联
     - SELECT t1.* FROM 表 1 as t1 , (select id from 表 1 where 条件 LIMIT 100000 , 20) as t2 where t1.id = t2.id
     - https://mp.weixin.qq.com/s/3Pc88OtKr3_KJXItX2IJ3Q
-7. 🔺SQL 性能优化的目标：至少要达到 range 级别，要求是 ref 级别，如果可以是 const 最好
+7. ⚪SQL 性能优化的目标：至少要达到 range 级别，要求是 ref 级别，如果可以是 const 最好
 8. 建组合索引的时候，区分度最高的在最左边
     - 如果 where a = ? and b = ?，a 列的几乎接近于唯一值，那么只需要单建 idx_a 索引即可
     - 存在非等号和等号混合判断条件时，在建索引时，请把等号条件的列前置
         - 如：where c > ? and d = ? 那么即使 c 的区分度更高，也必须把 d 放在索引的最前列，即建立组合索引 idx_d_c
 9. 创建索引时避免有如下极端误解
     - ⚪索引宁滥勿缺。认为一个查询就需要建一个索引
-        - 如：①WHERE order_status = ? 不建，选择性极低 ②表数据少
+        - 如：①WHERE order_status = ? 不建，区分度低 ②表数据少
         - 索引也占用空间，还需要定期维护索引
         - DML 操作需要重建索引
         - DQL 操作优化器选择使用哪一个索引需要时间
     - 吝啬索引的创建。认为索引会消耗空间、严重拖慢记录的更新以及行的新增速度
     - 抵制唯一索引。认为唯一索引一律需要在应用层通过“先查后插”方式解决
 ### SQL 语句
-1. 🔺不要使用 count(列名) 或 count(常量) 来替代 count(*)，count(*) 是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关
+1. ⚪不要使用 count(列名) 或 count(常量) 来替代 count(*)，count(*) 是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关
     - count(*) 会统计值为 NULL 的行，而 count(列名) 不会统计此列为 NULL 值的行
     - count(*) 详解和优化：https://mp.weixin.qq.com/s/foPwJPS8Ek7YmR3ZgV8xMw
 2. count(distinct col) 计算该列除 NULL 之外的不重复行数，注意 count(distinct col1 , col2) 如果其中一列全为 NULL，那么即使另一列有不同的值，也返回为 0
@@ -146,30 +157,14 @@
 11. <isEqual>中的 compareValue 是与属性值对比的常量，一般是数字，表示相等时带上此条件；<isNotEmpty>表示不为空且不为 null 时执行；<isNotNull>表示不为 null 值时执行
 ---
 ## MySQL 调优
-### 优化建议
-- 🔺查找重复索引及冗余索引
-    1.
-        ```mysql
-        use information_schema;
-
-        select s1.table_schema, s1.table_name, s1.index_name as index1, s2.index_name as index2, s1.column_name as dup_col
-        from statistics s1
-        join statistics s2 on s1.table_schema = s2.table_schema and s1.table_name = s2.table_name and s1.seq_in_index = s2.seq_in_index and s1.column_name = s2.column_name
-        where s1.seq_in_index = 1 and s1.index_name <> s2.index_name;
-        ```
-    2. [Percona Toolkit](https://tools.percona.com/wizard)：pt-duplicate-key-checker
-- 汇总表/缓存表：定时生成数据，用于用户耗时时间长的操作
-### [数据类型选择](https://mp.weixin.qq.com/s/IEyaazf_Z1fTObsmCizelQ)
-1. 优先选择小的数据类型：数值 > 日期时间 > 字符串
-
-|    数据    |              推荐类型              |                          理由                          |
-|:--------:|:------------------------------:|:----------------------------------------------------:|
-|    IP    |            UNSIGNED            | `INET_ATON('192.168.0.1')` / `INET_NTOA(3232235521)` |
-| 枚举/状态/类型 |        TINYINT UNSIGNED        |                                                      |
-|   长度固定   |              CHAR              |      UUID CHAR(36) / 国家代码 CHAR(2)/ MD5 CHAR(32)      |
-|    ID    | INT UNSIGNED / BIGINT UNSIGNED |                                                      |
-|   日期时间   |            DATETIME            |          存储 UTC + 应用层转换，TIMESTAMP 有 2038 问题          |
-|    金额    |            CHAR(36)            |                        精确定点数                         |
+### ⚪索引失效场景
+1. 违反[最左前缀原则](#mysql-术语) -4.
+2. 使用 !=、<>、NOT IN、OR
+    - 使用 UNION (ALL) 代替 OR
+3. [隐式类型/编码转换](#索引规约) -2.
+4. [LIKE 以 % 开头](#索引规约) -4.
+5. [对索引列做函数/运算操作](#mysql-术语) -10.
+6. [数据区分度低](#索引规约) -9.
 ### [explain](https://dev.mysql.com/doc/refman/8.4/en/explain-output.html)
 - select_type：查询类型
 - table：当前访问的表
@@ -179,7 +174,7 @@
 | type            | 说明                            |
 |:----------------|:------------------------------|
 | system          | 表只有一行，是 const 的特例             |
-| const           | pk / unique 索引等值匹配，最多一行       |
+| **const**       | pk / unique 索引等值匹配，最多一行       |
 | eq_ref          | join 时被驱动表 pk / unique 索引等值匹配 |
 | ref             | 非 unique 索引等值查询               |
 | fulltext        | 全文索引                          |
@@ -246,7 +241,13 @@ select * from store limit 10;
         2. IO 大的 SQL                    pt-query-digest 的 Rows examine
         3. 未命中索引的 SQL                pt-query-digest 的 Rows examine 和 Rows Send 的对比
         ```
-- 慢查询优化：①正确加索引；②去除查询不需要的列；③数据量太大考虑分表
+- 🔺慢查询优化：
+    1. [索引失效场景](#索引失效场景)
+    2. [避免 select *](#orm-映射) -1.
+    3. [字段适当冗余](#建表规约) -12.
+    4. 改写 SQL
+        - [大分页优化：延迟关联](#索引规约) -6.
+    5. 读写分离 / [分库分表](#建表规约) -13.
 ### 配置
 1. 系统配置
     - 网络方面，修改 /etc/sysctl.conf
@@ -277,6 +278,30 @@ select * from store limit 10;
     innodb_file_per_table              # 每个表使用独立的表空间，默认 OFF，推荐 ON
     innodb_stats_on_metadata           # 什么情况下刷新 innodb 表的统计信息
     ```
+### [数据类型选择](https://mp.weixin.qq.com/s/IEyaazf_Z1fTObsmCizelQ)
+1. 优先选择小的数据类型：数值 > 日期时间 > 字符串
+
+|    数据    |              推荐类型              |                          理由                          |
+|:--------:|:------------------------------:|:----------------------------------------------------:|
+|    IP    |            UNSIGNED            | `INET_ATON('192.168.0.1')` / `INET_NTOA(3232235521)` |
+| 枚举/状态/类型 |        TINYINT UNSIGNED        |                                                      |
+|   长度固定   |              CHAR              |      UUID CHAR(36) / 国家代码 CHAR(2)/ MD5 CHAR(32)      |
+|    ID    | INT UNSIGNED / BIGINT UNSIGNED |                                                      |
+|   日期时间   |            DATETIME            |          存储 UTC + 应用层转换，TIMESTAMP 有 2038 问题          |
+|    金额    |            CHAR(36)            |                        精确定点数                         |
+### 其它建议
+- 🔺查找重复索引及冗余索引
+    1.
+        ```mysql
+        use information_schema;
+
+        select s1.table_schema, s1.table_name, s1.index_name as index1, s2.index_name as index2, s1.column_name as dup_col
+        from statistics s1
+        join statistics s2 on s1.table_schema = s2.table_schema and s1.table_name = s2.table_name and s1.seq_in_index = s2.seq_in_index and s1.column_name = s2.column_name
+        where s1.seq_in_index = 1 and s1.index_name <> s2.index_name;
+        ```
+    2. [Percona Toolkit](https://tools.percona.com/wizard)：pt-duplicate-key-checker
+- 汇总表/缓存表：定时生成数据，用于用户耗时时间长的操作
 ---
 ## [MySQL 字符集](https://khiav223577.github.io/blog/2019/06/30/MySQL-%E7%B7%A8%E7%A2%BC%E6%8C%91%E9%81%B8%E8%88%87%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83/)
 - [字符集配置](https://dev.mysql.com/doc/refman/8.4/en/charset-configuration.html)

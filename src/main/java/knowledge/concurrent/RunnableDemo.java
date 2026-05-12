@@ -33,8 +33,8 @@ public class RunnableDemo extends Demo {
     private static class TicketRunnable implements Runnable {
         private int ticket = 5;
 
-        @Override
         @SneakyThrows
+        @Override
         public synchronized void run() {
             while (ticket > 0) {
                 TimeUnit.MILLISECONDS.sleep(20);

@@ -12,29 +12,6 @@ import java.util.Map;
 /**
  * <a href="https://doc.hutool.cn/pages/MapUtil/">MapUtil</a>
  * <p><a href="https://plus.hutool.cn/apidocs/cn/hutool/core/map/MapUtil.html">MapUtil api</a>
- * <pre>{@code
- * static <K,V> Map<K,V>                createMap(Class<?> mapType)                         创建 Map
- * static <K,V> HashMap<K,V>            newHashMap([[int size][, boolean isOrder]])         新建 HashMap
- * static <K,V> TreeMap<K,V>            newTreeMap([Map<K,V> map, ]Comparator<? super K>)   新建 TreeMap
- * static <K,V> Map<K,V>                newIdentityMap(int size)                            新建不重复 Map
- * static <K,V> ConcurrentHashMap<K,V>  newConcurrentHashMap([int size/Map<K,V> map])       新建 ConcurrentHashMap
- *
- * static <K,V> TreeMap<K,V>            sort(Map<K,V> map[, Comparator<? super K>])         Map 排序
- * static <T> Map<T, T>                 reverse(Map<T, T> map)                              反转 Map
- * static <T> Map<T, T>                 inverse(Map<T, T> map)                              key value 互换
- * static <K, V> Map<K, V>              renameKey(Map<K, V> map, K oldKey, K newKey)        重命名指定 key
- * static <K, V> Map<K, V>              getAny(Map<K, V> map, K... keys)                    获取 Map 的指定 key 生成新的 Map
- * static <K, V> Map<K, V>              removeAny(Map<K, V> map, K... keys)                 去除 Map 的指定 key，修改原 Map
- * static <K, V> Map<K, V>              removeNullValue(Map<K, V> map)                      去除 null，修改原 Map
- * static <T> T                         get(Map<?, ?> map, Object key, Class<T> type)       获取指定 key 的值，并转换为指定类型
- * static XXX                           getXXX(Map<?, ?>, Object key[, XXX defaultValue])   获取指定 key 的值
- * static void                          clear(Map<?, ?>... maps)                            清除一个或多个 Map 集合内的元素，每个 Map 调用clear()
- *
- * static boolean                       isEmpty(Map<?, ?> map)                              是否位空
- * static boolean                       isNotEmpty(Map<?, ?> map)                           是否不为空
- * static <K, V> Map<K, V>              emptyIfNull(Map<K, V> map)                          如果为空则返回空 map
- * static <T extends Map<K,V>,K,V> T    defaultIfEmpty(T map, T defaultMap)                 如果为空则返回空默认 map}
- * </pre>
  *
  * @author ljh
  * @since 2020/10/29 2:36

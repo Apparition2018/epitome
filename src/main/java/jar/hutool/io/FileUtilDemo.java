@@ -17,34 +17,6 @@ import java.util.List;
  * FileUtil 方法名与 Linux 相一致
  * </pre>
  * <a href="https://plus.hutool.cn/apidocs/cn/hutool/core/io/FileUtil.html">FileUtil api</a>
- * <pre>
- * static boolean               isAbsolutePath(String path)                                     判断是否位绝对路径
- * static boolean               isEmpty(File file)                                              文件是否为空
- * static boolean               isNotEmpty(File file)                                           文件是否不为空
- * static boolean               isModifed(File file, long lastModifyTime)                       判断文件是否被改动
- * static boolean               isSub(File parent, File sub)                                    判断给定的目录是否为给定文件或文件夹的子目录
- * static boolean               isWindows()                                                     是否为 Windows 环境
- * static boolean               newerThan(File file, long timeMillis/File reference)            给定文件或目录的最后修改时间是否晚于给定时间
- * static boolean               pathEndsWith(File file, String suffix)                          判断文件路径是否有指定后缀，忽略大小写
- * static boolean               pathEquals(File file1, File file2)                              文件路径是否相同，Windows 下忽略大小写，Linux 不忽略
- *
- * static File                  createTempFile([String prefix, String suffix, ]
- * -                                File dir[, boolean isReCreat])                              创建临时文件，名为 prefix[Randon].suffix From com.jodd.io.FileUtil
- *
- * static File                  convertCharset(File file, Charset charset, Charset destCharset) 转换文件编码
- * static File                  convertLineSeparator(File file, Charset charset,
- * -                                LineSeparator lineSeparator)                                转换换行符
- *
- * static <T> File              appendLines(Collection<T>/String, path/file, String charset)    将 XXX 写入文件，追加模式
- * static <T> File              appendUtf8Lines(Collection<T>/String, path/file)                将 XXX 写入文件，追加模式
- *
- * static boolean               containsInvalid(String fileName)                                文件名中是否包含在 Windows 下不支持的非法字符，包括： \ / : * ? " < > |
- * static String                cleanInvalid(String fileName)                                   清除文件名中的在 Windows 下不支持的非法字符，包括： \ / : * ? " < > |
- *
- * static BOMInputStream        getBOMInputStream(File file)                                    获得 BOM 输入流，用于处理带 BOM 头的文件
- * static BufferedWriter        getWriter(file/path, Charset/charset, isAppend)                 获得一个带缓存的写入对象
- * static PrintWriter           getPrintWriter(file/path, Charset/charset, isAppend)            获得一个打印写入对象，可以有 print
- * </pre>
  *
  * @author ljh
  * @since 2020/10/29 17:46

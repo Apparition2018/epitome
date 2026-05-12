@@ -11,16 +11,6 @@ import java.util.TreeSet;
 
 /**
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#sets">Sets</a>
- * <pre>{@code
- * static Set<E>                    newConcurrentHashSet([Iterable<? extends E> elements])
- * static CopyOnWriteArraySet<E>    newCopyOnWriteArraySet(Iterable<? extends E> elements)
- * static TreeSet<E>                newTreeSet(Iterable<? extends E> elements)
- * static EnumSet<E>                newEnumSet(Iterable<E> iterable, Class<E> elementType)
- * static Set<E>                    newIdentityHashSet()
- *
- * static <E> NavigableSet<E>       unmodifiableNavigableSet(NavigableSet<E> set)
- * static <E> NavigableSet<E>       synchronizedNavigableSet(NavigableSet<E> navigableSet)}
- * </pre>
  *
  * @author ljh
  * @see <a href="http://www.ibloger.net/article/3313.html">Guava Sets</a>

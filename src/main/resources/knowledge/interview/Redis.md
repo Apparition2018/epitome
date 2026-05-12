@@ -31,7 +31,8 @@
     - 不设置过期时间：①将过期时间写在 value 里，代码判断是否过期异步更新 ②定时更新，慎用
 3. 雪崩 (Avalanche)
     1. 大量缓存同时过期
-        - 同击穿
+        - 参考击穿
+        - 多级缓存
         - 打散过期时间
     2. 缓存服务器宕机
         - 熔断、降级、限流：Hystrix
@@ -39,7 +40,7 @@
 >- [程序员囧辉](https://mp.weixin.qq.com/s/QX8UviH7iaxXTz-Io_7uZg)
 >- [小林coding](https://mp.weixin.qq.com/s/_StOUX9Nu-Bo8UpX7ThZmg)
 ---
-## 🔺热点 key 处理
+## ⚪热点 key 处理
 - Caffeine 本地缓存
 - Redis 分片：超过单节点带宽的热 key，拆分成多个子 key（hot:1~hot:N）
 ---
@@ -68,24 +69,24 @@
         3. a更新x缓存值1
         4. 结果：数据库是新值，缓存是旧值，a读到旧值
         - 注：出现概率不高，因为缓存操作/读数据库通常要快于写数据库
-    - 注：缓存都是旧值的问题，可用延迟双删来解决
-3. 删除缓存失败怎么办？：①重试/异步重试 ②MySQL binlog (阿里 canal) ③合理过期时间
-4. 常用缓存模式
+3. 常用缓存模式
     1. 🔺Cache Aside：旁路缓存，大多数业务
         - 读：读 Cache → 读 DB → 写 Cache
         - 写：更 DB → 删 Cache
+        - 延迟双删可以解决一部分缓存都是旧值的问题
     2. Read/Write Through：强一致场景
         - 读：读 Cache → 缓存层（读 DB → 写 Cache）
         - 写：更 Cache → 缓存层同步更 DB
     3. Write Behind：写多读少场景
         - 写：写 Cache → 缓存层异步更 DB
     - 注：只有 Cache Aside 感知 DB
+4. 🔺删除缓存失败怎么办？：①[异步]重试 ②合理过期时间 ③订阅 binlog (阿里 canal、强一致)
 >- [腾讯技术工程](https://mp.weixin.qq.com/s/Y9S89MT0uAobzRKgYVrI9Q)
 >- [苏三说技术](https://mp.weixin.qq.com/s/4hP-T0h8QPyjcpH8m0cbsA)
 >- [水滴与银弹 | Magic Kaito](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
 >- [小林coding](https://mp.weixin.qq.com/s/sh-pEcDd9l5xFHIEN87sDA)
 ---
-## [Redis 多快，为什么快](https://mmbiz.qpic.cn/mmbiz_png/g6hBZ0jzZb0Zb0XiaaR6bGaN80wicXIIP735YhoW1fic47MuJOx0HheBX4ficULcmdHhdGQnqGcfCgvunMmxpb8LnA/640)
+## 🔺[Redis 多快，为什么快](https://mmbiz.qpic.cn/mmbiz_png/g6hBZ0jzZb0Zb0XiaaR6bGaN80wicXIIP735YhoW1fic47MuJOx0HheBX4ficULcmdHhdGQnqGcfCgvunMmxpb8LnA/640)
 - 官方：Redis 的瓶颈通常是内存或网络，而不是 CPU；查询 QPS 达 10w/s
 1. 基于内存：①内存读写比磁盘快；②省去将数据从磁盘读到内存的时间
 2. 高效的数据结构
@@ -109,7 +110,7 @@
 4. 合理的线程模型
     - 文件事件处理器：基于 Reactor 模式开发的一套事件处理机制，是单线程运行的
     ![文件事件处理器](https://mp.weixin.qq.com/s/apScwfXHWlh8xUS1RhMSIA)
-        - IO 多路复用：让单个线程高效处理多个请求，减少网络 IO 时间消耗
+        - ⚪IO 多路复用：让单个线程高效处理多个请求，减少网络 IO 时间消耗
     - 为什么设计成单线程：因为 Redis 键值对读写是基于内存的，所以不需要多线程来提高 CPU 的利用率
         - 多核 CPU 可启动多个 Redis 发挥多核性能
     - [多线程带来的问题](https://blog.csdn.net/dfsdwes/article/details/2515941) ：线程开销，上下文切换，同步等问题
@@ -123,7 +124,7 @@
             - redis.conf：`io-threads-do-reads yes`，`io-threads 8`
 5. [VM 机制](https://mp.weixin.qq.com/s/N1NR-LgiCvAOMxgbdICziQ)
 >- [IT界农民工 | 莱乌](https://mp.weixin.qq.com/s/b_yzbLeQh57oYjqlIgPiYQ)
->- [捡田螺的小男孩](https://mp.weixin.qq.com/s/wf08G3PHpfbJKiU7ZVO9Lw)
+>- [捡田螺的小男孩](https://mp.weixin.qq.com/s/Una3zEWflk-r9IqvbVgbqA)
 >- [小林coding](https://mp.weixin.qq.com/s/apScwfXHWlh8xUS1RhMSIA)
 ---
 ## [数据类型](https://redis.io/docs/manual/data-types/)
@@ -174,21 +175,24 @@ dir ./
 - redis.conf
     - `maxmemory <bytes>`
     - `maxmemory-policy <policy>`
-- [驱逐策略](https://redis.io/docs/manual/eviction/)
+- [驱逐策略](https://redis.io/docs/latest/develop/reference/eviction/#eviction-policies)
     - lru：Least Recently Used
+    - lrm: Least Recently Modified
     - lfu：Least Frequently Used
     - ttl：Time to Live
 
-| 策略              | 说明                             |
-|:----------------|:-------------------------------|
-| volatile-lru    | 在已设置过期时间的 KEY 中，删除最近最少使用的 KEY  |
-| volatile-lfu    | 在已设置过期时间的 KEY 中，删除最不常用的 KEY    |
-| volatile-random | 在已设置过期时间的 KEY 中，随机删除 KEY       |
-| volatile-ttl    | 在已设置过期时间的 KEY 中，删除剩余过期时间最短 KEY |
-| allkeys-lru     | 在所有 KEY 中，删除最近最少使用的 KEY        |
-| allkeys-lfu     | 在所有 KEY 中，删除最不常用的 KEY          |
-| allkeys-random  | 在所有 KEY 中，随机删除 KEY             |
-| noeviction      | 不删除任何 KEY，在写操作时返回错误            |
+| maxmemory-policy | 说明                         |
+|:-----------------|:---------------------------|
+| noeviction       | 不移除任何键，写操作返回错误             |
+| allkeys-lru      | 移除最久未使用的键                  |
+| allkeys-lrm      | 移除最久未修改的键                  |
+| allkeys-lfu      | 移除最不常用的键                   |
+| allkeys-random   | 随机移除键                      |
+| volatile-lru     | 在已设置过期时间的键中，移除最久未使用的键      |
+| volatile-lrm     | 在已设置过期时间的键中，移除最久未修改的键      |
+| volatile-lfu     | 在已设置过期时间的键中，移除最不常用的键       |
+| volatile-random  | 在已设置过期时间的键中，随机移除键          |
+| volatile-ttl     | 在已设置过期时间的键中，移除剩余过期时间最短 KEY |
 ---
 ## [持久化](https://redis.io/topics/persistence)
 1. RDB：Redis Database，指定时间间隔执行的数据集快照
@@ -224,7 +228,7 @@ dir ./
         auto-aof-rewrite-percentage 100
         auto-aof-rewrite-min-size 64mb
         ```
-3. RDB + AOF
+3. AOF + RDB
     - redis.conf：`aof-use-rdb-preamble yes`
     - 发生于重写 AOF，重写后 AOF 文件前面是 RDB 格式的全量数据，后面是 AOF 格式的增量数据
 ---

@@ -7,12 +7,6 @@ import java.util.List;
 
 /**
  * <a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#lists">Lists</a>
- * <pre>
- * {@code
- * static <E> LinkedList<E>             newLinkedList([Iterable<? extends E> elements])
- * static <E> CopyOnWriteArrayList<E>   newCopyOnWriteArrayList([Iterable<? extends E> elements])
- * static <T> List<T>                   reverse(List<T> list)                                       返回指定列表的反向视图}
- * </pre>
  *
  * @author ljh
  * @see <a href="http://www.ibloger.net/article/3312.html">Guava Lists</a>

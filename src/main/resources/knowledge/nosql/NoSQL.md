@@ -13,8 +13,8 @@
 | Key-Value Store     | high        | high          | high        | none       | Memcached, Redis  | 缓存 (速度快)      |
 | Document Store      | high        | variable/high | high        | low        | MongoDB, CouchDB  | 高性能数据库 (复杂查询) |
 | Wide Column Store   | high        | high          | moderate    | low        | Cassandra, HBase  | 大数据 (数据量大)    |
-| Graph Database      | variable    | variable      | high        | high       | Neo4J, JanusGraph ||
-| Relational Database | variable    | variable      | low         | moderate   | MySQL, SQL server ||
+| Graph Database      | variable    | variable      | high        | high       | Neo4J, JanusGraph |               |
+| Relational Database | variable    | variable      | low         | moderate   | MySQL, SQL server |               |
 - [键值存储 vs 文档存储](https://www.likecs.com/show-204647694.html)
 ```
 相同点：都是 k-v 结构
@@ -25,11 +25,13 @@
 <img alt="CAP Theorem" src="https://www.runoob.com/wp-content/uploads/2013/10/cap-theoram-image.png" width="400"/>
 
 - 对于一个分布式计算系统来说，不可能同时满足以下三点
-```
-Consistency             一致性，更新操作成功后，所有节点在同一时间的数据完全一致
-Availability            可用性，访问数据时，系统是否能在正常响应时间返回预期的结果
-Partition tolerance     分隔容忍，分布式系统在遇到某节点或网络分区故障时，仍能对外提供满足一致性和可用性的服务
-```
+    ```
+    Consistency             一致性，更新操作成功后，所有节点在同一时间的数据完全一致
+    Availability            可用性，访问数据时，系统是否能在正常响应时间返回预期的结果
+    Partition Tolerance     分隔容忍，分布式系统在遇到某节点或网络分区故障时，仍能对外提供满足一致性和可用性的服务
+    ```
+    1. Zookeeper：CP，写入需多数派确认，Leader 宕机选举期间不可用，数据强一致
+    2. Redis：AP，写入 Master 立即返回，异步复制给 Slave，始终可用，接受短暂不一致
 ---
 ## BASE
 - BASE 是 NoSQL 数据库通常对可用性及一致性的弱要求原则

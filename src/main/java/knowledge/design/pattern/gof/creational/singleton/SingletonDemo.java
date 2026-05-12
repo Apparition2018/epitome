@@ -64,6 +64,122 @@ import java.nio.file.Paths;
  */
 public class SingletonDemo {
 
+    /** 饿汉模式，线程安全 */
+    private static class EarlySingleton implements Serializable {
+        @Serial
+        private static final long serialVersionUID = -7618188072415286252L;
+        // 1.创建类的唯一实例，使用 private static 修饰
+        // 类加载就创建唯一实例，且类只会被加载一次，故不存在线程安全问题，形象称为饿汉模式
+        private static final EarlySingleton INSTANCE = new EarlySingleton();
+
+        // 2.将构造方法私有化，不允许外部通过 new 直接创建对象
+        private EarlySingleton() {
+        }
+
+        // 3.提供一个用于获取实例的方法，使用 public static 修饰
+        public static EarlySingleton getInstance() {
+            return INSTANCE;
+        }
+
+        // 防止序列化攻击
+        // ObjectInputStream.java:1665      checkResolve(readOrdinaryObject(unshared))
+        // ObjectInputStream.java:2194      desc.invokeReadResolve(obj)
+        @Serial
+        private Object readResolve() {
+            return INSTANCE;
+        }
+    }
+
+    /** 懒汉模式，线程不安全 */
+    private static class LazySingleton {
+        private static LazySingleton instance;
+
+        private LazySingleton() {
+        }
+
+        // 调用方法才创建唯一实例，形象称为懒汉模式
+        // 存在线程安全问题，添加 synchronized 修饰方法则线程安全，但降低了效率
+        public static LazySingleton getInstance() {
+            if (instance == null) instance = new LazySingleton();
+            return instance;
+        }
+    }
+
+    /**
+     * <a href="https://www.cnblogs.com/xz816111/p/8470048.html">双重检查锁</a> (double-checked locking)：线程安全，懒汉模式的升级版
+     * <p>instance = new DoubleCheckLockSingleton(); 在 JVM 里面的执行分为三步：
+     * <pre>
+     * 1 在堆内存开辟内存空间
+     * 2 在堆内存中实例化 Singleton 里面的各个参数
+     * 3 把对象指向堆内存空间
+     * DCL 失效问题：
+     *  由于 JVM 存在重排序（乱序执行），所以可能在 2 还没执行时就先执行了 3，
+     *  如果此时再被切换到其它线程上，由于执行了 3，INSTANCE 已经非空了，会被直接拿出来用，
+     *  这样的话，就会出现异常
+     * </pre>
+     * 通过双重检查锁（double-checked locking），实现延迟初始化需要将目标属性声明为 volatile 型（阿里编程规约）
+     */
+    public static class DoubleCheckLockSingleton {
+        /**
+         * <pre>
+         *      线程A                     线程B
+         * ----------                   ----------
+         * Step1：分配内存
+         * Step2：初始化对象
+         * ===内存屏障===
+         * Step3：instance 指向内存
+         *                          if (instance != null) return instance
+         *
+         * </pre>
+         */
+        private volatile static DoubleCheckLockSingleton instance;
+
+        private DoubleCheckLockSingleton() {
+        }
+
+        @SuppressWarnings("InstantiationOfUtilityClass")
+        public static DoubleCheckLockSingleton getInstance() {
+            if (instance != null) return instance;
+            synchronized (DoubleCheckLockSingleton.class) {
+                if (instance == null) instance = new DoubleCheckLockSingleton();
+                return instance;
+            }
+        }
+    }
+
+    /**
+     * 按需初始化 (Initialization on Demand Holder)：静态内部类，饿汉的优化版
+     * <pre>
+     * 1 延迟加载：内部类属于被动引用，外部类加载时不会对其进行初始化，getInstance 第一次被调用的时候才加载内部类
+     * 2 线程安全：同饿汉线程安全原因
+     * </pre>
+     * 缺点：外部无法传递参数进去内部类里
+     */
+    private static class InitOnDemandSingleton {
+
+        @SuppressWarnings("InstantiationOfUtilityClass")
+        private static class InstanceHolder {
+            private static final InitOnDemandSingleton INSTANCE = new InitOnDemandSingleton();
+        }
+
+        private static boolean beReflect = false;
+
+        private InitOnDemandSingleton() {
+            // 防止反射攻击
+            synchronized (EarlySingleton.class) {
+                if (!beReflect) {
+                    beReflect = true;
+                } else {
+                    throw new RuntimeException("禁止通过反射创建单例！");
+                }
+            }
+        }
+
+        public static InitOnDemandSingleton getInstance() {
+            return InstanceHolder.INSTANCE;
+        }
+    }
+
     /** 测试反射攻击 */
     @Test
     public void testReflectAttack() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
@@ -93,109 +209,5 @@ public class SingletonDemo {
             throw new RuntimeException(e);
         }
         new File(pathStr).deleteOnExit();
-    }
-}
-
-/** 饿汉模式，线程安全 */
-class EarlySingleton implements Serializable {
-    @Serial
-    private static final long serialVersionUID = -7618188072415286252L;
-    // 1.创建类的唯一实例，使用 private static 修饰
-    // 类加载就创建唯一实例，且类只会被加载一次，故不存在线程安全问题，形象称为饿汉模式
-    private static final EarlySingleton INSTANCE = new EarlySingleton();
-
-    // 2.将构造方法私有化，不允许外部通过 new 直接创建对象
-    private EarlySingleton() {
-    }
-
-    // 3.提供一个用于获取实例的方法，使用 public static 修饰
-    public static EarlySingleton getInstance() {
-        return INSTANCE;
-    }
-
-    // 防止序列化攻击
-    // ObjectInputStream.java:1665      checkResolve(readOrdinaryObject(unshared))
-    // ObjectInputStream.java:2194      desc.invokeReadResolve(obj)
-    @Serial
-    private Object readResolve() {
-        return INSTANCE;
-    }
-}
-
-/** 懒汉模式，线程不安全 */
-class LazySingleton {
-    private static LazySingleton instance;
-
-    private LazySingleton() {
-    }
-
-    // 调用方法才创建唯一实例，形象称为懒汉模式
-    // 存在线程安全问题，添加 synchronized 修饰方法则线程安全，但降低了效率
-    public static LazySingleton getInstance() {
-        if (instance == null) instance = new LazySingleton();
-        return instance;
-    }
-}
-
-/**
- * <a href="https://www.cnblogs.com/xz816111/p/8470048.html">双重检查锁</a> (double-checked locking)：线程安全，懒汉模式的升级版
- * <p>instance = new DoubleCheckLockSingleton(); 在 JVM 里面的执行分为三步：
- * <pre>
- * 1 在堆内存开辟内存空间
- * 2 在堆内存中实例化 Singleton 里面的各个参数
- * 3 把对象指向堆内存空间
- *
- * 由于 JVM 存在重排序（乱序执行），所以可能在 2 还没执行时就先执行了 3，
- * 如果此时再被切换到其它线程上，由于执行了 3，INSTANCE 已经非空了，会被直接拿出来用，
- * 这样的话，就会出现异常。这个就是著名的 DCL 失效问题。
- * </pre>
- * 通过双重检查锁（double-checked locking），实现延迟初始化需要将目标属性声明为 volatile 型（阿里编程规约）
- */
-class DoubleCheckLockSingleton {
-    private volatile static DoubleCheckLockSingleton instance;
-
-    private DoubleCheckLockSingleton() {
-    }
-
-    @SuppressWarnings("InstantiationOfUtilityClass")
-    public static DoubleCheckLockSingleton getInstance() {
-        if (instance != null) return instance;
-        synchronized (DoubleCheckLockSingleton.class) {
-            if (instance == null) instance = new DoubleCheckLockSingleton();
-            return instance;
-        }
-    }
-}
-
-/**
- * 按需初始化 (Initialization on Demand Holder)：静态内部类，饿汉的优化版
- * <pre>
- * 1 延迟加载：内部类属于被动引用，外部类加载时不会对其进行初始化，getInstance 第一次被调用的时候才加载内部类
- * 2 线程安全：同饿汉线程安全原因
- * </pre>
- * 缺点：外部无法传递参数进去内部类里
- */
-class InitOnDemandSingleton {
-
-    @SuppressWarnings("InstantiationOfUtilityClass")
-    private static class InstanceHolder {
-        private static final InitOnDemandSingleton INSTANCE = new InitOnDemandSingleton();
-    }
-
-    private static boolean beReflect = false;
-
-    private InitOnDemandSingleton() {
-        // 防止反射攻击
-        synchronized (EarlySingleton.class) {
-            if (!beReflect) {
-                beReflect = true;
-            } else {
-                throw new RuntimeException("禁止通过反射创建单例！");
-            }
-        }
-    }
-
-    public static InitOnDemandSingleton getInstance() {
-        return InstanceHolder.INSTANCE;
     }
 }

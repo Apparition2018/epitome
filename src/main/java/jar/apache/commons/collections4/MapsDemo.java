@@ -124,13 +124,13 @@ public class MapsDemo extends Demo {
      * PassiveExpiringMap           到期驱除 Map
      */
     @Test
-    public void testPassiveExpiringMap() {
+    public void testPassiveExpiringMap() throws InterruptedException {
         PassiveExpiringMap<Integer, String> passiveExpiringMap = new PassiveExpiringMap<>(1, TimeUnit.SECONDS);
         passiveExpiringMap.put(1, "A");
         passiveExpiringMap.put(2, "B");
         passiveExpiringMap.put(3, "C");
         p(passiveExpiringMap.get(1));   // A
-        sleep(2, TimeUnit.SECONDS);
+        TimeUnit.SECONDS.sleep(2);
         p(passiveExpiringMap.get(1));   // null
     }
 

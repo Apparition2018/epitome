@@ -73,7 +73,7 @@ public class Demo {
     public static final String DEMO_FILE_PATH = DEMO_DIR_PATH + DEMO_FILE_NAME;
     public static final String UPLOAD_ABSOLUTE_PATH = DEMO_DIR_ABSOLUTE_PATH + "upload" + File.separator;
     public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_DIR_ABSOLUTE_PATH + DEMO_FILE_NAME;
-    public static final String BIRD_IMG = "https://i.imgs.ovh/2025/04/18/j9kHY.jpeg";
+    public static final String BIRD_IMG = "https://cdnjson.com/images/2023/01/17/bird.jpg";
     public static final String XIAO_XIN_PNG = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
     public static final String VIDEO = RESOURCES_ABSOLUTE_PATH + "static/public/video/movie.ogg";
     public static final String JDBC_PROPS_FILENAME = "jdbc.properties";
@@ -156,7 +156,13 @@ public class Demo {
         Assertions.assertEquals(expected, actual);
     }
 
-    /** 模拟 Thread.sleep()，为了避免 Thread.sleep() 而需要捕获 InterruptedException 而带来的理解上的困惑 */
+    /**
+     * <ol>
+     *     <li>优先 throws InterruptedException</li>
+     *     <li>其次 @SneakyThrows</li>
+     *     <li>最后</li>
+     * </ol>
+     */
     public static void sleep(long timeout, TimeUnit timeUnit) {
         long now = System.currentTimeMillis();
         while (System.currentTimeMillis() - now < timeUnit.toMillis(timeout)) {

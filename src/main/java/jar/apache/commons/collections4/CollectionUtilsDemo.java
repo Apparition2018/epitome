@@ -11,22 +11,6 @@ import java.util.List;
 
 /**
  * <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/CollectionUtils.html">CollectionsUtils</a>
- * <pre>
- * static Object                get(Object object, int index)
- * static <K, V> Entry<K, V>    get(Map<K, V> map, int index)
- * static <T> Collection<T>     emptyCollection()                                       返回空集合，不可修改 ?
- * static <T> Collection<T>     emptyIfNull(Collection<T> collection)                   如果集合为 null，返回空集合
- * static <C> boolean           addAll(Collection<C> collection, ...)                   合并
- * static <T> boolean           addIgnoreNull(Collection<T> collection, T object)       添加元素，忽略 null
- * static boolean               containsAll(Collection<?> coll1, Collection<?> coll2)   包含所有
- * static boolean               containsAny(Collection<?> coll1, Collection<?> coll2)   包含任意
- * static boolean               isEmpty(Collection<?> coll)                             判断为空
- * static boolean               isNotEmpty(Collection<?> coll)                          判断非空
- * static boolean               sizeIsEmpty(Object object)                              判断为空
- *
- * static <C> Collection<C>	predicatedCollection(Collection<C> collection, Predicate<? super C> predicate)
- * static <E> Collection<E>	transformingCollection(Collection<E> collection, Transformer<? super E,? extends E> transformer)o
- * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -55,7 +39,7 @@ public class CollectionUtilsDemo extends Demo {
 
     @Test
     public void testCollectionUtils2() {
-        p(subList);                                             // [2, 3, 4, 5, 6]        
+        p(subList);                                             // [2, 3, 4, 5, 6]
         p(subList2);                                            // [4, 5, 6, 7, 8]
         // static <O> Collection<O>	union(Iterable<? extends O> a, Iterable<? extends O> b)         并集
         p(CollectionUtils.union(subList, subList2));            // [2, 3, 4, 5, 6, 7, 8]
@@ -121,7 +105,7 @@ public class CollectionUtilsDemo extends Demo {
      */
     @Test
     public void collate() {
-        p(subList);                                             // [2, 3, 4, 5, 6]        
+        p(subList);                                             // [2, 3, 4, 5, 6]
         p(subList2);                                            // [4, 5, 6, 7, 8]
 
         p(CollectionUtils.collate(subList, subList2, false));   // [2, 3, 4, 5, 6, 7, 8]

@@ -34,8 +34,7 @@ public class ObjectWaitAndNotifyDemo {
     private static class Target {
         private int count;
 
-        @SneakyThrows
-        public synchronized void increase() {
+        public synchronized void increase() throws InterruptedException {
             if (count == 2) {
                 wait();
             }
@@ -44,8 +43,7 @@ public class ObjectWaitAndNotifyDemo {
             notify();
         }
 
-        @SneakyThrows
-        public synchronized void decrease() {
+        public synchronized void decrease() throws InterruptedException {
             if (count == 0) {
                 // 等待，由于 Decrease 线程调用的该方法,
                 // 所以 Decrease 线程进入对象 t (main函数中实例化的)的等待池，并且释放对象 t 的锁

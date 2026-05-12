@@ -118,11 +118,7 @@ public class ThreadDemo extends Demo {
             p("down:开始下载图片...");
             for (int i = 1; i <= 100; i++) {
                 p("down:" + i + "%");
-                try {
-                    TimeUnit.MILLISECONDS.sleep(30);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                sleep(30, TimeUnit.MILLISECONDS);
             }
             p("down:图片下载完毕！");
             isFinish = true;
@@ -137,7 +133,8 @@ public class ThreadDemo extends Demo {
              * 直到 download 线程将任务执行完毕 (download 线程结束) 时才会接触阻塞继续向下运行代码
              */
             try {
-                download.join(); // void join(): 等待该线程终止
+                // void join(): 等待该线程终止
+                download.join();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -167,11 +164,7 @@ public class ThreadDemo extends Demo {
         Thread rose = new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 p("rose: let me go!");
-                try {
-                    TimeUnit.MILLISECONDS.sleep(500);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                sleep(500, TimeUnit.MILLISECONDS);
             }
             p("rose: 啊啊啊AAAaaa...");
             p("音效：噗通！");
@@ -241,7 +234,7 @@ public class ThreadDemo extends Demo {
      * @see <a href="https://zhuanlan.zhihu.com/p/73302931">如何理解 java 中的中断机制</a>
      */
     @Test
-    public void interrupt() {
+    public void interrupt() throws InterruptedException {
         Thread thread = new Thread(() -> {
             try {
                 for (int i = 0; i < 1000; i++) {
@@ -263,7 +256,7 @@ public class ThreadDemo extends Demo {
         });
 
         thread.start();
-        sleep(100, TimeUnit.MILLISECONDS);
+        TimeUnit.MILLISECONDS.sleep(100);
         p("发送中断请求");
         thread.interrupt();
     }

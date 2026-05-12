@@ -96,4 +96,5 @@
 | Read Committed   |     ×      |          √          |         √          |   √   |   ○    |     ○      |           |
 | Repeatable Read  |     ×      |          ×          | √ (MySQL InnoDB ×) |   ○   |   ×    |     √      |           |
 | Serializable     |     ×      |          ×          |         ×          |   √   |   √    |     √      |   银行、金融   |
+- MySQL RR 如何解决幻读：@see [MySQL RR 如何解决幻读](../other/架构300讲.md)
 ---

@@ -1,6 +1,5 @@
 package knowledge.concurrent;
 
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -8,6 +7,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import static l.demo.Demo.p;
+import static l.demo.Demo.sleep;
 
 /**
  * 死锁
@@ -69,11 +69,7 @@ public class Deadlock {
         new Thread(() -> {
             synchronized (B) {
                 p("线程 t2 拿到 B 锁");
-                try {
-                    TimeUnit.SECONDS.sleep(2);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                sleep(2, TimeUnit.SECONDS);
                 synchronized (A) {
                     p("线程 t2 拿到 A 锁");
                 }
@@ -82,8 +78,7 @@ public class Deadlock {
     }
 
     @Test
-    @SneakyThrows
-    public void tryLock() {
+    public void tryLock() throws InterruptedException {
         final Lock lock = new ReentrantLock();
         try {
             if (lock.tryLock(2, TimeUnit.SECONDS)) {

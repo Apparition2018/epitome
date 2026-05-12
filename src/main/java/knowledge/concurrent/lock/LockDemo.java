@@ -9,12 +9,19 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/locks/Lock.html">Lock</a>  显式锁<br/>
  * Lock 实现提供了比 synchronized 更广泛的锁操作。此实现允许更灵活的结构，可以具有差别很大的属性，可以支持多个相关的 Condition 对象。
+ * <p>vs synchronized：
  * <pre>
- * ReentrantLock([boolean fair])        创建一个具有给定公平策略的锁
- * void	lock()                          获取锁
- * void	unlock()                        释放锁
+ *              synchronized                Lock
+ * 层面           JVM                         JDK
+ * 实现方式     字节码指令               Java 代码（AQS）
+ * 锁获取/释放   自动释放                lock() / unlock()
+ * 超时尝试         不支持             tryLock(long, TimeUnit)
+ * 可中断性     不可中断                lockInterruptibly()
+ * 公平性          非公平                 可选，默认非公平
+ * 条件队列     1个 wait/notiy       多个 Condition await/signal
+ * 悲观锁          阻塞              lock() 阻塞 / tryLock() 非阻塞
  * </pre>
- * <p>相对于 synchronized 的优点：
+ * 相对于 synchronized 的优点：
  * <pre>
  * 1 Lock 可以不让等待的线程一直无限期地等待下去 (tryLock(long time, TimeUnit unit)，只等待一定时间，lockInterruptibly() 响应中断)
  * 2 Lock 可以让多个线程进行读操作 (ReentrantReadWriteLock)
@@ -22,14 +29,10 @@ import java.util.concurrent.locks.ReentrantLock;
  * 4 Lock 可以指定公平策略，默认不公平
  * 5 Lock 可以通过 lock.newCondition() 获得该锁的 Condition 对象，再通过 condition.signal() 或 condition.signalAll() 唤醒该 Condition 对象上的等待的线程
  * </pre>
- * 相对于 synchronized 的不同点：
- * <pre>
- * synchronized                 Lock
- * 关键字                      接口
- * Java 的内置特性，基于 JVM    基于 JDK
- * 悲观锁，阻塞同步             乐观锁，非阻塞同步
- * 不需要手动释放锁             必须手动释放锁，一般在 finally 中释放锁
- * </pre>
+ * <p>AQS：
+ *  ①无竞争：纯 CAS 获取
+ *  ②被占用：内核态阻塞，避免 CPU 空转
+ *  ③非公平锁会多尝试一次 CAS
  * <p>性能：但随着版本的不断优化，synchronized 效率越来越高，一般情况下优先使用 synchronized
  *
  * @author ljh

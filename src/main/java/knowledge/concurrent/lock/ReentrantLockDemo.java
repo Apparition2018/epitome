@@ -36,7 +36,7 @@ public class ReentrantLockDemo extends Demo {
         if (lock.tryLock(2, TimeUnit.SECONDS)) {
             try {
                 p("time=" + System.currentTimeMillis() + ", 线程 " + thread.getName() + " 得到了锁...");
-                sleep(3000, TimeUnit.MILLISECONDS);
+                TimeUnit.SECONDS.sleep(3);
             } finally {
                 lock.unlock();
                 p("线程 " + thread.getName() + " 释放了锁...");

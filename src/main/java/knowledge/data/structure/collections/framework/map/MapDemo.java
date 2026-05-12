@@ -12,32 +12,25 @@ import java.util.*;
 
 /**
  * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/Map.html">Map</a>
- * <pre>
- * HashMap          快速访问
- * LinkedHashMap    记录插入顺序
- * TreeMap          自动排序
  * </pre>
  * 阿里编程规约：高度注意 Map 类集合 K / V 能不能存储 null 值的情况
  * <pre>
- * 集合类                  key             value       Super           说明
- * Hashtable            not null        not null    Dictionary      线程安全
- * TreeMap              not null        null        AbstractMap     线程不安全
- * ConcurrentHashMap    not null        not null    AbstractMap     锁分段技术（JDK8:CAS）
- * HashMap              null            null        AbstractMap     线程不安全
- * </pre>
- * <pre>
- * void	        putAll(Map<? extends K,? extends V> m)      从指定映射中将所有映射关系复制到此映射中（可选操作）
- * void	        clear()                                     从此映射中移除所有映射关系（可选操作）
- * default V	getOrDefault(Object key, V defaultValue)    返回指定键映射到的值，如果该映射不包含该键的映射，则返回 defaultValue。
- * V	        remove(Object key)                          如果存在一个键的映射关系，则将其从此映射中移除（可选操作）
- * boolean      containsKey(Object key)                     如果此映射包含指定键的映射关系，则返回 true
- * boolean      containsValue(Object value)                 如果此映射将一个或多个键映射到指定值，则返回 true
- * boolean      isEmpty()                                   如果此映射未包含键-值映射关系，则返回 true
+ * 集合类                  key         value       Super           说明                  底层结构 & 特点
+ * Hashtable            not null    not null    Dictionary      线程安全        数组 + 链表（synchronized put/get）
+ * TreeMap              not null    null        AbstractMap     线程不安全       红黑树（自平衡的二叉查找树）
+ * ConcurrentHashMap    not null    not null    AbstractMap     锁分段技术       数组 + 链表 + 红黑树（CAS + Synchronized）
+ * HashMap              null        null        AbstractMap     线程不安全       数组 + 链表 + 红黑树
+ * LinkedHashMap        null        null        HashMap         线程不安全       数组 + 链表 + 双向链表（维护插入/访问顺序）
+ * 注：①HashMap 怎么解决哈希冲突？
+ *      a.落到同一个桶（数组位），链表解决
+ *      b.扩容稀释冲突
+ *    ②当数组长度 ≥ 64，且链表长度 ≥ 8，则将链表转为红黑树
+ *    ③ConcurrentHashMap：空桶用 CAS 插入，非空桶用 synchronized 锁该桶（即链表头或树根节点）
  * </pre>
  * <p>************************************************************
  * <p>HashMap
  * <pre>
- * 1 底层实现是链表数组，JDK8 加上了红黑树
+ * 1 底层实现是数组链表，JDK8 加上了红黑树
  * 2 允许空键和空值（但空键只有一个，且放在第一位）
  * 3 两个关键因子：初始容量16、加载因子0.75
  *   3.1 扩容总是原来的2倍，即容量始终为2的幂次方
@@ -45,31 +38,7 @@ import java.util.*;
  *   3.3 加载因子越大，发生冲突的可能性就越大，反之需要频繁 resize，性能降低
  *   3.4 建议在创建 HashMap 的时候指定初始化容量，可使用 guava 工具方法 {@link Maps#newHashMapWithExpectedSize(int)}（阿里编程规约）
  * </pre>
- * <pre>
- * HashMap([int initialCapacity[, float loadFactor]])       构造一个带指定初始容量和加载因子的空 HashMap
- * HashMap(Map<? extends K,? extends V> m)                  构造一个映射关系与指定 Map 相同的新 HashMap
- * </pre>
- * 参考：
- * <pre>
- * <a href="https://blog.csdn.net/u012426327/article/details/77504839">HashMap 主要特点和关键方法源码解读</a>
- * <a href="https://blog.csdn.net/mcsdnuser/article/details/106698237">HashMap 初始化容量带大小设置成多少合适</a>
- * </pre>
  * <p>************************************************************
- * <p>AbstractMap
- * <pre>
- * 1 实现 Map，专为继承而设计的类
- * 2 有抽象方法：entrySet()
- * 3 如果想要通过 AbstractMap 派生出 Map。需要实现 entrySet() 和重写 put(K, V)，
- *   因为 put(K, V) 会抛出 UnsupportedOperationException。
- * 4 有内部类 SimpleImmutableEntry（不可变的键值对）, SimpleEntry（可变的键值对）
- * </pre>
- * <p>************************************************************
- * <p>ConcurrentHashMap
- * <pre>
- * HashMap 线程安全的实现。使用局部锁技术，实际上就是把 Map 分成了分成了 N 个 Segment，
- * put 和 get 的时候，都是现根据 key.hashCode() 算出放到哪个 Segment 中，
- * 而这里的每个 segment 都相当于一个小的 Hashtable，性能高于 Hashtable
- * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
@@ -209,8 +178,8 @@ public class MapDemo extends Demo {
     }
 
     /**
-     * LRU
-     * <p>LRU 是 Least Recently Used 的缩写，即最近最少使用算法。
+     * LRU (Least Recently Used)
+     * 即最近最少使用算法。
      *
      * @see <a href="https://blog.csdn.net/Apeopl/article/details/90137398">使用 LinkedHashMap 实现一个简易的 LRU 缓存</a>
      */
