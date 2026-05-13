@@ -1,8 +1,9 @@
 package jar.google.guava.collect;
 
 import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
+
+import java.util.List;
 
 import static l.demo.Demo.p;
 
@@ -10,7 +11,6 @@ import static l.demo.Demo.p;
  * <a href="https://github.com/google/guava/wiki/NewCollectionTypesExplained#multimap">Multimap</a>
  * <p><a href="https://guava.dev/releases/snapshot-jre/api/docs/com/google/common/collect/Multimap.html">Multimap api</a>
  * <p>1个 key 可以映射多个 value
- * <p>
  * <p><a href="https://github.com/google/guava/wiki/CollectionUtilitiesExplained#multimaps">Multimaps</a>
  *
  * @author ljh
@@ -50,7 +50,7 @@ public class MultimapDemo {
 
         // boolean	                    putAll(K key, Iterable<? extends V> values)
         // boolean	                    putAll(Multimap<? extends K,? extends V> multimap)
-        map.putAll(6, Lists.newArrayList(4, 5));
+        map.putAll(6, List.of(4, 5));
         Multimap<Integer, Integer> map2 = ArrayListMultimap.create();
         map2.put(7, 1);
         map2.put(7, 7);
@@ -65,7 +65,7 @@ public class MultimapDemo {
         p(map);                         // {1=[2, 2, 3, 4], 2=[3], 3=[3], 4=[3], 5=[3]}
 
         // Collection<V>	            replaceValues(K key, Iterable<? extends V> values)
-        map.replaceValues(1, Lists.newArrayList(3, 3, 3));
+        map.replaceValues(1, List.of(3, 3, 3));
         p(map);                         // {1=[3, 3, 3], 2=[3], 3=[3], 4=[3], 5=[3]}
 
         // void	                        clear()

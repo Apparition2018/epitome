@@ -30,7 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 public class HttpInterceptor implements HandlerInterceptor {
 
-    private static final ThreadLocal<StopWatch> stopWatchThreadLocal = new ThreadLocal<>();
+    private static final String STOPWATCH_ATTR = HttpInterceptor.class.getName() + ".stopWatch";
 
     /**
      * <pre>
@@ -41,8 +41,8 @@ public class HttpInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) {
         StopWatch stopWatch = new StopWatch();
-        stopWatchThreadLocal.set(stopWatch);
         stopWatch.start();
+        request.setAttribute(STOPWATCH_ATTR, stopWatch);
         return true;
     }
 
@@ -55,42 +55,37 @@ public class HttpInterceptor implements HandlerInterceptor {
      */
     @Override
     public void postHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler, ModelAndView modelAndView) {
-        stopWatchThreadLocal.get().stop();
-        stopWatchThreadLocal.get().start();
+        StopWatch stopWatch = (StopWatch) request.getAttribute(STOPWATCH_ATTR);
+        stopWatch.stop();
+        stopWatch.start();
     }
 
-    /**
-     * <pre>
-     * 调用前提：preHandle 返回 true
-     * 调用时间：DispatcherServlet 进行视图渲染之后
-     * </pre>
-     */
     @Override
     public void afterCompletion(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler, Exception ex) {
-        StopWatch stopWatch = stopWatchThreadLocal.get();
+        StopWatch stopWatch = (StopWatch) request.getAttribute(STOPWATCH_ATTR);
         stopWatch.stop();
-        String fullMethodName = StringUtils.EMPTY;
-        if (handler instanceof HandlerMethod) {
-            String beanType = ((HandlerMethod) handler).getBeanType().getName();
-            String method = ((HandlerMethod) handler).getMethod().getName();
-            fullMethodName = beanType + StrUtil.DOT + method;
-        }
-        if (null == ex) {
+
+        String fullMethodName = resolveHandlerMethodName(handler);
+        long totalTime = stopWatch.getTotalTimeMillis();
+        long viewRenderTime = stopWatch.lastTaskInfo().getTimeMillis();
+        long beforeViewTime = totalTime - viewRenderTime;
+
+        if (ex == null) {
             log.info("requestUri[{}] method[{}] spend[{}ms-{}ms-{}ms]",
-                request.getRequestURI(),
-                fullMethodName,
-                stopWatch.getTotalTimeMillis(),
-                stopWatch.getTotalTimeMillis() - stopWatch.lastTaskInfo().getTimeMillis(),
-                stopWatch.lastTaskInfo().getTimeMillis());
+                request.getRequestURI(), fullMethodName,
+                totalTime, beforeViewTime, viewRenderTime);
         } else {
             log.info("requestUri[{}] method[{}] exception[{}] spend[{}ms-{}ms-{}ms]",
-                request.getRequestURI(),                            // 请求 URI
-                fullMethodName,                                     // 方法全路径
-                ex.getClass().getName() + ":" + ex.getMessage(),    // 异常
-                stopWatch.getTotalTimeMillis(),                     // 请求总消耗时间
-                stopWatch.getTotalTimeMillis() - stopWatch.lastTaskInfo().getTimeMillis(),
-                stopWatch.lastTaskInfo().getTimeMillis());
+                request.getRequestURI(), fullMethodName,
+                ex.getClass().getName() + ":" + ex.getMessage(),
+                totalTime, beforeViewTime, viewRenderTime);
         }
-        stopWatchThreadLocal.remove();
+    }
+
+    private static String resolveHandlerMethodName(Object handler) {
+        if (!(handler instanceof HandlerMethod handlerMethod)) {
+            return StringUtils.EMPTY;
+        }
+        return handlerMethod.getBeanType().getName() + StrUtil.DOT + handlerMethod.getMethod().getName();
     }
 }

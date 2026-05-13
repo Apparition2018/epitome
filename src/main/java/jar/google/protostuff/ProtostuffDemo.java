@@ -1,7 +1,8 @@
 package jar.google.protostuff;
 
-import com.google.common.collect.Lists;
 import l.demo.Person;
+
+import java.util.List;
 
 /**
  * Protostuff
@@ -13,7 +14,7 @@ public class ProtostuffDemo {
 
     public static void main(String[] args) {
         Person person = new Person("张三", 18);
-        person.setOtherInfo(Lists.newArrayList("学生", "踢足球"));
+        person.setOtherInfo(List.of("学生", "踢足球"));
 
         // 序列化
         byte[] personByteArray = ProtostuffUtil.serializer(person);

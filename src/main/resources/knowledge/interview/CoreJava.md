@@ -52,6 +52,13 @@
         2. 重写（根据对象实现多态）
         3. 向上转型
 ---
+## JVM 运行时数据区
+![JVM 运行时数据区](https://i.postimg.cc/nrCFPKB9/jvm-runtime-data-areas.png)
+- ⚪老年代：默认约占堆内存 2/3
+    - 存放对象：长期存活对象、大对象（超过阈值直接进入）
+    - 进入条件：对象在新生代的 Survivor 区年龄达到阈值 15
+    - GC 方式：Major GC / Full GC，频率低、单次耗时长
+---
 ## JVM 加载 class 文件的原理机制
 - JVM 中类的装载是由 ClassLoader 和它的子类来实现的，Java ClassLoader 是一个重要的 Java 运行时系统组件。它负责在运行时查找和装入类文件的类。
 - 类加载到卸载的生命周期：1)加载(Loading) 2)验证(Verification) 3)准备(Preparation) 4)解析(Resolution) 5)初始化(Initialization) 6)使用(Using) 7)卸载(Unloading)
@@ -98,15 +105,45 @@
 ---
 ## 内存泄露 - 内存溢出
 1. 内存泄漏：memory leak，无法释放已申请的内存，最终可能会导致内存溢出
+    1. 典型表现
+        1. 老年代内存持续增长，触发频繁 GC
+        2. GC 后老年代内存释放很少或不释放
+        3. 应用响应慢，最终可能内存溢出
+        4. 堆内存使用率随时间呈线性上升趋势
+    2. 排查与解决
+        1. 确认内存泄露
+            1. 监控 JVM 内存指标：通过工具观察堆内存各区域的使用趋势，判断是否存在内存无法释放的情况
+            2. 分析 GC 日志：查看 Full GC 频率、耗时及内存释放情况
+        2. 捕获内存快照：在内存泄露复现或接近 OOM 时，抓取堆内存快照（.hprof）
+            1. 使用 jmap 生成快照：`jamp -dump:format=b,file=heapdump.hprof <进程ID>`
+            2. OOM 自动 dump @see JVM 参数调优
+        3. 分析内存快照：通过工具分析快照，定位泄露对象
+            1. 识别异常对象：查看哪些对象数量异常多，且生命周期过长
+            2. 查看引用链：分析对象被哪些 GC Root 引用，导致无法被回收
+        4. 定位代码并修改
 
-    |     场景      |             原因              |               解决方案                |
-    |:-----------:|:---------------------------:|:---------------------------------:|
-    |    静态集合     |    static Map/List 无限增长     |     限制容量、定时清理、用 WeakReference     |
-    |    未关闭资源    |       数据库连接、文件流、网络连接        |   try-with-resources、finally 关闭   |
-    |   监听器未移除    |         事件监听器长期持有引用         |       页面销毁时 removeListener        |
-    | ThreadLocal |      线程池场景下未 remove()       | finally { threadLocal.remove(); } |
-    |  内部类持有外部类   |        非静态内部类持有外部类引用        |      改为静态内部类 + WeakReference      |
-    |    缓存无过期    | Guava Cache / Caffeine 未设过期 |    设置 expireAfterWrite/Access     |
+        | 场景                | 原因                                  | 解决方案                                               |
+        |:------------------|:------------------------------------|:---------------------------------------------------|
+        | 静态集合框架不断添加元素      | `static` Map / List 长期持有引用，无法被 GC   | 限制容量、定时清理、改用 `WeakReference`                       |
+        | 未关闭资源             | 数据库连接、文件流、网络连接等未释放，句柄泄漏             | `try-with-resources`、`finally` 块中手动关闭              |
+        | 缓存无过期策略           | Guava Cache / Caffeine 未设置过期时间，无限增长 | 配置 `expireAfterWrite` / `expireAfterAccess` / 最大容量 |
+        | 线程池核心线程持有大对象引用    | 核心线程不会销毁，长期持有对象引用，导致无法 GC           | 及时释放引用、缩小核心线程数、使用 `WeakReference`                  |
+        | 内部类持有外部类引用        | 非静态内部类隐式持有外部类 `this` 引用             | 改为**静态内部类**，必要时使用 `WeakReference`                  |
+        | `ThreadLocal` 未清理 | 线程池场景下线程复用，未 `remove()` 导致旧数据残留     | `finally { threadLocal.remove(); }`                |
+        | 监听器未移除            | 事件监听器长期持有对象引用，造成隐性引用链               | 页面销毁 / 对象注销时执行 `removeListener`                    |
+    3. 常用工具
+        1. JDK 自带工具
+            - jps：查看 Java 进程 ID
+            1. jstat：实时监控 JVM 内存和 GC 状态，`jstat -gcutil <进程ID> 1000 10`，每1秒输出1次，共10次
+            2. jmap：生成堆快照、查看对象分布，`jmap -histo <进程ID>`，查看对象数量和大小
+            3. jconsole/jvisualvm：图形化工具，监控内存、线程，支持生成快照和分析
+        2. 第三方分析工具
+            1. MAT (Eclipse Memory Analyzer)：堆快照分析工具，可自动检测泄露疑点(Leak Suspects)，展示支配树和引用链
+            2. VisualVM 插件：如 Visual GC 插件，直观展示 GC 区域变化趋势
+            3. YourKit/JProfiler：商业工具，提供内存泄露检测、CPU 分析等功能，支持实时跟踪创建和销毁
+    4. 预防措施
+        1. 代码评审：终点检查长生命周期对象对短生命周期对象的引用
+        2. 压力测试：通过压测提前暴露内存泄露问题
 2. 内存溢出：out of memory，申请不到足够的内存
 3. 🔺JVM 参数调优
 ```
@@ -120,6 +157,8 @@
 
 # GC 日志 -Xlog:gc*:file=<路径>:<输出格式>，gc* 表示捕获所有 GC 相关日志
 -Xlog:gc*:file=/app/logs/gc.log:time,uptime,level,tags
+-XX:+PrintGCDetails
+-XX:+PrintGCTimeStamps
 
 ## OOM 自动 dump
 -XX:+HeapDumpOnOutOfMemoryError

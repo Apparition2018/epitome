@@ -147,6 +147,10 @@ Alt + Shift + ↑/↓               Move Line Up/Down                   移动�
 Ctrl + Alt + Shift + ←/→        Move Element Left/Right                                         ???
 Ctrl + Alt + Shift + K          Convert Java File to Kotlin File                                ???
 ```
+>#### Analyze Code
+>```
+>Ctrl + Alt + Shift + I         Run Inspection by Name…             通过名称运行检查
+>```
 >#### Code Completion
 >```
 >Ctrl + Space                   Basic                               基本补全

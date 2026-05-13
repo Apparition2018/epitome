@@ -9,7 +9,7 @@
 4. [MySQL 总结](https://mp.weixin.qq.com/s/pWHCieOwAdCrz8cauduWlQ)
 ---
 ## B-Tree vs InnoDB B+ Tree
-🔺![B+ Tree](https://cdnjson.com/images/2026/05/13/image.png)
+🔺![B+ Tree](https://i.postimg.cc/prpW6Qzh/btree-vs-bplus-tree.png)
 1. 节点存储
     1. 非叶子节点存[键+指针]
     2. 主键索引（聚簇索引）叶子节点存[键（有序排序）+整行数据]

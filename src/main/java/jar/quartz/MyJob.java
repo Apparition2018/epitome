@@ -1,12 +1,12 @@
 package jar.quartz;
 
+import cn.hutool.core.date.DatePattern;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 
-import java.util.Date;
-
-import static l.demo.Demo.DATE_TIME_FORMAT;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * MyJob
@@ -18,6 +18,7 @@ import static l.demo.Demo.DATE_TIME_FORMAT;
 public class MyJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) {
-        log.info(jobExecutionContext.getJobDetail().getKey() + ": " + DATE_TIME_FORMAT.get().format(new Date()));
+        log.info("{}: {}", jobExecutionContext.getJobDetail().getKey(),
+            DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME_PATTERN).format(LocalDateTime.now()));
     }
 }

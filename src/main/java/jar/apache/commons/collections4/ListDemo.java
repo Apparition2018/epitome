@@ -3,7 +3,6 @@ package jar.apache.commons.collections4;
 import com.google.common.collect.Lists;
 import l.demo.Demo;
 import org.apache.commons.collections4.list.*;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -19,21 +18,6 @@ import org.junit.jupiter.api.Test;
  * @since 2020/11/14 11:55
  */
 public class ListDemo extends Demo {
-
-    /**
-     * CursorableLinkedList
-     * <p>一个 List 实现，能够在同一时间修改 List 和迭代 List；线程不同步
-     */
-    @Test
-    public void testCursorableLinkedList() {
-        CursorableLinkedList<Integer> cursorableLinkedList = new CursorableLinkedList<>(list);
-
-        CursorableLinkedList.Cursor<Integer> cursor = cursorableLinkedList.cursor();
-        while (cursor.hasNext()) {
-            p(cursor.next() + StringUtils.SPACE);
-            cursor.remove();
-        }
-    }
 
     /**
      * FixedSizeList

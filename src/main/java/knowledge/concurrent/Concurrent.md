@@ -57,15 +57,18 @@
 ### 应用层
 1. [线程池](#线程池)
 2. [消息队列](../../../resources/knowledge/interview/Messaging.md)
-3. 读写分离
-    1. 动态数据源 + AOP
-    2. ShardingSphere-JDBC
-    3. MyBatis-Plus dynamic-datasource
 ### 数据库层
 1. [SQL 优化](../../../resources/knowledge/sql/MySQL/MySQL.md)
 2. 读写分离：主库写、从库读，从库可水平扩展
+    1. 动态数据源 + AOP
+    2. ShardingSphere-JDBC
+    3. MyBatis-Plus dynamic-datasource
 3. [分库分表](../../../resources/knowledge/other/Database.md)
-4. 合理配置连接池连接数
+4. 合理配置连接池连接数：
+    1. CPU * 2 + 磁盘数
+    2. QPS × RT
+### 架构层
+
 ---
 ## 线程池
 1. IO 密集型优先使用虚拟线程

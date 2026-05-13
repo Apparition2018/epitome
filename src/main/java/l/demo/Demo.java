@@ -73,7 +73,7 @@ public class Demo {
     public static final String DEMO_FILE_PATH = DEMO_DIR_PATH + DEMO_FILE_NAME;
     public static final String UPLOAD_ABSOLUTE_PATH = DEMO_DIR_ABSOLUTE_PATH + "upload" + File.separator;
     public static final String DEMO_FILE_ABSOLUTE_PATH = DEMO_DIR_ABSOLUTE_PATH + DEMO_FILE_NAME;
-    public static final String BIRD_IMG = "https://cdnjson.com/images/2023/01/17/bird.jpg";
+    public static final String BIRD_IMG = "https://i.postimg.cc/1zRqNgPw/bird.jpg";
     public static final String XIAO_XIN_PNG = RESOURCES_ABSOLUTE_PATH + "static/public/img/people/NoharaSinnosuke.png";
     public static final String VIDEO = RESOURCES_ABSOLUTE_PATH + "static/public/video/movie.ogg";
     public static final String JDBC_PROPS_FILENAME = "jdbc.properties";

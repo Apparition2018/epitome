@@ -1,6 +1,5 @@
 package spring.api.data;
 
-import com.google.common.collect.Lists;
 import jakarta.annotation.Resource;
 import l.demo.Demo;
 import org.apache.commons.beanutils.PropertyUtils;
@@ -12,6 +11,7 @@ import org.springframework.data.redis.core.*;
 import springboot.EpitomeApplication;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -67,7 +67,7 @@ public class RedisTemplateDemo extends Demo {
         pe("是否存在键：" + hashOperations.hasKey(key, "id"));
         pe("获取所有键值对：" + hashOperations.entries(key));
         pe("获取所有值：" + hashOperations.values(key));
-        pe("获取指定键的值：" + hashOperations.multiGet(key, Lists.newArrayList("id", "name")));
+        pe("获取指定键的值：" + hashOperations.multiGet(key, List.of("id", "name")));
 
         // 删除指定键的指定hasKeys
         hashOperations.delete(key, "otherInfo");

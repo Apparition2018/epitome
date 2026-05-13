@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  */
 public class JoinerDemo extends Demo {
 
-    private final List<String> list = Lists.newArrayList("A", "B", "C");
+    private final List<String> list = List.of("A", "B", "C");
     private final List<String> listWithNull = Lists.newArrayList("A", "B", "C", null);
 
     /** null 值处理 */

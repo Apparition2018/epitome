@@ -45,7 +45,7 @@ public class QueueDemo extends Demo {
     /**
      * <a href="https://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/concurrent/BlockingQueue.html">BlockingQueue</a>    阻塞队列
      * <p>BlockingQueue 继承 Queue
-     * <p>参考：<a href="https://www.imooc.com/article/257739">Java 中的 BlockingQueue</a>
+     * <p><a href="https://www.imooc.com/article/257739">Java 中的 BlockingQueue</a>
      * <pre>
      * 操作       抛出异常        返回特殊值       阻塞          超时退出
      * 插入       add(e)          offer(e)    put(e)      offer(e, time, unit)

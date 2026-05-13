@@ -7,7 +7,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import l.demo.Demo;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.assertj.core.util.Lists;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class JsonTypeInfoDemo extends Demo {
     public static void main(String[] args) throws JsonProcessingException {
         Circle circle = new Circle().setRadius("12");
         Rectangle rectangle = new Rectangle().setLength("12").setWidth("13");
-        View view = new View().setSharps(Lists.newArrayList(circle, rectangle));
+        View view = new View().setSharps(List.of(circle, rectangle));
 
         String json = jsonMapper.writeValueAsString(view);
         p(json);

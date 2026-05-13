@@ -34,7 +34,7 @@ public class ConditionDemo extends Demo {
     private static final Condition POLL_CON = POLL_LOCK.newCondition();
 
     /**
-     * 参考 {@link LinkedBlockingQueue} 源码实现 生产者-消费者 模式
+     * {@link LinkedBlockingQueue} 源码实现 生产者-消费者 模式
      */
     public static void main(String[] args) throws InterruptedException {
         LinkedList<Integer> list = new LinkedList<>();

@@ -41,14 +41,14 @@ public class QuartzDemo {
         CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0/3 * * * * ?");
         CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "group1").withSchedule(cronScheduleBuilder).build();
         Date date = scheduler.scheduleJob(jobDetail, trigger);
-        log.info(jobDetail.getKey() + " 已被安排执行于: " + DATE_TIME_FORMAT.get().format(date) + "，并且以如下重复规则重复执行: " + trigger.getCronExpression());
+        log.info("{} 已被安排执行于: {}，并且以如下重复规则重复执行: {}", jobDetail.getKey(), DATE_TIME_FORMAT.get().format(date), trigger.getCronExpression());
 
         // job2 每隔5秒执行一次
         jobDetail = JobBuilder.newJob(MyJob.class).withIdentity("job2", "group1").build();
         cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0/5 * * * * ?");
         trigger = TriggerBuilder.newTrigger().withIdentity("trigger2", "group1").withSchedule(cronScheduleBuilder).build();
         date = scheduler.scheduleJob(jobDetail, trigger);
-        log.info(jobDetail.getKey() + " 已被安排执行于: " + DATE_TIME_FORMAT.get().format(date) + "，并且以如下重复规则重复执行: " + trigger.getCronExpression());
+        log.info("{} 已被安排执行于: {}，并且以如下重复规则重复执行: {}", jobDetail.getKey(), DATE_TIME_FORMAT.get().format(date), trigger.getCronExpression());
 
         // 开始执行，start() 被调用后，计时器就开始工作，计时调度中允许放入多个 job
         scheduler.start();
