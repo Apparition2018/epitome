@@ -48,6 +48,7 @@ public class AsyncConfig implements WebMvcConfigurer, AsyncConfigurer {
      *  2.1 是
      *      2.1.1 not null → 使用配置的线程池或 Executor
      *      2.1.2 null → 使用 {@link SimpleAsyncTaskExecutor}：不是线程池，每个任务新创建一个简易异步执行器
+     *              相当于一个线程池 → OOM
      *  2.2 否
      *      2.2.1 查找唯一的 TaskExecutor Bean
      *          注：① 容器中没有其它 Executor Bean 时，Spring Boot 会创建 task- 前缀的 ThreadPoolTaskExecutor

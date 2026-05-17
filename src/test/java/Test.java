@@ -14,12 +14,12 @@
 
 // Flutter
 
-// 电商、ERP、MES、供应链、RPA
+// RPA、电商、ERP、MES、CRM、SAP、供应链、BI、大数据、上位机
+// 历史表迁移读取、读写分离、合理配置连接池连接数、数据库备份迁移
 // 内存泄露
 // IDEA Learn
 // IDEA Services (Kubernetes、Docker)
 // 手机抽奖抓包
-// 历史表迁移读取、读写分离、合理配置连接池连接数、数据库备份迁移
 // 删 notes/html/*
 // 简单进度条 - SEE（轻量，单向推送足够）
 // 需要前后端双向通信 → WebSocket

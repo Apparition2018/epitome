@@ -30,7 +30,7 @@
 8. 在高并发场景中，避免使用“等于”判断作为中断或退出的条件
     - 如果并发控制没有处理好，容易产生等值判断被“击穿”的情况，使用大于或小于的区间判断条件来代替
 ---
-## 抗住高并发
+## 🔺抗住高并发
 - 分层削峰，减少流量直接打到数据库
 - 客户端 → CDN → Nginx → 应用集群 → Redis → 消息队列 → 数据库
 ### 前端层
@@ -42,9 +42,10 @@
     1. DNS 轮询：多机房入口分流（一个机房对应一个公网 IP）
     2. Nginx：单机房内[负载均衡](../../../resources/knowledge/nginx/nginx_3_load_balancer.conf)
 2. 限流
+    - 场景：①秒杀/抽奖 ②下游限制/保存 ③高频/爬虫
     1. 单机：Resilience4j、Guava RateLimiter、Semaphore
     2. [Nginx](../../../resources/knowledge/nginx/nginx_4_limit.conf)（网关级别）
-    3. 分布式：①秒杀/抽奖 ②下游限制/保存 ③高频/爬虫
+    3. 分布式：
         1. Spring Cloud Gateway 的 RequestRateLimiter（网关级别）
         2. Redisson 的 RRateLimiter
         3. Sentinel 的 Token Server

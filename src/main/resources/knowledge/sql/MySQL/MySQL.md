@@ -11,9 +11,12 @@
 ## B-Tree vs InnoDB B+ Tree
 🔺![B+ Tree](https://i.postimg.cc/prpW6Qzh/btree-vs-bplus-tree.png)
 1. 节点存储
-    1. 非叶子节点存[键+指针]
-    2. 主键索引（聚簇索引）叶子节点存[键（有序排序）+整行数据]
-    3. 二级索引（非主键索引）叶子节点存[索引列+主键]
+    1. 主键索引（聚簇索引）
+        1. 非叶子节点存[键+指针]
+        2. 叶子节点存[键（有序排序）+整行数据]
+    2. 二级索引（非主键索引）
+        1. 非叶子节点存[索引列值+指针]
+        2. 叶子节点存[索引列值（有序排序）+整行数据]
 2. 每个节点对应一页16KB，因为非叶子节点不存数据，所以单个节点能放更多索引项，比 B-Tree 扇出更大，树更矮 → IO 更少 → 查询更快
     - 同理，主键/索引选择更短的数据类型，查询更快
 3. 叶子节点用双向链表相连，便于范围查询
@@ -174,7 +177,7 @@
 | type            | 说明                            |
 |:----------------|:------------------------------|
 | system          | 表只有一行，是 const 的特例             |
-| **const**       | pk / unique 索引等值匹配，最多一行       |
+| const           | pk / unique 索引等值匹配，最多一行       |
 | eq_ref          | join 时被驱动表 pk / unique 索引等值匹配 |
 | ref             | 非 unique 索引等值查询               |
 | fulltext        | 全文索引                          |
@@ -213,7 +216,7 @@ set global log_queries_not_using_indexes = on;
 -- 最少检查行限制
 set global min_examined_row_limit = 0;
 -- 慢查询日志文件
-set global slow_query_log_file = '';
+set global slow_query_log_file = '/var/log/mysql/slow-query.log';
 ```
 - 慢查询日志存储格式
 ```
@@ -225,6 +228,14 @@ select * from store limit 10;
 ```
 - 慢查询日志分析工具
     1. [mysqldumpslow](https://dev.mysql.com/doc/refman/8.4/en/mysqldumpslow.html)
+        ```
+        # 按查询时间降序，显示前5条
+        mysqldumpslow -s t -t 5 /var/lib/mysql/slow-query.log
+        # 按平均查询时间降序，显示前5条
+        mysqldumpslow -s at -t 5 /var/lib/mysql/slow-query.log
+        # 按锁定时间降序，显示前5条
+        mysqldumpslow -s l -t 5 /var/log/mysql/slow.log
+        ```
     2. Percona Toolkit：pt-query-digest
         ```
         # 查看帮助
