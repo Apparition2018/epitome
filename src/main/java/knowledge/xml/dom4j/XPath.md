@@ -3,8 +3,9 @@
 - XPath 是 W3C [XSLT](https://www.w3school.com.cn/xsl/index.asp) 标准的主要元素，并且 [XQuery](https://www.w3school.com.cn/xquery/index.asp) 和 [XPointer](https://www.w3school.com.cn/xlink/index.asp) 都构建于 XPath 表达之上。
 ---
 ## Reference
-1. [XPath 教程](https://www.w3school.com.cn/xpath/index.asp)
-2. [XPath、XQuery 以及 XSLT 函数](https://www.w3school.com.cn/xpath/xpath_functions.asp)
+1. [XPath | MDN](https://developer.mozilla.org/zh-CN/docs/Web/XML/XPath)
+2. [XPath 教程](https://www.w3school.com.cn/xpath/index.asp)
+3. [XPath、XQuery 以及 XSLT 函数](https://www.w3school.com.cn/xpath/xpath_functions.asp)
 ---
 ## XPath 节点
 ```xml
@@ -108,10 +109,11 @@
 | child              | 选取当前节点的所有子元素                |
 | descendant         | 选取当前节点的所有后代元素（子、孙等）         |
 | descendant-or-self | 选取当前节点的所有后代元素（子、孙等）以及当前节点本身 |
-| following          | 选取文档中当前节点的结束标签之后的所有节点       |
+| following          | 选取当前节点之后的所有节点               |
+| following-sibling  | 选取当前节点之后的所有同级节点             |
 | namespace          | 选取当前节点的所有命名空间节点             |
 | parent             | 选取当前节点的父节点                  |
-| preceding          | 选取文档中当前节点的开始标签之前的所有节点       |
+| preceding          | 选取当前节点之前的所有节点               |
 | preceding-sibling  | 选取当前节点之前的所有同级节点             |
 | self               | 选取当前节点                      |
 
@@ -133,4 +135,11 @@
 | `or`  | 或  | `≤`  |  小于等于   |
 | `and` | 与  | `>`  |   大于    |
 | `mod` | 取模 | `≥`  |  大于等于   |
+---
+## XPath 函数
+| 名称          | 说明                                          |
+|:------------|:--------------------------------------------|
+| starts-with | 如果 string1 以 string2 开始，则返回 true，否则返回 false |
+| ends-with   | 如果 string1 以 string2 结尾，则返回 true，否则返回 false |
+| contains    | 如果 string1 包含 string2，则返回 true，否则返回 false   |
 ---

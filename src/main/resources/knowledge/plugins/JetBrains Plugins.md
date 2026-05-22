@@ -49,6 +49,9 @@
 - [plantuml4idea](https://plugins.jetbrains.com/plugin/7017-plantuml4idea)
 - [SequenceDiagram Core](https://plugins.jetbrains.com/plugin/8286-sequencediagram)
 ---
+## [Programming Language](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Programming%20Language)
+- [Mermaid](https://plugins.jetbrains.com/plugin/20146-mermaid)
+---
 ## [Testing](https://plugins.jetbrains.com/search?orderBy=downloads&tags=Testing)
 - [Diffblue Cover](https://plugins.jetbrains.com/plugin/14946-diffblue-cover--ai-agent-for-unit-testing)
 ---

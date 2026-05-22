@@ -26,7 +26,7 @@
     2. 实例工厂方法
 3. [FactoryBean](https://blog.csdn.net/m0_45406092/article/details/114805287)
 ---
-## IOC & DI
+## 🔺IOC & DI
 1. Inversion of Control 控制反转，是一种设计思想
     - 控制：管理对象（生命周期，依赖关系）
     - 反转：对象的控制权交给 IOC 容器
@@ -144,9 +144,9 @@
 | 场景                                        | 是否报错           | 解决方法                                                   |
 |:------------------------------------------|:---------------|:-------------------------------------------------------|
 | 单例 setter 注入                              | 否 (Spring 解决了) | 三级缓存                                                   |
-| 多例 setter 注入                              | 被单例引用时报错       ||
-| 构造器注入                                     | 是              ||
-| DependsOn                                 | 是              ||
+| 多例 setter 注入                              | 被单例引用时报错       |                                                        |
+| 构造器注入                                     | 是              |                                                        |
+| DependsOn                                 | 是              |                                                        |
 | 单例代理对象 setter 注入 (先)<br/>单例 setter 注入 (后) | 是              | 1. @Lazy<br/>2. @DependsOn<br/>3. 修改文件名，从而调转循环依赖类的加载顺序 |
 | 构造器注入 (先)<br/>单例 setter 注入 (后)            | 是              | 同上                                                     |
 - 三级缓存
@@ -161,7 +161,7 @@
 >- [Spring 解决循环](https://www.zhihu.com/question/438247718/answer/1730527725)
 >- [@Transactional、@Async 和循环依赖](https://www.cnblogs.com/liuzhihang/p/spring-trans-async.html)
 ---
-## [Spring AOP](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop)
+## 🔺[Spring AOP](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop)
 - Aspect-oriented Programming：是 Object-oriented Programming (OOP) 的补充
 - 解决的问题：共同非业务代码的抽取
 - 优点：减少重复代码，提高系统可拓展性
@@ -230,15 +230,18 @@
         - 开启事务管理
             - XML：applicationContext.xml
             - 注解：@EnableTransactionManagement
-         - @Transactional 失效场景
-            1. 未被 Spring 管理
-            2. 数据库不支持
-            3. ①非 public 方法 ②final 修饰
-            4. 自调用
-            5. RuntimeException(Unchecked Exception) 和 Error 才生效（可以设置 rollbackFor）
-            6. try catch 处理了异常
-            7. propagation 设置为 NOT_SUPPORTED / NEVER
-            8. 多线程，多数据源，分布式
+        - 🔺@Transactional 失效场景
+            1. 代理失效：
+                1. 所在类未被 Spring 管理
+                2. 自调用
+                3. ①非 public 修饰 ②final / static 修饰
+            2. 异常相关：
+                1. 被 try catch 捕获后未重新抛出
+                2. 默认只回滚 RuntimeException 和 Error，Checked Exception 不回滚，可用 rollback 指定
+            3. 环境/配置：
+                1. 事务传播行为：NOT_SUPPORTED / NEVER
+                2. 跨线程、跨数据源、分布式
+                3. 存储引擎不支持 MyISAM
 ---
 ## [Spring JDBC](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#jdbc)
 - @see [JdbcTemplateDemo](../../../java/spring/api/jdbc/JdbcTemplateDemo.java)

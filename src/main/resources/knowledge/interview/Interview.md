@@ -17,13 +17,17 @@
 ## [Spring](./Spring.md)
 - IOC
 - AOP
+- @Transactional 失效场景
 ---
 ## [JPA](../../../java/springboot/controller/JpaController.java)
 
 ---
 ## [Messaging](./Messaging.md)
 
----
+---D
 ## [Concurrent](../../../java/knowledge/concurrent/concurrent.md)
+
+---
+## [设计模式](../../../java/knowledge/design/pattern/DesignPattern.md)
 
 ---

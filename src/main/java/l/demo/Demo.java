@@ -263,6 +263,7 @@ public class Demo {
 
     /**
      * <a href="https://github.com/public-apis/public-apis">公共接口</a>
+     * <a href="https://open.taobao.com/api.htm">淘宝开放平台-文档中心</a>
      */
     public static class PublicApis {
         public static class Image {

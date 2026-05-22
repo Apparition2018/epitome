@@ -14,8 +14,8 @@
 
 // Flutter
 
-// RPA、电商、ERP、MES、CRM、SAP、供应链、BI、大数据、上位机
-// 历史表迁移读取、读写分离、合理配置连接池连接数、数据库备份迁移
+// RPA、芋道、电商、ERP、MES、CRM、SAP（认证）、WSC、供应链、BI（帆软、建模）、大数据、上位机、flutter、LabVIEW
+// 历史表迁移读取、读写分离、合理配置连接池连接数、数据库备份迁移、DBA
 // 内存泄露
 // IDEA Learn
 // IDEA Services (Kubernetes、Docker)

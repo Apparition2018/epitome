@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  * </pre>
  * 使用实例：
  * <pre>
- * 1 {@link Filter#doFilter)}
+ * 1 {@link Filter#doFilter}
  * 2 {@link Logger#log(Level, String)}
  * 3 {@link HandlerExecutionChain} 和 {@link HandlerInterceptor}
  * </pre>
