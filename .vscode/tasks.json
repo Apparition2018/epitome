@@ -5,7 +5,9 @@
   "tasks": [
     {
       "label": "Run HTML file with Chrome",
-      // 任务类型：shell/process
+      // 任务类型
+      //  1. shell：shell 命令 (bash/cmd/powershell)
+      //  2. process：执行进程
       "type": "process",
       "command": "chrome",
       "args": [
@@ -16,8 +18,8 @@
       "windows": {
         "command": "C:/Program Files/Google/Chrome/Application/chrome.exe"
       },
-      "group": "build",
-      // 任务输出
+      "group": "test",
+      // 控制集成终端面板在运行任务时的行为
       "presentation": {
         // 控制是否将集成终端面板移到前面：always/never/silent
         "reveal": "never"

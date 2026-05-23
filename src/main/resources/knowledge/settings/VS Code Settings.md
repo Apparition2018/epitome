@@ -49,6 +49,7 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Code" "D:\Microsoft VS Code\Co
     "vue-html": "html",
     "javascript": "javascriptreact",
   },
+  "emmet.triggerExpansionOnTab": true,
   "emmet.variables": {
     "lang": "zh-CN",
   },
@@ -57,6 +58,8 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Code" "D:\Microsoft VS Code\Co
   /** extensions */
   // vscode-icons
   "workbench.iconTheme": "vscode-icons",
+  // Comment Translate
+  "commentTranslate.source": "Bing",
   // ESLint
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
@@ -66,7 +69,11 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Code" "D:\Microsoft VS Code\Co
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // Project Manager
   "projectManager.git.baseFolders": ["D:\\Liang\\git"],
-  // Language Support for Java(TM) by Red Hat
+  // Code Runner
+  "code-runner.executorMap": {
+    "java": "cd $dir && javac -encoding utf8 $fileName && java -Dfile.encoding=UTF-8 $fileNameWithoutExt",
+  },
+  // Language Support for Java™ by Red Hat
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-21",
@@ -85,10 +92,8 @@ mklink /j "C:\Users\Administrator\AppData\Roaming\Code" "D:\Microsoft VS Code\Co
   "java.format.settings.profile": "GoogleStyle",
   "java.jdt.ls.vmargs": "-Xms2G -Xmx2G -javaagent:D:\\dev\\.maven\\repository\\org\\projectlombok\\lombok\\1.18.44\\lombok-1.18.44.jar",
   "redhat.telemetry.enabled": false,
-  // Code Runner
-  "code-runner.executorMap": {
-    "java": "cd $dir && javac -encoding utf8 $fileName && java -Dfile.encoding=UTF-8 $fileNameWithoutExt",
-  },
+  // Python
+  "python.testing.pytestArgs": ["tests", "-s"],
 }
 ```
 ---

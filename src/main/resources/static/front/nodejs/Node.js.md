@@ -5,24 +5,21 @@
 1. [Node.js -- JavaScript 标准参考教程](https://javascript.ruanyifeng.com/nodejs/basic.html)
 2. [Node.js - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/1022910821149312/1023025235359040)
 ---
-## 安装 nodejs
-1. [下载并安装 nodejs](https://nodejs.org/en/)
-2. .npmrc
-    1. `npm config set cache "D:\nodejs\node_cache"`
-    2. `npm config set prefix "D:\nodejs\node_global"`，并添加到系统环境变量 Path
-    3. 添加系统变量 NODE_PATH `D:\nodejs\node_modules`
-    4. `npm config set registry https://registry.npmmirror.com`
-3. `npm install -g yarn`
-4. `npm install -g cnpm`
-5. `npm install -g pnpm`
-6. .yarnrc
-    1. `yarn config set cache-folder "D:\nodejs\yarn_cache"`
-    2. `yarn config set global-folder "D:\nodejs\yarn_global"`
-    3. `yarn config set registry https://registry.npmmirror.com`
-7. .cnpmrc
-    1. `cnpm config set cache "D:\nodejs\node_cache"`
-    2. `cnpm config set prefix "D:\nodejs\node_global"`
-    3. `cnpm config set registry https://registry.npmmirror.com`
+## nvm-windows 管理 Node.js
+1. [下载并安装 nvm-setup.exe](https://github.com/coreybutler/nvm-windows/releases)
+    - NVM for Windows: D:\nvm4w\nvm
+    - symlink: D:\nvm4w\nodejs
+    - 勾选 Node.js LTS releases
+    - 勾选 NVM For Windows releases
+2. 常用命令：
+    ```
+    nvm install <version>                                   安装 Node.js
+        nvm install lts                                     安装 LTS 版本
+    nvm alias default <version>                             设置默认版本
+    nvm use <version>                                       切换版本
+    nvm list / ls                                           查查看已安装版本
+    nvm uninstall <version>                                 卸载版本
+    ```
 ---
 ## [npm](https://docs.npmjs.com/)
 ### [npm CLI Commands](https://docs.npmjs.com/cli/v8/commands)

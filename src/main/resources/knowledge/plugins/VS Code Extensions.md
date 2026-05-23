@@ -6,28 +6,31 @@
 2. [VS Code 必备插件大全](https://space.bilibili.com/383062034/channel/collectiondetail?sid=1900603)
 ---
 ## Extension Packs
+- Auto Complete Tag
+    - Auto Close Tag
+    - Auto Rename Tag
 - Git Extension Pack
     - Git History
-    - Project Manager
+    - Project Manager ❌
     - GitLens
     - gitignore
     - Open in GitHub / Bitbucket / VisualStudio.com
 - Extension Pack for Java
-    - Language Support for Java(TM) by Red Hat
+    - Language Support for Java™ by Red Hat
     - Debugger for Java
     - Test Runner for Java
     - Maven for Java
+    - Gradle for Java
     - Project Manager for Java
-    - IntelliCode
 - Python Extension Pack
-    - autoDocstring
     - Python
         - Pylance
+        - Python Debugger
+        - Python Environments
     - Jinja
     - Diango
-    - IntelliCode
+    - autoDocstring
     - Python Indent
-    - Python Environment Manager
 - .NET Extension Pack
     - C#
         - .NET Install Tool
@@ -38,22 +41,34 @@
         - Jupyter Cell Tags
     - lonide for F#
 - Spring Boot Extension Pack
-    - Spring Boot Tools
     - Spring Initializr Java Support
+    - Spring Boot Tools
     - Spring Boot Dashboard
 - Vue.js Extension Pack
+    - Vue & Nuxt Core
+        - Vue (Official)
+        - MDC - Markdown Components
+    - Snippets & Productivity
+        - Vue VSCode Snippets
+    - Build & Testing
+        - Vitest
     - Vue Language Features (Volar)
     - TypeScript Vue Plugin (Volar)
-    - Vue VSCode Snippets
     - Vite
         - Browse Lite
-    - Vitest
-    - JavaScript (ES6) code snippets
-    - ESLint
-    - Prettier
-    - Formatting Toggle
-    - npm Intellisense
-    - IntelliCode
+    - Code Quality
+        - Oxc
+        - Prettier - Code formatter
+        - Error Lens
+        - Code Spell Checker
+    - Tailwind CSS
+        - Tailwind CSS IntelliSense
+    - Developer Experience
+        - EditorConfig
+        - DotENV
+        - Docker DX
+        - GitHub Pull Requests
+        - Container Tools
 - React Extension Pack
     - Reactjs code snippets
     - ESLint
@@ -62,39 +77,28 @@
     - npm Intellisense
     - Path Intellisense
 - Remote Development
-    - WSL
-    - Dev Containers
     - Remote - SSH
         - Remote - SSH: Editing Configuration Files
         - Remote Explorer
-    - Remote - TunnelsQuokka
-- json
+    - Remote - Tunnels
+    - Dev Containers
+    - WSL
 ## Debuggers
-- JavaScript Debugger (Nightly)
-- Quok.js
-## Linters
-- Code Spell Checker
-- StandardJS
-- Tailwind CSS IntelliSense
+- Quokka.js
 ## Programming Languages
 - C# Dev Kit
     - C#
         - .NET Install Tool
-    - IntelliCode for C# Dev Kit
-- CSS Class Intellisense
+    - IntelliCode for C# Dev Kit ❌
 - Code Runner
     - OUTPUT 中文乱码：控制面板 → 区域 → 管理 → 更改系统区域设置 → 勾选 使用 Unicode UTF-8 提供全球语言支持
 - CSS Peek
 - HTML CSS Support
-- HTML to CSS autocompletion
 - MySQL
     - Database Client JDBC
-- Vetur
-- Auto Rename Tag
 - Markdown All in One
 ## Snippets
 - jQuery Code Snippets
-- vue-helper
 ## Testing
 - Thunder Client
 ## Theme
@@ -103,15 +107,9 @@
 - Bookmarks
 - Community Server Connectors
     - Runtime Server Protocol UI
-- Doxygen Documentation Generator
-- EditorConfig
-- Error Lens
 - GitHub Repositories
     - Azure Repos
 - Image preview
-- IntelliCode API Usage Examples
 - Live Server
-- open in browser
-- Remote Repositories
 - SQLite
 ---
