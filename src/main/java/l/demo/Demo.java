@@ -263,7 +263,7 @@ public class Demo {
 
     /**
      * <a href="https://github.com/public-apis/public-apis">公共接口</a>
-     * <a href="https://open.taobao.com/api.htm">淘宝开放平台-文档中心</a>
+     * <a href="https://dmfw.mca.gov.cn/interface.html">中国·国家地名信息库接口服务</a>
      */
     public static class PublicApis {
         public static class Image {

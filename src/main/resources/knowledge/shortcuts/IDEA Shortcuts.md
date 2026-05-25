@@ -353,6 +353,16 @@ Alt + F2                        Web Preview…                        浏览器�
 Ctrl + Shift + C                Code`
 Ctrl + Shift + U                Create Link
 ```
+### Qoder CN
+```
+Ctrl + Alt + I                  AddToChatAction
+Ctrl + Shift + I                Edit
+Alt + Shift + O                 Optimize
+Alt + Shift + P                 Explain
+Alt + Shift + V                 Comment
+Alt + Shift + U                 Unittest
+```
+---
 ### Tencent Cloud CodeBuddy
 ```
 Alt + K                                                             开始内联聊天

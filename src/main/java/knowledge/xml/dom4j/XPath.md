@@ -7,6 +7,10 @@
 2. [XPath 教程](https://www.w3school.com.cn/xpath/index.asp)
 3. [XPath、XQuery 以及 XSLT 函数](https://www.w3school.com.cn/xpath/xpath_functions.asp)
 ---
+## XPath Helper 2.0
+- Chrome 扩展程序
+- 按住 Shift 放元素上
+---
 ## XPath 节点
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1"?>
@@ -142,4 +146,5 @@
 | starts-with | 如果 string1 以 string2 开始，则返回 true，否则返回 false |
 | ends-with   | 如果 string1 以 string2 结尾，则返回 true，否则返回 false |
 | contains    | 如果 string1 包含 string2，则返回 true，否则返回 false   |
+| string      | 返回参数的字符串值。参数可以是数字、逻辑值或节点集                   |
 ---
