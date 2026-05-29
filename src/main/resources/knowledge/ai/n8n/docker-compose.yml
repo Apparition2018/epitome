@@ -1,0 +1,61 @@
+services:
+    n8n:
+        image: n8nio/n8n:2.22.5
+        container_name: n8n
+        restart: unless-stopped
+        ports:
+            - "5678:5678"
+        environment:
+            # 基础配置
+            - N8N_PROTOCOL=http
+            # 使用 HTTP 时为 false，使用 HTTPS 时为 true
+            - N8N_SECURE_COOKIE=false
+            - N8N_HOST=localhost
+            - N8N_PORT=5678
+            - NODE_ENV=production
+
+            # 数据库配置（默认 SQLite）
+            - DB_TYPE=sqlite
+            - DB_SQLITE_POOL_SIZE=5
+
+            # 时区设置
+            - GENERIC_TIMEZONE=Asia/Shanghai
+            - TZ=Asia/Shanghai
+
+            # Webhook URL
+            - WEBHOOK_URL=http://localhost:5678/
+
+            # 是否禁止在代码节点中读取环境变
+            # - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+            # 是否禁用 Git 节点的裸仓库功能
+            - N8N_GIT_NODE_DISABLE_BARE_REPOS=true
+            # 强制配置文件权限
+            - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+            # 激活企业版（14 天）
+            - N8N_LICENSE_ACTIVATION_KEY=65274867-1559-4e68-9972-c52951040f76
+            # 安全配置
+            - ENCRYPTION_KEY=123456
+
+            # 外部 task runners（官方标准）
+            - N8N_RUNNERS_ENABLED=true
+            - N8N_RUNNERS_MODE=external
+            - N8N_RUNNERS_BROKER_LISTEN_ADDRESS=0.0.0.0
+            - N8N_RUNNERS_AUTH_TOKEN=Cesc123!
+        volumes:
+            - n8n_data:/home/node/.n8n
+            - ./data/:/data/
+
+    n8n_runner:
+        image: n8nio/runners:2.22.5
+        container_name: n8n_runner
+        restart: unless-stopped
+        environment:
+            - N8N_RUNNERS_TASK_BROKER_URI=http://n8n:5679
+            - N8N_RUNNERS_AUTH_TOKEN=Cesc123!
+            - N8N_RUNNERS_AUTO_SHUTDOWN_TIMEOUT=15
+        depends_on:
+            - n8n
+
+volumes:
+    n8n_data:
+        name: n8n_data

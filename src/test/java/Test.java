@@ -14,7 +14,8 @@
 
 // Flutter
 
-// RPA、芋道、电商、PLM、ERP、MES、CRM、SAP（认证）、WSC、供应链、BI（帆软、建模）、大数据、上位机、flutter、LabVIEW、CNC
+// RPA、芋道、电商、PLM、ERP、MES、CRM、SAP（认证）、WSC、供应链、BI（帆软、建模）、大数据、上位机、flutter、LabVIEW、CNC、飞书
+// Flask, FastAPI, Django
 // 历史表迁移读取、读写分离、合理配置连接池连接数、数据库备份迁移、DBA
 // 内存泄露
 // IDEA Learn

@@ -16,19 +16,8 @@
 ---
 ## Docker vs Others
 1. [Docker 与 VM - 应用程序部署技术之间的区别 - AWS](https://aws.amazon.com/cn/compare/the-difference-between-docker-vm/)
-    ![Docker vs VM](https://geekflare.com/wp-content/uploads/2019/09/traditional-vs-new-gen.png)
+    - ![Docker vs VM](https://geekflare.com/wp-content/uploads/2019/09/traditional-vs-new-gen.png)
 2. [Kubernetes 与 Docker — 容器技术之间的区别 — AWS](https://aws.amazon.com/cn/compare/the-difference-between-kubernetes-and-docker/)
----
-## [Docker 架构](https://docs.docker.com/get-started/overview/#docker-architecture)
-![architecture](https://docs.docker.com/assets/images/architecture.svg)
-
-|                   |                                                                                                                                                                                              |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Docker daemon     | Docker daemon (dockerd) 侦听 Docker API 请求并管理 Docker 对象。daemon 还可以与其他 daemon 通信来管理 Docker 服务                                                                                                   |
-| Docker client     | Docker client (docker) 是许多 Docker 用户与 Docker 交互的主要方式。当您使用诸如 docker-run 之类的命令时，client 会将这些命令发送给 dockerd，后者会执行这些命令。Docker client 可以与多个 daemon 进行通信                                             |
-| Docker Desktop    | Docker Desktop 是一款适用于 Mac、Windows 或 Linux 环境的易于安装的应用程序，使您能够构建和共享容器化应用程序和微服务。Docker Desktop 包括 Docker daemon、Docker client、Docker-Compose、Docker Content Trust、Kubernetes 和 Credential Helper |
-| Docker registries | Docker 注册表存储 Docker 映像。Docker Hub 是一个任何人都可以使用的公共注册表，默认情况下 Docker 会在 DockerHub 上查找映像                                                                                                          |
-| Docker objects    | 当您使用 Docker 时，您正在创建和使用图像、容器、网络、卷、插件和其他对象                                                                                                                                                     |
 ---
 ## [Docker Desktop](https://docs.docker.com/desktop/)
 - [Docker Desktop for Linux vs Docker Engine](https://docs.docker.com/desktop/faqs/linuxfaqs/#what-is-the-difference-between-docker-desktop-for-linux-and-docker-engine)
@@ -46,20 +35,28 @@
 2. 下载地址：https://www.docker.com/products/docker-desktop
 3. 启用 Windows 功能：WSL（适用于 Linux 的 Windows 子系统），instead of Hyper-V
 4. 下载并安装 [WSL2](https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
-5. [镜像加速器](https://cr.console.aliyun.com/cn-qingdao/instances/mirrors)：Settings → Docker Engine
+5. 镜像加速器：Settings → Docker Engine
+    ```json
+    {
+        "builder": {
+            "gc": {
+                "defaultKeepStorage": "20GB",
+                "enabled": true
+            }
+        },
+        "experimental": false,
+        "registry-mirrors": [
+            "https://docker.xuanyuan.me",
+            "https://docker.1ms.run",
+            "https://docker.m.daocloud.io"
+        ]
+    }
     ```
-    ,
-     "registry-mirrors": [
-       "https://vdm14qsf.mirror.aliyuncs.com",
-       "https://hub-mirror.c.163.com",
-       "https://docker.mirrors.ustc.edu.cn"
-     ]
-    ```
-6. < Win 10 build 18362.1040：Settings → Resources → FILE SHARING
-7. ≥ Win 10 build 18362.1040：配置 [.wslconfig](https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
+6. 合理分配系统资源：%USERPROFILE%\\[.wslconfig](https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
     ```
     [wsl2]
-    memory=2GB
+    memory=4GB
+    memory=4GB
     swap=4GB
     ```
 ### 增加端口映射

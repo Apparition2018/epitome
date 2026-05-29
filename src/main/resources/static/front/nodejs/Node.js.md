@@ -15,8 +15,7 @@
     ```
     nvm install <version>                                   安装 Node.js
         nvm install lts                                     安装 LTS 版本
-    nvm alias default <version>                             设置默认版本
-    nvm use <version>                                       切换版本
+    nvm use <version> [default]                             切换版本
     nvm list / ls                                           查查看已安装版本
     nvm uninstall <version>                                 卸载版本
     ```
