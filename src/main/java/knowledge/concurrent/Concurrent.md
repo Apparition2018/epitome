@@ -1,9 +1,6 @@
 # 并发
 
 ---
-## 参考网站
-1. [透彻理解 Java 并发编程](https://segmentfault.com/blog/ressmix_multithread)
----
 ## 阿里编程规约
 1. 线程资源必须通过线程池提供，不允许在应用中自行显式创建线程
 2. 线程池不允许使用 Executors 去创建，而是通过 ThreadPoolExecutor 的方式

@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
+import org.springframework.context.annotation.Profile;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ import springboot.rocketmq.listener.OrderTransactionListener;
  */
 @Slf4j
 @Component
+@Profile("rocketmq")
 @RequiredArgsConstructor
 public class OrderProducer {
 

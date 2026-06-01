@@ -24,7 +24,7 @@
 ---
 ## [Messaging](./Messaging.md)
 
----D
+---
 ## [Concurrent](../../../java/knowledge/concurrent/concurrent.md)
 
 ---

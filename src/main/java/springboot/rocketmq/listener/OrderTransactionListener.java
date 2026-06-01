@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQTransactionListener;
 import org.apache.rocketmq.spring.core.RocketMQLocalTransactionListener;
 import org.apache.rocketmq.spring.core.RocketMQLocalTransactionState;
+import org.springframework.context.annotation.Profile;
 import org.springframework.messaging.Message;
 import springboot.rocketmq.dto.OrderMessage;
 import springboot.rocketmq.service.OrderService;
@@ -21,6 +22,7 @@ import java.io.IOException;
  * @since 2026/5/5
  */
 @Slf4j
+@Profile("rocketmq")
 @RocketMQTransactionListener
 @RequiredArgsConstructor
 public class OrderTransactionListener implements RocketMQLocalTransactionListener {

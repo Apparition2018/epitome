@@ -42,15 +42,15 @@ Spring + SpringMVC + Mybatis
     ```
 2. HandlerMapping：通过此组件，Dispatcher 可将客户 HTTP 请求映射到 Controller 上
     1. SimpleUrlHandlerMapping
-    ```
-    <bean class="org.springframe.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="mappings">
-            <props>
-    　           <prop key="/hello.do">hc</prop>
-            </props>
-    　   </property>
-    </bean>
-    ```
+        ```
+        <bean class="org.springframe.web.servlet.handler.SimpleUrlHandlerMapping">
+            <property name="mappings">
+                <props>
+        　           <prop key="/hello.do">hc</prop>
+                </props>
+        　   </property>
+        </bean>
+        ```
     2. BeanNameUrlHandlerMapping
     3. RequestMappingHandlerMapping
 3. Controller：负责执行具体的业务处理，实现 Controller 接口及约定方法 handleRequest(req, resp)
@@ -62,12 +62,12 @@ Spring + SpringMVC + Mybatis
 5. ViewResolver：
     1. UrlBasedViewResolver
     2. InternalResourceViewResolver
-    ```
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
-    ```
+        ```
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="prefix" value="/WEB-INF/views/"/>
+            <property name="suffix" value=".jsp"/>
+        </bean>
+        ```
     3. XmlViewResolver
     4. FreeMarkerViewResolver
 #### 基于注解配置的 MVC
@@ -90,24 +90,24 @@ Spring + SpringMVC + Mybatis
 2. 通过 HttpSession 对象：
     - session.setAttribute(String name, Object obj);
 3. 通过 ModelAndView 对象：
-```
-Map<String, Object> data = new HashMap<String, Object>();
-data.put("status", status);
-return ModelAndView(String viewName, Map data);
-                    or
-ModelAndView modelAndView = new ModelAndView();
-modelAndView.addObject("status", status);
-modelAndView.setViewName("view");
-return modelAndView;
-```
+    ```
+    Map<String, Object> data = new HashMap<String, Object>();
+    data.put("status", status);
+    return ModelAndView(String viewName, Map data);
+                        or
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.addObject("status", status);
+    modelAndView.setViewName("view");
+    return modelAndView;
+    ```
 4. 通过 ModelMap 对象：
-```
-public String bmi(BmiParam bp, ModelMap modelMap) {
-    ...
-    modelMap.put("status", status);
-    return viewName;
-}
-```
+    ```
+    public String bmi(BmiParam bp, ModelMap modelMap) {
+        ...
+        modelMap.put("status", status);
+        return viewName;
+    }
+    ```
 5. 通过 [@ModelAttribute](https://www.4spaces.org/spring-mvc-and-the-modelattribute-annotation/)
 ### Spring 重定向
 - SpringMVC 默认采用转发方式定位视图，，如果要重定向可采用以下方法
@@ -190,23 +190,23 @@ public String bmi(BmiParam bp, ModelMap modelMap) {
 ### SqlSession
 - SqlSession 提供了在数据库执行 SQL 命令所需的所有方法
 1. 获取 SqlSession
-```
-1. Reader is = Resources.getResourceAsReader("mybatis.xml");
-            Or
-   InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis.xml");
-2. SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
-3. try (SqlSession session = sqlSessionFactory.openSession()) {}
-```
+    ```
+    1. Reader is = Resources.getResourceAsReader("mybatis.xml");
+                Or
+       InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis.xml");
+    2. SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+    3. try (SqlSession session = sqlSessionFactory.openSession()) {}
+    ```
 2. SqlSession 常用 API：
-```
-int             insert(String var1, Object var2);
-<E> List<E>     selectList(String var1);
-<T> T           selectOne(String var1, Object var2);
-int             update(String var1, Object var2);
-int             delete(String var1, Object var2);
-void            commit();
-void            close();
-```
+    ```
+    int             insert(String var1, Object var2);
+    <E> List<E>     selectList(String var1);
+    <T> T           selectOne(String var1, Object var2);
+    int             update(String var1, Object var2);
+    int             delete(String var1, Object var2);
+    void            commit();
+    void            close();
+    ```
 ### Mapper 映射器
 - 一个符合 XML 映射文件要求的借口
 - 要求
@@ -244,6 +244,17 @@ void            close();
         @Select("select * from user where ${column} = #{value}")
         User findByColumn(@Param("column") String column, @Param("value") String value);
         ```
+### [Cache](https://mybatis.org/mybatis-3/sqlmap-xml.html#cache)
+| 对比维度         | 一级缓存                                          | 二级缓存                                         |
+|:-------------|:----------------------------------------------|:---------------------------------------------|
+| 作用域          | SqlSession 级别                                 | Mapper（Namespace）级别                          |
+| 默认状态         | 默认开启                                          | 默认关闭，需手动开启                                   |
+| 数据结构         | HashMap（无淘汰策略）                                | 可自定义（如 LRU、FIFO、Soft/Weak 引用等）               |
+| 序列化要求        | 不需要                                           | 实体类必须实现 Serializable 接口                      |
+| 跨线程/跨Session | 不支持（每个 SqlSession 独享）                         | 支持（多个 SqlSession 可共享）                        |
+| 触发清除条件       | SqlSession 关闭、执行 commit/rollback、执行 update 操作 | 执行 commit/rollback 且该 Namespace 内有 update 操作 |
+| Spring 整合影响  | 无事务时，每次请求新建 SqlSession，导致一级缓存几乎失效             | 不受 SqlSession 生命周期影响，正常生效                    |
+
 ### Mybatis 标签
 ```
 <isEqual>
@@ -253,38 +264,38 @@ void            close();
 ### Spring 整合 Mybatis
 1. 导包：spring-webmvc，spring-jdbc，mybatis-spring，commons-dbcp2， mysql-connector-java
 2. XML 配置 SqlSessionFactoryBean
-```xml
-<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    <property name="dataSource" ref="druidDataSource"/>
-    <property name="mapperLocations" value="classpath:mapper/*/*.xml"/>
-    <property name="typeAliasesPackage" value="spring.bean"/>
-    <!-- MyBatis 全局文件：mybatis-config.xml，后续属性会覆盖配置文件对应的属性 -->
-    <property name="configLocation" value="classpath:mybatis-config.xml"/>
-</bean>
-```
+    ```xml
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="druidDataSource"/>
+        <property name="mapperLocations" value="classpath:mapper/*/*.xml"/>
+        <property name="typeAliasesPackage" value="spring.bean"/>
+        <!-- MyBatis 全局文件：mybatis-config.xml，后续属性会覆盖配置文件对应的属性 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+    ```
 3. 实体类，XML 映射文件，Mapper 映射器
 4. XML 配置 MapperScannerConfigurer：扫描指定包及其子包下面的 Mapper 映射器，然后调用 SqlSession 的 getMapper() 返回符合 Mapper 映射器要求的对象，并且将这些对象添加到 Spring 容器里
-```xml
-<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-    <property name="basePackage" value="spring.dao"/>
-</bean>
-```
+    ```xml
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="spring.dao"/>
+    </bean>
+    ```
 ### [mybatis-config.xml](https://mybatis.org/mybatis-3/zh/configuration.html)
-```xml
-<configuration>
-    <settings>
-        <!-- 是否允许在嵌套语句中使用分页(RowBounds)，如果允许使用则设置为 false -->
-        <setting name="safeRowBoundsEnabled" value="true"/>
-        <!-- 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存 -->
-        <setting name="cacheEnabled" value="false"/>
-        <!-- 允许 JDBC 支持自动生成主键，需要数据库驱动支持 -->
-        <setting name="useGeneratedKeys" value="true"/>
-        <!-- 使用列标签代替列名 -->
-        <setting name="useColumnLabel" value="true"/>
-        <!-- 是否开启驼峰命名自动映射 -->
-        <setting name="mapUnderscoreToCamelCase" value="true"/>
-    </settings>
-</configuration>
-```
+    ```xml
+    <configuration>
+        <settings>
+            <!-- 是否允许在嵌套语句中使用分页(RowBounds)，如果允许使用则设置为 false -->
+            <setting name="safeRowBoundsEnabled" value="true"/>
+            <!-- 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存 -->
+            <setting name="cacheEnabled" value="false"/>
+            <!-- 允许 JDBC 支持自动生成主键，需要数据库驱动支持 -->
+            <setting name="useGeneratedKeys" value="true"/>
+            <!-- 使用列标签代替列名 -->
+            <setting name="useColumnLabel" value="true"/>
+            <!-- 是否开启驼峰命名自动映射 -->
+            <setting name="mapUnderscoreToCamelCase" value="true"/>
+        </settings>
+    </configuration>
+    ```
 ---

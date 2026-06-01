@@ -3,7 +3,7 @@
 ---
 ## [查询语句执行顺序](https://www.cnblogs.com/wyq178/p/11576065.html)
 ```
-FROM                        ←   小表放在后面，作为驱动表
+FROM                        ←   小表驱动大表
 ON
 JOIN
 WHERE                       ←   过滤越多数据的条件写在越后面；不能使用别名，因为还没执行 SELECT

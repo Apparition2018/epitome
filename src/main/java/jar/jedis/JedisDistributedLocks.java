@@ -100,6 +100,7 @@ public class JedisDistributedLocks {
             return LOCK_SUCCESS.equals(result);
         }
 
+        // Lua 脚本解决的是”获取、判断、删除“的原子性问题
         public boolean releaseLock(Jedis jedis, String key, String val) {
             // 获取当前锁(key)对应的值，判断是否等于传入的标识(val)
             String script = "if redis.call('get', KEYS[1]) == ARGV[1] " +

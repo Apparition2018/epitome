@@ -9,12 +9,13 @@ package knowledge.oop.class_;
  * </pre>
  * <pre>
  * 比较           抽象类     接口
- * 成员变量         √        ×
+ * 成员变量         √        ×（public static final）
  * 构造方法         √        ×
+ * 普通方法         √        ×（jdk8 default/static，jdk9 private）
  * 静态代码块       √        ×
  * 多继承/多实现     ×        √
  * 使用动机      代码复用   实现多态
- *             类的抽象   行为的抽象
+ *                Is-A     Can-Do
  * </pre>
  *
  * @author ljh

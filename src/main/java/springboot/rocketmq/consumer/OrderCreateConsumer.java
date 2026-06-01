@@ -8,6 +8,7 @@ import org.apache.rocketmq.spring.annotation.MessageModel;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.annotation.SelectorType;
 import org.apache.rocketmq.spring.core.RocketMQListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import springboot.rocketmq.dto.OrderMessage;
 import tools.jackson.databind.ObjectMapper;
@@ -20,6 +21,7 @@ import tools.jackson.databind.ObjectMapper;
  */
 @Slf4j
 @Component
+@Profile("rocketmq")
 @RequiredArgsConstructor
 @RocketMQMessageListener(
     consumerGroup = "order-created-consumer-group",

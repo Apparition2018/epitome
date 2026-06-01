@@ -51,7 +51,6 @@ import java.util.stream.Collectors;
  *   3.2 将基于 string 的请求值(如请求参数、路径变量、报头、cookie 等)转换为控制器方法参数的目标类型
  *   3.3 在呈现 HTML 表单时，将模型对象值格式化为 String 值
  * </pre>
- * {@code RestControllerAdvice} = @ResponseBody + @ControllerAdvice
  *
  * @author ljh
  * @since 2020/11/26 17:51
@@ -61,6 +60,7 @@ import java.util.stream.Collectors;
 // @ConditionalOnXXX：https://www.1024sky.cn/blog/article/511
 @ConditionalOnClass({Servlet.class, DispatcherServlet.class})
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+// = @ResponseBody + @ControllerAdvice
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {

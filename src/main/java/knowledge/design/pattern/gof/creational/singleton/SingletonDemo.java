@@ -35,7 +35,7 @@ import java.nio.file.Paths;
  * 3 手动实现单例
  *  ① JNI 底层库调用、独占型硬件资源
  *  （这些底层资源在整个 JVM 进程中一旦被初始化两次，就会直接导致 JVM 崩溃或端口被占用的系统级异常）
- *  ② SPI 实现类内部使用的单例
+ *  ② SPI (Service Provider Interface) 实现类内部使用的单例
  *  （JVM 通过反射直接 newInstance() 创建的对象，不受 Spring IOC 控制，@Autowired、@Component 无法生效）
  *  ③ {@link RichDomainModelDemo “充血模型”实体} 或 new 出来的线程任务，内部调用 Spring 容器内的服务
  * </pre>
@@ -139,6 +139,7 @@ public class SingletonDemo {
 
         @SuppressWarnings("InstantiationOfUtilityClass")
         public static DoubleCheckLockSingleton getInstance() {
+            // 第一次检查使得实例未初始化时才进入 synchronized，减少同步开销
             if (instance != null) return instance;
             synchronized (DoubleCheckLockSingleton.class) {
                 if (instance == null) instance = new DoubleCheckLockSingleton();

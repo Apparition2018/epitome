@@ -25,8 +25,7 @@ import org.springframework.context.event.EventListener;
  * </pre>
  *
  * @author ljh
- * @see <a href="https://www.jianshu.com/p/01e08aef73c9">Guide To Running Logic on Startup in Spring</a>
- * @see <a href="https://www.jianshu.com/p/01e08aef73c9">SpringBoot 启动初始化数据</a>
+ * @see <a href="https://www.baeldung.com/running-setup-logic-on-startup-in-spring">Guide To Running Logic on Startup in Spring</a>
  * @since 2021/12/10 15:33
  */
 @Slf4j
@@ -62,14 +61,20 @@ public class SpringStartupRunningLogic {
             log.info("ContextRefreshedEvent");
         }
 
+        // 假设启动命令：java -jar app.jar --name=John debug
+        // args.getOptionValues("name") → ["John"]
+        // args.getNonOptionArgs() → ["debug"]
+        // 推荐使用 ApplicationRunner，省去手动解析命令行参数的麻烦
         @Override
         public void run(@NonNull ApplicationArguments args) throws Exception {
-            log.info("ApplicationRunner's run()");
+            log.info("ApplicationRunner's run()，args: {}", args);
         }
 
+        // 假设启动命令：java -jar app.jar --name=John debug
+        // args → ["--name=John", "debug"]
         @Override
         public void run(String @NonNull ... args) throws Exception {
-            log.info("CommandLineRunner's run()");
+            log.info("CommandLineRunner's run(), args: {}", (Object[]) args);
         }
     }
 }

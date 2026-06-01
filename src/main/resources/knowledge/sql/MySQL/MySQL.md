@@ -16,7 +16,7 @@
         2. 叶子节点存[键（有序排序）+整行数据]
     2. 二级索引（非主键索引）
         1. 非叶子节点存[索引列值+指针]
-        2. 叶子节点存[索引列值（有序排序）+整行数据]
+        2. 叶子节点存[索引列值（有序排序）+主键值]
 2. 每个节点对应一页16KB，因为非叶子节点不存数据，所以单个节点能放更多索引项，比 B-Tree 扇出更大，树更矮 → IO 更少 → 查询更快
     - 同理，主键/索引选择更短的数据类型，查询更快
 3. 叶子节点用双向链表相连，便于范围查询
@@ -150,6 +150,7 @@
 3. POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行字段与属性之间的映射
 4. 不要用 resultClass 当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义<resultMap>；反过来，每一个表也必然有一个<resultMap>与之对应
 5. ⚪sql.xml 配置参数使用：#{}，#param# 不要使用 ${} 此种方式容易出现 SQL 注入
+    - ${} 适用于动态表名、列名、ORDER BY 等
 6. iBATIS 自带的 queryForList(String statementName，int start，int size) 不推荐使用
     - 其实现方式是在数据库取到 statementName 对应的 SQL 语句的所有记录，再通过 subList 取 start
 7. 不允许直接拿 HashMap 与 Hashtable 作为查询结果集的输出
@@ -399,15 +400,15 @@ select * from store limit 10;
 ---
 ## [InnoDB 锁和事务模型](https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-transaction-model.html)
 ### [InnoDB 锁](https://dev.mysql.com/doc/refman/8.4/en/innodb-locking.html)
-1. 共享/排它锁 (Shared and Exclusive Locks)
-    1. 共享锁 (Shared Locks, S)：
+1. 共享/排它锁 (Shared and Exclusive Lock)
+    1. 共享锁 (Shared Lock, S)：
         - 对符合条件的行加S锁，其它事务可以对这些记录添加IS锁和S锁，即其它事务可以读取这些数据但无法修改
-    2. 排它锁 (Exclusive Locks, X)：
+    2. 排它锁 (Exclusive Lock, X)：
         - 对符合条件的行加X锁，其它事务无法对这些记录加任何IS锁和IX锁，即其它事务无法对这些记录进行读取和修改
         - 不会阻止非锁定读
-2. 意向锁 (Intention Locks)：表级锁，指示事务稍后需要对表中的行使用哪种类型的锁(共享/排它)
-    1. 意向共享锁 (Intention Shared Locks, IS)：`SELECT … FOR SHARE`
-    2. 意向排它锁 (Intention Exclusive Locks, IX)：[`SELECT … FOR UPDATE`](https://www.cnblogs.com/xiao-lei/p/12598552.html)
+2. 意向锁 (Intention Lock)：表级锁，指示事务稍后需要对表中的行使用哪种类型的锁(共享/排它)
+    1. 意向共享锁 (Intention Shared Lock, IS)：`SELECT … FOR SHARE`
+    2. 意向排它锁 (Intention Exclusive Lock, IX)：[`SELECT … FOR UPDATE`](https://www.cnblogs.com/xiao-lei/p/12598552.html)
 
     |     | X   | IX  | S   | IS  |
     |:----|:----|:----|:----|:----|
@@ -415,27 +416,27 @@ select * from store limit 10;
     | IX  | 冲突  | 兼容  | 冲突  | 兼容  |
     | S   | 冲突  | 冲突  | 兼容  | 兼容  |
     | IS  | 冲突  | 兼容  | 兼容  | 兼容  |
-3. 记录锁 (Record Locks)：`SELECT c1 FROM t WHERE c1 = 10 FOR UPDATE`
+3. 记录锁 (Record Lock)：`SELECT c1 FROM t WHERE c1 = 10 FOR UPDATE`
     - 总是锁定索引记录，阻止其它事务插入、更新或删除
-4. [间隙锁](https://www.jianshu.com/p/32904ee07e56) (Gap Locks)：`SELECT c1 FROM t WHERE c1 BETWEEN 10 and 20 FOR UPDATE`
+4. [间隙锁](https://www.jianshu.com/p/32904ee07e56) (Gap Lock)：`SELECT c1 FROM t WHERE c1 BETWEEN 10 and 20 FOR UPDATE`
     - 对索引记录之间的间隙的锁，或是对第一个索引之前或最后一个索引记录之后的间隙的锁，防止其他事物插入数据
     - 不同事务允许持有冲突的间隙锁，容易导致死锁
     - 隔离级别为 REPEATABLE READ 或 SERIALIZABLE，间隙锁生效
-5. 临键锁 (Next-key Locks)
+5. 临键锁 (Next-key Lock)
     - 记录锁 + 索引记录之前的间隙锁，左开右闭
     - 隔离级别为 REPEATABLE READ 或 SERIALIZABLE，临键锁生效
-6. 插入意向锁 (Insert Intention Locks)
-7. 自增锁 (AUTO-INC Locks)
+6. 插入意向锁 (Insert Intention Lock)
+7. 自增锁 (AUTO-INC Lock)
 >- [MySQL select 加锁分析](https://www.cnblogs.com/rjzheng/p/9950951.html)
 >- [InnoDB 的七种锁](https://mp.weixin.qq.com/s/f4_o-6-JEbIzPCH09mxHJg)
 >- [InnoDB 锁到底锁的是什么](https://mp.weixin.qq.com/s/fmSHG0SejfD0IdnpIYHT9w)
 ### RR 下的加锁规则
 - 原则：
-    - 加锁基本单位 Next-key Locks
+    - 加锁基本单位 Next-key Lock
     - 查找过程中访问到的对象会加锁
 - 索引上等值查询优化：
-    - 给唯一索引加锁时，Next-key Locks → Record Locks
-    - 向右遍历且最后一个值不满足等值条件时，Next-key Locks → Gap Locks
+    - 给唯一索引加锁时，Next-key Lock → Record Lock
+    - 向右遍历且最后一个值不满足等值条件时，Next-key Lock → Gap Lock
     - 对于覆盖索引查询，不对聚簇索引加锁
 - 唯一索引上的范围查询会访问到不满足条件的第一个值为止
 ### 非锁定读 vs 锁定读
