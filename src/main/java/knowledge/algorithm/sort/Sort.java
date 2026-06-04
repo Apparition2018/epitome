@@ -25,15 +25,11 @@ public class Sort extends Demo {
 
     private static final int[] arr = new int[]{88, 23, 97, 19, 85, 35, 81, 54, 75, 50};
 
-    /**
-     * 交换排序
-     */
+    /** 交换排序 */
     private static class ChangeSort {
         public static void main(String[] args) {
-            bubbleSort(arr.clone());
-
             long t1 = System.nanoTime();
-            p("快速排序：" + Arrays.toString(quickSort(arr.clone(), 0, arr.length - 1)));
+            p(Arrays.toString(bubbleSort2(arr.clone())));
             long t2 = System.nanoTime();
             p("消耗时间：" + (t2 - t1));
         }
@@ -58,8 +54,7 @@ public class Sort extends Demo {
          * [19, 23, 35, 50, 54, 75, 81, 85, 88, 97]
          * </pre>
          */
-        private static void bubbleSort(int[] arr) {
-            long t1 = System.nanoTime();
+        private static int[] bubbleSort(int[] arr) {
             int temp;
             for (int i = 0, len = arr.length; i < len - 1; i++) {
                 // hasChanged 表示本轮是否有进行交换
@@ -77,13 +72,32 @@ public class Sort extends Demo {
                     break;
                 }
             }
-            long t2 = System.nanoTime();
-            p("冒泡排序：" + Arrays.toString(arr) + "\n消耗时间：" + (t2 - t1));
+            return arr;
         }
 
-        /**
-         * <a href="https://blog.csdn.net/qq_36528114/article/details/78667034">挖坑法快速排序</a>
-         */
+        private static int[] bubbleSort2(int[] arr) {
+            int temp;
+            // n 表示当前轮需要比较的边界
+            for (int n = arr.length - 1; n > 0; ) {
+                // 每轮重置最后交换位置
+                int lastSwapIndex = 0;
+                for (int j = 0; j < n; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                        // 记录最后一次交换的位置
+                        lastSwapIndex = j;
+                    }
+                }
+                // 下一轮只需遍历到最后交换的位置
+                n = lastSwapIndex;
+                // 如果 lastSwapIndex == 0，说明本轮无交换，n = 0，外层循环结束
+            }
+            return arr;
+        }
+
+        /** <a href="https://blog.csdn.net/qq_36528114/article/details/78667034">挖坑法快速排序</a> */
         private static int[] quickSort(int[] arr, int l, int r) {
             if (l < r) {
                 int index = quick1(arr, l, r);
@@ -93,9 +107,7 @@ public class Sort extends Demo {
             return arr;
         }
 
-        /**
-         * 挖坑法
-         */
+        /** 挖坑法 */
         private static int quick1(int[] arr, int l, int r) {
             int key = arr[l];
             while (l < r) {
@@ -116,9 +128,7 @@ public class Sort extends Demo {
             return l;
         }
 
-        /**
-         * 左右指针法
-         */
+        /** 左右指针法 */
         private static int quick2(int[] arr, int l, int r) {
             int index = l;
             int key = arr[l];
@@ -140,9 +150,7 @@ public class Sort extends Demo {
         }
     }
 
-    /**
-     * 选择排序
-     */
+    /** 选择排序 */
     private static class SelectionSort {
         public static void main(String[] args) {
             easySelectionSort(arr.clone());
@@ -169,7 +177,6 @@ public class Sort extends Demo {
          * </pre>
          */
         private static void easySelectionSort(int[] arr) {
-            long t1 = System.nanoTime();
             for (int i = 0, len = arr.length; i < len - 1; i++) {
                 int min = i;
                 for (int j = i + 1; j < len; j++) {
@@ -184,20 +191,14 @@ public class Sort extends Demo {
                 }
                 p("选择排序：" + Arrays.toString(arr));
             }
-            long t2 = System.nanoTime();
-            p("选择排序：" + Arrays.toString(arr) + "\n消耗时间：" + (t2 - t1));
         }
 
-        /**
-         * <a href="https://www.cnblogs.com/guizimo/p/13454676.html#/cnblog/works/article/13454676">堆排序</a>
-         */
+        /** <a href="https://www.cnblogs.com/guizimo/p/13454676.html#/cnblog/works/article/13454676">堆排序</a> */
         private static void heapSort(int[] arr) {
         }
     }
 
-    /**
-     * 插入排序
-     */
+    /** 插入排序 */
     private static class InsertSort {
         public static void main(String[] args) {
             insertionSort(arr);
@@ -220,7 +221,6 @@ public class Sort extends Demo {
          * </pre>
          */
         private static void insertionSort(int[] arr) {
-            long t1 = System.nanoTime();
             for (int i = 1, len = arr.length; i < len; i++) {
                 // 被标记的值或者说是当前需要插入的值
                 int temp = arr[i];
@@ -233,20 +233,13 @@ public class Sort extends Demo {
                 // 将被标记值插入最终移除的空位置
                 arr[j] = temp;
             }
-            long t2 = System.nanoTime();
-            p("插入排序：" + Arrays.toString(arr) + "\n消耗时间：" + (t2 - t1));
         }
     }
 
-    /**
-     * <a href="https://www.cnblogs.com/of-fanruice/p/7678801.html">归并排序</a>
-     */
+    /** <a href="https://www.cnblogs.com/of-fanruice/p/7678801.html">归并排序</a> */
     private static class MergeSort {
         public static void main(String[] args) {
-            long t1 = System.nanoTime();
             p("归并排序：" + Arrays.toString(mergeSort(arr, 0, arr.length - 1)));
-            long t2 = System.nanoTime();
-            p("消耗时间：" + (t2 - t1));
         }
 
         private static int[] mergeSort(int[] arr, int l, int r) {
