@@ -13,13 +13,6 @@ import static l.demo.Demo.p;
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html">LocalDateTime</a>
  * <p>ISO-8601日历，没有时区的日期时间，如2007-12-03T10:15:30
- * <pre>
- * boolean      equals(Object obj)                      检查是否等
- * int          compareTo(ChronoLocalDateTime<?> other) 将此 date-time 与指定 date-time 进行比较
- * boolean      isBefore(ChronoLocalDateTime<?> other)  检查此 date-time 是否在指定 date-time 之前
- * boolean      isAfter(ChronoLocalDateTime<?> other)   检查此 date-time 是否在指定 date-time 之后
- * boolean      isEqual(ChronoLocalDateTime<?> other)   检查此 date-time 是否等于 date-time
- * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39

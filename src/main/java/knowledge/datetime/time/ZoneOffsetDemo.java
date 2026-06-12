@@ -10,10 +10,6 @@ import static l.demo.Demo.p;
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZoneOffset.html">ZoneOffset</a>
  * <p>格林威治/UTC偏移时区，如+02:00
- * <pre>
- * boolean      equals(Object obj)              检查是否等
- * int          compareTo(ZoneOffset other)     将此 offset 按降序与另一个 offset 进行比较
- * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39

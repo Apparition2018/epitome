@@ -1,7 +1,7 @@
 # SpringBoot
 
 ---
-## [Features](https://spring.io/projects/spring-boot#overview)
+## ⚪[Features](https://spring.io/projects/spring-boot#overview)
 - 直接嵌入 Tomcat、Jetty 或 Undertow（无需部署 WAR 文件）
 - 提供预设的 'starter' 依赖项以简化构建配置
 - 尽可能自动配置 Spring 及第三方库

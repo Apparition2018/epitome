@@ -14,10 +14,6 @@ import static l.demo.Demo.p;
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html">ZoneId</a>
  * <p>时区ID, 如Europe-Paris
- * <pre>
- * boolean      equals(Object obj)      检查是否等
- * ZoneId       normalized()            规范化时区ID，在可能的情况下返回一个ZoneOffset
- * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39

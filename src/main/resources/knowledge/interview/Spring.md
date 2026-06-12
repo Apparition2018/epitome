@@ -98,18 +98,18 @@
 2. BeanFactoryPostProcessor：对 BeanFactory 相关信息的修改或扩展
 3. BeanFactory ???
     1. 实现了各种 XxxAware: 普通属性填充之后调用
-    ```
-    BeanNameAware's setBeanName
-    BeanClassLoaderAware's setBeanClassLoader
-    BeanFactoryAware's setBeanFactory
-    EnvironmentAware's setEnvironment
-    EmbeddedValueResolverAware's setEmbeddedValueResolver
-    ResourceLoaderAware's setResourceLoader
-    ApplicationEventPublisherAware's setApplicationEventPublisher
-    MessageSourceAware's setMessageSource
-    ApplicationContextAware's setApplicationContext
-    ServletContextAware's setServletContext
-    ```
+        ```
+        BeanNameAware's setBeanName
+        BeanClassLoaderAware's setBeanClassLoader
+        BeanFactoryAware's setBeanFactory
+        EnvironmentAware's setEnvironment
+        EmbeddedValueResolverAware's setEmbeddedValueResolver
+        ResourceLoaderAware's setResourceLoader
+        ApplicationEventPublisherAware's setApplicationEventPublisher
+        MessageSourceAware's setMessageSource
+        ApplicationContextAware's setApplicationContext
+        ServletContextAware's setServletContext
+        ```
     2. BeanPostProcessor's postProcessBeforeInitialization：对 Bean 相关信息的修改或扩展
     3. InitializingBean's afterPropertiesSet
     4. RootBeanDefinition's getInitMethodName

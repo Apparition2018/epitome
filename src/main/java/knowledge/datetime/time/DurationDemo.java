@@ -12,13 +12,6 @@ import static l.demo.Demo.p;
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
  * <p>表示以秒和纳秒为基准的时长
- * <pre>
- * boolean      equals(Object otherDuration)        检查此持续时间是否等于指定的持续时间
- * int          compareTo(Duration otherDuration)   将此持续时间与指定持续时间进行比较
- *
- * boolean      isNegative()                        检查此持续时间是否为负值，不包括零
- * boolean      isZero()                            检查此持续时间是否为零长度
- * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39

@@ -71,7 +71,6 @@ public class JoinerDemo extends Demo {
         p(join); // A=1;B=2
     }
 
-    /** JDK8 joining */
     @Test
     public void joining() {
         String collect = listWithNull.stream().filter(s -> null != s && !s.isEmpty())

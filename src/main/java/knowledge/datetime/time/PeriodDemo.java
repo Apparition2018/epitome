@@ -11,12 +11,6 @@ import static l.demo.Demo.p;
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/Period.html">Period</a>
  * <p>表示以年、月、日为基准的时长
- * <pre>
- * boolean      isNegative()                    检查这个周期的三个单位中是否有一个是负的
- * boolean      isZero()                        检查这个周期的三个单位是否都为零
- *
- * long         toTotalMonths()                 获取此期间的月总数
- * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39

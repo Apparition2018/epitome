@@ -12,6 +12,11 @@ import java.util.List;
  * 3 进行事务操作，用于存储线程事务信息
  * 4 数据库连接，Session 会话管理
  * </pre>
+ * ThreadLocalMap
+ * <pre>
+ * 1 开放地址法：ThreadLocal 的 entry 数量通常很少（一个线程用几个），线性探测比链地址法更节省内存
+ * 2 {@code static class Entry extends WeakReference<ThreadLocal<?>>}
+ * </pre>
  *
  * @author ljh
  * @see <a href="https://blog.csdn.net/qq_33589510/article/details/105071141">说说线程封闭与 ThreadLocal 的关系</a>

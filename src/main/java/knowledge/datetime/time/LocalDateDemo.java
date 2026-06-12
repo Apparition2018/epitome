@@ -14,13 +14,6 @@ import static l.demo.Demo.pe;
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate</a>
  * <p>ISO-8601日历，没有时区的日期，如2007-12-03
- * <pre>
- * boolean      equals(Object obj)                  检查是否等
- * int          compareTo(ChronoLocalDate other)    将此 date 与指定 date 进行比较
- * boolean      isBefore(ChronoLocalDate other)     检查此 date 是否在指定 date 之前
- * boolean      isAfter(ChronoLocalDate other)      检查此 date 是否在指定 date 之后
- * boolean      isLeapYear()                        根据ISO培训日历系统规则，检查年份是否是闰年
- * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39

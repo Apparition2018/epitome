@@ -10,10 +10,6 @@ import static l.demo.Demo.p;
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html">Instant</a>
  * <p>表示时间线上的瞬时点，定义为距离初始时间 (1970-1-1 00:00) 的时间差
- * <pre>
- * boolean      isBefore(Instant otherInstant)  检查此 instant 是否在指定 instant 之前
- * booleanq     isAfter(Instant otherInstant)   检查此 instant 是否在指定 instant 之后
- * </pre>
  *
  * @author ljh
  * @since 2019/8/8 19:39
