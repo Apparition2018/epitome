@@ -14,16 +14,19 @@
     同一人重复就预约
 ---
 ## JDK8 新特性
-1. Lambda
-2. Stream
-3. Optional
-4. java.time
-5. default / static method
-6. CompletableFuture
-7. HashMap Optimization, Map forEach / compute / merge
-8. Base64
-9. Objects.isNull/nonNull/requireNonNull(), String.join(), Arrays.parallelXxx()
-10. @Repeatable
+| 特性                        | 描述                                                                           |
+|:--------------------------|:-----------------------------------------------------------------------------|
+| Lambda 和 Method Reference | 简化匿名内部类的编写，支持函数式编程                                                           |
+| Stream API                | 提供对集合的高阶操作（过滤、映射、归约等），支持串行和并行流                                               |
+| Optional                  | 优雅地处理空指针异常                                                                   |
+| java.time                 | 全新日期时间 API（LocalDate, LocalTime, LocalDateTime）                              |
+| 接口默认/静态方法                 | 支持在接口中使用 default 定义具体方法                                                      |
+| CompletableFuture         | 支持异步链式调用与函数式组合的异步编程工具                                                        |
+| HashMap / Map 优化          | HashMap 底层优化，Map 增加 forEach / compute / merge 等方法                            |
+| Base64                    |
+| @Repeatable               | 支持在同一位置重复使用同一个注解                                                             |
+| 工具类增强                     | Objects.isNull/nonNull/requireNonNull(), String.join(), Arrays.parallelXxx() |
+
 ---
 ## [Spring](./Spring.md)
 - IOC

@@ -26,7 +26,7 @@
     2. 实例工厂方法
 3. [FactoryBean](https://blog.csdn.net/m0_45406092/article/details/114805287)
 ---
-## 🔺IOC & DI
+## ⚪IOC & DI
 1. Inversion of Control 控制反转，是一种设计思想
     - 控制：管理对象（生命周期，依赖关系）
     - 反转：对象的控制权交给 IOC 容器
@@ -96,27 +96,36 @@
 - @see [ClassPathXmlApplicationContextDemo#testLifecycle](../../../java/spring/api/context/ClassPathXmlApplicationContextDemo.java)
 1. [BeanDefinition](https://my.oschina.net/u/4600853/blog/4556323) ：通过 BeanDefinitionReader 从 XML/注解/JavaConfig/Groovy DSL 读取 Bean 的配置信息，生成 BeanDefinition
 2. BeanFactoryPostProcessor：对 BeanFactory 相关信息的修改或扩展
-3. BeanFactory ???
-    1. 实现了各种 XxxAware: 普通属性填充之后调用
-        ```
-        BeanNameAware's setBeanName
-        BeanClassLoaderAware's setBeanClassLoader
-        BeanFactoryAware's setBeanFactory
-        EnvironmentAware's setEnvironment
-        EmbeddedValueResolverAware's setEmbeddedValueResolver
-        ResourceLoaderAware's setResourceLoader
-        ApplicationEventPublisherAware's setApplicationEventPublisher
-        MessageSourceAware's setMessageSource
-        ApplicationContextAware's setApplicationContext
-        ServletContextAware's setServletContext
-        ```
-    2. BeanPostProcessor's postProcessBeforeInitialization：对 Bean 相关信息的修改或扩展
-    3. InitializingBean's afterPropertiesSet
-    4. RootBeanDefinition's getInitMethodName
-    5. BeanPostProcessor's postProcessAfterInitialization：对 Bean 相关信息的修改或扩展
-    6. DestructionAwareBeanPostProcessor's postProcessBeforeDestruction
-    7. DisposableBean's destroy
-    8. RootBeanDefinition's getDestroyMethodName
+3. 🔺生命周期4阶段：
+    1. [必经]实例化：通过反射创建对象（此时属性均为默认值）
+    2. [必经]属性赋值：依赖注入（如 @Autowired、@Value、@Resource）
+    3. 初始化
+        1. [可选]Aware 接口回调 (注入底层组件）
+            ```
+            BeanNameAware's setBeanName
+            BeanClassLoaderAware's setBeanClassLoader
+            BeanFactoryAware's setBeanFactory
+            EnvironmentAware's setEnvironment
+            EmbeddedValueResolverAware's setEmbeddedValueResolver
+            ResourceLoaderAware's setResourceLoader
+            ApplicationEventPublisherAware's setApplicationEventPublisher
+            MessageSourceAware's setMessageSource
+            ApplicationContextAware's setApplicationContext
+            ServletContextAware's setServletContext
+            ```
+        2. [必经]BeanPostProcessor 前置处理（执行 postProcessBeforeInitialization）
+        3. [可选]自定义初始化方法
+            1. @PostConstruct 标注的方法
+            2. InitializingBean 接口的 afterPropertiesSet()
+            3. @Bean(initMethod="...") 或 XML 中指定的 init-method 方法（RootBeanDefinition's getInitMethodName）
+        4. [必经]BeanPostProcessor 后置处理（执行 postProcessAfterInitialization）
+    4. [必经]使用：Bean 完全就绪
+    5. 销毁
+        1. [必经]DestructionAwareBeanPostProcessor 销毁前处理（执行 postProcessBeforeDestruction）
+        2. [可选]自定义销毁方法
+            1. @PreDestroy 标注的方法
+            2. DisposableBean 接口的 destroy()
+            3. @Bean(destroyMethod="...") 或 XML 中指定的 destroy-method 方法（RootBeanDefinition's getDestroyMethodName）
 >- [Spring Bean 的生命周期](https://www.cnblogs.com/zrtqsk/p/3735273.html)
 ### [容器扩展点](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-extension)
 1. BeanPostProcessor：在 Spring 容器完成实例化、配置和初始化 Bean 之后实现一些自定义逻辑
@@ -161,29 +170,25 @@
 >- [Spring 解决循环](https://www.zhihu.com/question/438247718/answer/1730527725)
 >- [@Transactional、@Async 和循环依赖](https://www.cnblogs.com/liuzhihang/p/spring-trans-async.html)
 ---
-## 🔺[Spring AOP](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop)
+## ⚪[Spring AOP](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop)
 - Aspect-oriented Programming：是 Object-oriented Programming (OOP) 的补充
 - 解决的问题：共同非业务代码的抽取
 - 优点：减少重复代码，提高系统可拓展性
 - 使用场景：日志，事务，缓存，权限(安全)
 ### [核心概念](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-introduction-defn)
 
-| 概念         | 中文  | 说明                                                                           |
-|:-----------|:----|:-----------------------------------------------------------------------------|
-| Aspect     | 切面  | 对横切关注点的抽象，连接点 + 通知；@Aspect 注释的类                                              |
-| Join Point | 连接点 | 程序执行过程中要拦截的点，可以是方法、字段和构造器；<br/>Spring AOP 连接点只能是方法                           |
-| Advice     | 通知  | 在连接点的具体行为 ①前置@Before ②后置@After ③异常@AfterThrowing ④最终@AfterReturing ⑤环绕Around |
-| Pointcut   | 切入点 | 匹配连接点 @Pointcut                                                              |
+| 概念         | 中文  | 说明                                                                            |
+|:-----------|:----|:------------------------------------------------------------------------------|
+| Aspect     | 切面  | 对横切关注点的抽象，连接点 + 通知；@Aspect 注释的类                                               |
+| Join Point | 连接点 | 程序执行过程中要拦截的点，可以是方法、字段和构造器；<br/>Spring AOP 连接点只能是方法                            |
+| Advice     | 通知  | 在连接点的具体行为 ①前置@Before ②后置@After ③异常@AfterThrowing ④最终@AfterReturing ⑤环绕@Around |
+| Pointcut   | 切入点 | 匹配连接点 @Pointcut                                                               |
 - [Spring AOP 和 AspectJ](https://segmentfault.com/a/1190000022019122)
     - Spring AOP 是运行时织入，AspectJ 是编译时织入
     - Spring AOP 使用了 AspectJ 的注解 和 切入点表达式语言
 ### [代理机制](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-proxying)：动态代理
 1. JDK：目标对象实现了至少一个接口；基于反射
 2. CGLib：目标对象没有实现任何接口；基于 ASM 类库在运行时对字节码进行修改和生成
-    - 强制使用 CGLib 代理
-        - XML：`<aop:aspectj-autoproxy proxy-target-class="true"/>`
-        - 注解：`@EnableAspectAutoProxy(proxyTargetClass = true)`
-        - 配置文件：`spring.aop.proxy-target-class=true`
 ### 使用步骤
 1. 引入 spring-boot-starter-aop，其中包含了 aspectjweaver
 2. 启用 @AspectJ 支持
@@ -272,29 +277,29 @@
     - bean 引用：`<property name="mobile" value="#{mobile}"/>`
     - ...
 ---
-## Spring 用到的设计模式
-| 模式    | 用例                                                                              |
-|:------|:--------------------------------------------------------------------------------|
-| 工厂方法  | FactoryBean, AbstractFactoryBean                                                |
-| 抽象工厂  | BeanFactory                                                                     |
-| 建造者   | BeanDefinitionBuilder, MockMvcWebClientBuilder                                  |
-| 单例    | AbstractBeanFactory                                                             |
-| 原型    | AbstractBeanFactory                                                             |
-| 适配器   | Spring AOP (AdvisorAdapter)<br/>Spring MVC (HandlerAdapter)                     |
-| 代理    | Spring AOP (JdkDynamicAopProxy, CGLibAopProxy)                                  |
-| 装饰器   | XxxDecorator，XxxWrapper                                                         |
-| 组合    | WebMvcConfigurerComposite                                                       |
-| 外观    | JdbcUtils                                                                       |
-| 模板方法  | JdbcTemplate，RedisTemplate，RabbitTemplate, TransactionTemplate                  |
-| 命令    | JdbcTemplate#execute(StatementCallback)                                         |
-| 策略    | 资源访问 (Resource)                                                                 |
-| 状态    | 状态机 (statemachine)                                                              |
-| 观察者   | Spring Event (ApplicationEventPublisher, ApplicationListener, ApplicationEvent) |
-| 中介者   | Spring MVC (DispatcherServlet)                                                  |
-| 责任链模式 | Spring MVC (HandlerExecutionChain)                                              |
-| 访问者   | BeanDefinitionVisitor                                                           |
-| 备忘录   | Spring Web Flow (StateManageableMessageContext)                                 |
-| 解释器   | SpEL (ExpressionParser)                                                         |
+## ❌Spring 用到的设计模式
+| 模式   | 用例                                                                              |
+|:-----|:--------------------------------------------------------------------------------|
+| 工厂方法 | FactoryBean, AbstractFactoryBean                                                |
+| 抽象工厂 | BeanFactory                                                                     |
+| 建造者  | BeanDefinitionBuilder, MockMvcWebClientBuilder                                  |
+| 单例   | AbstractBeanFactory                                                             |
+| 原型   | AbstractBeanFactory                                                             |
+| 适配器  | Spring AOP (AdvisorAdapter)<br/>Spring MVC (HandlerAdapter)                     |
+| 代理   | Spring AOP (JdkDynamicAopProxy, CGLibAopProxy)                                  |
+| 装饰器  | XxxDecorator，XxxWrapper                                                         |
+| 组合   | WebMvcConfigurerComposite                                                       |
+| 外观   | JdbcUtils                                                                       |
+| 模板方法 | JdbcTemplate，RestTemplate, RedisTemplate, TransactionTemplate                   |
+| 命令   | JdbcTemplate#execute(StatementCallback)                                         |
+| 策略   | 资源访问 (Resource)                                                                 |
+| 状态   | 状态机 (statemachine)                                                              |
+| 观察者  | Spring Event (ApplicationEvent, ApplicationEventPublisher, ApplicationListener) |
+| 中介者  | Spring MVC (DispatcherServlet)                                                  |
+| 责任链  | Spring MVC (HandlerExecutionChain)                                              |
+| 访问者  | BeanDefinitionVisitor                                                           |
+| 备忘录  | Spring Web Flow (StateManageableMessageContext)                                 |
+| 解释器  | SpEL (ExpressionParser)                                                         |
 ## 其它
 1. 单例 Bean 线程安全问题：多个线程对同一对象的非静态成员变量进行写操作时存在线程安全问题
     - 解决：ThreadLocal

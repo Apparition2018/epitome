@@ -18,7 +18,7 @@
 // 泛微 e-cology9
 // WMS、电商
 // coze、n8n、fastGpt
-// FineBI、SmartBI
+// PowerBI、FineBI、SmartBI
 // 芋道、PLM、ERP、MES、CRM、SAP（认证）、WSC、供应链、BI（帆软、建模）、大数据、上位机、flutter、LabVIEW、CNC、飞书、DevOps、Opencv
 // Flask, FastAPI, Django
 // 历史表迁移读取、读写分离、合理配置连接池连接数、数据库备份迁移、DBA

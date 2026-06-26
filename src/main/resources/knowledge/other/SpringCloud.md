@@ -1,7 +1,7 @@
 # SpringCloud
 
 ---
-## 核心组件
+## 🔺核心组件
 | 要解决的问题  | 组件                           | 说明                             |
 |---------|------------------------------|--------------------------------|
 | 服务注册与发现 | Nacos / Eureka               | 服务注册中心，Provider 注册、Consumer 发现 |
@@ -9,7 +9,7 @@
 | 负载均衡    | LoadBalancer（替代 Ribbon）      | 客户端负载均衡                        |
 | 服务熔断/降级 | Sentinel / Resilience4j      | 服务雪崩保护                         |
 | 网关      | Spring Cloud Gateway         | 统一入口、路由、鉴权、限流                  |
-| 配置中心    | Nacos Config / Config Server | 集中管理配置，动态刷新                    |
+| 配置中心    | Nacos Config + Config Server | 集中管理配置，动态刷新                    |
 | 分布式事务   | Seata                        | 跨服务事务一致性                       |
 | 链路追踪    | SkyWalking / Sleuth + Zipkin | 分布式调用链追踪                       |
 ### Nacos vs Eureka

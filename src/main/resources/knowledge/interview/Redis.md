@@ -82,13 +82,13 @@
     3. Write Behind：写多读少场景
         - 写：写 Cache → 缓存层异步更 DB
     - 注：只有 Cache Aside 感知 DB
-4. 🔺删除缓存失败怎么办？：①[异步]重试 ②合理过期时间 ③订阅 binlog (阿里 canal、强一致)
+4. ⚪删除缓存失败怎么办？：①[异步]重试 ②合理过期时间 ③订阅 binlog (阿里 canal、强一致)
 >- [腾讯技术工程](https://mp.weixin.qq.com/s/Y9S89MT0uAobzRKgYVrI9Q)
 >- [苏三说技术](https://mp.weixin.qq.com/s/4hP-T0h8QPyjcpH8m0cbsA)
 >- [水滴与银弹 | Magic Kaito](https://mp.weixin.qq.com/s/4W7vmICGx6a_WX701zxgPQ)
 >- [小林coding](https://mp.weixin.qq.com/s/sh-pEcDd9l5xFHIEN87sDA)
 ---
-## 🔺[Redis 多快，为什么快](https://mmbiz.qpic.cn/mmbiz_png/g6hBZ0jzZb0Zb0XiaaR6bGaN80wicXIIP735YhoW1fic47MuJOx0HheBX4ficULcmdHhdGQnqGcfCgvunMmxpb8LnA/640)
+## ⚪[Redis 多快，为什么快](https://mmbiz.qpic.cn/mmbiz_png/g6hBZ0jzZb0Zb0XiaaR6bGaN80wicXIIP735YhoW1fic47MuJOx0HheBX4ficULcmdHhdGQnqGcfCgvunMmxpb8LnA/640)
 - 官方：Redis 的瓶颈通常是内存或网络，而不是 CPU；查询 QPS 达 10w/s
 1. 基于内存：①内存读写比磁盘快；②省去将数据从磁盘读到内存的时间
 2. 高效的数据结构
@@ -129,7 +129,7 @@
 >- [捡田螺的小男孩](https://mp.weixin.qq.com/s/Una3zEWflk-r9IqvbVgbqA)
 >- [小林coding](https://mp.weixin.qq.com/s/apScwfXHWlh8xUS1RhMSIA)
 ---
-## [数据类型](https://redis.io/docs/manual/data-types/)
+## 🔺[数据类型](https://redis.io/docs/manual/data-types/)
 | Data Types  | 使用场景                                                        |
 |:------------|:------------------------------------------------------------|
 | String      | 缓存、计数器（数量统计（阅读量）、数量控制（限流））、时效信息（验证码）、全局 ID、分布式 session、分布式锁 |

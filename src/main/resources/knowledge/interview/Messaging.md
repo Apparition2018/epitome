@@ -35,11 +35,11 @@
 ---
 ## [RocketMQ](https://rocketmq.apache.org/zh/docs/)
 - @see OrderFlowIntegrationTest.java
-### Message Model（消息模型）
+### 🔺Message Model（消息模型）
 1. CLUSTERING：集群（默认），只会被同一消费者组内的一个实例消费
 2. BROADCASTING：广播，会被同一消费者组内的所有实例消费
     - 不支持重试，对顺序模式也存在问题。所以官方建议通过多组单消费者集群实现类似效果
-### Consume Mode（消费模式）
+### 🔺Consume Mode（消费模式）
 1. CONCURRENTLY：并发
 2. ORDERLY：顺序
     - 顺序保证：同一 id 发送到同一个 Queue
