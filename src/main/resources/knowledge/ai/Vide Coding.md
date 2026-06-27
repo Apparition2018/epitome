@@ -25,8 +25,6 @@ Base URL       https://api.deepseek.com
 模型重定向      gpt-5.5      →       deepseek-v4-flash
 API密钥管理s    sk-65e***884
 ```
-> - [Codex 新手教程](https://www.bilibili.com/video/BV1SjGi6nEZ6/)
-> - [Codex 新手教程](https://www.bilibili.com/video/BV1Nc5163EA3/)
 ---
 ## [CC Switch](https://github.com/farion1231/cc-switch)
 ### ccx
@@ -36,7 +34,35 @@ API 请求地址    http://localhost:3000/v1
 模型名称        gpt-5.5
 ```
 ---
+## [Agent Skill](https://www.bilibili.com/video/BV1ugdgBQED4/)
+1. SKILL.md：开发流程
+    ```markdown
+    ---
+    name: ……
+    description: ……
+    ---
+    ……
+    ```
+2. references：参考文档
+3. scripts：开发工具
+4. assets：静态资源
+### SKILL Repository
+1. [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills)
+2. [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills)
+3. [antfu/skills: Anthony Fu](https://github.com/antfu/skills)
+4. [JackyST0/awesome-agent-skills](https://github.com/JackyST0/awesome-agent-skills)
+5. [ZhanlinCui/Agent-Skills-Hunter](https://github.com/ZhanlinCui/Agent-Skills-Hunter)
+### SKILL Website
+1. [SkillsMP](https://skillsmp.com/)
+2. [Find awesome Agent Skills](https://agent-skills.md/)
+3. [Skills Directory](https://www.skillsdirectory.com/)
+4. [Skillstore](https://skillstore.io/zh-hans)
+5. [The Agent Skills Directory](https://www.skills.sh)
+---
 ## [Codex](https://openai.com/zh-Hans-CN/codex/)
+- [Codex 新手教程](https://www.bilibili.com/video/BV1SjGi6nEZ6/)
+- [Codex 新手教程](https://www.bilibili.com/video/BV1Nc5163EA3/)
+### Reference
 1. 设计文件就用项目
 2. 一个任务一个对话
 3. 复杂任务先出计划
@@ -66,7 +92,8 @@ API 请求地址    http://localhost:3000/v1
 1. 插件 → 技能
 2. 第三方/自定义
     1. 下载第三方或自定义 Skills
-    2. 新建文件夹 → 进入并新建 .codex 文件夹 → 进入并放置 Skills
+    2. 新建任意名称文件夹 → 进入并新建 .codex 文件夹 → 进入并新建 skills 文件夹 → 进入并放置 Skills
+    3. 添加到
 ### MCP
 - Model Context Protocol
 ### 设置
