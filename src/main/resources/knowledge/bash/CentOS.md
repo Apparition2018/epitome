@@ -2,17 +2,9 @@
 
 ---
 ## 问题
-1. [CentOS 6.8 联网设置](https://blog.csdn.net/Catdingwt/article/details/79585929)
+- [CentOS 6.8 联网设置](https://blog.csdn.net/Catdingwt/article/details/79585929)
 ---
 ## 安装与配置
-- [Download](https://www.centos.org/download/)
-### VMware
-- [Downloads](https://customerconnect.vmware.com/en/downloads/#all_products)：VMware Workstation
-- [VMware 安装 CentOS 7](https://www.imooc.com/video/24343)
-    - 网络连接：桥接模式
-- [VMware 克隆环境](https://www.imooc.com/video/24347)
-- [VMware 10 安装 CentOS 6.8](https://www.cnblogs.com/moranlei/p/9333184.html)
-- [VMware 10 没有足够内存自动启用 kdump](http://www.360doc.com/content/20/0415/23/67357512_906311206.shtml)
 ### [分区](https://www.cnblogs.com/sunmoonp/p/10968359.html)
 | 分区    | 作用              | 空间       |
 |-------|-----------------|----------|

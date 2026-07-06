@@ -65,8 +65,8 @@
     - 重试间隔：默认 1s
 ---
 ## 消息堆积
-1. 水平扩容 Consumer 容器实例，实例数 ≤ Topic 总队列数
-2. 开启批量消费
+1. 开启批量消费
     1. `implements RocketMQListener<List<MessageExt>>`
     2. `rocketmq.consumer.consume-message-batch-max-size: 32`
+2. 水平扩容 Consumer 容器实例，实例数 ≤ Topic 总队列数
 ---

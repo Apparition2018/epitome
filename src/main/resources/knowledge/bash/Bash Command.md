@@ -331,7 +331,6 @@
 ---
 ## 网络通信
     ping                            packet internet grouper             像网络主机发送 ICMP ECHO_REQUEST
-    # net-tools vs iproute2：https://www.cnblogs.com/liyuanhong/p/15960954.html
     route add                       ip route add
     route del                       ip route del
     route -n                        ip route show
