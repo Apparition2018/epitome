@@ -213,6 +213,8 @@
 ### 连接器 (Connector)
 - 数据集成的关键概念，它作为 Sink/Source 的底层连接通道，用于连接到外部数据系统
 - ![EMQX 连接器概念](https://docs.emqx.com/assets/connector-sink.DCYKv6UB.jpg)
+### Webhook
+- 将 EMQX 客户端消息和事件集成到外部 HTTP 服务器
 ### [规则引擎](https://docs.emqx.com/zh/emqx/latest/data-integration/rules.html)
 - 基于 SQL 的数据处理组件，搭配数据集成无需编写代码即可实现一站式的 IoT 数据提取、过滤、转换、存储与处理
 - 组成：
@@ -222,4 +224,12 @@
         1. 消息重发布：将结果发布到指定 MQTT 主题
         2. 控制台输出：将结果输出到控制台或日志中
         3. 发送到各类 Sink：将结果发送到外部数据系统中
+- [SQL 语法](https://docs.emqx.com/zh/emqx/latest/data-integration/rule-sql-syntax.html)
+    - [`FOREACH <字段名> [DO <条件>] [INCASE <条件>] FROM <主题> [WHERE <条件>]`](https://www.bilibili.com/video/BV1HADnYFEXn?p=67)
+- [内置 SQL 函数](https://docs.emqx.com/zh/emqx/latest/data-integration/rule-sql-builtin-functions.html)
+- 案例一：[将 MQTT 数据写入到 Redis](https://docs.emqx.com/zh/emqx/latest/data-integration/data-bridge-redis.html)
+- 案例二：[将 kafka 消息写入到 Redis](https://www.bilibili.com/video/BV1HADnYFEXn/?p=63)
+---
+## 日志
+- EMQX Dashboard → 管理 → 日志
 ---

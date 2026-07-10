@@ -2,16 +2,29 @@ services:
     broker:
         image: apache/kafka:latest
         container_name: broker
+        restart: unless-stopped
         ports:
             - 9092:9092
+        volumes:
+            - ${PWD}/data:/var/lib/kafka/data
         environment:
             KAFKA_NODE_ID: 1
+            # 同时扮演 broker（数据存储）和 controller（集群管理）角色
             KAFKA_PROCESS_ROLES: broker,controller
-            KAFKA_LISTENERS: PLAINTEXT://localhost:9092,CONTROLLER://localhost:9093
-            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+            # 服务端监听地址（0.0.0.0 表示监听容器所有网络接口）：
+            # - 9092 供客户端连接使用
+            # - 9093 供 controller 内部选举和集群管理通信使用
+            KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
+            # 对外公布的地址（客户端通过此地址连接）
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.119.128:9092
+            # 指定 controller 使用的监听器名称为 CONTROLLER（对应上面 LISTENERS 中的 CONTROLLER://0.0.0.0:9093）
             KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+            # 监听器协议映射：两种监听器都使用 PLAINTEXT（无加密）
+            # 格式：监听器名称:协议类型
             KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
-            KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+            # Controller 投票者列表：节点 1 的地址是 broker:9093
+            # 用于 controller 选举和元数据一致性
+            KAFKA_CONTROLLER_QUORUM_VOTERS: 1@broker:9093
             KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
             KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
             KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
@@ -21,6 +34,7 @@ services:
     kafka-ui:
         image: kafbat/kafka-ui:latest
         container_name: kafka-ui
+        restart: unless-stopped
         ports:
             - "8080:8080"
         environment:

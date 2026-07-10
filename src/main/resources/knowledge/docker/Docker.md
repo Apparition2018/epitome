@@ -440,9 +440,10 @@ docker compose config [OPTIONS] [SERVICE...]                    以规范格式 
 docker compose down [OPTIONS] [SERVICES]                        停止和移除 containers, networks
 docker compose exec [OPTIONS] SERVICE COMMAND [ARGS...]         在正在运行的 container 中执行命令
 docker compose logs [OPTIONS] [SERVICE...]                      查看 containers 输出
-    -f, --follow
+    -f, --follow                                                实时跟踪输出
 docker compose ps [OPTIONS] [SERVICE...]                        列出 containers
 docker compose rm [OPTIONS] [SERVICE...]                        移除停止的 containers
+docker compose start [SERVICE...]                               启动 services
 docker compose stop [OPTIONS] [SERVICE...]                      停止 services
 docker compose up [OPTIONS] [SERVICE...]                        创建并启动 containers
 ```
@@ -518,6 +519,7 @@ docker container commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]  根据 container
     -m, --mesage                                                提交消息
 docker container stats [OPTIONS] [CONTAINER...]                 显示 container 资源使用情况统计信息的实时流
 docker container logs [OPTIONS] CONTAINER                       获取 container 日志
+    -f, --follow                                                实时跟踪输出
 docker container port CONTAINER [PRIVATE_PORT[/PROTO]]          列出 container 的端口映射或特定映射
 docker container inspect [OPTIONS] CONTAINER [CONTAINER...]     显示 containers 详细信息
 docker container export [OPTIONS] CONTAINER                     将 container 的文件系统导出为 tar 存档
@@ -941,6 +943,7 @@ docker compose up -d
 ## [kafka](https://hub.docker.com/r/apache/kafka) / [cp-kafka](https://hub.docker.com/r/confluentinc/cp-kafka)
 - @see [docker-compose.yml](compose/kafka/docker-compose.yml)
 ```bash
+mkdir -p /home/ljh/docker_data/kafka/data
 docker compose up -d
 
 # http://localhost:8080
@@ -1035,6 +1038,7 @@ docker run -d --name emqx-enterprise \
 -p 1883:1883 -p 8083:8083 -p 8084:8084 -p 8883:8883 -p 18083:18083 \
 -v $PWD/data:/opt/emqx/data \
 -v $PWD/log:/opt/emqx/log \
+-v $PWD/etc:/opt/emqx/etc \
 emqx/emqx-enterprise
 
 # EMQX Dashboard：http://192.168.119.128:18083/  admin/public
