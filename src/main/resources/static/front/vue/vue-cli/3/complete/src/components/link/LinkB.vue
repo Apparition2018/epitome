@@ -7,10 +7,8 @@
 
 <script>
 export default {
-  name: 'B'
+  name: 'LinkB',
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

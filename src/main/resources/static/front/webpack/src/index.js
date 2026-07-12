@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!')
 }
 
-function component () {
+function component() {
   const element = document.createElement('div')
   const btn = document.createElement('button')
 
@@ -18,9 +18,7 @@ function component () {
   element.appendChild(btn)
 
   const mathElement = document.createElement('div')
-  mathElement.innerHTML = [
-    '5 cubed is equal to ' + cube(5)
-  ].join('\n\n')
+  mathElement.innerHTML = ['5 cubed is equal to ' + cube(5)].join('\n\n')
   element.appendChild(mathElement)
 
   return element

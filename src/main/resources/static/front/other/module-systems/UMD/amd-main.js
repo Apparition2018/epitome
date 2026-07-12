@@ -1,7 +1,7 @@
 require.config({
   paths: {
-    jquery: 'https://unpkg.com/jquery@^1/dist/jquery.min'
-  }
+    jquery: 'https://unpkg.com/jquery@^1/dist/jquery.min',
+  },
 })
 
 require(['jquery', 'math'], function ($, math) {

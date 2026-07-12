@@ -4,11 +4,11 @@
     <div class="content">
       <video src="http://www.w3school.com.cn/i/movie.ogg" controls="controls"></video>
       <h3>简介</h3>
-      <p class="content-p">是的拉萨肯德基拉斯熟练度空间阿萨德了,啦啦啦，我是卖报的小画家，哈哈哈哈。</p>
-
-      <p class="note">
-        <strong>注：</strong>分享即可获得免费的一个月vip权益
+      <p class="content-p">
+        是的拉萨肯德基拉斯熟练度空间阿萨德了,啦啦啦，我是卖报的小画家，哈哈哈哈。
       </p>
+
+      <p class="note"><strong>注：</strong>分享即可获得免费的一个月vip权益</p>
     </div>
 
     <button class="share-btn" @click="share">分享</button>
@@ -17,18 +17,18 @@
 
 <script>
 export default {
-  name: "Course",
+  name: 'Course',
   methods: {
-    share () {
-      if (confirm("课程分享，地址： http://www.muke.com")) {
-        this.$store.dispatch('getFreeVip').then(res => {
+    share() {
+      if (confirm('课程分享，地址： http://www.muke.com')) {
+        this.$store.dispatch('getFreeVip').then((res) => {
           alert(res)
         })
       } else {
-        console.log("取消")
+        console.log('取消')
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -5,9 +5,7 @@
     </div>
     <div class="right">
       <div class="top">
-        <div class="title">
-          Title
-        </div>
+        <div class="title">Title</div>
       </div>
       <div class="bottom">
         <Right></Right>
@@ -21,11 +19,11 @@ import Left from '@/components/Left'
 import Right from '@/components/Right'
 
 export default {
-  name: "Index",
+  name: 'Index',
   components: {
     Left,
-    Right
-  }
+    Right,
+  },
 }
 </script>
 
@@ -52,7 +50,8 @@ export default {
   margin-left: 10px;
 }
 
-.left, .right {
+.left,
+.right {
   background-color: #f5f5f5;
 }
 

@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-if="current === 1">
-      <GoodsList :goodsId="1"></GoodsList>
+      <GoodsList :goods-id="1"></GoodsList>
     </div>
     <div v-else-if="current === 2">
-      <GoodsList :goodsId="2"></GoodsList>
+      <GoodsList :goods-id="2"></GoodsList>
     </div>
     <div v-else-if="current === 3">
       <GoodsList></GoodsList>
@@ -19,28 +19,26 @@
 </template>
 
 <script>
-import {EventBus} from '@/api/event-bus'
-import GoodsList from "@/components/GoodsList";
+import { EventBus } from '@/api/event-bus'
+import GoodsList from '@/components/GoodsList'
 
 export default {
-  name: "Right",
+  name: 'Right',
   components: {
-    GoodsList
+    GoodsList,
   },
-  data () {
+  data() {
     return {
-      current: 0
+      current: 0,
     }
   },
-  mounted () {
+  mounted() {
     const _this = this
     EventBus.$on('val', (m) => {
       _this.current = m
     })
-  }
+  },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

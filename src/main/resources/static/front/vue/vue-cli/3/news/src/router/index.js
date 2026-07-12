@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/',
     name: 'Login',
-    component: Login
+    component: Login,
   },
   {
     path: '/home',
@@ -19,25 +19,27 @@ const routes = [
       {
         path: 'list',
         name: 'List',
-        component: () => import(/* webpackChunkName: "list" */ '../views/login/List.vue')
-      }, {
+        component: () => import(/* webpackChunkName: "list" */ '../views/login/List.vue'),
+      },
+      {
         path: 'user',
         name: 'User',
-        component: () => import(/* webpackChunkName: "user" */ '../views/login/User.vue')
-      }
-    ]
-  }, {
+        component: () => import(/* webpackChunkName: "user" */ '../views/login/User.vue'),
+      },
+    ],
+  },
+  {
     path: '/add',
     name: 'Add',
-    component: () => import(/* webpackChunkName: "add" */ '../views/login/Add.vue')
-  }
+    component: () => import(/* webpackChunkName: "add" */ '../views/login/Add.vue'),
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   linkActiveClass: 'active',
-  routes
+  routes,
 })
 
 export default router

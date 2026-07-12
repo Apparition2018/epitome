@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="goodsList">
-      <li v-for="goods in goodsList">
+      <li v-for="(goods, index) in goodsList" :key="index">
         <div class="image">Image</div>
         <p>{{ goods.goodsName }}</p>
       </li>
@@ -11,37 +11,40 @@
 
 <script>
 export default {
-  name: "GoodsList",
+  name: 'GoodsList',
   props: {
-    goodsId: Number
+    goodsId: {
+      type: Number,
+      default: null,
+    },
   },
-  data () {
+  data() {
     return {
-      goodsList: []
+      goodsList: [],
     }
-  },
-  mounted () {
-    this.goodsIdChangeEvent()
   },
   watch: {
-    goodsId () {
+    goodsId() {
       this.goodsIdChangeEvent()
-    }
+    },
+  },
+  mounted() {
+    this.goodsIdChangeEvent()
   },
   methods: {
-    goodsIdChangeEvent () {
-      let url = ""
+    goodsIdChangeEvent() {
+      let url = ''
       if (this.goodsId === 1 || this.goodsId === 0) {
-        url = "json/laptop.json"
+        url = 'json/laptop.json'
       } else if (this.goodsId === 2) {
-        url = "json/mobile.json"
+        url = 'json/mobile.json'
       }
       let _this = this
       this.$axios.get(url).then((res) => {
         _this.goodsList = res.data
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

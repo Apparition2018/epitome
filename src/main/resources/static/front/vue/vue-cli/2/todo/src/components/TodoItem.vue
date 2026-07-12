@@ -4,16 +4,20 @@
 
 <script>
 export default {
-  props: ['content', 'index'],
+  props: {
+    content: { type: String, required: true },
+    index: { type: Number, required: true },
+  },
+  emits: ['delete'],
   methods: {
-    handleDelete () {
+    handleDelete() {
       this.$emit('delete', this.index)
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped>
-  .item {
-    color: green;
-  }
+.item {
+  color: green;
+}
 </style>

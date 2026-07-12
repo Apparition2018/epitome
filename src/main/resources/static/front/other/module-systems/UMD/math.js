@@ -1,4 +1,4 @@
-((root, factory) => {
+;((root, factory) => {
   if (typeof exports === 'object') {
     console.log('CommonJS')
     module.exports = factory()
@@ -19,6 +19,6 @@
     plus: (a, b) => a + b,
     subtract: (a, b) => a - b,
     multiply: (a, b) => a * b,
-    divide: (a, b) => a / b
+    divide: (a, b) => a / b,
   }
 })

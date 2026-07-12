@@ -83,10 +83,8 @@
 
 <script>
 export default {
-  name: 'BackTopOne'
+  name: 'BackTopOne',
 }
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

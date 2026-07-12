@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Link from '@/components/link/Link'
-import A from '@/components/link/A'
-import B from '@/components/link/B'
-import A1 from '@/components/link/A1'
+import LinkA from '@/components/link/LinkA'
+import LinkB from '@/components/link/LinkB'
+import LinkA1 from '@/components/link/LinkA1'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    component: () => import('@/views/Index')
+    component: () => import('@/views/Index'),
   },
   {
     path: '/link',
@@ -19,25 +19,26 @@ const routes = [
     children: [
       {
         path: '/a',
-        component: A,
+        component: LinkA,
         children: [
           {
             path: '/a1',
-            component: A1
-          }
-        ]
-      }, {
+            component: LinkA1,
+          },
+        ],
+      },
+      {
         path: '/b',
-        component: B
-      }
-    ]
-  }
+        component: LinkB,
+      },
+    ],
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 })
 
 export default router

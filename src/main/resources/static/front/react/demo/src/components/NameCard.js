@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const NameCard = (props) => {
   const { name, number, isHuman, tags } = props
@@ -11,7 +12,9 @@ const NameCard = (props) => {
         <hr />
         <p>
           {tags.map((tag, index) => (
-            <span className='badge badge-pill badge-primary' key={index}>{tag}</span>
+            <span className='badge badge-pill badge-primary' key={index}>
+              {tag}
+            </span>
           ))}
         </p>
       </ul>
@@ -39,5 +42,12 @@ const NameCard = (props) => {
 //     )
 //   }
 // }
+
+NameCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired,
+  isHuman: PropTypes.bool.isRequired,
+  tags: PropTypes.array.isRequired,
+}
 
 export default NameCard

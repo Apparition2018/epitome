@@ -1,16 +1,16 @@
 // 时间间隔函数
-export function timeInterval (timesData) {
+export function timeInterval(timesData) {
   // 如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
-  const dateBegin = timesData// 将-转化为/，使用new Date
-  const dateEnd = new Date()// 获取当前时间
+  const dateBegin = timesData // 将-转化为/，使用new Date
+  const dateEnd = new Date() // 获取当前时间
   const dateDiff = Math.abs(dateEnd.getTime() - dateBegin) // 时间差的毫秒数
   const yearDiff = Math.floor(dateDiff / (24 * 3600 * 1000 * 365))
   const dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000)) // 计算出相差天数
   const leave1 = dateDiff % (24 * 3600 * 1000) // 计算天数后剩余的毫秒数
-  const hours = Math.floor(leave1 / (3600 * 1000))// 计算出小时数
+  const hours = Math.floor(leave1 / (3600 * 1000)) // 计算出小时数
   // 计算相差分钟数
   const leave2 = leave1 % (3600 * 1000) // 计算小时数后剩余的毫秒数
-  const minutes = Math.floor(leave2 / (60 * 1000))// 计算相差分钟数
+  const minutes = Math.floor(leave2 / (60 * 1000)) // 计算相差分钟数
   // 计算相差秒数
   const leave3 = leave2 % (60 * 1000) // 计算分钟数后剩余的毫秒数
   const seconds = Math.round(leave3 / 1000)
@@ -30,7 +30,7 @@ export function timeInterval (timesData) {
 }
 
 // 日期格式化
-export function parseTime (time, pattern) {
+export function parseTime(time, pattern) {
   if (arguments.length === 0 || !time) {
     return null
   }
@@ -39,12 +39,15 @@ export function parseTime (time, pattern) {
   if (typeof time === 'object') {
     date = time
   } else {
-    if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
+    if (typeof time === 'string' && /^[0-9]+$/.test(time)) {
       time = parseInt(time)
     } else if (typeof time === 'string') {
-      time = time.replace(new RegExp(/-/gm), '/').replace('T', ' ').replace(new RegExp(/\.[\d]{3}/gm), '')
+      time = time
+        .replace(new RegExp(/-/gm), '/')
+        .replace('T', ' ')
+        .replace(new RegExp(/\.[\d]{3}/gm), '')
     }
-    if ((typeof time === 'number') && (time.toString().length === 10)) {
+    if (typeof time === 'number' && time.toString().length === 10) {
       time = time * 1000
     }
     date = new Date(time)
@@ -56,12 +59,14 @@ export function parseTime (time, pattern) {
     h: date.getHours(),
     i: date.getMinutes(),
     s: date.getSeconds(),
-    a: date.getDay()
+    a: date.getDay(),
   }
   const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
     let value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value] }
+    if (key === 'a') {
+      return ['日', '一', '二', '三', '四', '五', '六'][value]
+    }
     if (result.length > 0 && value < 10) {
       value = '0' + value
     }

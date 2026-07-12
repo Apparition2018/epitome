@@ -1,21 +1,21 @@
 import React from 'react'
 
 class LikesButton extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      likes: 0
+      likes: 0,
     }
     // this.increaseLikes = this.increaseLikes.bind(this)
   }
 
-  increaseLikes () {
-    this.setState({
-      likes: ++this.state.likes
-    })
+  increaseLikes() {
+    this.setState((prevState) => ({
+      likes: prevState.likes + 1,
+    }))
   }
 
-  render () {
+  render() {
     return (
       <div className='likes-button-component'>
         <button

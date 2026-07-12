@@ -1,16 +1,16 @@
 /** 生成 UUID */
-function generateUUID () {
+function generateUUID() {
   let time = new Date().getTime()
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    const random = (time + Math.random() * 16) % 16 | 0
+    const random = ((time + Math.random() * 16) % 16) | 0
     time = Math.floor(time / 16)
-    return (c === 'x' ? random : (random & 0x3 | 0x8)).toString(16)
+    return (c === 'x' ? random : (random & 0x3) | 0x8).toString(16)
   })
 }
 
 /** 生成 UUID */
-function guid () {
-  function S4 () {
+function guid() {
+  function S4() {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
   }
 
@@ -18,12 +18,14 @@ function guid () {
 }
 
 /** sleep */
-function sleep (s) {
-  for (let t = Date.now(); Date.now() - t <= s;) { /* empty */ }
+function sleep(s) {
+  for (let t = Date.now(); Date.now() - t <= s;) {
+    /* empty */
+  }
 }
 
 /** 验证居民身份证：http://www.ip33.com/shenfenzheng.html */
-function isValidChineseIdCard (idCard) {
+function isValidChineseIdCard(idCard) {
   // 校验身份证号码长度
   if (idCard.length !== 18) {
     return false
@@ -48,16 +50,16 @@ function isValidChineseIdCard (idCard) {
 }
 
 /** 验证香港永久性居民身份证：C668668(E) */
-function isValidHongKongIdCard (idCard) {
+function isValidHongKongIdCard(idCard) {
   return /^[A-Z]{1,2}\d{6,10}[(\d)|A]{3}$/.test(idCard)
 }
 
 /** 验证澳门永久性居民身份证：5215299(8) */
-function isValidMacaoIdCard (idCard) {
+function isValidMacaoIdCard(idCard) {
   return /^[157][0-9]{6}[(\d)]{3}$/.test(idCard)
 }
 
-function getAgeByIdCard (idCard) {
+function getAgeByIdCard(idCard) {
   const birthYear = parseInt(idCard.slice(6, 10))
   const birthMonth = parseInt(idCard.slice(10, 12))
   const birthDay = parseInt(idCard.slice(12, 14))

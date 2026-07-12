@@ -6,10 +6,10 @@
     </p>
     <ul>
       <li v-for="product in products" :key="product.id">
-        {{ product.title }} - {{ product.price | currency }} * {{ product.quantity }}
+        {{ product.title }} - {{ currency(product.price) }} * {{ product.quantity }}
       </li>
     </ul>
-    <p>Total: {{ total | currency }}</p>
+    <p>Total: {{ currency(total) }}</p>
     <p>
       <button :disabled="!products.length" @click="checkout(products)">Checkout</button>
     </p>
@@ -18,27 +18,27 @@
 </template>
 
 <script>
-import {mapGetters, mapState} from 'vuex'
+import { mapGetters, mapState } from 'vuex'
+import { currency } from '@/api/currency'
 
 export default {
-  name: "ShoppingCart",
+  name: 'ShoppingCart',
   computed: {
     ...mapState({
-      checkoutStatus: state => state.cart.checkoutStatus
+      checkoutStatus: (state) => state.cart.checkoutStatus,
     }),
     ...mapGetters('cart', {
       products: 'cartProducts',
-      total: 'cartTotalPrice'
-    })
+      total: 'cartTotalPrice',
+    }),
   },
   methods: {
-    checkout (products) {
+    checkout(products) {
       this.$store.dispatch('cart/checkout', products)
-    }
-  }
+    },
+    currency,
+  },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

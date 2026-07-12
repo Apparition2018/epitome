@@ -17,21 +17,21 @@ const Title = (title) => {
                 <h3><router-link to="/guide">Back</router-link></h3>
             </div>
         `,
-    data () {
+    data() {
       return {
-        title
+        title,
       }
-    }
+    },
   }
 }
 
 const State1 = {
   template: '<div>{{ count }}</div>',
   computed: {
-    count () {
+    count() {
       return this.$store.state.count
-    }
-  }
+    },
+  },
 }
 const State2 = {
   template: `
@@ -41,26 +41,26 @@ const State2 = {
         <div>{{ count3 }}</div>
       </div>
     `,
-  data () {
+  data() {
     return {
-      x: 0
+      x: 0,
     }
   },
   computed: mapState({
-    count (state) {
+    count(state) {
       return state.count + this.x
     },
-    count2: state => state.count,
-    count3: 'count'
-  })
+    count2: (state) => state.count,
+    count3: 'count',
+  }),
 }
 const State3 = {
   template: '<div>{{ count }}</div>',
-  computed: mapState(['count'])
+  computed: mapState(['count']),
 }
 const State4 = {
   template: '<div>{{ count }}</div>',
-  computed: { ...mapState(['count']) }
+  computed: { ...mapState(['count']) },
 }
 
 const Getters1 = {
@@ -72,14 +72,14 @@ const Getters1 = {
         </div>
     `,
   computed: {
-    doneTodos () {
+    doneTodos() {
       return this.$store.getters.doneTodos
     },
-    getTodoById () {
+    getTodoById() {
       return (id) => this.$store.getters.getTodoById(id)
     },
-    ...mapGetters(['doneTodosCount'])
-  }
+    ...mapGetters(['doneTodosCount']),
+  },
 }
 
 const Mutations1 = {
@@ -97,25 +97,25 @@ const Mutations1 = {
     `,
   computed: { ...mapState(['count']) },
   methods: {
-    increment () {
+    increment() {
       this.$store.commit('increment')
     },
-    incrementBy (n) {
+    incrementBy(n) {
       this.$store.commit('incrementBy', n)
     },
-    incrementBy2 (n) {
+    incrementBy2(n) {
       this.$store.commit('incrementBy2', {
-        n
+        n,
       })
     },
-    incrementBy3 (n) {
+    incrementBy3(n) {
       this.$store.commit({
         type: 'incrementBy2',
-        n
+        n,
       })
     },
-    ...mapMutations({ add: 'increment' })
-  }
+    ...mapMutations({ add: 'increment' }),
+  },
 }
 
 const Actions1 = {
@@ -131,17 +131,19 @@ const Actions1 = {
     `,
   computed: { ...mapState(['count']) },
   methods: {
-    increment () {
+    increment() {
       this.$store.dispatch('increment').then()
     },
-    incrementBy (n) {
-      this.$store.dispatch({
-        type: 'incrementBy',
-        n
-      }).then()
+    incrementBy(n) {
+      this.$store
+        .dispatch({
+          type: 'incrementBy',
+          n,
+        })
+        .then()
     },
-    ...mapActions({ add: 'increment' })
-  }
+    ...mapActions({ add: 'increment' }),
+  },
 }
 
 const Modules1 = {
@@ -157,55 +159,55 @@ const Modules1 = {
         </div>
     `,
   computed: {
-    apple () {
+    apple() {
       // 无论模块是否添加 namespaced: true，调用 state 时，都需要加上命名空间
       return this.$store.state.fruits.apple
     },
-    cat () {
+    cat() {
       return this.$store.state.animals.cat
     },
-    ...mapGetters(['total'])
+    ...mapGetters(['total']),
   },
   methods: {
-    buyApple (n) {
+    buyApple(n) {
       this.$store.commit('fruits/buyApple', n)
     },
     // 可以将模块的命名空间作为第一个参数传递给 Component Binding Helpers
     ...mapActions('fruits', ['buyApple2']),
-    buy () {
+    buy() {
       this.$store.dispatch('buy').then()
     },
-    buyRoot () {
+    buyRoot() {
       this.$store.dispatch('buyRoot').then()
-    }
-  }
+    },
+  },
 }
 
 const routes = [
   {
     path: '/',
     name: 'Case',
-    component: Case
+    component: Case,
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
   },
   {
     path: '/user-center',
     name: 'UserCenter',
-    component: UserCenter
+    component: UserCenter,
   },
   {
     path: '/course/:id',
     name: 'Course',
-    component: () => import('@/views/case/Course')
+    component: () => import('@/views/case/Course'),
   },
   {
     path: '/guide',
     name: 'Guide',
-    component: Guide
+    component: Guide,
   },
   {
     path: '/guide/state',
@@ -215,32 +217,26 @@ const routes = [
       { path: '1', component: State1 },
       { path: '2', component: State2 },
       { path: '3', component: State3 },
-      { path: '4', component: State4 }
-    ]
+      { path: '4', component: State4 },
+    ],
   },
   {
     path: '/guide/getters',
     name: 'Getters',
     component: Title('Getters'),
-    children: [
-      { path: '1', component: Getters1 }
-    ]
+    children: [{ path: '1', component: Getters1 }],
   },
   {
     path: '/guide/mutations',
     name: 'Mutations',
     component: Title('Mutations'),
-    children: [
-      { path: '1', component: Mutations1 }
-    ]
+    children: [{ path: '1', component: Mutations1 }],
   },
   {
     path: '/guide/actions',
     name: 'Actions',
     component: Title('Actions'),
-    children: [
-      { path: '1', component: Actions1 }
-    ]
+    children: [{ path: '1', component: Actions1 }],
   },
   {
     path: '/guide/modules',
@@ -248,15 +244,15 @@ const routes = [
     component: Title('Modules'),
     children: [
       { path: '1', component: Modules1 },
-      { path: '2', component: () => import('@/views/guide/ModulesExample') }
-    ]
-  }
+      { path: '2', component: () => import('@/views/guide/ModulesExample') },
+    ],
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 })
 
 export default router

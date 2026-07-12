@@ -26,10 +26,8 @@
 
 <script>
 export default {
-  name: "index"
+  name: 'Index',
 }
 </script>
 
-<style lang="less">
-
-</style>
+<style lang="less"></style>

@@ -38,7 +38,7 @@
 ## npm vs [yarn](https://yarn.bootcss.com/docs/cli/)
 | npm                            | yarn                    |
 |:-------------------------------|:------------------------|
-| `npm init`                     | `yarn create ?`         |
+| `npm init/create`              | `yarn init/create`      |
 | `npm install`                  | `yarn [install]`        |
 | `npm install <pkg>`            | `yarn add <pkg>`        |
 | `npm install <pkg> --save-dev` | `yarn add <pkg> --dev`  |

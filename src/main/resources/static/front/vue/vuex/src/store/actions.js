@@ -1,23 +1,23 @@
 export default {
   /* case */
-  buyVip ({ commit }, e) {
+  buyVip({ commit }, e) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         commit('setMemberInfo', {
           userStatus: e.userStatus,
-          vipLevel: e.vipLevel
+          vipLevel: e.vipLevel,
         })
         resolve('购买成功')
       }, 500)
     })
   },
-  getFreeVip ({ commit, state }) {
+  getFreeVip({ commit, state }) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (state.userStatus === 0) {
           commit('setMemberInfo', {
             userStatus: 1,
-            vipLevel: 0
+            vipLevel: 0,
           })
           resolve('分享成功，您已获得一个月的vip会员')
         } else {
@@ -28,12 +28,12 @@ export default {
   },
 
   /* guide */
-  increment (context) {
+  increment(context) {
     context.commit('increment')
   },
-  incrementBy ({ commit }, payload) {
+  incrementBy({ commit }, payload) {
     setTimeout(() => {
       commit('incrementBy2', payload)
     }, 500)
-  }
+  },
 }

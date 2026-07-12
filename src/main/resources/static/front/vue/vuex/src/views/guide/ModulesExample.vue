@@ -1,10 +1,10 @@
 <template>
   <div>
-    <hr>
+    <hr />
     <h2>Products</h2>
-    <ProductList/>
-    <hr>
-    <ShoppingCart/>
+    <ProductList />
+    <hr />
+    <ShoppingCart />
   </div>
 </template>
 
@@ -13,11 +13,9 @@ import ProductList from '@/components/guide/ProductList.vue'
 import ShoppingCart from '@/components/guide/ShoppingCart.vue'
 
 export default {
-  name: "ModulesExample",
-  components: { ProductList, ShoppingCart }
+  name: 'ModulesExample',
+  components: { ProductList, ShoppingCart },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

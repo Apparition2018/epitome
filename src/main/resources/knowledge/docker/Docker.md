@@ -1038,7 +1038,6 @@ docker run -d --name emqx-enterprise \
 -p 1883:1883 -p 8083:8083 -p 8084:8084 -p 8883:8883 -p 18083:18083 \
 -v $PWD/data:/opt/emqx/data \
 -v $PWD/log:/opt/emqx/log \
--v $PWD/etc:/opt/emqx/etc \
 emqx/emqx-enterprise
 
 # EMQX Dashboard：http://192.168.119.128:18083/  admin/public

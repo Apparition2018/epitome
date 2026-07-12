@@ -13,13 +13,13 @@ const themes = {
   light: {
     classnames: 'btn btn-primary',
     bgColor: '#eee',
-    color: '#000'
+    color: '#000',
   },
   dark: {
     classnames: 'btn btn-light',
     bgColor: '#222',
-    color: '#fff'
-  }
+    color: '#fff',
+  },
 }
 
 const tags = ['恐龙', '足球小子']
@@ -29,7 +29,7 @@ class App extends Component {
     super(props)
     this.state = {
       theme: 'light',
-      comments: ['this is my first reply']
+      comments: ['this is my first reply'],
     }
     this.changeTheme = this.changeTheme.bind(this)
     this.addComment = this.addComment.bind(this)
@@ -41,7 +41,7 @@ class App extends Component {
 
   addComment(comment) {
     this.setState({
-      comments: [...this.state.comments, comment]
+      comments: [...this.state.comments, comment],
     })
   }
 
@@ -55,7 +55,12 @@ class App extends Component {
             <p>
               Edit <code>src/App.js</code> and save to reload.
             </p>
-            <a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
+            <a
+              className='App-link'
+              href='https://reactjs.org'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               Learn React
             </a>
           </header>

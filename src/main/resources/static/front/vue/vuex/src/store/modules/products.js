@@ -1,27 +1,27 @@
 import shop from '../../api/shop'
 
 const state = () => ({
-  all: []
+  all: [],
 })
 
 const getters = {}
 
 const mutations = {
-  setProducts (state, products) {
+  setProducts(state, products) {
     state.all = products
   },
-  decrementProductInventory (state, { id }) {
-    const product = state.all.find(product => product.id === id)
+  decrementProductInventory(state, { id }) {
+    const product = state.all.find((product) => product.id === id)
     product.inventory--
-  }
+  },
 }
 
 const actions = {
-  getAllProducts ({ commit }) {
-    shop.getProducts(products => {
+  getAllProducts({ commit }) {
+    shop.getProducts((products) => {
       commit('setProducts', products)
     })
-  }
+  },
 }
 
 export default {
@@ -29,5 +29,5 @@ export default {
   state,
   getters,
   mutations,
-  actions
+  actions,
 }

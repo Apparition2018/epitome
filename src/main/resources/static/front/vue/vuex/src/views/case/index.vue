@@ -3,15 +3,16 @@
     <h1>你好</h1>
     <p class="text">
       尊敬的
-      <span style="color: red;">{{ memberInfo }}用户</span>，欢迎来到德莱联盟！
+      <span style="color: red">{{ memberInfo }}用户</span>，欢迎来到德莱联盟！
     </p>
 
     <div class>
       <card
-          :course="item"
-          @goVideoList="goVideoList"
-          v-for="(item, index) in courseList"
-          :key="index">
+        v-for="(item, index) in courseList"
+        :key="index"
+        :course="item"
+        @go-video-list="goVideoList"
+      >
       </card>
     </div>
     <button class="footer-opt btn" @click="recharge">充值</button>
@@ -19,77 +20,77 @@
 </template>
 
 <script>
-import Card from "@/components/case/Card";
-import {mapGetters, mapState} from "vuex";
+import Card from '@/components/case/Card'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
-  name: "index",
+  name: 'Index',
   components: {
-    Card
+    Card,
   },
-  data () {
+  data() {
     return {
-      courseList: []
+      courseList: [],
     }
   },
-  created () {
+  computed: {
+    ...mapState(['userStatus', 'vipLevel']),
+    ...mapGetters(['memberInfo']),
+  },
+  created() {
     // Mock
     this.courseList = [
       {
-        id: "1",
-        thumb: "http://img1.mukewang.com/5cb831fd0949d9f306000338-590-330.jpg",
-        title: "学习vuex",
-        description: "2312",
-        charge: "",
+        id: '1',
+        thumb: 'http://img1.mukewang.com/5cb831fd0949d9f306000338-590-330.jpg',
+        title: '学习vuex',
+        description: '2312',
+        charge: '',
         userStatus: 0,
-        vipLevel: 0
+        vipLevel: 0,
       },
       {
-        id: "2",
-        thumb: "http://img1.mukewang.com/5cb831fd0949d9f306000338-590-330.jpg",
-        title: "实战课程",
-        description: "2312",
-        charge: "实战课程",
+        id: '2',
+        thumb: 'http://img1.mukewang.com/5cb831fd0949d9f306000338-590-330.jpg',
+        title: '实战课程',
+        description: '2312',
+        charge: '实战课程',
         userStatus: 1,
-        vipLevel: 0
+        vipLevel: 0,
       },
       {
-        id: "3",
-        thumb: "http://img1.mukewang.com/5cb831fd0949d9f306000338-590-330.jpg",
-        title: "v12会员专享课程",
-        description: "2312",
-        charge: "v12会员专享",
+        id: '3',
+        thumb: 'http://img1.mukewang.com/5cb831fd0949d9f306000338-590-330.jpg',
+        title: 'v12会员专享课程',
+        description: '2312',
+        charge: 'v12会员专享',
         userStatus: 2,
-        vipLevel: 12
-      }
-    ];
-  },
-  computed: {
-    ...mapState(["userStatus", "vipLevel"]),
-    ...mapGetters(["memberInfo"])
+        vipLevel: 12,
+      },
+    ]
   },
   methods: {
-    recharge () {
-      this.$router.push("./user-center")
+    recharge() {
+      this.$router.push('./user-center')
     },
-    goVideoList (e) {
+    goVideoList(e) {
       if (this.checkPermission(e)) {
         this.$router.push({
           name: 'Course',
           params: {
-            id: e.id
-          }
+            id: e.id,
+          },
         })
       } else {
-      c  alert("权限不足，无法观看")
+        alert('权限不足，无法观看')
       }
     },
-    checkPermission (e) {
+    checkPermission(e) {
       const userStatus = this.$store.state.userStatus
       const vipLevel = this.$store.state.vipLevel
-      return userStatus >= e.userStatus && vipLevel >= e.vipLevel;
-    }
-  }
+      return userStatus >= e.userStatus && vipLevel >= e.vipLevel
+    },
+  },
 }
 </script>
 

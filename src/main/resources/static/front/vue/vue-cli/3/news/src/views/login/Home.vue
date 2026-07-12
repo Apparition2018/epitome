@@ -1,12 +1,12 @@
 <template>
   <div>
-    <router-view/>
+    <router-view />
     <ul class="footer">
       <li class="icons">
-        <router-link :to="{name: 'List'}">新闻列表</router-link>
+        <router-link :to="{ name: 'List' }">新闻列表</router-link>
       </li>
       <li class="icons">
-        <router-link :to="{name: 'User'}">个人中心</router-link>
+        <router-link :to="{ name: 'User' }">个人中心</router-link>
       </li>
     </ul>
   </div>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
 }
 </script>
 

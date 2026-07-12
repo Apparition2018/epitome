@@ -1,12 +1,17 @@
 <template>
   <div>
     <div>
-      <input class="item" v-model="inputValue"/>
+      <input v-model="inputValue" class="item" />
       <button @click="handleSubmit">提交</button>
     </div>
     <ul>
-      <todo-item v-for="(item, index) of list" :key="index" :content="item" :index="index" @delete="handleDelete">
-
+      <todo-item
+        v-for="(item, index) of list"
+        :key="index"
+        :content="item"
+        :index="index"
+        @delete="handleDelete"
+      >
       </todo-item>
     </ul>
   </div>
@@ -17,26 +22,24 @@ import TodoItem from './components/TodoItem'
 
 export default {
   components: {
-    'todo-item': TodoItem
+    'todo-item': TodoItem,
   },
-  data () {
+  data() {
     return {
       inputValue: '',
-      list: []
+      list: [],
     }
   },
   methods: {
-    handleSubmit () {
+    handleSubmit() {
       this.list.push(this.inputValue)
       this.inputValue = ''
     },
-    handleDelete (index) {
+    handleDelete(index) {
       this.list.splice(index, 1)
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

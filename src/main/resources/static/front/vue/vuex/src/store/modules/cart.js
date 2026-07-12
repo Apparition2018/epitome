@@ -2,18 +2,18 @@ import shop from '../../api/shop'
 
 const state = () => ({
   items: [],
-  checkoutStatus: null
+  checkoutStatus: null,
 })
 
 const getters = {
   cartProducts: (state, getters, rootState) => {
     return state.items.map(({ id, quantity }) => {
-      const product = rootState.products.all.find(product => product.id === id)
+      const product = rootState.products.all.find((product) => product.id === id)
       return {
         id: product.id,
         title: product.title,
         price: product.price,
-        quantity
+        quantity,
       }
     })
   },
@@ -21,30 +21,30 @@ const getters = {
     return getters.cartProducts.reduce((total, product) => {
       return total + product.price * product.quantity
     }, 0)
-  }
+  },
 }
 
 const mutations = {
-  pushProductToCart (state, { id }) {
+  pushProductToCart(state, { id }) {
     state.items.push({
       id,
-      quantity: 1
+      quantity: 1,
     })
   },
-  incrementItemQuantity (state, { id }) {
-    const cartItem = state.items.find(item => item.id === id)
+  incrementItemQuantity(state, { id }) {
+    const cartItem = state.items.find((item) => item.id === id)
     cartItem.quantity++
   },
-  setCartItems (state, { items }) {
+  setCartItems(state, { items }) {
     state.items = items
   },
-  setCheckoutStatus (state, status) {
+  setCheckoutStatus(state, status) {
     state.checkoutStatus = status
-  }
+  },
 }
 
 const actions = {
-  checkout ({ commit, state }, products) {
+  checkout({ commit, state }, products) {
     const saveCartItems = [...state.items]
     commit('setCheckoutStatus', null)
     // empty cart
@@ -55,13 +55,13 @@ const actions = {
       () => {
         commit('setCheckoutStatus', 'failed')
         commit('setCartItems', { items: saveCartItems })
-      }
+      },
     )
   },
-  addProductToCart ({ state, commit }, product) {
+  addProductToCart({ state, commit }, product) {
     commit('setCheckoutStatus', null)
     if (product.inventory > 0) {
-      const cartItem = state.items.find(item => item.id === product.id)
+      const cartItem = state.items.find((item) => item.id === product.id)
       if (!cartItem) {
         commit('pushProductToCart', { id: product.id })
       } else {
@@ -70,7 +70,7 @@ const actions = {
     }
     // remove 1 item from stock
     commit('products/decrementProductInventory', { id: product.id }, { root: true })
-  }
+  },
 }
 
 export default {
@@ -78,5 +78,5 @@ export default {
   state,
   getters,
   mutations,
-  actions
+  actions,
 }

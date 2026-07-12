@@ -1,11 +1,6 @@
 <template>
   <div class="login">
-    <button
-      id="guide"
-      @click="guide"
-    >
-      Guide
-    </button>
+    <button id="guide" @click="guide">Guide</button>
     <p class="login-title">
       <span class="login-title_left">Muke</span>
       <span class="login-title_right">Wang</span>
@@ -16,7 +11,7 @@
         class="section-input"
         placeholder-class="input-holder"
         placeholder="请输入您的账号"
-      >
+      />
     </div>
     <div class="section">
       <input
@@ -25,36 +20,29 @@
         type="password"
         placeholder-class="input-holder"
         placeholder="请输入您的密码"
-      >
+      />
     </div>
-    <button
-      class="btn"
-      @click="login"
-    >
-      登录
-    </button>
-    <p class="login-text">
-      版本归属@ytu所有
-    </p>
+    <button class="btn" @click="login">登录</button>
+    <p class="login-text">版本归属@ytu所有</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Login',
-  data () {
+  data() {
     return {
       isHidden: false,
       isPassword: true,
       logs: [],
       form: {
         account: '',
-        password: ''
-      }
+        password: '',
+      },
     }
   },
   methods: {
-    login () {
+    login() {
       if (!this.form.account && !this.form.password) {
         alert('请填写账号密码')
         return false
@@ -63,19 +51,19 @@ export default {
       setTimeout(() => {
         this.$store.commit('login', {
           account: that.form.account,
-          password: that.form.password
+          password: that.form.password,
         })
         this.$store.commit('setMemberInfo', {
           userStatus: 0,
-          vipLevel: 0
+          vipLevel: 0,
         })
         that.$router.push('./')
       }, 500)
     },
-    guide () {
+    guide() {
       this.$router.push('/guide')
-    }
-  }
+    },
+  },
 }
 </script>
 

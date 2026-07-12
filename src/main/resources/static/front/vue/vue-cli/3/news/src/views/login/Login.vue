@@ -2,9 +2,9 @@
   <div>
     <form v-if="!isReg">
       <div>用户名：</div>
-      <input type="text" v-model="name">
+      <input v-model="name" type="text" />
       <div>密码：</div>
-      <input type="text" v-model="password">
+      <input v-model="password" type="text" />
       <div>
         <button type="button" @click="login()">登录</button>
         <button type="button" @click="reg()">注册</button>
@@ -12,11 +12,11 @@
     </form>
     <form v-else>
       <div>用户名：</div>
-      <input type="text" v-model="name">
+      <input v-model="name" type="text" />
       <div>密码：</div>
-      <input type="password" v-model="password">
+      <input v-model="password" type="password" />
       <div>再次输入密码：</div>
-      <input type="password" v-model="repeat">
+      <input v-model="repeat" type="password" />
       <div>
         <button type="button" @click="addUser()">确定</button>
         <button type="button" @click="cancel()">取消</button>
@@ -31,18 +31,20 @@
 // 项目演示：https://root-lucas.github.io/vue-news-info/dist/
 export default {
   name: 'Login',
-  data () {
+  data() {
     return {
       isReg: false,
       name: '',
       password: '',
-      repeat: ''
+      repeat: '',
     }
   },
   methods: {
-    login () {
-      if (localStorage.getItem('name') === this.name &&
-        localStorage.getItem('password') === this.password) {
+    login() {
+      if (
+        localStorage.getItem('name') === this.name &&
+        localStorage.getItem('password') === this.password
+      ) {
         this.name = ''
         this.password = ''
         this.$router.push('/home/list')
@@ -50,13 +52,13 @@ export default {
         alert('用户名或密码不正确！')
       }
     },
-    reg () {
+    reg() {
       this.isReg = true
     },
-    cancel () {
+    cancel() {
       this.isReg = false
     },
-    addUser () {
+    addUser() {
       if (this.password === this.repeat) {
         localStorage.setItem('name', this.name)
         localStorage.setItem('password', this.password)
@@ -67,11 +69,9 @@ export default {
       } else {
         alert('两次密码输入输入不一致！')
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

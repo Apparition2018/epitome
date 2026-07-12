@@ -1,21 +1,21 @@
 export default {
   /* case */
-  login (state, v) {
+  login(state, v) {
     state.userInfo = v
   },
-  setMemberInfo (state, v) {
+  setMemberInfo(state, v) {
     state.userStatus = v.userStatus
     state.vipLevel = v.vipLevel
   },
 
   /* guide */
-  increment (state) {
+  increment(state) {
     state.count++
   },
-  incrementBy (state, n) {
+  incrementBy(state, n) {
     state.count += n
   },
-  incrementBy2 (state, payload) {
+  incrementBy2(state, payload) {
     state.count += payload.n
-  }
+  },
 }

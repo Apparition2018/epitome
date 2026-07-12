@@ -1,25 +1,29 @@
 <template>
   <div>
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
+    <el-form ref="ruleForm" :model="form" :rules="rules">
       <el-form-item prop="phone">
-        <el-input placeholder="请输入手机号" v-model="ruleForm.phone">
-          <i slot="prefix" class="el-icon-phone"></i>
+        <el-input v-model="form.phone" placeholder="请输入手机号">
+          <template #prefix>
+            <i class="el-icon-phone"></i>
+          </template>
         </el-input>
       </el-form-item>
       <el-form-item prop="code">
         <el-row :gutter="18">
           <el-col :span="18">
-            <el-input placeholder="请输入验证码" v-model="ruleForm.code">
-              <i slot="prefix" class="el-icon-tickets"></i>
+            <el-input v-model="form.code" placeholder="请输入验证码">
+              <template #prefix>
+                <i class="el-icon-tickets"></i>
+              </template>
             </el-input>
           </el-col>
           <el-col :span="5">
-            <el-button @click="sendCode" :disabled="disabled">{{ btnText }}</el-button>
+            <el-button :disabled="disabled" @click="sendCode">{{ btnText }}</el-button>
           </el-col>
         </el-row>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" style="width: 100%;" @click="phoneLogin">登录</el-button>
+        <el-button type="primary" style="width: 100%" @click="phoneLogin">登录</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -27,18 +31,19 @@
 
 <script>
 export default {
-  name: 'phoneLogin',
+  name: 'PhoneLogin',
   props: {
     ruleForm: {
       type: Object,
-      required: true
+      required: true,
     },
     countDown: {
       type: Number,
-      default: 60
-    }
+      default: 60,
+    },
   },
-  data () {
+  emits: ['send', 'submit', 'errHandle'],
+  data() {
     let checkPhone = (rule, value, callback) => {
       if (!value) {
         return callback(new Error('手机号不能为空'))
@@ -52,23 +57,23 @@ export default {
       }
     }
     return {
+      form: { ...this.ruleForm },
       rules: {
-        phone: [
-          {validator: checkPhone, trigger: 'change'}
-        ],
-        code: [
-          {required: true, message: '验证码不能为空', trigger: 'blur'}
-        ]
+        phone: [{ validator: checkPhone, trigger: 'change' }],
+        code: [{ required: true, message: '验证码不能为空', trigger: 'blur' }],
       },
       disabled: false,
       btnText: '发送验证码',
       time: 0,
     }
   },
+  mounted() {
+    this.time = this.countDown
+  },
   methods: {
-    sendCode () {
+    sendCode() {
       // 1.手机号必须输入正确，如果输入不正确就提示
-      this.$refs.ruleForm.validateField('phone', errorMessage => {
+      this.$refs.ruleForm.validateField('phone', (errorMessage) => {
         if (errorMessage) {
           this.$message.error(errorMessage)
         } else {
@@ -91,22 +96,17 @@ export default {
         }
       })
     },
-    phoneLogin () {
+    phoneLogin() {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
           this.$emit('submit')
         } else {
-          this.emit('errHandle')
+          this.$emit('errHandle')
         }
       })
-    }
+    },
   },
-  mounted () {
-    this.time = this.countDown
-  }
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

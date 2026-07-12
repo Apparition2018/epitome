@@ -17,24 +17,24 @@
 </template>
 
 <script>
-import {EventBus} from '@/api/event-bus'
+import { EventBus } from '@/api/event-bus'
 
 export default {
-  name: "Left",
+  name: 'Left',
   methods: {
     menu1: () => {
-      EventBus.$emit("val", 1)
+      EventBus.$emit('val', 1)
     },
     menu2: () => {
-      EventBus.$emit("val", 2)
+      EventBus.$emit('val', 2)
     },
     menu3: () => {
-      EventBus.$emit("val", 3)
+      EventBus.$emit('val', 3)
     },
     menu4: () => {
-      EventBus.$emit("val", 4)
-    }
-  }
+      EventBus.$emit('val', 4)
+    },
+  },
 }
 </script>
 

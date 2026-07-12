@@ -1,28 +1,22 @@
 <template>
   <div>
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
+    <el-form ref="ruleForm" :model="form" :rules="rules">
       <el-form-item prop="username">
-        <el-input
-            v-model="ruleForm.username"
-            placeholder="请输入用户名">
-          <i slot="prefix" class="el-icon-user"></i>
+        <el-input v-model="form.username" placeholder="请输入用户名">
+          <template #prefix>
+            <i class="el-icon-user"></i>
+          </template>
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input
-            v-model="ruleForm.password"
-            placeholder="请输入密码"
-            show-password>
-          <i slot="prefix" class="el-icon-lock"></i>
+        <el-input v-model="form.password" placeholder="请输入密码" show-password>
+          <template #prefix>
+            <i class="el-icon-lock"></i>
+          </template>
         </el-input>
       </el-form-item>
       <el-form-item>
-        <el-button
-            @click="login"
-            type="primary"
-            style="width: 100%;">
-          登录
-        </el-button>
+        <el-button type="primary" style="width: 100%" @click="login"> 登录 </el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -34,15 +28,21 @@ export default {
   props: {
     ruleForm: {
       type: Object,
-      required: true
+      required: true,
     },
     rules: {
       type: Object,
-      required: true
+      required: true,
+    },
+  },
+  emits: ['submit', 'errHandle'],
+  data() {
+    return {
+      form: { ...this.ruleForm },
     }
   },
   methods: {
-    login () {
+    login() {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
           this.$emit('submit')
@@ -50,11 +50,9 @@ export default {
           this.$emit('errHandle')
         }
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

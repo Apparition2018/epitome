@@ -8,10 +8,8 @@
 
 <script>
 export default {
-  name: 'A'
+  name: 'LinkA1',
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

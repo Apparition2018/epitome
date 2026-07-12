@@ -1,17 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class CommentBox extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit (event) {
+  handleSubmit(event) {
     this.props.onAddComment(this.textInput.value)
     event.preventDefault()
   }
 
-  render () {
+  render() {
     return (
       <form className='p-2 px-5' onSubmit={this.handleSubmit}>
         <div className='form-group'>
@@ -20,7 +21,9 @@ class CommentBox extends React.Component {
             type='text'
             className='form-control'
             placeholder='请输入内容'
-            ref={(textInput) => { this.textInput = textInput }}
+            ref={(textInput) => {
+              this.textInput = textInput
+            }}
           />
         </div>
         <button type='submit' className='btn btn-primary'>
@@ -30,6 +33,11 @@ class CommentBox extends React.Component {
       </form>
     )
   }
+}
+
+CommentBox.propTypes = {
+  onAddComment: PropTypes.func.isRequired,
+  commentsLength: PropTypes.number.isRequired,
 }
 
 export default CommentBox

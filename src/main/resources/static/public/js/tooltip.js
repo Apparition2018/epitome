@@ -8,10 +8,10 @@ $('body').prepend(div)
 let flag = 0
 const $tooltip = $('#tooltip')
 
-; (function ($) {
+;(function ($) {
   $.fn.tooltip = function (data) {
     $(this).each(function () {
-      $(this).mouseenter(function (e) {
+      $(this).mouseenter(function () {
         $tooltip.empty()
         $tooltip.css('display', '')
         flag = 1
@@ -28,7 +28,8 @@ const $tooltip = $('#tooltip')
             element = $('<div>')
             element.text(v)
           }
-          $tooltip.append(element).append('<hr/>')
+          $tooltip.append(element)
+          $tooltip.append('<hr/>')
         })
         $('#tooltip hr:last-child').remove()
       })

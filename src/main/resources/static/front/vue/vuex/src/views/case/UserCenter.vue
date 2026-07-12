@@ -15,10 +15,10 @@
           <li v-for="(item, index) in vipList" :key="index" class="list-item">
             <div class="item-name">{{ item.name }}</div>
             <div class="item-content">
-                            <span class="item-content__price">
-                                {{ item.charge }}元
-                                <span class="item-content__date">/ 30天</span>
-                            </span>
+              <span class="item-content__price">
+                {{ item.charge }}元
+                <span class="item-content__date">/ 30天</span>
+              </span>
               <button class="item-content__btn" @click="buy(item)">购买</button>
             </div>
           </li>
@@ -29,55 +29,55 @@
 </template>
 
 <script>
-import {mapGetters, mapState} from "vuex";
+import { mapGetters, mapState } from 'vuex'
 
 export default {
-  name: "UserCenter",
-  data () {
+  name: 'UserCenter',
+  data() {
     return {
-      vipList: []
+      vipList: [],
     }
-  },
-  mounted () {
-    this.vipList = [
-      {name: "vip会员", charge: "10.00", vipLevel: 0, userStatus: 1},
-      {
-        name: "高级VIP1会员",
-        charge: "50.00",
-        vipLevel: 1,
-        userStatus: 2
-      },
-      {
-        name: "高级VIP3会员",
-        charge: "100.00",
-        vipLevel: 3,
-        userStatus: 2
-      },
-      {
-        name: "高级VIP9会员",
-        charge: "1000.00",
-        vipLevel: 9,
-        userStatus: 2
-      },
-      {
-        name: "高级VIP12会员",
-        charge: "10000.00",
-        vipLevel: 12,
-        userStatus: 2
-      }
-    ];
   },
   computed: {
-    ...mapState(["userInfo"]),
-    ...mapGetters(["memberInfo"])
+    ...mapState(['userInfo']),
+    ...mapGetters(['memberInfo']),
+  },
+  mounted() {
+    this.vipList = [
+      { name: 'vip会员', charge: '10.00', vipLevel: 0, userStatus: 1 },
+      {
+        name: '高级VIP1会员',
+        charge: '50.00',
+        vipLevel: 1,
+        userStatus: 2,
+      },
+      {
+        name: '高级VIP3会员',
+        charge: '100.00',
+        vipLevel: 3,
+        userStatus: 2,
+      },
+      {
+        name: '高级VIP9会员',
+        charge: '1000.00',
+        vipLevel: 9,
+        userStatus: 2,
+      },
+      {
+        name: '高级VIP12会员',
+        charge: '10000.00',
+        vipLevel: 12,
+        userStatus: 2,
+      },
+    ]
   },
   methods: {
-    buy (e) {
-      this.$store.dispatch('buyVip', e).then(res => {
-        alert(res);
+    buy(e) {
+      this.$store.dispatch('buyVip', e).then((res) => {
+        alert(res)
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -121,10 +121,8 @@ export default {
       margin-bottom: 20px;
       border-radius: 5px;
       list-style: none;
-      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
-      background: linear-gradient(to left top,
-      rgb(234, 124, 62),
-      rgb(173, 26, 139));
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
+      background: linear-gradient(to left top, rgb(234, 124, 62), rgb(173, 26, 139));
 
       .item-name {
         display: block;

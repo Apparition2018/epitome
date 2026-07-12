@@ -4,22 +4,22 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {}
   },
-  onReady () {
+  onReady() {
     uni.setNavigationBarTitle({
-      title: '导航条'
+      title: '导航条',
     })
     uni.setNavigationBarColor({
       frontColor: '#fff',
-      backgroundColor: '#000'
+      backgroundColor: '#000',
     })
     uni.showNavigationBarLoading()
     setTimeout(() => {
       uni.hideNavigationBarLoading()
     }, 1500)
-  }
+  },
 }
 </script>
 

@@ -1,10 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="(item, index) in pageLists"
-          :key="index">
-        {{ item.title }}-{{ item.content }}
-      </li>
+      <li v-for="(item, index) in pageLists" :key="index">{{ item.title }}-{{ item.content }}</li>
     </ul>
   </div>
 </template>
@@ -13,13 +10,11 @@
 export default {
   name: 'List',
   computed: {
-    pageLists () {
+    pageLists() {
       return this.$store.state.lists
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
