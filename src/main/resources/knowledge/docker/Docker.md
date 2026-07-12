@@ -1035,6 +1035,7 @@ cd /home/ljh/docker_data/emqx
 ```bash
 # https://hub.docker.com/r/emqx/emqx-enterprise
 docker run -d --name emqx-enterprise \
+--restart unless-stopped \
 -p 1883:1883 -p 8083:8083 -p 8084:8084 -p 8883:8883 -p 18083:18083 \
 -v $PWD/data:/opt/emqx/data \
 -v $PWD/log:/opt/emqx/log \

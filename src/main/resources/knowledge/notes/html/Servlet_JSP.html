@@ -46,7 +46,11 @@
               <li>
                 <details>
                   <summary>Servlet组件运行原理</summary>
-                  <img src="../img/Servlet组件运行原理.jpg" width="500px" alt="Servlet组件运行原理" />
+                  <img
+                    src="../img/Servlet组件运行原理.jpg"
+                    width="500px"
+                    alt="Servlet组件运行原理"
+                  />
                 </details>
               </li>
             </ul>
@@ -60,8 +64,12 @@
               <li>
                 web服务器拆包（按http协议将请求数据报中的相关数据解析出来），将解析到的数据添加到request对象里，同时，创建一个response对象。
               </li>
-              <li>web服务器依据路径找到Servlet创建对象，调用service处理请求，处理结果写到response对象里</li>
-              <li>web服务器将response对象中的数据取出来，打包（按http协议创建数据包），发送给浏览器</li>
+              <li>
+                web服务器依据路径找到Servlet创建对象，调用service处理请求，处理结果写到response对象里
+              </li>
+              <li>
+                web服务器将response对象中的数据取出来，打包（按http协议创建数据包），发送给浏览器
+              </li>
               <li>浏览器拆包（按http协议将数据包中的数据解析出来），生成相应的页面</li>
             </ol>
             <br />
@@ -80,7 +88,8 @@
               <li>部署：将appName整个文件夹拷贝到Tomcat的webapps文件下 ???</li>
               <li>
                 启动Tomcat并访问Servlet：在地址栏输入符合一定规范的地址<br />
-                　　<span class="val">http://ip:port/appName/servlet的URL</span>(URL在web.xml描述文件中可以找到)
+                　　<span class="val">http://ip:port/appName/servlet的URL</span
+                >(URL在web.xml描述文件中可以找到)
               </li>
             </ol>
             <br />
@@ -163,7 +172,9 @@
           <li>
             <span class="que">Servlet如何处理Http协议</span>
             <ul>
-              <li>Web容器收到一个Http请求时，通信数据由Web容器负责封装和提供，这些信息被解析成以下两个对象</li>
+              <li>
+                Web容器收到一个Http请求时，通信数据由Web容器负责封装和提供，这些信息被解析成以下两个对象
+              </li>
             </ul>
             <ol>
               <li>
@@ -177,10 +188,14 @@
                 </ol>
                 方法： ???
                 <ol>
-                  <li>Enumeration&lt;String&gt; (HttpServletRequest).<span>getHeaderNames</span>()</li>
+                  <li>
+                    Enumeration&lt;String&gt; (HttpServletRequest).<span>getHeaderNames</span>()
+                  </li>
                   <li>String (HttpServletRequest).<span>getHeader</span>(String name)</li>
                   <li>String (HttpServletRequest).<span>getMethod</span>()　//　get,post,put...</li>
-                  <li>String (HttpServletRequest).<span>getRequestURI</span>()　//　获取请求资源路径</li>
+                  <li>
+                    String (HttpServletRequest).<span>getRequestURI</span>()　//　获取请求资源路径
+                  </li>
                 </ol>
               </li>
               <li>
@@ -200,7 +215,8 @@
             <span class="que2">处理中文</span>
             <ol>
               <li>
-                (ServletRequest).<span>setCharacterEncoding</span>(<span class="val">"utf-8"</span>);
+                (ServletRequest).<span>setCharacterEncoding</span>(<span class="val">"utf-8"</span
+                >);
                 <ol>
                   <li>设置发往服务器的参数以何种编码，设置从request取得的值或数据库中取出的值</li>
                   <li>如没设置，服务器默认使用"iso-8859-1"来编码</li>
@@ -211,10 +227,16 @@
                 </ol>
               </li>
               <li>
-                (ServletResponse).<span>setContentType</span>(<span class="val">text/html; charset=utf-8"</span>);
+                (ServletResponse).<span>setContentType</span>(<span class="val"
+                  >text/html; charset=utf-8"</span
+                >);
                 <ol>
-                  <li>设置HTTP响应的编码，同时指定了浏览器显示的编码（生成消息头中content-type的值）</li>
-                  <li>通知服务器以何种编码后，自动调用setCharacterEncoding("utf-8")来通知浏览器解码</li>
+                  <li>
+                    设置HTTP响应的编码，同时指定了浏览器显示的编码（生成消息头中content-type的值）
+                  </li>
+                  <li>
+                    通知服务器以何种编码后，自动调用setCharacterEncoding("utf-8")来通知浏览器解码
+                  </li>
                   <li>要在response.getWriter()执行之前或response提交之前使用</li>
                 </ol>
               </li>
@@ -315,7 +337,11 @@
               <li>
                 <details>
                   <summary>对请求地址的处理过程</summary>
-                  <img src="../img/容器如何找到service方法.jpg" width="500px;" alt="容器如何找到service方法" />
+                  <img
+                    src="../img/容器如何找到service方法.jpg"
+                    width="500px;"
+                    alt="容器如何找到service方法"
+                  />
                 </details>
                 <ol>
                   <li>
@@ -360,17 +386,18 @@
                 初始化： 容器在创建好Servlet之后，立即调用init方法，执行一次
                 <ul>
                   <li>
-                    <span class="att">GenericServvet</span>实现了init方法（将ServletConig保存下来，<br />
+                    <span class="att">GenericServvet</span
+                    >实现了init方法（将ServletConig保存下来，<br />
                     　　并提供<span>getServletConfig</span>来获得ServletConfig对象）
                   </li>
                   <li>
                     <details>
                       <summary>&lt;init-param&gt;</summary>
-                      <span class="none"
-                        >　　&lt;param-name&gt;company&lt;/param-name&gt;<br />
-                        　　&lt;param-value&gt;北京达内&lt;/param-value&gt;<br />
-                        　&lt;init-param&gt;</span
-                      >
+                      <span class="none">
+                        &nbsp;&nbsp;&lt;param-name&gt;company&lt;/param-name&gt;<br />
+                        &nbsp;&nbsp;&lt;param-value&gt;北京达内&lt;/param-value&gt;<br />
+                        &lt;init-param&gt;
+                      </span>
                     </details>
                   </li>
                   <li>String <span>getInitParameter</span>(String name)</li>
@@ -414,7 +441,10 @@
               <li>
                 常用方法：
                 <ol>
-                  <li>void (ServletContext).<span>setAttribute</span>(String name, java.lang.Object object)</li>
+                  <li>
+                    void (ServletContext).<span>setAttribute</span>(String name, java.lang.Object
+                    object)
+                  </li>
                 </ol>
               </li>
             </ul>
@@ -430,15 +460,20 @@
                 绑定数据到request对象
                 <ul>
                   <li>void (ServletRequest).<span>setAttribute</span>(String name, Object obj)</li>
-                  <li>Object (ServletRequest).<span>getAttribute</span>(String name)　//　没有值返回null</li>
+                  <li>
+                    Object (ServletRequest).<span>getAttribute</span>(String
+                    name)　//　没有值返回null
+                  </li>
                 </ul>
               </li>
               <li>
                 获得转发器:<br />
-                　　RequestDispatcher (ServletRequest).<span>getRequestDispatcher</span>(String path)
+                　　RequestDispatcher (ServletRequest).<span>getRequestDispatcher</span>(String
+                path)
               </li>
               <li>
-                转发： void (RequestDispatcher).<span>forward</span>(ServletRequest request, ServletResponse response)
+                转发： void (RequestDispatcher).<span>forward</span>(ServletRequest request,
+                ServletResponse response)
               </li>
             </ol>
             特点：
@@ -469,14 +504,14 @@
                   </li>
                   <li>
                     <details>
-                      <summary>&lt;exception-type&gt;</summary>
-                      <span class="none"
-                        >　　&lt;exception-type&gt;<br />
-                        　　　　javax.servlet.ServletException<br />
-                        　　&lt;/exception-type&gt;<br />
-                        　　&lt;location&gt;/error.jsp&lt;/location&gt;<br />
-                        　&lt;/error-page&gt;</span
-                      >
+                      <summary>&lt;exception-page&gt;</summary>
+                      <span class="none">
+                        &lt;exception-type&gt;<br />
+                        &nbsp;&nbsp;javax.servlet.ServletException<br />
+                        &lt;/exception-type&gt;<br />
+                        &lt;location&gt;/error.jsp&lt;/location&gt;<br />
+                        &lt;/error-page&gt;
+                      </span>
                     </details>
                   </li>
                 </ol>
@@ -489,7 +524,10 @@
             <ul>
               <li>链接地址、表单提交、重定向从应用名开始写</li>
               <li>转发从应用名之后开始写???</li>
-              <li>String (HttpServletRequest).<span>getContextPath</span>()　//　获取应用的实际部署名称</li>
+              <li>
+                String
+                (HttpServletRequest).<span>getContextPath</span>()　//　获取应用的实际部署名称
+              </li>
             </ul>
             <br />
           </li>
@@ -510,8 +548,14 @@
             </details>
             <ol>
               <li><span>Cookie</span>(String name, String value)　//　创建Cookie</li>
-              <li>void (HttpServletResponse).<span>addCookie</span>(Cookie cookie)　//　添加/发送Cookie</li>
-              <li>Cookie[] (HttpServletRequest).<span>getCookies</span>()　//　获取客户端所有Cookie对象</li>
+              <li>
+                void (HttpServletResponse).<span>addCookie</span>(Cookie
+                cookie)　//　添加/发送Cookie
+              </li>
+              <li>
+                Cookie[]
+                (HttpServletRequest).<span>getCookies</span>()　//　获取客户端所有Cookie对象
+              </li>
               <li>String (Cookie).<span>getName</span>()　//　获取Cookie的名称</li>
               <li>String (Cookie).<span>getValue</span>()　//　获取Cookie的值</li>
               <li>void (Cookie).<span>setValue</span>(String newValue)　//　修改Cookie的值</li>
@@ -556,23 +600,31 @@
                 HttpSession (HttpServletRequest).<span>getSession</span>()　//　等价于参数为true<br />
                 　　先查看请求中有没有SessionId，如果没有服务器则创建一个Session对象
               </li>
-              <li>void (HttpSession).<span>setAttribute</span>(String name, Object value)　//　绑定对象</li>
+              <li>
+                void (HttpSession).<span>setAttribute</span>(String name, Object
+                value)　//　绑定对象
+              </li>
               <li>Object (HttpSession).<span>getAttribute</span>(String name)　//　获取绑定对象</li>
-              <li>void (HttpSession).<span>removeAttribute</span>(String name)　//　移除绑定对象</li>
+              <li>
+                void (HttpSession).<span>removeAttribute</span>(String name)　//　移除绑定对象
+              </li>
               <li>String (HttpSession).<span>getId</span>()　//　获取sessionId</li>
               <li>void (HttpSession).<span>invalidate</span>()　//　删除Session对象</li>
               <li>
                 修改Session的缺省时间限制:默认30分钟
                 <ol>
-                  <li>void <span>setMaxInactiveInterval</span>(int interval)　//　修改Session超时时间<br /></li>
+                  <li>
+                    void <span>setMaxInactiveInterval</span>(int
+                    interval)　//　修改Session超时时间<br />
+                  </li>
                   <li>
                     修改tomcat中conf/web.xml文件的设置：<br />
                     <details>
                       <summary>&lt;session-config&gt;</summary>
-                      <span class="none"
-                        >　　&lt;session-timout&gt;30&lt;/session-timout&gt;<br />
-                        　&lt;/session-config&gt;</span
-                      >
+                      <span class="none">
+                        &nbsp;&nbsp;&lt;session-timout&gt;30&lt;/session-timout&gt;<br />
+                        &lt;/session-config&gt;
+                      </span>
                     </details>
                   </li>
                 </ol>
@@ -616,8 +668,8 @@
                         <ol>
                           <li>void <span>init</span>(FilterConfig filterConfig)</li>
                           <li>
-                            void <span>doFilter</span>(ServletRequest request, ServletResponse response, FilterChain
-                            chain)
+                            void <span>doFilter</span>(ServletRequest request, ServletResponse
+                            response, FilterChain chain)
                           </li>
                           <li>void <span>destroy</span>()</li>
                         </ol>
@@ -639,20 +691,20 @@
                       <li>
                         <details>
                           <summary>&lt;<span class="tag">filter</span>&gt;</summary>
-                          <span class="none"
-                            >　　&lt;filter-name&gt;filter1&lt;/filter-name&gt;<br />
-                            　　&lt;filter-class&gt;web.xxxServlet&lt;/Servlet-class&gt;<br />
-                            　　&lt;init-param&gt;　//　由FilterConfig读取: String <span>getInitParameter</span>(String
-                            name)<br />
-                            　　　　&lt;param-name&gt;illeaglStr&lt;/param-name&gt;<br />
-                            　　　　&lt;param-value&gt;value&lt;param-value&gt;<br />
-                            　　&lt;init-param&gt;<br />
-                            　&lt;filter&gt;<br />
-                            　&lt;filter-mapping&gt;<br />
-                            　　&lt;filter-name&gt;filter1&lt;/filter-name&gt;<br />
-                            　　&lt;url-pattern&gt;/xxx&lt;/url-pattern&gt;<br />
-                            　&lt;/filter-mapping&gt;</span
-                          >
+                          <span class="none">
+                            &nbsp;&nbsp;&lt;filter-name&gt;filter1&lt;/filter-name&gt;<br />
+                            &nbsp;&nbsp;&lt;filter-class&gt;web.xxxServlet&lt;/Servlet-class&gt;<br />
+                            &nbsp;&nbsp;&lt;init-param&gt;　//　由FilterConfig读取:String
+                            <span>getInitParameter</span>(String name)<br />
+                            &nbsp;&nbsp;&lt;param-name&gt;illeaglStr&lt;/param-name&gt;<br />
+                            &nbsp;&nbsp;&lt;param-value&gt;value&lt;param-value&gt;<br />
+                            &nbsp;&nbsp;&lt;init-param&gt;<br />
+                            &lt;filter&gt;<br />
+                            &lt;filter-mapping&gt;<br />
+                            &nbsp;&nbsp;&lt;filter-name&gt;filter1&lt;/filter-name&gt;<br />
+                            &nbsp;&nbsp;&lt;url-pattern&gt;/xxx&lt;/url-pattern&gt;<br />
+                            &lt;/filter-mapping&gt;
+                          </span>
                         </details>
                       </li>
                     </ul>
@@ -709,9 +761,15 @@
                       <li>
                         ServletRequestAttributeListener
                         <ol>
-                          <li>void <span>attributeAdded</span>(ServletRequestAttributeEvent srae)</li>
-                          <li>void <span>attributeRemoved</span>(ServletRequestAttributeEvent srae)</li>
-                          <li>void <span>attributeReplaced</span>(ServletRequestAttributeEvent srae)</li>
+                          <li>
+                            void <span>attributeAdded</span>(ServletRequestAttributeEvent srae)
+                          </li>
+                          <li>
+                            void <span>attributeRemoved</span>(ServletRequestAttributeEvent srae)
+                          </li>
+                          <li>
+                            void <span>attributeReplaced</span>(ServletRequestAttributeEvent srae)
+                          </li>
                         </ol>
                       </li>
                       <li>HttpSessionAttributeListener: 方法同上</li>
@@ -729,10 +787,10 @@
                     在web.xml文件中注册该监听器<br />
                     <details>
                       <summary>&lt;listener&gt;</summary>
-                      <span class="none"
-                        >　　&lt;listener-class&gt;web.CouListener&lt;/listener-class&gt;<br />
-                        　&lt;/listener&gt;</span
-                      >
+                      <span class="none">
+                        &nbsp;&nbsp;&lt;listener-class&gt;web.CouListener&lt;/listener-class&gt;<br />
+                        &lt;/listener&gt;
+                      </span>
                     </details>
                     ps:实现相同的Listener接口的多个监听器，在执行时按web.xml注册出现的顺序来决定
                   </li>
@@ -778,7 +836,10 @@
                 Java代码
                 <ol>
                   <li>JSP表达式： &lt;%= %&gt; -- service()中out.print()　--　${}</li>
-                  <li>JSP小脚本： &lt;% %&gt; -- 原封不动到service()　--　&lt;c:xxx　　&gt;...&lt;/c:xxx&gt;</li>
+                  <li>
+                    JSP小脚本： &lt;% %&gt; --
+                    原封不动到service()　--　&lt;c:xxx　　&gt;...&lt;/c:xxx&gt;
+                  </li>
                   <li>JSP声明： &lt;%! %&gt; -- Servlet类中成员属性或成员方法</li>
                 </ol>
               </li>
@@ -789,16 +850,19 @@
                     <span class="tag">page</span>指令：导包、设置页面属性
                     <ul>
                       <li>
-                        &lt;%@ page <span class="att">import</span>="java.util.*,java.sql.*" contentType="text/html;<br />
+                        &lt;%@ page <span class="att">import</span>="java.util.*,java.sql.*"
+                        contentType="text/html;<br />
                         　　charset=utf-8" <span class="att">pageEncoding</span>="utf-8"
                         <span class="att">errorPage</span>="a4.jsp"<br />
-                        　　<span class="att">isErrorPage</span>="true" <span class="att">session</span>="false"&gt;
+                        　　<span class="att">isErrorPage</span>="true"
+                        <span class="att">session</span>="false"&gt;
                       </li>
                     </ul>
                   </li>
                   <li><span class="tag">include</span>指令： &lt;%@ include file="url" %&gt;</li>
                   <li>
-                    <span class="tag">taglib</span>指令：&lt;%@ taglib <span class="att">uri</span>="标签的命名空间"
+                    <span class="tag">taglib</span>指令：&lt;%@ taglib
+                    <span class="att">uri</span>="标签的命名空间"
                     <span class="att">prefix</span>="命名空间的前缀"&gt;<br />// 用于导入jsp标签
                   </li>
                 </ol>
@@ -835,7 +899,8 @@
                 EL表达式的作用：
                 <ol>
                   <li>
-                    访问Bean的属性： 容器会依次从<span class="val">pageContext,request,session,application</span
+                    访问Bean的属性： 容器会依次从<span class="val"
+                      >pageContext,request,session,application</span
                     >中查找，<br />
                     　　　　　　　　　调用"getxxx"方法输出
                     <ol>
@@ -851,13 +916,18 @@
                     <ul>
                       <li>如果没有为name属性赋值，输出""，不会输出null</li>
                       <li>如果绑定名写错，输出""，不会报空指针异常</li>
-                      <li>指定对象查找范围： ${pageScope/requestScope/sessionScope/applicationScope.对象名.属性名}</li>
+                      <li>
+                        指定对象查找范围：
+                        ${pageScope/requestScope/sessionScope/applicationScope.对象名.属性名}
+                      </li>
                     </ul>
                   </li>
                   <li>
                     输出简单的运算结果
                     <ol>
-                      <li>算术运算： ${1+1}　　${"100"+"200"}　//　300，"+"只能求和，不能连接字符串</li>
+                      <li>
+                        算术运算： ${1+1}　　${"100"+"200"}　//　300，"+"只能求和，不能连接字符串
+                      </li>
                       <li>关系运算： ${1>2}　　${str=="abc"}</li>
                       <li>逻辑运算： ${1>0 &amp;&amp; 2&lt;3}</li>
                       <li>
@@ -889,8 +959,8 @@
             </ul>
             <ol>
               <li>
-                &lt;c:<span class="tag">if</span> <span class="att">test</span>="" <span class="att">var</span>=""
-                scope=""&gt;内容&lt;/c:if&gt;
+                &lt;c:<span class="tag">if</span> <span class="att">test</span>=""
+                <span class="att">var</span>="" scope=""&gt;内容&lt;/c:if&gt;
                 <ol>
                   <li>test属性： 为true时，执行标签体的内容</li>
                   <li>var属性： 指定一个绑定名称，绑定test的值</li>
@@ -913,15 +983,17 @@
                     &lt;c:<span class="tag">forEach</span> <span class="att">iteams</span>="${...}"
                     <span class="att">var</span>="e" <span class="att">varStatus</span>="s"&gt;
                   </summary>
-                  <span class="none"
-                    >　　...${e.name}...${s.<span class="val">index</span>}...${s.<span class="val">count</span
-                    >}...<br />
-                    　&lt;/c:forEach&gt;</span
-                  >
+                  <span class="none">
+                    &nbsp;&nbsp;...${e.name}...${s.<span class="val">index</span>}...${s.
+                    <span class="val">count</span>}...<br />
+                    　&lt;/c:forEach&gt;
+                  </span>
                 </details>
                 <ol>
                   <li>items属性： 指定要遍历的集合</li>
-                  <li>var属性： 指定一个绑定名称，容器每次从集合取一个对象，然后绑定到pageContext上</li>
+                  <li>
+                    var属性： 指定一个绑定名称，容器每次从集合取一个对象，然后绑定到pageContext上
+                  </li>
                   <li>
                     varStatus属性： 指定一个绑定名称，绑定值是一个由容器创建的对象，<br />
                     　　　　　　　　该对象封装了当前迭代的状态
@@ -929,7 +1001,8 @@
                 </ol>
               </li>
               <li>
-                &lt;c:<span class="tag">set</span> <span class="att">var</span>= <span class="att">value</span>= &gt;
+                &lt;c:<span class="tag">set</span> <span class="att">var</span>=
+                <span class="att">value</span>= &gt;
               </li>
               <li>
                 <span class="que2">自定义标签</span>
@@ -944,23 +1017,23 @@
                   <li>
                     <details>
                       <summary>配置标签说明文件</summary>
-                      <span class="none"
-                        >&lt;taglib ...&gt;<br />
-                        　　&lt;tlib-version&gt;版本&lt;/tlib-version&gt;<br />
-                        　　&lt;short-name&gt;prefix值&lt;/short-name&gt;<br />
-                        　　&lt;uri&gt;uri值&lt;/uri&gt;<br />
-                        　　&lt;tag&gt;<br />
-                        　　　　&lt;name&gt;标签名&lt;/name&gt;<br />
-                        　　　　&lt;tag-class&gt;类名&lt;/tag-class&gt;<br />
-                        　　　　&lt;body-content&gt;定义标签内容empty/scriptless/...&lt;/body-contetn&gt;<br />
-                        　　　　&lt;attribute&gt;<br />
-                        　　　　　　&lt;name&gt;属性名&lt;/name&gt;<br />
-                        　　　　　　&lt;required&gt;是否必须设置true/false&lt;/required&gt;<br />
-                        　　　　　　&lt;rtexpvalue&gt;是否能制定一个JSP动态元素true/false&lt;/rtexpvalue&gt;<br />
-                        　　　　&lt;/attribute&gt;<br />
-                        　　&lt;/tag&gt;<br />
-                        　&lt;/taglib&gt;</span
-                      >
+                      <span class="none">
+                        &lt;taglib ...&gt;<br />
+                        &nbsp;&nbsp;&lt;tlib-version&gt;版本&lt;/tlib-version&gt;<br />
+                        &nbsp;&nbsp;&lt;short-name&gt;prefix值&lt;/short-name&gt;<br />
+                        &nbsp;&nbsp;&lt;uri&gt;uri值&lt;/uri&gt;<br />
+                        &nbsp;&nbsp;&lt;tag&gt;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;标签名&lt;/name&gt;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tag-class&gt;类名&lt;/tag-class&gt;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;body-content&gt;定义标签内容empty/scriptless/...&lt;/body-contetn&gt;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute&gt;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;属性名&lt;/name&gt;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;required&gt;是否必须设置true/false&lt;/required&gt;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;rtexpvalue&gt;是否能制定一个JSP动态元素true/false&lt;/rtexpvalue&gt;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/attribute&gt;<br />
+                        &nbsp;&nbsp;&lt;/tag&gt;<br />
+                        &lt;/taglib&gt;
+                      </span>
                     </details>
                   </li>
                 </ol>

@@ -39,7 +39,7 @@ module.exports = [
       jquery,
     },
     rules: {
-      'no-console': 'warn',
+      // 'no-console': 'warn',
       'no-unused-vars': 'warn',
       'no-empty': ['error', { allowEmptyCatch: true }],
     },

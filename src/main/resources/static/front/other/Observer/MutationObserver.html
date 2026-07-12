@@ -11,7 +11,10 @@
     <section class="code-wrap">
       <div class="css-live-wrap w40p">
         <div class="caption">
-          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe#childlist">childList</a>
+          <a
+            href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe#childlist"
+            >childList</a
+          >
         </div>
         <div class="caption">节点的新增与删除</div>
         <div class="centered" id="childList-box">
@@ -37,7 +40,7 @@
         observer.observe(ul, {
           childList: true,
           // 整个子树。包括子树中所有节点的属性，而不仅仅是针对 target
-          subtree: true
+          subtree: true,
         })
 
         ul.appendChild(document.createElement('div'))
@@ -50,7 +53,10 @@
     <section class="code-wrap h350">
       <div class="css-live-wrap w40p">
         <div class="caption">
-          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe#attributes">attributes</a>
+          <a
+            href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe#attributes"
+            >attributes</a
+          >
         </div>
         <div class="caption">属性值的变化</div>
         <div class="centered" id="attributes-box">
@@ -72,7 +78,7 @@
         observer3.observe(ul3, {
           attributes: true,
           // 声明哪些属性名会被监听
-          attributeFilter: ['data-value']
+          attributeFilter: ['data-value'],
         })
 
         ul3.setAttribute('data-value', '111')
@@ -84,9 +90,11 @@
     <section class="code-wrap h300">
       <div class="css-live-wrap w40p">
         <div class="caption">
-          <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe#characterData"
-            >characterData</a
+          <a
+            href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/observe#characterData"
           >
+            characterData
+          </a>
         </div>
         <div class="caption">字符的变化</div>
         <div class="centered" id="characterData-box">
@@ -107,7 +115,7 @@
 
         observer2.observe(ul2, {
           characterData: true,
-          subtree: true
+          subtree: true,
         })
 
         ul2.childNodes[0].data = 'aaa'
