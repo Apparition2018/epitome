@@ -18,7 +18,7 @@ import java.util.Objects;
  * @since 2020/1/9 19:28
  */
 @SpringBootTest(classes = EpitomeApplication.class)
-public class SpringTest {
+public class SpringDemo {
 
     @Autowired
     private ServletContext servletContext;

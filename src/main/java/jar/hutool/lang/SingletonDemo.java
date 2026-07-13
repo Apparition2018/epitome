@@ -1,10 +1,8 @@
 package jar.hutool.lang;
 
-import cn.hutool.core.lang.Assert;
 import cn.hutool.core.lang.Singleton;
 import l.demo.Person;
-
-import java.util.Objects;
+import org.junit.jupiter.api.Assertions;
 
 /**
  * <a href="https://doc.hutool.cn/pages/Singleton/">Singleton</a>   单例工具
@@ -28,6 +26,6 @@ public class SingletonDemo {
     public static void main(String[] args) {
         Person person = Singleton.get(Person.class);
         Person person2 = Singleton.get(Person.class);
-        Assert.isTrue(Objects.equals(person, person2));
+        Assertions.assertSame(person, person2);
     }
 }

@@ -365,11 +365,6 @@ Alt + Shift + U                 Unittest
 ---
 ### Tencent Cloud CodeBuddy
 ```
-Alt + K                                                             开始内联聊天
-Alt + U                                                             添加到 CodeBuddy 对话
-Alt + Shift + R                                                     代码审核
-Alt + Shift + B                                                     修复代码
-Alt + Shift + X                                                     解释代码
 ```
 ### Translation
 ```

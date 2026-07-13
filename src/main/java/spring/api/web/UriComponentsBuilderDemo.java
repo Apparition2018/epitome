@@ -1,8 +1,9 @@
 package spring.api.web;
 
-import cn.hutool.core.lang.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * UriComponentsBuilder
@@ -24,7 +25,7 @@ public class UriComponentsBuilderDemo {
             .build()
             .toUriString();
 
-        Assert.equals(uri, "https://example.com/search?q=Spring&page=1#section");
+        assertEquals("https://example.com/search?q=Spring&page=1#section", uri);
     }
 
     @Test
@@ -35,6 +36,6 @@ public class UriComponentsBuilderDemo {
             .buildAndExpand("Westin", "123")
             .toUriString();
 
-        Assert.equals(uri, "https://example.com/hotels/Westin?q=123");
+        assertEquals("https://example.com/hotels/Westin?q=123", uri);
     }
 }

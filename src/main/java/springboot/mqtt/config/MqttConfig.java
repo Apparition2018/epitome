@@ -13,7 +13,7 @@ import springboot.mqtt.domain.MqttProperties;
  * MqttConfig
  *
  * @author ljh
- * @since 2026/7/13 11:05
+ * @since 2026/7/13 11:051
  */
 @Profile("mqtt")
 @Configuration

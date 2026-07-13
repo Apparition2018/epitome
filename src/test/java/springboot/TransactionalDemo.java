@@ -18,7 +18,7 @@ import java.sql.SQLException;
  * @since 2021/11/18 11:58
  */
 @SpringBootTest(classes = EpitomeApplication.class)
-public class TransactionalTest {
+public class TransactionalDemo {
 
     @Autowired
     private TransactionalService transactionalService;

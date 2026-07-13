@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @Slf4j
 @SpringBootTest(classes = EpitomeApplication.class)
-public class RedisMessagingTest {
+public class RedisMessagingDemo {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;

@@ -51,7 +51,7 @@ public class Demo {
     public static final String MY_CY = "中国";
     public static final String MOBILE = "13800589230";
     public static final String ID_CARD = "110101199003077950";
-    public static final String MY_SERVER_IP = "43.136.102.115";
+    public static final String MY_SERVER_IP = "150.230.2.175";
     public static final String BAIDU_HOST = "www.baidu.com";
     public static final String BAIDU_URL = "https://" + BAIDU_HOST;
     public static final String MOZILLA_DEMO_URL = "https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container";

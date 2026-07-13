@@ -29,7 +29,7 @@ import springboot.controller.DemoController;
  * @since 2021/7/27 22:55
  */
 @SpringBootTest(classes = EpitomeApplication.class)
-public class MockMvcTest {
+public class MockMvcDemo {
 
     private MockMvc mockMvc;
 
