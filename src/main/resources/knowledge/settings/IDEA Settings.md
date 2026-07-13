@@ -73,22 +73,23 @@
     2 Typography Settings → Fallback font: Microsoft YaHei
 ### Code Style (-j)
     # https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml
-    1 Code Style → Hard wrap at: 160
-    2 Java → JavaDoc
-        2.1 Other → Do not wrap one line comments 勾选
-    3 Java → Code Generation → Comment Code
+    1 Line separator: Unix and macOS (\n)
+    2 Code Style → Hard wrap at: 160
+    3 Java → JavaDoc
+        3.1 Other → Do not wrap one line comments 勾选
+    4 Java → Code Generation → Comment Code
         HTML/JavaScript/XML → Code Generation → Comments
         Style Sheets → CSS/Less/Sass/SCSS → Other → Comments
-        3.1 Line comment at first column 取消勾选
-        3.2 Add a space at line comment start 勾选
+        4.1 Line comment at first column 取消勾选
+        4.2 Add a space at line comment start 勾选
             2.2.1 Enforce on reformat 勾选
-        3.3 Block comment at first column 取消勾选
-        3.4 Add spaces around block comments 勾选
-    4 Style Sheets → CSS/Less/SCSS → Other
-        4.1 Keep single-line blocks 勾选
-    5 JavaScript → Set from… → JavaScript Standard Style
-    6 HTML → Set from… → JavaScript
-    7 Markdown → Blank Lines → 全部设为0
+        4.3 Block comment at first column 取消勾选
+        4.4 Add spaces around block comments 勾选
+    5 Style Sheets → CSS/Less/SCSS → Other
+        5.1 Keep single-line blocks 勾选
+    6 JavaScript → Set from… → JavaScript Standard Style
+    7 HTML → Set from… → JavaScript
+    8 Markdown → Blank Lines → 全部设为0
 ### Inspections
     1 Java
         1.1 Naming conventions → Class → Class naming convention → Highlighting in editor: Weak Warning

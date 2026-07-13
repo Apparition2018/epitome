@@ -14,7 +14,9 @@
 
 // Flutter
 
+// application.properties 拆分 & @ActiveProfiles
 // Inspect Code…
+// jquery/no-ajax   jquery/no-ready     jquery/no-global-eval
 // 影刀 RPA 高级认证工程师
 // 泛微 e-cology9
 // WMS、电商

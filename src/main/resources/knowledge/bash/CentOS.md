@@ -303,9 +303,10 @@
     ```bash
     git config --global user.name 'Apparition2018'
     git config --global user.email '88850180@163.com'
-    git config --global core.autocrlf false
     git config --global gui.encoding utf-8
     git config --global core.quotepath off
+    # Linux
+    git config --global core.autocrlf false
     ```
 3. 配置 SSH keys
     1. 生成密钥：`ssh-keygen -t rsa -C '88850180@163.com'`

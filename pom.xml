@@ -43,7 +43,7 @@
 
         <!-- dependency -->
         <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
-        <pagehelper-spring-boot-starter.version>4.0.0</pagehelper-spring-boot-starter.version>
+        <pagehelper-spring-boot-starter.version>4.1.1</pagehelper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
         <mapper-spring-boot-starter.version>6.0.0</mapper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
@@ -51,42 +51,50 @@
         <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
         <mybatis-dynamic-sql.version>2.0.0</mybatis-dynamic-sql.version>
         <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-spring-boot-starter -->
-        <rocketmq-spring-boot-starter.version>2.3.5</rocketmq-spring-boot-starter.version>
+        <rocketmq-spring-boot-starter.version>2.3.6</rocketmq-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-test -->
-        <rocketmq.version>5.3.2</rocketmq.version>
+        <rocketmq.version>5.5.0</rocketmq.version>
+        <!-- https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-mqtt -->
+        <spring-integration-mqtt.vesion>7.1.0</spring-integration-mqtt.vesion>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.mqttv5.client -->
+        <org.eclipse.paho.mqttv5.client.version>1.2.5</org.eclipse.paho.mqttv5.client.version>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3 -->
+        <org.eclipse.paho.client.mqttv3.version>1.2.5</org.eclipse.paho.client.mqttv3.version>
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
         <commons-beanutils.version>1.11.0</commons-beanutils.version>
         <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
         <commons-cli.version>1.11.0</commons-cli.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
-        <commons-configuration2.version>2.14.0</commons-configuration2.version>
+        <commons-configuration2.version>2.15.1</commons-configuration2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
         <commons-csv.version>1.14.1</commons-csv.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email2-jakarta -->
         <commons-email2.version>2.0.0-M1</commons-email2.version>
+        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+        <commons-net.version>3.13.0</commons-net.version>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-rng-core -->
-        <commons-rng.version>1.6</commons-rng.version>
+        <commons-rng.version>1.7</commons-rng.version>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <poi.version>5.5.1</poi.version>
         <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
-        <tika.version>3.3.0</tika.version>
+        <tika.version>3.3.1</tika.version>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-        <jsoup.version>1.22.1</jsoup.version>
+        <jsoup.version>1.22.2</jsoup.version>
         <!-- https://mvnrepository.com/artifact/io.minio/minio -->
-        <minio.version>9.0.0</minio.version>
+        <minio.version>9.0.3</minio.version>
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
-        <itext.version>9.6.0</itext.version>
+        <itext.version>9.7.0</itext.version>
         <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>10.9</nimbus-jose-jwt.version>
+        <nimbus-jose-jwt.version>10.9.1</nimbus-jose-jwt.version>
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
         <retrofit2.version>3.0.0</retrofit2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.axis2/axis2 -->
-        <axis2.version>2.0.0</axis2.version>
+        <axis2.version>2.0.1</axis2.version>
         <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
         <curator.version>5.9.0</curator.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
-        <fastjson.version>2.0.61</fastjson.version>
+        <fastjson.version>2.0.62</fastjson.version>
         <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
         <tablibs-standard.version>1.2.5</tablibs-standard.version>
         <!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
@@ -106,13 +114,13 @@
         <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <hutool.version>5.8.44</hutool.version>
+        <hutool.version>5.8.46</hutool.version>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <cglib.version>3.3.0</cglib.version>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
         <emoji.version>5.1.1</emoji.version>
         <!-- https://mvnrepository.com/artifact/com.github.mwiede/jsch -->
-        <jsch.version>2.28.0</jsch.version>
+        <jsch.version>2.28.4</jsch.version>
         <!-- https://mvnrepository.com/artifact/io.github.biezhi/TinyPinyin -->
         <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
         <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
@@ -122,7 +130,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
         <lucene-analyzers.version>8.11.4</lucene-analyzers.version>
         <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
-        <oshi.version>6.11.1</oshi.version>
+        <oshi.version>7.4.0</oshi.version>
         <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
         <jol.version>0.17</jol.version>
         <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
@@ -133,7 +141,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-install-plugin -->
         <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin -->
-        <mybatis-generator-maven-plugin.version>1.4.2</mybatis-generator-maven-plugin.version>
+        <mybatis-generator-maven-plugin.version>2.0.0</mybatis-generator-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -178,6 +186,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-integration</artifactId>
+        </dependency>
         <!-- devtools：https://blog.csdn.net/Martin_chen2/article/details/116198924 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -198,6 +210,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -281,6 +294,22 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-mqtt</artifactId>
+            <version>${spring-integration-mqtt.vesion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.mqttv5.client</artifactId>
+            <version>${org.eclipse.paho.mqttv5.client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+            <version>${org.eclipse.paho.client.mqttv3.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>${commons-beanutils.version}</version>
@@ -317,6 +346,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email2-jakarta</artifactId>
             <version>${commons-email2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>${commons-net.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -388,11 +422,10 @@
         </dependency>
 
         <!-- htmlunit：用于测试基于 web 的应用程序的无头浏览器
-            包含 commons-net, httpclient 4 -->
+            包含 httpclient 4 -->
         <dependency>
             <groupId>org.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
-            <version>4.7.0</version>
         </dependency>
 
         <!-- axis2 -->
@@ -438,11 +471,13 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>jakarta.servlet.jsp.jstl</groupId>
@@ -501,6 +536,7 @@
             <groupId>org.openjdk.nashorn</groupId>
             <artifactId>nashorn-core</artifactId>
             <version>${nashorn.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- OpenAPI 3：
@@ -517,6 +553,7 @@
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -605,6 +642,7 @@
             <groupId>org.openjdk.jol</groupId>
             <artifactId>jol-core</artifactId>
             <version>${jol.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- thumbnailator：一个 Java 的缩略图生成库 -->

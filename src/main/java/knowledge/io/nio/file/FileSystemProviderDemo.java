@@ -1,7 +1,6 @@
 package knowledge.io.nio.file;
 
-import com.alibaba.fastjson2.JSON;
-import l.demo.Demo;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -10,6 +9,9 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.spi.FileSystemProvider;
 import java.util.concurrent.ThreadLocalRandom;
+
+import static l.demo.Demo.DEMO_DIR_PATH;
+import static l.demo.Demo.p;
 
 /**
  * <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/spi/FileSystemProvider.html">FileSystemProvider</a>
@@ -24,7 +26,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @see <a href="https://blog.csdn.net/huitoukest/article/details/106983050">Java FileSystemProvider</a>
  * @since 2020/11/6 9:43
  */
-public class FileSystemProviderDemo extends Demo {
+public class FileSystemProviderDemo {
 
     /** 此处仅作示例，一般通过 Files 来实现相关操作 */
     public static void main(String[] args) throws IOException {
@@ -42,7 +44,7 @@ public class FileSystemProviderDemo extends Demo {
         // readAttributes(Path path, Class<A> type, LinkOption... options)
         // 以批量操作的形式读取文件的属性
         BasicFileAttributes basicFileAttributes = fileSystemProvider.readAttributes(path, BasicFileAttributes.class);
-        p(JSON.toJSON(basicFileAttributes));
+        p(new JsonMapper().writeValueAsString(basicFileAttributes));
         // {"other":false,"system":false,"hidden":false,"symbolicLink":false,"archive":false,"readOnly":false,"regularFile":false,"directory":true}
 
         // boolean	        deleteIfExists(Path path)   如果 path 存在则删除

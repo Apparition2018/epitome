@@ -14,9 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import springboot.rocketmq.dto.OrderMessage;
-import springboot.rocketmq.producer.OrderProducer;
-import springboot.rocketmq.service.OrderService;
+import springboot.messaging.rocketmq.dto.OrderMessage;
+import springboot.messaging.rocketmq.producer.OrderProducer;
+import springboot.messaging.rocketmq.service.OrderService;
 import tools.jackson.databind.ObjectMapper;
 
 import java.math.BigDecimal;

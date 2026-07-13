@@ -1,6 +1,5 @@
 package spring.api.http;
 
-import com.alibaba.fastjson2.JSONObject;
 import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,6 +15,7 @@ import org.springframework.web.client.*;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -50,7 +50,8 @@ public final class RestTemplateUtils {
         public void handleError(ClientHttpResponse response) throws IOException {
             HttpStatus statusCode = HttpStatus.resolve(response.getStatusCode().value());
             if (statusCode == null) {
-                throw new UnknownHttpStatusCodeException(response.getStatusCode().value(), response.getStatusText(), response.getHeaders(), this.getResponseBody(response), this.getCharset(response));
+                throw new UnknownHttpStatusCodeException(response.getStatusCode().value(), response.getStatusText(), response.getHeaders(),
+                    this.getResponseBody(response), this.getCharset(response));
             } else {
                 this.handleError(response, statusCode);
             }
@@ -87,19 +88,19 @@ public final class RestTemplateUtils {
         }
     }
 
-    public static String get(String url, JSONObject params) {
+    public static String get(String url, Map<String, Object> params) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(new DefaultResponseErrorHandler());
         return restTemplate.getForObject(expandURL(url, params.keySet()), String.class, params);
     }
 
     /** 将参数都拼接在 url 之后 */
-    public static String post(String url, JSONObject params, MediaType mediaType) {
+    public static String post(String url, Map<String, Object> params, MediaType mediaType) {
         RestTemplate restTemplate = new RestTemplate();
         // 拿到 header 信息
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.setContentType(mediaType);
-        HttpEntity<JSONObject> requestEntity = mediaType == MediaType.APPLICATION_JSON
+        HttpEntity<Map<String, Object>> requestEntity = mediaType == MediaType.APPLICATION_JSON
             ? new HttpEntity<>(params, requestHeaders) : new HttpEntity<>(null, requestHeaders);
         restTemplate.setErrorHandler(new DefaultResponseErrorHandler());
         return mediaType == MediaType.APPLICATION_JSON
@@ -109,7 +110,7 @@ public final class RestTemplateUtils {
 
 
     /** 发送 json 或者 form 格式数据 */
-    public static <T> T post(String url, JSONObject params, MediaType mediaType, Class<T> clz) {
+    public static <T> T post(String url, Map<String, Object> params, MediaType mediaType, Class<T> clz) {
         RestTemplate restTemplate = new RestTemplate();
         // 这是为 MediaType.APPLICATION_FORM_URLENCODED 格式 HttpEntity 数据 添加转换器
         // 还有就是，如果是 APPLICATION_FORM_URLENCODED 方式发送 post请求，
@@ -122,20 +123,20 @@ public final class RestTemplateUtils {
         HttpEntity<?> requestEntity = mediaType == MediaType.APPLICATION_JSON
             ? new HttpEntity<>(params, requestHeaders)
             : (mediaType == MediaType.APPLICATION_FORM_URLENCODED
-            ? new HttpEntity<>(createMultiValueMap(params), requestHeaders)
-            : new HttpEntity<>(null, requestHeaders));
+               ? new HttpEntity<>(createMultiValueMap(params), requestHeaders)
+               : new HttpEntity<>(null, requestHeaders));
 
         restTemplate.setErrorHandler(new DefaultResponseErrorHandler());
 
         return mediaType == MediaType.APPLICATION_JSON
             ? restTemplate.postForObject(url, requestEntity, clz)
             : restTemplate.postForObject(mediaType == MediaType.APPLICATION_FORM_URLENCODED
-            ? url
-            : expandURL(url, params.keySet()), requestEntity, clz, params);
+                                         ? url
+                                         : expandURL(url, params.keySet()), requestEntity, clz, params);
     }
 
     @SuppressWarnings("unchecked")
-    private static MultiValueMap<String, String> createMultiValueMap(JSONObject params) {
+    private static MultiValueMap<String, String> createMultiValueMap(Map<String, Object> params) {
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         for (String key : params.keySet()) {
             if (params.get(key) instanceof List) {
@@ -143,7 +144,7 @@ public final class RestTemplateUtils {
                     map.add(key, value);
                 }
             } else {
-                map.add(key, params.getString(key));
+                map.add(key, String.valueOf(params.get(key)));
             }
         }
         return map;
