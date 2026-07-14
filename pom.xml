@@ -44,8 +44,8 @@
         <!-- dependency -->
         <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
         <pagehelper-spring-boot-starter.version>4.1.1</pagehelper-spring-boot-starter.version>
-        <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
-        <mapper-spring-boot-starter.version>6.0.0</mapper-spring-boot-starter.version>
+        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot4-starter -->
+        <mybatis-plus-spring-boot4-starter.version>3.5.17</mybatis-plus-spring-boot4-starter.version>
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
         <druid-spring-boot-4-starter.version>1.2.28</druid-spring-boot-4-starter.version>
         <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
@@ -246,9 +246,9 @@
             <version>${pagehelper-spring-boot-starter.version}</version>
         </dependency>
         <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
-            <version>${mapper-spring-boot-starter.version}</version>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot4-starter</artifactId>
+            <version>${mybatis-plus-spring-boot4-starter.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.dynamic-sql</groupId>

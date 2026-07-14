@@ -1,17 +1,17 @@
 /*
  Navicat Premium Dump SQL
 
- Source Server         : sqlpub
+ Source Server         : 43.136.102.115
  Source Server Type    : MySQL
- Source Server Version : 80403 (8.4.3-SQLPub-0.0.1)
- Source Host           : mysql6.sqlpub.com:3311
+ Source Server Version : 80033 (8.0.33)
+ Source Host           : 43.136.102.115:3306
  Source Schema         : epitome
 
  Target Server Type    : MySQL
- Target Server Version : 80403 (8.4.3-SQLPub-0.0.1)
+ Target Server Version : 80033 (8.0.33)
  File Encoding         : 65001
 
- Date: 14/07/2026 03:19:11
+ Date: 30/04/2026 20:51:11
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `demo`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of demo
@@ -127,7 +127,7 @@ CREATE TABLE `exam_book`  (
   `session_id` bigint NOT NULL COMMENT '场次ID',
   `user_id` bigint NOT NULL COMMENT '预约人ID',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '考试预约记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '考试预约记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of exam_book
@@ -160,7 +160,7 @@ CREATE TABLE `generator`  (
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
   `context` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of generator
@@ -1205,38 +1205,5 @@ INSERT INTO `score` VALUES (6, '张三', '英语', NULL);
 INSERT INTO `score` VALUES (7, '李四', '语文', 76);
 INSERT INTO `score` VALUES (8, '李四', '数学', 90);
 INSERT INTO `score` VALUES (9, '赵六', '体育', 100);
-
--- ----------------------------
--- Table structure for tb_lamp
--- ----------------------------
-DROP TABLE IF EXISTS `tb_lamp`;
-CREATE TABLE `tb_lamp`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `device_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `status` int NULL DEFAULT NULL COMMENT '1: 上线 0: 下线',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_lamp
--- ----------------------------
-
--- ----------------------------
--- Table structure for tb_lamp_status
--- ----------------------------
-DROP TABLE IF EXISTS `tb_lamp_status`;
-CREATE TABLE `tb_lamp_status`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `device_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `status` int NULL DEFAULT NULL COMMENT '0: 关灯 1: 开灯',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_lamp_status
--- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;

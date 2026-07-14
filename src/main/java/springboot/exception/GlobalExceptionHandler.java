@@ -1,4 +1,4 @@
-package springboot.config.global;
+package springboot.exception;
 
 import jakarta.servlet.Servlet;
 import jakarta.validation.ConstraintViolation;
@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import springboot.exception.ServiceException;
 import springboot.result.Result;
 import springboot.result.ResultCode;
 

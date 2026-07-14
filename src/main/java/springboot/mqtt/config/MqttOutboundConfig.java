@@ -2,6 +2,7 @@ package springboot.mqtt.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.mqtt.core.MqttPahoClientFactory;
@@ -16,6 +17,7 @@ import springboot.mqtt.domain.MqttProperties;
  * @author ljh
  * @since 2026/7/14 2:00
  */
+@Profile("mqtt")
 @Configuration
 public class MqttOutboundConfig{
 
