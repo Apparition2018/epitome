@@ -33,7 +33,7 @@
 ## Tasks
 1. jar
     ```
-    java -classpath build/libs/gradle-1.0-SNAPSHOT.jar com.ljh.gradle.todo.App
+    java -classpath build/libs/gradle-1.0-SNAPSHOT.jar org.ljh.gradle.todo.App
     ```
 2. war
     ```

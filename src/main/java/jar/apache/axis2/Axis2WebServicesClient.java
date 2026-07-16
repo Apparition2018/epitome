@@ -89,7 +89,7 @@ public class Axis2WebServicesClient {
      * <ol>
      * <li>下载 axis-1.x.x-bin.zip 并解压到指定目录</li>
      * <li>设置环境变量 AXIS2_HOME 为解压后的目录路径，并将 AXIS2_HOME\bin 添加到 PATH</li>
-     * <li>在 cmd 输入：%AXIS2_HOME%\bin\wsdl2java.bat -uri xxx -p com.ljh</li>
+     * <li>在 cmd 输入：%AXIS2_HOME%\bin\wsdl2java.bat -uri xxx -p org.ljh</li>
      * </ol>
      * 其它生成客户端方法
      * <ol>

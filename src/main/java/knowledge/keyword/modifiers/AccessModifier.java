@@ -86,7 +86,7 @@ public class AccessModifier {
             y.y = 1;
 
             Field field = Y.class.getDeclaredField("y");
-            // JDK11 之前需要 setAccessible(true)，否者报 IllegalAccessException: Class com.ljh.Test$X can not access a member of class com.ljh.Test$Y with modifiers "private"
+            // JDK11 之前需要 setAccessible(true)，否者报 IllegalAccessException: Class org.ljh.Test$X can not access a member of class org.ljh.Test$Y with modifiers "private"
             // field.setAccessible(true);
             field.setInt(y, 2);
 

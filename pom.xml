@@ -1,669 +1,644 @@
 <!-- POM Reference：https://maven.apache.org/pom.html -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-    <!-- modelVersion：4.0.0 是目前唯一支持的 POM 版本，且始终是必需的 -->
+    <!-- 4.0.0 是目前唯一支持的 POM 版本，且始终是必需的 -->
     <modelVersion>4.0.0</modelVersion>
-    <!-- The Basics：https://maven.apache.org/pom.html#The_Basics -->
+
     <!-- 项目继承：https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Project_Inheritance -->
     <!-- 项目聚合：https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#project-aggregation -->
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.6</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>org.springframework.cloud</groupId>
+        <!-- https://github.com/spring-cloud/spring-cloud-build/blob/main/pom.xml -->
+        <artifactId>spring-cloud-build</artifactId>
+        <version>5.0.2</version>
+        <relativePath/>
     </parent>
-    <!-- Maven 坐标：https://maven.apache.org/pom.html#maven-coordinates -->
-    <groupId>com.ljh</groupId>
+
+    <!-- The Basics：https://maven.apache.org/pom.html#The_Basics -->
+    <groupId>org.ljh</groupId>
     <artifactId>epitome</artifactId>
     <!-- 语义化版本：https://semver.org/lang/zh-CN/ -->
-    <!-- Version Order Specification：https://maven.apache.org/pom.html#version-order-specification
-            非数字标记顺序：alpha(a) < beta(b) < milestone(m) < rc = cr < snapshot < 空 = final = ga = release < sp -->
-    <version>0.0.1-SNAPSHOT</version>
-    <!-- packaging：pom, jar（默认）, maven-plugin, ejb, war, ear, rar
-            https://maven.apache.org/pom.html#packaging -->
-    <packaging>jar</packaging>
+    <version>1.0.1-SNAPSHOT</version>
+    <!-- pom, jar（默认）, maven-plugin, ejb, war, ear, rar -->
+    <packaging>pom</packaging>
+
+    <name>epitome</name>
+    <description>The Java Full-Stack Encyclopedia</description>
+    <url>https://github.com/Apparition2018/epitome</url>
+
+    <scm>
+        <url>https://github.com/Apparition2018/epitome</url>
+        <connection>scm:git:git://github.com/Apparition2018/epitome.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/Apparition2018/epitome.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>ljh</id>
+            <email>88850180@163.com</email>
+        </developer>
+    </developers>
 
     <!-- 项目插值和变量：https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#project-interpolation-and-variables -->
+    <!-- settings.xml 中 <profile/> 可设置 <properties/> -->
     <properties>
-        <!-- settings.xml 中 <profile/> 可设置 <properties/>  -->
-        <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
-        <java.version>21</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven.compiler.compilerVersion>${java.version}</maven.compiler.compilerVersion>
-        <!-- http://maven.apache.org/general.html#encoding-warning -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- http://maven.apache.org/general.html#special-characters-site -->
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- 跳过 Test -->
-        <skipTests>true</skipTests>
+        <!-- <skipTests>true</skipTests> -->
 
         <!-- dependency -->
-        <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
-        <pagehelper-spring-boot-starter.version>4.1.1</pagehelper-spring-boot-starter.version>
-        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot4-starter -->
-        <mybatis-plus-spring-boot4-starter.version>3.5.17</mybatis-plus-spring-boot4-starter.version>
-        <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
-        <druid-spring-boot-4-starter.version>1.2.28</druid-spring-boot-4-starter.version>
-        <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
-        <mybatis-dynamic-sql.version>2.0.0</mybatis-dynamic-sql.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-spring-boot-starter -->
-        <rocketmq-spring-boot-starter.version>2.3.6</rocketmq-spring-boot-starter.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-test -->
-        <rocketmq.version>5.5.0</rocketmq.version>
-        <!-- https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-mqtt -->
-        <spring-integration-mqtt.vesion>7.1.0</spring-integration-mqtt.vesion>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.mqttv5.client -->
-        <org.eclipse.paho.mqttv5.client.version>1.2.5</org.eclipse.paho.mqttv5.client.version>
-        <!-- https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3 -->
-        <org.eclipse.paho.client.mqttv3.version>1.2.5</org.eclipse.paho.client.mqttv3.version>
-        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
-        <commons-beanutils.version>1.11.0</commons-beanutils.version>
-        <!-- https://mvnrepository.com/artifact/commons-cli/commons-cli -->
-        <commons-cli.version>1.11.0</commons-cli.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
-        <commons-configuration2.version>2.15.1</commons-configuration2.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
-        <commons-csv.version>1.14.1</commons-csv.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email2-jakarta -->
-        <commons-email2.version>2.0.0-M1</commons-email2.version>
-        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
-        <commons-net.version>3.13.0</commons-net.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-rng-core -->
-        <commons-rng.version>1.7</commons-rng.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-        <poi.version>5.5.1</poi.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
-        <tika.version>3.3.1</tika.version>
-        <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-        <jsoup.version>1.22.2</jsoup.version>
-        <!-- https://mvnrepository.com/artifact/io.minio/minio -->
-        <minio.version>9.0.3</minio.version>
-        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
-        <itext.version>9.7.0</itext.version>
-        <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
-        <nimbus-jose-jwt.version>10.9.1</nimbus-jose-jwt.version>
-        <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
-        <retrofit2.version>3.0.0</retrofit2.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.axis2/axis2 -->
-        <axis2.version>2.0.1</axis2.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
-        <curator.version>5.9.0</curator.version>
-        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
-        <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
-        <fastjson.version>2.0.62</fastjson.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
-        <tablibs-standard.version>1.2.5</tablibs-standard.version>
-        <!-- https://mvnrepository.com/artifact/io.protostuff/protostuff-core -->
-        <protostuff.version>1.8.0</protostuff.version>
-        <!-- https://mvnrepository.com/artifact/ws.schild/jave-all-deps -->
-        <jave2.version>3.5.0</jave2.version>
-        <!-- https://mvnrepository.com/artifact/org.bytedeco/javacv -->
-        <javacv.version>1.5.13</javacv.version>
-        <!-- https://mvnrepository.com/artifact/org.dom4j/dom4j -->
-        <dom4j.version>2.2.0</dom4j.version>
-        <!-- https://mvnrepository.com/artifact/org.openjdk.nashorn/nashorn-core -->
-        <nashorn.version>15.7</nashorn.version>
-        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
-        <springdoc-openapi-starter.version>3.0.3</springdoc-openapi-starter.version>
-        <!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core -->
-        <jmh.version>1.37</jmh.version>
-        <!-- https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha -->
-        <easy-captcha.version>1.6.2</easy-captcha.version>
-        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <hutool.version>5.8.46</hutool.version>
-        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
-        <cglib.version>3.3.0</cglib.version>
-        <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
-        <emoji.version>5.1.1</emoji.version>
-        <!-- https://mvnrepository.com/artifact/com.github.mwiede/jsch -->
-        <jsch.version>2.28.4</jsch.version>
-        <!-- https://mvnrepository.com/artifact/io.github.biezhi/TinyPinyin -->
-        <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version>
-        <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
-        <zxing.version>3.5.4</zxing.version>
-        <!-- https://mvnrepository.com/artifact/QRCode/QRCode -->
-        <QRCode.version>3.0.0</QRCode.version>
-        <!-- https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn -->
-        <lucene-analyzers.version>8.11.4</lucene-analyzers.version>
-        <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
-        <oshi.version>7.4.0</oshi.version>
-        <!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core -->
-        <jol.version>0.17</jol.version>
-        <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
-        <thumbnailator.version>0.4.21</thumbnailator.version>
-        <!-- https://mvnrepository.com/artifact/de.schlichtherle.truelicense/truelicense-core -->
-        <truelicense.version>1.33</truelicense.version>
-        <!-- plugin -->
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-install-plugin -->
-        <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
-        <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin -->
-        <mybatis-generator-maven-plugin.version>2.0.0</mybatis-generator-maven-plugin.version>
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter &ndash;&gt; -->
+        <!-- <pagehelper-spring-boot-starter.version>4.1.1</pagehelper-spring-boot-starter.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot4-starter &ndash;&gt; -->
+        <!-- <mybatis-plus-spring-boot4-starter.version>3.5.17</mybatis-plus-spring-boot4-starter.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter &ndash;&gt; -->
+        <!-- <druid-spring-boot-4-starter.version>1.2.28</druid-spring-boot-4-starter.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql &ndash;&gt; -->
+        <!-- <mybatis-dynamic-sql.version>2.0.0</mybatis-dynamic-sql.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-mqtt &ndash;&gt; -->
+        <!-- <spring-integration-mqtt.vesion>7.1.0</spring-integration-mqtt.vesion> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.mqttv5.client &ndash;&gt; -->
+        <!-- <org.eclipse.paho.mqttv5.client.version>1.2.5</org.eclipse.paho.mqttv5.client.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3 &ndash;&gt; -->
+        <!-- <org.eclipse.paho.client.mqttv3.version>1.2.5</org.eclipse.paho.client.mqttv3.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils &ndash;&gt; -->
+        <!-- <commons-beanutils.version>1.11.0</commons-beanutils.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/commons-cli/commons-cli &ndash;&gt; -->
+        <!-- <commons-cli.version>1.11.0</commons-cli.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 &ndash;&gt; -->
+        <!-- <commons-configuration2.version>2.15.1</commons-configuration2.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.commons/commons-csv &ndash;&gt; -->
+        <!-- <commons-csv.version>1.14.1</commons-csv.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.commons/commons-email2-jakarta &ndash;&gt; -->
+        <!-- <commons-email2.version>2.0.0-M1</commons-email2.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/commons-net/commons-net &ndash;&gt; -->
+        <!-- <commons-net.version>3.13.0</commons-net.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.commons/commons-rng-core &ndash;&gt; -->
+        <!-- <commons-rng.version>1.7</commons-rng.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.poi/poi &ndash;&gt; -->
+        <!-- <poi.version>5.5.1</poi.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.tika/tika-core &ndash;&gt; -->
+        <!-- <tika.version>3.3.1</tika.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.jsoup/jsoup &ndash;&gt; -->
+        <!-- <jsoup.version>1.22.2</jsoup.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/io.minio/minio &ndash;&gt; -->
+        <!-- <minio.version>9.0.3</minio.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.itextpdf/itext-core &ndash;&gt; -->
+        <!-- <itext.version>9.7.0</itext.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt &ndash;&gt; -->
+        <!-- <nimbus-jose-jwt.version>10.9.1</nimbus-jose-jwt.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson &ndash;&gt; -->
+        <!-- <retrofit2.version>3.0.0</retrofit2.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.axis2/axis2 &ndash;&gt; -->
+        <!-- <axis2.version>2.0.1</axis2.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.curator/curator-recipes &ndash;&gt; -->
+        <!-- <curator.version>5.9.0</curator.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.alibaba/fastjson &ndash;&gt; -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 &ndash;&gt; -->
+        <!-- <fastjson.version>2.0.62</fastjson.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl &ndash;&gt; -->
+        <!-- <tablibs-standard.version>1.2.5</tablibs-standard.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/io.protostuff/protostuff-core &ndash;&gt; -->
+        <!-- <protostuff.version>1.8.0</protostuff.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/ws.schild/jave-all-deps &ndash;&gt; -->
+        <!-- <jave2.version>3.5.0</jave2.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.bytedeco/javacv &ndash;&gt; -->
+        <!-- <javacv.version>1.5.13</javacv.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.dom4j/dom4j &ndash;&gt; -->
+        <!-- <dom4j.version>2.2.0</dom4j.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.openjdk.nashorn/nashorn-core &ndash;&gt; -->
+        <!-- <nashorn.version>15.7</nashorn.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui &ndash;&gt; -->
+        <!-- <springdoc-openapi-starter.version>3.0.3</springdoc-openapi-starter.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core &ndash;&gt; -->
+        <!-- <jmh.version>1.37</jmh.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.github.whvcse/easy-captcha &ndash;&gt; -->
+        <!-- <easy-captcha.version>1.6.2</easy-captcha.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/cn.hutool/hutool-all &ndash;&gt; -->
+        <!-- <hutool.version>5.8.46</hutool.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/cglib/cglib &ndash;&gt; -->
+        <!-- <cglib.version>3.3.0</cglib.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.vdurmont/emoji-java &ndash;&gt; -->
+        <!-- <emoji.version>5.1.1</emoji.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.github.mwiede/jsch &ndash;&gt; -->
+        <!-- <jsch.version>2.28.4</jsch.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/io.github.biezhi/TinyPinyin &ndash;&gt; -->
+        <!-- <TinyPinyin.version>2.0.3.RELEASE</TinyPinyin.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.google.zxing/core &ndash;&gt; -->
+        <!-- <zxing.version>3.5.4</zxing.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/QRCode/QRCode &ndash;&gt; -->
+        <!-- <QRCode.version>3.0.0</QRCode.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.lucene/lucene-analyzers-smartcn &ndash;&gt; -->
+        <!-- <lucene-analyzers.version>8.11.4</lucene-analyzers.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.github.oshi/oshi-core &ndash;&gt; -->
+        <!-- <oshi.version>7.4.0</oshi.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.openjdk.jol/jol-core &ndash;&gt; -->
+        <!-- <jol.version>0.17</jol.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/net.coobird/thumbnailator &ndash;&gt; -->
+        <!-- <thumbnailator.version>0.4.21</thumbnailator.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/de.schlichtherle.truelicense/truelicense-core &ndash;&gt; -->
+        <!-- <truelicense.version>1.33</truelicense.version> -->
+        <!-- &lt;!&ndash; plugin &ndash;&gt; -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-install-plugin &ndash;&gt; -->
+        <!-- <maven-install-plugin.version>3.1.4</maven-install-plugin.version> -->
+        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin &ndash;&gt; -->
+        <!-- <mybatis-generator-maven-plugin.version>2.0.0</mybatis-generator-maven-plugin.version> -->
     </properties>
+
+    <modules>
+        <module>spring-boot</module>
+    </modules>
 
     <dependencies>
         <!-- Starters：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aspectj</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-quartz</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-integration</artifactId>
-        </dependency>
-        <!-- devtools：https://blog.csdn.net/Martin_chen2/article/details/116198924 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <!-- 依赖范围：https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#dependency-scope
-                    compile     default     spring-core     compile     test    runtime
-                    provided                servlet-api     compile     test
-                    runtime                 jdbc                        test    runtime
-                    test                    junit                       test
-                    system      deprecated
-                    import -->
-            <scope>runtime</scope>
-            <!-- 可选依赖：设置依赖是否可以传递。optional=true，表示依赖不会传递；子模块赖如果想要使用, 需要重新声明依赖
-                    https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html#optional-dependencies -->
-            <optional>true</optional>
-        </dependency>
-        <!-- 配置处理器：https://www.xttblog.com/?p=2834 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-starter-aspectj</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-starter-validation</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-starter-data-jpa</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-starter-data-redis</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-starter-cache</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-starter-quartz</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-starter-freemarker</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-starter-thymeleaf</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-starter-integration</artifactId> -->
+        <!-- </dependency> -->
+        <!-- &lt;!&ndash; devtools：https://blog.csdn.net/Martin_chen2/article/details/116198924 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-devtools</artifactId> -->
+        <!--     &lt;!&ndash; 依赖范围：https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#dependency-scope -->
+        <!--             compile     default     spring-core     compile     test    runtime -->
+        <!--             provided                servlet-api     compile     test -->
+        <!--             runtime                 jdbc                        test    runtime -->
+        <!--             test                    junit                       test -->
+        <!--             system      deprecated -->
+        <!--             import &ndash;&gt; -->
+        <!--     <scope>runtime</scope> -->
+        <!--     &lt;!&ndash; 可选依赖：设置依赖是否可以传递。optional=true，表示依赖不会传递；子模块赖如果想要使用, 需要重新声明依赖 -->
+        <!--             https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html#optional-dependencies &ndash;&gt; -->
+        <!--     <optional>true</optional> -->
+        <!-- </dependency> -->
+        <!-- &lt;!&ndash; 配置处理器：https://www.xttblog.com/?p=2834 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.boot</groupId> -->
+        <!--     <artifactId>spring-boot-configuration-processor</artifactId> -->
+        <!--     <scope>provided</scope> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>com.mysql</groupId> -->
+        <!--     <artifactId>mysql-connector-j</artifactId> -->
+        <!--     <scope>runtime</scope> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>com.h2database</groupId> -->
+        <!--     <artifactId>h2</artifactId> -->
+        <!--     <scope>runtime</scope> -->
+        <!-- </dependency> -->
 
-        <!-- influxdb：时序数据库 -->
-        <dependency>
-            <groupId>org.influxdb</groupId>
-            <artifactId>influxdb-java</artifactId>
-        </dependency>
+        <!-- &lt;!&ndash; influxdb：时序数据库 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.influxdb</groupId> -->
+        <!--     <artifactId>influxdb-java</artifactId> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-4-starter</artifactId>
-            <version>${druid-spring-boot-4-starter.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>com.alibaba</groupId> -->
+        <!--     <artifactId>druid-spring-boot-4-starter</artifactId> -->
+        <!--     <version>${druid-spring-boot-4-starter.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- spring boot 整合 pagehelper
-            包含 mybatis-spring-boot-starter
-                包含 mybatis-spring -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>${pagehelper-spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-spring-boot4-starter</artifactId>
-            <version>${mybatis-plus-spring-boot4-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.dynamic-sql</groupId>
-            <artifactId>mybatis-dynamic-sql</artifactId>
-            <version>${mybatis-dynamic-sql.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; spring boot 整合 pagehelper -->
+        <!--     包含 mybatis-spring-boot-starter -->
+        <!--         包含 mybatis-spring &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>com.github.pagehelper</groupId> -->
+        <!--     <artifactId>pagehelper-spring-boot-starter</artifactId> -->
+        <!--     <version>${pagehelper-spring-boot-starter.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>com.baomidou</groupId> -->
+        <!--     <artifactId>mybatis-plus-spring-boot4-starter</artifactId> -->
+        <!--     <version>${mybatis-plus-spring-boot4-starter.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.mybatis.dynamic-sql</groupId> -->
+        <!--     <artifactId>mybatis-dynamic-sql</artifactId> -->
+        <!--     <version>${mybatis-dynamic-sql.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- jedis：包含 gson -->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-        </dependency>
+        <!-- &lt;!&ndash; jedis：包含 gson &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>redis.clients</groupId> -->
+        <!--     <artifactId>jedis</artifactId> -->
+        <!-- </dependency> -->
 
-        <!-- caffeine：高性能本地缓存 -->
-        <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>caffeine</artifactId>
-        </dependency>
+        <!-- &lt;!&ndash; caffeine：高性能本地缓存 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>com.github.ben-manes.caffeine</groupId> -->
+        <!--     <artifactId>caffeine</artifactId> -->
+        <!-- </dependency> -->
 
-        <!--rocketmq -->
-        <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-spring-boot-starter</artifactId>
-            <version>${rocketmq-spring-boot-starter.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.github.aliyunmq</groupId>
-                    <artifactId>rocketmq-shaded-slf4j-api-bridge</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-test</artifactId>
-            <version>${rocketmq.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.github.aliyunmq</groupId>
-                    <artifactId>rocketmq-shaded-slf4j-api-bridge</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>org.springframework.integration</groupId> -->
+        <!--     <artifactId>spring-integration-mqtt</artifactId> -->
+        <!--     <version>${spring-integration-mqtt.vesion}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.eclipse.paho</groupId> -->
+        <!--     <artifactId>org.eclipse.paho.mqttv5.client</artifactId> -->
+        <!--     <version>${org.eclipse.paho.mqttv5.client.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.eclipse.paho</groupId> -->
+        <!--     <artifactId>org.eclipse.paho.client.mqttv3</artifactId> -->
+        <!--     <version>${org.eclipse.paho.client.mqttv3.version}</version> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>org.springframework.integration</groupId>
-            <artifactId>spring-integration-mqtt</artifactId>
-            <version>${spring-integration-mqtt.vesion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.paho</groupId>
-            <artifactId>org.eclipse.paho.mqttv5.client</artifactId>
-            <version>${org.eclipse.paho.mqttv5.client.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.paho</groupId>
-            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-            <version>${org.eclipse.paho.client.mqttv3.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>commons-beanutils</groupId> -->
+        <!--     <artifactId>commons-beanutils</artifactId> -->
+        <!--     <version>${commons-beanutils.version}</version> -->
+        <!--     &lt;!&ndash; 依赖排除：https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html#dependency-exclusions &ndash;&gt; -->
+        <!--     <exclusions> -->
+        <!--         <exclusion> -->
+        <!--             <groupId>commons-collections</groupId> -->
+        <!--             <artifactId>commons-collections</artifactId> -->
+        <!--         </exclusion> -->
+        <!--     </exclusions> -->
+        <!-- </dependency> -->
+        <!-- &lt;!&ndash; commons-cli：用于显示、处理和验证命令行接口 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>commons-cli</groupId> -->
+        <!--     <artifactId>commons-cli</artifactId> -->
+        <!--     <version>${commons-cli.version}</version> -->
+        <!-- </dependency> -->
+        <!-- &lt;!&ndash; commons-configuration2：读取各种格式的 configuration/preferences 文件 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.commons</groupId> -->
+        <!--     <artifactId>commons-configuration2</artifactId> -->
+        <!--     <version>${commons-configuration2.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.commons</groupId> -->
+        <!--     <artifactId>commons-csv</artifactId> -->
+        <!--     <version>${commons-csv.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.commons</groupId> -->
+        <!--     <artifactId>commons-dbcp2</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.commons</groupId> -->
+        <!--     <artifactId>commons-email2-jakarta</artifactId> -->
+        <!--     <version>${commons-email2.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>commons-net</groupId> -->
+        <!--     <artifactId>commons-net</artifactId> -->
+        <!--     <version>${commons-net.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.commons</groupId> -->
+        <!--     <artifactId>commons-rng-simple</artifactId> -->
+        <!--     <version>${commons-rng.version}</version> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>${commons-beanutils.version}</version>
-            <!-- 依赖排除：https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html#dependency-exclusions -->
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-collections</groupId>
-                    <artifactId>commons-collections</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- commons-cli：用于显示、处理和验证命令行接口 -->
-        <dependency>
-            <groupId>commons-cli</groupId>
-            <artifactId>commons-cli</artifactId>
-            <version>${commons-cli.version}</version>
-        </dependency>
-        <!-- commons-configuration2：读取各种格式的 configuration/preferences 文件 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-configuration2</artifactId>
-            <version>${commons-configuration2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-csv</artifactId>
-            <version>${commons-csv.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-email2-jakarta</artifactId>
-            <version>${commons-email2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-            <version>${commons-net.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-rng-simple</artifactId>
-            <version>${commons-rng.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; poi &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.poi</groupId> -->
+        <!--     <artifactId>poi-ooxml</artifactId> -->
+        <!--     <version>${poi.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- poi -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>${poi.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>io.netty</groupId> -->
+        <!--     <artifactId>netty-all</artifactId> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-        </dependency>
+        <!-- &lt;!&ndash; tika：内容抽取的工具集合 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.tika</groupId> -->
+        <!--     <artifactId>tika-core</artifactId> -->
+        <!--     <version>${tika.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- tika：内容抽取的工具集合 -->
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>${tika.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>org.jsoup</groupId> -->
+        <!--     <artifactId>jsoup</artifactId> -->
+        <!--     <version>${jsoup.version}</version> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>${jsoup.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; minio：包含 bcprov-jdk15on &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>io.minio</groupId> -->
+        <!--     <artifactId>minio</artifactId> -->
+        <!--     <version>${minio.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- minio：包含 bcprov-jdk15on -->
-        <dependency>
-            <groupId>io.minio</groupId>
-            <artifactId>minio</artifactId>
-            <version>${minio.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; itextpdf：Java-PDF &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>com.itextpdf</groupId> -->
+        <!--     <artifactId>itext-core</artifactId> -->
+        <!--     <version>${itext.version}</version> -->
+        <!--     <type>pom</type> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>com.itextpdf</groupId> -->
+        <!--     <artifactId>bouncy-castle-adapter</artifactId> -->
+        <!--     <version>${itext.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- itextpdf：Java-PDF -->
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itext-core</artifactId>
-            <version>${itext.version}</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>bouncy-castle-adapter</artifactId>
-            <version>${itext.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>com.nimbusds</groupId> -->
+        <!--     <artifactId>nimbus-jose-jwt</artifactId> -->
+        <!--     <version>${nimbus-jose-jwt.version}</version> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>com.nimbusds</groupId>
-            <artifactId>nimbus-jose-jwt</artifactId>
-            <version>${nimbus-jose-jwt.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.httpcomponents.client5</groupId> -->
+        <!--     <artifactId>httpclient5-fluent</artifactId> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>org.apache.httpcomponents.client5</groupId>
-            <artifactId>httpclient5-fluent</artifactId>
-        </dependency>
+        <!-- &lt;!&ndash; retrofit：适用于 Android 和 Java 的类型安全 HTTP 客户端 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>com.squareup.retrofit2</groupId> -->
+        <!--     <artifactId>converter-jackson</artifactId> -->
+        <!--     <version>${retrofit2.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- retrofit：适用于 Android 和 Java 的类型安全 HTTP 客户端 -->
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>converter-jackson</artifactId>
-            <version>${retrofit2.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; htmlunit：用于测试基于 web 的应用程序的无头浏览器 -->
+        <!--     包含 httpclient 4 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.htmlunit</groupId> -->
+        <!--     <artifactId>htmlunit</artifactId> -->
+        <!-- </dependency> -->
 
-        <!-- htmlunit：用于测试基于 web 的应用程序的无头浏览器
-            包含 httpclient 4 -->
-        <dependency>
-            <groupId>org.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
-        </dependency>
+        <!-- &lt;!&ndash; axis2 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.axis2</groupId> -->
+        <!--     <artifactId>axis2-adb</artifactId> -->
+        <!--     <version>${axis2.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.axis2</groupId> -->
+        <!--     <artifactId>axis2-transport-local</artifactId> -->
+        <!--     <version>${axis2.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.axis2</groupId> -->
+        <!--     <artifactId>axis2-jaxws</artifactId> -->
+        <!--     <version>${axis2.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- axis2 -->
-        <dependency>
-            <groupId>org.apache.axis2</groupId>
-            <artifactId>axis2-adb</artifactId>
-            <version>${axis2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.axis2</groupId>
-            <artifactId>axis2-transport-local</artifactId>
-            <version>${axis2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.axis2</groupId>
-            <artifactId>axis2-jaxws</artifactId>
-            <version>${axis2.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; curator：操作 zookeeper &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.curator</groupId> -->
+        <!--     <artifactId>curator-recipes</artifactId> -->
+        <!--     <version>${curator.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.curator</groupId> -->
+        <!--     <artifactId>curator-test</artifactId> -->
+        <!--     <version>${curator.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- curator：操作 zookeeper -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>${curator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-test</artifactId>
-            <version>${curator.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>tools.jackson.dataformat</groupId> -->
+        <!--     <artifactId>jackson-dataformat-xml</artifactId> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>tools.jackson.dataformat</groupId> -->
+        <!--     <artifactId>jackson-dataformat-yaml</artifactId> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>tools.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>tools.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-        </dependency>
+        <!-- &lt;!&ndash; fastjson：包含 fastjson2 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>com.alibaba</groupId> -->
+        <!--     <artifactId>fastjson</artifactId> -->
+        <!--     <version>${fastjson.version}</version> -->
+        <!--     <scope>test</scope> -->
+        <!-- </dependency> -->
 
-        <!-- fastjson：包含 fastjson2 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>org.glassfish.web</groupId> -->
+        <!--     <artifactId>jakarta.servlet.jsp.jstl</artifactId> -->
+        <!--     <scope>runtime</scope> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>jakarta.servlet.jsp.jstl</groupId> -->
+        <!--     <artifactId>jakarta.servlet.jsp.jstl-api</artifactId> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.servlet.jsp.jstl</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.taglibs</groupId> -->
+        <!--     <artifactId>taglibs-standard-impl</artifactId> -->
+        <!--     <version>${tablibs-standard.version}</version> -->
+        <!--     <scope>runtime</scope> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>org.apache.taglibs</groupId>
-            <artifactId>taglibs-standard-impl</artifactId>
-            <version>${tablibs-standard.version}</version>
-            <scope>runtime</scope>
-        </dependency>
+        <!-- &lt;!&ndash; protostuff：基于 protobuf，序列化/反序列化 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>io.protostuff</groupId> -->
+        <!--     <artifactId>protostuff-core</artifactId> -->
+        <!--     <version>${protostuff.version}</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!--     <groupId>io.protostuff</groupId> -->
+        <!--     <artifactId>protostuff-runtime</artifactId> -->
+        <!--     <version>${protostuff.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- protostuff：基于 protobuf，序列化/反序列化 -->
-        <dependency>
-            <groupId>io.protostuff</groupId>
-            <artifactId>protostuff-core</artifactId>
-            <version>${protostuff.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.protostuff</groupId>
-            <artifactId>protostuff-runtime</artifactId>
-            <version>${protostuff.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; jave2：封装 FFmpeg &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>ws.schild</groupId> -->
+        <!--     <artifactId>jave-all-deps</artifactId> -->
+        <!--     <version>${jave2.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- jave2：封装 FFmpeg -->
-        <dependency>
-            <groupId>ws.schild</groupId>
-            <artifactId>jave-all-deps</artifactId>
-            <version>${jave2.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; javacv：封装 OpenCV、FFmpeg 等 TODO(LJH) -->
+        <!--     https://github.com/bytedeco/javacv -->
+        <!--     https://blog.csdn.net/eguid_1/category_11472450.html &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.bytedeco</groupId> -->
+        <!--     <artifactId>javacv-platform</artifactId> -->
+        <!--     <version>${javacv.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- javacv：封装 OpenCV、FFmpeg 等 TODO(LJH)
-            https://github.com/bytedeco/javacv
-            https://blog.csdn.net/eguid_1/category_11472450.html -->
-        <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>javacv-platform</artifactId>
-            <version>${javacv.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; dom4j：灵活的 Java XML 框架 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.dom4j</groupId> -->
+        <!--     <artifactId>dom4j</artifactId> -->
+        <!--     <version>${dom4j.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- dom4j：灵活的 Java XML 框架 -->
-        <dependency>
-            <groupId>org.dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>${dom4j.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; jaxen：通用的 Java XPath 引擎 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>jaxen</groupId> -->
+        <!--     <artifactId>jaxen</artifactId> -->
+        <!-- </dependency> -->
 
-        <!-- jaxen：通用的 Java XPath 引擎 -->
-        <dependency>
-            <groupId>jaxen</groupId>
-            <artifactId>jaxen</artifactId>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>org.openjdk.nashorn</groupId> -->
+        <!--     <artifactId>nashorn-core</artifactId> -->
+        <!--     <version>${nashorn.version}</version> -->
+        <!--     <scope>test</scope> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>org.openjdk.nashorn</groupId>
-            <artifactId>nashorn-core</artifactId>
-            <version>${nashorn.version}</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- &lt;!&ndash; OpenAPI 3： -->
+        <!--     https://springdoc.org/ -->
+        <!--     https://github.com/springdoc/springdoc-openapi &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.springdoc</groupId> -->
+        <!--     <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId> -->
+        <!--     <version>${springdoc-openapi-starter.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- OpenAPI 3：
-            https://springdoc.org/
-            https://github.com/springdoc/springdoc-openapi -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${springdoc-openapi-starter.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; jmh：微基准测试 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.openjdk.jmh</groupId> -->
+        <!--     <artifactId>jmh-generator-annprocess</artifactId> -->
+        <!--     <version>${jmh.version}</version> -->
+        <!--     <scope>test</scope> -->
+        <!-- </dependency> -->
 
-        <!-- jmh：微基准测试 -->
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh.version}</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>com.github.whvcse</groupId> -->
+        <!--     <artifactId>easy-captcha</artifactId> -->
+        <!--     <version>${easy-captcha.version}</version> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <!-- &lt;!&ndash; hutool：https://www.hutool.cn/docs/#/ &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>cn.hutool</groupId> -->
+        <!--     <artifactId>hutool-all</artifactId> -->
+        <!--     <version>${hutool.version}</version> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>com.github.whvcse</groupId>
-            <artifactId>easy-captcha</artifactId>
-            <version>${easy-captcha.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; cglib：Code 生成，动态代理 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>cglib</groupId> -->
+        <!--     <artifactId>cglib-nodep</artifactId> -->
+        <!--     <version>${cglib.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- hutool：https://www.hutool.cn/docs/#/ -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>com.vdurmont</groupId> -->
+        <!--     <artifactId>emoji-java</artifactId> -->
+        <!--     <version>${emoji.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- cglib：Code 生成，动态代理 -->
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib-nodep</artifactId>
-            <version>${cglib.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; jsch：SSH2 的 Java 实现 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>com.github.mwiede</groupId> -->
+        <!--     <artifactId>jsch</artifactId> -->
+        <!--     <version>${jsch.version}</version> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>com.vdurmont</groupId>
-            <artifactId>emoji-java</artifactId>
-            <version>${emoji.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>io.github.biezhi</groupId> -->
+        <!--     <artifactId>TinyPinyin</artifactId> -->
+        <!--     <version>${TinyPinyin.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- jsch：SSH2 的 Java 实现 -->
-        <dependency>
-            <groupId>com.github.mwiede</groupId>
-            <artifactId>jsch</artifactId>
-            <version>${jsch.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>com.google.zxing</groupId> -->
+        <!--     <artifactId>javase</artifactId> -->
+        <!--     <version>${zxing.version}</version> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>io.github.biezhi</groupId>
-            <artifactId>TinyPinyin</artifactId>
-            <version>${TinyPinyin.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>QRCode</groupId> -->
+        <!--     <artifactId>QRCode</artifactId> -->
+        <!--     <version>${QRCode.version}</version> -->
+        <!--     <scope>system</scope> -->
+        <!--     <systemPath>${project.basedir}\lib\qrcode.jar</systemPath> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>${zxing.version}</version>
-        </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>QRCode</groupId> -->
+        <!--     <artifactId>QRCode_swetake</artifactId> -->
+        <!--     <version>${QRCode.version}</version> -->
+        <!--     <scope>system</scope> -->
+        <!--     <systemPath>${project.basedir}\lib\qrcode_swetake.jar</systemPath> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>QRCode</groupId>
-            <artifactId>QRCode</artifactId>
-            <version>${QRCode.version}</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}\lib\qrcode.jar</systemPath>
-        </dependency>
+        <!-- &lt;!&ndash; lucene：中文智能分析 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.apache.lucene</groupId> -->
+        <!--     <artifactId>lucene-analyzers-smartcn</artifactId> -->
+        <!--     <version>${lucene-analyzers.version}</version> -->
+        <!-- </dependency> -->
 
-        <dependency>
-            <groupId>QRCode</groupId>
-            <artifactId>QRCode_swetake</artifactId>
-            <version>${QRCode.version}</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}\lib\qrcode_swetake.jar</systemPath>
-        </dependency>
+        <!-- &lt;!&ndash; oshi：获取系统和硬件信息工具 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>com.github.oshi</groupId> -->
+        <!--     <artifactId>oshi-core</artifactId> -->
+        <!--     <version>${oshi.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- lucene：中文智能分析 -->
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers-smartcn</artifactId>
-            <version>${lucene-analyzers.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; 内存可视化工具 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>org.openjdk.jol</groupId> -->
+        <!--     <artifactId>jol-core</artifactId> -->
+        <!--     <version>${jol.version}</version> -->
+        <!--     <scope>test</scope> -->
+        <!-- </dependency> -->
 
-        <!-- oshi：获取系统和硬件信息工具 -->
-        <dependency>
-            <groupId>com.github.oshi</groupId>
-            <artifactId>oshi-core</artifactId>
-            <version>${oshi.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; thumbnailator：一个 Java 的缩略图生成库 &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>net.coobird</groupId> -->
+        <!--     <artifactId>thumbnailator</artifactId> -->
+        <!--     <version>${thumbnailator.version}</version> -->
+        <!-- </dependency> -->
 
-        <!-- 内存可视化工具 -->
-        <dependency>
-            <groupId>org.openjdk.jol</groupId>
-            <artifactId>jol-core</artifactId>
-            <version>${jol.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- thumbnailator：一个 Java 的缩略图生成库 -->
-        <dependency>
-            <groupId>net.coobird</groupId>
-            <artifactId>thumbnailator</artifactId>
-            <version>${thumbnailator.version}</version>
-        </dependency>
-
-        <!-- truelicense：安全许可证管理，https://www.cnblogs.com/xifengxiaoma/p/9377654.html
-                LICENSE4J：https://github.com/license4j -->
-        <dependency>
-            <groupId>de.schlichtherle.truelicense</groupId>
-            <artifactId>truelicense-core</artifactId>
-            <version>${truelicense.version}</version>
-        </dependency>
+        <!-- &lt;!&ndash; truelicense：安全许可证管理，https://www.cnblogs.com/xifengxiaoma/p/9377654.html -->
+        <!--         LICENSE4J：https://github.com/license4j &ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>de.schlichtherle.truelicense</groupId> -->
+        <!--     <artifactId>truelicense-core</artifactId> -->
+        <!--     <version>${truelicense.version}</version> -->
+        <!-- </dependency> -->
     </dependencies>
 
-    <!-- 依赖管理：管理其所有子项的依赖关系信息
-        https://maven.apache.org/pom.html#dependency-management -->
-    <!-- <dependencyManagement/> -->
+    <!-- 依赖管理：https://maven.apache.org/pom.html#dependency-management -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <!-- Build Settings：https://maven.apache.org/pom.html#Build_Settings -->
     <build>
@@ -671,93 +646,80 @@
 
         <!-- Available Plugins：https://maven.apache.org/plugins/index.html -->
         <plugins>
-            <plugin>
-                <!-- Creating an Executable Jar：https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#getting-started.first-application.executable-jar
-                    Spring Boot Maven Plugin：https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/    -->
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <!-- fork：是否分叉运行进程，3.0.0 移除
-                        https://jiangchao.blog.csdn.net/article/details/108880019 -->
-                    <!-- <fork>true</fork> -->
-                    <!-- 资源热刷新 -->
-                    <addResources>true</addResources>
-                </configuration>
-            </plugin>
+            <!-- <plugin> -->
+            <!--     <groupId>org.apache.maven.plugins</groupId> -->
+            <!--     <artifactId>maven-surefire-plugin</artifactId> -->
+            <!--     <configuration> -->
+            <!--         &lt;!&ndash; 让某些需要 Agent 支持的测试功能（如 Mock 静态方法）能够正常执行 &ndash;&gt; -->
+            <!--         <argLine> -->
+            <!--             -javaagent:${settings.localRepository}/net/bytebuddy/byte-buddy-agent/${byte-buddy.version}/byte-buddy-agent-${byte-buddy.version}.jar -->
+            <!--         </argLine> -->
+            <!--     </configuration> -->
+            <!-- </plugin> -->
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <argLine>-javaagent:${settings.localRepository}/net/bytebuddy/byte-buddy-agent/${byte-buddy.version}/byte-buddy-agent-${byte-buddy.version}.jar</argLine>
-                </configuration>
-            </plugin>
+            <!-- &lt;!&ndash; maven-compiler-plugin -->
+            <!--     http://maven.apache.org/plugins/maven-compiler-plugin/ &ndash;&gt; -->
+            <!-- <plugin> -->
+            <!--     <groupId>org.apache.maven.plugins</groupId> -->
+            <!--     <artifactId>maven-compiler-plugin</artifactId> -->
+            <!--     <configuration> -->
+            <!--         &lt;!&ndash; http://maven.apache.org/general.html#Compiling-Java-7 &ndash;&gt; -->
+            <!--         <source>${maven.compiler.source}</source> -->
+            <!--         <target>${maven.compiler.target}</target> -->
+            <!--         <fork>true</fork> -->
+            <!--         <encoding>${project.build.sourceEncoding}</encoding> -->
+            <!--         <compilerArgs> -->
+            <!--             <arg>-Xlint:unchecked</arg> -->
+            <!--         </compilerArgs> -->
+            <!--     </configuration> -->
+            <!-- </plugin> -->
 
-            <!-- maven-compiler-plugin
-                http://maven.apache.org/plugins/maven-compiler-plugin/ -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <!-- http://maven.apache.org/general.html#Compiling-Java-7 -->
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <fork>true</fork>
-                    <!-- https://maven.apache.org/plugins/maven-compiler-plugin/examples/compile-using-different-jdk.html -->
-                    <compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <compilerArgs>
-                        <arg>-Xlint:unchecked</arg>
-                    </compilerArgs>
-                </configuration>
-            </plugin>
+            <!-- &lt;!&ndash; maven-jar-plugin -->
+            <!--     http://maven.apache.org/plugins/maven-jar-plugin/ -->
+            <!--     https://maven.apache.org/plugins/maven-assembly-plugin/ &ndash;&gt; -->
+            <!-- <plugin> -->
+            <!--     <groupId>org.apache.maven.plugins</groupId> -->
+            <!--     <artifactId>maven-jar-plugin</artifactId> -->
+            <!--     <configuration> -->
+            <!--         &lt;!&ndash; http://maven.apache.org/shared/maven-archiver/index.html &ndash;&gt; -->
+            <!--         <archive> -->
+            <!--             <manifest> -->
+            <!--                 <addClasspath>true</addClasspath> -->
+            <!--                 <useUniqueVersions>false</useUniqueVersions> -->
+            <!--                 <classpathPrefix>lib/</classpathPrefix> -->
+            <!--                 <mainClass>${basedir}/springboot.EpitomeApplication</mainClass> -->
+            <!--             </manifest> -->
+            <!--         </archive> -->
+            <!--     </configuration> -->
+            <!-- </plugin> -->
 
-            <!-- maven-jar-plugin
-                http://maven.apache.org/plugins/maven-jar-plugin/
-                https://maven.apache.org/plugins/maven-assembly-plugin/ -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <!-- http://maven.apache.org/shared/maven-archiver/index.html -->
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <useUniqueVersions>false</useUniqueVersions>
-                            <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>${basedir}/springboot.EpitomeApplication</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>${mybatis-generator-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>Generate MyBatis Artifacts</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <configurationFile>${basedir}/src/main/resources/mybatis/generator-config.xml</configurationFile>
-                    <!-- <configurationFile>${basedir}/src/main/resources/mybatis/generator-config-dynamicSql.xml</configurationFile>-->
-                    <overwrite>false</overwrite>
-                    <verbose>true</verbose>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.mysql</groupId>
-                        <artifactId>mysql-connector-j</artifactId>
-                        <version>${mysql.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
+            <!-- <plugin> -->
+            <!--     <groupId>org.mybatis.generator</groupId> -->
+            <!--     <artifactId>mybatis-generator-maven-plugin</artifactId> -->
+            <!--     <version>${mybatis-generator-maven-plugin.version}</version> -->
+            <!--     <executions> -->
+            <!--         <execution> -->
+            <!--             <id>Generate MyBatis Artifacts</id> -->
+            <!--             <phase>deploy</phase> -->
+            <!--             <goals> -->
+            <!--                 <goal>generate</goal> -->
+            <!--             </goals> -->
+            <!--         </execution> -->
+            <!--     </executions> -->
+            <!--     <configuration> -->
+            <!--         <configurationFile>${basedir}/src/main/resources/mybatis/generator-config.xml</configurationFile> -->
+            <!--         &lt;!&ndash; <configurationFile>${basedir}/src/main/resources/mybatis/generator-config-dynamicSql.xml</configurationFile>&ndash;&gt; -->
+            <!--         <overwrite>false</overwrite> -->
+            <!--         <verbose>true</verbose> -->
+            <!--     </configuration> -->
+            <!--     <dependencies> -->
+            <!--         <dependency> -->
+            <!--             <groupId>com.mysql</groupId> -->
+            <!--             <artifactId>mysql-connector-j</artifactId> -->
+            <!--             <version>${mysql.version}</version> -->
+            <!--         </dependency> -->
+            <!--     </dependencies> -->
+            <!-- </plugin> -->
         </plugins>
 
         <!-- Resources：指定项目资源位置
@@ -799,27 +761,27 @@
 
     <!-- Profiles：项目根据构建环境更改设置
         https://maven.apache.org/pom.html#profiles -->
-    <profiles>
-        <profile>
-            <id>druid</id>
-            <properties>
-                <profileActive>druid</profileActive>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>h2</id>
-            <properties>
-                <profileActive>h2</profileActive>
-            </properties>
-        </profile>
-        <profile>
-            <id>hikari</id>
-            <properties>
-                <profileActive>hikari</profileActive>
-            </properties>
-        </profile>
-    </profiles>
+    <!-- <profiles> -->
+    <!--     <profile> -->
+    <!--         <id>druid</id> -->
+    <!--         <properties> -->
+    <!--             <profileActive>druid</profileActive> -->
+    <!--         </properties> -->
+    <!--         <activation> -->
+    <!--             <activeByDefault>true</activeByDefault> -->
+    <!--         </activation> -->
+    <!--     </profile> -->
+    <!--     <profile> -->
+    <!--         <id>h2</id> -->
+    <!--         <properties> -->
+    <!--             <profileActive>h2</profileActive> -->
+    <!--         </properties> -->
+    <!--     </profile> -->
+    <!--     <profile> -->
+    <!--         <id>hikari</id> -->
+    <!--         <properties> -->
+    <!--             <profileActive>hikari</profileActive> -->
+    <!--         </properties> -->
+    <!--     </profile> -->
+    <!-- </profiles> -->
 </project>

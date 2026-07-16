@@ -38,7 +38,7 @@
     1 Compliler
         1.1 Build project automatically 勾选
         1.2 Build Process → Shared VM options:
-            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.44\lombok-1.18.44.jar
+            -javaagent:D:\dev\.maven\repository\org\projectlombok\lombok\1.18.46\lombok-1.18.46.jar
     2 Annotation Processors
         2.1 Enable annotation processing 勾选
     3 Settings → Advanced Settings → Compiler
