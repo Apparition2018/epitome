@@ -29,7 +29,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableResilientMethods
 @EnableTransactionManagement
 @EnableAspectJAutoProxy(exposeProxy = true)
-@MapperScan(basePackages = "springboot.mqtt.mapper")
 public class EpitomeApplication {
 
     public static void main(String[] args) {

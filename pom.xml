@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- POM Reference：https://maven.apache.org/pom.html -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -49,18 +50,10 @@
         <!-- dependency -->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter &ndash;&gt; -->
         <!-- <pagehelper-spring-boot-starter.version>4.1.1</pagehelper-spring-boot-starter.version> -->
-        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot4-starter &ndash;&gt; -->
-        <!-- <mybatis-plus-spring-boot4-starter.version>3.5.17</mybatis-plus-spring-boot4-starter.version> -->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter &ndash;&gt; -->
         <!-- <druid-spring-boot-4-starter.version>1.2.28</druid-spring-boot-4-starter.version> -->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql &ndash;&gt; -->
         <!-- <mybatis-dynamic-sql.version>2.0.0</mybatis-dynamic-sql.version> -->
-        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-mqtt &ndash;&gt; -->
-        <!-- <spring-integration-mqtt.vesion>7.1.0</spring-integration-mqtt.vesion> -->
-        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.mqttv5.client &ndash;&gt; -->
-        <!-- <org.eclipse.paho.mqttv5.client.version>1.2.5</org.eclipse.paho.mqttv5.client.version> -->
-        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3 &ndash;&gt; -->
-        <!-- <org.eclipse.paho.client.mqttv3.version>1.2.5</org.eclipse.paho.client.mqttv3.version> -->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils &ndash;&gt; -->
         <!-- <commons-beanutils.version>1.11.0</commons-beanutils.version> -->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/commons-cli/commons-cli &ndash;&gt; -->
@@ -243,11 +236,6 @@
         <!--     <version>${pagehelper-spring-boot-starter.version}</version> -->
         <!-- </dependency> -->
         <!-- <dependency> -->
-        <!--     <groupId>com.baomidou</groupId> -->
-        <!--     <artifactId>mybatis-plus-spring-boot4-starter</artifactId> -->
-        <!--     <version>${mybatis-plus-spring-boot4-starter.version}</version> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
         <!--     <groupId>org.mybatis.dynamic-sql</groupId> -->
         <!--     <artifactId>mybatis-dynamic-sql</artifactId> -->
         <!--     <version>${mybatis-dynamic-sql.version}</version> -->
@@ -263,22 +251,6 @@
         <!-- <dependency> -->
         <!--     <groupId>com.github.ben-manes.caffeine</groupId> -->
         <!--     <artifactId>caffeine</artifactId> -->
-        <!-- </dependency> -->
-
-        <!-- <dependency> -->
-        <!--     <groupId>org.springframework.integration</groupId> -->
-        <!--     <artifactId>spring-integration-mqtt</artifactId> -->
-        <!--     <version>${spring-integration-mqtt.vesion}</version> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!--     <groupId>org.eclipse.paho</groupId> -->
-        <!--     <artifactId>org.eclipse.paho.mqttv5.client</artifactId> -->
-        <!--     <version>${org.eclipse.paho.mqttv5.client.version}</version> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!--     <groupId>org.eclipse.paho</groupId> -->
-        <!--     <artifactId>org.eclipse.paho.client.mqttv3</artifactId> -->
-        <!--     <version>${org.eclipse.paho.client.mqttv3.version}</version> -->
         <!-- </dependency> -->
 
         <!-- <dependency> -->
