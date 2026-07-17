@@ -1206,37 +1206,4 @@ INSERT INTO `score` VALUES (7, '李四', '语文', 76);
 INSERT INTO `score` VALUES (8, '李四', '数学', 90);
 INSERT INTO `score` VALUES (9, '赵六', '体育', 100);
 
--- ----------------------------
--- Table structure for tb_lamp
--- ----------------------------
-DROP TABLE IF EXISTS `tb_lamp`;
-CREATE TABLE `tb_lamp`  (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `device_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `status` int NULL DEFAULT NULL COMMENT '1: 上线 0: 下线',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_lamp
--- ----------------------------
-
--- ----------------------------
--- Table structure for tb_lamp_status
--- ----------------------------
-DROP TABLE IF EXISTS `tb_lamp_status`;
-CREATE TABLE `tb_lamp_status`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `device_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `status` int NULL DEFAULT NULL COMMENT '0: 关灯 1: 开灯',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tb_lamp_status
--- ----------------------------
-
 SET FOREIGN_KEY_CHECKS = 1;

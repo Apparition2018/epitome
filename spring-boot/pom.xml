@@ -14,7 +14,14 @@
     <description>Spring Boot Demo</description>
 
     <modules>
+        <module>spring-boot-core</module>
+        <module>spring-boot-web</module>
+        <module>spring-boot-data</module>
+        <module>spring-boot-security</module>
         <module>spring-boot-messaging</module>
-        <module>spring-boot-integration</module>
+        <module>spring-boot-observability</module>
+        <module>spring-boot-batch</module>
+        <module>spring-boot-misc</module>
+        <module>spring-boot-test</module>
     </modules>
 </project>
