@@ -14,7 +14,7 @@
     <description>Spring Boot Demo</description>
 
     <modules>
+        <module>spring-boot-core</module>
         <module>spring-boot-messaging</module>
-        <module>spring-boot-integration</module>
     </modules>
 </project>

@@ -8,22 +8,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-      </profile>
-      <profile name="Annotation profile for epitome" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$PROJECT_DIR$/../../../dev/.maven/repository/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
-          <entry name="$PROJECT_DIR$/../../../dev/.maven/repository/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
-        </processorPath>
-        <module name="spring-boot-rocketmq" />
+        <module name="spring-boot-core" />
         <module name="spring-boot-mqtt" />
+        <module name="spring-boot-rocketmq" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-boot-core" options="-parameters" />
       <module name="spring-boot-mqtt" options="-parameters" />
       <module name="spring-boot-rocketmq" options="-parameters" />
     </option>
