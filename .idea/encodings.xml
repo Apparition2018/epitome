@@ -3,10 +3,13 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$APPLICATION_HOME_DIR$/bin/src/main/java" charset="UTF-8" />
     <file url="file://$APPLICATION_HOME_DIR$/bin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/commons/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-batch/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-batch/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-data/spring-boot-flyway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-data/spring-boot-mybatis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-data/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-data/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-messaging/spring-boot-mqtt/src/main/java" charset="UTF-8" />
@@ -25,6 +28,8 @@
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-web/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

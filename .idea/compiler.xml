@@ -8,14 +8,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-boot-mqtt" />
+        <module name="spring-boot-mybatis" />
+        <module name="spring-boot-flyway" />
         <module name="spring-boot-rocketmq" />
+        <module name="commons" />
+        <module name="spring-boot-mqtt" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="commons" options="-parameters" />
+      <module name="spring-boot-flyway" options="-parameters" />
       <module name="spring-boot-mqtt" options="-parameters" />
+      <module name="spring-boot-mybatis" options="-parameters" />
       <module name="spring-boot-rocketmq" options="-parameters" />
     </option>
   </component>

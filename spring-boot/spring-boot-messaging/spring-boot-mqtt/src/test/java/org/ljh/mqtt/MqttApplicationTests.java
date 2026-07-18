@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-class MqttTests {
+class MqttApplicationTests {
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -20,7 +20,7 @@ class MqttTests {
     private MqttMessageSender mqttMessageSender;
 
     @Test
-    public void test() throws InterruptedException {
+    public void contextLoads() throws InterruptedException {
         new CountDownLatch(1).await();
     }
 

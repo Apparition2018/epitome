@@ -54,14 +54,14 @@
         <rocketmq.version>5.5.0</rocketmq.version>
         <!-- https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.client.mqttv3 -->
         <org.eclipse.paho.client.mqttv3.version>1.2.5</org.eclipse.paho.client.mqttv3.version>
+        <!-- https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql -->
+        <mybatis-dynamic-sql.version>2.0.0</mybatis-dynamic-sql.version>
+        <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
+        <pagehelper-spring-boot-starter.version>4.1.1</pagehelper-spring-boot-starter.version>
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-spring-boot4-starter -->
         <mybatis-plus-spring-boot4-starter.version>3.5.17</mybatis-plus-spring-boot4-starter.version>
-        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter &ndash;&gt; -->
-        <!-- <pagehelper-spring-boot-starter.version>4.1.1</pagehelper-spring-boot-starter.version> -->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter &ndash;&gt; -->
         <!-- <druid-spring-boot-4-starter.version>1.2.28</druid-spring-boot-4-starter.version> -->
-        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.mybatis.dynamic-sql/mybatis-dynamic-sql &ndash;&gt; -->
-        <!-- <mybatis-dynamic-sql.version>2.0.0</mybatis-dynamic-sql.version> -->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils &ndash;&gt; -->
         <!-- <commons-beanutils.version>1.11.0</commons-beanutils.version> -->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/commons-cli/commons-cli &ndash;&gt; -->
@@ -142,12 +142,14 @@
         <!-- &lt;!&ndash; plugin &ndash;&gt; -->
         <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-install-plugin &ndash;&gt; -->
         <!-- <maven-install-plugin.version>3.1.4</maven-install-plugin.version> -->
-        <!-- &lt;!&ndash; https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin &ndash;&gt; -->
-        <!-- <mybatis-generator-maven-plugin.version>2.0.0</mybatis-generator-maven-plugin.version> -->
+        <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin -->
+        <mybatis-generator-maven-plugin.version>2.0.0</mybatis-generator-maven-plugin.version>
     </properties>
 
     <modules>
+        <module>commons</module>
         <module>spring-boot</module>
+        <module>spring-cloud</module>
     </modules>
 
     <dependencies>
@@ -227,20 +229,6 @@
         <!--     <groupId>com.alibaba</groupId> -->
         <!--     <artifactId>druid-spring-boot-4-starter</artifactId> -->
         <!--     <version>${druid-spring-boot-4-starter.version}</version> -->
-        <!-- </dependency> -->
-
-        <!-- &lt;!&ndash; spring boot 整合 pagehelper -->
-        <!--     包含 mybatis-spring-boot-starter -->
-        <!--         包含 mybatis-spring &ndash;&gt; -->
-        <!-- <dependency> -->
-        <!--     <groupId>com.github.pagehelper</groupId> -->
-        <!--     <artifactId>pagehelper-spring-boot-starter</artifactId> -->
-        <!--     <version>${pagehelper-spring-boot-starter.version}</version> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!--     <groupId>org.mybatis.dynamic-sql</groupId> -->
-        <!--     <artifactId>mybatis-dynamic-sql</artifactId> -->
-        <!--     <version>${mybatis-dynamic-sql.version}</version> -->
         <!-- </dependency> -->
 
         <!-- &lt;!&ndash; jedis：包含 gson &ndash;&gt; -->
@@ -628,6 +616,16 @@
                 <version>${org.eclipse.paho.client.mqttv3.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.dynamic-sql</groupId>
+                <artifactId>mybatis-dynamic-sql</artifactId>
+                <version>${mybatis-dynamic-sql.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-spring-boot4-starter</artifactId>
                 <version>${mybatis-plus-spring-boot4-starter.version}</version>
@@ -686,34 +684,6 @@
             <!--             </manifest> -->
             <!--         </archive> -->
             <!--     </configuration> -->
-            <!-- </plugin> -->
-
-            <!-- <plugin> -->
-            <!--     <groupId>org.mybatis.generator</groupId> -->
-            <!--     <artifactId>mybatis-generator-maven-plugin</artifactId> -->
-            <!--     <version>${mybatis-generator-maven-plugin.version}</version> -->
-            <!--     <executions> -->
-            <!--         <execution> -->
-            <!--             <id>Generate MyBatis Artifacts</id> -->
-            <!--             <phase>deploy</phase> -->
-            <!--             <goals> -->
-            <!--                 <goal>generate</goal> -->
-            <!--             </goals> -->
-            <!--         </execution> -->
-            <!--     </executions> -->
-            <!--     <configuration> -->
-            <!--         <configurationFile>${basedir}/src/main/resources/mybatis/generator-config.xml</configurationFile> -->
-            <!--         &lt;!&ndash; <configurationFile>${basedir}/src/main/resources/mybatis/generator-config-dynamicSql.xml</configurationFile>&ndash;&gt; -->
-            <!--         <overwrite>false</overwrite> -->
-            <!--         <verbose>true</verbose> -->
-            <!--     </configuration> -->
-            <!--     <dependencies> -->
-            <!--         <dependency> -->
-            <!--             <groupId>com.mysql</groupId> -->
-            <!--             <artifactId>mysql-connector-j</artifactId> -->
-            <!--             <version>${mysql.version}</version> -->
-            <!--         </dependency> -->
-            <!--     </dependencies> -->
             <!-- </plugin> -->
         </plugins>
 
