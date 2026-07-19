@@ -1,4 +1,4 @@
-package springboot.config;
+package org.ljh.redis.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

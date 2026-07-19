@@ -45,16 +45,16 @@
         3.1 Allow auto-make to start even if developed application is currently running 勾选
 ### Deployment (-jo)
     1 Deployment
-        1.1 + → SFTP → New server name：43.136.102.115 → SSH configuration
-            Host: 43.136.102.115
-            Username: root
-            Authentication type: Password
-            password: Cesc123!
+        1.1 + → SFTP → New server name：150.230.2.175 → SSH configuration
+            Host: 150.230.2.175
+            Username: ubuntu
+            Authentication type: Key pair
+            Private key file: C:/Users/Administrator/.ssh/id_rsa
         1.2 Root path: /
         1.3 Advanced → Encoding for client-server communication: UTF-8
         1.4 Mappings
-            Local path: D:\Liang\git\epitome\OpenCloudOS
-            Deployment path: /home/lighthouse/sync_dir
+            Local path: D:\Liang\git\epitome\OCI
+            Deployment path: /home/ubuntu/sync_dir
     2 菜单栏 Tools → Deployment → Sync With Local…
 ---
 ## Editor

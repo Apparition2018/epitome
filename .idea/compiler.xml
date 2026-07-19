@@ -10,9 +10,19 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring-boot-mybatis" />
         <module name="spring-boot-flyway" />
+        <module name="spring-boot-redis" />
         <module name="spring-boot-rocketmq" />
         <module name="commons" />
         <module name="spring-boot-mqtt" />
+      </profile>
+      <profile name="Annotation profile for epitome" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$PROJECT_DIR$/../../../dev/.maven/repository/org/springframework/boot/spring-boot-configuration-processor/4.0.7/spring-boot-configuration-processor-4.0.7.jar" />
+          <entry name="$PROJECT_DIR$/../../../dev/.maven/repository/org/springframework/boot/spring-boot-autoconfigure-processor/4.0.7/spring-boot-autoconfigure-processor-4.0.7.jar" />
+        </processorPath>
       </profile>
     </annotationProcessing>
   </component>
@@ -22,6 +32,7 @@
       <module name="spring-boot-flyway" options="-parameters" />
       <module name="spring-boot-mqtt" options="-parameters" />
       <module name="spring-boot-mybatis" options="-parameters" />
+      <module name="spring-boot-redis" options="-parameters" />
       <module name="spring-boot-rocketmq" options="-parameters" />
     </option>
   </component>

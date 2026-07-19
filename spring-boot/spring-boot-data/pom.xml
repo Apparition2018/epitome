@@ -13,5 +13,6 @@
     <modules>
         <module>spring-boot-flyway</module>
         <module>spring-boot-mybatis</module>
+        <module>spring-boot-redis</module>
     </modules>
 </project>

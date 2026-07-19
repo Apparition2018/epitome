@@ -1,4 +1,4 @@
-package springboot.messaging.redis.stream.config;
+package org.ljh.redis.stream.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -9,9 +9,9 @@ import org.springframework.data.redis.connection.stream.MapRecord;
 import org.springframework.data.redis.connection.stream.ReadOffset;
 import org.springframework.data.redis.connection.stream.StreamOffset;
 import org.springframework.data.redis.stream.StreamMessageListenerContainer;
-import springboot.messaging.redis.stream.AutoAckStreamListener;
-import springboot.messaging.redis.stream.NonAutoAckStreamListener;
-import springboot.messaging.redis.stream.RedisStreamConstants;
+import org.ljh.redis.stream.AutoAckStreamListener;
+import org.ljh.redis.stream.NonAutoAckStreamListener;
+import org.ljh.redis.stream.RedisStreamConstants;
 
 import java.time.Duration;
 

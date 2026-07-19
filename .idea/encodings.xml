@@ -10,6 +10,7 @@
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-data/spring-boot-flyway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-data/spring-boot-mybatis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-data/spring-boot-redis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-data/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-data/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot/spring-boot-messaging/spring-boot-mqtt/src/main/java" charset="UTF-8" />

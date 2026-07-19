@@ -1,13 +1,13 @@
-package springboot;
+package org.ljh.redis;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.ljh.redis.pubsub.RedisTopicEnum;
+import org.ljh.redis.stream.RedisStreamConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.connection.stream.RecordId;
 import org.springframework.data.redis.core.RedisTemplate;
-import springboot.messaging.redis.pubsub.RedisTopicEnum;
-import springboot.messaging.redis.stream.RedisStreamConstants;
 
 import java.util.Map;
 
@@ -18,8 +18,8 @@ import java.util.Map;
  * @since 2021/9/2 2:17
  */
 @Slf4j
-@SpringBootTest(classes = EpitomeApplication.class)
-public class RedisMessagingDemo {
+@SpringBootTest
+public class RedisMessagingTests {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;

@@ -1,4 +1,4 @@
-package springboot.messaging.redis.stream;
+package org.ljh.redis.stream;
 
 /**
  * RedisStreamConstants

@@ -1,4 +1,4 @@
-package springboot.messaging.redis.pubsub;
+package org.ljh.redis.pubsub;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.connection.Message;

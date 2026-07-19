@@ -1,4 +1,4 @@
-package springboot.messaging.redis.pubsub;
+package org.ljh.redis.pubsub;
 
 import lombok.Getter;
 
