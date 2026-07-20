@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ljh.mybatis.mapper.CountryLanguageMapper">
+
+    <resultMap id="countryLanguageMap" type="CountryLanguage">
+        <id property="countryCode" column="CountryCode"/>
+        <id property="language" column="Language"/>
+        <result property="isOfficial" column="IsOfficial"/>
+        <result property="percentage" column="Percentage"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="countryLanguageMap">
+        SELECT CountryCode, Language, IsOfficial, Percentage FROM countrylanguage
+    </select>
+
+    <select id="findByCountryCode" resultMap="countryLanguageMap">
+        SELECT CountryCode, Language, IsOfficial, Percentage FROM countrylanguage WHERE CountryCode = #{countryCode}
+    </select>
+
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ljh.mybatis.mapper.CityMapper">
+
+    <resultMap id="cityMap" type="City">
+        <id property="id" column="ID"/>
+        <result property="name" column="Name"/>
+        <result property="countryCode" column="CountryCode"/>
+        <result property="district" column="District"/>
+        <result property="population" column="Population"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="cityMap">
+        SELECT ID, Name, CountryCode, District, Population FROM city
+    </select>
+
+    <select id="findById" resultMap="cityMap">
+        SELECT ID, Name, CountryCode, District, Population FROM city WHERE ID = #{id}
+    </select>
+
+    <select id="findByCountryCode" resultMap="cityMap">
+        SELECT ID, Name, CountryCode, District, Population FROM city WHERE CountryCode = #{countryCode}
+    </select>
+
+</mapper>

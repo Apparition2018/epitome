@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ljh.mybatis.mapper.CountryMapper">
+
+    <resultMap id="countryMap" type="Country">
+        <id property="code" column="Code"/>
+        <result property="name" column="Name"/>
+        <result property="continent" column="Continent" typeHandler="org.ljh.mybatis.entity.handler.ContinentTypeHandler"/>
+        <result property="region" column="Region"/>
+        <result property="surfaceArea" column="SurfaceArea"/>
+        <result property="indepYear" column="IndepYear"/>
+        <result property="population" column="Population"/>
+        <result property="lifeExpectancy" column="LifeExpectancy"/>
+        <result property="gnp" column="GNP"/>
+        <result property="gnpOld" column="GNPOld"/>
+        <result property="localName" column="LocalName"/>
+        <result property="governmentForm" column="GovernmentForm"/>
+        <result property="headOfState" column="HeadOfState"/>
+        <result property="capital" column="Capital"/>
+        <result property="code2" column="Code2"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="countryMap">
+        SELECT * FROM country
+    </select>
+
+    <select id="findByCode" resultMap="countryMap">
+        SELECT * FROM country WHERE Code = #{code}
+    </select>
+
+</mapper>

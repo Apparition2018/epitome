@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * RedisApplication
  *
- * @author Administrator
+ * @author ljh
  * @since 2026/7/19 11:40
  */
 @SpringBootApplication
